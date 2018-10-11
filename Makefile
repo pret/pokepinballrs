@@ -21,9 +21,11 @@ OBJ_DIR := build/pokepinballrs
 ELF = $(ROM:.gba=.elf)
 MAP = $(ROM:.gba=.map)
 
+C_SUBDIR = src
 ASM_SUBDIR = asm
 DATA_ASM_SUBDIR = data
 
+C_BUILDDIR = $(OBJ_DIR)/$(C_SUBDIR)
 ASM_BUILDDIR = $(OBJ_DIR)/$(ASM_SUBDIR)
 DATA_ASM_BUILDDIR = $(OBJ_DIR)/$(DATA_ASM_SUBDIR)
 
@@ -38,6 +40,7 @@ LDFLAGS = -Map ../../$(MAP)
 
 SHA1    := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
 SCANINC := tools/scaninc/scaninc$(EXE)
+PREPROC := tools/preproc/preproc$(EXE)
 FIX     := tools/gbafix/gbafix$(EXE)
 
 # Clear the default suffixes
@@ -52,7 +55,10 @@ FIX     := tools/gbafix/gbafix$(EXE)
 
 .PHONY: rom clean compare tidy
 
-$(shell mkdir -p $(ASM_BUILDDIR) $(DATA_ASM_BUILDDIR))
+$(shell mkdir -p $(C_BUILDDIR) $(ASM_BUILDDIR) $(DATA_ASM_BUILDDIR))
+
+C_SRCS := $(wildcard $(C_SUBDIR)/*.c)
+C_OBJS := $(patsubst $(C_SUBDIR)/%.c,$(C_BUILDDIR)/%.o,$(C_SRCS))
 
 ASM_SRCS := $(wildcard $(ASM_SUBDIR)/*.s)
 ASM_OBJS := $(patsubst $(ASM_SUBDIR)/%.s,$(ASM_BUILDDIR)/%.o,$(ASM_SRCS))
@@ -60,7 +66,7 @@ ASM_OBJS := $(patsubst $(ASM_SUBDIR)/%.s,$(ASM_BUILDDIR)/%.o,$(ASM_SRCS))
 DATA_ASM_SRCS := $(wildcard $(DATA_ASM_SUBDIR)/*.s)
 DATA_ASM_OBJS := $(patsubst $(DATA_ASM_SUBDIR)/%.s,$(DATA_ASM_BUILDDIR)/%.o,$(DATA_ASM_SRCS))
 
-OBJS := $(ASM_OBJS) $(DATA_ASM_OBJS)
+OBJS := $(C_OBJS) $(ASM_OBJS) $(DATA_ASM_OBJS)
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
 rom: $(ROM)
@@ -88,6 +94,18 @@ tidy:
 %.gbapal: %.png ; $(GFX) $< $@
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
+
+ifeq ($(NODEP),)
+$(C_BUILDDIR)/%.o: c_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.c)
+else
+$(C_BUILDDIR)/%.o: c_dep :=
+endif
+
+$(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
+	@$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
+	@$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CFLAGS) -o $(C_BUILDDIR)/$*.s
+	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
+	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 ifeq ($(NODEP),)
 $(ASM_BUILDDIR)/%.o: asm_dep = $(shell $(SCANINC) $(ASM_SUBDIR)/$*.s)
