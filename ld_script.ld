@@ -25,6 +25,7 @@ SECTIONS
         asm/start.o(.text);
         src/main.o(.text);
         asm/main.o(.text);
+        asm/m4a_1.o(.text);
         asm/rom.o(.text);
     }=0xFF
 }

@@ -2,7 +2,11 @@
 
     .section ewram
 
-.space 0x3060
+.space 0x2958
+
+ds gUnknown_02002958 @ 0x2002958
+
+.space 0x708
 
 ds gIntrTable @ 0x2003060
 
