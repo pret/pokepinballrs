@@ -95,6 +95,9 @@ tidy:
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
 
+$(C_BUILDDIR)/m4a_2.o: CC1 := tools/agbcc/bin/old_agbcc
+$(C_BUILDDIR)/m4a_4.o: CC1 := tools/agbcc/bin/old_agbcc
+
 ifeq ($(NODEP),)
 $(C_BUILDDIR)/%.o: c_dep = $(shell $(SCANINC) -I include $(C_SUBDIR)/$*.c)
 else
