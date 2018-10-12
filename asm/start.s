@@ -28,6 +28,7 @@ sp_sys: .4byte IWRAM_END - 0x100
 sp_irq: .4byte IWRAM_END - 0x60
     .pool
 
+    .global IntrMain
 IntrMain: @ 8000104
     mov r3, REG_BASE
     add r3, r3, OFFSET_REG_IE
