@@ -37,6 +37,7 @@ SECTIONS
         asm/libagbsyscall.o(.text);
         asm/unknown_lib.o(.text);
         *libgcc.a:_call_via_rX.o(.text);
+        *libgcc.a:_divsi3.o(.text);
     } =0
 
     rom :
