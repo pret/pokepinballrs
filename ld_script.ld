@@ -25,11 +25,6 @@ SECTIONS
         asm/start.o(.text);
         src/main.o(.text);
         asm/main.o(.text);
-    }=0x0
-
-    lib_text :
-    ALIGN(4)
-    {
         asm/m4a_1.o(.text);
         src/m4a_2.o(.text);
         asm/m4a_3.o(.text);
@@ -38,7 +33,22 @@ SECTIONS
         asm/unknown_lib.o(.text);
         *libgcc.a:_call_via_rX.o(.text);
         *libgcc.a:_divsi3.o(.text);
-    } =0
+        *libgcc.a:_dvmd_tls.o(.text);
+        *libgcc.a:_fixunsdfsi.o(.text);
+        *libgcc.a:_fixunssfsi.o(.text);
+        *libgcc.a:_modsi3.o(.text);
+        *libgcc.a:_muldi3.o(.text);
+        *libgcc.a:_udivdi3.o(.text);
+        *libgcc.a:_udivsi3.o(.text);
+        *libgcc.a:_umodsi3.o(.text);
+        *libgcc.a:dp-bit.o(.text);
+        *libgcc.a:fp-bit.o(.text);
+        *libgcc.a:_lshrdi3.o(.text);
+        *libgcc.a:_negdi2.o(.text);
+        *libc.a:memcpy.o(.text);
+        *libc.a:memset.o(.text);
+        asm/unknown_lib_2.o(.text);
+    }=0
 
     rom :
     {
@@ -50,4 +60,5 @@ SECTIONS
     {
         *(*);
     }
+
 }

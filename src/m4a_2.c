@@ -4,8 +4,6 @@
 
 asm(".set gScaleTable, 0x0852D928"); // TODO:
 asm(".set gFreqTable,  0x0852D9DC"); // TODO:
-asm(".set CpuSet,      0x080554D8"); // TODO:
-asm(".set memcpy,      0x08055970"); // TODO:
 asm(".set gMPlayTable, 0x08534DD4"); // TODO:
 asm(".set gPokemonCrySongTemplate, 0x0852DB40"); // TODO:
 asm(".set gSongTable,  0x08534E04"); // TODO:
@@ -13,7 +11,6 @@ asm(".set ply_memacc,  0x08054FE0 + 1"); // TODO:
 asm(".set ply_xcmd,    0x08055138 + 1"); // TODO:
 asm(".set gMaxLines,   0x3C"); // TODO:
 asm(".set DummyFunc, 0x080552E8 + 1"); // TODO:
-asm(".set __divsi3, 0x080556D0"); // TODO:
 asm(".set gPcmSamplesPerVBlankTable, 0x0852DA0C"); // TODO:
 asm(".set gNoiseTable, 0x0852DAC0"); // TODO:
 asm(".set gCgbScaleTable, 0x0852DA24"); // TODO:
