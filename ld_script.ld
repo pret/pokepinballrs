@@ -34,17 +34,9 @@ SECTIONS
         *libgcc.a:_call_via_rX.o(.text);
         *libgcc.a:_divsi3.o(.text);
         *libgcc.a:_dvmd_tls.o(.text);
-        *libgcc.a:_fixunsdfsi.o(.text);
-        *libgcc.a:_fixunssfsi.o(.text);
         *libgcc.a:_modsi3.o(.text);
-        *libgcc.a:_muldi3.o(.text);
-        *libgcc.a:_udivdi3.o(.text);
         *libgcc.a:_udivsi3.o(.text);
         *libgcc.a:_umodsi3.o(.text);
-        *libgcc.a:dp-bit.o(.text);
-        *libgcc.a:fp-bit.o(.text);
-        *libgcc.a:_lshrdi3.o(.text);
-        *libgcc.a:_negdi2.o(.text);
         *libc.a:memcpy.o(.text);
         *libc.a:memset.o(.text);
         asm/unknown_lib_2.o(.text);

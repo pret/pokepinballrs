@@ -4,13 +4,6 @@
 
 	.syntax unified
 
-	# mu4 externs
-    .set FadeOutBody,   0x08054630
-    .set ClearChain,    0x0805412C
-    .set Clear64byte,   0x08054140
-    .set TrkVolPitSet,  0x080546F8
-    .set MidiKeyToFreq, 0x08053C44
-
 	.text
 
 	thumb_func_start umul3232H32
