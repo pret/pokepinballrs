@@ -1,3 +1,3 @@
     .text
 
-.incbin "baserom.gba", 0x554F0, 0x666AE0
+.incbin "baserom.gba", 0x55694, 0x66693C

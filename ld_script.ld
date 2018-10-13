@@ -30,6 +30,7 @@ SECTIONS
         asm/m4a_3.o(.text);
         src/m4a_4.o(.text);
         asm/libagbsyscall.o(.text);
+        asm/unknown_lib.o(.text);
         asm/rom.o(.text);
     }=0xFF
 }
