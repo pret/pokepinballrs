@@ -2,7 +2,6 @@
     .include "constants/gba_constants.inc"
 
     @ extern
-    .set _call_via_r3, 0x080556A0
 
     .syntax unified
 

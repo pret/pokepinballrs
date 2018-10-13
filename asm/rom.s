@@ -1,3 +1,3 @@
-    .text
+    .section rom, "aw", %progbits
 
-.incbin "baserom.gba", 0x55694, 0x66693C
+.incbin "baserom.gba", 0x556D0, 0x666900

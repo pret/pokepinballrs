@@ -38,6 +38,8 @@ CPPFLAGS := -I tools/agbcc/include -I tools/agbcc -iquote include -nostdinc -und
 
 LDFLAGS = -Map ../../$(MAP)
 
+LIB := -L ../../tools/agbcc/lib -lgcc -lc
+
 SHA1    := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
 SCANINC := tools/scaninc/scaninc$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
@@ -95,6 +97,9 @@ tidy:
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
 
+$(C_BUILDDIR)/libc.o: CC1 := tools/agbcc/bin/old_agbcc
+$(C_BUILDDIR)/libc.o: CFLAGS := -O2
+
 $(C_BUILDDIR)/m4a_2.o: CC1 := tools/agbcc/bin/old_agbcc
 $(C_BUILDDIR)/m4a_4.o: CC1 := tools/agbcc/bin/old_agbcc
 
@@ -132,7 +137,7 @@ $(OBJ_DIR)/ld_script.ld: ld_script.ld
 	cp $< $@
 
 $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
-	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL)
+	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL) $(LIB)
 
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@

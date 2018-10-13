@@ -1,7 +1,6 @@
 #include "gba/m4a_internal.h"
 
 asm(".set memcpy,      0x08055970"); // TODO:
-asm(".set _call_via_r2, 0x0805569C"); // TODO:
 asm(".set gXcmdTable, 0x0852DB74"); // TODO:
 asm(".set gPokemonCrySongs, 0x02032AE0"); // TODO:
 
