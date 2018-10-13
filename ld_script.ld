@@ -29,6 +29,7 @@ SECTIONS
         src/m4a_2.o(.text);
         asm/m4a_3.o(.text);
         src/m4a_4.o(.text);
+        asm/libagbsyscall.o(.text);
         asm/rom.o(.text);
     }=0xFF
 }
