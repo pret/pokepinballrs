@@ -43,6 +43,7 @@ LIB := -L ../../tools/agbcc/lib -lgcc -lc
 SHA1    := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
 SCANINC := tools/scaninc/scaninc$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
+RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
 FIX     := tools/gbafix/gbafix$(EXE)
 
 # Clear the default suffixes
@@ -133,8 +134,17 @@ endif
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s $$(data_dep)
 	$(PREPROC) $< charmap.txt | $(CPP) -I include | $(AS) $(ASFLAGS) -o $@
 
-$(OBJ_DIR)/ld_script.ld: ld_script.ld
-	cp $< $@
+$(OBJ_DIR)/sym_bss.ld: sym_bss.txt
+	$(RAMSCRGEN) .bss $< ENGLISH > $@
+
+$(OBJ_DIR)/sym_common.ld: sym_common.txt $(C_OBJS) $(wildcard common_syms/*.txt)
+	$(RAMSCRGEN) COMMON $< ENGLISH -c $(C_BUILDDIR),common_syms > $@
+
+$(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
+	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
+
+$(OBJ_DIR)/ld_script.ld: ld_script.txt $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
+	cd $(OBJ_DIR) && sed -f ../../ld_script.sed ../../$< | sed "s#tools/#../../tools/#g" > ld_script.ld
 
 $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
 	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL) $(LIB)

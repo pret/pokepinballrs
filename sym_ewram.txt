@@ -1,0 +1,39 @@
+	.space 0x2958
+
+gUnknown_02002958: @ 0x2002958
+
+	.space 0x708
+
+gIntrTable: @ 0x2003060
+
+	.space 0x8060
+
+gUnknown_0200B0C0: @ 0x200B0C0
+
+	.space 0x26A70
+
+gSoundInfo: @ 0x2031B30
+
+	.space 0x1020
+
+gPokemonCryMusicPlayers: @ 0x2032B50
+
+	.space 0x80
+
+gMPlayJumpTable: @ 0x2032BD0
+
+	.space 0x90
+
+gCgbChans: @ 0x2032C60
+
+	.space 0x100
+
+gPokemonCryTracks: @ 0x2032D60
+
+	.space 0x140
+
+gPokemonCrySong: @ 0x2032EA0
+
+	.space 0x100
+
+gMPlayMemAccArea: @ 0x2032FA0
