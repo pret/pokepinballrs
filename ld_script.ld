@@ -27,6 +27,7 @@ SECTIONS
         asm/main.o(.text);
         asm/m4a_1.o(.text);
         src/m4a_2.o(.text);
+        asm/m4a_3.o(.text);
         asm/rom.o(.text);
     }=0xFF
 }

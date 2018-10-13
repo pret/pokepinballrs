@@ -11,7 +11,6 @@ asm(".set gPokemonCrySongTemplate, 0x0852DB40"); // TODO:
 asm(".set gSongTable,  0x08534E04"); // TODO:
 asm(".set ply_memacc,  0x08054FE0 + 1"); // TODO:
 asm(".set ply_xcmd,    0x08055138 + 1"); // TODO:
-asm(".set CgbSound,    0x08054920 + 1"); // TODO:
 asm(".set gMaxLines,   0x3C"); // TODO:
 asm(".set _call_via_r1, 0x08055698"); // TODO:
 asm(".set DummyFunc, 0x080552E8 + 1"); // TODO:
