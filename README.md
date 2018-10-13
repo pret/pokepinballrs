@@ -30,7 +30,7 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 [pokepinball]: https://github.com/pret/pokepinball
 [poketcg]: https://github.com/pret/poketcg
 [pokeruby]: https://github.com/pret/pokeruby
-[pokeruby]: https://github.com/pret/pokeemerald
+[pokeemerald]: https://github.com/pret/pokeemerald
 [pokefirered]: https://github.com/pret/pokefirered
 [Discord]: https://discord.gg/vdTW48Q
 [irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
