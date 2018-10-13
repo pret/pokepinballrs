@@ -46,9 +46,9 @@ SECTIONS
         asm/unknown_lib_2.o(.text);
     }=0
 
-    rom :
+    .rodata :
     {
-        asm/rom.o(rom)
+        data/rom.o(.rodata)
     }=0xFF
 
     /* Discard everything not specifically mentioned above. */

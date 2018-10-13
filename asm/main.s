@@ -17867,7 +17867,7 @@ sub_929C: @ 0x0800929C
     str r0, [r1, #4]
     str r2, [r1, #8]
     ldr r0, [r1, #8]
-    ldr r0, _08009330 @ =0x0807A8E0
+    ldr r0, _08009330 @ =gIntroCopyright_Pal
     str r0, [r1]
     movs r0, #0xa0
     lsls r0, r0, #0x13
@@ -17901,7 +17901,7 @@ _08009320: .4byte 0x080798C0
 _08009324: .4byte 0x80000400
 _08009328: .4byte 0x0807A0C0
 _0800932C: .4byte 0x06004000
-_08009330: .4byte 0x0807A8E0
+_08009330: .4byte gIntroCopyright_Pal
 _08009334: .4byte 0x80000100
 _08009338: .4byte 0x0200B0C0
 _0800933C: .4byte 0x0202BF10

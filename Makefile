@@ -41,6 +41,7 @@ LDFLAGS = -Map ../../$(MAP)
 LIB := -L ../../tools/agbcc/lib -lgcc -lc
 
 SHA1    := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
+GFX := tools/gbagfx/gbagfx$(EXE)
 SCANINC := tools/scaninc/scaninc$(EXE)
 PREPROC := tools/preproc/preproc$(EXE)
 RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
