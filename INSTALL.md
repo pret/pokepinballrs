@@ -53,7 +53,7 @@ export DEVKITARM=$DEVKITPRO/devkitARM
 echo "export DEVKITARM=$DEVKITARM" >> ~/.bashrc
 echo "if [ -f ~/.bashrc ]; then . ~/.bashrc; fi" >> ~/.bash_profile
 
-git clone https://github.com/huderlem/pokepinballrs
+git clone https://github.com/pret/pokepinballrs
 git clone https://github.com/pret/agbcc
 
 cd agbcc/
