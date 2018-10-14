@@ -13523,7 +13523,7 @@ _08006FF4: .4byte 0x06013400
 _08006FF8: .4byte 0x040000D4
 _08006FFC: .4byte 0x08089960
 _08007000:
-	ldr r0, _08007030 @ =0x086BB738
+	ldr r0, _08007030 @ =gMonPortraitGroupGfx
 	lsls r2, r6, #0x10
 	asrs r2, r2, #0xe
 	adds r2, r2, r0
@@ -13539,19 +13539,19 @@ _08007000:
 	movs r3, #1
 	bl sub_10708
 	ldr r1, _08007038 @ =0x040000D4
-	ldr r0, _0800703C @ =0x086BB6A4
+	ldr r0, _0800703C @ =gMonPortraitGroupPals
 	ldr r0, [r0]
 	movs r2, #0xf0
 	lsls r2, r2, #1
 	adds r0, r0, r2
 	b _080070B4
 	.align 2, 0
-_08007030: .4byte 0x086BB738
+_08007030: .4byte gMonPortraitGroupGfx
 _08007034: .4byte 0x06013400
 _08007038: .4byte 0x040000D4
-_0800703C: .4byte 0x086BB6A4
+_0800703C: .4byte gMonPortraitGroupPals
 _08007040:
-	ldr r0, _08007078 @ =0x086BB738
+	ldr r0, _08007078 @ =gMonPortraitGroupGfx
 	lsls r5, r6, #0x10
 	asrs r5, r5, #0xe
 	adds r0, r5, r0
@@ -13566,7 +13566,7 @@ _08007040:
 	movs r2, #0x18
 	movs r3, #1
 	bl sub_10708
-	ldr r0, _08007080 @ =0x086BB6A4
+	ldr r0, _08007080 @ =gMonPortraitGroupPals
 	adds r5, r5, r0
 	lsls r4, r4, #5
 	ldr r0, [r5]
@@ -13577,12 +13577,12 @@ _08007040:
 	bl sub_10170
 	b _080070C0
 	.align 2, 0
-_08007078: .4byte 0x086BB738
+_08007078: .4byte gMonPortraitGroupGfx
 _0800707C: .4byte 0x06013400
-_08007080: .4byte 0x086BB6A4
+_08007080: .4byte gMonPortraitGroupPals
 _08007084: .4byte 0x05000220
 _08007088:
-	ldr r0, _080070C8 @ =0x086BB738
+	ldr r0, _080070C8 @ =gMonPortraitGroupGfx
 	lsls r5, r6, #0x10
 	asrs r5, r5, #0xe
 	adds r0, r5, r0
@@ -13598,7 +13598,7 @@ _08007088:
 	movs r3, #1
 	bl sub_10708
 	ldr r1, _080070D0 @ =0x040000D4
-	ldr r0, _080070D4 @ =0x086BB6A4
+	ldr r0, _080070D4 @ =gMonPortraitGroupPals
 	adds r5, r5, r0
 	lsls r4, r4, #5
 	ldr r0, [r5]
@@ -13615,10 +13615,10 @@ _080070C0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080070C8: .4byte 0x086BB738
+_080070C8: .4byte gMonPortraitGroupGfx
 _080070CC: .4byte 0x06013400
 _080070D0: .4byte 0x040000D4
-_080070D4: .4byte 0x086BB6A4
+_080070D4: .4byte gMonPortraitGroupPals
 _080070D8: .4byte 0x05000220
 _080070DC: .4byte 0x80000010
 
@@ -16760,7 +16760,7 @@ _080089FC:
 	movs r1, #6
 	bl __modsi3
 	adds r4, r0, #0
-	ldr r0, _08008A60 @ =0x086BB6DC
+	ldr r0, _08008A60 @ =gMonHatchSpriteGroupGfx
 	lsls r5, r5, #0x10
 	asrs r5, r5, #0xe
 	adds r0, r5, r0
@@ -16778,7 +16778,7 @@ _080089FC:
 	movs r3, #1
 	bl sub_10708
 	ldr r1, _08008A68 @ =0x040000D4
-	ldr r0, _08008A6C @ =0x086B159C
+	ldr r0, _08008A6C @ =gMonHatchSpriteGroupPals
 	adds r5, r5, r0
 	lsls r4, r4, #5
 	ldr r0, [r5]
@@ -16796,10 +16796,10 @@ _08008A56:
 	bx r0
 	.align 2, 0
 _08008A5C: .4byte 0x0202BF14
-_08008A60: .4byte 0x086BB6DC
+_08008A60: .4byte gMonHatchSpriteGroupGfx
 _08008A64: .4byte 0x06014800
 _08008A68: .4byte 0x040000D4
-_08008A6C: .4byte 0x086B159C
+_08008A6C: .4byte gMonHatchSpriteGroupPals
 _08008A70: .4byte 0x05000260
 _08008A74: .4byte 0x80000010
 
@@ -56578,7 +56578,7 @@ _0801CA4C:
 	ldrh r1, [r1]
 	strb r1, [r0]
 	ldr r5, _0801CB04 @ =0x040000D4
-	ldr r4, _0801CB08 @ =0x086BB738
+	ldr r4, _0801CB08 @ =gMonPortraitGroupGfx
 	mov sl, r4
 	ldr r6, [r7]
 	adds r6, r6, r2
@@ -56612,7 +56612,7 @@ _0801CA4C:
 	ldr r0, _0801CB10 @ =0x80000180
 	str r0, [r5, #8]
 	ldr r0, [r5, #8]
-	ldr r3, _0801CB14 @ =0x086BB6A4
+	ldr r3, _0801CB14 @ =gMonPortraitGroupPals
 	mov r8, r3
 	ldrb r6, [r6]
 	adds r0, r6, #0
@@ -56651,10 +56651,10 @@ _0801CA4C:
 _0801CAFC: .4byte 0x020314E0
 _0801CB00: .4byte 0x00000749
 _0801CB04: .4byte 0x040000D4
-_0801CB08: .4byte 0x086BB738
+_0801CB08: .4byte gMonPortraitGroupGfx
 _0801CB0C: .4byte 0x06010CA0
 _0801CB10: .4byte 0x80000180
-_0801CB14: .4byte 0x086BB6A4
+_0801CB14: .4byte gMonPortraitGroupPals
 _0801CB18: .4byte 0x050003A0
 _0801CB1C: .4byte 0x80000010
 _0801CB20: .4byte 0x050003E0
@@ -56687,7 +56687,7 @@ _0801CB24:
 	movs r1, #0xcd
 	strb r1, [r0]
 	ldr r5, _0801CB78 @ =0x040000D4
-	ldr r1, _0801CB7C @ =0x086BB6A4
+	ldr r1, _0801CB7C @ =gMonPortraitGroupPals
 	mov r8, r1
 	mov r4, sl
 	ldr r0, [r4]
@@ -56698,7 +56698,7 @@ _0801CB6C: .4byte 0x0200B134
 _0801CB70: .4byte 0x0000059A
 _0801CB74: .4byte 0x00000749
 _0801CB78: .4byte 0x040000D4
-_0801CB7C: .4byte 0x086BB6A4
+_0801CB7C: .4byte gMonPortraitGroupPals
 _0801CB80:
 	cmp r0, #3
 	bhi _0801CBC0
@@ -56710,7 +56710,7 @@ _0801CB80:
 	adds r0, r0, r1
 	strb r3, [r0]
 	ldr r1, _0801CBB0 @ =0x040000D4
-	ldr r0, _0801CBB4 @ =0x086BB6A4
+	ldr r0, _0801CBB4 @ =gMonPortraitGroupPals
 	ldr r0, [r0]
 	movs r3, #0xf0
 	lsls r3, r3, #1
@@ -56725,7 +56725,7 @@ _0801CB80:
 	.align 2, 0
 _0801CBAC: .4byte 0x00000749
 _0801CBB0: .4byte 0x040000D4
-_0801CBB4: .4byte 0x086BB6A4
+_0801CBB4: .4byte gMonPortraitGroupPals
 _0801CBB8: .4byte 0x050003A0
 _0801CBBC: .4byte 0x80000010
 _0801CBC0:
@@ -56737,7 +56737,7 @@ _0801CBC0:
 	adds r0, r0, r1
 	strb r3, [r0]
 	ldr r5, _0801CBE4 @ =0x040000D4
-	ldr r0, _0801CBE8 @ =0x086BB6A4
+	ldr r0, _0801CBE8 @ =gMonPortraitGroupPals
 	mov r8, r0
 	mov r3, sl
 	ldr r0, [r3]
@@ -56747,7 +56747,7 @@ _0801CBC0:
 	.align 2, 0
 _0801CBE0: .4byte 0x00000749
 _0801CBE4: .4byte 0x040000D4
-_0801CBE8: .4byte 0x086BB6A4
+_0801CBE8: .4byte gMonPortraitGroupPals
 _0801CBEC:
 	ldr r5, [sp, #0x2c]
 	lsls r2, r5, #0x10
@@ -56761,7 +56761,7 @@ _0801CBEC:
 	ldrh r1, [r1]
 	strb r1, [r0]
 	ldr r5, _0801CC9C @ =0x040000D4
-	ldr r0, _0801CCA0 @ =0x086BB6A4
+	ldr r0, _0801CCA0 @ =gMonPortraitGroupPals
 	mov r8, r0
 	mov r1, sl
 	ldr r0, [r1]
@@ -56793,7 +56793,7 @@ _0801CC10:
 _0801CC3E:
 	ldr r2, _0801CC9C @ =0x040000D4
 	mov r8, r2
-	ldr r3, _0801CCAC @ =0x086BB738
+	ldr r3, _0801CCAC @ =gMonPortraitGroupGfx
 	mov sb, r3
 	mov r4, sl
 	ldr r0, [r4]
@@ -56836,10 +56836,10 @@ _0801CC3E:
 	.align 2, 0
 _0801CC98: .4byte 0x00000749
 _0801CC9C: .4byte 0x040000D4
-_0801CCA0: .4byte 0x086BB6A4
+_0801CCA0: .4byte gMonPortraitGroupPals
 _0801CCA4: .4byte 0x050003A0
 _0801CCA8: .4byte 0x80000010
-_0801CCAC: .4byte 0x086BB738
+_0801CCAC: .4byte gMonPortraitGroupGfx
 _0801CCB0: .4byte 0x06010CA0
 _0801CCB4: .4byte 0x80000180
 _0801CCB8:
@@ -80436,7 +80436,7 @@ sub_28BFC: @ 0x08028BFC
 	adds r0, r0, r1
 	lsls r0, r0, #3
 	adds r0, r0, r2
-	ldr r5, _08028C74 @ =0x086BB6DC
+	ldr r5, _08028C74 @ =gMonHatchSpriteGroupGfx
 	ldrb r6, [r0, #0x12]
 	adds r0, r6, #0
 	movs r1, #6
@@ -80457,7 +80457,7 @@ sub_28BFC: @ 0x08028BFC
 	lsls r1, r1, #5
 	ldr r2, [r5]
 	adds r2, r2, r1
-	ldr r1, _08028C78 @ =0x086B159C
+	ldr r1, _08028C78 @ =gMonHatchSpriteGroupPals
 	adds r4, r4, r1
 	lsls r0, r0, #5
 	ldr r3, [r4]
@@ -80481,8 +80481,8 @@ sub_28BFC: @ 0x08028BFC
 	.align 2, 0
 _08028C6C: .4byte 0x086A3700
 _08028C70: .4byte 0x020314E0
-_08028C74: .4byte 0x086BB6DC
-_08028C78: .4byte 0x086B159C
+_08028C74: .4byte gMonHatchSpriteGroupGfx
+_08028C78: .4byte gMonHatchSpriteGroupPals
 _08028C7C: .4byte 0x040000D4
 _08028C80: .4byte 0x0202C7A0
 _08028C84: .4byte 0x80000870
@@ -150014,7 +150014,7 @@ _0804C460:
 	movs r1, #0xcd
 	strb r1, [r0]
 	ldr r6, _0804C4A4 @ =0x040000D4
-	ldr r5, _0804C4A8 @ =0x086BB6A4
+	ldr r5, _0804C4A8 @ =gMonPortraitGroupPals
 	mov r8, r5
 	b _0804C528
 	.align 2, 0
@@ -150022,7 +150022,7 @@ _0804C498: .4byte 0x0200B134
 _0804C49C: .4byte 0x0000059A
 _0804C4A0: .4byte 0x00000749
 _0804C4A4: .4byte 0x040000D4
-_0804C4A8: .4byte 0x086BB6A4
+_0804C4A8: .4byte gMonPortraitGroupPals
 _0804C4AC:
 	cmp r0, #3
 	bhi _0804C4E8
@@ -150032,7 +150032,7 @@ _0804C4AC:
 	adds r0, r0, r1
 	strb r3, [r0]
 	ldr r1, _0804C4D8 @ =0x040000D4
-	ldr r0, _0804C4DC @ =0x086BB6A4
+	ldr r0, _0804C4DC @ =gMonPortraitGroupPals
 	ldr r0, [r0]
 	movs r3, #0xf0
 	lsls r3, r3, #1
@@ -150047,7 +150047,7 @@ _0804C4AC:
 	.align 2, 0
 _0804C4D4: .4byte 0x00000749
 _0804C4D8: .4byte 0x040000D4
-_0804C4DC: .4byte 0x086BB6A4
+_0804C4DC: .4byte gMonPortraitGroupPals
 _0804C4E0: .4byte 0x050003A0
 _0804C4E4: .4byte 0x80000010
 _0804C4E8:
@@ -150057,7 +150057,7 @@ _0804C4E8:
 	adds r0, r0, r2
 	strb r3, [r0]
 	ldr r6, _0804C508 @ =0x040000D4
-	ldr r5, _0804C50C @ =0x086BB6A4
+	ldr r5, _0804C50C @ =gMonPortraitGroupPals
 	mov r8, r5
 	mov r3, sb
 	ldr r0, [r3]
@@ -150067,7 +150067,7 @@ _0804C4E8:
 	.align 2, 0
 _0804C504: .4byte 0x00000749
 _0804C508: .4byte 0x040000D4
-_0804C50C: .4byte 0x086BB6A4
+_0804C50C: .4byte gMonPortraitGroupPals
 _0804C510:
 	asrs r3, r7, #0x10
 	ldr r2, _0804C5B4 @ =0x00000749
@@ -150079,7 +150079,7 @@ _0804C510:
 	ldrh r0, [r0]
 	strb r0, [r1]
 	ldr r6, _0804C5B8 @ =0x040000D4
-	ldr r0, _0804C5BC @ =0x086BB6A4
+	ldr r0, _0804C5BC @ =gMonPortraitGroupPals
 	mov r8, r0
 _0804C528:
 	mov r1, sb
@@ -150110,7 +150110,7 @@ _0804C530:
 	ldr r0, [r6, #8]
 _0804C55E:
 	ldr r2, _0804C5B8 @ =0x040000D4
-	ldr r3, _0804C5C8 @ =0x086BB738
+	ldr r3, _0804C5C8 @ =gMonPortraitGroupGfx
 	mov r8, r3
 	mov r5, sb
 	ldr r0, [r5]
@@ -150152,10 +150152,10 @@ _0804C55E:
 	.align 2, 0
 _0804C5B4: .4byte 0x00000749
 _0804C5B8: .4byte 0x040000D4
-_0804C5BC: .4byte 0x086BB6A4
+_0804C5BC: .4byte gMonPortraitGroupPals
 _0804C5C0: .4byte 0x050003A0
 _0804C5C4: .4byte 0x80000010
-_0804C5C8: .4byte 0x086BB738
+_0804C5C8: .4byte gMonPortraitGroupGfx
 _0804C5CC: .4byte 0x06010CA0
 _0804C5D0: .4byte 0x80000180
 _0804C5D4:
@@ -150796,7 +150796,7 @@ sub_4CB30: @ 0x0804CB30
 	ldr r0, _0804CB9C @ =0x80001000
 	str r0, [r5, #8]
 	ldr r0, [r5, #8]
-	ldr r0, _0804CBA0 @ =0x086BB738
+	ldr r0, _0804CBA0 @ =gMonPortraitGroupGfx
 	mov r8, r0
 	ldr r0, _0804CBA4 @ =0x020314E0
 	ldr r0, [r0]
@@ -150836,7 +150836,7 @@ _0804CB90: .4byte 0x040000D4
 _0804CB94: .4byte 0x0813C874
 _0804CB98: .4byte 0x06015800
 _0804CB9C: .4byte 0x80001000
-_0804CBA0: .4byte 0x086BB738
+_0804CBA0: .4byte gMonPortraitGroupGfx
 _0804CBA4: .4byte 0x020314E0
 _0804CBA8: .4byte 0x00000749
 _0804CBAC: .4byte 0x06010CA0
@@ -150873,7 +150873,7 @@ _0804CBE0:
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
 	ldr r6, _0804CC38 @ =0x040000D4
-	ldr r0, _0804CC48 @ =0x086BB738
+	ldr r0, _0804CC48 @ =gMonPortraitGroupGfx
 	mov r8, r0
 	ldr r0, [r2]
 	ldr r1, _0804CC4C @ =0x00000749
@@ -150912,7 +150912,7 @@ _0804CC38: .4byte 0x040000D4
 _0804CC3C: .4byte 0x0813E894
 _0804CC40: .4byte 0x06015800
 _0804CC44: .4byte 0x80001000
-_0804CC48: .4byte 0x086BB738
+_0804CC48: .4byte gMonPortraitGroupGfx
 _0804CC4C: .4byte 0x00000749
 _0804CC50: .4byte 0x06010CA0
 _0804CC54: .4byte 0x80000180
@@ -150988,7 +150988,7 @@ _0804CCC0:
 	ldr r0, [r1, #8]
 _0804CCE8:
 	ldr r6, _0804CD34 @ =0x040000D4
-	ldr r0, _0804CD50 @ =0x086BB738
+	ldr r0, _0804CD50 @ =gMonPortraitGroupGfx
 	mov r8, r0
 	ldr r0, [r2]
 	ldr r1, _0804CD54 @ =0x00000749
@@ -151030,7 +151030,7 @@ _0804CD40: .4byte 0x80001000
 _0804CD44: .4byte 0x084AA18C
 _0804CD48: .4byte 0x06011620
 _0804CD4C: .4byte 0x80000430
-_0804CD50: .4byte 0x086BB738
+_0804CD50: .4byte gMonPortraitGroupGfx
 _0804CD54: .4byte 0x00000749
 _0804CD58: .4byte 0x06010CA0
 _0804CD5C: .4byte 0x80000180
