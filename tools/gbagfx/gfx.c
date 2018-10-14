@@ -35,6 +35,32 @@ static void AdvanceMetatilePosition(int *subTileX, int *subTileY, int *metatileX
 	}
 }
 
+static void AdvancePinballHatchSpriteMetatilePosition(int *subTileX, int *subTileY, int *metatileX, int *metatileY, int metatilesWide)
+{
+	int subTileCoords[9][2] = {
+		{1, 0},
+		{0, 1},
+		{2, 1},
+		{1, 1},
+		{2, 0},
+		{0, 2},
+		{1, 2},
+		{2, 2},
+		{0, 0},
+	};
+
+	int tileIndex = *subTileX + (*subTileY) * 3;
+	*subTileX = subTileCoords[tileIndex][0];
+	*subTileY = subTileCoords[tileIndex][1];
+	if (tileIndex == 8) {
+		(*metatileX)++;
+		if (*metatileX == metatilesWide) {
+			*metatileX = 0;
+			(*metatileY)++;
+		}
+	}
+}
+
 static void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool invertColors)
 {
 	int subTileX = 0;
@@ -61,7 +87,7 @@ static void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int nu
 	}
 }
 
-static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool invertColors)
+static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors)
 {
 	int subTileX = 0;
 	int subTileY = 0;
@@ -88,7 +114,11 @@ static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int nu
 			}
 		}
 
-		AdvanceMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, metatileWidth, metatileHeight);
+		if (pinballHatchSprite) {
+			AdvancePinballHatchSpriteMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide);
+		} else {
+			AdvanceMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, metatileWidth, metatileHeight);
+		}
 	}
 }
 
@@ -145,7 +175,7 @@ static void ConvertToTiles1Bpp(unsigned char *src, unsigned char *dest, int numT
 	}
 }
 
-static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool invertColors)
+static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors)
 {
 	int subTileX = 0;
 	int subTileY = 0;
@@ -172,7 +202,11 @@ static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numT
 			}
 		}
 
-		AdvanceMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, metatileWidth, metatileHeight);
+		if (pinballHatchSprite) {
+			AdvancePinballHatchSpriteMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide);
+		} else {
+			AdvanceMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, metatileWidth, metatileHeight);
+		}
 	}
 }
 
@@ -203,7 +237,7 @@ static void ConvertToTiles8Bpp(unsigned char *src, unsigned char *dest, int numT
 	}
 }
 
-void ReadImage(char *path, int tilesWidth, int bitDepth, int metatileWidth, int metatileHeight, struct Image *image, bool invertColors)
+void ReadImage(char *path, int tilesWidth, int bitDepth, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors)
 {
 	int tileSize = bitDepth * 8;
 
@@ -235,7 +269,7 @@ void ReadImage(char *path, int tilesWidth, int bitDepth, int metatileWidth, int 
 		ConvertFromTiles1Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
 		break;
 	case 4:
-		ConvertFromTiles4Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
+		ConvertFromTiles4Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors);
 		break;
 	case 8:
 		ConvertFromTiles8Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
@@ -245,7 +279,7 @@ void ReadImage(char *path, int tilesWidth, int bitDepth, int metatileWidth, int 
 	free(buffer);
 }
 
-void WriteImage(char *path, int numTiles, int bitDepth, int metatileWidth, int metatileHeight, struct Image *image, bool invertColors)
+void WriteImage(char *path, int numTiles, int bitDepth, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors)
 {
 	int tileSize = bitDepth * 8;
 
@@ -284,7 +318,7 @@ void WriteImage(char *path, int numTiles, int bitDepth, int metatileWidth, int m
 		ConvertToTiles1Bpp(image->pixels, buffer, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
 		break;
 	case 4:
-		ConvertToTiles4Bpp(image->pixels, buffer, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
+		ConvertToTiles4Bpp(image->pixels, buffer, numTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors);
 		break;
 	case 8:
 		ConvertToTiles8Bpp(image->pixels, buffer, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);

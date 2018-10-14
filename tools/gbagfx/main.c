@@ -34,7 +34,7 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
         image.hasPalette = false;
     }
 
-    ReadImage(inputPath, options->width, options->bitDepth, options->metatileWidth, options->metatileHeight, &image, !image.hasPalette);
+    ReadImage(inputPath, options->width, options->bitDepth, options->metatileWidth, options->metatileHeight, options->pinballHatchSprite, &image, !image.hasPalette);
 
     image.hasTransparency = options->hasTransparency;
 
@@ -51,7 +51,7 @@ void ConvertPngToGba(char *inputPath, char *outputPath, struct PngToGbaOptions *
 
     ReadPng(inputPath, &image);
 
-    WriteImage(outputPath, options->numTiles, options->bitDepth, options->metatileWidth, options->metatileHeight, &image, !image.hasPalette);
+    WriteImage(outputPath, options->numTiles, options->bitDepth, options->metatileWidth, options->metatileHeight, options->pinballHatchSprite, &image, !image.hasPalette);
 
     FreeImage(&image);
 }
@@ -66,6 +66,7 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     options.width = 1;
     options.metatileWidth = 1;
     options.metatileHeight = 1;
+    options.pinballHatchSprite = 0;
 
     for (int i = 3; i < argc; i++)
     {
@@ -123,14 +124,35 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.metatileHeight < 1)
                 FATAL_ERROR("metatile height must be positive.\n");
         }
+        else if (strcmp(option, "-pinball-hatch-sprite") == 0) {
+            options.pinballHatchSprite = 1;
+        }
         else
         {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
     }
 
+    if (options.pinballHatchSprite) {
+        if (options.metatileWidth != 1 || options.metatileHeight != 1) {
+            FATAL_ERROR("Cannot specify metatile dimensions for pinball hatch sprites.\n");
+        }
+
+        if (options.width == 1) {
+            options.width = 3;
+        }
+
+        if (options.width % 3 != 0) {
+            FATAL_ERROR("Pinball hatch sprite width must be a multiple of 3.");
+        }
+
+        options.metatileWidth = 3;
+        options.metatileHeight = 3;
+    }
+
     if (options.metatileWidth > options.width)
         options.width = options.metatileWidth;
+
 
     ConvertGbaToPng(inputPath, outputPath, &options);
 }
@@ -144,11 +166,11 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
     options.bitDepth = bitDepth;
     options.metatileWidth = 1;
     options.metatileHeight = 1;
+    options.pinballHatchSprite = 0;
 
     for (int i = 3; i < argc; i++)
     {
         char *option = argv[i];
-
         if (strcmp(option, "-num_tiles") == 0)
         {
             if (i + 1 >= argc)
@@ -188,10 +210,22 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.metatileHeight < 1)
                 FATAL_ERROR("metatile height must be positive.\n");
         }
+        else if (strcmp(option, "-pinball-hatch-sprite") == 0) {
+            options.pinballHatchSprite = 1;
+        }
         else
         {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
+    }
+
+    if (options.pinballHatchSprite) {
+        if (options.metatileWidth != 1 || options.metatileHeight != 1) {
+            FATAL_ERROR("Cannot specify metatile dimensions for pinball hatch sprites.\n");
+        }
+
+        options.metatileWidth = 3;
+        options.metatileHeight = 3;
     }
 
     ConvertPngToGba(inputPath, outputPath, &options);

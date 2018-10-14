@@ -12,6 +12,7 @@ struct GbaToPngOptions {
     int width;
     int metatileWidth;
     int metatileHeight;
+    bool pinballHatchSprite;
 };
 
 struct PngToGbaOptions {
@@ -19,6 +20,7 @@ struct PngToGbaOptions {
     int bitDepth;
     int metatileWidth;
     int metatileHeight;
+    bool pinballHatchSprite;
 };
 
 #endif // OPTIONS_H
