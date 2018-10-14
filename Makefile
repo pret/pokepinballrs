@@ -86,6 +86,8 @@ tidy:
 	rm -f $(ROM) $(ELF) $(MAP)
 	rm -r build/*
 
+include graphics_rules.mk
+
 %.s: ;
 %.png: ;
 %.pal: ;
