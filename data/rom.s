@@ -15,7 +15,11 @@ gIntroCopyright_Pal:: @ 0x0807A8E0
 
 .include "data/graphics/field_select.inc"
 
-.incbin "baserom.gba", 0xACC60, 0x1444F4 - 0xACC60
+.incbin "baserom.gba", 0xACC60, 0x120CC0 - 0xACC60
+
+.include "data/graphics/titlescreen.inc"
+
+.incbin "baserom.gba", 0x137900, 0x1444F4 - 0x137900
 
 .include "data/graphics/mon_hatch_sprites_pals.inc"
 

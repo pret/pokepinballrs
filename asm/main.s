@@ -32529,14 +32529,14 @@ sub_10944: @ 0x08010944
 	ldrh r0, [r2]
 	strh r0, [r4, #0x16]
 	ldr r5, _080109C4 @ =0x040000D4
-	ldr r0, _080109C8 @ =0x081216C0
+	ldr r0, _080109C8 @ =gTitlescreenBg_Gfx
 	str r0, [r5]
 	ldr r0, _080109CC @ =0x06004000
 	str r0, [r5, #4]
 	ldr r0, _080109D0 @ =0x80005000
 	str r0, [r5, #8]
 	ldr r0, [r5, #8]
-	ldr r0, _080109D4 @ =0x081214C0
+	ldr r0, _080109D4 @ =gTitlescreenBg_Pals
 	str r0, [r5]
 	movs r0, #0xa0
 	lsls r0, r0, #0x13
@@ -32544,7 +32544,7 @@ sub_10944: @ 0x08010944
 	ldr r0, _080109D8 @ =0x80000100
 	str r0, [r5, #8]
 	ldr r0, [r5, #8]
-	ldr r0, _080109DC @ =0x08120CC0
+	ldr r0, _080109DC @ =gTitlescreenBgTilemap
 	str r0, [r5]
 	movs r0, #0xc0
 	lsls r0, r0, #0x13
@@ -32556,39 +32556,39 @@ sub_10944: @ 0x08010944
 	ldr r0, [r4, #0x40]
 	cmp r0, #1
 	bne _080109F4
-	ldr r0, _080109E4 @ =0x08137700
+	ldr r0, _080109E4 @ =gTitlescreenSprites_Pals
 	str r0, [r5]
 	ldr r0, _080109E8 @ =0x05000200
 	str r0, [r5, #4]
 	ldr r0, _080109EC @ =0x80000050
 	str r0, [r5, #8]
 	ldr r0, [r5, #8]
-	ldr r0, _080109F0 @ =0x081306E0
+	ldr r0, _080109F0 @ =gTitlescreenSpritesSavedGame_Gfx
 	b _08010A04
 	.align 2, 0
 _080109BC: .4byte 0x0400000A
 _080109C0: .4byte 0x0200B0C0
 _080109C4: .4byte 0x040000D4
-_080109C8: .4byte 0x081216C0
+_080109C8: .4byte gTitlescreenBg_Gfx
 _080109CC: .4byte 0x06004000
 _080109D0: .4byte 0x80005000
-_080109D4: .4byte 0x081214C0
+_080109D4: .4byte gTitlescreenBg_Pals
 _080109D8: .4byte 0x80000100
-_080109DC: .4byte 0x08120CC0
+_080109DC: .4byte gTitlescreenBgTilemap
 _080109E0: .4byte 0x80000400
-_080109E4: .4byte 0x08137700
+_080109E4: .4byte gTitlescreenSprites_Pals
 _080109E8: .4byte 0x05000200
 _080109EC: .4byte 0x80000050
-_080109F0: .4byte 0x081306E0
+_080109F0: .4byte gTitlescreenSpritesSavedGame_Gfx
 _080109F4:
-	ldr r0, _08010A5C @ =0x08137700
+	ldr r0, _08010A5C @ =gTitlescreenSprites_Pals
 	str r0, [r5]
 	ldr r0, _08010A60 @ =0x05000200
 	str r0, [r5, #4]
 	ldr r0, _08010A64 @ =0x80000050
 	str r0, [r5, #8]
 	ldr r0, [r5, #8]
-	ldr r0, _08010A68 @ =0x081296C0
+	ldr r0, _08010A68 @ =gTitlescreenSpritesNoSavedGame_Gfx
 _08010A04:
 	str r0, [r5]
 	ldr r0, _08010A6C @ =0x06010000
@@ -32631,10 +32631,10 @@ _08010A04:
 	bl sub_FD5C
 	b _08010AAC
 	.align 2, 0
-_08010A5C: .4byte 0x08137700
+_08010A5C: .4byte gTitlescreenSprites_Pals
 _08010A60: .4byte 0x05000200
 _08010A64: .4byte 0x80000050
-_08010A68: .4byte 0x081296C0
+_08010A68: .4byte gTitlescreenSpritesNoSavedGame_Gfx
 _08010A6C: .4byte 0x06010000
 _08010A70: .4byte 0x80003800
 _08010A74: .4byte 0x0852B668
