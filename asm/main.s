@@ -18171,7 +18171,7 @@ sub_9498: @ 0x08009498
 	ldr r0, _08009674 @ =0x80003400
 	str r0, [r4, #8]
 	ldr r0, [r4, #8]
-	ldr r6, _08009678 @ =0x080B3AA0
+	ldr r6, _08009678 @ =gIntroScene1Sprites_Pals
 	movs r0, #0xa0
 	lsls r0, r0, #0x13
 	mov sl, r0
@@ -18181,7 +18181,7 @@ sub_9498: @ 0x08009498
 	mov r1, sl
 	movs r3, #0x20
 	bl sub_10170
-	ldr r0, _0800967C @ =0x080C3CE0
+	ldr r0, _0800967C @ =gIntroScene1Sprites_Gfx
 	str r0, [r4]
 	ldr r0, _08009680 @ =0x06010000
 	str r0, [r4, #4]
@@ -18284,8 +18284,8 @@ _08009668: .4byte 0x80002C00
 _0800966C: .4byte 0x080BD4C0
 _08009670: .4byte 0x0201C1C0
 _08009674: .4byte 0x80003400
-_08009678: .4byte 0x080B3AA0
-_0800967C: .4byte 0x080C3CE0
+_08009678: .4byte gIntroScene1Sprites_Pals
+_0800967C: .4byte gIntroScene1Sprites_Gfx
 _08009680: .4byte 0x06010000
 _08009684: .4byte 0x80004000
 _08009688: .4byte 0x05000200
@@ -18674,7 +18674,7 @@ sub_999C: @ 0x0800999C
 	movs r0, #0
 	str r0, [r5]
 _080099B2:
-	ldr r4, _08009A88 @ =0x080B3AA0
+	ldr r4, _08009A88 @ =gIntroScene1Sprites_Pals
 	movs r1, #0xa0
 	lsls r1, r1, #0x13
 	movs r2, #0x80
@@ -18779,7 +18779,7 @@ _08009A78:
 	bx r0
 	.align 2, 0
 _08009A84: .4byte 0x0202BEF0
-_08009A88: .4byte 0x080B3AA0
+_08009A88: .4byte gIntroScene1Sprites_Pals
 _08009A8C: .4byte 0x05000200
 _08009A90: .4byte 0x0202BF10
 _08009A94: .4byte 0x0201A450

@@ -15,7 +15,17 @@ gIntroCopyright_Pal:: @ 0x0807A8E0
 
 .include "data/graphics/field_select.inc"
 
-.incbin "baserom.gba", 0xACC60, 0x120CC0 - 0xACC60
+.incbin "baserom.gba", 0xACC60, 0xB3AA0 - 0xACC60
+
+gIntroScene1Sprites_Pals:: @ 0x080B3AA0
+	.incbin "graphics/intro/scene_1_sprites.gbapal"
+
+.incbin "baserom.gba", 0xB3CA0, 0xC3CE0 - 0xB3CA0
+
+gIntroScene1Sprites_Gfx:: @ 0x080C3CE0
+	.incbin "graphics/intro/scene_1_sprites.4bpp"
+
+.incbin "baserom.gba", 0xCBCE0, 0x120CC0 - 0xCBCE0
 
 .include "data/graphics/titlescreen.inc"
 
