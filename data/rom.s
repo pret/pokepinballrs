@@ -45,7 +45,23 @@ gIntroScene1Sprites_Gfx:: @ 0x080C3CE0
 
 .include "data/graphics/mon_portraits.inc"
 
-.incbin "baserom.gba", 0x4ECF6C, 0x6B159C - 0x4ECF6C
+.incbin "baserom.gba", 0x4ECF6C, 0x6A4AD8 - 0x4ECF6C
+
+gMainFuncs:: @ 0x086A4AD8
+	.4byte IntroMain
+	.4byte TitlescreenMain
+	.4byte PinballGameMain
+	.4byte sub_19028_Main
+	.4byte OptionsMain
+	.4byte PokedexMain
+	.4byte sub_9BC_Main
+	.4byte EReaderMain
+	.4byte HighScoresMain
+	.4byte sub_CE68_Main
+	.4byte FieldSelectMain
+	.4byte sub_25A4_Main
+
+.incbin "baserom.gba", 0x6A4B08, 0x6B159C - 0x6A4B08
 
 gMonHatchSpriteGroupPals:: @ 0x086B159C
 	.4byte gMonHatchSpriteGroup0_Pals
