@@ -1,4 +1,5 @@
     .section .rodata
+@ field select palettes 0xA8840
 
 .incbin "baserom.gba", 0x55A68, 0x7A0C0 - 0x55A68
 
@@ -10,7 +11,11 @@ gIntroCopyright_Gfx:: @ 0x0807A0C0
 gIntroCopyright_Pal:: @ 0x0807A8E0
     .incbin "graphics/intro/copyright.gbapal"
 
-.incbin "baserom.gba", 0x7AAE0, 0x1444F4 - 0x7AAE0
+.incbin "baserom.gba", 0x7AAE0, 0xA2C00 - 0x7AAE0
+
+.include "data/graphics/field_select.inc"
+
+.incbin "baserom.gba", 0xACC60, 0x1444F4 - 0xACC60
 
 .include "data/graphics/mon_hatch_sprites_pals.inc"
 

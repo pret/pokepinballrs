@@ -4568,7 +4568,7 @@ sub_25C4: @ 0x080025C4
 	ldr r1, _080026C0 @ =0x80000100
 	str r1, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _080026C4 @ =0x080A2C00
+	ldr r1, _080026C4 @ =gFieldSelectWindow_Gfx
 	str r1, [r0]
 	ldr r1, _080026C8 @ =0x06004000
 	str r1, [r0, #4]
@@ -4602,14 +4602,14 @@ sub_25C4: @ 0x080025C4
 	str r1, [r0, #4]
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _080026F4 @ =0x080A8A40
+	ldr r1, _080026F4 @ =gFieldSelectSpritePals
 	str r1, [r0]
 	ldr r1, _080026F8 @ =0x05000200
 	str r1, [r0, #4]
 	ldr r1, _080026FC @ =0x80000030
 	str r1, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08002700 @ =0x080A8C40
+	ldr r1, _08002700 @ =gFieldSelectSpriteGfx
 	str r1, [r0]
 	ldr r1, _08002704 @ =0x06010000
 	str r1, [r0, #4]
@@ -4636,7 +4636,7 @@ _080026B4: .4byte 0x0200B0C0
 _080026B8: .4byte 0x040000D4
 _080026BC: .4byte 0x0807C2E0
 _080026C0: .4byte 0x80000100
-_080026C4: .4byte 0x080A2C00
+_080026C4: .4byte gFieldSelectWindow_Gfx
 _080026C8: .4byte 0x06004000
 _080026CC: .4byte 0x80002000
 _080026D0: .4byte 0x0807C4E0
@@ -4648,10 +4648,10 @@ _080026E4: .4byte 0x0807B2E0
 _080026E8: .4byte 0x06000800
 _080026EC: .4byte 0x0807BAE0
 _080026F0: .4byte 0x06001000
-_080026F4: .4byte 0x080A8A40
+_080026F4: .4byte gFieldSelectSpritePals
 _080026F8: .4byte 0x05000200
 _080026FC: .4byte 0x80000030
-_08002700: .4byte 0x080A8C40
+_08002700: .4byte gFieldSelectSpriteGfx
 _08002704: .4byte 0x06010000
 _08002708: .4byte 0x80002010
 _0800270C: .4byte sub_29C8 + 1
@@ -16912,7 +16912,7 @@ sub_8AF4: @ 0x08008AF4
 	ldrh r0, [r2]
 	strh r0, [r4, #0x16]
 	ldr r0, _08008BE4 @ =0x040000D4
-	ldr r1, _08008BE8 @ =0x080A8840
+	ldr r1, _08008BE8 @ =gFieldSelectBGPals
 	str r1, [r0]
 	movs r1, #0xa0
 	lsls r1, r1, #0x13
@@ -16920,14 +16920,14 @@ sub_8AF4: @ 0x08008AF4
 	ldr r3, _08008BEC @ =0x80000100
 	str r3, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08008BF0 @ =0x080A2C00
+	ldr r1, _08008BF0 @ =gFieldSelectWindow_Gfx
 	str r1, [r0]
 	ldr r1, _08008BF4 @ =0x06004000
 	str r1, [r0, #4]
 	ldr r1, _08008BF8 @ =0x80000A00
 	str r1, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08008BFC @ =0x080A4820
+	ldr r1, _08008BFC @ =gFieldSelectMiniFields_Gfx
 	str r1, [r0]
 	ldr r1, _08008C00 @ =0x06008000
 	str r1, [r0, #4]
@@ -16942,25 +16942,25 @@ sub_8AF4: @ 0x08008AF4
 	ldr r2, _08008C0C @ =0x80000400
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08008C10 @ =0x080A4020
+	ldr r1, _08008C10 @ =gFieldSelectFrameShadowTilemap
 	str r1, [r0]
 	ldr r1, _08008C14 @ =0x06000800
 	str r1, [r0, #4]
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08008C18 @ =0x080A8040
+	ldr r1, _08008C18 @ =gFieldSelectWindowTilemap
 	str r1, [r0]
 	ldr r1, _08008C1C @ =0x06001000
 	str r1, [r0, #4]
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08008C20 @ =0x080A8A40
+	ldr r1, _08008C20 @ =gFieldSelectSpritePals
 	str r1, [r0]
 	ldr r1, _08008C24 @ =0x05000200
 	str r1, [r0, #4]
 	str r3, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08008C28 @ =0x080A8C40
+	ldr r1, _08008C28 @ =gFieldSelectSpriteGfx
 	str r1, [r0]
 	ldr r1, _08008C2C @ =0x06010000
 	str r1, [r0, #4]
@@ -16985,23 +16985,23 @@ _08008BD8: .4byte 0x0400000A
 _08008BDC: .4byte 0x0400000C
 _08008BE0: .4byte 0x0200B0C0
 _08008BE4: .4byte 0x040000D4
-_08008BE8: .4byte 0x080A8840
+_08008BE8: .4byte gFieldSelectBGPals
 _08008BEC: .4byte 0x80000100
-_08008BF0: .4byte 0x080A2C00
+_08008BF0: .4byte gFieldSelectWindow_Gfx
 _08008BF4: .4byte 0x06004000
 _08008BF8: .4byte 0x80000A00
-_08008BFC: .4byte 0x080A4820
+_08008BFC: .4byte gFieldSelectMiniFields_Gfx
 _08008C00: .4byte 0x06008000
 _08008C04: .4byte 0x80001C00
 _08008C08: .4byte 0x080A2400
 _08008C0C: .4byte 0x80000400
-_08008C10: .4byte 0x080A4020
+_08008C10: .4byte gFieldSelectFrameShadowTilemap
 _08008C14: .4byte 0x06000800
-_08008C18: .4byte 0x080A8040
+_08008C18: .4byte gFieldSelectWindowTilemap
 _08008C1C: .4byte 0x06001000
-_08008C20: .4byte 0x080A8A40
+_08008C20: .4byte gFieldSelectSpritePals
 _08008C24: .4byte 0x05000200
-_08008C28: .4byte 0x080A8C40
+_08008C28: .4byte gFieldSelectSpriteGfx
 _08008C2C: .4byte 0x06010000
 _08008C30: .4byte 0x80002010
 _08008C34: .4byte sub_8F94 + 1
