@@ -190,7 +190,7 @@ _08052A14: .4byte 0x08533F60
 sub_52A18: @ 0x08052A18
 	push {r4, lr}
 	bl sub_555BC
-	ldr r4, _08052A4C @ =0x0200B0C0
+	ldr r4, _08052A4C @ =gMain
 	movs r0, #0
 	strb r0, [r4, #0xc]
 	bl sub_52A68
@@ -208,7 +208,7 @@ sub_52A18: @ 0x08052A18
 	bl sub_52C64
 	b _08052A5E
 	.align 2, 0
-_08052A4C: .4byte 0x0200B0C0
+_08052A4C: .4byte gMain
 _08052A50:
 	ldr r1, _08052A64 @ =0x00000143
 	adds r0, r4, r1

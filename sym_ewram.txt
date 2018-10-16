@@ -1,4 +1,8 @@
-	.space 0x2958
+	.space 0x2888
+
+gUnknown_2002888: @ 0x2002888
+
+	.space 0xD0
 
 gUnknown_02002958: @ 0x2002958
 
@@ -8,9 +12,19 @@ gIntrTable: @ 0x2003060
 
 	.space 0x8060
 
-gUnknown_0200B0C0: @ 0x200B0C0
+gMain: @ 0x200B0C0
 
-	.space 0x26A70
+	.space 0xF3F4
+
+gAutoDisplayTitlescreenMenu: @ 0x201A4B4
+	.space 4
+
+	.space 0x1196C
+
+gUnknown_202BE24: @ 0x202BE24
+	.space 4
+
+	.space 0x5D08
 
 gSoundInfo: @ 0x2031B30
 

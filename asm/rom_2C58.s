@@ -8,7 +8,7 @@
 EReaderMain: @ 0x08002C58
 	push {lr}
 	ldr r1, _08002C70 @ =0x0805C75C
-	ldr r0, _08002C74 @ =0x0200B0C0
+	ldr r0, _08002C74 @ =gMain
 	ldrb r0, [r0, #3]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -18,7 +18,7 @@ EReaderMain: @ 0x08002C58
 	bx r0
 	.align 2, 0
 _08002C70: .4byte 0x0805C75C
-_08002C74: .4byte 0x0200B0C0
+_08002C74: .4byte gMain
 
 	thumb_func_start sub_2C78
 sub_2C78: @ 0x08002C78
@@ -51,7 +51,7 @@ sub_2C78: @ 0x08002C78
 	adds r1, r3, #0
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r6, _08002D88 @ =0x0200B0C0
+	ldr r6, _08002D88 @ =gMain
 	movs r0, #0xba
 	lsls r0, r0, #2
 	adds r1, r6, r0
@@ -150,7 +150,7 @@ sub_2C78: @ 0x08002C78
 	.align 2, 0
 _08002D80: .4byte 0x04000008
 _08002D84: .4byte 0x0400000A
-_08002D88: .4byte 0x0200B0C0
+_08002D88: .4byte gMain
 _08002D8C: .4byte 0x0000FFE8
 _08002D90: .4byte 0x040000D4
 _08002D94: .4byte 0x08081D20
@@ -298,7 +298,7 @@ _08002EE6:
 	subs r0, r0, r1
 	strb r0, [r2]
 _08002EF0:
-	ldr r7, _08002F30 @ =0x0200B0C0
+	ldr r7, _08002F30 @ =gMain
 	ldrh r1, [r7, #0x18]
 	movs r0, #1
 	ands r0, r1
@@ -328,7 +328,7 @@ _08002EF0:
 	b _08002F90
 	.align 2, 0
 _08002F2C: .4byte 0x0202C5A4
-_08002F30: .4byte 0x0200B0C0
+_08002F30: .4byte gMain
 _08002F34: .4byte 0x0202C604
 _08002F38: .4byte 0x086A551A
 _08002F3C: .4byte 0x0202AD90
@@ -429,7 +429,7 @@ sub_2FC0: @ 0x08002FC0
 	strb r0, [r1]
 	movs r0, #0x76
 	bl m4aSongNumStart
-	ldr r1, _08003040 @ =0x0200B0C0
+	ldr r1, _08003040 @ =gMain
 	movs r0, #3
 	strb r0, [r1, #3]
 _08003012:
@@ -451,7 +451,7 @@ _08003030: .4byte 0x086A550C
 _08003034: .4byte 0x0201B174
 _08003038: .4byte 0x0201B124
 _0800303C: .4byte 0x0202C584
-_08003040: .4byte 0x0200B0C0
+_08003040: .4byte gMain
 _08003044: .4byte 0x0202A58C
 _08003048: .4byte 0x0202BEC0
 
@@ -459,7 +459,7 @@ _08003048: .4byte 0x0202BEC0
 sub_304C: @ 0x0800304C
 	push {r4, r5, lr}
 	bl sub_3AB4
-	ldr r5, _08003114 @ =0x0200B0C0
+	ldr r5, _08003114 @ =gMain
 	ldrh r1, [r5, #0x18]
 	movs r0, #2
 	ands r0, r1
@@ -552,7 +552,7 @@ _080030F4:
 	strb r0, [r3, #3]
 	b _0800316C
 	.align 2, 0
-_08003114: .4byte 0x0200B0C0
+_08003114: .4byte gMain
 _08003118: .4byte 0x0202ADD0
 _0800311C: .4byte 0x0202BEC8
 _08003120: .4byte 0x0202C5F0
@@ -580,7 +580,7 @@ _0800313C:
 	movs r0, #0xd
 	strb r0, [r1]
 	bl sub_377C
-	ldr r1, _080031FC @ =0x0200B0C0
+	ldr r1, _080031FC @ =gMain
 	movs r0, #4
 	strb r0, [r1, #3]
 	movs r0, #0x8a
@@ -636,7 +636,7 @@ _08003192:
 	movs r0, #0xd
 	strb r0, [r1]
 	bl sub_377C
-	ldr r1, _080031FC @ =0x0200B0C0
+	ldr r1, _080031FC @ =gMain
 	movs r0, #4
 	strb r0, [r1, #3]
 	movs r0, #0x8a
@@ -652,7 +652,7 @@ _080031EC: .4byte 0x0202BEC0
 _080031F0: .4byte 0x0202C604
 _080031F4: .4byte 0x0202C5A4
 _080031F8: .4byte 0x0202AD90
-_080031FC: .4byte 0x0200B0C0
+_080031FC: .4byte gMain
 _08003200: .4byte 0x0202ADD0
 _08003204: .4byte 0x0201A444
 
@@ -760,7 +760,7 @@ _080032D6:
 	subs r0, r0, r1
 	strb r0, [r2]
 _080032E0:
-	ldr r7, _08003320 @ =0x0200B0C0
+	ldr r7, _08003320 @ =gMain
 	ldrh r1, [r7, #0x18]
 	movs r0, #1
 	ands r0, r1
@@ -790,7 +790,7 @@ _080032E0:
 	b _0800336E
 	.align 2, 0
 _0800331C: .4byte 0x0202C5A4
-_08003320: .4byte 0x0200B0C0
+_08003320: .4byte gMain
 _08003324: .4byte 0x0202C604
 _08003328: .4byte 0x086A551A
 _0800332C: .4byte 0x0202AD90
@@ -883,7 +883,7 @@ _080033E8:
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10
-	ldr r1, _0800342C @ =0x0200B0C0
+	ldr r1, _0800342C @ =gMain
 	movs r0, #6
 	strb r0, [r1, #3]
 _080033FE:
@@ -911,7 +911,7 @@ _08003420:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800342C: .4byte 0x0200B0C0
+_0800342C: .4byte gMain
 _08003430: .4byte 0x0202A58C
 _08003434: .4byte 0x0201A44C
 _08003438: .4byte 0x0202BEC0
@@ -947,7 +947,7 @@ sub_343C: @ 0x0800343C
 	adds r1, r3, #0
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r6, _08003558 @ =0x0200B0C0
+	ldr r6, _08003558 @ =gMain
 	movs r0, #0xba
 	lsls r0, r0, #2
 	adds r1, r6, r0
@@ -1052,7 +1052,7 @@ sub_343C: @ 0x0800343C
 	.align 2, 0
 _08003550: .4byte 0x04000008
 _08003554: .4byte 0x0400000A
-_08003558: .4byte 0x0200B0C0
+_08003558: .4byte gMain
 _0800355C: .4byte 0x0000FFE8
 _08003560: .4byte 0x040000D4
 _08003564: .4byte 0x08081D20
@@ -1167,7 +1167,7 @@ _0800366E:
 	subs r0, r0, r1
 	strb r0, [r2]
 _08003678:
-	ldr r2, _080036B8 @ =0x0200B0C0
+	ldr r2, _080036B8 @ =gMain
 	ldrh r1, [r2, #0x18]
 	movs r0, #1
 	ands r0, r1
@@ -1197,7 +1197,7 @@ _08003678:
 	b _0800371A
 	.align 2, 0
 _080036B4: .4byte 0x0202C5A4
-_080036B8: .4byte 0x0200B0C0
+_080036B8: .4byte gMain
 _080036BC: .4byte 0x0202C604
 _080036C0: .4byte 0x086A551A
 _080036C4: .4byte 0x0202AD90
@@ -1269,7 +1269,7 @@ sub_374C: @ 0x0800374C
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10
-	ldr r1, _08003774 @ =0x0201A4B4
+	ldr r1, _08003774 @ =gAutoDisplayTitlescreenMenu
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, _08003778 @ =0x0202BEF8
@@ -1282,7 +1282,7 @@ sub_374C: @ 0x0800374C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003774: .4byte 0x0201A4B4
+_08003774: .4byte gAutoDisplayTitlescreenMenu
 _08003778: .4byte 0x0202BEF8
 
 	thumb_func_start sub_377C
@@ -1977,7 +1977,7 @@ _08003CD4: .4byte 0x0202C5F0
 	thumb_func_start sub_3CD8
 sub_3CD8: @ 0x08003CD8
 	push {r4, lr}
-	ldr r0, _08003D24 @ =0x0200B0C0
+	ldr r0, _08003D24 @ =gMain
 	ldrh r1, [r0, #0x18]
 	movs r0, #1
 	ands r0, r1
@@ -2017,7 +2017,7 @@ _08003D0A:
 	ldrh r1, [r1, #4]
 	b _08003D4E
 	.align 2, 0
-_08003D24: .4byte 0x0200B0C0
+_08003D24: .4byte gMain
 _08003D28: .4byte 0x0202A564
 _08003D2C: .4byte 0x0202ADE8
 _08003D30: .4byte 0x0202A58C

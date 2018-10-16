@@ -8,7 +8,7 @@
 FieldSelectMain: @ 0x08008AD4
 	push {lr}
 	ldr r1, _08008AEC @ =0x080792C0
-	ldr r0, _08008AF0 @ =0x0200B0C0
+	ldr r0, _08008AF0 @ =gMain
 	ldrb r0, [r0, #3]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -18,7 +18,7 @@ FieldSelectMain: @ 0x08008AD4
 	bx r0
 	.align 2, 0
 _08008AEC: .4byte 0x080792C0
-_08008AF0: .4byte 0x0200B0C0
+_08008AF0: .4byte gMain
 
 	thumb_func_start LoadFieldSelectGraphics
 LoadFieldSelectGraphics: @ 0x08008AF4
@@ -58,7 +58,7 @@ LoadFieldSelectGraphics: @ 0x08008AF4
 	adds r1, r3, #0
 	orrs r0, r1
 	strh r0, [r2]
-	ldr r4, _08008BE0 @ =0x0200B0C0
+	ldr r4, _08008BE0 @ =gMain
 	ldrh r0, [r2]
 	strh r0, [r4, #0x16]
 	ldr r0, _08008BE4 @ =0x040000D4
@@ -133,7 +133,7 @@ LoadFieldSelectGraphics: @ 0x08008AF4
 _08008BD4: .4byte 0x04000008
 _08008BD8: .4byte 0x0400000A
 _08008BDC: .4byte 0x0400000C
-_08008BE0: .4byte 0x0200B0C0
+_08008BE0: .4byte gMain
 _08008BE4: .4byte 0x040000D4
 _08008BE8: .4byte gFieldSelectBGPals
 _08008BEC: .4byte 0x80000100
@@ -194,7 +194,7 @@ _08008C78: .4byte 0x02002850
 sub_8C7C: @ 0x08008C7C
 	push {r4, r5, r6, r7, lr}
 	bl sub_8F94
-	ldr r7, _08008CC4 @ =0x0200B0C0
+	ldr r7, _08008CC4 @ =gMain
 	ldrh r1, [r7, #0x1c]
 	movs r0, #0xf
 	ands r0, r1
@@ -230,7 +230,7 @@ _08008CB8:
 	beq _08008CDC
 	b _08008F4C
 	.align 2, 0
-_08008CC4: .4byte 0x0200B0C0
+_08008CC4: .4byte gMain
 _08008CC8: .4byte 0x02002850
 _08008CCC: .4byte 0x02002838
 _08008CD0:
@@ -273,7 +273,7 @@ _08008CFC:
 	strh r6, [r5, #6]
 	strh r0, [r5, #0xa]
 _08008D1A:
-	ldr r2, _08008D50 @ =0x0200B0C0
+	ldr r2, _08008D50 @ =gMain
 	ldrh r1, [r2, #0x18]
 	movs r4, #1
 	adds r0, r4, #0
@@ -299,7 +299,7 @@ _08008D1A:
 	movs r0, #3
 	b _08008D62
 	.align 2, 0
-_08008D50: .4byte 0x0200B0C0
+_08008D50: .4byte gMain
 _08008D54: .4byte 0x02002838
 _08008D58:
 	strh r4, [r1, #4]
@@ -346,7 +346,7 @@ _08008DA6:
 	strh r0, [r1, #2]
 	strh r3, [r1, #0xc]
 _08008DAA:
-	ldr r1, _08008DB8 @ =0x0200B0C0
+	ldr r1, _08008DB8 @ =gMain
 	ldrb r0, [r1, #4]
 	cmp r0, #1
 	bhi _08008DBC
@@ -354,7 +354,7 @@ _08008DAA:
 	strb r0, [r1, #6]
 	b _08008F4C
 	.align 2, 0
-_08008DB8: .4byte 0x0200B0C0
+_08008DB8: .4byte gMain
 _08008DBC:
 	movs r0, #1
 	strb r0, [r1, #6]
@@ -453,7 +453,7 @@ _08008E5C:
 	ldrh r0, [r0]
 _08008E76:
 	strh r0, [r5, #2]
-	ldr r0, _08008E98 @ =0x0200B0C0
+	ldr r0, _08008E98 @ =gMain
 	ldr r1, [r0, #0x4c]
 	movs r0, #1
 	ands r1, r0
@@ -469,12 +469,12 @@ _08008E76:
 	b _08008EA0
 	.align 2, 0
 _08008E94: .4byte 0x086A6B14
-_08008E98: .4byte 0x0200B0C0
+_08008E98: .4byte gMain
 _08008E9C:
 	strh r1, [r3, #0xc]
 	strh r1, [r3, #0xa]
 _08008EA0:
-	ldr r0, _08008ED0 @ =0x0200B0C0
+	ldr r0, _08008ED0 @ =gMain
 	ldrh r1, [r0, #0x18]
 	movs r0, #0x20
 	ands r0, r1
@@ -498,7 +498,7 @@ _08008EA0:
 	strh r0, [r4, #0xa]
 	b _08008F4C
 	.align 2, 0
-_08008ED0: .4byte 0x0200B0C0
+_08008ED0: .4byte gMain
 _08008ED4: .4byte 0x02002838
 _08008ED8:
 	movs r0, #0x10
@@ -557,12 +557,12 @@ _08008F30:
 	ble _08008F4C
 	movs r0, #2
 	strh r0, [r1, #0x16]
-	ldr r1, _08008F60 @ =0x0200B0C0
+	ldr r1, _08008F60 @ =gMain
 	ldrb r0, [r1, #3]
 	adds r0, #1
 	strb r0, [r1, #3]
 _08008F4C:
-	ldr r0, _08008F60 @ =0x0200B0C0
+	ldr r0, _08008F60 @ =gMain
 	ldr r1, _08008F5C @ =0x02002838
 	ldrh r1, [r1, #8]
 	strb r1, [r0, #4]
@@ -573,7 +573,7 @@ _08008F56:
 	bx r0
 	.align 2, 0
 _08008F5C: .4byte 0x02002838
-_08008F60: .4byte 0x0200B0C0
+_08008F60: .4byte gMain
 
 	thumb_func_start sub_8F64
 sub_8F64: @ 0x08008F64
@@ -582,7 +582,7 @@ sub_8F64: @ 0x08008F64
 	bl sub_FE04
 	bl m4aMPlayAllStop
 	bl sub_D10
-	ldr r1, _08008F8C @ =0x0201A4B4
+	ldr r1, _08008F8C @ =gAutoDisplayTitlescreenMenu
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, _08008F90 @ =0x02002838
@@ -592,7 +592,7 @@ sub_8F64: @ 0x08008F64
 	bx r0
 	.align 2, 0
 _08008F88: .4byte sub_8F94 + 1
-_08008F8C: .4byte 0x0201A4B4
+_08008F8C: .4byte gAutoDisplayTitlescreenMenu
 _08008F90: .4byte 0x02002838
 
 	thumb_func_start sub_8F94
@@ -603,7 +603,7 @@ sub_8F94: @ 0x08008F94
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #4
-	ldr r5, _08009254 @ =0x0200B0C0
+	ldr r5, _08009254 @ =gMain
 	ldrh r0, [r5, #0x38]
 	ldr r0, _08009258 @ =0x00000642
 	strh r0, [r5, #0x38]
@@ -958,7 +958,7 @@ _08009234:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08009254: .4byte 0x0200B0C0
+_08009254: .4byte gMain
 _08009258: .4byte 0x00000642
 _0800925C: .4byte 0x00000808
 _08009260: .4byte 0x04000050

@@ -1,7 +1,23 @@
     .section .rodata
 @ field select palettes 0xA8840
 
-.incbin "baserom.gba", 0x55A68, 0x7A0C0 - 0x55A68
+.incbin "baserom.gba", 0x55A68, 0x79890 - 0x55A68
+
+gTitlescreenStateFuncs:: @ 0x08079890
+	.4byte LoadTitlescreenGraphics
+	.4byte sub_10BB8
+	.4byte sub_10CF0
+	.4byte sub_10E00
+	.4byte sub_10EF4
+	.4byte sub_110FC
+	.4byte sub_11320
+	.4byte sub_11020
+	.4byte sub_11228
+	.4byte sub_10D84
+	.4byte sub_11428
+	.4byte sub_114B4
+
+.incbin "baserom.gba", 0x798C0, 0x7A0C0 - 0x798C0
 
 gIntroCopyright_Gfx:: @ 0x0807A0C0
     .incbin "graphics/intro/copyright.4bpp"
@@ -45,7 +61,15 @@ gIntroScene1Sprites_Gfx:: @ 0x080C3CE0
 
 .include "data/graphics/mon_portraits.inc"
 
-.incbin "baserom.gba", 0x4ECF6C, 0x6A4AD8 - 0x4ECF6C
+.incbin "baserom.gba", 0x4ECF6C, 0x52B668 - 0x4ECF6C
+
+gGBAButtonIcons_Pals:: @ 0x0852B668
+	.incbin "graphics/gba_buttons.gbapal"
+
+gOptionsSprites_Gfx:: @ 0x0852B868
+	.incbin "graphics/options/sprites.4bpp"
+
+.incbin "baserom.gba", 0x52D888, 0x6A4AD8 - 0x52D888
 
 gMainFuncs:: @ 0x086A4AD8
 	.4byte IntroMain
