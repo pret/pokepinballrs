@@ -174,7 +174,7 @@ sub_93D0: @ 0x080093D0
 	movs r0, #0
 	strb r0, [r1]
 	movs r0, #1
-	bl sub_23C
+	bl SetMainGameState
 	pop {r0}
 	bx r0
 	.align 2, 0

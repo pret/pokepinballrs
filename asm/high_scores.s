@@ -127,7 +127,7 @@ sub_CE88: @ 0x0800CE88
 	str r0, [r4, #4]
 	str r5, [r4, #8]
 	ldr r0, [r4, #8]
-	ldr r4, _0800CFCC @ =0x0202C588
+	ldr r4, _0800CFCC @ =gUnknown_0202C588
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
@@ -171,7 +171,7 @@ _0800CFBC: .4byte 0x80000080
 _0800CFC0: .4byte 0x0809DFE0
 _0800CFC4: .4byte 0x06010000
 _0800CFC8: .4byte 0x80002210
-_0800CFCC: .4byte 0x0202C588
+_0800CFCC: .4byte gUnknown_0202C588
 _0800CFD0: .4byte 0x02002858
 
 	thumb_func_start sub_CFD4
@@ -269,7 +269,7 @@ _0800D03A:
 	strb r3, [r1]
 	ldr r4, _0800D0D0 @ =0x02002885
 	strb r3, [r4]
-	ldr r1, _0800D0D4 @ =0x0202C588
+	ldr r1, _0800D0D4 @ =gUnknown_0202C588
 	movs r4, #0
 	ldrsh r0, [r1, r4]
 	cmp r0, #1
@@ -302,7 +302,7 @@ _0800D0C4: .4byte 0x0202BEBC
 _0800D0C8: .4byte 0x0201C18C
 _0800D0CC: .4byte 0x02002884
 _0800D0D0: .4byte 0x02002885
-_0800D0D4: .4byte 0x0202C588
+_0800D0D4: .4byte gUnknown_0202C588
 _0800D0D8: .4byte gMain
 _0800D0DC: .4byte 0x02002882
 _0800D0E0: .4byte 0x02002880
@@ -1852,7 +1852,7 @@ sub_DD4C: @ 0x0800DD4C
 	movs r0, #1
 	strb r0, [r1]
 	movs r0, #1
-	bl sub_23C
+	bl SetMainGameState
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2271,7 +2271,7 @@ sub_E0C4: @ 0x0800E0C4
 	asrs r0, r0, #0x18
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_23C
+	bl SetMainGameState
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2592,7 +2592,7 @@ sub_E390: @ 0x0800E390
 	bl m4aMPlayAllStop
 	bl sub_D10
 	movs r0, #8
-	bl sub_23C
+	bl SetMainGameState
 	pop {r0}
 	bx r0
 

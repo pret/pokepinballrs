@@ -1813,7 +1813,7 @@ sub_4D50: @ 0x08004D50
 	movs r0, #1
 	strb r0, [r1]
 	movs r0, #1
-	bl sub_23C
+	bl SetMainGameState
 	pop {r0}
 	bx r0
 	.align 2, 0

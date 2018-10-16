@@ -1,3 +1,5 @@
+gUnknown_03000000: @ 0x3000000
+
 .space 0x7400
 
 SoundMainRAM_Buffer: @ 0x3007400

@@ -587,7 +587,7 @@ sub_8F64: @ 0x08008F64
 	strb r0, [r1]
 	ldr r0, _08008F90 @ =0x02002838
 	ldrh r0, [r0, #0x16]
-	bl sub_23C
+	bl SetMainGameState
 	pop {r0}
 	bx r0
 	.align 2, 0

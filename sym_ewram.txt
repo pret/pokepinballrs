@@ -1,8 +1,27 @@
 	.space 0x2888
 
-gUnknown_2002888: @ 0x2002888
+gTitlescreen: @ 0x2002888
+	.space 0x18
 
-	.space 0xD0
+gUnknown_020028A0: @ 0x20028A0
+	.space 0x1
+
+gUnknown_020028A1: @ 0x20028A1
+	.space 0x1
+
+gUnknown_020028A2: @ 0x20028A2
+	.space 0x1
+
+gUnknown_020028A3: @ 0x20028A3
+	.space 0x1
+
+gUnknown_020028A4: @ 0x20028A4
+	.space 0x1
+
+gUnknown_020028A5: @ 0x20028A5
+	.space 0x1
+
+	.space 0xB2
 
 gUnknown_02002958: @ 0x2002958
 
@@ -19,12 +38,26 @@ gMain: @ 0x200B0C0
 gAutoDisplayTitlescreenMenu: @ 0x201A4B4
 	.space 4
 
-	.space 0x1196C
+	.space 0x1CD8
+
+gUnknown_0201C190: @ 0x201C190
+	.space 0x1C
+
+	.space 0xFC54
+
+gUnknown_0202BE00: @ 0x202BE00
+	.space 0x1C
+
+	.space 0x8
 
 gUnknown_202BE24: @ 0x202BE24
 	.space 4
 
-	.space 0x5D08
+	.space 0x760
+
+gUnknown_0202C588: @ 0x202C588
+
+	.space 0x55A8
 
 gSoundInfo: @ 0x2031B30
 
@@ -48,6 +81,10 @@ gPokemonCryTracks: @ 0x2032D60
 
 gPokemonCrySong: @ 0x2032EA0
 
-	.space 0x100
+	.space 0x40
+
+gMPlayInfo_02032EE0: @ 0x2032EE0
+
+	.space 0xC0
 
 gMPlayMemAccArea: @ 0x2032FA0

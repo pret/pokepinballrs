@@ -14885,7 +14885,7 @@ _080192A4:
 	cmp r0, r1
 	bhs _080192EC
 	movs r0, #1
-	bl sub_23C
+	bl SetMainGameState
 	b _080192F2
 	.align 2, 0
 _080192E0: .4byte gMain
@@ -14893,7 +14893,7 @@ _080192E4: .4byte 0x02031520
 _080192E8: .4byte 0x00000141
 _080192EC:
 	movs r0, #9
-	bl sub_23C
+	bl SetMainGameState
 _080192F2:
 	ldr r1, _08019300 @ =gMain
 	movs r0, #0
@@ -113123,7 +113123,7 @@ _0804B23A:
 	cmp r0, #1
 	bls _0804B258
 	movs r0, #0xb
-	bl sub_23C
+	bl SetMainGameState
 	b _0804B276
 	.align 2, 0
 _0804B250: .4byte gMain
@@ -113136,13 +113136,13 @@ _0804B258:
 	beq _0804B270
 _0804B262:
 	movs r0, #0
-	bl sub_23C
+	bl SetMainGameState
 	b _0804B276
 	.align 2, 0
 _0804B26C: .4byte 0x00FFFF00
 _0804B270:
 	movs r0, #8
-	bl sub_23C
+	bl SetMainGameState
 _0804B276:
 	pop {r4}
 	pop {r0}

@@ -1,7 +1,7 @@
 #include "global.h"
 #include "main.h"
 
-void sub_23C(u8 mainState)
+void SetMainGameState(u16 mainState)
 {
 	gMain.mainState = mainState;
 	gMain.subState = 0;

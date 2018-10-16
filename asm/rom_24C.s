@@ -981,7 +981,7 @@ sub_9BC_Main: @ 0x080009BC
 	bl sub_2B4
 	bl sub_D10
 	movs r0, #1
-	bl sub_23C
+	bl SetMainGameState
 	b _080009FC
 	.align 2, 0
 _080009DC: .4byte gMain
