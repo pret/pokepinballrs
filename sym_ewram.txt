@@ -3,16 +3,16 @@
 gTitlescreen: @ 0x2002888
 	.space 0x18
 
-gUnknown_020028A0: @ 0x20028A0
+gEraseSaveDataAccessStep: @ 0x20028A0
 	.space 0x1
 
-gUnknown_020028A1: @ 0x20028A1
+gEraseSaveDataAccessCounter: @ 0x20028A1
 	.space 0x1
 
-gUnknown_020028A2: @ 0x20028A2
+gEReaderAccessStep: @ 0x20028A2
 	.space 0x1
 
-gUnknown_020028A3: @ 0x20028A3
+gEReaderAccessCounter: @ 0x20028A3
 	.space 0x1
 
 gUnknown_020028A4: @ 0x20028A4

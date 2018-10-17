@@ -26,6 +26,7 @@ extern const u8 *const gUnknown_086A9778[];
 extern const s8 gUnknown_086A9672[9][2];
 extern const u16 gUnknown_086A96A4[];
 extern const u16 gUnknown_086A96D4[];
+extern const s16 gEReaderAccessButtonSequence[];
 
 extern void sub_2B4(void);
 extern void sub_438(void);
@@ -38,12 +39,12 @@ extern void sub_11640(void);
 extern void sub_52C44(void);
 
 extern void sub_10AC0(void);
-extern void sub_1157C(void);
 extern void sub_1175C(void);
 extern void sub_11968(void);
 extern void sub_11B74(void);
 
 static void sub_114FC(void);
+static void sub_1157C(void);
 
 // If the user doesn't press any buttons at the title screen,
 // it will transition to a demo gameplay experience.
@@ -125,10 +126,10 @@ void sub_10AC0(void)
     gTitlescreen.unkD = 0;
     gTitlescreen.unkF = 0;
     gUnknown_0202C588 = 1;
-    gUnknown_020028A0 = 0;
-    gUnknown_020028A1 = 0;
-    gUnknown_020028A2 = 0;
-    gUnknown_020028A3 = 0;
+    gEraseSaveDataAccessStep = 0;
+    gEraseSaveDataAccessCounter = 0;
+    gEReaderAccessStep = 0;
+    gEReaderAccessCounter = 0;
 
     if (gMain.unk40 == 1)
     {
@@ -635,11 +636,11 @@ static void sub_114FC(void)
     {
         if (gMain.newKeys & R_BUTTON)
         {
-            gUnknown_020028A1 = 40;
-            if (++gUnknown_020028A0 == 3)
+            gEraseSaveDataAccessCounter = 40;
+            if (++gEraseSaveDataAccessStep == 3)
             {
-                gUnknown_020028A0 = 0;
-                gUnknown_020028A1 = 0;
+                gEraseSaveDataAccessStep = 0;
+                gEraseSaveDataAccessCounter = 0;
                 m4aSongNumStart(0x68);
                 gTitlescreen.unk11 = 1;
                 gMain.subState = 9;
@@ -647,12 +648,49 @@ static void sub_114FC(void)
         }
     }
 
-    if (gUnknown_020028A1 > 0)
+    if (gEraseSaveDataAccessCounter > 0)
     {
-        if (--gUnknown_020028A1 <= 0)
+        if (--gEraseSaveDataAccessCounter <= 0)
         {
-            gUnknown_020028A1 = 0;
-            gUnknown_020028A0 = 0;
+            gEraseSaveDataAccessCounter = 0;
+            gEraseSaveDataAccessStep = 0;
+        }
+    }
+}
+
+static void sub_1157C(void)
+{
+    // To access the e-reader screen, alternate pressing R_BUTTON and L_BUTTON 6 times while holding DPAD_RIGHT.
+    s16 buttonMask = gEReaderAccessButtonSequence[gEReaderAccessStep];
+    if (gMain.heldKeys & DPAD_RIGHT && (gMain.newKeys & buttonMask) == buttonMask)
+    {
+        gEReaderAccessCounter = 40;
+        gEReaderAccessStep++;
+        if (gEReaderAccessButtonSequence[gEReaderAccessStep] == -1)
+        {
+            gEReaderAccessStep = 0;
+            gEReaderAccessCounter = 0;
+            m4aSongNumStart(0x65);
+            gTitlescreen.unk6 = 5;
+            if (gMain.subState == 1)
+                gMain.subState = 11;
+            else
+                gMain.subState = 10;
+        }
+    }
+
+    if (gMain.newKeys & (KEYS_MASK & ~buttonMask))
+    {
+        gEReaderAccessCounter = 0;
+        gEReaderAccessStep = 0;
+    }
+
+    if (gEReaderAccessCounter > 0)
+    {
+        if (--gEReaderAccessCounter <= 0)
+        {
+            gEReaderAccessCounter = 0;
+            gEReaderAccessStep = 0;
         }
     }
 }

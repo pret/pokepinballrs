@@ -192,7 +192,17 @@ gUnknown_086A9778:: @ 0x086A9778
 	.4byte 0x086A94F4
 	.4byte 0x00000000
 
-.incbin "baserom.gba", 0x6A97AC, 0x6B159C - 0x6A97AC
+gEReaderAccessButtonSequence:: @ 0x086A97AC
+	.2byte 0x0200
+	.2byte 0x0100
+	.2byte 0x0200
+	.2byte 0x0100
+	.2byte 0x0200
+	.2byte 0x0100
+	.2byte 0xFFFF
+
+	.align 2, 0
+.incbin "baserom.gba", 0x6A97BC, 0x6B159C - 0x6A97BC
 
 gMonHatchSpriteGroupPals:: @ 0x086B159C
 	.4byte gMonHatchSpriteGroup0_Pals
