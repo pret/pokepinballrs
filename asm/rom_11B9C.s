@@ -1330,7 +1330,7 @@ _08012646:
 	mov ip, r0
 	ldrh r0, [r6, #8]
 	lsls r0, r0, #3
-	ldr r1, _080126DC @ =0x03005000
+	ldr r1, _080126DC @ =gOamBuffer
 	adds r5, r0, r1
 	movs r0, #1
 	ldrsb r0, [r7, r0]
@@ -1354,7 +1354,7 @@ _080126CC: .4byte 0x000005B2
 _080126D0: .4byte gMain
 _080126D4: .4byte 0x000002AA
 _080126D8: .4byte 0x000005FC
-_080126DC: .4byte 0x03005000
+_080126DC: .4byte gOamBuffer
 _080126E0:
 	ldrb r0, [r5, #5]
 	movs r1, #0xc
@@ -1501,7 +1501,7 @@ _080127A2:
 	mov ip, r0
 	ldrh r0, [r6, #8]
 	lsls r0, r0, #3
-	ldr r1, _08012834 @ =0x03005000
+	ldr r1, _08012834 @ =gOamBuffer
 	adds r5, r0, r1
 	movs r0, #1
 	ldrsb r0, [r7, r0]
@@ -1524,7 +1524,7 @@ _08012824: .4byte gMain
 _08012828: .4byte 0x020314E0
 _0801282C: .4byte 0x000002AA
 _08012830: .4byte 0x000005FC
-_08012834: .4byte 0x03005000
+_08012834: .4byte gOamBuffer
 _08012838:
 	ldrb r0, [r5, #5]
 	movs r1, #0xc
@@ -1684,7 +1684,7 @@ _0801294C:
 	mov ip, r0
 	ldrh r0, [r6, #8]
 	lsls r0, r0, #3
-	ldr r1, _080129D8 @ =0x03005000
+	ldr r1, _080129D8 @ =gOamBuffer
 	adds r5, r0, r1
 	movs r0, #3
 	ldrb r1, [r7, #1]
@@ -1736,7 +1736,7 @@ _0801294C:
 	.align 2, 0
 _080129D0: .4byte 0x020314E0
 _080129D4: .4byte gMain
-_080129D8: .4byte 0x03005000
+_080129D8: .4byte gOamBuffer
 _080129DC: .4byte 0x000001FF
 _080129E0: .4byte 0xFFFFFE00
 _080129E4:
@@ -1814,7 +1814,7 @@ _08012A58:
 	beq _08012AB8
 	ldrh r0, [r6, #8]
 	lsls r0, r0, #3
-	ldr r1, _08012B1C @ =0x03005000
+	ldr r1, _08012B1C @ =gOamBuffer
 	adds r5, r0, r1
 	ldrb r1, [r7, #1]
 	mov r3, sb
@@ -1901,7 +1901,7 @@ _08012AE4:
 	.align 2, 0
 _08012B14: .4byte gMain
 _08012B18: .4byte 0xFFFFFE00
-_08012B1C: .4byte 0x03005000
+_08012B1C: .4byte gOamBuffer
 _08012B20: .4byte 0x020314E0
 _08012B24: .4byte 0x000001FF
 _08012B28: .4byte 0x0000071C
@@ -1930,7 +1930,7 @@ _08012B32:
 	movs r4, #8
 	adds r4, r4, r6
 	mov ip, r4
-	ldr r4, _08012BE4 @ =0x03005000
+	ldr r4, _08012BE4 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -1996,7 +1996,7 @@ _08012BD4: .4byte 0x040000D4
 _08012BD8: .4byte 0x083BD36C
 _08012BDC: .4byte 0x06011EE0
 _08012BE0: .4byte 0x80000100
-_08012BE4: .4byte 0x03005000
+_08012BE4: .4byte gOamBuffer
 _08012BE8: .4byte 0x000001FF
 _08012BEC: .4byte 0xFFFFFE00
 _08012BF0: .4byte 0x0000071C
@@ -2195,7 +2195,7 @@ _08012D6A:
 	adds r7, #8
 	ldrh r0, [r6, #8]
 	lsls r0, r0, #3
-	ldr r3, _08012DE8 @ =0x03005000
+	ldr r3, _08012DE8 @ =gOamBuffer
 	adds r4, r0, r3
 	movs r0, #3
 	mov r2, r8
@@ -2240,7 +2240,7 @@ _08012DD8: .4byte 0x80000040
 _08012DDC: .4byte 0x000002AA
 _08012DE0: .4byte 0x000005FC
 _08012DE4: .4byte 0x0000FFC4
-_08012DE8: .4byte 0x03005000
+_08012DE8: .4byte gOamBuffer
 _08012DEC: .4byte 0x000001FF
 _08012DF0: .4byte 0xFFFFFE00
 _08012DF4:
@@ -2713,7 +2713,7 @@ _0801317C:
 	adds r7, #8
 	ldrh r0, [r6, #8]
 	lsls r0, r0, #3
-	ldr r1, _08013224 @ =0x03005000
+	ldr r1, _08013224 @ =gOamBuffer
 	adds r4, r0, r1
 	movs r0, #3
 	mov r2, r8
@@ -2775,7 +2775,7 @@ _08013214: .4byte 0x05000220
 _08013218: .4byte 0x80000010
 _0801321C: .4byte gMain
 _08013220: .4byte 0x020314E0
-_08013224: .4byte 0x03005000
+_08013224: .4byte gOamBuffer
 _08013228: .4byte 0x000001FF
 _0801322C: .4byte 0xFFFFFE00
 _08013230:
@@ -2842,7 +2842,7 @@ _0801328E:
 	beq _080132F0
 	ldrh r0, [r6, #8]
 	lsls r0, r0, #3
-	ldr r1, _08013324 @ =0x03005000
+	ldr r1, _08013324 @ =gOamBuffer
 	adds r4, r0, r1
 	mov r2, r8
 	ldrb r1, [r2, #1]
@@ -2906,7 +2906,7 @@ _0801330C:
 	.align 2, 0
 _0801331C: .4byte 0xFFFFFE00
 _08013320: .4byte gMain
-_08013324: .4byte 0x03005000
+_08013324: .4byte gOamBuffer
 _08013328: .4byte 0x000001FF
 
 	thumb_func_start sub_1332C
@@ -15119,7 +15119,7 @@ _080194A8:
 	adds r1, r1, r4
 	mov sb, r1
 	ldr r7, _080194E8 @ =0x040000D4
-	ldr r2, _080194EC @ =0x03005000
+	ldr r2, _080194EC @ =gOamBuffer
 	mov ip, r2
 _080194BA:
 	mov r0, r8
@@ -15143,7 +15143,7 @@ _080194DC: .4byte gMain
 _080194E0: .4byte 0x020314E0
 _080194E4: .4byte 0x00000A28
 _080194E8: .4byte 0x040000D4
-_080194EC: .4byte 0x03005000
+_080194EC: .4byte gOamBuffer
 _080194F0: .4byte 0x000013BC
 _080194F4:
 	cmp r0, #0
@@ -15458,7 +15458,7 @@ _08019750:
 	mov sb, r1
 	ldr r2, _08019788 @ =0x040000D4
 	mov ip, r2
-	ldr r0, _0801978C @ =0x03005000
+	ldr r0, _0801978C @ =gOamBuffer
 	mov r8, r0
 _0801975E:
 	mov r1, sb
@@ -15482,7 +15482,7 @@ _0801975E:
 _08019780: .4byte gMain
 _08019784: .4byte 0x020314E0
 _08019788: .4byte 0x040000D4
-_0801978C: .4byte 0x03005000
+_0801978C: .4byte gOamBuffer
 _08019790: .4byte 0x000013BC
 _08019794:
 	cmp r0, #0
@@ -17627,7 +17627,7 @@ _0801A8B8:
 	movs r2, #0
 	ldr r5, [sp]
 	lsls r1, r5, #0x10
-	ldr r6, _0801A964 @ =0x03005000
+	ldr r6, _0801A964 @ =gOamBuffer
 	mov ip, r6
 	ldr r7, _0801A968 @ =0x086B4568
 	mov sl, r7
@@ -17706,7 +17706,7 @@ _0801A954: .4byte 0x040000D4
 _0801A958: .4byte 0x05000340
 _0801A95C: .4byte 0x80000030
 _0801A960: .4byte 0x020314E0
-_0801A964: .4byte 0x03005000
+_0801A964: .4byte gOamBuffer
 _0801A968: .4byte 0x086B4568
 _0801A96C: .4byte 0xFFFFFE00
 _0801A970: .4byte 0x000001FF
@@ -22709,7 +22709,7 @@ _0801D1F2:
 	str r3, [sp]
 	lsls r2, r2, #0x10
 	str r2, [sp, #4]
-	ldr r7, _0801D4B0 @ =0x03005000
+	ldr r7, _0801D4B0 @ =gOamBuffer
 	mov ip, sb
 _0801D202:
 	lsls r4, r0, #0x10
@@ -22806,7 +22806,7 @@ _0801D298:
 	strh r0, [r6, #4]
 _0801D2B8:
 	movs r0, #0
-	ldr r7, _0801D4B0 @ =0x03005000
+	ldr r7, _0801D4B0 @ =gOamBuffer
 	ldr r2, _0801D4C0 @ =0xFFFFFE00
 	mov ip, r2
 _0801D2C0:
@@ -22874,7 +22874,7 @@ _0801D2C0:
 	strh r0, [r6, #4]
 _0801D33C:
 	movs r0, #0
-	ldr r7, _0801D4B0 @ =0x03005000
+	ldr r7, _0801D4B0 @ =gOamBuffer
 	ldr r3, _0801D4C0 @ =0xFFFFFE00
 	mov ip, r3
 _0801D344:
@@ -22933,7 +22933,7 @@ _0801D344:
 	strh r0, [r6, #4]
 _0801D3AE:
 	movs r0, #0
-	ldr r7, _0801D4B0 @ =0x03005000
+	ldr r7, _0801D4B0 @ =gOamBuffer
 	ldr r3, _0801D4C0 @ =0xFFFFFE00
 	mov r8, r3
 _0801D3B6:
@@ -22991,7 +22991,7 @@ _0801D3FA:
 	strh r0, [r6, #4]
 _0801D41C:
 	movs r0, #0
-	ldr r7, _0801D4B0 @ =0x03005000
+	ldr r7, _0801D4B0 @ =gOamBuffer
 	movs r3, #3
 	mov ip, r3
 	movs r1, #0xd
@@ -23062,7 +23062,7 @@ _0801D42E:
 _0801D4A4: .4byte gMain
 _0801D4A8: .4byte 0x000006E4
 _0801D4AC: .4byte 0x000006E6
-_0801D4B0: .4byte 0x03005000
+_0801D4B0: .4byte gOamBuffer
 _0801D4B4: .4byte 0x000006D3
 _0801D4B8: .4byte 0x000006DB
 _0801D4BC: .4byte 0x000001FF
@@ -23091,7 +23091,7 @@ sub_1D4D0: @ 0x0801D4D0
 	strh r1, [r4, #4]
 	movs r1, #0
 	adds r6, r0, #0
-	ldr r5, _0801D5D4 @ =0x03005000
+	ldr r5, _0801D5D4 @ =gOamBuffer
 _0801D4F6:
 	lsls r2, r1, #0x10
 	asrs r2, r2, #0x10
@@ -23129,7 +23129,7 @@ _0801D4F6:
 	strh r0, [r4, #4]
 _0801D53A:
 	movs r1, #0
-	ldr r5, _0801D5D4 @ =0x03005000
+	ldr r5, _0801D5D4 @ =gOamBuffer
 _0801D53E:
 	lsls r2, r1, #0x10
 	asrs r2, r2, #0x10
@@ -23154,7 +23154,7 @@ _0801D53E:
 	movs r0, #0xb4
 	strh r0, [r4, #4]
 	movs r1, #0
-	ldr r5, _0801D5D4 @ =0x03005000
+	ldr r5, _0801D5D4 @ =gOamBuffer
 _0801D56E:
 	lsls r2, r1, #0x10
 	asrs r2, r2, #0x10
@@ -23179,7 +23179,7 @@ _0801D56E:
 	movs r0, #0xb4
 	strh r0, [r4, #4]
 	movs r1, #0
-	ldr r5, _0801D5D4 @ =0x03005000
+	ldr r5, _0801D5D4 @ =gOamBuffer
 _0801D59E:
 	lsls r2, r1, #0x10
 	asrs r2, r2, #0x10
@@ -23207,7 +23207,7 @@ _0801D5C2:
 _0801D5C8: .4byte 0x020314E0
 _0801D5CC: .4byte 0x000006C4
 _0801D5D0: .4byte gMain
-_0801D5D4: .4byte 0x03005000
+_0801D5D4: .4byte gOamBuffer
 
 	thumb_func_start sub_1D5D8
 sub_1D5D8: @ 0x0801D5D8
@@ -23657,7 +23657,7 @@ _0801D930:
 	ldr r0, [r2, #8]
 	movs r2, #0
 	lsls r1, r5, #0x10
-	ldr r5, _0801DA64 @ =0x03005000
+	ldr r5, _0801DA64 @ =gOamBuffer
 	mov ip, r5
 	asrs r1, r1, #0x10
 	lsls r0, r1, #1
@@ -23753,7 +23753,7 @@ _0801DA54: .4byte 0x040000D4
 _0801DA58: .4byte 0x0845710C
 _0801DA5C: .4byte 0x06014380
 _0801DA60: .4byte 0x80000130
-_0801DA64: .4byte 0x03005000
+_0801DA64: .4byte gOamBuffer
 _0801DA68: .4byte 0xFFFFFE00
 _0801DA6C: .4byte 0x086B2E64
 _0801DA70: .4byte 0x000001FF
@@ -23946,7 +23946,7 @@ _0801DBBC:
 	movs r0, #0
 	ldr r7, _0801DC6C @ =0x0200E278
 	mov sl, r7
-	ldr r6, _0801DC70 @ =0x03005000
+	ldr r6, _0801DC70 @ =gOamBuffer
 	lsls r3, r3, #2
 	str r3, [sp]
 	movs r1, #0xd
@@ -24014,7 +24014,7 @@ _0801DC60: .4byte 0x084ED0CC
 _0801DC64: .4byte 0x06013180
 _0801DC68: .4byte 0x800000C0
 _0801DC6C: .4byte 0x0200E278
-_0801DC70: .4byte 0x03005000
+_0801DC70: .4byte gOamBuffer
 _0801DC74: .4byte 0xFFFFFE00
 _0801DC78: .4byte 0x000001FF
 
@@ -24098,7 +24098,7 @@ _0801DCA4:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _0801DDB0 @ =0x03005000
+	ldr r7, _0801DDB0 @ =gOamBuffer
 	ldr r1, _0801DDB4 @ =0xFFFFFE00
 	mov ip, r1
 _0801DD1C:
@@ -24164,7 +24164,7 @@ _0801DDA0: .4byte 0x06014680
 _0801DDA4: .4byte 0x80000230
 _0801DDA8: .4byte 0x0000FF08
 _0801DDAC: .4byte 0x0000FEC4
-_0801DDB0: .4byte 0x03005000
+_0801DDB0: .4byte gOamBuffer
 _0801DDB4: .4byte 0xFFFFFE00
 _0801DDB8: .4byte 0x000001FF
 _0801DDBC: .4byte 0x000002A3
@@ -26510,7 +26510,7 @@ _0801F0AE:
 	mov r6, sb
 	lsls r6, r6, #1
 	mov ip, r6
-	ldr r7, _0801F14C @ =0x03005000
+	ldr r7, _0801F14C @ =gOamBuffer
 	ldr r1, _0801F150 @ =0xFFFFFE00
 	mov sb, r1
 _0801F0BC:
@@ -26578,7 +26578,7 @@ _0801F13C: .4byte 0x08137998
 _0801F140: .4byte 0x05000320
 _0801F144: .4byte 0x80000010
 _0801F148: .4byte 0x0000FFD8
-_0801F14C: .4byte 0x03005000
+_0801F14C: .4byte gOamBuffer
 _0801F150: .4byte 0xFFFFFE00
 _0801F154: .4byte 0x000001FF
 
@@ -26653,7 +26653,7 @@ _0801F1B4:
 	movs r1, #0
 	ldr r5, _0801F294 @ =0x086B3A04
 	mov sb, r5
-	ldr r6, _0801F298 @ =0x03005000
+	ldr r6, _0801F298 @ =gOamBuffer
 	lsls r3, r3, #0x10
 	asrs r3, r3, #0x10
 	lsls r0, r3, #3
@@ -26734,7 +26734,7 @@ _0801F288: .4byte 0x06012C20
 _0801F28C: .4byte 0x80000130
 _0801F290: .4byte 0x086AD9FC
 _0801F294: .4byte 0x086B3A04
-_0801F298: .4byte 0x03005000
+_0801F298: .4byte gOamBuffer
 _0801F29C: .4byte 0xFFFFFE00
 _0801F2A0: .4byte 0x000001FF
 
@@ -27179,7 +27179,7 @@ _0801F5E8:
 	ldr r0, [r2, #8]
 _0801F624:
 	movs r0, #0
-	ldr r7, _0801F68C @ =0x03005000
+	ldr r7, _0801F68C @ =gOamBuffer
 	ldr r1, _0801F690 @ =0xFFFFFE00
 	mov ip, r1
 _0801F62C:
@@ -27226,7 +27226,7 @@ _0801F67C: .4byte 0x040000D4
 _0801F680: .4byte 0x084FA48C
 _0801F684: .4byte 0x06010780
 _0801F688: .4byte 0x80000090
-_0801F68C: .4byte 0x03005000
+_0801F68C: .4byte gOamBuffer
 _0801F690: .4byte 0xFFFFFE00
 _0801F694: .4byte 0x000001FF
 
@@ -27350,7 +27350,7 @@ _0801F760:
 	strh r0, [r7, #4]
 _0801F78C:
 	movs r0, #0
-	ldr r6, _0801F884 @ =0x03005000
+	ldr r6, _0801F884 @ =gOamBuffer
 	ldr r1, _0801F888 @ =0xFFFFFE00
 	mov ip, r1
 _0801F794:
@@ -27474,7 +27474,7 @@ _0801F802:
 	b _0801F8CC
 	.align 2, 0
 _0801F880: .4byte 0x0200BD10
-_0801F884: .4byte 0x03005000
+_0801F884: .4byte gOamBuffer
 _0801F888: .4byte 0xFFFFFE00
 _0801F88C: .4byte 0x000001FF
 _0801F890: .4byte 0x040000D4
@@ -27646,7 +27646,7 @@ _0801F9B6:
 _0801F9F2:
 	adds r5, r7, #0
 	adds r5, #8
-	ldr r4, _0801FA3C @ =0x03005000
+	ldr r4, _0801FA3C @ =gOamBuffer
 	ldrh r2, [r7, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -27680,7 +27680,7 @@ _0801FA26:
 	.align 2, 0
 _0801FA34: .4byte 0x000002B6
 _0801FA38: .4byte 0x000002BA
-_0801FA3C: .4byte 0x03005000
+_0801FA3C: .4byte gOamBuffer
 _0801FA40: .4byte 0x000001FF
 _0801FA44: .4byte 0xFFFFFE00
 
@@ -27811,7 +27811,7 @@ _0801FB2E:
 	subs r0, r0, r1
 	strh r0, [r7, #4]
 	movs r0, #0
-	ldr r6, _0801FBB8 @ =0x03005000
+	ldr r6, _0801FBB8 @ =gOamBuffer
 	ldr r1, _0801FBBC @ =0xFFFFFE00
 	mov ip, r1
 _0801FB50:
@@ -27862,7 +27862,7 @@ _0801FBA8: .4byte 0x040000D4
 _0801FBAC: .4byte 0x083C3C2C
 _0801FBB0: .4byte 0x06012720
 _0801FBB4: .4byte 0x80000180
-_0801FBB8: .4byte 0x03005000
+_0801FBB8: .4byte gOamBuffer
 _0801FBBC: .4byte 0xFFFFFE00
 _0801FBC0: .4byte 0x000001FF
 
@@ -28200,7 +28200,7 @@ _0801FDFC:
 	str r3, [r2, #8]
 	ldr r0, [r2, #8]
 	movs r1, #0
-	ldr r2, _0801FEFC @ =0x03005000
+	ldr r2, _0801FEFC @ =gOamBuffer
 	mov ip, r2
 	ldr r3, _0801FF00 @ =0x086B2FC0
 	mov sl, r3
@@ -28286,7 +28286,7 @@ _0801FEEC: .4byte 0x06013B80
 _0801FEF0: .4byte 0x800000C0
 _0801FEF4: .4byte 0x06013A00
 _0801FEF8: .4byte 0x06013880
-_0801FEFC: .4byte 0x03005000
+_0801FEFC: .4byte gOamBuffer
 _0801FF00: .4byte 0x086B2FC0
 _0801FF04: .4byte 0xFFFFFE00
 _0801FF08: .4byte 0x000001FF
@@ -28713,7 +28713,7 @@ _080201CC:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _080202F4 @ =0x03005000
+	ldr r7, _080202F4 @ =gOamBuffer
 	ldr r5, _080202F8 @ =0xFFFFFE00
 	mov ip, r5
 _08020256:
@@ -28788,7 +28788,7 @@ _080202E4: .4byte 0x06012A20
 _080202E8: .4byte 0x80000080
 _080202EC: .4byte 0x0200DE20
 _080202F0: .4byte 0x0000012D
-_080202F4: .4byte 0x03005000
+_080202F4: .4byte gOamBuffer
 _080202F8: .4byte 0xFFFFFE00
 _080202FC: .4byte 0x000001FF
 _08020300: .4byte 0x000006C2
@@ -30002,7 +30002,7 @@ _08020CF4:
 	strb r1, [r0]
 	movs r4, #0
 	lsls r1, r5, #0x10
-	ldr r2, _08020E18 @ =0x03005000
+	ldr r2, _08020E18 @ =gOamBuffer
 	mov sb, r2
 	ldr r3, _08020E1C @ =0x086B4922
 	mov r8, r3
@@ -30149,7 +30149,7 @@ _08020E02:
 	b _08020E46
 	.align 2, 0
 _08020E14: .4byte 0x000001E3
-_08020E18: .4byte 0x03005000
+_08020E18: .4byte gOamBuffer
 _08020E1C: .4byte 0x086B4922
 _08020E20: .4byte 0xFFFFFE00
 _08020E24: .4byte 0x000001FF
@@ -30165,7 +30165,7 @@ _08020E44:
 _08020E46:
 	strh r0, [r6, #4]
 	movs r4, #0
-	ldr r7, _08020EB4 @ =0x03005000
+	ldr r7, _08020EB4 @ =gOamBuffer
 	ldr r3, _08020EB8 @ =0xFFFFFE00
 	mov sb, r3
 _08020E50:
@@ -30220,7 +30220,7 @@ _08020EA4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020EB4: .4byte 0x03005000
+_08020EB4: .4byte gOamBuffer
 _08020EB8: .4byte 0xFFFFFE00
 _08020EBC: .4byte 0x000001FF
 
@@ -30476,7 +30476,7 @@ _080210B6:
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 	movs r0, #0
-	ldr r6, _080211C8 @ =0x03005000
+	ldr r6, _080211C8 @ =gOamBuffer
 	movs r1, #0xd
 	rsbs r1, r1, #0
 	mov sb, r1
@@ -30595,7 +30595,7 @@ _080211B8: .4byte 0x040000D4
 _080211BC: .4byte 0x083E85AC
 _080211C0: .4byte 0x060112A0
 _080211C4: .4byte 0x80000090
-_080211C8: .4byte 0x03005000
+_080211C8: .4byte gOamBuffer
 _080211CC: .4byte 0xFFFFFE00
 _080211D0: .4byte 0x000001FF
 _080211D4: .4byte 0x000009C3
@@ -31693,7 +31693,7 @@ _08021A64:
 	strb r1, [r0]
 _08021A9C:
 	movs r0, #0
-	ldr r7, _08021B00 @ =0x03005000
+	ldr r7, _08021B00 @ =gOamBuffer
 	ldr r1, _08021B04 @ =0xFFFFFE00
 	mov ip, r1
 _08021AA4:
@@ -31740,7 +31740,7 @@ _08021AF0: .4byte 0x040000D4
 _08021AF4: .4byte 0x0844838C
 _08021AF8: .4byte 0x060113C0
 _08021AFC: .4byte 0x80000180
-_08021B00: .4byte 0x03005000
+_08021B00: .4byte gOamBuffer
 _08021B04: .4byte 0xFFFFFE00
 _08021B08: .4byte 0x000001FF
 
@@ -31967,7 +31967,7 @@ _08021CB0:
 	movs r2, #1
 	bl sub_7C0
 	movs r0, #0
-	ldr r6, _08021D6C @ =0x03005000
+	ldr r6, _08021D6C @ =gOamBuffer
 	ldr r1, _08021D70 @ =0xFFFFFE00
 	mov ip, r1
 	movs r2, #4
@@ -32042,7 +32042,7 @@ _08021CEA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08021D6C: .4byte 0x03005000
+_08021D6C: .4byte gOamBuffer
 _08021D70: .4byte 0xFFFFFE00
 _08021D74: .4byte 0x000001FF
 
@@ -32239,7 +32239,7 @@ _08021ED4:
 	strh r1, [r7, #4]
 _08021EFC:
 	movs r0, #0
-	ldr r6, _08021FA4 @ =0x03005000
+	ldr r6, _08021FA4 @ =gOamBuffer
 	ldr r1, _08021FA8 @ =0xFFFFFE00
 	mov ip, r1
 _08021F04:
@@ -32319,7 +32319,7 @@ _08021F94: .4byte 0x040000D4
 _08021F98: .4byte 0x084F6B0C
 _08021F9C: .4byte 0x06013D00
 _08021FA0: .4byte 0x80000280
-_08021FA4: .4byte 0x03005000
+_08021FA4: .4byte gOamBuffer
 _08021FA8: .4byte 0xFFFFFE00
 _08021FAC: .4byte 0x000001FF
 _08021FB0: .4byte 0x000001A5
@@ -32398,7 +32398,7 @@ _0802202E:
 	movs r0, #0x60
 	strh r0, [r7, #4]
 	movs r5, #0
-	ldr r6, _0802218C @ =0x03005000
+	ldr r6, _0802218C @ =gOamBuffer
 	ldr r0, _08022190 @ =0xFFFFFE00
 	mov r8, r0
 _08022050:
@@ -32461,7 +32461,7 @@ _08022094:
 	movs r0, #0x58
 	strh r0, [r7, #4]
 	movs r5, #0
-	ldr r4, _0802218C @ =0x03005000
+	ldr r4, _0802218C @ =gOamBuffer
 	mov r8, r4
 	ldr r6, _0802219C @ =0x086B47DE
 	mov ip, r6
@@ -32555,7 +32555,7 @@ _0802217C: .4byte 0x08480E0C
 _08022180: .4byte 0x06015DA0
 _08022184: .4byte 0x80000020
 _08022188: .4byte 0x06015E60
-_0802218C: .4byte 0x03005000
+_0802218C: .4byte gOamBuffer
 _08022190: .4byte 0xFFFFFE00
 _08022194: .4byte 0x000001FF
 _08022198: .4byte 0x000001A5
@@ -32601,7 +32601,7 @@ _080221A2:
 	movs r6, #0x30
 	adds r6, r6, r7
 	mov sb, r6
-	ldr r6, _08022260 @ =0x03005000
+	ldr r6, _08022260 @ =gOamBuffer
 	ldr r0, _08022264 @ =0xFFFFFE00
 	mov r8, r0
 _080221F8:
@@ -32655,7 +32655,7 @@ _080221F8:
 _08022254: .4byte 0x086ADFC8
 _08022258: .4byte gMain
 _0802225C: .4byte 0x000001A5
-_08022260: .4byte 0x03005000
+_08022260: .4byte gOamBuffer
 _08022264: .4byte 0xFFFFFE00
 _08022268: .4byte 0x000001FF
 _0802226C:
@@ -32673,7 +32673,7 @@ _0802226C:
 	movs r6, #0x30
 	adds r6, r6, r7
 	mov sb, r6
-	ldr r6, _080222F0 @ =0x03005000
+	ldr r6, _080222F0 @ =gOamBuffer
 	ldr r0, _080222F4 @ =0xFFFFFE00
 	mov r8, r0
 _0802228E:
@@ -32725,7 +32725,7 @@ _0802228E:
 	b _0802233E
 	.align 2, 0
 _080222EC: .4byte 0x00000281
-_080222F0: .4byte 0x03005000
+_080222F0: .4byte gOamBuffer
 _080222F4: .4byte 0xFFFFFE00
 _080222F8: .4byte 0x000001FF
 _080222FC:
@@ -32736,7 +32736,7 @@ _080222FC:
 	movs r4, #0x30
 	adds r4, r4, r7
 	mov sb, r4
-	ldr r4, _08022354 @ =0x03005000
+	ldr r4, _08022354 @ =gOamBuffer
 	ldr r6, _08022358 @ =0xFFFFFE00
 	mov r8, r6
 	movs r6, #0xb4
@@ -32776,7 +32776,7 @@ _0802233E:
 	movs r0, #0xb4
 	b _08022376
 	.align 2, 0
-_08022354: .4byte 0x03005000
+_08022354: .4byte gOamBuffer
 _08022358: .4byte 0xFFFFFE00
 _0802235C: .4byte 0x000001A5
 _08022360:
@@ -32813,7 +32813,7 @@ _08022376:
 	mov r5, ip
 	ldrh r2, [r7, #0x28]
 	lsls r2, r2, #3
-	ldr r4, _080223D4 @ =0x03005000
+	ldr r4, _080223D4 @ =gOamBuffer
 	adds r2, r2, r4
 	movs r6, #2
 	ldrsh r1, [r5, r6]
@@ -32839,12 +32839,12 @@ _08022376:
 	b _080223F6
 	.align 2, 0
 _080223D0: .4byte 0x0000025D
-_080223D4: .4byte 0x03005000
+_080223D4: .4byte gOamBuffer
 _080223D8: .4byte 0xFFFFFE00
 _080223DC:
 	ldrh r1, [r7, #0x28]
 	lsls r1, r1, #3
-	ldr r6, _08022448 @ =0x03005000
+	ldr r6, _08022448 @ =gOamBuffer
 	adds r1, r1, r6
 	ldrh r2, [r1, #2]
 	ldr r0, _0802244C @ =0xFFFFFE00
@@ -32869,7 +32869,7 @@ _080223F6:
 	mov r5, sb
 	ldrh r2, [r7, #0x30]
 	lsls r2, r2, #3
-	ldr r3, _08022448 @ =0x03005000
+	ldr r3, _08022448 @ =gOamBuffer
 	adds r2, r2, r3
 	movs r4, #2
 	ldrsh r1, [r5, r4]
@@ -32886,7 +32886,7 @@ _080223F6:
 	strh r0, [r2, #2]
 	ldrh r2, [r7, #0x30]
 	lsls r2, r2, #3
-	ldr r4, _08022448 @ =0x03005000
+	ldr r4, _08022448 @ =gOamBuffer
 	adds r2, r2, r4
 	ldrb r1, [r7, #4]
 	ldrb r5, [r5, #4]
@@ -32897,13 +32897,13 @@ _080223F6:
 	strb r0, [r2]
 	b _08022470
 	.align 2, 0
-_08022448: .4byte 0x03005000
+_08022448: .4byte gOamBuffer
 _0802244C: .4byte 0xFFFFFE00
 _08022450: .4byte 0x000001FF
 _08022454:
 	ldrh r1, [r7, #0x30]
 	lsls r1, r1, #3
-	ldr r0, _08022490 @ =0x03005000
+	ldr r0, _08022490 @ =gOamBuffer
 	adds r1, r1, r0
 	ldrh r2, [r1, #2]
 	ldr r0, _08022494 @ =0xFFFFFE00
@@ -32911,7 +32911,7 @@ _08022454:
 	strh r0, [r1, #2]
 	ldrh r0, [r7, #0x30]
 	lsls r0, r0, #3
-	ldr r1, _08022490 @ =0x03005000
+	ldr r1, _08022490 @ =gOamBuffer
 	adds r0, r0, r1
 	movs r1, #0xb4
 	strb r1, [r0]
@@ -32933,7 +32933,7 @@ _0802247E:
 	movs r0, #0xb4
 	b _0802249E
 	.align 2, 0
-_08022490: .4byte 0x03005000
+_08022490: .4byte gOamBuffer
 _08022494: .4byte 0xFFFFFE00
 _08022498: .4byte gMain
 _0802249C:
@@ -33048,7 +33048,7 @@ _08022556:
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 	movs r5, #0
-	ldr r6, _080225E4 @ =0x03005000
+	ldr r6, _080225E4 @ =gOamBuffer
 	ldr r4, _080225E8 @ =0xFFFFFE00
 	mov r8, r4
 _0802257A:
@@ -33101,7 +33101,7 @@ _080225D4: .4byte 0x040000D4
 _080225D8: .4byte 0x0847FF0C
 _080225DC: .4byte 0x06016220
 _080225E0: .4byte 0x80000180
-_080225E4: .4byte 0x03005000
+_080225E4: .4byte gOamBuffer
 _080225E8: .4byte 0xFFFFFE00
 _080225EC: .4byte 0x000001FF
 
@@ -33379,7 +33379,7 @@ _0802280E:
 	movs r2, #0
 	ldr r1, _08022848 @ =0x086B481A
 	mov r8, r1
-	ldr r3, _0802284C @ =0x03005000
+	ldr r3, _0802284C @ =gOamBuffer
 	mov ip, r3
 _08022818:
 	mov r5, sl
@@ -33407,7 +33407,7 @@ _08022818:
 	b _0802286A
 	.align 2, 0
 _08022848: .4byte 0x086B481A
-_0802284C: .4byte 0x03005000
+_0802284C: .4byte gOamBuffer
 _08022850:
 	lsls r1, r3, #1
 	movs r6, #0xcc
@@ -33826,7 +33826,7 @@ _08022B5A:
 	movs r2, #0
 	ldr r5, _08022C5C @ =0x086B28A0
 	mov sb, r5
-	ldr r6, _08022C60 @ =0x03005000
+	ldr r6, _08022C60 @ =gOamBuffer
 	movs r3, #0
 	ldrsh r1, [r0, r3]
 	lsls r0, r1, #3
@@ -33909,7 +33909,7 @@ _08022C50: .4byte 0x00000149
 _08022C54: .4byte 0x000002CA
 _08022C58: .4byte 0x086ADFE2
 _08022C5C: .4byte 0x086B28A0
-_08022C60: .4byte 0x03005000
+_08022C60: .4byte gOamBuffer
 _08022C64: .4byte 0xFFFFFE00
 _08022C68: .4byte 0x000001FF
 
@@ -34214,7 +34214,7 @@ _08022EBA:
 	mov r2, r8
 	strh r0, [r2, #4]
 	movs r2, #0
-	ldr r3, _08022F94 @ =0x03005000
+	ldr r3, _08022F94 @ =gOamBuffer
 	mov ip, r3
 	ldr r7, _08022F98 @ =0x086B4850
 	mov sl, r7
@@ -34294,7 +34294,7 @@ _08022F08:
 	bx r0
 	.align 2, 0
 _08022F90: .4byte 0x000002CA
-_08022F94: .4byte 0x03005000
+_08022F94: .4byte gOamBuffer
 _08022F98: .4byte 0x086B4850
 _08022F9C: .4byte 0xFFFFFE00
 _08022FA0: .4byte 0x000001FF
@@ -34410,7 +34410,7 @@ sub_23070: @ 0x08023070
 	movs r0, #0
 	ldr r1, _080230F8 @ =0x020314E0
 	mov r8, r1
-	ldr r7, _080230FC @ =0x03005000
+	ldr r7, _080230FC @ =gOamBuffer
 	ldr r2, _08023100 @ =0xFFFFFE00
 	mov ip, r2
 _08023088:
@@ -34471,7 +34471,7 @@ _08023088:
 	.align 2, 0
 _080230F4: .4byte gMain
 _080230F8: .4byte 0x020314E0
-_080230FC: .4byte 0x03005000
+_080230FC: .4byte gOamBuffer
 _08023100: .4byte 0xFFFFFE00
 _08023104: .4byte 0x0000020E
 _08023108: .4byte 0x000001FF
@@ -34750,7 +34750,7 @@ sub_23300: @ 0x08023300
 	movs r0, #0xb4
 	strh r0, [r7, #4]
 	movs r5, #0
-	ldr r6, _080233F0 @ =0x03005000
+	ldr r6, _080233F0 @ =gOamBuffer
 	ldr r4, _080233F4 @ =0xFFFFFE00
 	mov r8, r4
 _08023342:
@@ -34796,7 +34796,7 @@ _08023342:
 	movs r0, #0xb4
 	strh r0, [r7, #4]
 	movs r5, #0
-	ldr r6, _080233F0 @ =0x03005000
+	ldr r6, _080233F0 @ =gOamBuffer
 	ldr r4, _080233F4 @ =0xFFFFFE00
 	mov r8, r4
 _0802339C:
@@ -34839,7 +34839,7 @@ _0802339C:
 _080233E4: .4byte 0x020314E0
 _080233E8: .4byte 0x000006C4
 _080233EC: .4byte gMain
-_080233F0: .4byte 0x03005000
+_080233F0: .4byte gOamBuffer
 _080233F4: .4byte 0xFFFFFE00
 _080233F8: .4byte 0x000001FF
 _080233FC:
@@ -34859,7 +34859,7 @@ _08023410:
 	ldr r0, [r1, #0x44]
 	ldr r7, [r0, #0x10]
 	movs r5, #0
-	ldr r3, _08023440 @ =0x03005000
+	ldr r3, _08023440 @ =gOamBuffer
 	mov sb, r3
 	ldr r4, _08023444 @ =0x00000637
 	mov sl, r4
@@ -34880,7 +34880,7 @@ _08023420:
 	b _0802347C
 	.align 2, 0
 _0802343C: .4byte gMain
-_08023440: .4byte 0x03005000
+_08023440: .4byte gOamBuffer
 _08023444: .4byte 0x00000637
 _08023448: .4byte 0x00000212
 _0802344C:
@@ -34980,7 +34980,7 @@ _0802347C:
 	movs r5, #0
 	ldr r0, _08023544 @ =0x00000637
 	mov sl, r0
-	ldr r1, _08023548 @ =0x03005000
+	ldr r1, _08023548 @ =gOamBuffer
 	mov sb, r1
 _08023512:
 	mov r2, r8
@@ -35005,7 +35005,7 @@ _08023538: .4byte 0x000001FF
 _0802353C: .4byte 0xFFFFFE00
 _08023540: .4byte gMain
 _08023544: .4byte 0x00000637
-_08023548: .4byte 0x03005000
+_08023548: .4byte gOamBuffer
 _0802354C: .4byte 0x000013D4
 _08023550:
 	lsls r0, r3, #2
@@ -35164,7 +35164,7 @@ _08023688:
 	ldr r0, [r1, #0x44]
 	ldr r7, [r0, #0x10]
 	movs r5, #0
-	ldr r2, _080236B4 @ =0x03005000
+	ldr r2, _080236B4 @ =gOamBuffer
 	mov sb, r2
 _08023694:
 	mov r3, r8
@@ -35183,7 +35183,7 @@ _08023694:
 	b _080236E2
 	.align 2, 0
 _080236B0: .4byte gMain
-_080236B4: .4byte 0x03005000
+_080236B4: .4byte gOamBuffer
 _080236B8: .4byte 0x00000212
 _080236BC:
 	lsls r4, r4, #2
@@ -35274,7 +35274,7 @@ _080236E2:
 	ldr r0, [r5, #0x44]
 	ldr r7, [r0, #0x14]
 	movs r5, #0
-	ldr r0, _080237A4 @ =0x03005000
+	ldr r0, _080237A4 @ =gOamBuffer
 	mov sb, r0
 _08023772:
 	mov r1, r8
@@ -35298,7 +35298,7 @@ _08023794: .4byte 0x000006E6
 _08023798: .4byte 0x000001FF
 _0802379C: .4byte 0xFFFFFE00
 _080237A0: .4byte gMain
-_080237A4: .4byte 0x03005000
+_080237A4: .4byte gOamBuffer
 _080237A8: .4byte 0x000013D4
 _080237AC:
 	lsls r4, r4, #2
@@ -35395,7 +35395,7 @@ _0802385C:
 	movs r0, #0xb4
 	strh r0, [r7, #4]
 	movs r5, #0
-	ldr r6, _08023948 @ =0x03005000
+	ldr r6, _08023948 @ =gOamBuffer
 	ldr r0, _0802394C @ =0xFFFFFE00
 	mov sb, r0
 _08023876:
@@ -35445,7 +35445,7 @@ _080238BA:
 	movs r0, #0xb4
 	strh r0, [r7, #4]
 	movs r5, #0
-	ldr r6, _08023948 @ =0x03005000
+	ldr r6, _08023948 @ =gOamBuffer
 	ldr r4, _0802394C @ =0xFFFFFE00
 	mov sb, r4
 _080238D6:
@@ -35508,7 +35508,7 @@ _08023934:
 	bx r0
 	.align 2, 0
 _08023944: .4byte gMain
-_08023948: .4byte 0x03005000
+_08023948: .4byte gOamBuffer
 _0802394C: .4byte 0xFFFFFE00
 _08023950: .4byte 0x000001FF
 
@@ -35956,7 +35956,7 @@ _08023CCA:
 	movs r2, #0
 	mov r3, ip
 	lsls r1, r3, #0x10
-	ldr r7, _08023DFC @ =0x03005000
+	ldr r7, _08023DFC @ =gOamBuffer
 	asrs r1, r1, #0x10
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -36051,7 +36051,7 @@ _08023CDC:
 	ldrh r0, [r0]
 	strh r0, [r6, #4]
 	movs r2, #0
-	ldr r7, _08023DFC @ =0x03005000
+	ldr r7, _08023DFC @ =gOamBuffer
 	mov sl, r8
 	mov r8, ip
 _08023D92:
@@ -36109,7 +36109,7 @@ _08023D92:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08023DFC: .4byte 0x03005000
+_08023DFC: .4byte gOamBuffer
 _08023E00: .4byte 0x086B4D4E
 _08023E04: .4byte 0x000001FF
 _08023E08: .4byte 0xFFFFFE00
@@ -36619,7 +36619,7 @@ _0802420C:
 	strh r0, [r7, #4]
 _08024226:
 	movs r0, #0
-	ldr r6, _080242A8 @ =0x03005000
+	ldr r6, _080242A8 @ =gOamBuffer
 	ldr r1, [sp]
 	lsls r1, r1, #2
 	mov ip, r1
@@ -36684,7 +36684,7 @@ _0802423A:
 	bx r0
 	.align 2, 0
 _080242A4: .4byte 0x000002D6
-_080242A8: .4byte 0x03005000
+_080242A8: .4byte gOamBuffer
 _080242AC: .4byte 0xFFFFFE00
 _080242B0: .4byte 0x000001FF
 
@@ -37189,7 +37189,7 @@ _08024656:
 	lsls r1, r6, #0x10
 	ldr r5, _08024774 @ =0x086B4B0E
 	mov r8, r5
-	ldr r6, _08024778 @ =0x03005000
+	ldr r6, _08024778 @ =gOamBuffer
 	asrs r1, r1, #0x10
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -37272,7 +37272,7 @@ _08024768: .4byte 0x020315D0
 _0802476C: .4byte 0x050003A0
 _08024770: .4byte 0x80000010
 _08024774: .4byte 0x086B4B0E
-_08024778: .4byte 0x03005000
+_08024778: .4byte gOamBuffer
 _0802477C: .4byte 0x000001FF
 _08024780: .4byte 0xFFFFFE00
 _08024784:
@@ -37602,7 +37602,7 @@ _08024A28:
 	strh r1, [r5, #4]
 _08024A34:
 	movs r2, #0
-	ldr r6, _08024AA8 @ =0x03005000
+	ldr r6, _08024AA8 @ =gOamBuffer
 	mov r7, sl
 	lsls r7, r7, #2
 	mov ip, r7
@@ -37660,7 +37660,7 @@ _08024A48:
 	ble _08024A48
 	bl _080252F6
 	.align 2, 0
-_08024AA8: .4byte 0x03005000
+_08024AA8: .4byte gOamBuffer
 _08024AAC: .4byte 0xFFFFFE00
 _08024AB0: .4byte 0x000001FF
 _08024AB4:
@@ -37955,7 +37955,7 @@ _08024CF8:
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 	movs r2, #0
-	ldr r5, _08024DB0 @ =0x03005000
+	ldr r5, _08024DB0 @ =gOamBuffer
 	mov r8, r5
 	mov r0, sl
 	lsls r0, r0, #2
@@ -38030,7 +38030,7 @@ _08024DA0: .4byte 0x040000D4
 _08024DA4: .4byte 0x0202C7A0
 _08024DA8: .4byte 0x060112A0
 _08024DAC: .4byte 0x80000090
-_08024DB0: .4byte 0x03005000
+_08024DB0: .4byte gOamBuffer
 _08024DB4: .4byte 0xFFFFFE00
 _08024DB8: .4byte 0x000001FF
 _08024DBC: .4byte 0x020314E0
@@ -38323,7 +38323,7 @@ _0802500A:
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
 	movs r2, #0
-	ldr r6, _080250D8 @ =0x03005000
+	ldr r6, _080250D8 @ =gOamBuffer
 	movs r1, #0xd
 	rsbs r1, r1, #0
 	mov r8, r1
@@ -38400,7 +38400,7 @@ _080250C8: .4byte 0x000006D3
 _080250CC: .4byte 0x0202D760
 _080250D0: .4byte 0x060112A0
 _080250D4: .4byte 0x80000090
-_080250D8: .4byte 0x03005000
+_080250D8: .4byte gOamBuffer
 _080250DC: .4byte 0xFFFFFE00
 _080250E0: .4byte 0x000001FF
 _080250E4:
@@ -38450,7 +38450,7 @@ _0802510A:
 	mov r6, sb
 	strh r0, [r6, #4]
 	movs r2, #0
-	ldr r6, _080251E8 @ =0x03005000
+	ldr r6, _080251E8 @ =gOamBuffer
 	mov r7, sl
 	lsls r7, r7, #2
 	mov ip, r7
@@ -38535,7 +38535,7 @@ _080251D4:
 	b _080252F6
 	.align 2, 0
 _080251E4: .4byte 0x020314E0
-_080251E8: .4byte 0x03005000
+_080251E8: .4byte gOamBuffer
 _080251EC: .4byte 0xFFFFFE00
 _080251F0: .4byte 0x000001FF
 _080251F4: .4byte 0x040000D4
@@ -38553,7 +38553,7 @@ _08025208:
 	movs r0, #0xc8
 	strh r0, [r1, #4]
 	movs r2, #0
-	ldr r6, _08025280 @ =0x03005000
+	ldr r6, _08025280 @ =gOamBuffer
 	ldr r3, _08025284 @ =0xFFFFFE00
 	mov r8, r3
 _08025220:
@@ -38606,7 +38606,7 @@ _08025268:
 	adds r0, #1
 	b _080252F4
 	.align 2, 0
-_08025280: .4byte 0x03005000
+_08025280: .4byte gOamBuffer
 _08025284: .4byte 0xFFFFFE00
 _08025288: .4byte 0x000001FF
 _0802528C: .4byte gMain
@@ -38688,7 +38688,7 @@ sub_2530C: @ 0x0802530C
 	cmp r1, #0
 	beq _08025360
 	movs r0, #0
-	ldr r6, _080253D8 @ =0x03005000
+	ldr r6, _080253D8 @ =gOamBuffer
 	ldr r1, _080253DC @ =0xFFFFFE00
 	mov ip, r1
 	movs r7, #0xc8
@@ -38730,7 +38730,7 @@ _08025360:
 	cmp r0, #0
 	beq _080253B0
 	movs r0, #0
-	ldr r6, _080253D8 @ =0x03005000
+	ldr r6, _080253D8 @ =gOamBuffer
 	ldr r1, _080253DC @ =0xFFFFFE00
 	mov ip, r1
 	movs r7, #0xc8
@@ -38779,7 +38779,7 @@ _080253B0:
 	.align 2, 0
 _080253D0: .4byte gMain
 _080253D4: .4byte 0x020314E0
-_080253D8: .4byte 0x03005000
+_080253D8: .4byte gOamBuffer
 _080253DC: .4byte 0xFFFFFE00
 
 	thumb_func_start sub_253E0
@@ -39162,7 +39162,7 @@ _080256DE:
 	strh r0, [r7, #4]
 _080256EC:
 	movs r2, #0
-	ldr r0, _080257EC @ =0x03005000
+	ldr r0, _080257EC @ =gOamBuffer
 	mov ip, r0
 	ldr r1, _080257F0 @ =0x086AD3FE
 	mov sl, r1
@@ -39290,7 +39290,7 @@ _080256FE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080257EC: .4byte 0x03005000
+_080257EC: .4byte gOamBuffer
 _080257F0: .4byte 0x086AD3FE
 _080257F4: .4byte 0x020314E0
 _080257F8: .4byte 0x000006CC
@@ -39508,7 +39508,7 @@ _08025996:
 _080259CE:
 	movs r2, #0
 	lsls r0, r5, #0x10
-	ldr r7, _08025A6C @ =0x03005000
+	ldr r7, _08025A6C @ =gOamBuffer
 	mov r8, r7
 	ldr r1, _08025A70 @ =0x086B50AE
 	mov ip, r1
@@ -39583,7 +39583,7 @@ _080259E8:
 _08025A60: .4byte 0x00000603
 _08025A64: .4byte gMain
 _08025A68: .4byte 0x00000602
-_08025A6C: .4byte 0x03005000
+_08025A6C: .4byte gOamBuffer
 _08025A70: .4byte 0x086B50AE
 _08025A74: .4byte 0xFFFFFE00
 _08025A78: .4byte 0x000001FF
@@ -39703,7 +39703,7 @@ _08025B3E:
 _08025B6C:
 	movs r2, #0
 	lsls r0, r5, #0x10
-	ldr r3, _08025C08 @ =0x03005000
+	ldr r3, _08025C08 @ =gOamBuffer
 	mov r8, r3
 	ldr r4, _08025C0C @ =0x086B4F6A
 	mov ip, r4
@@ -39778,7 +39778,7 @@ _08025B86:
 _08025BFC: .4byte gMain
 _08025C00: .4byte 0x00000602
 _08025C04: .4byte 0x00000603
-_08025C08: .4byte 0x03005000
+_08025C08: .4byte gOamBuffer
 _08025C0C: .4byte 0x086B4F6A
 _08025C10: .4byte 0xFFFFFE00
 _08025C14: .4byte 0x000001FF
@@ -40097,7 +40097,7 @@ _08025E6C:
 _08025EA8:
 	movs r2, #0
 	lsls r0, r5, #0x10
-	ldr r3, _08025F54 @ =0x03005000
+	ldr r3, _08025F54 @ =gOamBuffer
 	mov r8, r3
 	ldr r4, _08025F58 @ =0x086B4E62
 	mov ip, r4
@@ -40180,7 +40180,7 @@ _08025F44: .4byte 0x00000603
 _08025F48: .4byte gMain
 _08025F4C: .4byte 0x000006C6
 _08025F50: .4byte 0x000006C7
-_08025F54: .4byte 0x03005000
+_08025F54: .4byte gOamBuffer
 _08025F58: .4byte 0x086B4E62
 _08025F5C: .4byte 0xFFFFFE00
 _08025F60: .4byte 0x000001FF
@@ -41077,7 +41077,7 @@ _08026654:
 _08026696:
 	movs r2, #0
 	lsls r1, r3, #0x10
-	ldr r7, _08026764 @ =0x03005000
+	ldr r7, _08026764 @ =gOamBuffer
 	mov r8, r7
 	ldr r0, _08026768 @ =0x086B51CE
 	mov ip, r0
@@ -41181,7 +41181,7 @@ _0802674E:
 	bx r0
 	.align 2, 0
 _08026760: .4byte gMain
-_08026764: .4byte 0x03005000
+_08026764: .4byte gOamBuffer
 _08026768: .4byte 0x086B51CE
 _0802676C: .4byte 0xFFFFFE00
 _08026770: .4byte 0x000001FF
@@ -43232,7 +43232,7 @@ _080277D8:
 	ldr r4, [r0]
 	movs r7, #8
 	adds r7, r7, r4
-	ldr r5, _08027880 @ =0x03005000
+	ldr r5, _08027880 @ =gOamBuffer
 	ldrh r1, [r4, #8]
 	lsls r1, r1, #3
 	adds r1, r1, r5
@@ -43307,7 +43307,7 @@ _080277D8:
 	b _080278E6
 	.align 2, 0
 _0802787C: .4byte gMain
-_08027880: .4byte 0x03005000
+_08027880: .4byte gOamBuffer
 _08027884: .4byte 0x000001FF
 _08027888: .4byte 0xFFFFFE00
 _0802788C: .4byte 0x020314E0
@@ -43556,7 +43556,7 @@ _08027A7E:
 	strh r0, [r7, #4]
 _08027A8A:
 	movs r0, #0
-	ldr r3, _08027B60 @ =0x03005000
+	ldr r3, _08027B60 @ =gOamBuffer
 	mov sl, r3
 	ldr r5, _08027B64 @ =0x086B4202
 	mov sb, r5
@@ -43658,7 +43658,7 @@ _08027B50: .4byte 0x0869F5C8
 _08027B54: .4byte 0x020314E0
 _08027B58: .4byte 0x0000025A
 _08027B5C: .4byte 0x0000FFE2
-_08027B60: .4byte 0x03005000
+_08027B60: .4byte gOamBuffer
 _08027B64: .4byte 0x086B4202
 _08027B68: .4byte 0x000001FF
 _08027B6C: .4byte 0xFFFFFE00
@@ -43831,7 +43831,7 @@ _08027C8A:
 	ldr r0, [r2, #8]
 	adds r6, r7, #0
 	adds r6, #8
-	ldr r4, _08027D38 @ =0x03005000
+	ldr r4, _08027D38 @ =gOamBuffer
 	ldrh r2, [r7, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -43880,7 +43880,7 @@ _08027D28: .4byte 0x086AD49C
 _08027D2C: .4byte 0x0000025F
 _08027D30: .4byte 0x060116C0
 _08027D34: .4byte 0x80000100
-_08027D38: .4byte 0x03005000
+_08027D38: .4byte gOamBuffer
 _08027D3C: .4byte 0x000001FF
 _08027D40: .4byte 0xFFFFFE00
 
@@ -45865,7 +45865,7 @@ _08028D8E:
 	strh r0, [r6, #4]
 _08028D9A:
 	movs r0, #0
-	ldr r7, _08028E20 @ =0x03005000
+	ldr r7, _08028E20 @ =gOamBuffer
 	ldr r2, _08028E24 @ =0xFFFFFE00
 	mov sb, r2
 	lsls r1, r1, #2
@@ -45929,7 +45929,7 @@ _08028E10: .4byte 0x040000D4
 _08028E14: .4byte 0x02030760
 _08028E18: .4byte 0x06010CA0
 _08028E1C: .4byte 0x80000240
-_08028E20: .4byte 0x03005000
+_08028E20: .4byte gOamBuffer
 _08028E24: .4byte 0xFFFFFE00
 _08028E28: .4byte 0x000001FF
 
@@ -45947,7 +45947,7 @@ sub_28E2C: @ 0x08028E2C
 	cmp r1, #0
 	beq _08028E7C
 	movs r0, #0
-	ldr r6, _08028E98 @ =0x03005000
+	ldr r6, _08028E98 @ =gOamBuffer
 	ldr r1, _08028E9C @ =0xFFFFFE00
 	mov ip, r1
 	movs r7, #0xc8
@@ -45990,7 +45990,7 @@ _08028E7C:
 	bx r0
 	.align 2, 0
 _08028E94: .4byte gMain
-_08028E98: .4byte 0x03005000
+_08028E98: .4byte gOamBuffer
 _08028E9C: .4byte 0xFFFFFE00
 
 	thumb_func_start sub_28EA0
@@ -46213,7 +46213,7 @@ _08029052:
 	strh r1, [r7, #4]
 _0802905C:
 	movs r2, #0
-	ldr r6, _0802912C @ =0x03005000
+	ldr r6, _0802912C @ =gOamBuffer
 	ldr r0, _08029130 @ =0xFFFFFE00
 	mov sl, r0
 	lsls r3, r3, #2
@@ -46320,7 +46320,7 @@ _080290C6:
 	strh r0, [r7, #4]
 	b _0802914E
 	.align 2, 0
-_0802912C: .4byte 0x03005000
+_0802912C: .4byte gOamBuffer
 _08029130: .4byte 0xFFFFFE00
 _08029134: .4byte 0x000001FF
 _08029138: .4byte gMain
@@ -46352,7 +46352,7 @@ _08029164:
 	adds r5, r7, r0
 	ldrh r2, [r5]
 	lsls r2, r2, #3
-	ldr r1, _0802928C @ =0x03005000
+	ldr r1, _0802928C @ =gOamBuffer
 	adds r2, r2, r1
 	lsls r0, r3, #1
 	adds r0, r0, r3
@@ -46369,7 +46369,7 @@ _08029164:
 	strh r0, [r2, #2]
 	ldrh r2, [r5]
 	lsls r2, r2, #3
-	ldr r6, _0802928C @ =0x03005000
+	ldr r6, _0802928C @ =gOamBuffer
 	adds r2, r2, r6
 	ldrh r4, [r2, #2]
 	lsls r1, r4, #0x17
@@ -46388,7 +46388,7 @@ _08029164:
 	strh r0, [r2, #2]
 	ldrh r1, [r5]
 	lsls r1, r1, #3
-	ldr r0, _0802928C @ =0x03005000
+	ldr r0, _0802928C @ =gOamBuffer
 	adds r1, r1, r0
 	ldrb r0, [r7, #4]
 	ldrb r2, [r1]
@@ -46497,7 +46497,7 @@ _08029274:
 	.align 2, 0
 _08029284: .4byte 0x086B263C
 _08029288: .4byte 0xFFFFFE00
-_0802928C: .4byte 0x03005000
+_0802928C: .4byte gOamBuffer
 _08029290: .4byte 0x000001FF
 _08029294: .4byte 0x020314E0
 _08029298: .4byte 0x000005A4
@@ -46517,7 +46517,7 @@ sub_292A0: @ 0x080292A0
 	cmp r1, #0
 	beq _080292F0
 	movs r0, #0
-	ldr r6, _0802932C @ =0x03005000
+	ldr r6, _0802932C @ =gOamBuffer
 	ldr r1, _08029330 @ =0xFFFFFE00
 	mov ip, r1
 	movs r7, #0xc8
@@ -46577,7 +46577,7 @@ _08029300:
 	bx r0
 	.align 2, 0
 _08029328: .4byte gMain
-_0802932C: .4byte 0x03005000
+_0802932C: .4byte gOamBuffer
 _08029330: .4byte 0xFFFFFE00
 
 	thumb_func_start sub_29334
@@ -46798,7 +46798,7 @@ _080294D2:
 	adds r6, r7, r6
 	ldrh r4, [r6]
 	lsls r4, r4, #3
-	ldr r0, _08029618 @ =0x03005000
+	ldr r0, _08029618 @ =gOamBuffer
 	adds r4, r4, r0
 	lsls r3, r5, #1
 	adds r3, r3, r5
@@ -46865,7 +46865,7 @@ _080294D2:
 	strh r0, [r4, #2]
 	ldrh r2, [r6]
 	lsls r2, r2, #3
-	ldr r4, _08029618 @ =0x03005000
+	ldr r4, _08029618 @ =gOamBuffer
 	adds r2, r2, r4
 	ldrh r3, [r2, #2]
 	lsls r1, r3, #0x17
@@ -46882,7 +46882,7 @@ _080294D2:
 	strh r0, [r2, #2]
 	ldrh r1, [r6]
 	lsls r1, r1, #3
-	ldr r0, _08029618 @ =0x03005000
+	ldr r0, _08029618 @ =gOamBuffer
 	adds r1, r1, r0
 	ldrb r0, [r7, #4]
 	ldrb r2, [r1]
@@ -46944,7 +46944,7 @@ _08029608: .4byte 0x06010CA0
 _0802960C: .4byte 0x80000240
 _08029610: .4byte 0x086B55DC
 _08029614: .4byte 0x086AD436
-_08029618: .4byte 0x03005000
+_08029618: .4byte gOamBuffer
 _0802961C: .4byte 0x000001FF
 _08029620: .4byte 0xFFFFFE00
 
@@ -47206,7 +47206,7 @@ _08029824:
 	adds r4, r6, r4
 	ldrh r2, [r4]
 	lsls r2, r2, #3
-	ldr r0, _080298E4 @ =0x03005000
+	ldr r0, _080298E4 @ =gOamBuffer
 	adds r2, r2, r0
 	mov r1, sl
 	lsls r0, r1, #0x10
@@ -47230,7 +47230,7 @@ _08029824:
 	strh r0, [r2, #2]
 	ldrh r3, [r4]
 	lsls r3, r3, #3
-	ldr r6, _080298E4 @ =0x03005000
+	ldr r6, _080298E4 @ =gOamBuffer
 	adds r3, r3, r6
 	ldrh r2, [r3, #2]
 	lsls r1, r2, #0x17
@@ -47248,7 +47248,7 @@ _08029824:
 	strh r2, [r3, #2]
 	ldrh r1, [r4]
 	lsls r1, r1, #3
-	ldr r0, _080298E4 @ =0x03005000
+	ldr r0, _080298E4 @ =gOamBuffer
 	adds r1, r1, r0
 	asrs r0, r7, #0x10
 	ldrb r2, [r1]
@@ -47285,7 +47285,7 @@ _080298D4: .4byte 0x000036AF
 _080298D8: .4byte 0xFFFF0000
 _080298DC: .4byte 0xFFFFFED4
 _080298E0: .4byte 0x0000FFFF
-_080298E4: .4byte 0x03005000
+_080298E4: .4byte gOamBuffer
 _080298E8: .4byte 0x086B53B4
 _080298EC: .4byte 0x086B53B8
 _080298F0: .4byte 0x000001FF
@@ -47480,7 +47480,7 @@ sub_29A6C: @ 0x08029A6C
 	b _08029C52
 _08029A88:
 	movs r5, #0
-	ldr r0, _08029D30 @ =0x03005000
+	ldr r0, _08029D30 @ =gOamBuffer
 	mov r8, r0
 	ldr r1, _08029D34 @ =0x086B4E3E
 	mov sl, r1
@@ -47818,7 +47818,7 @@ _08029D0E:
 	b _08029D84
 	.align 2, 0
 _08029D2C: .4byte gMain
-_08029D30: .4byte 0x03005000
+_08029D30: .4byte gOamBuffer
 _08029D34: .4byte 0x086B4E3E
 _08029D38: .4byte 0x020314E0
 _08029D3C: .4byte 0x00000606
@@ -50098,7 +50098,7 @@ _0802B034:
 	bne _0802B11C
 	movs r5, #0
 	lsls r0, r3, #0x10
-	ldr r1, _0802B10C @ =0x03005000
+	ldr r1, _0802B10C @ =gOamBuffer
 	mov r8, r1
 	ldr r2, _0802B110 @ =0x081B0FE4
 	mov sb, r2
@@ -50184,14 +50184,14 @@ _0802B0FC: .4byte 0x80000010
 _0802B100: .4byte gMain
 _0802B104: .4byte 0x020314E0
 _0802B108: .4byte 0x0000132C
-_0802B10C: .4byte 0x03005000
+_0802B10C: .4byte gOamBuffer
 _0802B110: .4byte 0x081B0FE4
 _0802B114: .4byte 0x000001FF
 _0802B118: .4byte 0xFFFFFE00
 _0802B11C:
 	movs r5, #0
 	lsls r0, r3, #0x10
-	ldr r3, _0802B1E8 @ =0x03005000
+	ldr r3, _0802B1E8 @ =gOamBuffer
 	mov sb, r3
 	ldr r4, _0802B1EC @ =0x081B0FE4
 	mov r8, r4
@@ -50293,7 +50293,7 @@ _0802B1DC:
 	strh r0, [r1]
 	bl _0802C4D2
 	.align 2, 0
-_0802B1E8: .4byte 0x03005000
+_0802B1E8: .4byte gOamBuffer
 _0802B1EC: .4byte 0x081B0FE4
 _0802B1F0: .4byte 0xFFFFFE00
 _0802B1F4: .4byte 0x000001FF
@@ -50739,7 +50739,7 @@ _0802B584:
 	bne _0802B684
 	movs r5, #0
 	lsls r0, r3, #0x10
-	ldr r7, _0802B674 @ =0x03005000
+	ldr r7, _0802B674 @ =gOamBuffer
 	mov r8, r7
 	ldr r1, _0802B678 @ =0x081B0FE4
 	mov sb, r1
@@ -50821,14 +50821,14 @@ _0802B664: .4byte gMain
 _0802B668: .4byte 0x020314E0
 _0802B66C: .4byte 0x0000132C
 _0802B670: .4byte 0x086ACFF4
-_0802B674: .4byte 0x03005000
+_0802B674: .4byte gOamBuffer
 _0802B678: .4byte 0x081B0FE4
 _0802B67C: .4byte 0x000001FF
 _0802B680: .4byte 0xFFFFFE00
 _0802B684:
 	movs r5, #0
 	lsls r0, r3, #0x10
-	ldr r3, _0802B75C @ =0x03005000
+	ldr r3, _0802B75C @ =gOamBuffer
 	mov sb, r3
 	ldr r4, _0802B760 @ =0x081B0FE4
 	mov r8, r4
@@ -50938,7 +50938,7 @@ _0802B73A:
 	strb r1, [r0]
 	b _0802B7F8
 	.align 2, 0
-_0802B75C: .4byte 0x03005000
+_0802B75C: .4byte gOamBuffer
 _0802B760: .4byte 0x081B0FE4
 _0802B764: .4byte 0xFFFFFE00
 _0802B768: .4byte 0x000001FF
@@ -51151,7 +51151,7 @@ _0802B8E0:
 	bne _0802B9D8
 	movs r5, #0
 	lsls r0, r3, #0x10
-	ldr r1, _0802B9C8 @ =0x03005000
+	ldr r1, _0802B9C8 @ =gOamBuffer
 	mov r8, r1
 	ldr r2, _0802B9CC @ =0x081B0FE4
 	mov sb, r2
@@ -51233,14 +51233,14 @@ _0802B9B8: .4byte gMain
 _0802B9BC: .4byte 0x020314E0
 _0802B9C0: .4byte 0x0000132C
 _0802B9C4: .4byte 0x086ACFF4
-_0802B9C8: .4byte 0x03005000
+_0802B9C8: .4byte gOamBuffer
 _0802B9CC: .4byte 0x081B0FE4
 _0802B9D0: .4byte 0x000001FF
 _0802B9D4: .4byte 0xFFFFFE00
 _0802B9D8:
 	movs r5, #0
 	lsls r0, r3, #0x10
-	ldr r3, _0802BA6C @ =0x03005000
+	ldr r3, _0802BA6C @ =gOamBuffer
 	mov sb, r3
 	ldr r4, _0802BA70 @ =0x081B0FE4
 	mov r8, r4
@@ -51312,7 +51312,7 @@ _0802B9F2:
 	ble _0802B9F2
 	bl _0802C4D2
 	.align 2, 0
-_0802BA6C: .4byte 0x03005000
+_0802BA6C: .4byte gOamBuffer
 _0802BA70: .4byte 0x081B0FE4
 _0802BA74: .4byte 0xFFFFFE00
 _0802BA78: .4byte 0x000001FF
@@ -51345,7 +51345,7 @@ _0802BA7C:
 	cmp r0, #0
 	beq _0802BAD6
 	movs r5, #0
-	ldr r3, _0802BB44 @ =0x03005000
+	ldr r3, _0802BB44 @ =gOamBuffer
 	movs r2, #0xbe
 _0802BAB8:
 	lsls r0, r5, #0x10
@@ -51411,7 +51411,7 @@ _0802BB34: .4byte 0x000005F6
 _0802BB38: .4byte 0x08137E14
 _0802BB3C: .4byte 0x05000220
 _0802BB40: .4byte 0x80000010
-_0802BB44: .4byte 0x03005000
+_0802BB44: .4byte gOamBuffer
 _0802BB48: .4byte 0x0000132C
 _0802BB4C:
 	ldr r1, _0802BB90 @ =0x020314E0
@@ -53022,7 +53022,7 @@ _0802C7DC:
 _0802C808:
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _0802C968 @ =0x03005000
+	ldr r4, _0802C968 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -53147,7 +53147,7 @@ _0802C8C0:
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 	movs r0, #0
-	ldr r7, _0802C968 @ =0x03005000
+	ldr r7, _0802C968 @ =gOamBuffer
 	ldr r1, _0802C970 @ =0xFFFFFE00
 	mov r8, r1
 _0802C90A:
@@ -53196,7 +53196,7 @@ _0802C94E:
 _0802C95C: .4byte 0x00000302
 _0802C960: .4byte gMain
 _0802C964: .4byte 0x000033D8
-_0802C968: .4byte 0x03005000
+_0802C968: .4byte gOamBuffer
 _0802C96C: .4byte 0x000001FF
 _0802C970: .4byte 0xFFFFFE00
 _0802C974: .4byte 0x0000132C
@@ -53297,7 +53297,7 @@ _0802CA32:
 	ldr r0, [r2, #8]
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _0802CA90 @ =0x03005000
+	ldr r4, _0802CA90 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -53330,7 +53330,7 @@ _0802CA80: .4byte 0x040000D4
 _0802CA84: .4byte 0x084FEF0C
 _0802CA88: .4byte 0x06014B00
 _0802CA8C: .4byte 0x80000040
-_0802CA90: .4byte 0x03005000
+_0802CA90: .4byte gOamBuffer
 _0802CA94: .4byte 0x000001FF
 _0802CA98: .4byte 0xFFFFFE00
 
@@ -53426,7 +53426,7 @@ _0802CB44:
 _0802CB48:
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _0802CB90 @ =0x03005000
+	ldr r4, _0802CB90 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -53461,7 +53461,7 @@ _0802CB48:
 	lsls r7, r7, #1
 	b _0802CBD6
 	.align 2, 0
-_0802CB90: .4byte 0x03005000
+_0802CB90: .4byte gOamBuffer
 _0802CB94: .4byte 0x000001FF
 _0802CB98: .4byte 0xFFFFFE00
 _0802CB9C: .4byte 0x020314E0
@@ -53730,7 +53730,7 @@ sub_2CD98: @ 0x0802CD98
 	movs r0, #0x2c
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _0802CE74 @ =0x03005000
+	ldr r7, _0802CE74 @ =gOamBuffer
 	ldr r2, _0802CE78 @ =0xFFFFFE00
 	mov r8, r2
 _0802CDCA:
@@ -53820,7 +53820,7 @@ _0802CE5E:
 	.align 2, 0
 _0802CE6C: .4byte gMain
 _0802CE70: .4byte 0x020314E0
-_0802CE74: .4byte 0x03005000
+_0802CE74: .4byte gOamBuffer
 _0802CE78: .4byte 0xFFFFFE00
 _0802CE7C: .4byte 0x000001FF
 
@@ -54218,7 +54218,7 @@ _0802D158:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _0802D1F8 @ =0x03005000
+	ldr r7, _0802D1F8 @ =gOamBuffer
 	ldr r1, _0802D1FC @ =0xFFFFFE00
 	mov ip, r1
 _0802D198:
@@ -54266,7 +54266,7 @@ _0802D1E8: .4byte 0x040000D4
 _0802D1EC: .4byte 0x083C076C
 _0802D1F0: .4byte 0x060120E0
 _0802D1F4: .4byte 0x800000E0
-_0802D1F8: .4byte 0x03005000
+_0802D1F8: .4byte gOamBuffer
 _0802D1FC: .4byte 0xFFFFFE00
 _0802D200: .4byte 0x000001FF
 
@@ -54827,7 +54827,7 @@ _0802D65E:
 	subs r0, r0, r1
 	strh r0, [r7, #4]
 	movs r6, #0
-	ldr r5, _0802D700 @ =0x03005000
+	ldr r5, _0802D700 @ =gOamBuffer
 	ldr r4, _0802D704 @ =0xFFFFFE00
 	mov r8, r4
 _0802D684:
@@ -54890,7 +54890,7 @@ _0802D684:
 	.align 2, 0
 _0802D6F8: .4byte 0x0000FF5F
 _0802D6FC: .4byte 0x020314E0
-_0802D700: .4byte 0x03005000
+_0802D700: .4byte gOamBuffer
 _0802D704: .4byte 0xFFFFFE00
 _0802D708: .4byte 0x000001FF
 _0802D70C: .4byte 0x0000FFC4
@@ -54981,7 +54981,7 @@ _0802D792:
 	subs r0, r0, r1
 	strh r0, [r7, #4]
 	movs r6, #0
-	ldr r5, _0802D840 @ =0x03005000
+	ldr r5, _0802D840 @ =gOamBuffer
 	ldr r0, _0802D844 @ =0xFFFFFE00
 	mov r8, r0
 _0802D7BE:
@@ -55047,7 +55047,7 @@ _0802D7BE:
 _0802D834: .4byte 0x0000FF5F
 _0802D838: .4byte gMain
 _0802D83C: .4byte 0x020314E0
-_0802D840: .4byte 0x03005000
+_0802D840: .4byte gOamBuffer
 _0802D844: .4byte 0xFFFFFE00
 _0802D848: .4byte 0x000001FF
 _0802D84C: .4byte 0x0000FF9C
@@ -55131,7 +55131,7 @@ _0802D8C6:
 	subs r0, r0, r1
 	strh r0, [r7, #4]
 	movs r6, #0
-	ldr r5, _0802D96C @ =0x03005000
+	ldr r5, _0802D96C @ =gOamBuffer
 	ldr r0, _0802D970 @ =0xFFFFFE00
 	mov r8, r0
 _0802D8EC:
@@ -55196,7 +55196,7 @@ _0802D8EC:
 	.align 2, 0
 _0802D964: .4byte 0x0000FF60
 _0802D968: .4byte 0x020314E0
-_0802D96C: .4byte 0x03005000
+_0802D96C: .4byte gOamBuffer
 _0802D970: .4byte 0xFFFFFE00
 _0802D974: .4byte 0x000001FF
 _0802D978: .4byte gMain
@@ -55281,7 +55281,7 @@ _0802D9F6:
 	subs r0, r0, r1
 	strh r0, [r7, #4]
 	movs r6, #0
-	ldr r5, _0802DA94 @ =0x03005000
+	ldr r5, _0802DA94 @ =gOamBuffer
 	ldr r0, _0802DA98 @ =0xFFFFFE00
 	mov r8, r0
 _0802DA1C:
@@ -55343,7 +55343,7 @@ _0802DA1C:
 	.align 2, 0
 _0802DA8C: .4byte 0x0000FF60
 _0802DA90: .4byte 0x020314E0
-_0802DA94: .4byte 0x03005000
+_0802DA94: .4byte gOamBuffer
 _0802DA98: .4byte 0xFFFFFE00
 _0802DA9C: .4byte 0x000001FF
 _0802DAA0: .4byte 0x0000FFA6
@@ -55505,7 +55505,7 @@ _0802DBAA:
 	subs r0, r0, r1
 	strh r0, [r7, #4]
 	movs r6, #0
-	ldr r5, _0802DC80 @ =0x03005000
+	ldr r5, _0802DC80 @ =gOamBuffer
 	ldr r0, _0802DC84 @ =0xFFFFFE00
 	mov r8, r0
 _0802DBD6:
@@ -55589,7 +55589,7 @@ _0802DBD6:
 _0802DC74: .4byte 0x0000FF80
 _0802DC78: .4byte gMain
 _0802DC7C: .4byte 0x020314E0
-_0802DC80: .4byte 0x03005000
+_0802DC80: .4byte gOamBuffer
 _0802DC84: .4byte 0xFFFFFE00
 _0802DC88: .4byte 0x000001FF
 _0802DC8C: .4byte 0x0000FF88
@@ -55601,7 +55601,7 @@ _0802DC90:
 _0802DC98:
 	movs r6, #0
 	lsls r0, r3, #0x10
-	ldr r2, _0802DE08 @ =0x03005000
+	ldr r2, _0802DE08 @ =gOamBuffer
 	mov sl, r2
 	ldr r3, _0802DE0C @ =0x086B4112
 	mov sb, r3
@@ -55787,7 +55787,7 @@ _0802DD94:
 	b _0802E052
 	.align 2, 0
 _0802DE04: .4byte 0x0000FF60
-_0802DE08: .4byte 0x03005000
+_0802DE08: .4byte gOamBuffer
 _0802DE0C: .4byte 0x086B4112
 _0802DE10: .4byte 0xFFFFFE00
 _0802DE14: .4byte 0x000001FF
@@ -55990,7 +55990,7 @@ _0802DF80:
 _0802DFC0:
 	movs r6, #0
 	lsls r0, r3, #0x10
-	ldr r3, _0802E084 @ =0x03005000
+	ldr r3, _0802E084 @ =gOamBuffer
 	mov sb, r3
 	ldr r4, _0802E088 @ =0x086B4E62
 	mov r8, r4
@@ -56081,7 +56081,7 @@ _0802E074: .4byte 0x040000D4
 _0802E078: .4byte 0x0000111A
 _0802E07C: .4byte 0x05000200
 _0802E080: .4byte 0x800000C0
-_0802E084: .4byte 0x03005000
+_0802E084: .4byte gOamBuffer
 _0802E088: .4byte 0x086B4E62
 _0802E08C: .4byte 0xFFFFFE00
 _0802E090: .4byte 0x000001FF
@@ -56676,7 +56676,7 @@ _0802E51E:
 	strh r0, [r6, #4]
 	movs r2, #0
 	mov sb, r5
-	ldr r3, _0802E668 @ =0x03005000
+	ldr r3, _0802E668 @ =gOamBuffer
 	mov r8, r3
 	ldr r5, _0802E66C @ =0x086B3FE6
 	mov ip, r5
@@ -56783,7 +56783,7 @@ _0802E658: .4byte 0x0000060A
 _0802E65C: .4byte gMain
 _0802E660: .4byte 0x0000060C
 _0802E664: .4byte 0x0000060E
-_0802E668: .4byte 0x03005000
+_0802E668: .4byte gOamBuffer
 _0802E66C: .4byte 0x086B3FE6
 _0802E670: .4byte 0xFFFFFE00
 _0802E674: .4byte 0x000001FF
@@ -57993,7 +57993,7 @@ _0802EFFC:
 	lsls r1, r3, #0x10
 	ldr r4, _0802F130 @ =0x086B3EF6
 	mov sb, r4
-	ldr r6, _0802F134 @ =0x03005000
+	ldr r6, _0802F134 @ =gOamBuffer
 	asrs r1, r1, #0x10
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -58077,7 +58077,7 @@ _0802F124: .4byte 0x060122A0
 _0802F128: .4byte 0x80000240
 _0802F12C: .4byte 0x00000322
 _0802F130: .4byte 0x086B3EF6
-_0802F134: .4byte 0x03005000
+_0802F134: .4byte gOamBuffer
 _0802F138: .4byte 0xFFFFFE00
 _0802F13C: .4byte 0x000001FF
 
@@ -58145,7 +58145,7 @@ _0802F170:
 	movs r1, #0
 	ldr r7, _0802F25C @ =0x086B4A72
 	mov sb, r7
-	ldr r0, _0802F260 @ =0x03005000
+	ldr r0, _0802F260 @ =gOamBuffer
 	mov sl, r0
 	lsls r3, r3, #0x10
 	asrs r3, r3, #0x10
@@ -58222,7 +58222,7 @@ _0802F250: .4byte 0x083FFD8C
 _0802F254: .4byte 0x06012720
 _0802F258: .4byte 0x80000180
 _0802F25C: .4byte 0x086B4A72
-_0802F260: .4byte 0x03005000
+_0802F260: .4byte gOamBuffer
 _0802F264: .4byte 0xFFFFFE00
 _0802F268: .4byte 0x000001FF
 
@@ -58619,7 +58619,7 @@ _0802F580:
 	adds r5, r6, r0
 	ldrh r0, [r5]
 	lsls r0, r0, #3
-	ldr r1, _0802F728 @ =0x03005000
+	ldr r1, _0802F728 @ =gOamBuffer
 	adds r2, r0, r1
 	lsls r0, r3, #1
 	adds r0, r0, r3
@@ -58637,7 +58637,7 @@ _0802F580:
 	strh r0, [r2, #2]
 	ldrh r2, [r5]
 	lsls r2, r2, #3
-	ldr r7, _0802F728 @ =0x03005000
+	ldr r7, _0802F728 @ =gOamBuffer
 	adds r2, r2, r7
 	ldrh r4, [r2, #2]
 	lsls r1, r4, #0x17
@@ -58654,7 +58654,7 @@ _0802F580:
 	strh r0, [r2, #2]
 	ldrh r1, [r5]
 	lsls r1, r1, #3
-	ldr r0, _0802F728 @ =0x03005000
+	ldr r0, _0802F728 @ =gOamBuffer
 	adds r1, r1, r0
 	ldrb r0, [r6, #4]
 	ldrb r2, [r1]
@@ -58692,7 +58692,7 @@ _0802F5EC:
 	movs r2, #0
 	ldr r7, _0802F734 @ =0x086B3B7E
 	mov sb, r7
-	ldr r1, _0802F728 @ =0x03005000
+	ldr r1, _0802F728 @ =gOamBuffer
 	mov sl, r1
 	movs r1, #0
 	ldrsb r1, [r0, r1]
@@ -58816,7 +58816,7 @@ _0802F718: .4byte 0x800001C0
 _0802F71C: .4byte 0x0000037A
 _0802F720: .4byte 0x086B3CA4
 _0802F724: .4byte 0xFFFFFE00
-_0802F728: .4byte 0x03005000
+_0802F728: .4byte gOamBuffer
 _0802F72C: .4byte 0x000001FF
 _0802F730: .4byte 0x0000037B
 _0802F734: .4byte 0x086B3B7E
@@ -58830,7 +58830,7 @@ _0802F748:
 _0802F74C:
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _0802F790 @ =0x03005000
+	ldr r4, _0802F790 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -58863,7 +58863,7 @@ _0802F780:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802F790: .4byte 0x03005000
+_0802F790: .4byte gOamBuffer
 _0802F794: .4byte 0x000001FF
 _0802F798: .4byte 0xFFFFFE00
 
@@ -59579,7 +59579,7 @@ _0802FCE4:
 	ldr r0, [r2, #8]
 	movs r0, #0
 	mov ip, r3
-	ldr r1, _0802FDE8 @ =0x03005000
+	ldr r1, _0802FDE8 @ =gOamBuffer
 	mov sb, r1
 	ldr r2, _0802FDEC @ =0xFFFFFDD8
 	adds r2, r2, r6
@@ -59665,7 +59665,7 @@ _0802FDD8: .4byte 0x040000D4
 _0802FDDC: .4byte 0x0847A40C
 _0802FDE0: .4byte 0x06012DA0
 _0802FDE4: .4byte 0x80000140
-_0802FDE8: .4byte 0x03005000
+_0802FDE8: .4byte gOamBuffer
 _0802FDEC: .4byte 0xFFFFFDD8
 _0802FDF0: .4byte 0xFFFFFE00
 _0802FDF4: .4byte 0x000001FF
@@ -60418,7 +60418,7 @@ _08030370:
 	add r3, sl
 	ldrh r4, [r3]
 	lsls r4, r4, #3
-	ldr r6, _08030474 @ =0x03005000
+	ldr r6, _08030474 @ =gOamBuffer
 	adds r4, r4, r6
 	movs r0, #2
 	ldrsh r2, [r3, r0]
@@ -60437,7 +60437,7 @@ _08030370:
 	strh r0, [r4, #2]
 	ldrh r1, [r3]
 	lsls r1, r1, #3
-	ldr r0, _08030474 @ =0x03005000
+	ldr r0, _08030474 @ =gOamBuffer
 	adds r1, r1, r0
 	mov r2, sl
 	ldrb r0, [r2, #4]
@@ -60464,7 +60464,7 @@ _08030464: .4byte 0x0845690C
 _08030468: .4byte 0x060133A0
 _0803046C: .4byte 0x80000100
 _08030470: .4byte 0x020314E0
-_08030474: .4byte 0x03005000
+_08030474: .4byte gOamBuffer
 _08030478: .4byte 0x000001FF
 _0803047C: .4byte 0xFFFFFE00
 
@@ -60876,7 +60876,7 @@ _080307AC:
 _080307AE:
 	strh r0, [r7, #4]
 	movs r2, #0
-	ldr r3, _08030870 @ =0x03005000
+	ldr r3, _08030870 @ =gOamBuffer
 	mov sl, r3
 	ldr r6, [sp]
 	lsls r1, r6, #0x10
@@ -60895,7 +60895,7 @@ _080307C8:
 	adds r5, r7, r0
 	ldrh r2, [r5]
 	lsls r2, r2, #3
-	ldr r1, _08030870 @ =0x03005000
+	ldr r1, _08030870 @ =gOamBuffer
 	adds r2, r2, r1
 	lsls r0, r3, #1
 	adds r0, r0, r3
@@ -60913,7 +60913,7 @@ _080307C8:
 	strh r0, [r2, #2]
 	ldrh r2, [r5]
 	lsls r2, r2, #3
-	ldr r0, _08030870 @ =0x03005000
+	ldr r0, _08030870 @ =gOamBuffer
 	adds r2, r2, r0
 	ldrh r4, [r2, #2]
 	lsls r1, r4, #0x17
@@ -60930,7 +60930,7 @@ _080307C8:
 	strh r0, [r2, #2]
 	ldrh r1, [r5]
 	lsls r1, r1, #3
-	ldr r0, _08030870 @ =0x03005000
+	ldr r0, _08030870 @ =gOamBuffer
 	adds r1, r1, r0
 	ldrb r0, [r7, #4]
 	ldrb r2, [r1]
@@ -60973,7 +60973,7 @@ _080307C8:
 	subs r0, r0, r1
 	b _0803088E
 	.align 2, 0
-_08030870: .4byte 0x03005000
+_08030870: .4byte gOamBuffer
 _08030874: .4byte 0xFFFFFE00
 _08030878: .4byte 0x086B4D4E
 _0803087C: .4byte 0x000001FF
@@ -61813,7 +61813,7 @@ _08030EC8:
 	ldr r0, [r2, #8]
 	movs r5, #0
 	mov sl, r3
-	ldr r0, _08031024 @ =0x03005000
+	ldr r0, _08031024 @ =gOamBuffer
 	mov sb, r0
 	mov r7, sb
 	ldr r1, _08031028 @ =0xFFFFFE00
@@ -61948,7 +61948,7 @@ _08031014: .4byte 0x040000D4
 _08031018: .4byte 0x0844F20C
 _0803101C: .4byte 0x060139A0
 _08031020: .4byte 0x80000140
-_08031024: .4byte 0x03005000
+_08031024: .4byte gOamBuffer
 _08031028: .4byte 0xFFFFFE00
 _0803102C: .4byte 0x000001FF
 _08031030: .4byte 0x0200E498
@@ -62005,7 +62005,7 @@ _0803108E:
 	adds r5, r6, r0
 	ldrh r2, [r5]
 	lsls r2, r2, #3
-	ldr r1, _08031134 @ =0x03005000
+	ldr r1, _08031134 @ =gOamBuffer
 	adds r2, r2, r1
 	ldr r1, _08031138 @ =0x086B3E1E
 	add r1, ip
@@ -62024,7 +62024,7 @@ _0803108E:
 	strh r0, [r2, #2]
 	ldrh r2, [r5]
 	lsls r2, r2, #3
-	ldr r7, _08031134 @ =0x03005000
+	ldr r7, _08031134 @ =gOamBuffer
 	adds r2, r2, r7
 	ldrh r4, [r2, #2]
 	lsls r1, r4, #0x17
@@ -62041,7 +62041,7 @@ _0803108E:
 	strh r0, [r2, #2]
 	ldrh r1, [r5]
 	lsls r1, r1, #3
-	ldr r0, _08031134 @ =0x03005000
+	ldr r0, _08031134 @ =gOamBuffer
 	adds r1, r1, r0
 	ldrb r0, [r6, #4]
 	ldrb r2, [r1]
@@ -62076,7 +62076,7 @@ _08031124: .4byte 0x084FDF8C
 _08031128: .4byte 0x06013C20
 _0803112C: .4byte 0x800000B0
 _08031130: .4byte 0x00000332
-_08031134: .4byte 0x03005000
+_08031134: .4byte gOamBuffer
 _08031138: .4byte 0x086B3E1E
 _0803113C: .4byte 0x000001FF
 _08031140: .4byte 0xFFFFFE00
@@ -62454,7 +62454,7 @@ sub_313A0: @ 0x080313A0
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 	movs r0, #0
-	ldr r7, _0803148C @ =0x03005000
+	ldr r7, _0803148C @ =gOamBuffer
 	ldr r2, _08031490 @ =0xFFFFFE00
 	mov ip, r2
 _08031418:
@@ -62507,7 +62507,7 @@ _0803147C: .4byte 0x80000010
 _08031480: .4byte 0x0848108C
 _08031484: .4byte 0x06014B20
 _08031488: .4byte 0x80000240
-_0803148C: .4byte 0x03005000
+_0803148C: .4byte gOamBuffer
 _08031490: .4byte 0xFFFFFE00
 _08031494: .4byte 0x000001FF
 
@@ -63248,7 +63248,7 @@ _08031A3C:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _08031B24 @ =0x03005000
+	ldr r7, _08031B24 @ =gOamBuffer
 	ldr r1, _08031B28 @ =0xFFFFFE00
 	mov ip, r1
 _08031AA6:
@@ -63311,7 +63311,7 @@ _08031B14: .4byte 0x0845A08C
 _08031B18: .4byte 0x060140A0
 _08031B1C: .4byte 0x80000080
 _08031B20: .4byte 0x00000359
-_08031B24: .4byte 0x03005000
+_08031B24: .4byte gOamBuffer
 _08031B28: .4byte 0xFFFFFE00
 _08031B2C: .4byte 0x000001FF
 
@@ -63361,7 +63361,7 @@ _08031B7E:
 	strh r0, [r6, #2]
 	movs r0, #0
 	strh r0, [r6, #4]
-	ldr r7, _08031BDC @ =0x03005000
+	ldr r7, _08031BDC @ =gOamBuffer
 	ldr r1, _08031BE0 @ =0xFFFFFE00
 	mov ip, r1
 _08031B8E:
@@ -63406,7 +63406,7 @@ _08031BD6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08031BDC: .4byte 0x03005000
+_08031BDC: .4byte gOamBuffer
 _08031BE0: .4byte 0xFFFFFE00
 _08031BE4: .4byte 0x000001FF
 
@@ -68258,7 +68258,7 @@ _08034238:
 	movs r2, #0
 	mov r7, sb
 	lsls r0, r7, #0x10
-	ldr r7, _08034350 @ =0x03005000
+	ldr r7, _08034350 @ =gOamBuffer
 	asrs r1, r0, #0x10
 	mov ip, r4
 	mov sb, r5
@@ -68374,7 +68374,7 @@ _0803427A:
 	ble _0803427A
 	b _08034416
 	.align 2, 0
-_08034350: .4byte 0x03005000
+_08034350: .4byte gOamBuffer
 _08034354: .4byte 0x086BA0A0
 _08034358: .4byte 0x000001FF
 _0803435C: .4byte 0xFFFFFE00
@@ -68386,7 +68386,7 @@ _08034368:
 	lsls r0, r7, #0x10
 	ldr r1, _08034438 @ =0x086BA0A0
 	mov sb, r1
-	ldr r3, _0803443C @ =0x03005000
+	ldr r3, _0803443C @ =gOamBuffer
 	mov ip, r3
 	asrs r1, r0, #0x10
 	mov r5, sl
@@ -68489,7 +68489,7 @@ _08034426:
 	bx r0
 	.align 2, 0
 _08034438: .4byte 0x086BA0A0
-_0803443C: .4byte 0x03005000
+_0803443C: .4byte gOamBuffer
 _08034440: .4byte 0x000001FF
 _08034444: .4byte 0xFFFFFE00
 _08034448: .4byte 0x000003FF
@@ -69708,7 +69708,7 @@ _08034D7E:
 	ldrh r0, [r0]
 	cmp r0, #5
 	bhi _08034E60
-	ldr r3, _08034E5C @ =0x03005000
+	ldr r3, _08034E5C @ =gOamBuffer
 	ldr r7, [sp]
 	ldrh r2, [r7, #8]
 	lsls r2, r2, #3
@@ -69728,16 +69728,16 @@ _08034E4C: .4byte 0x80000400
 _08034E50: .4byte 0x020314E0
 _08034E54: .4byte 0x000003EA
 _08034E58: .4byte 0x000003F2
-_08034E5C: .4byte 0x03005000
+_08034E5C: .4byte gOamBuffer
 _08034E60:
-	ldr r3, _08034E68 @ =0x03005000
+	ldr r3, _08034E68 @ =gOamBuffer
 	ldr r0, [sp]
 	ldrh r2, [r0, #8]
 	b _08034E72
 	.align 2, 0
-_08034E68: .4byte 0x03005000
+_08034E68: .4byte gOamBuffer
 _08034E6C:
-	ldr r3, _08034F28 @ =0x03005000
+	ldr r3, _08034F28 @ =gOamBuffer
 	ldr r1, [sp]
 	ldrh r2, [r1, #8]
 _08034E72:
@@ -69833,7 +69833,7 @@ _08034EC4:
 	strh r4, [r2, #4]
 	b _08034F4A
 	.align 2, 0
-_08034F28: .4byte 0x03005000
+_08034F28: .4byte gOamBuffer
 _08034F2C: .4byte 0x000001FF
 _08034F30: .4byte 0xFFFFFE00
 _08034F34: .4byte 0x0200BC58
@@ -69868,7 +69868,7 @@ _08034F4A:
 	lsls r4, r4, #4
 	adds r4, r4, r3
 	mov r8, r4
-	ldr r5, _08035074 @ =0x03005000
+	ldr r5, _08035074 @ =gOamBuffer
 	ldr r6, _08035078 @ =0xFFFFFE00
 	mov sb, r6
 _08034F7C:
@@ -69992,7 +69992,7 @@ _08035064: .4byte 0x040000D4
 _08035068: .4byte 0x08494E4C
 _0803506C: .4byte 0x06011AA0
 _08035070: .4byte 0x80000600
-_08035074: .4byte 0x03005000
+_08035074: .4byte gOamBuffer
 _08035078: .4byte 0xFFFFFE00
 _0803507C: .4byte 0x000001FF
 _08035080: .4byte 0x000003E2
@@ -70008,7 +70008,7 @@ _08035098:
 _0803509E:
 	ldr r6, [sp]
 	adds r6, #8
-	ldr r4, _080350E4 @ =0x03005000
+	ldr r4, _080350E4 @ =gOamBuffer
 	ldr r7, [sp]
 	ldrh r2, [r7, #8]
 	lsls r2, r2, #3
@@ -70043,7 +70043,7 @@ _080350D4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080350E4: .4byte 0x03005000
+_080350E4: .4byte gOamBuffer
 _080350E8: .4byte 0x000001FF
 _080350EC: .4byte 0xFFFFFE00
 
@@ -70348,7 +70348,7 @@ _08035314:
 	movs r0, #0
 	ldr r1, _080354B4 @ =0x0200B750
 	mov sl, r1
-	ldr r6, _080354B8 @ =0x03005000
+	ldr r6, _080354B8 @ =gOamBuffer
 	ldr r2, _080354BC @ =0xFFFFFE00
 	mov ip, r2
 _08035352:
@@ -70398,7 +70398,7 @@ _08035352:
 	adds r0, #0x32
 	strh r0, [r7, #4]
 	movs r0, #0
-	ldr r6, _080354B8 @ =0x03005000
+	ldr r6, _080354B8 @ =gOamBuffer
 	ldr r1, _080354BC @ =0xFFFFFE00
 	mov ip, r1
 _080353B4:
@@ -70514,7 +70514,7 @@ _080354A8: .4byte 0x02031520
 _080354AC: .4byte 0x05000300
 _080354B0: .4byte 0x80000010
 _080354B4: .4byte 0x0200B750
-_080354B8: .4byte 0x03005000
+_080354B8: .4byte gOamBuffer
 _080354BC: .4byte 0xFFFFFE00
 _080354C0: .4byte 0x000001FF
 _080354C4: .4byte 0x00989680
@@ -70789,7 +70789,7 @@ _08035702:
 	strh r0, [r6, #4]
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _080357A8 @ =0x03005000
+	ldr r4, _080357A8 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -70821,7 +70821,7 @@ _08035740:
 	movs r0, #0xa0
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _080357A8 @ =0x03005000
+	ldr r7, _080357A8 @ =gOamBuffer
 	ldr r1, _080357B0 @ =0xFFFFFE00
 	mov ip, r1
 _08035758:
@@ -70865,7 +70865,7 @@ _0803579C:
 	bx r0
 	.align 2, 0
 _080357A4: .4byte 0x000003E6
-_080357A8: .4byte 0x03005000
+_080357A8: .4byte gOamBuffer
 _080357AC: .4byte 0x000001FF
 _080357B0: .4byte 0xFFFFFE00
 _080357B4: .4byte 0x0200BC58
@@ -73725,7 +73725,7 @@ _08036F16:
 _08036F1A:
 	strb r0, [r1]
 	movs r7, #0
-	ldr r0, _08036FDC @ =0x03005000
+	ldr r0, _08036FDC @ =gOamBuffer
 	mov r8, r0
 	mov r1, sl
 	lsls r1, r1, #0x10
@@ -73820,7 +73820,7 @@ _08036F32:
 	b _08037002
 	.align 2, 0
 _08036FD8: .4byte 0x000003F7
-_08036FDC: .4byte 0x03005000
+_08036FDC: .4byte gOamBuffer
 _08036FE0: .4byte 0x086B9DAC
 _08036FE4: .4byte 0x020314E0
 _08036FE8: .4byte 0x000001FF
@@ -73892,7 +73892,7 @@ _08037036:
 	subs r0, r0, r1
 	strh r0, [r5, #4]
 	movs r7, #0
-	ldr r0, _08037130 @ =0x03005000
+	ldr r0, _08037130 @ =gOamBuffer
 	mov ip, r0
 	ldr r1, [sp, #4]
 	asrs r1, r1, #0x10
@@ -73984,7 +73984,7 @@ _08037120: .4byte 0xFFFFFE00
 _08037124: .4byte 0x0200CA00
 _08037128: .4byte 0x020314E0
 _0803712C: .4byte 0x000003EA
-_08037130: .4byte 0x03005000
+_08037130: .4byte gOamBuffer
 _08037134: .4byte 0x086B9AB8
 _08037138: .4byte 0x000003F7
 _0803713C: .4byte 0x000001FF
@@ -74431,7 +74431,7 @@ _080374C0:
 _080374C8:
 	mov r5, sl
 	adds r5, #8
-	ldr r4, _08037510 @ =0x03005000
+	ldr r4, _08037510 @ =gOamBuffer
 	mov r0, sl
 	ldrh r2, [r0, #8]
 	lsls r2, r2, #3
@@ -74466,7 +74466,7 @@ _08037500:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08037510: .4byte 0x03005000
+_08037510: .4byte gOamBuffer
 _08037514: .4byte 0x000001FF
 _08037518: .4byte 0xFFFFFE00
 
@@ -74924,7 +74924,7 @@ sub_37850: @ 0x08037850
 	subs r0, #0x80
 	strh r0, [r6, #4]
 	movs r2, #0
-	ldr r5, _08037C30 @ =0x03005000
+	ldr r5, _08037C30 @ =gOamBuffer
 	ldr r3, _08037C34 @ =0xFFFFFE00
 	mov sb, r3
 _080378BC:
@@ -74985,7 +74985,7 @@ _080378BC:
 	strh r0, [r6, #4]
 	adds r7, r6, #0
 	adds r7, #8
-	ldr r4, _08037C30 @ =0x03005000
+	ldr r4, _08037C30 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -75071,7 +75071,7 @@ _080379B2:
 	subs r0, #0x80
 	strh r0, [r6, #4]
 	movs r2, #0
-	ldr r5, _08037C30 @ =0x03005000
+	ldr r5, _08037C30 @ =gOamBuffer
 	ldr r3, _08037C34 @ =0xFFFFFE00
 	mov r8, r3
 _080379E2:
@@ -75177,7 +75177,7 @@ _08037AA6:
 	movs r2, #0
 	mov r3, sb
 	lsls r0, r3, #0x10
-	ldr r5, _08037C30 @ =0x03005000
+	ldr r5, _08037C30 @ =gOamBuffer
 	mov ip, r5
 	ldr r1, _08037C34 @ =0xFFFFFE00
 	mov sl, r1
@@ -75305,7 +75305,7 @@ _08037BA4:
 	movs r2, #0
 	mov r3, sb
 	lsls r0, r3, #0x10
-	ldr r5, _08037C30 @ =0x03005000
+	ldr r5, _08037C30 @ =gOamBuffer
 	mov ip, r5
 	ldr r1, _08037C34 @ =0xFFFFFE00
 	mov sb, r1
@@ -75367,7 +75367,7 @@ _08037C20: .4byte 0x00000402
 _08037C24: .4byte 0x0000FFFF
 _08037C28: .4byte 0x02031590
 _08037C2C: .4byte 0x0200B3B8
-_08037C30: .4byte 0x03005000
+_08037C30: .4byte gOamBuffer
 _08037C34: .4byte 0xFFFFFE00
 _08037C38: .4byte 0x000001FF
 _08037C3C: .4byte 0x0000040C
@@ -75433,7 +75433,7 @@ _08037CBA:
 	movs r2, #0
 	mov r3, sb
 	lsls r0, r3, #0x10
-	ldr r5, _08037F68 @ =0x03005000
+	ldr r5, _08037F68 @ =gOamBuffer
 	mov r8, r5
 	ldr r1, _08037F6C @ =0xFFFFFE00
 	mov ip, r1
@@ -75548,7 +75548,7 @@ _08037D9E:
 	movs r2, #0
 	mov r3, sb
 	lsls r0, r3, #0x10
-	ldr r5, _08037F68 @ =0x03005000
+	ldr r5, _08037F68 @ =gOamBuffer
 	mov ip, r5
 	ldr r1, _08037F6C @ =0xFFFFFE00
 	mov sb, r1
@@ -75660,7 +75660,7 @@ _08037E7E:
 	movs r2, #0
 	mov r3, sb
 	lsls r0, r3, #0x10
-	ldr r5, _08037F68 @ =0x03005000
+	ldr r5, _08037F68 @ =gOamBuffer
 	mov r8, r5
 	asrs r1, r0, #0x10
 	lsls r0, r1, #1
@@ -75737,7 +75737,7 @@ _08037E98:
 	adds r7, #8
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
-	ldr r5, _08037F68 @ =0x03005000
+	ldr r5, _08037F68 @ =gOamBuffer
 	adds r2, r2, r5
 	movs r0, #2
 	ldrsh r1, [r7, r0]
@@ -75762,7 +75762,7 @@ _08037E98:
 	beq _08037F94
 	ldrh r0, [r6, #8]
 	lsls r0, r0, #3
-	ldr r2, _08037F68 @ =0x03005000
+	ldr r2, _08037F68 @ =gOamBuffer
 	adds r0, r0, r2
 	movs r1, #0xc8
 	strb r1, [r0]
@@ -75772,7 +75772,7 @@ _08037F58: .4byte 0x0200C5B0
 _08037F5C: .4byte 0x020314E0
 _08037F60: .4byte 0x0000041C
 _08037F64: .4byte 0x086AEA68
-_08037F68: .4byte 0x03005000
+_08037F68: .4byte gOamBuffer
 _08037F6C: .4byte 0xFFFFFE00
 _08037F70: .4byte 0xFFFFFC00
 _08037F74: .4byte 0x000001FF
@@ -75786,7 +75786,7 @@ _08037F90: .4byte 0x0000132C
 _08037F94:
 	ldrh r1, [r6, #8]
 	lsls r1, r1, #3
-	ldr r3, _08037FC0 @ =0x03005000
+	ldr r3, _08037FC0 @ =gOamBuffer
 	adds r1, r1, r3
 	ldrb r0, [r6, #4]
 	ldrb r7, [r7, #4]
@@ -75807,7 +75807,7 @@ _08037FA4:
 	adds r0, r2, #1
 	b _08037FCE
 	.align 2, 0
-_08037FC0: .4byte 0x03005000
+_08037FC0: .4byte gOamBuffer
 _08037FC4: .4byte 0x0200C890
 _08037FC8: .4byte 0x020314E0
 _08037FCC:
@@ -75818,7 +75818,7 @@ _08037FCE:
 	mov r8, r5
 	ldr r0, _08038048 @ =0x020314E0
 	mov sl, r0
-	ldr r5, _0803804C @ =0x03005000
+	ldr r5, _0803804C @ =gOamBuffer
 	ldr r1, _08038050 @ =0xFFFFFE00
 	mov ip, r1
 _08037FDE:
@@ -75878,7 +75878,7 @@ _08038000:
 	b _08038062
 	.align 2, 0
 _08038048: .4byte 0x020314E0
-_0803804C: .4byte 0x03005000
+_0803804C: .4byte gOamBuffer
 _08038050: .4byte 0xFFFFFE00
 _08038054: .4byte 0x0000042A
 _08038058: .4byte 0x000005FC
@@ -76031,7 +76031,7 @@ _0803817E:
 	adds r7, r6, r0
 	ldrh r3, [r7]
 	lsls r3, r3, #3
-	ldr r1, _08038204 @ =0x03005000
+	ldr r1, _08038204 @ =gOamBuffer
 	adds r3, r3, r1
 	movs r5, #2
 	ldrsh r2, [r7, r5]
@@ -76049,7 +76049,7 @@ _0803817E:
 	strh r0, [r3, #2]
 	ldrh r1, [r7]
 	lsls r1, r1, #3
-	ldr r0, _08038204 @ =0x03005000
+	ldr r0, _08038204 @ =gOamBuffer
 	adds r1, r1, r0
 	ldrb r0, [r6, #4]
 	ldrb r2, [r7, #4]
@@ -76057,7 +76057,7 @@ _0803817E:
 	strb r0, [r1]
 	ldrh r3, [r7]
 	lsls r3, r3, #3
-	ldr r5, _08038204 @ =0x03005000
+	ldr r5, _08038204 @ =gOamBuffer
 	adds r3, r3, r5
 	mov r0, sb
 	lsls r1, r0, #0x10
@@ -76090,7 +76090,7 @@ _0803817E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08038204: .4byte 0x03005000
+_08038204: .4byte gOamBuffer
 _08038208: .4byte 0x000001FF
 _0803820C: .4byte 0xFFFFFE00
 _08038210: .4byte 0x000003FF
@@ -78712,7 +78712,7 @@ _08039796:
 	cmp r0, #9
 	ble _08039810
 	movs r2, #0
-	ldr r4, _08039808 @ =0x03005000
+	ldr r4, _08039808 @ =gOamBuffer
 	ldr r3, _0803980C @ =0xFFFFFE00
 	mov r8, r3
 	movs r6, #0xb0
@@ -78755,7 +78755,7 @@ _080397B8:
 _080397FC: .4byte 0x000003F2
 _08039800: .4byte 0x020314E0
 _08039804: .4byte 0x00000389
-_08039808: .4byte 0x03005000
+_08039808: .4byte gOamBuffer
 _0803980C: .4byte 0xFFFFFE00
 _08039810:
 	cmp r0, #1
@@ -78788,7 +78788,7 @@ _0803983C:
 	mov r8, r3
 	ldr r3, _080399BC @ =0x086B92FC
 	mov sl, r3
-	ldr r6, _080399C0 @ =0x03005000
+	ldr r6, _080399C0 @ =gOamBuffer
 	asrs r1, r0, #0x10
 	lsls r0, r1, #4
 	subs r0, r0, r1
@@ -78928,7 +78928,7 @@ _0803991E:
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 	movs r2, #0
-	ldr r6, _080399C0 @ =0x03005000
+	ldr r6, _080399C0 @ =gOamBuffer
 	ldr r4, _080399C4 @ =0xFFFFFE00
 	mov r8, r4
 _08039964:
@@ -78978,7 +78978,7 @@ _08039964:
 	b _08039A2C
 	.align 2, 0
 _080399BC: .4byte 0x086B92FC
-_080399C0: .4byte 0x03005000
+_080399C0: .4byte gOamBuffer
 _080399C4: .4byte 0xFFFFFE00
 _080399C8: .4byte 0x000001FF
 _080399CC: .4byte 0x0200C668
@@ -79104,7 +79104,7 @@ _08039ABC:
 	lsls r7, r7, #3
 	add r7, sl
 	mov ip, r7
-	ldr r5, _08039C34 @ =0x03005000
+	ldr r5, _08039C34 @ =gOamBuffer
 	movs r0, #3
 	mov r8, r0
 	movs r1, #0xd
@@ -79196,7 +79196,7 @@ _08039AD6:
 	strh r0, [r4, #4]
 _08039B7C:
 	movs r2, #0
-	ldr r5, _08039C34 @ =0x03005000
+	ldr r5, _08039C34 @ =gOamBuffer
 	movs r0, #3
 	mov r8, r0
 	movs r1, #0xd
@@ -79287,7 +79287,7 @@ _08039C24: .4byte 0x020314E0
 _08039C28: .4byte 0x000006E4
 _08039C2C: .4byte 0x000006E6
 _08039C30: .4byte 0x0200BA30
-_08039C34: .4byte 0x03005000
+_08039C34: .4byte gOamBuffer
 _08039C38: .4byte 0x000006DB
 _08039C3C: .4byte 0x000001FF
 _08039C40: .4byte 0xFFFFFE00
@@ -79827,7 +79827,7 @@ _0803A07E:
 	movs r2, #0
 	ldr r1, _0803A1B4 @ =0x086B91AC
 	mov sb, r1
-	ldr r5, _0803A1B8 @ =0x03005000
+	ldr r5, _0803A1B8 @ =gOamBuffer
 	movs r3, #0
 	ldrsh r1, [r0, r3]
 	lsls r0, r1, #1
@@ -79941,7 +79941,7 @@ _0803A1A8: .4byte 0x083C1A6C
 _0803A1AC: .4byte 0x060124E0
 _0803A1B0: .4byte 0x800001E0
 _0803A1B4: .4byte 0x086B91AC
-_0803A1B8: .4byte 0x03005000
+_0803A1B8: .4byte gOamBuffer
 _0803A1BC: .4byte 0xFFFFFE00
 _0803A1C0: .4byte 0x000001FF
 _0803A1C4: .4byte 0x0200C388
@@ -80959,7 +80959,7 @@ _0803AA5C:
 _0803AA66:
 	ldr r6, [sp]
 	adds r6, #8
-	ldr r4, _0803AB38 @ =0x03005000
+	ldr r4, _0803AB38 @ =gOamBuffer
 	ldr r2, [sp]
 	ldrh r3, [r2, #8]
 	lsls r3, r3, #3
@@ -81059,7 +81059,7 @@ _0803AAE8:
 	movs r1, #0xc
 	b _0803AB5C
 	.align 2, 0
-_0803AB38: .4byte 0x03005000
+_0803AB38: .4byte gOamBuffer
 _0803AB3C: .4byte 0x000001FF
 _0803AB40: .4byte 0xFFFFFE00
 _0803AB44: .4byte 0x0200C4F8
@@ -81169,7 +81169,7 @@ _0803ABF6:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r2, #0
-	ldr r7, _0803AD78 @ =0x03005000
+	ldr r7, _0803AD78 @ =gOamBuffer
 	ldr r0, _0803AD7C @ =0xFFFFFE00
 	mov sl, r0
 	movs r1, #0xf
@@ -81340,7 +81340,7 @@ _0803AD68: .4byte 0x00000476
 _0803AD6C: .4byte 0x0000047A
 _0803AD70: .4byte gMain
 _0803AD74: .4byte 0x00001E10
-_0803AD78: .4byte 0x03005000
+_0803AD78: .4byte gOamBuffer
 _0803AD7C: .4byte 0xFFFFFE00
 _0803AD80: .4byte 0x000001FF
 _0803AD84: .4byte 0x00000456
@@ -81363,7 +81363,7 @@ sub_3ADA0: @ 0x0803ADA0
 	movs r0, #0xa0
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _0803AE08 @ =0x03005000
+	ldr r7, _0803AE08 @ =gOamBuffer
 	ldr r1, _0803AE0C @ =0xFFFFFE00
 	mov ip, r1
 _0803ADBA:
@@ -81407,7 +81407,7 @@ _0803ADFE:
 	bx r0
 	.align 2, 0
 _0803AE04: .4byte 0x0200C4F8
-_0803AE08: .4byte 0x03005000
+_0803AE08: .4byte gOamBuffer
 _0803AE0C: .4byte 0xFFFFFE00
 _0803AE10: .4byte 0x000001FF
 
@@ -81580,7 +81580,7 @@ _0803AF10:
 	str r0, [r4, #8]
 	ldr r0, [r4, #8]
 	movs r3, #0
-	ldr r7, _0803B104 @ =0x03005000
+	ldr r7, _0803B104 @ =gOamBuffer
 	mov r0, sb
 	asrs r0, r0, #0xd
 	mov r8, r0
@@ -81686,7 +81686,7 @@ _0803AFBA:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r2, #0
-	ldr r7, _0803B104 @ =0x03005000
+	ldr r7, _0803B104 @ =gOamBuffer
 	ldr r3, _0803B118 @ =0xFFFFFE00
 	mov r8, r3
 _0803B056:
@@ -81762,7 +81762,7 @@ _0803B0F4: .4byte 0x00000382
 _0803B0F8: .4byte 0x086AEAE0
 _0803B0FC: .4byte 0x05000060
 _0803B100: .4byte 0x80000010
-_0803B104: .4byte 0x03005000
+_0803B104: .4byte gOamBuffer
 _0803B108: .4byte 0x086AEEFE
 _0803B10C: .4byte 0xFFFFFC00
 _0803B110: .4byte 0x0200BBA0
@@ -84540,7 +84540,7 @@ _0803C7BE:
 	cmp r0, #9
 	ble _0803C84C
 	movs r2, #0
-	ldr r4, _0803C844 @ =0x03005000
+	ldr r4, _0803C844 @ =gOamBuffer
 	ldr r3, _0803C848 @ =0xFFFFFE00
 	mov r8, r3
 	movs r6, #0xb0
@@ -84589,7 +84589,7 @@ _0803C834: .4byte 0x0000028A
 _0803C838: .4byte 0x000003F2
 _0803C83C: .4byte 0x0000FFC4
 _0803C840: .4byte 0x00000389
-_0803C844: .4byte 0x03005000
+_0803C844: .4byte gOamBuffer
 _0803C848: .4byte 0xFFFFFE00
 _0803C84C:
 	cmp r0, #1
@@ -84597,7 +84597,7 @@ _0803C84C:
 	movs r2, #0
 	mov r4, r8
 	lsls r0, r4, #0x10
-	ldr r6, _0803C8EC @ =0x03005000
+	ldr r6, _0803C8EC @ =gOamBuffer
 	asrs r1, r0, #0x10
 	movs r0, #0x72
 	adds r3, r1, #0
@@ -84673,7 +84673,7 @@ _0803C86A:
 	ble _0803C86A
 	b _0803CA2E
 	.align 2, 0
-_0803C8EC: .4byte 0x03005000
+_0803C8EC: .4byte gOamBuffer
 _0803C8F0: .4byte 0xFFFFFE00
 _0803C8F4: .4byte 0x086B65EA
 _0803C8F8: .4byte 0x000001FF
@@ -84683,7 +84683,7 @@ _0803C8FC:
 	movs r2, #0
 	mov r6, r8
 	lsls r0, r6, #0x10
-	ldr r6, _0803C99C @ =0x03005000
+	ldr r6, _0803C99C @ =gOamBuffer
 	asrs r1, r0, #0x10
 	movs r0, #0x72
 	adds r3, r1, #0
@@ -84759,7 +84759,7 @@ _0803C91A:
 	ble _0803C91A
 	b _0803CA2E
 	.align 2, 0
-_0803C99C: .4byte 0x03005000
+_0803C99C: .4byte gOamBuffer
 _0803C9A0: .4byte 0xFFFFFE00
 _0803C9A4: .4byte 0x086B65EA
 _0803C9A8: .4byte 0x000001FF
@@ -84767,7 +84767,7 @@ _0803C9AC:
 	movs r2, #0
 	mov r6, r8
 	lsls r0, r6, #0x10
-	ldr r1, _0803CB6C @ =0x03005000
+	ldr r1, _0803CB6C @ =gOamBuffer
 	mov sb, r1
 	asrs r1, r0, #0x10
 	movs r0, #0x72
@@ -84925,7 +84925,7 @@ _0803CAD8:
 	adds r5, r7, r0
 	ldrh r0, [r5]
 	lsls r0, r0, #3
-	ldr r1, _0803CB6C @ =0x03005000
+	ldr r1, _0803CB6C @ =gOamBuffer
 	adds r2, r0, r1
 	lsls r0, r3, #1
 	adds r0, r0, r3
@@ -84943,7 +84943,7 @@ _0803CAD8:
 	strh r0, [r2, #2]
 	ldrh r2, [r5]
 	lsls r2, r2, #3
-	ldr r6, _0803CB6C @ =0x03005000
+	ldr r6, _0803CB6C @ =gOamBuffer
 	adds r2, r2, r6
 	ldrh r4, [r2, #2]
 	lsls r1, r4, #0x17
@@ -84960,7 +84960,7 @@ _0803CAD8:
 	strh r0, [r2, #2]
 	ldrh r1, [r5]
 	lsls r1, r1, #3
-	ldr r0, _0803CB6C @ =0x03005000
+	ldr r0, _0803CB6C @ =gOamBuffer
 	adds r1, r1, r0
 	ldrb r0, [r7, #4]
 	ldrb r2, [r1]
@@ -84992,7 +84992,7 @@ _0803CAD8:
 	strb r2, [r0]
 	b _0803CBAE
 	.align 2, 0
-_0803CB6C: .4byte 0x03005000
+_0803CB6C: .4byte gOamBuffer
 _0803CB70: .4byte 0xFFFFFE00
 _0803CB74: .4byte 0x086B65EA
 _0803CB78: .4byte 0x000001FF
@@ -85090,7 +85090,7 @@ _0803CC34:
 	movs r2, #0
 	ldr r4, _0803CDA0 @ =0x0200BA30
 	mov ip, r4
-	ldr r5, _0803CDA4 @ =0x03005000
+	ldr r5, _0803CDA4 @ =gOamBuffer
 	movs r6, #3
 	mov r8, r6
 	movs r7, #0xd
@@ -85182,7 +85182,7 @@ _0803CC46:
 	strh r0, [r3, #4]
 _0803CCEC:
 	movs r2, #0
-	ldr r5, _0803CDA4 @ =0x03005000
+	ldr r5, _0803CDA4 @ =gOamBuffer
 	movs r7, #3
 	mov r8, r7
 	movs r0, #0xd
@@ -85272,7 +85272,7 @@ _0803CD94: .4byte 0x020314E0
 _0803CD98: .4byte 0x000006E4
 _0803CD9C: .4byte 0x000006E6
 _0803CDA0: .4byte 0x0200BA30
-_0803CDA4: .4byte 0x03005000
+_0803CDA4: .4byte gOamBuffer
 _0803CDA8: .4byte 0x000006DB
 _0803CDAC: .4byte 0x000001FF
 _0803CDB0: .4byte 0xFFFFFE00
@@ -85483,7 +85483,7 @@ _0803CF22:
 	lsls r1, r7, #0x10
 	ldr r0, _0803D118 @ =0x086B63AA
 	mov sb, r0
-	ldr r5, _0803D11C @ =0x03005000
+	ldr r5, _0803D11C @ =gOamBuffer
 	asrs r1, r1, #0x10
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -85705,7 +85705,7 @@ _0803D10C: .4byte 0x00000383
 _0803D110: .4byte 0x020314E0
 _0803D114: .4byte 0x0000132C
 _0803D118: .4byte 0x086B63AA
-_0803D11C: .4byte 0x03005000
+_0803D11C: .4byte gOamBuffer
 _0803D120: .4byte 0xFFFFFE00
 _0803D124: .4byte 0x000001FF
 _0803D128: .4byte 0x0200C388
@@ -85830,7 +85830,7 @@ _0803D1E2:
 	lsls r1, r0, #0x10
 	ldr r3, _0803D31C @ =0x086B63F2
 	mov sb, r3
-	ldr r5, _0803D320 @ =0x03005000
+	ldr r5, _0803D320 @ =gOamBuffer
 	asrs r1, r1, #0x10
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -85953,7 +85953,7 @@ _0803D310: .4byte gMain
 _0803D314: .4byte 0x000012C8
 _0803D318: .4byte 0x0000048A
 _0803D31C: .4byte 0x086B63F2
-_0803D320: .4byte 0x03005000
+_0803D320: .4byte gOamBuffer
 _0803D324: .4byte 0xFFFFFE00
 _0803D328: .4byte 0x000001FF
 _0803D32C: .4byte 0x000005A4
@@ -86780,7 +86780,7 @@ _0803D982:
 	ldr r0, [sp, #4]
 	strh r4, [r0, #4]
 	movs r2, #0
-	ldr r5, _0803DB40 @ =0x03005000
+	ldr r5, _0803DB40 @ =gOamBuffer
 	ldr r1, _0803DB44 @ =0xFFFFFE00
 	mov r8, r1
 _0803DA10:
@@ -86929,7 +86929,7 @@ _0803DB30: .4byte 0x80000180
 _0803DB34: .4byte 0x000004EC
 _0803DB38: .4byte 0x000004E4
 _0803DB3C: .4byte 0x000004EE
-_0803DB40: .4byte 0x03005000
+_0803DB40: .4byte gOamBuffer
 _0803DB44: .4byte 0xFFFFFE00
 _0803DB48: .4byte 0x000001FF
 _0803DB4C: .4byte 0x000004CF
@@ -87550,7 +87550,7 @@ _0803E03A:
 	lsls r1, r3, #0x10
 	ldr r4, _0803E104 @ =0x086B8AE0
 	mov sb, r4
-	ldr r5, _0803E108 @ =0x03005000
+	ldr r5, _0803E108 @ =gOamBuffer
 	asrs r1, r1, #0x10
 	lsls r0, r1, #4
 	subs r0, r0, r1
@@ -87632,7 +87632,7 @@ _0803E0F8: .4byte 0x086AF2CC
 _0803E0FC: .4byte 0x000004B4
 _0803E100: .4byte 0x000004A4
 _0803E104: .4byte 0x086B8AE0
-_0803E108: .4byte 0x03005000
+_0803E108: .4byte gOamBuffer
 _0803E10C: .4byte 0xFFFFFE00
 _0803E110: .4byte 0x000001FF
 _0803E114:
@@ -87641,7 +87641,7 @@ _0803E114:
 	lsls r1, r5, #0x10
 	ldr r6, _0803E1A0 @ =0x086B8AE0
 	mov sb, r6
-	ldr r5, _0803E1A4 @ =0x03005000
+	ldr r5, _0803E1A4 @ =gOamBuffer
 	asrs r1, r1, #0x10
 	lsls r0, r1, #4
 	subs r0, r0, r1
@@ -87709,7 +87709,7 @@ _0803E12E:
 	b _0803E1C4
 	.align 2, 0
 _0803E1A0: .4byte 0x086B8AE0
-_0803E1A4: .4byte 0x03005000
+_0803E1A4: .4byte gOamBuffer
 _0803E1A8: .4byte 0xFFFFFE00
 _0803E1AC: .4byte 0x000001FF
 _0803E1B0:
@@ -88016,7 +88016,7 @@ _0803E3F0:
 	subs r0, r0, r1
 	strh r0, [r4, #4]
 	movs r2, #0
-	ldr r7, _0803E5B4 @ =0x03005000
+	ldr r7, _0803E5B4 @ =gOamBuffer
 	ldr r6, _0803E5B8 @ =0xFFFFFE00
 	mov sb, r6
 	movs r0, #0xf
@@ -88211,7 +88211,7 @@ _0803E5A4: .4byte 0x00000472
 _0803E5A8: .4byte 0x00000476
 _0803E5AC: .4byte 0x0000047A
 _0803E5B0: .4byte 0x00001E10
-_0803E5B4: .4byte 0x03005000
+_0803E5B4: .4byte gOamBuffer
 _0803E5B8: .4byte 0xFFFFFE00
 _0803E5BC: .4byte 0x000001FF
 _0803E5C0: .4byte 0x0000132C
@@ -88231,7 +88231,7 @@ sub_3E5D0: @ 0x0803E5D0
 	movs r0, #0xa0
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _0803E638 @ =0x03005000
+	ldr r7, _0803E638 @ =gOamBuffer
 	ldr r1, _0803E63C @ =0xFFFFFE00
 	mov ip, r1
 _0803E5EA:
@@ -88275,7 +88275,7 @@ _0803E62E:
 	bx r0
 	.align 2, 0
 _0803E634: .4byte 0x0200C948
-_0803E638: .4byte 0x03005000
+_0803E638: .4byte gOamBuffer
 _0803E63C: .4byte 0xFFFFFE00
 _0803E640: .4byte 0x000001FF
 
@@ -88326,7 +88326,7 @@ sub_3E644: @ 0x0803E644
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r3, #0
-	ldr r7, _0803E77C @ =0x03005000
+	ldr r7, _0803E77C @ =gOamBuffer
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	lsls r0, r0, #3
@@ -88429,7 +88429,7 @@ _0803E76C: .4byte 0x08352BD8
 _0803E770: .4byte 0x80000010
 _0803E774: .4byte 0x05000080
 _0803E778: .4byte 0x086AF3BE
-_0803E77C: .4byte 0x03005000
+_0803E77C: .4byte gOamBuffer
 _0803E780: .4byte 0x086AF3C6
 _0803E784: .4byte 0xFFFFFC00
 _0803E788: .4byte 0x0200BBA0
@@ -90809,7 +90809,7 @@ sub_3FAE0: @ 0x0803FAE0
 	bl __divsi3
 	strh r0, [r7, #4]
 	movs r2, #0
-	ldr r4, _0803FB80 @ =0x03005000
+	ldr r4, _0803FB80 @ =gOamBuffer
 	ldr r0, _0803FB84 @ =0xFFFFFE00
 	mov r8, r0
 _0803FB34:
@@ -90848,7 +90848,7 @@ _0803FB34:
 _0803FB74: .4byte 0x0200D2A0
 _0803FB78: .4byte 0x020314E0
 _0803FB7C: .4byte 0x000003EA
-_0803FB80: .4byte 0x03005000
+_0803FB80: .4byte gOamBuffer
 _0803FB84: .4byte 0xFFFFFE00
 _0803FB88:
 	ldrh r3, [r6]
@@ -90909,7 +90909,7 @@ _0803FBD0:
 	bl __divsi3
 	strh r0, [r7, #4]
 	movs r2, #0
-	ldr r4, _0803FC4C @ =0x03005000
+	ldr r4, _0803FC4C @ =gOamBuffer
 	ldr r3, _0803FC50 @ =0xFFFFFE00
 	mov r8, r3
 _0803FC00:
@@ -90948,7 +90948,7 @@ _0803FC00:
 _0803FC40: .4byte 0x000001FF
 _0803FC44: .4byte 0x020314E0
 _0803FC48: .4byte 0x000003EA
-_0803FC4C: .4byte 0x03005000
+_0803FC4C: .4byte gOamBuffer
 _0803FC50: .4byte 0xFFFFFE00
 _0803FC54:
 	ldrh r3, [r6]
@@ -91149,7 +91149,7 @@ _0803FDC6:
 	ble _0803FE40
 	movs r0, #0xb
 	str r0, [sp]
-	ldr r3, _0803FE38 @ =0x03005000
+	ldr r3, _0803FE38 @ =gOamBuffer
 	ldrh r2, [r7, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r3
@@ -91177,7 +91177,7 @@ _0803FE28: .4byte 0x086AF3CC
 _0803FE2C: .4byte 0x020314E0
 _0803FE30: .4byte 0x000003E2
 _0803FE34: .4byte 0x00000389
-_0803FE38: .4byte 0x03005000
+_0803FE38: .4byte gOamBuffer
 _0803FE3C: .4byte 0xFFFFFE00
 _0803FE40:
 	cmp r0, #1
@@ -91227,7 +91227,7 @@ _0803FE86:
 _0803FE8E:
 	ldrh r2, [r7, #8]
 	lsls r2, r2, #3
-	ldr r6, _0803FF38 @ =0x03005000
+	ldr r6, _0803FF38 @ =gOamBuffer
 	adds r2, r2, r6
 	lsls r0, r1, #0x10
 	asrs r0, r0, #0x10
@@ -91309,7 +91309,7 @@ _0803FF24:
 	.align 2, 0
 _0803FF30: .4byte 0x000003DF
 _0803FF34: .4byte 0x020314E0
-_0803FF38: .4byte 0x03005000
+_0803FF38: .4byte gOamBuffer
 _0803FF3C: .4byte 0x086B612E
 _0803FF40: .4byte 0x000003EA
 _0803FF44: .4byte 0x0000051A
@@ -91426,7 +91426,7 @@ _0804002E:
 	mov sb, r3
 	mov r4, sl
 	lsls r1, r4, #0x10
-	ldr r0, _080400F0 @ =0x03005000
+	ldr r0, _080400F0 @ =gOamBuffer
 	mov r8, r0
 	asrs r1, r1, #0x10
 	lsls r0, r1, #1
@@ -91519,7 +91519,7 @@ _080400CA:
 	movs r1, #0
 	b _0804011A
 	.align 2, 0
-_080400F0: .4byte 0x03005000
+_080400F0: .4byte gOamBuffer
 _080400F4: .4byte 0xFFFFFC00
 _080400F8: .4byte 0x000001FF
 _080400FC: .4byte 0xFFFFFE00
@@ -91616,7 +91616,7 @@ _08040180:
 	strh r0, [r7, #4]
 	adds r6, r7, #0
 	adds r6, #8
-	ldr r4, _0804026C @ =0x03005000
+	ldr r4, _0804026C @ =gOamBuffer
 	ldrh r2, [r7, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -91697,7 +91697,7 @@ _0804025C: .4byte gMain
 _08040260: .4byte 0x00001E10
 _08040264: .4byte 0x020314E0
 _08040268: .4byte 0x000003EA
-_0804026C: .4byte 0x03005000
+_0804026C: .4byte gOamBuffer
 _08040270: .4byte 0x000001FF
 _08040274: .4byte 0xFFFFFE00
 _08040278: .4byte 0x000021E0
@@ -91773,7 +91773,7 @@ _08040304:
 	movs r2, #0
 	ldr r3, _08040474 @ =0x0200BA30
 	mov ip, r3
-	ldr r5, _08040478 @ =0x03005000
+	ldr r5, _08040478 @ =gOamBuffer
 	movs r4, #3
 	mov sb, r4
 	movs r0, #0xd
@@ -91869,7 +91869,7 @@ _0804031A:
 	strh r0, [r4, #4]
 _080403C4:
 	movs r2, #0
-	ldr r5, _08040478 @ =0x03005000
+	ldr r5, _08040478 @ =gOamBuffer
 	movs r3, #3
 	mov sb, r3
 	movs r4, #0xd
@@ -91956,7 +91956,7 @@ _08040468: .4byte 0x020314E0
 _0804046C: .4byte 0x000006E4
 _08040470: .4byte 0x000006E6
 _08040474: .4byte 0x0200BA30
-_08040478: .4byte 0x03005000
+_08040478: .4byte gOamBuffer
 _0804047C: .4byte 0xFFFFFE00
 _08040480: .4byte 0x000006DB
 _08040484: .4byte 0x000001FF
@@ -92426,7 +92426,7 @@ _08040802:
 	lsls r1, r7, #0x10
 	ldr r4, _08040A98 @ =0x086B609E
 	mov sl, r4
-	ldr r5, _08040A9C @ =0x03005000
+	ldr r5, _08040A9C @ =gOamBuffer
 	mov ip, r5
 	asrs r1, r1, #0x10
 	lsls r0, r1, #3
@@ -92545,7 +92545,7 @@ _080408F0:
 	lsls r1, r3, #0x10
 	ldr r4, _08040AB0 @ =0x086B5ECA
 	mov sl, r4
-	ldr r5, _08040A9C @ =0x03005000
+	ldr r5, _08040A9C @ =gOamBuffer
 	mov ip, r5
 	asrs r1, r1, #0x10
 	lsls r0, r1, #3
@@ -92652,7 +92652,7 @@ _080409EA:
 	subs r0, r0, r1
 	strh r0, [r4, #4]
 	movs r2, #0
-	ldr r7, _08040A9C @ =0x03005000
+	ldr r7, _08040A9C @ =gOamBuffer
 	mov r8, r7
 	ldr r0, [sp, #8]
 	lsls r1, r0, #0x10
@@ -92719,7 +92719,7 @@ _08040A8C: .4byte 0x00000507
 _08040A90: .4byte 0x0200BFF0
 _08040A94: .4byte 0x000003EA
 _08040A98: .4byte 0x086B609E
-_08040A9C: .4byte 0x03005000
+_08040A9C: .4byte gOamBuffer
 _08040AA0: .4byte 0xFFFFFE00
 _08040AA4: .4byte 0x000001FF
 _08040AA8: .4byte gMain
@@ -92812,7 +92812,7 @@ _08040B26:
 	ldr r7, [sp, #0x10]
 	strh r0, [r7, #4]
 	movs r2, #0
-	ldr r5, _08040C8C @ =0x03005000
+	ldr r5, _08040C8C @ =gOamBuffer
 	ldr r0, _08040C90 @ =0xFFFFFE00
 	mov r8, r0
 _08040B72:
@@ -92889,7 +92889,7 @@ _08040BBC:
 	ldr r1, [sp, #0x10]
 	strh r0, [r1, #4]
 	movs r2, #0
-	ldr r5, _08040C8C @ =0x03005000
+	ldr r5, _08040C8C @ =gOamBuffer
 	ldr r3, _08040C90 @ =0xFFFFFE00
 	mov r8, r3
 _08040C0C:
@@ -92952,7 +92952,7 @@ _08040C7C: .4byte gMain
 _08040C80: .4byte 0x0200C388
 _08040C84: .4byte 0x00000524
 _08040C88: .4byte 0x00000526
-_08040C8C: .4byte 0x03005000
+_08040C8C: .4byte gOamBuffer
 _08040C90: .4byte 0xFFFFFE00
 _08040C94: .4byte 0x0200C440
 _08040C98: .4byte 0xFFFFFE98
@@ -93787,7 +93787,7 @@ _0804131A:
 	ldr r2, [sp, #0x10]
 	strh r0, [r2, #4]
 	movs r2, #0
-	ldr r5, _08041560 @ =0x03005000
+	ldr r5, _08041560 @ =gOamBuffer
 	ldr r3, _08041564 @ =0xFFFFFE00
 	mov r8, r3
 _08041384:
@@ -93907,7 +93907,7 @@ _08041414:
 	movs r2, #0
 	ldr r3, _0804157C @ =0x086B5CC0
 	mov sl, r3
-	ldr r4, _08041560 @ =0x03005000
+	ldr r4, _08041560 @ =gOamBuffer
 	mov ip, r4
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -94024,7 +94024,7 @@ _08041550: .4byte 0x80000140
 _08041554: .4byte 0x020314E0
 _08041558: .4byte 0x0000045C
 _0804155C: .4byte 0x0000045E
-_08041560: .4byte 0x03005000
+_08041560: .4byte gOamBuffer
 _08041564: .4byte 0xFFFFFE00
 _08041568: .4byte 0x000001FF
 _0804156C: .4byte 0x00000505
@@ -94267,7 +94267,7 @@ _08041722:
 	lsls r1, r4, #0x10
 	ldr r5, _080417E8 @ =0x086B5D56
 	mov sl, r5
-	ldr r6, _080417EC @ =0x03005000
+	ldr r6, _080417EC @ =gOamBuffer
 	asrs r1, r1, #0x10
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -94341,7 +94341,7 @@ _080417D0:
 _080417E0: .4byte 0x00000383
 _080417E4: .4byte 0x0000132C
 _080417E8: .4byte 0x086B5D56
-_080417EC: .4byte 0x03005000
+_080417EC: .4byte gOamBuffer
 _080417F0: .4byte 0xFFFFFE00
 _080417F4: .4byte 0x000001FF
 
@@ -94390,7 +94390,7 @@ _08041810:
 	movs r3, #0xb8
 	adds r3, r3, r6
 	mov sb, r3
-	ldr r7, _08041BDC @ =0x03005000
+	ldr r7, _08041BDC @ =gOamBuffer
 	ldr r4, _08041BE0 @ =0xFFFFFE00
 	mov r8, r4
 _08041856:
@@ -94457,7 +94457,7 @@ _08041856:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _08041BDC @ =0x03005000
+	ldr r7, _08041BDC @ =gOamBuffer
 	ldr r1, _08041BE0 @ =0xFFFFFE00
 	mov r8, r1
 _080418DE:
@@ -94533,7 +94533,7 @@ _0804192C:
 	movs r1, #0xb8
 	adds r1, r1, r6
 	mov sb, r1
-	ldr r7, _08041BDC @ =0x03005000
+	ldr r7, _08041BDC @ =gOamBuffer
 	ldr r2, _08041BE0 @ =0xFFFFFE00
 	mov r8, r2
 _08041974:
@@ -94600,7 +94600,7 @@ _08041974:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _08041BDC @ =0x03005000
+	ldr r7, _08041BDC @ =gOamBuffer
 	ldr r1, _08041BE0 @ =0xFFFFFE00
 	mov r8, r1
 _080419FC:
@@ -94676,7 +94676,7 @@ _08041A4A:
 	movs r1, #0xb8
 	adds r1, r1, r6
 	mov sb, r1
-	ldr r7, _08041BDC @ =0x03005000
+	ldr r7, _08041BDC @ =gOamBuffer
 	ldr r2, _08041BE0 @ =0xFFFFFE00
 	mov r8, r2
 _08041A92:
@@ -94743,7 +94743,7 @@ _08041A92:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _08041BDC @ =0x03005000
+	ldr r7, _08041BDC @ =gOamBuffer
 	ldr r1, _08041BE0 @ =0xFFFFFE00
 	mov r8, r1
 _08041B1A:
@@ -94821,7 +94821,7 @@ _08041B68:
 	movs r2, #0xb8
 	adds r2, r2, r6
 	mov sb, r2
-	ldr r7, _08041BDC @ =0x03005000
+	ldr r7, _08041BDC @ =gOamBuffer
 	ldr r3, _08041BE0 @ =0xFFFFFE00
 	mov r8, r3
 _08041BB4:
@@ -94842,7 +94842,7 @@ _08041BB4:
 _08041BD0: .4byte 0x0200C4F8
 _08041BD4: .4byte 0x020314E0
 _08041BD8: .4byte 0x0000052A
-_08041BDC: .4byte 0x03005000
+_08041BDC: .4byte gOamBuffer
 _08041BE0: .4byte 0xFFFFFE00
 _08041BE4: .4byte 0x000001FF
 _08041BE8: .4byte 0x0200C668
@@ -94903,7 +94903,7 @@ _08041BF8:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _08041FB8 @ =0x03005000
+	ldr r7, _08041FB8 @ =gOamBuffer
 	ldr r2, _08041FBC @ =0xFFFFFE00
 	mov r8, r2
 _08041C6C:
@@ -94981,7 +94981,7 @@ _08041CBA:
 	movs r2, #0xb8
 	adds r2, r2, r6
 	mov sb, r2
-	ldr r7, _08041FB8 @ =0x03005000
+	ldr r7, _08041FB8 @ =gOamBuffer
 	ldr r3, _08041FBC @ =0xFFFFFE00
 	mov r8, r3
 _08041D06:
@@ -95050,7 +95050,7 @@ _08041D06:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _08041FB8 @ =0x03005000
+	ldr r7, _08041FB8 @ =gOamBuffer
 	ldr r2, _08041FBC @ =0xFFFFFE00
 	mov r8, r2
 _08041D92:
@@ -95128,7 +95128,7 @@ _08041DE0:
 	movs r2, #0xb8
 	adds r2, r2, r6
 	mov sb, r2
-	ldr r7, _08041FB8 @ =0x03005000
+	ldr r7, _08041FB8 @ =gOamBuffer
 	ldr r3, _08041FBC @ =0xFFFFFE00
 	mov r8, r3
 _08041E2C:
@@ -95197,7 +95197,7 @@ _08041E2C:
 	subs r0, r0, r1
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _08041FB8 @ =0x03005000
+	ldr r7, _08041FB8 @ =gOamBuffer
 	ldr r2, _08041FBC @ =0xFFFFFE00
 	mov r8, r2
 _08041EB8:
@@ -95331,7 +95331,7 @@ _08041FA6:
 	.align 2, 0
 _08041FB0: .4byte 0x000001FF
 _08041FB4: .4byte 0xFFFFFE90
-_08041FB8: .4byte 0x03005000
+_08041FB8: .4byte gOamBuffer
 _08041FBC: .4byte 0xFFFFFE00
 _08041FC0: .4byte 0x0200CAB8
 _08041FC4: .4byte 0x0200CC28
@@ -96201,7 +96201,7 @@ _080426D2:
 	movs r1, #0xb8
 	add r1, sb
 	mov sl, r1
-	ldr r7, _08042774 @ =0x03005000
+	ldr r7, _08042774 @ =gOamBuffer
 	ldr r2, _08042778 @ =0xFFFFFE00
 	mov ip, r2
 _080426E4:
@@ -96275,7 +96275,7 @@ _08042728:
 	.align 2, 0
 _0804276C: .4byte 0x000003C6
 _08042770: .4byte 0x0200BC58
-_08042774: .4byte 0x03005000
+_08042774: .4byte gOamBuffer
 _08042778: .4byte 0xFFFFFE00
 _0804277C: .4byte 0x000001FF
 _08042780: .4byte 0x000003CA
@@ -96297,7 +96297,7 @@ _08042796:
 	strh r0, [r6, #4]
 _080427A2:
 	movs r0, #0
-	ldr r7, _08042838 @ =0x03005000
+	ldr r7, _08042838 @ =gOamBuffer
 	ldr r4, _0804283C @ =0xFFFFFE00
 	mov ip, r4
 _080427AA:
@@ -96370,7 +96370,7 @@ _080427EE:
 	b _0804285A
 	.align 2, 0
 _08042834: .4byte 0x000003CA
-_08042838: .4byte 0x03005000
+_08042838: .4byte gOamBuffer
 _0804283C: .4byte 0xFFFFFE00
 _08042840: .4byte 0x000001FF
 _08042844: .4byte 0x000003CE
@@ -96392,7 +96392,7 @@ _0804285A:
 	strh r0, [r6, #4]
 _08042866:
 	movs r0, #0
-	ldr r7, _08042910 @ =0x03005000
+	ldr r7, _08042910 @ =gOamBuffer
 	ldr r4, _08042914 @ =0xFFFFFE00
 	mov ip, r4
 _0804286E:
@@ -96478,7 +96478,7 @@ _080428DC:
 	b _08042938
 	.align 2, 0
 _0804290C: .4byte 0x000003CE
-_08042910: .4byte 0x03005000
+_08042910: .4byte gOamBuffer
 _08042914: .4byte 0xFFFFFE00
 _08042918: .4byte 0x000001FF
 _0804291C: .4byte 0x00000516
@@ -96527,7 +96527,7 @@ _0804296E:
 _0804297A:
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _08042A48 @ =0x03005000
+	ldr r4, _08042A48 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -96628,7 +96628,7 @@ _08042A0A:
 	.align 2, 0
 _08042A40: .4byte 0x0000041A
 _08042A44: .4byte 0x0000FFC4
-_08042A48: .4byte 0x03005000
+_08042A48: .4byte gOamBuffer
 _08042A4C: .4byte 0x000001FF
 _08042A50: .4byte 0xFFFFFE00
 _08042A54: .4byte 0x000003FF
@@ -96768,7 +96768,7 @@ _08042B70:
 	movs r0, #0
 	ldr r3, _08042C04 @ =0x0200BC58
 	mov sb, r3
-	ldr r7, _08042C08 @ =0x03005000
+	ldr r7, _08042C08 @ =gOamBuffer
 	ldr r4, _08042C0C @ =0xFFFFFE00
 	mov ip, r4
 _08042B7C:
@@ -96840,7 +96840,7 @@ _08042BC0:
 	.align 2, 0
 _08042C00: .4byte 0x0000FFC4
 _08042C04: .4byte 0x0200BC58
-_08042C08: .4byte 0x03005000
+_08042C08: .4byte gOamBuffer
 _08042C0C: .4byte 0xFFFFFE00
 _08042C10: .4byte 0x000001FF
 _08042C14:
@@ -96866,7 +96866,7 @@ _08042C2A:
 	strh r0, [r6, #4]
 _08042C3A:
 	movs r0, #0
-	ldr r7, _08042CC0 @ =0x03005000
+	ldr r7, _08042CC0 @ =gOamBuffer
 	ldr r4, _08042CC4 @ =0xFFFFFE00
 	mov ip, r4
 _08042C42:
@@ -96934,7 +96934,7 @@ _08042C90:
 	.align 2, 0
 _08042CB8: .4byte 0x00000516
 _08042CBC: .4byte 0x0000FFC4
-_08042CC0: .4byte 0x03005000
+_08042CC0: .4byte gOamBuffer
 _08042CC4: .4byte 0xFFFFFE00
 _08042CC8: .4byte 0x000001FF
 _08042CCC: .4byte 0x0200BDC8
@@ -96982,7 +96982,7 @@ _08042D16:
 _08042D22:
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _08042DC0 @ =0x03005000
+	ldr r4, _08042DC0 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -97059,7 +97059,7 @@ _08042DA0:
 	.align 2, 0
 _08042DB8: .4byte 0x0000041A
 _08042DBC: .4byte 0x0000FFC4
-_08042DC0: .4byte 0x03005000
+_08042DC0: .4byte gOamBuffer
 _08042DC4: .4byte 0x000001FF
 _08042DC8: .4byte 0xFFFFFE00
 _08042DCC: .4byte 0x000003FF
@@ -98242,7 +98242,7 @@ _0804373E:
 	ldr r0, [r2, #8]
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _080437D8 @ =0x03005000
+	ldr r4, _080437D8 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -98301,7 +98301,7 @@ _080437C8: .4byte 0x040000D4
 _080437CC: .4byte 0x084B47EC
 _080437D0: .4byte 0x060114A0
 _080437D4: .4byte 0x80000300
-_080437D8: .4byte 0x03005000
+_080437D8: .4byte gOamBuffer
 _080437DC: .4byte 0x000001FF
 _080437E0: .4byte 0xFFFFFE00
 _080437E4: .4byte 0x0200C2D0
@@ -98332,7 +98332,7 @@ _08043804:
 	ldr r0, [r2, #8]
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _08043870 @ =0x03005000
+	ldr r4, _08043870 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -98370,7 +98370,7 @@ _08043860: .4byte 0x040000D4
 _08043864: .4byte 0x084B47EC
 _08043868: .4byte 0x06010CA0
 _0804386C: .4byte 0x80000300
-_08043870: .4byte 0x03005000
+_08043870: .4byte gOamBuffer
 _08043874: .4byte 0x000001FF
 _08043878: .4byte 0xFFFFFE00
 
@@ -100488,7 +100488,7 @@ _080449A8:
 	ldr r0, [r6, #8]
 	movs r7, #0
 	lsls r0, r5, #0x10
-	ldr r1, _08044AD0 @ =0x03005000
+	ldr r1, _08044AD0 @ =gOamBuffer
 	mov ip, r1
 	adds r6, r4, #0
 	asrs r0, r0, #0x10
@@ -100597,7 +100597,7 @@ _08044AC0: .4byte 0x084B046C
 _08044AC4: .4byte 0x040000D4
 _08044AC8: .4byte 0x06011CA0
 _08044ACC: .4byte 0x80000090
-_08044AD0: .4byte 0x03005000
+_08044AD0: .4byte gOamBuffer
 _08044AD4: .4byte 0x086B56D8
 _08044AD8: .4byte 0x0000055D
 _08044ADC: .4byte 0x0000055F
@@ -100842,7 +100842,7 @@ _08044C8C:
 	str r0, [r6, #8]
 	ldr r0, [r6, #8]
 	movs r7, #0
-	ldr r6, _08044D4C @ =0x03005000
+	ldr r6, _08044D4C @ =gOamBuffer
 	ldr r0, _08044D50 @ =0xFFFFFE00
 	mov sl, r0
 _08044CC8:
@@ -100909,7 +100909,7 @@ _08044D3C: .4byte 0x084B046C
 _08044D40: .4byte 0x040000D4
 _08044D44: .4byte 0x06011EE0
 _08044D48: .4byte 0x80000090
-_08044D4C: .4byte 0x03005000
+_08044D4C: .4byte gOamBuffer
 _08044D50: .4byte 0xFFFFFE00
 _08044D54: .4byte 0x000001FF
 
@@ -100964,7 +100964,7 @@ _08044D9C:
 	ldr r0, [r2, #8]
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _08044F04 @ =0x03005000
+	ldr r4, _08044F04 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -101021,7 +101021,7 @@ _08044DE8:
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 	movs r0, #0
-	ldr r7, _08044F04 @ =0x03005000
+	ldr r7, _08044F04 @ =gOamBuffer
 	ldr r1, _08044F0C @ =0xFFFFFE00
 	mov ip, r1
 _08044E2E:
@@ -101125,7 +101125,7 @@ _08044EF4: .4byte 0x040000D4
 _08044EF8: .4byte 0x084AF9EC
 _08044EFC: .4byte 0x06010920
 _08044F00: .4byte 0x80000100
-_08044F04: .4byte 0x03005000
+_08044F04: .4byte gOamBuffer
 _08044F08: .4byte 0x000001FF
 _08044F0C: .4byte 0xFFFFFE00
 _08044F10: .4byte 0x0200BBA0
@@ -101193,7 +101193,7 @@ sub_44F3C: @ 0x08044F3C
 	str r0, [r3, #8]
 	ldr r0, [r3, #8]
 	movs r0, #0
-	ldr r7, _08045030 @ =0x03005000
+	ldr r7, _08045030 @ =gOamBuffer
 	ldr r1, _08045034 @ =0xFFFFFE00
 	mov ip, r1
 _08044FA2:
@@ -101261,7 +101261,7 @@ _08045020: .4byte 0x040000D4
 _08045024: .4byte 0x084B7FEC
 _08045028: .4byte 0x06012120
 _0804502C: .4byte 0x80000230
-_08045030: .4byte 0x03005000
+_08045030: .4byte gOamBuffer
 _08045034: .4byte 0xFFFFFE00
 _08045038: .4byte 0x000001FF
 _0804503C: .4byte 0x00000592
@@ -101479,7 +101479,7 @@ sub_45164: @ 0x08045164
 	str r0, [r2, #8]
 	ldr r0, [r2, #8]
 	movs r0, #0
-	ldr r7, _080452C4 @ =0x03005000
+	ldr r7, _080452C4 @ =gOamBuffer
 	ldr r1, _080452C8 @ =0xFFFFFE00
 	mov r8, r1
 _080451F0:
@@ -101583,7 +101583,7 @@ _080452B4: .4byte 0x040000D4
 _080452B8: .4byte 0x084BB16C
 _080452BC: .4byte 0x060125A0
 _080452C0: .4byte 0x80000240
-_080452C4: .4byte 0x03005000
+_080452C4: .4byte gOamBuffer
 _080452C8: .4byte 0xFFFFFE00
 _080452CC: .4byte 0x000001FF
 _080452D0: .4byte 0x00000592
@@ -103267,7 +103267,7 @@ _08046044:
 	movs r3, #0xb8
 	adds r3, r3, r6
 	mov sb, r3
-	ldr r7, _080463E0 @ =0x03005000
+	ldr r7, _080463E0 @ =gOamBuffer
 	ldr r0, _080463E4 @ =0xFFFFFE00
 	mov ip, r0
 _0804606A:
@@ -103517,7 +103517,7 @@ _08046240:
 	adds r0, #0x3c
 	strh r0, [r6, #4]
 	movs r1, #0
-	ldr r7, _080463E0 @ =0x03005000
+	ldr r7, _080463E0 @ =gOamBuffer
 	ldr r3, _08046404 @ =0x000003FF
 	mov sl, r3
 	mov ip, r8
@@ -103684,7 +103684,7 @@ _080463D0: .4byte 0x020314E0
 _080463D4: .4byte 0x0000053A
 _080463D8: .4byte 0x0000031F
 _080463DC: .4byte 0x0200B8C0
-_080463E0: .4byte 0x03005000
+_080463E0: .4byte gOamBuffer
 _080463E4: .4byte 0xFFFFFE00
 _080463E8: .4byte 0x000001FF
 _080463EC: .4byte 0x0000052E
@@ -103806,7 +103806,7 @@ _080464BA:
 	adds r0, #0x3c
 	strh r0, [r6, #4]
 	movs r1, #0
-	ldr r7, _080467B8 @ =0x03005000
+	ldr r7, _080467B8 @ =gOamBuffer
 	ldr r0, _080467BC @ =0x000003FF
 	mov sl, r0
 	mov ip, r8
@@ -104081,7 +104081,7 @@ _08046660:
 	adds r0, #0x3c
 	strh r0, [r6, #4]
 	movs r1, #0
-	ldr r7, _080467B8 @ =0x03005000
+	ldr r7, _080467B8 @ =gOamBuffer
 	ldr r0, _080467C8 @ =0xFFFFFE00
 	mov ip, r0
 	ldr r2, _080467BC @ =0x000003FF
@@ -104149,7 +104149,7 @@ _0804679A:
 _080467AC: .4byte 0x020314E0
 _080467B0: .4byte 0x0000052F
 _080467B4: .4byte 0x0200BA30
-_080467B8: .4byte 0x03005000
+_080467B8: .4byte gOamBuffer
 _080467BC: .4byte 0x000003FF
 _080467C0: .4byte 0xFFFFFC00
 _080467C4: .4byte 0x000001FF
@@ -105634,7 +105634,7 @@ sub_474F4: @ 0x080474F4
 	strh r0, [r5, #2]
 	movs r0, #0x34
 	strh r0, [r5, #4]
-	ldr r7, _0804763C @ =0x03005000
+	ldr r7, _0804763C @ =gOamBuffer
 	ldr r0, _08047640 @ =0xFFFFFE00
 	mov ip, r0
 	adds r4, r5, #0
@@ -105786,7 +105786,7 @@ _0804762C:
 	bx r0
 	.align 2, 0
 _08047638: .4byte gMain
-_0804763C: .4byte 0x03005000
+_0804763C: .4byte gOamBuffer
 _08047640: .4byte 0xFFFFFE00
 _08047644: .4byte 0x000001FF
 _08047648: .4byte 0x02031500
@@ -106125,7 +106125,7 @@ _080478EE:
 	adds r0, #0x14
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _08047AF4 @ =0x03005000
+	ldr r7, _08047AF4 @ =gOamBuffer
 	ldr r2, _08047AF8 @ =0xFFFFFE00
 	mov sl, r2
 	movs r3, #0xf
@@ -106212,7 +106212,7 @@ _08047984:
 	strh r0, [r6, #4]
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _08047AF4 @ =0x03005000
+	ldr r4, _08047AF4 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -106282,7 +106282,7 @@ _08047A14:
 	adds r0, r0, r4
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r7, _08047AF4 @ =0x03005000
+	ldr r7, _08047AF4 @ =gOamBuffer
 	ldr r2, _08047AF8 @ =0xFFFFFE00
 	mov r8, r2
 _08047A56:
@@ -106363,7 +106363,7 @@ _08047A9A:
 	.align 2, 0
 _08047AEC: .4byte gMain
 _08047AF0: .4byte 0x020314E0
-_08047AF4: .4byte 0x03005000
+_08047AF4: .4byte gOamBuffer
 _08047AF8: .4byte 0xFFFFFE00
 _08047AFC: .4byte 0x000001FF
 _08047B00:
@@ -109518,7 +109518,7 @@ _0804949C:
 	ldr r4, [sp, #0x10]
 	lsls r4, r4, #0x10
 	mov r8, r4
-	ldr r7, _08049590 @ =0x03005000
+	ldr r7, _08049590 @ =gOamBuffer
 	ldr r0, _08049594 @ =0xFFFFFE00
 	mov sl, r0
 	adds r4, r6, #0
@@ -109557,7 +109557,7 @@ _080494CA:
 	mov r3, r8
 	asrs r3, r3, #0x10
 	mov sl, r3
-	ldr r7, _08049590 @ =0x03005000
+	ldr r7, _08049590 @ =gOamBuffer
 	ldr r0, _08049594 @ =0xFFFFFE00
 	mov sb, r0
 	ldr r1, _08049598 @ =0x000001FF
@@ -109626,7 +109626,7 @@ _08049572:
 _08049584: .4byte 0x020314E0
 _08049588: .4byte 0x0000063A
 _0804958C: .4byte 0x0200BA30
-_08049590: .4byte 0x03005000
+_08049590: .4byte gOamBuffer
 _08049594: .4byte 0xFFFFFE00
 _08049598: .4byte 0x000001FF
 _0804959C: .4byte 0x0200B808
@@ -109957,7 +109957,7 @@ sub_49850: @ 0x08049850
 	mov ip, r0
 	mov r5, ip
 	adds r5, #8
-	ldr r4, _08049A24 @ =0x03005000
+	ldr r4, _08049A24 @ =gOamBuffer
 	mov r3, ip
 	ldrh r1, [r3, #8]
 	lsls r1, r1, #3
@@ -110052,7 +110052,7 @@ _080498C4:
 	cmp r4, #4
 	ble _080498C4
 	movs r0, #5
-	ldr r6, _08049A24 @ =0x03005000
+	ldr r6, _08049A24 @ =gOamBuffer
 	ldr r1, _08049A2C @ =0xFFFFFE00
 	mov sb, r1
 	movs r3, #4
@@ -110107,7 +110107,7 @@ _0804992E:
 	ble _0804992E
 	mov ip, sl
 	movs r0, #0
-	ldr r6, _08049A24 @ =0x03005000
+	ldr r6, _08049A24 @ =gOamBuffer
 	ldr r7, _08049A2C @ =0xFFFFFE00
 _0804998E:
 	lsls r4, r0, #0x10
@@ -110143,7 +110143,7 @@ _0804998E:
 	ldr r0, _08049A30 @ =0x0200B528
 	mov ip, r0
 	movs r0, #0
-	ldr r6, _08049A24 @ =0x03005000
+	ldr r6, _08049A24 @ =gOamBuffer
 	ldr r7, _08049A2C @ =0xFFFFFE00
 _080499D4:
 	lsls r4, r0, #0x10
@@ -110185,7 +110185,7 @@ _080499D4:
 	bx r0
 	.align 2, 0
 _08049A20: .4byte 0x0200B3B8
-_08049A24: .4byte 0x03005000
+_08049A24: .4byte gOamBuffer
 _08049A28: .4byte 0x000001FF
 _08049A2C: .4byte 0xFFFFFE00
 _08049A30: .4byte 0x0200B528
@@ -110359,7 +110359,7 @@ _08049B68:
 	strh r0, [r6, #4]
 	adds r7, r6, #0
 	adds r7, #8
-	ldr r4, _08049C20 @ =0x03005000
+	ldr r4, _08049C20 @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -110441,7 +110441,7 @@ _08049B68:
 	.align 2, 0
 _08049C18: .4byte 0x0000FFFC
 _08049C1C: .4byte 0x0200B3B8
-_08049C20: .4byte 0x03005000
+_08049C20: .4byte gOamBuffer
 _08049C24: .4byte 0x08137D78
 _08049C28: .4byte 0x000001FF
 _08049C2C: .4byte 0xFFFFFE00
@@ -110483,7 +110483,7 @@ _08049C56:
 	ldr r1, [sp, #4]
 	lsls r1, r1, #0x10
 	str r1, [sp, #8]
-	ldr r2, _08049E94 @ =0x03005000
+	ldr r2, _08049E94 @ =gOamBuffer
 	mov ip, r2
 	movs r3, #0xf
 	rsbs r3, r3, #0
@@ -110554,7 +110554,7 @@ _08049C8E:
 	adds r0, #0x58
 	strh r0, [r6, #4]
 	movs r0, #5
-	ldr r1, _08049E94 @ =0x03005000
+	ldr r1, _08049E94 @ =gOamBuffer
 	mov ip, r1
 	ldr r2, _08049EA0 @ =0xFFFFFE00
 	mov sb, r2
@@ -110638,7 +110638,7 @@ _08049D92:
 	adds r0, #0x50
 	strh r0, [r6, #4]
 	movs r0, #0
-	ldr r5, _08049E94 @ =0x03005000
+	ldr r5, _08049E94 @ =gOamBuffer
 	ldr r1, _08049EA0 @ =0xFFFFFE00
 	mov r8, r1
 _08049DBC:
@@ -110689,7 +110689,7 @@ _08049DBC:
 	movs r0, #0
 	ldr r1, _08049EAC @ =0x020314E0
 	mov ip, r1
-	ldr r5, _08049E94 @ =0x03005000
+	ldr r5, _08049E94 @ =gOamBuffer
 	ldr r2, _08049EA0 @ =0xFFFFFE00
 	mov r8, r2
 _08049E20:
@@ -110747,7 +110747,7 @@ _08049E84: .4byte 0x040000D4
 _08049E88: .4byte 0x08510CAC
 _08049E8C: .4byte 0x06010480
 _08049E90: .4byte 0x80000010
-_08049E94: .4byte 0x03005000
+_08049E94: .4byte gOamBuffer
 _08049E98: .4byte 0x08137D78
 _08049E9C: .4byte 0x000001FF
 _08049EA0: .4byte 0xFFFFFE00

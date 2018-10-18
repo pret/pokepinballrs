@@ -591,7 +591,7 @@ _08002A70:
 	ldrh r0, [r1, #2]
 	strh r0, [r2, #4]
 	adds r5, r4, #0
-	ldr r1, _08002C44 @ =0x03005000
+	ldr r1, _08002C44 @ =gOamBuffer
 	mov ip, r1
 	movs r7, #8
 	movs r6, #3
@@ -646,7 +646,7 @@ _08002AEC:
 	strh r0, [r4, #2]
 	movs r0, #0x85
 	strh r0, [r4, #4]
-	ldr r5, _08002C44 @ =0x03005000
+	ldr r5, _08002C44 @ =gOamBuffer
 	movs r7, #0xd
 	rsbs r7, r7, #0
 	mov sb, r7
@@ -721,7 +721,7 @@ _08002B0C:
 	adds r0, r0, r2
 	ldrh r0, [r0, #2]
 	strh r0, [r3, #4]
-	ldr r5, _08002C44 @ =0x03005000
+	ldr r5, _08002C44 @ =gOamBuffer
 	movs r4, #0xd
 	rsbs r4, r4, #0
 	mov sb, r4
@@ -803,7 +803,7 @@ _08002C34: .4byte 0x086A4C80
 _08002C38: .4byte 0xFFFFFBB0
 _08002C3C: .4byte 0x0200B3B8
 _08002C40: .4byte 0x086A4CC0
-_08002C44: .4byte 0x03005000
+_08002C44: .4byte gOamBuffer
 _08002C48: .4byte 0x000001FF
 _08002C4C: .4byte 0xFFFFFE00
 _08002C50: .4byte 0x0202BEE8

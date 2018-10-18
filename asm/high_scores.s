@@ -2635,7 +2635,7 @@ sub_E3A8: @ 0x0800E3A8
 	adds r1, r1, r2
 	ldr r0, [r1]
 	strh r0, [r5, #4]
-	ldr r7, _0800E458 @ =0x03005000
+	ldr r7, _0800E458 @ =gOamBuffer
 	ldr r0, _0800E45C @ =0xFFFFFE00
 	mov r8, r0
 	adds r4, r5, #0
@@ -2682,7 +2682,7 @@ _0800E448: .4byte 0x02002858
 _0800E44C: .4byte 0x0200B3B8
 _0800E450: .4byte 0x086A7DA8
 _0800E454: .4byte 0x080797F0
-_0800E458: .4byte 0x03005000
+_0800E458: .4byte gOamBuffer
 _0800E45C: .4byte 0xFFFFFE00
 _0800E460: .4byte 0x000001FF
 
@@ -2753,7 +2753,7 @@ _0800E4B4:
 	movs r0, #0x90
 	strh r0, [r6, #4]
 	adds r4, #8
-	ldr r2, _0800E5E8 @ =0x03005000
+	ldr r2, _0800E5E8 @ =gOamBuffer
 	mov sl, r2
 	ldrh r2, [r4]
 	lsls r2, r2, #3
@@ -2879,7 +2879,7 @@ _0800E5D8: .4byte 0x0200287D
 _0800E5DC: .4byte 0x02002882
 _0800E5E0: .4byte 0x0201B178
 _0800E5E4: .4byte 0x086A7DB0
-_0800E5E8: .4byte 0x03005000
+_0800E5E8: .4byte gOamBuffer
 _0800E5EC: .4byte 0x000003FF
 _0800E5F0: .4byte 0xFFFFFC00
 _0800E5F4: .4byte 0x000001FF
@@ -2903,7 +2903,7 @@ _0800E602:
 	blt _0800E61C
 	b _0800E846
 _0800E61C:
-	ldr r1, _0800E668 @ =0x03005000
+	ldr r1, _0800E668 @ =gOamBuffer
 	mov sb, r1
 	ldr r2, _0800E66C @ =0xFFFFFE00
 	mov sl, r2
@@ -2941,7 +2941,7 @@ _0800E628:
 	b _0800E846
 	.align 2, 0
 _0800E664: .4byte 0x086A7DB0
-_0800E668: .4byte 0x03005000
+_0800E668: .4byte gOamBuffer
 _0800E66C: .4byte 0xFFFFFE00
 _0800E670: .4byte 0x000001FF
 _0800E674:
@@ -2977,7 +2977,7 @@ _0800E67A:
 	strh r0, [r3, #4]
 	adds r4, r5, #0
 	adds r4, #8
-	ldr r5, _0800E7A4 @ =0x03005000
+	ldr r5, _0800E7A4 @ =gOamBuffer
 	mov ip, r5
 	ldrh r2, [r4]
 	lsls r2, r2, #3
@@ -3098,7 +3098,7 @@ _0800E792:
 	.align 2, 0
 _0800E79C: .4byte 0x0201B178
 _0800E7A0: .4byte 0x086A7DB0
-_0800E7A4: .4byte 0x03005000
+_0800E7A4: .4byte gOamBuffer
 _0800E7A8: .4byte 0x000003FF
 _0800E7AC: .4byte 0xFFFFFC00
 _0800E7B0: .4byte 0x000001FF
@@ -3122,7 +3122,7 @@ _0800E7C6:
 	ldrh r0, [r6]
 	cmp r5, r0
 	bge _0800E846
-	ldr r1, _0800E828 @ =0x03005000
+	ldr r1, _0800E828 @ =gOamBuffer
 	mov sb, r1
 	ldr r2, _0800E82C @ =0xFFFFFE00
 	mov sl, r2
@@ -3160,7 +3160,7 @@ _0800E7EA:
 	b _0800E846
 	.align 2, 0
 _0800E824: .4byte 0x086A7DB0
-_0800E828: .4byte 0x03005000
+_0800E828: .4byte gOamBuffer
 _0800E82C: .4byte 0xFFFFFE00
 _0800E830: .4byte 0x000001FF
 _0800E834:
@@ -3215,7 +3215,7 @@ sub_E860: @ 0x0800E860
 	ldr r0, _0800E8F8 @ =0x0201A4B8
 	ldrh r0, [r0]
 	strh r0, [r5, #4]
-	ldr r7, _0800E8FC @ =0x03005000
+	ldr r7, _0800E8FC @ =gOamBuffer
 	ldr r0, _0800E900 @ =0xFFFFFE00
 	mov r8, r0
 	adds r4, r5, #0
@@ -3264,7 +3264,7 @@ _0800E8EC: .4byte 0x0200B3B8
 _0800E8F0: .4byte 0x0201C18C
 _0800E8F4: .4byte 0x086A7DD4
 _0800E8F8: .4byte 0x0201A4B8
-_0800E8FC: .4byte 0x03005000
+_0800E8FC: .4byte gOamBuffer
 _0800E900: .4byte 0xFFFFFE00
 _0800E904: .4byte 0x000001FF
 

@@ -668,7 +668,7 @@ sub_8F94: @ 0x08008F94
 	strh r0, [r6, #2]
 	movs r0, #0x18
 	strh r0, [r6, #4]
-	ldr r7, _0800926C @ =0x03005000
+	ldr r7, _0800926C @ =gOamBuffer
 	movs r0, #0xc0
 	lsls r0, r0, #2
 	adds r4, r5, r0
@@ -712,7 +712,7 @@ _08009066:
 	strh r0, [r3, #2]
 	movs r0, #0x18
 	strh r0, [r3, #4]
-	ldr r6, _0800926C @ =0x03005000
+	ldr r6, _0800926C @ =gOamBuffer
 	ldr r7, _08009274 @ =0xFFFFFE00
 	mov ip, r7
 	mov r4, sb
@@ -772,7 +772,7 @@ _080090BC:
 _080090E6:
 	ldrh r2, [r4]
 	lsls r2, r2, #3
-	ldr r1, _0800926C @ =0x03005000
+	ldr r1, _0800926C @ =gOamBuffer
 	adds r2, r2, r1
 	ldrb r1, [r2, #1]
 	mov r0, ip
@@ -782,7 +782,7 @@ _080090E6:
 	strb r0, [r2, #1]
 	ldrh r3, [r4]
 	lsls r3, r3, #3
-	ldr r2, _0800926C @ =0x03005000
+	ldr r2, _0800926C @ =gOamBuffer
 	adds r3, r3, r2
 	movs r7, #2
 	ldrsh r1, [r4, r7]
@@ -800,7 +800,7 @@ _080090E6:
 	strh r0, [r3, #2]
 	ldrh r1, [r4]
 	lsls r1, r1, #3
-	ldr r3, _0800926C @ =0x03005000
+	ldr r3, _0800926C @ =gOamBuffer
 	adds r1, r1, r3
 	ldr r7, [sp]
 	ldrb r0, [r7, #4]
@@ -838,7 +838,7 @@ _0800913A:
 _08009166:
 	ldrh r2, [r4]
 	lsls r2, r2, #3
-	ldr r1, _0800926C @ =0x03005000
+	ldr r1, _0800926C @ =gOamBuffer
 	adds r2, r2, r1
 	ldrb r1, [r2, #1]
 	mov r0, ip
@@ -848,7 +848,7 @@ _08009166:
 	strb r0, [r2, #1]
 	ldrh r3, [r4]
 	lsls r3, r3, #3
-	ldr r2, _0800926C @ =0x03005000
+	ldr r2, _0800926C @ =gOamBuffer
 	adds r3, r3, r2
 	movs r7, #2
 	ldrsh r1, [r4, r7]
@@ -866,7 +866,7 @@ _08009166:
 	strh r0, [r3, #2]
 	ldrh r1, [r4]
 	lsls r1, r1, #3
-	ldr r3, _0800926C @ =0x03005000
+	ldr r3, _0800926C @ =gOamBuffer
 	adds r1, r1, r3
 	mov r7, sl
 	ldrb r0, [r7, #4]
@@ -895,7 +895,7 @@ _080091BA:
 	adds r0, r0, r1
 	ldrh r0, [r0, #2]
 	strh r0, [r7, #4]
-	ldr r6, _0800926C @ =0x03005000
+	ldr r6, _0800926C @ =gOamBuffer
 	movs r3, #0xd
 	rsbs r3, r3, #0
 	mov sb, r3
@@ -964,7 +964,7 @@ _0800925C: .4byte 0x00000808
 _08009260: .4byte 0x04000050
 _08009264: .4byte 0x02002838
 _08009268: .4byte 0x086A6AD4
-_0800926C: .4byte 0x03005000
+_0800926C: .4byte gOamBuffer
 _08009270: .4byte 0x000001FF
 _08009274: .4byte 0xFFFFFE00
 _08009278: .4byte 0x086A6B28

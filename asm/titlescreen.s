@@ -48,7 +48,7 @@ sub_11640: @ 0x08011640
 	ldrh r0, [r0]
 	cmp r5, r0
 	bge _080116DC
-	ldr r1, _08011750 @ =0x03005000
+	ldr r1, _08011750 @ =gOamBuffer
 	mov r8, r1
 	ldr r2, _08011754 @ =0xFFFFFE00
 	mov sb, r2
@@ -92,7 +92,7 @@ _080116DC:
 	strh r0, [r6, #2]
 	movs r0, #0x50
 	strh r0, [r6, #4]
-	ldr r1, _08011750 @ =0x03005000
+	ldr r1, _08011750 @ =gOamBuffer
 	mov r8, r1
 	ldr r2, _08011754 @ =0xFFFFFE00
 	mov sb, r2
@@ -142,7 +142,7 @@ _08011730:
 _08011744: .4byte gTitlescreen
 _08011748: .4byte 0x0200B3B8
 _0801174C: .4byte 0x086A96E4
-_08011750: .4byte 0x03005000
+_08011750: .4byte gOamBuffer
 _08011754: .4byte 0xFFFFFE00
 _08011758: .4byte 0x000001FF
 
@@ -218,7 +218,7 @@ sub_1175C: @ 0x0801175C
 	ldrh r3, [r4]
 	cmp r2, r3
 	bge _0801187C
-	ldr r6, _08011824 @ =0x03005000
+	ldr r6, _08011824 @ =gOamBuffer
 	mov r4, sl
 	adds r4, #8
 	mov r5, ip
@@ -243,7 +243,7 @@ _08011814: .4byte 0x00000808
 _08011818: .4byte 0x04000050
 _0801181C: .4byte gTitlescreen
 _08011820: .4byte 0x0201C190
-_08011824: .4byte 0x03005000
+_08011824: .4byte gOamBuffer
 _08011828:
 	ldrh r0, [r4]
 	lsls r0, r0, #3
@@ -310,7 +310,7 @@ _0801187C:
 	strh r0, [r3, #4]
 	mov r5, sb
 	adds r5, #8
-	ldr r4, _08011960 @ =0x03005000
+	ldr r4, _08011960 @ =gOamBuffer
 	ldrh r2, [r3, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -356,7 +356,7 @@ _080118D8:
 	strh r0, [r7, #4]
 	mov r5, r8
 	adds r5, #8
-	ldr r4, _08011960 @ =0x03005000
+	ldr r4, _08011960 @ =gOamBuffer
 	ldrh r2, [r7, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -401,7 +401,7 @@ _08011950: .4byte 0x000001FF
 _08011954: .4byte 0xFFFFFE00
 _08011958: .4byte 0x086A9684
 _0801195C: .4byte gTitlescreen
-_08011960: .4byte 0x03005000
+_08011960: .4byte gOamBuffer
 _08011964: .4byte 0x086A9694
 
 	thumb_func_start sub_11968
@@ -476,7 +476,7 @@ sub_11968: @ 0x08011968
 	ldrh r3, [r4]
 	cmp r2, r3
 	bge _08011A88
-	ldr r6, _08011A30 @ =0x03005000
+	ldr r6, _08011A30 @ =gOamBuffer
 	mov r4, sl
 	adds r4, #8
 	mov r5, ip
@@ -501,7 +501,7 @@ _08011A20: .4byte 0x00000808
 _08011A24: .4byte 0x04000050
 _08011A28: .4byte gTitlescreen
 _08011A2C: .4byte 0x0202BE00
-_08011A30: .4byte 0x03005000
+_08011A30: .4byte gOamBuffer
 _08011A34:
 	ldrh r0, [r4]
 	lsls r0, r0, #3
@@ -568,7 +568,7 @@ _08011A88:
 	strh r0, [r3, #4]
 	mov r5, sb
 	adds r5, #8
-	ldr r4, _08011B6C @ =0x03005000
+	ldr r4, _08011B6C @ =gOamBuffer
 	ldrh r2, [r3, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -614,7 +614,7 @@ _08011AE4:
 	strh r0, [r7, #4]
 	mov r5, r8
 	adds r5, #8
-	ldr r4, _08011B6C @ =0x03005000
+	ldr r4, _08011B6C @ =gOamBuffer
 	ldrh r2, [r7, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -659,7 +659,7 @@ _08011B5C: .4byte 0x000001FF
 _08011B60: .4byte 0xFFFFFE00
 _08011B64: .4byte 0x086A96AC
 _08011B68: .4byte gTitlescreen
-_08011B6C: .4byte 0x03005000
+_08011B6C: .4byte gOamBuffer
 _08011B70: .4byte 0x086A96C0
 
 	thumb_func_start sub_11B74

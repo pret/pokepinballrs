@@ -1586,7 +1586,7 @@ _080039BA:
 	ldrh r2, [r6]
 	cmp r5, r2
 	bge _08003A18
-	ldr r0, _08003AA4 @ =0x03005000
+	ldr r0, _08003AA4 @ =gOamBuffer
 	mov ip, r0
 	ldr r1, _08003AA8 @ =0xFFFFFE00
 	mov sb, r1
@@ -1639,7 +1639,7 @@ _08003A18:
 	ldrh r2, [r6]
 	cmp r5, r2
 	bge _08003A86
-	ldr r0, _08003AA4 @ =0x03005000
+	ldr r0, _08003AA4 @ =gOamBuffer
 	mov ip, r0
 	ldr r1, _08003AA8 @ =0xFFFFFE00
 	mov sb, r1
@@ -1693,7 +1693,7 @@ _08003A86:
 	.align 2, 0
 _08003A9C: .4byte 0x086A54D8
 _08003AA0: .4byte 0x0202A58C
-_08003AA4: .4byte 0x03005000
+_08003AA4: .4byte gOamBuffer
 _08003AA8: .4byte 0xFFFFFE00
 _08003AAC: .4byte 0x000001FF
 _08003AB0: .4byte 0x0202BEC0
@@ -1765,7 +1765,7 @@ _08003B22:
 	ldrh r2, [r6]
 	cmp r5, r2
 	bge _08003B80
-	ldr r0, _08003C0C @ =0x03005000
+	ldr r0, _08003C0C @ =gOamBuffer
 	mov ip, r0
 	ldr r1, _08003C10 @ =0xFFFFFE00
 	mov sb, r1
@@ -1818,7 +1818,7 @@ _08003B80:
 	ldrh r2, [r6]
 	cmp r5, r2
 	bge _08003BEE
-	ldr r0, _08003C0C @ =0x03005000
+	ldr r0, _08003C0C @ =gOamBuffer
 	mov ip, r0
 	ldr r1, _08003C10 @ =0xFFFFFE00
 	mov sb, r1
@@ -1872,7 +1872,7 @@ _08003BEE:
 	.align 2, 0
 _08003C04: .4byte 0x086A54D8
 _08003C08: .4byte 0x0202A58C
-_08003C0C: .4byte 0x03005000
+_08003C0C: .4byte gOamBuffer
 _08003C10: .4byte 0xFFFFFE00
 _08003C14: .4byte 0x000001FF
 _08003C18: .4byte 0x0202BEC0

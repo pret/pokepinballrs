@@ -33,7 +33,11 @@ gIntrTable: @ 0x2003060
 
 gMain: @ 0x200B0C0
 
-	.space 0xF3F4
+	.space 0x2F8
+
+gUnknown_0200B3B8: @ 0x200B3B8
+
+	.space 0xF0FC
 
 gAutoDisplayTitlescreenMenu: @ 0x201A4B4
 	.space 4

@@ -192,7 +192,7 @@ sub_93F8: @ 0x080093F8
 	bl m4aSoundMain
 	bl VBlankIntrWait
 	ldr r1, _08009484 @ =0x040000D4
-	ldr r0, _08009488 @ =0x03005000
+	ldr r0, _08009488 @ =gOamBuffer
 	str r0, [r1]
 	movs r0, #0xe0
 	lsls r0, r0, #0x13
@@ -252,7 +252,7 @@ _0800947C:
 	.align 2, 0
 _08009480: .4byte 0x04000004
 _08009484: .4byte 0x040000D4
-_08009488: .4byte 0x03005000
+_08009488: .4byte gOamBuffer
 _0800948C: .4byte 0x84000100
 _08009490: .4byte gMain
 _08009494: .4byte 0x000002F6
@@ -1266,7 +1266,7 @@ sub_9CB8: @ 0x08009CB8
 	ldrh r0, [r7]
 	cmp r6, r0
 	bge _08009D46
-	ldr r1, _08009D64 @ =0x03005000
+	ldr r1, _08009D64 @ =gOamBuffer
 	mov ip, r1
 	ldr r2, _08009D68 @ =0xFFFFFE00
 	mov r8, r2
@@ -1314,7 +1314,7 @@ _08009D54: .4byte 0x0201A450
 _08009D58: .4byte 0x0200B698
 _08009D5C: .4byte 0x086A769C
 _08009D60: .4byte 0xFFFFFD20
-_08009D64: .4byte 0x03005000
+_08009D64: .4byte gOamBuffer
 _08009D68: .4byte 0xFFFFFE00
 _08009D6C: .4byte 0x000001FF
 
@@ -1356,7 +1356,7 @@ sub_9D70: @ 0x08009D70
 	ldrh r0, [r6, #2]
 	strh r0, [r3, #4]
 	movs r7, #0
-	ldr r6, _08009E80 @ =0x03005000
+	ldr r6, _08009E80 @ =gOamBuffer
 	mov sl, r5
 	mov sb, r4
 	mov r5, r8
@@ -1452,7 +1452,7 @@ _08009E70: .4byte 0x086A769C
 _08009E74: .4byte 0xFFFFE340
 _08009E78: .4byte 0x02019C30
 _08009E7C: .4byte 0x0201C188
-_08009E80: .4byte 0x03005000
+_08009E80: .4byte gOamBuffer
 _08009E84: .4byte 0x086A7798
 _08009E88: .4byte 0x000001FF
 _08009E8C: .4byte 0xFFFFFE00
@@ -1547,7 +1547,7 @@ sub_9E90: @ 0x08009E90
 	ldrh r2, [r0]
 	cmp r5, r2
 	bge _08009F9E
-	ldr r7, _0800A148 @ =0x03005000
+	ldr r7, _0800A148 @ =gOamBuffer
 	ldr r6, _0800A14C @ =0xFFFFFE00
 	mov ip, r6
 	mov r4, r8
@@ -1604,7 +1604,7 @@ _08009F9E:
 	strh r1, [r7, #2]
 	ldrh r0, [r0, #0x22]
 	strh r0, [r7, #4]
-	ldr r6, _0800A148 @ =0x03005000
+	ldr r6, _0800A148 @ =gOamBuffer
 	movs r0, #0xd
 	rsbs r0, r0, #0
 	mov ip, r0
@@ -1669,7 +1669,7 @@ _0800A01C:
 	strh r1, [r6, #2]
 	ldrh r0, [r0, #0x32]
 	strh r0, [r6, #4]
-	ldr r6, _0800A148 @ =0x03005000
+	ldr r6, _0800A148 @ =gOamBuffer
 	ldr r7, _0800A14C @ =0xFFFFFE00
 	mov ip, r7
 	mov r4, sl
@@ -1736,7 +1736,7 @@ _0800A098:
 	adds r0, #0x42
 	ldrh r0, [r0]
 	strh r0, [r6, #4]
-	ldr r6, _0800A148 @ =0x03005000
+	ldr r6, _0800A148 @ =gOamBuffer
 	movs r7, #0xd
 	rsbs r7, r7, #0
 	mov ip, r7
@@ -1808,7 +1808,7 @@ _0800A138: .4byte 0x04000050
 _0800A13C: .4byte 0x0201A450
 _0800A140: .4byte 0x0200D638
 _0800A144: .4byte 0x086A769C
-_0800A148: .4byte 0x03005000
+_0800A148: .4byte gOamBuffer
 _0800A14C: .4byte 0xFFFFFE00
 _0800A150: .4byte 0x000001FF
 
@@ -2697,7 +2697,7 @@ sub_A87C: @ 0x0800A87C
 	strh r1, [r5, #2]
 	ldrh r0, [r0, #2]
 	strh r0, [r5, #4]
-	ldr r7, _0800A944 @ =0x03005000
+	ldr r7, _0800A944 @ =gOamBuffer
 	movs r2, #0xd
 	rsbs r2, r2, #0
 	mov r8, r2
@@ -2759,7 +2759,7 @@ _0800A934: .4byte 0x00000808
 _0800A938: .4byte 0x04000050
 _0800A93C: .4byte 0x086A795C
 _0800A940: .4byte 0x0201A450
-_0800A944: .4byte 0x03005000
+_0800A944: .4byte gOamBuffer
 _0800A948: .4byte 0xFFFFFE00
 _0800A94C: .4byte 0x000001FF
 
@@ -3715,7 +3715,7 @@ sub_B0E8: @ 0x0800B0E8
 	strh r1, [r7, #2]
 	ldrh r0, [r0, #2]
 	strh r0, [r7, #4]
-	ldr r6, _0800B2D4 @ =0x03005000
+	ldr r6, _0800B2D4 @ =gOamBuffer
 	movs r0, #0xd
 	rsbs r0, r0, #0
 	mov ip, r0
@@ -3781,7 +3781,7 @@ _0800B1B8:
 	strh r1, [r7, #2]
 	ldrh r0, [r0, #0x12]
 	strh r0, [r7, #4]
-	ldr r6, _0800B2D4 @ =0x03005000
+	ldr r6, _0800B2D4 @ =gOamBuffer
 	ldr r0, _0800B2DC @ =0xFFFFFE00
 	mov ip, r0
 	mov r4, r8
@@ -3846,7 +3846,7 @@ _0800B234:
 	strh r1, [r2, #2]
 	ldrh r0, [r0, #0x22]
 	strh r0, [r2, #4]
-	ldr r6, _0800B2D4 @ =0x03005000
+	ldr r6, _0800B2D4 @ =gOamBuffer
 	movs r7, #0xd
 	rsbs r7, r7, #0
 	mov ip, r7
@@ -3913,7 +3913,7 @@ _0800B2C4: .4byte 0x00000808
 _0800B2C8: .4byte 0x04000050
 _0800B2CC: .4byte 0x086A79EC
 _0800B2D0: .4byte 0x0201A450
-_0800B2D4: .4byte 0x03005000
+_0800B2D4: .4byte gOamBuffer
 _0800B2D8: .4byte 0x000001FF
 _0800B2DC: .4byte 0xFFFFFE00
 
@@ -4697,7 +4697,7 @@ _0800B8EC:
 	cmp r7, r2
 	bge _0800B998
 	adds r5, r4, #0
-	ldr r3, _0800BA1C @ =0x03005000
+	ldr r3, _0800BA1C @ =gOamBuffer
 	mov ip, r3
 	ldr r4, _0800BA20 @ =0xFFFFFE00
 	mov sl, r4
@@ -4800,7 +4800,7 @@ _0800BA0C: .4byte 0x0201A450
 _0800BA10: .4byte 0x0200B3B8
 _0800BA14: .4byte 0x086A7A78
 _0800BA18: .4byte 0x086A7B34
-_0800BA1C: .4byte 0x03005000
+_0800BA1C: .4byte gOamBuffer
 _0800BA20: .4byte 0xFFFFFE00
 _0800BA24: .4byte 0x000001FF
 _0800BA28: .4byte 0x0202BF10
@@ -5651,7 +5651,7 @@ sub_C0D8: @ 0x0800C0D8
 	ldrh r0, [r1, #2]
 	strh r0, [r3, #4]
 	movs r7, #0
-	ldr r6, _0800C200 @ =0x03005000
+	ldr r6, _0800C200 @ =gOamBuffer
 	mov sl, r4
 	mov r5, r8
 	adds r5, #8
@@ -5762,7 +5762,7 @@ _0800C1F0: .4byte 0x086A7B74
 _0800C1F4: .4byte 0x0202C5E4
 _0800C1F8: .4byte 0x0202ADD8
 _0800C1FC: .4byte 0x0201A450
-_0800C200: .4byte 0x03005000
+_0800C200: .4byte gOamBuffer
 _0800C204: .4byte 0xFFFFFE00
 _0800C208: .4byte 0x086A7B7C
 _0800C20C: .4byte 0x000001FF
@@ -6241,7 +6241,7 @@ sub_C4F0: @ 0x0800C4F0
 	strh r0, [r1, #4]
 	mov r5, r8
 	adds r5, #8
-	ldr r4, _0800C65C @ =0x03005000
+	ldr r4, _0800C65C @ =gOamBuffer
 	ldrh r1, [r1, #8]
 	lsls r1, r1, #3
 	adds r1, r1, r4
@@ -6310,7 +6310,7 @@ _0800C64C: .4byte 0x0200B3B8
 _0800C650: .4byte 0x0201A450
 _0800C654: .4byte 0x0200B470
 _0800C658: .4byte 0x086A7C24
-_0800C65C: .4byte 0x03005000
+_0800C65C: .4byte gOamBuffer
 _0800C660: .4byte 0x000001FF
 _0800C664: .4byte 0xFFFFFE00
 _0800C668: .4byte 0x0202A578
@@ -6361,7 +6361,7 @@ _0800C67A:
 	ldrh r2, [r0]
 	cmp r6, r2
 	bge _0800C732
-	ldr r3, _0800C800 @ =0x03005000
+	ldr r3, _0800C800 @ =gOamBuffer
 	mov ip, r3
 	ldr r0, _0800C7F8 @ =0x086A7C68
 	adds r7, r7, r0
@@ -6451,7 +6451,7 @@ _0800C762:
 	strh r1, [r7, #2]
 	ldrh r0, [r0, #0x12]
 	strh r0, [r7, #4]
-	ldr r5, _0800C800 @ =0x03005000
+	ldr r5, _0800C800 @ =gOamBuffer
 	ldr r0, _0800C808 @ =0xFFFFFE00
 	mov sb, r0
 	adds r4, r7, #0
@@ -6521,7 +6521,7 @@ _0800C7C8:
 	.align 2, 0
 _0800C7F8: .4byte 0x086A7C68
 _0800C7FC: .4byte 0x086A7C24
-_0800C800: .4byte 0x03005000
+_0800C800: .4byte gOamBuffer
 _0800C804: .4byte 0x000001FF
 _0800C808: .4byte 0xFFFFFE00
 _0800C80C: .4byte 0x0200B470
@@ -6614,7 +6614,7 @@ _0800C872:
 	adds r3, #0x12
 _0800C8B8:
 	lsls r2, r5, #3
-	ldr r7, _0800C93C @ =0x03005000
+	ldr r7, _0800C93C @ =gOamBuffer
 	adds r2, r2, r7
 	movs r0, #0xf4
 	strb r0, [r2]
@@ -6673,7 +6673,7 @@ _0800C92C: .4byte gMain
 _0800C930: .4byte 0x00000302
 _0800C934: .4byte 0x000002FA
 _0800C938: .4byte 0xFFFFFE00
-_0800C93C: .4byte 0x03005000
+_0800C93C: .4byte gOamBuffer
 _0800C940: .4byte 0xFFFFFC00
 _0800C944: .4byte 0x0202C790
 
@@ -7176,7 +7176,7 @@ sub_CD18: @ 0x0800CD18
 	strh r0, [r6, #4]
 	adds r5, r6, #0
 	adds r5, #8
-	ldr r4, _0800CE3C @ =0x03005000
+	ldr r4, _0800CE3C @ =gOamBuffer
 	ldrh r2, [r6, #8]
 	lsls r2, r2, #3
 	adds r2, r2, r4
@@ -7224,7 +7224,7 @@ _0800CDBA:
 	strh r0, [r1, #2]
 	ldrh r0, [r7, #0x12]
 	strh r0, [r1, #4]
-	ldr r2, _0800CE3C @ =0x03005000
+	ldr r2, _0800CE3C @ =gOamBuffer
 	mov sb, r2
 	ldr r3, _0800CE44 @ =0xFFFFFE00
 	mov ip, r3
@@ -7278,6 +7278,6 @@ _0800CE2C: .4byte 0x0200B3B8
 _0800CE30: .4byte 0x086A7D20
 _0800CE34: .4byte 0x0202C5E4
 _0800CE38: .4byte 0x0202ADD8
-_0800CE3C: .4byte 0x03005000
+_0800CE3C: .4byte gOamBuffer
 _0800CE40: .4byte 0x000001FF
 _0800CE44: .4byte 0xFFFFFE00
