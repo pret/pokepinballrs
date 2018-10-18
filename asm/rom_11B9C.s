@@ -63891,12 +63891,12 @@ sub_31F6C: @ 0x08031F6C
 	strh r1, [r3]
 	ldr r3, _08031FE4 @ =0x0000073D
 	adds r0, r0, r3
-	ldrb r0, [r0]
+	ldrb r0, [r0]     @ number of "catch" arrows lit up
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #3
 	bne _08031F96
-	movs r1, #1
+	movs r1, #1  @ rare mons
 _08031F96:
 	movs r2, #0
 	lsls r1, r1, #4
@@ -63912,12 +63912,12 @@ _08031FA2:
 	mov r3, sl
 	ldr r0, [r3]
 	adds r0, #0x35
-	ldrb r0, [r0]
+	ldrb r0, [r0]   @ current area
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	lsls r0, r0, #5
 	adds r1, r1, r0
-	ldr r5, _08031FEC @ =0x08055A84
+	ldr r5, _08031FEC @ =gWildMonLocations
 	adds r1, r1, r5
 	ldrh r6, [r1]
 	movs r3, #0
@@ -63940,7 +63940,7 @@ _08031FA2:
 _08031FE0: .4byte 0x020314E0
 _08031FE4: .4byte 0x0000073D
 _08031FE8: .4byte 0x0200B134
-_08031FEC: .4byte 0x08055A84
+_08031FEC: .4byte gWildMonLocations
 _08031FF0:
 	cmp r0, #0x86
 	beq _08032018
@@ -64063,7 +64063,7 @@ _080320C2:
 	ldrb r6, [r0, #0x15]
 	adds r0, r6, #0
 	cmp r0, #0xcc
-	bgt _080320FA
+	bgt _080320FA  @ check if mon's evolution species is < SPECIES_NONE
 	add r0, r8
 	ldrb r0, [r0]
 	lsls r0, r0, #1
@@ -64097,7 +64097,7 @@ _080320FA:
 	asrs r0, r0, #0x18
 	lsls r0, r0, #5
 	adds r1, r1, r0
-	ldr r3, _08032194 @ =0x08055A84
+	ldr r3, _08032194 @ =gWildMonLocations
 	adds r1, r1, r3
 	ldrh r6, [r1]
 	movs r0, #0xbe
@@ -64164,7 +64164,7 @@ _0803217C:
 	.align 2, 0
 _0803218C: .4byte 0x086AE5E0
 _08032190: .4byte 0x086A3700
-_08032194: .4byte 0x08055A84
+_08032194: .4byte gWildMonLocations
 _08032198: .4byte 0x0000059C
 
 	thumb_func_start sub_3219C
@@ -64503,7 +64503,7 @@ _0803240A:
 _0803242A:
 	ldr r0, _08032478 @ =0x020314E0
 	ldr r2, [r0]
-	ldr r3, _0803247C @ =0x08055A84
+	ldr r3, _0803247C @ =gWildMonLocations
 	lsls r1, r5, #0x10
 	asrs r1, r1, #0xf
 	asrs r0, r6, #0x10
@@ -64541,7 +64541,7 @@ _08032454:
 _08032470: .4byte 0x0000073D
 _08032474: .4byte gMain
 _08032478: .4byte 0x020314E0
-_0803247C: .4byte 0x08055A84
+_0803247C: .4byte gWildMonLocations
 _08032480: .4byte 0x0000059C
 
 	thumb_func_start sub_32484

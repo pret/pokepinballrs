@@ -1,7 +1,13 @@
     .section .rodata
+#include "constants/species.h"
+
 @ field select palettes 0xA8840
 
-.incbin "baserom.gba", 0x55A68, 0x57C46 - 0x55A68
+.incbin "baserom.gba", 0x55A68, 0x55A84 - 0x55A68
+
+.include "data/mon_locations.inc"
+
+.incbin "baserom.gba", 0x55C44, 0x57C46 - 0x55C44
 
 gEmptyOamData:: @ 0x08057C46
 	.4byte 0x00F000F4, 0x00000000
