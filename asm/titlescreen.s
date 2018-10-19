@@ -30,7 +30,7 @@ sub_11640: @ 0x08011640
 	ldr r5, _0801174C @ =0x086A96E4
 	adds r0, r5, #0
 	movs r1, #5
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r7]
 	cmp r0, #1
 	bne _080116DC
@@ -203,7 +203,7 @@ sub_1175C: @ 0x0801175C
 	ldr r4, _08011820 @ =0x0201C190
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r6]
 	cmp r0, #1
 	bne _0801187C
@@ -461,7 +461,7 @@ sub_11968: @ 0x08011968
 	ldr r4, _08011A2C @ =0x0202BE00
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r6]
 	cmp r0, #1
 	bne _08011A88

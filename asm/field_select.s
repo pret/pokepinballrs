@@ -660,7 +660,7 @@ sub_8F94: @ 0x08008F94
 	ldr r0, _08009268 @ =0x086A6AD4
 	movs r1, #0x10
 	adds r2, r6, #0
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r4, #4]
 	cmp r0, #1
 	bne _08009066

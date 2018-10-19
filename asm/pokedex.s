@@ -2483,7 +2483,7 @@ sub_51FC: @ 0x080051FC
 	ldr r0, _08005388 @ =0x086A6148
 	movs r1, #0x1d
 	adds r2, r4, #0
-	bl sub_358
+	bl LoadSpriteSets
 	ldr r0, _0800538C @ =0x0201A4F0
 	ldrh r0, [r0]
 	adds r0, #0x14

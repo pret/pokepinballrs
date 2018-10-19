@@ -1550,7 +1550,7 @@ sub_394C: @ 0x0800394C
 	strh r0, [r1]
 	ldr r0, _080039B0 @ =0x086A54D8
 	movs r1, #0xd
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r7]
 	cmp r0, #1
 	bne _08003A18

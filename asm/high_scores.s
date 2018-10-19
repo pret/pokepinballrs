@@ -2612,7 +2612,7 @@ sub_E3A8: @ 0x0800E3A8
 	strh r0, [r5]
 	ldr r0, _0800E450 @ =0x086A7DA8
 	movs r1, #2
-	bl sub_358
+	bl LoadSpriteSets
 	ldr r2, _0800E454 @ =0x080797F0
 	ldr r0, [r4, #0xc]
 	lsls r0, r0, #3
@@ -2747,7 +2747,7 @@ _0800E4B4:
 	ldr r0, _0800E5E4 @ =0x086A7DB0
 	movs r1, #9
 	adds r2, r6, #0
-	bl sub_358
+	bl LoadSpriteSets
 	movs r0, #0xdc
 	strh r0, [r6, #2]
 	movs r0, #0x90
@@ -2969,7 +2969,7 @@ _0800E67A:
 	ldr r0, _0800E7A0 @ =0x086A7DB0
 	movs r1, #9
 	adds r2, r6, #0
-	bl sub_358
+	bl LoadSpriteSets
 	movs r0, #4
 	mov r3, sl
 	strh r0, [r3, #2]
@@ -3171,7 +3171,7 @@ _0800E834:
 	ldr r0, _0800E85C @ =0x086A7DB0
 	movs r1, #9
 	adds r2, r6, #0
-	bl sub_358
+	bl LoadSpriteSets
 _0800E846:
 	movs r0, #0
 	strh r0, [r7]
@@ -3206,7 +3206,7 @@ sub_E860: @ 0x0800E860
 	strh r0, [r5]
 	ldr r0, _0800E8F4 @ =0x086A7DD4
 	movs r1, #5
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r5]
 	cmp r0, #1
 	bne _0800E8DA

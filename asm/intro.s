@@ -1248,7 +1248,7 @@ sub_9CB8: @ 0x08009CB8
 	adds r2, r2, r1
 	adds r0, r6, #0
 	movs r1, #0x31
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r5]
 	cmp r0, #1
 	bne _08009D46
@@ -1337,7 +1337,7 @@ sub_9D70: @ 0x08009D70
 	ldr r2, _08009E74 @ =0xFFFFE340
 	add r2, r8
 	movs r1, #0x31
-	bl sub_358
+	bl LoadSpriteSets
 	mov r2, r8
 	ldrh r0, [r2]
 	cmp r0, #1
@@ -1528,7 +1528,7 @@ sub_9E90: @ 0x08009E90
 	ldr r5, _0800A144 @ =0x086A769C
 	adds r0, r5, #0
 	movs r1, #0x31
-	bl sub_358
+	bl LoadSpriteSets
 	mov r7, r8
 	ldrh r0, [r7]
 	cmp r0, #1
@@ -2688,7 +2688,7 @@ sub_A87C: @ 0x0800A87C
 	ldr r0, _0800A93C @ =0x086A795C
 	movs r1, #1
 	adds r2, r5, #0
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r5]
 	cmp r0, #1
 	bne _0800A91C
@@ -3706,7 +3706,7 @@ sub_B0E8: @ 0x0800B0E8
 	ldr r0, _0800B2CC @ =0x086A79EC
 	movs r1, #3
 	mov r2, r8
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r7]
 	cmp r0, #1
 	bne _0800B1B8
@@ -4644,7 +4644,7 @@ sub_B7F8: @ 0x0800B7F8
 	adds r0, r4, #0
 	movs r1, #0x12
 	adds r2, r3, #0
-	bl sub_358
+	bl LoadSpriteSets
 	movs r5, #0
 	str r6, [sp, #0x18]
 _0800B8EC:
@@ -5631,7 +5631,7 @@ sub_C0D8: @ 0x0800C0D8
 	ldr r0, _0800C1F0 @ =0x086A7B74
 	movs r1, #1
 	mov r2, r8
-	bl sub_358
+	bl LoadSpriteSets
 	mov r2, r8
 	ldrh r0, [r2]
 	cmp r0, #1
@@ -6230,7 +6230,7 @@ sub_C4F0: @ 0x0800C4F0
 	strh r0, [r1]
 	ldr r0, _0800C658 @ =0x086A7C24
 	movs r1, #0x11
-	bl sub_358
+	bl LoadSpriteSets
 	mov r1, r8
 	ldrh r0, [r1]
 	cmp r0, #1
@@ -7158,7 +7158,7 @@ sub_CD18: @ 0x0800CD18
 	ldr r0, _0800CE30 @ =0x086A7D20
 	movs r1, #0xb
 	mov r2, r8
-	bl sub_358
+	bl LoadSpriteSets
 	ldrh r0, [r6]
 	cmp r0, #1
 	bne _0800CDBA

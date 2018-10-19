@@ -57,7 +57,9 @@ struct OamData
              u32 shape:2;       // 0x40, 0x80 -> 0xC0
 
     /*0x02*/ u32 x:9;
-             u32 matrixNum:5; // bits 3/4 are h-flip/v-flip if not in affine mode
+             u32 matrixNum:3;   // This is not using its full 5 bits?
+             u32 hFlip:1;
+             u32 vFlip:1;
              u32 size:2;
 
     /*0x04*/ u16 tileNum:10;    // 0x3FF

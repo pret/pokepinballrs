@@ -1471,7 +1471,7 @@ _08051DCE:
 	ldr r0, _08051F78 @ =0x086BB9EC
 	movs r1, #0x20
 	ldr r2, _08051F7C @ =0x0200B3B8
-	bl sub_358
+	bl LoadSpriteSets
 	ldr r2, _08051F80 @ =0x086BB968
 	movs r3, #0xa
 	ldrsh r1, [r5, r3]

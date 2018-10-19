@@ -571,7 +571,7 @@ _08002A3C:
 	mov r0, ip
 	movs r1, #0x10
 	ldr r2, _08002C3C @ =0x0200B3B8
-	bl sub_358
+	bl LoadSpriteSets
 	movs r1, #0
 _08002A70:
 	lsls r2, r1, #2
