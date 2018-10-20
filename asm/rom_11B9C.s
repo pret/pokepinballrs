@@ -1288,7 +1288,7 @@ _08012646:
 	ldrsh r1, [r7, r3]
 	adds r0, r1, #0
 	movs r2, #0
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r0, _080126C8 @ =0x020314E0
 	ldr r3, [r0]
 	adds r0, r3, #0
@@ -1459,7 +1459,7 @@ _080127A2:
 	ldrsh r1, [r7, r2]
 	adds r0, r1, #0
 	movs r2, #0
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r0, _08012828 @ =0x020314E0
 	ldr r3, [r0]
 	adds r0, r3, #0
@@ -31965,7 +31965,7 @@ _08021CB0:
 	movs r2, #0
 	ldrsh r1, [r1, r2]
 	movs r2, #1
-	bl sub_7C0
+	bl SetMatrixScale
 	movs r0, #0
 	ldr r6, _08021D6C @ =gOamBuffer
 	ldr r1, _08021D70 @ =0xFFFFFE00
@@ -47739,7 +47739,7 @@ _08029C84:
 	asrs r1, r1, #0x10
 	adds r0, r1, #0
 	movs r2, #2
-	bl sub_7C0
+	bl SetMatrixScale
 	movs r1, #0x80
 	mov r0, sp
 	ldrh r0, [r0, #2]
@@ -47753,7 +47753,7 @@ _08029CA0:
 	asrs r1, r1, #0x10
 	adds r0, r1, #0
 	movs r2, #3
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r0, [r4]
 	adds r0, r0, r6
 	ldrh r0, [r0]
@@ -47779,7 +47779,7 @@ _08029CD6:
 	asrs r1, r1, #0x10
 	adds r0, r1, #0
 	movs r2, #4
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r0, [r4]
 	adds r0, r0, r6
 	ldrh r0, [r0]
@@ -47806,7 +47806,7 @@ _08029D0E:
 	asrs r1, r1, #0x10
 	adds r0, r1, #0
 	movs r2, #5
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r0, _08029D38 @ =0x020314E0
 	ldr r1, [r0]
 	adds r2, r1, r6
@@ -53544,7 +53544,7 @@ _0802CBD6:
 	asrs r1, r1, #0x10
 	adds r0, r1, #0
 	movs r2, #6
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r0, _0802CCB0 @ =0x020314E0
 	ldr r1, [r0]
 	ldr r0, _0802CCB4 @ =0x00000286
@@ -68248,7 +68248,7 @@ _08034238:
 	adds r5, r4, #2
 	lsls r2, r5, #0x10
 	asrs r2, r2, #0x10
-	bl sub_7C0
+	bl SetMatrixScale
 	ldrh r0, [r6, #2]
 	subs r0, #0x10
 	strh r0, [r6, #2]
@@ -81029,22 +81029,22 @@ _0803AAE8:
 	adds r0, r5, #0
 	adds r1, r5, #0
 	movs r2, #1
-	bl sub_7C0
+	bl SetMatrixScale
 	rsbs r4, r5, #0
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0x10
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #2
-	bl sub_7C0
+	bl SetMatrixScale
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #3
-	bl sub_7C0
+	bl SetMatrixScale
 	adds r0, r4, #0
 	adds r1, r4, #0
 	movs r2, #4
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r1, _0803AB48 @ =0x020314E0
 	ldr r0, [r1]
 	adds r1, r0, r7
@@ -87815,22 +87815,22 @@ _0803E26C:
 	adds r0, r5, #0
 	adds r1, r5, #0
 	movs r2, #1
-	bl sub_7C0
+	bl SetMatrixScale
 	rsbs r4, r5, #0
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0x10
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #2
-	bl sub_7C0
+	bl SetMatrixScale
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #3
-	bl sub_7C0
+	bl SetMatrixScale
 	adds r0, r4, #0
 	adds r1, r4, #0
 	movs r2, #4
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r1, _0803E2BC @ =0x020314E0
 	ldr r0, [r1]
 	adds r1, r0, r6
@@ -106726,13 +106726,13 @@ _08047DBA:
 	lsls r1, r2, #0x10
 	asrs r1, r1, #0x10
 	movs r2, #3
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r3, [sp]
 	lsls r1, r3, #0x10
 	asrs r1, r1, #0x10
 	adds r0, r1, #0
 	movs r2, #4
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r4, _08047E74 @ =gMain
 	ldrh r1, [r4, #0x12]
 	cmp r1, #0xcb
@@ -110626,7 +110626,7 @@ _08049D92:
 	ldr r5, [sp, #0x10]
 	asrs r1, r5, #0x10
 	movs r2, #5
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r6, _08049EA4 @ =0x0200B470
 	movs r0, #0x64
 	mov r2, sl

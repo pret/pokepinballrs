@@ -1349,7 +1349,7 @@ sub_9D70: @ 0x08009D70
 	movs r2, #0
 	ldrsh r1, [r4, r2]
 	movs r2, #0
-	bl sub_7C0
+	bl SetMatrixScale
 	ldrh r0, [r6]
 	mov r3, r8
 	strh r0, [r3, #2]
@@ -5643,7 +5643,7 @@ sub_C0D8: @ 0x0800C0D8
 	movs r2, #0
 	ldrsh r1, [r4, r2]
 	movs r2, #0
-	bl sub_7C0
+	bl SetMatrixScale
 	ldr r1, _0800C1FC @ =0x0201A450
 	ldrh r0, [r1]
 	mov r3, r8
@@ -7169,7 +7169,7 @@ sub_CD18: @ 0x0800CD18
 	movs r3, #0
 	ldrsh r1, [r1, r3]
 	movs r2, #0
-	bl sub_7C0
+	bl SetMatrixScale
 	ldrh r0, [r7]
 	strh r0, [r6, #2]
 	ldrh r0, [r7, #2]

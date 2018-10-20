@@ -277,25 +277,23 @@ static int sub_780(int arg0, int arg1)
         return 1 / var0;
 }
 
-// struct OamMatrix
-// {
-//     s16 a;
-//     s16 b;
-//     s16 c;
-//     s16 d;
-// };
-//
-// void sub_7C0(s16 arg0, s16 arg1, s16 matrixNum)
-// {
-//     u16 a = 0x10000 / arg0;
-//     u16 d = 0x10000 / arg1;
-//     volatile s16 a2 = a;
-//     volatile s16 b2 = 0;
-//     volatile s16 c2 = 0;
-//     volatile s16 d2 = d;
+void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum)
+{
+    vu16 a2, b2, c2, d2;
+    u16 a = 0x10000 / xScale;
+    u32 d = 0x10000 / yScale;
+    a2 = a;
+    b2 = 0;
+    c2 = 0;
+    // There is a delayed u16 shift here that is tricky to produce.
+#ifndef NONMATCHING
+    asm_unified("lsls r0, r0, #0x10\n\
+                 lsrs r0, r0, #0x10");
+#endif
+    d2 = d;
 
-//     gOamBuffer[matrixNum * 4 ].affineParam = a2;
-//     gOamBuffer[matrixNum * 4 + 1].affineParam = b2;
-//     gOamBuffer[matrixNum * 4 + 2].affineParam = c2;
-//     gOamBuffer[matrixNum * 4 + 3].affineParam = d;
-// }
+    gOamBuffer[matrixNum * 4 ].affineParam = a2;
+    gOamBuffer[matrixNum * 4 + 1].affineParam = b2;
+    gOamBuffer[matrixNum * 4 + 2].affineParam = c2;
+    gOamBuffer[matrixNum * 4 + 3].affineParam = d;
+}
