@@ -3,7 +3,10 @@ gUnknown_03000000: @ 0x3000000
 .space 0x5000
 
 gOamBuffer: @ 0x3005000
-	.space 0xC00
+	.space 0x400
+
+IntrMain_Buffer: @ 0x3005400
+	.space 0x800
 
 gUnknown_03005C00: @ 0x3005C00
 	.space 0xC00

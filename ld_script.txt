@@ -27,8 +27,10 @@ SECTIONS
     .text :
     {
         asm/start.o(.text);
+        src/util.o(.text);
+        src/rom_850.o(.text);
         src/main.o(.text);
-        asm/rom_24C.o(.text);
+        asm/rom_9BC.o(.text);
         asm/rom_25A4.o(.text);
         asm/rom_2C58.o(.text);
         asm/pokedex.o(.text);

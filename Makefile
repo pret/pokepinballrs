@@ -101,6 +101,9 @@ include graphics_rules.mk
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
 
+
+$(C_BUILDDIR)/rom_850.o: CC1 := tools/agbcc/bin/old_agbcc
+
 $(C_BUILDDIR)/libc.o: CC1 := tools/agbcc/bin/old_agbcc
 $(C_BUILDDIR)/libc.o: CFLAGS := -O2
 

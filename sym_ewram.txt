@@ -37,7 +37,36 @@ gMain: @ 0x200B0C0
 
 gUnknown_0200B3B8: @ 0x200B3B8
 
-	.space 0xF0FC
+	.space 0x47E0
+
+gUnknown_0200FB98: @ 0x200FB98
+	.space 0x4
+
+gUnknown_0200FB9C: @ 0x200FB9C
+	.space 0x4
+
+gUnknown_0200FBA0: @ 0x200FBA0
+	.space 0x4
+
+	.space 0x802C
+
+gUnknown_02017BD0: @ 0x2017BD0
+	.space 0x4
+
+gUnknown_02017BD4: @ 0x2017BD4
+	.space 0x4
+
+	.space 0x8
+
+gUnknown_02017BE0: @ 0x2017BE0
+	.space 0x4
+
+	.space 0x1FFC
+
+gUnknown_02019BE0: @ 0x2019BE0
+	.space 0x4
+
+	.space 0x8D0
 
 gAutoDisplayTitlescreenMenu: @ 0x201A4B4
 	.space 4

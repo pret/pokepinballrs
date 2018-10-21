@@ -23,15 +23,15 @@ struct SpriteSet
 struct OamDataSimple
 {
     u16 oamId;
-    u16 xOffset;
-    u16 yOffset;
+    s16 xOffset;
+    s16 yOffset;
 };
 
 struct SpriteGroup
 {
     u16 available;
-    u16 baseX;
-    u16 baseY;
+    s16 baseX;
+    s16 baseY;
     struct OamDataSimple oam[MAX_SPRITES_IN_GROUP];
 };
 // size: 0xB8
@@ -84,5 +84,6 @@ void sub_490(void);
 void sub_518(void);
 void sub_578(void);
 void sub_D74(void);
+s16 LoadSpriteSets(const struct SpriteSet* const*, u16, struct SpriteGroup*);
 
 #endif // GUARD_MAIN_H

@@ -27,7 +27,7 @@ extern const s8 gUnknown_086A9672[9][2];
 extern const u16 gUnknown_086A96A4[];
 extern const u16 gUnknown_086A96D4[];
 extern const s16 gEReaderAccessButtonSequence[];
-extern const u8 *const gUnknown_086A96E4[];
+extern const struct SpriteSet *const gUnknown_086A96E4[];
 
 extern void sub_438(void);
 extern void sub_CBC(void);
@@ -694,3 +694,39 @@ static void sub_1157C(void)
         }
     }
 }
+
+// static void sub_11640(void)
+// {
+//     int i;
+//     const struct SpriteSet *spriteSet;
+//     struct SpriteGroup *group1 = &gTitlescreen.unk8[gUnknown_0200B3B8];
+//     struct SpriteGroup *group2 = &gTitlescreen.unk10[gUnknown_0200B3B8];
+//     group1->available = gTitlescreen.unk9;
+//     group2->available = gTitlescreen.unk11;
+//     LoadSpriteSets(gUnknown_086A96E4, 5, gUnknown_0200B3B8);
+//     if (group1->available == 1)
+//     {
+//         group1->baseX = 120;
+//         group1->baseY = 102;
+//         spriteSet = gUnknown_086A96E4[gTitlescreen.unk8];
+//         for (i = 0; i < spriteSet->count; i++)
+//         {
+//             gOamBuffer[group1->oam[i].oamId].x = group1->oam[i].xOffset + group1->baseX;
+//             gOamBuffer[group1->oam[i].oamId].y = group1->oam[i].yOffset + group1->baseY;
+//         }
+//     }
+
+//     if (group2->available == 1)
+//     {
+//         group2->baseX = 120;
+//         group2->baseY = 80;
+//         for (i = 0; i < 2; i++)
+//         {
+//             gOamBuffer[group2->oam[i].oamId].x = group2->oam[i].xOffset + group2->baseX;
+//             gOamBuffer[group2->oam[i].oamId].y = group2->oam[i].yOffset + group2->baseY;
+//         }
+//     }
+
+//     group1->available = 0;
+//     group2->available = 0;
+// }
