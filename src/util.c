@@ -108,12 +108,12 @@ void sub_438(void)
     gMain.unk11 = 0;
     gMain.unk12 = 0;
     gMain.unk14 = 0;
-    gMain.unk26 = 0x90;
+    gMain.vCount = 144;
     gMain.unk28 = 0;
     gMain.unk2A = 0;
     gMain.unk36 = 0;
-    gMain.unk38 = 0;
-    gMain.unk3A = 0;
+    gMain.blendControl = 0;
+    gMain.blendAlpha = 0;
     gMain.unk3C = 0;
     gMain.unk2C = 0;
 }
