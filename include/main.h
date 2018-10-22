@@ -7,6 +7,7 @@
 #define MAX_SPRITES_IN_GROUP 22
 
 typedef void (*StateFunc)(void);
+typedef void (*IntrFunc)(void);
 
 struct MainUnk2E8
 {
@@ -53,18 +54,24 @@ struct Main
     /*0x18*/ u16 newKeys;
     /*0x1A*/ u16 releasedKeys;
     /*0x1C*/ u16 heldKeys;
-    /*0x1E*/ u8 filler1E[0x8];
+    /*0x1E*/ u8 filler1E[0x2];
+    /*0x20*/ u16 unk20;
+    /*0x22*/ u8 filler22[0x4];
     /*0x26*/ s16 vCount;
     /*0x28*/ s16 unk28;
     /*0x2A*/ s16 unk2A;
     /*0x2C*/ s16 unk2C;
-    /*0x2E*/ u8 filler2E[0x8];
+    /*0x2E*/ u8 filler2E[0x2];
+    /*0x30*/ u16 unk30;
+    /*0x32*/ u8 filler32[0x4];
     /*0x36*/ u8 unk36;
     /*0x38*/ volatile u16 blendControl;
     /*0x3A*/ volatile u16 blendAlpha;
-    /*0x3C*/ volatile u16 unk3C;
+    /*0x3C*/ volatile u16 blendBrightness;
     /*0x40*/ int unk40;
-    /*0x44*/ u8 filler44[0xC];
+    /*0x44*/ u8 filler44[0x4];
+    /*0x48*/ int rngValue;
+    /*0x4C*/ int unk4C;
     /*0x50*/ int unk50;
     /*0x54*/ u8 filler54[0x294];
     /*0x2E8*/ struct MainUnk2E8 unk2E8[4];

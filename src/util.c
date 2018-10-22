@@ -114,7 +114,7 @@ void sub_438(void)
     gMain.unk36 = 0;
     gMain.blendControl = 0;
     gMain.blendAlpha = 0;
-    gMain.unk3C = 0;
+    gMain.blendBrightness = 0;
     gMain.unk2C = 0;
 }
 

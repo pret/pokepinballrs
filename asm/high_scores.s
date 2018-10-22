@@ -5114,7 +5114,7 @@ sub_F74C: @ 0x0800F74C
 	ldr r1, _0800F85C @ =0x0200B134
 	str r1, [sp]
 _0800F760:
-	bl sub_C00
+	bl Random
 	movs r1, #0x2a
 	bl __umodsi3
 	lsls r0, r0, #0x18
@@ -5136,14 +5136,14 @@ _0800F760:
 	adds r6, #0xe8
 	movs r5, #2
 _0800F78E:
-	bl sub_C00
+	bl Random
 	movs r1, #0xa
 	bl __umodsi3
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #7
 	bhi _0800F7AE
-	bl sub_C00
+	bl Random
 	movs r1, #0x2a
 	bl __umodsi3
 	lsls r0, r0, #0x18
@@ -5153,9 +5153,9 @@ _0800F7AE:
 	subs r5, #1
 	cmp r5, #0
 	bge _0800F78E
-	bl sub_C00
+	bl Random
 	adds r7, r0, #0
-	bl sub_C00
+	bl Random
 	adds r6, r0, #0
 	mov r0, sb
 	add r0, r8
@@ -5173,7 +5173,7 @@ _0800F7AE:
 	str r2, [sp, #4]
 	mov sl, r0
 _0800F7E0:
-	bl sub_C00
+	bl Random
 	movs r1, #0x2a
 	bl __umodsi3
 	lsls r0, r0, #0x18
@@ -5198,14 +5198,14 @@ _0800F7E0:
 	adds r1, r1, r0
 	mov sb, r1
 _0800F814:
-	bl sub_C00
+	bl Random
 	movs r1, #0xa
 	bl __umodsi3
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, #7
 	bhi _0800F834
-	bl sub_C00
+	bl Random
 	movs r1, #0x2a
 	bl __umodsi3
 	lsls r0, r0, #0x18
@@ -5219,20 +5219,20 @@ _0800F834:
 	subs r5, #1
 	cmp r5, #0
 	bge _0800F814
-	bl sub_C00
+	bl Random
 	adds r1, r7, #0
 	bl __umodsi3
 	adds r7, r0, #0
 	cmp r7, #0
 	beq _0800F868
-	bl sub_C00
+	bl Random
 	b _0800F872
 	.align 2, 0
 _0800F85C: .4byte 0x0200B134
 _0800F860: .4byte 0x0200B218
 _0800F864: .4byte 0x0200B22C
 _0800F868:
-	bl sub_C00
+	bl Random
 	adds r1, r6, #0
 	bl __umodsi3
 _0800F872:

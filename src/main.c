@@ -2,20 +2,43 @@
 #include "m4a.h"
 #include "main.h"
 
+extern void sub_438(void);
+extern void sub_8BC(void);
+extern void sub_8FC(void);
+extern void sub_940(void);
 extern void sub_B54(void);
-extern void sub_BBC(void);
+extern void sub_B8C(void);
+static void InitIntrHandlers(void);
 extern void sub_CBC(void);
 extern void sub_D10(void);
 extern void sub_D74(void);
 extern void sub_FE8(void);
 extern void ReadKeys(void);
+extern void sub_1F4C(void);
+extern void sub_1F5C(void);
+extern void sub_1090C(void);
+extern void sub_52A18(void);
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
+extern IntrFunc *gUnknown_0200FB98;
+extern IntrFunc *gUnknown_02019BE0;
+
+extern const IntrFunc gIntrTableTemplate[14];
+#define INTR_COUNT ((int)(sizeof(gIntrTableTemplate)/sizeof(IntrFunc)))
+extern IntrFunc gIntrTable[INTR_COUNT];
+extern void (*gUnknown_0200FB9C)(void);
+extern void (*gUnknown_0200FBA0)(void);
+extern void (*gUnknown_02017BD0)(void);
+extern void (*gUnknown_02017BD4)(void);
+extern u16 gUnknown_02002000;
+extern u16 gUnknown_02002002;
+
+extern s16 gUnknown_08055C44[];
 
 void AgbMain(void)
 {
     RegisterRamReset(0xFF);
-    sub_BBC();
+    InitIntrHandlers();
     DmaCopy32(3, IntrMain, IntrMain_Buffer, sizeof(IntrMain_Buffer));
     INTR_VECTOR = IntrMain_Buffer;
     sub_B54();
@@ -49,13 +72,13 @@ void sub_9BC_Main(void)
     }
 }
 
-void sub_A08(void)
+void HBlankIntr(void)
 {
     m4aSoundVSync();
     INTR_CHECK |= INTR_FLAG_VBLANK;
 }
 
-void sub_A20(void)
+void VCountIntr(void)
 {
     INTR_CHECK |= INTR_FLAG_VCOUNT;
     while (!(REG_DISPSTAT & DISPSTAT_HBLANK));
@@ -110,4 +133,262 @@ void sub_A20(void)
             REG_BG0VOFS = 352;
         }
     }
+}
+
+void SerialIntr(void)
+{
+    sub_1F5C();
+}
+
+void Timer3Intr(void)
+{
+    sub_1F4C();
+}
+
+void IntrDummy(void)
+{
+}
+
+void sub_B54(void)
+{
+    REG_WAITCNT = WAITCNT_AGB
+                | WAITCNT_PREFETCH_ENABLE
+                | WAITCNT_PHI_OUT_NONE
+                | WAITCNT_WS2_S_1
+                | WAITCNT_WS2_N_3
+                | WAITCNT_WS1_S_1
+                | WAITCNT_WS1_N_3
+                | WAITCNT_WS0_S_1
+                | WAITCNT_WS0_N_3
+                | WAITCNT_SRAM_2;
+    REG_IE = INTR_FLAG_GAMEPAK;
+    REG_IME = INTR_FLAG_VBLANK;
+    sub_B8C();
+    m4aSoundInit();
+    m4aSoundVSyncOff();
+    sub_52A18();
+}
+
+void sub_B8C(void)
+{
+    gMain.mainState = 0;
+    gMain.subState = 0;
+    gMain.unk16 = 0;
+    gMain.heldKeys = 0;
+    gMain.newKeys = 0;
+    gMain.unk20 = 0;
+    gMain.rngValue = 0;
+    gMain.unk4C = 0;
+    gMain.unk30 = 0;
+    gMain.vCount = 144;
+    gMain.unk2C = 0;
+    sub_1090C();
+    sub_438();
+}
+
+static void InitIntrHandlers(void)
+{
+    int i;
+
+    for (i = 0; i < INTR_COUNT; i++)
+        gIntrTable[i] = gIntrTableTemplate[i];
+
+    gUnknown_0200FB98 = &gIntrTable[2];
+    gUnknown_02019BE0 = &gIntrTable[4];
+    sub_8BC();
+    sub_8FC();
+    sub_940();
+}
+
+// The number 1103515245 comes from the example implementation of rand and srand
+// in the ISO C standard.
+int Random(void)
+{
+    gMain.rngValue = 1103515245 * gMain.rngValue + 12345;
+    return gMain.rngValue & 0xFFFF;
+}
+
+#ifdef NONMATCHING
+s16 sub_C24(u16 arg0)
+{
+    u16 index = arg0 / 4;
+    s16 var0 = 1;
+    if (index > 0x1FFF)
+    {
+        index -= 0x2000;
+        var0 = -1;
+    }
+
+    if (index > 0xFFF)
+        index = 0x2000 - index;
+    
+    return gUnknown_08055C44[index] * var0;
+}
+#else
+NAKED
+s16 sub_C24(u16 arg0)
+{
+    asm_unified("\n\
+    lsls r0, r0, #0x10\n\
+    lsrs r2, r0, #0x12\n\
+    movs r3, #1\n\
+    ldr r0, _08000C60 @ =0x00001FFF\n\
+    cmp r2, r0\n\
+    bls _08000C3A\n\
+    ldr r1, _08000C64 @ =0xFFFFE000\n\
+    adds r0, r2, r1\n\
+    lsls r0, r0, #0x10\n\
+    lsrs r2, r0, #0x10\n\
+    ldr r3, _08000C68 @ =0x0000FFFF\n\
+_08000C3A:\n\
+    ldr r0, _08000C6C @ =0x00000FFF\n\
+    cmp r2, r0\n\
+    bls _08000C4C\n\
+    movs r1, #0x80\n\
+    lsls r1, r1, #6\n\
+    adds r0, r1, #0\n\
+    subs r0, r0, r2\n\
+    lsls r0, r0, #0x10\n\
+    lsrs r2, r0, #0x10\n\
+_08000C4C:\n\
+    ldr r1, _08000C70 @ =0x08055C44\n\
+    lsls r0, r2, #1\n\
+    adds r0, r0, r1\n\
+    ldrh r1, [r0]\n\
+    lsls r0, r3, #0x10\n\
+    asrs r0, r0, #0x10\n\
+    muls r0, r1, r0\n\
+    lsls r0, r0, #0x10\n\
+    asrs r0, r0, #0x10\n\
+    bx lr\n\
+    .align 2, 0\n\
+_08000C60: .4byte 0x00001FFF\n\
+_08000C64: .4byte 0xFFFFE000\n\
+_08000C68: .4byte 0x0000FFFF\n\
+_08000C6C: .4byte 0x00000FFF\n\
+_08000C70: .4byte 0x08055C44");
+}
+#endif // NONMATCHING
+
+s16 sub_C74(u16 arg0)
+{   
+    return sub_C24(arg0 + 0x4000);
+}
+
+void ReadKeys(void)
+{
+    u16 keyInput = ~REG_KEYINPUT;
+    gMain.newKeys = keyInput & (keyInput ^ gMain.heldKeys);
+    gMain.releasedKeys = gMain.heldKeys & (keyInput ^ gMain.heldKeys);
+    gMain.heldKeys = keyInput;
+}
+
+void sub_CBC(void)
+{
+    if (!(REG_IE & INTR_FLAG_VBLANK))
+    {
+        REG_IF |= INTR_FLAG_VCOUNT | INTR_FLAG_VBLANK;
+        REG_IE &= INTR_FLAG_VBLANK
+                | INTR_FLAG_HBLANK
+                | INTR_FLAG_VCOUNT
+                | INTR_FLAG_TIMER0
+                | INTR_FLAG_TIMER1
+                | INTR_FLAG_TIMER2
+                | INTR_FLAG_TIMER3
+                | INTR_FLAG_SERIAL
+                | INTR_FLAG_DMA0
+                | INTR_FLAG_DMA1
+                | INTR_FLAG_DMA2
+                | INTR_FLAG_DMA3
+                | INTR_FLAG_KEYPAD
+                | INTR_FLAG_GAMEPAK;
+        REG_IME = INTR_FLAG_VBLANK;
+        REG_IE |= INTR_FLAG_VCOUNT | INTR_FLAG_VBLANK;
+        REG_DISPSTAT |= DISPSTAT_VBLANK_INTR;
+        m4aSoundVSyncOn();
+    }
+}
+
+void sub_D10(void)
+{
+    REG_DISPSTAT &= ~DISPSTAT_VBLANK_INTR;
+    REG_DISPSTAT &= ~DISPSTAT_VCOUNT_INTR;
+    REG_IE &= INTR_FLAG_VBLANK
+            | INTR_FLAG_HBLANK
+            | INTR_FLAG_VCOUNT
+            | INTR_FLAG_TIMER0
+            | INTR_FLAG_TIMER1
+            | INTR_FLAG_TIMER2
+            | INTR_FLAG_TIMER3
+            | INTR_FLAG_SERIAL
+            | INTR_FLAG_DMA0
+            | INTR_FLAG_DMA1
+            | INTR_FLAG_DMA2
+            | INTR_FLAG_DMA3
+            | INTR_FLAG_KEYPAD
+            | INTR_FLAG_GAMEPAK;
+    REG_IE &= INTR_FLAG_HBLANK
+            | INTR_FLAG_VCOUNT
+            | INTR_FLAG_TIMER0
+            | INTR_FLAG_TIMER1
+            | INTR_FLAG_TIMER2
+            | INTR_FLAG_TIMER3
+            | INTR_FLAG_SERIAL
+            | INTR_FLAG_DMA0
+            | INTR_FLAG_DMA1
+            | INTR_FLAG_DMA2
+            | INTR_FLAG_DMA3
+            | INTR_FLAG_KEYPAD
+            | INTR_FLAG_GAMEPAK;
+    if (!REG_IE)
+        REG_IME = 0;
+
+    REG_IF |= INTR_FLAG_VBLANK;
+    m4aSoundVSyncOff();
+}
+
+void sub_D74(void)
+{
+    gUnknown_0200FB9C = gUnknown_02017BD4;
+    *gUnknown_0200FB98 = gUnknown_02017BD0;
+    *gUnknown_02019BE0 = gUnknown_0200FBA0;
+    if (gUnknown_0200FB9C)
+        gUnknown_0200FB9C();
+
+    gMain.unk4C++;
+}
+
+void sub_DC4(void)
+{
+    if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
+    {
+        VBlankIntrWait();
+        DmaCopy32(3, gOamBuffer, (void *)OAM, OAM_SIZE);
+        REG_DISPCNT = gMain.unk16;
+        REG_BG0HOFS = gMain.unk2E8[0].unk0;
+        REG_BG0VOFS = gMain.unk2E8[0].unk2;
+        REG_BG1HOFS = gMain.unk2E8[1].unk0;
+        REG_BG1VOFS = gMain.unk2E8[1].unk2;
+        REG_BG2HOFS = gMain.unk2E8[2].unk0;
+        REG_BG2VOFS = gMain.unk2E8[2].unk2;
+        REG_BG3HOFS = gMain.unk2E8[3].unk0;
+        REG_BG3VOFS = gMain.unk2E8[3].unk2;
+        if (gMain.unk36)
+        {
+            REG_BLDCNT = gMain.blendControl;
+            REG_BLDALPHA = gMain.blendAlpha;
+            REG_BLDY = gMain.blendBrightness;
+        }
+
+        REG_DISPSTAT &= 0xFF;
+        REG_DISPSTAT |= (gMain.vCount << 8) + DISPSTAT_VCOUNT_INTR;
+        m4aSoundMain();
+    }
+}
+
+void sub_E90(void)
+{
+    u16 keyInput = REG_KEYINPUT ^ KEYS_MASK;
+    gUnknown_02002002 = gUnknown_02002000;
+    gUnknown_02002000 = keyInput;
 }

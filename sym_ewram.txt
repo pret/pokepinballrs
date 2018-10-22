@@ -1,4 +1,12 @@
-	.space 0x2888
+	.space 0x2000
+
+gUnknown_02002000: @ 0x2002000
+	.space 2
+
+gUnknown_02002002: @ 0x2002002
+	.space 2
+
+	.space 0x884
 
 gTitlescreen: @ 0x2002888
 	.space 0x18
@@ -28,8 +36,9 @@ gUnknown_02002958: @ 0x2002958
 	.space 0x708
 
 gIntrTable: @ 0x2003060
+	.space 0x38
 
-	.space 0x8060
+	.space 0x8028
 
 gMain: @ 0x200B0C0
 
