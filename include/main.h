@@ -42,7 +42,11 @@ struct Main
     /*0x00*/ u8 filler0[0x2];
     /*0x02*/ u8 mainState;
     /*0x03*/ u8 subState;
-    /*0x04*/ u8 filler4[0x9];
+    /*0x04*/ u8 unk4;
+    /*0x05*/ u8 filler5[0x2];
+    /*0x07*/ s8 unk7;
+    /*0x08*/ s8 unk8;
+    /*0x09*/ u8 filler9[0x4];
     /*0x0D*/ u8 unkD;
     /*0x0E*/ u8 fillerE[0x1];
     /*0x0F*/ u8 unkF;
@@ -73,19 +77,16 @@ struct Main
     /*0x48*/ int rngValue;
     /*0x4C*/ int unk4C;
     /*0x50*/ int unk50;
-    /*0x54*/ u8 filler54[0x294];
+    /*0x54*/ u8 filler54[0x20];
+    /*0x74*/ u8 pokedexFlags[204];
+    /*0x140*/ u8 filler140[0x1A8];
     /*0x2E8*/ struct MainUnk2E8 unk2E8[4];
     /*0x2F8*/ struct SpriteGroup spriteGroups[NUM_SPRITE_GROUPS];
 };
 
-struct Unk0200B134
-{
-    /*0x00*/ u8 filler0[0xCD];
-    /*0xCD*/ u8 unkCD;
-};
 
 extern struct Main gMain;
-extern struct Unk0200B134 gUnknown_0200B134;
+extern u8 gUnknown_0200B134[];
 extern struct SpriteGroup gUnknown_0200B3B8[];
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
@@ -120,6 +121,7 @@ void sub_2B4(void);
 void sub_490(void);
 void sub_518(void);
 void sub_578(void);
+u32 Random(void);
 void sub_CBC(void);
 void sub_D10(void);
 void sub_D74(void);

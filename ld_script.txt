@@ -42,6 +42,8 @@ SECTIONS
         src/titlescreen.o(.text);
         asm/titlescreen.o(.text);
         asm/rom_11B9C.o(.text);
+        src/rom_3219C.o(.text);
+        asm/rom_3219C.o(.text);
         asm/options.o(.text);
         asm/rom_528AC.o(.text);
         asm/m4a_1.o(.text);

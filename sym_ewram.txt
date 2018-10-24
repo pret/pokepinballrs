@@ -149,7 +149,16 @@ gUnknown_202BE24: @ 0x202BE24
 
 gUnknown_0202C588: @ 0x202C588
 
-	.space 0x55A8
+	.space 0x4F58
+
+gUnknown_020314E0: @ 0x20314E0
+	.space 0x4
+
+	.space 0x3C
+
+gUnknown_02031520: @ 0x2031520
+
+	.space 0x610
 
 gSoundInfo: @ 0x2031B30
 

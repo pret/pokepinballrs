@@ -187,7 +187,7 @@ static void InitIntrHandlers(void)
 
 // The number 1103515245 comes from the example implementation of rand and srand
 // in the ISO C standard.
-int Random(void)
+u32 Random(void)
 {
     gMain.rngValue = 1103515245 * gMain.rngValue + 12345;
     return gMain.rngValue & 0xFFFF;

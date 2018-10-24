@@ -56,4 +56,32 @@
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) >= (b) ? (a) : (b))
 
+struct PinballGame
+{
+	/*0x000*/ u8 filler0[0x35];
+	/*0x035*/ s8 area;
+	/*0x036*/ u8 filler36[0xF5];
+	/*0x12B*/ s8 unk12B;
+	/*0x12C*/ u8 filler12C[0x2];
+	/*0x12E*/ s16 unk12E;
+	/*0x130*/ s16 unk130[8];
+	/*0x140*/ u8 filler140[0x458];
+	/*0x598*/ u16 catchModeSpecies;
+	/*0x59A*/ u8 filler59A[0x2];
+	/*0x59C*/ u16 unk59C;
+	/*0x59E*/ u8 filler59E[0x52];
+	/*0x5F0*/ u16 unk5F0;
+	/*0x5F2*/ u8 filler5F2[0x14B];
+	/*0x73D*/ s8 unk73D;
+};
+
+struct Unk02031520
+{
+	/*0x0*/ u8 filler0[0x8];
+	/*0x8*/ s16 unk8;
+};
+
+extern struct PinballGame *gUnknown_020314E0;
+extern struct Unk02031520 gUnknown_02031520;
+
 #endif // GUARD_GLOBAL_H
