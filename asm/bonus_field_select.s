@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start sub_25A4_Main
-sub_25A4_Main: @ 0x080025A4
+	thumb_func_start BonusFieldSelectMain
+BonusFieldSelectMain: @ 0x080025A4
 	push {lr}
 	ldr r1, _080025BC @ =0x0805C750
 	ldr r0, _080025C0 @ =gMain

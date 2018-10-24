@@ -14547,8 +14547,8 @@ _0801901C:
 _08019020: .4byte 0x020314E0
 _08019024: .4byte 0x00000532
 
-	thumb_func_start sub_19028_Main
-sub_19028_Main: @ 0x08019028
+	thumb_func_start IdlePinballGameMain
+IdlePinballGameMain: @ 0x08019028
 	push {lr}
 	ldr r1, _08019040 @ =0x08137918
 	ldr r0, _08019044 @ =gMain

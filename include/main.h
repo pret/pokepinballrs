@@ -78,8 +78,38 @@ struct Main
     /*0x2F8*/ struct SpriteGroup spriteGroups[NUM_SPRITE_GROUPS];
 };
 
+struct Unk0200B134
+{
+    /*0x00*/ u8 filler0[0xCD];
+    /*0xCD*/ u8 unkCD;
+};
+
 extern struct Main gMain;
+extern struct Unk0200B134 gUnknown_0200B134;
 extern struct SpriteGroup gUnknown_0200B3B8[];
+extern u32 IntrMain_Buffer[0x200];
+extern u32 IntrMain[];
+extern IntrFunc *gUnknown_0200FB98;
+extern IntrFunc *gUnknown_02019BE0;
+extern int gUnknown_02019BE4;
+extern int gUnknown_02019BE8;
+extern int gUnknown_02019BEC;
+extern u32 gUnknown_02019BF0;
+extern int gUnknown_02019BF4;
+extern int gUnknown_02019BF8;
+extern int gUnknown_02019BFC;
+extern int gUnknown_02019C00;
+extern int gUnknown_02019C04;
+extern int gUnknown_02019C08;
+extern int gGameBoyPlayerEnabled;
+extern u8 gUnknown_02019C10;
+extern u8 gUnknown_02002008[];
+#define INTR_COUNT 14
+extern IntrFunc gIntrTable[14];
+extern void (*gUnknown_0200FB9C)(void);
+extern void (*gUnknown_0200FBA0)(void);
+extern void (*gUnknown_02017BD0)(void);
+extern void (*gUnknown_02017BD4)(void);
 extern StateFunc gMainFuncs[];
 extern struct OamData gOamBuffer[128];
 extern u16 gUnknown_03005C00[0x600];
@@ -90,7 +120,11 @@ void sub_2B4(void);
 void sub_490(void);
 void sub_518(void);
 void sub_578(void);
+void sub_CBC(void);
+void sub_D10(void);
 void sub_D74(void);
+void SerialIntr(void);
+void Timer3Intr(void);
 s16 LoadSpriteSets(const struct SpriteSet* const*, u16, struct SpriteGroup*);
 
 #endif // GUARD_MAIN_H

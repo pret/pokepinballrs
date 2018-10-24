@@ -1,12 +1,22 @@
 	.space 0x2000
 
-gUnknown_02002000: @ 0x2002000
-	.space 2
+sGbPlayerCurKeys: @ 0x2002000
+	.space 0x2
 
-gUnknown_02002002: @ 0x2002002
-	.space 2
+sGbPlayerPrevKeys: @ 0x2002002
+	.space 0x2
 
-	.space 0x884
+	.space 0x4
+
+gUnknown_02002008: @ 0x2002008
+	.space 0x500
+
+	.space 0x300
+
+gUnknown_02002808: @ 0x2002808
+	.space 0xC
+
+	.space 0x74
 
 gTitlescreen: @ 0x2002888
 	.space 0x18
@@ -42,7 +52,11 @@ gIntrTable: @ 0x2003060
 
 gMain: @ 0x200B0C0
 
-	.space 0x2F8
+	.space 0x74
+
+gUnknown_0200B134: @ 0x200B134
+
+	.space 0x284
 
 gUnknown_0200B3B8: @ 0x200B3B8
 
@@ -75,10 +89,46 @@ gUnknown_02017BE0: @ 0x2017BE0
 gUnknown_02019BE0: @ 0x2019BE0
 	.space 0x4
 
-	.space 0x8D0
+gUnknown_02019BE4: @ 0x2019BE4
+	.space 0x4
+
+gUnknown_02019BE8: @ 0x2019BE8
+	.space 0x4
+
+gUnknown_02019BEC: @ 0x2019BEC
+	.space 0x4
+
+gUnknown_02019BF0: @ 0x2019BF0
+	.space 0x4
+
+gUnknown_02019BF4: @ 0x2019BF4
+	.space 0x4
+
+gUnknown_02019BF8: @ 0x2019BF8
+	.space 0x4
+
+gUnknown_02019BFC: @ 0x2019BFC
+	.space 0x4
+
+gUnknown_02019C00: @ 0x2019C00
+	.space 0x4
+
+gUnknown_02019C04: @ 0x2019C04
+	.space 0x4
+
+gUnknown_02019C08: @ 0x2019C08
+	.space 0x4
+
+gGameBoyPlayerEnabled: @ 0x2019C0C
+	.space 0x4
+
+gUnknown_02019C10: @ 0x2019C10
+	.space 0x4
+
+	.space 0x8A0
 
 gAutoDisplayTitlescreenMenu: @ 0x201A4B4
-	.space 4
+	.space 0x4
 
 	.space 0x1CD8
 

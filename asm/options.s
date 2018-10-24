@@ -94,7 +94,7 @@ sub_51240: @ 0x08051240
 	str r3, [r5, #4]
 	str r6, [r5, #8]
 	ldr r0, [r5, #8]
-	ldr r0, _08051394 @ =0x02019C0C
+	ldr r0, _08051394 @ =gGameBoyPlayerEnabled
 	ldr r0, [r0]
 	cmp r0, #1
 	beq _080512F8
@@ -170,7 +170,7 @@ _08051384: .4byte 0x80000600
 _08051388: .4byte 0x08528028
 _0805138C: .4byte 0x03005C00
 _08051390: .4byte 0x80000400
-_08051394: .4byte 0x02019C0C
+_08051394: .4byte gGameBoyPlayerEnabled
 _08051398: .4byte 0x0852A048
 _0805139C: .4byte 0x06000800
 _080513A0: .4byte gGBAButtonIcons_Pals
@@ -258,7 +258,7 @@ _08051432:
 	cmp r1, #3
 	ble _08051424
 	bl sub_52528
-	ldr r0, _08051478 @ =0x02019C0C
+	ldr r0, _08051478 @ =gGameBoyPlayerEnabled
 	ldr r4, [r0]
 	cmp r4, #1
 	bne _0805147C
@@ -277,7 +277,7 @@ _08051468: .4byte 0x02002920
 _0805146C: .4byte 0x0200B134
 _08051470: .4byte 0x02031AF0
 _08051474: .4byte 0x08527ED6
-_08051478: .4byte 0x02019C0C
+_08051478: .4byte gGameBoyPlayerEnabled
 _0805147C:
 	ldr r2, _080514B0 @ =0x02002920
 	adds r0, r2, #0
@@ -402,7 +402,7 @@ _0805156C:
 	ands r0, r1
 	cmp r0, #0
 	beq _08051594
-	ldr r0, _080515EC @ =0x02019C0C
+	ldr r0, _080515EC @ =gGameBoyPlayerEnabled
 	ldr r0, [r0]
 	cmp r0, #1
 	bne _08051594
@@ -422,7 +422,7 @@ _08051594:
 	ands r0, r1
 	cmp r0, #0
 	beq _080515C2
-	ldr r0, _080515EC @ =0x02019C0C
+	ldr r0, _080515EC @ =gGameBoyPlayerEnabled
 	ldr r0, [r0]
 	cmp r0, #1
 	bne _080515C2
@@ -461,7 +461,7 @@ _080515DC:
 	mov pc, r0
 	.align 2, 0
 _080515E8: .4byte gMain
-_080515EC: .4byte 0x02019C0C
+_080515EC: .4byte gGameBoyPlayerEnabled
 _080515F0: .4byte 0x02002920
 _080515F4: .4byte _080515F8
 _080515F8: @ jump table
@@ -576,7 +576,7 @@ _080516D0:
 _080516F0: .4byte 0x02002920
 _080516F4: .4byte 0x0200B134
 _080516F8:
-	ldr r0, _08051730 @ =0x02019C0C
+	ldr r0, _08051730 @ =gGameBoyPlayerEnabled
 	ldr r0, [r0]
 	cmp r0, #1
 	beq _08051702
@@ -606,10 +606,10 @@ _08051720:
 	strb r2, [r0]
 	b _08051A96
 	.align 2, 0
-_08051730: .4byte 0x02019C0C
+_08051730: .4byte gGameBoyPlayerEnabled
 _08051734: .4byte 0x02002920
 _08051738:
-	ldr r0, _08051774 @ =0x02019C0C
+	ldr r0, _08051774 @ =gGameBoyPlayerEnabled
 	ldr r4, [r0]
 	cmp r4, #1
 	beq _08051742
@@ -639,7 +639,7 @@ _0805175E:
 	strb r4, [r0]
 	b _08051A96
 	.align 2, 0
-_08051774: .4byte 0x02019C0C
+_08051774: .4byte gGameBoyPlayerEnabled
 _08051778: .4byte 0x02002920
 _0805177C:
 	movs r0, #2

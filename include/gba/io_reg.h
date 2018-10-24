@@ -477,6 +477,7 @@
 #define REG_TM3CNT_L    (*(vu16 *)REG_ADDR_TM3CNT_L)
 #define REG_TM3CNT_H    (*(vu16 *)REG_ADDR_TM3CNT_H)
 
+#define REG_SIOCNT_L    (*(vs8 *)REG_ADDR_SIOCNT)
 #define REG_SIOCNT      (*(vu16 *)REG_ADDR_SIOCNT)
 #define REG_SIODATA8    (*(vu16 *)REG_ADDR_SIODATA8)
 #define REG_SIODATA32   (*(vu32 *)REG_ADDR_SIODATA32)

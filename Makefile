@@ -103,6 +103,7 @@ include graphics_rules.mk
 
 
 $(C_BUILDDIR)/rom_850.o: CC1 := tools/agbcc/bin/old_agbcc
+$(C_BUILDDIR)/gbplayer.o: CC1 := tools/agbcc/bin/old_agbcc
 
 $(C_BUILDDIR)/libc.o: CC1 := tools/agbcc/bin/old_agbcc
 $(C_BUILDDIR)/libc.o: CFLAGS := -O2

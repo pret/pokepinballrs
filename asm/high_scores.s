@@ -20,8 +20,9 @@ HighScoresMain: @ 0x0800CE48
 _0800CE60: .4byte 0x080793E8
 _0800CE64: .4byte gMain
 
-	thumb_func_start sub_CE68_Main
-sub_CE68_Main: @ 0x0800CE68
+@ This is triggered after the idle pinball game catches its first pokemon
+	thumb_func_start IdleHighScoresMain
+IdleHighScoresMain: @ 0x0800CE68
 	push {lr}
 	ldr r1, _0800CE80 @ =0x08079424
 	ldr r0, _0800CE84 @ =gMain

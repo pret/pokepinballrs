@@ -1,39 +1,24 @@
 #include "global.h"
-#include "m4a.h"
 #include "main.h"
+#include "gbplayer.h"
+#include "m4a.h"
 
 extern void sub_438(void);
 extern void sub_8BC(void);
 extern void sub_8FC(void);
 extern void sub_940(void);
-extern void sub_B54(void);
-extern void sub_B8C(void);
-static void InitIntrHandlers(void);
-extern void sub_CBC(void);
-extern void sub_D10(void);
-extern void sub_D74(void);
-extern void sub_FE8(void);
-extern void ReadKeys(void);
 extern void sub_1F4C(void);
 extern void sub_1F5C(void);
 extern void sub_1090C(void);
 extern void sub_52A18(void);
-extern u32 IntrMain_Buffer[0x200];
-extern u32 IntrMain[];
-extern IntrFunc *gUnknown_0200FB98;
-extern IntrFunc *gUnknown_02019BE0;
+
+static void sub_B54(void);
+static void sub_B8C(void);
+static void InitIntrHandlers(void);
+static void ReadKeys(void);
 
 extern const IntrFunc gIntrTableTemplate[14];
-#define INTR_COUNT ((int)(sizeof(gIntrTableTemplate)/sizeof(IntrFunc)))
-extern IntrFunc gIntrTable[INTR_COUNT];
-extern void (*gUnknown_0200FB9C)(void);
-extern void (*gUnknown_0200FBA0)(void);
-extern void (*gUnknown_02017BD0)(void);
-extern void (*gUnknown_02017BD4)(void);
-extern u16 gUnknown_02002000;
-extern u16 gUnknown_02002002;
-
-extern s16 gUnknown_08055C44[];
+extern const s16 gUnknown_08055C44[];
 
 void AgbMain(void)
 {
@@ -42,7 +27,7 @@ void AgbMain(void)
     DmaCopy32(3, IntrMain, IntrMain_Buffer, sizeof(IntrMain_Buffer));
     INTR_VECTOR = IntrMain_Buffer;
     sub_B54();
-    sub_FE8();
+    InitGameBoyPlayer();
     while (1)
     {
         ReadKeys();
@@ -149,7 +134,7 @@ void IntrDummy(void)
 {
 }
 
-void sub_B54(void)
+static void sub_B54(void)
 {
     REG_WAITCNT = WAITCNT_AGB
                 | WAITCNT_PREFETCH_ENABLE
@@ -169,7 +154,7 @@ void sub_B54(void)
     sub_52A18();
 }
 
-void sub_B8C(void)
+static void sub_B8C(void)
 {
     gMain.mainState = 0;
     gMain.subState = 0;
@@ -275,7 +260,7 @@ s16 sub_C74(u16 arg0)
     return sub_C24(arg0 + 0x4000);
 }
 
-void ReadKeys(void)
+static void ReadKeys(void)
 {
     u16 keyInput = ~REG_KEYINPUT;
     gMain.newKeys = keyInput & (keyInput ^ gMain.heldKeys);
@@ -384,11 +369,4 @@ void sub_DC4(void)
         REG_DISPSTAT |= (gMain.vCount << 8) + DISPSTAT_VCOUNT_INTR;
         m4aSoundMain();
     }
-}
-
-void sub_E90(void)
-{
-    u16 keyInput = REG_KEYINPUT ^ KEYS_MASK;
-    gUnknown_02002002 = gUnknown_02002000;
-    gUnknown_02002000 = keyInput;
 }

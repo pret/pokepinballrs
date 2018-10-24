@@ -652,7 +652,17 @@ gEmptyOamData:: @ 0x08057C46
 	.4byte 0x00F000F4, 0x00000000
 	.4byte 0x00F000F4, 0x00000000
 
-.incbin "baserom.gba", 0x58046, 0x79890 - 0x58046
+	.align 2, 0
+gUnknown_08058048:: @ 0x08058058
+	.incbin "baserom.gba", 0x58048, 0x200
+
+gUnknown_08058248:: @ 0x08058248
+	.incbin "baserom.gba", 0x58248, 0x4000
+
+gUnknown_0805C248:: @ 0x0805C248
+	.incbin "baserom.gba", 0x5C248, 0x500
+
+.incbin "baserom.gba", 0x5C748, 0x79890 - 0x5C748
 
 gTitlescreenStateFuncs:: @ 0x08079890
 	.4byte LoadTitlescreenGraphics
@@ -742,17 +752,79 @@ gMainFuncs:: @ 0x086A4AD8
 	.4byte IntroMain
 	.4byte TitlescreenMain
 	.4byte PinballGameMain
-	.4byte sub_19028_Main
+	.4byte IdlePinballGameMain
 	.4byte OptionsMain
 	.4byte PokedexMain
 	.4byte sub_9BC_Main
 	.4byte EReaderMain
 	.4byte HighScoresMain
-	.4byte sub_CE68_Main
+	.4byte IdleHighScoresMain
 	.4byte FieldSelectMain
-	.4byte sub_25A4_Main
+	.4byte BonusFieldSelectMain
 
-.incbin "baserom.gba", 0x6A4B08, 0x6A964C - 0x6A4B08
+gUnknown_086A4B08:: @ 0x086A4B08
+	.4byte 2, 1, -1
+
+gUnknown_086A4B14:: @ 0x086A4B14
+	.4byte 2, 0, -1
+
+gUnknown_086A4B20:: @ 0x086A4B20
+	.4byte 2, 2, 1, -1
+
+gUnknown_086A4B30:: @ 0x086A4B30
+	.4byte 2, 2, 0, -1
+
+gUnknown_086A4B40:: @ 0x086A4B40
+	.4byte 2, 1, -21, 2, -1
+
+gUnknown_086A4B54:: @ 0x086A4B54
+	.4byte 2, 2, 1, 0, -11, 4, -1
+
+gUnknown_086A4B70:: @ 0x086A4B70
+	.4byte 2, 2, 1, -1
+
+gUnknown_086A4B80:: @ 0x086A4B80
+	.4byte 2, 2, 2, 1, -1
+
+gUnknown_086A4B94:: @ 0x086A4B94
+	.4byte 2, 2, 2, 2, 1, -1
+
+gUnknown_086A4BAC:: @ 0x086A4BAC
+	.4byte 2, 2, 2, 2, 2, 1, -1
+
+gUnknown_086A4BC8:: @ 0x086A4BC8
+	.4byte 1, 1, 2, 2, 2, 2, 1, -1
+
+gUnknown_086A4BE8:: @ 0x086A4BE8
+	.4byte 2, 2, -10, 2, -1
+
+gUnknown_086A4BFC:: @ 0x086A4BFC
+	.4byte 2, 2, 1, 1, -3, 4, -1
+
+gUnknown_086A4C18:: @ 0x086A4C18
+	.4byte 2, 2, -5, 2, -1
+
+gUnknown_086A4C2C:: @ 0x086A4C2C
+	.4byte 2, 2, 1, -11, 3, -1
+
+gUnknown_086A4C44:: @ 0x086A4C44
+	.4byte gUnknown_086A4B08
+	.4byte gUnknown_086A4B14
+	.4byte gUnknown_086A4B20
+	.4byte gUnknown_086A4B30
+	.4byte gUnknown_086A4B40
+	.4byte gUnknown_086A4B54
+	.4byte gUnknown_086A4B70
+	.4byte gUnknown_086A4B80
+	.4byte gUnknown_086A4B94
+	.4byte gUnknown_086A4BAC
+	.4byte gUnknown_086A4BC8
+	.4byte gUnknown_086A4BE8
+	.4byte gUnknown_086A4BFC
+	.4byte gUnknown_086A4C18
+	.4byte gUnknown_086A4C2C
+
+.incbin "baserom.gba", 0x6A4C80, 0x6A964C - 0x6A4C80
 
 gUnknown_086A964C:: @ 0x086A964C
 	.2byte 0x0002
