@@ -12,6 +12,3 @@ gUnknown_03005C00: @ 0x3005C00
 	.space 0xC00
 
 	.space 0xC00
-
-SoundMainRAM_Buffer: @ 0x3007400
-	.space 0x800
