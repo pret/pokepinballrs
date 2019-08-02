@@ -1,4 +1,3 @@
-*.pal text eol=crlf
 
 *.s text eol=lf
 *.txt text eol=lf
