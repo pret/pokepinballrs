@@ -169,7 +169,7 @@ void sub_10BB8(void)
             if (gTitlescreen.idleFramesCounter % 10 == 0)
             {
                 gTitlescreen.idleFadeoutCounter++;
-                m4aMPlayVolumeControl(&gMPlayInfo_02032EE0, 0xFFFF, 0x100 / gTitlescreen.idleFadeoutCounter);
+                m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100 / gTitlescreen.idleFadeoutCounter);
             }
 
             if (gTitlescreen.idleFadeoutCounter > 9)

@@ -56,7 +56,7 @@ extern u8 gUnknown_02002808[];
 //extern ? gCgbChans;
 //extern ? gPokemonCryTracks;
 //extern ? gPokemonCrySong;
-//extern ? gMPlayInfo_02032EE0;
+//extern ? gMPlayInfo_BGM;
 //extern ? gMPlayMemAccArea;
 extern const u16 gWildMonLocations[][2][8];
 extern const s16 gUnknown_08055C44[];
