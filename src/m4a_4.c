@@ -1,7 +1,6 @@
 #include "gba/m4a_internal.h"
 
 asm(".set gXcmdTable, 0x0852DB74"); // TODO:
-asm(".set gPokemonCrySongs, 0x02032AE0"); // TODO:
 
 void m4aMPlayTempoControl(struct MusicPlayerInfo *mplayInfo, u16 tempo)
 {
