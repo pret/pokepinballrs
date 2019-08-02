@@ -3,40 +3,6 @@
 
 #include "global.h"
 
-#define NUM_SPRITE_GROUPS 100
-#define MAX_SPRITES_IN_GROUP 22
-
-typedef void (*StateFunc)(void);
-typedef void (*IntrFunc)(void);
-
-struct MainUnk2E8
-{
-    u16 unk0;
-    u16 unk2;
-};
-
-struct SpriteSet
-{
-    u16 count;
-    u8 oamData[0];
-};
-
-struct OamDataSimple
-{
-    u16 oamId;
-    s16 xOffset;
-    s16 yOffset;
-};
-
-struct SpriteGroup
-{
-    u16 available;
-    s16 baseX;
-    s16 baseY;
-    struct OamDataSimple oam[MAX_SPRITES_IN_GROUP];
-};
-// size: 0xB8
-
 struct Main
 {
     /*0x00*/ u8 filler0[0x2];
@@ -115,18 +81,20 @@ extern StateFunc gMainFuncs[];
 extern struct OamData gOamBuffer[128];
 extern u16 gUnknown_03005C00[0x600];
 
-void SetMainGameState(u16);
 void sub_24C(void);
 void sub_2B4(void);
 void sub_490(void);
 void sub_518(void);
 void sub_578(void);
 u32 Random(void);
+void HBlankIntr(void);
+void VCountIntr(void);
+void SerialIntr(void);
+void Timer3Intr(void);
 void sub_CBC(void);
 void sub_D10(void);
 void sub_D74(void);
-void SerialIntr(void);
-void Timer3Intr(void);
-s16 LoadSpriteSets(const struct SpriteSet* const*, u16, struct SpriteGroup*);
+void sub_DC4(void);
+
 
 #endif // GUARD_MAIN_H

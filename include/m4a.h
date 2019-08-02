@@ -3,6 +3,8 @@
 
 #include "gba/m4a_internal.h"
 
+// TODO: import m4a library from pokeemerald
+
 void m4aSoundVSync(void);
 void m4aSoundVSyncOn(void);
 
