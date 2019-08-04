@@ -854,7 +854,7 @@ _080044F0:
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
 	bl sub_70E0
-	ldr r0, _08004594 @ =gUnknown_02032EE0
+	ldr r0, _08004594 @ =gMPlayInfo_BGM
 	ldr r1, _08004598 @ =0x0000FFFF
 	movs r2, #0x40
 	bl m4aMPlayVolumeControl
@@ -901,7 +901,7 @@ _08004584: .4byte gUnknown_08086B40
 _08004588: .4byte 0x06000280
 _0800458C: .4byte 0x800000E0
 _08004590: .4byte gUnknown_0202C794
-_08004594: .4byte gUnknown_02032EE0
+_08004594: .4byte gMPlayInfo_BGM
 _08004598: .4byte 0x0000FFFF
 _0800459C: .4byte gUnknown_086A3700
 _080045A0: .4byte gMain
@@ -921,7 +921,7 @@ sub_45A4: @ 0x080045A4
 	asrs r0, r0, #0x10
 	cmp r0, #0x50
 	bne _080045CA
-	ldr r0, _08004624 @ =gUnknown_02032EE0
+	ldr r0, _08004624 @ =gMPlayInfo_BGM
 	ldr r1, _08004628 @ =0x0000FFFF
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -971,7 +971,7 @@ _080045E8:
 	b _08004670
 	.align 2, 0
 _08004620: .4byte gUnknown_0202C5E8
-_08004624: .4byte gUnknown_02032EE0
+_08004624: .4byte gMPlayInfo_BGM
 _08004628: .4byte 0x0000FFFF
 _0800462C: .4byte gUnknown_0202BEF4
 _08004630: .4byte gUnknown_0202C5AC
@@ -1046,7 +1046,7 @@ _080046C8: .4byte gMain
 _080046CC:
 	movs r0, #0x69
 	bl m4aSongNumStart
-	ldr r0, _080046F0 @ =gUnknown_02032EE0
+	ldr r0, _080046F0 @ =gMPlayInfo_BGM
 	ldr r1, _080046F4 @ =0x0000FFFF
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -1060,7 +1060,7 @@ _080046CC:
 	strh r1, [r0]
 	b _08004728
 	.align 2, 0
-_080046F0: .4byte gUnknown_02032EE0
+_080046F0: .4byte gMPlayInfo_BGM
 _080046F4: .4byte 0x0000FFFF
 _080046F8: .4byte gUnknown_0202C5E8
 _080046FC: .4byte gUnknown_0202BEF4
@@ -1071,7 +1071,7 @@ _08004700:
 	beq _08004730
 	movs r0, #0x69
 	bl m4aSongNumStart
-	ldr r0, _0800476C @ =gUnknown_02032EE0
+	ldr r0, _0800476C @ =gMPlayInfo_BGM
 	ldr r1, _08004770 @ =0x0000FFFF
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -1120,7 +1120,7 @@ _08004730:
 	strh r0, [r1]
 	b _0800482C
 	.align 2, 0
-_0800476C: .4byte gUnknown_02032EE0
+_0800476C: .4byte gMPlayInfo_BGM
 _08004770: .4byte 0x0000FFFF
 _08004774: .4byte gUnknown_0202C794
 _08004778: .4byte gUnknown_0202C5E8

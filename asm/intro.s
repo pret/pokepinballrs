@@ -7086,7 +7086,7 @@ sub_CC94: @ 0x0800CC94
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
-	ldr r4, _0800CCEC @ =gUnknown_02032EE0
+	ldr r4, _0800CCEC @ =gMPlayInfo_BGM
 	ldr r5, _0800CCF0 @ =0x0000FFFF
 	movs r0, #0
 	ldrsh r1, [r1, r0]
@@ -7115,7 +7115,7 @@ _0800CCDE:
 	.align 2, 0
 _0800CCE4: .4byte gUnknown_0202BF10
 _0800CCE8: .4byte gUnknown_0202A578
-_0800CCEC: .4byte gUnknown_02032EE0
+_0800CCEC: .4byte gMPlayInfo_BGM
 _0800CCF0: .4byte 0x0000FFFF
 _0800CCF4: .4byte gUnknown_0202C790
 

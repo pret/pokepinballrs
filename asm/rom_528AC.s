@@ -40,7 +40,7 @@ sub_528DC: @ 0x080528DC
 	lsrs r5, r5, #0x10
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
-	ldr r0, _08052914 @ =gUnknown_02032EE0
+	ldr r0, _08052914 @ =gMPlayInfo_BGM
 	ldr r1, _08052918 @ =0x0000FFFF
 	movs r2, #0x99
 	bl m4aMPlayVolumeControl
@@ -58,7 +58,7 @@ sub_528DC: @ 0x080528DC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08052914: .4byte gUnknown_02032EE0
+_08052914: .4byte gMPlayInfo_BGM
 _08052918: .4byte 0x0000FFFF
 
 	thumb_func_start sub_5291C

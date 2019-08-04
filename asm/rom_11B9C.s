@@ -7773,7 +7773,7 @@ _08015A3E:
 	ldrb r0, [r1]
 	adds r0, #1
 	strb r0, [r1]
-	ldr r0, _08015A90 @ =gUnknown_02032F20
+	ldr r0, _08015A90 @ =gMPlayInfo_SE1
 	ldr r1, _08015A94 @ =gUnknown_0869FC0C
 	bl MPlayStart
 	ldr r1, [r5]
@@ -7805,7 +7805,7 @@ _08015A78:
 _08015A84: .4byte 0x00002710
 _08015A88: .4byte gUnknown_020314E0
 _08015A8C: .4byte 0x0000072F
-_08015A90: .4byte gUnknown_02032F20
+_08015A90: .4byte gMPlayInfo_SE1
 _08015A94: .4byte gUnknown_0869FC0C
 _08015A98: .4byte 0x00000731
 _08015A9C: .4byte 0x000006BC
@@ -15941,7 +15941,7 @@ _08019B26:
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08019B50
-	ldr r0, _08019B5C @ =gUnknown_02032EE0
+	ldr r0, _08019B5C @ =gMPlayInfo_BGM
 	ldr r1, _08019B60 @ =0x0000FFFF
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -15952,7 +15952,7 @@ _08019B50:
 	.align 2, 0
 _08019B54: .4byte gMain
 _08019B58: .4byte gUnknown_020314E0
-_08019B5C: .4byte gUnknown_02032EE0
+_08019B5C: .4byte gMPlayInfo_BGM
 _08019B60: .4byte 0x0000FFFF
 
 	thumb_func_start sub_19B64
@@ -17085,7 +17085,7 @@ _0801A43A:
 _0801A44A:
 	cmp r0, #0x28
 	bne _0801A456
-	ldr r0, _0801A4EC @ =gUnknown_02032F20
+	ldr r0, _0801A4EC @ =gMPlayInfo_SE1
 	ldr r1, _0801A4F0 @ =gUnknown_0869F7C8
 	bl MPlayStart
 _0801A456:
@@ -17165,7 +17165,7 @@ _0801A4DC: .4byte gUnknown_086ACEF8
 _0801A4E0: .4byte gUnknown_020314E0
 _0801A4E4: .4byte 0x06015800
 _0801A4E8: .4byte 0x800010E0
-_0801A4EC: .4byte gUnknown_02032F20
+_0801A4EC: .4byte gMPlayInfo_SE1
 _0801A4F0: .4byte gUnknown_0869F7C8
 _0801A4F4: .4byte 0x000001A5
 _0801A4F8: .4byte 0x000006DC
@@ -26856,7 +26856,7 @@ _0801F368:
 	strh r3, [r2]
 	cmp r1, #0xa7
 	ble _0801F39A
-	ldr r0, _0801F3EC @ =gUnknown_02032F20
+	ldr r0, _0801F3EC @ =gMPlayInfo_SE1
 	ldr r1, _0801F3F0 @ =gUnknown_0869F2A0
 	bl MPlayStart
 	ldr r1, [r4]
@@ -26906,7 +26906,7 @@ _0801F3CA:
 	b _0801F44E
 	.align 2, 0
 _0801F3E8: .4byte gUnknown_020314E0
-_0801F3EC: .4byte gUnknown_02032F20
+_0801F3EC: .4byte gMPlayInfo_SE1
 _0801F3F0: .4byte gUnknown_0869F2A0
 _0801F3F4: .4byte 0x00000BB8
 _0801F3F8: .4byte 0x00000616
@@ -29183,7 +29183,7 @@ _0802062C: .4byte 0x0000062E
 _08020630:
 	movs r0, #0x3c
 	strh r0, [r2]
-	ldr r0, _0802067C @ =gUnknown_02032F20
+	ldr r0, _0802067C @ =gMPlayInfo_SE1
 	ldr r1, _08020680 @ =gUnknown_086A2FA0
 	bl MPlayStart
 _0802063C:
@@ -29219,7 +29219,7 @@ _0802063C:
 	mov r8, r3
 	b _0802069C
 	.align 2, 0
-_0802067C: .4byte gUnknown_02032F20
+_0802067C: .4byte gMPlayInfo_SE1
 _08020680: .4byte gUnknown_086A2FA0
 _08020684: .4byte gUnknown_020314E0
 _08020688: .4byte 0x00000744
@@ -29398,33 +29398,33 @@ _080207C4:
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	bne _080207FC
-	ldr r0, _080207F4 @ =gUnknown_02032F20
+	ldr r0, _080207F4 @ =gMPlayInfo_SE1
 	ldr r1, _080207F8 @ =gUnknown_086A0328
 	bl MPlayStart
 	b _08020804
 	.align 2, 0
-_080207F4: .4byte gUnknown_02032F20
+_080207F4: .4byte gMPlayInfo_SE1
 _080207F8: .4byte gUnknown_086A0328
 _080207FC:
-	ldr r0, _08020810 @ =gUnknown_02032F20
+	ldr r0, _08020810 @ =gMPlayInfo_SE1
 	ldr r1, _08020814 @ =gUnknown_086A0368
 	bl MPlayStart
 _08020804:
-	ldr r0, _08020818 @ =gUnknown_02032EE0
+	ldr r0, _08020818 @ =gMPlayInfo_BGM
 	ldr r1, _0802081C @ =0x0000FFFF
 	movs r2, #0x40
 	bl m4aMPlayVolumeControl
 	b _08020832
 	.align 2, 0
-_08020810: .4byte gUnknown_02032F20
+_08020810: .4byte gMPlayInfo_SE1
 _08020814: .4byte gUnknown_086A0368
-_08020818: .4byte gUnknown_02032EE0
+_08020818: .4byte gMPlayInfo_BGM
 _0802081C: .4byte 0x0000FFFF
 _08020820:
-	ldr r0, _08020900 @ =gUnknown_02032F20
+	ldr r0, _08020900 @ =gMPlayInfo_SE1
 	ldr r1, _08020904 @ =gUnknown_086A0328
 	bl MPlayStart
-	ldr r0, _08020908 @ =gUnknown_02032EE0
+	ldr r0, _08020908 @ =gMPlayInfo_BGM
 	ldr r1, _0802090C @ =0x0000FFFF
 	movs r2, #0x40
 	bl m4aMPlayVolumeControl
@@ -29441,7 +29441,7 @@ _08020832:
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _08020856
-	ldr r0, _08020900 @ =gUnknown_02032F20
+	ldr r0, _08020900 @ =gMPlayInfo_SE1
 	ldr r1, _0802090C @ =0x0000FFFF
 	movs r2, #0x80
 	lsls r2, r2, #2
@@ -29528,9 +29528,9 @@ _08020856:
 	str r0, [r1, #0x38]
 	b _080209FE
 	.align 2, 0
-_08020900: .4byte gUnknown_02032F20
+_08020900: .4byte gMPlayInfo_SE1
 _08020904: .4byte gUnknown_086A0328
-_08020908: .4byte gUnknown_02032EE0
+_08020908: .4byte gMPlayInfo_BGM
 _0802090C: .4byte 0x0000FFFF
 _08020910: .4byte gUnknown_020314E0
 _08020914: .4byte 0x0000061E
@@ -29800,7 +29800,7 @@ _08020B2C:
 	bne _08020B5C
 	movs r0, #0x7c
 	bl m4aSongNumStop
-	ldr r0, _08020BC4 @ =gUnknown_02032EE0
+	ldr r0, _08020BC4 @ =gMPlayInfo_BGM
 	ldr r1, _08020BC8 @ =0x0000FFFF
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -29858,7 +29858,7 @@ _08020B5C:
 	b _08020BE6
 	.align 2, 0
 _08020BC0: .4byte 0x0000020A
-_08020BC4: .4byte gUnknown_02032EE0
+_08020BC4: .4byte gMPlayInfo_BGM
 _08020BC8: .4byte 0x0000FFFF
 _08020BCC: .4byte 0x0000061C
 _08020BD0: .4byte gMain
@@ -43445,7 +43445,7 @@ _0802798C:
 	ldrh r0, [r0]
 	cmp r0, #0x3c
 	bne _0802799E
-	ldr r0, _080279F4 @ =gUnknown_02032F20
+	ldr r0, _080279F4 @ =gMPlayInfo_SE1
 	ldr r1, _080279F8 @ =gUnknown_0869F58C
 	bl MPlayStart
 _0802799E:
@@ -43480,7 +43480,7 @@ _080279E4: .4byte gUnknown_0815C4C4
 _080279E8: .4byte 0x050003E0
 _080279EC: .4byte 0x80000010
 _080279F0: .4byte 0x00000626
-_080279F4: .4byte gUnknown_02032F20
+_080279F4: .4byte gMPlayInfo_SE1
 _080279F8: .4byte gUnknown_0869F58C
 _080279FC: .4byte gUnknown_086AE0E6
 _08027A00:
@@ -43511,7 +43511,7 @@ _08027A00:
 	adds r0, #0x80
 	ldr r0, [r0]
 	strh r2, [r0]
-	ldr r0, _08027B4C @ =gUnknown_02032F20
+	ldr r0, _08027B4C @ =gMPlayInfo_SE1
 	ldr r1, _08027B50 @ =gUnknown_0869F5C8
 	bl MPlayStart
 	ldr r0, [r6]
@@ -43653,7 +43653,7 @@ _08027A9C:
 	b _08027CE8
 	.align 2, 0
 _08027B48: .4byte 0x00000626
-_08027B4C: .4byte gUnknown_02032F20
+_08027B4C: .4byte gMPlayInfo_SE1
 _08027B50: .4byte gUnknown_0869F5C8
 _08027B54: .4byte gUnknown_020314E0
 _08027B58: .4byte 0x0000025A
@@ -43726,7 +43726,7 @@ _08027BD6:
 	bgt _08027C38
 	ldr r0, _08027D0C @ =0x00002710
 	str r0, [r1, #0x3c]
-	ldr r0, _08027D10 @ =gUnknown_02032F20
+	ldr r0, _08027D10 @ =gMPlayInfo_SE1
 	ldr r1, _08027D14 @ =gUnknown_0869F618
 	bl MPlayStart
 	ldr r1, [r4]
@@ -43870,7 +43870,7 @@ _08027D00: .4byte 0x0000025E
 _08027D04: .4byte gUnknown_020314E0
 _08027D08: .4byte 0x0000026B
 _08027D0C: .4byte 0x00002710
-_08027D10: .4byte gUnknown_02032F20
+_08027D10: .4byte gMPlayInfo_SE1
 _08027D14: .4byte gUnknown_0869F618
 _08027D18: .4byte 0x0000071D
 _08027D1C: .4byte gMain
@@ -45423,7 +45423,7 @@ _080289E0:
 	adds r0, r0, r5
 	movs r1, #0
 	strb r1, [r0]
-	ldr r0, _08028A24 @ =gUnknown_02032F20
+	ldr r0, _08028A24 @ =gMPlayInfo_SE1
 	ldr r1, _08028A28 @ =gUnknown_0869F58C
 	bl MPlayStart
 	b _08028AD2
@@ -45434,7 +45434,7 @@ _08028A14: .4byte 0x000001F3
 _08028A18: .4byte 0x000005AA
 _08028A1C: .4byte 0x00000296
 _08028A20: .4byte 0x000005F2
-_08028A24: .4byte gUnknown_02032F20
+_08028A24: .4byte gMPlayInfo_SE1
 _08028A28: .4byte gUnknown_0869F58C
 _08028A2C:
 	mov r0, r8
@@ -48462,7 +48462,7 @@ _0802A20C:
 	adds r1, r6, r5
 	movs r0, #0
 	strb r0, [r1]
-	ldr r0, _0802A2E8 @ =gUnknown_02032EE0
+	ldr r0, _0802A2E8 @ =gMPlayInfo_BGM
 	bl m4aMPlayStop
 	ldr r0, [r7]
 	ldr r1, _0802A2EC @ =0x000006DD
@@ -48525,7 +48525,7 @@ _0802A2AC:
 _0802A2DC: .4byte gUnknown_020314E0
 _0802A2E0: .4byte 0x000006F2
 _0802A2E4: .4byte 0x000006C4
-_0802A2E8: .4byte gUnknown_02032EE0
+_0802A2E8: .4byte gMPlayInfo_BGM
 _0802A2EC: .4byte 0x000006DD
 _0802A2F0: .4byte 0x000006DE
 _0802A2F4: .4byte 0x000006ED
@@ -48555,7 +48555,7 @@ _0802A30A:
 	movs r0, #2
 	movs r1, #1
 	bl sub_1C7F4
-	ldr r0, _0802A34C @ =gUnknown_02032F20
+	ldr r0, _0802A34C @ =gMPlayInfo_SE1
 	ldr r1, _0802A350 @ =gUnknown_0869F45C
 	bl MPlayStart
 _0802A33A:
@@ -48567,7 +48567,7 @@ _0802A33A:
 	bx r0
 	.align 2, 0
 _0802A348: .4byte 0x000006EB
-_0802A34C: .4byte gUnknown_02032F20
+_0802A34C: .4byte gMPlayInfo_SE1
 _0802A350: .4byte gUnknown_0869F45C
 
 	thumb_func_start sub_2A354
@@ -49188,7 +49188,7 @@ _0802A882:
 	movs r1, #0xe1
 	lsls r1, r1, #4
 	strh r1, [r0]
-	ldr r0, _0802A8B4 @ =gUnknown_02032F20
+	ldr r0, _0802A8B4 @ =gMPlayInfo_SE1
 	ldr r1, _0802A8B8 @ =gUnknown_0869F664
 	bl MPlayStart
 	ldr r2, _0802A8BC @ =0x040000D4
@@ -49209,7 +49209,7 @@ _0802A882:
 	b _0802AAD2
 	.align 2, 0
 _0802A8B0: .4byte 0x000006DE
-_0802A8B4: .4byte gUnknown_02032F20
+_0802A8B4: .4byte gMPlayInfo_SE1
 _0802A8B8: .4byte gUnknown_0869F664
 _0802A8BC: .4byte 0x040000D4
 _0802A8C0: .4byte gUnknown_08137E14
@@ -49698,7 +49698,7 @@ _0802AC20:
 	beq _0802ACCA
 	bl _0802C4D2
 _0802ACCA:
-	ldr r0, _0802AD14 @ =gUnknown_02032EE0
+	ldr r0, _0802AD14 @ =gMPlayInfo_BGM
 	bl m4aMPlayStop
 	ldr r0, [r7]
 	adds r0, #0x71
@@ -49719,7 +49719,7 @@ _0802AD04: .4byte 0x80000040
 _0802AD08: .4byte 0x06016760
 _0802AD0C: .4byte 0x000005F7
 _0802AD10: .4byte 0x000005A6
-_0802AD14: .4byte gUnknown_02032EE0
+_0802AD14: .4byte gMPlayInfo_BGM
 _0802AD18:
 	ldr r4, _0802AD94 @ =gUnknown_020314E0
 	ldr r1, [r4]
@@ -49777,7 +49777,7 @@ _0802AD48:
 	beq _0802AD86
 	bl _0802C4D2
 _0802AD86:
-	ldr r0, _0802ADAC @ =gUnknown_02032F20
+	ldr r0, _0802ADAC @ =gMPlayInfo_SE1
 	ldr r1, _0802ADB0 @ =gUnknown_0869FCE4
 	bl MPlayStart
 	bl _0802C4D2
@@ -49788,7 +49788,7 @@ _0802AD9C: .4byte 0x0000071E
 _0802ADA0: .4byte 0x0000071F
 _0802ADA4: .4byte 0x0000132C
 _0802ADA8: .4byte 0x000005A6
-_0802ADAC: .4byte gUnknown_02032F20
+_0802ADAC: .4byte gMPlayInfo_SE1
 _0802ADB0: .4byte gUnknown_0869FCE4
 _0802ADB4:
 	ldr r2, _0802AE14 @ =0x040000D4
@@ -53653,7 +53653,7 @@ _0802CD18:
 	ldrh r0, [r0]
 	cmp r0, #0x55
 	bne _0802CD2A
-	ldr r0, _0802CD8C @ =gUnknown_02032F20
+	ldr r0, _0802CD8C @ =gMPlayInfo_SE1
 	ldr r1, _0802CD90 @ =gUnknown_086A1ABC
 	bl MPlayStart
 _0802CD2A:
@@ -53662,7 +53662,7 @@ _0802CD2A:
 	ldrh r0, [r0]
 	cmp r0, #0x3a
 	bne _0802CD50
-	ldr r0, _0802CD8C @ =gUnknown_02032F20
+	ldr r0, _0802CD8C @ =gMPlayInfo_SE1
 	ldr r1, _0802CD94 @ =gUnknown_0869F2A0
 	bl MPlayStart
 	ldr r0, [r5]
@@ -53702,7 +53702,7 @@ _0802CD7C: .4byte 0x040000D4
 _0802CD80: .4byte gUnknown_086AE324
 _0802CD84: .4byte 0x05000380
 _0802CD88: .4byte 0x80000010
-_0802CD8C: .4byte gUnknown_02032F20
+_0802CD8C: .4byte gMPlayInfo_SE1
 _0802CD90: .4byte gUnknown_086A1ABC
 _0802CD94: .4byte gUnknown_0869F2A0
 
@@ -55817,7 +55817,7 @@ sub_2DE54: @ 0x0802DE54
 	bgt _0802DEF0
 	cmp r4, #1
 	bne _0802DE6A
-	ldr r0, _0802DED8 @ =gUnknown_02032EE0
+	ldr r0, _0802DED8 @ =gMPlayInfo_BGM
 	bl m4aMPlayStop
 _0802DE6A:
 	ldr r5, _0802DEDC @ =gMain
@@ -55877,7 +55877,7 @@ _0802DEB6:
 	b _0802E052
 	.align 2, 0
 _0802DED4: .4byte 0xFFFFFE98
-_0802DED8: .4byte gUnknown_02032EE0
+_0802DED8: .4byte gMPlayInfo_BGM
 _0802DEDC: .4byte gMain
 _0802DEE0: .4byte gUnknown_020314E0
 _0802DEE4: .4byte gUnknown_086A3700
@@ -57876,7 +57876,7 @@ _0802EF7C:
 	adds r1, r4, r0
 	movs r0, #0xa
 	strb r0, [r1]
-	ldr r0, _0802EFD0 @ =gUnknown_02032F20
+	ldr r0, _0802EFD0 @ =gMPlayInfo_SE1
 	ldr r1, _0802EFD4 @ =gUnknown_086A11A4
 	bl MPlayStart
 _0802EF90:
@@ -57896,7 +57896,7 @@ _0802EF90:
 	asrs r0, r0, #0x10
 	cmp r0, #0x22
 	bne _0802EFBA
-	ldr r0, _0802EFD0 @ =gUnknown_02032F20
+	ldr r0, _0802EFD0 @ =gMPlayInfo_SE1
 	ldr r1, _0802EFD4 @ =gUnknown_086A11A4
 	bl MPlayStart
 _0802EFBA:
@@ -57911,7 +57911,7 @@ _0802EFBC:
 	b _0802EFFC
 	.align 2, 0
 _0802EFCC: .4byte 0x00000306
-_0802EFD0: .4byte gUnknown_02032F20
+_0802EFD0: .4byte gMPlayInfo_SE1
 _0802EFD4: .4byte gUnknown_086A11A4
 _0802EFD8: .4byte gUnknown_020314E0
 _0802EFDC:
@@ -62622,7 +62622,7 @@ _08031530:
 	lsls r4, r4, #2
 	adds r0, r0, r4
 	strh r3, [r0]
-	ldr r0, _0803159C @ =gUnknown_02032EE0
+	ldr r0, _0803159C @ =gMPlayInfo_BGM
 	bl m4aMPlayStop
 	ldr r1, [r5]
 	ldr r0, _080315A0 @ =0x00030D40
@@ -62633,7 +62633,7 @@ _08031530:
 	.align 2, 0
 _08031594: .4byte gMain
 _08031598: .4byte 0x00000346
-_0803159C: .4byte gUnknown_02032EE0
+_0803159C: .4byte gMPlayInfo_BGM
 _080315A0: .4byte 0x00030D40
 _080315A4:
 	ldr r7, _080315F4 @ =0x00000345
