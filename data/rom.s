@@ -1820,10 +1820,37 @@ gGBAButtonIcons_Pals:: @ 0x0852B668
 gOptionsSprites_Gfx:: @ 0x0852B868
 	.incbin "graphics/options/sprites.4bpp"
 
-.incbin "baserom.gba", 0x52D888, 0x52DB0C - 0x52D888
+.incbin "baserom.gba", 0x52D888, 0x52D928 - 0x52D888
 
-gUnknown_0852DB0C:: @ 0x0852DB0C
-	.incbin "baserom.gba", 0x52DB0C, 0x5260
+gScaleTable:: @ 0x0852D928
+	.incbin "baserom.gba", 0x52D928, 0xB4
+
+gFreqTable:: @ 0x0852D9DC
+	.incbin "baserom.gba", 0x52D9DC, 0x30
+
+gPcmSamplesPerVBlankTable:: @ 0x0852DA0C
+	.incbin "baserom.gba", 0x52DA0C, 0x18
+
+gCgbScaleTable:: @ 0x0852DA24
+	.incbin "baserom.gba", 0x52DA24, 0x84
+
+gCgbFreqTable:: @ 0x0852DAA8
+	.incbin "baserom.gba", 0x52DAA8, 0x18
+
+gNoiseTable:: @ 0x0852DAC0
+	.incbin "baserom.gba", 0x52DAC0, 0x3C
+
+gCgb3Vol:: @ 0x0852DAFC
+	.incbin "baserom.gba", 0x52DAFC, 0x10
+
+gClockTable:: @ 0x0852DB0C
+	.incbin "baserom.gba", 0x52DB0C, 0x34
+
+gPokemonCrySongTemplate:: @ 0x0852DB40
+	.incbin "baserom.gba", 0x52DB40, 0x34
+
+gXcmdTable:: @ 0x0852DB74
+	.incbin "baserom.gba", 0x52DB74, 0x51F8
 
 gUnknown_08532D6C:: @ 0x08532D6C
 	.incbin "baserom.gba", 0x532D6C, 0x5F4
@@ -1835,7 +1862,13 @@ gUnknown_08533960:: @ 0x08533960
 	.incbin "baserom.gba", 0x533960, 0x600
 
 gUnknown_08533F60:: @ 0x08533F60
-	.incbin "baserom.gba", 0x533F60, 0x16B2E0
+	.incbin "baserom.gba", 0x533F60, 0xE74
+
+gMPlayTable:: @ 0x08534DD4
+	.incbin "baserom.gba", 0x534DD4, 0x30
+
+gSongTable:: @ 0x08534E04
+	.incbin "baserom.gba", 0x534E04, 0x16A43C
 
 gUnknown_0869F240:: @ 0x0869F240
 	.incbin "baserom.gba", 0x69F240, 0x60
