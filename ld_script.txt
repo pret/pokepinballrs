@@ -75,4 +75,5 @@ SECTIONS
 }
 
 INCLUDE ../../undefined_ewram.txt
+INCLUDE ../../undefined_iwram.txt
 INCLUDE ../../undefined_rom.txt

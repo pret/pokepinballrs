@@ -95,7 +95,7 @@ sub_CE88: @ 0x0800CE88
 	ldr r0, [r4, #8]
 	ldr r0, _0800CFA0 @ =gUnknown_080947A0
 	str r0, [r4]
-	ldr r6, _0800CFA4 @ =0x03005C00
+	ldr r6, _0800CFA4 @ =gUnknown_03005C00
 	str r6, [r4, #4]
 	ldr r5, _0800CFA8 @ =0x80000800
 	str r5, [r4, #8]
@@ -162,7 +162,7 @@ _0800CF94: .4byte gUnknown_0809AFC0
 _0800CF98: .4byte 0x0600C000
 _0800CF9C: .4byte 0x80001600
 _0800CFA0: .4byte gUnknown_080947A0
-_0800CFA4: .4byte 0x03005C00
+_0800CFA4: .4byte gUnknown_03005C00
 _0800CFA8: .4byte 0x80000800
 _0800CFAC: .4byte gUnknown_08099FC0
 _0800CFB0: .4byte 0x06001000
@@ -762,7 +762,7 @@ _0800D476:
 	strb r0, [r1, #3]
 _0800D482:
 	ldr r1, _0800D4AC @ =0x040000D4
-	ldr r0, _0800D4B0 @ =0x03005C00
+	ldr r0, _0800D4B0 @ =gUnknown_03005C00
 	str r0, [r1]
 	movs r0, #0xc0
 	lsls r0, r0, #0x13
@@ -781,7 +781,7 @@ _0800D4A0: .4byte gUnknown_08079870
 _0800D4A4: .4byte gUnknown_02002858
 _0800D4A8: .4byte gMain
 _0800D4AC: .4byte 0x040000D4
-_0800D4B0: .4byte 0x03005C00
+_0800D4B0: .4byte gUnknown_03005C00
 _0800D4B4: .4byte 0x80000800
 
 	thumb_func_start sub_D4B8
@@ -1418,7 +1418,7 @@ _0800D9B2:
 	strh r0, [r4, #0x16]
 _0800D9B6:
 	ldr r1, _0800D9E8 @ =0x040000D4
-	ldr r0, _0800D9EC @ =0x03005C00
+	ldr r0, _0800D9EC @ =gUnknown_03005C00
 	str r0, [r1]
 	movs r0, #0xc0
 	lsls r0, r0, #0x13
@@ -1444,7 +1444,7 @@ _0800D9D8:
 	.align 2, 0
 _0800D9E4: .4byte gUnknown_0202C610
 _0800D9E8: .4byte 0x040000D4
-_0800D9EC: .4byte 0x03005C00
+_0800D9EC: .4byte gUnknown_03005C00
 _0800D9F0: .4byte 0x80000800
 _0800D9F4: .4byte gUnknown_02002858
 
@@ -1919,7 +1919,7 @@ sub_DD70: @ 0x0800DD70
 	ldr r0, [r4, #8]
 	ldr r0, _0800DE88 @ =gUnknown_080947A0
 	str r0, [r4]
-	ldr r0, _0800DE8C @ =0x03005C00
+	ldr r0, _0800DE8C @ =gUnknown_03005C00
 	mov r8, r0
 	str r0, [r4, #4]
 	ldr r5, _0800DE90 @ =0x80000800
@@ -1982,7 +1982,7 @@ _0800DE7C: .4byte gUnknown_0809AFC0
 _0800DE80: .4byte 0x0600C000
 _0800DE84: .4byte 0x80001600
 _0800DE88: .4byte gUnknown_080947A0
-_0800DE8C: .4byte 0x03005C00
+_0800DE8C: .4byte gUnknown_03005C00
 _0800DE90: .4byte 0x80000800
 _0800DE94: .4byte gUnknown_08099FC0
 _0800DE98: .4byte 0x06001000
@@ -2226,7 +2226,7 @@ _0800E072:
 	adds r0, #1
 	strh r0, [r5, #8]
 	ldr r1, _0800E0B8 @ =0x040000D4
-	ldr r0, _0800E0BC @ =0x03005C00
+	ldr r0, _0800E0BC @ =gUnknown_03005C00
 	str r0, [r1]
 	movs r0, #0xc0
 	lsls r0, r0, #0x13
@@ -2256,7 +2256,7 @@ _0800E0A8:
 _0800E0B0: .4byte gUnknown_02002858
 _0800E0B4: .4byte gMain
 _0800E0B8: .4byte 0x040000D4
-_0800E0BC: .4byte 0x03005C00
+_0800E0BC: .4byte gUnknown_03005C00
 _0800E0C0: .4byte 0x80000800
 
 	thumb_func_start sub_E0C4
@@ -2338,7 +2338,7 @@ sub_E0EC: @ 0x0800E0EC
 	ldr r0, [r4, #8]
 	ldr r0, _0800E204 @ =gUnknown_080947A0
 	str r0, [r4]
-	ldr r0, _0800E208 @ =0x03005C00
+	ldr r0, _0800E208 @ =gUnknown_03005C00
 	mov r8, r0
 	str r0, [r4, #4]
 	ldr r5, _0800E20C @ =0x80000800
@@ -2401,7 +2401,7 @@ _0800E1F8: .4byte gUnknown_0809AFC0
 _0800E1FC: .4byte 0x0600C000
 _0800E200: .4byte 0x80001600
 _0800E204: .4byte gUnknown_080947A0
-_0800E208: .4byte 0x03005C00
+_0800E208: .4byte gUnknown_03005C00
 _0800E20C: .4byte 0x80000800
 _0800E210: .4byte gUnknown_08099FC0
 _0800E214: .4byte 0x06001000
@@ -2556,7 +2556,7 @@ _0800E344:
 	adds r0, #1
 	strh r0, [r5, #8]
 	ldr r1, _0800E384 @ =0x040000D4
-	ldr r0, _0800E388 @ =0x03005C00
+	ldr r0, _0800E388 @ =gUnknown_03005C00
 	str r0, [r1]
 	movs r0, #0xc0
 	lsls r0, r0, #0x13
@@ -2583,7 +2583,7 @@ _0800E378: .4byte gUnknown_0201B170
 _0800E37C: .4byte gUnknown_02002858
 _0800E380: .4byte gMain
 _0800E384: .4byte 0x040000D4
-_0800E388: .4byte 0x03005C00
+_0800E388: .4byte gUnknown_03005C00
 _0800E38C: .4byte 0x80000800
 
 	thumb_func_start sub_E390
@@ -5281,7 +5281,7 @@ sub_F8B0: @ 0x0800F8B0
 _0800F8BC:
 	cmp r1, #0
 	bne _0800F93C
-	ldr r0, _0800F924 @ =0x03005C00
+	ldr r0, _0800F924 @ =gUnknown_03005C00
 	ldr r7, _0800F928 @ =0x000090EA
 	ldr r6, _0800F92C @ =0x0000912A
 	ldr r1, _0800F930 @ =gUnknown_086A7FA4
@@ -5307,7 +5307,7 @@ _0800F8E8:
 	subs r4, #1
 	cmp r4, #0
 	bge _0800F8D4
-	ldr r0, _0800F924 @ =0x03005C00
+	ldr r0, _0800F924 @ =gUnknown_03005C00
 	ldr r7, _0800F934 @ =0x0000910A
 	ldr r6, _0800F938 @ =0x0000914A
 	ldr r1, _0800F930 @ =gUnknown_086A7FA4
@@ -5335,7 +5335,7 @@ _0800F918:
 	bge _0800F904
 	b _0800FAC2
 	.align 2, 0
-_0800F924: .4byte 0x03005C00
+_0800F924: .4byte gUnknown_03005C00
 _0800F928: .4byte 0x000090EA
 _0800F92C: .4byte 0x0000912A
 _0800F930: .4byte gUnknown_086A7FA4
@@ -5348,7 +5348,7 @@ _0800F93C:
 	adds r3, r0, #0
 	adds r3, #0xc
 	adds r6, r1, #0
-	ldr r1, _0800F9B4 @ =0x03005C00
+	ldr r1, _0800F9B4 @ =gUnknown_03005C00
 	ldr r0, _0800F9B8 @ =0x0000916A
 	mov ip, r0
 	ldr r7, _0800F9BC @ =0x000091AA
@@ -5379,7 +5379,7 @@ _0800F972:
 	lsls r0, r0, #5
 	adds r3, r0, #0
 	adds r3, #0xc
-	ldr r1, _0800F9B4 @ =0x03005C00
+	ldr r1, _0800F9B4 @ =gUnknown_03005C00
 	ldr r7, _0800F9C4 @ =0x0000918A
 	ldr r6, _0800F9C8 @ =0x000091CA
 	ldr r2, _0800F9C0 @ =gUnknown_086A7FA4
@@ -5407,7 +5407,7 @@ _0800F9AA:
 	bge _0800F996
 	b _0800FAC2
 	.align 2, 0
-_0800F9B4: .4byte 0x03005C00
+_0800F9B4: .4byte gUnknown_03005C00
 _0800F9B8: .4byte 0x0000916A
 _0800F9BC: .4byte 0x000091AA
 _0800F9C0: .4byte gUnknown_086A7FA4
@@ -5416,7 +5416,7 @@ _0800F9C8: .4byte 0x000091CA
 _0800F9CC:
 	cmp r1, #0
 	bne _0800FA54
-	ldr r0, _0800FA34 @ =0x03005C00
+	ldr r0, _0800FA34 @ =gUnknown_03005C00
 	ldr r7, _0800FA38 @ =0x000090EA
 	ldr r6, _0800FA3C @ =0x0000912A
 	ldr r1, _0800FA40 @ =gUnknown_086A7FA4
@@ -5442,7 +5442,7 @@ _0800F9F8:
 	subs r4, #1
 	cmp r4, #0
 	bge _0800F9E4
-	ldr r0, _0800FA34 @ =0x03005C00
+	ldr r0, _0800FA34 @ =gUnknown_03005C00
 	ldr r7, _0800FA48 @ =0x0000910A
 	ldr r6, _0800FA4C @ =0x0000914A
 	ldr r1, _0800FA40 @ =gUnknown_086A7FA4
@@ -5470,7 +5470,7 @@ _0800FA28:
 	bge _0800FA14
 	b _0800FAC2
 	.align 2, 0
-_0800FA34: .4byte 0x03005C00
+_0800FA34: .4byte gUnknown_03005C00
 _0800FA38: .4byte 0x000090EA
 _0800FA3C: .4byte 0x0000912A
 _0800FA40: .4byte gUnknown_086A7FA4
@@ -5482,7 +5482,7 @@ _0800FA54:
 	lsls r0, r1, #1
 	lsls r3, r0, #6
 	adds r6, r0, #0
-	ldr r1, _0800FAC8 @ =0x03005C00
+	ldr r1, _0800FAC8 @ =gUnknown_03005C00
 	ldr r0, _0800FACC @ =0x0000916A
 	mov ip, r0
 	ldr r7, _0800FAD0 @ =0x000091AA
@@ -5511,7 +5511,7 @@ _0800FA86:
 	cmp r4, #0
 	bge _0800FA72
 	lsls r3, r6, #6
-	ldr r1, _0800FAC8 @ =0x03005C00
+	ldr r1, _0800FAC8 @ =gUnknown_03005C00
 	ldr r7, _0800FADC @ =0x0000918A
 	ldr r6, _0800FAE0 @ =0x000091CA
 	ldr r2, _0800FAD4 @ =gUnknown_086A7FA4
@@ -5543,7 +5543,7 @@ _0800FAC2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800FAC8: .4byte 0x03005C00
+_0800FAC8: .4byte gUnknown_03005C00
 _0800FACC: .4byte 0x0000916A
 _0800FAD0: .4byte 0x000091AA
 _0800FAD4: .4byte gUnknown_086A7FA4
@@ -5563,7 +5563,7 @@ sub_FAE8: @ 0x0800FAE8
 _0800FAF4:
 	cmp r1, #0
 	bne _0800FB74
-	ldr r0, _0800FB5C @ =0x03005C00
+	ldr r0, _0800FB5C @ =gUnknown_03005C00
 	ldr r7, _0800FB60 @ =0x000090EA
 	ldr r6, _0800FB64 @ =0x0000912A
 	ldr r1, _0800FB68 @ =gUnknown_086A7FA8
@@ -5589,7 +5589,7 @@ _0800FB20:
 	subs r4, #1
 	cmp r4, #0
 	bge _0800FB0C
-	ldr r0, _0800FB5C @ =0x03005C00
+	ldr r0, _0800FB5C @ =gUnknown_03005C00
 	ldr r7, _0800FB6C @ =0x0000910A
 	ldr r6, _0800FB70 @ =0x0000914A
 	ldr r1, _0800FB68 @ =gUnknown_086A7FA8
@@ -5617,7 +5617,7 @@ _0800FB50:
 	bge _0800FB3C
 	b _0800FCFA
 	.align 2, 0
-_0800FB5C: .4byte 0x03005C00
+_0800FB5C: .4byte gUnknown_03005C00
 _0800FB60: .4byte 0x000090EA
 _0800FB64: .4byte 0x0000912A
 _0800FB68: .4byte gUnknown_086A7FA8
@@ -5630,7 +5630,7 @@ _0800FB74:
 	adds r3, r0, #0
 	adds r3, #0xc
 	adds r6, r1, #0
-	ldr r1, _0800FBEC @ =0x03005C00
+	ldr r1, _0800FBEC @ =gUnknown_03005C00
 	ldr r0, _0800FBF0 @ =0x0000916A
 	mov ip, r0
 	ldr r7, _0800FBF4 @ =0x000091AA
@@ -5661,7 +5661,7 @@ _0800FBAA:
 	lsls r0, r0, #5
 	adds r3, r0, #0
 	adds r3, #0xc
-	ldr r1, _0800FBEC @ =0x03005C00
+	ldr r1, _0800FBEC @ =gUnknown_03005C00
 	ldr r7, _0800FBFC @ =0x0000918A
 	ldr r6, _0800FC00 @ =0x000091CA
 	ldr r2, _0800FBF8 @ =gUnknown_086A7FA8
@@ -5689,7 +5689,7 @@ _0800FBE2:
 	bge _0800FBCE
 	b _0800FCFA
 	.align 2, 0
-_0800FBEC: .4byte 0x03005C00
+_0800FBEC: .4byte gUnknown_03005C00
 _0800FBF0: .4byte 0x0000916A
 _0800FBF4: .4byte 0x000091AA
 _0800FBF8: .4byte gUnknown_086A7FA8
@@ -5698,7 +5698,7 @@ _0800FC00: .4byte 0x000091CA
 _0800FC04:
 	cmp r1, #0
 	bne _0800FC8C
-	ldr r0, _0800FC6C @ =0x03005C00
+	ldr r0, _0800FC6C @ =gUnknown_03005C00
 	ldr r7, _0800FC70 @ =0x000090EA
 	ldr r6, _0800FC74 @ =0x0000912A
 	ldr r1, _0800FC78 @ =gUnknown_086A7FA8
@@ -5724,7 +5724,7 @@ _0800FC30:
 	subs r4, #1
 	cmp r4, #0
 	bge _0800FC1C
-	ldr r0, _0800FC6C @ =0x03005C00
+	ldr r0, _0800FC6C @ =gUnknown_03005C00
 	ldr r7, _0800FC80 @ =0x0000910A
 	ldr r6, _0800FC84 @ =0x0000914A
 	ldr r1, _0800FC78 @ =gUnknown_086A7FA8
@@ -5752,7 +5752,7 @@ _0800FC60:
 	bge _0800FC4C
 	b _0800FCFA
 	.align 2, 0
-_0800FC6C: .4byte 0x03005C00
+_0800FC6C: .4byte gUnknown_03005C00
 _0800FC70: .4byte 0x000090EA
 _0800FC74: .4byte 0x0000912A
 _0800FC78: .4byte gUnknown_086A7FA8
@@ -5764,7 +5764,7 @@ _0800FC8C:
 	lsls r0, r1, #1
 	lsls r3, r0, #6
 	adds r6, r0, #0
-	ldr r1, _0800FD00 @ =0x03005C00
+	ldr r1, _0800FD00 @ =gUnknown_03005C00
 	ldr r0, _0800FD04 @ =0x0000916A
 	mov ip, r0
 	ldr r7, _0800FD08 @ =0x000091AA
@@ -5793,7 +5793,7 @@ _0800FCBE:
 	cmp r4, #0
 	bge _0800FCAA
 	lsls r3, r6, #6
-	ldr r1, _0800FD00 @ =0x03005C00
+	ldr r1, _0800FD00 @ =gUnknown_03005C00
 	ldr r7, _0800FD14 @ =0x0000918A
 	ldr r6, _0800FD18 @ =0x000091CA
 	ldr r2, _0800FD0C @ =gUnknown_086A7FA8
@@ -5825,7 +5825,7 @@ _0800FCFA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800FD00: .4byte 0x03005C00
+_0800FD00: .4byte gUnknown_03005C00
 _0800FD04: .4byte 0x0000916A
 _0800FD08: .4byte 0x000091AA
 _0800FD0C: .4byte gUnknown_086A7FA8
@@ -6954,7 +6954,7 @@ _080105CC:
 	adds r6, r1, #1
 	cmp r2, ip
 	bge _080105FA
-	ldr r7, _08010614 @ =0x03005C00
+	ldr r7, _08010614 @ =gUnknown_03005C00
 	lsls r0, r1, #5
 	mov r1, r8
 	adds r5, r1, r0
@@ -6989,7 +6989,7 @@ _08010602:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08010614: .4byte 0x03005C00
+_08010614: .4byte gUnknown_03005C00
 
 	thumb_func_start sub_10618
 sub_10618: @ 0x08010618
@@ -7006,7 +7006,7 @@ sub_10618: @ 0x08010618
 	movs r1, #0
 	cmp r1, ip
 	bge _08010678
-	ldr r0, _08010688 @ =0x03005C00
+	ldr r0, _08010688 @ =gUnknown_03005C00
 	mov sl, r0
 	lsls r0, r3, #5
 	adds r0, r0, r2
@@ -7053,4 +7053,4 @@ _08010678:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08010688: .4byte 0x03005C00
+_08010688: .4byte gUnknown_03005C00

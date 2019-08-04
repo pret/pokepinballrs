@@ -42946,7 +42946,7 @@ _0802758E:
 	movs r2, #0
 	lsls r0, r1, #0x10
 	asrs r0, r0, #0x10
-	ldr r5, _0802769C @ =0x03005C00
+	ldr r5, _0802769C @ =gUnknown_03005C00
 	mov r8, r5
 	cmp r2, r0
 	bgt _080275F0
@@ -43000,7 +43000,7 @@ _08027600:
 	movs r2, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
-	ldr r3, _0802769C @ =0x03005C00
+	ldr r3, _0802769C @ =gUnknown_03005C00
 	mov r8, r3
 	cmp r2, r0
 	bgt _08027654
@@ -43070,7 +43070,7 @@ _0802768C: .4byte gUnknown_020314E0
 _08027690: .4byte 0x000006C4
 _08027694: .4byte 0x004C4B40
 _08027698: .4byte gMain
-_0802769C: .4byte 0x03005C00
+_0802769C: .4byte gUnknown_03005C00
 _080276A0: .4byte 0x040000D4
 _080276A4: .4byte 0x06002000
 _080276A8: .4byte 0x80000400
@@ -52096,7 +52096,7 @@ _0802C0A6:
 	movs r1, #0
 	lsls r0, r5, #0x10
 	asrs r0, r0, #0x10
-	ldr r2, _0802C21C @ =0x03005C00
+	ldr r2, _0802C21C @ =gUnknown_03005C00
 	mov r8, r2
 	cmp r1, r0
 	bgt _0802C10C
@@ -52154,7 +52154,7 @@ _0802C11C:
 	movs r1, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
-	ldr r2, _0802C21C @ =0x03005C00
+	ldr r2, _0802C21C @ =gUnknown_03005C00
 	mov r8, r2
 	cmp r1, r0
 	bgt _0802C176
@@ -52271,7 +52271,7 @@ _0802C20C: .4byte 0x0000132C
 _0802C210: .4byte 0x000005A6
 _0802C214: .4byte gMain
 _0802C218: .4byte 0x000006C4
-_0802C21C: .4byte 0x03005C00
+_0802C21C: .4byte gUnknown_03005C00
 _0802C220: .4byte 0x040000D4
 _0802C224: .4byte 0x06002000
 _0802C228: .4byte 0x80000400
@@ -54384,7 +54384,7 @@ _0802D2D0:
 	movs r3, #0
 	lsrs r5, r0, #0x10
 	asrs r0, r0, #0x10
-	ldr r4, _0802D394 @ =0x03005C00
+	ldr r4, _0802D394 @ =gUnknown_03005C00
 	mov sb, r4
 	cmp r3, r0
 	bgt _0802D320
@@ -54464,7 +54464,7 @@ _0802D384: .4byte gUnknown_0815A6A4
 _0802D388: .4byte 0x050003C0
 _0802D38C: .4byte 0x80000010
 _0802D390: .4byte gMain
-_0802D394: .4byte 0x03005C00
+_0802D394: .4byte gUnknown_03005C00
 _0802D398: .4byte 0x06002000
 _0802D39C: .4byte 0x80000400
 _0802D3A0:
@@ -54473,7 +54473,7 @@ _0802D3A0:
 	cmp r3, r0
 	bhi _0802D3F6
 	movs r3, #0
-	ldr r4, _0802D484 @ =0x03005C00
+	ldr r4, _0802D484 @ =gUnknown_03005C00
 	mov sb, r4
 	mov r5, sb
 	movs r4, #0xc1
@@ -54587,7 +54587,7 @@ _0802D428:
 	ble _0802D428
 	b _0802D53E
 	.align 2, 0
-_0802D484: .4byte 0x03005C00
+_0802D484: .4byte gUnknown_03005C00
 _0802D488: .4byte 0x040000D4
 _0802D48C: .4byte 0x06002000
 _0802D490: .4byte 0x80000400
@@ -55687,7 +55687,7 @@ _0802DD32:
 	bne _0802DD84
 	movs r1, #0xf0
 	lsls r1, r1, #0x11
-	ldr r4, _0802DE1C @ =0x03005C00
+	ldr r4, _0802DE1C @ =gUnknown_03005C00
 	mov sb, r4
 	ldr r3, _0802DE14 @ =0x000001FF
 	ldr r2, _0802DE20 @ =0x0000033F
@@ -55792,7 +55792,7 @@ _0802DE0C: .4byte gUnknown_086B4112
 _0802DE10: .4byte 0xFFFFFE00
 _0802DE14: .4byte 0x000001FF
 _0802DE18: .4byte gUnknown_020314E0
-_0802DE1C: .4byte 0x03005C00
+_0802DE1C: .4byte gUnknown_03005C00
 _0802DE20: .4byte 0x0000033F
 _0802DE24: .4byte 0x040000D4
 _0802DE28: .4byte 0x06002000

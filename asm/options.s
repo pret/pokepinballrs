@@ -82,7 +82,7 @@ sub_51240: @ 0x08051240
 	ldr r0, [r5, #8]
 	ldr r0, _08051388 @ =gUnknown_08528028
 	str r0, [r5]
-	ldr r7, _0805138C @ =0x03005C00
+	ldr r7, _0805138C @ =gUnknown_03005C00
 	str r7, [r5, #4]
 	ldr r6, _08051390 @ =0x80000400
 	str r6, [r5, #8]
@@ -168,7 +168,7 @@ _0805137C: .4byte gUnknown_0852A848
 _08051380: .4byte 0x06008000
 _08051384: .4byte 0x80000600
 _08051388: .4byte gUnknown_08528028
-_0805138C: .4byte 0x03005C00
+_0805138C: .4byte gUnknown_03005C00
 _08051390: .4byte 0x80000400
 _08051394: .4byte gGameBoyPlayerEnabled
 _08051398: .4byte gUnknown_0852A048

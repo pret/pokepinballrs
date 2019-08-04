@@ -33,7 +33,7 @@ _080106B2:
 	lsls r0, r2, #5
 	mov r1, sl
 	adds r5, r1, r0
-	ldr r0, _08010700 @ =0x03005C00
+	ldr r0, _08010700 @ =gUnknown_03005C00
 	mov ip, r0
 	ldr r1, _08010704 @ =0x00000FFF
 	mov r8, r1
@@ -69,7 +69,7 @@ _080106F0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08010700: .4byte 0x03005C00
+_08010700: .4byte gUnknown_03005C00
 _08010704: .4byte 0x00000FFF
 
 	thumb_func_start sub_10708
