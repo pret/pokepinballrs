@@ -1,9 +1,6 @@
 #include "global.h"
 #include "main.h"
 
-extern const struct OamData gEmptyOamData[128];
-extern int sub_55A24(u8*); // Rumble Pak?
-
 static u8 *sub_734(u32, u8*, u32);
 static int sub_780(int, int);
 

@@ -3,48 +3,9 @@
 #include "m4a.h"
 #include "main.h"
 
-extern u8 gUnknown_03000000[];
-
-
-extern StateFunc gTitlescreenStateFuncs[];
-extern const u8 gTitlescreenBg_Gfx[];
-extern const u16 gTitlescreenBg_Pals[];
-extern const u8 gTitlescreenBgTilemap[];
-extern const u16 gTitlescreenSprites_Pals[];
-extern const u8 gTitlescreenSpritesSavedGame_Gfx[];
-extern const u8 gTitlescreenSpritesNoSavedGame_Gfx[];
-extern const u8 gGBAButtonIcons_Pals[];
-extern const u8 gOptionsSprites_Gfx[];
-extern const u8 *const gUnknown_086A975C[7];
-extern const u8 *const gUnknown_086A96F8[7];
-extern const s16 gUnknown_086A964C[];
-extern const s8 gUnknown_086A9662[];
-extern const s8 gUnknown_086A9666[6][2];
-extern const s8 gUnknown_086A9748[];
-extern const u8 *const gUnknown_086A9714[];
-extern const u8 *const gUnknown_086A9778[];
-extern const s8 gUnknown_086A9672[9][2];
-extern const u16 gUnknown_086A96A4[];
-extern const u16 gUnknown_086A96D4[];
-extern const s16 gEReaderAccessButtonSequence[];
-extern const struct SpriteSet *const gUnknown_086A96E4[];
-
-extern void sub_438(void);
-extern void sub_CBC(void);
-extern void sub_D10(void);
-extern void sub_FE04(void (*func)(void));
-extern void sub_FD5C(void (*func)(void));
-extern void sub_10708(void*, void*, u16, s16);
-extern void sub_52C44(void);
-
-extern void sub_10AC0(void);
-extern void sub_1175C(void);
-extern void sub_11968(void);
-extern void sub_11B74(void);
-
 static void sub_114FC(void);
 static void sub_1157C(void);
-extern void sub_11640(void);
+/*static*/ extern void sub_11640(void);
 
 // If the user doesn't press any buttons at the title screen,
 // it will transition to a demo gameplay experience.
@@ -208,7 +169,7 @@ void sub_10BB8(void)
             if (gTitlescreen.idleFramesCounter % 10 == 0)
             {
                 gTitlescreen.idleFadeoutCounter++;
-                m4aMPlayVolumeControl(&gMPlayInfo_02032EE0, 0xFFFF, 0x100 / gTitlescreen.idleFadeoutCounter);
+                m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100 / gTitlescreen.idleFadeoutCounter);
             }
 
             if (gTitlescreen.idleFadeoutCounter > 9)

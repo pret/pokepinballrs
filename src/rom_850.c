@@ -1,16 +1,6 @@
 #include "global.h"
 #include "main.h"
 
-extern IntrFunc *gUnknown_0200FB98;
-extern IntrFunc *gUnknown_02019BE0;
-extern void (*gUnknown_0200FB9C)(void);
-extern void (*gUnknown_0200FBA0)(void);
-extern void (*gUnknown_02017BD0)(void);
-extern void (*gUnknown_02017BD4)(void);
-extern void HBlankIntr(void);
-extern void VCountIntr(void);
-extern void sub_DC4(void);
-
 u16 sub_850(void)
 {
     if (REG_IME & INTR_FLAG_VBLANK

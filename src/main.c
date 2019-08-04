@@ -3,22 +3,10 @@
 #include "gbplayer.h"
 #include "m4a.h"
 
-extern void sub_438(void);
-extern void sub_8BC(void);
-extern void sub_8FC(void);
-extern void sub_940(void);
-extern void sub_1F4C(void);
-extern void sub_1F5C(void);
-extern void sub_1090C(void);
-extern void sub_52A18(void);
-
 static void sub_B54(void);
 static void sub_B8C(void);
 static void InitIntrHandlers(void);
 static void ReadKeys(void);
-
-extern const IntrFunc gIntrTableTemplate[14];
-extern const s16 gUnknown_08055C44[];
 
 void AgbMain(void)
 {

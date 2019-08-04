@@ -4,6 +4,13 @@
 #include <string.h>
 #include "gba/gba.h"
 
+#define NUM_SPRITE_GROUPS 100
+#define MAX_SPRITES_IN_GROUP 22
+
+#include "types.h"
+#include "functions.h"
+#include "variables.h"
+
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
 

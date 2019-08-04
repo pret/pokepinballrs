@@ -159,33 +159,3 @@ gUnknown_020314E0: @ 0x20314E0
 gUnknown_02031520: @ 0x2031520
 
 	.space 0x610
-
-gSoundInfo: @ 0x2031B30
-
-	.space 0x1020
-
-gPokemonCryMusicPlayers: @ 0x2032B50
-
-	.space 0x80
-
-gMPlayJumpTable: @ 0x2032BD0
-
-	.space 0x90
-
-gCgbChans: @ 0x2032C60
-
-	.space 0x100
-
-gPokemonCryTracks: @ 0x2032D60
-
-	.space 0x140
-
-gPokemonCrySong: @ 0x2032EA0
-
-	.space 0x40
-
-gMPlayInfo_02032EE0: @ 0x2032EE0
-
-	.space 0xC0
-
-gMPlayMemAccArea: @ 0x2032FA0

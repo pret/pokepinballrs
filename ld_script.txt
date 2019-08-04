@@ -6,7 +6,8 @@ SECTIONS
     ALIGN(4)
     {
 <EWRAM>
-        . = 0x40000;
+        /* COMMON starts at ??? */
+<COMMON>
     }
 
     /* start of iwram */
@@ -14,11 +15,11 @@ SECTIONS
     iwram (NOLOAD) :
     ALIGN(4)
     {
-    /* .bss starts at 0x3000000 */
+        /* .bss starts at 0x3000000 */
 <BSS>
+        /* .bss.code starts at 0x3007400 */
+        src/m4a.o(.bss.code);
 
-    /* COMMON starts at ??? */
-<COMMON>
         . = 0x8000;
     }
 
@@ -47,9 +48,7 @@ SECTIONS
         asm/options.o(.text);
         asm/rom_528AC.o(.text);
         asm/m4a_1.o(.text);
-        src/m4a_2.o(.text);
-        asm/m4a_3.o(.text);
-        src/m4a_4.o(.text);
+        src/m4a.o(.text);
         asm/libagbsyscall.o(.text);
         asm/unknown_lib.o(.text);
         *libgcc.a:_call_via_rX.o(.text);
