@@ -15,7 +15,7 @@ sub_11640: @ 0x08011640
 	ldrsb r0, [r4, r0]
 	movs r1, #0xb8
 	muls r0, r1, r0
-	ldr r2, _08011748 @ =0x0200B3B8
+	ldr r2, _08011748 @ =gUnknown_0200B3B8
 	adds r7, r0, r2
 	movs r0, #0x10
 	ldrsb r0, [r4, r0]
@@ -140,7 +140,7 @@ _08011730:
 	bx r0
 	.align 2, 0
 _08011744: .4byte gTitlescreen
-_08011748: .4byte 0x0200B3B8
+_08011748: .4byte gUnknown_0200B3B8
 _0801174C: .4byte gUnknown_086A96E4
 _08011750: .4byte gOamBuffer
 _08011754: .4byte 0xFFFFFE00
@@ -200,7 +200,7 @@ sub_1175C: @ 0x0801175C
 	ldrsb r0, [r3, r0]
 	mov r1, r8
 	strh r0, [r1]
-	ldr r4, _08011820 @ =0x0201C190
+	ldr r4, _08011820 @ =gUnknown_0201C190
 	adds r0, r4, #0
 	movs r1, #7
 	bl LoadSpriteSets
@@ -242,7 +242,7 @@ _08011810: .4byte gMain
 _08011814: .4byte 0x00000808
 _08011818: .4byte 0x04000050
 _0801181C: .4byte gTitlescreen
-_08011820: .4byte 0x0201C190
+_08011820: .4byte gUnknown_0201C190
 _08011824: .4byte gOamBuffer
 _08011828:
 	ldrh r0, [r4]
@@ -458,7 +458,7 @@ sub_11968: @ 0x08011968
 	ldrsb r0, [r3, r0]
 	mov r1, r8
 	strh r0, [r1]
-	ldr r4, _08011A2C @ =0x0202BE00
+	ldr r4, _08011A2C @ =gUnknown_0202BE00
 	adds r0, r4, #0
 	movs r1, #7
 	bl LoadSpriteSets
@@ -500,7 +500,7 @@ _08011A1C: .4byte gMain
 _08011A20: .4byte 0x00000808
 _08011A24: .4byte 0x04000050
 _08011A28: .4byte gTitlescreen
-_08011A2C: .4byte 0x0202BE00
+_08011A2C: .4byte gUnknown_0202BE00
 _08011A30: .4byte gOamBuffer
 _08011A34:
 	ldrh r0, [r4]

@@ -74,4 +74,5 @@ SECTIONS
     }
 }
 
+INCLUDE ../../undefined_ewram.txt
 INCLUDE ../../undefined_rom.txt

@@ -124,7 +124,7 @@ sub_555BC: @ 0x080555BC
 	ldr r2, _080555D0 @ =gUnknown_080554F1
 	movs r0, #1
 	eors r2, r0
-	ldr r3, _080555D4 @ =0x02002FD8
+	ldr r3, _080555D4 @ =gUnknown_02002FD8
 	ldr r0, _080555D8 @ =gUnknown_08055531
 	ldr r1, _080555D0 @ =gUnknown_080554F1
 	subs r0, r0, r1
@@ -132,7 +132,7 @@ sub_555BC: @ 0x080555BC
 	b _080555E8
 	.align 2, 0
 _080555D0: .4byte gUnknown_080554F1
-_080555D4: .4byte 0x02002FD8
+_080555D4: .4byte gUnknown_02002FD8
 _080555D8: .4byte gUnknown_08055531
 _080555DC:
 	ldrh r0, [r2]
@@ -145,23 +145,23 @@ _080555E8:
 	lsrs r1, r0, #0x10
 	cmp r1, #0
 	bne _080555DC
-	ldr r1, _08055608 @ =0x02032FF0
-	ldr r0, _0805560C @ =0x02002FD9
+	ldr r1, _08055608 @ =gUnknown_02032FF0
+	ldr r0, _0805560C @ =gUnknown_02002FD9
 	str r0, [r1]
 	ldr r2, _08055610 @ =gUnknown_08055571
 	movs r0, #1
 	eors r2, r0
-	ldr r3, _08055614 @ =0x02002F38
+	ldr r3, _08055614 @ =gUnknown_02002F38
 	ldr r0, _08055618 @ =gUnknown_080555BD
 	ldr r1, _08055610 @ =gUnknown_08055571
 	subs r0, r0, r1
 	lsls r0, r0, #0xf
 	b _08055628
 	.align 2, 0
-_08055608: .4byte 0x02032FF0
-_0805560C: .4byte 0x02002FD9
+_08055608: .4byte gUnknown_02032FF0
+_0805560C: .4byte gUnknown_02002FD9
 _08055610: .4byte gUnknown_08055571
-_08055614: .4byte 0x02002F38
+_08055614: .4byte gUnknown_02002F38
 _08055618: .4byte gUnknown_080555BD
 _0805561C:
 	ldrh r0, [r2]
@@ -174,8 +174,8 @@ _08055628:
 	lsrs r1, r0, #0x10
 	cmp r1, #0
 	bne _0805561C
-	ldr r1, _08055644 @ =0x02032FF4
-	ldr r0, _08055648 @ =0x02002F39
+	ldr r1, _08055644 @ =gUnknown_02032FF4
+	ldr r0, _08055648 @ =gUnknown_02002F39
 	str r0, [r1]
 	ldr r2, _0805564C @ =0x04000204
 	ldrh r0, [r2]
@@ -186,8 +186,8 @@ _08055628:
 	strh r0, [r2]
 	bx lr
 	.align 2, 0
-_08055644: .4byte 0x02032FF4
-_08055648: .4byte 0x02002F39
+_08055644: .4byte gUnknown_02032FF4
+_08055648: .4byte gUnknown_02002F39
 _0805564C: .4byte 0x04000204
 _08055650: .4byte 0x0000FFFC
 
@@ -210,7 +210,7 @@ _08055666:
 	adds r1, r5, #0
 	adds r2, r4, #0
 	bl sub_55530
-	ldr r0, _08055690 @ =0x02032FF4
+	ldr r0, _08055690 @ =gUnknown_02032FF4
 	ldr r3, [r0]
 	adds r0, r6, #0
 	adds r1, r5, #0
@@ -225,6 +225,6 @@ _08055688:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08055690: .4byte 0x02032FF4
+_08055690: .4byte gUnknown_02032FF4
 
 	.align 2, 0 @ Don't pad with nop.

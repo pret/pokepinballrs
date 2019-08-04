@@ -163,7 +163,7 @@ sub_10798: @ 0x08010798
 	mov r8, r2
 	ldr r4, _08010818 @ =0x040000D4
 	str r0, [r4]
-	ldr r2, _0801081C @ =0x0201A920
+	ldr r2, _0801081C @ =gUnknown_0201A920
 	str r2, [r4, #4]
 	ldr r0, _08010820 @ =0x80000100
 	str r0, [r4, #8]
@@ -215,11 +215,11 @@ _08010804:
 	bl sub_D74
 	cmp r7, #0x20
 	bne _08010838
-	ldr r0, _0801081C @ =0x0201A920
+	ldr r0, _0801081C @ =gUnknown_0201A920
 	b _0801083A
 	.align 2, 0
 _08010818: .4byte 0x040000D4
-_0801081C: .4byte 0x0201A920
+_0801081C: .4byte gUnknown_0201A920
 _08010820: .4byte 0x80000100
 _08010824: .4byte 0x00007FFF
 _08010828: .4byte 0xFFFFFC00
@@ -227,7 +227,7 @@ _0801082C: .4byte 0x81000200
 _08010830: .4byte 0x80000200
 _08010834: .4byte gMain
 _08010838:
-	ldr r0, _0801085C @ =0x0201AD20
+	ldr r0, _0801085C @ =gUnknown_0201AD20
 _0801083A:
 	str r0, [r4]
 	str r6, [r4, #4]
@@ -246,7 +246,7 @@ _0801083A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801085C: .4byte 0x0201AD20
+_0801085C: .4byte gUnknown_0201AD20
 
 	thumb_func_start sub_10860
 sub_10860: @ 0x08010860
@@ -260,7 +260,7 @@ sub_10860: @ 0x08010860
 	lsls r0, r0, #0x13
 	mov r8, r0
 	str r0, [r1]
-	ldr r3, _080108CC @ =0x0201A520
+	ldr r3, _080108CC @ =gUnknown_0201A520
 	str r3, [r1, #4]
 	ldr r4, _080108D0 @ =0x80000200
 	str r4, [r1, #8]
@@ -296,20 +296,20 @@ _080108B0:
 	bl sub_D74
 	cmp r7, #0x20
 	bne _080108E0
-	ldr r0, _080108DC @ =0x0201A920
+	ldr r0, _080108DC @ =gUnknown_0201A920
 	str r0, [r6]
 	mov r0, r8
 	str r0, [r6, #4]
 	b _080108E8
 	.align 2, 0
 _080108C8: .4byte 0x040000D4
-_080108CC: .4byte 0x0201A520
+_080108CC: .4byte gUnknown_0201A520
 _080108D0: .4byte 0x80000200
 _080108D4: .4byte 0x00007FFF
 _080108D8: .4byte 0x81000200
-_080108DC: .4byte 0x0201A920
+_080108DC: .4byte gUnknown_0201A920
 _080108E0:
-	ldr r0, _08010908 @ =0x0201AD20
+	ldr r0, _08010908 @ =gUnknown_0201AD20
 	str r0, [r6]
 	mov r2, r8
 	str r2, [r6, #4]
@@ -330,11 +330,11 @@ _080108E8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08010908: .4byte 0x0201AD20
+_08010908: .4byte gUnknown_0201AD20
 
 	thumb_func_start sub_1090C
 sub_1090C: @ 0x0801090C
-	ldr r1, _08010920 @ =0x0201A500
+	ldr r1, _08010920 @ =gUnknown_0201A500
 	movs r2, #0
 	adds r0, r1, #0
 	adds r0, #0xc
@@ -345,4 +345,4 @@ _08010914:
 	bge _08010914
 	bx lr
 	.align 2, 0
-_08010920: .4byte 0x0201A500
+_08010920: .4byte gUnknown_0201A500
