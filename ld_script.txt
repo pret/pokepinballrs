@@ -74,5 +74,3 @@ SECTIONS
         *(*);
     }
 }
-
-INCLUDE ../../undefined_rom.txt
