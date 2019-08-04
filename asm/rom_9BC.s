@@ -814,7 +814,7 @@ sub_1A78: @ 0x08001A78
 	ldr r3, _08001A98 @ =0x04000208
 	movs r0, #0
 	strh r0, [r3]
-	ldr r2, _08001A9C @ =gUnknown_03007FF8
+	ldr r2, _08001A9C @ =INTR_CHECK
 	ldrh r0, [r2]
 	movs r1, #1
 	orrs r0, r1
@@ -824,7 +824,7 @@ sub_1A78: @ 0x08001A78
 	bx r0
 	.align 2, 0
 _08001A98: .4byte 0x04000208
-_08001A9C: .4byte gUnknown_03007FF8
+_08001A9C: .4byte 0x03007FF8 @ INTR_CHECK
 
 	thumb_func_start nullsub_15
 nullsub_15: @ 0x08001AA0
