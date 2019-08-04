@@ -7,7 +7,7 @@
 	thumb_func_start FieldSelectMain
 FieldSelectMain: @ 0x08008AD4
 	push {lr}
-	ldr r1, _08008AEC @ =0x080792C0
+	ldr r1, _08008AEC @ =gUnknown_080792C0
 	ldr r0, _08008AF0 @ =gMain
 	ldrb r0, [r0, #3]
 	lsls r0, r0, #2
@@ -17,7 +17,7 @@ FieldSelectMain: @ 0x08008AD4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08008AEC: .4byte 0x080792C0
+_08008AEC: .4byte gUnknown_080792C0
 _08008AF0: .4byte gMain
 
 	thumb_func_start LoadFieldSelectGraphics
@@ -84,7 +84,7 @@ LoadFieldSelectGraphics: @ 0x08008AF4
 	ldr r1, _08008C04 @ =0x80001C00
 	str r1, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _08008C08 @ =0x080A2400
+	ldr r1, _08008C08 @ =gUnknown_080A2400
 	str r1, [r0]
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
@@ -143,7 +143,7 @@ _08008BF8: .4byte 0x80000A00
 _08008BFC: .4byte gFieldSelectMiniFields_Gfx
 _08008C00: .4byte 0x06008000
 _08008C04: .4byte 0x80001C00
-_08008C08: .4byte 0x080A2400
+_08008C08: .4byte gUnknown_080A2400
 _08008C0C: .4byte 0x80000400
 _08008C10: .4byte gFieldSelectFrameShadowTilemap
 _08008C14: .4byte 0x06000800
@@ -418,7 +418,7 @@ _08008E2E:
 	ldrh r0, [r5, #8]
 	cmp r0, #0
 	bne _08008E5C
-	ldr r2, _08008E58 @ =0x086A6B14
+	ldr r2, _08008E58 @ =gUnknown_086A6B14
 	movs r4, #0xc
 	ldrsh r0, [r5, r4]
 	movs r1, #4
@@ -436,9 +436,9 @@ _08008E2E:
 	ldrh r0, [r1]
 	b _08008E76
 	.align 2, 0
-_08008E58: .4byte 0x086A6B14
+_08008E58: .4byte gUnknown_086A6B14
 _08008E5C:
-	ldr r1, _08008E94 @ =0x086A6B14
+	ldr r1, _08008E94 @ =gUnknown_086A6B14
 	movs r2, #0xc
 	ldrsh r0, [r5, r2]
 	lsls r0, r0, #1
@@ -468,7 +468,7 @@ _08008E76:
 	strh r0, [r3, #0xc]
 	b _08008EA0
 	.align 2, 0
-_08008E94: .4byte 0x086A6B14
+_08008E94: .4byte gUnknown_086A6B14
 _08008E98: .4byte gMain
 _08008E9C:
 	strh r1, [r3, #0xc]
@@ -657,7 +657,7 @@ sub_8F94: @ 0x08008F94
 	ldrsb r0, [r4, r0]
 	mov r3, r8
 	strh r0, [r3]
-	ldr r0, _08009268 @ =0x086A6AD4
+	ldr r0, _08009268 @ =gUnknown_086A6AD4
 	movs r1, #0x10
 	adds r2, r6, #0
 	bl LoadSpriteSets
@@ -755,7 +755,7 @@ _080090BC:
 	ldr r1, _08009264 @ =0x02002838
 	ldrh r0, [r1]
 	lsls r0, r0, #2
-	ldr r2, _08009268 @ =0x086A6AD4
+	ldr r2, _08009268 @ =gUnknown_086A6AD4
 	adds r0, r0, r2
 	ldr r6, [r0]
 	movs r5, #0
@@ -821,7 +821,7 @@ _0800913A:
 	ldr r1, _08009264 @ =0x02002838
 	ldrh r0, [r1, #2]
 	lsls r0, r0, #2
-	ldr r2, _08009268 @ =0x086A6AD4
+	ldr r2, _08009268 @ =gUnknown_086A6AD4
 	adds r0, r0, r2
 	ldr r6, [r0]
 	movs r5, #0
@@ -883,7 +883,7 @@ _080091BA:
 	ldrh r0, [r7]
 	cmp r0, #1
 	bne _08009234
-	ldr r1, _08009278 @ =0x086A6B28
+	ldr r1, _08009278 @ =gUnknown_086A6B28
 	ldr r2, _08009264 @ =0x02002838
 	ldrh r0, [r2, #8]
 	lsls r0, r0, #2
@@ -963,8 +963,8 @@ _08009258: .4byte 0x00000642
 _0800925C: .4byte 0x00000808
 _08009260: .4byte 0x04000050
 _08009264: .4byte 0x02002838
-_08009268: .4byte 0x086A6AD4
+_08009268: .4byte gUnknown_086A6AD4
 _0800926C: .4byte gOamBuffer
 _08009270: .4byte 0x000001FF
 _08009274: .4byte 0xFFFFFE00
-_08009278: .4byte 0x086A6B28
+_08009278: .4byte gUnknown_086A6B28

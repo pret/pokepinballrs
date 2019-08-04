@@ -7,7 +7,7 @@
 	thumb_func_start BonusFieldSelectMain
 BonusFieldSelectMain: @ 0x080025A4
 	push {lr}
-	ldr r1, _080025BC @ =0x0805C750
+	ldr r1, _080025BC @ =gUnknown_0805C750
 	ldr r0, _080025C0 @ =gMain
 	ldrb r0, [r0, #3]
 	lsls r0, r0, #2
@@ -17,7 +17,7 @@ BonusFieldSelectMain: @ 0x080025A4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080025BC: .4byte 0x0805C750
+_080025BC: .4byte gUnknown_0805C750
 _080025C0: .4byte gMain
 
 	thumb_func_start sub_25C4
@@ -62,7 +62,7 @@ sub_25C4: @ 0x080025C4
 	ldrh r0, [r2]
 	strh r0, [r4, #0x16]
 	ldr r0, _080026B8 @ =0x040000D4
-	ldr r1, _080026BC @ =0x0807C2E0
+	ldr r1, _080026BC @ =gUnknown_0807C2E0
 	str r1, [r0]
 	movs r1, #0xa0
 	lsls r1, r1, #0x13
@@ -77,14 +77,14 @@ sub_25C4: @ 0x080025C4
 	ldr r1, _080026CC @ =0x80002000
 	str r1, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _080026D0 @ =0x0807C4E0
+	ldr r1, _080026D0 @ =gUnknown_0807C4E0
 	str r1, [r0]
 	ldr r1, _080026D4 @ =0x06008000
 	str r1, [r0, #4]
 	ldr r1, _080026D8 @ =0x80000C00
 	str r1, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _080026DC @ =0x0807AAE0
+	ldr r1, _080026DC @ =gUnknown_0807AAE0
 	str r1, [r0]
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
@@ -92,13 +92,13 @@ sub_25C4: @ 0x080025C4
 	ldr r2, _080026E0 @ =0x80000400
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _080026E4 @ =0x0807B2E0
+	ldr r1, _080026E4 @ =gUnknown_0807B2E0
 	str r1, [r0]
 	ldr r1, _080026E8 @ =0x06000800
 	str r1, [r0, #4]
 	str r2, [r0, #8]
 	ldr r1, [r0, #8]
-	ldr r1, _080026EC @ =0x0807BAE0
+	ldr r1, _080026EC @ =gUnknown_0807BAE0
 	str r1, [r0]
 	ldr r1, _080026F0 @ =0x06001000
 	str r1, [r0, #4]
@@ -136,19 +136,19 @@ _080026AC: .4byte 0x0400000A
 _080026B0: .4byte 0x0400000C
 _080026B4: .4byte gMain
 _080026B8: .4byte 0x040000D4
-_080026BC: .4byte 0x0807C2E0
+_080026BC: .4byte gUnknown_0807C2E0
 _080026C0: .4byte 0x80000100
 _080026C4: .4byte gFieldSelectWindow_Gfx
 _080026C8: .4byte 0x06004000
 _080026CC: .4byte 0x80002000
-_080026D0: .4byte 0x0807C4E0
+_080026D0: .4byte gUnknown_0807C4E0
 _080026D4: .4byte 0x06008000
 _080026D8: .4byte 0x80000C00
-_080026DC: .4byte 0x0807AAE0
+_080026DC: .4byte gUnknown_0807AAE0
 _080026E0: .4byte 0x80000400
-_080026E4: .4byte 0x0807B2E0
+_080026E4: .4byte gUnknown_0807B2E0
 _080026E8: .4byte 0x06000800
-_080026EC: .4byte 0x0807BAE0
+_080026EC: .4byte gUnknown_0807BAE0
 _080026F0: .4byte 0x06001000
 _080026F4: .4byte gFieldSelectSpritePals
 _080026F8: .4byte 0x05000200
@@ -433,7 +433,7 @@ _0800291C:
 	ble _0800296E
 	ldr r1, _08002980 @ =gMain
 	strb r3, [r1, #0xd]
-	ldr r2, _08002984 @ =0x086A4CF0
+	ldr r2, _08002984 @ =gUnknown_086A4CF0
 	ldr r0, _08002988 @ =0x0201A4F8
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
@@ -458,7 +458,7 @@ _08002974: .4byte 0x0202A560
 _08002978: .4byte 0x0202BEE8
 _0800297C: .4byte 0x0202BE1C
 _08002980: .4byte gMain
-_08002984: .4byte 0x086A4CF0
+_08002984: .4byte gUnknown_086A4CF0
 _08002988: .4byte 0x0201A4F8
 _0800298C: .4byte 0x0202BEE4
 
@@ -515,7 +515,7 @@ sub_29C8: @ 0x080029C8
 	ldr r5, _08002C2C @ =0x0201A4F4
 	ldr r2, _08002C30 @ =0x0201A4B0
 	mov sb, r2
-	ldr r0, _08002C34 @ =0x086A4C80
+	ldr r0, _08002C34 @ =gUnknown_086A4C80
 	mov ip, r0
 	movs r2, #0xd2
 	lsls r2, r2, #3
@@ -583,7 +583,7 @@ _08002A70:
 	mov sb, r1
 	cmp r0, #1
 	bne _08002AEC
-	ldr r1, _08002C40 @ =0x086A4CC0
+	ldr r1, _08002C40 @ =gUnknown_086A4CC0
 	adds r1, r2, r1
 	ldrh r0, [r1]
 	strh r0, [r3, #2]
@@ -706,7 +706,7 @@ _08002B0C:
 	ldrh r0, [r1]
 	cmp r0, #1
 	bne _08002BEA
-	ldr r2, _08002C54 @ =0x086A4CD8
+	ldr r2, _08002C54 @ =gUnknown_086A4CD8
 	ldr r1, _08002C24 @ =0x0201A4F8
 	movs r0, #0
 	ldrsb r0, [r1, r0]
@@ -799,12 +799,12 @@ _08002C24: .4byte 0x0201A4F8
 _08002C28: .4byte 0x0201A4C0
 _08002C2C: .4byte 0x0201A4F4
 _08002C30: .4byte 0x0201A4B0
-_08002C34: .4byte 0x086A4C80
+_08002C34: .4byte gUnknown_086A4C80
 _08002C38: .4byte 0xFFFFFBB0
 _08002C3C: .4byte 0x0200B3B8
-_08002C40: .4byte 0x086A4CC0
+_08002C40: .4byte gUnknown_086A4CC0
 _08002C44: .4byte gOamBuffer
 _08002C48: .4byte 0x000001FF
 _08002C4C: .4byte 0xFFFFFE00
 _08002C50: .4byte 0x0202BEE8
-_08002C54: .4byte 0x086A4CD8
+_08002C54: .4byte gUnknown_086A4CD8

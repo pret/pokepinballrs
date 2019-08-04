@@ -119,12 +119,12 @@ _080014E4:
 	cmp r0, #3
 	bhi _080014F8
 	lsls r0, r0, #1
-	ldr r1, _080014F4 @ =0x0805C748
+	ldr r1, _080014F4 @ =gUnknown_0805C748
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	b _080014FC
 	.align 2, 0
-_080014F4: .4byte 0x0805C748
+_080014F4: .4byte gUnknown_0805C748
 _080014F8:
 	movs r0, #0x80
 	lsls r0, r0, #8

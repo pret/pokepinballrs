@@ -27,7 +27,7 @@ sub_11640: @ 0x08011640
 	movs r0, #0x11
 	ldrsb r0, [r4, r0]
 	strh r0, [r6]
-	ldr r5, _0801174C @ =0x086A96E4
+	ldr r5, _0801174C @ =gUnknown_086A96E4
 	adds r0, r5, #0
 	movs r1, #5
 	bl LoadSpriteSets
@@ -141,7 +141,7 @@ _08011730:
 	.align 2, 0
 _08011744: .4byte gTitlescreen
 _08011748: .4byte 0x0200B3B8
-_0801174C: .4byte 0x086A96E4
+_0801174C: .4byte gUnknown_086A96E4
 _08011750: .4byte gOamBuffer
 _08011754: .4byte 0xFFFFFE00
 _08011758: .4byte 0x000001FF
@@ -293,7 +293,7 @@ _0801187C:
 	ldrh r0, [r2]
 	cmp r0, #1
 	bne _080118D8
-	ldr r2, _08011958 @ =0x086A9684
+	ldr r2, _08011958 @ =gUnknown_086A9684
 	ldr r1, _0801195C @ =gTitlescreen
 	movs r0, #0
 	ldrsb r0, [r1, r0]
@@ -340,7 +340,7 @@ _080118D8:
 	ldrh r0, [r7]
 	cmp r0, #1
 	bne _08011930
-	ldr r2, _08011964 @ =0x086A9694
+	ldr r2, _08011964 @ =gUnknown_086A9694
 	ldr r1, _0801195C @ =gTitlescreen
 	movs r0, #0
 	ldrsb r0, [r1, r0]
@@ -399,10 +399,10 @@ _08011930:
 	.align 2, 0
 _08011950: .4byte 0x000001FF
 _08011954: .4byte 0xFFFFFE00
-_08011958: .4byte 0x086A9684
+_08011958: .4byte gUnknown_086A9684
 _0801195C: .4byte gTitlescreen
 _08011960: .4byte gOamBuffer
-_08011964: .4byte 0x086A9694
+_08011964: .4byte gUnknown_086A9694
 
 	thumb_func_start sub_11968
 sub_11968: @ 0x08011968
@@ -551,7 +551,7 @@ _08011A88:
 	ldrh r0, [r2]
 	cmp r0, #1
 	bne _08011AE4
-	ldr r2, _08011B64 @ =0x086A96AC
+	ldr r2, _08011B64 @ =gUnknown_086A96AC
 	ldr r1, _08011B68 @ =gTitlescreen
 	movs r0, #0
 	ldrsb r0, [r1, r0]
@@ -598,7 +598,7 @@ _08011AE4:
 	ldrh r0, [r7]
 	cmp r0, #1
 	bne _08011B3C
-	ldr r2, _08011B70 @ =0x086A96C0
+	ldr r2, _08011B70 @ =gUnknown_086A96C0
 	ldr r1, _08011B68 @ =gTitlescreen
 	movs r0, #0
 	ldrsb r0, [r1, r0]
@@ -657,10 +657,10 @@ _08011B3C:
 	.align 2, 0
 _08011B5C: .4byte 0x000001FF
 _08011B60: .4byte 0xFFFFFE00
-_08011B64: .4byte 0x086A96AC
+_08011B64: .4byte gUnknown_086A96AC
 _08011B68: .4byte gTitlescreen
 _08011B6C: .4byte gOamBuffer
-_08011B70: .4byte 0x086A96C0
+_08011B70: .4byte gUnknown_086A96C0
 
 	thumb_func_start sub_11B74
 sub_11B74: @ 0x08011B74

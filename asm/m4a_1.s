@@ -1547,7 +1547,7 @@ ply_note:
 	ldr r1, =SOUND_INFO_PTR
 	ldr r1, [r1]
 	str r1, [sp, 0x4]
-	ldr r1, =0x0852DB0C @ gClockTable
+	ldr r1, =gUnknown_0852DB0C @ gClockTable
 	adds r0, r1
 	ldrb r0, [r0]
 	strb r0, [r5, o_MusicPlayerTrack_gateTime]
