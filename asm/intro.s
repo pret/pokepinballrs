@@ -46,7 +46,7 @@ sub_929C: @ 0x0800929C
 	ldr r2, _08009324 @ =0x80000400
 	str r2, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r0, _08009328 @ =gUnknown_0807A0C0
+	ldr r0, _08009328 @ =gIntroCopyright_Gfx
 	str r0, [r1]
 	ldr r0, _0800932C @ =0x06004000
 	str r0, [r1, #4]
@@ -84,7 +84,7 @@ _08009318: .4byte 0x0400000A
 _0800931C: .4byte 0x040000D4
 _08009320: .4byte gUnknown_080798C0
 _08009324: .4byte 0x80000400
-_08009328: .4byte gUnknown_0807A0C0
+_08009328: .4byte gIntroCopyright_Gfx
 _0800932C: .4byte 0x06004000
 _08009330: .4byte gIntroCopyright_Pal
 _08009334: .4byte 0x80000100
@@ -753,7 +753,7 @@ sub_98B4: @ 0x080098B4
 	ble _08009916
 	movs r0, #0
 	strb r0, [r1, #0xc]
-	ldr r0, _080098F4 @ =gUnknown_080B3C60
+	ldr r0, _080098F4 @ =gIntroScene1Sprites_Pals+0x1C0
 	ldr r1, _080098F8 @ =0x050000E0
 	movs r2, #0x20
 	movs r3, #0
@@ -767,7 +767,7 @@ sub_98B4: @ 0x080098B4
 	b _08009916
 	.align 2, 0
 _080098F0: .4byte gUnknown_0201A450
-_080098F4: .4byte gUnknown_080B3C60
+_080098F4: .4byte gIntroScene1Sprites_Pals+0x1C0
 _080098F8: .4byte 0x050000E0
 _080098FC: .4byte gUnknown_0202C790
 _08009900:

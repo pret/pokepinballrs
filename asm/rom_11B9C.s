@@ -30467,7 +30467,7 @@ _080210B6:
 	lsls r0, r1, #3
 	adds r0, r0, r1
 	lsls r0, r0, #5
-	ldr r1, _080211BC @ =gUnknown_083E85AC
+	ldr r1, _080211BC @ =gMonHatchSpriteGroup5_Gfx
 	adds r0, r0, r1
 	str r0, [r2]
 	ldr r0, _080211C0 @ =0x060112A0
@@ -30592,7 +30592,7 @@ _0802114A:
 	b _08021210
 	.align 2, 0
 _080211B8: .4byte 0x040000D4
-_080211BC: .4byte gUnknown_083E85AC
+_080211BC: .4byte gMonHatchSpriteGroup5_Gfx
 _080211C0: .4byte 0x060112A0
 _080211C4: .4byte 0x80000090
 _080211C8: .4byte gOamBuffer
