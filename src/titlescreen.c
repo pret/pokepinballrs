@@ -5,7 +5,7 @@
 
 static void sub_114FC(void);
 static void sub_1157C(void);
-/*static*/ extern void sub_11640(void);
+static void sub_11640(void);
 
 // If the user doesn't press any buttons at the title screen,
 // it will transition to a demo gameplay experience.
@@ -656,38 +656,201 @@ static void sub_1157C(void)
     }
 }
 
-// static void sub_11640(void)
-// {
-//     int i;
-//     const struct SpriteSet *spriteSet;
-//     struct SpriteGroup *group1 = &gTitlescreen.unk8[gUnknown_0200B3B8];
-//     struct SpriteGroup *group2 = &gTitlescreen.unk10[gUnknown_0200B3B8];
-//     group1->available = gTitlescreen.unk9;
-//     group2->available = gTitlescreen.unk11;
-//     LoadSpriteSets(gUnknown_086A96E4, 5, gUnknown_0200B3B8);
-//     if (group1->available == 1)
-//     {
-//         group1->baseX = 120;
-//         group1->baseY = 102;
-//         spriteSet = gUnknown_086A96E4[gTitlescreen.unk8];
-//         for (i = 0; i < spriteSet->count; i++)
-//         {
-//             gOamBuffer[group1->oam[i].oamId].x = group1->oam[i].xOffset + group1->baseX;
-//             gOamBuffer[group1->oam[i].oamId].y = group1->oam[i].yOffset + group1->baseY;
-//         }
-//     }
+static void sub_11640(void)
+{
+    int i;
+    const struct SpriteSet *spriteSet;
+    struct SpriteGroup *group1 = &gTitlescreen.unk8[gUnknown_0200B3B8];
+    struct SpriteGroup *group2 = &gTitlescreen.unk10[gUnknown_0200B3B8];
 
-//     if (group2->available == 1)
-//     {
-//         group2->baseX = 120;
-//         group2->baseY = 80;
-//         for (i = 0; i < 2; i++)
-//         {
-//             gOamBuffer[group2->oam[i].oamId].x = group2->oam[i].xOffset + group2->baseX;
-//             gOamBuffer[group2->oam[i].oamId].y = group2->oam[i].yOffset + group2->baseY;
-//         }
-//     }
+    group1->available = gTitlescreen.unk9;
+    group2->available = gTitlescreen.unk11;
 
-//     group1->available = 0;
-//     group2->available = 0;
-// }
+    LoadSpriteSets(gUnknown_086A96E4, 5, gUnknown_0200B3B8);
+
+    if (group1->available == 1)
+    {
+        group1->baseX = 120;
+        group1->baseY = 102;
+        spriteSet = gUnknown_086A96E4[gTitlescreen.unk8];
+        for (i = 0; i < spriteSet->count; i++)
+        {
+            gOamBuffer[group1->oam[i].oamId].x = group1->oam[i].xOffset + group1->baseX;
+            gOamBuffer[group1->oam[i].oamId].y = group1->oam[i].yOffset + group1->baseY;
+
+            asm("");  // needed to match
+        }
+    }
+
+    if (group2->available == 1)
+    {
+        group2->baseX = 120;
+        group2->baseY = 80;
+        for (i = 0; i < 2; i++)
+        {
+            gOamBuffer[group2->oam[i].oamId].x = group2->oam[i].xOffset + group2->baseX;
+            gOamBuffer[group2->oam[i].oamId].y = group2->oam[i].yOffset + group2->baseY;
+
+            asm("");  // needed to match
+        }
+    }
+
+    group1->available = 0;
+    group2->available = 0;
+}
+
+struct UnknownStruct1
+{
+    u16 count;
+    u8 filler2[6];
+};
+
+void sub_1175C(void)
+{
+    struct SpriteGroup *r10;
+    struct SpriteGroup *r9;
+    struct SpriteGroup *r8;
+    const struct UnknownStruct1 *r12;
+    int sp0;
+
+    gMain.blendControl = 0x210;
+    gMain.blendAlpha = 0x808;
+    REG_BLDCNT = gMain.blendControl;
+    REG_BLDALPHA = gMain.blendAlpha;
+
+    r10 = &gMain.spriteGroups[gTitlescreen.unkA];
+    r9 = &gMain.spriteGroups[gTitlescreen.unkC];
+    r8 = &gMain.spriteGroups[gTitlescreen.unkE];
+
+    r10->available = gTitlescreen.unkB;
+    r9->available = gTitlescreen.unkD;
+    r8->available = gTitlescreen.unkF;
+
+    LoadSpriteSets((const struct SpriteSet *const *)gUnknown_0201C190, 7, gMain.spriteGroups);
+
+    if (r10->available == 1)
+    {
+        r10->baseX = 0x78;
+        r10->baseY = 0x66;
+        r12 = (const struct UnknownStruct1 *)gUnknown_0201C190[6];
+        for (sp0 = 0; sp0 < r12->count; sp0++)
+        {
+            struct OamDataSimple *r4 = &r10->oam[sp0];
+            if (r12[sp0 + 1].count == 1)  // dunno. wtf?
+                gOamBuffer[r4->oamId].objMode = 1;
+            else
+                gOamBuffer[r4->oamId].objMode = 0;
+            gOamBuffer[r4->oamId].x = r4->xOffset + r10->baseX;
+            gOamBuffer[r4->oamId].y = r4->yOffset + r10->baseY;
+        }
+    }
+
+    if (r9->available == 1)
+    {
+        struct OamDataSimple *r5;
+
+        r9->baseX = gUnknown_086A9684[gTitlescreen.menuCursorIndex].x;
+        r9->baseY = gUnknown_086A9684[gTitlescreen.menuCursorIndex].y;
+
+        r5 = &r9->oam[0];
+
+        gOamBuffer[r5->oamId].x = r5->xOffset + r9->baseX;
+        gOamBuffer[r5->oamId].y = r5->yOffset + r9->baseY;
+    }
+
+    if (r8->available == 1)
+    {
+        struct OamDataSimple *r5;
+
+        r8->baseX = gUnknown_086A9694[gTitlescreen.menuCursorIndex].x;
+        r8->baseY = gUnknown_086A9694[gTitlescreen.menuCursorIndex].y;
+
+        r5 = &r8->oam[0];
+
+        gOamBuffer[r5->oamId].x = r5->xOffset + r8->baseX;
+        gOamBuffer[r5->oamId].y = r5->yOffset + r8->baseY;
+    }
+
+    r10->available = 0;
+    r9->available = 0;
+    r8->available = 0;
+}
+
+void sub_11968(void)
+{
+    struct SpriteGroup *r10;
+    struct SpriteGroup *r9;
+    struct SpriteGroup *r8;
+    const struct UnknownStruct1 *r12;
+    int sp0;
+
+    gMain.blendControl = 0x210;
+    gMain.blendAlpha = 0x808;
+    REG_BLDCNT = gMain.blendControl;
+    REG_BLDALPHA = gMain.blendAlpha;
+
+    r10 = &gMain.spriteGroups[gTitlescreen.unkA];
+    r9 = &gMain.spriteGroups[gTitlescreen.unkC];
+    r8 = &gMain.spriteGroups[gTitlescreen.unkE];
+
+    r10->available = gTitlescreen.unkB;
+    r9->available = gTitlescreen.unkD;
+    r8->available = gTitlescreen.unkF;
+
+    LoadSpriteSets((const struct SpriteSet *const *)gUnknown_0202BE00, 7, gMain.spriteGroups);
+
+    if (r10->available == 1)
+    {
+        r10->baseX = 0x78;
+        r10->baseY = 0x66;
+        r12 = (const struct UnknownStruct1 *)gUnknown_0202BE00[6];
+        for (sp0 = 0; sp0 < r12->count; sp0++)
+        {
+            struct OamDataSimple *r4 = &r10->oam[sp0];
+            if (r12[sp0 + 1].count == 1)  // dunno. wtf?
+                gOamBuffer[r4->oamId].objMode = 1;
+            else
+                gOamBuffer[r4->oamId].objMode = 0;
+            gOamBuffer[r4->oamId].x = r4->xOffset + r10->baseX;
+            gOamBuffer[r4->oamId].y = r4->yOffset + r10->baseY;
+        }
+    }
+
+    if (r9->available == 1)
+    {
+        struct OamDataSimple *r5;
+
+        r9->baseX = gUnknown_086A96AC[gTitlescreen.menuCursorIndex].x;
+        r9->baseY = gUnknown_086A96AC[gTitlescreen.menuCursorIndex].y;
+
+        r5 = &r9->oam[0];
+
+        gOamBuffer[r5->oamId].x = r5->xOffset + r9->baseX;
+        gOamBuffer[r5->oamId].y = r5->yOffset + r9->baseY;
+    }
+
+    if (r8->available == 1)
+    {
+        struct OamDataSimple *r5;
+
+        r8->baseX = gUnknown_086A96C0[gTitlescreen.menuCursorIndex].x;
+        r8->baseY = gUnknown_086A96C0[gTitlescreen.menuCursorIndex].y;
+
+        r5 = &r8->oam[0];
+
+        gOamBuffer[r5->oamId].x = r5->xOffset + r8->baseX;
+        gOamBuffer[r5->oamId].y = r5->yOffset + r8->baseY;
+    }
+
+    r10->available = 0;
+    r9->available = 0;
+    r8->available = 0;
+}
+
+void sub_11B74(void)
+{
+    sub_52C64();
+    sub_52B30();
+    gMain.unk40 = 0;
+    sub_55654(&gMain.unk40, 0x0E000544 /* Possibly SRAM address */, 4);
+}

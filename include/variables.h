@@ -163,5 +163,9 @@ extern const u16 gTitlescreenSprites_Pals[];
 //extern ? gMonPortraitsGroup11_Pals;
 //extern ? gMonPortraitsGroup12_Pals;
 //extern ? gMonPortraitsGroup13_Pals;
+extern struct Coord16 gUnknown_086A9684[];
+extern struct Coord16 gUnknown_086A9694[];
+extern struct Coord16 gUnknown_086A96AC[];
+extern struct Coord16 gUnknown_086A96C0[];
 
 #endif  // GUARD_VARIABLES_H
