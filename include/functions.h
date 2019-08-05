@@ -777,10 +777,10 @@ extern void sub_1090C(void);
 //extern ? sub_52940();
 extern void sub_52A18(void);
 //extern ? sub_52A68();
-//extern ? sub_52B30();
+extern void sub_52B30(void);
 //extern ? sub_52BB0();
 extern void sub_52C44(void);
-//extern ? sub_52C64();
+extern void sub_52C64(void);
 
 // asm/rom_9BC.s
 
@@ -829,17 +829,5 @@ extern void sub_1F5C(void);
 extern void sub_1175C(void);
 extern void sub_11968(void);
 extern void sub_11B74(void);
-
-// asm/unknown_lib_2.s
-
-extern int sub_55A24(u8*); // Rumble Pak?
-
-// asm/unknown_lib.s
-
-//extern ? sub_554F0();
-//extern ? sub_55530();
-//extern ? sub_55570();
-//extern ? sub_555BC();
-//extern ? sub_55654();
 
 #endif  // GUARD_FUNCTIONS_H

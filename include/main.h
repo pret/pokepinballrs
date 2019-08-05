@@ -38,6 +38,7 @@ struct Main
     /*0x38*/ volatile u16 blendControl;
     /*0x3A*/ volatile u16 blendAlpha;
     /*0x3C*/ volatile u16 blendBrightness;
+             // may be a sub-struct. possibly save data?
     /*0x40*/ int unk40;
     /*0x44*/ u8 filler44[0x4];
     /*0x48*/ int rngValue;

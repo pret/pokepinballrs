@@ -49099,7 +49099,7 @@ sub_4B654: @ 0x0804B654
 	str r1, [r0]
 	ldr r1, _0804B670 @ =0x0E000544
 	ldr r2, _0804B674 @ =0x00001410
-	bl sub_55654
+	bl WriteAndVerifySramFast
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -49119,7 +49119,7 @@ sub_4B678: @ 0x0804B678
 	mov r8, r0
 	cmp r0, #1
 	bne _0804B6B0
-	ldr r3, _0804B6A0 @ =gUnknown_02032FF0
+	ldr r3, _0804B6A0 @ =ReadSramFast
 	ldr r0, _0804B6A4 @ =0x0E000544
 	ldr r1, _0804B6A8 @ =gUnknown_020314E0
 	ldr r1, [r1]
@@ -49128,7 +49128,7 @@ sub_4B678: @ 0x0804B678
 	bl _call_via_r3
 	b _0804B746
 	.align 2, 0
-_0804B6A0: .4byte gUnknown_02032FF0
+_0804B6A0: .4byte ReadSramFast
 _0804B6A4: .4byte 0x0E000544
 _0804B6A8: .4byte gUnknown_020314E0
 _0804B6AC: .4byte 0x00001410
@@ -49779,7 +49779,7 @@ _0804BBCC:
 	ldr r1, _0804BC30 @ =0x0E000544
 	adds r0, r6, #0
 	movs r2, #4
-	bl sub_55654
+	bl WriteAndVerifySramFast
 _0804BC14:
 	pop {r3, r4, r5}
 	mov r8, r3

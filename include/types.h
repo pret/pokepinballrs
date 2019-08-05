@@ -34,4 +34,10 @@ struct SpriteGroup
 };
 // size: 0xB8
 
+struct Coord16
+{
+    u16 x;
+    u16 y;
+};
+
 #endif  // GUARD_TYPES_H

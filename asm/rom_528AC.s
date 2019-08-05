@@ -189,7 +189,7 @@ _08052A14: .4byte gUnknown_08533F60
 	thumb_func_start sub_52A18
 sub_52A18: @ 0x08052A18
 	push {r4, lr}
-	bl sub_555BC
+	bl SetSramFastFunc
 	ldr r4, _08052A4C @ =gMain
 	movs r0, #0
 	strb r0, [r4, #0xc]
@@ -232,7 +232,7 @@ sub_52A68: @ 0x08052A68
 	movs r0, #0
 	mov r8, r0
 	movs r7, #0
-	ldr r1, _08052B04 @ =gUnknown_02032FF0
+	ldr r1, _08052B04 @ =ReadSramFast
 	mov sb, r1
 _08052A7A:
 	ldr r5, _08052B08 @ =gUnknown_0200B134
@@ -309,7 +309,7 @@ _08052AF0:
 	mov r8, r6
 	b _08052B22
 	.align 2, 0
-_08052B04: .4byte gUnknown_02032FF0
+_08052B04: .4byte ReadSramFast
 _08052B08: .4byte gUnknown_0200B134
 _08052B0C: .4byte 0x0E000004
 _08052B10: .4byte gUnknown_086BBA6C
@@ -377,11 +377,11 @@ _08052B6A:
 	lsls r4, r4, #2
 	adds r0, r5, #0
 	adds r2, r4, #0
-	bl sub_55654
+	bl WriteAndVerifySramFast
 	ldr r1, _08052BAC @ =0x0E0002A4
 	adds r0, r5, #0
 	adds r2, r4, #0
-	bl sub_55654
+	bl WriteAndVerifySramFast
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -449,11 +449,11 @@ _08052BFC:
 	lsls r4, r4, #2
 	adds r0, r6, #0
 	adds r2, r4, #0
-	bl sub_55654
+	bl WriteAndVerifySramFast
 	ldr r1, _08052C40 @ =0x0E0002A4
 	adds r0, r6, #0
 	adds r2, r4, #0
-	bl sub_55654
+	bl WriteAndVerifySramFast
 _08052C28:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -468,7 +468,7 @@ _08052C40: .4byte 0x0E0002A4
 	thumb_func_start sub_52C44
 sub_52C44: @ 0x08052C44
 	push {lr}
-	ldr r2, _08052C58 @ =gUnknown_02032FF0
+	ldr r2, _08052C58 @ =ReadSramFast
 	ldr r0, _08052C5C @ =0x0E000544
 	ldr r1, _08052C60 @ =gUnknown_0200B100
 	ldr r3, [r2]
@@ -477,7 +477,7 @@ sub_52C44: @ 0x08052C44
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08052C58: .4byte gUnknown_02032FF0
+_08052C58: .4byte ReadSramFast
 _08052C5C: .4byte 0x0E000544
 _08052C60: .4byte gUnknown_0200B100
 

@@ -186,7 +186,7 @@ void sub_578(void)
 void sub_678(u8 *arg0, s16 arg1, s16 arg2)
 {
     // Rumble Pak related?
-    s16 var0 = sub_55A24(arg0) - 1;
+    s16 var0 = strlen(arg0) - 1;
     u16 *dest = &gUnknown_03005C00[arg1 * 32 + arg2];
     do
     {
