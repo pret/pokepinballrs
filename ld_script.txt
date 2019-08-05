@@ -59,7 +59,7 @@ SECTIONS
         *libgcc.a:_umodsi3.o(.text);
         *libc.a:memcpy.o(.text);
         *libc.a:memset.o(.text);
-        asm/unknown_lib_2.o(.text);
+        *libc.a:strlen.o(.text);
     }=0
 
     .rodata :

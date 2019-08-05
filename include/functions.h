@@ -830,8 +830,4 @@ extern void sub_1175C(void);
 extern void sub_11968(void);
 extern void sub_11B74(void);
 
-// asm/unknown_lib_2.s
-
-extern int sub_55A24(u8*); // Rumble Pak?
-
 #endif  // GUARD_FUNCTIONS_H
