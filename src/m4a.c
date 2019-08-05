@@ -5,20 +5,6 @@ extern const u8 gCgb3Vol[];
 
 #define BSS_CODE __attribute__((section(".bss.code")))
 
-asm(".set gScaleTable, 0x0852D928"); // TODO:
-asm(".set gFreqTable,  0x0852D9DC"); // TODO:
-asm(".set gMPlayTable, 0x08534DD4"); // TODO:
-asm(".set gPokemonCrySongTemplate, 0x0852DB40"); // TODO:
-asm(".set gSongTable,  0x08534E04"); // TODO:
-asm(".set gMaxLines,   0x3C"); // TODO:
-asm(".set gPcmSamplesPerVBlankTable, 0x0852DA0C"); // TODO:
-asm(".set gNoiseTable, 0x0852DAC0"); // TODO:
-asm(".set gCgbScaleTable, 0x0852DA24"); // TODO:
-asm(".set gCgbFreqTable,  0x0852DAA8"); // TODO:
-asm(".set gNumMusicPlayers, 0x4"); // TODO:
-asm(".set gCgb3Vol, 0x0852DAFC");  // TODO:
-asm(".set gXcmdTable, 0x0852DB74");  // TODO:
-
 BSS_CODE ALIGNED(4) char SoundMainRAM_Buffer[0x800] = {0};
 
 struct SoundInfo gSoundInfo;

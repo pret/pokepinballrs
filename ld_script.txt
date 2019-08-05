@@ -17,6 +17,7 @@ SECTIONS
     {
         /* .bss starts at 0x3000000 */
 <BSS>
+        . = 0x7400;
         /* .bss.code starts at 0x3007400 */
         src/m4a.o(.bss.code);
 
@@ -73,3 +74,7 @@ SECTIONS
         *(*);
     }
 }
+
+/* m4a parameters */
+gMaxLines = 0x3C;
+gNumMusicPlayers = 0x4;

@@ -1,161 +1,584 @@
+gUnknown_02000000: @ 0x02000000
 	.space 0x2000
-
 sGbPlayerCurKeys: @ 0x2002000
 	.space 0x2
-
 sGbPlayerPrevKeys: @ 0x2002002
-	.space 0x2
-
-	.space 0x4
-
+	.space 0x6
 gUnknown_02002008: @ 0x2002008
-	.space 0x500
-
-	.space 0x300
-
+	.space 0x800
 gUnknown_02002808: @ 0x2002808
 	.space 0xC
-
-	.space 0x74
-
+gUnknown_02002814: @ 0x02002814
+	.space 0x4
+gUnknown_02002818: @ 0x02002818
+	.space 0x4
+gUnknown_0200281C: @ 0x0200281C
+	.space 0x4
+gUnknown_02002820: @ 0x02002820
+	.space 0x2
+gUnknown_02002822: @ 0x02002822
+	.space 0x2
+gUnknown_02002824: @ 0x02002824
+	.space 0x1
+gUnknown_02002825: @ 0x02002825
+	.space 0x1
+gUnknown_02002826: @ 0x02002826
+	.space 0x1
+gUnknown_02002827: @ 0x02002827
+	.space 0x1
+gUnknown_02002828: @ 0x02002828
+	.space 0x2
+gUnknown_0200282A: @ 0x0200282A
+	.space 0x2
+gUnknown_0200282C: @ 0x0200282C
+	.space 0x1
+gUnknown_0200282D: @ 0x0200282D
+	.space 0x3
+gUnknown_02002830: @ 0x02002830
+	.space 0x1
+gUnknown_02002831: @ 0x02002831
+	.space 0x7
+gUnknown_02002838: @ 0x02002838
+	.space 0x18
+gUnknown_02002850: @ 0x02002850
+	.space 0x8
+gUnknown_02002858: @ 0x02002858
+	.space 0x25
+gUnknown_0200287D: @ 0x0200287D
+	.space 0x3
+gUnknown_02002880: @ 0x02002880
+	.space 0x2
+gUnknown_02002882: @ 0x02002882
+	.space 0x2
+gUnknown_02002884: @ 0x02002884
+	.space 0x1
+gUnknown_02002885: @ 0x02002885
+	.space 0x3
 gTitlescreen: @ 0x2002888
 	.space 0x18
-
 gEraseSaveDataAccessStep: @ 0x20028A0
 	.space 0x1
-
 gEraseSaveDataAccessCounter: @ 0x20028A1
 	.space 0x1
-
 gEReaderAccessStep: @ 0x20028A2
 	.space 0x1
-
 gEReaderAccessCounter: @ 0x20028A3
 	.space 0x1
-
 gUnknown_020028A4: @ 0x20028A4
 	.space 0x1
-
 gUnknown_020028A5: @ 0x20028A5
-	.space 0x1
-
-	.space 0xB2
-
+	.space 0x3
+gUnknown_020028A8: @ 0x020028A8
+	.space 0x2
+gUnknown_020028AA: @ 0x020028AA
+	.space 0x2E
+gUnknown_020028D8: @ 0x020028D8
+	.space 0x48
+gUnknown_02002920: @ 0x02002920
+	.space 0x12
+gUnknown_02002932: @ 0x02002932
+	.space 0x3
+gUnknown_02002935: @ 0x02002935
+	.space 0x5
+gUnknown_0200293A: @ 0x0200293A
+	.space 0x1E
 gUnknown_02002958: @ 0x2002958
-
-	.space 0x708
-
+	.space 0x5E0
+gUnknown_02002F38: @ 0x02002F38
+	.space 0x1
+gUnknown_02002F39: @ 0x02002F39
+	.space 0x9F
+gUnknown_02002FD8: @ 0x02002FD8
+	.space 0x1
+gUnknown_02002FD9: @ 0x02002FD9
+	.space 0x87
 gIntrTable: @ 0x2003060
-	.space 0x38
-
-	.space 0x8028
-
+	.space 0x40
+gUnknown_020030A0: @ 0x020030A0
+	.space 0x8020
 gMain: @ 0x200B0C0
-
-	.space 0x74
-
-gUnknown_0200B134: @ 0x200B134
-
-	.space 0x284
-
-gUnknown_0200B3B8: @ 0x200B3B8
-
-	.space 0x47E0
-
+	.space 0x40
+gUnknown_0200B100: @ 0x0200B100
+	.space 0x34
+gUnknown_0200B134: @ 0x0200B134
+	.space 0x5A
+gUnknown_0200B18E: @ 0x0200B18E
+	.space 0x76
+gUnknown_0200B204: @ 0x0200B204
+	.space 0x14
+gUnknown_0200B218: @ 0x0200B218
+	.space 0x14
+gUnknown_0200B22C: @ 0x0200B22C
+	.space 0x18C
+gUnknown_0200B3B8: @ 0x0200B3B8
+	.space 0xB8
+gUnknown_0200B470: @ 0x0200B470
+	.space 0xB8
+gUnknown_0200B528: @ 0x0200B528
+	.space 0xB8
+gUnknown_0200B5E0: @ 0x0200B5E0
+	.space 0xB8
+gUnknown_0200B698: @ 0x0200B698
+	.space 0xB8
+gUnknown_0200B750: @ 0x0200B750
+	.space 0xB8
+gUnknown_0200B808: @ 0x0200B808
+	.space 0xB8
+gUnknown_0200B8C0: @ 0x0200B8C0
+	.space 0xB8
+gUnknown_0200B978: @ 0x0200B978
+	.space 0xB8
+gUnknown_0200BA30: @ 0x0200BA30
+	.space 0xB8
+gUnknown_0200BAE8: @ 0x0200BAE8
+	.space 0xB8
+gUnknown_0200BBA0: @ 0x0200BBA0
+	.space 0xB8
+gUnknown_0200BC58: @ 0x0200BC58
+	.space 0xB8
+gUnknown_0200BD10: @ 0x0200BD10
+	.space 0xB8
+gUnknown_0200BDC8: @ 0x0200BDC8
+	.space 0xB8
+gUnknown_0200BE80: @ 0x0200BE80
+	.space 0xB8
+gUnknown_0200BF38: @ 0x0200BF38
+	.space 0xB8
+gUnknown_0200BFF0: @ 0x0200BFF0
+	.space 0xB8
+gUnknown_0200C0A8: @ 0x0200C0A8
+	.space 0xB8
+gUnknown_0200C160: @ 0x0200C160
+	.space 0xB8
+gUnknown_0200C218: @ 0x0200C218
+	.space 0xB8
+gUnknown_0200C2D0: @ 0x0200C2D0
+	.space 0xB8
+gUnknown_0200C388: @ 0x0200C388
+	.space 0xB8
+gUnknown_0200C440: @ 0x0200C440
+	.space 0xB8
+gUnknown_0200C4F8: @ 0x0200C4F8
+	.space 0xB8
+gUnknown_0200C5B0: @ 0x0200C5B0
+	.space 0xB8
+gUnknown_0200C668: @ 0x0200C668
+	.space 0x170
+gUnknown_0200C7D8: @ 0x0200C7D8
+	.space 0xB8
+gUnknown_0200C890: @ 0x0200C890
+	.space 0xB8
+gUnknown_0200C948: @ 0x0200C948
+	.space 0xB8
+gUnknown_0200CA00: @ 0x0200CA00
+	.space 0xB8
+gUnknown_0200CAB8: @ 0x0200CAB8
+	.space 0x170
+gUnknown_0200CC28: @ 0x0200CC28
+	.space 0x170
+gUnknown_0200CD98: @ 0x0200CD98
+	.space 0x2E0
+gUnknown_0200D078: @ 0x0200D078
+	.space 0x228
+gUnknown_0200D2A0: @ 0x0200D2A0
+	.space 0x170
+gUnknown_0200D410: @ 0x0200D410
+	.space 0x170
+gUnknown_0200D580: @ 0x0200D580
+	.space 0xB8
+gUnknown_0200D638: @ 0x0200D638
+	.space 0x228
+gUnknown_0200D860: @ 0x0200D860
+	.space 0xB8
+gUnknown_0200D918: @ 0x0200D918
+	.space 0x8
+gUnknown_0200D920: @ 0x0200D920
+	.space 0xB0
+gUnknown_0200D9D0: @ 0x0200D9D0
+	.space 0x2E0
+gUnknown_0200DCB0: @ 0x0200DCB0
+	.space 0xB8
+gUnknown_0200DD68: @ 0x0200DD68
+	.space 0xB8
+gUnknown_0200DE20: @ 0x0200DE20
+	.space 0xB8
+gUnknown_0200DED8: @ 0x0200DED8
+	.space 0xB8
+gUnknown_0200DF90: @ 0x0200DF90
+	.space 0xB8
+gUnknown_0200E048: @ 0x0200E048
+	.space 0xB8
+gUnknown_0200E100: @ 0x0200E100
+	.space 0xB8
+gUnknown_0200E1B8: @ 0x0200E1B8
+	.space 0xB8
+gUnknown_0200E270: @ 0x0200E270
+	.space 0x8
+gUnknown_0200E278: @ 0x0200E278
+	.space 0xB0
+gUnknown_0200E328: @ 0x0200E328
+	.space 0x170
+gUnknown_0200E498: @ 0x0200E498
+	.space 0xB8
+gUnknown_0200E550: @ 0x0200E550
+	.space 0xB8
+gUnknown_0200E608: @ 0x0200E608
+	.space 0xB8
+gUnknown_0200E6C0: @ 0x0200E6C0
+	.space 0x2E0
+gUnknown_0200E9A0: @ 0x0200E9A0
+	.space 0xB8
+gUnknown_0200EA58: @ 0x0200EA58
+	.space 0x170
+gUnknown_0200EBC8: @ 0x0200EBC8
+	.space 0x2E0
+gUnknown_0200EEA8: @ 0x0200EEA8
+	.space 0xCF0
 gUnknown_0200FB98: @ 0x200FB98
 	.space 0x4
-
 gUnknown_0200FB9C: @ 0x200FB9C
 	.space 0x4
-
 gUnknown_0200FBA0: @ 0x200FBA0
-	.space 0x4
-
-	.space 0x802C
-
+	.space 0x10
+gUnknown_0200FBB0: @ 0x0200FBB0
+	.space 0x8020
 gUnknown_02017BD0: @ 0x2017BD0
 	.space 0x4
-
 gUnknown_02017BD4: @ 0x2017BD4
-	.space 0x4
-
-	.space 0x8
-
+	.space 0xC
 gUnknown_02017BE0: @ 0x2017BE0
-	.space 0x4
-
-	.space 0x1FFC
-
+	.space 0x2000
 gUnknown_02019BE0: @ 0x2019BE0
 	.space 0x4
-
 gUnknown_02019BE4: @ 0x2019BE4
 	.space 0x4
-
 gUnknown_02019BE8: @ 0x2019BE8
 	.space 0x4
-
-gUnknown_02019BEC: @ 0x2019BEC
+gUnknown_02019BEC: @ 0x02019BEC
 	.space 0x4
-
-gUnknown_02019BF0: @ 0x2019BF0
+gUnknown_02019BF0: @ 0x02019BF0
 	.space 0x4
-
-gUnknown_02019BF4: @ 0x2019BF4
+gUnknown_02019BF4: @ 0x02019BF4
 	.space 0x4
-
 gUnknown_02019BF8: @ 0x2019BF8
 	.space 0x4
-
 gUnknown_02019BFC: @ 0x2019BFC
 	.space 0x4
-
-gUnknown_02019C00: @ 0x2019C00
+gUnknown_02019C00: @ 0x02019C00
 	.space 0x4
-
 gUnknown_02019C04: @ 0x2019C04
 	.space 0x4
-
 gUnknown_02019C08: @ 0x2019C08
 	.space 0x4
-
 gGameBoyPlayerEnabled: @ 0x2019C0C
 	.space 0x4
-
-gUnknown_02019C10: @ 0x2019C10
+gUnknown_02019C10: @ 0x02019C10
+	.space 0x10
+gUnknown_02019C20: @ 0x02019C20
 	.space 0x4
-
-	.space 0x8A0
-
+gUnknown_02019C24: @ 0x02019C24
+	.space 0x4
+gUnknown_02019C28: @ 0x02019C28
+	.space 0x4
+gUnknown_02019C2C: @ 0x02019C2C
+	.space 0x4
+gUnknown_02019C30: @ 0x02019C30
+	.space 0x10
+gUnknown_02019C40: @ 0x02019C40
+	.space 0x800
+gUnknown_0201A440: @ 0x0201A440
+	.space 0x4
+gUnknown_0201A444: @ 0x0201A444
+	.space 0x4
+gUnknown_0201A448: @ 0x0201A448
+	.space 0x4
+gUnknown_0201A44C: @ 0x0201A44C
+	.space 0x4
+gUnknown_0201A450: @ 0x0201A450
+	.space 0x60
+gUnknown_0201A4B0: @ 0x0201A4B0
+	.space 0x4
 gAutoDisplayTitlescreenMenu: @ 0x201A4B4
 	.space 0x4
-
-	.space 0x1CD8
-
-gUnknown_0201C190: @ 0x201C190
-	.space 0x1C
-
-	.space 0xFC54
-
-gUnknown_0202BE00: @ 0x202BE00
-	.space 0x1C
-
-	.space 0x8
-
-gUnknown_202BE24: @ 0x202BE24
-	.space 4
-
-	.space 0x760
-
-gUnknown_0202C588: @ 0x202C588
-
-	.space 0x4F58
-
-gUnknown_020314E0: @ 0x20314E0
+gUnknown_0201A4B8: @ 0x0201A4B8
 	.space 0x4
-
-	.space 0x3C
-
+gUnknown_0201A4BC: @ 0x0201A4BC
+	.space 0x4
+gUnknown_0201A4C0: @ 0x0201A4C0
+	.space 0x10
+gUnknown_0201A4D0: @ 0x0201A4D0
+	.space 0x20
+gUnknown_0201A4F0: @ 0x0201A4F0
+	.space 0x4
+gUnknown_0201A4F4: @ 0x0201A4F4
+	.space 0x4
+gUnknown_0201A4F8: @ 0x0201A4F8
+	.space 0x8
+gUnknown_0201A500: @ 0x0201A500
+	.space 0x10
+gUnknown_0201A510: @ 0x0201A510
+	.space 0x4
+gUnknown_0201A514: @ 0x0201A514
+	.space 0xC
+gUnknown_0201A520: @ 0x0201A520
+	.space 0x400
+gUnknown_0201A920: @ 0x0201A920
+	.space 0x400
+gUnknown_0201AD20: @ 0x0201AD20
+	.space 0x400
+gUnknown_0201B120: @ 0x0201B120
+	.space 0x4
+gUnknown_0201B124: @ 0x0201B124
+	.space 0x4
+gUnknown_0201B128: @ 0x0201B128
+	.space 0x8
+gUnknown_0201B130: @ 0x0201B130
+	.space 0x40
+gUnknown_0201B170: @ 0x0201B170
+	.space 0x4
+gUnknown_0201B174: @ 0x0201B174
+	.space 0x4
+gUnknown_0201B178: @ 0x0201B178
+	.space 0x8
+gUnknown_0201B180: @ 0x0201B180
+	.space 0x1000
+gUnknown_0201C180: @ 0x0201C180
+	.space 0x4
+gUnknown_0201C184: @ 0x0201C184
+	.space 0x4
+gUnknown_0201C188: @ 0x0201C188
+	.space 0x4
+gUnknown_0201C18C: @ 0x0201C18C
+	.space 0x4
+gUnknown_0201C190: @ 0x0201C190
+	.space 0x1C
+gUnknown_0201C1AC: @ 0x0201C1AC
+	.space 0x4
+gUnknown_0201C1B0: @ 0x0201C1B0
+	.space 0x4
+gUnknown_0201C1B4: @ 0x0201C1B4
+	.space 0x4
+gUnknown_0201C1B8: @ 0x0201C1B8
+	.space 0x4
+gUnknown_0201C1BC: @ 0x0201C1BC
+	.space 0x4
+gUnknown_0201C1C0: @ 0x0201C1C0
+	.space 0xE000
+gUnknown_0202A1C0: @ 0x0202A1C0
+	.space 0x1D0
+gUnknown_0202A390: @ 0x0202A390
+	.space 0x1C4
+gUnknown_0202A554: @ 0x0202A554
+	.space 0x4
+gUnknown_0202A558: @ 0x0202A558
+	.space 0x4
+gUnknown_0202A55C: @ 0x0202A55C
+	.space 0x4
+gUnknown_0202A560: @ 0x0202A560
+	.space 0x4
+gUnknown_0202A564: @ 0x0202A564
+	.space 0x4
+gUnknown_0202A568: @ 0x0202A568
+	.space 0x4
+gUnknown_0202A56C: @ 0x0202A56C
+	.space 0x8
+gUnknown_0202A574: @ 0x0202A574
+	.space 0x4
+gUnknown_0202A578: @ 0x0202A578
+	.space 0x4
+gUnknown_0202A57C: @ 0x0202A57C
+	.space 0x4
+gUnknown_0202A580: @ 0x0202A580
+	.space 0x8
+gUnknown_0202A588: @ 0x0202A588
+	.space 0x4
+gUnknown_0202A58C: @ 0x0202A58C
+	.space 0x4
+gUnknown_0202A590: @ 0x0202A590
+	.space 0x800
+gUnknown_0202AD90: @ 0x0202AD90
+	.space 0x10
+gUnknown_0202ADA0: @ 0x0202ADA0
+	.space 0x30
+gUnknown_0202ADD0: @ 0x0202ADD0
+	.space 0x4
+gUnknown_0202ADD4: @ 0x0202ADD4
+	.space 0x4
+gUnknown_0202ADD8: @ 0x0202ADD8
+	.space 0x4
+gUnknown_0202ADDC: @ 0x0202ADDC
+	.space 0x4
+gUnknown_0202ADE0: @ 0x0202ADE0
+	.space 0x4
+gUnknown_0202ADE4: @ 0x0202ADE4
+	.space 0x4
+gUnknown_0202ADE8: @ 0x0202ADE8
+	.space 0x1008
+gUnknown_0202BDF0: @ 0x0202BDF0
+	.space 0x10
+gUnknown_0202BE00: @ 0x0202BE00
+	.space 0x1C
+gUnknown_0202BE1C: @ 0x0202BE1C
+	.space 0x4
+gUnknown_0202BE20: @ 0x0202BE20
+	.space 0x4
+gUnknown_202BE24: @ 0x202BE24
+	.space 0xC
+gUnknown_0202BE30: @ 0x0202BE30
+	.space 0x40
+gUnknown_0202BE70: @ 0x0202BE70
+	.space 0x40
+gUnknown_0202BEB0: @ 0x0202BEB0
+	.space 0x4
+gUnknown_0202BEB4: @ 0x0202BEB4
+	.space 0x4
+gUnknown_0202BEB8: @ 0x0202BEB8
+	.space 0x4
+gUnknown_0202BEBC: @ 0x0202BEBC
+	.space 0x4
+gUnknown_0202BEC0: @ 0x0202BEC0
+	.space 0x4
+gUnknown_0202BEC4: @ 0x0202BEC4
+	.space 0x4
+gUnknown_0202BEC8: @ 0x0202BEC8
+	.space 0x4
+gUnknown_0202BECC: @ 0x0202BECC
+	.space 0x4
+gUnknown_0202BED0: @ 0x0202BED0
+	.space 0x4
+gUnknown_0202BED4: @ 0x0202BED4
+	.space 0x4
+gUnknown_0202BED8: @ 0x0202BED8
+	.space 0x4
+gUnknown_0202BEDC: @ 0x0202BEDC
+	.space 0x4
+gUnknown_0202BEE0: @ 0x0202BEE0
+	.space 0x4
+gUnknown_0202BEE4: @ 0x0202BEE4
+	.space 0x4
+gUnknown_0202BEE8: @ 0x0202BEE8
+	.space 0x4
+gUnknown_0202BEEC: @ 0x0202BEEC
+	.space 0x4
+gUnknown_0202BEF0: @ 0x0202BEF0
+	.space 0x4
+gUnknown_0202BEF4: @ 0x0202BEF4
+	.space 0x4
+gUnknown_0202BEF8: @ 0x0202BEF8
+	.space 0x4
+gUnknown_0202BEFC: @ 0x0202BEFC
+	.space 0x4
+gUnknown_0202BF00: @ 0x0202BF00
+	.space 0x4
+gUnknown_0202BF04: @ 0x0202BF04
+	.space 0x4
+gUnknown_0202BF08: @ 0x0202BF08
+	.space 0x4
+gUnknown_0202BF0C: @ 0x0202BF0C
+	.space 0x4
+gUnknown_0202BF10: @ 0x0202BF10
+	.space 0x4
+gUnknown_0202BF14: @ 0x0202BF14
+	.space 0xC
+gUnknown_0202BF20: @ 0x0202BF20
+	.space 0x620
+gUnknown_0202C540: @ 0x0202C540
+	.space 0x4
+gUnknown_0202C544: @ 0x0202C544
+	.space 0x4
+gUnknown_0202C548: @ 0x0202C548
+	.space 0x4
+gUnknown_0202C54C: @ 0x0202C54C
+	.space 0x4
+gUnknown_0202C550: @ 0x0202C550
+	.space 0x30
+gUnknown_0202C580: @ 0x0202C580
+	.space 0x4
+gUnknown_0202C584: @ 0x0202C584
+	.space 0x4
+gUnknown_0202C588: @ 0x202C588
+	.space 0x4
+gUnknown_0202C58C: @ 0x0202C58C
+	.space 0x4
+gUnknown_0202C590: @ 0x0202C590
+	.space 0x4
+gUnknown_0202C594: @ 0x0202C594
+	.space 0x4
+gUnknown_0202C598: @ 0x0202C598
+	.space 0x4
+gUnknown_0202C59C: @ 0x0202C59C
+	.space 0x4
+gUnknown_0202C5A0: @ 0x0202C5A0
+	.space 0x4
+gUnknown_0202C5A4: @ 0x0202C5A4
+	.space 0x4
+gUnknown_0202C5A8: @ 0x0202C5A8
+	.space 0x4
+gUnknown_0202C5AC: @ 0x0202C5AC
+	.space 0x4
+gUnknown_0202C5B0: @ 0x0202C5B0
+	.space 0x4
+gUnknown_0202C5B4: @ 0x0202C5B4
+	.space 0xC
+gUnknown_0202C5C0: @ 0x0202C5C0
+	.space 0x20
+gUnknown_0202C5E0: @ 0x0202C5E0
+	.space 0x4
+gUnknown_0202C5E4: @ 0x0202C5E4
+	.space 0x4
+gUnknown_0202C5E8: @ 0x0202C5E8
+	.space 0x8
+gUnknown_0202C5F0: @ 0x0202C5F0
+	.space 0x14
+gUnknown_0202C604: @ 0x0202C604
+	.space 0xC
+gUnknown_0202C610: @ 0x0202C610
+	.space 0x14
+gUnknown_0202C624: @ 0x0202C624
+	.space 0xAC
+gUnknown_0202C6D0: @ 0x0202C6D0
+	.space 0x14
+gUnknown_0202C6E4: @ 0x0202C6E4
+	.space 0xAC
+gUnknown_0202C790: @ 0x0202C790
+	.space 0x4
+gUnknown_0202C794: @ 0x0202C794
+	.space 0xC
+gUnknown_0202C7A0: @ 0x0202C7A0
+	.space 0xFC0
+gUnknown_0202D760: @ 0x0202D760
+	.space 0x120
+gUnknown_0202D880: @ 0x0202D880
+	.space 0x2E40
+gUnknown_020306C0: @ 0x020306C0
+	.space 0x10
+gUnknown_020306D0: @ 0x020306D0
+	.space 0x20
+gUnknown_020306F0: @ 0x020306F0
+	.space 0x20
+gUnknown_02030710: @ 0x02030710
+	.space 0x20
+gUnknown_02030730: @ 0x02030730
+	.space 0x20
+gUnknown_02030750: @ 0x02030750
+	.space 0x10
+gUnknown_02030760: @ 0x02030760
+	.space 0x900
+gUnknown_02031060: @ 0x02031060
+	.space 0x480
+gUnknown_020314E0: @ 0x20314E0
+	.space 0x20
+gUnknown_02031500: @ 0x02031500
+	.space 0x10
+gUnknown_02031510: @ 0x02031510
+	.space 0x10
 gUnknown_02031520: @ 0x2031520
-
-	.space 0x610
+	.space 0x70
+gUnknown_02031590: @ 0x02031590
+	.space 0x40
+gUnknown_020315D0: @ 0x020315D0
+	.space 0x520
+gUnknown_02031AF0: @ 0x02031AF0
+	.space 0x28
+gUnknown_02031B18: @ 0x02031B18
+	.space 0x18

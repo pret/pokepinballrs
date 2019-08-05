@@ -202,7 +202,7 @@ gMonPortraitsGroup11_Gfx:: @ 0x084E4E6C
 	.incbin "graphics/mon_portraits/relicanth_portrait.4bpp"
 	.incbin "graphics/mon_portraits/corsola_portrait.4bpp"
 
-gMonPortraitsGroup12_Gfx:: @ 0x084E7B6C
+gMonPortraitsGroup12_Gfx:: @ 0x084E756C
 	.incbin "graphics/mon_portraits/chinchou_portrait.4bpp"
 	.incbin "graphics/mon_portraits/lanturn_portrait.4bpp"
 	.incbin "graphics/mon_portraits/luvdisc_portrait.4bpp"
@@ -219,7 +219,7 @@ gMonPortraitsGroup12_Gfx:: @ 0x084E7B6C
 	.incbin "graphics/mon_portraits/regice_portrait.4bpp"
 	.incbin "graphics/mon_portraits/registeel_portrait.4bpp"
 
-gMonPortraitsGroup13_Gfx:: @ 0x084EAB6C
+gMonPortraitsGroup13_Gfx:: @ 0x084EA26C
 	.incbin "graphics/mon_portraits/latias_portrait.4bpp"
 	.incbin "graphics/mon_portraits/latios_portrait.4bpp"
 	.incbin "graphics/mon_portraits/kyogre_portrait.4bpp"

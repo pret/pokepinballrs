@@ -1458,7 +1458,7 @@ call_r3:
 	bx r3
 
 	.align 2, 0
-lt_gClockTable:     .word 0x0852DB0C @ gClockTable
+lt_gClockTable:     .word gClockTable
 lt2_SOUND_INFO_PTR: .word SOUND_INFO_PTR
 lt2_ID_NUMBER:      .word ID_NUMBER
 	thumb_func_end MPlayMain
@@ -1547,7 +1547,7 @@ ply_note:
 	ldr r1, =SOUND_INFO_PTR
 	ldr r1, [r1]
 	str r1, [sp, 0x4]
-	ldr r1, =0x0852DB0C @ gClockTable
+	ldr r1, =gClockTable
 	adds r0, r1
 	ldrb r0, [r0]
 	strb r0, [r5, o_MusicPlayerTrack_gateTime]
