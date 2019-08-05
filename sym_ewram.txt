@@ -84,14 +84,10 @@ gUnknown_0200293A: @ 0x0200293A
 	.space 0x1E
 gUnknown_02002958: @ 0x2002958
 	.space 0x5E0
-gUnknown_02002F38: @ 0x02002F38
-	.space 0x1
-gUnknown_02002F39: @ 0x02002F39
-	.space 0x9F
-gUnknown_02002FD8: @ 0x02002FD8
-	.space 0x1
-gUnknown_02002FD9: @ 0x02002FD9
-	.space 0x87
+verifySramFast_Work: @ 0x02002F38
+	.space 0xA0
+readSramFast_Work: @ 0x02002FD8
+	.space 0x88
 gIntrTable: @ 0x2003060
 	.space 0x40
 gUnknown_020030A0: @ 0x020030A0

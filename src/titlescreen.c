@@ -1,6 +1,7 @@
 #include "global.h"
-#include "titlescreen.h"
+#include "agb_sram.h"
 #include "m4a.h"
+#include "titlescreen.h"
 #include "main.h"
 
 static void sub_114FC(void);
@@ -852,5 +853,5 @@ void sub_11B74(void)
     sub_52C64();
     sub_52B30();
     gMain.unk40 = 0;
-    sub_55654(&gMain.unk40, 0x0E000544 /* Possibly SRAM address */, 4);
+    WriteAndVerifySramFast((const u8 *)&gMain.unk40, (void *)0x0E000544, 4);
 }
