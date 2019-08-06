@@ -728,17 +728,17 @@ gUnknown_08079870:: @ 0x08079870
 
 gTitlescreenStateFuncs:: @ 0x08079890
 	.4byte LoadTitlescreenGraphics
-	.4byte sub_10BB8
-	.4byte sub_10CF0
-	.4byte sub_10E00
-	.4byte sub_10EF4
-	.4byte sub_110FC
-	.4byte sub_11320
-	.4byte sub_11020
-	.4byte sub_11228
-	.4byte sub_10D84
-	.4byte sub_11428
-	.4byte sub_114B4
+	.4byte TitleScreen1_WaitForStartButton
+	.4byte TitleScreen2_Unknown
+	.4byte TitleScreen3_Unknown
+	.4byte TitleScreen4_MenuInputNoSavedGame
+	.4byte TitleScreen5_MenuInputSavedGame
+	.4byte TitleScreen6_AnimCloseMenu
+	.4byte TitleScreen7_Unknown
+	.4byte TitleScreen8_Unknown
+	.4byte TitleScreen9_Unknown
+	.4byte TitleScreen10_ExecMenuSelection
+	.4byte TitleScreen11_Unknown
 
 gUnknown_080798C0:: @ 0x080798C0
 	.incbin "baserom.gba", 0x798C0, 0x800
@@ -2758,10 +2758,10 @@ gUnknown_086B0010:: @ 0x086B0010
 	.incbin "baserom.gba", 0x6B0010, 0x118
 
 gUnknown_086B0128:: @ 0x086B0128
-	.incbin "baserom.gba", 0x6B0128, 0x28
+	.ascii "POK^MON_CAUGHT______BONUS_______________"
 
 gUnknown_086B0150:: @ 0x086B0150
-	.incbin "baserom.gba", 0x6B0150, 0x17C
+	.ascii "SUBTOTAL____________POK^MON_EVOLVED_____BONUS_______________SUBTOTAL____________TRAVELED_AREA_______BONUS_______________SUBTOTAL____________SLOT_PLAYED_________BONUS_______________SUBTOTAL____________PIKA_SAVER__________BONUS_______________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________MULTIPLIER__________TOTAL_______________"
 
 gUnknown_086B02CC:: @ 0x086B02CC
 	.incbin "baserom.gba", 0x6B02CC, 0xF0

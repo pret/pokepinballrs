@@ -54,17 +54,17 @@ void sub_940(void);
 void TitlescreenMain(void);
 void LoadTitlescreenGraphics(void);
 void sub_10AC0(void);
-void sub_10BB8(void);
-void sub_10CF0(void);
-void sub_10D84(void);
-void sub_10E00(void);
-void sub_10EF4(void);
-void sub_11020(void);
-void sub_110FC(void);
-void sub_11228(void);
-void sub_11320(void);
-void sub_11428(void);
-void sub_114B4(void);
+void TitleScreen1_WaitForStartButton(void);
+void TitleScreen2_Unknown(void);
+void TitleScreen9_Unknown(void);
+void TitleScreen3_Unknown(void);
+void TitleScreen4_MenuInputNoSavedGame(void);
+void TitleScreen7_Unknown(void);
+void TitleScreen5_MenuInputSavedGame(void);
+void TitleScreen8_Unknown(void);
+void TitleScreen6_AnimCloseMenu(void);
+void TitleScreen10_ExecMenuSelection(void);
+void TitleScreen11_Unknown(void);
 
 // src/util.c
 
