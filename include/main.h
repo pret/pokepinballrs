@@ -80,7 +80,6 @@ extern void (*gUnknown_02017BD0)(void);
 extern void (*gUnknown_02017BD4)(void);
 extern StateFunc gMainFuncs[];
 extern struct OamData gOamBuffer[128];
-extern u16 gUnknown_03005C00[0x600];
 
 void sub_24C(void);
 void sub_2B4(void);

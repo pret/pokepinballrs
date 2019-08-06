@@ -171,12 +171,12 @@ extern void sub_FD5C(void (*func)(void));
 extern void sub_FE04(void (*func)(void));
 //extern ? sub_FEB8();
 //extern ? sub_FF74();
-//extern ? sub_1001C();
+extern void sub_1001C(int);
 //extern ? sub_10170();
 //extern ? sub_102A8();
 //extern ? sub_10424();
 //extern ? sub_10480();
-//extern ? sub_1050C();
+extern void sub_1050C(void);
 //extern ? sub_10528();
 //extern ? sub_10544();
 //extern ? sub_105A0();
@@ -389,7 +389,7 @@ extern void sub_FE04(void (*func)(void));
 // asm/rom_1068C.s
 
 //extern ? sub_1068C();
-extern void sub_10708(void*, void*, u16, s16);
+extern void sub_10708(void *volatile, void *volatile, s16, s16);
 //extern ? sub_10750();
 //extern ? sub_10798();
 //extern ? sub_10860();

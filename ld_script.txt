@@ -40,7 +40,7 @@ SECTIONS
         asm/field_select.o(.text);
         asm/intro.o(.text);
         asm/high_scores.o(.text);
-        asm/rom_1068C.o(.text);
+        src/rom_1068C.o(.text);
         src/titlescreen.o(.text);
         asm/rom_11B9C.o(.text);
         src/rom_3219C.o(.text);
