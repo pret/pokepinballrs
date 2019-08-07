@@ -105,6 +105,8 @@ include graphics_rules.mk
 $(C_BUILDDIR)/rom_850.o: CC1 := tools/agbcc/bin/old_agbcc
 $(C_BUILDDIR)/gbplayer.o: CC1 := tools/agbcc/bin/old_agbcc
 
+#$(C_BUILDDIR)/rom_528AC.o: CC1 := tools/agbcc/bin/old_agbcc
+
 $(C_BUILDDIR)/libc.o: CC1 := tools/agbcc/bin/old_agbcc
 $(C_BUILDDIR)/libc.o: CFLAGS := -O2
 
@@ -122,9 +124,9 @@ $(C_BUILDDIR)/%.o: c_dep :=
 endif
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
-	@$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
-	@$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CFLAGS) -o $(C_BUILDDIR)/$*.s
-	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
+	$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
+	$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CFLAGS) -o $(C_BUILDDIR)/$*.s
+	echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
 	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
 
 ifeq ($(NODEP),)

@@ -162,7 +162,7 @@ void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum);
 //extern ? sub_F434();
 //extern ? sub_F4FC();
 //extern ? sub_F670();
-//extern ? sub_F6E0();
+extern void sub_F6E0(void);
 //extern ? sub_F74C();
 //extern ? sub_F8B0();
 //extern ? sub_FAE8();
@@ -384,7 +384,7 @@ extern void sub_1050C(void);
 //extern ? sub_88E4();
 //extern ? sub_8974();
 //extern ? sub_8A78();
-//extern ? sub_8ABC();
+extern void sub_8ABC(void);
 
 // asm/rom_1068C.s
 

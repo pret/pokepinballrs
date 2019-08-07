@@ -187,7 +187,7 @@ sub_CFD4: @ 0x0800CFD4
 	mov r8, r0
 	ldr r1, _0800D0B4 @ =gUnknown_0202C610
 	mov sl, r1
-	ldr r2, _0800D0B8 @ =gUnknown_0200B134
+	ldr r2, _0800D0B8 @ =gMain+0x74
 	mov sb, r2
 	movs r3, #0
 	mov ip, r3
@@ -296,7 +296,7 @@ _0800D090:
 	.align 2, 0
 _0800D0B0: .4byte gUnknown_02002858
 _0800D0B4: .4byte gUnknown_0202C610
-_0800D0B8: .4byte gUnknown_0200B134
+_0800D0B8: .4byte gMain+0x74
 _0800D0BC: .4byte gUnknown_0202C550
 _0800D0C0: .4byte gUnknown_0201B178
 _0800D0C4: .4byte gUnknown_0202BEBC
@@ -1282,7 +1282,7 @@ _0800D880:
 	cmp r3, #3
 	ble _0800D880
 	movs r3, #0
-	ldr r0, _0800D908 @ =gUnknown_0200B134
+	ldr r0, _0800D908 @ =gMain+0x74
 	mov r8, r0
 	ldr r1, _0800D8F8 @ =gUnknown_0202C610
 	mov ip, r1
@@ -1330,7 +1330,7 @@ _0800D8F8: .4byte gUnknown_0202C610
 _0800D8FC: .4byte gMain
 _0800D900: .4byte gUnknown_02002858
 _0800D904: .4byte gUnknown_0201A500
-_0800D908: .4byte gUnknown_0200B134
+_0800D908: .4byte gMain+0x74
 _0800D90C:
 	movs r0, #0x6a
 	bl m4aSongNumStart
@@ -1735,7 +1735,7 @@ _0800DC3C:
 	ldr r1, _0800DCDC @ =gUnknown_0201B170
 	str r0, [r1]
 	movs r2, #0
-	ldr r3, _0800DCE0 @ =gUnknown_0200B134
+	ldr r3, _0800DCE0 @ =gMain+0x74
 	mov r8, r3
 	ldr r7, _0800DCE4 @ =gUnknown_0202C610
 	mov ip, r7
@@ -1795,7 +1795,7 @@ _0800DCD0: .4byte gUnknown_0201B178
 _0800DCD4: .4byte gUnknown_0202BEBC
 _0800DCD8: .4byte gUnknown_0202BED8
 _0800DCDC: .4byte gUnknown_0201B170
-_0800DCE0: .4byte gUnknown_0200B134
+_0800DCE0: .4byte gMain+0x74
 _0800DCE4: .4byte gUnknown_0202C610
 _0800DCE8: .4byte gMain
 _0800DCEC: .4byte gUnknown_02002858
@@ -5054,7 +5054,7 @@ sub_F6E0: @ 0x0800F6E0
 	movs r0, #0
 	strb r0, [r1]
 	movs r2, #0
-	ldr r0, _0800F744 @ =gUnknown_0200B134
+	ldr r0, _0800F744 @ =gMain+0x74
 	mov r8, r0
 	ldr r3, _0800F748 @ =gUnknown_08079430
 	mov ip, r3
@@ -5099,7 +5099,7 @@ _0800F718:
 	bx r0
 	.align 2, 0
 _0800F740: .4byte gUnknown_0202BEB0
-_0800F744: .4byte gUnknown_0200B134
+_0800F744: .4byte gMain+0x74
 _0800F748: .4byte gUnknown_08079430
 
 	thumb_func_start sub_F74C
@@ -5112,7 +5112,7 @@ sub_F74C: @ 0x0800F74C
 	sub sp, #0x14
 	movs r0, #0
 	mov r8, r0
-	ldr r1, _0800F85C @ =gUnknown_0200B134
+	ldr r1, _0800F85C @ =gMain+0x74
 	str r1, [sp]
 _0800F760:
 	bl Random
@@ -5229,7 +5229,7 @@ _0800F834:
 	bl Random
 	b _0800F872
 	.align 2, 0
-_0800F85C: .4byte gUnknown_0200B134
+_0800F85C: .4byte gMain+0x74
 _0800F860: .4byte gUnknown_0200B218
 _0800F864: .4byte gUnknown_0200B22C
 _0800F868:
@@ -5838,7 +5838,7 @@ _0800FD1C: .4byte 0x00000914
 sub_FD20: @ 0x0800FD20
 	sub sp, #0x19c
 	movs r2, #0
-	ldr r3, _0800FD48 @ =gUnknown_0200B134
+	ldr r3, _0800FD48 @ =gMain+0x74
 	mov r1, sp
 _0800FD28:
 	adds r0, r2, r3
@@ -5858,7 +5858,7 @@ _0800FD3A:
 	movs r0, #0
 	b _0800FD56
 	.align 2, 0
-_0800FD48: .4byte gUnknown_0200B134
+_0800FD48: .4byte gMain+0x74
 _0800FD4C:
 	adds r1, #2
 	adds r2, #1

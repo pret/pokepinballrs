@@ -3113,7 +3113,9 @@ gUnknown_086BB9B4:: @ 0x086BB9B4
 gUnknown_086BB9EC:: @ 0x086BB9EC
 	.incbin "baserom.gba", 0x6BB9EC, 0x80
 
-gUnknown_086BBA6C:: @ 0x086BBA6C
-	.incbin "baserom.gba", 0x6BBA6C, 0x6BBFD0 - 0x6BBA6C
+gSaveFileSignature:: @ 0x086BBA6C
+	.ascii "POKEPINAGB"
+
+	.incbin "baserom.gba", 0x6BBA6C + 0xA, 0x6BBFD0 - 0x6BBA6C
 
 @ rom end 0x6BBFD0

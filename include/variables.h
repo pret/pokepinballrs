@@ -26,7 +26,7 @@ extern u8 gUnknown_02002808[];
 //extern ? gUnknown_02002958;
 //extern ? gIntrTable;
 //extern ? gMain;
-//extern ? gUnknown_0200B134;
+//extern ? gMain+0x74;
 //extern ? gUnknown_0200B3B8;
 //extern ? gUnknown_0200FB98;
 //extern ? gUnknown_0200FB9C;

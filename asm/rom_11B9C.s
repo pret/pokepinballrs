@@ -14703,7 +14703,7 @@ _0801915E:
 	bl m4aSongNumStart
 _08019164:
 	ldr r3, _08019188 @ =gUnknown_02031520
-	ldr r1, _0801918C @ =gUnknown_0200B134
+	ldr r1, _0801918C @ =gMain+0x74
 	movs r0, #0xcd
 	adds r0, r0, r1
 	mov ip, r0
@@ -14721,7 +14721,7 @@ _08019164:
 	bx r0
 	.align 2, 0
 _08019188: .4byte gUnknown_02031520
-_0801918C: .4byte gUnknown_0200B134
+_0801918C: .4byte gMain+0x74
 
 	thumb_func_start sub_19190
 sub_19190: @ 0x08019190
@@ -21912,7 +21912,7 @@ _0801CB24:
 	mov sl, r0
 	cmp r1, #0
 	ble _0801CBEC
-	ldr r0, _0801CB6C @ =gUnknown_0200B134
+	ldr r0, _0801CB6C @ =gMain+0x74
 	ldr r5, _0801CB70 @ =0x0000059A
 	adds r1, r4, r5
 	ldrh r3, [r1]
@@ -21936,7 +21936,7 @@ _0801CB24:
 	b _0801CC0C
 	.align 2, 0
 _0801CB68: .4byte gUnknown_020314E0
-_0801CB6C: .4byte gUnknown_0200B134
+_0801CB6C: .4byte gMain+0x74
 _0801CB70: .4byte 0x0000059A
 _0801CB74: .4byte 0x00000749
 _0801CB78: .4byte 0x040000D4
@@ -63901,7 +63901,7 @@ _08031F96:
 	movs r2, #0
 	lsls r1, r1, #4
 	str r1, [sp]
-	ldr r5, _08031FE8 @ =gUnknown_0200B134
+	ldr r5, _08031FE8 @ =gMain+0x74
 	mov r8, r5
 	mov sl, r4
 _08031FA2:
@@ -63939,7 +63939,7 @@ _08031FA2:
 	.align 2, 0
 _08031FE0: .4byte gUnknown_020314E0
 _08031FE4: .4byte 0x0000073D
-_08031FE8: .4byte gUnknown_0200B134
+_08031FE8: .4byte gMain+0x74
 _08031FEC: .4byte gWildMonLocations
 _08031FF0:
 	cmp r0, #0x86
@@ -64004,7 +64004,7 @@ _0803204C:
 	b _08032138
 _0803205E:
 	ldr r4, _080320A0 @ =gUnknown_086AE5E0
-	ldr r3, _080320A4 @ =gUnknown_0200B134
+	ldr r3, _080320A4 @ =gMain+0x74
 	adds r0, r3, #0
 	adds r0, #0xaf
 	ldrb r1, [r0]
@@ -64038,7 +64038,7 @@ _08032086:
 	b _0803213A
 	.align 2, 0
 _080320A0: .4byte gUnknown_086AE5E0
-_080320A4: .4byte gUnknown_0200B134
+_080320A4: .4byte gMain+0x74
 _080320A8:
 	ldr r0, _0803218C @ =gUnknown_086AE5E0
 	lsls r1, r6, #0x10

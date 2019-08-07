@@ -179,7 +179,7 @@ sub_2710: @ 0x08002710
 	ldr r0, _0800275C @ =gUnknown_0202BEE4
 	strb r1, [r0]
 	ldr r1, _08002760 @ =gUnknown_0201A4C0
-	ldr r0, _08002764 @ =gUnknown_0200B134
+	ldr r0, _08002764 @ =gMain+0x74
 	adds r0, #0xce
 	ldrb r0, [r0]
 	strb r0, [r1]
@@ -194,7 +194,7 @@ _08002754: .4byte gUnknown_0201A4F4
 _08002758: .4byte gUnknown_0201A4B0
 _0800275C: .4byte gUnknown_0202BEE4
 _08002760: .4byte gUnknown_0201A4C0
-_08002764: .4byte gUnknown_0200B134
+_08002764: .4byte gMain+0x74
 
 	thumb_func_start sub_2768
 sub_2768: @ 0x08002768
