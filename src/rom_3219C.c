@@ -43,31 +43,31 @@ void sub_3219C(void)
         {
             s16 numSpecialMons = 0;
             gUnknown_020314E0->catchModeSpecies = 0;
-            if (gUnknown_0200B134[SPECIES_AERODACTYL])
+            if (gMain+0x74[SPECIES_AERODACTYL])
             {
                 specialMons[numSpecialMons++] = SPECIES_AERODACTYL;
-                if (gUnknown_0200B134[SPECIES_AERODACTYL] < 4)
+                if (gMain+0x74[SPECIES_AERODACTYL] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_AERODACTYL;
             }
 
-            if (gUnknown_0200B134[SPECIES_CHIKORITA])
+            if (gMain+0x74[SPECIES_CHIKORITA])
             {
                 specialMons[numSpecialMons++] = SPECIES_CHIKORITA;
-                if (gUnknown_0200B134[SPECIES_CHIKORITA] < 4)
+                if (gMain+0x74[SPECIES_CHIKORITA] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_CHIKORITA;
             }
 
-            if (gUnknown_0200B134[SPECIES_TOTODILE])
+            if (gMain+0x74[SPECIES_TOTODILE])
             {
                 specialMons[numSpecialMons++] = SPECIES_TOTODILE;
-                if (gUnknown_0200B134[SPECIES_TOTODILE] < 4)
+                if (gMain+0x74[SPECIES_TOTODILE] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_TOTODILE;
             }
 
-            if (gUnknown_0200B134[SPECIES_CYNDAQUIL])
+            if (gMain+0x74[SPECIES_CYNDAQUIL])
             {
                 specialMons[numSpecialMons++] = SPECIES_CYNDAQUIL;
-                if (gUnknown_0200B134[SPECIES_CYNDAQUIL] < 4)
+                if (gMain+0x74[SPECIES_CYNDAQUIL] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_CYNDAQUIL;
             }
 

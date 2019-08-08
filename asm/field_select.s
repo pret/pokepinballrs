@@ -175,7 +175,7 @@ sub_8C38: @ 0x08008C38
 	strh r1, [r2, #0x16]
 	strh r1, [r2, #0x12]
 	strb r3, [r2, #0x14]
-	ldr r0, _08008C74 @ =gUnknown_0200B134
+	ldr r0, _08008C74 @ =gMain+0x74
 	adds r1, r0, #0
 	adds r1, #0xce
 	ldrb r1, [r1]
@@ -187,7 +187,7 @@ sub_8C38: @ 0x08008C38
 	bx lr
 	.align 2, 0
 _08008C70: .4byte gUnknown_02002838
-_08008C74: .4byte gUnknown_0200B134
+_08008C74: .4byte gMain+0x74
 _08008C78: .4byte gUnknown_02002850
 
 	thumb_func_start sub_8C7C

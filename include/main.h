@@ -3,6 +3,20 @@
 
 #include "global.h"
 
+// This is probably permanently saved data like pokedex and high scores.
+struct SaveData
+{
+    /*0x74*/ u8 pokedexFlags[204];
+    /*0x140*/ u8 filler140[1];
+    /*0x141*/ u8 unk141;
+    /*0x142*/ u8 unk142;
+    /*0x143*/ u8 unk143;
+    /*0x144*/ u8 filler144[0x2D8-0x144];
+              s8 signature[10];
+              u16 unk2E2;
+              u32 unk2E4;
+};
+
 struct Main
 {
     /*0x00*/ u8 filler0[0x2];
@@ -12,7 +26,8 @@ struct Main
     /*0x05*/ u8 filler5[0x2];
     /*0x07*/ s8 unk7;
     /*0x08*/ s8 unk8;
-    /*0x09*/ u8 filler9[0x4];
+    /*0x09*/ u8 filler9[0x3];
+    /*0x0C*/ u8 unkC;
     /*0x0D*/ u8 unkD;
     /*0x0E*/ u8 fillerE[0x1];
     /*0x0F*/ u8 unkF;
@@ -38,15 +53,14 @@ struct Main
     /*0x38*/ volatile u16 blendControl;
     /*0x3A*/ volatile u16 blendAlpha;
     /*0x3C*/ volatile u16 blendBrightness;
-             // may be a sub-struct. possibly save data?
-    /*0x40*/ int unk40;
+             // may be a sub-struct. possibly for saved game?
+    /*0x40*/ int hasSavedGame;
     /*0x44*/ u8 filler44[0x4];
     /*0x48*/ int rngValue;
     /*0x4C*/ int unk4C;
     /*0x50*/ int unk50;
     /*0x54*/ u8 filler54[0x20];
-    /*0x74*/ u8 pokedexFlags[204];
-    /*0x140*/ u8 filler140[0x1A8];
+    /*0x74*/  struct SaveData saveData;
     /*0x2E8*/ struct MainUnk2E8 unk2E8[4];
     /*0x2F8*/ struct SpriteGroup spriteGroups[NUM_SPRITE_GROUPS];
 };
@@ -80,7 +94,6 @@ extern void (*gUnknown_02017BD0)(void);
 extern void (*gUnknown_02017BD4)(void);
 extern StateFunc gMainFuncs[];
 extern struct OamData gOamBuffer[128];
-extern u16 gUnknown_03005C00[0x600];
 
 void sub_24C(void);
 void sub_2B4(void);

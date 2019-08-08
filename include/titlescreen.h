@@ -5,7 +5,7 @@ struct TitlescreenStruct
 {
     /*0x00*/ s8 menuCursorIndex;
     /*0x02*/ s16 unk2;
-    /*0x04*/ s16 unk4;
+    /*0x04*/ s16 animTimer;
     /*0x06*/ s8 unk6;
     /*0x07*/ u8 unk7;
     /*0x08*/ s8 unk8;

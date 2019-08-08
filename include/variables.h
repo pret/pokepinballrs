@@ -3,10 +3,14 @@
 
 // Place all external variable declarations in this file
 
+extern u16 gUnknown_0201A520[];
+extern u16 gUnknown_0201AD20[];
+extern u32 gUnknown_0201A500[];
+extern u16 gUnknown_0201A920[];
 extern u8 gUnknown_03000000[];
 //extern ? gOamBuffer;
 //extern ? IntrMain_Buffer;
-//extern ? gUnknown_03005C00;
+extern u16 gUnknown_03005C00[0x600];
 //extern ? SoundMainRAM_Buffer;
 extern u16 sGbPlayerCurKeys;
 extern u16 sGbPlayerPrevKeys;
@@ -22,7 +26,7 @@ extern u8 gUnknown_02002808[];
 //extern ? gUnknown_02002958;
 //extern ? gIntrTable;
 //extern ? gMain;
-//extern ? gUnknown_0200B134;
+//extern ? gMain+0x74;
 //extern ? gUnknown_0200B3B8;
 //extern ? gUnknown_0200FB98;
 //extern ? gUnknown_0200FB9C;

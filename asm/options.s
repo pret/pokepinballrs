@@ -196,7 +196,7 @@ sub_513B8: @ 0x080513B8
 	strh r0, [r4, #6]
 	strh r1, [r4, #8]
 	strh r1, [r4, #0xa]
-	ldr r0, _0805146C @ =gUnknown_0200B134
+	ldr r0, _0805146C @ =gMain+0x74
 	adds r0, #0xcf
 	ldrb r0, [r0]
 	strh r0, [r4, #0xc]
@@ -263,7 +263,7 @@ _08051432:
 	cmp r4, #1
 	bne _0805147C
 	ldr r3, _08051468 @ =gUnknown_02002920
-	ldr r0, _0805146C @ =gUnknown_0200B134
+	ldr r0, _0805146C @ =gMain+0x74
 	adds r0, #0xcd
 	ldrb r1, [r0]
 	adds r2, r3, #0
@@ -274,7 +274,7 @@ _08051432:
 	b _0805148C
 	.align 2, 0
 _08051468: .4byte gUnknown_02002920
-_0805146C: .4byte gUnknown_0200B134
+_0805146C: .4byte gMain+0x74
 _08051470: .4byte gUnknown_02031AF0
 _08051474: .4byte gUnknown_08527ED6
 _08051478: .4byte gGameBoyPlayerEnabled
@@ -284,7 +284,7 @@ _0805147C:
 	adds r0, #0x2a
 	movs r1, #0
 	strb r1, [r0]
-	ldr r0, _080514B4 @ =gUnknown_0200B134
+	ldr r0, _080514B4 @ =gMain+0x74
 	adds r0, #0xcd
 	strb r1, [r0]
 _0805148C:
@@ -307,7 +307,7 @@ _0805148C:
 	bx r0
 	.align 2, 0
 _080514B0: .4byte gUnknown_02002920
-_080514B4: .4byte gUnknown_0200B134
+_080514B4: .4byte gMain+0x74
 
 	thumb_func_start sub_514B8
 sub_514B8: @ 0x080514B8
@@ -550,13 +550,13 @@ _080516B0:
 	ldrh r1, [r0, #0xa]
 	subs r1, #2
 	strh r1, [r0, #0xc]
-	ldr r0, _080516CC @ =gUnknown_0200B134
+	ldr r0, _080516CC @ =gMain+0x74
 	adds r0, #0xcf
 	strb r1, [r0]
 	b _08051A96
 	.align 2, 0
 _080516C8: .4byte gUnknown_02002920
-_080516CC: .4byte gUnknown_0200B134
+_080516CC: .4byte gMain+0x74
 _080516D0:
 	movs r0, #0x65
 	bl m4aSongNumStart
@@ -564,7 +564,7 @@ _080516D0:
 	ldrh r1, [r2, #0xa]
 	subs r1, #2
 	strh r1, [r2, #0xc]
-	ldr r0, _080516F4 @ =gUnknown_0200B134
+	ldr r0, _080516F4 @ =gMain+0x74
 	adds r0, #0xcf
 	strb r1, [r0]
 	movs r0, #7
@@ -574,7 +574,7 @@ _080516D0:
 	b _08051A96
 	.align 2, 0
 _080516F0: .4byte gUnknown_02002920
-_080516F4: .4byte gUnknown_0200B134
+_080516F4: .4byte gMain+0x74
 _080516F8:
 	ldr r0, _08051730 @ =gGameBoyPlayerEnabled
 	ldr r0, [r0]
@@ -1125,7 +1125,7 @@ _08051B0E:
 	adds r0, r0, r2
 	ldrh r1, [r4, #0x26]
 	strb r1, [r0]
-	ldr r2, _08051C04 @ =gUnknown_0200B134
+	ldr r2, _08051C04 @ =gMain+0x74
 	movs r0, #0xa
 	ldrsh r1, [r4, r0]
 	subs r1, #7
@@ -1216,7 +1216,7 @@ _08051BF4: .4byte gUnknown_02002920
 _08051BF8: .4byte gMain
 _08051BFC: .4byte 0x000003F7
 _08051C00: .4byte gUnknown_02031AF0
-_08051C04: .4byte gUnknown_0200B134
+_08051C04: .4byte gMain+0x74
 _08051C08: .4byte gUnknown_086BB910
 _08051C0C: .4byte gUnknown_086BB9B4
 _08051C10:
@@ -1264,7 +1264,7 @@ _08051C5C: .4byte gMain
 	thumb_func_start sub_51C60
 sub_51C60: @ 0x08051C60
 	push {lr}
-	ldr r1, _08051C90 @ =gUnknown_0200B134
+	ldr r1, _08051C90 @ =gMain+0x74
 	ldr r0, _08051C94 @ =gUnknown_02002920
 	adds r0, #0x2a
 	ldrb r0, [r0]
@@ -1282,7 +1282,7 @@ sub_51C60: @ 0x08051C60
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08051C90: .4byte gUnknown_0200B134
+_08051C90: .4byte gMain+0x74
 _08051C94: .4byte gUnknown_02002920
 _08051C98: .4byte gAutoDisplayTitlescreenMenu
 

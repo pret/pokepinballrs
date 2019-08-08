@@ -1674,7 +1674,7 @@ _08004C16:
 	cmp r2, #0
 	bge _08004C16
 	movs r2, #0
-	ldr r4, _08004C74 @ =gUnknown_0200B134
+	ldr r4, _08004C74 @ =gMain+0x74
 	ldr r3, _08004C70 @ =gUnknown_0202A1C0
 _08004C2A:
 	adds r1, r2, r4
@@ -1706,7 +1706,7 @@ _08004C64: .4byte gUnknown_0202BF04
 _08004C68: .4byte gUnknown_0202A588
 _08004C6C: .4byte gUnknown_0202A390
 _08004C70: .4byte gUnknown_0202A1C0
-_08004C74: .4byte gUnknown_0200B134
+_08004C74: .4byte gMain+0x74
 _08004C78: .4byte gMain
 _08004C7C: .4byte gUnknown_0201B120
 
@@ -1742,7 +1742,7 @@ _08004CA4:
 	ldr r7, _08004D0C @ =gUnknown_0202BF04
 	ldr r0, _08004D10 @ =gUnknown_0202A588
 	mov ip, r0
-	ldr r4, _08004D14 @ =gUnknown_0200B134
+	ldr r4, _08004D14 @ =gMain+0x74
 	ldr r3, _08004CFC @ =gUnknown_0202A1C0
 _08004CC2:
 	adds r1, r2, r4
@@ -1776,7 +1776,7 @@ _08004D04: .4byte gUnknown_0202BEC4
 _08004D08: .4byte gUnknown_0202BEFC
 _08004D0C: .4byte gUnknown_0202BF04
 _08004D10: .4byte gUnknown_0202A588
-_08004D14: .4byte gUnknown_0200B134
+_08004D14: .4byte gMain+0x74
 _08004D18:
 	movs r0, #2
 	ands r0, r1
@@ -9236,7 +9236,7 @@ sub_88E4: @ 0x080088E4
 	ldr r6, _08008934 @ =gUnknown_0202A1C0
 	ldr r5, _08008938 @ =gUnknown_0201A514
 	ldr r4, _0800893C @ =gUnknown_0202BEB8
-	ldr r3, _08008940 @ =gUnknown_0200B134
+	ldr r3, _08008940 @ =gMain+0x74
 	adds r1, r6, #0
 _080088F2:
 	adds r0, r2, r3
@@ -9278,7 +9278,7 @@ _0800891E:
 _08008934: .4byte gUnknown_0202A1C0
 _08008938: .4byte gUnknown_0201A514
 _0800893C: .4byte gUnknown_0202BEB8
-_08008940: .4byte gUnknown_0200B134
+_08008940: .4byte gMain+0x74
 _08008944: .4byte _08008948
 _08008948: @ jump table
 	.4byte _08008968 @ case 0
@@ -9458,7 +9458,7 @@ _08008AB8: .4byte gUnknown_0202A588
 
 	thumb_func_start sub_8ABC
 sub_8ABC: @ 0x08008ABC
-	ldr r1, _08008AD0 @ =gUnknown_0200B134
+	ldr r1, _08008AD0 @ =gMain+0x74
 	movs r2, #0
 	adds r0, r1, #0
 	adds r0, #0xcc
@@ -9469,4 +9469,4 @@ _08008AC4:
 	bge _08008AC4
 	bx lr
 	.align 2, 0
-_08008AD0: .4byte gUnknown_0200B134
+_08008AD0: .4byte gMain+0x74

@@ -12,6 +12,15 @@ static void sub_11640(void);
 // it will transition to a demo gameplay experience.
 #define NUM_IDLE_FRAMES 1800
 
+enum
+{
+    SUBSTATE_LOAD_GRAPHICS = 0,
+    SUBSTATE_WAIT_FOR_START_BUTTON = 1,
+    SUBSTATE_MENU_INPUT_NO_SAVED_GAME = 4,
+    SUBSTATE_MENU_INPUT_SAVED_GAME = 5,
+    SUBSTATE_ANIM_CLOSE_MENU = 6,
+    SUBSTATE_EXEC_MENU_SELECTION = 10
+};
 
 void TitlescreenMain(void)
 {
@@ -33,7 +42,7 @@ void LoadTitlescreenGraphics(void)
     DmaCopy16(3, gTitlescreenBgTilemap, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 
     sub_52C44();
-    if (gMain.unk40 == 1)
+    if (gMain.hasSavedGame == TRUE)
     {
         DmaCopy16(3, gTitlescreenSprites_Pals, (void *)OBJ_PLTT, 0xA0);
         DmaCopy16(3, gTitlescreenSpritesSavedGame_Gfx, (void *)BG_CHAR_ADDR(4), 0x7000);
@@ -62,7 +71,7 @@ void LoadTitlescreenGraphics(void)
     }
     else
     {
-        gMain.subState = 1;
+        gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
         sub_CBC();
         sub_FD5C(sub_11640);
     }
@@ -74,7 +83,7 @@ void sub_10AC0(void)
 {
     int i;
 
-    gTitlescreen.unk4 = 0;
+    gTitlescreen.animTimer = 0;
     gTitlescreen.unk2 = 0;
     gTitlescreen.unk6 = 0;
     gTitlescreen.unk8 = 0;
@@ -93,7 +102,7 @@ void sub_10AC0(void)
     gEReaderAccessStep = 0;
     gEReaderAccessCounter = 0;
 
-    if (gMain.unk40 == 1)
+    if (gMain.hasSavedGame == TRUE)
     {
         for (i = 0; i < 7; i++)
             gUnknown_0202BE00[i] = gUnknown_086A975C[i];
@@ -123,7 +132,7 @@ void sub_10AC0(void)
     gUnknown_202BE24 = 0;
 }
 
-void sub_10BB8(void)
+void TitleScreen1_WaitForStartButton(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -142,10 +151,10 @@ void sub_10BB8(void)
 
     if (!gUnknown_020028A4)
     {
-        gTitlescreen.unk4++;
-        if (gTitlescreen.unk4 >= gUnknown_086A9662[gTitlescreen.unk8])
+        gTitlescreen.animTimer++;
+        if (gTitlescreen.animTimer >= gUnknown_086A9662[gTitlescreen.unk8])
         {
-            gTitlescreen.unk4 = 0;
+            gTitlescreen.animTimer = 0;
             if (++gTitlescreen.unk8 > 3)
                 gTitlescreen.unk8 = 0;
         }
@@ -156,7 +165,7 @@ void sub_10BB8(void)
         if (gMain.newKeys & (A_BUTTON | START_BUTTON))
         {
             m4aSongNumStart(0x65);
-            gTitlescreen.unk4 = 0;
+            gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 0;
             gMain.subState = 2;
         }
@@ -185,7 +194,7 @@ void sub_10BB8(void)
     sub_11640();
 }
 
-void sub_10CF0(void)
+void TitleScreen2_Unknown(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -197,10 +206,10 @@ void sub_10CF0(void)
 
     if (!gUnknown_020028A4)
     {
-        gTitlescreen.unk4++;
-        if (gTitlescreen.unk4 >= gUnknown_086A9666[gTitlescreen.unk2][1])
+        gTitlescreen.animTimer++;
+        if (gTitlescreen.animTimer >= gUnknown_086A9666[gTitlescreen.unk2][1])
         {
-            gTitlescreen.unk4 = 0;
+            gTitlescreen.animTimer = 0;
             gTitlescreen.unk8 = gUnknown_086A9666[gTitlescreen.unk2][0];
             if (++gTitlescreen.unk2 > 5)
             {
@@ -216,14 +225,14 @@ void sub_10CF0(void)
     sub_11640();
 }
 
-void sub_10D84(void)
+void TitleScreen9_Unknown(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
-        gMain.subState = 10;
+        gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
     }
 
     if (!gUnknown_020028A4)
@@ -235,20 +244,20 @@ void sub_10D84(void)
             sub_2B4();
             m4aMPlayAllStop();
             sub_D10();
-            gMain.subState = 0;
+            gMain.subState = SUBSTATE_LOAD_GRAPHICS;
         }
         else if (gMain.newKeys & B_BUTTON)
         {
             m4aSongNumStart(0x66);
             gTitlescreen.unk11 = 0;
-            gMain.subState = 1;
+            gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
         }
     }
 
     sub_11640();
 }
 
-void sub_10E00(void)
+void TitleScreen3_Unknown(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -262,17 +271,17 @@ void sub_10E00(void)
     {
         if (!gTitlescreen.unk7)
         {
-            gTitlescreen.unk4++;
-            if (gTitlescreen.unk4 >= gUnknown_086A9748[gTitlescreen.unk2])
+            gTitlescreen.animTimer++;
+            if (gTitlescreen.animTimer >= gUnknown_086A9748[gTitlescreen.unk2])
             {
-                gTitlescreen.unk4 = 0;
+                gTitlescreen.animTimer = 0;
                 gUnknown_0201C190[6] = gUnknown_086A9714[gTitlescreen.unk2];
                 if (++gTitlescreen.unk2 > 11)
                 {
                     gTitlescreen.unk2 = 0;
                     gTitlescreen.unkD = 1;
                     gTitlescreen.unkF = 1;
-                    gMain.subState = 4;
+                    gMain.subState = SUBSTATE_MENU_INPUT_NO_SAVED_GAME;
                 }
             }
 
@@ -280,17 +289,17 @@ void sub_10E00(void)
         }
         else
         {
-            gTitlescreen.unk4++;
-            if (gTitlescreen.unk4 >= gUnknown_086A9748[gTitlescreen.unk2])
+            gTitlescreen.animTimer++;
+            if (gTitlescreen.animTimer >= gUnknown_086A9748[gTitlescreen.unk2])
             {
-                gTitlescreen.unk4 = 0;
+                gTitlescreen.animTimer = 0;
                 gUnknown_0202BE00[6] = gUnknown_086A9778[gTitlescreen.unk2];
                 if (++gTitlescreen.unk2 > 11)
                 {
                     gTitlescreen.unk2 = 0;
                     gTitlescreen.unkD = 1;
                     gTitlescreen.unkF = 1;
-                    gMain.subState = 5;
+                    gMain.subState = SUBSTATE_MENU_INPUT_SAVED_GAME;
                 }
             }
 
@@ -299,22 +308,22 @@ void sub_10E00(void)
     }
 }
 
-void sub_10EF4(void)
+void TitleScreen4_MenuInputNoSavedGame(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
-        gMain.subState = 10;
+        gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
     }
 
     if (!gUnknown_020028A4)
     {
-        gTitlescreen.unk4++;
-        if (gTitlescreen.unk4 >= gUnknown_086A9672[gTitlescreen.unk2][1])
+        gTitlescreen.animTimer++;
+        if (gTitlescreen.animTimer >= gUnknown_086A9672[gTitlescreen.unk2][1])
         {
-            gTitlescreen.unk4 = 0;
+            gTitlescreen.animTimer = 0;
             if (++gTitlescreen.unk2 > 6)
                 gTitlescreen.unk2 = 0;
 
@@ -338,18 +347,18 @@ void sub_10EF4(void)
         if (gMain.newKeys & (A_BUTTON | START_BUTTON))
         {
             m4aSongNumStart(0x65);
-            gTitlescreen.unk4 = 0;
+            gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 0;
             gMain.subState = 7;
         }
         else if (gMain.newKeys & B_BUTTON)
         {
             m4aSongNumStart(0x66);
-            gTitlescreen.unk4 = 0;
+            gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 12;
             gTitlescreen.unkD = 0;
             gTitlescreen.unkF = 0;
-            gMain.subState = 6;
+            gMain.subState = SUBSTATE_ANIM_CLOSE_MENU;
         }
 
         sub_1157C();
@@ -358,7 +367,7 @@ void sub_10EF4(void)
     sub_1175C();
 }
 
-void sub_11020(void)
+void TitleScreen7_Unknown(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -370,9 +379,9 @@ void sub_11020(void)
 
     if (!gUnknown_020028A4)
     {
-        u16 unk4 = gTitlescreen.unk4;
+        u16 animTimer = gTitlescreen.animTimer;
         u16 mask = 0x3;
-        if (!(unk4 & mask))
+        if (!(animTimer & mask))
         {
             if (!gTitlescreen.unk2)
             {
@@ -387,35 +396,35 @@ void sub_11020(void)
             }
         }
 
-        if (gTitlescreen.unk4 > 20)
+        if (gTitlescreen.animTimer > 20)
         {
             gMain.unkD = 0;
             gTitlescreen.unk6 = gUnknown_086A96A4[gTitlescreen.menuCursorIndex];
-            gMain.subState = 10;
+            gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
         }
 
-        gTitlescreen.unk4++;
+        gTitlescreen.animTimer++;
     }
 
     sub_1175C();
 }
 
-void sub_110FC(void)
+void TitleScreen5_MenuInputSavedGame(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
-        gMain.subState = 10;
+        gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
     }
 
     if (!gUnknown_020028A4)
     {
-        gTitlescreen.unk4++;
-        if (gTitlescreen.unk4 >= gUnknown_086A9672[gTitlescreen.unk2][1])
+        gTitlescreen.animTimer++;
+        if (gTitlescreen.animTimer >= gUnknown_086A9672[gTitlescreen.unk2][1])
         {
-            gTitlescreen.unk4 = 0;
+            gTitlescreen.animTimer = 0;
             if (++gTitlescreen.unk2 > 6)
                 gTitlescreen.unk2 = 0;
 
@@ -439,18 +448,18 @@ void sub_110FC(void)
         if (gMain.newKeys & (A_BUTTON | START_BUTTON))
         {
             m4aSongNumStart(0x65);
-            gTitlescreen.unk4 = 0;
+            gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 0;
             gMain.subState = 8;
         }
         else if (gMain.newKeys & B_BUTTON)
         {
             m4aSongNumStart(0x66);
-            gTitlescreen.unk4 = 0;
+            gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 12;
             gTitlescreen.unkD = 0;
             gTitlescreen.unkF = 0;
-            gMain.subState = 6;
+            gMain.subState = SUBSTATE_ANIM_CLOSE_MENU;
         }
 
         sub_1157C();
@@ -459,7 +468,7 @@ void sub_110FC(void)
     sub_11968();
 }
 
-void sub_11228(void)
+void TitleScreen8_Unknown(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -471,9 +480,11 @@ void sub_11228(void)
 
     if (!gUnknown_020028A4)
     {
-        u16 unk4 = gTitlescreen.unk4;
+        u16 animTimer = gTitlescreen.animTimer;
         u16 mask = 0x3;
-        if (!(unk4 & mask))
+
+        // Blink menu item
+        if (!(animTimer & mask))
         {
             if (!gTitlescreen.unk2)
             {
@@ -488,7 +499,7 @@ void sub_11228(void)
             }
         }
 
-        if (gTitlescreen.unk4 > 20)
+        if (gTitlescreen.animTimer > 20)
         {
             if (gTitlescreen.menuCursorIndex == 1)
                 gMain.unkD = 1;
@@ -496,16 +507,16 @@ void sub_11228(void)
                 gMain.unkD = 0;
 
             gTitlescreen.unk6 = gUnknown_086A96D4[gTitlescreen.menuCursorIndex];
-            gMain.subState = 10;
+            gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
         }
 
-        gTitlescreen.unk4++;
+        gTitlescreen.animTimer++;
     }
 
     sub_11968();
 }
 
-void sub_11320(void)
+void TitleScreen6_AnimCloseMenu(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -519,10 +530,10 @@ void sub_11320(void)
     {
         if (!gTitlescreen.unk7)
         {
-            gTitlescreen.unk4++;
-            if (gTitlescreen.unk4 >= gUnknown_086A9748[gTitlescreen.unk2])
+            gTitlescreen.animTimer++;
+            if (gTitlescreen.animTimer >= gUnknown_086A9748[gTitlescreen.unk2])
             {
-                gTitlescreen.unk4 = 0;
+                gTitlescreen.animTimer = 0;
                 if (--gTitlescreen.unk2 < 0)
                 {
                     gTitlescreen.unk2 = 0;
@@ -530,7 +541,7 @@ void sub_11320(void)
                     gUnknown_202BE24 = 1;
                     gTitlescreen.unk9 = 1;
                     gTitlescreen.unkB = 0;
-                    gMain.subState = 1;
+                    gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
                 }
 
                 gUnknown_0201C190[6] = gUnknown_086A9714[gTitlescreen.unk2];
@@ -540,10 +551,10 @@ void sub_11320(void)
         }
         else
         {
-            gTitlescreen.unk4++;
-            if (gTitlescreen.unk4 >= gUnknown_086A9748[gTitlescreen.unk2])
+            gTitlescreen.animTimer++;
+            if (gTitlescreen.animTimer >= gUnknown_086A9748[gTitlescreen.unk2])
             {
-                gTitlescreen.unk4 = 0;
+                gTitlescreen.animTimer = 0;
                 if (--gTitlescreen.unk2 < 0)
                 {
                     gTitlescreen.unk2 = 0;
@@ -551,7 +562,7 @@ void sub_11320(void)
                     gUnknown_202BE24 = 1;
                     gTitlescreen.unk9 = 1;
                     gTitlescreen.unkB = 0;
-                    gMain.subState = 1;
+                    gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
                 }
 
                 gUnknown_0202BE00[6] = gUnknown_086A9778[gTitlescreen.unk2];
@@ -562,7 +573,7 @@ void sub_11320(void)
     }
 }
 
-void sub_11428(void)
+void TitleScreen10_ExecMenuSelection(void)
 {
     if (!gTitlescreen.unk7)
         sub_FE04(sub_1175C);
@@ -581,7 +592,7 @@ void sub_11428(void)
     SetMainGameState(gUnknown_086A964C[gTitlescreen.unk6]);
 }
 
-void sub_114B4(void)
+void TitleScreen11_Unknown(void)
 {
     sub_FE04(sub_11640);
     m4aMPlayAllStop();
@@ -634,10 +645,10 @@ static void sub_1157C(void)
             gEReaderAccessCounter = 0;
             m4aSongNumStart(0x65);
             gTitlescreen.unk6 = 5;
-            if (gMain.subState == 1)
+            if (gMain.subState == SUBSTATE_WAIT_FOR_START_BUTTON)
                 gMain.subState = 11;
             else
-                gMain.subState = 10;
+                gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
         }
     }
 
@@ -852,6 +863,6 @@ void sub_11B74(void)
 {
     sub_52C64();
     sub_52B30();
-    gMain.unk40 = 0;
-    WriteAndVerifySramFast((const u8 *)&gMain.unk40, (void *)0x0E000544, 4);
+    gMain.hasSavedGame = FALSE;
+    WriteAndVerifySramFast((const u8 *)&gMain.hasSavedGame, (void *)0x0E000544, sizeof(gMain.hasSavedGame));
 }

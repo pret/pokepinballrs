@@ -54,17 +54,17 @@ void sub_940(void);
 void TitlescreenMain(void);
 void LoadTitlescreenGraphics(void);
 void sub_10AC0(void);
-void sub_10BB8(void);
-void sub_10CF0(void);
-void sub_10D84(void);
-void sub_10E00(void);
-void sub_10EF4(void);
-void sub_11020(void);
-void sub_110FC(void);
-void sub_11228(void);
-void sub_11320(void);
-void sub_11428(void);
-void sub_114B4(void);
+void TitleScreen1_WaitForStartButton(void);
+void TitleScreen2_Unknown(void);
+void TitleScreen9_Unknown(void);
+void TitleScreen3_Unknown(void);
+void TitleScreen4_MenuInputNoSavedGame(void);
+void TitleScreen7_Unknown(void);
+void TitleScreen5_MenuInputSavedGame(void);
+void TitleScreen8_Unknown(void);
+void TitleScreen6_AnimCloseMenu(void);
+void TitleScreen10_ExecMenuSelection(void);
+void TitleScreen11_Unknown(void);
 
 // src/util.c
 
@@ -162,7 +162,7 @@ void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum);
 //extern ? sub_F434();
 //extern ? sub_F4FC();
 //extern ? sub_F670();
-//extern ? sub_F6E0();
+extern void sub_F6E0(void);
 //extern ? sub_F74C();
 //extern ? sub_F8B0();
 //extern ? sub_FAE8();
@@ -171,12 +171,12 @@ extern void sub_FD5C(void (*func)(void));
 extern void sub_FE04(void (*func)(void));
 //extern ? sub_FEB8();
 //extern ? sub_FF74();
-//extern ? sub_1001C();
+extern void sub_1001C(int);
 //extern ? sub_10170();
 //extern ? sub_102A8();
 //extern ? sub_10424();
 //extern ? sub_10480();
-//extern ? sub_1050C();
+extern void sub_1050C(void);
 //extern ? sub_10528();
 //extern ? sub_10544();
 //extern ? sub_105A0();
@@ -384,12 +384,12 @@ extern void sub_FE04(void (*func)(void));
 //extern ? sub_88E4();
 //extern ? sub_8974();
 //extern ? sub_8A78();
-//extern ? sub_8ABC();
+extern void sub_8ABC(void);
 
 // asm/rom_1068C.s
 
 //extern ? sub_1068C();
-extern void sub_10708(void*, void*, u16, s16);
+extern void sub_10708(void *volatile, void *volatile, s16, s16);
 //extern ? sub_10750();
 //extern ? sub_10798();
 //extern ? sub_10860();
