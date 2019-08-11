@@ -1684,7 +1684,7 @@ _08004C2A:
 	adds r2, #1
 	cmp r2, #0xcc
 	ble _08004C2A
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10
@@ -1760,7 +1760,7 @@ _08004CC2:
 	movs r0, #1
 	mov r1, ip
 	strh r0, [r1]
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10

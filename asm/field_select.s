@@ -386,7 +386,7 @@ _08008DDA:
 	lsls r2, r2, #1
 	adds r1, r7, r2
 	strb r0, [r1]
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	movs r0, #3
 	strh r0, [r5, #0xa]
 _08008E00:

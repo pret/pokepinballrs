@@ -96,7 +96,6 @@ gMain: @ 0x200B0C0
 	.space 0x40
 gUnknown_0200B100: @ 0x0200B100
 	.space 0x34
-gUnknown_0200B134: @ 0x0200B134
 	.space 0x5A
 gUnknown_0200B18E: @ 0x0200B18E
 	.space 0x76

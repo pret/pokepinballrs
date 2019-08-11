@@ -368,7 +368,7 @@ _080028A0:
 	lsls r2, r2, #1
 	adds r1, r5, r2
 	strb r0, [r1]
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	movs r0, #2
 	strb r0, [r6]
 _080028CC:

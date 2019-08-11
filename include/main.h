@@ -14,7 +14,7 @@ struct SaveData
     /*0x144*/ //u8 filler144[0x2D8-0x144];
               u16 unk144[0x65][2];
     /*0x2D8*/ s8 signature[10];
-              u16 unk2E2;
+              u16 checksum;
               u32 unk2E4;
 };
 
@@ -68,7 +68,8 @@ struct Main
 
 
 extern struct Main gMain;
-extern struct SaveData gUnknown_0200B134;
+//extern struct SaveData gMain_saveData;
+#define gMain_saveData (*(struct SaveData *)(&gMain.saveData))
 extern struct SpriteGroup gUnknown_0200B3B8[];
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
@@ -98,7 +99,7 @@ extern struct OamData gOamBuffer[128];
 
 void sub_24C(void);
 void sub_2B4(void);
-void sub_490(void);
+void ClearGraphicsMemory(void);
 void sub_518(void);
 void sub_578(void);
 u32 Random(void);

@@ -4,31 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_51C60
-sub_51C60: @ 0x08051C60
-	push {lr}
-	ldr r1, _08051C90 @ =gMain+0x74
-	ldr r0, _08051C94 @ =gUnknown_02002920
-	adds r0, #0x2a
-	ldrb r0, [r0]
-	adds r1, #0xcd
-	strb r0, [r1]
-	bl sub_52B30
-	bl sub_2B4
-	bl m4aMPlayAllStop
-	bl sub_D10
-	ldr r1, _08051C98 @ =gAutoDisplayTitlescreenMenu
-	movs r0, #1
-	strb r0, [r1]
-	movs r0, #1
-	bl SetMainGameState
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08051C90: .4byte gMain+0x74
-_08051C94: .4byte gUnknown_02002920
-_08051C98: .4byte gAutoDisplayTitlescreenMenu
-
 	thumb_func_start sub_51C9C
 sub_51C9C: @ 0x08051C9C
 	push {r4, r5, r6, r7, lr}

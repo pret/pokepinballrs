@@ -73,7 +73,7 @@ void sub_24C(void);
 void sub_2B4(void);
 s16 LoadSpriteSets(const struct SpriteSet *const *spriteSets, u16 numSpriteSets, struct SpriteGroup *spriteGroups);
 void sub_438(void);
-void sub_490(void);
+void ClearGraphicsMemory(void);
 void sub_518(void);
 void sub_578(void);
 void sub_678(u8 *arg0, s16 arg1, s16 arg2);
@@ -776,10 +776,10 @@ extern void sub_1090C(void);
 //extern ? sub_5291C();
 //extern ? sub_52940();
 extern void sub_52A18(void);
-//extern ? sub_52A68();
-extern void sub_52B30(void);
-//extern ? sub_52BB0();
-extern void sub_52C44(void);
+//extern ? LoadSaveDataFromSram();
+extern void SaveFile_WriteToSram(void);
+//extern ? SaveFile_SetPokedexFlags();
+extern void SaveFile_ReadSavedGamePresent(void);
 extern void sub_52C64(void);
 
 // asm/rom_9BC.s

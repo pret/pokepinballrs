@@ -1320,7 +1320,7 @@ _0800D8CE:
 	mov r3, sb
 	cmp r3, #1
 	ble _0800D8AC
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	ldr r1, _0800D8FC @ =gMain
 	movs r0, #3
 	strb r0, [r1, #3]
@@ -1772,7 +1772,7 @@ _0800DC88:
 	mov r2, sb
 	cmp r2, #1
 	ble _0800DC68
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10
@@ -1813,7 +1813,7 @@ sub_DCF0: @ 0x0800DCF0
 	movs r0, #0x65
 	bl m4aSongNumStart
 	bl sub_F6E0
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10
@@ -6025,7 +6025,7 @@ _0800FE8C:
 	bls _0800FE4C
 	bl sub_10528
 	bl sub_D74
-	bl sub_490
+	bl ClearGraphicsMemory
 	add sp, #4
 	pop {r3}
 	mov r8, r3

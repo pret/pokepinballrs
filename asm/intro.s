@@ -264,7 +264,7 @@ sub_9498: @ 0x08009498
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	bl sub_490
+	bl ClearGraphicsMemory
 	bl sub_518
 	bl sub_578
 	movs r2, #0x80

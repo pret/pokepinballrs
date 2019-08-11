@@ -96,7 +96,7 @@ void sub_438(void)
 {
     gMain.unk16 |= DISPCNT_FORCED_BLANK;
     REG_DISPCNT |= DISPCNT_FORCED_BLANK;
-    sub_490();
+    ClearGraphicsMemory();
     sub_518();
     sub_578();
     gMain.unkF = 0;
@@ -115,7 +115,7 @@ void sub_438(void)
     gMain.unk2C = 0;
 }
 
-void sub_490(void)
+void ClearGraphicsMemory(void)
 {
     DmaFill16(3, 0, (void *)VRAM, VRAM_SIZE);
     DmaFill32(3, 0, (void *)OAM, OAM_SIZE);

@@ -1,6 +1,7 @@
 #include "global.h"
 #include "m4a.h"
 #include "main.h"
+#include "titlescreen.h"
 
 struct OptionsData
 {
@@ -85,9 +86,6 @@ void sub_51240(void)
     gMain.subState++;
 }
 
-extern u8 gUnknown_02031AF0[][10];
-extern u8 gUnknown_08527ED6[][10];
-
 void sub_513B8(void)
 {
     int i;
@@ -99,7 +97,7 @@ void sub_513B8(void)
     gUnknown_02002920.unk6 = 1;
     gUnknown_02002920.unk8 = 0;
     gUnknown_02002920.unkA = 0;
-    gUnknown_02002920.unkC = gUnknown_0200B134.unk143;
+    gUnknown_02002920.unkC = gMain_saveData.unk143;
     gUnknown_02002920.unkE = 0;
     gUnknown_02002920.unk10 = 0;
     gUnknown_02002920.unk12 = 0;
@@ -124,13 +122,13 @@ void sub_513B8(void)
     sub_52528();
     if (gGameBoyPlayerEnabled == 1)
     {
-        gUnknown_02002920.unk2A = gUnknown_0200B134.unk141;
-        gUnknown_0200B134.unk141 = 1;
+        gUnknown_02002920.unk2A = gMain_saveData.unk141;
+        gMain_saveData.unk141 = 1;
     }
     else
     {
         gUnknown_02002920.unk2A = 0;
-        gUnknown_0200B134.unk141 = 0;
+        gMain_saveData.unk141 = 0;
     }
     gUnknown_02002920.unk2E = 0;
     gUnknown_02002920.unk2B = 0;
@@ -139,11 +137,6 @@ void sub_513B8(void)
     gUnknown_02002920.unk2F = 0;
     gUnknown_02002920.unk30 = 0;
 }
-
-extern u16 gUnknown_08527D22[];
-extern u16 gUnknown_086BB910[][4];
-extern struct {u8 unk0; s16 unk2;} gUnknown_086BB9B4[];
-extern u16 gUnknown_08527D66[];
 
 void sub_514B8(void)
 {
@@ -238,12 +231,12 @@ void sub_514B8(void)
             case 5:
                 m4aSongNumStart(0x65);
                 gUnknown_02002920.unkC = gUnknown_02002920.unkA - 2;
-                gUnknown_0200B134.unk143 = gUnknown_02002920.unkC; 
+                gMain_saveData.unk143 = gUnknown_02002920.unkC; 
                 break;
             case 6:
                 m4aSongNumStart(0x65);
                 gUnknown_02002920.unkC = gUnknown_02002920.unkA - 2;
-                gUnknown_0200B134.unk143 = gUnknown_02002920.unkC; 
+                gMain_saveData.unk143 = gUnknown_02002920.unkC; 
                 gUnknown_02002920.unkA = 7;
                 gUnknown_02002920.unk0 = 3;
                 break;
@@ -448,8 +441,8 @@ void sub_514B8(void)
             {
                 gUnknown_02031AF0[4][(gUnknown_02002920.unkA - 7) * 2 + 0] = gUnknown_02002920.unk24[0];
                 gUnknown_02031AF0[4][(gUnknown_02002920.unkA - 7) * 2 + 1] = gUnknown_02002920.unk24[1];
-                gUnknown_0200B134.unk144[(gUnknown_02002920.unkA - 7)][0] = gUnknown_086BB910[gUnknown_02002920.unk24[0]][0];
-                gUnknown_0200B134.unk144[(gUnknown_02002920.unkA - 7)][1] = gUnknown_086BB910[gUnknown_02002920.unk24[1]][0];
+                gMain_saveData.unk144[(gUnknown_02002920.unkA - 7)][0] = gUnknown_086BB910[gUnknown_02002920.unk24[0]][0];
+                gMain_saveData.unk144[(gUnknown_02002920.unkA - 7)][1] = gUnknown_086BB910[gUnknown_02002920.unk24[1]][0];
                 gUnknown_02002920.unk0 = 3;
                 gUnknown_02002920.unk1A[gUnknown_02002920.unkA - 7] = 0;
                 gUnknown_02002920.unk8 = 0;
@@ -499,3 +492,21 @@ void sub_51C3C(void)
         gMain.subState++;
     }
 }
+
+void sub_51C60(void)
+{
+    gMain_saveData.unk141 = gUnknown_02002920.unk2A;
+    SaveFile_WriteToSram();
+    sub_2B4();
+    m4aMPlayAllStop();
+    sub_D10();
+    gAutoDisplayTitlescreenMenu = 1;
+    SetMainGameState(1);
+}
+
+/*
+void sub_51C9C(void)
+{
+
+}
+*/

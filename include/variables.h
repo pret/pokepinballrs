@@ -3,6 +3,16 @@
 
 // Place all external variable declarations in this file
 
+extern struct ToneData gUnknown_08532D6C[];
+extern struct ToneData gUnknown_08533360[];
+extern struct ToneData gUnknown_08533960[];
+extern struct ToneData gUnknown_08533F60[];
+extern u16 gUnknown_08527D22[];
+extern u16 gUnknown_086BB910[][4];
+extern struct {u8 unk0; s16 unk2;} gUnknown_086BB9B4[];
+extern u16 gUnknown_08527D66[];
+extern u8 gUnknown_02031AF0[][10];
+extern u8 gUnknown_08527ED6[][10];
 extern void (*const gUnknown_08527F08[])(void);
 extern u16 gUnknown_0201A520[];
 extern u16 gUnknown_0201AD20[];
@@ -27,7 +37,6 @@ extern u8 gUnknown_02002808[];
 //extern ? gUnknown_02002958;
 //extern ? gIntrTable;
 //extern ? gMain;
-//extern ? gMain+0x74;
 //extern ? gUnknown_0200B3B8;
 //extern ? gUnknown_0200FB98;
 //extern ? gUnknown_0200FB9C;
