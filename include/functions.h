@@ -330,14 +330,14 @@ extern void sub_1050C(void);
 
 //extern ? OptionsMain();
 //extern ? sub_51240();
-//extern ? sub_513B8();
+extern void sub_513B8(void);
 //extern ? sub_514B8();
 //extern ? sub_51C3C();
 //extern ? sub_51C60();
-//extern ? sub_51C9C();
-//extern ? sub_524BC();
-//extern ? sub_52528();
-//extern ? sub_525CC();
+extern void sub_51C9C(void);
+extern void sub_524BC(void);
+extern void sub_52528(void);
+extern void sub_525CC(s8);
 
 // asm/pokedex.s
 
@@ -388,7 +388,7 @@ extern void sub_8ABC(void);
 
 // asm/rom_1068C.s
 
-//extern ? sub_1068C();
+void sub_1068C(int, int, int, int, u16);
 extern void sub_10708(void *volatile, void *volatile, s16, s16);
 //extern ? sub_10750();
 //extern ? sub_10798();

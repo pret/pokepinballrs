@@ -11,8 +11,9 @@ struct SaveData
     /*0x141*/ u8 unk141;
     /*0x142*/ u8 unk142;
     /*0x143*/ u8 unk143;
-    /*0x144*/ u8 filler144[0x2D8-0x144];
-              s8 signature[10];
+    /*0x144*/ //u8 filler144[0x2D8-0x144];
+              u16 unk144[0x65][2];
+    /*0x2D8*/ s8 signature[10];
               u16 unk2E2;
               u32 unk2E4;
 };
@@ -67,7 +68,7 @@ struct Main
 
 
 extern struct Main gMain;
-extern u8 gUnknown_0200B134[];
+extern struct SaveData gUnknown_0200B134;
 extern struct SpriteGroup gUnknown_0200B3B8[];
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];

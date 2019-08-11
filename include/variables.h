@@ -3,6 +3,7 @@
 
 // Place all external variable declarations in this file
 
+extern void (*const gUnknown_08527F08[])(void);
 extern u16 gUnknown_0201A520[];
 extern u16 gUnknown_0201AD20[];
 extern u32 gUnknown_0201A500[];
