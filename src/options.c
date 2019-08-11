@@ -272,7 +272,7 @@ void sub_514B8(void)
         {
             m4aSongNumStart(0x66);
             gMain.subState++;
-            sub_525CC(gMain.saveData.unk143);
+            sub_525CC(gMain_saveData.unk143);
 
         }
         if (!(gMain.unk4C & 7))

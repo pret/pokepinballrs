@@ -94,7 +94,6 @@ gUnknown_020030A0: @ 0x020030A0
 	.space 0x8020
 gMain: @ 0x200B0C0
 	.space 0x40
-gUnknown_0200B100: @ 0x0200B100
 	.space 0x34
 	.space 0x5A
 gUnknown_0200B18E: @ 0x0200B18E

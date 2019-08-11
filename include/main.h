@@ -24,7 +24,8 @@ struct Main
     /*0x02*/ u8 mainState;
     /*0x03*/ u8 subState;
     /*0x04*/ u8 unk4;
-    /*0x05*/ u8 filler5[0x2];
+    /*0x05*/ u8 unk5;
+    /*0x06*/ u8 unk6;
     /*0x07*/ s8 unk7;
     /*0x08*/ s8 unk8;
     /*0x09*/ u8 filler9[0x3];
