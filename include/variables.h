@@ -3,6 +3,8 @@
 
 // Place all external variable declarations in this file
 
+extern struct {u16 unk0[5]; u16 unkA[5];} gUnknown_086A6B14;
+extern s8 gUnknown_02002850;
 extern struct ToneData gUnknown_08532D6C[];
 extern struct ToneData gUnknown_08533360[];
 extern struct ToneData gUnknown_08533960[];
@@ -126,15 +128,19 @@ extern const s16 gEReaderAccessButtonSequence[];
 //extern ? gMonHatchSpriteGroup3_Gfx;
 //extern ? gMonHatchSpriteGroup4_Gfx;
 //extern ? gMonHatchSpriteGroup5_Gfx;
-//extern ? gFieldSelectWindow_Gfx;
+extern struct Coord16 gUnknown_086A6B28[];
+extern const struct SpriteSet *const gUnknown_086A6AD4[];
+extern void (*gFieldSelectStateFuncs[])(void);
+extern u8 gUnknown_080A2400[];
+extern u8 gFieldSelectWindow_Gfx[];
 //extern ? gUnknown_080A4000;
-//extern ? gFieldSelectFrameShadowTilemap;
-//extern ? gFieldSelectMiniFields_Gfx;
+extern u8 gFieldSelectFrameShadowTilemap[];
+extern u8 gFieldSelectMiniFields_Gfx[];
 //extern ? gUnknown_080A8020;
-//extern ? gFieldSelectWindowTilemap;
-//extern ? gFieldSelectBGPals;
-//extern ? gFieldSelectSpritePals;
-//extern ? gFieldSelectSpriteGfx;
+extern u8 gFieldSelectWindowTilemap[];
+extern u16 gFieldSelectBGPals[];
+extern u16 gFieldSelectSpritePals[];
+extern u8 gFieldSelectSpriteGfx[];
 extern const u8 gTitlescreenBgTilemap[];
 extern const u16 gTitlescreenBg_Pals[];
 extern const u8 gTitlescreenBg_Gfx[];

@@ -38,7 +38,7 @@ gUnknown_02002830: @ 0x02002830
 	.space 0x1
 gUnknown_02002831: @ 0x02002831
 	.space 0x7
-gUnknown_02002838: @ 0x02002838
+gFieldSelectData: @ 0x02002838
 	.space 0x18
 gUnknown_02002850: @ 0x02002850
 	.space 0x8

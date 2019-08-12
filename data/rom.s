@@ -699,7 +699,7 @@ gUnknown_0805C8E0:: @ 0x0805C8E0
 gUnknown_0805C8F6:: @ 0x0805C8F6
 	.incbin "baserom.gba", 0x5C8F6, 0x1C9CA
 
-gUnknown_080792C0:: @ 0x080792C0
+gFieldSelectStateFuncs:: @ 0x080792C0
 	.incbin "baserom.gba", 0x792C0, 0xC
 
 gUnknown_080792CC:: @ 0x080792CC
