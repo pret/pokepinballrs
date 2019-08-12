@@ -20,7 +20,7 @@ void sub_1340(void);
 
 void AgbMain(void);
 void sub_9BC_Main(void);
-void HBlankIntr(void);
+void VBlankIntr(void);
 void VCountIntr(void);
 void SerialIntr(void);
 void Timer3Intr(void);
@@ -32,7 +32,7 @@ s16 sub_C74(u16 arg0);
 void sub_CBC(void);
 void sub_D10(void);
 void sub_D74(void);
-void sub_DC4(void);
+void DefaultMainCallback(void);
 
 // src/rom_3219C.c
 
@@ -41,13 +41,13 @@ void sub_3219C(void);
 
 // src/rom_850.c
 
-u16 sub_850(void);
-void sub_898(void (*func)(void));
-void sub_8BC(void);
-void sub_8D4(void (*func)(void));
-void sub_8FC(void);
-void sub_918(void (*func)(void));
-void sub_940(void);
+u16 IsInVblank(void);
+void SetMainCallback(void (*func)(void));
+void ResetMainCallback(void);
+void SetVBlankIntrFunc(void (*func)(void));
+void ResetVBlankIntrFunc(void);
+void SetVCountIntrFunc(void (*func)(void));
+void ResetVCountIntrFunc(void);
 
 // src/titlescreen.c
 
@@ -72,10 +72,10 @@ void SetMainGameState(u16 mainState);
 void sub_24C(void);
 void sub_2B4(void);
 s16 LoadSpriteSets(const struct SpriteSet *const *spriteSets, u16 numSpriteSets, struct SpriteGroup *spriteGroups);
-void sub_438(void);
+void ResetSomeGraphicsRelatedStuff(void);
 void ClearGraphicsMemory(void);
 void sub_518(void);
-void sub_578(void);
+void ClearSprites(void);
 void sub_678(u8 *arg0, s16 arg1, s16 arg2);
 void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum);
 
@@ -393,7 +393,7 @@ extern void sub_10708(void *volatile, void *volatile, s16, s16);
 //extern ? sub_10750();
 //extern ? sub_10798();
 //extern ? sub_10860();
-extern void sub_1090C(void);
+extern void ClearSomeArray(void);
 
 // asm/rom_11B9C.s
 
@@ -775,7 +775,7 @@ extern void sub_1090C(void);
 //extern ? sub_528DC();
 //extern ? sub_5291C();
 //extern ? sub_52940();
-extern void sub_52A18(void);
+extern void SaveFile_LoadGameData(void);
 //extern ? LoadSaveDataFromSram();
 extern void SaveFile_WriteToSram(void);
 //extern ? SaveFile_SetPokedexFlags();

@@ -96,7 +96,7 @@ void sub_10860(void (*func)(void))
 
 #ifdef NONMATCHING
 // Like sub_C24, it matches except for that damn 'push {lr}/pop {lr}'
-void sub_1090C(void)
+void ClearSomeArray(void)
 {
     int i;
     
@@ -105,7 +105,7 @@ void sub_1090C(void)
 }
 #else
 NAKED
-void sub_1090C(void)
+void ClearSomeArray(void)
 {
     asm_unified("\n\
 	ldr r1, _08010920 @ =gUnknown_0201A500\n\

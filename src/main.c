@@ -3,7 +3,7 @@
 #include "gbplayer.h"
 #include "m4a.h"
 
-static void sub_B54(void);
+static void InitGame(void);
 static void sub_B8C(void);
 static void InitIntrHandlers(void);
 static void ReadKeys(void);
@@ -14,7 +14,7 @@ void AgbMain(void)
     InitIntrHandlers();
     DmaCopy32(3, IntrMain, IntrMain_Buffer, sizeof(IntrMain_Buffer));
     INTR_VECTOR = IntrMain_Buffer;
-    sub_B54();
+    InitGame();
     InitGameBoyPlayer();
     while (1)
     {
@@ -45,7 +45,7 @@ void sub_9BC_Main(void)
     }
 }
 
-void HBlankIntr(void)
+void VBlankIntr(void)
 {
     m4aSoundVSync();
     INTR_CHECK |= INTR_FLAG_VBLANK;
@@ -122,7 +122,7 @@ void IntrDummy(void)
 {
 }
 
-static void sub_B54(void)
+static void InitGame(void)
 {
     REG_WAITCNT = WAITCNT_AGB
                 | WAITCNT_PREFETCH_ENABLE
@@ -139,7 +139,7 @@ static void sub_B54(void)
     sub_B8C();
     m4aSoundInit();
     m4aSoundVSyncOff();
-    sub_52A18();
+    SaveFile_LoadGameData();
 }
 
 static void sub_B8C(void)
@@ -155,8 +155,8 @@ static void sub_B8C(void)
     gMain.unk30 = 0;
     gMain.vCount = 144;
     gMain.unk2C = 0;
-    sub_1090C();
-    sub_438();
+    ClearSomeArray();
+    ResetSomeGraphicsRelatedStuff();
 }
 
 static void InitIntrHandlers(void)
@@ -166,11 +166,11 @@ static void InitIntrHandlers(void)
     for (i = 0; i < INTR_COUNT; i++)
         gIntrTable[i] = gIntrTableTemplate[i];
 
-    gUnknown_0200FB98 = &gIntrTable[2];
-    gUnknown_02019BE0 = &gIntrTable[4];
-    sub_8BC();
-    sub_8FC();
-    sub_940();
+    gVBlankIntrFuncPtr = &gIntrTable[2];
+    gVCountIntrFuncPtr = &gIntrTable[4];
+    ResetMainCallback();
+    ResetVBlankIntrFunc();
+    ResetVCountIntrFunc();
 }
 
 // The number 1103515245 comes from the example implementation of rand and srand
@@ -322,16 +322,16 @@ void sub_D10(void)
 
 void sub_D74(void)
 {
-    gUnknown_0200FB9C = gUnknown_02017BD4;
-    *gUnknown_0200FB98 = gUnknown_02017BD0;
-    *gUnknown_02019BE0 = gUnknown_0200FBA0;
-    if (gUnknown_0200FB9C)
-        gUnknown_0200FB9C();
+    gMainCallback = gUnknown_02017BD4;
+    *gVBlankIntrFuncPtr = gUnknown_02017BD0;
+    *gVCountIntrFuncPtr = gUnknown_0200FBA0;
+    if (gMainCallback)
+        gMainCallback();
 
     gMain.unk4C++;
 }
 
-void sub_DC4(void)
+void DefaultMainCallback(void)
 {
     if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
     {

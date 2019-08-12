@@ -31,7 +31,7 @@ void LoadTitlescreenGraphics(void)
 {
     int autoDisplayMenu;
 
-    sub_438();
+    ResetSomeGraphicsRelatedStuff();
     REG_DISPCNT = DISPCNT_OBJ_ON| DISPCNT_FORCED_BLANK;
     REG_BG1CNT = BGCNT_256COLOR | BGCNT_PRIORITY(1) | BGCNT_CHARBASE(1) | BGCNT_SCREENBASE(0);
     REG_DISPCNT |= DISPCNT_BG1_ON;

@@ -92,13 +92,13 @@ s16 LoadSpriteSets(const struct SpriteSet *const *spriteSets, u16 numSpriteSets,
     return loadedCount;
 }
 
-void sub_438(void)
+void ResetSomeGraphicsRelatedStuff(void)
 {
     gMain.unk16 |= DISPCNT_FORCED_BLANK;
     REG_DISPCNT |= DISPCNT_FORCED_BLANK;
     ClearGraphicsMemory();
     sub_518();
-    sub_578();
+    ClearSprites();
     gMain.unkF = 0;
     gMain.unk10 = 0;
     gMain.unk50 = 0;
@@ -146,7 +146,7 @@ void sub_518(void)
     }
 }
 
-void sub_578(void)
+void ClearSprites(void)
 {
     u16 i, j;
 

@@ -96,7 +96,7 @@ static void sub_52940(u16 a, s8 b, s8 c, u8 d, int unused)
     }
 }
 
-void sub_52A18(void)
+void SaveFile_LoadGameData(void)
 {
     SetSramFastFunc();
     gMain.unkC = 0;

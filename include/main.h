@@ -74,8 +74,8 @@ extern struct Main gMain;
 extern struct SpriteGroup gUnknown_0200B3B8[];
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
-extern IntrFunc *gUnknown_0200FB98;
-extern IntrFunc *gUnknown_02019BE0;
+extern IntrFunc *gVBlankIntrFuncPtr;
+extern IntrFunc *gVCountIntrFuncPtr;
 extern int gUnknown_02019BE4;
 extern int gUnknown_02019BE8;
 extern int gUnknown_02019BEC;
@@ -91,7 +91,7 @@ extern u8 gUnknown_02019C10;
 extern u8 gUnknown_02002008[];
 #define INTR_COUNT 14
 extern IntrFunc gIntrTable[14];
-extern void (*gUnknown_0200FB9C)(void);
+extern void (*gMainCallback)(void);
 extern void (*gUnknown_0200FBA0)(void);
 extern void (*gUnknown_02017BD0)(void);
 extern void (*gUnknown_02017BD4)(void);
@@ -102,16 +102,16 @@ void sub_24C(void);
 void sub_2B4(void);
 void ClearGraphicsMemory(void);
 void sub_518(void);
-void sub_578(void);
+void ClearSprites(void);
 u32 Random(void);
-void HBlankIntr(void);
+void VBlankIntr(void);
 void VCountIntr(void);
 void SerialIntr(void);
 void Timer3Intr(void);
 void sub_CBC(void);
 void sub_D10(void);
 void sub_D74(void);
-void sub_DC4(void);
+void DefaultMainCallback(void);
 
 
 #endif // GUARD_MAIN_H

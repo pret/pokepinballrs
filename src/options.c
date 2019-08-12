@@ -50,7 +50,7 @@ extern const u8 gUnknown_0852A048[];
 
 void sub_51240(void)
 {
-    sub_438();
+    ResetSomeGraphicsRelatedStuff();
 
     REG_DISPCNT = 0x1080;
     REG_BG0CNT = 4;

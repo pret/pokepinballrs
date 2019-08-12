@@ -2008,7 +2008,7 @@ gUnknown_086A4A38:: @ 0x086A4A38
 gIntrTableTemplate:: @ 0x086A4AA0
 	.4byte SerialIntr
 	.4byte Timer3Intr
-	.4byte HBlankIntr
+	.4byte VBlankIntr
 	.4byte IntrDummy
 	.4byte VCountIntr
 	.4byte IntrDummy

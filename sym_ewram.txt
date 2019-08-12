@@ -228,9 +228,9 @@ gUnknown_0200EBC8: @ 0x0200EBC8
 	.space 0x2E0
 gUnknown_0200EEA8: @ 0x0200EEA8
 	.space 0xCF0
-gUnknown_0200FB98: @ 0x200FB98
+gVBlankIntrFuncPtr: @ 0x200FB98
 	.space 0x4
-gUnknown_0200FB9C: @ 0x200FB9C
+gMainCallback: @ 0x200FB9C
 	.space 0x4
 gUnknown_0200FBA0: @ 0x200FBA0
 	.space 0x10
@@ -242,7 +242,7 @@ gUnknown_02017BD4: @ 0x2017BD4
 	.space 0xC
 gUnknown_02017BE0: @ 0x2017BE0
 	.space 0x2000
-gUnknown_02019BE0: @ 0x2019BE0
+gVCountIntrFuncPtr: @ 0x2019BE0
 	.space 0x4
 gUnknown_02019BE4: @ 0x2019BE4
 	.space 0x4

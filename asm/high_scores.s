@@ -40,7 +40,7 @@ _0800CE84: .4byte gMain
 	thumb_func_start sub_CE88
 sub_CE88: @ 0x0800CE88
 	push {r4, r5, r6, r7, lr}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x84
@@ -1864,7 +1864,7 @@ sub_DD70: @ 0x0800DD70
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x84
@@ -2283,7 +2283,7 @@ sub_E0EC: @ 0x0800E0EC
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x84

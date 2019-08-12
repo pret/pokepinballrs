@@ -5595,7 +5595,7 @@ _08035170:
 	.align 2, 0
 _08035194: .4byte gMain
 _08035198:
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	ldr r0, [r5]
 	strb r4, [r0, #0x1d]
 _080351A0:
@@ -46258,7 +46258,7 @@ _08049EFA:
 	ldr r1, _08049F1C @ =gUnknown_020314E0
 	ldr r0, _08049F20 @ =gUnknown_02000000
 	str r0, [r1]
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	ldr r1, _08049F18 @ =gMain
 	movs r0, #0
 	strb r0, [r1, #0xe]
