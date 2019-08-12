@@ -25,7 +25,7 @@ void sub_24C(void)
     for (i = 0; i < 32; i++)
     {
         REG_BLDY = 15 - i / 2;
-        sub_D74();
+        MainLoopIter();
     }
 
     REG_BLDCNT = 0;
@@ -44,7 +44,7 @@ void sub_2B4(void)
     for (i = 0; i < 16; i++)
     {
         REG_BLDY = i + 1;
-        sub_D74();
+        MainLoopIter();
     }
 
     gMain.unk16 |= DISPCNT_FORCED_BLANK;

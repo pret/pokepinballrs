@@ -25,7 +25,7 @@ struct FieldSelectData
     u8 ballSpeed;
     s16 unk12;
     s8 unk14;
-    u16 unk16;
+    u16 nextMainState;
 };
 
 extern struct FieldSelectData gFieldSelectData;
@@ -52,13 +52,13 @@ void LoadFieldSelectGraphics(void)
 
     gMain.unk16 = REG_DISPCNT;
 
-    DmaCopy16(3, gFieldSelectBGPals,             (void *)PLTT, 0x200);
-    DmaCopy16(3, gFieldSelectWindow_Gfx,         (void *)(VRAM + 0x4000), 0x1400);
-    DmaCopy16(3, gFieldSelectMiniFields_Gfx,     (void *)(VRAM + 0x8000), 0x3800);
-    DmaCopy16(3, gUnknown_080A2400,              (void *)(VRAM), 0x800);
-    DmaCopy16(3, gFieldSelectFrameShadowTilemap, (void *)(VRAM + 0x800), 0x800);
-    DmaCopy16(3, gFieldSelectWindowTilemap,      (void *)(VRAM + 0x1000), 0x800);
-    DmaCopy16(3, gFieldSelectSpritePals,         (void *)(PLTT + 0x200), 0x200);
+    DmaCopy16(3, gFieldSelectBGPals,             (void *)(PLTT),           0x200);
+    DmaCopy16(3, gFieldSelectWindow_Gfx,         (void *)(VRAM + 0x4000),  0x1400);
+    DmaCopy16(3, gFieldSelectMiniFields_Gfx,     (void *)(VRAM + 0x8000),  0x3800);
+    DmaCopy16(3, gUnknown_080A2400,              (void *)(VRAM),           0x800);
+    DmaCopy16(3, gFieldSelectFrameShadowTilemap, (void *)(VRAM + 0x800),   0x800);
+    DmaCopy16(3, gFieldSelectWindowTilemap,      (void *)(VRAM + 0x1000),  0x800);
+    DmaCopy16(3, gFieldSelectSpritePals,         (void *)(PLTT + 0x200),   0x200);
     DmaCopy16(3, gFieldSelectSpriteGfx,          (void *)(VRAM + 0x10000), 0x4020);
 
     sub_CBC();
@@ -78,11 +78,11 @@ static void sub_8C38(void)
     gFieldSelectData.state = 0;
     gFieldSelectData.unkC = 0;
     gFieldSelectData.unkE = 0;
-    gFieldSelectData.unk16 = 0;
+    gFieldSelectData.nextMainState = STATE_INTRO;
     gFieldSelectData.unk12 = 0;
     gFieldSelectData.unk14 = 0;
 
-    gFieldSelectData.ballSpeed = gMain_saveData.unk142;
+    gFieldSelectData.ballSpeed = gMain_saveData.ballSpeed;
     gMain.unk4 = 0;
     gUnknown_02002850 = 0;
 }
@@ -93,7 +93,7 @@ void sub_8C7C(void)
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_02002850 = 1;
-        gFieldSelectData.unk16 = 0;
+        gFieldSelectData.nextMainState = STATE_INTRO;
         gMain.subState++;
     }
     if (gUnknown_02002850 == 0)
@@ -150,7 +150,7 @@ void sub_8C7C(void)
             {
                 m4aSongNumStart(0x66);
                 gMain.subState++;
-                gFieldSelectData.unk16 = 1;
+                gFieldSelectData.nextMainState = STATE_TITLE;
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
                 {
                     gFieldSelectData.unk4 = 0;
@@ -184,7 +184,7 @@ void sub_8C7C(void)
                 m4aSongNumStart(0x65);
                 gFieldSelectData.unkE = 0;
                 gFieldSelectData.unkC = 0;
-                gMain_saveData.unk142 = gFieldSelectData.ballSpeed;
+                gMain_saveData.ballSpeed = gFieldSelectData.ballSpeed;
                 SaveFile_WriteToSram();
                 gFieldSelectData.state = 3;
             }
@@ -212,7 +212,7 @@ void sub_8C7C(void)
                 gFieldSelectData.unk0 = gUnknown_086A6B14.unk0[gFieldSelectData.unkC];
                 gFieldSelectData.unk2 = gUnknown_086A6B14.unkA[gFieldSelectData.unkC];
             }
-            if (!(gMain.unk4C & 1))
+            if (!(gMain.frameCount & 1))
             {
                 if (gFieldSelectData.unkC < 4)
                 {
@@ -265,7 +265,7 @@ void sub_8C7C(void)
                 gFieldSelectData.unkC++;
                 if (gFieldSelectData.unkC > 5)
                 {
-                    gFieldSelectData.unk16 = 2;
+                    gFieldSelectData.nextMainState = STATE_GAME_MAIN;
                     gMain.subState++;
                 }
             }
@@ -282,7 +282,7 @@ void sub_8F64(void)
     m4aMPlayAllStop();
     sub_D10();
     gAutoDisplayTitlescreenMenu = TRUE;
-    SetMainGameState(gFieldSelectData.unk16);
+    SetMainGameState(gFieldSelectData.nextMainState);
 }
 
 static void sub_8F94(void)

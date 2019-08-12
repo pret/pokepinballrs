@@ -31,7 +31,7 @@ s16 sub_C24(u16 arg0);
 s16 sub_C74(u16 arg0);
 void sub_CBC(void);
 void sub_D10(void);
-void sub_D74(void);
+void MainLoopIter(void);
 void DefaultMainCallback(void);
 
 // src/rom_3219C.c

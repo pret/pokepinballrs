@@ -227,7 +227,7 @@ void sub_52C64(void)
 
     gMain_saveData.unk2E4 = 0;
     gMain_saveData.unk141 = 0;
-    gMain_saveData.unk142 = 0;
+    gMain_saveData.ballSpeed = 0;
     sub_525CC(-1);
     sub_F6E0();
     sub_8ABC();

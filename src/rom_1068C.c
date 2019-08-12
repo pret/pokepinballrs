@@ -56,7 +56,7 @@ void sub_10798(void *a, void *b, void (*func)(void))
         if (func != NULL)
             func();
         sub_1001C(i);
-        sub_D74();
+        MainLoopIter();
         if (i == 32)
         {
             DmaCopy16(3, gUnknown_0201A920, (void *)PLTT, 0x400);
@@ -81,7 +81,7 @@ void sub_10860(void (*func)(void))
         if (func != NULL)
             func();
         sub_1001C(i);
-        sub_D74();
+        MainLoopIter();
         if (i == 32)
         {
             DmaCopy16(3, gUnknown_0201A920, (void *)PLTT, 0x400);
@@ -91,7 +91,7 @@ void sub_10860(void (*func)(void))
             DmaCopy16(3, gUnknown_0201AD20, (void *)PLTT, 0x400);
         }
     }
-    sub_D74();
+    MainLoopIter();
 }
 
 #ifdef NONMATCHING

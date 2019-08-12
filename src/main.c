@@ -20,7 +20,7 @@ void AgbMain(void)
     {
         ReadKeys();
         gMainFuncs[gMain.mainState]();
-        sub_D74();
+        MainLoopIter();
     }
 }
 
@@ -40,7 +40,7 @@ void sub_9BC_Main(void)
     default:
         sub_2B4();
         sub_D10();
-        SetMainGameState(1);
+        SetMainGameState(STATE_TITLE);
         break;
     }
 }
@@ -55,7 +55,7 @@ void VCountIntr(void)
 {
     INTR_CHECK |= INTR_FLAG_VCOUNT;
     while (!(REG_DISPSTAT & DISPSTAT_HBLANK));
-    if (gMain.mainState == 2)
+    if (gMain.mainState == STATE_GAME_MAIN)
     {
         REG_BG0HOFS = 0;
         if (gMain.unk28)
@@ -144,14 +144,14 @@ static void InitGame(void)
 
 static void sub_B8C(void)
 {
-    gMain.mainState = 0;
+    gMain.mainState = STATE_INTRO;
     gMain.subState = 0;
     gMain.unk16 = 0;
     gMain.heldKeys = 0;
     gMain.newKeys = 0;
     gMain.unk20 = 0;
     gMain.rngValue = 0;
-    gMain.unk4C = 0;
+    gMain.frameCount = 0;
     gMain.unk30 = 0;
     gMain.vCount = 144;
     gMain.unk2C = 0;
@@ -320,7 +320,7 @@ void sub_D10(void)
     m4aSoundVSyncOff();
 }
 
-void sub_D74(void)
+void MainLoopIter(void)
 {
     gMainCallback = gUnknown_02017BD4;
     *gVBlankIntrFuncPtr = gUnknown_02017BD0;
@@ -328,7 +328,7 @@ void sub_D74(void)
     if (gMainCallback)
         gMainCallback();
 
-    gMain.unk4C++;
+    gMain.frameCount++;
 }
 
 void DefaultMainCallback(void)

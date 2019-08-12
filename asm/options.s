@@ -14,7 +14,7 @@ sub_51C9C: @ 0x08051C9C
 	sub sp, #0x8c
 	ldr r0, _08051D38 @ =gUnknown_0200B3B8
 	mov r8, r0
-	ldr r2, _08051D3C @ =gUnknown_02002920
+	ldr r2, _08051D3C @ =gOptionsData
 	movs r3, #4
 	ldrsh r1, [r2, r3]
 	movs r0, #0xe6
@@ -78,7 +78,7 @@ _08051D1E:
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _08051D50
-	ldr r6, _08051D3C @ =gUnknown_02002920
+	ldr r6, _08051D3C @ =gOptionsData
 	movs r7, #6
 	ldrsh r0, [r6, r7]
 	cmp r0, #1
@@ -88,7 +88,7 @@ _08051D1E:
 	b _08051D52
 	.align 2, 0
 _08051D38: .4byte gUnknown_0200B3B8
-_08051D3C: .4byte gUnknown_02002920
+_08051D3C: .4byte gOptionsData
 _08051D40: .4byte gUnknown_0200B978
 _08051D44: .4byte gUnknown_0200BAE8
 _08051D48: .4byte gUnknown_0200293A
@@ -178,7 +178,7 @@ _08051DCE:
 	strh r0, [r6]
 	ldr r7, _08051F6C @ =gUnknown_0200C948
 	strh r0, [r7]
-	ldr r5, _08051F70 @ =gUnknown_02002920
+	ldr r5, _08051F70 @ =gOptionsData
 	adds r0, r5, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -357,7 +357,7 @@ _08051EE2:
 	movs r0, #0x48
 	ldr r6, [sp, #0x60]
 	strh r0, [r6, #2]
-	ldr r7, _08051F70 @ =gUnknown_02002920
+	ldr r7, _08051F70 @ =gOptionsData
 	movs r1, #0xa
 	ldrsh r0, [r7, r1]
 	cmp r0, #0
@@ -369,7 +369,7 @@ _08051EE2:
 _08051F64: .4byte gUnknown_0200C890
 _08051F68: .4byte gUnknown_0200B978
 _08051F6C: .4byte gUnknown_0200C948
-_08051F70: .4byte gUnknown_02002920
+_08051F70: .4byte gOptionsData
 _08051F74: .4byte gUnknown_0200CA00
 _08051F78: .4byte gUnknown_086BB9EC
 _08051F7C: .4byte gUnknown_0200B3B8
@@ -429,7 +429,7 @@ _08051FB2:
 	movs r0, #0x48
 	ldr r2, _080520DC @ =gUnknown_0200B978
 	strh r0, [r2, #2]
-	ldr r3, _080520E0 @ =gUnknown_02002920
+	ldr r3, _080520E0 @ =gOptionsData
 	movs r4, #0xc
 	ldrsh r0, [r3, r4]
 	lsls r0, r0, #1
@@ -462,7 +462,7 @@ _08051FB2:
 	strb r0, [r1]
 	movs r7, #0
 	mov ip, r7
-	ldr r0, _080520E0 @ =gUnknown_02002920
+	ldr r0, _080520E0 @ =gOptionsData
 	str r0, [sp, #0x68]
 	movs r1, #0x54
 	str r1, [sp, #0x80]
@@ -545,7 +545,7 @@ _080520D0: .4byte gOamBuffer
 _080520D4: .4byte 0xFFFFFE00
 _080520D8: .4byte 0x000001FF
 _080520DC: .4byte gUnknown_0200B978
-_080520E0: .4byte gUnknown_02002920
+_080520E0: .4byte gOptionsData
 _080520E4: .4byte gUnknown_086BB9A8
 _080520E8:
 	mov r2, r8
@@ -825,7 +825,7 @@ _08052304:
 	movs r0, #0xaa
 	ldr r2, [sp, #0x64]
 	strh r0, [r2, #2]
-	ldr r0, _080524AC @ =gUnknown_02002920
+	ldr r0, _080524AC @ =gOptionsData
 	adds r0, #0x2a
 	ldrb r0, [r0]
 	lsls r1, r0, #1
@@ -864,7 +864,7 @@ _08052304:
 	ldr r3, _080524B0 @ =gUnknown_0200C948
 	strh r0, [r3, #2]
 	strh r5, [r3, #4]
-	ldr r6, _080524AC @ =gUnknown_02002920
+	ldr r6, _080524AC @ =gOptionsData
 	adds r6, #0x2d
 	mov sl, r6
 	adds r5, r3, #0
@@ -941,7 +941,7 @@ _0805236C:
 	lsls r2, r2, #3
 	ldr r3, _08052494 @ =gOamBuffer
 	adds r2, r2, r3
-	ldr r5, _080524AC @ =gUnknown_02002920
+	ldr r5, _080524AC @ =gOptionsData
 	adds r5, #0x2f
 	movs r1, #0
 	ldrsb r1, [r5, r1]
@@ -1030,7 +1030,7 @@ _0805249C: .4byte 0x000003FF
 _080524A0: .4byte 0xFFFFFC00
 _080524A4: .4byte 0x000001FF
 _080524A8: .4byte 0xFFFFFE00
-_080524AC: .4byte gUnknown_02002920
+_080524AC: .4byte gOptionsData
 _080524B0: .4byte gUnknown_0200C948
 _080524B4: .4byte gUnknown_0200CA00
 _080524B8: .4byte gMain
@@ -1038,7 +1038,7 @@ _080524B8: .4byte gMain
 	thumb_func_start sub_524BC
 sub_524BC: @ 0x080524BC
 	push {r4, r5, lr}
-	ldr r1, _0805251C @ =gUnknown_02002920
+	ldr r1, _0805251C @ =gOptionsData
 	movs r2, #0x28
 	ldrsh r0, [r1, r2]
 	adds r2, r1, #0
@@ -1088,7 +1088,7 @@ _08052514:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805251C: .4byte gUnknown_02002920
+_0805251C: .4byte gOptionsData
 _08052520: .4byte gMain
 _08052524: .4byte 0x000003F7
 

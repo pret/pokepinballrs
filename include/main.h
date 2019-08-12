@@ -9,10 +9,9 @@ struct SaveData
     /*0x74*/ u8 pokedexFlags[204];
     /*0x140*/ u8 filler140[1];
     /*0x141*/ u8 unk141;
-    /*0x142*/ u8 unk142;
+    /*0x142*/ u8 ballSpeed;
     /*0x143*/ u8 unk143;
-    /*0x144*/ //u8 filler144[0x2D8-0x144];
-              u16 unk144[0x65][2];
+    /*0x144*/ u16 unk144[0x65][2];
     /*0x2D8*/ s8 signature[10];
               u16 checksum;
               u32 unk2E4;
@@ -59,18 +58,20 @@ struct Main
     /*0x40*/ int hasSavedGame;
     /*0x44*/ u8 filler44[0x4];
     /*0x48*/ int rngValue;
-    /*0x4C*/ int unk4C;
+    /*0x4C*/ int frameCount;
     /*0x50*/ int unk50;
     /*0x54*/ u8 filler54[0x20];
+
+    // This field must be accessed using the following macro to produce matching code.
+#define gMain_saveData (*(struct SaveData *)(&gMain.saveData))
     /*0x74*/  struct SaveData saveData;
+
     /*0x2E8*/ struct MainUnk2E8 unk2E8[4];
     /*0x2F8*/ struct SpriteGroup spriteGroups[NUM_SPRITE_GROUPS];
 };
 
 
 extern struct Main gMain;
-//extern struct SaveData gMain_saveData;
-#define gMain_saveData (*(struct SaveData *)(&gMain.saveData))
 extern struct SpriteGroup gUnknown_0200B3B8[];
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
@@ -110,7 +111,7 @@ void SerialIntr(void);
 void Timer3Intr(void);
 void sub_CBC(void);
 void sub_D10(void);
-void sub_D74(void);
+void MainLoopIter(void);
 void DefaultMainCallback(void);
 
 

@@ -74,7 +74,7 @@ gUnknown_020028AA: @ 0x020028AA
 	.space 0x2E
 gUnknown_020028D8: @ 0x020028D8
 	.space 0x48
-gUnknown_02002920: @ 0x02002920
+gOptionsData: @ 0x02002920
 	.space 0x12
 gUnknown_02002932: @ 0x02002932
 	.space 0x3

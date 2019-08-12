@@ -35,7 +35,7 @@ struct OptionsData
     u8 unk30;
 };
 
-extern struct OptionsData gUnknown_02002920;
+extern struct OptionsData gOptionsData;
 
 void OptionsMain(void)
 {
@@ -91,29 +91,29 @@ void sub_513B8(void)
     int i;
     int j;
 
-    gUnknown_02002920.unk0 = 0;
-    gUnknown_02002920.unk2 = 0;
-    gUnknown_02002920.unk4 = 0;
-    gUnknown_02002920.unk6 = 1;
-    gUnknown_02002920.unk8 = 0;
-    gUnknown_02002920.unkA = 0;
-    gUnknown_02002920.unkC = gMain_saveData.unk143;
-    gUnknown_02002920.unkE = 0;
-    gUnknown_02002920.unk10 = 0;
-    gUnknown_02002920.unk12 = 0;
-    gUnknown_02002920.unk13 = 0;
-    gUnknown_02002920.unk14 = 1;
-    gUnknown_02002920.unk15 = 0;
-    gUnknown_02002920.unk16 = 0;
-    gUnknown_02002920.unk17 = 1;
-    gUnknown_02002920.unk18 = 0;
+    gOptionsData.unk0 = 0;
+    gOptionsData.unk2 = 0;
+    gOptionsData.unk4 = 0;
+    gOptionsData.unk6 = 1;
+    gOptionsData.unk8 = 0;
+    gOptionsData.unkA = 0;
+    gOptionsData.unkC = gMain_saveData.unk143;
+    gOptionsData.unkE = 0;
+    gOptionsData.unk10 = 0;
+    gOptionsData.unk12 = 0;
+    gOptionsData.unk13 = 0;
+    gOptionsData.unk14 = 1;
+    gOptionsData.unk15 = 0;
+    gOptionsData.unk16 = 0;
+    gOptionsData.unk17 = 1;
+    gOptionsData.unk18 = 0;
     for (i = 0; i < 6; i++)
-        gUnknown_02002920.unk1A[i] = 0;
-    gUnknown_02002920.unk20 = 0;
-    gUnknown_02002920.unk22 = 0;
+        gOptionsData.unk1A[i] = 0;
+    gOptionsData.unk20 = 0;
+    gOptionsData.unk22 = 0;
     for (i = 0; i < 2; i++)
-        gUnknown_02002920.unk24[i] = 10;
-    gUnknown_02002920.unk28 = 0;
+        gOptionsData.unk24[i] = 10;
+    gOptionsData.unk28 = 0;
     for (i = 0; i < 4; i++)
     {
         for (j = 0; j < 10; j++)
@@ -122,20 +122,20 @@ void sub_513B8(void)
     sub_52528();
     if (gGameBoyPlayerEnabled == 1)
     {
-        gUnknown_02002920.unk2A = gMain_saveData.unk141;
+        gOptionsData.unk2A = gMain_saveData.unk141;
         gMain_saveData.unk141 = 1;
     }
     else
     {
-        gUnknown_02002920.unk2A = 0;
+        gOptionsData.unk2A = 0;
         gMain_saveData.unk141 = 0;
     }
-    gUnknown_02002920.unk2E = 0;
-    gUnknown_02002920.unk2B = 0;
-    gUnknown_02002920.unk2C = 0;
-    gUnknown_02002920.unk2D = 0;
-    gUnknown_02002920.unk2F = 0;
-    gUnknown_02002920.unk30 = 0;
+    gOptionsData.unk2E = 0;
+    gOptionsData.unk2B = 0;
+    gOptionsData.unk2C = 0;
+    gOptionsData.unk2D = 0;
+    gOptionsData.unk2F = 0;
+    gOptionsData.unk30 = 0;
 }
 
 void sub_514B8(void)
@@ -143,86 +143,81 @@ void sub_514B8(void)
     s16 r4;
 
     sub_51C9C();
-    switch (gUnknown_02002920.unk0)
+    switch (gOptionsData.unk0)
     {
     case 0:
         if (gMain.newKeys & 0x40)
         {
-            if (gUnknown_02002920.unkA != 0xD)
+            if (gOptionsData.unkA != 0xD)
             {
-                if (gUnknown_02002920.unkA == 0xE)
+                if (gOptionsData.unkA == 0xE)
                 {
                     m4aSongNumStart(0x67);
-                    gUnknown_02002920.unkA = 0xD;
+                    gOptionsData.unkA = 0xD;
                 }
-                else if (gUnknown_02002920.unkA > 0)
+                else if (gOptionsData.unkA > 0)
                 {
                     m4aSongNumStart(0x67);
-                    gUnknown_02002920.unkA--;
+                    gOptionsData.unkA--;
                 }
             }
         }
-        //_0805152C
         else if (gMain.newKeys & 0x80)
         {
-            if (gUnknown_02002920.unkA < 6)
+            if (gOptionsData.unkA < 6)
             {
                 m4aSongNumStart(0x67);
-                gUnknown_02002920.unkA++;
+                gOptionsData.unkA++;
             }
-            else if (gUnknown_02002920.unkA == 0xD)
+            else if (gOptionsData.unkA == 0xD)
             {
                 m4aSongNumStart(0x67);
-                gUnknown_02002920.unkA = 0xE;
+                gOptionsData.unkA = 0xE;
             }
-            //_0805155E
-            else if (gUnknown_02002920.unkA == 0xE)
+            else if (gOptionsData.unkA == 0xE)
             {
                 m4aSongNumStart(0x67);
-                gUnknown_02002920.unkA = 2;
+                gOptionsData.unkA = 2;
             }
-            // _0805156A 
         }
-        //_0805156C
-        if ((gMain.newKeys & 0x10) && gGameBoyPlayerEnabled == 1 && (u16)gUnknown_02002920.unkA < 2)
+        if ((gMain.newKeys & 0x10) && gGameBoyPlayerEnabled == 1 && (u16)gOptionsData.unkA < 2)
         {
             m4aSongNumStart(0x67);
-            gUnknown_02002920.unkA += 0xD;
+            gOptionsData.unkA += 0xD;
         }
-        if ((gMain.newKeys & 0x20) && gGameBoyPlayerEnabled == 1 && (u16)(gUnknown_02002920.unkA - 13) < 2)
+        if ((gMain.newKeys & 0x20) && gGameBoyPlayerEnabled == 1 && (u16)(gOptionsData.unkA - 13) < 2)
         {
             m4aSongNumStart(0x67);
-            gUnknown_02002920.unkA -= 0xD;
+            gOptionsData.unkA -= 0xD;
         }
-        //_080515C2
         if (gMain.newKeys & 1)
         {
-            switch (gUnknown_02002920.unkA)
+            switch (gOptionsData.unkA)
             {
             case 0:
                 m4aSongNumStart(0x65);
-                gUnknown_02002920.unk0 = 1;
-                gUnknown_02002920.unk18 = 0;
-                gUnknown_02002920.unk30 = 1;
-                if (gUnknown_02002920.unk2E == 1)
+                gOptionsData.unk0 = 1;
+                gOptionsData.unk18 = 0;
+                gOptionsData.unk30 = 1;
+                if (gOptionsData.unk2E == 1)
                 {
-                    gUnknown_02002920.unk2B = 0;
-                    gUnknown_02002920.unk2D = 0;
-                    gUnknown_02002920.unk2C = 0;
-                    gUnknown_02002920.unk2E = 0;
+                    gOptionsData.unk2B = 0;
+                    gOptionsData.unk2D = 0;
+                    gOptionsData.unk2C = 0;
+                    gOptionsData.unk2E = 0;
                 }
                 break;
             case 1:
                 m4aSongNumStart(0x65);
-                gUnknown_02002920.unk0 = 2;
-                gUnknown_02002920.unk18 = 0;
-                gUnknown_02002920.unk30 = 1;
-                if (gUnknown_02002920.unk2E == 1)
+                gOptionsData.unk0 = 2;
+                gOptionsData.unk18 = 0;
+                gOptionsData.unk30 = 1;
+                if (gOptionsData.unk2E == 1)
                 {
-                    gUnknown_02002920.unk2B = 0;
-                    gUnknown_02002920.unk2D = 0;
-                    gUnknown_02002920.unk2C = 0;
-                    gUnknown_02002920.unk2E = 0;
+                    gOptionsData.unk2B = 0;
+                    gOptionsData.unk2D = 0;
+                    gOptionsData.unk2C = 0;
+                    gOptionsData.unk2E = 0;
                 }
                 break;
             case 2:
@@ -230,26 +225,26 @@ void sub_514B8(void)
             case 4:
             case 5:
                 m4aSongNumStart(0x65);
-                gUnknown_02002920.unkC = gUnknown_02002920.unkA - 2;
-                gMain_saveData.unk143 = gUnknown_02002920.unkC; 
+                gOptionsData.unkC = gOptionsData.unkA - 2;
+                gMain_saveData.unk143 = gOptionsData.unkC;
                 break;
             case 6:
                 m4aSongNumStart(0x65);
-                gUnknown_02002920.unkC = gUnknown_02002920.unkA - 2;
-                gMain_saveData.unk143 = gUnknown_02002920.unkC; 
-                gUnknown_02002920.unkA = 7;
-                gUnknown_02002920.unk0 = 3;
+                gOptionsData.unkC = gOptionsData.unkA - 2;
+                gMain_saveData.unk143 = gOptionsData.unkC;
+                gOptionsData.unkA = 7;
+                gOptionsData.unk0 = 3;
                 break;
             case 14:
                 if (gGameBoyPlayerEnabled == 1)
                 {
                     m4aSongNumStart(0x65);
-                    gUnknown_02002920.unk2D = 0;
-                    if (gUnknown_02002920.unk2E == 1)
-                        gUnknown_02002920.unk2E = 0;
-                    gUnknown_02002920.unk2B = 0; 
-                    gUnknown_02002920.unk2C = 0; 
-                    gUnknown_02002920.unk2A = 0; 
+                    gOptionsData.unk2D = 0;
+                    if (gOptionsData.unk2E == 1)
+                        gOptionsData.unk2E = 0;
+                    gOptionsData.unk2B = 0;
+                    gOptionsData.unk2C = 0;
+                    gOptionsData.unk2A = 0;
                 }
                 break;
             case 13:
@@ -257,17 +252,16 @@ void sub_514B8(void)
                 {
                     m4aSongNumStart(0x65);
                     sub_11B0(11);
-                    if (gUnknown_02002920.unk2E == 0)
-                        gUnknown_02002920.unk2E = 1;
+                    if (gOptionsData.unk2E == 0)
+                        gOptionsData.unk2E = 1;
 
-                    gUnknown_02002920.unk2B = 0; 
-                    gUnknown_02002920.unk2C = 0; 
-                    gUnknown_02002920.unk2A = 1; 
+                    gOptionsData.unk2B = 0;
+                    gOptionsData.unk2C = 0;
+                    gOptionsData.unk2A = 1;
                 }
                 break;
             }
         }
-        //_0805177C
         else if (gMain.newKeys & 2)
         {
             m4aSongNumStart(0x66);
@@ -275,209 +269,203 @@ void sub_514B8(void)
             sub_525CC(gMain_saveData.unk143);
 
         }
-        if (!(gMain.unk4C & 7))
-            gUnknown_02002920.unk2 = 1 - gUnknown_02002920.unk2;
+        if (!(gMain.frameCount & 7))
+            gOptionsData.unk2 = 1 - gOptionsData.unk2;
         break;
-    case 1:  // _080517A8
+    case 1:
         if (gMain.heldKeys & 0x20)
         {
-            if (gUnknown_02002920.unk18 == 0)
+            if (gOptionsData.unk18 == 0)
             {
-                gUnknown_02002920.unkE--;
-                gUnknown_02002920.unk18 = 10;
+                gOptionsData.unkE--;
+                gOptionsData.unk18 = 10;
             }
         }
         else if (gMain.heldKeys & 0x10)
         {
-            if (gUnknown_02002920.unk18 == 0)
+            if (gOptionsData.unk18 == 0)
             {
-                gUnknown_02002920.unkE++;
-                gUnknown_02002920.unk18 = 10;
+                gOptionsData.unkE++;
+                gOptionsData.unk18 = 10;
             }
         }
         if (gMain.newKeys & 0x40)
-            gUnknown_02002920.unkE += 10;
+            gOptionsData.unkE += 10;
         else if (gMain.newKeys & 0x80)
-            gUnknown_02002920.unkE -= 10;
-        if (gUnknown_02002920.unkE < 0)
-            gUnknown_02002920.unkE = 33;
-        if (gUnknown_02002920.unkE > 33)
-            gUnknown_02002920.unkE = 0;
+            gOptionsData.unkE -= 10;
+        if (gOptionsData.unkE < 0)
+            gOptionsData.unkE = 33;
+        if (gOptionsData.unkE > 33)
+            gOptionsData.unkE = 0;
 
-        r4 = gUnknown_02002920.unkE + 1;
-        gUnknown_02002920.unk12 = r4 / 100;
+        r4 = gOptionsData.unkE + 1;
+        gOptionsData.unk12 = r4 / 100;
         r4 %= 100;
-        gUnknown_02002920.unk13 = r4 / 10;
-        gUnknown_02002920.unk14 = r4 % 10;
+        gOptionsData.unk13 = r4 / 10;
+        gOptionsData.unk14 = r4 % 10;
         if (gMain.newKeys & 1)
         {
             m4aMPlayAllStop();
-            m4aSongNumStart(gUnknown_08527D22[gUnknown_02002920.unkE]);
+            m4aSongNumStart(gUnknown_08527D22[gOptionsData.unkE]);
         }
         else if (gMain.newKeys & 2)
         {
             m4aMPlayAllStop();
             m4aSongNumStart(0x66);
-            gUnknown_02002920.unk4 = 0;
-            gUnknown_02002920.unk30 = 0;
-            gUnknown_02002920.unk0 = 0;
+            gOptionsData.unk4 = 0;
+            gOptionsData.unk30 = 0;
+            gOptionsData.unk0 = 0;
         }
-        //_080518AA
-        if (!(gMain.unk4C & 7))
-            gUnknown_02002920.unk4 = 1 - gUnknown_02002920.unk4;
-        if (gUnknown_02002920.unk18 > 0)
-            gUnknown_02002920.unk18--;
+        if (!(gMain.frameCount & 7))
+            gOptionsData.unk4 = 1 - gOptionsData.unk4;
+        if (gOptionsData.unk18 > 0)
+            gOptionsData.unk18--;
         break;
     case 2:
         if (gMain.heldKeys & 0x20)
         {
-            if (gUnknown_02002920.unk18 == 0)
+            if (gOptionsData.unk18 == 0)
             {
-                gUnknown_02002920.unk10--;
-                gUnknown_02002920.unk18 = 10;
+                gOptionsData.unk10--;
+                gOptionsData.unk18 = 10;
             }
         }
         else if (gMain.heldKeys & 0x10)
         {
-            if (gUnknown_02002920.unk18 == 0)
+            if (gOptionsData.unk18 == 0)
             {
-                gUnknown_02002920.unk10++;
-                gUnknown_02002920.unk18 = 10;
+                gOptionsData.unk10++;
+                gOptionsData.unk18 = 10;
             }
         }
-        //_08051918
         if (gMain.newKeys & 0x40)
-            gUnknown_02002920.unk10 += 10;
+            gOptionsData.unk10 += 10;
         else if (gMain.newKeys & 0x80)
-            gUnknown_02002920.unk10 -= 10;
-        if (gUnknown_02002920.unk10 < 0)
-            gUnknown_02002920.unk10 = 0xB7;
-        if (gUnknown_02002920.unk10 > 0xB7)
-            gUnknown_02002920.unk10 = 0;
+            gOptionsData.unk10 -= 10;
+        if (gOptionsData.unk10 < 0)
+            gOptionsData.unk10 = 0xB7;
+        if (gOptionsData.unk10 > 0xB7)
+            gOptionsData.unk10 = 0;
 
-        r4 = gUnknown_02002920.unk10 + 1;
-        gUnknown_02002920.unk15 = r4 / 100;
+        r4 = gOptionsData.unk10 + 1;
+        gOptionsData.unk15 = r4 / 100;
         r4 %= 100;
-        gUnknown_02002920.unk16 = r4 / 10;
-        gUnknown_02002920.unk17 = r4 % 10;
+        gOptionsData.unk16 = r4 / 10;
+        gOptionsData.unk17 = r4 % 10;
         if (gMain.newKeys & 0x1)
         {
             m4aMPlayAllStop();
-            m4aSongNumStart(gUnknown_08527D66[gUnknown_02002920.unk10]);
+            m4aSongNumStart(gUnknown_08527D66[gOptionsData.unk10]);
         }
         else if (gMain.newKeys & 0x2)
         {
             m4aMPlayAllStop();
             m4aSongNumStart(0x66);
-            gUnknown_02002920.unk4 = 0;
-            gUnknown_02002920.unk30 = 0;
-            gUnknown_02002920.unk0 = 0;
+            gOptionsData.unk4 = 0;
+            gOptionsData.unk30 = 0;
+            gOptionsData.unk0 = 0;
         }
-        if (!(gMain.unk4C & 7))
-            gUnknown_02002920.unk4 = 1 - gUnknown_02002920.unk4;
-        if (gUnknown_02002920.unk18 > 0)
-            gUnknown_02002920.unk18--;
+        if (!(gMain.frameCount & 7))
+            gOptionsData.unk4 = 1 - gOptionsData.unk4;
+        if (gOptionsData.unk18 > 0)
+            gOptionsData.unk18--;
         break;
-    case 3:  //_08051A08
+    case 3:
         if (gMain.newKeys & 0x40)
         {
-            if (gUnknown_02002920.unkA > 7)
+            if (gOptionsData.unkA > 7)
             {
                 m4aSongNumStart(0x67);
-                gUnknown_02002920.unkA--;
+                gOptionsData.unkA--;
             }
         }
-        //_08051A34
         else if (gMain.newKeys & 0x80)
         {
-            if (gUnknown_02002920.unkA <= 10)
+            if (gOptionsData.unkA <= 10)
             {
                 m4aSongNumStart(0x67);
-                gUnknown_02002920.unkA++;
+                gOptionsData.unkA++;
             }
         }
-        //_08051A52
         if (gMain.newKeys & 1)
         {
             m4aSongNumStart(0x65);
-            gUnknown_02002920.unk0 = 4;
-            gUnknown_02002920.unk1A[gUnknown_02002920.unkA - 7] = 1;
+            gOptionsData.unk0 = 4;
+            gOptionsData.unk1A[gOptionsData.unkA - 7] = 1;
         }
-        //_08051A80
         else if (gMain.newKeys & 2)
         {
             m4aSongNumStart(0x66);
-            gUnknown_02002920.unkA = 6;
-            gUnknown_02002920.unk0 = 0;
+            gOptionsData.unkA = 6;
+            gOptionsData.unk0 = 0;
         }
-        //_08051A96 
-        if (!(gMain.unk4C & 7))
-            gUnknown_02002920.unk2 = 1 - gUnknown_02002920.unk2;
+        if (!(gMain.frameCount & 7))
+            gOptionsData.unk2 = 1 - gOptionsData.unk2;
         break;
     case 4:
-        gUnknown_02002920.unk8++;
-        if (gUnknown_02002920.unk8 > 24)
+        gOptionsData.unk8++;
+        if (gOptionsData.unk8 > 24)
         {
-            gUnknown_02002920.unk8 = 0;
-            gUnknown_02002920.unk6 = 1 - gUnknown_02002920.unk6;
+            gOptionsData.unk8 = 0;
+            gOptionsData.unk6 = 1 - gOptionsData.unk6;
         }
         if (gMain.newKeys & 0x3F7)
         {
             s16 i;
 
             m4aSongNumStart(0x65);
-            gUnknown_02002920.unk20 = 10;
-            gUnknown_02002920.unk22 = 0;
+            gOptionsData.unk20 = 10;
+            gOptionsData.unk22 = 0;
             for (i = 0; i < 2; i++)
-                gUnknown_02002920.unk24[i] = 10;
-            gUnknown_02002920.unk28 = 0;
+                gOptionsData.unk24[i] = 10;
+            gOptionsData.unk28 = 0;
         }
         //_08051B0E
-        if (gUnknown_02002920.unk20 > 0)
+        if (gOptionsData.unk20 > 0)
         {
             sub_524BC();
-            gUnknown_02002920.unk20--;
-            if (gUnknown_02002920.unk20 == 0)
+            gOptionsData.unk20--;
+            if (gOptionsData.unk20 == 0)
             {
-                gUnknown_02031AF0[4][(gUnknown_02002920.unkA - 7) * 2 + 0] = gUnknown_02002920.unk24[0];
-                gUnknown_02031AF0[4][(gUnknown_02002920.unkA - 7) * 2 + 1] = gUnknown_02002920.unk24[1];
-                gMain_saveData.unk144[(gUnknown_02002920.unkA - 7)][0] = gUnknown_086BB910[gUnknown_02002920.unk24[0]][0];
-                gMain_saveData.unk144[(gUnknown_02002920.unkA - 7)][1] = gUnknown_086BB910[gUnknown_02002920.unk24[1]][0];
-                gUnknown_02002920.unk0 = 3;
-                gUnknown_02002920.unk1A[gUnknown_02002920.unkA - 7] = 0;
-                gUnknown_02002920.unk8 = 0;
-                gUnknown_02002920.unk6 = 1;
+                gUnknown_02031AF0[4][(gOptionsData.unkA - 7) * 2 + 0] = gOptionsData.unk24[0];
+                gUnknown_02031AF0[4][(gOptionsData.unkA - 7) * 2 + 1] = gOptionsData.unk24[1];
+                gMain_saveData.unk144[(gOptionsData.unkA - 7)][0] = gUnknown_086BB910[gOptionsData.unk24[0]][0];
+                gMain_saveData.unk144[(gOptionsData.unkA - 7)][1] = gUnknown_086BB910[gOptionsData.unk24[1]][0];
+                gOptionsData.unk0 = 3;
+                gOptionsData.unk1A[gOptionsData.unkA - 7] = 0;
+                gOptionsData.unk8 = 0;
+                gOptionsData.unk6 = 1;
             }
         }
         break;
     }
     //_08051B98
-    if (gUnknown_02002920.unk2E == 1)
+    if (gOptionsData.unk2E == 1)
     {
-        //gUnknown_02002920.unk2B++;
-        if (++gUnknown_02002920.unk2B > gUnknown_086BB9B4[gUnknown_02002920.unk2C].unk2)
+        //gOptionsData.unk2B++;
+        if (++gOptionsData.unk2B > gUnknown_086BB9B4[gOptionsData.unk2C].unk2)
         {
-            gUnknown_02002920.unk2B = 0;
-            gUnknown_02002920.unk2C++;
-            if (gUnknown_02002920.unk2C > 12)
+            gOptionsData.unk2B = 0;
+            gOptionsData.unk2C++;
+            if (gOptionsData.unk2C > 12)
             {
-                gUnknown_02002920.unk2C = 0;
-                gUnknown_02002920.unk2D = 0;
-                gUnknown_02002920.unk2E = 0;
+                gOptionsData.unk2C = 0;
+                gOptionsData.unk2D = 0;
+                gOptionsData.unk2E = 0;
             }
             //_08051BE8
-            gUnknown_02002920.unk2D = gUnknown_086BB9B4[gUnknown_02002920.unk2C].unk0;
+            gOptionsData.unk2D = gUnknown_086BB9B4[gOptionsData.unk2C].unk0;
         }
         // _08051C30
     }
     else
     //_08051C10
     {
-        gUnknown_02002920.unk2B++;
-        if (gUnknown_02002920.unk2B > 18)
+        gOptionsData.unk2B++;
+        if (gOptionsData.unk2B > 18)
         {
-            gUnknown_02002920.unk2B = 0;
-            gUnknown_02002920.unk2D = 1 - gUnknown_02002920.unk2D;
+            gOptionsData.unk2B = 0;
+            gOptionsData.unk2D = 1 - gOptionsData.unk2D;
         }
     }
     sub_11FC();
@@ -495,13 +483,13 @@ void sub_51C3C(void)
 
 void sub_51C60(void)
 {
-    gMain_saveData.unk141 = gUnknown_02002920.unk2A;
+    gMain_saveData.unk141 = gOptionsData.unk2A;
     SaveFile_WriteToSram();
     sub_2B4();
     m4aMPlayAllStop();
     sub_D10();
     gAutoDisplayTitlescreenMenu = 1;
-    SetMainGameState(1);
+    SetMainGameState(STATE_TITLE);
 }
 
 /*
