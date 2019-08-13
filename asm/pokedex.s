@@ -27,7 +27,7 @@ sub_3DCC: @ 0x08003DCC
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x86
@@ -1684,7 +1684,7 @@ _08004C2A:
 	adds r2, #1
 	cmp r2, #0xcc
 	ble _08004C2A
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10
@@ -1760,7 +1760,7 @@ _08004CC2:
 	movs r0, #1
 	mov r1, ip
 	strh r0, [r1]
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10

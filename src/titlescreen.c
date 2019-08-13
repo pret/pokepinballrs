@@ -31,7 +31,7 @@ void LoadTitlescreenGraphics(void)
 {
     int autoDisplayMenu;
 
-    sub_438();
+    ResetSomeGraphicsRelatedStuff();
     REG_DISPCNT = DISPCNT_OBJ_ON| DISPCNT_FORCED_BLANK;
     REG_BG1CNT = BGCNT_256COLOR | BGCNT_PRIORITY(1) | BGCNT_CHARBASE(1) | BGCNT_SCREENBASE(0);
     REG_DISPCNT |= DISPCNT_BG1_ON;
@@ -41,7 +41,7 @@ void LoadTitlescreenGraphics(void)
     DmaCopy16(3, gTitlescreenBg_Pals, (void *)BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gTitlescreenBgTilemap, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 
-    sub_52C44();
+    SaveFile_ReadSavedGamePresent();
     if (gMain.hasSavedGame == TRUE)
     {
         DmaCopy16(3, gTitlescreenSprites_Pals, (void *)OBJ_PLTT, 0xA0);
@@ -862,7 +862,7 @@ void sub_11968(void)
 void sub_11B74(void)
 {
     sub_52C64();
-    sub_52B30();
+    SaveFile_WriteToSram();
     gMain.hasSavedGame = FALSE;
     WriteAndVerifySramFast((const u8 *)&gMain.hasSavedGame, (void *)0x0E000544, sizeof(gMain.hasSavedGame));
 }

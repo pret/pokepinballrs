@@ -56,7 +56,7 @@ void sub_10798(void *a, void *b, void (*func)(void))
         if (func != NULL)
             func();
         sub_1001C(i);
-        sub_D74();
+        MainLoopIter();
         if (i == 32)
         {
             DmaCopy16(3, gUnknown_0201A920, (void *)PLTT, 0x400);
@@ -81,7 +81,7 @@ void sub_10860(void (*func)(void))
         if (func != NULL)
             func();
         sub_1001C(i);
-        sub_D74();
+        MainLoopIter();
         if (i == 32)
         {
             DmaCopy16(3, gUnknown_0201A920, (void *)PLTT, 0x400);
@@ -91,12 +91,12 @@ void sub_10860(void (*func)(void))
             DmaCopy16(3, gUnknown_0201AD20, (void *)PLTT, 0x400);
         }
     }
-    sub_D74();
+    MainLoopIter();
 }
 
 #ifdef NONMATCHING
 // Like sub_C24, it matches except for that damn 'push {lr}/pop {lr}'
-void sub_1090C(void)
+void ClearSomeArray(void)
 {
     int i;
     
@@ -105,7 +105,7 @@ void sub_1090C(void)
 }
 #else
 NAKED
-void sub_1090C(void)
+void ClearSomeArray(void)
 {
     asm_unified("\n\
 	ldr r1, _08010920 @ =gUnknown_0201A500\n\

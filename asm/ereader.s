@@ -26,7 +26,7 @@ sub_2C78: @ 0x08002C78
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x86
@@ -922,7 +922,7 @@ sub_343C: @ 0x0800343C
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x86

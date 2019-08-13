@@ -40,7 +40,7 @@ _0800CE84: .4byte gMain
 	thumb_func_start sub_CE88
 sub_CE88: @ 0x0800CE88
 	push {r4, r5, r6, r7, lr}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x84
@@ -1320,7 +1320,7 @@ _0800D8CE:
 	mov r3, sb
 	cmp r3, #1
 	ble _0800D8AC
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	ldr r1, _0800D8FC @ =gMain
 	movs r0, #3
 	strb r0, [r1, #3]
@@ -1772,7 +1772,7 @@ _0800DC88:
 	mov r2, sb
 	cmp r2, #1
 	ble _0800DC68
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10
@@ -1813,7 +1813,7 @@ sub_DCF0: @ 0x0800DCF0
 	movs r0, #0x65
 	bl m4aSongNumStart
 	bl sub_F6E0
-	bl sub_52B30
+	bl SaveFile_WriteToSram
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10
@@ -1864,7 +1864,7 @@ sub_DD70: @ 0x0800DD70
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x84
@@ -2283,7 +2283,7 @@ sub_E0EC: @ 0x0800E0EC
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x84
@@ -5917,7 +5917,7 @@ _0800FDAA:
 _0800FDB4:
 	adds r0, r7, #0
 	bl sub_1001C
-	bl sub_D74
+	bl MainLoopIter
 	cmp r7, #0x1f
 	bne _0800FDE0
 	ldr r0, _0800FDCC @ =gUnknown_0201A920
@@ -5995,7 +5995,7 @@ _0800FE4C:
 _0800FE54:
 	adds r0, r7, #0
 	bl sub_1001C
-	bl sub_D74
+	bl MainLoopIter
 	cmp r7, #0x1f
 	bne _0800FE84
 	ldr r0, _0800FE80 @ =gUnknown_0201A920
@@ -6024,8 +6024,8 @@ _0800FE8C:
 	cmp r7, #0x1f
 	bls _0800FE4C
 	bl sub_10528
-	bl sub_D74
-	bl sub_490
+	bl MainLoopIter
+	bl ClearGraphicsMemory
 	add sp, #4
 	pop {r3}
 	mov r8, r3
@@ -6092,7 +6092,7 @@ _0800FF18:
 _0800FF22:
 	adds r0, r7, #0
 	bl sub_1001C
-	bl sub_D74
+	bl MainLoopIter
 	cmp r7, #0x1f
 	bne _0800FF50
 	ldr r0, _0800FF38 @ =gUnknown_0201A920
@@ -6170,7 +6170,7 @@ _0800FFBA:
 _0800FFC2:
 	adds r0, r7, #0
 	bl sub_1001C
-	bl sub_D74
+	bl MainLoopIter
 	cmp r7, #0x1f
 	bne _0800FFF0
 	ldr r0, _0800FFEC @ =gUnknown_0201A920
@@ -6197,7 +6197,7 @@ _0800FFF8:
 	lsrs r7, r0, #0x10
 	cmp r7, #0x1f
 	bls _0800FFBA
-	bl sub_D74
+	bl MainLoopIter
 	add sp, #4
 	pop {r3}
 	mov r8, r3
@@ -6770,12 +6770,12 @@ sub_10424: @ 0x08010424
 	movs r5, #0
 	strh r0, [r1, #0x16]
 	strh r3, [r4]
-	bl sub_D74
+	bl MainLoopIter
 	movs r0, #8
 	strh r0, [r4]
-	bl sub_D74
+	bl MainLoopIter
 	strh r5, [r4]
-	bl sub_D74
+	bl MainLoopIter
 	strh r5, [r6]
 	pop {r4, r5, r6}
 	pop {r0}
@@ -6805,13 +6805,13 @@ sub_10480: @ 0x08010480
 	orrs r0, r1
 	strh r0, [r2]
 	strh r4, [r5]
-	bl sub_D74
+	bl MainLoopIter
 	movs r0, #8
 	strh r0, [r5]
-	bl sub_D74
+	bl MainLoopIter
 	movs r0, #0x10
 	strh r0, [r5]
-	bl sub_D74
+	bl MainLoopIter
 	mov r0, sp
 	strh r4, [r0]
 	ldr r1, _08010500 @ =0x040000D4
@@ -6838,7 +6838,7 @@ sub_10480: @ 0x08010480
 	strh r4, [r0]
 	adds r0, #2
 	strh r4, [r0]
-	bl sub_D74
+	bl MainLoopIter
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}

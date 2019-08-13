@@ -63,6 +63,22 @@
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) >= (b) ? (a) : (b))
 
+enum
+{
+    STATE_INTRO,
+    STATE_TITLE,
+    STATE_GAME_MAIN,
+    STATE_GAME_IDLE,
+    STATE_OPTIONS,
+    STATE_POKEDEX,
+    STATE_UNKNOWN6,
+    STATE_EREADER,
+    STATE_SCORES_MAIN,
+    STATE_SCORES_IDLE,
+    STATE_FIELD_SELECT,
+    STATE_BONUS_FIELD_SELECT,
+};
+
 struct PinballGame
 {
 	/*0x000*/ u8 filler0[0x35];

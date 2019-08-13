@@ -620,9 +620,9 @@ sub_1884: @ 0x08001884
 	mov r1, r8
 	strh r0, [r1]
 	ldr r0, _08001960 @ =sub_19CC + 1
-	bl sub_898
+	bl SetMainCallback
 	ldr r0, _08001964 @ =sub_1A78 + 1
-	bl sub_8D4
+	bl SetVBlankIntrFunc
 	strh r4, [r5]
 	ldrh r0, [r6]
 	movs r1, #0x80
@@ -2250,8 +2250,8 @@ sub_2568: @ 0x08002568
 	ldr r4, _08002594 @ =0x04000208
 	movs r0, #0
 	strh r0, [r4]
-	bl sub_8BC
-	bl sub_8FC
+	bl ResetMainCallback
+	bl ResetVBlankIntrFunc
 	ldr r1, _08002598 @ =0x04000200
 	ldr r2, _0800259C @ =0x00002005
 	adds r0, r2, #0

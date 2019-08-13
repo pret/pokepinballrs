@@ -38,7 +38,7 @@ gUnknown_02002830: @ 0x02002830
 	.space 0x1
 gUnknown_02002831: @ 0x02002831
 	.space 0x7
-gUnknown_02002838: @ 0x02002838
+gFieldSelectData: @ 0x02002838
 	.space 0x18
 gUnknown_02002850: @ 0x02002850
 	.space 0x8
@@ -74,7 +74,7 @@ gUnknown_020028AA: @ 0x020028AA
 	.space 0x2E
 gUnknown_020028D8: @ 0x020028D8
 	.space 0x48
-gUnknown_02002920: @ 0x02002920
+gOptionsData: @ 0x02002920
 	.space 0x12
 gUnknown_02002932: @ 0x02002932
 	.space 0x3
@@ -94,9 +94,7 @@ gUnknown_020030A0: @ 0x020030A0
 	.space 0x8020
 gMain: @ 0x200B0C0
 	.space 0x40
-gUnknown_0200B100: @ 0x0200B100
 	.space 0x34
-gUnknown_0200B134: @ 0x0200B134
 	.space 0x5A
 gUnknown_0200B18E: @ 0x0200B18E
 	.space 0x76
@@ -230,9 +228,9 @@ gUnknown_0200EBC8: @ 0x0200EBC8
 	.space 0x2E0
 gUnknown_0200EEA8: @ 0x0200EEA8
 	.space 0xCF0
-gUnknown_0200FB98: @ 0x200FB98
+gVBlankIntrFuncPtr: @ 0x200FB98
 	.space 0x4
-gUnknown_0200FB9C: @ 0x200FB9C
+gMainCallback: @ 0x200FB9C
 	.space 0x4
 gUnknown_0200FBA0: @ 0x200FBA0
 	.space 0x10
@@ -244,7 +242,7 @@ gUnknown_02017BD4: @ 0x2017BD4
 	.space 0xC
 gUnknown_02017BE0: @ 0x2017BE0
 	.space 0x2000
-gUnknown_02019BE0: @ 0x2019BE0
+gVCountIntrFuncPtr: @ 0x2019BE0
 	.space 0x4
 gUnknown_02019BE4: @ 0x2019BE4
 	.space 0x4

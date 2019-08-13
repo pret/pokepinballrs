@@ -1,57 +1,53 @@
 #include "global.h"
 #include "main.h"
 
-u16 sub_850(void)
+u16 IsInVblank(void)
 {
-    if (REG_IME & INTR_FLAG_VBLANK
-     && REG_DISPSTAT & DISPSTAT_VBLANK_INTR
-     && REG_IE & INTR_FLAG_VBLANK
-     && !(REG_DISPCNT & DISPCNT_FORCED_BLANK))
-    {
-        return 1;
-    }
+    if ((REG_IME & 1)                           // Interrupts enabled
+     && (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)   // In VBLANK
+     && (REG_IE & INTR_FLAG_VBLANK)             // VBlank interrupt enabled
+     && !(REG_DISPCNT & DISPCNT_FORCED_BLANK))  // Ignore VBlank interrupts during forced blank
+        return TRUE;
     else
-    {
-        return 0;
-    }
+        return FALSE;
 }
 
-void sub_898(void (*func)(void))
+void SetMainCallback(void (*func)(void))
 {
     gUnknown_02017BD4 = func;
-    if (!sub_850())
-        gUnknown_0200FB9C = func;
+    if (!IsInVblank())
+        gMainCallback = func;
 }
 
-void sub_8BC(void)
+void ResetMainCallback(void)
 {
-    gUnknown_0200FB9C = sub_DC4;
-    gUnknown_02017BD4 = sub_DC4;
+    gMainCallback = DefaultMainCallback;
+    gUnknown_02017BD4 = DefaultMainCallback;
 }
 
-void sub_8D4(void (*func)(void))
+void SetVBlankIntrFunc(void (*func)(void))
 {
     gUnknown_02017BD0 = func;
-    if (!sub_850())
-        *gUnknown_0200FB98 = func;
+    if (!IsInVblank())
+        *gVBlankIntrFuncPtr = func;
 }
 
-void sub_8FC(void)
+void ResetVBlankIntrFunc(void)
 {
-    *gUnknown_0200FB98 = HBlankIntr;
-    gUnknown_02017BD0 = HBlankIntr;
+    *gVBlankIntrFuncPtr = VBlankIntr;
+    gUnknown_02017BD0 = VBlankIntr;
 }
 
-void sub_918(void (*func)(void))
+void SetVCountIntrFunc(void (*func)(void))
 {
     gUnknown_0200FBA0 = func;
-    if (!sub_850())
-        *gUnknown_02019BE0 = func;
+    if (!IsInVblank())
+        *gVCountIntrFuncPtr = func;
 }
 
-void sub_940(void)
+void ResetVCountIntrFunc(void)
 {
-    *gUnknown_02019BE0 = VCountIntr;
+    *gVCountIntrFuncPtr = VCountIntr;
     gUnknown_0200FBA0 = VCountIntr;
 }
 

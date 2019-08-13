@@ -35770,7 +35770,7 @@ _08023B36:
 	movs r4, #0
 	ldrsh r0, [r0, r4]
 	movs r1, #1
-	bl sub_52BB0
+	bl SaveFile_SetPokedexFlags
 _08023B66:
 	ldr r5, _08023C94 @ =gUnknown_020314E0
 	ldr r0, [r5]
@@ -44250,7 +44250,7 @@ _08028040:
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	movs r1, #1
-	bl sub_52BB0
+	bl SaveFile_SetPokedexFlags
 _08028060:
 	ldr r0, _08028070 @ =gUnknown_020314E0
 	ldr r1, [r0]
@@ -60704,7 +60704,7 @@ _0803062E:
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	movs r1, #1
-	bl sub_52BB0
+	bl SaveFile_SetPokedexFlags
 _0803065E:
 	ldr r5, _08030784 @ =gUnknown_020314E0
 	ldr r0, [r5]
@@ -63561,7 +63561,7 @@ sub_31CF8: @ 0x08031CF8
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	movs r1, #4
-	bl sub_52BB0
+	bl SaveFile_SetPokedexFlags
 _08031D20:
 	ldr r2, _08031D88 @ =gUnknown_086A3700
 	ldr r1, _08031D84 @ =gUnknown_020314E0
@@ -63757,7 +63757,7 @@ _08031E7C:
 	beq _08031E94
 	movs r0, #0x2b
 	movs r1, #4
-	bl sub_52BB0
+	bl SaveFile_SetPokedexFlags
 _08031E94:
 	mov r2, r8
 	ldr r0, [r2]
@@ -63789,7 +63789,7 @@ _08031EB4:
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	movs r1, #4
-	bl sub_52BB0
+	bl SaveFile_SetPokedexFlags
 _08031ECE:
 	ldr r2, _08031F1C @ =gUnknown_086A3700
 	ldr r1, _08031F20 @ =gUnknown_020314E0

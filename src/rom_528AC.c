@@ -5,6 +5,9 @@
 
 extern const u16 gUnknown_08527F18[];
 
+static void sub_52940(u16, s8, s8, u8, int);
+static u16 LoadSaveDataFromSram(void);
+
 #ifdef NONMATCHING
 // Like sub_C24, it matches except for that damn 'push {lr}/pop {lr}'
 int sub_528AC(u16 a)
@@ -46,8 +49,6 @@ _080528DA:\n\
 }
 #endif
 
-void sub_52940(u16, s8, s8, u8, int);
-
 void sub_528DC(u16 a, s8 b)
 {
     m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x99);
@@ -59,12 +60,7 @@ void sub_5291C(u16 a, s8 b, s8 c, u8 d)
     sub_52940(a, b, c, d, 0);
 }
 
-extern struct ToneData gUnknown_08532D6C[];
-extern struct ToneData gUnknown_08533360[];
-extern struct ToneData gUnknown_08533960[];
-extern struct ToneData gUnknown_08533F60[];
-
-void sub_52940(u16 a, s8 b, s8 c, u8 d, int unused)
+static void sub_52940(u16 a, s8 b, s8 c, u8 d, int unused)
 {
     u16 r5 = a - 1;
     u32 pitch = 0x3C00;
@@ -100,18 +96,15 @@ void sub_52940(u16 a, s8 b, s8 c, u8 d, int unused)
     }
 }
 
-extern u16 sub_52A68(void);
-extern void sub_525CC(s8);
-
-void sub_52A18(void)
+void SaveFile_LoadGameData(void)
 {
     SetSramFastFunc();
     gMain.unkC = 0;
-    if (sub_52A68() == 0)
+    if (LoadSaveDataFromSram() == 0)
     {
         sub_52C64();
-        sub_52B30();
-        if (sub_52A68() == 0)
+        SaveFile_WriteToSram();
+        if (LoadSaveDataFromSram() == 0)
         {
             gMain.unkC = 1;
             sub_52C64();
@@ -119,16 +112,15 @@ void sub_52A18(void)
     }
     else
     {
-        sub_525CC(gMain.saveData.unk143);
+        sub_525CC(gMain_saveData.unk143);
     }
 }
 
-extern struct Main2 gMain_;
 extern u8 gSaveFileSignature[];
 
-u16 sub_52A68(void)
+static u16 LoadSaveDataFromSram(void)
 {
-    u16 r8 = 0;
+    u16 isOk = FALSE;
     u16 fileNum;
     u16 i;
     u32 checksum;
@@ -136,15 +128,15 @@ u16 sub_52A68(void)
     // Looks like there are two copies of the save data, one used as a backup?
     for (fileNum = 0; fileNum < 2; fileNum++)
     {
-        u16 *saveData = (u16 *)&gMain.saveData;
-        u32 size = 0x274;
+        u16 *saveData = (u16 *)&gMain_saveData;
+        size_t size = sizeof(gMain_saveData);
 
-        ReadSramFast((u8 *)0x0E000004 + fileNum * 672, (u8 *)saveData, size);
+        ReadSramFast((void *)(SRAM + 0x4 + fileNum * 672), (u8 *)saveData, size);
 
         // Verify signature
         for (i = 0; i < 10; i++)
         {
-            if (gMain.saveData.signature[i] != gSaveFileSignature[i])
+            if (gMain_saveData.signature[i] != gSaveFileSignature[i])
                 break;
         }
         if (i != 10)
@@ -162,93 +154,82 @@ u16 sub_52A68(void)
         checksum = (checksum & 0xFFFF) + (checksum >> 16);
         if (checksum == 0xFFFF)
         {
-            r8 = 1;
+            isOk = TRUE;
             break;
         }
     }
-    return r8;
+    return isOk;
 }
 
-// I really think gUnknown_0200B134_ is part of gMain, but the code doesn't
-// match if I do that.
-#ifdef NONMATCHING
-#define gUnknown_0200B134_ gMain.saveData
-#else
-extern struct SaveData gUnknown_0200B134_;  // gMain.saveData
-asm(".set gUnknown_0200B134_, gMain+0x74");
-#endif
-
-void sub_52B30(void)
+void SaveFile_WriteToSram(void)
 {
     u32 checksum;
-    u16 *saveData = (u16 *)&gUnknown_0200B134_;
-    u32 size = 0x274;
+    u16 *saveData = (u16 *)&gMain_saveData;
+    size_t size = sizeof(gMain_saveData);
 
-    gUnknown_0200B134_.unk2E4++;
-    gUnknown_0200B134_.unk2E2 = 0;
+    gMain_saveData.unk2E4++;
+    gMain_saveData.checksum = 0;
 
     checksum = 0;
     while (size > 1)
     {
-	checksum += *saveData++;
-	size -= 2;
+        checksum += *saveData++;
+        size -= 2;
     }
     if (size != 0)  // never happens (size is even)
-	checksum += *saveData & 0xFF00;
+        checksum += *saveData & 0xFF00;
     checksum = (checksum & 0xFFFF) + (checksum >> 16);
-    gUnknown_0200B134_.unk2E2 = ~((checksum >> 16) + checksum);
+    gMain_saveData.checksum = ~((checksum >> 16) + checksum);
 
-    WriteAndVerifySramFast((u8 *)&gUnknown_0200B134_, (u8 *)0x0E000004, 0x274);
-    WriteAndVerifySramFast((u8 *)&gUnknown_0200B134_, (u8 *)0x0E0002A4, 0x274);
+    WriteAndVerifySramFast((u8 *)&gMain_saveData, (void *)(SRAM + 0x4),   sizeof(gMain_saveData));
+    WriteAndVerifySramFast((u8 *)&gMain_saveData, (void *)(SRAM + 0x2A4), sizeof(gMain_saveData));
 }
 
-void sub_52BB0(s16 a, u8 b)
+void SaveFile_SetPokedexFlags(s16 a, u8 b)
 {
-    u16 *saveData = (u16 *)&gUnknown_0200B134_;
-    u32 size = 0x274;
+    u16 *saveData = (u16 *)&gMain_saveData;
+    size_t size = sizeof(gMain_saveData);
     u32 checksum;
 
-    if (gUnknown_0200B134_.pokedexFlags[a] < b)
+    if (gMain_saveData.pokedexFlags[a] < b)
     {
-	u16 r1;
+        gMain_saveData.unk2E4++;
+        gMain_saveData.pokedexFlags[a] = b;
+        gMain_saveData.checksum = 0;
 
-	gUnknown_0200B134_.unk2E4++;
-	r1 = 0;
-	gUnknown_0200B134_.pokedexFlags[a] = b;
-	gUnknown_0200B134_.unk2E2 = r1;
+        checksum = 0;
+        while (size > 1)
+        {
+            checksum += *saveData++;
+            size -= 2;
+        }
+        if (size != 0)  // never happens (size is even)
+            checksum += *saveData & 0xFF00;
+        checksum = (checksum & 0xFFFF) + (checksum >> 16);
+        gMain_saveData.checksum = ~((checksum >> 16) + checksum);
 
-	checksum = 0;
-	while (size > 1)
-	{
-	    checksum += *saveData++;
-	    size -= 2;
-	}
-	if (size != 0)  // never happens (size is even)
-	    checksum += *saveData & 0xFF00;
-	checksum = (checksum & 0xFFFF) + (checksum >> 16);
-	gUnknown_0200B134_.unk2E2 = ~((checksum >> 16) + checksum);
-
-	WriteAndVerifySramFast((u8 *)&gUnknown_0200B134_, (u8 *)0x0E000004, 0x274);
-	WriteAndVerifySramFast((u8 *)&gUnknown_0200B134_, (u8 *)0x0E0002A4, 0x274);
+        WriteAndVerifySramFast((u8 *)&gMain_saveData, (void *)(SRAM + 0x4),   sizeof(gMain_saveData));
+        WriteAndVerifySramFast((u8 *)&gMain_saveData, (void *)(SRAM + 0x2A4), sizeof(gMain_saveData));
     }
 }
 
-void sub_52C44(void)
+void SaveFile_ReadSavedGamePresent(void)
 {
-    ReadSramFast((u8 *)0x0E000544, (u8 *)&gMain.hasSavedGame, sizeof(gMain.hasSavedGame));
+    ReadSramFast((void *)(SRAM + 0x544), (u8 *)&gMain.hasSavedGame, sizeof(gMain.hasSavedGame));
 }
 
 void sub_52C64(void)
 {
-    s16 r1;
+    s16 i;
 
-    for (r1 = 0; r1 < 10; r1++)
-	gUnknown_0200B134_.signature[r1] = gSaveFileSignature[r1];
-    gUnknown_0200B134_.unk2E4 = 0;
-    gUnknown_0200B134_.unk141 = 0;
-    gUnknown_0200B134_.unk142 = 0;
+    for (i = 0; i < 10; i++)
+        gMain_saveData.signature[i] = gSaveFileSignature[i];
+
+    gMain_saveData.unk2E4 = 0;
+    gMain_saveData.unk141 = 0;
+    gMain_saveData.ballSpeed = 0;
     sub_525CC(-1);
     sub_F6E0();
     sub_8ABC();
-    gUnknown_0200B134_.unk143 = 0;
+    gMain_saveData.unk143 = 0;
 }

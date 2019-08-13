@@ -23,7 +23,7 @@ _08009298: .4byte gMain
 	thumb_func_start sub_929C
 sub_929C: @ 0x0800929C
 	push {r4, lr}
-	bl sub_438
+	bl ResetSomeGraphicsRelatedStuff
 	movs r3, #0x80
 	lsls r3, r3, #0x13
 	movs r0, #0x80
@@ -70,7 +70,7 @@ sub_929C: @ 0x0800929C
 	ldr r0, _08009340 @ =gUnknown_0202C790
 	strb r2, [r0]
 	ldr r0, _08009344 @ =sub_93F8 + 1
-	bl sub_898
+	bl SetMainCallback
 	bl sub_CBC
 	bl sub_24C
 	ldrb r0, [r4, #3]
@@ -169,7 +169,7 @@ sub_93D0: @ 0x080093D0
 	bl sub_2B4
 	bl m4aMPlayAllStop
 	bl sub_D10
-	bl sub_8BC
+	bl ResetMainCallback
 	ldr r1, _080093F4 @ =gAutoDisplayTitlescreenMenu
 	movs r0, #0
 	strb r0, [r1]
@@ -264,9 +264,9 @@ sub_9498: @ 0x08009498
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	bl sub_490
+	bl ClearGraphicsMemory
 	bl sub_518
-	bl sub_578
+	bl ClearSprites
 	movs r2, #0x80
 	lsls r2, r2, #0x13
 	movs r1, #0x80
@@ -3630,7 +3630,7 @@ sub_B090: @ 0x0800B090
 	push {lr}
 	sub sp, #8
 	bl sub_10480
-	bl sub_578
+	bl ClearSprites
 	movs r2, #0
 	str r2, [sp]
 	ldr r1, _0800B0D4 @ =0x040000D4
@@ -4488,7 +4488,7 @@ _0800B79C: .4byte gUnknown_0202C790
 sub_B7A0: @ 0x0800B7A0
 	push {lr}
 	sub sp, #8
-	bl sub_578
+	bl ClearSprites
 	movs r2, #0
 	str r2, [sp]
 	ldr r1, _0800B7E4 @ =0x040000D4
@@ -6093,7 +6093,7 @@ sub_C498: @ 0x0800C498
 	push {lr}
 	sub sp, #8
 	bl sub_10480
-	bl sub_578
+	bl ClearSprites
 	movs r2, #0
 	str r2, [sp]
 	ldr r1, _0800C4DC @ =0x040000D4
