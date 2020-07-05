@@ -672,8 +672,8 @@ static void sub_11640(void)
 {
     int i;
     const struct SpriteSet *spriteSet;
-    struct SpriteGroup *group1 = &gTitlescreen.unk8[gUnknown_0200B3B8];
-    struct SpriteGroup *group2 = &gTitlescreen.unk10[gUnknown_0200B3B8];
+    struct SpriteGroup *group1 = &gUnknown_0200B3B8[gTitlescreen.unk8];
+    struct SpriteGroup *group2 = &gUnknown_0200B3B8[gTitlescreen.unk10];
 
     group1->available = gTitlescreen.unk9;
     group2->available = gTitlescreen.unk11;

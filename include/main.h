@@ -60,7 +60,17 @@ struct Main
     /*0x48*/ int rngValue;
     /*0x4C*/ int frameCount;
     /*0x50*/ int unk50;
-    /*0x54*/ u8 filler54[0x20];
+    /*0x54*/ u8 filler54[0xC];
+    /*0x60*/ u16 unk60;
+    /*0x62*/ u16 unk62;
+    /*0x64*/ u16 unk64;
+    /*0x66*/ u16 unk66;
+    /*0x68*/ u16 unk68;
+    /*0x6A*/ u16 unk6A;
+    /*0x6C*/ u16 unk6C;
+    /*0x6E*/ u16 unk6E;
+    /*0x70*/ u16 unk70;
+    /*0x72*/ u16 unk72;
 
     // This field must be accessed using the following macro to produce matching code.
 #define gMain_saveData (*(struct SaveData *)(&gMain.saveData))
