@@ -39,11 +39,11 @@ extern struct OptionsData gOptionsData;
 extern s16 gUnknown_0200B204[][2];
 extern u8 gUnknown_02031B18[];
 
-extern const u16 gUnknown_0852B468[];
-extern const u8 gUnknown_08528828[];
-extern const u8 gUnknown_0852A848[];
-extern const u8 gUnknown_08528028[];
-extern const u8 gUnknown_0852A048[];
+extern const u16 gOptionsBackground_Pals[];
+extern const u8 gOptionsText_Gfx[];
+extern const u8 gOptionsBackground_Gfx[];
+extern const u8 gOptionsText_Tilemap[];
+extern const u8 gOptionsBackground_Tilemap[];
 
 void OptionsMain(void)
 {
@@ -62,10 +62,10 @@ void sub_51240(void)
 
     gMain.unk16 = REG_DISPCNT;
 
-    DmaCopy16(3, gUnknown_0852B468, (void *)PLTT, 0x200);
-    DmaCopy16(3, gUnknown_08528828, (void *)(VRAM + 0x4000), 0x1800);
-    DmaCopy16(3, gUnknown_0852A848, (void *)(VRAM + 0x8000), 0xC00);
-    DmaCopy16(3, gUnknown_08528028, gUnknown_03005C00, 0x800);
+    DmaCopy16(3, gOptionsBackground_Pals, (void *)PLTT, 0x200);
+    DmaCopy16(3, gOptionsText_Gfx, (void *)(VRAM + 0x4000), 0x1800);
+    DmaCopy16(3, gOptionsBackground_Gfx, (void *)(VRAM + 0x8000), 0xC00);
+    DmaCopy16(3, gOptionsText_Tilemap, gUnknown_03005C00, 0x800);
     DmaCopy16(3, gUnknown_03005C00, (void *)VRAM, 0x800);
 
     if (gGameBoyPlayerEnabled != 1)
@@ -75,7 +75,7 @@ void sub_51240(void)
     }
 
     DmaCopy16(3, gUnknown_03005C00, (void *)VRAM, 0x800);
-    DmaCopy16(3, gUnknown_0852A048, (void *)(VRAM + 0x800), 0x800);
+    DmaCopy16(3, gOptionsBackground_Tilemap, (void *)(VRAM + 0x800), 0x800);
     DmaCopy16(3, gGBAButtonIcons_Pals, (void *)(PLTT + 0x200), 0x60);
     DmaCopy16(3, gOptionsSprites_Gfx, (void *)(VRAM + 0x10000), 0x2020);
 	sub_513B8();

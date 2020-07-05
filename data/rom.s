@@ -1799,20 +1799,24 @@ gUnknown_08527F08:: @ 0x08527F08
 gUnknown_08527F18:: @ 0x08527F18
 	.incbin "baserom.gba", 0x527F18, 0x110
 
-gUnknown_08528028:: @ 0x08528028
-	.incbin "baserom.gba", 0x528028, 0x800
+gOptionsText_Tilemap:: @ 0x08528028
+	.incbin "graphics/options/text.bin"
 
-gUnknown_08528828:: @ 0x08528828
-	.incbin "baserom.gba", 0x528828, 0x1820
+gOptionsText_Gfx:: @ 0x08528828
+	.incbin "graphics/options/text.4bpp"
 
-gUnknown_0852A048:: @ 0x0852A048
-	.incbin "baserom.gba", 0x52A048, 0x800
+	.incbin "baserom.gba", 0x52A028, 0x20
 
-gUnknown_0852A848:: @ 0x0852A848
-	.incbin "baserom.gba", 0x52A848, 0xC20
+gOptionsBackground_Tilemap:: @ 0x0852A048
+	.incbin "graphics/options/background.bin"
 
-gUnknown_0852B468:: @ 0x0852B468
-	.incbin "baserom.gba", 0x52B468, 0x200
+gOptionsBackground_Gfx:: @ 0x0852A848
+	.incbin "graphics/options/background.4bpp"
+
+	.incbin "baserom.gba", 0x52B448, 0x20
+
+gOptionsBackground_Pals:: @ 0x0852B468
+	.incbin "graphics/options/background.gbapal"
 
 gGBAButtonIcons_Pals:: @ 0x0852B668
 	.incbin "graphics/gba_buttons.gbapal"
