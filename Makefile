@@ -105,8 +105,6 @@ include graphics_rules.mk
 $(C_BUILDDIR)/rom_850.o: CC1 := tools/agbcc/bin/old_agbcc
 $(C_BUILDDIR)/gbplayer.o: CC1 := tools/agbcc/bin/old_agbcc
 
-#$(C_BUILDDIR)/rom_528AC.o: CC1 := tools/agbcc/bin/old_agbcc
-
 $(C_BUILDDIR)/libc.o: CC1 := tools/agbcc/bin/old_agbcc
 $(C_BUILDDIR)/libc.o: CFLAGS := -O2
 
@@ -136,6 +134,9 @@ $(ASM_BUILDDIR)/%.o: asm_dep :=
 endif
 
 $(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s $$(asm_dep)
+	$(AS) $(ASFLAGS) -o $@ $<
+
+build/pokepinballrs/asm/start.o: asm/start.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
 ifeq ($(NODEP),)
