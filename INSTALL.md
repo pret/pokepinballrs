@@ -32,7 +32,7 @@ To set up the repository:
 	./install.sh ../pokepinballrs
 
 	cd ../pokepinballrs
- 	./build_tools.sh
+	make tools
 
 Place a copy of the original ROM in the `pokepinballrs` directory, and name it `baserom.gba`. This is necessary because this is an incomplete disassembly.
 
