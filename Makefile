@@ -13,6 +13,12 @@ GAME_CODE   := BPPE
 MAKER_CODE  := 01
 REVISION    := 0
 
+HOSTCC = $(CC)
+HOSTCXX = $(CXX)
+HOSTCFLAGS = $(CFLAGS)
+HOSTCXXFLAGS = $(CXXFLAGS)
+HOST_VARS := CC=$(HOSTCC) CXX=$(HOSTCXX) CFLAGS='$(HOSTCFLAGS)' CXXFLAGS='$(HOSTCXXFLAGS)'
+
 SHELL := /bin/bash -o pipefail
 
 ROM := pokepinballrs.gba
@@ -47,6 +53,19 @@ PREPROC := tools/preproc/preproc$(EXE)
 RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
 FIX     := tools/gbafix/gbafix$(EXE)
 
+TOOLS_DIR = tools
+TOOLDIRS = $(filter-out $(TOOLS_DIR)/agbcc,$(wildcard $(TOOLS_DIR)/*))
+
+infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
+
+# Build tools when building the rom
+# Disable dependency scanning for clean/tidy/tools
+ifeq (,$(filter-out all compare,$(MAKECMDGOALS)))
+$(call infoshell, $(HOST_VARS) $(MAKE) tools)
+else
+NODEP := 1
+endif
+
 # Clear the default suffixes
 .SUFFIXES:
 # Don't delete intermediate files
@@ -57,7 +76,7 @@ FIX     := tools/gbafix/gbafix$(EXE)
 # Secondary expansion is required for dependency variables in object rules.
 .SECONDEXPANSION:
 
-.PHONY: rom clean compare tidy
+.PHONY: rom clean compare tidy tools clean-tools $(TOOLDIRS)
 
 $(shell mkdir -p $(C_BUILDDIR) $(ASM_BUILDDIR) $(DATA_ASM_BUILDDIR))
 
@@ -79,12 +98,20 @@ rom: $(ROM)
 compare: $(ROM)
 	@$(SHA1) pokepinballrs.sha1
 
-clean: tidy
+clean: tidy clean-tools
 	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
 
 tidy:
 	rm -f $(ROM) $(ELF) $(MAP)
 	rm -r build/*
+
+tools: $(TOOLDIRS)
+
+$(TOOLDIRS):
+	@$(HOST_VARS) $(MAKE) -C $@
+
+clean-tools:
+	$(foreach tool,$(TOOLDIRS),$(MAKE) clean -C $(tool);)
 
 include graphics_rules.mk
 
