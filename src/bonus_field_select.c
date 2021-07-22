@@ -4,12 +4,28 @@
 #include "functions.h"
 #include "titlescreen.h"
 
+EWRAM_DATA s8 gUnknown_0201A4B0 = 0;
+EWRAM_DATA u8 gUnknown_0201A4C0 = 0;
+EWRAM_DATA s16 gUnknown_0201A4F4 = 0;
+EWRAM_DATA s8 gUnknown_0201A4F8 = 0;
+EWRAM_DATA s16 gUnknown_0202A560 = 0;
+EWRAM_DATA s16 gUnknown_0202BE1C = 0;
+EWRAM_DATA s8 gUnknown_0202BED0 = 0;
+EWRAM_DATA s8 gUnknown_0202BEE4 = 0;
+EWRAM_DATA u8 gUnknown_0202BEE8 = 0;
+
 extern void (*const gUnknown_0805C750[])(void);
-extern const u16 gUnknown_0807C2E0[];
-extern const u8 gUnknown_0807C4E0[];
+
+extern const struct SpriteSet *const gUnknown_086A4C80[16];
+extern const struct Coord16 gUnknown_086A4CC0[];
+extern const struct Coord16 gUnknown_086A4CD8[];
+extern const u8 gUnknown_086A4CF0[];
+
 extern const u8 gUnknown_0807AAE0[];
 extern const u8 gUnknown_0807B2E0[];
 extern const u8 gUnknown_0807BAE0[];
+extern const u16 gUnknown_0807C2E0[];
+extern const u8 gUnknown_0807C4E0[];
 
 void sub_2710(void);
 void sub_29C8(void);
@@ -49,21 +65,6 @@ void sub_25C4(void)
 
     gMain.subState++;
 }
-
-EWRAM_DATA s16 gUnknown_0201A4F4 = 0;
-EWRAM_DATA s8 gUnknown_0201A4F8 = 0;
-EWRAM_DATA s8 gUnknown_0201A4B0 = 0;
-EWRAM_DATA u8 gUnknown_0201A4C0 = 0;
-EWRAM_DATA s16 gUnknown_0202A560 = 0;
-EWRAM_DATA s16 gUnknown_0202BE1C = 0;
-EWRAM_DATA s8 gUnknown_0202BED0 = 0;
-EWRAM_DATA s8 gUnknown_0202BEE4 = 0;
-EWRAM_DATA u8 gUnknown_0202BEE8 = 0;
-
-extern const struct SpriteSet *const gUnknown_086A4C80[16];
-extern const struct Coord16 gUnknown_086A4CC0[];
-extern const struct Coord16 gUnknown_086A4CD8[];
-extern const u8 gUnknown_086A4CF0[];
 
 void sub_2710(void)
 {

@@ -35,7 +35,6 @@ SECTIONS
         src/gbplayer.o(.text);
         asm/rom_9BC.o(.text);
         src/bonus_field_select.o(.text);
-        asm/bonus_field_select.o(.text);
         asm/ereader.o(.text);
         asm/pokedex.o(.text);
         src/field_select.o(.text);
