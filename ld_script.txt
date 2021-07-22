@@ -28,7 +28,7 @@ SECTIONS
     . = 0x08000000;
     .text :
     {
-        asm/start.o(.text);
+        asm/crt0.o(.text);
         src/util.o(.text);
         src/rom_850.o(.text);
         src/main.o(.text);
