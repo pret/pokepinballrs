@@ -2,6 +2,7 @@
 #include "m4a.h"
 #include "main.h"
 #include "functions.h"
+#include "titlescreen.h"
 
 extern void (*const gUnknown_0805C750[])(void);
 extern const u16 gUnknown_0807C2E0[];
@@ -49,16 +50,19 @@ void sub_25C4(void)
     gMain.subState++;
 }
 
-EWRAM_DATA u16 gUnknown_0201A4F4 = 0;
+EWRAM_DATA s16 gUnknown_0201A4F4 = 0;
 EWRAM_DATA s8 gUnknown_0201A4F8 = 0;
-EWRAM_DATA u8 gUnknown_0201A4B0 = 0;
+EWRAM_DATA s8 gUnknown_0201A4B0 = 0;
 EWRAM_DATA u8 gUnknown_0201A4C0 = 0;
 EWRAM_DATA s16 gUnknown_0202A560 = 0;
 EWRAM_DATA s16 gUnknown_0202BE1C = 0;
 EWRAM_DATA s8 gUnknown_0202BED0 = 0;
-EWRAM_DATA u8 gUnknown_0202BEE4 = 0;
+EWRAM_DATA s8 gUnknown_0202BEE4 = 0;
 EWRAM_DATA u8 gUnknown_0202BEE8 = 0;
 
+extern const struct SpriteSet *const gUnknown_086A4C80[16];
+extern const struct Coord16 gUnknown_086A4CC0[];
+extern const struct Coord16 gUnknown_086A4CD8[];
 extern const u8 gUnknown_086A4CF0[];
 
 void sub_2710(void)
@@ -172,4 +176,85 @@ void sub_2768(void)
         }
         break;
     }
+}
+
+void sub_2990(void)
+{
+    sub_FE04(sub_29C8);
+    m4aMPlayAllStop();
+    sub_D10();
+    gAutoDisplayTitlescreenMenu = 1;
+    SetMainGameState(gUnknown_0202BEE4);
+}
+
+void sub_29C8(void)
+{
+    struct SpriteGroup * sgptrs[6];
+    struct SpriteGroup * r8;
+    struct SpriteGroup * r10;
+    struct OamDataSimple * simple;
+    s32 i;
+    s32 j;
+
+    gMain.blendControl = BLDCNT_TGT1_BG2 | BLDCNT_TGT1_OBJ | BLDCNT_EFFECT_NONE | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BG3;
+    gMain.blendAlpha = BLDALPHA_BLEND(8, 8);
+    REG_BLDCNT = gMain.blendControl;
+    REG_BLDALPHA = gMain.blendAlpha;
+    for (i = 0; i < 6; i++)
+    {
+        sgptrs[i] = &gMain.spriteGroups[i];
+    }
+    r10 = &gMain.spriteGroups[6 + gUnknown_0201A4F8];
+    r8 = &gMain.spriteGroups[12 + gUnknown_0201A4C0 * 2 + gUnknown_0201A4F4];
+    for (j = 0; j < 6; j++)
+    {
+        sgptrs[j]->available = 1;
+    }
+    sgptrs[gUnknown_0201A4F8]->available = 0;
+    r10->available = 1;
+    r8->available = gUnknown_0201A4B0;
+    LoadSpriteSets(gUnknown_086A4C80, 16, gUnknown_0200B3B8);
+    for (i = 0; i < 6; i++)
+    {
+        if (sgptrs[i]->available == 1)
+        {
+            sgptrs[i]->baseX = gUnknown_086A4CC0[i].x;
+            sgptrs[i]->baseY = gUnknown_086A4CC0[i].y;
+            for (j = 0; j < 4; j++)
+            {
+                simple = &sgptrs[i]->oam[j];
+                gOamBuffer[simple->oamId].objMode = ST_OAM_OBJ_BLEND;
+                gOamBuffer[simple->oamId].x = simple->xOffset + sgptrs[i]->baseX;
+                gOamBuffer[simple->oamId].y = simple->yOffset + sgptrs[i]->baseY;
+            }
+        }
+    }
+    r10->baseX = 0x58;
+    r10->baseY = 0x85;
+    for (j = 0; j < 2; j++)
+    {
+        simple = &r10->oam[j];
+        gOamBuffer[simple->oamId].objMode = ST_OAM_OBJ_NORMAL;
+        gOamBuffer[simple->oamId].paletteNum = gUnknown_0202BEE8;
+        gOamBuffer[simple->oamId].x = simple->xOffset + r10->baseX;
+        gOamBuffer[simple->oamId].y = simple->yOffset + r10->baseY;
+    }
+    if (r8->available == 1)
+    {
+        r8->baseX = gUnknown_086A4CD8[gUnknown_0201A4F8].x;
+        r8->baseY = gUnknown_086A4CD8[gUnknown_0201A4F8].y;
+        for (j = 0; j < 5; j++)
+        {
+            simple = &r8->oam[j];
+            gOamBuffer[simple->oamId].objMode = ST_OAM_OBJ_NORMAL;
+            gOamBuffer[simple->oamId].x = simple->xOffset + r8->baseX;
+            gOamBuffer[simple->oamId].y = simple->yOffset + r8->baseY;
+        }
+    }
+    for (j = 0; j < 6; j++)
+    {
+        sgptrs[j]->available = 0;
+    }
+    r10->available = 0;
+    r8->available = 0;
 }
