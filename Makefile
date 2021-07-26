@@ -92,6 +92,8 @@ DATA_ASM_OBJS := $(patsubst $(DATA_ASM_SUBDIR)/%.s,$(DATA_ASM_BUILDDIR)/%.o,$(DA
 OBJS := $(C_OBJS) $(ASM_OBJS) $(DATA_ASM_OBJS)
 OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 
+MAKEFLAGS += --no-print-directory
+
 rom: $(ROM)
 
 # For contributors to make sure a change didn't affect the contents of the ROM.
