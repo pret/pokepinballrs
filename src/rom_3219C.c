@@ -20,7 +20,7 @@ void sub_3219C(void)
         i = 0;
         while (i < 4)
         {
-            if (gMain.pokedexFlags[BONUS_SPECIES_START + ((i + rand) % 4)] < 4)
+            if (gMain_saveData.pokedexFlags[BONUS_SPECIES_START + ((i + rand) % 4)] < 4)
                 i++;
             else
                 break;
@@ -43,44 +43,44 @@ void sub_3219C(void)
         {
             s16 numSpecialMons = 0;
             gUnknown_020314E0->catchModeSpecies = 0;
-            if (gMain+0x74[SPECIES_AERODACTYL])
+            if (gMain_saveData.pokedexFlags[SPECIES_AERODACTYL])
             {
                 specialMons[numSpecialMons++] = SPECIES_AERODACTYL;
-                if (gMain+0x74[SPECIES_AERODACTYL] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_AERODACTYL] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_AERODACTYL;
             }
 
-            if (gMain+0x74[SPECIES_CHIKORITA])
+            if (gMain_saveData.pokedexFlags[SPECIES_CHIKORITA])
             {
                 specialMons[numSpecialMons++] = SPECIES_CHIKORITA;
-                if (gMain+0x74[SPECIES_CHIKORITA] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_CHIKORITA] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_CHIKORITA;
             }
 
-            if (gMain+0x74[SPECIES_TOTODILE])
+            if (gMain_saveData.pokedexFlags[SPECIES_TOTODILE])
             {
                 specialMons[numSpecialMons++] = SPECIES_TOTODILE;
-                if (gMain+0x74[SPECIES_TOTODILE] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_TOTODILE] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_TOTODILE;
             }
 
-            if (gMain+0x74[SPECIES_CYNDAQUIL])
+            if (gMain_saveData.pokedexFlags[SPECIES_CYNDAQUIL])
             {
                 specialMons[numSpecialMons++] = SPECIES_CYNDAQUIL;
-                if (gMain+0x74[SPECIES_CYNDAQUIL] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_CYNDAQUIL] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_CYNDAQUIL;
             }
 
             if (gMain.unk4 == 0)
             {
                 specialMons[numSpecialMons++] = SPECIES_LATIOS;
-                if (gMain.pokedexFlags[SPECIES_LATIOS] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_LATIOS] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_LATIOS;
             }
             else
             {
                 specialMons[numSpecialMons++] = SPECIES_LATIAS;
-                if (gMain.pokedexFlags[SPECIES_LATIAS] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_LATIAS] < 4)
                     gUnknown_020314E0->catchModeSpecies = SPECIES_LATIAS;
             }
 
