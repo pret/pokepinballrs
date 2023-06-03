@@ -101,7 +101,7 @@ void ResetSomeGraphicsRelatedStuff(void)
     ClearSprites();
     gMain.unkF = 0;
     gMain.unk10 = 0;
-    gMain.unk50 = 0;
+    gMain.fieldFrameCount = 0;
     gMain.unk11 = 0;
     gMain.unk12 = 0;
     gMain.unk14 = 0;

@@ -151,7 +151,7 @@ static void sub_B8C(void)
     gMain.newKeys = 0;
     gMain.unk20 = 0;
     gMain.rngValue = 0;
-    gMain.frameCount = 0;
+    gMain.systemFrameCount = 0;
     gMain.unk30 = 0;
     gMain.vCount = 144;
     gMain.unk2C = 0;
@@ -328,7 +328,7 @@ void MainLoopIter(void)
     if (gMainCallback)
         gMainCallback();
 
-    gMain.frameCount++;
+    gMain.systemFrameCount++;
 }
 
 void DefaultMainCallback(void)
