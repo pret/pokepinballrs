@@ -3,6 +3,15 @@
 
 #include "global.h"
 
+enum {
+	EREADER_GET_SPECIAL_GUESTS,
+	EREADER_ENCOUNTER_RATE_UP, // TODO: Is this also the Rayquaza trigger?
+	EREADER_DX_MODE,
+	EREADER_RUIN_AREA,
+	EREADER_UNKNOWN, // TODO: This is almost surely the Bonus Field Select card, but why does setting it to 1 not do anything?
+	EREADER_CARD_COUNT
+};
+
 // This is probably permanently saved data like pokedex and high scores.
 struct SaveData
 {
@@ -25,9 +34,7 @@ struct Main
     /*0x04*/ u8 unk4;
     /*0x05*/ u8 unk5;
     /*0x06*/ u8 unk6;
-    /*0x07*/ s8 unk7;
-    /*0x08*/ s8 unk8;
-    /*0x09*/ u8 filler9[0x3];
+    /*0x07*/ bool8 ereaderData[EREADER_CARD_COUNT];
     /*0x0C*/ u8 unkC;
     /*0x0D*/ u8 unkD;
     /*0x0E*/ u8 fillerE[0x1];
