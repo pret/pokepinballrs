@@ -1,4 +1,14 @@
-include $(DEVKITARM)/base_tools
+TOOLCHAIN := $(DEVKITARM)
+ifneq (,$(TOOLCHAIN))
+ifneq ($(wildcard $(TOOLCHAIN)/bin),)
+export PATH := $(TOOLCHAIN)/bin:$(PATH)
+endif
+endif
+
+PREFIX := arm-none-eabi-
+OBJCOPY := $(PREFIX)objcopy
+AS := $(PREFIX)as
+
 export CPP := $(PREFIX)cpp
 export LD := $(PREFIX)ld
 

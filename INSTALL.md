@@ -19,6 +19,7 @@ Install the **devkitARM** toolchain of [devkitPro](https://devkitpro.org/wiki/Ge
 	export DEVKITARM=$DEVKITPRO/devkitARM
 	echo "export DEVKITARM=$DEVKITARM" >> ~/.bashrc
 
+As an alternative to installing devkitARM, for Linux users only, install the GNU Arm Embedded Toolchain. For Debian/Ubuntu-based distributions, this can be accomplished with `sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi`. For Arch Linux, this can be accomplished with `pacman -S arm-none-eabi-gcc arm-none-eabi-binutils`.
 
 # Installation
 
