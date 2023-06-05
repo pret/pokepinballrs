@@ -11,10 +11,10 @@ void sub_3219C(void)
     u32 rand;
     u16 specialMons[6];
 
-    if (gMain.ereaderData[EREADER_GET_SPECIAL_GUESTS])
+    if (gMain.unk7)
     {
 
-        gMain.ereaderData[EREADER_GET_SPECIAL_GUESTS] = FALSE;
+        gMain.unk7 = 0;
         rand = gMain.systemFrameCount + gMain.fieldFrameCount + Random();
         rand %= 4;
         i = 0;
@@ -31,7 +31,7 @@ void sub_3219C(void)
     else
     {
         rand = gMain.systemFrameCount + gMain.fieldFrameCount + Random();
-        if (gMain.ereaderData[EREADER_ENCOUNTER_RATE_UP])
+        if (gMain.unk8)
             rand %= 50;
         else
             rand %= 100;
