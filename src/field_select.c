@@ -212,7 +212,7 @@ void sub_8C7C(void)
                 gFieldSelectData.unk0 = gUnknown_086A6B14.unk0[gFieldSelectData.unkC];
                 gFieldSelectData.unk2 = gUnknown_086A6B14.unkA[gFieldSelectData.unkC];
             }
-            if (!(gMain.frameCount & 1))
+            if (!(gMain.systemFrameCount & 1))
             {
                 if (gFieldSelectData.unkC < 4)
                 {

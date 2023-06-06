@@ -15,7 +15,7 @@ void sub_3219C(void)
     {
 
         gMain.unk7 = 0;
-        rand = gMain.unk4C + gMain.unk50 + Random();
+        rand = gMain.systemFrameCount + gMain.fieldFrameCount + Random();
         rand %= 4;
         i = 0;
         while (i < 4)
@@ -30,7 +30,7 @@ void sub_3219C(void)
     }
     else
     {
-        rand = gMain.unk4C + gMain.unk50 + Random();
+        rand = gMain.systemFrameCount + gMain.fieldFrameCount + Random();
         if (gMain.unk8)
             rand %= 50;
         else
@@ -86,7 +86,7 @@ void sub_3219C(void)
 
             if (!gUnknown_020314E0->catchModeSpecies)
             {
-                rand = gMain.unk4C + gMain.unk50 + Random();
+                rand = gMain.systemFrameCount + gMain.fieldFrameCount + Random();
                 rand %= numSpecialMons;
                 gUnknown_020314E0->catchModeSpecies = specialMons[rand];
             }
@@ -99,7 +99,7 @@ void sub_3219C(void)
             else
                 rareMons = 0;
 
-            rand = gMain.unk4C + gMain.unk50 + Random();
+            rand = gMain.systemFrameCount + gMain.fieldFrameCount + Random();
             rand %= gUnknown_020314E0->unk12E;
             for (i = 0; i < 8 && gUnknown_020314E0->unk130[i] <= rand; i++) {}
 

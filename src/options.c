@@ -271,7 +271,7 @@ void sub_514B8(void)
             sub_525CC(gMain_saveData.unk143);
 
         }
-        if (!(gMain.frameCount & 7))
+        if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk2 = 1 - gOptionsData.unk2;
         break;
     case 1:
@@ -320,7 +320,7 @@ void sub_514B8(void)
             gOptionsData.unk30 = 0;
             gOptionsData.unk0 = 0;
         }
-        if (!(gMain.frameCount & 7))
+        if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk4 = 1 - gOptionsData.unk4;
         if (gOptionsData.unk18 > 0)
             gOptionsData.unk18--;
@@ -371,7 +371,7 @@ void sub_514B8(void)
             gOptionsData.unk30 = 0;
             gOptionsData.unk0 = 0;
         }
-        if (!(gMain.frameCount & 7))
+        if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk4 = 1 - gOptionsData.unk4;
         if (gOptionsData.unk18 > 0)
             gOptionsData.unk18--;
@@ -405,7 +405,7 @@ void sub_514B8(void)
             gOptionsData.unkA = 6;
             gOptionsData.unk0 = 0;
         }
-        if (!(gMain.frameCount & 7))
+        if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk2 = 1 - gOptionsData.unk2;
         break;
     case 4:
