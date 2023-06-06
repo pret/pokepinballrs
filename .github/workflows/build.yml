@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      COMPARE: 1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Clone agbcc
+        uses: actions/checkout@master
+        with:
+          repository: 'pret/agbcc'
+          path: 'agbcc'
+
+      - name: Install binutils
+        run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi xdelta3
+
+      - name: Install agbcc
+        working-directory: 'agbcc'
+        run: |
+          sh build.sh
+          sh install.sh ..
+
+      - name: Make baserom.gba
+        run: |
+          dd if=/dev/zero of=zero.gba bs=16777216 count=1
+          xdelta3 -d -s zero.gba baserom.xdelta baserom.gba
+
+      - name: Build pokepinball
+        run: make -j$(nproc)
