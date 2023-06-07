@@ -85,14 +85,16 @@ struct PinballGame
 	/*0x035*/ s8 area;
 	/*0x036*/ u8 filler36[0xF5];
 	/*0x12B*/ s8 unk12B;
-	/*0x12C*/ u8 filler12C[0x2];
+	/*0x12C*/ s8 unk12C;
+	/*0x12D*/ u8 filler12D;
 	/*0x12E*/ s16 unk12E;
 	/*0x130*/ s16 unk130[8];
 	/*0x140*/ u8 filler140[0x458];
-	/*0x598*/ u16 catchModeSpecies;
+	/*0x598*/ u16 unk598; // Current catch/hatch mode species?
 	/*0x59A*/ u8 filler59A[0x2];
-	/*0x59C*/ u16 unk59C;
-	/*0x59E*/ u8 filler59E[0x52];
+	/*0x59C*/ u16 unk59C; // Previous catch mode species?
+	/*0x59E*/ u16 unk59E; // Previous hatch mode species?
+	/*0x5A0*/ u8 filler5A0[0x50];
 	/*0x5F0*/ u16 unk5F0;
 	/*0x5F2*/ u8 filler5F2[0x14B];
 	/*0x73D*/ s8 unk73D;
