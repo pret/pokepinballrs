@@ -4,45 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_3276C
-sub_3276C: @ 0x0803276C
-	push {lr}
-	bl sub_19B90
-	bl sub_327C0
-	ldr r0, _080327B0 @ =gMain
-	ldrb r0, [r0, #0xf]
-	cmp r0, #0
-	bne _08032782
-	bl sub_328C8
-_08032782:
-	bl sub_32DF8
-	ldr r0, _080327B4 @ =gUnknown_020314E0
-	ldr r0, [r0]
-	movs r2, #0xa7
-	lsls r2, r2, #2
-	adds r1, r0, r2
-	ldrh r0, [r1]
-	cmp r0, #0
-	beq _080327AC
-	subs r0, #1
-	strh r0, [r1]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bne _080327AC
-	ldr r0, _080327B8 @ =gMPlayInfo_BGM
-	ldr r1, _080327BC @ =0x0000FFFF
-	movs r2, #0x80
-	lsls r2, r2, #1
-	bl m4aMPlayVolumeControl
-_080327AC:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080327B0: .4byte gMain
-_080327B4: .4byte gUnknown_020314E0
-_080327B8: .4byte gMPlayInfo_BGM
-_080327BC: .4byte 0x0000FFFF
-
 	thumb_func_start sub_327C0
 sub_327C0: @ 0x080327C0
 	push {r4, lr}

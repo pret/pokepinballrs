@@ -1,7 +1,8 @@
 #include "global.h"
-#include "main.h"
 #include "constants/species.h"
 #include "functions.h"
+#include "m4a.h"
+#include "main.h"
 
 extern const u16 gWildMonLocations[][2][8];
 extern const u16 gUnknown_086A4A38[2][26];
@@ -352,6 +353,23 @@ void sub_326F4(void)
     sub_313A0();
     sub_2E6AC();
     sub_31B30();
+}
+
+void sub_3276C(void)
+{
+    sub_19B90();
+    sub_327C0();
     
-    return;
+    if (!gMain.unkF)
+        sub_328C8();
+    
+    sub_32DF8();
+    
+    if (gUnknown_020314E0->unk29C)
+    {
+        // TODO: is this a fake match? Seems weird.
+        gUnknown_020314E0->unk29C--;
+        if (gUnknown_020314E0->unk29C == 0)
+            m4aMPlayVolumeControl(&gMPlayInfo_BGM,0xffff,0x100);
+    }
 }

@@ -95,8 +95,10 @@ struct PinballGame
 	/*0x1DC*/ u8 filler1DC[0x9];
 	/*0x1E5*/ u8 unk1E5;
 	/*0x1E6*/ u8 unk1E6;
-	/*0x1E7*/ u8 filler1E7[0x3B1];
-	/*0x598*/ u16 unk598; // Current catch/hatch mode species?
+	/*0x1E7*/ u8 filler1E7[0xB5];
+	/*0x29C*/ u16 unk29C;
+	/*0x29E*/ u8 filler29E[0x2FA];
+	/*0x598*/ u16 unk598; // Current catch/hatch mode species? Is it evo mode as well?
 	/*0x59A*/ u8 filler59A[0x2];
 	/*0x59C*/ u16 unk59C; // Previous catch mode species?
 	/*0x59E*/ u16 unk59E; // Previous hatch mode species?
