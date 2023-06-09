@@ -1,6 +1,7 @@
 #include "global.h"
 #include "main.h"
 #include "constants/species.h"
+#include "functions.h"
 
 extern const u16 gWildMonLocations[][2][8];
 extern const u16 gUnknown_086A4A38[2][26];
@@ -328,4 +329,29 @@ void sub_325E0(void)
     }
     
     gUnknown_020314E0->unk59E = gUnknown_020314E0->unk598;
+}
+
+void sub_326F4(void)
+{
+    gUnknown_020314E0->unk73D = 2;
+    gUnknown_020314E0->unk1E5 = 0;
+    gUnknown_020314E0->unk1E6 = 1;
+    
+    sub_1F2A4();
+    sub_21B0C();
+    sub_1F59C();
+    sub_300D8();
+    sub_30178();
+    
+    gUnknown_020314E0->unk1D8 = 0x100;
+    gUnknown_020314E0->unk1DA = 0x100;
+    
+    sub_30480();
+    sub_304C8();
+    sub_31144();
+    sub_313A0();
+    sub_2E6AC();
+    sub_31B30();
+    
+    return;
 }

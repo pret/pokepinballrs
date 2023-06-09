@@ -4,55 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_326F4
-sub_326F4: @ 0x080326F4
-	push {r4, lr}
-	ldr r4, _08032760 @ =gUnknown_020314E0
-	ldr r0, [r4]
-	ldr r1, _08032764 @ =0x0000073D
-	adds r0, r0, r1
-	movs r2, #0
-	movs r1, #2
-	strb r1, [r0]
-	ldr r0, [r4]
-	ldr r3, _08032768 @ =0x000001E5
-	adds r0, r0, r3
-	strb r2, [r0]
-	ldr r0, [r4]
-	movs r2, #0xf3
-	lsls r2, r2, #1
-	adds r1, r0, r2
-	movs r0, #1
-	strb r0, [r1]
-	bl sub_1F2A4
-	bl sub_21B0C
-	bl sub_1F59C
-	bl sub_300D8
-	bl sub_30178
-	ldr r2, [r4]
-	movs r3, #0xec
-	lsls r3, r3, #1
-	adds r0, r2, r3
-	movs r1, #0x80
-	lsls r1, r1, #1
-	strh r1, [r0]
-	adds r3, #2
-	adds r0, r2, r3
-	strh r1, [r0]
-	bl sub_30480
-	bl sub_304C8
-	bl sub_31144
-	bl sub_313A0
-	bl sub_2E6AC
-	bl sub_31B30
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08032760: .4byte gUnknown_020314E0
-_08032764: .4byte 0x0000073D
-_08032768: .4byte 0x000001E5
-
 	thumb_func_start sub_3276C
 sub_3276C: @ 0x0803276C
 	push {lr}
