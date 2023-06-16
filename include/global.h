@@ -112,7 +112,9 @@ struct PinballGame
 	/*0x59E*/ u16 unk59E; // Previous hatch mode species?
 	/*0x5A0*/ u8 filler5A0[0x50];
 	/*0x5F0*/ u16 unk5F0;
-	/*0x5F2*/ u8 filler5F2[0x136];
+	/*0x5F2*/ u8 filler5F2[0xE];
+	/*0x600*/ u16 unk600;
+	/*0x602*/ u8 filler602[0x126];
 	/*0x728*/ u8 unk728; // TODO: unknown type
 	/*0x729*/ u8 filler729[0x14];
 	/*0x73D*/ s8 unk73D;

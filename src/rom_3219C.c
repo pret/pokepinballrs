@@ -447,3 +447,20 @@ void sub_327C0(void)
     
     sub_472E4();
 }
+
+void sub_328C8(void)
+{
+    sub_300D8();
+    sub_32968();
+    sub_1F2A4();
+    
+    if (gUnknown_020314E0->unk600 != 0)
+        gUnknown_020314E0->unk600--;
+    
+    sub_2F26C();
+    sub_2E67C();
+    sub_31144();
+    
+    if (!(gMain.unkF & 0x20))
+        sub_2F79C();
+}
