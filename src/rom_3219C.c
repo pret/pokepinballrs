@@ -373,3 +373,77 @@ void sub_3276C(void)
             m4aMPlayVolumeControl(&gMPlayInfo_BGM,0xffff,0x100);
     }
 }
+
+void sub_327C0(void)
+{
+    s32 temp;
+    
+    sub_4F814();
+    sub_1A0F4();
+    sub_2CA9C();
+    
+    if (gUnknown_020314E0->unk68 < 0x5a)
+    {
+        sub_304C8();
+        sub_31498();
+    }
+    
+    // TODO: if this is a false match, it will take a braver one than I to fix it.
+    if (gUnknown_020314E0->unk13 < 3)
+    {
+        if ((gUnknown_020314E0->unk344 & 0x00FFFF00) == 0x300)
+        {
+            gUnknown_020314E0->unk728 = 1;
+        }
+        else
+        {
+            gUnknown_020314E0->unk728 = 0;
+        }
+    }
+    else
+    {
+        gUnknown_020314E0->unk728 = 0;
+    }
+    
+    if (gUnknown_020314E0->unk68 < 0x96)
+    {
+        sub_2E6AC();
+        sub_313A0();
+    }
+    if (gUnknown_020314E0->unk68 < 0xC4)
+    {
+        sub_30178();
+        sub_2F140();
+    }
+    if (gUnknown_020314E0->unk68 < 0xCA)
+    {
+        sub_2FCD0();
+    }
+    if (gUnknown_020314E0->unk68 < 0xDC)
+    {
+        sub_1F59C();
+    }
+    
+    sub_308DC();
+    
+    if (0x76 < gUnknown_020314E0->unk68)
+    {
+        sub_2F504();
+        sub_30EB4();
+    }
+    
+    sub_2CE80();
+    
+    if (0xA8 < gUnknown_020314E0->unk68)
+        sub_2D104();
+    
+    sub_203CC();
+    sub_21B0C();
+    sub_1D128();
+    sub_31B30();
+    
+    if (gUnknown_020314E0->unk194 != 0) // TODO: unsure of style here. It's not a bool8 (unless bool8 == s8), so I'm making the != 0 explicit for now.
+        sub_225F0();
+    
+    sub_472E4();
+}

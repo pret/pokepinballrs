@@ -81,15 +81,21 @@ enum
 
 struct PinballGame
 {
-	/*0x000*/ u8 filler0[0x35];
+	/*0x000*/ u8 filler0[0x13];
+	/*0x013*/ s8 unk13;
+	/*0x014*/ u8 filler14[0x21];
 	/*0x035*/ s8 area;
-	/*0x036*/ u8 filler36[0xF5];
+	/*0x036*/ u8 filler36[0x32];
+	/*0x068*/ s16 unk68;
+	/*0x06A*/ u8 filler6A[0xC1];
 	/*0x12B*/ s8 unk12B;
 	/*0x12C*/ s8 unk12C;
 	/*0x12D*/ u8 filler12D;
 	/*0x12E*/ s16 unk12E;
 	/*0x130*/ s16 unk130[8];
-	/*0x140*/ u8 filler140[0x98];
+	/*0x140*/ u8 filler140[0x54];
+	/*0x194*/ s8 unk194;
+	/*0x195*/ u8 filler195[0x43];
 	/*0x1D8*/ u16 unk1D8;
 	/*0x1DA*/ u16 unk1DA;
 	/*0x1DC*/ u8 filler1DC[0x9];
@@ -97,14 +103,18 @@ struct PinballGame
 	/*0x1E6*/ u8 unk1E6;
 	/*0x1E7*/ u8 filler1E7[0xB5];
 	/*0x29C*/ u16 unk29C;
-	/*0x29E*/ u8 filler29E[0x2FA];
+	/*0x29E*/ u8 filler29E[0xA6];
+	/*0x344*/ u32 unk344;
+	/*0x348*/ u8 filler348[0x250];
 	/*0x598*/ u16 unk598; // Current catch/hatch mode species? Is it evo mode as well?
 	/*0x59A*/ u8 filler59A[0x2];
 	/*0x59C*/ u16 unk59C; // Previous catch mode species?
 	/*0x59E*/ u16 unk59E; // Previous hatch mode species?
 	/*0x5A0*/ u8 filler5A0[0x50];
 	/*0x5F0*/ u16 unk5F0;
-	/*0x5F2*/ u8 filler5F2[0x14B];
+	/*0x5F2*/ u8 filler5F2[0x136];
+	/*0x728*/ u8 unk728; // TODO: unknown type
+	/*0x729*/ u8 filler729[0x14];
 	/*0x73D*/ s8 unk73D;
 };
 
