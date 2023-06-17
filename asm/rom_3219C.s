@@ -4,52 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_32914
-sub_32914: @ 0x08032914
-	push {lr}
-	ldr r0, _08032938 @ =gMain
-	ldrb r0, [r0, #0xf]
-	cmp r0, #0
-	bne _0803295E
-	ldr r0, _0803293C @ =gUnknown_020314E0
-	ldr r0, [r0]
-	adds r0, #0x25
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #3
-	beq _0803294C
-	cmp r0, #3
-	bgt _08032940
-	cmp r0, #1
-	beq _08032946
-	b _08032956
-	.align 2, 0
-_08032938: .4byte gMain
-_0803293C: .4byte gUnknown_020314E0
-_08032940:
-	cmp r0, #4
-	beq _08032952
-	b _08032956
-_08032946:
-	bl sub_32B74
-	b _08032956
-_0803294C:
-	bl sub_329B0
-	b _08032956
-_08032952:
-	bl sub_1C560
-_08032956:
-	ldr r0, _08032964 @ =gUnknown_020314E0
-	ldr r1, [r0]
-	movs r0, #0x3c
-	strh r0, [r1, #0x26]
-_0803295E:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08032964: .4byte gUnknown_020314E0
-
 	thumb_func_start sub_32968
 sub_32968: @ 0x08032968
 	push {lr}

@@ -464,3 +464,24 @@ void sub_328C8(void)
     if (!(gMain.unkF & 0x20))
         sub_2F79C();
 }
+
+void sub_32914(void)
+{
+    if (gMain.unkF == 0)
+    {
+        switch (gUnknown_020314E0->unk25)
+        {
+        case 1:
+            sub_32B74();
+            break;
+        case 3:
+            sub_329B0();
+            break;
+        case 4:
+            sub_1C560();
+            break;
+        }
+        
+        gUnknown_020314E0->unk26 = 0x3C;
+    }
+}
