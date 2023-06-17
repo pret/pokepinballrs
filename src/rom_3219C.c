@@ -485,3 +485,22 @@ void sub_32914(void)
         gUnknown_020314E0->unk26 = 0x3C;
     }
 }
+
+void sub_32968(void)
+{
+    if (gUnknown_020314E0->unk26 != 0)
+        gUnknown_020314E0->unk26--;
+    
+    switch (gUnknown_020314E0->unk25)
+    {
+    case 1:
+        sub_32BE4();
+        break;
+    case 3:
+        sub_329F4();
+        break;
+    case 4:
+        sub_1C5AC();
+        break;
+    }
+}
