@@ -86,9 +86,12 @@ struct PinballGame
 	/*0x014*/ u8 filler14[0x11];
 	/*0x025*/ s8 unk25;
 	/*0x026*/ u16 unk26;
-	/*0x026*/ u8 filler28[0xD];
+	/*0x028*/ u16 unk28;
+	/*0x02A*/ u8 filler2A[0xB];
 	/*0x035*/ s8 area;
-	/*0x036*/ u8 filler36[0x32];
+	/*0x036*/ u8 filler36[0x6];
+	/*0x03C*/ u32 unk3C;
+	/*0x040*/ u8 filler40[0x28];
 	/*0x068*/ s16 unk68;
 	/*0x06A*/ u8 filler6A[0xC1];
 	/*0x12B*/ s8 unk12B;
@@ -98,7 +101,9 @@ struct PinballGame
 	/*0x130*/ s16 unk130[8];
 	/*0x140*/ u8 filler140[0x54];
 	/*0x194*/ s8 unk194;
-	/*0x195*/ u8 filler195[0x43];
+	/*0x195*/ u8 filler195[0x25];
+	/*0x1BA*/ u16 unk1BA;
+	/*0x1BC*/ u8 filler1BC[0x1C];
 	/*0x1D8*/ u16 unk1D8;
 	/*0x1DA*/ u16 unk1DA;
 	/*0x1DC*/ u8 filler1DC[0x9];
@@ -115,7 +120,9 @@ struct PinballGame
 	/*0x59E*/ u16 unk59E; // Previous hatch mode species?
 	/*0x5A0*/ u8 filler5A0[0x50];
 	/*0x5F0*/ u16 unk5F0;
-	/*0x5F2*/ u8 filler5F2[0xE];
+	/*0x5F2*/ u8 filler5F2[0x5];
+	/*0x5F7*/ u8 unk5F7;
+	/*0x5F8*/ u8 filler5F8[0x8];
 	/*0x600*/ u16 unk600;
 	/*0x602*/ u8 filler602[0x126];
 	/*0x728*/ u8 unk728; // TODO: unknown type

@@ -504,3 +504,13 @@ void sub_32968(void)
         break;
     }
 }
+
+void sub_329B0(void)
+{
+    gUnknown_020314E0->unk28 = 0xB4;
+    gUnknown_020314E0->unk1BA = 0xB4;
+    gUnknown_020314E0->unk3C = 500000;
+    gMain.blendControl = 0xCE;
+    gMain.blendBrightness = 0;
+    gUnknown_020314E0->unk5F7 = 1;
+}

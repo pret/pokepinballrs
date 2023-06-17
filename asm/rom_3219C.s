@@ -4,39 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_329B0
-sub_329B0: @ 0x080329B0
-	push {r4, lr}
-	ldr r0, _080329E4 @ =gUnknown_020314E0
-	ldr r2, [r0]
-	movs r3, #0
-	movs r0, #0xb4
-	strh r0, [r2, #0x28]
-	movs r4, #0xdd
-	lsls r4, r4, #1
-	adds r1, r2, r4
-	strh r0, [r1]
-	ldr r0, _080329E8 @ =0x0007A120
-	str r0, [r2, #0x3c]
-	ldr r0, _080329EC @ =gMain
-	ldrh r1, [r0, #0x38]
-	movs r1, #0xce
-	strh r1, [r0, #0x38]
-	ldrh r1, [r0, #0x3c]
-	strh r3, [r0, #0x3c]
-	ldr r0, _080329F0 @ =0x000005F7
-	adds r2, r2, r0
-	movs r0, #1
-	strb r0, [r2]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080329E4: .4byte gUnknown_020314E0
-_080329E8: .4byte 0x0007A120
-_080329EC: .4byte gMain
-_080329F0: .4byte 0x000005F7
-
 	thumb_func_start sub_329F4
 sub_329F4: @ 0x080329F4
 	push {r4, r5, r6, r7, lr}
