@@ -1,6 +1,8 @@
 #include "global.h"
-#include "main.h"
 #include "constants/species.h"
+#include "functions.h"
+#include "m4a.h"
+#include "main.h"
 
 extern const u16 gWildMonLocations[][2][8];
 extern const u16 gUnknown_086A4A38[2][26];
@@ -328,4 +330,187 @@ void sub_325E0(void)
     }
     
     gUnknown_020314E0->unk59E = gUnknown_020314E0->unk598;
+}
+
+void sub_326F4(void)
+{
+    gUnknown_020314E0->unk73D = 2;
+    gUnknown_020314E0->unk1E5 = 0;
+    gUnknown_020314E0->unk1E6 = 1;
+    
+    sub_1F2A4();
+    sub_21B0C();
+    sub_1F59C();
+    sub_300D8();
+    sub_30178();
+    
+    gUnknown_020314E0->unk1D8 = 0x100;
+    gUnknown_020314E0->unk1DA = 0x100;
+    
+    sub_30480();
+    sub_304C8();
+    sub_31144();
+    sub_313A0();
+    sub_2E6AC();
+    sub_31B30();
+}
+
+void sub_3276C(void)
+{
+    sub_19B90();
+    sub_327C0();
+    
+    if (!gMain.unkF)
+        sub_328C8();
+    
+    sub_32DF8();
+    
+    if (gUnknown_020314E0->unk29C)
+    {
+        // TODO: is this a fake match? Seems weird.
+        gUnknown_020314E0->unk29C--;
+        if (gUnknown_020314E0->unk29C == 0)
+            m4aMPlayVolumeControl(&gMPlayInfo_BGM,0xffff,0x100);
+    }
+}
+
+void sub_327C0(void)
+{
+    s32 temp;
+    
+    sub_4F814();
+    sub_1A0F4();
+    sub_2CA9C();
+    
+    if (gUnknown_020314E0->unk68 < 0x5a)
+    {
+        sub_304C8();
+        sub_31498();
+    }
+    
+    // TODO: if this is a fake match, it will take a braver one than I to fix it.
+    if (gUnknown_020314E0->unk13 < 3)
+    {
+        if ((gUnknown_020314E0->unk344 & 0xFFFF00) == 0x300)
+        {
+            gUnknown_020314E0->unk728 = 1;
+        }
+        else
+        {
+            gUnknown_020314E0->unk728 = 0;
+        }
+    }
+    else
+    {
+        gUnknown_020314E0->unk728 = 0;
+    }
+    
+    if (gUnknown_020314E0->unk68 < 0x96)
+    {
+        sub_2E6AC();
+        sub_313A0();
+    }
+    if (gUnknown_020314E0->unk68 < 0xC4)
+    {
+        sub_30178();
+        sub_2F140();
+    }
+    if (gUnknown_020314E0->unk68 < 0xCA)
+    {
+        sub_2FCD0();
+    }
+    if (gUnknown_020314E0->unk68 < 0xDC)
+    {
+        sub_1F59C();
+    }
+    
+    sub_308DC();
+    
+    if (0x76 < gUnknown_020314E0->unk68)
+    {
+        sub_2F504();
+        sub_30EB4();
+    }
+    
+    sub_2CE80();
+    
+    if (0xA8 < gUnknown_020314E0->unk68)
+        sub_2D104();
+    
+    sub_203CC();
+    sub_21B0C();
+    sub_1D128();
+    sub_31B30();
+    
+    if (gUnknown_020314E0->unk194 != 0) // TODO: unsure of style here. It's not a bool8 (unless bool8 == s8), so I'm making the != 0 explicit for now.
+        sub_225F0();
+    
+    sub_472E4();
+}
+
+void sub_328C8(void)
+{
+    sub_300D8();
+    sub_32968();
+    sub_1F2A4();
+    
+    if (gUnknown_020314E0->unk600 != 0)
+        gUnknown_020314E0->unk600--;
+    
+    sub_2F26C();
+    sub_2E67C();
+    sub_31144();
+    
+    if (!(gMain.unkF & 0x20))
+        sub_2F79C();
+}
+
+void sub_32914(void)
+{
+    if (gMain.unkF == 0)
+    {
+        switch (gUnknown_020314E0->unk25)
+        {
+        case 1:
+            sub_32B74();
+            break;
+        case 3:
+            sub_329B0();
+            break;
+        case 4:
+            sub_1C560();
+            break;
+        }
+        
+        gUnknown_020314E0->unk26 = 0x3C;
+    }
+}
+
+void sub_32968(void)
+{
+    if (gUnknown_020314E0->unk26 != 0)
+        gUnknown_020314E0->unk26--;
+    
+    switch (gUnknown_020314E0->unk25)
+    {
+    case 1:
+        sub_32BE4();
+        break;
+    case 3:
+        sub_329F4();
+        break;
+    case 4:
+        sub_1C5AC();
+        break;
+    }
+}
+
+void sub_329B0(void)
+{
+    gUnknown_020314E0->unk28 = 0xB4;
+    gUnknown_020314E0->unk1BA = 0xB4;
+    gUnknown_020314E0->unk3C = 500000;
+    gMain.blendControl = 0xCE;
+    gMain.blendBrightness = 0;
+    gUnknown_020314E0->unk5F7 = 1;
 }
