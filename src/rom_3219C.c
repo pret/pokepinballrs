@@ -27,8 +27,6 @@ void sub_3219C(void)
         {
             if (gMain_saveData.pokedexFlags[BONUS_SPECIES_START + ((i + rand) % 4)] < 4)
                 break;
-            else
-                continue;
         }
 
         gUnknown_020314E0->unk598 = BONUS_SPECIES_START + ((i + rand) % 4);
@@ -76,7 +74,7 @@ void sub_3219C(void)
                     gUnknown_020314E0->unk598 = SPECIES_CYNDAQUIL;
             }
 
-            if (gMain.unk4 == 0)
+            if (!gMain.unk4)
             {
                 specialMons[numSpecialMons++] = SPECIES_LATIOS;
                 if (gMain_saveData.pokedexFlags[SPECIES_LATIOS] < 4)
@@ -106,7 +104,7 @@ void sub_3219C(void)
 
             rand = GetTimeAdjustedRandom();
             rand %= gUnknown_020314E0->unk12E;
-            for (i = 0; i < 8 && gUnknown_020314E0->unk130[i] <= rand; i++) {}
+            for (i = 0; i < 8 && gUnknown_020314E0->unk130[i] <= rand; i++);
 
             gUnknown_020314E0->unk598 = gWildMonLocations[gUnknown_020314E0->area][rareMons][i];
         }
@@ -318,13 +316,15 @@ void sub_325E0(void)
         rand = 1;
     
     if ((rand == 0 && gUnknown_020314E0->unk5F0 >= 5) || gUnknown_020314E0->unk12C)
+    {
         gUnknown_020314E0->unk598 = SPECIES_PICHU;
+    }
     else
     {
         rand = GetTimeAdjustedRandom();
         rand %= gUnknown_020314E0->unk12E;
         
-        for (i = 0; i < 25 && gUnknown_020314E0->unk130[i] <= rand; i++) {}
+        for (i = 0; i < 25 && gUnknown_020314E0->unk130[i] <= rand; i++);
         
         gUnknown_020314E0->unk598 = gUnknown_086A4A38[gMain.unk4][i];
     }
@@ -367,9 +367,8 @@ void sub_3276C(void)
     
     if (gUnknown_020314E0->unk29C)
     {
-        // TODO: is this a fake match? Seems weird.
         gUnknown_020314E0->unk29C--;
-        if (gUnknown_020314E0->unk29C == 0)
+        if (!gUnknown_020314E0->unk29C)
             m4aMPlayVolumeControl(&gMPlayInfo_BGM,0xffff,0x100);
     }
 }
@@ -442,7 +441,7 @@ void sub_327C0(void)
     sub_1D128();
     sub_31B30();
     
-    if (gUnknown_020314E0->unk194 != 0) // TODO: unsure of style here. It's not a bool8 (unless bool8 == s8), so I'm making the != 0 explicit for now.
+    if (gUnknown_020314E0->unk194)
         sub_225F0();
     
     sub_472E4();
@@ -454,7 +453,7 @@ void sub_328C8(void)
     sub_32968();
     sub_1F2A4();
     
-    if (gUnknown_020314E0->unk600 != 0)
+    if (gUnknown_020314E0->unk600)
         gUnknown_020314E0->unk600--;
     
     sub_2F26C();
@@ -467,7 +466,7 @@ void sub_328C8(void)
 
 void sub_32914(void)
 {
-    if (gMain.unkF == 0)
+    if (!gMain.unkF)
     {
         switch (gUnknown_020314E0->unk25)
         {
@@ -488,7 +487,7 @@ void sub_32914(void)
 
 void sub_32968(void)
 {
-    if (gUnknown_020314E0->unk26 != 0)
+    if (gUnknown_020314E0->unk26)
         gUnknown_020314E0->unk26--;
     
     switch (gUnknown_020314E0->unk25)
