@@ -240,6 +240,7 @@ print "\n";
 
 
 my $dataTotal = $srcdata + $data;
+# Bytes in incbins are also in data. For cleaner presentation, separate these out.
 $data -= $incbin_bytes;
 my $srcDataPct = 100 * $srcdata / $dataTotal;
 my $dataPct = 100 * $data / $dataTotal;
