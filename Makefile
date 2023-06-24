@@ -140,15 +140,11 @@ include graphics_rules.mk
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
 
-
+# TODO: why does rom_850.c need old_agbcc here but not in nonmatching-18?
 $(C_BUILDDIR)/rom_850.o: CC1 := tools/agbcc/bin/old_agbcc
+# TODO: figure out what compiler and flags gbplayer.c uses
 $(C_BUILDDIR)/gbplayer.o: CC1 := tools/agbcc/bin/old_agbcc
 
-$(C_BUILDDIR)/libc.o: CC1 := tools/agbcc/bin/old_agbcc
-$(C_BUILDDIR)/libc.o: CFLAGS := -O2
-
-$(C_BUILDDIR)/m4a_2.o: CC1 := tools/agbcc/bin/old_agbcc
-$(C_BUILDDIR)/m4a_4.o: CC1 := tools/agbcc/bin/old_agbcc
 $(C_BUILDDIR)/m4a.o: CC1 := tools/agbcc/bin/old_agbcc
 
 $(C_BUILDDIR)/agb_sram.o: CFLAGS := -mthumb-interwork -Wimplicit -Wparentheses -Werror -O1
