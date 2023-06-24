@@ -19,17 +19,16 @@ void sub_1340(void);
 // src/main.c
 
 void AgbMain(void);
-void sub_9BC_Main(void);
+void Main_09BC(void);
 void VBlankIntr(void);
 void VCountIntr(void);
 void SerialIntr(void);
 void Timer3Intr(void);
 void IntrDummy(void);
 u32 Random(void);
-s16 sub_C24(u16 arg0);
-s16 sub_C24(u16 arg0);
-s16 sub_C74(u16 arg0);
-void sub_D10(void);
+s16 sub_0C24(u16 arg0);
+s16 sub_0C74(u16 arg0);
+void sub_0D10(void);
 void MainLoopIter(void);
 void DefaultMainCallback(void);
 
@@ -54,28 +53,28 @@ void TitlescreenMain(void);
 void LoadTitlescreenGraphics(void);
 void sub_10AC0(void);
 void TitleScreen1_WaitForStartButton(void);
-void TitleScreen2_Unknown(void);
-void TitleScreen9_Unknown(void);
-void TitleScreen3_Unknown(void);
+void TitleScreen2_8010CF0(void);
+void TitleScreen9_8010D84(void);
+void TitleScreen3_8010E00(void);
 void TitleScreen4_MenuInputNoSavedGame(void);
-void TitleScreen7_Unknown(void);
+void TitleScreen7_8011020(void);
 void TitleScreen5_MenuInputSavedGame(void);
-void TitleScreen8_Unknown(void);
+void TitleScreen8_8011228(void);
 void TitleScreen6_AnimCloseMenu(void);
 void TitleScreen10_ExecMenuSelection(void);
-void TitleScreen11_Unknown(void);
+void TitleScreen11_80114B4(void);
 
 // src/util.c
 
 void SetMainGameState(u16 mainState);
-void sub_24C(void);
-void sub_2B4(void);
+void sub_024C(void);
+void sub_02B4(void);
 s16 LoadSpriteSets(const struct SpriteSet *const *spriteSets, u16 numSpriteSets, struct SpriteGroup *spriteGroups);
 void ResetSomeGraphicsRelatedStuff(void);
 void ClearGraphicsMemory(void);
-void sub_518(void);
+void sub_0518(void);
 void ClearSprites(void);
-void sub_678(u8 *arg0, s16 arg1, s16 arg2);
+void sub_0678(u8 *arg0, s16 arg1, s16 arg2);
 void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum);
 
 // asm/bonus_field_select.s

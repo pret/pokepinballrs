@@ -1,8 +1,8 @@
 #include "global.h"
 #include "main.h"
 
-static u8 *sub_734(u32, u8*, u32);
-static int sub_780(int, int);
+static u8 *sub_0734(u32, u8*, u32);
+static int sub_0780(int, int);
 
 void SetMainGameState(u16 mainState)
 {
@@ -10,7 +10,7 @@ void SetMainGameState(u16 mainState)
     gMain.subState = 0;
 }
 
-void sub_24C(void)
+void sub_024C(void)
 {
     u16 i;
 
@@ -31,7 +31,7 @@ void sub_24C(void)
     REG_BLDCNT = 0;
 }
 
-void sub_2B4(void)
+void sub_02B4(void)
 {
     u16 i;
 
@@ -97,7 +97,7 @@ void ResetSomeGraphicsRelatedStuff(void)
     gMain.unk16 |= DISPCNT_FORCED_BLANK;
     REG_DISPCNT |= DISPCNT_FORCED_BLANK;
     ClearGraphicsMemory();
-    sub_518();
+    sub_0518();
     ClearSprites();
     gMain.unkF = 0;
     gMain.unk10 = 0;
@@ -134,7 +134,7 @@ void ClearGraphicsMemory(void)
     REG_BLDALPHA = 0;
 }
 
-void sub_518(void)
+void sub_0518(void)
 {
     s16 i;
 
@@ -183,7 +183,7 @@ void ClearSprites(void)
     }
 }
 
-void sub_678(u8 *arg0, s16 arg1, s16 arg2)
+void sub_0678(u8 *arg0, s16 arg1, s16 arg2)
 {
     // Rumble Pak related?
     s16 var0 = strlen(arg0) - 1;
@@ -196,7 +196,7 @@ void sub_678(u8 *arg0, s16 arg1, s16 arg2)
     } while (var0-- > 0);
 }
 
-u8 *sub_6CC(int arg0, u8 *arg1, int arg2, s16 arg3)
+u8 *sub_06CC(int arg0, u8 *arg1, int arg2, s16 arg3)
 {
     if (arg0 < 0)
     {
@@ -211,7 +211,7 @@ u8 *sub_6CC(int arg0, u8 *arg1, int arg2, s16 arg3)
             break;
         
         arg2--;
-        if (arg0 < sub_780(10, arg2))
+        if (arg0 < sub_0780(10, arg2))
         {
             *arg1 = 0x30;
             arg1++;
@@ -224,23 +224,23 @@ u8 *sub_6CC(int arg0, u8 *arg1, int arg2, s16 arg3)
 
     if (arg3)
     {
-        sub_734(arg0, arg1, 10);
+        sub_0734(arg0, arg1, 10);
     }
     else
     {
-        u8 *ptr = sub_734(arg0, arg1, 10);
+        u8 *ptr = sub_0734(arg0, arg1, 10);
         *ptr = 0;
     }
 
     return arg1;
 }
 
-static u8 *sub_734(u32 arg0, u8 *arg1, u32 arg2)
+static u8 *sub_0734(u32 arg0, u8 *arg1, u32 arg2)
 {
     u8 mod = arg0 % arg2;
     int div = arg0 / arg2;
     if (div != 0)
-        arg1 = sub_734(div, arg1, arg2);
+        arg1 = sub_0734(div, arg1, arg2);
 
     if (mod < 10)
         *arg1 = mod + 48;
@@ -250,7 +250,7 @@ static u8 *sub_734(u32 arg0, u8 *arg1, u32 arg2)
     return arg1 + 1;
 }
 
-static int sub_780(int arg0, int arg1)
+static int sub_0780(int arg0, int arg1)
 {
     int var0;
     int var1 = arg1;

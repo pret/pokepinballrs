@@ -58,7 +58,7 @@ void sub_25C4(void)
     DmaCopy16(3, gFieldSelectSpritePals, (void *)(PLTT + 0x200), 0x60);
     DmaCopy16(3, gFieldSelectSpriteGfx, (void *)(VRAM + 0x10000), 0x4020);
 
-    sub_CBC();
+    sub_0CBC();
     sub_2710();
     sub_FD5C(sub_29C8);
     m4aSongNumStart(0x3);
@@ -183,7 +183,7 @@ void sub_2990(void)
 {
     sub_FE04(sub_29C8);
     m4aMPlayAllStop();
-    sub_D10();
+    sub_0D10();
     gAutoDisplayTitlescreenMenu = 1;
     SetMainGameState(gUnknown_0202BEE4);
 }

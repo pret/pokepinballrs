@@ -71,8 +71,8 @@ sub_929C: @ 0x0800929C
 	strb r2, [r0]
 	ldr r0, _08009344 @ =sub_93F8 + 1
 	bl SetMainCallback
-	bl sub_CBC
-	bl sub_24C
+	bl sub_0CBC
+	bl sub_024C
 	ldrb r0, [r4, #3]
 	adds r0, #1
 	strb r0, [r4, #3]
@@ -120,7 +120,7 @@ sub_9370: @ 0x08009370
 	push {lr}
 	movs r0, #0
 	bl sub_FF74
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _08009388 @ =gMain
 	ldrb r0, [r1, #3]
 	adds r0, #1
@@ -166,9 +166,9 @@ _080093CC: .4byte gMain
 	thumb_func_start sub_93D0
 sub_93D0: @ 0x080093D0
 	push {lr}
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	bl ResetMainCallback
 	ldr r1, _080093F4 @ =gAutoDisplayTitlescreenMenu
 	movs r0, #0
@@ -265,7 +265,7 @@ sub_9498: @ 0x08009498
 	mov r5, r8
 	push {r5, r6, r7}
 	bl ClearGraphicsMemory
-	bl sub_518
+	bl sub_0518
 	bl ClearSprites
 	movs r2, #0x80
 	lsls r2, r2, #0x13
@@ -418,7 +418,7 @@ sub_9498: @ 0x08009498
 	ldr r2, _0800969C @ =0x000002F6
 	adds r1, r1, r2
 	strh r0, [r1]
-	bl sub_CBC
+	bl sub_0CBC
 	mov r0, sl
 	adds r1, r6, #0
 	movs r2, #0
@@ -1815,7 +1815,7 @@ _0800A150: .4byte 0x000001FF
 	thumb_func_start sub_A154
 sub_A154: @ 0x0800A154
 	push {lr}
-	bl sub_518
+	bl sub_0518
 	ldr r1, _0800A168 @ =gUnknown_0202C790
 	ldrb r0, [r1]
 	adds r0, #1
@@ -1928,7 +1928,7 @@ sub_A16C: @ 0x0800A16C
 	ldr r2, _0800A2A0 @ =0x000002F6
 	adds r1, r1, r2
 	strh r0, [r1]
-	bl sub_CBC
+	bl sub_0CBC
 	bl sub_10424
 	ldr r1, _0800A2A4 @ =gUnknown_0202C790
 	ldrb r0, [r1]
@@ -2167,7 +2167,7 @@ _0800A438: .4byte gUnknown_0202C790
 	thumb_func_start sub_A43C
 sub_A43C: @ 0x0800A43C
 	push {lr}
-	bl sub_518
+	bl sub_0518
 	ldr r1, _0800A450 @ =gUnknown_0202C790
 	ldrb r0, [r1]
 	adds r0, #1
@@ -2331,7 +2331,7 @@ sub_A454: @ 0x0800A454
 	ldr r2, _0800A620 @ =0x000002F6
 	adds r1, r1, r2
 	strh r0, [r1]
-	bl sub_CBC
+	bl sub_0CBC
 	bl sub_10424
 	ldr r1, _0800A624 @ =gUnknown_0202C790
 	ldrb r0, [r1]
@@ -2766,7 +2766,7 @@ _0800A94C: .4byte 0x000001FF
 	thumb_func_start sub_A950
 sub_A950: @ 0x0800A950
 	push {lr}
-	bl sub_518
+	bl sub_0518
 	ldr r1, _0800A964 @ =gUnknown_0202C790
 	ldrb r0, [r1]
 	adds r0, #1
@@ -2881,7 +2881,7 @@ sub_A968: @ 0x0800A968
 	ldr r1, _0800AAA0 @ =0x000002F6
 	adds r4, r4, r1
 	strh r0, [r4]
-	bl sub_CBC
+	bl sub_0CBC
 	bl sub_10424
 	ldr r1, _0800AAA4 @ =gUnknown_0202C790
 	ldrb r0, [r1]
@@ -3107,7 +3107,7 @@ _0800AC1C: .4byte gUnknown_0202C790
 	thumb_func_start sub_AC20
 sub_AC20: @ 0x0800AC20
 	push {lr}
-	bl sub_518
+	bl sub_0518
 	ldr r1, _0800AC34 @ =gUnknown_0202C790
 	ldrb r0, [r1]
 	adds r0, #1
@@ -3266,7 +3266,7 @@ sub_AC38: @ 0x0800AC38
 	ldr r2, _0800ADF4 @ =0x000002F6
 	adds r1, r1, r2
 	strh r0, [r1]
-	bl sub_CBC
+	bl sub_0CBC
 	bl sub_10424
 	ldr r1, _0800ADF8 @ =gUnknown_0202C790
 	ldrb r0, [r1]
@@ -3920,7 +3920,7 @@ _0800B2DC: .4byte 0xFFFFFE00
 	thumb_func_start sub_B2E0
 sub_B2E0: @ 0x0800B2E0
 	push {lr}
-	bl sub_518
+	bl sub_0518
 	ldr r1, _0800B2F4 @ =gUnknown_0202C790
 	ldrb r0, [r1]
 	adds r0, #1
@@ -4071,7 +4071,7 @@ sub_B2F8: @ 0x0800B2F8
 	ldr r2, _0800B498 @ =0x000002F6
 	adds r1, r1, r2
 	strh r0, [r1]
-	bl sub_CBC
+	bl sub_0CBC
 	bl sub_10424
 	ldr r1, _0800B49C @ =gUnknown_0202C790
 	ldrb r0, [r1]
@@ -4957,7 +4957,7 @@ sub_BA3C: @ 0x0800BA3C
 	ldr r1, _0800BBD8 @ =0x000002F6
 	adds r4, r4, r1
 	strh r0, [r4]
-	bl sub_CBC
+	bl sub_0CBC
 	bl sub_10424
 	ldr r1, _0800BBDC @ =gUnknown_0202C790
 	ldrb r0, [r1]
@@ -5770,7 +5770,7 @@ _0800C20C: .4byte 0x000001FF
 	thumb_func_start sub_C210
 sub_C210: @ 0x0800C210
 	push {lr}
-	bl sub_518
+	bl sub_0518
 	ldr r1, _0800C224 @ =gUnknown_0202C790
 	ldrb r0, [r1]
 	adds r0, #1
@@ -5839,7 +5839,7 @@ sub_C228: @ 0x0800C228
 	strh r0, [r1, #0x16]
 	bl sub_C2F0
 	bl sub_C4F0
-	bl sub_CBC
+	bl sub_0CBC
 	bl sub_10424
 	ldr r1, _0800C2EC @ =gUnknown_0202C790
 	ldrb r0, [r1]
@@ -6535,7 +6535,7 @@ sub_C814: @ 0x0800C814
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #4
-	bl sub_518
+	bl sub_0518
 	movs r0, #0
 	str r0, [sp]
 	ldr r1, _0800C924 @ =0x040000D4
@@ -6745,7 +6745,7 @@ sub_C948: @ 0x0800C948
 	ldr r1, _0800CA20 @ =0x000002F6
 	adds r4, r4, r1
 	strh r0, [r4]
-	bl sub_CBC
+	bl sub_0CBC
 	bl sub_10424
 	ldr r1, _0800CA24 @ =gUnknown_0202C790
 	ldrb r0, [r1]
@@ -7122,9 +7122,9 @@ _0800CCF4: .4byte gUnknown_0202C790
 	thumb_func_start sub_CCF8
 sub_CCF8: @ 0x0800CCF8
 	push {lr}
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _0800CD14 @ =gMain
 	ldrb r0, [r1, #3]
 	adds r0, #1

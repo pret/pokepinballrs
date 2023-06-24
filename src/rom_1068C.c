@@ -95,7 +95,7 @@ void sub_10860(void (*func)(void))
 }
 
 #ifdef NONMATCHING
-// Like sub_C24, it matches except for that damn 'push {lr}/pop {lr}'
+// Like sub_0C24, it matches except for that damn 'push {lr}/pop {lr}'
 void ClearSomeArray(void)
 {
     int i;

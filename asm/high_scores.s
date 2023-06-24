@@ -138,8 +138,8 @@ sub_CE88: @ 0x0800CE88
 _0800CF50:
 	movs r0, #0
 	strh r0, [r4]
-	bl sub_CBC
-	bl sub_24C
+	bl sub_0CBC
+	bl sub_024C
 	ldr r0, _0800CFD0 @ =gUnknown_02002858
 	ldrb r0, [r0, #0xa]
 	strb r0, [r7, #3]
@@ -1665,9 +1665,9 @@ _0800DBB2:
 	cmp r1, #1
 	ble _0800DBA2
 	movs r4, #0
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r0, _0800DBF0 @ =gMain
 	strb r4, [r0, #3]
 _0800DBD4:
@@ -1773,9 +1773,9 @@ _0800DC88:
 	cmp r2, #1
 	ble _0800DC68
 	bl SaveFile_WriteToSram
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _0800DCE8 @ =gMain
 	movs r0, #0xc
 	strb r0, [r1, #3]
@@ -1814,9 +1814,9 @@ sub_DCF0: @ 0x0800DCF0
 	bl m4aSongNumStart
 	bl sub_F6E0
 	bl SaveFile_WriteToSram
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	movs r0, #0
 	b _0800DD3C
 	.align 2, 0
@@ -1846,9 +1846,9 @@ _0800DD48: .4byte gUnknown_0202BEBC
 	thumb_func_start sub_DD4C
 sub_DD4C: @ 0x0800DD4C
 	push {lr}
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _0800DD6C @ =gAutoDisplayTitlescreenMenu
 	movs r0, #1
 	strb r0, [r1]
@@ -1956,8 +1956,8 @@ sub_DD70: @ 0x0800DD70
 	ldr r0, [r4, #8]
 	movs r0, #9
 	bl m4aSongNumStart
-	bl sub_CBC
-	bl sub_24C
+	bl sub_0CBC
+	bl sub_024C
 	ldrb r0, [r6, #3]
 	adds r0, #1
 	strb r0, [r6, #3]
@@ -2262,9 +2262,9 @@ _0800E0C0: .4byte 0x80000800
 	thumb_func_start sub_E0C4
 sub_E0C4: @ 0x0800E0C4
 	push {lr}
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r0, _0800E0E8 @ =gUnknown_02002858
 	adds r0, #0x24
 	ldrb r0, [r0]
@@ -2375,8 +2375,8 @@ sub_E0EC: @ 0x0800E0EC
 	ldr r0, [r4, #8]
 	movs r0, #9
 	bl m4aSongNumStart
-	bl sub_CBC
-	bl sub_24C
+	bl sub_0CBC
+	bl sub_024C
 	ldrb r0, [r6, #3]
 	adds r0, #1
 	strb r0, [r6, #3]
@@ -2589,9 +2589,9 @@ _0800E38C: .4byte 0x80000800
 	thumb_func_start sub_E390
 sub_E390: @ 0x0800E390
 	push {lr}
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	movs r0, #8
 	bl SetMainGameState
 	pop {r0}

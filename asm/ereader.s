@@ -137,8 +137,8 @@ sub_2C78: @ 0x08002C78
 	bl sub_394C
 	movs r0, #5
 	bl m4aSongNumStart
-	bl sub_CBC
-	bl sub_24C
+	bl sub_0CBC
+	bl sub_024C
 	movs r0, #1
 	strb r0, [r6, #3]
 	pop {r3, r4}
@@ -467,9 +467,9 @@ sub_304C: @ 0x0800304C
 	beq _08003076
 	bl sub_2568
 	bl sub_1AA4
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	movs r0, #0
 	strb r0, [r5, #3]
 _08003076:
@@ -803,9 +803,9 @@ _08003330:
 	bne _08003358
 	bl sub_2568
 	bl sub_1AA4
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	strb r4, [r7, #3]
 	b _0800336E
 	.align 2, 0
@@ -880,9 +880,9 @@ _080033E4: .4byte gUnknown_0202A58C
 _080033E8:
 	movs r0, #0
 	strh r0, [r2]
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _0800342C @ =gMain
 	movs r0, #6
 	strb r0, [r1, #3]
@@ -1039,8 +1039,8 @@ sub_343C: @ 0x0800343C
 	bl sub_394C
 	movs r0, #5
 	bl m4aSongNumStart
-	bl sub_CBC
-	bl sub_24C
+	bl sub_0CBC
+	bl sub_024C
 	movs r0, #7
 	strb r0, [r6, #3]
 	pop {r3, r4}
@@ -1266,9 +1266,9 @@ _08003748: .4byte 0x80001800
 	thumb_func_start sub_374C
 sub_374C: @ 0x0800374C
 	push {lr}
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _08003774 @ =gAutoDisplayTitlescreenMenu
 	movs r0, #1
 	strb r0, [r1]

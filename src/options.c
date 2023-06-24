@@ -81,8 +81,8 @@ void sub_51240(void)
 	sub_513B8();
 	sub_51C9C();
 	m4aMPlayAllStop();
-	sub_CBC();
-	sub_24C();
+	sub_0CBC();
+	sub_024C();
 	sub_10C0();
 
     gMain.subState++;
@@ -485,9 +485,9 @@ void sub_51C60(void)
 {
     gMain_saveData.unk141 = gOptionsData.unk2A;
     SaveFile_WriteToSram();
-    sub_2B4();
+    sub_02B4();
     m4aMPlayAllStop();
-    sub_D10();
+    sub_0D10();
     gAutoDisplayTitlescreenMenu = 1;
     SetMainGameState(STATE_TITLE);
 }

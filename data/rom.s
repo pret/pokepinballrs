@@ -729,16 +729,16 @@ gUnknown_08079870:: @ 0x08079870
 gTitlescreenStateFuncs:: @ 0x08079890
 	.4byte LoadTitlescreenGraphics
 	.4byte TitleScreen1_WaitForStartButton
-	.4byte TitleScreen2_Unknown
-	.4byte TitleScreen3_Unknown
+	.4byte TitleScreen2_8010CF0
+	.4byte TitleScreen3_8010E00
 	.4byte TitleScreen4_MenuInputNoSavedGame
 	.4byte TitleScreen5_MenuInputSavedGame
 	.4byte TitleScreen6_AnimCloseMenu
-	.4byte TitleScreen7_Unknown
-	.4byte TitleScreen8_Unknown
-	.4byte TitleScreen9_Unknown
+	.4byte TitleScreen7_8011020
+	.4byte TitleScreen8_8011228
+	.4byte TitleScreen9_8010D84
 	.4byte TitleScreen10_ExecMenuSelection
-	.4byte TitleScreen11_Unknown
+	.4byte TitleScreen11_80114B4
 
 gUnknown_080798C0:: @ 0x080798C0
 	.incbin "baserom.gba", 0x798C0, 0x800
@@ -2032,7 +2032,7 @@ gMainFuncs:: @ 0x086A4AD8
 	.4byte IdlePinballGameMain
 	.4byte OptionsMain
 	.4byte PokedexMain
-	.4byte sub_9BC_Main
+	.4byte Main_09BC
 	.4byte EReaderMain
 	.4byte HighScoresMain
 	.4byte IdleHighScoresMain

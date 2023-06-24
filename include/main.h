@@ -109,18 +109,18 @@ extern void (*gUnknown_02017BD4)(void);
 extern StateFunc gMainFuncs[];
 extern struct OamData gOamBuffer[128];
 
-void sub_24C(void);
-void sub_2B4(void);
+void sub_024C(void);
+void sub_02B4(void);
 void ClearGraphicsMemory(void);
-void sub_518(void);
+void sub_0518(void);
 void ClearSprites(void);
 u32 Random(void);
 void VBlankIntr(void);
 void VCountIntr(void);
 void SerialIntr(void);
 void Timer3Intr(void);
-void sub_CBC(void);
-void sub_D10(void);
+void sub_0CBC(void);
+void sub_0D10(void);
 void MainLoopIter(void);
 void DefaultMainCallback(void);
 
