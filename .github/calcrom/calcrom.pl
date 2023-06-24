@@ -240,10 +240,12 @@ print "\n";
 
 
 my $dataTotal = $srcdata + $data;
+$data -= $incbin_bytes;
 my $srcDataPct = 100 * $srcdata / $dataTotal;
 my $dataPct = 100 * $data / $dataTotal;
+my $incPct = 100 * $incbin_bytes / $dataTotal;
 
-if ($data == 0)
+if ($data == 0 && $incbin_bytes == 0)
 {
     print "Data porting to C is 100% complete\n"
 }
@@ -253,14 +255,11 @@ else
     printf "%8d bytes of data in src (%.4f%%)\n", $srcdata, $srcDataPct;
     printf "%8d bytes of data in data (%.4f%%)\n", $data, $dataPct;
 }
-print "\n";
 
 
-
-my $incPct = sprintf("%.4f", 100 * $incbin_bytes / $dataTotal);
 
 if ($incbin_count == 0) {
-    print "All incbins have been eliminated\n"
+    print "All incbins have been eliminated\n";
 } else {
-    print "$incbin_bytes bytes of data in $incbin_count incbins ($incPct%)\n"
+    printf "%8d bytes of data in $incbin_count incbins (%.4f%%)\n", $incbin_bytes, $incPct;
 }
