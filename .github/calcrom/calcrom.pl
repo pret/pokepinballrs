@@ -230,10 +230,10 @@ if ($partial_documented == 0 && $undocumented == 0)
 }
 else
 {
-    printf "%5d total symbols\n", $total_syms;
-    printf "%5d symbols documented (%.4f%%)\n", $documented, $docPct;
-    printf "%5d symbols partially documented (%.4f%%)\n", $partial_documented, $partialPct;
-    printf "%5d symbols undocumented (%.4f%%)\n", $undocumented, $undocPct;
+    printf "%8d total symbols\n", $total_syms;
+    printf "%8d symbols documented (%.4f%%)\n", $documented, $docPct;
+    printf "%8d symbols partially documented (%.4f%%)\n", $partial_documented, $partialPct;
+    printf "%8d symbols undocumented (%.4f%%)\n", $undocumented, $undocPct;
 }
 print "\n";
 
