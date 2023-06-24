@@ -23,8 +23,22 @@ my $asm = 0;
 my $srcdata = 0;
 my $data = 0;
 my @pairs = ();
+
+my $processlines = 0;
+
 while (my $line = <$file>)
 {
+    # Prevent everything before Memory Configuration from being considered, most notably discarded sections
+    if (rindex($line, 'Memory Configuration', 0) == 0)
+    {
+        $processlines = 1;
+    }
+    
+    if (!$processlines)
+    {
+        next;
+    }
+    
     if ($line =~ /^ \.(\w+)\s+0x[0-9a-f]+\s+(0x[0-9a-f]+) (\w+)\/(.+)\.o/)
     {
         my $section = $1;
@@ -55,6 +69,7 @@ while (my $line = <$file>)
         {
             if ($dir eq 'src')
             {
+                print "$line";
                 $srcdata += $size;
             }
             elsif ($dir eq 'data')
