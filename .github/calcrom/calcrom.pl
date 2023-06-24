@@ -257,8 +257,6 @@ else
     printf "%8d bytes of data in data (%.4f%%)\n", $data, $dataPct;
 }
 
-
-
 if ($incbin_count == 0) {
     print "All incbins have been eliminated\n";
 } else {
