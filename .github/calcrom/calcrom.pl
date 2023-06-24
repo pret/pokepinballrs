@@ -19,6 +19,7 @@ open(my $file, $ARGV[0])
     or die "ERROR: could not open file '$ARGV[0]'.\n";
 
 my $src = 0;
+my $lib = 0;
 my $asm = 0;
 my $srcdata = 0;
 my $data = 0;
@@ -39,7 +40,7 @@ while (my $line = <$file>)
         next;
     }
     
-    if ($line =~ /^ \.(\w+)\s+0x[0-9a-f]+\s+(0x[0-9a-f]+) (\w+)\/(.+)\.o/)
+    if ($line =~ /^ \.(\w+)\s+0x[0-9a-f]+\s+(0x[0-9a-f]+) ([\w\.]+)\/(.+)\.o/)
     {
         my $section = $1;
         my $size = hex($2);
@@ -55,6 +56,10 @@ while (my $line = <$file>)
             if ($dir eq 'src')
             {
                 $src += $size;
+            }
+            elsif ($dir eq '..')
+            {
+                $lib += $size;
             }
             elsif ($dir eq 'asm')
             {
@@ -180,17 +185,11 @@ my $incbin_bytes = $incbin_bytes_as_string + 0;
     or die "ERROR: Cannot convert string to num: '$incbin_bytes_as_string'";
 
 
-my $total = $src + $asm;
-my $srcPct = sprintf("%.4f", 100 * $src / $total);
-my $asmPct = sprintf("%.4f", 100 * $asm / $total);
 
-# partial_documented is double-counting the unknown_* and sub_* symbols.
-$partial_documented = $partial_documented - $undocumented;
-
-my $documented = $total_syms - ($undocumented + $partial_documented);
-my $docPct = sprintf("%.4f", 100 * $documented / $total_syms);
-my $partialPct = sprintf("%.4f", 100 * $partial_documented / $total_syms);
-my $undocPct = sprintf("%.4f", 100 * $undocumented / $total_syms);
+my $total = $src + $lib + $asm;
+my $srcPct = 100 * $src / $total;
+my $libPct = 100 * $lib / $total;
+my $asmPct = 100 * $asm / $total;
 
 if ($asm == 0)
 {
@@ -198,25 +197,32 @@ if ($asm == 0)
 }
 else
 {
-    print "$total total bytes of code\n";
-    print "$src bytes of code in src ($srcPct%)\n";
-    print "$asm bytes of code in asm ($asmPct%)\n";
+    printf "%8d total bytes of code\n", $total;
+    printf "%8d bytes of code in src (%.4f%%)\n", $src, $srcPct;
+    printf "%8d bytes of code in agbcc libraries (%.4f%%)\n", $lib, $libPct;
+    printf "%8d bytes of code in asm (%.4f%%)\n", $asm, $asmPct;
 }
 print "\n";
-
-
 
 if ($verbose != 0)
 {
     print "BREAKDOWN\n";
     foreach my $item (@sorted)
     {
-        print "    $item->[1] bytes in asm/$item->[0].s\n"
+        printf "    %8d bytes in asm/$item->[0].s\n", $item->[1];
     }
     print "\n";
 }
 
 
+
+# partial_documented is double-counting the unknown_* and sub_* symbols.
+$partial_documented = $partial_documented - $undocumented;
+
+my $documented = $total_syms - ($undocumented + $partial_documented);
+my $docPct = 100 * $documented / $total_syms;
+my $partialPct = 100 * $partial_documented / $total_syms;
+my $undocPct = 100 * $undocumented / $total_syms;
 
 if ($partial_documented == 0 && $undocumented == 0)
 {
@@ -224,18 +230,18 @@ if ($partial_documented == 0 && $undocumented == 0)
 }
 else
 {
-    print "$total_syms total symbols\n";
-    print "$documented symbols documented ($docPct%)\n";
-    print "$partial_documented symbols partially documented ($partialPct%)\n";
-    print "$undocumented symbols undocumented ($undocPct%)\n";
+    printf "%5d total symbols\n", $total_syms;
+    printf "%5d symbols documented (%.4f%%)\n", $documented, $docPct;
+    printf "%5d symbols partially documented (%.4f%%)\n", $partial_documented, $partialPct;
+    printf "%5d symbols undocumented (%.4f%%)\n", $undocumented, $undocPct;
 }
-
 print "\n";
-my $dataTotal = $srcdata + $data;
-my $srcDataPct = sprintf("%.4f", 100 * $srcdata / $dataTotal);
-my $dataPct = sprintf("%.4f", 100 * $data / $dataTotal);
 
-my $incPct = sprintf("%.4f", 100 * $incbin_bytes / $dataTotal);
+
+
+my $dataTotal = $srcdata + $data;
+my $srcDataPct = 100 * $srcdata / $dataTotal;
+my $dataPct = 100 * $data / $dataTotal;
 
 if ($data == 0)
 {
@@ -243,12 +249,15 @@ if ($data == 0)
 }
 else
 {
-    print "$dataTotal total bytes of data\n";
-    print "$srcdata bytes of data in src ($srcDataPct%)\n";
-    print "$data bytes of data in data ($dataPct%)\n";
+    printf "%8d total bytes of data\n", $dataTotal;
+    printf "%8d bytes of data in src (%.4f%%)\n", $srcdata, $srcDataPct;
+    printf "%8d bytes of data in data (%.4f%%)\n", $data, $dataPct;
 }
-
 print "\n";
+
+
+
+my $incPct = sprintf("%.4f", 100 * $incbin_bytes / $dataTotal);
 
 if ($incbin_count == 0) {
     print "All incbins have been eliminated\n"
