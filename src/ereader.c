@@ -217,7 +217,7 @@ void sub_304C(void)
         }
         if (gUnknown_0202A58C == 1) {
             gUnknown_0201A44C++;
-            temp = gUnknown_0201A44C; // NOTE: FAKEMATCH
+            temp = gUnknown_0201A44C; // TODO: FAKEMATCH
             if ((gUnknown_0201A44C & 7) == 0) {
                 gUnknown_0202BEC0 = 21 - gUnknown_0202BEC0;
             }
