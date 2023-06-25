@@ -28,7 +28,7 @@ SECTIONS
     . = 0x08000000;
     .text :
     {
-        asm/crt0.o(.text);
+        src/crt0.o(.text);
         src/util.o(.text);
         src/rom_850.o(.text);
         src/main.o(.text);
@@ -49,9 +49,9 @@ SECTIONS
         asm/rom_3219C.o(.text);
         src/options.o(.text);
         src/rom_528AC.o(.text);
-        asm/m4a_1.o(.text);
+        src/m4a_1.o(.text);
         src/m4a.o(.text);
-        asm/libagbsyscall.o(.text);
+        src/libagbsyscall.o(.text);
         src/agb_sram.o(.text);
         *libgcc.a:_call_via_rX.o(.text);
         *libgcc.a:_divsi3.o(.text);
