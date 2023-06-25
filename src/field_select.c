@@ -1,4 +1,5 @@
 #include "global.h"
+#include "constants/bg_music.h"
 #include "main.h"
 #include "m4a.h"
 #include "titlescreen.h"
@@ -7,6 +8,7 @@ enum
 {
     FIELD_RUBY,
     FIELD_SAPPHIRE,
+    NUM_FIELDS
 };
 
 static void sub_8F94(void);
@@ -65,7 +67,7 @@ void LoadFieldSelectGraphics(void)
     sub_8C38();
     sub_FD5C(sub_8F94);
     gMain.subState++;
-    m4aSongNumStart(3);
+    m4aSongNumStart(MUS_TABLE_SELECT);
 }
 
 static void sub_8C38(void)
@@ -83,7 +85,7 @@ static void sub_8C38(void)
     gFieldSelectData.unk14 = 0;
 
     gFieldSelectData.ballSpeed = gMain_saveData.ballSpeed;
-    gMain.unk4 = 0;
+    gMain.selectedField = FIELD_RUBY;
     gUnknown_02002850 = 0;
 }
 
@@ -168,7 +170,7 @@ void sub_8C7C(void)
                     gFieldSelectData.unkC = 0;
                 }
             }
-            if (gMain.unk4 < 2)
+            if (gMain.selectedField < NUM_FIELDS)
                 gMain.unk6 = 0;
             else
                 gMain.unk6 = 1;
@@ -271,7 +273,7 @@ void sub_8C7C(void)
             }
             break;
         }
-        gMain.unk4 = gFieldSelectData.selectedField;
+        gMain.selectedField = gFieldSelectData.selectedField;
         gMain.unk5 = gFieldSelectData.selectedField;
     }
 }

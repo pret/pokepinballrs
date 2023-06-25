@@ -77,47 +77,48 @@ void ClearSprites(void);
 void sub_0678(u8 *arg0, s16 arg1, s16 arg2);
 void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum);
 
-// asm/bonus_field_select.s
+// src/bonus_field_select.s
 
-//extern ? BonusFieldSelectMain();
-//extern ? sub_25C4();
-//extern ? sub_2710();
-//extern ? sub_2768();
-//extern ? sub_2990();
-//extern ? sub_29C8();
+extern void BonusFieldSelectMain(void);
+extern void sub_25C4(void);
+extern void sub_2710(void);
+extern void sub_2768(void);
+extern void sub_2990(void);
+extern void sub_29C8(void);
+
+// src/ereader.c
+
+extern void EReaderMain(void);
+extern void LoadEReaderGraphics(void);
+extern void sub_2DF0(void);
+extern void sub_2E40(void);
+extern void sub_2FC0(void);
+extern void sub_304C(void);
+extern void sub_3208(void);
+extern void sub_33A0(void);
+extern void sub_343C(void);
 
 // asm/ereader.s
 
-//extern ? EReaderMain();
-//extern ? sub_2C78();
-//extern ? sub_2DF0();
-//extern ? sub_2E40();
-//extern ? sub_2FC0();
-//extern ? sub_304C();
-//extern ? sub_3208();
-//extern ? sub_33A0();
-//extern ? sub_343C();
-//extern ? sub_35C8();
-//extern ? sub_374C();
-//extern ? sub_377C();
-//extern ? sub_37B4();
-//extern ? sub_3828();
-//extern ? sub_38A0();
-//extern ? sub_38F0();
-//extern ? sub_394C();
-//extern ? sub_3AB4();
-//extern ? sub_3C1C();
-//extern ? sub_3C78();
-//extern ? sub_3CD8();
+extern void sub_35C8(void);
+extern void sub_374C(void);
+extern void sub_377C(void);
+extern void sub_37B4(s32);
+extern void sub_3828(s32, s32);
+extern void sub_38A0(u32, u32);
+extern s16 sub_38F0(void);
+extern void sub_394C(void);
+extern void sub_3AB4(void);
+extern void sub_3C1C(void);
+extern void sub_3C78(void);
+extern s16 sub_3CD8(void);
 
-// asm/field_select.s
+// src/field_select.s
 
-//extern ? FieldSelectMain();
-//extern ? LoadFieldSelectGraphics();
-//extern ? sub_8C38();
-//extern ? sub_8C7C();
-//extern ? sub_8F64();
-//extern ? sub_8F94();
+extern void FieldSelectMain(void);
+extern void LoadFieldSelectGraphics(void);
+extern void sub_8C7C(void);
+extern void sub_8F64(void);
 
 // asm/high_scores.s
 
@@ -790,11 +791,11 @@ extern void sub_13FC(void);
 //extern ? sub_17D8();
 extern void sub_1828(void);
 //extern ? sub_1884();
-//extern ? sub_19B4();
+extern void sub_19B4(void);
 //extern ? sub_19CC();
 //extern ? sub_1A78();
 //extern ? nullsub_15();
-//extern ? sub_1AA4();
+extern void sub_1AA4(void);
 //extern ? sub_1B04();
 //extern ? sub_1C5C();
 //extern ? sub_1C84();
@@ -813,10 +814,10 @@ extern void sub_1F5C(void);
 //extern ? sub_23B4();
 //extern ? sub_2414();
 //extern ? nullsub_16();
-//extern ? sub_24DC();
-//extern ? sub_250C();
-//extern ? sub_2538();
-//extern ? sub_2568();
+extern void sub_24DC(void);
+extern void sub_250C(void);
+extern void sub_2538(void);
+extern void sub_2568(void);
 
 // asm/start.s
 
