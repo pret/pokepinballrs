@@ -66,13 +66,13 @@ void LoadTitlescreenGraphics(void)
         gTitlescreen.unk9 = 0;
         gTitlescreen.unkB = autoDisplayMenu;
         gMain.subState = 3;
-        sub_CBC();
+        sub_0CBC();
         sub_FD5C(NULL);
     }
     else
     {
         gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
-        sub_CBC();
+        sub_0CBC();
         sub_FD5C(sub_11640);
     }
 
@@ -194,7 +194,7 @@ void TitleScreen1_WaitForStartButton(void)
     sub_11640();
 }
 
-void TitleScreen2_Unknown(void)
+void TitleScreen2_8010CF0(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -225,7 +225,7 @@ void TitleScreen2_Unknown(void)
     sub_11640();
 }
 
-void TitleScreen9_Unknown(void)
+void TitleScreen9_8010D84(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -241,9 +241,9 @@ void TitleScreen9_Unknown(void)
         {
             m4aSongNumStart(0x65);
             sub_11B74();
-            sub_2B4();
+            sub_02B4();
             m4aMPlayAllStop();
-            sub_D10();
+            sub_0D10();
             gMain.subState = SUBSTATE_LOAD_GRAPHICS;
         }
         else if (gMain.newKeys & B_BUTTON)
@@ -257,7 +257,7 @@ void TitleScreen9_Unknown(void)
     sub_11640();
 }
 
-void TitleScreen3_Unknown(void)
+void TitleScreen3_8010E00(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -367,7 +367,7 @@ void TitleScreen4_MenuInputNoSavedGame(void)
     sub_1175C();
 }
 
-void TitleScreen7_Unknown(void)
+void TitleScreen7_8011020(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -468,7 +468,7 @@ void TitleScreen5_MenuInputSavedGame(void)
     sub_11968();
 }
 
-void TitleScreen8_Unknown(void)
+void TitleScreen8_8011228(void)
 {
     if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
                        == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
@@ -581,7 +581,7 @@ void TitleScreen10_ExecMenuSelection(void)
         sub_FE04(sub_11968);
 
     m4aMPlayAllStop();
-    sub_D10();
+    sub_0D10();
 
     if (gUnknown_086A964C[gTitlescreen.unk6] == 8)
         gUnknown_0202C588 = 0;
@@ -592,11 +592,11 @@ void TitleScreen10_ExecMenuSelection(void)
     SetMainGameState(gUnknown_086A964C[gTitlescreen.unk6]);
 }
 
-void TitleScreen11_Unknown(void)
+void TitleScreen11_80114B4(void)
 {
     sub_FE04(sub_11640);
     m4aMPlayAllStop();
-    sub_D10();
+    sub_0D10();
     gUnknown_0202C588 = 1;
     gAutoDisplayTitlescreenMenu = 0;
     SetMainGameState(gUnknown_086A964C[gTitlescreen.unk6]);

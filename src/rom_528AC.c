@@ -9,7 +9,7 @@ static void sub_52940(u16, s8, s8, u8, int);
 static u16 LoadSaveDataFromSram(void);
 
 #ifdef NONMATCHING
-// Like sub_C24, it matches except for that damn 'push {lr}/pop {lr}'
+// Like sub_0C24, it matches except for that damn 'push {lr}/pop {lr}'
 int sub_528AC(u16 a)
 {
     if (a <= 0xFA)

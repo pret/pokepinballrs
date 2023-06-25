@@ -4,7 +4,7 @@
 @ field select palettes 0xA8840
 
 gUnknown_08055A68:: @ 0x08055A68
-	.incbin "baserom.gba", 0x55A68, 0x55A84 - 0x55A68
+	.incbin "baserom.gba", 0x55A68, 0x1C @ 0x55A84 - 0x55A68
 
 .include "data/mon_locations.inc"
 
@@ -729,16 +729,16 @@ gUnknown_08079870:: @ 0x08079870
 gTitlescreenStateFuncs:: @ 0x08079890
 	.4byte LoadTitlescreenGraphics
 	.4byte TitleScreen1_WaitForStartButton
-	.4byte TitleScreen2_Unknown
-	.4byte TitleScreen3_Unknown
+	.4byte TitleScreen2_8010CF0
+	.4byte TitleScreen3_8010E00
 	.4byte TitleScreen4_MenuInputNoSavedGame
 	.4byte TitleScreen5_MenuInputSavedGame
 	.4byte TitleScreen6_AnimCloseMenu
-	.4byte TitleScreen7_Unknown
-	.4byte TitleScreen8_Unknown
-	.4byte TitleScreen9_Unknown
+	.4byte TitleScreen7_8011020
+	.4byte TitleScreen8_8011228
+	.4byte TitleScreen9_8010D84
 	.4byte TitleScreen10_ExecMenuSelection
-	.4byte TitleScreen11_Unknown
+	.4byte TitleScreen11_80114B4
 
 gUnknown_080798C0:: @ 0x080798C0
 	.incbin "baserom.gba", 0x798C0, 0x800
@@ -1508,7 +1508,7 @@ gUnknown_083C806C:: @ 0x083C806C
 
 .include "data/graphics/mon_hatch_sprites.inc"
 
-.incbin "baserom.gba", 0x3EB84C, 0x3FE44C - 0x3EB84C
+.incbin "baserom.gba", 0x3EB84C, 0x12C00 @ 0x3FE44C - 0x3EB84C
 
 gUnknown_083FE44C:: @ 0x083FE44C
 	.incbin "baserom.gba", 0x3FE44C, 0xC00
@@ -1689,7 +1689,7 @@ gUnknown_084C4B6C:: @ 0x084C4B6C
 
 .include "data/graphics/mon_portraits.inc"
 
-.incbin "baserom.gba", 0x4ECF6C, 0x4ED0CC - 0x4ECF6C
+.incbin "baserom.gba", 0x4ECF6C, 0x160 @ 0x4ED0CC - 0x4ECF6C
 
 gUnknown_084ED0CC:: @ 0x084ED0CC
 	.incbin "baserom.gba", 0x4ED0CC, 0x600
@@ -1824,7 +1824,7 @@ gGBAButtonIcons_Pals:: @ 0x0852B668
 gOptionsSprites_Gfx:: @ 0x0852B868
 	.incbin "graphics/options/sprites.4bpp"
 
-.incbin "baserom.gba", 0x52D888, 0x52D928 - 0x52D888
+.incbin "baserom.gba", 0x52D888, 0xA0 @ 0x52D928 - 0x52D888
 
 gScaleTable:: @ 0x0852D928
 	.incbin "baserom.gba", 0x52D928, 0xB4
@@ -2032,7 +2032,7 @@ gMainFuncs:: @ 0x086A4AD8
 	.4byte IdlePinballGameMain
 	.4byte OptionsMain
 	.4byte PokedexMain
-	.4byte sub_9BC_Main
+	.4byte Main_09BC
 	.4byte EReaderMain
 	.4byte HighScoresMain
 	.4byte IdleHighScoresMain
@@ -2398,7 +2398,7 @@ gUnknown_086A96D4:: @ 0x086A96D4
 	.2byte 0x0003
 	.2byte 0x0004
 
-.incbin "baserom.gba", 0x6A96DE, 0x6A96E4 - 0x6A96DE
+.incbin "baserom.gba", 0x6A96DE, 0x6 @ 0x6A96E4 - 0x6A96DE
 
 gUnknown_086A96E4:: @ 0x086A96E4
 	.4byte 0x086A8000
@@ -2468,7 +2468,7 @@ gEReaderAccessButtonSequence:: @ 0x086A97AC
 	.2byte 0xFFFF
 
 	.align 2, 0
-.incbin "baserom.gba", 0x6A97BC, 0x6ACD50 - 0x6A97BC
+.incbin "baserom.gba", 0x6A97BC, 0x3594 @ 0x6ACD50 - 0x6A97BC
 
 gUnknown_086ACD50:: @ 0x086ACD50
 	.incbin "baserom.gba", 0x6ACD50, 0x24
@@ -3196,7 +3196,7 @@ gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup12_Gfx
 	.4byte gMonPortraitsGroup13_Gfx
 
-.incbin "baserom.gba", 0x6BB770, 0x6BB910 - 0x6BB770
+.incbin "baserom.gba", 0x6BB770, 0x1A0 @ 0x6BB910 - 0x6BB770
 
 gUnknown_086BB910:: @ 0x086BB910
 	.incbin "baserom.gba", 0x6BB910, 0x58
@@ -3216,6 +3216,6 @@ gUnknown_086BB9EC:: @ 0x086BB9EC
 gSaveFileSignature:: @ 0x086BBA6C
 	.ascii "POKEPINAGB"
 
-	.incbin "baserom.gba", 0x6BBA6C + 0xA, 0x6BBFD0 - 0x6BBA6C
+	.incbin "baserom.gba", 0x6BBA76, 0x564 @ 0x6BBA6C + 0xA, 0x6BBFD0 - 0x6BBA6C
 
 @ rom end 0x6BBFD0

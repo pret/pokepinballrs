@@ -173,8 +173,8 @@ sub_3DCC: @ 0x08003DCC
 	str r2, [r4, #8]
 	ldr r0, [r4, #8]
 	bl sub_51FC
-	bl sub_CBC
-	bl sub_24C
+	bl sub_0CBC
+	bl sub_024C
 	movs r0, #1
 	strb r0, [r7, #3]
 	movs r0, #0x2e
@@ -1597,9 +1597,9 @@ _08004B70:
 	subs r1, #1
 	cmp r1, #0
 	bge _08004B70
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _08004BB0 @ =gMain
 	movs r0, #0
 	strb r0, [r1, #3]
@@ -1685,9 +1685,9 @@ _08004C2A:
 	cmp r2, #0xcc
 	ble _08004C2A
 	bl SaveFile_WriteToSram
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _08004C78 @ =gMain
 	movs r0, #0
 	strb r0, [r1, #3]
@@ -1761,9 +1761,9 @@ _08004CC2:
 	mov r1, ip
 	strh r0, [r1]
 	bl SaveFile_WriteToSram
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _08004CF8 @ =gMain
 	movs r0, #0
 	strb r0, [r1, #3]
@@ -1806,9 +1806,9 @@ _08004D4C: .4byte gUnknown_0202A588
 	thumb_func_start sub_4D50
 sub_4D50: @ 0x08004D50
 	push {lr}
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r1, _08004D70 @ =gAutoDisplayTitlescreenMenu
 	movs r0, #1
 	strb r0, [r1]

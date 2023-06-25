@@ -224,7 +224,7 @@ _08011D0A:
 	b _08011F2C
 _08011D4C:
 	adds r0, r7, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	mov r2, r8
@@ -239,7 +239,7 @@ _08011D4C:
 	ands r5, r1
 	orrs r5, r0
 	adds r0, r7, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, r8
 	rsbs r1, r2, #0
 	lsls r0, r0, #0x10
@@ -268,7 +268,7 @@ _08011DA4:
 	b _08011F2C
 _08011DB2:
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	mov r1, r8
@@ -283,7 +283,7 @@ _08011DB2:
 	ands r5, r1
 	orrs r5, r0
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, r8
 	rsbs r1, r2, #0
 	lsls r0, r0, #0x10
@@ -362,7 +362,7 @@ _08011E36:
 	cmp r2, r0
 	ble _08011F2C
 	adds r0, r7, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	mov r2, r8
@@ -377,7 +377,7 @@ _08011E36:
 	ands r5, r1
 	orrs r5, r0
 	adds r0, r7, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, r8
 	rsbs r1, r2, #0
 	lsls r0, r0, #0x10
@@ -404,7 +404,7 @@ _08011ED0:
 	cmp r2, r0
 	ble _08011F2C
 	mov r0, sb
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	mov r1, r8
@@ -419,7 +419,7 @@ _08011ED0:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, sb
-	bl sub_C24
+	bl sub_0C24
 	mov r2, r8
 	rsbs r1, r2, #0
 	lsls r0, r0, #0x10
@@ -593,7 +593,7 @@ _0801200A:
 	b _080124C8
 _08012052:
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -606,7 +606,7 @@ _08012052:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -633,7 +633,7 @@ _080120A4:
 	b _080124C8
 _080120B0:
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -646,7 +646,7 @@ _080120B0:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -677,7 +677,7 @@ _080120FC:
 	b _080124C8
 _08012114:
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -690,7 +690,7 @@ _08012114:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -715,7 +715,7 @@ _08012160:
 	b _080124C8
 _0801216C:
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -728,7 +728,7 @@ _0801216C:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -757,7 +757,7 @@ _080121B8:
 	b _080124C8
 _080121CC:
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -770,7 +770,7 @@ _080121CC:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -795,7 +795,7 @@ _08012218:
 	b _080124C8
 _08012224:
 	mov r0, sb
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -808,7 +808,7 @@ _08012224:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, sb
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -861,7 +861,7 @@ _08012270:
 	b _080124C8
 _080122B6:
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -874,7 +874,7 @@ _080122B6:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -900,7 +900,7 @@ _08012304:
 	b _080124C8
 _08012310:
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -913,7 +913,7 @@ _08012310:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -944,7 +944,7 @@ _0801235C:
 	b _080124C8
 _08012374:
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -957,7 +957,7 @@ _08012374:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -982,7 +982,7 @@ _080123C0:
 	b _080124C8
 _080123CC:
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -995,7 +995,7 @@ _080123CC:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -1022,7 +1022,7 @@ _08012418:
 	cmp r1, r0
 	ble _080124C8
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -1035,7 +1035,7 @@ _08012418:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -1058,7 +1058,7 @@ _08012474:
 	cmp r1, r0
 	ble _080124C8
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
@@ -1071,7 +1071,7 @@ _08012474:
 	ands r5, r1
 	orrs r5, r0
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -3703,12 +3703,12 @@ sub_13934: @ 0x08013934
 	cmp r0, #0
 	ble _080139A4
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bge _080139D6
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	movs r1, #0x46
@@ -3728,12 +3728,12 @@ _080139A4:
 	cmp r0, #0
 	bge _080139D6
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	ble _080139D6
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	movs r1, #0x46
@@ -3786,7 +3786,7 @@ _080139EC:
 	cmp r0, #0
 	bne _08013A44
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -3802,7 +3802,7 @@ _08013A3C: .4byte 0x00000125
 _08013A40: .4byte 0x0000132C
 _08013A44:
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	movs r1, #0x64
@@ -3825,7 +3825,7 @@ _08013A64:
 	cmp r0, #0
 	bne _08013A8C
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	movs r1, #0x64
@@ -3837,7 +3837,7 @@ _08013A64:
 _08013A88: .4byte 0x00004E20
 _08013A8C:
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r2, r0, #2
@@ -4250,7 +4250,7 @@ _08013DB8:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	ldr r2, [sp, #0x18]
@@ -4260,7 +4260,7 @@ _08013DB8:
 	bl __divsi3
 	str r0, [sp, #0x1c]
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	ldr r1, [sp, #0x18]
@@ -4269,7 +4269,7 @@ _08013DB8:
 	bl __divsi3
 	adds r7, r0, #0
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	ldr r1, _08013E44 @ =0x1F3F0000
 	cmp r0, r1
@@ -4357,13 +4357,13 @@ _08013E58:
 	adds r1, r1, r0
 	strh r1, [r4, #6]
 	ldr r0, [sp, #8]
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r7, r0
 	str r0, [sp]
 	ldr r0, [sp, #8]
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r7, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -4375,7 +4375,7 @@ _08013E58:
 	lsls r0, r1, #0x10
 	lsrs r5, r0, #0x10
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	ldr r2, [sp, #0x1c]
@@ -4384,7 +4384,7 @@ _08013E58:
 	adds r0, r0, r1
 	str r0, [sp]
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	ldr r2, [sp, #0x1c]
 	rsbs r1, r2, #0
 	lsls r0, r0, #0x10
@@ -4415,7 +4415,7 @@ _08013F20:
 	muls r1, r4, r1
 	adds r4, r1, #0
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	mov r1, sb
 	muls r1, r4, r1
 	lsls r0, r0, #0x10
@@ -4431,7 +4431,7 @@ _08013F20:
 	orrs r2, r0
 	mov sl, r2
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r4, #0
 	mov r2, sb
 	muls r2, r1, r2
@@ -4502,7 +4502,7 @@ _08013F20:
 	cmp r0, #0xd1
 	bgt _08014020
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	ldr r2, [sp, #0x18]
@@ -4511,7 +4511,7 @@ _08013F20:
 	bl __divsi3
 	str r0, [sp]
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	ldr r2, [sp, #0x18]
 	rsbs r1, r2, #0
 	b _0801403E
@@ -4525,7 +4525,7 @@ _08014018: .4byte 0x0000FFFF
 _0801401C: .4byte gMain
 _08014020:
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r6, r0
@@ -4534,7 +4534,7 @@ _08014020:
 	bl __divsi3
 	str r0, [sp]
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	rsbs r1, r6, #0
 _0801403E:
 	lsls r0, r0, #0x10
@@ -4664,7 +4664,7 @@ _08014108:
 	cmp r0, #0
 	beq _08014190
 	adds r0, r7, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	movs r1, #0xe6
@@ -4678,7 +4678,7 @@ _08014108:
 	ands r6, r1
 	orrs r6, r0
 	adds r0, r7, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -4697,7 +4697,7 @@ _08014188: .4byte 0x00004E20
 _0801418C: .4byte 0xFFFF0000
 _08014190:
 	adds r0, r7, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	ldr r1, _08014200 @ =0x0000011D
@@ -4711,7 +4711,7 @@ _08014190:
 	ands r6, r1
 	orrs r6, r0
 	adds r0, r7, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -4788,7 +4788,7 @@ _08014236:
 	cmp r0, r1
 	bhi _080142A8
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #4
@@ -4804,7 +4804,7 @@ _08014236:
 	ands r6, r1
 	orrs r6, r0
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -4827,7 +4827,7 @@ _080142A8:
 	cmp r0, r1
 	bhi _080142FC
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #4
@@ -4843,7 +4843,7 @@ _080142A8:
 	ands r6, r1
 	orrs r6, r0
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -4858,7 +4858,7 @@ _080142F4: .4byte 0x00004E20
 _080142F8: .4byte 0xFFFF0000
 _080142FC:
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #4
@@ -4874,7 +4874,7 @@ _080142FC:
 	ands r6, r1
 	orrs r6, r0
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -4888,7 +4888,7 @@ _08014338: .4byte 0x00004E20
 _0801433C: .4byte 0xFFFF0000
 _08014340:
 	adds r0, r7, #0
-	bl sub_C74
+	bl sub_0C74
 	ldr r5, _080143D4 @ =gUnknown_086ACDF4
 	mov r2, sl
 	ldr r1, [r2]
@@ -4910,7 +4910,7 @@ _08014340:
 	ands r6, r1
 	orrs r6, r0
 	adds r0, r7, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, sl
 	ldr r1, [r2]
 	adds r1, #0x23
@@ -5007,7 +5007,7 @@ _08014412:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	mov r1, sb
@@ -5019,7 +5019,7 @@ _08014412:
 	mov r2, r8
 	str r0, [r2]
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, sb
 	rsbs r1, r2, #0
 	lsls r0, r0, #0x10
@@ -5690,7 +5690,7 @@ sub_1493C: @ 0x0801493C
 	lsrs r4, r4, #0x10
 	movs r5, #0x1e
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r5, r0
@@ -5699,7 +5699,7 @@ sub_1493C: @ 0x0801493C
 	bl __divsi3
 	str r0, [sp]
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	rsbs r5, r5, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -6082,7 +6082,7 @@ _08014CB0:
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	adds r0, r6, #0
-	bl sub_C74
+	bl sub_0C74
 	mov r1, sl
 	ldr r4, [r1]
 	lsls r0, r0, #0x10
@@ -6094,7 +6094,7 @@ _08014CB0:
 	adds r4, #0x60
 	strh r0, [r4]
 	adds r0, r6, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, sl
 	ldr r4, [r2]
 	rsbs r1, r7, #0
@@ -6146,7 +6146,7 @@ _08014D3E:
 	bl __divsi3
 	adds r5, r0, #0
 	adds r0, r7, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r5, r0
@@ -6159,7 +6159,7 @@ _08014D3E:
 	ands r4, r1
 	orrs r4, r0
 	adds r0, r7, #0
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r5, r0
@@ -6201,7 +6201,7 @@ _08014D3E:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	muls r0, r5, r0
@@ -6210,7 +6210,7 @@ _08014D3E:
 	mov r3, r8
 	strh r0, [r3]
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	rsbs r5, r5, #0
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
@@ -9512,7 +9512,7 @@ _080167EE:
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x11
 	adds r0, r6, #0
-	bl sub_C74
+	bl sub_0C74
 	mov r5, sb
 	ldr r1, [r5]
 	add r1, r8
@@ -9525,7 +9525,7 @@ _080167EE:
 	bl __divsi3
 	strh r0, [r4, #0x30]
 	adds r0, r6, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, sb
 	ldr r1, [r2]
 	add r1, r8
@@ -14874,9 +14874,9 @@ _080192A4:
 	asrs r0, r0, #0x10
 	cmp r0, #4
 	ble _080192A4
-	bl sub_2B4
+	bl sub_02B4
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldr r2, _080192E0 @ =gMain
 	ldr r0, _080192E4 @ =gUnknown_02031520
 	movs r3, #6
@@ -21524,7 +21524,7 @@ sub_1C73C: @ 0x0801C73C
 	strb r6, [r0]
 _0801C7BA:
 	bl m4aMPlayAllStop
-	bl sub_D10
+	bl sub_0D10
 	ldrb r0, [r7, #4]
 	strb r0, [r7, #5]
 	ldr r0, [r5]
@@ -25483,7 +25483,7 @@ _0801E824:
 	movs r0, #0xb4
 	strh r0, [r1]
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	mov r4, sb
 	ldr r1, [r4]
 	adds r4, r1, r6
@@ -25502,7 +25502,7 @@ _0801E824:
 	adds r4, r4, r1
 	strh r0, [r4]
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, sb
 	ldr r1, [r2]
 	adds r4, r1, r6
@@ -25574,7 +25574,7 @@ _0801E8E0:
 	movs r0, #0xb4
 	strh r0, [r1]
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	mov r4, sb
 	ldr r1, [r4]
 	adds r4, r1, r6
@@ -25593,7 +25593,7 @@ _0801E8E0:
 	adds r4, r4, r1
 	strh r0, [r4]
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, sb
 	ldr r1, [r2]
 	adds r4, r1, r6
@@ -25844,7 +25844,7 @@ _0801EB00:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -25855,7 +25855,7 @@ _0801EB00:
 	bl __divsi3
 	str r0, [sp, #8]
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -27454,7 +27454,7 @@ _0801F802:
 	cmp r0, #0x1d
 	bhi _0801F8A8
 	adds r0, r2, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	mov r2, sb
 	ldr r4, [r2]
@@ -27485,7 +27485,7 @@ _0801F8A0: .4byte 0x00004E20
 _0801F8A4: .4byte 0x000002B6
 _0801F8A8:
 	adds r0, r2, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	mov r0, sb
 	ldr r4, [r0]
@@ -29448,7 +29448,7 @@ _08020832:
 	bl m4aMPlayVolumeControl
 _08020856:
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	ldr r0, _08020910 @ =gUnknown_020314E0
 	ldr r4, [r0]
@@ -30370,7 +30370,7 @@ _08020F82:
 	lsls r4, r4, #0x10
 	lsrs r5, r4, #0x10
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -30381,7 +30381,7 @@ _08020F82:
 	bl __divsi3
 	str r0, [sp]
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -37391,7 +37391,7 @@ _0802485C:
 	bgt _080248AC
 	movs r5, #0
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -37403,7 +37403,7 @@ _0802485C:
 	bl __divsi3
 	str r0, [sp]
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -37431,7 +37431,7 @@ _080248AC:
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -37442,7 +37442,7 @@ _080248AC:
 	bl __divsi3
 	str r0, [sp]
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -37713,7 +37713,7 @@ _08024AB4:
 	lsrs r2, r2, #0x10
 	mov r8, r2
 	mov r0, r8
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -37724,7 +37724,7 @@ _08024AB4:
 	bl __divsi3
 	str r0, [sp]
 	mov r0, r8
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -38116,7 +38116,7 @@ _08024E38:
 	cmp r0, #1
 	bls _08024EB0
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	ldr r4, _08024EA8 @ =gUnknown_020314E0
 	ldr r1, [r4]
 	add r1, sb
@@ -38127,7 +38127,7 @@ _08024E38:
 	bl __divsi3
 	strh r0, [r4, #0x30]
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	ldr r5, _08024EA8 @ =gUnknown_020314E0
 	ldr r0, [r5]
@@ -38148,7 +38148,7 @@ _08024EA8: .4byte gUnknown_020314E0
 _08024EAC: .4byte 0x000005A9
 _08024EB0:
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	ldr r6, _08024EF4 @ =gUnknown_020314E0
 	ldr r1, [r6]
 	add r1, sb
@@ -38159,7 +38159,7 @@ _08024EB0:
 	bl __divsi3
 	strh r0, [r4, #0x30]
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	ldr r0, [r6]
 	add r0, sb
@@ -45288,7 +45288,7 @@ _080288E0: .4byte gUnknown_020314E0
 _080288E4: .4byte gUnknown_086AE124
 _080288E8:
 	adds r0, r5, #0
-	bl sub_C74
+	bl sub_0C74
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -45299,7 +45299,7 @@ _080288E8:
 	bl __divsi3
 	adds r6, r0, #0
 	adds r0, r5, #0
-	bl sub_C24
+	bl sub_0C24
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	lsls r1, r0, #3
@@ -45334,7 +45334,7 @@ _08028918:
 	mov r1, r8
 	adds r1, #0xc0
 	strh r2, [r1]
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	ldr r4, [r5]
 	adds r5, r4, #0
@@ -50499,7 +50499,7 @@ _0802B388:
 	lsls r3, r3, #3
 	adds r4, r4, r3
 	ldrh r0, [r4]
-	bl sub_C74
+	bl sub_0C74
 	mov r4, sl
 	ldr r5, [r4]
 	adds r1, r5, r7
@@ -50525,7 +50525,7 @@ _0802B388:
 	lsls r3, r3, #3
 	adds r5, r5, r3
 	ldrh r0, [r5]
-	bl sub_C24
+	bl sub_0C24
 	mov r4, sl
 	ldr r1, [r4]
 	adds r2, r1, r7
@@ -56198,7 +56198,7 @@ _0802E180:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	adds r0, r4, #0
-	bl sub_C74
+	bl sub_0C74
 	adds r1, r0, #0
 	mov r6, sb
 	ldr r5, [r6]
@@ -56218,7 +56218,7 @@ _0802E180:
 	adds r5, r5, r1
 	strh r0, [r5]
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	mov r2, sb
 	ldr r4, [r2]
 	lsls r0, r0, #0x10
@@ -57503,7 +57503,7 @@ _0802EC40:
 	lsls r4, r4, #0x1a
 	lsrs r4, r4, #0x10
 	adds r0, r4, #0
-	bl sub_C24
+	bl sub_0C24
 	adds r1, r0, #0
 	ldr r4, [r6]
 	lsls r1, r1, #0x10

@@ -4,7 +4,7 @@
 #include "m4a.h"
 
 static void InitGame(void);
-static void sub_B8C(void);
+static void sub_0B8C(void);
 static void InitIntrHandlers(void);
 static void ReadKeys(void);
 
@@ -24,13 +24,13 @@ void AgbMain(void)
     }
 }
 
-void sub_9BC_Main(void)
+void Main_09BC(void)
 {
     switch (gMain.subState)
     {
     case 0:
-        sub_CBC();
-        sub_24C();
+        sub_0CBC();
+        sub_024C();
         gMain.subState++;
         break;
     case 1:
@@ -38,8 +38,8 @@ void sub_9BC_Main(void)
             gMain.subState = 2;
         break;
     default:
-        sub_2B4();
-        sub_D10();
+        sub_02B4();
+        sub_0D10();
         SetMainGameState(STATE_TITLE);
         break;
     }
@@ -136,13 +136,13 @@ static void InitGame(void)
                 | WAITCNT_SRAM_2;
     REG_IE = INTR_FLAG_GAMEPAK;
     REG_IME = INTR_FLAG_VBLANK;
-    sub_B8C();
+    sub_0B8C();
     m4aSoundInit();
     m4aSoundVSyncOff();
     SaveFile_LoadGameData();
 }
 
-static void sub_B8C(void)
+static void sub_0B8C(void)
 {
     gMain.mainState = STATE_INTRO;
     gMain.subState = 0;
@@ -182,7 +182,7 @@ u32 Random(void)
 }
 
 #ifdef NONMATCHING
-s16 sub_C24(u16 arg0)
+s16 sub_0C24(u16 arg0)
 {
     u16 index = arg0 / 4;
     s16 var0 = 1;
@@ -199,7 +199,7 @@ s16 sub_C24(u16 arg0)
 }
 #else
 NAKED
-s16 sub_C24(u16 arg0)
+s16 sub_0C24(u16 arg0)
 {
     asm_unified("\n\
     lsls r0, r0, #0x10\n\
@@ -243,9 +243,9 @@ _08000C70: .4byte 0x08055C44");
 }
 #endif // NONMATCHING
 
-s16 sub_C74(u16 arg0)
+s16 sub_0C74(u16 arg0)
 {   
-    return sub_C24(arg0 + 0x4000);
+    return sub_0C24(arg0 + 0x4000);
 }
 
 static void ReadKeys(void)
@@ -256,7 +256,7 @@ static void ReadKeys(void)
     gMain.heldKeys = keyInput;
 }
 
-void sub_CBC(void)
+void sub_0CBC(void)
 {
     if (!(REG_IE & INTR_FLAG_VBLANK))
     {
@@ -282,7 +282,7 @@ void sub_CBC(void)
     }
 }
 
-void sub_D10(void)
+void sub_0D10(void)
 {
     REG_DISPSTAT &= ~DISPSTAT_VBLANK_INTR;
     REG_DISPSTAT &= ~DISPSTAT_VCOUNT_INTR;
