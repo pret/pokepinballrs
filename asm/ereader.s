@@ -187,8 +187,8 @@ sub_38A0: @ 0x080038A0
 _080038E8: .4byte gUnknown_080ACC60
 _080038EC: .4byte gUnknown_03001800
 
-	thumb_func_start sub_38F0
-sub_38F0: @ 0x080038F0
+	thumb_func_start GetEReaderCardIndex
+GetEReaderCardIndex: @ 0x080038F0
 	ldr r0, _08003900 @ =gUnknown_0202BEEC
 	movs r2, #0
 	ldrsh r1, [r0, r2]

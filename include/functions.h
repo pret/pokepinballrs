@@ -106,7 +106,7 @@ extern void sub_377C(void);
 extern void sub_37B4(s32);
 extern void sub_3828(s32, s32);
 extern void sub_38A0(u32, u32);
-extern s16 sub_38F0(void);
+extern s16 GetEReaderCardIndex(void);
 extern void sub_394C(void);
 extern void sub_3AB4(void);
 extern void sub_3C1C(void);

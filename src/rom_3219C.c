@@ -1,4 +1,5 @@
 #include "global.h"
+#include "constants/ereader.h"
 #include "constants/species.h"
 #include "functions.h"
 #include "m4a.h"
@@ -18,23 +19,23 @@ void sub_3219C(void)
     u32 rand;
     u16 specialMons[6];
 
-    if (gMain.eReaderBonus[0])
+    if (gMain.eReaderBonus[EREADER_SPECIAL_GUESTS_CARD])
     {
-        gMain.eReaderBonus[0] = 0;
+        gMain.eReaderBonus[EREADER_SPECIAL_GUESTS_CARD] = 0;
         rand = GetTimeAdjustedRandom();
-        rand %= 4;
-        for (i = 0; i < 4; i++)
+        rand %= NUM_BONUS_SPECIES;
+        for (i = 0; i < NUM_BONUS_SPECIES; i++)
         {
-            if (gMain_saveData.pokedexFlags[BONUS_SPECIES_START + ((i + rand) % 4)] < 4)
+            if (gMain_saveData.pokedexFlags[BONUS_SPECIES_START + ((i + rand) % NUM_BONUS_SPECIES)] < 4)
                 break;
         }
 
-        gUnknown_020314E0->unk598 = BONUS_SPECIES_START + ((i + rand) % 4);
+        gUnknown_020314E0->unk598 = BONUS_SPECIES_START + ((i + rand) % NUM_BONUS_SPECIES);
     }
     else
     {
         rand = GetTimeAdjustedRandom();
-        if (gMain.eReaderBonus[1])
+        if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
             rand %= 50;
         else
             rand %= 100;
@@ -307,7 +308,7 @@ void sub_325E0(void)
     u32 rand;
     
     rand = GetTimeAdjustedRandom();
-    if (gMain.eReaderBonus[1])
+    if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
         rand %= 100;
     else
         rand %= 50;

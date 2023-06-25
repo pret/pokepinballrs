@@ -1,5 +1,6 @@
 #include "global.h"
 #include "constants/bg_music.h"
+#include "constants/ereader.h"
 #include "functions.h"
 #include "main.h"
 #include "m4a.h"
@@ -28,12 +29,12 @@ extern u32 gUnknown_0201A4D0;
 extern u32 gUnknown_0202BDF0;
 extern u8 gUnknown_0201C1AC;
 extern u8 gUnknown_0202ADDC;
-extern s16 gUnknown_0201C184;
+extern s16 gEReaderCardIndex;
 extern s16 gUnknown_0201A444;
 
 extern s8 gUnknown_086A551A[10];
 extern s8 gUnknown_086A5528[10];
-extern u8 gUnknown_086A5536[10];
+extern u8 gUnknown_086A5536[NUM_EREADER_CARDS + 1];
 extern u8 gUnknown_08089B60[];
 extern u8 gUnknown_08081D20[];
 extern u8 gUnknown_0807DD00[];
@@ -98,7 +99,7 @@ void sub_2DF0(void)
     gUnknown_0201B174 = 0;
     gUnknown_0202C5A0 = 0;
     gUnknown_0201A44C = 0;
-    gUnknown_0202BEF8 = 0;
+    gUnknown_0202BEF8 = STATE_INTRO;
     gUnknown_0200282C = 0;
     gUnknown_0200282D = 0;
 }
@@ -144,7 +145,7 @@ void sub_2E40(void)
     }
     else if (gMain.newKeys & B_BUTTON) {
         m4aSongNumStart(0x66);
-        gUnknown_0202BEF8 = 1;
+        gUnknown_0202BEF8 = STATE_TITLE;
         gMain.subState = 8;
     }
     sub_394C();
@@ -192,13 +193,13 @@ void sub_304C(void)
     if (((gUnknown_0202ADD0 & 0x40) != 0) && (gUnknown_0202BDF0 < 2)) {
         sub_3C78();
         if (((gUnknown_0202ADD0 & 0x100) == 0) && (sub_3CD8() == -1)) {
-            gUnknown_0201C184 = sub_38F0();
-            if ((gUnknown_0201C184 != -1) && (5 > gUnknown_0201C184)) {
-                for(index = 0; index < 5; index++)
+            gEReaderCardIndex = GetEReaderCardIndex();
+            if ((gEReaderCardIndex != -1) && (NUM_EREADER_CARDS > gEReaderCardIndex)) {
+                for(index = 0; index < NUM_EREADER_CARDS; index++)
                 {
                     gMain.eReaderBonus[index] = 0;
                 }
-                gMain.eReaderBonus[gUnknown_0201C184] = 1;
+                gMain.eReaderBonus[gEReaderCardIndex] = 1;
                 gUnknown_0201A44C = 0;
                 gMain.subState = 5;
             }
@@ -264,7 +265,7 @@ void sub_3208(void)
             gUnknown_0202C5A4 = 1 - gUnknown_0202C5A4;
         }
     }
-    if ((gMain.newKeys & A_BUTTON)) {
+    if (gMain.newKeys & A_BUTTON) {
         if (gUnknown_0202C604 <= gUnknown_086A551A[gUnknown_0202AD90]) {
             sub_37B4(gUnknown_0202AD90);
             gUnknown_0202C604 = gUnknown_086A551A[gUnknown_0202AD90] + 1;
@@ -344,7 +345,7 @@ void sub_343C(void)
     gUnknown_0202C604 = 0;
     gUnknown_0202A580 = 0;
     gUnknown_0202C5A4 = 0;
-    gUnknown_0202AD90 = gUnknown_086A5536[gUnknown_0201C184];
+    gUnknown_0202AD90 = gUnknown_086A5536[gEReaderCardIndex];
     sub_377C();
 
     DmaCopy16(3, gUnknown_03000000, (void *)VRAM + 0x4000, 0x3000);
@@ -371,10 +372,10 @@ void sub_35C8(void)
         if (6 < gUnknown_0202A580) {
             gUnknown_0202A580 = 0;
             if (gUnknown_0202C5A4 == 0) {
-                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90],0x3a80);
+                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90], 0x3a80);
             }
             else {
-                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90],0);
+                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90], 0);
             }
             gUnknown_0202C5A4 = 1 - gUnknown_0202C5A4;
         }
@@ -385,11 +386,11 @@ void sub_35C8(void)
             gUnknown_0202C604 = gUnknown_086A551A[gUnknown_0202AD90] + 1;
         }
         else if (gUnknown_086A5528[gUnknown_0202AD90] == 0) {
-            if (gUnknown_0201C184 == 4) {
-                gUnknown_0202BEF8 = 11;
+            if (gEReaderCardIndex == EREADER_BONUS_STAGE_CARD) {
+                gUnknown_0202BEF8 = STATE_BONUS_FIELD_SELECT;
             }
             else {
-                gUnknown_0202BEF8 = 1;
+                gUnknown_0202BEF8 = STATE_TITLE;
             }
             gMain.subState = 8;
         }
