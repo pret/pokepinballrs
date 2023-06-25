@@ -290,7 +290,10 @@ if ($incbin_count == 0) {
 } else {
     printf "%8d bytes of data in $incbin_count incbins (%.4f%%)\n", $incbin_bytes, $incPct;
 }
-print "\n";
 
-printf "%8d functions are NONMATCHING\n", $nonmatching_count;
-printf "%8d comments are labeled TODO\n", $todo_count;
+if ($verbose != 0)
+{
+    print "\n";
+    printf "%8d functions are NONMATCHING\n", $nonmatching_count;
+    printf "%8d comments are labeled TODO\n", $todo_count;
+}
