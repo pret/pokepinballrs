@@ -3,6 +3,7 @@
 #include "m4a.h"
 #include "titlescreen.h"
 #include "main.h"
+#include "constants/bg_music.h"
 
 static void sub_114FC(void);
 static void sub_1157C(void);
@@ -76,7 +77,7 @@ void LoadTitlescreenGraphics(void)
         sub_FD5C(sub_11640);
     }
 
-    m4aSongNumStart(1);
+    m4aSongNumStart(MUS_TITLE);
 }
 
 void sub_10AC0(void)

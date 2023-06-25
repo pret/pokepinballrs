@@ -1,4 +1,5 @@
 #include "global.h"
+#include "constants/ereader.h"
 #include "constants/species.h"
 #include "functions.h"
 #include "m4a.h"
@@ -18,23 +19,23 @@ void sub_3219C(void)
     u32 rand;
     u16 specialMons[6];
 
-    if (gMain.unk7)
+    if (gMain.eReaderBonus[EREADER_SPECIAL_GUESTS_CARD])
     {
-        gMain.unk7 = 0;
+        gMain.eReaderBonus[EREADER_SPECIAL_GUESTS_CARD] = 0;
         rand = GetTimeAdjustedRandom();
-        rand %= 4;
-        for (i = 0; i < 4; i++)
+        rand %= NUM_BONUS_SPECIES;
+        for (i = 0; i < NUM_BONUS_SPECIES; i++)
         {
-            if (gMain_saveData.pokedexFlags[BONUS_SPECIES_START + ((i + rand) % 4)] < 4)
+            if (gMain_saveData.pokedexFlags[BONUS_SPECIES_START + ((i + rand) % NUM_BONUS_SPECIES)] < 4)
                 break;
         }
 
-        gUnknown_020314E0->unk598 = BONUS_SPECIES_START + ((i + rand) % 4);
+        gUnknown_020314E0->unk598 = BONUS_SPECIES_START + ((i + rand) % NUM_BONUS_SPECIES);
     }
     else
     {
         rand = GetTimeAdjustedRandom();
-        if (gMain.unk8)
+        if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
             rand %= 50;
         else
             rand %= 100;
@@ -74,7 +75,7 @@ void sub_3219C(void)
                     gUnknown_020314E0->unk598 = SPECIES_CYNDAQUIL;
             }
 
-            if (!gMain.unk4)
+            if (!gMain.selectedField)
             {
                 specialMons[numSpecialMons++] = SPECIES_LATIOS;
                 if (gMain_saveData.pokedexFlags[SPECIES_LATIOS] < 4)
@@ -307,7 +308,7 @@ void sub_325E0(void)
     u32 rand;
     
     rand = GetTimeAdjustedRandom();
-    if (gMain.unk8)
+    if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
         rand %= 100;
     else
         rand %= 50;
@@ -326,7 +327,7 @@ void sub_325E0(void)
         
         for (i = 0; i < 25 && gUnknown_020314E0->unk130[i] <= rand; i++);
         
-        gUnknown_020314E0->unk598 = gUnknown_086A4A38[gMain.unk4][i];
+        gUnknown_020314E0->unk598 = gUnknown_086A4A38[gMain.selectedField][i];
     }
     
     gUnknown_020314E0->unk59E = gUnknown_020314E0->unk598;

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "constants/bg_music.h"
 #include "m4a.h"
 #include "main.h"
 #include "functions.h"
@@ -61,7 +62,7 @@ void sub_25C4(void)
     sub_0CBC();
     sub_2710();
     sub_FD5C(sub_29C8);
-    m4aSongNumStart(0x3);
+    m4aSongNumStart(MUS_TABLE_SELECT);
 
     gMain.subState++;
 }
@@ -169,7 +170,7 @@ void sub_2768(void)
             if (gUnknown_0202BE1C > 5)
             {
                 gMain.unkD = 0;
-                gMain.unk5 = gMain.unk4 = gUnknown_086A4CF0[gUnknown_0201A4F8];
+                gMain.unk5 = gMain.selectedField = gUnknown_086A4CF0[gUnknown_0201A4F8];
                 gMain.unk6 = 1;
                 gUnknown_0202BEE4 = 2;
                 gMain.subState++;

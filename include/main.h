@@ -2,12 +2,13 @@
 #define GUARD_MAIN_H
 
 #include "global.h"
+#include "constants/ereader.h"
+#include "constants/species.h"
 
 // This is probably permanently saved data like pokedex and high scores.
 struct SaveData
 {
-    /*0x74*/ u8 pokedexFlags[204];
-    /*0x140*/ u8 filler140[1];
+    /*0x74*/ u8 pokedexFlags[NUM_SPECIES];
     /*0x141*/ u8 unk141;
     /*0x142*/ u8 ballSpeed;
     /*0x143*/ u8 unk143;
@@ -22,12 +23,10 @@ struct Main
     /*0x00*/ u8 filler0[0x2];
     /*0x02*/ u8 mainState;
     /*0x03*/ u8 subState;
-    /*0x04*/ u8 unk4;
+    /*0x04*/ u8 selectedField;
     /*0x05*/ u8 unk5;
     /*0x06*/ u8 unk6;
-    /*0x07*/ s8 unk7;
-    /*0x08*/ s8 unk8;
-    /*0x09*/ u8 filler9[0x3];
+    /*0x07*/ s8 eReaderBonus[NUM_EREADER_CARDS];
     /*0x0C*/ u8 unkC;
     /*0x0D*/ u8 unkD;
     /*0x0E*/ u8 fillerE[0x1];

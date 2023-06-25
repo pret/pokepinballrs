@@ -338,7 +338,7 @@ gUnknown_0201B180: @ 0x0201B180
 	.space 0x1000
 gUnknown_0201C180: @ 0x0201C180
 	.space 0x4
-gUnknown_0201C184: @ 0x0201C184
+gEReaderCardIndex: @ 0x0201C184
 	.space 0x4
 gUnknown_0201C188: @ 0x0201C188
 	.space 0x4
