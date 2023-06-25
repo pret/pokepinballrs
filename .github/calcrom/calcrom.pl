@@ -237,7 +237,7 @@ if ($verbose != 0)
     print "BREAKDOWN\n";
     foreach my $item (@sorted)
     {
-        printf "    %8d bytes in asm/$item->[0].s\n", $item->[1];
+        printf "%8d bytes in asm/$item->[0].s\n", $item->[1];
     }
     print "\n";
 }
