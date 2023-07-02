@@ -282,15 +282,11 @@ void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum)
     a2 = a;
     b2 = 0;
     c2 = 0;
-    // There is a delayed u16 shift here that is tricky to produce.
-#ifndef NONMATCHING
-    asm_unified("lsls r0, r0, #0x10\n\
-                 lsrs r0, r0, #0x10");
-#endif
-    d2 = d;
+    a = d; // TODO fake match, but best fakematch out of 150,000 permutations
+    d2 = a;
 
     gOamBuffer[matrixNum * 4 ].affineParam = a2;
     gOamBuffer[matrixNum * 4 + 1].affineParam = b2;
     gOamBuffer[matrixNum * 4 + 2].affineParam = c2;
-    gOamBuffer[matrixNum * 4 + 3].affineParam = d;
+    gOamBuffer[matrixNum * 4 + 3].affineParam = a; // TODO fake match as above
 }
