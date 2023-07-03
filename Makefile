@@ -143,9 +143,8 @@ include graphics_rules.mk
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
 
-# TODO: why does rom_850.c need old_agbcc here but not in nonmatching-18?
+# TODO: these "match" under old_agbcc, but the true compiler is agbcc -fprologue-bugfix
 $(C_BUILDDIR)/rom_850.o: CC1 := tools/agbcc/bin/old_agbcc
-# TODO: figure out what compiler and flags gbplayer.c uses
 $(C_BUILDDIR)/gbplayer.o: CC1 := tools/agbcc/bin/old_agbcc
 
 $(C_BUILDDIR)/m4a.o: CC1 := tools/agbcc/bin/old_agbcc
