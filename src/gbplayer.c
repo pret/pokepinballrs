@@ -10,6 +10,9 @@
 }
 
 #ifdef NONMATCHING
+/* This matches under agbcc. However, until -fprologue-bugfix is merged in,
+   this file is compiled under old_agbcc because otherwise multiple functions
+   would be NONMATCHING. */
 static u8 CheckGameBoyPlayer(void)
 {
     u32 i;
@@ -18,6 +21,8 @@ static u8 CheckGameBoyPlayer(void)
     u16 newKeys;
     int gbPlayerDetected;
     int curFrame, lastDetectedFrame, prevDetectedFrame;
+    void *labels[2]; // TODO fake match
+    vu32 *dma3;
 
     curFrame = 0;
     gbPlayerDetected = 0;
@@ -37,13 +42,15 @@ static u8 CheckGameBoyPlayer(void)
 
     prevKeys = &sGbPlayerPrevKeys;
     curKeys = &sGbPlayerCurKeys;
+    dma3 = (vu32 *)REG_ADDR_DMA3; // unroll it manuallly :/
+    labels[0] = &&label; // reference label to disable block reorder
     while (1)
     {
         if (curFrame < 30)
             ReadGbPlayerKeys();
         else
             break;
-
+    label:
         newKeys = (*prevKeys ^ *curKeys) & *curKeys;
         if ((newKeys & DPAD_ANY) == DPAD_ANY)
         {
@@ -56,7 +63,13 @@ static u8 CheckGameBoyPlayer(void)
 
         curFrame++;
         VBlankIntrWait();
-        DmaCopy32(3, gUnknown_02002008, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+        {
+            vu32 *dmaRegs = dma3;
+            dmaRegs[0] = (vu32)gUnknown_02002008;
+            dmaRegs[1] = BG_SCREEN_ADDR(0);
+            dmaRegs[2] = ((DMA_ENABLE | DMA_START_NOW | DMA_32BIT | DMA_SRC_INC | DMA_DEST_INC) << 16 | (BG_SCREEN_SIZE / sizeof(u32)));
+            dmaRegs[2];
+        }
     }
 
     for (i = 0; i <= 16; i++)
@@ -65,7 +78,7 @@ static u8 CheckGameBoyPlayer(void)
         REG_BLDY = i;
     }
 
-    if (gbPlayerDetected)
+    if (gbPlayerDetected) // TODO bool8?
         return 1;
     else
         return 0;
