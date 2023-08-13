@@ -230,6 +230,6 @@ void sub_52C64(void)
     gMain_saveData.ballSpeed = 0;
     sub_525CC(-1);
     sub_F6E0();
-    sub_8ABC();
+    ResetPokedex();
     gMain_saveData.unk143 = 0;
 }
