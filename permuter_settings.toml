@@ -1,3 +1,3 @@
 compiler_type = "gcc"
-compiler_command = "tools/agbcc/bin/agbcc -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -o /dev/stdout | arm-none-eabi-as -mcpu=arm7tdmi"
+compiler_command = "tools/agbcc/bin/agbcc -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -fprologue-bugfix -o /dev/stdout | arm-none-eabi-as -mcpu=arm7tdmi"
 assembler_command = "arm-none-eabi-as -mcpu=arm7tdmi"

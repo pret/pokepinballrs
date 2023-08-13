@@ -1,7 +1,6 @@
 #include "global.h"
 #include "main.h"
 
-// -fprologue-bugfix
 #ifdef NONMATCHING
 void ResetPokedex(void)
 {
