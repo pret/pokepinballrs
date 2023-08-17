@@ -94,8 +94,6 @@ void sub_10860(void (*func)(void))
     MainLoopIter();
 }
 
-#ifdef NONMATCHING
-// Like sub_0C24, it matches except for that damn 'push {lr}/pop {lr}'
 void ClearSomeArray(void)
 {
     int i;
@@ -103,22 +101,3 @@ void ClearSomeArray(void)
     for (i = 0; i < 4; i++)
         gUnknown_0201A500[i] = 0;
 }
-#else
-NAKED
-void ClearSomeArray(void)
-{
-    asm_unified("\n\
-	ldr r1, _08010920 @ =gUnknown_0201A500\n\
-	movs r2, #0\n\
-	adds r0, r1, #0\n\
-	adds r0, #0xc\n\
-_08010914:\n\
-	str r2, [r0]\n\
-	subs r0, #4\n\
-	cmp r0, r1\n\
-	bge _08010914\n\
-	bx lr\n\
-	.align 2, 0\n\
-_08010920: .4byte gUnknown_0201A500");
-}
-#endif

@@ -9455,18 +9455,3 @@ _08008AB0:
 	bx lr
 	.align 2, 0
 _08008AB8: .4byte gUnknown_0202A588
-
-	thumb_func_start sub_8ABC
-sub_8ABC: @ 0x08008ABC
-	ldr r1, _08008AD0 @ =gMain+0x74
-	movs r2, #0
-	adds r0, r1, #0
-	adds r0, #0xcc
-_08008AC4:
-	strb r2, [r0]
-	subs r0, #1
-	cmp r0, r1
-	bge _08008AC4
-	bx lr
-	.align 2, 0
-_08008AD0: .4byte gMain+0x74

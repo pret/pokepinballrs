@@ -8,8 +8,6 @@ extern const u16 gUnknown_08527F18[];
 static void sub_52940(u16, s8, s8, u8, int);
 static u16 LoadSaveDataFromSram(void);
 
-#ifdef NONMATCHING
-// Like sub_0C24, it matches except for that damn 'push {lr}/pop {lr}'
 int sub_528AC(u16 a)
 {
     if (a <= 0xFA)
@@ -18,36 +16,6 @@ int sub_528AC(u16 a)
         return 0xC8;
     return gUnknown_08527F18[a - 0x114];
 }
-#else
-NAKED
-int sub_528AC(u16 a)
-{
-    asm_unified("\n\
-        lsls r0, r0, #0x10\n\
-        lsrs r0, r0, #0x10\n\
-        adds r1, r0, #0\n\
-        cmp r0, #0xfa\n\
-        bls _080528DA\n\
-        ldr r0, _080528CC @ =0x00000113\n\
-        cmp r1, r0\n\
-        bls _080528D8\n\
-        ldr r0, _080528D0 @ =gUnknown_08527F18\n\
-        ldr r2, _080528D4 @ =0xFFFFFEEC\n\
-        adds r1, r1, r2\n\
-        lsls r1, r1, #1\n\
-        adds r1, r1, r0\n\
-        ldrh r0, [r1]\n\
-        b _080528DA\n\
-        .align 2, 0\n\
-_080528CC: .4byte 0x00000113\n\
-_080528D0: .4byte gUnknown_08527F18\n\
-_080528D4: .4byte 0xFFFFFEEC\n\
-_080528D8:\n\
-        movs r0, #0xc8\n\
-_080528DA:\n\
-        bx lr");
-}
-#endif
 
 void sub_528DC(u16 a, s8 b)
 {
@@ -230,6 +198,6 @@ void sub_52C64(void)
     gMain_saveData.ballSpeed = 0;
     sub_525CC(-1);
     sub_F6E0();
-    sub_8ABC();
+    ResetPokedex();
     gMain_saveData.unk143 = 0;
 }

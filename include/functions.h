@@ -383,7 +383,7 @@ extern void sub_525CC(s8);
 //extern ? sub_88E4();
 //extern ? sub_8974();
 //extern ? sub_8A78();
-extern void sub_8ABC(void);
+extern void ResetPokedex(void);
 
 // asm/rom_1068C.s
 

@@ -2170,32 +2170,3 @@ _080024B8:
 _080024CC: .4byte gOamBuffer
 _080024D0: .4byte gEmptyOamData
 _080024D4: .4byte 0x000001FF
-
-	thumb_func_start nullsub_16
-nullsub_16: @ 0x080024D8
-	bx lr
-
-	thumb_func_start sub_24DC
-sub_24DC: @ 0x080024DC
-	ldr r1, _08002504 @ =0x04000134
-	movs r0, #0
-	strh r0, [r1]
-	subs r1, #0xc
-	strh r0, [r1]
-	ldr r2, _08002508 @ =0x0400012A
-	strh r0, [r2]
-	subs r1, #8
-	strh r0, [r1]
-	strh r0, [r2]
-	strh r0, [r1]
-	strh r0, [r1]
-	adds r1, #2
-	strh r0, [r1]
-	adds r1, #2
-	strh r0, [r1]
-	adds r1, #2
-	strh r0, [r1]
-	bx lr
-	.align 2, 0
-_08002504: .4byte 0x04000134
-_08002508: .4byte 0x0400012A

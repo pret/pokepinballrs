@@ -48,7 +48,7 @@ DATA_ASM_BUILDDIR = $(OBJ_DIR)/$(DATA_ASM_SUBDIR)
 ASFLAGS := -mcpu=arm7tdmi
 
 CC1             := tools/agbcc/bin/agbcc$(EXE)
-override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
+override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -fprologue-bugfix
 
 CPPFLAGS := -I tools/agbcc/include -I tools/agbcc -iquote include -nostdinc -undef
 
@@ -144,9 +144,7 @@ include graphics_rules.mk
 %.rl: % ; $(GFX) $< $@
 
 # TODO: these "match" under old_agbcc, but the true compiler is agbcc -fprologue-bugfix
-$(C_BUILDDIR)/rom_850.o: CC1 := tools/agbcc/bin/old_agbcc
-$(C_BUILDDIR)/gbplayer.o: CC1 := tools/agbcc/bin/old_agbcc
-
+$(C_BUILDDIR)/m4a.o: CFLAGS := -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
 $(C_BUILDDIR)/m4a.o: CC1 := tools/agbcc/bin/old_agbcc
 
 $(C_BUILDDIR)/agb_sram.o: CFLAGS := -mthumb-interwork -Wimplicit -Wparentheses -Werror -O1
