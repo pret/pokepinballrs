@@ -38,6 +38,7 @@ SECTIONS
         src/bonus_field_select.o(.text);
         src/ereader.o(.text);
         asm/ereader.o(.text);
+        src/pokedex.o(.text);
         asm/pokedex.o(.text);
         src/pokedex_end.o(.text);
         src/field_select.o(.text);

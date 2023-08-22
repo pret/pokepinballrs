@@ -4,22 +4,6 @@
 
 	.text
 
-	thumb_func_start PokedexMain
-PokedexMain: @ 0x08003DAC
-	push {lr}
-	ldr r1, _08003DC4 @ =gUnknown_0805C880
-	ldr r0, _08003DC8 @ =gMain
-	ldrb r0, [r0, #3]
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	bl _call_via_r0
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08003DC4: .4byte gUnknown_0805C880
-_08003DC8: .4byte gMain
-
 	thumb_func_start sub_3DCC
 sub_3DCC: @ 0x08003DCC
 	push {r4, r5, r6, r7, lr}
