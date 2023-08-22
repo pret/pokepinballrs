@@ -47,7 +47,7 @@ extern const u8 gOptionsBackground_Tilemap[];
 
 void OptionsMain(void)
 {
-    gUnknown_08527F08[gMain.subState]();
+    gOptionsStateFuncs[gMain.subState]();
 }
 
 void sub_51240(void)

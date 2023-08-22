@@ -1,9 +1,9 @@
 #include "global.h"
 #include "main.h"
 
-extern StateFunc gUnknown_0805C880[];
+extern StateFunc gPokedexStateFuncs[];
 
 void PokedexMain(void)
 {
-    gUnknown_0805C880[gMain.subState]();
+    gPokedexStateFuncs[gMain.subState]();
 }

@@ -666,10 +666,10 @@ gUnknown_0805C248:: @ 0x0805C248
 gUnknown_0805C748:: @ 0x0805C748
 	.incbin "baserom.gba", 0x5C748, 0x8
 
-gUnknown_0805C750:: @ 0x0805C750
+gBonusFieldSelectStateFuncs:: @ 0x0805C750
 	.incbin "baserom.gba", 0x5C750, 0xC
 
-gUnknown_0805C75C:: @ 0x0805C75C
+gEReaderStateFuncs:: @ 0x0805C75C
 	.incbin "baserom.gba", 0x5C75C, 0x24
 
 gUnknown_0805C780:: @ 0x0805C780
@@ -684,7 +684,7 @@ gUnknown_0805C800:: @ 0x0805C800
 gUnknown_0805C840:: @ 0x0805C840
 	.incbin "baserom.gba", 0x5C840, 0x40
 
-gUnknown_0805C880:: @ 0x0805C880
+gPokedexStateFuncs:: @ 0x0805C880
 	.incbin "baserom.gba", 0x5C880, 0x34
 
 gUnknown_0805C8B4:: @ 0x0805C8B4
@@ -702,16 +702,16 @@ gUnknown_0805C8F6:: @ 0x0805C8F6
 gFieldSelectStateFuncs:: @ 0x080792C0
 	.incbin "baserom.gba", 0x792C0, 0xC
 
-gUnknown_080792CC:: @ 0x080792CC
+gIntroStateFuncs:: @ 0x080792CC
 	.incbin "baserom.gba", 0x792CC, 0x14
 
 gUnknown_080792E0:: @ 0x080792E0
 	.incbin "baserom.gba", 0x792E0, 0x108
 
-gUnknown_080793E8:: @ 0x080793E8
+gHighScoresStateFuncs:: @ 0x080793E8
 	.incbin "baserom.gba", 0x793E8, 0x3C
 
-gUnknown_08079424:: @ 0x08079424
+gIdleHighScoresStateFuncs:: @ 0x08079424
 	.incbin "baserom.gba", 0x79424, 0xC
 
 gUnknown_08079430:: @ 0x08079430
@@ -1025,7 +1025,7 @@ gUnknown_08137908:: @ 0x08137908
 gUnknown_08137910:: @ 0x08137910
 	.incbin "baserom.gba", 0x137910, 0x8
 
-gUnknown_08137918:: @ 0x08137918
+gIdlePinballGameStateFuncs:: @ 0x08137918
 	.incbin "baserom.gba", 0x137918, 0x10
 
 gUnknown_08137928:: @ 0x08137928
@@ -1097,7 +1097,7 @@ gUnknown_08137DE8:: @ 0x08137DE8
 gUnknown_08137E00:: @ 0x08137E00
 	.incbin "baserom.gba", 0x137E00, 0x4
 
-gUnknown_08137E04:: @ 0x08137E04
+gPinballGameStateFuncs:: @ 0x08137E04
 	.incbin "baserom.gba", 0x137E04, 0x10
 
 gUnknown_08137E14:: @ 0x08137E14
@@ -1793,7 +1793,7 @@ gUnknown_08527ED6:: @ 0x08527ED6
 gUnknown_08527EFE:: @ 0x08527EFE
 	.incbin "baserom.gba", 0x527EFE, 0xA
 
-gUnknown_08527F08:: @ 0x08527F08
+gOptionsStateFuncs:: @ 0x08527F08
 	.incbin "baserom.gba", 0x527F08, 0x10
 
 gUnknown_08527F18:: @ 0x08527F18
