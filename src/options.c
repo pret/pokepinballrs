@@ -492,6 +492,7 @@ void sub_51C60(void)
     SetMainGameState(STATE_TITLE);
 }
 
+// TODO
 NAKED
 void sub_51C9C(void)
 {
