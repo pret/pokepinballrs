@@ -115,10 +115,6 @@ my $count_cmd = "wc -l";
 
 my $incbin_cmd = "find \"\$(dirname $elffname)\" \\( -name '*.s' -o -name '*.inc' \\) -exec cat {} ';' | grep -oE '^\\s*\\.incbin\\s*\"[^\"]+\"\s*,\\s*(0x)?[0-9a-fA-F]+\\s*,\\s*(0x)?[0-9a-fA-F]+' -";
 
-my $nonmatching_cmd = "git grep -E '#if[n]?def NONMATCHING' ':/' ':(exclude).'";
-
-my $todo_cmd = "git grep 'TODO' ':/' ':(exclude).'";
-
 # It sucks that we have to run this three times, but I can't figure out how to get
 # stdin working for subcommands in perl while still having a timeout. It's decently
 # fast anyway.
@@ -162,22 +158,6 @@ my $incbin_bytes_as_string;
 ))
     or die "ERROR: Error while calculating incbin totals: $?";
 
-my $nonmatching_as_string;
-(run (
-    command => "$nonmatching_cmd | $count_cmd",
-    buffer => \$nonmatching_as_string,
-    timeout => 60
-))
-    or die "ERROR: Error while calculating NONMATCHING totals: $?";
-    
-my $todo_as_string;
-(run (
-    command => "$todo_cmd | $count_cmd",
-    buffer => \$todo_as_string,
-    timeout => 60
-))
-    or die "ERROR: Error while calculating TODO totals: $?";
-
 # Performing addition on a string converts it to a number. Any string that fails
 # to convert to a number becomes 0. So if our converted number is 0, but our string
 # is nonzero, then the conversion was an error.
@@ -203,14 +183,6 @@ my $incbin_count = $incbin_count_as_string + 0;
 my $incbin_bytes = $incbin_bytes_as_string + 0;
 (($incbin_bytes != 0) and ($incbin_bytes_as_string ne "0"))
     or die "ERROR: Cannot convert string to num: '$incbin_bytes_as_string'";
-
-my $nonmatching_count = $nonmatching_as_string + 0;
-(($nonmatching_count != 0) and ($nonmatching_as_string ne "0"))
-    or die "ERROR: Cannot convert string to num: '$nonmatching_as_string'";
-
-my $todo_count = $todo_as_string + 0;
-(($todo_count != 0) and ($todo_as_string ne "0"))
-    or die "ERROR: Cannot convert string to num: '$todo_as_string'";
 
 
 
@@ -293,6 +265,34 @@ if ($incbin_count == 0) {
 
 if ($verbose != 0)
 {
+    my $nonmatching_cmd = "git grep -E '#if[n]?def NONMATCHING' ':/' ':(exclude)*.pl'";
+
+    my $todo_cmd = "git grep 'TODO' ':/' ':(exclude)*.pl'";
+
+    my $nonmatching_as_string;
+    (run (
+        command => "$nonmatching_cmd | $count_cmd",
+        buffer => \$nonmatching_as_string,
+        timeout => 60
+    ))
+        or die "ERROR: Error while calculating NONMATCHING totals: $?";
+        
+    my $todo_as_string;
+    (run (
+        command => "$todo_cmd | $count_cmd",
+        buffer => \$todo_as_string,
+        timeout => 60
+    ))
+        or die "ERROR: Error while calculating TODO totals: $?";
+    
+    my $nonmatching_count = $nonmatching_as_string + 0;
+    (($nonmatching_count != 0) and ($nonmatching_as_string ne "0"))
+        or die "ERROR: Cannot convert string to num: '$nonmatching_as_string'";
+
+    my $todo_count = $todo_as_string + 0;
+    (($todo_count != 0) and ($todo_as_string ne "0"))
+        or die "ERROR: Cannot convert string to num: '$todo_as_string'";
+    
     print "\n";
     printf "%8d functions are NONMATCHING\n", $nonmatching_count;
     printf "%8d comments are labeled TODO\n", $todo_count;
