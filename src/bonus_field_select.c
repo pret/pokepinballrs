@@ -15,7 +15,7 @@ EWRAM_DATA s8 gUnknown_0202BED0 = 0;
 EWRAM_DATA s8 gUnknown_0202BEE4 = 0;
 EWRAM_DATA u8 gUnknown_0202BEE8 = 0;
 
-extern void (*const gUnknown_0805C750[])(void);
+extern void (*const gBonusFieldSelectStateFuncs[])(void);
 
 extern const struct SpriteSet *const gUnknown_086A4C80[16];
 extern const struct Coord16 gUnknown_086A4CC0[];
@@ -33,10 +33,10 @@ void sub_29C8(void);
 
 void BonusFieldSelectMain(void)
 {
-    gUnknown_0805C750[gMain.subState]();
+    gBonusFieldSelectStateFuncs[gMain.subState]();
 }
 
-void sub_25C4(void)
+void LoadBonusFieldSelectGraphics(void)
 {
     ResetSomeGraphicsRelatedStuff();
 

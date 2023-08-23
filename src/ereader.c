@@ -6,7 +6,7 @@
 #include "m4a.h"
 #include "titlescreen.h"
 
-extern StateFunc gUnknown_0805C75C[11];
+extern StateFunc gEReaderStateFuncs[11];
 extern s8 gUnknown_0202C604;
 extern s8 gUnknown_0202A580;
 extern s8 gUnknown_0202C5A4;
@@ -51,7 +51,7 @@ s32 sub_1B04(u32 *, u32 *, u32 *);
 
 void EReaderMain(void)
 {
-    gUnknown_0805C75C[gMain.subState]();
+    gEReaderStateFuncs[gMain.subState]();
 }
 
 void LoadEReaderGraphics(void)

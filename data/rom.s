@@ -666,11 +666,21 @@ gUnknown_0805C248:: @ 0x0805C248
 gUnknown_0805C748:: @ 0x0805C748
 	.incbin "baserom.gba", 0x5C748, 0x8
 
-gUnknown_0805C750:: @ 0x0805C750
-	.incbin "baserom.gba", 0x5C750, 0xC
+gBonusFieldSelectStateFuncs:: @ 0x0805C750
+	.4byte LoadBonusFieldSelectGraphics
+	.4byte sub_2768
+	.4byte sub_2990
 
-gUnknown_0805C75C:: @ 0x0805C75C
-	.incbin "baserom.gba", 0x5C75C, 0x24
+gEReaderStateFuncs:: @ 0x0805C75C
+	.4byte LoadEReaderGraphics
+	.4byte sub_2E40
+	.4byte sub_2FC0
+	.4byte sub_304C
+	.4byte sub_3208
+	.4byte sub_33A0
+	.4byte sub_343C
+	.4byte sub_35C8
+	.4byte sub_374C
 
 gUnknown_0805C780:: @ 0x0805C780
 	.incbin "baserom.gba", 0x5C780, 0x40
@@ -684,8 +694,20 @@ gUnknown_0805C800:: @ 0x0805C800
 gUnknown_0805C840:: @ 0x0805C840
 	.incbin "baserom.gba", 0x5C840, 0x40
 
-gUnknown_0805C880:: @ 0x0805C880
-	.incbin "baserom.gba", 0x5C880, 0x34
+gPokedexStateFuncs:: @ 0x0805C880
+	.4byte sub_3DCC
+	.4byte sub_4150
+	.4byte sub_43D4
+	.4byte sub_4428
+	.4byte sub_4860
+	.4byte sub_45A4
+	.4byte sub_49A8
+	.4byte sub_49D0
+	.4byte sub_4B34
+	.4byte sub_4BB4
+	.4byte sub_4B10
+	.4byte sub_4C80
+	.4byte sub_4D50
 
 gUnknown_0805C8B4:: @ 0x0805C8B4
 	.incbin "baserom.gba", 0x5C8B4, 0x18
@@ -700,19 +722,41 @@ gUnknown_0805C8F6:: @ 0x0805C8F6
 	.incbin "baserom.gba", 0x5C8F6, 0x1C9CA
 
 gFieldSelectStateFuncs:: @ 0x080792C0
-	.incbin "baserom.gba", 0x792C0, 0xC
+	.4byte LoadFieldSelectGraphics
+	.4byte sub_8C7C
+	.4byte sub_8F64
 
-gUnknown_080792CC:: @ 0x080792CC
-	.incbin "baserom.gba", 0x792CC, 0x14
+gIntroStateFuncs:: @ 0x080792CC
+	.4byte sub_929C
+	.4byte sub_9348
+	.4byte sub_9370
+	.4byte sub_938C
+	.4byte sub_93D0
 
 gUnknown_080792E0:: @ 0x080792E0
 	.incbin "baserom.gba", 0x792E0, 0x108
 
-gUnknown_080793E8:: @ 0x080793E8
-	.incbin "baserom.gba", 0x793E8, 0x3C
+gHighScoresStateFuncs:: @ 0x080793E8
+	.4byte sub_CE88
+	.4byte sub_D20C
+	.4byte sub_D308
+	.4byte sub_D4B8
+	.4byte sub_D664
+	.4byte sub_D9F8
+	.4byte sub_DA20
+	.4byte sub_DB70
+	.4byte sub_DBF4
+	.4byte sub_DB4C
+	.4byte sub_DCF0
+	.4byte sub_DD4C
+	.4byte sub_E0EC
+	.4byte sub_E230
+	.4byte sub_E390
 
-gUnknown_08079424:: @ 0x08079424
-	.incbin "baserom.gba", 0x79424, 0xC
+gIdleHighScoresStateFuncs:: @ 0x08079424
+	.4byte sub_DD70
+	.4byte sub_DF68
+	.4byte sub_E0C4
 
 gUnknown_08079430:: @ 0x08079430
 	.incbin "baserom.gba", 0x79430, 0x300
@@ -1025,8 +1069,11 @@ gUnknown_08137908:: @ 0x08137908
 gUnknown_08137910:: @ 0x08137910
 	.incbin "baserom.gba", 0x137910, 0x8
 
-gUnknown_08137918:: @ 0x08137918
-	.incbin "baserom.gba", 0x137918, 0x10
+gIdlePinballGameStateFuncs:: @ 0x08137918
+	.4byte sub_19048
+	.4byte sub_19190
+	.4byte sub_4ABC8
+	.4byte sub_19288
 
 gUnknown_08137928:: @ 0x08137928
 	.incbin "baserom.gba", 0x137928, 0x1C
@@ -1097,8 +1144,11 @@ gUnknown_08137DE8:: @ 0x08137DE8
 gUnknown_08137E00:: @ 0x08137E00
 	.incbin "baserom.gba", 0x137E00, 0x4
 
-gUnknown_08137E04:: @ 0x08137E04
-	.incbin "baserom.gba", 0x137E04, 0x10
+gPinballGameStateFuncs:: @ 0x08137E04
+	.4byte sub_49ED4
+	.4byte sub_4AAD8
+	.4byte sub_4ABC8
+	.4byte sub_4B20C
 
 gUnknown_08137E14:: @ 0x08137E14
 	.incbin "baserom.gba", 0x137E14, 0x100
@@ -1793,8 +1843,11 @@ gUnknown_08527ED6:: @ 0x08527ED6
 gUnknown_08527EFE:: @ 0x08527EFE
 	.incbin "baserom.gba", 0x527EFE, 0xA
 
-gUnknown_08527F08:: @ 0x08527F08
-	.incbin "baserom.gba", 0x527F08, 0x10
+gOptionsStateFuncs:: @ 0x08527F08
+	.4byte LoadOptionsGraphics
+	.4byte sub_514B8
+	.4byte sub_51C3C
+	.4byte sub_51C60
 
 gUnknown_08527F18:: @ 0x08527F18
 	.incbin "baserom.gba", 0x527F18, 0x110

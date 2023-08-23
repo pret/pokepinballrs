@@ -4,22 +4,6 @@
 
 	.text
 
-	thumb_func_start PokedexMain
-PokedexMain: @ 0x08003DAC
-	push {lr}
-	ldr r1, _08003DC4 @ =gUnknown_0805C880
-	ldr r0, _08003DC8 @ =gMain
-	ldrb r0, [r0, #3]
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	bl _call_via_r0
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08003DC4: .4byte gUnknown_0805C880
-_08003DC8: .4byte gMain
-
 	thumb_func_start sub_3DCC
 sub_3DCC: @ 0x08003DCC
 	push {r4, r5, r6, r7, lr}
@@ -9419,39 +9403,3 @@ _08008A68: .4byte 0x040000D4
 _08008A6C: .4byte gMonHatchSpriteGroupPals
 _08008A70: .4byte 0x05000260
 _08008A74: .4byte 0x80000010
-
-	thumb_func_start sub_8A78
-sub_8A78: @ 0x08008A78
-	ldr r1, _08008AA0 @ =gUnknown_0202A1C0
-	lsls r0, r0, #0x10
-	asrs r2, r0, #0xf
-	adds r1, r2, r1
-	movs r3, #0
-	ldrsh r0, [r1, r3]
-	cmp r0, #4
-	bne _08008AAC
-	ldr r0, _08008AA4 @ =gUnknown_086A61BC
-	adds r0, r2, r0
-	movs r2, #0
-	ldrsh r1, [r0, r2]
-	movs r0, #1
-	rsbs r0, r0, #0
-	cmp r1, r0
-	beq _08008AAC
-	ldr r1, _08008AA8 @ =gUnknown_0202A588
-	movs r0, #1
-	b _08008AB0
-	.align 2, 0
-_08008AA0: .4byte gUnknown_0202A1C0
-_08008AA4: .4byte gUnknown_086A61BC
-_08008AA8: .4byte gUnknown_0202A588
-_08008AAC:
-	ldr r1, _08008AB8 @ =gUnknown_0202A588
-	movs r0, #0
-_08008AB0:
-	strh r0, [r1]
-	movs r3, #0
-	ldrsh r0, [r1, r3]
-	bx lr
-	.align 2, 0
-_08008AB8: .4byte gUnknown_0202A588

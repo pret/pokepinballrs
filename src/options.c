@@ -47,10 +47,10 @@ extern const u8 gOptionsBackground_Tilemap[];
 
 void OptionsMain(void)
 {
-    gUnknown_08527F08[gMain.subState]();
+    gOptionsStateFuncs[gMain.subState]();
 }
 
-void sub_51240(void)
+void LoadOptionsGraphics(void)
 {
     ResetSomeGraphicsRelatedStuff();
 
@@ -492,6 +492,7 @@ void sub_51C60(void)
     SetMainGameState(STATE_TITLE);
 }
 
+// TODO
 NAKED
 void sub_51C9C(void)
 {

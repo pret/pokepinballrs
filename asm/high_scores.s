@@ -7,7 +7,7 @@
 	thumb_func_start HighScoresMain
 HighScoresMain: @ 0x0800CE48
 	push {lr}
-	ldr r1, _0800CE60 @ =gUnknown_080793E8
+	ldr r1, _0800CE60 @ =gHighScoresStateFuncs
 	ldr r0, _0800CE64 @ =gMain
 	ldrb r0, [r0, #3]
 	lsls r0, r0, #2
@@ -17,14 +17,14 @@ HighScoresMain: @ 0x0800CE48
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800CE60: .4byte gUnknown_080793E8
+_0800CE60: .4byte gHighScoresStateFuncs
 _0800CE64: .4byte gMain
 
 @ This is triggered after the idle pinball game catches its first pokemon
 	thumb_func_start IdleHighScoresMain
 IdleHighScoresMain: @ 0x0800CE68
 	push {lr}
-	ldr r1, _0800CE80 @ =gUnknown_08079424
+	ldr r1, _0800CE80 @ =gIdleHighScoresStateFuncs
 	ldr r0, _0800CE84 @ =gMain
 	ldrb r0, [r0, #3]
 	lsls r0, r0, #2
@@ -34,7 +34,7 @@ IdleHighScoresMain: @ 0x0800CE68
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800CE80: .4byte gUnknown_08079424
+_0800CE80: .4byte gIdleHighScoresStateFuncs
 _0800CE84: .4byte gMain
 
 	thumb_func_start sub_CE88

@@ -15,7 +15,7 @@ extern struct {u8 unk0; s16 unk2;} gUnknown_086BB9B4[];
 extern u16 gUnknown_08527D66[];
 extern u8 gUnknown_02031AF0[][10];
 extern u8 gUnknown_08527ED6[][10];
-extern void (*const gUnknown_08527F08[])(void);
+extern void (*const gOptionsStateFuncs[])(void);
 extern u16 gUnknown_0201A520[];
 extern u16 gUnknown_0201AD20[];
 extern u32 gUnknown_0201A500[];

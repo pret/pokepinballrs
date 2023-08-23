@@ -7,7 +7,7 @@
 	thumb_func_start IntroMain
 IntroMain: @ 0x0800927C
 	push {lr}
-	ldr r1, _08009294 @ =gUnknown_080792CC
+	ldr r1, _08009294 @ =gIntroStateFuncs
 	ldr r0, _08009298 @ =gMain
 	ldrb r0, [r0, #3]
 	lsls r0, r0, #2
@@ -17,7 +17,7 @@ IntroMain: @ 0x0800927C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08009294: .4byte gUnknown_080792CC
+_08009294: .4byte gIntroStateFuncs
 _08009298: .4byte gMain
 
 	thumb_func_start sub_929C

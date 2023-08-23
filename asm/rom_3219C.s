@@ -45538,7 +45538,7 @@ _08049EB0: .4byte 0x0000131C
 	thumb_func_start PinballGameMain
 PinballGameMain: @ 0x08049EB4
 	push {lr}
-	ldr r1, _08049ECC @ =gUnknown_08137E04
+	ldr r1, _08049ECC @ =gPinballGameStateFuncs
 	ldr r0, _08049ED0 @ =gMain
 	ldrb r0, [r0, #3]
 	lsls r0, r0, #2
@@ -45548,7 +45548,7 @@ PinballGameMain: @ 0x08049EB4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08049ECC: .4byte gUnknown_08137E04
+_08049ECC: .4byte gPinballGameStateFuncs
 _08049ED0: .4byte gMain
 
 	thumb_func_start sub_49ED4

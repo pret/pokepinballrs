@@ -14550,7 +14550,7 @@ _08019024: .4byte 0x00000532
 	thumb_func_start IdlePinballGameMain
 IdlePinballGameMain: @ 0x08019028
 	push {lr}
-	ldr r1, _08019040 @ =gUnknown_08137918
+	ldr r1, _08019040 @ =gIdlePinballGameStateFuncs
 	ldr r0, _08019044 @ =gMain
 	ldrb r0, [r0, #3]
 	lsls r0, r0, #2
@@ -14560,7 +14560,7 @@ IdlePinballGameMain: @ 0x08019028
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08019040: .4byte gUnknown_08137918
+_08019040: .4byte gIdlePinballGameStateFuncs
 _08019044: .4byte gMain
 
 	thumb_func_start sub_19048

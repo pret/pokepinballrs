@@ -80,7 +80,7 @@ void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum);
 // src/bonus_field_select.s
 
 extern void BonusFieldSelectMain(void);
-extern void sub_25C4(void);
+extern void LoadBonusFieldSelectGraphics(void);
 extern void sub_2710(void);
 extern void sub_2768(void);
 extern void sub_2990(void);
@@ -328,7 +328,7 @@ extern void sub_1050C(void);
 // asm/options.s
 
 //extern ? OptionsMain();
-//extern ? sub_51240();
+//extern ? LoadOptionsGraphics();
 extern void sub_513B8(void);
 //extern ? sub_514B8();
 //extern ? sub_51C3C();
