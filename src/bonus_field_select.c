@@ -36,7 +36,7 @@ void BonusFieldSelectMain(void)
     gBonusFieldSelectStateFuncs[gMain.subState]();
 }
 
-void sub_25C4(void)
+void LoadBonusFieldSelectGraphics(void)
 {
     ResetSomeGraphicsRelatedStuff();
 

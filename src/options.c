@@ -50,7 +50,7 @@ void OptionsMain(void)
     gOptionsStateFuncs[gMain.subState]();
 }
 
-void sub_51240(void)
+void LoadOptionsGraphics(void)
 {
     ResetSomeGraphicsRelatedStuff();
 

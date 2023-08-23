@@ -667,7 +667,7 @@ gUnknown_0805C748:: @ 0x0805C748
 	.incbin "baserom.gba", 0x5C748, 0x8
 
 gBonusFieldSelectStateFuncs:: @ 0x0805C750
-	.4byte sub_25C4
+	.4byte LoadBonusFieldSelectGraphics
 	.4byte sub_2768
 	.4byte sub_2990
 
@@ -722,7 +722,7 @@ gUnknown_0805C8F6:: @ 0x0805C8F6
 	.incbin "baserom.gba", 0x5C8F6, 0x1C9CA
 
 gFieldSelectStateFuncs:: @ 0x080792C0
-	.4byte LoadFieldSelectGraphics+1
+	.4byte LoadFieldSelectGraphics
 	.4byte sub_8C7C
 	.4byte sub_8F64
 
@@ -1844,7 +1844,7 @@ gUnknown_08527EFE:: @ 0x08527EFE
 	.incbin "baserom.gba", 0x527EFE, 0xA
 
 gOptionsStateFuncs:: @ 0x08527F08
-	.4byte sub_51240
+	.4byte LoadOptionsGraphics
 	.4byte sub_514B8
 	.4byte sub_51C3C
 	.4byte sub_51C60
