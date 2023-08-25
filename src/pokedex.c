@@ -57,7 +57,6 @@ void LoadPokedexGraphics(void)
     sub_8974(gUnknown_0202ADE0);
     sub_8A78(gUnknown_0202ADE0);
     
-    // I'm pretty sure this is genuinely an array access rather than a separate variable
     gUnknown_02019C40[0x134] = 0x59;
     
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
