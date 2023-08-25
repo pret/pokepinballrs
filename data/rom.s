@@ -695,7 +695,7 @@ gUnknown_0805C840:: @ 0x0805C840
 	.incbin "baserom.gba", 0x5C840, 0x40
 
 gPokedexStateFuncs:: @ 0x0805C880
-	.4byte sub_3DCC
+	.4byte LoadPokedexGraphics
 	.4byte sub_4150
 	.4byte sub_43D4
 	.4byte sub_4428
