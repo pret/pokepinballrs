@@ -737,7 +737,7 @@ gUnknown_080792E0:: @ 0x080792E0
 	.incbin "baserom.gba", 0x792E0, 0x108
 
 gHighScoresStateFuncs:: @ 0x080793E8
-	.4byte sub_CE88
+	.4byte LoadHighScoreGraphics
 	.4byte sub_D20C
 	.4byte sub_D308
 	.4byte sub_D4B8

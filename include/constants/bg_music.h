@@ -6,6 +6,7 @@
 #define MUS_UNKNOWN_SONG_1 5
 #define MUS_UNKNOWN_SONG_5 6
 #define MUS_OPENING 8
+#define MUS_HI_SCORE 9
 #define MUS_SHOP 11
 #define MUS_END_OF_BALL 13
 #define MUS_MOVE_MODE_START 16

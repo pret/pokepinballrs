@@ -1,6 +1,20 @@
 #include "global.h"
 #include "main.h"
 
+void sub_10618(int a, int b, int c, int d, int e, int f)
+{
+    u16 i;
+    u16 j;
+
+    for (i = 0; i < f; i++)
+    {
+        for (j = 0; j < e; j++)
+        {
+          gUnknown_03005C00[d * 32 + c + i * 32 + j] = gUnknown_03005C00[b * 32 + a + i * 32 + j];
+        }
+    }
+}
+
 void sub_1068C(int a, int b, int c, int d, u16 e)
 {
     u16 i;
