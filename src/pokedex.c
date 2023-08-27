@@ -55,6 +55,17 @@ extern s16 gUnknown_0202A574;
 void sub_88E4(void);
 s8 sub_FD20(void);
 
+void sub_4F50(void);
+void sub_5174(void);
+void sub_4EF0(void);
+void sub_4E34(void);
+void sub_4D74(void);
+void sub_4FC8(void);
+void sub_5064(void);
+void sub_51CC(void);
+
+extern u8 gUnknown_0202A590[];
+
 void PokedexMain(void)
 {
     gPokedexStateFuncs[gMain.subState]();
@@ -184,3 +195,145 @@ void sub_3FAC(void) {
         gUnknown_0202A574 = SPECIES_RAYQUAZA + 1;
     }
 }
+
+void sub_4150(void) {
+    if (gMain.heldKeys & SELECT_BUTTON)
+    {
+        gUnknown_0202BF04 = 0;
+
+        if (gMain.heldKeys & DPAD_UP)
+        {
+            sub_4D74();
+            sub_5064();
+            sub_51CC();
+            gMain.subState = 2;
+        }
+        else if (gMain.heldKeys & DPAD_DOWN)
+        {
+            sub_4E34();
+            sub_5064();
+            sub_51CC();
+            gMain.subState = 2;
+        }
+        else if (gMain.heldKeys & DPAD_LEFT)
+        {
+            sub_4EF0();
+            sub_5064();
+            sub_51CC();
+            gMain.subState = 2;
+        }
+        else if (gMain.heldKeys & DPAD_RIGHT)
+        {
+            sub_4F50();
+            sub_5064();
+            sub_51CC();
+            gMain.subState = 2;
+        }
+        else
+        {
+            gUnknown_02019C24 = 0;
+            sub_5064();
+        }
+
+        if (gMain.newKeys & A_BUTTON)
+        {
+            gUnknown_0202C5E8 = 0;
+
+            if (gUnknown_0202A1C0[gUnknown_0202ADE0] >= 2)
+            {
+                gUnknown_0202BF04 = 0;
+                DmaCopy16(3, 0x6000280, (void *)gUnknown_0202A590, 0x200);
+                gMain.subState = 3;
+            }
+            else
+            {
+                m4aSongNumStart(0x8A);
+            }
+        }
+    }
+    else
+    {
+        gUnknown_0202BF04 = 1;
+
+        if (gMain.heldKeys & DPAD_UP)
+        {
+            sub_4D74();
+            sub_5174();
+        }
+        else if (gMain.heldKeys & DPAD_DOWN)
+        {
+            sub_4E34();
+            sub_5174();
+        }
+        else if (gMain.heldKeys & DPAD_LEFT)
+        {
+            sub_4EF0();
+            sub_5174();
+        }
+        else if (gMain.heldKeys & DPAD_RIGHT)
+        {
+            sub_4F50();
+            sub_5174();
+        }
+        else
+        {
+            gUnknown_02019C24 = 0;
+        }
+
+        if (sub_8A78(gUnknown_0202ADE0) == 1)
+        {
+            gUnknown_0202A588 = 1;
+        }
+        else
+        {
+            gUnknown_0202A588 = 0;
+        }
+
+        gUnknown_0202A55C = 1;
+        gUnknown_0202A568[0] = 0;
+        gUnknown_0202A568[1] = 0;
+        gUnknown_0201A440 = 0;
+        gUnknown_0202BF0C = 0;
+
+        if (gMain.newKeys & A_BUTTON)
+        {
+            gUnknown_0202C5E8 = 0;
+
+            if (gUnknown_0202A1C0[gUnknown_0202ADE0] >= 2)
+            {
+                gUnknown_0202BF04 = 0;
+                DmaCopy16(3, 0x6000280, (void *)gUnknown_0202A590, 0x200);
+                gMain.subState = 3;
+            }
+            else
+            {
+                m4aSongNumStart(0x8A);
+            }
+        }
+        else if (gMain.newKeys & B_BUTTON)
+        {
+            m4aSongNumStart(0x66);
+            gMain.subState = 12;
+        }
+        else if (gMain.newKeys & START_BUTTON)
+        {
+            m4aSongNumStart(0x68);
+            gUnknown_0202BEC4 = 1;
+            gUnknown_0202BEFC = 0;
+            gUnknown_0202BF04 = 0;
+            gUnknown_0202A588 = 0;
+            gMain.subState = 6;
+        }
+
+        sub_4FC8();
+    }
+
+    if (gUnknown_0202C58C > 0)
+    {
+        gUnknown_0202C58C--;
+    }
+
+    sub_51FC();
+    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+}
+
