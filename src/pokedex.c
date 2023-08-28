@@ -82,6 +82,8 @@ extern u16 gUnknown_0805C840[];
 extern u16 gUnknown_0805C780[];
 extern u16 gUnknown_0805C7C0[];
 
+extern s16 gUnknown_086A61BC[];
+
 void PokedexMain(void)
 {
     gPokedexStateFuncs[gMain.subState]();
@@ -403,4 +405,136 @@ void sub_4428(void) {
     
 }
 
+void sub_45A4(void) {
+    u16 var0;
+    
+    if (gUnknown_0202C5E8 < 0x51)
+    {
+        gUnknown_0202C5E8++;
+        if (gUnknown_0202C5E8 == 0x50)
+        {
+            m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
+        }
+    }
+    gUnknown_0202BEF4 = gUnknown_0202BEF4 + 1;
+    if (0x1e < gUnknown_0202BEF4)
+    {
+        gUnknown_0202BEF4 = 0;
+        gUnknown_0202C5AC = 1 - gUnknown_0202C5AC;
+    }
+    gUnknown_0202BE20 = 0;
 
+    if (gMain.newKeys & DPAD_UP)
+    {
+        if ((gUnknown_0202ADE0 < BONUS_SPECIES_START) && (gUnknown_0202C794 == 1))
+        {
+            m4aSongNumStart(0x6D);
+            gUnknown_0202C794 = 0;
+            sub_70E0(gUnknown_0202ADE0, 0);
+            gUnknown_02019C28 = gUnknown_0202C794;
+        }
+    }
+    else if (gMain.newKeys & DPAD_DOWN)
+    {
+        if ((gUnknown_0202ADE0 < BONUS_SPECIES_START) && (gUnknown_0202C794 == 0))
+        {
+            m4aSongNumStart(0x6D);
+            gUnknown_0202C794 = 1;
+            sub_70E0(gUnknown_0202ADE0, 1);
+            gUnknown_02019C28 = gUnknown_0202C794;
+        }
+    }
+    
+    if (gMain.newKeys & A_BUTTON)
+    {
+        if (gUnknown_0202ADE0 < BONUS_SPECIES_START)
+        {
+            if (!gUnknown_0202C794)
+            {
+                m4aSongNumStart(0x6D);
+                gUnknown_0202C794 = 1 - gUnknown_0202C794;
+                sub_70E0(gUnknown_0202ADE0,gUnknown_0202C794);
+                gUnknown_02019C28 = gUnknown_0202C794;
+            }
+            else
+            {
+                m4aSongNumStart(0x69);
+                m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
+                gUnknown_0202C794 = 0;
+                gUnknown_0202C5E8 = 0;
+                gUnknown_0202BEF4 = gUnknown_0202C5E8;
+                gUnknown_0201C1B4 = 0;
+                gMain.subState = 4;
+            }
+        }
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        m4aSongNumStart(0x69);
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
+        gUnknown_0202C794 = 0;
+        gUnknown_0202C5E8 = 0;
+        gUnknown_0202BEF4 = gUnknown_0202C5E8;
+        gUnknown_0201C1B4 = 0;
+        gMain.subState = 4;
+    }
+
+    if (gMain.heldKeys & SELECT_BUTTON)
+    {
+        if (gUnknown_0202A1C0[gUnknown_0202ADE0] == 4)
+        {
+            if (gUnknown_086A61BC[gUnknown_0202ADE0] == -1)
+            {
+                gUnknown_0202A588 = 0;
+                gUnknown_0202A55C = 1;
+                gUnknown_0202A568[0] = 0;
+                gUnknown_0202A568[1] = 0;
+                gUnknown_0201A440 = 0;
+                gUnknown_0202BF0C = 0;
+            }
+            else
+            {
+                if (gUnknown_086A61BC[gUnknown_0202ADE0] < 100)
+                {
+                    gUnknown_0202A588 = 0;
+                    gUnknown_0202A55C = 0;
+                    gUnknown_0202A568[0] = 1;
+                    gUnknown_0202A568[1] = 0;
+                }
+                else
+                {
+                    gUnknown_0202A588 = 0;
+                    gUnknown_0202A55C = 0;
+                    gUnknown_0202A568[0] = 0;
+                    gUnknown_0202A568[1] = 1;
+                }
+            }
+        }
+        else
+        {
+            gUnknown_0202A588 = 0;
+            gUnknown_0202A55C = 1;
+            gUnknown_0202A568[0] = 0;
+            gUnknown_0202A568[1] = 0;
+        }
+    }
+    else
+    {
+        if (sub_8A78(gUnknown_0202ADE0) == 1)
+        {
+            gUnknown_0202A588 = 1;
+        }
+        else
+        {
+            gUnknown_0202A588 = 0;
+        }
+
+        gUnknown_0202A55C = 1;
+        gUnknown_0202A568[0] = 0;
+        gUnknown_0202A568[1] = 0;
+        gUnknown_0201A440 = 0;
+        gUnknown_0202BF0C = 0;
+    }
+
+    sub_51FC();
+}
