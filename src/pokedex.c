@@ -66,6 +66,22 @@ void sub_51CC(void);
 
 extern u8 gUnknown_0202A590[];
 
+extern u16 gUnknown_08086B40[];
+
+void sub_70E0(s16, s32);
+
+extern void sub_5291C(u16, s8, s8, u8);
+
+struct Unk086A3700 {
+    u16 unk0;
+    u8 unk2[0x16];
+};
+
+extern struct Unk086A3700 gUnknown_086A3700[];
+extern u16 gUnknown_0805C840[];
+extern u16 gUnknown_0805C780[];
+extern u16 gUnknown_0805C7C0[];
+
 void PokedexMain(void)
 {
     gPokedexStateFuncs[gMain.subState]();
@@ -336,4 +352,55 @@ void sub_4150(void) {
     sub_51FC();
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 }
+
+void sub_43D4(void) {
+    sub_5174();
+    gUnknown_0202A588 = 0;
+
+    if (gUnknown_0202C58C > 0)
+    {
+        gUnknown_0202C58C--;
+    }
+
+    sub_51FC();
+    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    gMain.subState = 1;
+}
+
+void sub_4428(void) {
+    s32 i;
+
+    for (i = 0; i < 0x20; i++)
+    {
+        gUnknown_03005C00[0x20*(gUnknown_0202A558 + 10) + i] = gUnknown_0805C840[i];
+        gUnknown_02019C40[0x20*(gUnknown_0202A558 + 9) + i] = gUnknown_0805C780[i];
+        gUnknown_02019C40[0x20*(gUnknown_0202A558 + 10) + i] = gUnknown_0805C7C0[i];
+    }
+    
+    gUnknown_0202A558++;
+    gUnknown_02019C40[0x134] = 0x59;
+    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gUnknown_02019C40, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+
+    if (gUnknown_0202A558 > 7)
+    {
+        gUnknown_0202A558 = 0;
+        gUnknown_0202C5E8 = 0;
+        gUnknown_0202BEF4 = 0;
+        gUnknown_02019C28 = 0;
+        gUnknown_0202C5AC = 0;
+
+        if (gUnknown_0202ADE0 < BONUS_SPECIES_START) {
+            gUnknown_0201C1B4 = 1;
+        }
+
+        DmaCopy16(3, gUnknown_08086B40, (void *)0x6000280, 2*0xE0);
+        sub_70E0(gUnknown_0202ADE0, gUnknown_0202C794);
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
+        sub_5291C(gUnknown_086A3700[gUnknown_0202ADE0].unk0, 0, 0x7F, 10);
+        gMain.subState = 5;
+    }
+    
+}
+
 
