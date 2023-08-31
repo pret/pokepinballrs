@@ -165,7 +165,7 @@ extern void sub_F6E0(void);
 //extern ? sub_F74C();
 //extern ? sub_F8B0();
 //extern ? sub_FAE8();
-//extern ? sub_FD20();
+extern s8 sub_FD20(void);
 extern void sub_FD5C(void (*func)(void));
 extern void sub_FE04(void (*func)(void));
 //extern ? sub_FEB8();
@@ -772,7 +772,7 @@ extern void sub_4F814();
 
 //extern ? sub_528AC();
 //extern ? sub_528DC();
-//extern ? sub_5291C();
+extern void sub_5291C(u16, s8, s8, u8);
 //extern ? sub_52940();
 extern void SaveFile_LoadGameData(void);
 //extern ? LoadSaveDataFromSram();

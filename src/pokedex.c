@@ -3,57 +3,8 @@
 #include "functions.h"
 #include "m4a.h"
 #include "main.h"
-
-extern u16 gUnknown_02019C40[];
-extern s16 gUnknown_0201A514;
-extern s16 gUnknown_0202ADE0;
-extern s16 gUnknown_0202BEB8;
-extern s16 gUnknown_0202C5B0;
-
-extern StateFunc gPokedexStateFuncs[];
-extern u16 gUnknown_08081F20[];
-extern u16 gUnknown_08082720[];
-extern u16 gUnknown_08087340[];
-extern u16 gUnknown_08087B40[];
-extern u16 gUnknown_08088F60[];
-extern u16 gUnknown_08089760[];
-extern u16 gUnknown_08089960[];
-extern u16 gUnknown_08089B60[];
-
-extern s16 gUnknown_0201A448;
-extern s16 gUnknown_0202BF00;
-extern s16 gUnknown_0202A57C;
-extern s16 gUnknown_0201A4F0;
-extern s16 gUnknown_0202BE20;
-extern s16 gUnknown_0202C58C;
-extern s8 gUnknown_02019C24;
-extern s16 gUnknown_0202BF0C;
-extern s16 gUnknown_0201A440;
-extern s16 gUnknown_0202BEF4;
-extern s16 gUnknown_0202A588;
-extern s16 gUnknown_0202A55C;
-extern s16 gUnknown_0202A568[2];
-extern s16 gUnknown_0202C5E8;
-extern s16 gUnknown_0202A558;
-extern s8 gUnknown_0202BEE0;
-extern s8 gUnknown_0202BF04;
-extern s16 gUnknown_0202BF14;
-extern s8 gUnknown_0202C590;
-extern s16 gUnknown_0201B120;
-extern s8 gUnknown_0202BEC4;
-extern s8 gUnknown_0202BEFC;
-extern s8 gUnknown_02002830;
-extern s8 gUnknown_02002831;
-extern s8 gUnknown_0202C794;
-extern s8 gUnknown_0201C1B4;
-extern s8 gUnknown_0202C5AC;
-extern s8 gUnknown_02019C28;
-extern s16 gUnknown_0202A1C0[];
-extern s16 gUnknown_0202A390[];
-extern s16 gUnknown_0202A574;
-
-void sub_88E4(void);
-s8 sub_FD20(void);
+#include "types.h"
+#include "variables.h"
 
 void sub_4F50(void);
 void sub_5174(void);
@@ -63,26 +14,8 @@ void sub_4D74(void);
 void sub_4FC8(void);
 void sub_5064(void);
 void sub_51CC(void);
-
-extern u8 gUnknown_0202A590[];
-
-extern u16 gUnknown_08086B40[];
-
 void sub_70E0(s16, s32);
-
-extern void sub_5291C(u16, s8, s8, u8);
-
-struct Unk086A3700 {
-    u16 unk0;
-    u8 unk2[0x16];
-};
-
-extern struct Unk086A3700 gUnknown_086A3700[];
-extern u16 gUnknown_0805C840[];
-extern u16 gUnknown_0805C780[];
-extern u16 gUnknown_0805C7C0[];
-
-extern s16 gUnknown_086A61BC[];
+void sub_88E4(void);
 
 void PokedexMain(void)
 {
@@ -399,7 +332,7 @@ void sub_4428(void) {
         DmaCopy16(3, gUnknown_08086B40, (void *)0x6000280, 2*0xE0);
         sub_70E0(gUnknown_0202ADE0, gUnknown_0202C794);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
-        sub_5291C(gUnknown_086A3700[gUnknown_0202ADE0].unk0, 0, 0x7F, 10);
+        sub_5291C(gUnknown_086A3700[gUnknown_0202ADE0].mainSeriesIndexNumber, 0, 0x7F, 10);
         gMain.subState = 5;
     }
     

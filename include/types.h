@@ -40,4 +40,13 @@ struct Coord16
     u16 y;
 };
 
+struct PokemonSpecies {
+    u16 mainSeriesIndexNumber; // Refers to the generation three internal index number; e.g. Treecko is 0x115 (decimal 227).
+    u8 unk2[0x5];
+    u8 name[10];
+    u8 unk11[0x4];
+    u8 evolutionTarget; // Uses the standard index numbers; e.g. Treecko is 0x00 (SPECIES_TREECKO)
+    u8 unk16[0x2];
+};
+
 #endif  // GUARD_TYPES_H
