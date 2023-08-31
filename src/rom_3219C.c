@@ -388,7 +388,6 @@ void sub_327C0(void)
         sub_31498();
     }
     
-    // TODO: if this is a fake match, it will take a braver one than I to fix it.
     if (gUnknown_020314E0->unk13 < 3)
     {
         if ((gUnknown_020314E0->unk344 & 0xFFFF00) == 0x300)
