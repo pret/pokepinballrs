@@ -187,8 +187,8 @@ my $incbin_bytes = $incbin_bytes_as_string + 0;
 
 
 my $total = $src + $lib + $asm;
+$src = $src + $lib;
 my $srcPct = 100 * $src / $total;
-my $libPct = 100 * $lib / $total;
 my $asmPct = 100 * $asm / $total;
 
 if ($asm == 0)
@@ -199,7 +199,6 @@ else
 {
     printf "%8d total bytes of code\n", $total;
     printf "%8d bytes of code in src (%.4f%%)\n", $src, $srcPct;
-    printf "%8d bytes of code in agbcc libraries (%.4f%%)\n", $lib, $libPct;
     printf "%8d bytes of code in asm (%.4f%%)\n", $asm, $asmPct;
 }
 print "\n";

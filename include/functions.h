@@ -165,7 +165,7 @@ extern void sub_F6E0(void);
 //extern ? sub_F74C();
 //extern ? sub_F8B0();
 //extern ? sub_FAE8();
-//extern ? sub_FD20();
+extern s8 sub_FD20(void);
 extern void sub_FD5C(void (*func)(void));
 extern void sub_FE04(void (*func)(void));
 //extern ? sub_FEB8();
@@ -340,9 +340,9 @@ extern void sub_525CC(s8);
 
 // asm/pokedex.s
 
-//extern ? PokedexMain();
-//extern ? sub_3DCC();
-//extern ? sub_3FAC();
+extern void PokedexMain(void);
+//extern ? LoadPokedexGraphics();
+extern void sub_3FAC(void);
 //extern ? sub_4150();
 //extern ? sub_43D4();
 //extern ? sub_4428();
@@ -364,7 +364,7 @@ extern void sub_525CC(s8);
 //extern ? sub_5134();
 //extern ? sub_5174();
 //extern ? sub_51CC();
-//extern ? sub_51FC();
+extern void sub_51FC(void);
 //extern ? sub_599C();
 //extern ? sub_5E60();
 //extern ? sub_5EA4();
@@ -373,16 +373,16 @@ extern void sub_525CC(s8);
 //extern ? sub_6144();
 //extern ? sub_639C();
 //extern ? sub_65DC();
-//extern ? sub_681C();
-//extern ? sub_6BEC();
-//extern ? sub_6CA0();
-//extern ? sub_6F30();
-//extern ? sub_6F78();
+extern void sub_681C();
+extern void sub_6BEC();
+extern void sub_6CA0(s16);
+extern void sub_6F30(s16);
+extern void sub_6F78();
 //extern ? sub_70E0();
 //extern ? sub_71DC();
 //extern ? sub_88E4();
-//extern ? sub_8974();
-//extern ? sub_8A78();
+extern void sub_8974();
+extern s16 sub_8A78(s32);
 extern void ResetPokedex(void);
 
 // asm/rom_1068C.s
@@ -772,7 +772,7 @@ extern void sub_4F814();
 
 //extern ? sub_528AC();
 //extern ? sub_528DC();
-//extern ? sub_5291C();
+extern void sub_5291C(u16, s8, s8, u8);
 //extern ? sub_52940();
 extern void SaveFile_LoadGameData(void);
 //extern ? LoadSaveDataFromSram();

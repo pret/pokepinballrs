@@ -181,7 +181,6 @@ u32 Random(void)
     return gMain.rngValue & 0xFFFF;
 }
 
-#ifdef NONMATCHING
 s16 sub_0C24(u16 arg0)
 {
     u16 index = arg0 / 4;
@@ -197,51 +196,6 @@ s16 sub_0C24(u16 arg0)
     
     return gUnknown_08055C44[index] * var0;
 }
-#else
-NAKED
-s16 sub_0C24(u16 arg0)
-{
-    asm_unified("\n\
-    lsls r0, r0, #0x10\n\
-    lsrs r2, r0, #0x12\n\
-    movs r3, #1\n\
-    ldr r0, _08000C60 @ =0x00001FFF\n\
-    cmp r2, r0\n\
-    bls _08000C3A\n\
-    ldr r1, _08000C64 @ =0xFFFFE000\n\
-    adds r0, r2, r1\n\
-    lsls r0, r0, #0x10\n\
-    lsrs r2, r0, #0x10\n\
-    ldr r3, _08000C68 @ =0x0000FFFF\n\
-_08000C3A:\n\
-    ldr r0, _08000C6C @ =0x00000FFF\n\
-    cmp r2, r0\n\
-    bls _08000C4C\n\
-    movs r1, #0x80\n\
-    lsls r1, r1, #6\n\
-    adds r0, r1, #0\n\
-    subs r0, r0, r2\n\
-    lsls r0, r0, #0x10\n\
-    lsrs r2, r0, #0x10\n\
-_08000C4C:\n\
-    ldr r1, _08000C70 @ =0x08055C44\n\
-    lsls r0, r2, #1\n\
-    adds r0, r0, r1\n\
-    ldrh r1, [r0]\n\
-    lsls r0, r3, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    muls r0, r1, r0\n\
-    lsls r0, r0, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    bx lr\n\
-    .align 2, 0\n\
-_08000C60: .4byte 0x00001FFF\n\
-_08000C64: .4byte 0xFFFFE000\n\
-_08000C68: .4byte 0x0000FFFF\n\
-_08000C6C: .4byte 0x00000FFF\n\
-_08000C70: .4byte 0x08055C44");
-}
-#endif // NONMATCHING
 
 s16 sub_0C74(u16 arg0)
 {   

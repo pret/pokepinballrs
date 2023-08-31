@@ -285,6 +285,7 @@ struct MusicPlayerTrack
 #define MUSICPLAYER_STATUS_PAUSE 0x80000000
 
 #define MAX_MUSICPLAYER_TRACKS 16
+#define TRACKS_ALL 0xFFFF
 
 #define TEMPORARY_FADE  0x0001
 #define FADE_IN         0x0002

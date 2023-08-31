@@ -120,7 +120,7 @@ void sub_10C0(void)
 
 void sub_111C(void)
 {
-    // This probably wasn't the original code, but it matches.
+    // TODO This probably wasn't the original code, but it matches.
     int *var0 = &gUnknown_02019BF4;
     int val = 0;
     gUnknown_02019C00 = val;

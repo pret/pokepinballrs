@@ -3,7 +3,7 @@
 
 extern s16 gUnknown_0202A1C0[];
 extern s16 gUnknown_0202A588;
-extern s32 gUnknown_0202BF14;
+extern s16 gUnknown_0202BF14;
 
 extern s16 gUnknown_086A61BC[];
 
