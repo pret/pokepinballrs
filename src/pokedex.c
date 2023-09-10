@@ -471,3 +471,37 @@ void sub_45A4(void) {
 
     sub_51FC();
 }
+
+void sub_4860(void) {
+    s32 i;
+    
+    for (i = 0; i < 0x20; i++)
+    {
+        gUnknown_02019C40[0x20 * (0x11 - gUnknown_0202A558) + i] = gUnknown_0805C7C0[i];
+        gUnknown_02019C40[0x20 * (0x12 - gUnknown_0202A558) + i] = gUnknown_0805C800[i];
+    }
+
+    if (gUnknown_0202A558 < 8)
+    {
+        for (i = 0; i < 0x20; i++)
+        {
+            gUnknown_03005C00[0x20 * (0x11 - gUnknown_0202A558) + i] = gUnknown_0202A590[0x20 * (0x7 - gUnknown_0202A558) + i];
+        }
+    }
+    gUnknown_0202A558++;
+
+    gUnknown_02019C40[0x134] = 0x59;
+    DmaCopy16(3, gUnknown_02019C40, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+
+    if (gUnknown_0202A558 > 8)
+    {
+        gUnknown_0202A558 = 0;
+        gUnknown_0202A588 = 0;
+        gUnknown_0202BF04 = 1;
+
+        DmaFill16(3, 0, (void *)gUnknown_03000000, 0x1800);
+        DmaFill16(3, 0, (void *)0x6005C00, 0x1800);
+        gMain.subState = 1;
+    }
+}
