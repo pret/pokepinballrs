@@ -243,6 +243,7 @@ extern u16 gUnknown_0805C7C0[];
 extern u16 gUnknown_0202A590[];
 extern u16 gUnknown_08086B40[];
 extern s16 gUnknown_086A61BC[];
+extern u8 gUnknown_0201B124;
 
 extern struct PokemonSpecies gUnknown_086A3700[];
 

@@ -4,24 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_49A8
-sub_49A8: @ 0x080049A8
-	push {lr}
-	bl sub_19B4
-	bl sub_5E60
-	ldr r1, _080049C8 @ =gUnknown_0201B124
-	movs r0, #0
-	strb r0, [r1]
-	bl sub_599C
-	ldr r1, _080049CC @ =gMain
-	movs r0, #7
-	strb r0, [r1, #3]
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080049C8: .4byte gUnknown_0201B124
-_080049CC: .4byte gMain
-
 	thumb_func_start sub_49D0
 sub_49D0: @ 0x080049D0
 	push {r4, r5, lr}

@@ -514,5 +514,9 @@ void sub_4860(void)
 
 void sub_49A8(void)
 {
-
-
+    sub_19B4();
+    sub_5E60();
+    gUnknown_0201B124 = 0;
+    sub_599C();
+    gMain.subState = 7;
+}
