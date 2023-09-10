@@ -69,7 +69,8 @@ void LoadPokedexGraphics(void)
     m4aSongNumStart(MUS_POKEDEX);
 }
 
-void sub_3FAC(void) {
+void sub_3FAC(void)
+{
     s32 i;
     
     gUnknown_0202ADE0 = 0;
@@ -147,7 +148,8 @@ void sub_3FAC(void) {
     }
 }
 
-void sub_4150(void) {
+void sub_4150(void)
+{
     if (gMain.heldKeys & SELECT_BUTTON)
     {
         gUnknown_0202BF04 = 0;
@@ -288,7 +290,8 @@ void sub_4150(void) {
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 }
 
-void sub_43D4(void) {
+void sub_43D4(void)
+{
     sub_5174();
     gUnknown_0202A588 = 0;
 
@@ -302,7 +305,8 @@ void sub_43D4(void) {
     gMain.subState = 1;
 }
 
-void sub_4428(void) {
+void sub_4428(void)
+{
     s32 i;
 
     for (i = 0; i < 0x20; i++)
@@ -338,7 +342,8 @@ void sub_4428(void) {
     
 }
 
-void sub_45A4(void) {
+void sub_45A4(void)
+{
     u16 var0;
     
     if (gUnknown_0202C5E8 < 0x51)
@@ -472,7 +477,8 @@ void sub_45A4(void) {
     sub_51FC();
 }
 
-void sub_4860(void) {
+void sub_4860(void)
+{
     s32 i;
     
     for (i = 0; i < 0x20; i++)
@@ -505,3 +511,8 @@ void sub_4860(void) {
         gMain.subState = 1;
     }
 }
+
+void sub_49A8(void)
+{
+
+
