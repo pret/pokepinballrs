@@ -247,4 +247,15 @@ extern u8 gUnknown_0201B124;
 
 extern struct PokemonSpecies gUnknown_086A3700[];
 
+extern u32 gUnknown_0202ADD0;
+extern u32 gUnknown_0202BEC8;
+extern u32 gUnknown_0202C5F0;
+extern u32 gUnknown_0201A4D0;
+extern u32 gUnknown_0202BDF0;
+extern u8 gUnknown_0201C1AC;
+extern u8 gUnknown_0202ADDC;
+extern u16 gUnknown_0201A510;
+extern s16 gUnknown_0201A444;
+extern s8 gUnknown_0201B128;
+
 #endif  // GUARD_VARIABLES_H

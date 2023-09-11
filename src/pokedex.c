@@ -14,6 +14,8 @@ void sub_4D74(void);
 void sub_4FC8(void);
 void sub_5064(void);
 void sub_51CC(void);
+s16 sub_5EA4(void); // TODO Pretty sure it's s16, but could be u16
+void sub_5EC8(void);
 void sub_70E0(s16, s32);
 void sub_88E4(void);
 
@@ -519,4 +521,62 @@ void sub_49A8(void)
     gUnknown_0201B124 = 0;
     sub_599C();
     gMain.subState = 7;
+}
+
+void sub_49D0(void)
+{
+    s16 var0;
+    
+    sub_599C();
+
+    if (gMain.newKeys & B_BUTTON)
+    {
+        m4aSongNumStart(0x66);
+        gUnknown_0202BEC4 = 0;
+        gUnknown_0202BEFC = 0;
+        gUnknown_0202BF04 = 1;
+        gUnknown_0202A588 = 1;
+        sub_2568();
+        gMain.subState = 1;
+    }
+    else
+    {
+        gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, &gUnknown_0202C5F0, &gUnknown_0201A4D0);
+        gUnknown_0202BDF0 = gUnknown_0202ADD0 & 3;
+        gUnknown_0201C1AC = (gUnknown_0202ADD0 & 0x1C) >> 2;
+        gUnknown_0202ADDC = (gUnknown_0202ADD0 & 0xe00) >> 9;
+
+        if ((gUnknown_0202ADD0 & 0x40) && (gUnknown_0202BDF0 < 2))
+        {
+            sub_5EC8();
+
+            if (!(gUnknown_0202ADD0 & 0x100))
+            {
+                var0 = sub_5EA4();
+                if (var0 == -1)
+                {
+                    gMain.subState = 9;
+                }
+                else if (var0 == 1)
+                {
+                    gUnknown_0202BEFC = 2;
+                    gMain.subState = 8;
+                    m4aSongNumStart(0x8A);
+                }
+            }
+
+            gUnknown_0201A510++;
+
+            if ((gUnknown_0202ADD0 & 0x7f0000) && (gUnknown_0201B128 == -1))
+            {
+                gUnknown_0201A444++;
+                if (0xB4 < gUnknown_0201A444)
+                {
+                    gUnknown_0202BEFC = 2;
+                    gMain.subState = 8;
+                    m4aSongNumStart(0x8a);
+                }
+            }
+        }
+    }
 }
