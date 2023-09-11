@@ -580,3 +580,13 @@ void sub_49D0(void)
         }
     }
 }
+
+void sub_4B10(void)
+{
+    gUnknown_0201A444++
+    ;
+    if (2 < gUnknown_0201A444) {
+        gUnknown_0201A444 = 0;
+        gMain.subState = 6;
+    }
+}
