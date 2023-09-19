@@ -57,7 +57,7 @@ struct Main
     /*0x40*/ int hasSavedGame;
     /*0x44*/ u8 filler44[0x4];
     /*0x48*/ int rngValue;
-    /*0x4C*/ int systemFrameCount;
+    /*0x4C*/ u32 systemFrameCount;
     /*0x50*/ int fieldFrameCount;
     /*0x54*/ u8 filler54[0xC];
     /*0x60*/ u16 unk60;

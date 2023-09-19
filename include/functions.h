@@ -120,18 +120,20 @@ extern void LoadFieldSelectGraphics(void);
 extern void sub_8C7C(void);
 extern void sub_8F64(void);
 
+// src/high_scores.s
+extern void HighScoresMain(void);
+extern void IdleHighScoresMain(void);
+extern void LoadHighScoreGraphics(void);
+extern void sub_CFD4(void);
+extern void sub_D20C(void);
+extern void sub_D308(void);
+extern void sub_D4B8(void);
+
 // asm/high_scores.s
 
-//extern ? HighScoresMain();
-//extern ? IdleHighScoresMain();
-//extern ? sub_CE88();
-//extern ? sub_CFD4();
-//extern ? sub_D20C();
-//extern ? sub_D308();
-//extern ? sub_D4B8();
-//extern ? sub_D664();
-//extern ? sub_D9F8();
-//extern ? sub_DA20();
+extern void sub_D664(void);
+extern void sub_D9F8(void);
+extern void sub_DA20(void);
 //extern ? sub_DB4C();
 //extern ? sub_DB70();
 //extern ? sub_DBF4();
@@ -145,8 +147,8 @@ extern void sub_8F64(void);
 //extern ? sub_E230();
 //extern ? sub_E390();
 //extern ? sub_E3A8();
-//extern ? sub_E464();
-//extern ? sub_E860();
+extern void sub_E464(void);
+extern void sub_E860(void);
 //extern ? sub_E908();
 //extern ? sub_E94C();
 //extern ? sub_E970();
@@ -154,16 +156,16 @@ extern void sub_8F64(void);
 //extern ? sub_EAC0();
 //extern ? sub_EBEC();
 //extern ? sub_ED28();
-//extern ? sub_EE64();
+extern void sub_EE64(void);
 //extern ? sub_F21C();
 //extern ? sub_F3BC();
-//extern ? sub_F3DC();
-//extern ? sub_F434();
+extern s32 sub_F3DC(u32, u32, u8);
+extern void sub_F434(u32, u32, u8);
 //extern ? sub_F4FC();
 //extern ? sub_F670();
 extern void sub_F6E0(void);
 //extern ? sub_F74C();
-//extern ? sub_F8B0();
+extern void sub_F8B0(u8, u32, s16);
 //extern ? sub_FAE8();
 extern s8 sub_FD20(void);
 extern void sub_FD5C(void (*func)(void));
@@ -179,7 +181,6 @@ extern void sub_1050C(void);
 //extern ? sub_10528();
 //extern ? sub_10544();
 //extern ? sub_105A0();
-//extern ? sub_10618();
 
 // asm/intro.s
 
@@ -387,6 +388,7 @@ extern void ResetPokedex(void);
 
 // asm/rom_1068C.s
 
+extern void sub_10618(int, int, int, int, int, int);
 void sub_1068C(int, int, int, int, u16);
 extern void sub_10708(void *volatile, void *volatile, s16, s16);
 //extern ? sub_10750();
