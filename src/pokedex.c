@@ -583,10 +583,40 @@ void sub_49D0(void)
 
 void sub_4B10(void)
 {
-    gUnknown_0201A444++
-    ;
+    gUnknown_0201A444++;
+    
     if (2 < gUnknown_0201A444) {
         gUnknown_0201A444 = 0;
         gMain.subState = 6;
+    }
+}
+
+void sub_4B34(void)
+{
+    s32 iVar1;
+    
+    sub_599C();
+    gUnknown_0201B120++;
+
+    if (0x5A < gUnknown_0201B120)
+    {
+        gUnknown_0201B120 = 0;
+        gUnknown_0202BEC4 = 0;
+        gUnknown_0202BEFC = 0;
+        gUnknown_0202BF04 = 1;
+        gUnknown_0202A588 = 1;
+        
+        sub_2568();
+        sub_1AA4();
+
+        for(iVar1 = 0; iVar1 < 0xE1; iVar1++)
+        {
+            gUnknown_0202A390[iVar1] = gUnknown_0202A1C0[iVar1];
+        }
+        
+        sub_02B4();
+        m4aMPlayAllStop();
+        sub_0D10();
+        gMain.subState = 0;
     }
 }

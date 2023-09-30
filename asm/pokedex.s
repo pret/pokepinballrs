@@ -4,62 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_4B34
-sub_4B34: @ 0x08004B34
-	push {lr}
-	bl sub_599C
-	ldr r2, _08004B94 @ =gUnknown_0201B120
-	ldrh r0, [r2]
-	adds r0, #1
-	strh r0, [r2]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x5a
-	ble _08004B90
-	movs r1, #0
-	strh r1, [r2]
-	ldr r0, _08004B98 @ =gUnknown_0202BEC4
-	strb r1, [r0]
-	ldr r0, _08004B9C @ =gUnknown_0202BEFC
-	strb r1, [r0]
-	ldr r1, _08004BA0 @ =gUnknown_0202BF04
-	movs r0, #1
-	strb r0, [r1]
-	ldr r1, _08004BA4 @ =gUnknown_0202A588
-	movs r0, #1
-	strh r0, [r1]
-	bl sub_2568
-	bl sub_1AA4
-	ldr r3, _08004BA8 @ =gUnknown_0202A1C0
-	ldr r2, _08004BAC @ =gUnknown_0202A390
-	movs r1, #0xe0
-_08004B70:
-	ldrh r0, [r3]
-	strh r0, [r2]
-	adds r3, #2
-	adds r2, #2
-	subs r1, #1
-	cmp r1, #0
-	bge _08004B70
-	bl sub_02B4
-	bl m4aMPlayAllStop
-	bl sub_0D10
-	ldr r1, _08004BB0 @ =gMain
-	movs r0, #0
-	strb r0, [r1, #3]
-_08004B90:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08004B94: .4byte gUnknown_0201B120
-_08004B98: .4byte gUnknown_0202BEC4
-_08004B9C: .4byte gUnknown_0202BEFC
-_08004BA0: .4byte gUnknown_0202BF04
-_08004BA4: .4byte gUnknown_0202A588
-_08004BA8: .4byte gUnknown_0202A1C0
-_08004BAC: .4byte gUnknown_0202A390
-_08004BB0: .4byte gMain
-
 	thumb_func_start sub_4BB4
 sub_4BB4: @ 0x08004BB4
 	push {r4, lr}
