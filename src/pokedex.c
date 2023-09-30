@@ -620,3 +620,43 @@ void sub_4B34(void)
         gMain.subState = 0;
     }
 }
+
+void sub_4BB4(void)
+{
+    s32 index;
+    
+    sub_599C();
+    switch(gUnknown_0201B120)
+    {
+        case 0x4:
+            sub_2568();
+            sub_1AA4();
+            break;
+        case 0x82:
+            gUnknown_0202BEFC = 3;
+            m4aSongNumStart(0x65);
+            break;
+        case 0xFA:
+            gUnknown_0201B120 = 0;
+            gUnknown_0202BEC4 = 0;
+            gUnknown_0202BEFC = 0;
+            gUnknown_0202BF04 = 1; 
+            gUnknown_0202A588 = 1;
+            for(index = 0; index < 0xE1; index++)
+            {
+                gUnknown_0202A1C0[index] = gUnknown_0202A390[index];
+            }
+            for(index = 0; index < 0xCD; index++)
+            {
+                    gMain_saveData.pokedexFlags[index] = gUnknown_0202A1C0[index];
+            }
+            SaveFile_WriteToSram();
+            sub_02B4();
+            m4aMPlayAllStop();
+            sub_0D10();
+            gMain.subState = 0;
+            break;
+    }
+    gUnknown_0201B120 += 1;
+}
+
