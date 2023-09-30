@@ -4,22 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_4D50
-sub_4D50: @ 0x08004D50
-	push {lr}
-	bl sub_02B4
-	bl m4aMPlayAllStop
-	bl sub_0D10
-	ldr r1, _08004D70 @ =gAutoDisplayTitlescreenMenu
-	movs r0, #1
-	strb r0, [r1]
-	movs r0, #1
-	bl SetMainGameState
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08004D70: .4byte gAutoDisplayTitlescreenMenu
-
 	thumb_func_start sub_4D74
 sub_4D74: @ 0x08004D74
 	push {r4, r5, lr}

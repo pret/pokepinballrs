@@ -59,7 +59,7 @@ extern u8 gUnknown_02002808[];
 //extern ? gUnknown_02019C08;
 //extern ? gGameBoyPlayerEnabled;
 //extern ? gUnknown_02019C10;
-//extern ? gAutoDisplayTitlescreenMenu;
+extern s8 gAutoDisplayTitlescreenMenu;
 //extern ? gUnknown_0201C190;
 //extern ? gUnknown_0202BE00;
 //extern ? gUnknown_202BE24;

@@ -702,3 +702,14 @@ void sub_4C80(void)
         
     }
 }
+
+void sub_4D50(void)
+{
+    sub_02B4();
+    m4aMPlayAllStop();
+    sub_0D10();
+
+    gAutoDisplayTitlescreenMenu = 1;
+    SetMainGameState(1);
+}
+
