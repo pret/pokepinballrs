@@ -720,9 +720,9 @@ void sub_4D74(void)
         gUnknown_0201A440 = 0;
         gUnknown_0202BF0C = 0;
 
-        if (!gUnknown_0202A57C)
+        if (gUnknown_0202A57C == 0)
         {
-            if (!gUnknown_0202C5B0)
+            if (gUnknown_0202C5B0 == 0)
             {
                 if (gUnknown_02019C24 == 0)
                 {
