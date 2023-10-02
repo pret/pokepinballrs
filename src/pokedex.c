@@ -713,3 +713,44 @@ void sub_4D50(void)
     SetMainGameState(1);
 }
 
+void sub_4D74(void)
+{
+    if (gUnknown_0202C58C == 0)
+    {
+        gUnknown_0201A440 = 0;
+        gUnknown_0202BF0C = 0;
+
+        if (!gUnknown_0202A57C)
+        {
+            if (!gUnknown_0202C5B0)
+            {
+                if (gUnknown_02019C24 == 0)
+                {
+                    gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
+                    gUnknown_0202ADE0 = gUnknown_0202A574 - 1;
+                    gUnknown_0202A57C = 4;
+                    m4aSongNumStart(0x67);
+                }
+            }
+            else
+            {
+                gUnknown_0202C5B0--;
+                gUnknown_0202ADE0--;
+                m4aSongNumStart(0x67);
+            }
+            
+            gUnknown_0202C58C = 9;
+        }
+        else
+        {
+            m4aSongNumStart(0x67);
+            gUnknown_0202A57C--;
+            gUnknown_0202ADE0--;
+            
+            gUnknown_0202C58C = 9;
+        }
+        
+        gUnknown_02019C24 = 1;
+    }
+}
+
