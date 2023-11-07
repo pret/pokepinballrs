@@ -646,7 +646,7 @@ void sub_4BB4(void)
             {
                 gUnknown_0202A1C0[index] = gUnknown_0202A390[index];
             }
-            for(index = 0; index < 0xCD; index++)
+            for(index = 0; index < NUM_SPECIES; index++)
             {
                     gMain_saveData.pokedexFlags[index] = gUnknown_0202A1C0[index];
             }
