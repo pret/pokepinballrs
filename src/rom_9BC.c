@@ -2,7 +2,7 @@
 #include "functions.h"
 
 extern u32 gUnknown_0202ADD0;
-extern u16 gUnknown_0201A444;
+extern s16 gUnknown_0201A444;
 extern u32 gUnknown_0202BDF0;
 extern u8 gUnknown_0201C1AC;
 extern u8 gUnknown_0202ADDC;

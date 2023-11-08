@@ -59,7 +59,7 @@ extern u8 gUnknown_02002808[];
 //extern ? gUnknown_02019C08;
 //extern ? gGameBoyPlayerEnabled;
 //extern ? gUnknown_02019C10;
-//extern ? gAutoDisplayTitlescreenMenu;
+extern s8 gAutoDisplayTitlescreenMenu;
 //extern ? gUnknown_0201C190;
 //extern ? gUnknown_0202BE00;
 //extern ? gUnknown_202BE24;
@@ -236,13 +236,26 @@ extern s16 gUnknown_0202A1C0[];
 extern s16 gUnknown_0202A390[];
 extern s16 gUnknown_0202A574;
 
+extern u16 gUnknown_0805C800[0x20];
 extern u16 gUnknown_0805C840[];
 extern u16 gUnknown_0805C780[];
 extern u16 gUnknown_0805C7C0[];
-extern u8 gUnknown_0202A590[];
+extern u16 gUnknown_0202A590[];
 extern u16 gUnknown_08086B40[];
 extern s16 gUnknown_086A61BC[];
+extern u8 gUnknown_0201B124;
 
 extern struct PokemonSpecies gUnknown_086A3700[];
+
+extern u32 gUnknown_0202ADD0;
+extern u32 gUnknown_0202BEC8;
+extern u32 gUnknown_0202C5F0;
+extern u32 gUnknown_0201A4D0;
+extern u32 gUnknown_0202BDF0;
+extern u8 gUnknown_0201C1AC;
+extern u8 gUnknown_0202ADDC;
+extern u16 gUnknown_0201A510;
+extern s16 gUnknown_0201A444;
+extern s8 gUnknown_0201B128;
 
 #endif  // GUARD_VARIABLES_H

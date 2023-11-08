@@ -14,6 +14,8 @@ void sub_4D74(void);
 void sub_4FC8(void);
 void sub_5064(void);
 void sub_51CC(void);
+s16 sub_5EA4(void); // TODO Pretty sure it's s16, but could be u16
+void sub_5EC8(void);
 void sub_70E0(s16, s32);
 void sub_88E4(void);
 
@@ -69,7 +71,8 @@ void LoadPokedexGraphics(void)
     m4aSongNumStart(MUS_POKEDEX);
 }
 
-void sub_3FAC(void) {
+void sub_3FAC(void)
+{
     s32 i;
     
     gUnknown_0202ADE0 = 0;
@@ -147,7 +150,8 @@ void sub_3FAC(void) {
     }
 }
 
-void sub_4150(void) {
+void sub_4150(void)
+{
     if (gMain.heldKeys & SELECT_BUTTON)
     {
         gUnknown_0202BF04 = 0;
@@ -288,7 +292,8 @@ void sub_4150(void) {
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 }
 
-void sub_43D4(void) {
+void sub_43D4(void)
+{
     sub_5174();
     gUnknown_0202A588 = 0;
 
@@ -302,7 +307,8 @@ void sub_43D4(void) {
     gMain.subState = 1;
 }
 
-void sub_4428(void) {
+void sub_4428(void)
+{
     s32 i;
 
     for (i = 0; i < 0x20; i++)
@@ -338,7 +344,8 @@ void sub_4428(void) {
     
 }
 
-void sub_45A4(void) {
+void sub_45A4(void)
+{
     u16 var0;
     
     if (gUnknown_0202C5E8 < 0x51)
@@ -471,3 +478,279 @@ void sub_45A4(void) {
 
     sub_51FC();
 }
+
+void sub_4860(void)
+{
+    s32 i;
+    
+    for (i = 0; i < 0x20; i++)
+    {
+        gUnknown_02019C40[0x20 * (0x11 - gUnknown_0202A558) + i] = gUnknown_0805C7C0[i];
+        gUnknown_02019C40[0x20 * (0x12 - gUnknown_0202A558) + i] = gUnknown_0805C800[i];
+    }
+
+    if (gUnknown_0202A558 < 8)
+    {
+        for (i = 0; i < 0x20; i++)
+        {
+            gUnknown_03005C00[0x20 * (0x11 - gUnknown_0202A558) + i] = gUnknown_0202A590[0x20 * (0x7 - gUnknown_0202A558) + i];
+        }
+    }
+    gUnknown_0202A558++;
+
+    gUnknown_02019C40[0x134] = 0x59;
+    DmaCopy16(3, gUnknown_02019C40, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+
+    if (gUnknown_0202A558 > 8)
+    {
+        gUnknown_0202A558 = 0;
+        gUnknown_0202A588 = 0;
+        gUnknown_0202BF04 = 1;
+
+        DmaFill16(3, 0, (void *)gUnknown_03000000, 0x1800);
+        DmaFill16(3, 0, (void *)0x6005C00, 0x1800);
+        gMain.subState = 1;
+    }
+}
+
+void sub_49A8(void)
+{
+    sub_19B4();
+    sub_5E60();
+    gUnknown_0201B124 = 0;
+    sub_599C();
+    gMain.subState = 7;
+}
+
+void sub_49D0(void)
+{
+    s16 var0;
+    
+    sub_599C();
+
+    if (gMain.newKeys & B_BUTTON)
+    {
+        m4aSongNumStart(0x66);
+        gUnknown_0202BEC4 = 0;
+        gUnknown_0202BEFC = 0;
+        gUnknown_0202BF04 = 1;
+        gUnknown_0202A588 = 1;
+        sub_2568();
+        gMain.subState = 1;
+    }
+    else
+    {
+        gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, &gUnknown_0202C5F0, &gUnknown_0201A4D0);
+        gUnknown_0202BDF0 = gUnknown_0202ADD0 & 3;
+        gUnknown_0201C1AC = (gUnknown_0202ADD0 & 0x1C) >> 2;
+        gUnknown_0202ADDC = (gUnknown_0202ADD0 & 0xe00) >> 9;
+
+        if ((gUnknown_0202ADD0 & 0x40) && (gUnknown_0202BDF0 < 2))
+        {
+            sub_5EC8();
+
+            if (!(gUnknown_0202ADD0 & 0x100))
+            {
+                var0 = sub_5EA4();
+                if (var0 == -1)
+                {
+                    gMain.subState = 9;
+                }
+                else if (var0 == 1)
+                {
+                    gUnknown_0202BEFC = 2;
+                    gMain.subState = 8;
+                    m4aSongNumStart(0x8A);
+                }
+            }
+
+            gUnknown_0201A510++;
+
+            if ((gUnknown_0202ADD0 & 0x7f0000) && (gUnknown_0201B128 == -1))
+            {
+                gUnknown_0201A444++;
+                if (0xB4 < gUnknown_0201A444)
+                {
+                    gUnknown_0202BEFC = 2;
+                    gMain.subState = 8;
+                    m4aSongNumStart(0x8a);
+                }
+            }
+        }
+    }
+}
+
+void sub_4B10(void)
+{
+    gUnknown_0201A444++;
+    
+    if (2 < gUnknown_0201A444) {
+        gUnknown_0201A444 = 0;
+        gMain.subState = 6;
+    }
+}
+
+void sub_4B34(void)
+{
+    s32 iVar1;
+    
+    sub_599C();
+    gUnknown_0201B120++;
+
+    if (0x5A < gUnknown_0201B120)
+    {
+        gUnknown_0201B120 = 0;
+        gUnknown_0202BEC4 = 0;
+        gUnknown_0202BEFC = 0;
+        gUnknown_0202BF04 = 1;
+        gUnknown_0202A588 = 1;
+        
+        sub_2568();
+        sub_1AA4();
+
+        for(iVar1 = 0; iVar1 < 0xE1; iVar1++)
+        {
+            gUnknown_0202A390[iVar1] = gUnknown_0202A1C0[iVar1];
+        }
+        
+        sub_02B4();
+        m4aMPlayAllStop();
+        sub_0D10();
+        gMain.subState = 0;
+    }
+}
+
+void sub_4BB4(void)
+{
+    s32 index;
+    
+    sub_599C();
+    switch(gUnknown_0201B120)
+    {
+        case 0x4:
+            sub_2568();
+            sub_1AA4();
+            break;
+        case 0x82:
+            gUnknown_0202BEFC = 3;
+            m4aSongNumStart(0x65);
+            break;
+        case 0xFA:
+            gUnknown_0201B120 = 0;
+            gUnknown_0202BEC4 = 0;
+            gUnknown_0202BEFC = 0;
+            gUnknown_0202BF04 = 1; 
+            gUnknown_0202A588 = 1;
+            for(index = 0; index < 0xE1; index++)
+            {
+                gUnknown_0202A1C0[index] = gUnknown_0202A390[index];
+            }
+            for(index = 0; index < NUM_SPECIES; index++)
+            {
+                    gMain_saveData.pokedexFlags[index] = gUnknown_0202A1C0[index];
+            }
+            SaveFile_WriteToSram();
+            sub_02B4();
+            m4aMPlayAllStop();
+            sub_0D10();
+            gMain.subState = 0;
+            break;
+    }
+    gUnknown_0201B120 += 1;
+}
+
+void sub_4C80(void)
+{
+    s32 i;
+    
+    sub_51FC();
+
+    if (gMain.newKeys & A_BUTTON)
+    {
+        m4aSongNumStart(0x65);
+        for (i = 0; i < 0xE1; i++)
+        {
+            gUnknown_0202A390[i] = 0;
+            gUnknown_0202A1C0[i] = 0;
+        }
+        for (i = 0; i < NUM_SPECIES; i++)
+        {
+            gMain_saveData.pokedexFlags[i] = gUnknown_0202A1C0[i];
+        }
+
+        gUnknown_0202BEC4 = 0;
+        gUnknown_0202BEFC = 0;
+        gUnknown_0202BF04 = 1;
+        gUnknown_0202A588 = 1;
+
+        SaveFile_WriteToSram();
+        sub_02B4();
+        m4aMPlayAllStop();
+        sub_0D10();
+        gMain.subState = 0;
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        m4aSongNumStart(0x66);
+        gUnknown_0202BEC4 = 0;
+        gUnknown_0202BEFC = 0;
+        gUnknown_0202BF04 = 1;
+        gUnknown_0202A588 = 1;
+        gMain.subState = 1;
+        
+        
+    }
+}
+
+void sub_4D50(void)
+{
+    sub_02B4();
+    m4aMPlayAllStop();
+    sub_0D10();
+
+    gAutoDisplayTitlescreenMenu = 1;
+    SetMainGameState(1);
+}
+
+void sub_4D74(void)
+{
+    if (gUnknown_0202C58C == 0)
+    {
+        gUnknown_0201A440 = 0;
+        gUnknown_0202BF0C = 0;
+
+        if (gUnknown_0202A57C == 0)
+        {
+            if (gUnknown_0202C5B0 == 0)
+            {
+                if (gUnknown_02019C24 == 0)
+                {
+                    gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
+                    gUnknown_0202ADE0 = gUnknown_0202A574 - 1;
+                    gUnknown_0202A57C = 4;
+                    m4aSongNumStart(0x67);
+                }
+            }
+            else
+            {
+                gUnknown_0202C5B0--;
+                gUnknown_0202ADE0--;
+                m4aSongNumStart(0x67);
+            }
+            
+            gUnknown_0202C58C = 9;
+        }
+        else
+        {
+            m4aSongNumStart(0x67);
+            gUnknown_0202A57C--;
+            gUnknown_0202ADE0--;
+            
+            gUnknown_0202C58C = 9;
+        }
+        
+        gUnknown_02019C24 = 1;
+    }
+}
+
