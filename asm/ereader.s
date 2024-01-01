@@ -4,36 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_377C
-sub_377C: @ 0x0800377C
-	push {r4, r5, r6, r7, lr}
-	movs r1, #0
-	ldr r7, _080037AC @ =gUnknown_03001800
-_08003782:
-	movs r5, #0
-	lsls r0, r1, #0xb
-	adds r6, r1, #1
-	adds r4, r7, r0
-_0800378A:
-	ldr r0, _080037B0 @ =gUnknown_080ACC60
-	adds r1, r4, #0
-	movs r2, #1
-	movs r3, #2
-	bl sub_10708
-	adds r4, #0x20
-	adds r5, #1
-	cmp r5, #0x17
-	ble _0800378A
-	adds r1, r6, #0
-	cmp r1, #2
-	ble _08003782
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080037AC: .4byte gUnknown_03001800
-_080037B0: .4byte gUnknown_080ACC60
-
 	thumb_func_start sub_37B4
 sub_37B4: @ 0x080037B4
 	push {r4, r5, r6, r7, lr}

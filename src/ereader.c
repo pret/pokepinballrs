@@ -5,6 +5,7 @@
 #include "main.h"
 #include "m4a.h"
 #include "titlescreen.h"
+#include "variables.h"
 
 extern StateFunc gEReaderStateFuncs[11];
 extern s8 gUnknown_0202C604;
@@ -413,4 +414,18 @@ void sub_374C(void)
     sub_0D10();
     gAutoDisplayTitlescreenMenu = 1;
     SetMainGameState(gUnknown_0202BEF8);
+}
+
+void sub_377C(void)
+{
+    s32 iVar2;
+    s32 iVar4;
+  
+    for(iVar2 = 0; iVar2 < 3; iVar2++)
+    {
+        for(iVar4 = 0; iVar4 < 0x18; iVar4++)
+        {
+            sub_10708(gUnknown_080ACC60, &gUnknown_03001800[iVar2][iVar4*0x20], 1, 2);
+        }
+    }
 }
