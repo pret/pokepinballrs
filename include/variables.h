@@ -106,6 +106,7 @@ extern const IntrFunc gIntrTableTemplate[14];
 //extern ? gUnknown_086A4C18;
 //extern ? gUnknown_086A4C2C;
 extern const int *gUnknown_086A4C44[];
+extern const u16 gUnknown_086A4CF8[][3][0x18];
 extern const s16 gUnknown_086A964C[];
 extern const s8 gUnknown_086A9662[];
 extern const s8 gUnknown_086A9666[6][2];

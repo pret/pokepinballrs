@@ -429,3 +429,18 @@ void sub_377C(void)
         }
     }
 }
+
+void sub_37B4(s8 arg0) {
+    s32 iVar4;
+    s32 iVar3;
+
+    for (iVar4 = 0; iVar4 < 3; iVar4++)
+    {
+        for (iVar3 = 0; iVar3 < 0x18; iVar3++)
+        {
+            //gUnknown_086A4CF8[arg0][iVar4][iVar3] += 1; // Completely incorrect line
+            sub_10708(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][iVar4][iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
+        }
+    }
+    
+}

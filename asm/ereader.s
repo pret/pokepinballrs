@@ -4,64 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_37B4
-sub_37B4: @ 0x080037B4
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	movs r2, #0
-	lsls r0, r0, #0x18
-	ldr r1, _08003818 @ =gUnknown_086A4CF8
-	mov sb, r1
-	asrs r0, r0, #0x18
-	lsls r1, r0, #3
-	adds r1, r1, r0
-	lsls r1, r1, #4
-	mov r8, r1
-_080037CE:
-	movs r5, #0
-	lsls r1, r2, #1
-	lsls r6, r2, #0xb
-	adds r7, r2, #1
-	adds r1, r1, r2
-	lsls r1, r1, #4
-	mov r0, r8
-	add r0, sb
-	adds r4, r1, r0
-_080037E0:
-	ldrh r1, [r4]
-	ldr r2, _0800381C @ =0x0000FFF0
-	adds r0, r2, #0
-	ands r0, r1
-	ldr r1, _08003820 @ =gUnknown_080ACC60
-	adds r0, r0, r1
-	lsls r1, r5, #5
-	ldr r2, _08003824 @ =gUnknown_03001800
-	adds r1, r1, r2
-	adds r1, r6, r1
-	movs r2, #1
-	movs r3, #2
-	bl sub_10708
-	adds r4, #2
-	adds r5, #1
-	cmp r5, #0x17
-	ble _080037E0
-	adds r2, r7, #0
-	cmp r2, #2
-	ble _080037CE
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08003818: .4byte gUnknown_086A4CF8
-_0800381C: .4byte 0x0000FFF0
-_08003820: .4byte gUnknown_080ACC60
-_08003824: .4byte gUnknown_03001800
-
 	thumb_func_start sub_3828
 sub_3828: @ 0x08003828
 	push {r4, r5, r6, lr}
