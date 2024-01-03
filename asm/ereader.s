@@ -4,44 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_38A0
-sub_38A0: @ 0x080038A0
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	adds r6, r1, #0
-	lsls r6, r6, #0x10
-	lsrs r6, r6, #0x10
-	lsls r5, r5, #0x18
-	asrs r5, r5, #0x18
-	adds r0, r5, #0
-	movs r1, #0x18
-	bl __divsi3
-	adds r4, r0, #0
-	lsls r4, r4, #0x18
-	asrs r4, r4, #0x18
-	adds r0, r5, #0
-	movs r1, #0x18
-	bl __modsi3
-	lsls r0, r0, #0x18
-	ldr r1, _080038E8 @ =gUnknown_080ACC60
-	adds r6, r6, r1
-	lsls r4, r4, #0xb
-	asrs r0, r0, #0x13
-	ldr r1, _080038EC @ =gUnknown_03001800
-	adds r0, r0, r1
-	adds r4, r4, r0
-	adds r0, r6, #0
-	adds r1, r4, #0
-	movs r2, #1
-	movs r3, #2
-	bl sub_10708
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080038E8: .4byte gUnknown_080ACC60
-_080038EC: .4byte gUnknown_03001800
-
 	thumb_func_start GetEReaderCardIndex
 GetEReaderCardIndex: @ 0x080038F0
 	ldr r0, _08003900 @ =gUnknown_0202BEEC

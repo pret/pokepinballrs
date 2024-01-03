@@ -451,3 +451,11 @@ void sub_3828(s8 arg0, s8 arg1)
 
     sub_10708(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
 }
+
+void sub_38A0(s8 arg0, u16 arg1)
+{
+    s32 quotient = arg0 / 0x18;
+    s32 remainder = arg0 % 0x18;
+
+    sub_10708(gUnknown_080ACC60 + arg1, &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
+}
