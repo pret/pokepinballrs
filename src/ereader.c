@@ -459,3 +459,33 @@ void sub_38A0(s8 arg0, u16 arg1)
 
     sub_10708(gUnknown_080ACC60 + arg1, &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
 }
+
+s16 GetEReaderCardIndex(void)
+{
+    s32 uVar1;
+    
+    if (gUnknown_0202BEEC == 0x1f52)
+    {
+        return 0;
+    }
+    else if (gUnknown_0202BEEC == 0x3e1a)
+    {
+        return 1;
+    }
+    else if (gUnknown_0202BEEC == 0x25af)
+    {
+        return 2;
+    }
+    else if (gUnknown_0202BEEC == 0x4a09)
+    {
+        return 3;
+    }
+    else if (gUnknown_0202BEEC == 0x6b12)
+    {
+        return 4;
+    }
+    else
+    {
+        return -1;
+    }
+}

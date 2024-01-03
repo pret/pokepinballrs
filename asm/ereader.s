@@ -4,57 +4,6 @@
 
 	.text
 
-	thumb_func_start GetEReaderCardIndex
-GetEReaderCardIndex: @ 0x080038F0
-	ldr r0, _08003900 @ =gUnknown_0202BEEC
-	movs r2, #0
-	ldrsh r1, [r0, r2]
-	ldr r0, _08003904 @ =0x00001F52
-	cmp r1, r0
-	bne _08003908
-	movs r0, #0
-	b _0800394A
-	.align 2, 0
-_08003900: .4byte gUnknown_0202BEEC
-_08003904: .4byte 0x00001F52
-_08003908:
-	ldr r0, _08003914 @ =0x00003E1A
-	cmp r1, r0
-	bne _08003918
-	movs r0, #1
-	b _0800394A
-	.align 2, 0
-_08003914: .4byte 0x00003E1A
-_08003918:
-	ldr r0, _08003924 @ =0x000025AF
-	cmp r1, r0
-	bne _08003928
-	movs r0, #2
-	b _0800394A
-	.align 2, 0
-_08003924: .4byte 0x000025AF
-_08003928:
-	ldr r0, _08003934 @ =0x00004A09
-	cmp r1, r0
-	bne _08003938
-	movs r0, #3
-	b _0800394A
-	.align 2, 0
-_08003934: .4byte 0x00004A09
-_08003938:
-	ldr r0, _08003944 @ =0x00006B12
-	cmp r1, r0
-	beq _08003948
-	movs r0, #1
-	rsbs r0, r0, #0
-	b _0800394A
-	.align 2, 0
-_08003944: .4byte 0x00006B12
-_08003948:
-	movs r0, #4
-_0800394A:
-	bx lr
-
 	thumb_func_start sub_394C
 sub_394C: @ 0x0800394C
 	push {r4, r5, r6, r7, lr}

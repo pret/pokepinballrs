@@ -64,6 +64,7 @@ extern s8 gAutoDisplayTitlescreenMenu;
 //extern ? gUnknown_0201C190;
 //extern ? gUnknown_0202BE00;
 //extern ? gUnknown_202BE24;
+extern s16 gUnknown_0202BEEC;
 //extern ? gUnknown_0202C588;
 //extern ? gUnknown_020314E0;
 //extern ? gUnknown_02031520;
