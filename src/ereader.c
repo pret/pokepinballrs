@@ -438,8 +438,14 @@ void sub_37B4(s8 arg0) {
     {
         for (iVar3 = 0; iVar3 < 0x18; iVar3++)
         {
-            sub_10708(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][iVar4][iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
+            sub_10708(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
         }
     }
-    
+}
+
+void sub_3828(s8 arg0, s8 arg1) {
+    s32 quotient = arg1 / 0x18;
+    s32 remainder = arg1 % 0x18;
+
+    sub_10708(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
 }
