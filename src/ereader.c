@@ -430,7 +430,8 @@ void sub_377C(void)
     }
 }
 
-void sub_37B4(s8 arg0) {
+void sub_37B4(s8 arg0)
+{
     s32 iVar4;
     s32 iVar3;
 
@@ -443,7 +444,8 @@ void sub_37B4(s8 arg0) {
     }
 }
 
-void sub_3828(s8 arg0, s8 arg1) {
+void sub_3828(s8 arg0, s8 arg1)
+{
     s32 quotient = arg1 / 0x18;
     s32 remainder = arg1 % 0x18;
 
