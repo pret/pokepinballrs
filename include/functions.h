@@ -97,9 +97,6 @@ extern void sub_304C(void);
 extern void sub_3208(void);
 extern void sub_33A0(void);
 extern void sub_343C(void);
-
-// asm/ereader.s
-
 extern void sub_35C8(void);
 extern void sub_374C(void);
 extern void sub_377C(void);
@@ -109,6 +106,9 @@ extern void sub_38A0(s8, u16);
 extern s16 GetEReaderCardIndex(void);
 extern void sub_394C(void);
 extern void sub_3AB4(void);
+
+// asm/ereader.s
+
 extern void sub_3C1C(void);
 extern void sub_3C78(void);
 extern s16 sub_3CD8(void);
@@ -814,7 +814,7 @@ extern void sub_1F5C(void);
 //extern ? sub_2338();
 //extern ? sub_2364();
 //extern ? sub_23B4();
-//extern ? sub_2414();
+extern s16 sub_2414(const struct SpriteSet *const *spriteSets, u16 numSpriteSets, struct SpriteGroup *spriteGroups);
 //extern ? nullsub_16();
 extern void sub_24DC(void);
 extern void sub_250C(void);
