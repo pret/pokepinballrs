@@ -110,7 +110,7 @@ extern void sub_3AB4(void);
 // asm/ereader.s
 
 extern void sub_3C1C(void);
-extern void sub_3C78(void);
+extern s32 sub_3C78(void);
 extern s16 sub_3CD8(void);
 
 // src/field_select.s

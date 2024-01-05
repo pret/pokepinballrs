@@ -4,56 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_3C78
-sub_3C78: @ 0x08003C78
-	ldr r0, _08003C8C @ =gUnknown_02019C20
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0
-	beq _08003C98
-	ldr r1, _08003C90 @ =gUnknown_0202C5F0
-	ldr r0, _08003C94 @ =0x0000DFDF
-	strh r0, [r1]
-	b _08003CD0
-	.align 2, 0
-_08003C8C: .4byte gUnknown_02019C20
-_08003C90: .4byte gUnknown_0202C5F0
-_08003C94: .4byte 0x0000DFDF
-_08003C98:
-	ldr r3, _08003CB4 @ =gUnknown_0202ADE8
-	movs r1, #0
-	ldrsb r1, [r3, r1]
-	movs r0, #1
-	rsbs r0, r0, #0
-	cmp r1, r0
-	bne _08003CC0
-	ldr r0, _08003CB8 @ =gUnknown_0202C5F0
-	movs r2, #0
-	ldr r1, _08003CBC @ =0x0000CDFE
-	strh r1, [r0]
-	strb r2, [r3]
-	b _08003CD0
-	.align 2, 0
-_08003CB4: .4byte gUnknown_0202ADE8
-_08003CB8: .4byte gUnknown_0202C5F0
-_08003CBC: .4byte 0x0000CDFE
-_08003CC0:
-	ldr r1, _08003CD4 @ =gUnknown_0202C5F0
-	movs r2, #0
-	adds r0, r1, #0
-	adds r0, #0xe
-_08003CC8:
-	strh r2, [r0]
-	subs r0, #2
-	cmp r0, r1
-	bge _08003CC8
-_08003CD0:
-	movs r0, #0
-	bx lr
-	.align 2, 0
-_08003CD4: .4byte gUnknown_0202C5F0
-
 	thumb_func_start sub_3CD8
 sub_3CD8: @ 0x08003CD8
 	push {r4, lr}

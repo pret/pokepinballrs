@@ -615,3 +615,30 @@ void sub_3C1C(void)
         }
     }
 }
+
+s32 sub_3C78(void)
+{
+    s32 i;
+    
+    if (gUnknown_02019C20)
+    {
+        gUnknown_0202C5F0[0] = 0xDFDF;
+    }
+    else
+    {
+        if (gUnknown_0202ADE8 == -1)
+        {
+            gUnknown_0202C5F0[0] = 0xCDFE;
+            gUnknown_0202ADE8 = 0;
+        }
+        else
+        {
+            for (i = 0; i < 8; i++)
+            {
+                gUnknown_0202C5F0[i] = 0;
+            }
+        }
+    }
+
+    return 0;
+}
