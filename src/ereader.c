@@ -25,8 +25,8 @@ extern s8 gUnknown_0202BEF8;
 extern u8 gUnknown_0201B124;
 extern u32 gUnknown_0202ADD0;
 extern u32 gUnknown_0202BEC8;
-extern u32 gUnknown_0202C5F0;
-extern u32 gUnknown_0201A4D0;
+extern s16 gUnknown_0202C5F0[];
+extern s16 gUnknown_0201A4D0[][2];
 extern u32 gUnknown_0202BDF0;
 extern u8 gUnknown_0201C1AC;
 extern u8 gUnknown_0202ADDC;
@@ -48,7 +48,7 @@ extern u8 gUnknown_080897E0[];
 extern u8 gUnknown_0807FD00[];
 extern s16 gUnknown_086A550C[];
 
-s32 sub_1B04(u32 *, u32 *, u32 *);
+s32 sub_1B04(u32 *, s16[], s16[][]);
 
 void EReaderMain(void)
 {
@@ -187,7 +187,7 @@ void sub_304C(void)
         sub_0D10();
         gMain.subState = 0;
     }
-    gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, &gUnknown_0202C5F0, &gUnknown_0201A4D0);
+    gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
     gUnknown_0202BDF0 = gUnknown_0202ADD0 & 3;
     gUnknown_0201C1AC = ((gUnknown_0202ADD0 & 0x1c) >> 2);
     gUnknown_0202ADDC = ((gUnknown_0202ADD0 & 0xe00) >> 9);
@@ -591,4 +591,27 @@ void sub_3AB4(void) {
 
     puVar9->available = 0;
     puVar5->available = 0;
+}
+
+void sub_3C1C(void)
+{
+    s32 i;
+    s32 j;
+    
+    gUnknown_0202A564 = 0;
+    gUnknown_02019C20 = 0;
+    gUnknown_0202ADE8 = 0;
+
+    for (i = 0; i < 0x8; i++)
+    {
+        gUnknown_0202C5F0[i] = 0;
+    }
+
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 8; j++)
+        {
+            gUnknown_0201A4D0[j][i] = 0;
+        }
+    }
 }

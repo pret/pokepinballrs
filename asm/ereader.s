@@ -4,53 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_3C1C
-sub_3C1C: @ 0x08003C1C
-	push {r4, lr}
-	ldr r0, _08003C64 @ =gUnknown_0202A564
-	movs r1, #0
-	strb r1, [r0]
-	ldr r0, _08003C68 @ =gUnknown_02019C20
-	strb r1, [r0]
-	ldr r0, _08003C6C @ =gUnknown_0202ADE8
-	strb r1, [r0]
-	ldr r1, _08003C70 @ =gUnknown_0202C5F0
-	movs r2, #0
-	adds r0, r1, #0
-	adds r0, #0xe
-_08003C34:
-	strh r2, [r0]
-	subs r0, #2
-	cmp r0, r1
-	bge _08003C34
-	movs r1, #0
-	ldr r4, _08003C74 @ =gUnknown_0201A4D0
-	movs r3, #0
-_08003C42:
-	lsls r0, r1, #1
-	adds r2, r1, #1
-	movs r1, #7
-	adds r0, r0, r4
-	adds r0, #0x1c
-_08003C4C:
-	strh r3, [r0]
-	subs r0, #4
-	subs r1, #1
-	cmp r1, #0
-	bge _08003C4C
-	adds r1, r2, #0
-	cmp r1, #1
-	ble _08003C42
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08003C64: .4byte gUnknown_0202A564
-_08003C68: .4byte gUnknown_02019C20
-_08003C6C: .4byte gUnknown_0202ADE8
-_08003C70: .4byte gUnknown_0202C5F0
-_08003C74: .4byte gUnknown_0201A4D0
-
 	thumb_func_start sub_3C78
 sub_3C78: @ 0x08003C78
 	ldr r0, _08003C8C @ =gUnknown_02019C20
