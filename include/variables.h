@@ -250,6 +250,7 @@ extern s16 gUnknown_086A61BC[];
 extern u8 gUnknown_0201B124;
 
 extern struct PokemonSpecies gUnknown_086A3700[];
+extern const struct SpriteSet * const gUnknown_086A54D8[13];
 
 extern u32 gUnknown_0202ADD0;
 extern u32 gUnknown_0202BEC8;

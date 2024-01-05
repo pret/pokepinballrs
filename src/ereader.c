@@ -14,8 +14,8 @@ extern s8 gUnknown_0202C5A4;
 extern s8 gUnknown_0202AD90;
 
 extern s8 gUnknown_0202A58C;
-extern u8 gUnknown_0202C584;
-extern u8 gUnknown_0202BEC0;
+extern s8 gUnknown_0202C584;
+extern s8 gUnknown_0202BEC0;
 extern s8 gUnknown_0201B174;
 extern s16 gUnknown_0202C5A0;
 extern s16 gUnknown_0201A44C;
@@ -488,4 +488,56 @@ s16 GetEReaderCardIndex(void)
     {
         return -1;
     }
+}
+
+void sub_394C(void)
+{
+    struct SpriteGroup *puVar9;
+    struct SpriteGroup *puVar5;
+    s32 iVar7;
+    const struct SpriteSet *puVar8;
+    struct OamDataSimple *test2;
+    
+    puVar9 = &gUnknown_0200B3B8[gUnknown_0202A58C];
+    puVar5 = &gUnknown_0200B3B8[gUnknown_0202BEC0];
+    puVar9->available = gUnknown_0202C584;
+    puVar5->available = 1;
+    LoadSpriteSets(gUnknown_086A54D8, 13, gUnknown_0200B3B8);
+
+    if (puVar9->available == 1)
+    {
+        if (gUnknown_0202A58C == 0)
+        {
+            puVar9->baseX = 0x78;
+            puVar9->baseY = 100;
+        }
+        else
+        {
+            puVar9->baseX = 0x78;
+            puVar9->baseY = 0x50;
+        }
+
+        puVar8 = gUnknown_086A54D8[gUnknown_0202A58C];
+
+        for (iVar7 = 0; iVar7 < puVar8->count; iVar7++)
+        {
+            test2 = &puVar9->oam[iVar7];
+            gOamBuffer[test2->oamId].x = test2->xOffset + puVar9->baseX;
+            gOamBuffer[test2->oamId].y = test2->yOffset + puVar9->baseY;
+        }
+    }
+
+    puVar5->baseX = 0x78;
+    puVar5->baseY = 0x18;
+    puVar8 = gUnknown_086A54D8[gUnknown_0202BEC0];
+
+    for (iVar7 = 0; iVar7 < puVar8->count; iVar7++)
+    {
+        test2 = &puVar5->oam[iVar7];
+        gOamBuffer[test2->oamId].x = test2->xOffset + puVar5->baseX;
+        gOamBuffer[test2->oamId].y = test2->yOffset + puVar5->baseY;
+    }
+
+    puVar9->available = 0;
+    puVar5->available = 0;
 }
