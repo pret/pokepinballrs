@@ -255,7 +255,7 @@ extern const struct SpriteSet * const gUnknown_086A54D8[13];
 extern u32 gUnknown_0202ADD0;
 extern u32 gUnknown_0202BEC8;
 extern s16 gUnknown_0202C5F0[];
-extern s16 gUnknown_0201A4D0[][2];
+extern u16 gUnknown_0201A4D0[][2];
 extern u32 gUnknown_0202BDF0;
 extern u8 gUnknown_0201C1AC;
 extern u8 gUnknown_0202ADDC;

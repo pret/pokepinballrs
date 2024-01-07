@@ -26,7 +26,7 @@ extern u8 gUnknown_0201B124;
 extern u32 gUnknown_0202ADD0;
 extern u32 gUnknown_0202BEC8;
 extern s16 gUnknown_0202C5F0[];
-extern s16 gUnknown_0201A4D0[][2];
+extern u16 gUnknown_0201A4D0[][2];
 extern u32 gUnknown_0202BDF0;
 extern u8 gUnknown_0201C1AC;
 extern u8 gUnknown_0202ADDC;
@@ -48,7 +48,7 @@ extern u8 gUnknown_080897E0[];
 extern u8 gUnknown_0807FD00[];
 extern s16 gUnknown_086A550C[];
 
-s32 sub_1B04(u32 *, s16[], s16[][]);
+s32 sub_1B04(u32 *, s16[], u16[][]);
 
 void EReaderMain(void)
 {
@@ -642,3 +642,61 @@ s32 sub_3C78(void)
 
     return 0;
 }
+
+s16 sub_3CD8(void)
+{
+    s32 i;
+    s32 j;
+
+    if (!(gMain.newKeys & A_BUTTON))
+    {
+        // TODO I can buy goto end being the actual label, but there is no way they wrote this segment like this 
+        goto fakematch;
+    }
+    if (gUnknown_0202A564 == 0)
+    {
+        gUnknown_0202A564 = -1;
+        gUnknown_0202ADE8 = -1;
+        gUnknown_0202A58C = 1;
+
+        fakematch:
+        if (gUnknown_0202A564 == 0) {
+            goto end;
+        }
+    }
+    
+    if (gUnknown_02019C20 == 0)
+    {
+        if (gUnknown_0201A4D0[0][0] == 0xFEDC)
+        {
+            gUnknown_0202BEEC = gUnknown_0201A4D0[1][0];
+            gUnknown_02019C20 = -1;
+        }
+        else if (gUnknown_0201A4D0[0][1] == 0xFEDC)
+        {
+            gUnknown_0202BEEC = gUnknown_0201A4D0[1][1];
+            gUnknown_02019C20 = -1;
+        }
+    }
+    else
+    {
+        for (i = 0; i < 2; i++)
+        {
+            if (gUnknown_0201A4D0[0][i] == 0xDFDF)
+            {
+                return -1;
+            }
+        }
+    }
+
+    end:
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 8; j++)
+        {
+            gUnknown_0201A4D0[j][i] = 0;
+        }
+    }
+    return 0;
+}
+
