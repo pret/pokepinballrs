@@ -106,9 +106,6 @@ extern void sub_38A0(s8, u16);
 extern s16 GetEReaderCardIndex(void);
 extern void sub_394C(void);
 extern void sub_3AB4(void);
-
-// asm/ereader.s
-
 extern void sub_3C1C(void);
 extern s32 sub_3C78(void);
 extern s16 sub_3CD8(void);
