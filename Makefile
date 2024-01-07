@@ -5,6 +5,12 @@ export PATH := $(TOOLCHAIN)/bin:$(PATH)
 endif
 endif
 
+COMPARE ?= 0
+
+ifeq (compare,$(MAKECMDGOALS))
+  COMPARE := 1
+endif
+
 PREFIX := arm-none-eabi-
 OBJCOPY := $(PREFIX)objcopy
 AS := $(PREFIX)as
@@ -108,10 +114,12 @@ OBJS_REL := $(patsubst $(OBJ_DIR)/%,%,$(OBJS))
 MAKEFLAGS += --no-print-directory
 
 rom: $(ROM)
+ifeq ($(COMPARE),1)
+	@$(SHA1) pokepinballrs.sha1
+endif
 
 # For contributors to make sure a change didn't affect the contents of the ROM.
-compare: $(ROM)
-	@$(SHA1) pokepinballrs.sha1
+compare: rom
 
 clean: tidy clean-tools
 	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
@@ -143,7 +151,6 @@ include graphics_rules.mk
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
 
-# TODO: these "match" under old_agbcc, but the true compiler is agbcc -fprologue-bugfix
 $(C_BUILDDIR)/m4a.o: CFLAGS := -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
 $(C_BUILDDIR)/m4a.o: CC1 := tools/agbcc/bin/old_agbcc
 

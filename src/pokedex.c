@@ -541,7 +541,7 @@ void sub_49D0(void)
     }
     else
     {
-        gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, &gUnknown_0202C5F0, &gUnknown_0201A4D0);
+        gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
         gUnknown_0202BDF0 = gUnknown_0202ADD0 & 3;
         gUnknown_0201C1AC = (gUnknown_0202ADD0 & 0x1C) >> 2;
         gUnknown_0202ADDC = (gUnknown_0202ADD0 & 0xe00) >> 9;

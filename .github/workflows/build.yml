@@ -33,7 +33,7 @@ jobs:
           dd if=/dev/zero of=zero.gba bs=16777216 count=1
           xdelta3 -d -s zero.gba baserom.xdelta baserom.gba
 
-      - name: Build pokepinball
+      - name: Build pokepinballrs
         run: make -j$(nproc)\
       
       - name: Webhook
