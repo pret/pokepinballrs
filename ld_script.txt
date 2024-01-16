@@ -41,6 +41,7 @@ SECTIONS
         asm/pokedex.o(.text);
         src/pokedex_end.o(.text);
         src/field_select.o(.text);
+        src/intro.o(.text);
         asm/intro.o(.text);
         src/high_scores.o(.text);
         asm/high_scores.o(.text);
