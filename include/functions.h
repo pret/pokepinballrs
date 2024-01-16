@@ -168,7 +168,7 @@ extern s8 sub_FD20(void);
 extern void sub_FD5C(void (*func)(void));
 extern void sub_FE04(void (*func)(void));
 //extern ? sub_FEB8();
-//extern ? sub_FF74();
+extern void sub_FF74(void (*func)(void));
 extern void sub_1001C(int);
 //extern ? sub_10170();
 //extern ? sub_102A8();
@@ -179,25 +179,27 @@ extern void sub_1050C(void);
 //extern ? sub_10544();
 //extern ? sub_105A0();
 
+// src/intro.c
+extern void IntroMain(void);
+extern void sub_929C(void);
+extern void sub_9348(void);
+extern void sub_9370(void);
+extern void sub_938C(void);
+extern void sub_93D0(void);
+extern void sub_93F8(void);
+extern void sub_9498(void);
+extern void sub_96A8(void);
+
 // asm/intro.s
 
-//extern ? IntroMain();
-//extern ? sub_929C();
-//extern ? sub_9348();
-//extern ? sub_9370();
-//extern ? sub_938C();
-//extern ? sub_93D0();
-//extern ? sub_93F8();
-//extern ? sub_9498();
-//extern ? sub_96A8();
-//extern ? sub_978C();
-//extern ? sub_9830();
-//extern ? sub_9878();
-//extern ? sub_98B4();
-//extern ? sub_9920();
-//extern ? sub_999C();
-//extern ? sub_9AB8();
-//extern ? nullsub_4();
+extern void sub_978C(void);
+extern void sub_9830(void);
+extern void sub_9878(void);
+extern void sub_98B4(void);
+extern void sub_9920(void);
+extern void sub_999C(void);
+extern void sub_9AB8(void);
+extern void nullsub_4(void);
 //extern ? sub_9C10();
 //extern ? nullsub_5();
 //extern ? nullsub_17();
