@@ -4,41 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_9830
-sub_9830: @ 0x08009830
-	push {lr}
-	ldr r0, _08009868 @ =gUnknown_02019C30
-	ldr r2, [r0]
-	subs r2, #0x10
-	str r2, [r0]
-	ldr r1, _0800986C @ =gUnknown_0201C188
-	ldr r0, [r1]
-	subs r0, #0x10
-	str r0, [r1]
-	ldr r1, _08009870 @ =gUnknown_0201A450
-	ldrh r0, [r1]
-	subs r0, #1
-	strh r0, [r1]
-	cmp r2, #0x1f
-	bgt _0800985E
-	movs r0, #0
-	strh r0, [r1, #0xa]
-	movs r0, #0x25
-	strh r0, [r1, #8]
-	ldr r1, _08009874 @ =gUnknown_0202C790
-	ldrb r0, [r1]
-	adds r0, #1
-	strb r0, [r1]
-_0800985E:
-	bl sub_9D70
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08009868: .4byte gUnknown_02019C30
-_0800986C: .4byte gUnknown_0201C188
-_08009870: .4byte gUnknown_0201A450
-_08009874: .4byte gUnknown_0202C790
-
 	thumb_func_start sub_9878
 sub_9878: @ 0x08009878
 	push {lr}

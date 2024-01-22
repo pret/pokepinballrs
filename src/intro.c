@@ -29,7 +29,7 @@ extern s16 gUnknown_0202BF10;
 extern u8 gUnknown_0201C1B8;
 extern u8 gUnknown_0202ADD4;
 extern u16 gUnknown_0202C594;
-extern u32 gUnknown_02019C30;
+extern s32 gUnknown_02019C30;
 extern u32 gUnknown_0201C188;
 extern s16 gUnknown_0202A578;
 extern u32 gUnknown_0202BEF0;
@@ -257,4 +257,20 @@ void sub_978C(void)
             gUnknown_0202A578 = gUnknown_0202A578 + 1;
         }
     }
+}
+
+void sub_9830(void)
+{
+    gUnknown_02019C30 -= 0x10;
+    gUnknown_0201C188 -= 0x10;
+    gUnknown_0201A450.unk0--;
+
+    if (gUnknown_02019C30 < 0x20)
+    {
+        gUnknown_0201A450.unkA = 0;
+        gUnknown_0201A450.unk8 = 0x25;
+        gUnknown_0202C790++;
+    }
+
+    sub_9D70();
 }
