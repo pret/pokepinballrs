@@ -4,58 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_98B4
-sub_98B4: @ 0x080098B4
-	push {lr}
-	ldr r1, _080098F0 @ =gUnknown_0201A450
-	ldrh r2, [r1, #8]
-	movs r3, #8
-	ldrsh r0, [r1, r3]
-	cmp r0, #0x2b
-	bne _08009900
-	ldrh r0, [r1, #0xa]
-	adds r0, #1
-	strh r0, [r1, #0xa]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #1
-	ble _08009916
-	movs r0, #0
-	strb r0, [r1, #0xc]
-	ldr r0, _080098F4 @ =gIntroScene1Sprites_Pals+0x1C0
-	ldr r1, _080098F8 @ =0x050000E0
-	movs r2, #0x20
-	movs r3, #0
-	bl sub_10170
-	movs r0, #8
-	bl m4aSongNumStart
-	ldr r1, _080098FC @ =gUnknown_0202C790
-	ldrb r0, [r1]
-	adds r0, #1
-	strb r0, [r1]
-	b _08009916
-	.align 2, 0
-_080098F0: .4byte gUnknown_0201A450
-_080098F4: .4byte gIntroScene1Sprites_Pals+0x1C0
-_080098F8: .4byte 0x050000E0
-_080098FC: .4byte gUnknown_0202C790
-_08009900:
-	ldrh r0, [r1, #0xa]
-	adds r0, #1
-	strh r0, [r1, #0xa]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #1
-	ble _08009916
-	movs r0, #0
-	strh r0, [r1, #0xa]
-	adds r0, r2, #1
-	strh r0, [r1, #8]
-_08009916:
-	bl sub_9CB8
-	pop {r0}
-	bx r0
-
 	thumb_func_start sub_9920
 sub_9920: @ 0x08009920
 	push {lr}

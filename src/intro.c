@@ -289,3 +289,29 @@ void sub_9878(void)
         gUnknown_0202C790++;
     }
 }
+
+void sub_98B4(void)
+{
+    if (gUnknown_0201A450.unk8 == 0x2B)
+    {
+        gUnknown_0201A450.unkA++;
+        if (gUnknown_0201A450.unkA > 1)
+        {
+            gUnknown_0201A450.unkC = 0;
+            sub_10170(&gIntroScene1Sprites_Pals[0x1C0], BG_PLTT + 0xE0, 0x20, 0);
+            m4aSongNumStart(0x8);
+            gUnknown_0202C790++;
+        }
+    }
+    else
+    {
+        gUnknown_0201A450.unkA++;
+        if (gUnknown_0201A450.unkA > 1)
+        {
+            gUnknown_0201A450.unkA = 0;
+            gUnknown_0201A450.unk8++;
+        }
+    }
+
+    sub_9CB8();
+}
