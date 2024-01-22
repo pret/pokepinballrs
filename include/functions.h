@@ -204,7 +204,7 @@ extern void nullsub_4(void);
 //extern ? nullsub_5();
 //extern ? nullsub_17();
 //extern ? sub_9C9C();
-//extern ? sub_9CB8();
+extern void sub_9CB8(void);
 //extern ? sub_9D70();
 //extern ? sub_9E90();
 //extern ? sub_A154();

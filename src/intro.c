@@ -2,6 +2,7 @@
 #include "functions.h"
 #include "main.h"
 #include "m4a.h"
+#include "variables.h"
 #include "titlescreen.h"
 
 extern void sub_10170(u8 *, u32, u32, u32);
@@ -44,7 +45,7 @@ struct unkStruct_201A450
     u16 unk2;
     u8 fill4[0x8 - 4];
     s16 unk8;
-    u16 unkA;
+    s16 unkA;
     u8 unkC;
     u8 fillD[0x10 - 0xD];
     u16 unk10;
@@ -188,44 +189,72 @@ void sub_9498(void) {
 
 void sub_96A8(void)
 {
-  gUnknown_0201A450.unk10 = 0x78;
-  gUnknown_0201A450.unk12 = 0x50;
-  gUnknown_0201A450.unk18 = 0;
-  gUnknown_0201A450.unk1C = 1;
-  gUnknown_0201A450.unk30 = 0x9c;
-  gUnknown_0201A450.unk32 = 0x92;
-  gUnknown_0201A450.unk3C = 0;
-  gUnknown_0201A450.unk3A = 0;
-  gUnknown_0201A450.unk20 = 0x9d;
-  gUnknown_0201A450.unk22 = 0x93;
-  gUnknown_0201A450.unk2C = 0;
-  gUnknown_0201A450.unk40 = 0x80;
-  gUnknown_0201A450.unk42 = 0x80;
-  gUnknown_0201A450.unk4C = 1;
-  gUnknown_0202ADA0[0] = 0xffa8;
-  gUnknown_0202ADA0[1] = 0xffca;
-  gUnknown_0202ADA0[4] = 0;
-  gUnknown_0202ADA0[5] = 0;
-  gUnknown_0202ADA0[6] = 0x100;
-  gUnknown_0202ADA0[7] = 0;
-  gUnknown_0202ADA0[10] = 0;
-  gUnknown_0202ADA0[18] = 0xfb;
-  gUnknown_0202ADA0[19] = 0;
-  gUnknown_0202ADA0[22] = 0;
-  gUnknown_0202ADA0[12] = 0;
-  gUnknown_0202ADA0[13] = 0;
-  gUnknown_0201A450.unk0 = 0x78;
-  gUnknown_0201A450.unk2 = 0x50;
-  gUnknown_0201A450.unk8 = 0;
-  gUnknown_0201A450.unkA = 0;
-  gUnknown_0201A450.unkC = 1;
-  gUnknown_0201C1B8 = 0;
-  gUnknown_0202ADD4 = 0x10;
-  gUnknown_0202C594 = 0;
-  gUnknown_02019C30 = 0x100;
-  gUnknown_0201C188 = 0x100;
-  gUnknown_0202BF10 = 0;
-  gUnknown_0202A578 = 0;
-  gUnknown_0202BEF0 = 0x20;
-  gUnknown_0202C5A8 = 8;
+    gUnknown_0201A450.unk10 = 0x78;
+    gUnknown_0201A450.unk12 = 0x50;
+    gUnknown_0201A450.unk18 = 0;
+    gUnknown_0201A450.unk1C = 1;
+    gUnknown_0201A450.unk30 = 0x9c;
+    gUnknown_0201A450.unk32 = 0x92;
+    gUnknown_0201A450.unk3C = 0;
+    gUnknown_0201A450.unk3A = 0;
+    gUnknown_0201A450.unk20 = 0x9d;
+    gUnknown_0201A450.unk22 = 0x93;
+    gUnknown_0201A450.unk2C = 0;
+    gUnknown_0201A450.unk40 = 0x80;
+    gUnknown_0201A450.unk42 = 0x80;
+    gUnknown_0201A450.unk4C = 1;
+    gUnknown_0202ADA0[0] = 0xffa8;
+    gUnknown_0202ADA0[1] = 0xffca;
+    gUnknown_0202ADA0[4] = 0;
+    gUnknown_0202ADA0[5] = 0;
+    gUnknown_0202ADA0[6] = 0x100;
+    gUnknown_0202ADA0[7] = 0;
+    gUnknown_0202ADA0[10] = 0;
+    gUnknown_0202ADA0[18] = 0xfb;
+    gUnknown_0202ADA0[19] = 0;
+    gUnknown_0202ADA0[22] = 0;
+    gUnknown_0202ADA0[12] = 0;
+    gUnknown_0202ADA0[13] = 0;
+    gUnknown_0201A450.unk0 = 0x78;
+    gUnknown_0201A450.unk2 = 0x50;
+    gUnknown_0201A450.unk8 = 0;
+    gUnknown_0201A450.unkA = 0;
+    gUnknown_0201A450.unkC = 1;
+    gUnknown_0201C1B8 = 0;
+    gUnknown_0202ADD4 = 0x10;
+    gUnknown_0202C594 = 0;
+    gUnknown_02019C30 = 0x100;
+    gUnknown_0201C188 = 0x100;
+    gUnknown_0202BF10 = 0;
+    gUnknown_0202A578 = 0;
+    gUnknown_0202BEF0 = 0x20;
+    gUnknown_0202C5A8 = 8;
+}
+
+void sub_978C(void)
+{
+    sub_9CB8();
+    
+    if (gUnknown_0201A450.unk8 == 0x24) {
+        gUnknown_0201A450.unkA = gUnknown_0201A450.unkA + 1;
+        
+        if (0x1b < gUnknown_0201A450.unkA) {
+            gUnknown_0201A450.unkA = 0;
+            gUnknown_0202A578 = 0;
+            gUnknown_0202C790++;
+        }
+    }
+    else {
+        gUnknown_0201A450.unkA = gUnknown_0201A450.unkA + 1;
+        
+        if (1 < gUnknown_0201A450.unkA) {
+            gUnknown_0201A450.unkA = 0;
+            gUnknown_0201A450.unk8 = gUnknown_0201A450.unk8 + 1;
+        }
+        
+        if (gUnknown_0202BF10 >= gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][1]) {
+            m4aSongNumStart(gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][0]);
+            gUnknown_0202A578 = gUnknown_0202A578 + 1;
+        }
+    }
 }
