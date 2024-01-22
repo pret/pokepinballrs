@@ -1,5 +1,7 @@
 #include "global.h"
 #include "functions.h"
+#include "main.h"
+#include "variables.h"
 
 extern u32 gUnknown_0202ADD0;
 extern s16 gUnknown_0201A444;
