@@ -274,3 +274,18 @@ void sub_9830(void)
 
     sub_9D70();
 }
+
+void sub_9878(void)
+{
+    gUnknown_0201A450.unkA++;
+
+    if (gUnknown_0201A450.unkA > 3)
+    {
+        gUnknown_0201A450.unkA = 0;
+        gUnknown_0201A450.unk0 = 0x78;
+        gUnknown_0201A450.unk2 = 0x58;
+        gUnknown_0201A450.unkC = 1;
+        m4aSongNumStart(0xD8);
+        gUnknown_0202C790++;
+    }
+}

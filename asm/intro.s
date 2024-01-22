@@ -4,38 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_9878
-sub_9878: @ 0x08009878
-	push {lr}
-	ldr r1, _080098AC @ =gUnknown_0201A450
-	ldrh r0, [r1, #0xa]
-	adds r0, #1
-	strh r0, [r1, #0xa]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #3
-	ble _080098A8
-	movs r0, #0
-	strh r0, [r1, #0xa]
-	movs r0, #0x78
-	strh r0, [r1]
-	movs r0, #0x58
-	strh r0, [r1, #2]
-	movs r0, #1
-	strb r0, [r1, #0xc]
-	movs r0, #0xd8
-	bl m4aSongNumStart
-	ldr r1, _080098B0 @ =gUnknown_0202C790
-	ldrb r0, [r1]
-	adds r0, #1
-	strb r0, [r1]
-_080098A8:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080098AC: .4byte gUnknown_0201A450
-_080098B0: .4byte gUnknown_0202C790
-
 	thumb_func_start sub_98B4
 sub_98B4: @ 0x080098B4
 	push {lr}
