@@ -482,3 +482,10 @@ void nullsub_5(void)
 void nullsub_17(void)
 {
 }
+
+void sub_9C9C(void)
+{
+    sub_10480();
+    sub_10544();
+    gUnknown_0202C790++;
+}

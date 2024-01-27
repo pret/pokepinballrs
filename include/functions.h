@@ -173,10 +173,10 @@ extern void sub_1001C(int);
 //extern ? sub_10170();
 //extern ? sub_102A8();
 //extern ? sub_10424();
-//extern ? sub_10480();
+extern void sub_10480(void);
 extern void sub_1050C(void);
 //extern ? sub_10528();
-//extern ? sub_10544();
+extern void sub_10544(void);
 //extern ? sub_105A0();
 
 // src/intro.c
