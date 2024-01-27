@@ -22,6 +22,7 @@ extern u8 gUnknown_080BB4C0[];
 extern u8 gUnknown_080B3CA0[];
 extern u8 gUnknown_080B44A0[];
 extern u8 gUnknown_080BD4C0[];
+extern s16 gUnknown_086A7788[0x8];
 
 extern u8 gUnknown_0201C1C0[];
 extern s16 gUnknown_0202ADA0[];
@@ -73,6 +74,13 @@ struct unkStruct_201A450
 };
 
 extern struct unkStruct_201A450 gUnknown_0201A450;
+
+struct UnkStruct_086A7768 {
+    s16 unk0;
+    s16 unk2;
+};
+
+extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
 
 void IntroMain(void) {
      gIntroStateFuncs[gMain.subState]();
@@ -341,15 +349,6 @@ void sub_9920(void)
     sub_9E90();
 }
 
-struct UnkStruct_086A7768 {
-    s16 unk0;
-    s16 unk2;
-};
-
-extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
-extern s16 gUnknown_086A7788[0x8];
-extern s16 gUnknown_0202ADA0[];
-extern s32 gUnknown_0202BEF0;
 void sub_999C(void)
 {
     if (gUnknown_0202BEF0 > 0)
