@@ -24,7 +24,7 @@ extern u8 gUnknown_080B44A0[];
 extern u8 gUnknown_080BD4C0[];
 
 extern u8 gUnknown_0201C1C0[];
-extern u16 gUnknown_0202ADA0[];
+extern s16 gUnknown_0202ADA0[];
 extern s16 gUnknown_0202BF10;
 extern u8 gUnknown_0201C1B8;
 extern u8 gUnknown_0202ADD4;
@@ -32,7 +32,7 @@ extern s16 gUnknown_0202C594;
 extern s32 gUnknown_02019C30;
 extern u32 gUnknown_0201C188;
 extern s16 gUnknown_0202A578;
-extern u32 gUnknown_0202BEF0;
+extern s32 gUnknown_0202BEF0;
 extern s8 gUnknown_0202C5A8;
 extern s8 gUnknown_0202C790;
 
@@ -70,6 +70,11 @@ struct unkStruct_201A450
     u16 unk42;
     u8 fill44[0x4C - 0x44];
     u8 unk4C;
+};
+
+struct UnkStruct_086A7768 {
+    s16 unk0;
+    s16 unk2;
 };
 
 extern struct unkStruct_201A450 gUnknown_0201A450;

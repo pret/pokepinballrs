@@ -267,4 +267,9 @@ extern s8 gUnknown_0202A564;
 extern s8 gUnknown_02019C20;
 extern s8 gUnknown_0202ADE8;
 
+extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
+extern s16 gUnknown_086A7788[0x8];
+extern s16 gUnknown_0202ADA0[];
+extern s32 gUnknown_0202BEF0;
+
 #endif  // GUARD_VARIABLES_H
