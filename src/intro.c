@@ -24,7 +24,7 @@ extern u8 gUnknown_080B44A0[];
 extern u8 gUnknown_080BD4C0[];
 extern s16 gUnknown_086A7788[0x8];
 
-extern u8 gUnknown_0201C1C0[];
+extern u16 gUnknown_0201C1C0[];
 extern s16 gUnknown_0202ADA0[];
 extern s16 gUnknown_0202BF10;
 extern u8 gUnknown_0201C1B8;
@@ -380,7 +380,7 @@ void sub_999C(void)
 
     if (gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
     {
-        sub_10708(gUnknown_0201C1C0 + 2 * gUnknown_086A7788[gUnknown_0202ADA0[4]], (void *) 0x60036E0, 8, 8);
+        sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[4]]], (void *) 0x60036E0, 8, 8);
         gUnknown_0202ADA0[4]++;
         if (gUnknown_0202ADA0[4] > 3)
         {
@@ -393,4 +393,55 @@ void sub_999C(void)
     }
     
     sub_9E90();
+}
+
+void sub_9AB8(void)
+{
+    gUnknown_0201A450.unk30 -= 0xE;
+    gUnknown_0201A450.unk32 -= 0xD;
+
+    gUnknown_0202ADA0[0x12] -= 0x10;
+    gUnknown_0202ADA0[0x13] += 1;
+    gUnknown_0202ADA0[0x6]  -= 0x10;
+
+    gUnknown_0201A450.unk20 -= 0xE;
+    gUnknown_0201A450.unk22 -= 0xD;
+    gUnknown_0201A450.unk40 += 0xB;
+    gUnknown_0201A450.unk42 -= 0x2;
+
+    if (gUnknown_0202BF10 % 2 == 0)
+    {
+        gUnknown_0202ADA0[0x0]--;
+        gUnknown_0202ADA0[0x1]--;
+    }
+
+    gUnknown_0202ADA0[0x5]++;
+
+    if (gUnknown_0202ADA0[0x5] > gUnknown_086A7768[gUnknown_0202ADA0[0x4]].unk2)
+    {
+        if (gUnknown_0202ADA0[0x4] < 7)
+        {
+            sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[0x4]]], (void *)0x60036e0, 8, 8);
+        }
+        else
+        {
+            sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[0x4]]], (void *)0x60032c0, 10, 10);
+        }
+        gUnknown_0202ADA0[0x4]++;
+    }
+
+    gUnknown_0202ADA0[0xA]++;
+    if (gUnknown_0202ADA0[0xA] > 9)
+    {
+        gUnknown_0202ADA0[0xA] = 0;
+        gUnknown_0202C790 += 2;
+    }
+
+    sub_9E90();
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0x7];
 }
