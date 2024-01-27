@@ -72,11 +72,6 @@ struct unkStruct_201A450
     u8 unk4C;
 };
 
-struct UnkStruct_086A7768 {
-    s16 unk0;
-    s16 unk2;
-};
-
 extern struct unkStruct_201A450 gUnknown_0201A450;
 
 void IntroMain(void) {
@@ -343,5 +338,60 @@ void sub_9920(void)
         gUnknown_0201A450.unk18 = 1 - gUnknown_0201A450.unk18;
     }
 
+    sub_9E90();
+}
+
+struct UnkStruct_086A7768 {
+    s16 unk0;
+    s16 unk2;
+};
+
+extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
+extern s16 gUnknown_086A7788[0x8];
+extern s16 gUnknown_0202ADA0[];
+extern s32 gUnknown_0202BEF0;
+void sub_999C(void)
+{
+    if (gUnknown_0202BEF0 > 0)
+    {
+        gUnknown_0202BEF0 -= 2;
+        if (gUnknown_0202BEF0 < 1)
+        {
+            gUnknown_0202BEF0 = 0;
+        }
+        sub_10170(gIntroScene1Sprites_Pals, BG_PLTT, 0x200, (u16) gUnknown_0202BEF0);
+        sub_10170(gIntroScene1Sprites_Pals, OBJ_PLTT, 0x20, (u16) gUnknown_0202BEF0);
+    }
+
+    if (gUnknown_0202BF10 % 3 == 0)
+    {
+        gUnknown_0201A450.unk18 = 1 - gUnknown_0201A450.unk18;
+    }
+
+    gUnknown_0202ADA0[0]--;
+
+    if ((gUnknown_0202BF10 % 2) == 0)
+    {
+        gUnknown_0202ADA0[1]--;
+    }
+
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[1];
+    gUnknown_0202ADA0[5]++;
+
+    if (gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
+    {
+        sub_10708(gUnknown_0201C1C0 + 2 * gUnknown_086A7788[gUnknown_0202ADA0[4]], (void *) 0x60036E0, 8, 8);
+        gUnknown_0202ADA0[4]++;
+        if (gUnknown_0202ADA0[4] > 3)
+        {
+            gUnknown_0201A450.unk3C = 1;
+            gUnknown_0201A450.unk2C = 1;
+            gUnknown_0201A450.unk1C = 0;
+            gUnknown_0202ADA0[10] = 0;
+            gUnknown_0202C790++;
+        }
+    }
+    
     sub_9E90();
 }
