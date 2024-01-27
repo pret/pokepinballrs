@@ -4,10 +4,6 @@
 
 	.text
 
-	thumb_func_start nullsub_4
-nullsub_4: @ 0x08009C0C
-	bx lr
-
 	thumb_func_start sub_9C10
 sub_9C10: @ 0x08009C10
 	push {r4, lr}

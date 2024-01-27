@@ -445,3 +445,7 @@ void sub_9AB8(void)
     gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0x6];
     gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0x7];
 }
+
+void nullsub_4(void)
+{
+}
