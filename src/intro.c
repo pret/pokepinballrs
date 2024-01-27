@@ -64,7 +64,7 @@ struct unkStruct_201A450
     u16 unk30;
     u16 unk32;
     u8 fill34[0x3A - 0x34];
-    u16 unk3A;
+    s16 unk3A;
     u8 unk3C;
     u8 fill3D[0x40 - 0x3D];
     u16 unk40;
@@ -447,5 +447,38 @@ void sub_9AB8(void)
 }
 
 void nullsub_4(void)
+{
+}
+
+void sub_9C10(void)
+{
+    gUnknown_0202ADA0[0xC]++;
+
+    if (gUnknown_0202BF10 % 2 == 0)
+    {
+        gUnknown_0201A450.unk30--;
+        gUnknown_0201A450.unk32--;
+        gUnknown_0201A450.unk20 -= 2;
+        gUnknown_0201A450.unk22 -= 2;
+    }
+
+    sub_9E90();
+
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+    gUnknown_0201A450.unk3A++;
+
+    if (gUnknown_0201A450.unk3A > 0x14)
+    {
+        gUnknown_0201A450.unk3A = 0;
+        gUnknown_0202C790 += 3;
+    }
+}
+
+void nullsub_5(void)
+{
+}
+
+void nullsub_17(void)
 {
 }
