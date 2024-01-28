@@ -271,5 +271,6 @@ extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
 extern s16 gUnknown_086A7788[0x8];
 extern s16 gUnknown_0202ADA0[];
 extern s32 gUnknown_0202BEF0;
+extern const struct SpriteSet *const gUnknown_086A769C[];
 
 #endif  // GUARD_VARIABLES_H

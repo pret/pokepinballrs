@@ -47,7 +47,7 @@ struct unkStruct_201A450
     u8 fill4[0x8 - 4];
     s16 unk8;
     s16 unkA;
-    u8 unkC;
+    s8 unkC;
     u8 fillD[0x10 - 0xD];
     u16 unk10;
     u16 unk12;
@@ -488,4 +488,32 @@ void sub_9C9C(void)
     sub_10480();
     sub_10544();
     gUnknown_0202C790++;
+}
+
+void sub_9CB8(void)
+{
+    s32 i;
+    struct OamDataSimple *test2;
+    struct SpriteGroup *puVar4;
+    const struct SpriteSet *puVar6;
+
+    puVar4 = &gUnknown_0200B3B8[4 + gUnknown_0201A450.unk8];
+    puVar4->available = gUnknown_0201A450.unkC;
+    LoadSpriteSets(gUnknown_086A769C, 0x31, gUnknown_0200B3B8);
+
+    if (puVar4->available == 1)
+    {
+        puVar4->baseX = gUnknown_0201A450.unk0;
+        puVar4->baseY = gUnknown_0201A450.unk2;
+
+        puVar6 = gUnknown_086A769C[gUnknown_0201A450.unk8 + 4];
+        for (i = 0; i < puVar6->count; i++)
+        {
+            test2 = &puVar4->oam[i];
+            gOamBuffer[test2->oamId].x = test2->xOffset + puVar4->baseX;
+            gOamBuffer[test2->oamId].y = test2->yOffset + puVar4->baseY;
+        }
+    }
+
+    puVar4->available = 0;
 }
