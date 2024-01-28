@@ -31,7 +31,7 @@ extern u8 gUnknown_0201C1B8;
 extern u8 gUnknown_0202ADD4;
 extern s16 gUnknown_0202C594;
 extern s32 gUnknown_02019C30;
-extern u32 gUnknown_0201C188;
+extern s32 gUnknown_0201C188;
 extern s16 gUnknown_0202A578;
 extern s32 gUnknown_0202BEF0;
 extern s8 gUnknown_0202C5A8;
@@ -81,6 +81,7 @@ struct UnkStruct_086A7768 {
 };
 
 extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
+extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
 
 void IntroMain(void) {
      gIntroStateFuncs[gMain.subState]();
@@ -515,5 +516,34 @@ void sub_9CB8(void)
         }
     }
 
+    puVar4->available = 0;
+}
+
+void sub_9D70(void)
+{
+    s32 i;
+    struct SpriteGroup *puVar4;
+    struct OamDataSimple *puVar2;
+
+    puVar4 = &gUnknown_0200B3B8[0x28];
+    puVar4->available = gUnknown_0201A450.unkC;
+    LoadSpriteSets(gUnknown_086A769C, 0x31, gUnknown_0200B3B8);
+
+    if (puVar4->available == 1)
+    {
+        SetMatrixScale(gUnknown_02019C30, gUnknown_0201C188, 0);
+        puVar4->baseX = gUnknown_0201A450.unk0;
+        puVar4->baseY = gUnknown_0201A450.unk2;
+
+        for (i = 0; i < 4; i++)
+        {
+            puVar2 = &puVar4->oam[i];
+            gOamBuffer[puVar2->oamId].x = gUnknown_086A7798[i].unk0 * gUnknown_02019C30 / 0x100 + puVar4->baseX;
+            gOamBuffer[puVar2->oamId].y = gUnknown_086A7798[i].unk2 * gUnknown_0201C188 / 0x100 + puVar4->baseY;
+
+            gOamBuffer[puVar2->oamId].affineMode = 1;
+            gOamBuffer[puVar2->oamId].matrixNum = 0;
+        }
+    }
     puVar4->available = 0;
 }
