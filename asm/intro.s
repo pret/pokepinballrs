@@ -4,43 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_A2A8
-sub_A2A8: @ 0x0800A2A8
-	ldr r0, _0800A2D8 @ =gUnknown_0202ADA0
-	movs r2, #0
-	movs r1, #0x1c
-	strh r1, [r0]
-	ldr r1, _0800A2DC @ =0x0000FF2C
-	strh r1, [r0, #2]
-	strh r2, [r0, #4]
-	movs r1, #0xe
-	strh r1, [r0, #6]
-	ldr r1, _0800A2E0 @ =0x0000FF5C
-	strh r1, [r0, #0xc]
-	subs r1, #0x54
-	strh r1, [r0, #0xe]
-	strh r2, [r0, #0x10]
-	movs r1, #0x10
-	strh r1, [r0, #0x12]
-	strh r2, [r0, #0x18]
-	strh r2, [r0, #0x1a]
-	strh r2, [r0, #0x20]
-	ldr r0, _0800A2E4 @ =gUnknown_0202BF10
-	strh r2, [r0]
-	ldr r0, _0800A2E8 @ =gUnknown_0202A578
-	strh r2, [r0]
-	bx lr
-	.align 2, 0
-_0800A2D8: .4byte gUnknown_0202ADA0
-_0800A2DC: .4byte 0x0000FF2C
-_0800A2E0: .4byte 0x0000FF5C
-_0800A2E4: .4byte gUnknown_0202BF10
-_0800A2E8: .4byte gUnknown_0202A578
-
-	thumb_func_start nullsub_6
-nullsub_6: @ 0x0800A2EC
-	bx lr
-
 	thumb_func_start sub_A2F0
 sub_A2F0: @ 0x0800A2F0
 	push {r4, lr}
