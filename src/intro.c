@@ -37,6 +37,12 @@ extern s32 gUnknown_0202BEF0;
 extern s8 gUnknown_0202C5A8;
 extern s8 gUnknown_0202C790;
 
+extern u8 gUnknown_080CBEE0[];
+extern u8 gUnknown_080CC6E0[];
+extern u8 gUnknown_080CBCE0[];
+extern u8 gUnknown_080D0700[];
+extern u8 gUnknown_080D2700[];
+
 typedef void (*OtherFunc)(void);
 extern OtherFunc gUnknown_080792E0[10];
 
@@ -932,4 +938,32 @@ void sub_A154(void)
 {
     sub_0518();
     gUnknown_0202C790++;
+}
+
+void sub_A16C(void)
+{
+    // TODO use proper constants - see LoadEReaderGraphics?
+    REG_DISPCNT = 0;
+    REG_BG0CNT = 0xCC00;
+    REG_DISPCNT |= 0x100;
+    REG_BG1CNT = 0xDA01;
+    REG_DISPCNT |= 0x200;
+    REG_BG3CNT = 0x1E03;
+    REG_DISPCNT |= 0x800;
+
+    DmaCopy16(3, gUnknown_080D0700, (void*) 0x06006000, 0x2000);
+    DmaCopy16(3, gUnknown_080D2700, (void*) 0x0600D000, 0x2000);
+    DmaCopy16(3, gUnknown_080CBEE0, (void*) 0x0600F000, 0x800);
+    DmaCopy16(3, gUnknown_080CC6E0, (void*) 0x06000000, 0x3C00);
+    DmaCopy16(3, gUnknown_080CBCE0, (void*) PLTT, 0x80);
+    sub_A2A8();
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+    sub_0CBC();
+    sub_10424();
+    gUnknown_0202C790 += 2;
 }
