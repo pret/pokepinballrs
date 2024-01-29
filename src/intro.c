@@ -927,3 +927,9 @@ _0800A14C: .4byte 0xFFFFFE00\n\
 _0800A150: .4byte 0x000001FF");
 }
 #endif
+
+void sub_A154(void)
+{
+    sub_0518();
+    gUnknown_0202C790++;
+}

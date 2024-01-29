@@ -4,19 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_A154
-sub_A154: @ 0x0800A154
-	push {lr}
-	bl sub_0518
-	ldr r1, _0800A168 @ =gUnknown_0202C790
-	ldrb r0, [r1]
-	adds r0, #1
-	strb r0, [r1]
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0800A168: .4byte gUnknown_0202C790
-
 	thumb_func_start sub_A16C
 sub_A16C: @ 0x0800A16C
 	push {r4, lr}
