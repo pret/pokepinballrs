@@ -1023,3 +1023,38 @@ void sub_A2F0(void)
 void nullsub_7(void)
 {
 }
+
+void sub_A39C(void)
+{
+    gUnknown_0202ADA0[0x1]++;
+    gUnknown_0202ADA0[0x7]++;
+    gUnknown_0202ADA0[0xC]--;
+    gUnknown_0202ADA0[0xD]--;
+    gUnknown_0202ADA0[0x0]--;
+    gUnknown_0202ADA0[0x6]++;
+
+    // TODO same as sub_A2F0 - possible inline function?
+    if (gUnknown_0202BF10 % 2 == 0)
+    {
+        gUnknown_0202ADA0[0x3]--;
+        gUnknown_0202ADA0[0x9]--;
+    }
+
+    // TODO same as sub_A16C - possible inline function?
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+
+    sub_10480();
+    sub_10544();
+    gUnknown_0202C790++;
+}
+
+void sub_A43C(void)
+{
+    sub_0518();
+    gUnknown_0202C790++;
+}
