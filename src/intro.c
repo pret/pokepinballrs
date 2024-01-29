@@ -547,3 +547,383 @@ void sub_9D70(void)
     }
     puVar4->available = 0;
 }
+
+#ifdef NONMATCHING
+void sub_9E90(void)
+{
+    gMain.blendControl = 0xF10;
+    gMain.blendAlpha = gUnknown_0201C1B8 | (gUnknown_0202ADD4 << 8);
+    REG_BLDCNT = gMain.blendControl;
+    REG_BLDALPHA = gMain.blendAlpha;
+
+    gMain.spriteGroups[gUnknown_0201A450.unk18].available = gUnknown_0201A450.unk1C;
+    gMain.spriteGroups[3].available = gUnknown_0201A450.unk2C;
+    gMain.spriteGroups[2].available = gUnknown_0201A450.unk3C;
+    gMain.spriteGroups[0x30].available = gUnknown_0201A450.unk4C; // 80
+    LoadSpriteSets(gUnknown_086A769C, 0x31, gMain.spriteGroups);
+    
+    if (gUnknown_0201A450.unk1C == 1)
+    {
+        // ...
+    }
+    // ...
+}
+#else
+NAKED
+void sub_9E90(void)
+{
+    asm_unified("\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	sub sp, #4\n\
+	ldr r3, _0800A12C @ =gMain\n\
+	ldrh r0, [r3, #0x38]\n\
+	movs r0, #0xf1\n\
+	lsls r0, r0, #4\n\
+	strh r0, [r3, #0x38]\n\
+	ldr r0, _0800A130 @ =gUnknown_0201C1B8\n\
+	ldrb r1, [r0]\n\
+	ldr r0, _0800A134 @ =gUnknown_0202ADD4\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #8\n\
+	orrs r1, r0\n\
+	ldrh r0, [r3, #0x3a]\n\
+	strh r1, [r3, #0x3a]\n\
+	ldr r1, _0800A138 @ =0x04000050\n\
+	ldrh r0, [r3, #0x38]\n\
+	strh r0, [r1]\n\
+	adds r1, #2\n\
+	ldrh r0, [r3, #0x3a]\n\
+	strh r0, [r1]\n\
+	ldr r4, _0800A13C @ =gUnknown_0201A450\n\
+	movs r0, #0x18\n\
+	ldrsh r1, [r4, r0]\n\
+	movs r0, #0xb8\n\
+	muls r0, r1, r0\n\
+	movs r1, #0xbe\n\
+	lsls r1, r1, #2\n\
+	adds r2, r3, r1\n\
+	adds r0, r0, r2\n\
+	mov r8, r0\n\
+	movs r6, #0xa4\n\
+	lsls r6, r6, #3\n\
+	adds r6, r6, r3\n\
+	mov sb, r6\n\
+	movs r7, #0x8d\n\
+	lsls r7, r7, #3\n\
+	adds r7, r7, r3\n\
+	mov sl, r7\n\
+	movs r0, #0x1c\n\
+	ldrsb r0, [r4, r0]\n\
+	mov r1, r8\n\
+	strh r0, [r1]\n\
+	adds r0, r4, #0\n\
+	adds r0, #0x2c\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	strh r0, [r6]\n\
+	adds r0, r4, #0\n\
+	adds r0, #0x3c\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	strh r0, [r7]\n\
+	adds r0, r4, #0\n\
+	adds r0, #0x4c\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	ldr r6, _0800A140 @ =gUnknown_0200D638\n\
+	strh r0, [r6]\n\
+	ldr r5, _0800A144 @ =gUnknown_086A769C\n\
+	adds r0, r5, #0\n\
+	movs r1, #0x31\n\
+	bl LoadSpriteSets\n\
+	mov r7, r8\n\
+	ldrh r0, [r7]\n\
+	cmp r0, #1\n\
+	bne _08009F9E\n\
+	ldrh r0, [r4, #0x10]\n\
+	strh r0, [r7, #2]\n\
+	ldrh r0, [r4, #0x12]\n\
+	strh r0, [r7, #4]\n\
+	movs r1, #0x18\n\
+	ldrsh r0, [r4, r1]\n\
+	lsls r0, r0, #2\n\
+	adds r0, r0, r5\n\
+	ldr r0, [r0]\n\
+	str r0, [sp]\n\
+	movs r5, #0\n\
+	ldrh r2, [r0]\n\
+	cmp r5, r2\n\
+	bge _08009F9E\n\
+	ldr r7, _0800A148 @ =gOamBuffer\n\
+	ldr r6, _0800A14C @ =0xFFFFFE00\n\
+	mov ip, r6\n\
+	mov r4, r8\n\
+	adds r4, #8\n\
+_08009F4C:\n\
+	ldrh r2, [r4]\n\
+	lsls r2, r2, #3\n\
+	adds r2, r2, r7\n\
+	ldrb r1, [r2, #1]\n\
+	movs r0, #0xd\n\
+	rsbs r0, r0, #0\n\
+	ands r0, r1\n\
+	movs r1, #4\n\
+	orrs r0, r1\n\
+	strb r0, [r2, #1]\n\
+	ldrh r3, [r4]\n\
+	lsls r3, r3, #3\n\
+	adds r3, r3, r7\n\
+	movs r0, #2\n\
+	ldrsh r1, [r4, r0]\n\
+	mov r2, r8\n\
+	movs r6, #2\n\
+	ldrsh r0, [r2, r6]\n\
+	adds r1, r1, r0\n\
+	ldr r2, _0800A150 @ =0x000001FF\n\
+	adds r0, r2, #0\n\
+	ands r1, r0\n\
+	ldrh r2, [r3, #2]\n\
+	mov r0, ip\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r3, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r7\n\
+	mov r6, r8\n\
+	ldrb r0, [r6, #4]\n\
+	ldrb r2, [r4, #4]\n\
+	adds r0, r0, r2\n\
+	strb r0, [r1]\n\
+	adds r4, #8\n\
+	adds r5, #1\n\
+	ldr r6, [sp]\n\
+	ldrh r6, [r6]\n\
+	cmp r5, r6\n\
+	blt _08009F4C\n\
+_08009F9E:\n\
+	mov r7, sb\n\
+	ldrh r0, [r7]\n\
+	cmp r0, #1\n\
+	bne _0800A01C\n\
+	ldr r0, _0800A13C @ =gUnknown_0201A450\n\
+	ldrh r1, [r0, #0x20]\n\
+	strh r1, [r7, #2]\n\
+	ldrh r0, [r0, #0x22]\n\
+	strh r0, [r7, #4]\n\
+	ldr r6, _0800A148 @ =gOamBuffer\n\
+	movs r0, #0xd\n\
+	rsbs r0, r0, #0\n\
+	mov ip, r0\n\
+	mov r4, sb\n\
+	adds r4, #8\n\
+	movs r5, #3\n\
+_08009FBE:\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r6\n\
+	ldrb r2, [r1, #1]\n\
+	mov r0, ip\n\
+	ands r0, r2\n\
+	movs r2, #4\n\
+	orrs r0, r2\n\
+	strb r0, [r1, #1]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r6\n\
+	ldrb r2, [r1, #5]\n\
+	mov r0, ip\n\
+	ands r0, r2\n\
+	movs r7, #4\n\
+	orrs r0, r7\n\
+	strb r0, [r1, #5]\n\
+	ldrh r3, [r4]\n\
+	lsls r3, r3, #3\n\
+	adds r3, r3, r6\n\
+	movs r0, #2\n\
+	ldrsh r1, [r4, r0]\n\
+	mov r2, sb\n\
+	movs r7, #2\n\
+	ldrsh r0, [r2, r7]\n\
+	adds r1, r1, r0\n\
+	ldr r2, _0800A150 @ =0x000001FF\n\
+	adds r0, r2, #0\n\
+	ands r1, r0\n\
+	ldrh r2, [r3, #2]\n\
+	ldr r0, _0800A14C @ =0xFFFFFE00\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r3, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r6\n\
+	mov r7, sb\n\
+	ldrb r0, [r7, #4]\n\
+	ldrb r2, [r4, #4]\n\
+	adds r0, r0, r2\n\
+	strb r0, [r1]\n\
+	adds r4, #8\n\
+	subs r5, #1\n\
+	cmp r5, #0\n\
+	bge _08009FBE\n\
+_0800A01C:\n\
+	mov r6, sl\n\
+	ldrh r0, [r6]\n\
+	cmp r0, #1\n\
+	bne _0800A098\n\
+	ldr r0, _0800A13C @ =gUnknown_0201A450\n\
+	ldrh r1, [r0, #0x30]\n\
+	strh r1, [r6, #2]\n\
+	ldrh r0, [r0, #0x32]\n\
+	strh r0, [r6, #4]\n\
+	ldr r6, _0800A148 @ =gOamBuffer\n\
+	ldr r7, _0800A14C @ =0xFFFFFE00\n\
+	mov ip, r7\n\
+	mov r4, sl\n\
+	adds r4, #8\n\
+	movs r5, #3\n\
+_0800A03A:\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r6\n\
+	ldrb r2, [r1, #1]\n\
+	movs r0, #0xd\n\
+	rsbs r0, r0, #0\n\
+	ands r0, r2\n\
+	strb r0, [r1, #1]\n\
+	ldrh r2, [r4]\n\
+	lsls r2, r2, #3\n\
+	adds r2, r2, r6\n\
+	ldrb r1, [r2, #5]\n\
+	movs r0, #0xd\n\
+	rsbs r0, r0, #0\n\
+	ands r0, r1\n\
+	movs r1, #4\n\
+	orrs r0, r1\n\
+	strb r0, [r2, #5]\n\
+	ldrh r3, [r4]\n\
+	lsls r3, r3, #3\n\
+	adds r3, r3, r6\n\
+	movs r0, #2\n\
+	ldrsh r1, [r4, r0]\n\
+	mov r2, sl\n\
+	movs r7, #2\n\
+	ldrsh r0, [r2, r7]\n\
+	adds r1, r1, r0\n\
+	ldr r2, _0800A150 @ =0x000001FF\n\
+	adds r0, r2, #0\n\
+	ands r1, r0\n\
+	ldrh r2, [r3, #2]\n\
+	mov r0, ip\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r3, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r6\n\
+	mov r7, sl\n\
+	ldrb r0, [r7, #4]\n\
+	ldrb r2, [r4, #4]\n\
+	adds r0, r0, r2\n\
+	strb r0, [r1]\n\
+	adds r4, #8\n\
+	subs r5, #1\n\
+	cmp r5, #0\n\
+	bge _0800A03A\n\
+_0800A098:\n\
+	ldr r6, _0800A140 @ =gUnknown_0200D638\n\
+	ldrh r0, [r6]\n\
+	cmp r0, #1\n\
+	bne _0800A10A\n\
+	ldr r0, _0800A13C @ =gUnknown_0201A450\n\
+	adds r1, r0, #0\n\
+	adds r1, #0x40\n\
+	ldrh r1, [r1]\n\
+	strh r1, [r6, #2]\n\
+	adds r0, #0x42\n\
+	ldrh r0, [r0]\n\
+	strh r0, [r6, #4]\n\
+	ldr r6, _0800A148 @ =gOamBuffer\n\
+	movs r7, #0xd\n\
+	rsbs r7, r7, #0\n\
+	mov ip, r7\n\
+	ldr r4, _0800A140 @ =gUnknown_0200D638\n\
+	adds r4, #8\n\
+	movs r5, #7\n\
+_0800A0BE:\n\
+	ldrh r2, [r4]\n\
+	lsls r2, r2, #3\n\
+	adds r2, r2, r6\n\
+	ldrb r1, [r2, #5]\n\
+	mov r0, ip\n\
+	ands r0, r1\n\
+	movs r1, #8\n\
+	orrs r0, r1\n\
+	strb r0, [r2, #5]\n\
+	ldrh r3, [r4]\n\
+	lsls r3, r3, #3\n\
+	adds r3, r3, r6\n\
+	movs r0, #2\n\
+	ldrsh r1, [r4, r0]\n\
+	ldr r2, _0800A140 @ =gUnknown_0200D638\n\
+	movs r7, #2\n\
+	ldrsh r0, [r2, r7]\n\
+	adds r1, r1, r0\n\
+	ldr r2, _0800A150 @ =0x000001FF\n\
+	adds r0, r2, #0\n\
+	ands r1, r0\n\
+	ldrh r2, [r3, #2]\n\
+	ldr r0, _0800A14C @ =0xFFFFFE00\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r3, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r6\n\
+	ldr r7, _0800A140 @ =gUnknown_0200D638\n\
+	ldrb r0, [r7, #4]\n\
+	ldrb r2, [r4, #4]\n\
+	adds r0, r0, r2\n\
+	strb r0, [r1]\n\
+	adds r4, #8\n\
+	subs r5, #1\n\
+	cmp r5, #0\n\
+	bge _0800A0BE\n\
+_0800A10A:\n\
+	movs r0, #0\n\
+	mov r6, r8\n\
+	strh r0, [r6]\n\
+	mov r7, sb\n\
+	strh r0, [r7]\n\
+	mov r1, sl\n\
+	strh r0, [r1]\n\
+	ldr r2, _0800A140 @ =gUnknown_0200D638\n\
+	strh r0, [r2]\n\
+	add sp, #4\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+_0800A12C: .4byte gMain\n\
+_0800A130: .4byte gUnknown_0201C1B8\n\
+_0800A134: .4byte gUnknown_0202ADD4\n\
+_0800A138: .4byte 0x04000050\n\
+_0800A13C: .4byte gUnknown_0201A450\n\
+_0800A140: .4byte gUnknown_0200D638\n\
+_0800A144: .4byte gUnknown_086A769C\n\
+_0800A148: .4byte gOamBuffer\n\
+_0800A14C: .4byte 0xFFFFFE00\n\
+_0800A150: .4byte 0x000001FF");
+}
+#endif
