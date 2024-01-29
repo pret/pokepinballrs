@@ -988,3 +988,38 @@ void sub_A2A8(void)
 void nullsub_6(void)
 {
 }
+
+void sub_A2F0(void)
+{
+    gUnknown_0202ADA0[0x1] += gUnknown_0202ADA0[0x3];
+    gUnknown_0202ADA0[0x7] += gUnknown_0202ADA0[0x9];
+    gUnknown_0202ADA0[0xC]--;
+    gUnknown_0202ADA0[0xD]--;
+    gUnknown_0202ADA0[0x0]--;
+    gUnknown_0202ADA0[0x6]++;
+
+    if (gUnknown_0202BF10 % 2 == 0)
+    {
+        gUnknown_0202ADA0[0x3]--;
+        gUnknown_0202ADA0[0x9]--;
+    }
+
+    // TODO same as sub_A16C - possible inline function?
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+
+    gUnknown_0202ADA0[0x10]++;
+    if (gUnknown_0202ADA0[0x10] > 0x27)
+    {
+        gUnknown_0202ADA0[0x10] = 0;
+        gUnknown_0202C790 += 2;
+    }
+}
+
+void nullsub_7(void)
+{
+}
