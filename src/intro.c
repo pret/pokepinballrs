@@ -7,6 +7,8 @@
 
 extern void sub_10170(u8 *, u32, u32, u32);
 void sub_FEB8(u32, u8 *, u32);
+void sub_A628(void);
+void sub_A87C(void);
 
 extern StateFunc gIntroStateFuncs[15];
 extern u8 gUnknown_080798C0[];
@@ -42,6 +44,18 @@ extern u8 gUnknown_080CC6E0[];
 extern u8 gUnknown_080CBCE0[];
 extern u8 gUnknown_080D0700[];
 extern u8 gUnknown_080D2700[];
+
+extern u8 gUnknown_0201B180[];
+
+extern u8 gUnknown_080D4700[];
+extern u8 gUnknown_080DE520[];
+extern u8 gUnknown_080DCD20[];
+extern u8 gUnknown_080D4900[];
+extern u8 gUnknown_080D5900[];
+extern u8 gUnknown_080D6100[];
+extern u8 gUnknown_080DD520[];
+extern u8 gUnknown_080DDD20[];
+extern u8 gUnknown_080DF520[];
 
 typedef void (*OtherFunc)(void);
 extern OtherFunc gUnknown_080792E0[10];
@@ -1056,5 +1070,46 @@ void sub_A39C(void)
 void sub_A43C(void)
 {
     sub_0518();
+    gUnknown_0202C790++;
+}
+
+void sub_A454(void)
+{
+    // TODO use proper constants - see LoadEReaderGraphics?
+    REG_DISPCNT = 0x1000;
+    REG_BG0CNT = 0x5A00;
+    REG_DISPCNT |= 0x100;
+    REG_BG1CNT = 0x1C01;
+    REG_DISPCNT |= 0x200;
+    REG_BG2CNT = 0x5D02;
+    REG_DISPCNT |= 0x400;
+    REG_BG3CNT = 0x1F03;
+    REG_DISPCNT |= 0x800;
+
+    DmaCopy16(3, gUnknown_080DE520, (void*) 0x0600D000, 0x1000);
+    DmaCopy16(3, gUnknown_080DCD20, (void*) 0x0600E000, 0x800);
+    DmaCopy16(3, gUnknown_080D4900, (void*) 0x0600E800, 0x1000);
+    DmaCopy16(3, gUnknown_080D5900, (void*) 0x0600F800, 0x800);
+    DmaCopy16(3, gUnknown_080DD520, gUnknown_03005C00, 0x800);
+    DmaCopy16(3, gUnknown_080DDD20, gUnknown_0201B180, 0x800);
+    DmaCopy16(3, gUnknown_080D6100, (void*) 0x06000000, 0x6C00);
+    DmaCopy16(3, gUnknown_080D4700, (void*) PLTT, 0xE0);
+    DmaCopy16(3, gUnknown_080DF520, (void*) 0x06010000, 0x2000);
+    DmaCopy16(3, gUnknown_080D4700, (void*) OBJ_PLTT, 0xE0);
+
+    sub_A628();
+    sub_A87C();
+
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+
+    sub_0CBC();
+    sub_10424();
     gUnknown_0202C790++;
 }
