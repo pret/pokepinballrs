@@ -4,41 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_A628
-sub_A628: @ 0x0800A628
-	ldr r1, _0800A65C @ =gUnknown_0202ADA0
-	movs r2, #0
-	movs r0, #0x2c
-	strh r0, [r1]
-	ldr r0, _0800A660 @ =0x0000FF8E
-	strh r0, [r1, #2]
-	ldr r3, _0800A664 @ =gUnknown_0201A450
-	adds r0, #0x46
-	strh r0, [r3]
-	movs r0, #0x72
-	strh r0, [r3, #2]
-	ldr r0, _0800A668 @ =0x0000FFCE
-	strh r0, [r1, #0xc]
-	movs r0, #0x1e
-	strh r0, [r1, #0xe]
-	strh r2, [r1, #0x18]
-	strh r2, [r1, #0x1a]
-	strh r2, [r1, #0x20]
-	strh r2, [r1, #0x24]
-	strh r2, [r1, #0x26]
-	ldr r0, _0800A66C @ =gUnknown_0202BF10
-	strh r2, [r0]
-	ldr r0, _0800A670 @ =gUnknown_0202A578
-	strh r2, [r0]
-	bx lr
-	.align 2, 0
-_0800A65C: .4byte gUnknown_0202ADA0
-_0800A660: .4byte 0x0000FF8E
-_0800A664: .4byte gUnknown_0201A450
-_0800A668: .4byte 0x0000FFCE
-_0800A66C: .4byte gUnknown_0202BF10
-_0800A670: .4byte gUnknown_0202A578
-
 	thumb_func_start sub_A674
 sub_A674: @ 0x0800A674
 	push {r4, lr}

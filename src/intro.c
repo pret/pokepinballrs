@@ -1113,3 +1113,23 @@ void sub_A454(void)
     sub_10424();
     gUnknown_0202C790++;
 }
+
+void sub_A628(void)
+{
+    gUnknown_0202ADA0[0x0] = 0x2C;
+    gUnknown_0202ADA0[0x1] = 0xFF8E;
+    
+    gUnknown_0201A450.unk0 = 0xFFD4;
+    gUnknown_0201A450.unk2 = 0x72;
+
+    gUnknown_0202ADA0[0x6] = 0xFFCE;
+    gUnknown_0202ADA0[0x7] = 0x1E;
+    gUnknown_0202ADA0[0xC] = 0;
+    gUnknown_0202ADA0[0xD] = 0;
+    gUnknown_0202ADA0[0x10] = 0;
+    gUnknown_0202ADA0[0x12] = 0;
+    gUnknown_0202ADA0[0x13] = 0;
+
+    gUnknown_0202BF10 = 0;
+    gUnknown_0202A578 = 0;
+}
