@@ -1133,3 +1133,31 @@ void sub_A628(void)
     gUnknown_0202BF10 = 0;
     gUnknown_0202A578 = 0;
 }
+
+void sub_A674(void)
+{
+    gUnknown_0202ADA0[0x0] -= 0x11;
+    gUnknown_0202ADA0[0x1] += 0xA;
+
+    gUnknown_0201A450.unk0 += 0x11;
+    gUnknown_0201A450.unk2 -= 0xA;
+
+    gUnknown_0202ADA0[0xC] += 0x10;
+    gUnknown_0202ADA0[0x6] += 0x4;
+    gUnknown_0202ADA0[0x7] -= 0x8;
+    gUnknown_0202ADA0[0x10]++;
+
+    if (gUnknown_0202ADA0[0x10] > 9)
+    {
+        gUnknown_0202ADA0[0x10] = 0;
+        gUnknown_0202C790++;
+    }
+
+    sub_A87C();
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+}
