@@ -1163,7 +1163,6 @@ void sub_A674(void)
     gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
 }
 
-#ifdef NONMATCHING
 void sub_A710(void)
 {
     gUnknown_0202ADA0[0x12]--;
@@ -1193,16 +1192,16 @@ void sub_A710(void)
         DmaCopy16(3, gUnknown_03005C00, (void*) 0x0600E000, 0x800);
         gUnknown_0202ADA0[0x6] = 0;
         gUnknown_0202ADA0[0x7] = 0;
-        gMain.unk2E8[1].unk0 = 0;
-        // gMain.unk2E8[1].unk2 = 0; // TODO uncomment this line without everything falling apart
+        gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+        gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
     }
     else if (gUnknown_0202ADA0[0x10] == 4)
     {
         DmaCopy16(3, gUnknown_0201B180, (void*) 0x0600E000, 0x800);
         gUnknown_0202ADA0[0x6] = 0;
         gUnknown_0202ADA0[0x7] = 0;
-        gMain.unk2E8[1].unk0 = 0;
-        gMain.unk2E8[1].unk2 = 0;
+        gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+        gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
     }
 
     gUnknown_0202ADA0[0x10]++;
@@ -1212,166 +1211,6 @@ void sub_A710(void)
         gUnknown_0202C790 += 2;
     }
 }
-#else
-NAKED
-void sub_A710(void)
-{
-	asm_unified("\n\
-	push {r4, r5, r6, lr}\n\
-	ldr r5, _0800A7C8 @ =gUnknown_0202ADA0\n\
-	ldrh r0, [r5, #0x24]\n\
-	subs r0, #1\n\
-	movs r6, #0\n\
-	strh r0, [r5, #0x24]\n\
-	ldr r2, _0800A7CC @ =gUnknown_0202BF10\n\
-	ldrh r0, [r2]\n\
-	movs r1, #1\n\
-	ands r0, r1\n\
-	cmp r0, #0\n\
-	bne _0800A742\n\
-	ldrh r0, [r5]\n\
-	subs r0, #1\n\
-	strh r0, [r5]\n\
-	ldrh r0, [r5, #2]\n\
-	adds r0, #1\n\
-	strh r0, [r5, #2]\n\
-	ldr r1, _0800A7D0 @ =gUnknown_0201A450\n\
-	ldrh r0, [r1]\n\
-	adds r0, #2\n\
-	strh r0, [r1]\n\
-	ldrh r0, [r1, #2]\n\
-	subs r0, #2\n\
-	strh r0, [r1, #2]\n\
-_0800A742:\n\
-	movs r1, #0\n\
-	ldrsh r0, [r2, r1]\n\
-	movs r1, #3\n\
-	bl __modsi3\n\
-	lsls r0, r0, #0x10\n\
-	cmp r0, #0\n\
-	bne _0800A776\n\
-	ldr r0, _0800A7D4 @ =0x040000D4\n\
-	movs r3, #0xa0\n\
-	lsls r3, r3, #0x13\n\
-	str r3, [r0]\n\
-	ldr r4, _0800A7D8 @ =gUnknown_0202BE70\n\
-	str r4, [r0, #4]\n\
-	ldr r1, _0800A7DC @ =0x80000010\n\
-	str r1, [r0, #8]\n\
-	ldr r2, [r0, #8]\n\
-	ldr r2, _0800A7E0 @ =0x05000040\n\
-	str r2, [r0]\n\
-	str r3, [r0, #4]\n\
-	str r1, [r0, #8]\n\
-	ldr r3, [r0, #8]\n\
-	str r4, [r0]\n\
-	str r2, [r0, #4]\n\
-	str r1, [r0, #8]\n\
-	ldr r0, [r0, #8]\n\
-_0800A776:\n\
-	ldr r4, _0800A7E4 @ =gMain\n\
-	ldrh r1, [r5]\n\
-	movs r2, #0xba\n\
-	lsls r2, r2, #2\n\
-	adds r0, r4, r2\n\
-	strh r1, [r0]\n\
-	ldrh r1, [r5, #2]\n\
-	adds r2, #2\n\
-	adds r0, r4, r2\n\
-	strh r1, [r0]\n\
-	ldrh r1, [r5, #0x24]\n\
-	adds r2, #0xa\n\
-	adds r0, r4, r2\n\
-	strh r1, [r0]\n\
-	ldrh r1, [r5, #0x26]\n\
-	adds r2, #2\n\
-	adds r0, r4, r2\n\
-	strh r1, [r0]\n\
-	bl sub_A87C\n\
-	movs r1, #0x20\n\
-	ldrsh r0, [r5, r1]\n\
-	cmp r0, #2\n\
-	bne _0800A7F4\n\
-	ldr r1, _0800A7D4 @ =0x040000D4\n\
-	ldr r0, _0800A7E8 @ =gUnknown_03005C00\n\
-	str r0, [r1]\n\
-	ldr r0, _0800A7EC @ =0x0600E000\n\
-	str r0, [r1, #4]\n\
-	ldr r0, _0800A7F0 @ =0x80000400\n\
-	str r0, [r1, #8]\n\
-	ldr r0, [r1, #8]\n\
-	strh r6, [r5, #0xc]\n\
-	strh r6, [r5, #0xe]\n\
-	movs r2, #0xbb\n\
-	lsls r2, r2, #2\n\
-	adds r0, r4, r2\n\
-	strh r6, [r0]\n\
-	movs r1, #0\n\
-	adds r2, #2\n\
-	b _0800A818\n\
-	.align 2, 0\n\
-_0800A7C8: .4byte gUnknown_0202ADA0\n\
-_0800A7CC: .4byte gUnknown_0202BF10\n\
-_0800A7D0: .4byte gUnknown_0201A450\n\
-_0800A7D4: .4byte 0x040000D4\n\
-_0800A7D8: .4byte gUnknown_0202BE70\n\
-_0800A7DC: .4byte 0x80000010\n\
-_0800A7E0: .4byte 0x05000040\n\
-_0800A7E4: .4byte gMain\n\
-_0800A7E8: .4byte gUnknown_03005C00\n\
-_0800A7EC: .4byte 0x0600E000\n\
-_0800A7F0: .4byte 0x80000400\n\
-_0800A7F4:\n\
-	cmp r0, #4\n\
-	bne _0800A81C\n\
-	ldr r1, _0800A840 @ =0x040000D4\n\
-	ldr r0, _0800A844 @ =gUnknown_0201B180\n\
-	str r0, [r1]\n\
-	ldr r0, _0800A848 @ =0x0600E000\n\
-	str r0, [r1, #4]\n\
-	ldr r0, _0800A84C @ =0x80000400\n\
-	str r0, [r1, #8]\n\
-	ldr r0, [r1, #8]\n\
-	strh r6, [r5, #0xc]\n\
-	strh r6, [r5, #0xe]\n\
-	movs r1, #0xbb\n\
-	lsls r1, r1, #2\n\
-	adds r0, r4, r1\n\
-	strh r6, [r0]\n\
-	movs r1, #0\n\
-	ldr r2, _0800A850 @ =0x000002EE\n\
-_0800A818:\n\
-	adds r0, r4, r2\n\
-	strh r1, [r0]\n\
-_0800A81C:\n\
-	ldr r1, _0800A854 @ =gUnknown_0202ADA0\n\
-	ldrh r0, [r1, #0x20]\n\
-	adds r0, #1\n\
-	strh r0, [r1, #0x20]\n\
-	lsls r0, r0, #0x10\n\
-	asrs r0, r0, #0x10\n\
-	cmp r0, #0x1d\n\
-	ble _0800A838\n\
-	movs r0, #0\n\
-	strh r0, [r1, #0x20]\n\
-	ldr r1, _0800A858 @ =gUnknown_0202C790\n\
-	ldrb r0, [r1]\n\
-	adds r0, #2\n\
-	strb r0, [r1]\n\
-_0800A838:\n\
-	pop {r4, r5, r6}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.align 2, 0\n\
-_0800A840: .4byte 0x040000D4\n\
-_0800A844: .4byte gUnknown_0201B180\n\
-_0800A848: .4byte 0x0600E000\n\
-_0800A84C: .4byte 0x80000400\n\
-_0800A850: .4byte 0x000002EE\n\
-_0800A854: .4byte gUnknown_0202ADA0\n\
-_0800A858: .4byte gUnknown_0202C790");
-}
-#endif
 
 void nullsub_8(void)
 {
