@@ -247,6 +247,7 @@ extern u16 gUnknown_0805C7C0[];
 extern u16 gUnknown_0202A590[];
 extern u16 gUnknown_08086B40[];
 extern s16 gUnknown_086A61BC[];
+extern s16 gUnknown_086A77A8[][10][2];
 extern u8 gUnknown_0201B124;
 
 extern struct PokemonSpecies gUnknown_086A3700[];
@@ -265,5 +266,14 @@ extern s8 gUnknown_0201B128;
 extern s8 gUnknown_0202A564;
 extern s8 gUnknown_02019C20;
 extern s8 gUnknown_0202ADE8;
+
+extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
+extern s16 gUnknown_086A7788[0x8];
+extern s16 gUnknown_0202ADA0[];
+extern s32 gUnknown_0202BEF0;
+extern const struct SpriteSet *const gUnknown_086A769C[];
+extern struct SpriteGroup gUnknown_0200D078[];
+extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
+extern s32 gUnknown_0201C188;
 
 #endif  // GUARD_VARIABLES_H
