@@ -4,10 +4,6 @@
 
 	.text
 
-	thumb_func_start nullsub_8
-nullsub_8: @ 0x0800A85C
-	bx lr
-
 	thumb_func_start sub_A860
 sub_A860: @ 0x0800A860
 	push {lr}

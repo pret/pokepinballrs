@@ -1373,3 +1373,6 @@ _0800A858: .4byte gUnknown_0202C790");
 }
 #endif
 
+void nullsub_8(void)
+{
+}
