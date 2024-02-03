@@ -1215,3 +1215,10 @@ void sub_A710(void)
 void nullsub_8(void)
 {
 }
+
+void sub_A860(void)
+{
+    sub_10480();
+    sub_10544();
+    gUnknown_0202C790++;
+}
