@@ -9,6 +9,7 @@ extern void sub_10170(u8 *, u32, u32, u32);
 void sub_FEB8(u32, u8 *, u32);
 void sub_A628(void);
 void sub_A87C(void);
+void sub_AAA8(void);
 
 extern StateFunc gIntroStateFuncs[15];
 extern u8 gUnknown_080798C0[];
@@ -1220,5 +1221,160 @@ void sub_A860(void)
 {
     sub_10480();
     sub_10544();
+    gUnknown_0202C790++;
+}
+
+void sub_A87C(void)
+{
+    s32 i;
+    struct SpriteGroup *puVar4;
+    struct OamDataSimple *puVar2;
+
+    gMain.blendControl = 0x1F50;
+    gMain.blendAlpha = 0x808;
+    REG_BLDCNT = gMain.blendControl;
+    REG_BLDALPHA = gMain.blendAlpha;
+
+    puVar4 = &gMain.spriteGroups[0];
+    puVar4->available = 1;
+    LoadSpriteSets(gUnknown_086A795C, 0x1, puVar4);
+
+    if (puVar4->available == 1)
+    {
+        puVar4->baseX = gUnknown_0201A450.unk0;
+        puVar4->baseY = gUnknown_0201A450.unk2;
+
+        for (i = 0; i < 4; i++)
+        {
+            puVar2 = &puVar4->oam[i];
+            gOamBuffer[puVar2->oamId].priority = 1;
+            gOamBuffer[puVar2->oamId].x = puVar2->xOffset + puVar4->baseX;
+            gOamBuffer[puVar2->oamId].y = puVar2->yOffset + puVar4->baseY;
+        }
+    }
+    puVar4->available = 0;
+}
+
+void sub_A950(void)
+{
+    sub_0518();
+    gUnknown_0202C790++;
+}
+
+void sub_A968(void)
+{
+    // TODO use proper constants - see LoadEReaderGraphics?
+    REG_DISPCNT = 0;
+    REG_BG0CNT = 0xCC00;
+    REG_DISPCNT |= 0x100;
+    REG_BG1CNT = 0xDA01;
+    REG_DISPCNT |= 0x200;
+    REG_BG3CNT = 0x1E03;
+    REG_DISPCNT |= 0x800;
+
+    DmaCopy16(3, gUnknown_080E5F60, (void *) 0x6006000, 0x2000);
+    DmaCopy16(3, gUnknown_080E7F60, (void *) 0x600D000, 0x2000);
+    DmaCopy16(3, gUnknown_080E1740, (void *) 0x600F000, 0x800);
+    DmaCopy16(3, gUnknown_080E1F40, (void *) 0x6000000, 0x4000);
+    DmaCopy16(3, gUnknown_080E1540, PLTT, 0x60);
+    gMain.unk16 = REG_DISPCNT;
+    
+    sub_AAA8();
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+
+    sub_0CBC();
+    sub_10424();
+    gUnknown_0202C790 += 2;
+}
+
+void sub_AAA8(void)
+{
+    gUnknown_0202ADA0[0x0] = 0x1C;
+    gUnknown_0202ADA0[0x1] = 0xFF20;
+    gUnknown_0202ADA0[0x2] = 0;
+    gUnknown_0202ADA0[0x3] = 0xF;
+    gUnknown_0202ADA0[0x6] = 0xFF64;
+    gUnknown_0202ADA0[0x7] = 0xE0;
+    gUnknown_0202ADA0[0x8] = 0;
+    gUnknown_0202ADA0[0x9] = 0xFFF1;
+    gUnknown_0202ADA0[0xC] = 0;
+    gUnknown_0202ADA0[0xD] = 0;
+    gUnknown_0202ADA0[0x10] = 0;
+
+    gUnknown_0202BF10 = 0;
+    gUnknown_0202A578 = 0;
+}
+
+void nullsub_9(void)
+{
+}
+
+void sub_AAF4(void)
+{
+    gUnknown_0202ADA0[0x1] += gUnknown_0202ADA0[0x3];
+    gUnknown_0202ADA0[0x7] += gUnknown_0202ADA0[0x9];
+    gUnknown_0202ADA0[0xC]--;
+    gUnknown_0202ADA0[0x0]--;
+    gUnknown_0202ADA0[0x6]++;
+
+    if (gUnknown_0202BF10 % 2 == 0)
+    {
+        gUnknown_0202ADA0[0x3]--;
+        gUnknown_0202ADA0[0x9]++;
+    }
+
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
+
+    gUnknown_0202ADA0[0x10]++;
+    if (0x27 < gUnknown_0202ADA0[0x10])
+    {
+        gUnknown_0202ADA0[0x10] = 0;
+        gUnknown_0202C790 += 2;
+    }
+}
+
+void nullsub_10(void)
+{
+}
+
+void sub_AB90(void)
+{
+    // TODO Near duplicate of sub_AAF4
+    gUnknown_0202ADA0[0x1] += gUnknown_0202ADA0[0x3];
+    gUnknown_0202ADA0[0x7] += gUnknown_0202ADA0[0x9];
+    gUnknown_0202ADA0[0xC]--;
+    gUnknown_0202ADA0[0x0]--;
+    gUnknown_0202ADA0[0x6]++;
+
+    if (gUnknown_0202BF10 % 2 == 0)
+    {
+        gUnknown_0202ADA0[0x3]--;
+        gUnknown_0202ADA0[0x9]++;
+    }
+
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
+
+    sub_10480();
+    sub_10544();
+    gUnknown_0202C790++;
+}
+
+void sub_AC20(void)
+{
+    // TODO Duplicate of sub_A950?
+    sub_0518();
     gUnknown_0202C790++;
 }
