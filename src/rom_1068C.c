@@ -112,6 +112,6 @@ void ClearSomeArray(void)
 {
     int i;
     
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
         gUnknown_0201A500[i] = 0;
 }

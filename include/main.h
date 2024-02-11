@@ -3,7 +3,20 @@
 
 #include "global.h"
 #include "constants/ereader.h"
+#include "constants/high_scores.h"
 #include "constants/species.h"
+
+struct HighScoreEntry
+{
+    union {
+        struct {
+            u32 name[HIGH_SCORE_NAME_LENGTH];
+            u32 scoreLo;
+            u32 score100Millions;
+        } parts;
+        u32 raw[HIGH_SCORE_NAME_LENGTH + 2];
+    } data;
+};
 
 // This is probably permanently saved data like pokedex and high scores.
 struct SaveData
@@ -12,7 +25,8 @@ struct SaveData
     /*0x141*/ u8 unk141;
     /*0x142*/ u8 ballSpeed;
     /*0x143*/ u8 unk143;
-    /*0x144*/ u16 unk144[0x65][2];
+    /*0x144*/ u16 unk144[5][2];
+    /*0x158*/ struct HighScoreEntry highScores[2][NUM_HIGH_SCORES];
     /*0x2D8*/ s8 signature[10];
               u16 checksum;
               u32 unk2E4;

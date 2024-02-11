@@ -1,6 +1,8 @@
 #ifndef GUARD_VARIABLES_H
 #define GUARD_VARIABLES_H
 
+#include "constants/high_scores.h"
+
 // Place all external variable declarations in this file
 
 extern struct {u16 unk0[5]; u16 unkA[5];} gUnknown_086A6B14;
@@ -18,7 +20,7 @@ extern u8 gUnknown_08527ED6[][10];
 extern void (*const gOptionsStateFuncs[])(void);
 extern u16 gUnknown_0201A520[];
 extern u16 gUnknown_0201AD20[];
-extern u32 gUnknown_0201A500[];
+extern u32 gUnknown_0201A500[HIGH_SCORE_NAME_LENGTH];
 extern u16 gUnknown_0201A920[];
 extern u16 gUnknown_03000000[];
 extern u8 gUnknown_03001800[3][0x800];
