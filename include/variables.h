@@ -20,7 +20,7 @@ extern u16 gUnknown_0201A520[];
 extern u16 gUnknown_0201AD20[];
 extern u32 gUnknown_0201A500[];
 extern u16 gUnknown_0201A920[];
-extern u8 gUnknown_03000000[];
+extern u16 gUnknown_03000000[];
 extern u8 gUnknown_03001800[3][0x800];
 //extern ? gOamBuffer;
 //extern ? IntrMain_Buffer;
@@ -282,5 +282,16 @@ extern u8 gUnknown_080E1740[];
 extern u8 gUnknown_080E1F40[];
 extern u8 gUnknown_080E5F60[];
 extern u8 gUnknown_080E7F60[];
+
+extern u16 gUnknown_03002300[];
+
+extern u8 gUnknown_080E9F60[];
+extern u8 gUnknown_080EA160[];
+extern u8 gUnknown_080EB160[];
+extern u8 gUnknown_080EC160[];
+extern u8 gUnknown_080EC960[];
+extern u8 gUnknown_080F1980[];
+extern u8 gUnknown_080F2180[];
+extern s16 gUnknown_086A7A1C[];
 
 #endif  // GUARD_VARIABLES_H

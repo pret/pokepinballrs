@@ -42,7 +42,7 @@ extern u8 gUnknown_0807DD00[];
 extern u8 gUnknown_0807D000[];
 extern u8 gUnknown_08089960[];
 extern u8 gUnknown_08089B60[];
-extern u8 gUnknown_03000000[];
+extern u16 gUnknown_03000000[];
 extern u8 gUnknown_08080500[];
 extern u8 gUnknown_080897E0[];
 extern u8 gUnknown_0807FD00[];

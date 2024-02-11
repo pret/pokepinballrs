@@ -10,6 +10,8 @@ void sub_FEB8(u32, u8 *, u32);
 void sub_A628(void);
 void sub_A87C(void);
 void sub_AAA8(void);
+void sub_ADFC(void);
+extern void sub_B0E8(void);
 
 extern StateFunc gIntroStateFuncs[15];
 extern u8 gUnknown_080798C0[];
@@ -104,6 +106,7 @@ struct UnkStruct_086A7768 {
 
 extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
 extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
+extern struct UnkStruct_086A7768 gUnknown_086A79FC[];
 
 void IntroMain(void) {
      gIntroStateFuncs[gMain.subState]();
@@ -1377,4 +1380,113 @@ void sub_AC20(void)
     // TODO Duplicate of sub_A950?
     sub_0518();
     gUnknown_0202C790++;
+}
+
+void sub_AC38(void)
+{
+    // TODO use proper constants - see LoadEReaderGraphics?
+    REG_DISPCNT = 0x1000;
+    REG_BG0CNT = 0xC00;
+    REG_DISPCNT |= 0x100;
+    REG_BG1CNT = 0x4E01;
+    REG_DISPCNT |= 0x200;
+    REG_BG2CNT = 0x5C02;
+    REG_DISPCNT |= 0x400;
+    REG_BG3CNT = 0x1E03;
+    REG_DISPCNT |= 0x800;
+
+    DmaCopy16(3, gUnknown_080F1980, (void *) 0x6006000, 0x800);
+    DmaCopy16(3, gUnknown_080EB160, (void *) 0x6007000, 0x1000);
+    DmaCopy16(3, gUnknown_080EA160, (void *) 0x600E000, 0x1000);
+    DmaCopy16(3, gUnknown_080EC160, (void *) 0x600F000, 0x800);
+    DmaCopy16(3, gUnknown_080EC960, (void *) 0x6000000, 0x2800);
+    DmaCopy16(3, gUnknown_080BD4C0, gUnknown_03000000, 0x4000);
+    DmaCopy16(3, gUnknown_080E9F60, (void *) 0x5000000, 0x180);
+    DmaCopy16(3, gUnknown_080F2180, (void *) 0x6010000, 0x3000);
+    DmaCopy16(3, gUnknown_080E9F60, OBJ_PLTT, 0x180);
+
+    sub_ADFC();
+    sub_B0E8();
+
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+
+    sub_0CBC();
+    sub_10424();
+    gUnknown_0202C790++;
+}
+
+void sub_ADFC(void)
+{
+    gUnknown_0201A450.unk10 = 0xB4;
+    gUnknown_0201A450.unk12 = 0xFFBC;
+    gUnknown_0201A450.unk0 = 0xB4;
+    gUnknown_0201A450.unk2 = 0xFFBC;
+    gUnknown_0201A450.unk20 = 0x80;
+    gUnknown_0201A450.unk22 = 0x88;
+
+    gUnknown_0202ADA0[0x0] = 0xFF58;
+    gUnknown_0202ADA0[0x1] = 0xFF98;
+    gUnknown_0202ADA0[0x4] = 0;
+    gUnknown_0202ADA0[0x5] = 0;
+    gUnknown_0202ADA0[0x2] = 0;
+
+    sub_10708(&gUnknown_03002300, (void *) 0x6002ee0, 8, 8);
+
+    gUnknown_0202ADA0[0x6] = 0xA5;
+    gUnknown_0202ADA0[0x7] = 0;
+    gUnknown_0202ADA0[0xA] = 0;
+    gUnknown_0202ADA0[0xC] = 0xA0;
+    gUnknown_0202ADA0[0xD] = 0;
+    gUnknown_0202ADA0[0x10] = 0;
+    gUnknown_0202ADA0[0x12] = 0;
+    gUnknown_0202ADA0[0x13] = 0;
+
+    gUnknown_0202BF10 = 0;
+    gUnknown_0202A578 = 0;
+}
+
+void sub_AE74(void)
+{
+    gUnknown_0201A450.unk10 -= 0x10;
+    gUnknown_0201A450.unk12 += 0xA;
+    gUnknown_0201A450.unk0 -= 0x10;
+    gUnknown_0201A450.unk2 += 0xA;
+    gUnknown_0201A450.unk20 += 0x5;
+    gUnknown_0201A450.unk22 -= 0x3;
+
+    gUnknown_0202ADA0[0x6] -= 0x10;
+    gUnknown_0202ADA0[0x7]++;
+    gUnknown_0202ADA0[0xC] -= 0x10;
+    gUnknown_0202ADA0[0x0] += gUnknown_0202ADA0[0x2];
+    gUnknown_0202ADA0[0x1] += 0x9;
+    gUnknown_0202ADA0[0x2]++;
+    gUnknown_0202ADA0[0x5]++;
+
+    if (gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[0x4]].unk2)
+    {
+        gUnknown_0202ADA0[0x4]++;
+        sub_10708(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[0x4]]], (void *) 0x6002EE0, 8, 8);
+    }
+
+    sub_B0E8();
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    
+    gUnknown_0202ADA0[0x10]++;
+    if (9 < gUnknown_0202ADA0[0x10])
+    {
+        gUnknown_0202ADA0[0x10] = 0;
+        gUnknown_0202C790++;
+    }
 }
