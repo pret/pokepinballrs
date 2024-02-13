@@ -802,3 +802,101 @@ void sub_DB70(void)
         gMain.subState = 0;
     }
 }
+
+void sub_DBF4(void)
+{
+    int i, j, k;
+
+    sub_E464();
+    switch (gUnknown_02002858.unk22)
+    {
+    case 4:
+        sub_2568();
+        sub_1AA4();
+        break;
+    case 130:
+        gUnknown_0202BEBC = 3;
+        m4aSongNumStart(0x65);
+        break;
+    case 250:
+        gUnknown_02002858.unk22 = 0;
+        gUnknown_0201B178 = 0;
+        gUnknown_0202BEBC = 0;
+        gUnknown_0202BED8 = sub_F4FC(0);
+        gUnknown_0201B170 = sub_F4FC(1);
+        for (i = 0; i < 2; i++)
+        {
+            for (j = 0; j < NUM_HIGH_SCORES; j++)
+            {
+                for (k = 0; k < 6; k++)
+                {
+                    gMain_saveData.highScores[i][j].data.raw[k] = gUnknown_0202C610[i][j].data.raw[k];
+                }
+            }
+        }
+        SaveFile_WriteToSram();
+        sub_02B4();
+        m4aMPlayAllStop();
+        sub_0D10();
+        gMain.subState = 12;
+        break;
+    }
+
+    gUnknown_02002858.unk22++;
+}
+
+void sub_DCF0(void)
+{
+    sub_E464();
+    if (gMain.newKeys & A_BUTTON)
+    {
+        m4aSongNumStart(0x65);
+        sub_F6E0();
+        SaveFile_WriteToSram();
+        sub_02B4();
+        m4aMPlayAllStop();
+        sub_0D10();
+        gMain.subState = 0;
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+        m4aSongNumStart(0x66);
+        gUnknown_0201B178 = 0;
+        gUnknown_0202BEBC = 0;
+        gMain.subState = 3;
+    }
+}
+
+void sub_DD4C(void)
+{
+    sub_02B4();
+    m4aMPlayAllStop();
+    sub_0D10();
+    gAutoDisplayTitlescreenMenu = 1;
+    SetMainGameState(1);
+}
+
+void sub_DD70(void)
+{
+    ResetSomeGraphicsRelatedStuff();
+    REG_DISPCNT = DISPCNT_OBJ_ON | DISPCNT_FORCED_BLANK;
+    REG_BG2CNT = 0x4006;
+    REG_DISPCNT |= DISPCNT_BG2_ON;
+    REG_BG3CNT = 0x420F;
+    REG_DISPCNT |= DISPCNT_BG3_ON;
+    gMain.unk16 = REG_DISPCNT;
+    DmaCopy16(3, gUnknown_0809DBE0, (void*) PLTT, 0x200);
+    DmaCopy16(3, gUnknown_080957A0, (void*) BG_VRAM + 0x4000, 0x4800);
+    DmaCopy16(3, gUnknown_0809AFC0, (void *)BG_VRAM + 0xC000, 0x2C00);
+    DmaCopy16(3, gUnknown_080947A0, gUnknown_03005C00, 0x1000);
+    DmaCopy16(3, gUnknown_08099FC0, (void *)BG_SCREEN_ADDR(2), 0x1000);
+    DmaCopy16(3, gUnknown_0809DDE0, (void *)OBJ_PLTT, 0x20);
+    DmaCopy16(3, gUnknown_0809DFE0, (void *)OBJ_VRAM0, 0x4420);
+    sub_DEB4();
+    sub_EE64();
+    DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
+    m4aSongNumStart(0x9);
+    sub_0CBC();
+    sub_024C();
+    gMain.subState++;
+}
