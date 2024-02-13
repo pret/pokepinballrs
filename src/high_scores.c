@@ -50,6 +50,7 @@ struct unkStruct_2002858
 struct unkStruct_2002858 gUnknown_02002858;
 
 extern struct HighScoreEntry gUnknown_0202C610[2][NUM_HIGH_SCORES];
+extern struct HighScoreEntry gUnknown_0202C550[2];
 extern u8 gUnknown_0809AFC0[];
 extern u8 gUnknown_080947A0[];
 extern u8 gUnknown_0809DDE0[];
@@ -582,7 +583,8 @@ void sub_D4B8(void)
     gMain.unk2E8[2].unk0 = gUnknown_02002882;
 }
 
-void sub_D664(void) {
+void sub_D664(void)
+{
     int i, j, k;
 
     sub_E3A8();
@@ -709,4 +711,94 @@ void sub_D664(void) {
     DmaCopy16(3, gUnknown_03005C00, 0x6000000, 0x1000);
     if (gUnknown_02002858.unk20 > 0)
         gUnknown_02002858.unk20--;
+}
+
+void sub_D9F8(void)
+{
+    sub_19B4();
+    sub_E908();
+    gUnknown_0201B124 = 0;
+    sub_E464();
+    gMain.subState = 6;
+}
+
+void sub_DA20(void)
+{
+    sub_E464();
+    if (gMain.newKeys & B_BUTTON)
+    {
+        m4aSongNumStart(0x66);
+        gUnknown_0201B178 = 0;
+        gUnknown_0202BEBC = 0;
+        sub_2568();
+        gMain.subState = 3;
+    }
+    else
+    {
+        gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
+        gUnknown_0202BDF0 = gUnknown_0202ADD0 & 3;
+        gUnknown_0201C1AC = (gUnknown_0202ADD0 & 0x1c) >> 2;
+        gUnknown_0202ADDC = (gUnknown_0202ADD0 & 0xe00) >> 9;
+        if (((gUnknown_0202ADD0 & 0x40) != 0) && gUnknown_0202BDF0 < 2)
+        {
+            sub_E970();
+            if ((gUnknown_0202ADD0 & 0x100) == 0)
+            {
+                s16 var0 = sub_E94C();
+                if (var0 == -1)
+                {
+                    gMain.subState = 8;
+                }
+                else if (var0 == 1)
+                {
+                    gUnknown_0202BEBC = 2;
+                    gMain.subState = 7;
+                    m4aSongNumStart(0x8A);
+                }
+            }
+
+            gUnknown_0201A510++;
+            if ((gUnknown_0202ADD0 & 0x7f0000) != 0 && gUnknown_0202ADE4 == -1 && ++gUnknown_0201A444 > 180)
+            {
+                gUnknown_0202BEBC = 2;
+                gMain.subState = 7;
+                m4aSongNumStart(0x8A);
+            }
+        }
+    }
+}
+
+void sub_DB4C(void)
+{
+    if (++gUnknown_0201A444 > 2)
+    {
+        gUnknown_0201A444 = 0;
+        gMain.subState = 5;
+    }
+}
+
+void sub_DB70(void)
+{
+    int i, j;
+
+    sub_E464();
+    if (++gUnknown_02002858.unk22 > 90)
+    {
+        gUnknown_02002858.unk22 = 0;
+        gUnknown_0201B178 = 0;
+        gUnknown_0202BEBC = 0;
+        sub_2568();
+        sub_1AA4();
+        for (i = 0; i < 2; i++)
+        {
+            for (j = 0; j < 6; j++)
+            {
+                gUnknown_0202C550[i].data.raw[j] = gUnknown_0202C610[i][0].data.raw[j];
+            }
+        }
+        sub_02B4();
+        m4aMPlayAllStop();
+        sub_0D10();
+        gMain.subState = 0;
+    }
 }

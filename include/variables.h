@@ -197,6 +197,7 @@ extern struct Coord16 gUnknown_086A96C0[];
 extern u16 gUnknown_02019C40[];
 extern s16 gUnknown_0201A514;
 extern s16 gUnknown_0202ADE0;
+extern s8 gUnknown_0202ADE4;
 extern s16 gUnknown_0202BEB8;
 extern s16 gUnknown_0202C5B0;
 
