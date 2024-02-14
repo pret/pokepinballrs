@@ -137,7 +137,6 @@ extern void sub_D9F8(void);
 //extern ? sub_DD4C();
 //extern ? sub_DD70();
 extern void sub_DEB4(void);
-//extern ? sub_DF68();
 //extern ? sub_E0C4();
 //extern ? sub_E0EC();
 //extern ? sub_E230();

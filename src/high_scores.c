@@ -28,7 +28,7 @@ struct unkStruct_2002858
 {
     u32 unk0;
     u32 unk4;
-    u8 fill8[2];
+    s16 unk8;
     u8 unkA;
     u8 unkB;
     s32 unkC;
@@ -42,7 +42,7 @@ struct unkStruct_2002858
     s16 unk1E;
     s16 unk20;
     s16 unk22;
-    u8 unk24;
+    s8 unk24;
     u8 unk25;
     u8 unk26;
 };
@@ -899,4 +899,192 @@ void sub_DD70(void)
     sub_0CBC();
     sub_024C();
     gMain.subState++;
+}
+
+void sub_DEB4(void)
+{
+    int i, j, k;
+
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < NUM_HIGH_SCORES; j++)
+        {
+            for (k = 0; k < 6; k++)
+            {
+                gUnknown_0202C610[i][j].data.raw[k] = gMain_saveData.highScores[i][j].data.raw[k];
+            }
+        }
+    }
+
+    gUnknown_02002858.unk8 = 0;
+    gUnknown_02002858.unk1E = 0;
+    gUnknown_02002858.unk1C = 0;
+    gUnknown_02002858.unkB = 0;
+    gUnknown_02002882 = 0;
+    gUnknown_02002880 = -1;
+    gUnknown_02002858.unk24 = 0;
+    gUnknown_02002858.unkA = 0;
+    gMain.unk2E8[3].unk0 = gUnknown_02002882;
+    gMain.unk2E8[2].unk0 = gUnknown_02002882;
+}
+
+void sub_DF68(void)
+{
+    switch (gUnknown_02002858.unkA)
+    {
+    case 0:
+        if (++gUnknown_02002858.unk1E > 8)
+        {
+            gUnknown_02002858.unk1E = 0;
+            sub_F8B0(0, 0, gUnknown_02002858.unk1C);
+            if (++gUnknown_02002858.unk1C > 2)
+                gUnknown_02002858.unk1C = 0;
+        }
+        if (gUnknown_02002858.unk8 > 600)
+        {
+            gUnknown_02002858.unk8 = 0;
+            gUnknown_02002858.unk1E = 0;
+            gUnknown_02002858.unk1C = 0;
+            gUnknown_02002858.unkA = 1;
+        }
+        break;
+    case 1:
+        gUnknown_02002882 += 8;
+        if (gUnknown_02002882 >= 240)
+        {
+            gUnknown_02002858.unk8 = 0;
+            gUnknown_02002858.unkA = 2;
+        }
+        gMain.unk2E8[3].unk0 = gUnknown_02002882;
+        gMain.unk2E8[2].unk0 = gUnknown_02002882;
+        break;
+    case 2:
+        if (++gUnknown_02002858.unk1E > 8)
+        {
+            gUnknown_02002858.unk1E = 0;
+            sub_F8B0(1, 0, gUnknown_02002858.unk1C);
+            if (++gUnknown_02002858.unk1C > 2)
+                gUnknown_02002858.unk1C = 0;
+        }
+        if (gUnknown_02002858.unk8 > 600)
+        {
+            gUnknown_02002858.unk8 = 0;
+            gUnknown_02002858.unk24 = 0;
+            gMain.subState++;
+        }
+        break;
+    }
+
+    gUnknown_02002858.unk8++;
+    DmaCopy16(3, gUnknown_03005C00, 0x6000000, 0x1000);
+
+    if (gMain.newKeys & (START_BUTTON | A_BUTTON | B_BUTTON))
+    {
+        m4aSongNumStart(0x66);
+        gUnknown_02002858.unk24 = 1;
+        gMain.subState++;
+    }
+}
+
+void sub_E0C4(void)
+{
+    sub_02B4();
+	m4aMPlayAllStop();
+	sub_0D10();
+    SetMainGameState(gUnknown_02002858.unk24);
+}
+
+void sub_E0EC(void)
+{
+    ResetSomeGraphicsRelatedStuff();
+    REG_DISPCNT = DISPCNT_OBJ_ON | DISPCNT_FORCED_BLANK;
+    REG_BG2CNT = 0x4006;
+    REG_DISPCNT |= DISPCNT_BG2_ON;
+    REG_BG3CNT = 0x420f;
+    REG_DISPCNT |= DISPCNT_BG3_ON;
+    gMain.unk16 = REG_DISPCNT;
+    DmaCopy16(3, gUnknown_0809DBE0, (void*) PLTT, 0x200);
+    DmaCopy16(3, gUnknown_080957A0, (void*) BG_VRAM + 0x4000, 0x4800);
+    DmaCopy16(3, gUnknown_0809AFC0, (void *)BG_VRAM + 0xC000, 0x2C00);
+    DmaCopy16(3, gUnknown_080947A0, gUnknown_03005C00, 0x1000);
+    DmaCopy16(3, gUnknown_08099FC0, (void *)BG_SCREEN_ADDR(2), 0x1000);
+    DmaCopy16(3, gUnknown_0809DDE0, (void *)OBJ_PLTT, 0x20);
+    DmaCopy16(3, gUnknown_0809DFE0, (void *)OBJ_VRAM0, 0x4420);
+    sub_DEB4();
+    sub_EE64();
+    DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
+    m4aSongNumStart(0x9);
+    sub_0CBC();
+    sub_024C();
+    gMain.subState++;
+}
+
+void sub_E230(void)
+{
+    switch (gUnknown_02002858.unkA)
+    {
+    case 0:
+        if (gUnknown_0202BED8 != -1)
+        {
+            if (++gUnknown_02002858.unk1E > 8)
+            {
+                gUnknown_02002858.unk1E = 0;
+                sub_F8B0(0, gUnknown_0202BED8, gUnknown_02002858.unk1C);
+                if (++gUnknown_02002858.unk1C > 2)
+                    gUnknown_02002858.unk1C = 0;
+            }
+        }
+        if (gUnknown_02002858.unk8 > 120)
+        {
+            gUnknown_02002858.unk8 = 0;
+            gUnknown_02002858.unk1E = 0;
+            gUnknown_02002858.unk1C = 0;
+            gUnknown_02002858.unkA = 1;
+        }
+        break;
+    case 1:
+        gUnknown_02002882 += 8;
+        if (gUnknown_02002882 >= 240)
+        {
+            gUnknown_02002858.unk8 = 0;
+            gUnknown_02002858.unkA = 2;
+        }
+        gMain.unk2E8[3].unk0 = gUnknown_02002882;
+        gMain.unk2E8[2].unk0 = gUnknown_02002882;
+        break;
+    case 2:
+        if (gUnknown_0201B170 != -1)
+        {
+            if (++gUnknown_02002858.unk1E > 8)
+            {
+                gUnknown_02002858.unk1E = 0;
+                sub_F8B0(1, gUnknown_0201B170, gUnknown_02002858.unk1C);
+                if (++gUnknown_02002858.unk1C > 2)
+                    gUnknown_02002858.unk1C = 0;
+            }
+        }
+        if (gUnknown_02002858.unk8 > 120)
+        {
+            gUnknown_02002858.unk8 = 0;
+            gMain.subState++;
+        }
+        break;
+    }
+
+    gUnknown_02002858.unk8++;
+    DmaCopy16(3, gUnknown_03005C00, 0x6000000, 0x1000);
+
+    if (gMain.newKeys & (START_BUTTON | A_BUTTON | B_BUTTON))
+    {
+        m4aSongNumStart(0x66);
+        gMain.subState++;
+    }
+}
+
+void sub_E390(void)
+{
+    sub_02B4();
+	m4aMPlayAllStop();
+	sub_0D10();
+	SetMainGameState(8);
 }
