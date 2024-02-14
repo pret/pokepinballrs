@@ -1088,3 +1088,23 @@ void sub_E390(void)
 	sub_0D10();
 	SetMainGameState(8);
 }
+
+void sub_E3A8(void)
+{
+    int i;
+    struct SpriteGroup *spriteGroup;
+
+    spriteGroup = &gUnknown_0200B3B8[gUnknown_02002858.unk12];
+    spriteGroup->available = 1;
+    LoadSpriteSets(gUnknown_086A7DA8, 2, gUnknown_0200B3B8);
+
+    spriteGroup->baseX = gUnknown_080797F0[gUnknown_02002858.unkB][gUnknown_02002858.unkC].x + gUnknown_02002858.unk10 * 8;
+    spriteGroup->baseY = gUnknown_080797F0[gUnknown_02002858.unkB][gUnknown_02002858.unkC].y;
+    for (i = 0; i < 2; i++)
+    {
+        gOamBuffer[spriteGroup->oam[i].oamId].x = spriteGroup->oam[i].xOffset + spriteGroup->baseX;
+        gOamBuffer[spriteGroup->oam[i].oamId].y = spriteGroup->oam[i].yOffset + spriteGroup->baseY;
+    }
+
+    spriteGroup->available = 0;
+}

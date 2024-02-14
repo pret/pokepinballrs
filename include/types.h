@@ -40,6 +40,12 @@ struct Coord16
     u16 y;
 };
 
+struct Coord32
+{
+    u32 x;
+    u32 y;
+};
+
 struct PokemonSpecies {
     u16 mainSeriesIndexNumber; // Refers to the generation three internal index number; e.g. Treecko is 0x115 (decimal 227).
     u8 unk2[0x5];
