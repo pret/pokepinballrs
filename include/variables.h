@@ -135,6 +135,8 @@ extern const s16 gEReaderAccessButtonSequence[];
 extern struct Coord16 gUnknown_086A6B28[];
 extern const struct SpriteSet *const gUnknown_086A6AD4[];
 extern const struct SpriteSet *const gUnknown_086A7DA8[];
+extern const struct SpriteSet *const gUnknown_086A7DB0[];
+extern const struct SpriteSet *const gUnknown_086A7DD4[];
 extern void (*gFieldSelectStateFuncs[])(void);
 extern u8 gUnknown_080A2400[];
 extern u8 gFieldSelectWindow_Gfx[];

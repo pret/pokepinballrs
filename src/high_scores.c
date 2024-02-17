@@ -12,12 +12,17 @@ extern u8 gUnknown_08099FC0[];
 extern u8 gUnknown_080957A0[];
 extern s16 gUnknown_0202C588;
 extern u8 gUnknown_0202BEB0;
-extern u8 gUnknown_0201C18C;
+extern s8 gUnknown_0201C18C;
 extern s16 gUnknown_0201A4B8;
 extern s8 gUnknown_0202BED4;
 extern s8 gUnknown_0202C580;
-extern u8 gUnknown_0201B178;
+extern s8 gUnknown_0201B178;
 extern u8 gUnknown_0202BEBC;
+extern u16 gUnknown_0201C1B0;
+extern u16 gUnknown_0202C59C;
+extern s8 gUnknown_0201A4BC;
+extern s8 gUnknown_0202C598;
+extern s8 gUnknown_0202C54C;
 
 extern s16 gUnknown_02002880;
 extern s16 gUnknown_02002882;
@@ -44,7 +49,7 @@ struct unkStruct_2002858
     s16 unk22;
     s8 unk24;
     u8 unk25;
-    u8 unk26;
+    s8 unk26;
 };
 
 struct unkStruct_2002858 gUnknown_02002858;
@@ -1107,4 +1112,930 @@ void sub_E3A8(void)
     }
 
     spriteGroup->available = 0;
+}
+
+extern s8 gUnknown_0200287D;
+
+
+#ifdef NONMATCHING
+static inline void sub_E464_HELPER(int x, struct SpriteGroup *spriteGroup, struct SpriteGroup *spriteGroup4, struct SpriteGroup *spriteGroup3)
+{
+    int i;
+    const struct SpriteSet *spriteSet;
+    register struct OamDataSimple *oamData asm("r4");
+    spriteGroup->baseX = x;
+    spriteGroup->baseY = 144;
+    oamData = &spriteGroup->oam[0];
+    gOamBuffer[oamData->oamId].tileNum = gUnknown_02002858.unk1A * 2 + 2;
+    gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup->baseX;
+    gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup->baseY;
+}
+
+// This one is tough. I think there might be an inline function used for the shared logic
+// of the two main if statements.
+void sub_E464(void)
+{
+    int i;
+    int count;
+    register struct SpriteGroup *spriteGroups asm("r6");
+    register struct SpriteGroup *spriteGroup1 asm("r4");
+    struct SpriteGroup *spriteGroup2;
+    struct SpriteGroup *spriteGroup3;
+    struct SpriteGroup *spriteGroup4;
+    struct SpriteGroup *spriteGroup5;
+    register struct unkStruct_2002858 *var1_02002858 asm("r9");
+    const struct SpriteSet *spriteSet;
+    struct OamDataSimple *oamData;
+
+    spriteGroups = gUnknown_0200B3B8;
+    spriteGroup1 = spriteGroups;
+    spriteGroup2 = &spriteGroups[1];
+    spriteGroup3 = &spriteGroups[(s8)gUnknown_0202BEBC + 2];
+    var1_02002858 = &gUnknown_02002858;
+    spriteGroup4 = &spriteGroups[gUnknown_0200287D + 7];
+
+    if (gUnknown_02002882 == 0)
+    {
+        spriteGroups->available = 1;
+        spriteGroup2->available = 0;
+        spriteGroup3->available = gUnknown_0201B178;
+        spriteGroup4->available = var1_02002858->unk26;
+        LoadSpriteSets(gUnknown_086A7DB0, 9, spriteGroups);
+        sub_E464_HELPER(220, spriteGroup1, spriteGroup4, spriteGroup3);
+        if (spriteGroup4->available == 1)
+        {
+            spriteGroup4->baseX = 84;
+            spriteGroup4->baseY = 150;
+            spriteSet = gUnknown_086A7DB0[gUnknown_0200287D + 7];
+            for (i = 0; i < spriteSet->count; i++)
+            {
+                oamData = &spriteGroup4->oam[i];
+                gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup4->baseX;
+                gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup4->baseY;
+            }
+        }
+        if (spriteGroup3->available == 1)
+        {
+            switch ((s8)gUnknown_0202BEBC)
+            {
+            case 0:
+            case 4:
+                spriteGroup3->baseX = 120;
+                spriteGroup3->baseY = 100;
+                break;
+            default:
+                spriteGroup3->baseX = 120;
+                spriteGroup3->baseY = 80;
+                break;
+            }
+            spriteSet = gUnknown_086A7DB0[(s8)gUnknown_0202BEBC + 2];
+            for (i = 0; i < spriteSet->count; i++)
+            {
+                oamData = &spriteGroup3->oam[i];
+                gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup3->baseX;
+                gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup3->baseY;
+            }
+        }
+    }
+    else if (gUnknown_02002882 == 240)
+    {
+        spriteGroup1->available = 0;
+        spriteGroup2->available = 1;
+        spriteGroup3->available = gUnknown_0201B178;
+        spriteGroup4->available = var1_02002858->unk26;
+        LoadSpriteSets(gUnknown_086A7DB0, 2, gUnknown_0200B3B8);
+        sub_E464_HELPER(4, spriteGroup2, spriteGroup4, spriteGroup3);
+        if (spriteGroup4->available == 1)
+    {
+        spriteGroup4->baseX = 84;
+        spriteGroup4->baseY = 150;
+        spriteSet = gUnknown_086A7DB0[gUnknown_0200287D + 7];
+        for (i = 0; i < spriteSet->count; i++)
+        {
+            oamData = &spriteGroup4->oam[i];
+            gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup4->baseX;
+            gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup4->baseY;
+        }
+    }
+    if (spriteGroup3->available == 1)
+    {
+        switch ((s8)gUnknown_0202BEBC)
+        {
+        case 0:
+        case 4:
+            spriteGroup3->baseX = 120;
+            spriteGroup3->baseY = 100;
+            break;
+        default:
+            spriteGroup3->baseX = 120;
+            spriteGroup3->baseY = 80;
+            break;
+        }
+        spriteSet = gUnknown_086A7DB0[(s8)gUnknown_0202BEBC + 2];
+        for (i = 0; i < spriteSet->count; i++)
+        {
+            oamData = &spriteGroup3->oam[i];
+            gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup3->baseX;
+            gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup3->baseY;
+        }
+    }
+    }
+    else
+    {
+        spriteGroup1->available = 0;
+        spriteGroup2->available = 0;
+        LoadSpriteSets(gUnknown_086A7DB0, 9, gUnknown_0200B3B8);
+    }
+
+    spriteGroup3->available = 0;
+    spriteGroup4->available = 0;
+}
+#else
+NAKED
+void sub_E464(void)
+{
+    asm_unified("\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	ldr r6, _0800E5CC @ =gUnknown_0200B3B8\n\
+	adds r4, r6, #0\n\
+	movs r0, #0xb8\n\
+	adds r0, r0, r6\n\
+	mov sl, r0\n\
+	mov r5, sl\n\
+	ldr r0, _0800E5D0 @ =gUnknown_0202BEBC\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	movs r2, #0xb8\n\
+	adds r1, r0, #0\n\
+	muls r1, r2, r1\n\
+	movs r3, #0xb8\n\
+	lsls r3, r3, #1\n\
+	adds r0, r6, r3\n\
+	adds r7, r1, r0\n\
+	ldr r0, _0800E5D4 @ =gUnknown_02002858\n\
+	mov sb, r0\n\
+	ldr r1, _0800E5D8 @ =gUnknown_0200287D\n\
+	movs r0, #0\n\
+	ldrsb r0, [r1, r0]\n\
+	adds r1, r0, #0\n\
+	muls r1, r2, r1\n\
+	movs r2, #0xa1\n\
+	lsls r2, r2, #3\n\
+	adds r0, r6, r2\n\
+	adds r1, r1, r0\n\
+	mov r8, r1\n\
+	ldr r0, _0800E5DC @ =gUnknown_02002882\n\
+	movs r3, #0\n\
+	ldrsh r1, [r0, r3]\n\
+	cmp r1, #0\n\
+	beq _0800E4B4\n\
+	b _0800E674\n\
+_0800E4B4:\n\
+	movs r0, #1\n\
+	strh r0, [r6]\n\
+	strh r1, [r5]\n\
+	ldr r0, _0800E5E0 @ =gUnknown_0201B178\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	strh r0, [r7]\n\
+	mov r0, sb\n\
+	adds r0, #0x26\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	mov r1, r8\n\
+	strh r0, [r1]\n\
+	ldr r0, _0800E5E4 @ =gUnknown_086A7DB0\n\
+	movs r1, #9\n\
+	adds r2, r6, #0\n\
+	bl LoadSpriteSets\n\
+	movs r0, #0xdc\n\
+	strh r0, [r6, #2]\n\
+	movs r0, #0x90\n\
+	strh r0, [r6, #4]\n\
+	adds r4, #8\n\
+	ldr r2, _0800E5E8 @ =gOamBuffer\n\
+	mov sl, r2\n\
+	ldrh r2, [r4]\n\
+	lsls r2, r2, #3\n\
+	add r2, sl\n\
+	mov r3, sb\n\
+	movs r5, #0x1a\n\
+	ldrsh r1, [r3, r5]\n\
+	lsls r1, r1, #1\n\
+	adds r1, #2\n\
+	ldr r3, _0800E5EC @ =0x000003FF\n\
+	adds r0, r3, #0\n\
+	ands r1, r0\n\
+	ldrh r3, [r2, #4]\n\
+	ldr r0, _0800E5F0 @ =0xFFFFFC00\n\
+	ands r0, r3\n\
+	orrs r0, r1\n\
+	strh r0, [r2, #4]\n\
+	ldrh r2, [r4]\n\
+	lsls r2, r2, #3\n\
+	add r2, sl\n\
+	movs r5, #2\n\
+	ldrsh r1, [r4, r5]\n\
+	movs r3, #2\n\
+	ldrsh r0, [r6, r3]\n\
+	adds r1, r1, r0\n\
+	ldr r5, _0800E5F4 @ =0x000001FF\n\
+	adds r0, r5, #0\n\
+	ands r1, r0\n\
+	ldrh r3, [r2, #2]\n\
+	ldr r0, _0800E5F8 @ =0xFFFFFE00\n\
+	mov ip, r0\n\
+	ands r0, r3\n\
+	orrs r0, r1\n\
+	strh r0, [r2, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	add r1, sl\n\
+	ldrb r0, [r6, #4]\n\
+	ldrb r4, [r4, #4]\n\
+	adds r0, r0, r4\n\
+	strb r0, [r1]\n\
+	mov r1, r8\n\
+	ldrh r0, [r1]\n\
+	cmp r0, #1\n\
+	bne _0800E5AA\n\
+	movs r0, #0x54\n\
+	strh r0, [r1, #2]\n\
+	movs r0, #0x96\n\
+	strh r0, [r1, #4]\n\
+	ldr r2, _0800E5D8 @ =gUnknown_0200287D\n\
+	movs r0, #0\n\
+	ldrsb r0, [r2, r0]\n\
+	adds r0, #7\n\
+	lsls r0, r0, #2\n\
+	ldr r3, _0800E5E4 @ =gUnknown_086A7DB0\n\
+	adds r0, r0, r3\n\
+	ldr r6, [r0]\n\
+	movs r5, #0\n\
+	ldrh r0, [r6]\n\
+	cmp r5, r0\n\
+	bge _0800E5AA\n\
+	mov sb, sl\n\
+	mov sl, ip\n\
+	mov r4, r8\n\
+	adds r4, #8\n\
+_0800E56A:\n\
+	ldrh r3, [r4]\n\
+	lsls r3, r3, #3\n\
+	add r3, sb\n\
+	movs r2, #2\n\
+	ldrsh r1, [r4, r2]\n\
+	mov ip, r1\n\
+	mov r1, r8\n\
+	movs r2, #2\n\
+	ldrsh r0, [r1, r2]\n\
+	mov r2, ip\n\
+	adds r1, r2, r0\n\
+	ldr r2, _0800E5F4 @ =0x000001FF\n\
+	adds r0, r2, #0\n\
+	ands r1, r0\n\
+	ldrh r2, [r3, #2]\n\
+	mov r0, sl\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r3, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	add r1, sb\n\
+	mov r3, r8\n\
+	ldrb r0, [r3, #4]\n\
+	ldrb r2, [r4, #4]\n\
+	adds r0, r0, r2\n\
+	strb r0, [r1]\n\
+	adds r4, #8\n\
+	adds r5, #1\n\
+	ldrh r3, [r6]\n\
+	cmp r5, r3\n\
+	blt _0800E56A\n\
+_0800E5AA:\n\
+	ldrh r0, [r7]\n\
+	cmp r0, #1\n\
+	beq _0800E5B2\n\
+	b _0800E846\n\
+_0800E5B2:\n\
+	ldr r0, _0800E5D0 @ =gUnknown_0202BEBC\n\
+	movs r1, #0\n\
+	ldrsb r1, [r0, r1]\n\
+	adds r2, r0, #0\n\
+	cmp r1, #0\n\
+	beq _0800E5C2\n\
+	cmp r1, #4\n\
+	bne _0800E5FC\n\
+_0800E5C2:\n\
+	movs r0, #0x78\n\
+	strh r0, [r7, #2]\n\
+	movs r0, #0x64\n\
+	b _0800E602\n\
+	.align 2, 0\n\
+_0800E5CC: .4byte gUnknown_0200B3B8\n\
+_0800E5D0: .4byte gUnknown_0202BEBC\n\
+_0800E5D4: .4byte gUnknown_02002858\n\
+_0800E5D8: .4byte gUnknown_0200287D\n\
+_0800E5DC: .4byte gUnknown_02002882\n\
+_0800E5E0: .4byte gUnknown_0201B178\n\
+_0800E5E4: .4byte gUnknown_086A7DB0\n\
+_0800E5E8: .4byte gOamBuffer\n\
+_0800E5EC: .4byte 0x000003FF\n\
+_0800E5F0: .4byte 0xFFFFFC00\n\
+_0800E5F4: .4byte 0x000001FF\n\
+_0800E5F8: .4byte 0xFFFFFE00\n\
+_0800E5FC:\n\
+	movs r0, #0x78\n\
+	strh r0, [r7, #2]\n\
+	movs r0, #0x50\n\
+_0800E602:\n\
+	strh r0, [r7, #4]\n\
+	ldr r1, _0800E664 @ =gUnknown_086A7DB0\n\
+	movs r0, #0\n\
+	ldrsb r0, [r2, r0]\n\
+	adds r0, #2\n\
+	lsls r0, r0, #2\n\
+	adds r0, r0, r1\n\
+	ldr r6, [r0]\n\
+	movs r5, #0\n\
+	ldrh r0, [r6]\n\
+	cmp r5, r0\n\
+	blt _0800E61C\n\
+	b _0800E846\n\
+_0800E61C:\n\
+	ldr r1, _0800E668 @ =gOamBuffer\n\
+	mov sb, r1\n\
+	ldr r2, _0800E66C @ =0xFFFFFE00\n\
+	mov sl, r2\n\
+	adds r4, r7, #0\n\
+	adds r4, #8\n\
+_0800E628:\n\
+	ldrh r3, [r4]\n\
+	lsls r3, r3, #3\n\
+	add r3, sb\n\
+	movs r0, #2\n\
+	ldrsh r1, [r4, r0]\n\
+	movs r2, #2\n\
+	ldrsh r0, [r7, r2]\n\
+	adds r1, r1, r0\n\
+	ldr r2, _0800E670 @ =0x000001FF\n\
+	adds r0, r2, #0\n\
+	ands r1, r0\n\
+	ldrh r2, [r3, #2]\n\
+	mov r0, sl\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r3, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	add r1, sb\n\
+	ldrb r0, [r7, #4]\n\
+	ldrb r3, [r4, #4]\n\
+	adds r0, r0, r3\n\
+	strb r0, [r1]\n\
+	adds r4, #8\n\
+	adds r5, #1\n\
+	ldrh r0, [r6]\n\
+	cmp r5, r0\n\
+	blt _0800E628\n\
+	b _0800E846\n\
+	.align 2, 0\n\
+_0800E664: .4byte gUnknown_086A7DB0\n\
+_0800E668: .4byte gOamBuffer\n\
+_0800E66C: .4byte 0xFFFFFE00\n\
+_0800E670: .4byte 0x000001FF\n\
+_0800E674:\n\
+	cmp r1, #0xf0\n\
+	beq _0800E67A\n\
+	b _0800E834\n\
+_0800E67A:\n\
+	movs r0, #0\n\
+	strh r0, [r6]\n\
+	movs r0, #1\n\
+	mov r1, sl\n\
+	strh r0, [r1]\n\
+	ldr r0, _0800E79C @ =gUnknown_0201B178\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	strh r0, [r7]\n\
+	mov r0, sb\n\
+	adds r0, #0x26\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	mov r2, r8\n\
+	strh r0, [r2]\n\
+	ldr r0, _0800E7A0 @ =gUnknown_086A7DB0\n\
+	movs r1, #9\n\
+	adds r2, r6, #0\n\
+	bl LoadSpriteSets\n\
+	movs r0, #4\n\
+	mov r3, sl\n\
+	strh r0, [r3, #2]\n\
+	movs r0, #0x90\n\
+	strh r0, [r3, #4]\n\
+	adds r4, r5, #0\n\
+	adds r4, #8\n\
+	ldr r5, _0800E7A4 @ =gOamBuffer\n\
+	mov ip, r5\n\
+	ldrh r2, [r4]\n\
+	lsls r2, r2, #3\n\
+	add r2, ip\n\
+	mov r0, sb\n\
+	movs r3, #0x1a\n\
+	ldrsh r1, [r0, r3]\n\
+	lsls r1, r1, #1\n\
+	adds r1, #2\n\
+	ldr r5, _0800E7A8 @ =0x000003FF\n\
+	adds r0, r5, #0\n\
+	ands r1, r0\n\
+	ldrh r3, [r2, #4]\n\
+	ldr r0, _0800E7AC @ =0xFFFFFC00\n\
+	ands r0, r3\n\
+	orrs r0, r1\n\
+	strh r0, [r2, #4]\n\
+	ldrh r2, [r4]\n\
+	lsls r2, r2, #3\n\
+	add r2, ip\n\
+	movs r0, #2\n\
+	ldrsh r1, [r4, r0]\n\
+	mov r3, sl\n\
+	movs r5, #2\n\
+	ldrsh r0, [r3, r5]\n\
+	adds r1, r1, r0\n\
+	ldr r3, _0800E7B0 @ =0x000001FF\n\
+	adds r0, r3, #0\n\
+	ands r1, r0\n\
+	ldrh r3, [r2, #2]\n\
+	ldr r0, _0800E7B4 @ =0xFFFFFE00\n\
+	ands r0, r3\n\
+	orrs r0, r1\n\
+	strh r0, [r2, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	add r1, ip\n\
+	mov r5, sl\n\
+	ldrb r0, [r5, #4]\n\
+	ldrb r4, [r4, #4]\n\
+	adds r0, r0, r4\n\
+	strb r0, [r1]\n\
+	mov r1, r8\n\
+	ldrh r0, [r1]\n\
+	cmp r0, #1\n\
+	bne _0800E77C\n\
+	movs r0, #0x54\n\
+	strh r0, [r1, #2]\n\
+	movs r0, #0x96\n\
+	strh r0, [r1, #4]\n\
+	ldr r2, _0800E7B8 @ =gUnknown_0200287D\n\
+	movs r0, #0\n\
+	ldrsb r0, [r2, r0]\n\
+	adds r0, #7\n\
+	lsls r0, r0, #2\n\
+	ldr r3, _0800E7A0 @ =gUnknown_086A7DB0\n\
+	adds r0, r0, r3\n\
+	ldr r6, [r0]\n\
+	movs r5, #0\n\
+	ldrh r0, [r6]\n\
+	cmp r5, r0\n\
+	bge _0800E77C\n\
+	mov sb, ip\n\
+	ldr r1, _0800E7B4 @ =0xFFFFFE00\n\
+	mov sl, r1\n\
+	mov r4, r8\n\
+	adds r4, #8\n\
+_0800E73C:\n\
+	ldrh r3, [r4]\n\
+	lsls r3, r3, #3\n\
+	add r3, sb\n\
+	movs r0, #2\n\
+	ldrsh r2, [r4, r0]\n\
+	mov ip, r2\n\
+	mov r1, r8\n\
+	movs r2, #2\n\
+	ldrsh r0, [r1, r2]\n\
+	mov r2, ip\n\
+	adds r1, r2, r0\n\
+	ldr r2, _0800E7B0 @ =0x000001FF\n\
+	adds r0, r2, #0\n\
+	ands r1, r0\n\
+	ldrh r2, [r3, #2]\n\
+	mov r0, sl\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r3, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	add r1, sb\n\
+	mov r3, r8\n\
+	ldrb r0, [r3, #4]\n\
+	ldrb r2, [r4, #4]\n\
+	adds r0, r0, r2\n\
+	strb r0, [r1]\n\
+	adds r4, #8\n\
+	adds r5, #1\n\
+	ldrh r3, [r6]\n\
+	cmp r5, r3\n\
+	blt _0800E73C\n\
+_0800E77C:\n\
+	ldrh r0, [r7]\n\
+	cmp r0, #1\n\
+	bne _0800E846\n\
+	ldr r0, _0800E7BC @ =gUnknown_0202BEBC\n\
+	movs r1, #0\n\
+	ldrsb r1, [r0, r1]\n\
+	adds r2, r0, #0\n\
+	cmp r1, #0\n\
+	beq _0800E792\n\
+	cmp r1, #4\n\
+	bne _0800E7C0\n\
+_0800E792:\n\
+	movs r0, #0x78\n\
+	strh r0, [r7, #2]\n\
+	movs r0, #0x64\n\
+	b _0800E7C6\n\
+	.align 2, 0\n\
+_0800E79C: .4byte gUnknown_0201B178\n\
+_0800E7A0: .4byte gUnknown_086A7DB0\n\
+_0800E7A4: .4byte gOamBuffer\n\
+_0800E7A8: .4byte 0x000003FF\n\
+_0800E7AC: .4byte 0xFFFFFC00\n\
+_0800E7B0: .4byte 0x000001FF\n\
+_0800E7B4: .4byte 0xFFFFFE00\n\
+_0800E7B8: .4byte gUnknown_0200287D\n\
+_0800E7BC: .4byte gUnknown_0202BEBC\n\
+_0800E7C0:\n\
+	movs r0, #0x78\n\
+	strh r0, [r7, #2]\n\
+	movs r0, #0x50\n\
+_0800E7C6:\n\
+	strh r0, [r7, #4]\n\
+	ldr r1, _0800E824 @ =gUnknown_086A7DB0\n\
+	movs r0, #0\n\
+	ldrsb r0, [r2, r0]\n\
+	adds r0, #2\n\
+	lsls r0, r0, #2\n\
+	adds r0, r0, r1\n\
+	ldr r6, [r0]\n\
+	movs r5, #0\n\
+	ldrh r0, [r6]\n\
+	cmp r5, r0\n\
+	bge _0800E846\n\
+	ldr r1, _0800E828 @ =gOamBuffer\n\
+	mov sb, r1\n\
+	ldr r2, _0800E82C @ =0xFFFFFE00\n\
+	mov sl, r2\n\
+	adds r4, r7, #0\n\
+	adds r4, #8\n\
+_0800E7EA:\n\
+	ldrh r3, [r4]\n\
+	lsls r3, r3, #3\n\
+	add r3, sb\n\
+	movs r0, #2\n\
+	ldrsh r1, [r4, r0]\n\
+	movs r2, #2\n\
+	ldrsh r0, [r7, r2]\n\
+	adds r1, r1, r0\n\
+	ldr r2, _0800E830 @ =0x000001FF\n\
+	adds r0, r2, #0\n\
+	ands r1, r0\n\
+	ldrh r2, [r3, #2]\n\
+	mov r0, sl\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r3, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	add r1, sb\n\
+	ldrb r0, [r7, #4]\n\
+	ldrb r3, [r4, #4]\n\
+	adds r0, r0, r3\n\
+	strb r0, [r1]\n\
+	adds r4, #8\n\
+	adds r5, #1\n\
+	ldrh r0, [r6]\n\
+	cmp r5, r0\n\
+	blt _0800E7EA\n\
+	b _0800E846\n\
+	.align 2, 0\n\
+_0800E824: .4byte gUnknown_086A7DB0\n\
+_0800E828: .4byte gOamBuffer\n\
+_0800E82C: .4byte 0xFFFFFE00\n\
+_0800E830: .4byte 0x000001FF\n\
+_0800E834:\n\
+	movs r0, #0\n\
+	strh r0, [r6]\n\
+	mov r1, sl\n\
+	strh r0, [r1]\n\
+	ldr r0, _0800E85C @ =gUnknown_086A7DB0\n\
+	movs r1, #9\n\
+	adds r2, r6, #0\n\
+	bl LoadSpriteSets\n\
+_0800E846:\n\
+	movs r0, #0\n\
+	strh r0, [r7]\n\
+	mov r2, r8\n\
+	strh r0, [r2]\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+_0800E85C: .4byte gUnknown_086A7DB0\n\
+    ");
+}
+#endif
+
+void sub_E860(void)
+{
+    int i;
+    struct SpriteGroup *spriteGroup;
+
+    spriteGroup = &gUnknown_0200B3B8[gUnknown_0202C580];
+    spriteGroup->available = gUnknown_0201C18C;
+    LoadSpriteSets(gUnknown_086A7DD4, 5, gUnknown_0200B3B8);
+    if (spriteGroup->available == 1)
+    {
+        spriteGroup->baseX = 120;
+        spriteGroup->baseY = gUnknown_0201A4B8;
+        for (i = 0; i < 4; i++)
+        {
+            gOamBuffer[spriteGroup->oam[i].oamId].x = spriteGroup->oam[i].xOffset + spriteGroup->baseX;
+            gOamBuffer[spriteGroup->oam[i].oamId].y = spriteGroup->oam[i].yOffset + spriteGroup->baseY;
+        }
+    }
+
+    spriteGroup->available = 0;
+}
+
+void sub_E908(void)
+{
+    gUnknown_0202C5F0[0] = 0xCFCF;
+    gUnknown_0201C1B0 = 1;
+    gUnknown_0202C59C = 1;
+    gUnknown_0202ADE4 = 0;
+    gUnknown_0201A4BC = 0;
+    gUnknown_0202C598 = 0;
+    gUnknown_0202C54C = 0;
+}
+
+extern u8 gUnknown_0202BF20;
+
+s16 sub_E94C(void)
+{
+    s16 result;
+    if (gUnknown_0202BF20 != 0)
+        result = sub_EBEC();
+    else
+        result = sub_ED28();
+    
+    return result;
+}
+
+s16 sub_E970(void)
+{
+    s16 result;
+    if (gUnknown_0202BF20 != 0)
+        result = sub_E994();
+    else
+        result = sub_EAC0();
+    
+    return result;
+}
+
+s16 sub_E994(void)
+{
+    int i;
+    struct HighScoreEntry *topScore;
+
+    if (gUnknown_0202ADE4 == 0)
+    {
+        switch (gUnknown_0201A4BC)
+        {
+        case 0:
+            if (gMain.newKeys & A_BUTTON)
+            {
+                gUnknown_0202C5F0[0] = 0xDEDE;
+            }
+            else
+            {
+                for (i = 0; i < 8; i++)
+                    gUnknown_0202C5F0[i] = 0;
+            }
+            break;
+        case 1:
+            gUnknown_0202C5F0[0] = 0xEDED;
+            break;
+        }
+    }
+    else
+    {
+        if (gUnknown_0202C59C < 8)
+        {
+            for (i = 0; i < 8; i++)
+                gUnknown_0202C5F0[i] = 0xCFCF;
+        }
+        else if (gUnknown_0202C59C < 10)
+        {
+            u16 field = gUnknown_0202C59C - 8;
+            gUnknown_0202C5F0[0] = gUnknown_0202C59C;
+            gUnknown_0202C5F0[1] = (gUnknown_0202C610[field][0].data.parts.name[0] << 8) |
+                                    gUnknown_0202C610[field][0].data.parts.name[1];
+            gUnknown_0202C5F0[2] = (gUnknown_0202C610[field][0].data.parts.name[2] << 8) |
+                                    gUnknown_0202C610[field][0].data.parts.name[3];
+            gUnknown_0202C5F0[3] = gUnknown_0202C610[field][0].data.parts.scoreLo >> 16;
+            gUnknown_0202C5F0[4] = gUnknown_0202C610[field][0].data.parts.scoreLo;
+            gUnknown_0202C5F0[5] = gUnknown_0202C610[field][0].data.parts.score100Millions >> 16;
+            gUnknown_0202C5F0[6] = gUnknown_0202C610[field][0].data.parts.score100Millions;
+            gUnknown_0202C5F0[7] = 0;
+        }
+        else
+        {
+            for (i = 0; i < 8; i++)
+                gUnknown_0202C5F0[i] = 0;
+        }
+
+        gUnknown_0202C59C++;
+    }
+
+    return 0;
+}
+
+s16 sub_EAC0(void)
+{
+    int i;
+    struct HighScoreEntry *topScore;
+
+    if (gUnknown_0202ADE4 == 0)
+    {
+        switch (gUnknown_0202C598)
+        {
+        case 0:
+            if (gMain.newKeys & A_BUTTON)
+            {
+                gUnknown_0202C5F0[0] = 0xDEDE;
+            }
+            else
+            {
+                for (i = 0; i < 8; i++)
+                    gUnknown_0202C5F0[i] = 0;
+            }
+            break;
+        case 1:
+            gUnknown_0202C5F0[0] = 0xEDED;
+            break;
+        }
+    }
+    else
+    {
+        if (gUnknown_0202C59C < 8)
+        {
+            for (i = 0; i < 8; i++)
+                gUnknown_0202C5F0[i] = 0xCFCF;
+        }
+        else if (gUnknown_0202C59C < 10)
+        {
+            u16 field = gUnknown_0202C59C - 8;
+            gUnknown_0202C5F0[0] = gUnknown_0202C59C;
+            gUnknown_0202C5F0[1] = (gUnknown_0202C610[field][0].data.parts.name[0] << 8) |
+                                    gUnknown_0202C610[field][0].data.parts.name[1];
+            gUnknown_0202C5F0[2] = (gUnknown_0202C610[field][0].data.parts.name[2] << 8) |
+                                    gUnknown_0202C610[field][0].data.parts.name[3];
+            gUnknown_0202C5F0[3] = gUnknown_0202C610[field][0].data.parts.scoreLo >> 16;
+            gUnknown_0202C5F0[4] = gUnknown_0202C610[field][0].data.parts.scoreLo;
+            gUnknown_0202C5F0[5] = gUnknown_0202C610[field][0].data.parts.score100Millions >> 16;
+            gUnknown_0202C5F0[6] = gUnknown_0202C610[field][0].data.parts.score100Millions;
+            gUnknown_0202C5F0[7] = 0;
+        }
+        else
+        {
+            for (i = 0; i < 8; i++)
+                gUnknown_0202C5F0[i] = 0;
+        }
+
+        gUnknown_0202C59C++;
+    }
+
+    return 0;
+}
+
+s16 sub_EBEC(void)
+{
+    int i, j;
+    struct HighScoreEntry *topScore;
+    u16 field;
+
+    if (gUnknown_0202ADE4 == 0)
+    {
+        switch (gUnknown_0201A4BC)
+        {
+        case 0:
+            if (gUnknown_0201A4D0[0][0] == 0xDEDE || gUnknown_0201A4D0[0][1] == 0xDEDE)
+                gUnknown_0201A4BC = 1;
+            break;
+        case 1:
+            if (gUnknown_0201A4D0[0][0] == 0xEDED && gUnknown_0201A4D0[0][1] == 0xEDED)
+            {
+                gUnknown_0202ADE4 = -1;
+                gUnknown_0202BEBC = 1;
+                gUnknown_0202C59C = 1;
+            }
+            else
+            {
+                if (++gUnknown_0202C54C > 10)
+                    return 1;
+            }
+            break;
+        }
+    }
+    else
+    {
+        field = gUnknown_0201A4D0[0][1] - 8;
+        if (field > 1)
+            return 0;
+
+        gUnknown_0201C1B0 = gUnknown_0201A4D0[0][1];
+        gUnknown_0202C550[field].data.parts.name[0] = (gUnknown_0201A4D0[1][1] >> 8) & 0xFF;
+        gUnknown_0202C550[field].data.parts.name[1] = gUnknown_0201A4D0[1][1] & 0xFF;
+        gUnknown_0202C550[field].data.parts.name[2] = (gUnknown_0201A4D0[2][1] >> 8) & 0xFF;
+        gUnknown_0202C550[field].data.parts.name[3] = gUnknown_0201A4D0[2][1] & 0xFF;
+        gUnknown_0202C550[field].data.parts.scoreLo = (gUnknown_0201A4D0[3][1] << 16) |
+                                                        gUnknown_0201A4D0[4][1];
+        gUnknown_0202C550[field].data.parts.score100Millions = (gUnknown_0201A4D0[5][1] << 16) |
+                                                                gUnknown_0201A4D0[6][1];
+        if (gUnknown_0201C1B0 == 9)
+            return -1;
+    }
+
+    for (i = 0; i < 8; i++)
+        for (j = 0; j < 2; j++)
+            gUnknown_0201A4D0[i][j] = 0;
+            
+    return 0;
+}
+
+s16 sub_ED28(void)
+{
+    int i, j;
+    struct HighScoreEntry *topScore;
+    u16 field;
+
+    if (gUnknown_0202ADE4 == 0)
+    {
+        switch (gUnknown_0202C598)
+        {
+        case 0:
+            if (gUnknown_0201A4D0[0][0] == 0xDEDE || gUnknown_0201A4D0[0][1] == 0xDEDE)
+                gUnknown_0202C598 = 1;
+            break;
+        case 1:
+            if (gUnknown_0201A4D0[0][0] == 0xEDED && gUnknown_0201A4D0[0][1] == 0xEDED)
+            {
+                gUnknown_0202ADE4 = -1;
+                gUnknown_0202BEBC = 1;
+                gUnknown_0202C59C = 1;
+            }
+            else
+            {
+                if (++gUnknown_0202C54C > 10)
+                    return 1;
+            }
+            break;
+        }
+    }
+    else
+    {
+        field = gUnknown_0201A4D0[0][0] - 8;
+        if (field > 1)
+            return 0;
+
+        gUnknown_0201C1B0 = gUnknown_0201A4D0[0][0];
+        gUnknown_0202C550[field].data.parts.name[0] = (gUnknown_0201A4D0[1][0] >> 8) & 0xFF;
+        gUnknown_0202C550[field].data.parts.name[1] = gUnknown_0201A4D0[1][0] & 0xFF;
+        gUnknown_0202C550[field].data.parts.name[2] = (gUnknown_0201A4D0[2][0] >> 8) & 0xFF;
+        gUnknown_0202C550[field].data.parts.name[3] = gUnknown_0201A4D0[2][0] & 0xFF;
+        gUnknown_0202C550[field].data.parts.scoreLo = (gUnknown_0201A4D0[3][0] << 16) |
+                                                        gUnknown_0201A4D0[4][0];
+        gUnknown_0202C550[field].data.parts.score100Millions = (gUnknown_0201A4D0[5][0] << 16) |
+                                                                gUnknown_0201A4D0[6][0];
+        if (gUnknown_0201C1B0 == 9)
+            return -1;
+    }
+
+    for (i = 0; i < 8; i++)
+        for (j = 0; j < 2; j++)
+            gUnknown_0201A4D0[i][j] = 0;
+            
+    return 0;
 }
