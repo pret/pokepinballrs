@@ -197,7 +197,7 @@ void sub_52C64(void)
     gMain_saveData.unk141 = 0;
     gMain_saveData.ballSpeed = 0;
     sub_525CC(-1);
-    sub_F6E0();
+    SetDefaultHighScores();
     ResetPokedex();
     gMain_saveData.unk143 = 0;
 }

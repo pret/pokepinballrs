@@ -276,6 +276,17 @@ extern s8 gUnknown_0202A564;
 extern s8 gUnknown_02019C20;
 extern s8 gUnknown_0202ADE8;
 
+extern const u16 gUnknown_086A7FAC[];
+extern s16 gUnknown_0202C5C0[];
+
+struct unkStruct_8079730
+{
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+};
+extern const struct unkStruct_8079730 gUnknown_08079730[][8];
+
 extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
 extern s16 gUnknown_086A7788[0x8];
 extern s16 gUnknown_0202ADA0[];

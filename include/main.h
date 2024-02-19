@@ -11,8 +11,8 @@ struct HighScoreEntry
     union {
         struct {
             u32 name[HIGH_SCORE_NAME_LENGTH];
+            u32 scoreHi;
             u32 scoreLo;
-            u32 score100Millions;
         } parts;
         u32 raw[HIGH_SCORE_NAME_LENGTH + 2];
     } data;
