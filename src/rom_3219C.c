@@ -114,12 +114,6 @@ void sub_3219C(void)
     gUnknown_020314E0->unk59C = gUnknown_020314E0->unk598;
 }
 
-#ifdef NONMATCHING
-____ sub_32484(____)
-{
-
-}
-#else
 NAKED
 void sub_32484(void)
 {
@@ -300,7 +294,6 @@ _080325D4: .4byte gUnknown_086A4A38\n\
 _080325D8: .4byte gUnknown_020314E0\n\
 _080325DC: .4byte 0x0000059E");
 }
-#endif
 
 void sub_325E0(void)
 {

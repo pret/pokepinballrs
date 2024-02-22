@@ -392,7 +392,7 @@ void sub_D20C(void)
         case 1:
             gUnknown_0201A4B8 -= 1;
 
-            // NOTE: FAKEMATCH - Seth
+            // TODO: FAKEMATCH - Seth
             temp = gUnknown_02002858.unk18;
             if((gUnknown_02002858.unk18 & 3) == 0)
             {
