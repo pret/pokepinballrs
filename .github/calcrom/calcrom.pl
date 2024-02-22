@@ -197,14 +197,14 @@ my $functions_remaining_count = $functions_remaining_as_string + 0;
 (($functions_remaining_count != 0) and ($functions_remaining_as_string ne "0"))
     or die "ERROR: Cannot convert string to num: '$functions_remaining_as_string'";
 
-my $nonmatching_cmd = "git grep -E '#if[n]?def NONMATCHING' ':/' ':(exclude)*.pl'";
+my $nonmatching_cmd = "git grep -E 'asm_unified' ':/' ':(exclude)*.pl'";
 my $nonmatching_as_string;
 (run (
     command => "$nonmatching_cmd | $count_cmd",
     buffer => \$nonmatching_as_string,
     timeout => 60
 ))
-    or die "ERROR: Error while calculating NONMATCHING totals: $?";
+    or die "ERROR: Error while calculating asm_unified totals: $?";
 my $nonmatching_count = $nonmatching_as_string + 0;
 (($nonmatching_count != 0) and ($nonmatching_as_string ne "0"))
     or die "ERROR: Cannot convert string to num: '$nonmatching_as_string'";
@@ -216,7 +216,7 @@ $src = $src + $lib;
 my $srcPct = 100 * $src / $total;
 my $asmPct = 100 * $asm / $total;
 
-if ($asm == 0)
+if ($asm == 0 and $nonmatching_count == 0)
 {
     print "Code decompilation is 100% complete\n"
 }
@@ -226,7 +226,7 @@ else
     printf "%8d bytes of code in src (%.4f%%)\n", $src, $srcPct;
     printf "%8d bytes of code in asm (%.4f%%)\n", $asm, $asmPct;
     printf "%8d functions remain\n", $functions_remaining_count;
-    printf "%8d functions are NONMATCHING\n", $nonmatching_count;
+    printf "%8d functions use asm_unified\n", $nonmatching_count;
 }
 print "\n";
 

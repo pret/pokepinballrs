@@ -573,27 +573,7 @@ void sub_9D70(void)
     puVar4->available = 0;
 }
 
-#ifdef NONMATCHING
-void sub_9E90(void)
-{
-    gMain.blendControl = 0xF10;
-    gMain.blendAlpha = gUnknown_0201C1B8 | (gUnknown_0202ADD4 << 8);
-    REG_BLDCNT = gMain.blendControl;
-    REG_BLDALPHA = gMain.blendAlpha;
-
-    gMain.spriteGroups[gUnknown_0201A450.unk18].available = gUnknown_0201A450.unk1C;
-    gMain.spriteGroups[3].available = gUnknown_0201A450.unk2C;
-    gMain.spriteGroups[2].available = gUnknown_0201A450.unk3C;
-    gMain.spriteGroups[0x30].available = gUnknown_0201A450.unk4C; // 80
-    LoadSpriteSets(gUnknown_086A769C, 0x31, gMain.spriteGroups);
-    
-    if (gUnknown_0201A450.unk1C == 1)
-    {
-        // ...
-    }
-    // ...
-}
-#else
+// TODO see https://decomp.me/scratch/9Nuw9
 NAKED
 void sub_9E90(void)
 {
@@ -951,7 +931,6 @@ _0800A148: .4byte gOamBuffer\n\
 _0800A14C: .4byte 0xFFFFFE00\n\
 _0800A150: .4byte 0x000001FF");
 }
-#endif
 
 void sub_A154(void)
 {
