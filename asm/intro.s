@@ -4,46 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_B090
-sub_B090: @ 0x0800B090
-	push {lr}
-	sub sp, #8
-	bl sub_10480
-	bl ClearSprites
-	movs r2, #0
-	str r2, [sp]
-	ldr r1, _0800B0D4 @ =0x040000D4
-	mov r0, sp
-	str r0, [r1]
-	movs r0, #0xe0
-	lsls r0, r0, #0x13
-	str r0, [r1, #4]
-	ldr r0, _0800B0D8 @ =0x85000100
-	str r0, [r1, #8]
-	ldr r0, [r1, #8]
-	add r0, sp, #4
-	strh r2, [r0]
-	str r0, [r1]
-	ldr r0, _0800B0DC @ =0x06010000
-	str r0, [r1, #4]
-	ldr r0, _0800B0E0 @ =0x81002800
-	str r0, [r1, #8]
-	ldr r0, [r1, #8]
-	bl sub_10544
-	ldr r1, _0800B0E4 @ =gUnknown_0202C790
-	ldrb r0, [r1]
-	adds r0, #1
-	strb r0, [r1]
-	add sp, #8
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0800B0D4: .4byte 0x040000D4
-_0800B0D8: .4byte 0x85000100
-_0800B0DC: .4byte 0x06010000
-_0800B0E0: .4byte 0x81002800
-_0800B0E4: .4byte gUnknown_0202C790
-
 	thumb_func_start sub_B0E8
 sub_B0E8: @ 0x0800B0E8
 	push {r4, r5, r6, r7, lr}

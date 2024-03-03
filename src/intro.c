@@ -1514,3 +1514,14 @@ void nullsub_11(void)
 {
 }
 
+void sub_B090(void)
+{
+    sub_10480();
+    ClearSprites();
+
+    DmaFill32(3, 0, OAM, 0x400);
+    DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
+
+    sub_10544();
+    gUnknown_0202C790++;
+}
