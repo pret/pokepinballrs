@@ -197,7 +197,7 @@ my $functions_remaining_count = $functions_remaining_as_string + 0;
 (($functions_remaining_count != 0) and ($functions_remaining_as_string ne "0"))
     or die "ERROR: Cannot convert string to num: '$functions_remaining_as_string'";
 
-my $nonmatching_cmd = "git grep -E 'asm_unified' ':/' ':(exclude)*.pl'";
+my $nonmatching_cmd = "git grep -E 'asm_unified' ':/' ':(exclude)*.pl' ':(exclude)include/global.h'";
 my $nonmatching_as_string;
 (run (
     command => "$nonmatching_cmd | $count_cmd",
