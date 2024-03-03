@@ -1469,3 +1469,48 @@ void sub_AE74(void)
         gUnknown_0202C790++;
     }
 }
+
+void sub_AF80(void)
+{
+    gUnknown_0202ADA0[0x5]++;
+
+    if (gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[0x4]].unk2)
+    {
+        if (gUnknown_0202ADA0[0x04] < 7)
+        {
+            gUnknown_0202ADA0[0x4]++;
+            sub_10708(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[0x4]]], (void *) 0x6002EE0, 8, 8);
+        }
+    }
+
+    sub_B0E8();
+    gUnknown_0202ADA0[0x12]++;
+    if ((gUnknown_0202BF10 % 2) == 0)
+    {
+        gUnknown_0201A450.unk10--;
+        gUnknown_0201A450.unk12++;
+        gUnknown_0201A450.unk0 -= 2;
+        gUnknown_0201A450.unk2 += 2;
+    }
+
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+
+    gUnknown_0202ADA0[0x16]++;
+    if (0x1D < gUnknown_0202ADA0[0x16])
+    {
+        gUnknown_0202ADA0[0x16] = 0;
+        gUnknown_0202C790 += 2;
+    }
+}
+
+void nullsub_11(void)
+{
+}
+
