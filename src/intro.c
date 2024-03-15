@@ -13,6 +13,7 @@ void sub_AAA8(void);
 void sub_ADFC(void);
 extern void sub_B0E8(void);
 void sub_B4A0(void);
+void sub_B7F8(void);
 
 extern StateFunc gIntroStateFuncs[15];
 extern u8 gUnknown_080798C0[];
@@ -85,6 +86,20 @@ struct UnkStruct_086A7768 {
 extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
 extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
 extern struct UnkStruct_086A7768 gUnknown_086A79FC[];
+
+struct UnkStruct_086A7AC0 {
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+};
+
+struct UnkStruct_086A7B34 {
+    s16 unk0;
+    s8 unk2;
+};
+
+extern struct UnkStruct_086A7AC0 gUnknown_086A7AC0[];
+extern struct UnkStruct_086A7B34 gUnknown_086A7B34[];
 
 void IntroMain(void) {
      gIntroStateFuncs[gMain.subState]();
@@ -1389,4 +1404,55 @@ void sub_B4A0(void)
     gUnknown_0202BF10 = 0;
     gUnknown_0202A578 = 0;
     gUnknown_0202BEB4 = 0;
+}
+
+void sub_B560(void)
+{
+    gUnknown_0202ADA0[0x6] += gUnknown_086A7AC0[gUnknown_0202C548].unk0;
+    gUnknown_0202ADA0[0x7] += gUnknown_086A7AC0[gUnknown_0202C548].unk1;
+
+    if (gUnknown_086A7AE4[gUnknown_0202BF10] & 0x10)
+    {
+        gUnknown_0202ADA0[0x1] += gUnknown_0202ADA0[0x3];
+        gUnknown_0202ADA0[0x3] -= 2;
+        if (gUnknown_0202ADA0[0x3] <= -0xA)
+        {
+            gUnknown_0202ADA0[0x3] = 0x8;
+        }
+    }
+
+    if (gUnknown_086A7AE4[gUnknown_0202BF10] & 0x1)
+    {
+        gUnknown_0202ADA0[0xC] += gUnknown_0202ADA0[0xE];
+        gUnknown_0202ADA0[0xE] -= 2;
+        if (gUnknown_0202ADA0[0xE] <= -0xA)
+        {
+            gUnknown_0202ADA0[0xE] = 0x8;
+        }
+    }
+
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+
+    if (gUnknown_0202BF10 == gUnknown_086A7B34[gUnknown_0202BEB4].unk2)
+    {
+        gUnknown_0201A450[gUnknown_0202BEB4].unkC = 1;
+        gUnknown_0202BEB4++;
+    }
+
+    sub_B7F8();
+    gUnknown_0202A578++;
+    if (gUnknown_0202A578 > gUnknown_086A7AC0[gUnknown_0202C548].unk2)
+    {
+        gUnknown_0202A578 = 0;
+        gUnknown_0202C548++;
+        if (0x8 < gUnknown_0202C548)
+        {
+            gUnknown_0202C790++;
+        }
+    }
 }
