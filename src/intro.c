@@ -1326,3 +1326,8 @@ void sub_B0E8(void)
     mainSg2->available = 0;
 }
 
+void sub_B2E0(void)
+{
+    sub_0518();
+    gUnknown_0202C790++;
+}

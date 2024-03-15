@@ -4,19 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_B2E0
-sub_B2E0: @ 0x0800B2E0
-	push {lr}
-	bl sub_0518
-	ldr r1, _0800B2F4 @ =gUnknown_0202C790
-	ldrb r0, [r1]
-	adds r0, #1
-	strb r0, [r1]
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0800B2F4: .4byte gUnknown_0202C790
-
 	thumb_func_start sub_B2F8
 sub_B2F8: @ 0x0800B2F8
 	push {r4, lr}
