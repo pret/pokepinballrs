@@ -581,7 +581,7 @@ void sub_9E90(void)
     struct SpriteGroup *mainSg2;
     struct SpriteGroup *otherSg;
     int i;
-    const u16 *p;
+    const u16 *p; // TODO Fakematch
 
     gMain.blendControl = 0xF10;
     gMain.blendAlpha = gUnknown_0201C1B8 | (gUnknown_0202ADD4 << 8);
