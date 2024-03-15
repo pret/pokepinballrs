@@ -1525,3 +1525,73 @@ void sub_B090(void)
     sub_10544();
     gUnknown_0202C790++;
 }
+
+void sub_B0E8(void)
+{
+    struct OamDataSimple *puVar1;
+    struct SpriteGroup *mainSg1;
+    struct SpriteGroup *mainSg0;
+    struct SpriteGroup *mainSg2;
+    int i;
+    
+    gMain.blendControl = 0xF10;
+    gMain.blendAlpha = BLDALPHA_BLEND(8, 8);
+    REG_BLDCNT = gMain.blendControl;
+    REG_BLDALPHA = gMain.blendAlpha;
+
+    mainSg1 = &gMain.spriteGroups[1];
+    mainSg0 = &gMain.spriteGroups[0];
+    mainSg2 = &gMain.spriteGroups[2];
+
+    mainSg1->available = 1;
+    mainSg0->available = 1;
+    mainSg2->available = 1;
+    LoadSpriteSets(gUnknown_086A79EC, 0x3, gMain.spriteGroups);
+
+    if (mainSg1->available == 1)
+    {
+        mainSg1->baseX = gUnknown_0201A450.unk0;
+        mainSg1->baseY = gUnknown_0201A450.unk2;
+
+        for (i = 0; i < 4; i++)
+        {
+            puVar1 = &mainSg1->oam[i];
+            gOamBuffer[puVar1->oamId].objMode = 1;
+            gOamBuffer[puVar1->oamId].priority = 1;
+            gOamBuffer[puVar1->oamId].x = mainSg1->oam[i].xOffset + mainSg1->baseX;
+            gOamBuffer[puVar1->oamId].y = mainSg1->oam[i].yOffset + mainSg1->baseY;
+        }
+    }
+    if (mainSg0->available == 1)
+    {
+        mainSg0->baseX = gUnknown_0201A450.unk10;
+        mainSg0->baseY = gUnknown_0201A450.unk12;
+
+        for (i = 0; i < 4; i++)
+        {
+            puVar1 = &mainSg0->oam[i];
+            gOamBuffer[puVar1->oamId].objMode = 0;
+            gOamBuffer[puVar1->oamId].priority = 1;
+            gOamBuffer[puVar1->oamId].x = mainSg0->oam[i].xOffset + mainSg0->baseX;
+            gOamBuffer[puVar1->oamId].y = mainSg0->oam[i].yOffset + mainSg0->baseY;
+        }
+    }
+    if (mainSg2->available == 1)
+    {
+        mainSg2->baseX = gUnknown_0201A450.unk20;
+        mainSg2->baseY = gUnknown_0201A450.unk22;
+
+        for (i = 0; i < 8; i++)
+        {
+            puVar1 = &mainSg2->oam[i];
+            gOamBuffer[puVar1->oamId].priority = 2;
+            gOamBuffer[puVar1->oamId].x = mainSg2->oam[i].xOffset + mainSg2->baseX;
+            gOamBuffer[puVar1->oamId].y = mainSg2->oam[i].yOffset + mainSg2->baseY;
+        }
+    }
+
+    mainSg1->available = 0;
+    mainSg0->available = 0;
+    mainSg2->available = 0;
+}
+

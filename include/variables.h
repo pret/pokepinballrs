@@ -297,6 +297,7 @@ extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
 extern s32 gUnknown_0201C188;
 
 extern const struct SpriteSet *const gUnknown_086A795C[];
+extern const struct SpriteSet *const gUnknown_086A79EC[];
 extern u8 gUnknown_080E1540[];
 extern u8 gUnknown_080E1740[];
 extern u8 gUnknown_080E1F40[];
