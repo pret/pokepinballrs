@@ -293,6 +293,7 @@ extern s16 gUnknown_0202ADA0[];
 extern s32 gUnknown_0202BEF0;
 extern const struct SpriteSet *const gUnknown_086A769C[];
 extern struct SpriteGroup gUnknown_0200D078[];
+extern struct SpriteGroup gUnknown_0200D638;
 extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
 extern s32 gUnknown_0201C188;
 
