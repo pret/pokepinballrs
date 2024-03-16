@@ -328,5 +328,6 @@ extern u8 gUnknown_080FDFC0[];
 extern u8 gUnknown_080FFFC0[];
 
 extern u8 gUnknown_086A7AE4[];
+extern const struct SpriteSet *const gUnknown_086A7A78[];
 
 #endif  // GUARD_VARIABLES_H

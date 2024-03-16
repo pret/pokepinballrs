@@ -1851,3 +1851,8 @@ _0800BA28: .4byte gUnknown_0202BF10\n\
     ");
 }
 #endif
+
+void sub_BA2C(void)
+{
+    gUnknown_0202C790++;
+}
