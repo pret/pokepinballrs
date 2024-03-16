@@ -15,6 +15,7 @@ extern void sub_B0E8(void);
 void sub_B4A0(void);
 void sub_B7F8(void);
 void sub_BBE0(void);
+void sub_C0D8(void);
 
 extern StateFunc gIntroStateFuncs[15];
 extern u8 gUnknown_080798C0[];
@@ -72,7 +73,7 @@ struct UnkStruct_0201A450
     u16 unk0;
     u16 unk2;
     u16 unk4;
-    u16 unk6;
+    s16 unk6;
     s16 unk8;
     s16 unkA;
     s8 unkC;
@@ -1926,7 +1927,6 @@ void sub_BC54(void)
 {
     gUnknown_0202ADA0[0xC] += 2;
     gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
-
     if (gUnknown_0202BF10 % 3 == 0)
     {
         gUnknown_0202ADA0[0xF]++;
@@ -1948,4 +1948,203 @@ void sub_BC54(void)
     {
         gUnknown_0202C790++;
     }
+}
+
+void sub_BCE8(void)
+{
+    gUnknown_0202ADA0[0xC] += 2;
+    gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
+    if (gUnknown_0202BF10 % 3 == 0)
+    {
+        gUnknown_0202ADA0[0xF]++;
+        if (0x4 < gUnknown_0202ADA0[0xF])
+        {
+            gUnknown_0202ADA0[0xF] = 0xFFFD;
+        }
+    }
+
+    gUnknown_0202ADA0[0x6] += 3;
+    gUnknown_0202ADA0[0x7] -= gUnknown_0202ADA0[0x9];
+    if (gUnknown_0202BF10 % 5 == 0)
+    {
+        gUnknown_0202ADA0[0x9]++;
+        if (0x7 < gUnknown_0202ADA0[0x9])
+        {
+            gUnknown_0202ADA0[0x9] = 0xFFFA;
+        }
+    }
+
+    gUnknown_0202ADA0[0x12]--;
+    gUnknown_0202ADA0[0x13]--;
+
+    // TODO rearrangement like this suggests one inline function per pair of statements, but see sub_9498
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+
+    if (0x50 < gUnknown_0202BF10)
+    {
+        gUnknown_0202C790++;
+    }
+}
+
+void sub_BDC0(void)
+{
+    gUnknown_0202ADA0[0xC] += 2;
+    gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
+    if (gUnknown_0202BF10 % 3 == 0)
+    {
+        gUnknown_0202ADA0[0xF]++;
+        if (0x4 < gUnknown_0202ADA0[0xF])
+        {
+            gUnknown_0202ADA0[0xF] = 0xFFFD;
+        }
+    }
+
+    gUnknown_0202ADA0[0x6] += 3;
+    gUnknown_0202ADA0[0x7] -= gUnknown_0202ADA0[0x9];
+    if (gUnknown_0202BF10 % 5 == 0)
+    {
+        gUnknown_0202ADA0[0x9]++;
+        if (0x7 < gUnknown_0202ADA0[0x9])
+        {
+            gUnknown_0202ADA0[0x9] = 0xFFFA;
+        }
+    }
+
+    gUnknown_0202ADA0[0x0] += 4;
+    gUnknown_0202ADA0[0x1] -= gUnknown_0202ADA0[0x3];
+    if (gUnknown_0202BF10 % 4 == 0)
+    {
+        gUnknown_0202ADA0[0x3]++;
+        if (0x7 < gUnknown_0202ADA0[0x3])
+        {
+            gUnknown_0202ADA0[0x3] = 0xFFFD;
+        }
+    }
+
+    gUnknown_0202ADA0[0x12]--;
+    gUnknown_0202ADA0[0x13]--;
+
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+
+    if (0x64 < gUnknown_0202BF10)
+    {
+        gUnknown_0202C790++;
+    }
+}
+
+void sub_BED0(void)
+{
+    gUnknown_0202ADA0[0xC] += 2;
+    gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
+    if (gUnknown_0202BF10 % 3 == 0)
+    {
+        gUnknown_0202ADA0[0xF]++;
+        if (0x4 < gUnknown_0202ADA0[0xF])
+        {
+            gUnknown_0202ADA0[0xF] = 0xFFFD;
+        }
+    }
+
+    gUnknown_0202ADA0[0x6] += 3;
+    gUnknown_0202ADA0[0x7] -= gUnknown_0202ADA0[0x9];
+    if (gUnknown_0202BF10 % 5 == 0)
+    {
+        gUnknown_0202ADA0[0x9]++;
+        if (0x7 < gUnknown_0202ADA0[0x9])
+        {
+            gUnknown_0202ADA0[0x9] = 0xFFFA;
+        }
+    }
+
+    gUnknown_0202ADA0[0x0] += 4;
+    gUnknown_0202ADA0[0x1] -= gUnknown_0202ADA0[0x3];
+    if (gUnknown_0202BF10 % 4 == 0)
+    {
+        gUnknown_0202ADA0[0x3]++;
+        if (0x7 < gUnknown_0202ADA0[0x3])
+        {
+            gUnknown_0202ADA0[0x3] = 0xFFFD;
+        }
+    }
+
+    gUnknown_0201A450[0].unk0 -= 2;
+    gUnknown_0201A450[0].unk2 += gUnknown_0201A450[0].unk6;
+    if (gUnknown_0202BF10 % 4 == 0)
+    {
+        gUnknown_0201A450[0].unk6++;
+        if (0x4 < gUnknown_0201A450[0].unk6)
+        {
+            gUnknown_0201A450[0].unk6 = 0xFFFC;
+        }
+    }
+
+    gUnknown_0202ADA0[0x12]--;
+    gUnknown_0202ADA0[0x13]--;
+
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+
+    sub_C0D8();
+    if (0xC0 < gUnknown_0202BF10)
+    {
+        gUnknown_0202C790++;
+    }
+}
+
+void sub_C018(void)
+{
+    int remainder;
+    
+    gUnknown_0202ADA0[0x12]--;
+    gUnknown_0202ADA0[0x13]--;
+
+    remainder = gUnknown_0202BF10 % 6;
+    if (remainder == 0)
+    {
+        gUnknown_0201A450[0].unk0 -= 3;
+    }
+    else if (remainder == 3)
+    {
+        gUnknown_0201A450[0].unk0 += 3;
+    }
+
+    if (0xCA < gUnknown_0202BF10)
+    {
+        gUnknown_0202C5E4--;
+        gUnknown_0202ADD8--;
+    }
+
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+
+    sub_C0D8();
+    if (0xDE < gUnknown_0202BF10)
+    {
+        gUnknown_0202C790++;
+    }
+}
+
+void sub_C0BC(void)
+{
+    sub_10480();
+    sub_10544();
+    gUnknown_0202C790++;
 }
