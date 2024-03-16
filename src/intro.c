@@ -71,7 +71,7 @@ extern OtherFunc gUnknown_080792E0[10];
 struct UnkStruct_0201A450
 {
     u16 unk0;
-    u16 unk2;
+    s16 unk2;
     u16 unk4;
     s16 unk6;
     s16 unk8;
