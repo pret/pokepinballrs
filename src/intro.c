@@ -1921,3 +1921,31 @@ void sub_BBE0(void)
     gUnknown_0202C5E4 = 0x100;
     gUnknown_0202ADD8 = 0x100;
 }
+
+void sub_BC54(void)
+{
+    gUnknown_0202ADA0[0xC] += 2;
+    gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
+
+    if (gUnknown_0202BF10 % 3 == 0)
+    {
+        gUnknown_0202ADA0[0xF]++;
+        if (0x4 < gUnknown_0202ADA0[0xF])
+        {
+            gUnknown_0202ADA0[0xF] = 0xFFFD;
+        }
+    }
+
+    gUnknown_0202ADA0[0x12]--;
+    gUnknown_0202ADA0[0x13]--;
+
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+
+    if (0x20 < gUnknown_0202BF10)
+    {
+        gUnknown_0202C790++;
+    }
+}
