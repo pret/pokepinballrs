@@ -14,6 +14,7 @@ void sub_ADFC(void);
 extern void sub_B0E8(void);
 void sub_B4A0(void);
 void sub_B7F8(void);
+void sub_BBE0(void);
 
 extern StateFunc gIntroStateFuncs[15];
 extern u8 gUnknown_080798C0[];
@@ -70,7 +71,8 @@ struct UnkStruct_0201A450
 {
     u16 unk0;
     u16 unk2;
-    u8 fill4[0x8 - 0x4];
+    u16 unk4;
+    u16 unk6;
     s16 unk8;
     s16 unkA;
     s8 unkC;
@@ -1855,4 +1857,67 @@ _0800BA28: .4byte gUnknown_0202BF10\n\
 void sub_BA2C(void)
 {
     gUnknown_0202C790++;
+}
+
+void sub_BA3C(void)
+{
+    REG_DISPCNT = DISPCNT_OBJ_ON;
+    REG_BG0CNT = 0xD400;
+    REG_DISPCNT |= (DISPCNT_BG0_ON);
+    REG_BG1CNT = 0xD801;
+    REG_DISPCNT |= (DISPCNT_BG1_ON);
+    REG_BG2CNT = 0xDC02;
+    REG_DISPCNT |= (DISPCNT_BG2_ON);
+    REG_BG3CNT = 0xf03;
+    REG_DISPCNT |= (DISPCNT_BG3_ON);
+
+    DmaCopy16(3, gUnknown_08108A00, 0x0600A000, 0x2000);
+    DmaCopy16(3, gUnknown_0810AA00, 0x0600C000, 0x2000);
+    DmaCopy16(3, gUnknown_08106A00, 0x0600E000, 0x2000);
+    DmaCopy16(3, gUnknown_081011E0, 0x06007800, 0x800);
+    DmaCopy16(3, gUnknown_081019E0, 0x06000000, 0x5000);
+    DmaCopy16(3, gUnknown_08100FE0, 0x05000000, 0x160);
+    DmaCopy16(3, gUnknown_0810CA00, 0x06010000, 0x2000);
+    DmaCopy16(3, gUnknown_08100FE0, 0x05000200, 0x160);
+
+    gMain.unk16 = REG_DISPCNT;
+    sub_BBE0();
+
+    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
+    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+
+    sub_0CBC();
+    sub_10424();
+    gUnknown_0202C790++;
+}
+
+void sub_BBE0(void)
+{
+    gUnknown_0202ADA0[0x0] = 0xFEFC;
+    gUnknown_0202ADA0[0x1] = 0x46;
+    gUnknown_0202ADA0[0x3] = 0;
+    gUnknown_0202ADA0[0x6] = 0xFEE8;
+    gUnknown_0202ADA0[0x7] = 0x5A;
+    gUnknown_0202ADA0[0x9] = 0;
+    gUnknown_0202ADA0[0xC] = 0xFF10;
+    gUnknown_0202ADA0[0xD] = 0xFFCE;
+    gUnknown_0202ADA0[0xF] = 0xFFFD;
+    gUnknown_0202ADA0[0x12] = 0;
+    gUnknown_0202ADA0[0x13] = 0;
+
+    gUnknown_0201A450[0].unk0 = 0x128;
+    gUnknown_0201A450[0].unk2 = 0x2C;
+    gUnknown_0201A450[0].unk4 = 0;
+    gUnknown_0201A450[0].unk6 = 0;
+
+    gUnknown_0202BF10 = 0;
+    gUnknown_0202A578 = 0;
+    gUnknown_0202C5E4 = 0x100;
+    gUnknown_0202ADD8 = 0x100;
 }
