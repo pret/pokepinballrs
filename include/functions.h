@@ -168,7 +168,7 @@ extern void sub_FE04(void (*func)(void));
 extern void sub_FF74(void (*func)(void));
 extern void sub_1001C(int);
 //extern ? sub_10170();
-//extern ? sub_102A8();
+extern void sub_102A8(u8 *, void *, u16, u16); // Very much subject to change
 extern void sub_10424(void);
 extern void sub_10480(void);
 extern void sub_1050C(void);

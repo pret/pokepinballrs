@@ -349,4 +349,13 @@ extern u8 gUnknown_0810EC20[];
 extern u8 gUnknown_0810F420[];
 extern u8 gUnknown_08112840[];
 
+extern s8 gUnknown_086A7D4C[];
+extern s8 gUnknown_0202BEDC;
+extern s8 gUnknown_0202A56C;
+
+extern u8 gUnknown_08115860[];
+extern u8 gUnknown_08115A60[];
+extern u8 gUnknown_08116260[];
+extern u8 gUnknown_08118680[];
+
 #endif  // GUARD_VARIABLES_H

@@ -18,6 +18,8 @@ void sub_BBE0(void);
 void sub_C0D8(void);
 void sub_C2F0(void);
 void sub_C4F0(void);
+void sub_CA28(void);
+void sub_CD18(void);
 
 extern StateFunc gIntroStateFuncs[15];
 extern u8 gUnknown_080798C0[];
@@ -2780,4 +2782,164 @@ void sub_C814(void)
     }
 
     gUnknown_0202C790++;
+}
+
+void sub_C948(void)
+{
+    REG_DISPCNT = DISPCNT_OBJ_ON;
+    REG_BG3CNT = 0x7;
+    REG_DISPCNT |= (DISPCNT_BG3_ON);
+
+    DmaCopy16(3, gUnknown_08115A60, 0x06000000, 0x800);
+    DmaCopy16(3, gUnknown_08116260, 0x06004000, 0x2400);
+    DmaCopy16(3, gUnknown_08115860, 0x05000000, 0x40);
+    DmaCopy16(3, gUnknown_08118680, 0x06010000, 0x7000);
+    DmaCopy16(3, gUnknown_08115860, 0x05000200, 0x40);
+
+    gMain.unk16 = REG_DISPCNT;
+    sub_CA28();
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x1];
+    sub_0CBC();
+    sub_10424();
+    gUnknown_0202C790++;
+}
+
+void sub_CA28(void)
+{
+    gUnknown_0202ADA0[0x0] = 0;
+    gUnknown_0202ADA0[0x1] = 0;
+
+    gUnknown_0201A450[0].unk0 = 0xF0;
+    gUnknown_0201A450[0].unk2 = 0x1E;
+    gUnknown_0201A450[0].unk4 = 0xE;
+    gUnknown_0201A450[0].unk8 = 0x1;
+    gUnknown_0201A450[0].unkC = 0x1;
+
+    gUnknown_0201A450[1].unk0 = 0x108;
+    gUnknown_0201A450[1].unk2 = 0x50;
+    gUnknown_0201A450[1].unk4 = 0x6;
+    gUnknown_0201A450[1].unkC = 0;
+
+    gUnknown_0202BF10 = 0;
+    gUnknown_0202A578 = 0;
+    gUnknown_0202C5E4 = 0x100;
+    gUnknown_0202ADD8 = 0x100;
+    gUnknown_0202BEDC = 0;
+    gUnknown_0202A56C = 0;
+}
+
+void sub_CAA0(void)
+{
+    gUnknown_0202ADA0[0x0] -= 0x24;
+    gUnknown_0201A450[0].unk0 -= gUnknown_086A7D4C[gUnknown_0202A578];
+    gUnknown_0202A578++;
+
+    if (gUnknown_0202BF10 % 5 == 0)
+    {
+        gUnknown_0201A450[0].unk8++;
+        if (0xA < gUnknown_0201A450[0].unk8)
+        {
+            gUnknown_0201A450[0].unk8 = 0x1;
+        }
+    }
+
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
+    sub_CD18();
+
+    if (0x28 < gUnknown_0202BF10)
+    {
+        gUnknown_0202C5E4 += 6;
+        gUnknown_0202ADD8 += 6;
+        if (gUnknown_0202BF10 % 2 == 0)
+        {
+            gUnknown_0201A450[0].unk2++;
+        }
+    }
+
+    if (0x5A < gUnknown_0202BF10)
+    {
+        gUnknown_0201A450[0].unkC = 0;
+        gUnknown_0201A450[1].unkC = 1;
+        gUnknown_0202C790++;
+    }
+}
+
+void sub_CB6C(void)
+{
+    gUnknown_0202ADA0[0x0] -= 0x24;
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
+    if (0x78 < gUnknown_0202BF10)
+    {
+        gUnknown_0202C790++;
+    }
+}
+
+void sub_CBA4(void)
+{
+    if (gUnknown_0202BF10 < 0x87)
+    {
+        gUnknown_0201A450[1].unk0 -= 0xC;
+    }
+    else
+    {
+        gUnknown_0201A450[1].unk0--;
+    }
+
+    if (gUnknown_0202BF10 % 2 == 0)
+    {
+        gUnknown_0202BEDC += 3;
+        if (0x20 < gUnknown_0202BEDC)
+        {
+            gUnknown_0202BEDC = 0x20;
+        }
+    }
+
+    sub_102A8(gUnknown_08115860, (void *) OBJ_PLTT, 0x20, gUnknown_0202BEDC);
+
+    if (0x88 < gUnknown_0202BF10)
+    {
+        gUnknown_0202A56C += 2;
+        if (0x20 < gUnknown_0202A56C)
+        {
+            gUnknown_0202A56C = 0x20;
+        }
+        sub_102A8(gUnknown_08115860, (void *) PLTT, 0x40, gUnknown_0202A56C);
+    }
+
+    gUnknown_0202ADA0[0x0] -= 0x24;
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
+    sub_CD18();
+
+    if (0x98 < gUnknown_0202BF10)
+    {
+        gUnknown_0202BF10 = 0;
+        gUnknown_0202A578 = 1;
+        gUnknown_0202C790 += 2;
+    }
+}
+
+void nullsub_14(void)
+{
+}
+
+void sub_CC94(void)
+{
+    if (gUnknown_0202BF10 % 10 == 0)
+    {
+        gUnknown_0202A578++;
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, (0x100 / gUnknown_0202A578));
+    }
+    if (0x2D < gUnknown_0202BF10)
+    {
+        gUnknown_0202C790++;
+    }
+}
+
+void sub_CCF8(void)
+{
+    sub_02B4();
+    m4aMPlayAllStop();
+    sub_0D10();
+    gMain.subState++;
 }
