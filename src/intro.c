@@ -2333,3 +2333,407 @@ void sub_C498(void)
     sub_10544();
     gUnknown_0202C790++;
 }
+
+// See https://decomp.me/scratch/w2I8G
+NAKED
+void sub_C4F0(void)
+{
+    asm_unified("\n\
+    push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	sub sp, #0x20\n\
+	ldr r0, _0800C64C @ =gUnknown_0200B3B8\n\
+	mov r8, r0\n\
+	ldr r6, _0800C650 @ =gUnknown_0201A450\n\
+	movs r1, #0x28\n\
+	ldrsh r0, [r6, r1]\n\
+	movs r2, #0xe6\n\
+	lsls r2, r2, #2\n\
+	adds r3, r0, #0\n\
+	muls r3, r2, r3\n\
+	movs r0, #0xb8\n\
+	lsls r0, r0, #1\n\
+	add r0, r8\n\
+	adds r3, r3, r0\n\
+	str r3, [sp]\n\
+	movs r7, #0x38\n\
+	ldrsh r0, [r6, r7]\n\
+	muls r0, r2, r0\n\
+	movs r1, #0x8a\n\
+	lsls r1, r1, #2\n\
+	add r1, r8\n\
+	adds r0, r0, r1\n\
+	str r0, [sp, #4]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x48\n\
+	movs r1, #0\n\
+	ldrsh r0, [r0, r1]\n\
+	muls r0, r2, r0\n\
+	movs r1, #0xb8\n\
+	lsls r1, r1, #2\n\
+	add r1, r8\n\
+	adds r0, r0, r1\n\
+	str r0, [sp, #8]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x58\n\
+	movs r7, #0\n\
+	ldrsh r0, [r0, r7]\n\
+	muls r0, r2, r0\n\
+	adds r1, r2, #0\n\
+	add r1, r8\n\
+	adds r0, r0, r1\n\
+	str r0, [sp, #0xc]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x68\n\
+	movs r1, #0\n\
+	ldrsh r0, [r0, r1]\n\
+	muls r0, r2, r0\n\
+	movs r1, #0x8a\n\
+	lsls r1, r1, #3\n\
+	add r1, r8\n\
+	adds r0, r0, r1\n\
+	str r0, [sp, #0x10]\n\
+	movs r0, #0xc\n\
+	ldrsb r0, [r6, r0]\n\
+	mov r2, r8\n\
+	strh r0, [r2]\n\
+	movs r0, #1\n\
+	ldr r7, _0800C654 @ =gUnknown_0200B470\n\
+	strh r0, [r7]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x2c\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	strh r0, [r3]\n\
+	ldr r1, [sp, #4]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x3c\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	strh r0, [r1]\n\
+	ldr r1, [sp, #8]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x4c\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	strh r0, [r1]\n\
+	ldr r1, [sp, #0xc]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x5c\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	strh r0, [r1]\n\
+	ldr r1, [sp, #0x10]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x6c\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	strh r0, [r1]\n\
+	ldr r0, _0800C658 @ =gUnknown_086A7C24\n\
+	movs r1, #0x11\n\
+	bl LoadSpriteSets\n\
+	mov r1, r8\n\
+	ldrh r0, [r1]\n\
+	cmp r0, #1\n\
+	bne _0800C614\n\
+	ldrh r0, [r6]\n\
+	strh r0, [r1, #2]\n\
+	ldrh r0, [r6, #2]\n\
+	strh r0, [r1, #4]\n\
+	mov r5, r8\n\
+	adds r5, #8\n\
+	ldr r4, _0800C65C @ =gOamBuffer\n\
+	ldrh r1, [r1, #8]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r4\n\
+	ldrb r2, [r1, #5]\n\
+	movs r0, #0xd\n\
+	rsbs r0, r0, #0\n\
+	ands r0, r2\n\
+	strb r0, [r1, #5]\n\
+	mov r3, r8\n\
+	ldrh r2, [r3, #8]\n\
+	lsls r2, r2, #3\n\
+	adds r2, r2, r4\n\
+	movs r7, #2\n\
+	ldrsh r1, [r5, r7]\n\
+	movs r7, #2\n\
+	ldrsh r0, [r3, r7]\n\
+	adds r1, r1, r0\n\
+	ldr r3, _0800C660 @ =0x000001FF\n\
+	adds r0, r3, #0\n\
+	ands r1, r0\n\
+	ldrh r3, [r2, #2]\n\
+	ldr r0, _0800C664 @ =0xFFFFFE00\n\
+	ands r0, r3\n\
+	orrs r0, r1\n\
+	strh r0, [r2, #2]\n\
+	mov r7, r8\n\
+	ldrh r1, [r7, #8]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r4\n\
+	ldrb r0, [r7, #4]\n\
+	ldrb r5, [r5, #4]\n\
+	adds r0, r0, r5\n\
+	strb r0, [r1]\n\
+_0800C614:\n\
+	movs r5, #0\n\
+	str r6, [sp, #0x14]\n\
+_0800C618:\n\
+	lsls r1, r5, #2\n\
+	mov r2, sp\n\
+	adds r0, r2, r1\n\
+	ldr r0, [r0]\n\
+	ldrh r0, [r0]\n\
+	adds r4, r1, #0\n\
+	adds r3, r5, #1\n\
+	str r3, [sp, #0x18]\n\
+	cmp r0, #1\n\
+	beq _0800C62E\n\
+	b _0800C75A\n\
+_0800C62E:\n\
+	ldr r1, _0800C668 @ =gUnknown_0202A578\n\
+	ldrh r0, [r1]\n\
+	adds r0, #1\n\
+	strh r0, [r1]\n\
+	lsls r0, r0, #0x10\n\
+	asrs r0, r0, #0x10\n\
+	cmp r0, #5\n\
+	ble _0800C670\n\
+	lsls r1, r5, #3\n\
+	ldr r6, _0800C66C @ =gUnknown_086A7C68\n\
+	adds r0, r1, r6\n\
+	ldrb r2, [r0, #2]\n\
+	ldrb r0, [r0, #3]\n\
+	b _0800C67A\n\
+	.align 2, 0\n\
+_0800C64C: .4byte gUnknown_0200B3B8\n\
+_0800C650: .4byte gUnknown_0201A450\n\
+_0800C654: .4byte gUnknown_0200B470\n\
+_0800C658: .4byte gUnknown_086A7C24\n\
+_0800C65C: .4byte gOamBuffer\n\
+_0800C660: .4byte 0x000001FF\n\
+_0800C664: .4byte 0xFFFFFE00\n\
+_0800C668: .4byte gUnknown_0202A578\n\
+_0800C66C: .4byte gUnknown_086A7C68\n\
+_0800C670:\n\
+	lsls r1, r5, #3\n\
+	ldr r7, _0800C7F8 @ =gUnknown_086A7C68\n\
+	adds r0, r1, r7\n\
+	ldrb r2, [r0]\n\
+	ldrb r0, [r0, #1]\n\
+_0800C67A:\n\
+	adds r7, r1, #0\n\
+	adds r3, r5, #2\n\
+	lsls r1, r3, #4\n\
+	ldr r6, [sp, #0x14]\n\
+	adds r1, r1, r6\n\
+	lsls r2, r2, #0x18\n\
+	asrs r2, r2, #0x18\n\
+	ldrh r6, [r1]\n\
+	adds r2, r2, r6\n\
+	strh r2, [r1]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	ldrh r6, [r1, #2]\n\
+	adds r0, r0, r6\n\
+	strh r0, [r1, #2]\n\
+	add r4, sp\n\
+	ldr r0, [r4]\n\
+	strh r2, [r0, #2]\n\
+	ldr r2, [r4]\n\
+	ldrh r0, [r1, #2]\n\
+	strh r0, [r2, #4]\n\
+	movs r0, #8\n\
+	ldrsh r1, [r1, r0]\n\
+	lsls r0, r1, #2\n\
+	adds r0, r0, r1\n\
+	adds r0, #2\n\
+	adds r0, r5, r0\n\
+	lsls r0, r0, #2\n\
+	ldr r1, _0800C7FC @ =gUnknown_086A7C24\n\
+	adds r0, r0, r1\n\
+	ldr r0, [r0]\n\
+	mov sb, r0\n\
+	movs r6, #0\n\
+	str r3, [sp, #0x1c]\n\
+	adds r5, #1\n\
+	str r5, [sp, #0x18]\n\
+	ldrh r2, [r0]\n\
+	cmp r6, r2\n\
+	bge _0800C732\n\
+	ldr r3, _0800C800 @ =gOamBuffer\n\
+	mov ip, r3\n\
+	ldr r0, _0800C7F8 @ =gUnknown_086A7C68\n\
+	adds r7, r7, r0\n\
+	mov sl, r7\n\
+	movs r7, #8\n\
+_0800C6D4:\n\
+	ldr r0, [r4]\n\
+	adds r5, r0, r7\n\
+	ldrh r2, [r5]\n\
+	lsls r2, r2, #3\n\
+	add r2, ip\n\
+	mov r0, sl\n\
+	ldrb r1, [r0, #5]\n\
+	movs r3, #3\n\
+	ands r1, r3\n\
+	lsls r1, r1, #2\n\
+	ldrb r3, [r2, #5]\n\
+	movs r0, #0xd\n\
+	rsbs r0, r0, #0\n\
+	ands r0, r3\n\
+	orrs r0, r1\n\
+	strb r0, [r2, #5]\n\
+	ldrh r2, [r5]\n\
+	lsls r2, r2, #3\n\
+	add r2, ip\n\
+	movs r0, #2\n\
+	ldrsh r1, [r5, r0]\n\
+	ldr r0, [r4]\n\
+	movs r3, #2\n\
+	ldrsh r0, [r0, r3]\n\
+	adds r1, r1, r0\n\
+	ldr r3, _0800C804 @ =0x000001FF\n\
+	adds r0, r3, #0\n\
+	ands r1, r0\n\
+	ldrh r3, [r2, #2]\n\
+	ldr r0, _0800C808 @ =0xFFFFFE00\n\
+	ands r0, r3\n\
+	orrs r0, r1\n\
+	strh r0, [r2, #2]\n\
+	ldrh r1, [r5]\n\
+	lsls r1, r1, #3\n\
+	add r1, ip\n\
+	ldr r0, [r4]\n\
+	ldrb r0, [r0, #4]\n\
+	ldrb r5, [r5, #4]\n\
+	adds r0, r0, r5\n\
+	strb r0, [r1]\n\
+	adds r7, #8\n\
+	adds r6, #1\n\
+	mov r0, sb\n\
+	ldrh r0, [r0]\n\
+	cmp r6, r0\n\
+	blt _0800C6D4\n\
+_0800C732:\n\
+	ldr r1, [sp, #0x1c]\n\
+	lsls r0, r1, #4\n\
+	ldr r2, [sp, #0x14]\n\
+	adds r3, r0, r2\n\
+	ldrh r0, [r3, #0xa]\n\
+	adds r0, #1\n\
+	movs r1, #0\n\
+	strh r0, [r3, #0xa]\n\
+	lsls r0, r0, #0x10\n\
+	asrs r0, r0, #0x10\n\
+	cmp r0, #4\n\
+	ble _0800C75A\n\
+	strh r1, [r3, #0xa]\n\
+	ldrh r1, [r3, #8]\n\
+	movs r6, #8\n\
+	ldrsh r0, [r3, r6]\n\
+	cmp r0, #1\n\
+	bgt _0800C75A\n\
+	adds r0, r1, #1\n\
+	strh r0, [r3, #8]\n\
+_0800C75A:\n\
+	ldr r5, [sp, #0x18]\n\
+	cmp r5, #4\n\
+	bgt _0800C762\n\
+	b _0800C618\n\
+_0800C762:\n\
+	ldr r7, _0800C80C @ =gUnknown_0200B470\n\
+	ldrh r0, [r7]\n\
+	cmp r0, #1\n\
+	bne _0800C7C8\n\
+	ldr r0, _0800C810 @ =gUnknown_0201A450\n\
+	ldrh r1, [r0, #0x10]\n\
+	strh r1, [r7, #2]\n\
+	ldrh r0, [r0, #0x12]\n\
+	strh r0, [r7, #4]\n\
+	ldr r5, _0800C800 @ =gOamBuffer\n\
+	ldr r0, _0800C808 @ =0xFFFFFE00\n\
+	mov sb, r0\n\
+	adds r4, r7, #0\n\
+	adds r4, #8\n\
+	movs r6, #3\n\
+_0800C780:\n\
+	ldrh r2, [r4]\n\
+	lsls r2, r2, #3\n\
+	adds r2, r2, r5\n\
+	ldrb r0, [r2, #5]\n\
+	movs r1, #0xc\n\
+	orrs r0, r1\n\
+	strb r0, [r2, #5]\n\
+	ldrh r3, [r4]\n\
+	lsls r3, r3, #3\n\
+	adds r3, r3, r5\n\
+	movs r2, #2\n\
+	ldrsh r1, [r4, r2]\n\
+	ldr r7, _0800C80C @ =gUnknown_0200B470\n\
+	movs r2, #2\n\
+	ldrsh r0, [r7, r2]\n\
+	adds r1, r1, r0\n\
+	ldr r7, _0800C804 @ =0x000001FF\n\
+	adds r0, r7, #0\n\
+	ands r1, r0\n\
+	ldrh r2, [r3, #2]\n\
+	mov r0, sb\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r3, #2]\n\
+	ldrh r1, [r4]\n\
+	lsls r1, r1, #3\n\
+	adds r1, r1, r5\n\
+	ldr r2, _0800C80C @ =gUnknown_0200B470\n\
+	ldrb r0, [r2, #4]\n\
+	ldrb r3, [r4, #4]\n\
+	adds r0, r0, r3\n\
+	strb r0, [r1]\n\
+	adds r4, #8\n\
+	subs r6, #1\n\
+	cmp r6, #0\n\
+	bge _0800C780\n\
+_0800C7C8:\n\
+	movs r0, #0\n\
+	ldr r6, _0800C80C @ =gUnknown_0200B470\n\
+	strh r0, [r6]\n\
+	mov r7, r8\n\
+	strh r0, [r7]\n\
+	ldr r1, [sp]\n\
+	strh r0, [r1]\n\
+	ldr r1, [sp, #4]\n\
+	strh r0, [r1]\n\
+	ldr r1, [sp, #8]\n\
+	strh r0, [r1]\n\
+	ldr r1, [sp, #0xc]\n\
+	strh r0, [r1]\n\
+	ldr r1, [sp, #0x10]\n\
+	strh r0, [r1]\n\
+	add sp, #0x20\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+_0800C7F8: .4byte gUnknown_086A7C68\n\
+_0800C7FC: .4byte gUnknown_086A7C24\n\
+_0800C800: .4byte gOamBuffer\n\
+_0800C804: .4byte 0x000001FF\n\
+_0800C808: .4byte 0xFFFFFE00\n\
+_0800C80C: .4byte gUnknown_0200B470\n\
+_0800C810: .4byte gUnknown_0201A450\n\
+    ");
+}
