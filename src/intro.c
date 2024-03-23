@@ -2737,3 +2737,47 @@ _0800C80C: .4byte gUnknown_0200B470\n\
 _0800C810: .4byte gUnknown_0201A450\n\
     ");
 }
+
+void sub_C814(void)
+{
+    u16 i;
+    u16 j;
+
+    sub_0518();
+    DmaFill32(3, 0, OAM, 0x400);
+
+    for (i = 0; i < 0x14; i++)
+    {
+        gMain.spriteGroups[i].available = 0;
+        gMain.spriteGroups[i].baseX = 0;
+        gMain.spriteGroups[i].baseY = 0;
+
+        for (j = 0; j < 0x16; j++)
+        {
+            gMain.spriteGroups[i].oam[j].oamId = 0;
+            gMain.spriteGroups[i].oam[j].xOffset = 0;
+            gMain.spriteGroups[i].oam[j].yOffset = 0;
+        }
+    }
+
+    for (i = 0; i < 0x14; i++)
+    {
+        gOamBuffer[i].y = 0xF4;
+        gOamBuffer[i].affineMode = 0;
+        gOamBuffer[i].objMode = 0;
+        gOamBuffer[i].mosaic = 0;
+        gOamBuffer[i].bpp = 0x0;
+        gOamBuffer[i].shape = 0;
+        gOamBuffer[i].x = 0x1F4;
+        gOamBuffer[i].matrixNum = 0;
+        gOamBuffer[i].hFlip = 0;
+        gOamBuffer[i].vFlip = 0;
+        gOamBuffer[i].size = 0;
+        gOamBuffer[i].tileNum = 0;
+        gOamBuffer[i].priority = 0;
+        gOamBuffer[i].paletteNum = 0;
+        gOamBuffer[i].affineParam = 0;
+    }
+
+    gUnknown_0202C790++;
+}
