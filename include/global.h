@@ -127,7 +127,7 @@ struct PinballGame
 	/*0x602*/ u8 filler602[0x126];
 	/*0x728*/ u8 unk728; // TODO: unknown type
 	/*0x729*/ u8 filler729[0x14];
-	/*0x73D*/ s8 unk73D;
+	/*0x73D*/ s8 unk73D; // Number of catch mode arrows lit
 };
 
 struct Unk02031520
