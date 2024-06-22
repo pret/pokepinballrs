@@ -293,10 +293,12 @@ extern s16 gUnknown_0202ADA0[];
 extern s32 gUnknown_0202BEF0;
 extern const struct SpriteSet *const gUnknown_086A769C[];
 extern struct SpriteGroup gUnknown_0200D078[];
+extern struct SpriteGroup gUnknown_0200D638;
 extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
 extern s32 gUnknown_0201C188;
 
 extern const struct SpriteSet *const gUnknown_086A795C[];
+extern const struct SpriteSet *const gUnknown_086A79EC[];
 extern u8 gUnknown_080E1540[];
 extern u8 gUnknown_080E1740[];
 extern u8 gUnknown_080E1F40[];
@@ -313,5 +315,47 @@ extern u8 gUnknown_080EC960[];
 extern u8 gUnknown_080F1980[];
 extern u8 gUnknown_080F2180[];
 extern s16 gUnknown_086A7A1C[];
+
+extern s8 gUnknown_0202C548;
+extern s8 gUnknown_0202BEB4;
+
+extern u8 gUnknown_080F61A0[];
+extern u8 gUnknown_080F63A0[];
+extern u8 gUnknown_080F6BA0[];
+extern u8 gUnknown_080FCFC0[];
+extern u8 gUnknown_080FD7C0[];
+extern u8 gUnknown_080FDFC0[];
+extern u8 gUnknown_080FFFC0[];
+
+extern u8 gUnknown_086A7AE4[];
+extern const struct SpriteSet *const gUnknown_086A7A78[];
+
+extern s16 gUnknown_0202C5E4;
+extern s16 gUnknown_0202ADD8;
+extern const struct SpriteSet *const gUnknown_086A7B74[];
+
+extern u8 gUnknown_08100FE0[];
+extern u8 gUnknown_081011E0[];
+extern u8 gUnknown_081019E0[];
+extern u8 gUnknown_08106A00[];
+extern u8 gUnknown_08108A00[];
+extern u8 gUnknown_0810AA00[];
+extern u8 gUnknown_0810CA00[];
+
+extern s8 gUnknown_0201A4BC;
+
+extern u8 gUnknown_0810EA20[];
+extern u8 gUnknown_0810EC20[];
+extern u8 gUnknown_0810F420[];
+extern u8 gUnknown_08112840[];
+
+extern s8 gUnknown_086A7D4C[];
+extern s8 gUnknown_0202BEDC;
+extern s8 gUnknown_0202A56C;
+
+extern u8 gUnknown_08115860[];
+extern u8 gUnknown_08115A60[];
+extern u8 gUnknown_08116260[];
+extern u8 gUnknown_08118680[];
 
 #endif  // GUARD_VARIABLES_H
