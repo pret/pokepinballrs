@@ -33,8 +33,10 @@ SECTIONS
         src/rom_850.o(.text);
         src/main.o(.text);
         src/gbplayer.o(.text);
-        asm/rom_9BC.o(.text);
-        src/rom_9BC.o(.text);
+        asm/gbplayer.o(.text);
+        asm/link.o(.text);
+        asm/rom_2414.o(.text);
+        src/rom_2414.o(.text);
         src/bonus_field_select.o(.text);
         src/ereader.o(.text);
         src/pokedex.o(.text);
