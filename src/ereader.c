@@ -24,7 +24,6 @@ extern u8 gUnknown_0200282D;
 extern s8 gUnknown_0202BEF8;
 extern u8 gUnknown_0201B124;
 extern u32 gUnknown_0202ADD0;
-extern u32 gUnknown_0202BEC8;
 extern s16 gUnknown_0202C5F0[];
 extern u16 gUnknown_0201A4D0[][2];
 extern u32 gUnknown_0202BDF0;
@@ -47,8 +46,6 @@ extern u8 gUnknown_08080500[];
 extern u8 gUnknown_080897E0[];
 extern u8 gUnknown_0807FD00[];
 extern s16 gUnknown_086A550C[];
-
-s32 sub_1B04(u32 *, s16[], u16[][]);
 
 void EReaderMain(void)
 {

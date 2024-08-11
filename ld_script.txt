@@ -34,7 +34,7 @@ SECTIONS
         src/main.o(.text);
         src/gbplayer.o(.text);
         asm/gbplayer.o(.text);
-        asm/link.o(.text);
+        src/link.o(.text);
         asm/rom_2414.o(.text);
         src/rom_2414.o(.text);
         src/bonus_field_select.o(.text);

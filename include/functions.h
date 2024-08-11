@@ -794,7 +794,7 @@ extern void sub_19B4(void);
 //extern ? sub_1A78();
 //extern ? nullsub_15();
 extern void sub_1AA4(void);
-extern s32 sub_1B04(u32 *, s16[], u16[][]);
+extern s32 sub_1B04(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[]);
 //extern ? sub_1C5C();
 //extern ? sub_1C84();
 //extern ? sub_1CD4();
