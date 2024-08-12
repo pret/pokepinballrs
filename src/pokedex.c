@@ -542,7 +542,7 @@ void sub_49D0(void)
     }
     else
     {
-        gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
+        gUnknown_0202ADD0 = LinkMain1(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
         gUnknown_0202BDF0 = gUnknown_0202ADD0 & 3;
         gUnknown_0201C1AC = (gUnknown_0202ADD0 & 0x1C) >> 2;
         gUnknown_0202ADDC = (gUnknown_0202ADD0 & 0xe00) >> 9;
@@ -608,7 +608,7 @@ void sub_4B34(void)
         gUnknown_0202A588 = 1;
         
         sub_2568();
-        sub_1AA4();
+        DisableSerial();
 
         for(iVar1 = 0; iVar1 < 0xE1; iVar1++)
         {
@@ -631,7 +631,7 @@ void sub_4BB4(void)
     {
         case 0x4:
             sub_2568();
-            sub_1AA4();
+            DisableSerial();
             break;
         case 0x82:
             gUnknown_0202BEFC = 3;

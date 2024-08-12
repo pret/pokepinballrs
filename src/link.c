@@ -45,18 +45,18 @@
 
 #define EnableInterrupts(interrupts) \
 { \
-    gUnknown_02002822 = REG_IME; \
+    gLinkSavedIme = REG_IME; \
     REG_IME = 0; \
     REG_IE |= (interrupts); \
-    REG_IME = gUnknown_02002822; \
+    REG_IME = gLinkSavedIme; \
 }
 
 #define DisableInterrupts(interrupts) \
 { \
-    gUnknown_02002822 = REG_IME; \
+    gLinkSavedIme = REG_IME; \
     REG_IME = 0; \
     REG_IE &= ~(interrupts); \
-    REG_IME = gUnknown_02002822; \
+    REG_IME = gLinkSavedIme; \
 }
 
 // "static" enums
@@ -86,65 +86,65 @@ enum
 // "static" struct definitions
 
 // static function declarations
-static void sub_1884(void);
+static void EnableSerial(void);
 static void sub_19CC(void);
-static void sub_1A78(void);
+static void LinkVBlankIntr(void);
 static void nullsub_15(void);
-static void sub_1C5C(void);
-static void sub_1C84(void);
-static void sub_1CD4(u16 *);
-static void sub_1DB8(u16 (*recvCmds)[MAX_LINK_PLAYERS]);
-static void sub_1EC0(void);
-static void sub_1FEC(void);
-static bool8 sub_1FFC(void);
-static void sub_20FC(void);
-static void sub_223C(void);
-static void sub_2308(void);
-static void sub_2338(void);
-static void sub_2364(void);
-static void sub_23B4(void);
+static void CheckMasterOrSlave(void);
+static void InitTimer(void);
+static void EnqueueSendCmd(u16 *);
+static void DequeueRecvCmds(u16 (*recvCmds)[MAX_LINK_PLAYERS]);
+static void LinkVSync(void);
+static void StartTransfer(void);
+static bool8 DoHandshake(void);
+static void DoRecv(void);
+static void DoSend(void);
+static void StopTimer(void);
+static void SendRecvDone(void);
+static void ResetSendBuffer(void);
+static void ResetRecvBuffer(void);
 
 // static IWRAM variable declarations
 
 // static EWRAM variable declarations
 // TODO fix bss discard nonsense
-extern u8 gUnknown_02002820; // sChecksumAvailable
-extern u16 gUnknown_02002822; // gLinkSavedIme
-extern u8 gUnknown_02002824; // sNumVBlanksWithoutSerialIntr
-extern u8 gUnknown_02002825; // sSendBufferEmpty
+extern u8 sChecksumAvailable;
+extern u16 gLinkSavedIme;
+extern u8 sNumVBlanksWithoutSerialIntr;
+extern u8 sSendBufferEmpty;
 extern u8 gUnknown_02002826;
 extern u8 gUnknown_02002827; // sHandshakePlayerCount ?
-extern u16 gUnknown_02002828; // sSendNonzeroCheck
+extern u16 sSendNonzeroCheck;
 extern u16 gUnknown_0200282A;
-extern u8 gUnknown_02019C2C; // gLastSendQueueCount
+extern u8 gLastSendQueueCount;
 extern u8 gUnknown_0202A554; // ???
 extern s8 gUnknown_0202C5E0;
 
 // static const definitions
 
 // function definitions
-static void sub_1884(void) // EnableSerial
+static void EnableSerial(void)
 {
     DisableInterrupts(INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL);
     REG_RCNT = 0;
     REG_SIOCNT = SIO_MULTI_MODE;
     REG_SIOCNT |= SIO_115200_BPS | SIO_INTR_ENABLE;
 
-    gUnknown_02002822 = REG_IME;
+    gLinkSavedIme = REG_IME;
     SetMainCallback(sub_19CC);
-    SetVBlankIntrFunc(sub_1A78);
+    SetVBlankIntrFunc(LinkVBlankIntr);
     REG_IME = 0;
     REG_IE |= INTR_FLAG_SERIAL;
-    REG_IME = gUnknown_02002822;
+    REG_IME = gLinkSavedIme;
     
     REG_SIOMLT_SEND = 0; // TODO correct register name?
     *((u64 *) REG_ADDR_SIOMULTI0) = 0;
-    CpuFill32(0, &gUnknown_0202BF20, sizeof(gUnknown_0202BF20));
+    CpuFill32(0, &gLink, sizeof(gLink));
 
-    gUnknown_02002824 = 0;
-    gUnknown_02002825 = 0;
+    sNumVBlanksWithoutSerialIntr = 0;
+    sSendBufferEmpty = 0;
     gUnknown_02002827 = 0;
-    gUnknown_02019C2C = 0;
+    gLastSendQueueCount = 0;
     gUnknown_0202A554 = 0;
     gUnknown_0202C5E0 = 0;
     gUnknown_0202ADD0 = 0;
@@ -153,8 +153,8 @@ static void sub_1884(void) // EnableSerial
     gUnknown_0201C1AC = 0;
     gUnknown_0202ADDC = 0;
     gUnknown_0202BEC8 = 0;
-    gUnknown_02002820 = 0;
-    gUnknown_02002828 = 0;
+    sChecksumAvailable = 0;
+    sSendNonzeroCheck = 0;
     gUnknown_0200282A = 0;
 }
 
@@ -162,8 +162,8 @@ extern void sub_19B4(void) // TODO
 {
     sub_24DC();
     sub_250C();
-    sub_1884();
-    sub_1AA4();
+    EnableSerial();
+    DisableSerial();
 }
 
 static void sub_19CC(void) // TODO
@@ -195,9 +195,9 @@ static void sub_19CC(void) // TODO
     m4aSoundMain();
 }
 
-static void sub_1A78(void) // VBlankIntr
+static void LinkVBlankIntr(void)
 {
-    sub_1EC0();
+    LinkVSync();
     m4aSoundVSync();
     REG_IME = 0;
     INTR_CHECK |= INTR_FLAG_VBLANK;
@@ -208,7 +208,7 @@ static void nullsub_15(void)
 {
 }
 
-extern void sub_1AA4(void) // TODO DisableSerial?
+extern void DisableSerial(void)
 {
     DisableInterrupts(INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL);
 
@@ -216,75 +216,75 @@ extern void sub_1AA4(void) // TODO DisableSerial?
     REG_TM3CNT_H = 0;
     REG_IF = 0xC0;
 
-    CpuFill32(0, &gUnknown_0202BF20, sizeof(gUnknown_0202BF20)); // TODO off by 4 error?
+    CpuFill32(0, &gLink, sizeof(gLink));
 }
 
-extern s32 sub_1B04(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MAX_LINK_PLAYERS]) // LinkMain1
+extern s32 LinkMain1(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MAX_LINK_PLAYERS])
 {
     u32 retVal;
 
-    switch (gUnknown_0202BF20.state)
+    switch (gLink.state)
     {
         case LINK_STATE_START0:
-            sub_1AA4();
-            gUnknown_0202BF20.state = 1;
+            DisableSerial();
+            gLink.state = 1;
             break;
         case LINK_STATE_START1:
-            sub_1884();
-            gUnknown_0202BF20.state = 2;
+            EnableSerial();
+            gLink.state = 2;
             break;
         case LINK_STATE_HANDSHAKE:
             switch (*shouldAdvanceLinkState)
             {
                 default:
-                    sub_1C5C();
-                    if (gUnknown_0202C5E0 == 0 && gUnknown_0202BF20.isMaster && gUnknown_0202BF20.playerCount == 2)
+                    CheckMasterOrSlave();
+                    if (gUnknown_0202C5E0 == 0 && gLink.isMaster && gLink.playerCount == 2)
                     {
-                        gUnknown_0202BF20.handshakeAsMaster = TRUE;
+                        gLink.handshakeAsMaster = TRUE;
                         gUnknown_0202C5E0 = -1;
                     }
                     break;
                 case 1:
-                    if (gUnknown_0202BF20.isMaster != LINK_SLAVE && gUnknown_0202BF20.playerCount == 2)
-                        gUnknown_0202BF20.handshakeAsMaster = TRUE;
+                    if (gLink.isMaster != LINK_SLAVE && gLink.playerCount == 2)
+                        gLink.handshakeAsMaster = TRUE;
                     gUnknown_0202C5E0 = -1;
                     break;
                 case 2:
-                    gUnknown_0202BF20.state = LINK_STATE_START0;
+                    gLink.state = LINK_STATE_START0;
                     REG_SIOMLT_SEND = 0;
                     break;
             }
             break;
         case LINK_STATE_INIT_TIMER:
-            sub_1C84();
-            gUnknown_0202BF20.state = LINK_STATE_CONN_ESTABLISHED;
+            InitTimer();
+            gLink.state = LINK_STATE_CONN_ESTABLISHED;
             // fallthrough
         case LINK_STATE_CONN_ESTABLISHED:
-            if (gUnknown_0202BF20.unkE == 0)
+            if (gLink.unkE == 0)
             {
-                sub_1CD4(sendCmd);
+                EnqueueSendCmd(sendCmd);
             }
-            sub_1DB8(recvCmds);
+            DequeueRecvCmds(recvCmds);
             break;
     }
     *shouldAdvanceLinkState = 0;
-    retVal = gUnknown_0202BF20.localId;
-    retVal |= (gUnknown_0202BF20.playerCount << LINK_STAT_PLAYER_COUNT_SHIFT);
-    if (gUnknown_0202BF20.isMaster == LINK_MASTER)
+    retVal = gLink.localId;
+    retVal |= (gLink.playerCount << LINK_STAT_PLAYER_COUNT_SHIFT);
+    if (gLink.isMaster == LINK_MASTER)
     {
         retVal |= LINK_STAT_MASTER;
     }
 
     {
-        u32 receivedNothing = gUnknown_0202BF20.receivedNothing << 8;
-        u32 unk11 = gUnknown_0202BF20.unk11 << 9;
-        u32 hardwareError = gUnknown_0202BF20.hardwareError << 0x10;
-        u32 unk13 = gUnknown_0202BF20.unk13 << 0x11;
-        u32 queueFull = gUnknown_0202BF20.queueFull << 0x12;
-        u32 unk15 = gUnknown_0202BF20.unk15 << 0x14;
+        u32 receivedNothing = gLink.receivedNothing << 8;
+        u32 unk11 = gLink.unk11 << 9;
+        u32 hardwareError = gLink.hardwareError << 0x10;
+        u32 unk13 = gLink.unk13 << 0x11;
+        u32 queueFull = gLink.queueFull << 0x12;
+        u32 unk15 = gLink.unk15 << 0x14;
         u32 val;
 
-        if (gUnknown_0202BF20.state == LINK_STATE_CONN_ESTABLISHED)
+        if (gLink.state == LINK_STATE_CONN_ESTABLISHED)
         {
             val = LINK_STAT_CONN_ESTABLISHED;
             val |= receivedNothing;
@@ -309,31 +309,31 @@ extern s32 sub_1B04(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MA
         retVal = val;
     }
 
-    if (gUnknown_0202BF20.localId >= MAX_LINK_PLAYERS)
+    if (gLink.localId >= MAX_LINK_PLAYERS)
         retVal |= 0x80 << 0xF;
 
 
     return retVal;
 }
 
-static void sub_1C5C(void) // CheckMasterOrSlave
+static void CheckMasterOrSlave(void)
 {
     u32 terminals;
     terminals = *(vu32 *)REG_ADDR_SIOCNT & (SIO_MULTI_SD | SIO_MULTI_SI);
     
-    if (terminals == SIO_MULTI_SD && gUnknown_0202BF20.localId == 0)
+    if (terminals == SIO_MULTI_SD && gLink.localId == 0)
     {
-        gUnknown_0202BF20.isMaster = 8;
+        gLink.isMaster = 8;
     }
     else
     {
-        gUnknown_0202BF20.isMaster = 0;
+        gLink.isMaster = 0;
     }
 }
 
-static void sub_1C84(void) // InitTimer
+static void InitTimer(void)
 {
-    if (gUnknown_0202BF20.isMaster)
+    if (gLink.isMaster)
     {
         REG_TM3CNT_L = -197;
         REG_TM3CNT_H = TIMER_64CLK | TIMER_INTR_ENABLE;
@@ -342,192 +342,192 @@ static void sub_1C84(void) // InitTimer
     }
 }
 
-static void sub_1CD4(u16 *sendCmd) // EnqueueSendCmd
+static void EnqueueSendCmd(u16 *sendCmd)
 {
     u8 i;
     u8 offset;
 
-    gUnknown_02002822 = REG_IME;
+    gLinkSavedIme = REG_IME;
     REG_IME = 0;
     
-    if (gUnknown_0202BF20.sendQueue.count < QUEUE_CAPACITY)
+    if (gLink.sendQueue.count < QUEUE_CAPACITY)
     {
-        offset = gUnknown_0202BF20.sendQueue.pos + gUnknown_0202BF20.sendQueue.count;
+        offset = gLink.sendQueue.pos + gLink.sendQueue.count;
         if (offset >= QUEUE_CAPACITY)
         {
             offset -= QUEUE_CAPACITY;
         }
         for (i = 0; i < CMD_LENGTH; i++)
         {
-            gUnknown_02002828 |= *sendCmd;
-            gUnknown_0202BF20.sendQueue.data[i][offset] = *sendCmd;
+            sSendNonzeroCheck |= *sendCmd;
+            gLink.sendQueue.data[i][offset] = *sendCmd;
             *sendCmd = 0;
             sendCmd++;
         }
     }
     else
     {
-        gUnknown_0202BF20.queueFull |= QUEUE_FULL_SEND;
+        gLink.queueFull |= QUEUE_FULL_SEND;
     }
 
-    if (gUnknown_02002828)
+    if (sSendNonzeroCheck)
     {
-        gUnknown_0202BF20.sendQueue.count++;
-        gUnknown_02002828 = 0;
+        gLink.sendQueue.count++;
+        sSendNonzeroCheck = 0;
     }
 
-    REG_IME = gUnknown_02002822;
-    gUnknown_02019C2C = gUnknown_0202BF20.sendQueue.count;
+    REG_IME = gLinkSavedIme;
+    gLastSendQueueCount = gLink.sendQueue.count;
 }
 
-static void sub_1DB8(u16 (*recvCmds)[MAX_LINK_PLAYERS]) // DequeueRecvCmds
+static void DequeueRecvCmds(u16 (*recvCmds)[MAX_LINK_PLAYERS])
 {
     u8 i;
     u8 j;
 
-    gUnknown_02002822 = REG_IME;
+    gLinkSavedIme = REG_IME;
     REG_IME = 0;
 
-    if (gUnknown_0202BF20.recvQueue.count == 0)
+    if (gLink.recvQueue.count == 0)
     {
         for (i = 0; i < CMD_LENGTH; i++)
         {
-            for (j = 0; j < gUnknown_0202BF20.playerCount; j++)
+            for (j = 0; j < gLink.playerCount; j++)
             {
                 recvCmds[i][j] = 0;
             }
         }
 
-        gUnknown_0202BF20.receivedNothing = TRUE;
+        gLink.receivedNothing = TRUE;
     }
     else
     {
         for (i = 0; i < CMD_LENGTH; i++)
         {
-            for (j = 0; j < gUnknown_0202BF20.playerCount; j++)
+            for (j = 0; j < gLink.playerCount; j++)
             {
-                recvCmds[i][j] = gUnknown_0202BF20.recvQueue.data[j][i][gUnknown_0202BF20.recvQueue.pos];
+                recvCmds[i][j] = gLink.recvQueue.data[j][i][gLink.recvQueue.pos];
             }
         }
-        gUnknown_0202BF20.recvQueue.count--;
-        gUnknown_0202BF20.recvQueue.pos++;
-        if (gUnknown_0202BF20.recvQueue.pos >= QUEUE_CAPACITY)
+        gLink.recvQueue.count--;
+        gLink.recvQueue.pos++;
+        if (gLink.recvQueue.pos >= QUEUE_CAPACITY)
         {
-            gUnknown_0202BF20.recvQueue.pos = 0;
+            gLink.recvQueue.pos = 0;
         }
-        gUnknown_0202BF20.receivedNothing = FALSE;
+        gLink.receivedNothing = FALSE;
     }
 
-    REG_IME = gUnknown_02002822;
+    REG_IME = gLinkSavedIme;
 }
 
-static void sub_1EC0(void) // LinkVSync
+static void LinkVSync(void)
 {
-    if (gUnknown_0202BF20.unkE)
+    if (gLink.unkE)
     {
         if (--gUnknown_02002826 != 0)
         {
             return;
         }
-        gUnknown_0202BF20.unkE = 0;
+        gLink.unkE = 0;
     }
 
-    if (gUnknown_0202BF20.isMaster)
+    if (gLink.isMaster)
     {
-        switch (gUnknown_0202BF20.state)
+        switch (gLink.state)
         {
             case LINK_STATE_CONN_ESTABLISHED:
-                if (gUnknown_0202BF20.serialIntrCounter < 9)
+                if (gLink.serialIntrCounter < 9)
                 {
-                    if (!gUnknown_0202BF20.hardwareError)
+                    if (!gLink.hardwareError)
                     {
-                        gUnknown_0202BF20.unk15 = LAG_MASTER;
+                        gLink.unk15 = LAG_MASTER;
                     }
                     else
                     {
-                        sub_1FEC();
+                        StartTransfer();
                     }
                 }
-                else if (gUnknown_0202BF20.unk15 == LAG_NONE)
+                else if (gLink.unk15 == LAG_NONE)
                 {
-                    gUnknown_0202BF20.serialIntrCounter = 0;
-                    sub_1FEC();
+                    gLink.serialIntrCounter = 0;
+                    StartTransfer();
                 }
                 break;
             case LINK_STATE_HANDSHAKE:
-                sub_1FEC();
+                StartTransfer();
                 break;
         }
     }
-    else if (gUnknown_0202BF20.state == LINK_STATE_CONN_ESTABLISHED || gUnknown_0202BF20.state == LINK_STATE_HANDSHAKE)
+    else if (gLink.state == LINK_STATE_CONN_ESTABLISHED || gLink.state == LINK_STATE_HANDSHAKE)
     {
-        if (++gUnknown_02002824 > 6)
+        if (++sNumVBlanksWithoutSerialIntr > 6)
         {
-            if (gUnknown_0202BF20.state == LINK_STATE_CONN_ESTABLISHED)
+            if (gLink.state == LINK_STATE_CONN_ESTABLISHED)
             {
-                gUnknown_0202BF20.unk15 = LAG_SLAVE;
+                gLink.unk15 = LAG_SLAVE;
             }
-            if (gUnknown_0202BF20.state == LINK_STATE_HANDSHAKE)
+            if (gLink.state == LINK_STATE_HANDSHAKE)
             {
-                gUnknown_0202BF20.localId = 0;
-                gUnknown_0202BF20.playerCount = 0;
-                gUnknown_0202BF20.unk11 = FALSE;
+                gLink.localId = 0;
+                gLink.playerCount = 0;
+                gLink.unk11 = FALSE;
             }
         }
     }
 }
 
-extern void sub_1F4C(void) // Timer3Init
+extern void Timer3Init(void)
 {
-    sub_2308();
-    sub_1FEC();
+    StopTimer();
+    StartTransfer();
 }
 
-extern void sub_1F5C(void) // SerialCB
+extern void SerialCB(void)
 {
     u32 temp;
     temp = *((u32*) REG_ADDR_SIOCNT);
-    gUnknown_0202BF20.localId = (temp << 0x1A) >> 0x1E; // TODO fakenatch?
-    switch (gUnknown_0202BF20.state)
+    gLink.localId = (temp << 0x1A) >> 0x1E; // TODO fakenatch?
+    switch (gLink.state)
     {
         case LINK_STATE_CONN_ESTABLISHED:
             if (temp & 0x40)
             {
-                gUnknown_0202BF20.hardwareError = 1;
+                gLink.hardwareError = 1;
             }
-            sub_20FC();
-            sub_223C();
-            sub_2338();
+            DoRecv();
+            DoSend();
+            SendRecvDone();
             break;
         case LINK_STATE_HANDSHAKE:
-            if (sub_1FFC())
+            if (DoHandshake())
             {
-                if (gUnknown_0202BF20.isMaster)
+                if (gLink.isMaster)
                 {
-                    gUnknown_0202BF20.state = LINK_STATE_INIT_TIMER;
-                    gUnknown_0202BF20.serialIntrCounter = 8;
+                    gLink.state = LINK_STATE_INIT_TIMER;
+                    gLink.serialIntrCounter = 8;
                 }
                 else
                 {
-                    gUnknown_0202BF20.state = LINK_STATE_CONN_ESTABLISHED;
+                    gLink.state = LINK_STATE_CONN_ESTABLISHED;
                 }
             }
             break;
     }
-    gUnknown_0202BF20.serialIntrCounter++;
-    gUnknown_02002824 = 0;
-    if (gUnknown_0202BF20.serialIntrCounter == 8)
+    gLink.serialIntrCounter++;
+    sNumVBlanksWithoutSerialIntr = 0;
+    if (gLink.serialIntrCounter == 8)
     {
-        gUnknown_0202A554 = gUnknown_0202BF20.recvQueue.count;
+        gUnknown_0202A554 = gLink.recvQueue.count;
     }
 }
 
-static void sub_1FEC(void) // StartTransfer
+static void StartTransfer(void)
 {
     REG_SIOCNT |= SIO_START;
 }
 
-static bool8 sub_1FFC(void) // DoHandshake
+static bool8 DoHandshake(void)
 {
     u8 i;
     u8 playerCount;
@@ -535,7 +535,7 @@ static bool8 sub_1FFC(void) // DoHandshake
 
     playerCount = 0;
     minRecv = 0xFFFF;
-    if (gUnknown_0202BF20.handshakeAsMaster == TRUE)
+    if (gLink.handshakeAsMaster == TRUE)
     {
         REG_SIOMLT_SEND = MASTER_HANDSHAKE;
     }
@@ -543,194 +543,196 @@ static bool8 sub_1FFC(void) // DoHandshake
     {
         REG_SIOMLT_SEND = SLAVE_HANDSHAKE;
     }
-    gUnknown_0202BF20.handshakeAsMaster = FALSE;
-    *(u64 *)gUnknown_0202BF20.handshakeBuffer = REG_SIOMLT_RECV;
+    gLink.handshakeAsMaster = FALSE;
+    *(u64 *)gLink.handshakeBuffer = REG_SIOMLT_RECV;
     //REG_SIOMLT_RECV = 0;
     
     for (i = 0; i < MAX_LINK_PLAYERS; i++)
     {
-        if ((gUnknown_0202BF20.handshakeBuffer[i] & ~0x3) == (SLAVE_HANDSHAKE & ~3) || gUnknown_0202BF20.handshakeBuffer[i] == MASTER_HANDSHAKE)
+        if ((gLink.handshakeBuffer[i] & ~0x3) == (SLAVE_HANDSHAKE & ~3) || gLink.handshakeBuffer[i] == MASTER_HANDSHAKE)
         {
             playerCount++;
-            if (minRecv > gUnknown_0202BF20.handshakeBuffer[i] && gUnknown_0202BF20.handshakeBuffer[i] != 0)
-                minRecv = gUnknown_0202BF20.handshakeBuffer[i];
+            if (minRecv > gLink.handshakeBuffer[i] && gLink.handshakeBuffer[i] != 0)
+                minRecv = gLink.handshakeBuffer[i];
         }
         else
         {
-            if (gUnknown_0202BF20.handshakeBuffer[i] != 0xFFFF)
+            if (gLink.handshakeBuffer[i] != 0xFFFF)
             {
                 playerCount = 0;
                 break;
             }
-            if (i == gUnknown_0202BF20.localId) // TODO check order
+            if (i == gLink.localId) // TODO check order
             {
                 playerCount = 0;
             }
         }
     }
-    gUnknown_0202BF20.playerCount = playerCount;
-    if (gUnknown_0202BF20.playerCount == 2 && gUnknown_0202BF20.playerCount == gUnknown_02002827 && gUnknown_0202BF20.handshakeBuffer[0] == MASTER_HANDSHAKE)
+    gLink.playerCount = playerCount;
+    if (gLink.playerCount == 2 && gLink.playerCount == gUnknown_02002827 && gLink.handshakeBuffer[0] == MASTER_HANDSHAKE)
     {
         return TRUE;
     }
-    if (gUnknown_0202BF20.playerCount == 2) // ???
+    if (gLink.playerCount == 2) // ???
     {
-        gUnknown_0202BF20.unk11 = (minRecv & 3) + 1;
+        gLink.unk11 = (minRecv & 3) + 1;
     }
     else
     {
-        gUnknown_0202BF20.unk11 = 0;
+        gLink.unk11 = 0;
     }
-    gUnknown_02002827 = gUnknown_0202BF20.playerCount;
+    gUnknown_02002827 = gLink.playerCount;
     return FALSE;
 }
 
-static void sub_20FC(void) // DoRecv
+static void DoRecv(void)
 {
     u16 recv[4];
     u8 i;
     u8 index;
 
     *(u64 *)recv = REG_SIOMLT_RECV;
-    if (gUnknown_0202BF20.sendCmdIndex == 0)
+    if (gLink.sendCmdIndex == 0)
     {
-        for (i = 0; i < gUnknown_0202BF20.playerCount; i++)
+        for (i = 0; i < gLink.playerCount; i++)
         {
-            if (gUnknown_0202BF20.checksum != recv[i] && gUnknown_02002820)
+            if (gLink.checksum != recv[i] && sChecksumAvailable)
             {
-                gUnknown_0202BF20.unk13 = TRUE;
+                gLink.unk13 = TRUE;
             }
         }
-        gUnknown_0202BF20.checksum = 0;
-        gUnknown_02002820 = TRUE;
+        gLink.checksum = 0;
+        sChecksumAvailable = TRUE;
     }
     else
     {
-        index = gUnknown_0202BF20.recvQueue.pos + gUnknown_0202BF20.recvQueue.count;
+        index = gLink.recvQueue.pos + gLink.recvQueue.count;
         if (index >= QUEUE_CAPACITY)
         {
             index -= QUEUE_CAPACITY;
         }
-        if (gUnknown_0202BF20.recvQueue.count < QUEUE_CAPACITY)
+        if (gLink.recvQueue.count < QUEUE_CAPACITY)
         {
-            for (i = 0; i < gUnknown_0202BF20.playerCount; i++)
+            for (i = 0; i < gLink.playerCount; i++)
             {
-                gUnknown_0202BF20.checksum += recv[i];
+                gLink.checksum += recv[i];
                 gUnknown_0200282A |= recv[i];
-                gUnknown_0202BF20.recvQueue.data[i][gUnknown_0202BF20.recvCmdIndex][index] = recv[i];
-                if ((gUnknown_0202BF20.sendCmdIndex == 1) && (gUnknown_0202BF20.unkE == 0) && ((recv[i] & 0xF) == 1))
+                gLink.recvQueue.data[i][gLink.recvCmdIndex][index] = recv[i];
+                if ((gLink.sendCmdIndex == 1) && (gLink.unkE == 0) && ((recv[i] & 0xF) == 1))
                 {
-                    gUnknown_0202BF20.unkE = 1;
+                    gLink.unkE = 1;
                     gUnknown_02002826 = 5;
                 }
             }
         }
         else
         {
-            gUnknown_0202BF20.queueFull |= QUEUE_FULL_RECV;
+            gLink.queueFull |= QUEUE_FULL_RECV;
         }
-        gUnknown_0202BF20.recvCmdIndex++;
-        if (gUnknown_0202BF20.recvCmdIndex == CMD_LENGTH && gUnknown_0200282A)
+        gLink.recvCmdIndex++;
+        if (gLink.recvCmdIndex == CMD_LENGTH && gUnknown_0200282A)
         {
-            gUnknown_0202BF20.recvQueue.count++;
+            gLink.recvQueue.count++;
             gUnknown_0200282A = 0;
         }
     }
 }
 
-static void sub_223C(void) // DoSend
+static void DoSend(void)
 {
-    if (gUnknown_0202BF20.sendCmdIndex == CMD_LENGTH)
+    if (gLink.sendCmdIndex == CMD_LENGTH)
     {
-        REG_SIOMLT_SEND = gUnknown_0202BF20.checksum;
-        if (!gUnknown_02002825)
+        REG_SIOMLT_SEND = gLink.checksum;
+        if (!sSendBufferEmpty)
         {
-            gUnknown_0202BF20.sendQueue.count--;
-            gUnknown_0202BF20.sendQueue.pos++;
-            if (gUnknown_0202BF20.sendQueue.pos >= QUEUE_CAPACITY)
+            gLink.sendQueue.count--;
+            gLink.sendQueue.pos++;
+            if (gLink.sendQueue.pos >= QUEUE_CAPACITY)
             {
-                gUnknown_0202BF20.sendQueue.pos = 0;
+                gLink.sendQueue.pos = 0;
             }
         }
         else
         {
-            gUnknown_02002825 = FALSE;
+            sSendBufferEmpty = FALSE;
         }
     }
     else
     {
-        if (gUnknown_0202BF20.sendCmdIndex == 0 && gUnknown_0202BF20.sendQueue.count == 0)
+        if (gLink.sendCmdIndex == 0 && gLink.sendQueue.count == 0)
         {
-            gUnknown_02002825 = TRUE;
+            sSendBufferEmpty = TRUE;
         }
-        if (gUnknown_02002825)
+        if (sSendBufferEmpty)
         {
             REG_SIOMLT_SEND = 0;
         }
         else
         {
-            REG_SIOMLT_SEND = gUnknown_0202BF20.sendQueue.data[gUnknown_0202BF20.sendCmdIndex][gUnknown_0202BF20.sendQueue.pos];
+            REG_SIOMLT_SEND = gLink.sendQueue.data[gLink.sendCmdIndex][gLink.sendQueue.pos];
         }
-        if ((gUnknown_0202BF20.unkE == 0) && (gUnknown_0202BF20.sendCmdIndex == 0) && (3 < gUnknown_0202BF20.recvQueue.count)) {
+        if ((gLink.unkE == 0) && (gLink.sendCmdIndex == 0) && (3 < gLink.recvQueue.count)) {
             REG_SIOMLT_SEND |= 1; // TODO
         }
-        gUnknown_0202BF20.sendCmdIndex++;
+        gLink.sendCmdIndex++;
     }
 }
 
-static void sub_2308(void) // StopTimer
+static void StopTimer(void)
 {
-    if (gUnknown_0202BF20.isMaster)
+    if (gLink.isMaster)
     {
         REG_TM3CNT_H &= ~TIMER_ENABLE;
         REG_TM3CNT_L = -197;
     }
 }
 
-static void sub_2338(void) // SendRecvDone
+static void SendRecvDone(void)
 {
-    if (gUnknown_0202BF20.recvCmdIndex == CMD_LENGTH)
+    if (gLink.recvCmdIndex == CMD_LENGTH)
     {
-        gUnknown_0202BF20.sendCmdIndex = 0;
-        gUnknown_0202BF20.recvCmdIndex = 0;
+        gLink.sendCmdIndex = 0;
+        gLink.recvCmdIndex = 0;
     }
-    else if (gUnknown_0202BF20.isMaster)
+    else if (gLink.isMaster)
     {
         REG_TM3CNT_H |= TIMER_ENABLE;
     }
 }
 
-static void sub_2364(void) // ResetSendBuffer
+// TODO Unused?
+static void ResetSendBuffer(void)
 {
     u8 i;
     u8 j;
 
-    gUnknown_0202BF20.sendQueue.count = 0;
-    gUnknown_0202BF20.sendQueue.pos = 0;
+    gLink.sendQueue.count = 0;
+    gLink.sendQueue.pos = 0;
     for (i = 0; i < CMD_LENGTH; i++)
     {
         for (j = 0; j < QUEUE_CAPACITY; j++)
         {
-            gUnknown_0202BF20.sendQueue.data[i][j] = LINKCMD_NONE;
+            gLink.sendQueue.data[i][j] = LINKCMD_NONE;
         }
     }
 }
 
-static void sub_23B4(void) // ResetRecvBuffer
+// TODO Unused?
+static void ResetRecvBuffer(void)
 {
     u8 i;
     u8 j;
     u8 k;
 
-    gUnknown_0202BF20.recvQueue.count = 0;
-    gUnknown_0202BF20.recvQueue.pos = 0;
+    gLink.recvQueue.count = 0;
+    gLink.recvQueue.pos = 0;
     for (i = 0; i < MAX_LINK_PLAYERS; i++)
     {
         for (j = 0; j < CMD_LENGTH; j++)
         {
             for (k = 0; k < QUEUE_CAPACITY; k++)
             {
-                gUnknown_0202BF20.recvQueue.data[i][j][k] = LINKCMD_NONE;
+                gLink.recvQueue.data[i][j][k] = LINKCMD_NONE;
             }
         }
     }

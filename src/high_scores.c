@@ -742,7 +742,7 @@ void sub_DA20(void)
     }
     else
     {
-        gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
+        gUnknown_0202ADD0 = LinkMain1(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
         gUnknown_0202BDF0 = gUnknown_0202ADD0 & 3;
         gUnknown_0201C1AC = (gUnknown_0202ADD0 & 0x1c) >> 2;
         gUnknown_0202ADDC = (gUnknown_0202ADD0 & 0xe00) >> 9;
@@ -795,7 +795,7 @@ void sub_DB70(void)
         gUnknown_0201B178 = 0;
         gUnknown_0202BEBC = 0;
         sub_2568();
-        sub_1AA4();
+        DisableSerial();
         for (i = 0; i < 2; i++)
         {
             for (j = 0; j < 6; j++)
@@ -819,7 +819,7 @@ void sub_DBF4(void)
     {
     case 4:
         sub_2568();
-        sub_1AA4();
+        DisableSerial();
         break;
     case 130:
         gUnknown_0202BEBC = 3;
@@ -1795,7 +1795,7 @@ void sub_E908(void)
 s16 sub_E94C(void)
 {
     s16 result;
-    if (gUnknown_0202BF20.isMaster)
+    if (gLink.isMaster)
         result = sub_EBEC();
     else
         result = sub_ED28();
@@ -1806,7 +1806,7 @@ s16 sub_E94C(void)
 s16 sub_E970(void)
 {
     s16 result;
-    if (gUnknown_0202BF20.isMaster)
+    if (gLink.isMaster)
         result = sub_E994();
     else
         result = sub_EAC0();

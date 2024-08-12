@@ -53,16 +53,16 @@ struct Link {
 
 // extern function declarations
 extern void sub_19B4(void);
-extern void sub_1AA4(void);
-extern s32 sub_1B04(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MAX_LINK_PLAYERS]);
-extern void sub_1F4C(void);
-extern void sub_1F5C(void);
+extern void DisableSerial(void);
+extern s32 LinkMain1(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MAX_LINK_PLAYERS]);
+extern void Timer3Init(void);
+extern void SerialCB(void);
 
 // extern IWRAM variable declarations
 
 // extern EWRAM variable declarations
 extern u8 gUnknown_0202BEC8;
-extern struct Link gUnknown_0202BF20; // gLink
+extern struct Link gLink;
 
 // extern const definitions
 

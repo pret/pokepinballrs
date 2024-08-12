@@ -111,12 +111,12 @@ void VCountIntr(void)
 
 void SerialIntr(void)
 {
-    sub_1F5C();
+    SerialCB();
 }
 
 void Timer3Intr(void)
 {
-    sub_1F4C();
+    Timer3Init();
 }
 
 void IntrDummy(void)
