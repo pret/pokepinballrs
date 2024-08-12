@@ -1,6 +1,7 @@
 #include "global.h"
 #include "constants/bg_music.h"
 #include "functions.h"
+#include "link.h"
 #include "m4a.h"
 #include "main.h"
 #include "types.h"

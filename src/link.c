@@ -1,60 +1,14 @@
 // include macros
 #include "global.h"
+#include "link.h"
 #include "m4a.h"
 #include "main.h"
 
 // "static" define macros
-
-// "static" enums
-
-// "static" struct definitions
-
-// static function declarations
-
-// static IWRAM variable declarations
-
-// static EWRAM variable declarations
-
-// static const definitions
-
-// function definitions
-
-// TODO Unsorted
-
-#define MAX_LINK_PLAYERS 2
-
-void sub_1884(void);
-void sub_19B4(void);
-void sub_19CC(void);
-void sub_1A78(void);
-void nullsub_15(void);
-void sub_1AA4(void);
-s32 sub_1B04(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MAX_LINK_PLAYERS]);
-void sub_1C5C(void);
-
-void sub_1C84(void);
-void sub_1CD4(u16 *);
-void sub_1DB8(u16 (*recvCmds)[MAX_LINK_PLAYERS]);
-void sub_1EC0(void);
-void sub_1F4C(void);
-void sub_1F5C(void);
-void sub_1FEC(void);
-
-bool8 sub_1FFC(void);
-void sub_20FC(void);
-void sub_223C(void);
-void sub_2308(void);
-void sub_2338(void);
-void sub_2364(void);
-void sub_23B4(void);
-
-#define CMD_LENGTH 8
-#define QUEUE_CAPACITY 0x20
-
-
-void sub_1DB8(u16 (*recvCmds)[MAX_LINK_PLAYERS]);
-
 #define LINKCMD_NONE 0xEFFF
+#define MASTER_HANDSHAKE  0x8FFF
+#define SLAVE_HANDSHAKE   0xD13B
+//#define EREADER_HANDSHAKE 0xCCD0
 
 #define LINK_SLAVE 0
 #define LINK_MASTER 8
@@ -87,6 +41,25 @@ void sub_1DB8(u16 (*recvCmds)[MAX_LINK_PLAYERS]);
 #define LINK_STAT_ERROR_LAG_SLAVE        0x00040000
 #define LINK_STAT_ERROR_LAG_SLAVE_SHIFT  18
 
+#define SIO_MULTI_CNT ((struct SioMultiCnt *)REG_ADDR_SIOCNT)
+
+#define EnableInterrupts(interrupts) \
+{ \
+    gUnknown_02002822 = REG_IME; \
+    REG_IME = 0; \
+    REG_IE |= (interrupts); \
+    REG_IME = gUnknown_02002822; \
+}
+
+#define DisableInterrupts(interrupts) \
+{ \
+    gUnknown_02002822 = REG_IME; \
+    REG_IME = 0; \
+    REG_IE &= ~(interrupts); \
+    REG_IME = gUnknown_02002822; \
+}
+
+// "static" enums
 enum
 {
     QUEUE_FULL_NONE,
@@ -110,83 +83,47 @@ enum
     LAG_SLAVE,
 };
 
-struct SendQueue
-{
-    u16 data[CMD_LENGTH][QUEUE_CAPACITY];
-    u8 pos;
-    u8 count;
-};
+// "static" struct definitions
 
-struct RecvQueue
-{
-    u16 data[MAX_LINK_PLAYERS][CMD_LENGTH][QUEUE_CAPACITY];
-    u8 pos;
-    u8 count; // 0x621
-};
+// static function declarations
+static void sub_1884(void);
+static void sub_19CC(void);
+static void sub_1A78(void);
+static void nullsub_15(void);
+static void sub_1C5C(void);
+static void sub_1C84(void);
+static void sub_1CD4(u16 *);
+static void sub_1DB8(u16 (*recvCmds)[MAX_LINK_PLAYERS]);
+static void sub_1EC0(void);
+static void sub_1FEC(void);
+static bool8 sub_1FFC(void);
+static void sub_20FC(void);
+static void sub_223C(void);
+static void sub_2308(void);
+static void sub_2338(void);
+static void sub_2364(void);
+static void sub_23B4(void);
 
-struct Link { // struct Link
-    u8 isMaster; // 0x0
-    u8 state; // 0x1
-    u8 localId; // 0x2
-    u8 playerCount; // 0x3
-    u16 handshakeBuffer[4]; // 0x4
-    bool8 receivedNothing; // 0xC
-    u8 serialIntrCounter; // 0xD
-    u8 unkE; // 0xE
-    u8 fillerF; // 0xF
-    bool8 handshakeAsMaster; // 0x10
-    u8 unk11;
-    u8 hardwareError;
-    u8 unk13;
-    u8 queueFull; // 0x14
-    u8 unk15;
-    u16 checksum; // 0x16
-    u8 sendCmdIndex; // 0x18
-    u8 recvCmdIndex; // 0x19
-    u8 filler1A[0x1C-0x1A]; // 0x1A
+// static IWRAM variable declarations
 
-    struct SendQueue sendQueue;
-    struct RecvQueue recvQueue;
-};
-extern struct Link gUnknown_0202BF20; // gLink
-
+// static EWRAM variable declarations
+// TODO fix bss discard nonsense
 extern u8 gUnknown_02002820; // sChecksumAvailable
 extern u16 gUnknown_02002822; // gLinkSavedIme
 extern u8 gUnknown_02002824; // sNumVBlanksWithoutSerialIntr
+extern u8 gUnknown_02002825; // sSendBufferEmpty
 extern u8 gUnknown_02002826;
+extern u8 gUnknown_02002827; // sHandshakePlayerCount ?
 extern u16 gUnknown_02002828; // sSendNonzeroCheck
 extern u16 gUnknown_0200282A;
-extern u8  gUnknown_02019C2C; // gLastSendQueueCount
-extern s8 gUnknown_0202C5E0;
-extern u8 gUnknown_02002825; // sSendBufferEmpty
-extern u8 gUnknown_02002827; // sHandshakePlayerCount ?
+extern u8 gUnknown_02019C2C; // gLastSendQueueCount
 extern u8 gUnknown_0202A554; // ???
-extern u8 gUnknown_0202BEC8;
+extern s8 gUnknown_0202C5E0;
 
+// static const definitions
 
-#define MASTER_HANDSHAKE  0x8FFF
-#define SLAVE_HANDSHAKE   0xD13B
-//#define EREADER_HANDSHAKE 0xCCD0
-
-#define SIO_MULTI_CNT ((struct SioMultiCnt *)REG_ADDR_SIOCNT)
-
-#define EnableInterrupts(interrupts) \
-{ \
-    gUnknown_02002822 = REG_IME; \
-    REG_IME = 0; \
-    REG_IE |= (interrupts); \
-    REG_IME = gUnknown_02002822; \
-}
-
-#define DisableInterrupts(interrupts) \
-{ \
-    gUnknown_02002822 = REG_IME; \
-    REG_IME = 0; \
-    REG_IE &= ~(interrupts); \
-    REG_IME = gUnknown_02002822; \
-}
-
-void sub_1884(void) // EnableSerial
+// function definitions
+static void sub_1884(void) // EnableSerial
 {
     DisableInterrupts(INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL);
     REG_RCNT = 0;
@@ -194,8 +131,8 @@ void sub_1884(void) // EnableSerial
     REG_SIOCNT |= SIO_115200_BPS | SIO_INTR_ENABLE;
 
     gUnknown_02002822 = REG_IME;
-    SetMainCallback(sub_19CC+1);
-    SetVBlankIntrFunc(sub_1A78+1);
+    SetMainCallback(sub_19CC);
+    SetVBlankIntrFunc(sub_1A78);
     REG_IME = 0;
     REG_IE |= INTR_FLAG_SERIAL;
     REG_IME = gUnknown_02002822;
@@ -221,7 +158,7 @@ void sub_1884(void) // EnableSerial
     gUnknown_0200282A = 0;
 }
 
-void sub_19B4(void) // TODO
+extern void sub_19B4(void) // TODO
 {
     sub_24DC();
     sub_250C();
@@ -229,7 +166,7 @@ void sub_19B4(void) // TODO
     sub_1AA4();
 }
 
-void sub_19CC(void) // TODO
+static void sub_19CC(void) // TODO
 {
     if ((REG_DISPSTAT & 0x8) != 0)
     {
@@ -258,7 +195,7 @@ void sub_19CC(void) // TODO
     m4aSoundMain();
 }
 
-void sub_1A78(void) // VBlankIntr
+static void sub_1A78(void) // VBlankIntr
 {
     sub_1EC0();
     m4aSoundVSync();
@@ -267,11 +204,11 @@ void sub_1A78(void) // VBlankIntr
     REG_IME = 1;
 }
 
-void nullsub_15(void)
+static void nullsub_15(void)
 {
 }
 
-void sub_1AA4(void) // TODO DisableSerial?
+extern void sub_1AA4(void) // TODO DisableSerial?
 {
     DisableInterrupts(INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL);
 
@@ -282,7 +219,7 @@ void sub_1AA4(void) // TODO DisableSerial?
     CpuFill32(0, &gUnknown_0202BF20, sizeof(gUnknown_0202BF20)); // TODO off by 4 error?
 }
 
-s32 sub_1B04(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MAX_LINK_PLAYERS]) // LinkMain1
+extern s32 sub_1B04(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MAX_LINK_PLAYERS]) // LinkMain1
 {
     u32 retVal;
 
@@ -379,7 +316,7 @@ s32 sub_1B04(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MAX_LINK_
     return retVal;
 }
 
-void sub_1C5C(void) // CheckMasterOrSlave
+static void sub_1C5C(void) // CheckMasterOrSlave
 {
     u32 terminals;
     terminals = *(vu32 *)REG_ADDR_SIOCNT & (SIO_MULTI_SD | SIO_MULTI_SI);
@@ -394,7 +331,7 @@ void sub_1C5C(void) // CheckMasterOrSlave
     }
 }
 
-void sub_1C84(void) // InitTimer
+static void sub_1C84(void) // InitTimer
 {
     if (gUnknown_0202BF20.isMaster)
     {
@@ -405,7 +342,7 @@ void sub_1C84(void) // InitTimer
     }
 }
 
-void sub_1CD4(u16 *sendCmd) // EnqueueSendCmd
+static void sub_1CD4(u16 *sendCmd) // EnqueueSendCmd
 {
     u8 i;
     u8 offset;
@@ -443,7 +380,7 @@ void sub_1CD4(u16 *sendCmd) // EnqueueSendCmd
     gUnknown_02019C2C = gUnknown_0202BF20.sendQueue.count;
 }
 
-void sub_1DB8(u16 (*recvCmds)[MAX_LINK_PLAYERS]) // DequeueRecvCmds
+static void sub_1DB8(u16 (*recvCmds)[MAX_LINK_PLAYERS]) // DequeueRecvCmds
 {
     u8 i;
     u8 j;
@@ -484,7 +421,7 @@ void sub_1DB8(u16 (*recvCmds)[MAX_LINK_PLAYERS]) // DequeueRecvCmds
     REG_IME = gUnknown_02002822;
 }
 
-void sub_1EC0(void) // LinkVSync
+static void sub_1EC0(void) // LinkVSync
 {
     if (gUnknown_0202BF20.unkE)
     {
@@ -540,13 +477,13 @@ void sub_1EC0(void) // LinkVSync
     }
 }
 
-void sub_1F4C(void) // Timer3Init
+extern void sub_1F4C(void) // Timer3Init
 {
     sub_2308();
     sub_1FEC();
 }
 
-void sub_1F5C(void) // SerialCB
+extern void sub_1F5C(void) // SerialCB
 {
     u32 temp;
     temp = *((u32*) REG_ADDR_SIOCNT);
@@ -585,12 +522,12 @@ void sub_1F5C(void) // SerialCB
     }
 }
 
-void sub_1FEC(void) // StartTransfer
+static void sub_1FEC(void) // StartTransfer
 {
     REG_SIOCNT |= SIO_START;
 }
 
-bool8 sub_1FFC(void) // DoHandshake
+static bool8 sub_1FFC(void) // DoHandshake
 {
     u8 i;
     u8 playerCount;
@@ -648,7 +585,7 @@ bool8 sub_1FFC(void) // DoHandshake
     return FALSE;
 }
 
-void sub_20FC(void) // DoRecv
+static void sub_20FC(void) // DoRecv
 {
     u16 recv[4];
     u8 i;
@@ -701,7 +638,7 @@ void sub_20FC(void) // DoRecv
     }
 }
 
-void sub_223C(void) // DoSend
+static void sub_223C(void) // DoSend
 {
     if (gUnknown_0202BF20.sendCmdIndex == CMD_LENGTH)
     {
@@ -741,7 +678,7 @@ void sub_223C(void) // DoSend
     }
 }
 
-void sub_2308(void) // StopTimer
+static void sub_2308(void) // StopTimer
 {
     if (gUnknown_0202BF20.isMaster)
     {
@@ -750,7 +687,7 @@ void sub_2308(void) // StopTimer
     }
 }
 
-void sub_2338(void) // SendRecvDone
+static void sub_2338(void) // SendRecvDone
 {
     if (gUnknown_0202BF20.recvCmdIndex == CMD_LENGTH)
     {
@@ -763,7 +700,7 @@ void sub_2338(void) // SendRecvDone
     }
 }
 
-void sub_2364(void) // ResetSendBuffer
+static void sub_2364(void) // ResetSendBuffer
 {
     u8 i;
     u8 j;
@@ -779,7 +716,7 @@ void sub_2364(void) // ResetSendBuffer
     }
 }
 
-void sub_23B4(void) // ResetRecvBuffer
+static void sub_23B4(void) // ResetRecvBuffer
 {
     u8 i;
     u8 j;

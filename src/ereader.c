@@ -2,6 +2,7 @@
 #include "constants/bg_music.h"
 #include "constants/ereader.h"
 #include "functions.h"
+#include "link.h"
 #include "main.h"
 #include "m4a.h"
 #include "titlescreen.h"

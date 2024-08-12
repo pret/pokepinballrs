@@ -1,6 +1,7 @@
 #include "global.h"
 #include "constants/bg_music.h"
 #include "functions.h"
+#include "link.h"
 #include "main.h"
 #include "m4a.h"
 #include "variables.h"
@@ -1791,12 +1792,10 @@ void sub_E908(void)
     gUnknown_0202C54C = 0;
 }
 
-extern u8 gUnknown_0202BF20;
-
 s16 sub_E94C(void)
 {
     s16 result;
-    if (gUnknown_0202BF20 != 0)
+    if (gUnknown_0202BF20.isMaster)
         result = sub_EBEC();
     else
         result = sub_ED28();
@@ -1807,7 +1806,7 @@ s16 sub_E94C(void)
 s16 sub_E970(void)
 {
     s16 result;
-    if (gUnknown_0202BF20 != 0)
+    if (gUnknown_0202BF20.isMaster)
         result = sub_E994();
     else
         result = sub_EAC0();

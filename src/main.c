@@ -1,6 +1,7 @@
 #include "global.h"
 #include "main.h"
 #include "gbplayer.h"
+#include "link.h"
 #include "m4a.h"
 
 static void InitGame(void);
