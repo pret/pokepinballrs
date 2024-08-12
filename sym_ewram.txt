@@ -14,19 +14,19 @@ gUnknown_02002818: @ 0x02002818
 	.space 0x4
 gUnknown_0200281C: @ 0x0200281C
 	.space 0x4
-gUnknown_02002820: @ 0x02002820
+sChecksumAvailable: @ 0x02002820
 	.space 0x2
-gUnknown_02002822: @ 0x02002822
+gLinkSavedIme: @ 0x02002822
 	.space 0x2
-gUnknown_02002824: @ 0x02002824
+sNumVBlanksWithoutSerialIntr: @ 0x02002824
 	.space 0x1
-gUnknown_02002825: @ 0x02002825
+sSendBufferEmpty: @ 0x02002825
 	.space 0x1
 gUnknown_02002826: @ 0x02002826
 	.space 0x1
 gUnknown_02002827: @ 0x02002827
 	.space 0x1
-gUnknown_02002828: @ 0x02002828
+sSendNonzeroCheck: @ 0x02002828
 	.space 0x2
 gUnknown_0200282A: @ 0x0200282A
 	.space 0x2
@@ -274,7 +274,7 @@ gUnknown_02019C24: @ 0x02019C24
 	.space 0x4
 gUnknown_02019C28: @ 0x02019C28
 	.space 0x4
-gUnknown_02019C2C: @ 0x02019C2C
+gLastSendQueueCount: @ 0x02019C2C
 	.space 0x4
 gUnknown_02019C30: @ 0x02019C30
 	.space 0x10
@@ -474,10 +474,8 @@ gUnknown_0202BF10: @ 0x0202BF10
 	.space 0x4
 gUnknown_0202BF14: @ 0x0202BF14
 	.space 0xC
-gUnknown_0202BF20: @ 0x0202BF20
-	.space 0x620
-gUnknown_0202C540: @ 0x0202C540
-	.space 0x4
+gLink: @ 0x0202BF20
+	.space 0x624
 gUnknown_0202C544: @ 0x0202C544
 	.space 0x4
 gUnknown_0202C548: @ 0x0202C548

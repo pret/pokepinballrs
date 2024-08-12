@@ -2,6 +2,7 @@
 #include "constants/bg_music.h"
 #include "constants/ereader.h"
 #include "functions.h"
+#include "link.h"
 #include "main.h"
 #include "m4a.h"
 #include "titlescreen.h"
@@ -24,7 +25,6 @@ extern u8 gUnknown_0200282D;
 extern s8 gUnknown_0202BEF8;
 extern u8 gUnknown_0201B124;
 extern u32 gUnknown_0202ADD0;
-extern u32 gUnknown_0202BEC8;
 extern s16 gUnknown_0202C5F0[];
 extern u16 gUnknown_0201A4D0[][2];
 extern u32 gUnknown_0202BDF0;
@@ -47,8 +47,6 @@ extern u8 gUnknown_08080500[];
 extern u8 gUnknown_080897E0[];
 extern u8 gUnknown_0807FD00[];
 extern s16 gUnknown_086A550C[];
-
-s32 sub_1B04(u32 *, s16[], u16[][]);
 
 void EReaderMain(void)
 {
@@ -181,13 +179,13 @@ void sub_304C(void)
     sub_3AB4();
     if (gMain.newKeys & B_BUTTON) {
         sub_2568();
-        sub_1AA4();
+        DisableSerial();
         sub_02B4();
         m4aMPlayAllStop();
         sub_0D10();
         gMain.subState = 0;
     }
-    gUnknown_0202ADD0 = sub_1B04(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
+    gUnknown_0202ADD0 = LinkMain1(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
     gUnknown_0202BDF0 = gUnknown_0202ADD0 & 3;
     gUnknown_0201C1AC = ((gUnknown_0202ADD0 & 0x1c) >> 2);
     gUnknown_0202ADDC = ((gUnknown_0202ADD0 & 0xe00) >> 9);
@@ -273,7 +271,7 @@ void sub_3208(void)
         }
         else if (gUnknown_086A5528[gUnknown_0202AD90] == 0) {
             sub_2568();
-            sub_1AA4();
+            DisableSerial();
             sub_02B4();
             m4aMPlayAllStop();
             sub_0D10();
@@ -300,7 +298,7 @@ void sub_33A0(void)
     {
         case 4:
             sub_2568();
-            sub_1AA4();
+            DisableSerial();
             break;
         case 0x96:
             gUnknown_0202A58C = 3;

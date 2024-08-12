@@ -1,6 +1,7 @@
 #include "global.h"
 #include "main.h"
 #include "gbplayer.h"
+#include "link.h"
 #include "m4a.h"
 
 static void InitGame(void);
@@ -110,12 +111,12 @@ void VCountIntr(void)
 
 void SerialIntr(void)
 {
-    sub_1F5C();
+    SerialCB();
 }
 
 void Timer3Intr(void)
 {
-    sub_1F4C();
+    Timer3Init();
 }
 
 void IntrDummy(void)

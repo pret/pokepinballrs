@@ -2039,14 +2039,14 @@ _08005EA0: .4byte gUnknown_0202BECC
 	thumb_func_start sub_5EA4
 sub_5EA4: @ 0x08005EA4
 	push {lr}
-	ldr r0, _08005EB4 @ =gUnknown_0202BF20
+	ldr r0, _08005EB4 @ =gLink
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08005EB8
 	bl sub_639C
 	b _08005EBC
 	.align 2, 0
-_08005EB4: .4byte gUnknown_0202BF20
+_08005EB4: .4byte gLink
 _08005EB8:
 	bl sub_65DC
 _08005EBC:
@@ -2060,14 +2060,14 @@ _08005EBC:
 	thumb_func_start sub_5EC8
 sub_5EC8: @ 0x08005EC8
 	push {lr}
-	ldr r0, _08005ED8 @ =gUnknown_0202BF20
+	ldr r0, _08005ED8 @ =gLink
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08005EDC
 	bl sub_5EEC
 	b _08005EE0
 	.align 2, 0
-_08005ED8: .4byte gUnknown_0202BF20
+_08005ED8: .4byte gLink
 _08005EDC:
 	bl sub_6144
 _08005EE0:
