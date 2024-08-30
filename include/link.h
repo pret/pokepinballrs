@@ -26,7 +26,8 @@ struct RecvQueue
     u8 count; // 0x621
 };
 
-struct Link {
+struct Link
+{
     u8 isMaster; // 0x0
     u8 state; // 0x1
     u8 localId; // 0x2

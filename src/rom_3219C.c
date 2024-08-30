@@ -114,185 +114,67 @@ void sub_3219C(void)
     gUnknown_020314E0->unk59C = gUnknown_020314E0->unk598;
 }
 
-NAKED
 void sub_32484(void)
 {
-    asm_unified("\n\
-    push {r4, r5, r6, r7, lr}\n\
-    mov r7, sl\n\
-    mov r6, sb\n\
-    mov r5, r8\n\
-    push {r5, r6, r7}\n\
-    ldr r0, _080324D4 @ =gUnknown_020314E0\n\
-    ldr r1, [r0]\n\
-    movs r3, #0x97\n\
-    lsls r3, r3, #1\n\
-    adds r2, r1, r3\n\
-    movs r1, #0\n\
-    strh r1, [r2]\n\
-    movs r2, #0\n\
-    ldr r4, _080324D8 @ =gMain\n\
-    mov sb, r4\n\
-    mov ip, sb\n\
-    ldr r5, _080324DC @ =gUnknown_086AE5E0\n\
-    mov sl, r5\n\
-_080324A8:\n\
-    lsls r2, r2, #0x10\n\
-    asrs r1, r2, #0xf\n\
-    mov r0, ip\n\
-    ldrb r3, [r0, #4]\n\
-    movs r0, #0x34\n\
-    muls r0, r3, r0\n\
-    adds r1, r1, r0\n\
-    ldr r4, _080324E0 @ =gUnknown_086A4A38\n\
-    adds r1, r1, r4\n\
-    ldrh r5, [r1]\n\
-    movs r4, #0\n\
-    ldrsh r0, [r1, r4]\n\
-    mov r8, r2\n\
-    cmp r0, #0x57\n\
-    bne _080324F4\n\
-    cmp r3, #0\n\
-    bne _080324E4\n\
-    mov r0, ip\n\
-    adds r0, #0xcd\n\
-    ldrb r0, [r0]\n\
-    b _080324E8\n\
-    .align 2, 0\n\
-_080324D4: .4byte gUnknown_020314E0\n\
-_080324D8: .4byte gMain\n\
-_080324DC: .4byte gUnknown_086AE5E0\n\
-_080324E0: .4byte gUnknown_086A4A38\n\
-_080324E4:\n\
-    ldr r1, _080324F0 @ =gUnknown_0200B18E\n\
-    ldrb r0, [r1]\n\
-_080324E8:\n\
-    lsls r0, r0, #1\n\
-    add r0, sl\n\
-    ldrh r3, [r0]\n\
-    b _0803257C\n\
-    .align 2, 0\n\
-_080324F0: .4byte gUnknown_0200B18E\n\
-_080324F4:\n\
-    mov r1, sb\n\
-    adds r1, #0x74\n\
-    adds r0, r0, r1\n\
-    ldrb r0, [r0]\n\
-    lsls r0, r0, #1\n\
-    add r0, sl\n\
-    ldrh r3, [r0]\n\
-    movs r2, #0\n\
-    ldr r7, _080325CC @ =gUnknown_086A3700\n\
-    ldr r6, _080325D0 @ =gUnknown_086AE5E0\n\
-    adds r4, r1, #0\n\
-_0803250A:\n\
-    lsls r1, r5, #0x10\n\
-    asrs r1, r1, #0x10\n\
-    lsls r0, r1, #1\n\
-    adds r0, r0, r1\n\
-    lsls r0, r0, #3\n\
-    adds r0, r0, r7\n\
-    ldrb r5, [r0, #0x15]\n\
-    adds r0, r5, #0\n\
-    cmp r0, #0xcc\n\
-    bgt _08032542\n\
-    adds r0, r0, r4\n\
-    ldrb r0, [r0]\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r6\n\
-    ldrh r0, [r0]\n\
-    lsls r1, r3, #0x10\n\
-    lsls r0, r0, #0x10\n\
-    cmp r1, r0\n\
-    bge _08032532\n\
-    lsrs r3, r0, #0x10\n\
-_08032532:\n\
-    lsls r0, r2, #0x10\n\
-    movs r1, #0x80\n\
-    lsls r1, r1, #9\n\
-    adds r0, r0, r1\n\
-    lsrs r2, r0, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    cmp r0, #1\n\
-    ble _0803250A\n\
-_08032542:\n\
-    mov r4, r8\n\
-    asrs r1, r4, #0xf\n\
-    mov r5, ip\n\
-    ldrb r2, [r5, #4]\n\
-    movs r0, #0x34\n\
-    muls r0, r2, r0\n\
-    adds r1, r1, r0\n\
-    ldr r0, _080325D4 @ =gUnknown_086A4A38\n\
-    adds r1, r1, r0\n\
-    ldrh r5, [r1]\n\
-    ldr r1, _080325D8 @ =gUnknown_020314E0\n\
-    ldr r0, [r1]\n\
-    movs r4, #0xbe\n\
-    lsls r4, r4, #3\n\
-    adds r0, r0, r4\n\
-    ldrh r0, [r0]\n\
-    cmp r0, #0\n\
-    bne _0803257C\n\
-    lsls r0, r5, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    lsls r1, r0, #1\n\
-    adds r1, r1, r0\n\
-    lsls r1, r1, #3\n\
-    ldr r0, _080325CC @ =gUnknown_086A3700\n\
-    adds r1, r1, r0\n\
-    ldrb r0, [r1, #0x15]\n\
-    cmp r0, #0xcc\n\
-    bls _0803257C\n\
-    movs r3, #0\n\
-_0803257C:\n\
-    ldr r1, _080325D8 @ =gUnknown_020314E0\n\
-    ldr r4, [r1]\n\
-    ldr r1, _080325DC @ =0x0000059E\n\
-    adds r0, r4, r1\n\
-    ldrh r1, [r0]\n\
-    lsls r0, r5, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    cmp r1, r0\n\
-    bne _08032590\n\
-    movs r3, #0\n\
-_08032590:\n\
-    movs r5, #0x97\n\
-    lsls r5, r5, #1\n\
-    adds r0, r4, r5\n\
-    lsls r2, r3, #0x10\n\
-    asrs r2, r2, #0x10\n\
-    ldrh r1, [r0]\n\
-    adds r2, r2, r1\n\
-    strh r2, [r0]\n\
-    mov r3, r8\n\
-    asrs r1, r3, #0x10\n\
-    lsls r3, r1, #1\n\
-    adds r5, #2\n\
-    adds r0, r4, r5\n\
-    adds r0, r0, r3\n\
-    strh r2, [r0]\n\
-    adds r1, #1\n\
-    lsls r1, r1, #0x10\n\
-    lsrs r2, r1, #0x10\n\
-    asrs r1, r1, #0x10\n\
-    cmp r1, #0x18\n\
-    bgt _080325BC\n\
-    b _080324A8\n\
-_080325BC:\n\
-    pop {r3, r4, r5}\n\
-    mov r8, r3\n\
-    mov sb, r4\n\
-    mov sl, r5\n\
-    pop {r4, r5, r6, r7}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .align 2, 0\n\
-_080325CC: .4byte gUnknown_086A3700\n\
-_080325D0: .4byte gUnknown_086AE5E0\n\
-_080325D4: .4byte gUnknown_086A4A38\n\
-_080325D8: .4byte gUnknown_020314E0\n\
-_080325DC: .4byte 0x0000059E");
+    s16 i;
+    s16 currentSpecies;
+    s16 weight;
+    s16 j;
+    s16 evolutionWeight;
+
+    gUnknown_020314E0->unk12E = 0;
+
+    for (i = 0; i < 0x19; i++)
+    {   
+        currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
+
+        if (currentSpecies == SPECIES_ODDISH)
+        {
+            if (gMain.selectedField == 0)
+            {
+                weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_VILEPLUME]];
+            }
+            else
+            {
+                weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_BELLOSSOM]];
+            }
+        }
+        else
+        {
+            weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[currentSpecies]];
+
+            for (j = 0; j < 2; j++)
+            {
+                currentSpecies = gUnknown_086A3700[currentSpecies].evolutionTarget;
+                if (currentSpecies < SPECIES_NONE)
+                {
+                    evolutionWeight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[currentSpecies]];
+                    if (weight < evolutionWeight) weight = evolutionWeight;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            
+            currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
+            if (gUnknown_020314E0->unk5F0 == 0)
+            {
+                if (gUnknown_086A3700[currentSpecies].evolutionTarget >= SPECIES_NONE)
+                {
+                    weight = 0;
+                }
+            }
+        }
+
+        if (gUnknown_020314E0->unk59E == currentSpecies)
+        {
+            weight = 0;
+        }
+
+        gUnknown_020314E0->unk12E += weight;
+        gUnknown_020314E0->unk130[i] = gUnknown_020314E0->unk12E;
+    }
 }
 
 void sub_325E0(void)
