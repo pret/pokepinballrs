@@ -13,6 +13,416 @@ static inline u32 GetTimeAdjustedRandom()
     return Random() + (gMain.systemFrameCount + gMain.fieldFrameCount);
 }
 
+#ifdef NONMATCHING
+// This is functionally equivalent; see https://decomp.me/scratch/okVhA for the instruction swap
+void sub_31F6C(void)
+{
+    s32 threeArrows;
+    s16 i;
+    s16 j;
+    s16 weight;
+    s16 currentSpecies;
+    s16 evolutionWeight;
+
+    gUnknown_020314E0->unk12E = 0;
+    if (gUnknown_020314E0->unk73D == 3)
+        threeArrows = 1;
+    else
+        threeArrows = 0;
+
+    for (i = 0; i < 8; i++)
+    {
+        currentSpecies = gWildMonLocations[gUnknown_020314E0->area][threeArrows][i];
+        switch (currentSpecies)
+        {
+            case SPECIES_NOSEPASS:
+            case SPECIES_SKARMORY:
+            case SPECIES_LILEEP:
+            case SPECIES_ANORITH:
+            case SPECIES_FEEBAS:
+            case SPECIES_CASTFORM:
+            case SPECIES_KECLEON:
+            case SPECIES_ABSOL:
+            case SPECIES_WOBBUFFET:
+                if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
+                {
+                    if (gMain_saveData.pokedexFlags[currentSpecies] < 2)
+                    {
+                        weight = 2;
+                    }
+                    else
+                    {
+                        weight = 4;
+                    }
+                }
+                else
+                {
+                    if (gMain_saveData.pokedexFlags[currentSpecies] < 2)
+                    {
+                        weight = 1;
+                    }
+                    else
+                    {
+                        weight = 2;
+                    }
+                }
+    
+                if (gUnknown_020314E0->unk5F0 == 0)
+                {
+                    weight = 0;
+                }
+                break;
+            
+            case SPECIES_CLAMPERL:
+                weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_CLAMPERL]];
+                evolutionWeight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_HUNTAIL]];
+                if (weight < evolutionWeight)
+                {
+                    weight = evolutionWeight;
+                }
+                evolutionWeight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_GOREBYSS]];
+                if (weight < evolutionWeight)
+                {
+                    weight = evolutionWeight;
+                }
+
+                break;
+            case SPECIES_NONE:
+                weight = 0;
+                break;
+            default:
+                weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[currentSpecies]];
+                for (j = 0; j < 2; j++)
+                {
+                    currentSpecies = gUnknown_086A3700[currentSpecies].evolutionTarget;
+                    if (currentSpecies < SPECIES_NONE)
+                    {
+                        evolutionWeight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[currentSpecies]];
+                        if (weight < evolutionWeight)
+                        {
+                            weight = evolutionWeight;
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                currentSpecies = gWildMonLocations[gUnknown_020314E0->area][threeArrows][i];
+                if (gUnknown_020314E0->unk5F0 == 0 && gUnknown_086A3700[currentSpecies].evolutionTarget >= SPECIES_NONE)
+                {
+                    weight = 0;
+                }
+                break;
+        }
+
+        if (gUnknown_020314E0->unk59C == currentSpecies)
+        {
+            weight = 0;
+        }
+        gUnknown_020314E0->unk12E += weight;
+        gUnknown_020314E0->unk130[i] = gUnknown_020314E0->unk12E;
+    }
+}
+#else
+NAKED
+void sub_31F6C(void)
+{
+    asm_unified("\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	sub sp, #4\n\
+	ldr r4, _08031FE0 @ =gUnknown_020314E0\n\
+	ldr r0, [r4]\n\
+	movs r1, #0x97\n\
+	lsls r1, r1, #1\n\
+	adds r3, r0, r1\n\
+	movs r1, #0\n\
+	strh r1, [r3]\n\
+	ldr r3, _08031FE4 @ =0x0000073D\n\
+	adds r0, r0, r3\n\
+	ldrb r0, [r0]     @ number of catch arrows lit up\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	cmp r0, #3\n\
+	bne _08031F96\n\
+	movs r1, #1  @ rare mons\n\
+_08031F96:\n\
+	movs r2, #0\n\
+	lsls r1, r1, #4\n\
+	str r1, [sp]\n\
+	ldr r5, _08031FE8 @ =gMain+0x74\n\
+	mov r8, r5\n\
+	mov sl, r4\n\
+_08031FA2:\n\
+	lsls r2, r2, #0x10\n\
+	asrs r1, r2, #0xf\n\
+	ldr r0, [sp]\n\
+	adds r1, r1, r0\n\
+	mov r3, sl\n\
+	ldr r0, [r3]\n\
+	adds r0, #0x35\n\
+	ldrb r0, [r0]   @ current area\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	lsls r0, r0, #5\n\
+	adds r1, r1, r0\n\
+	ldr r5, _08031FEC @ =gWildMonLocations\n\
+	adds r1, r1, r5\n\
+	ldrh r6, [r1]\n\
+	movs r3, #0\n\
+	ldrsh r0, [r1, r3]\n\
+	mov sb, r2\n\
+	cmp r0, #0x8d\n\
+	beq _08032018\n\
+	cmp r0, #0x8d\n\
+	bgt _08031FFA\n\
+	cmp r0, #0x84\n\
+	beq _08032018\n\
+	cmp r0, #0x84\n\
+	bgt _08031FF0\n\
+	cmp r0, #0x3b\n\
+	beq _08032018\n\
+	cmp r0, #0x72\n\
+	beq _08032018\n\
+	b _080320A8\n\
+	.align 2, 0\n\
+_08031FE0: .4byte gUnknown_020314E0\n\
+_08031FE4: .4byte 0x0000073D\n\
+_08031FE8: .4byte gMain+0x74\n\
+_08031FEC: .4byte gWildMonLocations\n\
+_08031FF0:\n\
+	cmp r0, #0x86\n\
+	beq _08032018\n\
+	cmp r0, #0x8b\n\
+	beq _08032018\n\
+	b _080320A8\n\
+_08031FFA:\n\
+	cmp r0, #0xa0\n\
+	beq _08032018\n\
+	cmp r0, #0xa0\n\
+	bgt _0803200C\n\
+	cmp r0, #0x90\n\
+	beq _08032018\n\
+	cmp r0, #0x97\n\
+	beq _08032018\n\
+	b _080320A8\n\
+_0803200C:\n\
+	cmp r0, #0xaf\n\
+	beq _0803205E\n\
+	cmp r0, #0xcd\n\
+	bne _08032016\n\
+	b _08032138\n\
+_08032016:\n\
+	b _080320A8\n\
+_08032018:\n\
+	ldr r0, _08032038 @ =gMain\n\
+	ldrb r0, [r0, #8]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	cmp r0, #0\n\
+	beq _0803203C\n\
+	lsls r0, r6, #0x10\n\
+	asrs r0, r0, #0x10\n\
+	add r0, r8\n\
+	ldrb r0, [r0]\n\
+	movs r5, #4\n\
+	cmp r0, #1\n\
+	bhi _0803204C\n\
+	movs r5, #2\n\
+	b _0803204C\n\
+	.align 2, 0\n\
+_08032038: .4byte gMain\n\
+_0803203C:\n\
+	lsls r0, r6, #0x10\n\
+	asrs r0, r0, #0x10\n\
+	add r0, r8\n\
+	ldrb r0, [r0]\n\
+	movs r5, #2\n\
+	cmp r0, #1\n\
+	bhi _0803204C\n\
+	movs r5, #1\n\
+_0803204C:\n\
+	mov r1, sl\n\
+	ldr r0, [r1]\n\
+	movs r3, #0xbe\n\
+	lsls r3, r3, #3\n\
+	adds r0, r0, r3\n\
+	ldrh r0, [r0]\n\
+	cmp r0, #0\n\
+	bne _0803213A\n\
+	b _08032138\n\
+_0803205E:\n\
+	ldr r4, _080320A0 @ =gUnknown_086AE5E0\n\
+	ldr r3, _080320A4 @ =gMain+0x74\n\
+	adds r0, r3, #0\n\
+	adds r0, #0xaf\n\
+	ldrb r1, [r0]\n\
+	lsls r1, r1, #1\n\
+	adds r1, r1, r4\n\
+	adds r0, #1\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #1\n\
+	adds r0, r0, r4\n\
+	ldrh r2, [r0]\n\
+	ldrh r5, [r1]\n\
+	movs r0, #0\n\
+	ldrsh r1, [r1, r0]\n\
+	lsls r2, r2, #0x10\n\
+	asrs r0, r2, #0x10\n\
+	cmp r1, r0\n\
+	bge _08032086\n\
+	lsrs r5, r2, #0x10\n\
+_08032086:\n\
+	adds r0, r3, #0\n\
+	adds r0, #0xb1\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #1\n\
+	adds r0, r0, r4\n\
+	ldrh r2, [r0]\n\
+	lsls r0, r5, #0x10\n\
+	lsls r1, r2, #0x10\n\
+	cmp r0, r1\n\
+	bge _0803213A\n\
+	lsrs r5, r1, #0x10\n\
+	b _0803213A\n\
+	.align 2, 0\n\
+_080320A0: .4byte gUnknown_086AE5E0\n\
+_080320A4: .4byte gMain+0x74\n\
+_080320A8:\n\
+	ldr r0, _0803218C @ =gUnknown_086AE5E0\n\
+	lsls r1, r6, #0x10\n\
+	asrs r1, r1, #0x10\n\
+	add r1, r8\n\
+	ldrb r1, [r1]\n\
+	lsls r1, r1, #1\n\
+	adds r1, r1, r0\n\
+	ldrh r5, [r1]\n\
+	movs r3, #0\n\
+	ldr r1, _08032190 @ =gUnknown_086A3700\n\
+	mov ip, r1\n\
+	mov r7, ip\n\
+	adds r4, r0, #0\n\
+_080320C2:\n\
+	lsls r1, r6, #0x10\n\
+	asrs r1, r1, #0x10\n\
+	lsls r0, r1, #1\n\
+	adds r0, r0, r1\n\
+	lsls r0, r0, #3\n\
+	adds r0, r0, r7\n\
+	ldrb r6, [r0, #0x15]\n\
+	adds r0, r6, #0\n\
+	cmp r0, #0xcc\n\
+	bgt _080320FA  @ check if mon's evolution species is < SPECIES_NONE\n\
+	add r0, r8\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #1\n\
+	adds r0, r0, r4\n\
+	ldrh r2, [r0]\n\
+	lsls r0, r5, #0x10\n\
+	lsls r1, r2, #0x10\n\
+	cmp r0, r1\n\
+	bge _080320EA\n\
+	lsrs r5, r1, #0x10\n\
+_080320EA:\n\
+	lsls r0, r3, #0x10\n\
+	movs r3, #0x80\n\
+	lsls r3, r3, #9\n\
+	adds r0, r0, r3\n\
+	lsrs r3, r0, #0x10\n\
+	asrs r0, r0, #0x10\n\
+	cmp r0, #1\n\
+	ble _080320C2\n\
+_080320FA:\n\
+	mov r0, sb\n\
+	asrs r1, r0, #0xf\n\
+	ldr r3, [sp]\n\
+	adds r1, r1, r3\n\
+	mov r0, sl\n\
+	ldr r2, [r0]\n\
+	adds r0, r2, #0\n\
+	adds r0, #0x35\n\
+	ldrb r0, [r0]\n\
+	lsls r0, r0, #0x18\n\
+	asrs r0, r0, #0x18\n\
+	lsls r0, r0, #5\n\
+	adds r1, r1, r0\n\
+	ldr r3, _08032194 @ =gWildMonLocations\n\
+	adds r1, r1, r3\n\
+	ldrh r6, [r1]\n\
+	movs r0, #0xbe\n\
+	lsls r0, r0, #3\n\
+	adds r2, r2, r0\n\
+	ldrh r0, [r2]\n\
+	cmp r0, #0\n\
+	bne _0803213A\n\
+	lsls r0, r6, #0x10\n\
+	asrs r0, r0, #0x10\n\
+	lsls r1, r0, #1\n\
+	adds r1, r1, r0\n\
+	lsls r1, r1, #3\n\
+	add r1, ip\n\
+	ldrb r0, [r1, #0x15]\n\
+	cmp r0, #0xcc\n\
+	bls _0803213A\n\
+_08032138:\n\
+	movs r5, #0\n\
+_0803213A:\n\
+	mov r1, sl\n\
+	ldr r4, [r1]\n\
+	ldr r3, _08032198 @ =0x0000059C\n\
+	adds r0, r4, r3\n\
+	ldrh r1, [r0]\n\
+	lsls r0, r6, #0x10\n\
+	asrs r0, r0, #0x10\n\
+	cmp r1, r0\n\
+	bne _0803214E\n\
+	movs r5, #0\n\
+_0803214E:\n\
+	movs r1, #0x97\n\
+	lsls r1, r1, #1\n\
+	adds r0, r4, r1\n\
+	lsls r2, r5, #0x10\n\
+	asrs r2, r2, #0x10\n\
+	ldrh r3, [r0]\n\
+	adds r2, r2, r3\n\
+	strh r2, [r0]\n\
+	mov r5, sb\n\
+	asrs r1, r5, #0x10\n\
+	lsls r3, r1, #1\n\
+	movs r5, #0x98\n\
+	lsls r5, r5, #1\n\
+	adds r0, r4, r5\n\
+	adds r0, r0, r3\n\
+	strh r2, [r0]\n\
+	adds r1, #1\n\
+	lsls r1, r1, #0x10\n\
+	lsrs r2, r1, #0x10\n\
+	asrs r1, r1, #0x10\n\
+	cmp r1, #7\n\
+	bgt _0803217C\n\
+	b _08031FA2\n\
+_0803217C:\n\
+	add sp, #4\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+_0803218C: .4byte gUnknown_086AE5E0\n\
+_08032190: .4byte gUnknown_086A3700\n\
+_08032194: .4byte gWildMonLocations\n\
+_08032198: .4byte 0x0000059C\n\
+    ");
+}
+#endif
+
 void sub_3219C(void)
 {
     s16 i;
