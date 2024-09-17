@@ -50,7 +50,7 @@ SECTIONS
         src/rom_1068C.o(.text);
         src/titlescreen.o(.text);
         asm/rom_11B9C.o(.text);
-        src/rom_3219C.o(.text);
+        src/rom_31F6C.o(.text);
         asm/rom_3219C.o(.text);
         src/options.o(.text);
         src/rom_528AC.o(.text);
