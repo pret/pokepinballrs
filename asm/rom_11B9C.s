@@ -49498,7 +49498,7 @@ sub_2AADC: @ 0x0802AADC
 	ldrb r5, [r3, #0x1e]
 	cmp r5, #0
 	beq _0802AAF6
-	bl sub_2C518
+	bl _0802C518
 _0802AAF6:
 	ldr r0, _0802AB60 @ =0x000005A6
 	adds r4, r3, r0
@@ -52646,9 +52646,7 @@ _0802C4EC:
 	lsrs r5, r1, #0x10
 	cmp r1, #0
 	bge _0802C4EC
-
-	thumb_func_start sub_2C518
-sub_2C518: @ 0x0802C518
+_0802C518: @ 0x0802C518, bl-ed to but not subroutine?
 	add sp, #4
 	pop {r3, r4, r5}
 	mov r8, r3
