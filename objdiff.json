@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/encounter/objdiff/main/config.schema.json",
+  "target_dir": "expected_objs",
+  "build_target": false,
+  "base_dir": "build/pokepinballrs/src",
+  "build_base": true,
+  "watch_patterns": [
+    "*.c",
+    "*.cp",
+    "*.cpp",
+    "*.cxx",
+    "*.h",
+    "*.hp",
+    "*.hpp",
+    "*.hxx",
+    "*.s",
+    "*.S",
+    "*.asm",
+    "*.inc",
+    "*.py",
+    "*.yml",
+    "*.txt",
+    "*.json"
+  ]
+}
