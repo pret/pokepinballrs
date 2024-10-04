@@ -14672,9 +14672,7 @@ _0803A0E2:
 	ble _0803A0E2
 _0803A14E:
 	movs r2, #0
-
-	thumb_func_start sub_3A150
-sub_3A150: @ 0x0803A150
+_0803A150: @ 0x0803A150, bl-ed to but not subroutine?
 	lsls r2, r2, #0x10
 	asrs r3, r2, #0x10
 	movs r0, #0xb8
@@ -15773,7 +15771,7 @@ _0803AA9E:
 	asrs r0, r0, #0x10
 	cmp r0, #1
 	bgt _0803AAB2
-	bl sub_3A150
+	bl _0803A150
 _0803AAB2:
 	ldr r6, _0803AB44 @ =gUnknown_0200C4F8
 	str r6, [sp]

@@ -1,5 +1,6 @@
 *.exe
 *.o
+!expected_objs/*.o
 *.i
 *.elf
 *.gba
