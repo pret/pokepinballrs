@@ -579,3 +579,24 @@ _08001660: .4byte 0x04000128\n\
 _08001664: .4byte 0x0400010E"
     );
 }
+
+u32 sub_1668(u32 arg1, u32 arg2)
+{
+    u8 uVar1;
+    u32 uVar2;
+    u32 uVar3;
+    
+    uVar2 = (arg1 & 0xFFFFFF) << 4;
+    arg2 = (arg2 << 0x1C);
+    uVar2 |= arg2;
+    uVar3 = uVar2 >> 0x1C;
+
+    for (uVar1 = 6; uVar1 != 0; uVar1--)
+    {
+        uVar3 ^= uVar2 >> (uVar1 << 2) & 0xF;
+    }
+
+    uVar3 &= 0xF;
+    uVar2 |= uVar3;
+    return uVar2;
+}
