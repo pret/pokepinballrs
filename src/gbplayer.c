@@ -667,3 +667,42 @@ u32 sub_170C(void)
         return 1;
     }
 }
+
+u32 sub_1748(u8 param_1)
+{
+    u32 uVar1;
+    u32 uVar2;
+    u32 param_3;
+    
+    switch (param_1)
+    {
+        case 2:
+            uVar1 = gUnknown_0200281C;
+            uVar2 = 2;
+            goto case_fallthrough;
+        case 3:
+            if (gUnknown_02019C00 == 0)
+            {
+                uVar1 = sub_17D8(0);
+                param_3 = sub_1668(uVar1, 4);
+            }
+            if (gUnknown_02019C00 == 1)
+            {
+                uVar1 = sub_17D8(1);
+                param_3 = sub_1668(uVar1, 4);
+            }
+            if (gUnknown_02019C00 != 2) break;
+            uVar1 = sub_17D8(2);
+            uVar2 = 4;
+            goto case_fallthrough;
+        case 1:
+        case 4:
+        case 5:
+            uVar1 = 1;
+            uVar2 = 1;
+        case_fallthrough: // Fairly confident that this is not in fact a fakematch, due to the break above
+            param_3 = sub_1668(uVar1, uVar2);
+    }
+
+    return param_3;
+}
