@@ -637,3 +637,33 @@ u32 sub_16A0(u8 param_1)
 
     return 0;
 }
+
+u32 sub_170C(void)
+{
+    u8 uVar1;
+    u32 uVar2;
+    u32 uVar3;
+    u32 uVar4;
+    u32 uVar5;
+
+    uVar2 = gUnknown_02002818 / 16;
+    ++uVar2; --uVar2;
+    uVar3 = gUnknown_02002818 % 16;
+    uVar4 = uVar2 >> 0x18;
+    
+    for (uVar1 = 6; uVar1 != 0; uVar1--)
+    {
+        uVar5 = uVar2 >> (4 * (uVar1 - 1));
+        uVar5 &= 0xF;
+        uVar4 ^= uVar5;
+    }
+
+    if (uVar4 == uVar3)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
