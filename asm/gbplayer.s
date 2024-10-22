@@ -4,50 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_17D8
-sub_17D8: @ 0x080017D8
-	adds r2, r0, #0
-	ldr r0, _080017EC @ =gUnknown_02019BEC
-	ldr r0, [r0]
-	cmp r0, #4
-	bhi _08001824
-	lsls r0, r0, #2
-	ldr r1, _080017F0 @ =_080017F4
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_080017EC: .4byte gUnknown_02019BEC
-_080017F0: .4byte _080017F4
-_080017F4: @ jump table
-	.4byte _08001808 @ case 0
-	.4byte _0800180C @ case 1
-	.4byte _08001810 @ case 2
-	.4byte _08001814 @ case 3
-	.4byte _08001818 @ case 4
-_08001808:
-	adds r1, r2, #0
-	b _08001824
-_0800180C:
-	lsls r1, r2, #2
-	b _08001824
-_08001810:
-	lsls r1, r2, #4
-	b _08001824
-_08001814:
-	lsls r1, r2, #6
-	b _08001824
-_08001818:
-	lsls r1, r2, #2
-	orrs r1, r2
-	lsls r0, r2, #4
-	orrs r1, r0
-	lsls r0, r2, #6
-	orrs r1, r0
-_08001824:
-	adds r0, r1, #0
-	bx lr
-
 	thumb_func_start sub_1828
 sub_1828: @ 0x08001828
 	push {r4, r5, lr}

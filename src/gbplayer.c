@@ -706,3 +706,28 @@ u32 sub_1748(u8 param_1)
 
     return param_3;
 }
+
+u32 sub_17D8(u32 arg1)
+{
+    u32 retVal;
+    
+    switch (gUnknown_02019BEC)
+    {
+    case 0:
+        retVal = arg1;
+        break;
+    case 1:
+        retVal = arg1 << 2;
+        break;
+    case 2:
+        retVal = arg1 << 4;
+        break;
+    case 3:
+        retVal = arg1 << 6;
+        break;
+    case 4:
+        retVal = arg1 | arg1 << 2 | arg1 << 4 | arg1 << 6;
+    }
+
+    return retVal;
+}
