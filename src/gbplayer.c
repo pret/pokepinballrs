@@ -731,3 +731,20 @@ u32 sub_17D8(u32 arg1)
 
     return retVal;
 }
+
+void sub_1828(void)
+{
+    // TODO macro?
+    REG_IME = 0;
+    REG_IE &= 0xFFBF; // TODO convert to and not flag
+    REG_IME = 1;
+
+    REG_IME = 0;
+    REG_SIOCNT &= 0xFF7F; // TODO convert to and not flag
+    REG_IME = 1;
+
+    REG_TM3CNT_H = 0;
+    REG_TM3CNT_L = 0x8000;
+
+    gUnknown_02019C10 = 5;
+}
