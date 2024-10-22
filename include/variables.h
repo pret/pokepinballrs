@@ -32,6 +32,8 @@ extern u16 sGbPlayerCurKeys;
 extern u16 sGbPlayerPrevKeys;
 //extern ? gUnknown_02002008;
 extern u8 gUnknown_02002808[];
+extern u32 gUnknown_02002818;
+extern u32 gUnknown_0200281C;
 //extern ? gTitlescreen;
 //extern ? gEraseSaveDataAccessStep;
 //extern ? gEraseSaveDataAccessCounter;
