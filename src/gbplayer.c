@@ -278,7 +278,304 @@ void sub_1340(void)
     REG_TM3CNT_H = TIMER_ENABLE | TIMER_INTR_ENABLE | TIMER_64CLK;
 }
 
-// void sub_13FC(void)
-// {
-
-// }
+// https://decomp.me/scratch/eHAo1
+// Case 0 similar to https://github.com/pret/pokefirered/blob/d2c592030d78d1a46df1cba562a3c7af677dbf21/src/librfu_sio32id.c#L122
+NAKED
+void sub_13FC(void)
+{
+    asm_unified("\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sb\n\
+	mov r6, r8\n\
+	push {r6, r7}\n\
+	sub sp, #0xc\n\
+	ldr r1, _08001434 @ =gUnknown_02002818\n\
+	ldr r0, _08001438 @ =0x04000120\n\
+	ldr r0, [r0]\n\
+	str r0, [r1]\n\
+	ldr r1, _0800143C @ =0x0400010E\n\
+	movs r0, #0\n\
+	strh r0, [r1]\n\
+	subs r1, #2\n\
+	movs r2, #0x80\n\
+	lsls r2, r2, #8\n\
+	adds r0, r2, #0\n\
+	strh r0, [r1]\n\
+	ldr r0, _08001440 @ =gUnknown_02019C10\n\
+	ldrb r1, [r0]\n\
+	mov sb, r0\n\
+	cmp r1, #5\n\
+	bls _0800142A\n\
+	b _0800161C\n\
+_0800142A:\n\
+	lsls r0, r1, #2\n\
+	ldr r1, _08001444 @ =_08001448\n\
+	adds r0, r0, r1\n\
+	ldr r0, [r0]\n\
+	mov pc, r0\n\
+	.align 2, 0\n\
+_08001434: .4byte gUnknown_02002818\n\
+_08001438: .4byte 0x04000120\n\
+_0800143C: .4byte 0x0400010E\n\
+_08001440: .4byte gUnknown_02019C10\n\
+_08001444: .4byte _08001448\n\
+_08001448: @ jump table\n\
+	.4byte _08001460 @ case 0\n\
+	.4byte _08001520 @ case 1\n\
+	.4byte _08001574 @ case 2\n\
+	.4byte _080015C8 @ case 3\n\
+	.4byte _0800161C @ case 4\n\
+	.4byte _0800161C @ case 5\n\
+_08001460:\n\
+	ldr r0, _080014B0 @ =0x04000120\n\
+	mov r8, r0\n\
+	ldr r6, [r0]\n\
+	ldr r3, _080014B4 @ =gUnknown_02002808\n\
+	ldrb r1, [r3]\n\
+	lsls r2, r1, #4\n\
+	adds r0, r6, #0\n\
+	lsls r0, r2\n\
+	lsrs r0, r0, #0x10\n\
+	movs r7, #1\n\
+	subs r1, r7, r1\n\
+	lsls r1, r1, #4\n\
+	lsls r6, r1\n\
+	adds r1, r6, #0\n\
+	lsrs r6, r1, #0x10\n\
+	ldrh r5, [r3, #0xa]\n\
+	adds r4, r3, #0\n\
+	cmp r5, #0\n\
+	bne _080014E4\n\
+	ldrh r2, [r4, #6]\n\
+	adds r1, r0, #0\n\
+	cmp r1, r2\n\
+	bne _080014E2\n\
+	ldrh r3, [r4, #2]\n\
+	cmp r3, #3\n\
+	bhi _080014B8\n\
+	ldrh r0, [r4, #4]\n\
+	mvns r0, r0\n\
+	lsls r0, r0, #0x10\n\
+	lsrs r0, r0, #0x10\n\
+	cmp r1, r0\n\
+	bne _080014E4\n\
+	mvns r0, r2\n\
+	lsls r0, r0, #0x10\n\
+	lsrs r0, r0, #0x10\n\
+	cmp r6, r0\n\
+	bne _080014E4\n\
+	adds r0, r3, #1\n\
+	strh r0, [r4, #2]\n\
+	b _080014E4\n\
+	.align 2, 0\n\
+_080014B0: .4byte 0x04000120\n\
+_080014B4: .4byte gUnknown_02002808\n\
+_080014B8:\n\
+	strh r6, [r4, #0xa]\n\
+	ldr r0, _080014D8 @ =0x00008002\n\
+	cmp r6, r0\n\
+	bne _080014E0\n\
+	mov r1, sb\n\
+	strb r7, [r1]\n\
+	movs r0, #1\n\
+	bl sub_1748\n\
+	ldr r1, _080014DC @ =gUnknown_02002814\n\
+	str r0, [r1]\n\
+	mov r2, r8\n\
+	str r0, [r2]\n\
+	strh r5, [r4, #2]\n\
+	b _08001640\n\
+	.align 2, 0\n\
+_080014D8: .4byte 0x00008002\n\
+_080014DC: .4byte gUnknown_02002814\n\
+_080014E0:\n\
+	strh r5, [r4, #0xa]\n\
+_080014E2:\n\
+	strh r5, [r4, #2]\n\
+_080014E4:\n\
+	ldrh r0, [r4, #2]\n\
+	cmp r0, #3\n\
+	bhi _080014F8\n\
+	lsls r0, r0, #1\n\
+	ldr r1, _080014F4 @ =gUnknown_0805C748\n\
+	adds r0, r0, r1\n\
+	ldrh r0, [r0]\n\
+	b _080014FC\n\
+	.align 2, 0\n\
+_080014F4: .4byte gUnknown_0805C748\n\
+_080014F8:\n\
+	movs r0, #0x80\n\
+	lsls r0, r0, #8\n\
+_080014FC:\n\
+	strh r0, [r4, #4]\n\
+	mvns r0, r6\n\
+	strh r0, [r4, #6]\n\
+	ldr r3, _0800151C @ =0x04000120\n\
+	ldrh r2, [r4, #4]\n\
+	ldrb r1, [r4]\n\
+	movs r0, #1\n\
+	subs r0, r0, r1\n\
+	lsls r0, r0, #4\n\
+	lsls r2, r0\n\
+	ldrh r0, [r4, #6]\n\
+	lsls r1, r1, #4\n\
+	lsls r0, r1\n\
+	adds r2, r2, r0\n\
+	str r2, [r3]\n\
+	b _08001640\n\
+	.align 2, 0\n\
+_0800151C: .4byte 0x04000120\n\
+_08001520:\n\
+	ldr r5, _08001544 @ =gUnknown_02019C10\n\
+	ldrb r0, [r5]\n\
+	bl sub_16A0\n\
+	cmp r0, #0\n\
+	beq _08001550\n\
+	ldr r1, _08001548 @ =gUnknown_02002808\n\
+	movs r4, #0\n\
+	movs r0, #0\n\
+	strh r0, [r1, #2]\n\
+	str r0, [sp]\n\
+	ldr r2, _0800154C @ =0x05000003\n\
+	mov r0, sp\n\
+	bl CpuSet\n\
+	strb r4, [r5]\n\
+	b _08001554\n\
+	.align 2, 0\n\
+_08001544: .4byte gUnknown_02019C10\n\
+_08001548: .4byte gUnknown_02002808\n\
+_0800154C: .4byte 0x05000003\n\
+_08001550:\n\
+	movs r0, #2\n\
+	strb r0, [r5]\n\
+_08001554:\n\
+	ldr r0, _0800156C @ =gUnknown_02019BF4\n\
+	ldr r0, [r0]\n\
+	ldr r1, _08001570 @ =gUnknown_02019C10\n\
+	mov sb, r1\n\
+	cmp r0, #0\n\
+	bne _08001564\n\
+	movs r0, #4\n\
+	strb r0, [r1]\n\
+_08001564:\n\
+	mov r2, sb\n\
+	ldrb r0, [r2]\n\
+	b _080015F8\n\
+	.align 2, 0\n\
+_0800156C: .4byte gUnknown_02019BF4\n\
+_08001570: .4byte gUnknown_02019C10\n\
+_08001574:\n\
+	ldr r5, _08001598 @ =gUnknown_02019C10\n\
+	ldrb r0, [r5]\n\
+	bl sub_16A0\n\
+	cmp r0, #0\n\
+	beq _080015A4\n\
+	ldr r1, _0800159C @ =gUnknown_02002808\n\
+	movs r4, #0\n\
+	movs r0, #0\n\
+	strh r0, [r1, #2]\n\
+	str r0, [sp, #4]\n\
+	add r0, sp, #4\n\
+	ldr r2, _080015A0 @ =0x05000003\n\
+	bl CpuSet\n\
+	strb r4, [r5]\n\
+	b _080015A8\n\
+	.align 2, 0\n\
+_08001598: .4byte gUnknown_02019C10\n\
+_0800159C: .4byte gUnknown_02002808\n\
+_080015A0: .4byte 0x05000003\n\
+_080015A4:\n\
+	movs r0, #3\n\
+	strb r0, [r5]\n\
+_080015A8:\n\
+	ldr r0, _080015C0 @ =gUnknown_02019BF4\n\
+	ldr r0, [r0]\n\
+	ldr r1, _080015C4 @ =gUnknown_02019C10\n\
+	mov sb, r1\n\
+	cmp r0, #0\n\
+	bne _080015B8\n\
+	movs r0, #4\n\
+	strb r0, [r1]\n\
+_080015B8:\n\
+	mov r2, sb\n\
+	ldrb r0, [r2]\n\
+	b _080015F8\n\
+	.align 2, 0\n\
+_080015C0: .4byte gUnknown_02019BF4\n\
+_080015C4: .4byte gUnknown_02019C10\n\
+_080015C8:\n\
+	mov r5, sb\n\
+	ldrb r0, [r5]\n\
+	bl sub_16A0\n\
+	cmp r0, #0\n\
+	beq _080015E8\n\
+	ldr r1, _08001608 @ =gUnknown_02002808\n\
+	movs r4, #0\n\
+	movs r0, #0\n\
+	strh r0, [r1, #2]\n\
+	str r0, [sp, #8]\n\
+	add r0, sp, #8\n\
+	ldr r2, _0800160C @ =0x05000003\n\
+	bl CpuSet\n\
+	strb r4, [r5]\n\
+_080015E8:\n\
+	ldr r0, _08001610 @ =gUnknown_02019BF4\n\
+	ldr r0, [r0]\n\
+	cmp r0, #0\n\
+	bne _080015F4\n\
+	movs r0, #4\n\
+	strb r0, [r5]\n\
+_080015F4:\n\
+	mov r1, sb\n\
+	ldrb r0, [r1]\n\
+_080015F8:\n\
+	bl sub_1748\n\
+	ldr r1, _08001614 @ =gUnknown_02002814\n\
+	str r0, [r1]\n\
+	ldr r1, _08001618 @ =0x04000120\n\
+	str r0, [r1]\n\
+	b _08001640\n\
+	.align 2, 0\n\
+_08001608: .4byte gUnknown_02002808\n\
+_0800160C: .4byte 0x05000003\n\
+_08001610: .4byte gUnknown_02019BF4\n\
+_08001614: .4byte gUnknown_02002814\n\
+_08001618: .4byte 0x04000120\n\
+_0800161C:\n\
+	ldr r3, _08001634 @ =0x04000208\n\
+	movs r0, #0\n\
+	strh r0, [r3]\n\
+	ldr r2, _08001638 @ =0x04000200\n\
+	ldrh r1, [r2]\n\
+	ldr r0, _0800163C @ =0x0000FF7F\n\
+	ands r0, r1\n\
+	strh r0, [r2]\n\
+	movs r0, #1\n\
+	strh r0, [r3]\n\
+	b _08001650\n\
+	.align 2, 0\n\
+_08001634: .4byte 0x04000208\n\
+_08001638: .4byte 0x04000200\n\
+_0800163C: .4byte 0x0000FF7F\n\
+_08001640:\n\
+	ldr r2, _08001660 @ =0x04000128\n\
+	ldrh r0, [r2]\n\
+	movs r1, #0x80\n\
+	orrs r0, r1\n\
+	strh r0, [r2]\n\
+	ldr r1, _08001664 @ =0x0400010E\n\
+	movs r0, #0xc1\n\
+	strh r0, [r1]\n\
+_08001650:\n\
+	add sp, #0xc\n\
+	pop {r3, r4}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+_08001660: .4byte 0x04000128\n\
+_08001664: .4byte 0x0400010E"
+    );
+}
