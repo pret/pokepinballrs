@@ -4,68 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_16A0
-sub_16A0: @ 0x080016A0
-	push {r4, r5, r6, lr}
-	lsls r0, r0, #0x18
-	lsrs r4, r0, #0x18
-	ldr r6, _080016C4 @ =gUnknown_02002818
-	ldr r0, [r6]
-	lsrs r5, r0, #0x1c
-	bl sub_170C
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _080016DE
-	cmp r4, #2
-	beq _080016E8
-	cmp r4, #2
-	bgt _080016C8
-	cmp r4, #1
-	beq _080016CE
-	b _080016DE
-	.align 2, 0
-_080016C4: .4byte gUnknown_02002818
-_080016C8:
-	cmp r4, #3
-	beq _08001700
-	b _080016DE
-_080016CE:
-	ldr r1, _080016E4 @ =gUnknown_0200281C
-	ldr r0, [r6]
-	lsls r0, r0, #4
-	lsrs r0, r0, #8
-	ands r0, r4
-	str r0, [r1]
-	cmp r5, #1
-	beq _08001704
-_080016DE:
-	movs r0, #1
-	b _08001706
-	.align 2, 0
-_080016E4: .4byte gUnknown_0200281C
-_080016E8:
-	cmp r5, #2
-	bne _080016DE
-	ldr r0, _080016FC @ =gUnknown_0200281C
-	ldr r1, [r6]
-	lsls r1, r1, #4
-	lsrs r1, r1, #8
-	ldr r0, [r0]
-	cmp r0, r1
-	beq _08001704
-	b _080016DE
-	.align 2, 0
-_080016FC: .4byte gUnknown_0200281C
-_08001700:
-	cmp r5, #3
-	bne _080016DE
-_08001704:
-	movs r0, #0
-_08001706:
-	pop {r4, r5, r6}
-	pop {r1}
-	bx r1
-
 	thumb_func_start sub_170C
 sub_170C: @ 0x0800170C
 	push {r4, r5, r6, lr}

@@ -600,3 +600,40 @@ u32 sub_1668(u32 arg1, u32 arg2)
     uVar2 |= uVar3;
     return uVar2;
 }
+
+u32 sub_16A0(u8 param_1)
+{
+    s8 cVar1;
+    u32 uVar3;
+
+    uVar3 = gUnknown_02002818 >> 0x1C;
+    cVar1 = sub_170C();
+    
+    if (cVar1) return 1;
+    switch (param_1)
+    {
+        default:
+            return 1;
+        case 1:
+            {
+                u32 *r1 = &gUnknown_0200281C;
+                u32 r0 = (gUnknown_02002818 << 4) >> 8;
+                *r1 = r0 & 1;
+                if (uVar3 != 1) return 1;
+            }
+            break;
+        case 2:
+            if (uVar3 != 2)
+                return 1;
+            {
+                u32* r0 = &gUnknown_0200281C;
+                u32 r1 = (gUnknown_02002818 << 4) >> 8;
+                if (*r0 != r1) return 1;
+            }
+            break;
+        case 3:
+            if (uVar3 != 3) return 1;
+    }
+
+    return 0;
+}
