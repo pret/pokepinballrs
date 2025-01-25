@@ -33,6 +33,7 @@ void sub_31F6C(void)
         currentSpecies = gWildMonLocations[gUnknown_020314E0->area][threeArrows][i];
         switch (currentSpecies)
         {
+            // Rare pokemon
             case SPECIES_NOSEPASS:
             case SPECIES_SKARMORY:
             case SPECIES_LILEEP:
@@ -207,17 +208,17 @@ void sub_3219C(void)
         }
         else
         {
-            s16 rareMons;
+            s16 threeArrows;
             if (gUnknown_020314E0->unk73D == 3)
-                rareMons = 1;
+                threeArrows = 1;
             else
-                rareMons = 0;
+                threeArrows = 0;
 
             rand = GetTimeAdjustedRandom();
             rand %= gUnknown_020314E0->unk12E;
             for (i = 0; i < 8 && gUnknown_020314E0->unk130[i] <= rand; i++);
 
-            gUnknown_020314E0->unk598 = gWildMonLocations[gUnknown_020314E0->area][rareMons][i];
+            gUnknown_020314E0->unk598 = gWildMonLocations[gUnknown_020314E0->area][threeArrows][i];
         }
     }
 
