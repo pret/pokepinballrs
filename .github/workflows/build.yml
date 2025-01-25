@@ -20,7 +20,7 @@ jobs:
           path: 'agbcc'
 
       - name: Install binutils
-        run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi xdelta3
+        run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi xdelta3 libpng-dev
 
       - name: Install agbcc
         working-directory: 'agbcc'
