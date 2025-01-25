@@ -2772,8 +2772,8 @@ gUnknown_086AE58A:: @ 0x086AE58A
 gUnknown_086AE5A0:: @ 0x086AE5A0
 	.incbin "baserom.gba", 0x6AE5A0, 0x40
 
-gUnknown_086AE5E0:: @ 0x086AE5E0
-	.2byte 0x000A, 0x000A, 0x000F, 0x000F, 0x0002, 0x0000
+gCommonAndEggWeights:: @ 0x086AE5E0
+	.2byte 10, 10, 15, 15, 2, 0
 
 gUnknown_086AE5EC:: @ 0x086AE5EC
 	.incbin "baserom.gba", 0x6AE5EC, 0xA2
