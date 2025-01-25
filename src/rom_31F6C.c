@@ -72,13 +72,13 @@ void sub_31F6C(void)
                 break;
             
             case SPECIES_CLAMPERL:
-                weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_CLAMPERL]];
-                evolutionWeight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_HUNTAIL]];
+                weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_CLAMPERL]];
+                evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_HUNTAIL]];
                 if (weight < evolutionWeight)
                 {
                     weight = evolutionWeight;
                 }
-                evolutionWeight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_GOREBYSS]];
+                evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_GOREBYSS]];
                 if (weight < evolutionWeight)
                 {
                     weight = evolutionWeight;
@@ -89,13 +89,13 @@ void sub_31F6C(void)
                 weight = 0;
                 break;
             default:
-                weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[currentSpecies]];
+                weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
                 for (j = 0; j < 2; j++)
                 {
                     currentSpecies = gUnknown_086A3700[currentSpecies].evolutionTarget;
                     if (currentSpecies < SPECIES_NONE)
                     {
-                        evolutionWeight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[currentSpecies]];
+                        evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
                         if (weight < evolutionWeight)
                         {
                             weight = evolutionWeight;
@@ -242,23 +242,23 @@ void sub_32484(void)
         {
             if (gMain.selectedField == 0)
             {
-                weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_VILEPLUME]];
+                weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_VILEPLUME]];
             }
             else
             {
-                weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[SPECIES_BELLOSSOM]];
+                weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_BELLOSSOM]];
             }
         }
         else
         {
-            weight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[currentSpecies]];
+            weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
 
             for (j = 0; j < 2; j++)
             {
                 currentSpecies = gUnknown_086A3700[currentSpecies].evolutionTarget;
                 if (currentSpecies < SPECIES_NONE)
                 {
-                    evolutionWeight = gUnknown_086AE5E0[gMain_saveData.pokedexFlags[currentSpecies]];
+                    evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
                     if (weight < evolutionWeight) weight = evolutionWeight;
                 }
                 else
