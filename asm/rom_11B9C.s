@@ -20142,7 +20142,7 @@ _0801BC90:
 	ldr r2, _0801BD48 @ =0x0000025D
 	adds r1, r1, r2
 	strb r4, [r1]
-	ldr r6, _0801BD4C @ =gUnknown_086A3700
+	ldr r6, _0801BD4C @ =gSpeciesInfo
 	mov r1, r8
 	ldr r5, [r1]
 	adds r0, r5, r0
@@ -20197,7 +20197,7 @@ _0801BD3C: .4byte 0x800004A0
 _0801BD40: .4byte gUnknown_081B4584
 _0801BD44: .4byte 0x05000180
 _0801BD48: .4byte 0x0000025D
-_0801BD4C: .4byte gUnknown_086A3700
+_0801BD4C: .4byte gSpeciesInfo
 _0801BD50:
 	movs r0, #0x22
 	bl m4aSongNumStart
@@ -20467,7 +20467,7 @@ _0801BF48:
 	ldr r7, _0801C004 @ =0x0000025D
 	adds r0, r0, r7
 	strb r2, [r0]
-	ldr r6, _0801C008 @ =gUnknown_086A3700
+	ldr r6, _0801C008 @ =gSpeciesInfo
 	ldr r4, [r5]
 	adds r3, r4, r3
 	ldrh r1, [r3]
@@ -20511,7 +20511,7 @@ _0801BFA6:
 	ldrsb r4, [r0, r4]
 	cmp r4, #0
 	bne _0801C014
-	ldr r2, _0801C008 @ =gUnknown_086A3700
+	ldr r2, _0801C008 @ =gSpeciesInfo
 	movs r3, #0xb3
 	lsls r3, r3, #3
 	adds r0, r1, r3
@@ -20543,13 +20543,13 @@ _0801BFA6:
 	.align 2, 0
 _0801C000: .4byte gUnknown_020314E0
 _0801C004: .4byte 0x0000025D
-_0801C008: .4byte gUnknown_086A3700
+_0801C008: .4byte gSpeciesInfo
 _0801C00C: .4byte gMain
 _0801C010: .4byte 0x0000059A
 _0801C014:
 	cmp r4, #1
 	bne _0801C058
-	ldr r2, _0801C064 @ =gUnknown_086A3700
+	ldr r2, _0801C064 @ =gSpeciesInfo
 	ldr r3, _0801C068 @ =0x0000059A
 	adds r0, r1, r3
 	ldrh r1, [r0]
@@ -20589,7 +20589,7 @@ _0801C058:
 	adds r1, r0, r6
 	b _0801C116
 	.align 2, 0
-_0801C064: .4byte gUnknown_086A3700
+_0801C064: .4byte gSpeciesInfo
 _0801C068: .4byte 0x0000059A
 _0801C06C: .4byte gUnknown_020314E0
 _0801C070:
@@ -20636,7 +20636,7 @@ _0801C0C0: .4byte 0x0000059A
 _0801C0C4:
 	cmp r4, #2
 	bne _0801C10C
-	ldr r2, _0801C148 @ =gUnknown_086A3700
+	ldr r2, _0801C148 @ =gSpeciesInfo
 	movs r3, #0xb3
 	lsls r3, r3, #3
 	adds r0, r1, r3
@@ -20703,7 +20703,7 @@ _0801C11A:
 	beq _0801C17C
 	b _0801C1EA
 	.align 2, 0
-_0801C148: .4byte gUnknown_086A3700
+_0801C148: .4byte gSpeciesInfo
 _0801C14C: .4byte 0x0000059A
 _0801C150: .4byte gUnknown_020314E0
 _0801C154:
@@ -37016,7 +37016,7 @@ _0802453E:
 	adds r1, r3, r6
 	movs r0, #0x8c
 	strh r0, [r1]
-	ldr r2, _080245A8 @ =gUnknown_086A3700
+	ldr r2, _080245A8 @ =gSpeciesInfo
 	movs r7, #0xb3
 	lsls r7, r7, #3
 	adds r0, r3, r7
@@ -37052,7 +37052,7 @@ _08024576:
 _0802459C: .4byte gUnknown_020314E0
 _080245A0: .4byte 0x00000206
 _080245A4: .4byte gMain
-_080245A8: .4byte gUnknown_086A3700
+_080245A8: .4byte gSpeciesInfo
 _080245AC: .4byte 0x0000FFF8
 _080245B0: .4byte 0x0000FFE2
 _080245B4: .4byte gUnknown_086AD52C
@@ -37750,7 +37750,7 @@ _08024B64: .4byte gMain
 _08024B68: .4byte 0x00004E20
 _08024B6C: .4byte 0x000005A9
 _08024B70:
-	ldr r2, _08024BA8 @ =gUnknown_086A3700
+	ldr r2, _08024BA8 @ =gSpeciesInfo
 	movs r1, #0xb3
 	lsls r1, r1, #3
 	adds r0, r5, r1
@@ -37778,7 +37778,7 @@ _08024B70:
 	lsrs r5, r0, #0x10
 	b _08024BDA
 	.align 2, 0
-_08024BA8: .4byte gUnknown_086A3700
+_08024BA8: .4byte gSpeciesInfo
 _08024BAC: .4byte gUnknown_086AD788
 _08024BB0: .4byte gMain
 _08024BB4:
@@ -42221,7 +42221,7 @@ _08026FC4:
 	.align 2, 0
 _08026FD4: .4byte 0x0000025F
 _08026FD8:
-	ldr r2, _08027054 @ =gUnknown_086A3700
+	ldr r2, _08027054 @ =gSpeciesInfo
 	ldrh r1, [r1]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -42284,7 +42284,7 @@ _08026FFC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027054: .4byte gUnknown_086A3700
+_08027054: .4byte gSpeciesInfo
 _08027058: .4byte 0x0000025F
 _0802705C: .4byte 0x040000D4
 _08027060: .4byte gUnknown_081C0064
@@ -44580,7 +44580,7 @@ _0802828A:
 	adds r2, r1, r3
 	movs r0, #0x8c
 	strh r0, [r2]
-	ldr r2, _08028354 @ =gUnknown_086A3700
+	ldr r2, _08028354 @ =gSpeciesInfo
 	movs r0, #0xb3
 	lsls r0, r0, #3
 	adds r1, r1, r0
@@ -44606,7 +44606,7 @@ _08028344: .4byte gUnknown_020314E0
 _08028348: .4byte 0x0000028A
 _0802834C: .4byte 0x0000071D
 _08028350: .4byte 0x000005F2
-_08028354: .4byte gUnknown_086A3700
+_08028354: .4byte gSpeciesInfo
 _08028358:
 	ldr r1, [r5]
 	ldrh r2, [r1, #0x18]
@@ -45536,7 +45536,7 @@ sub_28AE0: @ 0x08028AE0
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #0x18
-	ldr r2, _08028BD4 @ =gUnknown_086A3700
+	ldr r2, _08028BD4 @ =gSpeciesInfo
 	ldr r0, _08028BD8 @ =gUnknown_020314E0
 	ldr r0, [r0]
 	movs r1, #0xb3
@@ -45653,7 +45653,7 @@ _08028B72:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08028BD4: .4byte gUnknown_086A3700
+_08028BD4: .4byte gSpeciesInfo
 _08028BD8: .4byte gUnknown_020314E0
 _08028BDC: .4byte gUnknown_086BB6F4
 _08028BE0: .4byte gUnknown_02030760
@@ -45667,7 +45667,7 @@ _08028BF8: .4byte gUnknown_02030730
 	thumb_func_start sub_28BFC
 sub_28BFC: @ 0x08028BFC
 	push {r4, r5, r6, lr}
-	ldr r2, _08028C6C @ =gUnknown_086A3700
+	ldr r2, _08028C6C @ =gSpeciesInfo
 	ldr r0, _08028C70 @ =gUnknown_020314E0
 	ldr r0, [r0]
 	movs r1, #0xb3
@@ -45721,7 +45721,7 @@ sub_28BFC: @ 0x08028BFC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08028C6C: .4byte gUnknown_086A3700
+_08028C6C: .4byte gSpeciesInfo
 _08028C70: .4byte gUnknown_020314E0
 _08028C74: .4byte gMonHatchSpriteGroupGfx
 _08028C78: .4byte gMonHatchSpriteGroupPals
@@ -55841,7 +55841,7 @@ _0802DE7A:
 	adds r2, r1, r3
 	movs r0, #0x8c
 	strh r0, [r2]
-	ldr r2, _0802DEE4 @ =gUnknown_086A3700
+	ldr r2, _0802DEE4 @ =gSpeciesInfo
 	movs r0, #0xb3
 	lsls r0, r0, #3
 	adds r1, r1, r0
@@ -55878,7 +55878,7 @@ _0802DED4: .4byte 0xFFFFFE98
 _0802DED8: .4byte gMPlayInfo_BGM
 _0802DEDC: .4byte gMain
 _0802DEE0: .4byte gUnknown_020314E0
-_0802DEE4: .4byte gUnknown_086A3700
+_0802DEE4: .4byte gSpeciesInfo
 _0802DEE8: .4byte 0x00000604
 _0802DEEC: .4byte 0x00000603
 _0802DEF0:
@@ -63561,7 +63561,7 @@ sub_31CF8: @ 0x08031CF8
 	movs r1, #4
 	bl SaveFile_SetPokedexFlags
 _08031D20:
-	ldr r2, _08031D88 @ =gUnknown_086A3700
+	ldr r2, _08031D88 @ =gSpeciesInfo
 	ldr r1, _08031D84 @ =gUnknown_020314E0
 	ldr r4, [r1]
 	movs r3, #0xb3
@@ -63615,7 +63615,7 @@ _08031D60:
 	.align 2, 0
 _08031D80: .4byte gMain
 _08031D84: .4byte gUnknown_020314E0
-_08031D88: .4byte gUnknown_086A3700
+_08031D88: .4byte gSpeciesInfo
 _08031D8C: .4byte 0x00000281
 _08031D90:
 	ldr r2, _08031E10 @ =gUnknown_020314E0
@@ -63766,7 +63766,7 @@ _08031E94:
 	.align 2, 0
 _08031EA0: .4byte gMain
 _08031EA4:
-	ldr r2, _08031F1C @ =gUnknown_086A3700
+	ldr r2, _08031F1C @ =gSpeciesInfo
 	ldrh r1, [r3]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -63789,7 +63789,7 @@ _08031EB4:
 	movs r1, #4
 	bl SaveFile_SetPokedexFlags
 _08031ECE:
-	ldr r2, _08031F1C @ =gUnknown_086A3700
+	ldr r2, _08031F1C @ =gSpeciesInfo
 	ldr r1, _08031F20 @ =gUnknown_020314E0
 	ldr r4, [r1]
 	movs r3, #0xb3
@@ -63830,7 +63830,7 @@ _08031F00:
 	strb r0, [r1]
 	b _08031F5E
 	.align 2, 0
-_08031F1C: .4byte gUnknown_086A3700
+_08031F1C: .4byte gSpeciesInfo
 _08031F20: .4byte gUnknown_020314E0
 _08031F24: .4byte 0x00000281
 _08031F28:

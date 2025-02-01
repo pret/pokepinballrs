@@ -93,7 +93,7 @@ void sub_31F6C(void)
                 weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
                 for (j = 0; j < 2; j++)
                 {
-                    currentSpecies = gUnknown_086A3700[currentSpecies].evolutionTarget;
+                    currentSpecies = gSpeciesInfo[currentSpecies].evolutionTarget;
                     if (currentSpecies < SPECIES_NONE)
                     {
                         evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
@@ -108,7 +108,7 @@ void sub_31F6C(void)
                     }
                 }
                 currentSpecies = gWildMonLocations[gUnknown_020314E0->area][threeArrows][i];
-                if (gUnknown_020314E0->unk5F0 == 0 && gUnknown_086A3700[currentSpecies].evolutionTarget >= SPECIES_NONE)
+                if (gUnknown_020314E0->unk5F0 == 0 && gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
                 {
                     weight = 0;
                 }
@@ -256,11 +256,12 @@ void sub_32484(void)
 
             for (j = 0; j < 2; j++)
             {
-                currentSpecies = gUnknown_086A3700[currentSpecies].evolutionTarget;
+                currentSpecies = gSpeciesInfo[currentSpecies].evolutionTarget;
                 if (currentSpecies < SPECIES_NONE)
                 {
                     evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
-                    if (weight < evolutionWeight) weight = evolutionWeight;
+                    if (weight < evolutionWeight)
+                        weight = evolutionWeight;
                 }
                 else
                 {
@@ -271,7 +272,7 @@ void sub_32484(void)
             currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
             if (gUnknown_020314E0->unk5F0 == 0)
             {
-                if (gUnknown_086A3700[currentSpecies].evolutionTarget >= SPECIES_NONE)
+                if (gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
                 {
                     weight = 0;
                 }

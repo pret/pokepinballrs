@@ -339,7 +339,7 @@ void sub_4428(void)
         DmaCopy16(3, gUnknown_08086B40, (void *)0x6000280, 2*0xE0);
         sub_70E0(gUnknown_0202ADE0, gUnknown_0202C794);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
-        sub_5291C(gUnknown_086A3700[gUnknown_0202ADE0].mainSeriesIndexNumber, 0, 0x7F, 10);
+        sub_5291C(gSpeciesInfo[gUnknown_0202ADE0].mainSeriesIndexNumber, 0, 0x7F, 10);
         gMain.subState = 5;
     }
     

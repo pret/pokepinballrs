@@ -13235,7 +13235,7 @@ _08039562:
 	lsrs r0, r0, #0x10
 	cmp r0, #0x14
 	bne _0803958C
-	ldr r0, _080395C8 @ =gUnknown_086A3700
+	ldr r0, _080395C8 @ =gSpeciesInfo
 	ldr r2, _080395CC @ =0x00001278
 	adds r0, r0, r2
 	ldrh r0, [r0]
@@ -13267,7 +13267,7 @@ _080395B8: .4byte 0x000003E2
 _080395BC: .4byte 0x00000387
 _080395C0: .4byte gMPlayInfo_SE1
 _080395C4: .4byte gUnknown_086A1FC4
-_080395C8: .4byte gUnknown_086A3700
+_080395C8: .4byte gSpeciesInfo
 _080395CC: .4byte 0x00001278
 _080395D0: .4byte gMPlayInfo_BGM
 _080395D4: .4byte 0x0000FFFF
@@ -19153,7 +19153,7 @@ _0803C662:
 	lsrs r0, r0, #0x10
 	cmp r0, #0x14
 	bne _0803C69E
-	ldr r0, _0803C6CC @ =gUnknown_086A3700
+	ldr r0, _0803C6CC @ =gSpeciesInfo
 	ldr r1, _0803C6D0 @ =0x00001290
 	adds r0, r0, r1
 	ldrh r0, [r0]
@@ -19191,7 +19191,7 @@ _0803C6B6:
 	.align 2, 0
 _0803C6C4: .4byte gUnknown_086AF0B4
 _0803C6C8: .4byte 0x000004CA
-_0803C6CC: .4byte gUnknown_086A3700
+_0803C6CC: .4byte gSpeciesInfo
 _0803C6D0: .4byte 0x00001290
 _0803C6D4: .4byte 0x000004C9
 _0803C6D8: .4byte gMPlayInfo_BGM
@@ -25516,7 +25516,7 @@ _0803FA78:
 	lsrs r0, r0, #0x10
 	cmp r0, #0x14
 	bne _0803FAA2
-	ldr r0, _0803FAD0 @ =gUnknown_086A3700
+	ldr r0, _0803FAD0 @ =gSpeciesInfo
 	ldr r7, _0803FAD4 @ =0x000012A8
 	adds r0, r0, r7
 	ldrh r0, [r0]
@@ -25542,7 +25542,7 @@ _0803FAC0: .4byte gUnknown_020314E0
 _0803FAC4: .4byte 0x0000038E
 _0803FAC8: .4byte 0xFFFFFE0C
 _0803FACC: .4byte 0x0000FFDA
-_0803FAD0: .4byte gUnknown_086A3700
+_0803FAD0: .4byte gSpeciesInfo
 _0803FAD4: .4byte 0x000012A8
 _0803FAD8: .4byte gMPlayInfo_BGM
 _0803FADC: .4byte 0x0000FFFF
