@@ -84,7 +84,7 @@ void LoadEReaderGraphics(void)
     DmaCopy16(3, gUnknown_03000000, (void *)VRAM + 0x4000, 0x3000);
 
     sub_394C();
-    m4aSongNumStart(MUS_UNKNOWN_SONG_5);
+    m4aSongNumStart(MUS_UNKNOWN_0x5);
     sub_0CBC();
     sub_024C();
     gMain.subState = 1;
@@ -350,7 +350,7 @@ void sub_343C(void)
     DmaCopy16(3, gUnknown_03000000, (void *)VRAM + 0x4000, 0x3000);
 
     sub_394C();
-    m4aSongNumStart(MUS_UNKNOWN_SONG_5);
+    m4aSongNumStart(MUS_UNKNOWN_0x5);
     sub_0CBC();
     sub_024C();
     gMain.subState = 7;

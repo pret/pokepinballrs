@@ -3,8 +3,8 @@
 .EQU MUS_EMPTY_2,                  0x02
 .EQU MUS_TABLE_SELECT,             0x03
 .EQU MUS_EMPTY_4,                  0x04
-.EQU MUS_UNKNOWN_SONG_5,           0x05
-.EQU MUS_UNKNOWN_SONG_6,           0x06
+.EQU MUS_UNKNOWN_0x5,              0x05
+.EQU MUS_UNKNOWN_0x6,              0x06
 .EQU MUS_OPENING,                  0x08
 .EQU MUS_HI_SCORE,                 0x09
 .EQU MUS_EMPTY_10,                 0x0A
@@ -17,7 +17,7 @@
 .EQU MUS_SUCCESS,                  0x11
 .EQU MUS_SUCCESS2,                 0x12
 .EQU MUS_END_OF_BALL2,             0x13
-.EQU MUS_20,                       0x14
+.EQU MUS_UNKNOWN_0x14,             0x14
 .EQU MUS_EGG_MODE,                 0x15
 .EQU MUS_EGG_MODE_START,           0x16
 .EQU MUS_TRAVEL_MODE,              0x17
@@ -45,6 +45,9 @@
 .EQU MUS_45,                       0x2D
 .EQU MUS_POKEDEX,                  0x2E
 .EQU MUS_JIRACHI,                  0x2F
+
+.EQU SE_UNKNOWN_0x5B,              0x5B
+.EQU SE_UNKNOWN_0x5C,              0x5C
 
 .EQU SE_UNKNOWN_0x65,              0x65
 .EQU SE_UNKNOWN_0x66,              0x66

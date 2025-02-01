@@ -5,8 +5,8 @@
 #define MUS_EMPTY_0x02              0x02   // No sound
 #define MUS_TABLE_SELECT            0x03
 #define MUS_EMPTY_0x04              0x04   // No sound
-#define MUS_UNKNOWN_SONG_5          0x05
-#define MUS_UNKNOWN_SONG_6          0x06
+#define MUS_UNKNOWN_0x5             0x05
+#define MUS_UNKNOWN_0x6             0x06
 #define MUS_OPENING                 0x08
 #define MUS_HI_SCORE                0x09
 #define MUS_EMPTY_0x0A              0x0A  // No sound
@@ -19,7 +19,7 @@
 #define MUS_SUCCESS                 0x11
 #define MUS_SUCCESS2                0x12  // Copy of MUS_SUCCESS?
 #define MUS_END_OF_BALL2            0x13  // Copy of MUS_END_OF_BALL?
-#define MUS_20                      0x14  // RS: Item Obtained
+#define MUS_UNKNOWN_0x14            0x14  // RS: Item Obtained
 #define MUS_EGG_MODE                0x15  // RS: Encounter! (Twins)
 #define MUS_EGG_MODE_START          0x16  // RS: Trick House
 #define MUS_TRAVEL_MODE             0x17
@@ -47,6 +47,9 @@
 #define MUS_EMPTY_0x2D              0x2D  // No sound
 #define MUS_POKEDEX                 0x2E
 #define MUS_JIRACHI                 0x2F  // RS: Hall of Fame
+
+#define SE_UNKNOWN_0x5B             0x5B
+#define SE_UNKNOWN_0x5C             0x5C
 
 #define SE_UNKNOWN_0x65             0x65 // RS: PokéNav turn on
 #define SE_UNKNOWN_0x66             0x66 // RS: PokéNav turn off
@@ -164,45 +167,45 @@
 #define SE_UNKNOWN_0xD6             0xD6
 #define SE_UNKNOWN_0xD7             0xD7
 #define SE_UNKNOWN_0xD8             0xD8 // RS: Exp. Bar filled up
-#define SE_UNKNOWN_0xD9             0xd9
-#define SE_UNKNOWN_0xDA             0xda
-#define SE_UNKNOWN_0xDB             0xdb
-#define SE_UNKNOWN_0xDC             0xdc
-#define SE_UNKNOWN_0xDD             0xdd
-#define SE_UNKNOWN_0xDE             0xde
-#define SE_UNKNOWN_0xDF             0xdf
-#define SE_UNKNOWN_0xE0             0xe0
-#define SE_UNKNOWN_0xE1             0xe1
-#define SE_UNKNOWN_0xE2             0xe2
-#define SE_UNKNOWN_0xE3             0xe3
-#define SE_UNKNOWN_0xE4             0xe4
-#define SE_UNKNOWN_0xE5             0xe5
-#define SE_UNKNOWN_0xE6             0xe6
-#define SE_UNKNOWN_0xE7             0xe7
-#define SE_UNKNOWN_0xE8             0xe8
-#define SE_UNKNOWN_0xE9             0xe9
-#define SE_UNKNOWN_0xEA             0xea
-#define SE_UNKNOWN_0xEB             0xeb
-#define SE_UNKNOWN_0xEC             0xec
-#define SE_UNKNOWN_0xED             0xed
-#define SE_UNKNOWN_0xEE             0xee
-#define SE_UNKNOWN_0xEF             0xef
-#define SE_UNKNOWN_0xF0             0xf0
-#define SE_UNKNOWN_0xF1             0xf1
-#define SE_UNKNOWN_0xF2             0xf2
-#define SE_UNKNOWN_0xF3             0xf3
-#define SE_UNKNOWN_0xF4             0xf4
-#define SE_UNKNOWN_0xF5             0xf5
-#define SE_UNKNOWN_0xF6             0xf6
-#define SE_UNKNOWN_0xF7             0xf7
-#define SE_UNKNOWN_0xF8             0xf8
-#define SE_UNKNOWN_0xF9             0xf9
-#define SE_UNKNOWN_0xFA             0xfa
-#define SE_UNKNOWN_0xFB             0xfb
-#define SE_UNKNOWN_0xFC             0xfc
-#define SE_UNKNOWN_0xFD             0xfd
-#define SE_UNKNOWN_0xFE             0xfe
-#define SE_UNKNOWN_0xFF             0xff
+#define SE_UNKNOWN_0xD9             0xD9
+#define SE_UNKNOWN_0xDA             0xDA
+#define SE_UNKNOWN_0xDB             0xDB
+#define SE_UNKNOWN_0xDC             0xDC
+#define SE_UNKNOWN_0xDD             0xDD
+#define SE_UNKNOWN_0xDE             0xDE
+#define SE_UNKNOWN_0xDF             0xDF
+#define SE_UNKNOWN_0xE0             0xE0
+#define SE_UNKNOWN_0xE1             0xE1
+#define SE_UNKNOWN_0xE2             0xE2
+#define SE_UNKNOWN_0xE3             0xE3
+#define SE_UNKNOWN_0xE4             0xE4
+#define SE_UNKNOWN_0xE5             0xE5
+#define SE_UNKNOWN_0xE6             0xE6
+#define SE_UNKNOWN_0xE7             0xE7
+#define SE_UNKNOWN_0xE8             0xE8
+#define SE_UNKNOWN_0xE9             0xE9
+#define SE_UNKNOWN_0xEA             0xEA
+#define SE_UNKNOWN_0xEB             0xEB
+#define SE_UNKNOWN_0xEC             0xEC
+#define SE_UNKNOWN_0xED             0xED
+#define SE_UNKNOWN_0xEE             0xEE
+#define SE_UNKNOWN_0xEF             0xEF
+#define SE_UNKNOWN_0xF0             0xF0
+#define SE_UNKNOWN_0xF1             0xF1
+#define SE_UNKNOWN_0xF2             0xF2
+#define SE_UNKNOWN_0xF3             0xF3
+#define SE_UNKNOWN_0xF4             0xF4
+#define SE_UNKNOWN_0xF5             0xF5
+#define SE_UNKNOWN_0xF6             0xF6
+#define SE_UNKNOWN_0xF7             0xF7
+#define SE_UNKNOWN_0xF8             0xF8
+#define SE_UNKNOWN_0xF9             0xF9
+#define SE_UNKNOWN_0xFA             0xFA
+#define SE_UNKNOWN_0xFB             0xFB
+#define SE_UNKNOWN_0xFC             0xFC
+#define SE_UNKNOWN_0xFD             0xFD
+#define SE_UNKNOWN_0xFE             0xFE
+#define SE_UNKNOWN_0xFF             0xFF
 #define SE_UNKNOWN_0x100            0x100
 #define SE_UNKNOWN_0x101            0x101
 #define SE_UNKNOWN_0x102            0x102
