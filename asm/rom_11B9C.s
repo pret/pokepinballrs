@@ -1,5 +1,5 @@
+#include "constants/bg_music.h"
 	.include "asm/macros.inc"
-	.include "asm/constants/bg_music.s"
 
 	.syntax unified
 
