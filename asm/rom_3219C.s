@@ -1,4 +1,5 @@
 	.include "asm/macros.inc"
+	.include "asm/constants/bg_music.s"
 
 	.syntax unified
 
@@ -43859,7 +43860,7 @@ _080490C4:
 	ldr r4, _08049118 @ =0x00030D40
 	adds r0, r0, r4
 	str r0, [r1]
-	movs r0, #0x91
+	movs r0, SE_UNKNOWN_0x91
 	bl m4aSongNumStart
 	b _08049134
 	.align 2, 0
@@ -53858,7 +53859,7 @@ _0804E404:
 	movs r0, #0xc8
 	strh r0, [r4, #0x12]
 	bl m4aMPlayAllStop
-	movs r0, #0xd
+	movs r0, MUS_END_OF_BALL
 	bl m4aSongNumStart
 	bl sub_4E598
 	ldr r2, [r7]

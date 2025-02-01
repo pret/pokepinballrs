@@ -90,7 +90,7 @@ void sub_2768(void)
         {
             if (gUnknown_0201A4F8 != 0 && gUnknown_0201A4F8 != 3)
             {
-                m4aSongNumStart(SE_UNKNOWN_109);
+                m4aSongNumStart(SE_UNKNOWN_0x6D);
                 gUnknown_0201A4F8--;
             }
         }
@@ -98,7 +98,7 @@ void sub_2768(void)
         {
             if (gUnknown_0201A4F8 != 2 && gUnknown_0201A4F8 != 5)
             {
-                m4aSongNumStart(SE_UNKNOWN_109);
+                m4aSongNumStart(SE_UNKNOWN_0x6D);
                 gUnknown_0201A4F8++;
             }
         }
@@ -106,7 +106,7 @@ void sub_2768(void)
         {
             if (gUnknown_0201A4F8 > 2)
             {
-                m4aSongNumStart(SE_UNKNOWN_109);
+                m4aSongNumStart(SE_UNKNOWN_0x6D);
                 gUnknown_0201A4F8 -= 3;
             }
         }
@@ -114,20 +114,20 @@ void sub_2768(void)
         {
             if (gUnknown_0201A4F8 < 3)
             {
-                m4aSongNumStart(SE_UNKNOWN_109);
+                m4aSongNumStart(SE_UNKNOWN_0x6D);
                 gUnknown_0201A4F8 += 3;
             }
         }
         if (gMain.newKeys & A_BUTTON)
         {
-            m4aSongNumStart(SE_UNKNOWN_101);
+            m4aSongNumStart(SE_UNKNOWN_0x65);
             gUnknown_0202BED0 = 1;
             gUnknown_0201A4B0 = 1;
             gUnknown_0202A560 = 0;
         }
         if (gMain.newKeys & B_BUTTON)
         {
-            m4aSongNumStart(SE_UNKNOWN_102);
+            m4aSongNumStart(SE_UNKNOWN_0x66);
             gUnknown_0202BEE4 = 1;
             gMain.subState++;
         }
@@ -140,7 +140,7 @@ void sub_2768(void)
         }
         if (gMain.newKeys & A_BUTTON)
         {
-            m4aSongNumStart(SE_UNKNOWN_101);
+            m4aSongNumStart(SE_UNKNOWN_0x65);
             gUnknown_0202A560 = 0;
             gUnknown_0202BE1C = 0;
             gMain.saveData.ballSpeed = gUnknown_0201A4C0;
@@ -149,7 +149,7 @@ void sub_2768(void)
         }
         if (gMain.newKeys & B_BUTTON)
         {
-            m4aSongNumStart(SE_UNKNOWN_102);
+            m4aSongNumStart(SE_UNKNOWN_0x66);
             gUnknown_0201A4B0 = 0;
             gUnknown_0202BED0 = 0;
         }

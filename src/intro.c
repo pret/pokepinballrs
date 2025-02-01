@@ -317,7 +317,7 @@ void sub_9878(void)
         gUnknown_0201A450[0].unk0 = 0x78;
         gUnknown_0201A450[0].unk2 = 0x58;
         gUnknown_0201A450[0].unkC = 1;
-        m4aSongNumStart(SE_UNKNOWN_216);
+        m4aSongNumStart(SE_UNKNOWN_0xD8);
         gUnknown_0202C790++;
     }
 }

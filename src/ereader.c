@@ -143,7 +143,7 @@ void sub_2E40(void)
         }
     }
     else if (gMain.newKeys & B_BUTTON) {
-        m4aSongNumStart(SE_UNKNOWN_102);
+        m4aSongNumStart(SE_UNKNOWN_0x66);
         gUnknown_0202BEF8 = STATE_TITLE;
         gMain.subState = 8;
     }
@@ -162,7 +162,7 @@ void sub_2FC0(void)
             sub_3C1C();
             gUnknown_0201B124 = 0;
             gUnknown_0202C584 = 1;
-            m4aSongNumStart(SE_UNKNOWN_118);
+            m4aSongNumStart(SE_UNKNOWN_0x76);
             gMain.subState = 3;
         }
     }
@@ -302,7 +302,7 @@ void sub_33A0(void)
             break;
         case 0x96:
             gUnknown_0202A58C = 3;
-            m4aSongNumStart(SE_UNKNOWN_101);
+            m4aSongNumStart(SE_UNKNOWN_0x65);
             break;
         case 0x10e:
             gUnknown_0201A44C = 0;

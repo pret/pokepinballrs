@@ -101,7 +101,7 @@ void sub_8C7C(void)
             {
                 if (gFieldSelectData.selectedField == FIELD_SAPPHIRE)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_109);
+                    m4aSongNumStart(SE_UNKNOWN_0x6D);
                     gFieldSelectData.selectedField = FIELD_RUBY;
                     gFieldSelectData.unk4 = 0;
                     gFieldSelectData.unk6 = 1;
@@ -112,7 +112,7 @@ void sub_8C7C(void)
             {
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_109);
+                    m4aSongNumStart(SE_UNKNOWN_0x6D);
                     gFieldSelectData.selectedField = FIELD_SAPPHIRE;
                     gFieldSelectData.unk4 = 1;
                     gFieldSelectData.unk6 = 0;
@@ -121,7 +121,7 @@ void sub_8C7C(void)
             }
             if (gMain.newKeys & A_BUTTON)
             {
-                m4aSongNumStart(SE_UNKNOWN_101);
+                m4aSongNumStart(SE_UNKNOWN_0x65);
                 gFieldSelectData.state = 2;
                 gFieldSelectData.unk14 = 1;
                 gFieldSelectData.unkE = 0;
@@ -144,7 +144,7 @@ void sub_8C7C(void)
             }
             if (gMain.newKeys & B_BUTTON)
             {
-                m4aSongNumStart(SE_UNKNOWN_102);
+                m4aSongNumStart(SE_UNKNOWN_0x66);
                 gMain.subState++;
                 gFieldSelectData.nextMainState = STATE_TITLE;
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
@@ -177,7 +177,7 @@ void sub_8C7C(void)
             }
             if (gMain.newKeys & A_BUTTON)
             {
-                m4aSongNumStart(SE_UNKNOWN_101);
+                m4aSongNumStart(SE_UNKNOWN_0x65);
                 gFieldSelectData.unkE = 0;
                 gFieldSelectData.unkC = 0;
                 gMain_saveData.ballSpeed = gFieldSelectData.ballSpeed;
@@ -186,7 +186,7 @@ void sub_8C7C(void)
             }
             if (gMain.newKeys & B_BUTTON)
             {
-                m4aSongNumStart(SE_UNKNOWN_102);
+                m4aSongNumStart(SE_UNKNOWN_0x66);
                 gFieldSelectData.unk14 = 0;
                 gFieldSelectData.state = 0;
             }
@@ -224,7 +224,7 @@ void sub_8C7C(void)
             {
                 if (gFieldSelectData.selectedField == FIELD_SAPPHIRE)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_109);
+                    m4aSongNumStart(SE_UNKNOWN_0x6D);
                     gFieldSelectData.selectedField = FIELD_RUBY;
                     gFieldSelectData.unk4 = 0;
                     gFieldSelectData.unk6 = 1;
@@ -238,7 +238,7 @@ void sub_8C7C(void)
             {
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_109);
+                    m4aSongNumStart(SE_UNKNOWN_0x6D);
                     gFieldSelectData.selectedField = FIELD_SAPPHIRE;
                     gFieldSelectData.unk4 = 1;
                     gFieldSelectData.unk6 = 0;
