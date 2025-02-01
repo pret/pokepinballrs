@@ -203,7 +203,7 @@ void sub_4150(void)
             }
             else
             {
-                m4aSongNumStart(0x8A);
+                m4aSongNumStart(SE_FAILURE);
             }
         }
     }
@@ -263,17 +263,17 @@ void sub_4150(void)
             }
             else
             {
-                m4aSongNumStart(0x8A);
+                m4aSongNumStart(SE_FAILURE);
             }
         }
         else if (gMain.newKeys & B_BUTTON)
         {
-            m4aSongNumStart(0x66);
+            m4aSongNumStart(SE_UNKNOWN_102);
             gMain.subState = 12;
         }
         else if (gMain.newKeys & START_BUTTON)
         {
-            m4aSongNumStart(0x68);
+            m4aSongNumStart(SE_UNKNOWN_104);
             gUnknown_0202BEC4 = 1;
             gUnknown_0202BEFC = 0;
             gUnknown_0202BF04 = 0;
@@ -369,7 +369,7 @@ void sub_45A4(void)
     {
         if ((gUnknown_0202ADE0 < BONUS_SPECIES_START) && (gUnknown_0202C794 == 1))
         {
-            m4aSongNumStart(0x6D);
+            m4aSongNumStart(SE_UNKNOWN_109);
             gUnknown_0202C794 = 0;
             sub_70E0(gUnknown_0202ADE0, 0);
             gUnknown_02019C28 = gUnknown_0202C794;
@@ -379,7 +379,7 @@ void sub_45A4(void)
     {
         if ((gUnknown_0202ADE0 < BONUS_SPECIES_START) && (gUnknown_0202C794 == 0))
         {
-            m4aSongNumStart(0x6D);
+            m4aSongNumStart(SE_UNKNOWN_109);
             gUnknown_0202C794 = 1;
             sub_70E0(gUnknown_0202ADE0, 1);
             gUnknown_02019C28 = gUnknown_0202C794;
@@ -392,14 +392,14 @@ void sub_45A4(void)
         {
             if (!gUnknown_0202C794)
             {
-                m4aSongNumStart(0x6D);
+                m4aSongNumStart(SE_UNKNOWN_109);
                 gUnknown_0202C794 = 1 - gUnknown_0202C794;
                 sub_70E0(gUnknown_0202ADE0,gUnknown_0202C794);
                 gUnknown_02019C28 = gUnknown_0202C794;
             }
             else
             {
-                m4aSongNumStart(0x69);
+                m4aSongNumStart(SE_UNKNOWN_105);
                 m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
                 gUnknown_0202C794 = 0;
                 gUnknown_0202C5E8 = 0;
@@ -411,7 +411,7 @@ void sub_45A4(void)
     }
     else if (gMain.newKeys & B_BUTTON)
     {
-        m4aSongNumStart(0x69);
+        m4aSongNumStart(SE_UNKNOWN_105);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
         gUnknown_0202C794 = 0;
         gUnknown_0202C5E8 = 0;
@@ -532,7 +532,7 @@ void sub_49D0(void)
 
     if (gMain.newKeys & B_BUTTON)
     {
-        m4aSongNumStart(0x66);
+        m4aSongNumStart(SE_UNKNOWN_102);
         gUnknown_0202BEC4 = 0;
         gUnknown_0202BEFC = 0;
         gUnknown_0202BF04 = 1;
@@ -562,7 +562,7 @@ void sub_49D0(void)
                 {
                     gUnknown_0202BEFC = 2;
                     gMain.subState = 8;
-                    m4aSongNumStart(0x8A);
+                    m4aSongNumStart(SE_FAILURE);
                 }
             }
 
@@ -575,7 +575,7 @@ void sub_49D0(void)
                 {
                     gUnknown_0202BEFC = 2;
                     gMain.subState = 8;
-                    m4aSongNumStart(0x8a);
+                    m4aSongNumStart(SE_FAILURE);
                 }
             }
         }
@@ -635,7 +635,7 @@ void sub_4BB4(void)
             break;
         case 0x82:
             gUnknown_0202BEFC = 3;
-            m4aSongNumStart(0x65);
+            m4aSongNumStart(SE_UNKNOWN_101);
             break;
         case 0xFA:
             gUnknown_0201B120 = 0;
@@ -669,7 +669,7 @@ void sub_4C80(void)
 
     if (gMain.newKeys & A_BUTTON)
     {
-        m4aSongNumStart(0x65);
+        m4aSongNumStart(SE_UNKNOWN_101);
         for (i = 0; i < 0xE1; i++)
         {
             gUnknown_0202A390[i] = 0;
@@ -693,7 +693,7 @@ void sub_4C80(void)
     }
     else if (gMain.newKeys & B_BUTTON)
     {
-        m4aSongNumStart(0x66);
+        m4aSongNumStart(SE_UNKNOWN_102);
         gUnknown_0202BEC4 = 0;
         gUnknown_0202BEFC = 0;
         gUnknown_0202BF04 = 1;
@@ -730,21 +730,21 @@ void sub_4D74(void)
                     gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
                     gUnknown_0202ADE0 = gUnknown_0202A574 - 1;
                     gUnknown_0202A57C = 4;
-                    m4aSongNumStart(0x67);
+                    m4aSongNumStart(SE_SELECT);
                 }
             }
             else
             {
                 gUnknown_0202C5B0--;
                 gUnknown_0202ADE0--;
-                m4aSongNumStart(0x67);
+                m4aSongNumStart(SE_SELECT);
             }
             
             gUnknown_0202C58C = 9;
         }
         else
         {
-            m4aSongNumStart(0x67);
+            m4aSongNumStart(SE_SELECT);
             gUnknown_0202A57C--;
             gUnknown_0202ADE0--;
             

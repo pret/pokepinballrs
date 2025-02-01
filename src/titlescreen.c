@@ -165,7 +165,7 @@ void TitleScreen1_WaitForStartButton(void)
 
         if (gMain.newKeys & (A_BUTTON | START_BUTTON))
         {
-            m4aSongNumStart(0x65);
+            m4aSongNumStart(SE_UNKNOWN_101);
             gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 0;
             gMain.subState = 2;
@@ -240,7 +240,7 @@ void TitleScreen9_8010D84(void)
     {
         if (gMain.newKeys & A_BUTTON)
         {
-            m4aSongNumStart(0x65);
+            m4aSongNumStart(SE_UNKNOWN_101);
             sub_11B74();
             sub_02B4();
             m4aMPlayAllStop();
@@ -249,7 +249,7 @@ void TitleScreen9_8010D84(void)
         }
         else if (gMain.newKeys & B_BUTTON)
         {
-            m4aSongNumStart(0x66);
+            m4aSongNumStart(SE_UNKNOWN_102);
             gTitlescreen.unk11 = 0;
             gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
         }
@@ -334,27 +334,27 @@ void TitleScreen4_MenuInputNoSavedGame(void)
 
         if (gMain.newKeys & DPAD_UP)
         {
-            m4aSongNumStart(0x67);
+            m4aSongNumStart(SE_SELECT);
             if (--gTitlescreen.menuCursorIndex < 0)
                 gTitlescreen.menuCursorIndex = 3;
         }
         else if (gMain.newKeys & DPAD_DOWN)
         {
-            m4aSongNumStart(0x67);
+            m4aSongNumStart(SE_SELECT);
             if (++gTitlescreen.menuCursorIndex > 3)
                 gTitlescreen.menuCursorIndex = 0;
         }
 
         if (gMain.newKeys & (A_BUTTON | START_BUTTON))
         {
-            m4aSongNumStart(0x65);
+            m4aSongNumStart(SE_UNKNOWN_101);
             gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 0;
             gMain.subState = 7;
         }
         else if (gMain.newKeys & B_BUTTON)
         {
-            m4aSongNumStart(0x66);
+            m4aSongNumStart(SE_UNKNOWN_102);
             gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 12;
             gTitlescreen.unkD = 0;
@@ -435,27 +435,27 @@ void TitleScreen5_MenuInputSavedGame(void)
 
         if (gMain.newKeys & DPAD_UP)
         {
-            m4aSongNumStart(0x67);
+            m4aSongNumStart(SE_SELECT);
             if (--gTitlescreen.menuCursorIndex < 0)
                 gTitlescreen.menuCursorIndex = 4;
         }
         else if (gMain.newKeys & DPAD_DOWN)
         {
-            m4aSongNumStart(0x67);
+            m4aSongNumStart(SE_SELECT);
             if (++gTitlescreen.menuCursorIndex > 4)
                 gTitlescreen.menuCursorIndex = 0;
         }
 
         if (gMain.newKeys & (A_BUTTON | START_BUTTON))
         {
-            m4aSongNumStart(0x65);
+            m4aSongNumStart(SE_UNKNOWN_101);
             gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 0;
             gMain.subState = 8;
         }
         else if (gMain.newKeys & B_BUTTON)
         {
-            m4aSongNumStart(0x66);
+            m4aSongNumStart(SE_UNKNOWN_102);
             gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 12;
             gTitlescreen.unkD = 0;
@@ -615,7 +615,7 @@ static void sub_114FC(void)
             {
                 gEraseSaveDataAccessStep = 0;
                 gEraseSaveDataAccessCounter = 0;
-                m4aSongNumStart(0x68);
+                m4aSongNumStart(SE_UNKNOWN_104);
                 gTitlescreen.unk11 = 1;
                 gMain.subState = 9;
             }
@@ -644,7 +644,7 @@ static void sub_1157C(void)
         {
             gEReaderAccessStep = 0;
             gEReaderAccessCounter = 0;
-            m4aSongNumStart(0x65);
+            m4aSongNumStart(SE_UNKNOWN_101);
             gTitlescreen.unk6 = 5;
             if (gMain.subState == SUBSTATE_WAIT_FOR_START_BUTTON)
                 gMain.subState = 11;
