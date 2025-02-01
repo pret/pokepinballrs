@@ -1,15 +1,9 @@
 #include "global.h"
 #include "constants/bg_music.h"
+#include "constants/fields.h"
 #include "main.h"
 #include "m4a.h"
 #include "titlescreen.h"
-
-enum
-{
-    FIELD_RUBY,
-    FIELD_SAPPHIRE,
-    NUM_FIELDS
-};
 
 static void sub_8F94(void);
 static void sub_8C38(void);
