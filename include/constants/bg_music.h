@@ -48,21 +48,21 @@
 #define MUS_POKEDEX                 46
 #define MUS_JIRACHI                 47  // RS: Hall of Fame
 
-#define SE_UNKNOWN_101              101 // PokéNav turn on in RSE
-#define SE_UNKNOWN_102              102 // PokéNav turn off in RSE
+#define SE_UNKNOWN_101              101 // RS: PokéNav turn on
+#define SE_UNKNOWN_102              102 // RS: PokéNav turn off
 #define SE_SELECT                   103
 #define SE_UNKNOWN_104              104 // Yellow window popup appears
 #define SE_UNKNOWN_105              105 // Yellow window popup disappears
 #define SE_UNKNOWN_106              106 // Drum?
-#define SE_UNKNOWN_107              107 // Pokédex scroll from RSE
-#define SE_UNKNOWN_108              108 // Bike hop sound from RSE
+#define SE_UNKNOWN_107              107 // RS: Pokédex scroll
+#define SE_UNKNOWN_108              108 // RS: Bike hop
 #define SE_UNKNOWN_109              109
 
 #define SE_UNKNOWN_118              118
 
 #define SE_FAILURE                  138
 
-#define SE_UNKNOWN_216              216 // Filled Exp. Bar from RSE
+#define SE_UNKNOWN_216              216 // RS: Exp. Bar filled up
 
 #define SE_UNKNOWN_330              330
 #define SE_UNKNOWN_331              331
