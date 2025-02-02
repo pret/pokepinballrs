@@ -136,7 +136,7 @@ struct Unk02031520
 	/*0x8*/ s16 unk8;
 };
 
-extern struct PinballGame *gUnknown_020314E0;
+extern struct PinballGame *gCurrentPinballGame;
 extern struct Unk02031520 gUnknown_02031520;
 
 #endif // GUARD_GLOBAL_H

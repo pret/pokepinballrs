@@ -69,7 +69,7 @@ extern s8 gAutoDisplayTitlescreenMenu;
 //extern ? gUnknown_202BE24;
 extern s16 gUnknown_0202BEEC;
 //extern ? gUnknown_0202C588;
-//extern ? gUnknown_020314E0;
+//extern ? gCurrentPinballGame;
 //extern ? gUnknown_02031520;
 //extern ? gSoundInfo;
 //extern ? gPokemonCryMusicPlayers;
