@@ -91,7 +91,8 @@ struct PinballGame
 {
 	/*0x000*/ u8 filler0[0x13];
 	/*0x013*/ s8 unk13;
-	/*0x014*/ u8 filler14[0x11];
+	/*0x014*/ s8 unk14;
+	/*0x015*/ u8 filler15[0x10];
 	/*0x025*/ s8 unk25;
 	/*0x026*/ u16 unk26;
 	/*0x028*/ u16 unk28;
@@ -134,8 +135,12 @@ struct PinballGame
 	/*0x600*/ u16 unk600;
 	/*0x602*/ u8 filler602[0x126];
 	/*0x728*/ u8 unk728; // TODO: unknown type
-	/*0x729*/ u8 filler729[0x14];
-	/*0x73D*/ s8 catchModeArrows;   // Affects the which encounter table is used per area
+	/*0x729*/ u8 filler729[0x5];
+	/*0x72E*/ u8 unk72E; // TODO: unknown type
+	/*0x72F*/ u8 unk72F; // TODO: unknown type
+	/*0x730*/ u8 filler730[0xC];
+	/*0x73C*/ u8 unk73C; // TODO: unknown type
+	/*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
 };
 
 struct Unk02031520
