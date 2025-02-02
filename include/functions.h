@@ -352,8 +352,6 @@ extern void sub_3FAC(void);
 //extern ? sub_4BB4();
 //extern ? sub_4C80();
 //extern ? sub_4D50();
-//extern ? sub_4D74();
-//extern ? sub_4E34();
 //extern ? sub_4EF0();
 //extern ? sub_4F50();
 //extern ? sub_4FC8();
