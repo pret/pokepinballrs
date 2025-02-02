@@ -2054,10 +2054,7 @@ gUnknown_086A2FA0:: @ 0x086A2FA0
 	.incbin "baserom.gba", 0x6A2FA0, 0x760
 
 gSpeciesInfo:: @ 0x086A3700
-	.incbin "baserom.gba", 0x6A3700, 0x7
-
-gUnknown_086A3707:: @ 0x086A3707
-	.incbin "baserom.gba", 0x6A3707, 0x1331
+	.incbin "baserom.gba", 0x6A3700, 0x1338
 
 gUnknown_086A4A38:: @ 0x086A4A38
 	.incbin "baserom.gba", 0x6A4A38, 0x68
