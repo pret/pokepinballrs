@@ -1,5 +1,6 @@
 #include "global.h"
 #include "constants/ereader.h"
+#include "constants/fields.h"
 #include "constants/species.h"
 #include "functions.h"
 #include "m4a.h"
@@ -46,30 +47,20 @@ void sub_31F6C(void)
                 if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
                 {
                     if (gMain_saveData.pokedexFlags[currentSpecies] < 2)
-                    {
                         weight = 2;
-                    }
                     else
-                    {
                         weight = 4;
-                    }
                 }
                 else
                 {
                     if (gMain_saveData.pokedexFlags[currentSpecies] < 2)
-                    {
                         weight = 1;
-                    }
                     else
-                    {
                         weight = 2;
-                    }
                 }
-    
+
                 if (gUnknown_020314E0->unk5F0 == 0)
-                {
                     weight = 0;
-                }
                 break;
             
             case SPECIES_CLAMPERL:
@@ -93,7 +84,7 @@ void sub_31F6C(void)
                 weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
                 for (j = 0; j < 2; j++)
                 {
-                    currentSpecies = gUnknown_086A3700[currentSpecies].evolutionTarget;
+                    currentSpecies = gSpeciesInfo[currentSpecies].evolutionTarget;
                     if (currentSpecies < SPECIES_NONE)
                     {
                         evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
@@ -108,7 +99,7 @@ void sub_31F6C(void)
                     }
                 }
                 currentSpecies = gWildMonLocations[gUnknown_020314E0->area][threeArrows][i];
-                if (gUnknown_020314E0->unk5F0 == 0 && gUnknown_086A3700[currentSpecies].evolutionTarget >= SPECIES_NONE)
+                if (gUnknown_020314E0->unk5F0 == 0 && gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
                 {
                     weight = 0;
                 }
@@ -186,7 +177,7 @@ void sub_3219C(void)
                     gUnknown_020314E0->unk598 = SPECIES_CYNDAQUIL;
             }
 
-            if (!gMain.selectedField)
+            if (gMain.selectedField == FIELD_RUBY)
             {
                 specialMons[numSpecialMons++] = SPECIES_LATIOS;
                 if (gMain_saveData.pokedexFlags[SPECIES_LATIOS] < 4)
@@ -241,14 +232,10 @@ void sub_32484(void)
 
         if (currentSpecies == SPECIES_ODDISH)
         {
-            if (gMain.selectedField == 0)
-            {
+            if (gMain.selectedField == FIELD_RUBY)
                 weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_VILEPLUME]];
-            }
             else
-            {
                 weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_BELLOSSOM]];
-            }
         }
         else
         {
@@ -256,11 +243,12 @@ void sub_32484(void)
 
             for (j = 0; j < 2; j++)
             {
-                currentSpecies = gUnknown_086A3700[currentSpecies].evolutionTarget;
+                currentSpecies = gSpeciesInfo[currentSpecies].evolutionTarget;
                 if (currentSpecies < SPECIES_NONE)
                 {
                     evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[currentSpecies]];
-                    if (weight < evolutionWeight) weight = evolutionWeight;
+                    if (weight < evolutionWeight)
+                        weight = evolutionWeight;
                 }
                 else
                 {
@@ -271,7 +259,7 @@ void sub_32484(void)
             currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
             if (gUnknown_020314E0->unk5F0 == 0)
             {
-                if (gUnknown_086A3700[currentSpecies].evolutionTarget >= SPECIES_NONE)
+                if (gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
                 {
                     weight = 0;
                 }

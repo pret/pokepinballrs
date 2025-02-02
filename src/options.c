@@ -2,6 +2,7 @@
 #include "m4a.h"
 #include "main.h"
 #include "titlescreen.h"
+#include "constants/bg_music.h"
 
 struct OptionsData
 {
@@ -154,12 +155,12 @@ void sub_514B8(void)
             {
                 if (gOptionsData.unkA == 0xE)
                 {
-                    m4aSongNumStart(0x67);
+                    m4aSongNumStart(SE_SELECT);
                     gOptionsData.unkA = 0xD;
                 }
                 else if (gOptionsData.unkA > 0)
                 {
-                    m4aSongNumStart(0x67);
+                    m4aSongNumStart(SE_SELECT);
                     gOptionsData.unkA--;
                 }
             }
@@ -168,28 +169,28 @@ void sub_514B8(void)
         {
             if (gOptionsData.unkA < 6)
             {
-                m4aSongNumStart(0x67);
+                m4aSongNumStart(SE_SELECT);
                 gOptionsData.unkA++;
             }
             else if (gOptionsData.unkA == 0xD)
             {
-                m4aSongNumStart(0x67);
+                m4aSongNumStart(SE_SELECT);
                 gOptionsData.unkA = 0xE;
             }
             else if (gOptionsData.unkA == 0xE)
             {
-                m4aSongNumStart(0x67);
+                m4aSongNumStart(SE_SELECT);
                 gOptionsData.unkA = 2;
             }
         }
         if ((gMain.newKeys & DPAD_RIGHT) && gGameBoyPlayerEnabled == 1 && (u16)gOptionsData.unkA < 2)
         {
-            m4aSongNumStart(0x67);
+            m4aSongNumStart(SE_SELECT);
             gOptionsData.unkA += 0xD;
         }
         if ((gMain.newKeys & DPAD_LEFT) && gGameBoyPlayerEnabled == 1 && (u16)(gOptionsData.unkA - 13) < 2)
         {
-            m4aSongNumStart(0x67);
+            m4aSongNumStart(SE_SELECT);
             gOptionsData.unkA -= 0xD;
         }
         if (gMain.newKeys & A_BUTTON)
@@ -197,7 +198,7 @@ void sub_514B8(void)
             switch (gOptionsData.unkA)
             {
             case 0:
-                m4aSongNumStart(0x65);
+                m4aSongNumStart(SE_UNKNOWN_0x65);
                 gOptionsData.unk0 = 1;
                 gOptionsData.unk18 = 0;
                 gOptionsData.unk30 = 1;
@@ -210,7 +211,7 @@ void sub_514B8(void)
                 }
                 break;
             case 1:
-                m4aSongNumStart(0x65);
+                m4aSongNumStart(SE_UNKNOWN_0x65);
                 gOptionsData.unk0 = 2;
                 gOptionsData.unk18 = 0;
                 gOptionsData.unk30 = 1;
@@ -226,12 +227,12 @@ void sub_514B8(void)
             case 3:
             case 4:
             case 5:
-                m4aSongNumStart(0x65);
+                m4aSongNumStart(SE_UNKNOWN_0x65);
                 gOptionsData.unkC = gOptionsData.unkA - 2;
                 gMain_saveData.unk143 = gOptionsData.unkC;
                 break;
             case 6:
-                m4aSongNumStart(0x65);
+                m4aSongNumStart(SE_UNKNOWN_0x65);
                 gOptionsData.unkC = gOptionsData.unkA - 2;
                 gMain_saveData.unk143 = gOptionsData.unkC;
                 gOptionsData.unkA = 7;
@@ -240,7 +241,7 @@ void sub_514B8(void)
             case 14:
                 if (gGameBoyPlayerEnabled == 1)
                 {
-                    m4aSongNumStart(0x65);
+                    m4aSongNumStart(SE_UNKNOWN_0x65);
                     gOptionsData.unk2D = 0;
                     if (gOptionsData.unk2E == 1)
                         gOptionsData.unk2E = 0;
@@ -252,7 +253,7 @@ void sub_514B8(void)
             case 13:
                 if (gGameBoyPlayerEnabled == 1)
                 {
-                    m4aSongNumStart(0x65);
+                    m4aSongNumStart(SE_UNKNOWN_0x65);
                     sub_11B0(11);
                     if (gOptionsData.unk2E == 0)
                         gOptionsData.unk2E = 1;
@@ -266,7 +267,7 @@ void sub_514B8(void)
         }
         else if (gMain.newKeys & B_BUTTON)
         {
-            m4aSongNumStart(0x66);
+            m4aSongNumStart(SE_UNKNOWN_0x66);
             gMain.subState++;
             sub_525CC(gMain_saveData.unk143);
 
@@ -315,7 +316,7 @@ void sub_514B8(void)
         else if (gMain.newKeys & B_BUTTON)
         {
             m4aMPlayAllStop();
-            m4aSongNumStart(0x66);
+            m4aSongNumStart(SE_UNKNOWN_0x66);
             gOptionsData.unk4 = 0;
             gOptionsData.unk30 = 0;
             gOptionsData.unk0 = 0;
@@ -366,7 +367,7 @@ void sub_514B8(void)
         else if (gMain.newKeys & B_BUTTON)
         {
             m4aMPlayAllStop();
-            m4aSongNumStart(0x66);
+            m4aSongNumStart(SE_UNKNOWN_0x66);
             gOptionsData.unk4 = 0;
             gOptionsData.unk30 = 0;
             gOptionsData.unk0 = 0;
@@ -381,7 +382,7 @@ void sub_514B8(void)
         {
             if (gOptionsData.unkA > 7)
             {
-                m4aSongNumStart(0x67);
+                m4aSongNumStart(SE_SELECT);
                 gOptionsData.unkA--;
             }
         }
@@ -389,19 +390,19 @@ void sub_514B8(void)
         {
             if (gOptionsData.unkA <= 10)
             {
-                m4aSongNumStart(0x67);
+                m4aSongNumStart(SE_SELECT);
                 gOptionsData.unkA++;
             }
         }
         if (gMain.newKeys & A_BUTTON)
         {
-            m4aSongNumStart(0x65);
+            m4aSongNumStart(SE_UNKNOWN_0x65);
             gOptionsData.unk0 = 4;
             gOptionsData.unk1A[gOptionsData.unkA - 7] = 1;
         }
         else if (gMain.newKeys & B_BUTTON)
         {
-            m4aSongNumStart(0x66);
+            m4aSongNumStart(SE_UNKNOWN_0x66);
             gOptionsData.unkA = 6;
             gOptionsData.unk0 = 0;
         }
@@ -419,7 +420,7 @@ void sub_514B8(void)
         {
             s16 i;
 
-            m4aSongNumStart(0x65);
+            m4aSongNumStart(SE_UNKNOWN_0x65);
             gOptionsData.unk20 = 10;
             gOptionsData.unk22 = 0;
             for (i = 0; i < 2; i++)

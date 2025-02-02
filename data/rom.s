@@ -2053,7 +2053,7 @@ gUnknown_086A2EE4:: @ 0x086A2EE4
 gUnknown_086A2FA0:: @ 0x086A2FA0
 	.incbin "baserom.gba", 0x6A2FA0, 0x760
 
-gUnknown_086A3700:: @ 0x086A3700
+gSpeciesInfo:: @ 0x086A3700
 	.incbin "baserom.gba", 0x6A3700, 0x7
 
 gUnknown_086A3707:: @ 0x086A3707

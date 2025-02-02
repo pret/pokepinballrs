@@ -4,6 +4,7 @@
 #include "m4a.h"
 #include "variables.h"
 #include "titlescreen.h"
+#include "constants/bg_music.h"
 
 extern void sub_10170(u8 *, u32, u32, u32);
 void sub_FEB8(u32, u8 *, u32);
@@ -316,7 +317,7 @@ void sub_9878(void)
         gUnknown_0201A450[0].unk0 = 0x78;
         gUnknown_0201A450[0].unk2 = 0x58;
         gUnknown_0201A450[0].unkC = 1;
-        m4aSongNumStart(0xD8);
+        m4aSongNumStart(SE_UNKNOWN_0xD8);
         gUnknown_0202C790++;
     }
 }
@@ -330,7 +331,7 @@ void sub_98B4(void)
         {
             gUnknown_0201A450[0].unkC = 0;
             sub_10170(&gIntroScene1Sprites_Pals[0x1C0], BG_PLTT + 0xE0, 0x20, 0);
-            m4aSongNumStart(0x8);
+            m4aSongNumStart(MUS_OPENING);
             gUnknown_0202C790++;
         }
     }

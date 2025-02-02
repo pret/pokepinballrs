@@ -181,7 +181,7 @@ $(ASM_BUILDDIR)/%.o: asm_dep :=
 endif
 
 $(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s $$(asm_dep)
-	$(AS) $(ASFLAGS) -o $@ $<
+	$(CPP) $(CPPFLAGS) $< -I include | $(AS) $(ASFLAGS) -o $@
 
 build/pokepinballrs/asm/start.o: asm/start.s
 	$(AS) $(ASFLAGS) -o $@ $<

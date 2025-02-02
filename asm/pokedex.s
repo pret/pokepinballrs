@@ -1,3 +1,4 @@
+#include "constants/bg_music.h"
 	.include "asm/macros.inc"
 
 	.syntax unified
@@ -39,7 +40,7 @@ sub_4E34: @ 0x08004E34
 	ldr r0, _08004E9C @ =gUnknown_0202ADE0
 	strh r1, [r0]
 	strh r1, [r4]
-	movs r0, #0x67
+	movs r0, SE_SELECT
 	bl m4aSongNumStart
 	b _08004EB4
 	.align 2, 0
@@ -59,7 +60,7 @@ _08004EA0:
 	ldrh r0, [r1]
 	adds r0, #1
 	strh r0, [r1]
-	movs r0, #0x67
+	movs r0, SE_SELECT
 	bl m4aSongNumStart
 _08004EB4:
 	ldr r1, _08004EC0 @ =gUnknown_0202C58C
@@ -70,7 +71,7 @@ _08004EB4:
 _08004EBC: .4byte gUnknown_0202ADE0
 _08004EC0: .4byte gUnknown_0202C58C
 _08004EC4:
-	movs r0, #0x67
+	movs r0, SE_SELECT
 	bl m4aSongNumStart
 	ldrh r0, [r4]
 	adds r0, #1
@@ -110,7 +111,7 @@ sub_4EF0: @ 0x08004EF0
 	ldrsh r0, [r5, r1]
 	cmp r0, #0
 	beq _08004F32
-	movs r0, #0x67
+	movs r0, SE_SELECT
 	bl m4aSongNumStart
 	ldrh r0, [r5]
 	subs r0, #5
@@ -161,7 +162,7 @@ sub_4F50: @ 0x08004F50
 	subs r0, #5
 	cmp r1, r0
 	beq _08004FA6
-	movs r0, #0x67
+	movs r0, SE_SELECT
 	bl m4aSongNumStart
 	ldrh r0, [r4]
 	adds r0, #5
@@ -229,7 +230,7 @@ sub_4FC8: @ 0x08004FC8
 	movs r4, #0
 	strb r4, [r1]
 	strb r4, [r2]
-	movs r0, #0x68
+	movs r0, SE_UNKNOWN_0x68
 	bl m4aSongNumStart
 	ldr r1, _08005054 @ =gUnknown_0202BEC4
 	movs r0, #1

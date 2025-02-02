@@ -84,7 +84,7 @@ void LoadEReaderGraphics(void)
     DmaCopy16(3, gUnknown_03000000, (void *)VRAM + 0x4000, 0x3000);
 
     sub_394C();
-    m4aSongNumStart(MUS_UNKNOWN_SONG_1);
+    m4aSongNumStart(MUS_UNKNOWN_0x5);
     sub_0CBC();
     sub_024C();
     gMain.subState = 1;
@@ -143,7 +143,7 @@ void sub_2E40(void)
         }
     }
     else if (gMain.newKeys & B_BUTTON) {
-        m4aSongNumStart(0x66);
+        m4aSongNumStart(SE_UNKNOWN_0x66);
         gUnknown_0202BEF8 = STATE_TITLE;
         gMain.subState = 8;
     }
@@ -162,7 +162,7 @@ void sub_2FC0(void)
             sub_3C1C();
             gUnknown_0201B124 = 0;
             gUnknown_0202C584 = 1;
-            m4aSongNumStart(0x76);
+            m4aSongNumStart(SE_UNKNOWN_0x76);
             gMain.subState = 3;
         }
     }
@@ -211,7 +211,7 @@ void sub_304C(void)
                 gUnknown_0202AD90 = 13;
                 sub_377C();
                 gMain.subState = 4;
-                m4aSongNumStart(0x8a);
+                m4aSongNumStart(SE_FAILURE);
             }
         }
         if (gUnknown_0202A58C == 1) {
@@ -230,7 +230,7 @@ void sub_304C(void)
                 gUnknown_0202AD90 = 13;
                 sub_377C();
                 gMain.subState = 4;
-                m4aSongNumStart(0x8a);
+                m4aSongNumStart(SE_FAILURE);
             }
         }
     }
@@ -302,7 +302,7 @@ void sub_33A0(void)
             break;
         case 0x96:
             gUnknown_0202A58C = 3;
-            m4aSongNumStart(0x65);
+            m4aSongNumStart(SE_UNKNOWN_0x65);
             break;
         case 0x10e:
             gUnknown_0201A44C = 0;
@@ -350,7 +350,7 @@ void sub_343C(void)
     DmaCopy16(3, gUnknown_03000000, (void *)VRAM + 0x4000, 0x3000);
 
     sub_394C();
-    m4aSongNumStart(MUS_UNKNOWN_SONG_1);
+    m4aSongNumStart(MUS_UNKNOWN_0x5);
     sub_0CBC();
     sub_024C();
     gMain.subState = 7;
