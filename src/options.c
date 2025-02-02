@@ -149,7 +149,7 @@ void sub_514B8(void)
     switch (gOptionsData.unk0)
     {
     case 0:
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             if (gOptionsData.unkA != 0xD)
             {
@@ -165,7 +165,7 @@ void sub_514B8(void)
                 }
             }
         }
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
         {
             if (gOptionsData.unkA < 6)
             {
@@ -183,17 +183,17 @@ void sub_514B8(void)
                 gOptionsData.unkA = 2;
             }
         }
-        if ((gMain.newKeys & DPAD_RIGHT) && gGameBoyPlayerEnabled == 1 && (u16)gOptionsData.unkA < 2)
+        if ((JOY_NEW(DPAD_RIGHT)) && gGameBoyPlayerEnabled == 1 && (u16)gOptionsData.unkA < 2)
         {
             m4aSongNumStart(SE_SELECT);
             gOptionsData.unkA += 0xD;
         }
-        if ((gMain.newKeys & DPAD_LEFT) && gGameBoyPlayerEnabled == 1 && (u16)(gOptionsData.unkA - 13) < 2)
+        if ((JOY_NEW(DPAD_LEFT)) && gGameBoyPlayerEnabled == 1 && (u16)(gOptionsData.unkA - 13) < 2)
         {
             m4aSongNumStart(SE_SELECT);
             gOptionsData.unkA -= 0xD;
         }
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             switch (gOptionsData.unkA)
             {
@@ -265,7 +265,7 @@ void sub_514B8(void)
                 break;
             }
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gMain.subState++;
@@ -276,7 +276,7 @@ void sub_514B8(void)
             gOptionsData.unk2 = 1 - gOptionsData.unk2;
         break;
     case 1:
-        if (gMain.heldKeys & DPAD_LEFT)
+        if (JOY_HELD(DPAD_LEFT))
         {
             if (gOptionsData.unk18 == 0)
             {
@@ -284,7 +284,7 @@ void sub_514B8(void)
                 gOptionsData.unk18 = 10;
             }
         }
-        else if (gMain.heldKeys & DPAD_RIGHT)
+        else if (JOY_HELD(DPAD_RIGHT))
         {
             if (gOptionsData.unk18 == 0)
             {
@@ -293,9 +293,9 @@ void sub_514B8(void)
             }
         }
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
             gOptionsData.unkE += 10;
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
             gOptionsData.unkE -= 10;
 
         if (gOptionsData.unkE < 0)
@@ -308,12 +308,12 @@ void sub_514B8(void)
         r4 %= 100;
         gOptionsData.unk13 = r4 / 10;
         gOptionsData.unk14 = r4 % 10;
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();
             m4aSongNumStart(gUnknown_08527D22[gOptionsData.unkE]);
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             m4aMPlayAllStop();
             m4aSongNumStart(SE_UNKNOWN_0x66);
@@ -327,7 +327,7 @@ void sub_514B8(void)
             gOptionsData.unk18--;
         break;
     case 2:
-        if (gMain.heldKeys & DPAD_LEFT)
+        if (JOY_HELD(DPAD_LEFT))
         {
             if (gOptionsData.unk18 == 0)
             {
@@ -335,7 +335,7 @@ void sub_514B8(void)
                 gOptionsData.unk18 = 10;
             }
         }
-        else if (gMain.heldKeys & DPAD_RIGHT)
+        else if (JOY_HELD(DPAD_RIGHT))
         {
             if (gOptionsData.unk18 == 0)
             {
@@ -344,9 +344,9 @@ void sub_514B8(void)
             }
         }
 
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
             gOptionsData.unk10 += 10;
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
             gOptionsData.unk10 -= 10;
 
         if (gOptionsData.unk10 < 0)
@@ -359,12 +359,12 @@ void sub_514B8(void)
         r4 %= 100;
         gOptionsData.unk16 = r4 / 10;
         gOptionsData.unk17 = r4 % 10;
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();
             m4aSongNumStart(gUnknown_08527D66[gOptionsData.unk10]);
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             m4aMPlayAllStop();
             m4aSongNumStart(SE_UNKNOWN_0x66);
@@ -378,7 +378,7 @@ void sub_514B8(void)
             gOptionsData.unk18--;
         break;
     case 3:
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             if (gOptionsData.unkA > 7)
             {
@@ -386,7 +386,7 @@ void sub_514B8(void)
                 gOptionsData.unkA--;
             }
         }
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
         {
             if (gOptionsData.unkA <= 10)
             {
@@ -394,13 +394,13 @@ void sub_514B8(void)
                 gOptionsData.unkA++;
             }
         }
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x65);
             gOptionsData.unk0 = 4;
             gOptionsData.unk1A[gOptionsData.unkA - 7] = 1;
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gOptionsData.unkA = 6;
@@ -416,7 +416,7 @@ void sub_514B8(void)
             gOptionsData.unk8 = 0;
             gOptionsData.unk6 = 1 - gOptionsData.unk6;
         }
-        if (gMain.newKeys & (KEYS_MASK ^ START_BUTTON))
+        if (JOY_NEW(KEYS_MASK ^ START_BUTTON))
         {
             s16 i;
 
@@ -1534,7 +1534,7 @@ void sub_524BC(void)
     if (gOptionsData.unk28 >= 2)
         return;
 
-    pressedKeys = gMain.heldKeys & (KEYS_MASK ^ START_BUTTON);
+    pressedKeys = JOY_HELD(KEYS_MASK ^ START_BUTTON);
     if (!pressedKeys)
         return;
 

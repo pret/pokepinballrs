@@ -35,7 +35,7 @@ void Main_09BC(void)
         gMain.subState++;
         break;
     case 1:
-        if (gMain.newKeys & KEYS_MASK)
+        if (JOY_NEW(KEYS_MASK))
             gMain.subState = 2;
         break;
     default:
@@ -194,12 +194,12 @@ s16 sub_0C24(u16 arg0)
 
     if (index > 0xFFF)
         index = 0x2000 - index;
-    
+
     return gUnknown_08055C44[index] * var0;
 }
 
 s16 sub_0C74(u16 arg0)
-{   
+{
     return sub_0C24(arg0 + 0x4000);
 }
 
@@ -207,7 +207,7 @@ static void ReadKeys(void)
 {
     u16 keyInput = ~REG_KEYINPUT;
     gMain.newKeys = keyInput & (keyInput ^ gMain.heldKeys);
-    gMain.releasedKeys = gMain.heldKeys & (keyInput ^ gMain.heldKeys);
+    gMain.releasedKeys = JOY_HELD(keyInput ^ gMain.heldKeys);
     gMain.heldKeys = keyInput;
 }
 

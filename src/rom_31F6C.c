@@ -190,7 +190,7 @@ void sub_3219C(void)
                     gCurrentPinballGame->unk598 = SPECIES_LATIAS;
             }
 
-            if (!gCurrentPinballGame->unk598)
+            if (gCurrentPinballGame->unk598 == 0)
             {
                 rand = GetTimeAdjustedRandom();
                 rand %= numSpecialMons;

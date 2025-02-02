@@ -63,6 +63,11 @@
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) >= (b) ? (a) : (b))
 
+// Macros for checking the joypad
+#define TEST_BUTTON(field, button) ((field) & (button))
+#define JOY_NEW(button) TEST_BUTTON(gMain.newKeys,  button)
+#define JOY_HELD(button)  TEST_BUTTON(gMain.heldKeys, button)
+
 enum
 {
     STATE_INTRO,
