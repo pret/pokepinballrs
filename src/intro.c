@@ -2929,7 +2929,7 @@ void sub_CC94(void)
     if (gUnknown_0202BF10 % 10 == 0)
     {
         gUnknown_0202A578++;
-        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, (0x100 / gUnknown_0202A578));
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, (0x100 / gUnknown_0202A578));
     }
     if (0x2D < gUnknown_0202BF10)
     {

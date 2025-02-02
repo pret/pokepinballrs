@@ -19,7 +19,7 @@ int sub_528AC(u16 a)
 
 void sub_528DC(u16 a, s8 b)
 {
-    m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x99);
+    m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x99);
     sub_52940(a, b, 0x7D, 10, 0);
 }
 

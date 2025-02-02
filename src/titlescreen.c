@@ -178,7 +178,7 @@ void TitleScreen1_WaitForStartButton(void)
             if (gTitlescreen.idleFramesCounter % 10 == 0)
             {
                 gTitlescreen.idleFadeoutCounter++;
-                m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100 / gTitlescreen.idleFadeoutCounter);
+                m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100 / gTitlescreen.idleFadeoutCounter);
             }
 
             if (gTitlescreen.idleFadeoutCounter > 9)

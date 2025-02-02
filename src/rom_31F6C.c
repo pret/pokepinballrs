@@ -24,7 +24,7 @@ void sub_31F6C(void)
     s16 evolutionWeight;
 
     gCurrentPinballGame->unk12E = 0;
-    if (gCurrentPinballGame->unk73D == 3)
+    if (gCurrentPinballGame->catchModeArrows == 3)
         threeArrows = 1;
     else
         threeArrows = 0;
@@ -59,7 +59,7 @@ void sub_31F6C(void)
                         weight = 2;
                 }
 
-                if (gCurrentPinballGame->unk5F0 == 0)
+                if (gCurrentPinballGame->caughtMonCount == 0)
                     weight = 0;
                 break;
             
@@ -67,15 +67,10 @@ void sub_31F6C(void)
                 weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_CLAMPERL]];
                 evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_HUNTAIL]];
                 if (weight < evolutionWeight)
-                {
                     weight = evolutionWeight;
-                }
                 evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_GOREBYSS]];
                 if (weight < evolutionWeight)
-                {
                     weight = evolutionWeight;
-                }
-
                 break;
             case SPECIES_NONE:
                 weight = 0;
@@ -99,7 +94,7 @@ void sub_31F6C(void)
                     }
                 }
                 currentSpecies = gWildMonLocations[gCurrentPinballGame->area][threeArrows][i];
-                if (gCurrentPinballGame->unk5F0 == 0 && gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
+                if (gCurrentPinballGame->caughtMonCount == 0 && gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
                 {
                     weight = 0;
                 }
@@ -145,7 +140,7 @@ void sub_3219C(void)
         if (gUnknown_02031520.unk8 < 100)
             rand = 1;
 
-        if ((rand == 0 && gCurrentPinballGame->unk5F0 >= 5) || gCurrentPinballGame->unk12B)
+        if ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forceSpecialMons)
         {
             s16 numSpecialMons = 0;
             gCurrentPinballGame->unk598 = 0;
@@ -200,7 +195,7 @@ void sub_3219C(void)
         else
         {
             s16 threeArrows;
-            if (gCurrentPinballGame->unk73D == 3)
+            if (gCurrentPinballGame->catchModeArrows == 3)
                 threeArrows = 1;
             else
                 threeArrows = 0;
@@ -257,7 +252,7 @@ void sub_32484(void)
             }
             
             currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
-            if (gCurrentPinballGame->unk5F0 == 0)
+            if (gCurrentPinballGame->caughtMonCount == 0)
             {
                 if (gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
                 {
@@ -290,7 +285,7 @@ void sub_325E0(void)
     if (gCurrentPinballGame->unk59E == SPECIES_PICHU)
         rand = 1;
     
-    if ((rand == 0 && gCurrentPinballGame->unk5F0 >= 5) || gCurrentPinballGame->unk12C)
+    if ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forcePichuEgg)
     {
         gCurrentPinballGame->unk598 = SPECIES_PICHU;
     }
@@ -309,7 +304,7 @@ void sub_325E0(void)
 
 void sub_326F4(void)
 {
-    gCurrentPinballGame->unk73D = 2;
+    gCurrentPinballGame->catchModeArrows = 2;
     gCurrentPinballGame->unk1E5 = 0;
     gCurrentPinballGame->unk1E6 = 1;
     
@@ -344,7 +339,7 @@ void sub_3276C(void)
     {
         gCurrentPinballGame->unk29C--;
         if (!gCurrentPinballGame->unk29C)
-            m4aMPlayVolumeControl(&gMPlayInfo_BGM,0xffff,0x100);
+            m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
     }
 }
 
