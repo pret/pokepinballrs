@@ -547,7 +547,7 @@ void sub_D4B8(void)
         }
     }
 
-    if((JOY_HELD(L_BUTTON | DPAD_LEFT)) == (L_BUTTON | DPAD_LEFT))
+    if(JOY_HELD_EXACT(L_BUTTON | DPAD_LEFT))
     {
         if(JOY_NEW(R_BUTTON))
         {

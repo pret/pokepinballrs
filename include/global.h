@@ -65,8 +65,11 @@
 
 // Macros for checking the joypad
 #define TEST_BUTTON(field, button) ((field) & (button))
+#define TEST_BUTTON_EXACT(field, button) (((field) & (button)) == (button))
 #define JOY_NEW(button) TEST_BUTTON(gMain.newKeys,  button)
 #define JOY_HELD(button)  TEST_BUTTON(gMain.heldKeys, button)
+#define JOY_NEW_EXACT(button) TEST_BUTTON_EXACT(gMain.newKeys,  button)
+#define JOY_HELD_EXACT(button)  TEST_BUTTON_EXACT(gMain.heldKeys, button)
 
 enum
 {

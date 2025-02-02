@@ -7,11 +7,11 @@
 #include "types.h"
 #include "variables.h"
 
-void sub_4F50(void);
 void sub_5174(void);
-void sub_4EF0(void);
-static void sub_4E34(void);
 static void sub_4D74(void);
+static void sub_4E34(void);
+static void sub_4EF0(void);
+void sub_4F50(void);
 void sub_4FC8(void);
 void sub_5064(void);
 void sub_51CC(void);
@@ -792,4 +792,141 @@ static void sub_4E34(void)
     }
 
     gUnknown_02019C24 = 1;
+}
+
+static void sub_4EF0(void)
+{
+    if (gUnknown_0202C58C != 0)
+        return;
+
+    gUnknown_0201A440 = 0;
+    gUnknown_0202BF0C = 0;
+    if (gUnknown_0202C5B0 == 0)
+        return;
+
+    m4aSongNumStart(SE_SELECT);
+    gUnknown_0202C5B0 -= 5;
+    if (gUnknown_0202C5B0 < 0)
+        gUnknown_0202C5B0 = 0;
+
+    gUnknown_0202ADE0 = gUnknown_0202C5B0 + gUnknown_0202A57C;
+    gUnknown_0202C58C = 9;
+}
+
+void sub_4F50(void)
+{
+    if (gUnknown_0202C58C != 0)
+        return;
+
+    gUnknown_0201A440 = 0;
+    gUnknown_0202BF0C = 0;
+    if (gUnknown_0202C5B0 == gUnknown_0202A574 - 5)
+        return;
+
+    m4aSongNumStart(SE_SELECT);
+    gUnknown_0202C5B0 += 5;
+    if (gUnknown_0202C5B0 > gUnknown_0202A574 - 5)
+        gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
+
+    gUnknown_0202ADE0 = gUnknown_0202C5B0 + gUnknown_0202A57C;
+    gUnknown_0202C58C = 9;
+}
+
+void sub_4FC8(void)
+{
+    if (JOY_HELD_EXACT(L_BUTTON | DPAD_LEFT) && JOY_NEW(R_BUTTON))
+    {
+        gUnknown_02002830 = 40;
+        if (++gUnknown_02002831 == 3)
+        {
+            gUnknown_02002831 = 0;
+            gUnknown_02002830 = 0;
+            m4aSongNumStart(SE_UNKNOWN_0x68);
+            gUnknown_0202BEC4 = 1;
+            gUnknown_0202BEFC = 4;
+            gUnknown_0202BF04 = 0;
+            gUnknown_0202A588 = 0;
+            gMain.subState = 11;
+        }
+    }
+
+    if (gUnknown_02002830 > 0)
+    {
+        gUnknown_02002830--;
+        if (gUnknown_02002830 <= 0)
+        {
+            gUnknown_02002830 = 0;
+            gUnknown_02002831 = 0;
+        }
+    }
+}
+
+void sub_5064(void)
+{
+    if (gUnknown_0202A1C0[gUnknown_0202ADE0] == 4)
+    {
+        if (gUnknown_086A61BC[gUnknown_0202ADE0] == -1)
+        {
+            gUnknown_0202A588 = 0;
+            gUnknown_0202A55C = 1;
+            gUnknown_0202A568[0] = 0;
+            gUnknown_0202A568[1] = 0;
+            gUnknown_0201A440 = 0;
+            gUnknown_0202BF0C = 0;
+        }
+        else if (gUnknown_086A61BC[gUnknown_0202ADE0] < 100)
+        {
+            gUnknown_0202A588 = 0;
+            gUnknown_0202A55C = 0;
+            gUnknown_0202A568[0] = 1;
+            gUnknown_0202A568[1] = 0;
+        }
+        else
+        {
+            gUnknown_0202A588 = 0;
+            gUnknown_0202A55C = 0;
+            gUnknown_0202A568[0] = 0;
+            gUnknown_0202A568[1] = 1;
+        }
+    }
+    else
+    {
+        gUnknown_0202A588 = 0;
+        gUnknown_0202A55C = 1;
+        gUnknown_0202A568[0] = 0;
+        gUnknown_0202A568[1] = 0;
+    }
+}
+
+u8 sub_5134(void)
+{
+    if (gUnknown_0202A1C0[gUnknown_0202ADE0] == 4 && gUnknown_086A61BC[gUnknown_0202ADE0] != -1)
+    {
+        if (gUnknown_086A61BC[gUnknown_0202ADE0] < 100)
+            return 1;
+            
+        return 2;
+    }
+
+    return 0;
+}
+
+void sub_5174(void)
+{
+    sub_6CA0(gUnknown_0202C5B0);
+    sub_6F30(gUnknown_0202C5B0);
+    sub_681C(gUnknown_0202ADE0);
+    sub_6F78(gUnknown_0202ADE0);
+    sub_8974(gUnknown_0202ADE0);
+    sub_8A78(gUnknown_0202ADE0);
+    gUnknown_0202BF00 = 0;
+    gUnknown_0201A448 = 0;
+}
+
+void sub_51CC(void)
+{
+    if (sub_5134() == 0)
+        sub_6F78(gUnknown_0202ADE0);
+    else
+        sub_8974(gUnknown_0202ADE0);
 }
