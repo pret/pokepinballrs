@@ -49416,7 +49416,7 @@ _0804BF14:
 	lsls r1, r1, #3
 	adds r1, r1, r0
 	mov sb, r1
-	ldr r3, _0804BF58 @ =gUnknown_086A3707
+	ldr r3, _0804BF58 @ =gSpeciesInfo+7 (PokemonSpecies.name)
 	mov ip, r3
 	ldr r4, _0804BF5C @ =0x040000D4
 	ldr r6, _0804BF60 @ =0x06015800
@@ -49440,7 +49440,7 @@ _0804BF30:
 	.align 2, 0
 _0804BF50: .4byte gUnknown_084F61EC
 _0804BF54: .4byte gUnknown_020314E0
-_0804BF58: .4byte gUnknown_086A3707
+_0804BF58: .4byte gSpeciesInfo+7
 _0804BF5C: .4byte 0x040000D4
 _0804BF60: .4byte 0x06015800
 _0804BF64: .4byte 0x80000020
@@ -49485,7 +49485,7 @@ _0804BFB0:
 	lsls r3, r3, #3
 	adds r3, r3, r0
 	mov r8, r3
-	ldr r7, _0804BFEC @ =gUnknown_086A3707
+	ldr r7, _0804BFEC @ =gSpeciesInfo+7 (PokemonSpecies.name)
 	mov ip, r7
 	ldr r4, _0804BFF0 @ =0x040000D4
 	ldr r6, _0804BFF4 @ =0x06015800
@@ -49508,7 +49508,7 @@ _0804BFC8:
 	b _0804C00A
 	.align 2, 0
 _0804BFE8: .4byte gUnknown_020314E0
-_0804BFEC: .4byte gUnknown_086A3707
+_0804BFEC: .4byte gSpeciesInfo+7
 _0804BFF0: .4byte 0x040000D4
 _0804BFF4: .4byte 0x06015800
 _0804BFF8: .4byte 0x80000020
