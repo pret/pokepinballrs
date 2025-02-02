@@ -1831,10 +1831,10 @@ gUnknown_08521FCC:: @ 0x08521FCC
 gUnknown_08526DCC:: @ 0x08526DCC
 	.incbin "baserom.gba", 0x526DCC, 0xF56
 
-gUnknown_08527D22:: @ 0x08527D22
+gOptionsBGMList:: @ 0x08527D22
 	.incbin "baserom.gba", 0x527D22, 0x44
 
-gUnknown_08527D66:: @ 0x08527D66
+gOptionsSEList:: @ 0x08527D66
 	.incbin "baserom.gba", 0x527D66, 0x170
 
 gUnknown_08527ED6:: @ 0x08527ED6
@@ -1844,8 +1844,8 @@ gUnknown_08527EFE:: @ 0x08527EFE
 	.incbin "baserom.gba", 0x527EFE, 0xA
 
 gOptionsStateFuncs:: @ 0x08527F08
-	.4byte LoadOptionsGraphics
-	.4byte sub_514B8
+	.4byte Options_LoadGraphics
+	.4byte Options_HandleInput
 	.4byte sub_51C3C
 	.4byte sub_51C60
 
@@ -2080,7 +2080,7 @@ gMainFuncs:: @ 0x086A4AD8
 	.4byte TitlescreenMain
 	.4byte PinballGameMain
 	.4byte IdlePinballGameMain
-	.4byte OptionsMain
+	.4byte Options_Main
 	.4byte PokedexMain
 	.4byte Main_09BC
 	.4byte EReaderMain

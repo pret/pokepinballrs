@@ -80,7 +80,7 @@ void SaveFile_LoadGameData(void)
     }
     else
     {
-        sub_525CC(gMain_saveData.unk143);
+        sub_525CC(gMain_saveData.buttonConfigType);
     }
 }
 
@@ -194,10 +194,10 @@ void sub_52C64(void)
         gMain_saveData.signature[i] = gSaveFileSignature[i];
 
     gMain_saveData.unk2E4 = 0;
-    gMain_saveData.unk141 = 0;
+    gMain_saveData.rumbleEnabled = FALSE;
     gMain_saveData.ballSpeed = 0;
-    sub_525CC(-1);
+    sub_525CC(BUTTON_CONFIG_RESET);
     SetDefaultHighScores();
     ResetPokedex();
-    gMain_saveData.unk143 = 0;
+    gMain_saveData.buttonConfigType = BUTTON_CONFIG_TYPE_A;
 }

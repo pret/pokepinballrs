@@ -324,10 +324,10 @@ extern void sub_A2A8(void);
 
 // asm/options.s
 
-//extern ? OptionsMain();
-//extern ? LoadOptionsGraphics();
-extern void sub_513B8(void);
-//extern ? sub_514B8();
+//extern ? Options_Main();
+//extern ? Options_LoadGraphics();
+extern void Options_InitStates(void);
+//extern ? Options_HandleInput();
 //extern ? sub_51C3C();
 //extern ? sub_51C60();
 extern void sub_51C9C(void);

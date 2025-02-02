@@ -124,8 +124,7 @@ void sub_10AC0(void)
     gTitlescreen.idleFramesCounter = 0;
     gTitlescreen.idleFadeoutCounter = 1;
     gUnknown_020028A4 = 0;
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
         gUnknown_020028A5 = 1;
     else
         gUnknown_020028A5 = 0;
@@ -135,8 +134,7 @@ void sub_10AC0(void)
 
 void TitleScreen1_WaitForStartButton(void)
 {
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         if (!gUnknown_020028A5)
         {
@@ -197,8 +195,7 @@ void TitleScreen1_WaitForStartButton(void)
 
 void TitleScreen2_8010CF0(void)
 {
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -228,8 +225,7 @@ void TitleScreen2_8010CF0(void)
 
 void TitleScreen9_8010D84(void)
 {
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -260,8 +256,7 @@ void TitleScreen9_8010D84(void)
 
 void TitleScreen3_8010E00(void)
 {
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -311,8 +306,7 @@ void TitleScreen3_8010E00(void)
 
 void TitleScreen4_MenuInputNoSavedGame(void)
 {
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -370,8 +364,7 @@ void TitleScreen4_MenuInputNoSavedGame(void)
 
 void TitleScreen7_8011020(void)
 {
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -412,8 +405,7 @@ void TitleScreen7_8011020(void)
 
 void TitleScreen5_MenuInputSavedGame(void)
 {
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -471,8 +463,7 @@ void TitleScreen5_MenuInputSavedGame(void)
 
 void TitleScreen8_8011228(void)
 {
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -519,8 +510,7 @@ void TitleScreen8_8011228(void)
 
 void TitleScreen6_AnimCloseMenu(void)
 {
-    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
-                       == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
