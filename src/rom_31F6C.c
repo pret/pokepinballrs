@@ -23,15 +23,15 @@ void sub_31F6C(void)
     s16 currentSpecies;
     s16 evolutionWeight;
 
-    gUnknown_020314E0->unk12E = 0;
-    if (gUnknown_020314E0->unk73D == 3)
+    gCurrentPinballGame->unk12E = 0;
+    if (gCurrentPinballGame->catchModeArrows == 3)
         threeArrows = 1;
     else
         threeArrows = 0;
 
     for (i = 0; i < 8; i++)
     {
-        currentSpecies = gWildMonLocations[gUnknown_020314E0->area][threeArrows][i];
+        currentSpecies = gWildMonLocations[gCurrentPinballGame->area][threeArrows][i];
         switch (currentSpecies)
         {
             // Rare pokemon
@@ -59,7 +59,7 @@ void sub_31F6C(void)
                         weight = 2;
                 }
 
-                if (gUnknown_020314E0->unk5F0 == 0)
+                if (gCurrentPinballGame->caughtMonCount == 0)
                     weight = 0;
                 break;
             
@@ -67,15 +67,10 @@ void sub_31F6C(void)
                 weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_CLAMPERL]];
                 evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_HUNTAIL]];
                 if (weight < evolutionWeight)
-                {
                     weight = evolutionWeight;
-                }
                 evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_GOREBYSS]];
                 if (weight < evolutionWeight)
-                {
                     weight = evolutionWeight;
-                }
-
                 break;
             case SPECIES_NONE:
                 weight = 0;
@@ -98,20 +93,20 @@ void sub_31F6C(void)
                         break;
                     }
                 }
-                currentSpecies = gWildMonLocations[gUnknown_020314E0->area][threeArrows][i];
-                if (gUnknown_020314E0->unk5F0 == 0 && gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
+                currentSpecies = gWildMonLocations[gCurrentPinballGame->area][threeArrows][i];
+                if (gCurrentPinballGame->caughtMonCount == 0 && gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
                 {
                     weight = 0;
                 }
                 break;
         }
 
-        if (gUnknown_020314E0->unk59C == currentSpecies)
+        if (gCurrentPinballGame->unk59C == currentSpecies)
         {
             weight = 0;
         }
-        gUnknown_020314E0->unk12E += weight;
-        gUnknown_020314E0->unk130[i] = gUnknown_020314E0->unk12E;
+        gCurrentPinballGame->unk12E += weight;
+        gCurrentPinballGame->unk130[i] = gCurrentPinballGame->unk12E;
     }
 }
 
@@ -132,7 +127,7 @@ void sub_3219C(void)
                 break;
         }
 
-        gUnknown_020314E0->unk598 = BONUS_SPECIES_START + ((i + rand) % NUM_BONUS_SPECIES);
+        gCurrentPinballGame->unk598 = BONUS_SPECIES_START + ((i + rand) % NUM_BONUS_SPECIES);
     }
     else
     {
@@ -145,75 +140,75 @@ void sub_3219C(void)
         if (gUnknown_02031520.unk8 < 100)
             rand = 1;
 
-        if ((rand == 0 && gUnknown_020314E0->unk5F0 >= 5) || gUnknown_020314E0->unk12B)
+        if ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forceSpecialMons)
         {
             s16 numSpecialMons = 0;
-            gUnknown_020314E0->unk598 = 0;
+            gCurrentPinballGame->unk598 = 0;
             if (gMain_saveData.pokedexFlags[SPECIES_AERODACTYL])
             {
                 specialMons[numSpecialMons++] = SPECIES_AERODACTYL;
                 if (gMain_saveData.pokedexFlags[SPECIES_AERODACTYL] < 4)
-                    gUnknown_020314E0->unk598 = SPECIES_AERODACTYL;
+                    gCurrentPinballGame->unk598 = SPECIES_AERODACTYL;
             }
 
             if (gMain_saveData.pokedexFlags[SPECIES_CHIKORITA])
             {
                 specialMons[numSpecialMons++] = SPECIES_CHIKORITA;
                 if (gMain_saveData.pokedexFlags[SPECIES_CHIKORITA] < 4)
-                    gUnknown_020314E0->unk598 = SPECIES_CHIKORITA;
+                    gCurrentPinballGame->unk598 = SPECIES_CHIKORITA;
             }
 
             if (gMain_saveData.pokedexFlags[SPECIES_TOTODILE])
             {
                 specialMons[numSpecialMons++] = SPECIES_TOTODILE;
                 if (gMain_saveData.pokedexFlags[SPECIES_TOTODILE] < 4)
-                    gUnknown_020314E0->unk598 = SPECIES_TOTODILE;
+                    gCurrentPinballGame->unk598 = SPECIES_TOTODILE;
             }
 
             if (gMain_saveData.pokedexFlags[SPECIES_CYNDAQUIL])
             {
                 specialMons[numSpecialMons++] = SPECIES_CYNDAQUIL;
                 if (gMain_saveData.pokedexFlags[SPECIES_CYNDAQUIL] < 4)
-                    gUnknown_020314E0->unk598 = SPECIES_CYNDAQUIL;
+                    gCurrentPinballGame->unk598 = SPECIES_CYNDAQUIL;
             }
 
             if (gMain.selectedField == FIELD_RUBY)
             {
                 specialMons[numSpecialMons++] = SPECIES_LATIOS;
                 if (gMain_saveData.pokedexFlags[SPECIES_LATIOS] < 4)
-                    gUnknown_020314E0->unk598 = SPECIES_LATIOS;
+                    gCurrentPinballGame->unk598 = SPECIES_LATIOS;
             }
             else
             {
                 specialMons[numSpecialMons++] = SPECIES_LATIAS;
                 if (gMain_saveData.pokedexFlags[SPECIES_LATIAS] < 4)
-                    gUnknown_020314E0->unk598 = SPECIES_LATIAS;
+                    gCurrentPinballGame->unk598 = SPECIES_LATIAS;
             }
 
-            if (!gUnknown_020314E0->unk598)
+            if (gCurrentPinballGame->unk598 == 0)
             {
                 rand = GetTimeAdjustedRandom();
                 rand %= numSpecialMons;
-                gUnknown_020314E0->unk598 = specialMons[rand];
+                gCurrentPinballGame->unk598 = specialMons[rand];
             }
         }
         else
         {
             s16 threeArrows;
-            if (gUnknown_020314E0->unk73D == 3)
+            if (gCurrentPinballGame->catchModeArrows == 3)
                 threeArrows = 1;
             else
                 threeArrows = 0;
 
             rand = GetTimeAdjustedRandom();
-            rand %= gUnknown_020314E0->unk12E;
-            for (i = 0; i < 8 && gUnknown_020314E0->unk130[i] <= rand; i++);
+            rand %= gCurrentPinballGame->unk12E;
+            for (i = 0; i < 8 && gCurrentPinballGame->unk130[i] <= rand; i++);
 
-            gUnknown_020314E0->unk598 = gWildMonLocations[gUnknown_020314E0->area][threeArrows][i];
+            gCurrentPinballGame->unk598 = gWildMonLocations[gCurrentPinballGame->area][threeArrows][i];
         }
     }
 
-    gUnknown_020314E0->unk59C = gUnknown_020314E0->unk598;
+    gCurrentPinballGame->unk59C = gCurrentPinballGame->unk598;
 }
 
 void sub_32484(void)
@@ -224,7 +219,7 @@ void sub_32484(void)
     s16 j;
     s16 evolutionWeight;
 
-    gUnknown_020314E0->unk12E = 0;
+    gCurrentPinballGame->unk12E = 0;
 
     for (i = 0; i < 0x19; i++)
     {   
@@ -257,7 +252,7 @@ void sub_32484(void)
             }
             
             currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
-            if (gUnknown_020314E0->unk5F0 == 0)
+            if (gCurrentPinballGame->caughtMonCount == 0)
             {
                 if (gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
                 {
@@ -266,13 +261,13 @@ void sub_32484(void)
             }
         }
 
-        if (gUnknown_020314E0->unk59E == currentSpecies)
+        if (gCurrentPinballGame->unk59E == currentSpecies)
         {
             weight = 0;
         }
 
-        gUnknown_020314E0->unk12E += weight;
-        gUnknown_020314E0->unk130[i] = gUnknown_020314E0->unk12E;
+        gCurrentPinballGame->unk12E += weight;
+        gCurrentPinballGame->unk130[i] = gCurrentPinballGame->unk12E;
     }
 }
 
@@ -287,31 +282,31 @@ void sub_325E0(void)
     else
         rand %= 50;
     
-    if (gUnknown_020314E0->unk59E == SPECIES_PICHU)
+    if (gCurrentPinballGame->unk59E == SPECIES_PICHU)
         rand = 1;
     
-    if ((rand == 0 && gUnknown_020314E0->unk5F0 >= 5) || gUnknown_020314E0->unk12C)
+    if ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forcePichuEgg)
     {
-        gUnknown_020314E0->unk598 = SPECIES_PICHU;
+        gCurrentPinballGame->unk598 = SPECIES_PICHU;
     }
     else
     {
         rand = GetTimeAdjustedRandom();
-        rand %= gUnknown_020314E0->unk12E;
+        rand %= gCurrentPinballGame->unk12E;
         
-        for (i = 0; i < 25 && gUnknown_020314E0->unk130[i] <= rand; i++);
+        for (i = 0; i < 25 && gCurrentPinballGame->unk130[i] <= rand; i++);
         
-        gUnknown_020314E0->unk598 = gUnknown_086A4A38[gMain.selectedField][i];
+        gCurrentPinballGame->unk598 = gUnknown_086A4A38[gMain.selectedField][i];
     }
     
-    gUnknown_020314E0->unk59E = gUnknown_020314E0->unk598;
+    gCurrentPinballGame->unk59E = gCurrentPinballGame->unk598;
 }
 
 void sub_326F4(void)
 {
-    gUnknown_020314E0->unk73D = 2;
-    gUnknown_020314E0->unk1E5 = 0;
-    gUnknown_020314E0->unk1E6 = 1;
+    gCurrentPinballGame->catchModeArrows = 2;
+    gCurrentPinballGame->unk1E5 = 0;
+    gCurrentPinballGame->unk1E6 = 1;
     
     sub_1F2A4();
     sub_21B0C();
@@ -319,8 +314,8 @@ void sub_326F4(void)
     sub_300D8();
     sub_30178();
     
-    gUnknown_020314E0->unk1D8 = 0x100;
-    gUnknown_020314E0->unk1DA = 0x100;
+    gCurrentPinballGame->unk1D8 = 0x100;
+    gCurrentPinballGame->unk1DA = 0x100;
     
     sub_30480();
     sub_304C8();
@@ -340,11 +335,11 @@ void sub_3276C(void)
     
     sub_32DF8();
     
-    if (gUnknown_020314E0->unk29C)
+    if (gCurrentPinballGame->unk29C)
     {
-        gUnknown_020314E0->unk29C--;
-        if (!gUnknown_020314E0->unk29C)
-            m4aMPlayVolumeControl(&gMPlayInfo_BGM,0xffff,0x100);
+        gCurrentPinballGame->unk29C--;
+        if (!gCurrentPinballGame->unk29C)
+            m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
     }
 }
 
@@ -356,50 +351,50 @@ void sub_327C0(void)
     sub_1A0F4();
     sub_2CA9C();
     
-    if (gUnknown_020314E0->unk68 < 0x5a)
+    if (gCurrentPinballGame->unk68 < 0x5a)
     {
         sub_304C8();
         sub_31498();
     }
     
-    if (gUnknown_020314E0->unk13 < 3)
+    if (gCurrentPinballGame->unk13 < 3)
     {
-        if ((gUnknown_020314E0->unk344 & 0xFFFF00) == 0x300)
+        if ((gCurrentPinballGame->unk344 & 0xFFFF00) == 0x300)
         {
-            gUnknown_020314E0->unk728 = 1;
+            gCurrentPinballGame->unk728 = 1;
         }
         else
         {
-            gUnknown_020314E0->unk728 = 0;
+            gCurrentPinballGame->unk728 = 0;
         }
     }
     else
     {
-        gUnknown_020314E0->unk728 = 0;
+        gCurrentPinballGame->unk728 = 0;
     }
     
-    if (gUnknown_020314E0->unk68 < 0x96)
+    if (gCurrentPinballGame->unk68 < 0x96)
     {
         sub_2E6AC();
         sub_313A0();
     }
-    if (gUnknown_020314E0->unk68 < 0xC4)
+    if (gCurrentPinballGame->unk68 < 0xC4)
     {
         sub_30178();
         sub_2F140();
     }
-    if (gUnknown_020314E0->unk68 < 0xCA)
+    if (gCurrentPinballGame->unk68 < 0xCA)
     {
         sub_2FCD0();
     }
-    if (gUnknown_020314E0->unk68 < 0xDC)
+    if (gCurrentPinballGame->unk68 < 0xDC)
     {
         sub_1F59C();
     }
     
     sub_308DC();
     
-    if (0x76 < gUnknown_020314E0->unk68)
+    if (0x76 < gCurrentPinballGame->unk68)
     {
         sub_2F504();
         sub_30EB4();
@@ -407,7 +402,7 @@ void sub_327C0(void)
     
     sub_2CE80();
     
-    if (0xA8 < gUnknown_020314E0->unk68)
+    if (0xA8 < gCurrentPinballGame->unk68)
         sub_2D104();
     
     sub_203CC();
@@ -415,7 +410,7 @@ void sub_327C0(void)
     sub_1D128();
     sub_31B30();
     
-    if (gUnknown_020314E0->unk194)
+    if (gCurrentPinballGame->unk194)
         sub_225F0();
     
     sub_472E4();
@@ -427,8 +422,8 @@ void sub_328C8(void)
     sub_32968();
     sub_1F2A4();
     
-    if (gUnknown_020314E0->unk600)
-        gUnknown_020314E0->unk600--;
+    if (gCurrentPinballGame->unk600)
+        gCurrentPinballGame->unk600--;
     
     sub_2F26C();
     sub_2E67C();
@@ -442,7 +437,7 @@ void sub_32914(void)
 {
     if (!gMain.unkF)
     {
-        switch (gUnknown_020314E0->unk25)
+        switch (gCurrentPinballGame->unk25)
         {
         case 1:
             sub_32B74();
@@ -455,16 +450,16 @@ void sub_32914(void)
             break;
         }
         
-        gUnknown_020314E0->unk26 = 0x3C;
+        gCurrentPinballGame->unk26 = 0x3C;
     }
 }
 
 void sub_32968(void)
 {
-    if (gUnknown_020314E0->unk26)
-        gUnknown_020314E0->unk26--;
+    if (gCurrentPinballGame->unk26)
+        gCurrentPinballGame->unk26--;
     
-    switch (gUnknown_020314E0->unk25)
+    switch (gCurrentPinballGame->unk25)
     {
     case 1:
         sub_32BE4();
@@ -480,10 +475,10 @@ void sub_32968(void)
 
 void sub_329B0(void)
 {
-    gUnknown_020314E0->unk28 = 0xB4;
-    gUnknown_020314E0->unk1BA = 0xB4;
-    gUnknown_020314E0->unk3C = 500000;
+    gCurrentPinballGame->unk28 = 0xB4;
+    gCurrentPinballGame->unk1BA = 0xB4;
+    gCurrentPinballGame->unk3C = 500000;
     gMain.blendControl = 0xCE;
     gMain.blendBrightness = 0;
-    gUnknown_020314E0->unk5F7 = 1;
+    gCurrentPinballGame->unk5F7 = 1;
 }

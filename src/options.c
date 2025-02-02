@@ -4,30 +4,60 @@
 #include "titlescreen.h"
 #include "constants/bg_music.h"
 
+#define BGM_COUNT   34
+#define SE_COUNT    184
+
+enum OptionsState
+{
+    OPTIONS_STATE_MAIN,
+    OPTIONS_STATE_BGM_SELECT,
+    OPTIONS_STATE_SE_SELECT,
+    OPTIONS_STATE_BUTTON_CONFIG_SELECT,
+    OPTIONS_STATE_BUTTON_CONFIG_INPUT,
+};
+
+enum CursorPositions
+{
+    CURSOR_POS_BGM,
+    CURSOR_POS_SE,
+    CURSOR_POS_BUTTON_CONFIG_TYPE_A,
+    CURSOR_POS_BUTTON_CONFIG_TYPE_B,
+    CURSOR_POS_BUTTON_CONFIG_TYPE_C,
+    CURSOR_POS_BUTTON_CONFIG_TYPE_D,
+    CURSOR_POS_BUTTON_CONFIG_EDIT,
+    CURSOR_POS_LEFT_FLIPPER,
+    CURSOR_POS_RIGHT_FLIPPER,
+    CURSOR_POS_TILT_LEFT,
+    CURSOR_POS_TILT_RIGHT,
+    CURSOR_POS_TILT_UP,
+    CURSOR_POS_RUMBLE_ON = 13,
+    CURSOR_POS_RUMBLE_OFF,
+};
+
 struct OptionsData
 {
-    s16 unk0;
+    s16 stateMain;
     u16 unk2;
     u16 unk4;
     u16 unk6;
     s16 unk8;
-    s16 unkA;
-    u16 unkC;
-    s16 unkE;
-    s16 unk10;
-    u8 unk12;
-    u8 unk13;
-    u8 unk14;
-    u8 unk15;
-    u8 unk16;
-    u8 unk17;
-    s16 unk18;
+    s16 cursorPosition;
+    u16 buttonConfigType;
+    s16 selectedBGM;
+    s16 selectedSE;
+    u8 digit100sBGM;
+    u8 digit10sBGM;
+    u8 digit1sBGM;
+    u8 digit100sSE;
+    u8 digit10sSE;
+    u8 digit1sSE;
+    s16 scollWaitFrames;
     u8 unk1A[6];
     s16 unk20;
     s16 unk22;
     s16 unk24[2];
     s16 unk28;
-    u8 unk2A;
+    bool8 rumbleEnabled;
     s8 unk2B;
     s8 unk2C;
     u8 unk2D;
@@ -46,12 +76,12 @@ extern const u8 gOptionsBackground_Gfx[];
 extern const u8 gOptionsText_Tilemap[];
 extern const u8 gOptionsBackground_Tilemap[];
 
-void OptionsMain(void)
+void Options_Main(void)
 {
     gOptionsStateFuncs[gMain.subState]();
 }
 
-void LoadOptionsGraphics(void)
+void Options_LoadGraphics(void)
 {
     ResetSomeGraphicsRelatedStuff();
 
@@ -69,7 +99,7 @@ void LoadOptionsGraphics(void)
     DmaCopy16(3, gOptionsText_Tilemap, gUnknown_03005C00, 0x800);
     DmaCopy16(3, gUnknown_03005C00, (void *)VRAM, 0x800);
 
-    if (gGameBoyPlayerEnabled != 1)
+    if (gGameBoyPlayerEnabled != TRUE)
     {
          sub_1068C(0x12, 4, 2, 1, 2);
          sub_1068C(0x12, 5, 3, 2, 2);
@@ -79,37 +109,37 @@ void LoadOptionsGraphics(void)
     DmaCopy16(3, gOptionsBackground_Tilemap, (void *)(VRAM + 0x800), 0x800);
     DmaCopy16(3, gGBAButtonIcons_Pals, (void *)(PLTT + 0x200), 0x60);
     DmaCopy16(3, gOptionsSprites_Gfx, (void *)(VRAM + 0x10000), 0x2020);
-	sub_513B8();
-	sub_51C9C();
-	m4aMPlayAllStop();
-	sub_0CBC();
-	sub_024C();
-	sub_10C0();
+    Options_InitStates();
+    sub_51C9C();
+    m4aMPlayAllStop();
+    sub_0CBC();
+    sub_024C();
+    sub_10C0();
 
     gMain.subState++;
 }
 
-void sub_513B8(void)
+void Options_InitStates(void)
 {
     int i;
     int j;
 
-    gOptionsData.unk0 = 0;
+    gOptionsData.stateMain = OPTIONS_STATE_MAIN;
     gOptionsData.unk2 = 0;
     gOptionsData.unk4 = 0;
     gOptionsData.unk6 = 1;
     gOptionsData.unk8 = 0;
-    gOptionsData.unkA = 0;
-    gOptionsData.unkC = gMain_saveData.unk143;
-    gOptionsData.unkE = 0;
-    gOptionsData.unk10 = 0;
-    gOptionsData.unk12 = 0;
-    gOptionsData.unk13 = 0;
-    gOptionsData.unk14 = 1;
-    gOptionsData.unk15 = 0;
-    gOptionsData.unk16 = 0;
-    gOptionsData.unk17 = 1;
-    gOptionsData.unk18 = 0;
+    gOptionsData.cursorPosition = CURSOR_POS_BGM;
+    gOptionsData.buttonConfigType = gMain_saveData.buttonConfigType;
+    gOptionsData.selectedBGM = 0;
+    gOptionsData.selectedSE = 0;
+    gOptionsData.digit100sBGM = 0;
+    gOptionsData.digit10sBGM = 0;
+    gOptionsData.digit1sBGM = 1;
+    gOptionsData.digit100sSE = 0;
+    gOptionsData.digit10sSE = 0;
+    gOptionsData.digit1sSE = 1;
+    gOptionsData.scollWaitFrames = 0;
     for (i = 0; i < 6; i++)
         gOptionsData.unk1A[i] = 0;
     gOptionsData.unk20 = 0;
@@ -123,15 +153,15 @@ void sub_513B8(void)
             gUnknown_02031AF0[i][j] = gUnknown_08527ED6[i][j];
     }
     sub_52528();
-    if (gGameBoyPlayerEnabled == 1)
+    if (gGameBoyPlayerEnabled == TRUE)
     {
-        gOptionsData.unk2A = gMain_saveData.unk141;
-        gMain_saveData.unk141 = 1;
+        gOptionsData.rumbleEnabled = gMain_saveData.rumbleEnabled;
+        gMain_saveData.rumbleEnabled = TRUE;
     }
     else
     {
-        gOptionsData.unk2A = 0;
-        gMain_saveData.unk141 = 0;
+        gOptionsData.rumbleEnabled = FALSE;
+        gMain_saveData.rumbleEnabled = FALSE;
     }
     gOptionsData.unk2E = 0;
     gOptionsData.unk2B = 0;
@@ -141,66 +171,66 @@ void sub_513B8(void)
     gOptionsData.unk30 = 0;
 }
 
-void sub_514B8(void)
+void Options_HandleInput(void)
 {
     s16 r4;
 
     sub_51C9C();
-    switch (gOptionsData.unk0)
+    switch (gOptionsData.stateMain)
     {
-    case 0:
-        if (gMain.newKeys & DPAD_UP)
+    case OPTIONS_STATE_MAIN:
+        if (JOY_NEW(DPAD_UP))
         {
-            if (gOptionsData.unkA != 0xD)
+            if (gOptionsData.cursorPosition != CURSOR_POS_RUMBLE_ON)
             {
-                if (gOptionsData.unkA == 0xE)
+                if (gOptionsData.cursorPosition == CURSOR_POS_RUMBLE_OFF)
                 {
                     m4aSongNumStart(SE_SELECT);
-                    gOptionsData.unkA = 0xD;
+                    gOptionsData.cursorPosition = CURSOR_POS_RUMBLE_ON;
                 }
-                else if (gOptionsData.unkA > 0)
+                else if (gOptionsData.cursorPosition > CURSOR_POS_BGM)
                 {
                     m4aSongNumStart(SE_SELECT);
-                    gOptionsData.unkA--;
+                    gOptionsData.cursorPosition--;
                 }
             }
         }
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
         {
-            if (gOptionsData.unkA < 6)
+            if (gOptionsData.cursorPosition < CURSOR_POS_BUTTON_CONFIG_EDIT)
             {
                 m4aSongNumStart(SE_SELECT);
-                gOptionsData.unkA++;
+                gOptionsData.cursorPosition++;
             }
-            else if (gOptionsData.unkA == 0xD)
+            else if (gOptionsData.cursorPosition == CURSOR_POS_RUMBLE_ON)
             {
                 m4aSongNumStart(SE_SELECT);
-                gOptionsData.unkA = 0xE;
+                gOptionsData.cursorPosition = CURSOR_POS_RUMBLE_OFF;
             }
-            else if (gOptionsData.unkA == 0xE)
+            else if (gOptionsData.cursorPosition == CURSOR_POS_RUMBLE_OFF)
             {
                 m4aSongNumStart(SE_SELECT);
-                gOptionsData.unkA = 2;
+                gOptionsData.cursorPosition = CURSOR_POS_BUTTON_CONFIG_TYPE_A;
             }
         }
-        if ((gMain.newKeys & DPAD_RIGHT) && gGameBoyPlayerEnabled == 1 && (u16)gOptionsData.unkA < 2)
+        if ((JOY_NEW(DPAD_RIGHT)) && gGameBoyPlayerEnabled == TRUE && (u16)gOptionsData.cursorPosition < CURSOR_POS_BUTTON_CONFIG_TYPE_A)
         {
             m4aSongNumStart(SE_SELECT);
-            gOptionsData.unkA += 0xD;
+            gOptionsData.cursorPosition += CURSOR_POS_RUMBLE_ON;
         }
-        if ((gMain.newKeys & DPAD_LEFT) && gGameBoyPlayerEnabled == 1 && (u16)(gOptionsData.unkA - 13) < 2)
+        if ((JOY_NEW(DPAD_LEFT)) && gGameBoyPlayerEnabled == TRUE && (u16)(gOptionsData.cursorPosition - CURSOR_POS_RUMBLE_ON) < 2)
         {
             m4aSongNumStart(SE_SELECT);
-            gOptionsData.unkA -= 0xD;
+            gOptionsData.cursorPosition -= CURSOR_POS_RUMBLE_ON;
         }
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
-            switch (gOptionsData.unkA)
+            switch (gOptionsData.cursorPosition)
             {
-            case 0:
+            case CURSOR_POS_BGM:
                 m4aSongNumStart(SE_UNKNOWN_0x65);
-                gOptionsData.unk0 = 1;
-                gOptionsData.unk18 = 0;
+                gOptionsData.stateMain = OPTIONS_STATE_BGM_SELECT,
+                gOptionsData.scollWaitFrames = 0;
                 gOptionsData.unk30 = 1;
                 if (gOptionsData.unk2E == 1)
                 {
@@ -210,10 +240,10 @@ void sub_514B8(void)
                     gOptionsData.unk2E = 0;
                 }
                 break;
-            case 1:
+            case CURSOR_POS_SE:
                 m4aSongNumStart(SE_UNKNOWN_0x65);
-                gOptionsData.unk0 = 2;
-                gOptionsData.unk18 = 0;
+                gOptionsData.stateMain = OPTIONS_STATE_SE_SELECT,
+                gOptionsData.scollWaitFrames = 0;
                 gOptionsData.unk30 = 1;
                 if (gOptionsData.unk2E == 1)
                 {
@@ -223,23 +253,23 @@ void sub_514B8(void)
                     gOptionsData.unk2E = 0;
                 }
                 break;
-            case 2:
-            case 3:
-            case 4:
-            case 5:
+            case CURSOR_POS_BUTTON_CONFIG_TYPE_A:
+            case CURSOR_POS_BUTTON_CONFIG_TYPE_B:
+            case CURSOR_POS_BUTTON_CONFIG_TYPE_C:
+            case CURSOR_POS_BUTTON_CONFIG_TYPE_D:
                 m4aSongNumStart(SE_UNKNOWN_0x65);
-                gOptionsData.unkC = gOptionsData.unkA - 2;
-                gMain_saveData.unk143 = gOptionsData.unkC;
+                gOptionsData.buttonConfigType = gOptionsData.cursorPosition - CURSOR_POS_BUTTON_CONFIG_TYPE_A;
+                gMain_saveData.buttonConfigType = gOptionsData.buttonConfigType;
                 break;
-            case 6:
+            case CURSOR_POS_BUTTON_CONFIG_EDIT:
                 m4aSongNumStart(SE_UNKNOWN_0x65);
-                gOptionsData.unkC = gOptionsData.unkA - 2;
-                gMain_saveData.unk143 = gOptionsData.unkC;
-                gOptionsData.unkA = 7;
-                gOptionsData.unk0 = 3;
+                gOptionsData.buttonConfigType = gOptionsData.cursorPosition - CURSOR_POS_BUTTON_CONFIG_TYPE_A;
+                gMain_saveData.buttonConfigType = gOptionsData.buttonConfigType;
+                gOptionsData.cursorPosition = CURSOR_POS_LEFT_FLIPPER;
+                gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_SELECT;
                 break;
-            case 14:
-                if (gGameBoyPlayerEnabled == 1)
+            case CURSOR_POS_RUMBLE_OFF:
+                if (gGameBoyPlayerEnabled == TRUE)
                 {
                     m4aSongNumStart(SE_UNKNOWN_0x65);
                     gOptionsData.unk2D = 0;
@@ -247,11 +277,11 @@ void sub_514B8(void)
                         gOptionsData.unk2E = 0;
                     gOptionsData.unk2B = 0;
                     gOptionsData.unk2C = 0;
-                    gOptionsData.unk2A = 0;
+                    gOptionsData.rumbleEnabled = FALSE;
                 }
                 break;
-            case 13:
-                if (gGameBoyPlayerEnabled == 1)
+            case CURSOR_POS_RUMBLE_ON:
+                if (gGameBoyPlayerEnabled == TRUE)
                 {
                     m4aSongNumStart(SE_UNKNOWN_0x65);
                     sub_11B0(11);
@@ -260,163 +290,162 @@ void sub_514B8(void)
 
                     gOptionsData.unk2B = 0;
                     gOptionsData.unk2C = 0;
-                    gOptionsData.unk2A = 1;
+                    gOptionsData.rumbleEnabled = TRUE;
                 }
                 break;
             }
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gMain.subState++;
-            sub_525CC(gMain_saveData.unk143);
-
+            sub_525CC(gMain_saveData.buttonConfigType);
         }
         if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk2 = 1 - gOptionsData.unk2;
         break;
-    case 1:
-        if (gMain.heldKeys & DPAD_LEFT)
+    case OPTIONS_STATE_BGM_SELECT:
+        if (JOY_HELD(DPAD_LEFT))
         {
-            if (gOptionsData.unk18 == 0)
+            if (gOptionsData.scollWaitFrames == 0)
             {
-                gOptionsData.unkE--;
-                gOptionsData.unk18 = 10;
+                gOptionsData.selectedBGM--;
+                gOptionsData.scollWaitFrames = 10;
             }
         }
-        else if (gMain.heldKeys & DPAD_RIGHT)
+        else if (JOY_HELD(DPAD_RIGHT))
         {
-            if (gOptionsData.unk18 == 0)
+            if (gOptionsData.scollWaitFrames == 0)
             {
-                gOptionsData.unkE++;
-                gOptionsData.unk18 = 10;
+                gOptionsData.selectedBGM++;
+                gOptionsData.scollWaitFrames = 10;
             }
         }
 
-        if (gMain.newKeys & DPAD_UP)
-            gOptionsData.unkE += 10;
-        else if (gMain.newKeys & DPAD_DOWN)
-            gOptionsData.unkE -= 10;
+        if (JOY_NEW(DPAD_UP))
+            gOptionsData.selectedBGM += 10;
+        else if (JOY_NEW(DPAD_DOWN))
+            gOptionsData.selectedBGM -= 10;
 
-        if (gOptionsData.unkE < 0)
-            gOptionsData.unkE = 33;
-        if (gOptionsData.unkE > 33)
-            gOptionsData.unkE = 0;
+        if (gOptionsData.selectedBGM < 0)
+            gOptionsData.selectedBGM = BGM_COUNT - 1;
+        if (gOptionsData.selectedBGM >= BGM_COUNT)
+            gOptionsData.selectedBGM = 0;
 
-        r4 = gOptionsData.unkE + 1;
-        gOptionsData.unk12 = r4 / 100;
+        r4 = gOptionsData.selectedBGM + 1;
+        gOptionsData.digit100sBGM = r4 / 100;
         r4 %= 100;
-        gOptionsData.unk13 = r4 / 10;
-        gOptionsData.unk14 = r4 % 10;
-        if (gMain.newKeys & A_BUTTON)
+        gOptionsData.digit10sBGM = r4 / 10;
+        gOptionsData.digit1sBGM = r4 % 10;
+        if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();
-            m4aSongNumStart(gUnknown_08527D22[gOptionsData.unkE]);
+            m4aSongNumStart(gOptionsBGMList[gOptionsData.selectedBGM]);
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             m4aMPlayAllStop();
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gOptionsData.unk4 = 0;
             gOptionsData.unk30 = 0;
-            gOptionsData.unk0 = 0;
+            gOptionsData.stateMain = OPTIONS_STATE_MAIN;
         }
         if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk4 = 1 - gOptionsData.unk4;
-        if (gOptionsData.unk18 > 0)
-            gOptionsData.unk18--;
+        if (gOptionsData.scollWaitFrames > 0)
+            gOptionsData.scollWaitFrames--;
         break;
-    case 2:
-        if (gMain.heldKeys & DPAD_LEFT)
+    case OPTIONS_STATE_SE_SELECT:
+        if (JOY_HELD(DPAD_LEFT))
         {
-            if (gOptionsData.unk18 == 0)
+            if (gOptionsData.scollWaitFrames == 0)
             {
-                gOptionsData.unk10--;
-                gOptionsData.unk18 = 10;
+                gOptionsData.selectedSE--;
+                gOptionsData.scollWaitFrames = 10;
             }
         }
-        else if (gMain.heldKeys & DPAD_RIGHT)
+        else if (JOY_HELD(DPAD_RIGHT))
         {
-            if (gOptionsData.unk18 == 0)
+            if (gOptionsData.scollWaitFrames == 0)
             {
-                gOptionsData.unk10++;
-                gOptionsData.unk18 = 10;
+                gOptionsData.selectedSE++;
+                gOptionsData.scollWaitFrames = 10;
             }
         }
 
-        if (gMain.newKeys & DPAD_UP)
-            gOptionsData.unk10 += 10;
-        else if (gMain.newKeys & DPAD_DOWN)
-            gOptionsData.unk10 -= 10;
+        if (JOY_NEW(DPAD_UP))
+            gOptionsData.selectedSE += 10;
+        else if (JOY_NEW(DPAD_DOWN))
+            gOptionsData.selectedSE -= 10;
 
-        if (gOptionsData.unk10 < 0)
-            gOptionsData.unk10 = 0xB7;
-        if (gOptionsData.unk10 > 0xB7)
-            gOptionsData.unk10 = 0;
+        if (gOptionsData.selectedSE < 0)
+            gOptionsData.selectedSE = SE_COUNT - 1;
+        if (gOptionsData.selectedSE >= SE_COUNT)
+            gOptionsData.selectedSE = 0;
 
-        r4 = gOptionsData.unk10 + 1;
-        gOptionsData.unk15 = r4 / 100;
+        r4 = gOptionsData.selectedSE + 1;
+        gOptionsData.digit100sSE = r4 / 100;
         r4 %= 100;
-        gOptionsData.unk16 = r4 / 10;
-        gOptionsData.unk17 = r4 % 10;
-        if (gMain.newKeys & A_BUTTON)
+        gOptionsData.digit10sSE = r4 / 10;
+        gOptionsData.digit1sSE = r4 % 10;
+        if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();
-            m4aSongNumStart(gUnknown_08527D66[gOptionsData.unk10]);
+            m4aSongNumStart(gOptionsSEList[gOptionsData.selectedSE]);
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             m4aMPlayAllStop();
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gOptionsData.unk4 = 0;
             gOptionsData.unk30 = 0;
-            gOptionsData.unk0 = 0;
+            gOptionsData.stateMain = OPTIONS_STATE_MAIN;
         }
         if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk4 = 1 - gOptionsData.unk4;
-        if (gOptionsData.unk18 > 0)
-            gOptionsData.unk18--;
+        if (gOptionsData.scollWaitFrames > 0)
+            gOptionsData.scollWaitFrames--;
         break;
-    case 3:
-        if (gMain.newKeys & DPAD_UP)
+    case OPTIONS_STATE_BUTTON_CONFIG_SELECT:
+        if (JOY_NEW(DPAD_UP))
         {
-            if (gOptionsData.unkA > 7)
+            if (gOptionsData.cursorPosition > CURSOR_POS_LEFT_FLIPPER)
             {
                 m4aSongNumStart(SE_SELECT);
-                gOptionsData.unkA--;
+                gOptionsData.cursorPosition--;
             }
         }
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
         {
-            if (gOptionsData.unkA <= 10)
+            if (gOptionsData.cursorPosition < CURSOR_POS_TILT_UP)
             {
                 m4aSongNumStart(SE_SELECT);
-                gOptionsData.unkA++;
+                gOptionsData.cursorPosition++;
             }
         }
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x65);
-            gOptionsData.unk0 = 4;
-            gOptionsData.unk1A[gOptionsData.unkA - 7] = 1;
+            gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_INPUT,
+            gOptionsData.unk1A[gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER] = 1;
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
-            gOptionsData.unkA = 6;
-            gOptionsData.unk0 = 0;
+            gOptionsData.cursorPosition = CURSOR_POS_BUTTON_CONFIG_EDIT;
+            gOptionsData.stateMain = OPTIONS_STATE_MAIN;
         }
         if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk2 = 1 - gOptionsData.unk2;
         break;
-    case 4:
+    case OPTIONS_STATE_BUTTON_CONFIG_INPUT:
         gOptionsData.unk8++;
         if (gOptionsData.unk8 > 24)
         {
             gOptionsData.unk8 = 0;
             gOptionsData.unk6 = 1 - gOptionsData.unk6;
         }
-        if (gMain.newKeys & (KEYS_MASK ^ START_BUTTON))
+        if (JOY_NEW(KEYS_MASK ^ START_BUTTON))
         {
             s16 i;
 
@@ -433,12 +462,12 @@ void sub_514B8(void)
             gOptionsData.unk20--;
             if (gOptionsData.unk20 == 0)
             {
-                gUnknown_02031AF0[4][(gOptionsData.unkA - 7) * 2 + 0] = gOptionsData.unk24[0];
-                gUnknown_02031AF0[4][(gOptionsData.unkA - 7) * 2 + 1] = gOptionsData.unk24[1];
-                gMain_saveData.unk144[(gOptionsData.unkA - 7)][0] = gUnknown_086BB910[gOptionsData.unk24[0]][0];
-                gMain_saveData.unk144[(gOptionsData.unkA - 7)][1] = gUnknown_086BB910[gOptionsData.unk24[1]][0];
-                gOptionsData.unk0 = 3;
-                gOptionsData.unk1A[gOptionsData.unkA - 7] = 0;
+                gUnknown_02031AF0[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 0] = gOptionsData.unk24[0];
+                gUnknown_02031AF0[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 1] = gOptionsData.unk24[1];
+                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][0] = gUnknown_086BB910[gOptionsData.unk24[0]][0];
+                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][1] = gUnknown_086BB910[gOptionsData.unk24[1]][0];
+                gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_SELECT,
+                gOptionsData.unk1A[gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER] = 0;
                 gOptionsData.unk8 = 0;
                 gOptionsData.unk6 = 1;
             }
@@ -484,7 +513,7 @@ void sub_51C3C(void)
 
 void sub_51C60(void)
 {
-    gMain_saveData.unk141 = gOptionsData.unk2A;
+    gMain_saveData.rumbleEnabled = gOptionsData.rumbleEnabled;
     SaveFile_WriteToSram();
     sub_02B4();
     m4aMPlayAllStop();
@@ -1534,7 +1563,7 @@ void sub_524BC(void)
     if (gOptionsData.unk28 >= 2)
         return;
 
-    pressedKeys = gMain.heldKeys & (KEYS_MASK ^ START_BUTTON);
+    pressedKeys = JOY_HELD(KEYS_MASK ^ START_BUTTON);
     if (!pressedKeys)
         return;
 
@@ -1600,13 +1629,12 @@ void sub_52528(void)
 
 extern const u8 gUnknown_08527EFE[];
 
-void sub_525CC(s8 arg0)
+void sub_525CC(s8 buttonConfigType)
 {
     int i;
-    s8 var0 = arg0 + 1;
-    switch (var0)
+    switch (buttonConfigType)
     {
-    case 0:
+    case BUTTON_CONFIG_RESET:
         gMain.unk60 = gUnknown_086BB910[5][0];
         gMain.unk62 = gUnknown_086BB910[10][0];
         gMain.unk64 = gUnknown_086BB910[0][0];
@@ -1617,20 +1645,20 @@ void sub_525CC(s8 arg0)
         gMain.unk6E = gUnknown_086BB910[10][0];
         gMain.unk70 = gUnknown_086BB910[9][0];
         gMain.unk72 = gUnknown_086BB910[8][0];
-        gMain_saveData.unk144[0][0] = gUnknown_086BB910[1][0];
-        gMain_saveData.unk144[0][1] = gUnknown_086BB910[10][0];
-        gMain_saveData.unk144[1][0] = gUnknown_086BB910[0][0];
-        gMain_saveData.unk144[1][1] = gUnknown_086BB910[10][0];
-        gMain_saveData.unk144[2][0] = gUnknown_086BB910[5][0];
-        gMain_saveData.unk144[2][1] = gUnknown_086BB910[10][0];
-        gMain_saveData.unk144[3][0] = gUnknown_086BB910[4][0];
-        gMain_saveData.unk144[3][1] = gUnknown_086BB910[10][0];
-        gMain_saveData.unk144[4][0] = gUnknown_086BB910[6][0];
-        gMain_saveData.unk144[4][1] = gUnknown_086BB910[10][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][0]  = gUnknown_086BB910[1][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][1]  = gUnknown_086BB910[10][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][0] = gUnknown_086BB910[0][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][1] = gUnknown_086BB910[10][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][0]     = gUnknown_086BB910[5][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][1]     = gUnknown_086BB910[10][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][0]    = gUnknown_086BB910[4][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][1]    = gUnknown_086BB910[10][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][0]       = gUnknown_086BB910[6][0];
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][1]       = gUnknown_086BB910[10][0];
         for (i = 0; i < 10; i++)
             gUnknown_02031B18[i] = gUnknown_08527EFE[i];
         break;
-    case 1:
+    case BUTTON_CONFIG_TYPE_A:
         gMain.unk60 = gUnknown_086BB910[5][0];
         gMain.unk62 = gUnknown_086BB910[10][0];
         gMain.unk64 = gUnknown_086BB910[0][0];
@@ -1642,7 +1670,7 @@ void sub_525CC(s8 arg0)
         gMain.unk70 = gUnknown_086BB910[9][0];
         gMain.unk72 = gUnknown_086BB910[8][0];
         break;
-    case 2:
+    case BUTTON_CONFIG_TYPE_B:
         gMain.unk60 = gUnknown_086BB910[5][0];
         gMain.unk62 = gUnknown_086BB910[10][0];
         gMain.unk64 = gUnknown_086BB910[0][0];
@@ -1654,7 +1682,7 @@ void sub_525CC(s8 arg0)
         gMain.unk70 = gUnknown_086BB910[1][0];
         gMain.unk72 = gUnknown_086BB910[10][0];
         break;
-    case 3:
+    case BUTTON_CONFIG_TYPE_C:
         gMain.unk60 = gUnknown_086BB910[9][0];
         gMain.unk62 = gUnknown_086BB910[10][0];
         gMain.unk64 = gUnknown_086BB910[8][0];
@@ -1666,7 +1694,7 @@ void sub_525CC(s8 arg0)
         gMain.unk70 = gUnknown_086BB910[5][0];
         gMain.unk72 = gUnknown_086BB910[0][0];
         break;
-    case 4:
+    case BUTTON_CONFIG_TYPE_D:
         gMain.unk60 = gUnknown_086BB910[9][0];
         gMain.unk62 = gUnknown_086BB910[10][0];
         gMain.unk64 = gUnknown_086BB910[8][0];
@@ -1678,17 +1706,17 @@ void sub_525CC(s8 arg0)
         gMain.unk70 = gUnknown_086BB910[6][0];
         gMain.unk72 = gUnknown_086BB910[10][0];
         break;
-    case 5:
-        gMain.unk60 = gMain_saveData.unk144[0][0];
-        gMain.unk62 = gMain_saveData.unk144[0][1];
-        gMain.unk64 = gMain_saveData.unk144[1][0];
-        gMain.unk66 = gMain_saveData.unk144[1][1];
-        gMain.unk68 = gMain_saveData.unk144[2][0];
-        gMain.unk6A = gMain_saveData.unk144[2][1];
-        gMain.unk6C = gMain_saveData.unk144[3][0];
-        gMain.unk6E = gMain_saveData.unk144[3][1];
-        gMain.unk70 = gMain_saveData.unk144[4][0];
-        gMain.unk72 = gMain_saveData.unk144[4][1];
+    case BUTTON_CONFIG_TYPE_EDIT:
+        gMain.unk60 = gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][0];
+        gMain.unk62 = gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][1];
+        gMain.unk64 = gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][0];
+        gMain.unk66 = gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][1];
+        gMain.unk68 = gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][0];
+        gMain.unk6A = gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][1];
+        gMain.unk6C = gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][0];
+        gMain.unk6E = gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][1];
+        gMain.unk70 = gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][0];
+        gMain.unk72 = gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][1];
         break;
     }
 }

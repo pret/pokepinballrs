@@ -153,32 +153,32 @@ void sub_3FAC(void)
 
 void sub_4150(void)
 {
-    if (gMain.heldKeys & SELECT_BUTTON)
+    if (JOY_HELD(SELECT_BUTTON))
     {
         gUnknown_0202BF04 = 0;
 
-        if (gMain.heldKeys & DPAD_UP)
+        if (JOY_HELD(DPAD_UP))
         {
             sub_4D74();
             sub_5064();
             sub_51CC();
             gMain.subState = 2;
         }
-        else if (gMain.heldKeys & DPAD_DOWN)
+        else if (JOY_HELD(DPAD_DOWN))
         {
             sub_4E34();
             sub_5064();
             sub_51CC();
             gMain.subState = 2;
         }
-        else if (gMain.heldKeys & DPAD_LEFT)
+        else if (JOY_HELD(DPAD_LEFT))
         {
             sub_4EF0();
             sub_5064();
             sub_51CC();
             gMain.subState = 2;
         }
-        else if (gMain.heldKeys & DPAD_RIGHT)
+        else if (JOY_HELD(DPAD_RIGHT))
         {
             sub_4F50();
             sub_5064();
@@ -191,7 +191,7 @@ void sub_4150(void)
             sub_5064();
         }
 
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             gUnknown_0202C5E8 = 0;
 
@@ -211,22 +211,22 @@ void sub_4150(void)
     {
         gUnknown_0202BF04 = 1;
 
-        if (gMain.heldKeys & DPAD_UP)
+        if (JOY_HELD(DPAD_UP))
         {
             sub_4D74();
             sub_5174();
         }
-        else if (gMain.heldKeys & DPAD_DOWN)
+        else if (JOY_HELD(DPAD_DOWN))
         {
             sub_4E34();
             sub_5174();
         }
-        else if (gMain.heldKeys & DPAD_LEFT)
+        else if (JOY_HELD(DPAD_LEFT))
         {
             sub_4EF0();
             sub_5174();
         }
-        else if (gMain.heldKeys & DPAD_RIGHT)
+        else if (JOY_HELD(DPAD_RIGHT))
         {
             sub_4F50();
             sub_5174();
@@ -251,7 +251,7 @@ void sub_4150(void)
         gUnknown_0201A440 = 0;
         gUnknown_0202BF0C = 0;
 
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             gUnknown_0202C5E8 = 0;
 
@@ -266,12 +266,12 @@ void sub_4150(void)
                 m4aSongNumStart(SE_FAILURE);
             }
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gMain.subState = 12;
         }
-        else if (gMain.newKeys & START_BUTTON)
+        else if (JOY_NEW(START_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x68);
             gUnknown_0202BEC4 = 1;
@@ -365,7 +365,7 @@ void sub_45A4(void)
     }
     gUnknown_0202BE20 = 0;
 
-    if (gMain.newKeys & DPAD_UP)
+    if (JOY_NEW(DPAD_UP))
     {
         if ((gUnknown_0202ADE0 < BONUS_SPECIES_START) && (gUnknown_0202C794 == 1))
         {
@@ -375,7 +375,7 @@ void sub_45A4(void)
             gUnknown_02019C28 = gUnknown_0202C794;
         }
     }
-    else if (gMain.newKeys & DPAD_DOWN)
+    else if (JOY_NEW(DPAD_DOWN))
     {
         if ((gUnknown_0202ADE0 < BONUS_SPECIES_START) && (gUnknown_0202C794 == 0))
         {
@@ -386,7 +386,7 @@ void sub_45A4(void)
         }
     }
     
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         if (gUnknown_0202ADE0 < BONUS_SPECIES_START)
         {
@@ -409,7 +409,7 @@ void sub_45A4(void)
             }
         }
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         m4aSongNumStart(SE_UNKNOWN_0x69);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
@@ -420,7 +420,7 @@ void sub_45A4(void)
         gMain.subState = 4;
     }
 
-    if (gMain.heldKeys & SELECT_BUTTON)
+    if (JOY_HELD(SELECT_BUTTON))
     {
         if (gUnknown_0202A1C0[gUnknown_0202ADE0] == 4)
         {
@@ -530,7 +530,7 @@ void sub_49D0(void)
     
     sub_599C();
 
-    if (gMain.newKeys & B_BUTTON)
+    if (JOY_NEW(B_BUTTON))
     {
         m4aSongNumStart(SE_UNKNOWN_0x66);
         gUnknown_0202BEC4 = 0;
@@ -667,7 +667,7 @@ void sub_4C80(void)
     
     sub_51FC();
 
-    if (gMain.newKeys & A_BUTTON)
+    if (JOY_NEW(A_BUTTON))
     {
         m4aSongNumStart(SE_UNKNOWN_0x65);
         for (i = 0; i < 0xE1; i++)
@@ -691,7 +691,7 @@ void sub_4C80(void)
         sub_0D10();
         gMain.subState = 0;
     }
-    else if (gMain.newKeys & B_BUTTON)
+    else if (JOY_NEW(B_BUTTON))
     {
         m4aSongNumStart(SE_UNKNOWN_0x66);
         gUnknown_0202BEC4 = 0;

@@ -154,7 +154,7 @@ void sub_1198(void)
 
 void sub_11B0(int arg0)
 {
-    if (gMain_saveData.unk141)
+    if (gMain_saveData.rumbleEnabled)
     {
         gUnknown_02019BF8 = arg0;
         gUnknown_02019BFC = 0;

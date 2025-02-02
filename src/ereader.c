@@ -126,7 +126,7 @@ void sub_2E40(void)
             gUnknown_0202C5A4 = 1 - gUnknown_0202C5A4;
         }
     }
-    if (gMain.newKeys & A_BUTTON) {
+    if (JOY_NEW(A_BUTTON)) {
         if (gUnknown_0202C604 <= gUnknown_086A551A[gUnknown_0202AD90]) {
             sub_37B4(gUnknown_0202AD90);
             gUnknown_0202C604 = gUnknown_086A551A[gUnknown_0202AD90] + 1;
@@ -142,7 +142,7 @@ void sub_2E40(void)
             gUnknown_0202AD90++;
         }
     }
-    else if (gMain.newKeys & B_BUTTON) {
+    else if (JOY_NEW(B_BUTTON)) {
         m4aSongNumStart(SE_UNKNOWN_0x66);
         gUnknown_0202BEF8 = STATE_TITLE;
         gMain.subState = 8;
@@ -177,7 +177,7 @@ void sub_304C(void)
     u16 temp;
 
     sub_3AB4();
-    if (gMain.newKeys & B_BUTTON) {
+    if (JOY_NEW(B_BUTTON)) {
         sub_2568();
         DisableSerial();
         sub_02B4();
@@ -264,7 +264,7 @@ void sub_3208(void)
             gUnknown_0202C5A4 = 1 - gUnknown_0202C5A4;
         }
     }
-    if (gMain.newKeys & A_BUTTON) {
+    if (JOY_NEW(A_BUTTON)) {
         if (gUnknown_0202C604 <= gUnknown_086A551A[gUnknown_0202AD90]) {
             sub_37B4(gUnknown_0202AD90);
             gUnknown_0202C604 = gUnknown_086A551A[gUnknown_0202AD90] + 1;
@@ -379,7 +379,7 @@ void sub_35C8(void)
             gUnknown_0202C5A4 = 1 - gUnknown_0202C5A4;
         }
     }
-    if (gMain.newKeys & A_BUTTON) {
+    if (JOY_NEW(A_BUTTON)) {
         if (gUnknown_0202C604 <= gUnknown_086A551A[gUnknown_0202AD90]) {
             sub_37B4(gUnknown_0202AD90);
             gUnknown_0202C604 = gUnknown_086A551A[gUnknown_0202AD90] + 1;
@@ -646,7 +646,7 @@ s16 sub_3CD8(void)
     s32 i;
     s32 j;
 
-    if (!(gMain.newKeys & A_BUTTON))
+    if (!(JOY_NEW(A_BUTTON)))
     {
         // TODO I can buy goto end being the actual label, but there is no way they wrote this segment like this 
         goto fakematch;

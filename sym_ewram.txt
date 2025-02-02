@@ -558,7 +558,7 @@ gUnknown_02030760: @ 0x02030760
 	.space 0x900
 gUnknown_02031060: @ 0x02031060
 	.space 0x480
-gUnknown_020314E0: @ 0x20314E0
+gCurrentPinballGame: @ 0x20314E0
 	.space 0x20
 gUnknown_02031500: @ 0x02031500
 	.space 0x10

@@ -86,7 +86,7 @@ void sub_2768(void)
     switch (gUnknown_0202BED0)
     {
     case 0:
-        if (gMain.newKeys & DPAD_LEFT)
+        if (JOY_NEW(DPAD_LEFT))
         {
             if (gUnknown_0201A4F8 != 0 && gUnknown_0201A4F8 != 3)
             {
@@ -94,7 +94,7 @@ void sub_2768(void)
                 gUnknown_0201A4F8--;
             }
         }
-        else if (gMain.newKeys & DPAD_RIGHT)
+        else if (JOY_NEW(DPAD_RIGHT))
         {
             if (gUnknown_0201A4F8 != 2 && gUnknown_0201A4F8 != 5)
             {
@@ -102,7 +102,7 @@ void sub_2768(void)
                 gUnknown_0201A4F8++;
             }
         }
-        if (gMain.newKeys & DPAD_UP)
+        if (JOY_NEW(DPAD_UP))
         {
             if (gUnknown_0201A4F8 > 2)
             {
@@ -110,7 +110,7 @@ void sub_2768(void)
                 gUnknown_0201A4F8 -= 3;
             }
         }
-        else if (gMain.newKeys & DPAD_DOWN)
+        else if (JOY_NEW(DPAD_DOWN))
         {
             if (gUnknown_0201A4F8 < 3)
             {
@@ -118,14 +118,14 @@ void sub_2768(void)
                 gUnknown_0201A4F8 += 3;
             }
         }
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x65);
             gUnknown_0202BED0 = 1;
             gUnknown_0201A4B0 = 1;
             gUnknown_0202A560 = 0;
         }
-        if (gMain.newKeys & B_BUTTON)
+        if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gUnknown_0202BEE4 = 1;
@@ -133,12 +133,12 @@ void sub_2768(void)
         }
         break;
     case 1:
-        if (gMain.newKeys & (DPAD_LEFT | DPAD_RIGHT))
+        if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
         {
             m4aSongNumStart(SE_SELECT);
             gUnknown_0201A4C0 = 1 - gUnknown_0201A4C0;
         }
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x65);
             gUnknown_0202A560 = 0;
@@ -147,7 +147,7 @@ void sub_2768(void)
             SaveFile_WriteToSram();
             gUnknown_0202BED0 = 2;
         }
-        if (gMain.newKeys & B_BUTTON)
+        if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gUnknown_0201A4B0 = 0;

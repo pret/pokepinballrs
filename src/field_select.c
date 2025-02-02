@@ -86,7 +86,7 @@ static void sub_8C38(void)
 void sub_8C7C(void)
 {
     sub_8F94();
-    if ((gMain.heldKeys & (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if ((JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
     {
         gUnknown_02002850 = 1;
         gFieldSelectData.nextMainState = STATE_INTRO;
@@ -97,7 +97,7 @@ void sub_8C7C(void)
         switch (gFieldSelectData.state)
         {
         case 0:
-            if (gMain.newKeys & DPAD_LEFT)
+            if (JOY_NEW(DPAD_LEFT))
             {
                 if (gFieldSelectData.selectedField == FIELD_SAPPHIRE)
                 {
@@ -108,7 +108,7 @@ void sub_8C7C(void)
                     gFieldSelectData.state = 1;
                 }
             }
-            else if (gMain.newKeys & DPAD_RIGHT)
+            else if (JOY_NEW(DPAD_RIGHT))
             {
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
                 {
@@ -119,7 +119,7 @@ void sub_8C7C(void)
                     gFieldSelectData.state = 1;
                 }
             }
-            if (gMain.newKeys & A_BUTTON)
+            if (JOY_NEW(A_BUTTON))
             {
                 m4aSongNumStart(SE_UNKNOWN_0x65);
                 gFieldSelectData.state = 2;
@@ -142,7 +142,7 @@ void sub_8C7C(void)
                     gFieldSelectData.unkC = 0;
                 }
             }
-            if (gMain.newKeys & B_BUTTON)
+            if (JOY_NEW(B_BUTTON))
             {
                 m4aSongNumStart(SE_UNKNOWN_0x66);
                 gMain.subState++;
@@ -170,12 +170,12 @@ void sub_8C7C(void)
                 gMain.unk6 = 1;
             break;
         case 2:  // Choose ball speed
-            if (gMain.newKeys & (DPAD_LEFT | DPAD_RIGHT))
+            if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
             {
                 m4aSongNumStart(SE_SELECT);
                 gFieldSelectData.ballSpeed = 1 - gFieldSelectData.ballSpeed;
             }
-            if (gMain.newKeys & A_BUTTON)
+            if (JOY_NEW(A_BUTTON))
             {
                 m4aSongNumStart(SE_UNKNOWN_0x65);
                 gFieldSelectData.unkE = 0;
@@ -184,7 +184,7 @@ void sub_8C7C(void)
                 SaveFile_WriteToSram();
                 gFieldSelectData.state = 3;
             }
-            if (gMain.newKeys & B_BUTTON)
+            if (JOY_NEW(B_BUTTON))
             {
                 m4aSongNumStart(SE_UNKNOWN_0x66);
                 gFieldSelectData.unk14 = 0;
@@ -220,7 +220,7 @@ void sub_8C7C(void)
                     gFieldSelectData.state = 0;
                 }
             }
-            if (gMain.newKeys & DPAD_LEFT)
+            if (JOY_NEW(DPAD_LEFT))
             {
                 if (gFieldSelectData.selectedField == FIELD_SAPPHIRE)
                 {
@@ -234,7 +234,7 @@ void sub_8C7C(void)
                     gFieldSelectData.state = 0;
                 }
             }
-            else if (gMain.newKeys & DPAD_RIGHT)
+            else if (JOY_NEW(DPAD_RIGHT))
             {
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
                 {

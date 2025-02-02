@@ -4,6 +4,7 @@
 #include "global.h"
 #include "constants/ereader.h"
 #include "constants/high_scores.h"
+#include "constants/pinball_inputs.h"
 #include "constants/species.h"
 
 struct HighScoreEntry
@@ -22,10 +23,10 @@ struct HighScoreEntry
 struct SaveData
 {
     /*0x74*/ u8 pokedexFlags[NUM_SPECIES];
-    /*0x141*/ u8 unk141;
+    /*0x141*/ bool8 rumbleEnabled;
     /*0x142*/ u8 ballSpeed;
-    /*0x143*/ u8 unk143;
-    /*0x144*/ u16 unk144[5][2];
+    /*0x143*/ u8 buttonConfigType;
+    /*0x144*/ u16 customButtonConfig[NUM_PINBALL_INPUTS][2];
     /*0x158*/ struct HighScoreEntry highScores[2][NUM_HIGH_SCORES];
     /*0x2D8*/ s8 signature[10];
               u16 checksum;

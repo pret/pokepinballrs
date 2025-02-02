@@ -148,7 +148,7 @@ void sub_9370(void) {
 void sub_938C(void) {
     gUnknown_080792E0[gUnknown_0202C790]();
     gUnknown_0202BF10++;
-    if(gMain.newKeys & (A_BUTTON | START_BUTTON))
+    if(JOY_NEW(A_BUTTON | START_BUTTON))
         gMain.subState = 4;
 }
 
@@ -2929,7 +2929,7 @@ void sub_CC94(void)
     if (gUnknown_0202BF10 % 10 == 0)
     {
         gUnknown_0202A578++;
-        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, (0x100 / gUnknown_0202A578));
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, (0x100 / gUnknown_0202A578));
     }
     if (0x2D < gUnknown_0202BF10)
     {
