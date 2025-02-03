@@ -19,6 +19,15 @@ s16 sub_5EA4(void); // TODO Pretty sure it's s16, but could be u16
 void sub_5EC8(void);
 void sub_70E0(s16, s32);
 void sub_88E4(void);
+void sub_51FC(void);
+
+extern const struct SpriteSet *const gUnknown_086A6148[];
+extern u16 gUnknown_0202BF08;
+extern const u16 gUnknown_086A5DDA[][4];
+extern const u16 gUnknown_086A5DF2[][20];
+extern const s16 gUnknown_086A6356[];
+extern const u16 gUnknown_086A5EE2[][51];
+extern const s16 gUnknown_086A6014[][51];
 
 void PokedexMain(void)
 {
@@ -751,7 +760,7 @@ static void sub_4D74(void)
         
         gUnknown_0202C58C = 9;
     }
-    
+
     gUnknown_02019C24 = 1;
 }
 
@@ -929,4 +938,224 @@ void sub_51CC(void)
         sub_6F78(gUnknown_0202ADE0);
     else
         sub_8974(gUnknown_0202ADE0);
+}
+
+void sub_51FC(void)
+{
+    int i;
+    struct SpriteGroup *group0;
+    struct SpriteGroup *group1;
+    struct SpriteGroup *group2;
+    struct SpriteGroup *group3;
+    struct SpriteGroup *group4;
+    struct SpriteGroup *group5;
+    struct SpriteGroup *group6;
+    struct SpriteGroup *group7;
+    struct SpriteGroup *group8;
+    struct SpriteGroup *group9;
+    struct OamDataSimple *groupOam;
+    const struct SpriteSet *spriteSet;
+    int var0, var1;
+
+    group0 = &gUnknown_0200B3B8[0];
+    group1 = &gUnknown_0200B3B8[1];
+    group2 = &gUnknown_0200B3B8[2];
+    group3 = &gUnknown_0200B3B8[3];
+    group4 = &gUnknown_0200B3B8[4];
+    group5 = &gUnknown_0200B3B8[5 + gUnknown_0201A448];
+    group6 = &gUnknown_0200B3B8[17 + gUnknown_0202BEFC];
+    group7 = &gUnknown_0200B3B8[22 + gUnknown_0202BEE0];
+    group8 = &gUnknown_0200B3B8[24];
+    group9 = &gUnknown_0200B3B8[25 + gUnknown_02019C28 * 2 + gUnknown_0202C5AC];
+
+    group0->available = 1;
+    group1->available = 1;
+    group2->available = gUnknown_0202A55C;
+    group3->available = gUnknown_0202A568[0];
+    group4->available = gUnknown_0202A568[1];
+    group5->available = gUnknown_0202A588;
+    group6->available = gUnknown_0202BEC4;
+    group7->available = gUnknown_0202BF04;
+    group8->available = gUnknown_0202C590;
+    group9->available = gUnknown_0201C1B4;
+    LoadSpriteSets(gUnknown_086A6148, 29, group0);
+
+    group0->baseX = 20 + gUnknown_0201A4F0;
+    group0->baseY = 84 + gUnknown_0202A57C * 16;
+    groupOam = &group0->oam[0];
+    gOamBuffer[groupOam->oamId].priority = 3;
+    gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group0->baseX;
+    gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group0->baseY;
+
+    if (gUnknown_0202ADE0 < 200)
+        gUnknown_0202BF08 = 86 + gUnknown_0202ADE0 / 3;
+    else
+        gUnknown_0202BF08 = 152;
+
+    group1->baseX = 13;
+    group1->baseY = gUnknown_0202BF08;
+    groupOam = &group1->oam[0];
+    gOamBuffer[groupOam->oamId].priority = 3;
+    gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group1->baseX;
+    gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group1->baseY;
+
+    if (group2->available == 1)
+    {
+        group2->baseX = 36;
+        group2->baseY = 36;
+        for (i = 0; i < 6; i++)
+        {
+            groupOam = &group2->oam[i];
+            gOamBuffer[group2->oam[i].oamId].priority = 1;
+            gOamBuffer[group2->oam[i].oamId].x = groupOam->xOffset + group2->baseX;
+            gOamBuffer[group2->oam[i].oamId].y = groupOam->yOffset + group2->baseY;
+        }
+    }
+
+    if (group3->available == 1)
+    {
+        group3->baseX = 36;
+        group3->baseY = 28;
+        for (i = 0; i < 4; i++)
+        {
+            groupOam = &group3->oam[i];
+            gOamBuffer[groupOam->oamId].priority = 1;
+            gOamBuffer[groupOam->oamId].tileNum = gUnknown_086A5DDA[gUnknown_0202BF14][i] +
+                                                   gUnknown_086A5DF2[gUnknown_0202BF14][gUnknown_0202BF0C];
+                                                   ;
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group3->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group3->baseY;
+        }
+
+        if (++gUnknown_0201A440 > 14)
+        {
+            gUnknown_0201A440 = 0;
+            if (++gUnknown_0202BF0C > 8)
+                gUnknown_0202BF0C = 0;
+        }
+    }
+
+    if (group4->available == 1)
+    {
+        if (gUnknown_086A6356[gUnknown_0202ADE0] == -1)
+        {
+            var0 = 1;
+            var1 = 36;
+        }
+        else
+        {
+            var0 = 2;
+            var1 = 48;
+        }
+
+        group4->baseX = 48;
+        group4->baseY = 40;
+        for (i = 0; i < 4; i++)
+        {
+            groupOam = &group4->oam[i];
+            gOamBuffer[groupOam->oamId].priority = 1;
+            gOamBuffer[groupOam->oamId].tileNum = gUnknown_086A5DDA[var0][i] + gUnknown_086A5EE2[var0][gUnknown_0202BF0C];
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group4->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group4->baseY;
+        }
+
+        if (++gUnknown_0201A440 > gUnknown_086A6014[var0][gUnknown_0202BF0C])
+        {
+            gUnknown_0201A440 = 0;
+            if (++gUnknown_0202BF0C > var1)
+                gUnknown_0202BF0C = 0;
+        }
+    }
+
+    if (group5->available == 1)
+    {
+        group5->baseX = 36;
+        group5->baseY = 64;
+        spriteSet = gUnknown_086A6148[5 + gUnknown_0201A448];
+        for (i = 0; i < spriteSet->count; i++)
+        {
+            groupOam = &group5->oam[i];
+            gOamBuffer[groupOam->oamId].priority = 1;
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group5->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group5->baseY;
+        }
+
+        if (++gUnknown_0202BF00 > 8)
+        {
+            gUnknown_0202BF00 = 0;
+            if (++gUnknown_0201A448 > 11)
+                gUnknown_0201A448 = 0;
+        }
+    }
+
+    if (group6->available == 1)
+    {
+        int sp10, spC;
+        if (gUnknown_0202BEFC == 0 || gUnknown_0202BEFC == 4)
+        {
+            group6->baseX = 120;
+            group6->baseY = 100;
+        }
+        else
+        {
+            group6->baseX = 120;
+            group6->baseY = 80;
+        }
+
+        spriteSet = gUnknown_086A6148[17 + gUnknown_0202BEFC];
+        for (i = 0; i < spriteSet->count; i++)
+        {
+            groupOam = &group6->oam[i];
+            gOamBuffer[groupOam->oamId].priority = 0;
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group6->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group6->baseY;
+        }
+    }
+
+    if (group7->available == 1)
+    {
+        group7->baseX = 158;
+        group7->baseY = 148;
+        spriteSet = gUnknown_086A6148[22 + gUnknown_0202BEE0];
+        for (i = 0; i < spriteSet->count; i++)
+        {
+            groupOam = &group7->oam[i];
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group7->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group7->baseY;
+        }
+    }
+
+    if (group8->available == 1)
+    {
+        group8->baseX = 168;
+        group8->baseY = 84;
+        for (i = 0; i < 3; i++)
+        {
+            groupOam = &group8->oam[i];
+            gOamBuffer[groupOam->oamId].priority = 3;
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group8->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group8->baseY;
+        }
+    }
+
+    if (group9->available == 1)
+    {
+        group9->baseX = 120;
+        group9->baseY = 132;
+        groupOam = &group9->oam[0];
+        gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group9->baseX;
+        gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group9->baseY;
+    }
+
+    if (++gUnknown_0202BE20 > 12)
+    {
+        gUnknown_0202BE20 = 0;
+        gUnknown_0201A4F0 = 1 - gUnknown_0201A4F0;
+        gUnknown_0202BEE0 = 1 - gUnknown_0202BEE0;
+    }
+
+    group5->available = 0;
+    group6->available = 0;
+    group7->available = 0;
+    group9->available = 0;
 }
