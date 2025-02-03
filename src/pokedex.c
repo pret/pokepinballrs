@@ -350,14 +350,13 @@ void sub_4428(void)
         gUnknown_02019C28 = 0;
         gUnknown_0202C5AC = 0;
 
-        if (gUnknown_0202ADE0 < BONUS_SPECIES_START) {
+        if (gUnknown_0202ADE0 < BONUS_SPECIES_START)
             gUnknown_0201C1B4 = 1;
-        }
 
         DmaCopy16(3, gUnknown_08086B40, (void *)0x6000280, 2*0xE0);
         sub_70E0(gUnknown_0202ADE0, gUnknown_0202C794);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
-        sub_5291C(gSpeciesInfo[gUnknown_0202ADE0].mainSeriesIndexNumber, 0, 0x7F, 10);
+        PlayCry_NormalNoDucking(gSpeciesInfo[gUnknown_0202ADE0].mainSeriesIndexNumber, 0, 127, 10);
         gMain.subState = 5;
     }
 

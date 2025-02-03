@@ -2,64 +2,73 @@
 #include "m4a.h"
 #include "agb_sram.h"
 #include "main.h"
+#include "constants/species_rs.h"
 
-extern const u16 gUnknown_08527F18[];
+extern const u16 gSpeciesRSToCryId[];
 
-static void sub_52940(u16, s8, s8, u8, int);
+static void PlayCryInternal(u16, s8, s8, u8, int);
 static u16 LoadSaveDataFromSram(void);
 
-int sub_528AC(u16 a)
+int SpeciesRSToCryId(u16 speciesRS)
 {
-    if (a <= 0xFA)
-        return a;
-    if (a <= 0x113)
-        return 0xC8;
-    return gUnknown_08527F18[a - 0x114];
+    if (speciesRS <= SPECIES_RS_CELEBI - 1)
+        return speciesRS;
+    if (speciesRS < SPECIES_RS_TREECKO - 1)
+        return SPECIES_RS_UNOWN - 1;
+    return gSpeciesRSToCryId[speciesRS - (SPECIES_RS_TREECKO - 1)];
 }
 
-void sub_528DC(u16 a, s8 b)
+void PlayCry_Normal(u16 speciesRS, s8 pan)
 {
-    m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x99);
-    sub_52940(a, b, 0x7D, 10, 0);
+    m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 153);
+    PlayCryInternal(speciesRS, pan, 125, 10, 0);
 }
 
-void sub_5291C(u16 a, s8 b, s8 c, u8 d)
+void PlayCry_NormalNoDucking(u16 speciesRS, s8 pan, s8 volume, u8 priority)
 {
-    sub_52940(a, b, c, d, 0);
+    PlayCryInternal(speciesRS, pan, volume, priority, 0);
 }
 
-static void sub_52940(u16 a, s8 b, s8 c, u8 d, int unused)
+// Probably was ported from RS minus the cry mode section.
+static void PlayCryInternal(u16 speciesRS, s8 pan, s8 volume, u8 priority, int unused)
 {
-    u16 r5 = a - 1;
-    u32 pitch = 0x3C00;
+    u32 release;
+    u32 length;
+    u32 pitch;
     u32 var;
-    u32 r1;
-    u8 r0;
+    u32 index;
+    u8 table;
 
-    SetPokemonCryVolume(c);
-    SetPokemonCryPanpot(b);
+    speciesRS--;
+
+    length = 140;
+    release = 0;
+    pitch = 15360;
+
+    SetPokemonCryVolume(volume);
+    SetPokemonCryPanpot(pan);
     SetPokemonCryPitch(pitch);
-    SetPokemonCryLength(0x8C);
+    SetPokemonCryLength(length);
     SetPokemonCryProgress(0);
-    SetPokemonCryRelease(0);
+    SetPokemonCryRelease(release);
     SetPokemonCryChorus(0);
-    SetPokemonCryPriority(d);
-    var = sub_528AC(r5);
-    r1 = var & 0x7F;
-    r0 = var >> 7;
-    switch (r0)
+    SetPokemonCryPriority(priority);
+    var = SpeciesRSToCryId(speciesRS);
+    index = var & 0x7F;
+    table = var >> 7;
+    switch (table)
     {
     case 0:
-        SetPokemonCryTone(&gUnknown_08532D6C[r1]);
+        SetPokemonCryTone(&gUnknown_08532D6C[index]);
         break;
     case 1:
-        SetPokemonCryTone(&gUnknown_08533360[r1]);
+        SetPokemonCryTone(&gUnknown_08533360[index]);
         break;
     case 2:
-        SetPokemonCryTone(&gUnknown_08533960[r1]);
+        SetPokemonCryTone(&gUnknown_08533960[index]);
         break;
     case 3:
-        SetPokemonCryTone(&gUnknown_08533F60[r1]);
+        SetPokemonCryTone(&gUnknown_08533F60[index]);
         break;
     }
 }
