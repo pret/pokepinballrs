@@ -1,4 +1,5 @@
 <!--- Provide a general summary of your changes in the Title above -->
+<!--- If you have decompiled functions, remember to delete the associated expected_objs! -->
 
 ## Description
 <!--- Describe your changes in detail -->
