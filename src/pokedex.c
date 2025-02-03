@@ -20,6 +20,7 @@ void sub_5EC8(void);
 void sub_70E0(s16, s32);
 void sub_88E4(void);
 void sub_51FC(void);
+static void sub_599C(void);
 
 extern const struct SpriteSet *const gUnknown_086A6148[];
 extern u16 gUnknown_0202BF08;
@@ -28,6 +29,7 @@ extern const u16 gUnknown_086A5DF2[][20];
 extern const s16 gUnknown_086A6356[];
 extern const u16 gUnknown_086A5EE2[][51];
 extern const s16 gUnknown_086A6014[][51];
+extern const u16 gUnknown_086A5E12[][4];
 
 void PokedexMain(void)
 {
@@ -1006,9 +1008,9 @@ void sub_51FC(void)
         for (i = 0; i < 6; i++)
         {
             groupOam = &group2->oam[i];
-            gOamBuffer[group2->oam[i].oamId].priority = 1;
-            gOamBuffer[group2->oam[i].oamId].x = groupOam->xOffset + group2->baseX;
-            gOamBuffer[group2->oam[i].oamId].y = groupOam->yOffset + group2->baseY;
+            gOamBuffer[groupOam->oamId].priority = 1;
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group2->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group2->baseY;
         }
     }
 
@@ -1021,8 +1023,7 @@ void sub_51FC(void)
             groupOam = &group3->oam[i];
             gOamBuffer[groupOam->oamId].priority = 1;
             gOamBuffer[groupOam->oamId].tileNum = gUnknown_086A5DDA[gUnknown_0202BF14][i] +
-                                                   gUnknown_086A5DF2[gUnknown_0202BF14][gUnknown_0202BF0C];
-                                                   ;
+                                                  gUnknown_086A5DF2[gUnknown_0202BF14][gUnknown_0202BF0C];
             gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group3->baseX;
             gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group3->baseY;
         }
@@ -1090,7 +1091,6 @@ void sub_51FC(void)
 
     if (group6->available == 1)
     {
-        int sp10, spC;
         if (gUnknown_0202BEFC == 0 || gUnknown_0202BEFC == 4)
         {
             group6->baseX = 120;
@@ -1158,4 +1158,143 @@ void sub_51FC(void)
     group6->available = 0;
     group7->available = 0;
     group9->available = 0;
+}
+
+static void sub_599C(void)
+{
+    int i;
+    struct SpriteGroup *group0;
+    struct SpriteGroup *group1;
+    struct SpriteGroup *group2;
+    struct SpriteGroup *group3;
+    struct SpriteGroup *group4;
+    struct SpriteGroup *group5;
+    struct SpriteGroup *group6;
+    struct SpriteGroup *group7;
+    struct OamDataSimple *groupOam;
+    const struct SpriteSet *spriteSet;
+
+    group0 = &gUnknown_0200B3B8[0];
+    group1 = &gUnknown_0200B3B8[1];
+    group2 = &gUnknown_0200B3B8[2];
+    group3 = &gUnknown_0200B3B8[3];
+    group4 = &gUnknown_0200B3B8[4];
+    group6 = &gUnknown_0200B3B8[5 + gUnknown_0201A448];
+    group7 = &gUnknown_0200B3B8[17 + gUnknown_0202BEFC];
+    group5 = &gUnknown_0200B3B8[24];
+
+    group0->available = 1;
+    group1->available = 1;
+    group2->available = gUnknown_0202A55C;
+    group3->available = gUnknown_0202A568[0];
+    group4->available = gUnknown_0202A568[1];
+    group6->available = 0;
+    group7->available = gUnknown_0202BEC4;
+    group5->available = gUnknown_0202C590;
+    sub_2414(gUnknown_086A6148, 29, group0);
+
+    group0->baseX = 20 + gUnknown_0201A4F0;
+    group0->baseY = 84 + gUnknown_0202A57C * 16;
+    groupOam = &group0->oam[0];
+    gOamBuffer[groupOam->oamId].priority = 2;
+    gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group0->baseX;
+    gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group0->baseY;
+
+    gUnknown_0202BF08 = 86 + gUnknown_0202ADE0 / 3;
+    group1->baseX = 13;
+    group1->baseY = gUnknown_0202BF08;
+    groupOam = &group1->oam[0];
+    gOamBuffer[groupOam->oamId].priority = 2;
+    gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group1->baseX;
+    gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group1->baseY;
+
+    if (group2->available == 1)
+    {
+        group2->baseX = 36;
+        group2->baseY = 36;
+        for (i = 0; i < 6; i++)
+        {
+            groupOam = &group2->oam[i];
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group2->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group2->baseY;
+        }
+    }
+
+    if (group3->available == 1)
+    {
+        group3->baseX = 36;
+        group3->baseY = 28;
+        for (i = 0; i < 4; i++)
+        {
+            groupOam = &group3->oam[i];
+            gOamBuffer[groupOam->oamId].tileNum = gUnknown_086A5DDA[gUnknown_0202BF14][i] +
+                                                  gUnknown_086A5DF2[gUnknown_0202BF14][gUnknown_0202BF0C];
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group3->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group3->baseY;
+        }
+    }
+
+    if (group4->available == 1)
+    {
+        group4->baseX = 48;
+        group4->baseY = 40;
+        for (i = 0; i < 4; i++)
+        {
+            groupOam = &group4->oam[i];
+            gOamBuffer[groupOam->oamId].tileNum = gUnknown_086A5DDA[1][i] +
+                                                  gUnknown_086A5E12[1][gUnknown_0202BF0C];
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group4->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group4->baseY;
+        }
+    }
+
+    if (group6->available == 1)
+    {
+        group6->baseX = 36;
+        group6->baseY = 64;
+        spriteSet = gUnknown_086A6148[5 + gUnknown_0201A448];
+        for (i = 0; i < spriteSet->count; i++)
+        {
+            groupOam = &group6->oam[i];
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group6->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group6->baseY;
+        }
+    }
+
+    if (group7->available == 1)
+    {
+        if (gUnknown_0202BEFC == 0 || gUnknown_0202BEFC == 4)
+        {
+            group7->baseX = 120;
+            group7->baseY = 100;
+        }
+        else
+        {
+            group7->baseX = 120;
+            group7->baseY = 80;
+        }
+
+        spriteSet = gUnknown_086A6148[17 + gUnknown_0202BEFC];
+        for (i = 0; i < spriteSet->count; i++)
+        {
+            groupOam = &group7->oam[i];
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group7->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group7->baseY;
+        }
+    }
+
+    if (group5->available == 1)
+    {
+        group5->baseX = 168;
+        group5->baseY = 84;
+        for (i = 0; i < 3; i++)
+        {
+            groupOam = &group5->oam[i];
+            gOamBuffer[groupOam->oamId].priority = 3;
+            gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group5->baseX;
+            gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group5->baseY;
+        }
+    }
+
+    group7->available = 0;
 }

@@ -2212,10 +2212,10 @@ gUnknown_086A5DDA:: @ 0x086A5DDA
 	.incbin "baserom.gba", 0x6A5DDA, 0x18
 
 gUnknown_086A5DF2:: @ 0x086A5DF2
-	.incbin "baserom.gba", 0x6A5DF2, 0x28
+	.incbin "baserom.gba", 0x6A5DF2, 0x20
 
-gUnknown_086A5E1A:: @ 0x086A5E1A
-	.incbin "baserom.gba", 0x6A5E1A, 0xC8
+gUnknown_086A5E12:: @ 0x086A5E12
+	.incbin "baserom.gba", 0x6A5E12, 0xD0
 
 gUnknown_086A5EE2:: @ 0x086A5EE2
 	.incbin "baserom.gba", 0x6A5EE2, 0x132
