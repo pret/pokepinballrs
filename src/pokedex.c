@@ -480,13 +480,9 @@ void sub_45A4(void)
     else
     {
         if (sub_8A78(gUnknown_0202ADE0) == 1)
-        {
             gUnknown_0202A588 = 1;
-        }
         else
-        {
             gUnknown_0202A588 = 0;
-        }
 
         gUnknown_0202A55C = 1;
         gUnknown_0202A568[0] = 0;

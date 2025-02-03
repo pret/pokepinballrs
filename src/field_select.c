@@ -8,6 +8,14 @@
 static void sub_8F94(void);
 static void sub_8C38(void);
 
+enum FieldSelectStates
+{
+    FIELD_SELECT_STATE_CHOOSE_FIELD,
+    FIELD_SELECT_STATE_1,
+    FIELD_SELECT_STATE_BALL_SPEED,
+    FIELD_SELECT_STATE_3,
+};
+
 struct FieldSelectData
 {
     u16 unk0;
@@ -71,7 +79,7 @@ static void sub_8C38(void)
     gFieldSelectData.unk4 = 0;
     gFieldSelectData.unk6 = 1;
     gFieldSelectData.selectedField = FIELD_RUBY;
-    gFieldSelectData.state = 0;
+    gFieldSelectData.state = FIELD_SELECT_STATE_CHOOSE_FIELD;
     gFieldSelectData.unkC = 0;
     gFieldSelectData.unkE = 0;
     gFieldSelectData.nextMainState = STATE_INTRO;
@@ -98,7 +106,7 @@ void sub_8C7C(void)
     {
         switch (gFieldSelectData.state)
         {
-        case 0:
+        case FIELD_SELECT_STATE_CHOOSE_FIELD:
             if (JOY_NEW(DPAD_LEFT))
             {
                 if (gFieldSelectData.selectedField == FIELD_SAPPHIRE)
@@ -107,7 +115,7 @@ void sub_8C7C(void)
                     gFieldSelectData.selectedField = FIELD_RUBY;
                     gFieldSelectData.unk4 = 0;
                     gFieldSelectData.unk6 = 1;
-                    gFieldSelectData.state = 1;
+                    gFieldSelectData.state = FIELD_SELECT_STATE_1;
                 }
             }
             else if (JOY_NEW(DPAD_RIGHT))
@@ -118,13 +126,13 @@ void sub_8C7C(void)
                     gFieldSelectData.selectedField = FIELD_SAPPHIRE;
                     gFieldSelectData.unk4 = 1;
                     gFieldSelectData.unk6 = 0;
-                    gFieldSelectData.state = 1;
+                    gFieldSelectData.state = FIELD_SELECT_STATE_1;
                 }
             }
             if (JOY_NEW(A_BUTTON))
             {
                 m4aSongNumStart(SE_UNKNOWN_0x65);
-                gFieldSelectData.state = 2;
+                gFieldSelectData.state = FIELD_SELECT_STATE_BALL_SPEED;
                 gFieldSelectData.unk14 = 1;
                 gFieldSelectData.unkE = 0;
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
@@ -171,7 +179,7 @@ void sub_8C7C(void)
             else
                 gMain.unk6 = 1;
             break;
-        case 2:  // Choose ball speed
+        case FIELD_SELECT_STATE_BALL_SPEED:
             if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
             {
                 m4aSongNumStart(SE_SELECT);
@@ -184,13 +192,13 @@ void sub_8C7C(void)
                 gFieldSelectData.unkC = 0;
                 gMain_saveData.ballSpeed = gFieldSelectData.ballSpeed;
                 SaveFile_WriteToSram();
-                gFieldSelectData.state = 3;
+                gFieldSelectData.state = FIELD_SELECT_STATE_3;
             }
             if (JOY_NEW(B_BUTTON))
             {
                 m4aSongNumStart(SE_UNKNOWN_0x66);
                 gFieldSelectData.unk14 = 0;
-                gFieldSelectData.state = 0;
+                gFieldSelectData.state = FIELD_SELECT_STATE_CHOOSE_FIELD;
             }
             gFieldSelectData.unkE++;
             if (gFieldSelectData.unkE > 4)
@@ -199,7 +207,7 @@ void sub_8C7C(void)
                 gFieldSelectData.unk12 = 1 - gFieldSelectData.unk12;
             }
             break;
-        case 1:
+        case FIELD_SELECT_STATE_1:
             if (gFieldSelectData.selectedField == FIELD_RUBY)
             {
                 gFieldSelectData.unk0 = gUnknown_086A6B14.unk0[4 - gFieldSelectData.unkC];
@@ -219,7 +227,7 @@ void sub_8C7C(void)
                 else
                 {
                     gFieldSelectData.unkC = 0;
-                    gFieldSelectData.state = 0;
+                    gFieldSelectData.state = FIELD_SELECT_STATE_CHOOSE_FIELD;
                 }
             }
             if (JOY_NEW(DPAD_LEFT))
@@ -233,7 +241,7 @@ void sub_8C7C(void)
                     gFieldSelectData.unk0 = 2;
                     gFieldSelectData.unk2 = 3;
                     gFieldSelectData.unkC = 0;
-                    gFieldSelectData.state = 0;
+                    gFieldSelectData.state = FIELD_SELECT_STATE_CHOOSE_FIELD;
                 }
             }
             else if (JOY_NEW(DPAD_RIGHT))
@@ -247,11 +255,11 @@ void sub_8C7C(void)
                     gFieldSelectData.unk0 = 7;
                     gFieldSelectData.unk2 = 11;
                     gFieldSelectData.unkC = 0;
-                    gFieldSelectData.state = 0;
+                    gFieldSelectData.state = FIELD_SELECT_STATE_CHOOSE_FIELD;
                 }
             }
             break;
-        case 3:
+        case FIELD_SELECT_STATE_3:
             gFieldSelectData.unkE++;
             if (gFieldSelectData.unkE > 3)
             {
