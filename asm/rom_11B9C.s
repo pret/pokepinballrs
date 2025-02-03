@@ -37029,7 +37029,7 @@ _0802453E:
 	adds r0, r0, r2
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_528DC
+	bl PlayCry_Normal
 _08024576:
 	ldr r2, [r4]
 	adds r0, r2, r5
@@ -44593,7 +44593,7 @@ _0802828A:
 	adds r0, r0, r2
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_528DC
+	bl PlayCry_Normal
 	ldr r0, [r4]
 	strh r5, [r0, #0x18]
 	b _080283FA
@@ -55854,7 +55854,7 @@ _0802DE7A:
 	adds r0, r0, r2
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_528DC
+	bl PlayCry_Normal
 _0802DEB0:
 	cmp r4, #0x40
 	beq _0802DEB6
