@@ -35,7 +35,7 @@ jobs:
 
       - name: Build pokepinballrs
         run: make -j$(nproc)\
-      
+
       - name: Webhook
         if: ${{ github.event_name == 'push' && github.repository_owner == 'pret' }}
         env:

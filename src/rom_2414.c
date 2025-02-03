@@ -17,12 +17,12 @@ void sub_24DC(void)
 {
     REG_RCNT = 0;
     REG_SIOCNT = 0;
-    
+
     REG_SIOMLT_SEND = 0;
     REG_SIOMULTI0 = 0;
     REG_SIOMLT_SEND = 0;
     REG_SIOMULTI0 = 0;
-    
+
     REG_SIOMULTI0 = 0;
     REG_SIOMULTI1 = 0;
     REG_SIOMULTI2 = 0;

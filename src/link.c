@@ -136,7 +136,7 @@ static void EnableSerial(void)
     REG_IME = 0;
     REG_IE |= INTR_FLAG_SERIAL;
     REG_IME = gLinkSavedIme;
-    
+
     REG_SIOMLT_SEND = 0; // TODO correct register name?
     *((u64 *) REG_ADDR_SIOMULTI0) = 0;
     CpuFill32(0, &gLink, sizeof(gLink));
@@ -172,7 +172,7 @@ static void sub_19CC(void) // TODO
     {
         CpuSet(gOamBuffer, (void *) 0x7000000, 0x200);
         REG_DISPCNT = gMain.unk16;
-        
+
         REG_BG0HOFS = gMain.unk2E8[0].unk0;
         REG_BG0VOFS = gMain.unk2E8[0].unk2;
         REG_BG1HOFS = gMain.unk2E8[1].unk0;
@@ -320,7 +320,7 @@ static void CheckMasterOrSlave(void)
 {
     u32 terminals;
     terminals = *(vu32 *)REG_ADDR_SIOCNT & (SIO_MULTI_SD | SIO_MULTI_SI);
-    
+
     if (terminals == SIO_MULTI_SD && gLink.localId == 0)
     {
         gLink.isMaster = 8;
@@ -349,7 +349,7 @@ static void EnqueueSendCmd(u16 *sendCmd)
 
     gLinkSavedIme = REG_IME;
     REG_IME = 0;
-    
+
     if (gLink.sendQueue.count < QUEUE_CAPACITY)
     {
         offset = gLink.sendQueue.pos + gLink.sendQueue.count;
@@ -546,7 +546,7 @@ static bool8 DoHandshake(void)
     gLink.handshakeAsMaster = FALSE;
     *(u64 *)gLink.handshakeBuffer = REG_SIOMLT_RECV;
     //REG_SIOMLT_RECV = 0;
-    
+
     for (i = 0; i < MAX_LINK_PLAYERS; i++)
     {
         if ((gLink.handshakeBuffer[i] & ~0x3) == (SLAVE_HANDSHAKE & ~3) || gLink.handshakeBuffer[i] == MASTER_HANDSHAKE)

@@ -14,7 +14,7 @@ void sub_8974(s32 arg0)
     s32 quotient;
     s16 remainder;
     s16 var1;
-    
+
     if (var0 != -1)
     {
         if (var0 < 100)
@@ -23,7 +23,7 @@ void sub_8974(s32 arg0)
             quotient = var0 / 5;
             remainder = var0 % 5;
             var1 = (s16) var0;
-            
+
             sub_10708(___ + remainder * 0xD80, (void *)(OBJ_VRAM0 + 0x3800), 0x6C, 1);
         }
         else
@@ -32,7 +32,7 @@ void sub_8974(s32 arg0)
             quotient = (var0 - 100) / 6;
             remainder = (var0 - 100) / 6;
             var1 = (s16) var0;
-            
+
             sub_10708((void *)(gMonHatchSpriteGroupGfx[var1] + remainder * 0x10E0), (void *)(OBJ_VRAM0 + 0x4800), 0x87, 1);
         }
     }
@@ -41,16 +41,12 @@ void sub_8974(s32 arg0)
 s16 sub_8A78(s32 arg0)
 {
     s16 var0 = (s16) arg0;
-    
+
     if ((gUnknown_0202A1C0[var0] == 4) && (gUnknown_086A61BC[var0] != -1))
-    {
         gUnknown_0202A588 = 1;
-    }
     else
-    {
         gUnknown_0202A588 = 0;
-    }
-    
+
     return gUnknown_0202A588;
 }
 

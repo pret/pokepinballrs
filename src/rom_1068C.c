@@ -111,7 +111,7 @@ void sub_10860(void (*func)(void))
 void ClearSomeArray(void)
 {
     int i;
-    
+
     for (i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
         gUnknown_0201A500[i] = 0;
 }
