@@ -83,10 +83,12 @@ static void sub_8C38(void)
     gUnknown_02002850 = 0;
 }
 
+#define RESTART_GAME_BUTTONS (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)
+
 void sub_8C7C(void)
 {
     sub_8F94();
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         gUnknown_02002850 = 1;
         gFieldSelectData.nextMainState = STATE_INTRO;

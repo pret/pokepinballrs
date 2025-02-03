@@ -845,7 +845,7 @@ void sub_4F50(void)
 
 void sub_4FC8(void)
 {
-    if (JOY_HELD_EXACT(L_BUTTON | DPAD_LEFT) && JOY_NEW(R_BUTTON))
+    if (JOY_HELD(L_BUTTON | DPAD_LEFT) == (L_BUTTON | DPAD_LEFT) && JOY_NEW(R_BUTTON))
     {
         gUnknown_02002830 = 40;
         if (++gUnknown_02002831 == 3)

@@ -13,6 +13,8 @@ static void sub_11640(void);
 // it will transition to a demo gameplay experience.
 #define NUM_IDLE_FRAMES 1800
 
+#define RESTART_GAME_BUTTONS (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)
+
 enum
 {
     SUBSTATE_LOAD_GRAPHICS = 0,
@@ -124,7 +126,7 @@ void sub_10AC0(void)
     gTitlescreen.idleFramesCounter = 0;
     gTitlescreen.idleFadeoutCounter = 1;
     gUnknown_020028A4 = 0;
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
         gUnknown_020028A5 = 1;
     else
         gUnknown_020028A5 = 0;
@@ -134,7 +136,7 @@ void sub_10AC0(void)
 
 void TitleScreen1_WaitForStartButton(void)
 {
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         if (!gUnknown_020028A5)
         {
@@ -195,7 +197,7 @@ void TitleScreen1_WaitForStartButton(void)
 
 void TitleScreen2_8010CF0(void)
 {
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -225,7 +227,7 @@ void TitleScreen2_8010CF0(void)
 
 void TitleScreen9_8010D84(void)
 {
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -256,7 +258,7 @@ void TitleScreen9_8010D84(void)
 
 void TitleScreen3_8010E00(void)
 {
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -306,7 +308,7 @@ void TitleScreen3_8010E00(void)
 
 void TitleScreen4_MenuInputNoSavedGame(void)
 {
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -364,7 +366,7 @@ void TitleScreen4_MenuInputNoSavedGame(void)
 
 void TitleScreen7_8011020(void)
 {
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -405,7 +407,7 @@ void TitleScreen7_8011020(void)
 
 void TitleScreen5_MenuInputSavedGame(void)
 {
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -463,7 +465,7 @@ void TitleScreen5_MenuInputSavedGame(void)
 
 void TitleScreen8_8011228(void)
 {
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -510,7 +512,7 @@ void TitleScreen8_8011228(void)
 
 void TitleScreen6_AnimCloseMenu(void)
 {
-    if (JOY_HELD_EXACT(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+    if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
@@ -596,7 +598,7 @@ void TitleScreen11_80114B4(void)
 static void sub_114FC(void)
 {
     // To delete save file, press R_BUTTON 3 times while holding L_BUTTON And DPAD_LEFT.
-    if (JOY_HELD_EXACT(L_BUTTON | DPAD_LEFT))
+    if (JOY_HELD(L_BUTTON | DPAD_LEFT) == (L_BUTTON | DPAD_LEFT))
     {
         if (JOY_NEW(R_BUTTON))
         {
@@ -626,7 +628,7 @@ static void sub_1157C(void)
 {
     // To access the e-reader screen, alternate pressing R_BUTTON and L_BUTTON 6 times while holding DPAD_RIGHT.
     s16 buttonMask = gEReaderAccessButtonSequence[gEReaderAccessStep];
-    if (JOY_HELD(DPAD_RIGHT) && JOY_NEW_EXACT(buttonMask))
+    if (JOY_HELD(DPAD_RIGHT) && JOY_NEW(buttonMask) == buttonMask)
     {
         gEReaderAccessCounter = 40;
         gEReaderAccessStep++;
