@@ -880,7 +880,7 @@ void sub_DD4C(void)
     m4aMPlayAllStop();
     sub_0D10();
     gAutoDisplayTitlescreenMenu = 1;
-    SetMainGameState(1);
+    SetMainGameState(STATE_TITLE);
 }
 
 void sub_DD70(void)
@@ -1091,9 +1091,9 @@ void sub_E230(void)
 void sub_E390(void)
 {
     sub_02B4();
-	m4aMPlayAllStop();
-	sub_0D10();
-	SetMainGameState(8);
+    m4aMPlayAllStop();
+    sub_0D10();
+    SetMainGameState(STATE_SCORES_MAIN);
 }
 
 void sub_E3A8(void)
