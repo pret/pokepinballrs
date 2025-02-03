@@ -122,7 +122,7 @@ sub_599C: @ 0x0800599C
 	adds r0, r0, r5
 	strb r0, [r1]
 	ldr r5, _08005D44 @ =gUnknown_0202BF08
-	ldr r0, _08005D48 @ =gUnknown_0202ADE0
+	ldr r0, _08005D48 @ =gPokedexSelectedMon
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	movs r1, #3
@@ -466,7 +466,7 @@ _08005D38: .4byte gOamBuffer
 _08005D3C: .4byte 0x000001FF
 _08005D40: .4byte 0xFFFFFE00
 _08005D44: .4byte gUnknown_0202BF08
-_08005D48: .4byte gUnknown_0202ADE0
+_08005D48: .4byte gPokedexSelectedMon
 _08005D4C: .4byte gUnknown_0202BF0C
 _08005D50: .4byte gUnknown_086A5DF2
 _08005D54: .4byte 0xFFFFFC00
@@ -2774,7 +2774,7 @@ sub_6F78: @ 0x08006F78
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r1, _08006FBC @ =gUnknown_0202A1C0
-	ldr r0, _08006FC0 @ =gUnknown_0202ADE0
+	ldr r0, _08006FC0 @ =gPokedexSelectedMon
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	lsls r0, r0, #1
@@ -2805,7 +2805,7 @@ _08006FB0:
 	mov pc, r0
 	.align 2, 0
 _08006FBC: .4byte gUnknown_0202A1C0
-_08006FC0: .4byte gUnknown_0202ADE0
+_08006FC0: .4byte gPokedexSelectedMon
 _08006FC4: .4byte _08006FC8
 _08006FC8: @ jump table
 	.4byte _08006FDC @ case 0

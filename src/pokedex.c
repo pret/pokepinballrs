@@ -59,12 +59,12 @@ void LoadPokedexGraphics(void)
 
     sub_3FAC();
     sub_6BEC(gUnknown_0202BEB8, gUnknown_0201A514);
-    sub_681C(gUnknown_0202ADE0);
+    sub_681C(gPokedexSelectedMon);
     sub_6CA0(gUnknown_0202C5B0);
     sub_6F30(gUnknown_0202C5B0);
-    sub_6F78(gUnknown_0202ADE0);
-    sub_8974(gUnknown_0202ADE0);
-    sub_8A78(gUnknown_0202ADE0);
+    sub_6F78(gPokedexSelectedMon);
+    sub_8974(gPokedexSelectedMon);
+    sub_8A78(gPokedexSelectedMon);
 
     gUnknown_02019C40[0x134] = 0x59;
 
@@ -85,7 +85,7 @@ void sub_3FAC(void)
 {
     s32 i;
 
-    gUnknown_0202ADE0 = 0;
+    gPokedexSelectedMon = 0;
     gUnknown_0202C5B0 = 0;
     gUnknown_0201A448 = 0;
     gUnknown_0202BF00 = 0;
@@ -204,7 +204,7 @@ void sub_4150(void)
         {
             gUnknown_0202C5E8 = 0;
 
-            if (gUnknown_0202A1C0[gUnknown_0202ADE0] >= 2)
+            if (gUnknown_0202A1C0[gPokedexSelectedMon] >= 2)
             {
                 gUnknown_0202BF04 = 0;
                 DmaCopy16(3, 0x6000280, (void *)gUnknown_0202A590, 0x200);
@@ -245,7 +245,7 @@ void sub_4150(void)
             gUnknown_02019C24 = 0;
         }
 
-        if (sub_8A78(gUnknown_0202ADE0) == 1)
+        if (sub_8A78(gPokedexSelectedMon) == 1)
             gUnknown_0202A588 = 1;
         else
             gUnknown_0202A588 = 0;
@@ -260,7 +260,7 @@ void sub_4150(void)
         {
             gUnknown_0202C5E8 = 0;
 
-            if (gUnknown_0202A1C0[gUnknown_0202ADE0] >= 2)
+            if (gUnknown_0202A1C0[gPokedexSelectedMon] >= 2)
             {
                 gUnknown_0202BF04 = 0;
                 DmaCopy16(3, 0x6000280, (void *)gUnknown_0202A590, 0x200);
@@ -337,13 +337,13 @@ void sub_4428(void)
         gUnknown_02019C28 = 0;
         gUnknown_0202C5AC = 0;
 
-        if (gUnknown_0202ADE0 < BONUS_SPECIES_START)
+        if (gPokedexSelectedMon < BONUS_SPECIES_START)
             gUnknown_0201C1B4 = 1;
 
         DmaCopy16(3, gUnknown_08086B40, (void *)0x6000280, 2*0xE0);
-        sub_70E0(gUnknown_0202ADE0, gUnknown_0202C794);
+        sub_70E0(gPokedexSelectedMon, gUnknown_0202C794);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
-        PlayCry_NormalNoDucking(gSpeciesInfo[gUnknown_0202ADE0].mainSeriesIndexNumber, 0, 127, 10);
+        PlayCry_NormalNoDucking(gSpeciesInfo[gPokedexSelectedMon].mainSeriesIndexNumber, 0, 127, 10);
         gMain.subState = 5;
     }
 
@@ -371,34 +371,34 @@ void sub_45A4(void)
 
     if (JOY_NEW(DPAD_UP))
     {
-        if ((gUnknown_0202ADE0 < BONUS_SPECIES_START) && (gUnknown_0202C794 == 1))
+        if ((gPokedexSelectedMon < BONUS_SPECIES_START) && (gUnknown_0202C794 == 1))
         {
             m4aSongNumStart(SE_UNKNOWN_0x6D);
             gUnknown_0202C794 = 0;
-            sub_70E0(gUnknown_0202ADE0, 0);
+            sub_70E0(gPokedexSelectedMon, 0);
             gUnknown_02019C28 = gUnknown_0202C794;
         }
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
-        if ((gUnknown_0202ADE0 < BONUS_SPECIES_START) && (gUnknown_0202C794 == 0))
+        if ((gPokedexSelectedMon < BONUS_SPECIES_START) && (gUnknown_0202C794 == 0))
         {
             m4aSongNumStart(SE_UNKNOWN_0x6D);
             gUnknown_0202C794 = 1;
-            sub_70E0(gUnknown_0202ADE0, 1);
+            sub_70E0(gPokedexSelectedMon, 1);
             gUnknown_02019C28 = gUnknown_0202C794;
         }
     }
 
     if (JOY_NEW(A_BUTTON))
     {
-        if (gUnknown_0202ADE0 < BONUS_SPECIES_START)
+        if (gPokedexSelectedMon < BONUS_SPECIES_START)
         {
             if (!gUnknown_0202C794)
             {
                 m4aSongNumStart(SE_UNKNOWN_0x6D);
                 gUnknown_0202C794 = 1 - gUnknown_0202C794;
-                sub_70E0(gUnknown_0202ADE0,gUnknown_0202C794);
+                sub_70E0(gPokedexSelectedMon,gUnknown_0202C794);
                 gUnknown_02019C28 = gUnknown_0202C794;
             }
             else
@@ -426,9 +426,9 @@ void sub_45A4(void)
 
     if (JOY_HELD(SELECT_BUTTON))
     {
-        if (gUnknown_0202A1C0[gUnknown_0202ADE0] == 4)
+        if (gUnknown_0202A1C0[gPokedexSelectedMon] == 4)
         {
-            if (gUnknown_086A61BC[gUnknown_0202ADE0] == -1)
+            if (gUnknown_086A61BC[gPokedexSelectedMon] == -1)
             {
                 gUnknown_0202A588 = 0;
                 gUnknown_0202A55C = 1;
@@ -439,7 +439,7 @@ void sub_45A4(void)
             }
             else
             {
-                if (gUnknown_086A61BC[gUnknown_0202ADE0] < 100)
+                if (gUnknown_086A61BC[gPokedexSelectedMon] < 100)
                 {
                     gUnknown_0202A588 = 0;
                     gUnknown_0202A55C = 0;
@@ -465,7 +465,7 @@ void sub_45A4(void)
     }
     else
     {
-        if (sub_8A78(gUnknown_0202ADE0) == 1)
+        if (sub_8A78(gPokedexSelectedMon) == 1)
             gUnknown_0202A588 = 1;
         else
             gUnknown_0202A588 = 0;
@@ -729,7 +729,7 @@ static void sub_4D74(void)
             if (gUnknown_02019C24 == 0)
             {
                 gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
-                gUnknown_0202ADE0 = gUnknown_0202A574 - 1;
+                gPokedexSelectedMon = gUnknown_0202A574 - 1;
                 gUnknown_0202A57C = 4;
                 m4aSongNumStart(SE_SELECT);
             }
@@ -737,7 +737,7 @@ static void sub_4D74(void)
         else
         {
             gUnknown_0202C5B0--;
-            gUnknown_0202ADE0--;
+            gPokedexSelectedMon--;
             m4aSongNumStart(SE_SELECT);
         }
 
@@ -747,7 +747,7 @@ static void sub_4D74(void)
     {
         m4aSongNumStart(SE_SELECT);
         gUnknown_0202A57C--;
-        gUnknown_0202ADE0--;
+        gPokedexSelectedMon--;
 
         gUnknown_0202C58C = 9;
     }
@@ -769,7 +769,7 @@ static void sub_4E34(void)
             if (gUnknown_02019C24 == 0)
             {
                 gUnknown_0202C5B0 = 0;
-                gUnknown_0202ADE0 = 0;
+                gPokedexSelectedMon = 0;
                 gUnknown_0202A57C = 0;
                 m4aSongNumStart(SE_SELECT);
             }
@@ -777,7 +777,7 @@ static void sub_4E34(void)
         else
         {
             gUnknown_0202C5B0++;
-            gUnknown_0202ADE0++;
+            gPokedexSelectedMon++;
             m4aSongNumStart(SE_SELECT);
         }
 
@@ -787,7 +787,7 @@ static void sub_4E34(void)
     {
         m4aSongNumStart(SE_SELECT);
         gUnknown_0202A57C++;
-        gUnknown_0202ADE0++;
+        gPokedexSelectedMon++;
         gUnknown_0202C58C = 9;
     }
 
@@ -809,7 +809,7 @@ static void sub_4EF0(void)
     if (gUnknown_0202C5B0 < 0)
         gUnknown_0202C5B0 = 0;
 
-    gUnknown_0202ADE0 = gUnknown_0202C5B0 + gUnknown_0202A57C;
+    gPokedexSelectedMon = gUnknown_0202C5B0 + gUnknown_0202A57C;
     gUnknown_0202C58C = 9;
 }
 
@@ -828,7 +828,7 @@ void sub_4F50(void)
     if (gUnknown_0202C5B0 > gUnknown_0202A574 - 5)
         gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
 
-    gUnknown_0202ADE0 = gUnknown_0202C5B0 + gUnknown_0202A57C;
+    gPokedexSelectedMon = gUnknown_0202C5B0 + gUnknown_0202A57C;
     gUnknown_0202C58C = 9;
 }
 
@@ -863,9 +863,9 @@ void sub_4FC8(void)
 
 void sub_5064(void)
 {
-    if (gUnknown_0202A1C0[gUnknown_0202ADE0] == 4)
+    if (gUnknown_0202A1C0[gPokedexSelectedMon] == 4)
     {
-        if (gUnknown_086A61BC[gUnknown_0202ADE0] == -1)
+        if (gUnknown_086A61BC[gPokedexSelectedMon] == -1)
         {
             gUnknown_0202A588 = 0;
             gUnknown_0202A55C = 1;
@@ -874,7 +874,7 @@ void sub_5064(void)
             gUnknown_0201A440 = 0;
             gUnknown_0202BF0C = 0;
         }
-        else if (gUnknown_086A61BC[gUnknown_0202ADE0] < 100)
+        else if (gUnknown_086A61BC[gPokedexSelectedMon] < 100)
         {
             gUnknown_0202A588 = 0;
             gUnknown_0202A55C = 0;
@@ -900,9 +900,9 @@ void sub_5064(void)
 
 u8 sub_5134(void)
 {
-    if (gUnknown_0202A1C0[gUnknown_0202ADE0] == 4 && gUnknown_086A61BC[gUnknown_0202ADE0] != -1)
+    if (gUnknown_0202A1C0[gPokedexSelectedMon] == 4 && gUnknown_086A61BC[gPokedexSelectedMon] != -1)
     {
-        if (gUnknown_086A61BC[gUnknown_0202ADE0] < 100)
+        if (gUnknown_086A61BC[gPokedexSelectedMon] < 100)
             return 1;
 
         return 2;
@@ -915,10 +915,10 @@ void sub_5174(void)
 {
     sub_6CA0(gUnknown_0202C5B0);
     sub_6F30(gUnknown_0202C5B0);
-    sub_681C(gUnknown_0202ADE0);
-    sub_6F78(gUnknown_0202ADE0);
-    sub_8974(gUnknown_0202ADE0);
-    sub_8A78(gUnknown_0202ADE0);
+    sub_681C(gPokedexSelectedMon);
+    sub_6F78(gPokedexSelectedMon);
+    sub_8974(gPokedexSelectedMon);
+    sub_8A78(gPokedexSelectedMon);
     gUnknown_0202BF00 = 0;
     gUnknown_0201A448 = 0;
 }
@@ -926,9 +926,9 @@ void sub_5174(void)
 void sub_51CC(void)
 {
     if (sub_5134() == 0)
-        sub_6F78(gUnknown_0202ADE0);
+        sub_6F78(gPokedexSelectedMon);
     else
-        sub_8974(gUnknown_0202ADE0);
+        sub_8974(gPokedexSelectedMon);
 }
 
 void sub_51FC(void)
@@ -978,8 +978,8 @@ void sub_51FC(void)
     gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group0->baseX;
     gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group0->baseY;
 
-    if (gUnknown_0202ADE0 < 200)
-        gUnknown_0202BF08 = 86 + gUnknown_0202ADE0 / 3;
+    if (gPokedexSelectedMon < 200)
+        gUnknown_0202BF08 = 86 + gPokedexSelectedMon / 3;
     else
         gUnknown_0202BF08 = 152;
 
@@ -1028,7 +1028,7 @@ void sub_51FC(void)
 
     if (group4->available == 1)
     {
-        if (gUnknown_086A6356[gUnknown_0202ADE0] == -1)
+        if (gUnknown_086A6356[gPokedexSelectedMon] == -1)
         {
             var0 = 1;
             var1 = 36;
