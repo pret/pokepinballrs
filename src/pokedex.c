@@ -733,7 +733,7 @@ void sub_4D50(void)
     sub_0D10();
 
     gAutoDisplayTitlescreenMenu = 1;
-    SetMainGameState(1);
+    SetMainGameState(STATE_TITLE);
 }
 
 static void sub_4D74(void)

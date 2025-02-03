@@ -45,7 +45,7 @@
 #define MUS_SUCCESS3                0x2B  // Copy of MUS_SUCCESS?
 #define MUS_END_OF_BALL3            0x2C  // Copy of MUS_END_OF_BALL?
 #define MUS_EMPTY_0x2D              0x2D  // No sound
-#define MUS_POKEDEX                 0x2E
+#define MUS_POKEDEX                 0x2E  // RS: Evergrande City
 #define MUS_JIRACHI                 0x2F  // RS: Hall of Fame
 
 #define SE_UNKNOWN_0x5B             0x5B

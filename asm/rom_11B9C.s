@@ -1,3 +1,4 @@
+#include "constants/global.h"
 #include "constants/bg_music.h"
 	.include "asm/macros.inc"
 
@@ -14885,7 +14886,7 @@ _080192A4:
 	ldr r0, [r2, #0x54]
 	cmp r0, r1
 	bhs _080192EC
-	movs r0, #1
+	movs r0, STATE_TITLE
 	bl SetMainGameState
 	b _080192F2
 	.align 2, 0
@@ -14893,7 +14894,7 @@ _080192E0: .4byte gMain
 _080192E4: .4byte gUnknown_02031520
 _080192E8: .4byte 0x00000141
 _080192EC:
-	movs r0, #9
+	movs r0, STATE_SCORES_IDLE
 	bl SetMainGameState
 _080192F2:
 	ldr r1, _08019300 @ =gMain
