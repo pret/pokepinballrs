@@ -209,6 +209,18 @@ my $nonmatching_count = $nonmatching_as_string + 0;
 (($nonmatching_count != 0) and ($nonmatching_as_string ne "0"))
     or die "ERROR: Cannot convert string to num: '$nonmatching_as_string'";
 
+my $expected_objs_cmd = "ls -1 expected_objs/";
+my $expected_objs_as_string;
+(run (
+    command => "$expected_objs_cmd | $count_cmd",
+    buffer => \$expected_objs_as_string,
+    timeout => 60
+))
+    or die "ERROR: Error while calculating asm_unified totals: $?";
+my $expected_objs_count = $expected_objs_as_string + 0;
+(($expected_objs_count != 0) and ($expected_objs_as_string ne "0"))
+    or die "ERROR: Cannot convert string to num: '$expected_objs_as_string'";
+
 
 
 my $total = $src + $lib + $asm;
@@ -227,6 +239,7 @@ else
     printf "%8d bytes of code in asm (%.4f%%)\n", $asm, $asmPct;
     printf "%8d functions remain\n", $functions_remaining_count;
     printf "%8d functions use asm_unified\n", $nonmatching_count;
+    printf "%8d expected_objs\n", $expected_objs_count;
 }
 print "\n";
 
