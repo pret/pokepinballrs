@@ -209,7 +209,7 @@ u8 *sub_06CC(int arg0, u8 *arg1, int arg2, s16 arg3)
     {
         if (arg2 < 2)
             break;
-        
+
         arg2--;
         if (arg0 < sub_0780(10, arg2))
         {

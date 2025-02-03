@@ -193,7 +193,7 @@ void sub_9498(void) {
     REG_DISPCNT |= (DISPCNT_BG2_ON);
     REG_BG3CNT = 0x1f03;
     REG_DISPCNT |= (DISPCNT_BG3_ON);
-    
+
     DmaCopy16(3, gUnknown_080B9CC0, 0x0600d000, BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_080BC4C0, 0x0600d800, 0x1000);
     DmaCopy16(3, gUnknown_080BB4C0, 0x0600e800 , 0x1000);
@@ -266,10 +266,10 @@ void sub_96A8(void)
 void sub_978C(void)
 {
     sub_9CB8();
-    
+
     if (gUnknown_0201A450[0].unk8 == 0x24) {
         gUnknown_0201A450[0].unkA++;
-        
+
         if (0x1b < gUnknown_0201A450[0].unkA) {
             gUnknown_0201A450[0].unkA = 0;
             gUnknown_0202A578 = 0;
@@ -278,12 +278,12 @@ void sub_978C(void)
     }
     else {
         gUnknown_0201A450[0].unkA++;
-        
+
         if (1 < gUnknown_0201A450[0].unkA) {
             gUnknown_0201A450[0].unkA = 0;
             gUnknown_0201A450[0].unk8++;
         }
-        
+
         if (gUnknown_0202BF10 >= gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][1]) {
             m4aSongNumStart(gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][0]);
             gUnknown_0202A578 = gUnknown_0202A578 + 1;
@@ -415,7 +415,7 @@ void sub_999C(void)
             gUnknown_0202C790++;
         }
     }
-    
+
     sub_9E90();
 }
 
@@ -602,7 +602,7 @@ void sub_9E90(void)
         puVar1->baseX = gUnknown_0201A450[1].unk0;
         puVar1->baseY = gUnknown_0201A450[1].unk2;
         p = &gUnknown_086A769C[gUnknown_0201A450[1].unk8]->count;
-        
+
         for (i = 0;
             i < *p;
             i++)
@@ -831,7 +831,7 @@ void sub_A628(void)
 {
     gUnknown_0202ADA0[0x0] = 0x2C;
     gUnknown_0202ADA0[0x1] = 0xFF8E;
-    
+
     gUnknown_0201A450[0].unk0 = 0xFFD4;
     gUnknown_0201A450[0].unk2 = 0x72;
 
@@ -989,7 +989,7 @@ void sub_A968(void)
     DmaCopy16(3, gUnknown_080E1F40, (void *) 0x6000000, 0x4000);
     DmaCopy16(3, gUnknown_080E1540, PLTT, 0x60);
     gMain.unk16 = REG_DISPCNT;
-    
+
     sub_AAA8();
     gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
     gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
@@ -1190,7 +1190,7 @@ void sub_AE74(void)
     gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
     gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
     gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    
+
     gUnknown_0202ADA0[0x10]++;
     if (9 < gUnknown_0202ADA0[0x10])
     {
@@ -1262,7 +1262,7 @@ void sub_B0E8(void)
     struct SpriteGroup *mainSg0;
     struct SpriteGroup *mainSg2;
     int i;
-    
+
     gMain.blendControl = 0xF10;
     gMain.blendAlpha = BLDALPHA_BLEND(8, 8);
     REG_BLDCNT = gMain.blendControl;
@@ -1505,7 +1505,7 @@ void sub_B7A0(void)
     ClearSprites();
     DmaFill32(3, 0, OAM, 0x400);
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
-    
+
     sub_10480();
     sub_10544();
     gUnknown_0202C790++;
@@ -1532,7 +1532,7 @@ void sub_B7F8(void)
     spriteGroups[3]->available = gUnknown_0201A450[3].unkC;
     spriteGroups[4]->available = gUnknown_0201A450[4].unkC;
     spriteGroups[5]->available = gUnknown_0201A450[5].unkC;
-    
+
     LoadSpriteSets(gUnknown_086A7A78, 0x12, &gMain.spriteGroups[0]);
     for (i = 0; i < 6; i++)
     {
@@ -2118,7 +2118,7 @@ void sub_BED0(void)
 void sub_C018(void)
 {
     int remainder;
-    
+
     gUnknown_0202ADA0[0x12]--;
     gUnknown_0202ADA0[0x13]--;
 
@@ -2304,7 +2304,7 @@ void sub_C3D0(void)
 void sub_C450(void)
 {
     sub_C4F0();
-    
+
     if ((gUnknown_0202BF10 % 2) == 0)
     {
         gUnknown_0201A450[1].unk0++;

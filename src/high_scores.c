@@ -996,8 +996,8 @@ void sub_DF68(void)
 void sub_E0C4(void)
 {
     sub_02B4();
-	m4aMPlayAllStop();
-	sub_0D10();
+    m4aMPlayAllStop();
+    sub_0D10();
     SetMainGameState(gUnknown_02002858.unk24);
 }
 

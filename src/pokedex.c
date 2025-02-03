@@ -50,7 +50,7 @@ void PokedexMain(void)
 void LoadPokedexGraphics(void)
 {
     ResetSomeGraphicsRelatedStuff();
-    
+
     REG_DISPCNT = DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_FORCED_BLANK | DISPCNT_OBJ_ON;
     REG_BG1CNT = BGCNT_PRIORITY(1) | BGCNT_CHARBASE(1) | BGCNT_16COLOR | BGCNT_SCREENBASE(0) | BGCNT_TXT256x256;
     REG_DISPCNT |= DISPCNT_BG1_ON;
@@ -58,9 +58,9 @@ void LoadPokedexGraphics(void)
     REG_DISPCNT |= DISPCNT_BG2_ON;
     REG_BG3CNT = BGCNT_PRIORITY(3) | BGCNT_CHARBASE(3) | BGCNT_16COLOR | BGCNT_SCREENBASE(2) | BGCNT_TXT256x256;
     REG_DISPCNT |= DISPCNT_BG3_ON;
-    
+
     gMain.unk16 = REG_DISPCNT;
-    
+
     DmaCopy16(3, gUnknown_08082720, (void *)BG_CHAR_ADDR(1), 0x4400);
     DmaCopy16(3, gUnknown_08087B40, (void *)BG_CHAR_ADDR(3), 0x1400);
     DmaCopy16(3, gUnknown_08089760, (void *)BG_PLTT, BG_PLTT_SIZE);
@@ -69,7 +69,7 @@ void LoadPokedexGraphics(void)
     DmaCopy16(3, gUnknown_08088F60, (void *)BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_08089960, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, gUnknown_08089B60, (void *)OBJ_VRAM0, 0x6C20);
-    
+
     sub_3FAC();
     sub_6BEC(gUnknown_0202BEB8, gUnknown_0201A514);
     sub_681C(gUnknown_0202ADE0);
@@ -78,26 +78,26 @@ void LoadPokedexGraphics(void)
     sub_6F78(gUnknown_0202ADE0);
     sub_8974(gUnknown_0202ADE0);
     sub_8A78(gUnknown_0202ADE0);
-    
+
     gUnknown_02019C40[0x134] = 0x59;
-    
+
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_02019C40, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
-    
+
     sub_51FC();
     sub_0CBC();
     sub_024C();
-    
+
     // Must be `= 1` to match, cannot be `++`
     gMain.subState = 1;
-    
+
     m4aSongNumStart(MUS_POKEDEX);
 }
 
 void sub_3FAC(void)
 {
     s32 i;
-    
+
     gUnknown_0202ADE0 = 0;
     gUnknown_0202C5B0 = 0;
     gUnknown_0201A448 = 0;
@@ -113,10 +113,10 @@ void sub_3FAC(void)
     gUnknown_0202BEF4 = 0;
     gUnknown_0202A588 = 1;
     gUnknown_0202A55C = 1;
-    
+
     gUnknown_0202A568[0] = 0;
     gUnknown_0202A568[1] = 0;
-    
+
     gUnknown_0202BF14 = 0;
     gUnknown_0202A558 = 0;
     gUnknown_0202BEE0 = 0;
@@ -259,13 +259,9 @@ void sub_4150(void)
         }
 
         if (sub_8A78(gUnknown_0202ADE0) == 1)
-        {
             gUnknown_0202A588 = 1;
-        }
         else
-        {
             gUnknown_0202A588 = 0;
-        }
 
         gUnknown_0202A55C = 1;
         gUnknown_0202A568[0] = 0;
@@ -340,7 +336,7 @@ void sub_4428(void)
         gUnknown_02019C40[0x20*(gUnknown_0202A558 + 9) + i] = gUnknown_0805C780[i];
         gUnknown_02019C40[0x20*(gUnknown_0202A558 + 10) + i] = gUnknown_0805C7C0[i];
     }
-    
+
     gUnknown_0202A558++;
     gUnknown_02019C40[0x134] = 0x59;
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
@@ -364,13 +360,13 @@ void sub_4428(void)
         sub_5291C(gSpeciesInfo[gUnknown_0202ADE0].mainSeriesIndexNumber, 0, 0x7F, 10);
         gMain.subState = 5;
     }
-    
+
 }
 
 void sub_45A4(void)
 {
     u16 var0;
-    
+
     if (gUnknown_0202C5E8 < 0x51)
     {
         gUnknown_0202C5E8++;
@@ -407,7 +403,7 @@ void sub_45A4(void)
             gUnknown_02019C28 = gUnknown_0202C794;
         }
     }
-    
+
     if (JOY_NEW(A_BUTTON))
     {
         if (gUnknown_0202ADE0 < BONUS_SPECIES_START)
@@ -505,7 +501,7 @@ void sub_45A4(void)
 void sub_4860(void)
 {
     s32 i;
-    
+
     for (i = 0; i < 0x20; i++)
     {
         gUnknown_02019C40[0x20 * (0x11 - gUnknown_0202A558) + i] = gUnknown_0805C7C0[i];
@@ -549,7 +545,7 @@ void sub_49A8(void)
 void sub_49D0(void)
 {
     s16 var0;
-    
+
     sub_599C();
 
     if (JOY_NEW(B_BUTTON))
@@ -607,7 +603,7 @@ void sub_49D0(void)
 void sub_4B10(void)
 {
     gUnknown_0201A444++;
-    
+
     if (2 < gUnknown_0201A444) {
         gUnknown_0201A444 = 0;
         gMain.subState = 6;
@@ -617,7 +613,7 @@ void sub_4B10(void)
 void sub_4B34(void)
 {
     s32 iVar1;
-    
+
     sub_599C();
     gUnknown_0201B120++;
 
@@ -628,7 +624,7 @@ void sub_4B34(void)
         gUnknown_0202BEFC = 0;
         gUnknown_0202BF04 = 1;
         gUnknown_0202A588 = 1;
-        
+
         sub_2568();
         DisableSerial();
 
@@ -636,7 +632,7 @@ void sub_4B34(void)
         {
             gUnknown_0202A390[iVar1] = gUnknown_0202A1C0[iVar1];
         }
-        
+
         sub_02B4();
         m4aMPlayAllStop();
         sub_0D10();
@@ -647,7 +643,7 @@ void sub_4B34(void)
 void sub_4BB4(void)
 {
     s32 index;
-    
+
     sub_599C();
     switch(gUnknown_0201B120)
     {
@@ -663,7 +659,7 @@ void sub_4BB4(void)
             gUnknown_0201B120 = 0;
             gUnknown_0202BEC4 = 0;
             gUnknown_0202BEFC = 0;
-            gUnknown_0202BF04 = 1; 
+            gUnknown_0202BF04 = 1;
             gUnknown_0202A588 = 1;
             for(index = 0; index < 0xE1; index++)
             {
@@ -686,7 +682,7 @@ void sub_4BB4(void)
 void sub_4C80(void)
 {
     s32 i;
-    
+
     sub_51FC();
 
     if (JOY_NEW(A_BUTTON))
@@ -721,8 +717,8 @@ void sub_4C80(void)
         gUnknown_0202BF04 = 1;
         gUnknown_0202A588 = 1;
         gMain.subState = 1;
-        
-        
+
+
     }
 }
 
@@ -762,7 +758,7 @@ static void sub_4D74(void)
             gUnknown_0202ADE0--;
             m4aSongNumStart(SE_SELECT);
         }
-        
+
         gUnknown_0202C58C = 9;
     }
     else
@@ -770,7 +766,7 @@ static void sub_4D74(void)
         m4aSongNumStart(SE_SELECT);
         gUnknown_0202A57C--;
         gUnknown_0202ADE0--;
-        
+
         gUnknown_0202C58C = 9;
     }
 
@@ -926,7 +922,7 @@ u8 sub_5134(void)
     {
         if (gUnknown_086A61BC[gUnknown_0202ADE0] < 100)
             return 1;
-            
+
         return 2;
     }
 
