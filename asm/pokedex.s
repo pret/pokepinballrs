@@ -1802,7 +1802,7 @@ sub_6F78: @ 0x08006F78
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r1, _08006FBC @ =gUnknown_0202A1C0
-	ldr r0, _08006FC0 @ =gUnknown_0202ADE0
+	ldr r0, _08006FC0 @ =gPokedexSelectedMon
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	lsls r0, r0, #1
@@ -1833,7 +1833,7 @@ _08006FB0:
 	mov pc, r0
 	.align 2, 0
 _08006FBC: .4byte gUnknown_0202A1C0
-_08006FC0: .4byte gUnknown_0202ADE0
+_08006FC0: .4byte gPokedexSelectedMon
 _08006FC4: .4byte _08006FC8
 _08006FC8: @ jump table
 	.4byte _08006FDC @ case 0
