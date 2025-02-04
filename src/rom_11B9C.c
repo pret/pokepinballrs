@@ -6,7 +6,6 @@ void sub_11C14(s32);
 void sub_12524(void);
 void sub_12BF8(void);
 
-//Some kind of init function?
 void sub_11B9C(void){
     s16 i;
     if (gMain.unk6 == 0){
