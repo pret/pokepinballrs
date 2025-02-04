@@ -15,12 +15,23 @@ void sub_4F50(void);
 void sub_4FC8(void);
 void sub_5064(void);
 void sub_51CC(void);
-s16 sub_5EA4(void); // TODO Pretty sure it's s16, but could be u16
-void sub_5EC8(void);
+static s16 sub_5EA4(void);
+s16 sub_5EC8(void);
 void sub_70E0(s16, s32);
 void sub_88E4(void);
 void sub_51FC(void);
 static void sub_599C(void);
+static void sub_5E60(void);
+int sub_639C(void);
+int sub_65DC(void);
+int sub_5EEC(void);
+int sub_6144(void);
+
+extern u16 gUnknown_0201C180;
+extern u16 gUnknown_0202C5B4;
+extern s8 gUnknown_0201C1BC;
+extern u8 gUnknown_0202C544;
+extern u8 gUnknown_0202BECC;
 
 extern const struct SpriteSet *const gUnknown_086A6148[];
 extern u16 gUnknown_0202BF08;
@@ -1297,4 +1308,113 @@ static void sub_599C(void)
     }
 
     group7->available = 0;
+}
+
+static void sub_5E60(void)
+{
+    gUnknown_0202C5F0[0] = 0xDDDD;
+    gUnknown_0202C5B4 = 1;
+    gUnknown_0201C180 = 1;
+    gUnknown_0201B128 = 0;
+    gUnknown_0201C1BC = 0;
+    gUnknown_0202C544 = 0;
+    gUnknown_0202BECC = 0;
+}
+
+static s16 sub_5EA4(void)
+{
+    s16 result;
+
+    if (gLink.isMaster)
+        result = sub_639C();
+    else
+        result = sub_65DC();
+
+    return result;
+}
+
+s16 sub_5EC8(void)
+{
+    s16 result;
+
+    if (gLink.isMaster)
+        result = sub_5EEC();
+    else
+        result = sub_6144();
+
+    return result;
+}
+
+int sub_5EEC(void)
+{
+    int i;
+    u16 var0;
+
+    if (gUnknown_0201B128 == 0)
+    {
+        switch (gUnknown_0201C1BC)
+        {
+            case 0:
+                if (JOY_NEW(A_BUTTON))
+                {
+                    gUnknown_0202C5F0[0] = 0xFEFE;
+                }
+                else
+                {
+                    for (i = 0; i < 8; i++)
+                        gUnknown_0202C5F0[i] = 0;
+                }
+                return 0;
+            case 1:
+                gUnknown_0202C5F0[0] = 0xECEC;
+                return 0;
+        }
+        return 0;
+    }
+    else if (gUnknown_0201C180 < 8)
+    {
+        for (i = 0; i < 8; i++)
+            gUnknown_0202C5F0[i] = 0xDDDD;
+    }
+    else if (gUnknown_0201C180 < 16)
+    {
+        var0 = (gUnknown_0201C180 - 8) * 28;
+        gUnknown_0202C5F0[0] = gUnknown_0201C180;
+        gUnknown_0202C5F0[1] = gUnknown_0202A1C0[var0] |
+                               (gUnknown_0202A1C0[var0 + 1] << 4) |
+                               (gUnknown_0202A1C0[var0 + 2] << 8) |
+                               (gUnknown_0202A1C0[var0 + 3] << 12);
+        gUnknown_0202C5F0[2] =  gUnknown_0202A1C0[var0 + 4] |
+                               (gUnknown_0202A1C0[var0 + 5] << 4) |
+                               (gUnknown_0202A1C0[var0 + 6] << 8) |
+                               (gUnknown_0202A1C0[var0 + 7] << 12);
+        gUnknown_0202C5F0[3] =  gUnknown_0202A1C0[var0 + 8] |
+                               (gUnknown_0202A1C0[var0 + 9] << 4) |
+                               (gUnknown_0202A1C0[var0 + 10] << 8) |
+                               (gUnknown_0202A1C0[var0 + 11] << 12);
+        gUnknown_0202C5F0[4] =  gUnknown_0202A1C0[var0 + 12] |
+                               (gUnknown_0202A1C0[var0 + 13] << 4) |
+                               (gUnknown_0202A1C0[var0 + 14] << 8) |
+                               (gUnknown_0202A1C0[var0 + 15] << 12);
+        gUnknown_0202C5F0[5] =  gUnknown_0202A1C0[var0 + 16] |
+                               (gUnknown_0202A1C0[var0 + 17] << 4) |
+                               (gUnknown_0202A1C0[var0 + 18] << 8) |
+                               (gUnknown_0202A1C0[var0 + 19] << 12);
+        gUnknown_0202C5F0[6] =  gUnknown_0202A1C0[var0 + 20] |
+                               (gUnknown_0202A1C0[var0 + 21] << 4) |
+                               (gUnknown_0202A1C0[var0 + 22] << 8) |
+                               (gUnknown_0202A1C0[var0 + 23] << 12);
+        gUnknown_0202C5F0[7] =  gUnknown_0202A1C0[var0 + 24] |
+                               (gUnknown_0202A1C0[var0 + 25] << 4) |
+                               (gUnknown_0202A1C0[var0 + 26] << 8) |
+                               (gUnknown_0202A1C0[var0 + 27] << 12);
+    }
+    else
+    {
+        for (i = 0; i < 8; i++)
+            gUnknown_0202C5F0[i] = 0;
+    }
+
+    gUnknown_0201C180++;
+    return 0;
 }
