@@ -24,14 +24,14 @@ static void sub_599C(void);
 static void sub_5E60(void);
 int sub_639C(void);
 int sub_65DC(void);
-int sub_5EEC(void);
-int sub_6144(void);
+static int sub_5EEC(void);
+static int sub_6144(void);
 
 extern u16 gUnknown_0201C180;
 extern u16 gUnknown_0202C5B4;
 extern s8 gUnknown_0201C1BC;
-extern u8 gUnknown_0202C544;
-extern u8 gUnknown_0202BECC;
+extern s8 gUnknown_0202C544;
+extern s8 gUnknown_0202BECC;
 
 extern const struct SpriteSet *const gUnknown_086A6148[];
 extern u16 gUnknown_0202BF08;
@@ -581,7 +581,7 @@ void sub_49D0(void)
 
             gUnknown_0201A510++;
 
-            if ((gUnknown_0202ADD0 & 0x7f0000) && (gUnknown_0201B128 == -1))
+            if ((gUnknown_0202ADD0 & 0x7f0000) && gUnknown_0201B128 == -1)
             {
                 gUnknown_0201A444++;
                 if (0xB4 < gUnknown_0201A444)
@@ -1336,7 +1336,7 @@ s16 sub_5EC8(void)
     return result;
 }
 
-int sub_5EEC(void)
+static int sub_5EEC(void)
 {
     int i;
     u16 var0;
@@ -1407,5 +1407,167 @@ int sub_5EEC(void)
     }
 
     gUnknown_0201C180++;
+    return 0;
+}
+
+static int sub_6144(void)
+{
+    int i;
+    u16 var0;
+
+    if (gUnknown_0201B128 == 0)
+    {
+        switch (gUnknown_0202C544)
+        {
+            case 0:
+                if (JOY_NEW(A_BUTTON))
+                {
+                    gUnknown_0202C5F0[0] = 0xFEFE;
+                }
+                else
+                {
+                    for (i = 0; i < 8; i++)
+                        gUnknown_0202C5F0[i] = 0;
+                }
+                return 0;
+            case 1:
+                gUnknown_0202C5F0[0] = 0xECEC;
+                return 0;
+        }
+        return 0;
+    }
+    else if (gUnknown_0201C180 < 8)
+    {
+        for (i = 0; i < 8; i++)
+            gUnknown_0202C5F0[i] = 0xDDDD;
+    }
+    else if (gUnknown_0201C180 < 16)
+    {
+        var0 = (gUnknown_0201C180 - 8) * 28;
+        gUnknown_0202C5F0[0] = gUnknown_0201C180;
+        gUnknown_0202C5F0[1] = gUnknown_0202A1C0[var0] |
+                               (gUnknown_0202A1C0[var0 + 1] << 4) |
+                               (gUnknown_0202A1C0[var0 + 2] << 8) |
+                               (gUnknown_0202A1C0[var0 + 3] << 12);
+        gUnknown_0202C5F0[2] =  gUnknown_0202A1C0[var0 + 4] |
+                               (gUnknown_0202A1C0[var0 + 5] << 4) |
+                               (gUnknown_0202A1C0[var0 + 6] << 8) |
+                               (gUnknown_0202A1C0[var0 + 7] << 12);
+        gUnknown_0202C5F0[3] =  gUnknown_0202A1C0[var0 + 8] |
+                               (gUnknown_0202A1C0[var0 + 9] << 4) |
+                               (gUnknown_0202A1C0[var0 + 10] << 8) |
+                               (gUnknown_0202A1C0[var0 + 11] << 12);
+        gUnknown_0202C5F0[4] =  gUnknown_0202A1C0[var0 + 12] |
+                               (gUnknown_0202A1C0[var0 + 13] << 4) |
+                               (gUnknown_0202A1C0[var0 + 14] << 8) |
+                               (gUnknown_0202A1C0[var0 + 15] << 12);
+        gUnknown_0202C5F0[5] =  gUnknown_0202A1C0[var0 + 16] |
+                               (gUnknown_0202A1C0[var0 + 17] << 4) |
+                               (gUnknown_0202A1C0[var0 + 18] << 8) |
+                               (gUnknown_0202A1C0[var0 + 19] << 12);
+        gUnknown_0202C5F0[6] =  gUnknown_0202A1C0[var0 + 20] |
+                               (gUnknown_0202A1C0[var0 + 21] << 4) |
+                               (gUnknown_0202A1C0[var0 + 22] << 8) |
+                               (gUnknown_0202A1C0[var0 + 23] << 12);
+        gUnknown_0202C5F0[7] =  gUnknown_0202A1C0[var0 + 24] |
+                               (gUnknown_0202A1C0[var0 + 25] << 4) |
+                               (gUnknown_0202A1C0[var0 + 26] << 8) |
+                               (gUnknown_0202A1C0[var0 + 27] << 12);
+    }
+    else
+    {
+        for (i = 0; i < 8; i++)
+            gUnknown_0202C5F0[i] = 0;
+    }
+
+    gUnknown_0201C180++;
+    return 0;
+}
+
+int sub_639C(void)
+{
+    int i, j;
+    u16 var0;
+    u16 arr0[28];
+
+    if (gUnknown_0201B128 == 0)
+    {
+        switch (gUnknown_0201C1BC)
+        {
+            case 0:
+                if (gUnknown_0201A4D0[0][0] == 0xFEFE || gUnknown_0201A4D0[0][1] == 0xFEFE)
+                {
+                    gUnknown_0201C1BC = 1;
+                }
+                break;
+            case 1:
+                if (gUnknown_0201A4D0[0][0] == 0xECEC && gUnknown_0201A4D0[0][1] == 0xECEC)
+                {
+                    gUnknown_0201B128 = -1;
+                    gUnknown_0202BEFC = 1;
+                    gUnknown_0201C180 = 1;
+                }
+                else if (++gUnknown_0202BECC > 10)
+                {
+                    return 1;
+                }
+                break;
+        }
+    }
+    else
+    {
+        u16 var1 = gUnknown_0201A4D0[0][1] - 8;
+         if (var1 > 7)
+            return 0;
+
+        gUnknown_0202C5B4 = gUnknown_0201A4D0[0][1];
+        arr0[0]  =  gUnknown_0201A4D0[0][3]  & 0xF;
+        arr0[1]  = (gUnknown_0201A4D0[0][3]  & 0xF0)   >> 4;
+        arr0[2]  = (gUnknown_0201A4D0[0][3]  & 0xF00)  >> 8;
+        arr0[3]  = (gUnknown_0201A4D0[0][3]  & 0xF000) >> 12;
+        arr0[4]  =  gUnknown_0201A4D0[0][5]  & 0xF;
+        arr0[5]  = (gUnknown_0201A4D0[0][5]  & 0xF0)   >> 4;
+        arr0[6]  = (gUnknown_0201A4D0[0][5]  & 0xF00)  >> 8;
+        arr0[7]  = (gUnknown_0201A4D0[0][5]  & 0xF000) >> 12;
+        arr0[8]  =  gUnknown_0201A4D0[0][7]  & 0xF;
+        arr0[9]  = (gUnknown_0201A4D0[0][7]  & 0xF0)   >> 4;
+        arr0[10] = (gUnknown_0201A4D0[0][7]  & 0xF00)  >> 8;
+        arr0[11] = (gUnknown_0201A4D0[0][7]  & 0xF000) >> 12;
+        arr0[12] =  gUnknown_0201A4D0[0][9]  & 0xF;
+        arr0[13] = (gUnknown_0201A4D0[0][9]  & 0xF0)   >> 4;
+        arr0[14] = (gUnknown_0201A4D0[0][9]  & 0xF00)  >> 8;
+        arr0[15] = (gUnknown_0201A4D0[0][9]  & 0xF000) >> 12;
+        arr0[16] =  gUnknown_0201A4D0[0][11] & 0xF;
+        arr0[17] = (gUnknown_0201A4D0[0][11] & 0xF0)   >> 4;
+        arr0[18] = (gUnknown_0201A4D0[0][11] & 0xF00)  >> 8;
+        arr0[19] = (gUnknown_0201A4D0[0][11] & 0xF000) >> 12;
+        arr0[20] =  gUnknown_0201A4D0[0][13] & 0xF;
+        arr0[21] = (gUnknown_0201A4D0[0][13] & 0xF0)   >> 4;
+        arr0[22] = (gUnknown_0201A4D0[0][13] & 0xF00)  >> 8;
+        arr0[23] = (gUnknown_0201A4D0[0][13] & 0xF000) >> 12;
+        arr0[24] =  gUnknown_0201A4D0[0][15] & 0xF;
+        arr0[25] = (gUnknown_0201A4D0[0][15] & 0xF0)   >> 4;
+        arr0[26] = (gUnknown_0201A4D0[0][15] & 0xF00)  >> 8;
+        arr0[27] = (gUnknown_0201A4D0[0][15] & 0xF000) >> 12;
+
+        for (i = 0; i < 28; i++)
+        {
+            var0 = (gUnknown_0202C5B4 - 8) * 28 + i;
+            if (gUnknown_0202A1C0[var0] == 0 && arr0[i] == 4)
+                gUnknown_0202A390[var0] = 2;
+            else if (gUnknown_0202A1C0[var0] == 1 && arr0[i] == 4)
+                gUnknown_0202A390[var0] = 3;
+        }
+
+        if (gUnknown_0202C5B4 == 15)
+            return -1;
+    }
+
+    for (i = 0; i < 8; i++)
+    {
+        for (j = 0; j < 2; j++)
+            gUnknown_0201A4D0[i][j] = 0;
+    }
+
     return 0;
 }
