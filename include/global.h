@@ -144,7 +144,7 @@ struct PinballGame
 	/*0x1328*/u8 filler73E[0xBEB];
 	/*0x132C*/s32* unk132c;
 	/*0x1330*/s32  unk1330;
-	/*0x1334*/s32  unk1334[2][68/4];
+	/*0x1334*/s32  unk1334[2][17];
 };
 
 struct Unk02031520
