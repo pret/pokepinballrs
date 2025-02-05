@@ -5,63 +5,8 @@
 	.syntax unified
 
 	.text
+	.align 2, 0
 
-	thumb_func_start sub_11B9C
-sub_11B9C: @ 0x08011B9C
-	push {r4, lr}
-	ldr r0, _08011BC0 @ =gMain
-	ldrb r0, [r0, #6]
-	cmp r0, #0
-	bne _08011BD0
-	ldr r0, _08011BC4 @ =gCurrentPinballGame
-	ldr r0, [r0]
-	ldr r2, _08011BC8 @ =0x0000132C
-	adds r1, r0, r2
-	ldr r3, _08011BCC @ =0x00001334
-	adds r0, r0, r3
-	str r0, [r1]
-	movs r0, #0
-	bl sub_11C14
-	bl sub_12524
-	b _08011C02
-	.align 2, 0
-_08011BC0: .4byte gMain
-_08011BC4: .4byte gCurrentPinballGame
-_08011BC8: .4byte 0x0000132C
-_08011BCC: .4byte 0x00001334
-_08011BD0:
-	movs r3, #0
-_08011BD2:
-	ldr r0, _08011C08 @ =gCurrentPinballGame
-	ldr r1, [r0]
-	ldr r0, _08011C0C @ =0x0000132C
-	adds r2, r1, r0
-	lsls r4, r3, #0x10
-	asrs r4, r4, #0x10
-	lsls r0, r4, #4
-	adds r0, r0, r4
-	lsls r0, r0, #2
-	ldr r3, _08011C10 @ =0x00001334
-	adds r0, r0, r3
-	adds r1, r1, r0
-	str r1, [r2]
-	adds r0, r4, #0
-	bl sub_11C14
-	adds r4, #1
-	lsls r4, r4, #0x10
-	lsrs r3, r4, #0x10
-	asrs r4, r4, #0x10
-	cmp r4, #1
-	ble _08011BD2
-	bl sub_12BF8
-_08011C02:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08011C08: .4byte gCurrentPinballGame
-_08011C0C: .4byte 0x0000132C
-_08011C10: .4byte 0x00001334
 
 	thumb_func_start sub_11C14
 sub_11C14: @ 0x08011C14
