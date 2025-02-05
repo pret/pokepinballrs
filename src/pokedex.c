@@ -23,15 +23,19 @@ void sub_51FC(void);
 static void sub_599C(void);
 static void sub_5E60(void);
 int sub_639C(void);
-int sub_65DC(void);
 static int sub_5EEC(void);
 static int sub_6144(void);
+static int sub_65DC(void);
+static void sub_681C(s16);
+void sub_71DC(int, int, int);
 
 extern u16 gUnknown_0201C180;
 extern u16 gUnknown_0202C5B4;
 extern s8 gUnknown_0201C1BC;
 extern s8 gUnknown_0202C544;
 extern s8 gUnknown_0202BECC;
+extern u8 gUnknown_0202BE30[];
+extern u8 gUnknown_0201B130[];
 
 extern const struct SpriteSet *const gUnknown_086A6148[];
 extern u16 gUnknown_0202BF08;
@@ -41,6 +45,20 @@ extern const s16 gUnknown_086A6356[];
 extern const u16 gUnknown_086A5EE2[][51];
 extern const s16 gUnknown_086A6014[][51];
 extern const u16 gUnknown_086A5E12[][4];
+extern const u8 gUnknown_08090780[];
+extern u8 gUnknown_08092FA0[]; // needs const
+
+struct Unk805C8B4
+{
+    u16 unk0[3];
+    u16 unk6[9];
+    s16 unk18[10];
+    s16 unk2C[11];
+    u8 filler40[0x1FA];
+};
+
+extern const struct Unk805C8B4 gUnknown_0805C8B4[];
+
 
 void PokedexMain(void)
 {
@@ -1570,4 +1588,191 @@ int sub_639C(void)
     }
 
     return 0;
+}
+
+static int sub_65DC(void)
+{
+    int i, j;
+    u16 var0;
+    u16 arr0[28];
+
+    if (gUnknown_0201B128 == 0)
+    {
+        switch (gUnknown_0202C544)
+        {
+            case 0:
+                if (gUnknown_0201A4D0[0][0] == 0xFEFE || gUnknown_0201A4D0[0][1] == 0xFEFE)
+                {
+                    gUnknown_0202C544 = 1;
+                }
+                break;
+            case 1:
+                if (gUnknown_0201A4D0[0][0] == 0xECEC && gUnknown_0201A4D0[0][1] == 0xECEC)
+                {
+                    gUnknown_0201B128 = -1;
+                    gUnknown_0202BEFC = 1;
+                    gUnknown_0201C180 = 1;
+                }
+                else if (++gUnknown_0202BECC > 10)
+                {
+                    return 1;
+                }
+                break;
+        }
+    }
+    else
+    {
+        u16 var1 = gUnknown_0201A4D0[0][0] - 8;
+         if (var1 > 7)
+            return 0;
+
+        gUnknown_0202C5B4 = gUnknown_0201A4D0[0][0];
+        arr0[0]  =  gUnknown_0201A4D0[0][2]  & 0xF;
+        arr0[1]  = (gUnknown_0201A4D0[0][2]  & 0xF0)   >> 4;
+        arr0[2]  = (gUnknown_0201A4D0[0][2]  & 0xF00)  >> 8;
+        arr0[3]  = (gUnknown_0201A4D0[0][2]  & 0xF000) >> 12;
+        arr0[4]  =  gUnknown_0201A4D0[0][4]  & 0xF;
+        arr0[5]  = (gUnknown_0201A4D0[0][4]  & 0xF0)   >> 4;
+        arr0[6]  = (gUnknown_0201A4D0[0][4]  & 0xF00)  >> 8;
+        arr0[7]  = (gUnknown_0201A4D0[0][4]  & 0xF000) >> 12;
+        arr0[8]  =  gUnknown_0201A4D0[0][6]  & 0xF;
+        arr0[9]  = (gUnknown_0201A4D0[0][6]  & 0xF0)   >> 4;
+        arr0[10] = (gUnknown_0201A4D0[0][6]  & 0xF00)  >> 8;
+        arr0[11] = (gUnknown_0201A4D0[0][6]  & 0xF000) >> 12;
+        arr0[12] =  gUnknown_0201A4D0[0][8]  & 0xF;
+        arr0[13] = (gUnknown_0201A4D0[0][8]  & 0xF0)   >> 4;
+        arr0[14] = (gUnknown_0201A4D0[0][8]  & 0xF00)  >> 8;
+        arr0[15] = (gUnknown_0201A4D0[0][8]  & 0xF000) >> 12;
+        arr0[16] =  gUnknown_0201A4D0[0][10] & 0xF;
+        arr0[17] = (gUnknown_0201A4D0[0][10] & 0xF0)   >> 4;
+        arr0[18] = (gUnknown_0201A4D0[0][10] & 0xF00)  >> 8;
+        arr0[19] = (gUnknown_0201A4D0[0][10] & 0xF000) >> 12;
+        arr0[20] =  gUnknown_0201A4D0[0][12] & 0xF;
+        arr0[21] = (gUnknown_0201A4D0[0][12] & 0xF0)   >> 4;
+        arr0[22] = (gUnknown_0201A4D0[0][12] & 0xF00)  >> 8;
+        arr0[23] = (gUnknown_0201A4D0[0][12] & 0xF000) >> 12;
+        arr0[24] =  gUnknown_0201A4D0[0][14] & 0xF;
+        arr0[25] = (gUnknown_0201A4D0[0][14] & 0xF0)   >> 4;
+        arr0[26] = (gUnknown_0201A4D0[0][14] & 0xF00)  >> 8;
+        arr0[27] = (gUnknown_0201A4D0[0][14] & 0xF000) >> 12;
+
+        for (i = 0; i < 28; i++)
+        {
+            var0 = (gUnknown_0202C5B4 - 8) * 28 + i;
+            if (gUnknown_0202A1C0[var0] == 0 && arr0[i] == 4)
+                gUnknown_0202A390[var0] = 2;
+            else if (gUnknown_0202A1C0[var0] == 1 && arr0[i] == 4)
+                gUnknown_0202A390[var0] = 3;
+        }
+
+        if (gUnknown_0202C5B4 == 15)
+            return -1;
+    }
+
+    for (i = 0; i < 8; i++)
+    {
+        for (j = 0; j < 2; j++)
+            gUnknown_0201A4D0[i][j] = 0;
+    }
+
+    return 0;
+}
+
+static void sub_681C(s16 arg0)
+{
+    int i;
+    int var0;
+    u16 var1;
+    u16 var2;
+
+    DmaFill16(3, 0, gUnknown_03000000, 0x800);
+    var0 = 0;
+    if (arg0 == 200)
+    {
+        if (gUnknown_0202A1C0[200] != 0)
+        {
+            sub_105A0(34, 1, 5, 2, 1, 2);
+            sub_105A0(32, 1, 6, 2, 1, 2);
+            sub_105A0(33, 1, 7, 2, 1, 2);
+        }
+        else
+        {
+            sub_105A0(42, 1, 5, 2, 1, 2);
+            sub_105A0(42, 1, 6, 2, 1, 2);
+            sub_105A0(42, 1, 7, 2, 1, 2);
+        }
+    }
+    else
+    {
+        for (i = 0; i < 3; i++)
+            sub_105A0(gUnknown_0805C8B4[arg0].unk0[i] + 32, 1, i + 5, 2, 1, 2);
+    }
+
+    if (gUnknown_0202A1C0[arg0] > 0)
+    {
+        for (i = 0; i < 10; i++)
+        {
+            var1 = gUnknown_0805C8B4[arg0].unk18[i] & ~0xF;
+            var2 = gUnknown_0805C8B4[arg0].unk18[i] & 0xF;
+            if (var2 == 0)
+                var2 = 4;
+
+            DmaCopy16(3, &gUnknown_08090780[var1], gUnknown_0202BE30, 0x20);
+            DmaCopy16(3, &gUnknown_08090780[var1 + 0x400], gUnknown_0201B130, 0x20);
+            sub_71DC(var2, var0, 0);
+            var0 += var2;
+        }
+
+        sub_10708(gUnknown_03000000, (void *)0x06004C00, 8, 2);
+        DmaFill16(3, 0, gUnknown_03000000, 0x800);
+        var0 = 0;
+    }
+    else
+    {
+        for (i = 0; i < 10; i++)
+            sub_10708(gUnknown_08092FA0, (void *)0x06004C00 + i * 0x20, 1, 2);
+    }
+
+    if (gUnknown_0202A1C0[arg0] == 1 || gUnknown_0202A1C0[arg0] > 2)
+    {
+        for (i = 0; i < 11; i++)
+        {
+            var1 = gUnknown_0805C8B4[arg0].unk2C[i] & ~0xF;
+            var2 = gUnknown_0805C8B4[arg0].unk2C[i] & 0xF;
+            if (var2 == 0)
+                var2 = 6;
+
+            DmaCopy16(3, &gUnknown_08090780[var1], gUnknown_0202BE30, 0x20);
+            DmaCopy16(3, &gUnknown_08090780[0x400 + var1], gUnknown_0201B130, 0x20);
+            sub_71DC(var2, var0, 0);
+            var0 += var2;
+        }
+
+        sub_10708(gUnknown_03000000, (void *)0x06004D00, 9, 2);
+        DmaFill16(3, 0, gUnknown_03000000, 0x800);
+    }
+    else
+    {
+        for (i = 0; i < 9; i++)
+            sub_10708(gUnknown_08092FA0, (void *)0x06004D00 + i * 0x20, 1, 2);
+    }
+
+    if (gUnknown_0202A1C0[arg0] == 4)
+    {
+        sub_105A0(gUnknown_0805C8B4[arg0].unk6[0] + 32, 1, 16, 6, 1, 2);
+        sub_105A0(gUnknown_0805C8B4[arg0].unk6[1] + 32, 1, 17, 6, 1, 2);
+        sub_105A0(gUnknown_0805C8B4[arg0].unk6[2] + 32, 1, 19, 6, 1, 2);
+        sub_105A0(gUnknown_0805C8B4[arg0].unk6[3] + 32, 1, 20, 6, 1, 2);
+        for (i = 0; i < 5; i++)
+            sub_105A0(gUnknown_0805C8B4[arg0].unk6[4 + i], 1, i + 16, 8, 1, 1);
+    }
+    else
+    {
+        sub_105A0(43, 1, 16, 6, 1, 2);
+        sub_105A0(43, 1, 17, 6, 1, 2);
+        sub_105A0(43, 1, 19, 6, 1, 2);
+        sub_105A0(43, 1, 20, 6, 1, 2);
+        for (i = 0; i < 5; i++)
+            sub_105A0(11, 1, i + 16, 8, 1, 1);
+    }
 }
