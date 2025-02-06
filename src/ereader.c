@@ -237,7 +237,7 @@ void sub_304C(void)
 }
 
 void sub_3208(void)
-{ 
+{
     gUnknown_0201A44C++;
     if (8 < gUnknown_0201A44C) {
         gUnknown_0201A44C = 0;
@@ -418,7 +418,7 @@ void sub_377C(void)
 {
     s32 iVar2;
     s32 iVar4;
-  
+
     for(iVar2 = 0; iVar2 < 3; iVar2++)
     {
         for(iVar4 = 0; iVar4 < 0x18; iVar4++)
@@ -461,7 +461,7 @@ void sub_38A0(s8 arg0, u16 arg1)
 s16 GetEReaderCardIndex(void)
 {
     s32 uVar1;
-    
+
     if (gUnknown_0202BEEC == 0x1f52)
     {
         return 0;
@@ -495,7 +495,7 @@ void sub_394C(void)
     s32 iVar7;
     const struct SpriteSet *puVar8;
     struct OamDataSimple *test2;
-    
+
     puVar9 = &gUnknown_0200B3B8[gUnknown_0202A58C];
     puVar5 = &gUnknown_0200B3B8[gUnknown_0202BEC0];
     puVar9->available = gUnknown_0202C584;
@@ -546,7 +546,7 @@ void sub_3AB4(void) {
     s32 iVar7;
     const struct SpriteSet *puVar8;
     struct OamDataSimple *test2;
-    
+
     puVar9 = &gUnknown_0200B3B8[gUnknown_0202A58C];
     puVar5 = &gUnknown_0200B3B8[gUnknown_0202BEC0];
     puVar9->available = gUnknown_0202C584;
@@ -595,7 +595,7 @@ void sub_3C1C(void)
 {
     s32 i;
     s32 j;
-    
+
     gUnknown_0202A564 = 0;
     gUnknown_02019C20 = 0;
     gUnknown_0202ADE8 = 0;
@@ -617,7 +617,7 @@ void sub_3C1C(void)
 s32 sub_3C78(void)
 {
     s32 i;
-    
+
     if (gUnknown_02019C20)
     {
         gUnknown_0202C5F0[0] = 0xDFDF;
@@ -648,7 +648,7 @@ s16 sub_3CD8(void)
 
     if (!(JOY_NEW(A_BUTTON)))
     {
-        // TODO I can buy goto end being the actual label, but there is no way they wrote this segment like this 
+        // TODO I can buy goto end being the actual label, but there is no way they wrote this segment like this
         goto fakematch;
     }
     if (gUnknown_0202A564 == 0)
@@ -662,7 +662,7 @@ s16 sub_3CD8(void)
             goto end;
         }
     }
-    
+
     if (gUnknown_02019C20 == 0)
     {
         if (gUnknown_0201A4D0[0][0] == 0xFEDC)

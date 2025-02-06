@@ -10,6 +10,7 @@
 #include "types.h"
 #include "functions.h"
 #include "variables.h"
+#include "constants/global.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -70,22 +71,6 @@
 #define JOY_HELD(button)  TEST_BUTTON(gMain.heldKeys, button)
 #define JOY_NEW_EXACT(button) TEST_BUTTON_EXACT(gMain.newKeys,  button)
 #define JOY_HELD_EXACT(button)  TEST_BUTTON_EXACT(gMain.heldKeys, button)
-
-enum
-{
-    STATE_INTRO,
-    STATE_TITLE,
-    STATE_GAME_MAIN,
-    STATE_GAME_IDLE,
-    STATE_OPTIONS,
-    STATE_POKEDEX,
-    STATE_UNKNOWN6,
-    STATE_EREADER,
-    STATE_SCORES_MAIN,
-    STATE_SCORES_IDLE,
-    STATE_FIELD_SELECT,
-    STATE_BONUS_FIELD_SELECT,
-};
 
 struct unk_struct{
 	/*0x00*/ u8 unk0;

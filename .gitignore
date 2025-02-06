@@ -31,3 +31,4 @@ build/
 baserom.*
 *.swp
 *.swo
+.vscode/settings.json

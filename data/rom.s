@@ -1849,7 +1849,7 @@ gOptionsStateFuncs:: @ 0x08527F08
 	.4byte sub_51C3C
 	.4byte sub_51C60
 
-gUnknown_08527F18:: @ 0x08527F18
+gSpeciesRSToCryId:: @ 0x08527F18
 	.incbin "baserom.gba", 0x527F18, 0x110
 
 gOptionsText_Tilemap:: @ 0x08528028

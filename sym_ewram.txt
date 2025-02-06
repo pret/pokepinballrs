@@ -402,7 +402,7 @@ gUnknown_0202ADD8: @ 0x0202ADD8
 	.space 0x4
 gUnknown_0202ADDC: @ 0x0202ADDC
 	.space 0x4
-gUnknown_0202ADE0: @ 0x0202ADE0
+gPokedexSelectedMon: @ 0x0202ADE0
 	.space 0x4
 gUnknown_0202ADE4: @ 0x0202ADE4
 	.space 0x4

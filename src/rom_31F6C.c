@@ -62,7 +62,7 @@ void sub_31F6C(void)
                 if (gCurrentPinballGame->caughtMonCount == 0)
                     weight = 0;
                 break;
-            
+
             case SPECIES_CLAMPERL:
                 weight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_CLAMPERL]];
                 evolutionWeight = gCommonAndEggWeights[gMain_saveData.pokedexFlags[SPECIES_HUNTAIL]];
@@ -222,7 +222,7 @@ void sub_32484(void)
     gCurrentPinballGame->unk12E = 0;
 
     for (i = 0; i < 0x19; i++)
-    {   
+    {
         currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
 
         if (currentSpecies == SPECIES_ODDISH)
@@ -250,7 +250,7 @@ void sub_32484(void)
                     break;
                 }
             }
-            
+
             currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
             if (gCurrentPinballGame->caughtMonCount == 0)
             {
@@ -275,16 +275,16 @@ void sub_325E0(void)
 {
     s16 i;
     u32 rand;
-    
+
     rand = GetTimeAdjustedRandom();
     if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
         rand %= 100;
     else
         rand %= 50;
-    
+
     if (gCurrentPinballGame->unk59E == SPECIES_PICHU)
         rand = 1;
-    
+
     if ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forcePichuEgg)
     {
         gCurrentPinballGame->unk598 = SPECIES_PICHU;
@@ -293,12 +293,12 @@ void sub_325E0(void)
     {
         rand = GetTimeAdjustedRandom();
         rand %= gCurrentPinballGame->unk12E;
-        
+
         for (i = 0; i < 25 && gCurrentPinballGame->unk130[i] <= rand; i++);
-        
+
         gCurrentPinballGame->unk598 = gUnknown_086A4A38[gMain.selectedField][i];
     }
-    
+
     gCurrentPinballGame->unk59E = gCurrentPinballGame->unk598;
 }
 
@@ -307,16 +307,16 @@ void sub_326F4(void)
     gCurrentPinballGame->catchModeArrows = 2;
     gCurrentPinballGame->unk1E5 = 0;
     gCurrentPinballGame->unk1E6 = 1;
-    
+
     sub_1F2A4();
     sub_21B0C();
     sub_1F59C();
     sub_300D8();
     sub_30178();
-    
+
     gCurrentPinballGame->unk1D8 = 0x100;
     gCurrentPinballGame->unk1DA = 0x100;
-    
+
     sub_30480();
     sub_304C8();
     sub_31144();
@@ -329,12 +329,12 @@ void sub_3276C(void)
 {
     sub_19B90();
     sub_327C0();
-    
+
     if (!gMain.unkF)
         sub_328C8();
-    
+
     sub_32DF8();
-    
+
     if (gCurrentPinballGame->unk29C)
     {
         gCurrentPinballGame->unk29C--;
@@ -346,17 +346,17 @@ void sub_3276C(void)
 void sub_327C0(void)
 {
     s32 temp;
-    
+
     sub_4F814();
     sub_1A0F4();
     sub_2CA9C();
-    
+
     if (gCurrentPinballGame->unk68 < 0x5a)
     {
         sub_304C8();
         sub_31498();
     }
-    
+
     if (gCurrentPinballGame->unk13 < 3)
     {
         if ((gCurrentPinballGame->unk344 & 0xFFFF00) == 0x300)
@@ -372,7 +372,7 @@ void sub_327C0(void)
     {
         gCurrentPinballGame->unk728 = 0;
     }
-    
+
     if (gCurrentPinballGame->unk68 < 0x96)
     {
         sub_2E6AC();
@@ -391,28 +391,28 @@ void sub_327C0(void)
     {
         sub_1F59C();
     }
-    
+
     sub_308DC();
-    
+
     if (0x76 < gCurrentPinballGame->unk68)
     {
         sub_2F504();
         sub_30EB4();
     }
-    
+
     sub_2CE80();
-    
+
     if (0xA8 < gCurrentPinballGame->unk68)
         sub_2D104();
-    
+
     sub_203CC();
     sub_21B0C();
     sub_1D128();
     sub_31B30();
-    
+
     if (gCurrentPinballGame->unk194)
         sub_225F0();
-    
+
     sub_472E4();
 }
 
@@ -421,14 +421,14 @@ void sub_328C8(void)
     sub_300D8();
     sub_32968();
     sub_1F2A4();
-    
+
     if (gCurrentPinballGame->unk600)
         gCurrentPinballGame->unk600--;
-    
+
     sub_2F26C();
     sub_2E67C();
     sub_31144();
-    
+
     if (!(gMain.unkF & 0x20))
         sub_2F79C();
 }
@@ -449,7 +449,7 @@ void sub_32914(void)
             sub_1C560();
             break;
         }
-        
+
         gCurrentPinballGame->unk26 = 0x3C;
     }
 }
@@ -458,7 +458,7 @@ void sub_32968(void)
 {
     if (gCurrentPinballGame->unk26)
         gCurrentPinballGame->unk26--;
-    
+
     switch (gCurrentPinballGame->unk25)
     {
     case 1:

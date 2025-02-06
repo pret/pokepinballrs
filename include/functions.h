@@ -352,7 +352,6 @@ extern void sub_3FAC(void);
 //extern ? sub_4BB4();
 //extern ? sub_4C80();
 //extern ? sub_4D50();
-extern void sub_681C();
 extern void sub_6BEC();
 extern void sub_6CA0(s16);
 extern void sub_6F30(s16);
@@ -750,10 +749,10 @@ extern void sub_4F814();
 
 // asm/rom_528AC.s
 
-//extern ? sub_528AC();
-//extern ? sub_528DC();
-extern void sub_5291C(u16, s8, s8, u8);
-//extern ? sub_52940();
+//extern ? SpeciesRSToCryId();
+//extern ? PlayCry_Normal();
+extern void PlayCry_NormalNoDucking(u16, s8, s8, u8);
+//extern ? PlayCryInternal();
 extern void SaveFile_LoadGameData(void);
 //extern ? LoadSaveDataFromSram();
 extern void SaveFile_WriteToSram(void);

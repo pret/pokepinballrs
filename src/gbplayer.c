@@ -585,7 +585,7 @@ u32 sub_1668(u32 arg1, u32 arg2)
     u8 uVar1;
     u32 uVar2;
     u32 uVar3;
-    
+
     uVar2 = (arg1 & 0xFFFFFF) << 4;
     arg2 = (arg2 << 0x1C);
     uVar2 |= arg2;
@@ -608,7 +608,7 @@ u32 sub_16A0(u8 param_1)
 
     uVar3 = gUnknown_02002818 >> 0x1C;
     cVar1 = sub_170C();
-    
+
     if (cVar1) return 1;
     switch (param_1)
     {
@@ -650,7 +650,7 @@ u32 sub_170C(void)
     ++uVar2; --uVar2;
     uVar3 = gUnknown_02002818 % 16;
     uVar4 = uVar2 >> 0x18;
-    
+
     for (uVar1 = 6; uVar1 != 0; uVar1--)
     {
         uVar5 = uVar2 >> (4 * (uVar1 - 1));
@@ -673,7 +673,7 @@ u32 sub_1748(u8 param_1)
     u32 uVar1;
     u32 uVar2;
     u32 param_3;
-    
+
     switch (param_1)
     {
         case 2:
@@ -710,7 +710,7 @@ u32 sub_1748(u8 param_1)
 u32 sub_17D8(u32 arg1)
 {
     u32 retVal;
-    
+
     switch (gUnknown_02019BEC)
     {
     case 0:

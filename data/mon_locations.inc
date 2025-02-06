@@ -140,7 +140,7 @@ gWildMonLocations:: @ 0x08055A84
 	.2byte SPECIES_NONE
 
 	@ granite cave sapphire two arrows
-	.2byte SPECIES_LUNATONE 
+	.2byte SPECIES_LUNATONE
 	.2byte SPECIES_MAKUHITA
 	.2byte SPECIES_GRIMER
 	.2byte SPECIES_SHELGON
@@ -211,7 +211,7 @@ gWildMonLocations:: @ 0x08055A84
 
 	@ lake three arrows
 	.2byte SPECIES_MUDKIP
-	.2byte SPECIES_MARILL 
+	.2byte SPECIES_MARILL
 	.2byte SPECIES_LOMBRE
 	.2byte SPECIES_BARBOACH
 	.2byte SPECIES_CORPHISH

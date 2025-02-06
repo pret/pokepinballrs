@@ -1,3 +1,4 @@
+#include "constants/global.h"
 #include "constants/bg_music.h"
 	.include "asm/macros.inc"
 
@@ -13241,7 +13242,7 @@ _08039562:
 	adds r0, r0, r2
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_528DC
+	bl PlayCry_Normal
 _0803958C:
 	ldr r0, [r5]
 	adds r0, r0, r4
@@ -19159,7 +19160,7 @@ _0803C662:
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_528DC
+	bl PlayCry_Normal
 	ldr r1, [r4]
 	ldr r3, _0803C6C8 @ =0x000004CA
 	adds r2, r1, r3
@@ -25522,7 +25523,7 @@ _0803FA78:
 	adds r0, r0, r7
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_528DC
+	bl PlayCry_Normal
 _0803FAA2:
 	ldr r0, [r5]
 	adds r0, r0, r4
@@ -47900,7 +47901,7 @@ _0804B23A:
 	ldrb r0, [r4, #4]
 	cmp r0, #1
 	bls _0804B258
-	movs r0, #0xb
+	movs r0, STATE_BONUS_FIELD_SELECT
 	bl SetMainGameState
 	b _0804B276
 	.align 2, 0
@@ -47913,13 +47914,13 @@ _0804B258:
 	cmp r0, #0
 	beq _0804B270
 _0804B262:
-	movs r0, #0
+	movs r0, STATE_INTRO
 	bl SetMainGameState
 	b _0804B276
 	.align 2, 0
 _0804B26C: .4byte 0x00FFFF00
 _0804B270:
-	movs r0, #8
+	movs r0, STATE_SCORES_MAIN
 	bl SetMainGameState
 _0804B276:
 	pop {r4}

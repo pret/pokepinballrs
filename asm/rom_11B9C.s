@@ -1,3 +1,4 @@
+#include "constants/global.h"
 #include "constants/bg_music.h"
 	.include "asm/macros.inc"
 
@@ -14761,7 +14762,7 @@ _080192A4:
 	ldr r0, [r2, #0x54]
 	cmp r0, r1
 	bhs _080192EC
-	movs r0, #1
+	movs r0, STATE_TITLE
 	bl SetMainGameState
 	b _080192F2
 	.align 2, 0
@@ -14769,7 +14770,7 @@ _080192E0: .4byte gMain
 _080192E4: .4byte gUnknown_02031520
 _080192E8: .4byte 0x00000141
 _080192EC:
-	movs r0, #9
+	movs r0, STATE_SCORES_IDLE
 	bl SetMainGameState
 _080192F2:
 	ldr r1, _08019300 @ =gMain
@@ -36904,7 +36905,7 @@ _0802453E:
 	adds r0, r0, r2
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_528DC
+	bl PlayCry_Normal
 _08024576:
 	ldr r2, [r4]
 	adds r0, r2, r5
@@ -44468,7 +44469,7 @@ _0802828A:
 	adds r0, r0, r2
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_528DC
+	bl PlayCry_Normal
 	ldr r0, [r4]
 	strh r5, [r0, #0x18]
 	b _080283FA
@@ -55729,7 +55730,7 @@ _0802DE7A:
 	adds r0, r0, r2
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_528DC
+	bl PlayCry_Normal
 _0802DEB0:
 	cmp r4, #0x40
 	beq _0802DEB6
