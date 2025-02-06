@@ -27,6 +27,7 @@ static int sub_5EEC(void);
 static int sub_6144(void);
 static int sub_65DC(void);
 static void sub_681C(s16);
+static void sub_6BEC(s16, s16);
 void sub_71DC(int, int, int);
 
 extern u16 gUnknown_0201C180;
@@ -1774,5 +1775,31 @@ static void sub_681C(s16 arg0)
         sub_105A0(43, 1, 20, 6, 1, 2);
         for (i = 0; i < 5; i++)
             sub_105A0(11, 1, i + 16, 8, 1, 1);
+    }
+}
+
+static void sub_6BEC(s16 arg0, s16 arg1)
+{
+    int i;
+    int var0;
+    int arr0[3];
+    int arr1[3];
+
+    var0 = arg0;
+    arr0[0] = var0 / 100;
+    var0 %= 100;
+    arr0[1] = var0 / 10;
+    arr0[2] = var0 % 10;
+
+    var0 = arg1;
+    arr1[0] = var0 / 100;
+    var0 %= 100;
+    arr1[1] = var0 / 10;
+    arr1[2] = var0 % 10;
+
+    for (i = 0; i < 3; i++)
+    {
+        sub_105A0(arr0[i], 2, i + 25, 15, 1, 1);
+        sub_105A0(arr1[i] + 32, 2, i + 25, 16, 1, 2);
     }
 }
