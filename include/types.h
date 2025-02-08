@@ -6,6 +6,17 @@
 typedef void (*StateFunc)(void);
 typedef void (*IntrFunc)(void);
 
+struct MainUnk44_Unk34
+{
+    s16 unk0;
+};
+
+struct MainUnk44
+{
+    u8 filler0[0x34];
+    struct MainUnk44_Unk34 *unk34;
+};
+
 struct MainUnk2E8
 {
     u16 unk0;

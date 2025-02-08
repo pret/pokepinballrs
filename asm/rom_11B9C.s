@@ -5,6 +5,7 @@
 	.syntax unified
 
 	.text
+	.section .text1
 	.align 2, 0
 
 
@@ -15902,30 +15903,7 @@ _08019B58: .4byte gCurrentPinballGame
 _08019B5C: .4byte gMPlayInfo_BGM
 _08019B60: .4byte 0x0000FFFF
 
-	thumb_func_start sub_19B64
-sub_19B64: @ 0x08019B64
-	ldr r2, _08019B88 @ =gCurrentPinballGame
-	ldr r3, [r2]
-	movs r1, #2
-	strb r1, [r3, #0x16]
-	ldr r1, [r2]
-	strb r0, [r1, #0x14]
-	ldr r0, [r2]
-	ldrb r0, [r0, #0x13]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #2
-	bne _08019B86
-	ldr r0, _08019B8C @ =gMain
-	ldr r0, [r0, #0x44]
-	ldr r1, [r0, #0x34]
-	movs r0, #0
-	strh r0, [r1]
-_08019B86:
-	bx lr
-	.align 2, 0
-_08019B88: .4byte gCurrentPinballGame
-_08019B8C: .4byte gMain
+	.section .text2
 
 	thumb_func_start sub_19B90
 sub_19B90: @ 0x08019B90
