@@ -2169,3 +2169,506 @@ void sub_F74C(void)
         }
     }
 }
+
+void sub_F8B0(u32 arg0, u32 arg1, s16 arg2)
+{
+    int i;
+    u32 r3;
+    if(arg0 == 0)
+    {
+        if(arg1 == 0) 
+        {
+            r3 = (0 * 2 + 2) * 32 + 12;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x90EA && gUnknown_03005C00[r3 + i] != 0x912A)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA4[arg2];
+                }
+            }
+            r3 = (0 * 2 + 3) * 32 + 12;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x910A && gUnknown_03005C00[r3 + i] != 0x914A)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA4[arg2];
+                }
+            }
+        }
+        else
+        {
+            r3 = (arg1 * 2 + 3) * 32 + 12;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x916A && gUnknown_03005C00[r3 + i] != 0x91AA)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA4[arg2];
+                }
+            }
+            r3 = (arg1 * 2 + 4) * 32 + 12;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x918A && gUnknown_03005C00[r3 + i] != 0x91CA)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA4[arg2];
+                }
+            }
+        }
+    }
+    else
+    {
+        if(arg1 == 0) 
+        {
+            r3 = (0 * 2 + 2) * 32 + 32 * 32 + 10;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x90EA && gUnknown_03005C00[r3 + i] != 0x912A)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA4[arg2];
+                }
+            }
+            r3 = (0 * 2 + 3) * 32 + 32 * 32 + 10;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x910A && gUnknown_03005C00[r3 + i] != 0x914A)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA4[arg2];
+                }
+            }
+        }
+        else
+        {
+            r3 = (arg1 * 2 + 3) * 32 + 32 * 32 + 10;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x916A && gUnknown_03005C00[r3 + i] != 0x91AA)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA4[arg2];
+                }
+            }
+            r3 = (arg1 * 2 + 4) * 32 + 32 * 32 + 10;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x918A && gUnknown_03005C00[r3 + i] != 0x91CA)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA4[arg2];
+                }
+            }
+        }
+    }
+}
+
+void sub_FAE8(u32 arg0, u32 arg1, s16 arg2)
+{
+    int i;
+    u32 r3;
+    if(arg0 == 0)
+    {
+        if(arg1 == 0) 
+        {
+            r3 = (0 * 2 + 2) * 32 + 12;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x90EA && gUnknown_03005C00[r3 + i] != 0x912A)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA8[arg2];
+                }
+            }
+            r3 = (0 * 2 + 3) * 32 + 12;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x910A && gUnknown_03005C00[r3 + i] != 0x914A)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA8[arg2];
+                }
+            }
+        }
+        else
+        {
+            r3 = (arg1 * 2 + 3) * 32 + 12;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x916A && gUnknown_03005C00[r3 + i] != 0x91AA)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA8[arg2];
+                }
+            }
+            r3 = (arg1 * 2 + 4) * 32 + 12;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x918A && gUnknown_03005C00[r3 + i] != 0x91CA)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA8[arg2];
+                }
+            }
+        }
+    }
+    else
+    {
+        if(arg1 == 0) 
+        {
+            r3 = (0 * 2 + 2) * 32 + 32 * 32 + 10;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x90EA && gUnknown_03005C00[r3 + i] != 0x912A)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA8[arg2];
+                }
+            }
+            r3 = (0 * 2 + 3) * 32 + 32 * 32 + 10;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x910A && gUnknown_03005C00[r3 + i] != 0x914A)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA8[arg2];
+                }
+            }
+        }
+        else
+        {
+            r3 = (arg1 * 2 + 3) * 32 + 32 * 32 + 10;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x916A && gUnknown_03005C00[r3 + i] != 0x91AA)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA8[arg2];
+                }
+            }
+            r3 = (arg1 * 2 + 4) * 32 + 32 * 32 + 10;
+            for(i = 0; i < 15; i++)
+            {
+                if(gUnknown_03005C00[r3 + i] != 0x918A && gUnknown_03005C00[r3 + i] != 0x91CA)
+                {
+                    gUnknown_03005C00[r3 + i] += gUnknown_086A7FA8[arg2];
+                }
+            }
+        }
+    }
+}
+
+s8 sub_FD20(void)
+{
+    int i;
+    s16 sp0[NUM_SPECIES];
+    
+    for(i = 0; i < NUM_SPECIES; i++)
+        sp0[i] = gMain_saveData.pokedexFlags[i];
+
+    for(i = 0; i < BONUS_SPECIES_START; i++) // TODO: add a proper count for non bonus
+    {
+        if(sp0[i] != 4)
+            return 0;
+    }
+    return 1;
+}
+
+void sub_FD5C(void (*func)(void))
+{
+    u16 i;
+
+    DmaCopy16(3, (void*)PLTT, gUnknown_0201A520[1], PLTT_SIZE);
+    DmaFill16(3, 0x7FFF, gUnknown_0201A520[0], PLTT_SIZE);
+    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], PLTT_SIZE);
+    DmaCopy16(3, gUnknown_0201A520[2], (void*)PLTT, PLTT_SIZE);
+    
+    sub_1050C();
+
+    for (i = 0; i < 32; i++)
+    {
+        if (func != NULL)
+            func();
+        sub_1001C(i);
+        MainLoopIter();
+        if (i == 31)
+        {
+            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, 0x400);
+        }
+        else
+        {
+            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
+        }
+    }
+}
+
+void sub_FE04(void (*func)(void))
+{
+    u16 i;
+
+    DmaCopy16(3, (void*)PLTT, gUnknown_0201A520[0], PLTT_SIZE);
+    DmaFill16(3, 0x7FFF, gUnknown_0201A520[1], PLTT_SIZE);
+    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], PLTT_SIZE);
+
+    for (i = 0; i < 32; i++)
+    {
+        if (func != NULL)
+            func();
+        sub_1001C(i);
+        MainLoopIter();
+        if (i == 31)
+        {
+            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, 0x400);
+        }
+        else
+        {
+            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
+        }
+    }
+    sub_10528();
+    MainLoopIter();
+    ClearGraphicsMemory();
+}
+
+void sub_FEB8(u8 * arg0, u8 * arg1, void (*func)(void))
+{
+    u16 i;
+
+    DmaCopy16(3, arg0, gUnknown_0201A520[1], 0x200);
+    DmaCopy16(3, arg1, gUnknown_0201A520[2], 0x200);
+    DmaFill16(3, 0, gUnknown_0201A520[0], PLTT_SIZE);
+    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], PLTT_SIZE);
+    DmaCopy16(3, gUnknown_0201A520[2], (void*)PLTT, PLTT_SIZE);
+
+    sub_1050C();
+    gMain.unk16 = REG_DISPCNT;
+    
+    for (i = 0; i < 32; i++)
+    {
+        if (func != NULL)
+            func();
+        sub_1001C(i);
+        MainLoopIter();
+        if (i == 31)
+        {
+            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, 0x400);
+        }
+        else
+        {
+            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
+        }
+    }
+}
+
+void sub_FF74(void (*func)(void))
+{
+    u16 i;
+
+    DmaCopy16(3, (void*)PLTT, gUnknown_0201A520[0], PLTT_SIZE);
+    DmaFill16(3, 0, gUnknown_0201A520[1], PLTT_SIZE);
+    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], PLTT_SIZE);
+
+    for (i = 0; i < 32; i++)
+    {
+        if (func != NULL)
+            func();
+        sub_1001C(i);
+        MainLoopIter();
+        if (i == 31)
+        {
+            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, 0x400);
+        }
+        else
+        {
+            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
+        }
+    }
+    MainLoopIter();
+}
+
+void sub_1001C(u16 arg0)
+{
+    u16 var0;
+    u16 var1;
+    u16 b[2];
+    u16 g[2];
+    u16 r[2];
+    u16 spC[4];
+
+    spC[0] = 0;
+    spC[1] = 2;
+    spC[2] = 1;
+    spC[3] = 3;
+    var0 = spC[arg0 & 3] * 128;
+    var1 = var0 + 128;
+
+    arg0 &= ~3;
+    arg0 += 4;
+    
+    while(var0 < var1)
+    {
+        r[0] = gUnknown_0201A520[0][var0] & 0x1F;
+        g[0] = (gUnknown_0201A520[0][var0] & 0x3E0) >> 5;
+        b[0] = (gUnknown_0201A520[0][var0] & 0x7C00) >> 10;
+        
+        r[1] = gUnknown_0201A520[1][var0] & 0x1F;
+        g[1] = (gUnknown_0201A520[1][var0] & 0x3E0) >> 5;
+        b[1] = (gUnknown_0201A520[1][var0] & 0x7C00) >> 10;
+
+        if(b[0] < b[1])
+            b[0] += ((b[1] - b[0]) * arg0) >> 5;
+        else
+            b[0] -= ((b[0] - b[1]) * arg0) >> 5;
+
+        if(g[0] < g[1])
+            g[0] += ((g[1] - g[0]) * arg0) >> 5;
+        else
+            g[0] -= ((g[0] - g[1]) * arg0) >> 5;
+
+        if(r[0] < r[1])
+            r[0] += ((r[1] - r[0]) * arg0) >> 5;
+        else
+            r[0] -= ((r[0] - r[1]) * arg0) >> 5;
+        
+        gUnknown_0201A520[2][var0] = (b[0] << 10) | (g[0] << 5) | r[0];
+        var0++;
+    }
+}
+
+void sub_10170(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
+{
+    u16 i;
+    u16 b[2];
+    u16 g[2];
+    u16 r[2];   
+    DmaCopy16(3, pal, gUnknown_0201A520[0], arg2);
+    DmaFill16(3, 0, gUnknown_0201A520[1], arg2);
+    
+    for(i = 0; i < arg2; i++)
+    {
+        r[0] = gUnknown_0201A520[0][i] & 0x1F;
+        g[0] = (gUnknown_0201A520[0][i] & 0x3E0) >> 5;
+        b[0] = (gUnknown_0201A520[0][i] & 0x7C00) >> 10;
+        
+        r[1] = gUnknown_0201A520[1][i] & 0x1F;
+        g[1] = (gUnknown_0201A520[1][i] & 0x3E0) >> 5;
+        b[1] = (gUnknown_0201A520[1][i] & 0x7C00) >> 10;
+
+        if(b[0] > b[1])
+            b[0] -= (b[0] * arg3) >> 5;
+        else
+            b[0] = b[1]; 
+
+        if(g[0] > g[1])
+            g[0] -= (g[0] * arg3) >> 5;
+        else
+            g[0] = g[1]; 
+
+        if(r[0] > r[1])
+            r[0] -= (r[0] * arg3) >> 5;
+        else
+            r[0] = r[1]; 
+        
+        gUnknown_0201A520[2][i] = (b[0] << 10) | (g[0] << 5) | r[0];
+    }
+    DmaCopy16(3, gUnknown_0201A520[2], dest, arg2);
+}
+
+void sub_102A8(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
+{
+    u16 i;
+    u16 b[2];
+    u16 g[2];
+    u16 r[2];   
+    DmaCopy16(3, pal, gUnknown_0201A520[0], arg2);
+    DmaFill16(3, 0x7FFF, gUnknown_0201A520[1], arg2);
+    
+    for(i = 0; i < arg2; i++)
+    {
+        r[0] = gUnknown_0201A520[0][i] & 0x1F;
+        g[0] = (gUnknown_0201A520[0][i] & 0x3E0) >> 5;
+        b[0] = (gUnknown_0201A520[0][i] & 0x7C00) >> 10;
+        
+        r[1] = gUnknown_0201A520[1][i] & 0x1F;
+        g[1] = (gUnknown_0201A520[1][i] & 0x3E0) >> 5;
+        b[1] = (gUnknown_0201A520[1][i] & 0x7C00) >> 10;
+
+        if(b[0] < b[1])
+            b[0] += ((b[1] - b[0]) * arg3) >> 5;
+        else
+            b[0] -= ((b[0] - b[1]) * arg3) >> 5;
+
+        if(g[0] < g[1])
+            g[0] += ((g[1] - g[0]) * arg3) >> 5;
+        else
+            g[0] -= ((g[0] - g[1]) * arg3) >> 5;
+
+        if(r[0] < r[1])
+            r[0] += ((r[1] - r[0]) * arg3) >> 5;
+        else
+            r[0] -= ((r[0] - r[1]) * arg3) >> 5;
+        
+        gUnknown_0201A520[2][i] = (b[0] << 10) | (g[0] << 5) | r[0];
+    }
+    DmaCopy16(3, gUnknown_0201A520[2], dest, arg2);
+}
+
+void sub_10424(void)
+{
+    REG_BLDY = 0x10;
+    REG_BLDCNT = ((REG_DISPCNT & (DISPCNT_BG_ALL_ON | DISPCNT_OBJ_ON)) >> 8) | BLDCNT_EFFECT_LIGHTEN | BLDCNT_TGT1_BD;
+    REG_DISPCNT &= ~DISPCNT_FORCED_BLANK;
+    gMain.unk16 = REG_DISPCNT;
+    REG_BLDY = 0x10;
+    MainLoopIter();
+    REG_BLDY = 0x8;
+    MainLoopIter();
+    REG_BLDY = 0;
+    MainLoopIter();
+    REG_BLDCNT = 0;
+}
+
+void sub_10480(void)
+{
+    REG_BLDY = 0;
+    REG_BLDCNT = ((REG_DISPCNT & (DISPCNT_BG_ALL_ON | DISPCNT_OBJ_ON)) >> 8) | BLDCNT_EFFECT_LIGHTEN | BLDCNT_TGT1_BD;
+    REG_BLDY = 0;
+    MainLoopIter();
+    REG_BLDY = 0x8;
+    MainLoopIter();
+    REG_BLDY = 0x10;
+    MainLoopIter();
+    DmaFill16(3, 0, (void*)VRAM, VRAM_SIZE);
+    REG_BG0HOFS = 0;
+    REG_BG0VOFS = 0;
+    REG_BG1HOFS = 0;
+    REG_BG1VOFS = 0;
+    REG_BG2HOFS = 0;
+    REG_BG2VOFS = 0;
+    REG_BG3HOFS = 0;
+    REG_BG3VOFS = 0;
+    MainLoopIter();
+}
+
+void sub_1050C(void)
+{
+    REG_DISPCNT &= ~DISPCNT_FORCED_BLANK;
+    gMain.unk16 = REG_DISPCNT;
+}
+
+void sub_10528(void)
+{
+    gMain.unk16 |= DISPCNT_FORCED_BLANK;
+    REG_DISPCNT |= DISPCNT_FORCED_BLANK;
+}
+
+void sub_10544(void)
+{
+    REG_DISPSTAT &= ~DISPSTAT_VBLANK_INTR;
+    REG_DISPSTAT &= ~DISPSTAT_VCOUNT_INTR;
+    REG_IE &= 0x3FFF;
+    REG_IE &= 0x3FFE;
+    if(REG_IE == 0)
+        REG_IME = 0;
+    REG_IF |= 1;
+}
+
+void sub_105A0(u16 arg0, u16 arg1, int arg2, int arg3, int arg4, int arg5)
+{
+    u16 i, j;
+    for(i = 0; i < arg5; i++)
+    {
+        for(j = 0; j < arg4; j++)
+        {
+            gUnknown_03005C00[arg3 * 32 + arg2 + i * 32 + j] = (arg0 + i * 32 + j) | (arg1 << 12);
+        }
+    }
+}

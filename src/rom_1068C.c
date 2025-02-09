@@ -56,11 +56,11 @@ void sub_10798(void *a, void *b, void (*func)(void))
 {
     u16 i;
 
-    DmaCopy16(3, a, gUnknown_0201A920, 0x200);
-    DmaCopy16(3, b, gUnknown_0201A920 + 0x200, 0x200);
-    DmaFill16(3, 0x7FFF, gUnknown_0201A920 - 0x200, 0x400);
-    DmaCopy16(3, gUnknown_0201A920 - 0x200, gUnknown_0201A920 + 0x200, 0x400);
-    DmaCopy16(3, gUnknown_0201A920 + 0x200, (void *)PLTT, 0x400);
+    DmaCopy16(3, a, gUnknown_0201A520[1], 0x200);
+    DmaCopy16(3, b, gUnknown_0201A520[2], 0x200);
+    DmaFill16(3, 0x7FFF, gUnknown_0201A520[0], 0x400);
+    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], 0x400);
+    DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
 
     sub_1050C();
     gMain.unk16 = REG_DISPCNT;
@@ -73,11 +73,11 @@ void sub_10798(void *a, void *b, void (*func)(void))
         MainLoopIter();
         if (i == 32)
         {
-            DmaCopy16(3, gUnknown_0201A920, (void *)PLTT, 0x400);
+            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, 0x400);
         }
         else
         {
-            DmaCopy16(3, gUnknown_0201AD20, (void *)PLTT, 0x400);
+            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
         }
     }
 }
@@ -86,9 +86,9 @@ void sub_10860(void (*func)(void))
 {
     u16 i;
 
-    DmaCopy16(3, (void *)PLTT, gUnknown_0201A520, 0x400);
-    DmaFill16(3, 0x7FFF, gUnknown_0201A520 + 0x200, 0x400);
-    DmaCopy16(3, gUnknown_0201A520, gUnknown_0201A520 + 0x400, 0x400);
+    DmaCopy16(3, (void *)PLTT, gUnknown_0201A520[0], 0x400);
+    DmaFill16(3, 0x7FFF, gUnknown_0201A520[1], 0x400);
+    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], 0x400);
 
     for (i = 0; i <= 32; i += 16)
     {
@@ -98,11 +98,11 @@ void sub_10860(void (*func)(void))
         MainLoopIter();
         if (i == 32)
         {
-            DmaCopy16(3, gUnknown_0201A920, (void *)PLTT, 0x400);
+            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, 0x400);
         }
         else
         {
-            DmaCopy16(3, gUnknown_0201AD20, (void *)PLTT, 0x400);
+            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
         }
     }
     MainLoopIter();

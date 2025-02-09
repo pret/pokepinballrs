@@ -315,11 +315,7 @@ gUnknown_0201A510: @ 0x0201A510
 gUnknown_0201A514: @ 0x0201A514
 	.space 0xC
 gUnknown_0201A520: @ 0x0201A520
-	.space 0x400
-gUnknown_0201A920: @ 0x0201A920
-	.space 0x400
-gUnknown_0201AD20: @ 0x0201AD20
-	.space 0x400
+	.space 0xC00
 gUnknown_0201B120: @ 0x0201B120
 	.space 0x4
 gUnknown_0201B124: @ 0x0201B124

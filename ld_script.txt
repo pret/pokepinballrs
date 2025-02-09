@@ -45,7 +45,6 @@ SECTIONS
         src/intro.o(.text);
         asm/intro.o(.text);
         src/high_scores.o(.text);
-        asm/high_scores.o(.text);
         src/rom_1068C.o(.text);
         src/titlescreen.o(.text);
         src/rom_11B9C.o(.text);
