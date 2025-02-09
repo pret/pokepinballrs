@@ -12,7 +12,7 @@ extern u8 gUnknown_0809DBE0[];
 extern u8 gUnknown_08099FC0[];
 extern u8 gUnknown_080957A0[];
 extern s16 gUnknown_0202C588;
-extern u8 gUnknown_0202BEB0;
+extern s8 gUnknown_0202BEB0;
 extern s8 gUnknown_0201C18C;
 extern s16 gUnknown_0201A4B8;
 extern s8 gUnknown_0202BED4;
@@ -103,279 +103,98 @@ void LoadHighScoreGraphics(void)
   gMain.subState = gUnknown_02002858.unkA;
 }
 
-NAKED
 void sub_CFD4(void)
 {
-    asm_unified(
-	"\tpush {r4, r5, r6, r7, lr}\n"
-	"\tmov r7, sl\n"
-	"\tmov r6, sb\n"
-	"\tmov r5, r8\n"
-	"\tpush {r5, r6, r7}\n"
-	"\tmovs r7, #0\n"
-	"\tldr r0, _0800D0B0 @ =gUnknown_02002858\n"
-	"\tmov r8, r0\n"
-	"\tldr r1, _0800D0B4 @ =gUnknown_0202C610\n"
-	"\tmov sl, r1\n"
-	"\tldr r2, _0800D0B8 @ =gMain+0x74\n"
-	"\tmov sb, r2\n"
-	"\tmovs r3, #0\n"
-	"\tmov ip, r3\n"
-"_0800CFF0:\n"
-	"\tmovs r3, #0\n"
-	"\tmov r4, ip\n"
-	"\tmovs r6, #0\n"
-"_0800CFF6:\n"
-	"\tadds r0, r4, #0\n"
-	"\tadds r0, #0xe4\n"
-	"\tadds r0, r6, r0\n"
-	"\tmov r1, sb\n"
-	"\tadds r5, r0, r1\n"
-	"\tadds r0, r6, r4\n"
-	"\tmov r1, sl\n"
-	"\tadds r2, r0, r1\n"
-	"\tmovs r1, #5\n"
-"_0800D008:\n"
-	"\tldm r5!, {r0}\n"
-	"\tstm r2!, {r0}\n"
-	"\tsubs r1, #1\n"
-	"\tcmp r1, #0\n"
-	"\tbge _0800D008\n"
-	"\tadds r6, #0x18\n"
-	"\tadds r3, #1\n"
-	"\tcmp r3, #7\n"
-	"\tble _0800CFF6\n"
-	"\tmovs r2, #0xc0\n"
-	"\tadd ip, r2\n"
-	"\tadds r7, #1\n"
-	"\tcmp r7, #1\n"
-	"\tble _0800CFF0\n"
-	"\tmovs r7, #0\n"
-	"\tldr r6, _0800D0BC @ =gUnknown_0202C550\n"
-	"\tldr r5, _0800D0B4 @ =gUnknown_0202C610\n"
-"_0800D02A:\n"
-	"\tlsls r0, r7, #1\n"
-	"\tadds r4, r7, #1\n"
-	"\tadds r0, r0, r7\n"
-	"\tlsls r1, r0, #3\n"
-	"\tlsls r0, r0, #6\n"
-	"\tadds r2, r0, r5\n"
-	"\tadds r1, r1, r6\n"
-	"\tmovs r3, #5\n"
-"_0800D03A:\n"
-	"\tldm r2!, {r0}\n"
-	"\tstm r1!, {r0}\n"
-	"\tsubs r3, #1\n"
-	"\tcmp r3, #0\n"
-	"\tbge _0800D03A\n"
-	"\tadds r7, r4, #0\n"
-	"\tcmp r7, #1\n"
-	"\tble _0800D02A\n"
-	"\tmovs r3, #0\n"
-	"\tmovs r2, #0\n"
-	"\tmov r4, r8\n"
-	"\tstrh r2, [r4, #0x10]\n"
-	"\tstrh r2, [r4, #0x12]\n"
-	"\tstrh r2, [r4, #0x14]\n"
-	"\tstrh r2, [r4, #0x18]\n"
-	"\tstrh r2, [r4, #0x1a]\n"
-	"\tstrh r2, [r4, #0x1e]\n"
-	"\tstrh r2, [r4, #0x1c]\n"
-	"\tstrh r2, [r4, #0x20]\n"
-	"\tstrh r2, [r4, #0x22]\n"
-	"\tmov r0, r8\n"
-	"\tadds r0, #0x25\n"
-	"\tstrb r3, [r0]\n"
-	"\tmov r1, r8\n"
-	"\tadds r1, #0x26\n"
-	"\tmovs r0, #1\n"
-	"\tstrb r0, [r1]\n"
-	"\tldr r1, _0800D0C0 @ =gUnknown_0201B178\n"
-	"\tstrb r3, [r1]\n"
-	"\tldr r4, _0800D0C4 @ =gUnknown_0202BEBC\n"
-	"\tstrb r0, [r4]\n"
-	"\tldr r0, _0800D0C8 @ =gUnknown_0201C18C\n"
-	"\tstrb r3, [r0]\n"
-	"\tldr r1, _0800D0CC @ =gUnknown_02002884\n"
-	"\tstrb r3, [r1]\n"
-	"\tldr r4, _0800D0D0 @ =gUnknown_02002885\n"
-	"\tstrb r3, [r4]\n"
-	"\tldr r1, _0800D0D4 @ =gUnknown_0202C588\n"
-	"\tmovs r4, #0\n"
-	"\tldrsh r0, [r1, r4]\n"
-	"\tcmp r0, #1\n"
-	"\tbeq _0800D090\n"
-	"\tb _0800D1C0\n"
-"_0800D090:\n"
-	"\tldr r0, _0800D0D8 @ =gMain\n"
-	"\tldr r1, [r0, #0x5c]\n"
-	"\tmov r4, r8\n"
-	"\tstr r1, [r4]\n"
-	"\tldr r1, [r0, #0x58]\n"
-	"\tstr r1, [r4, #4]\n"
-	"\tldrb r1, [r0, #4]\n"
-	"\tcmp r1, #1\n"
-	"\tbne _0800D0E4\n"
-	"\tstrb r1, [r4, #0xb]\n"
-	"\tmovs r0, #0xf0\n"
-	"\tldr r2, _0800D0DC @ =gUnknown_02002882\n"
-	"\tstrh r0, [r2]\n"
-	"\tldr r3, _0800D0E0 @ =gUnknown_02002880\n"
-	"\tstrh r1, [r3]\n"
-	"\tb _0800D0F6\n"
-	"\t.align 2, 0\n"
-"_0800D0B0: .4byte gUnknown_02002858\n"
-"_0800D0B4: .4byte gUnknown_0202C610\n"
-"_0800D0B8: .4byte gMain+0x74\n"
-"_0800D0BC: .4byte gUnknown_0202C550\n"
-"_0800D0C0: .4byte gUnknown_0201B178\n"
-"_0800D0C4: .4byte gUnknown_0202BEBC\n"
-"_0800D0C8: .4byte gUnknown_0201C18C\n"
-"_0800D0CC: .4byte gUnknown_02002884\n"
-"_0800D0D0: .4byte gUnknown_02002885\n"
-"_0800D0D4: .4byte gUnknown_0202C588\n"
-"_0800D0D8: .4byte gMain\n"
-"_0800D0DC: .4byte gUnknown_02002882\n"
-"_0800D0E0: .4byte gUnknown_02002880\n"
-"_0800D0E4:\n"
-	"\tmov r4, r8\n"
-	"\tstrb r3, [r4, #0xb]\n"
-	"\tldr r0, _0800D178 @ =gUnknown_02002882\n"
-	"\tstrh r2, [r0]\n"
-	"\tmovs r1, #1\n"
-	"\trsbs r1, r1, #0\n"
-	"\tadds r0, r1, #0\n"
-	"\tldr r2, _0800D17C @ =gUnknown_02002880\n"
-	"\tstrh r0, [r2]\n"
-"_0800D0F6:\n"
-	"\tldr r4, _0800D180 @ =gUnknown_02002858\n"
-	"\tldr r0, [r4]\n"
-	"\tldr r1, [r4, #4]\n"
-	"\tldrb r2, [r4, #0xb]\n"
-	"\tbl GetNewHighScoreIndex\n"
-	"\tadds r3, r0, #0\n"
-	"\tstr r3, [r4, #0xc]\n"
-	"\tmovs r0, #1\n"
-	"\trsbs r0, r0, #0\n"
-	"\tcmp r3, r0\n"
-	"\tbeq _0800D14A\n"
-	"\tldr r0, [r4]\n"
-	"\tldr r1, [r4, #4]\n"
-	"\tldrb r2, [r4, #0xb]\n"
-	"\tbl sub_F434\n"
-	"\tmovs r7, #0\n"
-	"\tldr r5, _0800D184 @ =gUnknown_0202C610\n"
-	"\tadds r3, r4, #0\n"
-	"\tldr r6, _0800D188 @ =gUnknown_0201A500\n"
-	"\tadds r4, r6, #0\n"
-"_0800D122:\n"
-	"\tlsls r2, r7, #2\n"
-	"\tldr r1, [r3, #0xc]\n"
-	"\tlsls r0, r1, #1\n"
-	"\tadds r0, r0, r1\n"
-	"\tlsls r0, r0, #3\n"
-	"\tadds r2, r2, r0\n"
-	"\tldrb r1, [r3, #0xb]\n"
-	"\tlsls r0, r1, #1\n"
-	"\tadds r0, r0, r1\n"
-	"\tlsls r0, r0, #6\n"
-	"\tadds r2, r2, r0\n"
-	"\tadds r2, r2, r5\n"
-	"\tldm r4!, {r0}\n"
-	"\tstr r0, [r2]\n"
-	"\tadds r7, #1\n"
-	"\tcmp r7, #3\n"
-	"\tble _0800D122\n"
-	"\tldr r1, _0800D180 @ =gUnknown_02002858\n"
-	"\tldr r0, [r6]\n"
-	"\tstrh r0, [r1, #0x16]\n"
-"_0800D14A:\n"
-	"\tbl sub_FD20\n"
-	"\tlsls r0, r0, #0x18\n"
-	"\tasrs r3, r0, #0x18\n"
-	"\tcmp r3, #1\n"
-	"\tbne _0800D1A8\n"
-	"\tldr r0, _0800D18C @ =gUnknown_0202BEB0\n"
-	"\tmovs r2, #0\n"
-	"\tldrsb r2, [r0, r2]\n"
-	"\tcmp r2, #0\n"
-	"\tbne _0800D1A0\n"
-	"\tldr r0, _0800D190 @ =gUnknown_0201C18C\n"
-	"\tstrb r3, [r0]\n"
-	"\tldr r1, _0800D194 @ =gUnknown_0201A4B8\n"
-	"\tmovs r0, #0xb8\n"
-	"\tstrh r0, [r1]\n"
-	"\tldr r0, _0800D198 @ =gUnknown_0202C580\n"
-	"\tstrb r2, [r0]\n"
-	"\tldr r0, _0800D19C @ =gUnknown_0202BED4\n"
-	"\tstrb r2, [r0]\n"
-	"\tldr r0, _0800D180 @ =gUnknown_02002858\n"
-	"\tstrb r3, [r0, #0xa]\n"
-	"\tb _0800D1DA\n"
-	"\t.align 2, 0\n"
-"_0800D178: .4byte gUnknown_02002882\n"
-"_0800D17C: .4byte gUnknown_02002880\n"
-"_0800D180: .4byte gUnknown_02002858\n"
-"_0800D184: .4byte gUnknown_0202C610\n"
-"_0800D188: .4byte gUnknown_0201A500\n"
-"_0800D18C: .4byte gUnknown_0202BEB0\n"
-"_0800D190: .4byte gUnknown_0201C18C\n"
-"_0800D194: .4byte gUnknown_0201A4B8\n"
-"_0800D198: .4byte gUnknown_0202C580\n"
-"_0800D19C: .4byte gUnknown_0202BED4\n"
-"_0800D1A0:\n"
-	"\tldr r1, _0800D1A4 @ =gUnknown_0201C18C\n"
-	"\tb _0800D1AA\n"
-	"\t.align 2, 0\n"
-"_0800D1A4: .4byte gUnknown_0201C18C\n"
-"_0800D1A8:\n"
-	"\tldr r1, _0800D1B8 @ =gUnknown_0202BEB0\n"
-"_0800D1AA:\n"
-	"\tmovs r0, #0\n"
-	"\tstrb r0, [r1]\n"
-	"\tldr r1, _0800D1BC @ =gUnknown_02002858\n"
-	"\tmovs r0, #2\n"
-	"\tstrb r0, [r1, #0xa]\n"
-	"\tb _0800D1DA\n"
-	"\t.align 2, 0\n"
-"_0800D1B8: .4byte gUnknown_0202BEB0\n"
-"_0800D1BC: .4byte gUnknown_02002858\n"
-"_0800D1C0:\n"
-	"\tmov r4, r8\n"
-	"\tstrb r3, [r4, #0xb]\n"
-	"\tldr r0, _0800D200 @ =gUnknown_02002882\n"
-	"\tstrh r2, [r0]\n"
-	"\tmovs r1, #1\n"
-	"\trsbs r1, r1, #0\n"
-	"\tadds r0, r1, #0\n"
-	"\tldr r2, _0800D204 @ =gUnknown_02002880\n"
-	"\tstrh r0, [r2]\n"
-	"\tbl sub_E464\n"
-	"\tmovs r0, #3\n"
-	"\tstrb r0, [r4, #0xa]\n"
-"_0800D1DA:\n"
-	"\tldr r2, _0800D208 @ =gMain\n"
-	"\tldr r0, _0800D200 @ =gUnknown_02002882\n"
-	"\tldrh r1, [r0]\n"
-	"\tmovs r3, #0xbd\n"
-	"\tlsls r3, r3, #2\n"
-	"\tadds r0, r2, r3\n"
-	"\tstrh r1, [r0]\n"
-	"\tmovs r4, #0xbc\n"
-	"\tlsls r4, r4, #2\n"
-	"\tadds r0, r2, r4\n"
-	"\tstrh r1, [r0]\n"
-	"\tpop {r3, r4, r5}\n"
-	"\tmov r8, r3\n"
-	"\tmov sb, r4\n"
-	"\tmov sl, r5\n"
-	"\tpop {r4, r5, r6, r7}\n"
-	"\tpop {r0}\n"
-	"\tbx r0\n"
-	"\t.align 2, 0\n"
-"_0800D200: .4byte gUnknown_02002882\n"
-"_0800D204: .4byte gUnknown_02002880\n"
-"_0800D208: .4byte gMain");
+    int i, j, k;
+    for(i = 0; i < 2; i++)
+    {
+        for(j = 0; j < NUM_HIGH_SCORES; j++) 
+        {
+            for(k = 0; k < HIGH_SCORE_NAME_LENGTH + 2; k++) // ? use an array count instead?
+                gUnknown_0202C610[i][j].data.raw[k] = gMain_saveData.highScores[i][j].data.raw[k];
+        }
+    }
+    for(i = 0; i < 2; i++)
+    {
+        for(j = 0; j <  HIGH_SCORE_NAME_LENGTH + 2; j++)
+        {
+            gUnknown_0202C550[i].data.raw[j] = gUnknown_0202C610[i][0].data.raw[j];
+        }
+    }
+    gUnknown_02002858.unk10 = 0;
+    gUnknown_02002858.unk12 = 0;
+    gUnknown_02002858.unk14 = 0;
+    gUnknown_02002858.unk18 = 0;
+    gUnknown_02002858.unk1A = 0;
+    gUnknown_02002858.unk1E = 0;
+    gUnknown_02002858.unk1C = 0;
+    gUnknown_02002858.unk20 = 0;
+    gUnknown_02002858.unk22 = 0;
+    gUnknown_02002858.unk25 = 0;
+    gUnknown_02002858.unk26 = 1;
+    gUnknown_0201B178 = 0;
+    gUnknown_0202BEBC = 1;
+    gUnknown_0201C18C = 0;
+    gUnknown_02002884 = 0;
+    gUnknown_02002885 = 0;
+    if(gUnknown_0202C588 == 1)
+    {
+        gUnknown_02002858.unk0 = gMain.unk5C;
+        gUnknown_02002858.unk4 = gMain.unk58;
+        if(gMain.selectedField == 1)
+        {
+            gUnknown_02002858.unkB = 1;
+            gUnknown_02002882 = 0xF0;
+            gUnknown_02002880 = 1;
+        }
+        else
+        {
+            gUnknown_02002858.unkB = 0;
+            gUnknown_02002882 = 0;
+            gUnknown_02002880 = -1;
+        }
+        gUnknown_02002858.unkC = GetNewHighScoreIndex(gUnknown_02002858.unk0, gUnknown_02002858.unk4, gUnknown_02002858.unkB);
+        if(gUnknown_02002858.unkC != -1)
+        {
+            sub_F434(gUnknown_02002858.unk0, gUnknown_02002858.unk4, gUnknown_02002858.unkB, gUnknown_02002858.unkC);
+            for(i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
+            {
+                gUnknown_0202C610[gUnknown_02002858.unkB][gUnknown_02002858.unkC].data.parts.name[i] = gUnknown_0201A500[i];
+            }
+            gUnknown_02002858.unk16 = gUnknown_0201A500[0];
+        }
+        if(sub_FD20() == 1)
+        {
+            if(gUnknown_0202BEB0 == 0)
+            {
+                gUnknown_0201C18C = 1;
+                gUnknown_0201A4B8 = 0xB8;
+                gUnknown_0202C580 = 0;
+                gUnknown_0202BED4 = 0;
+                gUnknown_02002858.unkA = 1;
+            }
+            else
+            {
+                gUnknown_0201C18C = 0;
+                gUnknown_02002858.unkA = 2;
+            }
+        }
+        else
+        {
+            gUnknown_0202BEB0 = 0;
+            gUnknown_02002858.unkA = 2;
+        }
+    }
+    else
+    {
+        gUnknown_02002858.unkB = 0;
+        gUnknown_02002882 = 0;
+        gUnknown_02002880 = -1;
+        sub_E464();
+        gUnknown_02002858.unkA = 3;
+    }
+    gMain.unk2E8[3].unk0 = gUnknown_02002882;
+    gMain.unk2E8[2].unk0 = gUnknown_02002882;
 }
 
 void sub_D20C(void)
