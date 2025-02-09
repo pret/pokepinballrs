@@ -1859,14 +1859,13 @@ s16 sub_ED28(void)
     return 0;
 }
 
-#ifdef NONMATCHING
 void sub_EE64(void)
 {
     int i, j;
-
-    for (i = 0; i < 4; i++)
+    
+    for (j = 0; j < 4; j++)
     {
-        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[0][0].data.parts.name[i]] + 0x80, 8, i + 6, 3, 1, 1);
+        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[0][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
     }
 
     for (i = 1; i < 8; i++)
@@ -1878,33 +1877,31 @@ void sub_EE64(void)
     }
 
     sub_F21C(gUnknown_0202C610[0][0].data.parts.scoreHi, gUnknown_0202C610[0][0].data.parts.scoreLo);
-    for (i = 0; i < 14; i++)
+    for (j = 0; j < 14; j++)
     {
-        if ((i + 1) % 3 == 0)
-            sub_105A0(gUnknown_0202C5C0[i] + 0x120, 9, i + 12, 2, 1, 2);
+        if ((j + 1) % 3 == 0)
+            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 12, 2, 1, 2);
         else
-            sub_105A0(gUnknown_0202C5C0[i] + 0xE0, 9, i + 12, 2, 1, 2);
+            sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, j + 12, 2, 1, 2);
     }
-
-    sub_105A0(gUnknown_0202C5C0[i] + 0xE0, 9, 26, 2, 1, 2);
+    sub_105A0(gUnknown_0202C5C0[14] + 0xE0, 9, 26, 2, 1, 2);
     for (i = 1; i < 8; i++)
     {
-        struct HighScoreEntry *entry = &gUnknown_0202C610[0][i];
-        sub_F21C(entry->data.parts.scoreHi, entry->data.parts.scoreLo);
+        sub_F21C(gUnknown_0202C610[0][i].data.parts.scoreHi, gUnknown_0202C610[0][i].data.parts.scoreLo);
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, 12, i * 2 + 3, 1, 2);
+                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2);
             else
-                sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, 12, i * 2 + 3, 1, 2);
+                sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, j + 12, i * 2 + 3, 1, 2);
         }
 
-        sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, 26, 3 + i * 2, 1, 2);
+        sub_105A0(gUnknown_0202C5C0[14] + 0x160, 9, 26, 3 + i * 2, 1, 2);
     }
 
-    for (i = 0; i < 4; i++)
+    for (j = 0; j < 4; j++)
     {
-        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[1][0].data.parts.name[i]] + 0x80, 8, i + 4, 35, 1, 1);
+        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[1][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
     }
 
     for (i = 1; i < 8; i++)
@@ -1914,21 +1911,19 @@ void sub_EE64(void)
             sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[1][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
         }
     }
-
     sub_F21C(gUnknown_0202C610[1][0].data.parts.scoreHi, gUnknown_0202C610[1][0].data.parts.scoreLo);
-    for (i = 0; i < 14; i++)
+    for (j = 0; j < 14; j++)
     {
-        if ((i + 1) % 3 == 0)
-            sub_105A0(gUnknown_0202C5C0[i] + 0x120, 9, i + 10, 34, 1, 2);
+        if ((j + 1) % 3 == 0)
+            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 10, 34, 1, 2);
         else
-            sub_105A0(gUnknown_0202C5C0[i] + 0xE0, 9, i + 10, 34, 1, 2);
+            sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, j + 10, 34, 1, 2);
     }
 
-    sub_105A0(gUnknown_0202C5C0[i] + 0xE0, 9, 24, 34, 1, 2);
+    sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, 24, 34, 1, 2);
     for (i = 1; i < 8; i++)
     {
-        struct HighScoreEntry *entry = &gUnknown_0202C610[1][i];
-        sub_F21C(entry->data.parts.scoreHi, entry->data.parts.scoreLo);
+        sub_F21C(gUnknown_0202C610[1][i].data.parts.scoreHi, gUnknown_0202C610[1][i].data.parts.scoreLo);
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
@@ -1940,475 +1935,6 @@ void sub_EE64(void)
         sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, 24, i * 2 + 35, 1, 2);
     }
 }
-#else
-NAKED
-void sub_EE64(void)
-{
-    asm_unified("\n\
-	push {r4, r5, r6, r7, lr}\n\
-	mov r7, sl\n\
-	mov r6, sb\n\
-	mov r5, r8\n\
-	push {r5, r6, r7}\n\
-	sub sp, #0x10\n\
-	movs r6, #0\n\
-	ldr r4, _0800EF20 @ =gUnknown_086A7FAC\n\
-	ldr r5, _0800EF24 @ =gUnknown_0202C610\n\
-_0800EE76:\n\
-	ldm r5!, {r0}\n\
-	lsls r0, r0, #1\n\
-	adds r0, r0, r4\n\
-	ldrh r0, [r0]\n\
-	adds r0, #0x80\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	adds r2, r6, #6\n\
-	movs r1, #1\n\
-	str r1, [sp]\n\
-	str r1, [sp, #4]\n\
-	movs r1, #8\n\
-	movs r3, #3\n\
-	bl sub_105A0\n\
-	adds r6, #1\n\
-	cmp r6, #3\n\
-	ble _0800EE76\n\
-	movs r5, #1\n\
-	ldr r0, _0800EF20 @ =gUnknown_086A7FAC\n\
-	mov sb, r0\n\
-	ldr r1, _0800EF24 @ =gUnknown_0202C610\n\
-	mov sl, r1\n\
-_0800EEA4:\n\
-	movs r6, #0\n\
-	lsls r7, r5, #1\n\
-	adds r2, r5, #1\n\
-	mov r8, r2\n\
-	adds r4, r7, #0\n\
-	adds r0, r4, r5\n\
-	lsls r0, r0, #3\n\
-	mov r1, sl\n\
-	adds r5, r0, r1\n\
-_0800EEB6:\n\
-	ldm r5!, {r0}\n\
-	lsls r0, r0, #1\n\
-	add r0, sb\n\
-	ldrh r0, [r0]\n\
-	adds r0, #0xa0\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	adds r2, r6, #6\n\
-	movs r1, #1\n\
-	str r1, [sp]\n\
-	movs r1, #2\n\
-	str r1, [sp, #4]\n\
-	movs r1, #8\n\
-	adds r3, r4, #3\n\
-	bl sub_105A0\n\
-	adds r6, #1\n\
-	cmp r6, #3\n\
-	ble _0800EEB6\n\
-	mov r5, r8\n\
-	cmp r5, #7\n\
-	ble _0800EEA4\n\
-	ldr r1, _0800EF24 @ =gUnknown_0202C610\n\
-	ldr r0, [r1, #0x10]\n\
-	ldr r1, [r1, #0x14]\n\
-	bl sub_F21C\n\
-	movs r6, #0\n\
-	movs r5, #0xc\n\
-	ldr r4, _0800EF28 @ =gUnknown_0202C5C0\n\
-	movs r7, #1\n\
-_0800EEF4:\n\
-	adds r0, r6, #1\n\
-	movs r1, #3\n\
-	bl __modsi3\n\
-	cmp r0, #0\n\
-	bne _0800EF2C\n\
-	movs r2, #0x90\n\
-	lsls r2, r2, #1\n\
-	adds r0, r2, #0\n\
-	ldrh r1, [r4]\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	str r7, [sp]\n\
-	movs r1, #2\n\
-	str r1, [sp, #4]\n\
-	movs r1, #9\n\
-	adds r2, r5, #0\n\
-	movs r3, #2\n\
-	bl sub_105A0\n\
-	b _0800EF44\n\
-	.align 2, 0\n\
-_0800EF20: .4byte gUnknown_086A7FAC\n\
-_0800EF24: .4byte gUnknown_0202C610\n\
-_0800EF28: .4byte gUnknown_0202C5C0\n\
-_0800EF2C:\n\
-	ldrh r0, [r4]\n\
-	adds r0, #0xe0\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	str r7, [sp]\n\
-	movs r1, #2\n\
-	str r1, [sp, #4]\n\
-	movs r1, #9\n\
-	adds r2, r5, #0\n\
-	movs r3, #2\n\
-	bl sub_105A0\n\
-_0800EF44:\n\
-	adds r5, #1\n\
-	adds r4, #2\n\
-	adds r6, #1\n\
-	cmp r6, #0xd\n\
-	ble _0800EEF4\n\
-	ldr r4, _0800EFC8 @ =gUnknown_0202C5C0\n\
-	ldrh r0, [r4, #0x1c]\n\
-	adds r0, #0xe0\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	movs r1, #1\n\
-	str r1, [sp]\n\
-	movs r1, #2\n\
-	str r1, [sp, #4]\n\
-	movs r1, #9\n\
-	movs r2, #0x1a\n\
-	movs r3, #2\n\
-	bl sub_105A0\n\
-	movs r5, #1\n\
-	ldr r2, _0800EFCC @ =gUnknown_0202C610\n\
-	str r2, [sp, #8]\n\
-	mov sl, r5\n\
-	movs r0, #2\n\
-	mov sb, r0\n\
-_0800EF76:\n\
-	lsls r4, r5, #1\n\
-	adds r1, r4, r5\n\
-	lsls r1, r1, #3\n\
-	ldr r0, [sp, #8]\n\
-	adds r0, #0x10\n\
-	adds r0, r1, r0\n\
-	ldr r0, [r0]\n\
-	ldr r2, _0800EFD0 @ =gUnknown_0202C624\n\
-	adds r1, r1, r2\n\
-	ldr r1, [r1]\n\
-	bl sub_F21C\n\
-	movs r6, #0\n\
-	adds r7, r4, #0\n\
-	adds r5, #1\n\
-	mov r8, r5\n\
-	movs r5, #0xc\n\
-	ldr r4, _0800EFC8 @ =gUnknown_0202C5C0\n\
-_0800EF9A:\n\
-	adds r0, r6, #1\n\
-	movs r1, #3\n\
-	bl __modsi3\n\
-	cmp r0, #0\n\
-	bne _0800EFD4\n\
-	movs r1, #0xd0\n\
-	lsls r1, r1, #1\n\
-	adds r0, r1, #0\n\
-	ldrh r2, [r4]\n\
-	adds r0, r0, r2\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	mov r1, sl\n\
-	str r1, [sp]\n\
-	mov r2, sb\n\
-	str r2, [sp, #4]\n\
-	movs r1, #9\n\
-	adds r2, r5, #0\n\
-	adds r3, r7, #3\n\
-	bl sub_105A0\n\
-	b _0800EFF4\n\
-	.align 2, 0\n\
-_0800EFC8: .4byte gUnknown_0202C5C0\n\
-_0800EFCC: .4byte gUnknown_0202C610\n\
-_0800EFD0: .4byte gUnknown_0202C624\n\
-_0800EFD4:\n\
-	movs r1, #0xb0\n\
-	lsls r1, r1, #1\n\
-	adds r0, r1, #0\n\
-	ldrh r2, [r4]\n\
-	adds r0, r0, r2\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	mov r1, sl\n\
-	str r1, [sp]\n\
-	mov r2, sb\n\
-	str r2, [sp, #4]\n\
-	movs r1, #9\n\
-	adds r2, r5, #0\n\
-	adds r3, r7, #3\n\
-	bl sub_105A0\n\
-_0800EFF4:\n\
-	adds r5, #1\n\
-	adds r4, #2\n\
-	adds r6, #1\n\
-	cmp r6, #0xd\n\
-	ble _0800EF9A\n\
-	movs r1, #0xb0\n\
-	lsls r1, r1, #1\n\
-	adds r0, r1, #0\n\
-	ldr r2, _0800F0E4 @ =gUnknown_0202C5C0\n\
-	ldrh r2, [r2, #0x1c]\n\
-	adds r0, r0, r2\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	adds r3, r7, #3\n\
-	mov r1, sl\n\
-	str r1, [sp]\n\
-	mov r2, sb\n\
-	str r2, [sp, #4]\n\
-	movs r1, #9\n\
-	movs r2, #0x1a\n\
-	bl sub_105A0\n\
-	mov r5, r8\n\
-	cmp r5, #7\n\
-	ble _0800EF76\n\
-	movs r6, #0\n\
-	ldr r7, _0800F0E8 @ =gUnknown_086A7FAC\n\
-	ldr r0, _0800F0EC @ =gUnknown_0202C610\n\
-	adds r5, r0, #0\n\
-	adds r5, #0xc0\n\
-	movs r4, #1\n\
-_0800F032:\n\
-	ldm r5!, {r0}\n\
-	lsls r0, r0, #1\n\
-	adds r0, r0, r7\n\
-	ldrh r0, [r0]\n\
-	adds r0, #0x80\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	adds r2, r6, #4\n\
-	str r4, [sp]\n\
-	str r4, [sp, #4]\n\
-	movs r1, #8\n\
-	movs r3, #0x23\n\
-	bl sub_105A0\n\
-	adds r6, #1\n\
-	cmp r6, #3\n\
-	ble _0800F032\n\
-	movs r5, #1\n\
-	ldr r0, _0800F0E8 @ =gUnknown_086A7FAC\n\
-	mov sb, r0\n\
-	ldr r1, _0800F0F0 @ =gUnknown_0202C6D0\n\
-	mov sl, r1\n\
-_0800F05E:\n\
-	movs r6, #0\n\
-	lsls r7, r5, #1\n\
-	adds r2, r5, #1\n\
-	mov r8, r2\n\
-	adds r4, r7, #0\n\
-	adds r0, r4, r5\n\
-	lsls r0, r0, #3\n\
-	mov r1, sl\n\
-	adds r5, r0, r1\n\
-_0800F070:\n\
-	ldm r5!, {r0}\n\
-	lsls r0, r0, #1\n\
-	add r0, sb\n\
-	ldrh r0, [r0]\n\
-	adds r0, #0xa0\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	adds r2, r6, #4\n\
-	movs r1, #1\n\
-	str r1, [sp]\n\
-	movs r1, #2\n\
-	str r1, [sp, #4]\n\
-	movs r1, #8\n\
-	adds r3, r4, #0\n\
-	adds r3, #0x23\n\
-	bl sub_105A0\n\
-	adds r6, #1\n\
-	cmp r6, #3\n\
-	ble _0800F070\n\
-	mov r5, r8\n\
-	cmp r5, #7\n\
-	ble _0800F05E\n\
-	ldr r1, _0800F0EC @ =gUnknown_0202C610\n\
-	adds r0, r1, #0\n\
-	adds r0, #0xd0\n\
-	ldr r0, [r0]\n\
-	adds r1, #0xd4\n\
-	ldr r1, [r1]\n\
-	bl sub_F21C\n\
-	movs r6, #0\n\
-	movs r5, #0xa\n\
-	ldr r4, _0800F0E4 @ =gUnknown_0202C5C0\n\
-	movs r7, #1\n\
-_0800F0B6:\n\
-	adds r0, r6, #1\n\
-	movs r1, #3\n\
-	bl __modsi3\n\
-	cmp r0, #0\n\
-	bne _0800F0F4\n\
-	movs r2, #0x90\n\
-	lsls r2, r2, #1\n\
-	adds r0, r2, #0\n\
-	ldrh r1, [r4]\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	str r7, [sp]\n\
-	movs r1, #2\n\
-	str r1, [sp, #4]\n\
-	movs r1, #9\n\
-	adds r2, r5, #0\n\
-	movs r3, #0x22\n\
-	bl sub_105A0\n\
-	b _0800F10C\n\
-	.align 2, 0\n\
-_0800F0E4: .4byte gUnknown_0202C5C0\n\
-_0800F0E8: .4byte gUnknown_086A7FAC\n\
-_0800F0EC: .4byte gUnknown_0202C610\n\
-_0800F0F0: .4byte gUnknown_0202C6D0\n\
-_0800F0F4:\n\
-	ldrh r0, [r4]\n\
-	adds r0, #0xe0\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	str r7, [sp]\n\
-	movs r1, #2\n\
-	str r1, [sp, #4]\n\
-	movs r1, #9\n\
-	adds r2, r5, #0\n\
-	movs r3, #0x22\n\
-	bl sub_105A0\n\
-_0800F10C:\n\
-	adds r5, #1\n\
-	adds r4, #2\n\
-	adds r6, #1\n\
-	cmp r6, #0xd\n\
-	ble _0800F0B6\n\
-	ldr r4, _0800F19C @ =gUnknown_0202C5C0\n\
-	lsls r0, r6, #1\n\
-	adds r0, r0, r4\n\
-	ldrh r0, [r0]\n\
-	adds r0, #0xe0\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	movs r1, #1\n\
-	str r1, [sp]\n\
-	movs r1, #2\n\
-	str r1, [sp, #4]\n\
-	movs r1, #9\n\
-	movs r2, #0x18\n\
-	movs r3, #0x22\n\
-	bl sub_105A0\n\
-	movs r5, #1\n\
-	ldr r2, _0800F1A0 @ =gUnknown_0202C610\n\
-	str r2, [sp, #0xc]\n\
-	mov sl, r5\n\
-	movs r0, #2\n\
-	mov sb, r0\n\
-_0800F142:\n\
-	lsls r4, r5, #1\n\
-	adds r1, r4, r5\n\
-	lsls r1, r1, #3\n\
-	ldr r0, [sp, #0xc]\n\
-	adds r0, #0xd0\n\
-	adds r0, r1, r0\n\
-	ldr r0, [r0]\n\
-	ldr r2, _0800F1A4 @ =gUnknown_0202C6E4\n\
-	adds r1, r1, r2\n\
-	ldr r1, [r1]\n\
-	bl sub_F21C\n\
-	movs r6, #0\n\
-	adds r7, r4, #0\n\
-	adds r5, #1\n\
-	mov r8, r5\n\
-_0800F162:\n\
-	adds r4, r6, #1\n\
-	adds r0, r4, #0\n\
-	movs r1, #3\n\
-	bl __modsi3\n\
-	cmp r0, #0\n\
-	bne _0800F1A8\n\
-	lsls r1, r6, #1\n\
-	ldr r0, _0800F19C @ =gUnknown_0202C5C0\n\
-	adds r1, r1, r0\n\
-	movs r2, #0xd0\n\
-	lsls r2, r2, #1\n\
-	adds r0, r2, #0\n\
-	ldrh r1, [r1]\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	adds r2, r6, #0\n\
-	adds r2, #0xa\n\
-	mov r1, sl\n\
-	str r1, [sp]\n\
-	mov r1, sb\n\
-	str r1, [sp, #4]\n\
-	movs r1, #9\n\
-	adds r3, r7, #0\n\
-	adds r3, #0x23\n\
-	bl sub_105A0\n\
-	b _0800F1D2\n\
-	.align 2, 0\n\
-_0800F19C: .4byte gUnknown_0202C5C0\n\
-_0800F1A0: .4byte gUnknown_0202C610\n\
-_0800F1A4: .4byte gUnknown_0202C6E4\n\
-_0800F1A8:\n\
-	lsls r1, r6, #1\n\
-	ldr r2, _0800F218 @ =gUnknown_0202C5C0\n\
-	adds r1, r1, r2\n\
-	movs r2, #0xb0\n\
-	lsls r2, r2, #1\n\
-	adds r0, r2, #0\n\
-	ldrh r1, [r1]\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	adds r2, r6, #0\n\
-	adds r2, #0xa\n\
-	mov r1, sl\n\
-	str r1, [sp]\n\
-	mov r1, sb\n\
-	str r1, [sp, #4]\n\
-	movs r1, #9\n\
-	adds r3, r7, #0\n\
-	adds r3, #0x23\n\
-	bl sub_105A0\n\
-_0800F1D2:\n\
-	adds r6, r4, #0\n\
-	cmp r4, #0xd\n\
-	ble _0800F162\n\
-	lsls r1, r4, #1\n\
-	ldr r2, _0800F218 @ =gUnknown_0202C5C0\n\
-	adds r1, r1, r2\n\
-	movs r2, #0xb0\n\
-	lsls r2, r2, #1\n\
-	adds r0, r2, #0\n\
-	ldrh r1, [r1]\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #0x10\n\
-	lsrs r0, r0, #0x10\n\
-	adds r3, r7, #0\n\
-	adds r3, #0x23\n\
-	mov r1, sl\n\
-	str r1, [sp]\n\
-	mov r2, sb\n\
-	str r2, [sp, #4]\n\
-	movs r1, #9\n\
-	movs r2, #0x18\n\
-	bl sub_105A0\n\
-	mov r5, r8\n\
-	cmp r5, #7\n\
-	ble _0800F142\n\
-	add sp, #0x10\n\
-	pop {r3, r4, r5}\n\
-	mov r8, r3\n\
-	mov sb, r4\n\
-	mov sl, r5\n\
-	pop {r4, r5, r6, r7}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.align 2, 0\n\
-_0800F218: .4byte gUnknown_0202C5C0\n\
-    ");
-}
-#endif
 
 void sub_F21C(u32 scoreHi, u32 scoreLo)
 {
