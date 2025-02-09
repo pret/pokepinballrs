@@ -29,6 +29,7 @@ static int sub_65DC(void);
 static void sub_681C(s16);
 static void sub_6BEC(s16, s16);
 void sub_71DC(int, int, int);
+void sub_6CA0(s16);
 
 extern u16 gUnknown_0201C180;
 extern u16 gUnknown_0202C5B4;
@@ -48,6 +49,7 @@ extern const s16 gUnknown_086A6014[][51];
 extern const u16 gUnknown_086A5E12[][4];
 extern const u8 gUnknown_08090780[];
 extern u8 gUnknown_08092FA0[]; // needs const
+extern s16 gUnknown_086A64F0[];
 
 struct Unk805C8B4
 {
@@ -1801,5 +1803,69 @@ static void sub_6BEC(s16 arg0, s16 arg1)
     {
         sub_105A0(arr0[i], 2, i + 25, 15, 1, 1);
         sub_105A0(arr1[i] + 32, 2, i + 25, 16, 1, 2);
+    }
+}
+
+void sub_6CA0(s16 arg0)
+{
+    int i, j;
+    int var0;
+    u16 var1;
+    u16 var2;
+
+    DmaFill16(3, 0, gUnknown_03000000, 0x800);
+    var0 = 0;
+    for (i = 0; i < 5; i++)
+    {
+        if (arg0 + i == 200)
+        {
+            if (gUnknown_0202A1C0[200] != 0)
+            {
+                sub_105A0(34, 2, 8, i * 2 + 10, 1, 2);
+                sub_105A0(32, 2, 9, i * 2 + 10, 1, 2);
+                sub_105A0(33, 2, 10, i * 2 + 10, 1, 2);
+            }
+            else
+            {
+                sub_105A0(42, 2, 8, i * 2 + 10, 1, 2);
+                sub_105A0(42, 2, 9, i * 2 + 10, 1, 2);
+                sub_105A0(42, 2, 10, i * 2 + 10, 1, 2);
+            }
+        }
+        else
+        {
+            for (j = 0; j < 3; j++)
+                sub_105A0(gUnknown_0805C8B4[gUnknown_0202C5B0 + i].unk0[j] + 32, 2, j + 8, i * 2 + 10, 1, 2);
+        }
+    }
+
+    for (i = 0; i < 5; i++)
+    {
+        if (gUnknown_0202A1C0[arg0 + i] > 0)
+        {
+            for (j = 0; j < 10; j++)
+            {
+                var1 = gUnknown_0805C8B4[gUnknown_0202C5B0 + i].unk18[j] & ~0xF;
+                var2 = gUnknown_0805C8B4[gUnknown_0202C5B0 + i].unk18[j] & 0xF;
+                if (var2 == 0)
+                    var2 = 4;
+
+                DmaCopy16(3, &gUnknown_08090780[var1], gUnknown_0202BE30, 0x20);
+                DmaCopy16(3, &gUnknown_08090780[0x400 + var1], gUnknown_0201B130, 0x20);
+                sub_71DC(var2, var0, 0);
+                var0 += var2;
+            }
+
+            sub_10708(gUnknown_03000000, (void *)0x06000000 + gUnknown_086A64F0[i], 8, 2);
+            DmaFill16(3, 0, gUnknown_03000000, 0x800);
+            var0 = 0;
+        }
+        else
+        {
+            for (j = 0; j < 7; j++)
+                sub_10708(gUnknown_08092FA0, (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
+        
+            sub_10708((void *)gUnknown_08090780, (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
+        }
     }
 }
