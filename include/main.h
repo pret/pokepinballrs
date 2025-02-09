@@ -74,7 +74,9 @@ struct Main
     /*0x48*/ int rngValue;
     /*0x4C*/ u32 systemFrameCount;
     /*0x50*/ int fieldFrameCount;
-    /*0x54*/ u8 filler54[0xC];
+    /*0x54*/ u8 filler54[0x4];
+    /*0x58*/ u32 unk58;
+    /*0x5C*/ u32 unk5C;
     /*0x60*/ u16 unk60;
     /*0x62*/ u16 unk62;
     /*0x64*/ u16 unk64;
