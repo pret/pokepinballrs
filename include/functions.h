@@ -159,20 +159,20 @@ extern void sub_F434(u32, u32, u32, int);
 extern u32 sub_F4FC(u32);
 extern void sub_F670(u32, u32, s16, u32);
 extern void SetDefaultHighScores(void);
-extern void sub_F8B0(u8, u32, s16);
+extern void sub_F8B0(u32, u32, s16);
 extern void sub_FAE8(u32, u32, s16);
 extern s8 sub_FD20(void);
 extern void sub_FD5C(void (*func)(void));
 extern void sub_FE04(void (*func)(void));
-//extern ? sub_FEB8();
+extern void sub_FEB8(u8 *, u8 *, void (*func)(void));
 extern void sub_FF74(void (*func)(void));
-extern void sub_1001C(int);
-//extern ? sub_10170();
-extern void sub_102A8(u8 *, void *, u16, u16); // Very much subject to change
+extern void sub_1001C(u16);
+extern void sub_10170(u8 *, u8 *, u16, u16); // Very much subject to change
+extern void sub_102A8(u8 *, u8 *, u16, u16);
 extern void sub_10424(void);
 extern void sub_10480(void);
 extern void sub_1050C(void);
-//extern ? sub_10528();
+extern void sub_10528(void);
 extern void sub_10544(void);
 extern void sub_105A0(u16, u16, int, int, int, int);
 

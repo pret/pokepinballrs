@@ -6,8 +6,6 @@
 #include "titlescreen.h"
 #include "constants/bg_music.h"
 
-extern void sub_10170(u8 *, u32, u32, u32);
-void sub_FEB8(u32, u8 *, u32);
 void sub_A628(void);
 void sub_A87C(void);
 void sub_AAA8(void);
@@ -200,7 +198,7 @@ void sub_9498(void) {
     DmaCopy16(3, gUnknown_080B3CA0, 0x0600f800 , BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_080B44A0, BG_CHAR_ADDR(0), 0x5800);
     DmaCopy16(3, gUnknown_080BD4C0, gUnknown_0201C1C0, 0x6800);
-    sub_10170(gIntroScene1Sprites_Pals, BG_PLTT, BG_PLTT_SIZE, 0x20);
+    sub_10170(gIntroScene1Sprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, 0x20);
     DmaCopy16(3, gIntroScene1Sprites_Gfx, BG_CHAR_ADDR(4), 0x8000);
     DmaCopy16(3, gIntroScene1Sprites_Pals, 0x05000200, BG_PLTT_SIZE);
     sub_96A8();
@@ -213,7 +211,7 @@ void sub_9498(void) {
     gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[12];
     gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[13];
     sub_0CBC();
-    sub_FEB8(BG_PLTT, gIntroScene1Sprites_Pals, 0);
+    sub_FEB8((void*)BG_PLTT, gIntroScene1Sprites_Pals, NULL);
     DmaCopy16(3, gIntroScene1Sprites_Pals, 0x05000200, BG_PLTT_SIZE);
     DmaCopy16(3, 0, 0x05000200, 0x20);
     gUnknown_0202C790++;
@@ -330,7 +328,7 @@ void sub_98B4(void)
         if (gUnknown_0201A450[0].unkA > 1)
         {
             gUnknown_0201A450[0].unkC = 0;
-            sub_10170(&gIntroScene1Sprites_Pals[0x1C0], BG_PLTT + 0xE0, 0x20, 0);
+            sub_10170(&gIntroScene1Sprites_Pals[0x1C0], (void*)BG_PLTT + 0xE0, 0x20, 0);
             m4aSongNumStart(MUS_OPENING);
             gUnknown_0202C790++;
         }
@@ -382,8 +380,8 @@ void sub_999C(void)
         {
             gUnknown_0202BEF0 = 0;
         }
-        sub_10170(gIntroScene1Sprites_Pals, BG_PLTT, 0x200, (u16) gUnknown_0202BEF0);
-        sub_10170(gIntroScene1Sprites_Pals, OBJ_PLTT, 0x20, (u16) gUnknown_0202BEF0);
+        sub_10170(gIntroScene1Sprites_Pals, (void*)BG_PLTT, 0x200, gUnknown_0202BEF0);
+        sub_10170(gIntroScene1Sprites_Pals, (void*)OBJ_PLTT, 0x20, gUnknown_0202BEF0);
     }
 
     if (gUnknown_0202BF10 % 3 == 0)
