@@ -30,6 +30,8 @@ static void sub_681C(s16);
 static void sub_6BEC(s16, s16);
 void sub_71DC(int, int, int);
 void sub_6CA0(s16);
+void sub_6F30(s16);
+void sub_6F78(s16);
 
 extern u16 gUnknown_0201C180;
 extern u16 gUnknown_0202C5B4;
@@ -50,6 +52,9 @@ extern const u16 gUnknown_086A5E12[][4];
 extern const u8 gUnknown_08090780[];
 extern u8 gUnknown_08092FA0[]; // needs const
 extern s16 gUnknown_086A64F0[];
+extern u8 *gMonPortraitGroupGfx[];
+extern u8 *gMonPortraitGroupPals[];
+extern u8 gUnknown_0808F760[];
 
 struct Unk805C8B4
 {
@@ -1867,5 +1872,44 @@ void sub_6CA0(s16 arg0)
         
             sub_10708((void *)gUnknown_08090780, (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
         }
+    }
+}
+
+void sub_6F30(s16 arg0)
+{
+    int i;
+    int var0;
+
+    for (i = 0; i < 5; i++)
+    {
+        var0 = gUnknown_0202A1C0[arg0 + i] == 4 ? 442 : 440;
+        sub_105A0(var0, 1, 4, 10 + i * 2, 2, 2);
+    }
+}
+
+void sub_6F78(s16 arg0)
+{
+    s16 var0 = gUnknown_0202A1C0[gPokedexSelectedMon];
+    s16 var1 = arg0 / 15;
+    s16 var2 = arg0 % 15;
+    switch (var0)
+    {
+        case 0:
+            sub_10708(gUnknown_0808F760, (void *)0x06013400, 24, 1);
+            DmaCopy16(3, gUnknown_08089960, (void *)OBJ_PLTT + 0x20, 0x20);
+            break;
+        case 1:
+            sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
+            DmaCopy16(3, gMonPortraitGroupPals[0] + 0x1E0, (void *)OBJ_PLTT + 0x20, 0x20);
+            break;
+        case 2:
+        case 3:
+            sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
+            sub_10170(gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20, 0xE);
+            break;
+        case 4:
+            sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
+            DmaCopy16(3, gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20);
+            break;
     }
 }
