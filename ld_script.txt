@@ -43,7 +43,6 @@ SECTIONS
         src/pokedex_end.o(.text);
         src/field_select.o(.text);
         src/intro.o(.text);
-        asm/intro.o(.text);
         src/high_scores.o(.text);
         src/rom_1068C.o(.text);
         src/titlescreen.o(.text);
