@@ -91,7 +91,6 @@ extern StateFunc gTitlescreenStateFuncs[];
 extern const u8 gGBAButtonIcons_Pals[];
 extern const u8 gOptionsSprites_Gfx[];
 extern const IntrFunc gIntrTableTemplate[14];
-//extern ? gMainFuncs;
 //extern ? gUnknown_086A4B08;
 //extern ? gUnknown_086A4B14;
 //extern ? gUnknown_086A4B20;

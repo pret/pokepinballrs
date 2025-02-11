@@ -270,7 +270,6 @@ extern void sub_A2A8(void);
 //extern ? nullsub_14();
 //extern ? sub_CC94();
 //extern ? sub_CCF8();
-//extern ? sub_CD18();
 
 // asm/libagbsyscall.s
 

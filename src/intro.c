@@ -67,6 +67,7 @@ extern u8 gUnknown_080D6100[];
 extern u8 gUnknown_080DD520[];
 extern u8 gUnknown_080DDD20[];
 extern u8 gUnknown_080DF520[];
+extern const struct SpriteSet *const gUnknown_086A7D20[];
 
 typedef void (*OtherFunc)(void);
 extern OtherFunc gUnknown_080792E0[10];
@@ -2941,4 +2942,44 @@ void sub_CCF8(void)
     m4aMPlayAllStop();
     sub_0D10();
     gMain.subState++;
+}
+
+void sub_CD18(void)
+{
+    int i;
+    struct SpriteGroup *spriteGroup0;
+    struct SpriteGroup *spriteGroup1;
+    struct OamDataSimple *oamData;
+
+    spriteGroup0 = &gUnknown_0200B3B8[gUnknown_0201A450[0].unk8];
+    spriteGroup1 = &gUnknown_0200B3B8[0];
+    spriteGroup0->available = gUnknown_0201A450[0].unkC;
+    spriteGroup1->available = gUnknown_0201A450[1].unkC;
+    LoadSpriteSets(gUnknown_086A7D20, 11, gUnknown_0200B3B8);
+    if (spriteGroup0->available == 1)
+    {
+        SetMatrixScale(gUnknown_0202C5E4, gUnknown_0202ADD8, 0);
+        spriteGroup0->baseX = gUnknown_0201A450[0].unk0;
+        spriteGroup0->baseY = gUnknown_0201A450[0].unk2;
+        oamData = &spriteGroup0->oam[0];
+        gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup0->baseX;
+        gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup0->baseY;
+        gOamBuffer[oamData->oamId].affineMode = 3;
+        gOamBuffer[oamData->oamId].matrixNum = 0;
+    }
+
+    if (spriteGroup1->available == 1)
+    {
+        spriteGroup1->baseX = gUnknown_0201A450[1].unk0;
+        spriteGroup1->baseY = gUnknown_0201A450[1].unk2;
+        for (i = 0; i < 4; i++)
+        {
+            oamData = &spriteGroup1->oam[i];
+            gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup1->baseX;
+            gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup1->baseY;
+        }
+    }
+
+    spriteGroup0->available = 0;
+    spriteGroup1->available = 0;
 }
