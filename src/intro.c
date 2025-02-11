@@ -105,11 +105,13 @@ struct UnkStruct_086A7AC0 {
 extern struct UnkStruct_086A7AC0 gUnknown_086A7AC0[];
 extern struct UnkStruct_086A7AC0 gUnknown_086A7B34[];
 
-void IntroMain(void) {
+void IntroMain(void)
+{
      gIntroStateFuncs[gMain.subState]();
 }
 
-void sub_929C(void) {
+void sub_929C(void)
+{
   ResetSomeGraphicsRelatedStuff();
   REG_DISPCNT = 0x80;
   REG_BG1CNT = 5;
@@ -129,29 +131,33 @@ void sub_929C(void) {
   gMain.subState++;
 }
 
-void sub_9348(void) {
+void sub_9348(void)
+{
     gUnknown_0202BF10++;
-    if(gUnknown_0202BF10 > 0x78)
+    if (gUnknown_0202BF10 > 0x78)
     {
         gUnknown_0202BF10 = 0;
         gMain.subState++;
     }
 }
 
-void sub_9370(void) {
+void sub_9370(void)
+{
     sub_FF74(NULL);
     sub_0D10();
     gMain.subState++;
 }
 
-void sub_938C(void) {
+void sub_938C(void)
+{
     gUnknown_080792E0[gUnknown_0202C790]();
     gUnknown_0202BF10++;
-    if(JOY_NEW(A_BUTTON | START_BUTTON))
+    if (JOY_NEW(A_BUTTON | START_BUTTON))
         gMain.subState = 4;
 }
 
-void sub_93D0(void) {
+void sub_93D0(void)
+{
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
@@ -160,8 +166,9 @@ void sub_93D0(void) {
     SetMainGameState(STATE_TITLE);
 }
 
-void sub_93F8(void) {
-    if(REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
+void sub_93F8(void)
+{
+    if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
     {
         m4aSoundMain();
         VBlankIntrWait();
@@ -178,7 +185,8 @@ void sub_93F8(void) {
     }
 }
 
-void sub_9498(void) {
+void sub_9498(void)
+{
     ClearGraphicsMemory();
     sub_0518();
     ClearSprites();
@@ -265,25 +273,25 @@ void sub_96A8(void)
 void sub_978C(void)
 {
     sub_9CB8();
-
-    if (gUnknown_0201A450[0].unk8 == 0x24) {
-        gUnknown_0201A450[0].unkA++;
-
-        if (0x1b < gUnknown_0201A450[0].unkA) {
+    if (gUnknown_0201A450[0].unk8 == 0x24)
+    {
+        if (++gUnknown_0201A450[0].unkA > 27)
+        {
             gUnknown_0201A450[0].unkA = 0;
             gUnknown_0202A578 = 0;
             gUnknown_0202C790++;
         }
     }
-    else {
-        gUnknown_0201A450[0].unkA++;
-
-        if (1 < gUnknown_0201A450[0].unkA) {
+    else
+    {
+        if (++gUnknown_0201A450[0].unkA > 1)
+        {
             gUnknown_0201A450[0].unkA = 0;
             gUnknown_0201A450[0].unk8++;
         }
 
-        if (gUnknown_0202BF10 >= gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][1]) {
+        if (gUnknown_0202BF10 >= gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][1])
+        {
             m4aSongNumStart(gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][0]);
             gUnknown_0202A578 = gUnknown_0202A578 + 1;
         }
@@ -308,9 +316,7 @@ void sub_9830(void)
 
 void sub_9878(void)
 {
-    gUnknown_0201A450[0].unkA++;
-
-    if (gUnknown_0201A450[0].unkA > 3)
+    if (++gUnknown_0201A450[0].unkA > 3)
     {
         gUnknown_0201A450[0].unkA = 0;
         gUnknown_0201A450[0].unk0 = 0x78;
@@ -323,10 +329,9 @@ void sub_9878(void)
 
 void sub_98B4(void)
 {
-    if (gUnknown_0201A450[0].unk8 == 0x2B)
+    if (gUnknown_0201A450[0].unk8 == 43)
     {
-        gUnknown_0201A450[0].unkA++;
-        if (gUnknown_0201A450[0].unkA > 1)
+        if (++gUnknown_0201A450[0].unkA > 1)
         {
             gUnknown_0201A450[0].unkC = 0;
             sub_10170(&gIntroScene1Sprites_Pals[0x1C0], (void*)BG_PLTT + 0xE0, 0x20, 0);
@@ -336,8 +341,7 @@ void sub_98B4(void)
     }
     else
     {
-        gUnknown_0201A450[0].unkA++;
-        if (gUnknown_0201A450[0].unkA > 1)
+        if (++gUnknown_0201A450[0].unkA > 1)
         {
             gUnknown_0201A450[0].unkA = 0;
             gUnknown_0201A450[0].unk8++;
@@ -349,7 +353,7 @@ void sub_98B4(void)
 
 void sub_9920(void)
 {
-    s32 remainder;
+    int remainder;
 
     remainder = gUnknown_0202BF10 % 3;
     if (remainder == 0)
@@ -362,7 +366,7 @@ void sub_9920(void)
         }
         else
         {
-            sub_10708(&gUnknown_0201C1C0, (void *) 0x60036e0, 8, 8);
+            sub_10708(&gUnknown_0201C1C0, (void *)0x60036e0, 8, 8);
             gUnknown_0202C790++;
         }
 
@@ -386,26 +390,19 @@ void sub_999C(void)
     }
 
     if (gUnknown_0202BF10 % 3 == 0)
-    {
         gUnknown_0201A450[1].unk8 = 1 - gUnknown_0201A450[1].unk8;
-    }
 
     gUnknown_0202ADA0[0]--;
 
-    if ((gUnknown_0202BF10 % 2) == 0)
-    {
+    if (gUnknown_0202BF10 % 2 == 0)
         gUnknown_0202ADA0[1]--;
-    }
 
     gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0];
     gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[1];
-    gUnknown_0202ADA0[5]++;
-
-    if (gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
+    if (++gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
     {
-        sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[4]]], (void *) 0x60036E0, 8, 8);
-        gUnknown_0202ADA0[4]++;
-        if (gUnknown_0202ADA0[4] > 3)
+        sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[4]]], (void *)0x60036E0, 8, 8);
+        if (++gUnknown_0202ADA0[4] > 3)
         {
             gUnknown_0201A450[3].unkC = 1;
             gUnknown_0201A450[2].unkC = 1;
@@ -438,18 +435,13 @@ void sub_9AB8(void)
         gUnknown_0202ADA0[0x1]--;
     }
 
-    gUnknown_0202ADA0[0x5]++;
-
-    if (gUnknown_0202ADA0[0x5] > gUnknown_086A7768[gUnknown_0202ADA0[0x4]].unk2)
+    if (++gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
     {
-        if (gUnknown_0202ADA0[0x4] < 7)
-        {
+        if (gUnknown_0202ADA0[4] < 7)
             sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[0x4]]], (void *)0x60036e0, 8, 8);
-        }
         else
-        {
             sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[0x4]]], (void *)0x60032c0, 10, 10);
-        }
+
         gUnknown_0202ADA0[0x4]++;
     }
 
@@ -1176,10 +1168,10 @@ void sub_AE74(void)
     gUnknown_0202ADA0[0x2]++;
     gUnknown_0202ADA0[0x5]++;
 
-    if (gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[0x4]].unk2)
+    if (gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[4]].unk2)
     {
-        gUnknown_0202ADA0[0x4]++;
-        sub_10708(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[0x4]]], (void *) 0x6002EE0, 8, 8);
+        gUnknown_0202ADA0[4]++;
+        sub_10708(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[4]]], (void *) 0x6002EE0, 8, 8);
     }
 
     sub_B0E8();
@@ -1190,8 +1182,7 @@ void sub_AE74(void)
     gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
     gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
 
-    gUnknown_0202ADA0[0x10]++;
-    if (9 < gUnknown_0202ADA0[0x10])
+    if (++gUnknown_0202ADA0[0x10] > 9)
     {
         gUnknown_0202ADA0[0x10] = 0;
         gUnknown_0202C790++;
@@ -1200,9 +1191,7 @@ void sub_AE74(void)
 
 void sub_AF80(void)
 {
-    gUnknown_0202ADA0[0x5]++;
-
-    if (gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[0x4]].unk2)
+    if (++gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[0x4]].unk2)
     {
         if (gUnknown_0202ADA0[0x04] < 7)
         {
@@ -1213,7 +1202,7 @@ void sub_AF80(void)
 
     sub_B0E8();
     gUnknown_0202ADA0[0x12]++;
-    if ((gUnknown_0202BF10 % 2) == 0)
+    if (gUnknown_0202BF10 % 2 == 0)
     {
         gUnknown_0201A450[1].unk0--;
         gUnknown_0201A450[1].unk2++;
@@ -1230,8 +1219,7 @@ void sub_AF80(void)
     gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
     gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
 
-    gUnknown_0202ADA0[0x16]++;
-    if (0x1D < gUnknown_0202ADA0[0x16])
+    if (++gUnknown_0202ADA0[0x16] > 29)
     {
         gUnknown_0202ADA0[0x16] = 0;
         gUnknown_0202C790 += 2;
@@ -1246,21 +1234,19 @@ void sub_B090(void)
 {
     sub_10480();
     ClearSprites();
-
     DmaFill32(3, 0, OAM, 0x400);
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
-
     sub_10544();
     gUnknown_0202C790++;
 }
 
 void sub_B0E8(void)
 {
-    struct OamDataSimple *puVar1;
+    int i;
+    struct OamDataSimple *oamData;
     struct SpriteGroup *mainSg1;
     struct SpriteGroup *mainSg0;
     struct SpriteGroup *mainSg2;
-    int i;
 
     gMain.blendControl = 0xF10;
     gMain.blendAlpha = BLDALPHA_BLEND(8, 8);
@@ -1274,47 +1260,46 @@ void sub_B0E8(void)
     mainSg1->available = 1;
     mainSg0->available = 1;
     mainSg2->available = 1;
-    LoadSpriteSets(gUnknown_086A79EC, 0x3, gMain.spriteGroups);
+    LoadSpriteSets(gUnknown_086A79EC, 3, gMain.spriteGroups);
 
     if (mainSg1->available == 1)
     {
         mainSg1->baseX = gUnknown_0201A450[0].unk0;
         mainSg1->baseY = gUnknown_0201A450[0].unk2;
-
         for (i = 0; i < 4; i++)
         {
-            puVar1 = &mainSg1->oam[i];
-            gOamBuffer[puVar1->oamId].objMode = 1;
-            gOamBuffer[puVar1->oamId].priority = 1;
-            gOamBuffer[puVar1->oamId].x = mainSg1->oam[i].xOffset + mainSg1->baseX;
-            gOamBuffer[puVar1->oamId].y = mainSg1->oam[i].yOffset + mainSg1->baseY;
+            oamData = &mainSg1->oam[i];
+            gOamBuffer[oamData->oamId].objMode = 1;
+            gOamBuffer[oamData->oamId].priority = 1;
+            gOamBuffer[oamData->oamId].x = mainSg1->oam[i].xOffset + mainSg1->baseX;
+            gOamBuffer[oamData->oamId].y = mainSg1->oam[i].yOffset + mainSg1->baseY;
         }
     }
+
     if (mainSg0->available == 1)
     {
         mainSg0->baseX = gUnknown_0201A450[1].unk0;
         mainSg0->baseY = gUnknown_0201A450[1].unk2;
-
         for (i = 0; i < 4; i++)
         {
-            puVar1 = &mainSg0->oam[i];
-            gOamBuffer[puVar1->oamId].objMode = 0;
-            gOamBuffer[puVar1->oamId].priority = 1;
-            gOamBuffer[puVar1->oamId].x = mainSg0->oam[i].xOffset + mainSg0->baseX;
-            gOamBuffer[puVar1->oamId].y = mainSg0->oam[i].yOffset + mainSg0->baseY;
+            oamData = &mainSg0->oam[i];
+            gOamBuffer[oamData->oamId].objMode = 0;
+            gOamBuffer[oamData->oamId].priority = 1;
+            gOamBuffer[oamData->oamId].x = mainSg0->oam[i].xOffset + mainSg0->baseX;
+            gOamBuffer[oamData->oamId].y = mainSg0->oam[i].yOffset + mainSg0->baseY;
         }
     }
+
     if (mainSg2->available == 1)
     {
         mainSg2->baseX = gUnknown_0201A450[2].unk0;
         mainSg2->baseY = gUnknown_0201A450[2].unk2;
-
         for (i = 0; i < 8; i++)
         {
-            puVar1 = &mainSg2->oam[i];
-            gOamBuffer[puVar1->oamId].priority = 2;
-            gOamBuffer[puVar1->oamId].x = mainSg2->oam[i].xOffset + mainSg2->baseX;
-            gOamBuffer[puVar1->oamId].y = mainSg2->oam[i].yOffset + mainSg2->baseY;
+            oamData = &mainSg2->oam[i];
+            gOamBuffer[oamData->oamId].priority = 2;
+            gOamBuffer[oamData->oamId].x = mainSg2->oam[i].xOffset + mainSg2->baseX;
+            gOamBuffer[oamData->oamId].y = mainSg2->oam[i].yOffset + mainSg2->baseY;
         }
     }
 
@@ -1420,19 +1405,15 @@ void sub_B560(void)
         gUnknown_0202ADA0[0x1] += gUnknown_0202ADA0[0x3];
         gUnknown_0202ADA0[0x3] -= 2;
         if (gUnknown_0202ADA0[0x3] <= -0xA)
-        {
             gUnknown_0202ADA0[0x3] = 0x8;
-        }
     }
 
     if (gUnknown_086A7AE4[gUnknown_0202BF10] & 0x1)
     {
         gUnknown_0202ADA0[0xC] += gUnknown_0202ADA0[0xE];
         gUnknown_0202ADA0[0xE] -= 2;
-        if (gUnknown_0202ADA0[0xE] <= -0xA)
-        {
-            gUnknown_0202ADA0[0xE] = 0x8;
-        }
+        if (gUnknown_0202ADA0[0xE] <= -10)
+            gUnknown_0202ADA0[0xE] = 8;
     }
 
     gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
@@ -1449,15 +1430,11 @@ void sub_B560(void)
     }
 
     sub_B7F8();
-    gUnknown_0202A578++;
-    if (gUnknown_0202A578 > gUnknown_086A7AC0[gUnknown_0202C548].unk2)
+    if (++gUnknown_0202A578 > gUnknown_086A7AC0[gUnknown_0202C548].unk2)
     {
         gUnknown_0202A578 = 0;
-        gUnknown_0202C548++;
-        if (0x8 < gUnknown_0202C548)
-        {
+        if (++gUnknown_0202C548 > 8)
             gUnknown_0202C790++;
-        }
     }
 }
 
@@ -1467,20 +1444,16 @@ void sub_B6C4(void)
     {
         gUnknown_0202ADA0[0x1] += gUnknown_0202ADA0[0x3];
         gUnknown_0202ADA0[0x3] -= 2;
-        if (gUnknown_0202ADA0[0x3] <= -0xA)
-        {
-            gUnknown_0202ADA0[0x3] = 0x8;
-        }
+        if (gUnknown_0202ADA0[0x3] <= -10)
+            gUnknown_0202ADA0[0x3] = 8;
     }
 
     if (gUnknown_086A7AE4[gUnknown_0202BF10] & 0x1)
     {
         gUnknown_0202ADA0[0xC] += gUnknown_0202ADA0[0xE];
         gUnknown_0202ADA0[0xE] -= 2;
-        if (gUnknown_0202ADA0[0xE] <= -0xA)
-        {
-            gUnknown_0202ADA0[0xE] = 0x8;
-        }
+        if (gUnknown_0202ADA0[0xE] <= -10)
+            gUnknown_0202ADA0[0xE] = 8;
     }
 
     gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
@@ -1491,8 +1464,7 @@ void sub_B6C4(void)
     gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
 
     sub_B7F8();
-    gUnknown_0202A578++;
-    if (0x10 < gUnknown_0202A578)
+    if (++gUnknown_0202A578 > 16)
     {
         gUnknown_0202A578 = 0;
         gUnknown_0202C790++;
@@ -1504,7 +1476,6 @@ void sub_B7A0(void)
     ClearSprites();
     DmaFill32(3, 0, OAM, 0x400);
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
-
     sub_10480();
     sub_10544();
     gUnknown_0202C790++;
@@ -1934,11 +1905,8 @@ void sub_BC54(void)
     gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
     if (gUnknown_0202BF10 % 3 == 0)
     {
-        gUnknown_0202ADA0[0xF]++;
-        if (0x4 < gUnknown_0202ADA0[0xF])
-        {
-            gUnknown_0202ADA0[0xF] = 0xFFFD;
-        }
+        if (++gUnknown_0202ADA0[0xF] > 4)
+            gUnknown_0202ADA0[0xF] = -3;
     }
 
     gUnknown_0202ADA0[0x12]--;
@@ -1949,10 +1917,8 @@ void sub_BC54(void)
     gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
     gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
 
-    if (0x20 < gUnknown_0202BF10)
-    {
+    if (gUnknown_0202BF10 > 32)
         gUnknown_0202C790++;
-    }
 }
 
 void sub_BCE8(void)
@@ -1961,22 +1927,16 @@ void sub_BCE8(void)
     gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
     if (gUnknown_0202BF10 % 3 == 0)
     {
-        gUnknown_0202ADA0[0xF]++;
-        if (0x4 < gUnknown_0202ADA0[0xF])
-        {
-            gUnknown_0202ADA0[0xF] = 0xFFFD;
-        }
+        if (++gUnknown_0202ADA0[0xF] > 4)
+            gUnknown_0202ADA0[0xF] = -3;
     }
 
     gUnknown_0202ADA0[0x6] += 3;
     gUnknown_0202ADA0[0x7] -= gUnknown_0202ADA0[0x9];
     if (gUnknown_0202BF10 % 5 == 0)
     {
-        gUnknown_0202ADA0[0x9]++;
-        if (0x7 < gUnknown_0202ADA0[0x9])
-        {
-            gUnknown_0202ADA0[0x9] = 0xFFFA;
-        }
+        if (++gUnknown_0202ADA0[0x9] > 7)
+            gUnknown_0202ADA0[0x9] = -6;
     }
 
     gUnknown_0202ADA0[0x12]--;
@@ -1990,10 +1950,8 @@ void sub_BCE8(void)
     gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
     gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
 
-    if (0x50 < gUnknown_0202BF10)
-    {
+    if (gUnknown_0202BF10 > 80)
         gUnknown_0202C790++;
-    }
 }
 
 void sub_BDC0(void)
@@ -2002,33 +1960,24 @@ void sub_BDC0(void)
     gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
     if (gUnknown_0202BF10 % 3 == 0)
     {
-        gUnknown_0202ADA0[0xF]++;
-        if (0x4 < gUnknown_0202ADA0[0xF])
-        {
-            gUnknown_0202ADA0[0xF] = 0xFFFD;
-        }
+        if (++gUnknown_0202ADA0[0xF] > 4)
+            gUnknown_0202ADA0[0xF] = -3;
     }
 
     gUnknown_0202ADA0[0x6] += 3;
     gUnknown_0202ADA0[0x7] -= gUnknown_0202ADA0[0x9];
     if (gUnknown_0202BF10 % 5 == 0)
     {
-        gUnknown_0202ADA0[0x9]++;
-        if (0x7 < gUnknown_0202ADA0[0x9])
-        {
-            gUnknown_0202ADA0[0x9] = 0xFFFA;
-        }
+        if (++gUnknown_0202ADA0[0x9] > 7)
+            gUnknown_0202ADA0[0x9] = -6;
     }
 
     gUnknown_0202ADA0[0x0] += 4;
     gUnknown_0202ADA0[0x1] -= gUnknown_0202ADA0[0x3];
     if (gUnknown_0202BF10 % 4 == 0)
     {
-        gUnknown_0202ADA0[0x3]++;
-        if (0x7 < gUnknown_0202ADA0[0x3])
-        {
-            gUnknown_0202ADA0[0x3] = 0xFFFD;
-        }
+        if (++gUnknown_0202ADA0[0x3] > 7)
+            gUnknown_0202ADA0[0x3] = -3;
     }
 
     gUnknown_0202ADA0[0x12]--;
@@ -2043,10 +1992,8 @@ void sub_BDC0(void)
     gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
     gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
 
-    if (0x64 < gUnknown_0202BF10)
-    {
+    if (gUnknown_0202BF10 > 100)
         gUnknown_0202C790++;
-    }
 }
 
 void sub_BED0(void)
@@ -2055,44 +2002,32 @@ void sub_BED0(void)
     gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
     if (gUnknown_0202BF10 % 3 == 0)
     {
-        gUnknown_0202ADA0[0xF]++;
-        if (0x4 < gUnknown_0202ADA0[0xF])
-        {
-            gUnknown_0202ADA0[0xF] = 0xFFFD;
-        }
+        if (++gUnknown_0202ADA0[0xF] > 4)
+            gUnknown_0202ADA0[0xF] = -3;
     }
 
     gUnknown_0202ADA0[0x6] += 3;
     gUnknown_0202ADA0[0x7] -= gUnknown_0202ADA0[0x9];
     if (gUnknown_0202BF10 % 5 == 0)
     {
-        gUnknown_0202ADA0[0x9]++;
-        if (0x7 < gUnknown_0202ADA0[0x9])
-        {
-            gUnknown_0202ADA0[0x9] = 0xFFFA;
-        }
+        if (++gUnknown_0202ADA0[0x9] > 7)
+            gUnknown_0202ADA0[0x9] = -6;
     }
 
     gUnknown_0202ADA0[0x0] += 4;
     gUnknown_0202ADA0[0x1] -= gUnknown_0202ADA0[0x3];
     if (gUnknown_0202BF10 % 4 == 0)
     {
-        gUnknown_0202ADA0[0x3]++;
-        if (0x7 < gUnknown_0202ADA0[0x3])
-        {
-            gUnknown_0202ADA0[0x3] = 0xFFFD;
-        }
+        if (++gUnknown_0202ADA0[0x3] > 7)
+            gUnknown_0202ADA0[0x3] = -3;
     }
 
     gUnknown_0201A450[0].unk0 -= 2;
     gUnknown_0201A450[0].unk2 += gUnknown_0201A450[0].unk6;
     if (gUnknown_0202BF10 % 4 == 0)
     {
-        gUnknown_0201A450[0].unk6++;
-        if (0x4 < gUnknown_0201A450[0].unk6)
-        {
-            gUnknown_0201A450[0].unk6 = 0xFFFC;
-        }
+        if (++gUnknown_0201A450[0].unk6 > 4)
+            gUnknown_0201A450[0].unk6 = -4;
     }
 
     gUnknown_0202ADA0[0x12]--;
@@ -2108,10 +2043,8 @@ void sub_BED0(void)
     gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
 
     sub_C0D8();
-    if (0xC0 < gUnknown_0202BF10)
-    {
+    if (gUnknown_0202BF10 > 192)
         gUnknown_0202C790++;
-    }
 }
 
 void sub_C018(void)
@@ -2123,15 +2056,11 @@ void sub_C018(void)
 
     remainder = gUnknown_0202BF10 % 6;
     if (remainder == 0)
-    {
         gUnknown_0201A450[0].unk0 -= 3;
-    }
     else if (remainder == 3)
-    {
         gUnknown_0201A450[0].unk0 += 3;
-    }
 
-    if (0xCA < gUnknown_0202BF10)
+    if (gUnknown_0202BF10 > 202)
     {
         gUnknown_0202C5E4--;
         gUnknown_0202ADD8--;
@@ -2141,10 +2070,8 @@ void sub_C018(void)
     gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
 
     sub_C0D8();
-    if (0xDE < gUnknown_0202BF10)
-    {
+    if (gUnknown_0202BF10 > 222)
         gUnknown_0202C790++;
-    }
 }
 
 void sub_C0BC(void)
@@ -2157,31 +2084,29 @@ void sub_C0BC(void)
 void sub_C0D8(void)
 {
     s32 i;
-    struct SpriteGroup *puVar4;
-    struct OamDataSimple *puVar2;
+    struct SpriteGroup *spriteGroup;
+    struct OamDataSimple *oamData;
 
-    puVar4 = &gUnknown_0200B3B8[0];
-    puVar4->available = 1;
+    spriteGroup = &gUnknown_0200B3B8[0];
+    spriteGroup->available = 1;
     LoadSpriteSets(gUnknown_086A7B74, 0x1, gUnknown_0200B3B8);
-
-    if (puVar4->available == 1)
+    if (spriteGroup->available == 1)
     {
         SetMatrixScale(gUnknown_0202C5E4, gUnknown_0202ADD8, 0);
-        puVar4->baseX = gUnknown_0201A450[0].unk0;
-        puVar4->baseY = gUnknown_0201A450[0].unk2;
-
+        spriteGroup->baseX = gUnknown_0201A450[0].unk0;
+        spriteGroup->baseY = gUnknown_0201A450[0].unk2;
         for (i = 0; i < 4; i++)
         {
-            puVar2 = &puVar4->oam[i];
-            gOamBuffer[puVar2->oamId].priority = 1;
-            gOamBuffer[puVar2->oamId].x = gUnknown_086A7B7C[i].unk0 * gUnknown_0202C5E4 / 0x100 + puVar4->baseX;
-            gOamBuffer[puVar2->oamId].y = gUnknown_086A7B7C[i].unk2 * gUnknown_0202ADD8 / 0x100 + puVar4->baseY;
-
-            gOamBuffer[puVar2->oamId].affineMode = 1;
-            gOamBuffer[puVar2->oamId].matrixNum = 0;
+            oamData = &spriteGroup->oam[i];
+            gOamBuffer[oamData->oamId].priority = 1;
+            gOamBuffer[oamData->oamId].x = gUnknown_086A7B7C[i].unk0 * gUnknown_0202C5E4 / 0x100 + spriteGroup->baseX;
+            gOamBuffer[oamData->oamId].y = gUnknown_086A7B7C[i].unk2 * gUnknown_0202ADD8 / 0x100 + spriteGroup->baseY;
+            gOamBuffer[oamData->oamId].affineMode = 1;
+            gOamBuffer[oamData->oamId].matrixNum = 0;
         }
     }
-    puVar4->available = 0;
+
+    spriteGroup->available = 0;
 }
 
 void sub_C210(void)
@@ -2261,7 +2186,7 @@ void sub_C38C(void)
 {
     sub_C4F0();
 
-    if (0x1 < gUnknown_0202BF10)
+    if (gUnknown_0202BF10 > 1)
     {
         gUnknown_0201A450[0].unkC = 1;
         gUnknown_0201A450[2].unkC = 1;
@@ -2279,7 +2204,7 @@ void sub_C3D0(void)
     gUnknown_0201A450[0].unk2 -= 6;
     gUnknown_0201A450[1].unk8++;
 
-    if (gUnknown_0201A450[1].unk8 < 0x4)
+    if (gUnknown_0201A450[1].unk8 < 4)
     {
         gUnknown_0201A450[1].unk0 += gUnknown_0201A450[1].unk4;
         gUnknown_0201A450[1].unk2 += gUnknown_0201A450[1].unk6;
@@ -2293,11 +2218,8 @@ void sub_C3D0(void)
     }
 
     sub_C4F0();
-
-    if (gUnknown_0201A450[0].unk2 < -0x20)
-    {
+    if (gUnknown_0201A450[0].unk2 < -32)
         gUnknown_0202C790++;
-    }
 }
 
 void sub_C450(void)
@@ -2310,10 +2232,8 @@ void sub_C450(void)
         gUnknown_0201A450[1].unk2++;
     }
 
-    if (0x14 < gUnknown_0202BF10)
-    {
+    if (gUnknown_0202BF10 > 20)
         gUnknown_0202C790 += 3;
-    }
 }
 
 void nullsub_12(void)
@@ -2328,10 +2248,8 @@ void sub_C498(void)
 {
     sub_10480();
     ClearSprites();
-
     DmaFill32(3, 0, OAM, 0x400);
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
-
     sub_10544();
     gUnknown_0202C790++;
 }
@@ -2747,13 +2665,11 @@ void sub_C814(void)
 
     sub_0518();
     DmaFill32(3, 0, OAM, 0x400);
-
-    for (i = 0; i < 0x14; i++)
+    for (i = 0; i < 20; i++)
     {
         gMain.spriteGroups[i].available = 0;
         gMain.spriteGroups[i].baseX = 0;
         gMain.spriteGroups[i].baseY = 0;
-
         for (j = 0; j < 0x16; j++)
         {
             gMain.spriteGroups[i].oam[j].oamId = 0;
@@ -2762,15 +2678,15 @@ void sub_C814(void)
         }
     }
 
-    for (i = 0; i < 0x14; i++)
+    for (i = 0; i < 20; i++)
     {
-        gOamBuffer[i].y = 0xF4;
+        gOamBuffer[i].y = -12;
         gOamBuffer[i].affineMode = 0;
         gOamBuffer[i].objMode = 0;
         gOamBuffer[i].mosaic = 0;
         gOamBuffer[i].bpp = 0x0;
         gOamBuffer[i].shape = 0;
-        gOamBuffer[i].x = 0x1F4;
+        gOamBuffer[i].x = -12;
         gOamBuffer[i].matrixNum = 0;
         gOamBuffer[i].hFlip = 0;
         gOamBuffer[i].vFlip = 0;
@@ -2837,27 +2753,22 @@ void sub_CAA0(void)
 
     if (gUnknown_0202BF10 % 5 == 0)
     {
-        gUnknown_0201A450[0].unk8++;
-        if (0xA < gUnknown_0201A450[0].unk8)
-        {
-            gUnknown_0201A450[0].unk8 = 0x1;
-        }
+        if (++gUnknown_0201A450[0].unk8 > 10)
+            gUnknown_0201A450[0].unk8 = 1;
     }
 
     gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
     sub_CD18();
 
-    if (0x28 < gUnknown_0202BF10)
+    if (gUnknown_0202BF10 > 40)
     {
         gUnknown_0202C5E4 += 6;
         gUnknown_0202ADD8 += 6;
         if (gUnknown_0202BF10 % 2 == 0)
-        {
             gUnknown_0201A450[0].unk2++;
-        }
     }
 
-    if (0x5A < gUnknown_0202BF10)
+    if (gUnknown_0202BF10 > 90)
     {
         gUnknown_0201A450[0].unkC = 0;
         gUnknown_0201A450[1].unkC = 1;
@@ -2867,43 +2778,33 @@ void sub_CAA0(void)
 
 void sub_CB6C(void)
 {
-    gUnknown_0202ADA0[0x0] -= 0x24;
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
-    if (0x78 < gUnknown_0202BF10)
-    {
+    gUnknown_0202ADA0[0] -= 0x24;
+    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0];
+    if (gUnknown_0202BF10 > 120)
         gUnknown_0202C790++;
-    }
 }
 
 void sub_CBA4(void)
 {
-    if (gUnknown_0202BF10 < 0x87)
-    {
-        gUnknown_0201A450[1].unk0 -= 0xC;
-    }
+    if (gUnknown_0202BF10 < 135)
+        gUnknown_0201A450[1].unk0 -= 12;
     else
-    {
         gUnknown_0201A450[1].unk0--;
-    }
 
     if (gUnknown_0202BF10 % 2 == 0)
     {
         gUnknown_0202BEDC += 3;
-        if (0x20 < gUnknown_0202BEDC)
-        {
-            gUnknown_0202BEDC = 0x20;
-        }
+        if (gUnknown_0202BEDC > 32)
+            gUnknown_0202BEDC = 32;
     }
 
     sub_102A8(gUnknown_08115860, (void *) OBJ_PLTT, 0x20, gUnknown_0202BEDC);
-
-    if (0x88 < gUnknown_0202BF10)
+    if (gUnknown_0202BF10 > 136)
     {
         gUnknown_0202A56C += 2;
-        if (0x20 < gUnknown_0202A56C)
-        {
+        if (gUnknown_0202A56C > 32)
             gUnknown_0202A56C = 0x20;
-        }
+
         sub_102A8(gUnknown_08115860, (void *) PLTT, 0x40, gUnknown_0202A56C);
     }
 
@@ -2911,7 +2812,7 @@ void sub_CBA4(void)
     gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
     sub_CD18();
 
-    if (0x98 < gUnknown_0202BF10)
+    if (gUnknown_0202BF10 > 152)
     {
         gUnknown_0202BF10 = 0;
         gUnknown_0202A578 = 1;
@@ -2930,10 +2831,9 @@ void sub_CC94(void)
         gUnknown_0202A578++;
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, (0x100 / gUnknown_0202A578));
     }
-    if (0x2D < gUnknown_0202BF10)
-    {
+
+    if (gUnknown_0202BF10 > 45)
         gUnknown_0202C790++;
-    }
 }
 
 void sub_CCF8(void)
