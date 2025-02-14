@@ -17520,56 +17520,7 @@ _0801A97A:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_1A98C
-sub_1A98C: @ 0x0801A98C
-	push {lr}
-	ldr r0, _0801A9B0 @ =gMain
-	ldrb r0, [r0, #0xf]
-	cmp r0, #0
-	bne _0801A9E0
-	ldr r0, _0801A9B4 @ =gCurrentPinballGame
-	ldr r0, [r0]
-	adds r0, #0x25
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #2
-	beq _0801A9C8
-	cmp r0, #2
-	bgt _0801A9B8
-	cmp r0, #1
-	beq _0801A9C2
-	b _0801A9D8
-	.align 2, 0
-_0801A9B0: .4byte gMain
-_0801A9B4: .4byte gCurrentPinballGame
-_0801A9B8:
-	cmp r0, #3
-	beq _0801A9CE
-	cmp r0, #4
-	beq _0801A9D4
-	b _0801A9D8
-_0801A9C2:
-	bl sub_1AA38
-	b _0801A9D8
-_0801A9C8:
-	bl sub_1AD84
-	b _0801A9D8
-_0801A9CE:
-	bl sub_1AF84
-	b _0801A9D8
-_0801A9D4:
-	bl sub_1C560
-_0801A9D8:
-	ldr r0, _0801A9E4 @ =gCurrentPinballGame
-	ldr r1, [r0]
-	movs r0, #0x3c
-	strh r0, [r1, #0x26]
-_0801A9E0:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801A9E4: .4byte gCurrentPinballGame
+	.section .text1AA38
 
 	thumb_func_start sub_1A9E8
 sub_1A9E8: @ 0x0801A9E8
