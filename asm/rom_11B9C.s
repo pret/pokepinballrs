@@ -5,7 +5,7 @@
 	.syntax unified
 
 	.text
-	.section .text1
+	.section .text11C14
 	.align 2, 0
 
 
@@ -15903,7 +15903,7 @@ _08019B58: .4byte gCurrentPinballGame
 _08019B5C: .4byte gMPlayInfo_BGM
 _08019B60: .4byte 0x0000FFFF
 
-	.section .text2
+	.section .text19B90
 
 	thumb_func_start sub_19B90
 sub_19B90: @ 0x08019B90
