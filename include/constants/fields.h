@@ -9,6 +9,8 @@ enum
     FIELD_3,
     FIELD_4,
     FIELD_5,
+    FIELD_6,
+    FIELD_7,
 };
 
 #endif // GUARD_CONSTANTS_FIELDS_H
