@@ -1145,10 +1145,10 @@ gUnknown_08137E00:: @ 0x08137E00
 	.incbin "baserom.gba", 0x137E00, 0x4
 
 gPinballGameStateFuncs:: @ 0x08137E04
-	.4byte sub_49ED4
-	.4byte sub_4AAD8
-	.4byte sub_4ABC8
-	.4byte sub_4B20C
+	.4byte sub_49ED4 @ called once upon loading the field
+	.4byte sub_4AAD8 @ called once every frame while playing
+	.4byte sub_4ABC8 @ called once on game over (losing all balls)
+	.4byte sub_4B20C @ called once after game over?
 
 gUnknown_08137E14:: @ 0x08137E14
 	.incbin "baserom.gba", 0x137E14, 0x100
