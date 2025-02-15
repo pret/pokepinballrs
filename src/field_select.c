@@ -174,7 +174,7 @@ void sub_8C7C(void)
                     gFieldSelectData.unkC = 0;
                 }
             }
-            if (gMain.selectedField < NUM_FIELDS)
+            if (gMain.selectedField <= FIELD_SAPPHIRE)
                 gMain.unk6 = 0;
             else
                 gMain.unk6 = 1;

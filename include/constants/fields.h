@@ -5,7 +5,10 @@ enum
 {
     FIELD_RUBY,
     FIELD_SAPPHIRE,
-    NUM_FIELDS
+    FIELD_2,
+    FIELD_3,
+    FIELD_4,
+    FIELD_5,
 };
 
 #endif // GUARD_CONSTANTS_FIELDS_H

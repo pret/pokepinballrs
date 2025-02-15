@@ -86,7 +86,9 @@ struct PinballGame
 	/*0x03C*/ u32 unk3C;
 	/*0x040*/ u8 filler40[0x28];
 	/*0x068*/ s16 unk68;
-	/*0x06A*/ u8 filler6A[0xC1];
+	/*0x06A*/ u8 filler6A[0x5];
+	/*0x06F*/ s8 unk6F;
+	/*0x070*/ u8 filler70[0xBB];
 	/*0x12B*/ s8 forceSpecialMons;  // When on, force next catch mode species to be special mons
 	/*0x12C*/ s8 forcePichuEgg;     // When on, force next egg mode species to be Pichu
 	/*0x12D*/ u8 filler12D;
@@ -113,11 +115,14 @@ struct PinballGame
 	/*0x59E*/ u16 unk59E; // Previous hatch/evo mode species?
 	/*0x5A0*/ u8 filler5A0[0x50];
 	/*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
-	/*0x5F2*/ u8 filler5F2[0x5];
+	/*0x5F2*/ u8 filler5F2[0x4];
+	/*0x5F6*/ s8 unk5F6;
 	/*0x5F7*/ u8 unk5F7;
 	/*0x5F8*/ u8 filler5F8[0x8];
 	/*0x600*/ u16 unk600;
-	/*0x602*/ u8 filler602[0x126];
+	/*0x602*/ u8 filler602[0xC2];
+	/*0x6C4*/ u8 unk6C4;
+	/*0x6C5*/ u8 filler6C5[0x63];
 	/*0x728*/ u8 unk728; // TODO: unknown type
 	/*0x729*/ u8 filler729[0x5];
 	/*0x72E*/ u8 unk72E; // TODO: unknown type
@@ -125,7 +130,11 @@ struct PinballGame
 	/*0x730*/ u8 filler730[0xC];
 	/*0x73C*/ u8 unk73C; // TODO: unknown type
 	/*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
-	/*0x73E*/ u8 filler73E[0xBEE];
+	/*0x73E*/ u8 filler73E[0x80E];
+	/*0xF4C*/ struct SongHeader *unkF4C;
+	/*0xF50*/ u8 fillerF50[0x1B0];
+	/*0x1100*/u8 unk1100;
+	/*0x1104*/u8 filler1101[0x22B];
 	/*0x132C*/s32 *unk132c;
 	/*0x1330*/u8 filler1330[4];
 	/*0x1334*/s32 unk1334[2][17];
@@ -133,8 +142,10 @@ struct PinballGame
 
 struct Unk02031520
 {
-	/*0x0*/ u8 filler0[0x8];
-	/*0x8*/ s16 unk8;
+	/*0x00*/ u8 filler0[0x8];
+	/*0x08*/ s16 unk8;
+	/*0x0A*/ u8 fillerA[0x22];
+	/*0x2C*/ u8 *unk2C;
 };
 
 extern struct PinballGame *gCurrentPinballGame;

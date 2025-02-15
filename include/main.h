@@ -55,7 +55,7 @@ struct Main
     /*0x07*/ s8 eReaderBonus[NUM_EREADER_CARDS];
     /*0x0C*/ u8 unkC;
     /*0x0D*/ u8 unkD;
-    /*0x0E*/ u8 fillerE[0x1];
+    /*0x0E*/ u8 unkE;
     /*0x0F*/ u8 unkF;
     /*0x10*/ u8 unk10;
     /*0x11*/ u8 unk11;

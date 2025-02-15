@@ -295,7 +295,7 @@ struct MusicPlayerTrack
 struct MusicPlayerInfo
 {
     struct SongHeader *songHeader;
-    u32 status;
+    s32 status;
     u8 trackCount;
     u8 priority;
     u8 cmd;
