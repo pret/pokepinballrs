@@ -287,15 +287,15 @@ void sub_4A518(void)
             gCurrentPinballGame->unk1C0 = 1;
             gCurrentPinballGame->unk5F6 = 3;
             gCurrentPinballGame->unk5F8 = 60 * 60;
-            gCurrentPinballGame->unk30 = 9;
-            gCurrentPinballGame->unk192 = 99;
+            gCurrentPinballGame->numLives = 9;
+            gCurrentPinballGame->coins = 99;
         }
         else
         {
             gCurrentPinballGame->unk1D4 = 0;
             gCurrentPinballGame->unk1D6 = -4;
-            gCurrentPinballGame->unk30 = 2;
-            gCurrentPinballGame->unk192 = 10;
+            gCurrentPinballGame->numLives = 2;
+            gCurrentPinballGame->coins = 10;
         }
     }
 
