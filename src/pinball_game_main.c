@@ -30,6 +30,8 @@ void sub_4B678(u16);
 
 extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gUnknown_08137E14[][0x20];
+extern const u8 gUnknown_084C0C6C[];
+
 
 void PinballGameMain(void)
 {
@@ -249,4 +251,60 @@ static void sub_4A270(void)
 
     gMain.unk16 = REG_DISPCNT;
     REG_MOSAIC = 0;
+}
+
+void sub_4A518(void)
+{
+    gMain.unkF = 0;
+    gMain.unk10 = 0;
+    gMain.fieldFrameCount = 0;
+    gMain.unk11 = 0;
+    gMain.unk12 = 0;
+    gMain.unk14 = 0;
+    gMain.vCount = 144;
+    gMain.unk28 = 0;
+    gMain.unk2A = 0;
+    gMain.unk36 = 0;
+    gMain.blendControl = 0;
+    gMain.blendAlpha = 0;
+    gMain.blendBrightness = 0;
+    if (gMain.unk5 == gMain.selectedField)
+    {
+        DmaFill16(3, 0, gCurrentPinballGame, sizeof(struct PinballGame));
+        if (gMain.eReaderBonus[EREADER_DX_MODE_CARD])
+        {
+            gCurrentPinballGame->unk1C6 = 168;
+            gCurrentPinballGame->unk1C8 = 168;
+            gCurrentPinballGame->unk1CC = 13;
+            gCurrentPinballGame->unk1CA = 13;
+            gCurrentPinballGame->unk1D0 = 0;
+            gCurrentPinballGame->unk1D4 = 0;
+            gCurrentPinballGame->unk1D6 = 120;
+            gCurrentPinballGame->unk1DC = 60;
+            DmaCopy16(3, gUnknown_084C0C6C, (void *)OBJ_VRAM0 + 0x600, 0x180);
+            gCurrentPinballGame->unk1E2 = 2;
+            *gMain.unk44->unkA4 = 0;
+            gCurrentPinballGame->unk1C0 = 1;
+            gCurrentPinballGame->unk5F6 = 3;
+            gCurrentPinballGame->unk5F8 = 60 * 60;
+            gCurrentPinballGame->unk30 = 9;
+            gCurrentPinballGame->unk192 = 99;
+        }
+        else
+        {
+            gCurrentPinballGame->unk1D4 = 0;
+            gCurrentPinballGame->unk1D6 = -4;
+            gCurrentPinballGame->unk30 = 2;
+            gCurrentPinballGame->unk192 = 10;
+        }
+    }
+
+    if (gMain.mainState != STATE_GAME_IDLE)
+        gCurrentPinballGame->unk31 = gMain_saveData.ballSpeed;
+
+    gCurrentPinballGame->unk38 = 40000;
+    gCurrentPinballGame->unk1D = 0;
+    gCurrentPinballGame->unk132c = gCurrentPinballGame->unk1334[0];
+    gCurrentPinballGame->unk1330 = gCurrentPinballGame->unk1334[0];
+    gCurrentPinballGame->unk66 = 0;
 }

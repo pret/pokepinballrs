@@ -42,6 +42,8 @@ struct MainUnk44
 {
     u8 filler0[0x34];
     struct MainUnk44_Unk34 *unk34;
+    u8 filler38[0x6C];
+    u16 *unkA4;
 };
 
 struct Main
