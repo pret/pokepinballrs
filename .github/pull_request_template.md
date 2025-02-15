@@ -4,6 +4,6 @@
 ## Description
 <!--- Describe your changes in detail -->
 
-## **Discord contact info**
-<!--- formatted as name#numbers, e.g. PikalaxALT#5823 -->
-<!--- Contributors must join https://discord.gg/d5dubZ3 -->
+## **Discord username**
+<!--- formatted as name#numbers, e.g. pikalaxalt -->
+<!--- Contributors must join the pret discord at https://discord.gg/d5dubZ3 -->
