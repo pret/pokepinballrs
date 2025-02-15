@@ -1,6 +1,10 @@
 #ifndef GUARD_TYPES_H
 #define GUARD_TYPES_H
 
+#include "gba/gba.h"
+#define NUM_SPRITE_GROUPS 100
+#define MAX_SPRITES_IN_GROUP 22
+
 // Place all discovered types (structs, unions, etc.) in this file.
 
 typedef void (*StateFunc)(void);

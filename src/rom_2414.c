@@ -9,6 +9,38 @@ extern u32 gUnknown_0202BDF0;
 extern u8 gUnknown_0201C1AC;
 extern u8 gUnknown_0202ADDC;
 
+s16 sub_2414(const struct SpriteSet *const *spriteSets, u16 numSpriteSets, struct SpriteGroup *spriteGroups) {
+    struct SpriteGroup *spriteGroup;
+    struct OamDataSimple *simple;
+    u16 *oamData;
+    u16 i;
+    u16 j;
+    u16 pos;
+    u16 numSpritesInGroup;
+
+    oamData = (u16 *)gOamBuffer;
+    pos = 0;
+    CpuCopy16(gEmptyOamData, oamData, sizeof(gOamBuffer));
+
+    for (i = 0; i < numSpriteSets; i++) {
+        spriteGroup = &spriteGroups[i];
+        if (!spriteGroup->available) {
+            continue;
+        }
+        numSpritesInGroup = spriteSets[i]->count;
+        CpuCopy16(spriteSets[i]->oamData, &gOamBuffer[pos], numSpritesInGroup * sizeof(struct OamData));
+        for (j = 0; j < numSpritesInGroup; j++) {
+            oamData = (u16 *)&gOamBuffer[pos];
+            simple = &spriteGroup->oam[j];
+
+            simple->oamId = pos++;
+            simple->xOffset = oamData[1] & 0x1FF;
+            simple->yOffset = oamData[0] & 0xFF;
+        }
+    }
+    return pos;
+}
+
 void nullsub_16(void)
 {
 }

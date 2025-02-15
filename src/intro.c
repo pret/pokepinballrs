@@ -85,11 +85,6 @@ struct UnkStruct_0201A450
 
 extern struct UnkStruct_0201A450 gUnknown_0201A450[6];
 
-struct UnkStruct_086A7768 {
-    s16 unk0;
-    s16 unk2;
-};
-
 extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
 extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
 extern struct UnkStruct_086A7768 gUnknown_086A79FC[];
