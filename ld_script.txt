@@ -47,11 +47,13 @@ SECTIONS
         src/rom_1068C.o(.text);
         src/titlescreen.o(.text);
         src/rom_11B9C.o(.text);
-        asm/rom_11B9C.o(.text1);
+        asm/rom_11B9C.o(.text11C14);
         src/rom_19B64.o(.text);
-        asm/rom_11B9C.o(.text2);
+        asm/rom_11B9C.o(.text19B90);
         src/rom_19D04.o(.text);
         asm/rom_11B9C.o(.text19E10);
+        src/rom_1A98C.o(.text);
+        asm/rom_11B9C.o(.text1AA38);
         src/rom_31F6C.o(.text);
         asm/rom_3219C.o(.text);
         src/options.o(.text);
