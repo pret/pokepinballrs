@@ -31,4 +31,12 @@ build/
 baserom.*
 *.swp
 *.swo
-.vscode/settings.json
+.vscode/
+
+# cmake
+build-cmake-*/
+compile_commands.json
+CMakeLists.txt
+
+# clangd
+.cache/

@@ -1,6 +1,9 @@
 #ifndef GUARD_VARIABLES_H
 #define GUARD_VARIABLES_H
 
+#include "gba/gba.h"
+#include "gba/m4a_internal.h"
+#include "types.h"
 #include "constants/high_scores.h"
 
 // Place all external variable declarations in this file
@@ -286,6 +289,11 @@ struct unkStruct_8079730
     u32 unk8;
 };
 extern const struct unkStruct_8079730 gUnknown_08079730[][8];
+
+struct UnkStruct_086A7768 {
+    s16 unk0;
+    s16 unk2;
+};
 
 extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
 extern s16 gUnknown_086A7788[0x8];
