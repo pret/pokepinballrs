@@ -201,7 +201,9 @@ struct PinballGame
 	/*0xF4C*/ struct SongHeader *unkF4C;
 	/*0xF50*/ u8 fillerF50[0x1B0];
 	/*0x1100*/u8 unk1100;
-	/*0x1104*/u8 filler1101[0x22B];
+	/*0x1101*/u8 filler1101[0x19];
+	/*0x111A*/u8 unk111A[OBJ_PLTT_SIZE];
+	/*0x131A*/u8 filler131A[0x12];
 	/*0x132C*/struct UnkPinballGame1334 *unk132c;
 	/*0x1330*/struct UnkPinballGame1334 *unk1330;
 	/*0x1334*/struct UnkPinballGame1334 unk1334[2];

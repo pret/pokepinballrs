@@ -31,6 +31,7 @@ void sub_47110(void);
 static void sub_4A270(void);
 void sub_4A518(void);
 void sub_4A90C(void);
+void sub_4B408(u16);
 void sub_4B678(u16);
 
 extern const StateFunc gPinballGameStateFuncs[];
@@ -474,4 +475,53 @@ void sub_4A90C(void)
         gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
         break;
     }
+}
+
+void sub_4AAD8(void)
+{
+    switch (gCurrentPinballGame->unk1D)
+    {
+    case 0:
+        gCurrentPinballGame->unk1D = 1;
+        gMain.unkE = 0;
+        break;
+    case 1:
+        gUnknown_086B085C[gMain.unk6]();
+        if (JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+            gMain.unkE = 1;
+
+        if (gMain.unkE)
+        {
+            if (gMain.selectedField <= FIELD_SAPPHIRE)
+            {
+                sub_1D4D0();
+                sub_31BE8(0);
+            }
+            else if (gMain.selectedField == FIELD_2)
+            {
+                sub_356A0();
+            }
+            else if (gMain.selectedField == FIELD_4)
+            {
+                sub_3ADA0();
+            }
+            else if (gMain.selectedField == FIELD_5)
+            {
+                sub_3E5D0();
+            }
+
+            if (gMain.unkF & 0x2)
+                DmaCopy16(3, gCurrentPinballGame->unk111A, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+
+            gCurrentPinballGame->unk1D = 2;
+            if (gMain.unkE == 2)
+                sub_4B408(1);
+        }
+        break;
+    case 2:
+        gMain.subState++;
+        break;
+    }
+
+    sub_11FC();
 }
