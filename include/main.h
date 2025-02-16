@@ -40,10 +40,17 @@ struct MainUnk44_Unk34
 
 struct MainUnk44
 {
-    u8 filler0[0x34];
+    u8 filler0[0x2C];
+    u16 *unk2C;
+    u8 filler30[0x4];
     struct MainUnk44_Unk34 *unk34;
-    u8 filler38[0x6C];
-    u16 *unkA4;
+    u8 filler38[0x40];
+}; /* size=0x78 */
+
+struct BgOffsets
+{
+    u16 xOffset;
+    u16 yOffset;
 };
 
 struct Main
@@ -83,7 +90,7 @@ struct Main
     /*0x3C*/ volatile u16 blendBrightness;
              // may be a sub-struct. possibly for saved game?
     /*0x40*/ int hasSavedGame;
-    /*0x44*/ struct MainUnk44 *unk44;
+    /*0x44*/ const struct MainUnk44 *unk44;
     /*0x48*/ int rngValue;
     /*0x4C*/ u32 systemFrameCount;
     /*0x50*/ int fieldFrameCount;
@@ -105,7 +112,7 @@ struct Main
 #define gMain_saveData (*(struct SaveData *)(&gMain.saveData))
     /*0x74*/  struct SaveData saveData;
 
-    /*0x2E8*/ struct MainUnk2E8 unk2E8[4];
+    /*0x2E8*/ struct BgOffsets bgOffsets[4];
     /*0x2F8*/ struct SpriteGroup spriteGroups[NUM_SPRITE_GROUPS];
 };
 

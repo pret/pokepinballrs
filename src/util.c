@@ -141,8 +141,8 @@ void sub_0518(void)
     DmaFill16(3, 0, gUnknown_03005C00, sizeof(gUnknown_03005C00));
     for (i = 0; i < 4; i++)
     {
-        gMain.unk2E8[i].unk0 = 0;
-        gMain.unk2E8[i].unk2 = 0;
+        gMain.bgOffsets[i].xOffset = 0;
+        gMain.bgOffsets[i].yOffset = 0;
     }
 }
 

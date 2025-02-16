@@ -10,12 +10,6 @@
 typedef void (*StateFunc)(void);
 typedef void (*IntrFunc)(void);
 
-struct MainUnk2E8
-{
-    u16 unk0;
-    u16 unk2;
-};
-
 struct SpriteSet
 {
     u16 count;

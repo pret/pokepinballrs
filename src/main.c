@@ -293,14 +293,14 @@ void DefaultMainCallback(void)
         VBlankIntrWait();
         DmaCopy32(3, gOamBuffer, (void *)OAM, OAM_SIZE);
         REG_DISPCNT = gMain.unk16;
-        REG_BG0HOFS = gMain.unk2E8[0].unk0;
-        REG_BG0VOFS = gMain.unk2E8[0].unk2;
-        REG_BG1HOFS = gMain.unk2E8[1].unk0;
-        REG_BG1VOFS = gMain.unk2E8[1].unk2;
-        REG_BG2HOFS = gMain.unk2E8[2].unk0;
-        REG_BG2VOFS = gMain.unk2E8[2].unk2;
-        REG_BG3HOFS = gMain.unk2E8[3].unk0;
-        REG_BG3VOFS = gMain.unk2E8[3].unk2;
+        REG_BG0HOFS = gMain.bgOffsets[0].xOffset;
+        REG_BG0VOFS = gMain.bgOffsets[0].yOffset;
+        REG_BG1HOFS = gMain.bgOffsets[1].xOffset;
+        REG_BG1VOFS = gMain.bgOffsets[1].yOffset;
+        REG_BG2HOFS = gMain.bgOffsets[2].xOffset;
+        REG_BG2VOFS = gMain.bgOffsets[2].yOffset;
+        REG_BG3HOFS = gMain.bgOffsets[3].xOffset;
+        REG_BG3VOFS = gMain.bgOffsets[3].yOffset;
         if (gMain.unk36)
         {
             REG_BLDCNT = gMain.blendControl;

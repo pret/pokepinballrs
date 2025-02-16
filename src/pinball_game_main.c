@@ -6,15 +6,20 @@
 
 extern struct PinballGame gUnknown_02000000;
 
+typedef void (*VoidFunc)(void);
+
 struct Unk20028D8
 {
     void (*unk0)(void);
-    u8 filler4[0x4];
+    void (*unk4)(void);
 };
 
-extern const struct Unk20028D8 gUnknown_020028D8[];
-typedef void (*VoidFunc)(void);
+extern struct Unk20028D8 gUnknown_020028D8[9];
+
+extern const struct Unk20028D8 gUnknown_086B077C[];
 extern const VoidFunc gUnknown_086B085C[];
+extern const struct MainUnk44 gUnknown_086B02CC[];
+extern const struct MainUnk44 gUnknown_086B03BC[];
 
 void sub_1D4D0(void);
 void sub_356A0(void);
@@ -26,6 +31,8 @@ void sub_47110(void);
 static void sub_4A270(void);
 void sub_4A518(void);
 void sub_4A90C(void);
+void sub_4B280(void);
+void sub_4B408(u16);
 void sub_4B678(u16);
 
 extern const StateFunc gPinballGameStateFuncs[];
@@ -283,7 +290,7 @@ void sub_4A518(void)
             gCurrentPinballGame->unk1DC = 60;
             DmaCopy16(3, gUnknown_084C0C6C, (void *)OBJ_VRAM0 + 0x600, 0x180);
             gCurrentPinballGame->unk1E2 = 2;
-            *gMain.unk44->unkA4 = 0;
+            *gMain.unk44[1].unk2C = 0;
             gCurrentPinballGame->unk1C0 = 1;
             gCurrentPinballGame->unk5F6 = 3;
             gCurrentPinballGame->unk5F8 = 60 * 60;
@@ -304,7 +311,284 @@ void sub_4A518(void)
 
     gCurrentPinballGame->unk38 = 40000;
     gCurrentPinballGame->unk1D = 0;
-    gCurrentPinballGame->unk132c = gCurrentPinballGame->unk1334[0];
-    gCurrentPinballGame->unk1330 = gCurrentPinballGame->unk1334[0];
+    gCurrentPinballGame->unk132c = &gCurrentPinballGame->unk1334[0];
+    gCurrentPinballGame->unk1330 = &gCurrentPinballGame->unk1334[0];
     gCurrentPinballGame->unk66 = 0;
+}
+
+void sub_4A6A0(void)
+{
+    switch (gCurrentPinballGame->unk282)
+    {
+    case 0:
+        gCurrentPinballGame->unk132c->unk10 = 119;
+        gCurrentPinballGame->unk132c->unk12 = 279;
+        gCurrentPinballGame->unk132c->unk30 = 0;
+        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->unkE = 128;
+        gCurrentPinballGame->unk132c->unk0 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk730 = 0;
+        gCurrentPinballGame->unk28 = 120;
+        gCurrentPinballGame->unk25 = 4;
+        if (gMain.selectedField == FIELD_RUBY)
+            sub_1A9E8();
+        else
+            sub_32968();
+
+        gCurrentPinballGame->unk4C = 0;
+        gCurrentPinballGame->unk4E = 215;
+        break;
+    case 1:
+        gCurrentPinballGame->unk132c->unk10 = 140;
+        gCurrentPinballGame->unk132c->unk12 = 183;
+        gCurrentPinballGame->unk132c->unk30 = 0;
+        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->unkE = 128;
+        gCurrentPinballGame->unk132c->unk0 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk730 = 0;
+        gCurrentPinballGame->unk2A2 = 5;
+        gCurrentPinballGame->unk4C = 0;
+        gCurrentPinballGame->unk4E = 118;
+        break;
+    case 2:
+        gCurrentPinballGame->unk132c->unk10 = -28;
+        gCurrentPinballGame->unk132c->unk12 = -10;
+        gCurrentPinballGame->unk132c->unk30 = 0;
+        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->unkE = 128;
+        gCurrentPinballGame->unk132c->unk0 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk730 = 0;
+        gCurrentPinballGame->unk30C = 0;
+        gCurrentPinballGame->unk306 = 7;
+        gCurrentPinballGame->unk4C = 0;
+        gCurrentPinballGame->unk4E = 0;
+        break;
+    }
+
+    gCurrentPinballGame->unk5FC = 0;
+    gCurrentPinballGame->unk5FE = 0;
+    gCurrentPinballGame->unk5FB = 0;
+    gCurrentPinballGame->unk54 = gCurrentPinballGame->unk4E << 8;
+    gCurrentPinballGame->unk58 = gCurrentPinballGame->unk4C;
+    gCurrentPinballGame->unk5A = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
+
+    gMain.bgOffsets[2].xOffset = gCurrentPinballGame->unk4C;
+    gMain.bgOffsets[2].yOffset = gCurrentPinballGame->unk4E;
+    gMain.bgOffsets[3].xOffset = gCurrentPinballGame->unk4C;
+    gMain.bgOffsets[3].yOffset = gCurrentPinballGame->unk4E;
+    gMain.bgOffsets[1].xOffset = gCurrentPinballGame->unk4C;
+    gMain.bgOffsets[1].yOffset = gCurrentPinballGame->unk4E;
+    gMain.bgOffsets[0].yOffset = 80;
+
+    gCurrentPinballGame->unkCC = gMain.bgOffsets[3].yOffset;
+    gCurrentPinballGame->unk64 = gMain.bgOffsets[3].yOffset / 8;
+}
+
+void sub_4A90C(void)
+{
+    gUnknown_020028D8[1] = gUnknown_086B077C[0];
+    gUnknown_020028D8[8] = gUnknown_086B077C[18];
+    gUnknown_020028D8[6] = gUnknown_086B077C[15];
+    switch (gMain.selectedField)
+    {
+    case FIELD_RUBY:
+        gUnknown_020028D8[3] = gUnknown_086B077C[3];
+        gUnknown_020028D8[7] = gUnknown_086B077C[16];
+        gUnknown_020028D8[0] = gUnknown_086B077C[19];
+        gUnknown_020028D8[4] = gUnknown_086B077C[11];
+        gUnknown_020028D8[2] = gUnknown_086B077C[1];
+        gUnknown_020028D8[5] = gUnknown_086B077C[13];
+        gMain.unk44 = &gUnknown_086B02CC[gMain.selectedField * 2];
+        break;
+    case FIELD_SAPPHIRE:
+        gUnknown_020028D8[3] = gUnknown_086B077C[4];
+        gUnknown_020028D8[7] = gUnknown_086B077C[16];
+        gUnknown_020028D8[0] = gUnknown_086B077C[20];
+        gUnknown_020028D8[4] = gUnknown_086B077C[11];
+        gUnknown_020028D8[2] = gUnknown_086B077C[1];
+        gUnknown_020028D8[5] = gUnknown_086B077C[13];
+        gMain.unk44 = &gUnknown_086B02CC[gMain.selectedField * 2];
+        break;
+    case FIELD_2:
+        gUnknown_020028D8[3] = gUnknown_086B077C[5];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[21];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_3:
+        gUnknown_020028D8[3] = gUnknown_086B077C[6];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[22];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_4:
+        gUnknown_020028D8[3] = gUnknown_086B077C[7];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[23];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_5:
+        gUnknown_020028D8[3] = gUnknown_086B077C[8];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[24];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_6:
+        gUnknown_020028D8[3] = gUnknown_086B077C[9];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[25];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_7:
+        gUnknown_020028D8[3] = gUnknown_086B077C[10];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[26];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    }
+}
+
+void sub_4AAD8(void)
+{
+    switch (gCurrentPinballGame->unk1D)
+    {
+    case 0:
+        gCurrentPinballGame->unk1D = 1;
+        gMain.unkE = 0;
+        break;
+    case 1:
+        gUnknown_086B085C[gMain.unk6]();
+        if (JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+            gMain.unkE = 1;
+
+        if (gMain.unkE)
+        {
+            if (gMain.selectedField <= FIELD_SAPPHIRE)
+            {
+                sub_1D4D0();
+                sub_31BE8(0);
+            }
+            else if (gMain.selectedField == FIELD_2)
+            {
+                sub_356A0();
+            }
+            else if (gMain.selectedField == FIELD_4)
+            {
+                sub_3ADA0();
+            }
+            else if (gMain.selectedField == FIELD_5)
+            {
+                sub_3E5D0();
+            }
+
+            if (gMain.unkF & 0x2)
+                DmaCopy16(3, gCurrentPinballGame->unk111A, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+
+            gCurrentPinballGame->unk1D = 2;
+            if (gMain.unkE == 2)
+                sub_4B408(1);
+        }
+        break;
+    case 2:
+        gMain.subState++;
+        break;
+    }
+
+    sub_11FC();
+}
+
+void sub_4ABC8(void)
+{
+    sub_111C();
+    if (sub_1170())
+    {
+        sub_1198();
+        gMain.subState++;
+    }
+}
+
+void sub_4ABEC(void)
+{
+    s16 i;
+
+    sub_4B280();
+    gUnknown_020028D8[1].unk4();
+    if (gMain.unkE == 0 && !(gMain.unkF & 0x2))
+    {
+        gUnknown_020028D8[2].unk4();
+        gUnknown_020028D8[0].unk4();
+        gUnknown_020028D8[3].unk4();
+        gUnknown_020028D8[4].unk4();
+        if (gMain.unkF)
+        {
+            if (!gCurrentPinballGame->unk1F)
+            {
+                for (i = 0; i < 4; i++)
+                {
+                    gCurrentPinballGame->unk1E = i;
+                    gUnknown_020028D8[6].unk4();
+                }
+            }
+        }
+        else
+        {
+            gMain.fieldFrameCount++;
+            gCurrentPinballGame->unk290++;
+            if (gCurrentPinballGame->unk1F)
+            {
+                if (gCurrentPinballGame->unk1F != 2)
+                {
+                    for (i = 0; i < 4; i++)
+                    {
+                        gCurrentPinballGame->unk1E = i;
+                        gUnknown_020028D8[5].unk4();
+                    }
+                }
+            }
+            else
+            {
+                for (i = 0; i < 4; i++)
+                {
+                    gCurrentPinballGame->unk1E = i;
+                    gUnknown_020028D8[5].unk4();
+                    gUnknown_020028D8[6].unk4();
+                }
+            }
+        }
+
+        gUnknown_020028D8[7].unk4();
+        gUnknown_020028D8[8].unk4();
+    }
+
+    sub_47030();
 }

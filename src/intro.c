@@ -169,14 +169,14 @@ void sub_93F8(void)
         VBlankIntrWait();
         DmaCopy16(3, gOamBuffer , OAM, 0x8000200);
         REG_DISPCNT = gMain.unk16;
-        REG_BG0HOFS = gMain.unk2E8[0].unk0;
-        REG_BG0VOFS = gMain.unk2E8[0].unk2;
-        REG_BG1HOFS = gMain.unk2E8[1].unk0;
-        REG_BG1VOFS = gMain.unk2E8[1].unk2;
-        REG_BG2HOFS = gMain.unk2E8[2].unk0;
-        REG_BG2VOFS = gMain.unk2E8[2].unk2;
-        REG_BG3HOFS = gMain.unk2E8[3].unk0;
-        REG_BG3VOFS = gMain.unk2E8[3].unk2;
+        REG_BG0HOFS = gMain.bgOffsets[0].xOffset;
+        REG_BG0VOFS = gMain.bgOffsets[0].yOffset;
+        REG_BG1HOFS = gMain.bgOffsets[1].xOffset;
+        REG_BG1VOFS = gMain.bgOffsets[1].yOffset;
+        REG_BG2HOFS = gMain.bgOffsets[2].xOffset;
+        REG_BG2VOFS = gMain.bgOffsets[2].yOffset;
+        REG_BG3HOFS = gMain.bgOffsets[3].xOffset;
+        REG_BG3VOFS = gMain.bgOffsets[3].yOffset;
     }
 }
 
@@ -206,14 +206,14 @@ void sub_9498(void)
     DmaCopy16(3, gIntroScene1Sprites_Gfx, BG_CHAR_ADDR(4), 0x8000);
     DmaCopy16(3, gIntroScene1Sprites_Pals, 0x05000200, BG_PLTT_SIZE);
     sub_96A8();
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[18];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[19];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[6];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[7];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[13];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[18];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[19];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[6];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[7];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[13];
     sub_0CBC();
     sub_FEB8((void*)BG_PLTT, gIntroScene1Sprites_Pals, NULL);
     DmaCopy16(3, gIntroScene1Sprites_Pals, 0x05000200, BG_PLTT_SIZE);
@@ -392,8 +392,8 @@ void sub_999C(void)
     if (gUnknown_0202BF10 % 2 == 0)
         gUnknown_0202ADA0[1]--;
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[1];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[1];
     if (++gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
     {
         sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[4]]], (void *)0x60036E0, 8, 8);
@@ -448,12 +448,12 @@ void sub_9AB8(void)
     }
 
     sub_9E90();
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x13];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0x7];
 }
 
 void nullsub_4(void)
@@ -474,8 +474,8 @@ void sub_9C10(void)
 
     sub_9E90();
 
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
     gUnknown_0201A450[3].unkA++;
 
     if (gUnknown_0201A450[3].unkA > 0x14)
@@ -670,12 +670,12 @@ void sub_A16C(void)
     DmaCopy16(3, gUnknown_080CC6E0, (void*) 0x06000000, 0x3C00);
     DmaCopy16(3, gUnknown_080CBCE0, (void*) PLTT, 0x80);
     sub_A2A8();
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
     sub_0CBC();
     sub_10424();
     gUnknown_0202C790 += 2;
@@ -718,12 +718,12 @@ void sub_A2F0(void)
     }
 
     // TODO same as sub_A16C - possible inline function?
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
 
     gUnknown_0202ADA0[0x10]++;
     if (gUnknown_0202ADA0[0x10] > 0x27)
@@ -754,12 +754,12 @@ void sub_A39C(void)
     }
 
     // TODO same as sub_A16C - possible inline function?
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
 
     sub_10480();
     sub_10544();
@@ -799,14 +799,14 @@ void sub_A454(void)
     sub_A628();
     sub_A87C();
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     sub_0CBC();
     sub_10424();
@@ -853,12 +853,12 @@ void sub_A674(void)
     }
 
     sub_A87C();
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
 }
 
 void sub_A710(void)
@@ -879,10 +879,10 @@ void sub_A710(void)
         DmaCopy16(3, (void *) gUnknown_0202BE70, 0x05000040, 0x20);
     }
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
     sub_A87C();
 
     if (gUnknown_0202ADA0[0x10] == 2)
@@ -890,16 +890,16 @@ void sub_A710(void)
         DmaCopy16(3, gUnknown_03005C00, (void*) 0x0600E000, 0x800);
         gUnknown_0202ADA0[0x6] = 0;
         gUnknown_0202ADA0[0x7] = 0;
-        gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-        gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+        gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+        gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
     }
     else if (gUnknown_0202ADA0[0x10] == 4)
     {
         DmaCopy16(3, gUnknown_0201B180, (void*) 0x0600E000, 0x800);
         gUnknown_0202ADA0[0x6] = 0;
         gUnknown_0202ADA0[0x7] = 0;
-        gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-        gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
+        gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+        gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
     }
 
     gUnknown_0202ADA0[0x10]++;
@@ -977,12 +977,12 @@ void sub_A968(void)
     gMain.unk16 = REG_DISPCNT;
 
     sub_AAA8();
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
 
     sub_0CBC();
     sub_10424();
@@ -1025,11 +1025,11 @@ void sub_AAF4(void)
         gUnknown_0202ADA0[0x9]++;
     }
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
 
     gUnknown_0202ADA0[0x10]++;
     if (0x27 < gUnknown_0202ADA0[0x10])
@@ -1058,11 +1058,11 @@ void sub_AB90(void)
         gUnknown_0202ADA0[0x9]++;
     }
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
 
     sub_10480();
     sub_10544();
@@ -1102,14 +1102,14 @@ void sub_AC38(void)
     sub_ADFC();
     sub_B0E8();
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     sub_0CBC();
     sub_10424();
@@ -1170,12 +1170,12 @@ void sub_AE74(void)
     }
 
     sub_B0E8();
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
 
     if (++gUnknown_0202ADA0[0x10] > 9)
     {
@@ -1205,14 +1205,14 @@ void sub_AF80(void)
         gUnknown_0201A450[0].unk2 += 2;
     }
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     if (++gUnknown_0202ADA0[0x16] > 29)
     {
@@ -1332,14 +1332,14 @@ void sub_B2F8(void)
 
     sub_B4A0();
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     sub_0CBC();
     sub_10424();
@@ -1411,12 +1411,12 @@ void sub_B560(void)
             gUnknown_0202ADA0[0xE] = 8;
     }
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
 
     if (gUnknown_0202BF10 == gUnknown_086A7B34[gUnknown_0202BEB4].unk2)
     {
@@ -1451,12 +1451,12 @@ void sub_B6C4(void)
             gUnknown_0202ADA0[0xE] = 8;
     }
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
 
     sub_B7F8();
     if (++gUnknown_0202A578 > 16)
@@ -1855,14 +1855,14 @@ void sub_BA3C(void)
     gMain.unk16 = REG_DISPCNT;
     sub_BBE0();
 
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     sub_0CBC();
     sub_10424();
@@ -1907,10 +1907,10 @@ void sub_BC54(void)
     gUnknown_0202ADA0[0x12]--;
     gUnknown_0202ADA0[0x13]--;
 
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     if (gUnknown_0202BF10 > 32)
         gUnknown_0202C790++;
@@ -1938,12 +1938,12 @@ void sub_BCE8(void)
     gUnknown_0202ADA0[0x13]--;
 
     // TODO rearrangement like this suggests one inline function per pair of statements, but see sub_9498
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     if (gUnknown_0202BF10 > 80)
         gUnknown_0202C790++;
@@ -1978,14 +1978,14 @@ void sub_BDC0(void)
     gUnknown_0202ADA0[0x12]--;
     gUnknown_0202ADA0[0x13]--;
 
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     if (gUnknown_0202BF10 > 100)
         gUnknown_0202C790++;
@@ -2028,14 +2028,14 @@ void sub_BED0(void)
     gUnknown_0202ADA0[0x12]--;
     gUnknown_0202ADA0[0x13]--;
 
-    gMain.unk2E8[2].unk0 = gUnknown_0202ADA0[0xC];
-    gMain.unk2E8[2].unk2 = gUnknown_0202ADA0[0xD];
-    gMain.unk2E8[1].unk0 = gUnknown_0202ADA0[0x6];
-    gMain.unk2E8[1].unk2 = gUnknown_0202ADA0[0x7];
-    gMain.unk2E8[0].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[0].unk2 = gUnknown_0202ADA0[0x1];
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
+    gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
+    gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
+    gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
+    gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     sub_C0D8();
     if (gUnknown_0202BF10 > 192)
@@ -2061,8 +2061,8 @@ void sub_C018(void)
         gUnknown_0202ADD8--;
     }
 
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x12];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x13];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     sub_C0D8();
     if (gUnknown_0202BF10 > 222)
@@ -2709,8 +2709,8 @@ void sub_C948(void)
 
     gMain.unk16 = REG_DISPCNT;
     sub_CA28();
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
-    gMain.unk2E8[3].unk2 = gUnknown_0202ADA0[0x1];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x1];
     sub_0CBC();
     sub_10424();
     gUnknown_0202C790++;
@@ -2752,7 +2752,7 @@ void sub_CAA0(void)
             gUnknown_0201A450[0].unk8 = 1;
     }
 
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x0];
     sub_CD18();
 
     if (gUnknown_0202BF10 > 40)
@@ -2774,7 +2774,7 @@ void sub_CAA0(void)
 void sub_CB6C(void)
 {
     gUnknown_0202ADA0[0] -= 0x24;
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0];
     if (gUnknown_0202BF10 > 120)
         gUnknown_0202C790++;
 }
@@ -2804,7 +2804,7 @@ void sub_CBA4(void)
     }
 
     gUnknown_0202ADA0[0x0] -= 0x24;
-    gMain.unk2E8[3].unk0 = gUnknown_0202ADA0[0x0];
+    gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x0];
     sub_CD18();
 
     if (gUnknown_0202BF10 > 152)

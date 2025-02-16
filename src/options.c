@@ -504,7 +504,7 @@ void Options_HandleInput(void)
 void sub_51C3C(void)
 {
     sub_111C();
-    if (sub_1170() != 0)
+    if (sub_1170())
     {
         sub_1198();
         gMain.subState++;
