@@ -304,7 +304,87 @@ void sub_4A518(void)
 
     gCurrentPinballGame->unk38 = 40000;
     gCurrentPinballGame->unk1D = 0;
-    gCurrentPinballGame->unk132c = gCurrentPinballGame->unk1334[0];
-    gCurrentPinballGame->unk1330 = gCurrentPinballGame->unk1334[0];
+    gCurrentPinballGame->unk132c = &gCurrentPinballGame->unk1334[0];
+    gCurrentPinballGame->unk1330 = &gCurrentPinballGame->unk1334[0];
     gCurrentPinballGame->unk66 = 0;
+}
+
+void sub_4A6A0(void)
+{
+    switch (gCurrentPinballGame->unk282)
+    {
+    case 0:
+        gCurrentPinballGame->unk132c->unk10 = 119;
+        gCurrentPinballGame->unk132c->unk12 = 279;
+        gCurrentPinballGame->unk132c->unk30 = 0;
+        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->unkE = 128;
+        gCurrentPinballGame->unk132c->unk0 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk730 = 0;
+        gCurrentPinballGame->unk28 = 120;
+        gCurrentPinballGame->unk25 = 4;
+        if (gMain.selectedField == FIELD_RUBY)
+            sub_1A9E8();
+        else
+            sub_32968();
+
+        gCurrentPinballGame->unk4C = 0;
+        gCurrentPinballGame->unk4E = 215;
+        break;
+    case 1:
+        gCurrentPinballGame->unk132c->unk10 = 140;
+        gCurrentPinballGame->unk132c->unk12 = 183;
+        gCurrentPinballGame->unk132c->unk30 = 0;
+        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->unkE = 128;
+        gCurrentPinballGame->unk132c->unk0 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk730 = 0;
+        gCurrentPinballGame->unk2A2 = 5;
+        gCurrentPinballGame->unk4C = 0;
+        gCurrentPinballGame->unk4E = 118;
+        break;
+    case 2:
+        gCurrentPinballGame->unk132c->unk10 = -28;
+        gCurrentPinballGame->unk132c->unk12 = -10;
+        gCurrentPinballGame->unk132c->unk30 = 0;
+        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->unkE = 128;
+        gCurrentPinballGame->unk132c->unk0 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk730 = 0;
+        gCurrentPinballGame->unk30C = 0;
+        gCurrentPinballGame->unk306 = 7;
+        gCurrentPinballGame->unk4C = 0;
+        gCurrentPinballGame->unk4E = 0;
+        break;
+    }
+
+    gCurrentPinballGame->unk5FC = 0;
+    gCurrentPinballGame->unk5FE = 0;
+    gCurrentPinballGame->unk5FB = 0;
+    gCurrentPinballGame->unk54 = gCurrentPinballGame->unk4E << 8;
+    gCurrentPinballGame->unk58 = gCurrentPinballGame->unk4C;
+    gCurrentPinballGame->unk5A = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
+
+    gMain.bgOffsets[2].xOffset = gCurrentPinballGame->unk4C;
+    gMain.bgOffsets[2].yOffset = gCurrentPinballGame->unk4E;
+    gMain.bgOffsets[3].xOffset = gCurrentPinballGame->unk4C;
+    gMain.bgOffsets[3].yOffset = gCurrentPinballGame->unk4E;
+    gMain.bgOffsets[1].xOffset = gCurrentPinballGame->unk4C;
+    gMain.bgOffsets[1].yOffset = gCurrentPinballGame->unk4E;
+    gMain.bgOffsets[0].yOffset = 80;
+
+    gCurrentPinballGame->unkCC = gMain.bgOffsets[3].yOffset;
+    gCurrentPinballGame->unk64 = gMain.bgOffsets[3].yOffset / 8;
 }

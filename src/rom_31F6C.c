@@ -435,23 +435,23 @@ void sub_328C8(void)
 
 void sub_32914(void)
 {
-    if (!gMain.unkF)
-    {
-        switch (gCurrentPinballGame->unk25)
-        {
-        case 1:
-            sub_32B74();
-            break;
-        case 3:
-            sub_329B0();
-            break;
-        case 4:
-            sub_1C560();
-            break;
-        }
+    if (gMain.unkF != 0)
+        return;
 
-        gCurrentPinballGame->unk26 = 0x3C;
+    switch (gCurrentPinballGame->unk25)
+    {
+    case 1:
+        sub_32B74();
+        break;
+    case 3:
+        sub_329B0();
+        break;
+    case 4:
+        sub_1C560();
+        break;
     }
+
+    gCurrentPinballGame->unk26 = 60;
 }
 
 void sub_32968(void)

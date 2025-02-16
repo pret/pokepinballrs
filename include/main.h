@@ -46,6 +46,12 @@ struct MainUnk44
     u16 *unkA4;
 };
 
+struct BgOffsets
+{
+    u16 xOffset;
+    u16 yOffset;
+};
+
 struct Main
 {
     /*0x00*/ u8 filler0[0x2];
@@ -105,7 +111,7 @@ struct Main
 #define gMain_saveData (*(struct SaveData *)(&gMain.saveData))
     /*0x74*/  struct SaveData saveData;
 
-    /*0x2E8*/ struct MainUnk2E8 unk2E8[4];
+    /*0x2E8*/ struct BgOffsets bgOffsets[4];
     /*0x2F8*/ struct SpriteGroup spriteGroups[NUM_SPRITE_GROUPS];
 };
 

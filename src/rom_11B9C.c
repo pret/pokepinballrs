@@ -11,7 +11,7 @@ void sub_11B9C(void)
     s16 i;
     if (gMain.unk6 == 0)
     {
-        gCurrentPinballGame->unk132c = gCurrentPinballGame->unk1334[0];
+        gCurrentPinballGame->unk132c = &gCurrentPinballGame->unk1334[0];
         sub_11C14(0);
         sub_12524();
     }
@@ -19,7 +19,7 @@ void sub_11B9C(void)
     {
         for (i = 0; i < 2; i++)
         {
-            gCurrentPinballGame->unk132c = gCurrentPinballGame->unk1334[i];
+            gCurrentPinballGame->unk132c = &gCurrentPinballGame->unk1334[i];
             sub_11C14(i);
         }
         sub_12BF8();

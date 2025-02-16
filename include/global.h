@@ -69,6 +69,25 @@
 #define JOY_NEW_EXACT(button) TEST_BUTTON_EXACT(gMain.newKeys,  button)
 #define JOY_HELD_EXACT(button)  TEST_BUTTON_EXACT(gMain.heldKeys, button)
 
+struct UnkPinballGame1334
+{
+	/*0x00*/ u8 unk0;
+	/*0x01*/ u8 filler1[0x5];
+	/*0x06*/ u16 unk6;
+	/*0x08*/ u8 filler8[0x6];
+	/*0x0E*/ u16 unkE;
+	/*0x10*/ s16 unk10;
+	/*0x12*/ s16 unk12;
+	/*0x14*/ u8 filler14[0xB];
+	/*0x1F*/ u8 unk1F;
+	/*0x20*/ u8 filler20[0x10];
+	/*0x30*/ u16 unk30;
+	/*0x32*/ u16 unk32;
+	/*0x34*/ u32 unk34;
+	/*0x38*/ u32 unk38;
+	/*0x3C*/ u8 filler3C[0x8];
+};
+
 struct PinballGame
 {
 	/*0x000*/ u8 filler0[0x13];
@@ -78,7 +97,9 @@ struct PinballGame
 	/*0x016*/ u8 unk16;
 	/*0x017*/ u8 filler17[0x6];
 	/*0x01D*/ u8 unk1D;
-	/*0x01E*/ u8 filler1E[0x7];
+	/*0x01E*/ u8 filler1E[0x1];
+	/*0x01F*/ u8 unk1F;
+	/*0x020*/ u8 filler20[0x5];
 	/*0x025*/ s8 unk25;
 	/*0x026*/ u16 unk26;
 	/*0x028*/ u16 unk28;
@@ -88,14 +109,24 @@ struct PinballGame
 	/*0x032*/ u8 filler32[0x3];
 	/*0x035*/ s8 area;
 	/*0x036*/ u8 filler36[0x2];
-	/*0x038*/ int unk38;
+	/*0x038*/ u32 unk38;
 	/*0x03C*/ u32 unk3C;
-	/*0x040*/ u8 filler40[0x26];
+	/*0x040*/ u8 filler40[0xC];
+	/*0x04C*/ u16 unk4C;
+	/*0x04E*/ s16 unk4E;
+	/*0x050*/ u8 filler50[0x4];
+	/*0x054*/ u32 unk54;
+	/*0x058*/ u16 unk58;
+	/*0x05A*/ u16 unk5A;
+	/*0x05C*/ u8 filler5C[0x8];
+	/*0x064*/ u16 unk64;
 	/*0x066*/ u16 unk66;
 	/*0x068*/ s16 unk68;
 	/*0x06A*/ u8 filler6A[0x5];
 	/*0x06F*/ s8 unk6F;
-	/*0x070*/ u8 filler70[0xBB];
+	/*0x070*/ u8 filler70[0x5C];
+	/*0x0CC*/ u16 unkCC;
+	/*0x0CE*/ u8 fillerCE[0x5D];
 	/*0x12B*/ s8 forceSpecialMons;  // When on, force next catch mode species to be special mons
 	/*0x12C*/ s8 forcePichuEgg;     // When on, force next egg mode species to be Pichu
 	/*0x12D*/ u8 filler12D;
@@ -127,9 +158,17 @@ struct PinballGame
 	/*0x1E3*/ u8 filler1E3[0x2];
 	/*0x1E5*/ u8 unk1E5;
 	/*0x1E6*/ u8 unk1E6;
-	/*0x1E7*/ u8 filler1E7[0xB5];
+	/*0x1E7*/ u8 filler1E7[0x9B];
+	/*0x282*/ s8 unk282;
+	/*0x283*/ u8 filler283[0x19];
 	/*0x29C*/ u16 unk29C;
-	/*0x29E*/ u8 filler29E[0xA6];
+	/*0x29E*/ u8 filler29E[0x4];
+	/*0x2A2*/ u8 unk2A2;
+	/*0x2A3*/ u8 filler2A3[0x63];
+	/*0x306*/ u8 unk306;
+	/*0x307*/ u8 filler307[0x5];
+	/*0x30C*/ u16 unk30C;
+	/*0x30E*/ u8 filler30E[0x36];
 	/*0x344*/ u32 unk344;
 	/*0x348*/ u8 filler348[0x250];
 	/*0x598*/ u16 unk598; // Current catch/hatch mode species? Is it evo mode as well?
@@ -142,7 +181,10 @@ struct PinballGame
 	/*0x5F6*/ s8 unk5F6;
 	/*0x5F7*/ u8 unk5F7;
 	/*0x5F8*/ u16 unk5F8;
-	/*0x5FA*/ u8 filler5FA[0x6];
+	/*0x5FA*/ u8 filler5FA[0x1];
+	/*0x5FB*/ u8 unk5FB;
+	/*0x5FC*/ u16 unk5FC;
+	/*0x5FE*/ u16 unk5FE;
 	/*0x600*/ u16 unk600;
 	/*0x602*/ u8 filler602[0xC2];
 	/*0x6C4*/ u8 unk6C4;
@@ -151,7 +193,8 @@ struct PinballGame
 	/*0x729*/ u8 filler729[0x5];
 	/*0x72E*/ u8 unk72E; // TODO: unknown type
 	/*0x72F*/ u8 unk72F; // TODO: unknown type
-	/*0x730*/ u8 filler730[0xC];
+	/*0x730*/ u8 unk730;
+	/*0x731*/ u8 filler731[0xB];
 	/*0x73C*/ u8 unk73C; // TODO: unknown type
 	/*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
 	/*0x73E*/ u8 filler73E[0x80E];
@@ -159,9 +202,9 @@ struct PinballGame
 	/*0xF50*/ u8 fillerF50[0x1B0];
 	/*0x1100*/u8 unk1100;
 	/*0x1104*/u8 filler1101[0x22B];
-	/*0x132C*/s32 *unk132c;
-	/*0x1330*/s32 *unk1330;
-	/*0x1334*/s32 unk1334[2][17];
+	/*0x132C*/struct UnkPinballGame1334 *unk132c;
+	/*0x1330*/struct UnkPinballGame1334 *unk1330;
+	/*0x1334*/struct UnkPinballGame1334 unk1334[2];
 	/*0x13BC*/u8 filler[0x54];
 } /* size=0x1410 */;
 

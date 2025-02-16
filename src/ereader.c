@@ -62,8 +62,8 @@ void LoadEReaderGraphics(void)
     REG_BG1CNT = BGCNT_SCREENBASE(1) | BGCNT_CHARBASE(1) | BGCNT_PRIORITY(1);
     REG_DISPCNT |= DISPCNT_BG1_ON;
 
-    gMain.unk2E8[0].unk0 = 0xffe8;
-    gMain.unk2E8[0].unk2 = (0xffe8 - 0x48);
+    gMain.bgOffsets[0].xOffset = 0xffe8;
+    gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
     gMain.unk16 = REG_DISPCNT;
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
@@ -328,8 +328,8 @@ void sub_343C(void)
     REG_BG1CNT = BGCNT_SCREENBASE(1) | BGCNT_CHARBASE(1) | BGCNT_PRIORITY(1);
     REG_DISPCNT |= DISPCNT_BG1_ON;
 
-    gMain.unk2E8[0].unk0 = 0xffe8;
-    gMain.unk2E8[0].unk2 = (0xffe8 - 0x48);
+    gMain.bgOffsets[0].xOffset = 0xffe8;
+    gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
     gMain.unk16 = REG_DISPCNT;
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
