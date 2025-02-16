@@ -6,15 +6,20 @@
 
 extern struct PinballGame gUnknown_02000000;
 
+typedef void (*VoidFunc)(void);
+
 struct Unk20028D8
 {
     void (*unk0)(void);
-    u8 filler4[0x4];
+    void (*unk4)(void);
 };
 
-extern const struct Unk20028D8 gUnknown_020028D8[];
-typedef void (*VoidFunc)(void);
+extern struct Unk20028D8 gUnknown_020028D8[9];
+
+extern const struct Unk20028D8 gUnknown_086B077C[];
 extern const VoidFunc gUnknown_086B085C[];
+extern const struct MainUnk44 gUnknown_086B02CC[];
+extern const struct MainUnk44 gUnknown_086B03BC[];
 
 void sub_1D4D0(void);
 void sub_356A0(void);
@@ -283,7 +288,7 @@ void sub_4A518(void)
             gCurrentPinballGame->unk1DC = 60;
             DmaCopy16(3, gUnknown_084C0C6C, (void *)OBJ_VRAM0 + 0x600, 0x180);
             gCurrentPinballGame->unk1E2 = 2;
-            *gMain.unk44->unkA4 = 0;
+            *gMain.unk44[1].unk2C = 0;
             gCurrentPinballGame->unk1C0 = 1;
             gCurrentPinballGame->unk5F6 = 3;
             gCurrentPinballGame->unk5F8 = 60 * 60;
@@ -387,4 +392,86 @@ void sub_4A6A0(void)
 
     gCurrentPinballGame->unkCC = gMain.bgOffsets[3].yOffset;
     gCurrentPinballGame->unk64 = gMain.bgOffsets[3].yOffset / 8;
+}
+
+void sub_4A90C(void)
+{
+    gUnknown_020028D8[1] = gUnknown_086B077C[0];
+    gUnknown_020028D8[8] = gUnknown_086B077C[18];
+    gUnknown_020028D8[6] = gUnknown_086B077C[15];
+    switch (gMain.selectedField)
+    {
+    case FIELD_RUBY:
+        gUnknown_020028D8[3] = gUnknown_086B077C[3];
+        gUnknown_020028D8[7] = gUnknown_086B077C[16];
+        gUnknown_020028D8[0] = gUnknown_086B077C[19];
+        gUnknown_020028D8[4] = gUnknown_086B077C[11];
+        gUnknown_020028D8[2] = gUnknown_086B077C[1];
+        gUnknown_020028D8[5] = gUnknown_086B077C[13];
+        gMain.unk44 = &gUnknown_086B02CC[gMain.selectedField * 2];
+        break;
+    case FIELD_SAPPHIRE:
+        gUnknown_020028D8[3] = gUnknown_086B077C[4];
+        gUnknown_020028D8[7] = gUnknown_086B077C[16];
+        gUnknown_020028D8[0] = gUnknown_086B077C[20];
+        gUnknown_020028D8[4] = gUnknown_086B077C[11];
+        gUnknown_020028D8[2] = gUnknown_086B077C[1];
+        gUnknown_020028D8[5] = gUnknown_086B077C[13];
+        gMain.unk44 = &gUnknown_086B02CC[gMain.selectedField * 2];
+        break;
+    case FIELD_2:
+        gUnknown_020028D8[3] = gUnknown_086B077C[5];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[21];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_3:
+        gUnknown_020028D8[3] = gUnknown_086B077C[6];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[22];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_4:
+        gUnknown_020028D8[3] = gUnknown_086B077C[7];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[23];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_5:
+        gUnknown_020028D8[3] = gUnknown_086B077C[8];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[24];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_6:
+        gUnknown_020028D8[3] = gUnknown_086B077C[9];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[25];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    case FIELD_7:
+        gUnknown_020028D8[3] = gUnknown_086B077C[10];
+        gUnknown_020028D8[7] = gUnknown_086B077C[17];
+        gUnknown_020028D8[0] = gUnknown_086B077C[26];
+        gUnknown_020028D8[4] = gUnknown_086B077C[12];
+        gUnknown_020028D8[2] = gUnknown_086B077C[2];
+        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
+        break;
+    }
 }
