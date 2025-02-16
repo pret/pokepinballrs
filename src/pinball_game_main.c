@@ -525,3 +525,13 @@ void sub_4AAD8(void)
 
     sub_11FC();
 }
+
+void sub_4ABC8(void)
+{
+    sub_111C();
+    if (sub_1170())
+    {
+        sub_1198();
+        gMain.subState++;
+    }
+}

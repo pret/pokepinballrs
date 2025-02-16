@@ -6,24 +6,6 @@
 
 	.text
 
-	thumb_func_start sub_4ABC8
-sub_4ABC8: @ 0x0804ABC8
-	push {lr}
-	bl sub_111C
-	bl sub_1170
-	cmp r0, #0
-	beq _0804ABE2
-	bl sub_1198
-	ldr r1, _0804ABE8 @ =gMain
-	ldrb r0, [r1, #3]
-	adds r0, #1
-	strb r0, [r1, #3]
-_0804ABE2:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804ABE8: .4byte gMain
-
 	thumb_func_start sub_4ABEC
 sub_4ABEC: @ 0x0804ABEC
 	push {r4, r5, lr}
