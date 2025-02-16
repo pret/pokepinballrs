@@ -66,8 +66,6 @@
 #define TEST_BUTTON_EXACT(field, button) (((field) & (button)) == (button))
 #define JOY_NEW(button) TEST_BUTTON(gMain.newKeys,  button)
 #define JOY_HELD(button)  TEST_BUTTON(gMain.heldKeys, button)
-#define JOY_NEW_EXACT(button) TEST_BUTTON_EXACT(gMain.newKeys,  button)
-#define JOY_HELD_EXACT(button)  TEST_BUTTON_EXACT(gMain.heldKeys, button)
 
 struct UnkPinballGame1334
 {
@@ -90,7 +88,10 @@ struct UnkPinballGame1334
 
 struct PinballGame
 {
-	/*0x000*/ u8 filler0[0x13];
+	/*0x000*/ u8 filler0[0x4];
+	/*0x004*/ u8 unk4[5];
+	/*0x009*/ u8 unk9[5];
+	/*0x00E*/ u8 unkE[5];
 	/*0x013*/ s8 unk13;
 	/*0x014*/ s8 unk14;
 	/*0x015*/ u8 filler15;

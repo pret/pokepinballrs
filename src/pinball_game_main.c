@@ -843,3 +843,36 @@ void sub_4B20C(void)
 void nullsub_19(void)
 {
 }
+
+void sub_4B280(void)
+{
+    u16 i;
+
+    for (i = 0; i < 5; i++)
+    {
+        gCurrentPinballGame->unk4[i] = 0;
+        gCurrentPinballGame->unk9[i] = 0;
+    }
+
+    if (gMain.unkF)
+        return;
+
+    for (i =  0; i < 5; i++)
+    {
+        int buttonConfigKeyMask = (gMain.buttonConfigs[i][0] | gMain.buttonConfigs[i][1]) & KEYS_MASK;
+        if (buttonConfigKeyMask == JOY_HELD(buttonConfigKeyMask))
+        {
+            if (gCurrentPinballGame->unkE[i] == 0)
+                gCurrentPinballGame->unk4[i] = 1;
+
+            gCurrentPinballGame->unkE[i] = 1;
+        }
+        else
+        {
+            if (gCurrentPinballGame->unkE[i])
+                gCurrentPinballGame->unk9[i] = 1;
+
+            gCurrentPinballGame->unkE[i] = 0;
+        }
+    }
+}
