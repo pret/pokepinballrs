@@ -6,64 +6,6 @@
 
 	.text
 
-	thumb_func_start sub_4B20C
-sub_4B20C: @ 0x0804B20C
-	push {r4, lr}
-	ldr r4, _0804B250 @ =gMain
-	adds r1, r4, #0
-	adds r1, #0x36
-	movs r0, #0
-	strb r0, [r1]
-	bl sub_02B4
-	bl m4aMPlayAllStop
-	bl sub_0D10
-	ldr r0, _0804B254 @ =gCurrentPinballGame
-	ldr r1, [r0]
-	ldr r0, [r1, #0x44]
-	str r0, [r4, #0x58]
-	ldr r0, [r1, #0x48]
-	str r0, [r4, #0x5c]
-	ldrb r0, [r4, #0xe]
-	cmp r0, #2
-	bne _0804B23A
-	bl sub_4B654
-_0804B23A:
-	ldrb r0, [r4, #0xe]
-	cmp r0, #0
-	bne _0804B262
-	ldrb r0, [r4, #4]
-	cmp r0, #1
-	bls _0804B258
-	movs r0, STATE_BONUS_FIELD_SELECT
-	bl SetMainGameState
-	b _0804B276
-	.align 2, 0
-_0804B250: .4byte gMain
-_0804B254: .4byte gCurrentPinballGame
-_0804B258:
-	ldr r0, [r4, #8]
-	ldr r1, _0804B26C @ =0x00FFFF00
-	ands r0, r1
-	cmp r0, #0
-	beq _0804B270
-_0804B262:
-	movs r0, STATE_INTRO
-	bl SetMainGameState
-	b _0804B276
-	.align 2, 0
-_0804B26C: .4byte 0x00FFFF00
-_0804B270:
-	movs r0, STATE_SCORES_MAIN
-	bl SetMainGameState
-_0804B276:
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start nullsub_19
-nullsub_19: @ 0x0804B27C
-	bx lr
-
 	thumb_func_start sub_4B280
 sub_4B280: @ 0x0804B280
 	push {r4, r5, lr}

@@ -34,6 +34,7 @@ void sub_4A90C(void);
 void sub_4B280(void);
 void sub_4B334(void);
 void sub_4B408(u16);
+void sub_4B654(void);
 void sub_4B678(u16);
 
 extern const StateFunc gPinballGameStateFuncs[];
@@ -804,4 +805,41 @@ void sub_4B000(void)
     }
 
     DmaCopy16(3, &gUnknown_03005C00[0x320], (void *)0x6002640, 0x40);
+}
+
+void sub_4B20C(void)
+{
+    gMain.unk36 = 0;
+    sub_02B4();
+    m4aMPlayAllStop();
+    sub_0D10();
+    gMain.unk58 = gCurrentPinballGame->unk44;
+    gMain.unk5C = gCurrentPinballGame->unk48;
+    if (gMain.unkE == 2)
+        sub_4B654();
+
+    if (gMain.unkE == 0)
+    {
+        if (gMain.selectedField > FIELD_SAPPHIRE)
+        {
+            SetMainGameState(STATE_BONUS_FIELD_SELECT);
+            return;
+        }
+        else if (gMain.eReaderBonus[EREADER_DX_MODE_CARD] || gMain.eReaderBonus[EREADER_RUIN_AREA_CARD])
+        {
+            SetMainGameState(STATE_INTRO);
+            return;
+        }
+    }
+    else
+    {
+        SetMainGameState(STATE_INTRO);
+        return;
+    }
+
+    SetMainGameState(STATE_SCORES_MAIN);
+}
+
+void nullsub_19(void)
+{
 }
