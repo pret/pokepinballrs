@@ -32,6 +32,7 @@ static void sub_4A270(void);
 void sub_4A518(void);
 void sub_4A90C(void);
 void sub_4B280(void);
+void sub_4B334(void);
 void sub_4B408(u16);
 void sub_4B678(u16);
 
@@ -591,4 +592,72 @@ void sub_4ABEC(void)
     }
 
     sub_47030();
+}
+
+void sub_4ACF0(void)
+{
+    s16 i;
+
+    sub_4B334();
+    gUnknown_020028D8[1].unk4();
+    if (!(gMain.unkF & 0x2))
+    {
+        gUnknown_020028D8[2].unk4();
+        gUnknown_020028D8[0].unk4();
+        gUnknown_020028D8[3].unk4();
+        gUnknown_020028D8[4].unk4();
+        if (gMain.unkF)
+        {
+            if (!gCurrentPinballGame->unk1F)
+            {
+                for (i = 0; i < 4; i++)
+                {
+                    gCurrentPinballGame->unk1E = i;
+                    gUnknown_020028D8[6].unk4();
+                }
+            }
+        }
+        else
+        {
+            gMain.fieldFrameCount++;
+            gCurrentPinballGame->unk290++;
+            if (gCurrentPinballGame->unk1F)
+            {
+                if (gCurrentPinballGame->unk1F != 2)
+                {
+                    for (i = 0; i < 4; i++)
+                    {
+                        gCurrentPinballGame->unk1E = i;
+                        gUnknown_020028D8[5].unk4();
+                    }
+                }
+            }
+            else
+            {
+                for (i = 0; i < 4; i++)
+                {
+                    gCurrentPinballGame->unk1E = i;
+                    gUnknown_020028D8[5].unk4();
+                    gUnknown_020028D8[6].unk4();
+                }
+            }
+        }
+
+        gUnknown_020028D8[7].unk4();
+        gUnknown_020028D8[8].unk4();
+    }
+
+    sub_47030();
+    if ((gMain.systemFrameCount % 32) / 16 > 0)
+    {
+        for (i = 0; i < 10; i++)
+            gUnknown_03005C00[0x34A + i] = 0xC156 + i;
+    }
+    else
+    {
+        for (i = 0; i < 10; i++)
+            gUnknown_03005C00[0x34A + i] = 0x1FF;
+    }
+
+    DmaCopy16(3, &gUnknown_03005C00[0x340], (void *)0x6002680, 0x40);
 }
