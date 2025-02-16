@@ -31,6 +31,7 @@ void sub_47110(void);
 static void sub_4A270(void);
 void sub_4A518(void);
 void sub_4A90C(void);
+void sub_4B280(void);
 void sub_4B408(u16);
 void sub_4B678(u16);
 
@@ -534,4 +535,60 @@ void sub_4ABC8(void)
         sub_1198();
         gMain.subState++;
     }
+}
+
+void sub_4ABEC(void)
+{
+    s16 i;
+
+    sub_4B280();
+    gUnknown_020028D8[1].unk4();
+    if (gMain.unkE == 0 && !(gMain.unkF & 0x2))
+    {
+        gUnknown_020028D8[2].unk4();
+        gUnknown_020028D8[0].unk4();
+        gUnknown_020028D8[3].unk4();
+        gUnknown_020028D8[4].unk4();
+        if (gMain.unkF)
+        {
+            if (!gCurrentPinballGame->unk1F)
+            {
+                for (i = 0; i < 4; i++)
+                {
+                    gCurrentPinballGame->unk1E = i;
+                    gUnknown_020028D8[6].unk4();
+                }
+            }
+        }
+        else
+        {
+            gMain.fieldFrameCount++;
+            gCurrentPinballGame->unk290++;
+            if (gCurrentPinballGame->unk1F)
+            {
+                if (gCurrentPinballGame->unk1F != 2)
+                {
+                    for (i = 0; i < 4; i++)
+                    {
+                        gCurrentPinballGame->unk1E = i;
+                        gUnknown_020028D8[5].unk4();
+                    }
+                }
+            }
+            else
+            {
+                for (i = 0; i < 4; i++)
+                {
+                    gCurrentPinballGame->unk1E = i;
+                    gUnknown_020028D8[5].unk4();
+                    gUnknown_020028D8[6].unk4();
+                }
+            }
+        }
+
+        gUnknown_020028D8[7].unk4();
+        gUnknown_020028D8[8].unk4();
+    }
+
+    sub_47030();
 }
