@@ -27,7 +27,7 @@ extern u16 gUnknown_03000000[];
 extern u8 gUnknown_03001800[3][0x800];
 //extern ? gOamBuffer;
 //extern ? IntrMain_Buffer;
-extern u16 gUnknown_03005C00[0x600];
+extern u16 gUnknown_03005C00[0x800];
 //extern ? SoundMainRAM_Buffer;
 extern u16 sGbPlayerCurKeys;
 extern u16 sGbPlayerPrevKeys;
