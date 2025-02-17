@@ -876,3 +876,32 @@ void sub_4B280(void)
         }
     }
 }
+
+void sub_4B334(void)
+{
+    u16 i;
+
+    for (i = 0; i < 5; i++)
+    {
+        gCurrentPinballGame->unk4[i] = 0;
+        gCurrentPinballGame->unk9[i] = 0;
+    }
+
+    if (gMain.unkF)
+        return;
+
+    if (gUnknown_02031510 < 60 * 60)
+    {
+        for (i =  0; i < 5; i++)
+        {
+            gCurrentPinballGame->unk4[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk0 >> i) & 0x1;
+            gCurrentPinballGame->unk9[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk1 >> i) & 0x1;
+            gCurrentPinballGame->unkE[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk2 >> i) & 0x1;
+        }
+
+        gUnknown_02031510++;
+    }
+
+    if (gCurrentPinballGame->unk4[1])
+        gMain.newKeys = A_BUTTON;
+}

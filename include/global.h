@@ -215,15 +215,25 @@ struct PinballGame
 	/*0x13BC*/u8 filler[0x54];
 } /* size=0x1410 */;
 
+struct Unk02031520_unk10
+{
+	/*0x0*/ u8 unk0;
+	/*0x1*/ u8 unk1;
+	/*0x2*/ u8 unk2;
+};
+
 struct Unk02031520
 {
 	/*0x00*/ u8 filler0[0x8];
 	/*0x08*/ s16 unk8;
-	/*0x0A*/ u8 fillerA[0x22];
+	/*0x0A*/ u8 fillerA[0x6];
+	/*0x10*/ struct Unk02031520_unk10 *unk10;
+	/*0x14*/ u8 filler14[0x18];
 	/*0x2C*/ u8 *unk2C;
 };
 
 extern struct PinballGame *gCurrentPinballGame;
+extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
 
 #endif // GUARD_GLOBAL_H
