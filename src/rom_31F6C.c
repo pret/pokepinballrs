@@ -102,7 +102,7 @@ void sub_31F6C(void)
                 break;
         }
 
-        if (gCurrentPinballGame->lastSpecies == currentSpecies)
+        if (gCurrentPinballGame->lastCatchSpecies == currentSpecies)
         {
             weight = 0;
         }
@@ -209,7 +209,7 @@ void sub_3219C(void)
         }
     }
 
-    gCurrentPinballGame->lastSpecies = gCurrentPinballGame->currentSpecies;
+    gCurrentPinballGame->lastCatchSpecies = gCurrentPinballGame->currentSpecies;
 }
 
 void sub_32484(void)

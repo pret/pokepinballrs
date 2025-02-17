@@ -196,7 +196,7 @@ struct PinballGame
 	/*0x372*/ u8 filler370[0x226];
 	/*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
 	/*0x59A*/ u8 filler59A[0x2];
-	/*0x59C*/ u16 lastSpecies; // Previous catch mode species?
+	/*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
 	/*0x59E*/ u16 lastEggSpecies; // Previous hatch/evo mode species?
 	/*0x5A0*/ u8 filler5A0[0x50];
 	/*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
