@@ -545,3 +545,22 @@ void sub_329F4(void)
         }
     }
 }
+
+void sub_32B74(void)
+{
+    s16 i;
+    if(gCurrentPinballGame->unk72F > 1)
+    {
+        sub_19B64(4);
+    }
+
+    gCurrentPinballGame->unk28 = 100;
+    gCurrentPinballGame->unk2F4 = 2;
+    gCurrentPinballGame->unk5FC = 0;
+    gCurrentPinballGame->unk5FE = 30;
+    gCurrentPinballGame->unk5FB = 0;
+    gCurrentPinballGame->unk3C = 50000;
+
+    m4aSongNumStart(SE_UNKNOWN_0xD5);
+    sub_11B0(8);
+}
