@@ -548,10 +548,8 @@ void sub_329F4(void)
 
 void sub_32B74(void)
 {
-    if(gCurrentPinballGame->unk72F > 1)
-    {
+    if (gCurrentPinballGame->unk72F > 1)
         sub_19B64(4);
-    }
 
     gCurrentPinballGame->unk28 = 100;
     gCurrentPinballGame->unk2F4 = 2;
