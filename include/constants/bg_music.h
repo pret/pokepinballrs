@@ -48,8 +48,8 @@
 #define MUS_POKEDEX                 0x2E  // RS: Evergrande City
 #define MUS_JIRACHI                 0x2F  // RS: Hall of Fame
 
-#define MUS_FIELD_RUBY2          0x5B  // Ruby Field background music after beating (not catching) Rayquaza
-#define MUS_FIELD_SAPPHIRE2      0x5C  // Sapphire Field background music after beating (not catching) Rayquaza
+#define MUS_FIELD_RUBY2             0x5B  // Ruby Field background music after beating (not catching) Rayquaza
+#define MUS_FIELD_SAPPHIRE2         0x5C  // Sapphire Field background music after beating (not catching) Rayquaza
 
 #define SE_UNKNOWN_0x65             0x65 // RS: PokéNav turn on
 #define SE_UNKNOWN_0x66             0x66 // RS: PokéNav turn off
