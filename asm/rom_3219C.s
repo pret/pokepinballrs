@@ -6,59 +6,6 @@
 
 	.text
 
-	thumb_func_start sub_32B74
-sub_32B74: @ 0x08032B74
-	push {r4, r5, lr}
-	ldr r4, _08032BD0 @ =gCurrentPinballGame
-	ldr r0, [r4]
-	ldr r1, _08032BD4 @ =0x0000072F
-	adds r0, r0, r1
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	ble _08032B8E
-	movs r0, #4
-	bl sub_19B64
-_08032B8E:
-	ldr r1, [r4]
-	movs r3, #0
-	movs r2, #0
-	movs r0, #0x64
-	strh r0, [r1, #0x28]
-	movs r5, #0xbd
-	lsls r5, r5, #2
-	adds r1, r1, r5
-	movs r0, #2
-	strb r0, [r1]
-	ldr r1, [r4]
-	ldr r5, _08032BD8 @ =0x000005FC
-	adds r0, r1, r5
-	strh r2, [r0]
-	ldr r0, _08032BDC @ =0x000005FE
-	adds r2, r1, r0
-	movs r0, #0x1e
-	strh r0, [r2]
-	subs r5, #1
-	adds r1, r1, r5
-	strb r3, [r1]
-	ldr r1, [r4]
-	ldr r0, _08032BE0 @ =0x0000C350
-	str r0, [r1, #0x3c]
-	movs r0, SE_UNKNOWN_0xD5
-	bl m4aSongNumStart
-	movs r0, #8
-	bl sub_11B0
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08032BD0: .4byte gCurrentPinballGame
-_08032BD4: .4byte 0x0000072F
-_08032BD8: .4byte 0x000005FC
-_08032BDC: .4byte 0x000005FE
-_08032BE0: .4byte 0x0000C350
-
 	thumb_func_start sub_32BE4
 sub_32BE4: @ 0x08032BE4
 	push {r4, r5, r6, r7, lr}
