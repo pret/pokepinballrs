@@ -47,12 +47,6 @@ struct MainUnk44
     u8 filler38[0x40];
 }; /* size=0x78 */
 
-struct BgOffsets
-{
-    u16 xOffset;
-    u16 yOffset;
-};
-
 struct Main
 {
     /*0x00*/ u8 filler0[0x2];
@@ -61,7 +55,7 @@ struct Main
     /*0x04*/ u8 selectedField;
     /*0x05*/ u8 unk5;
     /*0x06*/ u8 unk6;
-    /*0x07*/ s8 eReaderBonus[NUM_EREADER_CARDS];
+    /*0x07*/ s8 eReaderBonuses[NUM_EREADER_CARDS];
     /*0x0C*/ u8 unkC;
     /*0x0D*/ u8 unkD;
     /*0x0E*/ u8 unkE;

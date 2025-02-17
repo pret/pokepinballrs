@@ -8,6 +8,7 @@
 #include "functions.h"
 #include "variables.h"
 #include "constants/global.h"
+#include "constants/ereader.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -67,6 +68,12 @@
 #define JOY_NEW(button) TEST_BUTTON(gMain.newKeys,  button)
 #define JOY_HELD(button)  TEST_BUTTON(gMain.heldKeys, button)
 
+struct BgOffsets
+{
+    u16 xOffset;
+    u16 yOffset;
+};
+
 struct UnkPinballGame1334
 {
 	/*0x00*/ u8 unk0;
@@ -91,8 +98,7 @@ struct UnkPinballGame1334
 
 struct PinballGame
 {
-	/*0x000*/ u8 unk0;
-	/*0x001*/ u8 filler1[0x3];
+	/*0x000*/ u32 unk0;
 	/*0x004*/ u8 unk4[5];
 	/*0x009*/ u8 unk9[5];
 	/*0x00E*/ u8 unkE[5];
@@ -110,7 +116,7 @@ struct PinballGame
 	/*0x028*/ u16 unk28;
 	/*0x02A*/ u8 filler2A[0x6];
 	/*0x030*/ u8 numLives;
-	/*0x031*/ u8 unk31;
+	/*0x031*/ u8 ballSpeed;
 	/*0x032*/ u8 filler32[0x3];
 	/*0x035*/ s8 area;
 	/*0x036*/ u8 filler36[0x2];
@@ -214,28 +220,67 @@ struct PinballGame
 	/*0x731*/ u8 filler731[0xB];
 	/*0x73C*/ u8 unk73C; // TODO: unknown type
 	/*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
-	/*0x73E*/ u8 filler73E[0x80E];
+	/*0x73E*/ u8 filler73E[0xE];
+	/*0x74C*/ volatile u8 unk74C[2][OBJ_PLTT_SIZE];
+	/*0xB4C*/ volatile u8 unkB4C[2][BG_PLTT_SIZE];
 	/*0xF4C*/ struct SongHeader *unkF4C;
-	/*0xF50*/ u8 fillerF50[0x1B0];
+	/*0xF50*/ u8 fillerF50[0x8];
+	/*0xF58*/ struct BgOffsets bgOffsets0;
+	/*0xF5C*/ struct BgOffsets bgOffsets1;
+	/*0xF60*/ struct BgOffsets bgOffsets2;
+	/*0xF64*/ struct BgOffsets bgOffsets3;
+	/*0xF68*/ u16 unkF68[2][100];
+	/*0x10F8*/u8 eReaderBonuses[NUM_EREADER_CARDS];
+	/*0x10FD*/u8 field;
+	/*0x10FE*/u8 unk10FE;
+	/*0x10FF*/u8 unk10FF;
 	/*0x1100*/u8 unk1100;
-	/*0x1101*/u8 filler1101[0x19];
+	/*0x1101*/u8 unk1101;
+	/*0x1102*/u8 unk1102;
+	/*0x1103*/u8 unk1103;
+	/*0x1104*/u8 filler1104[0x2];
+	/*0x1106*/u16 unk1106;
+	/*0x1108*/u16 unk1108;
+	/*0x110A*/u16 unk110A;
+	/*0x110C*/u16 unk110C;
+	/*0x110E*/u16 unk110E;
+	/*0x1110*/volatile u16 unk1110;
+	/*0x1112*/volatile u16 unk1112;
+	/*0x1114*/volatile u16 unk1114;
+	/*0x1116*/u16 unk1116;
+	/*0x1118*/u16 unk1118;
 	/*0x111A*/u8 unk111A[OBJ_PLTT_SIZE];
-	/*0x131A*/u8 filler131A[0x12];
+	/*0x131A*/u8 filler131A[0x6];
+	/*0x1320*/s16 unk1320;
+	/*0x1322*/s16 unk1322;
+	/*0x1324*/s16 unk1324;
+	/*0x1326*/s16 unk1326;
+	/*0x1328*/u8 filler1328[0x4];
 	/*0x132C*/struct UnkPinballGame1334 *unk132c;
 	/*0x1330*/struct UnkPinballGame1334 *unk1330;
 	/*0x1334*/struct UnkPinballGame1334 unk1334[2];
 	/*0x13BC*/u8 filler[0x54];
 } /* size=0x1410 */;
 
+struct Unk02031520_unk10
+{
+	/*0x0*/ u8 unk0;
+	/*0x1*/ u8 unk1;
+	/*0x2*/ u8 unk2;
+};
+
 struct Unk02031520
 {
 	/*0x00*/ u8 filler0[0x8];
 	/*0x08*/ s16 unk8;
-	/*0x0A*/ u8 fillerA[0x22];
+	/*0x0A*/ u8 fillerA[0x6];
+	/*0x10*/ struct Unk02031520_unk10 *unk10;
+	/*0x14*/ u8 filler14[0x18];
 	/*0x2C*/ u8 *unk2C;
 };
 
 extern struct PinballGame *gCurrentPinballGame;
+extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
 
 #endif // GUARD_GLOBAL_H
