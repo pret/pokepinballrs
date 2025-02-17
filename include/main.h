@@ -97,16 +97,7 @@ struct Main
     /*0x54*/ u8 filler54[0x4];
     /*0x58*/ u32 unk58;
     /*0x5C*/ u32 unk5C;
-    /*0x60*/ u16 unk60;
-    /*0x62*/ u16 unk62;
-    /*0x64*/ u16 unk64;
-    /*0x66*/ u16 unk66;
-    /*0x68*/ u16 unk68;
-    /*0x6A*/ u16 unk6A;
-    /*0x6C*/ u16 unk6C;
-    /*0x6E*/ u16 unk6E;
-    /*0x70*/ u16 unk70;
-    /*0x72*/ u16 unk72;
+    /*0x60*/ u16 buttonConfigs[5][2];
 
     // This field must be accessed using the following macro to produce matching code.
 #define gMain_saveData (*(struct SaveData *)(&gMain.saveData))

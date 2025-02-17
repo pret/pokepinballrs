@@ -66,8 +66,6 @@
 #define TEST_BUTTON_EXACT(field, button) (((field) & (button)) == (button))
 #define JOY_NEW(button) TEST_BUTTON(gMain.newKeys,  button)
 #define JOY_HELD(button)  TEST_BUTTON(gMain.heldKeys, button)
-#define JOY_NEW_EXACT(button) TEST_BUTTON_EXACT(gMain.newKeys,  button)
-#define JOY_HELD_EXACT(button)  TEST_BUTTON_EXACT(gMain.heldKeys, button)
 
 struct UnkPinballGame1334
 {
@@ -90,7 +88,10 @@ struct UnkPinballGame1334
 
 struct PinballGame
 {
-	/*0x000*/ u8 filler0[0x13];
+	/*0x000*/ u8 filler0[0x4];
+	/*0x004*/ u8 unk4[5];
+	/*0x009*/ u8 unk9[5];
+	/*0x00E*/ u8 unkE[5];
 	/*0x013*/ s8 progressForBonus; // Current number of Pokéballs filled by catch mode and evo mode
 	/*0x014*/ s8 unk14;
 	/*0x015*/ u8 filler15;
@@ -111,7 +112,9 @@ struct PinballGame
 	/*0x036*/ u8 filler36[0x2];
 	/*0x038*/ u32 unk38;
 	/*0x03C*/ u32 unk3C;
-	/*0x040*/ u8 filler40[0xC];
+	/*0x040*/ u8 filler40[0x4];
+	/*0x044*/ u32 unk44;
+	/*0x048*/ u32 unk48;
 	/*0x04C*/ u16 unk4C;
 	/*0x04E*/ s16 unk4E;
 	/*0x050*/ u8 filler50[0x4];
