@@ -6,23 +6,6 @@
 
 	.text
 
-	thumb_func_start sub_4B654
-sub_4B654: @ 0x0804B654
-	push {lr}
-	ldr r0, _0804B66C @ =gCurrentPinballGame
-	ldr r0, [r0]
-	movs r1, #1
-	str r1, [r0]
-	ldr r1, _0804B670 @ =0x0E000544
-	ldr r2, _0804B674 @ =0x00001410
-	bl WriteAndVerifySramFast
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804B66C: .4byte gCurrentPinballGame
-_0804B670: .4byte 0x0E000544
-_0804B674: .4byte 0x00001410
-
 	thumb_func_start sub_4B678
 sub_4B678: @ 0x0804B678
 	push {r4, r5, r6, r7, lr}

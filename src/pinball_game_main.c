@@ -1,4 +1,5 @@
 #include "global.h"
+#include "agb_sram.h"
 #include "main.h"
 #include "m4a.h"
 #include "constants/ereader.h"
@@ -952,4 +953,10 @@ void sub_4B408(s16 arg0)
 
     for (i = 0; i < NUM_EREADER_CARDS; i++)
         gCurrentPinballGame->eReaderBonuses[i] = gMain.eReaderBonuses[i];
+}
+
+void sub_4B654(void)
+{
+    gCurrentPinballGame->unk0 = 1;
+    WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(*gCurrentPinballGame));
 }

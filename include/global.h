@@ -95,7 +95,7 @@ struct UnkPinballGame1334
 
 struct PinballGame
 {
-	/*0x000*/ u8 filler0[0x4];
+	/*0x000*/ u32 unk0;
 	/*0x004*/ u8 unk4[5];
 	/*0x009*/ u8 unk9[5];
 	/*0x00E*/ u8 unkE[5];
