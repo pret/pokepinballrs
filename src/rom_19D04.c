@@ -4,10 +4,10 @@ extern void sub_21238(s32);
 
 void sub_19D04(void)
 {
-    if (gCurrentPinballGame->unk13 == 2 && gCurrentPinballGame->unk14 > 2)
+    if (gCurrentPinballGame->progressForBonus == 2 && gCurrentPinballGame->unk14 > 2)
         sub_21238(0);
 
-    if (gCurrentPinballGame->unk13 > 2)
+    if (gCurrentPinballGame->progressForBonus > 2)
         return;
 
     if (gCurrentPinballGame->unk14 == 3)

@@ -15999,7 +15999,7 @@ _08019C3C: .4byte gCurrentPinballGame
 _08019C40: .4byte gMain
 _08019C44: .4byte 0x00000283
 _08019C48:
-	movs r0, SE_UNKNOWN_0x5B
+	movs r0, MUS_FIELD_RUBY2
 	bl m4aSongNumStart
 	b _08019C7A
 _08019C50:
@@ -16020,7 +16020,7 @@ _08019C50:
 	.align 2, 0
 _08019C70: .4byte 0x00000283
 _08019C74:
-	movs r0, SE_UNKNOWN_0x5C
+	movs r0, MUS_FIELD_SAPPHIRE2
 	bl m4aSongNumStart
 _08019C7A:
 	ldr r5, _08019CB8 @ =gCurrentPinballGame
@@ -19567,7 +19567,7 @@ _0801BA88: .4byte 0x00000252
 _0801BA8C: .4byte gMain
 _0801BA90: .4byte 0x00000283
 _0801BA94:
-	movs r0, SE_UNKNOWN_0x5B
+	movs r0, MUS_FIELD_RUBY2
 	bl m4aSongNumStart
 	b _0801BAC6
 _0801BA9C:
@@ -19588,7 +19588,7 @@ _0801BA9C:
 	.align 2, 0
 _0801BABC: .4byte 0x00000283
 _0801BAC0:
-	movs r0, SE_UNKNOWN_0x5C
+	movs r0, MUS_FIELD_SAPPHIRE2
 	bl m4aSongNumStart
 _0801BAC6:
 	ldr r0, _0801BAE4 @ =gCurrentPinballGame

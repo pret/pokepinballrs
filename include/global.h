@@ -85,7 +85,10 @@ struct UnkPinballGame1334
 	/*0x12*/ s16 unk12;
 	/*0x14*/ u8 filler14[0xB];
 	/*0x1F*/ u8 unk1F;
-	/*0x20*/ u8 filler20[0x10];
+	/*0x20*/ u8 filler20[0x8];
+	/*0x28*/ u16 unk28;
+	/*0x20*/ s16 unk2A;
+	/*0x20*/ u8 filler2C[0x4];
 	/*0x30*/ u16 unk30;
 	/*0x32*/ u16 unk32;
 	/*0x34*/ u32 unk34;
@@ -99,7 +102,7 @@ struct PinballGame
 	/*0x004*/ u8 unk4[5];
 	/*0x009*/ u8 unk9[5];
 	/*0x00E*/ u8 unkE[5];
-	/*0x013*/ s8 unk13;
+	/*0x013*/ s8 progressForBonus; // Current number of Pokéballs filled by catch mode and evo mode
 	/*0x014*/ s8 unk14;
 	/*0x015*/ u8 filler15;
 	/*0x016*/ u8 unk16;
@@ -146,7 +149,9 @@ struct PinballGame
 	/*0x192*/ u8 coins;
 	/*0x193*/ u8 filler193[0x1];
 	/*0x194*/ s8 unk194;
-	/*0x195*/ u8 filler195[0x25];
+	/*0x195*/ u8 filler195[0x10];
+	/*0x1A5*/ s8 unk1A5;
+	/*0x1A6*/ u8 filler1A6[0x14];
 	/*0x1BA*/ u16 unk1BA;
 	/*0x1BC*/ u8 filler1BC[0x4];
 	/*0x1C0*/ u16 unk1C0;
@@ -168,9 +173,11 @@ struct PinballGame
 	/*0x1E3*/ u8 filler1E3[0x2];
 	/*0x1E5*/ u8 unk1E5;
 	/*0x1E6*/ u8 unk1E6;
-	/*0x1E7*/ u8 filler1E7[0x9B];
+	/*0x1E7*/ u8 filler1E7[0x9A];
+	/*0x281*/ s8 unk281;
 	/*0x282*/ s8 unk282;
-	/*0x283*/ u8 filler283[0xD];
+	/*0x283*/ u8 bonusLevelCount; //how many bonus levels have been completed
+	/*0x284*/ u8 filler284[0xC];
 	/*0x290*/ u32 unk290;
 	/*0x294*/ u8 filler294[0x8];
 	/*0x29C*/ u16 unk29C;
@@ -182,11 +189,15 @@ struct PinballGame
 	/*0x30C*/ u16 unk30C;
 	/*0x30E*/ u8 filler30E[0x36];
 	/*0x344*/ u32 unk344;
-	/*0x348*/ u8 filler348[0x250];
-	/*0x598*/ u16 unk598; // Current catch/hatch mode species? Is it evo mode as well?
+	/*0x348*/ u8 filler348[0x22];
+	/*0x36A*/ u8 unk36A[0x2];
+	/*0x36C*/ u8 unk36C[0x2];
+	/*0x36E*/ u16 unk36E[0x2];
+	/*0x372*/ u8 filler370[0x226];
+	/*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
 	/*0x59A*/ u8 filler59A[0x2];
-	/*0x59C*/ u16 unk59C; // Previous catch mode species?
-	/*0x59E*/ u16 unk59E; // Previous hatch/evo mode species?
+	/*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
+	/*0x59E*/ u16 lastEggSpecies; // Previous hatch/evo mode species?
 	/*0x5A0*/ u8 filler5A0[0x50];
 	/*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
 	/*0x5F2*/ u8 filler5F2[0x4];
@@ -203,7 +214,7 @@ struct PinballGame
 	/*0x6C5*/ u8 filler6C5[0x63];
 	/*0x728*/ u8 unk728; // TODO: unknown type
 	/*0x729*/ u8 filler729[0x5];
-	/*0x72E*/ u8 unk72E; // TODO: unknown type
+	/*0x72E*/ s8 unk72E;
 	/*0x72F*/ u8 unk72F; // TODO: unknown type
 	/*0x730*/ u8 unk730;
 	/*0x731*/ u8 filler731[0xB];
