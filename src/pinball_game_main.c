@@ -16,6 +16,8 @@ struct Unk20028D8
 };
 
 extern struct Unk20028D8 gUnknown_020028D8[9];
+extern u8 gUnknown_0200FBB0[][0x400];
+extern u8 gUnknown_020030A0[][0x400];
 
 extern const struct Unk20028D8 gUnknown_086B077C[];
 extern const VoidFunc gUnknown_086B085C[];
@@ -37,6 +39,7 @@ void sub_4B334(void);
 void sub_4B408(s16);
 void sub_4B654(void);
 void sub_4B678(u16);
+void sub_4BC34(void);
 
 extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gUnknown_08137E14[][0x20];
@@ -959,4 +962,169 @@ void sub_4B654(void)
 {
     gCurrentPinballGame->unk0 = 1;
     WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(*gCurrentPinballGame));
+}
+
+void sub_4B678(u16 arg0)
+{
+    s16 i, j;
+    s16 var0, var1;
+    int var2;
+
+    if (arg0 == 1)
+    {
+        ReadSramFast((void *)SRAM + 0x544, (u8 *)gCurrentPinballGame, sizeof(*gCurrentPinballGame));
+    }
+    else if (arg0 == 2)
+    {
+        DmaCopy16(3, gUnknown_02031520.unkC, gCurrentPinballGame, sizeof(*gCurrentPinballGame));
+        gCurrentPinballGame->unk132c = &gCurrentPinballGame->unk1334[0];
+        gCurrentPinballGame->unk1330 = &gCurrentPinballGame->unk1334[0];
+        var2 = gMain.unk30;
+        if ((var2 & 0x3) == 1)
+        {
+            gCurrentPinballGame->unk614 = 0;
+            gCurrentPinballGame->unk208 = 0;
+            gCurrentPinballGame->unk20A = 0;
+            gCurrentPinballGame->unk1C6 = 0;
+            gCurrentPinballGame->unk1C8 = 0;
+            gCurrentPinballGame->unk1CC = 0;
+            gCurrentPinballGame->unk1CA = 0;
+            gCurrentPinballGame->unk1D4 = 0;
+            gCurrentPinballGame->unk1D6 = -4;
+            gCurrentPinballGame->unk1D8 = 256;
+            gCurrentPinballGame->unk1DA = 256;
+            gCurrentPinballGame->unk1CE = 0;
+            gCurrentPinballGame->unk1D0 = 0;
+        }
+    }
+
+    if (arg0 != 0)
+    {
+        gMain.selectedField = gCurrentPinballGame->field;
+        gMain.unk5 = gCurrentPinballGame->unk10FE;
+        gMain.unk6 = gCurrentPinballGame->unk10FF;
+        gMain.unkF = gCurrentPinballGame->unk1101;
+        gMain.unk10 = gCurrentPinballGame->unk1102;
+        gMain.unk11 = gCurrentPinballGame->unk1103;
+        gMain.unk12 = gCurrentPinballGame->unk1320;
+        gMain.unk14 = gCurrentPinballGame->unk1322;
+        gMain.unk28 = gCurrentPinballGame->unk1324;
+        gMain.unk2A = gCurrentPinballGame->unk1326;
+        gMain.blendControl = gCurrentPinballGame->unk1110;
+        gMain.blendAlpha = gCurrentPinballGame->unk1112;
+        gMain.blendBrightness = gCurrentPinballGame->unk1114;
+        gMain.unk2C = gCurrentPinballGame->unk1116;
+        gMain.vCount = gCurrentPinballGame->unk1118;
+        gMain.bgOffsets[0] = gCurrentPinballGame->bgOffsets0;
+        gMain.bgOffsets[1] = gCurrentPinballGame->bgOffsets1;
+        gMain.bgOffsets[2] = gCurrentPinballGame->bgOffsets2;
+        gMain.bgOffsets[3] = gCurrentPinballGame->bgOffsets3;
+        for (i = 0; i < NUM_EREADER_CARDS; i++)
+            gMain.eReaderBonuses[i] = gCurrentPinballGame->eReaderBonuses[i];
+
+        gCurrentPinballGame->unk1100 = 1;
+        if (arg0 == 1 && gMain.selectedField <= FIELD_SAPPHIRE)
+        {
+            gCurrentPinballGame->unk68 = gCurrentPinballGame->unk4E +
+                                         gCurrentPinballGame->unk121 +
+                                         gCurrentPinballGame->unk5FC +
+                                         gCurrentPinballGame->unkE6;
+        }
+    }
+    else
+    {
+        gCurrentPinballGame->unk68 = gCurrentPinballGame->unk6A;
+    }
+
+    gCurrentPinballGame->unk1D = 0;
+    gMain.unkD = 0;
+    sub_467F4();
+    if (gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->unk29E)
+        sub_46FD4(1);
+
+    if (gMain.selectedField <= FIELD_SAPPHIRE)
+    {
+        for (i = 0; i < 22; i++)
+        {
+            var0 = i + gCurrentPinballGame->unk64;
+            var1 = (i + 10 + gCurrentPinballGame->unk64) % 22;
+            if (var0 < 32)
+            {
+                DmaCopy16(3, &gUnknown_0200FBB0[var0], (void *)0x6008000 + var1 * 0x400, 0x400);
+            }
+            else
+            {
+                var0 -= 32;
+                DmaCopy16(3, &gUnknown_020030A0[var0], (void *)0x6008000 + var1 * 0x400, 0x400);
+            }
+        }
+    }
+
+    for (i = 0; i < 0x800; i++)
+        gUnknown_03005C00[i] = 0x1FF;
+
+    DmaCopy16(3, gUnknown_03005C00, (void *)0x6002000, 0x1000);
+    if (gMain.unk2C)
+    {
+        if (gCurrentPinballGame->progressForBonus == 6)
+        {
+            for (j = 0; j <= gCurrentPinballGame->unk298; j++)
+            {
+                for (i = 2; i < 12; i++)
+                    gUnknown_03005C00[(i + 15) * 0x20 + j] = 0xC100;
+            }
+        }
+        else
+        {
+            for (j = 0; j <= gCurrentPinballGame->unk298; j++)
+            {
+                for (i = 1; i < 11; i++)
+                    gUnknown_03005C00[(i + 15) * 0x20 + j] = 0xC100;
+            }
+        }
+
+        DmaCopy16(3, gUnknown_03005C00, (void *)0x6002000, 0x800);
+    }
+
+    DmaCopy16(3, gCurrentPinballGame->unk74C[gMain.unk6], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+    DmaCopy16(3, gCurrentPinballGame->unkB4C[gMain.unk6], (void *)BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+    sub_4BC34();
+    switch (gMain.selectedField)
+    {
+    case FIELD_RUBY:
+        sub_50848();
+        sub_4E9F0(gCurrentPinballGame->unk1A5);
+        break;
+    case FIELD_SAPPHIRE:
+        sub_50AD4();
+        break;
+    case FIELD_2:
+        sub_50D48();
+        break;
+    case FIELD_3:
+        sub_50DE0();
+        break;
+    case FIELD_4:
+        sub_50F04();
+        break;
+    case FIELD_5:
+        sub_50FD4();
+        break;
+    case FIELD_6:
+        sub_51090();
+        break;
+    case FIELD_7:
+        sub_51150();
+        break;
+    }
+
+    for (i = 0; i < 100; i++)
+        gMain.spriteGroups[i].available = gCurrentPinballGame->unkF68[gMain.unk6][i];
+
+    if (arg0 == 1)
+    {
+        gCurrentPinballGame->unk0 = 0;
+        WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(gCurrentPinballGame->unk0));
+    }
 }

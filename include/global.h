@@ -132,14 +132,19 @@ struct PinballGame
 	/*0x058*/ u16 unk58;
 	/*0x05A*/ u16 unk5A;
 	/*0x05C*/ u8 filler5C[0x8];
-	/*0x064*/ u16 unk64;
+	/*0x064*/ s16 unk64;
 	/*0x066*/ u16 unk66;
 	/*0x068*/ s16 unk68;
-	/*0x06A*/ u8 filler6A[0x5];
+	/*0x06A*/ s16 unk6A;
+	/*0x06C*/ u8 filler6C[0x3];
 	/*0x06F*/ s8 unk6F;
 	/*0x070*/ u8 filler70[0x5C];
 	/*0x0CC*/ u16 unkCC;
-	/*0x0CE*/ u8 fillerCE[0x5D];
+	/*0x0CE*/ u8 fillerCE[0x18];
+	/*0x0E6*/ u16 unkE6;
+	/*0x0E8*/ u8 fillerE8[0x39];
+	/*0x121*/ s8 unk121;
+	/*0x122*/ u8 filler122[0x9];
 	/*0x12B*/ s8 forceSpecialMons;  // When on, force next catch mode species to be special mons
 	/*0x12C*/ s8 forcePichuEgg;     // When on, force next egg mode species to be Pichu
 	/*0x12D*/ u8 filler12D;
@@ -160,7 +165,7 @@ struct PinballGame
 	/*0x1C8*/ u16 unk1C8;
 	/*0x1CA*/ u16 unk1CA;
 	/*0x1CC*/ u16 unk1CC;
-	/*0x1CE*/ u8 filler1CE[0x2];
+	/*0x1CE*/ u16 unk1CE;
 	/*0x1D0*/ u16 unk1D0;
 	/*0x1D2*/ u8 filler1D2[0x2];
 	/*0x1D4*/ u16 unk1D4;
@@ -173,15 +178,22 @@ struct PinballGame
 	/*0x1E3*/ u8 filler1E3[0x2];
 	/*0x1E5*/ u8 unk1E5;
 	/*0x1E6*/ u8 unk1E6;
-	/*0x1E7*/ u8 filler1E7[0x9A];
+	/*0x1E7*/ u8 filler1E7[0x21];
+	/*0x208*/ u16 unk208;
+	/*0x20A*/ u8 unk20A;
+	/*0x20B*/ u8 filler20B[0x76];
 	/*0x281*/ s8 unk281;
 	/*0x282*/ s8 unk282;
 	/*0x283*/ u8 bonusLevelCount; //how many bonus levels have been completed
 	/*0x284*/ u8 filler284[0xC];
 	/*0x290*/ u32 unk290;
-	/*0x294*/ u8 filler294[0x8];
+	/*0x294*/ u8 filler294[0x4];
+	/*0x298*/ u16 unk298;
+	/*0x29A*/ u8 filler29A[0x2];
 	/*0x29C*/ u16 unk29C;
-	/*0x29E*/ u8 filler29E[0x4];
+	/*0x29E*/ u8 unk29E;
+	/*0x29F*/ u8 filler29F[0x1];
+	/*0x2A0*/ u8 filler2A0[0x2];
 	/*0x2A2*/ u8 unk2A2;
 	/*0x2A3*/ u8 filler2A3[0x51];
 	/*0x2F4*/ u8 unk2F4;
@@ -208,10 +220,12 @@ struct PinballGame
 	/*0x5F8*/ u16 unk5F8;
 	/*0x5FA*/ u8 unk5FA;
 	/*0x5FB*/ u8 unk5FB;
-	/*0x5FC*/ u16 unk5FC;
+	/*0x5FC*/ s16 unk5FC;
 	/*0x5FE*/ u16 unk5FE;
 	/*0x600*/ u16 unk600;
-	/*0x602*/ u8 filler602[0xC2];
+	/*0x602*/ u8 filler602[0x12];
+	/*0x614*/ u16 unk614;
+	/*0x616*/ u8 filler616[0xAE];
 	/*0x6C4*/ u8 unk6C4;
 	/*0x6C5*/ u8 filler6C5[0x63];
 	/*0x728*/ u8 unk728; // TODO: unknown type
@@ -275,7 +289,8 @@ struct Unk02031520
 {
 	/*0x00*/ u8 filler0[0x8];
 	/*0x08*/ s16 unk8;
-	/*0x0A*/ u8 fillerA[0x6];
+	/*0x0A*/ u8 fillerA[0x2];
+	/*0x0C*/ struct PinballGame *unkC;
 	/*0x10*/ struct Unk02031520_unk10 *unk10;
 	/*0x14*/ u8 filler14[0x18];
 	/*0x2C*/ u8 *unk2C;
