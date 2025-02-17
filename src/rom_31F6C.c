@@ -548,7 +548,6 @@ void sub_329F4(void)
 
 void sub_32B74(void)
 {
-    s16 i;
     if(gCurrentPinballGame->unk72F > 1)
     {
         sub_19B64(4);
