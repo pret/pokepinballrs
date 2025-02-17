@@ -8,6 +8,7 @@
 #include "functions.h"
 #include "variables.h"
 #include "constants/global.h"
+#include "constants/ereader.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -66,6 +67,12 @@
 #define TEST_BUTTON_EXACT(field, button) (((field) & (button)) == (button))
 #define JOY_NEW(button) TEST_BUTTON(gMain.newKeys,  button)
 #define JOY_HELD(button)  TEST_BUTTON(gMain.heldKeys, button)
+
+struct BgOffsets
+{
+    u16 xOffset;
+    u16 yOffset;
+};
 
 struct UnkPinballGame1334
 {
@@ -202,13 +209,42 @@ struct PinballGame
 	/*0x731*/ u8 filler731[0xB];
 	/*0x73C*/ u8 unk73C; // TODO: unknown type
 	/*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
-	/*0x73E*/ u8 filler73E[0x80E];
+	/*0x73E*/ u8 filler73E[0xE];
+	/*0x74C*/ volatile u8 unk74C[2][OBJ_PLTT_SIZE];
+	/*0xB4C*/ volatile u8 unkB4C[2][BG_PLTT_SIZE];
 	/*0xF4C*/ struct SongHeader *unkF4C;
-	/*0xF50*/ u8 fillerF50[0x1B0];
+	/*0xF50*/ u8 fillerF50[0x8];
+	/*0xF58*/ struct BgOffsets unkF58;
+	/*0xF5C*/ struct BgOffsets unkF5C;
+	/*0xF60*/ struct BgOffsets unkF60;
+	/*0xF64*/ struct BgOffsets unkF64;
+	/*0xF68*/ u16 unkF68[2][100];
+	/*0x10F8*/u8 unk10F8[NUM_EREADER_CARDS];
+	/*0x10FD*/u8 unk10FD;
+	/*0x10FE*/u8 unk10FE;
+	/*0x10FF*/u8 unk10FF;
 	/*0x1100*/u8 unk1100;
-	/*0x1101*/u8 filler1101[0x19];
+	/*0x1101*/u8 unk1101;
+	/*0x1102*/u8 unk1102;
+	/*0x1103*/u8 unk1103;
+	/*0x1104*/u8 filler1104[0x2];
+	/*0x1106*/u16 unk1106;
+	/*0x1108*/u16 unk1108;
+	/*0x110A*/u16 unk110A;
+	/*0x110C*/u16 unk110C;
+	/*0x110E*/u16 unk110E;
+	/*0x1110*/volatile u16 unk1110;
+	/*0x1112*/volatile u16 unk1112;
+	/*0x1114*/volatile u16 unk1114;
+	/*0x1116*/u16 unk1116;
+	/*0x1118*/u16 unk1118;
 	/*0x111A*/u8 unk111A[OBJ_PLTT_SIZE];
-	/*0x131A*/u8 filler131A[0x12];
+	/*0x131A*/u8 filler131A[0x6];
+	/*0x1320*/s16 unk1320;
+	/*0x1322*/s16 unk1322;
+	/*0x1324*/s16 unk1324;
+	/*0x1326*/s16 unk1326;
+	/*0x1328*/u8 filler1328[0x4];
 	/*0x132C*/struct UnkPinballGame1334 *unk132c;
 	/*0x1330*/struct UnkPinballGame1334 *unk1330;
 	/*0x1334*/struct UnkPinballGame1334 unk1334[2];

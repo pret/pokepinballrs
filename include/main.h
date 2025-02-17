@@ -47,12 +47,6 @@ struct MainUnk44
     u8 filler38[0x40];
 }; /* size=0x78 */
 
-struct BgOffsets
-{
-    u16 xOffset;
-    u16 yOffset;
-};
-
 struct Main
 {
     /*0x00*/ u8 filler0[0x2];

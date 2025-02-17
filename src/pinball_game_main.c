@@ -33,7 +33,7 @@ void sub_4A518(void);
 void sub_4A90C(void);
 void sub_4B280(void);
 void sub_4B334(void);
-void sub_4B408(u16);
+void sub_4B408(s16);
 void sub_4B654(void);
 void sub_4B678(u16);
 
@@ -904,4 +904,52 @@ void sub_4B334(void)
 
     if (gCurrentPinballGame->unk4[1])
         gMain.newKeys = A_BUTTON;
+}
+
+void sub_4B408(s16 arg0)
+{
+    s16 i;
+    u16 *var0;
+
+    if (gMPlayInfo_BGM.status >= 0)
+    {
+        gCurrentPinballGame->unkF4C = gMPlayInfo_BGM.songHeader;
+        m4aMPlayStop(&gMPlayInfo_BGM);
+    }
+    else
+    {
+        gCurrentPinballGame->unkF4C = NULL;
+    }
+
+    for (i = 0; i < 100; i++)
+        gCurrentPinballGame->unkF68[gMain.unk6][i] = gMain.spriteGroups[i].available;
+
+    DmaCopy16(3, (void *)OBJ_PLTT, gCurrentPinballGame->unk74C[gMain.unk6], OBJ_PLTT_SIZE);
+    DmaCopy16(3, (void *)BG_PLTT, gCurrentPinballGame->unkB4C[gMain.unk6], BG_PLTT_SIZE);
+    if (!arg0)
+        return;
+
+    gCurrentPinballGame->unkF58 = gMain.bgOffsets[0];
+    gCurrentPinballGame->unkF5C = gMain.bgOffsets[1];
+    gCurrentPinballGame->unkF60 = gMain.bgOffsets[2];
+    gCurrentPinballGame->unkF64 = gMain.bgOffsets[3];
+    gCurrentPinballGame->unk10FD = gMain.selectedField;
+    gCurrentPinballGame->unk10FE = gMain.unk5;
+    gCurrentPinballGame->unk10FF = gMain.unk6;
+    gCurrentPinballGame->unk1101 = gMain.unkF;
+    gCurrentPinballGame->unk1102 = gMain.unk10;
+    gCurrentPinballGame->unk1103 = gMain.unk11;
+    gCurrentPinballGame->unk1320 = gMain.unk12;
+    gCurrentPinballGame->unk1322 = gMain.unk14;
+    gCurrentPinballGame->unk1324 = gMain.unk28;
+    gCurrentPinballGame->unk1326 = gMain.unk2A;
+    gCurrentPinballGame->unk1110 = gCurrentPinballGame->unk1106;
+    gCurrentPinballGame->unk1112 = gCurrentPinballGame->unk1108;
+    gCurrentPinballGame->unk1114 = gCurrentPinballGame->unk110A;
+    gCurrentPinballGame->unk1116 = gCurrentPinballGame->unk110C;
+    gCurrentPinballGame->unk1118 = gCurrentPinballGame->unk110E;
+    gCurrentPinballGame->unk31 = gMain_saveData.ballSpeed;
+
+    for (i = 0; i < NUM_EREADER_CARDS; i++)
+        gCurrentPinballGame->unk10F8[i] = gMain.eReaderBonus[i];
 }
