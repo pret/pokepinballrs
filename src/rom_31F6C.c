@@ -7,7 +7,7 @@
 #include "main.h"
 
 extern const u16 gWildMonLocations[][2][8];
-extern const u16 gUnknown_086A4A38[2][26];
+extern const u16 gEggLocations[2][26];
 
 static inline u32 GetTimeAdjustedRandom()
 {
@@ -221,9 +221,9 @@ void sub_32484(void)
 
     gCurrentPinballGame->unk12E = 0;
 
-    for (i = 0; i < 0x19; i++)
+    for (i = 0; i < 25; i++)
     {
-        currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
+        currentSpecies = gEggLocations[gMain.selectedField][i];
 
         if (currentSpecies == SPECIES_ODDISH)
         {
@@ -251,7 +251,7 @@ void sub_32484(void)
                 }
             }
 
-            currentSpecies = gUnknown_086A4A38[gMain.selectedField][i];
+            currentSpecies = gEggLocations[gMain.selectedField][i];
             if (gCurrentPinballGame->caughtMonCount == 0)
             {
                 if (gSpeciesInfo[currentSpecies].evolutionTarget >= SPECIES_NONE)
@@ -296,7 +296,7 @@ void sub_325E0(void)
 
         for (i = 0; i < 25 && gCurrentPinballGame->unk130[i] <= rand; i++);
 
-        gCurrentPinballGame->unk598 = gUnknown_086A4A38[gMain.selectedField][i];
+        gCurrentPinballGame->unk598 = gEggLocations[gMain.selectedField][i];
     }
 
     gCurrentPinballGame->unk59E = gCurrentPinballGame->unk598;
