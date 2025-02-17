@@ -113,7 +113,7 @@ struct PinballGame
 	/*0x028*/ u16 unk28;
 	/*0x02A*/ u8 filler2A[0x6];
 	/*0x030*/ u8 numLives;
-	/*0x031*/ u8 unk31;
+	/*0x031*/ u8 ballSpeed;
 	/*0x032*/ u8 filler32[0x3];
 	/*0x035*/ s8 area;
 	/*0x036*/ u8 filler36[0x2];
@@ -214,13 +214,13 @@ struct PinballGame
 	/*0xB4C*/ volatile u8 unkB4C[2][BG_PLTT_SIZE];
 	/*0xF4C*/ struct SongHeader *unkF4C;
 	/*0xF50*/ u8 fillerF50[0x8];
-	/*0xF58*/ struct BgOffsets unkF58;
-	/*0xF5C*/ struct BgOffsets unkF5C;
-	/*0xF60*/ struct BgOffsets unkF60;
-	/*0xF64*/ struct BgOffsets unkF64;
+	/*0xF58*/ struct BgOffsets bgOffsets0;
+	/*0xF5C*/ struct BgOffsets bgOffsets1;
+	/*0xF60*/ struct BgOffsets bgOffsets2;
+	/*0xF64*/ struct BgOffsets bgOffsets3;
 	/*0xF68*/ u16 unkF68[2][100];
-	/*0x10F8*/u8 unk10F8[NUM_EREADER_CARDS];
-	/*0x10FD*/u8 unk10FD;
+	/*0x10F8*/u8 eReaderBonuses[NUM_EREADER_CARDS];
+	/*0x10FD*/u8 field;
 	/*0x10FE*/u8 unk10FE;
 	/*0x10FF*/u8 unk10FF;
 	/*0x1100*/u8 unk1100;

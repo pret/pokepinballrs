@@ -44,7 +44,7 @@ void sub_31F6C(void)
             case SPECIES_KECLEON:
             case SPECIES_ABSOL:
             case SPECIES_WOBBUFFET:
-                if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
+                if (gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD])
                 {
                     if (gMain_saveData.pokedexFlags[currentSpecies] < 2)
                         weight = 2;
@@ -116,9 +116,9 @@ void sub_3219C(void)
     u32 rand;
     u16 specialMons[6];
 
-    if (gMain.eReaderBonus[EREADER_SPECIAL_GUESTS_CARD])
+    if (gMain.eReaderBonuses[EREADER_SPECIAL_GUESTS_CARD])
     {
-        gMain.eReaderBonus[EREADER_SPECIAL_GUESTS_CARD] = 0;
+        gMain.eReaderBonuses[EREADER_SPECIAL_GUESTS_CARD] = 0;
         rand = GetTimeAdjustedRandom();
         rand %= NUM_BONUS_SPECIES;
         for (i = 0; i < NUM_BONUS_SPECIES; i++)
@@ -132,7 +132,7 @@ void sub_3219C(void)
     else
     {
         rand = GetTimeAdjustedRandom();
-        if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
+        if (gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD])
             rand %= 50;
         else
             rand %= 100;
@@ -277,7 +277,7 @@ void sub_325E0(void)
     u32 rand;
 
     rand = GetTimeAdjustedRandom();
-    if (gMain.eReaderBonus[EREADER_ENCOUNTER_RATE_UP_CARD])
+    if (gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD])
         rand %= 100;
     else
         rand %= 50;

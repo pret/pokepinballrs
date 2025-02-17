@@ -55,7 +55,7 @@ struct Main
     /*0x04*/ u8 selectedField;
     /*0x05*/ u8 unk5;
     /*0x06*/ u8 unk6;
-    /*0x07*/ s8 eReaderBonus[NUM_EREADER_CARDS];
+    /*0x07*/ s8 eReaderBonuses[NUM_EREADER_CARDS];
     /*0x0C*/ u8 unkC;
     /*0x0D*/ u8 unkD;
     /*0x0E*/ u8 unkE;

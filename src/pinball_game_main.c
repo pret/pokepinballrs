@@ -77,7 +77,7 @@ void sub_49ED4(void)
         sub_4A518();
         sub_467F4();
         DmaCopy16(3, gUnknown_02031520.unk2C, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
-        if (gMain.eReaderBonus[EREADER_DX_MODE_CARD])
+        if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
 
         sub_4A90C();
@@ -109,7 +109,7 @@ void sub_49ED4(void)
         sub_4A518();
         sub_467F4();
         DmaCopy16(3, gUnknown_02031520.unk2C, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
-        if (gMain.eReaderBonus[EREADER_DX_MODE_CARD])
+        if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
 
         sub_4A90C();
@@ -280,7 +280,7 @@ void sub_4A518(void)
     if (gMain.unk5 == gMain.selectedField)
     {
         DmaFill16(3, 0, gCurrentPinballGame, sizeof(struct PinballGame));
-        if (gMain.eReaderBonus[EREADER_DX_MODE_CARD])
+        if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
         {
             gCurrentPinballGame->unk1C6 = 168;
             gCurrentPinballGame->unk1C8 = 168;
@@ -309,7 +309,7 @@ void sub_4A518(void)
     }
 
     if (gMain.mainState != STATE_GAME_IDLE)
-        gCurrentPinballGame->unk31 = gMain_saveData.ballSpeed;
+        gCurrentPinballGame->ballSpeed = gMain_saveData.ballSpeed;
 
     gCurrentPinballGame->unk38 = 40000;
     gCurrentPinballGame->unk1D = 0;
@@ -825,7 +825,7 @@ void sub_4B20C(void)
             SetMainGameState(STATE_BONUS_FIELD_SELECT);
             return;
         }
-        else if (gMain.eReaderBonus[EREADER_DX_MODE_CARD] || gMain.eReaderBonus[EREADER_RUIN_AREA_CARD])
+        else if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD] || gMain.eReaderBonuses[EREADER_RUIN_AREA_CARD])
         {
             SetMainGameState(STATE_INTRO);
             return;
@@ -929,11 +929,11 @@ void sub_4B408(s16 arg0)
     if (!arg0)
         return;
 
-    gCurrentPinballGame->unkF58 = gMain.bgOffsets[0];
-    gCurrentPinballGame->unkF5C = gMain.bgOffsets[1];
-    gCurrentPinballGame->unkF60 = gMain.bgOffsets[2];
-    gCurrentPinballGame->unkF64 = gMain.bgOffsets[3];
-    gCurrentPinballGame->unk10FD = gMain.selectedField;
+    gCurrentPinballGame->bgOffsets0 = gMain.bgOffsets[0];
+    gCurrentPinballGame->bgOffsets1 = gMain.bgOffsets[1];
+    gCurrentPinballGame->bgOffsets2 = gMain.bgOffsets[2];
+    gCurrentPinballGame->bgOffsets3 = gMain.bgOffsets[3];
+    gCurrentPinballGame->field = gMain.selectedField;
     gCurrentPinballGame->unk10FE = gMain.unk5;
     gCurrentPinballGame->unk10FF = gMain.unk6;
     gCurrentPinballGame->unk1101 = gMain.unkF;
@@ -948,8 +948,8 @@ void sub_4B408(s16 arg0)
     gCurrentPinballGame->unk1114 = gCurrentPinballGame->unk110A;
     gCurrentPinballGame->unk1116 = gCurrentPinballGame->unk110C;
     gCurrentPinballGame->unk1118 = gCurrentPinballGame->unk110E;
-    gCurrentPinballGame->unk31 = gMain_saveData.ballSpeed;
+    gCurrentPinballGame->ballSpeed = gMain_saveData.ballSpeed;
 
     for (i = 0; i < NUM_EREADER_CARDS; i++)
-        gCurrentPinballGame->unk10F8[i] = gMain.eReaderBonus[i];
+        gCurrentPinballGame->eReaderBonuses[i] = gMain.eReaderBonuses[i];
 }
