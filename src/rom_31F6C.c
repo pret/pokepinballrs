@@ -2,6 +2,7 @@
 #include "constants/ereader.h"
 #include "constants/fields.h"
 #include "constants/species.h"
+#include "constants/bg_music.h"
 #include "functions.h"
 #include "m4a.h"
 #include "main.h"
@@ -481,4 +482,66 @@ void sub_329B0(void)
     gMain.blendControl = 0xCE;
     gMain.blendBrightness = 0;
     gCurrentPinballGame->unk5F7 = 1;
+}
+
+void sub_329F4(void)
+{
+    s16 i;
+
+    if (gCurrentPinballGame->unk28 > 0x18)
+    {
+        gCurrentPinballGame->unk132c->unk0 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk28--;
+        gCurrentPinballGame->unk132c->unk30 = 0;
+        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk10 = 58;
+        gCurrentPinballGame->unk132c->unk12 = 178;
+        gCurrentPinballGame->unk132c->unk28 = gCurrentPinballGame->unk132c->unk10 * 2;
+        gCurrentPinballGame->unk132c->unk2A = gCurrentPinballGame->unk132c->unk12 * 2;
+        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 * 256;
+        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 * 256;
+        
+        if (gCurrentPinballGame->unk28 <= 0x31)
+        {
+            gCurrentPinballGame->unk28++;
+        }
+
+        sub_1B140(gCurrentPinballGame->unk1A5);
+
+        if(gCurrentPinballGame->unk1A5)
+        {
+            for (i = 0; i < 2; i++)
+            {
+                gCurrentPinballGame->unk36C[i] = 10;
+                gCurrentPinballGame->unk36E[i] = 0;
+                gCurrentPinballGame->unk36A[i] = 4;
+            }
+        }
+    }
+    else if (gCurrentPinballGame->unk28 > 0)
+    {
+        gCurrentPinballGame->unk28--;
+    }
+    else
+    {
+        gCurrentPinballGame->unk132c->unk0 = 0;
+        gCurrentPinballGame->unk1F = 0;
+        gCurrentPinballGame->unk26 = 0x3C;
+        gCurrentPinballGame->unk132c->unk30 = 0x60;
+        gCurrentPinballGame->unk132c->unk32 = 0xC0;
+        gCurrentPinballGame->unk132c->unk10 = 0x3C;
+        gCurrentPinballGame->unk132c->unk12 = 0xB4;
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->unk5F7 = 0;
+        gCurrentPinballGame->unk132c->unk28 = gCurrentPinballGame->unk132c->unk10 * 2;
+        gCurrentPinballGame->unk132c->unk2A = gCurrentPinballGame->unk132c->unk12 * 2;
+        gCurrentPinballGame->unk25 = 0;
+
+        m4aSongNumStart(SE_UNKNOWN_0xC3);
+        
+        if (gCurrentPinballGame->unk72E > 2 && gCurrentPinballGame->unk281 > 0) {
+            sub_19B64(6);
+        }
+    }
 }
