@@ -24,6 +24,47 @@ extern const VoidFunc gUnknown_086B085C[];
 extern const struct MainUnk44 gUnknown_086B02CC[];
 extern const struct MainUnk44 gUnknown_086B03BC[];
 
+extern const u8 gUnknown_08158284[];
+extern const u8 gUnknown_08395A4C[];
+extern const u8 gUnknown_08397E6C[];
+extern const u8 gUnknown_083A704C[];
+extern const u8 gUnknown_0848FD8C[];
+extern const u8 *const gUnknown_086ACEF8[];
+extern const u8 gUnknown_081428D4[];
+extern const u8 gUnknown_081BCAA4[];
+extern const u8 gUnknown_081BE2C4[];
+extern const u8 gUnknown_081BE4C4[];
+extern const u8 gUnknown_081BFCE4[];
+extern const u8 gUnknown_0839C78C[];
+extern const u8 gUnknown_0839DDAC[];
+extern const u8 gUnknown_083A07CC[];
+extern const u8 gUnknown_083A29EC[];
+extern const u8 gUnknown_083A340C[];
+extern const u8 gUnknown_083A562C[];
+extern const u8 gUnknown_083FF04C[][0x40];
+extern const u8 gUnknown_083FFD4C[0x40];
+extern const u8 gUnknown_08480E0C[][0x40];
+extern const u8 gUnknown_084F61EC[];
+extern const u8 gUnknown_084FA20C[];
+extern const u8 gUnknown_0850100C[];
+extern const u8 gUnknown_0850398C[];
+extern const u8 gUnknown_08526DCC[];
+extern const s16 gUnknown_086ACFE0[];
+extern const u16 gUnknown_086AD2DE[];
+extern const u8 *gUnknown_086AD474[];
+
+struct Unk86AD000
+{
+    u8 filler0[0x6];
+    u16 unk6;
+};
+
+extern const struct Unk86AD000 gUnknown_086AD000[];
+
+extern const StateFunc gPinballGameStateFuncs[];
+extern const u8 gUnknown_08137E14[][0x20];
+extern const u8 gUnknown_084C0C6C[];
+
 void sub_1D4D0(void);
 void sub_356A0(void);
 void sub_3ADA0(void);
@@ -40,10 +81,16 @@ void sub_4B408(s16);
 void sub_4B654(void);
 void sub_4B678(u16);
 void sub_4BC34(void);
-
-extern const StateFunc gPinballGameStateFuncs[];
-extern const u8 gUnknown_08137E14[][0x20];
-extern const u8 gUnknown_084C0C6C[];
+void sub_4C290(void);
+void sub_4C808(void);
+void sub_4CA18(void);
+void nullsub_18(void);
+void sub_4CAE8(void);
+void sub_4CB0C(void);
+void sub_4CB30(void);
+void sub_4CBB4(void);
+void sub_4CC58(void);
+void sub_4CD60(void);
 
 
 void PinballGameMain(void)
@@ -1126,5 +1173,179 @@ void sub_4B678(u16 arg0)
     {
         gCurrentPinballGame->unk0 = 0;
         WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(gCurrentPinballGame->unk0));
+    }
+}
+
+void sub_4BC34(void)
+{
+    s16 i;
+    struct PokemonSpecies *species;
+    const struct Unk86AD000 *var1;
+    s16 var2, var3;
+
+    switch (gMain.selectedField)
+    {
+    case FIELD_RUBY:
+        sub_4C290();
+        sub_4C808();
+        break;
+    case FIELD_SAPPHIRE:
+        sub_4C290();
+        sub_4CA18();
+        break;
+    case FIELD_2:
+        nullsub_18();
+        sub_4CAE8();
+        break;
+    case FIELD_3:
+        nullsub_18();
+        sub_4CB0C();
+        break;
+    case FIELD_4:
+        nullsub_18();
+        sub_4CB30();
+        break;
+    case FIELD_5:
+        nullsub_18();
+        sub_4CBB4();
+        break;
+    case FIELD_6:
+        nullsub_18();
+        sub_4CC58();
+        break;
+    case FIELD_7:
+        nullsub_18();
+        sub_4CD60();
+        break;
+    }
+
+    switch (gCurrentPinballGame->unkE4 - 1)
+    {
+    case 0:
+        if (gCurrentPinballGame->unk1E2 == 2 && gCurrentPinballGame->unk1C2 == 2)
+        {
+            DmaCopy16(3, gUnknown_08395A4C, (void *)0x6015800, 0x2400);
+        }
+        else
+        {
+            DmaCopy16(3, gUnknown_08397E6C, (void *)0x6015800, 0x2400);
+        }
+        break;
+    case 1:
+        DmaCopy16(3, gUnknown_083A704C, (void *)0x6015800, 0x1000);
+        break;
+    case 2:
+        DmaCopy16(3, gUnknown_0848FD8C, (void *)0x6015800, 0xCA0);
+        break;
+    case 3:
+        DmaCopy16(3, gUnknown_086ACEF8[gCurrentPinballGame->unkF2], (void *)0x6015800, 0x25E0);
+        break;
+    case 4:
+        DmaCopy16(3, gUnknown_083A07CC, (void *)0x6015800, 0x2000);
+        break;
+    case 5:
+        DmaCopy16(3, gUnknown_083A29EC, (void *)0x6015800, 0x800);
+        break;
+    case 6:
+        DmaCopy16(3, gUnknown_083A340C, (void *)0x6015800, 0x2000);
+        break;
+    case 7:
+        DmaCopy16(3, gUnknown_083A562C, (void *)0x6015800, 0x1800);
+        break;
+    case 8:
+        DmaCopy16(3, gUnknown_081428D4, (void *)0x6015800, 0x1C00);
+        break;
+    case 9:
+        DmaCopy16(3, gUnknown_0839C78C, (void *)0x6015800, 0x1400);
+        break;
+    case 10:
+        DmaCopy16(3, gUnknown_0839DDAC, (void *)0x6015800, 0x2800);
+        break;
+    case 11:
+        DmaCopy16(3, gUnknown_084FA20C, (void *)0x6015800, 0x280);
+        break;
+    case 13:
+        for (i = 0; i < 10; i++)
+        {
+            if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
+            {
+                DmaCopy16(3, gUnknown_083FFD4C, (void *)0x6015800 + i * 0x40, 0x40);
+            }
+            else
+            {
+                int var0 = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
+                DmaCopy16(3, gUnknown_083FF04C[var0], (void *)0x6015800 + i * 0x40, 0x40);
+            }
+        }
+        DmaCopy16(3, gUnknown_084F61EC, (void *)0x6015C00, 0x940);
+        break;
+    case 12:
+        for (i = 0; i < 10; i++)
+        {
+            if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
+            {
+                DmaCopy16(3, gUnknown_083FFD4C, (void *)0x6015800 + i * 0x40, 0x40);
+            }
+            else
+            {
+                int var0 = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
+                DmaCopy16(3, gUnknown_083FF04C[var0], (void *)0x6015800 + i * 0x40, 0x40);
+            }
+        }
+
+        for (i = 0; i < 10; i++)
+        {
+            if (gUnknown_086ACFE0[i] == ' ')
+            {
+                DmaCopy16(3, gUnknown_083FFD4C, (void *)0x6015800 + (i + 10) * 0x40, 0x40);
+            }
+            else
+            {
+                int var0 = gUnknown_086ACFE0[i] - 'A';
+                DmaCopy16(3, gUnknown_083FF04C[var0], (void *)0x6015800 + (i + 10) * 0x40, 0x40);
+            }
+        }
+        break;
+    case 14:
+        DmaCopy16(3, gUnknown_086AD474[gCurrentPinballGame->unk25F], (void *)0x6015800, 0x1C00);
+        break;
+    case 15:
+        DmaCopy16(3, gUnknown_08158284, (void *)0x6015800, 0x2400);
+        break;
+    case 16:
+        DmaCopy16(3, gUnknown_083A562C, (void *)0x6015800, 0x1800);
+        break;
+    case 17:
+        DmaCopy16(3, gUnknown_084F61EC, (void *)0x6015C00, 0x940);
+        if (gCurrentPinballGame->unk1A5 == 0)
+        {
+            var1 = &gUnknown_086AD000[gUnknown_086AD2DE[gCurrentPinballGame->unk1A6]];
+            var2 = var1->unk6 / 10;
+            DmaCopy16(3, gUnknown_08480E0C[var2], (void *)0x6015DA0, 0x40);
+            var3 = var1->unk6 % 10;
+            DmaCopy16(3, gUnknown_08480E0C[var3], (void *)0x6015E60, 0x40);
+        }
+        break;
+    case 18:
+        DmaCopy16(3, gUnknown_0850100C, (void *)0x6015800, 0x2400);
+        break;
+    case 19:
+        DmaCopy16(3, gUnknown_0850398C, (void *)0x6015800, 0x2800);
+        break;
+    case 20:
+        if (gMain.selectedField == FIELD_RUBY)
+        {
+            DmaCopy16(3, gUnknown_081BCAA4, (void *)0x6015800, 0x1800);
+            DmaCopy16(3, gUnknown_081BE2C4, (void *)OBJ_PLTT + 0x1C0, 0x20);
+        }
+        else
+        {
+            DmaCopy16(3, gUnknown_081BE4C4, (void *)0x6015800, 0x1800);
+            DmaCopy16(3, gUnknown_081BFCE4, (void *)OBJ_PLTT + 0x1C0, 0x20);
+        }
+        break;
+    case 21:
+        DmaCopy16(3, gUnknown_08526DCC, (void *)0x6015800, 0xC00);
+        break;
     }
 }
