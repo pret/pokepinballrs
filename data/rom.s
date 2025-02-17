@@ -2056,8 +2056,7 @@ gUnknown_086A2FA0:: @ 0x086A2FA0
 gSpeciesInfo:: @ 0x086A3700
 	.incbin "baserom.gba", 0x6A3700, 0x1338
 
-gUnknown_086A4A38:: @ 0x086A4A38
-	.incbin "baserom.gba", 0x6A4A38, 0x68
+.include "data/egg_locations.inc"
 
 gIntrTableTemplate:: @ 0x086A4AA0
 	.4byte SerialIntr
