@@ -140,9 +140,12 @@ struct PinballGame
 	/*0x06F*/ s8 unk6F;
 	/*0x070*/ u8 filler70[0x5C];
 	/*0x0CC*/ u16 unkCC;
-	/*0x0CE*/ u8 fillerCE[0x18];
+	/*0x0CE*/ u8 fillerCE[0x16];
+	/*0x0E4*/ u8 unkE4;
 	/*0x0E6*/ u16 unkE6;
-	/*0x0E8*/ u8 fillerE8[0x39];
+	/*0x0E8*/ u8 fillerE8[0xA];
+	/*0x0F2*/ s8 unkF2;
+	/*0x0F3*/ u8 fillerF3[0x2E];
 	/*0x121*/ s8 unk121;
 	/*0x122*/ u8 filler122[0x9];
 	/*0x12B*/ s8 forceSpecialMons;  // When on, force next catch mode species to be special mons
@@ -156,11 +159,13 @@ struct PinballGame
 	/*0x194*/ s8 unk194;
 	/*0x195*/ u8 filler195[0x10];
 	/*0x1A5*/ s8 unk1A5;
-	/*0x1A6*/ u8 filler1A6[0x14];
+	/*0x1A6*/ s8 unk1A6;
+	/*0x1A7*/ u8 filler1A7[0x13];
 	/*0x1BA*/ u16 unk1BA;
 	/*0x1BC*/ u8 filler1BC[0x4];
 	/*0x1C0*/ u16 unk1C0;
-	/*0x1C2*/ u8 filler1C2[0x4];
+	/*0x1C2*/ s8 unk1C2;
+	/*0x1C3*/ u8 filler1C3[0x3];
 	/*0x1C6*/ u16 unk1C6;
 	/*0x1C8*/ u16 unk1C8;
 	/*0x1CA*/ u16 unk1CA;
@@ -174,14 +179,16 @@ struct PinballGame
 	/*0x1DA*/ u16 unk1DA;
 	/*0x1DC*/ u16 unk1DC;
 	/*0x1DE*/ u8 filler1DE[0x4];
-	/*0x1E2*/ u8 unk1E2;
+	/*0x1E2*/ s8 unk1E2;
 	/*0x1E3*/ u8 filler1E3[0x2];
 	/*0x1E5*/ u8 unk1E5;
 	/*0x1E6*/ u8 unk1E6;
 	/*0x1E7*/ u8 filler1E7[0x21];
 	/*0x208*/ u16 unk208;
 	/*0x20A*/ u8 unk20A;
-	/*0x20B*/ u8 filler20B[0x76];
+	/*0x20B*/ u8 filler20B[0x54];
+	/*0x25F*/ s8 unk25F;
+	/*0x260*/ u8 filler260[0x21];
 	/*0x281*/ s8 unk281;
 	/*0x282*/ s8 unk282;
 	/*0x283*/ u8 bonusLevelCount; //how many bonus levels have been completed
