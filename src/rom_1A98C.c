@@ -11,7 +11,7 @@ void sub_1AF84(void);
 void sub_1AFD4(void);
 void sub_1C560(void);
 void sub_1C5AC(void);
-void sub_19B64(u8 a);
+void sub_19B64(u8);
 
 void sub_1A98C(void)
 {    
