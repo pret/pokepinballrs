@@ -15864,46 +15864,7 @@ _08019B04: .4byte 0x000001E5
 _08019B08: .4byte 0x0000029F
 _08019B0C: .4byte 0x000002EE
 
-	thumb_func_start sub_19B10
-sub_19B10: @ 0x08019B10
-	push {lr}
-	bl sub_19B90
-	bl sub_19E10
-	ldr r0, _08019B54 @ =gMain
-	ldrb r0, [r0, #0xf]
-	cmp r0, #0
-	bne _08019B26
-	bl sub_19F70
-_08019B26:
-	bl sub_19FA0
-	ldr r0, _08019B58 @ =gCurrentPinballGame
-	ldr r0, [r0]
-	movs r2, #0xa7
-	lsls r2, r2, #2
-	adds r1, r0, r2
-	ldrh r0, [r1]
-	cmp r0, #0
-	beq _08019B50
-	subs r0, #1
-	strh r0, [r1]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bne _08019B50
-	ldr r0, _08019B5C @ =gMPlayInfo_BGM
-	ldr r1, _08019B60 @ =0x0000FFFF
-	movs r2, #0x80
-	lsls r2, r2, #1
-	bl m4aMPlayVolumeControl
-_08019B50:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08019B54: .4byte gMain
-_08019B58: .4byte gCurrentPinballGame
-_08019B5C: .4byte gMPlayInfo_BGM
-_08019B60: .4byte 0x0000FFFF
-
-	.section .text19B90
+	.section .text19B10
 
 	thumb_func_start sub_19B90
 sub_19B90: @ 0x08019B90

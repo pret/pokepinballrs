@@ -1,6 +1,7 @@
 #include "global.h"
 #include "main.h"
 #include "m4a.h"
+#include "constants/bg_music.h"
 
 void sub_1AAA0(void);
 void sub_1AA38(void);
@@ -58,7 +59,8 @@ void sub_1A9E8(void)
     }
 }
 
-void sub_1AA38(void) {
+void sub_1AA38(void) 
+{
     if (gCurrentPinballGame->unk72F > 1)
     {
         sub_19B64(4);
@@ -69,7 +71,7 @@ void sub_1AA38(void) {
     gCurrentPinballGame->unk5FE = 0;
     gCurrentPinballGame->unk28 = 113;
     
-    m4aSongNumStart(206);
+    m4aSongNumStart(SE_UNKNOWN_0xCE);
     gCurrentPinballGame->unk3C = 0xC350;
 
     sub_11B0(8);
