@@ -563,3 +563,98 @@ void sub_32B74(void)
     m4aSongNumStart(SE_UNKNOWN_0xD5);
     sub_11B0(8);
 }
+
+void sub_32BE4(void)
+{
+    if(gCurrentPinballGame->unk28)
+    {
+        gCurrentPinballGame->unk5F7 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk28--;
+        gCurrentPinballGame->unk132c->unk30 = 0;
+        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        if(gCurrentPinballGame->unk28 > 0x61)
+        {
+            gCurrentPinballGame->unk5FA = 1;
+            gCurrentPinballGame->unk2F4 = 2;
+            gCurrentPinballGame->unk132c->unk10 = 0xb5;
+            gCurrentPinballGame->unk132c->unk12 = 0xc3;
+        }
+        else if(gCurrentPinballGame->unk28 > 0x5e)
+        {
+            gCurrentPinballGame->unk2F4 = 3;
+            gCurrentPinballGame->unk132c->unk10 = 0xb8;
+            gCurrentPinballGame->unk132c->unk12 = 0xbb;
+        }
+        else if(gCurrentPinballGame->unk28 > 0x5b)
+        {
+            gCurrentPinballGame->unk132c->unk0 = 1;
+            gCurrentPinballGame->unk2F4 = 4;
+        }
+        else if(gCurrentPinballGame->unk28 > 0x53)
+        {
+            gCurrentPinballGame->unk2F4 = 5;
+        }
+        else if(gCurrentPinballGame->unk28 > 0x22)
+        {
+            gCurrentPinballGame->unk2F4 = 6;
+
+        }
+        else if(gCurrentPinballGame->unk28 > 0x1a)
+        {
+            gCurrentPinballGame->unk2F4 = 7;
+
+        }
+        else if(gCurrentPinballGame->unk28 > 0x12)
+        {
+            gCurrentPinballGame->unk2F4 = 8;
+
+        }
+        else if(gCurrentPinballGame->unk28 > 0xa)
+        {
+            gCurrentPinballGame->unk2F4 = 9;
+            
+        }
+        else if(gCurrentPinballGame->unk28 > 0x4)
+        {
+            gCurrentPinballGame->unk132c->unk0 = 0;
+            gCurrentPinballGame->unk2F4 = 10;
+            gCurrentPinballGame->unk132c->unk10 = 0xb5;
+            gCurrentPinballGame->unk132c->unk12 = 0xc3;
+        }
+        else
+        {
+            gCurrentPinballGame->unk2F4 = 11;
+            gCurrentPinballGame->unk132c->unk10 = 0xb0;
+            gCurrentPinballGame->unk132c->unk12 = 0xca;
+        }
+
+        gCurrentPinballGame->unk132c->unk28 = gCurrentPinballGame->unk132c->unk10 * 2;
+        gCurrentPinballGame->unk132c->unk2A = gCurrentPinballGame->unk132c->unk12 * 2;
+        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 * 256;
+        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 * 256;
+    }
+    else
+    {
+        gCurrentPinballGame->unk2F4 = 0;
+        gCurrentPinballGame->unk1F = 0;
+        gCurrentPinballGame->unk26 = 0x3C;
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->unk132c->unk30 = 0xFF9A;
+        gCurrentPinballGame->unk132c->unk32 = 0xC8;
+        sub_11B0(7);
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->unk132c->unk10 = 0xAB;
+        gCurrentPinballGame->unk132c->unk12 = 0xD4;
+        gCurrentPinballGame->unk132c->unk28 = gCurrentPinballGame->unk132c->unk10 * 2;
+        gCurrentPinballGame->unk132c->unk2A = gCurrentPinballGame->unk132c->unk12 * 2;
+        gCurrentPinballGame->unk132c->unk2C = *(u32*)&gCurrentPinballGame->unk132c->unk28;
+        gCurrentPinballGame->unk25 = 0;
+        gCurrentPinballGame->unk5F7 = 0;
+        m4aSongNumStart(SE_UNKNOWN_0xD6);
+        gCurrentPinballGame->unk5FE = 0;
+        gCurrentPinballGame->unk5FB = 1;
+        gCurrentPinballGame->unk5FA = 0;
+    }
+}
