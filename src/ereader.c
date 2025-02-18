@@ -196,9 +196,9 @@ void sub_304C(void)
             if ((gEReaderCardIndex != -1) && (NUM_EREADER_CARDS > gEReaderCardIndex)) {
                 for(index = 0; index < NUM_EREADER_CARDS; index++)
                 {
-                    gMain.eReaderBonus[index] = 0;
+                    gMain.eReaderBonuses[index] = 0;
                 }
-                gMain.eReaderBonus[gEReaderCardIndex] = 1;
+                gMain.eReaderBonuses[gEReaderCardIndex] = 1;
                 gUnknown_0201A44C = 0;
                 gMain.subState = 5;
             }

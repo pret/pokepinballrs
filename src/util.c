@@ -138,7 +138,7 @@ void sub_0518(void)
 {
     s16 i;
 
-    DmaFill16(3, 0, gUnknown_03005C00, sizeof(gUnknown_03005C00));
+    DmaFill16(3, 0, gUnknown_03005C00, 0xC00);
     for (i = 0; i < 4; i++)
     {
         gMain.bgOffsets[i].xOffset = 0;
