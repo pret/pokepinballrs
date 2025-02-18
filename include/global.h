@@ -87,8 +87,8 @@ struct UnkPinballGame1334
 	/*0x1F*/ u8 unk1F;
 	/*0x20*/ u8 filler20[0x8];
 	/*0x28*/ u16 unk28;
-	/*0x20*/ s16 unk2A;
-	/*0x20*/ u8 filler2C[0x4];
+	/*0x2A*/ s16 unk2A;
+	/*0x2C*/ u32 unk2C;
 	/*0x30*/ u16 unk30;
 	/*0x32*/ u16 unk32;
 	/*0x34*/ u32 unk34;
