@@ -15864,46 +15864,7 @@ _08019B04: .4byte 0x000001E5
 _08019B08: .4byte 0x0000029F
 _08019B0C: .4byte 0x000002EE
 
-	thumb_func_start sub_19B10
-sub_19B10: @ 0x08019B10
-	push {lr}
-	bl sub_19B90
-	bl sub_19E10
-	ldr r0, _08019B54 @ =gMain
-	ldrb r0, [r0, #0xf]
-	cmp r0, #0
-	bne _08019B26
-	bl sub_19F70
-_08019B26:
-	bl sub_19FA0
-	ldr r0, _08019B58 @ =gCurrentPinballGame
-	ldr r0, [r0]
-	movs r2, #0xa7
-	lsls r2, r2, #2
-	adds r1, r0, r2
-	ldrh r0, [r1]
-	cmp r0, #0
-	beq _08019B50
-	subs r0, #1
-	strh r0, [r1]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bne _08019B50
-	ldr r0, _08019B5C @ =gMPlayInfo_BGM
-	ldr r1, _08019B60 @ =0x0000FFFF
-	movs r2, #0x80
-	lsls r2, r2, #1
-	bl m4aMPlayVolumeControl
-_08019B50:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08019B54: .4byte gMain
-_08019B58: .4byte gCurrentPinballGame
-_08019B5C: .4byte gMPlayInfo_BGM
-_08019B60: .4byte 0x0000FFFF
-
-	.section .text19B90
+	.section .text19B10
 
 	thumb_func_start sub_19B90
 sub_19B90: @ 0x08019B90
@@ -17520,55 +17481,7 @@ _0801A97A:
 	pop {r0}
 	bx r0
 
-	.section .text1AA38
-
-	thumb_func_start sub_1AA38
-sub_1AA38: @ 0x0801AA38
-	push {r4, lr}
-	ldr r4, _0801AA88 @ =gCurrentPinballGame
-	ldr r0, [r4]
-	ldr r1, _0801AA8C @ =0x0000072F
-	adds r0, r0, r1
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	ble _0801AA52
-	movs r0, #4
-	bl sub_19B64
-_0801AA52:
-	ldr r0, [r4]
-	ldr r2, _0801AA90 @ =0x000005FC
-	adds r1, r0, r2
-	movs r2, #0
-	movs r3, #0
-	strh r3, [r1]
-	ldr r1, _0801AA94 @ =0x000005FB
-	adds r0, r0, r1
-	strb r2, [r0]
-	ldr r1, [r4]
-	ldr r2, _0801AA98 @ =0x000005FE
-	adds r0, r1, r2
-	strh r3, [r0]
-	movs r0, #0x71
-	strh r0, [r1, #0x28]
-	movs r0, SE_UNKNOWN_0xCE
-	bl m4aSongNumStart
-	ldr r1, [r4]
-	ldr r0, _0801AA9C @ =0x0000C350
-	str r0, [r1, #0x3c]
-	movs r0, #8
-	bl sub_11B0
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801AA88: .4byte gCurrentPinballGame
-_0801AA8C: .4byte 0x0000072F
-_0801AA90: .4byte 0x000005FC
-_0801AA94: .4byte 0x000005FB
-_0801AA98: .4byte 0x000005FE
-_0801AA9C: .4byte 0x0000C350
+	.section .text1AAA0
 
 	thumb_func_start sub_1AAA0
 sub_1AAA0: @ 0x0801AAA0
