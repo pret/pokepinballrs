@@ -1,4 +1,5 @@
     .section .rodata
+#include "constants/fields.h"
 #include "constants/species.h"
 
 @ field select palettes 0xA8840
@@ -2185,8 +2186,13 @@ gUnknown_086A4CD8:: @ 0x086A4CD8
 	.2byte 0x58, 0x5C
 	.2byte 0x98, 0x5C
 
-gUnknown_086A4CF0:: @ 0x086A4CF0
-	.byte 2, 3, 7, 5, 4, 6
+gBonusFieldMenuSelectionToField:: @ 0x086A4CF0
+	.byte FIELD_DUSCLOPS
+	.byte FIELD_KECLEON
+	.byte FIELD_SPHEAL
+	.byte FIELD_GROUDON
+	.byte FIELD_KYOGRE
+	.byte FIELD_RAYQUAZA
 
 	.align 2, 0
 gUnknown_086A4CF8:: @ 0x086A4CF8
