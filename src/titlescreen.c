@@ -17,12 +17,18 @@ static void sub_11640(void);
 
 enum
 {
-    SUBSTATE_LOAD_GRAPHICS = 0,
-    SUBSTATE_WAIT_FOR_START_BUTTON = 1,
-    SUBSTATE_MENU_INPUT_NO_SAVED_GAME = 4,
-    SUBSTATE_MENU_INPUT_SAVED_GAME = 5,
-    SUBSTATE_ANIM_CLOSE_MENU = 6,
-    SUBSTATE_EXEC_MENU_SELECTION = 10
+    SUBSTATE_LOAD_GRAPHICS,
+    SUBSTATE_WAIT_FOR_START_BUTTON,
+    SUBSTATE_2,
+    SUBSTATE_3,
+    SUBSTATE_MENU_INPUT_NO_SAVED_GAME,
+    SUBSTATE_MENU_INPUT_SAVED_GAME,
+    SUBSTATE_ANIM_CLOSE_MENU,
+    SUBSTATE_7,
+    SUBSTATE_8,
+    SUBSTATE_9,
+    SUBSTATE_EXEC_MENU_SELECTION,
+    SUBSTATE_11,
 };
 
 void TitlescreenMain(void)
@@ -68,7 +74,7 @@ void LoadTitlescreenGraphics(void)
         gUnknown_202BE24 = 0;
         gTitlescreen.unk9 = 0;
         gTitlescreen.unkB = autoDisplayMenu;
-        gMain.subState = 3;
+        gMain.subState = SUBSTATE_3;
         sub_0CBC();
         sub_FD5C(NULL);
     }
@@ -142,7 +148,7 @@ void TitleScreen1_WaitForStartButton(void)
         {
             gUnknown_020028A4 = 1;
             gTitlescreen.unk6 = 9;
-            gMain.subState = 11;
+            gMain.subState = SUBSTATE_11;
         }
     }
     else
@@ -168,7 +174,7 @@ void TitleScreen1_WaitForStartButton(void)
             m4aSongNumStart(SE_UNKNOWN_0x65);
             gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 0;
-            gMain.subState = 2;
+            gMain.subState = SUBSTATE_2;
         }
 
         sub_114FC();
@@ -187,7 +193,7 @@ void TitleScreen1_WaitForStartButton(void)
             {
                 gTitlescreen.idleFramesCounter = 0;
                 gTitlescreen.unk6 = 7;
-                gMain.subState = 11;
+                gMain.subState = SUBSTATE_11;
             }
         }
     }
@@ -201,7 +207,7 @@ void TitleScreen2_8010CF0(void)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
-        gMain.subState = 11;
+        gMain.subState = SUBSTATE_11;
     }
 
     if (!gUnknown_020028A4)
@@ -217,7 +223,7 @@ void TitleScreen2_8010CF0(void)
                 gUnknown_202BE24 = 0;
                 gTitlescreen.unk9 = 0;
                 gTitlescreen.unkB = 1;
-                gMain.subState = 3;
+                gMain.subState = SUBSTATE_3;
             }
         }
     }
@@ -262,7 +268,7 @@ void TitleScreen3_8010E00(void)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
-        gMain.subState = 11;
+        gMain.subState = SUBSTATE_11;
     }
 
     if (!gUnknown_020028A4)
@@ -346,7 +352,7 @@ void TitleScreen4_MenuInputNoSavedGame(void)
             m4aSongNumStart(SE_UNKNOWN_0x65);
             gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 0;
-            gMain.subState = 7;
+            gMain.subState = SUBSTATE_7;
         }
         else if (JOY_NEW(B_BUTTON))
         {
@@ -370,7 +376,7 @@ void TitleScreen7_8011020(void)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
-        gMain.subState = 11;
+        gMain.subState = SUBSTATE_11;
     }
 
     if (!gUnknown_020028A4)
@@ -445,7 +451,7 @@ void TitleScreen5_MenuInputSavedGame(void)
             m4aSongNumStart(SE_UNKNOWN_0x65);
             gTitlescreen.animTimer = 0;
             gTitlescreen.unk2 = 0;
-            gMain.subState = 8;
+            gMain.subState = SUBSTATE_8;
         }
         else if (JOY_NEW(B_BUTTON))
         {
@@ -469,7 +475,7 @@ void TitleScreen8_8011228(void)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
-        gMain.subState = 11;
+        gMain.subState = SUBSTATE_11;
     }
 
     if (!gUnknown_020028A4)
@@ -516,7 +522,7 @@ void TitleScreen6_AnimCloseMenu(void)
     {
         gUnknown_020028A4 = 1;
         gTitlescreen.unk6 = 9;
-        gMain.subState = 11;
+        gMain.subState = SUBSTATE_11;
     }
 
     if (!gUnknown_020028A4)
@@ -576,7 +582,7 @@ void TitleScreen10_ExecMenuSelection(void)
     m4aMPlayAllStop();
     sub_0D10();
 
-    if (gUnknown_086A964C[gTitlescreen.unk6] == 8)
+    if (gUnknown_086A964C[gTitlescreen.unk6] == STATE_SCORES_MAIN)
         gUnknown_0202C588 = 0;
     else
         gUnknown_0202C588 = 1;
@@ -609,7 +615,7 @@ static void sub_114FC(void)
                 gEraseSaveDataAccessCounter = 0;
                 m4aSongNumStart(SE_UNKNOWN_0x68);
                 gTitlescreen.unk11 = 1;
-                gMain.subState = 9;
+                gMain.subState = SUBSTATE_9;
             }
         }
     }
@@ -639,7 +645,7 @@ static void sub_1157C(void)
             m4aSongNumStart(SE_UNKNOWN_0x65);
             gTitlescreen.unk6 = 5;
             if (gMain.subState == SUBSTATE_WAIT_FOR_START_BUTTON)
-                gMain.subState = 11;
+                gMain.subState = SUBSTATE_11;
             else
                 gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
         }

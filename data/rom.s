@@ -771,18 +771,18 @@ gUnknown_08079870:: @ 0x08079870
 	.incbin "baserom.gba", 0x79870, 0x20
 
 gTitlescreenStateFuncs:: @ 0x08079890
-	.4byte LoadTitlescreenGraphics
-	.4byte TitleScreen1_WaitForStartButton
-	.4byte TitleScreen2_8010CF0
-	.4byte TitleScreen3_8010E00
-	.4byte TitleScreen4_MenuInputNoSavedGame
-	.4byte TitleScreen5_MenuInputSavedGame
-	.4byte TitleScreen6_AnimCloseMenu
-	.4byte TitleScreen7_8011020
-	.4byte TitleScreen8_8011228
-	.4byte TitleScreen9_8010D84
-	.4byte TitleScreen10_ExecMenuSelection
-	.4byte TitleScreen11_80114B4
+	.4byte LoadTitlescreenGraphics           @ SUBSTATE_LOAD_GRAPHICS
+	.4byte TitleScreen1_WaitForStartButton   @ SUBSTATE_WAIT_FOR_START_BUTTON
+	.4byte TitleScreen2_8010CF0              @ SUBSTATE_2
+	.4byte TitleScreen3_8010E00              @ SUBSTATE_3
+	.4byte TitleScreen4_MenuInputNoSavedGame @ SUBSTATE_MENU_INPUT_NO_SAVED_GAME
+	.4byte TitleScreen5_MenuInputSavedGame   @ SUBSTATE_MENU_INPUT_SAVED_GAME
+	.4byte TitleScreen6_AnimCloseMenu        @ SUBSTATE_ANIM_CLOSE_MENU
+	.4byte TitleScreen7_8011020              @ SUBSTATE_7
+	.4byte TitleScreen8_8011228              @ SUBSTATE_8
+	.4byte TitleScreen9_8010D84              @ SUBSTATE_9
+	.4byte TitleScreen10_ExecMenuSelection   @ SUBSTATE_EXEC_MENU_SELECTION
+	.4byte TitleScreen11_80114B4             @ SUBSTATE_11
 
 gUnknown_080798C0:: @ 0x080798C0
 	.incbin "baserom.gba", 0x798C0, 0x800

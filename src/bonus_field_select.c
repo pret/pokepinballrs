@@ -12,7 +12,7 @@ EWRAM_DATA s8 gUnknown_0201A4F8 = 0;
 EWRAM_DATA s16 gUnknown_0202A560 = 0;
 EWRAM_DATA s16 gUnknown_0202BE1C = 0;
 EWRAM_DATA s8 gUnknown_0202BED0 = 0;
-EWRAM_DATA s8 gUnknown_0202BEE4 = 0;
+EWRAM_DATA s8 gUnknown_0202BEE4 = STATE_INTRO;
 EWRAM_DATA u8 gUnknown_0202BEE8 = 0;
 
 extern void (*const gBonusFieldSelectStateFuncs[])(void);
@@ -76,7 +76,7 @@ void sub_2710(void)
     gUnknown_0202BEE8 = 0;
     gUnknown_0201A4F4 = 0;
     gUnknown_0201A4B0 = 0;
-    gUnknown_0202BEE4 = 0;
+    gUnknown_0202BEE4 = STATE_INTRO;
     gUnknown_0201A4C0 = gMain_saveData.ballSpeed;
 }
 
@@ -128,7 +128,7 @@ void sub_2768(void)
         if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
-            gUnknown_0202BEE4 = 1;
+            gUnknown_0202BEE4 = STATE_TITLE;
             gMain.subState++;
         }
         break;
@@ -172,7 +172,7 @@ void sub_2768(void)
                 gMain.unkD = 0;
                 gMain.unk5 = gMain.selectedField = gUnknown_086A4CF0[gUnknown_0201A4F8];
                 gMain.unk6 = 1;
-                gUnknown_0202BEE4 = 2;
+                gUnknown_0202BEE4 = STATE_GAME_MAIN;
                 gMain.subState++;
             }
         }
