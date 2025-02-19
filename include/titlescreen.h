@@ -9,15 +9,15 @@ struct TitlescreenStruct
     /*0x06*/ s8 unk6;
     /*0x07*/ u8 unk7;
     /*0x08*/ s8 unk8;
-    /*0x09*/ s8 unk9;
-    /*0x0A*/ s8 unkA;
+    /*0x09*/ s8 pressStartAndFlippersVisible;
+    /*0x0A*/ s8 unkA; // Menu options sprite ID?
     /*0x0B*/ s8 unkB;
     /*0x0C*/ s8 unkC;
     /*0x0D*/ s8 unkD;
     /*0x0E*/ s8 unkE;
     /*0x0F*/ s8 unkF;
-    /*0x10*/ s8 unk10;
-    /*0x11*/ s8 unk11;
+    /*0x10*/ s8 unk10; // Delete save window sprite ID?
+    /*0x11*/ s8 deleteSaveWindowVisible;
     /*0x12*/ s16 idleFadeoutCounter;
     /*0x14*/ s16 idleFramesCounter;
 };
