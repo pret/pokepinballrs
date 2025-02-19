@@ -497,8 +497,8 @@ void sub_329F4(void)
         gCurrentPinballGame->unk132c->unk32 = 0;
         gCurrentPinballGame->unk132c->unk10 = 58;
         gCurrentPinballGame->unk132c->unk12 = 178;
-        gCurrentPinballGame->unk132c->unk28 = gCurrentPinballGame->unk132c->unk10 * 2;
-        gCurrentPinballGame->unk132c->unk2A = gCurrentPinballGame->unk132c->unk12 * 2;
+        gCurrentPinballGame->unk132c->unk28.unk0 = gCurrentPinballGame->unk132c->unk10 * 2;
+        gCurrentPinballGame->unk132c->unk28.unk2 = gCurrentPinballGame->unk132c->unk12 * 2;
         gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 * 256;
         gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 * 256;
         
@@ -509,7 +509,7 @@ void sub_329F4(void)
 
         sub_1B140(gCurrentPinballGame->unk1A5);
 
-        if(gCurrentPinballGame->unk1A5)
+        if (gCurrentPinballGame->unk1A5)
         {
             for (i = 0; i < 2; i++)
             {
@@ -534,8 +534,8 @@ void sub_329F4(void)
         gCurrentPinballGame->unk132c->unk12 = 0xB4;
         gCurrentPinballGame->unk132c->unk6 = 0;
         gCurrentPinballGame->unk5F7 = 0;
-        gCurrentPinballGame->unk132c->unk28 = gCurrentPinballGame->unk132c->unk10 * 2;
-        gCurrentPinballGame->unk132c->unk2A = gCurrentPinballGame->unk132c->unk12 * 2;
+        gCurrentPinballGame->unk132c->unk28.unk0 = gCurrentPinballGame->unk132c->unk10 * 2;
+        gCurrentPinballGame->unk132c->unk28.unk2 = gCurrentPinballGame->unk132c->unk12 * 2;
         gCurrentPinballGame->unk25 = 0;
 
         m4aSongNumStart(SE_UNKNOWN_0xC3);
@@ -564,7 +564,7 @@ void sub_32B74(void)
 
 void sub_32BE4(void)
 {
-    if(gCurrentPinballGame->unk28)
+    if (gCurrentPinballGame->unk28)
     {
         gCurrentPinballGame->unk5F7 = 1;
         gCurrentPinballGame->unk1F = 1;
@@ -572,49 +572,49 @@ void sub_32BE4(void)
         gCurrentPinballGame->unk132c->unk30 = 0;
         gCurrentPinballGame->unk132c->unk32 = 0;
         gCurrentPinballGame->unk132c->unk6 = 0;
-        if(gCurrentPinballGame->unk28 > 0x61)
+        if (gCurrentPinballGame->unk28 > 97)
         {
             gCurrentPinballGame->unk5FA = 1;
             gCurrentPinballGame->unk2F4 = 2;
             gCurrentPinballGame->unk132c->unk10 = 0xb5;
             gCurrentPinballGame->unk132c->unk12 = 0xc3;
         }
-        else if(gCurrentPinballGame->unk28 > 0x5e)
+        else if (gCurrentPinballGame->unk28 > 94)
         {
             gCurrentPinballGame->unk2F4 = 3;
             gCurrentPinballGame->unk132c->unk10 = 0xb8;
             gCurrentPinballGame->unk132c->unk12 = 0xbb;
         }
-        else if(gCurrentPinballGame->unk28 > 0x5b)
+        else if (gCurrentPinballGame->unk28 > 91)
         {
             gCurrentPinballGame->unk132c->unk0 = 1;
             gCurrentPinballGame->unk2F4 = 4;
         }
-        else if(gCurrentPinballGame->unk28 > 0x53)
+        else if (gCurrentPinballGame->unk28 > 83)
         {
             gCurrentPinballGame->unk2F4 = 5;
         }
-        else if(gCurrentPinballGame->unk28 > 0x22)
+        else if (gCurrentPinballGame->unk28 > 34)
         {
             gCurrentPinballGame->unk2F4 = 6;
 
         }
-        else if(gCurrentPinballGame->unk28 > 0x1a)
+        else if (gCurrentPinballGame->unk28 > 26)
         {
             gCurrentPinballGame->unk2F4 = 7;
 
         }
-        else if(gCurrentPinballGame->unk28 > 0x12)
+        else if (gCurrentPinballGame->unk28 > 18)
         {
             gCurrentPinballGame->unk2F4 = 8;
 
         }
-        else if(gCurrentPinballGame->unk28 > 0xa)
+        else if (gCurrentPinballGame->unk28 > 10)
         {
             gCurrentPinballGame->unk2F4 = 9;
             
         }
-        else if(gCurrentPinballGame->unk28 > 0x4)
+        else if (gCurrentPinballGame->unk28 > 4)
         {
             gCurrentPinballGame->unk132c->unk0 = 0;
             gCurrentPinballGame->unk2F4 = 10;
@@ -628,8 +628,8 @@ void sub_32BE4(void)
             gCurrentPinballGame->unk132c->unk12 = 0xca;
         }
 
-        gCurrentPinballGame->unk132c->unk28 = gCurrentPinballGame->unk132c->unk10 * 2;
-        gCurrentPinballGame->unk132c->unk2A = gCurrentPinballGame->unk132c->unk12 * 2;
+        gCurrentPinballGame->unk132c->unk28.unk0 = gCurrentPinballGame->unk132c->unk10 * 2;
+        gCurrentPinballGame->unk132c->unk28.unk2 = gCurrentPinballGame->unk132c->unk12 * 2;
         gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 * 256;
         gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 * 256;
     }
@@ -637,17 +637,17 @@ void sub_32BE4(void)
     {
         gCurrentPinballGame->unk2F4 = 0;
         gCurrentPinballGame->unk1F = 0;
-        gCurrentPinballGame->unk26 = 0x3C;
+        gCurrentPinballGame->unk26 = 60;
         gCurrentPinballGame->unk132c->unk6 = 0;
         gCurrentPinballGame->unk132c->unk30 = 0xFF9A;
-        gCurrentPinballGame->unk132c->unk32 = 0xC8;
+        gCurrentPinballGame->unk132c->unk32 = 200;
         sub_11B0(7);
         gCurrentPinballGame->unk132c->unk6 = 0;
         gCurrentPinballGame->unk132c->unk10 = 0xAB;
         gCurrentPinballGame->unk132c->unk12 = 0xD4;
-        gCurrentPinballGame->unk132c->unk28 = gCurrentPinballGame->unk132c->unk10 * 2;
-        gCurrentPinballGame->unk132c->unk2A = gCurrentPinballGame->unk132c->unk12 * 2;
-        gCurrentPinballGame->unk132c->unk2C = *(u32*)&gCurrentPinballGame->unk132c->unk28;
+        gCurrentPinballGame->unk132c->unk28.unk0 = gCurrentPinballGame->unk132c->unk10 * 2;
+        gCurrentPinballGame->unk132c->unk28.unk2 = gCurrentPinballGame->unk132c->unk12 * 2;
+        gCurrentPinballGame->unk132c->unk2C = gCurrentPinballGame->unk132c->unk28;
         gCurrentPinballGame->unk25 = 0;
         gCurrentPinballGame->unk5F7 = 0;
         m4aSongNumStart(SE_UNKNOWN_0xD6);

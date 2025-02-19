@@ -74,6 +74,12 @@ struct BgOffsets
     u16 yOffset;
 };
 
+struct UnkPinballGame1334_unk2C
+{
+	s16 unk0;
+	s16 unk2;
+};
+
 struct UnkPinballGame1334
 {
 	/*0x00*/ u8 unk0;
@@ -86,9 +92,8 @@ struct UnkPinballGame1334
 	/*0x14*/ u8 filler14[0xB];
 	/*0x1F*/ u8 unk1F;
 	/*0x20*/ u8 filler20[0x8];
-	/*0x28*/ u16 unk28;
-	/*0x2A*/ s16 unk2A;
-	/*0x2C*/ u32 unk2C;
+	/*0x28*/ struct UnkPinballGame1334_unk2C unk28;
+	/*0x2C*/ struct UnkPinballGame1334_unk2C unk2C;
 	/*0x30*/ u16 unk30;
 	/*0x32*/ u16 unk32;
 	/*0x34*/ u32 unk34;
