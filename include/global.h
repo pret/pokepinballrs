@@ -74,6 +74,12 @@ struct BgOffsets
     u16 yOffset;
 };
 
+struct UnkPinballGame1334_unk2C
+{
+	s16 unk0;
+	s16 unk2;
+};
+
 struct UnkPinballGame1334
 {
 	/*0x00*/ u8 unk0;
@@ -86,9 +92,8 @@ struct UnkPinballGame1334
 	/*0x14*/ u8 filler14[0xB];
 	/*0x1F*/ u8 unk1F;
 	/*0x20*/ u8 filler20[0x8];
-	/*0x28*/ u16 unk28;
-	/*0x2A*/ s16 unk2A;
-	/*0x2C*/ u32 unk2C;
+	/*0x28*/ struct UnkPinballGame1334_unk2C unk28;
+	/*0x2C*/ struct UnkPinballGame1334_unk2C unk2C;
 	/*0x30*/ u16 unk30;
 	/*0x32*/ u16 unk32;
 	/*0x34*/ u32 unk34;
@@ -160,7 +165,9 @@ struct PinballGame
 	/*0x195*/ u8 filler195[0x10];
 	/*0x1A5*/ s8 unk1A5;
 	/*0x1A6*/ s8 unk1A6;
-	/*0x1A7*/ u8 filler1A7[0x13];
+	/*0x1A7*/ u8 filler1A7[0xD];
+	/*0x1B4*/ u16 unk1B4;
+	/*0x1B6*/ u8 filler1B6[0x4];
 	/*0x1BA*/ u16 unk1BA;
 	/*0x1BC*/ u8 filler1BC[0x4];
 	/*0x1C0*/ u16 unk1C0;
@@ -183,7 +190,9 @@ struct PinballGame
 	/*0x1E3*/ u8 filler1E3[0x2];
 	/*0x1E5*/ u8 unk1E5;
 	/*0x1E6*/ u8 unk1E6;
-	/*0x1E7*/ u8 filler1E7[0x21];
+	/*0x1E7*/ u8 filler1E7[0x6];
+	/*0x1ED*/ s8 unk1ED;
+	/*0x1EE*/ u8 filler1EE[0x1a];
 	/*0x208*/ u16 unk208;
 	/*0x20A*/ u8 unk20A;
 	/*0x20B*/ u8 filler20B[0x54];
@@ -202,9 +211,14 @@ struct PinballGame
 	/*0x29F*/ u8 filler29F[0x1];
 	/*0x2A0*/ u8 filler2A0[0x2];
 	/*0x2A2*/ u8 unk2A2;
-	/*0x2A3*/ u8 filler2A3[0x51];
+	/*0x2A3*/ u8 filler2A3[0x37];
+	/*0x2DA*/ s8 unk2DA;
+	/*0x2DB*/ u8 filler2DB[0x16];
+	/*0x2F1*/ u8 unk2F1;
+	/*0x2F2*/ u8 filler2F2[0x2];
 	/*0x2F4*/ u8 unk2F4;
-	/*0x2F5*/ u8 filler2F5[0x11];
+	/*0x2F5*/ s8 unk2F5;
+	/*0x2F6*/ u8 filler2F6[0x10];
 	/*0x306*/ u8 unk306;
 	/*0x307*/ u8 filler307[0x5];
 	/*0x30C*/ u16 unk30C;
@@ -243,7 +257,9 @@ struct PinballGame
 	/*0x731*/ u8 filler731[0xB];
 	/*0x73C*/ u8 unk73C; // TODO: unknown type
 	/*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
-	/*0x73E*/ u8 filler73E[0xE];
+	/*0x73E*/ u8 filler73E[0x8];
+	/*0x746*/ u8 unk746;
+	/*0x747*/ u8 filler747[0x5];
 	/*0x74C*/ volatile u8 unk74C[2][OBJ_PLTT_SIZE];
 	/*0xB4C*/ volatile u8 unkB4C[2][BG_PLTT_SIZE];
 	/*0xF4C*/ struct SongHeader *unkF4C;
