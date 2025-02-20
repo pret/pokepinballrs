@@ -2922,7 +2922,11 @@ gUnknown_086B077C:: @ 0x086B077C
 	.incbin "baserom.gba", 0x6B077C, 0xE0
 
 gUnknown_086B085C:: @ 0x086B085C
-	.incbin "baserom.gba", 0x6B085C, 0x28
+	.4byte sub_4ABEC
+	.4byte sub_4AE8C
+
+gUnknown_086B0864:: @ 0x086B0664
+	.incbin "baserom.gba", 0x6B0864, 0x20
 
 gUnknown_086B0884:: @ 0x086B0884
 	.incbin "baserom.gba", 0x6B0884, 0x20
