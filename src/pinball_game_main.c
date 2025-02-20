@@ -66,6 +66,8 @@ extern const s16 gUnknown_086AE5A0[][2];
 extern const u8 gUnknown_08138834[0x2000];
 extern const u8 gUnknown_0813A854[0x2000];
 extern const u8 gUnknown_0813C874[0x2000];
+extern const u8 gUnknown_0849F1CC[0x2000];
+extern const u8 gUnknown_0813E894[0x2000];
 
 struct Unk86AD000
 {
@@ -2072,6 +2074,25 @@ void sub_4CB0C(void)
 void sub_4CB30(void)
 {
     DmaCopy16(3, gUnknown_0813C874, (void *)0x6015800, 0x2000);
+    DmaCopy16(
+        3,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        (void *)0x6010CA0,
+        0x300
+    );
+}
+
+void sub_4CBB4(void)
+{
+    if (gCurrentPinballGame->progressForBonus < 2)
+    {
+        DmaCopy16(3, gUnknown_0849F1CC, (void *)0x6015800, 0x2000);
+    }
+    else
+    {
+        DmaCopy16(3, gUnknown_0813E894, (void *)0x6015800, 0x2000);
+    }
+
     DmaCopy16(
         3,
         gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
