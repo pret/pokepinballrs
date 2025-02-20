@@ -68,6 +68,10 @@ extern const u8 gUnknown_0813A854[0x2000];
 extern const u8 gUnknown_0813C874[0x2000];
 extern const u8 gUnknown_0849F1CC[0x2000];
 extern const u8 gUnknown_0813E894[0x2000];
+extern const u8 gUnknown_083C5A2C[0x2800];
+extern const u8 gUnknown_084A856C[0x1C00];
+extern const u8 gUnknown_081408B4[0x2000];
+extern const u8 gUnknown_084AA18C[0x860];
 
 struct Unk86AD000
 {
@@ -2091,6 +2095,37 @@ void sub_4CBB4(void)
     else
     {
         DmaCopy16(3, gUnknown_0813E894, (void *)0x6015800, 0x2000);
+    }
+
+    DmaCopy16(
+        3,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        (void *)0x6010CA0,
+        0x300
+    );
+}
+
+void sub_4CC58(void)
+{
+    u8 var0;
+
+    if (gCurrentPinballGame->progressForBonus == 0)
+    {
+        DmaCopy16(3, gUnknown_083C5A2C, (void *)0x6015800, 0x2800);
+    }
+    else if (gCurrentPinballGame->progressForBonus == 1)
+    {
+        DmaCopy16(3, gUnknown_084A856C, (void *)0x6015800, 0x1C00);
+    }
+    else
+    {
+        DmaCopy16(3, gUnknown_081408B4, (void *)0x6015800, 0x2000);
+    }
+
+    var0 = gCurrentPinballGame->unk3DC - 2;
+    if (var0 > 9)
+    {
+        DmaCopy16(3, gUnknown_084AA18C, (void *)0x6011620, 0x860);
     }
 
     DmaCopy16(
