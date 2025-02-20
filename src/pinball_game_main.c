@@ -2169,3 +2169,7 @@ void sub_4CD60(void)
 
     DmaCopy16(3, gUnknown_084B77EC, (void *)0x6015800, 0x800);
 }
+
+void nullsub_18(void)
+{
+}
