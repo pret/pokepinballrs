@@ -104,9 +104,9 @@ struct UnkPinballGame1334
 struct PinballGame
 {
 	/*0x000*/ u32 unk0;
-	/*0x004*/ u8 unk4[5];
-	/*0x009*/ u8 unk9[5];
-	/*0x00E*/ u8 unkE[5];
+	/*0x004*/ u8 newButtonActions[5]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
+	/*0x009*/ u8 releasedButtonActions[5];
+	/*0x00E*/ u8 heldButtonActions[5];
 	/*0x013*/ s8 progressForBonus; // Current number of Pokéballs filled by catch mode and evo mode
 	/*0x014*/ s8 unk14;
 	/*0x015*/ u8 filler15;

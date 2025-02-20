@@ -97,7 +97,7 @@ void sub_47110(void);
 static void sub_4A270(void);
 void sub_4A518(void);
 void sub_4A90C(void);
-void sub_4B280(void);
+void UpdateButtonActionsFromJoy(void);
 void sub_4B334(void);
 void sub_4B408(s16);
 void sub_4B654(void);
@@ -616,7 +616,7 @@ void sub_4ABEC(void)
 {
     s16 i;
 
-    sub_4B280();
+    UpdateButtonActionsFromJoy();
     gUnknown_020028D8[1].unk4();
     if (gMain.unkE == 0 && !(gMain.unkF & 0x2))
     {
@@ -740,7 +740,7 @@ void sub_4AE8C(void)
 {
     s16 i;
 
-    sub_4B280();
+    UpdateButtonActionsFromJoy();
     gUnknown_020028D8[1].unk4();
     if (gMain.unkF & 0x2)
         return;
@@ -917,14 +917,14 @@ void nullsub_19(void)
 {
 }
 
-void sub_4B280(void)
+void UpdateButtonActionsFromJoy(void)
 {
     u16 i;
 
     for (i = 0; i < 5; i++)
     {
-        gCurrentPinballGame->unk4[i] = 0;
-        gCurrentPinballGame->unk9[i] = 0;
+        gCurrentPinballGame->newButtonActions[i] = 0;
+        gCurrentPinballGame->releasedButtonActions[i] = 0;
     }
 
     if (gMain.unkF)
@@ -935,17 +935,17 @@ void sub_4B280(void)
         int buttonConfigKeyMask = (gMain.buttonConfigs[i][0] | gMain.buttonConfigs[i][1]) & KEYS_MASK;
         if (buttonConfigKeyMask == JOY_HELD(buttonConfigKeyMask))
         {
-            if (gCurrentPinballGame->unkE[i] == 0)
-                gCurrentPinballGame->unk4[i] = 1;
+            if (gCurrentPinballGame->heldButtonActions[i] == 0)
+                gCurrentPinballGame->newButtonActions[i] = 1;
 
-            gCurrentPinballGame->unkE[i] = 1;
+            gCurrentPinballGame->heldButtonActions[i] = 1;
         }
         else
         {
-            if (gCurrentPinballGame->unkE[i])
-                gCurrentPinballGame->unk9[i] = 1;
+            if (gCurrentPinballGame->heldButtonActions[i])
+                gCurrentPinballGame->releasedButtonActions[i] = 1;
 
-            gCurrentPinballGame->unkE[i] = 0;
+            gCurrentPinballGame->heldButtonActions[i] = 0;
         }
     }
 }
@@ -956,8 +956,8 @@ void sub_4B334(void)
 
     for (i = 0; i < 5; i++)
     {
-        gCurrentPinballGame->unk4[i] = 0;
-        gCurrentPinballGame->unk9[i] = 0;
+        gCurrentPinballGame->newButtonActions[i] = 0;
+        gCurrentPinballGame->releasedButtonActions[i] = 0;
     }
 
     if (gMain.unkF)
@@ -967,15 +967,15 @@ void sub_4B334(void)
     {
         for (i =  0; i < 5; i++)
         {
-            gCurrentPinballGame->unk4[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk0 >> i) & 0x1;
-            gCurrentPinballGame->unk9[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk1 >> i) & 0x1;
-            gCurrentPinballGame->unkE[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk2 >> i) & 0x1;
+            gCurrentPinballGame->newButtonActions[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk0 >> i) & 0x1;
+            gCurrentPinballGame->releasedButtonActions[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk1 >> i) & 0x1;
+            gCurrentPinballGame->heldButtonActions[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk2 >> i) & 0x1;
         }
 
         gUnknown_02031510++;
     }
 
-    if (gCurrentPinballGame->unk4[1])
+    if (gCurrentPinballGame->newButtonActions[1])
         gMain.newKeys = A_BUTTON;
 }
 
