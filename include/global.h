@@ -260,7 +260,9 @@ struct PinballGame
 	/*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
 	/*0x73E*/ u8 filler73E[0x8];
 	/*0x746*/ u8 unk746;
-	/*0x747*/ u8 filler747[0x5];
+	/*0x747*/ u8 filler747[0x2];
+	/*0x749*/ u8 unk749;
+	/*0x74A*/ u8 filler74A[0x2];
 	/*0x74C*/ volatile u8 unk74C[2][OBJ_PLTT_SIZE];
 	/*0xB4C*/ volatile u8 unkB4C[2][BG_PLTT_SIZE];
 	/*0xF4C*/ struct SongHeader *unkF4C;

@@ -65,6 +65,7 @@ extern const u8 gUnknown_08490A4C[][0x440];
 extern const s16 gUnknown_086AE5A0[][2];
 extern const u8 gUnknown_08138834[0x2000];
 extern const u8 gUnknown_0813A854[0x2000];
+extern const u8 gUnknown_0813C874[0x2000];
 
 struct Unk86AD000
 {
@@ -77,6 +78,7 @@ extern const struct Unk86AD000 gUnknown_086AD000[];
 extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gUnknown_08137E14[][0x20];
 extern const u8 gUnknown_084C0C6C[];
+extern u8 *gMonPortraitGroupGfx[];
 
 void sub_1D4D0(void);
 void sub_356A0(void);
@@ -2065,4 +2067,15 @@ void sub_4CAE8(void)
 void sub_4CB0C(void)
 {
     DmaCopy16(3, gUnknown_0813A854, (void *)0x6015800, 0x2000);
+}
+
+void sub_4CB30(void)
+{
+    DmaCopy16(3, gUnknown_0813C874, (void *)0x6015800, 0x2000);
+    DmaCopy16(
+        3,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        (void *)0x6010CA0,
+        0x300
+    );
 }

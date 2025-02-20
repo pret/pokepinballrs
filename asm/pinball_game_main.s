@@ -6,65 +6,6 @@
 
 	.text
 
-	thumb_func_start sub_4CB30
-sub_4CB30: @ 0x0804CB30
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	ldr r5, _0804CB90 @ =0x040000D4
-	ldr r0, _0804CB94 @ =gUnknown_0813C874
-	str r0, [r5]
-	ldr r0, _0804CB98 @ =0x06015800
-	str r0, [r5, #4]
-	ldr r0, _0804CB9C @ =0x80001000
-	str r0, [r5, #8]
-	ldr r0, [r5, #8]
-	ldr r0, _0804CBA0 @ =gMonPortraitGroupGfx
-	mov r8, r0
-	ldr r0, _0804CBA4 @ =gCurrentPinballGame
-	ldr r0, [r0]
-	ldr r1, _0804CBA8 @ =0x00000749
-	adds r0, r0, r1
-	ldrb r6, [r0]
-	adds r0, r6, #0
-	movs r1, #0xf
-	bl __udivsi3
-	adds r4, r0, #0
-	lsls r4, r4, #0x18
-	lsrs r4, r4, #0x16
-	add r4, r8
-	adds r0, r6, #0
-	movs r1, #0xf
-	bl __umodsi3
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	lsls r1, r0, #1
-	adds r1, r1, r0
-	lsls r1, r1, #8
-	ldr r0, [r4]
-	adds r0, r0, r1
-	str r0, [r5]
-	ldr r0, _0804CBAC @ =0x06010CA0
-	str r0, [r5, #4]
-	ldr r0, _0804CBB0 @ =0x80000180
-	str r0, [r5, #8]
-	ldr r0, [r5, #8]
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804CB90: .4byte 0x040000D4
-_0804CB94: .4byte gUnknown_0813C874
-_0804CB98: .4byte 0x06015800
-_0804CB9C: .4byte 0x80001000
-_0804CBA0: .4byte gMonPortraitGroupGfx
-_0804CBA4: .4byte gCurrentPinballGame
-_0804CBA8: .4byte 0x00000749
-_0804CBAC: .4byte 0x06010CA0
-_0804CBB0: .4byte 0x80000180
-
 	thumb_func_start sub_4CBB4
 sub_4CBB4: @ 0x0804CBB4
 	push {r4, r5, r6, lr}
