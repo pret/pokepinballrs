@@ -104,9 +104,9 @@ struct UnkPinballGame1334
 struct PinballGame
 {
 	/*0x000*/ u32 unk0;
-	/*0x004*/ u8 unk4[5];
-	/*0x009*/ u8 unk9[5];
-	/*0x00E*/ u8 unkE[5];
+	/*0x004*/ u8 newButtonActions[5]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
+	/*0x009*/ u8 releasedButtonActions[5];
+	/*0x00E*/ u8 heldButtonActions[5];
 	/*0x013*/ s8 progressForBonus; // Current number of Pokéballs filled by catch mode and evo mode
 	/*0x014*/ s8 unk14;
 	/*0x015*/ u8 filler15;
@@ -222,13 +222,16 @@ struct PinballGame
 	/*0x306*/ u8 unk306;
 	/*0x307*/ u8 filler307[0x5];
 	/*0x30C*/ u16 unk30C;
-	/*0x30E*/ u8 filler30E[0x36];
-	/*0x344*/ u32 unk344;
-	/*0x348*/ u8 filler348[0x22];
+	/*0x30E*/ u8 filler30E[0x37];
+	/*0x345*/ s8 unk345;
+	/*0x346*/ s8 unk346;
+	/*0x348*/ u8 filler347[0x23];
 	/*0x36A*/ u8 unk36A[0x2];
 	/*0x36C*/ u8 unk36C[0x2];
 	/*0x36E*/ u16 unk36E[0x2];
-	/*0x372*/ u8 filler370[0x226];
+	/*0x372*/ u8 filler370[0x6A];
+	/*0x3DC*/ s8 unk3DC;
+	/*0x3DE*/ u8 filler3DE[0x1BA];
 	/*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
 	/*0x59A*/ u8 filler59A[0x2];
 	/*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
@@ -259,7 +262,9 @@ struct PinballGame
 	/*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
 	/*0x73E*/ u8 filler73E[0x8];
 	/*0x746*/ u8 unk746;
-	/*0x747*/ u8 filler747[0x5];
+	/*0x747*/ u8 filler747[0x2];
+	/*0x749*/ u8 unk749;
+	/*0x74A*/ u8 filler74A[0x2];
 	/*0x74C*/ volatile u8 unk74C[2][OBJ_PLTT_SIZE];
 	/*0xB4C*/ volatile u8 unkB4C[2][BG_PLTT_SIZE];
 	/*0xF4C*/ struct SongHeader *unkF4C;

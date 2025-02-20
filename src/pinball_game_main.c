@@ -61,6 +61,18 @@ extern const u8 gUnknown_083C806C[][0x100];
 extern const u8 gUnknown_084ED0CC[][0x180];
 extern const u8 gUnknown_08449D8C[][0x280];
 extern const u8 gUnknown_084F6B0C[][0x500];
+extern const u8 gUnknown_08490A4C[][0x440];
+extern const s16 gUnknown_086AE5A0[][2];
+extern const u8 gUnknown_08138834[0x2000];
+extern const u8 gUnknown_0813A854[0x2000];
+extern const u8 gUnknown_0813C874[0x2000];
+extern const u8 gUnknown_0849F1CC[0x2000];
+extern const u8 gUnknown_0813E894[0x2000];
+extern const u8 gUnknown_083C5A2C[0x2800];
+extern const u8 gUnknown_084A856C[0x1C00];
+extern const u8 gUnknown_081408B4[0x2000];
+extern const u8 gUnknown_084AA18C[0x860];
+extern const u8 gUnknown_084B77EC[0x800];
 
 struct Unk86AD000
 {
@@ -73,6 +85,7 @@ extern const struct Unk86AD000 gUnknown_086AD000[];
 extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gUnknown_08137E14[][0x20];
 extern const u8 gUnknown_084C0C6C[];
+extern u8 *gMonPortraitGroupGfx[];
 
 void sub_1D4D0(void);
 void sub_356A0(void);
@@ -84,7 +97,7 @@ void sub_47110(void);
 static void sub_4A270(void);
 void sub_4A518(void);
 void sub_4A90C(void);
-void sub_4B280(void);
+void UpdateButtonActionsFromJoy(void);
 void sub_4B334(void);
 void sub_4B408(s16);
 void sub_4B654(void);
@@ -603,7 +616,7 @@ void sub_4ABEC(void)
 {
     s16 i;
 
-    sub_4B280();
+    UpdateButtonActionsFromJoy();
     gUnknown_020028D8[1].unk4();
     if (gMain.unkE == 0 && !(gMain.unkF & 0x2))
     {
@@ -727,7 +740,7 @@ void sub_4AE8C(void)
 {
     s16 i;
 
-    sub_4B280();
+    UpdateButtonActionsFromJoy();
     gUnknown_020028D8[1].unk4();
     if (gMain.unkF & 0x2)
         return;
@@ -904,14 +917,14 @@ void nullsub_19(void)
 {
 }
 
-void sub_4B280(void)
+void UpdateButtonActionsFromJoy(void)
 {
     u16 i;
 
     for (i = 0; i < 5; i++)
     {
-        gCurrentPinballGame->unk4[i] = 0;
-        gCurrentPinballGame->unk9[i] = 0;
+        gCurrentPinballGame->newButtonActions[i] = 0;
+        gCurrentPinballGame->releasedButtonActions[i] = 0;
     }
 
     if (gMain.unkF)
@@ -922,17 +935,17 @@ void sub_4B280(void)
         int buttonConfigKeyMask = (gMain.buttonConfigs[i][0] | gMain.buttonConfigs[i][1]) & KEYS_MASK;
         if (buttonConfigKeyMask == JOY_HELD(buttonConfigKeyMask))
         {
-            if (gCurrentPinballGame->unkE[i] == 0)
-                gCurrentPinballGame->unk4[i] = 1;
+            if (gCurrentPinballGame->heldButtonActions[i] == 0)
+                gCurrentPinballGame->newButtonActions[i] = 1;
 
-            gCurrentPinballGame->unkE[i] = 1;
+            gCurrentPinballGame->heldButtonActions[i] = 1;
         }
         else
         {
-            if (gCurrentPinballGame->unkE[i])
-                gCurrentPinballGame->unk9[i] = 1;
+            if (gCurrentPinballGame->heldButtonActions[i])
+                gCurrentPinballGame->releasedButtonActions[i] = 1;
 
-            gCurrentPinballGame->unkE[i] = 0;
+            gCurrentPinballGame->heldButtonActions[i] = 0;
         }
     }
 }
@@ -943,8 +956,8 @@ void sub_4B334(void)
 
     for (i = 0; i < 5; i++)
     {
-        gCurrentPinballGame->unk4[i] = 0;
-        gCurrentPinballGame->unk9[i] = 0;
+        gCurrentPinballGame->newButtonActions[i] = 0;
+        gCurrentPinballGame->releasedButtonActions[i] = 0;
     }
 
     if (gMain.unkF)
@@ -954,15 +967,15 @@ void sub_4B334(void)
     {
         for (i =  0; i < 5; i++)
         {
-            gCurrentPinballGame->unk4[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk0 >> i) & 0x1;
-            gCurrentPinballGame->unk9[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk1 >> i) & 0x1;
-            gCurrentPinballGame->unkE[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk2 >> i) & 0x1;
+            gCurrentPinballGame->newButtonActions[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk0 >> i) & 0x1;
+            gCurrentPinballGame->releasedButtonActions[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk1 >> i) & 0x1;
+            gCurrentPinballGame->heldButtonActions[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk2 >> i) & 0x1;
         }
 
         gUnknown_02031510++;
     }
 
-    if (gCurrentPinballGame->unk4[1])
+    if (gCurrentPinballGame->newButtonActions[1])
         gMain.newKeys = A_BUTTON;
 }
 
@@ -2025,4 +2038,138 @@ void sub_4C808(void)
     DmaCopy16(3, gUnknown_08449D8C[gCurrentPinballGame->unk746], (void *)0x6013300, 0x280);
     var0 = gUnknown_086AD456[gCurrentPinballGame->unk1A5][(gCurrentPinballGame->unk1B4 % 42) / 6];
     DmaCopy16(3, gUnknown_084F6B0C[var0], (void *)0x6013D00, 0x500);
+}
+
+void sub_4CA18(void)
+{
+    s16 index;
+
+    switch (gCurrentPinballGame->unk346)
+    {
+    case 0:
+    case 1:
+    case 2:
+        index = gCurrentPinballGame->unk345;
+        DmaCopy16(3, gUnknown_08490A4C[index], (void *)0x600D900, 0x440);
+        break;
+    case 3:
+    case 4:
+        index = 15;
+        DmaCopy16(3, gUnknown_08490A4C[index], (void *)0x600D900, 0x440);
+        break;
+    case 5:
+        index = gUnknown_086AE5A0[gCurrentPinballGame->unk345][0];
+        DmaCopy16(3, gUnknown_08490A4C[index], (void *)0x600D900, 0x440);
+        break;
+    case 6:
+        break;
+    }
+}
+
+void sub_4CAE8(void)
+{
+    DmaCopy16(3, gUnknown_08138834, (void *)0x6015800, 0x2000);
+}
+
+void sub_4CB0C(void)
+{
+    DmaCopy16(3, gUnknown_0813A854, (void *)0x6015800, 0x2000);
+}
+
+void sub_4CB30(void)
+{
+    DmaCopy16(3, gUnknown_0813C874, (void *)0x6015800, 0x2000);
+    DmaCopy16(
+        3,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        (void *)0x6010CA0,
+        0x300
+    );
+}
+
+void sub_4CBB4(void)
+{
+    if (gCurrentPinballGame->progressForBonus < 2)
+    {
+        DmaCopy16(3, gUnknown_0849F1CC, (void *)0x6015800, 0x2000);
+    }
+    else
+    {
+        DmaCopy16(3, gUnknown_0813E894, (void *)0x6015800, 0x2000);
+    }
+
+    DmaCopy16(
+        3,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        (void *)0x6010CA0,
+        0x300
+    );
+}
+
+void sub_4CC58(void)
+{
+    u8 var0;
+
+    if (gCurrentPinballGame->progressForBonus == 0)
+    {
+        DmaCopy16(3, gUnknown_083C5A2C, (void *)0x6015800, 0x2800);
+    }
+    else if (gCurrentPinballGame->progressForBonus == 1)
+    {
+        DmaCopy16(3, gUnknown_084A856C, (void *)0x6015800, 0x1C00);
+    }
+    else
+    {
+        DmaCopy16(3, gUnknown_081408B4, (void *)0x6015800, 0x2000);
+    }
+
+    var0 = gCurrentPinballGame->unk3DC - 2;
+    if (var0 > 9)
+    {
+        DmaCopy16(3, gUnknown_084AA18C, (void *)0x6011620, 0x860);
+    }
+
+    DmaCopy16(
+        3,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        (void *)0x6010CA0,
+        0x300
+    );
+}
+
+void sub_4CD60(void)
+{
+    s16 i;
+    int var0;
+    u16 var1;
+
+    for (i = 0; i < 0x800; i++)
+        gUnknown_03005C00[0x400 + i] = 0x200;
+
+    DmaCopy16(3, &gUnknown_03005C00[0x400], (void *)0x6001000, 0x1000);
+    gMain.blendControl = 0x1C42;
+    gMain.blendAlpha = 0xC04;
+    for (i = 0; i < 0x140; i++)
+    {
+        var0 = i;
+        if (i < 0)
+            var0 += 31;
+
+        var0 = (var0 >> 5) << 5;
+        var1 = i - var0 - 2;
+        if (var1 < 28)
+            gUnknown_03005C00[0x800 + i] = 0x9000;
+    }
+
+    gMain.bgOffsets[1].xOffset = 8;
+    gMain.bgOffsets[1].yOffset = 126;
+    DmaCopy16(3, &gUnknown_03005C00[0x800], (void *)0x6001140, 0x280);
+    for (i = 0; i < 0x800; i++)
+        gUnknown_03005C00[i] = 0x1FF;
+
+    DmaCopy16(3, gUnknown_084B77EC, (void *)0x6015800, 0x800);
+}
+
+void nullsub_18(void)
+{
 }
