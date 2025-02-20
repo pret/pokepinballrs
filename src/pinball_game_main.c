@@ -72,6 +72,7 @@ extern const u8 gUnknown_083C5A2C[0x2800];
 extern const u8 gUnknown_084A856C[0x1C00];
 extern const u8 gUnknown_081408B4[0x2000];
 extern const u8 gUnknown_084AA18C[0x860];
+extern const u8 gUnknown_084B77EC[0x800];
 
 struct Unk86AD000
 {
@@ -2134,4 +2135,37 @@ void sub_4CC58(void)
         (void *)0x6010CA0,
         0x300
     );
+}
+
+void sub_4CD60(void)
+{
+    s16 i;
+    int var0;
+    u16 var1;
+
+    for (i = 0; i < 0x800; i++)
+        gUnknown_03005C00[0x400 + i] = 0x200;
+
+    DmaCopy16(3, &gUnknown_03005C00[0x400], (void *)0x6001000, 0x1000);
+    gMain.blendControl = 0x1C42;
+    gMain.blendAlpha = 0xC04;
+    for (i = 0; i < 0x140; i++)
+    {
+        var0 = i;
+        if (i < 0)
+            var0 += 31;
+
+        var0 = (var0 >> 5) << 5;
+        var1 = i - var0 - 2;
+        if (var1 < 28)
+            gUnknown_03005C00[0x800 + i] = 0x9000;
+    }
+
+    gMain.bgOffsets[1].xOffset = 8;
+    gMain.bgOffsets[1].yOffset = 126;
+    DmaCopy16(3, &gUnknown_03005C00[0x800], (void *)0x6001140, 0x280);
+    for (i = 0; i < 0x800; i++)
+        gUnknown_03005C00[i] = 0x1FF;
+
+    DmaCopy16(3, gUnknown_084B77EC, (void *)0x6015800, 0x800);
 }
