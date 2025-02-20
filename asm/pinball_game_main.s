@@ -6,23 +6,6 @@
 
 	.text
 
-	thumb_func_start sub_4CAE8
-sub_4CAE8: @ 0x0804CAE8
-	ldr r1, _0804CAFC @ =0x040000D4
-	ldr r0, _0804CB00 @ =gUnknown_08138834
-	str r0, [r1]
-	ldr r0, _0804CB04 @ =0x06015800
-	str r0, [r1, #4]
-	ldr r0, _0804CB08 @ =0x80001000
-	str r0, [r1, #8]
-	ldr r0, [r1, #8]
-	bx lr
-	.align 2, 0
-_0804CAFC: .4byte 0x040000D4
-_0804CB00: .4byte gUnknown_08138834
-_0804CB04: .4byte 0x06015800
-_0804CB08: .4byte 0x80001000
-
 	thumb_func_start sub_4CB0C
 sub_4CB0C: @ 0x0804CB0C
 	ldr r1, _0804CB20 @ =0x040000D4

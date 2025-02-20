@@ -63,6 +63,7 @@ extern const u8 gUnknown_08449D8C[][0x280];
 extern const u8 gUnknown_084F6B0C[][0x500];
 extern const u8 gUnknown_08490A4C[][0x440];
 extern const s16 gUnknown_086AE5A0[][2];
+extern const u8 gUnknown_08138834[0x2000];
 
 struct Unk86AD000
 {
@@ -2053,4 +2054,9 @@ void sub_4CA18(void)
     case 6:
         break;
     }
+}
+
+void sub_4CAE8(void)
+{
+    DmaCopy16(3, gUnknown_08138834, (void *)0x6015800, 0x2000);
 }
