@@ -1,16 +1,13 @@
 #ifndef GUARD_CONSTANTS_FIELDS_H
 #define GUARD_CONSTANTS_FIELDS_H
 
-enum
-{
-    FIELD_RUBY,
-    FIELD_SAPPHIRE,
-    FIELD_2,
-    FIELD_3,
-    FIELD_4,
-    FIELD_5,
-    FIELD_6,
-    FIELD_7,
-};
+#define FIELD_RUBY      0
+#define FIELD_SAPPHIRE  1
+#define FIELD_DUSCLOPS  2
+#define FIELD_KECLEON   3
+#define FIELD_KYOGRE    4
+#define FIELD_GROUDON   5
+#define FIELD_RAYQUAZA  6
+#define FIELD_SPHEAL    7
 
 #endif // GUARD_CONSTANTS_FIELDS_H

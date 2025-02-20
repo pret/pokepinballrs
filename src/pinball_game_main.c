@@ -170,11 +170,11 @@ void sub_49ED4(void)
         gUnknown_086B085C[gMain.unk6]();
         if (gMain.selectedField == FIELD_RUBY || gMain.selectedField == FIELD_SAPPHIRE)
             sub_1D4D0();
-        else if (gMain.selectedField == FIELD_2)
+        else if (gMain.selectedField == FIELD_DUSCLOPS)
             sub_356A0();
-        else if (gMain.selectedField == FIELD_4)
+        else if (gMain.selectedField == FIELD_KYOGRE)
             sub_3ADA0();
-        else if (gMain.selectedField == FIELD_5)
+        else if (gMain.selectedField == FIELD_GROUDON)
             sub_3E5D0();
         break;
     case 1:
@@ -273,7 +273,7 @@ static void sub_4A270(void)
         REG_BG0CNT = BGCNT_TXT256x512 | BGCNT_SCREENBASE(4) | BGCNT_CHARBASE(1) | BGCNT_PRIORITY(0);
         REG_DISPCNT |= DISPCNT_BG0_ON;
         break;
-    case FIELD_2:
+    case FIELD_DUSCLOPS:
         REG_BG3CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(0) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(3);
         REG_DISPCNT |= DISPCNT_BG3_ON;
         REG_BG2CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(1) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(2);
@@ -283,7 +283,7 @@ static void sub_4A270(void)
         REG_BG0CNT = BGCNT_TXT256x512 | BGCNT_SCREENBASE(4) | BGCNT_CHARBASE(1) | BGCNT_PRIORITY(0);
         REG_DISPCNT |= DISPCNT_BG0_ON;
         break;
-    case FIELD_3:
+    case FIELD_KECLEON:
         REG_BG3CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(0) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(3);
         REG_DISPCNT |= DISPCNT_BG3_ON;
         REG_BG2CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(1) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(2);
@@ -293,7 +293,7 @@ static void sub_4A270(void)
         REG_BG0CNT = BGCNT_TXT256x512 | BGCNT_SCREENBASE(4) | BGCNT_CHARBASE(1) | BGCNT_PRIORITY(0);
         REG_DISPCNT |= DISPCNT_BG0_ON;
         break;
-    case FIELD_4:
+    case FIELD_KYOGRE:
         REG_BG3CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(0) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(3);
         REG_DISPCNT |= DISPCNT_BG3_ON;
         REG_BG2CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(1) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(2);
@@ -301,7 +301,7 @@ static void sub_4A270(void)
         REG_BG0CNT = BGCNT_TXT256x512 | BGCNT_SCREENBASE(4) | BGCNT_CHARBASE(1) | BGCNT_PRIORITY(0);
         REG_DISPCNT |= DISPCNT_BG0_ON;
         break;
-    case FIELD_5:
+    case FIELD_GROUDON:
         REG_BG3CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(0) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(3);
         REG_DISPCNT |= DISPCNT_BG3_ON;
         REG_BG2CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(1) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(2);
@@ -309,7 +309,7 @@ static void sub_4A270(void)
         REG_BG0CNT = BGCNT_TXT256x512 | BGCNT_SCREENBASE(4) | BGCNT_CHARBASE(1) | BGCNT_PRIORITY(0);
         REG_DISPCNT |= DISPCNT_BG0_ON;
         break;
-    case FIELD_6:
+    case FIELD_RAYQUAZA:
         REG_BG3CNT = BGCNT_TXT256x512 | BGCNT_SCREENBASE(0) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(3);
         REG_DISPCNT |= DISPCNT_BG3_ON;
         REG_BG2CNT = BGCNT_TXT256x512 | BGCNT_SCREENBASE(2) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(2);
@@ -319,7 +319,7 @@ static void sub_4A270(void)
         REG_BG0CNT = BGCNT_TXT256x512 | BGCNT_SCREENBASE(4) | BGCNT_CHARBASE(1) | BGCNT_PRIORITY(0);
         REG_DISPCNT |= DISPCNT_BG0_ON;
         break;
-    case FIELD_7:
+    case FIELD_SPHEAL:
         REG_BG3CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(0) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(3);
         REG_DISPCNT |= DISPCNT_BG3_ON;
         REG_BG2CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(1) | BGCNT_CHARBASE(2) | BGCNT_PRIORITY(2);
@@ -496,7 +496,7 @@ void sub_4A90C(void)
         gUnknown_020028D8[5] = gUnknown_086B077C[13];
         gMain.unk44 = &gUnknown_086B02CC[gMain.selectedField * 2];
         break;
-    case FIELD_2:
+    case FIELD_DUSCLOPS:
         gUnknown_020028D8[3] = gUnknown_086B077C[5];
         gUnknown_020028D8[7] = gUnknown_086B077C[17];
         gUnknown_020028D8[0] = gUnknown_086B077C[21];
@@ -505,7 +505,7 @@ void sub_4A90C(void)
         gUnknown_020028D8[5] = gUnknown_086B077C[14];
         gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
         break;
-    case FIELD_3:
+    case FIELD_KECLEON:
         gUnknown_020028D8[3] = gUnknown_086B077C[6];
         gUnknown_020028D8[7] = gUnknown_086B077C[17];
         gUnknown_020028D8[0] = gUnknown_086B077C[22];
@@ -514,7 +514,7 @@ void sub_4A90C(void)
         gUnknown_020028D8[5] = gUnknown_086B077C[14];
         gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
         break;
-    case FIELD_4:
+    case FIELD_KYOGRE:
         gUnknown_020028D8[3] = gUnknown_086B077C[7];
         gUnknown_020028D8[7] = gUnknown_086B077C[17];
         gUnknown_020028D8[0] = gUnknown_086B077C[23];
@@ -523,7 +523,7 @@ void sub_4A90C(void)
         gUnknown_020028D8[5] = gUnknown_086B077C[14];
         gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
         break;
-    case FIELD_5:
+    case FIELD_GROUDON:
         gUnknown_020028D8[3] = gUnknown_086B077C[8];
         gUnknown_020028D8[7] = gUnknown_086B077C[17];
         gUnknown_020028D8[0] = gUnknown_086B077C[24];
@@ -532,7 +532,7 @@ void sub_4A90C(void)
         gUnknown_020028D8[5] = gUnknown_086B077C[14];
         gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
         break;
-    case FIELD_6:
+    case FIELD_RAYQUAZA:
         gUnknown_020028D8[3] = gUnknown_086B077C[9];
         gUnknown_020028D8[7] = gUnknown_086B077C[17];
         gUnknown_020028D8[0] = gUnknown_086B077C[25];
@@ -541,7 +541,7 @@ void sub_4A90C(void)
         gUnknown_020028D8[5] = gUnknown_086B077C[14];
         gMain.unk44 = &gUnknown_086B03BC[gMain.selectedField];
         break;
-    case FIELD_7:
+    case FIELD_SPHEAL:
         gUnknown_020028D8[3] = gUnknown_086B077C[10];
         gUnknown_020028D8[7] = gUnknown_086B077C[17];
         gUnknown_020028D8[0] = gUnknown_086B077C[26];
@@ -573,15 +573,15 @@ void sub_4AAD8(void)
                 sub_1D4D0();
                 sub_31BE8(0);
             }
-            else if (gMain.selectedField == FIELD_2)
+            else if (gMain.selectedField == FIELD_DUSCLOPS)
             {
                 sub_356A0();
             }
-            else if (gMain.selectedField == FIELD_4)
+            else if (gMain.selectedField == FIELD_KYOGRE)
             {
                 sub_3ADA0();
             }
-            else if (gMain.selectedField == FIELD_5)
+            else if (gMain.selectedField == FIELD_GROUDON)
             {
                 sub_3E5D0();
             }
@@ -1168,22 +1168,22 @@ void sub_4B678(u16 arg0)
     case FIELD_SAPPHIRE:
         sub_50AD4();
         break;
-    case FIELD_2:
+    case FIELD_DUSCLOPS:
         sub_50D48();
         break;
-    case FIELD_3:
+    case FIELD_KECLEON:
         sub_50DE0();
         break;
-    case FIELD_4:
+    case FIELD_KYOGRE:
         sub_50F04();
         break;
-    case FIELD_5:
+    case FIELD_GROUDON:
         sub_50FD4();
         break;
-    case FIELD_6:
+    case FIELD_RAYQUAZA:
         sub_51090();
         break;
-    case FIELD_7:
+    case FIELD_SPHEAL:
         sub_51150();
         break;
     }
@@ -1215,27 +1215,27 @@ void sub_4BC34(void)
         sub_4C290();
         sub_4CA18();
         break;
-    case FIELD_2:
+    case FIELD_DUSCLOPS:
         nullsub_18();
         sub_4CAE8();
         break;
-    case FIELD_3:
+    case FIELD_KECLEON:
         nullsub_18();
         sub_4CB0C();
         break;
-    case FIELD_4:
+    case FIELD_KYOGRE:
         nullsub_18();
         sub_4CB30();
         break;
-    case FIELD_5:
+    case FIELD_GROUDON:
         nullsub_18();
         sub_4CBB4();
         break;
-    case FIELD_6:
+    case FIELD_RAYQUAZA:
         nullsub_18();
         sub_4CC58();
         break;
-    case FIELD_7:
+    case FIELD_SPHEAL:
         nullsub_18();
         sub_4CD60();
         break;
