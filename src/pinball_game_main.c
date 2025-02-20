@@ -61,6 +61,8 @@ extern const u8 gUnknown_083C806C[][0x100];
 extern const u8 gUnknown_084ED0CC[][0x180];
 extern const u8 gUnknown_08449D8C[][0x280];
 extern const u8 gUnknown_084F6B0C[][0x500];
+extern const u8 gUnknown_08490A4C[][0x440];
+extern const s16 gUnknown_086AE5A0[][2];
 
 struct Unk86AD000
 {
@@ -2025,4 +2027,30 @@ void sub_4C808(void)
     DmaCopy16(3, gUnknown_08449D8C[gCurrentPinballGame->unk746], (void *)0x6013300, 0x280);
     var0 = gUnknown_086AD456[gCurrentPinballGame->unk1A5][(gCurrentPinballGame->unk1B4 % 42) / 6];
     DmaCopy16(3, gUnknown_084F6B0C[var0], (void *)0x6013D00, 0x500);
+}
+
+void sub_4CA18(void)
+{
+    s16 index;
+
+    switch (gCurrentPinballGame->unk346)
+    {
+    case 0:
+    case 1:
+    case 2:
+        index = gCurrentPinballGame->unk345;
+        DmaCopy16(3, gUnknown_08490A4C[index], (void *)0x600D900, 0x440);
+        break;
+    case 3:
+    case 4:
+        index = 15;
+        DmaCopy16(3, gUnknown_08490A4C[index], (void *)0x600D900, 0x440);
+        break;
+    case 5:
+        index = gUnknown_086AE5A0[gCurrentPinballGame->unk345][0];
+        DmaCopy16(3, gUnknown_08490A4C[index], (void *)0x600D900, 0x440);
+        break;
+    case 6:
+        break;
+    }
 }

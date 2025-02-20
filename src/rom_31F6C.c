@@ -360,7 +360,7 @@ void sub_327C0(void)
 
     if (gCurrentPinballGame->progressForBonus < 3)
     {
-        if ((gCurrentPinballGame->unk344 & 0xFFFF00) == 0x300)
+        if (gCurrentPinballGame->unk345 == 3 && gCurrentPinballGame->unk346 == 0)
         {
             gCurrentPinballGame->unk728 = 1;
         }
