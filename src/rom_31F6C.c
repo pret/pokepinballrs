@@ -847,7 +847,7 @@ void sub_32F3C(void)
     gCurrentPinballGame->unk394 = 0;
     gCurrentPinballGame->unk396 = 0;
 
-    for(i = 0; i < 3; i++)
+    for (i = 0; i < 3; i++)
     {
         gCurrentPinballGame->unk397[i] = 0;
         gCurrentPinballGame->unk39A[i] = 0;
