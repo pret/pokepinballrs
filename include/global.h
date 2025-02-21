@@ -80,6 +80,7 @@ struct UnkPinballGame1334_unk2C
 	s16 unk2;
 };
 
+// This struct holds data about the ball's velocity, position, etc.
 struct UnkPinballGame1334
 {
 	/*0x00*/ u8 unk0;
@@ -94,10 +95,10 @@ struct UnkPinballGame1334
 	/*0x20*/ u8 filler20[0x8];
 	/*0x28*/ struct UnkPinballGame1334_unk2C unk28;
 	/*0x2C*/ struct UnkPinballGame1334_unk2C unk2C;
-	/*0x30*/ u16 unk30;
-	/*0x32*/ u16 unk32;
-	/*0x34*/ u32 unk34;
-	/*0x38*/ u32 unk38;
+	/*0x30*/ s16 xVelocity;
+	/*0x32*/ s16 yVelocity;
+	/*0x34*/ u32 xPosition; // fixed-point Q_24_8 values?
+	/*0x38*/ u32 yPosition;
 	/*0x3C*/ u8 filler3C[0x8];
 };
 

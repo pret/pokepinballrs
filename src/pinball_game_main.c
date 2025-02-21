@@ -398,11 +398,11 @@ void sub_4A6A0(void)
     case 0:
         gCurrentPinballGame->unk132c->unk10 = 119;
         gCurrentPinballGame->unk132c->unk12 = 279;
-        gCurrentPinballGame->unk132c->unk30 = 0;
-        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->xVelocity = 0;
+        gCurrentPinballGame->unk132c->yVelocity = 0;
         gCurrentPinballGame->unk132c->unk6 = 0;
-        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
-        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->xPosition = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->yPosition = gCurrentPinballGame->unk132c->unk12 << 8;
         gCurrentPinballGame->unk132c->unkE = 128;
         gCurrentPinballGame->unk132c->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
@@ -420,11 +420,11 @@ void sub_4A6A0(void)
     case 1:
         gCurrentPinballGame->unk132c->unk10 = 140;
         gCurrentPinballGame->unk132c->unk12 = 183;
-        gCurrentPinballGame->unk132c->unk30 = 0;
-        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->xVelocity = 0;
+        gCurrentPinballGame->unk132c->yVelocity = 0;
         gCurrentPinballGame->unk132c->unk6 = 0;
-        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
-        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->xPosition = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->yPosition = gCurrentPinballGame->unk132c->unk12 << 8;
         gCurrentPinballGame->unk132c->unkE = 128;
         gCurrentPinballGame->unk132c->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
@@ -436,11 +436,11 @@ void sub_4A6A0(void)
     case 2:
         gCurrentPinballGame->unk132c->unk10 = -28;
         gCurrentPinballGame->unk132c->unk12 = -10;
-        gCurrentPinballGame->unk132c->unk30 = 0;
-        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->xVelocity = 0;
+        gCurrentPinballGame->unk132c->yVelocity = 0;
         gCurrentPinballGame->unk132c->unk6 = 0;
-        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
-        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->xPosition = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->yPosition = gCurrentPinballGame->unk132c->unk12 << 8;
         gCurrentPinballGame->unk132c->unkE = 128;
         gCurrentPinballGame->unk132c->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;

@@ -493,14 +493,14 @@ void sub_329F4(void)
         gCurrentPinballGame->unk132c->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk28--;
-        gCurrentPinballGame->unk132c->unk30 = 0;
-        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->xVelocity = 0;
+        gCurrentPinballGame->unk132c->yVelocity = 0;
         gCurrentPinballGame->unk132c->unk10 = 58;
         gCurrentPinballGame->unk132c->unk12 = 178;
         gCurrentPinballGame->unk132c->unk28.unk0 = gCurrentPinballGame->unk132c->unk10 * 2;
         gCurrentPinballGame->unk132c->unk28.unk2 = gCurrentPinballGame->unk132c->unk12 * 2;
-        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 * 256;
-        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 * 256;
+        gCurrentPinballGame->unk132c->xPosition = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->yPosition = gCurrentPinballGame->unk132c->unk12 << 8;
         
         if (gCurrentPinballGame->unk28 <= 0x31)
         {
@@ -528,8 +528,8 @@ void sub_329F4(void)
         gCurrentPinballGame->unk132c->unk0 = 0;
         gCurrentPinballGame->unk1F = 0;
         gCurrentPinballGame->unk26 = 0x3C;
-        gCurrentPinballGame->unk132c->unk30 = 0x60;
-        gCurrentPinballGame->unk132c->unk32 = 0xC0;
+        gCurrentPinballGame->unk132c->xVelocity = 0x60;
+        gCurrentPinballGame->unk132c->yVelocity = 0xC0;
         gCurrentPinballGame->unk132c->unk10 = 0x3C;
         gCurrentPinballGame->unk132c->unk12 = 0xB4;
         gCurrentPinballGame->unk132c->unk6 = 0;
@@ -569,8 +569,8 @@ void sub_32BE4(void)
         gCurrentPinballGame->unk5F7 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk28--;
-        gCurrentPinballGame->unk132c->unk30 = 0;
-        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->xVelocity = 0;
+        gCurrentPinballGame->unk132c->yVelocity = 0;
         gCurrentPinballGame->unk132c->unk6 = 0;
         if (gCurrentPinballGame->unk28 > 97)
         {
@@ -630,8 +630,8 @@ void sub_32BE4(void)
 
         gCurrentPinballGame->unk132c->unk28.unk0 = gCurrentPinballGame->unk132c->unk10 * 2;
         gCurrentPinballGame->unk132c->unk28.unk2 = gCurrentPinballGame->unk132c->unk12 * 2;
-        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 * 256;
-        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 * 256;
+        gCurrentPinballGame->unk132c->xPosition = gCurrentPinballGame->unk132c->unk10 << 8;
+        gCurrentPinballGame->unk132c->yPosition = gCurrentPinballGame->unk132c->unk12 << 8;
     }
     else
     {
@@ -639,8 +639,8 @@ void sub_32BE4(void)
         gCurrentPinballGame->unk1F = 0;
         gCurrentPinballGame->unk26 = 60;
         gCurrentPinballGame->unk132c->unk6 = 0;
-        gCurrentPinballGame->unk132c->unk30 = 0xFF9A;
-        gCurrentPinballGame->unk132c->unk32 = 200;
+        gCurrentPinballGame->unk132c->xVelocity = -0x66;
+        gCurrentPinballGame->unk132c->yVelocity = 0xC8;
         sub_11B0(7);
         gCurrentPinballGame->unk132c->unk6 = 0;
         gCurrentPinballGame->unk132c->unk10 = 0xAB;
