@@ -50,7 +50,7 @@ void ResetVCountIntrFunc(void);
 
 void TitlescreenMain(void);
 void LoadTitlescreenGraphics(void);
-void sub_10AC0(void);
+void InitTitlescreenStates(void);
 void TitleScreen1_WaitForStartButton(void);
 void TitleScreen2_8010CF0(void);
 void TitleScreen9_8010D84(void);

@@ -1,10 +1,11 @@
 #include "global.h"
-#include "constants/bg_music.h"
 #include "functions.h"
 #include "link.h"
 #include "main.h"
 #include "m4a.h"
 #include "variables.h"
+#include "constants/bg_music.h"
+#include "constants/fields.h"
 
 extern StateFunc gHighScoresStateFuncs[15];
 extern StateFunc gIdleHighScoresStateFuncs[15];
@@ -141,7 +142,7 @@ void sub_CFD4(void)
     {
         gUnknown_02002858.unk0 = gMain.unk5C;
         gUnknown_02002858.unk4 = gMain.unk58;
-        if(gMain.selectedField == 1)
+        if(gMain.selectedField == FIELD_SAPPHIRE)
         {
             gUnknown_02002858.unkB = 1;
             gUnknown_02002882 = 0xF0;
@@ -748,7 +749,7 @@ void sub_DEB4(void)
     gUnknown_02002858.unkB = 0;
     gUnknown_02002882 = 0;
     gUnknown_02002880 = -1;
-    gUnknown_02002858.unk24 = 0;
+    gUnknown_02002858.unk24 = STATE_INTRO;
     gUnknown_02002858.unkA = 0;
     gMain.bgOffsets[3].xOffset = gUnknown_02002882;
     gMain.bgOffsets[2].xOffset = gUnknown_02002882;
@@ -795,7 +796,7 @@ void sub_DF68(void)
         if (gUnknown_02002858.unk8 > 600)
         {
             gUnknown_02002858.unk8 = 0;
-            gUnknown_02002858.unk24 = 0;
+            gUnknown_02002858.unk24 = STATE_INTRO;
             gMain.subState++;
         }
         break;
@@ -807,7 +808,7 @@ void sub_DF68(void)
     if (JOY_NEW(START_BUTTON | A_BUTTON | B_BUTTON))
     {
         m4aSongNumStart(SE_UNKNOWN_0x66);
-        gUnknown_02002858.unk24 = 1;
+        gUnknown_02002858.unk24 = STATE_TITLE;
         gMain.subState++;
     }
 }
