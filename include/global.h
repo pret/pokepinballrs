@@ -101,17 +101,26 @@ struct UnkPinballGame1334
 	/*0x3C*/ u8 filler3C[0x8];
 };
 
+struct UnkPinballGame3C4
+{
+	u16 unk0;
+	u16 unk2;
+};
+
 struct PinballGame
 {
 	/*0x000*/ u32 unk0;
 	/*0x004*/ u8 newButtonActions[5]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
 	/*0x009*/ u8 releasedButtonActions[5];
 	/*0x00E*/ u8 heldButtonActions[5];
-	/*0x013*/ s8 progressForBonus; // Current number of Pokéballs filled by catch mode and evo mode
+	/*0x013*/ s8 unk13; // Current number of Pokéballs filled by catch mode and evo mode (?)
 	/*0x014*/ s8 unk14;
-	/*0x015*/ u8 filler15;
+	/*0x015*/ u8 unk15;
 	/*0x016*/ u8 unk16;
-	/*0x017*/ u8 filler17[0x6];
+	/*0x017*/ u8 unk17;
+	/*0x018*/ u16 unk18;
+	/*0x01A*/ u8 unk1A;
+	/*0x01B*/ u8 filler1B[0x2];
 	/*0x01D*/ u8 unk1D;
 	/*0x01E*/ u8 unk1E;
 	/*0x01F*/ u8 unk1F;
@@ -141,7 +150,8 @@ struct PinballGame
 	/*0x066*/ u16 unk66;
 	/*0x068*/ s16 unk68;
 	/*0x06A*/ s16 unk6A;
-	/*0x06C*/ u8 filler6C[0x3];
+	/*0x06C*/ u16 bonusTime; //Additional time to be added to next timed event (Only for bonus fields or all timers?)
+	/*0x06E*/ u8 filler6E[0x1];
 	/*0x06F*/ s8 unk6F;
 	/*0x070*/ u8 filler70[0x5C];
 	/*0x0CC*/ u16 unkCC;
@@ -203,7 +213,9 @@ struct PinballGame
 	/*0x283*/ u8 bonusLevelCount; //how many bonus levels have been completed
 	/*0x284*/ u8 filler284[0xC];
 	/*0x290*/ u32 unk290;
-	/*0x294*/ u8 filler294[0x4];
+	/*0x294*/ u8 unk294;
+	/*0x295*/ u8 unk295;
+	/*0x296*/ u16 bonusTimer; //Timer for events (Only bonus fields or all events?)
 	/*0x298*/ u16 unk298;
 	/*0x29A*/ u8 filler29A[0x2];
 	/*0x29C*/ u16 unk29C;
@@ -229,9 +241,64 @@ struct PinballGame
 	/*0x36A*/ u8 unk36A[0x2];
 	/*0x36C*/ u8 unk36C[0x2];
 	/*0x36E*/ u16 unk36E[0x2];
-	/*0x372*/ u8 filler370[0x6A];
+	/*0x372*/ u8 filler372[0x11];
+	/*0x383*/ u8 unk383;
+	/*0x384*/ u8 unk384;
+	/*0x385*/ u8 unk385;
+	/*0x386*/ u8 unk386;
+	/*0x387*/ u8 unk387;
+	/*0x388*/ u8 unk388;
+	/*0x389*/ u8 filler389[0x9];
+	/*0x392*/ u16 unk392;
+	/*0x394*/ u16 unk394;
+	/*0x396*/ u8 unk396;
+	/*0x397*/ u8 unk397[3];
+	/*0x39A*/ u8 unk39A[3];
+	/*0x39D*/ u8 unk39D[3];
+	/*0x3A0*/ u8 unk3A0[3];
+	/*0x3A3*/ u8 unk3A3[3];
+	/*0x3A6*/ u8 unk3A6[3];
+	/*0x3A9*/ u8 unk3A9[3];
+	/*0x3AC*/ u8 unk3AC[3];
+	/*0x3B0*/ u16 unk3B0[3];
+	/*0x3B6*/ u16 unk3B6[3];
+	/*0x3BC*/ u16 unk3BC[3];
+	/*0x3C2*/ u8 filler3C2[0x2];
+	/*0x3C4*/ struct UnkPinballGame3C4 unk3C4[3];
+	/*0x3D0*/ struct UnkPinballGame3C4 unk3D0[3];
 	/*0x3DC*/ s8 unk3DC;
-	/*0x3DE*/ u8 filler3DE[0x1BA];
+	/*0x3DD*/ u8 unk3DD;
+	/*0x3DE*/ u8 unk3DE;
+	/*0x3DF*/ u8 unk3DF;
+	/*0x3E0*/ u8 unk3E0;
+	/*0x3E1*/ u8 unk3E1;
+	/*0x3E2*/ u16 unk3E2;
+	/*0x3E4*/ u16 unk3E4;
+	/*0x3E6*/ u16 unk3E6;
+	/*0x3E8*/ u16 unk3E8;
+	/*0x3EA*/ u16 unk3EA;
+	/*0x3EC*/ u16 unk3EC;
+	/*0x3EE*/ u16 unk3EE;
+	/*0x3F0*/ u16 unk3F0;
+	/*0x3F2*/ u16 unk3F2;
+	/*0x3F4*/ u16 unk3F4;
+	/*0x3F6*/ u8 filler3F6[0x2];
+	/*0x3F8*/ s16 unk3F8;
+	/*0x3FA*/ u8 filler3FA[0x2];
+	/*0x3FC*/ s16 unk3FC;
+	/*0x3FE*/ u8 filler3FE[0x2];
+	/*0x400*/ s16 unk400;
+	/*0x402*/ u8 filler402[0x2];
+	/*0x404*/ s16 unk404;
+	/*0x406*/ u8 filler406[0x2];
+	/*0x408*/ s16 unk408;
+	/*0x40A*/ u8 filler40A[0x2];
+	/*0x40C*/ s16 unk40C;
+	/*0x40E*/ u8 filler40E[0x2];
+	/*0x410*/ s16 unk410;
+	/*0x412*/ u8 filler412[0x2];
+	/*0x414*/ s8 unk414;
+	/*0x415*/ u8 filler415[0x183];
 	/*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
 	/*0x59A*/ u8 filler59A[0x2];
 	/*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
@@ -327,5 +394,6 @@ struct Unk02031520
 extern struct PinballGame *gCurrentPinballGame;
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
+extern s32 gUnknown_081B36A4[64];
 
 #endif // GUARD_GLOBAL_H

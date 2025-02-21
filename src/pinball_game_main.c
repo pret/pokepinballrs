@@ -1135,7 +1135,7 @@ void sub_4B678(u16 arg0)
     DmaCopy16(3, gUnknown_03005C00, (void *)0x6002000, 0x1000);
     if (gMain.unk2C)
     {
-        if (gCurrentPinballGame->progressForBonus == 6)
+        if (gCurrentPinballGame->unk13 == 6)
         {
             for (j = 0; j <= gCurrentPinballGame->unk298; j++)
             {
@@ -2089,7 +2089,7 @@ void sub_4CB30(void)
 
 void sub_4CBB4(void)
 {
-    if (gCurrentPinballGame->progressForBonus < 2)
+    if (gCurrentPinballGame->unk13 < 2)
     {
         DmaCopy16(3, gUnknown_0849F1CC, (void *)0x6015800, 0x2000);
     }
@@ -2110,11 +2110,11 @@ void sub_4CC58(void)
 {
     u8 var0;
 
-    if (gCurrentPinballGame->progressForBonus == 0)
+    if (gCurrentPinballGame->unk13 == 0)
     {
         DmaCopy16(3, gUnknown_083C5A2C, (void *)0x6015800, 0x2800);
     }
-    else if (gCurrentPinballGame->progressForBonus == 1)
+    else if (gCurrentPinballGame->unk13 == 1)
     {
         DmaCopy16(3, gUnknown_084A856C, (void *)0x6015800, 0x1C00);
     }
