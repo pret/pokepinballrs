@@ -35,8 +35,8 @@ EWRAM_DATA u8 gUnknown_0202BEE8 = 0;
 extern void (*const gBonusFieldSelectStateFuncs[])(void);
 
 extern const struct SpriteSet *const gUnknown_086A4C80[16];
-extern const struct Coord16 gUnknown_086A4CC0[];
-extern const struct Coord16 gUnknown_086A4CD8[];
+extern const struct UCoords16 gUnknown_086A4CC0[];
+extern const struct UCoords16 gUnknown_086A4CD8[];
 extern const u8 gBonusFieldMenuSelectionToField[];
 
 extern const u8 gUnknown_0807AAE0[];

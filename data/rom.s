@@ -1062,13 +1062,13 @@ gUnknown_08118680:: @ 0x08118680
 .include "data/graphics/titlescreen.inc"
 
 gUnknown_08137900:: @ 0x08137900
-	.incbin "baserom.gba", 0x137900, 0x8
+	.2byte 1, 1, 1, 0
 
 gUnknown_08137908:: @ 0x08137908
-	.incbin "baserom.gba", 0x137908, 0x8
+	.2byte 1, 0, 1, 0
 
 gUnknown_08137910:: @ 0x08137910
-	.incbin "baserom.gba", 0x137910, 0x8
+	.2byte 1, 0, 0, 0
 
 gIdlePinballGameStateFuncs:: @ 0x08137918
 	.4byte sub_19048
@@ -2925,10 +2925,41 @@ gUnknown_086B03BC:: @ 0x086B03BC
 	.incbin "baserom.gba", 0x6B03BC, 0x3C0
 
 gUnknown_086B077C:: @ 0x086B077C
-	.incbin "baserom.gba", 0x6B077C, 0xE0
+	.4byte sub_47100, sub_47160
+	.4byte sub_4D6C4, sub_4D960
+	.4byte sub_4D6C4, sub_4DBFC
+	.4byte sub_19A20, sub_19B10
+	.4byte sub_326F4, sub_3276C
+	.4byte sub_32F3C, sub_33130
+	.4byte sub_35860, sub_35AA4
+	.4byte sub_383E4, sub_3869C
+	.4byte sub_3B120, sub_3B49C
+	.4byte sub_3E79C, sub_3EB2C
+	.4byte sub_42E48, sub_43228
+	.4byte sub_19304, sub_19490
+	.4byte sub_19304, sub_19734
+	.4byte sub_11B9C, sub_11C98
+	.4byte sub_11B9C, sub_11F88
+	.4byte sub_1332C, sub_1333C
+	.4byte nullsub_19, sub_12524
+	.4byte nullsub_19, sub_12BF8
+	.4byte sub_4CEA8, sub_4CEB4
+	.4byte sub_50848, sub_50918
+	.4byte sub_50AD4, sub_50B80
+	.4byte sub_50D48, sub_50DB8
+	.4byte sub_50DE0, nullsub_20
+	.4byte sub_50F04, sub_50FAC
+	.4byte sub_50FD4, sub_51068
+	.4byte sub_51090, sub_51128
+	.4byte sub_51150, sub_511F8
+	.4byte nullsub_19, nullsub_19
 
 gUnknown_086B085C:: @ 0x086B085C
-	.incbin "baserom.gba", 0x6B085C, 0x28
+	.4byte sub_4ABEC
+	.4byte sub_4AE8C
+
+gUnknown_086B0864:: @ 0x086B0664
+	.incbin "baserom.gba", 0x6B0864, 0x20
 
 gUnknown_086B0884:: @ 0x086B0884
 	.incbin "baserom.gba", 0x6B0884, 0x20

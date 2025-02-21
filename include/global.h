@@ -74,39 +74,32 @@ struct BgOffsets
     u16 yOffset;
 };
 
-struct UnkPinballGame1334_unk2C
-{
-	s16 unk0;
-	s16 unk2;
-};
-
+// This struct holds data about the ball's velocity, position, etc.
 struct UnkPinballGame1334
 {
 	/*0x00*/ u8 unk0;
-	/*0x01*/ u8 filler1[0x5];
+	/*0x01*/ u8 unk1;
+	/*0x02*/ u8 filler2[0x4];
 	/*0x06*/ u16 unk6;
 	/*0x08*/ u8 filler8[0x6];
 	/*0x0E*/ u16 unkE;
-	/*0x10*/ s16 unk10;
-	/*0x12*/ s16 unk12;
+	/*0x10*/ struct Coords16 unk10;
 	/*0x14*/ u8 filler14[0xB];
 	/*0x1F*/ u8 unk1F;
 	/*0x20*/ u8 filler20[0x8];
-	/*0x28*/ struct UnkPinballGame1334_unk2C unk28;
-	/*0x2C*/ struct UnkPinballGame1334_unk2C unk2C;
-	/*0x30*/ u16 unk30;
-	/*0x32*/ u16 unk32;
-	/*0x34*/ u32 unk34;
-	/*0x38*/ u32 unk38;
+	/*0x28*/ struct Coords16 unk28;
+	/*0x2C*/ struct Coords16 unk2C;
+	/*0x30*/ struct Coords16 velocity;
+	/*0x34*/ struct Coords32 position; // fixed-point Q_24_8 values
 	/*0x3C*/ u8 filler3C[0x8];
 };
 
 struct PinballGame
 {
 	/*0x000*/ u32 unk0;
-	/*0x004*/ u8 unk4[5];
-	/*0x009*/ u8 unk9[5];
-	/*0x00E*/ u8 unkE[5];
+	/*0x004*/ u8 newButtonActions[5]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
+	/*0x009*/ u8 releasedButtonActions[5];
+	/*0x00E*/ u8 heldButtonActions[5];
 	/*0x013*/ s8 progressForBonus; // Current number of Pokéballs filled by catch mode and evo mode
 	/*0x014*/ s8 unk14;
 	/*0x015*/ u8 filler15;
@@ -222,18 +215,23 @@ struct PinballGame
 	/*0x306*/ u8 unk306;
 	/*0x307*/ u8 filler307[0x5];
 	/*0x30C*/ u16 unk30C;
-	/*0x30E*/ u8 filler30E[0x36];
-	/*0x344*/ u32 unk344;
-	/*0x348*/ u8 filler348[0x22];
+	/*0x30E*/ u8 filler30E[0x37];
+	/*0x345*/ s8 unk345;
+	/*0x346*/ s8 unk346;
+	/*0x348*/ u8 filler347[0x23];
 	/*0x36A*/ u8 unk36A[0x2];
 	/*0x36C*/ u8 unk36C[0x2];
 	/*0x36E*/ u16 unk36E[0x2];
-	/*0x372*/ u8 filler370[0x226];
+	/*0x372*/ u8 filler370[0x6A];
+	/*0x3DC*/ s8 unk3DC;
+	/*0x3DE*/ u8 filler3DE[0x1BA];
 	/*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
 	/*0x59A*/ u8 filler59A[0x2];
 	/*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
 	/*0x59E*/ u16 lastEggSpecies; // Previous hatch/evo mode species?
-	/*0x5A0*/ u8 filler5A0[0x50];
+	/*0x5A0*/ u8 filler5A0[0x12];
+	/*0x5B2*/ u8 unk5B2;
+	/*0x5B3*/ u8 filler5B3[0x3D];
 	/*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
 	/*0x5F2*/ u8 filler5F2[0x4];
 	/*0x5F6*/ s8 unk5F6;
@@ -259,7 +257,9 @@ struct PinballGame
 	/*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
 	/*0x73E*/ u8 filler73E[0x8];
 	/*0x746*/ u8 unk746;
-	/*0x747*/ u8 filler747[0x5];
+	/*0x747*/ u8 filler747[0x2];
+	/*0x749*/ u8 unk749;
+	/*0x74A*/ u8 filler74A[0x2];
 	/*0x74C*/ volatile u8 unk74C[2][OBJ_PLTT_SIZE];
 	/*0xB4C*/ volatile u8 unkB4C[2][BG_PLTT_SIZE];
 	/*0xF4C*/ struct SongHeader *unkF4C;
@@ -315,7 +315,9 @@ struct Unk02031520
 	/*0x0A*/ u8 fillerA[0x2];
 	/*0x0C*/ struct PinballGame *unkC;
 	/*0x10*/ struct Unk02031520_unk10 *unk10;
-	/*0x14*/ u8 filler14[0x18];
+	/*0x14*/ u8 filler14[0x12];
+	/*0x26*/ s16 unk26;
+	/*0x28*/ s16 unk28;
 	/*0x2C*/ u8 *unk2C;
 };
 
