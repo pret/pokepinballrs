@@ -143,7 +143,7 @@ struct PinballGame
 	/*0x066*/ u16 unk66;
 	/*0x068*/ s16 unk68;
 	/*0x06A*/ s16 unk6A;
-	/*0x06C*/ u16 bonusTime; //Additional time to be added to next timed event (Only for bonus fields or all timers?)
+	/*0x06C*/ u16 timerBonus; //Additional time to be added to next timed event (Only for bonus fields or all timers?)
 	/*0x06E*/ u8 filler6E[0x1];
 	/*0x06F*/ s8 unk6F;
 	/*0x070*/ u8 filler70[0x5C];
@@ -208,7 +208,7 @@ struct PinballGame
 	/*0x290*/ u32 unk290;
 	/*0x294*/ u8 unk294;
 	/*0x295*/ u8 unk295;
-	/*0x296*/ u16 bonusTimer; //Timer for events (Only bonus fields or all events?)
+	/*0x296*/ u16 eventTimer; //Timer for events (Only bonus fields or all events?)
 	/*0x298*/ u16 unk298;
 	/*0x29A*/ u8 filler29A[0x2];
 	/*0x29C*/ u16 unk29C;

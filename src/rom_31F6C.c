@@ -10,7 +10,7 @@
 extern const u16 gWildMonLocations[][2][8];
 extern const u16 gEggLocations[2][26];
 
-#define MODE_TIME 7200 //2 minutes, 60FPS
+#define EVENT_INITIAL_TIME 7200 //2 minutes, 60FPS
 
 static inline u32 GetTimeAdjustedRandom()
 {
@@ -835,8 +835,8 @@ void sub_32F3C(void)
     gCurrentPinballGame->unk17 = 0;
     gCurrentPinballGame->unk13 = 0;
     gCurrentPinballGame->unk294 = 1;
-    gCurrentPinballGame->bonusTimer = gCurrentPinballGame->bonusTime + MODE_TIME;
-    gCurrentPinballGame->bonusTime = 0;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + EVENT_INITIAL_TIME;
+    gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->unk383 = 0;
     gCurrentPinballGame->unk388 = 3;
     gCurrentPinballGame->unk132c->unk0 = 1;
