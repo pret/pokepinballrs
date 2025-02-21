@@ -396,13 +396,13 @@ void sub_4A6A0(void)
     switch (gCurrentPinballGame->unk282)
     {
     case 0:
-        gCurrentPinballGame->unk132c->unk10 = 119;
-        gCurrentPinballGame->unk132c->unk12 = 279;
-        gCurrentPinballGame->unk132c->unk30 = 0;
-        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk10.x = 119;
+        gCurrentPinballGame->unk132c->unk10.y = 279;
+        gCurrentPinballGame->unk132c->velocity.x = 0;
+        gCurrentPinballGame->unk132c->velocity.y = 0;
         gCurrentPinballGame->unk132c->unk6 = 0;
-        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
-        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->position.x = gCurrentPinballGame->unk132c->unk10.x << 8;
+        gCurrentPinballGame->unk132c->position.y = gCurrentPinballGame->unk132c->unk10.y << 8;
         gCurrentPinballGame->unk132c->unkE = 128;
         gCurrentPinballGame->unk132c->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
@@ -418,13 +418,13 @@ void sub_4A6A0(void)
         gCurrentPinballGame->unk4E = 215;
         break;
     case 1:
-        gCurrentPinballGame->unk132c->unk10 = 140;
-        gCurrentPinballGame->unk132c->unk12 = 183;
-        gCurrentPinballGame->unk132c->unk30 = 0;
-        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk10.x = 140;
+        gCurrentPinballGame->unk132c->unk10.y = 183;
+        gCurrentPinballGame->unk132c->velocity.x = 0;
+        gCurrentPinballGame->unk132c->velocity.y = 0;
         gCurrentPinballGame->unk132c->unk6 = 0;
-        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
-        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->position.x = gCurrentPinballGame->unk132c->unk10.x << 8;
+        gCurrentPinballGame->unk132c->position.y = gCurrentPinballGame->unk132c->unk10.y << 8;
         gCurrentPinballGame->unk132c->unkE = 128;
         gCurrentPinballGame->unk132c->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
@@ -434,13 +434,13 @@ void sub_4A6A0(void)
         gCurrentPinballGame->unk4E = 118;
         break;
     case 2:
-        gCurrentPinballGame->unk132c->unk10 = -28;
-        gCurrentPinballGame->unk132c->unk12 = -10;
-        gCurrentPinballGame->unk132c->unk30 = 0;
-        gCurrentPinballGame->unk132c->unk32 = 0;
+        gCurrentPinballGame->unk132c->unk10.x = -28;
+        gCurrentPinballGame->unk132c->unk10.y = -10;
+        gCurrentPinballGame->unk132c->velocity.x = 0;
+        gCurrentPinballGame->unk132c->velocity.y = 0;
         gCurrentPinballGame->unk132c->unk6 = 0;
-        gCurrentPinballGame->unk132c->unk34 = gCurrentPinballGame->unk132c->unk10 << 8;
-        gCurrentPinballGame->unk132c->unk38 = gCurrentPinballGame->unk132c->unk12 << 8;
+        gCurrentPinballGame->unk132c->position.x = gCurrentPinballGame->unk132c->unk10.x << 8;
+        gCurrentPinballGame->unk132c->position.y = gCurrentPinballGame->unk132c->unk10.y << 8;
         gCurrentPinballGame->unk132c->unkE = 128;
         gCurrentPinballGame->unk132c->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
