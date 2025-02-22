@@ -486,7 +486,7 @@ gUnknown_0202C584: @ 0x0202C584
 	.space 0x4
 gUnknown_0202C588: @ 0x202C588
 	.space 0x4
-gUnknown_0202C58C: @ 0x0202C58C
+gPokedexScrollWaitFrames: @ 0x0202C58C
 	.space 0x4
 gUnknown_0202C590: @ 0x0202C590
 	.space 0x4

@@ -338,7 +338,7 @@ extern void sub_525CC(s8);
 extern void PokedexMain(void);
 //extern ? LoadPokedexGraphics();
 extern void sub_3FAC(void);
-//extern ? sub_4150();
+//extern ? Pokedex_HandleListInput();
 //extern ? sub_43D4();
 //extern ? sub_4428();
 //extern ? sub_45A4();

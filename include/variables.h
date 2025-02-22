@@ -226,7 +226,7 @@ extern s16 gUnknown_0202BF00;
 extern s16 gUnknown_0202A57C;
 extern s16 gUnknown_0201A4F0;
 extern s16 gUnknown_0202BE20;
-extern s16 gUnknown_0202C58C;
+extern s16 gPokedexScrollWaitFrames;
 extern s8 gUnknown_02019C24;
 extern s16 gUnknown_0202BF0C;
 extern s16 gUnknown_0201A440;

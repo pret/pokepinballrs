@@ -696,21 +696,21 @@ gUnknown_0805C840:: @ 0x0805C840
 	.incbin "baserom.gba", 0x5C840, 0x40
 
 gPokedexStateFuncs:: @ 0x0805C880
-	.4byte LoadPokedexGraphics
-	.4byte sub_4150
-	.4byte sub_43D4
-	.4byte sub_4428
-	.4byte sub_4860
-	.4byte sub_45A4
-	.4byte sub_49A8
-	.4byte sub_49D0
-	.4byte sub_4B34
-	.4byte sub_4BB4
-	.4byte sub_4B10
-	.4byte sub_4C80
-	.4byte sub_4D50
+	.4byte LoadPokedexGraphics      @ POKEDEX_STATE_LOAD_GRAPHICS
+	.4byte Pokedex_HandleListInput  @ POKEDEX_STATE_HANDLE_LIST_INPUT
+	.4byte sub_43D4                 @ POKEDEX_STATE_2
+	.4byte sub_4428                 @ POKEDEX_STATE_3
+	.4byte sub_4860                 @ POKEDEX_STATE_4
+	.4byte sub_45A4                 @ POKEDEX_STATE_5
+	.4byte sub_49A8                 @ POKEDEX_STATE_6
+	.4byte sub_49D0                 @ POKEDEX_STATE_7
+	.4byte sub_4B34                 @ POKEDEX_STATE_8
+	.4byte sub_4BB4                 @ POKEDEX_STATE_9
+	.4byte sub_4B10                 @ POKEDEX_STATE_10
+	.4byte sub_4C80                 @ POKEDEX_STATE_11
+	.4byte sub_4D50                 @ POKEDEX_STATE_12
 
-gUnknown_0805C8B4:: @ 0x0805C8B4
+gPokedexEntries:: @ 0x0805C8B4
 	.incbin "baserom.gba", 0x5C8B4, 0x18
 
 gUnknown_0805C8CC:: @ 0x0805C8CC
