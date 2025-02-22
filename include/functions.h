@@ -349,7 +349,7 @@ extern void sub_3FAC(void);
 //extern ? sub_4B34();
 //extern ? sub_4BB4();
 //extern ? sub_4C80();
-//extern ? sub_4D50();
+//extern ? Pokedex_ReturnToTitle();
 //extern ? sub_70E0();
 //extern ? sub_71DC();
 //extern ? sub_88E4();

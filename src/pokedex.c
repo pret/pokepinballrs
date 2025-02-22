@@ -26,7 +26,7 @@ enum PokedexStates
     POKEDEX_STATE_9,
     POKEDEX_STATE_10,
     POKEDEX_STATE_11,
-    POKEDEX_STATE_12,
+    POKEDEX_STATE_RETURN_TO_TITLE,
 };
 
 void sub_5174(void);
@@ -321,7 +321,7 @@ void Pokedex_HandleListInput(void)
         else if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
-            gMain.subState = POKEDEX_STATE_12;
+            gMain.subState = POKEDEX_STATE_RETURN_TO_TITLE;
         }
         else if (JOY_NEW(START_BUTTON))
         {
@@ -747,13 +747,13 @@ void sub_4C80(void)
     }
 }
 
-void sub_4D50(void)
+void Pokedex_ReturnToTitle(void)
 {
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
 
-    gAutoDisplayTitlescreenMenu = 1;
+    gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(STATE_TITLE);
 }
 
@@ -1002,8 +1002,8 @@ void sub_51FC(void)
     group8 = &gUnknown_0200B3B8[24];
     group9 = &gUnknown_0200B3B8[25 + gUnknown_02019C28 * 2 + gUnknown_0202C5AC];
 
-    group0->available = 1;
-    group1->available = 1;
+    group0->available = TRUE;
+    group1->available = TRUE;
     group2->available = gUnknown_0202A55C;
     group3->available = gUnknown_0202A568[0];
     group4->available = gUnknown_0202A568[1];
@@ -1186,10 +1186,10 @@ void sub_51FC(void)
         gUnknown_0202BEE0 = 1 - gUnknown_0202BEE0;
     }
 
-    group5->available = 0;
-    group6->available = 0;
-    group7->available = 0;
-    group9->available = 0;
+    group5->available = FALSE;
+    group6->available = FALSE;
+    group7->available = FALSE;
+    group9->available = FALSE;
 }
 
 static void sub_599C(void)
@@ -1215,12 +1215,12 @@ static void sub_599C(void)
     group7 = &gUnknown_0200B3B8[17 + gUnknown_0202BEFC];
     group5 = &gUnknown_0200B3B8[24];
 
-    group0->available = 1;
-    group1->available = 1;
+    group0->available = TRUE;
+    group1->available = TRUE;
     group2->available = gUnknown_0202A55C;
     group3->available = gUnknown_0202A568[0];
     group4->available = gUnknown_0202A568[1];
-    group6->available = 0;
+    group6->available = FALSE;
     group7->available = gUnknown_0202BEC4;
     group5->available = gUnknown_0202C590;
     sub_2414(gUnknown_086A6148, 29, group0);
@@ -1328,7 +1328,7 @@ static void sub_599C(void)
         }
     }
 
-    group7->available = 0;
+    group7->available = FALSE;
 }
 
 static void sub_5E60(void)

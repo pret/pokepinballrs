@@ -699,7 +699,7 @@ void sub_DD4C(void)
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
-    gAutoDisplayTitlescreenMenu = 1;
+    gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(STATE_TITLE);
 }
 
@@ -922,7 +922,7 @@ void sub_E3A8(void)
     struct SpriteGroup *spriteGroup;
 
     spriteGroup = &gUnknown_0200B3B8[gUnknown_02002858.unk12];
-    spriteGroup->available = 1;
+    spriteGroup->available = TRUE;
     LoadSpriteSets(gUnknown_086A7DA8, 2, gUnknown_0200B3B8);
 
     spriteGroup->baseX = gUnknown_080797F0[gUnknown_02002858.unkB][gUnknown_02002858.unkC].x + gUnknown_02002858.unk10 * 8;
@@ -933,7 +933,7 @@ void sub_E3A8(void)
         gOamBuffer[spriteGroup->oam[i].oamId].y = spriteGroup->oam[i].yOffset + spriteGroup->baseY;
     }
 
-    spriteGroup->available = 0;
+    spriteGroup->available = FALSE;
 }
 
 extern s8 gUnknown_0200287D;
@@ -978,8 +978,8 @@ void sub_E464(void)
 
     if (gUnknown_02002882 == 0)
     {
-        spriteGroups->available = 1;
-        spriteGroup2->available = 0;
+        spriteGroups->available = TRUE;
+        spriteGroup2->available = FALSE;
         spriteGroup3->available = gUnknown_0201B178;
         spriteGroup4->available = var1_02002858->unk26;
         LoadSpriteSets(gUnknown_086A7DB0, 9, spriteGroups);
@@ -1021,8 +1021,8 @@ void sub_E464(void)
     }
     else if (gUnknown_02002882 == 240)
     {
-        spriteGroup1->available = 0;
-        spriteGroup2->available = 1;
+        spriteGroup1->available = FALSE;
+        spriteGroup2->available = TRUE;
         spriteGroup3->available = gUnknown_0201B178;
         spriteGroup4->available = var1_02002858->unk26;
         LoadSpriteSets(gUnknown_086A7DB0, 2, gUnknown_0200B3B8);
@@ -1064,13 +1064,13 @@ void sub_E464(void)
     }
     else
     {
-        spriteGroup1->available = 0;
-        spriteGroup2->available = 0;
+        spriteGroup1->available = FALSE;
+        spriteGroup2->available = FALSE;
         LoadSpriteSets(gUnknown_086A7DB0, 9, gUnknown_0200B3B8);
     }
 
-    spriteGroup3->available = 0;
-    spriteGroup4->available = 0;
+    spriteGroup3->available = FALSE;
+    spriteGroup4->available = FALSE;
 }
 #else
 NAKED
@@ -1598,7 +1598,7 @@ void sub_E860(void)
         }
     }
 
-    spriteGroup->available = 0;
+    spriteGroup->available = FALSE;
 }
 
 void sub_E908(void)

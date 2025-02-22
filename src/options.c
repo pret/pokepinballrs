@@ -518,7 +518,7 @@ void sub_51C60(void)
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
-    gAutoDisplayTitlescreenMenu = 1;
+    gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(STATE_TITLE);
 }
 

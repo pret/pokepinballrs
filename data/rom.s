@@ -708,7 +708,7 @@ gPokedexStateFuncs:: @ 0x0805C880
 	.4byte sub_4BB4                 @ POKEDEX_STATE_9
 	.4byte sub_4B10                 @ POKEDEX_STATE_10
 	.4byte sub_4C80                 @ POKEDEX_STATE_11
-	.4byte sub_4D50                 @ POKEDEX_STATE_12
+	.4byte Pokedex_ReturnToTitle    @ POKEDEX_STATE_RETURN_TO_TITLE
 
 gPokedexEntries:: @ 0x0805C8B4
 	.incbin "baserom.gba", 0x5C8B4, 0x18
