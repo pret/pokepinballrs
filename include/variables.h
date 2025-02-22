@@ -4,7 +4,10 @@
 #include "gba/gba.h"
 #include "gba/m4a_internal.h"
 #include "types.h"
+#include "constants/areas.h"
+#include "constants/fields.h"
 #include "constants/high_scores.h"
+#include "constants/pinball_game.h"
 
 // Place all external variable declarations in this file
 
@@ -80,7 +83,7 @@ extern s16 gUnknown_0202BEEC;
 //extern ? gPokemonCrySong;
 //extern ? gMPlayInfo_BGM;
 //extern ? gMPlayMemAccArea;
-extern const u16 gWildMonLocations[][2][8];
+extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const s16 gUnknown_08055C44[];
 extern const struct OamData gEmptyOamData[128];
 extern const u8 gUnknown_08058048[];

@@ -56,7 +56,7 @@ struct unkStruct_2002858
 
 struct unkStruct_2002858 gUnknown_02002858;
 
-extern struct HighScoreEntry gUnknown_0202C610[2][NUM_HIGH_SCORES];
+extern struct HighScoreEntry gUnknown_0202C610[MAIN_FIELD_COUNT][NUM_HIGH_SCORES];
 extern struct HighScoreEntry gUnknown_0202C550[2];
 extern u8 gUnknown_0809AFC0[];
 extern u8 gUnknown_080947A0[];
@@ -107,7 +107,7 @@ void LoadHighScoreGraphics(void)
 void sub_CFD4(void)
 {
     int i, j, k;
-    for(i = 0; i < 2; i++)
+    for(i = 0; i < MAIN_FIELD_COUNT; i++)
     {
         for(j = 0; j < NUM_HIGH_SCORES; j++) 
         {
@@ -115,7 +115,7 @@ void sub_CFD4(void)
                 gUnknown_0202C610[i][j].data.raw[k] = gMain_saveData.highScores[i][j].data.raw[k];
         }
     }
-    for(i = 0; i < 2; i++)
+    for(i = 0; i < MAIN_FIELD_COUNT; i++)
     {
         for(j = 0; j <  HIGH_SCORE_NAME_LENGTH + 2; j++)
         {
@@ -499,7 +499,7 @@ void sub_D664(void)
             for (i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
                 gUnknown_0201A500[i] = gUnknown_0202C610[gUnknown_02002858.unkB][gUnknown_02002858.unkC].data.parts.name[i];
 
-            for (i = 0; i < 2; i++)
+            for (i = 0; i < MAIN_FIELD_COUNT; i++)
             {
                 for (j = 0; j < NUM_HIGH_SCORES; j++)
                 {
@@ -616,7 +616,7 @@ void sub_DB70(void)
         gUnknown_0202BEBC = 0;
         sub_2568();
         DisableSerial();
-        for (i = 0; i < 2; i++)
+        for (i = 0; i < MAIN_FIELD_COUNT; i++)
         {
             for (j = 0; j < 6; j++)
             {
@@ -651,7 +651,7 @@ void sub_DBF4(void)
         gUnknown_0202BEBC = 0;
         gUnknown_0202BED8 = sub_F4FC(0);
         gUnknown_0201B170 = sub_F4FC(1);
-        for (i = 0; i < 2; i++)
+        for (i = 0; i < MAIN_FIELD_COUNT; i++)
         {
             for (j = 0; j < NUM_HIGH_SCORES; j++)
             {
@@ -732,7 +732,7 @@ void sub_DEB4(void)
 {
     int i, j, k;
 
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < MAIN_FIELD_COUNT; i++)
     {
         for (j = 0; j < NUM_HIGH_SCORES; j++)
         {
@@ -2131,7 +2131,7 @@ void sub_F74C(void)
     u8 letter;
     u32 scoreHi, scoreLo;
 
-    for (field = 0; field < 2; field++)
+    for (field = 0; field < MAIN_FIELD_COUNT; field++)
     {
         letter = Random() % 42;
         gMain_saveData.highScores[field][0].data.parts.name[0] = letter;

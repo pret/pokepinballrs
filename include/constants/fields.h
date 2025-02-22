@@ -1,13 +1,14 @@
 #ifndef GUARD_CONSTANTS_FIELDS_H
 #define GUARD_CONSTANTS_FIELDS_H
 
-#define FIELD_RUBY      0
-#define FIELD_SAPPHIRE  1
-#define FIELD_DUSCLOPS  2
-#define FIELD_KECLEON   3
-#define FIELD_KYOGRE    4
-#define FIELD_GROUDON   5
-#define FIELD_RAYQUAZA  6
-#define FIELD_SPHEAL    7
+#define FIELD_RUBY          0
+#define FIELD_SAPPHIRE      1
+#define MAIN_FIELD_COUNT    2
+#define FIELD_DUSCLOPS      (MAIN_FIELD_COUNT + 0)
+#define FIELD_KECLEON       (MAIN_FIELD_COUNT + 1)
+#define FIELD_KYOGRE        (MAIN_FIELD_COUNT + 2)
+#define FIELD_GROUDON       (MAIN_FIELD_COUNT + 3)
+#define FIELD_RAYQUAZA      (MAIN_FIELD_COUNT + 4)
+#define FIELD_SPHEAL        (MAIN_FIELD_COUNT + 5)
 
 #endif // GUARD_CONSTANTS_FIELDS_H

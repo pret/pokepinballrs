@@ -138,7 +138,7 @@ void sub_49ED4(void)
         var0 = 0;
     else if (gMain.unk5 == gMain.selectedField)
         var0 = 1;
-    else if (gMain.selectedField <= FIELD_SAPPHIRE)
+    else if (gMain.selectedField < MAIN_FIELD_COUNT)
         var0 = 2;
     else
         var0 = 3;
@@ -233,7 +233,7 @@ void sub_49ED4(void)
     case 0:
         if (gMain.mainState != STATE_GAME_IDLE && gCurrentPinballGame->unkF4C && gMPlayInfo_BGM.status < 0)
             MPlayStart(&gMPlayInfo_BGM, gCurrentPinballGame->unkF4C);
-        if (gMain.selectedField <= FIELD_SAPPHIRE)
+        if (gMain.selectedField < MAIN_FIELD_COUNT)
             sub_31BE8(gCurrentPinballGame->unk6F);
         break;
     case 1:
@@ -568,7 +568,7 @@ void sub_4AAD8(void)
 
         if (gMain.unkE)
         {
-            if (gMain.selectedField <= FIELD_SAPPHIRE)
+            if (gMain.selectedField < MAIN_FIELD_COUNT)
             {
                 sub_1D4D0();
                 sub_31BE8(0);
@@ -893,7 +893,7 @@ void sub_4B20C(void)
 
     if (gMain.unkE == 0)
     {
-        if (gMain.selectedField > FIELD_SAPPHIRE)
+        if (gMain.selectedField >= MAIN_FIELD_COUNT)
         {
             SetMainGameState(STATE_BONUS_FIELD_SELECT);
             return;
@@ -1092,7 +1092,7 @@ void sub_4B678(u16 arg0)
             gMain.eReaderBonuses[i] = gCurrentPinballGame->eReaderBonuses[i];
 
         gCurrentPinballGame->unk1100 = 1;
-        if (arg0 == 1 && gMain.selectedField <= FIELD_SAPPHIRE)
+        if (arg0 == 1 && gMain.selectedField < MAIN_FIELD_COUNT)
         {
             gCurrentPinballGame->unk68 = gCurrentPinballGame->unk4E +
                                          gCurrentPinballGame->unk121 +
@@ -1111,7 +1111,7 @@ void sub_4B678(u16 arg0)
     if (gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->unk29E)
         sub_46FD4(1);
 
-    if (gMain.selectedField <= FIELD_SAPPHIRE)
+    if (gMain.selectedField < MAIN_FIELD_COUNT)
     {
         for (i = 0; i < 22; i++)
         {
