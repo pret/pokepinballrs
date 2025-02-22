@@ -69,11 +69,11 @@ void LoadTitlescreenGraphics(void)
     InitTitlescreenStates();
 
     autoDisplayMenu = gAutoDisplayTitlescreenMenu;
-    if (autoDisplayMenu == 1)
+    if (autoDisplayMenu == TRUE)
     {
         gUnknown_202BE24 = 0;
         gTitlescreen.pressStartAndFlippersVisible = FALSE;
-        gTitlescreen.unkB = autoDisplayMenu;
+        gTitlescreen.menuVisible = autoDisplayMenu;
         gMain.subState = SUBSTATE_3;
         sub_0CBC();
         sub_FD5C(NULL);
@@ -102,7 +102,7 @@ void InitTitlescreenStates(void)
     gTitlescreen.unkA = 6;
     gTitlescreen.unkC = 0;
     gTitlescreen.unkE = 3;
-    gTitlescreen.unkB = 0;
+    gTitlescreen.menuVisible = FALSE;
     gTitlescreen.unkD = 0;
     gTitlescreen.unkF = 0;
     gUnknown_0202C588 = 1;
@@ -222,7 +222,7 @@ void TitleScreen2_8010CF0(void)
                 gTitlescreen.unk2 = 0;
                 gUnknown_202BE24 = 0;
                 gTitlescreen.pressStartAndFlippersVisible = FALSE;
-                gTitlescreen.unkB = 1;
+                gTitlescreen.menuVisible = TRUE;
                 gMain.subState = SUBSTATE_3;
             }
         }
@@ -540,7 +540,7 @@ void TitleScreen6_AnimCloseMenu(void)
                 gTitlescreen.menuCursorIndex = 0;
                 gUnknown_202BE24 = 1;
                 gTitlescreen.pressStartAndFlippersVisible = TRUE;
-                gTitlescreen.unkB = 0;
+                gTitlescreen.menuVisible = FALSE;
                 gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
             }
 
@@ -561,7 +561,7 @@ void TitleScreen6_AnimCloseMenu(void)
                 gTitlescreen.menuCursorIndex = 1;
                 gUnknown_202BE24 = 1;
                 gTitlescreen.pressStartAndFlippersVisible = TRUE;
-                gTitlescreen.unkB = 0;
+                gTitlescreen.menuVisible = FALSE;
                 gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
             }
 
@@ -587,7 +587,7 @@ void TitleScreen10_ExecMenuSelection(void)
     else
         gUnknown_0202C588 = 1;
 
-    gAutoDisplayTitlescreenMenu = 0;
+    gAutoDisplayTitlescreenMenu = FALSE;
     SetMainGameState(gUnknown_086A964C[gTitlescreen.unk6]);
 }
 
@@ -597,7 +597,7 @@ void TitleScreen11_80114B4(void)
     m4aMPlayAllStop();
     sub_0D10();
     gUnknown_0202C588 = 1;
-    gAutoDisplayTitlescreenMenu = 0;
+    gAutoDisplayTitlescreenMenu = FALSE;
     SetMainGameState(gUnknown_086A964C[gTitlescreen.unk6]);
 }
 
@@ -671,43 +671,43 @@ static void sub_11640(void)
 {
     int i;
     const struct SpriteSet *spriteSet;
-    struct SpriteGroup *group1 = &gUnknown_0200B3B8[gTitlescreen.unk8];
-    struct SpriteGroup *group2 = &gUnknown_0200B3B8[gTitlescreen.unk10];
+    struct SpriteGroup *startAndFlippersGroup = &gUnknown_0200B3B8[gTitlescreen.unk8];
+    struct SpriteGroup *deleteMenuGroup = &gUnknown_0200B3B8[gTitlescreen.unk10];
 
-    group1->available = gTitlescreen.pressStartAndFlippersVisible;
-    group2->available = gTitlescreen.deleteSaveWindowVisible;
+    startAndFlippersGroup->available = gTitlescreen.pressStartAndFlippersVisible;
+    deleteMenuGroup->available = gTitlescreen.deleteSaveWindowVisible;
 
     LoadSpriteSets(gUnknown_086A96E4, 5, gUnknown_0200B3B8);
 
-    if (group1->available == TRUE)
+    if (startAndFlippersGroup->available == TRUE)
     {
-        group1->baseX = 120;
-        group1->baseY = 102;
+        startAndFlippersGroup->baseX = 120;
+        startAndFlippersGroup->baseY = 102;
         spriteSet = gUnknown_086A96E4[gTitlescreen.unk8];
         for (i = 0; i < spriteSet->count; i++)
         {
-            gOamBuffer[group1->oam[i].oamId].x = group1->oam[i].xOffset + group1->baseX;
-            gOamBuffer[group1->oam[i].oamId].y = group1->oam[i].yOffset + group1->baseY;
+            gOamBuffer[startAndFlippersGroup->oam[i].oamId].x = startAndFlippersGroup->oam[i].xOffset + startAndFlippersGroup->baseX;
+            gOamBuffer[startAndFlippersGroup->oam[i].oamId].y = startAndFlippersGroup->oam[i].yOffset + startAndFlippersGroup->baseY;
 
             asm("");  // needed to match
         }
     }
 
-    if (group2->available == TRUE)
+    if (deleteMenuGroup->available == TRUE)
     {
-        group2->baseX = 120;
-        group2->baseY = 80;
+        deleteMenuGroup->baseX = 120;
+        deleteMenuGroup->baseY = 80;
         for (i = 0; i < 2; i++)
         {
-            gOamBuffer[group2->oam[i].oamId].x = group2->oam[i].xOffset + group2->baseX;
-            gOamBuffer[group2->oam[i].oamId].y = group2->oam[i].yOffset + group2->baseY;
+            gOamBuffer[deleteMenuGroup->oam[i].oamId].x = deleteMenuGroup->oam[i].xOffset + deleteMenuGroup->baseX;
+            gOamBuffer[deleteMenuGroup->oam[i].oamId].y = deleteMenuGroup->oam[i].yOffset + deleteMenuGroup->baseY;
 
             asm("");  // needed to match
         }
     }
 
-    group1->available = FALSE;
-    group2->available = FALSE;
+    startAndFlippersGroup->available = FALSE;
+    deleteMenuGroup->available = FALSE;
 }
 
 struct UnknownStruct1
@@ -718,7 +718,7 @@ struct UnknownStruct1
 
 void sub_1175C(void)
 {
-    struct SpriteGroup *r10;
+    struct SpriteGroup *menuSpriteGroup;
     struct SpriteGroup *r9;
     struct SpriteGroup *r8;
     const struct UnknownStruct1 *r12;
@@ -729,30 +729,30 @@ void sub_1175C(void)
     REG_BLDCNT = gMain.blendControl;
     REG_BLDALPHA = gMain.blendAlpha;
 
-    r10 = &gMain.spriteGroups[gTitlescreen.unkA];
+    menuSpriteGroup = &gMain.spriteGroups[gTitlescreen.unkA];
     r9 = &gMain.spriteGroups[gTitlescreen.unkC];
     r8 = &gMain.spriteGroups[gTitlescreen.unkE];
 
-    r10->available = gTitlescreen.unkB;
+    menuSpriteGroup->available = gTitlescreen.menuVisible;
     r9->available = gTitlescreen.unkD;
     r8->available = gTitlescreen.unkF;
 
     LoadSpriteSets((const struct SpriteSet *const *)gUnknown_0201C190, 7, gMain.spriteGroups);
 
-    if (r10->available == 1)
+    if (menuSpriteGroup->available == 1)
     {
-        r10->baseX = 0x78;
-        r10->baseY = 0x66;
+        menuSpriteGroup->baseX = 0x78;
+        menuSpriteGroup->baseY = 0x66;
         r12 = (const struct UnknownStruct1 *)gUnknown_0201C190[6];
         for (sp0 = 0; sp0 < r12->count; sp0++)
         {
-            struct OamDataSimple *r4 = &r10->oam[sp0];
+            struct OamDataSimple *r4 = &menuSpriteGroup->oam[sp0];
             if (r12[sp0 + 1].count == 1)  // dunno. wtf?
                 gOamBuffer[r4->oamId].objMode = 1;
             else
                 gOamBuffer[r4->oamId].objMode = 0;
-            gOamBuffer[r4->oamId].x = r4->xOffset + r10->baseX;
-            gOamBuffer[r4->oamId].y = r4->yOffset + r10->baseY;
+            gOamBuffer[r4->oamId].x = r4->xOffset + menuSpriteGroup->baseX;
+            gOamBuffer[r4->oamId].y = r4->yOffset + menuSpriteGroup->baseY;
         }
     }
 
@@ -782,9 +782,9 @@ void sub_1175C(void)
         gOamBuffer[r5->oamId].y = r5->yOffset + r8->baseY;
     }
 
-    r10->available = 0;
-    r9->available = 0;
-    r8->available = 0;
+    menuSpriteGroup->available = FALSE;
+    r9->available = FALSE;
+    r8->available = FALSE;
 }
 
 void sub_11968(void)
@@ -804,7 +804,7 @@ void sub_11968(void)
     r9 = &gMain.spriteGroups[gTitlescreen.unkC];
     r8 = &gMain.spriteGroups[gTitlescreen.unkE];
 
-    r10->available = gTitlescreen.unkB;
+    r10->available = gTitlescreen.menuVisible;
     r9->available = gTitlescreen.unkD;
     r8->available = gTitlescreen.unkF;
 
@@ -853,9 +853,9 @@ void sub_11968(void)
         gOamBuffer[r5->oamId].y = r5->yOffset + r8->baseY;
     }
 
-    r10->available = 0;
-    r9->available = 0;
-    r8->available = 0;
+    r10->available = FALSE;
+    r9->available = FALSE;
+    r8->available = FALSE;
 }
 
 void sub_11B74(void)

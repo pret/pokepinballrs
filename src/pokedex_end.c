@@ -8,9 +8,9 @@ extern s16 gUnknown_0202BF14;
 extern s16 gUnknown_086A61BC[];
 
 /* TODO unfinished
-void sub_8974(s32 arg0)
+void sub_8974(s32 species)
 {
-    s32 var0 = gUnknown_086A61BC[(s16) arg0];
+    s32 var0 = gUnknown_086A61BC[(s16) species];
     s32 quotient;
     s16 remainder;
     s16 var1;
@@ -38,9 +38,9 @@ void sub_8974(s32 arg0)
     }
 }*/
 
-s16 sub_8A78(s32 arg0)
+s16 sub_8A78(s32 species)
 {
-    s16 var0 = (s16) arg0;
+    s16 var0 = (s16) species;
 
     if ((gUnknown_0202A1C0[var0] == 4) && (gUnknown_086A61BC[var0] != -1))
         gUnknown_0202A588 = 1;

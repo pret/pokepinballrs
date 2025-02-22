@@ -410,7 +410,7 @@ void sub_374C(void)
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
-    gAutoDisplayTitlescreenMenu = 1;
+    gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(gUnknown_0202BEF8);
 }
 
@@ -499,7 +499,7 @@ void sub_394C(void)
     puVar9 = &gUnknown_0200B3B8[gUnknown_0202A58C];
     puVar5 = &gUnknown_0200B3B8[gUnknown_0202BEC0];
     puVar9->available = gUnknown_0202C584;
-    puVar5->available = 1;
+    puVar5->available = TRUE;
     LoadSpriteSets(gUnknown_086A54D8, 13, gUnknown_0200B3B8);
 
     if (puVar9->available == 1)
@@ -536,8 +536,8 @@ void sub_394C(void)
         gOamBuffer[test2->oamId].y = test2->yOffset + puVar5->baseY;
     }
 
-    puVar9->available = 0;
-    puVar5->available = 0;
+    puVar9->available = FALSE;
+    puVar5->available = FALSE;
 }
 
 void sub_3AB4(void) {
@@ -550,7 +550,7 @@ void sub_3AB4(void) {
     puVar9 = &gUnknown_0200B3B8[gUnknown_0202A58C];
     puVar5 = &gUnknown_0200B3B8[gUnknown_0202BEC0];
     puVar9->available = gUnknown_0202C584;
-    puVar5->available = 1;
+    puVar5->available = TRUE;
     sub_2414(gUnknown_086A54D8, 13, gUnknown_0200B3B8);
 
     if (puVar9->available == 1)
@@ -587,8 +587,8 @@ void sub_3AB4(void) {
         gOamBuffer[test2->oamId].y = test2->yOffset + puVar5->baseY;
     }
 
-    puVar9->available = 0;
-    puVar5->available = 0;
+    puVar9->available = FALSE;
+    puVar5->available = FALSE;
 }
 
 void sub_3C1C(void)

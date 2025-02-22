@@ -11,7 +11,7 @@ struct TitlescreenStruct
     /*0x08*/ s8 unk8;
     /*0x09*/ s8 pressStartAndFlippersVisible;
     /*0x0A*/ s8 unkA; // Menu options sprite ID?
-    /*0x0B*/ s8 unkB;
+    /*0x0B*/ s8 menuVisible;
     /*0x0C*/ s8 unkC;
     /*0x0D*/ s8 unkD;
     /*0x0E*/ s8 unkE;

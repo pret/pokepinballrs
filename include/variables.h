@@ -4,7 +4,10 @@
 #include "gba/gba.h"
 #include "gba/m4a_internal.h"
 #include "types.h"
+#include "constants/areas.h"
+#include "constants/fields.h"
 #include "constants/high_scores.h"
+#include "constants/pinball_game.h"
 
 // Place all external variable declarations in this file
 
@@ -80,7 +83,7 @@ extern s16 gUnknown_0202BEEC;
 //extern ? gPokemonCrySong;
 //extern ? gMPlayInfo_BGM;
 //extern ? gMPlayMemAccArea;
-extern const u16 gWildMonLocations[][2][8];
+extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const s16 gUnknown_08055C44[];
 extern const struct OamData gEmptyOamData[128];
 extern const u8 gUnknown_08058048[];
@@ -206,7 +209,7 @@ extern s16 gUnknown_0201A514;
 extern s16 gPokedexSelectedMon;
 extern s8 gUnknown_0202ADE4;
 extern s16 gUnknown_0202BEB8;
-extern s16 gUnknown_0202C5B0;
+extern s16 gPokedexListPosition;
 
 extern StateFunc gPokedexStateFuncs[];
 extern u16 gUnknown_08081F20[];
@@ -223,7 +226,7 @@ extern s16 gUnknown_0202BF00;
 extern s16 gUnknown_0202A57C;
 extern s16 gUnknown_0201A4F0;
 extern s16 gUnknown_0202BE20;
-extern s16 gUnknown_0202C58C;
+extern s16 gPokedexScrollWaitFrames;
 extern s8 gUnknown_02019C24;
 extern s16 gUnknown_0202BF0C;
 extern s16 gUnknown_0201A440;
@@ -248,7 +251,7 @@ extern s8 gUnknown_0202C5AC;
 extern s8 gUnknown_02019C28;
 extern s16 gUnknown_0202A1C0[];
 extern s16 gUnknown_0202A390[];
-extern s16 gUnknown_0202A574;
+extern s16 gPokedexListEntryCount;
 
 extern u32 gUnknown_0201B170;
 extern u32 gUnknown_0202BED8;
