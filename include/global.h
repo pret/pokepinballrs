@@ -81,17 +81,19 @@ struct UnkPinballGame1334
 	/*0x01*/ u8 unk1;
 	/*0x02*/ u8 filler2[0x4];
 	/*0x06*/ u16 unk6;
-	/*0x08*/ u8 filler8[0x6];
+	/*0x08*/ u16 unk8;
+	/*0x0A*/ u16 unkA;
+	/*0x0C*/ u8 fillerC[0x2];
 	/*0x0E*/ u16 unkE;
-	/*0x10*/ struct Coords16 unk10;
+	/*0x10*/ struct Vector16 unk10;
 	/*0x14*/ u8 filler14[0xB];
 	/*0x1F*/ u8 unk1F;
 	/*0x20*/ u8 filler20[0x8];
-	/*0x28*/ struct Coords16 unk28;
-	/*0x2C*/ struct Coords16 unk2C;
-	/*0x30*/ struct Coords16 velocity;
-	/*0x34*/ struct Coords32 position; // fixed-point Q_24_8 values
-	/*0x3C*/ u8 filler3C[0x8];
+	/*0x28*/ struct Vector16 unk28;
+	/*0x2C*/ struct Vector16 unk2C;
+	/*0x30*/ struct Vector16 velocity;
+	/*0x34*/ struct Vector32 position; // fixed-point Q_24_8 values
+	/*0x3C*/ struct Vector32 prevPosition;
 };
 
 struct UnkPinballGame3C4
@@ -297,7 +299,9 @@ struct PinballGame
 	/*0x59A*/ u8 filler59A[0x2];
 	/*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
 	/*0x59E*/ u16 lastEggSpecies; // Previous hatch/evo mode species?
-	/*0x5A0*/ u8 filler5A0[0x12];
+	/*0x5A0*/ u8 filler5A0[0x4];
+	/*0x5A4*/ u8 unk5A4;
+	/*0x5A5*/ u8 filler5A5[0xD];
 	/*0x5B2*/ u8 unk5B2;
 	/*0x5B3*/ u8 filler5B3[0x3D];
 	/*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game

@@ -32,25 +32,25 @@ struct SpriteGroup
 };
 // size: 0xB8
 
-struct Coords16
+struct Vector16
 {
     s16 x;
     s16 y;
 };
 
-struct UCoords16
+struct VectorU16
 {
     u16 x;
     u16 y;
 };
 
-struct Coords32
+struct Vector32
 {
     s32 x;
     s32 y;
 };
 
-struct UCoords32
+struct VectorU32
 {
     u32 x;
     u32 y;

@@ -25,8 +25,8 @@ void VCountIntr(void);
 void SerialIntr(void);
 void Timer3Intr(void);
 void IntrDummy(void);
-s16 sub_0C24(u16 arg0);
-s16 sub_0C74(u16 arg0);
+s16 Sin(u16 arg0);
+s16 Cos(u16 arg0);
 void sub_0D10(void);
 void MainLoopIter(void);
 void DefaultMainCallback(void);
@@ -272,7 +272,6 @@ extern void sub_A2A8(void);
 
 // asm/libagbsyscall.s
 
-//extern ? ArcTan2();
 //extern ? CpuSet();
 //extern ? LZ77UnCompWram();
 //extern ? RegisterRamReset();
@@ -529,7 +528,6 @@ extern void sub_22978();
 //extern ? sub_29D9C();
 //extern ? sub_2A054();
 //extern ? sub_2A354();
-//extern ? sub_2AADC();
 //extern ? sub_2C518();
 //extern ? sub_2C538();
 //extern ? sub_2C9A4();
