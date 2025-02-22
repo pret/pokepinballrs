@@ -182,7 +182,7 @@ u32 Random(void)
     return gMain.rngValue & 0xFFFF;
 }
 
-s16 sub_0C24(u16 arg0)
+s16 Sin(u16 arg0)
 {
     u16 index = arg0 / 4;
     s16 var0 = 1;
@@ -198,9 +198,9 @@ s16 sub_0C24(u16 arg0)
     return gUnknown_08055C44[index] * var0;
 }
 
-s16 sub_0C74(u16 arg0)
+s16 Cos(u16 arg0)
 {
-    return sub_0C24(arg0 + 0x4000);
+    return Sin(arg0 + 0x4000);
 }
 
 static void ReadKeys(void)
