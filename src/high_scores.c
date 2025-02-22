@@ -1863,36 +1863,40 @@ s16 sub_ED28(void)
 void sub_EE64(void)
 {
     int i, j;
-    
-    for (j = 0; j < 4; j++)
+
+    // Ruby Field Top name
+    for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[0][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
+        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
     }
 
-    for (i = 1; i < 8; i++)
+    // Ruby Field 2nd-8th names
+    for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
-        for (j = 0; j < 4; j++)
+        for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[0][i].data.parts.name[j]] + 0xA0, 8, j + 6, i * 2 + 3, 1, 2);
+            sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][i].data.parts.name[j]] + 0xA0, 8, j + 6, i * 2 + 3, 1, 2);
         }
     }
 
-    sub_F21C(gUnknown_0202C610[0][0].data.parts.scoreHi, gUnknown_0202C610[0][0].data.parts.scoreLo);
+    // Ruby Field Top score
+    sub_F21C(gUnknown_0202C610[FIELD_RUBY][0].data.parts.scoreHi, gUnknown_0202C610[FIELD_RUBY][0].data.parts.scoreLo);
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 12, 2, 1, 2);
+            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 12, 2, 1, 2); // Thousands separator?
         else
             sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, j + 12, 2, 1, 2);
     }
     sub_105A0(gUnknown_0202C5C0[14] + 0xE0, 9, 26, 2, 1, 2);
-    for (i = 1; i < 8; i++)
+    // Ruby Field 2nd-8th scores
+    for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
-        sub_F21C(gUnknown_0202C610[0][i].data.parts.scoreHi, gUnknown_0202C610[0][i].data.parts.scoreLo);
+        sub_F21C(gUnknown_0202C610[FIELD_RUBY][i].data.parts.scoreHi, gUnknown_0202C610[FIELD_RUBY][i].data.parts.scoreLo);
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2);
+                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2); // Thousands separator?
             else
                 sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, j + 12, i * 2 + 3, 1, 2);
         }
@@ -1900,35 +1904,39 @@ void sub_EE64(void)
         sub_105A0(gUnknown_0202C5C0[14] + 0x160, 9, 26, 3 + i * 2, 1, 2);
     }
 
-    for (j = 0; j < 4; j++)
+    // Sapphire Field Top name
+    for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[1][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
+        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
     }
 
-    for (i = 1; i < 8; i++)
+    // Sapphire Field 2nd-8th names
+    for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
-        for (j = 0; j < 4; j++)
+        for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[1][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
+            sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
         }
     }
-    sub_F21C(gUnknown_0202C610[1][0].data.parts.scoreHi, gUnknown_0202C610[1][0].data.parts.scoreLo);
+    sub_F21C(gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.scoreHi, gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.scoreLo);
+    // Sapphire Field Top score
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 10, 34, 1, 2);
+            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 10, 34, 1, 2); // Thousands separator?
         else
             sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, j + 10, 34, 1, 2);
     }
 
     sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, 24, 34, 1, 2);
-    for (i = 1; i < 8; i++)
+    // Sapphire Field 2nd-8th scores
+    for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
-        sub_F21C(gUnknown_0202C610[1][i].data.parts.scoreHi, gUnknown_0202C610[1][i].data.parts.scoreLo);
+        sub_F21C(gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.scoreHi, gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.scoreLo);
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 10, i * 2 + 35, 1, 2);
+                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 10, i * 2 + 35, 1, 2); // Thousands separator?s
             else
                 sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, j + 10, i * 2 + 35, 1, 2);
         }
@@ -2662,14 +2670,15 @@ void sub_10544(void)
     REG_IF |= 1;
 }
 
-void sub_105A0(u16 arg0, u16 arg1, int arg2, int arg3, int arg4, int arg5)
+// Print char? (also used by the Pokédex)
+void sub_105A0(u16 arg0, u16 color, int x, int y, int arg4, int arg5)
 {
     u16 i, j;
     for(i = 0; i < arg5; i++)
     {
         for(j = 0; j < arg4; j++)
         {
-            gUnknown_03005C00[arg3 * 32 + arg2 + i * 32 + j] = (arg0 + i * 32 + j) | (arg1 << 12);
+            gUnknown_03005C00[y * 32 + x + i * 32 + j] = (arg0 + i * 32 + j) | (color << 12);
         }
     }
 }

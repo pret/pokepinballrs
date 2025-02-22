@@ -173,7 +173,7 @@ extern void sub_10480(void);
 extern void sub_1050C(void);
 extern void sub_10528(void);
 extern void sub_10544(void);
-extern void sub_105A0(u16, u16, int, int, int, int);
+extern void sub_105A0(u16 arg0, u16 color, int x, int y, int arg4, int arg5);
 
 // src/intro.c
 extern void IntroMain(void);
