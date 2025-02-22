@@ -251,7 +251,7 @@ extern s8 gUnknown_0202C5AC;
 extern s8 gUnknown_02019C28;
 extern s16 gUnknown_0202A1C0[];
 extern s16 gUnknown_0202A390[];
-extern s16 gUnknown_0202A574;
+extern s16 gPokedexListEntryCount;
 
 extern u32 gUnknown_0201B170;
 extern u32 gUnknown_0202BED8;

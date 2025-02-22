@@ -11,10 +11,10 @@
 #define DEX_NUM_DIGITS 3
 
 void sub_5174(void);
-static void sub_4D74(void);
-static void sub_4E34(void);
-static void sub_4EF0(void);
-void sub_4F50(void);
+static void PokedexListScrollUp(void);
+static void PokedexListScrollDown(void);
+static void PokedexListScrollUpFast(void);
+static void PokedexListScrollDownFast(void);
 void sub_4FC8(void);
 void sub_5064(void);
 void sub_51CC(void);
@@ -177,29 +177,17 @@ void sub_3FAC(void)
     }
 
     if (gUnknown_0202A1C0[SPECIES_AERODACTYL])
-    {
-        gUnknown_0202A574 = SPECIES_AERODACTYL + 1;
-    }
+        gPokedexListEntryCount = SPECIES_AERODACTYL + 1;
     else if (gUnknown_0202A1C0[SPECIES_TOTODILE])
-    {
-        gUnknown_0202A574 = SPECIES_TOTODILE + 1;
-    }
+        gPokedexListEntryCount = SPECIES_TOTODILE + 1;
     else if (gUnknown_0202A1C0[SPECIES_CYNDAQUIL])
-    {
-        gUnknown_0202A574 = SPECIES_CYNDAQUIL + 1;
-    }
+        gPokedexListEntryCount = SPECIES_CYNDAQUIL + 1;
     else if (gUnknown_0202A1C0[SPECIES_CHIKORITA])
-    {
-        gUnknown_0202A574 = SPECIES_CHIKORITA + 1;
-    }
+        gPokedexListEntryCount = SPECIES_CHIKORITA + 1;
     else if (gUnknown_0202A1C0[SPECIES_JIRACHI])
-    {
-        gUnknown_0202A574 = SPECIES_JIRACHI + 1;
-    }
+        gPokedexListEntryCount = SPECIES_JIRACHI + 1;
     else
-    {
-        gUnknown_0202A574 = SPECIES_RAYQUAZA + 1;
-    }
+        gPokedexListEntryCount = SPECIES_RAYQUAZA + 1;
 }
 
 void sub_4150(void)
@@ -210,28 +198,28 @@ void sub_4150(void)
 
         if (JOY_HELD(DPAD_UP))
         {
-            sub_4D74();
+            PokedexListScrollUp();
             sub_5064();
             sub_51CC();
             gMain.subState = 2;
         }
         else if (JOY_HELD(DPAD_DOWN))
         {
-            sub_4E34();
+            PokedexListScrollDown();
             sub_5064();
             sub_51CC();
             gMain.subState = 2;
         }
         else if (JOY_HELD(DPAD_LEFT))
         {
-            sub_4EF0();
+            PokedexListScrollUpFast();
             sub_5064();
             sub_51CC();
             gMain.subState = 2;
         }
         else if (JOY_HELD(DPAD_RIGHT))
         {
-            sub_4F50();
+            PokedexListScrollDownFast();
             sub_5064();
             sub_51CC();
             gMain.subState = 2;
@@ -264,22 +252,22 @@ void sub_4150(void)
 
         if (JOY_HELD(DPAD_UP))
         {
-            sub_4D74();
+            PokedexListScrollUp();
             sub_5174();
         }
         else if (JOY_HELD(DPAD_DOWN))
         {
-            sub_4E34();
+            PokedexListScrollDown();
             sub_5174();
         }
         else if (JOY_HELD(DPAD_LEFT))
         {
-            sub_4EF0();
+            PokedexListScrollUpFast();
             sub_5174();
         }
         else if (JOY_HELD(DPAD_RIGHT))
         {
-            sub_4F50();
+            PokedexListScrollDownFast();
             sub_5174();
         }
         else
@@ -691,7 +679,7 @@ void sub_4BB4(void)
             }
             for(index = 0; index < NUM_SPECIES; index++)
             {
-                    gMain_saveData.pokedexFlags[index] = gUnknown_0202A1C0[index];
+                gMain_saveData.pokedexFlags[index] = gUnknown_0202A1C0[index];
             }
             SaveFile_WriteToSram();
             sub_02B4();
@@ -756,7 +744,7 @@ void sub_4D50(void)
     SetMainGameState(STATE_TITLE);
 }
 
-static void sub_4D74(void)
+static void PokedexListScrollUp(void)
 {
     if (gUnknown_0202C58C != 0)
         return;
@@ -770,8 +758,8 @@ static void sub_4D74(void)
         {
             if (gUnknown_02019C24 == 0)
             {
-                gPokedexListPosition = gUnknown_0202A574 - 5;
-                gPokedexSelectedMon = gUnknown_0202A574 - 1;
+                gPokedexListPosition = gPokedexListEntryCount - NUM_BONUS_SPECIES - 1;
+                gPokedexSelectedMon = gPokedexListEntryCount - 1;
                 gUnknown_0202A57C = 4;
                 m4aSongNumStart(SE_SELECT);
             }
@@ -797,7 +785,7 @@ static void sub_4D74(void)
     gUnknown_02019C24 = 1;
 }
 
-static void sub_4E34(void)
+static void PokedexListScrollDown(void)
 {
     if (gUnknown_0202C58C != 0)
         return;
@@ -806,7 +794,7 @@ static void sub_4E34(void)
     gUnknown_0202BF0C = 0;
     if (gUnknown_0202A57C == 4)
     {
-        if (gPokedexListPosition == gUnknown_0202A574 - 5)
+        if (gPokedexListPosition == gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
         {
             if (gUnknown_02019C24 == 0)
             {
@@ -836,7 +824,7 @@ static void sub_4E34(void)
     gUnknown_02019C24 = 1;
 }
 
-static void sub_4EF0(void)
+static void PokedexListScrollUpFast(void)
 {
     if (gUnknown_0202C58C != 0)
         return;
@@ -855,20 +843,20 @@ static void sub_4EF0(void)
     gUnknown_0202C58C = 9;
 }
 
-void sub_4F50(void)
+static void PokedexListScrollDownFast(void)
 {
     if (gUnknown_0202C58C != 0)
         return;
 
     gUnknown_0201A440 = 0;
     gUnknown_0202BF0C = 0;
-    if (gPokedexListPosition == gUnknown_0202A574 - 5)
+    if (gPokedexListPosition == gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
         return;
 
     m4aSongNumStart(SE_SELECT);
     gPokedexListPosition += 5;
-    if (gPokedexListPosition > gUnknown_0202A574 - 5)
-        gPokedexListPosition = gUnknown_0202A574 - 5;
+    if (gPokedexListPosition > gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
+        gPokedexListPosition = gPokedexListEntryCount - NUM_BONUS_SPECIES - 1;
 
     gPokedexSelectedMon = gPokedexListPosition + gUnknown_0202A57C;
     gUnknown_0202C58C = 9;
