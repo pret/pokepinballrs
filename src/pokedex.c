@@ -20,7 +20,7 @@ enum PokedexStates
     POKEDEX_STATE_3,
     POKEDEX_STATE_4,
     POKEDEX_STATE_5,
-    POKEDEX_STATE_6,
+    POKEDEX_STATE_LINK_SETUP,
     POKEDEX_STATE_7,
     POKEDEX_STATE_8,
     POKEDEX_STATE_9,
@@ -42,7 +42,7 @@ s16 sub_5EC8(void);
 void sub_70E0(s16, s32);
 void sub_88E4(void);
 void sub_51FC(void);
-static void sub_599C(void);
+static void RenderLinkGraphics(void);
 static void sub_5E60(void);
 int sub_639C(void);
 static int sub_5EEC(void);
@@ -330,7 +330,7 @@ void Pokedex_HandleListInput(void)
             gUnknown_0202BEFC = 0;
             gUnknown_0202BF04 = 0;
             gUnknown_0202A588 = 0;
-            gMain.subState = POKEDEX_STATE_6;
+            gMain.subState = POKEDEX_STATE_LINK_SETUP;
         }
 
         sub_4FC8();
@@ -558,12 +558,12 @@ void sub_4860(void)
     }
 }
 
-void sub_49A8(void)
+void Pokedex_LinkSetup(void)
 {
     sub_19B4();
     sub_5E60();
     gUnknown_0201B124 = 0;
-    sub_599C();
+    RenderLinkGraphics();
     gMain.subState = POKEDEX_STATE_7;
 }
 
@@ -571,7 +571,7 @@ void sub_49D0(void)
 {
     s16 var0;
 
-    sub_599C();
+    RenderLinkGraphics();
 
     if (JOY_NEW(B_BUTTON))
     {
@@ -631,7 +631,7 @@ void sub_4B10(void)
 
     if (2 < gUnknown_0201A444) {
         gUnknown_0201A444 = 0;
-        gMain.subState = POKEDEX_STATE_6;
+        gMain.subState = POKEDEX_STATE_LINK_SETUP;
     }
 }
 
@@ -639,7 +639,7 @@ void sub_4B34(void)
 {
     s32 iVar1;
 
-    sub_599C();
+    RenderLinkGraphics();
     gUnknown_0201B120++;
 
     if (0x5A < gUnknown_0201B120)
@@ -669,7 +669,7 @@ void sub_4BB4(void)
 {
     s32 index;
 
-    sub_599C();
+    RenderLinkGraphics();
     switch(gUnknown_0201B120)
     {
         case 0x4:
@@ -1192,7 +1192,7 @@ void sub_51FC(void)
     group9->available = FALSE;
 }
 
-static void sub_599C(void)
+static void RenderLinkGraphics(void)
 {
     int i;
     struct SpriteGroup *group0;

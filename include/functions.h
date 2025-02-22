@@ -343,7 +343,7 @@ extern void sub_3FAC(void);
 //extern ? sub_4428();
 //extern ? sub_45A4();
 //extern ? sub_4860();
-//extern ? sub_49A8();
+//extern ? Pokedex_LinkSetup();
 //extern ? sub_49D0();
 //extern ? sub_4B10();
 //extern ? sub_4B34();
