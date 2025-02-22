@@ -209,7 +209,7 @@ extern s16 gUnknown_0201A514;
 extern s16 gPokedexSelectedMon;
 extern s8 gUnknown_0202ADE4;
 extern s16 gUnknown_0202BEB8;
-extern s16 gUnknown_0202C5B0;
+extern s16 gPokedexListPosition;
 
 extern StateFunc gPokedexStateFuncs[];
 extern u16 gUnknown_08081F20[];

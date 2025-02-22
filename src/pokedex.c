@@ -1,11 +1,14 @@
 #include "global.h"
-#include "constants/bg_music.h"
 #include "functions.h"
 #include "link.h"
 #include "m4a.h"
 #include "main.h"
 #include "types.h"
 #include "variables.h"
+#include "constants/bg_music.h"
+#include "constants/characters.h"
+
+#define DEX_NUM_DIGITS 3
 
 void sub_5174(void);
 static void sub_4D74(void);
@@ -26,10 +29,10 @@ int sub_639C(void);
 static int sub_5EEC(void);
 static int sub_6144(void);
 static int sub_65DC(void);
-static void sub_681C(s16);
-static void sub_6BEC(s16, s16);
+static void PrintSelectedMonDexNum(s16);
+static void PrintSeenOwnedTotals(s16, s16);
 void sub_71DC(int, int, int);
-void sub_6CA0(s16);
+void PrintDexNumbersFromListPosition(s16);
 void sub_6F30(s16);
 void sub_6F78(s16);
 
@@ -58,7 +61,7 @@ extern u8 gUnknown_0808F760[];
 
 struct Unk805C8B4
 {
-    u16 unk0[3];
+    u16 unk0[DEX_NUM_DIGITS];
     u16 unk6[9];
     s16 unk18[10];
     s16 unk2C[11];
@@ -97,10 +100,10 @@ void LoadPokedexGraphics(void)
     DmaCopy16(3, gUnknown_08089B60, (void *)OBJ_VRAM0, 0x6C20);
 
     sub_3FAC();
-    sub_6BEC(gUnknown_0202BEB8, gUnknown_0201A514);
-    sub_681C(gPokedexSelectedMon);
-    sub_6CA0(gUnknown_0202C5B0);
-    sub_6F30(gUnknown_0202C5B0);
+    PrintSeenOwnedTotals(gUnknown_0202BEB8, gUnknown_0201A514);
+    PrintSelectedMonDexNum(gPokedexSelectedMon);
+    PrintDexNumbersFromListPosition(gPokedexListPosition);
+    sub_6F30(gPokedexListPosition);
     sub_6F78(gPokedexSelectedMon);
     sub_8974(gPokedexSelectedMon);
     sub_8A78(gPokedexSelectedMon);
@@ -125,7 +128,7 @@ void sub_3FAC(void)
     s32 i;
 
     gPokedexSelectedMon = 0;
-    gUnknown_0202C5B0 = 0;
+    gPokedexListPosition = 0;
     gUnknown_0201A448 = 0;
     gUnknown_0202BF00 = 0;
     gUnknown_0202A57C = 0;
@@ -763,11 +766,11 @@ static void sub_4D74(void)
 
     if (gUnknown_0202A57C == 0)
     {
-        if (gUnknown_0202C5B0 == 0)
+        if (gPokedexListPosition == 0)
         {
             if (gUnknown_02019C24 == 0)
             {
-                gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
+                gPokedexListPosition = gUnknown_0202A574 - 5;
                 gPokedexSelectedMon = gUnknown_0202A574 - 1;
                 gUnknown_0202A57C = 4;
                 m4aSongNumStart(SE_SELECT);
@@ -775,7 +778,7 @@ static void sub_4D74(void)
         }
         else
         {
-            gUnknown_0202C5B0--;
+            gPokedexListPosition--;
             gPokedexSelectedMon--;
             m4aSongNumStart(SE_SELECT);
         }
@@ -803,11 +806,11 @@ static void sub_4E34(void)
     gUnknown_0202BF0C = 0;
     if (gUnknown_0202A57C == 4)
     {
-        if (gUnknown_0202C5B0 == gUnknown_0202A574 - 5)
+        if (gPokedexListPosition == gUnknown_0202A574 - 5)
         {
             if (gUnknown_02019C24 == 0)
             {
-                gUnknown_0202C5B0 = 0;
+                gPokedexListPosition = 0;
                 gPokedexSelectedMon = 0;
                 gUnknown_0202A57C = 0;
                 m4aSongNumStart(SE_SELECT);
@@ -815,7 +818,7 @@ static void sub_4E34(void)
         }
         else
         {
-            gUnknown_0202C5B0++;
+            gPokedexListPosition++;
             gPokedexSelectedMon++;
             m4aSongNumStart(SE_SELECT);
         }
@@ -840,15 +843,15 @@ static void sub_4EF0(void)
 
     gUnknown_0201A440 = 0;
     gUnknown_0202BF0C = 0;
-    if (gUnknown_0202C5B0 == 0)
+    if (gPokedexListPosition == 0)
         return;
 
     m4aSongNumStart(SE_SELECT);
-    gUnknown_0202C5B0 -= 5;
-    if (gUnknown_0202C5B0 < 0)
-        gUnknown_0202C5B0 = 0;
+    gPokedexListPosition -= 5;
+    if (gPokedexListPosition < 0)
+        gPokedexListPosition = 0;
 
-    gPokedexSelectedMon = gUnknown_0202C5B0 + gUnknown_0202A57C;
+    gPokedexSelectedMon = gPokedexListPosition + gUnknown_0202A57C;
     gUnknown_0202C58C = 9;
 }
 
@@ -859,15 +862,15 @@ void sub_4F50(void)
 
     gUnknown_0201A440 = 0;
     gUnknown_0202BF0C = 0;
-    if (gUnknown_0202C5B0 == gUnknown_0202A574 - 5)
+    if (gPokedexListPosition == gUnknown_0202A574 - 5)
         return;
 
     m4aSongNumStart(SE_SELECT);
-    gUnknown_0202C5B0 += 5;
-    if (gUnknown_0202C5B0 > gUnknown_0202A574 - 5)
-        gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
+    gPokedexListPosition += 5;
+    if (gPokedexListPosition > gUnknown_0202A574 - 5)
+        gPokedexListPosition = gUnknown_0202A574 - 5;
 
-    gPokedexSelectedMon = gUnknown_0202C5B0 + gUnknown_0202A57C;
+    gPokedexSelectedMon = gPokedexListPosition + gUnknown_0202A57C;
     gUnknown_0202C58C = 9;
 }
 
@@ -952,9 +955,9 @@ u8 sub_5134(void)
 
 void sub_5174(void)
 {
-    sub_6CA0(gUnknown_0202C5B0);
-    sub_6F30(gUnknown_0202C5B0);
-    sub_681C(gPokedexSelectedMon);
+    PrintDexNumbersFromListPosition(gPokedexListPosition);
+    sub_6F30(gPokedexListPosition);
+    PrintSelectedMonDexNum(gPokedexSelectedMon);
     sub_6F78(gPokedexSelectedMon);
     sub_8974(gPokedexSelectedMon);
     sub_8A78(gPokedexSelectedMon);
@@ -1686,7 +1689,7 @@ static int sub_65DC(void)
     return 0;
 }
 
-static void sub_681C(s16 arg0)
+static void PrintSelectedMonDexNum(s16 species)
 {
     int i;
     int var0;
@@ -1695,33 +1698,34 @@ static void sub_681C(s16 arg0)
 
     DmaFill16(3, 0, gUnknown_03000000, 0x800);
     var0 = 0;
-    if (arg0 == 200)
+    if (species == SPECIES_JIRACHI)
     {
-        if (gUnknown_0202A1C0[200] != 0)
+        if (gUnknown_0202A1C0[SPECIES_JIRACHI] != 0)
         {
-            sub_105A0(34, 1, 5, 2, 1, 2);
-            sub_105A0(32, 1, 6, 2, 1, 2);
-            sub_105A0(33, 1, 7, 2, 1, 2);
+            PrintChar(CHAR_2, 1, 5, 2, 1, 2);
+            PrintChar(CHAR_0, 1, 6, 2, 1, 2);
+            PrintChar(CHAR_1, 1, 7, 2, 1, 2);
         }
         else
         {
-            sub_105A0(42, 1, 5, 2, 1, 2);
-            sub_105A0(42, 1, 6, 2, 1, 2);
-            sub_105A0(42, 1, 7, 2, 1, 2);
+            PrintChar(CHAR_0x2A, 1, 5, 2, 1, 2);
+            PrintChar(CHAR_0x2A, 1, 6, 2, 1, 2);
+            PrintChar(CHAR_0x2A, 1, 7, 2, 1, 2);
         }
     }
     else
     {
-        for (i = 0; i < 3; i++)
-            sub_105A0(gUnknown_0805C8B4[arg0].unk0[i] + 32, 1, i + 5, 2, 1, 2);
+        // Dex number of the selected species
+        for (i = 0; i < DEX_NUM_DIGITS; i++)
+            PrintChar(gUnknown_0805C8B4[species].unk0[i] + 32, 1, i + 5, 2, 1, 2);
     }
 
-    if (gUnknown_0202A1C0[arg0] > 0)
+    if (gUnknown_0202A1C0[species] > 0)
     {
         for (i = 0; i < 10; i++)
         {
-            var1 = gUnknown_0805C8B4[arg0].unk18[i] & ~0xF;
-            var2 = gUnknown_0805C8B4[arg0].unk18[i] & 0xF;
+            var1 = gUnknown_0805C8B4[species].unk18[i] & ~0xF;
+            var2 = gUnknown_0805C8B4[species].unk18[i] & 0xF;
             if (var2 == 0)
                 var2 = 4;
 
@@ -1741,12 +1745,12 @@ static void sub_681C(s16 arg0)
             sub_10708(gUnknown_08092FA0, (void *)0x06004C00 + i * 0x20, 1, 2);
     }
 
-    if (gUnknown_0202A1C0[arg0] == 1 || gUnknown_0202A1C0[arg0] > 2)
+    if (gUnknown_0202A1C0[species] == 1 || gUnknown_0202A1C0[species] > 2)
     {
         for (i = 0; i < 11; i++)
         {
-            var1 = gUnknown_0805C8B4[arg0].unk2C[i] & ~0xF;
-            var2 = gUnknown_0805C8B4[arg0].unk2C[i] & 0xF;
+            var1 = gUnknown_0805C8B4[species].unk2C[i] & ~0xF;
+            var2 = gUnknown_0805C8B4[species].unk2C[i] & 0xF;
             if (var2 == 0)
                 var2 = 6;
 
@@ -1765,53 +1769,53 @@ static void sub_681C(s16 arg0)
             sub_10708(gUnknown_08092FA0, (void *)0x06004D00 + i * 0x20, 1, 2);
     }
 
-    if (gUnknown_0202A1C0[arg0] == 4)
+    if (gUnknown_0202A1C0[species] == 4)
     {
-        sub_105A0(gUnknown_0805C8B4[arg0].unk6[0] + 32, 1, 16, 6, 1, 2);
-        sub_105A0(gUnknown_0805C8B4[arg0].unk6[1] + 32, 1, 17, 6, 1, 2);
-        sub_105A0(gUnknown_0805C8B4[arg0].unk6[2] + 32, 1, 19, 6, 1, 2);
-        sub_105A0(gUnknown_0805C8B4[arg0].unk6[3] + 32, 1, 20, 6, 1, 2);
+        PrintChar(gUnknown_0805C8B4[species].unk6[0] + 32, 1, 16, 6, 1, 2);
+        PrintChar(gUnknown_0805C8B4[species].unk6[1] + 32, 1, 17, 6, 1, 2);
+        PrintChar(gUnknown_0805C8B4[species].unk6[2] + 32, 1, 19, 6, 1, 2);
+        PrintChar(gUnknown_0805C8B4[species].unk6[3] + 32, 1, 20, 6, 1, 2);
         for (i = 0; i < 5; i++)
-            sub_105A0(gUnknown_0805C8B4[arg0].unk6[4 + i], 1, i + 16, 8, 1, 1);
+            PrintChar(gUnknown_0805C8B4[species].unk6[4 + i], 1, i + 16, 8, 1, 1);
     }
     else
     {
-        sub_105A0(43, 1, 16, 6, 1, 2);
-        sub_105A0(43, 1, 17, 6, 1, 2);
-        sub_105A0(43, 1, 19, 6, 1, 2);
-        sub_105A0(43, 1, 20, 6, 1, 2);
+        PrintChar(CHAR_DASH, 1, 16, 6, 1, 2);
+        PrintChar(CHAR_DASH, 1, 17, 6, 1, 2);
+        PrintChar(CHAR_DASH, 1, 19, 6, 1, 2);
+        PrintChar(CHAR_DASH, 1, 20, 6, 1, 2);
         for (i = 0; i < 5; i++)
-            sub_105A0(11, 1, i + 16, 8, 1, 1);
+            PrintChar(CHAR_UPPERSCORE, 1, i + 16, 8, 1, 1);
     }
 }
 
-static void sub_6BEC(s16 arg0, s16 arg1)
+static void PrintSeenOwnedTotals(s16 seen, s16 owned)
 {
     int i;
-    int var0;
-    int arr0[3];
-    int arr1[3];
+    int temp;
+    int seenDigits[DEX_NUM_DIGITS];
+    int ownedDigits[DEX_NUM_DIGITS];
 
-    var0 = arg0;
-    arr0[0] = var0 / 100;
-    var0 %= 100;
-    arr0[1] = var0 / 10;
-    arr0[2] = var0 % 10;
+    temp = seen;
+    seenDigits[0] = temp / 100;
+    temp %= 100;
+    seenDigits[1] = temp / 10;
+    seenDigits[2] = temp % 10;
 
-    var0 = arg1;
-    arr1[0] = var0 / 100;
-    var0 %= 100;
-    arr1[1] = var0 / 10;
-    arr1[2] = var0 % 10;
+    temp = owned;
+    ownedDigits[0] = temp / 100;
+    temp %= 100;
+    ownedDigits[1] = temp / 10;
+    ownedDigits[2] = temp % 10;
 
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < DEX_NUM_DIGITS; i++)
     {
-        sub_105A0(arr0[i], 2, i + 25, 15, 1, 1);
-        sub_105A0(arr1[i] + 32, 2, i + 25, 16, 1, 2);
+        PrintChar(seenDigits[i], 2, i + 25, 15, 1, 1);
+        PrintChar(ownedDigits[i] + 32, 2, i + 25, 16, 1, 2);
     }
 }
 
-void sub_6CA0(s16 arg0)
+void PrintDexNumbersFromListPosition(s16 listPos)
 {
     int i, j;
     int var0;
@@ -1822,36 +1826,36 @@ void sub_6CA0(s16 arg0)
     var0 = 0;
     for (i = 0; i < 5; i++)
     {
-        if (arg0 + i == 200)
+        if (listPos + i == SPECIES_JIRACHI)
         {
-            if (gUnknown_0202A1C0[200] != 0)
+            if (gUnknown_0202A1C0[SPECIES_JIRACHI] != 0)
             {
-                sub_105A0(34, 2, 8, i * 2 + 10, 1, 2);
-                sub_105A0(32, 2, 9, i * 2 + 10, 1, 2);
-                sub_105A0(33, 2, 10, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_2, 2, 8, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_0, 2, 9, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_1, 2, 10, i * 2 + 10, 1, 2);
             }
             else
             {
-                sub_105A0(42, 2, 8, i * 2 + 10, 1, 2);
-                sub_105A0(42, 2, 9, i * 2 + 10, 1, 2);
-                sub_105A0(42, 2, 10, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_0x2A, 2, 8, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_0x2A, 2, 9, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_0x2A, 2, 10, i * 2 + 10, 1, 2);
             }
         }
         else
         {
-            for (j = 0; j < 3; j++)
-                sub_105A0(gUnknown_0805C8B4[gUnknown_0202C5B0 + i].unk0[j] + 32, 2, j + 8, i * 2 + 10, 1, 2);
+            for (j = 0; j < DEX_NUM_DIGITS; j++)
+                PrintChar(gUnknown_0805C8B4[gPokedexListPosition + i].unk0[j] + 32, 2, j + 8, i * 2 + 10, 1, 2);
         }
     }
 
     for (i = 0; i < 5; i++)
     {
-        if (gUnknown_0202A1C0[arg0 + i] > 0)
+        if (gUnknown_0202A1C0[listPos + i] > 0)
         {
             for (j = 0; j < 10; j++)
             {
-                var1 = gUnknown_0805C8B4[gUnknown_0202C5B0 + i].unk18[j] & ~0xF;
-                var2 = gUnknown_0805C8B4[gUnknown_0202C5B0 + i].unk18[j] & 0xF;
+                var1 = gUnknown_0805C8B4[gPokedexListPosition + i].unk18[j] & ~0xF;
+                var2 = gUnknown_0805C8B4[gPokedexListPosition + i].unk18[j] & 0xF;
                 if (var2 == 0)
                     var2 = 4;
 
@@ -1883,15 +1887,15 @@ void sub_6F30(s16 arg0)
     for (i = 0; i < 5; i++)
     {
         var0 = gUnknown_0202A1C0[arg0 + i] == 4 ? 442 : 440;
-        sub_105A0(var0, 1, 4, 10 + i * 2, 2, 2);
+        PrintChar(var0, 1, 4, 10 + i * 2, 2, 2);
     }
 }
 
-void sub_6F78(s16 arg0)
+void sub_6F78(s16 species)
 {
     s16 var0 = gUnknown_0202A1C0[gPokedexSelectedMon];
-    s16 var1 = arg0 / 15;
-    s16 var2 = arg0 % 15;
+    s16 var1 = species / 15;
+    s16 var2 = species % 15;
     switch (var0)
     {
         case 0:

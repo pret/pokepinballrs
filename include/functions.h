@@ -173,7 +173,7 @@ extern void sub_10480(void);
 extern void sub_1050C(void);
 extern void sub_10528(void);
 extern void sub_10544(void);
-extern void sub_105A0(u16 arg0, u16 color, int x, int y, int arg4, int arg5);
+extern void PrintChar(u16 glyph, u16 color, int x, int y, int arg4, int arg5);
 
 // src/intro.c
 extern void IntroMain(void);
@@ -354,7 +354,7 @@ extern void sub_3FAC(void);
 //extern ? sub_71DC();
 //extern ? sub_88E4();
 extern void sub_8974();
-extern s16 sub_8A78(s32);
+extern s16 sub_8A78(s32 species);
 extern void ResetPokedex(void);
 
 // asm/rom_1068C.s

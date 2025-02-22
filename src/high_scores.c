@@ -1867,7 +1867,7 @@ void sub_EE64(void)
     // Ruby Field Top name
     for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
+        PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
     }
 
     // Ruby Field 2nd-8th names
@@ -1875,7 +1875,7 @@ void sub_EE64(void)
     {
         for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][i].data.parts.name[j]] + 0xA0, 8, j + 6, i * 2 + 3, 1, 2);
+            PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][i].data.parts.name[j]] + 0xA0, 8, j + 6, i * 2 + 3, 1, 2);
         }
     }
 
@@ -1884,11 +1884,11 @@ void sub_EE64(void)
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 12, 2, 1, 2); // Thousands separator?
+            PrintChar(gUnknown_0202C5C0[j] + 0x120, 9, j + 12, 2, 1, 2); // Thousands separator?
         else
-            sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, j + 12, 2, 1, 2);
+            PrintChar(gUnknown_0202C5C0[j] + 0xE0, 9, j + 12, 2, 1, 2);
     }
-    sub_105A0(gUnknown_0202C5C0[14] + 0xE0, 9, 26, 2, 1, 2);
+    PrintChar(gUnknown_0202C5C0[14] + 0xE0, 9, 26, 2, 1, 2);
     // Ruby Field 2nd-8th scores
     for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
@@ -1896,18 +1896,18 @@ void sub_EE64(void)
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2); // Thousands separator?
+                PrintChar(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2); // Thousands separator?
             else
-                sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, j + 12, i * 2 + 3, 1, 2);
+                PrintChar(gUnknown_0202C5C0[j] + 0x160, 9, j + 12, i * 2 + 3, 1, 2);
         }
 
-        sub_105A0(gUnknown_0202C5C0[14] + 0x160, 9, 26, 3 + i * 2, 1, 2);
+        PrintChar(gUnknown_0202C5C0[14] + 0x160, 9, 26, 3 + i * 2, 1, 2);
     }
 
     // Sapphire Field Top name
     for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
+        PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
     }
 
     // Sapphire Field 2nd-8th names
@@ -1915,7 +1915,7 @@ void sub_EE64(void)
     {
         for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
+            PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
         }
     }
     sub_F21C(gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.scoreHi, gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.scoreLo);
@@ -1923,12 +1923,12 @@ void sub_EE64(void)
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 10, 34, 1, 2); // Thousands separator?
+            PrintChar(gUnknown_0202C5C0[j] + 0x120, 9, j + 10, 34, 1, 2); // Thousands separator?
         else
-            sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, j + 10, 34, 1, 2);
+            PrintChar(gUnknown_0202C5C0[j] + 0xE0, 9, j + 10, 34, 1, 2);
     }
 
-    sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, 24, 34, 1, 2);
+    PrintChar(gUnknown_0202C5C0[j] + 0xE0, 9, 24, 34, 1, 2);
     // Sapphire Field 2nd-8th scores
     for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
@@ -1936,12 +1936,12 @@ void sub_EE64(void)
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 10, i * 2 + 35, 1, 2); // Thousands separator?s
+                PrintChar(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 10, i * 2 + 35, 1, 2); // Thousands separator?s
             else
-                sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, j + 10, i * 2 + 35, 1, 2);
+                PrintChar(gUnknown_0202C5C0[j] + 0x160, 9, j + 10, i * 2 + 35, 1, 2);
         }
 
-        sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, 24, i * 2 + 35, 1, 2);
+        PrintChar(gUnknown_0202C5C0[j] + 0x160, 9, 24, i * 2 + 35, 1, 2);
     }
 }
 
@@ -2112,7 +2112,7 @@ u32 sub_F4FC(u32 field)
 void sub_F670(u32 arg0, u32 arg1, s16 arg2, u32 arg3)
 {
     arg0 = gUnknown_086A7FAC[arg0];
-    sub_105A0(
+    PrintChar(
         gUnknown_08079730[arg3][arg1].unk8 * 32 + 0x80 + arg0,
         8,
         gUnknown_08079730[arg3][arg1].unk0 + arg2,
@@ -2671,14 +2671,14 @@ void sub_10544(void)
 }
 
 // Print char? (also used by the Pokédex)
-void sub_105A0(u16 arg0, u16 color, int x, int y, int arg4, int arg5)
+void PrintChar(u16 glyph, u16 color, int x, int y, int arg4, int arg5)
 {
     u16 i, j;
     for(i = 0; i < arg5; i++)
     {
         for(j = 0; j < arg4; j++)
         {
-            gUnknown_03005C00[y * 32 + x + i * 32 + j] = (arg0 + i * 32 + j) | (color << 12);
+            gUnknown_03005C00[y * 32 + x + i * 32 + j] = (glyph + i * 32 + j) | (color << 12);
         }
     }
 }

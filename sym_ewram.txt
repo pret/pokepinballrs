@@ -504,7 +504,7 @@ gUnknown_0202C5A8: @ 0x0202C5A8
 	.space 0x4
 gUnknown_0202C5AC: @ 0x0202C5AC
 	.space 0x4
-gUnknown_0202C5B0: @ 0x0202C5B0
+gPokedexListPosition: @ 0x0202C5B0
 	.space 0x4
 gUnknown_0202C5B4: @ 0x0202C5B4
 	.space 0xC
