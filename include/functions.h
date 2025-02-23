@@ -575,7 +575,6 @@ extern void sub_329B0();
 extern void sub_329F4();
 extern void sub_32B74();
 extern void sub_32BE4();
-extern void sub_32DF8();
 //extern ? sub_32F3C();
 //extern ? sub_33130();
 //extern ? sub_3342C();

@@ -175,7 +175,8 @@ struct PinballGame
 	/*0x1BC*/ u8 filler1BC[0x4];
 	/*0x1C0*/ u16 unk1C0;
 	/*0x1C2*/ s8 unk1C2;
-	/*0x1C3*/ u8 filler1C3[0x3];
+	/*0x1C3*/ u8 filler1C3[0x1];
+	/*0x1C4*/ u16 unk1C4;
 	/*0x1C6*/ u16 unk1C6;
 	/*0x1C8*/ u16 unk1C8;
 	/*0x1CA*/ u16 unk1CA;
@@ -311,9 +312,20 @@ struct PinballGame
 	/*0x600*/ u16 unk600;
 	/*0x602*/ u8 filler602[0x12];
 	/*0x614*/ u16 unk614;
-	/*0x616*/ u8 filler616[0xAE];
+	/*0x616*/ u8 filler616[0x6];
+	/*0x61C*/ s8 unk61C;
+	/*0x61D*/ u8 filler61D[0xA7];
 	/*0x6C4*/ u8 unk6C4;
-	/*0x6C5*/ u8 filler6C5[0x63];
+	/*0x6C5*/ u8 filler6C5[0x4B];
+	/*0x710*/ s8 unk710;
+	/*0x711*/ s8 unk711;
+	/*0x712*/ s8 unk712;
+	/*0x713*/ s8 unk713;
+	/*0x714*/ u8 filler714[0x4];
+	/*0x718*/ s8 unk718;
+	/*0x719*/ s8 unk719;
+	/*0x71A*/ s8 unk71A;
+	/*0x71B*/ u8 filler71B[0xD];
 	/*0x728*/ u8 unk728; // TODO: unknown type
 	/*0x729*/ u8 filler729[0x5];
 	/*0x72E*/ s8 unk72E;
