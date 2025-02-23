@@ -10,6 +10,8 @@
 extern const u16 gWildMonLocations[][2][8];
 extern const u16 gEggLocations[2][26];
 
+#define BONUS_DUSKULL_TIME 7200 //2 minutes, 60FPS
+
 static inline u32 GetTimeAdjustedRandom()
 {
     return Random() + (gMain.systemFrameCount + gMain.fieldFrameCount);
@@ -358,7 +360,7 @@ void sub_327C0(void)
         sub_31498();
     }
 
-    if (gCurrentPinballGame->progressForBonus < 3)
+    if (gCurrentPinballGame->unk13 < 3)
     {
         if (gCurrentPinballGame->unk345 == 3 && gCurrentPinballGame->unk346 == 0)
         {
@@ -655,4 +657,234 @@ void sub_32BE4(void)
         gCurrentPinballGame->unk5FB = 1;
         gCurrentPinballGame->unk5FA = 0;
     }
+}
+
+NAKED
+void sub_32DF8(void)
+{
+    asm_unified("\n\
+        push {r4, r5, lr}\n\
+        ldr r0, _08032F28 @ =gCurrentPinballGame\n\
+        ldr r2, [r0]\n\
+        ldrb r1, [r2, #4]\n\
+        adds r5, r0, #0\n\
+        cmp r1, #0\n\
+        beq _08032E90\n\
+        movs r1, #0xe2\n\
+        lsls r1, r1, #1\n\
+        adds r0, r2, r1\n\
+        ldrh r0, [r0]\n\
+        cmp r0, #0\n\
+        bne _08032E3A\n\
+        movs r3, #0xf1\n\
+        lsls r3, r3, #1\n\
+        adds r1, r2, r3\n\
+        movs r0, #0\n\
+        ldrsb r0, [r1, r0]\n\
+        cmp r0, #2\n\
+        beq _08032E3A\n\
+        subs r3, #0x22\n\
+        adds r0, r2, r3\n\
+        ldrh r0, [r0]\n\
+        cmp r0, #0\n\
+        bne _08032E3A\n\
+        ldr r3, _08032F2C @ =0x0000061C\n\
+        adds r0, r2, r3\n\
+        ldrb r0, [r0]\n\
+        lsls r0, r0, #0x18\n\
+        asrs r0, r0, #0x18\n\
+        cmp r0, #0\n\
+        bne _08032E3A\n\
+        strb r0, [r1]\n\
+_08032E3A:\n\
+        ldr r0, [r5]\n\
+        movs r2, #0xe2\n\
+        lsls r2, r2, #3\n\
+        adds r1, r0, r2\n\
+        movs r4, #0\n\
+        ldrsb r4, [r1, r4]\n\
+        adds r2, #1\n\
+        adds r0, r0, r2\n\
+        ldrb r0, [r0]\n\
+        strb r0, [r1]\n\
+        ldr r0, [r5]\n\
+        ldr r3, _08032F30 @ =0x00000712\n\
+        adds r1, r0, r3\n\
+        ldrb r1, [r1]\n\
+        adds r0, r0, r2\n\
+        strb r1, [r0]\n\
+        ldr r0, [r5]\n\
+        adds r2, #2\n\
+        adds r1, r0, r2\n\
+        ldrb r1, [r1]\n\
+        adds r0, r0, r3\n\
+        strb r1, [r0]\n\
+        ldr r0, [r5]\n\
+        adds r0, r0, r2\n\
+        strb r4, [r0]\n\
+        ldr r0, [r5]\n\
+        adds r3, #6\n\
+        adds r1, r0, r3\n\
+        movs r4, #0\n\
+        ldrsb r4, [r1, r4]\n\
+        adds r3, #1\n\
+        adds r0, r0, r3\n\
+        ldrb r0, [r0]\n\
+        strb r0, [r1]\n\
+        ldr r0, [r5]\n\
+        adds r2, #7\n\
+        adds r1, r0, r2\n\
+        ldrb r1, [r1]\n\
+        adds r0, r0, r3\n\
+        strb r1, [r0]\n\
+        ldr r0, [r5]\n\
+        adds r0, r0, r2\n\
+        strb r4, [r0]\n\
+_08032E90:\n\
+        ldr r1, [r5]\n\
+        ldrb r0, [r1, #5]\n\
+        cmp r0, #0\n\
+        beq _08032F22\n\
+        movs r2, #0xe2\n\
+        lsls r2, r2, #1\n\
+        adds r0, r1, r2\n\
+        ldrh r0, [r0]\n\
+        cmp r0, #0\n\
+        bne _08032ECE\n\
+        movs r3, #0xf1\n\
+        lsls r3, r3, #1\n\
+        adds r2, r1, r3\n\
+        movs r0, #0\n\
+        ldrsb r0, [r2, r0]\n\
+        cmp r0, #2\n\
+        beq _08032ECE\n\
+        subs r3, #0x22\n\
+        adds r0, r1, r3\n\
+        ldrh r0, [r0]\n\
+        cmp r0, #0\n\
+        bne _08032ECE\n\
+        ldr r3, _08032F2C @ =0x0000061C\n\
+        adds r0, r1, r3\n\
+        ldrb r0, [r0]\n\
+        lsls r0, r0, #0x18\n\
+        asrs r0, r0, #0x18\n\
+        cmp r0, #0\n\
+        bne _08032ECE\n\
+        movs r0, #1\n\
+        strb r0, [r2]\n\
+_08032ECE:\n\
+        ldr r0, [r5]\n\
+        ldr r2, _08032F34 @ =0x00000713\n\
+        adds r1, r0, r2\n\
+        movs r4, #0\n\
+        ldrsb r4, [r1, r4]\n\
+        subs r2, #1\n\
+        adds r0, r0, r2\n\
+        ldrb r0, [r0]\n\
+        strb r0, [r1]\n\
+        ldr r0, [r5]\n\
+        ldr r3, _08032F38 @ =0x00000711\n\
+        adds r1, r0, r3\n\
+        ldrb r1, [r1]\n\
+        adds r0, r0, r2\n\
+        strb r1, [r0]\n\
+        ldr r0, [r5]\n\
+        subs r2, #2\n\
+        adds r1, r0, r2\n\
+        ldrb r1, [r1]\n\
+        adds r0, r0, r3\n\
+        strb r1, [r0]\n\
+        ldr r0, [r5]\n\
+        adds r0, r0, r2\n\
+        strb r4, [r0]\n\
+        ldr r0, [r5]\n\
+        adds r3, #9\n\
+        adds r1, r0, r3\n\
+        movs r4, #0\n\
+        ldrsb r4, [r1, r4]\n\
+        subs r3, #1\n\
+        adds r0, r0, r3\n\
+        ldrb r0, [r0]\n\
+        strb r0, [r1]\n\
+        ldr r0, [r5]\n\
+        adds r2, #8\n\
+        adds r1, r0, r2\n\
+        ldrb r1, [r1]\n\
+        adds r0, r0, r3\n\
+        strb r1, [r0]\n\
+        ldr r0, [r5]\n\
+        adds r0, r0, r2\n\
+        strb r4, [r0]\n\
+_08032F22:\n\
+        pop {r4, r5}\n\
+        pop {r0}\n\
+        bx r0\n\
+        .align 2, 0\n\
+_08032F28: .4byte gCurrentPinballGame\n\
+_08032F2C: .4byte 0x0000061C\n\
+_08032F30: .4byte 0x00000712\n\
+_08032F34: .4byte 0x00000713\n\
+_08032F38: .4byte 0x00000711\n\
+        ");
+}
+
+void sub_32F3C(void)
+{
+    s16 i;
+    gCurrentPinballGame->unk18 = 0;
+    gCurrentPinballGame->unk17 = 0;
+    gCurrentPinballGame->unk13 = 0;
+    gCurrentPinballGame->unk294 = 1;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_DUSKULL_TIME;
+    gCurrentPinballGame->timerBonus = 0;
+    gCurrentPinballGame->unk383 = 0;
+    gCurrentPinballGame->unk388 = 3;
+    gCurrentPinballGame->unk132c->unk0 = 1;
+    gCurrentPinballGame->unk385 = 0;
+    gCurrentPinballGame->unk386 = 0;
+    gCurrentPinballGame->unk387 = 0;
+    gCurrentPinballGame->unk392 = 0;
+    gCurrentPinballGame->unk394 = 0;
+    gCurrentPinballGame->unk396 = 0;
+
+    for (i = 0; i < 3; i++)
+    {
+        gCurrentPinballGame->unk397[i] = 0;
+        gCurrentPinballGame->unk39A[i] = 0;
+        gCurrentPinballGame->unk39D[i] = 0;
+        gCurrentPinballGame->unk3A0[i] = 0;
+        gCurrentPinballGame->unk3A3[i] = 0;
+        gCurrentPinballGame->unk3A6[i] = 0;
+        gCurrentPinballGame->unk3A9[i] = 0;
+        gCurrentPinballGame->unk3AC[i] = 0;
+        gCurrentPinballGame->unk3B0[i] = 0;
+        gCurrentPinballGame->unk3B6[i] = 0;
+        gCurrentPinballGame->unk3BC[i] = 0;
+        gCurrentPinballGame->unk3C4[i].unk0 = 0;
+        gCurrentPinballGame->unk3C4[i].unk2 = 0;
+        gCurrentPinballGame->unk3D0[i].unk0 = 0;
+        gCurrentPinballGame->unk3D0[i].unk2 = 0;
+    }
+
+    gCurrentPinballGame->unk3DC = 0;
+    gCurrentPinballGame->unk3DE = 0;
+    gCurrentPinballGame->unk3DF = 0;
+    gCurrentPinballGame->unk3E0 = 0;
+    gCurrentPinballGame->unk3E2 = 0;
+    gCurrentPinballGame->unk3E4 = 0;
+    gCurrentPinballGame->unk3E6 = 0;
+    gCurrentPinballGame->unk3E8 = 0;
+    gCurrentPinballGame->unk3EA = 0;
+    gCurrentPinballGame->unk3EC = 0;
+    gCurrentPinballGame->unk3EE = 0;
+    gCurrentPinballGame->unk3F0 = 0;
+    gCurrentPinballGame->unk3F2 = 0;
+    gCurrentPinballGame->unk1A = 0;
+
+    sub_336E0();
+    sub_340EC();
+
+    m4aSongNumStart(MUS_BONUS_FIELD_DUSKULL);
+
+    DmaCopy16(3, (void *)gUnknown_081B36A4, (void *)0x05000320, 32);
 }
