@@ -375,7 +375,7 @@ extern void ClearSomeArray(void);
 //extern ? sub_11F88();
 //extern ? sub_12524();
 //extern ? sub_12BF8();
-//extern ? sub_1332C();
+extern void sub_1332C();
 //extern ? sub_1333C();
 //extern ? sub_13824();
 //extern ? sub_13934();
