@@ -8,8 +8,12 @@
 #include "constants/species.h"
 #include "constants/pinball_game.h"
 
+void sub_32DF8(void);
+
 extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gEggLocations[MAIN_FIELD_COUNT][26];
+
+#define BONUS_DUSKULL_TIME 7200 //2 minutes, 60FPS
 
 static inline u32 GetTimeAdjustedRandom()
 {
@@ -359,7 +363,7 @@ void sub_327C0(void)
         sub_31498();
     }
 
-    if (gCurrentPinballGame->progressForBonus < 3)
+    if (gCurrentPinballGame->unk13 < 3)
     {
         if (gCurrentPinballGame->unk345 == 3 && gCurrentPinballGame->unk346 == 0)
         {
@@ -656,4 +660,110 @@ void sub_32BE4(void)
         gCurrentPinballGame->unk5FB = 1;
         gCurrentPinballGame->unk5FA = 0;
     }
+}
+
+void sub_32DF8(void)
+{
+    int tmp;
+
+    if (gCurrentPinballGame->newButtonActions[0])
+    {
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->unk1E2 != 2 &&
+            gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
+        {
+            gCurrentPinballGame->unk1E2 = 0;
+        }
+
+        tmp = gCurrentPinballGame->unk710;
+        gCurrentPinballGame->unk710 = gCurrentPinballGame->unk711;
+        gCurrentPinballGame->unk711 = gCurrentPinballGame->unk712;
+        gCurrentPinballGame->unk712 = gCurrentPinballGame->unk713;
+        gCurrentPinballGame->unk713 = tmp;
+
+        tmp = gCurrentPinballGame->unk718;
+        gCurrentPinballGame->unk718 = gCurrentPinballGame->unk719;
+        gCurrentPinballGame->unk719 = gCurrentPinballGame->unk71A;
+        gCurrentPinballGame->unk71A = tmp;
+    }
+
+    if (gCurrentPinballGame->newButtonActions[1])
+    {
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->unk1E2 != 2 &&
+            gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
+        {
+            gCurrentPinballGame->unk1E2 = 1;
+        }
+
+        tmp = gCurrentPinballGame->unk713;
+        gCurrentPinballGame->unk713 = gCurrentPinballGame->unk712;
+        gCurrentPinballGame->unk712 = gCurrentPinballGame->unk711;
+        gCurrentPinballGame->unk711 = gCurrentPinballGame->unk710;
+        gCurrentPinballGame->unk710 = tmp;
+
+        tmp = gCurrentPinballGame->unk71A;
+        gCurrentPinballGame->unk71A = gCurrentPinballGame->unk719;
+        gCurrentPinballGame->unk719 = gCurrentPinballGame->unk718;
+        gCurrentPinballGame->unk718 = tmp;
+    }
+}
+
+void sub_32F3C(void)
+{
+    s16 i;
+    gCurrentPinballGame->unk18 = 0;
+    gCurrentPinballGame->unk17 = 0;
+    gCurrentPinballGame->unk13 = 0;
+    gCurrentPinballGame->unk294 = 1;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_DUSKULL_TIME;
+    gCurrentPinballGame->timerBonus = 0;
+    gCurrentPinballGame->unk383 = 0;
+    gCurrentPinballGame->unk388 = 3;
+    gCurrentPinballGame->unk132c->unk0 = 1;
+    gCurrentPinballGame->unk385 = 0;
+    gCurrentPinballGame->unk386 = 0;
+    gCurrentPinballGame->unk387 = 0;
+    gCurrentPinballGame->unk392 = 0;
+    gCurrentPinballGame->unk394 = 0;
+    gCurrentPinballGame->unk396 = 0;
+
+    for (i = 0; i < 3; i++)
+    {
+        gCurrentPinballGame->unk397[i] = 0;
+        gCurrentPinballGame->unk39A[i] = 0;
+        gCurrentPinballGame->unk39D[i] = 0;
+        gCurrentPinballGame->unk3A0[i] = 0;
+        gCurrentPinballGame->unk3A3[i] = 0;
+        gCurrentPinballGame->unk3A6[i] = 0;
+        gCurrentPinballGame->unk3A9[i] = 0;
+        gCurrentPinballGame->unk3AC[i] = 0;
+        gCurrentPinballGame->unk3B0[i] = 0;
+        gCurrentPinballGame->unk3B6[i] = 0;
+        gCurrentPinballGame->unk3BC[i] = 0;
+        gCurrentPinballGame->unk3C4[i].unk0 = 0;
+        gCurrentPinballGame->unk3C4[i].unk2 = 0;
+        gCurrentPinballGame->unk3D0[i].unk0 = 0;
+        gCurrentPinballGame->unk3D0[i].unk2 = 0;
+    }
+
+    gCurrentPinballGame->unk3DC = 0;
+    gCurrentPinballGame->unk3DE = 0;
+    gCurrentPinballGame->unk3DF = 0;
+    gCurrentPinballGame->unk3E0 = 0;
+    gCurrentPinballGame->unk3E2 = 0;
+    gCurrentPinballGame->unk3E4 = 0;
+    gCurrentPinballGame->unk3E6 = 0;
+    gCurrentPinballGame->unk3E8 = 0;
+    gCurrentPinballGame->unk3EA = 0;
+    gCurrentPinballGame->unk3EC = 0;
+    gCurrentPinballGame->unk3EE = 0;
+    gCurrentPinballGame->unk3F0 = 0;
+    gCurrentPinballGame->unk3F2 = 0;
+    gCurrentPinballGame->unk1A = 0;
+
+    sub_336E0();
+    sub_340EC();
+
+    m4aSongNumStart(MUS_BONUS_FIELD_DUSKULL);
+
+    DmaCopy16(3, (void *)gUnknown_081B36A4, (void *)0x05000320, 32);
 }

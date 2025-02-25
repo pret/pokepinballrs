@@ -1061,13 +1061,13 @@ gUnknown_08118680:: @ 0x08118680
 
 .include "data/graphics/titlescreen.inc"
 
-gUnknown_08137900:: @ 0x08137900
+gGravityDeltas_Strong:: @ 0x08137900
 	.2byte 1, 1, 1, 0
 
-gUnknown_08137908:: @ 0x08137908
+gGravityDeltas_Medium:: @ 0x08137908
 	.2byte 1, 0, 1, 0
 
-gUnknown_08137910:: @ 0x08137910
+gGravityDeltas_Light:: @ 0x08137910
 	.2byte 1, 0, 0, 0
 
 gIdlePinballGameStateFuncs:: @ 0x08137918
