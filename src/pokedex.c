@@ -1,17 +1,39 @@
 #include "global.h"
-#include "constants/bg_music.h"
 #include "functions.h"
 #include "link.h"
 #include "m4a.h"
 #include "main.h"
 #include "types.h"
 #include "variables.h"
+#include "constants/bg_music.h"
+#include "constants/characters.h"
+
+#define DEX_NUM_DIGITS      3
+#define SCROLL_WAIT_FRAMES  9
+#define ENTRIES_SHOWN_COUNT 5
+
+enum PokedexStates
+{
+    POKEDEX_STATE_LOAD_GRAPHICS,
+    POKEDEX_STATE_HANDLE_LIST_INPUT,
+    POKEDEX_STATE_2,
+    POKEDEX_STATE_3,
+    POKEDEX_STATE_4,
+    POKEDEX_STATE_5,
+    POKEDEX_STATE_LINK_SETUP,
+    POKEDEX_STATE_7,
+    POKEDEX_STATE_8,
+    POKEDEX_STATE_9,
+    POKEDEX_STATE_10,
+    POKEDEX_STATE_11,
+    POKEDEX_STATE_RETURN_TO_TITLE,
+};
 
 void sub_5174(void);
-static void sub_4D74(void);
-static void sub_4E34(void);
-static void sub_4EF0(void);
-void sub_4F50(void);
+static void PokedexListScrollUp(void);
+static void PokedexListScrollDown(void);
+static void PokedexListScrollUpFast(void);
+static void PokedexListScrollDownFast(void);
 void sub_4FC8(void);
 void sub_5064(void);
 void sub_51CC(void);
@@ -20,17 +42,17 @@ s16 sub_5EC8(void);
 void sub_70E0(s16, s32);
 void sub_88E4(void);
 void sub_51FC(void);
-static void sub_599C(void);
+static void RenderLinkGraphics(void);
 static void sub_5E60(void);
 int sub_639C(void);
 static int sub_5EEC(void);
 static int sub_6144(void);
 static int sub_65DC(void);
-static void sub_681C(s16);
-static void sub_6BEC(s16, s16);
+static void PrintSelectedMonDexNum(s16);
+static void PrintSeenOwnedTotals(s16, s16);
 void sub_71DC(int, int, int);
-void sub_6CA0(s16);
-void sub_6F30(s16);
+void PrintDexNumbersFromListPosition(s16);
+static void PrintCaughtBallFromListPosition(s16);
 void sub_6F78(s16);
 
 extern u16 gUnknown_0201C180;
@@ -56,17 +78,16 @@ extern u8 *gMonPortraitGroupGfx[];
 extern u8 *gMonPortraitGroupPals[];
 extern u8 gUnknown_0808F760[];
 
-struct Unk805C8B4
+struct PokedexEntry
 {
-    u16 unk0[3];
-    u16 unk6[9];
-    s16 unk18[10];
-    s16 unk2C[11];
+    u16 dexNum[DEX_NUM_DIGITS];
+    u16 heightWeight[POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH];
+    s16 name[POKEMON_NAME_LENGTH];
+    s16 category[POKEMON_CATEGORY_NAME_LENGTH];
     u8 filler40[0x1FA];
 };
 
-extern const struct Unk805C8B4 gUnknown_0805C8B4[];
-
+extern const struct PokedexEntry gPokedexEntries[];
 
 void PokedexMain(void)
 {
@@ -97,10 +118,10 @@ void LoadPokedexGraphics(void)
     DmaCopy16(3, gUnknown_08089B60, (void *)OBJ_VRAM0, 0x6C20);
 
     sub_3FAC();
-    sub_6BEC(gUnknown_0202BEB8, gUnknown_0201A514);
-    sub_681C(gPokedexSelectedMon);
-    sub_6CA0(gUnknown_0202C5B0);
-    sub_6F30(gUnknown_0202C5B0);
+    PrintSeenOwnedTotals(gUnknown_0202BEB8, gUnknown_0201A514);
+    PrintSelectedMonDexNum(gPokedexSelectedMon);
+    PrintDexNumbersFromListPosition(gPokedexListPosition);
+    PrintCaughtBallFromListPosition(gPokedexListPosition);
     sub_6F78(gPokedexSelectedMon);
     sub_8974(gPokedexSelectedMon);
     sub_8A78(gPokedexSelectedMon);
@@ -114,8 +135,7 @@ void LoadPokedexGraphics(void)
     sub_0CBC();
     sub_024C();
 
-    // Must be `= 1` to match, cannot be `++`
-    gMain.subState = 1;
+    gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
 
     m4aSongNumStart(MUS_POKEDEX);
 }
@@ -125,13 +145,13 @@ void sub_3FAC(void)
     s32 i;
 
     gPokedexSelectedMon = 0;
-    gUnknown_0202C5B0 = 0;
+    gPokedexListPosition = 0;
     gUnknown_0201A448 = 0;
     gUnknown_0202BF00 = 0;
     gUnknown_0202A57C = 0;
     gUnknown_0201A4F0 = 0;
     gUnknown_0202BE20 = 0;
-    gUnknown_0202C58C = 0;
+    gPokedexScrollWaitFrames = 0;
     gUnknown_02019C24 = 0;
     gUnknown_0202BF0C = 0;
     gUnknown_0201A440 = 0;
@@ -174,32 +194,20 @@ void sub_3FAC(void)
     }
 
     if (gUnknown_0202A1C0[SPECIES_AERODACTYL])
-    {
-        gUnknown_0202A574 = SPECIES_AERODACTYL + 1;
-    }
+        gPokedexListEntryCount = SPECIES_AERODACTYL + 1;
     else if (gUnknown_0202A1C0[SPECIES_TOTODILE])
-    {
-        gUnknown_0202A574 = SPECIES_TOTODILE + 1;
-    }
+        gPokedexListEntryCount = SPECIES_TOTODILE + 1;
     else if (gUnknown_0202A1C0[SPECIES_CYNDAQUIL])
-    {
-        gUnknown_0202A574 = SPECIES_CYNDAQUIL + 1;
-    }
+        gPokedexListEntryCount = SPECIES_CYNDAQUIL + 1;
     else if (gUnknown_0202A1C0[SPECIES_CHIKORITA])
-    {
-        gUnknown_0202A574 = SPECIES_CHIKORITA + 1;
-    }
+        gPokedexListEntryCount = SPECIES_CHIKORITA + 1;
     else if (gUnknown_0202A1C0[SPECIES_JIRACHI])
-    {
-        gUnknown_0202A574 = SPECIES_JIRACHI + 1;
-    }
+        gPokedexListEntryCount = SPECIES_JIRACHI + 1;
     else
-    {
-        gUnknown_0202A574 = SPECIES_RAYQUAZA + 1;
-    }
+        gPokedexListEntryCount = SPECIES_RAYQUAZA + 1;
 }
 
-void sub_4150(void)
+void Pokedex_HandleListInput(void)
 {
     if (JOY_HELD(SELECT_BUTTON))
     {
@@ -207,31 +215,31 @@ void sub_4150(void)
 
         if (JOY_HELD(DPAD_UP))
         {
-            sub_4D74();
+            PokedexListScrollUp();
             sub_5064();
             sub_51CC();
-            gMain.subState = 2;
+            gMain.subState = POKEDEX_STATE_2;
         }
         else if (JOY_HELD(DPAD_DOWN))
         {
-            sub_4E34();
+            PokedexListScrollDown();
             sub_5064();
             sub_51CC();
-            gMain.subState = 2;
+            gMain.subState = POKEDEX_STATE_2;
         }
         else if (JOY_HELD(DPAD_LEFT))
         {
-            sub_4EF0();
+            PokedexListScrollUpFast();
             sub_5064();
             sub_51CC();
-            gMain.subState = 2;
+            gMain.subState = POKEDEX_STATE_2;
         }
         else if (JOY_HELD(DPAD_RIGHT))
         {
-            sub_4F50();
+            PokedexListScrollDownFast();
             sub_5064();
             sub_51CC();
-            gMain.subState = 2;
+            gMain.subState = POKEDEX_STATE_2;
         }
         else
         {
@@ -247,7 +255,7 @@ void sub_4150(void)
             {
                 gUnknown_0202BF04 = 0;
                 DmaCopy16(3, 0x6000280, (void *)gUnknown_0202A590, 0x200);
-                gMain.subState = 3;
+                gMain.subState = POKEDEX_STATE_3;
             }
             else
             {
@@ -261,22 +269,22 @@ void sub_4150(void)
 
         if (JOY_HELD(DPAD_UP))
         {
-            sub_4D74();
+            PokedexListScrollUp();
             sub_5174();
         }
         else if (JOY_HELD(DPAD_DOWN))
         {
-            sub_4E34();
+            PokedexListScrollDown();
             sub_5174();
         }
         else if (JOY_HELD(DPAD_LEFT))
         {
-            sub_4EF0();
+            PokedexListScrollUpFast();
             sub_5174();
         }
         else if (JOY_HELD(DPAD_RIGHT))
         {
-            sub_4F50();
+            PokedexListScrollDownFast();
             sub_5174();
         }
         else
@@ -303,7 +311,7 @@ void sub_4150(void)
             {
                 gUnknown_0202BF04 = 0;
                 DmaCopy16(3, 0x6000280, (void *)gUnknown_0202A590, 0x200);
-                gMain.subState = 3;
+                gMain.subState = POKEDEX_STATE_3;
             }
             else
             {
@@ -313,7 +321,7 @@ void sub_4150(void)
         else if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
-            gMain.subState = 12;
+            gMain.subState = POKEDEX_STATE_RETURN_TO_TITLE;
         }
         else if (JOY_NEW(START_BUTTON))
         {
@@ -322,16 +330,14 @@ void sub_4150(void)
             gUnknown_0202BEFC = 0;
             gUnknown_0202BF04 = 0;
             gUnknown_0202A588 = 0;
-            gMain.subState = 6;
+            gMain.subState = POKEDEX_STATE_LINK_SETUP;
         }
 
         sub_4FC8();
     }
 
-    if (gUnknown_0202C58C > 0)
-    {
-        gUnknown_0202C58C--;
-    }
+    if (gPokedexScrollWaitFrames > 0)
+        gPokedexScrollWaitFrames--;
 
     sub_51FC();
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
@@ -342,14 +348,12 @@ void sub_43D4(void)
     sub_5174();
     gUnknown_0202A588 = 0;
 
-    if (gUnknown_0202C58C > 0)
-    {
-        gUnknown_0202C58C--;
-    }
+    if (gPokedexScrollWaitFrames > 0)
+        gPokedexScrollWaitFrames--;
 
     sub_51FC();
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
-    gMain.subState = 1;
+    gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
 }
 
 void sub_4428(void)
@@ -383,7 +387,7 @@ void sub_4428(void)
         sub_70E0(gPokedexSelectedMon, gUnknown_0202C794);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
         PlayCry_NormalNoDucking(gSpeciesInfo[gPokedexSelectedMon].mainSeriesIndexNumber, 0, 127, 10);
-        gMain.subState = 5;
+        gMain.subState = POKEDEX_STATE_5;
     }
 
 }
@@ -448,7 +452,7 @@ void sub_45A4(void)
                 gUnknown_0202C5E8 = 0;
                 gUnknown_0202BEF4 = gUnknown_0202C5E8;
                 gUnknown_0201C1B4 = 0;
-                gMain.subState = 4;
+                gMain.subState = POKEDEX_STATE_4;
             }
         }
     }
@@ -460,7 +464,7 @@ void sub_45A4(void)
         gUnknown_0202C5E8 = 0;
         gUnknown_0202BEF4 = gUnknown_0202C5E8;
         gUnknown_0201C1B4 = 0;
-        gMain.subState = 4;
+        gMain.subState = POKEDEX_STATE_4;
     }
 
     if (JOY_HELD(SELECT_BUTTON))
@@ -550,24 +554,24 @@ void sub_4860(void)
 
         DmaFill16(3, 0, (void *)gUnknown_03000000, 0x1800);
         DmaFill16(3, 0, (void *)0x6005C00, 0x1800);
-        gMain.subState = 1;
+        gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
     }
 }
 
-void sub_49A8(void)
+void Pokedex_LinkSetup(void)
 {
     sub_19B4();
     sub_5E60();
     gUnknown_0201B124 = 0;
-    sub_599C();
-    gMain.subState = 7;
+    RenderLinkGraphics();
+    gMain.subState = POKEDEX_STATE_7;
 }
 
 void sub_49D0(void)
 {
     s16 var0;
 
-    sub_599C();
+    RenderLinkGraphics();
 
     if (JOY_NEW(B_BUTTON))
     {
@@ -577,7 +581,7 @@ void sub_49D0(void)
         gUnknown_0202BF04 = 1;
         gUnknown_0202A588 = 1;
         sub_2568();
-        gMain.subState = 1;
+        gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
     }
     else
     {
@@ -595,12 +599,12 @@ void sub_49D0(void)
                 var0 = sub_5EA4();
                 if (var0 == -1)
                 {
-                    gMain.subState = 9;
+                    gMain.subState = POKEDEX_STATE_9;
                 }
                 else if (var0 == 1)
                 {
                     gUnknown_0202BEFC = 2;
-                    gMain.subState = 8;
+                    gMain.subState = POKEDEX_STATE_8;
                     m4aSongNumStart(SE_FAILURE);
                 }
             }
@@ -613,7 +617,7 @@ void sub_49D0(void)
                 if (0xB4 < gUnknown_0201A444)
                 {
                     gUnknown_0202BEFC = 2;
-                    gMain.subState = 8;
+                    gMain.subState = POKEDEX_STATE_8;
                     m4aSongNumStart(SE_FAILURE);
                 }
             }
@@ -627,7 +631,7 @@ void sub_4B10(void)
 
     if (2 < gUnknown_0201A444) {
         gUnknown_0201A444 = 0;
-        gMain.subState = 6;
+        gMain.subState = POKEDEX_STATE_LINK_SETUP;
     }
 }
 
@@ -635,7 +639,7 @@ void sub_4B34(void)
 {
     s32 iVar1;
 
-    sub_599C();
+    RenderLinkGraphics();
     gUnknown_0201B120++;
 
     if (0x5A < gUnknown_0201B120)
@@ -657,7 +661,7 @@ void sub_4B34(void)
         sub_02B4();
         m4aMPlayAllStop();
         sub_0D10();
-        gMain.subState = 0;
+        gMain.subState = POKEDEX_STATE_LOAD_GRAPHICS;
     }
 }
 
@@ -665,7 +669,7 @@ void sub_4BB4(void)
 {
     s32 index;
 
-    sub_599C();
+    RenderLinkGraphics();
     switch(gUnknown_0201B120)
     {
         case 0x4:
@@ -688,13 +692,13 @@ void sub_4BB4(void)
             }
             for(index = 0; index < NUM_SPECIES; index++)
             {
-                    gMain_saveData.pokedexFlags[index] = gUnknown_0202A1C0[index];
+                gMain_saveData.pokedexFlags[index] = gUnknown_0202A1C0[index];
             }
             SaveFile_WriteToSram();
             sub_02B4();
             m4aMPlayAllStop();
             sub_0D10();
-            gMain.subState = 0;
+            gMain.subState = POKEDEX_STATE_LOAD_GRAPHICS;
             break;
     }
     gUnknown_0201B120 += 1;
@@ -728,7 +732,7 @@ void sub_4C80(void)
         sub_02B4();
         m4aMPlayAllStop();
         sub_0D10();
-        gMain.subState = 0;
+        gMain.subState = POKEDEX_STATE_LOAD_GRAPHICS;
     }
     else if (JOY_NEW(B_BUTTON))
     {
@@ -737,25 +741,25 @@ void sub_4C80(void)
         gUnknown_0202BEFC = 0;
         gUnknown_0202BF04 = 1;
         gUnknown_0202A588 = 1;
-        gMain.subState = 1;
+        gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
 
 
     }
 }
 
-void sub_4D50(void)
+void Pokedex_ReturnToTitle(void)
 {
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
 
-    gAutoDisplayTitlescreenMenu = 1;
+    gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(STATE_TITLE);
 }
 
-static void sub_4D74(void)
+static void PokedexListScrollUp(void)
 {
-    if (gUnknown_0202C58C != 0)
+    if (gPokedexScrollWaitFrames != 0)
         return;
 
     gUnknown_0201A440 = 0;
@@ -763,24 +767,24 @@ static void sub_4D74(void)
 
     if (gUnknown_0202A57C == 0)
     {
-        if (gUnknown_0202C5B0 == 0)
+        if (gPokedexListPosition == 0)
         {
             if (gUnknown_02019C24 == 0)
             {
-                gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
-                gPokedexSelectedMon = gUnknown_0202A574 - 1;
+                gPokedexListPosition = gPokedexListEntryCount - NUM_BONUS_SPECIES - 1;
+                gPokedexSelectedMon = gPokedexListEntryCount - 1;
                 gUnknown_0202A57C = 4;
                 m4aSongNumStart(SE_SELECT);
             }
         }
         else
         {
-            gUnknown_0202C5B0--;
+            gPokedexListPosition--;
             gPokedexSelectedMon--;
             m4aSongNumStart(SE_SELECT);
         }
 
-        gUnknown_0202C58C = 9;
+        gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;
     }
     else
     {
@@ -788,26 +792,26 @@ static void sub_4D74(void)
         gUnknown_0202A57C--;
         gPokedexSelectedMon--;
 
-        gUnknown_0202C58C = 9;
+        gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;
     }
 
     gUnknown_02019C24 = 1;
 }
 
-static void sub_4E34(void)
+static void PokedexListScrollDown(void)
 {
-    if (gUnknown_0202C58C != 0)
+    if (gPokedexScrollWaitFrames != 0)
         return;
 
     gUnknown_0201A440 = 0;
     gUnknown_0202BF0C = 0;
     if (gUnknown_0202A57C == 4)
     {
-        if (gUnknown_0202C5B0 == gUnknown_0202A574 - 5)
+        if (gPokedexListPosition == gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
         {
             if (gUnknown_02019C24 == 0)
             {
-                gUnknown_0202C5B0 = 0;
+                gPokedexListPosition = 0;
                 gPokedexSelectedMon = 0;
                 gUnknown_0202A57C = 0;
                 m4aSongNumStart(SE_SELECT);
@@ -815,60 +819,60 @@ static void sub_4E34(void)
         }
         else
         {
-            gUnknown_0202C5B0++;
+            gPokedexListPosition++;
             gPokedexSelectedMon++;
             m4aSongNumStart(SE_SELECT);
         }
 
-        gUnknown_0202C58C = 9;
+        gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;
     }
     else
     {
         m4aSongNumStart(SE_SELECT);
         gUnknown_0202A57C++;
         gPokedexSelectedMon++;
-        gUnknown_0202C58C = 9;
+        gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;
     }
 
     gUnknown_02019C24 = 1;
 }
 
-static void sub_4EF0(void)
+static void PokedexListScrollUpFast(void)
 {
-    if (gUnknown_0202C58C != 0)
+    if (gPokedexScrollWaitFrames != 0)
         return;
 
     gUnknown_0201A440 = 0;
     gUnknown_0202BF0C = 0;
-    if (gUnknown_0202C5B0 == 0)
+    if (gPokedexListPosition == 0)
         return;
 
     m4aSongNumStart(SE_SELECT);
-    gUnknown_0202C5B0 -= 5;
-    if (gUnknown_0202C5B0 < 0)
-        gUnknown_0202C5B0 = 0;
+    gPokedexListPosition -= ENTRIES_SHOWN_COUNT;
+    if (gPokedexListPosition < 0)
+        gPokedexListPosition = 0;
 
-    gPokedexSelectedMon = gUnknown_0202C5B0 + gUnknown_0202A57C;
-    gUnknown_0202C58C = 9;
+    gPokedexSelectedMon = gPokedexListPosition + gUnknown_0202A57C;
+    gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;
 }
 
-void sub_4F50(void)
+static void PokedexListScrollDownFast(void)
 {
-    if (gUnknown_0202C58C != 0)
+    if (gPokedexScrollWaitFrames != 0)
         return;
 
     gUnknown_0201A440 = 0;
     gUnknown_0202BF0C = 0;
-    if (gUnknown_0202C5B0 == gUnknown_0202A574 - 5)
+    if (gPokedexListPosition == gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
         return;
 
     m4aSongNumStart(SE_SELECT);
-    gUnknown_0202C5B0 += 5;
-    if (gUnknown_0202C5B0 > gUnknown_0202A574 - 5)
-        gUnknown_0202C5B0 = gUnknown_0202A574 - 5;
+    gPokedexListPosition += ENTRIES_SHOWN_COUNT;
+    if (gPokedexListPosition > gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
+        gPokedexListPosition = gPokedexListEntryCount - NUM_BONUS_SPECIES - 1;
 
-    gPokedexSelectedMon = gUnknown_0202C5B0 + gUnknown_0202A57C;
-    gUnknown_0202C58C = 9;
+    gPokedexSelectedMon = gPokedexListPosition + gUnknown_0202A57C;
+    gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;
 }
 
 void sub_4FC8(void)
@@ -885,7 +889,7 @@ void sub_4FC8(void)
             gUnknown_0202BEFC = 4;
             gUnknown_0202BF04 = 0;
             gUnknown_0202A588 = 0;
-            gMain.subState = 11;
+            gMain.subState = POKEDEX_STATE_11;
         }
     }
 
@@ -952,9 +956,9 @@ u8 sub_5134(void)
 
 void sub_5174(void)
 {
-    sub_6CA0(gUnknown_0202C5B0);
-    sub_6F30(gUnknown_0202C5B0);
-    sub_681C(gPokedexSelectedMon);
+    PrintDexNumbersFromListPosition(gPokedexListPosition);
+    PrintCaughtBallFromListPosition(gPokedexListPosition);
+    PrintSelectedMonDexNum(gPokedexSelectedMon);
     sub_6F78(gPokedexSelectedMon);
     sub_8974(gPokedexSelectedMon);
     sub_8A78(gPokedexSelectedMon);
@@ -998,8 +1002,8 @@ void sub_51FC(void)
     group8 = &gUnknown_0200B3B8[24];
     group9 = &gUnknown_0200B3B8[25 + gUnknown_02019C28 * 2 + gUnknown_0202C5AC];
 
-    group0->available = 1;
-    group1->available = 1;
+    group0->available = TRUE;
+    group1->available = TRUE;
     group2->available = gUnknown_0202A55C;
     group3->available = gUnknown_0202A568[0];
     group4->available = gUnknown_0202A568[1];
@@ -1182,13 +1186,13 @@ void sub_51FC(void)
         gUnknown_0202BEE0 = 1 - gUnknown_0202BEE0;
     }
 
-    group5->available = 0;
-    group6->available = 0;
-    group7->available = 0;
-    group9->available = 0;
+    group5->available = FALSE;
+    group6->available = FALSE;
+    group7->available = FALSE;
+    group9->available = FALSE;
 }
 
-static void sub_599C(void)
+static void RenderLinkGraphics(void)
 {
     int i;
     struct SpriteGroup *group0;
@@ -1211,12 +1215,12 @@ static void sub_599C(void)
     group7 = &gUnknown_0200B3B8[17 + gUnknown_0202BEFC];
     group5 = &gUnknown_0200B3B8[24];
 
-    group0->available = 1;
-    group1->available = 1;
+    group0->available = TRUE;
+    group1->available = TRUE;
     group2->available = gUnknown_0202A55C;
     group3->available = gUnknown_0202A568[0];
     group4->available = gUnknown_0202A568[1];
-    group6->available = 0;
+    group6->available = FALSE;
     group7->available = gUnknown_0202BEC4;
     group5->available = gUnknown_0202C590;
     sub_2414(gUnknown_086A6148, 29, group0);
@@ -1324,7 +1328,7 @@ static void sub_599C(void)
         }
     }
 
-    group7->available = 0;
+    group7->available = FALSE;
 }
 
 static void sub_5E60(void)
@@ -1686,7 +1690,7 @@ static int sub_65DC(void)
     return 0;
 }
 
-static void sub_681C(s16 arg0)
+static void PrintSelectedMonDexNum(s16 species)
 {
     int i;
     int var0;
@@ -1695,33 +1699,34 @@ static void sub_681C(s16 arg0)
 
     DmaFill16(3, 0, gUnknown_03000000, 0x800);
     var0 = 0;
-    if (arg0 == 200)
+    if (species == SPECIES_JIRACHI)
     {
-        if (gUnknown_0202A1C0[200] != 0)
+        if (gUnknown_0202A1C0[SPECIES_JIRACHI] != 0)
         {
-            sub_105A0(34, 1, 5, 2, 1, 2);
-            sub_105A0(32, 1, 6, 2, 1, 2);
-            sub_105A0(33, 1, 7, 2, 1, 2);
+            PrintChar(CHAR_2_FONT_1, 1, 5, 2, 1, 2);
+            PrintChar(CHAR_0_FONT_1, 1, 6, 2, 1, 2);
+            PrintChar(CHAR_1_FONT_1, 1, 7, 2, 1, 2);
         }
         else
         {
-            sub_105A0(42, 1, 5, 2, 1, 2);
-            sub_105A0(42, 1, 6, 2, 1, 2);
-            sub_105A0(42, 1, 7, 2, 1, 2);
+            PrintChar(CHAR_SPACE_FONT_1, 1, 5, 2, 1, 2);
+            PrintChar(CHAR_SPACE_FONT_1, 1, 6, 2, 1, 2);
+            PrintChar(CHAR_SPACE_FONT_1, 1, 7, 2, 1, 2);
         }
     }
     else
     {
-        for (i = 0; i < 3; i++)
-            sub_105A0(gUnknown_0805C8B4[arg0].unk0[i] + 32, 1, i + 5, 2, 1, 2);
+        // Dex number of the selected species
+        for (i = 0; i < DEX_NUM_DIGITS; i++)
+            PrintChar(gPokedexEntries[species].dexNum[i] + 32, 1, i + 5, 2, 1, 2);
     }
 
-    if (gUnknown_0202A1C0[arg0] > 0)
+    if (gUnknown_0202A1C0[species] > 0)
     {
-        for (i = 0; i < 10; i++)
+        for (i = 0; i < POKEMON_NAME_LENGTH; i++)
         {
-            var1 = gUnknown_0805C8B4[arg0].unk18[i] & ~0xF;
-            var2 = gUnknown_0805C8B4[arg0].unk18[i] & 0xF;
+            var1 = gPokedexEntries[species].name[i] & ~0xF;
+            var2 = gPokedexEntries[species].name[i] & 0xF;
             if (var2 == 0)
                 var2 = 4;
 
@@ -1741,12 +1746,12 @@ static void sub_681C(s16 arg0)
             sub_10708(gUnknown_08092FA0, (void *)0x06004C00 + i * 0x20, 1, 2);
     }
 
-    if (gUnknown_0202A1C0[arg0] == 1 || gUnknown_0202A1C0[arg0] > 2)
+    if (gUnknown_0202A1C0[species] == 1 || gUnknown_0202A1C0[species] > 2)
     {
-        for (i = 0; i < 11; i++)
+        for (i = 0; i < POKEMON_CATEGORY_NAME_LENGTH; i++)
         {
-            var1 = gUnknown_0805C8B4[arg0].unk2C[i] & ~0xF;
-            var2 = gUnknown_0805C8B4[arg0].unk2C[i] & 0xF;
+            var1 = gPokedexEntries[species].category[i] & ~0xF;
+            var2 = gPokedexEntries[species].category[i] & 0xF;
             if (var2 == 0)
                 var2 = 6;
 
@@ -1765,53 +1770,53 @@ static void sub_681C(s16 arg0)
             sub_10708(gUnknown_08092FA0, (void *)0x06004D00 + i * 0x20, 1, 2);
     }
 
-    if (gUnknown_0202A1C0[arg0] == 4)
+    if (gUnknown_0202A1C0[species] == 4)
     {
-        sub_105A0(gUnknown_0805C8B4[arg0].unk6[0] + 32, 1, 16, 6, 1, 2);
-        sub_105A0(gUnknown_0805C8B4[arg0].unk6[1] + 32, 1, 17, 6, 1, 2);
-        sub_105A0(gUnknown_0805C8B4[arg0].unk6[2] + 32, 1, 19, 6, 1, 2);
-        sub_105A0(gUnknown_0805C8B4[arg0].unk6[3] + 32, 1, 20, 6, 1, 2);
-        for (i = 0; i < 5; i++)
-            sub_105A0(gUnknown_0805C8B4[arg0].unk6[4 + i], 1, i + 16, 8, 1, 1);
+        PrintChar(gPokedexEntries[species].heightWeight[0] + 32, 1, 16, 6, 1, 2);
+        PrintChar(gPokedexEntries[species].heightWeight[1] + 32, 1, 17, 6, 1, 2);
+        PrintChar(gPokedexEntries[species].heightWeight[2] + 32, 1, 19, 6, 1, 2);
+        PrintChar(gPokedexEntries[species].heightWeight[3] + 32, 1, 20, 6, 1, 2);
+        for (i = 0; i < POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH - 4; i++)
+            PrintChar(gPokedexEntries[species].heightWeight[4 + i], 1, i + 16, 8, 1, 1);
     }
     else
     {
-        sub_105A0(43, 1, 16, 6, 1, 2);
-        sub_105A0(43, 1, 17, 6, 1, 2);
-        sub_105A0(43, 1, 19, 6, 1, 2);
-        sub_105A0(43, 1, 20, 6, 1, 2);
-        for (i = 0; i < 5; i++)
-            sub_105A0(11, 1, i + 16, 8, 1, 1);
+        PrintChar(CHAR_DASH_FONT_1, 1, 16, 6, 1, 2);
+        PrintChar(CHAR_DASH_FONT_1, 1, 17, 6, 1, 2);
+        PrintChar(CHAR_DASH_FONT_1, 1, 19, 6, 1, 2);
+        PrintChar(CHAR_DASH_FONT_1, 1, 20, 6, 1, 2);
+        for (i = 0; i < POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH - 4; i++)
+            PrintChar(CHAR_DASH_FONT_0, 1, i + 16, 8, 1, 1);
     }
 }
 
-static void sub_6BEC(s16 arg0, s16 arg1)
+static void PrintSeenOwnedTotals(s16 seen, s16 owned)
 {
     int i;
-    int var0;
-    int arr0[3];
-    int arr1[3];
+    int temp;
+    int seenDigits[DEX_NUM_DIGITS];
+    int ownedDigits[DEX_NUM_DIGITS];
 
-    var0 = arg0;
-    arr0[0] = var0 / 100;
-    var0 %= 100;
-    arr0[1] = var0 / 10;
-    arr0[2] = var0 % 10;
+    temp = seen;
+    seenDigits[0] = temp / 100;
+    temp %= 100;
+    seenDigits[1] = temp / 10;
+    seenDigits[2] = temp % 10;
 
-    var0 = arg1;
-    arr1[0] = var0 / 100;
-    var0 %= 100;
-    arr1[1] = var0 / 10;
-    arr1[2] = var0 % 10;
+    temp = owned;
+    ownedDigits[0] = temp / 100;
+    temp %= 100;
+    ownedDigits[1] = temp / 10;
+    ownedDigits[2] = temp % 10;
 
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < DEX_NUM_DIGITS; i++)
     {
-        sub_105A0(arr0[i], 2, i + 25, 15, 1, 1);
-        sub_105A0(arr1[i] + 32, 2, i + 25, 16, 1, 2);
+        PrintChar(seenDigits[i], 2, i + 25, 15, 1, 1);
+        PrintChar(ownedDigits[i] + 32, 2, i + 25, 16, 1, 2);
     }
 }
 
-void sub_6CA0(s16 arg0)
+void PrintDexNumbersFromListPosition(s16 listPosition)
 {
     int i, j;
     int var0;
@@ -1820,38 +1825,40 @@ void sub_6CA0(s16 arg0)
 
     DmaFill16(3, 0, gUnknown_03000000, 0x800);
     var0 = 0;
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < ENTRIES_SHOWN_COUNT; i++)
     {
-        if (arg0 + i == 200)
+        if (listPosition + i == SPECIES_JIRACHI)
         {
-            if (gUnknown_0202A1C0[200] != 0)
+            if (gUnknown_0202A1C0[SPECIES_JIRACHI] != 0)
             {
-                sub_105A0(34, 2, 8, i * 2 + 10, 1, 2);
-                sub_105A0(32, 2, 9, i * 2 + 10, 1, 2);
-                sub_105A0(33, 2, 10, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_2_FONT_1, 2, 8, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_0_FONT_1, 2, 9, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_1_FONT_1, 2, 10, i * 2 + 10, 1, 2);
             }
             else
             {
-                sub_105A0(42, 2, 8, i * 2 + 10, 1, 2);
-                sub_105A0(42, 2, 9, i * 2 + 10, 1, 2);
-                sub_105A0(42, 2, 10, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_SPACE_FONT_1, 2, 8, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_SPACE_FONT_1, 2, 9, i * 2 + 10, 1, 2);
+                PrintChar(CHAR_SPACE_FONT_1, 2, 10, i * 2 + 10, 1, 2);
             }
         }
         else
         {
-            for (j = 0; j < 3; j++)
-                sub_105A0(gUnknown_0805C8B4[gUnknown_0202C5B0 + i].unk0[j] + 32, 2, j + 8, i * 2 + 10, 1, 2);
+            // Doesn't use listPosition for some reason, despite being the only value passed
+            for (j = 0; j < DEX_NUM_DIGITS; j++)
+                PrintChar(gPokedexEntries[gPokedexListPosition + i].dexNum[j] + 32, 2, j + 8, i * 2 + 10, 1, 2);
         }
     }
 
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < ENTRIES_SHOWN_COUNT; i++)
     {
-        if (gUnknown_0202A1C0[arg0 + i] > 0)
+        if (gUnknown_0202A1C0[listPosition + i] > 0)
         {
-            for (j = 0; j < 10; j++)
+            for (j = 0; j < POKEMON_NAME_LENGTH; j++)
             {
-                var1 = gUnknown_0805C8B4[gUnknown_0202C5B0 + i].unk18[j] & ~0xF;
-                var2 = gUnknown_0805C8B4[gUnknown_0202C5B0 + i].unk18[j] & 0xF;
+                // These don't use listPosition for some reason, despite being the only value passed
+                var1 = gPokedexEntries[gPokedexListPosition + i].name[j] & ~0xF;
+                var2 = gPokedexEntries[gPokedexListPosition + i].name[j] & 0xF;
                 if (var2 == 0)
                     var2 = 4;
 
@@ -1875,23 +1882,23 @@ void sub_6CA0(s16 arg0)
     }
 }
 
-void sub_6F30(s16 arg0)
+static void PrintCaughtBallFromListPosition(s16 position)
 {
     int i;
     int var0;
 
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < ENTRIES_SHOWN_COUNT; i++)
     {
-        var0 = gUnknown_0202A1C0[arg0 + i] == 4 ? 442 : 440;
-        sub_105A0(var0, 1, 4, 10 + i * 2, 2, 2);
+        var0 = gUnknown_0202A1C0[position + i] == 4 ? CHAR_BALL_CAUGHT : CHAR_BALL_NOT_CAUGHT;
+        PrintChar(var0, 1, 4, 10 + i * 2, 2, 2);
     }
 }
 
-void sub_6F78(s16 arg0)
+void sub_6F78(s16 species)
 {
     s16 var0 = gUnknown_0202A1C0[gPokedexSelectedMon];
-    s16 var1 = arg0 / 15;
-    s16 var2 = arg0 % 15;
+    s16 var1 = species / 15;
+    s16 var2 = species % 15;
     switch (var0)
     {
         case 0:

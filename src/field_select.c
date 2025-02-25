@@ -174,7 +174,7 @@ void sub_8C7C(void)
                     gFieldSelectData.unkC = 0;
                 }
             }
-            if (gMain.selectedField <= FIELD_SAPPHIRE)
+            if (gMain.selectedField < MAIN_FIELD_COUNT)
                 gMain.unk6 = 0;
             else
                 gMain.unk6 = 1;
@@ -314,8 +314,8 @@ static void sub_8F94(void)
 
     r6->available = gFieldSelectData.unk4;
     r9->available = gFieldSelectData.unk6;
-    sp0->available = 1;
-    r10->available = 1;
+    sp0->available = TRUE;
+    r10->available = TRUE;
     r8->available = gFieldSelectData.unk14;
 
     LoadSpriteSets(gUnknown_086A6AD4, 16, r6);
@@ -374,7 +374,7 @@ static void sub_8F94(void)
         }
     }
 
-    sp0->available = 0;
-    r10->available = 0;
-    r8->available = 0;
+    sp0->available = FALSE;
+    r10->available = FALSE;
+    r8->available = FALSE;
 }
