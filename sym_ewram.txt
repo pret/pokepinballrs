@@ -306,7 +306,7 @@ gUnknown_0201A4F0: @ 0x0201A4F0
 	.space 0x4
 gUnknown_0201A4F4: @ 0x0201A4F4
 	.space 0x4
-gUnknown_0201A4F8: @ 0x0201A4F8
+gSelectedBonusField: @ 0x0201A4F8
 	.space 0x8
 gUnknown_0201A500: @ 0x0201A500
 	.space 0x10
@@ -364,7 +364,7 @@ gUnknown_0202A558: @ 0x0202A558
 	.space 0x4
 gUnknown_0202A55C: @ 0x0202A55C
 	.space 0x4
-gUnknown_0202A560: @ 0x0202A560
+gBonusFieldSelectTimer: @ 0x0202A560
 	.space 0x4
 gUnknown_0202A564: @ 0x0202A564
 	.space 0x4
@@ -434,7 +434,7 @@ gUnknown_0202BEC8: @ 0x0202BEC8
 	.space 0x4
 gUnknown_0202BECC: @ 0x0202BECC
 	.space 0x4
-gUnknown_0202BED0: @ 0x0202BED0
+gBonusFieldSelectState: @ 0x0202BED0
 	.space 0x4
 gUnknown_0202BED4: @ 0x0202BED4
 	.space 0x4
@@ -444,7 +444,7 @@ gUnknown_0202BEDC: @ 0x0202BEDC
 	.space 0x4
 gUnknown_0202BEE0: @ 0x0202BEE0
 	.space 0x4
-gUnknown_0202BEE4: @ 0x0202BEE4
+gBonusFieldSelectNextMainState: @ 0x0202BEE4
 	.space 0x4
 gUnknown_0202BEE8: @ 0x0202BEE8
 	.space 0x4

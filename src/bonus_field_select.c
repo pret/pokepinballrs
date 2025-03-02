@@ -5,22 +5,39 @@
 #include "functions.h"
 #include "titlescreen.h"
 
+enum BonusFieldSelectStates
+{
+    BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD,
+    BONUS_FIELD_SELECT_STATE_BALL_SPEED,
+    BONUS_FIELD_SELECT_STATE_LOAD_FIELD,
+};
+
+enum BonusFieldSelection
+{
+    FIELD_SELECT_DUSCLOPS,
+    FIELD_SELECT_KECLEON,
+    FIELD_SELECT_SPHEAL,
+    FIELD_SELECT_GROUDON,
+    FIELD_SELECT_KYOGRE,
+    FIELD_SELECT_RAYQUAZA,
+};
+
 EWRAM_DATA s8 gUnknown_0201A4B0 = 0;
 EWRAM_DATA u8 gUnknown_0201A4C0 = 0;
 EWRAM_DATA s16 gUnknown_0201A4F4 = 0;
-EWRAM_DATA s8 gUnknown_0201A4F8 = 0;
-EWRAM_DATA s16 gUnknown_0202A560 = 0;
+EWRAM_DATA s8 gSelectedBonusField = 0;
+EWRAM_DATA s16 gBonusFieldSelectTimer = 0;
 EWRAM_DATA s16 gUnknown_0202BE1C = 0;
-EWRAM_DATA s8 gUnknown_0202BED0 = 0;
-EWRAM_DATA s8 gUnknown_0202BEE4 = 0;
+EWRAM_DATA s8 gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
+EWRAM_DATA s8 gBonusFieldSelectNextMainState = STATE_INTRO;
 EWRAM_DATA u8 gUnknown_0202BEE8 = 0;
 
 extern void (*const gBonusFieldSelectStateFuncs[])(void);
 
 extern const struct SpriteSet *const gUnknown_086A4C80[16];
-extern const struct UCoords16 gUnknown_086A4CC0[];
-extern const struct UCoords16 gUnknown_086A4CD8[];
-extern const u8 gUnknown_086A4CF0[];
+extern const struct VectorU16 gUnknown_086A4CC0[];
+extern const struct VectorU16 gUnknown_086A4CD8[];
+extern const u8 gBonusFieldMenuSelectionToField[];
 
 extern const u8 gUnknown_0807AAE0[];
 extern const u8 gUnknown_0807B2E0[];
@@ -69,70 +86,70 @@ void LoadBonusFieldSelectGraphics(void)
 
 void sub_2710(void)
 {
-    gUnknown_0201A4F8 = 0;
-    gUnknown_0202BED0 = 0;
-    gUnknown_0202A560 = 0;
+    gSelectedBonusField = FIELD_SELECT_DUSCLOPS;
+    gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
+    gBonusFieldSelectTimer = 0;
     gUnknown_0202BE1C = 0;
     gUnknown_0202BEE8 = 0;
     gUnknown_0201A4F4 = 0;
     gUnknown_0201A4B0 = 0;
-    gUnknown_0202BEE4 = 0;
+    gBonusFieldSelectNextMainState = STATE_INTRO;
     gUnknown_0201A4C0 = gMain_saveData.ballSpeed;
 }
 
 void sub_2768(void)
 {
     sub_29C8();
-    switch (gUnknown_0202BED0)
+    switch (gBonusFieldSelectState)
     {
-    case 0:
+    case BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD:
         if (JOY_NEW(DPAD_LEFT))
         {
-            if (gUnknown_0201A4F8 != 0 && gUnknown_0201A4F8 != 3)
+            if (gSelectedBonusField != FIELD_SELECT_DUSCLOPS && gSelectedBonusField != FIELD_SELECT_GROUDON)
             {
                 m4aSongNumStart(SE_UNKNOWN_0x6D);
-                gUnknown_0201A4F8--;
+                gSelectedBonusField--;
             }
         }
         else if (JOY_NEW(DPAD_RIGHT))
         {
-            if (gUnknown_0201A4F8 != 2 && gUnknown_0201A4F8 != 5)
+            if (gSelectedBonusField != FIELD_SELECT_SPHEAL && gSelectedBonusField != FIELD_SELECT_RAYQUAZA)
             {
                 m4aSongNumStart(SE_UNKNOWN_0x6D);
-                gUnknown_0201A4F8++;
+                gSelectedBonusField++;
             }
         }
         if (JOY_NEW(DPAD_UP))
         {
-            if (gUnknown_0201A4F8 > 2)
+            if (gSelectedBonusField > FIELD_SELECT_SPHEAL)
             {
                 m4aSongNumStart(SE_UNKNOWN_0x6D);
-                gUnknown_0201A4F8 -= 3;
+                gSelectedBonusField -= 3;
             }
         }
         else if (JOY_NEW(DPAD_DOWN))
         {
-            if (gUnknown_0201A4F8 < 3)
+            if (gSelectedBonusField < FIELD_SELECT_GROUDON)
             {
                 m4aSongNumStart(SE_UNKNOWN_0x6D);
-                gUnknown_0201A4F8 += 3;
+                gSelectedBonusField += 3;
             }
         }
         if (JOY_NEW(A_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x65);
-            gUnknown_0202BED0 = 1;
+            gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_BALL_SPEED;
             gUnknown_0201A4B0 = 1;
-            gUnknown_0202A560 = 0;
+            gBonusFieldSelectTimer = 0;
         }
         if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
-            gUnknown_0202BEE4 = 1;
+            gBonusFieldSelectNextMainState = STATE_TITLE;
             gMain.subState++;
         }
         break;
-    case 1:
+    case BONUS_FIELD_SELECT_STATE_BALL_SPEED:
         if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
         {
             m4aSongNumStart(SE_SELECT);
@@ -141,38 +158,38 @@ void sub_2768(void)
         if (JOY_NEW(A_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x65);
-            gUnknown_0202A560 = 0;
+            gBonusFieldSelectTimer = 0;
             gUnknown_0202BE1C = 0;
             gMain.saveData.ballSpeed = gUnknown_0201A4C0;
             SaveFile_WriteToSram();
-            gUnknown_0202BED0 = 2;
+            gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_LOAD_FIELD;
         }
         if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gUnknown_0201A4B0 = 0;
-            gUnknown_0202BED0 = 0;
+            gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
         }
-        gUnknown_0202A560++;
-        if (gUnknown_0202A560 > 4)
+        gBonusFieldSelectTimer++;
+        if (gBonusFieldSelectTimer > 4)
         {
-            gUnknown_0202A560 = 0;
+            gBonusFieldSelectTimer = 0;
             gUnknown_0201A4F4 = 1 - gUnknown_0201A4F4;
         }
         break;
-    case 2:
-        gUnknown_0202A560++;
-        if (gUnknown_0202A560 > 5)
+    case BONUS_FIELD_SELECT_STATE_LOAD_FIELD:
+        gBonusFieldSelectTimer++;
+        if (gBonusFieldSelectTimer > 5)
         {
-            gUnknown_0202A560 = 0;
+            gBonusFieldSelectTimer = 0;
             gUnknown_0202BEE8 = 2 - gUnknown_0202BEE8;
             gUnknown_0202BE1C++;
             if (gUnknown_0202BE1C > 5)
             {
                 gMain.unkD = 0;
-                gMain.unk5 = gMain.selectedField = gUnknown_086A4CF0[gUnknown_0201A4F8];
+                gMain.unk5 = gMain.selectedField = gBonusFieldMenuSelectionToField[gSelectedBonusField];
                 gMain.unk6 = 1;
-                gUnknown_0202BEE4 = 2;
+                gBonusFieldSelectNextMainState = STATE_GAME_MAIN;
                 gMain.subState++;
             }
         }
@@ -186,7 +203,7 @@ void sub_2990(void)
     m4aMPlayAllStop();
     sub_0D10();
     gAutoDisplayTitlescreenMenu = 1;
-    SetMainGameState(gUnknown_0202BEE4);
+    SetMainGameState(gBonusFieldSelectNextMainState);
 }
 
 void sub_29C8(void)
@@ -206,13 +223,13 @@ void sub_29C8(void)
     {
         sgptrs[i] = &gMain.spriteGroups[i];
     }
-    r10 = &gMain.spriteGroups[6 + gUnknown_0201A4F8];
+    r10 = &gMain.spriteGroups[6 + gSelectedBonusField];
     r8 = &gMain.spriteGroups[12 + gUnknown_0201A4C0 * 2 + gUnknown_0201A4F4];
     for (j = 0; j < 6; j++)
     {
         sgptrs[j]->available = 1;
     }
-    sgptrs[gUnknown_0201A4F8]->available = 0;
+    sgptrs[gSelectedBonusField]->available = 0;
     r10->available = 1;
     r8->available = gUnknown_0201A4B0;
     LoadSpriteSets(gUnknown_086A4C80, 16, gUnknown_0200B3B8);
@@ -243,8 +260,8 @@ void sub_29C8(void)
     }
     if (r8->available == 1)
     {
-        r8->baseX = gUnknown_086A4CD8[gUnknown_0201A4F8].x;
-        r8->baseY = gUnknown_086A4CD8[gUnknown_0201A4F8].y;
+        r8->baseX = gUnknown_086A4CD8[gSelectedBonusField].x;
+        r8->baseY = gUnknown_086A4CD8[gSelectedBonusField].y;
         for (j = 0; j < 5; j++)
         {
             simple = &r8->oam[j];

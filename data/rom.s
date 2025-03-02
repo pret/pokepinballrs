@@ -1,4 +1,5 @@
     .section .rodata
+#include "constants/fields.h"
 #include "constants/species.h"
 
 @ field select palettes 0xA8840
@@ -771,18 +772,18 @@ gUnknown_08079870:: @ 0x08079870
 	.incbin "baserom.gba", 0x79870, 0x20
 
 gTitlescreenStateFuncs:: @ 0x08079890
-	.4byte LoadTitlescreenGraphics
-	.4byte TitleScreen1_WaitForStartButton
-	.4byte TitleScreen2_8010CF0
-	.4byte TitleScreen3_8010E00
-	.4byte TitleScreen4_MenuInputNoSavedGame
-	.4byte TitleScreen5_MenuInputSavedGame
-	.4byte TitleScreen6_AnimCloseMenu
-	.4byte TitleScreen7_8011020
-	.4byte TitleScreen8_8011228
-	.4byte TitleScreen9_8010D84
-	.4byte TitleScreen10_ExecMenuSelection
-	.4byte TitleScreen11_80114B4
+	.4byte LoadTitlescreenGraphics           @ SUBSTATE_LOAD_GRAPHICS
+	.4byte TitleScreen1_WaitForStartButton   @ SUBSTATE_WAIT_FOR_START_BUTTON
+	.4byte TitleScreen2_8010CF0              @ SUBSTATE_2
+	.4byte TitleScreen3_8010E00              @ SUBSTATE_3
+	.4byte TitleScreen4_MenuInputNoSavedGame @ SUBSTATE_MENU_INPUT_NO_SAVED_GAME
+	.4byte TitleScreen5_MenuInputSavedGame   @ SUBSTATE_MENU_INPUT_SAVED_GAME
+	.4byte TitleScreen6_AnimCloseMenu        @ SUBSTATE_ANIM_CLOSE_MENU
+	.4byte TitleScreen7_8011020              @ SUBSTATE_7
+	.4byte TitleScreen8_8011228              @ SUBSTATE_8
+	.4byte TitleScreen9_8010D84              @ SUBSTATE_9
+	.4byte TitleScreen10_ExecMenuSelection   @ SUBSTATE_EXEC_MENU_SELECTION
+	.4byte TitleScreen11_80114B4             @ SUBSTATE_11
 
 gUnknown_080798C0:: @ 0x080798C0
 	.incbin "baserom.gba", 0x798C0, 0x800
@@ -1060,13 +1061,13 @@ gUnknown_08118680:: @ 0x08118680
 
 .include "data/graphics/titlescreen.inc"
 
-gUnknown_08137900:: @ 0x08137900
+gGravityDeltas_Strong:: @ 0x08137900
 	.2byte 1, 1, 1, 0
 
-gUnknown_08137908:: @ 0x08137908
+gGravityDeltas_Medium:: @ 0x08137908
 	.2byte 1, 0, 1, 0
 
-gUnknown_08137910:: @ 0x08137910
+gGravityDeltas_Light:: @ 0x08137910
 	.2byte 1, 0, 0, 0
 
 gIdlePinballGameStateFuncs:: @ 0x08137918
@@ -2185,8 +2186,13 @@ gUnknown_086A4CD8:: @ 0x086A4CD8
 	.2byte 0x58, 0x5C
 	.2byte 0x98, 0x5C
 
-gUnknown_086A4CF0:: @ 0x086A4CF0
-	.byte 2, 3, 7, 5, 4, 6
+gBonusFieldMenuSelectionToField:: @ 0x086A4CF0
+	.byte FIELD_DUSCLOPS
+	.byte FIELD_KECLEON
+	.byte FIELD_SPHEAL
+	.byte FIELD_GROUDON
+	.byte FIELD_KYOGRE
+	.byte FIELD_RAYQUAZA
 
 	.align 2, 0
 gUnknown_086A4CF8:: @ 0x086A4CF8

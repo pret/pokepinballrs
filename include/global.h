@@ -81,17 +81,19 @@ struct UnkPinballGame1334
 	/*0x01*/ u8 unk1;
 	/*0x02*/ u8 filler2[0x4];
 	/*0x06*/ u16 unk6;
-	/*0x08*/ u8 filler8[0x6];
+	/*0x08*/ u16 unk8;
+	/*0x0A*/ u16 unkA;
+	/*0x0C*/ u8 fillerC[0x2];
 	/*0x0E*/ u16 unkE;
-	/*0x10*/ struct Coords16 unk10;
+	/*0x10*/ struct Vector16 unk10;
 	/*0x14*/ u8 filler14[0xB];
 	/*0x1F*/ u8 unk1F;
 	/*0x20*/ u8 filler20[0x8];
-	/*0x28*/ struct Coords16 unk28;
-	/*0x2C*/ struct Coords16 unk2C;
-	/*0x30*/ struct Coords16 velocity;
-	/*0x34*/ struct Coords32 position; // fixed-point Q_24_8 values
-	/*0x3C*/ u8 filler3C[0x8];
+	/*0x28*/ struct Vector16 unk28;
+	/*0x2C*/ struct Vector16 unk2C;
+	/*0x30*/ struct Vector16 velocity;
+	/*0x34*/ struct Vector32 position; // fixed-point Q_24_8 values
+	/*0x3C*/ struct Vector32 prevPosition;
 };
 
 struct UnkPinballGame3C4
@@ -109,7 +111,7 @@ struct PinballGame
 	/*0x013*/ s8 unk13; // Current field state. In main fields seems to be related to the 3 Pokeballs that unlock bonus fields, in bonus fields acts as a field state
 	/*0x014*/ s8 unk14;
 	/*0x015*/ u8 unk15;
-	/*0x016*/ u8 unk16;
+	/*0x016*/ s8 unk16;
 	/*0x017*/ u8 unk17;
 	/*0x018*/ u16 unk18;
 	/*0x01A*/ u8 unk1A;
@@ -162,7 +164,13 @@ struct PinballGame
 	/*0x12D*/ u8 filler12D;
 	/*0x12E*/ s16 unk12E;
 	/*0x130*/ s16 unk130[8];
-	/*0x140*/ u8 filler140[0x52];
+	/*0x140*/ u8 filler140[0x2C];
+	/*0x16C*/ u8 unk16C;
+	/*0x16D*/ u8 filler16D[0x3];
+	/*0x170*/ u8 unk170;
+	/*0x171*/ u8 unk171;
+	/*0x172*/ u8 unk172;
+	/*0x173*/ u8 filler173[0x1F];
 	/*0x192*/ u8 coins;
 	/*0x193*/ u8 filler193[0x1];
 	/*0x194*/ s8 unk194;
@@ -176,7 +184,8 @@ struct PinballGame
 	/*0x1BC*/ u8 filler1BC[0x4];
 	/*0x1C0*/ u16 unk1C0;
 	/*0x1C2*/ s8 unk1C2;
-	/*0x1C3*/ u8 filler1C3[0x3];
+	/*0x1C3*/ u8 filler1C3[0x1];
+	/*0x1C4*/ u16 unk1C4;
 	/*0x1C6*/ u16 unk1C6;
 	/*0x1C8*/ u16 unk1C8;
 	/*0x1CA*/ u16 unk1CA;
@@ -214,12 +223,18 @@ struct PinballGame
 	/*0x29A*/ u8 filler29A[0x2];
 	/*0x29C*/ u16 unk29C;
 	/*0x29E*/ u8 unk29E;
-	/*0x29F*/ u8 filler29F[0x1];
+	/*0x29F*/ u8 unk29F;
 	/*0x2A0*/ u8 filler2A0[0x2];
 	/*0x2A2*/ u8 unk2A2;
-	/*0x2A3*/ u8 filler2A3[0x37];
+	/*0x2A3*/ u8 filler2A3[0x31];
+	/*0x2D4*/ u16 unk2D4;
+	/*0x2D6*/ u16 unk2D6;
+	/*0x2D8*/ u8 filler2D8[0x2];
 	/*0x2DA*/ s8 unk2DA;
-	/*0x2DB*/ u8 filler2DB[0x16];
+	/*0x2DB*/ u8 filler2DB[0x10];
+	/*0x2EC*/ u16 unk2EC;
+	/*0x2EE*/ u16 unk2EE;
+	/*0x2F0*/ u8 filler2F0[0x1];
 	/*0x2F1*/ u8 unk2F1;
 	/*0x2F2*/ u8 filler2F2[0x2];
 	/*0x2F4*/ u8 unk2F4;
@@ -236,7 +251,7 @@ struct PinballGame
 	/*0x36C*/ u8 unk36C[0x2];
 	/*0x36E*/ u16 unk36E[0x2];
 	/*0x372*/ u8 filler372[0x11];
-	/*0x383*/ u8 unk383;
+	/*0x383*/ s8 unk383;
 	/*0x384*/ u8 unk384;
 	/*0x385*/ u8 unk385;
 	/*0x386*/ s8 unk386;
@@ -297,7 +312,9 @@ struct PinballGame
 	/*0x59A*/ u8 filler59A[0x2];
 	/*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
 	/*0x59E*/ u16 lastEggSpecies; // Previous hatch/evo mode species?
-	/*0x5A0*/ u8 filler5A0[0x12];
+	/*0x5A0*/ u8 filler5A0[0x4];
+	/*0x5A4*/ u8 unk5A4;
+	/*0x5A5*/ u8 filler5A5[0xD];
 	/*0x5B2*/ u8 unk5B2;
 	/*0x5B3*/ u8 filler5B3[0x3D];
 	/*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
@@ -312,9 +329,20 @@ struct PinballGame
 	/*0x600*/ u16 unk600;
 	/*0x602*/ u8 filler602[0x12];
 	/*0x614*/ u16 unk614;
-	/*0x616*/ u8 filler616[0xAE];
+	/*0x616*/ u8 filler616[0x6];
+	/*0x61C*/ s8 unk61C;
+	/*0x61D*/ u8 filler61D[0xA7];
 	/*0x6C4*/ u8 unk6C4;
-	/*0x6C5*/ u8 filler6C5[0x63];
+	/*0x6C5*/ u8 filler6C5[0x4B];
+	/*0x710*/ s8 unk710;
+	/*0x711*/ s8 unk711;
+	/*0x712*/ s8 unk712;
+	/*0x713*/ s8 unk713;
+	/*0x714*/ u8 filler714[0x4];
+	/*0x718*/ s8 unk718;
+	/*0x719*/ s8 unk719;
+	/*0x71A*/ s8 unk71A;
+	/*0x71B*/ u8 filler71B[0xD];
 	/*0x728*/ u8 unk728; // TODO: unknown type
 	/*0x729*/ u8 filler729[0x5];
 	/*0x72E*/ s8 unk72E;

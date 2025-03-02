@@ -7,6 +7,8 @@
 #include "m4a.h"
 #include "main.h"
 
+void sub_32DF8(void);
+
 extern const u16 gWildMonLocations[][2][8];
 extern const u16 gEggLocations[2][26];
 
@@ -659,173 +661,49 @@ void sub_32BE4(void)
     }
 }
 
-NAKED
 void sub_32DF8(void)
 {
-    asm_unified("\n\
-        push {r4, r5, lr}\n\
-        ldr r0, _08032F28 @ =gCurrentPinballGame\n\
-        ldr r2, [r0]\n\
-        ldrb r1, [r2, #4]\n\
-        adds r5, r0, #0\n\
-        cmp r1, #0\n\
-        beq _08032E90\n\
-        movs r1, #0xe2\n\
-        lsls r1, r1, #1\n\
-        adds r0, r2, r1\n\
-        ldrh r0, [r0]\n\
-        cmp r0, #0\n\
-        bne _08032E3A\n\
-        movs r3, #0xf1\n\
-        lsls r3, r3, #1\n\
-        adds r1, r2, r3\n\
-        movs r0, #0\n\
-        ldrsb r0, [r1, r0]\n\
-        cmp r0, #2\n\
-        beq _08032E3A\n\
-        subs r3, #0x22\n\
-        adds r0, r2, r3\n\
-        ldrh r0, [r0]\n\
-        cmp r0, #0\n\
-        bne _08032E3A\n\
-        ldr r3, _08032F2C @ =0x0000061C\n\
-        adds r0, r2, r3\n\
-        ldrb r0, [r0]\n\
-        lsls r0, r0, #0x18\n\
-        asrs r0, r0, #0x18\n\
-        cmp r0, #0\n\
-        bne _08032E3A\n\
-        strb r0, [r1]\n\
-_08032E3A:\n\
-        ldr r0, [r5]\n\
-        movs r2, #0xe2\n\
-        lsls r2, r2, #3\n\
-        adds r1, r0, r2\n\
-        movs r4, #0\n\
-        ldrsb r4, [r1, r4]\n\
-        adds r2, #1\n\
-        adds r0, r0, r2\n\
-        ldrb r0, [r0]\n\
-        strb r0, [r1]\n\
-        ldr r0, [r5]\n\
-        ldr r3, _08032F30 @ =0x00000712\n\
-        adds r1, r0, r3\n\
-        ldrb r1, [r1]\n\
-        adds r0, r0, r2\n\
-        strb r1, [r0]\n\
-        ldr r0, [r5]\n\
-        adds r2, #2\n\
-        adds r1, r0, r2\n\
-        ldrb r1, [r1]\n\
-        adds r0, r0, r3\n\
-        strb r1, [r0]\n\
-        ldr r0, [r5]\n\
-        adds r0, r0, r2\n\
-        strb r4, [r0]\n\
-        ldr r0, [r5]\n\
-        adds r3, #6\n\
-        adds r1, r0, r3\n\
-        movs r4, #0\n\
-        ldrsb r4, [r1, r4]\n\
-        adds r3, #1\n\
-        adds r0, r0, r3\n\
-        ldrb r0, [r0]\n\
-        strb r0, [r1]\n\
-        ldr r0, [r5]\n\
-        adds r2, #7\n\
-        adds r1, r0, r2\n\
-        ldrb r1, [r1]\n\
-        adds r0, r0, r3\n\
-        strb r1, [r0]\n\
-        ldr r0, [r5]\n\
-        adds r0, r0, r2\n\
-        strb r4, [r0]\n\
-_08032E90:\n\
-        ldr r1, [r5]\n\
-        ldrb r0, [r1, #5]\n\
-        cmp r0, #0\n\
-        beq _08032F22\n\
-        movs r2, #0xe2\n\
-        lsls r2, r2, #1\n\
-        adds r0, r1, r2\n\
-        ldrh r0, [r0]\n\
-        cmp r0, #0\n\
-        bne _08032ECE\n\
-        movs r3, #0xf1\n\
-        lsls r3, r3, #1\n\
-        adds r2, r1, r3\n\
-        movs r0, #0\n\
-        ldrsb r0, [r2, r0]\n\
-        cmp r0, #2\n\
-        beq _08032ECE\n\
-        subs r3, #0x22\n\
-        adds r0, r1, r3\n\
-        ldrh r0, [r0]\n\
-        cmp r0, #0\n\
-        bne _08032ECE\n\
-        ldr r3, _08032F2C @ =0x0000061C\n\
-        adds r0, r1, r3\n\
-        ldrb r0, [r0]\n\
-        lsls r0, r0, #0x18\n\
-        asrs r0, r0, #0x18\n\
-        cmp r0, #0\n\
-        bne _08032ECE\n\
-        movs r0, #1\n\
-        strb r0, [r2]\n\
-_08032ECE:\n\
-        ldr r0, [r5]\n\
-        ldr r2, _08032F34 @ =0x00000713\n\
-        adds r1, r0, r2\n\
-        movs r4, #0\n\
-        ldrsb r4, [r1, r4]\n\
-        subs r2, #1\n\
-        adds r0, r0, r2\n\
-        ldrb r0, [r0]\n\
-        strb r0, [r1]\n\
-        ldr r0, [r5]\n\
-        ldr r3, _08032F38 @ =0x00000711\n\
-        adds r1, r0, r3\n\
-        ldrb r1, [r1]\n\
-        adds r0, r0, r2\n\
-        strb r1, [r0]\n\
-        ldr r0, [r5]\n\
-        subs r2, #2\n\
-        adds r1, r0, r2\n\
-        ldrb r1, [r1]\n\
-        adds r0, r0, r3\n\
-        strb r1, [r0]\n\
-        ldr r0, [r5]\n\
-        adds r0, r0, r2\n\
-        strb r4, [r0]\n\
-        ldr r0, [r5]\n\
-        adds r3, #9\n\
-        adds r1, r0, r3\n\
-        movs r4, #0\n\
-        ldrsb r4, [r1, r4]\n\
-        subs r3, #1\n\
-        adds r0, r0, r3\n\
-        ldrb r0, [r0]\n\
-        strb r0, [r1]\n\
-        ldr r0, [r5]\n\
-        adds r2, #8\n\
-        adds r1, r0, r2\n\
-        ldrb r1, [r1]\n\
-        adds r0, r0, r3\n\
-        strb r1, [r0]\n\
-        ldr r0, [r5]\n\
-        adds r0, r0, r2\n\
-        strb r4, [r0]\n\
-_08032F22:\n\
-        pop {r4, r5}\n\
-        pop {r0}\n\
-        bx r0\n\
-        .align 2, 0\n\
-_08032F28: .4byte gCurrentPinballGame\n\
-_08032F2C: .4byte 0x0000061C\n\
-_08032F30: .4byte 0x00000712\n\
-_08032F34: .4byte 0x00000713\n\
-_08032F38: .4byte 0x00000711\n\
-        ");
+    int tmp;
+
+    if (gCurrentPinballGame->newButtonActions[0])
+    {
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->unk1E2 != 2 &&
+            gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
+        {
+            gCurrentPinballGame->unk1E2 = 0;
+        }
+
+        tmp = gCurrentPinballGame->unk710;
+        gCurrentPinballGame->unk710 = gCurrentPinballGame->unk711;
+        gCurrentPinballGame->unk711 = gCurrentPinballGame->unk712;
+        gCurrentPinballGame->unk712 = gCurrentPinballGame->unk713;
+        gCurrentPinballGame->unk713 = tmp;
+
+        tmp = gCurrentPinballGame->unk718;
+        gCurrentPinballGame->unk718 = gCurrentPinballGame->unk719;
+        gCurrentPinballGame->unk719 = gCurrentPinballGame->unk71A;
+        gCurrentPinballGame->unk71A = tmp;
+    }
+
+    if (gCurrentPinballGame->newButtonActions[1])
+    {
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->unk1E2 != 2 &&
+            gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
+        {
+            gCurrentPinballGame->unk1E2 = 1;
+        }
+
+        tmp = gCurrentPinballGame->unk713;
+        gCurrentPinballGame->unk713 = gCurrentPinballGame->unk712;
+        gCurrentPinballGame->unk712 = gCurrentPinballGame->unk711;
+        gCurrentPinballGame->unk711 = gCurrentPinballGame->unk710;
+        gCurrentPinballGame->unk710 = tmp;
+
+        tmp = gCurrentPinballGame->unk71A;
+        gCurrentPinballGame->unk71A = gCurrentPinballGame->unk719;
+        gCurrentPinballGame->unk719 = gCurrentPinballGame->unk718;
+        gCurrentPinballGame->unk718 = tmp;
+    }
 }
 
 void sub_32F3C(void)
