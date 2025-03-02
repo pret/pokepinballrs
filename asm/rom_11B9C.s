@@ -14684,39 +14684,6 @@ _08019A10:
 	.align 2, 0
 _08019A1C: .4byte 0x00001364
 
-	.section .text19C04
-
-	thumb_func_start sub_19CC8
-sub_19CC8: @ 0x08019CC8
-	push {lr}
-	ldr r0, _08019CEC @ =gCurrentPinballGame
-	ldr r1, [r0]
-	ldr r2, _08019CF0 @ =0x00000714
-	adds r0, r1, r2
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0
-	beq _08019CFE
-	ldr r0, _08019CF4 @ =0x000006EE
-	adds r1, r1, r0
-	ldrh r0, [r1]
-	cmp r0, #0
-	beq _08019CF8
-	subs r0, #1
-	strh r0, [r1]
-	b _08019CFE
-	.align 2, 0
-_08019CEC: .4byte gCurrentPinballGame
-_08019CF0: .4byte 0x00000714
-_08019CF4: .4byte 0x000006EE
-_08019CF8:
-	movs r0, #2
-	bl sub_19B64
-_08019CFE:
-	pop {r0}
-	bx r0
-
 	.section .text19E10
 
 	thumb_func_start sub_19E10

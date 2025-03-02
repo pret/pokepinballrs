@@ -153,3 +153,18 @@ void sub_19C04(void)
         gCurrentPinballGame->catchModeArrows = 0;
     }
 }
+
+void sub_19CC8(void) 
+{
+    if (gCurrentPinballGame->unk714 != 0)
+    {
+        if (gCurrentPinballGame->unk6EE != 0)
+        {
+            gCurrentPinballGame->unk6EE -= 1;
+        }
+        else
+        {
+            sub_19B64(2);
+        }
+    }
+}
