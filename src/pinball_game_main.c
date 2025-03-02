@@ -63,7 +63,6 @@ extern const u8 gUnknown_08449D8C[][0x280];
 extern const u8 gUnknown_084F6B0C[][0x500];
 extern const u8 gUnknown_08490A4C[][0x440];
 extern const s16 gUnknown_086AE5A0[][2];
-extern const u8 gUnknown_08138834[0x2000];
 extern const u8 gUnknown_0813A854[0x2000];
 extern const u8 gUnknown_0813C874[0x2000];
 extern const u8 gUnknown_0849F1CC[0x2000];

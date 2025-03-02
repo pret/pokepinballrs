@@ -96,8 +96,8 @@ struct UnkPinballGame1334
 
 struct UnkPinballGame3C4
 {
-	u16 unk0;
-	u16 unk2;
+	s16 unk0;
+	s16 unk2;
 };
 
 struct PinballGame
@@ -106,14 +106,15 @@ struct PinballGame
 	/*0x004*/ u8 newButtonActions[5]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
 	/*0x009*/ u8 releasedButtonActions[5];
 	/*0x00E*/ u8 heldButtonActions[5];
-	/*0x013*/ s8 unk13; // Current number of Pokéballs filled by catch mode and evo mode (?)
+	/*0x013*/ s8 unk13; // Current field state. In main fields seems to be related to the 3 Pokeballs that unlock bonus fields, in bonus fields acts as a field state
 	/*0x014*/ s8 unk14;
 	/*0x015*/ u8 unk15;
 	/*0x016*/ u8 unk16;
 	/*0x017*/ u8 unk17;
 	/*0x018*/ u16 unk18;
 	/*0x01A*/ u8 unk1A;
-	/*0x01B*/ u8 filler1B[0x2];
+	/*0x01B*/ u8 unk1B;
+	/*0x01C*/ u8 unk1C;
 	/*0x01D*/ u8 unk1D;
 	/*0x01E*/ u8 unk1E;
 	/*0x01F*/ u8 unk1F;
@@ -127,8 +128,8 @@ struct PinballGame
 	/*0x032*/ u8 filler32[0x3];
 	/*0x035*/ s8 area;
 	/*0x036*/ u8 filler36[0x2];
-	/*0x038*/ u32 unk38;
-	/*0x03C*/ u32 unk3C;
+	/*0x038*/ u32 unk38; //score to add every frame until unk3C score has been added to player's total
+	/*0x03C*/ u32 unk3C; //score to add when a bonus field or mode is complete
 	/*0x040*/ u8 filler40[0x4];
 	/*0x044*/ u32 unk44;
 	/*0x048*/ u32 unk48;
@@ -203,10 +204,10 @@ struct PinballGame
 	/*0x260*/ u8 filler260[0x21];
 	/*0x281*/ s8 unk281;
 	/*0x282*/ s8 unk282;
-	/*0x283*/ u8 bonusLevelCount; //how many bonus levels have been completed
+	/*0x283*/ u8 bonusFieldsComplete; //how many bonus fields have been completed
 	/*0x284*/ u8 filler284[0xC];
 	/*0x290*/ u32 unk290;
-	/*0x294*/ u8 unk294;
+	/*0x294*/ s8 unk294;
 	/*0x295*/ u8 unk295;
 	/*0x296*/ u16 eventTimer; //Timer for events (Only bonus fields or all events?)
 	/*0x298*/ u16 unk298;
@@ -238,7 +239,7 @@ struct PinballGame
 	/*0x383*/ u8 unk383;
 	/*0x384*/ u8 unk384;
 	/*0x385*/ u8 unk385;
-	/*0x386*/ u8 unk386;
+	/*0x386*/ s8 unk386;
 	/*0x387*/ u8 unk387;
 	/*0x388*/ u8 unk388;
 	/*0x389*/ u8 filler389[0x9];
@@ -392,5 +393,7 @@ extern struct PinballGame *gCurrentPinballGame;
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
 extern s32 gUnknown_081B36A4[64];
+extern s32 gUnknown_082EE0E0[];
+extern const u8 gUnknown_08138834[0x2000];
 
 #endif // GUARD_GLOBAL_H
