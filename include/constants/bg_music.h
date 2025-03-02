@@ -42,8 +42,8 @@
 #define MUS_BONUS_FIELD_GROUDON     0x28
 #define MUS_BONUS_FIELD_KYOGRE      0x29
 #define MUS_BONUS_FIELD_RAYQUAZA    0x2A
-#define MUS_SUCCESS3                0x2B  // Copy of MUS_SUCCESS?
-#define MUS_END_OF_BALL3            0x2C  // Copy of MUS_END_OF_BALL?
+#define MUS_SUCCESS3                0x2B  // Copy of MUS_SUCCESS? (used in bonus fields)
+#define MUS_END_OF_BALL3            0x2C  // Copy of MUS_END_OF_BALL? (used in bonus fields)
 #define MUS_EMPTY_0x2D              0x2D  // No sound
 #define MUS_POKEDEX                 0x2E  // RS: Evergrande City
 #define MUS_JIRACHI                 0x2F  // RS: Hall of Fame

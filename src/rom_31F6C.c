@@ -767,3 +767,180 @@ void sub_32F3C(void)
 
     DmaCopy16(3, (void *)gUnknown_081B36A4, (void *)0x05000320, 32);
 }
+
+void sub_33130(void)
+{
+    s16 temp;
+    switch (gCurrentPinballGame->unk13)
+    {
+        case 0:
+            gCurrentPinballGame->unk5F7 = 1;
+            if (gCurrentPinballGame->unk18 < 120)
+            {
+                temp = gCurrentPinballGame->unk18 / 24;
+                DmaCopy16(3, gUnknown_082EE0E0 + temp * 40, 0x05000000, 160);
+                
+                gCurrentPinballGame->unkE6 = gCurrentPinballGame->unk18 / 5 + 0xFFE8;
+                gCurrentPinballGame->unk18++;
+            }
+            else
+            {
+                gCurrentPinballGame->unkE6 = 0;
+                gMain.spriteGroups[7].available = 1;
+                gMain.spriteGroups[8].available = 1;
+                gMain.spriteGroups[9].available = 1;
+                gCurrentPinballGame->unk13 = 1;
+                gCurrentPinballGame->unk18 = 0;
+            }
+
+            break;
+        case 1:
+            if (!gCurrentPinballGame->unk386)
+            {
+                gMain.blendControl = 0x1C10;
+                gMain.blendAlpha = 0x30D;
+            }
+            gCurrentPinballGame->unk387 = 1;
+            sub_336E0();
+            sub_340EC();
+            break;
+        case 2:
+            gCurrentPinballGame->unk13 = 3;
+            gMain.spriteGroups[13].available = 1;
+            gMain.spriteGroups[14].available = 1;
+            gMain.spriteGroups[12].available = 1;
+            gCurrentPinballGame->unk387 = 0;
+            gCurrentPinballGame->unk385 = 0;
+            m4aSongNumStart(MUS_BONUS_FIELD_DUSCLOPS);
+            break;
+        case 3:
+            if (!gCurrentPinballGame->unk386)
+            {
+                gMain.blendControl = 0x1C10;
+                gMain.blendAlpha = 0x1000;
+            }
+            sub_34450();
+            break;
+        case 4:
+            if (gCurrentPinballGame->unk18 < 120)
+            {
+                gCurrentPinballGame->unk18++;
+            }
+            else
+            {
+                gCurrentPinballGame->unk13 = 5;
+                gCurrentPinballGame->unk18 = 0;
+                gMain.spriteGroups[6].available = 1;
+                gMain.spriteGroups[5].available = 1;
+                DmaCopy16(3, gUnknown_08138834, OBJ_VRAM1+0x1800, 8192);
+                gCurrentPinballGame->unk394 = 136;
+            }
+            break;
+        case 5:
+            sub_351A8();
+            if (gCurrentPinballGame->unk1C)
+            {
+                gCurrentPinballGame->unk18 = 181;
+            }
+            if (gCurrentPinballGame->unk18 == 180)
+            {
+                gCurrentPinballGame->unk1C = 1;
+                gCurrentPinballGame->unk38 = 400000;
+                gCurrentPinballGame->unk3C = 30000000;
+            }
+            if (gCurrentPinballGame->unk18 < 240)
+            {
+                if (gCurrentPinballGame->unk18 == 20)
+                {
+                    m4aMPlayAllStop();
+                    m4aSongNumStart(MUS_SUCCESS3);
+                }
+                gCurrentPinballGame->unk18++;
+            }
+            else
+            {
+                gCurrentPinballGame->unk18 = 0;
+                gCurrentPinballGame->unk13 = 6;
+                gCurrentPinballGame->bonusFieldsComplete++;
+            }
+
+            break;
+        case 6:
+            sub_351A8();
+            gCurrentPinballGame->unk386 = 1;
+            break;
+    }
+
+    if (gCurrentPinballGame->unk294)
+    {
+        if (gCurrentPinballGame->eventTimer < 2)
+        {
+            if (!gMain.unkF)
+            {
+                m4aMPlayAllStop();
+                m4aSongNumStart(MUS_END_OF_BALL3);
+                gMain.unkF = gMain.unkF | 0x40;
+            }
+        }
+    }
+
+    if (gCurrentPinballGame->unk386)
+        sub_350F0();
+
+    sub_472E4();
+}
+
+void sub_3342C(s16 index1, s16 index2)
+{
+    u8 temp397, temp39A, temp39D, temp3A0, temp3A3, temp3A6, temp3A9, temp3AC;
+    u16 temp3B0, temp3B6, temp3BC;
+    struct UnkPinballGame3C4 temp3C4, temp3D0;
+    
+    temp397 = gCurrentPinballGame->unk397[index1];
+    temp39A = gCurrentPinballGame->unk39A[index1];
+    temp39D = gCurrentPinballGame->unk39D[index1];
+    temp3A0 = gCurrentPinballGame->unk3A0[index1];
+    temp3A3 = gCurrentPinballGame->unk3A3[index1];
+    temp3A6 = gCurrentPinballGame->unk3A6[index1];
+    temp3A9 = gCurrentPinballGame->unk3A9[index1];
+    temp3AC = gCurrentPinballGame->unk3AC[index1];
+    temp3B0 = gCurrentPinballGame->unk3B0[index1];
+    temp3B6 = gCurrentPinballGame->unk3B6[index1];
+    temp3BC = gCurrentPinballGame->unk3BC[index1];
+    temp3C4.unk0 = gCurrentPinballGame->unk3C4[index1].unk0;
+    temp3C4.unk2 = gCurrentPinballGame->unk3C4[index1].unk2;
+    temp3D0.unk0 = gCurrentPinballGame->unk3D0[index1].unk0;
+    temp3D0.unk2 = gCurrentPinballGame->unk3D0[index1].unk2;
+
+    gCurrentPinballGame->unk397[index1] = gCurrentPinballGame->unk397[index2];
+    gCurrentPinballGame->unk39A[index1] = gCurrentPinballGame->unk39A[index2];
+    gCurrentPinballGame->unk39D[index1] = gCurrentPinballGame->unk39D[index2];
+    gCurrentPinballGame->unk3A0[index1] = gCurrentPinballGame->unk3A0[index2];
+    gCurrentPinballGame->unk3A3[index1] = gCurrentPinballGame->unk3A3[index2];
+    gCurrentPinballGame->unk3A6[index1] = gCurrentPinballGame->unk3A6[index2];
+    gCurrentPinballGame->unk3A9[index1] = gCurrentPinballGame->unk3A9[index2];
+    gCurrentPinballGame->unk3AC[index1] = gCurrentPinballGame->unk3AC[index2];
+    gCurrentPinballGame->unk3B0[index1] = gCurrentPinballGame->unk3B0[index2];
+    gCurrentPinballGame->unk3B6[index1] = gCurrentPinballGame->unk3B6[index2];
+    gCurrentPinballGame->unk3BC[index1] = gCurrentPinballGame->unk3BC[index2];
+    gCurrentPinballGame->unk3C4[index1].unk0 = gCurrentPinballGame->unk3C4[index2].unk0;
+    gCurrentPinballGame->unk3C4[index1].unk2 = gCurrentPinballGame->unk3C4[index2].unk2;
+    gCurrentPinballGame->unk3D0[index1].unk0 = gCurrentPinballGame->unk3D0[index2].unk0;
+    gCurrentPinballGame->unk3D0[index1].unk2 = gCurrentPinballGame->unk3D0[index2].unk2;
+
+    gCurrentPinballGame->unk397[index2] = temp397;
+    gCurrentPinballGame->unk39A[index2] = temp39A;
+    gCurrentPinballGame->unk39D[index2] = temp39D;
+    gCurrentPinballGame->unk3A0[index2] = temp3A0;
+    gCurrentPinballGame->unk3A3[index2] = temp3A3;
+    gCurrentPinballGame->unk3A6[index2] = temp3A6;
+    gCurrentPinballGame->unk3A9[index2] = temp3A9;
+    gCurrentPinballGame->unk3AC[index2] = temp3AC;
+    gCurrentPinballGame->unk3B0[index2] = temp3B0;
+    gCurrentPinballGame->unk3B6[index2] = temp3B6;
+    gCurrentPinballGame->unk3BC[index2] = temp3BC;
+    gCurrentPinballGame->unk3C4[index2].unk0 = temp3C4.unk0;
+    gCurrentPinballGame->unk3C4[index2].unk2 = temp3C4.unk2;
+    gCurrentPinballGame->unk3D0[index2].unk0 = temp3D0.unk0;
+    gCurrentPinballGame->unk3D0[index2].unk2 = temp3D0.unk2;
+}
