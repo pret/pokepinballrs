@@ -110,7 +110,7 @@ struct PinballGame
 	/*0x00E*/ u8 heldButtonActions[5];
 	/*0x013*/ s8 unk13; // Current number of Pokéballs filled by catch mode and evo mode (?)
 	/*0x014*/ s8 unk14;
-	/*0x015*/ u8 unk15;
+	/*0x015*/ s8 unk15;
 	/*0x016*/ s8 unk16;
 	/*0x017*/ u8 unk17;
 	/*0x018*/ u16 unk18;

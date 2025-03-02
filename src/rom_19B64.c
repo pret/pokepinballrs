@@ -1,6 +1,7 @@
 #include "global.h"
 #include "main.h"
 #include "m4a.h"
+#include "constants/bg_music.h"
 
 extern const void (*gUnknown_086AD4C4[])(void);
 extern const void (*gUnknown_086AD4E8[])(void);
@@ -107,5 +108,48 @@ void sub_19B90(void)
             gCurrentPinballGame->unk13 = gCurrentPinballGame->unk14;
             gCurrentPinballGame->unk16 = 0;
             break;
+    }
+}
+
+void sub_19C04(void) 
+{
+    s16 num1;
+    u8 num2;
+    
+    if (gCurrentPinballGame->unk15 > 0)
+    {
+        if (gMain.selectedField == 0)
+        {
+            num1 = gCurrentPinballGame->bonusLevelCount / 5;
+            if ((num1 & 1) == 0)
+            {
+                m4aSongNumStart(MUS_FIELD_RUBY);
+            }
+            else
+            {
+                 m4aSongNumStart(MUS_FIELD_RUBY2);
+            }
+        }
+        else
+        {
+            num1 = gCurrentPinballGame->bonusLevelCount / 5;
+            if ((num1 & 1) == 0)
+            {
+                m4aSongNumStart(MUS_FIELD_SAPPHIRE);
+            }
+            else
+            {
+                 m4aSongNumStart(MUS_FIELD_SAPPHIRE2);
+            }
+        }
+    }
+    
+    num2 = gCurrentPinballGame->unk15 - 1;
+    if (num2 > 1)
+    {
+        gCurrentPinballGame->unk72E = gCurrentPinballGame->unk73C;
+        gCurrentPinballGame->unk72F = gCurrentPinballGame->catchModeArrows;
+        gCurrentPinballGame->unk73C = 0;
+        gCurrentPinballGame->catchModeArrows = 0;
     }
 }
