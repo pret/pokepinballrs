@@ -202,7 +202,7 @@ void sub_2990(void)
     sub_FE04(sub_29C8);
     m4aMPlayAllStop();
     sub_0D10();
-    gAutoDisplayTitlescreenMenu = 1;
+    gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(gBonusFieldSelectNextMainState);
 }
 
@@ -227,10 +227,10 @@ void sub_29C8(void)
     r8 = &gMain.spriteGroups[12 + gUnknown_0201A4C0 * 2 + gUnknown_0201A4F4];
     for (j = 0; j < 6; j++)
     {
-        sgptrs[j]->available = 1;
+        sgptrs[j]->available = TRUE;
     }
-    sgptrs[gSelectedBonusField]->available = 0;
-    r10->available = 1;
+    sgptrs[gSelectedBonusField]->available = FALSE;
+    r10->available = TRUE;
     r8->available = gUnknown_0201A4B0;
     LoadSpriteSets(gUnknown_086A4C80, 16, gUnknown_0200B3B8);
     for (i = 0; i < 6; i++)
@@ -272,8 +272,8 @@ void sub_29C8(void)
     }
     for (j = 0; j < 6; j++)
     {
-        sgptrs[j]->available = 0;
+        sgptrs[j]->available = FALSE;
     }
-    r10->available = 0;
-    r8->available = 0;
+    r10->available = FALSE;
+    r8->available = FALSE;
 }

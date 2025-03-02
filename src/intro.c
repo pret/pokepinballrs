@@ -157,7 +157,7 @@ void sub_93D0(void)
     m4aMPlayAllStop();
     sub_0D10();
     ResetMainCallback();
-    gAutoDisplayTitlescreenMenu = 0;
+    gAutoDisplayTitlescreenMenu = FALSE;
     SetMainGameState(STATE_TITLE);
 }
 
@@ -525,7 +525,7 @@ void sub_9CB8(void)
         }
     }
 
-    puVar4->available = 0;
+    puVar4->available = FALSE;
 }
 
 void sub_9D70(void)
@@ -554,7 +554,7 @@ void sub_9D70(void)
             gOamBuffer[puVar2->oamId].matrixNum = 0;
         }
     }
-    puVar4->available = 0;
+    puVar4->available = FALSE;
 }
 
 void sub_9E90(void)
@@ -641,10 +641,10 @@ void sub_9E90(void)
         }
     }
 
-    puVar1->available = 0;
-    mainSg3->available = 0;
-    mainSg2->available = 0;
-    otherSg->available = 0; // TODO Possible Bug?
+    puVar1->available = FALSE;
+    mainSg3->available = FALSE;
+    mainSg2->available = FALSE;
+    otherSg->available = FALSE; // TODO Possible Bug?
 }
 
 void sub_A154(void)
@@ -933,7 +933,7 @@ void sub_A87C(void)
     REG_BLDALPHA = gMain.blendAlpha;
 
     puVar4 = &gMain.spriteGroups[0];
-    puVar4->available = 1;
+    puVar4->available = TRUE;
     LoadSpriteSets(gUnknown_086A795C, 0x1, puVar4);
 
     if (puVar4->available == 1)
@@ -949,7 +949,7 @@ void sub_A87C(void)
             gOamBuffer[puVar2->oamId].y = puVar2->yOffset + puVar4->baseY;
         }
     }
-    puVar4->available = 0;
+    puVar4->available = FALSE;
 }
 
 void sub_A950(void)
@@ -1252,9 +1252,9 @@ void sub_B0E8(void)
     mainSg0 = &gMain.spriteGroups[0];
     mainSg2 = &gMain.spriteGroups[2];
 
-    mainSg1->available = 1;
-    mainSg0->available = 1;
-    mainSg2->available = 1;
+    mainSg1->available = TRUE;
+    mainSg0->available = TRUE;
+    mainSg2->available = TRUE;
     LoadSpriteSets(gUnknown_086A79EC, 3, gMain.spriteGroups);
 
     if (mainSg1->available == 1)
@@ -1298,9 +1298,9 @@ void sub_B0E8(void)
         }
     }
 
-    mainSg1->available = 0;
-    mainSg0->available = 0;
-    mainSg2->available = 0;
+    mainSg1->available = FALSE;
+    mainSg0->available = FALSE;
+    mainSg2->available = FALSE;
 }
 
 void sub_B2E0(void)
@@ -1532,12 +1532,12 @@ void sub_B7F8(void)
         }
     }
 
-    spriteGroups[0]->available = 0;
-    spriteGroups[1]->available = 0;
-    spriteGroups[2]->available = 0;
-    spriteGroups[3]->available = 0;
-    spriteGroups[4]->available = 0;
-    spriteGroups[5]->available = 0;
+    spriteGroups[0]->available = FALSE;
+    spriteGroups[1]->available = FALSE;
+    spriteGroups[2]->available = FALSE;
+    spriteGroups[3]->available = FALSE;
+    spriteGroups[4]->available = FALSE;
+    spriteGroups[5]->available = FALSE;
 }
 #else
 NAKED
@@ -2083,7 +2083,7 @@ void sub_C0D8(void)
     struct OamDataSimple *oamData;
 
     spriteGroup = &gUnknown_0200B3B8[0];
-    spriteGroup->available = 1;
+    spriteGroup->available = TRUE;
     LoadSpriteSets(gUnknown_086A7B74, 0x1, gUnknown_0200B3B8);
     if (spriteGroup->available == 1)
     {
@@ -2101,7 +2101,7 @@ void sub_C0D8(void)
         }
     }
 
-    spriteGroup->available = 0;
+    spriteGroup->available = FALSE;
 }
 
 void sub_C210(void)
@@ -2875,6 +2875,6 @@ void sub_CD18(void)
         }
     }
 
-    spriteGroup0->available = 0;
-    spriteGroup1->available = 0;
+    spriteGroup0->available = FALSE;
+    spriteGroup1->available = FALSE;
 }

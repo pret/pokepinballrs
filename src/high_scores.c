@@ -56,7 +56,7 @@ struct unkStruct_2002858
 
 struct unkStruct_2002858 gUnknown_02002858;
 
-extern struct HighScoreEntry gUnknown_0202C610[2][NUM_HIGH_SCORES];
+extern struct HighScoreEntry gUnknown_0202C610[MAIN_FIELD_COUNT][NUM_HIGH_SCORES];
 extern struct HighScoreEntry gUnknown_0202C550[2];
 extern u8 gUnknown_0809AFC0[];
 extern u8 gUnknown_080947A0[];
@@ -107,7 +107,7 @@ void LoadHighScoreGraphics(void)
 void sub_CFD4(void)
 {
     int i, j, k;
-    for(i = 0; i < 2; i++)
+    for(i = 0; i < MAIN_FIELD_COUNT; i++)
     {
         for(j = 0; j < NUM_HIGH_SCORES; j++) 
         {
@@ -115,7 +115,7 @@ void sub_CFD4(void)
                 gUnknown_0202C610[i][j].data.raw[k] = gMain_saveData.highScores[i][j].data.raw[k];
         }
     }
-    for(i = 0; i < 2; i++)
+    for(i = 0; i < MAIN_FIELD_COUNT; i++)
     {
         for(j = 0; j <  HIGH_SCORE_NAME_LENGTH + 2; j++)
         {
@@ -499,7 +499,7 @@ void sub_D664(void)
             for (i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
                 gUnknown_0201A500[i] = gUnknown_0202C610[gUnknown_02002858.unkB][gUnknown_02002858.unkC].data.parts.name[i];
 
-            for (i = 0; i < 2; i++)
+            for (i = 0; i < MAIN_FIELD_COUNT; i++)
             {
                 for (j = 0; j < NUM_HIGH_SCORES; j++)
                 {
@@ -616,7 +616,7 @@ void sub_DB70(void)
         gUnknown_0202BEBC = 0;
         sub_2568();
         DisableSerial();
-        for (i = 0; i < 2; i++)
+        for (i = 0; i < MAIN_FIELD_COUNT; i++)
         {
             for (j = 0; j < 6; j++)
             {
@@ -651,7 +651,7 @@ void sub_DBF4(void)
         gUnknown_0202BEBC = 0;
         gUnknown_0202BED8 = sub_F4FC(0);
         gUnknown_0201B170 = sub_F4FC(1);
-        for (i = 0; i < 2; i++)
+        for (i = 0; i < MAIN_FIELD_COUNT; i++)
         {
             for (j = 0; j < NUM_HIGH_SCORES; j++)
             {
@@ -699,7 +699,7 @@ void sub_DD4C(void)
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
-    gAutoDisplayTitlescreenMenu = 1;
+    gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(STATE_TITLE);
 }
 
@@ -732,7 +732,7 @@ void sub_DEB4(void)
 {
     int i, j, k;
 
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < MAIN_FIELD_COUNT; i++)
     {
         for (j = 0; j < NUM_HIGH_SCORES; j++)
         {
@@ -922,7 +922,7 @@ void sub_E3A8(void)
     struct SpriteGroup *spriteGroup;
 
     spriteGroup = &gUnknown_0200B3B8[gUnknown_02002858.unk12];
-    spriteGroup->available = 1;
+    spriteGroup->available = TRUE;
     LoadSpriteSets(gUnknown_086A7DA8, 2, gUnknown_0200B3B8);
 
     spriteGroup->baseX = gUnknown_080797F0[gUnknown_02002858.unkB][gUnknown_02002858.unkC].x + gUnknown_02002858.unk10 * 8;
@@ -933,7 +933,7 @@ void sub_E3A8(void)
         gOamBuffer[spriteGroup->oam[i].oamId].y = spriteGroup->oam[i].yOffset + spriteGroup->baseY;
     }
 
-    spriteGroup->available = 0;
+    spriteGroup->available = FALSE;
 }
 
 extern s8 gUnknown_0200287D;
@@ -978,8 +978,8 @@ void sub_E464(void)
 
     if (gUnknown_02002882 == 0)
     {
-        spriteGroups->available = 1;
-        spriteGroup2->available = 0;
+        spriteGroups->available = TRUE;
+        spriteGroup2->available = FALSE;
         spriteGroup3->available = gUnknown_0201B178;
         spriteGroup4->available = var1_02002858->unk26;
         LoadSpriteSets(gUnknown_086A7DB0, 9, spriteGroups);
@@ -1021,8 +1021,8 @@ void sub_E464(void)
     }
     else if (gUnknown_02002882 == 240)
     {
-        spriteGroup1->available = 0;
-        spriteGroup2->available = 1;
+        spriteGroup1->available = FALSE;
+        spriteGroup2->available = TRUE;
         spriteGroup3->available = gUnknown_0201B178;
         spriteGroup4->available = var1_02002858->unk26;
         LoadSpriteSets(gUnknown_086A7DB0, 2, gUnknown_0200B3B8);
@@ -1064,13 +1064,13 @@ void sub_E464(void)
     }
     else
     {
-        spriteGroup1->available = 0;
-        spriteGroup2->available = 0;
+        spriteGroup1->available = FALSE;
+        spriteGroup2->available = FALSE;
         LoadSpriteSets(gUnknown_086A7DB0, 9, gUnknown_0200B3B8);
     }
 
-    spriteGroup3->available = 0;
-    spriteGroup4->available = 0;
+    spriteGroup3->available = FALSE;
+    spriteGroup4->available = FALSE;
 }
 #else
 NAKED
@@ -1598,7 +1598,7 @@ void sub_E860(void)
         }
     }
 
-    spriteGroup->available = 0;
+    spriteGroup->available = FALSE;
 }
 
 void sub_E908(void)
@@ -1863,77 +1863,85 @@ s16 sub_ED28(void)
 void sub_EE64(void)
 {
     int i, j;
-    
-    for (j = 0; j < 4; j++)
+
+    // Ruby Field Top name
+    for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[0][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
+        PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
     }
 
-    for (i = 1; i < 8; i++)
+    // Ruby Field 2nd-8th names
+    for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
-        for (j = 0; j < 4; j++)
+        for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[0][i].data.parts.name[j]] + 0xA0, 8, j + 6, i * 2 + 3, 1, 2);
+            PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][i].data.parts.name[j]] + 0xA0, 8, j + 6, i * 2 + 3, 1, 2);
         }
     }
 
-    sub_F21C(gUnknown_0202C610[0][0].data.parts.scoreHi, gUnknown_0202C610[0][0].data.parts.scoreLo);
+    // Ruby Field Top score
+    sub_F21C(gUnknown_0202C610[FIELD_RUBY][0].data.parts.scoreHi, gUnknown_0202C610[FIELD_RUBY][0].data.parts.scoreLo);
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 12, 2, 1, 2);
+            PrintChar(gUnknown_0202C5C0[j] + 0x120, 9, j + 12, 2, 1, 2); // Thousands separator?
         else
-            sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, j + 12, 2, 1, 2);
+            PrintChar(gUnknown_0202C5C0[j] + 0xE0, 9, j + 12, 2, 1, 2);
     }
-    sub_105A0(gUnknown_0202C5C0[14] + 0xE0, 9, 26, 2, 1, 2);
-    for (i = 1; i < 8; i++)
+    PrintChar(gUnknown_0202C5C0[14] + 0xE0, 9, 26, 2, 1, 2);
+    // Ruby Field 2nd-8th scores
+    for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
-        sub_F21C(gUnknown_0202C610[0][i].data.parts.scoreHi, gUnknown_0202C610[0][i].data.parts.scoreLo);
+        sub_F21C(gUnknown_0202C610[FIELD_RUBY][i].data.parts.scoreHi, gUnknown_0202C610[FIELD_RUBY][i].data.parts.scoreLo);
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2);
+                PrintChar(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2); // Thousands separator?
             else
-                sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, j + 12, i * 2 + 3, 1, 2);
+                PrintChar(gUnknown_0202C5C0[j] + 0x160, 9, j + 12, i * 2 + 3, 1, 2);
         }
 
-        sub_105A0(gUnknown_0202C5C0[14] + 0x160, 9, 26, 3 + i * 2, 1, 2);
+        PrintChar(gUnknown_0202C5C0[14] + 0x160, 9, 26, 3 + i * 2, 1, 2);
     }
 
-    for (j = 0; j < 4; j++)
+    // Sapphire Field Top name
+    for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[1][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
+        PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
     }
 
-    for (i = 1; i < 8; i++)
+    // Sapphire Field 2nd-8th names
+    for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
-        for (j = 0; j < 4; j++)
+        for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            sub_105A0(gUnknown_086A7FAC[gUnknown_0202C610[1][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
+            PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
         }
     }
-    sub_F21C(gUnknown_0202C610[1][0].data.parts.scoreHi, gUnknown_0202C610[1][0].data.parts.scoreLo);
+    sub_F21C(gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.scoreHi, gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.scoreLo);
+    // Sapphire Field Top score
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            sub_105A0(gUnknown_0202C5C0[j] + 0x120, 9, j + 10, 34, 1, 2);
+            PrintChar(gUnknown_0202C5C0[j] + 0x120, 9, j + 10, 34, 1, 2); // Thousands separator?
         else
-            sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, j + 10, 34, 1, 2);
+            PrintChar(gUnknown_0202C5C0[j] + 0xE0, 9, j + 10, 34, 1, 2);
     }
 
-    sub_105A0(gUnknown_0202C5C0[j] + 0xE0, 9, 24, 34, 1, 2);
-    for (i = 1; i < 8; i++)
+    PrintChar(gUnknown_0202C5C0[j] + 0xE0, 9, 24, 34, 1, 2);
+    // Sapphire Field 2nd-8th scores
+    for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
-        sub_F21C(gUnknown_0202C610[1][i].data.parts.scoreHi, gUnknown_0202C610[1][i].data.parts.scoreLo);
+        sub_F21C(gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.scoreHi, gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.scoreLo);
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                sub_105A0(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 10, i * 2 + 35, 1, 2);
+                PrintChar(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 10, i * 2 + 35, 1, 2); // Thousands separator?s
             else
-                sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, j + 10, i * 2 + 35, 1, 2);
+                PrintChar(gUnknown_0202C5C0[j] + 0x160, 9, j + 10, i * 2 + 35, 1, 2);
         }
 
-        sub_105A0(gUnknown_0202C5C0[j] + 0x160, 9, 24, i * 2 + 35, 1, 2);
+        PrintChar(gUnknown_0202C5C0[j] + 0x160, 9, 24, i * 2 + 35, 1, 2);
     }
 }
 
@@ -2104,7 +2112,7 @@ u32 sub_F4FC(u32 field)
 void sub_F670(u32 arg0, u32 arg1, s16 arg2, u32 arg3)
 {
     arg0 = gUnknown_086A7FAC[arg0];
-    sub_105A0(
+    PrintChar(
         gUnknown_08079730[arg3][arg1].unk8 * 32 + 0x80 + arg0,
         8,
         gUnknown_08079730[arg3][arg1].unk0 + arg2,
@@ -2131,7 +2139,7 @@ void sub_F74C(void)
     u8 letter;
     u32 scoreHi, scoreLo;
 
-    for (field = 0; field < 2; field++)
+    for (field = 0; field < MAIN_FIELD_COUNT; field++)
     {
         letter = Random() % 42;
         gMain_saveData.highScores[field][0].data.parts.name[0] = letter;
@@ -2662,14 +2670,15 @@ void sub_10544(void)
     REG_IF |= 1;
 }
 
-void sub_105A0(u16 arg0, u16 arg1, int arg2, int arg3, int arg4, int arg5)
+// Print char? (also used by the Pokédex)
+void PrintChar(u16 glyph, u16 color, int x, int y, int arg4, int arg5)
 {
     u16 i, j;
     for(i = 0; i < arg5; i++)
     {
         for(j = 0; j < arg4; j++)
         {
-            gUnknown_03005C00[arg3 * 32 + arg2 + i * 32 + j] = (arg0 + i * 32 + j) | (arg1 << 12);
+            gUnknown_03005C00[y * 32 + x + i * 32 + j] = (glyph + i * 32 + j) | (color << 12);
         }
     }
 }

@@ -372,7 +372,7 @@ gUnknown_0202A568: @ 0x0202A568
 	.space 0x4
 gUnknown_0202A56C: @ 0x0202A56C
 	.space 0x8
-gUnknown_0202A574: @ 0x0202A574
+gPokedexListEntryCount: @ 0x0202A574
 	.space 0x4
 gUnknown_0202A578: @ 0x0202A578
 	.space 0x4
@@ -486,7 +486,7 @@ gUnknown_0202C584: @ 0x0202C584
 	.space 0x4
 gUnknown_0202C588: @ 0x202C588
 	.space 0x4
-gUnknown_0202C58C: @ 0x0202C58C
+gPokedexScrollWaitFrames: @ 0x0202C58C
 	.space 0x4
 gUnknown_0202C590: @ 0x0202C590
 	.space 0x4
@@ -504,7 +504,7 @@ gUnknown_0202C5A8: @ 0x0202C5A8
 	.space 0x4
 gUnknown_0202C5AC: @ 0x0202C5AC
 	.space 0x4
-gUnknown_0202C5B0: @ 0x0202C5B0
+gPokedexListPosition: @ 0x0202C5B0
 	.space 0x4
 gUnknown_0202C5B4: @ 0x0202C5B4
 	.space 0xC

@@ -173,7 +173,7 @@ extern void sub_10480(void);
 extern void sub_1050C(void);
 extern void sub_10528(void);
 extern void sub_10544(void);
-extern void sub_105A0(u16, u16, int, int, int, int);
+extern void PrintChar(u16 glyph, u16 color, int x, int y, int arg4, int arg5);
 
 // src/intro.c
 extern void IntroMain(void);
@@ -337,23 +337,23 @@ extern void sub_525CC(s8);
 extern void PokedexMain(void);
 //extern ? LoadPokedexGraphics();
 extern void sub_3FAC(void);
-//extern ? sub_4150();
+//extern ? Pokedex_HandleListInput();
 //extern ? sub_43D4();
 //extern ? sub_4428();
 //extern ? sub_45A4();
 //extern ? sub_4860();
-//extern ? sub_49A8();
+//extern ? Pokedex_LinkSetup();
 //extern ? sub_49D0();
 //extern ? sub_4B10();
 //extern ? sub_4B34();
 //extern ? sub_4BB4();
 //extern ? sub_4C80();
-//extern ? sub_4D50();
+//extern ? Pokedex_ReturnToTitle();
 //extern ? sub_70E0();
 //extern ? sub_71DC();
 //extern ? sub_88E4();
 extern void sub_8974();
-extern s16 sub_8A78(s32);
+extern s16 sub_8A78(s32 species);
 extern void ResetPokedex(void);
 
 // asm/rom_1068C.s

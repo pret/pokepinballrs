@@ -1,16 +1,17 @@
 #include "global.h"
-#include "constants/ereader.h"
-#include "constants/fields.h"
-#include "constants/species.h"
-#include "constants/bg_music.h"
 #include "functions.h"
 #include "m4a.h"
 #include "main.h"
+#include "constants/bg_music.h"
+#include "constants/ereader.h"
+#include "constants/fields.h"
+#include "constants/species.h"
+#include "constants/pinball_game.h"
 
 void sub_32DF8(void);
 
-extern const u16 gWildMonLocations[][2][8];
-extern const u16 gEggLocations[2][26];
+extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
+extern const u16 gEggLocations[MAIN_FIELD_COUNT][26];
 
 #define BONUS_DUSKULL_TIME 7200 //2 minutes, 60FPS
 
@@ -34,7 +35,7 @@ void sub_31F6C(void)
     else
         threeArrows = 0;
 
-    for (i = 0; i < 8; i++)
+    for (i = 0; i < WILD_MON_LOCATION_COUNT; i++)
     {
         currentSpecies = gWildMonLocations[gCurrentPinballGame->area][threeArrows][i];
         switch (currentSpecies)
@@ -207,7 +208,7 @@ void sub_3219C(void)
 
             rand = GetTimeAdjustedRandom();
             rand %= gCurrentPinballGame->unk12E;
-            for (i = 0; i < 8 && gCurrentPinballGame->unk130[i] <= rand; i++);
+            for (i = 0; i < WILD_MON_LOCATION_COUNT && gCurrentPinballGame->unk130[i] <= rand; i++);
 
             gCurrentPinballGame->currentSpecies = gWildMonLocations[gCurrentPinballGame->area][threeArrows][i];
         }
