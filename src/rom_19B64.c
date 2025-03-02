@@ -80,15 +80,12 @@ void sub_19B10(void)
     }
 }
 
-void sub_19B64(u8 a)
+void sub_19B64(u8 arg0)
 {
     gCurrentPinballGame->unk16 = 2;
-    gCurrentPinballGame->unk14 = a;
-    
+    gCurrentPinballGame->unk14 = arg0;
     if (gCurrentPinballGame->unk13 == 2) 
-    {
-        gMain.unk44->unk34->unk0 = 0;
-    }
+        gMain.unk44[13]->a.unk0 = 0;
 }
 
 void sub_19B90(void) 

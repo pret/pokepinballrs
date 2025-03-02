@@ -2919,10 +2919,10 @@ gUnknown_086B0150:: @ 0x086B0150
 	.ascii "SUBTOTAL____________POK^MON_EVOLVED_____BONUS_______________SUBTOTAL____________TRAVELED_AREA_______BONUS_______________SUBTOTAL____________SLOT_PLAYED_________BONUS_______________SUBTOTAL____________PIKA_SAVER__________BONUS_______________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________MULTIPLIER__________TOTAL_______________"
 
 gUnknown_086B02CC:: @ 0x086B02CC
-	.incbin "baserom.gba", 0x6B02CC, 0xF0
+	.incbin "baserom.gba", 0x6B02CC, 0x1E0
 
-gUnknown_086B03BC:: @ 0x086B03BC
-	.incbin "baserom.gba", 0x6B03BC, 0x3C0
+gUnknown_086B04AC:: @ 0x086B04AC
+	.incbin "baserom.gba", 0x6B04AC, 0x2D0
 
 gUnknown_086B077C:: @ 0x086B077C
 	.4byte sub_47100, sub_47160
