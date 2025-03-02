@@ -1779,16 +1779,8 @@ _08013320: .4byte gMain
 _08013324: .4byte gOamBuffer
 _08013328: .4byte 0x000001FF
 
-	thumb_func_start sub_1332C
-sub_1332C: @ 0x0801332C
-	ldr r0, _08013338 @ =gCurrentPinballGame
-	ldr r1, [r0]
-	movs r0, #0x3c
-	strh r0, [r1, #0x26]
-	bx lr
-	.align 2, 0
-_08013338: .4byte gCurrentPinballGame
-
+	.section .text1333C
+	
 	thumb_func_start sub_1333C
 sub_1333C: @ 0x0801333C
 	push {r4, r5, r6, r7, lr}
