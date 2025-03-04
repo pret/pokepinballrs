@@ -1,7 +1,7 @@
 #include "global.h"
 #include "main.h"
 
-extern s16 gUnknown_0202A1C0[];
+extern s16 gPokedexFlags[];
 extern s16 gUnknown_0202A588;
 extern s16 gUnknown_0202BF14;
 
@@ -42,7 +42,7 @@ s16 sub_8A78(s32 species)
 {
     s16 var0 = (s16) species;
 
-    if ((gUnknown_0202A1C0[var0] == 4) && (gUnknown_086A61BC[var0] != -1))
+    if ((gPokedexFlags[var0] == 4) && (gUnknown_086A61BC[var0] != -1))
         gUnknown_0202A588 = 1;
     else
         gUnknown_0202A588 = 0;
@@ -55,6 +55,6 @@ void ResetPokedex(void)
     s32 i;
     for (i = 0; i < NUM_SPECIES; i++)
     {
-        gMain_saveData.pokedexFlags[i] = 0;
+        gMain_saveData.pokedexFlags[i] = SPECIES_UNSEEN;
     }
 }

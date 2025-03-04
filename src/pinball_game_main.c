@@ -218,7 +218,7 @@ void sub_49ED4(void)
     gUnknown_02031520.unk8 = 0;
     for (j = 0; j < NUM_SPECIES; j++)
     {
-        if (gMain_saveData.pokedexFlags[j] > 3)
+        if (gMain_saveData.pokedexFlags[j] > SPECIES_SHARED_AND_SEEN)
             gUnknown_02031520.unk8++;
     }
 

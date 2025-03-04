@@ -190,18 +190,18 @@ void sub_3FAC(void)
 
     for (i = 0; i < 0xE1; i++)
     {
-        gUnknown_0202A390[i] = gUnknown_0202A1C0[i];
+        gPokedexFlagExchangeBuffer[i] = gPokedexFlags[i];
     }
 
-    if (gUnknown_0202A1C0[SPECIES_AERODACTYL])
+    if (gPokedexFlags[SPECIES_AERODACTYL])
         gPokedexListEntryCount = SPECIES_AERODACTYL + 1;
-    else if (gUnknown_0202A1C0[SPECIES_TOTODILE])
+    else if (gPokedexFlags[SPECIES_TOTODILE])
         gPokedexListEntryCount = SPECIES_TOTODILE + 1;
-    else if (gUnknown_0202A1C0[SPECIES_CYNDAQUIL])
+    else if (gPokedexFlags[SPECIES_CYNDAQUIL])
         gPokedexListEntryCount = SPECIES_CYNDAQUIL + 1;
-    else if (gUnknown_0202A1C0[SPECIES_CHIKORITA])
+    else if (gPokedexFlags[SPECIES_CHIKORITA])
         gPokedexListEntryCount = SPECIES_CHIKORITA + 1;
-    else if (gUnknown_0202A1C0[SPECIES_JIRACHI])
+    else if (gPokedexFlags[SPECIES_JIRACHI])
         gPokedexListEntryCount = SPECIES_JIRACHI + 1;
     else
         gPokedexListEntryCount = SPECIES_RAYQUAZA + 1;
@@ -251,7 +251,7 @@ void Pokedex_HandleListInput(void)
         {
             gUnknown_0202C5E8 = 0;
 
-            if (gUnknown_0202A1C0[gPokedexSelectedMon] >= 2)
+            if (gPokedexFlags[gPokedexSelectedMon] >= 2)
             {
                 gUnknown_0202BF04 = 0;
                 DmaCopy16(3, 0x6000280, (void *)gUnknown_0202A590, 0x200);
@@ -307,7 +307,7 @@ void Pokedex_HandleListInput(void)
         {
             gUnknown_0202C5E8 = 0;
 
-            if (gUnknown_0202A1C0[gPokedexSelectedMon] >= 2)
+            if (gPokedexFlags[gPokedexSelectedMon] >= SPECIES_SHARED)
             {
                 gUnknown_0202BF04 = 0;
                 DmaCopy16(3, 0x6000280, (void *)gUnknown_0202A590, 0x200);
@@ -469,7 +469,7 @@ void sub_45A4(void)
 
     if (JOY_HELD(SELECT_BUTTON))
     {
-        if (gUnknown_0202A1C0[gPokedexSelectedMon] == 4)
+        if (gPokedexFlags[gPokedexSelectedMon] == SPECIES_CAUGHT)
         {
             if (gUnknown_086A61BC[gPokedexSelectedMon] == -1)
             {
@@ -655,7 +655,7 @@ void sub_4B34(void)
 
         for(iVar1 = 0; iVar1 < 0xE1; iVar1++)
         {
-            gUnknown_0202A390[iVar1] = gUnknown_0202A1C0[iVar1];
+            gPokedexFlagExchangeBuffer[iVar1] = gPokedexFlags[iVar1];
         }
 
         sub_02B4();
@@ -688,11 +688,11 @@ void sub_4BB4(void)
             gUnknown_0202A588 = 1;
             for(index = 0; index < 0xE1; index++)
             {
-                gUnknown_0202A1C0[index] = gUnknown_0202A390[index];
+                gPokedexFlags[index] = gPokedexFlagExchangeBuffer[index];
             }
             for(index = 0; index < NUM_SPECIES; index++)
             {
-                gMain_saveData.pokedexFlags[index] = gUnknown_0202A1C0[index];
+                gMain_saveData.pokedexFlags[index] = gPokedexFlags[index];
             }
             SaveFile_WriteToSram();
             sub_02B4();
@@ -715,12 +715,12 @@ void sub_4C80(void)
         m4aSongNumStart(SE_UNKNOWN_0x65);
         for (i = 0; i < 0xE1; i++)
         {
-            gUnknown_0202A390[i] = 0;
-            gUnknown_0202A1C0[i] = 0;
+            gPokedexFlagExchangeBuffer[i] = 0;
+            gPokedexFlags[i] = 0;
         }
         for (i = 0; i < NUM_SPECIES; i++)
         {
-            gMain_saveData.pokedexFlags[i] = gUnknown_0202A1C0[i];
+            gMain_saveData.pokedexFlags[i] = gPokedexFlags[i];
         }
 
         gUnknown_0202BEC4 = 0;
@@ -906,7 +906,7 @@ void sub_4FC8(void)
 
 void sub_5064(void)
 {
-    if (gUnknown_0202A1C0[gPokedexSelectedMon] == 4)
+    if (gPokedexFlags[gPokedexSelectedMon] == SPECIES_CAUGHT)
     {
         if (gUnknown_086A61BC[gPokedexSelectedMon] == -1)
         {
@@ -943,7 +943,7 @@ void sub_5064(void)
 
 u8 sub_5134(void)
 {
-    if (gUnknown_0202A1C0[gPokedexSelectedMon] == 4 && gUnknown_086A61BC[gPokedexSelectedMon] != -1)
+    if (gPokedexFlags[gPokedexSelectedMon] == SPECIES_CAUGHT && gUnknown_086A61BC[gPokedexSelectedMon] != -1)
     {
         if (gUnknown_086A61BC[gPokedexSelectedMon] < 100)
             return 1;
@@ -1401,34 +1401,34 @@ static int sub_5EEC(void)
     {
         var0 = (gUnknown_0201C180 - 8) * 28;
         gUnknown_0202C5F0[0] = gUnknown_0201C180;
-        gUnknown_0202C5F0[1] = gUnknown_0202A1C0[var0] |
-                               (gUnknown_0202A1C0[var0 + 1] << 4) |
-                               (gUnknown_0202A1C0[var0 + 2] << 8) |
-                               (gUnknown_0202A1C0[var0 + 3] << 12);
-        gUnknown_0202C5F0[2] =  gUnknown_0202A1C0[var0 + 4] |
-                               (gUnknown_0202A1C0[var0 + 5] << 4) |
-                               (gUnknown_0202A1C0[var0 + 6] << 8) |
-                               (gUnknown_0202A1C0[var0 + 7] << 12);
-        gUnknown_0202C5F0[3] =  gUnknown_0202A1C0[var0 + 8] |
-                               (gUnknown_0202A1C0[var0 + 9] << 4) |
-                               (gUnknown_0202A1C0[var0 + 10] << 8) |
-                               (gUnknown_0202A1C0[var0 + 11] << 12);
-        gUnknown_0202C5F0[4] =  gUnknown_0202A1C0[var0 + 12] |
-                               (gUnknown_0202A1C0[var0 + 13] << 4) |
-                               (gUnknown_0202A1C0[var0 + 14] << 8) |
-                               (gUnknown_0202A1C0[var0 + 15] << 12);
-        gUnknown_0202C5F0[5] =  gUnknown_0202A1C0[var0 + 16] |
-                               (gUnknown_0202A1C0[var0 + 17] << 4) |
-                               (gUnknown_0202A1C0[var0 + 18] << 8) |
-                               (gUnknown_0202A1C0[var0 + 19] << 12);
-        gUnknown_0202C5F0[6] =  gUnknown_0202A1C0[var0 + 20] |
-                               (gUnknown_0202A1C0[var0 + 21] << 4) |
-                               (gUnknown_0202A1C0[var0 + 22] << 8) |
-                               (gUnknown_0202A1C0[var0 + 23] << 12);
-        gUnknown_0202C5F0[7] =  gUnknown_0202A1C0[var0 + 24] |
-                               (gUnknown_0202A1C0[var0 + 25] << 4) |
-                               (gUnknown_0202A1C0[var0 + 26] << 8) |
-                               (gUnknown_0202A1C0[var0 + 27] << 12);
+        gUnknown_0202C5F0[1] = gPokedexFlags[var0] |
+                               (gPokedexFlags[var0 + 1] << 4) |
+                               (gPokedexFlags[var0 + 2] << 8) |
+                               (gPokedexFlags[var0 + 3] << 12);
+        gUnknown_0202C5F0[2] =  gPokedexFlags[var0 + 4] |
+                               (gPokedexFlags[var0 + 5] << 4) |
+                               (gPokedexFlags[var0 + 6] << 8) |
+                               (gPokedexFlags[var0 + 7] << 12);
+        gUnknown_0202C5F0[3] =  gPokedexFlags[var0 + 8] |
+                               (gPokedexFlags[var0 + 9] << 4) |
+                               (gPokedexFlags[var0 + 10] << 8) |
+                               (gPokedexFlags[var0 + 11] << 12);
+        gUnknown_0202C5F0[4] =  gPokedexFlags[var0 + 12] |
+                               (gPokedexFlags[var0 + 13] << 4) |
+                               (gPokedexFlags[var0 + 14] << 8) |
+                               (gPokedexFlags[var0 + 15] << 12);
+        gUnknown_0202C5F0[5] =  gPokedexFlags[var0 + 16] |
+                               (gPokedexFlags[var0 + 17] << 4) |
+                               (gPokedexFlags[var0 + 18] << 8) |
+                               (gPokedexFlags[var0 + 19] << 12);
+        gUnknown_0202C5F0[6] =  gPokedexFlags[var0 + 20] |
+                               (gPokedexFlags[var0 + 21] << 4) |
+                               (gPokedexFlags[var0 + 22] << 8) |
+                               (gPokedexFlags[var0 + 23] << 12);
+        gUnknown_0202C5F0[7] =  gPokedexFlags[var0 + 24] |
+                               (gPokedexFlags[var0 + 25] << 4) |
+                               (gPokedexFlags[var0 + 26] << 8) |
+                               (gPokedexFlags[var0 + 27] << 12);
     }
     else
     {
@@ -1475,34 +1475,34 @@ static int sub_6144(void)
     {
         var0 = (gUnknown_0201C180 - 8) * 28;
         gUnknown_0202C5F0[0] = gUnknown_0201C180;
-        gUnknown_0202C5F0[1] = gUnknown_0202A1C0[var0] |
-                               (gUnknown_0202A1C0[var0 + 1] << 4) |
-                               (gUnknown_0202A1C0[var0 + 2] << 8) |
-                               (gUnknown_0202A1C0[var0 + 3] << 12);
-        gUnknown_0202C5F0[2] =  gUnknown_0202A1C0[var0 + 4] |
-                               (gUnknown_0202A1C0[var0 + 5] << 4) |
-                               (gUnknown_0202A1C0[var0 + 6] << 8) |
-                               (gUnknown_0202A1C0[var0 + 7] << 12);
-        gUnknown_0202C5F0[3] =  gUnknown_0202A1C0[var0 + 8] |
-                               (gUnknown_0202A1C0[var0 + 9] << 4) |
-                               (gUnknown_0202A1C0[var0 + 10] << 8) |
-                               (gUnknown_0202A1C0[var0 + 11] << 12);
-        gUnknown_0202C5F0[4] =  gUnknown_0202A1C0[var0 + 12] |
-                               (gUnknown_0202A1C0[var0 + 13] << 4) |
-                               (gUnknown_0202A1C0[var0 + 14] << 8) |
-                               (gUnknown_0202A1C0[var0 + 15] << 12);
-        gUnknown_0202C5F0[5] =  gUnknown_0202A1C0[var0 + 16] |
-                               (gUnknown_0202A1C0[var0 + 17] << 4) |
-                               (gUnknown_0202A1C0[var0 + 18] << 8) |
-                               (gUnknown_0202A1C0[var0 + 19] << 12);
-        gUnknown_0202C5F0[6] =  gUnknown_0202A1C0[var0 + 20] |
-                               (gUnknown_0202A1C0[var0 + 21] << 4) |
-                               (gUnknown_0202A1C0[var0 + 22] << 8) |
-                               (gUnknown_0202A1C0[var0 + 23] << 12);
-        gUnknown_0202C5F0[7] =  gUnknown_0202A1C0[var0 + 24] |
-                               (gUnknown_0202A1C0[var0 + 25] << 4) |
-                               (gUnknown_0202A1C0[var0 + 26] << 8) |
-                               (gUnknown_0202A1C0[var0 + 27] << 12);
+        gUnknown_0202C5F0[1] = gPokedexFlags[var0] |
+                               (gPokedexFlags[var0 + 1] << 4) |
+                               (gPokedexFlags[var0 + 2] << 8) |
+                               (gPokedexFlags[var0 + 3] << 12);
+        gUnknown_0202C5F0[2] =  gPokedexFlags[var0 + 4] |
+                               (gPokedexFlags[var0 + 5] << 4) |
+                               (gPokedexFlags[var0 + 6] << 8) |
+                               (gPokedexFlags[var0 + 7] << 12);
+        gUnknown_0202C5F0[3] =  gPokedexFlags[var0 + 8] |
+                               (gPokedexFlags[var0 + 9] << 4) |
+                               (gPokedexFlags[var0 + 10] << 8) |
+                               (gPokedexFlags[var0 + 11] << 12);
+        gUnknown_0202C5F0[4] =  gPokedexFlags[var0 + 12] |
+                               (gPokedexFlags[var0 + 13] << 4) |
+                               (gPokedexFlags[var0 + 14] << 8) |
+                               (gPokedexFlags[var0 + 15] << 12);
+        gUnknown_0202C5F0[5] =  gPokedexFlags[var0 + 16] |
+                               (gPokedexFlags[var0 + 17] << 4) |
+                               (gPokedexFlags[var0 + 18] << 8) |
+                               (gPokedexFlags[var0 + 19] << 12);
+        gUnknown_0202C5F0[6] =  gPokedexFlags[var0 + 20] |
+                               (gPokedexFlags[var0 + 21] << 4) |
+                               (gPokedexFlags[var0 + 22] << 8) |
+                               (gPokedexFlags[var0 + 23] << 12);
+        gUnknown_0202C5F0[7] =  gPokedexFlags[var0 + 24] |
+                               (gPokedexFlags[var0 + 25] << 4) |
+                               (gPokedexFlags[var0 + 26] << 8) |
+                               (gPokedexFlags[var0 + 27] << 12);
     }
     else
     {
@@ -1583,10 +1583,10 @@ int sub_639C(void)
         for (i = 0; i < 28; i++)
         {
             var0 = (gUnknown_0202C5B4 - 8) * 28 + i;
-            if (gUnknown_0202A1C0[var0] == 0 && arr0[i] == 4)
-                gUnknown_0202A390[var0] = 2;
-            else if (gUnknown_0202A1C0[var0] == 1 && arr0[i] == 4)
-                gUnknown_0202A390[var0] = 3;
+            if (gPokedexFlags[var0] == SPECIES_UNSEEN && arr0[i] == 4)
+                gPokedexFlagExchangeBuffer[var0] = SPECIES_SHARED;
+            else if (gPokedexFlags[var0] == SPECIES_SEEN && arr0[i] == 4)
+                gPokedexFlagExchangeBuffer[var0] = SPECIES_SHARED_AND_SEEN;
         }
 
         if (gUnknown_0202C5B4 == 15)
@@ -1671,10 +1671,10 @@ static int sub_65DC(void)
         for (i = 0; i < 28; i++)
         {
             var0 = (gUnknown_0202C5B4 - 8) * 28 + i;
-            if (gUnknown_0202A1C0[var0] == 0 && arr0[i] == 4)
-                gUnknown_0202A390[var0] = 2;
-            else if (gUnknown_0202A1C0[var0] == 1 && arr0[i] == 4)
-                gUnknown_0202A390[var0] = 3;
+            if (gPokedexFlags[var0] == SPECIES_UNSEEN && arr0[i] == 4)
+                gPokedexFlagExchangeBuffer[var0] = SPECIES_SHARED;
+            else if (gPokedexFlags[var0] == SPECIES_SEEN && arr0[i] == 4)
+                gPokedexFlagExchangeBuffer[var0] = SPECIES_SHARED_AND_SEEN;
         }
 
         if (gUnknown_0202C5B4 == 15)
@@ -1701,7 +1701,7 @@ static void PrintSelectedMonDexNum(s16 species)
     var0 = 0;
     if (species == SPECIES_JIRACHI)
     {
-        if (gUnknown_0202A1C0[SPECIES_JIRACHI] != 0)
+        if (gPokedexFlags[SPECIES_JIRACHI] != SPECIES_UNSEEN)
         {
             PrintChar(CHAR_2_FONT_1, 1, 5, 2, 1, 2);
             PrintChar(CHAR_0_FONT_1, 1, 6, 2, 1, 2);
@@ -1721,7 +1721,7 @@ static void PrintSelectedMonDexNum(s16 species)
             PrintChar(gPokedexEntries[species].dexNum[i] + 32, 1, i + 5, 2, 1, 2);
     }
 
-    if (gUnknown_0202A1C0[species] > 0)
+    if (gPokedexFlags[species] > SPECIES_UNSEEN)
     {
         for (i = 0; i < POKEMON_NAME_LENGTH; i++)
         {
@@ -1746,7 +1746,7 @@ static void PrintSelectedMonDexNum(s16 species)
             sub_10708(gUnknown_08092FA0, (void *)0x06004C00 + i * 0x20, 1, 2);
     }
 
-    if (gUnknown_0202A1C0[species] == 1 || gUnknown_0202A1C0[species] > 2)
+    if (gPokedexFlags[species] == SPECIES_SEEN || gPokedexFlags[species] > SPECIES_SHARED)
     {
         for (i = 0; i < POKEMON_CATEGORY_NAME_LENGTH; i++)
         {
@@ -1770,7 +1770,7 @@ static void PrintSelectedMonDexNum(s16 species)
             sub_10708(gUnknown_08092FA0, (void *)0x06004D00 + i * 0x20, 1, 2);
     }
 
-    if (gUnknown_0202A1C0[species] == 4)
+    if (gPokedexFlags[species] == SPECIES_CAUGHT)
     {
         PrintChar(gPokedexEntries[species].heightWeight[0] + 32, 1, 16, 6, 1, 2);
         PrintChar(gPokedexEntries[species].heightWeight[1] + 32, 1, 17, 6, 1, 2);
@@ -1829,7 +1829,7 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
     {
         if (listPosition + i == SPECIES_JIRACHI)
         {
-            if (gUnknown_0202A1C0[SPECIES_JIRACHI] != 0)
+            if (gPokedexFlags[SPECIES_JIRACHI] != SPECIES_UNSEEN)
             {
                 PrintChar(CHAR_2_FONT_1, 2, 8, i * 2 + 10, 1, 2);
                 PrintChar(CHAR_0_FONT_1, 2, 9, i * 2 + 10, 1, 2);
@@ -1852,7 +1852,7 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
 
     for (i = 0; i < ENTRIES_SHOWN_COUNT; i++)
     {
-        if (gUnknown_0202A1C0[listPosition + i] > 0)
+        if (gPokedexFlags[listPosition + i] > SPECIES_UNSEEN)
         {
             for (j = 0; j < POKEMON_NAME_LENGTH; j++)
             {
@@ -1889,32 +1889,32 @@ static void PrintCaughtBallFromListPosition(s16 position)
 
     for (i = 0; i < ENTRIES_SHOWN_COUNT; i++)
     {
-        var0 = gUnknown_0202A1C0[position + i] == 4 ? CHAR_BALL_CAUGHT : CHAR_BALL_NOT_CAUGHT;
+        var0 = gPokedexFlags[position + i] == SPECIES_CAUGHT ? CHAR_BALL_CAUGHT : CHAR_BALL_NOT_CAUGHT;
         PrintChar(var0, 1, 4, 10 + i * 2, 2, 2);
     }
 }
 
 void sub_6F78(s16 species)
 {
-    s16 var0 = gUnknown_0202A1C0[gPokedexSelectedMon];
+    s16 state = gPokedexFlags[gPokedexSelectedMon];
     s16 var1 = species / 15;
     s16 var2 = species % 15;
-    switch (var0)
+    switch (state)
     {
-        case 0:
+        case SPECIES_UNSEEN:
             sub_10708(gUnknown_0808F760, (void *)0x06013400, 24, 1);
             DmaCopy16(3, gUnknown_08089960, (void *)OBJ_PLTT + 0x20, 0x20);
             break;
-        case 1:
+        case SPECIES_SEEN:
             sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
             DmaCopy16(3, gMonPortraitGroupPals[0] + 0x1E0, (void *)OBJ_PLTT + 0x20, 0x20);
             break;
-        case 2:
-        case 3:
+        case SPECIES_SHARED:
+        case SPECIES_SHARED_AND_SEEN:
             sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
             sub_10170(gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20, 0xE);
             break;
-        case 4:
+        case SPECIES_CAUGHT:
             sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
             DmaCopy16(3, gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20);
             break;

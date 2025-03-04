@@ -2999,7 +2999,7 @@ _080088E0: .4byte gUnknown_0201B130
 sub_88E4: @ 0x080088E4
 	push {r4, r5, r6, lr}
 	movs r2, #0
-	ldr r6, _08008934 @ =gUnknown_0202A1C0
+	ldr r6, _08008934 @ =gPokedexFlags
 	ldr r5, _08008938 @ =gUnknown_0201A514
 	ldr r4, _0800893C @ =gUnknown_0202BEB8
 	ldr r3, _08008940 @ =gMain+0x74
@@ -3012,7 +3012,7 @@ _080088F2:
 	adds r2, #1
 	cmp r2, #0xcc
 	ble _080088F2
-	ldr r0, _08008934 @ =gUnknown_0202A1C0
+	ldr r0, _08008934 @ =gPokedexFlags
 	movs r1, #0
 	movs r2, #0xcd
 	lsls r2, r2, #1
@@ -3041,7 +3041,7 @@ _0800891E:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08008934: .4byte gUnknown_0202A1C0
+_08008934: .4byte gPokedexFlags
 _08008938: .4byte gUnknown_0201A514
 _0800893C: .4byte gUnknown_0202BEB8
 _08008940: .4byte gMain+0x74

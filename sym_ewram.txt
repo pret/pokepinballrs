@@ -354,9 +354,9 @@ gUnknown_0201C1BC: @ 0x0201C1BC
 	.space 0x4
 gUnknown_0201C1C0: @ 0x0201C1C0
 	.space 0xE000
-gUnknown_0202A1C0: @ 0x0202A1C0
+gPokedexFlags: @ 0x0202A1C0
 	.space 0x1D0
-gUnknown_0202A390: @ 0x0202A390
+gPokedexFlagExchangeBuffer: @ 0x0202A390
 	.space 0x1C4
 gUnknown_0202A554: @ 0x0202A554
 	.space 0x4
