@@ -162,16 +162,16 @@ void SaveFile_WriteToSram(void)
     WriteAndVerifySramFast((u8 *)&gMain_saveData, (void *)(SRAM + 0x2A4), sizeof(gMain_saveData));
 }
 
-void SaveFile_SetPokedexFlags(s16 a, u8 b)
+void SaveFile_SetPokedexFlags(s16 species, u8 flag)
 {
     u16 *saveData = (u16 *)&gMain_saveData;
     size_t size = sizeof(gMain_saveData);
     u32 checksum;
 
-    if (gMain_saveData.pokedexFlags[a] < b)
+    if (gMain_saveData.pokedexFlags[species] < flag)
     {
         gMain_saveData.unk2E4++;
-        gMain_saveData.pokedexFlags[a] = b;
+        gMain_saveData.pokedexFlags[species] = flag;
         gMain_saveData.checksum = 0;
 
         checksum = 0;
