@@ -33,8 +33,8 @@ void DefaultMainCallback(void);
 
 // src/rom_3219C.c
 
-void sub_3219C(void);
-void sub_3219C(void);
+void PickSpeciesForCatchEmMode(void);
+void PickSpeciesForCatchEmMode(void);
 
 // src/rom_850.c
 
@@ -555,12 +555,12 @@ extern void sub_31498();
 extern void sub_31B30();
 extern void sub_31BE8(s8);
 //extern ? sub_31CF8();
-//extern ? sub_31F6C();
+//extern ? BuildSpeciesWeightsForCatchEmMode();
 
 // asm/rom_3219C.s
 
-//extern ? sub_32484();
-//extern ? sub_325E0();
+//extern ? BuildSpeciesWeightsForEggHatching();
+//extern ? PickSpeciesForEggHatching();
 //extern ? sub_326F4();
 //extern ? sub_3276C();
 extern void sub_327C0();
