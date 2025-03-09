@@ -204,6 +204,15 @@ extern struct VectorU16 gUnknown_086A96AC[];
 extern struct VectorU16 gUnknown_086A96C0[];
 extern const struct VectorU32 gUnknown_080797F0[2][8];
 
+struct Unk086ACD50
+{
+    s8 unk0;
+    s8 unk1;
+    u16 unk2;
+};
+extern struct Unk086ACD50 gUnknown_086ACD50[8];
+extern struct Unk086ACD50 gUnknown_086ACD74[3];
+
 extern u16 gUnknown_02019C40[];
 extern s16 gUnknown_0201A514;
 extern s16 gPokedexSelectedMon;
