@@ -122,7 +122,9 @@ struct PinballGame
 	/*0x01D*/ u8 unk1D;
 	/*0x01E*/ u8 unk1E;
 	/*0x01F*/ u8 unk1F;
-	/*0x020*/ u8 filler20[0x5];
+        /*0x020*/ u8 filler20[0x2];
+        /*0x022*/ s8 unk22;
+        /*0x023*/ u8 filler23[0x2];
 	/*0x025*/ s8 unk25;
 	/*0x026*/ u16 unk26;
 	/*0x028*/ u16 unk28;
@@ -163,7 +165,10 @@ struct PinballGame
 	/*0x0F2*/ s8 unkF2;
 	/*0x0F3*/ u8 fillerF3[0x2E];
 	/*0x121*/ s8 unk121;
-	/*0x122*/ u8 filler122[0x9];
+        /*0x122*/ s8 unk122;
+        /*0x123*/ u8 filler123[0x4];
+        /*0x127*/ s8 unk127[1];
+        /*0x128*/ u8 filler128[0x3];
 	/*0x12B*/ s8 forceSpecialMons;  // When on, force next catch mode species to be special mons
 	/*0x12C*/ s8 forcePichuEgg;     // When on, force next egg mode species to be Pichu
 	/*0x12D*/ u8 filler12D;
@@ -329,7 +334,9 @@ struct PinballGame
 	/*0x5B2*/ u8 unk5B2;
 	/*0x5B3*/ u8 filler5B3[0x3D];
 	/*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
-	/*0x5F2*/ u8 filler5F2[0x4];
+        /*0x5F2*/ u8 filler5F2[0x1];
+        /*0x5F3*/ s8 unk5F3;
+        /*0x5F4*/ u8 filler5F4[0x2];
 	/*0x5F6*/ s8 unk5F6;
 	/*0x5F7*/ u8 unk5F7;
 	/*0x5F8*/ u16 unk5F8;
@@ -410,7 +417,13 @@ struct PinballGame
 	/*0x132C*/struct UnkPinballGame1334 *unk132c;
 	/*0x1330*/struct UnkPinballGame1334 *unk1330;
 	/*0x1334*/struct UnkPinballGame1334 unk1334[2];
-	/*0x13BC*/u8 filler[0x54];
+        /*0x13BC*/u8 filler13BC[0x4];
+        /*0x13BC*/s8 unk13C0;
+        /*0x13BC*/u8 filler13C1[0xB];
+        /*0x13CC*/s8 unk13CC;
+        /*0x13CD*/u8 filler13CD[0x1];
+        /*0x13CE*/u8 unk13CE;
+        /*0x13CF*/u8 filler[0x41];
 } /* size=0x1410 */;
 
 struct Unk02031520_unk10
@@ -427,7 +440,10 @@ struct Unk02031520
 	/*0x0A*/ u8 fillerA[0x2];
 	/*0x0C*/ struct PinballGame *unkC;
 	/*0x10*/ struct Unk02031520_unk10 *unk10;
-	/*0x14*/ u8 filler14[0x12];
+	/*0x14*/ u8 filler14[0xc];
+        /*0x20*/ s16 unk20;
+        /*0x22*/ s16 unk22;
+        /*0x24*/ s16 unk24;
 	/*0x26*/ s16 unk26;
 	/*0x28*/ s16 unk28;
 	/*0x2C*/ u8 *unk2C;
