@@ -52,14 +52,14 @@ void sub_31F6C(void)
             case SPECIES_WOBBUFFET:
                 if (gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD])
                 {
-                    if (gMain_saveData.pokedexFlags[currentSpecies] < 2)
+                    if (gMain_saveData.pokedexFlags[currentSpecies] < SPECIES_SHARED)
                         weight = 2;
                     else
                         weight = 4;
                 }
                 else
                 {
-                    if (gMain_saveData.pokedexFlags[currentSpecies] < 2)
+                    if (gMain_saveData.pokedexFlags[currentSpecies] < SPECIES_SHARED)
                         weight = 1;
                     else
                         weight = 2;
@@ -129,7 +129,7 @@ void sub_3219C(void)
         rand %= NUM_BONUS_SPECIES;
         for (i = 0; i < NUM_BONUS_SPECIES; i++)
         {
-            if (gMain_saveData.pokedexFlags[BONUS_SPECIES_START + ((i + rand) % NUM_BONUS_SPECIES)] < 4)
+            if (gMain_saveData.pokedexFlags[BONUS_SPECIES_START + ((i + rand) % NUM_BONUS_SPECIES)] < SPECIES_CAUGHT)
                 break;
         }
 
@@ -153,41 +153,41 @@ void sub_3219C(void)
             if (gMain_saveData.pokedexFlags[SPECIES_AERODACTYL])
             {
                 specialMons[numSpecialMons++] = SPECIES_AERODACTYL;
-                if (gMain_saveData.pokedexFlags[SPECIES_AERODACTYL] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_AERODACTYL] < SPECIES_CAUGHT)
                     gCurrentPinballGame->currentSpecies = SPECIES_AERODACTYL;
             }
 
             if (gMain_saveData.pokedexFlags[SPECIES_CHIKORITA])
             {
                 specialMons[numSpecialMons++] = SPECIES_CHIKORITA;
-                if (gMain_saveData.pokedexFlags[SPECIES_CHIKORITA] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_CHIKORITA] < SPECIES_CAUGHT)
                     gCurrentPinballGame->currentSpecies = SPECIES_CHIKORITA;
             }
 
             if (gMain_saveData.pokedexFlags[SPECIES_TOTODILE])
             {
                 specialMons[numSpecialMons++] = SPECIES_TOTODILE;
-                if (gMain_saveData.pokedexFlags[SPECIES_TOTODILE] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_TOTODILE] < SPECIES_CAUGHT)
                     gCurrentPinballGame->currentSpecies = SPECIES_TOTODILE;
             }
 
             if (gMain_saveData.pokedexFlags[SPECIES_CYNDAQUIL])
             {
                 specialMons[numSpecialMons++] = SPECIES_CYNDAQUIL;
-                if (gMain_saveData.pokedexFlags[SPECIES_CYNDAQUIL] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_CYNDAQUIL] < SPECIES_CAUGHT)
                     gCurrentPinballGame->currentSpecies = SPECIES_CYNDAQUIL;
             }
 
             if (gMain.selectedField == FIELD_RUBY)
             {
                 specialMons[numSpecialMons++] = SPECIES_LATIOS;
-                if (gMain_saveData.pokedexFlags[SPECIES_LATIOS] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_LATIOS] < SPECIES_CAUGHT)
                     gCurrentPinballGame->currentSpecies = SPECIES_LATIOS;
             }
             else
             {
                 specialMons[numSpecialMons++] = SPECIES_LATIAS;
-                if (gMain_saveData.pokedexFlags[SPECIES_LATIAS] < 4)
+                if (gMain_saveData.pokedexFlags[SPECIES_LATIAS] < SPECIES_CAUGHT)
                     gCurrentPinballGame->currentSpecies = SPECIES_LATIAS;
             }
 
