@@ -33120,7 +33120,7 @@ _08023B22:
 	asrs r0, r0, #0x18
 	cmp r0, #0x12
 	bne _08023B36
-	bl BuildSpeciesWeightsForEggHatching
+	bl BuildSpeciesWeightsForEggMode
 _08023B36:
 	ldr r1, _08023C94 @ =gCurrentPinballGame
 	ldr r0, [r1]
@@ -33130,7 +33130,7 @@ _08023B36:
 	asrs r0, r0, #0x18
 	cmp r0, #0x13
 	bne _08023B66
-	bl PickSpeciesForEggHatching
+	bl PickSpeciesForEggMode
 	ldr r0, _08023C98 @ =gMain
 	ldrb r0, [r0, #2]
 	cmp r0, #3
@@ -58052,7 +58052,7 @@ _0803061A:
 	asrs r0, r0, #0x18
 	cmp r0, #0x12
 	bne _0803062E
-	bl BuildSpeciesWeightsForEggHatching
+	bl BuildSpeciesWeightsForEggMode
 _0803062E:
 	mov r3, sb
 	ldr r0, [r3]
@@ -58062,7 +58062,7 @@ _0803062E:
 	asrs r0, r0, #0x18
 	cmp r0, #0x13
 	bne _0803065E
-	bl PickSpeciesForEggHatching
+	bl PickSpeciesForEggMode
 	ldr r0, _08030780 @ =gMain
 	ldrb r0, [r0, #2]
 	cmp r0, #3

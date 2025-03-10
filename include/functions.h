@@ -559,8 +559,8 @@ extern void sub_31BE8(s8);
 
 // asm/rom_3219C.s
 
-//extern ? BuildSpeciesWeightsForEggHatching();
-//extern ? PickSpeciesForEggHatching();
+//extern ? BuildSpeciesWeightsForEggMode();
+//extern ? PickSpeciesForEggMode();
 //extern ? sub_326F4();
 //extern ? sub_3276C();
 extern void sub_327C0();

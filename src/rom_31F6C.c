@@ -235,7 +235,7 @@ void PickSpeciesForCatchEmMode(void)
     gCurrentPinballGame->lastCatchSpecies = gCurrentPinballGame->currentSpecies;
 }
 
-void BuildSpeciesWeightsForEggHatching(void)
+void BuildSpeciesWeightsForEggMode(void)
 {
     s16 i;
     s16 currentSpecies;
@@ -295,7 +295,7 @@ void BuildSpeciesWeightsForEggHatching(void)
     }
 }
 
-void PickSpeciesForEggHatching(void)
+void PickSpeciesForEggMode(void)
 {
     s16 i;
     u32 rand;

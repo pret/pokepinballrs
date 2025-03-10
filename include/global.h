@@ -168,8 +168,8 @@ struct PinballGame
 	/*0x12C*/ s8 forcePichuEgg;      // When on, force next egg mode species to be Pichu
 	/*0x12D*/ u8 filler12D;
 	/*0x12E*/ s16 totalWeight;       // Added weight of all possible mons in area
-	/*0x130*/ s16 speciesWeights[8]; // Weight of each species
-	/*0x140*/ u8 filler140[0x26];
+	/*0x130*/ s16 speciesWeights[25]; // Weight of each species
+	/*0x140*/ u8 filler140[0x4];
 	/*0x166*/ u16 unk166;
 	/*0x168*/ u8 filler168[0x4];
 	/*0x16C*/ u8 unk16C;
