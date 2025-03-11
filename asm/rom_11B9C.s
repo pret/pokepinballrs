@@ -13194,186 +13194,6 @@ _08019A1C: .4byte 0x00001364
 
 	.section .text19E10
 
-	thumb_func_start sub_19E10
-sub_19E10: @ 0x08019E10
-	push {r4, lr}
-	bl sub_1A0F4
-	bl sub_1DA74
-	ldr r4, _08019EA4 @ =gCurrentPinballGame
-	ldr r0, [r4]
-	movs r2, #0xa8
-	lsls r2, r2, #2
-	adds r1, r0, r2
-	ldrh r0, [r1]
-	cmp r0, #0
-	beq _08019E4E
-	subs r0, #1
-	strh r0, [r1]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bne _08019E4E
-	bl Random
-	ldr r4, [r4]
-	ldr r1, _08019EA8 @ =gMain
-	ldr r1, [r1, #0x4c]
-	adds r0, r0, r1
-	movs r1, #0x64
-	bl __umodsi3
-	adds r0, #1
-	ldr r3, _08019EAC @ =0x0000029F
-	adds r4, r4, r3
-	strb r0, [r4]
-_08019E4E:
-	ldr r4, _08019EA4 @ =gCurrentPinballGame
-	ldr r0, [r4]
-	adds r0, #0x68
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	cmp r0, #0x6d
-	bgt _08019E68
-	bl sub_1D5D8
-	bl sub_1DAD8
-	bl sub_2C9A4
-_08019E68:
-	bl sub_2CA9C
-	ldr r0, [r4]
-	adds r0, #0x68
-	movs r2, #0
-	ldrsh r0, [r0, r2]
-	cmp r0, #0xa7
-	bgt _08019E7C
-	bl sub_239A4
-_08019E7C:
-	ldr r0, [r4]
-	adds r0, #0x68
-	movs r3, #0
-	ldrsh r0, [r0, r3]
-	cmp r0, #0xdb
-	bgt _08019EBC
-	bl sub_23E18
-	ldr r0, [r4]
-	movs r1, #0xa9
-	lsls r1, r1, #2
-	adds r0, r0, r1
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0
-	beq _08019EB0
-	bl sub_1DC7C
-	b _08019EB4
-	.align 2, 0
-_08019EA4: .4byte gCurrentPinballGame
-_08019EA8: .4byte gMain
-_08019EAC: .4byte 0x0000029F
-_08019EB0:
-	bl sub_1EC48
-_08019EB4:
-	bl sub_1F158
-	bl sub_1F59C
-_08019EBC:
-	bl sub_1F698
-	ldr r4, _08019F64 @ =gCurrentPinballGame
-	ldr r0, [r4]
-	adds r0, #0x68
-	movs r2, #0
-	ldrsh r0, [r0, r2]
-	cmp r0, #0x3f
-	ble _08019ED6
-	bl sub_1FA48
-	bl sub_1FBC4
-_08019ED6:
-	ldr r0, [r4]
-	adds r0, #0x68
-	movs r3, #0
-	ldrsh r0, [r0, r3]
-	cmp r0, #0x73
-	ble _08019EE6
-	bl sub_2C538
-_08019EE6:
-	ldr r0, [r4]
-	adds r0, #0x68
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	cmp r0, #0x82
-	ble _08019EF6
-	bl sub_201B8
-_08019EF6:
-	bl sub_2CE80
-	ldr r0, [r4]
-	adds r0, #0x68
-	movs r2, #0
-	ldrsh r0, [r0, r2]
-	cmp r0, #0xa8
-	ble _08019F0A
-	bl sub_2D104
-_08019F0A:
-	bl sub_203CC
-	bl sub_21B0C
-	bl sub_4E814
-	bl sub_1D128
-	bl sub_21D78
-	bl sub_31B30
-	ldr r0, [r4]
-	movs r3, #0xca
-	lsls r3, r3, #1
-	adds r0, r0, r3
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0
-	beq _08019F38
-	bl sub_225F0
-_08019F38:
-	bl sub_472E4
-	ldr r2, [r4]
-	ldr r0, _08019F68 @ =0x00001328
-	adds r1, r2, r0
-	ldrh r0, [r1]
-	cmp r0, #0
-	beq _08019F5C
-	subs r0, #1
-	strh r0, [r1]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bne _08019F5C
-	ldr r3, _08019F6C @ =0x00001330
-	adds r1, r2, r3
-	adds r3, #4
-	adds r0, r2, r3
-	str r0, [r1]
-_08019F5C:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08019F64: .4byte gCurrentPinballGame
-_08019F68: .4byte 0x00001328
-_08019F6C: .4byte 0x00001330
-
-	thumb_func_start sub_19F70
-sub_19F70: @ 0x08019F70
-	push {lr}
-	bl sub_1DDDC
-	bl sub_1A9E8
-	bl sub_1F2A4
-	bl sub_1FF0C
-	ldr r0, _08019F9C @ =gCurrentPinballGame
-	ldr r0, [r0]
-	movs r2, #0xc0
-	lsls r2, r2, #3
-	adds r1, r0, r2
-	ldrh r0, [r1]
-	cmp r0, #0
-	beq _08019F96
-	subs r0, #1
-	strh r0, [r1]
-_08019F96:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08019F9C: .4byte gCurrentPinballGame
-
 	thumb_func_start sub_19FA0
 sub_19FA0: @ 0x08019FA0
 	push {r4, r5, lr}
@@ -32500,7 +32320,7 @@ _08023B22:
 	asrs r0, r0, #0x18
 	cmp r0, #0x12
 	bne _08023B36
-	bl sub_32484
+	bl BuildSpeciesWeightsForEggMode
 _08023B36:
 	ldr r1, _08023C94 @ =gCurrentPinballGame
 	ldr r0, [r1]
@@ -32510,7 +32330,7 @@ _08023B36:
 	asrs r0, r0, #0x18
 	cmp r0, #0x13
 	bne _08023B66
-	bl sub_325E0
+	bl PickSpeciesForEggMode
 	ldr r0, _08023C98 @ =gMain
 	ldrb r0, [r0, #2]
 	cmp r0, #3
@@ -40981,7 +40801,7 @@ _08027FF8: @ jump table
 	.4byte _080283A0 @ case 11
 	.4byte _080283B4 @ case 12
 _0802802C:
-	bl sub_31F6C
+	bl BuildSpeciesWeightsForCatchEmMode
 	ldr r0, _0802803C @ =gCurrentPinballGame
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x17]
@@ -40990,7 +40810,7 @@ _0802802C:
 	.align 2, 0
 _0802803C: .4byte gCurrentPinballGame
 _08028040:
-	bl sub_3219C
+	bl PickSpeciesForCatchEmMode
 	ldr r0, _0802806C @ =gMain
 	ldrb r0, [r0, #2]
 	cmp r0, #3
@@ -57432,7 +57252,7 @@ _0803061A:
 	asrs r0, r0, #0x18
 	cmp r0, #0x12
 	bne _0803062E
-	bl sub_32484
+	bl BuildSpeciesWeightsForEggMode
 _0803062E:
 	mov r3, sb
 	ldr r0, [r3]
@@ -57442,7 +57262,7 @@ _0803062E:
 	asrs r0, r0, #0x18
 	cmp r0, #0x13
 	bne _0803065E
-	bl sub_325E0
+	bl PickSpeciesForEggMode
 	ldr r0, _08030780 @ =gMain
 	ldrb r0, [r0, #2]
 	cmp r0, #3

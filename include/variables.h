@@ -9,6 +9,12 @@
 #include "constants/high_scores.h"
 #include "constants/pinball_game.h"
 
+#define SPECIES_UNSEEN 0
+#define SPECIES_SEEN 1
+#define SPECIES_SHARED 2
+#define SPECIES_SHARED_AND_SEEN 3
+#define SPECIES_CAUGHT 4
+
 // Place all external variable declarations in this file
 
 extern struct {u16 unk0[5]; u16 unkA[5];} gUnknown_086A6B14;
@@ -258,8 +264,8 @@ extern s8 gUnknown_0202C794;
 extern s8 gUnknown_0201C1B4;
 extern s8 gUnknown_0202C5AC;
 extern s8 gUnknown_02019C28;
-extern s16 gUnknown_0202A1C0[];
-extern s16 gUnknown_0202A390[];
+extern s16 gPokedexFlags[];
+extern s16 gPokedexFlagExchangeBuffer[];
 extern s16 gPokedexListEntryCount;
 
 extern u32 gUnknown_0201B170;
