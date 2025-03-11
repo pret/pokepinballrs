@@ -20,7 +20,25 @@ static inline u32 GetTimeAdjustedRandom()
     return Random() + (gMain.systemFrameCount + gMain.fieldFrameCount);
 }
 
-void sub_31F6C(void)
+/*
+BuildSpeciesWeightsForX constructs two key objects:
+
+speciesWeights[] - A cumulative weight array where each entry represents the total weight of all species up to that index.
+                   Species weights are influenced by factors such as whether the Pokémon has already been caught and if it has 
+                   an evolution needed for the Pokédex. This ensures rarer or more desirable species have appropriate weighting.
+
+totalWeight - The final cumulative weight value, equal to the last value in speciesWeights[]. This is used as the upper bound 
+              for random selection.
+
+PickSpeciesForX determines a species as follows:
+
+1. Applies special conditions (e.g., forced rare selection if applicable).
+2. Rolls a random number % totalWeight.
+3. Iterates through speciesWeights[] and selects the first species whose cumulative weight meets or exceeds the rolled number.
+
+*/
+
+void BuildSpeciesWeightsForCatchEmMode(void)
 {
     s16 threeArrows;
     s16 i;
@@ -29,7 +47,7 @@ void sub_31F6C(void)
     s16 currentSpecies;
     s16 evolutionWeight;
 
-    gCurrentPinballGame->unk12E = 0;
+    gCurrentPinballGame->totalWeight = 0;
     if (gCurrentPinballGame->catchModeArrows == 3)
         threeArrows = 1;
     else
@@ -111,12 +129,12 @@ void sub_31F6C(void)
         {
             weight = 0;
         }
-        gCurrentPinballGame->unk12E += weight;
-        gCurrentPinballGame->unk130[i] = gCurrentPinballGame->unk12E;
+        gCurrentPinballGame->totalWeight += weight;
+        gCurrentPinballGame->speciesWeights[i] = gCurrentPinballGame->totalWeight;
     }
 }
 
-void sub_3219C(void)
+void PickSpeciesForCatchEmMode(void)
 {
     s16 i;
     u32 rand;
@@ -207,8 +225,8 @@ void sub_3219C(void)
                 threeArrows = 0;
 
             rand = GetTimeAdjustedRandom();
-            rand %= gCurrentPinballGame->unk12E;
-            for (i = 0; i < WILD_MON_LOCATION_COUNT && gCurrentPinballGame->unk130[i] <= rand; i++);
+            rand %= gCurrentPinballGame->totalWeight;
+            for (i = 0; i < WILD_MON_LOCATION_COUNT && gCurrentPinballGame->speciesWeights[i] <= rand; i++);
 
             gCurrentPinballGame->currentSpecies = gWildMonLocations[gCurrentPinballGame->area][threeArrows][i];
         }
@@ -217,7 +235,7 @@ void sub_3219C(void)
     gCurrentPinballGame->lastCatchSpecies = gCurrentPinballGame->currentSpecies;
 }
 
-void sub_32484(void)
+void BuildSpeciesWeightsForEggMode(void)
 {
     s16 i;
     s16 currentSpecies;
@@ -225,7 +243,7 @@ void sub_32484(void)
     s16 j;
     s16 evolutionWeight;
 
-    gCurrentPinballGame->unk12E = 0;
+    gCurrentPinballGame->totalWeight = 0;
 
     for (i = 0; i < 25; i++)
     {
@@ -272,12 +290,12 @@ void sub_32484(void)
             weight = 0;
         }
 
-        gCurrentPinballGame->unk12E += weight;
-        gCurrentPinballGame->unk130[i] = gCurrentPinballGame->unk12E;
+        gCurrentPinballGame->totalWeight += weight;
+        gCurrentPinballGame->speciesWeights[i] = gCurrentPinballGame->totalWeight;
     }
 }
 
-void sub_325E0(void)
+void PickSpeciesForEggMode(void)
 {
     s16 i;
     u32 rand;
@@ -298,9 +316,9 @@ void sub_325E0(void)
     else
     {
         rand = GetTimeAdjustedRandom();
-        rand %= gCurrentPinballGame->unk12E;
+        rand %= gCurrentPinballGame->totalWeight;
 
-        for (i = 0; i < 25 && gCurrentPinballGame->unk130[i] <= rand; i++);
+        for (i = 0; i < 25 && gCurrentPinballGame->speciesWeights[i] <= rand; i++);
 
         gCurrentPinballGame->currentSpecies = gEggLocations[gMain.selectedField][i];
     }

@@ -33120,7 +33120,7 @@ _08023B22:
 	asrs r0, r0, #0x18
 	cmp r0, #0x12
 	bne _08023B36
-	bl sub_32484
+	bl BuildSpeciesWeightsForEggMode
 _08023B36:
 	ldr r1, _08023C94 @ =gCurrentPinballGame
 	ldr r0, [r1]
@@ -33130,7 +33130,7 @@ _08023B36:
 	asrs r0, r0, #0x18
 	cmp r0, #0x13
 	bne _08023B66
-	bl sub_325E0
+	bl PickSpeciesForEggMode
 	ldr r0, _08023C98 @ =gMain
 	ldrb r0, [r0, #2]
 	cmp r0, #3
@@ -41601,7 +41601,7 @@ _08027FF8: @ jump table
 	.4byte _080283A0 @ case 11
 	.4byte _080283B4 @ case 12
 _0802802C:
-	bl sub_31F6C
+	bl BuildSpeciesWeightsForCatchEmMode
 	ldr r0, _0802803C @ =gCurrentPinballGame
 	ldr r1, [r0]
 	ldrb r0, [r1, #0x17]
@@ -41610,7 +41610,7 @@ _0802802C:
 	.align 2, 0
 _0802803C: .4byte gCurrentPinballGame
 _08028040:
-	bl sub_3219C
+	bl PickSpeciesForCatchEmMode
 	ldr r0, _0802806C @ =gMain
 	ldrb r0, [r0, #2]
 	cmp r0, #3
@@ -58052,7 +58052,7 @@ _0803061A:
 	asrs r0, r0, #0x18
 	cmp r0, #0x12
 	bne _0803062E
-	bl sub_32484
+	bl BuildSpeciesWeightsForEggMode
 _0803062E:
 	mov r3, sb
 	ldr r0, [r3]
@@ -58062,7 +58062,7 @@ _0803062E:
 	asrs r0, r0, #0x18
 	cmp r0, #0x13
 	bne _0803065E
-	bl sub_325E0
+	bl PickSpeciesForEggMode
 	ldr r0, _08030780 @ =gMain
 	ldrb r0, [r0, #2]
 	cmp r0, #3
