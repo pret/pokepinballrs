@@ -10,6 +10,8 @@ void sub_13B28(struct Vector16*, struct Vector16*, s16);
 
 void sub_1493C(void);
 
+u16 sub_14488(struct Vector16*, struct Vector16);
+
 void sub_1332C()
 
 {
@@ -164,4 +166,30 @@ void sub_1333C()
         gCurrentPinballGame->unk132c->position.x = gCurrentPinballGame->unk132c->unk28.x << 7;
         gCurrentPinballGame->unk132c->position.y = gCurrentPinballGame->unk132c->unk28.y << 7;
     }
+}
+
+u16 sub_13824(struct Vector16* param) 
+{
+    u16 retVal;
+    struct Vector16 test;
+    test.x = gCurrentPinballGame->unk132c->unk28.x - gCurrentPinballGame->unk132c->unk2C.x;
+    test.y = gCurrentPinballGame->unk132c->unk28.y - gCurrentPinballGame->unk132c->unk2C.y;
+    param->x = gCurrentPinballGame->unk132c->unk2C.x;
+    param->y = gCurrentPinballGame->unk132c->unk2C.y;
+    retVal = sub_14488(param, test);
+
+    gCurrentPinballGame->unk124 = 0;
+    gCurrentPinballGame->unk125 = 0;
+
+    if (!gCurrentPinballGame->unk22 && (gCurrentPinballGame->unk122 || gCurrentPinballGame->unk123))
+    {
+        param->x = gCurrentPinballGame->unk132c->unk28.x;
+        param->y = gCurrentPinballGame->unk132c->unk28.y;
+        test.x = gCurrentPinballGame->unk122;
+        test.y = gCurrentPinballGame->unk123;
+        retVal = sub_14488(param, test);
+        gCurrentPinballGame->unk124 = param->x - gCurrentPinballGame->unk132c->unk28.x;
+        gCurrentPinballGame->unk125 = param->y - gCurrentPinballGame->unk132c->unk28.y;
+    }
+    return retVal;
 }
