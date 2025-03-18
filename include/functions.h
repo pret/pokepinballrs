@@ -379,7 +379,7 @@ extern void sub_13934(struct Vector16*, struct Vector16*, u16);
 extern void sub_13B28(struct Vector16*, struct Vector16*, s16);
 extern void sub_13D24(u16, struct Vector16*, struct Vector16*);
 //extern ? sub_14074();
-//extern ? sub_14488();
+extern u16 sub_14488(struct Vector16*, struct Vector16);
 //extern ? sub_1467C();
 //extern ? sub_14740();
 extern void sub_1493C(void);
