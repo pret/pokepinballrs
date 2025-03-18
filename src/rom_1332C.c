@@ -36,7 +36,7 @@ void sub_1333C()
         case 1:
             sub_13934(&var0, &var1, r7);
             sub_13D24(r7, &gCurrentPinballGame->unk132c->velocity, &var2);
-            for(i = 0; i < 9; i++)
+            for (i = 0; i < 9; i++)
             {
                 if (gUnknown_086ACD50[i].unk2 <= r7) 
                 {
@@ -57,7 +57,7 @@ void sub_1333C()
         case 2:
             sub_13934(&var0, &var1, r7);
             sub_13D24(r7, &gCurrentPinballGame->unk132c->velocity, &var2);
-            for(i = 0; i < 9; i++)
+            for (i = 0; i < 9; i++)
             {
                 if (gUnknown_086ACD50[i].unk2 <= r7) 
                 {
@@ -86,17 +86,17 @@ void sub_1333C()
             sub_13B28(&var0, &var2, 0);
             gCurrentPinballGame->unk132c->velocity.x = var2.x + var1.x;
             gCurrentPinballGame->unk132c->velocity.y = var2.y + var1.y;
-            if(gCurrentPinballGame->unk22 == 5) 
+            if (gCurrentPinballGame->unk22 == 5) 
             {
-                for(i = 0; i < 4; i++)
+                for (i = 0; i < 4; i++)
                 {
-                    if(gUnknown_086ACD74[i].unk2 <= r7)
+                    if (gUnknown_086ACD74[i].unk2 <= r7)
                     {
                         var0.x += gUnknown_086ACD74[i].unk0;
                         var0.y += gUnknown_086ACD74[i].unk1;
                         break;
                     }
-                };
+                }
             }
             var0.x += gUnknown_02031520.unk22 * 2;
             var0.y += gUnknown_02031520.unk20 * 2;
@@ -121,11 +121,11 @@ void sub_1333C()
             var2.x = -var2.x;
             gCurrentPinballGame->unk132c->velocity.x = var2.x + var1.x;
             gCurrentPinballGame->unk132c->velocity.y = var2.y + var1.y;
-            if(gCurrentPinballGame->unk22 == 5) 
+            if (gCurrentPinballGame->unk22 == 5) 
             {
-                for(i = 0; i < 4; i++)
+                for (i = 0; i < 4; i++)
                 {
-                    if(gUnknown_086ACD74[i].unk2 <= r7)
+                    if (gUnknown_086ACD74[i].unk2 <= r7)
                     {
                         var0.x -= gUnknown_086ACD74[i].unk0;
                         var0.y += gUnknown_086ACD74[i].unk1;

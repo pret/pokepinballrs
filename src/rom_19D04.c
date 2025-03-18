@@ -154,3 +154,50 @@ void sub_19F70(void)
         gCurrentPinballGame->unk600 -= 1;
     }
 }
+
+//Duplicate of sub_32DF8, with "gCurrentPinballGame->unk301 = 1;" added in the final if statement
+void sub_19FA0(void) {
+    int tmp;
+
+    if (gCurrentPinballGame->newButtonActions[0])
+    {
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->unk1E2 != 2 &&
+            gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
+        {
+            gCurrentPinballGame->unk1E2 = 0;
+        }
+
+        tmp = gCurrentPinballGame->unk710;
+        gCurrentPinballGame->unk710 = gCurrentPinballGame->unk711;
+        gCurrentPinballGame->unk711 = gCurrentPinballGame->unk712;
+        gCurrentPinballGame->unk712 = gCurrentPinballGame->unk713;
+        gCurrentPinballGame->unk713 = tmp;
+
+        tmp = gCurrentPinballGame->unk718;
+        gCurrentPinballGame->unk718 = gCurrentPinballGame->unk719;
+        gCurrentPinballGame->unk719 = gCurrentPinballGame->unk71A;
+        gCurrentPinballGame->unk71A = tmp;
+    }
+
+    if (gCurrentPinballGame->newButtonActions[1])
+    {
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->unk1E2 != 2 &&
+            gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
+        {
+            gCurrentPinballGame->unk1E2 = 1;
+        }
+
+        tmp = gCurrentPinballGame->unk713;
+        gCurrentPinballGame->unk713 = gCurrentPinballGame->unk712;
+        gCurrentPinballGame->unk712 = gCurrentPinballGame->unk711;
+        gCurrentPinballGame->unk711 = gCurrentPinballGame->unk710;
+        gCurrentPinballGame->unk710 = tmp;
+
+        tmp = gCurrentPinballGame->unk71A;
+        gCurrentPinballGame->unk71A = gCurrentPinballGame->unk719;
+        gCurrentPinballGame->unk719 = gCurrentPinballGame->unk718;
+        gCurrentPinballGame->unk718 = tmp;
+        
+        gCurrentPinballGame->unk301 = 1;
+    }
+}
