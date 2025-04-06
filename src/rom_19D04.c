@@ -1,6 +1,7 @@
 #include "global.h"
 #include "main.h"
 
+extern void sub_1A2C0(void);
 extern void sub_1D5D8(void);
 extern void sub_1DA74(void);
 extern void sub_1DAD8(void);
@@ -199,5 +200,108 @@ void sub_19FA0(void) {
         gCurrentPinballGame->unk718 = tmp;
         
         gCurrentPinballGame->unk301 = 1;
+    }
+}
+
+void sub_1A0F4(void) 
+{                
+    if ((gMain.unkF & 1) != 0)
+    {
+        gCurrentPinballGame->unk5F7 = 1;
+        if (gCurrentPinballGame->unkFA != 0)
+        {
+            gCurrentPinballGame->unk1F = 2;
+            gCurrentPinballGame->unk5FA = 1;
+            if (gCurrentPinballGame->unkEA != 0)
+            {
+                gCurrentPinballGame->unkEA -= 1;
+            }
+            else if (gCurrentPinballGame->unkEE == 0)
+            {
+                if (gCurrentPinballGame->unkEC != 0)
+                {
+                    gCurrentPinballGame->unkEC -= 1;
+                }
+                else
+                {
+                    gCurrentPinballGame->unkFA = 0;
+                }
+            }
+            else
+            {
+                if (gCurrentPinballGame->unk68 + gCurrentPinballGame->unkEE <= gCurrentPinballGame->unkE8)
+                {
+                    gCurrentPinballGame->unkE6 += gCurrentPinballGame->unkEE;
+                }
+                else if (gCurrentPinballGame->unk68 - gCurrentPinballGame->unkEE >= gCurrentPinballGame->unkE8)
+                {
+                    gCurrentPinballGame->unkE6 -= gCurrentPinballGame->unkEE;
+                }
+                else if (gCurrentPinballGame->unkEC != 0)
+                {
+                    gCurrentPinballGame->unkEC -= 1;
+                }
+                else
+                {
+                    gCurrentPinballGame->unkFA = 0;
+                }
+            }
+  
+            if (gCurrentPinballGame->unkF2 != 0)
+            {
+                sub_1A2C0();
+            }
+        }
+        else
+        {
+            if (gCurrentPinballGame->unkEE == 0 || gCurrentPinballGame->unkE6 == 0)
+            {
+                gCurrentPinballGame->unkE6 = 0;
+                gCurrentPinballGame->unk1F = 0;
+                gMain.unkF = gMain.unkF & 254;
+                gCurrentPinballGame->unk5F7 = 0;
+                
+                if (gCurrentPinballGame->unkFB == 0)
+                {
+                    gCurrentPinballGame->unk5FA = 0;
+                }
+            }
+    
+            if (gCurrentPinballGame->unkE6 > 0)
+            {
+                gCurrentPinballGame->unkE6 -= gCurrentPinballGame->unkEE;
+                if (gCurrentPinballGame->unkE6 > 0)
+                {
+                    return;
+                }
+
+                gCurrentPinballGame->unkE6 = 0;
+                gCurrentPinballGame->unk1F = 0;
+                gMain.unkF = gMain.unkF & 254;
+                gCurrentPinballGame->unk5F7 = 0;
+
+                if (gCurrentPinballGame->unkFB == 0)
+                {
+                    gCurrentPinballGame->unk5FA = 0;
+                }
+            }
+    
+            if (gCurrentPinballGame->unkE6 <= -1)
+            {
+                gCurrentPinballGame->unkE6 += gCurrentPinballGame->unkEE;
+                if (gCurrentPinballGame->unkE6 >= 0)
+                {
+                    gCurrentPinballGame->unkE6 = 0;
+                    gCurrentPinballGame->unk1F = 0;
+                    gMain.unkF = gMain.unkF & 254;
+                    gCurrentPinballGame->unk5F7 = 0;
+
+                    if (gCurrentPinballGame->unkFB == 0)
+                    {
+                        gCurrentPinballGame->unk5FA = 0;
+                    }
+                }
+            }
+        }
     }
 }
