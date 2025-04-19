@@ -45,9 +45,7 @@ void sub_27E08(void)
     gCurrentPinballGame->unk6C8 = gMain.systemFrameCount % 6;
     gCurrentPinballGame->unk6C9 = 5;
 
-    j = (s8) gCurrentPinballGame->unk6C8;
-    while (j < gCurrentPinballGame->unk6C9 /*5*/) {
+    for (j = (s8) gCurrentPinballGame->unk6C8; j < gCurrentPinballGame->unk6C9; j++) {
         gCurrentPinballGame->unk6CD[j] = gCurrentPinballGame->unk6CD[j+1];
-        j++;
     }
 }
