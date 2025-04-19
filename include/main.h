@@ -100,13 +100,6 @@ struct Main
     /*0x2F8*/ struct SpriteGroup spriteGroups[NUM_SPRITE_GROUPS];
 };
 
-struct Unknown
-{
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-};
-
 extern struct Main gMain;
 extern struct SpriteGroup gUnknown_0200B3B8[];
 extern u32 IntrMain_Buffer[0x200];

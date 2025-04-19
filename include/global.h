@@ -374,7 +374,7 @@ struct PinballGame
     /*0x6C5*/ u8 unk6C5; // TODO: unknown type
     /*0x6C6*/ u8 unk6C6;
     /*0x6C7*/ u8 unk6C7;
-    /*0x6C8*/ u8 unk6C8;
+    /*0x6C8*/ s8 unk6C8;
     /*0x6C9*/ s8 unk6C9;
     /*0x6CA*/ u16 unk6CA;
     /*0x6CC*/ u8 unk6CC;
