@@ -916,7 +916,7 @@ _08013324: .4byte gOamBuffer
 _08013328: .4byte 0x000001FF
 
 	.section .text1333C
-	
+
 	thumb_func_start sub_13934
 sub_13934: @ 0x08013934
 	push {r4, r5, r6, r7, lr}

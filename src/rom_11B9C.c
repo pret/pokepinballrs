@@ -12,6 +12,8 @@ extern const u8 gUnknown_08137E14[][0x20];
 extern const u8 gUnknown_083BB16C[][0x80];
 extern const u8 gUnknown_083BD36C[][0x200];
 
+#define BONUS_CATCH_TIME 7200 //2 minutes, 60FPS
+
 void sub_11B9C(void)
 {
     s16 i;
@@ -45,7 +47,7 @@ void sub_11C14(s16 arg0)
     var0->velocity.x = 0;
     var0->velocity.y = 0;
     if (gMain.selectedField == FIELD_RUBY)
-        var0->unk1 = 3; 
+        var0->unk1 = 3;
     else
         var0->unk1 = 1;
 
@@ -109,7 +111,7 @@ void sub_11C98(void)
             xx = unk132c->velocity.x * unk132c->velocity.x;
             yy = unk132c->velocity.y * unk132c->velocity.y;
             squaredMagnitude = xx + yy;
-            
+
             if (unk132c->unk10.y < 380)
             {
                 UPDATE_BALL_POSITION(272, angle);
@@ -139,7 +141,7 @@ void sub_11C98(void)
             xx = unk132c->velocity.x * unk132c->velocity.x;
             yy = unk132c->velocity.y * unk132c->velocity.y;
             squaredMagnitude = xx + yy;
-            
+
             if (unk132c->unk10.y < 380)
             {
                 UPDATE_BALL_POSITION(336, angle);
@@ -193,7 +195,7 @@ void sub_11F88(void)
             xx = unk132c->velocity.x * unk132c->velocity.x;
             yy = unk132c->velocity.y * unk132c->velocity.y;
             squaredMagnitude = xx + yy;
-            
+
             if (gMain.selectedField <= FIELD_KECLEON)
             {
                 if (unk132c->unk10.y < 150)
@@ -336,7 +338,7 @@ void sub_12524(void)
         mainUnk44->a.unk4 = -(gCurrentPinballGame->unk4E + 7) + unk132c->unk10.y - gCurrentPinballGame->unk5FC - gCurrentPinballGame->unkE6 + gCurrentPinballGame->unk166;
         unk132c->unk24 = mainUnk44->a.unk2;
         unk132c->unk26 = mainUnk44->a.unk4;
-        
+
         oam = &gOamBuffer[mainUnk44->b.unk0];
         if (unk132c->unk1 == 3)
         {
@@ -1355,3 +1357,237 @@ _08012BF4: .4byte gMain\n\
     ");
 }
 #endif
+
+// #ifdef NONMATCHING
+// void sub_27E08(void)
+// {
+//     s8 i;
+//     struct Unknown volatile *unk;
+
+//     gCurrentPinballGame->unk17 = 0;
+//     gCurrentPinballGame->unk18 = 0;
+//     gCurrentPinballGame->unk294 = 1;
+//     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_CATCH_TIME;
+//     gCurrentPinballGame->timerBonus = 0;
+//     gCurrentPinballGame->unk5A5 = 0;
+//     gCurrentPinballGame->unk5AA = 0;
+//     gCurrentPinballGame->unk5A9 = 0;
+//     gCurrentPinballGame->unk6C6 = 0;
+//     gCurrentPinballGame->unk6C7 = 0;
+//     gCurrentPinballGame->unk625 = 0;
+//     gCurrentPinballGame->unk6CA = 0;
+//     gCurrentPinballGame->unk6CC = 0;
+//     gCurrentPinballGame->unk72F = 0;
+//     gCurrentPinballGame->unk731 = 0;
+
+//     if (gCurrentPinballGame->unk29A != 0) {
+//         gCurrentPinballGame->unk724 = 4200;
+//     } else {
+//         gCurrentPinballGame->unk724 = 6000;
+//     }
+//     gCurrentPinballGame->unk29A += 1;
+
+//     unk = (struct Unknown *) 0x040000D4;
+//     unk->unk0 = 0x081C0064; //*gUnknown_081C0064;
+//     unk->unk4 = 0x05000180;
+//     unk->unk8 = 0x80000010;
+
+//     for (i = 0; i < 6; i++) {
+//         gCurrentPinballGame->unk6CD[i] = i;
+//     }
+//     gCurrentPinballGame->unk6C8 = gMain.systemFrameCount % 6;
+//     gCurrentPinballGame->unk6C9 = 5;
+//     while (gCurrentPinballGame->unk6C8 < gCurrentPinballGame->unk6C9 /*5*/) {
+//         gCurrentPinballGame->unk6CD[gCurrentPinballGame->unk6C8]= gCurrentPinballGame->unk6C8;
+//         gCurrentPinballGame->unk6C8++;
+//     }
+// }
+// #else
+// NAKED
+// void sub_27E08(void)
+// {
+//     asm_unified("\n\
+//     push {r4, r5, r6, r7, lr}\n\
+//     ldr r3, _08027E9C @ =gCurrentPinballGame\n\
+//     ldr r0, [r3]\n\
+//     movs r5, #0\n\
+//     strb r5, [r0, #0x17]\n\
+//     ldr r0, [r3]\n\
+//     movs r6, #0\n\
+//     strh r5, [r0, #0x18]\n\
+//     movs r1, #0xa5\n\
+//     lsls r1, r1, #2\n\
+//     adds r0, r0, r1\n\
+//     movs r1, #1\n\
+//     strb r1, [r0]\n\
+//     ldr r2, [r3]\n\
+//     adds r4, r2, #0\n\
+//     adds r4, #0x6c\n\
+//     movs r7, #0xe1\n\
+//     lsls r7, r7, #5\n\
+//     adds r0, r7, #0\n\
+//     ldrh r1, [r4]\n\
+//     adds r0, r0, r1\n\
+//     ldr r7, _08027EA0 @ =0x00000296\n\
+//     adds r1, r2, r7\n\
+//     strh r0, [r1]\n\
+//     strh r5, [r4]\n\
+//     ldr r0, _08027EA4 @ =0x000005A5\n\
+//     adds r2, r2, r0\n\
+//     strb r6, [r2]\n\
+//     ldr r0, [r3]\n\
+//     ldr r2, _08027EA8 @ =0x000005AA\n\
+//     adds r1, r0, r2\n\
+//     strh r5, [r1]\n\
+//     ldr r7, _08027EAC @ =0x000005A9\n\
+//     adds r0, r0, r7\n\
+//     strb r6, [r0]\n\
+//     ldr r0, [r3]\n\
+//     ldr r1, _08027EB0 @ =0x000006C6\n\
+//     adds r0, r0, r1\n\
+//     strb r6, [r0]\n\
+//     ldr r0, [r3]\n\
+//     ldr r2, _08027EB4 @ =0x000006C7\n\
+//     adds r0, r0, r2\n\
+//     strb r6, [r0]\n\
+//     ldr r0, [r3]\n\
+//     adds r7, #0x7c\n\
+//     adds r0, r0, r7\n\
+//     strb r6, [r0]\n\
+//     ldr r0, [r3]\n\
+//     adds r2, #3\n\
+//     adds r1, r0, r2\n\
+//     strh r5, [r1]\n\
+//     adds r7, #0xa7\n\
+//     adds r0, r0, r7\n\
+//     strb r6, [r0]\n\
+//     ldr r0, [r3]\n\
+//     ldr r1, _08027EB8 @ =0x0000072F\n\
+//     adds r0, r0, r1\n\
+//     strb r6, [r0]\n\
+//     ldr r0, [r3]\n\
+//     adds r2, #0x67\n\
+//     adds r0, r0, r2\n\
+//     strb r6, [r0]\n\
+//     ldr r1, [r3]\n\
+//     ldr r7, _08027EBC @ =0x0000029A\n\
+//     adds r0, r1, r7\n\
+//     ldrh r0, [r0]\n\
+//     adds r5, r3, #0\n\
+//     cmp r0, #0\n\
+//     bne _08027EC8\n\
+//     ldr r0, _08027EC0 @ =0x00000724\n\
+//     adds r1, r1, r0\n\
+//     ldr r0, _08027EC4 @ =0x00001770\n\
+//     b _08027ECE\n\
+//     .align 2, 0\n\
+// _08027E9C: .4byte gCurrentPinballGame\n\
+// _08027EA0: .4byte 0x00000296\n\
+// _08027EA4: .4byte 0x000005A5\n\
+// _08027EA8: .4byte 0x000005AA\n\
+// _08027EAC: .4byte 0x000005A9\n\
+// _08027EB0: .4byte 0x000006C6\n\
+// _08027EB4: .4byte 0x000006C7\n\
+// _08027EB8: .4byte 0x0000072F\n\
+// _08027EBC: .4byte 0x0000029A\n\
+// _08027EC0: .4byte 0x00000724\n\
+// _08027EC4: .4byte 0x00001770\n\
+// _08027EC8:\n\
+//     ldr r2, _08027F6C @ =0x00000724\n\
+//     adds r1, r1, r2\n\
+//     ldr r0, _08027F70 @ =0x00001068\n\
+// _08027ECE:\n\
+//     strh r0, [r1]\n\
+//     ldr r1, [r5]\n\
+//     ldr r7, _08027F74 @ =0x0000029A\n\
+//     adds r1, r1, r7\n\
+//     ldrh r0, [r1]\n\
+//     adds r0, #1\n\
+//     strh r0, [r1]\n\
+//     ldr r1, _08027F78 @ =0x040000D4\n\
+//     ldr r0, _08027F7C @ =gUnknown_081C0064\n\
+//     str r0, [r1]\n\
+//     ldr r0, _08027F80 @ =0x05000180\n\
+//     str r0, [r1, #4]\n\
+//     ldr r0, _08027F84 @ =0x80000010\n\
+//     str r0, [r1, #8]\n\
+//     ldr r0, [r1, #8]\n\
+//     movs r2, #0\n\
+//     ldr r6, _08027F88 @ =gMain\n\
+//     adds r4, r5, #0\n\
+//     ldr r3, _08027F8C @ =0x000006CD\n\
+// _08027EF4:\n\
+//     ldr r1, [r4]\n\
+//     lsls r0, r2, #0x10\n\
+//     asrs r0, r0, #0x10\n\
+//     adds r1, r1, r3\n\
+//     adds r1, r1, r0\n\
+//     strb r2, [r1]\n\
+//     adds r0, #1\n\
+//     lsls r0, r0, #0x10\n\
+//     lsrs r2, r0, #0x10\n\
+//     asrs r0, r0, #0x10\n\
+//     cmp r0, #5\n\
+//     ble _08027EF4\n\
+//     ldr r4, [r5]\n\
+//     ldr r0, [r6, #0x4c]\n\
+//     movs r1, #6\n\
+//     bl __umodsi3\n\
+//     movs r2, #0xd9\n\
+//     lsls r2, r2, #3\n\
+//     adds r4, r4, r2\n\
+//     strb r0, [r4]\n\
+//     ldr r0, [r5]\n\
+//     ldr r4, _08027F90 @ =0x000006C9\n\
+//     adds r0, r0, r4\n\
+//     movs r1, #5\n\
+//     strb r1, [r0]\n\
+//     ldr r0, [r5]\n\
+//     adds r2, r0, r2\n\
+//     movs r1, #0\n\
+//     ldrsb r1, [r2, r1]\n\
+//     adds r0, r0, r4\n\
+//     lsls r2, r1, #0x10\n\
+//     ldrb r0, [r0]\n\
+//     lsls r0, r0, #0x18\n\
+//     asrs r0, r0, #0x18\n\
+//     cmp r1, r0\n\
+//     bge _08027F64\n\
+//     adds r3, r5, #0\n\
+//     ldr r5, _08027F8C @ =0x000006CD\n\
+// _08027F42:\n\
+//     ldr r0, [r3]\n\
+//     asrs r1, r2, #0x10\n\
+//     adds r0, r0, r5\n\
+//     adds r2, r0, r1\n\
+//     adds r1, #1\n\
+//     adds r0, r0, r1\n\
+//     ldrb r0, [r0]\n\
+//     strb r0, [r2]\n\
+//     ldr r0, [r3]\n\
+//     adds r0, r0, r4\n\
+//     lsls r2, r1, #0x10\n\
+//     asrs r1, r2, #0x10\n\
+//     ldrb r0, [r0]\n\
+//     lsls r0, r0, #0x18\n\
+//     asrs r0, r0, #0x18\n\
+//     cmp r1, r0\n\
+//     blt _08027F42\n\
+// _08027F64:\n\
+//     pop {r4, r5, r6, r7}\n\
+//     pop {r0}\n\
+//     bx r0\n\
+//     .align 2, 0\n\
+// _08027F6C: .4byte 0x00000724\n\
+// _08027F70: .4byte 0x00001068\n\
+// _08027F74: .4byte 0x0000029A\n\
+// _08027F78: .4byte 0x040000D4\n\
+// _08027F7C: .4byte gUnknown_081C0064\n\
+// _08027F80: .4byte 0x05000180\n\
+// _08027F84: .4byte 0x80000010\n\
+// _08027F88: .4byte gMain\n\
+// _08027F8C: .4byte 0x000006CD\n\
+// _08027F90: .4byte 0x000006C9\n\
+//     ");
+// }
+// #endif

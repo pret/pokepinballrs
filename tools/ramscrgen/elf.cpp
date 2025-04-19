@@ -167,7 +167,7 @@ std::map<std::string, std::uint32_t> GetCommonSymbols(std::string path)
     VerifyElfIdent();
     ReadElfHeader();
     FindTableOffsets();
-    
+
     std::vector<Symbol> commonSymbolVec;
 
     Seek(s_symtabOffset);

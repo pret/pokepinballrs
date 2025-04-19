@@ -244,7 +244,7 @@ struct PinballGame
     /*0x295*/ u8 unk295;
     /*0x296*/ u16 eventTimer; //Timer for events (Only bonus fields or all events?)
     /*0x298*/ u16 unk298;
-    /*0x29A*/ u8 filler29A[0x2];
+    /*0x29A*/ u16 unk29A;
     /*0x29C*/ u16 unk29C;
     /*0x29E*/ u8 unk29E;
     /*0x29F*/ u8 unk29F;
@@ -344,7 +344,13 @@ struct PinballGame
     /*0x59E*/ u16 lastEggSpecies; // Previous hatch/evo mode species?
     /*0x5A0*/ u8 filler5A0[0x4];
     /*0x5A4*/ u8 unk5A4;
-    /*0x5A5*/ u8 filler5A5[0xD];
+    /*0x5A5*/ u8 unk5A5;
+    /*0x5A6*/ u8 unk5A6;
+    /*0x5A7*/ u8 unk5A7;
+    /*0x5A8*/ u8 unk5A8;
+    /*0x5A9*/ u8 unk5A9;
+    /*0x5AA*/ u16 unk5AA;
+    /*0x5AC*/ u8 filler5AC[0x6];
     /*0x5B2*/ u8 unk5B2;
     /*0x5B3*/ u8 filler5B3[0x3D];
     /*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
@@ -363,9 +369,20 @@ struct PinballGame
     /*0x614*/ u16 unk614;
     /*0x616*/ u8 filler616[0x6];
     /*0x61C*/ s8 unk61C;
-    /*0x61D*/ u8 filler61D[0xA7];
+    /*0x61D*/ u8 filler61D[0x8];
+    /*0x625*/ u8 unk625;
+    /*0x626*/ u8 filler626[0x9E];
     /*0x6C4*/ u8 unk6C4;
-    /*0x6C5*/ u8 filler6C5[0x29];
+    /*0x6C5*/ u8 unk6C5;
+    /*0x6C6*/ u8 unk6C6;
+    /*0x6C7*/ u8 unk6C7;
+    /*0x6C8*/ u8 unk6C8;
+    /*0x6C9*/ s8 unk6C9;
+    /*0x6CA*/ u16 unk6CA;
+    /*0x6CB*/ u8 unk6CB; // TODO: unknown type
+    /*0x6CC*/ u8 unk6CC;
+    /*0x6CD*/ u8 unk6CD[6];
+    /*0x6D3*/ u8 filler6D3[0x1B];
     /*0x6EE*/ u16 unk6EE;
     /*0x6F0*/ u8 filler6F0[0x20];
     /*0x710*/ s8 unk710;
@@ -379,13 +396,17 @@ struct PinballGame
     /*0x71A*/ s8 unk71A;
     /*0x71B*/ u8 filler71B[0x1];
     /*0x71C*/ u8 unk71C;
-    /*0x71D*/ u8 filler71D[0xB];
+    /*0x71D*/ u8 filler71D[0x9];
+    /*0x724*/ u16 unk724;
+    /*0x726*/ u8 filler726[0x2];
     /*0x728*/ u8 unk728; // TODO: unknown type
     /*0x729*/ u8 filler729[0x5];
     /*0x72E*/ s8 unk72E;
     /*0x72F*/ s8 unk72F;
     /*0x730*/ u8 unk730;
-    /*0x731*/ u8 filler731[0xB];
+    /*0x731*/ u8 unk731;
+    /*0x732*/ u8 filler732[0xA];
+
     /*0x73C*/ u8 unk73C; // TODO: unknown type
     /*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
     /*0x73E*/ u8 filler73E[0x8];
