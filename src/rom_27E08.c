@@ -25,23 +25,28 @@ void sub_27E08(void)
     gCurrentPinballGame->unk72F = 0;
     gCurrentPinballGame->unk731 = 0;
 
-    if (gCurrentPinballGame->unk29A == 0) {
+    if (gCurrentPinballGame->unk29A == 0)
+    {
         gCurrentPinballGame->unk724 = 6000;
-    } else {
+    }
+    else
+    {
         gCurrentPinballGame->unk724 = 4200;
     }
     gCurrentPinballGame->unk29A += 1;
 
     DmaCopy16(3, gUnknown_081C0064, (void *)PLTT + 0x180, 0x20);
 
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 6; i++)
+    {
         gCurrentPinballGame->unk6CD[i] = i;
     }
 
     gCurrentPinballGame->unk6C8 = gMain.systemFrameCount % 6;
     gCurrentPinballGame->unk6C9 = 5;
 
-    for (j = gCurrentPinballGame->unk6C8; j < gCurrentPinballGame->unk6C9; j++) {
+    for (j = gCurrentPinballGame->unk6C8; j < gCurrentPinballGame->unk6C9; j++)
+    {
         gCurrentPinballGame->unk6CD[j] = gCurrentPinballGame->unk6CD[j+1];
     }
 }
