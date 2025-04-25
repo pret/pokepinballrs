@@ -21,8 +21,8 @@ void sub_23E18(void);
 void sub_2C9A4(void);
 void sub_4E9F0(s8);
 
-void sub_19A20(void) 
-{    
+void sub_19A20(void)
+{
     gCurrentPinballGame->catchModeArrows = 2;
     sub_1D5D8();
     sub_4E9F0(0);
@@ -35,7 +35,7 @@ void sub_19A20(void)
     gCurrentPinballGame->unk2DA = 0;
     sub_23E18();
     sub_1DDDC();
-    
+
     gCurrentPinballGame->unk170 = 10;
     gCurrentPinballGame->unk171 = 10;
     gCurrentPinballGame->unk172 = 10;
@@ -59,7 +59,7 @@ void sub_19A20(void)
     sub_31B30();
 }
 
-void sub_19B10(void) 
+void sub_19B10(void)
 {
     sub_19B90();
     sub_19E10();
@@ -73,7 +73,7 @@ void sub_19B10(void)
     if (gCurrentPinballGame->unk29C != 0)
     {
         gCurrentPinballGame->unk29C -= 1;
-        if (gCurrentPinballGame->unk29C == 0) 
+        if (gCurrentPinballGame->unk29C == 0)
         {
             m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 256);
         }
@@ -84,11 +84,11 @@ void sub_19B64(u8 arg0)
 {
     gCurrentPinballGame->unk16 = 2;
     gCurrentPinballGame->unk14 = arg0;
-    if (gCurrentPinballGame->unk13 == 2) 
-        gMain.unk44[13]->a.unk0 = 0;
+    if (gCurrentPinballGame->unk13 == 2)
+        gMain.unk44[13]->available = 0;
 }
 
-void sub_19B90(void) 
+void sub_19B90(void)
 {
     switch (gCurrentPinballGame->unk16)
     {
@@ -108,11 +108,11 @@ void sub_19B90(void)
     }
 }
 
-void sub_19C04(void) 
+void sub_19C04(void)
 {
     s16 num1;
     u8 num2;
-    
+
     if (gCurrentPinballGame->unk15 > 0)
     {
         if (gMain.selectedField == 0)
@@ -140,7 +140,7 @@ void sub_19C04(void)
             }
         }
     }
-    
+
     num2 = gCurrentPinballGame->unk15 - 1;
     if (num2 > 1)
     {
@@ -151,7 +151,7 @@ void sub_19C04(void)
     }
 }
 
-void sub_19CC8(void) 
+void sub_19CC8(void)
 {
     if (gCurrentPinballGame->unk714 != 0)
     {

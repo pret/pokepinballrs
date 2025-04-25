@@ -33,19 +33,6 @@ struct SaveData
               u32 unk2E4;
 };
 
-struct MainUnk44_item
-{
-    /*0x0*/ u16 unk0;
-    /*0x2*/ s16 unk2;
-    /*0x4*/ s16 unk4;
-};
-
-struct MainUnk44
-{
-    struct MainUnk44_item a;
-    struct MainUnk44_item b;
-};
-
 struct Main
 {
     /*0x00*/ u8 filler0[0x2];
@@ -83,7 +70,7 @@ struct Main
     /*0x3C*/ volatile u16 blendBrightness;
              // may be a sub-struct. possibly for saved game?
     /*0x40*/ int hasSavedGame;
-    /*0x44*/ struct MainUnk44 **unk44;
+    /*0x44*/ struct SpriteGroup **unk44;
     /*0x48*/ int rngValue;
     /*0x4C*/ u32 systemFrameCount;
     /*0x50*/ int fieldFrameCount;
