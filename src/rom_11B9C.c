@@ -45,7 +45,7 @@ void sub_11C14(s16 arg0)
     var0->velocity.x = 0;
     var0->velocity.y = 0;
     if (gMain.selectedField == FIELD_RUBY)
-        var0->unk1 = 3; 
+        var0->unk1 = 3;
     else
         var0->unk1 = 1;
 
@@ -109,7 +109,7 @@ void sub_11C98(void)
             xx = unk132c->velocity.x * unk132c->velocity.x;
             yy = unk132c->velocity.y * unk132c->velocity.y;
             squaredMagnitude = xx + yy;
-            
+
             if (unk132c->unk10.y < 380)
             {
                 UPDATE_BALL_POSITION(272, angle);
@@ -139,7 +139,7 @@ void sub_11C98(void)
             xx = unk132c->velocity.x * unk132c->velocity.x;
             yy = unk132c->velocity.y * unk132c->velocity.y;
             squaredMagnitude = xx + yy;
-            
+
             if (unk132c->unk10.y < 380)
             {
                 UPDATE_BALL_POSITION(336, angle);
@@ -193,7 +193,7 @@ void sub_11F88(void)
             xx = unk132c->velocity.x * unk132c->velocity.x;
             yy = unk132c->velocity.y * unk132c->velocity.y;
             squaredMagnitude = xx + yy;
-            
+
             if (gMain.selectedField <= FIELD_KECLEON)
             {
                 if (unk132c->unk10.y < 150)
@@ -336,7 +336,7 @@ void sub_12524(void)
         mainUnk44->a.unk4 = -(gCurrentPinballGame->unk4E + 7) + unk132c->unk10.y - gCurrentPinballGame->unk5FC - gCurrentPinballGame->unkE6 + gCurrentPinballGame->unk166;
         unk132c->unk24 = mainUnk44->a.unk2;
         unk132c->unk26 = mainUnk44->a.unk4;
-        
+
         oam = &gOamBuffer[mainUnk44->b.unk0];
         if (unk132c->unk1 == 3)
         {

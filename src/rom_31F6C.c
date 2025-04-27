@@ -24,10 +24,10 @@ static inline u32 GetTimeAdjustedRandom()
 BuildSpeciesWeightsForX constructs two key objects:
 
 speciesWeights[] - A cumulative weight array where each entry represents the total weight of all species up to that index.
-                   Species weights are influenced by factors such as whether the Pokémon has already been caught and if it has 
+                   Species weights are influenced by factors such as whether the Pokémon has already been caught and if it has
                    an evolution needed for the Pokédex. This ensures rarer or more desirable species have appropriate weighting.
 
-totalWeight - The final cumulative weight value, equal to the last value in speciesWeights[]. This is used as the upper bound 
+totalWeight - The final cumulative weight value, equal to the last value in speciesWeights[]. This is used as the upper bound
               for random selection.
 
 PickSpeciesForX determines a species as follows:
@@ -524,7 +524,7 @@ void sub_329F4(void)
         gCurrentPinballGame->unk132c->unk28.y = gCurrentPinballGame->unk132c->unk10.y * 2;
         gCurrentPinballGame->unk132c->position.x = gCurrentPinballGame->unk132c->unk10.x << 8;
         gCurrentPinballGame->unk132c->position.y = gCurrentPinballGame->unk132c->unk10.y << 8;
-        
+
         if (gCurrentPinballGame->unk28 <= 0x31)
         {
             gCurrentPinballGame->unk28++;
@@ -562,7 +562,7 @@ void sub_329F4(void)
         gCurrentPinballGame->unk25 = 0;
 
         m4aSongNumStart(SE_UNKNOWN_0xC3);
-        
+
         if (gCurrentPinballGame->unk72E > 2 && gCurrentPinballGame->unk281 > 0) {
             sub_19B64(6);
         }
@@ -635,7 +635,7 @@ void sub_32BE4(void)
         else if (gCurrentPinballGame->unk28 > 10)
         {
             gCurrentPinballGame->unk2F4 = 9;
-            
+
         }
         else if (gCurrentPinballGame->unk28 > 4)
         {
@@ -797,7 +797,7 @@ void sub_33130(void)
             {
                 temp = gCurrentPinballGame->unk18 / 24;
                 DmaCopy16(3, gUnknown_082EE0E0 + temp * 40, 0x05000000, 160);
-                
+
                 gCurrentPinballGame->unkE6 = gCurrentPinballGame->unk18 / 5 + 0xFFE8;
                 gCurrentPinballGame->unk18++;
             }
@@ -913,7 +913,7 @@ void sub_3342C(s16 index1, s16 index2)
     u8 temp397, temp39A, temp39D, temp3A0, temp3A3, temp3A6, temp3A9, temp3AC;
     u16 temp3B0, temp3B6, temp3BC;
     struct UnkPinballGame3C4 temp3C4, temp3D0;
-    
+
     temp397 = gCurrentPinballGame->unk397[index1];
     temp39A = gCurrentPinballGame->unk39A[index1];
     temp39D = gCurrentPinballGame->unk39D[index1];
