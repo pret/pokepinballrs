@@ -1,19 +1,13 @@
 #include "global.h"
 
+
 u16 sub_13824(struct Vector16*);
-
 void sub_13D24(u16,struct Vector16*, struct Vector16*);
-
-void sub_13934(struct Vector16*,struct Vector16*,u16);
-
-void sub_13B28(struct Vector16*, struct Vector16*, s16);
-
+void sub_13934(struct Vector16 *arg0, struct Vector16 *arg1, u16 angle);
 void sub_1493C(void);
-
 u16 sub_14488(struct Vector16*, struct Vector16);
 
 void sub_1332C()
-
 {
 	gCurrentPinballGame->unk26 = 60;
 }
@@ -192,4 +186,66 @@ u16 sub_13824(struct Vector16* param)
         gCurrentPinballGame->unk125 = param->y - gCurrentPinballGame->unk132c->unk28.y;
     }
     return retVal;
+}
+
+void sub_13934(struct Vector16 *arg0, struct Vector16 *arg1, u16 angle)
+{
+    s16 cos;
+
+    arg1->x = 0;
+    arg1->y = 0;
+    if (gCurrentPinballGame->unk122)
+    {
+        arg0->x -= gCurrentPinballGame->unk124;
+        if (gCurrentPinballGame->unk122 > 0)
+        {
+            cos = Cos(angle);
+            if (cos < 0)
+            {
+                arg1->x = (Cos(angle) * 70) / 20000;
+                gCurrentPinballGame->unk126 = 1;
+            }
+        }
+        else if (gCurrentPinballGame->unk122 < 0)
+        {
+            cos = Cos(angle);
+            if (cos > 0)
+            {
+                arg1->x = (Cos(angle) * 70) / 20000;
+                gCurrentPinballGame->unk126 = 1;
+            }
+        }
+    }
+
+    if (gCurrentPinballGame->unk123 > 0)
+    {
+        arg0->y -= gCurrentPinballGame->unk125;
+        if (gCurrentPinballGame->unk132c->unk10.y > 364)
+        {
+            if (gCurrentPinballGame->unk122 == 0)
+                arg1->y = -(Sin(angle) * 130) / 20000;
+            else
+                arg1->y = -(Sin(angle) * 100) / 20000;
+        }
+        else
+        {
+            if (gCurrentPinballGame->unk122 == 0)
+                arg1->y = -(Sin(angle) * 100) / 20000;
+            else
+                arg1->y = -(Sin(angle) * 75) / 20000;
+
+            if (arg1->y >= 90)
+                gCurrentPinballGame->unk132c->velocity.x /= 4;
+            else if (arg1->y >= 70)
+                gCurrentPinballGame->unk132c->velocity.x /= 4;
+        }
+
+        gCurrentPinballGame->unk126 = 1;
+    }
+
+    if (gCurrentPinballGame->unk126)
+    {
+        gCurrentPinballGame->unk122 = 0;
+        gCurrentPinballGame->unk123 = 0;
+    }
 }

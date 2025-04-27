@@ -375,7 +375,6 @@ extern void ClearSomeArray(void);
 extern void sub_1332C();
 extern void sub_1333C();
 extern u16 sub_13824(struct Vector16*);
-extern void sub_13934(struct Vector16*, struct Vector16*, u16);
 extern void sub_13B28(struct Vector16*, struct Vector16*, s16);
 extern void sub_13D24(u16, struct Vector16*, struct Vector16*);
 //extern ? sub_14074();

@@ -174,9 +174,9 @@ struct PinballGame
     /*0x121*/ s8 unk121;
     /*0x122*/ s8 unk122;
     /*0x123*/ s8 unk123;
-    /*0x124*/ u8 unk124;
-    /*0x125*/ u8 unk125;
-    /*0x126*/ u8 filler126[0x1];
+    /*0x124*/ s8 unk124;
+    /*0x125*/ s8 unk125;
+    /*0x126*/ s8 unk126;
     /*0x127*/ s8 unk127;
     /*0x128*/ u8 filler128[0x3];
     /*0x12B*/ s8 forceSpecialMons;  // When on, force next catch mode species to be special mons
