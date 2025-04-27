@@ -563,7 +563,7 @@ void sub_329F4(void)
 
         m4aSongNumStart(SE_UNKNOWN_0xC3);
 
-        if (gCurrentPinballGame->unk72E > 2 && gCurrentPinballGame->unk281 > 0) {
+        if (gCurrentPinballGame->unk72E > 2 && gCurrentPinballGame->evolvablePartySize > 0) {
             sub_19B64(6);
         }
     }
