@@ -148,7 +148,7 @@ void sub_49ED4(void)
         sub_4A270();
         sub_4A518();
         sub_467F4();
-        DmaCopy16(3, gUnknown_02031520.unk2C, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3, gUnknown_02031520.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
 
@@ -180,7 +180,7 @@ void sub_49ED4(void)
         sub_4A270();
         sub_4A518();
         sub_467F4();
-        DmaCopy16(3, gUnknown_02031520.unk2C, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3, gUnknown_02031520.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
 
@@ -206,7 +206,7 @@ void sub_49ED4(void)
         sub_4A270();
         sub_4A518();
         sub_467F4();
-        DmaCopy16(3, gUnknown_02031520.unk2C, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3, gUnknown_02031520.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         sub_4A90C();
         for (i = 0; i < 9; i++)
             gUnknown_020028D8[i].unk0();

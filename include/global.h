@@ -153,7 +153,7 @@ struct PinballGame
     /*0x06C*/ u16 timerBonus; //Additional time to be added to next timed event (Only for bonus fields or all timers?)
     /*0x06E*/ s8 unk6E;
     /*0x06F*/ s8 unk6F;
-    /*0x070*/ u8 filler70[0x1];
+    /*0x070*/ s8 unk70;
     /*0x071*/ s8 unk71;
     /*0x072*/ u8 filler72[0x5A];
     /*0x0CC*/ u16 unkCC;
@@ -478,12 +478,14 @@ struct Unk02031520
     /*0x24*/ s16 unk24;
     /*0x26*/ s16 unk26;
     /*0x28*/ s16 unk28;
-    /*0x2C*/ u8 *unk2C;
+    /*0x2C*/ u32 *unk2C[3];
 };
 
 extern struct PinballGame *gCurrentPinballGame;
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
+extern u8 gUnknown_08137B3C[0x20];
+extern u8 gUnknown_08137B5C[0x160];
 extern s32 gUnknown_081B36A4[64];
 extern s32 gUnknown_082EE0E0[];
 extern const u8 gUnknown_08138834[0x2000];
