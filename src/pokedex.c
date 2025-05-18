@@ -39,7 +39,7 @@ void sub_5064(void);
 void sub_51CC(void);
 static s16 sub_5EA4(void);
 s16 sub_5EC8(void);
-void sub_70E0(s16, s32);
+void sub_70E0(s16, u32);
 void sub_88E4(void);
 void sub_51FC(void);
 static void RenderLinkGraphics(void);
@@ -80,12 +80,14 @@ extern u8 gUnknown_0808F760[];
 
 struct PokedexEntry
 {
-    u16 dexNum[DEX_NUM_DIGITS];
-    u16 heightWeight[POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH];
-    s16 name[POKEMON_NAME_LENGTH];
-    s16 category[POKEMON_CATEGORY_NAME_LENGTH];
-    u8 filler40[0x1FA];
-};
+    /*0x00*/ u16 dexNum[DEX_NUM_DIGITS];
+    /*0x06*/ u16 heightWeight[POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH];
+    /*0x18*/ s16 name[POKEMON_NAME_LENGTH];
+    /*0x2C*/ s16 category[POKEMON_CATEGORY_NAME_LENGTH];
+    // The dex description has 2 pages with 3 lines each. Each line
+    // is 42 characters long.
+    /*0x42*/ s16 description[2 * 3 * 42];
+}; /* size=0x23C */
 
 extern const struct PokedexEntry gPokedexEntries[];
 
@@ -441,7 +443,7 @@ void sub_45A4(void)
             {
                 m4aSongNumStart(SE_UNKNOWN_0x6D);
                 gUnknown_0202C794 = 1 - gUnknown_0202C794;
-                sub_70E0(gPokedexSelectedMon,gUnknown_0202C794);
+                sub_70E0(gPokedexSelectedMon, gUnknown_0202C794);
                 gUnknown_02019C28 = gUnknown_0202C794;
             }
             else
@@ -1919,4 +1921,34 @@ void sub_6F78(s16 species)
             DmaCopy16(3, gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20);
             break;
     }
+}
+
+void sub_70E0(s16 species, u32 page)
+{
+    int i, j;
+    int var0;
+    u16 var1;
+    u16 var2;
+
+    var0 = 0;
+    DmaFill16(3, 0, gUnknown_03000000, 0x1800);
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 42; j++)
+        {
+            var1 = gPokedexEntries[species].description[page * 126 + i * 42 + j] & ~0xF;
+            var2 = gPokedexEntries[species].description[page * 126 + i * 42 + j] & 0xF;
+            if (var2 == 0)
+                var2 = 4;
+
+            DmaCopy16(3, &gUnknown_08090780[var1], gUnknown_0202BE30, 0x20);
+            DmaCopy16(3, &gUnknown_08090780[0x400 + var1], gUnknown_0201B130, 0x20);
+            sub_71DC(var2, var0, i);
+            var0 += var2;
+        }
+
+        var0 = 0;
+    }
+
+    DmaCopy16(3, gUnknown_03000000, (void *)VRAM + 0x5C00, 0x1800);
 }
