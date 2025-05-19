@@ -154,7 +154,7 @@ struct PinballGame
     /*0x06E*/ s8 unk6E;
     /*0x06F*/ s8 unk6F;
     /*0x070*/ u8 filler70[0x1];
-    /*0x071*/ s8 isCatching; // flag for catching animation
+    /*0x071*/ s8 unk71; // flag for catching animation?
     /*0x072*/ u8 filler72[0x5A];
     /*0x0CC*/ u16 unkCC;
     /*0x0CE*/ u8 fillerCE[0x2];

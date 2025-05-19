@@ -22,14 +22,13 @@ struct OamDataSimple
     /*0x02*/ s16 xOffset;
     /*0x04*/ s16 yOffset;
 };
-// padded to size 0x8
+// size: 0x8
 
 struct SpriteGroup
 {
     /*0x00*/ u16 available;
     /*0x02*/ s16 baseX;
     /*0x04*/ s16 baseY;
-    /*0x06*/ // 2 bytes of padding
     /*0x08*/ struct OamDataSimple oam[MAX_SPRITES_IN_GROUP];
 };
 // size: 0xB8
