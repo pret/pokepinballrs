@@ -78,7 +78,7 @@ struct BgOffsets
 struct UnkPinballGame1334
 {
     /*0x00*/ s8 unk0;
-    /*0x01*/ s8 unk1;
+    /*0x01*/ s8 unk1; // oam data priority
     /*0x02*/ u8 filler2[0x4];
     /*0x06*/ u16 unk6;
     /*0x08*/ u16 unk8;
@@ -154,7 +154,7 @@ struct PinballGame
     /*0x06E*/ s8 unk6E;
     /*0x06F*/ s8 unk6F;
     /*0x070*/ u8 filler70[0x1];
-    /*0x071*/ s8 unk71;
+    /*0x071*/ s8 unk71; // flag for catching animation?
     /*0x072*/ u8 filler72[0x5A];
     /*0x0CC*/ u16 unkCC;
     /*0x0CE*/ u8 fillerCE[0x2];
@@ -254,7 +254,8 @@ struct PinballGame
     /*0x2A4*/ s8 unk2A4;
     /*0x2A5*/ u8 filler2A5[0x5];
     /*0x2AA*/ u16 unk2AA;
-    /*0x2AC*/ u8 filler2AC[0x28];
+    /*0x2AC*/ s16 unk2AC;
+    /*0x2AE*/ u8 filler2AE[0x26];
     /*0x2D4*/ u16 unk2D4;
     /*0x2D6*/ u16 unk2D6;
     /*0x2D8*/ u8 filler2D8[0x2];
@@ -286,8 +287,10 @@ struct PinballGame
     /*0x385*/ u8 unk385;
     /*0x386*/ s8 unk386;
     /*0x387*/ u8 unk387;
-    /*0x388*/ u8 unk388;
-    /*0x389*/ u8 filler389[0x9];
+    /*0x388*/ s8 unk388;
+    /*0x389*/ u8 filler389[0x3];
+    /*0x38C*/ s16 unk38C;
+    /*0x38E*/ u8 filler38E[0x4];
     /*0x392*/ u16 unk392;
     /*0x394*/ u16 unk394;
     /*0x396*/ u8 unk396;
@@ -481,11 +484,18 @@ struct Unk02031520
     /*0x2C*/ u8 *unk2C;
 };
 
+struct Unk02031590
+{
+    u8 filler[0x16];
+    u8 unk16;
+};
+
 extern struct PinballGame *gCurrentPinballGame;
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
 extern s32 gUnknown_081B36A4[64];
 extern s32 gUnknown_082EE0E0[];
 extern const u8 gUnknown_08138834[0x2000];
+extern struct Unk02031590 gUnknown_02031590;
 
 #endif // GUARD_GLOBAL_H
