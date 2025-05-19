@@ -234,8 +234,10 @@ struct PinballGame
     /*0x20A*/ u8 unk20A;
     /*0x20B*/ u8 filler20B[0x54];
     /*0x25F*/ s8 unk25F;
-    /*0x260*/ u8 filler260[0x21];
-    /*0x281*/ s8 unk281;
+    /*0x260*/ u8 filler260[0x10];
+    /*0x270*/ s8 evolvablePartySpecies[MAX_EVOLVABLE_PARTY_SIZE];
+    /*0x280*/ s8 evolvingPartyIndex;
+    /*0x281*/ s8 evolvablePartySize;
     /*0x282*/ s8 unk282;
     /*0x283*/ u8 bonusFieldsComplete; //how many bonus fields have been completed
     /*0x284*/ u8 filler284[0xC];

@@ -65,7 +65,7 @@ struct PokemonSpecies {
     u8 eggIndex; // Non-zero for all hatch pokemon other than Wurmple, zero for Wurmple and all non-hatch pokemon
     u8 unk13; // Something egg related; only hatch pokemon have this set to 1, but not all do, and there is no other pattern
     // unk13 list: Azurill, Skitty, Zubat, Plusle, Minun, Igglybuff, Shuppet, Chimecho, Pichu, Natu
-    u8 evolutionMethod; // Exp, Stone, etc.
+    s8 evolutionMethod; // Exp, Stone, etc.
     u8 evolutionTarget; // Uses the standard index numbers; e.g. Treecko is 0x00 (SPECIES_TREECKO)
 };
 
