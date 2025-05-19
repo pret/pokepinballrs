@@ -235,8 +235,7 @@ struct PinballGame
     /*0x20B*/ u8 filler20B[0x54];
     /*0x25F*/ s8 unk25F;
     /*0x260*/ u8 filler260[0x10];
-    /*0x270*/ s8 evolvablePartySpecies[MAX_EVOLVABLE_PARTY_SIZE-1];
-    /*0x27F*/ s8 lastPartySlot;
+    /*0x270*/ s8 evolvablePartySpecies[MAX_EVOLVABLE_PARTY_SIZE];
     /*0x280*/ s8 evolvingPartyIndex;
     /*0x281*/ s8 evolvablePartySize;
     /*0x282*/ s8 unk282;
