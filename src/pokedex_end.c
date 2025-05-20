@@ -7,42 +7,45 @@ extern s16 gUnknown_0202BF14;
 
 extern s16 gUnknown_086A61BC[];
 
-/* TODO unfinished
-void sub_8974(s32 species)
+extern u8 *gUnknown_086B15B4[];
+extern u8 *gUnknown_086BB6F4[];
+extern u8 *gMonHatchSpriteGroupGfx[];
+extern u8 *gMonHatchSpriteGroupPals[];
+
+void sub_8974(s16 species)
 {
-    s32 var0 = gUnknown_086A61BC[(s16) species];
-    s32 quotient;
+    int var0;
+    s16 quotient;
     s16 remainder;
     s16 var1;
 
-    if (var0 != -1)
+    var0 = gUnknown_086A61BC[species];
+    if (var0 == -1)
+        return;
+
+    if (var0 < 100)
     {
-        if (var0 < 100)
-        {
-            gUnknown_0202BF14 = 0;
-            quotient = var0 / 5;
-            remainder = var0 % 5;
-            var1 = (s16) var0;
+        gUnknown_0202BF14 = 0;
+        quotient = var0 / 5;
+        remainder = var0 % 5;
 
-            sub_10708(___ + remainder * 0xD80, (void *)(OBJ_VRAM0 + 0x3800), 0x6C, 1);
-        }
-        else
-        {
-            gUnknown_0202BF14 = 1;
-            quotient = (var0 - 100) / 6;
-            remainder = (var0 - 100) / 6;
-            var1 = (s16) var0;
-
-            sub_10708((void *)(gMonHatchSpriteGroupGfx[var1] + remainder * 0x10E0), (void *)(OBJ_VRAM0 + 0x4800), 0x87, 1);
-        }
+        sub_10708(gUnknown_086BB6F4[quotient] + remainder * 0xD80, (void *)(OBJ_VRAM0 + 0x3800), 108, 1);
+        DmaCopy16(3, gUnknown_086B15B4[quotient] + remainder * 0x20, (void *)OBJ_PLTT + 0x40, 0x20);
     }
-}*/
+    else
+    {
+        gUnknown_0202BF14 = 1;
+        quotient = (var0 - 100) / 6;
+        remainder = (var0 - 100) % 6;
 
-s16 sub_8A78(s32 species)
+        sub_10708(gMonHatchSpriteGroupGfx[quotient] + remainder * 0x10E0, (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
+        DmaCopy16(3, gMonHatchSpriteGroupPals[quotient] + remainder * 0x20, (void *)OBJ_PLTT + 0x60, 0x20);
+    }
+}
+
+s16 sub_8A78(s16 species)
 {
-    s16 var0 = (s16) species;
-
-    if ((gPokedexFlags[var0] == 4) && (gUnknown_086A61BC[var0] != -1))
+    if (gPokedexFlags[species] == 4 && gUnknown_086A61BC[species] != -1)
         gUnknown_0202A588 = 1;
     else
         gUnknown_0202A588 = 0;
@@ -52,9 +55,8 @@ s16 sub_8A78(s32 species)
 
 void ResetPokedex(void)
 {
-    s32 i;
+    int i;
+
     for (i = 0; i < NUM_SPECIES; i++)
-    {
         gMain_saveData.pokedexFlags[i] = SPECIES_UNSEEN;
-    }
 }

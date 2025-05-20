@@ -350,8 +350,8 @@ extern void sub_3FAC(void);
 //extern ? sub_4C80();
 //extern ? Pokedex_ReturnToTitle();
 //extern ? sub_71DC();
-extern void sub_8974();
-extern s16 sub_8A78(s32 species);
+extern void sub_8974(s16);
+extern s16 sub_8A78(s16);
 extern void ResetPokedex(void);
 
 // asm/rom_1068C.s
