@@ -220,10 +220,10 @@ extern struct Unk086ACD50 gUnknown_086ACD50[8];
 extern struct Unk086ACD50 gUnknown_086ACD74[3];
 
 extern u16 gUnknown_02019C40[];
-extern s16 gUnknown_0201A514;
+extern s16 gPokedexNumOwned;
 extern s16 gPokedexSelectedMon;
 extern s8 gUnknown_0202ADE4;
-extern s16 gUnknown_0202BEB8;
+extern s16 gPokedexNumSeen;
 extern s16 gPokedexListPosition;
 
 extern StateFunc gPokedexStateFuncs[];

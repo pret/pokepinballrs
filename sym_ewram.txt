@@ -312,8 +312,10 @@ gUnknown_0201A500: @ 0x0201A500
 	.space 0x10
 gUnknown_0201A510: @ 0x0201A510
 	.space 0x4
-gUnknown_0201A514: @ 0x0201A514
-	.space 0xC
+gPokedexNumOwned: @ 0x0201A514
+	.space 0x4
+gUnknown_0201A518: @ 0x0201A518
+	.space 0x8
 gUnknown_0201A520: @ 0x0201A520
 	.space 0xC00
 gUnknown_0201B120: @ 0x0201B120
@@ -422,7 +424,7 @@ gUnknown_0202BEB0: @ 0x0202BEB0
 	.space 0x4
 gUnknown_0202BEB4: @ 0x0202BEB4
 	.space 0x4
-gUnknown_0202BEB8: @ 0x0202BEB8
+gPokedexNumSeen: @ 0x0202BEB8
 	.space 0x4
 gUnknown_0202BEBC: @ 0x0202BEBC
 	.space 0x4

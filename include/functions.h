@@ -350,7 +350,6 @@ extern void sub_3FAC(void);
 //extern ? sub_4C80();
 //extern ? Pokedex_ReturnToTitle();
 //extern ? sub_71DC();
-//extern ? sub_88E4();
 extern void sub_8974();
 extern s16 sub_8A78(s32 species);
 extern void ResetPokedex(void);
