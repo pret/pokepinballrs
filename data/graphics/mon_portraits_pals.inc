@@ -29,7 +29,7 @@ gMonPortraitsGroup1_Pals:: @ 0x39AD8C
 	.incbin "graphics/mon_portraits/taillow_portrait.gbapal"
 	.incbin "graphics/mon_portraits/swellow_portrait.gbapal"
 	.incbin "graphics/mon_portraits/wingull_portrait.gbapal"
-	.incbin "graphics/mon_portraits/pelilpper_portrait.gbapal"
+	.incbin "graphics/mon_portraits/pelipper_portrait.gbapal"
 	.incbin "graphics/mon_portraits/ralts_portrait.gbapal"
 	.incbin "graphics/mon_portraits/kirlia_portrait.gbapal"
 	.incbin "graphics/mon_portraits/silhouette.gbapal"

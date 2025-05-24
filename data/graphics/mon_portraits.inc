@@ -28,7 +28,7 @@ gMonPortraitsGroup1_Gfx:: @ 0x084C866C
 	.incbin "graphics/mon_portraits/taillow_portrait.4bpp"
 	.incbin "graphics/mon_portraits/swellow_portrait.4bpp"
 	.incbin "graphics/mon_portraits/wingull_portrait.4bpp"
-	.incbin "graphics/mon_portraits/pelilpper_portrait.4bpp"
+	.incbin "graphics/mon_portraits/pelipper_portrait.4bpp"
 	.incbin "graphics/mon_portraits/ralts_portrait.4bpp"
 	.incbin "graphics/mon_portraits/kirlia_portrait.4bpp"
 
