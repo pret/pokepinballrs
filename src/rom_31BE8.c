@@ -11,9 +11,6 @@
  */
 void sub_31BE8(s16 arg0)
 {
-    // intermediate variable for matching
-    u32 temp;
-
     if (gCurrentPinballGame->unk70 == 1)
     {
         DmaCopy16(3, gUnknown_02031520.unk2C[arg0], (void*)OBJ_PLTT, 0x20);
@@ -33,11 +30,10 @@ void sub_31BE8(s16 arg0)
     // related to Y position of camera on the field
     if (gCurrentPinballGame->unk68 < 170)
     {
-        DmaCopy16(3, (gMain.selectedField * 3 * 64) + (u32) &gUnknown_08137B3C + (arg0 * 64), (void *)OBJ_PLTT + 0x160, 0x20);
+        DmaCopy16(3, gUnknown_08137B3C[gMain.selectedField][arg0 * 2], (void *)OBJ_PLTT + 0x160, 0x20);
     }
     else
     {
-        temp = ((u32) &gUnknown_08137B5C + (gMain.selectedField * 3 * 64));
-        DmaCopy16(3, temp + (arg0 * 64), (void *)OBJ_PLTT + 0x160, 0x20);
+        DmaCopy16(3, gUnknown_08137B3C[gMain.selectedField][arg0 * 2 + 1], (void *)OBJ_PLTT + 0x160, 0x20);
     }
 }

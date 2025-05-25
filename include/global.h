@@ -495,8 +495,7 @@ struct Unk02031590
 extern struct PinballGame *gCurrentPinballGame;
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
-extern u8 gUnknown_08137B3C[0x20];
-extern u8 gUnknown_08137B5C[0x160];
+extern u16 gUnknown_08137B3C[][6][16];
 extern s32 gUnknown_081B36A4[64];
 extern s32 gUnknown_082EE0E0[];
 extern const u8 gUnknown_08138834[0x2000];
