@@ -549,7 +549,7 @@ extern void sub_31144();
 extern void sub_313A0();
 extern void sub_31498();
 extern void sub_31B30();
-extern void sub_31BE8(s8);
+extern void sub_31BE8(s16);
 //extern ? sub_31CF8();
 //extern ? BuildSpeciesWeightsForCatchEmMode();
 
