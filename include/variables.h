@@ -40,8 +40,16 @@ extern u16 gUnknown_03005C00[0x800];
 //extern ? SoundMainRAM_Buffer;
 extern u16 sGbPlayerCurKeys;
 extern u16 sGbPlayerPrevKeys;
-//extern ? gUnknown_02002008;
-extern u8 gUnknown_02002808[];
+struct RfuSIO32Id {
+    u8 MS_mode; //either 0 or 1
+    u16 count;
+    u16 send_id;
+    u16 recv_id;
+    u8 filler[0xA-0x8];
+    u16 lastId;
+    // size 0xC
+};
+extern struct RfuSIO32Id gUnknown_02002808;
 extern u32 gUnknown_02002818;
 extern u32 gUnknown_0200281C;
 //extern ? gTitlescreen;
@@ -384,5 +392,7 @@ extern u8 gUnknown_08118680[];
 
 extern u16 gCommonAndEggWeights[];
 extern u16 gUnknown_0200B18E[10];
+extern u16 gUnknown_0805C748[4]; 
+extern u32 gUnknown_02002814;
 
 #endif  // GUARD_VARIABLES_H

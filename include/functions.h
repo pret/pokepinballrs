@@ -15,6 +15,9 @@ void sub_11E4(int arg0);
 void sub_11F0(int arg0);
 void sub_11FC(void);
 void sub_1340(void);
+extern u32 sub_16A0(u8 param_1);
+extern u32 sub_1748(u8 param_1);
+void Sio32IDIntr(void);
 
 // src/main.c
 
