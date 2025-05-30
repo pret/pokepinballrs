@@ -283,6 +283,7 @@ extern u16 gUnknown_0805C780[];
 extern u16 gUnknown_0805C7C0[];
 extern u16 gUnknown_0202A590[];
 extern u16 gUnknown_08086B40[];
+extern u16 gUnknown_083722E8[0x4000];
 extern s16 gUnknown_086A61BC[];
 extern s16 gUnknown_086A77A8[][10][2];
 extern u8 gUnknown_0201B124;
