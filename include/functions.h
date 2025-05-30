@@ -403,7 +403,7 @@ extern void sub_1493C(void);
 //extern ? sub_18324();
 //extern ? sub_1857C();
 extern void sub_18784(u8);
-//extern ? sub_187F4();
+extern void sub_187F4(s16*, u32);
 //extern ? sub_18A4C();
 //extern ? sub_18AE0();
 //extern ? sub_18B50();
