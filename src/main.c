@@ -195,7 +195,7 @@ s16 Sin(u16 arg0)
     if (index > 0xFFF)
         index = 0x2000 - index;
 
-    return gUnknown_08055C44[index] * var0;
+    return gSineTable[index] * var0;
 }
 
 s16 Cos(u16 arg0)

@@ -98,11 +98,11 @@ extern s16 gUnknown_0202BEEC;
 //extern ? gMPlayInfo_BGM;
 //extern ? gMPlayMemAccArea;
 extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
-extern const s16 gUnknown_08055C44[];
+extern const s16 gSineTable[];
 extern const struct OamData gEmptyOamData[128];
-extern const u8 gUnknown_08058048[];
-extern const u8 gUnknown_08058248[];
-extern const u8 gUnknown_0805C248[];
+extern const u8 gGbPlayerPalettes[];
+extern const u8 gGbPlayerGfx[];
+extern const u8 gGbPlayerTilemap[];
 extern StateFunc gTitlescreenStateFuncs[];
 //extern ? gIntroCopyright_Gfx;
 //extern ? gIntroCopyright_Pal;
@@ -393,7 +393,7 @@ extern u8 gUnknown_08118680[];
 
 extern u16 gCommonAndEggWeights[];
 extern u16 gUnknown_0200B18E[10];
-extern u16 gUnknown_0805C748[4]; 
+extern u16 Sio32ConnectionData[4]; 
 extern u32 gUnknown_02002814;
 
 #endif  // GUARD_VARIABLES_H

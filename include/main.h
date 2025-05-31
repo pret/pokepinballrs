@@ -105,7 +105,7 @@ extern int gUnknown_02019C04;
 extern int gUnknown_02019C08;
 extern int gGameBoyPlayerEnabled;
 extern u8 gUnknown_02019C10;
-extern u8 gUnknown_02002008[];
+extern u8 gGbPlayerTilemapBuffer[];
 #define INTR_COUNT 14
 extern IntrFunc gIntrTable[14];
 extern void (*gMainCallback)(void);

@@ -9,7 +9,7 @@ gUnknown_08055A68:: @ 0x08055A68
 
 .include "data/mon_locations.inc"
 
-gUnknown_08055C44:: @ 0x08055C44
+gSineTable:: @ 0x08055C44
 	.2byte 0x0000, 0x0007, 0x000F, 0x0017, 0x001E, 0x0026, 0x002E, 0x0035
 	.2byte 0x003D, 0x0045, 0x004C, 0x0054, 0x005C, 0x0063, 0x006B, 0x0073
 	.2byte 0x007A, 0x0082, 0x008A, 0x0091, 0x0099, 0x00A1, 0x00A8, 0x00B0
@@ -655,17 +655,20 @@ gEmptyOamData:: @ 0x08057C46
 	.4byte 0x00F000F4, 0x00000000
 
 	.align 2, 0
-gUnknown_08058048:: @ 0x08058058
-	.incbin "baserom.gba", 0x58048, 0x200
+gGbPlayerPalettes:: @ 0x08058058
+	@ This one is weird because some of the colors set the unused bit, so we can't do a matching conversion
+	@ from a JASC palette format. Naming it with a ".bin" suffix to prevent `make clean` from deleting it.
+	.incbin "graphics/gb_player/gb_player.gbapal.bin"
 
-gUnknown_08058248:: @ 0x08058248
-	.incbin "baserom.gba", 0x58248, 0x4000
+gGbPlayerGfx:: @ 0x08058248
+	.incbin "graphics/gb_player/gb_player.8bpp"
 
-gUnknown_0805C248:: @ 0x0805C248
-	.incbin "baserom.gba", 0x5C248, 0x500
+gGbPlayerTilemap:: @ 0x0805C248
+	.incbin "graphics/gb_player/gb_player_tilemap.bin"
 
-gUnknown_0805C748:: @ 0x0805C748
-	.incbin "baserom.gba", 0x5C748, 0x8
+Sio32ConnectionData:: @ 0x0805C748
+	@ NINTENDO
+	.2byte 0x494E, 0x544E, 0x4E45, 0x4F44
 
 gBonusFieldSelectStateFuncs:: @ 0x0805C750
 	.4byte LoadBonusFieldSelectGraphics

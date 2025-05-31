@@ -4,7 +4,7 @@ sGbPlayerCurKeys: @ 0x2002000
 	.space 0x2
 sGbPlayerPrevKeys: @ 0x2002002
 	.space 0x6
-gUnknown_02002008: @ 0x2002008
+gGbPlayerTilemapBuffer: @ 0x2002008
 	.space 0x800
 gUnknown_02002808: @ 0x2002808
 	.space 0xC
