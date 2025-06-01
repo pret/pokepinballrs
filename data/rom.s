@@ -1,11 +1,23 @@
     .section .rodata
+#include "constants/areas.h"
 #include "constants/fields.h"
 #include "constants/species.h"
 
-@ field select palettes 0xA8840
-
 gUnknown_08055A68:: @ 0x08055A68
-	.incbin "baserom.gba", 0x55A68, 0x1C @ 0x55A84 - 0x55A68
+	.2byte AREA_FOREST_RUBY
+	.2byte AREA_VOLCANO
+	.2byte AREA_PLAINS_RUBY
+	.2byte AREA_OCEAN_RUBY
+	.2byte AREA_SAFARI_ZONE
+	.2byte AREA_CAVE_RUBY
+	.2byte AREA_RUIN_RUBY
+	.2byte AREA_FOREST_SAPPHIRE
+	.2byte AREA_LAKE
+	.2byte AREA_PLAINS_SAPPHIRE
+	.2byte AREA_WILDERNESS
+	.2byte AREA_OCEAN_SAPPHIRE
+	.2byte AREA_CAVE_SAPPHIRE
+	.2byte AREA_RUIN_SAPPHIRE
 
 .include "data/mon_locations.inc"
 
@@ -686,17 +698,29 @@ gEReaderStateFuncs:: @ 0x0805C75C
 	.4byte sub_35C8
 	.4byte sub_374C
 
-gUnknown_0805C780:: @ 0x0805C780
-	.incbin "baserom.gba", 0x5C780, 0x40
+gDexInfoWindowMiddleRowTiles:: @ 0x0805C780
+	.2byte 0x00, 0x9A, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
+	.2byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
+	.2byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
+	.2byte 0x03, 0x03, 0x03, 0x03, 0x9B, 0x00, 0x00, 0x00
 
-gUnknown_0805C7C0:: @ 0x0805C7C0
-	.incbin "baserom.gba", 0x5C7C0, 0x40
+gDexInfoWindowBottomRowTiles:: @ 0x0805C7C0
+	.2byte 0x00, 0x5A, 0x5B, 0x03, 0x03, 0x03, 0x03, 0x03
+	.2byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
+	.2byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
+	.2byte 0x03, 0x03, 0x03, 0x5C, 0x9C, 0x00, 0x00, 0x00
 
-gUnknown_0805C800:: @ 0x0805C800
-	.incbin "baserom.gba", 0x5C800, 0x40
+gDexInfoWindowEmptyRowTiles:: @ 0x0805C8
+	.2byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.2byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.2byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.2byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
-gUnknown_0805C840:: @ 0x0805C840
-	.incbin "baserom.gba", 0x5C840, 0x40
+gDexInfoWindowEmptyTextRowTiles:: @ 0x0805C840
+	.2byte 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
+	.2byte 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
+	.2byte 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
+	.2byte 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
 
 gPokedexStateFuncs:: @ 0x0805C880
 	.4byte LoadPokedexGraphics          @ POKEDEX_STATE_LOAD_GRAPHICS
@@ -714,16 +738,7 @@ gPokedexStateFuncs:: @ 0x0805C880
 	.4byte Pokedex_ReturnToTitle        @ POKEDEX_STATE_RETURN_TO_TITLE
 
 gPokedexEntries:: @ 0x0805C8B4
-	.incbin "baserom.gba", 0x5C8B4, 0x18
-
-gUnknown_0805C8CC:: @ 0x0805C8CC
-	.incbin "baserom.gba", 0x5C8CC, 0x14
-
-gUnknown_0805C8E0:: @ 0x0805C8E0
-	.incbin "baserom.gba", 0x5C8E0, 0x16
-
-gUnknown_0805C8F6:: @ 0x0805C8F6
-	.incbin "baserom.gba", 0x5C8F6, 0x1C9CA
+	.incbin "baserom.gba", 0x5C8B4, 0x1CA0C
 
 gFieldSelectStateFuncs:: @ 0x080792C0
 	.4byte LoadFieldSelectGraphics
@@ -737,8 +752,73 @@ gIntroStateFuncs:: @ 0x080792CC
 	.4byte sub_938C
 	.4byte sub_93D0
 
-gUnknown_080792E0:: @ 0x080792E0
-	.incbin "baserom.gba", 0x792E0, 0x108
+gIntroSceneFuncs:: @ 0x080792E0
+	.4byte sub_9498
+	.4byte sub_978C
+	.4byte sub_9830
+	.4byte sub_9878
+	.4byte sub_98B4
+	.4byte sub_9920
+	.4byte sub_999C
+	.4byte sub_9AB8
+	.4byte nullsub_4
+	.4byte sub_9C10
+	.4byte nullsub_5
+	.4byte nullsub_17
+	.4byte sub_9C9C
+	.4byte sub_A154
+	.4byte sub_A16C
+	.4byte nullsub_6
+	.4byte sub_A2F0
+	.4byte nullsub_7
+	.4byte sub_A39C
+	.4byte sub_A43C
+	.4byte sub_A454
+	.4byte sub_A674
+	.4byte sub_A710
+	.4byte nullsub_8
+	.4byte sub_A860
+	.4byte sub_A950
+	.4byte sub_A968
+	.4byte nullsub_9
+	.4byte sub_AAF4
+	.4byte nullsub_10
+	.4byte sub_AB90
+	.4byte sub_AC20
+	.4byte sub_AC38
+	.4byte sub_AE74
+	.4byte sub_AF80
+	.4byte nullsub_11
+	.4byte sub_B090
+	.4byte sub_B2E0
+	.4byte sub_B2F8
+	.4byte sub_B560
+	.4byte sub_B6C4
+	.4byte sub_B7A0
+	.4byte sub_BA2C
+	.4byte sub_BA3C
+	.4byte sub_BC54
+	.4byte sub_BCE8
+	.4byte sub_BDC0
+	.4byte sub_BED0
+	.4byte sub_C018
+	.4byte sub_C0BC
+	.4byte sub_C210
+	.4byte sub_C228
+	.4byte sub_C38C
+	.4byte sub_C3D0
+	.4byte sub_C450
+	.4byte nullsub_12
+	.4byte nullsub_13
+	.4byte sub_C498
+	.4byte sub_C814
+	.4byte sub_C948
+	.4byte sub_CAA0
+	.4byte sub_CB6C
+	.4byte sub_CBA4
+	.4byte nullsub_14
+	.4byte sub_CC94
+	.4byte sub_CCF8
 
 gHighScoresStateFuncs:: @ 0x080793E8
 	.4byte LoadHighScoreGraphics

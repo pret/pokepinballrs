@@ -277,10 +277,10 @@ extern s16 gPokedexListEntryCount;
 extern u32 gUnknown_0201B170;
 extern u32 gUnknown_0202BED8;
 
-extern u16 gUnknown_0805C800[0x20];
-extern u16 gUnknown_0805C840[];
-extern u16 gUnknown_0805C780[];
-extern u16 gUnknown_0805C7C0[];
+extern u16 gDexInfoWindowEmptyTextRowTiles[];
+extern u16 gDexInfoWindowMiddleRowTiles[];
+extern u16 gDexInfoWindowBottomRowTiles[];
+extern u16 gDexInfoWindowEmptyRowTiles[];
 extern u16 gUnknown_0202A590[];
 extern u16 gUnknown_08086B40[];
 extern u16 gUnknown_083722E8[0x4000];

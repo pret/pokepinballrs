@@ -47,7 +47,7 @@ extern s32 gUnknown_0201C188;
 extern s16 gUnknown_0202A578;
 extern s32 gUnknown_0202BEF0;
 extern s8 gUnknown_0202C5A8;
-extern s8 gUnknown_0202C790;
+extern s8 gIntroSceneIndex;
 extern u8 gUnknown_0202BE70[];
 
 extern u8 gUnknown_080CBEE0[];
@@ -69,8 +69,8 @@ extern u8 gUnknown_080DDD20[];
 extern u8 gUnknown_080DF520[];
 extern const struct SpriteSet *const gUnknown_086A7D20[];
 
-typedef void (*OtherFunc)(void);
-extern OtherFunc gUnknown_080792E0[10];
+typedef void (*IntroFunc)(void);
+extern const IntroFunc gIntroSceneFuncs[];
 
 struct UnkStruct_0201A450
 {
@@ -118,7 +118,7 @@ void sub_929C(void)
 
   gMain.unk16 = REG_DISPCNT;
   gUnknown_0202BF10 = 0;
-  gUnknown_0202C790 = 0;
+  gIntroSceneIndex = 0;
 
   SetMainCallback(sub_93F8 + 1);
   sub_0CBC();
@@ -145,7 +145,7 @@ void sub_9370(void)
 
 void sub_938C(void)
 {
-    gUnknown_080792E0[gUnknown_0202C790]();
+    gIntroSceneFuncs[gIntroSceneIndex]();
     gUnknown_0202BF10++;
     if (JOY_NEW(A_BUTTON | START_BUTTON))
         gMain.subState = 4;
@@ -218,7 +218,7 @@ void sub_9498(void)
     sub_FEB8((void*)BG_PLTT, gIntroScene1Sprites_Pals, NULL);
     DmaCopy16(3, gIntroScene1Sprites_Pals, 0x05000200, BG_PLTT_SIZE);
     DmaCopy16(3, 0, 0x05000200, 0x20);
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_96A8(void)
@@ -274,7 +274,7 @@ void sub_978C(void)
         {
             gUnknown_0201A450[0].unkA = 0;
             gUnknown_0202A578 = 0;
-            gUnknown_0202C790++;
+            gIntroSceneIndex++;
         }
     }
     else
@@ -303,7 +303,7 @@ void sub_9830(void)
     {
         gUnknown_0201A450[0].unkA = 0;
         gUnknown_0201A450[0].unk8 = 0x25;
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
     }
 
     sub_9D70();
@@ -318,7 +318,7 @@ void sub_9878(void)
         gUnknown_0201A450[0].unk2 = 0x58;
         gUnknown_0201A450[0].unkC = 1;
         m4aSongNumStart(SE_UNKNOWN_0xD8);
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
     }
 }
 
@@ -331,7 +331,7 @@ void sub_98B4(void)
             gUnknown_0201A450[0].unkC = 0;
             sub_10170(&gIntroScene1Sprites_Pals[0x1C0], (void*)BG_PLTT + 0xE0, 0x20, 0);
             m4aSongNumStart(MUS_OPENING);
-            gUnknown_0202C790++;
+            gIntroSceneIndex++;
         }
     }
     else
@@ -362,7 +362,7 @@ void sub_9920(void)
         else
         {
             sub_10708(&gUnknown_0201C1C0, (void *)0x60036e0, 8, 8);
-            gUnknown_0202C790++;
+            gIntroSceneIndex++;
         }
 
         gUnknown_0201A450[1].unk8 = 1 - gUnknown_0201A450[1].unk8;
@@ -403,7 +403,7 @@ void sub_999C(void)
             gUnknown_0201A450[2].unkC = 1;
             gUnknown_0201A450[1].unkC = 0;
             gUnknown_0202ADA0[10] = 0;
-            gUnknown_0202C790++;
+            gIntroSceneIndex++;
         }
     }
 
@@ -444,7 +444,7 @@ void sub_9AB8(void)
     if (gUnknown_0202ADA0[0xA] > 9)
     {
         gUnknown_0202ADA0[0xA] = 0;
-        gUnknown_0202C790 += 2;
+        gIntroSceneIndex += 2;
     }
 
     sub_9E90();
@@ -481,7 +481,7 @@ void sub_9C10(void)
     if (gUnknown_0201A450[3].unkA > 0x14)
     {
         gUnknown_0201A450[3].unkA = 0;
-        gUnknown_0202C790 += 3;
+        gIntroSceneIndex += 3;
     }
 }
 
@@ -497,7 +497,7 @@ void sub_9C9C(void)
 {
     sub_10480();
     sub_10544();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_9CB8(void)
@@ -650,7 +650,7 @@ void sub_9E90(void)
 void sub_A154(void)
 {
     sub_0518();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_A16C(void)
@@ -678,7 +678,7 @@ void sub_A16C(void)
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
     sub_0CBC();
     sub_10424();
-    gUnknown_0202C790 += 2;
+    gIntroSceneIndex += 2;
 }
 
 void sub_A2A8(void)
@@ -729,7 +729,7 @@ void sub_A2F0(void)
     if (gUnknown_0202ADA0[0x10] > 0x27)
     {
         gUnknown_0202ADA0[0x10] = 0;
-        gUnknown_0202C790 += 2;
+        gIntroSceneIndex += 2;
     }
 }
 
@@ -763,13 +763,13 @@ void sub_A39C(void)
 
     sub_10480();
     sub_10544();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_A43C(void)
 {
     sub_0518();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_A454(void)
@@ -810,7 +810,7 @@ void sub_A454(void)
 
     sub_0CBC();
     sub_10424();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_A628(void)
@@ -849,7 +849,7 @@ void sub_A674(void)
     if (gUnknown_0202ADA0[0x10] > 9)
     {
         gUnknown_0202ADA0[0x10] = 0;
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
     }
 
     sub_A87C();
@@ -906,7 +906,7 @@ void sub_A710(void)
     if (gUnknown_0202ADA0[0x10] > 0x1D)
     {
         gUnknown_0202ADA0[0x10] = 0;
-        gUnknown_0202C790 += 2;
+        gIntroSceneIndex += 2;
     }
 }
 
@@ -918,7 +918,7 @@ void sub_A860(void)
 {
     sub_10480();
     sub_10544();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_A87C(void)
@@ -955,7 +955,7 @@ void sub_A87C(void)
 void sub_A950(void)
 {
     sub_0518();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_A968(void)
@@ -986,7 +986,7 @@ void sub_A968(void)
 
     sub_0CBC();
     sub_10424();
-    gUnknown_0202C790 += 2;
+    gIntroSceneIndex += 2;
 }
 
 void sub_AAA8(void)
@@ -1035,7 +1035,7 @@ void sub_AAF4(void)
     if (0x27 < gUnknown_0202ADA0[0x10])
     {
         gUnknown_0202ADA0[0x10] = 0;
-        gUnknown_0202C790 += 2;
+        gIntroSceneIndex += 2;
     }
 }
 
@@ -1066,14 +1066,14 @@ void sub_AB90(void)
 
     sub_10480();
     sub_10544();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_AC20(void)
 {
     // TODO Duplicate of sub_A950?
     sub_0518();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_AC38(void)
@@ -1113,7 +1113,7 @@ void sub_AC38(void)
 
     sub_0CBC();
     sub_10424();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_ADFC(void)
@@ -1180,7 +1180,7 @@ void sub_AE74(void)
     if (++gUnknown_0202ADA0[0x10] > 9)
     {
         gUnknown_0202ADA0[0x10] = 0;
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
     }
 }
 
@@ -1217,7 +1217,7 @@ void sub_AF80(void)
     if (++gUnknown_0202ADA0[0x16] > 29)
     {
         gUnknown_0202ADA0[0x16] = 0;
-        gUnknown_0202C790 += 2;
+        gIntroSceneIndex += 2;
     }
 }
 
@@ -1232,7 +1232,7 @@ void sub_B090(void)
     DmaFill32(3, 0, OAM, 0x400);
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
     sub_10544();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_B0E8(void)
@@ -1306,7 +1306,7 @@ void sub_B0E8(void)
 void sub_B2E0(void)
 {
     sub_0518();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_B2F8(void)
@@ -1343,7 +1343,7 @@ void sub_B2F8(void)
 
     sub_0CBC();
     sub_10424();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_B4A0(void)
@@ -1429,7 +1429,7 @@ void sub_B560(void)
     {
         gUnknown_0202A578 = 0;
         if (++gUnknown_0202C548 > 8)
-            gUnknown_0202C790++;
+            gIntroSceneIndex++;
     }
 }
 
@@ -1462,7 +1462,7 @@ void sub_B6C4(void)
     if (++gUnknown_0202A578 > 16)
     {
         gUnknown_0202A578 = 0;
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
     }
 }
 
@@ -1473,7 +1473,7 @@ void sub_B7A0(void)
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
     sub_10480();
     sub_10544();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 #ifdef NONMATCHING
@@ -1828,7 +1828,7 @@ _0800BA28: .4byte gUnknown_0202BF10\n\
 
 void sub_BA2C(void)
 {
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_BA3C(void)
@@ -1866,7 +1866,7 @@ void sub_BA3C(void)
 
     sub_0CBC();
     sub_10424();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_BBE0(void)
@@ -1913,7 +1913,7 @@ void sub_BC54(void)
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     if (gUnknown_0202BF10 > 32)
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
 }
 
 void sub_BCE8(void)
@@ -1946,7 +1946,7 @@ void sub_BCE8(void)
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     if (gUnknown_0202BF10 > 80)
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
 }
 
 void sub_BDC0(void)
@@ -1988,7 +1988,7 @@ void sub_BDC0(void)
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
     if (gUnknown_0202BF10 > 100)
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
 }
 
 void sub_BED0(void)
@@ -2039,7 +2039,7 @@ void sub_BED0(void)
 
     sub_C0D8();
     if (gUnknown_0202BF10 > 192)
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
 }
 
 void sub_C018(void)
@@ -2066,14 +2066,14 @@ void sub_C018(void)
 
     sub_C0D8();
     if (gUnknown_0202BF10 > 222)
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
 }
 
 void sub_C0BC(void)
 {
     sub_10480();
     sub_10544();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_C0D8(void)
@@ -2107,7 +2107,7 @@ void sub_C0D8(void)
 void sub_C210(void)
 {
     sub_0518();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_C228(void)
@@ -2127,7 +2127,7 @@ void sub_C228(void)
     sub_C4F0();
     sub_0CBC();
     sub_10424();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_C2F0(void)
@@ -2189,7 +2189,7 @@ void sub_C38C(void)
         gUnknown_0201A450[4].unkC = 1;
         gUnknown_0201A450[5].unkC = 1;
         gUnknown_0201A450[6].unkC = 1; // TODO FIXME overlapping symbols (gAutoDisplayTitlescreenMenu)
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
     }
 }
 
@@ -2214,7 +2214,7 @@ void sub_C3D0(void)
 
     sub_C4F0();
     if (gUnknown_0201A450[0].unk2 < -32)
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
 }
 
 void sub_C450(void)
@@ -2228,7 +2228,7 @@ void sub_C450(void)
     }
 
     if (gUnknown_0202BF10 > 20)
-        gUnknown_0202C790 += 3;
+        gIntroSceneIndex += 3;
 }
 
 void nullsub_12(void)
@@ -2246,7 +2246,7 @@ void sub_C498(void)
     DmaFill32(3, 0, OAM, 0x400);
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
     sub_10544();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 // See https://decomp.me/scratch/w2I8G
@@ -2692,7 +2692,7 @@ void sub_C814(void)
         gOamBuffer[i].affineParam = 0;
     }
 
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_C948(void)
@@ -2713,7 +2713,7 @@ void sub_C948(void)
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x1];
     sub_0CBC();
     sub_10424();
-    gUnknown_0202C790++;
+    gIntroSceneIndex++;
 }
 
 void sub_CA28(void)
@@ -2767,7 +2767,7 @@ void sub_CAA0(void)
     {
         gUnknown_0201A450[0].unkC = 0;
         gUnknown_0201A450[1].unkC = 1;
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
     }
 }
 
@@ -2776,7 +2776,7 @@ void sub_CB6C(void)
     gUnknown_0202ADA0[0] -= 0x24;
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0];
     if (gUnknown_0202BF10 > 120)
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
 }
 
 void sub_CBA4(void)
@@ -2811,7 +2811,7 @@ void sub_CBA4(void)
     {
         gUnknown_0202BF10 = 0;
         gUnknown_0202A578 = 1;
-        gUnknown_0202C790 += 2;
+        gIntroSceneIndex += 2;
     }
 }
 
@@ -2828,7 +2828,7 @@ void sub_CC94(void)
     }
 
     if (gUnknown_0202BF10 > 45)
-        gUnknown_0202C790++;
+        gIntroSceneIndex++;
 }
 
 void sub_CCF8(void)
