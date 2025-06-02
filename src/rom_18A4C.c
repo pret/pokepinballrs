@@ -1,7 +1,7 @@
 #include "global.h"
 #include "variables.h"
 
-void sub_18A4C(u16* vector2, u16* upperStore, u8* nibbleStore)
+void sub_18A4C(struct Vector16* vector, u16* upperStore, u8* nibbleStore)
 {
     s16 deltaX;
     s16 deltaY;
@@ -14,8 +14,8 @@ void sub_18A4C(u16* vector2, u16* upperStore, u8* nibbleStore)
     if (*nibbleStore & 0xF)
         return;
 
-    deltaX = vector2[0] - gCurrentPinballGame->unk3F0;
-    deltaY = vector2[1] - gCurrentPinballGame->unk3F2;
+    deltaX = vector->x - gCurrentPinballGame->unk3F0;
+    deltaY = vector->y - gCurrentPinballGame->unk3F2;
 
     if ((u16)deltaX >= 0x80 || (u16)deltaY >= 0x80)
         return;
@@ -31,7 +31,7 @@ void sub_18A4C(u16* vector2, u16* upperStore, u8* nibbleStore)
     *nibbleStore = lowerNibble;
 }
 
-void sub_18AE0(u8 unknown_enum)
+void sub_18AE0(u8 unknown_enum, u16* unused1, u16* unused2)
 {
     // input presumed to be an enum due to this switch case below
     // something told the compiler to make 15 cases not 0 based

@@ -125,7 +125,7 @@ struct PinballGame
     /*0x01F*/ u8 unk1F;
     /*0x020*/ u8 filler20[0x2];
     /*0x022*/ s8 unk22;
-    /*0x023*/ u8 filler23[0x1];
+    /*0x023*/ u8 unk23; // Holds the value of some enum state
     /*0x024*/ s8 unk24;
     /*0x025*/ s8 unk25;
     /*0x026*/ u16 unk26;
@@ -474,7 +474,7 @@ struct Unk02031520_unk10
     /*0x2*/ u8 unk2;
 };
 
-struct Unk02031520
+struct Unk02031520 //0x70 size presumably
 {
     /*0x00*/ u8 filler0[0x8];
     /*0x08*/ s16 unk8;
@@ -488,7 +488,9 @@ struct Unk02031520
     /*0x26*/ s16 unk26;
     /*0x28*/ s16 unk28;
     /*0x2C*/ u32 *unk2C[3];
-    /*0x38*/ u32 unk38;
+    /*0x38*/ u32 *unk38[4];
+    /*0x48*/ s16 *unk48[4];
+    /*0x58*/ u8 *unk58[4];
 };
 
 struct Unk02031590
