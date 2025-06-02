@@ -51364,33 +51364,7 @@ _0802E670: .4byte 0xFFFFFE00
 _0802E674: .4byte 0x000001FF
 _0802E678: .4byte 0x000001E9
 
-	thumb_func_start sub_2E67C
-sub_2E67C: @ 0x0802E67C
-	ldr r0, _0802E6A0 @ =gCurrentPinballGame
-	ldr r1, [r0]
-	ldr r0, _0802E6A4 @ =0x00000306
-	adds r3, r1, r0
-	movs r0, #0
-	ldrsb r0, [r3, r0]
-	cmp r0, #1
-	bne _0802E6AA
-	movs r0, #0xc3
-	lsls r0, r0, #2
-	adds r2, r1, r0
-	ldrh r0, [r2]
-	adds r1, r0, #0
-	cmp r1, #0
-	beq _0802E6A8
-	subs r0, #1
-	strh r0, [r2]
-	b _0802E6AA
-	.align 2, 0
-_0802E6A0: .4byte gCurrentPinballGame
-_0802E6A4: .4byte 0x00000306
-_0802E6A8:
-	strb r1, [r3]
-_0802E6AA:
-	bx lr
+    .section .text2E6AC
 
 	thumb_func_start sub_2E6AC
 sub_2E6AC: @ 0x0802E6AC
