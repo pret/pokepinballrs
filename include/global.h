@@ -81,7 +81,7 @@ struct UnkPinballGame1334
     /*0x01*/ s8 unk1; // oam data priority
     /*0x02*/ u8 filler2[0x2];
     /*0x04*/ u16 unk4;
-    /*0x06*/ u16 unk6;
+    /*0x06*/ s16 unk6;
     /*0x08*/ u16 unk8;
     /*0x0A*/ u16 unkA;
     /*0x0C*/ u16 unkC;
@@ -488,8 +488,8 @@ struct Unk02031520 //0x70 size presumably
     /*0x26*/ s16 unk26;
     /*0x28*/ s16 unk28;
     /*0x2C*/ u32 *unk2C[3];
-    /*0x38*/ u32 *unk38[4];
-    /*0x48*/ s16 *unk48[4];
+    /*0x38*/ s16 *unk38[4];
+    /*0x48*/ u16 *unk48[4];
     /*0x58*/ u8 *unk58[4];
 };
 
