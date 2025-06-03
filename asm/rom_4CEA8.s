@@ -8169,25 +8169,7 @@ _08050F44:
 	.align 2, 0
 _08050FA8: .4byte 0x00001210
 
-	thumb_func_start sub_50FAC
-sub_50FAC: @ 0x08050FAC
-	push {lr}
-	ldr r0, _08050FCC @ =gUnknown_086B155C
-	ldr r2, _08050FD0 @ =gMain
-	ldrb r1, [r2, #4]
-	lsls r1, r1, #3
-	adds r1, r1, r0
-	ldr r0, [r1]
-	ldrh r1, [r1, #4]
-	movs r3, #0xbe
-	lsls r3, r3, #2
-	adds r2, r2, r3
-	bl LoadSpriteSets
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08050FCC: .4byte gUnknown_086B155C
-_08050FD0: .4byte gMain
+    .section .text50FD4
 
 	thumb_func_start sub_50FD4
 sub_50FD4: @ 0x08050FD4
