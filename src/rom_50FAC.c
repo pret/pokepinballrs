@@ -37,3 +37,10 @@ void sub_50FD4(void)
                    gUnknown_086B155C[gMain.selectedField].numSpriteSets,
                    gMain.spriteGroups);
 }
+
+void sub_51068(void)
+{
+    LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
+                          gUnknown_086B155C[gMain.selectedField].numSpriteSets,
+                          gMain.spriteGroups);
+}
