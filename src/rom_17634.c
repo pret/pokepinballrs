@@ -1,6 +1,3 @@
-//
-// Created by Delta on 6/3/25.
-//
 #include "global.h"
 void sub_17634(u8 param)
 {

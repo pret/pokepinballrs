@@ -1,6 +1,3 @@
-//
-// Created by Delta on 6/2/25.
-//
 #include "global.h"
 
 void sub_2E67C(void)
