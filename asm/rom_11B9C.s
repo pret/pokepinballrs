@@ -9573,8 +9573,6 @@ _08018778: .4byte 0x000004B4
 _0801877C: .4byte 0x000004B6
 _08018780: .4byte 0x000004A4
 
-	.section .text18A4C
-
 	.section .text18B50
 
 	thumb_func_start sub_18B50
