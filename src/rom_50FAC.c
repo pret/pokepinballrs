@@ -69,3 +69,10 @@ void sub_51090(void)
                    gMain.spriteGroups);
 }
 
+void sub_51128(void)
+{
+    LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
+                   gUnknown_086B155C[gMain.selectedField].numSpriteSets,
+                   gMain.spriteGroups);
+}
+

@@ -8171,26 +8171,6 @@ _08050FA8: .4byte 0x00001210
 
     .section .text50FD4
 
-	thumb_func_start sub_51128
-sub_51128: @ 0x08051128
-	push {lr}
-	ldr r0, _08051148 @ =gUnknown_086B155C
-	ldr r2, _0805114C @ =gMain
-	ldrb r1, [r2, #4]
-	lsls r1, r1, #3
-	adds r1, r1, r0
-	ldr r0, [r1]
-	ldrh r1, [r1, #4]
-	movs r3, #0xbe
-	lsls r3, r3, #2
-	adds r2, r2, r3
-	bl LoadSpriteSets
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08051148: .4byte gUnknown_086B155C
-_0805114C: .4byte gMain
-
 	thumb_func_start sub_51150
 sub_51150: @ 0x08051150
 	push {r4, r5, r6, r7, lr}
