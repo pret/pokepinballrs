@@ -25,11 +25,10 @@ void sub_50FD4(void)
     (*gMain.unk44)->available = 1;              // gMain + 0x44 -> pointer -> available
 
     // Direct calculations without storing offset in variable
-    *(u16*)((u8*)&gMain + (0xae << 4)) = 1;
-    *(u16*)((u8*)&gMain + (0xae << 4) + 0xb8) = 1;
-    *(u16*)((u8*)&gMain + (0xae << 4) + 0xb8 + 0xb8) = 1;
-    *(u16*)((u8*)&gMain + (0xae << 4) + 0xb8 + 0xb8 + 0xb8) = 1;
-
+    gMain.spriteGroups[11].available = 1;
+    gMain.spriteGroups[12].available = 1;
+    gMain.spriteGroups[13].available = 1;
+    gMain.spriteGroups[14].available = 1;
     *(u16*)((u8*)&gMain + 0x17d0) = 1;          // gMain + 0x17d0
 
     // Load sprite sets for current field
