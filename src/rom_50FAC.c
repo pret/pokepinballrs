@@ -76,3 +76,28 @@ void sub_51128(void)
                    gMain.spriteGroups);
 }
 
+void sub_51150(void)
+{
+    s16 i;
+
+    for (i = 0; i <= 22; i++)
+    {
+        if (i < 5)
+            gMain.spriteGroups[i].available = 1;
+        else
+            gMain.spriteGroups[i].available = 0;
+    }
+
+    (*gMain.unk44)->available = 1;
+    *(u16 *)((u8 *)&gMain + 0xFE8) = 1;
+    *(u16 *)((u8 *)&gMain + 0x1210) = 1;
+    *(u16 *)((u8 *)&gMain + 0x12C8) = 1;
+    *(u16 *)((u8 *)&gMain + 0xD08) = 1;
+    *(u16 *)((u8 *)&gMain + 0xDC0) = 1;
+    *(u16 *)((u8 *)&gMain + 0xE78) = 1;
+    *(u16 *)((u8 *)&gMain + 0xF30) = 1;
+
+    LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
+                             gUnknown_086B155C[gMain.selectedField].numSpriteSets,
+                             gMain.spriteGroups);
+}
