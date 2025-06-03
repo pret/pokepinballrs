@@ -44,3 +44,28 @@ void sub_51068(void)
                           gUnknown_086B155C[gMain.selectedField].numSpriteSets,
                           gMain.spriteGroups);
 }
+
+void sub_51090(void)
+{
+    s16 i;
+
+    for (i = 0; i <= 45; i++)
+    {
+        if (i <= 4)
+            gMain.spriteGroups[i].available = 1;
+        else
+            gMain.spriteGroups[i].available = 0;
+    }
+
+    (*gMain.unk44)->available = 1;
+    gMain.spriteGroups[42].available = 1;
+    gMain.spriteGroups[11].available = 1;
+    gMain.spriteGroups[12].available = 1;
+    gMain.spriteGroups[13].available = 1;
+    gMain.spriteGroups[21].available = 1;
+
+    LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
+                   gUnknown_086B155C[gMain.selectedField].numSpriteSets,
+                   gMain.spriteGroups);
+}
+
