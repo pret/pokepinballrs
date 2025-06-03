@@ -89,13 +89,13 @@ void sub_51150(void)
     }
 
     (*gMain.unk44)->available = 1;
-    *(u16 *)((u8 *)&gMain + 0xFE8) = 1;
-    *(u16 *)((u8 *)&gMain + 0x1210) = 1;
-    *(u16 *)((u8 *)&gMain + 0x12C8) = 1;
-    *(u16 *)((u8 *)&gMain + 0xD08) = 1;
-    *(u16 *)((u8 *)&gMain + 0xDC0) = 1;
-    *(u16 *)((u8 *)&gMain + 0xE78) = 1;
-    *(u16 *)((u8 *)&gMain + 0xF30) = 1;
+    gMain.spriteGroups[18].available = 1;
+    gMain.spriteGroups[21].available = 1;
+    gMain.spriteGroups[22].available = 1;
+    gMain.spriteGroups[14].available = 1;
+    gMain.spriteGroups[15].available = 1;
+    gMain.spriteGroups[16].available = 1;
+    gMain.spriteGroups[17].available = 1;
 
     LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
                              gUnknown_086B155C[gMain.selectedField].numSpriteSets,
