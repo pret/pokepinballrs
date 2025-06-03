@@ -101,3 +101,9 @@ void sub_51150(void)
                              gUnknown_086B155C[gMain.selectedField].numSpriteSets,
                              gMain.spriteGroups);
 }
+
+void sub_511F8(void) {
+    const struct SpriteSetTableEntry *table = gUnknown_086B155C;
+    const struct SpriteSetTableEntry *entry = &table[gMain.selectedField];
+    LoadSpriteSets(entry->spriteSets, entry->numSpriteSets, gMain.spriteGroups);
+}
