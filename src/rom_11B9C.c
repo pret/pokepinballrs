@@ -37,7 +37,7 @@ void sub_11B9C(void)
 
 void sub_11C14(s16 arg0)
 {
-    struct UnkPinballGame1334 *var0 = &gCurrentPinballGame->unk1334[arg0];
+    struct CurrentBallState *var0 = &gCurrentPinballGame->unk1334[arg0];
     var0->unk10.x = gUnknown_02031520.unk26;
     var0->unk10.y = gUnknown_02031520.unk28;
     var0->position.x = Q_24_8(var0->unk10.x);
@@ -83,7 +83,7 @@ extern const u16 gGravityDeltas_Light[4];
 void sub_11C98(void)
 {
     struct Vector16 velocity;
-    struct UnkPinballGame1334 *unk132c;
+    struct CurrentBallState *unk132c;
     int xx, yy;
     int squaredMagnitude;
     int maxSpeed;
@@ -168,7 +168,7 @@ void sub_11C98(void)
 void sub_11F88(void)
 {
     struct Vector16 velocity;
-    struct UnkPinballGame1334 *unk132c;
+    struct CurrentBallState *unk132c;
     int xx, yy;
     int squaredMagnitude;
     int maxSpeed;
@@ -1366,7 +1366,7 @@ void sub_12BF8()
     struct SpriteGroup *spriteGroup;
     struct OamData *oamData;
     struct OamDataSimple *oam;
-    struct UnkPinballGame1334 *unk1334_0;
+    struct CurrentBallState *unk1334_0;
 
     gCurrentPinballGame->unk1330 = gCurrentPinballGame->unk1334;
     gCurrentPinballGame->unk132c = gCurrentPinballGame->unk1334;
