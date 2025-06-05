@@ -21,7 +21,7 @@ void sub_CA28(void);
 void sub_CD18(void);
 
 extern StateFunc gIntroStateFuncs[15];
-extern u8 gUnknown_080798C0[];
+extern u8 gIntroCopyright_Tilemap[];
 
 extern u8 gIntroCopyright_Gfx[];
 extern u8 gIntroCopyright_Pal[];
@@ -112,7 +112,7 @@ void sub_929C(void)
   REG_BG1CNT = 5;
   REG_DISPCNT |= DISPCNT_BG1_ON;
 
-  DmaCopy16(3, gUnknown_080798C0, BG_CHAR_ADDR(0), BG_SCREEN_SIZE);
+  DmaCopy16(3, gIntroCopyright_Tilemap, BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
   DmaCopy16(3, gIntroCopyright_Gfx, BG_CHAR_ADDR(1), BG_SCREEN_SIZE);
   DmaCopy16(3, gIntroCopyright_Pal, BG_PLTT, BG_PLTT_SIZE);
 
