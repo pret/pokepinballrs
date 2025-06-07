@@ -392,7 +392,7 @@ extern void sub_1493C(void);
 //extern ? sub_1642C();
 //extern ? sub_171C8();
 //extern ? sub_173FC();
-//extern ? sub_17634();
+extern void sub_17634(u8);
 //extern ? sub_176B0();
 //extern ? sub_17898();
 //extern ? sub_179D0();
