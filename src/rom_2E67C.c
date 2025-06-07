@@ -2,7 +2,7 @@
 
 void sub_2E67C(void)
 {
-    if ((s8)gCurrentPinballGame->unk306 == 1)
+    if (gCurrentPinballGame->unk306 == 1)
     {
         if (gCurrentPinballGame->unk30C)
             gCurrentPinballGame->unk30C--;
