@@ -75,7 +75,7 @@ struct BgOffsets
 };
 
 // This struct holds data about the ball's velocity, position, etc.
-struct CurrentBallState
+struct BallState
 {
     /*0x00*/ s8 unk0;
     /*0x01*/ s8 unk1; // oam data priority
@@ -157,7 +157,7 @@ struct PinballGame
     /*0x071*/ s8 unk71;
     /*0x072*/ u8 filler72[0x5A];
     /*0x0CC*/ u16 unkCC;
-    /*0x0CE*/ u8 fillerCE;
+    /*0x0CE*/ u8 fillerCE[0x2];
     /*0x0D0*/ struct Vector16 unkD0[5];
     /*0x0E4*/ u8 unkE4;
     /*0x0E6*/ s16 unkE6;
@@ -184,12 +184,12 @@ struct PinballGame
     /*0x12D*/ u8 filler12D;
     /*0x12E*/ s16 totalWeight;       // Added weight of all possible mons in area
     /*0x130*/ s16 speciesWeights[25]; // Weight of each species
-    /*0x17A*/ u8 filler7A[0x4];
-    /*0x17B*/ u16 unk166;
+    /*0x162*/ u8 filler162[0x4];
+    /*0x166*/ u16 unk166;
     /*0x168*/ u8 filler168[0x4];
     /*0x16C*/ u8 unk16C;
     /*0x16D*/ u8 filler16D[0x2];
-    /*0x16D*/ u8 unk16F;
+    /*0x16F*/ u8 unk16F;
     /*0x170*/ u8 unk170;
     /*0x171*/ u8 unk171;
     /*0x172*/ u8 unk172;
@@ -284,11 +284,11 @@ struct PinballGame
     /*0x30A*/ u16 unk30A;
     /*0x30C*/ u16 unk30C;
     /*0x30E*/ u8 filler30E[0x2];
-    /*0x30C*/ u16 unk310;
-    /*0x30E*/ u8 filler312[0x33];
+    /*0x310*/ u16 unk310;
+    /*0x312*/ u8 filler312[0x33];
     /*0x345*/ s8 unk345;
     /*0x346*/ s8 unk346;
-    /*0x348*/ u8 filler347[0x23];
+    /*0x347*/ u8 filler347[0x23];
     /*0x36A*/ u8 unk36A[0x2];
     /*0x36C*/ u8 unk36C[0x2];
     /*0x36E*/ u16 unk36E[0x2];
@@ -388,8 +388,8 @@ struct PinballGame
     /*0x626*/ u8 filler626[0x9];
     /*0x62F*/ u8 unk62F;
     /*0x630*/ u8 filler630[0x7];
-/*0x637*/ u8 unk637;
- /*0x638*/ u8 filler638[0x8C];
+    /*0x637*/ u8 unk637;
+    /*0x638*/ u8 filler638[0x8C];
     /*0x6C4*/ u8 unk6C4;
     /*0x6C5*/ u8 unk6C5; // TODO: unknown type
     /*0x6C6*/ u8 unk6C6;
@@ -409,19 +409,15 @@ struct PinballGame
     /*0x712*/ s8 unk712;
     /*0x713*/ s8 unk713;
     /*0x714*/ s8 unk714;
-    /*0x715*/ u8 filler715;
+    /*0x715*/ u8 filler715[0x1];
     /*0x716*/ s8 unk716;
-    /*0x717*/ u8 filler717;
+    /*0x717*/ u8 filler717[0x1];
     /*0x718*/ s8 unk718;
     /*0x719*/ s8 unk719;
     /*0x71A*/ s8 unk71A;
     /*0x71B*/ u8 unk71B;
     /*0x71C*/ u8 unk71C;
-    /*0x71D*/ u8 filler71D[0x3];
-    /*0x71F*/ u8 unk71F;
-    /*0x720*/ u8 unk720;
-    /*0x721*/ u8 unk721;
-    /*0x720*/ u8 filler722;
+    /*0x71D*/ u8 filler71D[0x7];
     /*0x724*/ u16 unk724;
     /*0x726*/ u8 filler726[0x2];
     /*0x728*/ u8 unk728; // TODO: unknown type
@@ -474,9 +470,9 @@ struct PinballGame
     /*0x1326*/s16 unk1326;
     /*0x1328*/u16 unk1328;
     /*0x132A*/u8 filler132A[0x2];
-    /*0x132C*/struct CurrentBallState *unk132c;
-    /*0x1330*/struct CurrentBallState *unk1330;
-    /*0x1334*/struct CurrentBallState unk1334[2];
+    /*0x132C*/struct BallState *unk132c;
+    /*0x1330*/struct BallState *unk1330;
+    /*0x1334*/struct BallState unk1334[2];
     /*0x13BC*/u8 filler13BC[0x4];
     /*0x13BC*/s8 unk13C0;
     /*0x13BC*/u8 filler13C1[0xB];
