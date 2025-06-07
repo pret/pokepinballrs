@@ -277,10 +277,10 @@ extern s16 gPokedexListEntryCount;
 extern u32 gUnknown_0201B170;
 extern u32 gUnknown_0202BED8;
 
-extern u16 gUnknown_0805C800[0x20];
-extern u16 gUnknown_0805C840[];
-extern u16 gUnknown_0805C780[];
-extern u16 gUnknown_0805C7C0[];
+extern u16 gDexInfoWindowEmptyTextRowTiles[];
+extern u16 gDexInfoWindowMiddleRowTiles[];
+extern u16 gDexInfoWindowBottomRowTiles[];
+extern u16 gDexInfoWindowEmptyRowTiles[];
 extern u16 gUnknown_0202A590[];
 extern u16 gUnknown_08086B40[];
 extern u16 gUnknown_083722E8[0x4000];
@@ -366,7 +366,7 @@ extern const struct SpriteSet *const gUnknown_086A7A78[];
 extern s16 gUnknown_0202C5E4;
 extern s16 gUnknown_0202ADD8;
 extern const struct SpriteSet *const gUnknown_086A7B74[];
-
+extern const struct SpriteSetTableEntry gUnknown_086B155C[];
 extern u8 gUnknown_08100FE0[];
 extern u8 gUnknown_081011E0[];
 extern u8 gUnknown_081019E0[];
@@ -395,5 +395,4 @@ extern u16 gCommonAndEggWeights[];
 extern u16 gUnknown_0200B18E[10];
 extern u16 Sio32ConnectionData[4]; 
 extern u32 gUnknown_02002814;
-
 #endif  // GUARD_VARIABLES_H

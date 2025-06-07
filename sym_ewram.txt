@@ -530,7 +530,7 @@ gUnknown_0202C6D0: @ 0x0202C6D0
 	.space 0x14
 gUnknown_0202C6E4: @ 0x0202C6E4
 	.space 0xAC
-gUnknown_0202C790: @ 0x0202C790
+gIntroSceneIndex: @ 0x0202C790
 	.space 0x4
 gUnknown_0202C794: @ 0x0202C794
 	.space 0xC

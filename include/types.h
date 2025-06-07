@@ -33,6 +33,13 @@ struct SpriteGroup
 };
 // size: 0xB8
 
+struct SpriteSetTableEntry
+{
+    /*0x00*/ const struct SpriteSet *const *spriteSets;
+    /*0x04*/ u16 numSpriteSets;
+    /*0x06*/ u16 padding;
+}; // size: 0x8
+
 struct Vector16
 {
     s16 x;

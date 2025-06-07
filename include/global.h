@@ -79,8 +79,9 @@ struct BallState
 {
     /*0x00*/ s8 unk0;
     /*0x01*/ s8 unk1; // oam data priority
-    /*0x02*/ u8 filler2[0x4];
-    /*0x06*/ u16 unk6;
+    /*0x02*/ u8 filler2[0x2];
+    /*0x04*/ u16 unk4;
+    /*0x06*/ s16 unk6;
     /*0x08*/ u16 unk8;
     /*0x0A*/ u16 unkA;
     /*0x0C*/ u16 unkC;
@@ -124,7 +125,8 @@ struct PinballGame
     /*0x01F*/ u8 unk1F;
     /*0x020*/ u8 filler20[0x2];
     /*0x022*/ s8 unk22;
-    /*0x023*/ u8 filler23[0x2];
+    /*0x023*/ u8 unk23; // Holds the value of some enum state
+    /*0x024*/ s8 unk24;
     /*0x025*/ s8 unk25;
     /*0x026*/ u16 unk26;
     /*0x028*/ u16 unk28;
@@ -278,7 +280,7 @@ struct PinballGame
     /*0x300*/ u8 unk300;
     /*0x301*/ u8 unk301;
     /*0x302*/ u8 filler302[0x4];
-    /*0x306*/ u8 unk306;
+    /*0x306*/ s8 unk306;
     /*0x307*/ u8 filler307[0x1];
     /*0x308*/ u16 unk308;
     /*0x30A*/ u16 unk30A;
@@ -503,6 +505,9 @@ struct Unk02031520
     /*0x26*/ s16 unk26;
     /*0x28*/ s16 unk28;
     /*0x2C*/ u32 *unk2C[3];
+    /*0x38*/ s16 *unk38[4];
+    /*0x48*/ u16 *unk48[4];
+    /*0x58*/ u8 *unk58[4];
 };
 
 struct Unk02031590

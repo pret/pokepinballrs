@@ -365,13 +365,13 @@ void sub_43D4(void)
 
 void sub_4428(void)
 {
-    s32 i;
+    int i;
 
     for (i = 0; i < 0x20; i++)
     {
-        gUnknown_03005C00[0x20*(gUnknown_0202A558 + 10) + i] = gUnknown_0805C840[i];
-        gUnknown_02019C40[0x20*(gUnknown_0202A558 + 9) + i] = gUnknown_0805C780[i];
-        gUnknown_02019C40[0x20*(gUnknown_0202A558 + 10) + i] = gUnknown_0805C7C0[i];
+        gUnknown_03005C00[0x20*(gUnknown_0202A558 + 10) + i] = gDexInfoWindowEmptyTextRowTiles[i];
+        gUnknown_02019C40[0x20*(gUnknown_0202A558 + 9) + i] = gDexInfoWindowMiddleRowTiles[i];
+        gUnknown_02019C40[0x20*(gUnknown_0202A558 + 10) + i] = gDexInfoWindowBottomRowTiles[i];
     }
 
     gUnknown_0202A558++;
@@ -536,8 +536,8 @@ void sub_4860(void)
 
     for (i = 0; i < 0x20; i++)
     {
-        gUnknown_02019C40[0x20 * (0x11 - gUnknown_0202A558) + i] = gUnknown_0805C7C0[i];
-        gUnknown_02019C40[0x20 * (0x12 - gUnknown_0202A558) + i] = gUnknown_0805C800[i];
+        gUnknown_02019C40[0x20 * (0x11 - gUnknown_0202A558) + i] = gDexInfoWindowBottomRowTiles[i];
+        gUnknown_02019C40[0x20 * (0x12 - gUnknown_0202A558) + i] = gDexInfoWindowEmptyRowTiles[i];
     }
 
     if (gUnknown_0202A558 < 8)

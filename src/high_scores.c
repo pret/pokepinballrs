@@ -63,7 +63,7 @@ extern u8 gUnknown_080947A0[];
 extern u8 gUnknown_0809DDE0[];
 extern u8 gUnknown_0809DFE0[];
 extern u32 gUnknown_08079870[8];
-extern const struct HighScoreEntry gUnknown_08079430[2][8];
+extern const struct HighScoreEntry gDefaultHighScores[2][8];
 
 void HighScoresMain(void)
 {
@@ -2130,7 +2130,7 @@ void SetDefaultHighScores(void)
     for (field = 0; field < 2; field++)
         for (highScoreIndex = 0; highScoreIndex < 8; highScoreIndex++)
             for (i = 0; i < 6; i++)
-                gMain_saveData.highScores[field][highScoreIndex].data.raw[i] = gUnknown_08079430[field][highScoreIndex].data.raw[i];
+                gMain_saveData.highScores[field][highScoreIndex].data.raw[i] = gDefaultHighScores[field][highScoreIndex].data.raw[i];
 }
 
 void sub_F74C(void)
