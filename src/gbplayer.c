@@ -25,10 +25,10 @@ static u8 CheckGameBoyPlayer(void)
     lastDetectedFrame = 0;
     prevDetectedFrame = 0;
     VBlankIntrWait();
-    DmaCopy16(3, gUnknown_08058248, (void *)BG_CHAR_ADDR(2), BG_CHAR_SIZE);
-    DmaCopy16(3, gUnknown_08058048, (void *)BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gUnknown_0805C248, gUnknown_02002008, 0x500);
-    DmaCopy16(3, gUnknown_02002008, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gGbPlayerGfx, (void *)BG_CHAR_ADDR(2), BG_CHAR_SIZE);
+    DmaCopy16(3, gGbPlayerPalettes, (void *)BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, gGbPlayerTilemap, gGbPlayerTilemapBuffer, 0x500);
+    DmaCopy16(3, gGbPlayerTilemapBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     REG_BG0CNT = BGCNT_256COLOR | BGCNT_CHARBASE(2);
     for (i = 0; i <= 16; i++)
     {
@@ -61,7 +61,7 @@ static u8 CheckGameBoyPlayer(void)
         VBlankIntrWait();
         {
             vu32 *dmaRegs = dma3;
-            dmaRegs[0] = (vu32)gUnknown_02002008;
+            dmaRegs[0] = (vu32)gGbPlayerTilemapBuffer;
             dmaRegs[1] = BG_SCREEN_ADDR(0);
             dmaRegs[2] = ((DMA_ENABLE | DMA_START_NOW | DMA_32BIT | DMA_SRC_INC | DMA_DEST_INC) << 16 | (BG_SCREEN_SIZE / sizeof(u32)));
             dmaRegs[2];
@@ -333,7 +333,7 @@ void Sio32IDIntr(void)
             // green
             if (gUnknown_02002808.count < 4)
             {
-                gUnknown_02002808.send_id = *(gUnknown_02002808.count + gUnknown_0805C748); // oh no
+                gUnknown_02002808.send_id = *(gUnknown_02002808.count + Sio32ConnectionData); // oh no
             }
             else
             {
