@@ -5,29 +5,29 @@
 
 void sub_18784(u8 arg0)
 {
-	switch (arg0)
+    switch (arg0)
     {
     case 1:
     case 2:
     case 3:
         break;
-	case 4:
-		gCurrentPinballGame->unk3DC = 6;
-		gCurrentPinballGame->unk1F = 1;
-		break;
-	case 5:
-	case 6:
-	case 7:
-	case 8:
-	case 9:
-	case 10:
-	case 11:
-	case 12:
-	case 13:
-	case 14:
-	case 15:
-		break;
-	}
+    case 4:
+        gCurrentPinballGame->unk3DC = 6;
+        gCurrentPinballGame->unk1F = 1;
+        break;
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+        break;
+    }
 }
 
 //One known callsite is 080145D2 during the rayquaza bonus stage
