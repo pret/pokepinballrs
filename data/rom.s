@@ -2,6 +2,7 @@
 #include "constants/areas.h"
 #include "constants/fields.h"
 #include "constants/species.h"
+#include "constants/bg_music.h"
 
 gUnknown_08055A68:: @ 0x08055A68
 	.2byte AREA_FOREST_RUBY
