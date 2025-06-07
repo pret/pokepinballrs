@@ -7865,6 +7865,3 @@ _08050F44:
 	bx r0
 	.align 2, 0
 _08050FA8: .4byte 0x00001210
-
-    .section .text50FD4
-
