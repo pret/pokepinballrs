@@ -474,7 +474,7 @@ struct Unk02031520_unk10
     /*0x2*/ u8 unk2;
 };
 
-struct Unk02031520 //0x70 size presumably
+struct Unk02031520
 {
     /*0x00*/ u8 filler0[0x8];
     /*0x08*/ s16 unk8;

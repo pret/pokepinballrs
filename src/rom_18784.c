@@ -3,18 +3,18 @@
 #include "types.h"
 #include "main.h"
 
-//Presumed duplicate of sub_18AE0?
-void sub_18784(u8 unknown_enum) {
-	// input presumed to be an enum due to this switch case below
-	// something told the compiler to make 15 cases not 0 based
-	switch (unknown_enum) {
+void sub_18784(u8 arg0)
+{
+	switch (arg0)
+    {
+    case 1:
+    case 2:
+    case 3:
+        break;
 	case 4:
 		gCurrentPinballGame->unk3DC = 6;
 		gCurrentPinballGame->unk1F = 1;
 		break;
-	case 1:
-	case 2:
-	case 3:
 	case 5:
 	case 6:
 	case 7:
@@ -31,7 +31,8 @@ void sub_18784(u8 unknown_enum) {
 }
 
 //One known callsite is 080145D2 during the rayquaza bonus stage
-s16 sub_187F4(struct Vector16* inp1, u16* inp2) {
+s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
+{
     struct Vector16 vec1;
     struct Vector16 vec2;
     u16 sp00;
@@ -39,17 +40,19 @@ s16 sub_187F4(struct Vector16* inp1, u16* inp2) {
     u16 return_val;
     u32 some_enum;
     u32 switch_enum;
+
     return_val = 0;
     gCurrentPinballGame->unk132c->unk4 = 0;
 
-    if (inp1->y <= 0x1FF) {
+    if (arg0->y < 0x200)
+    {
         s16 r2;
         s32 unk1;
         s32 unk2;
-        vec1.x = inp1->x / 8;
-        vec1.y = inp1->y / 8;
-        vec2.x = inp1->x % 8;
-        vec2.y = inp1->y % 8;
+        vec1.x = arg0->x / 8;
+        vec1.y = arg0->y / 8;
+        vec2.x = arg0->x % 8;
+        vec2.y = arg0->y % 8;
         unk1 = vec1.y / 64;
         unk2 = gCurrentPinballGame->unk24;
         vec1.y %= 64;
@@ -57,39 +60,47 @@ s16 sub_187F4(struct Vector16* inp1, u16* inp2) {
         sp00 = gUnknown_02031520.unk48[unk2 + unk1][r2 * 64 + vec2.y * 8 + vec2.x];
         sp02 = gUnknown_02031520.unk58[unk2 + unk1][r2 * 64 + vec2.y * 8 + vec2.x];
     }
-    else {
+    else
+    {
         sp00 = 0;
         sp02 = 0;
     }
 
-    sub_18A4C(inp1, &sp00, &sp02);
+    sub_18A4C(arg0, &sp00, &sp02);
     switch_enum = sp02 & 0xF;
-    some_enum = sp02 >> 4; //what is up with this?
+    some_enum = sp02 >> 4;
 
     switch (switch_enum) {
     case 1:
     case 4:
     case 6:
-        //_0801894C
         gCurrentPinballGame->unk23 = switch_enum - 1;
         gCurrentPinballGame->unk22 = 1;
-        *inp2 = sp00;
-        if (*inp2 >= 0x3FF0 && *inp2 <= 0x4010) {
-            if (gCurrentPinballGame->unk132c->unk10.x < (gUnknown_02031520.unk26 - 8) || gCurrentPinballGame->unk132c->unk10.y < gUnknown_02031520.unk28 - 8) {
+        *arg1 = sp00;
+        if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010) {
+            if (gCurrentPinballGame->unk132c->unk10.x < (gUnknown_02031520.unk26 - 8) || gCurrentPinballGame->unk132c->unk10.y < gUnknown_02031520.unk28 - 8)
+            {
                 if (gCurrentPinballGame->unk132c->unk6 > 0)
-                    *inp2 = 0x3E00;
+                {
+                    *arg1 = 0x3E00;
+                }
                 else if (gCurrentPinballGame->unk132c->unk6 != 0)
-                    *inp2 = 0x4100;
-                else if (gCurrentPinballGame->unk132c->unk6 == 0) {
-                    if ((gMain.systemFrameCount & 1)) {
+                {
+                    *arg1 = 0x4100;
+                }
+                else
+                {
+                    if (gMain.systemFrameCount & 1)
+                    {
                         gCurrentPinballGame->unk132c->unk4 = 40;
                         gCurrentPinballGame->unk132c->unk6 = 1;
-                        *inp2 = 0x3E00;
+                        *arg1 = 0x3E00;
                     }
-                    else {
+                    else
+                    {
                         gCurrentPinballGame->unk132c->unk4 = -40;
                         gCurrentPinballGame->unk132c->unk6 = -1;
-                        *inp2 = 0x4100;
+                        *arg1 = 0x4100;
                     }
                 }
             }
@@ -100,18 +111,19 @@ s16 sub_187F4(struct Vector16* inp1, u16* inp2) {
     case 3:
         gCurrentPinballGame->unk23 = switch_enum - 1;
         gCurrentPinballGame->unk22 = 2;
-        *inp2 = sp00 & 0x0000FFF0;
+        *arg1 = sp00 & 0xFFF0;
         return_val = 1;
         break;
     case 5:
         some_enum = 4;
         break;
     }
-    sub_18AE0(some_enum, &return_val, inp2);
+
+    sub_18AE0(some_enum, &return_val, arg1);
     return return_val;
 }
 
-void sub_18A4C(struct Vector16* vector, u16* upperStore, u8* nibbleStore)
+void sub_18A4C(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
 {
     s16 deltaX;
     s16 deltaY;
@@ -121,11 +133,11 @@ void sub_18A4C(struct Vector16* vector, u16* upperStore, u8* nibbleStore)
 
     if (gCurrentPinballGame->unk387 != 1)
         return;
-    if (*nibbleStore & 0xF)
+    if (*arg2 & 0xF)
         return;
 
-    deltaX = vector->x - gCurrentPinballGame->unk3F0;
-    deltaY = vector->y - gCurrentPinballGame->unk3F2;
+    deltaX = arg0->x - gCurrentPinballGame->unk3F0;
+    deltaY = arg0->y - gCurrentPinballGame->unk3F2;
 
     if ((u16)deltaX >= 0x80 || (u16)deltaY >= 0x80)
         return;
@@ -137,23 +149,22 @@ void sub_18A4C(struct Vector16* vector, u16* upperStore, u8* nibbleStore)
         return;
 
     gCurrentPinballGame->unk452 = 9;
-    *upperStore = maskedResult;
-    *nibbleStore = lowerNibble;
+    *arg1 = maskedResult;
+    *arg2 = lowerNibble;
 }
 
-void sub_18AE0(u8 unknown_enum, u16* unused1, u16* unused2)
+void sub_18AE0(u8 arg0, u16 *arg1, u16 *arg2)
 {
-    // input presumed to be an enum due to this switch case below
-    // something told the compiler to make 15 cases not 0 based
-    switch (unknown_enum)
+    switch (arg0)
     {
+    case 1:
+    case 2:
+    case 3:
+        break;
     case 4:
         gCurrentPinballGame->unk3DC = 6;
         gCurrentPinballGame->unk1F = 1;
         break;
-    case 1:
-    case 2:
-    case 3:
     case 5:
     case 6:
     case 7:
