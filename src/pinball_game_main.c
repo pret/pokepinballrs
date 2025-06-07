@@ -80,9 +80,7 @@ struct Unk86AD000
 };
 
 extern const struct Unk86AD000 gUnknown_086AD000[];
-
 extern const StateFunc gPinballGameStateFuncs[];
-extern const u8 gUnknown_08137E14[][0x20];
 extern const u8 gUnknown_084C0C6C[];
 extern u8 *gMonPortraitGroupGfx[];
 
