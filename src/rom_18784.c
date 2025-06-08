@@ -31,7 +31,7 @@ void sub_18784(u8 arg0)
 }
 
 //One known callsite is 080145D2 during the rayquaza bonus stage
-s16 sub_187F4(struct Vector16* arg0, u16* arg1)
+s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -123,7 +123,7 @@ s16 sub_187F4(struct Vector16* arg0, u16* arg1)
     return return_val;
 }
 
-void sub_18A4C(struct Vector16* arg0, u16* arg1, u8* arg2)
+void sub_18A4C(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
 {
     s16 deltaX;
     s16 deltaY;
@@ -153,7 +153,7 @@ void sub_18A4C(struct Vector16* arg0, u16* arg1, u8* arg2)
     *arg2 = lowerNibble;
 }
 
-void sub_18AE0(u8 arg0, u16* arg1, u16* arg2)
+void sub_18AE0(u8 arg0, u16 *arg1, u16 *arg2)
 {
     switch (arg0)
     {
@@ -181,7 +181,7 @@ void sub_18AE0(u8 arg0, u16* arg1, u16* arg2)
 }
 
 
-s16 sub_18B50(struct Vector16* arg0, u16* arg1) {
+s16 sub_18B50(struct Vector16 *arg0, u16 *arg1) {
     u16 sp0;
     u8 sp2;
     u16 sp4_return;
