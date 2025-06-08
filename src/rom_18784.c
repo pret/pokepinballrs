@@ -70,14 +70,16 @@ s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
     switch_enum = sp02 & 0xF;
     some_enum = sp02 >> 4;
 
-    switch (switch_enum) {
+    switch (switch_enum)
+    {
     case 1:
     case 4:
     case 6:
         gCurrentPinballGame->unk23 = switch_enum - 1;
         gCurrentPinballGame->unk22 = 1;
         *arg1 = sp00;
-        if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010) {
+        if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
+        {
             if (gCurrentPinballGame->unk132c->unk10.x < (gUnknown_02031520.unk26 - 8) || gCurrentPinballGame->unk132c->unk10.y < gUnknown_02031520.unk28 - 8)
             {
                 if (gCurrentPinballGame->unk132c->unk6 > 0)
@@ -178,4 +180,98 @@ void sub_18AE0(u8 arg0, u16 *arg1, u16 *arg2)
     case 15:
         break;
     }
+}
+
+s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
+{
+    u16 sp0;
+    u8 sp2;
+    u16 sp4_return;
+
+    struct Vector16 div_result;
+    struct Vector16 div_remainder;
+    s32 unk1;
+    s32 unk2;
+    s16 unk3;
+    u8 enum1, enum2;
+
+    sp4_return = 0;
+    gCurrentPinballGame->unk132c->unk4 = 0;
+
+    div_result.x = arg0->x / 8;
+    div_result.y = arg0->y / 8;
+    div_remainder.x = arg0->x % 8;
+    div_remainder.y = arg0->y % 8;
+    unk1 = div_result.y / 64;
+    unk2 = gCurrentPinballGame->unk24;
+    div_result.y %= 64;
+
+    unk3 = gUnknown_02031520.unk38[unk2 + unk1][div_result.y * 64 + div_result.x];
+    sp0 = gUnknown_02031520.unk48[unk2 + unk1][unk3 * 64 + div_remainder.y * 8 + div_remainder.x];
+    sp2 = gUnknown_02031520.unk58[unk2 + unk1][unk3 * 64 + div_remainder.y * 8 + div_remainder.x];
+
+    sub_18DAC(arg0, &sp0, &sp2);
+
+    enum1 = sp2 & 0xF;
+    enum2 = sp2 >> 4;
+    switch (enum1)
+    {
+    case 1:
+    case 4:
+    case 6:
+        gCurrentPinballGame->unk23 = enum1 - 1;
+        gCurrentPinballGame->unk22 = 1;
+        *arg1 = sp0;
+        if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
+        {
+            if (gCurrentPinballGame->unk132c->unk10.x < (gUnknown_02031520.unk26 - 8) ||
+                gCurrentPinballGame->unk132c->unk10.y < (gUnknown_02031520.unk28 - 8))
+            {
+                if (gCurrentPinballGame->unk132c->unk6 > 0)
+                {
+                    *arg1 = 0x3E00;
+                }
+                else if (gCurrentPinballGame->unk132c->unk6 != 0)
+                {
+                    *arg1 = 0x4100;
+                }
+                else
+                {
+                    if (gMain.systemFrameCount & 1)
+                    {
+                        gCurrentPinballGame->unk132c->unk4 = 40;
+                        gCurrentPinballGame->unk132c->unk6 = 1;
+                        *arg1 = 0x3E00;
+                    }
+                    else
+                    {
+                        gCurrentPinballGame->unk132c->unk4 = -40;
+                        gCurrentPinballGame->unk132c->unk6 = -1;
+                        *arg1 = 0x4100;
+                    }
+                }
+            }
+        }
+        sp4_return = 1;
+        break;
+    case 2:
+    case 3:
+        gCurrentPinballGame->unk23 = 0;
+        gCurrentPinballGame->unk22 = 1;
+        *arg1 = sp0 & 0x0000FFF0;
+
+        if (gCurrentPinballGame->unk132c->unk10.x < 120)
+            gCurrentPinballGame->unk548 = 24;
+        else
+            gCurrentPinballGame->unk549 = 24;
+
+        sp4_return = 1;
+        break;
+    case 5:
+        enum2 = 4;
+        break;
+    }
+
+    sub_18F38(enum2, &sp4_return, arg1);
+    return sp4_return;
 }
