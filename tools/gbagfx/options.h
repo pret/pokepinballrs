@@ -4,6 +4,7 @@
 #define OPTIONS_H
 
 #include <stdbool.h>
+#include "gfx.h"
 
 struct GbaToPngOptions {
     char *paletteFilePath;
@@ -13,14 +14,23 @@ struct GbaToPngOptions {
     int metatileWidth;
     int metatileHeight;
     bool pinballHatchSprite;
+    char *tilemapFilePath;
+    bool isAffineMap;
+    bool isTiled;
+    int dataWidth;
 };
 
 struct PngToGbaOptions {
     int numTiles;
+    enum NumTilesMode numTilesMode;
     int bitDepth;
     int metatileWidth;
     int metatileHeight;
     bool pinballHatchSprite;
+    char *tilemapFilePath;
+    bool isAffineMap;
+    bool isTiled;
+    int dataWidth;
 };
 
 #endif // OPTIONS_H
