@@ -42,8 +42,8 @@ extern const u8 gBonusFieldMenuSelectionToField[];
 extern const u8 gUnknown_0807AAE0[];
 extern const u8 gUnknown_0807B2E0[];
 extern const u8 gUnknown_0807BAE0[];
-extern const u16 gUnknown_0807C2E0[];
-extern const u8 gUnknown_0807C4E0[];
+extern const u16 gBonusFieldSelectStages_Pals[];
+extern const u8 gBonusFieldSelectStages_Gfx[];
 
 void sub_2710(void);
 void sub_29C8(void);
@@ -67,9 +67,9 @@ void LoadBonusFieldSelectGraphics(void)
 
     gMain.unk16 = REG_DISPCNT;
 
-    DmaCopy16(3, gUnknown_0807C2E0, (void *)PLTT, 0x200);
+    DmaCopy16(3, gBonusFieldSelectStages_Pals, (void *)PLTT, 0x200);
     DmaCopy16(3, gFieldSelectWindow_Gfx, (void *)(VRAM + 0x4000), 0x4000);
-    DmaCopy16(3, gUnknown_0807C4E0, (void *)(VRAM + 0x8000), 0x1800);
+    DmaCopy16(3, gBonusFieldSelectStages_Gfx, (void *)(VRAM + 0x8000), 0x1800);
     DmaCopy16(3, gUnknown_0807AAE0, (void *)VRAM, 0x800);
     DmaCopy16(3, gUnknown_0807B2E0, (void *)(VRAM + 0x800), 0x800);
     DmaCopy16(3, gUnknown_0807BAE0, (void *)(VRAM + 0x1000), 0x800);

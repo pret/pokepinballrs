@@ -922,11 +922,13 @@ gUnknown_0807B2E0:: @ 0x0807B2E0
 gUnknown_0807BAE0:: @ 0x0807BAE0
 	.incbin "baserom.gba", 0x7BAE0, 0x800
 
-gUnknown_0807C2E0:: @ 0x0807C2E0
-	.incbin "baserom.gba", 0x7C2E0, 0x200
+gBonusFieldSelectStages_Pals:: @ 0x0807C2E0
+	.incbin "graphics/field_select/bonus_field_select_stages.gbapal"
 
-gUnknown_0807C4E0:: @ 0x0807C4E0
-	.incbin "baserom.gba", 0x7C4E0, 0x1820
+gBonusFieldSelectStages_Gfx:: @ 0x0807C4E0
+	.incbin "graphics/field_select/bonus_field_select_stages.4bpp"
+
+	.incbin "baserom.gba", 0x7DCE0, 0x20
 
 gUnknown_0807DD00:: @ 0x0807DD00
 	.incbin "baserom.gba", 0x7DD00, 0x2000
