@@ -182,7 +182,6 @@ void sub_18AE0(u8 arg0, u16 *arg1, u16 *arg2)
     }
 }
 
-
 s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
 {
     u16 sp0;
@@ -236,9 +235,9 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
                 {
                     *arg1 = 0x4100;
                 }
-                else if (gCurrentPinballGame->unk132c->unk6 == 0)
+                else
                 {
-                    if ((gMain.systemFrameCount & 1) != 0)
+                    if (gMain.systemFrameCount & 1)
                     {
                         gCurrentPinballGame->unk132c->unk4 = 40;
                         gCurrentPinballGame->unk132c->unk6 = 1;
@@ -262,19 +261,17 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
         *arg1 = sp0 & 0x0000FFF0;
 
         if (gCurrentPinballGame->unk132c->unk10.x < 120)
-        {
             gCurrentPinballGame->unk548 = 24;
-        }
         else
-        {
             gCurrentPinballGame->unk549 = 24;
-        }
+
         sp4_return = 1;
         break;
     case 5:
         enum2 = 4;
         break;
     }
+
     sub_18F38(enum2, &sp4_return, arg1);
     return sp4_return;
 }
