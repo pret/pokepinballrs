@@ -39,6 +39,8 @@ struct Image {
 	unsigned char *pixels;
 	bool hasPalette;
 	struct Palette palette;
+	int paletteMapSize;
+	unsigned char *paletteMap;
 	bool hasTransparency;
 	struct Tilemap tilemap;
 	bool isAffine;
@@ -57,5 +59,6 @@ void WritePlainImage(char *path, int dataWidth, struct Image *image, bool invert
 void FreeImage(struct Image *image);
 void ReadGbaPalette(char *path, struct Palette *palette);
 void WriteGbaPalette(char *path, struct Palette *palette);
+void Convert4BppImageWithPaletteMap(struct Image *image);
 
 #endif // GFX_H

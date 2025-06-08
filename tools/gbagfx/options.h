@@ -8,6 +8,8 @@
 
 struct GbaToPngOptions {
     char *paletteFilePath;
+    // Can only be used for 4bpp images that hold multiple 16-color palettes.
+    char *paletteMapFilePath;
     int bitDepth;
     bool hasTransparency;
     int width;

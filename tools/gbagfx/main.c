@@ -27,6 +27,7 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
 
     image.bitDepth = options->bitDepth;
     image.tilemap.data.affine = NULL;
+    image.paletteMap = NULL;
 
     if (options->paletteFilePath != NULL)
     {
@@ -42,6 +43,13 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
         }
 
         image.hasPalette = true;
+        if (options->paletteFilePath != NULL)
+        {
+            if (image.bitDepth != 4)
+                FATAL_ERROR("palette map can only be used with 4bpp images");
+
+            image.paletteMap = ReadWholeFile(options->paletteMapFilePath, &image.paletteMapSize);
+        }
     }
     else
     {
@@ -59,7 +67,12 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
             image.isAffine = options->isAffineMap;
             image.tilemap.size = fileSize;
         }
+
         ReadTileImage(inputPath, options->width, options->metatileWidth, options->metatileHeight, options->pinballHatchSprite, &image, !image.hasPalette);
+        if (image.paletteMap != NULL && image.bitDepth == 4)
+        {
+           Convert4BppImageWithPaletteMap(&image);
+        }
     }
     else
     {
@@ -96,6 +109,7 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     char *inputFileExtension = GetFileExtensionAfterDot(inputPath);
     struct GbaToPngOptions options;
     options.paletteFilePath = NULL;
+    options.paletteMapFilePath = NULL;
     options.bitDepth = inputFileExtension[0] - '0';
     options.hasTransparency = false;
     options.width = 1;
@@ -119,6 +133,15 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
             i++;
 
             options.paletteFilePath = argv[i];
+        }
+        else if (strcmp(option, "-palette-map") == 0)
+        {
+            if (i + 1 >= argc)
+                FATAL_ERROR("No palette map file path following \"-palette-map\".\n");
+
+            i++;
+
+            options.paletteMapFilePath = argv[i];
         }
         else if (strcmp(option, "-object") == 0)
         {

@@ -176,6 +176,41 @@ static void ConvertToTiles1Bpp(unsigned char *src, unsigned char *dest, int numT
 	}
 }
 
+void Convert4BppImageWithPaletteMap(struct Image *image)
+{
+	if (image->bitDepth != 4)
+		FATAL_ERROR("Source image must be 4bpp to use a palette map\n");
+	if (image->paletteMap == NULL)
+		FATAL_ERROR("No palette map provided to Convert4BppImageWithPaletteMap\n");
+
+	// Sometimes, it useful to logically embed more than one 16-color palette in a single 4bpp image.
+	// To do this, we take a palette map, and add the corresponding palette offsets from that map to the
+	// source 4bpp image's pixel. This means we have to upgrade the destination image to 8bpp, since 4bpp
+	// can't represent more than a single 16-color palette.
+	unsigned char *newPixels = calloc(image->width * image->height, sizeof(unsigned char));
+	int imageTileWidth = image->width / 8;
+	for (int i = 0; i < image->width; i++)
+	{
+		for (int j = 0; j < image->height; j++)
+		{
+			int tileX = i / 8;
+			int tileY = j / 8;
+			int paletteMapIndex = tileY * imageTileWidth + tileX;
+			int paletteOffset = paletteMapIndex < image->paletteMapSize ? image->paletteMap[paletteMapIndex] : 0;
+
+			int pixelIndex = j * image->width + i;
+			unsigned char pixel4bpp = i % 2 == 0
+				? image->pixels[pixelIndex / 2] >> 4
+				: image->pixels[pixelIndex / 2] & 0xF;
+			newPixels[pixelIndex] = pixel4bpp + paletteOffset * 0x10;
+		}
+	}
+
+	free(image->pixels);
+	image->pixels = newPixels;
+	image->bitDepth = 8;
+}
+
 static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors)
 {
 	int subTileX = 0;
