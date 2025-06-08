@@ -233,14 +233,14 @@ extern s16 gPokedexNumSeen;
 extern s16 gPokedexListPosition;
 
 extern StateFunc gPokedexStateFuncs[];
-extern u16 gUnknown_08081F20[];
-extern u16 gUnknown_08082720[];
-extern u16 gUnknown_08087340[];
-extern u16 gUnknown_08087B40[];
-extern u16 gUnknown_08088F60[];
-extern u16 gUnknown_08089760[];
-extern u8 gUnknown_08089960[];
-extern u8 gUnknown_08089B60[];
+extern u16 gPokedexBg1_Tilemap[];
+extern u16 gPokedexBgText_Gfx[];
+extern u16 gPokedexBg2_Tilemap[];
+extern u16 gPokedexBg_Gfx[];
+extern u16 gPokedexBg3_Tilemap[];
+extern u8 gPokedexBackground_Pals[];
+extern u8 gPokedexSprites_Pals[];
+extern u8 gPokedexSprites_Gfx[];
 
 extern s16 gUnknown_0201A448;
 extern s16 gUnknown_0202BF00;

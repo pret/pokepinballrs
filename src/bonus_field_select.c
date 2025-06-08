@@ -39,9 +39,9 @@ extern const struct VectorU16 gUnknown_086A4CC0[];
 extern const struct VectorU16 gUnknown_086A4CD8[];
 extern const u8 gBonusFieldMenuSelectionToField[];
 
-extern const u8 gUnknown_0807AAE0[];
-extern const u8 gUnknown_0807B2E0[];
-extern const u8 gUnknown_0807BAE0[];
+extern const u8 gBonusFieldSelectBg0_Tilemap[];
+extern const u8 gBonusFieldSelectBg1_Tilemap[];
+extern const u8 gBonusFieldSelectBg2_Tilemap[];
 extern const u16 gBonusFieldSelectStages_Pals[];
 extern const u8 gBonusFieldSelectStages_Gfx[];
 
@@ -70,9 +70,9 @@ void LoadBonusFieldSelectGraphics(void)
     DmaCopy16(3, gBonusFieldSelectStages_Pals, (void *)PLTT, 0x200);
     DmaCopy16(3, gFieldSelectWindow_Gfx, (void *)(VRAM + 0x4000), 0x4000);
     DmaCopy16(3, gBonusFieldSelectStages_Gfx, (void *)(VRAM + 0x8000), 0x1800);
-    DmaCopy16(3, gUnknown_0807AAE0, (void *)VRAM, 0x800);
-    DmaCopy16(3, gUnknown_0807B2E0, (void *)(VRAM + 0x800), 0x800);
-    DmaCopy16(3, gUnknown_0807BAE0, (void *)(VRAM + 0x1000), 0x800);
+    DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, (void *)VRAM, 0x800);
+    DmaCopy16(3, gBonusFieldSelectBg1_Tilemap, (void *)(VRAM + 0x800), 0x800);
+    DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, (void *)(VRAM + 0x1000), 0x800);
     DmaCopy16(3, gFieldSelectSpritePals, (void *)(PLTT + 0x200), 0x60);
     DmaCopy16(3, gFieldSelectSpriteGfx, (void *)(VRAM + 0x10000), 0x4020);
 

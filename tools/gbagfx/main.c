@@ -43,7 +43,7 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
         }
 
         image.hasPalette = true;
-        if (options->paletteFilePath != NULL)
+        if (options->paletteMapFilePath != NULL)
         {
             if (image.bitDepth != 4)
                 FATAL_ERROR("palette map can only be used with 4bpp images");

@@ -913,14 +913,14 @@ gIntroCopyright_Gfx:: @ 0x0807A0C0
 gIntroCopyright_Pal:: @ 0x0807A8E0
     .incbin "graphics/intro/copyright.gbapal"
 
-gUnknown_0807AAE0:: @ 0x0807AAE0
-	.incbin "baserom.gba", 0x7AAE0, 0x800
+gBonusFieldSelectBg0_Tilemap:: @ 0x0807AAE0
+	.incbin "graphics/field_select/bonus_field_select_bg0_tilemap.bin"
 
-gUnknown_0807B2E0:: @ 0x0807B2E0
-	.incbin "baserom.gba", 0x7B2E0, 0x800
+gBonusFieldSelectBg1_Tilemap:: @ 0x0807B2E0
+	.incbin "graphics/field_select/bonus_field_select_bg1_tilemap.bin"
 
-gUnknown_0807BAE0:: @ 0x0807BAE0
-	.incbin "baserom.gba", 0x7BAE0, 0x800
+gBonusFieldSelectBg2_Tilemap:: @ 0x0807BAE0
+	.incbin "graphics/field_select/bonus_field_select_bg2_tilemap.bin"
 
 gBonusFieldSelectStages_Pals:: @ 0x0807C2E0
 	.incbin "graphics/field_select/bonus_field_select_stages.gbapal"
@@ -942,38 +942,38 @@ gUnknown_08080500:: @ 0x08080500
 gUnknown_08081D20:: @ 0x08081D20
 	.incbin "baserom.gba", 0x81D20, 0x200
 
-gUnknown_08081F20:: @ 0x08081F20
-	.incbin "baserom.gba", 0x81F20, 0x800
+gPokedexBg1_Tilemap:: @ 0x08081F20
+	.incbin "graphics/pokedex/bg1_tilemap.bin"
 
-gUnknown_08082720:: @ 0x08082720
-	.incbin "baserom.gba", 0x82720, 0x4420
+gPokedexBgText_Gfx:: @ 0x08082720
+	.incbin "graphics/pokedex/bg_text.4bpp"
+
+	.incbin "baserom.gba", 0x86B20, 0x20
 
 gUnknown_08086B40:: @ 0x08086B40
 	.incbin "baserom.gba", 0x86B40, 0x800
 
-gUnknown_08087340:: @ 0x08087340
-	.incbin "baserom.gba", 0x87340, 0x800
+gPokedexBg2_Tilemap:: @ 0x08087340
+	.incbin "graphics/pokedex/bg2_tilemap.bin"
 
-gUnknown_08087B40:: @ 0x08087B40
-	.incbin "baserom.gba", 0x87B40, 0x1420
+gPokedexBg_Gfx:: @ 0x08087B40
+	.incbin "graphics/pokedex/bg.4bpp"
 
-gUnknown_08088F60:: @ 0x08088F60
-	.incbin "baserom.gba", 0x88F60, 0x800
+	.incbin "baserom.gba", 0x88F40, 0x20
 
-gUnknown_08089760:: @ 0x08089760
-	.incbin "baserom.gba", 0x89760, 0x80
+gPokedexBg3_Tilemap:: @ 0x08088F60
+	.incbin "graphics/pokedex/bg3_tilemap.bin"
 
-gUnknown_080897E0:: @ 0x080897E0
-	.incbin "baserom.gba", 0x897E0, 0x180
+gPokedexBackground_Pals:: @ 0x08089760
+	.incbin "graphics/pokedex/bg.gbapal"
 
-gUnknown_08089960:: @ 0x08089960
-	.incbin "baserom.gba", 0x89960, 0x200
+gPokedexSprites_Pals:: @ 0x08089960
+	.incbin "graphics/pokedex/sprites.gbapal"
 
-gUnknown_08089B60:: @ 0x08089B60
-	.incbin "baserom.gba", 0x89B60, 0x5C00
+gPokedexSprites_Gfx:: @ 0x08089B60
+	.incbin "graphics/pokedex/sprites.4bpp"
 
-gUnknown_0808F760:: @ 0x0808F760
-	.incbin "baserom.gba", 0x8F760, 0x1020
+	.incbin "baserom.gba", 0x90760, 0x20
 
 gUnknown_08090780:: @ 0x08090780
 	.incbin "baserom.gba", 0x90780, 0x2820

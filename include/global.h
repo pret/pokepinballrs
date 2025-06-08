@@ -99,6 +99,13 @@ struct BallState
     /*0x3C*/ struct Vector32 prevPosition;
 };
 
+struct UnkPinballGame13BC
+{
+    /*0x00*/ u8 filler0[0x4];
+    /*0x04*/ s8 unk4;
+    /*0x05*/ u8 filler5[0x7];
+};
+
 struct PinballGame
 {
     /*0x000*/ u32 unk0;
@@ -472,13 +479,8 @@ struct PinballGame
     /*0x132C*/struct BallState *unk132c;
     /*0x1330*/struct BallState *unk1330;
     /*0x1334*/struct BallState unk1334[2];
-    /*0x13BC*/u8 filler13BC[0x4];
-    /*0x13BC*/s8 unk13C0;
-    /*0x13BC*/u8 filler13C1[0xB];
-    /*0x13CC*/s8 unk13CC;
-    /*0x13CD*/u8 filler13CD[0x1];
-    /*0x13CE*/u8 unk13CE;
-    /*0x13CF*/u8 filler[0x41];
+    /*0x13BC*/struct UnkPinballGame13BC unk13BC[2];
+    /*0x13D4*/u8 filler13D4[0x3C];
 } /* size=0x1410 */;
 
 struct Unk02031520_unk10
