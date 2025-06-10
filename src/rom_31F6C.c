@@ -757,10 +757,10 @@ void sub_32F3C(void)
         gCurrentPinballGame->unk3B0[i] = 0;
         gCurrentPinballGame->unk3B6[i] = 0;
         gCurrentPinballGame->unk3BC[i] = 0;
-        gCurrentPinballGame->unk3C4[i].unk0 = 0;
-        gCurrentPinballGame->unk3C4[i].unk2 = 0;
-        gCurrentPinballGame->unk3D0[i].unk0 = 0;
-        gCurrentPinballGame->unk3D0[i].unk2 = 0;
+        gCurrentPinballGame->unk3C4[i].x = 0;
+        gCurrentPinballGame->unk3C4[i].y = 0;
+        gCurrentPinballGame->unk3D0[i].x = 0;
+        gCurrentPinballGame->unk3D0[i].y = 0;
     }
 
     gCurrentPinballGame->unk3DC = 0;
@@ -912,7 +912,7 @@ void sub_3342C(s16 index1, s16 index2)
 {
     u8 temp397, temp39A, temp39D, temp3A0, temp3A3, temp3A6, temp3A9, temp3AC;
     u16 temp3B0, temp3B6, temp3BC;
-    struct UnkPinballGame3C4 temp3C4, temp3D0;
+    struct Vector16 temp3C4, temp3D0;
 
     temp397 = gCurrentPinballGame->unk397[index1];
     temp39A = gCurrentPinballGame->unk39A[index1];
@@ -925,10 +925,10 @@ void sub_3342C(s16 index1, s16 index2)
     temp3B0 = gCurrentPinballGame->unk3B0[index1];
     temp3B6 = gCurrentPinballGame->unk3B6[index1];
     temp3BC = gCurrentPinballGame->unk3BC[index1];
-    temp3C4.unk0 = gCurrentPinballGame->unk3C4[index1].unk0;
-    temp3C4.unk2 = gCurrentPinballGame->unk3C4[index1].unk2;
-    temp3D0.unk0 = gCurrentPinballGame->unk3D0[index1].unk0;
-    temp3D0.unk2 = gCurrentPinballGame->unk3D0[index1].unk2;
+    temp3C4.x = gCurrentPinballGame->unk3C4[index1].x;
+    temp3C4.y = gCurrentPinballGame->unk3C4[index1].y;
+    temp3D0.x = gCurrentPinballGame->unk3D0[index1].x;
+    temp3D0.y = gCurrentPinballGame->unk3D0[index1].y;
 
     gCurrentPinballGame->unk397[index1] = gCurrentPinballGame->unk397[index2];
     gCurrentPinballGame->unk39A[index1] = gCurrentPinballGame->unk39A[index2];
@@ -941,10 +941,10 @@ void sub_3342C(s16 index1, s16 index2)
     gCurrentPinballGame->unk3B0[index1] = gCurrentPinballGame->unk3B0[index2];
     gCurrentPinballGame->unk3B6[index1] = gCurrentPinballGame->unk3B6[index2];
     gCurrentPinballGame->unk3BC[index1] = gCurrentPinballGame->unk3BC[index2];
-    gCurrentPinballGame->unk3C4[index1].unk0 = gCurrentPinballGame->unk3C4[index2].unk0;
-    gCurrentPinballGame->unk3C4[index1].unk2 = gCurrentPinballGame->unk3C4[index2].unk2;
-    gCurrentPinballGame->unk3D0[index1].unk0 = gCurrentPinballGame->unk3D0[index2].unk0;
-    gCurrentPinballGame->unk3D0[index1].unk2 = gCurrentPinballGame->unk3D0[index2].unk2;
+    gCurrentPinballGame->unk3C4[index1].x = gCurrentPinballGame->unk3C4[index2].x;
+    gCurrentPinballGame->unk3C4[index1].y = gCurrentPinballGame->unk3C4[index2].y;
+    gCurrentPinballGame->unk3D0[index1].x = gCurrentPinballGame->unk3D0[index2].x;
+    gCurrentPinballGame->unk3D0[index1].y = gCurrentPinballGame->unk3D0[index2].y;
 
     gCurrentPinballGame->unk397[index2] = temp397;
     gCurrentPinballGame->unk39A[index2] = temp39A;
@@ -957,8 +957,311 @@ void sub_3342C(s16 index1, s16 index2)
     gCurrentPinballGame->unk3B0[index2] = temp3B0;
     gCurrentPinballGame->unk3B6[index2] = temp3B6;
     gCurrentPinballGame->unk3BC[index2] = temp3BC;
-    gCurrentPinballGame->unk3C4[index2].unk0 = temp3C4.unk0;
-    gCurrentPinballGame->unk3C4[index2].unk2 = temp3C4.unk2;
-    gCurrentPinballGame->unk3D0[index2].unk0 = temp3D0.unk0;
-    gCurrentPinballGame->unk3D0[index2].unk2 = temp3D0.unk2;
+    gCurrentPinballGame->unk3C4[index2].x = temp3C4.x;
+    gCurrentPinballGame->unk3C4[index2].y = temp3C4.y;
+    gCurrentPinballGame->unk3D0[index2].x = temp3D0.x;
+    gCurrentPinballGame->unk3D0[index2].y = temp3D0.y;
+}
+
+extern struct SongHeader gUnknown_086A1588;
+extern s16 gUnknown_086AE5EC[][3];
+void sub_336E0(void) {
+    bool32 r4 = TRUE;
+    u16 sp0 = 0;
+    u16 r7 = 0;
+    s16 i;
+    s16 j;
+    if(gCurrentPinballGame->unk385 > 18) { //Number hit > 18
+        for(i = 0; i < 3; i++) {
+            if(gCurrentPinballGame->unk3A6[i]) 
+                r4 = FALSE;
+        }
+        if(r4) {
+            gCurrentPinballGame->unk13 = 2; //Transition to next phase of bonus game?
+            gMain.spriteGroups[7].available = 0;
+            gMain.spriteGroups[8].available = 0;
+            gMain.spriteGroups[9].available = 0;
+        }
+    }
+    for(i = 0; i < 3; i++) {
+        switch(gCurrentPinballGame->unk3A0[i]) { //duskull lifecycle state
+            case 0:
+                if(gCurrentPinballGame->unk385 <= 18 && gCurrentPinballGame->unk396 < 2) {
+                    gCurrentPinballGame->unk396++; //Number of active duskull
+                    gCurrentPinballGame->unk3A0[i] = 1; //duskull lifecycle state
+                    gCurrentPinballGame->unk3A3[i] = 0; //unknown
+                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                    // r7 = 0;
+                    gCurrentPinballGame->unk3C4[i].x = (Random() % 1400) - 700; //Sprite x pos
+                    gCurrentPinballGame->unk3C4[i].y = (Random() % 9) * 80; // sprite y pos
+                    gCurrentPinballGame->unk3BC[i] = (Random() % 1000) + 200; //Time before escaping
+                    gCurrentPinballGame->unk3A6[i] = 0; // = r7 //unknown
+                    gCurrentPinballGame->unk3A9[i] = 0; // = r7
+                    sp0 = 4;
+                    r7 = 4;
+                    gCurrentPinballGame->unk3B6[i] = 0; //Time alive
+                    MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1588);
+                    for(j = 2; j > 0; j--) {
+                        if(gCurrentPinballGame->unk3C4[j].y > gCurrentPinballGame->unk3C4[j-1].y) {
+                            sub_3342C(j, j-1);
+                            j = 3;
+                        }
+                    }
+                } else {
+                    gCurrentPinballGame->unk3C4[i].x = 0;
+                    gCurrentPinballGame->unk3C4[i].y = 120;
+                    gCurrentPinballGame->unk3A6[i] = 0; 
+                    Random(); // ! what? useless local assignemnt?
+                }
+                break;
+            case 1: //Spawn in, Wait and initial movement decision
+                if(gCurrentPinballGame->unk3B0[i] < 20) { //Time since last decision
+                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                    gCurrentPinballGame->unk3A6[i] = (gCurrentPinballGame->unk3B0[i] % 4) / 2;
+                    sp0 = 4;
+                    r7 = 4;
+                    break;
+                } else {
+                    if(gMain.systemFrameCount % 2) {
+                        gCurrentPinballGame->unk3A0[i] = 2; //duskull lifecycle state. Move Left
+                        gCurrentPinballGame->unk3A3[i] = 0; //Sprite = move left sprite
+                    } else {
+                        gCurrentPinballGame->unk3A0[i] = 3; //duskull lifecycle state. Move Right
+                        gCurrentPinballGame->unk3A3[i] = 7; //Sprite = move right sprite
+                    }
+                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                    gCurrentPinballGame->unk3A6[i] = 1;
+                    gCurrentPinballGame->unk3A9[i] = 1;
+                    sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+                    r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+                }
+                break;
+            case 2: // Move Left state
+                gCurrentPinballGame->unk3B6[i]++; //Time Alive
+                if(gCurrentPinballGame->unk3C4[i].x > -800) { //Dusclops x pos
+                    gCurrentPinballGame->unk3C4[i].x -= 3; //Move left
+                    if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
+                        gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                    } else {
+                        gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                        gCurrentPinballGame->unk3A3[i]++; //Animation frame advance
+                        if(gCurrentPinballGame->unk3A3[i] > 3) { //Animation frame reset
+                            gCurrentPinballGame->unk3A3[i] = 0;
+                        }
+                    }
+                } else {
+                    if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
+                        gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                    } else {
+                        gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                        gCurrentPinballGame->unk3A3[i]++; //Animation frame advance 'move left to neutral state'
+                        if(gCurrentPinballGame->unk3A3[i] >= 7) { //Animation frame at neutral forward, continue with move right 
+                            gCurrentPinballGame->unk3A3[i] = 7;
+                            gCurrentPinballGame->unk3A0[i] = 3; //duskull lifecycle state. Move Right
+                        }
+                    }
+                }
+                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+                break;
+            case 3: //Move Right state 
+                gCurrentPinballGame->unk3B6[i]++; //Time Alive
+                if(gCurrentPinballGame->unk3C4[i].x < 800) { //Dusclops x pos
+                    gCurrentPinballGame->unk3C4[i].x += 3;
+                    gCurrentPinballGame->unk3C4[i].y += 0; // ! Dead code needed for matching
+                    if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
+                        gCurrentPinballGame->unk3B0[i]++;
+                    } else {
+                        gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                        gCurrentPinballGame->unk3A3[i]++; //Animation frame advance 
+                        if(gCurrentPinballGame->unk3A3[i] > 10) {
+                            gCurrentPinballGame->unk3A3[i] = 7;
+                        }
+                    }
+                } else {
+                    if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
+                        gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                    } else {
+                        gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                        gCurrentPinballGame->unk3A3[i]++; //Animation frame advance
+                        if(gCurrentPinballGame->unk3A3[i] >= 14) {
+                            gCurrentPinballGame->unk3A3[i] = 0; //Animation frame set
+                            gCurrentPinballGame->unk3A0[i] = 2; //duskull lifecycle state. Move Left
+                        }
+                    }
+                }
+                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+                break;
+            case 4: //Duskull Hit
+                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+                gCurrentPinballGame->unk3A3[i] = 14; //Animation frame
+                gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                gCurrentPinballGame->unk3A0[i] = 5; //duskull lifecycle state. Death animation?
+                gCurrentPinballGame->unk3AC[i] = 0;
+                gCurrentPinballGame->unk3A9[i] = 0;
+                if(gCurrentPinballGame->unk396 > 0)
+                    gCurrentPinballGame->unk396--; //Number of active duskull
+                gCurrentPinballGame->unk3C = 100000;
+                gCurrentPinballGame->unk385++; // Number hit
+                m4aSongNumStart(SE_UNKNOWN_0xF2); //Duskull Death cry
+                sub_11B0(7);
+                break;
+            case 5: //Duskull Dying Animation
+                if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
+                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                } else {
+                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                    gCurrentPinballGame->unk3A3[i]++; //Animation frame advance
+                    if(gCurrentPinballGame->unk3A3[i] > 15) { //Animation frame
+                        gCurrentPinballGame->unk3A3[i] = 15; //Animation frame
+                        gCurrentPinballGame->unk3A0[i] = 9; //duskull lifecycle state. Despawn?
+                        gCurrentPinballGame->unk3A6[i] = 0;
+                    }
+                }
+                if(gCurrentPinballGame->unk3A3[i] == 15) //Animation frame
+                    gCurrentPinballGame->unk3AC[i]++;
+                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+                break;
+            case 6: //Escape while in walk left state, turn to face center
+                if(gCurrentPinballGame->unk3B0[i] < 6) { //Time since last decision
+                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                    sp0 = 3;
+                    r7 = 3;
+                    break;
+                }
+                gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                gCurrentPinballGame->unk3A3[i] = 18; //Animation frame
+                gCurrentPinballGame->unk3A0[i] = 8; //duskull lifecycle state. Departure Animation
+                gCurrentPinballGame->unk3A9[i] = 0;
+                if(gCurrentPinballGame->unk396 > 0)
+                    gCurrentPinballGame->unk396--; //Number of active duskull
+                sp0 = 3;
+                r7 = 3;
+                m4aSongNumStart(SE_UNKNOWN_0xF3); //Duskull departs, not killed
+                break;
+            case 7: //Escape while not in walk left state, turn to face
+                if(gCurrentPinballGame->unk3B0[i] < 6) {
+                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                    sp0 = 9;
+                    r7 = 3;
+                    break;
+                }
+                gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                gCurrentPinballGame->unk3A3[i] = 18; //Animation frame
+                gCurrentPinballGame->unk3A0[i] = 8; //duskull lifecycle state. Departure Animation?
+                gCurrentPinballGame->unk3A9[i] = 0;
+                if(gCurrentPinballGame->unk396 > 0)
+                    gCurrentPinballGame->unk396--; //Number of active duskull
+                m4aSongNumStart(SE_UNKNOWN_0xF3); //Duskull departs, not killed
+                sp0 = 9;
+                r7 = 3;
+                break;
+            case 8: //Escape animation
+                if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
+                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                } else {
+                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                    gCurrentPinballGame->unk3A3[i]++; //Animation frame Advance
+                    if(gCurrentPinballGame->unk3A3[i] > 25) { //Animation frame
+                        gCurrentPinballGame->unk3A3[i] = 25; //Animation frame
+                        gCurrentPinballGame->unk3A0[i] = 9; //duskull lifecycle state. Despawn?
+                    }
+                }
+                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+                break;
+            case 9: // Cleanup sprite
+                gCurrentPinballGame->unk3A6[i] = 0;
+                gCurrentPinballGame->unk3A9[i] = 0;
+                gCurrentPinballGame->unk3A0[i] = 0; //duskull lifecycle state. Ready to respawn
+                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+                break;
+        }
+        if(gCurrentPinballGame->unk3B6[i] > gCurrentPinballGame->unk3BC[i] //Time alive > time before escape, && number hit < 18
+        && gCurrentPinballGame->unk385 <= 18) { 
+            gCurrentPinballGame->unk3B6[i] = 0;
+            if(gCurrentPinballGame->unk3A0[i] == 2)
+                gCurrentPinballGame->unk3A0[i] = 6; //Escape after moving left
+            else
+                gCurrentPinballGame->unk3A0[i] = 7; //Escape after moving right
+            gCurrentPinballGame->unk3B0[i] = 0;
+        }
+        gCurrentPinballGame->unk397[i] = gCurrentPinballGame->unk39A[i];
+        gCurrentPinballGame->unk39A[i] = r7;
+        gCurrentPinballGame->unk39D[i] = sp0;
+        gCurrentPinballGame->unk3D0[i].x = (gCurrentPinballGame->unk3C4[i].x / 10) * 2 + 208;
+        gCurrentPinballGame->unk3D0[i].y = (gCurrentPinballGame->unk3C4[i].y / 10) * 2 + 66;
+    }
+}
+
+extern const u8 gUnknown_08510E4C[];
+extern const u16 gUnknown_086BA0A0[][2][3];
+void sub_340EC() {
+    s16 i, j;
+    s16 sb;
+    struct SpriteGroup *spriteGroup;
+    struct OamDataSimple * oamData;
+    u16 * dst;
+    const u16 * src;
+    for(i = 0; i < 3; i++) {
+        s16 r8 = gCurrentPinballGame->unk397[i];
+        DmaCopy16(3, gUnknown_08510E4C + r8 * 0x280, OBJ_VRAM0+0x920 + i * 0x280, 0x280);
+        sb = gCurrentPinballGame->unk39D[i]; // loads 39D, casts to s8, casts to u16, stores in sb for later in the function???
+        spriteGroup = &gUnknown_0200B3B8[7 + i];
+        if(gCurrentPinballGame->unk3A6[i]) {
+            s32 x = 0; // Scrub C to get the compiler to add before subtracting
+            spriteGroup->baseX = gCurrentPinballGame->unk3C4[i].x / 10 + 108 + x - gCurrentPinballGame->unk58;
+            spriteGroup->baseY = gCurrentPinballGame->unk3C4[i].y / 10 + 28 + x - gCurrentPinballGame->unk5A;
+        } else {
+            spriteGroup->baseX = 240;
+            spriteGroup->baseY = 180;
+        }
+        if(r8 == 6) {
+            u16 scaleX;
+            u16 scaleY;
+            if(gCurrentPinballGame->unk3AC[i] <= 6) {
+                scaleX = (gCurrentPinballGame->unk3AC[i] * 0x80) / 6 + 0x100;
+                scaleY = ((6-gCurrentPinballGame->unk3AC[i]) * 0x80) / 6 + 0x80;
+            } else {
+                scaleX = ((24-gCurrentPinballGame->unk3AC[i]) * 0x170) / 18 + 0x10;
+                scaleY = ((gCurrentPinballGame->unk3AC[i]-6) * 0x1C0) / 18 + 0x80;
+            }
+            SetMatrixScale(scaleX, scaleY, i + 2);
+            spriteGroup->baseX -= 16;
+            spriteGroup->baseY -= 16;
+            for(j = 0; j < 2; j++) {
+                oamData = &spriteGroup->oam[j];
+
+                dst = (u16*)&gOamBuffer[oamData->oamId];
+                src = gUnknown_086BA0A0[sb][j];
+                *dst++ = *src++;
+                *dst++ = *src++;
+                *dst++ = *src++;
+
+                gOamBuffer[oamData->oamId].x += spriteGroup->baseX;
+                gOamBuffer[oamData->oamId].y += spriteGroup->baseY;
+                gOamBuffer[oamData->oamId].tileNum += i * 20;
+                gOamBuffer[oamData->oamId].affineMode = ST_OAM_AFFINE_DOUBLE;
+                gOamBuffer[oamData->oamId].matrixNum = i + 2;
+            }
+        } else {
+            for(j = 0; j < 2; j++) {
+                oamData = &spriteGroup->oam[j];
+
+                dst = (u16*)&gOamBuffer[oamData->oamId];
+                src = gUnknown_086BA0A0[sb][j];
+                *dst++ = *src++;
+                *dst++ = *src++;
+                *dst++ = *src++;
+
+                gOamBuffer[oamData->oamId].x += spriteGroup->baseX;
+                gOamBuffer[oamData->oamId].y += spriteGroup->baseY;
+                gOamBuffer[oamData->oamId].tileNum += i * 20;
+            }
+        }
+    }
 }
