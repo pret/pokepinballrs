@@ -13,6 +13,9 @@ void sub_32DF8(void);
 extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gEggLocations[MAIN_FIELD_COUNT][26];
 
+extern struct SongHeader gUnknown_086A1588;
+extern s16 gUnknown_086AE5EC[][3];
+
 #define BONUS_DUSKULL_TIME 7200 //2 minutes, 60FPS
 
 static inline u32 GetTimeAdjustedRandom()
@@ -963,233 +966,284 @@ void sub_3342C(s16 index1, s16 index2)
     gCurrentPinballGame->unk3D0[index2].y = temp3D0.y;
 }
 
-extern struct SongHeader gUnknown_086A1588;
-extern s16 gUnknown_086AE5EC[][3];
 void sub_336E0(void) {
+    s16 i, j;
     bool32 r4 = TRUE;
     u16 sp0 = 0;
     u16 r7 = 0;
-    s16 i;
-    s16 j;
-    if(gCurrentPinballGame->unk385 > 18) { //Number hit > 18
-        for(i = 0; i < 3; i++) {
-            if(gCurrentPinballGame->unk3A6[i]) 
+
+    if (gCurrentPinballGame->unk385 > 18)
+    {
+        for (i = 0; i < 3; i++)
+        {
+            if (gCurrentPinballGame->unk3A6[i])
                 r4 = FALSE;
         }
-        if(r4) {
-            gCurrentPinballGame->unk13 = 2; //Transition to next phase of bonus game?
+        if (r4)
+        {
+            gCurrentPinballGame->unk13 = 2; // Transition to next phase of bonus game?
             gMain.spriteGroups[7].available = 0;
             gMain.spriteGroups[8].available = 0;
             gMain.spriteGroups[9].available = 0;
         }
     }
-    for(i = 0; i < 3; i++) {
-        switch(gCurrentPinballGame->unk3A0[i]) { //duskull lifecycle state
-            case 0:
-                if(gCurrentPinballGame->unk385 <= 18 && gCurrentPinballGame->unk396 < 2) {
-                    gCurrentPinballGame->unk396++; //Number of active duskull
-                    gCurrentPinballGame->unk3A0[i] = 1; //duskull lifecycle state
-                    gCurrentPinballGame->unk3A3[i] = 0; //unknown
-                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
-                    // r7 = 0;
-                    gCurrentPinballGame->unk3C4[i].x = (Random() % 1400) - 700; //Sprite x pos
-                    gCurrentPinballGame->unk3C4[i].y = (Random() % 9) * 80; // sprite y pos
-                    gCurrentPinballGame->unk3BC[i] = (Random() % 1000) + 200; //Time before escaping
-                    gCurrentPinballGame->unk3A6[i] = 0; // = r7 //unknown
-                    gCurrentPinballGame->unk3A9[i] = 0; // = r7
-                    sp0 = 4;
-                    r7 = 4;
-                    gCurrentPinballGame->unk3B6[i] = 0; //Time alive
-                    MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1588);
-                    for(j = 2; j > 0; j--) {
-                        if(gCurrentPinballGame->unk3C4[j].y > gCurrentPinballGame->unk3C4[j-1].y) {
-                            sub_3342C(j, j-1);
-                            j = 3;
-                        }
-                    }
-                } else {
-                    gCurrentPinballGame->unk3C4[i].x = 0;
-                    gCurrentPinballGame->unk3C4[i].y = 120;
-                    gCurrentPinballGame->unk3A6[i] = 0; 
-                    Random(); // ! what? useless local assignemnt?
-                }
-                break;
-            case 1: //Spawn in, Wait and initial movement decision
-                if(gCurrentPinballGame->unk3B0[i] < 20) { //Time since last decision
-                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
-                    gCurrentPinballGame->unk3A6[i] = (gCurrentPinballGame->unk3B0[i] % 4) / 2;
-                    sp0 = 4;
-                    r7 = 4;
-                    break;
-                } else {
-                    if(gMain.systemFrameCount % 2) {
-                        gCurrentPinballGame->unk3A0[i] = 2; //duskull lifecycle state. Move Left
-                        gCurrentPinballGame->unk3A3[i] = 0; //Sprite = move left sprite
-                    } else {
-                        gCurrentPinballGame->unk3A0[i] = 3; //duskull lifecycle state. Move Right
-                        gCurrentPinballGame->unk3A3[i] = 7; //Sprite = move right sprite
-                    }
-                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
-                    gCurrentPinballGame->unk3A6[i] = 1;
-                    gCurrentPinballGame->unk3A9[i] = 1;
-                    sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
-                    r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
-                }
-                break;
-            case 2: // Move Left state
-                gCurrentPinballGame->unk3B6[i]++; //Time Alive
-                if(gCurrentPinballGame->unk3C4[i].x > -800) { //Dusclops x pos
-                    gCurrentPinballGame->unk3C4[i].x -= 3; //Move left
-                    if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
-                        gCurrentPinballGame->unk3B0[i]++; //Time since last decision
-                    } else {
-                        gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
-                        gCurrentPinballGame->unk3A3[i]++; //Animation frame advance
-                        if(gCurrentPinballGame->unk3A3[i] > 3) { //Animation frame reset
-                            gCurrentPinballGame->unk3A3[i] = 0;
-                        }
-                    }
-                } else {
-                    if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
-                        gCurrentPinballGame->unk3B0[i]++; //Time since last decision
-                    } else {
-                        gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
-                        gCurrentPinballGame->unk3A3[i]++; //Animation frame advance 'move left to neutral state'
-                        if(gCurrentPinballGame->unk3A3[i] >= 7) { //Animation frame at neutral forward, continue with move right 
-                            gCurrentPinballGame->unk3A3[i] = 7;
-                            gCurrentPinballGame->unk3A0[i] = 3; //duskull lifecycle state. Move Right
-                        }
-                    }
-                }
-                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
-                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
-                break;
-            case 3: //Move Right state 
-                gCurrentPinballGame->unk3B6[i]++; //Time Alive
-                if(gCurrentPinballGame->unk3C4[i].x < 800) { //Dusclops x pos
-                    gCurrentPinballGame->unk3C4[i].x += 3;
-                    gCurrentPinballGame->unk3C4[i].y += 0; // ! Dead code needed for matching
-                    if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
-                        gCurrentPinballGame->unk3B0[i]++;
-                    } else {
-                        gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
-                        gCurrentPinballGame->unk3A3[i]++; //Animation frame advance 
-                        if(gCurrentPinballGame->unk3A3[i] > 10) {
-                            gCurrentPinballGame->unk3A3[i] = 7;
-                        }
-                    }
-                } else {
-                    if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
-                        gCurrentPinballGame->unk3B0[i]++; //Time since last decision
-                    } else {
-                        gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
-                        gCurrentPinballGame->unk3A3[i]++; //Animation frame advance
-                        if(gCurrentPinballGame->unk3A3[i] >= 14) {
-                            gCurrentPinballGame->unk3A3[i] = 0; //Animation frame set
-                            gCurrentPinballGame->unk3A0[i] = 2; //duskull lifecycle state. Move Left
-                        }
-                    }
-                }
-                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
-                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
-                break;
-            case 4: //Duskull Hit
-                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
-                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
-                gCurrentPinballGame->unk3A3[i] = 14; //Animation frame
+
+    for (i = 0; i < 3; i++)
+    {
+        switch(gCurrentPinballGame->unk3A0[i]) // duskull lifecycle state
+        {
+        case 0:
+            if (gCurrentPinballGame->unk385 <= 18 && gCurrentPinballGame->unk396 < 2)
+            {
+                gCurrentPinballGame->unk396++; //Number of active duskull
+                gCurrentPinballGame->unk3A0[i] = 1; //duskull lifecycle state
+                gCurrentPinballGame->unk3A3[i] = 0; //unknown
                 gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
-                gCurrentPinballGame->unk3A0[i] = 5; //duskull lifecycle state. Death animation?
-                gCurrentPinballGame->unk3AC[i] = 0;
-                gCurrentPinballGame->unk3A9[i] = 0;
-                if(gCurrentPinballGame->unk396 > 0)
-                    gCurrentPinballGame->unk396--; //Number of active duskull
-                gCurrentPinballGame->unk3C = 100000;
-                gCurrentPinballGame->unk385++; // Number hit
-                m4aSongNumStart(SE_UNKNOWN_0xF2); //Duskull Death cry
-                sub_11B0(7);
+                gCurrentPinballGame->unk3C4[i].x = (Random() % 1400) - 700; //Sprite x pos
+                gCurrentPinballGame->unk3C4[i].y = (Random() % 9) * 80; // sprite y pos
+                gCurrentPinballGame->unk3BC[i] = (Random() % 1000) + 200; //Time before escaping
+                gCurrentPinballGame->unk3A6[i] = 0; // = r7 //unknown
+                gCurrentPinballGame->unk3A9[i] = 0; // = r7
+                sp0 = 4;
+                r7 = 4;
+                gCurrentPinballGame->unk3B6[i] = 0; //Time alive
+                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1588);
+                for (j = 2; j > 0; j--)
+                {
+                    if (gCurrentPinballGame->unk3C4[j].y > gCurrentPinballGame->unk3C4[j-1].y)
+                    {
+                        sub_3342C(j, j - 1);
+                        j = 3;
+                    }
+                }
+            }
+            else
+            {
+                gCurrentPinballGame->unk3C4[i].x = 0;
+                gCurrentPinballGame->unk3C4[i].y = 120;
+                gCurrentPinballGame->unk3A6[i] = 0;
+                Random();
+            }
+            break;
+        case 1: //Spawn in, Wait and initial movement decision
+            if (gCurrentPinballGame->unk3B0[i] < 20) //Time since last decision
+            {
+                gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                gCurrentPinballGame->unk3A6[i] = (gCurrentPinballGame->unk3B0[i] % 4) / 2;
+                sp0 = 4;
+                r7 = 4;
                 break;
-            case 5: //Duskull Dying Animation
-                if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
+            }
+            else
+            {
+                if (gMain.systemFrameCount % 2)
+                {
+                    gCurrentPinballGame->unk3A0[i] = 2; //duskull lifecycle state. Move Left
+                    gCurrentPinballGame->unk3A3[i] = 0; //Sprite = move left sprite
+                }
+                else
+                {
+                    gCurrentPinballGame->unk3A0[i] = 3; //duskull lifecycle state. Move Right
+                    gCurrentPinballGame->unk3A3[i] = 7; //Sprite = move right sprite
+                }
+
+                gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                gCurrentPinballGame->unk3A6[i] = 1;
+                gCurrentPinballGame->unk3A9[i] = 1;
+                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+            }
+            break;
+        case 2: // Move Left state
+            gCurrentPinballGame->unk3B6[i]++; //Time Alive
+            if (gCurrentPinballGame->unk3C4[i].x > -800) //Dusclops x pos
+            {
+                gCurrentPinballGame->unk3C4[i].x -= 3; //Move left
+                if (gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i])
+                {
                     gCurrentPinballGame->unk3B0[i]++; //Time since last decision
-                } else {
+                }
+                else
+                {
                     gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
                     gCurrentPinballGame->unk3A3[i]++; //Animation frame advance
-                    if(gCurrentPinballGame->unk3A3[i] > 15) { //Animation frame
-                        gCurrentPinballGame->unk3A3[i] = 15; //Animation frame
-                        gCurrentPinballGame->unk3A0[i] = 9; //duskull lifecycle state. Despawn?
-                        gCurrentPinballGame->unk3A6[i] = 0;
+                    if (gCurrentPinballGame->unk3A3[i] > 3) //Animation frame reset
+                        gCurrentPinballGame->unk3A3[i] = 0;
+                }
+            }
+            else
+            {
+                if (gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i])
+                {
+                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                }
+                else
+                {
+                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                    gCurrentPinballGame->unk3A3[i]++; //Animation frame advance 'move left to neutral state'
+                    if (gCurrentPinballGame->unk3A3[i] > 6) //Animation frame at neutral forward, continue with move right 
+                    {
+                        gCurrentPinballGame->unk3A3[i] = 7;
+                        gCurrentPinballGame->unk3A0[i] = 3; //duskull lifecycle state. Move Right
                     }
                 }
-                if(gCurrentPinballGame->unk3A3[i] == 15) //Animation frame
-                    gCurrentPinballGame->unk3AC[i]++;
-                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
-                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
-                break;
-            case 6: //Escape while in walk left state, turn to face center
-                if(gCurrentPinballGame->unk3B0[i] < 6) { //Time since last decision
-                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
-                    sp0 = 3;
-                    r7 = 3;
-                    break;
+            }
+            sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+            r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+            break;
+        case 3: //Move Right state 
+            gCurrentPinballGame->unk3B6[i]++; //Time Alive
+            if (gCurrentPinballGame->unk3C4[i].x < 800) //Dusclops x pos
+            {
+                gCurrentPinballGame->unk3C4[i].x += 3;
+                gCurrentPinballGame->unk3C4[i].y += 0; // ! Dead code needed for matching
+                if (gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i])
+                {
+                    gCurrentPinballGame->unk3B0[i]++;
                 }
+                else
+                {
+                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                    gCurrentPinballGame->unk3A3[i]++; //Animation frame advance 
+                    if (gCurrentPinballGame->unk3A3[i] > 10)
+                        gCurrentPinballGame->unk3A3[i] = 7;
+                }
+            }
+            else
+            {
+                if (gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i])
+                {
+                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                }
+                else
+                {
+                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                    gCurrentPinballGame->unk3A3[i]++; //Animation frame advance
+                    if (gCurrentPinballGame->unk3A3[i] > 13)
+                    {
+                        gCurrentPinballGame->unk3A3[i] = 0; //Animation frame set
+                        gCurrentPinballGame->unk3A0[i] = 2; //duskull lifecycle state. Move Left
+                    }
+                }
+            }
+            sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+            r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+            break;
+        case 4: //Duskull Hit
+            sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+            r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+            gCurrentPinballGame->unk3A3[i] = 14; //Animation frame
+            gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+            gCurrentPinballGame->unk3A0[i] = 5; //duskull lifecycle state. Death animation?
+            gCurrentPinballGame->unk3AC[i] = 0;
+            gCurrentPinballGame->unk3A9[i] = 0;
+            if (gCurrentPinballGame->unk396 > 0)
+                gCurrentPinballGame->unk396--; //Number of active duskull
+            gCurrentPinballGame->unk3C = 100000;
+            gCurrentPinballGame->unk385++; // Number hit
+            m4aSongNumStart(SE_UNKNOWN_0xF2); //Duskull Death cry
+            sub_11B0(7);
+            break;
+        case 5: //Duskull Dying Animation
+            if (gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i])
+            {
+                gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+            }
+            else
+            {
+                gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                gCurrentPinballGame->unk3A3[i]++; //Animation frame advance
+                if (gCurrentPinballGame->unk3A3[i] > 15) //Animation frame
+                {
+                    gCurrentPinballGame->unk3A3[i] = 15; //Animation frame
+                    gCurrentPinballGame->unk3A0[i] = 9; //duskull lifecycle state. Despawn?
+                    gCurrentPinballGame->unk3A6[i] = 0;
+                }
+            }
+            if (gCurrentPinballGame->unk3A3[i] == 15) //Animation frame
+                gCurrentPinballGame->unk3AC[i]++;
+            sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+            r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+            break;
+        case 6: //Escape while in walk left state, turn to face center
+            if (gCurrentPinballGame->unk3B0[i] < 6) //Time since last decision
+            {
+                gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                sp0 = 3;
+                r7 = 3;
+            }
+            else
+            {
                 gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
                 gCurrentPinballGame->unk3A3[i] = 18; //Animation frame
                 gCurrentPinballGame->unk3A0[i] = 8; //duskull lifecycle state. Departure Animation
                 gCurrentPinballGame->unk3A9[i] = 0;
-                if(gCurrentPinballGame->unk396 > 0)
+                if (gCurrentPinballGame->unk396 > 0)
                     gCurrentPinballGame->unk396--; //Number of active duskull
                 sp0 = 3;
                 r7 = 3;
                 m4aSongNumStart(SE_UNKNOWN_0xF3); //Duskull departs, not killed
-                break;
-            case 7: //Escape while not in walk left state, turn to face
-                if(gCurrentPinballGame->unk3B0[i] < 6) {
-                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
-                    sp0 = 9;
-                    r7 = 3;
-                    break;
-                }
+            }
+            break;
+        case 7: //Escape while not in walk left state, turn to face
+            if (gCurrentPinballGame->unk3B0[i] < 6)
+            {
+                gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+                sp0 = 9;
+                r7 = 3;
+            }
+            else
+            {
                 gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
                 gCurrentPinballGame->unk3A3[i] = 18; //Animation frame
                 gCurrentPinballGame->unk3A0[i] = 8; //duskull lifecycle state. Departure Animation?
                 gCurrentPinballGame->unk3A9[i] = 0;
-                if(gCurrentPinballGame->unk396 > 0)
+                if (gCurrentPinballGame->unk396 > 0)
                     gCurrentPinballGame->unk396--; //Number of active duskull
                 m4aSongNumStart(SE_UNKNOWN_0xF3); //Duskull departs, not killed
                 sp0 = 9;
                 r7 = 3;
-                break;
-            case 8: //Escape animation
-                if(gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i]) {
-                    gCurrentPinballGame->unk3B0[i]++; //Time since last decision
-                } else {
-                    gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
-                    gCurrentPinballGame->unk3A3[i]++; //Animation frame Advance
-                    if(gCurrentPinballGame->unk3A3[i] > 25) { //Animation frame
-                        gCurrentPinballGame->unk3A3[i] = 25; //Animation frame
-                        gCurrentPinballGame->unk3A0[i] = 9; //duskull lifecycle state. Despawn?
-                    }
+            }
+            break;
+        case 8: //Escape animation
+            if (gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][1] > gCurrentPinballGame->unk3B0[i])
+            {
+                gCurrentPinballGame->unk3B0[i]++; //Time since last decision
+            }
+            else
+            {
+                gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
+                gCurrentPinballGame->unk3A3[i]++; //Animation frame Advance
+                if (gCurrentPinballGame->unk3A3[i] > 25) //Animation frame
+                {
+                    gCurrentPinballGame->unk3A3[i] = 25; //Animation frame
+                    gCurrentPinballGame->unk3A0[i] = 9; //duskull lifecycle state. Despawn?
                 }
-                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
-                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
-                break;
-            case 9: // Cleanup sprite
-                gCurrentPinballGame->unk3A6[i] = 0;
-                gCurrentPinballGame->unk3A9[i] = 0;
-                gCurrentPinballGame->unk3A0[i] = 0; //duskull lifecycle state. Ready to respawn
-                sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
-                r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
-                break;
+            }
+            sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+            r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+            break;
+        case 9: // Cleanup sprite
+            gCurrentPinballGame->unk3A6[i] = 0;
+            gCurrentPinballGame->unk3A9[i] = 0;
+            gCurrentPinballGame->unk3A0[i] = 0; //duskull lifecycle state. Ready to respawn
+            sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
+            r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
+            break;
         }
-        if(gCurrentPinballGame->unk3B6[i] > gCurrentPinballGame->unk3BC[i] //Time alive > time before escape, && number hit < 18
-        && gCurrentPinballGame->unk385 <= 18) { 
+
+        if (gCurrentPinballGame->unk3B6[i] > gCurrentPinballGame->unk3BC[i] // Time alive > time before escape, && number hit < 18
+         && gCurrentPinballGame->unk385 <= 18)
+        {
             gCurrentPinballGame->unk3B6[i] = 0;
-            if(gCurrentPinballGame->unk3A0[i] == 2)
+            if (gCurrentPinballGame->unk3A0[i] == 2)
                 gCurrentPinballGame->unk3A0[i] = 6; //Escape after moving left
             else
                 gCurrentPinballGame->unk3A0[i] = 7; //Escape after moving right
+
             gCurrentPinballGame->unk3B0[i] = 0;
         }
+
         gCurrentPinballGame->unk397[i] = gCurrentPinballGame->unk39A[i];
         gCurrentPinballGame->unk39A[i] = r7;
         gCurrentPinballGame->unk39D[i] = sp0;
@@ -1207,12 +1261,14 @@ void sub_340EC() {
     struct OamDataSimple * oamData;
     u16 * dst;
     const u16 * src;
-    for(i = 0; i < 3; i++) {
+
+    for (i = 0; i < 3; i++)
+    {
         s16 r8 = gCurrentPinballGame->unk397[i];
-        DmaCopy16(3, gUnknown_08510E4C + r8 * 0x280, OBJ_VRAM0+0x920 + i * 0x280, 0x280);
+        DmaCopy16(3, gUnknown_08510E4C + r8 * 0x280, OBJ_VRAM0 + 0x920 + i * 0x280, 0x280);
         sb = gCurrentPinballGame->unk39D[i];
         spriteGroup = &gUnknown_0200B3B8[7 + i];
-        if(gCurrentPinballGame->unk3A6[i]) {
+        if (gCurrentPinballGame->unk3A6[i]) {
             s32 x = 0; // Scrub C to get the compiler to add before subtracting
             spriteGroup->baseX = gCurrentPinballGame->unk3C4[i].x / 10 + 108 + x - gCurrentPinballGame->unk58;
             spriteGroup->baseY = gCurrentPinballGame->unk3C4[i].y / 10 + 28 + x - gCurrentPinballGame->unk5A;
@@ -1220,10 +1276,12 @@ void sub_340EC() {
             spriteGroup->baseX = 240;
             spriteGroup->baseY = 180;
         }
-        if(r8 == 6) {
+
+        if (r8 == 6)
+        {
             u16 scaleX;
             u16 scaleY;
-            if(gCurrentPinballGame->unk3AC[i] <= 6) {
+            if (gCurrentPinballGame->unk3AC[i] <= 6) {
                 scaleX = (gCurrentPinballGame->unk3AC[i] * 0x80) / 6 + 0x100;
                 scaleY = ((6-gCurrentPinballGame->unk3AC[i]) * 0x80) / 6 + 0x80;
             } else {
@@ -1233,7 +1291,8 @@ void sub_340EC() {
             SetMatrixScale(scaleX, scaleY, i + 2);
             spriteGroup->baseX -= 16;
             spriteGroup->baseY -= 16;
-            for(j = 0; j < 2; j++) {
+            for (j = 0; j < 2; j++)
+            {
                 oamData = &spriteGroup->oam[j];
 
                 dst = (u16*)&gOamBuffer[oamData->oamId];
@@ -1248,8 +1307,11 @@ void sub_340EC() {
                 gOamBuffer[oamData->oamId].affineMode = ST_OAM_AFFINE_DOUBLE;
                 gOamBuffer[oamData->oamId].matrixNum = i + 2;
             }
-        } else {
-            for(j = 0; j < 2; j++) {
+        }
+        else
+        {
+            for (j = 0; j < 2; j++) 
+            {
                 oamData = &spriteGroup->oam[j];
 
                 dst = (u16*)&gOamBuffer[oamData->oamId];
