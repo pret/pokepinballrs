@@ -3,6 +3,7 @@
 #include "constants/fields.h"
 #include "constants/species.h"
 #include "constants/bg_music.h"
+#include "gba/io_reg.h"
 
 gUnknown_08055A68:: @ 0x08055A68
 	.2byte AREA_FOREST_RUBY
@@ -898,7 +899,7 @@ gTitlescreenStateFuncs:: @ 0x08079890
 	.4byte TitleScreen6_AnimCloseMenu        @ SUBSTATE_ANIM_CLOSE_MENU
 	.4byte TitleScreen7_8011020              @ SUBSTATE_7
 	.4byte TitleScreen8_8011228              @ SUBSTATE_8
-	.4byte TitleScreen9_8010D84              @ SUBSTATE_9
+	.4byte TitleScreen9_8010D84              @ SUBSTATE_DELETE_SAVE_GAME_CONFIRMATION
 	.4byte TitleScreen10_ExecMenuSelection   @ SUBSTATE_EXEC_MENU_SELECTION
 	.4byte TitleScreen11_80114B4             @ SUBSTATE_11
 
@@ -3449,8 +3450,18 @@ gMonPortraitGroupGfx:: @ 0x086BB738
 .incbin "baserom.gba", 0x6BB770, 0x1A0 @ 0x6BB910 - 0x6BB770
 
 gUnknown_086BB910:: @ 0x086BB910
-	.incbin "baserom.gba", 0x6BB910, 0x58
-
+	.2byte A_BUTTON, 0x4, 0x0, 0x8
+	.2byte B_BUTTON, 0x5, 0x0, 0x8
+	.2byte SELECT_BUTTON, 0xE, 0x101, 0x20	
+	.2byte START_BUTTON, 0xA, 0x101, 0x20
+	.2byte DPAD_RIGHT, 0x13, 0x0, 0x8
+	.2byte DPAD_LEFT, 0x15, 0x0, 0x8
+	.2byte DPAD_UP, 0x12, 0x0, 0x8
+	.2byte DPAD_DOWN, 0x14, 0x0, 0x8
+	.2byte R_BUTTON, 0x8, 0x1, 0x10
+	.2byte L_BUTTON, 0x6, 0x1, 0x10
+	.2byte 0x0, 0x2A, 0x0, 0x08
+	
 gUnknown_086BB968:: @ 0x086BB968
 	.incbin "baserom.gba", 0x6BB968, 0x40
 

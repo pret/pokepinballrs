@@ -24,7 +24,30 @@ extern struct ToneData gUnknown_08533360[];
 extern struct ToneData gUnknown_08533960[];
 extern struct ToneData gUnknown_08533F60[];
 extern u16 gOptionsBGMList[];
-extern u16 gUnknown_086BB910[][4];
+
+/*** 
+* button information: input mask, tile, ?, width
+* 
+* First index associations:
+*   0 : A button 
+*   1 : B button
+*   2 : Select button
+*   3 : Start button
+*   4 : Right arrow
+*   5 : Left arrow
+*   6 : Up arrow
+*   7 : Down arrow
+*   8 : R button
+*   9 : L button
+*   10 : Combiner sprite
+* 
+* Second index:
+*   0 : button input mask
+*   1 : tile number
+*   2 : unknown
+*   3 : px wide
+***/
+extern u16 gUnknown_086BB910[11][4];
 extern struct {u8 unk0; s16 unk2;} gUnknown_086BB9B4[];
 extern u16 gOptionsSEList[];
 extern u8 gUnknown_02031AF0[][10];
