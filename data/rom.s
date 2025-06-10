@@ -899,7 +899,7 @@ gTitlescreenStateFuncs:: @ 0x08079890
 	.4byte TitleScreen6_AnimCloseMenu        @ SUBSTATE_ANIM_CLOSE_MENU
 	.4byte TitleScreen7_8011020              @ SUBSTATE_7
 	.4byte TitleScreen8_8011228              @ SUBSTATE_8
-	.4byte TitleScreen9_8010D84              @ SUBSTATE_DELETE_SAVE_GAME_CONFIRMATION
+	.4byte TitleScreen9_8010D84              @ SUBSTATE_9
 	.4byte TitleScreen10_ExecMenuSelection   @ SUBSTATE_EXEC_MENU_SELECTION
 	.4byte TitleScreen11_80114B4             @ SUBSTATE_11
 
