@@ -77,7 +77,16 @@ struct Main
     /*0x54*/ u8 filler54[0x4];
     /*0x58*/ u32 unk58;
     /*0x5C*/ u32 unk5C;
-    /*0x60*/ u16 buttonConfigs[5][2];
+
+    /***
+     * First index = 'Action'
+     * 0:left flipper, 1:right flipper, 2:tilt left, 3:tilt right, 4=tilt up
+     * 
+     * Second index
+     * An action can be triggered by pressing 2 buttons simultaneously
+     *   Each data element holds a mask for the button it looks for.
+     ***/
+    /*0x60*/ u16 buttonConfigs[5][2]; 
 
     // This field must be accessed using the following macro to produce matching code.
 #define gMain_saveData (*(struct SaveData *)(&gMain.saveData))
