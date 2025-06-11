@@ -67,10 +67,10 @@ void sub_1333C()
             sub_13934(&var0, &var1, r7);
             var0.x -= (gUnknown_02031520.unk22 * 2);
             var0.y -= (gUnknown_02031520.unk20 * 2);
-            if (gCurrentPinballGame->unk13C0 == 0) 
+            if (gCurrentPinballGame->unk13BC[0].unk4 == 0)
             {
                 sub_13D24(r7, &gCurrentPinballGame->unk132c->velocity, &var2);
-                gCurrentPinballGame->unk13C0 = 1;
+                gCurrentPinballGame->unk13BC[0].unk4 = 1;
             }
             else
             {            
@@ -99,10 +99,10 @@ void sub_1333C()
             sub_13934(&var0, &var1, r7);
             var0.x -= (gUnknown_02031520.unk24 * 2);
             var0.y -= (gUnknown_02031520.unk20 * 2);
-            if (gCurrentPinballGame->unk13CC == 0) 
+            if (gCurrentPinballGame->unk13BC[1].unk4 == 0)
             {
                 sub_13D24(r7, &gCurrentPinballGame->unk132c->velocity, &var2);
-                gCurrentPinballGame->unk13CC = 1;
+                gCurrentPinballGame->unk13BC[1].unk4 = 1;
             }
             else
             {

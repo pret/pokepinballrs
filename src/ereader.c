@@ -36,15 +36,13 @@ extern s16 gUnknown_0201A444;
 extern s8 gUnknown_086A551A[10];
 extern s8 gUnknown_086A5528[10];
 extern u8 gUnknown_086A5536[NUM_EREADER_CARDS + 1];
-extern u8 gUnknown_08089B60[];
+extern u8 gPokedexSprites_Gfx[];
 extern u8 gUnknown_08081D20[];
 extern u8 gUnknown_0807DD00[];
 extern u8 gUnknown_0807D000[];
-extern u8 gUnknown_08089960[];
-extern u8 gUnknown_08089B60[];
+extern u8 gPokedexSprites_Pals[];
 extern u16 gUnknown_03000000[];
 extern u8 gUnknown_08080500[];
-extern u8 gUnknown_080897E0[];
 extern u8 gUnknown_0807FD00[];
 extern s16 gUnknown_086A550C[];
 
@@ -67,12 +65,12 @@ void LoadEReaderGraphics(void)
     gMain.unk16 = REG_DISPCNT;
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
-    DmaCopy16(3, gUnknown_080897E0,   (void*) PLTT + 0x40,       0x20);
+    DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
     DmaCopy16(3, gUnknown_08080500,   gUnknown_03000000,         0x3000);
     DmaCopy16(3, gUnknown_0807DD00,   (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_0807FD00,   (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
-    DmaCopy16(3, gUnknown_08089960,   (void *)OBJ_PLTT,          0xC0);
-    DmaCopy16(3, gUnknown_08089B60,   (void *)OBJ_VRAM0,         0x6C20);
+    DmaCopy16(3, gPokedexSprites_Pals,   (void *)OBJ_PLTT,          0xC0);
+    DmaCopy16(3, gPokedexSprites_Gfx,   (void *)OBJ_VRAM0,         0x6C20);
 
     sub_2DF0();
     gUnknown_0202C604 = 0;
@@ -333,12 +331,12 @@ void sub_343C(void)
     gMain.unk16 = REG_DISPCNT;
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
-    DmaCopy16(3, gUnknown_080897E0,   (void*) PLTT + 0x40,       0x20);
+    DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
     DmaCopy16(3, gUnknown_08080500,   gUnknown_03000000,         0x3000);
     DmaCopy16(3, gUnknown_0807DD00,   (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_0807FD00,   (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
-    DmaCopy16(3, gUnknown_08089960,   (void *)OBJ_PLTT,          0xC0);
-    DmaCopy16(3, gUnknown_08089B60,   (void *)OBJ_VRAM0,         0x6C20);
+    DmaCopy16(3, gPokedexSprites_Pals,   (void *)OBJ_PLTT,          0xC0);
+    DmaCopy16(3, gPokedexSprites_Gfx,   (void *)OBJ_VRAM0,         0x6C20);
 
     sub_2DF0();
     gUnknown_0202C604 = 0;

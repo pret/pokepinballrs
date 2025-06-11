@@ -81,7 +81,6 @@ extern u8 gUnknown_08092FA0[]; // needs const
 extern s16 gUnknown_086A64F0[];
 extern u8 *gMonPortraitGroupGfx[];
 extern u8 *gMonPortraitGroupPals[];
-extern u8 gUnknown_0808F760[];
 
 struct PokedexEntry
 {
@@ -115,14 +114,14 @@ void LoadPokedexGraphics(void)
 
     gMain.unk16 = REG_DISPCNT;
 
-    DmaCopy16(3, gUnknown_08082720, (void *)BG_CHAR_ADDR(1), 0x4400);
-    DmaCopy16(3, gUnknown_08087B40, (void *)BG_CHAR_ADDR(3), 0x1400);
-    DmaCopy16(3, gUnknown_08089760, (void *)BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gUnknown_08081F20, gUnknown_03005C00, BG_SCREEN_SIZE);
-    DmaCopy16(3, gUnknown_08087340, gUnknown_02019C40, BG_SCREEN_SIZE);
-    DmaCopy16(3, gUnknown_08088F60, (void *)BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
-    DmaCopy16(3, gUnknown_08089960, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
-    DmaCopy16(3, gUnknown_08089B60, (void *)OBJ_VRAM0, 0x6C20);
+    DmaCopy16(3, gPokedexBgText_Gfx, (void *)BG_CHAR_ADDR(1), 0x4400);
+    DmaCopy16(3, gPokedexBg_Gfx, (void *)BG_CHAR_ADDR(3), 0x1400);
+    DmaCopy16(3, gPokedexBackground_Pals, (void *)BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, gPokedexBg1_Tilemap, gUnknown_03005C00, BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexBg2_Tilemap, gUnknown_02019C40, BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexBg3_Tilemap, (void *)BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexSprites_Pals, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+    DmaCopy16(3, gPokedexSprites_Gfx, (void *)OBJ_VRAM0, 0x6C20);
 
     sub_3FAC();
     PrintSeenOwnedTotals(gPokedexNumSeen, gPokedexNumOwned);
@@ -1909,8 +1908,8 @@ void sub_6F78(s16 species)
     switch (state)
     {
         case SPECIES_UNSEEN:
-            sub_10708(gUnknown_0808F760, (void *)0x06013400, 24, 1);
-            DmaCopy16(3, gUnknown_08089960, (void *)OBJ_PLTT + 0x20, 0x20);
+            sub_10708(gPokedexSprites_Gfx + 0x5C00, (void *)0x06013400, 24, 1);
+            DmaCopy16(3, gPokedexSprites_Pals, (void *)OBJ_PLTT + 0x20, 0x20);
             break;
         case SPECIES_SEEN:
             sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
