@@ -49,7 +49,7 @@ SECTIONS
         src/rom_17634.o(.text);
         asm/rom_11B9C.o(.text176B0);
         src/rom_18784.o(.text);
-        asm/rom_11B9C.o(.text18F38);
+        asm/rom_11B9C.o(.text19028);
         src/rom_19B64.o(.text);
         src/rom_19D04.o(.text);
         asm/rom_11B9C.o(.text19E10);

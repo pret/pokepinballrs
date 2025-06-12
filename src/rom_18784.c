@@ -337,3 +337,40 @@ void sub_18DAC(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
         }
     }
 }
+
+void sub_18F38(u8 arg0_enum, u16 *arg1, u16 *arg2)
+{
+    switch (arg0_enum)
+    {
+    case 2:
+        gCurrentPinballGame->unk532 = 0;
+        gCurrentPinballGame->unk538 = 2;
+        break;
+    case 3:
+        gCurrentPinballGame->unk532 = 1;
+        gCurrentPinballGame->unk538 = 2;
+        break;
+    case 8:
+        gCurrentPinballGame->unk532 = 0;
+        gCurrentPinballGame->unk538 = 1;
+        gCurrentPinballGame->unk540 = 100;
+        break;
+    case 9:
+        gCurrentPinballGame->unk532 = 1;
+        gCurrentPinballGame->unk538 = 1;
+        gCurrentPinballGame->unk540 = 100;
+        break;
+    case 1:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+        break;
+    }
+}
