@@ -46,16 +46,16 @@ void sub_1A9E8(void)
     switch (gCurrentPinballGame->unk25)
     {
     case 1:
-        sub_1AAA0();
+        sub_1AAA0(); // Catch hole
         break;
     case 2:
-        sub_1ADF4();
+        sub_1ADF4(); //Hatch hole
         break;
     case 3:
-        sub_1AFD4();
+        sub_1AFD4(); //Mart / Evo hole
         break;
     case 4:
-        sub_1C5AC();
+        sub_1C5AC(); //Center Hole
         break;
     }
 }
@@ -78,8 +78,16 @@ void sub_1AA38(void)
     sub_11B0(8);
 }
 
-//Ruby board Sharpedo; initializing catch mode
-//Echoes sub_32BE4 - likely has similar structure, with different timings.
+/*
+* Ruby board Sharpedo; during the initation of the catch mode
+* Echoes sub_32BE4, which is the equivalent 'catch hole' on the sapphire board.
+*
+* Note: this *does not* affect the start of the catch mode itself.
+* When this function is nulled out at sub_1A9E8, the banner *doesn't* show, and
+* the ball bounces off the sharpedo. However, the grid still shows a picked mon,
+* and the mode otherwise works mostly normally, with the exception of affecting 
+* the 'tilt' behavior, and the colision with the cyndaquil pushback.
+*/
 void sub_1AAA0(void) {    
     if (gCurrentPinballGame->unk28) //Countdown timer; ball grabbed/held while banner shows
     {
@@ -107,7 +115,9 @@ void sub_1AAA0(void) {
                     gCurrentPinballGame->unk132c->unk10.x = 196;
                     gCurrentPinballGame->unk132c->unk10.y = 221;
                 }
-                gCurrentPinballGame->unk2F4 =6;
+                //Presumed controling either the message board 'state'/'tile'
+                // or the sharpedo animation 'state'/tile.
+                gCurrentPinballGame->unk2F4 =6;  
             }
             else if (gCurrentPinballGame->unk28 > 104)
             {
