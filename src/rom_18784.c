@@ -275,3 +275,102 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
     sub_18F38(enum2, &sp4_return, arg1);
     return sp4_return;
 }
+
+void sub_18DAC(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
+{
+    s16 i;
+    s16 deltaX, deltaY;
+    u16 lowerReadFromRom;
+    u16 upperReadFromRom;
+    for (i = 0; i < 2; i++)
+    {
+
+        if (gCurrentPinballGame->unk54F[i] == 1)
+        {
+            if ((arg2[0] & 0xf) != 0)
+                continue;
+
+            deltaX = arg0->x - gCurrentPinballGame->unk570[i].x;
+            deltaY = arg0->y - gCurrentPinballGame->unk570[i].y;
+            if ((deltaX >= 64 || deltaX < 0) || (deltaY >= 64 || deltaY < 0))
+                continue;
+
+            upperReadFromRom = gUnknown_08393A4C[(deltaY * 64) + deltaX] & 0xFFF0;
+            lowerReadFromRom = gUnknown_08393A4C[(deltaY * 64) + deltaX] & 0xF;
+            if (lowerReadFromRom == 0)
+                continue;
+
+            if (gCurrentPinballGame->unk388 != 0)
+                continue;
+
+            arg1[0] = upperReadFromRom;
+            arg2[0] = lowerReadFromRom;
+            arg2[0] = 6;
+            gCurrentPinballGame->unk553[i] = 4;
+        }
+        else if (gCurrentPinballGame->unk54F[i] != 0)
+        {
+            if ((arg2[0] & 0xf) != 0)
+                continue;
+
+            deltaX = arg0->x - gCurrentPinballGame->unk570[i].x;
+            deltaY = arg0->y - gCurrentPinballGame->unk570[i].y;
+            if ((deltaX >= 64 || deltaX < 0) || (deltaY >= 64 || deltaY < 0))
+                continue;
+
+            upperReadFromRom = gUnknown_08391A4C[(deltaY * 64) + deltaX] & 0xFFF0;
+            lowerReadFromRom = gUnknown_08391A4C[(deltaY * 64) + deltaX] & 0xF;
+            if (lowerReadFromRom == 0)
+                continue;
+
+            arg1[0] = upperReadFromRom;
+            arg2[0] = lowerReadFromRom;
+            arg2[0] = 6;
+            if (gCurrentPinballGame->unk54F[i] == 2)
+            {
+                gCurrentPinballGame->unk553[i] = 4;
+            }
+            else
+            {
+                gCurrentPinballGame->unk54D[i] = 24;
+            }
+        }
+    }
+}
+
+void sub_18F38(u8 arg0_enum, u16 *arg1, u16 *arg2)
+{
+    switch (arg0_enum)
+    {
+    case 2:
+        gCurrentPinballGame->unk532 = 0;
+        gCurrentPinballGame->unk538 = 2;
+        break;
+    case 3:
+        gCurrentPinballGame->unk532 = 1;
+        gCurrentPinballGame->unk538 = 2;
+        break;
+    case 8:
+        gCurrentPinballGame->unk532 = 0;
+        gCurrentPinballGame->unk538 = 1;
+        gCurrentPinballGame->unk540 = 100;
+        break;
+    case 9:
+        gCurrentPinballGame->unk532 = 1;
+        gCurrentPinballGame->unk538 = 1;
+        gCurrentPinballGame->unk540 = 100;
+        break;
+    case 1:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+        break;
+    }
+}

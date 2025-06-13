@@ -356,10 +356,23 @@ struct PinballGame
     /*0x414*/ s8 unk414;
     /*0x415*/ u8 filler415[0x3D];
     /*0x452*/ u16 unk452;
-    /*0x454*/ u8 filler454[0xF4];
+    /*0x454*/ u8 filler454[0xDE];
+    /*0x532*/ u8 unk532;
+    /*0x533*/ u8 filler533[0x5];
+    /*0x538*/ u8 unk538;
+    /*0x539*/ u8 filler539[0x7];
+    /*0x540*/ u16 unk540;
+    /*0x542*/ u8 filler542[0x6];
     /*0x548*/ u8 unk548;
     /*0x549*/ u8 unk549;
-    /*0x54A*/ u8 filler54A[0x4E];
+    /*0x54A*/ u8 filler54A[3];
+    /*0x54D*/ u8 unk54D[2]; //Sized by use in sub_18DAC //TODO verify
+    /*0x54F*/ s8 unk54F[2]; //Sized by use in sub_18DAC //TODO verify
+    /*0x551*/ u8 filler551[2];
+    /*0x553*/ u8 unk553[2]; //Sized by use in sub_18DAC //TODO verify
+    /*0x555*/ u8 filler555[0x1B];
+    /*0x570*/ struct Vector16 unk570[2]; //Sized by use in sub_18DAC //TODO verify
+    /*0x578*/ u8 filler578[0x20];
     /*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
     /*0x59A*/ u8 filler59A[0x2];
     /*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
@@ -518,11 +531,13 @@ struct Unk02031590
 extern struct PinballGame *gCurrentPinballGame;
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
-extern u16 gUnknown_08137B3C[][6][16];
-extern s32 gUnknown_081B36A4[64];
-extern s32 gUnknown_082EE0E0[];
-extern const u8 gUnknown_08138834[0x2000];
 extern struct Unk02031590 gUnknown_02031590;
+extern u16 gUnknown_08137B3C[][6][16];
 extern const u8 gUnknown_08137E14[][0x20];
+extern const u8 gUnknown_08138834[0x2000];
+extern s32 gUnknown_081B36A4[64];
+extern s32 gUnknown_082EE0E0[0x3E0];
+extern const u16 gUnknown_08391A4C[0x1000];
+extern const u16 gUnknown_08393A4C[0x1000];
 
 #endif // GUARD_GLOBAL_H
