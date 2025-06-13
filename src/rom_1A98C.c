@@ -186,7 +186,7 @@ void sub_1AAA0(void) {
             gCurrentPinballGame->unk1F = 0;
             gCurrentPinballGame->unk5FE = 0;
             gCurrentPinballGame->unk5FB = 1;
-            gCurrentPinballGame->unk5FA = 0; //unk5FE - 4 ??;
+            gCurrentPinballGame->unk5FA = 0;
             gCurrentPinballGame->unk132c->unk6 = 0;
             gCurrentPinballGame->unk132c->velocity.x = 0xFF56;
             gCurrentPinballGame->unk132c->velocity.y = 220;
