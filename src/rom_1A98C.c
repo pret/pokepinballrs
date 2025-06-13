@@ -88,7 +88,8 @@ void sub_1AA38(void)
 * and the mode otherwise works mostly normally, with the exception of affecting 
 * the 'tilt' behavior, and the colision with the cyndaquil pushback.
 */
-void sub_1AAA0(void) {    
+void sub_1AAA0(void)
+{
     if (gCurrentPinballGame->unk28) //Countdown timer; ball grabbed/held while banner shows
     {
         gCurrentPinballGame->unk28--;
@@ -105,10 +106,10 @@ void sub_1AAA0(void) {
             {
                 gCurrentPinballGame->unk5FA = 1;
                 
-                if(gCurrentPinballGame->unk28 > 110)
+                if (gCurrentPinballGame->unk28 > 110)
                 {
-                    gCurrentPinballGame->unk132c->unk10.x = 0xc3;
-                    gCurrentPinballGame->unk132c->unk10.y = 0xde;
+                    gCurrentPinballGame->unk132c->unk10.x = 195;
+                    gCurrentPinballGame->unk132c->unk10.y = 222;
                 }
                 else
                 {
@@ -137,7 +138,7 @@ void sub_1AAA0(void) {
             {
                 gCurrentPinballGame->unk2F4 = 9;
 
-                if (gCurrentPinballGame->unk28 <= 79)
+                if (gCurrentPinballGame->unk28 < 80)
                 {
                     if (gCurrentPinballGame->unk2F6 != 0)
                     {
