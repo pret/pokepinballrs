@@ -434,7 +434,7 @@ extern void sub_1A0F4();
 //extern ? sub_1A98C();
 extern void sub_1A9E8(void);
 //extern ? sub_1AA38();
-//extern ? sub_1AAA0();
+extern void sub_1AAA0();
 //extern ? sub_1AD84();
 //extern ? sub_1ADF4();
 //extern ? sub_1AF84();
