@@ -20,7 +20,7 @@ void sub_11B9C(void)
     s16 i;
     if (gMain.unk6 == 0)
     {
-        gCurrentPinballGame->unk132c = &gCurrentPinballGame->unk1334[0];
+        gCurrentPinballGame->pokeball = &gCurrentPinballGame->unk1334[0];
         sub_11C14(0);
         sub_12524();
     }
@@ -28,7 +28,7 @@ void sub_11B9C(void)
     {
         for (i = 0; i < 2; i++)
         {
-            gCurrentPinballGame->unk132c = &gCurrentPinballGame->unk1334[i];
+            gCurrentPinballGame->pokeball = &gCurrentPinballGame->unk1334[i];
             sub_11C14(i);
         }
         sub_12BF8();
@@ -38,12 +38,12 @@ void sub_11B9C(void)
 void sub_11C14(s16 arg0)
 {
     struct BallState *var0 = &gCurrentPinballGame->unk1334[arg0];
-    var0->unk10.x = gUnknown_02031520.unk26;
-    var0->unk10.y = gUnknown_02031520.unk28;
-    var0->position.x = Q_24_8(var0->unk10.x);
-    var0->position.y = Q_24_8(var0->unk10.y);
-    var0->unk28.x = gUnknown_02031520.unk26 * 2;
-    var0->unk28.y = gUnknown_02031520.unk28 * 2;
+    var0->logicPosition.x = gUnknown_02031520.unk26;
+    var0->logicPosition.y = gUnknown_02031520.unk28;
+    var0->physicsPosition.x = Q_24_8(var0->logicPosition.x);
+    var0->physicsPosition.y = Q_24_8(var0->logicPosition.y);
+    var0->halfPxPosition.x = gUnknown_02031520.unk26 * 2;
+    var0->halfPxPosition.y = gUnknown_02031520.unk28 * 2;
     var0->unkE = 0x100;
     var0->velocity.x = 0;
     var0->velocity.y = 0;
@@ -88,8 +88,8 @@ void sub_11C98(void)
     int squaredMagnitude;
     int maxSpeed;
 
-    unk132c = gCurrentPinballGame->unk132c;
-    unk132c->prevPosition = unk132c->position;
+    unk132c = gCurrentPinballGame->pokeball;
+    unk132c->prevPhysicsPosition = unk132c->physicsPosition;
     if (gCurrentPinballGame->unk5A4 != 2)
     {
         if (gCurrentPinballGame->ballSpeed != 0)
@@ -113,7 +113,7 @@ void sub_11C98(void)
             yy = unk132c->velocity.y * unk132c->velocity.y;
             squaredMagnitude = xx + yy;
 
-            if (unk132c->unk10.y < 380)
+            if (unk132c->logicPosition.y < 380)
             {
                 UPDATE_BALL_POSITION(272, angle);
             }
@@ -143,7 +143,7 @@ void sub_11C98(void)
             yy = unk132c->velocity.y * unk132c->velocity.y;
             squaredMagnitude = xx + yy;
 
-            if (unk132c->unk10.y < 380)
+            if (unk132c->logicPosition.y < 380)
             {
                 UPDATE_BALL_POSITION(336, angle);
             }
@@ -158,9 +158,9 @@ void sub_11C98(void)
         sub_2AADC();
     }
 
-    unk132c->unk2C = unk132c->unk28;
-    unk132c->unk28.x = (unk132c->position.x + 64) / 128;
-    unk132c->unk28.y = (unk132c->position.y + 64) / 128;
+    unk132c->prevHalfPxPosition = unk132c->halfPxPosition;
+    unk132c->halfPxPosition.x = (unk132c->physicsPosition.x + 64) / 128;
+    unk132c->halfPxPosition.y = (unk132c->physicsPosition.y + 64) / 128;
     unk132c->unk8 = unk132c->unk6;
     unk132c->unkA += unk132c->unk6;
 }
@@ -173,8 +173,8 @@ void sub_11F88(void)
     int squaredMagnitude;
     int maxSpeed;
 
-    unk132c = gCurrentPinballGame->unk132c;
-    unk132c->prevPosition = unk132c->position;
+    unk132c = gCurrentPinballGame->pokeball;
+    unk132c->prevPhysicsPosition = unk132c->physicsPosition;
     if (gCurrentPinballGame->unk5A4 != 2)
     {
         if (!gCurrentPinballGame->unk1F && !gCurrentPinballGame->unk383)
@@ -199,7 +199,7 @@ void sub_11F88(void)
 
             if (gMain.selectedField <= FIELD_KECLEON)
             {
-                if (unk132c->unk10.y < 150)
+                if (unk132c->logicPosition.y < 150)
                 {
                     UPDATE_BALL_POSITION(272, angle);
                 }
@@ -210,7 +210,7 @@ void sub_11F88(void)
             }
             else if (gMain.selectedField == FIELD_SPHEAL)
             {
-                if (unk132c->unk10.y < 218)
+                if (unk132c->logicPosition.y < 218)
                 {
                     UPDATE_BALL_POSITION(272, angle);
                 }
@@ -221,7 +221,7 @@ void sub_11F88(void)
             }
             else
             {
-                if (unk132c->unk10.y < 218)
+                if (unk132c->logicPosition.y < 218)
                 {
                     UPDATE_BALL_POSITION(272, angle);
                 }
@@ -241,7 +241,7 @@ void sub_11F88(void)
 
             if (gMain.selectedField <= FIELD_KECLEON)
             {
-                if (unk132c->unk10.y < 150)
+                if (unk132c->logicPosition.y < 150)
                 {
                     UPDATE_BALL_POSITION(304, angle);
                 }
@@ -252,7 +252,7 @@ void sub_11F88(void)
             }
             else if (gMain.selectedField == FIELD_SPHEAL)
             {
-                if (unk132c->unk10.y < 218)
+                if (unk132c->logicPosition.y < 218)
                 {
                     UPDATE_BALL_POSITION(272, angle);
                 }
@@ -263,7 +263,7 @@ void sub_11F88(void)
             }
             else
             {
-                if (unk132c->unk10.y < 218)
+                if (unk132c->logicPosition.y < 218)
                 {
                     UPDATE_BALL_POSITION(304, angle);
                 }
@@ -279,9 +279,9 @@ void sub_11F88(void)
         sub_2AADC();
     }
 
-    unk132c->unk2C = unk132c->unk28;
-    unk132c->unk28.x = (unk132c->position.x + 64) / 128;
-    unk132c->unk28.y = (unk132c->position.y + 64) / 128;
+    unk132c->prevHalfPxPosition = unk132c->halfPxPosition;
+    unk132c->halfPxPosition.x = (unk132c->physicsPosition.x + 64) / 128;
+    unk132c->halfPxPosition.y = (unk132c->physicsPosition.y + 64) / 128;
     unk132c->unk8 = unk132c->unk6;
     unk132c->unkA += unk132c->unk6;
 }
@@ -1369,7 +1369,7 @@ void sub_12BF8()
     struct BallState *unk1334_0;
 
     gCurrentPinballGame->unk1330 = gCurrentPinballGame->unk1334;
-    gCurrentPinballGame->unk132c = gCurrentPinballGame->unk1334;
+    gCurrentPinballGame->pokeball = gCurrentPinballGame->unk1334;
 
     unk1334_0 = &gCurrentPinballGame->unk1334[0];
 
@@ -1397,16 +1397,16 @@ void sub_12BF8()
         break;
     }
 
-    r5 = gCurrentPinballGame->unk132c->unkA >> 12;
+    r5 = gCurrentPinballGame->pokeball->unkA >> 12;
     DmaCopy16(3, &gUnknown_083BB16C[r5 + gCurrentPinballGame->unk5F6 * 17], (void *)VRAM + 0x10400, 0x80);
 
-    unk1334_0->unk10.x = unk1334_0->unk28.x / 2;
-    unk1334_0->unk10.y = unk1334_0->unk28.y / 2;
+    unk1334_0->logicPosition.x = unk1334_0->halfPxPosition.x / 2;
+    unk1334_0->logicPosition.y = unk1334_0->halfPxPosition.y / 2;
 
-    spriteGroup->baseX = unk1334_0->unk10.x
+    spriteGroup->baseX = unk1334_0->logicPosition.x
         - (gCurrentPinballGame->unk4C + 7)
         - gCurrentPinballGame->unk2AA;
-    spriteGroup->baseY = unk1334_0->unk10.y
+    spriteGroup->baseY = unk1334_0->logicPosition.y
         - 7
         - gCurrentPinballGame->unk4E
         - gCurrentPinballGame->unk5FC
@@ -1559,8 +1559,8 @@ void sub_12BF8()
                 gCurrentPinballGame->unkD0[i].x = gCurrentPinballGame->unkD0[i - 1].x;
                 gCurrentPinballGame->unkD0[i].y = gCurrentPinballGame->unkD0[i - 1].y;
             }
-            gCurrentPinballGame->unkD0[0].x = unk1334_0->unk10.x - 7;
-            gCurrentPinballGame->unkD0[0].y = unk1334_0->unk10.y - 7;
+            gCurrentPinballGame->unkD0[0].x = unk1334_0->logicPosition.x - 7;
+            gCurrentPinballGame->unkD0[0].y = unk1334_0->logicPosition.y - 7;
 
             for (i = 0; i < 2; i++)
             {

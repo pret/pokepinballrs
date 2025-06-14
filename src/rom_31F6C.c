@@ -516,17 +516,17 @@ void sub_329F4(void)
 
     if (gCurrentPinballGame->unk28 > 0x18)
     {
-        gCurrentPinballGame->unk132c->unk0 = 1;
+        gCurrentPinballGame->pokeball->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk28--;
-        gCurrentPinballGame->unk132c->velocity.x = 0;
-        gCurrentPinballGame->unk132c->velocity.y = 0;
-        gCurrentPinballGame->unk132c->unk10.x = 58;
-        gCurrentPinballGame->unk132c->unk10.y = 178;
-        gCurrentPinballGame->unk132c->unk28.x = gCurrentPinballGame->unk132c->unk10.x * 2;
-        gCurrentPinballGame->unk132c->unk28.y = gCurrentPinballGame->unk132c->unk10.y * 2;
-        gCurrentPinballGame->unk132c->position.x = gCurrentPinballGame->unk132c->unk10.x << 8;
-        gCurrentPinballGame->unk132c->position.y = gCurrentPinballGame->unk132c->unk10.y << 8;
+        gCurrentPinballGame->pokeball->velocity.x = 0;
+        gCurrentPinballGame->pokeball->velocity.y = 0;
+        gCurrentPinballGame->pokeball->logicPosition.x = 58;
+        gCurrentPinballGame->pokeball->logicPosition.y = 178;
+        gCurrentPinballGame->pokeball->halfPxPosition.x = gCurrentPinballGame->pokeball->logicPosition.x * 2;
+        gCurrentPinballGame->pokeball->halfPxPosition.y = gCurrentPinballGame->pokeball->logicPosition.y * 2;
+        gCurrentPinballGame->pokeball->physicsPosition.x = gCurrentPinballGame->pokeball->logicPosition.x << 8;
+        gCurrentPinballGame->pokeball->physicsPosition.y = gCurrentPinballGame->pokeball->logicPosition.y << 8;
 
         if (gCurrentPinballGame->unk28 <= 0x31)
         {
@@ -551,17 +551,17 @@ void sub_329F4(void)
     }
     else
     {
-        gCurrentPinballGame->unk132c->unk0 = 0;
+        gCurrentPinballGame->pokeball->unk0 = 0;
         gCurrentPinballGame->unk1F = 0;
         gCurrentPinballGame->unk26 = 0x3C;
-        gCurrentPinballGame->unk132c->velocity.x = 0x60;
-        gCurrentPinballGame->unk132c->velocity.y = 0xC0;
-        gCurrentPinballGame->unk132c->unk10.x = 0x3C;
-        gCurrentPinballGame->unk132c->unk10.y = 0xB4;
-        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->pokeball->velocity.x = 0x60;
+        gCurrentPinballGame->pokeball->velocity.y = 0xC0;
+        gCurrentPinballGame->pokeball->logicPosition.x = 0x3C;
+        gCurrentPinballGame->pokeball->logicPosition.y = 0xB4;
+        gCurrentPinballGame->pokeball->unk6 = 0;
         gCurrentPinballGame->unk5F7 = 0;
-        gCurrentPinballGame->unk132c->unk28.x = gCurrentPinballGame->unk132c->unk10.x * 2;
-        gCurrentPinballGame->unk132c->unk28.y = gCurrentPinballGame->unk132c->unk10.y * 2;
+        gCurrentPinballGame->pokeball->halfPxPosition.x = gCurrentPinballGame->pokeball->logicPosition.x * 2;
+        gCurrentPinballGame->pokeball->halfPxPosition.y = gCurrentPinballGame->pokeball->logicPosition.y * 2;
         gCurrentPinballGame->unk25 = 0;
 
         m4aSongNumStart(SE_UNKNOWN_0xC3);
@@ -595,25 +595,25 @@ void sub_32BE4(void)
         gCurrentPinballGame->unk5F7 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk28--;
-        gCurrentPinballGame->unk132c->velocity.x = 0;
-        gCurrentPinballGame->unk132c->velocity.y = 0;
-        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->pokeball->velocity.x = 0;
+        gCurrentPinballGame->pokeball->velocity.y = 0;
+        gCurrentPinballGame->pokeball->unk6 = 0;
         if (gCurrentPinballGame->unk28 > 97)
         {
             gCurrentPinballGame->unk5FA = 1;
             gCurrentPinballGame->unk2F4 = 2;
-            gCurrentPinballGame->unk132c->unk10.x = 0xb5;
-            gCurrentPinballGame->unk132c->unk10.y = 0xc3;
+            gCurrentPinballGame->pokeball->logicPosition.x = 0xb5;
+            gCurrentPinballGame->pokeball->logicPosition.y = 0xc3;
         }
         else if (gCurrentPinballGame->unk28 > 94)
         {
             gCurrentPinballGame->unk2F4 = 3;
-            gCurrentPinballGame->unk132c->unk10.x = 0xb8;
-            gCurrentPinballGame->unk132c->unk10.y = 0xbb;
+            gCurrentPinballGame->pokeball->logicPosition.x = 0xb8;
+            gCurrentPinballGame->pokeball->logicPosition.y = 0xbb;
         }
         else if (gCurrentPinballGame->unk28 > 91)
         {
-            gCurrentPinballGame->unk132c->unk0 = 1;
+            gCurrentPinballGame->pokeball->unk0 = 1;
             gCurrentPinballGame->unk2F4 = 4;
         }
         else if (gCurrentPinballGame->unk28 > 83)
@@ -642,38 +642,38 @@ void sub_32BE4(void)
         }
         else if (gCurrentPinballGame->unk28 > 4)
         {
-            gCurrentPinballGame->unk132c->unk0 = 0;
+            gCurrentPinballGame->pokeball->unk0 = 0;
             gCurrentPinballGame->unk2F4 = 10;
-            gCurrentPinballGame->unk132c->unk10.x = 0xb5;
-            gCurrentPinballGame->unk132c->unk10.y = 0xc3;
+            gCurrentPinballGame->pokeball->logicPosition.x = 0xb5;
+            gCurrentPinballGame->pokeball->logicPosition.y = 0xc3;
         }
         else
         {
             gCurrentPinballGame->unk2F4 = 11;
-            gCurrentPinballGame->unk132c->unk10.x = 0xb0;
-            gCurrentPinballGame->unk132c->unk10.y = 0xca;
+            gCurrentPinballGame->pokeball->logicPosition.x = 0xb0;
+            gCurrentPinballGame->pokeball->logicPosition.y = 0xca;
         }
 
-        gCurrentPinballGame->unk132c->unk28.x = gCurrentPinballGame->unk132c->unk10.x * 2;
-        gCurrentPinballGame->unk132c->unk28.y = gCurrentPinballGame->unk132c->unk10.y * 2;
-        gCurrentPinballGame->unk132c->position.x = gCurrentPinballGame->unk132c->unk10.x << 8;
-        gCurrentPinballGame->unk132c->position.y = gCurrentPinballGame->unk132c->unk10.y << 8;
+        gCurrentPinballGame->pokeball->halfPxPosition.x = gCurrentPinballGame->pokeball->logicPosition.x * 2;
+        gCurrentPinballGame->pokeball->halfPxPosition.y = gCurrentPinballGame->pokeball->logicPosition.y * 2;
+        gCurrentPinballGame->pokeball->physicsPosition.x = gCurrentPinballGame->pokeball->logicPosition.x << 8;
+        gCurrentPinballGame->pokeball->physicsPosition.y = gCurrentPinballGame->pokeball->logicPosition.y << 8;
     }
     else
     {
         gCurrentPinballGame->unk2F4 = 0;
         gCurrentPinballGame->unk1F = 0;
         gCurrentPinballGame->unk26 = 60;
-        gCurrentPinballGame->unk132c->unk6 = 0;
-        gCurrentPinballGame->unk132c->velocity.x = -0x66;
-        gCurrentPinballGame->unk132c->velocity.y = 0xC8;
+        gCurrentPinballGame->pokeball->unk6 = 0;
+        gCurrentPinballGame->pokeball->velocity.x = -0x66;
+        gCurrentPinballGame->pokeball->velocity.y = 0xC8;
         sub_11B0(7);
-        gCurrentPinballGame->unk132c->unk6 = 0;
-        gCurrentPinballGame->unk132c->unk10.x = 0xAB;
-        gCurrentPinballGame->unk132c->unk10.y = 0xD4;
-        gCurrentPinballGame->unk132c->unk28.x = gCurrentPinballGame->unk132c->unk10.x * 2;
-        gCurrentPinballGame->unk132c->unk28.y = gCurrentPinballGame->unk132c->unk10.y * 2;
-        gCurrentPinballGame->unk132c->unk2C = gCurrentPinballGame->unk132c->unk28;
+        gCurrentPinballGame->pokeball->unk6 = 0;
+        gCurrentPinballGame->pokeball->logicPosition.x = 0xAB;
+        gCurrentPinballGame->pokeball->logicPosition.y = 0xD4;
+        gCurrentPinballGame->pokeball->halfPxPosition.x = gCurrentPinballGame->pokeball->logicPosition.x * 2;
+        gCurrentPinballGame->pokeball->halfPxPosition.y = gCurrentPinballGame->pokeball->logicPosition.y * 2;
+        gCurrentPinballGame->pokeball->prevHalfPxPosition = gCurrentPinballGame->pokeball->halfPxPosition;
         gCurrentPinballGame->unk25 = 0;
         gCurrentPinballGame->unk5F7 = 0;
         m4aSongNumStart(SE_UNKNOWN_0xD6);
@@ -739,7 +739,7 @@ void sub_32F3C(void)
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->unk383 = 0;
     gCurrentPinballGame->unk388 = 3;
-    gCurrentPinballGame->unk132c->unk0 = 1;
+    gCurrentPinballGame->pokeball->unk0 = 1;
     gCurrentPinballGame->unk385 = 0;
     gCurrentPinballGame->unk386 = 0;
     gCurrentPinballGame->unk387 = 0;
