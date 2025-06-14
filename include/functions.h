@@ -409,10 +409,11 @@ extern void sub_18AE0(u8, u16*, u16*);
 extern s16 sub_18B50(struct Vector16*, u16*);
 extern void sub_18DAC(struct Vector16*, u16*, u8*);
 extern void sub_18F38(u8, u16*, u16*);
-//extern ? IdlePinballGameMain();
-//extern ? sub_19048();
-//extern ? sub_19190();
-//extern ? sub_19288();
+extern void IdlePinballGameMain();
+extern void sub_19048();//gMain.subState = 0
+extern void sub_19190();//gMain.subState = 1
+extern void sub_4ABC8();//gMain.subState = 2
+extern void sub_19288();//gMain.subState = 3
 //extern ? sub_19304();
 //extern ? sub_1931C();
 //extern ? sub_19490();

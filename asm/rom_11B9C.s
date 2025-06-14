@@ -9523,23 +9523,7 @@ _08018778: .4byte 0x000004B4
 _0801877C: .4byte 0x000004B6
 _08018780: .4byte 0x000004A4
 
-	.section .text19028
-
-	thumb_func_start IdlePinballGameMain
-IdlePinballGameMain: @ 0x08019028
-	push {lr}
-	ldr r1, _08019040 @ =gIdlePinballGameStateFuncs
-	ldr r0, _08019044 @ =gMain
-	ldrb r0, [r0, #3]
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	bl _call_via_r0
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08019040: .4byte gIdlePinballGameStateFuncs
-_08019044: .4byte gMain
+	.section .text19048
 
 	thumb_func_start sub_19048
 sub_19048: @ 0x08019048

@@ -374,3 +374,8 @@ void sub_18F38(u8 arg0_enum, u16 *arg1, u16 *arg2)
         break;
     }
 }
+
+void IdlePinballGameMain()
+{
+    gIdlePinballGameStateFuncs[gMain.subState]();
+}
