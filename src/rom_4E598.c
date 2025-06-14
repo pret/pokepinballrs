@@ -17,14 +17,14 @@ void sub_4E598(void)
         gCurrentPinballGame->unk17 = 8;
 
     gCurrentPinballGame->unk714 = 0;
-    gCurrentPinballGame->unk710 = 0;
-    gCurrentPinballGame->unk711 = gCurrentPinballGame->unk710;
-    gCurrentPinballGame->unk712 = gCurrentPinballGame->unk710;
-    gCurrentPinballGame->unk713 = gCurrentPinballGame->unk710;
+    gCurrentPinballGame->hLight = 0;
+    gCurrentPinballGame->oLight = gCurrentPinballGame->hLight;
+    gCurrentPinballGame->lLight = gCurrentPinballGame->hLight;
+    gCurrentPinballGame->eLight = gCurrentPinballGame->hLight;
     gCurrentPinballGame->unk614 = 0;
     gCurrentPinballGame->unk208 = 0;
     gCurrentPinballGame->unk20A = 0;
-    if (gCurrentPinballGame->unk1E2 != 2 || !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
+    if (gCurrentPinballGame->outLaneCoverPosition != 2 || !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
         gCurrentPinballGame->unk1C6 = 0;
         gCurrentPinballGame->unk1C8 = 0;
@@ -38,9 +38,9 @@ void sub_4E598(void)
         gCurrentPinballGame->unk1D0 = 0;
     }
 
-    gCurrentPinballGame->unk718 = 0;
-    gCurrentPinballGame->unk719 = gCurrentPinballGame->unk718;
-    gCurrentPinballGame->unk71A = gCurrentPinballGame->unk718;
+    gCurrentPinballGame->leftBallPowerUpLight = 0;
+    gCurrentPinballGame->centerBallPowerUpLight = gCurrentPinballGame->leftBallPowerUpLight;
+    gCurrentPinballGame->rightBallPowerUpLight = gCurrentPinballGame->leftBallPowerUpLight;
     gCurrentPinballGame->unk308 = 0;
     if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
