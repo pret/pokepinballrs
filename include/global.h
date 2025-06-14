@@ -529,14 +529,8 @@ struct Unk02031590
     u8 unk16;
 };
 
-const StateFunc gIdlePinballGameStateFuncs[] = {
-    sub_19048,
-    sub_19190,
-    sub_4ABC8,
-    sub_19288,
-};
-
 extern struct PinballGame *gCurrentPinballGame;
+extern const StateFunc gIdlePinballGameStateFuncs[];
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
 extern struct Unk02031590 gUnknown_02031590;
