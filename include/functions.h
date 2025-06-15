@@ -639,6 +639,7 @@ extern void sub_472E4();
 //extern ? sub_49A34();
 //extern ? sub_4CEA8();
 //extern ? sub_4CEB4();
+extern void sub_49ED4(void);
 //extern ? sub_4D3D0();
 //extern ? sub_4D648();
 //extern ? sub_4D6C4();

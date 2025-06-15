@@ -506,7 +506,9 @@ struct Unk02031520_unk10
 
 struct Unk02031520
 {
-    /*0x00*/ u8 filler0[0x8];
+    /*0x00*/ u8 eReaderBonuses[NUM_EREADER_CARDS];
+    /*0x05*/ bool8 rumbleEnabled;
+    /*0x06*/ u16 unk6;
     /*0x08*/ s16 unk8;
     /*0x0A*/ u8 fillerA[0x2];
     /*0x0C*/ struct PinballGame *unkC;
@@ -537,6 +539,14 @@ extern struct Unk02031590 gUnknown_02031590;
 extern u16 gUnknown_08137B3C[][6][16];
 extern const u8 gUnknown_08137E14[][0x20];
 extern const u8 gUnknown_08138834[0x2000];
+extern struct Unk02031520_unk10 gUnknown_081450F4;
+extern struct Unk02031520_unk10 gUnknown_08148934;
+extern struct Unk02031520_unk10 gUnknown_0814C174;
+extern struct Unk02031520_unk10 gUnknown_0814F9B4;
+extern struct PinballGame gUnknown_081531F4;
+extern struct PinballGame gUnknown_08154618;
+extern struct PinballGame gUnknown_08155A3C;
+extern struct PinballGame gUnknown_08156E60;
 extern s32 gUnknown_081B36A4[64];
 extern s32 gUnknown_082EE0E0[0x3E0];
 extern const u16 gUnknown_08391A4C[0x1000];

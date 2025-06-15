@@ -2,6 +2,8 @@
 #include "variables.h"
 #include "types.h"
 #include "main.h"
+#include "m4a.h"
+#include "constants/bg_music.h"
 
 void sub_18784(u8 arg0)
 {
@@ -378,4 +380,72 @@ void sub_18F38(u8 arg0_enum, u16 *arg1, u16 *arg2)
 void IdlePinballGameMain()
 {
     gIdlePinballGameStateFuncs[gMain.subState]();
+}
+
+void sub_19048()
+{
+    s16 i;
+    s16 unk30;
+    s8 unk30LowerBits;
+
+    gMain.unk54 = 0;
+    gMain.unkD = 1;
+    gUnknown_02031510 = 0;
+
+    for (i = 0; i < NUM_EREADER_CARDS; i++)
+    {
+        gUnknown_02031520.eReaderBonuses[i] = gMain.eReaderBonuses[i];
+    }
+    if (gMain.unk30 == 0)
+    {
+        gMain.unk30 = (Random() + gMain.systemFrameCount) % 30;
+    }
+
+    unk30 = gMain.unk30;
+    unk30LowerBits = unk30 & 3;
+    switch (unk30LowerBits)
+    {
+    case 0:
+        gUnknown_02031520.unk6 = 0xA14;
+        gUnknown_02031520.unk10 = &gUnknown_081450F4;
+        gUnknown_02031520.unkC = &gUnknown_081531F4;
+        break;
+    case 1:
+        gUnknown_02031520.unk6 = 0xF00;
+        gUnknown_02031520.unk10 = &gUnknown_0814F9B4;
+        gUnknown_02031520.unkC = &gUnknown_08156E60;
+        break;
+    case 2:
+        gUnknown_02031520.unk6 = 0xD20;
+        gUnknown_02031520.unk10 = &gUnknown_08148934;
+        gUnknown_02031520.unkC = &gUnknown_08154618;
+        break;
+    case 3:
+        gUnknown_02031520.unk6 = 0xE4C;
+        gUnknown_02031520.unk10 = &gUnknown_0814C174;
+        gUnknown_02031520.unkC = &gUnknown_08155A3C;
+        break;
+    }
+
+    sub_49ED4();
+
+    switch (unk30LowerBits)
+    {
+    case 1:
+        m4aSongNumStart(MUS_FIELD_SAPPHIRE);
+        break;
+    case 0:
+        m4aSongNumStart(MUS_FIELD_RUBY);
+        break;
+    case 2:
+        m4aSongNumStart(MUS_FIELD_RUBY);
+        break;
+    case 3:
+        m4aSongNumStart(MUS_FIELD_SAPPHIRE);
+        break;
+    }
+
+    gUnknown_02031520.rumbleEnabled = gMain_saveData.rumbleEnabled;
+    gMain_saveData.rumbleEnabled = 0;
+    gMain.unk30++;
 }
