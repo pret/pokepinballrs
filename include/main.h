@@ -37,7 +37,7 @@ struct Main
 {
     /*0x00*/ u8 filler0[0x2];
     /*0x02*/ u8 mainState;
-    /*0x03*/ u8 subState;
+    /*0x03*/ u8 subState; //0 to 3 range
     /*0x04*/ u8 selectedField;
     /*0x05*/ u8 unk5;
     /*0x06*/ u8 unk6; // isBonusField (?)
@@ -74,7 +74,7 @@ struct Main
     /*0x48*/ int rngValue;
     /*0x4C*/ u32 systemFrameCount;
     /*0x50*/ int fieldFrameCount;
-    /*0x54*/ u8 filler54[0x4];
+    /*0x54*/ u32 unk54;
     /*0x58*/ u32 unk58;
     /*0x5C*/ u32 unk5C;
 
