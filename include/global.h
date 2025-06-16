@@ -508,7 +508,7 @@ struct Unk02031520
 {
     /*0x00*/ u8 eReaderBonuses[NUM_EREADER_CARDS];
     /*0x05*/ bool8 rumbleEnabled;
-    /*0x06*/ u16 unk6;
+    /*0x06*/ s16 unk6;
     /*0x08*/ s16 unk8;
     /*0x0A*/ u8 fillerA[0x2];
     /*0x0C*/ struct PinballGame *unkC;

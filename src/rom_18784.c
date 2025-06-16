@@ -449,3 +449,59 @@ void sub_19048()
     gMain_saveData.rumbleEnabled = 0;
     gMain.unk30++;
 }
+
+void sub_19190()
+{
+    u8 unk1D;
+
+    unk1D = gCurrentPinballGame->unk1D;
+    switch (unk1D)
+    {
+    case 0:
+        gCurrentPinballGame->unk1D = 1;
+        gMain.unkE = unk1D;
+        break;
+    case 1:
+        if (gMain.selectedField <= 1)
+        {
+            sub_4ACF0();
+        }
+        else
+        {
+            sub_4B000();
+        }
+        if (gMain.unk54++ > gUnknown_02031520.unk6)
+        {
+            gMain.unkE = 1;
+        }
+        if ((gMain.heldKeys & KEY_ANY) != 0)
+        {
+            gMain.unkE = 1;
+        }
+        if (gMain.unkE != 0)
+        {
+            if (gMain.selectedField <= 1)
+            {
+                sub_1D4D0();
+                sub_31BE8(0);
+            }
+            else if (gMain.selectedField == 3)
+            {
+                sub_356A0();
+            }
+            if ((gMain.unkF & 2) != 0)
+            {
+                DmaCopy16(3, gCurrentPinballGame->unk111A, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+            }
+            gCurrentPinballGame->unk1D = 2;
+            if (gMain.unkE == 2)
+            {
+                sub_4B408(1);
+            }
+        }
+        break;
+    case 2:
+        gMain.subState++;
+        break;
+    }
+}
