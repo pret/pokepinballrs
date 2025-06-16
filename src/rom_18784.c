@@ -462,7 +462,7 @@ void sub_19190()
         gMain.unkE = unk1D;
         break;
     case 1:
-        if (gMain.selectedField <= 1)
+        if (gMain.selectedField < MAIN_FIELD_COUNT)
         {
             sub_4ACF0();
         }
@@ -480,12 +480,12 @@ void sub_19190()
         }
         if (gMain.unkE != 0)
         {
-            if (gMain.selectedField <= 1)
+            if (gMain.selectedField < MAIN_FIELD_COUNT)
             {
                 sub_1D4D0();
                 sub_31BE8(0);
             }
-            else if (gMain.selectedField == 3)
+            else if (gMain.selectedField == FIELD_KECLEON)
             {
                 sub_356A0();
             }
