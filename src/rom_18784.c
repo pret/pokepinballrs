@@ -474,7 +474,7 @@ void sub_19190()
         {
             gMain.unkE = 1;
         }
-        if ((gMain.heldKeys & KEY_ANY) != 0)
+        if ((gMain.heldKeys & JOY_EXCL_LR) != 0)
         {
             gMain.unkE = 1;
         }
