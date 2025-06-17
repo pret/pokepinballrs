@@ -86,17 +86,17 @@ struct BallState
     /*0x0A*/ u16 unkA;
     /*0x0C*/ u16 unkC;
     /*0x0E*/ u16 unkE;
-    /*0x10*/ struct Vector16 logicPosition;
+    /*0x10*/ struct Vector16 positionQ0;
     /*0x14*/ u8 filler14[0xB];
     /*0x1F*/ u8 unk1F;
     /*0x20*/ u8 filler20[0x4];
     /*0x24*/ u16 unk24;
     /*0x26*/ u16 unk26;
-    /*0x28*/ struct Vector16 halfPxPosition; // double the values of the logicPosition
-    /*0x2C*/ struct Vector16 prevHalfPxPosition;
+    /*0x28*/ struct Vector16 positionQ1; // double the values of the logicPosition
+    /*0x2C*/ struct Vector16 prevPositionQ1;
     /*0x30*/ struct Vector16 velocity;
-    /*0x34*/ struct Vector32 physicsPosition; // fixed-point Q_24_8 values; position as used by physics calculation
-    /*0x3C*/ struct Vector32 prevPhysicsPosition;
+    /*0x34*/ struct Vector32 positionQ8; // fixed-point Q_24_8 values; position as used by physics calculation
+    /*0x3C*/ struct Vector32 prevPositionQ8;
 };
 
 struct UnkPinballGame13BC
@@ -490,7 +490,7 @@ struct PinballGame
     /*0x1326*/s16 unk1326;
     /*0x1328*/u16 unk1328;
     /*0x132A*/u8 filler132A[0x2];
-    /*0x132C*/struct BallState *pokeball;
+    /*0x132C*/struct BallState *ball;
     /*0x1330*/struct BallState *unk1330;
     /*0x1334*/struct BallState unk1334[2];
     /*0x13BC*/struct UnkPinballGame13BC unk13BC[2];

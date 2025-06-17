@@ -42,7 +42,7 @@ s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
     u32 switch_enum;
 
     return_val = 0;
-    gCurrentPinballGame->pokeball->unk4 = 0;
+    gCurrentPinballGame->ball->unk4 = 0;
 
     if (arg0->y < 0x200)
     {
@@ -80,13 +80,13 @@ s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
         *arg1 = sp00;
         if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
         {
-            if (gCurrentPinballGame->pokeball->logicPosition.x < (gUnknown_02031520.unk26 - 8) || gCurrentPinballGame->pokeball->logicPosition.y < gUnknown_02031520.unk28 - 8)
+            if (gCurrentPinballGame->ball->positionQ0.x < (gUnknown_02031520.unk26 - 8) || gCurrentPinballGame->ball->positionQ0.y < gUnknown_02031520.unk28 - 8)
             {
-                if (gCurrentPinballGame->pokeball->unk6 > 0)
+                if (gCurrentPinballGame->ball->unk6 > 0)
                 {
                     *arg1 = 0x3E00;
                 }
-                else if (gCurrentPinballGame->pokeball->unk6 != 0)
+                else if (gCurrentPinballGame->ball->unk6 != 0)
                 {
                     *arg1 = 0x4100;
                 }
@@ -94,14 +94,14 @@ s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
                 {
                     if (gMain.systemFrameCount & 1)
                     {
-                        gCurrentPinballGame->pokeball->unk4 = 40;
-                        gCurrentPinballGame->pokeball->unk6 = 1;
+                        gCurrentPinballGame->ball->unk4 = 40;
+                        gCurrentPinballGame->ball->unk6 = 1;
                         *arg1 = 0x3E00;
                     }
                     else
                     {
-                        gCurrentPinballGame->pokeball->unk4 = -40;
-                        gCurrentPinballGame->pokeball->unk6 = -1;
+                        gCurrentPinballGame->ball->unk4 = -40;
+                        gCurrentPinballGame->ball->unk6 = -1;
                         *arg1 = 0x4100;
                     }
                 }
@@ -196,7 +196,7 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
     u8 enum1, enum2;
 
     sp4_return = 0;
-    gCurrentPinballGame->pokeball->unk4 = 0;
+    gCurrentPinballGame->ball->unk4 = 0;
 
     div_result.x = arg0->x / 8;
     div_result.y = arg0->y / 8;
@@ -224,14 +224,14 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
         *arg1 = sp0;
         if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
         {
-            if (gCurrentPinballGame->pokeball->logicPosition.x < (gUnknown_02031520.unk26 - 8) ||
-                gCurrentPinballGame->pokeball->logicPosition.y < (gUnknown_02031520.unk28 - 8))
+            if (gCurrentPinballGame->ball->positionQ0.x < (gUnknown_02031520.unk26 - 8) ||
+                gCurrentPinballGame->ball->positionQ0.y < (gUnknown_02031520.unk28 - 8))
             {
-                if (gCurrentPinballGame->pokeball->unk6 > 0)
+                if (gCurrentPinballGame->ball->unk6 > 0)
                 {
                     *arg1 = 0x3E00;
                 }
-                else if (gCurrentPinballGame->pokeball->unk6 != 0)
+                else if (gCurrentPinballGame->ball->unk6 != 0)
                 {
                     *arg1 = 0x4100;
                 }
@@ -239,14 +239,14 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
                 {
                     if (gMain.systemFrameCount & 1)
                     {
-                        gCurrentPinballGame->pokeball->unk4 = 40;
-                        gCurrentPinballGame->pokeball->unk6 = 1;
+                        gCurrentPinballGame->ball->unk4 = 40;
+                        gCurrentPinballGame->ball->unk6 = 1;
                         *arg1 = 0x3E00;
                     }
                     else
                     {
-                        gCurrentPinballGame->pokeball->unk4 = -40;
-                        gCurrentPinballGame->pokeball->unk6 = -1;
+                        gCurrentPinballGame->ball->unk4 = -40;
+                        gCurrentPinballGame->ball->unk6 = -1;
                         *arg1 = 0x4100;
                     }
                 }
@@ -260,7 +260,7 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
         gCurrentPinballGame->unk22 = 1;
         *arg1 = sp0 & 0x0000FFF0;
 
-        if (gCurrentPinballGame->pokeball->logicPosition.x < 120)
+        if (gCurrentPinballGame->ball->positionQ0.x < 120)
             gCurrentPinballGame->unk548 = 24;
         else
             gCurrentPinballGame->unk549 = 24;
