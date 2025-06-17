@@ -418,7 +418,7 @@ extern void sub_19288();//gMain.subState = 3
 //extern ? sub_1931C();
 //extern ? sub_19490();
 //extern ? sub_195C4();
-//extern ? sub_19734();
+extern void sub_19734();
 //extern ? sub_19894();
 //extern ? sub_19A20();
 //extern ? sub_19B10();

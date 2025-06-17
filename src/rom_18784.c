@@ -505,3 +505,34 @@ void sub_19190()
         break;
     }
 }
+
+void sub_19288(void)
+{
+    s16 i;
+    gMain.unk36 = 0;
+    gMain_saveData.rumbleEnabled = gUnknown_02031520.rumbleEnabled;
+    for (i = 0; i < NUM_EREADER_CARDS; i++)
+    {
+        gMain.eReaderBonuses[i] = gUnknown_02031520.eReaderBonuses[i];
+    }
+    sub_02B4();
+    m4aMPlayAllStop();
+    sub_0D10();
+    if (gMain.unk54 < gUnknown_02031520.unk6)
+    {
+        SetMainGameState(STATE_TITLE);
+    }
+    else
+    {
+        SetMainGameState(STATE_SCORES_IDLE);
+    }
+    gMain.unk54 = 0;
+}
+
+void sub_19304(void)
+{
+    if (gMain.selectedField >= FIELD_BONUS_START)
+    {
+        sub_19734();
+    }
+}

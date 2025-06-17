@@ -4,6 +4,7 @@
 #define FIELD_RUBY          0
 #define FIELD_SAPPHIRE      1
 #define MAIN_FIELD_COUNT    2
+#define FIELD_BONUS_START   2
 #define FIELD_DUSCLOPS      (MAIN_FIELD_COUNT + 0)
 #define FIELD_KECLEON       (MAIN_FIELD_COUNT + 1)
 #define FIELD_KYOGRE        (MAIN_FIELD_COUNT + 2)
