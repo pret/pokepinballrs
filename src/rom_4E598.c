@@ -24,7 +24,7 @@ void sub_4E598(void)
     gCurrentPinballGame->unk614 = 0;
     gCurrentPinballGame->unk208 = 0;
     gCurrentPinballGame->unk20A = 0;
-    if (gCurrentPinballGame->outLaneCoverPosition != 2 || !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
+    if (gCurrentPinballGame->outLanePikaPosition != 2 || !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
         gCurrentPinballGame->unk1C6 = 0;
         gCurrentPinballGame->unk1C8 = 0;

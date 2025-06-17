@@ -361,7 +361,7 @@ void sub_4A518(void)
             gCurrentPinballGame->unk1D6 = 120;
             gCurrentPinballGame->unk1DC = 60;
             DmaCopy16(3, gUnknown_084C0C6C, (void *)OBJ_VRAM0 + 0x600, 0x180);
-            gCurrentPinballGame->outLaneCoverPosition = 2;
+            gCurrentPinballGame->outLanePikaPosition = 2;
             gMain.unk44[41]->available = FALSE;
             gCurrentPinballGame->unk1C0 = 1;
             gCurrentPinballGame->unk5F6 = 3;
@@ -1241,7 +1241,7 @@ void sub_4BC34(void)
     switch (gCurrentPinballGame->unkE4 - 1)
     {
     case 0:
-        if (gCurrentPinballGame->outLaneCoverPosition == 2 && gCurrentPinballGame->unk1C2 == 2)
+        if (gCurrentPinballGame->outLanePikaPosition == 2 && gCurrentPinballGame->unk1C2 == 2)
         {
             DmaCopy16(3, gUnknown_08395A4C, (void *)0x6015800, 0x2400);
         }

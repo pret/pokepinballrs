@@ -689,10 +689,10 @@ void sub_32DF8(void)
 
     if (gCurrentPinballGame->newButtonActions[0])
     {
-        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->outLaneCoverPosition != 2 &&
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
             gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
         {
-            gCurrentPinballGame->outLaneCoverPosition = 0;
+            gCurrentPinballGame->outLanePikaPosition = 0;
         }
 
         tmp = gCurrentPinballGame->hLight;
@@ -709,10 +709,10 @@ void sub_32DF8(void)
 
     if (gCurrentPinballGame->newButtonActions[1])
     {
-        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->outLaneCoverPosition != 2 &&
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
             gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
         {
-            gCurrentPinballGame->outLaneCoverPosition = 1;
+            gCurrentPinballGame->outLanePikaPosition = 1;
         }
 
         tmp = gCurrentPinballGame->eLight;
