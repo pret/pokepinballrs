@@ -228,7 +228,7 @@ struct PinballGame
     /*0x1DA*/ u16 unk1DA;
     /*0x1DC*/ u16 unk1DC;
     /*0x1DE*/ u8 filler1DE[0x4];
-    /*0x1E2*/ s8 unk1E2;
+    /*0x1E2*/ s8 outLanePikaPosition; //Pikachu coverage. 0= left lane, 1=right lane, 2 = both
     /*0x1E3*/ u8 filler1E3[0x2];
     /*0x1E5*/ u8 unk1E5;
     /*0x1E6*/ u8 unk1E6;
@@ -424,17 +424,17 @@ struct PinballGame
     /*0x6F0*/ u8 filler6F0[0x1E];
     /*0x70E*/ s8 unk70E;
     /*0x70F*/ s8 unk70F;
-    /*0x710*/ s8 unk710;
-    /*0x711*/ s8 unk711;
-    /*0x712*/ s8 unk712;
-    /*0x713*/ s8 unk713;
+    /*0x710*/ s8 hLight; // 'H' light indicator in Ruby/Sapphire field
+    /*0x711*/ s8 oLight; // 'O' light indicator in Ruby/Sapphire field
+    /*0x712*/ s8 lLight; // 'L' light indicator in Ruby/Sapphire field
+    /*0x713*/ s8 eLight; // 'E' light indicator in Ruby/Sapphire field
     /*0x714*/ s8 unk714;
     /*0x715*/ u8 filler715[0x1];
     /*0x716*/ s8 unk716;
     /*0x717*/ u8 filler717[0x1];
-    /*0x718*/ s8 unk718;
-    /*0x719*/ s8 unk719;
-    /*0x71A*/ s8 unk71A;
+    /*0x718*/ s8 leftBallPowerUpLight;
+    /*0x719*/ s8 centerBallPowerUpLight;
+    /*0x71A*/ s8 rightBallPowerUpLight;
     /*0x71B*/ u8 unk71B;
     /*0x71C*/ u8 unk71C;
     /*0x71D*/ u8 filler71D[0x7];
