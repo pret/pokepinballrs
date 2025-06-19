@@ -86,17 +86,17 @@ struct BallState
     /*0x0A*/ u16 unkA;
     /*0x0C*/ u16 unkC;
     /*0x0E*/ u16 unkE;
-    /*0x10*/ struct Vector16 unk10;
+    /*0x10*/ struct Vector16 positionQ0;
     /*0x14*/ u8 filler14[0xB];
     /*0x1F*/ u8 unk1F;
     /*0x20*/ u8 filler20[0x4];
     /*0x24*/ u16 unk24;
     /*0x26*/ u16 unk26;
-    /*0x28*/ struct Vector16 unk28;
-    /*0x2C*/ struct Vector16 unk2C;
+    /*0x28*/ struct Vector16 positionQ1;
+    /*0x2C*/ struct Vector16 prevPositionQ1;
     /*0x30*/ struct Vector16 velocity;
-    /*0x34*/ struct Vector32 position; // fixed-point Q_24_8 values
-    /*0x3C*/ struct Vector32 prevPosition;
+    /*0x34*/ struct Vector32 positionQ8; // fixed-point Q_24_8 values
+    /*0x3C*/ struct Vector32 prevPositionQ8;
 };
 
 struct UnkPinballGame13BC
@@ -228,7 +228,7 @@ struct PinballGame
     /*0x1DA*/ u16 unk1DA;
     /*0x1DC*/ u16 unk1DC;
     /*0x1DE*/ u8 filler1DE[0x4];
-    /*0x1E2*/ s8 unk1E2;
+    /*0x1E2*/ s8 outLanePikaPosition; //Pikachu coverage. 0= left lane, 1=right lane, 2 = both
     /*0x1E3*/ u8 filler1E3[0x2];
     /*0x1E5*/ u8 unk1E5;
     /*0x1E6*/ u8 unk1E6;
@@ -424,17 +424,17 @@ struct PinballGame
     /*0x6F0*/ u8 filler6F0[0x1E];
     /*0x70E*/ s8 unk70E;
     /*0x70F*/ s8 unk70F;
-    /*0x710*/ s8 unk710;
-    /*0x711*/ s8 unk711;
-    /*0x712*/ s8 unk712;
-    /*0x713*/ s8 unk713;
+    /*0x710*/ s8 hLight; // 'H' light indicator in Ruby/Sapphire field
+    /*0x711*/ s8 oLight; // 'O' light indicator in Ruby/Sapphire field
+    /*0x712*/ s8 lLight; // 'L' light indicator in Ruby/Sapphire field
+    /*0x713*/ s8 eLight; // 'E' light indicator in Ruby/Sapphire field
     /*0x714*/ s8 unk714;
     /*0x715*/ u8 filler715[0x1];
     /*0x716*/ s8 unk716;
     /*0x717*/ u8 unk717;
-    /*0x718*/ s8 unk718;
-    /*0x719*/ s8 unk719;
-    /*0x71A*/ s8 unk71A;
+    /*0x718*/ s8 leftBallPowerUpLight;
+    /*0x719*/ s8 centerBallPowerUpLight;
+    /*0x71A*/ s8 rightBallPowerUpLight;
     /*0x71B*/ u8 unk71B;
     /*0x71C*/ u8 unk71C;
     /*0x71D*/ u8 filler71D[0x7];
@@ -490,7 +490,7 @@ struct PinballGame
     /*0x1326*/s16 unk1326;
     /*0x1328*/u16 unk1328;
     /*0x132A*/u8 filler132A[0x2];
-    /*0x132C*/struct BallState *unk132c;
+    /*0x132C*/struct BallState *ball;
     /*0x1330*/struct BallState *unk1330;
     /*0x1334*/struct BallState unk1334[2];
     /*0x13BC*/struct UnkPinballGame13BC unk13BC[2];
@@ -506,7 +506,9 @@ struct Unk02031520_unk10
 
 struct Unk02031520
 {
-    /*0x00*/ u8 filler0[0x8];
+    /*0x00*/ u8 eReaderBonuses[NUM_EREADER_CARDS];
+    /*0x05*/ bool8 rumbleEnabled;
+    /*0x06*/ s16 unk6;
     /*0x08*/ s16 unk8;
     /*0x0A*/ u8 fillerA[0x2];
     /*0x0C*/ struct PinballGame *unkC;
@@ -530,12 +532,21 @@ struct Unk02031590
 };
 
 extern struct PinballGame *gCurrentPinballGame;
+extern const StateFunc gIdlePinballGameStateFuncs[];
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
 extern struct Unk02031590 gUnknown_02031590;
 extern u16 gUnknown_08137B3C[][6][16];
 extern const u8 gUnknown_08137E14[][0x20];
 extern const u8 gUnknown_08138834[0x2000];
+extern struct Unk02031520_unk10 gUnknown_081450F4;
+extern struct Unk02031520_unk10 gUnknown_08148934;
+extern struct Unk02031520_unk10 gUnknown_0814C174;
+extern struct Unk02031520_unk10 gUnknown_0814F9B4;
+extern struct PinballGame gUnknown_081531F4;
+extern struct PinballGame gUnknown_08154618;
+extern struct PinballGame gUnknown_08155A3C;
+extern struct PinballGame gUnknown_08156E60;
 extern s32 gUnknown_081B36A4[64];
 extern s32 gUnknown_082EE0E0[0x3E0];
 extern const u16 gUnknown_08391A4C[0x1000];

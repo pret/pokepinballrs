@@ -162,42 +162,42 @@ void sub_19FA0(void) {
 
     if (gCurrentPinballGame->newButtonActions[0])
     {
-        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->unk1E2 != 2 &&
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
             gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
         {
-            gCurrentPinballGame->unk1E2 = 0;
+            gCurrentPinballGame->outLanePikaPosition = 0;
         }
 
-        tmp = gCurrentPinballGame->unk710;
-        gCurrentPinballGame->unk710 = gCurrentPinballGame->unk711;
-        gCurrentPinballGame->unk711 = gCurrentPinballGame->unk712;
-        gCurrentPinballGame->unk712 = gCurrentPinballGame->unk713;
-        gCurrentPinballGame->unk713 = tmp;
+        tmp = gCurrentPinballGame->hLight;
+        gCurrentPinballGame->hLight = gCurrentPinballGame->oLight;
+        gCurrentPinballGame->oLight = gCurrentPinballGame->lLight;
+        gCurrentPinballGame->lLight = gCurrentPinballGame->eLight;
+        gCurrentPinballGame->eLight = tmp;
 
-        tmp = gCurrentPinballGame->unk718;
-        gCurrentPinballGame->unk718 = gCurrentPinballGame->unk719;
-        gCurrentPinballGame->unk719 = gCurrentPinballGame->unk71A;
-        gCurrentPinballGame->unk71A = tmp;
+        tmp = gCurrentPinballGame->leftBallPowerUpLight;
+        gCurrentPinballGame->leftBallPowerUpLight = gCurrentPinballGame->centerBallPowerUpLight;
+        gCurrentPinballGame->centerBallPowerUpLight = gCurrentPinballGame->rightBallPowerUpLight;
+        gCurrentPinballGame->rightBallPowerUpLight = tmp;
     }
 
     if (gCurrentPinballGame->newButtonActions[1])
     {
-        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->unk1E2 != 2 &&
+        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
             gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
         {
-            gCurrentPinballGame->unk1E2 = 1;
+            gCurrentPinballGame->outLanePikaPosition = 1;
         }
 
-        tmp = gCurrentPinballGame->unk713;
-        gCurrentPinballGame->unk713 = gCurrentPinballGame->unk712;
-        gCurrentPinballGame->unk712 = gCurrentPinballGame->unk711;
-        gCurrentPinballGame->unk711 = gCurrentPinballGame->unk710;
-        gCurrentPinballGame->unk710 = tmp;
+        tmp = gCurrentPinballGame->eLight;
+        gCurrentPinballGame->eLight = gCurrentPinballGame->lLight;
+        gCurrentPinballGame->lLight = gCurrentPinballGame->oLight;
+        gCurrentPinballGame->oLight = gCurrentPinballGame->hLight;
+        gCurrentPinballGame->hLight = tmp;
 
-        tmp = gCurrentPinballGame->unk71A;
-        gCurrentPinballGame->unk71A = gCurrentPinballGame->unk719;
-        gCurrentPinballGame->unk719 = gCurrentPinballGame->unk718;
-        gCurrentPinballGame->unk718 = tmp;
+        tmp = gCurrentPinballGame->rightBallPowerUpLight;
+        gCurrentPinballGame->rightBallPowerUpLight = gCurrentPinballGame->centerBallPowerUpLight;
+        gCurrentPinballGame->centerBallPowerUpLight = gCurrentPinballGame->leftBallPowerUpLight;
+        gCurrentPinballGame->leftBallPowerUpLight = tmp;
         
         gCurrentPinballGame->unk301 = 1;
     }

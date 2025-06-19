@@ -91,13 +91,13 @@ void sub_13D24(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg2)
     forwardMag = scaledForwardMag / 100;
     scaledLateralMag = (lateralMag * 8) / 10;
 
-    curveScaleFactor = gCurrentPinballGame->unk132c->unk6 * 0xEB8 / 0x2BC00;
+    curveScaleFactor = gCurrentPinballGame->ball->unk6 * 0xEB8 / 0x2BC00;
 
     curveDir = -angleSign;
     curveDirScaledFactor = (curveDir * 25) * 1024;
-    gCurrentPinballGame->unk132c->unk6 = 
+    gCurrentPinballGame->ball->unk6 = 
         curveDirScaledFactor * scaledLateralMag / 0xEB8 
-        + gCurrentPinballGame->unk132c->unk4;
+        + gCurrentPinballGame->ball->unk4;
 
     tempVec.x =  forwardMag * Cos(arg0);
     tempVec.y = -forwardMag * Sin(arg0);
@@ -136,7 +136,7 @@ void sub_13D24(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg2)
 
     if (gMain.selectedField == FIELD_SAPPHIRE 
         && gCurrentPinballGame->unk24 > 0 
-        && gCurrentPinballGame->unk132c->unk10.y <= 0xD1) 
+        && gCurrentPinballGame->ball->positionQ0.y <= 0xD1) 
     {
         tempVec.x =  halfMag * Cos(finalAngle) / 20000;        
         tempVec.y = -halfMag * Sin(finalAngle) / 20000;
@@ -161,13 +161,13 @@ void sub_14074(u16 arg0, struct Vector32 *arg1, u16 arg2) {
 
     struct Vector16 tempVec;
     
-    x = gCurrentPinballGame->unk132c->velocity.x;
-    y = gCurrentPinballGame->unk132c->velocity.y;
+    x = gCurrentPinballGame->ball->velocity.x;
+    y = gCurrentPinballGame->ball->velocity.y;
     vMagSquared  = (x*x) + (y*y);
 
     if (gCurrentPinballGame->unk23 == 2)
     {
-        if (gCurrentPinballGame->unk132c->unk28.x > 224)
+        if (gCurrentPinballGame->ball->positionQ1.x > 224)
         {
             s32 value = 0xffffd5e4;//-10780;
             var0 = value + arg2;
@@ -190,7 +190,7 @@ void sub_14074(u16 arg0, struct Vector32 *arg1, u16 arg2) {
             arg1->x = arg1->x / 5;
             arg1->y = arg1->y / 5;
 
-            gCurrentPinballGame->unk132c->unk6 = (gCurrentPinballGame->unk132c->unk6 * 4) / 10; 
+            gCurrentPinballGame->ball->unk6 = (gCurrentPinballGame->ball->unk6 * 4) / 10; 
             
             if ( gCurrentPinballGame->ballSpeed > 0)
             {
@@ -204,7 +204,7 @@ void sub_14074(u16 arg0, struct Vector32 *arg1, u16 arg2) {
             }
             
             gCurrentPinballGame->unk716 = 4;
-            if (gCurrentPinballGame->unk132c->unk10.x <= 119)
+            if (gCurrentPinballGame->ball->positionQ0.x <= 119)
             {
                 gCurrentPinballGame->unk717 = 0;                
             }
@@ -273,7 +273,7 @@ void sub_14074(u16 arg0, struct Vector32 *arg1, u16 arg2) {
             arg1->x = xSign * 256;            
         }
         
-        gCurrentPinballGame->unk132c->unk6 = 0;
+        gCurrentPinballGame->ball->unk6 = 0;
         angle = ArcTan2(arg1->x, -arg1->y);
         arg1->x = vMagSquared  * Cos(angle) / VECTORSCALEDOWN;
         arg1->y = -vMagSquared  * Sin(angle) / VECTORSCALEDOWN;
