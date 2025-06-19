@@ -4,6 +4,7 @@
 #include "m4a.h"
 #include "constants/anglemath.h"
 
+
 void sub_13D24(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg2) 
 {   
     u16 angleOfFlippedArg1;
@@ -149,4 +150,132 @@ void sub_13D24(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg2)
 
     arg2->x = tempVec.x;
     arg2->y = tempVec.y;
+}
+
+
+void sub_14074(u16 arg0, struct Vector32 *arg1, u16 arg2) {
+    const u16 VECTORSCALEDOWN = 0x4E20;
+    s32 vMagSquared ;
+    s16 x, y;
+    s16 var0;
+
+    struct Vector16 tempVec;
+    
+    x = gCurrentPinballGame->unk132c->velocity.x;
+    y = gCurrentPinballGame->unk132c->velocity.y;
+    vMagSquared  = (x*x) + (y*y);
+
+    if (gCurrentPinballGame->unk23 == 2)
+    {
+        if (gCurrentPinballGame->unk132c->unk28.x > 224)
+        {
+            s32 value = 0xffffd5e4;//-10780;
+            var0 = value + arg2;
+            arg0 = 0x6a1c; 
+        } 
+        else
+        {
+            s32 value = 0x55e4; //21988
+            var0 = value - arg2;
+            arg0 = 0x15e4;
+        } 
+        
+        if ((var0 >= 0 && var0 <= 0x1200) && 0x4000 > vMagSquared )
+        {
+            tempVec.x = 0;
+            tempVec.y = 0;
+        }
+        else
+        {
+            arg1->x = arg1->x / 5;
+            arg1->y = arg1->y / 5;
+
+            gCurrentPinballGame->unk132c->unk6 = (gCurrentPinballGame->unk132c->unk6 * 4) / 10; 
+            
+            if ( gCurrentPinballGame->ballSpeed > 0)
+            {
+                tempVec.x = 230 * Cos(arg0) / VECTORSCALEDOWN;
+                tempVec.y = -230 * Sin(arg0) / VECTORSCALEDOWN;  
+            } 
+            else
+            {
+                tempVec.x = 285 * Cos(arg0) / VECTORSCALEDOWN;
+                tempVec.y = -285 * Sin(arg0) / VECTORSCALEDOWN;
+            }
+            
+            gCurrentPinballGame->unk716 = 4;
+            if (gCurrentPinballGame->unk132c->unk10.x <= 119)
+            {
+                gCurrentPinballGame->unk717 = 0;                
+            }
+            else
+            {
+                gCurrentPinballGame->unk717 = 1;
+            }
+        } 
+    } 
+    else
+    {
+        if (gCurrentPinballGame->unk23 == 1)
+        {
+            arg1->x = arg1->x / 5;
+            arg1->y = arg1->y / 5;
+
+            if (arg0 > 0xA000 && arg0 < 0xE000)
+            {
+                tempVec.x =  60 * Cos(arg0) / VECTORSCALEDOWN;
+                tempVec.y = -60 * Sin(arg0) / VECTORSCALEDOWN;
+            } 
+            else if (arg0 >= 0x1000 && arg0 <= 0x7000)
+            {
+                tempVec.x =  240 * Cos(arg0) / VECTORSCALEDOWN;
+                tempVec.y = -240 * Sin(arg0) / VECTORSCALEDOWN;
+            }
+            else
+            {
+                tempVec.x =  120 * Cos(arg0) / VECTORSCALEDOWN;
+                tempVec.y = -120 * Sin(arg0) / VECTORSCALEDOWN;
+            }
+        } 
+        else
+        {
+            tempVec.x =  gUnknown_086ACDF4[gCurrentPinballGame->unk23] * Cos(arg0) / VECTORSCALEDOWN;
+            tempVec.y = -gUnknown_086ACDF4[gCurrentPinballGame->unk23] * Sin(arg0) / VECTORSCALEDOWN;
+        } 
+    }
+    
+    arg1->x = arg1->x + tempVec.x;
+    arg1->y = arg1->y + tempVec.y;
+    
+    if (gCurrentPinballGame->unk5A4 != 0)
+    {
+        s16 x2 = arg1->x;
+        s16 xSign = 1;
+        u16 angle;
+        if (gCurrentPinballGame->unk5A4 == 1)
+        {
+            gCurrentPinballGame->unk5A4 = 0;
+            vMagSquared  = 0x80;
+        }   
+        else
+        {
+            vMagSquared  = 0x280;           
+        }
+        
+        if (x2 < 0)
+        {
+            x2 = -x2;            
+            xSign = -1;
+        }
+        
+        if (x2 < 0x100)
+        {
+            arg1->x = xSign * 256;            
+        }
+        
+        gCurrentPinballGame->unk132c->unk6 = 0;
+        angle = ArcTan2(arg1->x, -arg1->y);
+        arg1->x = vMagSquared  * Cos(angle) / VECTORSCALEDOWN;
+        arg1->y = -vMagSquared  * Sin(angle) / VECTORSCALEDOWN;
+    }   
 }

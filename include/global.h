@@ -431,7 +431,7 @@ struct PinballGame
     /*0x714*/ s8 unk714;
     /*0x715*/ u8 filler715[0x1];
     /*0x716*/ s8 unk716;
-    /*0x717*/ u8 filler717[0x1];
+    /*0x717*/ u8 unk717;
     /*0x718*/ s8 unk718;
     /*0x719*/ s8 unk719;
     /*0x71A*/ s8 unk71A;
@@ -540,5 +540,6 @@ extern s32 gUnknown_081B36A4[64];
 extern s32 gUnknown_082EE0E0[0x3E0];
 extern const u16 gUnknown_08391A4C[0x1000];
 extern const u16 gUnknown_08393A4C[0x1000];
+extern const s16 gUnknown_086ACDF4[9];
 
 #endif // GUARD_GLOBAL_H
