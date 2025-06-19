@@ -92,10 +92,10 @@ struct BallState
     /*0x20*/ u8 filler20[0x4];
     /*0x24*/ u16 unk24;
     /*0x26*/ u16 unk26;
-    /*0x28*/ struct Vector16 positionQ1; // double the values of the logicPosition
+    /*0x28*/ struct Vector16 positionQ1;
     /*0x2C*/ struct Vector16 prevPositionQ1;
     /*0x30*/ struct Vector16 velocity;
-    /*0x34*/ struct Vector32 positionQ8; // fixed-point Q_24_8 values; position as used by physics calculation
+    /*0x34*/ struct Vector32 positionQ8; // fixed-point Q_24_8 values
     /*0x3C*/ struct Vector32 prevPositionQ8;
 };
 
