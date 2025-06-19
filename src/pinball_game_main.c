@@ -599,6 +599,7 @@ void sub_4AAD8(void)
     sub_11FC();
 }
 
+//gMain.subState = 2
 void sub_4ABC8(void)
 {
     sub_111C();
