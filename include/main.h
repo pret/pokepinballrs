@@ -37,7 +37,7 @@ struct Main
 {
     /*0x00*/ u8 filler0[0x2];
     /*0x02*/ u8 mainState;
-    /*0x03*/ u8 subState; //0 to 3 range
+    /*0x03*/ u8 subState;
     /*0x04*/ u8 selectedField;
     /*0x05*/ u8 unk5;
     /*0x06*/ u8 unk6; // isBonusField (?)

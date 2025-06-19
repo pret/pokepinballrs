@@ -377,12 +377,12 @@ void sub_18F38(u8 arg0_enum, u16 *arg1, u16 *arg2)
     }
 }
 
-void IdlePinballGameMain()
+void IdlePinballGameMain(void)
 {
     gIdlePinballGameStateFuncs[gMain.subState]();
 }
 
-void sub_19048()
+void sub_19048(void)
 {
     s16 i;
     s16 unk30;
@@ -393,13 +393,10 @@ void sub_19048()
     gUnknown_02031510 = 0;
 
     for (i = 0; i < NUM_EREADER_CARDS; i++)
-    {
         gUnknown_02031520.eReaderBonuses[i] = gMain.eReaderBonuses[i];
-    }
+
     if (gMain.unk30 == 0)
-    {
         gMain.unk30 = (Random() + gMain.systemFrameCount) % 30;
-    }
 
     unk30 = gMain.unk30;
     unk30LowerBits = unk30 & 3;
@@ -431,11 +428,11 @@ void sub_19048()
 
     switch (unk30LowerBits)
     {
-    case 1:
-        m4aSongNumStart(MUS_FIELD_SAPPHIRE);
-        break;
     case 0:
         m4aSongNumStart(MUS_FIELD_RUBY);
+        break;
+    case 1:
+        m4aSongNumStart(MUS_FIELD_SAPPHIRE);
         break;
     case 2:
         m4aSongNumStart(MUS_FIELD_RUBY);
@@ -463,21 +460,16 @@ void sub_19190()
         break;
     case 1:
         if (gMain.selectedField < MAIN_FIELD_COUNT)
-        {
             sub_4ACF0();
-        }
         else
-        {
             sub_4B000();
-        }
+
         if (gMain.unk54++ > gUnknown_02031520.unk6)
-        {
             gMain.unkE = 1;
-        }
-        if ((gMain.heldKeys & JOY_EXCL_LR) != 0)
-        {
+
+        if (gMain.heldKeys & JOY_EXCL_LR)
             gMain.unkE = 1;
-        }
+
         if (gMain.unkE != 0)
         {
             if (gMain.selectedField < MAIN_FIELD_COUNT)
@@ -489,15 +481,15 @@ void sub_19190()
             {
                 sub_356A0();
             }
+
             if ((gMain.unkF & 2) != 0)
             {
                 DmaCopy16(3, gCurrentPinballGame->unk111A, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
             }
+
             gCurrentPinballGame->unk1D = 2;
             if (gMain.unkE == 2)
-            {
                 sub_4B408(1);
-            }
         }
         break;
     case 2:
@@ -509,30 +501,25 @@ void sub_19190()
 void sub_19288(void)
 {
     s16 i;
+
     gMain.unk36 = 0;
     gMain_saveData.rumbleEnabled = gUnknown_02031520.rumbleEnabled;
     for (i = 0; i < NUM_EREADER_CARDS; i++)
-    {
         gMain.eReaderBonuses[i] = gUnknown_02031520.eReaderBonuses[i];
-    }
+
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
     if (gMain.unk54 < gUnknown_02031520.unk6)
-    {
         SetMainGameState(STATE_TITLE);
-    }
     else
-    {
         SetMainGameState(STATE_SCORES_IDLE);
-    }
+
     gMain.unk54 = 0;
 }
 
 void sub_19304(void)
 {
     if (gMain.selectedField >= FIELD_BONUS_START)
-    {
         sub_19734();
-    }
 }
