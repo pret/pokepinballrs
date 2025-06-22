@@ -538,8 +538,8 @@ struct Unk02031590
 
 struct Unk086ACE8C
 {
-    u16 unk0; //always 4
-    u16 unk2; //always 16
+    u16 unk0;
+    u16 unk2;
     u16 unk4;
     u16 unk6;
 };
