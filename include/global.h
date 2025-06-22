@@ -101,9 +101,12 @@ struct BallState
 
 struct UnkPinballGame13BC
 {
-    /*0x00*/ u8 filler0[0x4];
+    /*0x00*/ s8 unk0;
+    /*0x01*/ u8 filler1[0x3];
     /*0x04*/ s8 unk4;
-    /*0x05*/ u8 filler5[0x7];
+    /*0x05*/ u8 filler5[0x3];
+    /*0x08*/ s8 unk8;
+    /*0x09*/ u8 filler9[0x3];
 };
 
 struct PinballGame
@@ -522,7 +525,9 @@ struct Unk02031520
     /*0x0A*/ u8 fillerA[0x2];
     /*0x0C*/ struct PinballGame *unkC;
     /*0x10*/ struct Unk02031520_unk10 *unk10;
-    /*0x14*/ u8 filler14[0xc];
+    /*0x14*/ u8 filler14[0x8];
+    /*0x1C*/ u16 unk1C;
+    /*0x1E*/ u8 filler1E[0x2];
     /*0x20*/ s16 unk20;
     /*0x22*/ s16 unk22;
     /*0x24*/ s16 unk24;
@@ -538,6 +543,14 @@ struct Unk02031590
 {
     u8 filler[0x16];
     u8 unk16;
+};
+
+struct Unk086ACE8C
+{
+    u16 unk0;
+    u16 unk2;
+    u16 unk4;
+    u16 unk6;
 };
 
 extern struct PinballGame *gCurrentPinballGame;
@@ -561,5 +574,6 @@ extern s32 gUnknown_082EE0E0[0x3E0];
 extern const u16 gUnknown_08391A4C[0x1000];
 extern const u16 gUnknown_08393A4C[0x1000];
 extern const s16 gUnknown_086ACDF4[9];
+extern struct Unk086ACE8C gUnknown_086ACE8C[13];
 
 #endif // GUARD_GLOBAL_H
