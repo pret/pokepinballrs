@@ -523,3 +523,39 @@ void sub_19304(void)
     if (gMain.selectedField >= FIELD_BONUS_START)
         sub_19734();
 }
+
+void sub_1931C(struct Vector16 arg0)
+{
+    s16 check;
+    struct Unk086ACE8C *line;
+    struct Vector16 point1, point2;
+
+    line = &gUnknown_086ACE8C[gCurrentPinballGame->unk13BC[0].unk0];
+    point1.x = line->unk0 + 0x53;
+    point1.y = line->unk2 + gUnknown_02031520.unk1C;
+
+    point2.x = line->unk4 + 0x53;
+    point2.y = line->unk6 + gUnknown_02031520.unk1C;
+
+    check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
+
+    if (check >= 0)
+        gCurrentPinballGame->unk13BC[0].unk8 = 1;
+    else
+        gCurrentPinballGame->unk13BC[0].unk8 = -1;
+
+    line = &gUnknown_086ACE8C[gCurrentPinballGame->unk13BC[1].unk0];
+
+    point1.x = 0x9C - line->unk0;
+    point1.y = line->unk2 + gUnknown_02031520.unk1C;
+
+    point2.x = 0x9C - line->unk4;
+    point2.y = line->unk6 + gUnknown_02031520.unk1C;
+
+    check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
+
+    if (check >= 0)
+        gCurrentPinballGame->unk13BC[1].unk8 = 1;
+    else
+        gCurrentPinballGame->unk13BC[1].unk8 = -1;
+}
