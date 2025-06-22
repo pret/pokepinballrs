@@ -882,7 +882,7 @@ void sub_33130(void)
             {
                 gCurrentPinballGame->unk18 = 0;
                 gCurrentPinballGame->unk13 = 6;
-                gCurrentPinballGame->bonusFieldsComplete++;
+                gCurrentPinballGame->numCompletedBonusStages++;
             }
 
             break;

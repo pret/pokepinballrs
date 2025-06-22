@@ -13,6 +13,9 @@ extern void sub_3751C(void);
 extern void sub_37850(void);
 extern void sub_38218(void);
 
+extern const u8 gUnknown_0813A854[0x2000];
+
+
 void sub_356A0(void)
 {
     s16 i;
@@ -85,7 +88,7 @@ void sub_357B8(void)
     gMain.unkF = 0;
     gCurrentPinballGame->eventTimer = 0;
     gCurrentPinballGame->unk294 = 0;
-    if (gCurrentPinballGame->bonusFieldsComplete > 4)
+    if (gCurrentPinballGame->numCompletedBonusStages > 4)
         gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD] = 1;
 
     gMain.subState = 0;
@@ -162,4 +165,118 @@ void sub_35860(void)
     sub_3751C();
     sub_37850();
     DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
+}
+
+void sub_35AA4(void)
+{
+    sub_38218();
+    switch (gCurrentPinballGame->unk13)
+    {
+    case 0:
+        gCurrentPinballGame->unk5F7 = 1;
+        if (gCurrentPinballGame->unk18 < 120)
+        {
+            gCurrentPinballGame->unkE6 = (gCurrentPinballGame->unk18 / 5) + 0xFFE8;
+            gCurrentPinballGame->unk18++;
+        }
+        else
+        {
+            gCurrentPinballGame->unkE6 = 0;
+            gCurrentPinballGame->unk13 = 1;
+            gCurrentPinballGame->unk18 = 0;
+        }
+
+        if (gCurrentPinballGame->unk386 == 0)
+        {
+            gMain.blendControl = 0x1C10;
+            gMain.blendAlpha = BLDALPHA_BLEND(16, 0);
+        }
+        break;
+    case 1:
+        if (gCurrentPinballGame->unk386 == 0)
+        {
+            if (gCurrentPinballGame->unk40E == 0)
+            {
+                u16 var0 = 16 - gCurrentPinballGame->unk3FA;
+                u16 var1 = gCurrentPinballGame->unk3FA;
+                gMain.blendControl = 0x1C10;
+                gMain.blendAlpha = BLDALPHA_BLEND(var0, var1);
+            }
+            else
+            {
+                gMain.blendControl = 0x1C42;
+                gMain.blendAlpha = BLDALPHA_BLEND(7, 9);
+            }
+        }
+        break;
+    case 2:
+        if (gCurrentPinballGame->unk18 < 10)
+        {
+            gCurrentPinballGame->unk18++;
+        }
+        else
+        {
+            gCurrentPinballGame->unk13 = 3;
+            gCurrentPinballGame->unk18 = 0;
+            gMain.spriteGroups[6].available = 1;
+            gMain.spriteGroups[5].available = 1;
+            DmaCopy16(3, gUnknown_0813A854, (void *)0x6015800, 0x2000);
+            gCurrentPinballGame->unk394 = 0x88;
+            gMain.unkF = 0x80;
+        }
+        break;
+    case 3:
+        sub_351A8();
+        if (gCurrentPinballGame->unk1C)
+            gCurrentPinballGame->unk18 = 181;
+
+        if (gCurrentPinballGame->unk18 == 180)
+        {
+            gCurrentPinballGame->unk1C = 1;
+            gCurrentPinballGame->unk38 = 400000;
+            gCurrentPinballGame->unk3C = 30000000;
+        }
+
+        if (gCurrentPinballGame->unk18 < 240)
+        {
+            if (gCurrentPinballGame->unk18 == 20)
+            {
+                m4aMPlayAllStop();
+                m4aSongNumStart(MUS_SUCCESS3);
+            }
+
+            gCurrentPinballGame->unk18++;
+        }
+        else
+        {
+            gCurrentPinballGame->unk18 = 0;
+            gCurrentPinballGame->unk13 = 4;
+            gCurrentPinballGame->numCompletedBonusStages++;
+        }
+        break;
+    case 4:
+        sub_351A8();
+        gCurrentPinballGame->unk386 = 1;
+        break;
+    }
+
+    sub_35D54();
+    sub_36CB4();
+    sub_372B4();
+    sub_3751C();
+    if (gCurrentPinballGame->unk294 && gCurrentPinballGame->eventTimer < 2 && gMain.unkF == 0)
+    {
+        m4aMPlayAllStop();
+        m4aSongNumStart(MUS_END_OF_BALL3);
+        gCurrentPinballGame->unk404 = 0;
+        gCurrentPinballGame->unk408 = 0;
+        gCurrentPinballGame->unk406 = 0;
+        gMain.unkF |= 0x40;
+    }
+
+    if (gCurrentPinballGame->unk386)
+        sub_350F0();
+
+    sub_472E4();
+    sub_37850();
 }

@@ -244,7 +244,7 @@ struct PinballGame
     /*0x280*/ s8 evolvingPartyIndex;
     /*0x281*/ s8 evolvablePartySize;
     /*0x282*/ s8 unk282;
-    /*0x283*/ u8 bonusFieldsComplete; //how many bonus fields have been completed
+    /*0x283*/ u8 numCompletedBonusStages;
     /*0x284*/ u8 filler284[0xC];
     /*0x290*/ u32 unk290;
     /*0x294*/ s8 unk294;
@@ -356,7 +356,7 @@ struct PinballGame
     /*0x408*/ s16 unk408;
     /*0x40A*/ s16 unk40A;
     /*0x40C*/ s16 unk40C;
-    /*0x40E*/ s16 unk40E;
+    /*0x40E*/ u16 unk40E;
     /*0x410*/ s16 unk410;
     /*0x412*/ s16 unk412;
     /*0x414*/ s8 unk414;
