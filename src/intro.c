@@ -167,7 +167,7 @@ void sub_93F8(void)
     {
         m4aSoundMain();
         VBlankIntrWait();
-        DmaCopy16(3, gOamBuffer , OAM, 0x8000200);
+        DmaCopy32(3, gOamBuffer , OAM, OAM_SIZE);
         REG_DISPCNT = gMain.unk16;
         REG_BG0HOFS = gMain.bgOffsets[0].xOffset;
         REG_BG0VOFS = gMain.bgOffsets[0].yOffset;
