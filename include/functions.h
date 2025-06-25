@@ -333,7 +333,7 @@ extern void Options_InitStates(void);
 extern void sub_51C9C(void);
 extern void sub_524BC(void);
 extern void sub_52528(void);
-extern void sub_525CC(s8);
+extern void SetButtonConfigInputs(s8);
 
 // asm/pokedex.s
 
@@ -718,7 +718,7 @@ extern void SaveFile_LoadGameData(void);
 extern void SaveFile_WriteToSram(void);
 extern void SaveFile_SetPokedexFlags(s16, u8);
 extern void SaveFile_ReadSavedGamePresent(void);
-extern void sub_52C64(void);
+extern void ResetSaveFile(void);
 
 // asm/rom_9BC.s
 

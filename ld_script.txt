@@ -73,7 +73,8 @@ SECTIONS
         asm/rom_4CEA8.o(.text4E598);
         src/rom_50FAC.o(.text);
         src/options.o(.text);
-        src/rom_528AC.o(.text);
+        src/pokemon_cry.o(.text);
+        src/save.o(.text);
         src/m4a_1.o(.text);
         src/m4a.o(.text);
         src/libagbsyscall.o(.text);
