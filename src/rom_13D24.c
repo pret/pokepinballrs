@@ -151,7 +151,7 @@ void sub_13D24(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg2)
 
 void sub_14074(u16 arg0, struct Vector32 *arg1, u16 arg2)
 {
-    const u16 VECTORSCALEDOWN = 0x4E20;
+    const u16 VECTORSCALEDOWN = 20000;
     s32 vMagSquared;
     s16 x, y;
     s16 var0;
