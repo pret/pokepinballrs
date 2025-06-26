@@ -3,6 +3,8 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
+#define BONUS_KECLEON_COMPLETE_POINTS 30000000
+
 extern struct SpriteGroup gUnknown_0200BDC8;
 extern struct SpriteGroup gUnknown_0200BC58;
 
@@ -254,7 +256,7 @@ void sub_35AA4(void)
         {
             gCurrentPinballGame->unk1C = 1;
             gCurrentPinballGame->unk38 = 400000;
-            gCurrentPinballGame->unk3C = 30000000;
+            gCurrentPinballGame->unk3C = BONUS_KECLEON_COMPLETE_POINTS;
         }
 
         if (gCurrentPinballGame->unk18 < 240)
