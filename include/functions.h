@@ -572,7 +572,7 @@ extern void sub_329B0();
 extern void sub_329F4();
 extern void sub_32B74();
 extern void sub_32BE4();
-//extern ? sub_32F3C();
+//extern ? DuskullBonus_Setup();
 //extern ? sub_33130();
 extern void sub_3342C(s16 index1, s16 index2);
 extern void sub_336E0();
