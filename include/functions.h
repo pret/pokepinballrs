@@ -585,7 +585,6 @@ extern void sub_356A0();
 //extern ? sub_35860();
 //extern ? sub_35AA4();
 //extern ? sub_35D54();
-//extern ? sub_36CB4();
 //extern ? sub_372B4();
 //extern ? sub_3751C();
 //extern ? sub_37850();
