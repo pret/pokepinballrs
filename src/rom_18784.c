@@ -572,13 +572,9 @@ void sub_19490(void)
         struct SpriteGroup *spriteGroup;
 
         if (gCurrentPinballGame->unk13BC[i].unk0 > 10)
-        {
             gCurrentPinballGame->unk13BC[i].unk0 = 10;
-        }
         else if (gCurrentPinballGame->unk13BC[i].unk0 < 0)
-        {
             gCurrentPinballGame->unk13BC[i].unk0 = 0;
-        }
 
         spriteGroup = &gMain.spriteGroups[10 + i];
         if (spriteGroup->available)
@@ -590,7 +586,7 @@ void sub_19490(void)
             spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->unk58;
             spriteGroup->baseY = gUnknown_02031520.unk1C - gCurrentPinballGame->unk5A;
 
-            DmaCopy16(3, &gUnknown_083FE44C[unk0Signed * TILE_OFFSET_4BPP(16)], OBJ_VRAM0 + i * TILE_OFFSET_4BPP(16), TILE_SIZE_4BPP * 16);
+            DmaCopy16(3, gUnknown_083FE44C[unk0Signed], OBJ_VRAM0 + i * 0x200, 0x200);
             
             oamData = &spriteGroup->oam[0];
             gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup->baseX;
