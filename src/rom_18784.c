@@ -559,3 +559,38 @@ void sub_1931C(struct Vector16 arg0)
     else
         gCurrentPinballGame->unk13BC[1].unk8 = -1;
 }
+
+void sub_19490(void)
+{
+    s16 i;
+
+    if ((gMain.unkF & 1) == 0)
+        sub_195C4();
+
+    for (i = 0; i < 2; i++)
+    {
+        struct SpriteGroup *spriteGroup;
+
+        if (gCurrentPinballGame->unk13BC[i].unk0 > 10)
+            gCurrentPinballGame->unk13BC[i].unk0 = 10;
+        else if (gCurrentPinballGame->unk13BC[i].unk0 < 0)
+            gCurrentPinballGame->unk13BC[i].unk0 = 0;
+
+        spriteGroup = &gMain.spriteGroups[10 + i];
+        if (spriteGroup->available)
+        {
+            s8 unk0Signed;
+            struct OamDataSimple *oamData;
+
+            unk0Signed = gCurrentPinballGame->unk13BC[i].unk0 / 2;
+            spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->unk58;
+            spriteGroup->baseY = gUnknown_02031520.unk1C - gCurrentPinballGame->unk5A;
+
+            DmaCopy16(3, gUnknown_083FE44C[unk0Signed], OBJ_VRAM0 + i * 0x200, 0x200);
+            
+            oamData = &spriteGroup->oam[0];
+            gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup->baseX;
+            gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup->baseY;
+        }
+    }
+}
