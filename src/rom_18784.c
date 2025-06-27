@@ -590,8 +590,8 @@ void sub_19490(void)
             spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->unk58;
             spriteGroup->baseY = gUnknown_02031520.unk1C - gCurrentPinballGame->unk5A;
 
-            DmaCopy16(3, &gUnknown_083FE44C[unk0Signed * 512], OBJ_VRAM0 + i * 512, OBJ_PLTT_SIZE);
-
+            DmaCopy16(3, &gUnknown_083FE44C[unk0Signed * TILE_OFFSET_4BPP(16)], OBJ_VRAM0 + i * TILE_OFFSET_4BPP(16), TILE_SIZE_4BPP * 16);
+            
             oamData = &spriteGroup->oam[0];
             gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup->baseX;
             gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup->baseY;
