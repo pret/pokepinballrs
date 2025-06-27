@@ -73,7 +73,7 @@ void sub_1AA38(void)
     gCurrentPinballGame->unk28 = 113;
     
     m4aSongNumStart(SE_UNKNOWN_0xCE);
-    gCurrentPinballGame->unk3C = 0xC350;
+    gCurrentPinballGame->unk3C = 50000;
 
     sub_11B0(8);
 }

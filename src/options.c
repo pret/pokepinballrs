@@ -299,7 +299,7 @@ void Options_HandleInput(void)
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gMain.subState++;
-            sub_525CC(gMain_saveData.buttonConfigType);
+            SetButtonConfigInputs(gMain_saveData.buttonConfigType);
         }
         if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk2 = 1 - gOptionsData.unk2;
@@ -1629,7 +1629,7 @@ void sub_52528(void)
 
 extern const u8 gUnknown_08527EFE[];
 
-void sub_525CC(s8 buttonConfigType)
+void SetButtonConfigInputs(s8 buttonConfigType)
 {
     int i;
     switch (buttonConfigType)
