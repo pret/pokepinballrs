@@ -573,7 +573,7 @@ extern s32 gUnknown_081B36A4[64];
 extern s32 gUnknown_082EE0E0[0x3E0];
 extern const u16 gUnknown_08391A4C[0x1000];
 extern const u16 gUnknown_08393A4C[0x1000];
-extern const s16 gUnknown_086ACDF4[9];
+extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
 extern struct Unk086ACE8C gUnknown_086ACE8C[13];
 
 #endif // GUARD_GLOBAL_H
