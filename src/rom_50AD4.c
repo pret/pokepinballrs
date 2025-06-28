@@ -1,11 +1,13 @@
 #include "global.h"
 #include "main.h"
 
-void sub_50AD4(void) {
+void sub_50AD4(void)
+{
     s16 i;
-    for(i = 0; i <= 86; i++){
+
+    for (i = 0; i < 87; i++)
         gMain.spriteGroups[i].available = 0;
-    }
+
     gMain.spriteGroups[72].available = 1;
     gMain.spriteGroups[63].available = 1;
     gMain.spriteGroups[60].available = 1;
