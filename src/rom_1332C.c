@@ -306,11 +306,13 @@ void sub_13B28(struct Vector16* arg0, struct Vector16* arg1, s16 arg2)
             break;
         
         for (i = gCurrentPinballGame->unk1E; i < 4; i++)
+        {
             if (sub_14AF4(*arg0, i + 1, &sp0, arg2))
             {
                 flag = TRUE;
                 break;
             }
+        }
         
         if (!flag)
             break;
