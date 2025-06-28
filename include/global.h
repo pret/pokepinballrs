@@ -102,9 +102,12 @@ struct BallState
 struct UnkPinballGame13BC
 {
     /*0x00*/ s8 unk0;
-    /*0x01*/ u8 filler1[0x3];
+    /*0x01*/ s8 unk1;
+    /*0x02*/ s8 unk2;
+    /*0x03*/ s8 filler3[0x1];
     /*0x04*/ s8 unk4;
-    /*0x05*/ u8 filler5[0x3];
+    /*0x05*/ s8 unk5;
+    /*0x05*/ u8 filler6[0x2];
     /*0x08*/ s8 unk8;
     /*0x09*/ u8 filler9[0x3];
 };
