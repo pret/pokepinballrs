@@ -52072,43 +52072,7 @@ _08030474: .4byte gOamBuffer
 _08030478: .4byte 0x000001FF
 _0803047C: .4byte 0xFFFFFE00
 
-	thumb_func_start sub_30480
-sub_30480: @ 0x08030480
-	ldr r2, _080304C4 @ =gCurrentPinballGame
-	ldr r0, [r2]
-	movs r1, #0xf6
-	lsls r1, r1, #1
-	adds r0, r0, r1
-	movs r3, #0
-	movs r1, #1
-	strb r1, [r0]
-	ldr r0, [r2]
-	movs r1, #0xf7
-	lsls r1, r1, #1
-	adds r0, r0, r1
-	strb r3, [r0]
-	ldr r0, [r2]
-	subs r1, #1
-	adds r0, r0, r1
-	strb r3, [r0]
-	ldr r2, [r2]
-	adds r1, #3
-	adds r0, r2, r1
-	strh r3, [r0]
-	movs r0, #0xfa
-	lsls r0, r0, #1
-	adds r1, r2, r0
-	movs r0, #0x82
-	lsls r0, r0, #4
-	strh r0, [r1]
-	movs r0, #0xfb
-	lsls r0, r0, #1
-	adds r1, r2, r0
-	adds r0, #0xc6
-	strh r0, [r1]
-	bx lr
-	.align 2, 0
-_080304C4: .4byte gCurrentPinballGame
+.section .text30480
 
 	thumb_func_start sub_304C8
 sub_304C8: @ 0x080304C8
