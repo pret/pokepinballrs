@@ -6,6 +6,6 @@ void sub_30480(void) {
     gCurrentPinballGame->unk1EE = 0;
     gCurrentPinballGame->unk1ED = 0;
     gCurrentPinballGame->unk1F0 = 0;
-    gCurrentPinballGame->unk1F4 = 0x82 << 4;
-    gCurrentPinballGame->unk1F6 = 0x2bc;
+    gCurrentPinballGame->unk1F4 = 0x820;
+    gCurrentPinballGame->unk1F6 = 700;
 }
