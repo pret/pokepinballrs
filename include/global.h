@@ -104,10 +104,11 @@ struct UnkPinballGame13BC
     /*0x00*/ s8 unk0;
     /*0x01*/ s8 unk1;
     /*0x02*/ s8 unk2;
-    /*0x03*/ s8 filler3[0x1];
+    /*0x03*/ s8 unk3;
     /*0x04*/ s8 unk4;
     /*0x05*/ s8 unk5;
-    /*0x05*/ u8 filler6[0x2];
+    /*0x06*/ s8 unk6;
+    /*0x07*/ u8 unk7;
     /*0x08*/ s8 unk8;
     /*0x09*/ u8 filler9[0x3];
 };
@@ -154,7 +155,9 @@ struct PinballGame
     /*0x054*/ u32 unk54;
     /*0x058*/ u16 unk58;
     /*0x05A*/ u16 unk5A;
-    /*0x05C*/ u8 filler5C[0x8];
+    /*0x05C*/ s16 unk5C;
+    /*0x05C*/ u8 filler5E[0x2];
+    /*0x060*/ struct Vector16 unk60;
     /*0x064*/ s16 unk64;
     /*0x066*/ u16 unk66;
     /*0x068*/ s16 unk68;

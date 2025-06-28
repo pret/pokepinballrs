@@ -415,7 +415,7 @@ extern void sub_19190();//gMain.subState = 1
 extern void sub_4ABC8();//gMain.subState = 2
 extern void sub_19288();//gMain.subState = 3
 //extern ? sub_19304();
-//extern ? sub_1931C();
+extern void sub_1931C(struct Vector16 arg0);
 //extern ? sub_19490();
 extern void sub_195C4(void);
 extern void sub_19734();
