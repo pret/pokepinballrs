@@ -10063,62 +10063,6 @@ _0801A97A:
 
 	.section .text1AD84
 
-	thumb_func_start sub_1AD84
-sub_1AD84: @ 0x0801AD84
-	push {r4, lr}
-	ldr r4, _0801ADB4 @ =gCurrentPinballGame
-	ldr r1, [r4]
-	ldr r0, _0801ADB8 @ =0x000186A0
-	str r0, [r1, #0x3c]
-	ldr r0, _0801ADBC @ =0x000002DA
-	adds r2, r1, r0
-	movs r0, #0
-	ldrsb r0, [r2, r0]
-	cmp r0, #3
-	bne _0801ADC0
-	movs r0, #4
-	strb r0, [r2]
-	movs r0, SE_UNKNOWN_0xB7
-	bl m4aSongNumStart
-	movs r0, #7
-	bl sub_11B0
-	ldr r1, [r4]
-	movs r0, #0xfa
-	lsls r0, r0, #1
-	b _0801ADD8
-	.align 2, 0
-_0801ADB4: .4byte gCurrentPinballGame
-_0801ADB8: .4byte 0x000186A0
-_0801ADBC: .4byte 0x000002DA
-_0801ADC0:
-	movs r2, #0xb4
-	lsls r2, r2, #2
-	adds r0, r1, r2
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0
-	beq _0801ADD6
-	movs r0, #0x96
-	lsls r0, r0, #1
-	b _0801ADD8
-_0801ADD6:
-	movs r0, #0x78
-_0801ADD8:
-	strh r0, [r1, #0x28]
-	ldr r0, _0801ADEC @ =gCurrentPinballGame
-	ldr r0, [r0]
-	ldr r1, _0801ADF0 @ =0x000005F7
-	adds r0, r0, r1
-	movs r1, #1
-	strb r1, [r0]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801ADEC: .4byte gCurrentPinballGame
-_0801ADF0: .4byte 0x000005F7
-
 	thumb_func_start sub_1ADF4
 sub_1ADF4: @ 0x0801ADF4
 	push {r4, r5, r6, lr}
