@@ -614,7 +614,7 @@ void sub_195C4(void)
         {
             if (unk13BC->unk6 == 0 && gCurrentPinballGame->unk25 == 0)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x72); //Play Flipper sound
+                m4aSongNumStart(SE_UNKNOWN_0x72);
             }
             unk13BC->unk6 = 1;
             unk13BC->unk7 = 0;
