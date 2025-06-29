@@ -710,3 +710,77 @@ void sub_19734(void)
         }
     }
 }
+
+void sub_19894(void)
+{
+    s16 i;
+
+    sub_1931C(gCurrentPinballGame->ball->positionQ0);
+
+    for (i = 0; i < 2; i++)
+    {
+        s16 dir;
+        struct UnkPinballGame13BC *unk13BC;
+        unk13BC = &gCurrentPinballGame->unk13BC[i];
+
+        unk13BC->unk1 = unk13BC->unk0;
+        unk13BC->unk2 = 0;
+
+        if (gCurrentPinballGame->heldButtonActions[i] && gMain.unkF == 0)
+        {
+            if (unk13BC->unk6 == 0 && gCurrentPinballGame->unk25 == 0 && gCurrentPinballGame->unk1A == 0)
+            {
+                m4aSongNumStart(SE_UNKNOWN_0x72);
+            }
+            unk13BC->unk6 = 1;
+            unk13BC->unk7 = 0;
+        }
+        else
+        {
+            if (unk13BC->unk0 == 10)
+            {
+                if (unk13BC->unk7 > 2)
+                    unk13BC->unk6 = 0;
+                unk13BC->unk7++;
+            }
+        }
+
+        dir = 0;
+        if (unk13BC->unk6 != 0)
+        {
+            if (unk13BC->unk0 != 10)
+            {
+                dir = 1;
+            }
+            else if (gCurrentPinballGame->unk5C != 0)
+            {
+                gCurrentPinballGame->unk1334[0].velocity.x = gCurrentPinballGame->unk60.x;
+                gCurrentPinballGame->unk1334[0].velocity.y = gCurrentPinballGame->unk60.y;
+                gCurrentPinballGame->unk5C = 0;
+                sub_11B0(7);
+            }
+            unk13BC->unk2 = unk13BC->unk0 / 2 + 1;
+            unk13BC->unk0 += 4;
+        }
+        else
+        {
+            if (unk13BC->unk0 != 0)
+            {
+                unk13BC->unk2 = unk13BC->unk0 / 2 + 6;
+                dir = -1;
+            }
+            else if (gCurrentPinballGame->unk5C != 0)
+            {
+                gCurrentPinballGame->unk1334[0].velocity.x = gCurrentPinballGame->unk60.x;
+                gCurrentPinballGame->unk1334[0].velocity.y = gCurrentPinballGame->unk60.y;
+                gCurrentPinballGame->unk5C = 0;
+                sub_11B0(7);
+            }
+            unk13BC->unk0 -= 2;
+        }
+        unk13BC->unk3 = unk13BC->unk3 * dir;
+        if (unk13BC->unk3 <= 0)
+            unk13BC->unk4 = 0;
+        unk13BC->unk3 = dir;
+    }
+}
