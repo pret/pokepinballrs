@@ -587,7 +587,7 @@ void sub_19490(void)
             spriteGroup->baseY = gUnknown_02031520.unk1C - gCurrentPinballGame->unk5A;
 
             DmaCopy16(3, gUnknown_083FE44C[unk0Signed], OBJ_VRAM0 + i * 0x200, 0x200);
-            
+
             oamData = &spriteGroup->oam[0];
             gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup->baseX;
             gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup->baseY;
