@@ -570,6 +570,7 @@ struct Unk086ACE8C
 
 extern struct PinballGame *gCurrentPinballGame;
 extern const StateFunc gIdlePinballGameStateFuncs[];
+extern struct SpriteGroup gUnknown_0200B5E0[];
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
 extern struct Unk02031590 gUnknown_02031590;
