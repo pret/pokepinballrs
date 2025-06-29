@@ -1476,20 +1476,19 @@ void sub_B7A0(void)
     gIntroSceneIndex++;
 }
 
-#ifdef NONMATCHING
 void sub_B7F8(void)
 {
-    int i;
-    int j;
+    s32 i;
+    s32 j;
+    const struct SpriteSet *p;
     struct SpriteGroup *spriteGroups[6];
-    const u16 *p;
 
-    spriteGroups[0] = &gMain.spriteGroups[6*gUnknown_0201A450[0].unk8];
-    spriteGroups[1] = &gMain.spriteGroups[6*gUnknown_0201A450[1].unk8 + 1];
-    spriteGroups[2] = &gMain.spriteGroups[6*gUnknown_0201A450[2].unk8 + 2];
-    spriteGroups[3] = &gMain.spriteGroups[6*gUnknown_0201A450[3].unk8 + 3];
-    spriteGroups[4] = &gMain.spriteGroups[6*gUnknown_0201A450[4].unk8 + 4];
-    spriteGroups[5] = &gMain.spriteGroups[6*gUnknown_0201A450[5].unk8 + 5];
+    spriteGroups[0] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[0].unk8];
+    spriteGroups[1] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[1].unk8 + 1];
+    spriteGroups[2] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[2].unk8 + 2];
+    spriteGroups[3] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[3].unk8 + 3];
+    spriteGroups[4] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[4].unk8 + 4];
+    spriteGroups[5] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[5].unk8 + 5];
 
     spriteGroups[0]->available = gUnknown_0201A450[0].unkC;
     spriteGroups[1]->available = gUnknown_0201A450[1].unkC;
@@ -1498,333 +1497,43 @@ void sub_B7F8(void)
     spriteGroups[4]->available = gUnknown_0201A450[4].unkC;
     spriteGroups[5]->available = gUnknown_0201A450[5].unkC;
 
-    LoadSpriteSets(gUnknown_086A7A78, 0x12, &gMain.spriteGroups[0]);
+    LoadSpriteSets(gUnknown_086A7A78, 0x12, &gUnknown_0200B3B8[0]);
     for (i = 0; i < 6; i++)
     {
-        if (spriteGroups[i]->available == 1)
+        if (spriteGroups[i]->available != 1)
+            continue;
+
+        gUnknown_0201A450[i].unk0 += gUnknown_086A7B34[i].unk0;
+        gUnknown_0201A450[i].unk2 += gUnknown_086A7B34[i].unk1;
+        spriteGroups[i]->baseX = gUnknown_0201A450[i].unk0;
+        spriteGroups[i]->baseY = gUnknown_0201A450[i].unk2;
+
+        p = gUnknown_086A7A78[i + gUnknown_0201A450[i].unk8 * 6];
+        for (j = 0; j < p->count; j++)
         {
-            gUnknown_0201A450[i].unk0 += gUnknown_086A7B34[i].unk0;
-            gUnknown_0201A450[i].unk2 += gUnknown_086A7B34[i].unk1;
-            spriteGroups[i]->baseX = gUnknown_0201A450[i].unk0;
-            spriteGroups[i]->baseY = gUnknown_0201A450[i].unk2;
-
-            p = &gUnknown_086A7A78[6*gUnknown_0201A450[i].unk8 + i]->count;
-            for (j = 0; j < *p; j++)
-            {
-                gOamBuffer[spriteGroups[i]->oam[j].oamId].x = spriteGroups[i]->baseX + spriteGroups[i]->oam[j].xOffset;
-                gOamBuffer[spriteGroups[i]->oam[j].oamId].y = spriteGroups[i]->baseY + spriteGroups[i]->oam[j].yOffset;
-            }
-
-            gUnknown_0201A450[i].unkA++;
-            if (4 < gUnknown_0201A450[i].unkA)
-            {
-                gUnknown_0201A450[i].unkA = 0;
-                if (gUnknown_0201A450[i].unk8 < 2)
-                {
-                    gUnknown_0201A450[i].unk8++;
-                }
-            }
-
-            if (gUnknown_0202BF10 == gUnknown_086A7B34[i].unk3)
-            {
-                gUnknown_0201A450[i].unkC = 0;
-            }
+            struct OamDataSimple *ods = &spriteGroups[i]->oam[j];
+            gOamBuffer[ods->oamId].x = ods->xOffset + spriteGroups[i]->baseX;
+            gOamBuffer[ods->oamId].y = ods->yOffset + spriteGroups[i]->baseY;
         }
+
+        if (++gUnknown_0201A450[i].unkA > 4)
+        {
+            gUnknown_0201A450[i].unkA = 0;
+            if (gUnknown_0201A450[i].unk8 < 2)
+                gUnknown_0201A450[i].unk8++;
+        }
+
+        if (gUnknown_0202BF10 == gUnknown_086A7B34[i].unk3)
+            gUnknown_0201A450[i].unkC = 0;
     }
 
-    spriteGroups[0]->available = FALSE;
-    spriteGroups[1]->available = FALSE;
-    spriteGroups[2]->available = FALSE;
-    spriteGroups[3]->available = FALSE;
-    spriteGroups[4]->available = FALSE;
-    spriteGroups[5]->available = FALSE;
+    spriteGroups[0]->available = 0;
+    spriteGroups[1]->available = 0;
+    spriteGroups[2]->available = 0;
+    spriteGroups[3]->available = 0;
+    spriteGroups[4]->available = 0;
+    spriteGroups[5]->available = 0;
 }
-#else
-NAKED
-void sub_B7F8(void)
-{
-    asm_unified("\n\
-    push {r4, r5, r6, r7, lr}\n\
-	mov r7, sl\n\
-	mov r6, sb\n\
-	mov r5, r8\n\
-	push {r5, r6, r7}\n\
-	sub sp, #0x24\n\
-	ldr r6, _0800BA0C @ =gUnknown_0201A450\n\
-	movs r1, #8\n\
-	ldrsh r0, [r6, r1]\n\
-	lsls r2, r0, #4\n\
-	adds r2, r2, r0\n\
-	lsls r2, r2, #2\n\
-	adds r2, r2, r0\n\
-	lsls r2, r2, #4\n\
-	ldr r3, _0800BA10 @ =gUnknown_0200B3B8\n\
-	adds r2, r2, r3\n\
-	str r2, [sp]\n\
-	movs r4, #0x18\n\
-	ldrsh r1, [r6, r4]\n\
-	lsls r0, r1, #4\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #2\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #4\n\
-	adds r1, r3, #0\n\
-	adds r1, #0xb8\n\
-	adds r0, r0, r1\n\
-	str r0, [sp, #4]\n\
-	movs r0, #0x28\n\
-	ldrsh r1, [r6, r0]\n\
-	lsls r0, r1, #4\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #2\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #4\n\
-	movs r4, #0xb8\n\
-	lsls r4, r4, #1\n\
-	adds r1, r3, r4\n\
-	adds r0, r0, r1\n\
-	str r0, [sp, #8]\n\
-	movs r0, #0x38\n\
-	ldrsh r1, [r6, r0]\n\
-	lsls r0, r1, #4\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #2\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #4\n\
-	adds r4, #0xb8\n\
-	adds r1, r3, r4\n\
-	adds r0, r0, r1\n\
-	str r0, [sp, #0xc]\n\
-	adds r0, r6, #0\n\
-	adds r0, #0x48\n\
-	movs r4, #0\n\
-	ldrsh r1, [r0, r4]\n\
-	lsls r0, r1, #4\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #2\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #4\n\
-	movs r4, #0xb8\n\
-	lsls r4, r4, #2\n\
-	adds r1, r3, r4\n\
-	adds r0, r0, r1\n\
-	str r0, [sp, #0x10]\n\
-	adds r0, r6, #0\n\
-	adds r0, #0x58\n\
-	movs r4, #0\n\
-	ldrsh r1, [r0, r4]\n\
-	lsls r0, r1, #4\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #2\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #4\n\
-	movs r4, #0xe6\n\
-	lsls r4, r4, #2\n\
-	adds r1, r3, r4\n\
-	adds r0, r0, r1\n\
-	str r0, [sp, #0x14]\n\
-	movs r0, #0xc\n\
-	ldrsb r0, [r6, r0]\n\
-	strh r0, [r2]\n\
-	ldr r1, [sp, #4]\n\
-	movs r0, #0x1c\n\
-	ldrsb r0, [r6, r0]\n\
-	strh r0, [r1]\n\
-	ldr r1, [sp, #8]\n\
-	adds r0, r6, #0\n\
-	adds r0, #0x2c\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	strh r0, [r1]\n\
-	ldr r1, [sp, #0xc]\n\
-	adds r0, r6, #0\n\
-	adds r0, #0x3c\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	strh r0, [r1]\n\
-	ldr r1, [sp, #0x10]\n\
-	adds r0, r6, #0\n\
-	adds r0, #0x4c\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	strh r0, [r1]\n\
-	ldr r1, [sp, #0x14]\n\
-	adds r0, r6, #0\n\
-	adds r0, #0x5c\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	strh r0, [r1]\n\
-	ldr r4, _0800BA14 @ =gUnknown_086A7A78\n\
-	adds r0, r4, #0\n\
-	movs r1, #0x12\n\
-	adds r2, r3, #0\n\
-	bl LoadSpriteSets\n\
-	movs r5, #0\n\
-	str r6, [sp, #0x18]\n\
-_0800B8EC:\n\
-	lsls r0, r5, #2\n\
-	mov r6, sp\n\
-	adds r4, r6, r0\n\
-	ldr r1, [r4]\n\
-	ldrh r1, [r1]\n\
-	str r0, [sp, #0x20]\n\
-	adds r0, r5, #1\n\
-	str r0, [sp, #0x1c]\n\
-	cmp r1, #1\n\
-	bne _0800B9DA\n\
-	lsls r3, r5, #4\n\
-	ldr r1, [sp, #0x18]\n\
-	adds r2, r3, r1\n\
-	ldr r6, [sp, #0x20]\n\
-	ldr r1, _0800BA18 @ =gUnknown_086A7B34\n\
-	adds r0, r6, r1\n\
-	movs r1, #0\n\
-	ldrsb r1, [r0, r1]\n\
-	ldrh r6, [r2]\n\
-	adds r1, r1, r6\n\
-	strh r1, [r2]\n\
-	ldrb r0, [r0, #1]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	ldrh r6, [r2, #2]\n\
-	adds r0, r0, r6\n\
-	strh r0, [r2, #2]\n\
-	ldr r0, [r4]\n\
-	strh r1, [r0, #2]\n\
-	ldr r1, [r4]\n\
-	ldrh r0, [r2, #2]\n\
-	strh r0, [r1, #4]\n\
-	movs r0, #8\n\
-	ldrsh r1, [r2, r0]\n\
-	lsls r0, r1, #1\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #1\n\
-	adds r0, r5, r0\n\
-	lsls r0, r0, #2\n\
-	ldr r1, _0800BA14 @ =gUnknown_086A7A78\n\
-	adds r0, r0, r1\n\
-	ldr r0, [r0]\n\
-	mov r8, r0\n\
-	movs r7, #0\n\
-	mov sb, r3\n\
-	ldrh r2, [r0]\n\
-	cmp r7, r2\n\
-	bge _0800B998\n\
-	adds r5, r4, #0\n\
-	ldr r3, _0800BA1C @ =gOamBuffer\n\
-	mov ip, r3\n\
-	ldr r4, _0800BA20 @ =0xFFFFFE00\n\
-	mov sl, r4\n\
-	movs r6, #8\n\
-_0800B958:\n\
-	ldr r0, [r5]\n\
-	adds r4, r0, r6\n\
-	ldrh r2, [r4]\n\
-	lsls r2, r2, #3\n\
-	add r2, ip\n\
-	movs r3, #2\n\
-	ldrsh r1, [r4, r3]\n\
-	movs r3, #2\n\
-	ldrsh r0, [r0, r3]\n\
-	adds r1, r1, r0\n\
-	ldr r3, _0800BA24 @ =0x000001FF\n\
-	adds r0, r3, #0\n\
-	ands r1, r0\n\
-	ldrh r3, [r2, #2]\n\
-	mov r0, sl\n\
-	ands r0, r3\n\
-	orrs r0, r1\n\
-	strh r0, [r2, #2]\n\
-	ldrh r1, [r4]\n\
-	lsls r1, r1, #3\n\
-	add r1, ip\n\
-	ldr r0, [r5]\n\
-	ldrb r0, [r0, #4]\n\
-	ldrb r4, [r4, #4]\n\
-	adds r0, r0, r4\n\
-	strb r0, [r1]\n\
-	adds r6, #8\n\
-	adds r7, #1\n\
-	mov r4, r8\n\
-	ldrh r4, [r4]\n\
-	cmp r7, r4\n\
-	blt _0800B958\n\
-_0800B998:\n\
-	ldr r1, [sp, #0x18]\n\
-	add r1, sb\n\
-	ldrh r0, [r1, #0xa]\n\
-	adds r0, #1\n\
-	movs r2, #0\n\
-	strh r0, [r1, #0xa]\n\
-	lsls r0, r0, #0x10\n\
-	asrs r0, r0, #0x10\n\
-	cmp r0, #4\n\
-	ble _0800B9BC\n\
-	strh r2, [r1, #0xa]\n\
-	ldrh r2, [r1, #8]\n\
-	movs r6, #8\n\
-	ldrsh r0, [r1, r6]\n\
-	cmp r0, #1\n\
-	bgt _0800B9BC\n\
-	adds r0, r2, #1\n\
-	strh r0, [r1, #8]\n\
-_0800B9BC:\n\
-	ldr r1, [sp, #0x20]\n\
-	ldr r2, _0800BA18 @ =gUnknown_086A7B34\n\
-	adds r0, r1, r2\n\
-	ldr r3, _0800BA28 @ =gUnknown_0202BF10\n\
-	movs r4, #0\n\
-	ldrsh r1, [r3, r4]\n\
-	ldrb r0, [r0, #3]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	cmp r1, r0\n\
-	bne _0800B9DA\n\
-	ldr r1, [sp, #0x18]\n\
-	add r1, sb\n\
-	movs r0, #0\n\
-	strb r0, [r1, #0xc]\n\
-_0800B9DA:\n\
-	ldr r5, [sp, #0x1c]\n\
-	cmp r5, #5\n\
-	ble _0800B8EC\n\
-	ldr r0, [sp]\n\
-	movs r1, #0\n\
-	strh r1, [r0]\n\
-	ldr r0, [sp, #4]\n\
-	strh r1, [r0]\n\
-	ldr r0, [sp, #8]\n\
-	strh r1, [r0]\n\
-	ldr r0, [sp, #0xc]\n\
-	strh r1, [r0]\n\
-	ldr r0, [sp, #0x10]\n\
-	strh r1, [r0]\n\
-	ldr r0, [sp, #0x14]\n\
-	strh r1, [r0]\n\
-	add sp, #0x24\n\
-	pop {r3, r4, r5}\n\
-	mov r8, r3\n\
-	mov sb, r4\n\
-	mov sl, r5\n\
-	pop {r4, r5, r6, r7}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.align 2, 0\n\
-_0800BA0C: .4byte gUnknown_0201A450\n\
-_0800BA10: .4byte gUnknown_0200B3B8\n\
-_0800BA14: .4byte gUnknown_086A7A78\n\
-_0800BA18: .4byte gUnknown_086A7B34\n\
-_0800BA1C: .4byte gOamBuffer\n\
-_0800BA20: .4byte 0xFFFFFE00\n\
-_0800BA24: .4byte 0x000001FF\n\
-_0800BA28: .4byte gUnknown_0202BF10\n\
-    ");
-}
-#endif
 
 void sub_BA2C(void)
 {
