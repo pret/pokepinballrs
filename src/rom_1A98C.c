@@ -238,16 +238,17 @@ void sub_1AAA0(void)
 }
 
 
-void sub_1AD84(void) {
+void sub_1AD84(void)
+{
     gCurrentPinballGame->unk3C = 100000;
-    if(gCurrentPinballGame->unk2DA == 3)
+    if (gCurrentPinballGame->unk2DA == 3)
     {
-        gCurrentPinballGame->unk2DA =4;
+        gCurrentPinballGame->unk2DA = 4;
         m4aSongNumStart(SE_UNKNOWN_0xB7);
         sub_11B0(7);
         gCurrentPinballGame->unk28 = 500;
     }
-    else if(gCurrentPinballGame->unk2D1 !=0)
+    else if (gCurrentPinballGame->unk2D1 !=0)
     {
         gCurrentPinballGame->unk28 = 300;
     }
@@ -255,5 +256,6 @@ void sub_1AD84(void) {
     {
         gCurrentPinballGame->unk28 = 120;
     }
+
     gCurrentPinballGame->unk5F7 = 1;
 }
