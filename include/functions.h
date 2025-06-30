@@ -410,27 +410,27 @@ extern s16 sub_18B50(struct Vector16*, u16*);
 extern void sub_18DAC(struct Vector16*, u16*, u8*);
 extern void sub_18F38(u8, u16*, u16*);
 extern void IdlePinballGameMain();
-extern void sub_19048();//gMain.subState = 0
-extern void sub_19190();//gMain.subState = 1
-extern void sub_4ABC8();//gMain.subState = 2
-extern void sub_19288();//gMain.subState = 3
+extern void sub_19048(void);//gMain.subState = 0
+extern void sub_19190(void);//gMain.subState = 1
+extern void sub_4ABC8(void);//gMain.subState = 2
+extern void sub_19288(void);//gMain.subState = 3
 //extern ? sub_19304();
-//extern ? sub_1931C();
+extern void sub_1931C(struct Vector16 arg0);
 //extern ? sub_19490();
 extern void sub_195C4(void);
-extern void sub_19734();
-//extern ? sub_19894();
+extern void sub_19734(void);
+extern void sub_19894(void);
 //extern ? sub_19A20();
 //extern ? sub_19B10();
 extern void sub_19B64(u8);
-extern void sub_19B90();
+extern void sub_19B90(void);
 //extern ? sub_19C04();
 //extern ? sub_19CC8();
 //extern ? sub_19D04();
 //extern ? sub_19E10();
 //extern ? sub_19F70();
 //extern ? sub_19FA0();
-extern void sub_1A0F4();
+extern void sub_1A0F4(void);
 //extern ? sub_1A2C0();
 //extern ? sub_1A98C();
 extern void sub_1A9E8(void);
@@ -443,12 +443,12 @@ extern void sub_1AD84(void);
 extern void sub_1B140(s8);
 //extern ? sub_1BB68();
 //extern ? sub_1C544();
-extern void sub_1C560();
-extern void sub_1C5AC();
+extern void sub_1C560(void);
+extern void sub_1C5AC(void);
 //extern ? sub_1C73C();
 extern void sub_1C7F4(u16, u16);
-extern void sub_1D128();
-extern void sub_1D4D0();
+extern void sub_1D128(void);
+extern void sub_1D4D0(void);
 //extern ? sub_1D5D8();
 //extern ? sub_1DA74();
 //extern ? sub_1DAD8();
