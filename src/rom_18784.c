@@ -613,9 +613,8 @@ void sub_195C4(void)
         if (gCurrentPinballGame->heldButtonActions[i])
         {
             if (unk13BC->unk6 == 0 && gCurrentPinballGame->unk25 == 0)
-            {
                 m4aSongNumStart(SE_UNKNOWN_0x72);
-            }
+
             unk13BC->unk6 = 1;
             unk13BC->unk7 = 0;
         }
@@ -688,7 +687,7 @@ void sub_19734(void)
         else if (gCurrentPinballGame->unk13BC[i].unk0 < 0)
             gCurrentPinballGame->unk13BC[i].unk0 = 0;
 
-        spriteGroup = &gUnknown_0200B5E0[i];
+        spriteGroup = &gMain.spriteGroups[3 + i];
         if (spriteGroup->available)
         {
             s8 unk0;

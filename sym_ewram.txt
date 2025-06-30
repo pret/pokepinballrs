@@ -96,6 +96,7 @@ gMain: @ 0x200B0C0
 	.space 0x40
 	.space 0x34
 	.space 0x5A
+@ These are all entries in gMain.spriteGroups
 gUnknown_0200B18E: @ 0x0200B18E
 	.space 0x76
 gUnknown_0200B204: @ 0x0200B204
