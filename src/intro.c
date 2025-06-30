@@ -507,9 +507,9 @@ void sub_9CB8(void)
     struct SpriteGroup *puVar4;
     const struct SpriteSet *puVar6;
 
-    puVar4 = &gUnknown_0200B3B8[4 + gUnknown_0201A450[0].unk8];
+    puVar4 = &gMain.spriteGroups[4 + gUnknown_0201A450[0].unk8];
     puVar4->available = gUnknown_0201A450[0].unkC;
-    LoadSpriteSets(gUnknown_086A769C, 0x31, gUnknown_0200B3B8);
+    LoadSpriteSets(gUnknown_086A769C, 0x31, gMain.spriteGroups);
 
     if (puVar4->available == 1)
     {
@@ -534,9 +534,9 @@ void sub_9D70(void)
     struct SpriteGroup *puVar4;
     struct OamDataSimple *puVar2;
 
-    puVar4 = &gUnknown_0200B3B8[0x28];
+    puVar4 = &gMain.spriteGroups[0x28];
     puVar4->available = gUnknown_0201A450[0].unkC;
-    LoadSpriteSets(gUnknown_086A769C, 0x31, gUnknown_0200B3B8);
+    LoadSpriteSets(gUnknown_086A769C, 0x31, gMain.spriteGroups);
 
     if (puVar4->available == 1)
     {
@@ -1483,12 +1483,12 @@ void sub_B7F8(void)
     const struct SpriteSet *p;
     struct SpriteGroup *spriteGroups[6];
 
-    spriteGroups[0] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[0].unk8];
-    spriteGroups[1] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[1].unk8 + 1];
-    spriteGroups[2] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[2].unk8 + 2];
-    spriteGroups[3] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[3].unk8 + 3];
-    spriteGroups[4] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[4].unk8 + 4];
-    spriteGroups[5] = &gUnknown_0200B3B8[6 * gUnknown_0201A450[5].unk8 + 5];
+    spriteGroups[0] = &gMain.spriteGroups[6 * gUnknown_0201A450[0].unk8];
+    spriteGroups[1] = &gMain.spriteGroups[6 * gUnknown_0201A450[1].unk8 + 1];
+    spriteGroups[2] = &gMain.spriteGroups[6 * gUnknown_0201A450[2].unk8 + 2];
+    spriteGroups[3] = &gMain.spriteGroups[6 * gUnknown_0201A450[3].unk8 + 3];
+    spriteGroups[4] = &gMain.spriteGroups[6 * gUnknown_0201A450[4].unk8 + 4];
+    spriteGroups[5] = &gMain.spriteGroups[6 * gUnknown_0201A450[5].unk8 + 5];
 
     spriteGroups[0]->available = gUnknown_0201A450[0].unkC;
     spriteGroups[1]->available = gUnknown_0201A450[1].unkC;
@@ -1497,7 +1497,7 @@ void sub_B7F8(void)
     spriteGroups[4]->available = gUnknown_0201A450[4].unkC;
     spriteGroups[5]->available = gUnknown_0201A450[5].unkC;
 
-    LoadSpriteSets(gUnknown_086A7A78, 0x12, &gUnknown_0200B3B8[0]);
+    LoadSpriteSets(gUnknown_086A7A78, 0x12, &gMain.spriteGroups[0]);
     for (i = 0; i < 6; i++)
     {
         if (spriteGroups[i]->available != 1)
@@ -1791,9 +1791,9 @@ void sub_C0D8(void)
     struct SpriteGroup *spriteGroup;
     struct OamDataSimple *oamData;
 
-    spriteGroup = &gUnknown_0200B3B8[0];
+    spriteGroup = &gMain.spriteGroups[0];
     spriteGroup->available = TRUE;
-    LoadSpriteSets(gUnknown_086A7B74, 0x1, gUnknown_0200B3B8);
+    LoadSpriteSets(gUnknown_086A7B74, 0x1, gMain.spriteGroups);
     if (spriteGroup->available == 1)
     {
         SetMatrixScale(gUnknown_0202C5E4, gUnknown_0202ADD8, 0);
@@ -2555,11 +2555,11 @@ void sub_CD18(void)
     struct SpriteGroup *spriteGroup1;
     struct OamDataSimple *oamData;
 
-    spriteGroup0 = &gUnknown_0200B3B8[gUnknown_0201A450[0].unk8];
-    spriteGroup1 = &gUnknown_0200B3B8[0];
+    spriteGroup0 = &gMain.spriteGroups[gUnknown_0201A450[0].unk8];
+    spriteGroup1 = &gMain.spriteGroups[0];
     spriteGroup0->available = gUnknown_0201A450[0].unkC;
     spriteGroup1->available = gUnknown_0201A450[1].unkC;
-    LoadSpriteSets(gUnknown_086A7D20, 11, gUnknown_0200B3B8);
+    LoadSpriteSets(gUnknown_086A7D20, 11, gMain.spriteGroups);
     if (spriteGroup0->available == 1)
     {
         SetMatrixScale(gUnknown_0202C5E4, gUnknown_0202ADD8, 0);
