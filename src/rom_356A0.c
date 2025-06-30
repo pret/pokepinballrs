@@ -5,8 +5,10 @@
 
 #define BONUS_KECLEON_COMPLETE_POINTS 30000000
 
-extern struct SpriteGroup gUnknown_0200BDC8;
+extern struct SpriteGroup gUnknown_0200BA30;
 extern struct SpriteGroup gUnknown_0200BC58;
+extern struct SpriteGroup gUnknown_0200BDC8;
+extern struct SpriteGroup gUnknown_0200CA00;
 
 extern void sub_35D54(void);
 extern void sub_36CB4(void);
@@ -36,6 +38,10 @@ extern struct SongHeader gUnknown_086A1CCC;
 extern struct SongHeader gUnknown_086A1D64;
 extern const u16 gUnknown_086AE9C4[];
 extern const u16 gUnknown_086AE9D4[];
+extern const u8 gUnknown_0844F98C[][0x280];
+extern const u16 gUnknown_086B9DAC[][2][3];
+extern const u16 gUnknown_086B9AB8[][2][3];
+extern const u8 gUnknown_0845588C[][0x100];
 
 
 void sub_356A0(void)
@@ -838,4 +844,156 @@ void sub_35D54(void)
         gCurrentPinballGame->unk3E2 = gCurrentPinballGame->unk3DE + 15;
         break;
     }
+}
+
+void sub_36CB4(void)
+{
+    s16 i;
+    struct SpriteGroup *spriteGroup;
+    s16 sp0;
+    s16 sp4;
+    struct OamDataSimple *oamSimple;
+    u16 *dst;
+    const u16 *src;
+    int var0;
+    int var1;
+    int baseX = 104;
+    int baseY = 28;
+
+    spriteGroup = &gUnknown_0200B3B8[gUnknown_02031590.unk17];
+    if (!spriteGroup->available)
+        return;
+
+    sp0 = gCurrentPinballGame->unk3DF;
+    gCurrentPinballGame->unk3DF = gUnknown_086AE718[gCurrentPinballGame->unk3E2][2];
+    DmaCopy16(3, gUnknown_0844F98C[sp0], (void *)0x6010920, 0x280);
+    sp4 = gUnknown_086AE718[gCurrentPinballGame->unk3E2][0];
+    spriteGroup->baseX = gCurrentPinballGame->unk3E8 / 10 + baseX - gCurrentPinballGame->unk58;
+    spriteGroup->baseY = gCurrentPinballGame->unk3EA / 10 + baseY - gCurrentPinballGame->unk5A;
+    if (gCurrentPinballGame->unk3E2 >= 28 && gCurrentPinballGame->unk3E2 < 31)
+    {
+        gCurrentPinballGame->unk3F0 = 2 * (gCurrentPinballGame->unk3E8 / 10) + 144;
+        gCurrentPinballGame->unk3F2 = 2 * (gCurrentPinballGame->unk3EA / 10) + 84;
+        if (gCurrentPinballGame->unk385 < 10)
+            gCurrentPinballGame->unk387 = 2;
+    }
+    else if (gCurrentPinballGame->unk3E2 >= 33 && gCurrentPinballGame->unk3E2 < 36)
+    {
+        gCurrentPinballGame->unk3F0 = 2 * (gCurrentPinballGame->unk3E8 / 10) + 240;
+        gCurrentPinballGame->unk3F2 = 2 * (gCurrentPinballGame->unk3EA / 10) + 84;
+        if (gCurrentPinballGame->unk385 < 10)
+            gCurrentPinballGame->unk387 = 2;
+    }
+    else
+    {
+        gCurrentPinballGame->unk3F0 = 2 * (gCurrentPinballGame->unk3E8 / 10) + 208;
+        gCurrentPinballGame->unk3F2 = 2 * (gCurrentPinballGame->unk3EA / 10) + 56;
+        if (gCurrentPinballGame->unk385 < 10)
+            gCurrentPinballGame->unk387 = 1;
+    }
+
+    gCurrentPinballGame->unk400 = (gCurrentPinballGame->unk3E8 / 10) + 120;
+    gCurrentPinballGame->unk402 = (gCurrentPinballGame->unk3EA / 10) + 58;
+    if (gCurrentPinballGame->unk40E > 7)
+        gCurrentPinballGame->unk3F7 = 1;
+    else if (gCurrentPinballGame->unk3FA > 15)
+        gCurrentPinballGame->unk3F7 = 0;
+    else
+        gCurrentPinballGame->unk3F7 = 1;
+
+    for (i = 0; i < 2; i++)
+    {
+        oamSimple = &spriteGroup->oam[i];
+        dst = (u16*)&gOamBuffer[oamSimple->oamId];
+        src = gUnknown_086B9DAC[sp4][i];
+        *dst++ = *src++;
+        *dst++ = *src++;
+        *dst++ = *src++;
+
+        if (gCurrentPinballGame->unk3F7)
+        {
+            gOamBuffer[oamSimple->oamId].x += spriteGroup->baseX;
+            gOamBuffer[oamSimple->oamId].y += spriteGroup->baseY;
+            if (gCurrentPinballGame->unk3DF == 20) {
+                if(gCurrentPinballGame->unk3E4 < 10)
+                    gOamBuffer[oamSimple->oamId].paletteNum = 10;
+                else
+                    gOamBuffer[oamSimple->oamId].paletteNum = 2;
+            }
+            else
+            {
+                gOamBuffer[oamSimple->oamId].paletteNum = 2;
+            }
+        }
+        else
+        {
+            gOamBuffer[oamSimple->oamId].x = 240;
+            gOamBuffer[oamSimple->oamId].y = 180;
+        }
+    }
+
+    baseX = 104;
+    baseY = 60;
+    spriteGroup = &gUnknown_0200CA00;
+    spriteGroup->baseX = gCurrentPinballGame->unk3E8 / 10 + baseX - gCurrentPinballGame->unk58;
+    spriteGroup->baseY = gCurrentPinballGame->unk3EA / 10 + baseY - gCurrentPinballGame->unk5A;
+
+    for (i = 0; i < 2; i++)
+    {
+        oamSimple = &spriteGroup->oam[i];
+        dst = (u16*)&gOamBuffer[oamSimple->oamId];
+        src = gUnknown_086B9AB8[sp4][i];
+        *dst++ = *src++;
+        *dst++ = *src++;
+        *dst++ = *src++;
+
+        if (gCurrentPinballGame->unk3F7)
+        {
+            gOamBuffer[oamSimple->oamId].x += spriteGroup->baseX;
+            gOamBuffer[oamSimple->oamId].y += spriteGroup->baseY;
+            if (sp0 == 20)
+            {
+                if (gCurrentPinballGame->unk3E4 < 10)
+                    gOamBuffer[oamSimple->oamId].paletteNum = 11;
+                else
+                    gOamBuffer[oamSimple->oamId].paletteNum = 4;
+            }
+            else
+            {
+                gOamBuffer[oamSimple->oamId].paletteNum = 4;
+            }
+        }
+        else
+        {
+            gOamBuffer[oamSimple->oamId].x = 240;
+            gOamBuffer[oamSimple->oamId].y = 180;
+        }
+    }
+
+    baseX = 104;
+    baseY = 26;
+    spriteGroup = &gUnknown_0200BA30;
+    var0 = gCurrentPinballGame->unk3F8 * 3;
+    var1 = gCurrentPinballGame->unk3FC / 8 - 2;
+
+    DmaCopy16(3, gUnknown_0845588C[var0 - var1], (void *)0x6010BA0, 0x100);
+    if (gCurrentPinballGame->unk3FC > 0)
+    {
+        gCurrentPinballGame->unk3FC--;
+        spriteGroup->baseX = gCurrentPinballGame->unk3E8 / 10 + baseX - gCurrentPinballGame->unk58;
+        spriteGroup->baseY = gCurrentPinballGame->unk3EA / 10 + - gCurrentPinballGame->unk5A + baseY;
+    }
+    else
+    {
+        spriteGroup->baseX = 0;
+        spriteGroup->baseY = 180;
+    }
+
+    oamSimple = &spriteGroup->oam[0];
+    gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + spriteGroup->baseX;
+    gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + spriteGroup->baseY;
+    if (gCurrentPinballGame->unk3F6 == 0)
+        gOamBuffer[oamSimple->oamId].hFlip = 0;
+    else
+        gOamBuffer[oamSimple->oamId].hFlip = 1;
 }

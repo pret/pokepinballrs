@@ -102,9 +102,13 @@ struct BallState
 struct UnkPinballGame13BC
 {
     /*0x00*/ s8 unk0;
-    /*0x01*/ u8 filler1[0x3];
+    /*0x01*/ s8 unk1;
+    /*0x02*/ s8 unk2;
+    /*0x03*/ s8 unk3;
     /*0x04*/ s8 unk4;
-    /*0x05*/ u8 filler5[0x3];
+    /*0x05*/ s8 unk5;
+    /*0x06*/ s8 unk6;
+    /*0x07*/ u8 unk7;
     /*0x08*/ s8 unk8;
     /*0x09*/ u8 filler9[0x3];
 };
@@ -121,7 +125,7 @@ struct PinballGame
     /*0x016*/ s8 unk16;
     /*0x017*/ u8 unk17;
     /*0x018*/ u16 unk18;
-    /*0x01A*/ u8 unk1A;
+    /*0x01A*/ s8 unk1A;
     /*0x01B*/ u8 unk1B;
     /*0x01C*/ u8 unk1C;
     /*0x01D*/ u8 unk1D;
@@ -151,7 +155,9 @@ struct PinballGame
     /*0x054*/ u32 unk54;
     /*0x058*/ u16 unk58;
     /*0x05A*/ u16 unk5A;
-    /*0x05C*/ u8 filler5C[0x8];
+    /*0x05C*/ s16 unk5C;
+    /*0x05E*/ u8 filler5E[0x2];
+    /*0x060*/ struct Vector16 unk60;
     /*0x064*/ s16 unk64;
     /*0x066*/ u16 unk66;
     /*0x068*/ s16 unk68;
@@ -235,9 +241,17 @@ struct PinballGame
     /*0x1E3*/ u8 filler1E3[0x2];
     /*0x1E5*/ u8 unk1E5;
     /*0x1E6*/ u8 unk1E6;
-    /*0x1E7*/ u8 filler1E7[0x6];
+    /*0x1E7*/ u8 filler1E7[0x5];
+    /*0x1EC*/ u8 unk1EC;
     /*0x1ED*/ s8 unk1ED;
-    /*0x1EE*/ u8 filler1EE[0x1a];
+    /*0x1EE*/ u8 unk1EE;
+    /*0x1EF*/ u8 unk1EF;
+    /*0x1F0*/ u16 unk1F0;
+    /*0x1F2*/ u8 unk1F2;
+    /*0x1F3*/ u8 unk1F3;
+    /*0x1F4*/ u16 unk1F4;
+    /*0x1F6*/ u16 unk1F6;
+    /*0x1F8*/ u8 filler1F8[0xF];
     /*0x208*/ u16 unk208;
     /*0x20A*/ u8 unk20A;
     /*0x20B*/ u8 filler20B[0x54];
@@ -267,7 +281,9 @@ struct PinballGame
     /*0x2A8*/ u8 filler2A8[0x2];
     /*0x2AA*/ u16 unk2AA;
     /*0x2AC*/ s16 unk2AC;
-    /*0x2AE*/ u8 filler2AE[0x26];
+    /*0x2AE*/ u8 filler2AE[0x22];
+    /*0x2D0*/ s8 unk2D1;
+    /*0x2D1*/ u8 filler2D2[2];
     /*0x2D4*/ u16 unk2D4;
     /*0x2D6*/ u16 unk2D6;
     /*0x2D8*/ u8 filler2D8[0x2];
@@ -329,7 +345,7 @@ struct PinballGame
     /*0x3DC*/ s8 unk3DC;
     /*0x3DD*/ u8 unk3DD;
     /*0x3DE*/ s8 unk3DE;
-    /*0x3DF*/ u8 unk3DF;
+    /*0x3DF*/ s8 unk3DF;
     /*0x3E0*/ u8 unk3E0;
     /*0x3E1*/ u8 unk3E1;
     /*0x3E2*/ s16 unk3E2;
@@ -344,14 +360,14 @@ struct PinballGame
     /*0x3F4*/ s8 unk3F4;
     /*0x3F5*/ s8 unk3F5;
     /*0x3F6*/ s8 unk3F6;
-    /*0x3F7*/ u8 unk3F7;
-    /*0x3F8*/ u8 unk3F8;
+    /*0x3F7*/ s8 unk3F7;
+    /*0x3F8*/ s8 unk3F8;
     /*0x3F9*/ u8 filler3F9[0x1];
     /*0x3FA*/ s16 unk3FA;
     /*0x3FC*/ s16 unk3FC;
     /*0x3FE*/ u8 filler3FE[0x2];
     /*0x400*/ s16 unk400;
-    /*0x402*/ u16 unk402;
+    /*0x402*/ s16 unk402;
     /*0x404*/ u8 unk404;
     /*0x405*/ u8 unk405;
     /*0x406*/ u8 unk406;
@@ -543,6 +559,7 @@ struct Unk02031590
 {
     u8 filler[0x16];
     u8 unk16;
+    u8 unk17;
 };
 
 struct Unk086ACE8C
@@ -574,6 +591,9 @@ extern s32 gUnknown_082EE0E0[0x3E0];
 extern const u16 gUnknown_08391A4C[0x1000];
 extern const u16 gUnknown_08393A4C[0x1000];
 extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
+extern u8 gUnknown_083FE44C[][0x200];
+extern const s16 gUnknown_086ACDF4[9];
 extern struct Unk086ACE8C gUnknown_086ACE8C[13];
+extern u16 gUnknown_086ACEF4[2];
 
 #endif // GUARD_GLOBAL_H
