@@ -416,6 +416,10 @@ extern u8 gUnknown_08118680[];
 
 extern u16 gCommonAndEggWeights[];
 extern u16 gUnknown_0200B18E[10];
+extern u16 gUnknown_0200C668;
+extern u16 gUnknown_0200EA58;
+extern u16 gUnknown_0200BAE8;
+extern u16 gUnknown_0200BBA0;
 extern u16 Sio32ConnectionData[4]; 
 extern u32 gUnknown_02002814;
 #endif  // GUARD_VARIABLES_H
