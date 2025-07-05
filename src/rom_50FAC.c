@@ -3,69 +3,76 @@
 
 void sub_50B80(void)
 {
-  s16 i;
-  for (i = 0x37; i <= 0x46; i++)
-  {
-    gMain.spriteGroups[i].available = 0;
-  }
+    s16 i;
 
-  gUnknown_0200BBA0 = (gUnknown_0200BAE8 = (gMain.spriteGroups[75].available = (gUnknown_0200EA58 = (gMain.spriteGroups[51].available = (gUnknown_0200C668 = (gMain.spriteGroups[72].available = (gMain.spriteGroups[52].available = 0)))))));
-  gCurrentPinballGame->unk1BC = gMain.systemFrameCount % 25;
-  if (gCurrentPinballGame->unk68 < 0x5A)
-  {
-    gMain.spriteGroups[52].available = 1;
-    gMain.spriteGroups[51].available = 1;
-  }
-  if (gCurrentPinballGame->unk68 < 0xDC)
-  {
-    gMain.spriteGroups[72].available = 1;
-  }
-  if (gCurrentPinballGame->unk68 < 0x96)
-  {
-    gMain.spriteGroups[60].available = 1;
-    gMain.spriteGroups[69].available = 1;
-  }
-  if (gCurrentPinballGame->unk68 < 0xC4)
-  {
-    gMain.spriteGroups[63].available = 1;
-    gMain.spriteGroups[75].available = 1;
-  }
-  if (gCurrentPinballGame->unk68 < 0xCA)
-  {
-    gMain.spriteGroups[61].available = 1;
-    gMain.spriteGroups[58].available = 1;
-    gMain.spriteGroups[62].available = 1;
-    gMain.spriteGroups[59].available = 1;
-    gUnknown_0200EA58 = 1;
-  }
-  if (gCurrentPinballGame->unk68 > 0x76)
-  {
-    gMain.spriteGroups[70].available = 1;
-    gUnknown_0200C668 = 1;
-    gMain.spriteGroups[64].available = 1;
-    gMain.spriteGroups[68].available = 1;
-    gMain.spriteGroups[65].available = 1;
-    gMain.spriteGroups[66].available = 1;
-    gMain.spriteGroups[67].available = 1;
-  }
-  if (gCurrentPinballGame->unk68 > 0xD8)
-  {
-    gMain.spriteGroups[57].available = 1;
-    gMain.spriteGroups[55].available = 1;
-    gMain.spriteGroups[56].available = 1;
-    gUnknown_0200BAE8 = 1;
-    gUnknown_0200BBA0 = 1;
-  }
-  LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets, gUnknown_086B155C[gMain.selectedField].numSpriteSets, gMain.spriteGroups);
+    for (i = 55; i < 71; i++)
+        gMain.spriteGroups[i].available = 0;
+
+    gMain.spriteGroups[52].available = 0;
+    gMain.spriteGroups[72].available = 0;
+    gMain.spriteGroups[26].available = 0;
+    gMain.spriteGroups[51].available = 0;
+    gMain.spriteGroups[76].available = 0;
+    gMain.spriteGroups[75].available = 0;
+    gMain.spriteGroups[10].available = 0;
+    gMain.spriteGroups[11].available = 0;
+    gCurrentPinballGame->unk1BC = gMain.systemFrameCount % 25;
+    if (gCurrentPinballGame->unk68 < 90)
+    {
+        gMain.spriteGroups[52].available = 1;
+        gMain.spriteGroups[51].available = 1;
+    }
+    if (gCurrentPinballGame->unk68 < 220)
+    {
+        gMain.spriteGroups[72].available = 1;
+    }
+    if (gCurrentPinballGame->unk68 < 150)
+    {
+        gMain.spriteGroups[60].available = 1;
+        gMain.spriteGroups[69].available = 1;
+    }
+    if (gCurrentPinballGame->unk68 < 196)
+    {
+        gMain.spriteGroups[63].available = 1;
+        gMain.spriteGroups[75].available = 1;
+    }
+    if (gCurrentPinballGame->unk68 < 202)
+    {
+        gMain.spriteGroups[61].available = 1;
+        gMain.spriteGroups[58].available = 1;
+        gMain.spriteGroups[62].available = 1;
+        gMain.spriteGroups[59].available = 1;
+        gMain.spriteGroups[76].available = 1;
+    }
+    if (gCurrentPinballGame->unk68 > 118)
+    {
+        gMain.spriteGroups[70].available = 1;
+        gMain.spriteGroups[26].available = 1;
+        gMain.spriteGroups[64].available = 1;
+        gMain.spriteGroups[68].available = 1;
+        gMain.spriteGroups[65].available = 1;
+        gMain.spriteGroups[66].available = 1;
+        gMain.spriteGroups[67].available = 1;
+    }
+    if (gCurrentPinballGame->unk68 > 216)
+    {
+        gMain.spriteGroups[57].available = 1;
+        gMain.spriteGroups[55].available = 1;
+        gMain.spriteGroups[56].available = 1;
+        gMain.spriteGroups[10].available = 1;
+        gMain.spriteGroups[11].available = 1;
+    }
+
+    LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets, gUnknown_086B155C[gMain.selectedField].numSpriteSets, gMain.spriteGroups);
 }
 
 void sub_50D48(void)
 {
     s16 i;
 
-    for (i = 0; i <= 14; i++)
+    for (i = 0; i < 15; i++)
     {
-        if (i <= 4)
+        if (i < 5)
             gMain.spriteGroups[i].available = 1;
         else
             gMain.spriteGroups[i].available = 0;
@@ -89,9 +96,9 @@ void sub_50DE0(void)
 {
     s16 i;
 
-    for (i = 0; i <= 32; i++)
+    for (i = 0; i < 33; i++)
     {
-        if (i <= 4)
+        if (i < 5)
             gMain.spriteGroups[i].available = 1;
         else
             gMain.spriteGroups[i].available = 0;
@@ -137,9 +144,9 @@ void sub_50F04()
 {
     s16 i;
 
-    for (i = 0; i <= 26; i++)
+    for (i = 0; i < 27; i++)
     {
-        if (i <= 4)
+        if (i < 5)
             gMain.spriteGroups[i].available = 1;
         else
             gMain.spriteGroups[i].available = 0;
