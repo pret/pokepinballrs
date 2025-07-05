@@ -10,7 +10,7 @@ void sub_50B80(void)
   }
 
   gUnknown_0200BBA0 = (gUnknown_0200BAE8 = (gMain.spriteGroups[75].available = (gUnknown_0200EA58 = (gMain.spriteGroups[51].available = (gUnknown_0200C668 = (gMain.spriteGroups[72].available = (gMain.spriteGroups[52].available = 0)))))));
-  gCurrentPinballGame->unk1BA = gMain.systemFrameCount % 25;
+  gCurrentPinballGame->unk1BC = gMain.systemFrameCount % 25;
   if (gCurrentPinballGame->unk68 < 0x5A)
   {
     gMain.spriteGroups[52].available = 1;
