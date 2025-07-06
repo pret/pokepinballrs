@@ -1282,6 +1282,8 @@ gUnknown_08138014:: @ 0x08138014
 
 gUnknown_08138834:: @ 0x08138834
 	.incbin "baserom.gba", 0x138834, 0x2020
+	@ .incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
+	@ .align 20, 0
 
 gUnknown_0813A854:: @ 0x0813A854
 	.incbin "baserom.gba", 0x13A854, 0x2020
@@ -1793,7 +1795,7 @@ gUnknown_08490A4C:: @ 0x08490A4C
 	.incbin "baserom.gba", 0x490A4C, 0x4400
 
 gUnknown_08494E4C:: @ 0x08494E4C
-	.incbin "baserom.gba", 0x494E4C, 0x1800
+	.incbin "graphics/stage/dusclops/dusclops_appear_fx.4bpp";
 
 gUnknown_0849664C:: @ 0x0849664C
 	.incbin "baserom.gba", 0x49664C, 0x5280
@@ -1869,7 +1871,7 @@ gUnknown_084ED6CC:: @ 0x084ED6CC
 	.incbin "baserom.gba", 0x4ED6CC, 0x400
 
 gUnknown_084EDACC:: @ 0x084EDACC
-	.incbin "baserom.gba", 0x4EDACC, 0x8000
+	.incbin "graphics/stage/dusclops/dusclops.4bpp";
 
 gUnknown_084F5ACC:: @ 0x084F5ACC
 	.incbin "baserom.gba", 0x4F5ACC, 0x720
@@ -1902,7 +1904,7 @@ gUnknown_084FEF0C:: @ 0x084FEF0C
 	.incbin "baserom.gba", 0x4FEF0C, 0x400
 
 gUnknown_084FF30C:: @ 0x084FF30C
-	.incbin "baserom.gba", 0x4FF30C, 0x600
+	.incbin "graphics/stage/dusclops/dusclops_ball_grab.4bpp";
 
 gUnknown_084FF90C:: @ 0x084FF90C
 	.incbin "baserom.gba", 0x4FF90C, 0x1700
@@ -1932,7 +1934,7 @@ gUnknown_08510CAC:: @ 0x08510CAC
 	.incbin "baserom.gba", 0x510CAC, 0x1A0
 
 gUnknown_08510E4C:: @ 0x08510E4C
-	.incbin "baserom.gba", 0x510E4C, 0x1E00
+	.incbin "graphics/stage/dusclops/duskull.4bpp";
 
 gUnknown_08512C4C:: @ 0x08512C4C
 	.incbin "baserom.gba", 0x512C4C, 0x2300
