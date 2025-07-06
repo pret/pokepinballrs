@@ -557,20 +557,19 @@ gUnknown_02030760: @ 0x02030760
 	.space 0x900
 gUnknown_02031060: @ 0x02031060
 	.space 0x480
-@ TODO: the symbols below need to be merged into gCurrentPinballGame
 gCurrentPinballGame: @ 0x20314E0
 	.space 0x20
-gUnknown_02031500: @ 0x02031500
+gCurrentPinballGame_unk20: @ 0x02031500
 	.space 0x10
-gUnknown_02031510: @ 0x02031510
+gCurrentPinballGame_numLives: @ 0x02031510
 	.space 0x10
-gUnknown_02031520: @ 0x2031520
+gCurrentPinballGame_unk40: @ 0x2031520
 	.space 0x70
-gUnknown_02031590: @ 0x02031590
+gCurrentPinballGame_unkB0: @ 0x02031590
 	.space 0x40
-gUnknown_020315D0: @ 0x020315D0
+gCurrentPinballGame_unkF0: @ 0x020315D0
 	.space 0x520
-gUnknown_02031AF0: @ 0x02031AF0
+gCurrentPinballGame_unk610: @ 0x02031AF0
 	.space 0x28
-gUnknown_02031B18: @ 0x02031B18
+gCurrentPinballGame_unk638: @ 0x02031B18
 	.space 0x18

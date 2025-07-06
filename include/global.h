@@ -573,9 +573,9 @@ struct Unk086ACE8C
 
 extern struct PinballGame *gCurrentPinballGame;
 extern const StateFunc gIdlePinballGameStateFuncs[];
-extern u32 gUnknown_02031510;
-extern struct Unk02031520 gUnknown_02031520;
-extern struct Unk02031590 gUnknown_02031590;
+extern u32 gCurrentPinballGame_numLives;
+extern struct Unk02031520 gCurrentPinballGame_unk40;
+extern struct Unk02031590 gCurrentPinballGame_unkB0;
 extern u16 gUnknown_08137B3C[][6][16];
 extern const u8 gUnknown_08137E14[][0x20];
 extern const u8 gUnknown_08138834[0x2000];

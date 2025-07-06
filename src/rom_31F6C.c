@@ -165,7 +165,7 @@ void PickSpeciesForCatchEmMode(void)
         else
             rand %= 100;
 
-        if (gUnknown_02031520.unk8 < 100)
+        if (gCurrentPinballGame_unk40.unk8 < 100)
             rand = 1;
 
         if ((rand == 0 && gCurrentPinballGame->caughtMonCount >= 5) || gCurrentPinballGame->forceSpecialMons)

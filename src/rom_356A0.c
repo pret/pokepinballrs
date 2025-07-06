@@ -860,7 +860,7 @@ void sub_36CB4(void)
     int baseX = 104;
     int baseY = 28;
 
-    spriteGroup = &gUnknown_0200B3B8[gUnknown_02031590.unk17];
+    spriteGroup = &gUnknown_0200B3B8[gCurrentPinballGame_unkB0.unk17];
     if (!spriteGroup->available)
         return;
 

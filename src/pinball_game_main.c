@@ -146,7 +146,7 @@ void sub_49ED4(void)
         sub_4A270();
         sub_4A518();
         sub_467F4();
-        DmaCopy16(3, gUnknown_02031520.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3, gCurrentPinballGame_unk40.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
 
@@ -178,7 +178,7 @@ void sub_49ED4(void)
         sub_4A270();
         sub_4A518();
         sub_467F4();
-        DmaCopy16(3, gUnknown_02031520.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3, gCurrentPinballGame_unk40.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
 
@@ -204,7 +204,7 @@ void sub_49ED4(void)
         sub_4A270();
         sub_4A518();
         sub_467F4();
-        DmaCopy16(3, gUnknown_02031520.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3, gCurrentPinballGame_unk40.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         sub_4A90C();
         for (i = 0; i < 9; i++)
             gUnknown_020028D8[i].unk0();
@@ -213,11 +213,11 @@ void sub_49ED4(void)
         break;
     }
 
-    gUnknown_02031520.unk8 = 0;
+    gCurrentPinballGame_unk40.unk8 = 0;
     for (j = 0; j < NUM_SPECIES; j++)
     {
         if (gMain_saveData.pokedexFlags[j] > SPECIES_SHARED_AND_SEEN)
-            gUnknown_02031520.unk8++;
+            gCurrentPinballGame_unk40.unk8++;
     }
 
     sub_0CBC();
@@ -961,16 +961,16 @@ void sub_4B334(void)
     if (gMain.unkF)
         return;
 
-    if (gUnknown_02031510 < 60 * 60)
+    if (gCurrentPinballGame_numLives < 60 * 60)
     {
         for (i =  0; i < 5; i++)
         {
-            gCurrentPinballGame->newButtonActions[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk0 >> i) & 0x1;
-            gCurrentPinballGame->releasedButtonActions[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk1 >> i) & 0x1;
-            gCurrentPinballGame->heldButtonActions[i] = (gUnknown_02031520.unk10[gUnknown_02031510].unk2 >> i) & 0x1;
+            gCurrentPinballGame->newButtonActions[i] = (gCurrentPinballGame_unk40.unk10[gCurrentPinballGame_numLives].unk0 >> i) & 0x1;
+            gCurrentPinballGame->releasedButtonActions[i] = (gCurrentPinballGame_unk40.unk10[gCurrentPinballGame_numLives].unk1 >> i) & 0x1;
+            gCurrentPinballGame->heldButtonActions[i] = (gCurrentPinballGame_unk40.unk10[gCurrentPinballGame_numLives].unk2 >> i) & 0x1;
         }
 
-        gUnknown_02031510++;
+        gCurrentPinballGame_numLives++;
     }
 
     if (gCurrentPinballGame->newButtonActions[1])
@@ -1043,7 +1043,7 @@ void sub_4B678(u16 arg0)
     }
     else if (arg0 == 2)
     {
-        DmaCopy16(3, gUnknown_02031520.unkC, gCurrentPinballGame, sizeof(*gCurrentPinballGame));
+        DmaCopy16(3, gCurrentPinballGame_unk40.unkC, gCurrentPinballGame, sizeof(*gCurrentPinballGame));
         gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
         gCurrentPinballGame->unk1330 = &gCurrentPinballGame->unk1334[0];
         var2 = gMain.unk30;

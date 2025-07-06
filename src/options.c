@@ -68,7 +68,7 @@ struct OptionsData
 
 extern struct OptionsData gOptionsData;
 extern s16 gUnknown_0200B204[][2];
-extern u8 gUnknown_02031B18[];
+extern u8 gCurrentPinballGame_unk638[];
 
 extern const u16 gOptionsBackground_Pals[];
 extern const u8 gOptionsText_Gfx[];
@@ -150,7 +150,7 @@ void Options_InitStates(void)
     for (i = 0; i < 4; i++)
     {
         for (j = 0; j < 10; j++)
-            gUnknown_02031AF0[i][j] = gUnknown_08527ED6[i][j];
+            gCurrentPinballGame_unk610[i][j] = gUnknown_08527ED6[i][j];
     }
     sub_52528();
     if (gGameBoyPlayerEnabled == TRUE)
@@ -462,8 +462,8 @@ void Options_HandleInput(void)
             gOptionsData.unk20--;
             if (gOptionsData.unk20 == 0)
             {
-                gUnknown_02031AF0[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 0] = gOptionsData.unk24[0];
-                gUnknown_02031AF0[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 1] = gOptionsData.unk24[1];
+                gCurrentPinballGame_unk610[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 0] = gOptionsData.unk24[0];
+                gCurrentPinballGame_unk610[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 1] = gOptionsData.unk24[1];
                 gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][0] = gUnknown_086BB910[gOptionsData.unk24[0]][0];
                 gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][1] = gUnknown_086BB910[gOptionsData.unk24[1]][0];
                 gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_SELECT,
@@ -1088,7 +1088,7 @@ _080520E8:\n\
     lsls r0, r0, #1\n\
     ldr r1, [sp, #0x88]\n\
     adds r0, r1, r0\n\
-    ldr r2, _08052490 @ =gUnknown_02031AF0\n\
+    ldr r2, _08052490 @ =gCurrentPinballGame_unk610\n\
     adds r0, r0, r2\n\
     ldrb r0, [r0]\n\
     ldrh r2, [r4, #8]\n\
@@ -1166,7 +1166,7 @@ _080520E8:\n\
     adds r0, #1\n\
     ldr r1, [sp, #0x88]\n\
     adds r0, r1, r0\n\
-    ldr r2, _08052490 @ =gUnknown_02031AF0\n\
+    ldr r2, _08052490 @ =gCurrentPinballGame_unk610\n\
     adds r0, r0, r2\n\
     ldrb r0, [r0]\n\
     mov sb, r0\n\
@@ -1544,7 +1544,7 @@ _08052470:\n\
     pop {r0}\n\
     bx r0\n\
     .align 2, 0\n\
-_08052490: .4byte gUnknown_02031AF0\n\
+_08052490: .4byte gCurrentPinballGame_unk610\n\
 _08052494: .4byte gOamBuffer\n\
 _08052498: .4byte gUnknown_086BB910\n\
 _0805249C: .4byte 0x000003FF\n\
@@ -1622,7 +1622,7 @@ void sub_52528(void)
                 var0 = 10;
                 break;
             }
-            gUnknown_02031B18[i * 2 + j] = var0;
+            gCurrentPinballGame_unk638[i * 2 + j] = var0;
         }
     }
 }
@@ -1656,7 +1656,7 @@ void SetButtonConfigInputs(s8 buttonConfigType)
         gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][0]       = gUnknown_086BB910[6][0];
         gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][1]       = gUnknown_086BB910[10][0];
         for (i = 0; i < 10; i++)
-            gUnknown_02031B18[i] = gUnknown_08527EFE[i];
+            gCurrentPinballGame_unk638[i] = gUnknown_08527EFE[i];
         break;
     case BUTTON_CONFIG_TYPE_A:
         gMain.buttonConfigs[0][0] = gUnknown_086BB910[5][0];

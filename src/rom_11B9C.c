@@ -38,12 +38,12 @@ void sub_11B9C(void)
 void sub_11C14(s16 arg0)
 {
     struct BallState *var0 = &gCurrentPinballGame->unk1334[arg0];
-    var0->positionQ0.x = gUnknown_02031520.unk26;
-    var0->positionQ0.y = gUnknown_02031520.unk28;
+    var0->positionQ0.x = gCurrentPinballGame_unk40.unk26;
+    var0->positionQ0.y = gCurrentPinballGame_unk40.unk28;
     var0->positionQ8.x = Q_24_8(var0->positionQ0.x);
     var0->positionQ8.y = Q_24_8(var0->positionQ0.y);
-    var0->positionQ1.x = gUnknown_02031520.unk26 * 2;
-    var0->positionQ1.y = gUnknown_02031520.unk28 * 2;
+    var0->positionQ1.x = gCurrentPinballGame_unk40.unk26 * 2;
+    var0->positionQ1.y = gCurrentPinballGame_unk40.unk28 * 2;
     var0->unkE = 0x100;
     var0->velocity.x = 0;
     var0->velocity.y = 0;
@@ -1377,7 +1377,7 @@ void sub_12BF8()
     {
     case FIELD_KECLEON:
         unk1334_0->unk1 = 2;
-        spriteGroup = &gUnknown_0200B3B8[gUnknown_02031590.unk16];
+        spriteGroup = &gUnknown_0200B3B8[gCurrentPinballGame_unkB0.unk16];
         break;
     case FIELD_KYOGRE:
     case FIELD_GROUDON:

@@ -58,9 +58,9 @@ s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
         unk1 = vec1.y / 64;
         unk2 = gCurrentPinballGame->unk24;
         vec1.y %= 64;
-        r2 = gUnknown_02031520.unk38[unk2 + unk1][vec1.y * 64 + vec1.x];
-        sp00 = gUnknown_02031520.unk48[unk2 + unk1][r2 * 64 + vec2.y * 8 + vec2.x];
-        sp02 = gUnknown_02031520.unk58[unk2 + unk1][r2 * 64 + vec2.y * 8 + vec2.x];
+        r2 = gCurrentPinballGame_unk40.unk38[unk2 + unk1][vec1.y * 64 + vec1.x];
+        sp00 = gCurrentPinballGame_unk40.unk48[unk2 + unk1][r2 * 64 + vec2.y * 8 + vec2.x];
+        sp02 = gCurrentPinballGame_unk40.unk58[unk2 + unk1][r2 * 64 + vec2.y * 8 + vec2.x];
     }
     else
     {
@@ -82,7 +82,7 @@ s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
         *arg1 = sp00;
         if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
         {
-            if (gCurrentPinballGame->ball->positionQ0.x < (gUnknown_02031520.unk26 - 8) || gCurrentPinballGame->ball->positionQ0.y < gUnknown_02031520.unk28 - 8)
+            if (gCurrentPinballGame->ball->positionQ0.x < (gCurrentPinballGame_unk40.unk26 - 8) || gCurrentPinballGame->ball->positionQ0.y < gCurrentPinballGame_unk40.unk28 - 8)
             {
                 if (gCurrentPinballGame->ball->unk6 > 0)
                 {
@@ -208,9 +208,9 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
     unk2 = gCurrentPinballGame->unk24;
     div_result.y %= 64;
 
-    unk3 = gUnknown_02031520.unk38[unk2 + unk1][div_result.y * 64 + div_result.x];
-    sp0 = gUnknown_02031520.unk48[unk2 + unk1][unk3 * 64 + div_remainder.y * 8 + div_remainder.x];
-    sp2 = gUnknown_02031520.unk58[unk2 + unk1][unk3 * 64 + div_remainder.y * 8 + div_remainder.x];
+    unk3 = gCurrentPinballGame_unk40.unk38[unk2 + unk1][div_result.y * 64 + div_result.x];
+    sp0 = gCurrentPinballGame_unk40.unk48[unk2 + unk1][unk3 * 64 + div_remainder.y * 8 + div_remainder.x];
+    sp2 = gCurrentPinballGame_unk40.unk58[unk2 + unk1][unk3 * 64 + div_remainder.y * 8 + div_remainder.x];
 
     sub_18DAC(arg0, &sp0, &sp2);
 
@@ -226,8 +226,8 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
         *arg1 = sp0;
         if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
         {
-            if (gCurrentPinballGame->ball->positionQ0.x < (gUnknown_02031520.unk26 - 8) ||
-                gCurrentPinballGame->ball->positionQ0.y < (gUnknown_02031520.unk28 - 8))
+            if (gCurrentPinballGame->ball->positionQ0.x < (gCurrentPinballGame_unk40.unk26 - 8) ||
+                gCurrentPinballGame->ball->positionQ0.y < (gCurrentPinballGame_unk40.unk28 - 8))
             {
                 if (gCurrentPinballGame->ball->unk6 > 0)
                 {
@@ -390,10 +390,10 @@ void sub_19048(void)
 
     gMain.unk54 = 0;
     gMain.unkD = 1;
-    gUnknown_02031510 = 0;
+    gCurrentPinballGame_numLives = 0;
 
     for (i = 0; i < NUM_EREADER_CARDS; i++)
-        gUnknown_02031520.eReaderBonuses[i] = gMain.eReaderBonuses[i];
+        gCurrentPinballGame_unk40.eReaderBonuses[i] = gMain.eReaderBonuses[i];
 
     if (gMain.unk30 == 0)
         gMain.unk30 = (Random() + gMain.systemFrameCount) % 30;
@@ -403,24 +403,24 @@ void sub_19048(void)
     switch (unk30LowerBits)
     {
     case 0:
-        gUnknown_02031520.unk6 = 0xA14;
-        gUnknown_02031520.unk10 = &gUnknown_081450F4;
-        gUnknown_02031520.unkC = &gUnknown_081531F4;
+        gCurrentPinballGame_unk40.unk6 = 0xA14;
+        gCurrentPinballGame_unk40.unk10 = &gUnknown_081450F4;
+        gCurrentPinballGame_unk40.unkC = &gUnknown_081531F4;
         break;
     case 1:
-        gUnknown_02031520.unk6 = 0xF00;
-        gUnknown_02031520.unk10 = &gUnknown_0814F9B4;
-        gUnknown_02031520.unkC = &gUnknown_08156E60;
+        gCurrentPinballGame_unk40.unk6 = 0xF00;
+        gCurrentPinballGame_unk40.unk10 = &gUnknown_0814F9B4;
+        gCurrentPinballGame_unk40.unkC = &gUnknown_08156E60;
         break;
     case 2:
-        gUnknown_02031520.unk6 = 0xD20;
-        gUnknown_02031520.unk10 = &gUnknown_08148934;
-        gUnknown_02031520.unkC = &gUnknown_08154618;
+        gCurrentPinballGame_unk40.unk6 = 0xD20;
+        gCurrentPinballGame_unk40.unk10 = &gUnknown_08148934;
+        gCurrentPinballGame_unk40.unkC = &gUnknown_08154618;
         break;
     case 3:
-        gUnknown_02031520.unk6 = 0xE4C;
-        gUnknown_02031520.unk10 = &gUnknown_0814C174;
-        gUnknown_02031520.unkC = &gUnknown_08155A3C;
+        gCurrentPinballGame_unk40.unk6 = 0xE4C;
+        gCurrentPinballGame_unk40.unk10 = &gUnknown_0814C174;
+        gCurrentPinballGame_unk40.unkC = &gUnknown_08155A3C;
         break;
     }
 
@@ -442,7 +442,7 @@ void sub_19048(void)
         break;
     }
 
-    gUnknown_02031520.rumbleEnabled = gMain_saveData.rumbleEnabled;
+    gCurrentPinballGame_unk40.rumbleEnabled = gMain_saveData.rumbleEnabled;
     gMain_saveData.rumbleEnabled = 0;
     gMain.unk30++;
 }
@@ -464,7 +464,7 @@ void sub_19190(void)
         else
             sub_4B000();
 
-        if (gMain.unk54++ > gUnknown_02031520.unk6)
+        if (gMain.unk54++ > gCurrentPinballGame_unk40.unk6)
             gMain.unkE = 1;
 
         if (gMain.heldKeys & JOY_EXCL_LR)
@@ -503,14 +503,14 @@ void sub_19288(void)
     s16 i;
 
     gMain.unk36 = 0;
-    gMain_saveData.rumbleEnabled = gUnknown_02031520.rumbleEnabled;
+    gMain_saveData.rumbleEnabled = gCurrentPinballGame_unk40.rumbleEnabled;
     for (i = 0; i < NUM_EREADER_CARDS; i++)
-        gMain.eReaderBonuses[i] = gUnknown_02031520.eReaderBonuses[i];
+        gMain.eReaderBonuses[i] = gCurrentPinballGame_unk40.eReaderBonuses[i];
 
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
-    if (gMain.unk54 < gUnknown_02031520.unk6)
+    if (gMain.unk54 < gCurrentPinballGame_unk40.unk6)
         SetMainGameState(STATE_TITLE);
     else
         SetMainGameState(STATE_SCORES_IDLE);
@@ -532,10 +532,10 @@ void sub_1931C(struct Vector16 arg0)
 
     line = &gUnknown_086ACE8C[gCurrentPinballGame->unk13BC[0].unk0];
     point1.x = line->unk0 + 0x53;
-    point1.y = line->unk2 + gUnknown_02031520.unk1C;
+    point1.y = line->unk2 + gCurrentPinballGame_unk40.unk1C;
 
     point2.x = line->unk4 + 0x53;
-    point2.y = line->unk6 + gUnknown_02031520.unk1C;
+    point2.y = line->unk6 + gCurrentPinballGame_unk40.unk1C;
 
     check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
 
@@ -547,10 +547,10 @@ void sub_1931C(struct Vector16 arg0)
     line = &gUnknown_086ACE8C[gCurrentPinballGame->unk13BC[1].unk0];
 
     point1.x = 0x9C - line->unk0;
-    point1.y = line->unk2 + gUnknown_02031520.unk1C;
+    point1.y = line->unk2 + gCurrentPinballGame_unk40.unk1C;
 
     point2.x = 0x9C - line->unk4;
-    point2.y = line->unk6 + gUnknown_02031520.unk1C;
+    point2.y = line->unk6 + gCurrentPinballGame_unk40.unk1C;
 
     check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
 
@@ -584,7 +584,7 @@ void sub_19490(void)
 
             unk0 = gCurrentPinballGame->unk13BC[i].unk0 / 2;
             spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->unk58;
-            spriteGroup->baseY = gUnknown_02031520.unk1C - gCurrentPinballGame->unk5A;
+            spriteGroup->baseY = gCurrentPinballGame_unk40.unk1C - gCurrentPinballGame->unk5A;
 
             DmaCopy16(3, gUnknown_083FE44C[unk0], OBJ_VRAM0 + i * 0x200, 0x200);
 
@@ -695,7 +695,7 @@ void sub_19734(void)
 
             unk0 = gCurrentPinballGame->unk13BC[i].unk0 / 2;
             spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->unk58;
-            spriteGroup->baseY = gUnknown_02031520.unk1C - gCurrentPinballGame->unk5A;
+            spriteGroup->baseY = gCurrentPinballGame_unk40.unk1C - gCurrentPinballGame->unk5A;
 
             DmaCopy16(3, gUnknown_083FE44C[unk0], OBJ_VRAM0 + i * 0x200, 0x200);
 
