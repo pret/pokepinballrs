@@ -17,7 +17,7 @@ struct HighScoreEntry
         } parts;
         u32 raw[HIGH_SCORE_NAME_LENGTH + 2];
     } data;
-};
+}; // size: 0x18
 
 // This is probably permanently saved data like pokedex and high scores.
 struct SaveData
@@ -94,10 +94,22 @@ struct Main
 
     /*0x2E8*/ struct BgOffsets bgOffsets[4];
     /*0x2F8*/ struct SpriteGroup spriteGroups[NUM_SPRITE_GROUPS];
+    /*Note: spriteGroups is 100 groups of size B8. Extends to 4AD7.
+           0     1     2     3     4     5     6     7     8     9
+    00   2F8,  3B0,  468,  520,  5D8,  690,  748,  800,  8B8,  970,
+    10   A28,  AE0,  B98,  C50,  D08,  DC0,  E78,  F30,  FE8, 10A0,
+    20  1158, 1210, 12C8, 1380, 1438, 14F0, 15A8, 1660, 1718, 17D0,
+    30  1888, 1940, 19F8, 1AB0, 1B68, 1C20, 1CD8, 1D90, 1E48, 1F00,
+    40  1FB8, 2070, 2128, 21E0, 2298, 2350, 2408, 24C0, 2578, 2630,
+    50  26E8, 27A0, 2858, 2910, 29C8, 2A80, 2B38, 2BF0, 2CA8, 2D60,
+    60  2E18, 2ED0, 2F88, 3040, 30F8, 31B0, 3268, 3320, 33D8, 3490,
+    70  3548, 3600, 36B8, 3770, 3828, 38E0, 3998, 3A50, 3B08, 3BC0,
+    80  3C78, 3D30, 3DE8, 3EA0, 3F58, 4010, 40C8, 4180, 4238, 42F0,
+    90  43A8, 4460, 4518, 45D0, 4688, 4740, 47F8, 48B0, 4968, 4A20*/
 };
 
 extern struct Main gMain;
-extern struct SpriteGroup gUnknown_0200B3B8[];
+extern struct SpriteGroup gMain_spriteGroups[];
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
 extern IntrFunc *gVBlankIntrFuncPtr;

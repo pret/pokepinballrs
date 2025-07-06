@@ -997,16 +997,16 @@ void sub_51FC(void)
     const struct SpriteSet *spriteSet;
     int var0, var1;
 
-    group0 = &gUnknown_0200B3B8[0];
-    group1 = &gUnknown_0200B3B8[1];
-    group2 = &gUnknown_0200B3B8[2];
-    group3 = &gUnknown_0200B3B8[3];
-    group4 = &gUnknown_0200B3B8[4];
-    group5 = &gUnknown_0200B3B8[5 + gUnknown_0201A448];
-    group6 = &gUnknown_0200B3B8[17 + gUnknown_0202BEFC];
-    group7 = &gUnknown_0200B3B8[22 + gUnknown_0202BEE0];
-    group8 = &gUnknown_0200B3B8[24];
-    group9 = &gUnknown_0200B3B8[25 + gUnknown_02019C28 * 2 + gUnknown_0202C5AC];
+    group0 = &gMain_spriteGroups[0];
+    group1 = &gMain_spriteGroups[1];
+    group2 = &gMain_spriteGroups[2];
+    group3 = &gMain_spriteGroups[3];
+    group4 = &gMain_spriteGroups[4];
+    group5 = &gMain_spriteGroups[5 + gUnknown_0201A448];
+    group6 = &gMain_spriteGroups[17 + gUnknown_0202BEFC];
+    group7 = &gMain_spriteGroups[22 + gUnknown_0202BEE0];
+    group8 = &gMain_spriteGroups[24];
+    group9 = &gMain_spriteGroups[25 + gUnknown_02019C28 * 2 + gUnknown_0202C5AC];
 
     group0->available = TRUE;
     group1->available = TRUE;
@@ -1212,14 +1212,14 @@ static void RenderLinkGraphics(void)
     struct OamDataSimple *groupOam;
     const struct SpriteSet *spriteSet;
 
-    group0 = &gUnknown_0200B3B8[0];
-    group1 = &gUnknown_0200B3B8[1];
-    group2 = &gUnknown_0200B3B8[2];
-    group3 = &gUnknown_0200B3B8[3];
-    group4 = &gUnknown_0200B3B8[4];
-    group6 = &gUnknown_0200B3B8[5 + gUnknown_0201A448];
-    group7 = &gUnknown_0200B3B8[17 + gUnknown_0202BEFC];
-    group5 = &gUnknown_0200B3B8[24];
+    group0 = &gMain_spriteGroups[0];
+    group1 = &gMain_spriteGroups[1];
+    group2 = &gMain_spriteGroups[2];
+    group3 = &gMain_spriteGroups[3];
+    group4 = &gMain_spriteGroups[4];
+    group6 = &gMain_spriteGroups[5 + gUnknown_0201A448];
+    group7 = &gMain_spriteGroups[17 + gUnknown_0202BEFC];
+    group5 = &gMain_spriteGroups[24];
 
     group0->available = TRUE;
     group1->available = TRUE;
