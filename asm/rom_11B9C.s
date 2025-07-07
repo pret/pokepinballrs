@@ -14145,7 +14145,7 @@ sub_1D5D8: @ 0x0801D5D8
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r0, _0801D60C @ =gMain_spriteGroups_71
+	ldr r0, _0801D60C @ =gMain+0x3600 @gMain.spriteGroups[71]
 	mov sb, r0
 	movs r1, #0
 	mov r8, r1
@@ -14167,7 +14167,7 @@ _0801D600:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0801D60C: .4byte gMain_spriteGroups_71
+_0801D60C: .4byte gMain+0x3600 @gMain.spriteGroups[71]
 _0801D610: .4byte gCurrentPinballGame
 _0801D614: .4byte 0x000002FB
 _0801D618: .4byte _0801D61C
@@ -14749,7 +14749,7 @@ sub_1DAD8: @ 0x0801DAD8
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #4
-	ldr r0, _0801DB64 @ =gMain_spriteGroups_65
+	ldr r0, _0801DB64 @ =gMain+0x31B0 @gMain.spriteGroups[65]
 	mov r8, r0
 	ldr r0, _0801DB68 @ =gCurrentPinballGame
 	ldr r4, [r0]
@@ -14814,7 +14814,7 @@ _0801DB58:
 	strh r0, [r1]
 	b _0801DBAC
 	.align 2, 0
-_0801DB64: .4byte gMain_spriteGroups_65
+_0801DB64: .4byte gMain+0x31B0 @gMain.spriteGroups[65]
 _0801DB68: .4byte gCurrentPinballGame
 _0801DB6C: .4byte 0x000002F1
 _0801DB70: .4byte 0x000002F2
@@ -14873,7 +14873,7 @@ _0801DBBC:
 	mov r2, r8
 	strh r0, [r2, #4]
 	movs r0, #0
-	ldr r7, _0801DC6C @ =gMain_spriteGroups_65_oam
+	ldr r7, _0801DC6C @ =gMain+0x31B8 @gMain.spriteGroups[65].oam
 	mov sl, r7
 	ldr r6, _0801DC70 @ =gOamBuffer
 	lsls r3, r3, #2
@@ -14942,7 +14942,7 @@ _0801DC5C: .4byte 0x000002F1
 _0801DC60: .4byte gUnknown_084ED0CC
 _0801DC64: .4byte 0x06013180
 _0801DC68: .4byte 0x800000C0
-_0801DC6C: .4byte gMain_spriteGroups_65_oam
+_0801DC6C: .4byte gMain+0x31B8 @gMain.spriteGroups[65].oam
 _0801DC70: .4byte gOamBuffer
 _0801DC74: .4byte 0xFFFFFE00
 _0801DC78: .4byte 0x000001FF
@@ -14953,7 +14953,7 @@ sub_1DC7C: @ 0x0801DC7C
 	mov r7, sb
 	mov r6, r8
 	push {r6, r7}
-	ldr r6, _0801DD7C @ =gMain_spriteGroups_63
+	ldr r6, _0801DD7C @ =gMain+0x3040 @gMain.spriteGroups[63]
 	ldr r2, _0801DD80 @ =gCurrentPinballGame
 	ldr r3, [r2]
 	ldr r1, _0801DD84 @ =0x000002A5
@@ -15080,7 +15080,7 @@ _0801DD6E:
 	movs r1, #0
 	b _0801DDCA
 	.align 2, 0
-_0801DD7C: .4byte gMain_spriteGroups_63
+_0801DD7C: .4byte gMain+0x3040 @gMain.spriteGroups[63]
 _0801DD80: .4byte gCurrentPinballGame
 _0801DD84: .4byte 0x000002A5
 _0801DD88: .4byte gUnknown_086AD862
@@ -17141,7 +17141,7 @@ _0801EE3C:
 	subs r0, #1
 	strb r0, [r1]
 _0801EE4A:
-	ldr r5, _0801EED4 @ =gMain_spriteGroups_62
+	ldr r5, _0801EED4 @ =gMain+0x2F88 @gMain.spriteGroups[62]
 	mov sl, r5
 	ldr r6, _0801EECC @ =gCurrentPinballGame
 	ldr r0, [r6]
@@ -17202,7 +17202,7 @@ _0801EEC4: .4byte 0x050003C0
 _0801EEC8: .4byte 0x80000010
 _0801EECC: .4byte gCurrentPinballGame
 _0801EED0: .4byte 0x00000624
-_0801EED4: .4byte gMain_spriteGroups_62
+_0801EED4: .4byte gMain+0x2F88 @gMain.spriteGroups[62]
 _0801EED8: .4byte gUnknown_0844928C
 _0801EEDC:
 	movs r0, #0
@@ -18166,7 +18166,7 @@ sub_1F698: @ 0x0801F698
 	mov r6, r8
 	push {r6, r7}
 	movs r2, #0
-	ldr r7, _0801F6EC @ =gMain_spriteGroups_14
+	ldr r7, _0801F6EC @ =gMain+0xD08 @gMain.spriteGroups[14]
 	ldr r0, _0801F6F0 @ =gCurrentPinballGame
 	ldr r4, [r0]
 	movs r1, #0xaf
@@ -18203,7 +18203,7 @@ sub_1F698: @ 0x0801F698
 	movs r0, #0xb0
 	b _0801F760
 	.align 2, 0
-_0801F6EC: .4byte gMain_spriteGroups_14
+_0801F6EC: .4byte gMain+0xD08 @gMain.spriteGroups[14]
 _0801F6F0: .4byte gCurrentPinballGame
 _0801F6F4: .4byte 0x040000D4
 _0801F6F8: .4byte gUnknown_083C562C
@@ -18258,7 +18258,7 @@ _0801F760:
 	subs r0, r0, r1
 	strh r0, [r7, #2]
 	ldrh r0, [r7]
-	ldr r1, _0801F880 @ =gMain_spriteGroups_13
+	ldr r1, _0801F880 @ =gMain+0xC50 @gMain.spriteGroups[13]
 	mov r8, r1
 	cmp r0, #0
 	beq _0801F7D8
@@ -18402,7 +18402,7 @@ _0801F802:
 	strh r1, [r4]
 	b _0801F8CC
 	.align 2, 0
-_0801F880: .4byte gMain_spriteGroups_13
+_0801F880: .4byte gMain+0xC50 @gMain.spriteGroups[13]
 _0801F884: .4byte gOamBuffer
 _0801F888: .4byte 0xFFFFFE00
 _0801F88C: .4byte 0x000001FF
@@ -18620,7 +18620,7 @@ sub_1FA48: @ 0x0801FA48
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r7, _0801FAD0 @ =gMain_spriteGroups_53
+	ldr r7, _0801FAD0 @ =gMain+0x2910 @gMain.spriteGroups[53]
 	ldr r0, _0801FAD4 @ =gCurrentPinballGame
 	ldr r6, [r0]
 	ldr r1, _0801FAD8 @ =0x000002B2
@@ -18683,7 +18683,7 @@ _0801FABA:
 	strh r0, [r2]
 	b _0801FB12
 	.align 2, 0
-_0801FAD0: .4byte gMain_spriteGroups_53
+_0801FAD0: .4byte gMain+0x2910 @gMain.spriteGroups[53]
 _0801FAD4: .4byte gCurrentPinballGame
 _0801FAD8: .4byte 0x000002B2
 _0801FADC: .4byte gUnknown_086ADA58
@@ -18813,7 +18813,7 @@ sub_1FBC4: @ 0x0801FBC4
 	lsls r0, r0, #1
 	ldr r1, _0801FC7C @ =gUnknown_086ADA6E
 	adds r7, r0, r1
-	ldr r0, _0801FC80 @ =gMain_spriteGroups_57
+	ldr r0, _0801FC80 @ =gMain+0x2BF0 @gMain.spriteGroups[57]
 	mov sb, r0
 	adds r0, r2, #0
 	adds r0, #0x58
@@ -18890,7 +18890,7 @@ _0801FC5A:
 _0801FC74: .4byte gCurrentPinballGame
 _0801FC78: .4byte 0x000002C2
 _0801FC7C: .4byte gUnknown_086ADA6E
-_0801FC80: .4byte gMain_spriteGroups_57
+_0801FC80: .4byte gMain+0x2BF0 @gMain.spriteGroups[57]
 _0801FC84: .4byte 0x000002BE
 _0801FC88: .4byte 0x000006BD
 _0801FC8C: .4byte 0x000006BE
@@ -19605,7 +19605,7 @@ _080201CC:
 	ldr r0, [r5, #8]
 	movs r0, #0xb8
 	muls r0, r3, r0
-	ldr r4, _080202EC @ =gMain_spriteGroups_59
+	ldr r4, _080202EC @ =gMain+0x2D60 @gMain.spriteGroups[59]
 	adds r6, r0, r4
 	ldrh r0, [r6]
 	mov sb, r1
@@ -19715,7 +19715,7 @@ _080202DC: .4byte gUnknown_086ADEB0
 _080202E0: .4byte gUnknown_0847FD0C
 _080202E4: .4byte 0x06012A20
 _080202E8: .4byte 0x80000080
-_080202EC: .4byte gMain_spriteGroups_59
+_080202EC: .4byte gMain+0x2D60 @gMain.spriteGroups[59]
 _080202F0: .4byte 0x0000012D
 _080202F4: .4byte gOamBuffer
 _080202F8: .4byte 0xFFFFFE00
@@ -22980,7 +22980,7 @@ sub_21D78: @ 0x08021D78
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r7, _08021DD8 @ =gMain_spriteGroups_78
+	ldr r7, _08021DD8 @ =gMain+0x3B08 @gMain.spriteGroups[78]
 	ldr r4, _08021DDC @ =gCurrentPinballGame
 	ldr r6, [r4]
 	movs r0, #0xd2
@@ -23027,7 +23027,7 @@ _08021DC0:
 	strb r1, [r0]
 	b _08021F86
 	.align 2, 0
-_08021DD8: .4byte gMain_spriteGroups_78
+_08021DD8: .4byte gMain+0x3B08 @gMain.spriteGroups[78]
 _08021DDC: .4byte gCurrentPinballGame
 _08021DE0: .4byte 0x0000072E
 _08021DE4: .4byte 0x00000281
@@ -24578,7 +24578,7 @@ sub_22A30: @ 0x08022A30
 	mov r5, r8
 	push {r5, r6, r7}
 	movs r6, #0
-	ldr r7, _08022A68 @ =gMain_spriteGroups_82
+	ldr r7, _08022A68 @ =gMain+0x3DE8 @gMain.spriteGroups[82]
 	ldr r1, _08022A6C @ =gUnknown_086ADFE2
 	ldr r4, _08022A70 @ =gCurrentPinballGame
 	ldr r2, [r4]
@@ -24600,7 +24600,7 @@ sub_22A30: @ 0x08022A30
 	strh r0, [r2]
 	b _08022B2E
 	.align 2, 0
-_08022A68: .4byte gMain_spriteGroups_82
+_08022A68: .4byte gMain+0x3DE8 @gMain.spriteGroups[82]
 _08022A6C: .4byte gUnknown_086ADFE2
 _08022A70: .4byte gCurrentPinballGame
 _08022A74: .4byte 0x000002C3
@@ -24961,7 +24961,7 @@ sub_22D54: @ 0x08022D54
 	bl __umodsi3
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x13
-	ldr r1, _08022E40 @ =gMain_spriteGroups_12
+	ldr r1, _08022E40 @ =gMain+0xB98 @gMain.spriteGroups[12]
 	mov r8, r1
 	mov sl, r4
 	cmp r6, #0x81
@@ -25059,7 +25059,7 @@ _08022DE6:
 	.align 2, 0
 _08022E38: .4byte gCurrentPinballGame
 _08022E3C: .4byte 0x000002C6
-_08022E40: .4byte gMain_spriteGroups_12
+_08022E40: .4byte gMain+0xB98 @gMain.spriteGroups[12]
 _08022E44: .4byte 0x000002CA
 _08022E48: .4byte 0xFFFFF468
 _08022E4C: .4byte gUnknown_086AE088
@@ -26493,7 +26493,7 @@ sub_239A4: @ 0x080239A4
 	mov r8, r0
 	movs r7, #0
 	movs r6, #0
-	ldr r1, _080239DC @ =gMain_spriteGroups_48
+	ldr r1, _080239DC @ =gMain+0x2578 @gMain.spriteGroups[48]
 	mov sb, r1
 	mov ip, r6
 	ldr r1, _080239E0 @ =gCurrentPinballGame
@@ -26512,7 +26512,7 @@ sub_239A4: @ 0x080239A4
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080239DC: .4byte gMain_spriteGroups_48
+_080239DC: .4byte gMain+0x2578 @gMain.spriteGroups[48]
 _080239E0: .4byte gCurrentPinballGame
 _080239E4: .4byte _080239E8
 _080239E8: @ jump table
@@ -26964,7 +26964,7 @@ _08023CDC:
 	asrs r3, r3, #0x10
 	cmp r3, #1
 	ble _08023CDC
-	ldr r6, _08023E0C @ =gMain_spriteGroups_52
+	ldr r6, _08023E0C @ =gMain+0x2858 @gMain.spriteGroups[52]
 	mov sb, r6
 	ldr r1, _08023E10 @ =gCurrentPinballGame
 	ldr r0, [r1]
@@ -26987,7 +26987,7 @@ _08023D92:
 	lsls r4, r2, #0x10
 	asrs r4, r4, #0x10
 	lsls r0, r4, #3
-	ldr r6, _08023E14 @ =gMain_spriteGroups_52_oam
+	ldr r6, _08023E14 @ =gMain+0x2860 @gMain.spriteGroups[52].oam
 	adds r5, r0, r6
 	ldrh r1, [r5]
 	lsls r1, r1, #3
@@ -27042,9 +27042,9 @@ _08023DFC: .4byte gOamBuffer
 _08023E00: .4byte gUnknown_086B4D4E
 _08023E04: .4byte 0x000001FF
 _08023E08: .4byte 0xFFFFFE00
-_08023E0C: .4byte gMain_spriteGroups_52
+_08023E0C: .4byte gMain+0x2858 @gMain.spriteGroups[52]
 _08023E10: .4byte gCurrentPinballGame
-_08023E14: .4byte gMain_spriteGroups_52_oam
+_08023E14: .4byte gMain+0x2860 @gMain.spriteGroups[52].oam
 
 	thumb_func_start sub_23E18
 sub_23E18: @ 0x08023E18
@@ -27056,7 +27056,7 @@ sub_23E18: @ 0x08023E18
 	sub sp, #4
 	movs r0, #1
 	str r0, [sp]
-	ldr r1, _08023F00 @ =gMain_spriteGroups_51
+	ldr r1, _08023F00 @ =gMain+0x27A0 @gMain.spriteGroups[51]
 	mov sl, r1
 	ldr r5, _08023F04 @ =0xFFFFD860
 	add r5, sl
@@ -27162,7 +27162,7 @@ _08023EDE:
 	ldr r0, [r2, #8]
 	b _08024226
 	.align 2, 0
-_08023F00: .4byte gMain_spriteGroups_51
+_08023F00: .4byte gMain+0x27A0 @gMain.spriteGroups[51]
 _08023F04: .4byte 0xFFFFD860
 _08023F08: .4byte gCurrentPinballGame
 _08023F0C: .4byte 0x00000746
@@ -43699,7 +43699,7 @@ _0802C780:
 	movs r1, #0
 	strb r1, [r0]
 _0802C784:
-	ldr r6, _0802C7BC @ =gMain_spriteGroups_68
+	ldr r6, _0802C7BC @ =gMain+0x33D8 @gMain.spriteGroups[68]
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq _0802C83C
@@ -43726,7 +43726,7 @@ _0802C784:
 	b _0802C7DC
 	.align 2, 0
 _0802C7B8: .4byte 0x00000301
-_0802C7BC: .4byte gMain_spriteGroups_68
+_0802C7BC: .4byte gMain+0x33D8 @gMain.spriteGroups[68]
 _0802C7C0: .4byte 0x00000119
 _0802C7C4:
 	adds r0, r1, #0
@@ -43858,7 +43858,7 @@ _0802C852:
 	movs r0, #8
 	bl sub_11B0
 _0802C8C0:
-	ldr r6, _0802C988 @ =gMain_spriteGroups_58
+	ldr r6, _0802C988 @ =gMain+0x2CA8 @gMain.spriteGroups[58]
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq _0802C94E
@@ -43949,7 +43949,7 @@ _0802C978: .4byte 0xFFFFFEE3
 _0802C97C: .4byte 0x00002710
 _0802C980: .4byte 0x0000FDA8
 _0802C984: .4byte 0x0000FED4
-_0802C988: .4byte gMain_spriteGroups_58
+_0802C988: .4byte gMain+0x2CA8 @gMain.spriteGroups[58]
 _0802C98C: .4byte gCurrentPinballGame
 _0802C990: .4byte 0x00000115
 _0802C994: .4byte 0x040000D4
@@ -43960,7 +43960,7 @@ _0802C9A0: .4byte 0x80000180
 	thumb_func_start sub_2C9A4
 sub_2C9A4: @ 0x0802C9A4
 	push {r4, r5, r6, lr}
-	ldr r6, _0802C9E0 @ =gMain_spriteGroups_66
+	ldr r6, _0802C9E0 @ =gMain+0x3268 @gMain.spriteGroups[66]
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq _0802CA7A
@@ -43989,7 +43989,7 @@ sub_2C9A4: @ 0x0802C9A4
 	strh r1, [r6, #4]
 	b _0802C9F0
 	.align 2, 0
-_0802C9E0: .4byte gMain_spriteGroups_66
+_0802C9E0: .4byte gMain+0x3268 @gMain.spriteGroups[66]
 _0802C9E4: .4byte gCurrentPinballGame
 _0802C9E8: .4byte 0x0000029F
 _0802C9EC:
@@ -48651,7 +48651,7 @@ _0802EFDC:
 	strh r3, [r0]
 	mov sl, r3
 _0802EFFC:
-	ldr r2, _0802F118 @ =gMain_spriteGroups_60
+	ldr r2, _0802F118 @ =gMain+0x2E18 @gMain.spriteGroups[60]
 	ldrh r0, [r2]
 	cmp r0, #0
 	beq _0802F0FA
@@ -48684,7 +48684,7 @@ _0802EFFC:
 	ldrh r1, [r1]
 	subs r1, #0x92
 	subs r0, r0, r1
-	ldr r1, _0802F118 @ =gMain_spriteGroups_60
+	ldr r1, _0802F118 @ =gMain+0x2E18 @gMain.spriteGroups[60]
 	strh r0, [r1, #2]
 	ldr r2, _0802F12C @ =0x00000322
 	adds r0, r4, r2
@@ -48705,7 +48705,7 @@ _0802EFFC:
 	movs r1, #0xa
 	bl __divsi3
 	adds r5, r5, r0
-	ldr r2, _0802F118 @ =gMain_spriteGroups_60
+	ldr r2, _0802F118 @ =gMain+0x2E18 @gMain.spriteGroups[60]
 	strh r5, [r2, #4]
 	movs r2, #0
 	ldr r3, [sp]
@@ -48725,7 +48725,7 @@ _0802F08C:
 	asrs r3, r3, #0x10
 	lsls r4, r3, #3
 	adds r4, #8
-	ldr r7, _0802F118 @ =gMain_spriteGroups_60
+	ldr r7, _0802F118 @ =gMain+0x2E18 @gMain.spriteGroups[60]
 	adds r4, r7, r4
 	ldrh r2, [r4]
 	lsls r2, r2, #3
@@ -48765,7 +48765,7 @@ _0802F08C:
 	ldrh r1, [r4]
 	lsls r1, r1, #3
 	adds r1, r1, r6
-	ldr r7, _0802F118 @ =gMain_spriteGroups_60
+	ldr r7, _0802F118 @ =gMain+0x2E18 @gMain.spriteGroups[60]
 	ldrb r0, [r7, #4]
 	ldrb r2, [r1]
 	adds r0, r0, r2
@@ -48789,7 +48789,7 @@ _0802F0FA:
 _0802F10C: .4byte gCurrentPinballGame
 _0802F110: .4byte 0x0000030E
 _0802F114: .4byte 0x00000306
-_0802F118: .4byte gMain_spriteGroups_60
+_0802F118: .4byte gMain+0x2E18 @gMain.spriteGroups[60]
 _0802F11C: .4byte 0x040000D4
 _0802F120: .4byte gUnknown_084BB16C
 _0802F124: .4byte 0x060122A0
@@ -48816,7 +48816,7 @@ sub_2F140: @ 0x0802F140
 	movs r1, #0x1f
 	ands r0, r1
 	lsrs r4, r0, #4
-	ldr r6, _0802F244 @ =gMain_spriteGroups_75
+	ldr r6, _0802F244 @ =gMain+0x38E0 @gMain.spriteGroups[75]
 	movs r2, #0xbd
 	lsls r2, r2, #2
 	adds r1, r5, r2
@@ -48934,7 +48934,7 @@ _0802F1CE:
 	bx r0
 	.align 2, 0
 _0802F240: .4byte gCurrentPinballGame
-_0802F244: .4byte gMain_spriteGroups_75
+_0802F244: .4byte gMain+0x38E0 @gMain.spriteGroups[75]
 _0802F248: .4byte gUnknown_086AE462
 _0802F24C: .4byte 0x040000D4
 _0802F250: .4byte gUnknown_083FFD8C
@@ -49273,7 +49273,7 @@ sub_2F504: @ 0x0802F504
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r6, _0802F700 @ =gMain_spriteGroups_26
+	ldr r6, _0802F700 @ =gMain+0x15A8 @gMain.spriteGroups[26]
 	ldrh r0, [r6]
 	movs r1, #0xb8
 	adds r1, r1, r6
@@ -49475,7 +49475,7 @@ _0802F632:
 	cmp r3, #6
 	ble _0802F632
 _0802F69A:
-	ldr r6, _0802F738 @ =gMain_spriteGroups_70
+	ldr r6, _0802F738 @ =gMain+0x3548 @gMain.spriteGroups[70]
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq _0802F780
@@ -49525,7 +49525,7 @@ _0802F69A:
 	ldr r0, [r2, #8]
 	b _0802F74C
 	.align 2, 0
-_0802F700: .4byte gMain_spriteGroups_26
+_0802F700: .4byte gMain+0x15A8 @gMain.spriteGroups[26]
 _0802F704: .4byte gCurrentPinballGame
 _0802F708: .4byte 0x00000379
 _0802F70C: .4byte 0x040000D4
@@ -49539,7 +49539,7 @@ _0802F728: .4byte gOamBuffer
 _0802F72C: .4byte 0x000001FF
 _0802F730: .4byte 0x0000037B
 _0802F734: .4byte gUnknown_086B3B7E
-_0802F738: .4byte gMain_spriteGroups_70
+_0802F738: .4byte gMain+0x3548 @gMain.spriteGroups[70]
 _0802F73C: .4byte gUnknown_084ED6CC
 _0802F740: .4byte 0x06014FA0
 _0802F744: .4byte 0x80000100
@@ -50253,7 +50253,7 @@ sub_2FCD0: @ 0x0802FCD0
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r6, _0802FDCC @ =gMain_spriteGroups_61
+	ldr r6, _0802FDCC @ =gMain+0x2ED0 @gMain.spriteGroups[61]
 	ldrh r0, [r6]
 	cmp r0, #0
 	bne _0802FCE4
@@ -50377,7 +50377,7 @@ _0802FD42:
 	ldr r0, [r2, #8]
 	b _0802FE0C
 	.align 2, 0
-_0802FDCC: .4byte gMain_spriteGroups_61
+_0802FDCC: .4byte gMain+0x2ED0 @gMain.spriteGroups[61]
 _0802FDD0: .4byte gCurrentPinballGame
 _0802FDD4: .4byte gUnknown_086AE4FC
 _0802FDD8: .4byte 0x040000D4
@@ -50422,7 +50422,7 @@ _0802FE0C:
 	ldrb r5, [r5, #4]
 	adds r0, r0, r5
 	strb r0, [r1]
-	ldr r6, _0802FF24 @ =gMain_spriteGroups_62
+	ldr r6, _0802FF24 @ =gMain+0x2F88 @gMain.spriteGroups[62]
 	mov r5, ip
 	ldr r0, [r5]
 	adds r0, #0x58
@@ -50497,7 +50497,7 @@ _0802FE90:
 	asrs r4, r4, #0x10
 	cmp r4, #1
 	ble _0802FE90
-	ldr r6, _0802FF40 @ =gMain_spriteGroups_59
+	ldr r6, _0802FF40 @ =gMain+0x2D60 @gMain.spriteGroups[59]
 	mov r3, ip
 	ldr r0, [r3]
 	adds r0, #0x58
@@ -50536,14 +50536,14 @@ _0802FE90:
 	.align 2, 0
 _0802FF1C: .4byte 0x000001FF
 _0802FF20: .4byte 0xFFFFFE00
-_0802FF24: .4byte gMain_spriteGroups_62
+_0802FF24: .4byte gMain+0x2F88 @gMain.spriteGroups[62]
 _0802FF28: .4byte 0x0000036D
 _0802FF2C: .4byte gUnknown_086AE4FC
 _0802FF30: .4byte 0x040000D4
 _0802FF34: .4byte gUnknown_084C1E6C
 _0802FF38: .4byte 0x060130A0
 _0802FF3C: .4byte 0x80000140
-_0802FF40: .4byte gMain_spriteGroups_59
+_0802FF40: .4byte gMain+0x2D60 @gMain.spriteGroups[59]
 _0802FF44: .4byte gUnknown_084C4B6C
 _0802FF48: .4byte 0x06014920
 _0802FF4C: .4byte 0x800000C0
@@ -50576,7 +50576,7 @@ _0802FF54:
 	ldrb r5, [r5, #4]
 	adds r0, r0, r5
 	strb r0, [r1]
-	ldr r6, _0802FFC4 @ =gMain_spriteGroups_76
+	ldr r6, _0802FFC4 @ =gMain+0x3998 @gMain.spriteGroups[76]
 	mov r5, ip
 	ldr r0, [r5]
 	adds r0, #0x58
@@ -50605,7 +50605,7 @@ _0802FF54:
 	.align 2, 0
 _0802FFBC: .4byte 0x000001FF
 _0802FFC0: .4byte 0xFFFFFE00
-_0802FFC4: .4byte gMain_spriteGroups_76
+_0802FFC4: .4byte gMain+0x3998 @gMain.spriteGroups[76]
 _0802FFC8: .4byte 0x00000367
 _0802FFCC: .4byte 0x00000366
 _0802FFD0:
@@ -50821,7 +50821,7 @@ sub_30178: @ 0x08030178
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r0, _080301DC @ =gMain_spriteGroups_63
+	ldr r0, _080301DC @ =gMain+0x3040 @gMain.spriteGroups[63]
 	mov sl, r0
 	ldr r1, _080301E0 @ =gCurrentPinballGame
 	ldr r3, [r1]
@@ -50866,7 +50866,7 @@ _080301A0:
 	movs r0, #1
 	b _080301F6
 	.align 2, 0
-_080301DC: .4byte gMain_spriteGroups_63
+_080301DC: .4byte gMain+0x3040 @gMain.spriteGroups[63]
 _080301E0: .4byte gCurrentPinballGame
 _080301E4: .4byte 0x00000624
 _080301E8: .4byte 0x00000625
@@ -51201,7 +51201,7 @@ sub_304C8: @ 0x080304C8
 	mov r8, r0
 	mov ip, r0
 	movs r6, #0
-	ldr r7, _08030504 @ =gMain_spriteGroups_52
+	ldr r7, _08030504 @ =gMain+0x2858 @gMain.spriteGroups[52]
 	movs r1, #0
 	str r1, [sp]
 	ldr r1, _08030508 @ =gCurrentPinballGame
@@ -51221,7 +51221,7 @@ sub_304C8: @ 0x080304C8
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08030504: .4byte gMain_spriteGroups_52
+_08030504: .4byte gMain+0x2858 @gMain.spriteGroups[52]
 _08030508: .4byte gCurrentPinballGame
 _0803050C: .4byte _08030510
 _08030510: @ jump table
@@ -51625,7 +51625,7 @@ _080307C8:
 	asrs r3, r3, #0x10
 	cmp r3, #1
 	ble _080307C8
-	ldr r7, _08030880 @ =gMain_spriteGroups_51
+	ldr r7, _08030880 @ =gMain+0x27A0 @gMain.spriteGroups[51]
 	ldrh r0, [r7]
 	cmp r0, #0
 	beq _080308C2
@@ -51660,7 +51660,7 @@ _08030870: .4byte gOamBuffer
 _08030874: .4byte 0xFFFFFE00
 _08030878: .4byte gUnknown_086B4D4E
 _0803087C: .4byte 0x000001FF
-_08030880: .4byte gMain_spriteGroups_51
+_08030880: .4byte gMain+0x27A0 @gMain.spriteGroups[51]
 _08030884: .4byte 0x00000346
 _08030888: .4byte 0xFFFFD860
 _0803088C:
@@ -52455,7 +52455,7 @@ sub_30EB4: @ 0x08030EB4
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r6, _0803100C @ =gMain_spriteGroups_64
+	ldr r6, _0803100C @ =gMain+0x30F8 @gMain.spriteGroups[64]
 	ldrh r0, [r6]
 	cmp r0, #0
 	bne _08030EC8
@@ -52537,7 +52537,7 @@ _08030F18:
 	asrs r4, r4, #0x10
 	cmp r4, #1
 	ble _08030F18
-	ldr r6, _08031030 @ =gMain_spriteGroups_68
+	ldr r6, _08031030 @ =gMain+0x33D8 @gMain.spriteGroups[68]
 	mov r3, sl
 	ldr r0, [r3]
 	adds r0, #0x58
@@ -52585,7 +52585,7 @@ _08030FB4:
 	asrs r2, r3, #0x10
 	movs r0, #0xb8
 	muls r0, r2, r0
-	ldr r1, _08031034 @ =gMain_spriteGroups_65
+	ldr r1, _08031034 @ =gMain+0x31B0 @gMain.spriteGroups[65]
 	adds r6, r0, r1
 	lsls r5, r2, #1
 	ldr r7, _08031038 @ =gUnknown_086AE544
@@ -52625,7 +52625,7 @@ _08030FB4:
 	strh r1, [r6, #4]
 	b _08031040
 	.align 2, 0
-_0803100C: .4byte gMain_spriteGroups_64
+_0803100C: .4byte gMain+0x30F8 @gMain.spriteGroups[64]
 _08031010: .4byte gCurrentPinballGame
 _08031014: .4byte 0x040000D4
 _08031018: .4byte gUnknown_0844F20C
@@ -52634,8 +52634,8 @@ _08031020: .4byte 0x80000140
 _08031024: .4byte gOamBuffer
 _08031028: .4byte 0xFFFFFE00
 _0803102C: .4byte 0x000001FF
-_08031030: .4byte gMain_spriteGroups_68
-_08031034: .4byte gMain_spriteGroups_65
+_08031030: .4byte gMain+0x33D8 @gMain.spriteGroups[68]
+_08031034: .4byte gMain+0x31B0 @gMain.spriteGroups[65]
 _08031038: .4byte gUnknown_086AE544
 _0803103C:
 	movs r0, #0xc8
@@ -53081,7 +53081,7 @@ _0803139C: .4byte 0x000001AD
 	thumb_func_start sub_313A0
 sub_313A0: @ 0x080313A0
 	push {r4, r5, r6, r7, lr}
-	ldr r6, _08031464 @ =gMain_spriteGroups_69
+	ldr r6, _08031464 @ =gMain+0x3490 @gMain.spriteGroups[69]
 	ldrh r0, [r6]
 	cmp r0, #0
 	beq _0803145C
@@ -53180,7 +53180,7 @@ _0803145C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08031464: .4byte gMain_spriteGroups_69
+_08031464: .4byte gMain+0x3490 @gMain.spriteGroups[69]
 _08031468: .4byte gCurrentPinballGame
 _0803146C: .4byte 0x000001AD
 _08031470: .4byte 0x040000D4
@@ -53823,7 +53823,7 @@ _080319B6:
 	asrs r4, r1, #0x10
 	movs r0, #0xb8
 	muls r0, r4, r0
-	ldr r3, _08031A08 @ =gMain_spriteGroups_47
+	ldr r3, _08031A08 @ =gMain+0x24C0 @gMain.spriteGroups[47]
 	adds r6, r0, r3
 	ldrh r0, [r6]
 	mov r8, r1
@@ -53858,7 +53858,7 @@ _080319F8: .4byte 0x00000345
 _080319FC: .4byte 0x00000346
 _08031A00: .4byte 0x040000D4
 _08031A04: .4byte gUnknown_086AE554
-_08031A08: .4byte gMain_spriteGroups_47
+_08031A08: .4byte gMain+0x24C0 @gMain.spriteGroups[47]
 _08031A0C: .4byte gCurrentPinballGame
 _08031A10: .4byte 0x00000355
 _08031A14: .4byte gUnknown_086AE58A
