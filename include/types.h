@@ -30,6 +30,13 @@ struct SpriteGroup
     /*0x02*/ s16 baseX;
     /*0x04*/ s16 baseY;
     /*0x08*/ struct OamDataSimple oam[MAX_SPRITES_IN_GROUP];
+    /*Note: oam is 22 groups of size 0x8. Extends to B7.
+
+           0   1   2   3   4   5   6   7   8   9
+    00     8, 10, 18, 20, 28, 30, 38, 40, 48, 50,
+    10    58, 60, 68, 70, 78, 80, 88, 90, 98, A0,
+    20    A8, B0
+    */
 };
 // size: 0xB8
 

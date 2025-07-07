@@ -418,4 +418,9 @@ extern u16 gCommonAndEggWeights[];
 extern u16 gUnknown_0200B18E[10];
 extern u16 Sio32ConnectionData[4]; 
 extern u32 gUnknown_02002814;
+
+/*
+    Note: gMain lives at gUnknown_0200B0C0 in running memory.
+    anything from there to gUnknown_0200FAE0 is part of that object.
+*/
 #endif  // GUARD_VARIABLES_H
