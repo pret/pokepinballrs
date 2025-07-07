@@ -921,9 +921,9 @@ void sub_E3A8(void)
     int i;
     struct SpriteGroup *spriteGroup;
 
-    spriteGroup = &gUnknown_0200B3B8[gUnknown_02002858.unk12];
+    spriteGroup = &gMain_spriteGroups[gUnknown_02002858.unk12];
     spriteGroup->available = TRUE;
-    LoadSpriteSets(gUnknown_086A7DA8, 2, gUnknown_0200B3B8);
+    LoadSpriteSets(gUnknown_086A7DA8, 2, gMain_spriteGroups);
 
     spriteGroup->baseX = gUnknown_080797F0[gUnknown_02002858.unkB][gUnknown_02002858.unkC].x + gUnknown_02002858.unk10 * 8;
     spriteGroup->baseY = gUnknown_080797F0[gUnknown_02002858.unkB][gUnknown_02002858.unkC].y;
@@ -969,7 +969,7 @@ void sub_E464(void)
     const struct SpriteSet *spriteSet;
     struct OamDataSimple *oamData;
 
-    spriteGroups = gUnknown_0200B3B8;
+    spriteGroups = gMain_spriteGroups;
     spriteGroup1 = spriteGroups;
     spriteGroup2 = &spriteGroups[1];
     spriteGroup3 = &spriteGroups[(s8)gUnknown_0202BEBC + 2];
@@ -1025,7 +1025,7 @@ void sub_E464(void)
         spriteGroup2->available = TRUE;
         spriteGroup3->available = gUnknown_0201B178;
         spriteGroup4->available = var1_02002858->unk26;
-        LoadSpriteSets(gUnknown_086A7DB0, 2, gUnknown_0200B3B8);
+        LoadSpriteSets(gUnknown_086A7DB0, 2, gMain_spriteGroups);
         sub_E464_HELPER(4, spriteGroup2, spriteGroup4, spriteGroup3);
         if (spriteGroup4->available == 1)
     {
@@ -1066,7 +1066,7 @@ void sub_E464(void)
     {
         spriteGroup1->available = FALSE;
         spriteGroup2->available = FALSE;
-        LoadSpriteSets(gUnknown_086A7DB0, 9, gUnknown_0200B3B8);
+        LoadSpriteSets(gUnknown_086A7DB0, 9, gMain_spriteGroups);
     }
 
     spriteGroup3->available = FALSE;
@@ -1082,7 +1082,7 @@ void sub_E464(void)
 	mov r6, sb\n\
 	mov r5, r8\n\
 	push {r5, r6, r7}\n\
-	ldr r6, _0800E5CC @ =gUnknown_0200B3B8\n\
+	ldr r6, _0800E5CC @ =gMain_spriteGroups\n\
 	adds r4, r6, #0\n\
 	movs r0, #0xb8\n\
 	adds r0, r0, r6\n\
@@ -1261,7 +1261,7 @@ _0800E5C2:\n\
 	movs r0, #0x64\n\
 	b _0800E602\n\
 	.align 2, 0\n\
-_0800E5CC: .4byte gUnknown_0200B3B8\n\
+_0800E5CC: .4byte gMain_spriteGroups\n\
 _0800E5D0: .4byte gUnknown_0202BEBC\n\
 _0800E5D4: .4byte gUnknown_02002858\n\
 _0800E5D8: .4byte gUnknown_0200287D\n\
@@ -1584,9 +1584,9 @@ void sub_E860(void)
     int i;
     struct SpriteGroup *spriteGroup;
 
-    spriteGroup = &gUnknown_0200B3B8[gUnknown_0202C580];
+    spriteGroup = &gMain_spriteGroups[gUnknown_0202C580];
     spriteGroup->available = gUnknown_0201C18C;
-    LoadSpriteSets(gUnknown_086A7DD4, 5, gUnknown_0200B3B8);
+    LoadSpriteSets(gUnknown_086A7DD4, 5, gMain_spriteGroups);
     if (spriteGroup->available == 1)
     {
         spriteGroup->baseX = 120;

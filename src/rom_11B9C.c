@@ -1377,7 +1377,7 @@ void sub_12BF8()
     {
     case FIELD_KECLEON:
         unk1334_0->unk1 = 2;
-        spriteGroup = &gUnknown_0200B3B8[gUnknown_02031590.unk16];
+        spriteGroup = &gMain_spriteGroups[gUnknown_02031590.unk16];
         break;
     case FIELD_KYOGRE:
     case FIELD_GROUDON:

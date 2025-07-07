@@ -494,11 +494,11 @@ void sub_394C(void)
     const struct SpriteSet *puVar8;
     struct OamDataSimple *test2;
 
-    puVar9 = &gUnknown_0200B3B8[gUnknown_0202A58C];
-    puVar5 = &gUnknown_0200B3B8[gUnknown_0202BEC0];
+    puVar9 = &gMain_spriteGroups[gUnknown_0202A58C];
+    puVar5 = &gMain_spriteGroups[gUnknown_0202BEC0];
     puVar9->available = gUnknown_0202C584;
     puVar5->available = TRUE;
-    LoadSpriteSets(gUnknown_086A54D8, 13, gUnknown_0200B3B8);
+    LoadSpriteSets(gUnknown_086A54D8, 13, gMain_spriteGroups);
 
     if (puVar9->available == 1)
     {
@@ -545,11 +545,11 @@ void sub_3AB4(void) {
     const struct SpriteSet *puVar8;
     struct OamDataSimple *test2;
 
-    puVar9 = &gUnknown_0200B3B8[gUnknown_0202A58C];
-    puVar5 = &gUnknown_0200B3B8[gUnknown_0202BEC0];
+    puVar9 = &gMain_spriteGroups[gUnknown_0202A58C];
+    puVar5 = &gMain_spriteGroups[gUnknown_0202BEC0];
     puVar9->available = gUnknown_0202C584;
     puVar5->available = TRUE;
-    sub_2414(gUnknown_086A54D8, 13, gUnknown_0200B3B8);
+    sub_2414(gUnknown_086A54D8, 13, gMain_spriteGroups);
 
     if (puVar9->available == 1)
     {

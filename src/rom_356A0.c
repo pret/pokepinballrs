@@ -5,10 +5,10 @@
 
 #define BONUS_KECLEON_COMPLETE_POINTS 30000000
 
-extern struct SpriteGroup gUnknown_0200BA30;
-extern struct SpriteGroup gUnknown_0200BC58;
-extern struct SpriteGroup gUnknown_0200BDC8;
-extern struct SpriteGroup gUnknown_0200CA00;
+extern struct SpriteGroup gMain_spriteGroups_9;
+extern struct SpriteGroup gMain_spriteGroups_12;
+extern struct SpriteGroup gMain_spriteGroups_14;
+extern struct SpriteGroup gMain_spriteGroups_31;
 
 extern void sub_35D54(void);
 extern void sub_36CB4(void);
@@ -50,7 +50,7 @@ void sub_356A0(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = &gUnknown_0200BDC8;
+    group = &gMain_spriteGroups_14;
     switch (gCurrentPinballGame->unk3DC)
     {
     case 0:
@@ -88,7 +88,7 @@ void sub_356A0(void)
         break;
     }
 
-    group = &gUnknown_0200BC58;
+    group = &gMain_spriteGroups_12;
     if (!group->available)
         return;
 
@@ -860,7 +860,7 @@ void sub_36CB4(void)
     int baseX = 104;
     int baseY = 28;
 
-    spriteGroup = &gUnknown_0200B3B8[gUnknown_02031590.unk17];
+    spriteGroup = &gMain_spriteGroups[gUnknown_02031590.unk17];
     if (!spriteGroup->available)
         return;
 
@@ -934,7 +934,7 @@ void sub_36CB4(void)
 
     baseX = 104;
     baseY = 60;
-    spriteGroup = &gUnknown_0200CA00;
+    spriteGroup = &gMain_spriteGroups_31;
     spriteGroup->baseX = gCurrentPinballGame->unk3E8 / 10 + baseX - gCurrentPinballGame->unk58;
     spriteGroup->baseY = gCurrentPinballGame->unk3EA / 10 + baseY - gCurrentPinballGame->unk5A;
 
@@ -972,7 +972,7 @@ void sub_36CB4(void)
 
     baseX = 104;
     baseY = 26;
-    spriteGroup = &gUnknown_0200BA30;
+    spriteGroup = &gMain_spriteGroups_9;
     var0 = gCurrentPinballGame->unk3F8 * 3;
     var1 = gCurrentPinballGame->unk3FC / 8 - 2;
 
