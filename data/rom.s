@@ -977,10 +977,12 @@ gPokedexSprites_Gfx:: @ 0x08089B60
 	.incbin "baserom.gba", 0x90760, 0x20
 
 gUnknown_08090780:: @ 0x08090780
+	@.incbin "graphics/text/japanese_glyphs.4bpp"
 	.incbin "baserom.gba", 0x90780, 0x2820
 
 gUnknown_08092FA0:: @ 0x08092FA0
-	.incbin "baserom.gba", 0x92FA0, 0x1800
+	.incbin "graphics/text/english_glyphs.4bpp"
+	@.incbin "baserom.gba", 0x92FA0, 0x1800
 
 gUnknown_080947A0:: @ 0x080947A0
 	.incbin "baserom.gba", 0x947A0, 0x1000
@@ -2986,7 +2988,37 @@ gCommonAndEggWeights:: @ 0x086AE5E0
 	.2byte 10, 10, 15, 15, 2, 0
 
 gUnknown_086AE5EC:: @ 0x086AE5EC
-	.incbin "baserom.gba", 0x6AE5EC, 0xA2
+	.2byte 0, 15, 0
+	.2byte 1, 15, 1
+	.2byte 0, 15, 0
+	.2byte 2, 15, 2
+	.2byte 3, 5, 3
+	.2byte 4, 7, 4
+	.2byte 5, 11, 5
+	.2byte 6, 15, 0
+	.2byte 7, 15, 1
+	.2byte 6, 15, 0
+
+	.2byte 8, 15, 2
+	.2byte 9, 5, 3
+	.2byte 10, 7, 4
+	.2byte 11, 11, 5
+	.2byte 12, 7, 6
+	.2byte 12, 22, 6
+	.2byte 3, 5, 3
+	.2byte 3, 5, 3
+	.2byte 14, 5, 8
+	.2byte 15, 4, 9
+	
+	.2byte 16, 1, 10
+	.2byte 15, 4, 9
+	.2byte 14, 5, 8
+	.2byte 15, 4, 9
+	.2byte 16, 1, 10
+	.2byte 15, 4, 9
+	.2byte 3, 5, 3
+	
+	@ .incbin "baserom.gba", 0x6AE5EC, 0xA2
 
 gUnknown_086AE68E:: @ 0x086AE68E
 	.incbin "baserom.gba", 0x6AE68E, 0x8A

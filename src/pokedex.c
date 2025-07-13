@@ -1860,6 +1860,10 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
     {
         if (gPokedexFlags[listPosition + i] > SPECIES_UNSEEN)
         {
+			//This manually builds the tiles needed, for kerning reasons.
+			//First 3 bytes point to a tile glyph pair (with an upper and lower half) and
+			//the 4th byte is the width needed for that glyph, with the 'space between' included.
+			//The 'space' character is 4 px wide.
             for (j = 0; j < POKEMON_NAME_LENGTH; j++)
             {
                 // These don't use listPosition for some reason, despite being the only value passed
