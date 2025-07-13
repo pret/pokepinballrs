@@ -741,12 +741,6 @@ gPokedexStateFuncs:: @ 0x0805C880
 
 gPokedexEntries:: @ 0x0805C8B4
 	.include "data/pokedex_entries_dex.inc"
-	@.2byte 0,0,1, 0xA,1,0,8,0xA,0xA,1,1,0
-	@.incbin "baserom.gba", 0x5C8CC, 0x1C9F4
-
-	@ziggagoon: 5e148
-	@205
-	@.incbin "baserom.gba", 0x5C8B4, 0x1CA0C
 
 gFieldSelectStateFuncs:: @ 0x080792C0
 	.4byte LoadFieldSelectGraphics
