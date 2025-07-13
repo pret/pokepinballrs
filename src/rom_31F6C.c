@@ -1298,6 +1298,7 @@ void sub_340EC() {
 
                 dst = (u16*)&gOamBuffer[oamData->oamId];
                 src = gUnknown_086BA0A0[sb][j];
+                // Uses data from memory to set the first 3 bytes of OamData. (all but the affineParam)
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
