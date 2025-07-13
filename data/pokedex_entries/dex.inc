@@ -1,3 +1,5 @@
+
+    .align 2, 0
 dexEntry1::
     .2byte 0, 0, 1, 0xA, 1, 0, 8, 0xA, 0xA, 1, 1, 0
     .dexName "TREECKO"
@@ -9,6 +11,7 @@ dexEntry1::
     .dexText "with its thick tail."
     .dexText ""
 
+    .align 2, 0
 dexEntry2::
     .2byte 0, 0, 2, 0xA, 2, 1, 1, 0xA, 0xA, 4, 7, 6
     .dexName "GROVYLE"
@@ -20,6 +23,7 @@ dexEntry2::
     .dexText "trees in jungles."
     .dexText ""
 
+    .align 2, 0
 dexEntry3::
     .2byte 0, 0, 3, 0xA, 5, 0, 7, 0xA, 1, 1, 5, 1
     .dexName "SCEPTILE"
@@ -31,6 +35,7 @@ dexEntry3::
     .dexText "from above or behind."
     .dexText ""
 
+    .align 2, 0
 dexEntry4::
     .2byte 0, 0, 4, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 5, 5
     .dexName "TORCHIC"
@@ -42,6 +47,7 @@ dexEntry4::
     .dexText "1,800 degrees F, including fireballs"
     .dexText "that leave the foe scorched black."
 
+    .align 2, 0
 dexEntry5::
     .2byte 0, 0, 5, 0xA, 2, 1, 1, 0xA, 0xA, 4, 3, 0
     .dexName "COMBUSKEN"
@@ -53,6 +59,7 @@ dexEntry5::
     .dexText "and power, enabling it to dole out ten"
     .dexText "kicks in one second."
 
+    .align 2, 0
 dexEntry6::
     .2byte 0, 0, 6, 0xA, 6, 0, 3, 0xA, 1, 1, 4, 6
     .dexName "BLAZIKEN"
@@ -64,6 +71,7 @@ dexEntry6::
     .dexText "intensely this POKéMON`s wrists burn."
     .dexText ""
 
+    .align 2, 0
 dexEntry7::
     .2byte 0, 0, 7, 0xA, 1, 0, 4, 0xA, 0xA, 1, 6, 8
     .dexName "MUDKIP"
@@ -75,6 +83,7 @@ dexEntry7::
     .dexText "amazing power - it can crush rocks"
     .dexText "bigger than itself."
 
+    .align 2, 0
 dexEntry8::
     .2byte 0, 0, 8, 0xA, 2, 0, 4, 0xA, 0xA, 6, 1, 7
     .dexName "MARSHTOMP"
@@ -86,6 +95,7 @@ dexEntry8::
     .dexText "ability to walk on just its hind legs."
     .dexText ""
 
+    .align 2, 0
 dexEntry9::
     .2byte 0, 0, 9, 0xA, 4, 1, 1, 0xA, 1, 8, 0, 6
     .dexName "SWAMPERT"
@@ -97,6 +107,7 @@ dexEntry9::
     .dexText "boulders to protect itself."
     .dexText ""
 
+    .align 2, 0
 dexEntry10::
     .2byte 0, 1, 0, 0xA, 1, 0, 8, 0xA, 0xA, 3, 0, 0
     .dexName "POOCHYENA"
@@ -108,6 +119,7 @@ dexEntry10::
     .dexText "However, it may turn tail if the prey"
     .dexText "strikes back."
 
+    .align 2, 0
 dexEntry11::
     .2byte 0, 1, 1, 0xA, 3, 0, 3, 0xA, 0xA, 8, 1, 6
     .dexName "MIGHTYENA"
@@ -119,6 +131,7 @@ dexEntry11::
     .dexText "sharply pointed fangs."
     .dexText ""
 
+    .align 2, 0
 dexEntry12::
     .2byte 0, 1, 2, 0xA, 1, 0, 4, 0xA, 0xA, 3, 8, 6
     .dexName "ZIGZAGOON"
@@ -130,6 +143,7 @@ dexEntry12::
     .dexText "that it happens to see."
     .dexText ""
 
+    .align 2, 0
 dexEntry13::
     .2byte 0, 1, 3, 0xA, 1, 0, 8, 0xA, 0xA, 7, 1, 6
     .dexName "LINOONE"
@@ -141,6 +155,7 @@ dexEntry13::
     .dexText "gently curving roads."
     .dexText ""
 
+    .align 2, 0
 dexEntry14::
     .2byte 0, 1, 4, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 7, 9
     .dexName "WURMPLE"
@@ -152,6 +167,7 @@ dexEntry14::
     .dexText "It will weaken the foe by leaking poison"
     .dexText "from the spikes."
 
+    .align 2, 0
 dexEntry15::
     .2byte 0, 1, 5, 0xA, 2, 0, 0, 0xA, 0xA, 2, 2, 0
     .dexName "SILCOON"
@@ -163,6 +179,7 @@ dexEntry15::
     .dexText "drinking rainwater that collects on its"
     .dexText "silk."
 
+    .align 2, 0
 dexEntry16::
     .2byte 0, 1, 6, 0xA, 3, 0, 3, 0xA, 0xA, 6, 2, 6
     .dexName "BEAUTIFLY"
@@ -174,6 +191,7 @@ dexEntry16::
     .dexText "it flits around gathering pollen."
     .dexText ""
 
+    .align 2, 0
 dexEntry17::
     .2byte 0, 1, 7, 0xA, 2, 0, 4, 0xA, 0xA, 2, 5, 4
     .dexName "CASCOON"
@@ -185,6 +203,7 @@ dexEntry17::
     .dexText "evolution. This POKéMON will also not"
     .dexText "forget the pain it endured."
 
+    .align 2, 0
 dexEntry18::
     .2byte 0, 1, 8, 0xA, 3, 1, 1, 0xA, 0xA, 6, 9, 7
     .dexName "DUSTOX"
@@ -196,6 +215,7 @@ dexEntry18::
     .dexText "This POKéMON searches for food using"
     .dexText "its antennae like radar."
 
+    .align 2, 0
 dexEntry19::
     .2byte 0, 1, 9, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 5, 7
     .dexName "LOTAD"
@@ -207,6 +227,7 @@ dexEntry19::
     .dexText "and heavy. It now lives by floating"
     .dexText "atop the water."
 
+    .align 2, 0
 dexEntry20::
     .2byte 0, 2, 0, 0xA, 3, 1, 1, 0xA, 0xA, 7, 1, 6
     .dexName "LOMBRE"
@@ -218,6 +239,7 @@ dexEntry20::
     .dexText "LOMBRE is often mistaken for a human"
     .dexText "child."
 
+    .align 2, 0
 dexEntry21::
     .2byte 0, 2, 1, 0xA, 4, 1, 1, 0xA, 1, 2, 1, 3
     .dexName "LUDICOLO"
@@ -229,6 +251,7 @@ dexEntry21::
     .dexText "exhibit an amazing amount of power."
     .dexText ""
 
+    .align 2, 0
 dexEntry22::
     .2byte 0, 2, 2, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 8, 8
     .dexName "SEEDOT"
@@ -240,6 +263,7 @@ dexEntry22::
     .dexText "The more water it drinks, the glossier"
     .dexText "this POKéMON`s body becomes."
 
+    .align 2, 0
 dexEntry23::
     .2byte 0, 2, 3, 0xA, 3, 0, 3, 0xA, 0xA, 6, 1, 7
     .dexName "NUZLEAF"
@@ -251,6 +275,7 @@ dexEntry23::
     .dexText "nose pinched."
     .dexText ""
 
+    .align 2, 0
 dexEntry24::
     .2byte 0, 2, 4, 0xA, 4, 0, 3, 0xA, 1, 3, 1, 4
     .dexName "SHIFTRY"
@@ -262,6 +287,7 @@ dexEntry24::
     .dexText "the fans it holds."
     .dexText ""
 
+    .align 2, 0
 dexEntry25::
     .2byte 0, 2, 5, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 5, 1
     .dexName "TAILLOW"
@@ -273,6 +299,7 @@ dexEntry25::
     .dexText "even after a loss. On the other hand,"
     .dexText "it cries loudly if it becomes hungry."
 
+    .align 2, 0
 dexEntry26::
     .2byte 0, 2, 6, 0xA, 2, 0, 4, 0xA, 0xA, 4, 3, 7
     .dexName "SWELLOW"
@@ -284,6 +311,7 @@ dexEntry26::
     .dexText "prey is tightly grasped by SWELLOW`s"
     .dexText "clawed feet, preventing escape."
 
+    .align 2, 0
 dexEntry27::
     .2byte 0, 2, 7, 0xA, 2, 0, 0, 0xA, 0xA, 2, 0, 9
     .dexName "WINGULL"
@@ -295,6 +323,7 @@ dexEntry27::
     .dexText "as if it were skating across the sky."
     .dexText ""
 
+    .align 2, 0
 dexEntry28::
     .2byte 0, 2, 8, 0xA, 3, 1, 1, 0xA, 0xA, 6, 1, 7
     .dexName "PELIPPER"
@@ -306,6 +335,7 @@ dexEntry28::
     .dexText "cliffs facing the sea."
     .dexText ""
 
+    .align 2, 0
 dexEntry29::
     .2byte 0, 2, 9, 0xA, 1, 0, 4, 0xA, 0xA, 1, 4, 6
     .dexName "RALTS"
@@ -317,6 +347,7 @@ dexEntry29::
     .dexText "closer if it senses that the person has"
     .dexText "a positive disposition."
 
+    .align 2, 0
 dexEntry30::
     .2byte 0, 3, 0, 0xA, 2, 0, 7, 0xA, 0xA, 4, 4, 5
     .dexName "KIRLIA"
@@ -328,6 +359,7 @@ dexEntry30::
     .dexText "powers with its highly developed brain."
     .dexText ""
 
+    .align 2, 0
 dexEntry31::
     .2byte 0, 3, 1, 0xA, 5, 0, 3, 0xA, 1, 0, 6, 7
     .dexName "GARDEVOIR"
@@ -339,6 +371,7 @@ dexEntry31::
     .dexText "full power."
     .dexText ""
 
+    .align 2, 0
 dexEntry32::
     .2byte 0, 3, 2, 0xA, 1, 0, 8, 0xA, 0xA, 0xA, 3, 7
     .dexName "SURSKIT"
@@ -350,6 +383,7 @@ dexEntry32::
     .dexText "eating this syrup."
     .dexText ""
 
+    .align 2, 0
 dexEntry33::
     .2byte 0, 3, 3, 0xA, 2, 0, 7, 0xA, 0xA, 0xA, 7, 9
     .dexName "MASQUERAIN"
@@ -361,6 +395,7 @@ dexEntry33::
     .dexText "that a heavy rainfall is on its way."
     .dexText ""
 
+    .align 2, 0
 dexEntry34::
     .2byte 0, 3, 4, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 9, 9
     .dexName "SHROOMISH"
@@ -372,6 +407,7 @@ dexEntry34::
     .dexText "is made up of fallen, rotted leaves."
     .dexText ""
 
+    .align 2, 0
 dexEntry35::
     .2byte 0, 3, 5, 0xA, 3, 1, 1, 0xA, 0xA, 8, 6, 4
     .dexName "BRELOOM"
@@ -383,6 +419,7 @@ dexEntry35::
     .dexText "boxers to shame."
     .dexText ""
 
+    .align 2, 0
 dexEntry36::
     .2byte 0, 3, 6, 0xA, 2, 0, 7, 0xA, 0xA, 5, 2, 9
     .dexName "SLAKOTH"
@@ -394,6 +431,7 @@ dexEntry36::
     .dexText "motion."
     .dexText ""
 
+    .align 2, 0
 dexEntry37::
     .2byte 0, 3, 7, 0xA, 4, 0, 7, 0xA, 1, 0, 2, 5
     .dexName "VIGOROTH"
@@ -405,6 +443,7 @@ dexEntry37::
     .dexText "run wild throughout the jungle before"
     .dexText "it can settle down."
 
+    .align 2, 0
 dexEntry38::
     .2byte 0, 3, 8, 0xA, 6, 0, 7, 0xA, 2, 8, 7, 7
     .dexName "SLAKING"
@@ -416,6 +455,7 @@ dexEntry38::
     .dexText "while lying prone on the ground."
     .dexText ""
 
+    .align 2, 0
 dexEntry39::
     .2byte 0, 3, 9, 0xA, 2, 1, 1, 0xA, 0xA, 4, 3, 0
     .dexName "ABRA"
@@ -427,6 +467,7 @@ dexEntry39::
     .dexText "TELEPORT while it is still sleeping."
     .dexText ""
 
+    .align 2, 0
 dexEntry40::
     .2byte 0, 4, 0, 0xA, 4, 0, 3, 0xA, 1, 2, 4, 6
     .dexName "KADABRA"
@@ -438,6 +479,7 @@ dexEntry40::
     .dexText "to be limited to half the usual amount"
     .dexText "of its telekinetic powers."
 
+    .align 2, 0
 dexEntry41::
     .2byte 0, 4, 1, 0xA, 4, 1, 1, 0xA, 1, 0, 5, 8
     .dexName "ALAKAZAM"
@@ -449,6 +491,7 @@ dexEntry41::
     .dexText "It has a thorough memory of everything"
     .dexText "that has occurred in the world."
 
+    .align 2, 0
 dexEntry42::
     .2byte 0, 4, 2, 0xA, 1, 0, 8, 0xA, 0xA, 1, 2, 1
     .dexName "NINCADA"
@@ -460,6 +503,7 @@ dexEntry42::
     .dexText "as it waits for evolution."
     .dexText ""
 
+    .align 2, 0
 dexEntry43::
     .2byte 0, 4, 3, 0xA, 2, 0, 7, 0xA, 0xA, 2, 6, 5
     .dexName "NINJASK"
@@ -471,6 +515,7 @@ dexEntry43::
     .dexText "believed to be invisible."
     .dexText ""
 
+    .align 2, 0
 dexEntry44::
     .2byte 0, 4, 4, 0xA, 2, 0, 7, 0xA, 0xA, 0xA, 2, 6
     .dexName "SHEDINJA"
@@ -482,6 +527,7 @@ dexEntry44::
     .dexText "steal the spirit of anyone peering into"
     .dexText "its hollow body from its back."
 
+    .align 2, 0
 dexEntry45::
     .2byte 0, 4, 5, 0xA, 2, 0, 0, 0xA, 0xA, 3, 5, 9
     .dexName "WHISMUR"
@@ -493,6 +539,7 @@ dexEntry45::
     .dexText "POKéMON goes to sleep, all tired out."
     .dexText ""
 
+    .align 2, 0
 dexEntry46::
     .2byte 0, 4, 6, 0xA, 3, 0, 3, 0xA, 0xA, 8, 9, 3
     .dexName "LOUDRED"
@@ -504,6 +551,7 @@ dexEntry46::
     .dexText "to be a weak point."
     .dexText ""
 
+    .align 2, 0
 dexEntry47::
     .2byte 0, 4, 7, 0xA, 4, 1, 1, 0xA, 1, 8, 5, 2
     .dexName "EXPLOUD"
@@ -515,6 +563,7 @@ dexEntry47::
     .dexText "it is in battle."
     .dexText ""
 
+    .align 2, 0
 dexEntry48::
     .2byte 0, 4, 8, 0xA, 3, 0, 3, 0xA, 1, 9, 0, 5
     .dexName "MAKUHITA"
@@ -526,6 +575,7 @@ dexEntry48::
     .dexText "way, this POKéMON packs its body with"
     .dexText "energy."
 
+    .align 2, 0
 dexEntry49::
     .2byte 0, 4, 9, 0xA, 7, 0, 7, 0xA, 5, 5, 9, 5
     .dexName "HARIYAMA"
@@ -537,6 +587,7 @@ dexEntry49::
     .dexText "becomes as hard as a rock."
     .dexText ""
 
+    .align 2, 0
 dexEntry50::
     .2byte 0, 5, 0, 0xA, 2, 0, 0, 0xA, 0xA, 3, 3, 1
     .dexName "GOLDEEN"
@@ -548,6 +599,7 @@ dexEntry50::
     .dexText "thickest glass with one ram of its horn"
     .dexText "and make its escape."
 
+    .align 2, 0
 dexEntry51::
     .2byte 0, 5, 1, 0xA, 4, 0, 3, 0xA, 0xA, 8, 6, 0
     .dexName "SEAKING"
@@ -559,6 +611,7 @@ dexEntry51::
     .dexText "goes on for over a month."
     .dexText ""
 
+    .align 2, 0
 dexEntry52::
     .2byte 0, 5, 2, 0xA, 2, 1, 1, 0xA, 0xA, 2, 2, 0
     .dexName "MAGIKARP"
@@ -570,6 +623,7 @@ dexEntry52::
     .dexText "POKéMON that can survive in any body of"
     .dexText "water no matter how polluted it is."
 
+    .align 2, 0
 dexEntry53::
     .2byte 0, 5, 3, 2, 1, 0, 4, 0xA, 5, 1, 8, 1
     .dexName "GYARADOS"
@@ -581,6 +635,7 @@ dexEntry53::
     .dexText "rampages lasting a whole month."
     .dexText ""
 
+    .align 2, 0
 dexEntry54::
     .2byte 0, 5, 4, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 4, 4
     .dexName "AZURILL"
@@ -592,6 +647,7 @@ dexEntry54::
     .dexText "playing on its big, rubbery tail."
     .dexText ""
 
+    .align 2, 0
 dexEntry55::
     .2byte 0, 5, 5, 0xA, 1, 0, 4, 0xA, 0xA, 1, 8, 7
     .dexName "MARILL"
@@ -603,6 +659,7 @@ dexEntry55::
     .dexText "configured to stretch."
     .dexText ""
 
+    .align 2, 0
 dexEntry56::
     .2byte 0, 5, 6, 0xA, 2, 0, 7, 0xA, 0xA, 6, 2, 8
     .dexName "AZUMARILL"
@@ -614,6 +671,7 @@ dexEntry56::
     .dexText "trouble to breathe."
     .dexText ""
 
+    .align 2, 0
 dexEntry57::
     .2byte 0, 5, 7, 0xA, 1, 0, 4, 0xA, 0xA, 4, 4, 1
     .dexName "GEODUDE"
@@ -625,6 +683,7 @@ dexEntry57::
     .dexText "In the morning, this POKéMON rolls"
     .dexText "downhill in search of food."
 
+    .align 2, 0
 dexEntry58::
     .2byte 0, 5, 8, 0xA, 3, 0, 3, 0xA, 2, 3, 1, 5
     .dexName "GRAVELER"
@@ -636,6 +695,7 @@ dexEntry58::
     .dexText "Upon reaching the peak, it rolls back"
     .dexText "down to the bottom."
 
+    .align 2, 0
 dexEntry59::
     .2byte 0, 5, 9, 0xA, 4, 0, 7, 0xA, 6, 6, 1, 4
     .dexName "GOLEM"
@@ -647,6 +707,7 @@ dexEntry59::
     .dexText "mountains to serve as guideways for"
     .dexText "diverting this POKéMON`s course."
 
+    .align 2, 0
 dexEntry60::
     .2byte 0, 6, 0, 0xA, 3, 0, 3, 0xA, 2, 1, 3, 8
     .dexName "NOSEPASS"
@@ -658,6 +719,7 @@ dexEntry60::
     .dexText "are close because their magnetic noses"
     .dexText "repel one another."
 
+    .align 2, 0
 dexEntry61::
     .2byte 0, 6, 1, 0xA, 2, 0, 0, 0xA, 0xA, 2, 4, 3
     .dexName "SKITTY"
@@ -669,6 +731,7 @@ dexEntry61::
     .dexText "its own tail and become dizzy."
     .dexText ""
 
+    .align 2, 0
 dexEntry62::
     .2byte 0, 6, 2, 0xA, 3, 0, 7, 0xA, 0xA, 7, 1, 9
     .dexName "DELCATTY"
@@ -680,6 +743,7 @@ dexEntry62::
     .dexText "whenever it decides, its daily routines"
     .dexText "are completely random."
 
+    .align 2, 0
 dexEntry63::
     .2byte 0, 6, 3, 0xA, 2, 0, 7, 0xA, 0xA, 1, 6, 5
     .dexName "ZUBAT"
@@ -691,6 +755,7 @@ dexEntry63::
     .dexText "while hanging upside down."
     .dexText ""
 
+    .align 2, 0
 dexEntry64::
     .2byte 0, 6, 4, 0xA, 5, 0, 3, 0xA, 1, 2, 1, 3
     .dexName "GOLBAT"
@@ -702,6 +767,7 @@ dexEntry64::
     .dexText "attack people and POKéMON."
     .dexText ""
 
+    .align 2, 0
 dexEntry65::
     .2byte 0, 6, 5, 0xA, 5, 1, 1, 0xA, 1, 6, 5, 3
     .dexName "CROBAT"
@@ -713,6 +779,7 @@ dexEntry65::
     .dexText "serve as wings."
     .dexText ""
 
+    .align 2, 0
 dexEntry66::
     .2byte 0, 6, 6, 0xA, 2, 1, 1, 0xA, 1, 0, 0, 3
     .dexName "TENTACOOL"
@@ -724,6 +791,7 @@ dexEntry66::
     .dexText "dehydrated, put it back into the sea."
     .dexText ""
 
+    .align 2, 0
 dexEntry67::
     .2byte 0, 6, 7, 0xA, 5, 0, 3, 0xA, 1, 2, 1, 3
     .dexName "TENTACRUEL"
@@ -735,6 +803,7 @@ dexEntry67::
     .dexText "waves around it."
     .dexText ""
 
+    .align 2, 0
 dexEntry68::
     .2byte 0, 6, 8, 0xA, 1, 0, 8, 0xA, 0xA, 2, 4, 3
     .dexName "SABLEYE"
@@ -746,6 +815,7 @@ dexEntry68::
     .dexText "body surface."
     .dexText ""
 
+    .align 2, 0
 dexEntry69::
     .2byte 0, 6, 9, 0xA, 2, 0, 0, 0xA, 0xA, 2, 5, 4
     .dexName "MAWILE"
@@ -757,6 +827,7 @@ dexEntry69::
     .dexText "When the foe least expects it, MAWILE"
     .dexText "chomps it with its gaping jaws."
 
+    .align 2, 0
 dexEntry70::
     .2byte 0, 7, 0, 0xA, 1, 0, 4, 0xA, 1, 3, 2, 3
     .dexName "ARON"
@@ -768,6 +839,7 @@ dexEntry70::
     .dexText "a handy meal for the POKéMON."
     .dexText ""
 
+    .align 2, 0
 dexEntry71::
     .2byte 0, 7, 1, 0xA, 2, 1, 1, 0xA, 2, 6, 4, 6
     .dexName "LAIRON"
@@ -779,6 +851,7 @@ dexEntry71::
     .dexText "with humans mining the iron ore."
     .dexText ""
 
+    .align 2, 0
 dexEntry72::
     .2byte 0, 7, 2, 0xA, 6, 1, 1, 0xA, 7, 9, 3, 7
     .dexName "AGGRON"
@@ -790,6 +863,7 @@ dexEntry72::
     .dexText "plant trees, and beautifully restore its"
     .dexText "own territory."
 
+    .align 2, 0
 dexEntry73::
     .2byte 0, 7, 3, 0xA, 2, 0, 7, 0xA, 0xA, 4, 3, 0
     .dexName "MACHOP"
@@ -801,6 +875,7 @@ dexEntry73::
     .dexText "hurl a hundred adult humans."
     .dexText ""
 
+    .align 2, 0
 dexEntry74::
     .2byte 0, 7, 4, 0xA, 4, 1, 1, 0xA, 1, 5, 5, 4
     .dexName "MACHOKE"
@@ -812,6 +887,7 @@ dexEntry74::
     .dexText "on just one finger."
     .dexText ""
 
+    .align 2, 0
 dexEntry75::
     .2byte 0, 7, 5, 0xA, 5, 0, 3, 0xA, 2, 8, 6, 6
     .dexName "MACHAMP"
@@ -823,6 +899,7 @@ dexEntry75::
     .dexText "This POKéMON tends to leap into action"
     .dexText "before it thinks."
 
+    .align 2, 0
 dexEntry76::
     .2byte 0, 7, 6, 0xA, 2, 0, 0, 0xA, 0xA, 2, 4, 7
     .dexName "MEDITITE"
@@ -834,6 +911,7 @@ dexEntry76::
     .dexText "this POKéMON`s training."
     .dexText ""
 
+    .align 2, 0
 dexEntry77::
     .2byte 0, 7, 7, 0xA, 4, 0, 3, 0xA, 0xA, 6, 9, 4
     .dexName "MEDICHAM"
@@ -845,6 +923,7 @@ dexEntry77::
     .dexText "known to meditate for a whole month"
     .dexText "without eating."
 
+    .align 2, 0
 dexEntry78::
     .2byte 0, 7, 8, 0xA, 2, 0, 0, 0xA, 0xA, 3, 3, 5
     .dexName "ELECTRIKE"
@@ -856,6 +935,7 @@ dexEntry78::
     .dexText "explosive acceleration performance."
     .dexText ""
 
+    .align 2, 0
 dexEntry79::
     .2byte 0, 7, 9, 0xA, 4, 1, 1, 0xA, 0xA, 8, 8, 6
     .dexName "MANECTRIC"
@@ -867,6 +947,7 @@ dexEntry79::
     .dexText "creates thunderclouds."
     .dexText ""
 
+    .align 2, 0
 dexEntry80::
     .2byte 0, 8, 0, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 9, 3
     .dexName "PLUSLE"
@@ -878,6 +959,7 @@ dexEntry80::
     .dexText "the crackling noises of sparks to show"
     .dexText "its joy."
 
+    .align 2, 0
 dexEntry81::
     .2byte 0, 8, 1, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 9, 3
     .dexName "MINUN"
@@ -889,6 +971,7 @@ dexEntry81::
     .dexText "sparks to cheer on its teammates."
     .dexText ""
 
+    .align 2, 0
 dexEntry82::
     .2byte 0, 8, 2, 0xA, 1, 0, 0, 0xA, 0xA, 1, 3, 2
     .dexName "MAGNEMITE"
@@ -900,6 +983,7 @@ dexEntry82::
     .dexText "flight if its internal electrical supply"
     .dexText "is depleted."
 
+    .align 2, 0
 dexEntry83::
     .2byte 0, 8, 3, 0xA, 3, 0, 3, 0xA, 1, 3, 2, 3
     .dexName "MAGNETON"
@@ -911,6 +995,7 @@ dexEntry83::
     .dexText "people to keep this POKéMON inside"
     .dexText "a POKé BALL."
 
+    .align 2, 0
 dexEntry84::
     .2byte 0, 8, 4, 0xA, 1, 0, 8, 0xA, 0xA, 2, 2, 9
     .dexName "VOLTORB"
@@ -922,6 +1007,7 @@ dexEntry84::
     .dexText "similar to a POKé BALL remains a"
     .dexText "mystery."
 
+    .align 2, 0
 dexEntry85::
     .2byte 0, 8, 5, 0xA, 3, 1, 1, 0xA, 1, 4, 6, 8
     .dexName "ELECTRODE"
@@ -933,6 +1019,7 @@ dexEntry85::
     .dexText "eating too much electricity."
     .dexText ""
 
+    .align 2, 0
 dexEntry86::
     .2byte 0, 8, 6, 0xA, 2, 0, 4, 0xA, 0xA, 3, 9, 0
     .dexName "VOLBEAT"
@@ -944,6 +1031,7 @@ dexEntry86::
     .dexText "given off by ILLUMISE."
     .dexText ""
 
+    .align 2, 0
 dexEntry87::
     .2byte 0, 8, 7, 0xA, 2, 0, 0, 0xA, 0xA, 3, 9, 0
     .dexName "ILLUMISE"
@@ -955,6 +1043,7 @@ dexEntry87::
     .dexText "geometric designs on the canvas of"
     .dexText "the night sky."
 
+    .align 2, 0
 dexEntry88::
     .2byte 0, 8, 8, 0xA, 1, 0, 8, 0xA, 0xA, 1, 1, 9
     .dexName "ODDISH"
@@ -966,6 +1055,7 @@ dexEntry88::
     .dexText "change shape and become similar to"
     .dexText "the roots of trees."
 
+    .align 2, 0
 dexEntry89::
     .2byte 0, 8, 9, 0xA, 2, 0, 7, 0xA, 0xA, 1, 9, 0
     .dexName "GLOOM"
@@ -977,6 +1067,7 @@ dexEntry89::
     .dexText "drools even more of its honey."
     .dexText ""
 
+    .align 2, 0
 dexEntry90::
     .2byte 0, 9, 0, 0xA, 3, 1, 1, 0xA, 0xA, 4, 1, 0
     .dexName "VILEPLUME"
@@ -988,6 +1079,7 @@ dexEntry90::
     .dexText "POKéMON catches and devours them."
     .dexText ""
 
+    .align 2, 0
 dexEntry91::
     .2byte 0, 9, 1, 0xA, 1, 0, 4, 0xA, 0xA, 1, 2, 8
     .dexName "BELLOSSOM"
@@ -999,6 +1091,7 @@ dexEntry91::
     .dexText "petals and goes to sleep."
     .dexText ""
 
+    .align 2, 0
 dexEntry92::
     .2byte 0, 9, 2, 0xA, 4, 0, 7, 0xA, 0xA, 8, 6, 4
     .dexName "DODUO"
@@ -1010,6 +1103,7 @@ dexEntry92::
     .dexText "enemies while the other one sleeps."
     .dexText ""
 
+    .align 2, 0
 dexEntry93::
     .2byte 0, 9, 3, 0xA, 5, 1, 1, 0xA, 1, 8, 7, 8
     .dexName "DODRIO"
@@ -1021,6 +1115,7 @@ dexEntry93::
     .dexText "wary - it may decide to peck you."
     .dexText ""
 
+    .align 2, 0
 dexEntry94::
     .2byte 0, 9, 4, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 4, 4
     .dexName "ROSELIA"
@@ -1032,6 +1127,7 @@ dexEntry94::
     .dexText "contain a vicious poison."
     .dexText ""
 
+    .align 2, 0
 dexEntry95::
     .2byte 0, 9, 5, 0xA, 1, 0, 4, 0xA, 0xA, 2, 2, 7
     .dexName "GULPIN"
@@ -1043,6 +1139,7 @@ dexEntry95::
     .dexText "special enzymes that dissolve anything."
     .dexText ""
 
+    .align 2, 0
 dexEntry96::
     .2byte 0, 9, 6, 0xA, 5, 0, 7, 0xA, 1, 7, 6, 4
     .dexName "SWALOT"
@@ -1054,6 +1151,7 @@ dexEntry96::
     .dexText "inside this POKéMON`s mouth."
     .dexText ""
 
+    .align 2, 0
 dexEntry97::
     .2byte 0, 9, 7, 0xA, 2, 0, 7, 0xA, 0xA, 4, 5, 9
     .dexName "CARVANHA"
@@ -1065,6 +1163,7 @@ dexEntry97::
     .dexText "sunk by this POKéMON."
     .dexText ""
 
+    .align 2, 0
 dexEntry98::
     .2byte 0, 9, 8, 0xA, 5, 1, 1, 0xA, 1, 9, 5, 8
     .dexName "SHARPEDO"
@@ -1076,6 +1175,7 @@ dexEntry98::
     .dexText "Just one of these POKéMON can"
     .dexText "thoroughly tear apart a supertanker."
 
+    .align 2, 0
 dexEntry99::
     .2byte 0, 9, 9, 0xA, 6, 0, 7, 0xA, 2, 8, 6, 6
     .dexName "WAILMER"
@@ -1087,6 +1187,7 @@ dexEntry99::
     .dexText "out of its nostrils."
     .dexText ""
 
+    .align 2, 0
 dexEntry100::
     .2byte 1, 0, 0, 4, 7, 0, 7, 0xA, 8, 7, 7, 4
     .dexName "WAILORD"
@@ -1098,6 +1199,7 @@ dexEntry100::
     .dexText "amounts of food at once with its"
     .dexText "enormous mouth."
 
+    .align 2, 0
 dexEntry101::
     .2byte 1, 0, 1, 0xA, 2, 0, 4, 0xA, 0xA, 5, 2, 9
     .dexName "NUMEL"
@@ -1109,6 +1211,7 @@ dexEntry101::
     .dexText "cauldron of boiling magma."
     .dexText ""
 
+    .align 2, 0
 dexEntry102::
     .2byte 1, 0, 2, 0xA, 6, 0, 3, 0xA, 4, 8, 5, 0
     .dexName "CAMERUPT"
@@ -1120,6 +1223,7 @@ dexEntry102::
     .dexText "POKéMON`s back erupt, spewing the"
     .dexText "superheated magma."
 
+    .align 2, 0
 dexEntry103::
     .2byte 1, 0, 3, 0xA, 2, 0, 4, 0xA, 0xA, 7, 7, 2
     .dexName "SLUGMA"
@@ -1131,6 +1235,7 @@ dexEntry103::
     .dexText "brittle and chunks fall off, reducing"
     .dexText "its size."
 
+    .align 2, 0
 dexEntry104::
     .2byte 1, 0, 4, 0xA, 2, 0, 7, 0xA, 1, 2, 1, 3
     .dexName "MAGCARGO"
@@ -1142,6 +1247,7 @@ dexEntry104::
     .dexText "apart. This POKéMON returns to its"
     .dexText "original size by dipping itself in magma."
 
+    .align 2, 0
 dexEntry105::
     .2byte 1, 0, 5, 0xA, 1, 0, 8, 0xA, 1, 7, 7, 2
     .dexName "TORKOAL"
@@ -1153,6 +1259,7 @@ dexEntry105::
     .dexText "If it is attacked, this POKéMON spouts"
     .dexText "thick black smoke to beat a retreat."
 
+    .align 2, 0
 dexEntry106::
     .2byte 1, 0, 6, 0xA, 2, 1, 1, 0xA, 0xA, 6, 6, 1
     .dexName "GRIMER"
@@ -1164,6 +1271,7 @@ dexEntry106::
     .dexText "infested fluid from all over its body."
     .dexText ""
 
+    .align 2, 0
 dexEntry107::
     .2byte 1, 0, 7, 0xA, 3, 1, 1, 0xA, 0xA, 6, 6, 1
     .dexName "MUK"
@@ -1175,6 +1283,7 @@ dexEntry107::
     .dexText "streets, MUK are certain to gather."
     .dexText ""
 
+    .align 2, 0
 dexEntry108::
     .2byte 1, 0, 8, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 2, 2
     .dexName "KOFFING"
@@ -1186,6 +1295,7 @@ dexEntry108::
     .dexText "round body, then explode."
     .dexText ""
 
+    .align 2, 0
 dexEntry109::
     .2byte 1, 0, 9, 0xA, 3, 1, 1, 0xA, 0xA, 2, 0, 9
     .dexName "WEEZING"
@@ -1197,6 +1307,7 @@ dexEntry109::
     .dexText "people in the house are asleep, it will"
     .dexText "go through the trash."
 
+    .align 2, 0
 dexEntry110::
     .2byte 1, 1, 0, 0xA, 2, 0, 4, 0xA, 0xA, 6, 7, 5
     .dexName "SPOINK"
@@ -1208,6 +1319,7 @@ dexEntry110::
     .dexText "stops, its heart will stop."
     .dexText ""
 
+    .align 2, 0
 dexEntry111::
     .2byte 1, 1, 1, 0xA, 2, 1, 1, 0xA, 1, 5, 7, 6
     .dexName "GRUMPIG"
@@ -1219,6 +1331,7 @@ dexEntry111::
     .dexText "power, its snorting breath grows"
     .dexText "labored."
 
+    .align 2, 0
 dexEntry112::
     .2byte 1, 1, 2, 0xA, 2, 0, 0, 0xA, 0xA, 2, 6, 5
     .dexName "SANDSHREW"
@@ -1230,6 +1343,7 @@ dexEntry112::
     .dexText "sand to sleep."
     .dexText ""
 
+    .align 2, 0
 dexEntry113::
     .2byte 1, 1, 3, 0xA, 3, 0, 3, 0xA, 0xA, 6, 5, 0
     .dexName "SANDSLASH"
@@ -1241,6 +1355,7 @@ dexEntry113::
     .dexText "spines. It then leaps at the stunned"
     .dexText "foe to tear wildly with its sharp claws."
 
+    .align 2, 0
 dexEntry114::
     .2byte 1, 1, 4, 0xA, 3, 0, 7, 0xA, 0xA, 1, 1, 0
     .dexName "SPINDA"
@@ -1252,6 +1367,7 @@ dexEntry114::
     .dexText "POKéMON give it the appearance of"
     .dexText "dancing."
 
+    .align 2, 0
 dexEntry115::
     .2byte 1, 1, 5, 0xA, 5, 0, 7, 0xA, 1, 1, 1, 3
     .dexName "SKARMORY"
@@ -1263,6 +1379,7 @@ dexEntry115::
     .dexText "possess swordlike cutting edges."
     .dexText ""
 
+    .align 2, 0
 dexEntry116::
     .2byte 1, 1, 6, 0xA, 2, 0, 4, 0xA, 0xA, 3, 3, 1
     .dexName "TRAPINCH"
@@ -1274,6 +1391,7 @@ dexEntry116::
     .dexText "without access to any water."
     .dexText ""
 
+    .align 2, 0
 dexEntry117::
     .2byte 1, 1, 7, 0xA, 3, 0, 7, 0xA, 0xA, 3, 3, 7
     .dexName "VIBRAVA"
@@ -1285,6 +1403,7 @@ dexEntry117::
     .dexText "ultrasonic waves by vibrating."
     .dexText ""
 
+    .align 2, 0
 dexEntry118::
     .2byte 1, 1, 8, 0xA, 6, 0, 7, 0xA, 1, 8, 0, 8
     .dexName "FLYGON"
@@ -1296,6 +1415,7 @@ dexEntry118::
     .dexText "that can be heard in a sandstorm, this"
     .dexText "POKéMON is said to be the desert spirit."
 
+    .align 2, 0
 dexEntry119::
     .2byte 1, 1, 9, 0xA, 1, 0, 4, 0xA, 1, 1, 3, 1
     .dexName "CACNEA"
@@ -1307,6 +1427,7 @@ dexEntry119::
     .dexText "its thorny arms."
     .dexText ""
 
+    .align 2, 0
 dexEntry120::
     .2byte 1, 2, 0, 0xA, 4, 0, 3, 0xA, 1, 7, 0, 6
     .dexName "CACTURNE"
@@ -1318,6 +1439,7 @@ dexEntry120::
     .dexText "waiting for the traveler to tire and"
     .dexText "become incapable of moving."
 
+    .align 2, 0
 dexEntry121::
     .2byte 1, 2, 1, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 2, 6
     .dexName "SWABLU"
@@ -1329,6 +1451,7 @@ dexEntry121::
     .dexText "finds a stream and showers itself."
     .dexText ""
 
+    .align 2, 0
 dexEntry122::
     .2byte 1, 2, 2, 0xA, 3, 0, 7, 0xA, 0xA, 4, 5, 4
     .dexName "ALTARIA"
@@ -1340,6 +1463,7 @@ dexEntry122::
     .dexText "the wild blue yonder."
     .dexText ""
 
+    .align 2, 0
 dexEntry123::
     .2byte 1, 2, 3, 0xA, 4, 0, 3, 0xA, 0xA, 8, 8, 8
     .dexName "ZANGOOSE"
@@ -1351,6 +1475,7 @@ dexEntry123::
     .dexText "with incredible agility."
     .dexText ""
 
+    .align 2, 0
 dexEntry124::
     .2byte 1, 2, 4, 0xA, 8, 1, 0, 0xA, 1, 1, 5, 7
     .dexName "SEVIPER"
@@ -1362,6 +1487,7 @@ dexEntry124::
     .dexText "running blood feud with ZANGOOSE."
     .dexText ""
 
+    .align 2, 0
 dexEntry125::
     .2byte 1, 2, 5, 0xA, 3, 0, 3, 0xA, 3, 7, 0, 4
     .dexName "LUNATONE"
@@ -1373,6 +1499,7 @@ dexEntry125::
     .dexText "cause all those who see it to become"
     .dexText "transfixed with fear."
 
+    .align 2, 0
 dexEntry126::
     .2byte 1, 2, 6, 0xA, 3, 1, 1, 0xA, 3, 3, 9, 5
     .dexName "SOLROCK"
@@ -1384,6 +1511,7 @@ dexEntry126::
     .dexText "intensely bright light."
     .dexText ""
 
+    .align 2, 0
 dexEntry127::
     .2byte 1, 2, 7, 0xA, 1, 0, 4, 0xA, 0xA, 0xA, 4, 2
     .dexName "BARBOACH"
@@ -1395,6 +1523,7 @@ dexEntry127::
     .dexText "This POKéMON grows weak if the slimy"
     .dexText "coating dries up."
 
+    .align 2, 0
 dexEntry128::
     .2byte 1, 2, 8, 0xA, 2, 1, 1, 0xA, 0xA, 5, 2, 0
     .dexName "WHISCASH"
@@ -1406,6 +1535,7 @@ dexEntry128::
     .dexText "real earthquakes."
     .dexText ""
 
+    .align 2, 0
 dexEntry129::
     .2byte 1, 2, 9, 0xA, 2, 0, 0, 0xA, 0xA, 2, 5, 4
     .dexName "CORPHISH"
@@ -1417,6 +1547,7 @@ dexEntry129::
     .dexText "filthy water."
     .dexText ""
 
+    .align 2, 0
 dexEntry130::
     .2byte 1, 3, 0, 0xA, 3, 0, 7, 0xA, 0xA, 7, 2, 3
     .dexName "CRAWDAUNT"
@@ -1428,6 +1559,7 @@ dexEntry130::
     .dexText "hides in its streambed burrow to avoid"
     .dexText "attack from its foes."
 
+    .align 2, 0
 dexEntry131::
     .2byte 1, 3, 1, 0xA, 1, 0, 8, 0xA, 0xA, 4, 7, 4
     .dexName "BALTOY"
@@ -1439,6 +1571,7 @@ dexEntry131::
     .dexText "balancing itself on its one foot."
     .dexText ""
 
+    .align 2, 0
 dexEntry132::
     .2byte 1, 3, 2, 0xA, 4, 1, 1, 0xA, 2, 3, 8, 1
     .dexName "CLAYDOL"
@@ -1450,6 +1583,7 @@ dexEntry132::
     .dexText "its hands."
     .dexText ""
 
+    .align 2, 0
 dexEntry133::
     .2byte 1, 3, 3, 0xA, 3, 0, 3, 0xA, 0xA, 5, 2, 5
     .dexName "LILEEP"
@@ -1461,6 +1595,7 @@ dexEntry133::
     .dexText "approaching prey using tentacles"
     .dexText "shaped like flower petals."
 
+    .align 2, 0
 dexEntry134::
     .2byte 1, 3, 4, 0xA, 4, 1, 1, 0xA, 1, 3, 3, 2
     .dexName "CRADILY"
@@ -1472,6 +1607,7 @@ dexEntry134::
     .dexText "tentacles."
     .dexText ""
 
+    .align 2, 0
 dexEntry135::
     .2byte 1, 3, 5, 0xA, 2, 0, 4, 0xA, 0xA, 2, 7, 6
     .dexName "ANORITH"
@@ -1483,6 +1619,7 @@ dexEntry135::
     .dexText "by undulating these eight wings."
     .dexText ""
 
+    .align 2, 0
 dexEntry136::
     .2byte 1, 3, 6, 0xA, 4, 1, 1, 0xA, 1, 5, 0, 4
     .dexName "ARMALDO"
@@ -1494,6 +1631,7 @@ dexEntry136::
     .dexText "more convenient for life on land."
     .dexText ""
 
+    .align 2, 0
 dexEntry137::
     .2byte 1, 3, 7, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 2, 2
     .dexName "IGGLYBUFF"
@@ -1505,6 +1643,7 @@ dexEntry137::
     .dexText "emotions of its foes."
     .dexText ""
 
+    .align 2, 0
 dexEntry138::
     .2byte 1, 3, 8, 0xA, 1, 0, 8, 0xA, 0xA, 1, 2, 1
     .dexName "JIGGLYPUFF"
@@ -1516,6 +1655,7 @@ dexEntry138::
     .dexText "breathe, endangering its life."
     .dexText ""
 
+    .align 2, 0
 dexEntry139::
     .2byte 1, 3, 9, 0xA, 3, 0, 3, 0xA, 0xA, 2, 6, 5
     .dexName "WIGGLYTUFF"
@@ -1527,6 +1667,7 @@ dexEntry139::
     .dexText "along lightly like a balloon."
     .dexText ""
 
+    .align 2, 0
 dexEntry140::
     .2byte 1, 4, 0, 0xA, 2, 0, 0, 0xA, 0xA, 1, 6, 3
     .dexName "FEEBAS"
@@ -1538,6 +1679,7 @@ dexEntry140::
     .dexText "dimwitted, making it an easy catch."
     .dexText ""
 
+    .align 2, 0
 dexEntry141::
     .2byte 1, 4, 1, 2, 0, 0, 4, 0xA, 3, 5, 7, 1
     .dexName "MILOTIC"
@@ -1549,6 +1691,7 @@ dexEntry141::
     .dexText "restless spirits."
     .dexText ""
 
+    .align 2, 0
 dexEntry142::
     .2byte 1, 4, 2, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 1, 8
     .dexName "CASTFORM"
@@ -1560,6 +1703,7 @@ dexEntry142::
     .dexText "weather."
     .dexText ""
 
+    .align 2, 0
 dexEntry143::
     .2byte 1, 4, 3, 0xA, 2, 0, 7, 0xA, 0xA, 7, 6, 1
     .dexName "STARYU"
@@ -1571,6 +1715,7 @@ dexEntry143::
     .dexText "these POKéMON look like the stars"
     .dexText "in the sky."
 
+    .align 2, 0
 dexEntry144::
     .2byte 1, 4, 4, 0xA, 3, 0, 7, 0xA, 1, 7, 6, 4
     .dexName "STARMIE"
@@ -1582,6 +1727,7 @@ dexEntry144::
     .dexText "“the gem of the sea.”"
     .dexText ""
 
+    .align 2, 0
 dexEntry145::
     .2byte 1, 4, 5, 0xA, 3, 0, 3, 0xA, 0xA, 4, 8, 5
     .dexName "KECLEON"
@@ -1593,6 +1739,7 @@ dexEntry145::
     .dexText "stretchy tongue to instantly ensnare"
     .dexText "the unsuspecting target."
 
+    .align 2, 0
 dexEntry146::
     .2byte 1, 4, 6, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 5, 1
     .dexName "SHUPPET"
@@ -1604,6 +1751,7 @@ dexEntry146::
     .dexText "in a swarm and line up beneath the eaves"
     .dexText "of that person`s home."
 
+    .align 2, 0
 dexEntry147::
     .2byte 1, 4, 7, 0xA, 3, 0, 7, 0xA, 0xA, 2, 7, 6
     .dexName "BANETTE"
@@ -1615,6 +1763,7 @@ dexEntry147::
     .dexText "plush doll that was thrown away."
     .dexText ""
 
+    .align 2, 0
 dexEntry148::
     .2byte 1, 4, 8, 0xA, 2, 0, 7, 0xA, 0xA, 3, 3, 1
     .dexName "DUSKULL"
@@ -1626,6 +1775,7 @@ dexEntry148::
     .dexText "away bad children who earn scoldings"
     .dexText "from their mothers."
 
+    .align 2, 0
 dexEntry149::
     .2byte 1, 4, 9, 0xA, 5, 0, 3, 0xA, 0xA, 6, 7, 5
     .dexName "DUSCLOPS"
@@ -1637,6 +1787,7 @@ dexEntry149::
     .dexText "single eye to bear. The hypnotized foe"
     .dexText "is made to do DUSCLOPS`s bidding."
 
+    .align 2, 0
 dexEntry150::
     .2byte 1, 5, 0, 0xA, 6, 0, 7, 0xA, 2, 2, 0, 5
     .dexName "TROPIUS"
@@ -1648,6 +1799,7 @@ dexEntry150::
     .dexText "leaves on its back as if they were"
     .dexText "wings."
 
+    .align 2, 0
 dexEntry151::
     .2byte 1, 5, 1, 0xA, 2, 0, 0, 0xA, 0xA, 0xA, 2, 2
     .dexName "CHIMECHO"
@@ -1659,6 +1811,7 @@ dexEntry151::
     .dexText "This POKéMON plucks berries with its"
     .dexText "long tail and eats them."
 
+    .align 2, 0
 dexEntry152::
     .2byte 1, 5, 2, 0xA, 3, 1, 1, 0xA, 1, 0, 3, 6
     .dexName "ABSOL"
@@ -1670,6 +1823,7 @@ dexEntry152::
     .dexText "ventures down from the mountains."
     .dexText ""
 
+    .align 2, 0
 dexEntry153::
     .2byte 1, 5, 3, 0xA, 2, 0, 0, 0xA, 0xA, 2, 1, 8
     .dexName "VULPIX"
@@ -1681,6 +1835,7 @@ dexEntry153::
     .dexText "The six tails become magnificently"
     .dexText "curled."
 
+    .align 2, 0
 dexEntry154::
     .2byte 1, 5, 4, 0xA, 3, 0, 7, 0xA, 0xA, 4, 3, 9
     .dexName "NINETALES"
@@ -1692,6 +1847,7 @@ dexEntry154::
     .dexText "thousand years."
     .dexText ""
 
+    .align 2, 0
 dexEntry155::
     .2byte 1, 5, 5, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 4, 4
     .dexName "PICHU"
@@ -1703,6 +1859,7 @@ dexEntry155::
     .dexText "electricity coming off this POKéMON."
     .dexText ""
 
+    .align 2, 0
 dexEntry156::
     .2byte 1, 5, 6, 0xA, 1, 0, 4, 0xA, 0xA, 1, 3, 2
     .dexName "PIKACHU"
@@ -1714,6 +1871,7 @@ dexEntry156::
     .dexText "it`s evidence that this POKéMON"
     .dexText "mistook the intensity of its charge."
 
+    .align 2, 0
 dexEntry157::
     .2byte 1, 5, 7, 0xA, 2, 0, 7, 0xA, 0xA, 6, 6, 1
     .dexName "RAICHU"
@@ -1725,6 +1883,7 @@ dexEntry157::
     .dexText "found near this POKéMON`s nest."
     .dexText ""
 
+    .align 2, 0
 dexEntry158::
     .2byte 1, 5, 8, 0xA, 2, 0, 7, 0xA, 0xA, 4, 3, 2
     .dexName "PSYDUCK"
@@ -1736,6 +1895,7 @@ dexEntry158::
     .dexText "This discovery spurred controversy"
     .dexText "among scholars."
 
+    .align 2, 0
 dexEntry159::
     .2byte 1, 5, 9, 0xA, 5, 0, 7, 0xA, 1, 6, 8, 9
     .dexName "GOLDUCK"
@@ -1747,6 +1907,7 @@ dexEntry159::
     .dexText "than even the most athletic swimmer."
     .dexText ""
 
+    .align 2, 0
 dexEntry160::
     .2byte 1, 6, 0, 0xA, 2, 0, 0, 0xA, 0xA, 3, 0, 9
     .dexName "WYNAUT"
@@ -1758,6 +1919,7 @@ dexEntry160::
     .dexText "slapping the ground with its tail."
     .dexText ""
 
+    .align 2, 0
 dexEntry161::
     .2byte 1, 6, 1, 0xA, 4, 0, 3, 0xA, 0xA, 6, 2, 8
     .dexName "WOBBUFFET"
@@ -1769,6 +1931,7 @@ dexEntry161::
     .dexText "can endure the longest without food."
     .dexText "TRAINERS need to beware of this habit."
 
+    .align 2, 0
 dexEntry162::
     .2byte 1, 6, 2, 0xA, 0, 0, 8, 0xA, 0xA, 0xA, 4, 4
     .dexName "NATU"
@@ -1780,6 +1943,7 @@ dexEntry162::
     .dexText "even slightly, it will hop away to safety."
     .dexText ""
 
+    .align 2, 0
 dexEntry163::
     .2byte 1, 6, 3, 0xA, 4, 1, 1, 0xA, 0xA, 3, 3, 1
     .dexName "XATU"
@@ -1791,6 +1955,7 @@ dexEntry163::
     .dexText "the future."
     .dexText ""
 
+    .align 2, 0
 dexEntry164::
     .2byte 1, 6, 4, 0xA, 4, 1, 1, 0xA, 0xA, 9, 1, 5
     .dexName "GIRAFARIG"
@@ -1802,6 +1967,7 @@ dexEntry164::
     .dexText "can cause the rear head to suddenly"
     .dexText "lash out and bite."
 
+    .align 2, 0
 dexEntry165::
     .2byte 1, 6, 5, 0xA, 1, 0, 8, 0xA, 0xA, 7, 3, 9
     .dexName "PHANPY"
@@ -1813,6 +1979,7 @@ dexEntry165::
     .dexText "drying their soaking-wet bodies at the"
     .dexText "edge of water."
 
+    .align 2, 0
 dexEntry166::
     .2byte 1, 6, 6, 0xA, 3, 0, 7, 0xA, 2, 6, 4, 6
     .dexName "DONPHAN"
@@ -1824,6 +1991,7 @@ dexEntry166::
     .dexText "that block mountain trails."
     .dexText ""
 
+    .align 2, 0
 dexEntry167::
     .2byte 1, 6, 7, 0xA, 4, 1, 1, 0xA, 1, 2, 1, 3
     .dexName "PINSIR"
@@ -1835,6 +2003,7 @@ dexEntry167::
     .dexText "in cold places."
     .dexText ""
 
+    .align 2, 0
 dexEntry168::
     .2byte 1, 6, 8, 0xA, 4, 1, 1, 0xA, 1, 1, 9, 0
     .dexName "HERACROSS"
@@ -1846,6 +2015,7 @@ dexEntry168::
     .dexText "This POKéMON even has enough power"
     .dexText "to topple a massive tree."
 
+    .align 2, 0
 dexEntry169::
     .2byte 1, 6, 9, 0xA, 3, 0, 3, 0xA, 2, 5, 3, 5
     .dexName "RHYHORN"
@@ -1857,6 +2027,7 @@ dexEntry169::
     .dexText "This POKéMON may feel some pain from"
     .dexText "the collision the next day, however."
 
+    .align 2, 0
 dexEntry170::
     .2byte 1, 7, 0, 0xA, 6, 0, 3, 0xA, 2, 6, 4, 6
     .dexName "RHYDON"
@@ -1868,6 +2039,7 @@ dexEntry170::
     .dexText "Even direct cannon hits don`t leave"
     .dexText "a scratch."
 
+    .align 2, 0
 dexEntry171::
     .2byte 1, 7, 1, 0xA, 2, 0, 4, 0xA, 0xA, 3, 7, 0
     .dexName "SNORUNT"
@@ -1879,6 +2051,7 @@ dexEntry171::
     .dexText "stalactites and stalagmites deep in"
     .dexText "caverns."
 
+    .align 2, 0
 dexEntry172::
     .2byte 1, 7, 2, 0xA, 4, 1, 1, 0xA, 5, 6, 5, 5
     .dexName "GLALIE"
@@ -1890,6 +2063,7 @@ dexEntry172::
     .dexText "shape it desires."
     .dexText ""
 
+    .align 2, 0
 dexEntry173::
     .2byte 1, 7, 3, 0xA, 2, 0, 7, 0xA, 0xA, 8, 7, 1
     .dexName "SPHEAL"
@@ -1901,6 +2075,7 @@ dexEntry173::
     .dexText "this, their mealtimes are noisy."
     .dexText ""
 
+    .align 2, 0
 dexEntry174::
     .2byte 1, 7, 4, 0xA, 3, 0, 7, 0xA, 1, 9, 3, 1
     .dexName "SEALEO"
@@ -1912,6 +2087,7 @@ dexEntry174::
     .dexText "itself by balancing and rolling a SPHEAL"
     .dexText "on its nose."
 
+    .align 2, 0
 dexEntry175::
     .2byte 1, 7, 5, 0xA, 4, 0, 7, 0xA, 3, 3, 2, 0
     .dexName "WALREIN"
@@ -1923,6 +2099,7 @@ dexEntry175::
     .dexText "insulates it from subzero temperatures."
     .dexText ""
 
+    .align 2, 0
 dexEntry176::
     .2byte 1, 7, 6, 0xA, 1, 0, 4, 0xA, 1, 1, 5, 7
     .dexName "CLAMPERL"
@@ -1934,6 +2111,7 @@ dexEntry176::
     .dexText "POKéMON is getting close to evolution."
     .dexText ""
 
+    .align 2, 0
 dexEntry177::
     .2byte 1, 7, 7, 0xA, 5, 0, 7, 0xA, 0xA, 5, 9, 5
     .dexName "HUNTAIL"
@@ -1945,6 +2123,7 @@ dexEntry177::
     .dexText "This POKéMON swims by wiggling its"
     .dexText "slender body like a snake."
 
+    .align 2, 0
 dexEntry178::
     .2byte 1, 7, 8, 0xA, 5, 1, 1, 0xA, 0xA, 4, 9, 8
     .dexName "GOREBYSS"
@@ -1956,6 +2135,7 @@ dexEntry178::
     .dexText "prey`s body and drains the prey of its"
     .dexText "body fluids."
 
+    .align 2, 0
 dexEntry179::
     .2byte 1, 7, 9, 0xA, 3, 0, 3, 0xA, 0xA, 5, 1, 6
     .dexName "RELICANTH"
@@ -1967,6 +2147,7 @@ dexEntry179::
     .dexText "microscopic organisms with its"
     .dexText "toothless mouth."
 
+    .align 2, 0
 dexEntry180::
     .2byte 1, 8, 0, 0xA, 2, 0, 0, 0xA, 0xA, 1, 1, 0
     .dexName "CORSOLA"
@@ -1978,6 +2159,7 @@ dexEntry180::
     .dexText "POKéMON migrates to the southern seas."
     .dexText ""
 
+    .align 2, 0
 dexEntry181::
     .2byte 1, 8, 1, 0xA, 1, 0, 8, 0xA, 0xA, 2, 6, 5
     .dexName "CHINCHOU"
@@ -1989,6 +2171,7 @@ dexEntry181::
     .dexText "tingle slightly."
     .dexText ""
 
+    .align 2, 0
 dexEntry182::
     .2byte 1, 8, 2, 0xA, 3, 1, 1, 0xA, 0xA, 4, 9, 6
     .dexName "LANTURN"
@@ -2000,6 +2183,7 @@ dexEntry182::
     .dexText "depths where it swims. It gives the sea"
     .dexText "an appearance of a starlit night."
 
+    .align 2, 0
 dexEntry183::
     .2byte 1, 8, 3, 0xA, 2, 0, 0, 0xA, 0xA, 1, 9, 2
     .dexName "LUVDISC"
@@ -2011,6 +2195,7 @@ dexEntry183::
     .dexText "ocean`s waves."
     .dexText ""
 
+    .align 2, 0
 dexEntry184::
     .2byte 1, 8, 4, 0xA, 1, 0, 4, 0xA, 0xA, 1, 7, 6
     .dexName "HORSEA"
@@ -2022,6 +2207,7 @@ dexEntry184::
     .dexText "the fins on its back."
     .dexText ""
 
+    .align 2, 0
 dexEntry185::
     .2byte 1, 8, 5, 0xA, 3, 1, 1, 0xA, 0xA, 5, 5, 1
     .dexName "SEADRA"
@@ -2033,6 +2219,7 @@ dexEntry185::
     .dexText "currents, then swallows it whole."
     .dexText ""
 
+    .align 2, 0
 dexEntry186::
     .2byte 1, 8, 6, 0xA, 5, 1, 1, 0xA, 3, 3, 5, 1
     .dexName "KINGDRA"
@@ -2044,6 +2231,7 @@ dexEntry186::
     .dexText "search of prey."
     .dexText ""
 
+    .align 2, 0
 dexEntry187::
     .2byte 1, 8, 7, 0xA, 2, 0, 0, 0xA, 0xA, 9, 2, 8
     .dexName "BAGON"
@@ -2055,6 +2243,7 @@ dexEntry187::
     .dexText "grown tough and as hard as tempered"
     .dexText "steel."
 
+    .align 2, 0
 dexEntry188::
     .2byte 1, 8, 8, 0xA, 3, 0, 7, 0xA, 2, 4, 3, 6
     .dexName "SHELGON"
@@ -2066,6 +2255,7 @@ dexEntry188::
     .dexText "making its movements sluggish."
     .dexText ""
 
+    .align 2, 0
 dexEntry189::
     .2byte 1, 8, 9, 0xA, 4, 1, 1, 0xA, 2, 2, 6, 2
     .dexName "SALAMENCE"
@@ -2077,6 +2267,7 @@ dexEntry189::
     .dexText "this POKéMON`s cells, causing it to"
     .dexText "sprout its magnificent wings."
 
+    .align 2, 0
 dexEntry190::
     .2byte 1, 9, 0, 0xA, 2, 0, 0, 0xA, 2, 0, 9, 9
     .dexName "BELDUM"
@@ -2088,6 +2279,7 @@ dexEntry190::
     .dexText "itself to a cliff using the hooks on"
     .dexText "its rear."
 
+    .align 2, 0
 dexEntry191::
     .2byte 1, 9, 1, 0xA, 3, 1, 1, 0xA, 4, 4, 6, 4
     .dexName "METANG"
@@ -2099,6 +2291,7 @@ dexEntry191::
     .dexText "for traveling at high speed."
     .dexText ""
 
+    .align 2, 0
 dexEntry192::
     .2byte 1, 9, 2, 0xA, 5, 0, 3, 1, 2, 1, 2, 5
     .dexName "METAGROSS"
@@ -2110,6 +2303,7 @@ dexEntry192::
     .dexText "the helpless victim using the large"
     .dexText "mouth on its stomach."
 
+    .align 2, 0
 dexEntry193::
     .2byte 1, 9, 3, 0xA, 5, 0, 7, 0xA, 5, 0, 7, 1
     .dexName "REGIROCK"
@@ -2121,6 +2315,7 @@ dexEntry193::
     .dexText "itself."
     .dexText ""
 
+    .align 2, 0
 dexEntry194::
     .2byte 1, 9, 4, 0xA, 5, 1, 1, 0xA, 3, 8, 5, 8
     .dexName "REGICE"
@@ -2132,6 +2327,7 @@ dexEntry194::
     .dexText "Its icy body is so cold, it will not melt"
     .dexText "even if it is immersed in magma."
 
+    .align 2, 0
 dexEntry195::
     .2byte 1, 9, 5, 0xA, 6, 0, 3, 0xA, 4, 5, 1, 9
     .dexName "REGISTEEL"
@@ -2143,6 +2339,7 @@ dexEntry195::
     .dexText "eats."
     .dexText ""
 
+    .align 2, 0
 dexEntry196::
     .2byte 1, 9, 6, 0xA, 4, 0, 7, 0xA, 0xA, 8, 8, 2
     .dexName "LATIAS"
@@ -2154,6 +2351,7 @@ dexEntry196::
     .dexText "down and refracts light to alter its"
     .dexText "appearance."
 
+    .align 2, 0
 dexEntry197::
     .2byte 1, 9, 7, 0xA, 6, 0, 7, 0xA, 1, 3, 2, 3
     .dexName "LATIOS"
@@ -2165,6 +2363,7 @@ dexEntry197::
     .dexText "understands human speech."
     .dexText ""
 
+    .align 2, 0
 dexEntry198::
     .2byte 1, 9, 8, 1, 4, 0, 9, 0xA, 7, 7, 6, 0
     .dexName "KYOGRE"
@@ -2176,6 +2375,7 @@ dexEntry198::
     .dexText "It took to sleep after a cataclysmic"
     .dexText "battle with GROUDON."
 
+    .align 2, 0
 dexEntry199::
     .2byte 1, 9, 9, 1, 1, 0, 6, 2, 0, 9, 4, 4
     .dexName "GROUDON"
@@ -2187,6 +2387,7 @@ dexEntry199::
     .dexText "cataclysmic battle with KYOGRE."
     .dexText ""
 
+    .align 2, 0
 dexEntry200::
     .2byte 2, 0, 0, 2, 3, 0, 0, 0xA, 4, 5, 5, 2
     .dexName "RAYQUAZA"
@@ -2198,6 +2399,7 @@ dexEntry200::
     .dexText "unknown because it lived so high in"
     .dexText "the sky."
 
+    .align 2, 0
 dexEntry201::
     .2byte 2, 0, 1, 0xA, 1, 0, 0, 0xA, 0xA, 0xA, 2, 4
     .dexName "JIRACHI"
@@ -2209,6 +2411,7 @@ dexEntry201::
     .dexText "fight without awakening."
     .dexText ""
 
+    .align 2, 0
 dexEntry202::
     .2byte 0xA, 0xA, 0xA, 0xA, 2, 1, 1, 0xA, 0xA, 1, 4, 1
     .dexName "CHIKORITA"
@@ -2220,6 +2423,7 @@ dexEntry202::
     .dexText ""
     .dexText ""
 
+    .align 2, 0
 dexEntry203::
     .2byte 0xA, 0xA, 0xA, 0xA, 1, 0, 8, 0xA, 0xA, 1, 7, 4
     .dexName "CYNDAQUIL"
@@ -2231,6 +2435,7 @@ dexEntry203::
     .dexText ""
     .dexText ""
 
+    .align 2, 0
 dexEntry204::
     .2byte 0xA, 0xA, 0xA, 0xA, 2, 0, 0, 0xA, 0xA, 2, 0, 9
     .dexName "TOTODILE"
@@ -2242,6 +2447,7 @@ dexEntry204::
     .dexText ""
     .dexText ""
 
+    .align 2, 0
 dexEntry205::
     .2byte 0xA, 0xA, 0xA, 0xA, 5, 1, 1, 0xA, 1, 3, 0, 1
     .dexName "AERODACTYL"
