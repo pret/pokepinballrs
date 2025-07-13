@@ -48,7 +48,7 @@ void PrintAsmHalfwords(unsigned short* s, int length)
 {
     if (length > 0)
     {
-        std::printf("\t.2bytu ");
+        std::printf("\t.2byte ");
         for (int i = 0; i < length; i++)
         {
             std::printf("0x%04X", s[i]);

@@ -378,36 +378,36 @@ int AsmFile::ReadBraille(unsigned char* s)
 int AsmFile::ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft = false)
 {
     // Sample dexEncoding map
-    static std::map<char, unsigned short> dexEncoding = 
+    static std::map<std::string, unsigned short> dexEncoding = 
     {
-        { ' ', 0x0000 },
-        { '-', 0x2826 }, { U'♀', 0x2846 }, { U'♂', 0x2866 },
-        { '0', 0x2886 }, { '1', 0x28A3 }, { '2', 0x28C6 }, { '3', 0x28E6 },
-        { '4', 0x2906 }, { '5', 0x2926 }, { '6', 0x2946 }, { '7', 0x2966 },
-        { '8', 0x2986 }, { '9', 0x29A6 }, { U'—', 0x29C6 },
+        { " ", 0x0000 },
+        { "-", 0x2826 }, { "♀", 0x2846 }, { "♂", 0x2866 },
+        { "0", 0x2886 }, { "1", 0x28A3 }, { "2", 0x28C6 }, { "3", 0x28E6 },
+        { "4", 0x2906 }, { "5", 0x2926 }, { "6", 0x2946 }, { "7", 0x2966 },
+        { "8", 0x2986 }, { "9", 0x29A6 }, { "—", 0x29C6 },
 
-        { 'A', 0x29E6 }, { 'B', 0x2A06 }, { 'C', 0x2A26 }, { 'D', 0x2A46 },
-        { 'E', 0x2A66 }, { 'F', 0x2A86 }, { 'G', 0x2AA6 }, { 'H', 0x2AC6 },
-        { 'I', 0x2AE2 }, { 'J', 0x2B06 }, { 'K', 0x2B26 }, { 'L', 0x2B46 },
-        { 'M', 0x2B66 }, { 'N', 0x2B86 }, { 'O', 0x2BA6 }, { 'P', 0x2BC6 },
-        { 'Q', 0x2BE6 }, { 'R', 0x3006 }, { 'S', 0x3026 }, { 'T', 0x3046 },
-        { 'U', 0x3066 }, { 'V', 0x3086 }, { 'W', 0x30A6 }, { 'X', 0x30C6 },
-        { 'Y', 0x30E6 }, { 'Z', 0x3106 },
+        { "A", 0x29E6 }, { "B", 0x2A06 }, { "C", 0x2A26 }, { "D", 0x2A46 },
+        { "E", 0x2A66 }, { "F", 0x2A86 }, { "G", 0x2AA6 }, { "H", 0x2AC6 },
+        { "I", 0x2AE2 }, { "J", 0x2B06 }, { "K", 0x2B26 }, { "L", 0x2B46 },
+        { "M", 0x2B66 }, { "N", 0x2B86 }, { "O", 0x2BA6 }, { "P", 0x2BC6 },
+        { "Q", 0x2BE6 }, { "R", 0x3006 }, { "S", 0x3026 }, { "T", 0x3046 },
+        { "U", 0x3066 }, { "V", 0x3086 }, { "W", 0x30A6 }, { "X", 0x30C6 },
+        { "Y", 0x30E6 }, { "Z", 0x3106 },
 
-        { 'a', 0x3126 }, { 'b', 0x3146 }, { 'c', 0x3166 }, { 'd', 0x3186 },
-        { 'e', 0x31A6 }, { 'f', 0x31C6 }, { 'g', 0x31E6 }, { 'h', 0x3206 },
-        { 'i', 0x3222 }, { 'j', 0x3246 }, { 'k', 0x3266 }, { 'l', 0x3283 },
-        { 'm', 0x32A6 }, { 'n', 0x32C5 }, { 'o', 0x32E6 }, { 'p', 0x3306 },
-        { 'q', 0x3326 }, { 'r', 0x3345 }, { 's', 0x3366 }, { 't', 0x3386 },
-        { 'u', 0x33A6 }, { 'v', 0x33C6 }, { 'w', 0x33E6 }, { 'x', 0x3806 },
-        { 'y', 0x3826 }, { 'z', 0x3846 },
+        { "a", 0x3126 }, { "b", 0x3146 }, { "c", 0x3166 }, { "d", 0x3186 },
+        { "e", 0x31A6 }, { "f", 0x31C6 }, { "g", 0x31E6 }, { "h", 0x3206 },
+        { "i", 0x3222 }, { "j", 0x3246 }, { "k", 0x3266 }, { "l", 0x3283 },
+        { "m", 0x32A6 }, { "n", 0x32C5 }, { "o", 0x32E6 }, { "p", 0x3306 },
+        { "q", 0x3326 }, { "r", 0x3345 }, { "s", 0x3366 }, { "t", 0x3386 },
+        { "u", 0x33A6 }, { "v", 0x33C6 }, { "w", 0x33E6 }, { "x", 0x3806 },
+        { "y", 0x3826 }, { "z", 0x3846 },
 
-        { U'ˎ', 0x3866 }, { U'˳', 0x3886 }, { U'╔', 0x38A6 }, { U'╝', 0x38C6 },
-        { U'×', 0x38E6 }, { U'“', 0x3926 }, { U'”', 0x3906 }, { '!', 0x3942 },
-        { '?', 0x3968 }, { ':', 0x3984 }, { ';', 0x39A4 }, { ',', 0x39C4 },
-        { '.', 0x39E4 }, { U'•', 0x3A04 }, { '(', 0x3A26 }, { ')', 0x3A46 },
-        { '~', 0x3A68 }, { U'▼', 0x3A88 }, { U'é', 0x3AA6 }, { '`', 0x3AC3 },
-        { U'´', 0x3AE4 }, { '#', 0x3B06 },
+        { "ˎ", 0x3866 }, { "˳", 0x3886 }, { "╔", 0x38A6 }, { "╝", 0x38C6 },
+        { "×", 0x38E6 }, { "“", 0x3926 }, { "”", 0x3906 }, { "!", 0x3942 },
+        { "?", 0x3968 }, { ":", 0x3984 }, { ";", 0x39A4 }, { ",", 0x39C4 },
+        { ".", 0x39E4 }, { "•", 0x3A04 }, { "(", 0x3A26 }, { ")", 0x3A46 },
+        { "~", 0x3A68 }, { "▼", 0x3A88 }, { "é", 0x3AA6 }, { "`", 0x3AC3 },
+        { "´", 0x3AE4 }, { "#", 0x3B06 },
     };
 
     SkipWhitespace();
@@ -424,18 +424,51 @@ int AsmFile::ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft
         if (temp.size() == targetLength)
             RaiseError("mapped string longer than %d entries", targetLength);
 
-        char c = m_buffer[m_pos];
+        std::string c;
+        unsigned char first = static_cast<unsigned char>(m_buffer[m_pos]);
+
+        if (first < 0x80) {
+            // ASCII
+            c += m_buffer[m_pos++];
+        }
+        else if ((first & 0xE0) == 0xC0) {
+            c += m_buffer[m_pos++];
+            c += m_buffer[m_pos++];
+        }
+        else if ((first & 0xF0) == 0xE0) {
+            c += m_buffer[m_pos++];
+            c += m_buffer[m_pos++];
+            c += m_buffer[m_pos++];
+        }
+        else if ((first & 0xF8) == 0xF0) {
+            c += m_buffer[m_pos++];
+            c += m_buffer[m_pos++];
+            c += m_buffer[m_pos++];
+            c += m_buffer[m_pos++];
+        }
+        else {
+            RaiseError("invalid UTF-8 sequence at position %d", m_pos);
+        }
 
         if (dexEncoding.count(c) == 0)
         {
-            if (IsAsciiPrintable(c))
+            if (c.size() == 1 && IsAsciiPrintable(c[0]))
                 RaiseError("character '%c' not valid in dex string", c);
             else
-                RaiseError("character '\\x%02X' not valid in dex string", static_cast<unsigned char>(c));
+            {
+                std::string hex;
+                char hexStr[5];
+
+                for (unsigned short i = 0; i < c.size(); i++) {
+                    std::snprintf(hexStr, sizeof(hexStr), "\\x%02X", static_cast<unsigned char>(c[i]));
+                    hex += hexStr; 
+                }
+
+                RaiseError("character '%s' not valid in dex string", hex.c_str());
+            }
         }
 
         temp.push_back(dexEncoding[c]);
-        m_pos++;    
     }
 
     m_pos++; // Past closing quote
