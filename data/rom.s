@@ -740,7 +740,7 @@ gPokedexStateFuncs:: @ 0x0805C880
 	.4byte Pokedex_ReturnToTitle        @ POKEDEX_STATE_RETURN_TO_TITLE
 
 gPokedexEntries:: @ 0x0805C8B4
-	.include "data/pokedex_entries_dex.inc"
+	.include "data/dex.inc"
 
 gFieldSelectStateFuncs:: @ 0x080792C0
 	.4byte LoadFieldSelectGraphics
