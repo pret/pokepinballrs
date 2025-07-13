@@ -24,6 +24,7 @@
 #include "asm_file.h"
 #include "c_file.h"
 #include "charmap.h"
+#include "../../include/constants/global.h"
 
 Charmap* g_charmap;
 
@@ -35,6 +36,22 @@ void PrintAsmBytes(unsigned char *s, int length)
         for (int i = 0; i < length; i++)
         {
             std::printf("0x%02X", s[i]);
+
+            if (i < length - 1)
+                std::printf(", ");
+        }
+        std::putchar('\n');
+    }
+}
+
+void PrintAsmHalfwords(unsigned short* s, int length)
+{
+    if (length > 0)
+    {
+        std::printf("\t.2bytu ");
+        for (int i = 0; i < length; i++)
+        {
+            std::printf("0x%04X", s[i]);
 
             if (i < length - 1)
                 std::printf(", ");
@@ -81,6 +98,24 @@ void PreprocAsmFile(std::string filename)
             unsigned char s[kMaxStringLength];
             int length = stack.top().ReadBraille(s);
             PrintAsmBytes(s, length);
+            break;
+        }
+        case Directive::DexName:{
+            unsigned short s[POKEMON_NAME_LENGTH];
+            int length = stack.top().ReadDexString(s, POKEMON_NAME_LENGTH, false);
+            PrintAsmHalfwords(s, length);
+            break;
+        }
+        case Directive::DexCategory:{
+            unsigned short s[POKEMON_CATEGORY_NAME_LENGTH];
+            int length = stack.top().ReadDexString(s, POKEMON_CATEGORY_NAME_LENGTH, true);
+            PrintAsmHalfwords(s, length);
+            break;
+        }
+        case Directive::DexText:{
+            unsigned short s[POKEMON_DEX_LINE_LENGTH];
+            int length = stack.top().ReadDexString(s, POKEMON_DEX_LINE_LENGTH, false);
+            PrintAsmHalfwords(s, length);
             break;
         }
         case Directive::Unknown:

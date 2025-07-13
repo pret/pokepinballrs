@@ -90,7 +90,7 @@ struct PokedexEntry
     /*0x2C*/ s16 category[POKEMON_CATEGORY_NAME_LENGTH];
     // The dex description has 2 pages with 3 lines each. Each line
     // is 42 characters long.
-    /*0x42*/ s16 description[2 * 3 * 42];
+    /*0x42*/ s16 description[2 * 3 * POKEMON_DEX_LINE_LENGTH];
 }; /* size=0x23C */
 
 extern const struct PokedexEntry gPokedexEntries[];
