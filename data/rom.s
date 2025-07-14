@@ -909,8 +909,7 @@ gIntroCopyright_Tilemap:: @ 0x080798C0
 
 gIntroCopyright_Gfx:: @ 0x0807A0C0
     .incbin "graphics/intro/copyright.4bpp"
-
-.incbin "baserom.gba", 0x7A8C0, 0x20
+	.space 0x20
 
 gIntroCopyright_Pal:: @ 0x0807A8E0
     .incbin "graphics/intro/copyright.gbapal"
@@ -929,8 +928,7 @@ gBonusFieldSelectStages_Pals:: @ 0x0807C2E0
 
 gBonusFieldSelectStages_Gfx:: @ 0x0807C4E0
 	.incbin "graphics/field_select/bonus_field_select_stages.4bpp"
-
-	.incbin "baserom.gba", 0x7DCE0, 0x20
+	.space 0x20
 
 gUnknown_0807DD00:: @ 0x0807DD00
 	.incbin "baserom.gba", 0x7DD00, 0x2000
@@ -949,8 +947,7 @@ gPokedexBg1_Tilemap:: @ 0x08081F20
 
 gPokedexBgText_Gfx:: @ 0x08082720
 	.incbin "graphics/pokedex/bg_text.4bpp"
-
-	.incbin "baserom.gba", 0x86B20, 0x20
+	.space 0x20
 
 gUnknown_08086B40:: @ 0x08086B40
 	.incbin "baserom.gba", 0x86B40, 0x800
@@ -960,8 +957,7 @@ gPokedexBg2_Tilemap:: @ 0x08087340
 
 gPokedexBg_Gfx:: @ 0x08087B40
 	.incbin "graphics/pokedex/bg.4bpp"
-
-	.incbin "baserom.gba", 0x88F40, 0x20
+	.space 0x20
 
 gPokedexBg3_Tilemap:: @ 0x08088F60
 	.incbin "graphics/pokedex/bg3_tilemap.bin"
@@ -974,8 +970,7 @@ gPokedexSprites_Pals:: @ 0x08089960
 
 gPokedexSprites_Gfx:: @ 0x08089B60
 	.incbin "graphics/pokedex/sprites.4bpp"
-
-	.incbin "baserom.gba", 0x90760, 0x20
+	.space 0x20
 
 gPokedexTextGlyphs_Gfx:: @ 0x08090780
 	.incbin "graphics/pokedex/text_glyphs.4bpp"
@@ -1280,7 +1275,7 @@ gUnknown_08138014:: @ 0x08138014
 
 gUnknown_08138834:: @ 0x08138834
 	.incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
-	.4byte 0,0,0,0,0,0,0,0 @ half tile offset
+	.space 0x20
 
 gUnknown_0813A854:: @ 0x0813A854
 	.incbin "baserom.gba", 0x13A854, 0x2020
@@ -2026,16 +2021,14 @@ gOptionsText_Tilemap:: @ 0x08528028
 
 gOptionsText_Gfx:: @ 0x08528828
 	.incbin "graphics/options/text.4bpp"
-
-	.incbin "baserom.gba", 0x52A028, 0x20
+	.space 0x20
 
 gOptionsBackground_Tilemap:: @ 0x0852A048
 	.incbin "graphics/options/background.bin"
 
 gOptionsBackground_Gfx:: @ 0x0852A848
 	.incbin "graphics/options/background.4bpp"
-
-	.incbin "baserom.gba", 0x52B448, 0x20
+	.space 0x20
 
 gOptionsBackground_Pals:: @ 0x0852B468
 	.incbin "graphics/options/background.gbapal"
