@@ -1281,9 +1281,8 @@ gUnknown_08138014:: @ 0x08138014
 	.incbin "baserom.gba", 0x138014, 0x820
 
 gUnknown_08138834:: @ 0x08138834
-	.incbin "baserom.gba", 0x138834, 0x2020
-	@ .incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
-	@ .align 20, 0
+	.incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
+	.4byte 0,0,0,0,0,0,0,0 @ half tile offset
 
 gUnknown_0813A854:: @ 0x0813A854
 	.incbin "baserom.gba", 0x13A854, 0x2020
