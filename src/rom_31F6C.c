@@ -1254,7 +1254,7 @@ void sub_336E0(void) {
 }
 
 extern const u8 gUnknown_08510E4C[];
-extern const u16 gUnknown_086BA0A0[][2][3];
+extern const u16 gDuskullSpritesheetOam[][2][3];
 void sub_340EC() {
     s16 i, j;
     s16 sb;
@@ -1297,7 +1297,7 @@ void sub_340EC() {
                 oamData = &spriteGroup->oam[j];
 
                 dst = (u16*)&gOamBuffer[oamData->oamId];
-                src = gUnknown_086BA0A0[sb][j];
+                src = gDuskullSpritesheetOam[sb][j];
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
@@ -1316,7 +1316,7 @@ void sub_340EC() {
                 oamData = &spriteGroup->oam[j];
 
                 dst = (u16*)&gOamBuffer[oamData->oamId];
-                src = gUnknown_086BA0A0[sb][j];
+                src = gDuskullSpritesheetOam[sb][j];
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
