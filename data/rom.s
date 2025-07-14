@@ -740,8 +740,9 @@ gPokedexStateFuncs:: @ 0x0805C880
 	.4byte Pokedex_ReturnToTitle        @ POKEDEX_STATE_RETURN_TO_TITLE
 
 gPokedexEntries:: @ 0x0805C8B4
-	.incbin "baserom.gba", 0x5C8B4, 0x1CA0C
+	.include "data/pokedex_entries/dex.inc"
 
+	.align 2, 0
 gFieldSelectStateFuncs:: @ 0x080792C0
 	.4byte LoadFieldSelectGraphics
 	.4byte sub_8C7C
@@ -976,11 +977,8 @@ gPokedexSprites_Gfx:: @ 0x08089B60
 
 	.incbin "baserom.gba", 0x90760, 0x20
 
-gUnknown_08090780:: @ 0x08090780
-	.incbin "baserom.gba", 0x90780, 0x2820
-
-gUnknown_08092FA0:: @ 0x08092FA0
-	.incbin "baserom.gba", 0x92FA0, 0x1800
+gPokedexTextGlyphs_Gfx:: @ 0x08090780
+	.incbin "graphics/pokedex/text_glyphs.4bpp"
 
 gUnknown_080947A0:: @ 0x080947A0
 	.incbin "baserom.gba", 0x947A0, 0x1000
