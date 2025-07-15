@@ -910,8 +910,7 @@ gIntroCopyright_Tilemap:: @ 0x080798C0
 
 gIntroCopyright_Gfx:: @ 0x0807A0C0
     .incbin "graphics/intro/copyright.4bpp"
-
-.incbin "baserom.gba", 0x7A8C0, 0x20
+	.space 0x20
 
 gIntroCopyright_Pal:: @ 0x0807A8E0
     .incbin "graphics/intro/copyright.gbapal"
@@ -930,8 +929,7 @@ gBonusFieldSelectStages_Pals:: @ 0x0807C2E0
 
 gBonusFieldSelectStages_Gfx:: @ 0x0807C4E0
 	.incbin "graphics/field_select/bonus_field_select_stages.4bpp"
-
-	.incbin "baserom.gba", 0x7DCE0, 0x20
+	.space 0x20
 
 gUnknown_0807DD00:: @ 0x0807DD00
 	.incbin "baserom.gba", 0x7DD00, 0x2000
@@ -950,8 +948,7 @@ gPokedexBg1_Tilemap:: @ 0x08081F20
 
 gPokedexBgText_Gfx:: @ 0x08082720
 	.incbin "graphics/pokedex/bg_text.4bpp"
-
-	.incbin "baserom.gba", 0x86B20, 0x20
+	.space 0x20
 
 gUnknown_08086B40:: @ 0x08086B40
 	.incbin "baserom.gba", 0x86B40, 0x800
@@ -961,8 +958,7 @@ gPokedexBg2_Tilemap:: @ 0x08087340
 
 gPokedexBg_Gfx:: @ 0x08087B40
 	.incbin "graphics/pokedex/bg.4bpp"
-
-	.incbin "baserom.gba", 0x88F40, 0x20
+	.space 0x20
 
 gPokedexBg3_Tilemap:: @ 0x08088F60
 	.incbin "graphics/pokedex/bg3_tilemap.bin"
@@ -975,8 +971,7 @@ gPokedexSprites_Pals:: @ 0x08089960
 
 gPokedexSprites_Gfx:: @ 0x08089B60
 	.incbin "graphics/pokedex/sprites.4bpp"
-
-	.incbin "baserom.gba", 0x90760, 0x20
+	.space 0x20
 
 gPokedexTextGlyphs_Gfx:: @ 0x08090780
 	.incbin "graphics/pokedex/text_glyphs.4bpp"
@@ -1280,7 +1275,8 @@ gUnknown_08138014:: @ 0x08138014
 	.incbin "baserom.gba", 0x138014, 0x820
 
 gUnknown_08138834:: @ 0x08138834
-	.incbin "baserom.gba", 0x138834, 0x2020
+	.incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
+	.space 0x20
 
 gUnknown_0813A854:: @ 0x0813A854
 	.incbin "baserom.gba", 0x13A854, 0x2020
@@ -1792,7 +1788,7 @@ gUnknown_08490A4C:: @ 0x08490A4C
 	.incbin "baserom.gba", 0x490A4C, 0x4400
 
 gUnknown_08494E4C:: @ 0x08494E4C
-	.incbin "baserom.gba", 0x494E4C, 0x1800
+	.incbin "graphics/stage/dusclops/dusclops_appear_fx.4bpp";
 
 gUnknown_0849664C:: @ 0x0849664C
 	.incbin "baserom.gba", 0x49664C, 0x5280
@@ -1868,7 +1864,7 @@ gUnknown_084ED6CC:: @ 0x084ED6CC
 	.incbin "baserom.gba", 0x4ED6CC, 0x400
 
 gUnknown_084EDACC:: @ 0x084EDACC
-	.incbin "baserom.gba", 0x4EDACC, 0x8000
+	.incbin "graphics/stage/dusclops/dusclops.4bpp";
 
 gUnknown_084F5ACC:: @ 0x084F5ACC
 	.incbin "baserom.gba", 0x4F5ACC, 0x720
@@ -1901,7 +1897,7 @@ gUnknown_084FEF0C:: @ 0x084FEF0C
 	.incbin "baserom.gba", 0x4FEF0C, 0x400
 
 gUnknown_084FF30C:: @ 0x084FF30C
-	.incbin "baserom.gba", 0x4FF30C, 0x600
+	.incbin "graphics/stage/dusclops/dusclops_ball_grab.4bpp";
 
 gUnknown_084FF90C:: @ 0x084FF90C
 	.incbin "baserom.gba", 0x4FF90C, 0x1700
@@ -1931,7 +1927,7 @@ gUnknown_08510CAC:: @ 0x08510CAC
 	.incbin "baserom.gba", 0x510CAC, 0x1A0
 
 gUnknown_08510E4C:: @ 0x08510E4C
-	.incbin "baserom.gba", 0x510E4C, 0x1E00
+	.incbin "graphics/stage/dusclops/duskull.4bpp";
 
 gUnknown_08512C4C:: @ 0x08512C4C
 	.incbin "baserom.gba", 0x512C4C, 0x2300
@@ -2026,16 +2022,14 @@ gOptionsText_Tilemap:: @ 0x08528028
 
 gOptionsText_Gfx:: @ 0x08528828
 	.incbin "graphics/options/text.4bpp"
-
-	.incbin "baserom.gba", 0x52A028, 0x20
+	.space 0x20
 
 gOptionsBackground_Tilemap:: @ 0x0852A048
 	.incbin "graphics/options/background.bin"
 
 gOptionsBackground_Gfx:: @ 0x0852A848
 	.incbin "graphics/options/background.4bpp"
-
-	.incbin "baserom.gba", 0x52B448, 0x20
+	.space 0x20
 
 gOptionsBackground_Pals:: @ 0x0852B468
 	.incbin "graphics/options/background.gbapal"
