@@ -248,7 +248,7 @@ void sub_1AD84(void)
         sub_11B0(7);
         gCurrentPinballGame->unk28 = 500;
     }
-    else if (gCurrentPinballGame->unk2D1 !=0)
+    else if (gCurrentPinballGame->unk2D0 !=0)
     {
         gCurrentPinballGame->unk28 = 300;
     }
