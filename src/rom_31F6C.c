@@ -1268,7 +1268,7 @@ void sub_340EC() {
         s16 r8 = gCurrentPinballGame->unk397[i];
         DmaCopy16(3, gUnknown_08510E4C + r8 * 0x280, OBJ_VRAM0 + 0x920 + i * 0x280, 0x280);
         sb = gCurrentPinballGame->unk39D[i];
-        spriteGroup = &gUnknown_0200B3B8[7 + i];
+        spriteGroup = &gMain_spriteGroups[7 + i];
         if (gCurrentPinballGame->unk3A6[i]) {
             s32 x = 0; // Scrub C to get the compiler to add before subtracting
             spriteGroup->baseX = gCurrentPinballGame->unk3C4[i].x / 10 + 108 + x - gCurrentPinballGame->unk58;

@@ -97,138 +97,140 @@ gMain: @ 0x200B0C0
 	.space 0x34
 	.space 0x5A
 @ These are all entries in gMain.spriteGroups
-gUnknown_0200B18E: @ 0x0200B18E
+gMain_saveData_pokedexFlags_90: @ 0x0200B18E
 	.space 0x76
-gUnknown_0200B204: @ 0x0200B204
+gMain_saveData_customButtonConfig: @ 0x0200B204
 	.space 0x14
-gUnknown_0200B218: @ 0x0200B218
+gMain_saveData_highscores: @ 0x0200B218
 	.space 0x14
-gUnknown_0200B22C: @ 0x0200B22C
+gMain_saveData_highscores_1_scoreLo: @ 0x0200B22C
 	.space 0x18C
-gUnknown_0200B3B8: @ 0x0200B3B8
+gMain_spriteGroups: @ 0x0200B3B8
 	.space 0xB8
-gUnknown_0200B470: @ 0x0200B470
+gMain_spriteGroups_1: @ 0x0200B470
 	.space 0xB8
-gUnknown_0200B528: @ 0x0200B528
+gMain_spriteGroups_2: @ 0x0200B528
 	.space 0xB8
-gUnknown_0200B5E0: @ 0x0200B5E0
+gMain_spriteGroups_3: @ 0x0200B5E0
 	.space 0xB8
-gUnknown_0200B698: @ 0x0200B698
+gMain_spriteGroups_4: @ 0x0200B698
 	.space 0xB8
-gUnknown_0200B750: @ 0x0200B750
+gMain_spriteGroups_5: @ 0x0200B750
 	.space 0xB8
-gUnknown_0200B808: @ 0x0200B808
+gMain_spriteGroups_6: @ 0x0200B808
 	.space 0xB8
-gUnknown_0200B8C0: @ 0x0200B8C0
+gMain_spriteGroups_7: @ 0x0200B8C0
 	.space 0xB8
-gUnknown_0200B978: @ 0x0200B978
+gMain_spriteGroups_8: @ 0x0200B978
 	.space 0xB8
-gUnknown_0200BA30: @ 0x0200BA30
+gMain_spriteGroups_9: @ 0x0200BA30
 	.space 0xB8
-gUnknown_0200BAE8: @ 0x0200BAE8
+gMain_spriteGroups_10: @ 0x0200BAE8
 	.space 0xB8
-gUnknown_0200BBA0: @ 0x0200BBA0
+gMain_spriteGroups_11: @ 0x0200BBA0
 	.space 0xB8
-gUnknown_0200BC58: @ 0x0200BC58
+gMain_spriteGroups_12: @ 0x0200BC58
 	.space 0xB8
-gUnknown_0200BD10: @ 0x0200BD10
+gMain_spriteGroups_13: @ 0x0200BD10
 	.space 0xB8
-gUnknown_0200BDC8: @ 0x0200BDC8
+gMain_spriteGroups_14: @ 0x0200BDC8
 	.space 0xB8
-gUnknown_0200BE80: @ 0x0200BE80
+gMain_spriteGroups_15: @ 0x0200BE80
 	.space 0xB8
-gUnknown_0200BF38: @ 0x0200BF38
+gMain_spriteGroups_16: @ 0x0200BF38
 	.space 0xB8
-gUnknown_0200BFF0: @ 0x0200BFF0
+gMain_spriteGroups_17: @ 0x0200BFF0
 	.space 0xB8
-gUnknown_0200C0A8: @ 0x0200C0A8
+gMain_spriteGroups_18: @ 0x0200C0A8
 	.space 0xB8
-gUnknown_0200C160: @ 0x0200C160
+gMain_spriteGroups_19: @ 0x0200C160
 	.space 0xB8
-gUnknown_0200C218: @ 0x0200C218
+gMain_spriteGroups_20: @ 0x0200C218
 	.space 0xB8
-gUnknown_0200C2D0: @ 0x0200C2D0
+gMain_spriteGroups_21: @ 0x0200C2D0
 	.space 0xB8
-gUnknown_0200C388: @ 0x0200C388
+gMain_spriteGroups_22: @ 0x0200C388
 	.space 0xB8
-gUnknown_0200C440: @ 0x0200C440
+gMain_spriteGroups_23: @ 0x0200C440
 	.space 0xB8
-gUnknown_0200C4F8: @ 0x0200C4F8
+gMain_spriteGroups_24: @ 0x0200C4F8
 	.space 0xB8
-gUnknown_0200C5B0: @ 0x0200C5B0
+gMain_spriteGroups_25: @ 0x0200C5B0
 	.space 0xB8
-gUnknown_0200C668: @ 0x0200C668
+gMain_spriteGroups_26: @ 0x0200C668
 	.space 0x170
-gUnknown_0200C7D8: @ 0x0200C7D8
+gMain_spriteGroups_28: @ 0x0200C7D8
 	.space 0xB8
-gUnknown_0200C890: @ 0x0200C890
+gMain_spriteGroups_29: @ 0x0200C890
 	.space 0xB8
-gUnknown_0200C948: @ 0x0200C948
+gMain_spriteGroups_30: @ 0x0200C948
 	.space 0xB8
-gUnknown_0200CA00: @ 0x0200CA00
+gMain_spriteGroups_31: @ 0x0200CA00
 	.space 0xB8
-gUnknown_0200CAB8: @ 0x0200CAB8
+gMain_spriteGroups_32: @ 0x0200CAB8
 	.space 0x170
-gUnknown_0200CC28: @ 0x0200CC28
+gMain_spriteGroups_34: @ 0x0200CC28
 	.space 0x170
-gUnknown_0200CD98: @ 0x0200CD98
+gMain_spriteGroups_36: @ 0x0200CD98
 	.space 0x2E0
-gUnknown_0200D078: @ 0x0200D078
+gMain_spriteGroups_40: @ 0x0200D078
 	.space 0x228
-gUnknown_0200D2A0: @ 0x0200D2A0
+gMain_spriteGroups_43: @ 0x0200D2A0
 	.space 0x170
-gUnknown_0200D410: @ 0x0200D410
+gMain_spriteGroups_45: @ 0x0200D410
 	.space 0x170
-gUnknown_0200D580: @ 0x0200D580
+gMain_spriteGroups_47: @ 0x0200D580
 	.space 0xB8
-gUnknown_0200D638: @ 0x0200D638
+gMain_spriteGroups_48: @ 0x0200D638
 	.space 0x228
-gUnknown_0200D860: @ 0x0200D860
+gMain_spriteGroups_51: @ 0x0200D860
 	.space 0xB8
-gUnknown_0200D918: @ 0x0200D918
+gMain_spriteGroups_52: @ 0x0200D918
 	.space 0x8
-gUnknown_0200D920: @ 0x0200D920
+gMain_spriteGroups_52_oam: @ 0x0200D920
 	.space 0xB0
-gUnknown_0200D9D0: @ 0x0200D9D0
+gMain_spriteGroups_53: @ 0x0200D9D0
 	.space 0x2E0
-gUnknown_0200DCB0: @ 0x0200DCB0
+gMain_spriteGroups_57: @ 0x0200DCB0
 	.space 0xB8
-gUnknown_0200DD68: @ 0x0200DD68
+gMain_spriteGroups_58: @ 0x0200DD68
 	.space 0xB8
-gUnknown_0200DE20: @ 0x0200DE20
+gMain_spriteGroups_59: @ 0x0200DE20
 	.space 0xB8
-gUnknown_0200DED8: @ 0x0200DED8
+gMain_spriteGroups_60: @ 0x0200DED8
 	.space 0xB8
-gUnknown_0200DF90: @ 0x0200DF90
+gMain_spriteGroups_61: @ 0x0200DF90
 	.space 0xB8
-gUnknown_0200E048: @ 0x0200E048
+gMain_spriteGroups_62: @ 0x0200E048
 	.space 0xB8
-gUnknown_0200E100: @ 0x0200E100
+gMain_spriteGroups_63: @ 0x0200E100
 	.space 0xB8
-gUnknown_0200E1B8: @ 0x0200E1B8
+gMain_spriteGroups_64: @ 0x0200E1B8
 	.space 0xB8
-gUnknown_0200E270: @ 0x0200E270
+gMain_spriteGroups_65: @ 0x0200E270
 	.space 0x8
-gUnknown_0200E278: @ 0x0200E278
+gMain_spriteGroups_65_oam: @ 0x0200E278
 	.space 0xB0
-gUnknown_0200E328: @ 0x0200E328
+gMain_spriteGroups_66: @ 0x0200E328
 	.space 0x170
-gUnknown_0200E498: @ 0x0200E498
+gMain_spriteGroups_68: @ 0x0200E498
 	.space 0xB8
-gUnknown_0200E550: @ 0x0200E550
+gMain_spriteGroups_69: @ 0x0200E550
 	.space 0xB8
-gUnknown_0200E608: @ 0x0200E608
+gMain_spriteGroups_70: @ 0x0200E608
 	.space 0xB8
-gUnknown_0200E6C0: @ 0x0200E6C0
+gMain_spriteGroups_71: @ 0x0200E6C0
 	.space 0x2E0
-gUnknown_0200E9A0: @ 0x0200E9A0
+gMain_spriteGroups_75: @ 0x0200E9A0
 	.space 0xB8
-gUnknown_0200EA58: @ 0x0200EA58
+gMain_spriteGroups_76: @ 0x0200EA58
 	.space 0x170
-gUnknown_0200EBC8: @ 0x0200EBC8
+gMain_spriteGroups_78: @ 0x0200EBC8
 	.space 0x2E0
-gUnknown_0200EEA8: @ 0x0200EEA8
+gMain_spriteGroups_82: @ 0x0200EEA8
 	.space 0xCF0
+@main object ends in the middle of the above space.
+
 gVBlankIntrFuncPtr: @ 0x200FB98
 	.space 0x4
 gMainCallback: @ 0x200FB9C
