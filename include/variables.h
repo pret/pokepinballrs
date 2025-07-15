@@ -348,8 +348,8 @@ extern s16 gUnknown_086A7788[0x8];
 extern s16 gUnknown_0202ADA0[];
 extern s32 gUnknown_0202BEF0;
 extern const struct SpriteSet *const gUnknown_086A769C[];
-extern struct SpriteGroup gUnknown_0200D078[];
-extern struct SpriteGroup gUnknown_0200D638;
+extern struct SpriteGroup gMain_spriteGroups_40[];
+extern struct SpriteGroup gMain_spriteGroups_48;
 extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
 extern s32 gUnknown_0201C188;
 
@@ -415,7 +415,7 @@ extern u8 gUnknown_08116260[];
 extern u8 gUnknown_08118680[];
 
 extern u16 gCommonAndEggWeights[];
-extern u16 gUnknown_0200B18E[10];
+extern u16 gMain_saveData_pokedexFlags_90[10];
 extern u16 Sio32ConnectionData[4]; 
 extern u32 gUnknown_02002814;
 

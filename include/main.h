@@ -17,7 +17,7 @@ struct HighScoreEntry
         } parts;
         u32 raw[HIGH_SCORE_NAME_LENGTH + 2];
     } data;
-};
+}; // size: 0x18
 
 // This is probably permanently saved data like pokedex and high scores.
 struct SaveData
@@ -112,7 +112,7 @@ struct Main
 };
 
 extern struct Main gMain;
-extern struct SpriteGroup gUnknown_0200B3B8[];
+extern struct SpriteGroup gMain_spriteGroups[];
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
 extern IntrFunc *gVBlankIntrFuncPtr;
