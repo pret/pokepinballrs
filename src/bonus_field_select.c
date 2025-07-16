@@ -232,7 +232,7 @@ void sub_29C8(void)
     sgptrs[gSelectedBonusField]->available = FALSE;
     r10->available = TRUE;
     r8->available = gUnknown_0201A4B0;
-    LoadSpriteSets(gUnknown_086A4C80, 16, gUnknown_0200B3B8);
+    LoadSpriteSets(gUnknown_086A4C80, 16, gMain_spriteGroups);
     for (i = 0; i < 6; i++)
     {
         if (sgptrs[i]->available == 1)

@@ -575,7 +575,7 @@ void sub_9E90(void)
     puVar1 = &gMain.spriteGroups[gUnknown_0201A450[1].unk8];
     mainSg3 = &gMain.spriteGroups[3];
     mainSg2 = &gMain.spriteGroups[2];
-    otherSg = &gUnknown_0200D638;
+    otherSg = &gMain_spriteGroups_48;
 
     puVar1->available = gUnknown_0201A450[1].unkC;
     mainSg3->available = gUnknown_0201A450[2].unkC;
@@ -1969,7 +1969,7 @@ void sub_C4F0(void)
 	mov r5, r8\n\
 	push {r5, r6, r7}\n\
 	sub sp, #0x20\n\
-	ldr r0, _0800C64C @ =gUnknown_0200B3B8\n\
+	ldr r0, _0800C64C @ =gMain_spriteGroups\n\
 	mov r8, r0\n\
 	ldr r6, _0800C650 @ =gUnknown_0201A450\n\
 	movs r1, #0x28\n\
@@ -2025,7 +2025,7 @@ void sub_C4F0(void)
 	mov r2, r8\n\
 	strh r0, [r2]\n\
 	movs r0, #1\n\
-	ldr r7, _0800C654 @ =gUnknown_0200B470\n\
+	ldr r7, _0800C654 @ =gMain_spriteGroups_1\n\
 	strh r0, [r7]\n\
 	adds r0, r6, #0\n\
 	adds r0, #0x2c\n\
@@ -2139,9 +2139,9 @@ _0800C62E:\n\
 	ldrb r0, [r0, #3]\n\
 	b _0800C67A\n\
 	.align 2, 0\n\
-_0800C64C: .4byte gUnknown_0200B3B8\n\
+_0800C64C: .4byte gMain_spriteGroups\n\
 _0800C650: .4byte gUnknown_0201A450\n\
-_0800C654: .4byte gUnknown_0200B470\n\
+_0800C654: .4byte gMain_spriteGroups_1\n\
 _0800C658: .4byte gUnknown_086A7C24\n\
 _0800C65C: .4byte gOamBuffer\n\
 _0800C660: .4byte 0x000001FF\n\
@@ -2275,7 +2275,7 @@ _0800C75A:\n\
 	bgt _0800C762\n\
 	b _0800C618\n\
 _0800C762:\n\
-	ldr r7, _0800C80C @ =gUnknown_0200B470\n\
+	ldr r7, _0800C80C @ =gMain_spriteGroups_1\n\
 	ldrh r0, [r7]\n\
 	cmp r0, #1\n\
 	bne _0800C7C8\n\
@@ -2303,7 +2303,7 @@ _0800C780:\n\
 	adds r3, r3, r5\n\
 	movs r2, #2\n\
 	ldrsh r1, [r4, r2]\n\
-	ldr r7, _0800C80C @ =gUnknown_0200B470\n\
+	ldr r7, _0800C80C @ =gMain_spriteGroups_1\n\
 	movs r2, #2\n\
 	ldrsh r0, [r7, r2]\n\
 	adds r1, r1, r0\n\
@@ -2318,7 +2318,7 @@ _0800C780:\n\
 	ldrh r1, [r4]\n\
 	lsls r1, r1, #3\n\
 	adds r1, r1, r5\n\
-	ldr r2, _0800C80C @ =gUnknown_0200B470\n\
+	ldr r2, _0800C80C @ =gMain_spriteGroups_1\n\
 	ldrb r0, [r2, #4]\n\
 	ldrb r3, [r4, #4]\n\
 	adds r0, r0, r3\n\
@@ -2329,7 +2329,7 @@ _0800C780:\n\
 	bge _0800C780\n\
 _0800C7C8:\n\
 	movs r0, #0\n\
-	ldr r6, _0800C80C @ =gUnknown_0200B470\n\
+	ldr r6, _0800C80C @ =gMain_spriteGroups_1\n\
 	strh r0, [r6]\n\
 	mov r7, r8\n\
 	strh r0, [r7]\n\
@@ -2357,7 +2357,7 @@ _0800C7FC: .4byte gUnknown_086A7C24\n\
 _0800C800: .4byte gOamBuffer\n\
 _0800C804: .4byte 0x000001FF\n\
 _0800C808: .4byte 0xFFFFFE00\n\
-_0800C80C: .4byte gUnknown_0200B470\n\
+_0800C80C: .4byte gMain_spriteGroups_1\n\
 _0800C810: .4byte gUnknown_0201A450\n\
     ");
 }
