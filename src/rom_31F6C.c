@@ -1704,7 +1704,7 @@ void sub_34450(void)
         break;
     } //End switch
     
-    DmaCopy16(3 , gUnknown_084EDACC + r9 * 1024,(void *)OBJ_VRAM0+0x10a0, BG_SCREEN_SIZE);
+    DmaCopy16(3 , gUnknown_084EDACC + r9 * 1024, (void *)OBJ_VRAM0+0x10a0, BG_SCREEN_SIZE);
 
     gCurrentPinballGame->unk3F0 = ((gCurrentPinballGame->unk3E8 / 10) * 2) + 16;
     gCurrentPinballGame->unk3F2 = ((gCurrentPinballGame->unk3EA / 10) * 2) + 16;

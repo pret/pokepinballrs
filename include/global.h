@@ -604,7 +604,7 @@ extern const s16 gUnknown_086ACDF4[9];
 extern struct Unk086ACE8C gUnknown_086ACE8C[13];
 extern u16 gUnknown_086ACEF4[2];
 extern s16 gUnknown_086AE68E[][2]; 
-struct SongHeader gUnknown_086A17D8;
+extern struct SongHeader gUnknown_086A17D8;
 extern u16 gUnknown_08137D40[]; 
 extern u16 gUnknown_084EDACC[]; 
 extern u16 gUnknown_08494E4C[]; 
