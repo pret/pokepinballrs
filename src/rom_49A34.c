@@ -5,6 +5,54 @@ extern const struct Vector16 gUnknown_08137D78[];
 extern const u16 gUnknown_08137DA4[];
 extern const u8 gUnknown_08510CAC[][0x20];
 
+void sub_49850(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+
+    group = &gMain.spriteGroups[0];
+    oamSimple = &group->oam[0];
+    gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset;
+    gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset;
+    gOamBuffer[oamSimple->oamId].affineMode = ST_OAM_AFFINE_OFF;
+    gOamBuffer[oamSimple->oamId].matrixNum = 0;
+
+    for (i = 1; i < 5; i++)
+    {
+        oamSimple = &group->oam[i];
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset;
+        gOamBuffer[oamSimple->oamId].affineMode = ST_OAM_AFFINE_OFF;
+        gOamBuffer[oamSimple->oamId].matrixNum = 0;
+    }
+
+    for (i = 5; i < 11; i++)
+    {
+        oamSimple = &group->oam[i];
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset;
+        gOamBuffer[oamSimple->oamId].affineMode = ST_OAM_AFFINE_OFF;
+        gOamBuffer[oamSimple->oamId].matrixNum = 0;
+    }
+
+    group = &gMain.spriteGroups[1];
+    for (i = 0; i < 2; i++)
+    {
+        oamSimple = &group->oam[i];
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset;
+    }
+
+    group = &gMain.spriteGroups[2];
+    for (i = 0; i < 3; i++)
+    {
+        oamSimple = &group->oam[i];
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset;
+    }
+}
+
 void sub_49A34(void)
 {
     s16 i;
