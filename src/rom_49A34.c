@@ -1,9 +1,26 @@
 #include "global.h"
+#include "m4a.h"
 #include "main.h"
+#include "constants/bg_music.h"
 
 extern const struct Vector16 gUnknown_08137D78[];
 extern const u16 gUnknown_08137DA4[];
 extern const u8 gUnknown_08510CAC[][0x20];
+
+void sub_497BC(void)
+{
+    gMain.blendControl = gCurrentPinballGame->unk1106;
+    gMain.blendAlpha = gCurrentPinballGame->unk1108;
+    gMain.blendBrightness = gCurrentPinballGame->unk110A;
+    gMain.unk2C = gCurrentPinballGame->unk110C;
+    gMain.vCount = gCurrentPinballGame->unk110E;
+    DmaCopy16(3, gCurrentPinballGame->unk111A, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+    if (gCurrentPinballGame->unkF4C)
+        m4aMPlayContinue(&gMPlayInfo_BGM);
+
+    m4aSongNumStart(SE_UNKNOWN_0xA6);
+    sub_11F0(0);
+}
 
 void sub_49850(void)
 {
