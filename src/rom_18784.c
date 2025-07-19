@@ -143,10 +143,10 @@ void sub_18A4C(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
     deltaX = arg0->x - gCurrentPinballGame->unk3F0;
     deltaY = arg0->y - gCurrentPinballGame->unk3F2;
 
-    if ((u16)deltaX >= 0x80 || (u16)deltaY >= 0x80)
+    if ((deltaX < 0 || deltaX >= 0x80) || (deltaY < 0 || deltaY >= 0x80))
         return;
 
-    resultFromArray = gUnknown_083722E8[(deltaY << 7) + deltaX];
+    resultFromArray = gUnknown_083722E8[(deltaY * 0x80) + deltaX];
     maskedResult = resultFromArray & 0xFFF0;
     lowerNibble = resultFromArray & 0xF;
     if (lowerNibble == 0)
