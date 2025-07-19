@@ -95,3 +95,60 @@ s16 sub_176B0(struct Vector16 *arg0, u16 *arg1)
     sub_179D0(some_enum, &return_val, arg1);
     return return_val;
 }
+
+void sub_17898(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
+{
+    s16 deltaX;
+    s16 deltaY;
+    u16 arrayValue;
+
+    if (gCurrentPinballGame->unk387 == 1)
+    {
+        if (*arg2 & 0xF)
+            return;
+
+        deltaX = arg0->x - gCurrentPinballGame->unk3F0;
+        deltaY = arg0->y - gCurrentPinballGame->unk3F2;
+
+        if ((deltaX < 0 || deltaX > 0x3F) || (deltaY < 0 || deltaY > 0x57))
+            return;
+
+        arrayValue = (u8)(gUnknown_0832D604[(deltaY * 0x40) + deltaX]) & 0xF;
+
+        if (arrayValue == 0)
+            return;
+        if (gCurrentPinballGame->ball->unk0 != 0)
+            return;
+        if (gCurrentPinballGame->unk3DC > 8)
+            return;
+
+        gCurrentPinballGame->unk3DC = 9;
+    }
+    else if (gCurrentPinballGame->unk387 == 2)
+    {
+        u16 maskedResult;
+
+        if (*arg2 & 0xF)
+            return;
+
+        deltaX = arg0->x - gCurrentPinballGame->unk3F0;
+        deltaY = arg0->y - gCurrentPinballGame->unk3F2;
+
+        if ((deltaX < 0 || deltaX > 0x57) || (deltaY < 0 || deltaY > 0x3F))
+            return;
+
+        maskedResult = gUnknown_08330204[(deltaY * 0x58) + deltaX] & 0xFFF0;
+        arrayValue = gUnknown_08330204[(deltaY * 0x58) + deltaX] & 0xF;
+
+        if (arrayValue == 0)
+            return;
+        if (gCurrentPinballGame->ball->unk0 != 0)
+            return;
+        if (gCurrentPinballGame->unk3DC == 12)
+            return;
+
+        gCurrentPinballGame->unk3DC = 11;
+        *arg1 = maskedResult;
+        *arg2 = 6;
+    }
+}
