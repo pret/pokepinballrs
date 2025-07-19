@@ -509,9 +509,9 @@ struct PinballGame
     /*0x1103*/u8 unk1103;
     /*0x1104*/s8 unk1104;
     /*0x1105*/u8 filler1105[0x1];
-    /*0x1106*/u16 unk1106;
-    /*0x1108*/u16 unk1108;
-    /*0x110A*/u16 unk110A;
+    /*0x1106*/volatile u16 unk1106;
+    /*0x1108*/volatile u16 unk1108;
+    /*0x110A*/volatile u16 unk110A;
     /*0x110C*/u16 unk110C;
     /*0x110E*/u16 unk110E;
     /*0x1110*/volatile u16 unk1110;
@@ -519,7 +519,7 @@ struct PinballGame
     /*0x1114*/volatile u16 unk1114;
     /*0x1116*/u16 unk1116;
     /*0x1118*/u16 unk1118;
-    /*0x111A*/u8 unk111A[OBJ_PLTT_SIZE];
+    /*0x111A*/u16 unk111A[OBJ_PLTT_SIZE / 0x20][0x10];
     /*0x131A*/u8 filler131A[0x2];
     /*0x131C*/u32 unk131C;
     /*0x1320*/s16 unk1320;

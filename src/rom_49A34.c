@@ -7,6 +7,72 @@ extern const struct Vector16 gUnknown_08137D78[];
 extern const u16 gUnknown_08137DA4[];
 extern const u8 gUnknown_08510CAC[][0x20];
 
+void sub_495A0(void)
+{
+    s16 i, j;
+    u16 objPalettes[OBJ_PLTT_SIZE / 0x20][0x10];
+    u8 rgb[3];
+
+    gCurrentPinballGame->unk1104 = 1;
+    gCurrentPinballGame->unk131C = 0;
+    if (gMPlayInfo_BGM.status >= 0)
+    {
+        gCurrentPinballGame->unkF4C = gMPlayInfo_BGM.songHeader;
+        m4aMPlayStop(&gMPlayInfo_BGM);
+    }
+    else
+    {
+        gCurrentPinballGame->unkF4C = NULL;
+    }
+
+    m4aMPlayAllStop();
+    m4aSongNumStart(SE_UNKNOWN_0xA5);
+    if (gMain.selectedField < MAIN_FIELD_COUNT)
+    {
+        gCurrentPinballGame->unk6A = gCurrentPinballGame->unk68;
+        if (gMain.selectedField == FIELD_RUBY)
+            sub_4E814();
+        else if (gMain.selectedField == FIELD_SAPPHIRE)
+            sub_4F814();
+    }
+
+    gCurrentPinballGame->unk1106 = gMain.blendControl;
+    gCurrentPinballGame->unk1108 = gMain.blendAlpha;
+    gCurrentPinballGame->unk110A = gMain.blendBrightness;
+    gCurrentPinballGame->unk110C = gMain.unk2C;
+    gCurrentPinballGame->unk110E = gMain.vCount;
+    DmaCopy16(3, (void *)OBJ_PLTT, gCurrentPinballGame->unk111A, OBJ_PLTT_SIZE);
+    for (i = 0; i < 16; i++)
+    {
+        for (j = 0; j < 16; j++)
+        {
+            if (i != 9 || j != 12)
+            {
+                rgb[0] = (((gCurrentPinballGame->unk111A[i][j] & 0x001F) >>  0) * 2) / 5;
+                rgb[1] = (((gCurrentPinballGame->unk111A[i][j] & 0x03E0) >>  5) * 2) / 5;
+                rgb[2] = (((gCurrentPinballGame->unk111A[i][j] & 0x7C00) >> 10) * 2) / 5;
+                objPalettes[i][j] = rgb[0] | (rgb[1] << 5) | (rgb[2] << 10);
+            }
+            else
+            {
+                objPalettes[i][j] = 0x7FFF;
+            }
+        }
+    }
+
+    DmaCopy16(3, objPalettes, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+    if (gMain.selectedField < MAIN_FIELD_COUNT)
+        sub_1D4D0();
+    else if (gMain.selectedField == FIELD_DUSCLOPS)
+        sub_356A0();
+    else if (gMain.selectedField == FIELD_KYOGRE)
+        sub_3ADA0();
+    else if (gMain.selectedField == FIELD_GROUDON)
+        sub_3E5D0();
+
+    sub_11F0(1);
+}
+
 void sub_497BC(void)
 {
     gMain.blendControl = gCurrentPinballGame->unk1106;
