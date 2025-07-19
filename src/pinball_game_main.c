@@ -85,9 +85,6 @@ extern const u8 gUnknown_084C0C6C[];
 extern u8 *gMonPortraitGroupGfx[];
 
 void sub_1D4D0(void);
-void sub_356A0(void);
-void sub_3ADA0(void);
-void sub_3E5D0(void);
 void sub_467F4(void);
 void sub_4A6A0(void);
 void sub_47110(void);

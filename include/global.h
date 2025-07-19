@@ -177,7 +177,7 @@ struct PinballGame
     /*0x0EA*/ u16 unkEA;
     /*0x0EC*/ u16 unkEC;
     /*0x0EE*/ s16 unkEE;
-    /*0x0EF*/ u8 fillerF0[0x2];
+    /*0x0F0*/ u8 fillerF0[0x2];
     /*0x0F2*/ s8 unkF2;
     /*0x0F3*/ u8 fillerF3[0x7];
     /*0x0FA*/ s8 unkFA;
@@ -190,7 +190,9 @@ struct PinballGame
     /*0x125*/ s8 unk125;
     /*0x126*/ s8 unk126;
     /*0x127*/ s8 unk127;
-    /*0x128*/ u8 filler128[0x3];
+    /*0x128*/ u8 unk128;
+    /*0x129*/ u8 unk129;
+    /*0x12A*/ u8 filler12A;
     /*0x12B*/ s8 forceSpecialMons;  // When on, force next catch mode species to be special mons
     /*0x12C*/ s8 forcePichuEgg;     // When on, force next egg mode species to be Pichu
     /*0x12D*/ u8 filler12D;
@@ -263,7 +265,10 @@ struct PinballGame
     /*0x281*/ s8 evolvablePartySize;
     /*0x282*/ s8 unk282;
     /*0x283*/ u8 numCompletedBonusStages;
-    /*0x284*/ u8 filler284[0xC];
+    /*0x284*/ u8 filler284[0x4];
+    /*0x288*/ s16 unk288;
+    /*0x28A*/ s16 unk28A;
+    /*0x28C*/ u8 filler28C[0x4];
     /*0x290*/ u32 unk290;
     /*0x294*/ s8 unk294;
     /*0x295*/ u8 unk295;
@@ -283,8 +288,8 @@ struct PinballGame
     /*0x2AA*/ u16 unk2AA;
     /*0x2AC*/ s16 unk2AC;
     /*0x2AE*/ u8 filler2AE[0x22];
-    /*0x2D0*/ s8 unk2D1;
-    /*0x2D1*/ u8 filler2D2[2];
+    /*0x2D0*/ s8 unk2D0;
+    /*0x2D1*/ u8 filler2D1[3];
     /*0x2D4*/ u16 unk2D4;
     /*0x2D6*/ u16 unk2D6;
     /*0x2D8*/ u8 filler2D8[0x2];
@@ -347,7 +352,7 @@ struct PinballGame
     /*0x3DD*/ u8 unk3DD;
     /*0x3DE*/ s8 unk3DE;
     /*0x3DF*/ s8 unk3DF;
-    /*0x3E0*/ u8 unk3E0;
+    /*0x3E0*/ s8 unk3E0;
     /*0x3E1*/ u8 unk3E1;
     /*0x3E2*/ s16 unk3E2;
     /*0x3E4*/ u16 unk3E4;
@@ -410,10 +415,12 @@ struct PinballGame
     /*0x5A0*/ u8 filler5A0[0x4];
     /*0x5A4*/ u8 unk5A4;
     /*0x5A5*/ u8 unk5A5;
-    /*0x5A6*/ u8 filler5A6[0x3];
+    /*0x5A6*/ u16 unk5A6;
+    /*0x5A8*/ u8 filler5A8;
     /*0x5A9*/ u8 unk5A9;
     /*0x5AA*/ u16 unk5AA;
-    /*0x5AC*/ u8 filler5AC[0x6];
+    /*0x5AC*/ s32 unk5AC;
+    /*0x5B0*/ u16 unk5B0;
     /*0x5B2*/ u8 unk5B2;
     /*0x5B3*/ u8 filler5B3[0x3D];
     /*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
@@ -500,10 +507,11 @@ struct PinballGame
     /*0x1101*/u8 unk1101;
     /*0x1102*/u8 unk1102;
     /*0x1103*/u8 unk1103;
-    /*0x1104*/u8 filler1104[0x2];
-    /*0x1106*/u16 unk1106;
-    /*0x1108*/u16 unk1108;
-    /*0x110A*/u16 unk110A;
+    /*0x1104*/s8 unk1104;
+    /*0x1105*/u8 filler1105[0x1];
+    /*0x1106*/volatile u16 unk1106;
+    /*0x1108*/volatile u16 unk1108;
+    /*0x110A*/volatile u16 unk110A;
     /*0x110C*/u16 unk110C;
     /*0x110E*/u16 unk110E;
     /*0x1110*/volatile u16 unk1110;
@@ -511,8 +519,9 @@ struct PinballGame
     /*0x1114*/volatile u16 unk1114;
     /*0x1116*/u16 unk1116;
     /*0x1118*/u16 unk1118;
-    /*0x111A*/u8 unk111A[OBJ_PLTT_SIZE];
-    /*0x131A*/u8 filler131A[0x6];
+    /*0x111A*/u16 unk111A[OBJ_PLTT_SIZE / 0x20][0x10];
+    /*0x131A*/u8 filler131A[0x2];
+    /*0x131C*/u32 unk131C;
     /*0x1320*/s16 unk1320;
     /*0x1322*/s16 unk1322;
     /*0x1324*/s16 unk1324;
@@ -598,5 +607,12 @@ extern u8 gUnknown_083FE44C[][0x200];
 extern const s16 gUnknown_086ACDF4[9];
 extern struct Unk086ACE8C gUnknown_086ACE8C[13];
 extern u16 gUnknown_086ACEF4[2];
+extern s16 gUnknown_086AE68E[][2]; 
+extern struct SongHeader gUnknown_086A17D8;
+extern u16 gUnknown_08137D40[]; 
+extern u16 gUnknown_084EDACC[]; 
+extern u16 gUnknown_08494E4C[]; 
+extern u8 gUnknown_084FF30C[];
+
 
 #endif // GUARD_GLOBAL_H

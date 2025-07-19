@@ -76,11 +76,14 @@ extern const s16 gUnknown_086A6356[];
 extern const u16 gUnknown_086A5EE2[][51];
 extern const s16 gUnknown_086A6014[][51];
 extern const u16 gUnknown_086A5E12[][4];
-extern const u8 gUnknown_08090780[];
-extern u8 gUnknown_08092FA0[]; // needs const
 extern s16 gUnknown_086A64F0[];
 extern u8 *gMonPortraitGroupGfx[];
 extern u8 *gMonPortraitGroupPals[];
+
+// The japanese and english text glyphs are sourced from the same blob of tile graphics, and
+// each glyph is two tiles high.
+#define ENGLISH_GLYPHS_START 0x2820
+extern const u8 gPokedexTextGlyphs_Gfx[];
 
 struct PokedexEntry
 {
@@ -90,7 +93,7 @@ struct PokedexEntry
     /*0x2C*/ s16 category[POKEMON_CATEGORY_NAME_LENGTH];
     // The dex description has 2 pages with 3 lines each. Each line
     // is 42 characters long.
-    /*0x42*/ s16 description[2 * 3 * 42];
+    /*0x42*/ s16 description[2 * 3 * POKEMON_DEX_LINE_LENGTH];
 }; /* size=0x23C */
 
 extern const struct PokedexEntry gPokedexEntries[];
@@ -997,16 +1000,16 @@ void sub_51FC(void)
     const struct SpriteSet *spriteSet;
     int var0, var1;
 
-    group0 = &gUnknown_0200B3B8[0];
-    group1 = &gUnknown_0200B3B8[1];
-    group2 = &gUnknown_0200B3B8[2];
-    group3 = &gUnknown_0200B3B8[3];
-    group4 = &gUnknown_0200B3B8[4];
-    group5 = &gUnknown_0200B3B8[5 + gUnknown_0201A448];
-    group6 = &gUnknown_0200B3B8[17 + gUnknown_0202BEFC];
-    group7 = &gUnknown_0200B3B8[22 + gUnknown_0202BEE0];
-    group8 = &gUnknown_0200B3B8[24];
-    group9 = &gUnknown_0200B3B8[25 + gUnknown_02019C28 * 2 + gUnknown_0202C5AC];
+    group0 = &gMain_spriteGroups[0];
+    group1 = &gMain_spriteGroups[1];
+    group2 = &gMain_spriteGroups[2];
+    group3 = &gMain_spriteGroups[3];
+    group4 = &gMain_spriteGroups[4];
+    group5 = &gMain_spriteGroups[5 + gUnknown_0201A448];
+    group6 = &gMain_spriteGroups[17 + gUnknown_0202BEFC];
+    group7 = &gMain_spriteGroups[22 + gUnknown_0202BEE0];
+    group8 = &gMain_spriteGroups[24];
+    group9 = &gMain_spriteGroups[25 + gUnknown_02019C28 * 2 + gUnknown_0202C5AC];
 
     group0->available = TRUE;
     group1->available = TRUE;
@@ -1212,14 +1215,14 @@ static void RenderLinkGraphics(void)
     struct OamDataSimple *groupOam;
     const struct SpriteSet *spriteSet;
 
-    group0 = &gUnknown_0200B3B8[0];
-    group1 = &gUnknown_0200B3B8[1];
-    group2 = &gUnknown_0200B3B8[2];
-    group3 = &gUnknown_0200B3B8[3];
-    group4 = &gUnknown_0200B3B8[4];
-    group6 = &gUnknown_0200B3B8[5 + gUnknown_0201A448];
-    group7 = &gUnknown_0200B3B8[17 + gUnknown_0202BEFC];
-    group5 = &gUnknown_0200B3B8[24];
+    group0 = &gMain_spriteGroups[0];
+    group1 = &gMain_spriteGroups[1];
+    group2 = &gMain_spriteGroups[2];
+    group3 = &gMain_spriteGroups[3];
+    group4 = &gMain_spriteGroups[4];
+    group6 = &gMain_spriteGroups[5 + gUnknown_0201A448];
+    group7 = &gMain_spriteGroups[17 + gUnknown_0202BEFC];
+    group5 = &gMain_spriteGroups[24];
 
     group0->available = TRUE;
     group1->available = TRUE;
@@ -1736,8 +1739,8 @@ static void PrintSelectedMonDexNum(s16 species)
             if (var2 == 0)
                 var2 = 4;
 
-            DmaCopy16(3, &gUnknown_08090780[var1], gUnknown_0202BE30, 0x20);
-            DmaCopy16(3, &gUnknown_08090780[var1 + 0x400], gUnknown_0201B130, 0x20);
+            DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gUnknown_0202BE30, 0x20);
+            DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1 + 0x400], gUnknown_0201B130, 0x20);
             sub_71DC(var2, var0, 0);
             var0 += var2;
         }
@@ -1749,7 +1752,7 @@ static void PrintSelectedMonDexNum(s16 species)
     else
     {
         for (i = 0; i < 10; i++)
-            sub_10708(gUnknown_08092FA0, (void *)0x06004C00 + i * 0x20, 1, 2);
+            sub_10708((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004C00 + i * 0x20, 1, 2);
     }
 
     if (gPokedexFlags[species] == SPECIES_SEEN || gPokedexFlags[species] > SPECIES_SHARED)
@@ -1761,8 +1764,8 @@ static void PrintSelectedMonDexNum(s16 species)
             if (var2 == 0)
                 var2 = 6;
 
-            DmaCopy16(3, &gUnknown_08090780[var1], gUnknown_0202BE30, 0x20);
-            DmaCopy16(3, &gUnknown_08090780[0x400 + var1], gUnknown_0201B130, 0x20);
+            DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gUnknown_0202BE30, 0x20);
+            DmaCopy16(3, &gPokedexTextGlyphs_Gfx[0x400 + var1], gUnknown_0201B130, 0x20);
             sub_71DC(var2, var0, 0);
             var0 += var2;
         }
@@ -1773,7 +1776,7 @@ static void PrintSelectedMonDexNum(s16 species)
     else
     {
         for (i = 0; i < 9; i++)
-            sub_10708(gUnknown_08092FA0, (void *)0x06004D00 + i * 0x20, 1, 2);
+            sub_10708((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004D00 + i * 0x20, 1, 2);
     }
 
     if (gPokedexFlags[species] == SPECIES_CAUGHT)
@@ -1860,6 +1863,10 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
     {
         if (gPokedexFlags[listPosition + i] > SPECIES_UNSEEN)
         {
+			//This manually builds the tiles needed, for kerning reasons.
+			//First 3 bytes point to a tile glyph pair (with an upper and lower half) and
+			//the 4th byte is the width needed for that glyph, with the 'space between' included.
+			//The 'space' character is 4 px wide.
             for (j = 0; j < POKEMON_NAME_LENGTH; j++)
             {
                 // These don't use listPosition for some reason, despite being the only value passed
@@ -1868,8 +1875,8 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
                 if (var2 == 0)
                     var2 = 4;
 
-                DmaCopy16(3, &gUnknown_08090780[var1], gUnknown_0202BE30, 0x20);
-                DmaCopy16(3, &gUnknown_08090780[0x400 + var1], gUnknown_0201B130, 0x20);
+                DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gUnknown_0202BE30, 0x20);
+                DmaCopy16(3, &gPokedexTextGlyphs_Gfx[0x400 + var1], gUnknown_0201B130, 0x20);
                 sub_71DC(var2, var0, 0);
                 var0 += var2;
             }
@@ -1881,9 +1888,9 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
         else
         {
             for (j = 0; j < 7; j++)
-                sub_10708(gUnknown_08092FA0, (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
+                sub_10708((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
         
-            sub_10708((void *)gUnknown_08090780, (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
+            sub_10708((void *)gPokedexTextGlyphs_Gfx, (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
         }
     }
 }
@@ -1945,8 +1952,8 @@ void sub_70E0(s16 species, u32 page)
             if (var2 == 0)
                 var2 = 4;
 
-            DmaCopy16(3, &gUnknown_08090780[var1], gUnknown_0202BE30, 0x20);
-            DmaCopy16(3, &gUnknown_08090780[0x400 + var1], gUnknown_0201B130, 0x20);
+            DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gUnknown_0202BE30, 0x20);
+            DmaCopy16(3, &gPokedexTextGlyphs_Gfx[0x400 + var1], gUnknown_0201B130, 0x20);
             sub_71DC(var2, var0, i);
             var0 += var2;
         }

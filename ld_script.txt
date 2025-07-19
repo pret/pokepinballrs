@@ -46,7 +46,7 @@ SECTIONS
         src/rom_11B9C.o(.text);
         src/rom_1332C.o(.text);
         src/rom_13D24.o(.text);
-        asm/rom_11B9C.o(.text14488);
+        asm/rom_11B9C.o(.text);
         src/rom_17634.o(.text);
         asm/rom_11B9C.o(.text179D0);
         src/rom_18784.o(.text);
@@ -66,7 +66,8 @@ SECTIONS
         src/rom_31F6C.o(.text);
         asm/rom_3219C.o(.text);
         src/rom_356A0.o(.text);
-        asm/rom_3219C.o(.text36CB4)
+        asm/rom_3219C.o(.text36CB4);
+        src/rom_49A34.o(.text);
         src/pinball_game_main.o(.text);
         asm/rom_4CEA8.o(.text);
         src/rom_4E598.o(.text);
