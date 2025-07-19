@@ -4,7 +4,7 @@
 
 	.syntax unified
 
-	.section .text14488
+	.text
 
 	thumb_func_start sub_14488
 sub_14488: @ 0x08014488
