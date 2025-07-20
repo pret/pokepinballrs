@@ -70,7 +70,7 @@ RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
 FIX     := tools/gbafix/gbafix$(EXE)
 
 TOOLS_DIR = tools
-TOOLDIRS = $(filter-out $(TOOLS_DIR)/agbcc,$(wildcard $(TOOLS_DIR)/*))
+TOOLDIRS = $(filter-out $(TOOLS_DIR)/agbcc $(TOOLS_DIR)/m2ctx.py,$(wildcard $(TOOLS_DIR)/*))
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
 
