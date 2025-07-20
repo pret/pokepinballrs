@@ -386,8 +386,8 @@ struct PinballGame
     /*0x412*/ s16 unk412;
     /*0x414*/ s8 unk414;
     /*0x415*/ u8 filler415[0x7];
-    /*0x41C*/ u8 unk41C[4];
-    /*0x420*/ u8 unk420[10];
+    /*0x41C*/ s8 unk41C[4];
+    /*0x420*/ s8 unk420[10];
     /*0x42A*/ u8 unk42A[7];
     /*0x431*/ u8 filler431[0x21];
     /*0x452*/ u16 unk452;
@@ -598,6 +598,8 @@ extern struct PinballGame gUnknown_08155A3C;
 extern struct PinballGame gUnknown_08156E60;
 extern s32 gUnknown_081B36A4[64];
 extern s32 gUnknown_082EE0E0[0x3E0];
+extern u16 gUnknown_0832D604[0x1600];
+extern u16 gUnknown_08330204[0x1600];
 extern const u16 gUnknown_08391A4C[0x1000];
 extern const u16 gUnknown_08393A4C[0x1000];
 extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
