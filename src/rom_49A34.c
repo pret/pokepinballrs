@@ -10,6 +10,15 @@ extern const u8 gUnknown_08510CAC[][0x20];
 extern const u8 gUnknown_0850558C[][0x20];
 extern const s8 gUnknown_086B0128[][3][20];
 
+void sub_47FBC(void)
+{
+    int i;
+    for (i = 0x340; i < 0x340 + 0x40; i++)
+        gUnknown_03005C00[i] = 0x1FF;
+
+    DmaCopy16(3, gUnknown_03005C00, (void *)0x6002000, 0x800);
+}
+
 void sub_47FF8(void)
 {
     int newX, newY;

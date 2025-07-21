@@ -33473,32 +33473,3 @@ _08047FA0:
 _08047FB0: .4byte 0x0000132C
 _08047FB4: .4byte gCurrentPinballGame
 _08047FB8: .4byte 0x000005F7
-
-	thumb_func_start sub_47FBC
-sub_47FBC: @ 0x08047FBC
-	ldr r3, _08047FE4 @ =gUnknown_03005C00
-	ldr r2, _08047FE8 @ =0x000001FF
-	movs r0, #0xd0
-	lsls r0, r0, #3
-	adds r1, r3, r0
-	movs r0, #0x40
-_08047FC8:
-	strh r2, [r1]
-	adds r1, #2
-	subs r0, #1
-	cmp r0, #0
-	bne _08047FC8
-	ldr r1, _08047FEC @ =0x040000D4
-	str r3, [r1]
-	ldr r0, _08047FF0 @ =0x06002000
-	str r0, [r1, #4]
-	ldr r0, _08047FF4 @ =0x80000400
-	str r0, [r1, #8]
-	ldr r0, [r1, #8]
-	bx lr
-	.align 2, 0
-_08047FE4: .4byte gUnknown_03005C00
-_08047FE8: .4byte 0x000001FF
-_08047FEC: .4byte 0x040000D4
-_08047FF0: .4byte 0x06002000
-_08047FF4: .4byte 0x80000400
