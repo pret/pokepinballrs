@@ -77,6 +77,7 @@ void ClearGraphicsMemory(void);
 void sub_0518(void);
 void ClearSprites(void);
 void sub_0678(u8 *arg0, s16 arg1, s16 arg2);
+u8 *sub_06CC(int arg0, u8 *arg1, int arg2, s16 arg3);
 void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum);
 
 // src/bonus_field_select.s
@@ -633,8 +634,8 @@ extern void sub_472E4();
 //extern ? sub_47670();
 //extern ? sub_478D8();
 extern void sub_47FBC(void);
-//extern ? sub_47FF8();
-//extern ? sub_48124();
+extern void sub_47FF8(void);
+extern void sub_48124(void);
 extern void sub_48190(void);
 //extern ? sub_495A0();
 //extern ? sub_497BC();

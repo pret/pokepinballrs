@@ -18,10 +18,69 @@ extern const u8 gUnknown_08521FAC[];
 extern const u8 gUnknown_08521FCC[];
 extern const u8 gUnknown_0850398C[];
 extern const u8 gUnknown_08509F4C[];
+extern const u8 gUnknown_08137DBE[];
+extern const u8 gUnknown_08137DE8[];
+extern u8 gUnknown_08137E00[];
 
 extern s16 gUnknown_02030750[];
 extern s16 gUnknown_02031500[];
 extern s16 gUnknown_020306C0[];
+
+void sub_47344(void)
+{
+    int i;
+    u8 str0[42];
+    u8 str1[24];
+
+    memcpy(str0, gUnknown_08137DBE, 42);
+    memcpy(str1, gUnknown_08137DE8, 24);
+
+    for (i = 0x340; i < 0x380; i++)
+        gUnknown_03005C00[i] = 0;
+
+    sub_06CC(gCurrentPinballGame->ball->positionQ0.x, &str1[1], 3, 1);
+    sub_06CC(gCurrentPinballGame->ball->positionQ0.y, &str1[5], 3, 1);
+    sub_0678(&str1[0], 26, 9);
+    sub_06CC(gCurrentPinballGame->unk68, &str1[13], 3, 1);
+    sub_0678(&str1[12], 26, 18);
+    sub_0678(str0, 26, 0);
+
+    if (JOY_HELD(B_BUTTON))
+    {
+        if (gMain.systemFrameCount & 0x8)
+            sub_0678(gUnknown_08137E00, gMain.unk10 + 26, 0);
+
+        if (JOY_NEW(DPAD_UP) && gMain.unk10 != 0)
+            gMain.unk10--;
+
+        if (JOY_NEW(DPAD_DOWN) && gMain.unk10 == 0)
+            gMain.unk10++;
+
+        if (gCurrentPinballGame->unk740 == 2)
+            sub_48124();
+    }
+    else
+    {
+        switch (gCurrentPinballGame->unk740)
+        {
+        case 1:
+            sub_47FF8();
+            break;
+        case 2:
+            sub_48124();
+            break;
+        }
+
+        sub_0678(gUnknown_08137E00, gMain.unk10 + 26, 0);
+    }
+
+    for (i = 0x340; i < 0x380; i++)
+        gUnknown_03005C00[i] += 0xC100;
+
+    DmaCopy16(3, gUnknown_03005C00, (void *)0x06002000, 0x800);
+    if (JOY_HELD(A_BUTTON))
+        sub_47FBC();
+}
 
 void sub_474F4(void)
 {
@@ -403,7 +462,7 @@ void sub_478D8(void)
 void sub_47FBC(void)
 {
     int i;
-    for (i = 0x340; i < 0x340 + 0x40; i++)
+    for (i = 0x340; i < 0x380; i++)
         gUnknown_03005C00[i] = 0x1FF;
 
     DmaCopy16(3, gUnknown_03005C00, (void *)0x6002000, 0x800);

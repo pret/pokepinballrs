@@ -1251,10 +1251,13 @@ gUnknown_08137DA4:: @ 0x08137DA4
 	.incbin "baserom.gba", 0x137DA4, 0x1A
 
 gUnknown_08137DBE:: @ 0x08137DBE
-	.incbin "baserom.gba", 0x137DBE, 0x2A
+	.byte ' ','B','A','L','L','-','M','V',':',0,0,0,0,0
+	.byte ' ','B','A','L','L','-','S','P','D',':',0,0,0,0
+	.byte ' ',' ','D','E','B','U','G','1',':',0,0,0,0,0
 
 gUnknown_08137DE8:: @ 0x08137DE8
-	.incbin "baserom.gba", 0x137DE8, 0x18
+	.byte '(','0','0','0',' ','0','0','0',')',0,0,0
+	.byte '(','0','0','0',')',' ',' ',' ',' ',0,0,0
 
 gUnknown_08137E00:: @ 0x08137E00
 	.incbin "baserom.gba", 0x137E00, 0x4
