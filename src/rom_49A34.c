@@ -17,6 +17,66 @@ extern const u8 gUnknown_08514F6C[];
 extern const u8 gUnknown_08521FAC[];
 extern const u8 gUnknown_08521FCC[];
 extern const u8 gUnknown_0850398C[];
+extern const u8 gUnknown_08509F4C[];
+
+extern s16 gUnknown_02030750[];
+extern s16 gUnknown_02031500[];
+extern s16 gUnknown_020306C0[];
+
+void sub_474F4(void)
+{
+    int i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    u16 var0;
+
+    group = gMain.unk44[42];
+    if (group->available)
+    {
+        group->baseX = 63;
+        group->baseY = 52;
+        for (i = 0; i < 8; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+    }
+
+    var0 = gMain.systemFrameCount * 0x1000;
+    for (i = 0; i < 8; i++)
+    {
+        gUnknown_02031500[i] = (gUnknown_02030750[i] * Cos(var0)) / 200;
+        if ((gMain.systemFrameCount & 1) == 0)
+        {
+            gUnknown_02030750[i]++;
+            if (gUnknown_02030750[i] >= 0)
+                gUnknown_02030750[i] = 0;
+        }
+    }
+
+    if (gMain.unk12 == 3600)
+    {
+        DmaCopy16(3, gUnknown_08509F4C, (void *)0x06015800, 0x400);
+        gMain.unk44[42]->available = 1;
+        for (i = 0; i < 8; i++)
+        {
+            gUnknown_02031500[i] = 0xE0C0;
+            gUnknown_020306C0[i] = 0;
+            gUnknown_02030750[i] = (Random() % 30) + 0xFFCE;
+        }
+    }
+
+    if (gMain.unk12)
+    {
+        gMain.unk12--;
+        if (gMain.unk12 == 0)
+            gCurrentPinballGame->unk1D = 2;
+    }
+
+    if (JOY_NEW(A_BUTTON))
+        gCurrentPinballGame->unk1D = 2;
+}
 
 void sub_47670(void)
 {
