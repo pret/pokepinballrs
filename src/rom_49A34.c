@@ -10,6 +10,18 @@ extern const u8 gUnknown_08510CAC[][0x20];
 extern const u8 gUnknown_0850558C[][0x20];
 extern const s8 gUnknown_086B0128[][3][20];
 
+void sub_48124(void)
+{
+    if (JOY_NEW(DPAD_UP))
+        gCurrentPinballGame->ballSpeed^= 1;
+    if (JOY_NEW(DPAD_DOWN))
+        gCurrentPinballGame->ballSpeed^= 1;
+    if (JOY_NEW(DPAD_RIGHT))
+        gCurrentPinballGame->ballSpeed^= 1;
+    if (JOY_NEW(DPAD_LEFT))
+        gCurrentPinballGame->ballSpeed^= 1;
+}
+
 void sub_48190(void)
 {
     int i, j;
@@ -87,7 +99,6 @@ void sub_48190(void)
             }
             else
             {
-                // _080483CC
                 gCurrentPinballGame->unk63A = 1;
                 gMain.unk12 = 51;
                 var0 = 100;
@@ -104,7 +115,6 @@ void sub_48190(void)
         }
     }
 
-    // _08048412
     if (gMain.unk12 == 185)
     {
         gCurrentPinballGame->unk639 = 0;
@@ -117,7 +127,6 @@ void sub_48190(void)
                 gCurrentPinballGame->unk678[i][j] = gUnknown_086B0128[gCurrentPinballGame->unk638][i][j];
     }
 
-    // _08048496
     if (gCurrentPinballGame->unk63A != 0)
     {
         if (gMain.unk12 < 150)
@@ -143,7 +152,7 @@ void sub_48190(void)
                     gCurrentPinballGame->unk63C[i][j] = 1;
                 }
             }
-            else if (var0 >= 148) // _08048580
+            else if (var0 >= 148)
             {
                 var0 = var0 - 148;
                 var2 = var0 / 24;
@@ -157,7 +166,6 @@ void sub_48190(void)
                 }
             }
 
-            // _080485D4
             if (gCurrentPinballGame->unk63A == 1)
             {
                 gCurrentPinballGame->unk63A = 212;
@@ -167,7 +175,7 @@ void sub_48190(void)
                         gCurrentPinballGame->unk678[i][j] = gUnknown_086B0128[gCurrentPinballGame->unk638][i][j];
             }
         }
-        else if (gCurrentPinballGame->unk638 == 5) //_08048650
+        else if (gCurrentPinballGame->unk638 == 5)
         {
             if (var0 < 17)
             {
@@ -177,7 +185,6 @@ void sub_48190(void)
             }
             else
             {
-                // _08048672
                 sp10 = 0;
                 gCurrentPinballGame->unk63A = 212;
                 gCurrentPinballGame->unk638++;
@@ -195,7 +202,6 @@ void sub_48190(void)
         }
         else
         {
-            // _08048720
             if (var0 < 89)
             {
                 var2 = var0 / 24;
@@ -216,12 +222,10 @@ void sub_48190(void)
             }
         }
 
-        // _080487A6
         if (sp18)
             m4aSongNumStart(SE_UNKNOWN_0xA1);
     }
 
-    // _080487B2
     value = 0;
     multiplier = 0;
     if (gCurrentPinballGame->unk63A == 212 || sp14 != 0)
@@ -301,7 +305,6 @@ void sub_48190(void)
         }
         else if (gCurrentPinballGame->unk638 == 5)
         {
-            // _08048B86
             for (i = 0; i < 10; i++)
                 sp0[i] = 0;
             value = gCurrentPinballGame->unk630;
@@ -320,7 +323,6 @@ void sub_48190(void)
         }
         else
         {
-            // _08048CB8
             for (i = 0; i < 10; i++)
                 sp0[i] = 0;
             value = gCurrentPinballGame->unk630;
@@ -390,7 +392,6 @@ void sub_48190(void)
         }
     }
 
-    // _0804908E
     if (var0 >= 90 && var0 <= 140)
     {
         if (gCurrentPinballGame->unk638 < 5)
@@ -414,7 +415,6 @@ void sub_48190(void)
                 }
             }
 
-            // _08049134
             value = gCurrentPinballGame->unk630;
             sp0[8] = value / 100000000;
             sp0[7] = (value % 100000000) / 10000000;
@@ -431,7 +431,6 @@ void sub_48190(void)
         }
         else if (gCurrentPinballGame->unk638 == 6)
         {
-            // _08049250
             gCurrentPinballGame->unk639 = 1;
             if (gCurrentPinballGame->unk6B4 || gCurrentPinballGame->unk6B8)
                 gCurrentPinballGame->unk63A = 100;
@@ -459,7 +458,6 @@ void sub_48190(void)
                 }
             }
 
-            // _08049302
             for (i = 0; i < 11; i++)
                 sp0[i] = 0;
             for (j = 0; j < 20; j++)
@@ -484,7 +482,6 @@ void sub_48190(void)
         }
     }
 
-    // _0804948A
     if (gCurrentPinballGame->unk63A)
         gCurrentPinballGame->unk63A--;
 
