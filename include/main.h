@@ -49,7 +49,7 @@ struct Main
     /*0x10*/ u8 unk10;
     /*0x11*/ u8 unk11;
     /*0x12*/ u16 unk12;
-    /*0x14*/ s16 unk14;
+    /*0x14*/ u16 unk14;
     /*0x16*/ u16 unk16;
     /*0x18*/ u16 newKeys;
     /*0x1A*/ u16 releasedKeys;
