@@ -370,7 +370,7 @@ extern void ClearSomeArray(void);
 // asm/rom_11B9C.s
 
 //extern ? sub_11B9C();
-//extern ? sub_11C14();
+extern void sub_11C14(s16);
 //extern ? sub_11C98();
 extern void sub_1332C();
 extern void sub_1333C();

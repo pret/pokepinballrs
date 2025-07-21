@@ -9,6 +9,230 @@ extern const u8 gUnknown_08510CAC[][0x20];
 
 extern const u8 gUnknown_0850558C[][0x20];
 extern const s8 gUnknown_086B0128[][3][20];
+extern const u8 gUnknown_0850100C[];
+extern const u8 gUnknown_085028CC[];
+extern const u8 gUnknown_085038CC[];
+extern const u8 gUnknown_08514F4C[];
+extern const u8 gUnknown_08514F6C[];
+
+void sub_478D8(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    int newX, newY;
+    s16 mat3Scale;
+    s16 mat4Scale;
+
+    if (gMain.unk12)
+    {
+        group = &gMain.spriteGroups[5];
+        if (group->available)
+        {
+            group->baseX = 88;
+            group->baseY = 20 + gCurrentPinballGame->unkFE;
+            for (i = 0; i < 2; i++)
+            {
+                oamSimple = &group->oam[i];
+                gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+                gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+                gOamBuffer[oamSimple->oamId].affineMode = ST_OAM_AFFINE_DOUBLE;
+                gOamBuffer[oamSimple->oamId].matrixNum = 3;
+            }
+        }
+
+        group = &gMain.spriteGroups[4];
+        if (group->available)
+        {
+            group->baseX = 24 + gCurrentPinballGame->unk100 / 100;
+            group->baseY = gCurrentPinballGame->unkFE + 20 + gCurrentPinballGame->unk104 / 100;
+
+            oamSimple = &group->oam[0];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+            gOamBuffer[oamSimple->oamId].affineMode = ST_OAM_AFFINE_DOUBLE;
+            gOamBuffer[oamSimple->oamId].matrixNum = 4;
+        }
+
+        group = &gMain.spriteGroups[3];
+        if (group->available)
+        {
+            group->baseX = 56 + gCurrentPinballGame->unk100 / 100;
+            group->baseY = gCurrentPinballGame->unkFE + 52 + gCurrentPinballGame->unk104 / 100;
+            for (i = 0; i < 2; i++)
+            {
+                oamSimple = &group->oam[i];
+                gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+                gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+            }
+        }
+
+        gMain.unk12--;
+        if (gMain.unk12 > 70)
+        {
+            int var0 = (gMain.unk12 + 20) % 0x40;
+            gCurrentPinballGame->unk104 = (Sin(var0 * 0x400) * 500) / 20000;
+            gCurrentPinballGame->unk108 = 10;
+            gCurrentPinballGame->unk10A = 400;
+        }
+        else
+        {
+            gCurrentPinballGame->unk108 = 400;
+            gCurrentPinballGame->unk10A -= 35;
+            gCurrentPinballGame->unk100 += gCurrentPinballGame->unk108;
+            gCurrentPinballGame->unk104 += gCurrentPinballGame->unk10A;
+        }
+
+        if (gMain.unk12 >= 30 && gMain.unk12 < 60)
+        {
+            mat4Scale = (60 - gMain.unk12) * 0x100 / 30 + 0x100;
+        }
+        else
+        {
+            mat4Scale = 0x100;
+            if (gMain.unk12 < 30)
+                gMain.spriteGroups[4].available = 0;
+        }
+
+        if (gMain.unk12 < 31)
+        {
+            if (gMain.unk12 > 10)
+            {
+                mat3Scale = ((gMain.unk12 - 10) * 248) / 20 + 8;
+            }
+            else
+            {
+                mat3Scale = 8;
+                gMain.spriteGroups[5].available = 0;
+            }
+        }
+        else
+        {
+            if (gCurrentPinballGame->unkFE > 0)
+            {
+                gCurrentPinballGame->unkFE -= 8;
+                if (gCurrentPinballGame->unkFE < 0)
+                    gCurrentPinballGame->unkFE = 0;
+            }
+
+            mat3Scale = 0x100;
+        }
+
+        if (gMain.unk12 < 203)
+        {
+            if (gMain.unk12 > 55)
+            {
+                gCurrentPinballGame->unk10C = gCurrentPinballGame->unk108;
+                gCurrentPinballGame->unk10E = gCurrentPinballGame->unk10A - 90;
+                gCurrentPinballGame->unk110 = gCurrentPinballGame->unk100;
+                gCurrentPinballGame->unk114 = gCurrentPinballGame->unk104;
+                if (gMain.unk12 == 56)
+                    m4aSongNumStart(SE_UNKNOWN_0x95);
+
+                gCurrentPinballGame->ball->positionQ8.x = (gCurrentPinballGame->unk110 / 100 + 86) << 8;
+                gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->unkFE + 372 + gCurrentPinballGame->unk114 / 100) << 8;
+            }
+            else if (gMain.unk12 > 31)
+            {
+                gCurrentPinballGame->unk10E += 6;
+                gCurrentPinballGame->unk110 += gCurrentPinballGame->unk10C;
+                gCurrentPinballGame->unk114 += gCurrentPinballGame->unk10E;
+                gMain.spriteGroups[3].available = 0;
+                if (gMain.unk12 == 32)
+                {
+                    gCurrentPinballGame->unk5FA = 0;
+                    m4aSongNumStart(SE_UNKNOWN_0x96);
+                    sub_11B0(6);
+                }
+
+                gCurrentPinballGame->ball->positionQ8.x = (gCurrentPinballGame->unk110 / 100 + 86) << 8;
+                gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->unkFE + 372 + gCurrentPinballGame->unk114 / 100) << 8;
+            }
+            else
+            {
+                gCurrentPinballGame->unk10C = 0;
+                gCurrentPinballGame->unk10E += 20;
+                gCurrentPinballGame->unk110 += gCurrentPinballGame->unk10C;
+                gCurrentPinballGame->unk114 += gCurrentPinballGame->unk10E;
+                gCurrentPinballGame->ball->positionQ8.x = (gCurrentPinballGame->unk110 / 100 + 86) << 8;
+                gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->unkFE + 372 + gCurrentPinballGame->unk114 / 100) << 8;
+                if (gCurrentPinballGame->ball->positionQ8.y > 0x17100)
+                    gCurrentPinballGame->ball->positionQ8.y = 0x17100;
+            }
+
+            gCurrentPinballGame->ball->unk1 = 0;
+            gCurrentPinballGame->ball->prevPositionQ1 = gCurrentPinballGame->ball->positionQ1;
+
+            newX = gCurrentPinballGame->ball->positionQ8.x;
+            if (newX < 0)
+                newX += 0x7F;
+            gCurrentPinballGame->ball->positionQ1.x = newX >> 7;
+
+            newY = gCurrentPinballGame->ball->positionQ8.y;
+            if (newY < 0)
+                newY += 0x7F;
+            gCurrentPinballGame->ball->positionQ1.y = newY >> 7;
+
+            gCurrentPinballGame->ball->velocity.x = 0;
+            gCurrentPinballGame->ball->velocity.y = 0;
+        }
+
+        SetMatrixScale(0x100, mat3Scale, 3);
+        SetMatrixScale(mat4Scale, mat4Scale, 4);
+
+        if (gMain.unk12 == 203)
+        {
+            gCurrentPinballGame->unk100 = 0;
+            gCurrentPinballGame->unk104 = 0;
+            gCurrentPinballGame->unk108 = 0;
+            gCurrentPinballGame->unk10A = 0;
+            gCurrentPinballGame->unkFE = 100;
+            gMain.spriteGroups[5].available = 1;
+            gMain.spriteGroups[4].available = 1;
+            gMain.spriteGroups[3].available = 1;
+            if (gMain.selectedField == FIELD_RUBY)
+            {
+                DmaCopy16(3, gUnknown_0850100C, (void *)0x06015800, 0x2400);
+                DmaCopy16(3, gUnknown_085028CC, (void *)0x06016800, 0x800);
+                DmaCopy16(3, gUnknown_085038CC, (void *)0x06017000, 0xC0);
+                DmaCopy16(3, gUnknown_08514F4C, (void *)0x050003C0, 0x20);
+            }
+            else
+            {
+                DmaCopy16(3, gUnknown_0850100C, (void *)0x06015800, 0x2400);
+                DmaCopy16(3, gUnknown_08514F6C, (void *)0x050003C0, 0x20);
+            }
+
+            gCurrentPinballGame->unk1F = 2;
+            gCurrentPinballGame->unk5FA = 1;
+            gCurrentPinballGame->unk5F7 = 1;
+            gCurrentPinballGame->unk1100 = 1;
+            m4aSongNumStart(SE_UNKNOWN_0x94);
+        }
+        else if (gMain.unk12 == 0)
+        {
+            gMain.spriteGroups[5].available = 0;
+            gMain.spriteGroups[4].available = 0;
+        }
+    }
+    else
+    {
+        gMain.unkF &= 0xF7;
+        gCurrentPinballGame->unk26 = 60;
+        sub_11C14(0);
+        gCurrentPinballGame->unk1F = 0;
+        sub_46FD4(0);
+        gCurrentPinballGame->unk29E = 0;
+        if (gMain.selectedField == FIELD_RUBY)
+            gCurrentPinballGame->ball->unk1 = 3;
+        else
+            gCurrentPinballGame->ball->unk1 = 1;
+
+        gCurrentPinballGame->unk5F7 = 0;
+        gCurrentPinballGame->unkE4 = 0;
+        gCurrentPinballGame->unk1100 = 0;
+    }
+}
 
 void sub_47FBC(void)
 {
