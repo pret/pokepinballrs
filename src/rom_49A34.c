@@ -26,6 +26,46 @@ extern s16 gUnknown_02030750[];
 extern s16 gUnknown_02031500[];
 extern s16 gUnknown_020306C0[];
 
+// Handle debug system flags
+void sub_472E4(void)
+{
+    if (gMain.unkF == 0x0)
+        return;
+
+    if (gMain.unkF & 0x8)
+    {
+        // instantly reset ball
+        sub_478D8();
+        return;
+    }
+
+    if (gMain.unkF & 0x10)
+    {
+        // lose life, and reset ball
+        sub_47670();
+        return;
+    }
+
+    if (gMain.unkF & 0x20)
+    {
+        // end game
+        sub_474F4();
+        return;
+    }
+
+    if (gMain.unkF & 0x4)
+    {
+        // debug tool (move ball position, and change ball speed)
+        sub_47344();
+        gCurrentPinballGame->unk740 = gMain.unk10 + 1;
+        return;
+    }
+}
+
+// Debug menu that lets you move the ball's position and change ball speed.
+// However, the menu text rendering is only half-implemented--the second
+// menu item is for changing the ball's speed (toggling between fast and slow),
+// but there is no indication of happening on-screen.
 void sub_47344(void)
 {
     int i;
