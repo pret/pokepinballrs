@@ -10,6 +10,48 @@ extern const u8 gUnknown_08510CAC[][0x20];
 extern const u8 gUnknown_0850558C[][0x20];
 extern const s8 gUnknown_086B0128[][3][20];
 
+void sub_47FF8(void)
+{
+    int newX, newY;
+
+    if (JOY_HELD(A_BUTTON))
+    {
+        if (JOY_HELD(DPAD_UP))
+            gCurrentPinballGame->ball->positionQ8.y -= 0x80;
+        if (JOY_HELD(DPAD_DOWN))
+            gCurrentPinballGame->ball->positionQ8.y += 0x80;
+        if (JOY_HELD(DPAD_LEFT))
+            gCurrentPinballGame->ball->positionQ8.x -= 0x80;
+        if (JOY_HELD(DPAD_RIGHT))
+            gCurrentPinballGame->ball->positionQ8.x += 0x80;
+    }
+    else
+    {
+        if (JOY_HELD(DPAD_UP))
+            gCurrentPinballGame->ball->positionQ8.y -= 0x200;
+        if (JOY_HELD(DPAD_DOWN))
+            gCurrentPinballGame->ball->positionQ8.y += 0x200;
+        if (JOY_HELD(DPAD_LEFT))
+            gCurrentPinballGame->ball->positionQ8.x -= 0x200;
+        if (JOY_HELD(DPAD_RIGHT))
+            gCurrentPinballGame->ball->positionQ8.x += 0x200;
+    }
+
+    gCurrentPinballGame->ball->prevPositionQ1 = gCurrentPinballGame->ball->positionQ1;
+    newX = gCurrentPinballGame->ball->positionQ8.x;
+    if (newX < 0)
+        newX += 0x7F;
+    gCurrentPinballGame->ball->positionQ1.x = newX >> 7;
+
+    newY = gCurrentPinballGame->ball->positionQ8.y;
+    if (newY < 0)
+        newY += 0x7F;
+    gCurrentPinballGame->ball->positionQ1.y = newY >> 7;
+
+    gCurrentPinballGame->ball->velocity.x = 0;
+    gCurrentPinballGame->ball->velocity.y = 0;
+}
+
 void sub_48124(void)
 {
     if (JOY_NEW(DPAD_UP))
@@ -22,6 +64,7 @@ void sub_48124(void)
         gCurrentPinballGame->ballSpeed^= 1;
 }
 
+// This function updates/draws the "End of Ball Bonus" summary
 void sub_48190(void)
 {
     int i, j;
