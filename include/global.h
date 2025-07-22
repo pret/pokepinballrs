@@ -584,9 +584,9 @@ struct Unk02031520
     /*0x26*/ s16 unk26;
     /*0x28*/ s16 unk28;
     /*0x2C*/ u32 *unk2C[3];
-    /*0x38*/ s16 *unk38[4];
-    /*0x48*/ u16 *unk48[4];
-    /*0x58*/ u8 *unk58[4];
+    /*0x38*/ const s16 *unk38[4];
+    /*0x48*/ const u16 *unk48[4];
+    /*0x58*/ const u8 *unk58[4];
 };
 
 struct Unk02031590
