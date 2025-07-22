@@ -566,15 +566,11 @@ struct Unk02031520_unk10
     /*0x2*/ u8 unk2;
 };
 
-struct Unk02031520
+struct Unk02031520_unk14
 {
-    /*0x00*/ u8 eReaderBonuses[NUM_EREADER_CARDS];
-    /*0x05*/ bool8 rumbleEnabled;
-    /*0x06*/ s16 unk6;
-    /*0x08*/ s16 unk8;
-    /*0x0A*/ u8 fillerA[0x2];
-    /*0x0C*/ struct PinballGame *unkC;
-    /*0x10*/ struct Unk02031520_unk10 *unk10;
+    /* These field offsets are intentionally kept as relative to
+       struct Unk02031520 to make decompiling easier. This struct
+       is basically always accessed relative to struct Unk02031520. */
     /*0x14*/ u8 filler14[0x8];
     /*0x1C*/ u16 unk1C;
     /*0x1E*/ u8 filler1E[0x2];
@@ -587,6 +583,19 @@ struct Unk02031520
     /*0x38*/ const s16 *unk38[4];
     /*0x48*/ const u16 *unk48[4];
     /*0x58*/ const u8 *unk58[4];
+};
+
+struct Unk02031520
+{
+    /*0x00*/ u8 eReaderBonuses[NUM_EREADER_CARDS];
+    /*0x05*/ bool8 rumbleEnabled;
+    /*0x06*/ s16 unk6;
+    /*0x08*/ s16 unk8;
+    /*0x0A*/ u8 fillerA[0x2];
+    /*0x0C*/ struct PinballGame *unkC;
+    /*0x10*/ struct Unk02031520_unk10 *unk10;
+    /*0x14*/ struct Unk02031520_unk14 unk14;
+    /*0x68*/ const u8 *unk68;
 };
 
 struct Unk02031590
