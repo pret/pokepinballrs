@@ -380,3 +380,45 @@ u16 sub_14488(struct Vector16* arg0, struct Vector16 arg1) {
     Lab_1E0:
     return sp0_return;
 }
+
+u16 sub_1467C(struct Vector16* arg0, u16* arg1) 
+{
+    u16 res;
+    struct Vector16 vec1;
+    struct Vector16 vec2;
+ 
+    res = 0;
+    
+    vec1.x = arg0->x - (gUnknown_02031520.unk14.unk22 * 2);
+    vec2.x = arg0->x - (gUnknown_02031520.unk14.unk24 * 2);
+    vec1.y = arg0->y - (gUnknown_02031520.unk14.unk20 * 2);
+    vec2.y = vec1.y;
+
+    if (vec1.y <= 95 && vec1.y >= 0)
+    {
+        if (vec1.x <= 95 && vec1.x >= 0)
+        {
+            if(sub_14AF4(vec1, (gCurrentPinballGame->unk1E + 1), arg1, 0) != 0)
+            {
+                gCurrentPinballGame->unk22 = 3;
+                res = 1;
+            }
+        }
+
+        if (res == 0)
+        {   
+            if (vec2.x <= 95 && vec2.x >= 0)
+            {
+                vec2.x = 95 - vec2.x;
+
+                if(sub_14AF4(vec2, (gCurrentPinballGame->unk1E + 1), arg1, 1) != 0)
+                {
+                    gCurrentPinballGame->unk22 = 4;
+                    res = 1;
+                }
+            }
+        } 
+    }
+    
+    return res;
+}
