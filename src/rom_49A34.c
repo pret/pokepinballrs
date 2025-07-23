@@ -86,9 +86,10 @@ extern const u8 gUnknown_0836E808[];
 extern const u8 gUnknown_08472A6C[];
 extern const u8 gUnknown_0837A2E8[];
 extern const u8 gUnknown_0838E828[];
-extern const u8 gUnknown_0837A4E8[];
+extern const u16 gUnknown_0837A4E8[];
 extern const u8 gUnknown_0838E028[];
 extern const u8 gUnknown_084779EC[];
+extern const s16 gUnknown_086AEED6[];
 
 extern s16 gUnknown_02030750[];
 extern s16 gUnknown_02031500[];
@@ -96,6 +97,17 @@ extern s16 gUnknown_020306C0[];
 extern u8 gUnknown_0200FBB0[];
 extern u8 gUnknown_020030A0[];
 
+void sub_45E08(void)
+{
+    s16 i;
+    s16 var0;
+
+    var0 = gUnknown_086AEED6[(gMain.systemFrameCount % 96) / 24];
+    for (i = 0x100; i < 0x400; i++)
+        gUnknown_03005C00[0x800 + i] = gUnknown_0837A4E8[i] + var0 * 4;
+
+    DmaCopy16(3, &gUnknown_03005C00[0x800], (void *)0x06000000, 0x800);
+}
 
 void sub_45E90(void)
 {
