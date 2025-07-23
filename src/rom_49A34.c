@@ -22,10 +22,67 @@ extern const u8 gUnknown_08137DBE[];
 extern const u8 gUnknown_08137DE8[];
 extern u8 gUnknown_08137E00[];
 
+struct Unk_86AFCB0
+{
+    const s16 *unk0;
+    u8 filler4[0xC];
+    const u16 *unk10;
+    u8 filler14[0xC];
+    const u8 *unk20;
+    u8 filler24[0xC];
+};
+extern const struct Unk_86AFCB0 gUnknown_086AFCB0[][2];
+extern const s16 gUnknown_086B0010[][4];
+
 extern s16 gUnknown_02030750[];
 extern s16 gUnknown_02031500[];
 extern s16 gUnknown_020306C0[];
+extern u8 gUnknown_0200FBB0[];
+extern u8 gUnknown_020030A0[];
 
+
+void sub_46FD4(s16 arg0)
+{
+    gUnknown_02031520.unk38[0] = gUnknown_086AFCB0[gMain.selectedField][arg0].unk0;
+    gUnknown_02031520.unk48[0] = gUnknown_086AFCB0[gMain.selectedField][arg0].unk10;
+    gUnknown_02031520.unk58[0] = gUnknown_086AFCB0[gMain.selectedField][arg0].unk20;
+}
+
+void sub_47030(void)
+{
+    s16 r4;
+    const s16 *r3;
+
+    r4 = gMain.bgOffsets[3].yOffset / 8;
+    r3 = gUnknown_086B0010[r4];
+    if (r4 == gCurrentPinballGame->unk64)
+        return;
+
+    if (r4 > gCurrentPinballGame->unk64)
+    {
+        if (r3[0] > 31)
+        {
+            DmaCopy16(3, &gUnknown_020030A0[(r3[0] - 32) * 0x400], (void *)0x06008000 + r3[1] * 0x400, 0x400);
+        }
+        else
+        {
+            DmaCopy16(3, &gUnknown_0200FBB0[r3[0] * 0x400], (void *)0x06008000 + r3[1] * 0x400, 0x400);
+        }
+    }
+    else
+    {
+        if (r3[2] > 31)
+        {
+            DmaCopy16(3, &gUnknown_020030A0[(r3[2] - 32) * 0x400], (void *)0x06008000 + r3[3] * 0x400, 0x400);
+        }
+        else
+        {
+            DmaCopy16(3, &gUnknown_0200FBB0[r3[2] * 0x400], (void *)0x06008000 + r3[3] * 0x400, 0x400);
+        }
+    }
+
+    gCurrentPinballGame->unk64 = r4;
+}
 
 void sub_47100(void)
 {

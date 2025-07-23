@@ -16,8 +16,8 @@ struct Unk20028D8
 };
 
 extern struct Unk20028D8 gUnknown_020028D8[9];
-extern u8 gUnknown_0200FBB0[][0x400];
-extern u8 gUnknown_020030A0[][0x400];
+extern u8 gUnknown_0200FBB0[];
+extern u8 gUnknown_020030A0[];
 
 extern const struct Unk20028D8 gUnknown_086B077C[];
 extern const VoidFunc gUnknown_086B085C[];
@@ -1114,12 +1114,12 @@ void sub_4B678(u16 arg0)
             var1 = (i + 10 + gCurrentPinballGame->unk64) % 22;
             if (var0 < 32)
             {
-                DmaCopy16(3, &gUnknown_0200FBB0[var0], (void *)0x6008000 + var1 * 0x400, 0x400);
+                DmaCopy16(3, &gUnknown_0200FBB0[var0 * 0x400], (void *)0x6008000 + var1 * 0x400, 0x400);
             }
             else
             {
                 var0 -= 32;
-                DmaCopy16(3, &gUnknown_020030A0[var0], (void *)0x6008000 + var1 * 0x400, 0x400);
+                DmaCopy16(3, &gUnknown_020030A0[var0 * 0x400], (void *)0x6008000 + var1 * 0x400, 0x400);
             }
         }
     }
