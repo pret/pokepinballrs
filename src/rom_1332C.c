@@ -7,7 +7,7 @@ void sub_13D24(u16,struct Vector16*, struct Vector16*);
 void sub_13934(struct Vector16 *arg0, struct Vector16 *arg1, u16 angle);
 void sub_1493C(void);
 u16 sub_14488(struct Vector16*, struct Vector16);
-u16 sub_14AF4(struct Vector16 r0, s16 r1, s16 *r2 /* s16 or u16 */, s16 r3);
+
 void sub_14B84(u32 r0, s16 r1, struct Vector16 *r2, u16 r3);
 
 void sub_1332C()

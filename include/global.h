@@ -442,7 +442,7 @@ struct PinballGame
     /*0x5B2*/ u8 unk5B2;
     /*0x5B3*/ u8 filler5B3[0x3D];
     /*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
-    /*0x5F2*/ u8 filler5F2[0x1];
+    /*0x5F2*/ s8 unk5F2;
     /*0x5F3*/ s8 unk5F3;
     /*0x5F4*/ u8 filler5F4[0x2];
     /*0x5F6*/ s8 unk5F6;
@@ -654,6 +654,10 @@ extern u16 gUnknown_08137D40[];
 extern u16 gUnknown_084EDACC[]; 
 extern u16 gUnknown_08494E4C[]; 
 extern u8 gUnknown_084FF30C[];
+
+typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);
+extern Unk86ACE0C gUnknown_086ACE0C[8];
+extern struct Vector16 gUnknown_086ACE60[4];
 
 
 #endif // GUARD_GLOBAL_H
