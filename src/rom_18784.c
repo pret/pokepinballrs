@@ -263,9 +263,9 @@ s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
         *arg1 = sp0 & 0x0000FFF0;
 
         if (gCurrentPinballGame->ball->positionQ0.x < 120)
-            gCurrentPinballGame->unk548 = 24;
+            gCurrentPinballGame->unk548[0] = 24;
         else
-            gCurrentPinballGame->unk549 = 24;
+            gCurrentPinballGame->unk548[1] = 24;
 
         sp4_return = 1;
         break;
@@ -345,22 +345,22 @@ void sub_18F38(u8 arg0_enum, u16 *arg1, u16 *arg2)
     switch (arg0_enum)
     {
     case 2:
-        gCurrentPinballGame->unk532 = 0;
-        gCurrentPinballGame->unk538 = 2;
+        gCurrentPinballGame->unk530[2] = 0;
+        gCurrentPinballGame->unk536[2] = 2;
         break;
     case 3:
-        gCurrentPinballGame->unk532 = 1;
-        gCurrentPinballGame->unk538 = 2;
+        gCurrentPinballGame->unk530[2] = 1;
+        gCurrentPinballGame->unk536[2] = 2;
         break;
     case 8:
-        gCurrentPinballGame->unk532 = 0;
-        gCurrentPinballGame->unk538 = 1;
-        gCurrentPinballGame->unk540 = 100;
+        gCurrentPinballGame->unk530[2] = 0;
+        gCurrentPinballGame->unk536[2] = 1;
+        gCurrentPinballGame->unk53C[2] = 100;
         break;
     case 9:
-        gCurrentPinballGame->unk532 = 1;
-        gCurrentPinballGame->unk538 = 1;
-        gCurrentPinballGame->unk540 = 100;
+        gCurrentPinballGame->unk530[2] = 1;
+        gCurrentPinballGame->unk536[2] = 1;
+        gCurrentPinballGame->unk53C[2] = 100;
         break;
     case 1:
     case 4:

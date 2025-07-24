@@ -406,26 +406,27 @@ struct PinballGame
     /*0x52D*/ s8 unk52D;
     /*0x52E*/ s8 unk52E;
     /*0x52F*/ s8 unk52F;
-    /*0x530*/ u8 filler530[0x2];
-    /*0x532*/ u8 unk532;
-    /*0x533*/ u8 filler533[0x5];
-    /*0x538*/ u8 unk538;
+    /*0x530*/ s8 unk530[3];
+    /*0x533*/ s8 unk533[3];
+    /*0x536*/ s8 unk536[3];
     /*0x539*/ u8 filler539[0x1];
     /*0x53A*/ u16 unk53A;
-    /*0x53C*/ u8 filler53C[0x4];
-    /*0x540*/ u16 unk540;
-    /*0x542*/ u8 filler542[0x2];
+    /*0x53C*/ u16 unk53C[3];
+    /*0x542*/ u16 unk542;
     /*0x544*/ u32 unk544;
-    /*0x548*/ u8 unk548;
-    /*0x549*/ u8 unk549;
-    /*0x54A*/ u8 filler54A[3];
-    /*0x54D*/ u8 unk54D[2]; //Sized by use in sub_18DAC //TODO verify
-    /*0x54F*/ s8 unk54F[2]; //Sized by use in sub_18DAC //TODO verify
+    /*0x548*/ s8 unk548[2];
+    /*0x54A*/ u8 filler54A[0x1];
+    /*0x54B*/ u8 unk54B[2];
+    /*0x54D*/ u8 unk54D[2];
+    /*0x54F*/ s8 unk54F[2];
     /*0x551*/ u8 filler551[2];
-    /*0x553*/ u8 unk553[2]; //Sized by use in sub_18DAC //TODO verify
-    /*0x555*/ u8 filler555[0x1B];
-    /*0x570*/ struct Vector16 unk570[2]; //Sized by use in sub_18DAC //TODO verify
-    /*0x578*/ u8 filler578[0x20];
+    /*0x553*/ u8 unk553[2];
+    /*0x555*/ u8 filler555[0xD];
+    /*0x562*/ s16 unk562[2];
+    /*0x566*/ u8 filler566[0xA];
+    /*0x570*/ struct Vector16 unk570[2];
+    /*0x578*/ struct Vector16 unk578[2];
+    /*ox580*/ struct Vector32 unk580[3];
     /*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
     /*0x59A*/ u8 filler59A[0x2];
     /*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
