@@ -167,7 +167,9 @@ struct PinballGame
     /*0x06F*/ s8 unk6F;
     /*0x070*/ s8 unk70;
     /*0x071*/ s8 unk71;
-    /*0x072*/ u8 filler72[0x5A];
+    /*0x072*/ u8 filler72[0xC];
+    /*0x07E*/ u16 unk7E;
+    /*0x080*/ u8 filler80[0x4C];
     /*0x0CC*/ u16 unkCC;
     /*0x0CE*/ u8 fillerCE[0x2];
     /*0x0D0*/ struct Vector16 unkD0[5];
@@ -322,9 +324,18 @@ struct PinballGame
     /*0x308*/ u16 unk308;
     /*0x30A*/ u16 unk30A;
     /*0x30C*/ u16 unk30C;
-    /*0x30E*/ u8 filler30E[0x2];
+    /*0x30E*/ s16 unk30E;
     /*0x310*/ u16 unk310;
-    /*0x312*/ u8 filler312[0x33];
+    /*0x312*/ u8 filler312[0x2];
+    /*0x314*/ s16 unk314;
+    /*0x316*/ s16 unk316;
+    /*0x318*/ s16 unk318;
+    /*0x31A*/ s16 unk31A;
+    /*0x31C*/ s16 unk31C;
+    /*0x31E*/ s16 unk31E;
+    /*0x320*/ s16 unk320;
+    /*0x322*/ s16 unk322;
+    /*0x324*/ u8 filler324[0x21];
     /*0x345*/ s8 unk345;
     /*0x346*/ s8 unk346;
     /*0x347*/ u8 filler347[0x23];
@@ -426,7 +437,11 @@ struct PinballGame
     /*0x566*/ u8 filler566[0xA];
     /*0x570*/ struct Vector16 unk570[2];
     /*0x578*/ struct Vector16 unk578[2];
-    /*ox580*/ struct Vector32 unk580[3];
+    /*0x580*/ struct Vector32 unk580[2];
+    /*0x590*/ u8 filler590[0x1];
+    /*0x591*/ s8 unk591;
+    /*0x592*/ u16 unk592;
+    /*0x594*/ u8 filler594[0x4];
     /*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
     /*0x59A*/ u8 filler59A[0x2];
     /*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
