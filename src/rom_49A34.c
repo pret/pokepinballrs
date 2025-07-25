@@ -92,9 +92,14 @@ extern const u8 gUnknown_084779EC[];
 extern const s16 gUnknown_086AEED6[];
 extern const u8 gUnknown_084BB16C[][0x480];
 extern const u8 gUnknown_084B7FEC[][0x480];
+extern const s8 gUnknown_08137D60[];
+extern const u8 gUnknown_084AF9EC[][0x200];
+extern const u8 gUnknown_084AFFEC[][0x180];
 
 extern const s16 gUnknown_086AFC16[][4];
 extern struct SongHeader gUnknown_086A2EE4;
+extern struct SongHeader gUnknown_086A2D94;
+extern struct SongHeader gUnknown_086A2E70;
 
 extern s16 gUnknown_02030750[];
 extern s16 gUnknown_02031500[];
@@ -102,6 +107,64 @@ extern s16 gUnknown_020306C0[];
 extern u8 gUnknown_0200FBB0[];
 extern u8 gUnknown_020030A0[];
 
+
+void sub_44D58(void)
+{
+    s16 i;
+    s16 var0;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+
+    var0 = 0;
+    group = &gMain.spriteGroups[18];
+    if (group->available)
+    {
+        group->baseX = 104 - gCurrentPinballGame->unk58;
+        group->baseY = 86 - gCurrentPinballGame->unk5A;
+        if (gCurrentPinballGame->unk542 < 22)
+            var0 = gUnknown_08137D60[gCurrentPinballGame->unk542];
+
+        DmaCopy16(3, gUnknown_084AF9EC[var0], (void *)0x06010920, 0x200);
+        oamSimple = &group->oam[0];
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+    }
+
+    group = &gMain.spriteGroups[11];
+    if (group->available)
+    {
+        group->baseX = 104 - gCurrentPinballGame->unk58;
+        group->baseY = 94 - gCurrentPinballGame->unk5A;
+        DmaCopy16(3, gUnknown_084AFFEC[var0], (void *)0x06010B20, 0x180);
+        for (i = 0; i < 2; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+    }
+
+    if (gCurrentPinballGame->unk13 == 1)
+        gMain.spriteGroups[11].available = 1;
+
+    if (gCurrentPinballGame->unk13 < 2 && gMain.unkF == 0 && gCurrentPinballGame->unk542)
+    {
+        if (gCurrentPinballGame->unk542 == 21)
+            MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2D94);
+
+        gCurrentPinballGame->unk542--;
+        if (gCurrentPinballGame->unk542 == 0)
+            MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2E70);
+    }
+
+    if (gCurrentPinballGame->unk7E)
+    {
+        if (gMain.unk5 == 0)
+            sub_44F3C();
+        else
+            sub_45164();
+    }
+}
 
 void sub_44F3C(void)
 {
