@@ -287,3 +287,154 @@ void sub_179D0(u8 arg0, u16 *arg1, u16 *arg2)
         break;
     }
 }
+
+void sub_17C1C(struct Vector16 *arg0)
+{
+    struct Vector16 vec1;
+    struct Vector16 vec2;
+    s16 x, y;
+    u16 sp00;
+    u8 sp02;
+    s16 unk0;
+    s32 unk1;
+    s32 unk2;
+    u32 some_enum;
+
+    gCurrentPinballGame->unk3F8 = 1;
+    vec1.x = arg0->x / 8;
+    vec1.y = arg0->y / 8;
+    vec2.x = arg0->x % 8;
+    vec2.y = arg0->y % 8;
+    unk1 = vec1.y / 64;
+    unk2 = gCurrentPinballGame->unk24;
+    vec1.y %= 64;
+    unk0 = gUnknown_02031520.unk14.unk38[unk2 + unk1][vec1.y * 64 + vec1.x];
+    sp00 = gUnknown_02031520.unk14.unk48[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+    sp02 = gUnknown_02031520.unk14.unk58[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+
+    some_enum = (sp02 >> 2) >> 2;
+
+    x = gCurrentPinballGame->unk400.x;
+    y = gCurrentPinballGame->unk400.y;
+
+    switch (some_enum)
+    {
+    case 8:
+        if (x <= 0x72)
+        {
+            if (y <= 0x38)
+            {
+                if (gCurrentPinballGame->unk41C[0] <= 0)
+                    gCurrentPinballGame->unk41C[0] = 0x18;
+            }
+            else
+            {
+                if (gCurrentPinballGame->unk41C[1] <= 0)
+                    gCurrentPinballGame->unk41C[1] = 0x18;
+            }
+        }
+        else if (y <= 0x63)
+        {
+            if (gCurrentPinballGame->unk41C[3] <= 0)
+                gCurrentPinballGame->unk41C[3] = 0x18;
+        }
+        else
+        {
+            if (gCurrentPinballGame->unk41C[2] <= 0)
+                gCurrentPinballGame->unk41C[2] = 0x18;
+        }
+        break;
+    case 9:
+        if (x <= 0x72)
+        {
+            if (y <= 0x45)
+            {
+                if (gCurrentPinballGame->unk420[7] <= 0)
+                    gCurrentPinballGame->unk420[7] = 0x18;
+            }
+            else
+            {
+                if (gCurrentPinballGame->unk420[5] <= 0)
+                    gCurrentPinballGame->unk420[5] = 0x18;
+            }
+        }
+        else if (y <= 0x45)
+        {
+            if (gCurrentPinballGame->unk420[8] <= 0)
+                gCurrentPinballGame->unk420[8] = 0x18;
+        }
+        else
+        {
+            if (gCurrentPinballGame->unk420[0] <= 0)
+                gCurrentPinballGame->unk420[0] = 0x18;
+        }
+        break;
+    case 10:
+        gCurrentPinballGame->unk3F8 = 0;
+        if (gCurrentPinballGame->unk412 == 0)
+        {
+            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk434.x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk434.y)
+            {
+                gCurrentPinballGame->unk42A[4] = 0x11;
+                gCurrentPinballGame->unk434.x = gCurrentPinballGame->unk400.x;
+                gCurrentPinballGame->unk434.y = gCurrentPinballGame->unk400.y;
+            }
+        }
+        else if (gCurrentPinballGame->unk412 == 8)
+        {
+            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk438.x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk438.y)
+            {
+                gCurrentPinballGame->unk42A[5] = 0x11;
+                gCurrentPinballGame->unk438.x = gCurrentPinballGame->unk400.x;
+                gCurrentPinballGame->unk438.y = gCurrentPinballGame->unk400.y;
+            }
+        }
+        else if (gCurrentPinballGame->unk412 == 16)
+        {
+            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk43C.x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk43C.y)
+            {
+                gCurrentPinballGame->unk42A[6] = 0x11;
+                gCurrentPinballGame->unk43C.x = gCurrentPinballGame->unk400.x;
+                gCurrentPinballGame->unk43C.y = gCurrentPinballGame->unk400.y;
+            }
+        }
+        break;
+    case 11:
+        if (x <= 0x72)
+        {
+            if (y <= 0x45)
+            {
+                if (gCurrentPinballGame->unk420[9] <= 0)
+                    gCurrentPinballGame->unk420[9] = 0x18;
+            }
+            else
+            {
+                if (gCurrentPinballGame->unk420[2] <= 0)
+                    gCurrentPinballGame->unk420[2] = 0x18;
+            }
+        }
+        else if (y <= 0x45)
+        {
+            if (gCurrentPinballGame->unk420[6] <= 0)
+                gCurrentPinballGame->unk420[6] = 0x18;
+        }
+        else
+        {
+            if (gCurrentPinballGame->unk420[1] <= 0)
+                gCurrentPinballGame->unk420[1] = 0x18;
+        }
+        break;
+    case 12:
+        if (x <= 0x72)
+        {
+            if (gCurrentPinballGame->unk420[4] <= 0)
+                gCurrentPinballGame->unk420[4] = 0x18;
+        }
+        else
+        {
+            if (gCurrentPinballGame->unk420[3] <= 0)
+                gCurrentPinballGame->unk420[3] = 0x18;
+        }
+        break;
+    }
+}
