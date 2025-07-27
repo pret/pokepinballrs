@@ -372,8 +372,7 @@ struct PinballGame
     /*0x3FA*/ s16 unk3FA;
     /*0x3FC*/ s16 unk3FC;
     /*0x3FE*/ u8 filler3FE[0x2];
-    /*0x400*/ s16 unk400;
-    /*0x402*/ s16 unk402;
+    /*0x400*/ struct Vector16 unk400;
     /*0x404*/ s8 unk404;
     /*0x405*/ u8 unk405;
     /*0x406*/ s8 unk406;
@@ -389,7 +388,11 @@ struct PinballGame
     /*0x41C*/ u8 unk41C[4];
     /*0x420*/ u8 unk420[10];
     /*0x42A*/ u8 unk42A[7];
-    /*0x431*/ u8 filler431[0x21];
+    /*0x431*/ u8 filler431[0x3];
+    /*0x434*/ struct Vector16 unk434;
+    /*0x438*/ struct Vector16 unk438;
+    /*0x43C*/ struct Vector16 unk43C;
+    /*0x440*/ u8 filler440[0x12];
     /*0x452*/ u16 unk452;
     /*0x454*/ u8 filler454[0xDE];
     /*0x532*/ u8 unk532;
@@ -542,15 +545,11 @@ struct Unk02031520_unk10
     /*0x2*/ u8 unk2;
 };
 
-struct Unk02031520
+struct Unk02031520_unk14
 {
-    /*0x00*/ u8 eReaderBonuses[NUM_EREADER_CARDS];
-    /*0x05*/ bool8 rumbleEnabled;
-    /*0x06*/ s16 unk6;
-    /*0x08*/ s16 unk8;
-    /*0x0A*/ u8 fillerA[0x2];
-    /*0x0C*/ struct PinballGame *unkC;
-    /*0x10*/ struct Unk02031520_unk10 *unk10;
+    /* These field offsets are intentionally kept as relative to
+       struct Unk02031520 to make decompiling easier. This struct
+       is basically always accessed relative to struct Unk02031520. */
     /*0x14*/ u8 filler14[0x8];
     /*0x1C*/ u16 unk1C;
     /*0x1E*/ u8 filler1E[0x2];
@@ -560,9 +559,22 @@ struct Unk02031520
     /*0x26*/ s16 unk26;
     /*0x28*/ s16 unk28;
     /*0x2C*/ u32 *unk2C[3];
-    /*0x38*/ s16 *unk38[4];
-    /*0x48*/ u16 *unk48[4];
-    /*0x58*/ u8 *unk58[4];
+    /*0x38*/ const s16 *unk38[4];
+    /*0x48*/ const u16 *unk48[4];
+    /*0x58*/ const u8 *unk58[4];
+};
+
+struct Unk02031520
+{
+    /*0x00*/ u8 eReaderBonuses[NUM_EREADER_CARDS];
+    /*0x05*/ bool8 rumbleEnabled;
+    /*0x06*/ s16 unk6;
+    /*0x08*/ s16 unk8;
+    /*0x0A*/ u8 fillerA[0x2];
+    /*0x0C*/ struct PinballGame *unkC;
+    /*0x10*/ struct Unk02031520_unk10 *unk10;
+    /*0x14*/ struct Unk02031520_unk14 unk14;
+    /*0x68*/ const u8 *unk68;
 };
 
 struct Unk02031590

@@ -52,9 +52,9 @@ s16 sub_176B0(struct Vector16 *arg0, u16 *arg1)
     unk1 = vec1.y / 64;
     unk2 = gCurrentPinballGame->unk24;
     vec1.y %= 64;
-    unk0 = gUnknown_02031520.unk38[unk2 + unk1][vec1.y * 64 + vec1.x];
-    sp00 = gUnknown_02031520.unk48[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
-    sp02 = gUnknown_02031520.unk58[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+    unk0 = gUnknown_02031520.unk14.unk38[unk2 + unk1][vec1.y * 64 + vec1.x];
+    sp00 = gUnknown_02031520.unk14.unk48[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+    sp02 = gUnknown_02031520.unk14.unk58[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
 
     sub_17898(arg0, &sp00, &sp02);
     switch_enum = sp02 & 0xF;

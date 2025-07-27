@@ -68,8 +68,8 @@ void sub_1333C()
             break;
         case 3:
             sub_13934(&var0, &var1, r7);
-            var0.x -= (gUnknown_02031520.unk22 * 2);
-            var0.y -= (gUnknown_02031520.unk20 * 2);
+            var0.x -= (gUnknown_02031520.unk14.unk22 * 2);
+            var0.y -= (gUnknown_02031520.unk14.unk20 * 2);
             if (gCurrentPinballGame->unk13BC[0].unk4 == 0)
             {
                 sub_13D24(r7, &gCurrentPinballGame->ball->velocity, &var2);
@@ -95,13 +95,13 @@ void sub_1333C()
                     }
                 }
             }
-            var0.x += gUnknown_02031520.unk22 * 2;
-            var0.y += gUnknown_02031520.unk20 * 2;
+            var0.x += gUnknown_02031520.unk14.unk22 * 2;
+            var0.y += gUnknown_02031520.unk14.unk20 * 2;
             break;
         case 4:
             sub_13934(&var0, &var1, r7);
-            var0.x -= (gUnknown_02031520.unk24 * 2);
-            var0.y -= (gUnknown_02031520.unk20 * 2);
+            var0.x -= (gUnknown_02031520.unk14.unk24 * 2);
+            var0.y -= (gUnknown_02031520.unk14.unk20 * 2);
             if (gCurrentPinballGame->unk13BC[1].unk4 == 0)
             {
                 sub_13D24(r7, &gCurrentPinballGame->ball->velocity, &var2);
@@ -131,8 +131,8 @@ void sub_1333C()
                 }
             }
             var0.x = 0x5f - var0.x;
-            var0.x += gUnknown_02031520.unk24 * 2;
-            var0.y += gUnknown_02031520.unk20 * 2;
+            var0.x += gUnknown_02031520.unk14.unk24 * 2;
+            var0.y += gUnknown_02031520.unk14.unk20 * 2;
             break;
         default:
             if (gCurrentPinballGame->unk122 > 0)
