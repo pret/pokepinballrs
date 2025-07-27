@@ -183,7 +183,7 @@ void sub_35860(void)
         gCurrentPinballGame->unk42A[i] = 0;
 
     gCurrentPinballGame->unk1A = 0;
-    gCurrentPinballGame->unk402 = gCurrentPinballGame->unk3EA / 10 + 58;
+    gCurrentPinballGame->unk400.y = gCurrentPinballGame->unk3EA / 10 + 58;
     sub_38218();
     gCurrentPinballGame->unk387 = 1;
     sub_35D54();
@@ -892,8 +892,8 @@ void sub_36CB4(void)
             gCurrentPinballGame->unk387 = 1;
     }
 
-    gCurrentPinballGame->unk400 = (gCurrentPinballGame->unk3E8 / 10) + 120;
-    gCurrentPinballGame->unk402 = (gCurrentPinballGame->unk3EA / 10) + 58;
+    gCurrentPinballGame->unk400.x = (gCurrentPinballGame->unk3E8 / 10) + 120;
+    gCurrentPinballGame->unk400.y = (gCurrentPinballGame->unk3EA / 10) + 58;
     if (gCurrentPinballGame->unk40E > 7)
         gCurrentPinballGame->unk3F7 = 1;
     else if (gCurrentPinballGame->unk3FA > 15)
