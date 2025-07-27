@@ -4,7 +4,6 @@
 #include "constants/fields.h"
 #include "m4a.h"
 
-void sub_11C14(s16);
 void sub_12524(void);
 void sub_12BF8(void);
 void sub_2AADC(void);

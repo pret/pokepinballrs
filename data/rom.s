@@ -1251,10 +1251,13 @@ gUnknown_08137DA4:: @ 0x08137DA4
 	.incbin "baserom.gba", 0x137DA4, 0x1A
 
 gUnknown_08137DBE:: @ 0x08137DBE
-	.incbin "baserom.gba", 0x137DBE, 0x2A
+	.byte ' ','B','A','L','L','-','M','V',':',0,0,0,0,0
+	.byte ' ','B','A','L','L','-','S','P','D',':',0,0,0,0
+	.byte ' ',' ','D','E','B','U','G','1',':',0,0,0,0,0
 
 gUnknown_08137DE8:: @ 0x08137DE8
-	.incbin "baserom.gba", 0x137DE8, 0x18
+	.byte '(','0','0','0',' ','0','0','0',')',0,0,0
+	.byte '(','0','0','0',')',' ',' ',' ',' ',0,0,0
 
 gUnknown_08137E00:: @ 0x08137E00
 	.incbin "baserom.gba", 0x137E00, 0x4
@@ -2583,7 +2586,20 @@ gUnknown_086A7C24:: @ 0x086A7C24
 	.incbin "baserom.gba", 0x6A7C24, 0x44
 
 gUnknown_086A7C68:: @ 0x086A7C68
-	.incbin "baserom.gba", 0x6A7C68, 0xB8
+	.byte 0x05, 0x02, 0x03, 0x01, 0x06, 0x01
+	.align 2,0
+	.byte 0x05, 0xFE, 0x03, 0xFF, 0x19, 0x02
+	.align 2,0
+	.byte 0xFB, 0x02, 0xFD, 0x01, 0x28, 0x01
+	.align 2,0
+	.byte 0xFE, 0x05, 0xFF, 0x03, 0x34, 0x02
+	.align 2,0
+	.byte 0xFE, 0xFB, 0xFF, 0xFD, 0x34, 0x01
+	.align 2,0
+	.byte 0, 0, 0, 0, 0, 0
+	.align 2, 0
+	
+	.incbin "baserom.gba", 0x6A7C98, 0x88
 
 gUnknown_086A7D20:: @ 0x086A7D20
 	.incbin "baserom.gba", 0x6A7D20, 0x2C
