@@ -5,7 +5,6 @@
 
 void sub_1AAA0(void);
 void sub_1AA38(void);
-void sub_1AD84(void);
 void sub_1ADF4(void);
 void sub_1AF84(void);
 void sub_1AFD4(void);
@@ -73,7 +72,7 @@ void sub_1AA38(void)
     gCurrentPinballGame->unk28 = 113;
     
     m4aSongNumStart(SE_UNKNOWN_0xCE);
-    gCurrentPinballGame->unk3C = 0xC350;
+    gCurrentPinballGame->unk3C = 50000;
 
     sub_11B0(8);
 }
@@ -238,3 +237,25 @@ void sub_1AAA0(void)
     }
 }
 
+
+void sub_1AD84(void)
+{
+    gCurrentPinballGame->unk3C = 100000;
+    if (gCurrentPinballGame->unk2DA == 3)
+    {
+        gCurrentPinballGame->unk2DA = 4;
+        m4aSongNumStart(SE_UNKNOWN_0xB7);
+        sub_11B0(7);
+        gCurrentPinballGame->unk28 = 500;
+    }
+    else if (gCurrentPinballGame->unk2D0 !=0)
+    {
+        gCurrentPinballGame->unk28 = 300;
+    }
+    else
+    {
+        gCurrentPinballGame->unk28 = 120;
+    }
+
+    gCurrentPinballGame->unk5F7 = 1;
+}

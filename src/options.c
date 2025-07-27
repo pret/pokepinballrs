@@ -67,7 +67,7 @@ struct OptionsData
 };
 
 extern struct OptionsData gOptionsData;
-extern s16 gUnknown_0200B204[][2];
+extern s16 gMain_saveData_customButtonConfig[][2];
 extern u8 gUnknown_02031B18[];
 
 extern const u16 gOptionsBackground_Pals[];
@@ -299,7 +299,7 @@ void Options_HandleInput(void)
         {
             m4aSongNumStart(SE_UNKNOWN_0x66);
             gMain.subState++;
-            sub_525CC(gMain_saveData.buttonConfigType);
+            SetButtonConfigInputs(gMain_saveData.buttonConfigType);
         }
         if (!(gMain.systemFrameCount & 7))
             gOptionsData.unk2 = 1 - gOptionsData.unk2;
@@ -533,7 +533,7 @@ void sub_51C9C(void)
     mov r5, r8\n\
     push {r5, r6, r7}\n\
     sub sp, #0x8c\n\
-    ldr r0, _08051D38 @ =gUnknown_0200B3B8\n\
+    ldr r0, _08051D38 @ =gMain_spriteGroups\n\
     mov r8, r0\n\
     ldr r2, _08051D3C @ =gOptionsData\n\
     movs r3, #4\n\
@@ -582,10 +582,10 @@ _08051CEA:\n\
     movs r1, #8\n\
     add r1, r8\n\
     mov sb, r1\n\
-    ldr r2, _08051D40 @ =gUnknown_0200B978\n\
+    ldr r2, _08051D40 @ =gMain_spriteGroups_8\n\
     adds r2, #8\n\
     str r2, [sp, #0x70]\n\
-    ldr r0, _08051D44 @ =gUnknown_0200BAE8\n\
+    ldr r0, _08051D44 @ =gMain_spriteGroups_10\n\
     adds r4, r0, #0\n\
     adds r4, #0xb8\n\
     adds r5, r0, #0\n\
@@ -604,16 +604,16 @@ _08051D1E:\n\
     ldrsh r0, [r6, r7]\n\
     cmp r0, #1\n\
     bne _08051D50\n\
-    ldr r0, _08051D4C @ =gUnknown_0200C7D8\n\
+    ldr r0, _08051D4C @ =gMain_spriteGroups_28\n\
     str r0, [r1]\n\
     b _08051D52\n\
     .align 2, 0\n\
-_08051D38: .4byte gUnknown_0200B3B8\n\
+_08051D38: .4byte gMain_spriteGroups\n\
 _08051D3C: .4byte gOptionsData\n\
-_08051D40: .4byte gUnknown_0200B978\n\
-_08051D44: .4byte gUnknown_0200BAE8\n\
+_08051D40: .4byte gMain_spriteGroups_8\n\
+_08051D44: .4byte gMain_spriteGroups_10\n\
 _08051D48: .4byte gUnknown_0200293A\n\
-_08051D4C: .4byte gUnknown_0200C7D8\n\
+_08051D4C: .4byte gMain_spriteGroups_28\n\
 _08051D50:\n\
     str r2, [r1]\n\
 _08051D52:\n\
@@ -635,7 +635,7 @@ _08051D52:\n\
     mov r7, ip\n\
     cmp r7, #5\n\
     ble _08051D1E\n\
-    ldr r0, _08051F64 @ =gUnknown_0200C890\n\
+    ldr r0, _08051F64 @ =gMain_spriteGroups_29\n\
     str r0, [sp, #0x64]\n\
     movs r0, #1\n\
     mov r1, r8\n\
@@ -672,7 +672,7 @@ _08051DA6:\n\
     movs r0, #1\n\
     ldr r6, [sp, #0x60]\n\
     strh r0, [r6]\n\
-    ldr r7, _08051F68 @ =gUnknown_0200B978\n\
+    ldr r7, _08051F68 @ =gMain_spriteGroups_8\n\
     strh r0, [r7]\n\
     movs r0, #0\n\
     mov ip, r0\n\
@@ -697,7 +697,7 @@ _08051DCE:\n\
     movs r0, #1\n\
     ldr r6, [sp, #0x64]\n\
     strh r0, [r6]\n\
-    ldr r7, _08051F6C @ =gUnknown_0200C948\n\
+    ldr r7, _08051F6C @ =gMain_spriteGroups_30\n\
     strh r0, [r7]\n\
     ldr r5, _08051F70 @ =gOptionsData\n\
     adds r0, r5, #0\n\
@@ -705,11 +705,11 @@ _08051DCE:\n\
     ldrb r0, [r0]\n\
     lsls r0, r0, #0x18\n\
     asrs r0, r0, #0x18\n\
-    ldr r1, _08051F74 @ =gUnknown_0200CA00\n\
+    ldr r1, _08051F74 @ =gMain_spriteGroups_31\n\
     strh r0, [r1]\n\
     ldr r0, _08051F78 @ =gUnknown_086BB9EC\n\
     movs r1, #0x20\n\
-    ldr r2, _08051F7C @ =gUnknown_0200B3B8\n\
+    ldr r2, _08051F7C @ =gMain_spriteGroups\n\
     bl LoadSpriteSets\n\
     ldr r2, _08051F80 @ =gUnknown_086BB968\n\
     movs r3, #0xa\n\
@@ -887,13 +887,13 @@ _08051EE2:\n\
     strh r0, [r6, #4]\n\
     b _08051FA6\n\
     .align 2, 0\n\
-_08051F64: .4byte gUnknown_0200C890\n\
-_08051F68: .4byte gUnknown_0200B978\n\
-_08051F6C: .4byte gUnknown_0200C948\n\
+_08051F64: .4byte gMain_spriteGroups_29\n\
+_08051F68: .4byte gMain_spriteGroups_8\n\
+_08051F6C: .4byte gMain_spriteGroups_30\n\
 _08051F70: .4byte gOptionsData\n\
-_08051F74: .4byte gUnknown_0200CA00\n\
+_08051F74: .4byte gMain_spriteGroups_31\n\
 _08051F78: .4byte gUnknown_086BB9EC\n\
-_08051F7C: .4byte gUnknown_0200B3B8\n\
+_08051F7C: .4byte gMain_spriteGroups\n\
 _08051F80: .4byte gUnknown_086BB968\n\
 _08051F84: .4byte gOamBuffer\n\
 _08051F88: .4byte 0x000001FF\n\
@@ -948,7 +948,7 @@ _08051FB2:\n\
     cmp r1, #0\n\
     bge _08051FB2\n\
     movs r0, #0x48\n\
-    ldr r2, _080520DC @ =gUnknown_0200B978\n\
+    ldr r2, _080520DC @ =gMain_spriteGroups_8\n\
     strh r0, [r2, #2]\n\
     ldr r3, _080520E0 @ =gOptionsData\n\
     movs r4, #0xc\n\
@@ -972,7 +972,7 @@ _08051FB2:\n\
     ands r0, r3\n\
     orrs r0, r1\n\
     strh r0, [r2, #2]\n\
-    ldr r4, _080520DC @ =gUnknown_0200B978\n\
+    ldr r4, _080520DC @ =gMain_spriteGroups_8\n\
     ldrh r1, [r4, #8]\n\
     lsls r1, r1, #3\n\
     ldr r6, _080520D0 @ =gOamBuffer\n\
@@ -1065,7 +1065,7 @@ _0805208A:\n\
 _080520D0: .4byte gOamBuffer\n\
 _080520D4: .4byte 0xFFFFFE00\n\
 _080520D8: .4byte 0x000001FF\n\
-_080520DC: .4byte gUnknown_0200B978\n\
+_080520DC: .4byte gMain_spriteGroups_8\n\
 _080520E0: .4byte gOptionsData\n\
 _080520E4: .4byte gUnknown_086BB9A8\n\
 _080520E8:\n\
@@ -1382,7 +1382,7 @@ _08052304:\n\
     adds r0, r0, r7\n\
     strb r0, [r1]\n\
     movs r0, #0xc0\n\
-    ldr r3, _080524B0 @ =gUnknown_0200C948\n\
+    ldr r3, _080524B0 @ =gMain_spriteGroups_30\n\
     strh r0, [r3, #2]\n\
     strh r5, [r3, #4]\n\
     ldr r6, _080524AC @ =gOptionsData\n\
@@ -1418,7 +1418,7 @@ _0805236C:\n\
     adds r3, r3, r0\n\
     movs r2, #2\n\
     ldrsh r1, [r5, r2]\n\
-    ldr r7, _080524B0 @ =gUnknown_0200C948\n\
+    ldr r7, _080524B0 @ =gMain_spriteGroups_30\n\
     movs r2, #2\n\
     ldrsh r0, [r7, r2]\n\
     adds r1, r1, r0\n\
@@ -1435,7 +1435,7 @@ _0805236C:\n\
     lsls r1, r1, #3\n\
     ldr r2, _08052494 @ =gOamBuffer\n\
     adds r1, r1, r2\n\
-    ldr r3, _080524B0 @ =gUnknown_0200C948\n\
+    ldr r3, _080524B0 @ =gMain_spriteGroups_30\n\
     ldrb r0, [r3, #4]\n\
     ldrb r7, [r5, #4]\n\
     adds r0, r0, r7\n\
@@ -1448,7 +1448,7 @@ _0805236C:\n\
     mov r1, ip\n\
     cmp r1, #0\n\
     bge _0805236C\n\
-    ldr r2, _080524B4 @ =gUnknown_0200CA00\n\
+    ldr r2, _080524B4 @ =gMain_spriteGroups_31\n\
     ldrh r0, [r2]\n\
     cmp r0, #1\n\
     bne _08052454\n\
@@ -1474,7 +1474,7 @@ _0805236C:\n\
     ands r0, r3\n\
     orrs r0, r1\n\
     strh r0, [r2, #4]\n\
-    ldr r4, _080524B4 @ =gUnknown_0200CA00\n\
+    ldr r4, _080524B4 @ =gMain_spriteGroups_31\n\
     ldrh r2, [r4, #8]\n\
     lsls r2, r2, #3\n\
     ldr r6, _08052494 @ =gOamBuffer\n\
@@ -1491,7 +1491,7 @@ _0805236C:\n\
     ands r0, r3\n\
     orrs r0, r1\n\
     strh r0, [r2, #2]\n\
-    ldr r6, _080524B4 @ =gUnknown_0200CA00\n\
+    ldr r6, _080524B4 @ =gMain_spriteGroups_31\n\
     ldrh r1, [r6, #8]\n\
     lsls r1, r1, #3\n\
     ldr r0, _08052494 @ =gOamBuffer\n\
@@ -1552,8 +1552,8 @@ _080524A0: .4byte 0xFFFFFC00\n\
 _080524A4: .4byte 0x000001FF\n\
 _080524A8: .4byte 0xFFFFFE00\n\
 _080524AC: .4byte gOptionsData\n\
-_080524B0: .4byte gUnknown_0200C948\n\
-_080524B4: .4byte gUnknown_0200CA00\n\
+_080524B0: .4byte gMain_spriteGroups_30\n\
+_080524B4: .4byte gMain_spriteGroups_31\n\
 _080524B8: .4byte gMain");
 }
 
@@ -1588,7 +1588,7 @@ void sub_52528(void)
     {
         for (j = 0; j < 2; j++)
         {
-            switch (gUnknown_0200B204[i][j])
+            switch (gMain_saveData_customButtonConfig[i][j])
             {
             case 0x1:
                 var0 = 0;
@@ -1629,7 +1629,7 @@ void sub_52528(void)
 
 extern const u8 gUnknown_08527EFE[];
 
-void sub_525CC(s8 buttonConfigType)
+void SetButtonConfigInputs(s8 buttonConfigType)
 {
     int i;
     switch (buttonConfigType)

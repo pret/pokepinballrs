@@ -12,3 +12,6 @@ $(MON_PORTRAITS_DIR)/%.4bpp: $(MON_PORTRAITS_DIR)/%.png
 
 $(MON_HATCH_SPRITES_DIR)/%.4bpp: $(MON_HATCH_SPRITES_DIR)/%.png
 	$(GFX) $< $@ -pinball-hatch-sprite
+
+graphics/pokedex/text_glyphs.4bpp: graphics/pokedex/text_glyphs.png
+	$(GFX) $< $@ -num_tiles 513

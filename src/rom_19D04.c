@@ -21,7 +21,6 @@ extern void sub_239A4(void);
 extern void sub_23E18(void);
 extern void sub_2C538(void);
 extern void sub_2C9A4(void);
-extern void sub_4E814(void);
 
 void sub_19D04(void)
 {

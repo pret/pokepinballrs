@@ -117,7 +117,7 @@ void sub_19C04(void)
     {
         if (gMain.selectedField == 0)
         {
-            num1 = gCurrentPinballGame->bonusFieldsComplete / 5;
+            num1 = gCurrentPinballGame->numCompletedBonusStages / 5;
             if ((num1 & 1) == 0)
             {
                 m4aSongNumStart(MUS_FIELD_RUBY);
@@ -129,7 +129,7 @@ void sub_19C04(void)
         }
         else
         {
-            num1 = gCurrentPinballGame->bonusFieldsComplete / 5;
+            num1 = gCurrentPinballGame->numCompletedBonusStages / 5;
             if ((num1 & 1) == 0)
             {
                 m4aSongNumStart(MUS_FIELD_SAPPHIRE);

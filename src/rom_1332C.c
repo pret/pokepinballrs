@@ -1,11 +1,14 @@
 #include "global.h"
 
+extern u16 gUnknown_086ACD84[][2];
 
 u16 sub_13824(struct Vector16*);
 void sub_13D24(u16,struct Vector16*, struct Vector16*);
 void sub_13934(struct Vector16 *arg0, struct Vector16 *arg1, u16 angle);
 void sub_1493C(void);
 u16 sub_14488(struct Vector16*, struct Vector16);
+
+void sub_14B84(u32 r0, s16 r1, struct Vector16 *r2, u16 r3);
 
 void sub_1332C()
 {
@@ -65,8 +68,8 @@ void sub_1333C()
             break;
         case 3:
             sub_13934(&var0, &var1, r7);
-            var0.x -= (gUnknown_02031520.unk22 * 2);
-            var0.y -= (gUnknown_02031520.unk20 * 2);
+            var0.x -= (gUnknown_02031520.unk14.unk22 * 2);
+            var0.y -= (gUnknown_02031520.unk14.unk20 * 2);
             if (gCurrentPinballGame->unk13BC[0].unk4 == 0)
             {
                 sub_13D24(r7, &gCurrentPinballGame->ball->velocity, &var2);
@@ -92,13 +95,13 @@ void sub_1333C()
                     }
                 }
             }
-            var0.x += gUnknown_02031520.unk22 * 2;
-            var0.y += gUnknown_02031520.unk20 * 2;
+            var0.x += gUnknown_02031520.unk14.unk22 * 2;
+            var0.y += gUnknown_02031520.unk14.unk20 * 2;
             break;
         case 4:
             sub_13934(&var0, &var1, r7);
-            var0.x -= (gUnknown_02031520.unk24 * 2);
-            var0.y -= (gUnknown_02031520.unk20 * 2);
+            var0.x -= (gUnknown_02031520.unk14.unk24 * 2);
+            var0.y -= (gUnknown_02031520.unk14.unk20 * 2);
             if (gCurrentPinballGame->unk13BC[1].unk4 == 0)
             {
                 sub_13D24(r7, &gCurrentPinballGame->ball->velocity, &var2);
@@ -128,8 +131,8 @@ void sub_1333C()
                 }
             }
             var0.x = 0x5f - var0.x;
-            var0.x += gUnknown_02031520.unk24 * 2;
-            var0.y += gUnknown_02031520.unk20 * 2;
+            var0.x += gUnknown_02031520.unk14.unk24 * 2;
+            var0.y += gUnknown_02031520.unk14.unk20 * 2;
             break;
         default:
             if (gCurrentPinballGame->unk122 > 0)
@@ -247,5 +250,81 @@ void sub_13934(struct Vector16 *arg0, struct Vector16 *arg1, u16 angle)
     {
         gCurrentPinballGame->unk122 = 0;
         gCurrentPinballGame->unk123 = 0;
+    }
+}
+
+void sub_13B28(struct Vector16* arg0, struct Vector16* arg1, s16 arg2)
+{
+    struct Vector16 r7;
+    u16 r4;
+    s16 sp0;
+    s16 sp12;
+    bool32 flag;
+    s16 i;
+    int temp;
+    int xx, yy;
+    struct Vector16 r5 = { arg0->x * 128, arg0->y * 128 };
+    struct Vector16 sp4 = { arg1->x, arg1->y };
+    
+    for (;;)
+    {
+        sp12 = gCurrentPinballGame->unk13BC[arg2].unk0 - gCurrentPinballGame->unk13BC[arg2].unk1;
+        
+        if ((sp12 *= gCurrentPinballGame->unk13BC[arg2].unk8) > 0)
+        {
+            if (gCurrentPinballGame->unk13BC[arg2].unk2 < 7)
+                r4 = gUnknown_086ACD84[gCurrentPinballGame->unk13BC[arg2].unk5 - 1][0] +  0x4000;
+            else
+                r4 = gUnknown_086ACD84[gCurrentPinballGame->unk13BC[arg2].unk5 + 1][1] + -0x4000; // This changes compilation, apparently
+        }
+        else
+        {
+            break;
+        }
+        
+        r7.x = r5.x - 22 * 128;
+        r7.y = r5.y - 48 * 128;
+        
+        xx = r7.x * r7.x;
+        yy = r7.y * r7.y;
+        temp = xx + yy - 0x240000;
+        temp = Sqrt(temp * 4) / 2;
+        sub_14B84(temp, arg2, &sp4, r4);
+        
+        if (sp4.x > 0x1C2)
+            sp4.x = 0x1C2;
+        else if (sp4.x < -0x1C2)
+            sp4.x = -0x1C2;
+        
+        r5.x += sp4.x;
+        r5.y += sp4.y;
+        arg0->x = r5.x / 128;
+        arg0->y = r5.y / 128;
+        flag = FALSE;
+        
+        if (arg0->x < 50)
+            break;
+        
+        for (i = gCurrentPinballGame->unk1E; i < 4; i++)
+        {
+            if (sub_14AF4(*arg0, i + 1, &sp0, arg2))
+            {
+                flag = TRUE;
+                break;
+            }
+        }
+        
+        if (!flag)
+            break;
+    }
+    
+    if (sp12 <= 0)
+    {
+        gCurrentPinballGame->unk22 = 5;
+    }
+    else
+    {
+        arg1->x = sp4.x;
+        arg1->y = sp4.y;
     }
 }

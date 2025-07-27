@@ -671,13 +671,13 @@ static void sub_11640(void)
 {
     int i;
     const struct SpriteSet *spriteSet;
-    struct SpriteGroup *startAndFlippersGroup = &gUnknown_0200B3B8[gTitlescreen.unk8];
-    struct SpriteGroup *deleteMenuGroup = &gUnknown_0200B3B8[gTitlescreen.unk10];
+    struct SpriteGroup *startAndFlippersGroup = &gMain_spriteGroups[gTitlescreen.unk8];
+    struct SpriteGroup *deleteMenuGroup = &gMain_spriteGroups[gTitlescreen.unk10];
 
     startAndFlippersGroup->available = gTitlescreen.pressStartAndFlippersVisible;
     deleteMenuGroup->available = gTitlescreen.deleteSaveWindowVisible;
 
-    LoadSpriteSets(gUnknown_086A96E4, 5, gUnknown_0200B3B8);
+    LoadSpriteSets(gUnknown_086A96E4, 5, gMain_spriteGroups);
 
     if (startAndFlippersGroup->available == TRUE)
     {
@@ -860,7 +860,7 @@ void sub_11968(void)
 
 void sub_11B74(void)
 {
-    sub_52C64();
+    ResetSaveFile();
     SaveFile_WriteToSram();
     gMain.hasSavedGame = FALSE;
     WriteAndVerifySramFast((const u8 *)&gMain.hasSavedGame, (void *)0x0E000544, sizeof(gMain.hasSavedGame));

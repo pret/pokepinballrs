@@ -51,7 +51,7 @@ extern u16 gUnknown_086BB910[11][4];
 extern struct {u8 unk0; s16 unk2;} gUnknown_086BB9B4[];
 extern u16 gOptionsSEList[];
 extern u8 gUnknown_02031AF0[][10];
-extern u8 gUnknown_08527ED6[][10];
+extern u8 gUnknown_08527ED6[4][10];
 extern void (*const gOptionsStateFuncs[])(void);
 extern u32 gUnknown_0201A500[HIGH_SCORE_NAME_LENGTH];
 extern u16 gUnknown_0201A520[3][0x200];
@@ -151,13 +151,13 @@ extern const IntrFunc gIntrTableTemplate[14];
 //extern ? gUnknown_086A4C2C;
 extern const int *gUnknown_086A4C44[];
 extern const u16 gUnknown_086A4CF8[][3*0x18];
-extern const s8 gUnknown_086A7FA4[];
-extern const s8 gUnknown_086A7FA8[];
-extern const s16 gUnknown_086A964C[];
-extern const s8 gUnknown_086A9662[];
+extern const s8 gUnknown_086A7FA4[3]; //Sized based on call using gUnknown_02002858.unk1C + data
+extern const s8 gUnknown_086A7FA8[3]; //Same as above
+extern const s16 gUnknown_086A964C[11];
+extern const s8 gUnknown_086A9662[4];
 extern const s8 gUnknown_086A9666[6][2];
 extern const s8 gUnknown_086A9672[9][2];
-extern const u16 gUnknown_086A96A4[];
+extern const u16 gUnknown_086A96A4[4];
 extern const u16 gUnknown_086A96D4[];
 extern const struct SpriteSet *const gUnknown_086A96E4[];
 extern const u8 *const gUnknown_086A96F8[7];
@@ -233,10 +233,10 @@ extern const u16 gTitlescreenSprites_Pals[];
 //extern ? gMonPortraitsGroup11_Pals;
 //extern ? gMonPortraitsGroup12_Pals;
 //extern ? gMonPortraitsGroup13_Pals;
-extern struct VectorU16 gUnknown_086A9684[];
-extern struct VectorU16 gUnknown_086A9694[];
-extern struct VectorU16 gUnknown_086A96AC[];
-extern struct VectorU16 gUnknown_086A96C0[];
+extern struct VectorU16 gUnknown_086A9684[4];
+extern struct VectorU16 gUnknown_086A9694[4];
+extern struct VectorU16 gUnknown_086A96AC[5];
+extern struct VectorU16 gUnknown_086A96C0[5];
 extern const struct VectorU32 gUnknown_080797F0[2][8];
 
 struct Unk086ACD50
@@ -348,8 +348,8 @@ extern s16 gUnknown_086A7788[0x8];
 extern s16 gUnknown_0202ADA0[];
 extern s32 gUnknown_0202BEF0;
 extern const struct SpriteSet *const gUnknown_086A769C[];
-extern struct SpriteGroup gUnknown_0200D078[];
-extern struct SpriteGroup gUnknown_0200D638;
+extern struct SpriteGroup gMain_spriteGroups_40[];
+extern struct SpriteGroup gMain_spriteGroups_48;
 extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
 extern s32 gUnknown_0201C188;
 
@@ -415,7 +415,12 @@ extern u8 gUnknown_08116260[];
 extern u8 gUnknown_08118680[];
 
 extern u16 gCommonAndEggWeights[];
-extern u16 gUnknown_0200B18E[10];
+extern u16 gMain_saveData_pokedexFlags_90[10];
 extern u16 Sio32ConnectionData[4]; 
 extern u32 gUnknown_02002814;
+
+/*
+    Note: gMain lives at gUnknown_0200B0C0 in running memory.
+    anything from there to gUnknown_0200FAE0 is part of that object.
+*/
 #endif  // GUARD_VARIABLES_H

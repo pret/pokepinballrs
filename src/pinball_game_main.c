@@ -16,8 +16,8 @@ struct Unk20028D8
 };
 
 extern struct Unk20028D8 gUnknown_020028D8[9];
-extern u8 gUnknown_0200FBB0[][0x400];
-extern u8 gUnknown_020030A0[][0x400];
+extern u8 gUnknown_0200FBB0[];
+extern u8 gUnknown_020030A0[];
 
 extern const struct Unk20028D8 gUnknown_086B077C[];
 extern const VoidFunc gUnknown_086B085C[];
@@ -85,10 +85,6 @@ extern const u8 gUnknown_084C0C6C[];
 extern u8 *gMonPortraitGroupGfx[];
 
 void sub_1D4D0(void);
-void sub_356A0(void);
-void sub_3ADA0(void);
-void sub_3E5D0(void);
-void sub_467F4(void);
 void sub_4A6A0(void);
 void sub_47110(void);
 static void sub_4A270(void);
@@ -146,7 +142,7 @@ void sub_49ED4(void)
         sub_4A270();
         sub_4A518();
         sub_467F4();
-        DmaCopy16(3, gUnknown_02031520.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
 
@@ -178,7 +174,7 @@ void sub_49ED4(void)
         sub_4A270();
         sub_4A518();
         sub_467F4();
-        DmaCopy16(3, gUnknown_02031520.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
 
@@ -204,7 +200,7 @@ void sub_49ED4(void)
         sub_4A270();
         sub_4A518();
         sub_467F4();
-        DmaCopy16(3, gUnknown_02031520.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         sub_4A90C();
         for (i = 0; i < 9; i++)
             gUnknown_020028D8[i].unk0();
@@ -1117,12 +1113,12 @@ void sub_4B678(u16 arg0)
             var1 = (i + 10 + gCurrentPinballGame->unk64) % 22;
             if (var0 < 32)
             {
-                DmaCopy16(3, &gUnknown_0200FBB0[var0], (void *)0x6008000 + var1 * 0x400, 0x400);
+                DmaCopy16(3, &gUnknown_0200FBB0[var0 * 0x400], (void *)0x6008000 + var1 * 0x400, 0x400);
             }
             else
             {
                 var0 -= 32;
-                DmaCopy16(3, &gUnknown_020030A0[var0], (void *)0x6008000 + var1 * 0x400, 0x400);
+                DmaCopy16(3, &gUnknown_020030A0[var0 * 0x400], (void *)0x6008000 + var1 * 0x400, 0x400);
             }
         }
     }
