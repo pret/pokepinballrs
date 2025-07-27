@@ -620,7 +620,7 @@ extern void sub_3E5D0(void);
 //extern ? sub_44D58();
 extern void sub_44F3C(void);
 extern void sub_45164(void);
-//extern ? sub_455D0();
+extern void sub_455D0(void);
 //extern ? sub_45E08();
 //extern ? sub_45E90();
 extern void sub_467F4(void);
