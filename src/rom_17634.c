@@ -1,4 +1,5 @@
 #include "global.h"
+#include "main.h"
 
 void sub_17634(u8 arg0)
 {
@@ -437,4 +438,101 @@ void sub_17C1C(struct Vector16 *arg0)
         }
         break;
     }
+}
+
+s16 sub_17F28(struct Vector16 *arg0, u16 *arg1)
+{
+    struct Vector16 vec1;
+    struct Vector16 vec2;
+    u16 sp00;
+    u8 sp02;
+    u16 return_val;
+    s16 unk0;
+    s32 unk1;
+    s32 unk2;
+
+    u32 some_enum;
+    u32 switch_enum;
+
+    return_val = 0;
+    gCurrentPinballGame->ball->unk4 = 0;
+    if (arg0->y < 0x200)
+    {
+        vec1.x = arg0->x / 8;
+        vec1.y = arg0->y / 8;
+        vec2.x = arg0->x % 8;
+        vec2.y = arg0->y % 8;
+        unk1 = vec1.y / 64;
+        unk2 = gCurrentPinballGame->unk24;
+        vec1.y %= 64;
+        unk0 = gUnknown_02031520.unk14.unk38[unk2 + unk1][vec1.y * 64 + vec1.x];
+        sp00 = gUnknown_02031520.unk14.unk48[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+        sp02 = gUnknown_02031520.unk14.unk58[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+    }
+    else
+    {
+        sp00 = 0;
+        sp02 = 0;
+    }
+
+    sub_18180(arg0, &sp00, &sp02);
+    switch_enum = sp02 & 0xF;
+    some_enum = sp02 >> 4;
+
+    switch (switch_enum)
+    {
+    case 1:
+    case 4:
+    case 6:
+        gCurrentPinballGame->unk23 = switch_enum - 1;
+        gCurrentPinballGame->unk22 = 1;
+        *arg1 = sp00;
+        if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
+        {
+            if (gCurrentPinballGame->ball->positionQ0.x < gUnknown_02031520.unk14.unk26 - 8 ||
+                gCurrentPinballGame->ball->positionQ0.y < gUnknown_02031520.unk14.unk28 - 8)
+            {
+
+                if (gCurrentPinballGame->ball->unk6 > 0)
+                {
+                    *arg1 = 0x3E00;
+                }
+                else if (gCurrentPinballGame->ball->unk6 != 0)
+                {
+                    *arg1 = 0x4100;
+                }
+                else
+                {
+                    if (gMain.systemFrameCount & 1)
+                    {
+                        gCurrentPinballGame->ball->unk4 = 0x28;
+                        gCurrentPinballGame->ball->unk6 = 1;
+                        *arg1 = 0x3E00;
+                    }
+                    else
+                    {
+                        gCurrentPinballGame->ball->unk4 = 0xFFD8;
+                        gCurrentPinballGame->ball->unk6 = 0xFFFF;
+                        *arg1 = 0x4100;
+                    }
+                }
+
+            }
+        }
+        return_val = 1;
+        break;
+    case 2:
+    case 3:
+        gCurrentPinballGame->unk23 = switch_enum - 1;
+        gCurrentPinballGame->unk22 = 2;
+        *arg1 = sp00 & 0x0000FFF0;
+        return_val = 1;
+        break;
+    case 5:
+        some_enum = 4;
+        break;
+    }
+
+    sub_182B4(some_enum, &return_val, arg1);
+    return return_val;
 }
