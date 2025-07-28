@@ -5914,53 +5914,7 @@ _08017628: .4byte 0x000003AB
 _0801762C: .4byte 0x000003DA
 _08017630: .4byte 0x000003A2
 
-    .section .text182B4
-
-	thumb_func_start sub_182B4
-sub_182B4: @ 0x080182B4
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	subs r0, #1
-	cmp r0, #0xe
-	bhi _0801831C
-	lsls r0, r0, #2
-	ldr r1, _080182C8 @ =_080182CC
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_080182C8: .4byte _080182CC
-_080182CC: @ jump table
-	.4byte _0801831C @ case 0
-	.4byte _0801831C @ case 1
-	.4byte _0801831C @ case 2
-	.4byte _08018308 @ case 3
-	.4byte _0801831C @ case 4
-	.4byte _0801831C @ case 5
-	.4byte _0801831C @ case 6
-	.4byte _0801831C @ case 7
-	.4byte _0801831C @ case 8
-	.4byte _0801831C @ case 9
-	.4byte _0801831C @ case 10
-	.4byte _0801831C @ case 11
-	.4byte _0801831C @ case 12
-	.4byte _0801831C @ case 13
-	.4byte _0801831C @ case 14
-_08018308:
-	ldr r2, _08018320 @ =gCurrentPinballGame
-	ldr r0, [r2]
-	movs r1, #0xf7
-	lsls r1, r1, #2
-	adds r0, r0, r1
-	movs r1, #6
-	strb r1, [r0]
-	ldr r1, [r2]
-	movs r0, #1
-	strb r0, [r1, #0x1f]
-_0801831C:
-	bx lr
-	.align 2, 0
-_08018320: .4byte gCurrentPinballGame
+    .section .text18324
 
 	thumb_func_start sub_18324
 sub_18324: @ 0x08018324

@@ -608,3 +608,31 @@ void sub_18180(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
         *arg2 = 6;
     }
 }
+
+//Identical to sub_18784 except for arguments
+void sub_182B4(u8 arg0, u16 *arg1, u16 *arg2)
+{
+    switch (arg0)
+    {
+    case 1:
+    case 2:
+    case 3:
+        break;
+    case 4:
+        gCurrentPinballGame->unk3DC = 6;
+        gCurrentPinballGame->unk1F = 1;
+        break;
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+        break;
+    }
+}
