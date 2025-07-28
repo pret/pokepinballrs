@@ -125,6 +125,112 @@ extern u8 gUnknown_0200FBB0[];
 extern u8 gUnknown_020030A0[];
 
 
+void sub_42E48(void)
+{
+    s16 i;
+    s16 frame;
+
+    frame = gMain.systemFrameCount % 16;
+    for (i = 0; i < frame; i++)
+        Random();
+
+    gMain.rngValue = gMain.systemFrameCount;
+    gCurrentPinballGame->unk18 = 0;
+    gCurrentPinballGame->unk17 = 0;
+    gCurrentPinballGame->unk13 = 0;
+    gCurrentPinballGame->unk294 = 1;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
+    gCurrentPinballGame->timerBonus = 0;
+    gCurrentPinballGame->unk392 = 0;
+    gCurrentPinballGame->unk383 = 0;
+    gCurrentPinballGame->unk388 = 0;
+    gCurrentPinballGame->ball->unk0 = 1;
+    gCurrentPinballGame->unk1F = 1;
+    gCurrentPinballGame->ball->velocity.x = 0;
+    gCurrentPinballGame->ball->velocity.y = 0;
+    gCurrentPinballGame->ball->unk6 = 0;
+    gCurrentPinballGame->unk386 = 0;
+    gCurrentPinballGame->unk53A = 0;
+    gCurrentPinballGame->unk542 = 0;
+    gCurrentPinballGame->unk544 = 0;
+    gCurrentPinballGame->unk54A = 0;
+    gCurrentPinballGame->unk394 = 0;
+    gCurrentPinballGame->unk590 = 0;
+    gCurrentPinballGame->unk591 = 0;
+    gCurrentPinballGame->unk592 = 0;
+    gCurrentPinballGame->unk594 = 0;
+    gCurrentPinballGame->unk596 = 0;
+    gCurrentPinballGame->unk7E = 1;
+
+    for (i = 0; i < 3; i++)
+    {
+        gCurrentPinballGame->unk3A0[i] = 0;
+        gCurrentPinballGame->unk3A3[i] = 0;
+        gCurrentPinballGame->unk3B0[i] = 0;
+    }
+
+    for (i = 0; i < 3; i++)
+    {
+        gCurrentPinballGame->unk530[i] = 0;
+        gCurrentPinballGame->unk533[i] = 0;
+        gCurrentPinballGame->unk536[i] = 0;
+        gCurrentPinballGame->unk53C[i] = 0;
+    }
+
+    for (i = 0; i < 2; i++)
+    {
+        gCurrentPinballGame->unk52C[i] = 0;
+        gCurrentPinballGame->unk52E[i] = 0;
+        gCurrentPinballGame->unk548[i] = 0;
+        gCurrentPinballGame->unk54B[i] = 0;
+        gCurrentPinballGame->unk54D[i] = 0;
+        gCurrentPinballGame->unk54F[i] = 0;
+        gCurrentPinballGame->unk551[i] = 0;
+        gCurrentPinballGame->unk553[i] = 0;
+        gCurrentPinballGame->unk555[i] = 0;
+        gCurrentPinballGame->unk557[i] = 0;
+        gCurrentPinballGame->unk559[i] = 0;
+        gCurrentPinballGame->unk55B[i] = 0;
+        gCurrentPinballGame->unk55D[i] = 0;
+        gCurrentPinballGame->unk55F[i] = 0;
+        gCurrentPinballGame->unk562[i] = 0;
+        gCurrentPinballGame->unk566[i] = 0;
+        gCurrentPinballGame->unk56A[i] = 0;
+        gCurrentPinballGame->unk570[i].x = 0;
+        gCurrentPinballGame->unk570[i].y = 0;
+        gCurrentPinballGame->unk578[i].x = 0;
+        gCurrentPinballGame->unk578[i].y = 0;
+        gCurrentPinballGame->unk580[i].x = 0;
+        gCurrentPinballGame->unk580[i].y = 0;
+    }
+
+    gCurrentPinballGame->unk1A = 0;
+    sub_4387C();
+    sub_43500();
+    sub_44D58();
+    sub_45E08();
+
+    for (i = 0; i < 0x800; i++)
+        gUnknown_03005C00[0x400 + i] = 0x200;
+
+    DmaCopy16(3, &gUnknown_03005C00[0x400], (void *)0x06001000, 0x1000);
+
+    gMain.blendControl = 0x1C42;
+    gMain.blendAlpha = 0xC04;
+    for (i = 0; i < 0x140; i++)
+    {
+        u16 var0 = i - ((i / 0x20) * 0x20) - 2;
+        if (var0 < 28)
+           gUnknown_03005C00[0x800 + i] = 0x9000;
+    }
+
+    gMain.bgOffsets[1].yOffset = 126;
+    DmaCopy16(3, &gUnknown_03005C00[0x800], (void *)0x06001140, 0x280);
+    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+    m4aSongNumStart(MUS_BONUS_FIELD_SPHEAL);
+    DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
+}
+
 void sub_43228(void)
 {
     switch (gCurrentPinballGame->unk13)
@@ -1240,7 +1346,7 @@ void sub_455D0(void)
                             gCurrentPinballGame->unk3A3[var0] = 11;
                             gCurrentPinballGame->unk3B0[var0] = 0;
                             gCurrentPinballGame->unk542 = 100;
-                            gCurrentPinballGame->unk52C++;
+                            gCurrentPinballGame->unk52C[0]++;
                         }
                     }
                 }
@@ -1282,7 +1388,7 @@ void sub_455D0(void)
                         gCurrentPinballGame->unk3A3[var0] = 11;
                         gCurrentPinballGame->unk3B0[var0] = 0;
                         gCurrentPinballGame->unk542 = 106;
-                        gCurrentPinballGame->unk52D++;
+                        gCurrentPinballGame->unk52C[1]++;
                     }
                 }
             }
@@ -1462,11 +1568,11 @@ void sub_45E90(void)
 
     if (gCurrentPinballGame->unk53A > 100 && gCurrentPinballGame->unk53A < 450)
     {
-        if (gCurrentPinballGame->unk52E != gCurrentPinballGame->unk52C)
+        if (gCurrentPinballGame->unk52E[0] != gCurrentPinballGame->unk52C[0])
         {
             if ((gCurrentPinballGame->unk53A % 3) == 0)
             {
-                gCurrentPinballGame->unk52E++;
+                gCurrentPinballGame->unk52E[0]++;
                 m4aSongNumStart(SE_UNKNOWN_0x91);
             }
         }
@@ -1478,11 +1584,11 @@ void sub_45E90(void)
 
     if (gCurrentPinballGame->unk53A > 500 && gCurrentPinballGame->unk53A < 800)
     {
-        if (gCurrentPinballGame->unk52F != gCurrentPinballGame->unk52D)
+        if (gCurrentPinballGame->unk52E[1] != gCurrentPinballGame->unk52C[1])
         {
             if ((gCurrentPinballGame->unk53A % 3) == 0)
             {
-                gCurrentPinballGame->unk52F++;
+                gCurrentPinballGame->unk52E[1]++;
                 m4aSongNumStart(SE_UNKNOWN_0x91);
             }
         }
@@ -1510,7 +1616,7 @@ void sub_45E90(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    value = gCurrentPinballGame->unk52E * 5000000;
+    value = gCurrentPinballGame->unk52E[0] * 5000000;
     sp0[0] = value / 10000000;
     sp0[1] = (value % 10000000) / 1000000;
     sp0[2] = 10;
@@ -1540,7 +1646,7 @@ void sub_45E90(void)
     sp18[8] = sp0[8] * 2 + 0x2D0;
     sp18[9] = sp0[9] * 2 + 0x2D0;
 
-    value = gCurrentPinballGame->unk52E;
+    value = gCurrentPinballGame->unk52E[0];
     sp0[0] = value / 10;
     sp0[1] = value % 10;
     if (sp0[0] == 0)
@@ -1559,7 +1665,7 @@ void sub_45E90(void)
         gOamBuffer[oamSimple->oamId].tileNum = sp18[i];
     }
 
-    value = gCurrentPinballGame->unk52F * 1000000;
+    value = gCurrentPinballGame->unk52E[1] * 1000000;
     sp0[0] = value / 10000000;
     sp0[1] = (value % 10000000) / 1000000;
     sp0[2] = 10;
@@ -1589,7 +1695,7 @@ void sub_45E90(void)
     sp18[8] = sp0[8] * 2 + 0x2D0;
     sp18[9] = sp0[9] * 2 + 0x2D0;
 
-    value = gCurrentPinballGame->unk52F;
+    value = gCurrentPinballGame->unk52E[1];
     sp0[0] = value / 10;
     sp0[1] = value % 10;
     if (sp0[0] == 0)
@@ -1608,8 +1714,8 @@ void sub_45E90(void)
         gOamBuffer[oamSimple->oamId].tileNum = sp18[i];
     }
 
-    value = gCurrentPinballGame->unk52E * 5000000
-          + gCurrentPinballGame->unk52F * 1000000;
+    value = gCurrentPinballGame->unk52E[0] * 5000000
+          + gCurrentPinballGame->unk52E[1] * 1000000;
     gCurrentPinballGame->unk544 = value;
     sp0[0] = value / 100000000;
     sp0[1] = (value % 100000000) / 10000000;

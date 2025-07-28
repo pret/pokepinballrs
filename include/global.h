@@ -141,7 +141,8 @@ struct PinballGame
     /*0x02A*/ u8 filler2A[0x6];
     /*0x030*/ s8 numLives;
     /*0x031*/ u8 ballSpeed;
-    /*0x032*/ u8 filler32[0x3];
+    /*0x032*/ u16 unk32;
+    /*0x034*/ u8 filler34[0x1];
     /*0x035*/ s8 area;
     /*0x036*/ u8 filler36[0x2];
     /*0x038*/ u32 unk38; //score to add every frame until unk3C score has been added to player's total
@@ -416,10 +417,8 @@ struct PinballGame
     /*0x440*/ u8 filler440[0x12];
     /*0x452*/ u16 unk452;
     /*0x454*/ u8 filler454[0xD8];
-    /*0x52C*/ s8 unk52C;
-    /*0x52D*/ s8 unk52D;
-    /*0x52E*/ s8 unk52E;
-    /*0x52F*/ s8 unk52F;
+    /*0x52C*/ s8 unk52C[2];
+    /*0x52E*/ s8 unk52E[2];
     /*0x530*/ s8 unk530[3];
     /*0x533*/ s8 unk533[3];
     /*0x536*/ s8 unk536[3];
@@ -429,7 +428,7 @@ struct PinballGame
     /*0x542*/ u16 unk542;
     /*0x544*/ u32 unk544;
     /*0x548*/ s8 unk548[2];
-    /*0x54A*/ u8 filler54A[0x1];
+    /*0x54A*/ s8 unk54A;
     /*0x54B*/ s8 unk54B[2];
     /*0x54D*/ s8 unk54D[2];
     /*0x54F*/ s8 unk54F[2];
@@ -449,10 +448,11 @@ struct PinballGame
     /*0x570*/ struct Vector16 unk570[2];
     /*0x578*/ struct Vector16 unk578[2];
     /*0x580*/ struct Vector32 unk580[2];
-    /*0x590*/ u8 filler590[0x1];
+    /*0x590*/ s8 unk590;
     /*0x591*/ s8 unk591;
     /*0x592*/ u16 unk592;
-    /*0x594*/ u8 filler594[0x4];
+    /*0x594*/ u16 unk594;
+    /*0x596*/ u16 unk596;
     /*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
     /*0x59A*/ u8 filler59A[0x2];
     /*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
