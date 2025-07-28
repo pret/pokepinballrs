@@ -654,6 +654,7 @@ extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
 extern struct Unk02031590 gUnknown_02031590;
 extern u16 gUnknown_08137B3C[][6][16];
+extern u16 gUnknown_08137D40[]; 
 extern const u8 gUnknown_08137E14[][0x20];
 extern const u8 gUnknown_08138834[0x2000];
 extern struct Unk02031520_unk10 gUnknown_081450F4;
@@ -668,23 +669,23 @@ extern s32 gUnknown_081B36A4[64];
 extern s32 gUnknown_082EE0E0[0x3E0];
 extern u16 gUnknown_0832D604[0x1600];
 extern u16 gUnknown_08330204[0x1600];
+extern u16 gUnknown_08340B58[];
+extern u16 gUnknown_083499D8[];
+extern u16 gUnknown_0834DBD8[];
 extern const u16 gUnknown_08391A4C[0x1000];
 extern const u16 gUnknown_08393A4C[0x1000];
-extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
 extern u8 gUnknown_083FE44C[][0x200];
-extern const s16 gUnknown_086ACDF4[9];
-extern struct Unk086ACE8C gUnknown_086ACE8C[13];
-extern u16 gUnknown_086ACEF4[2];
-extern s16 gUnknown_086AE68E[][2]; 
-extern struct SongHeader gUnknown_086A17D8;
-extern u16 gUnknown_08137D40[]; 
-extern u16 gUnknown_084EDACC[]; 
 extern u16 gUnknown_08494E4C[]; 
+extern u16 gUnknown_084EDACC[]; 
 extern u8 gUnknown_084FF30C[];
-
+extern struct SongHeader gUnknown_086A17D8;
+extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
+extern const s16 gUnknown_086ACDF4[9];
 typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);
 extern Unk86ACE0C gUnknown_086ACE0C[8];
 extern struct Vector16 gUnknown_086ACE60[4];
-
+extern struct Unk086ACE8C gUnknown_086ACE8C[13];
+extern u16 gUnknown_086ACEF4[2];
+extern s16 gUnknown_086AE68E[][2]; 
 
 #endif // GUARD_GLOBAL_H

@@ -536,3 +536,75 @@ s16 sub_17F28(struct Vector16 *arg0, u16 *arg1)
     sub_182B4(some_enum, &return_val, arg1);
     return return_val;
 }
+
+void sub_18180(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
+{
+    s16 deltaX;
+    s16 deltaY;
+    u16 arrayValue;
+    u16 maskedResult;
+
+    if (gCurrentPinballGame->unk387 == 1)
+    {
+        if (*arg2 & 0xF)
+            return;
+
+        deltaX = arg0->x - gCurrentPinballGame->unk3F0;
+        deltaY = arg0->y - gCurrentPinballGame->unk3F2;
+
+        if ((deltaX < 0 || deltaX >= 0x78) || (deltaY < 0 || deltaY >= 0x98))
+            return;
+
+        maskedResult = gUnknown_08340B58[(deltaY * 0x78) + deltaX] & 0xFFF0;
+        arrayValue = gUnknown_08340B58[(deltaY * 0x78) + deltaX] & 0xF;
+
+        if (arrayValue == 0)
+            return;
+
+        gCurrentPinballGame->unk452 = 8;
+        *arg1 = maskedResult;
+        *arg2 = 6;
+    }
+    else if (gCurrentPinballGame->unk387 == 2)
+    {
+        if (*arg2 & 0xF)
+            return;
+
+        deltaX = arg0->x - gCurrentPinballGame->unk3F0;
+        deltaY = arg0->y - gCurrentPinballGame->unk3F2;
+
+        if ((deltaX < 0 || deltaX >= 0x60) || (deltaY < 0 || deltaY >= 0x58))
+            return;
+
+        maskedResult = gUnknown_083499D8[(deltaY * 0x60) + deltaX] & 0xFFF0;
+        arrayValue = gUnknown_083499D8[(deltaY * 0x60) + deltaX] & 0xF;
+
+        if (arrayValue == 0)
+            return;
+
+        gCurrentPinballGame->unk452 = 8;
+        *arg1 = maskedResult;
+        *arg2 = 6;
+    }
+    else if (gCurrentPinballGame->unk387 == 3)
+    {
+        if (*arg2 & 0xF)
+            return;
+
+        deltaX = arg0->x - gCurrentPinballGame->unk3F0;
+        deltaY = arg0->y - gCurrentPinballGame->unk3F2;
+
+        if ((deltaX < 0 || deltaX >= 0x60) || (deltaY < 0 || deltaY >= 0x68))
+            return;
+
+        maskedResult = gUnknown_0834DBD8[(deltaY * 0x60) + deltaX] & 0xFFF0;
+        arrayValue = gUnknown_0834DBD8[(deltaY * 0x60) + deltaX] & 0xF;
+
+        if (arrayValue == 0)
+            return;
+
+        gCurrentPinballGame->unk452 = 8;
+        *arg1 = maskedResult;
+        *arg2 = 6;
+    }
+}
