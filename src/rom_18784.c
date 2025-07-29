@@ -5,7 +5,7 @@
 #include "m4a.h"
 #include "constants/bg_music.h"
 
-void sub_18784(u8 arg0)
+void sub_18784(u8 arg0, u16 *arg1, u16 *arg2)
 {
     switch (arg0)
     {
