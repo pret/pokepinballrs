@@ -573,9 +573,7 @@ struct PinballGame
     /*0x715*/ u8 filler715[0x1];
     /*0x716*/ s8 unk716;
     /*0x717*/ u8 unk717;
-    /*0x718*/ s8 leftBallPowerUpLight;
-    /*0x719*/ s8 centerBallPowerUpLight;
-    /*0x71A*/ s8 rightBallPowerUpLight;
+    /*0x718*/ s8 ballPowerUpLight[3];
     /*0x71B*/ u8 unk71B;
     /*0x71C*/ u8 unk71C;
     /*0x71D*/ u8 filler71D[0x7];

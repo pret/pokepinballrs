@@ -71,6 +71,8 @@ SECTIONS
         asm/rom_4CEA8.o(.text);
         src/rom_4E598.o(.text);
         asm/rom_4CEA8.o(.text4E598);
+        src/rom_4F258.o(.text);
+        asm/rom_4CEA8.o(.text4F258);
         src/rom_50AD4.o(.text);
         src/rom_50FAC.o(.text);
         src/options.o(.text);

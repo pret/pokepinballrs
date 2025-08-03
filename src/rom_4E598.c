@@ -38,9 +38,9 @@ void sub_4E598(void)
         gCurrentPinballGame->unk1D0 = 0;
     }
 
-    gCurrentPinballGame->leftBallPowerUpLight = 0;
-    gCurrentPinballGame->centerBallPowerUpLight = gCurrentPinballGame->leftBallPowerUpLight;
-    gCurrentPinballGame->rightBallPowerUpLight = gCurrentPinballGame->leftBallPowerUpLight;
+    gCurrentPinballGame->ballPowerUpLight[0] = 0;
+    gCurrentPinballGame->ballPowerUpLight[1] = gCurrentPinballGame->ballPowerUpLight[0];
+    gCurrentPinballGame->ballPowerUpLight[2] = gCurrentPinballGame->ballPowerUpLight[0];
     gCurrentPinballGame->unk308 = 0;
     if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
