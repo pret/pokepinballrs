@@ -669,7 +669,7 @@ extern void sub_4E9F0(s8);
 //extern ? sub_4EF38();
 //extern ? sub_4F028();
 //extern ? sub_4F0F0();
-//extern ? sub_4F258();
+extern void sub_4F258(void);
 //extern ? sub_4F2B8();
 //extern ? sub_4F30C();
 //extern ? sub_4F4B4();

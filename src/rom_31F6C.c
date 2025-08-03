@@ -702,10 +702,10 @@ void sub_32DF8(void)
         gCurrentPinballGame->lLight = gCurrentPinballGame->eLight;
         gCurrentPinballGame->eLight = tmp;
 
-        tmp = gCurrentPinballGame->leftBallPowerUpLight;
-        gCurrentPinballGame->leftBallPowerUpLight = gCurrentPinballGame->centerBallPowerUpLight;
-        gCurrentPinballGame->centerBallPowerUpLight = gCurrentPinballGame->rightBallPowerUpLight;
-        gCurrentPinballGame->rightBallPowerUpLight = tmp;
+        tmp = gCurrentPinballGame->ballPowerUpLight[0];
+        gCurrentPinballGame->ballPowerUpLight[0] = gCurrentPinballGame->ballPowerUpLight[1];
+        gCurrentPinballGame->ballPowerUpLight[1] = gCurrentPinballGame->ballPowerUpLight[2];
+        gCurrentPinballGame->ballPowerUpLight[2] = tmp;
     }
 
     if (gCurrentPinballGame->newButtonActions[1])
@@ -722,10 +722,10 @@ void sub_32DF8(void)
         gCurrentPinballGame->oLight = gCurrentPinballGame->hLight;
         gCurrentPinballGame->hLight = tmp;
 
-        tmp = gCurrentPinballGame->rightBallPowerUpLight;
-        gCurrentPinballGame->rightBallPowerUpLight = gCurrentPinballGame->centerBallPowerUpLight;
-        gCurrentPinballGame->centerBallPowerUpLight = gCurrentPinballGame->leftBallPowerUpLight;
-        gCurrentPinballGame->leftBallPowerUpLight = tmp;
+        tmp = gCurrentPinballGame->ballPowerUpLight[2];
+        gCurrentPinballGame->ballPowerUpLight[2] = gCurrentPinballGame->ballPowerUpLight[1];
+        gCurrentPinballGame->ballPowerUpLight[1] = gCurrentPinballGame->ballPowerUpLight[0];
+        gCurrentPinballGame->ballPowerUpLight[0] = tmp;
     }
 }
 
