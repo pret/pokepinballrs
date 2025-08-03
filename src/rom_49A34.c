@@ -118,6 +118,7 @@ extern const u8 gUnknown_084AA9EC[][0x800];
 extern const u8 gUnknown_084A856C[];
 extern const u8 gUnknown_084AA18C[];
 extern const u8 gUnknown_081408B4[];
+extern const u8 gUnknown_083C5A2C[];
 
 struct Unk_086AFAC0
 {
@@ -140,6 +141,116 @@ extern s16 gUnknown_020306C0[];
 extern u8 gUnknown_0200FBB0[];
 extern u8 gUnknown_020030A0[];
 
+
+void sub_3E79C(void)
+{
+    s16 i;
+    s16 frame;
+
+    frame = gMain.systemFrameCount % 10;
+    for (i = 0; i < frame; i++)
+        Random();
+
+    gCurrentPinballGame->unk18 = 0;
+    gCurrentPinballGame->unk17 = 0;
+    gCurrentPinballGame->unk13 = 0;
+    if (gCurrentPinballGame->numCompletedBonusStages % 10 == 9)
+        gCurrentPinballGame->unk384 = 18;
+    else
+        gCurrentPinballGame->unk384 = 15;
+
+    gCurrentPinballGame->unk294 = 0;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
+    gCurrentPinballGame->timerBonus = 0;
+    gCurrentPinballGame->unk388 = 3;
+    gCurrentPinballGame->unk392 = 0;
+    gCurrentPinballGame->ball->unk0 = 1;
+    gCurrentPinballGame->unkE6 = -88;
+    gCurrentPinballGame->unk387 = 1;
+    gCurrentPinballGame->unk6C4 = 3;
+    gCurrentPinballGame->unk382 = 0;
+    gCurrentPinballGame->unk383 = 0;
+    gCurrentPinballGame->unk385 = 0;
+    gCurrentPinballGame->unk386 = 0;
+    gCurrentPinballGame->unk389 = 0;
+    gCurrentPinballGame->unk38A = 0;
+    gCurrentPinballGame->unk38C = 0;
+    gCurrentPinballGame->unk38E = 0;
+    gCurrentPinballGame->unk390 = 0;
+    gCurrentPinballGame->unk394 = 0;
+
+    for (i = 0; i < 3; i++)
+    {
+        gCurrentPinballGame->unk3C4[i].x = 0;
+        gCurrentPinballGame->unk3C4[i].y = 0;
+    }
+
+    gCurrentPinballGame->unk3DC = 0;
+    gCurrentPinballGame->unk3DD = 0;
+    gCurrentPinballGame->unk3DE = 0;
+    gCurrentPinballGame->unk3DF = 0;
+    gCurrentPinballGame->unk3E0 = 0;
+    gCurrentPinballGame->unk3E2 = 0;
+    gCurrentPinballGame->unk3E1 = 0;
+    gCurrentPinballGame->unk3E4 = 0;
+    gCurrentPinballGame->unk3E6 = 0;
+    gCurrentPinballGame->unk3E8 = 0;
+    gCurrentPinballGame->unk3EA = 0;
+    gCurrentPinballGame->unk3EC = 0;
+    gCurrentPinballGame->unk3EE = 0;
+    gCurrentPinballGame->unk3F0 = 0;
+    gCurrentPinballGame->unk3F2 = 0;
+    gCurrentPinballGame->unk414.x = 0;
+    gCurrentPinballGame->unk414.y = 0;
+    gCurrentPinballGame->unk418.x = 0;
+    gCurrentPinballGame->unk418.y = 0;
+    gCurrentPinballGame->unk452 = 0;
+
+    for (i = 0; i < 2; i++)
+    {
+        gCurrentPinballGame->unk441[i] = 0;
+        gCurrentPinballGame->unk443[i] = 0;
+        gCurrentPinballGame->unk458[i] = 0;
+        gCurrentPinballGame->unk45C[i].x = 0;
+        gCurrentPinballGame->unk45C[i].y = 0;
+        gCurrentPinballGame->unk464[i].x = 0;
+        gCurrentPinballGame->unk464[i].y = 0;
+    }
+
+    gCurrentPinballGame->unk4C8 = 0;
+    gCurrentPinballGame->unk47F = 0;
+    gCurrentPinballGame->unk480 = 0;
+    gCurrentPinballGame->unk486 = 0;
+    gCurrentPinballGame->unk504 = 0;
+    gCurrentPinballGame->unk505 = 0;
+    gCurrentPinballGame->unk506 = 0;
+    gCurrentPinballGame->unk507 = 0;
+    gCurrentPinballGame->unk508 = 0;
+    gCurrentPinballGame->unk50A = 0;
+    gCurrentPinballGame->unk50C = 0;
+    gCurrentPinballGame->unk50E = 0;
+    gCurrentPinballGame->unk510 = 0;
+    gCurrentPinballGame->unk512 = 0;
+    gCurrentPinballGame->unk514 = 0;
+    gCurrentPinballGame->unk516 = 0;
+    gCurrentPinballGame->unk518 = 0;
+    gCurrentPinballGame->unk51A = 0;
+    gCurrentPinballGame->unk51C.x = 0;
+    gCurrentPinballGame->unk51C.y = 0;
+    gCurrentPinballGame->unk520.x = 0;
+    gCurrentPinballGame->unk520.y = 0;
+    gCurrentPinballGame->unk524.x = 0;
+    gCurrentPinballGame->unk524.y = 0;
+    gCurrentPinballGame->unk528.x = 0;
+    gCurrentPinballGame->unk528.y = 0;
+    gCurrentPinballGame->unk1A = 1;
+    sub_423D8();
+    DmaCopy16(3, gUnknown_083C5A2C, (void *)0x06015800, 0x2800);
+    DmaCopy16(3, gUnknown_084AA18C, (void *)0x06011620, 0x860);
+    sub_3EDF0();
+    sub_3FAE0();
+    DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
+}
 
 void sub_3EB2C(void)
 {
