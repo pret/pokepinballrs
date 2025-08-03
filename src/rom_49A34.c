@@ -119,6 +119,9 @@ extern const u8 gUnknown_084A856C[];
 extern const u8 gUnknown_084AA18C[];
 extern const u8 gUnknown_081408B4[];
 extern const u8 gUnknown_083C5A2C[];
+extern const s16 gUnknown_086AF3B2[];
+extern const s16 gUnknown_086AF3BE[];
+extern const u16 gUnknown_086AF3C6[];
 
 struct Unk_086AFAC0
 {
@@ -141,6 +144,33 @@ extern s16 gUnknown_020306C0[];
 extern u8 gUnknown_0200FBB0[];
 extern u8 gUnknown_020030A0[];
 
+
+void sub_3E644(void)
+{
+    s16 i, j;
+    s16 var0;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+
+    var0 = gUnknown_086AF3B2[(gMain.systemFrameCount % 144) / 24];
+    DmaCopy16(3, &gUnknown_08352BD8[var0 * 0x20], (void *)0x05000000, 0x20);
+    DmaCopy16(3, &gUnknown_08352BD8[(var0 + 4) * 0x20], (void *)0x05000080, 0x20);
+
+    var0 = gUnknown_086AF3BE[(gMain.systemFrameCount % 96) / 24];
+    for (i = 0; i < 4; i++)
+    {
+        group = &gMain.spriteGroups[11 + i];
+        group->baseX = 120 - gCurrentPinballGame->unk58;
+        group->baseY = 128 - gCurrentPinballGame->unk5A;
+        for (j = 0; j < 3; j++)
+        {
+            oamSimple = &group->oam[j];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+            gOamBuffer[oamSimple->oamId].tileNum = gUnknown_086AF3C6[j] + var0 * 8;
+        }
+    }
+}
 
 void sub_3E79C(void)
 {
