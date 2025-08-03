@@ -19,6 +19,18 @@
 
 #define DOWNCONVERT_BIT_DEPTH(x) ((x) / 8)
 
+//This handles everything up to 47 high/wide; should be bigger than anything we will see.
+	//Adjust if needed.
+	//eg: (8 * 5) + 4 + 2 + 1
+#define MAX_2N_REGION_COUNT 8
+#define MAX_2N_SIDE_LEN (8 * (MAX_2N_REGION_COUNT-3) + 7)
+#define MAX_2N_OPTIMIZED_TILES MAX_2N_SIDE_LEN * MAX_2N_SIDE_LEN
+
+typedef struct {
+    int x;
+    int y;
+} TileCoord;
+
 static void AdvanceMetatilePosition(int *subTileX, int *subTileY, int *metatileX, int *metatileY, int metatilesWide, int metatileWidth, int metatileHeight)
 {
 	(*subTileX)++;
@@ -62,6 +74,88 @@ static void AdvancePinballHatchSpriteMetatilePosition(int *subTileX, int *subTil
 	}
 }
 
+//Returns the '2^n optomized chunk' sizes.
+//eg: a width of 6 would be done with a col of size 4 and a col of size 2. 
+static int get2nBaseChunks(int size, int *out_chunks) {
+    int count = 0;
+    int remaining = size;
+
+	// It appears that this strategy caps at sections of size 8. So a 20 would give 8+8+4, rather than a 16 + 4
+    for (int p = 3; p >= 0; p--) {  
+        int size_pow = 1 << p;
+        while (remaining >= size_pow) {
+            out_chunks[count++] = size_pow;
+            remaining -= size_pow;
+        }
+    }
+
+	/* // Debug output: print the chunk sizes
+    printf("Generated chunks for input: %d (total: %d):\n", size, count);
+    for (int i = 0; i < count; i++) {
+        printf("chunk %d: (%d)\n", i, out_chunks[i]);
+    }
+	*/
+
+	return count;
+}
+
+static int Init2nTileMapping(int width, int height, TileCoord *tileOrder2nChunks) {
+    
+	int x_sizes[MAX_2N_REGION_COUNT], y_sizes[MAX_2N_REGION_COUNT]; 
+    int x_count = get2nBaseChunks(width, x_sizes);
+    int y_count = get2nBaseChunks(height, y_sizes);
+	int tile_count = 0;
+
+    int x_offsets[MAX_2N_REGION_COUNT] = {0}, y_offsets[MAX_2N_REGION_COUNT] = {0};
+    for (int i = 1; i < x_count; i++) x_offsets[i] = x_offsets[i - 1] + x_sizes[i - 1];
+    for (int i = 1; i < y_count; i++) y_offsets[i] = y_offsets[i - 1] + y_sizes[i - 1];
+
+    // Loop over chunks in raster order (row-major)
+    for (int yi = 0; yi < y_count; yi++) {
+        int h = y_sizes[yi];
+        int y_offset = y_offsets[yi];
+
+        for (int xi = 0; xi < x_count; xi++) {
+            int w = x_sizes[xi];
+            int x_offset = x_offsets[xi];
+
+            // Fill this chunk in row-major tile order
+            for (int y = y_offset; y < y_offset + h; y++) {
+                for (int x = x_offset; x < x_offset + w; x++) {
+                    tileOrder2nChunks[tile_count].x = x;
+                    tileOrder2nChunks[tile_count].y = y;
+                    tile_count++;
+                }
+            }
+        }
+    }
+
+	/*    // Debug output: print the tile positions
+    printf("Generated tileOrder2nChunks (total: %d):\n", tile_count);
+    for (int i = 0; i < tile_count; i++) {
+        printf("Tile %d: (%d, %d)\n", i, tileOrder2nChunks[i].x, tileOrder2nChunks[i].y);
+    }*/
+
+	return tile_count;
+}
+
+static void Advance2nOptimizedMetatilePosition(int *subTileX, int *subTileY, int *metatileX, int *metatileY, int metatilesWide, TileCoord *subTileCoords, int tileCount, int i) {
+
+	//First tile handled at start of loop; just track additional tiles
+	int tileIndex = (i+1) % tileCount;
+	*subTileX = subTileCoords[tileIndex].x;
+	*subTileY = subTileCoords[tileIndex].y;
+
+	if (tileIndex == 0) {
+		(*metatileX)++;
+		if (*metatileX == metatilesWide) {
+			*metatileX = 0;
+			(*metatileY)++;
+		}
+	}
+
+}
+
 static void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool invertColors)
 {
 	int subTileX = 0;
@@ -88,13 +182,21 @@ static void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int nu
 	}
 }
 
-static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors)
+static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors, bool optomized_2n_map)
 {
 	int subTileX = 0;
 	int subTileY = 0;
 	int metatileX = 0;
 	int metatileY = 0;
 	int pitch = (metatilesWide * metatileWidth) * 4;
+	
+	TileCoord tileMappingCoord[MAX_2N_OPTIMIZED_TILES];
+	int tileCount = 0;
+
+	if (optomized_2n_map)
+	{
+		tileCount = Init2nTileMapping(metatileWidth, metatileHeight, tileMappingCoord);
+	}
 
 	for (int i = 0; i < numTiles; i++) {
 		for (int j = 0; j < 8; j++) {
@@ -117,6 +219,8 @@ static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int nu
 
 		if (pinballHatchSprite) {
 			AdvancePinballHatchSpriteMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide);
+		} else if (optomized_2n_map) {
+			Advance2nOptimizedMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, tileMappingCoord, tileCount, i);
 		} else {
 			AdvanceMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, metatileWidth, metatileHeight);
 		}
@@ -211,13 +315,21 @@ void Convert4BppImageWithPaletteMap(struct Image *image)
 	image->bitDepth = 8;
 }
 
-static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors)
+static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors, bool optomized_2n_map)
 {
 	int subTileX = 0;
 	int subTileY = 0;
 	int metatileX = 0;
 	int metatileY = 0;
 	int pitch = (metatilesWide * metatileWidth) * 4;
+
+	TileCoord tileMappingCoord[MAX_2N_OPTIMIZED_TILES];
+	int tileCount = 0;
+
+	if (optomized_2n_map)
+	{
+		tileCount = Init2nTileMapping(metatileWidth, metatileHeight, tileMappingCoord);
+	}
 
 	for (int i = 0; i < numTiles; i++) {
 		for (int j = 0; j < 8; j++) {
@@ -240,6 +352,8 @@ static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numT
 
 		if (pinballHatchSprite) {
 			AdvancePinballHatchSpriteMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide);
+		} else if (optomized_2n_map) {
+			Advance2nOptimizedMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, tileMappingCoord, tileCount, i);
 		} else {
 			AdvanceMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, metatileWidth, metatileHeight);
 		}
@@ -426,7 +540,7 @@ static unsigned char *DecodeTilemap(unsigned char *tiles, struct Tilemap *tilema
     return decoded;
 }
 
-void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors)
+void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors, bool optomized_2n_map)
 {
 	int tileSize = image->bitDepth * 8;
 
@@ -467,7 +581,7 @@ void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHe
 		ConvertFromTiles1Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
 		break;
 	case 4:
-		ConvertFromTiles4Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors);
+		ConvertFromTiles4Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors, optomized_2n_map);
 		break;
 	case 8:
 		ConvertFromTiles8Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
@@ -477,7 +591,7 @@ void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHe
 	free(buffer);
 }
 
-void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, int metatileWidth, int metatileHeight,  bool pinballHatchSprite, struct Image *image, bool invertColors)
+void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, int metatileWidth, int metatileHeight,  bool pinballHatchSprite, struct Image *image, bool invertColors, bool optomized_2n_map)
 {
 	int tileSize = image->bitDepth * 8;
 
@@ -517,7 +631,7 @@ void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, in
 		ConvertToTiles1Bpp(image->pixels, buffer, maxNumTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
 		break;
 	case 4:
-		ConvertToTiles4Bpp(image->pixels, buffer, maxNumTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors);
+		ConvertToTiles4Bpp(image->pixels, buffer, maxNumTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors, optomized_2n_map);
 		break;
 	case 8:
 		ConvertToTiles8Bpp(image->pixels, buffer, maxNumTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);

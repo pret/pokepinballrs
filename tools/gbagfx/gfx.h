@@ -52,8 +52,8 @@ enum NumTilesMode {
     NUM_TILES_ERROR,
 };
 
-void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors);
-void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors);
+void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors, bool optomized_2n_map);
+void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors, bool optomized_2n_map);
 void ReadPlainImage(char *path, int dataWidth, struct Image *image, bool invertColors);
 void WritePlainImage(char *path, int dataWidth, struct Image *image, bool invertColors);
 void FreeImage(struct Image *image);

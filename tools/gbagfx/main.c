@@ -68,7 +68,7 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
             image.tilemap.size = fileSize;
         }
 
-        ReadTileImage(inputPath, options->width, options->metatileWidth, options->metatileHeight, options->pinballHatchSprite, &image, !image.hasPalette);
+        ReadTileImage(inputPath, options->width, options->metatileWidth, options->metatileHeight, options->pinballHatchSprite, &image, !image.hasPalette, options->map2nSprite);
         if (image.paletteMap != NULL && image.bitDepth == 4)
         {
            Convert4BppImageWithPaletteMap(&image);
@@ -97,7 +97,7 @@ void ConvertPngToGba(char *inputPath, char *outputPath, struct PngToGbaOptions *
     ReadPng(inputPath, &image);
 
     if (options->isTiled)
-        WriteTileImage(outputPath, options->numTilesMode, options->numTiles, options->metatileWidth, options->metatileHeight, options->pinballHatchSprite, &image, !image.hasPalette);
+        WriteTileImage(outputPath, options->numTilesMode, options->numTiles, options->metatileWidth, options->metatileHeight, options->pinballHatchSprite, &image, !image.hasPalette, options->map2nSprite);
     else
         WritePlainImage(outputPath, options->dataWidth, &image, !image.hasPalette);
 
@@ -189,6 +189,9 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
         else if (strcmp(option, "-pinball-hatch-sprite") == 0) {
             options.pinballHatchSprite = 1;
         }
+        else if (strcmp(option, "-map-2n") == 0) {
+            options.map2nSprite = 1;
+        }
         else if (strcmp(option, "-tilemap") == 0)
         {
             if (i + 1 >= argc)
@@ -237,6 +240,12 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
 
         options.metatileWidth = 3;
         options.metatileHeight = 3;
+    }
+
+    if (options.map2nSprite){
+        if (options.metatileHeight == 1 && options.metatileWidth == 1){
+            FATAL_ERROR("Must specify metatile dimensions when using 2n chunk mapping.\n");
+        }
     }
 
     if (options.metatileWidth > options.width)
@@ -312,6 +321,9 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
         else if (strcmp(option, "-pinball-hatch-sprite") == 0) {
             options.pinballHatchSprite = 1;
         }
+        else if (strcmp(option, "-map-2n") == 0) {
+            options.map2nSprite = 1;
+        }
         else if (strcmp(option, "-plain") == 0)
         {
             options.isTiled = false;
@@ -341,6 +353,12 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
 
         options.metatileWidth = 3;
         options.metatileHeight = 3;
+    }
+
+    if (options.map2nSprite){
+        if (options.metatileHeight == 1 && options.metatileWidth == 1){
+            FATAL_ERROR("Must specify metatile dimensions when using 2n chunk mapping.\n");
+        }
     }
 
     ConvertPngToGba(inputPath, outputPath, &options);
