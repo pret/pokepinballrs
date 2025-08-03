@@ -712,7 +712,7 @@ extern void sub_51150(void);
 // asm/rom_528AC.s
 
 //extern ? SpeciesRSToCryId();
-//extern ? PlayCry_Normal();
+void PlayCry_Normal(u16, s8);
 extern void PlayCry_NormalNoDucking(u16, s8, s8, u8);
 //extern ? PlayCryInternal();
 extern void SaveFile_LoadGameData(void);
