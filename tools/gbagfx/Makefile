@@ -6,7 +6,7 @@ CFLAGS += $(shell pkg-config --cflags libpng)
 LIBS = -lpng -lz
 LDFLAGS += $(shell pkg-config --libs-only-L libpng)
 
-SRCS = main.c convert_png.c gfx.c jasc_pal.c lz.c rl.c util.c font.c huff.c
+SRCS = main.c convert_png.c gfx.c jasc_pal.c lz.c rl.c util.c font.c huff.c oam_slices/oam_slicer.c
 
 ifeq ($(OS),Windows_NT)
 EXE := .exe

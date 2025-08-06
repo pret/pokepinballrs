@@ -20,7 +20,7 @@ struct GbaToPngOptions {
     bool isAffineMap;
     bool isTiled;
     int dataWidth;
-    bool map2nSprite;
+    bool oamSprite;
 };
 
 struct PngToGbaOptions {
@@ -34,7 +34,7 @@ struct PngToGbaOptions {
     bool isAffineMap;
     bool isTiled;
     int dataWidth;
-    bool map2nSprite;
+    bool oamSprite;
 };
 
 #endif // OPTIONS_H
