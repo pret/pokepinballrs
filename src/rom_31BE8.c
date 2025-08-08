@@ -3,6 +3,39 @@
 #include "gba/gba.h"
 #include "constants/fields.h"
 
+void sub_31B30(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+
+    if (gMain.selectedField == FIELD_RUBY)
+        group = &gMain.spriteGroups[81];
+    else
+        group = &gMain.spriteGroups[85];
+
+    if (group->available)
+    {
+        if (gCurrentPinballGame->unk4C < 8)
+        {
+            group->baseX = gCurrentPinballGame->unk58;
+            group->baseX = -8 - group->baseX;
+        }
+        else
+        {
+            group->baseX = gCurrentPinballGame->unk58;
+            group->baseX = 256 - group->baseX;
+        }
+
+        group->baseY = 0;
+        for (i = 0; i < 5; i++)
+        {
+            struct OamDataSimple *oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY + i * 0x20;
+        }
+    }
+}
+
 /**
  * Executed when saving or loading from a main field
  * arg0
