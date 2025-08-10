@@ -137,6 +137,7 @@ extern const u16 gUnknown_086AF140[][2];
 extern const u16 gUnknown_086AEF40[][31];
 extern const u16 gUnknown_086AF0B4[];
 extern const u8 gUnknown_0813E894[];
+extern const u8 gUnknown_0849F1CC[];
 
 struct Unk_086AFAC0
 {
@@ -164,6 +165,108 @@ extern s16 gUnknown_020306C0[];
 extern u8 gUnknown_0200FBB0[];
 extern u8 gUnknown_020030A0[];
 
+
+void sub_3B120(void)
+{
+    s16 i;
+
+    gCurrentPinballGame->unk18 = 0;
+    gCurrentPinballGame->unk17 = 0;
+    gCurrentPinballGame->unk13 = 0;
+    if (gCurrentPinballGame->numCompletedBonusStages % 5 == 3)
+        gCurrentPinballGame->unk384 = 18;
+    else
+        gCurrentPinballGame->unk384 = 15;
+
+    gCurrentPinballGame->unk294 = 0;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
+    gCurrentPinballGame->timerBonus = 0;
+    gCurrentPinballGame->unk388 = 3;
+    gCurrentPinballGame->unk392 = 0;
+    gCurrentPinballGame->ball->unk0 = 1;
+    gCurrentPinballGame->unk386 = 0;
+    gCurrentPinballGame->unk387 = 1;
+    gCurrentPinballGame->unk6C4 = 3;
+    gCurrentPinballGame->unk382 = 0;
+    gCurrentPinballGame->unk383 = 0;
+    gCurrentPinballGame->unk385 = 0;
+    gCurrentPinballGame->unk389 = 0;
+    gCurrentPinballGame->unk38E = 0;
+    gCurrentPinballGame->unk390 = 0;
+    gCurrentPinballGame->unk394 = 0;
+    gCurrentPinballGame->unk3DC = 0;
+    gCurrentPinballGame->unk3DD = 0;
+    gCurrentPinballGame->unk3DE = 0;
+    gCurrentPinballGame->unk3DF = 0;
+    gCurrentPinballGame->unk3E0 = 0;
+    gCurrentPinballGame->unk3E2 = 0;
+    gCurrentPinballGame->unk3E1 = 0;
+    gCurrentPinballGame->unk3E4 = 0;
+    gCurrentPinballGame->unk3E6 = 0;
+    gCurrentPinballGame->unk3E8 = 0;
+    gCurrentPinballGame->unk3EA = 0;
+    gCurrentPinballGame->unk3EC = 0;
+    gCurrentPinballGame->unk3EE = 0;
+    gCurrentPinballGame->unk3F0 = 0;
+    gCurrentPinballGame->unk3F2 = 0;
+    gCurrentPinballGame->unk452 = 0;
+    gCurrentPinballGame->unk456 = 0;
+    gCurrentPinballGame->unk47C = 0;
+    gCurrentPinballGame->unk47D = 0;
+    gCurrentPinballGame->unk47E = 0;
+    gCurrentPinballGame->unk47F = 0;
+    gCurrentPinballGame->unk480 = 0;
+    gCurrentPinballGame->unk482 = 0;
+    gCurrentPinballGame->unk484 = 0;
+    gCurrentPinballGame->unk486 = 0;
+    gCurrentPinballGame->unk488.x = 0;
+    gCurrentPinballGame->unk488.y = 0;
+    gCurrentPinballGame->unk4C4 = 0;
+    gCurrentPinballGame->unk4C6 = 0;
+    gCurrentPinballGame->unk4C8 = 0;
+    gCurrentPinballGame->unk4CA = 0;
+    gCurrentPinballGame->unk4C9 = 0;
+
+    for (i = 0; i < 4; i++)
+    {
+        gCurrentPinballGame->unk46C[i].x = 0;
+        gCurrentPinballGame->unk46C[i].y = 0;
+        gCurrentPinballGame->unk48C[i] = 0;
+        gCurrentPinballGame->unk490[i] = 0;
+        gCurrentPinballGame->unk494[i] = 0;
+        gCurrentPinballGame->unk498[i] = 0;
+        gCurrentPinballGame->unk49C[i] = 0;
+        gCurrentPinballGame->unk4A0[i] = 0;
+        gCurrentPinballGame->unk4A4[i] = 0;
+        gCurrentPinballGame->unk4AC[i] = 0;
+        gCurrentPinballGame->unk4B4[i].x = 0;
+        gCurrentPinballGame->unk4B4[i].y = 0;
+    }
+    
+    for (i = 0; i < 3; i++)
+    {
+        gCurrentPinballGame->unk4CC[i] = 0;
+        gCurrentPinballGame->unk4CF[i] = 0;
+        gCurrentPinballGame->unk4D2[i] = 0;
+        gCurrentPinballGame->unk4D5[i] = 0;
+        gCurrentPinballGame->unk4D8[i] = 0;
+        gCurrentPinballGame->unk4DE[i] = 0;
+        gCurrentPinballGame->unk4E4[i] = 0;
+        gCurrentPinballGame->unk4EC[i].x = 0;
+        gCurrentPinballGame->unk4EC[i].y = 0;
+        gCurrentPinballGame->unk4F8[i].x = 0;
+        gCurrentPinballGame->unk4F8[i].y = 0;
+    }
+
+    gCurrentPinballGame->unk1A = 1;
+    sub_3CBC4();
+    sub_3B7C4();
+    sub_3C6E0();
+    DmaCopy16(3, gUnknown_0849F1CC, (void *)0x06015800, 0x2000);
+    sub_3E644();
+    m4aSongNumStart(MUS_BONUS_FIELD_GROUDON);
+    DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
+}
 
 void sub_3B49C(void)
 {
