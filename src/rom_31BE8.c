@@ -15,7 +15,8 @@ extern const u8 gUnknown_08449D8C[][0x280];
 extern const u8 gUnknown_081BC984[][0x20];
 extern const u8 gUnknown_0848108C[][0x480];
 
-void sub_313A0(void) {
+void sub_313A0(void)
+{
     s16 i;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
@@ -24,12 +25,11 @@ void sub_313A0(void) {
     group = &gMain.spriteGroups[69];
     if (group->available) 
     {
-        group->baseX = 0x10 - gCurrentPinballGame->unk58;
-        group->baseY = 0x73 - gCurrentPinballGame->unk5A;
+        group->baseX = 16 - gCurrentPinballGame->unk58;
+        group->baseY = 115 - gCurrentPinballGame->unk5A;
         index = gCurrentPinballGame->unk1AD + gCurrentPinballGame->unk6F * 3;
         DmaCopy16(3, gUnknown_081BC984[index], (void *)0x05000300, 0x20);
         DmaCopy16(3, gUnknown_0848108C[gCurrentPinballGame->unk1AC], (void *) 0x06014B20, 0x480);
-        
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
