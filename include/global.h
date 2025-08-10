@@ -83,8 +83,8 @@ struct BallState
     /*0x04*/ u16 unk4;
     /*0x06*/ s16 unk6;
     /*0x08*/ u16 unk8;
-    /*0x0A*/ u16 unkA;
-    /*0x0C*/ u16 unkC;
+    /*0x0A*/ u16 unkA; //Ball Displayed Rotation
+    /*0x0C*/ u16 unkC; //Ball Displayed Previous Rotation
     /*0x0E*/ u16 unkE;
     /*0x10*/ struct Vector16 positionQ0;
     /*0x14*/ u8 filler14[0xB];

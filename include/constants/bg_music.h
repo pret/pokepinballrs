@@ -11,7 +11,7 @@
 #define MUS_HI_SCORE                0x09  // BGM 5
 #define MUS_EMPTY_0x0A              0x0A  // No sound
 #define MUS_SHOP                    0x0B  // BGM 7
-#define MUS_GAME_OVER               0x0C  // BGM 8
+#define MUS_SLOTS_PRIZE             0x0C  // BGM 8
 #define MUS_END_OF_BALL             0x0D  // BGM 9
 #define MUS_BONUS_CHANCE            0x0E  // BGM 10
 #define MUS_BONUS_CHANCE_LEGENDARY  0x0F  // BGM 11
@@ -52,11 +52,11 @@
 #define MUS_FIELD_SAPPHIRE2         0x5C  // BGM 26 Sapphire Field background music after beating (not catching) Rayquaza
 /*Unknown Music at 0x5D*/
 
-#define SE_UNKNOWN_0x65             0x65 // SE 1 Menu Selection; RS: PokéNav turn on
-#define SE_UNKNOWN_0x66             0x66 // SE 2 Menu Cancel; RS: PokéNav turn off
-#define SE_SELECT                   0x67 // SE 3 Menu Momevent
-#define SE_UNKNOWN_0x68             0x68 // SE 4; Yellow window popup appears (eg: pokedox transfer confirmation)
-#define SE_UNKNOWN_0x69             0x69 // SE 5; Yellow window popup disappears (eg: pokedox transfer confirmation)
+#define SE_MENU_SELECT_0x65         0x65 // SE 1 Menu Selection; RS: PokéNav turn on
+#define SE_MENU_CANCEL_0x66         0x66 // SE 2 Menu Cancel; RS: PokéNav turn off
+#define SE_MENU_MOVE_0x67           0x67 // SE 3 Menu Momevent
+#define SE_MENU_POPUP_OPEN_0x68     0x68 // SE 4; Yellow window popup appears (eg: pokedox transfer confirmation)
+#define SE_MENU_POPUP_CLOSE_0x69    0x69 // SE 5; Yellow window popup disappears (eg: pokedox transfer confirmation)
 #define SE_UNKNOWN_0x6A             0x6A // SE 6; Drum?
 #define SE_UNKNOWN_0x6B             0x6B // SE 7; RS: Pokédex scroll
 #define SE_UNKNOWN_0x6C             0x6C // RS: Bike hop
@@ -281,7 +281,7 @@
 #define SE_UNKNOWN_0x147            0x147 // SE174 Peliper drops ball (Same as SE39)
 #define SE_UNKNOWN_0x148            0x148 // SE175 *Latch*
 #define SE_UNKNOWN_0x149            0x149 // SE176 *Double Step*
-#define SE_UNKNOWN_0x14A            0x14A // SE178 Slots Prize Awarded
+#define SE_HIGH_SCORE_EARNED_0x14A  0x14A // SE178 High Score Earned
 #define SE_UNKNOWN_0x14B            0x14B // SE179 Duplicate of 36
 #define SE_UNKNOWN_0x14C            0x14C // SE177 *rumble*
 

@@ -329,12 +329,12 @@ void Pokedex_HandleListInput(void)
         }
         else if (JOY_NEW(B_BUTTON))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x66);
+            m4aSongNumStart(SE_MENU_CANCEL_0x66);
             gMain.subState = POKEDEX_STATE_RETURN_TO_TITLE;
         }
         else if (JOY_NEW(START_BUTTON))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x68);
+            m4aSongNumStart(SE_MENU_POPUP_OPEN_0x68);
             gUnknown_0202BEC4 = 1;
             gUnknown_0202BEFC = 0;
             gUnknown_0202BF04 = 0;
@@ -455,7 +455,7 @@ void sub_45A4(void)
             }
             else
             {
-                m4aSongNumStart(SE_UNKNOWN_0x69);
+                m4aSongNumStart(SE_MENU_POPUP_CLOSE_0x69);
                 m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
                 gUnknown_0202C794 = 0;
                 gUnknown_0202C5E8 = 0;
@@ -467,7 +467,7 @@ void sub_45A4(void)
     }
     else if (JOY_NEW(B_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x69);
+        m4aSongNumStart(SE_MENU_POPUP_CLOSE_0x69);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
         gUnknown_0202C794 = 0;
         gUnknown_0202C5E8 = 0;
@@ -584,7 +584,7 @@ void sub_49D0(void)
 
     if (JOY_NEW(B_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x66);
+        m4aSongNumStart(SE_MENU_CANCEL_0x66);
         gUnknown_0202BEC4 = 0;
         gUnknown_0202BEFC = 0;
         gUnknown_0202BF04 = 1;
@@ -687,7 +687,7 @@ void sub_4BB4(void)
             break;
         case 0x82:
             gUnknown_0202BEFC = 3;
-            m4aSongNumStart(SE_UNKNOWN_0x65);
+            m4aSongNumStart(SE_MENU_SELECT_0x65);
             break;
         case 0xFA:
             gUnknown_0201B120 = 0;
@@ -721,7 +721,7 @@ void sub_4C80(void)
 
     if (JOY_NEW(A_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x65);
+        m4aSongNumStart(SE_MENU_SELECT_0x65);
         for (i = 0; i < 0xE1; i++)
         {
             gPokedexFlagExchangeBuffer[i] = 0;
@@ -745,7 +745,7 @@ void sub_4C80(void)
     }
     else if (JOY_NEW(B_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x66);
+        m4aSongNumStart(SE_MENU_CANCEL_0x66);
         gUnknown_0202BEC4 = 0;
         gUnknown_0202BEFC = 0;
         gUnknown_0202BF04 = 1;
@@ -783,21 +783,21 @@ static void PokedexListScrollUp(void)
                 gPokedexListPosition = gPokedexListEntryCount - NUM_BONUS_SPECIES - 1;
                 gPokedexSelectedMon = gPokedexListEntryCount - 1;
                 gUnknown_0202A57C = 4;
-                m4aSongNumStart(SE_SELECT);
+                m4aSongNumStart(SE_MENU_MOVE_0x67);
             }
         }
         else
         {
             gPokedexListPosition--;
             gPokedexSelectedMon--;
-            m4aSongNumStart(SE_SELECT);
+            m4aSongNumStart(SE_MENU_MOVE_0x67);
         }
 
         gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;
     }
     else
     {
-        m4aSongNumStart(SE_SELECT);
+        m4aSongNumStart(SE_MENU_MOVE_0x67);
         gUnknown_0202A57C--;
         gPokedexSelectedMon--;
 
@@ -823,21 +823,21 @@ static void PokedexListScrollDown(void)
                 gPokedexListPosition = 0;
                 gPokedexSelectedMon = 0;
                 gUnknown_0202A57C = 0;
-                m4aSongNumStart(SE_SELECT);
+                m4aSongNumStart(SE_MENU_MOVE_0x67);
             }
         }
         else
         {
             gPokedexListPosition++;
             gPokedexSelectedMon++;
-            m4aSongNumStart(SE_SELECT);
+            m4aSongNumStart(SE_MENU_MOVE_0x67);
         }
 
         gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;
     }
     else
     {
-        m4aSongNumStart(SE_SELECT);
+        m4aSongNumStart(SE_MENU_MOVE_0x67);
         gUnknown_0202A57C++;
         gPokedexSelectedMon++;
         gPokedexScrollWaitFrames = SCROLL_WAIT_FRAMES;
@@ -856,7 +856,7 @@ static void PokedexListScrollUpFast(void)
     if (gPokedexListPosition == 0)
         return;
 
-    m4aSongNumStart(SE_SELECT);
+    m4aSongNumStart(SE_MENU_MOVE_0x67);
     gPokedexListPosition -= ENTRIES_SHOWN_COUNT;
     if (gPokedexListPosition < 0)
         gPokedexListPosition = 0;
@@ -875,7 +875,7 @@ static void PokedexListScrollDownFast(void)
     if (gPokedexListPosition == gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
         return;
 
-    m4aSongNumStart(SE_SELECT);
+    m4aSongNumStart(SE_MENU_MOVE_0x67);
     gPokedexListPosition += ENTRIES_SHOWN_COUNT;
     if (gPokedexListPosition > gPokedexListEntryCount - NUM_BONUS_SPECIES - 1)
         gPokedexListPosition = gPokedexListEntryCount - NUM_BONUS_SPECIES - 1;
@@ -893,7 +893,7 @@ void sub_4FC8(void)
         {
             gUnknown_02002831 = 0;
             gUnknown_02002830 = 0;
-            m4aSongNumStart(SE_UNKNOWN_0x68);
+            m4aSongNumStart(SE_MENU_POPUP_OPEN_0x68);
             gUnknown_0202BEC4 = 1;
             gUnknown_0202BEFC = 4;
             gUnknown_0202BF04 = 0;

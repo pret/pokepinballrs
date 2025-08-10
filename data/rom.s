@@ -692,14 +692,14 @@ gBonusFieldSelectStateFuncs:: @ 0x0805C750
 
 gEReaderStateFuncs:: @ 0x0805C75C
 	.4byte LoadEReaderGraphics
-	.4byte sub_2E40
-	.4byte sub_2FC0
-	.4byte sub_304C
-	.4byte sub_3208
-	.4byte sub_33A0
-	.4byte sub_343C
-	.4byte sub_35C8
-	.4byte sub_374C
+	.4byte Ereader_State1
+	.4byte Ereader_State2
+	.4byte Ereader_State3
+	.4byte Ereader_State4
+	.4byte Ereader_State5
+	.4byte Ereader_State6
+	.4byte Ereader_State7
+	.4byte Ereader_State8
 
 gDexInfoWindowMiddleRowTiles:: @ 0x0805C780
 	.2byte 0x00, 0x9A, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
@@ -826,20 +826,20 @@ gIntroSceneFuncs:: @ 0x080792E0
 
 gHighScoresStateFuncs:: @ 0x080793E8
 	.4byte LoadHighScoreGraphics
-	.4byte sub_D20C
-	.4byte sub_D308
-	.4byte sub_D4B8
-	.4byte sub_D664
-	.4byte sub_D9F8
-	.4byte sub_DA20
-	.4byte sub_DB70
-	.4byte sub_DBF4
-	.4byte sub_DB4C
-	.4byte sub_DCF0
-	.4byte sub_DD4C
-	.4byte sub_E0EC
-	.4byte sub_E230
-	.4byte sub_E390
+	.4byte HighScore_State1
+	.4byte HighScore_State2
+	.4byte HighScore_State3
+	.4byte HighScore_State4 
+	.4byte HighScore_State5
+	.4byte HighScore_State6
+	.4byte HighScore_State7
+	.4byte HighScore_State8
+	.4byte HighScore_State9
+	.4byte HighScore_State10
+	.4byte HighScore_State11
+	.4byte HighScore_State12
+	.4byte HighScore_State13
+	.4byte HighScore_State14
 
 gIdleHighScoresStateFuncs:: @ 0x08079424
 	.4byte sub_DD70
@@ -2004,7 +2004,7 @@ gUnknown_08526DCC:: @ 0x08526DCC
 
 gOptionsBGMList:: @ 0x08527D22
 	.2byte MUS_TITLE, MUS_TABLE_SELECT, MUS_UNKNOWN_0x5, MUS_OPENING, MUS_HI_SCORE
-	.2byte MUS_POKEDEX, MUS_SHOP, MUS_GAME_OVER, MUS_END_OF_BALL, MUS_BONUS_CHANCE, MUS_BONUS_CHANCE_LEGENDARY
+	.2byte MUS_POKEDEX, MUS_SHOP, MUS_SLOTS_PRIZE, MUS_END_OF_BALL, MUS_BONUS_CHANCE, MUS_BONUS_CHANCE_LEGENDARY
 	.2byte MUS_TRAVEL_MODE_START, MUS_SUCCESS, MUS_UNKNOWN_0x14, MUS_EGG_MODE, MUS_EGG_MODE_START
 	.2byte MUS_TRAVEL_MODE, MUS_HURRY_UP, MUS_EVOLUTION, MUS_FIELD_RUBY, MUS_CATCH_EM_MODE
 	.2byte MUS_EVO_MODE, MUS_FIELD_RUBY2, MUS_FIELD_SAPPHIRE, MUS_CATCH_EM_MODE2, MUS_FIELD_SAPPHIRE2
@@ -2012,7 +2012,7 @@ gOptionsBGMList:: @ 0x08527D22
 	.2byte MUS_BONUS_FIELD_KYOGRE, MUS_BONUS_FIELD_RAYQUAZA, MUS_JIRACHI
 
 gOptionsSEList:: @ 0x08527D66 
-    .2byte SE_UNKNOWN_0x65, SE_UNKNOWN_0x66, SE_SELECT, SE_UNKNOWN_0x68, SE_UNKNOWN_0x69
+    .2byte SE_MENU_SELECT_0x65, SE_MENU_CANCEL_0x66, SE_MENU_MOVE_0x67, SE_MENU_POPUP_OPEN_0x68, SE_MENU_POPUP_CLOSE_0x69
     .2byte SE_UNKNOWN_0x6A, SE_UNKNOWN_0x6B, SE_UNKNOWN_0x6D, SE_UNKNOWN_0x72, SE_UNKNOWN_0x73
     .2byte SE_UNKNOWN_0x74, SE_UNKNOWN_0x75, SE_UNKNOWN_0x76, SE_UNKNOWN_0x77, SE_UNKNOWN_0x78
     .2byte SE_UNKNOWN_0x79, SE_UNKNOWN_0x7A, SE_UNKNOWN_0x7B, SE_UNKNOWN_0x7C, SE_UNKNOWN_0x7E
@@ -2048,7 +2048,7 @@ gOptionsSEList:: @ 0x08527D66
     .2byte SE_UNKNOWN_0x135, SE_UNKNOWN_0x136, SE_UNKNOWN_0x137, SE_UNKNOWN_0x138, SE_UNKNOWN_0x139
     .2byte SE_UNKNOWN_0x13B, SE_UNKNOWN_0x13C, SE_UNKNOWN_0x13D, SE_UNKNOWN_0x13E, SE_UNKNOWN_0x140
     .2byte SE_UNKNOWN_0x144, SE_UNKNOWN_0x145, SE_UNKNOWN_0x146, SE_UNKNOWN_0x147, SE_UNKNOWN_0x148
-    .2byte SE_UNKNOWN_0x149, SE_UNKNOWN_0x14C, SE_UNKNOWN_0x14A, SE_UNKNOWN_0x14B, SE_UNKNOWN_0x71
+    .2byte SE_UNKNOWN_0x149, SE_UNKNOWN_0x14C, SE_HIGH_SCORE_EARNED_0x14A, SE_UNKNOWN_0x14B, SE_UNKNOWN_0x71
     .2byte SE_UNKNOWN_0xB1, SE_UNKNOWN_0xB2, SE_UNKNOWN_0xB3, SE_UNKNOWN_0x142
 
 

@@ -137,14 +137,14 @@ void sub_2768(void)
         }
         if (JOY_NEW(A_BUTTON))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x65);
+            m4aSongNumStart(SE_MENU_SELECT_0x65);
             gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_BALL_SPEED;
             gUnknown_0201A4B0 = 1;
             gBonusFieldSelectTimer = 0;
         }
         if (JOY_NEW(B_BUTTON))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x66);
+            m4aSongNumStart(SE_MENU_CANCEL_0x66);
             gBonusFieldSelectNextMainState = STATE_TITLE;
             gMain.subState++;
         }
@@ -152,12 +152,12 @@ void sub_2768(void)
     case BONUS_FIELD_SELECT_STATE_BALL_SPEED:
         if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
         {
-            m4aSongNumStart(SE_SELECT);
+            m4aSongNumStart(SE_MENU_MOVE_0x67);
             gUnknown_0201A4C0 = 1 - gUnknown_0201A4C0;
         }
         if (JOY_NEW(A_BUTTON))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x65);
+            m4aSongNumStart(SE_MENU_SELECT_0x65);
             gBonusFieldSelectTimer = 0;
             gUnknown_0202BE1C = 0;
             gMain.saveData.ballSpeed = gUnknown_0201A4C0;
@@ -166,7 +166,7 @@ void sub_2768(void)
         }
         if (JOY_NEW(B_BUTTON))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x66);
+            m4aSongNumStart(SE_MENU_CANCEL_0x66);
             gUnknown_0201A4B0 = 0;
             gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
         }

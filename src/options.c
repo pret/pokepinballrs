@@ -11,7 +11,7 @@ enum OptionsState
 {
     OPTIONS_STATE_MAIN,
     OPTIONS_STATE_BGM_SELECT,
-    OPTIONS_STATE_SE_SELECT,
+    OPTIONS_STATE_SE_MENU_MOVE_0x67,
     OPTIONS_STATE_BUTTON_CONFIG_SELECT,
     OPTIONS_STATE_BUTTON_CONFIG_INPUT,
 };
@@ -185,12 +185,12 @@ void Options_HandleInput(void)
             {
                 if (gOptionsData.cursorPosition == CURSOR_POS_RUMBLE_OFF)
                 {
-                    m4aSongNumStart(SE_SELECT);
+                    m4aSongNumStart(SE_MENU_MOVE_0x67);
                     gOptionsData.cursorPosition = CURSOR_POS_RUMBLE_ON;
                 }
                 else if (gOptionsData.cursorPosition > CURSOR_POS_BGM)
                 {
-                    m4aSongNumStart(SE_SELECT);
+                    m4aSongNumStart(SE_MENU_MOVE_0x67);
                     gOptionsData.cursorPosition--;
                 }
             }
@@ -199,28 +199,28 @@ void Options_HandleInput(void)
         {
             if (gOptionsData.cursorPosition < CURSOR_POS_BUTTON_CONFIG_EDIT)
             {
-                m4aSongNumStart(SE_SELECT);
+                m4aSongNumStart(SE_MENU_MOVE_0x67);
                 gOptionsData.cursorPosition++;
             }
             else if (gOptionsData.cursorPosition == CURSOR_POS_RUMBLE_ON)
             {
-                m4aSongNumStart(SE_SELECT);
+                m4aSongNumStart(SE_MENU_MOVE_0x67);
                 gOptionsData.cursorPosition = CURSOR_POS_RUMBLE_OFF;
             }
             else if (gOptionsData.cursorPosition == CURSOR_POS_RUMBLE_OFF)
             {
-                m4aSongNumStart(SE_SELECT);
+                m4aSongNumStart(SE_MENU_MOVE_0x67);
                 gOptionsData.cursorPosition = CURSOR_POS_BUTTON_CONFIG_TYPE_A;
             }
         }
         if ((JOY_NEW(DPAD_RIGHT)) && gGameBoyPlayerEnabled == TRUE && (u16)gOptionsData.cursorPosition < CURSOR_POS_BUTTON_CONFIG_TYPE_A)
         {
-            m4aSongNumStart(SE_SELECT);
+            m4aSongNumStart(SE_MENU_MOVE_0x67);
             gOptionsData.cursorPosition += CURSOR_POS_RUMBLE_ON;
         }
         if ((JOY_NEW(DPAD_LEFT)) && gGameBoyPlayerEnabled == TRUE && (u16)(gOptionsData.cursorPosition - CURSOR_POS_RUMBLE_ON) < 2)
         {
-            m4aSongNumStart(SE_SELECT);
+            m4aSongNumStart(SE_MENU_MOVE_0x67);
             gOptionsData.cursorPosition -= CURSOR_POS_RUMBLE_ON;
         }
         if (JOY_NEW(A_BUTTON))
@@ -228,7 +228,7 @@ void Options_HandleInput(void)
             switch (gOptionsData.cursorPosition)
             {
             case CURSOR_POS_BGM:
-                m4aSongNumStart(SE_UNKNOWN_0x65);
+                m4aSongNumStart(SE_MENU_SELECT_0x65);
                 gOptionsData.stateMain = OPTIONS_STATE_BGM_SELECT,
                 gOptionsData.scollWaitFrames = 0;
                 gOptionsData.unk30 = 1;
@@ -241,8 +241,8 @@ void Options_HandleInput(void)
                 }
                 break;
             case CURSOR_POS_SE:
-                m4aSongNumStart(SE_UNKNOWN_0x65);
-                gOptionsData.stateMain = OPTIONS_STATE_SE_SELECT,
+                m4aSongNumStart(SE_MENU_SELECT_0x65);
+                gOptionsData.stateMain = OPTIONS_STATE_SE_MENU_MOVE_0x67,
                 gOptionsData.scollWaitFrames = 0;
                 gOptionsData.unk30 = 1;
                 if (gOptionsData.unk2E == 1)
@@ -257,12 +257,12 @@ void Options_HandleInput(void)
             case CURSOR_POS_BUTTON_CONFIG_TYPE_B:
             case CURSOR_POS_BUTTON_CONFIG_TYPE_C:
             case CURSOR_POS_BUTTON_CONFIG_TYPE_D:
-                m4aSongNumStart(SE_UNKNOWN_0x65);
+                m4aSongNumStart(SE_MENU_SELECT_0x65);
                 gOptionsData.buttonConfigType = gOptionsData.cursorPosition - CURSOR_POS_BUTTON_CONFIG_TYPE_A;
                 gMain_saveData.buttonConfigType = gOptionsData.buttonConfigType;
                 break;
             case CURSOR_POS_BUTTON_CONFIG_EDIT:
-                m4aSongNumStart(SE_UNKNOWN_0x65);
+                m4aSongNumStart(SE_MENU_SELECT_0x65);
                 gOptionsData.buttonConfigType = gOptionsData.cursorPosition - CURSOR_POS_BUTTON_CONFIG_TYPE_A;
                 gMain_saveData.buttonConfigType = gOptionsData.buttonConfigType;
                 gOptionsData.cursorPosition = CURSOR_POS_LEFT_FLIPPER;
@@ -271,7 +271,7 @@ void Options_HandleInput(void)
             case CURSOR_POS_RUMBLE_OFF:
                 if (gGameBoyPlayerEnabled == TRUE)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_0x65);
+                    m4aSongNumStart(SE_MENU_SELECT_0x65);
                     gOptionsData.unk2D = 0;
                     if (gOptionsData.unk2E == 1)
                         gOptionsData.unk2E = 0;
@@ -283,7 +283,7 @@ void Options_HandleInput(void)
             case CURSOR_POS_RUMBLE_ON:
                 if (gGameBoyPlayerEnabled == TRUE)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_0x65);
+                    m4aSongNumStart(SE_MENU_SELECT_0x65);
                     sub_11B0(11);
                     if (gOptionsData.unk2E == 0)
                         gOptionsData.unk2E = 1;
@@ -297,7 +297,7 @@ void Options_HandleInput(void)
         }
         else if (JOY_NEW(B_BUTTON))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x66);
+            m4aSongNumStart(SE_MENU_CANCEL_0x66);
             gMain.subState++;
             SetButtonConfigInputs(gMain_saveData.buttonConfigType);
         }
@@ -345,7 +345,7 @@ void Options_HandleInput(void)
         else if (JOY_NEW(B_BUTTON))
         {
             m4aMPlayAllStop();
-            m4aSongNumStart(SE_UNKNOWN_0x66);
+            m4aSongNumStart(SE_MENU_CANCEL_0x66);
             gOptionsData.unk4 = 0;
             gOptionsData.unk30 = 0;
             gOptionsData.stateMain = OPTIONS_STATE_MAIN;
@@ -355,7 +355,7 @@ void Options_HandleInput(void)
         if (gOptionsData.scollWaitFrames > 0)
             gOptionsData.scollWaitFrames--;
         break;
-    case OPTIONS_STATE_SE_SELECT:
+    case OPTIONS_STATE_SE_MENU_MOVE_0x67:
         if (JOY_HELD(DPAD_LEFT))
         {
             if (gOptionsData.scollWaitFrames == 0)
@@ -396,7 +396,7 @@ void Options_HandleInput(void)
         else if (JOY_NEW(B_BUTTON))
         {
             m4aMPlayAllStop();
-            m4aSongNumStart(SE_UNKNOWN_0x66);
+            m4aSongNumStart(SE_MENU_CANCEL_0x66);
             gOptionsData.unk4 = 0;
             gOptionsData.unk30 = 0;
             gOptionsData.stateMain = OPTIONS_STATE_MAIN;
@@ -411,7 +411,7 @@ void Options_HandleInput(void)
         {
             if (gOptionsData.cursorPosition > CURSOR_POS_LEFT_FLIPPER)
             {
-                m4aSongNumStart(SE_SELECT);
+                m4aSongNumStart(SE_MENU_MOVE_0x67);
                 gOptionsData.cursorPosition--;
             }
         }
@@ -419,19 +419,19 @@ void Options_HandleInput(void)
         {
             if (gOptionsData.cursorPosition < CURSOR_POS_TILT_UP)
             {
-                m4aSongNumStart(SE_SELECT);
+                m4aSongNumStart(SE_MENU_MOVE_0x67);
                 gOptionsData.cursorPosition++;
             }
         }
         if (JOY_NEW(A_BUTTON))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x65);
+            m4aSongNumStart(SE_MENU_SELECT_0x65);
             gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_INPUT,
             gOptionsData.unk1A[gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER] = 1;
         }
         else if (JOY_NEW(B_BUTTON))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x66);
+            m4aSongNumStart(SE_MENU_CANCEL_0x66);
             gOptionsData.cursorPosition = CURSOR_POS_BUTTON_CONFIG_EDIT;
             gOptionsData.stateMain = OPTIONS_STATE_MAIN;
         }
@@ -449,7 +449,7 @@ void Options_HandleInput(void)
         {
             s16 i;
 
-            m4aSongNumStart(SE_UNKNOWN_0x65);
+            m4aSongNumStart(SE_MENU_SELECT_0x65);
             gOptionsData.unk20 = 10;
             gOptionsData.unk22 = 0;
             for (i = 0; i < 2; i++)
