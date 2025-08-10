@@ -552,7 +552,7 @@ extern void sub_304C8();
 extern void sub_308DC();
 extern void sub_30EB4();
 extern void sub_31144();
-extern void sub_313A0();
+extern void sub_313A0(void);
 extern void sub_31498();
 extern void sub_31B30(void);
 extern void sub_31BE8(s16);
