@@ -173,6 +173,26 @@ extern u8 gUnknown_0200FBB0[];
 extern u8 gUnknown_020030A0[];
 
 
+void sub_3ADA0(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+
+    group = &gMain.spriteGroups[24];
+    if (group->available)
+    {
+        group->baseX = 240;
+        group->baseY = 160;
+        for (i = 0; i < 4; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+    }
+}
+
 void sub_3AE14(void)
 {
     s16 i, j;
