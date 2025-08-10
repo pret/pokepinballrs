@@ -268,8 +268,10 @@ struct PinballGame
     /*0x1F2*/ u8 unk1F2;
     /*0x1F3*/ u8 unk1F3;
     /*0x1F4*/ u16 unk1F4;
-    /*0x1F6*/ u16 unk1F6;
-    /*0x1F8*/ u8 filler1F8[0xF];
+    /*0x1F6*/ s16 unk1F6;
+    /*0x1F8*/ u8 filler1F8[0x8];
+    /*0x200*/ u32 unk200;
+    /*0x204*/ u8 filler204[0x4];
     /*0x208*/ u16 unk208;
     /*0x20A*/ u8 unk20A;
     /*0x20B*/ u8 filler20B[0x54];
@@ -338,10 +340,19 @@ struct PinballGame
     /*0x31E*/ s16 unk31E;
     /*0x320*/ s16 unk320;
     /*0x322*/ s16 unk322;
-    /*0x324*/ u8 filler324[0x21];
+    /*0x324*/ u8 filler324[0x1F];
+    /*0x343*/ s8 unk343;
+    /*0x344*/ s8 unk344;
     /*0x345*/ s8 unk345;
     /*0x346*/ s8 unk346;
-    /*0x347*/ u8 filler347[0x23];
+    /*0x347*/ u8 filler347[0x1];
+    /*0x348*/ u16 unk348;
+    /*0x34A*/ u8 filler34A[0xB];
+    /*0x355*/ s8 unk355[4];
+    /*0x359*/ s8 unk359[4];
+    /*0x35D*/ u8 filler35D[0x1];
+    /*0x35E*/ u16 unk35E[4];
+    /*0x366*/ u8 filler366[0x4];
     /*0x36A*/ u8 unk36A[2];
     /*0x36C*/ u8 unk36C[2];
     /*0x36E*/ u16 unk36E[2];
@@ -755,6 +766,6 @@ extern Unk86ACE0C gUnknown_086ACE0C[8];
 extern struct Vector16 gUnknown_086ACE60[4];
 extern struct Unk086ACE8C gUnknown_086ACE8C[13];
 extern u16 gUnknown_086ACEF4[2];
-extern s16 gUnknown_086AE68E[][2]; 
+extern s16 gUnknown_086AE68E[][2];
 
 #endif // GUARD_GLOBAL_H
