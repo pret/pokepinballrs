@@ -61,7 +61,7 @@ struct Main
     /*0x28*/ s16 unk28;
     /*0x2A*/ s16 unk2A;
     /*0x2C*/ s16 unk2C;
-    /*0x2E*/ u8 filler2E[0x2];
+    /*0x2E*/ s16 unk2E;
     /*0x30*/ u16 unk30;
     /*0x32*/ u8 filler32[0x4];
     /*0x36*/ u8 unk36;
