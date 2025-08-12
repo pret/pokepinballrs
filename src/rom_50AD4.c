@@ -1,6 +1,33 @@
 #include "global.h"
 #include "main.h"
 
+struct Unk_086B0E6C
+{
+    const u8 *unk0[5][2];
+    u8 *unk28[2];
+};
+extern const struct Unk_086B0E6C gUnknown_086B0E6C;
+
+void sub_507D4(void)
+{
+    s16 index;
+    const u8 *const *src;
+    u8 *const *dest;
+
+    index = 0;
+    if (gCurrentPinballGame->unk308 >= 100)
+        index = (gCurrentPinballGame->unk70C % 20) / 4;
+
+    src = gUnknown_086B0E6C.unk0[index];
+    dest = gUnknown_086B0E6C.unk28;
+    if (gCurrentPinballGame->unk6A < 176)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x40);
+    }
+
+    DmaCopy16(3, src[1], dest[1], 0x40);
+}
+
 void RubyBoardProcess_0A_50848(void)
 {
     s16 i;

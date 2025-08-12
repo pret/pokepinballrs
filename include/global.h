@@ -604,7 +604,8 @@ struct PinballGame
     /*0x6E4*/ struct Vector16 unk6E4;
     /*0x6E8*/ u8 filler6E8[0x6];
     /*0x6EE*/ u16 unk6EE;
-    /*0x6F0*/ u8 filler6F0[0x1E];
+    /*0x6F0*/ u8 filler6F0[0x1C];
+    /*0x70C*/ u16 unk70C;
     /*0x70E*/ s8 unk70E;
     /*0x70F*/ s8 unk70F;
     /*0x710*/ s8 hLight; // 'H' light indicator in Ruby/Sapphire field
