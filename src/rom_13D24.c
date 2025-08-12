@@ -303,7 +303,7 @@ u16 sub_14488(struct Vector16* arg0, struct Vector16 arg1) {
     gCurrentPinballGame->unk22 = 0;
     gCurrentPinballGame->unk23 = 0;
 
-    spC = gUnknown_086ACE0C[gMain.selectedField];
+    spC = BoardCollisionFuncts_086ACE0C[gMain.selectedField];
     
     do{
         goto Lab_144;

@@ -10,7 +10,7 @@ void IdlePinballGameMain(void)
     gIdlePinballGameStateFuncs[gMain.subState]();
 }
 
-void sub_19048(void)
+void PinballGameIdle0_19048(void)
 {
     s16 i;
     s16 unk30;
@@ -52,7 +52,7 @@ void sub_19048(void)
         break;
     }
 
-    sub_49ED4();
+    PinballGame_State0_49ED4();
 
     switch (unk30LowerBits)
     {
@@ -75,7 +75,7 @@ void sub_19048(void)
     gMain.unk30++;
 }
 
-void sub_19190(void)
+void PinballGameIdle1_19190(void)
 {
     u8 unk1D;
 
@@ -126,7 +126,7 @@ void sub_19190(void)
     }
 }
 
-void sub_19288(void)
+void PinballGameIdle3_19288(void)
 {
     s16 i;
 
@@ -146,10 +146,10 @@ void sub_19288(void)
     gMain.unk54 = 0;
 }
 
-void sub_19304(void)
+void AllBoardProcess_4A_19304(void)
 {
     if (gMain.selectedField >= FIELD_BONUS_START)
-        sub_19734();
+        BonusBoardProcess_4B_19734();
 }
 
 void sub_1931C(struct Vector16 arg0)
@@ -188,7 +188,7 @@ void sub_1931C(struct Vector16 arg0)
         gCurrentPinballGame->unk13BC[1].unk8 = -1;
 }
 
-void sub_19490(void)
+void MainBoardProcess_4B_19490(void)
 {
     s16 i;
 
@@ -296,7 +296,7 @@ void sub_195C4(void)
     }
 }
 
-void sub_19734(void)
+void BonusBoardProcess_4B_19734(void)
 {
     s16 i;
     s16 priority = 1;

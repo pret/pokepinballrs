@@ -101,7 +101,7 @@ void sub_2DF0(void)
     gUnknown_0200282D = 0;
 }
 
-void sub_2E40(void)
+void Ereader_State1_2E40(void)
 {
     if (gUnknown_0202C604 <= gUnknown_086A551A[gUnknown_0202AD90]) {
         gUnknown_0202A580++;
@@ -149,7 +149,7 @@ void sub_2E40(void)
     DmaCopy16(3, gUnknown_03000000, (void*) VRAM + 0x4000, 0x3000);
 }
 
-void sub_2FC0(void)
+void Ereader_State2_2FC0(void)
 {
     gUnknown_0202C5A0++;
     if (gUnknown_0202C5A0 > gUnknown_086A550C[gUnknown_0201B174]) {
@@ -169,7 +169,7 @@ void sub_2FC0(void)
     sub_3AB4();
 }
 
-void sub_304C(void)
+void Ereader_State3_304C(void)
 {
     s32 index;
     u16 temp;
@@ -234,7 +234,7 @@ void sub_304C(void)
     }
 }
 
-void sub_3208(void)
+void Ereader_State4_3208(void)
 {
     gUnknown_0201A44C++;
     if (8 < gUnknown_0201A44C) {
@@ -287,7 +287,7 @@ void sub_3208(void)
     DmaCopy16(3, gUnknown_03000000, (void*) VRAM + 0x4000, 0x3000);
 }
 
-void sub_33A0(void)
+void Ereader_State5_33A0(void)
 {
     u16 temp;
     sub_3AB4();
@@ -317,7 +317,7 @@ void sub_33A0(void)
     gUnknown_0201A44C++;
 }
 
-void sub_343C(void)
+void Ereader_State6_343C(void)
 {
     ResetSomeGraphicsRelatedStuff();
     REG_DISPCNT = DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP | DISPCNT_FORCED_BLANK;
@@ -354,7 +354,7 @@ void sub_343C(void)
     gMain.subState = 7;
 }
 
-void sub_35C8(void)
+void Ereader_State7_33C8(void)
 {
     if (gUnknown_0202C604 <= gUnknown_086A551A[gUnknown_0202AD90]) {
         gUnknown_0202A580++;
@@ -403,7 +403,7 @@ void sub_35C8(void)
     DmaCopy16(3, gUnknown_03000000, (void*) VRAM + 0x4000, 0x3000);
 }
 
-void sub_374C(void)
+void Ereader_State8_374C(void)
 {
     sub_02B4();
     m4aMPlayAllStop();

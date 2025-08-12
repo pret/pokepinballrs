@@ -10,12 +10,12 @@ u16 sub_14488(struct Vector16*, struct Vector16);
 
 void sub_14B84(u32 r0, s16 r1, struct Vector16 *r2, u16 r3);
 
-void sub_1332C()
+void AllBoardProcess_6A_4CEA8()
 {
 	gCurrentPinballGame->unk26 = 60;
 }
 
-void sub_1333C()
+void AllBoardProcess_6B_1333C()
 {
     struct Vector16 var0;
     struct Vector16 var1;

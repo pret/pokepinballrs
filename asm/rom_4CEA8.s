@@ -8,16 +8,16 @@
 
     .align 2, 0
 
-	thumb_func_start sub_4CEA8
-sub_4CEA8: @ 0x0804CEA8
+	thumb_func_start AllBoardProcess_8A_4CEA8
+AllBoardProcess_8A_4CEA8: @ 0x0804CEA8
 	push {lr}
-	bl sub_4CEB4
+	bl AllBoardProcess_8B_4CEB4
 	pop {r0}
 	bx r0
 
 
-	thumb_func_start sub_4CEB4
-sub_4CEB4: @ 0x0804CEB4
+	thumb_func_start AllBoardProcess_8B_4CEB4
+AllBoardProcess_8B_4CEB4: @ 0x0804CEB4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -973,8 +973,8 @@ _0804D6B8: .4byte 0x040000D4
 _0804D6BC: .4byte 0x060022C0
 _0804D6C0: .4byte 0x80000040
 
-	thumb_func_start sub_4D6C4
-sub_4D6C4: @ 0x0804D6C4
+	thumb_func_start AllBoardProcess_2A_4D6C4
+AllBoardProcess_2A_4D6C4: @ 0x0804D6C4
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -1291,8 +1291,8 @@ _0804D954: .4byte 0x000007FF
 _0804D958: .4byte 0x000002EA
 _0804D95C: .4byte 0x000002F6
 
-	thumb_func_start sub_4D960
-sub_4D960: @ 0x0804D960
+	thumb_func_start MainBoardProcess_2B_4D960
+MainBoardProcess_2B_4D960: @ 0x0804D960
 	push {r4, r5, r6, r7, lr}
 	movs r7, #0x80
 	lsls r7, r7, #5
@@ -1625,8 +1625,8 @@ _0804DBF0: .4byte 0x000002AA
 _0804DBF4: .4byte 0x00000121
 _0804DBF8: .4byte 0x000005FC
 
-	thumb_func_start sub_4DBFC
-sub_4DBFC: @ 0x0804DBFC
+	thumb_func_start BonusBoardProcess_2B_4DBFC
+BonusBoardProcess_2B_4DBFC: @ 0x0804DBFC
 	push {r4, r5, r6, r7, lr}
 	movs r6, #0x80
 	lsls r6, r6, #5
@@ -6901,8 +6901,8 @@ _0805083C: .4byte gUnknown_086B0E6C
 _08050840: .4byte 0x040000D4
 _08050844: .4byte 0x80000020
 
-	thumb_func_start sub_50848
-sub_50848: @ 0x08050848
+	thumb_func_start RubyBoardProcess_0A_50848
+RubyBoardProcess_0A_50848: @ 0x08050848
 	push {r4, r5, r6, r7, lr}
 	movs r0, #0
 	ldr r4, _080508E8 @ =gMain
@@ -6997,8 +6997,8 @@ _0805090C: .4byte 0x000027A0
 _08050910: .4byte 0x00002ED0
 _08050914: .4byte 0x00002858
 
-	thumb_func_start sub_50918
-sub_50918: @ 0x08050918
+	thumb_func_start RubyBoardProcess_0B_50918
+RubyBoardProcess_0B_50918: @ 0x08050918
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}

@@ -687,19 +687,19 @@ Sio32ConnectionData:: @ 0x0805C748
 
 gBonusFieldSelectStateFuncs:: @ 0x0805C750
 	.4byte LoadBonusFieldSelectGraphics
-	.4byte sub_2768
-	.4byte sub_2990
+	.4byte BonusFieldSelect_State1_2768
+	.4byte BonusFieldSelect_State2_2990
 
 gEReaderStateFuncs:: @ 0x0805C75C
 	.4byte LoadEReaderGraphics
-	.4byte sub_2E40
-	.4byte sub_2FC0
-	.4byte sub_304C
-	.4byte sub_3208
-	.4byte sub_33A0
-	.4byte sub_343C
-	.4byte sub_35C8
-	.4byte sub_374C
+	.4byte Ereader_State1_2E40
+	.4byte Ereader_State2_2FC0
+	.4byte Ereader_State3_304C
+	.4byte Ereader_State4_3208
+	.4byte Ereader_State5_33A0
+	.4byte Ereader_State6_343C
+	.4byte Ereader_State7_33C8
+	.4byte Ereader_State8_374C
 
 gDexInfoWindowMiddleRowTiles:: @ 0x0805C780
 	.2byte 0x00, 0x9A, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
@@ -728,16 +728,16 @@ gDexInfoWindowEmptyTextRowTiles:: @ 0x0805C840
 gPokedexStateFuncs:: @ 0x0805C880
 	.4byte LoadPokedexGraphics          @ POKEDEX_STATE_LOAD_GRAPHICS
 	.4byte Pokedex_HandleListInput      @ POKEDEX_STATE_HANDLE_LIST_INPUT
-	.4byte sub_43D4                     @ POKEDEX_STATE_2
-	.4byte sub_4428                     @ POKEDEX_STATE_3
-	.4byte sub_4860                     @ POKEDEX_STATE_4
-	.4byte sub_45A4                     @ POKEDEX_STATE_5
+	.4byte Pokedex_State2_43D4          @ POKEDEX_STATE_2
+	.4byte Pokedex_State3_4428          @ POKEDEX_STATE_3
+	.4byte Pokedex_State4_4860          @ POKEDEX_STATE_4
+	.4byte Pokedex_State5_45A4          @ POKEDEX_STATE_5
 	.4byte Pokedex_LinkSetup            @ POKEDEX_STATE_LINK_SETUP
-	.4byte sub_49D0                     @ POKEDEX_STATE_7
-	.4byte sub_4B34                     @ POKEDEX_STATE_8
-	.4byte sub_4BB4                     @ POKEDEX_STATE_9
-	.4byte sub_4B10                     @ POKEDEX_STATE_10
-	.4byte sub_4C80                     @ POKEDEX_STATE_11
+	.4byte Pokedex_State7_49D0          @ POKEDEX_STATE_7
+	.4byte Pokedex_State8_4B34          @ POKEDEX_STATE_8
+	.4byte Pokedex_State9_4BB4          @ POKEDEX_STATE_9
+	.4byte Pokedex_State10_4B10         @ POKEDEX_STATE_10
+	.4byte Pokedex_State11_4C80         @ POKEDEX_STATE_11
 	.4byte Pokedex_ReturnToTitle        @ POKEDEX_STATE_RETURN_TO_TITLE
 
 gPokedexEntries:: @ 0x0805C8B4
@@ -746,15 +746,15 @@ gPokedexEntries:: @ 0x0805C8B4
 	.align 2, 0
 gFieldSelectStateFuncs:: @ 0x080792C0
 	.4byte LoadFieldSelectGraphics
-	.4byte sub_8C7C
-	.4byte sub_8F64
+	.4byte FieldSelect_State1_8C7C
+	.4byte FieldSelect_State2_8F64
 
 gIntroStateFuncs:: @ 0x080792CC
-	.4byte sub_929C
-	.4byte sub_9348
-	.4byte sub_9370
-	.4byte sub_938C
-	.4byte sub_93D0
+	.4byte Intro_State0_929C
+	.4byte Intro_State1_9348
+	.4byte Intro_State2_9370
+	.4byte Intro_State3_938C
+	.4byte Intro_State4_93D0
 
 gIntroSceneFuncs:: @ 0x080792E0
 	.4byte sub_9498
@@ -826,25 +826,25 @@ gIntroSceneFuncs:: @ 0x080792E0
 
 gHighScoresStateFuncs:: @ 0x080793E8
 	.4byte LoadHighScoreGraphics
-	.4byte sub_D20C
-	.4byte sub_D308
-	.4byte sub_D4B8
-	.4byte sub_D664
-	.4byte sub_D9F8
-	.4byte sub_DA20
-	.4byte sub_DB70
-	.4byte sub_DBF4
-	.4byte sub_DB4C
-	.4byte sub_DCF0
-	.4byte sub_DD4C
-	.4byte sub_E0EC
-	.4byte sub_E230
-	.4byte sub_E390
+	.4byte HighScore_State1_D20C
+	.4byte HighScore_State2_D308
+	.4byte HighScore_State3_D4B8
+	.4byte HighScore_State4_D664
+	.4byte HighScore_State5_D9F8
+	.4byte HighScore_State6_DA20
+	.4byte HighScore_State7_DB70
+	.4byte HighScore_State8_DBF4
+	.4byte HighScore_State9_DB4C
+	.4byte HighScore_State10_DCF0
+	.4byte HighScore_State11_DD4C
+	.4byte HighScore_State12_E0EC
+	.4byte HighScore_State13_E230
+	.4byte HighScore_State14_E390
 
 gIdleHighScoresStateFuncs:: @ 0x08079424
-	.4byte sub_DD70
-	.4byte sub_DF68
-	.4byte sub_E0C4
+	.4byte IdleHighScore_State0_DD70
+	.4byte IdleHighScore_State1_DF68
+	.4byte IdleHighScore_State2_E0C4
 
 gDefaultHighScores:: @ 0x08079430
 	.incbin "baserom.gba", 0x79430, 0x180
@@ -1185,10 +1185,10 @@ gGravityDeltas_Light:: @ 0x08137910
 	.2byte 1, 0, 0, 0
 
 gIdlePinballGameStateFuncs:: @ 0x08137918
-	.4byte sub_19048
-	.4byte sub_19190
-	.4byte sub_4ABC8
-	.4byte sub_19288
+	.4byte PinballGameIdle0_19048
+	.4byte PinballGameIdle1_19190
+	.4byte PinballGame_State2_4ABC8 @shared with main game mode
+	.4byte PinballGameIdle3_19288
 
 gUnknown_08137928:: @ 0x08137928
 	.incbin "baserom.gba", 0x137928, 0x1C
@@ -1263,10 +1263,10 @@ gUnknown_08137E00:: @ 0x08137E00
 	.incbin "baserom.gba", 0x137E00, 0x4
 
 gPinballGameStateFuncs:: @ 0x08137E04
-	.4byte sub_49ED4 @ called once upon loading the field
-	.4byte sub_4AAD8 @ called once every frame while playing
-	.4byte sub_4ABC8 @ called once on game over (losing all balls)
-	.4byte sub_4B20C @ called once after game over?
+	.4byte PinballGame_State0_49ED4 @ called once upon loading the field
+	.4byte PinballGame_State1_4AAD8 @ called once every frame while playing
+	.4byte PinballGame_State2_4ABC8 @ called once on game over (losing all balls)
+	.4byte PinballGame_State3_4B20C @ called once after game over?
 
 gUnknown_08137E14:: @ 0x08137E14
 	.incbin "baserom.gba", 0x137E14, 0x100
@@ -2065,8 +2065,8 @@ gUnknown_08527EFE:: @ 0x08527EFE
 gOptionsStateFuncs:: @ 0x08527F08
 	.4byte Options_LoadGraphics
 	.4byte Options_HandleInput
-	.4byte sub_51C3C
-	.4byte sub_51C60
+	.4byte Options_State2_51C3C
+	.4byte Options_State3_51C60
 
 gSpeciesRSToCryId:: @ 0x08527F18
 	.incbin "baserom.gba", 0x527F18, 0x110
@@ -2796,9 +2796,13 @@ gUnknown_086ACDF4:: @ 0x086ACDF4
 	.2byte 0x0000, 0x00F0, 0x008C, 0x00C8
 	.2byte 0,0,0,0,0,0,0,0
 
-gUnknown_086ACE0C:: @ 0x086ACE0C
-	.4byte sub_14E08, sub_16090, sub_171C8, sub_176B0;
-	.4byte sub_17F28, sub_18324, sub_187F4, sub_18B50;
+@ suspected as board level colision detection logic; one per board; 
+@ similar contents for boards decompiled.
+BoardCollisionFuncts_086ACE0C:: @ 0x086ACE0C
+	.4byte COLLISION_CHECK_RUBY_14E08, COLLISION_CHECK_SAPPHIRE_16090; 
+	.4byte COLLISION_CHECK_DUSCLOPS_171C8, COLLISION_CHECK_KECLEON_176B0;
+	.4byte COLLISION_CHECK_KYOGRE_17F28, COLLISION_CHECK_GROUDON_18324; 
+	.4byte COLLISION_CHECK_RAYQUAZA_187F4, COLLISION_CHECK_SPHEAL_18B50;
 
 gUnknown_086ACE2C:: @ 0x086ACE2C
 	.incbin "baserom.gba", 0x6ACE2C, 0x34
@@ -3229,34 +3233,34 @@ gMainFieldSpriteGroups:: @ 0x086B02CC
 gBonusFieldSpriteGroups:: @ 0x086B04AC
 	.incbin "baserom.gba", 0x6B04AC, 0x2D0
 
-gUnknown_086B077C:: @ 0x086B077C
-	.4byte sub_47100, sub_47160
-	.4byte sub_4D6C4, sub_4D960
-	.4byte sub_4D6C4, sub_4DBFC
-	.4byte sub_19A20, sub_19B10
-	.4byte sub_326F4, sub_3276C
-	.4byte DuskullBonus_Setup, sub_33130
-	.4byte sub_35860, sub_35AA4
-	.4byte sub_383E4, sub_3869C
-	.4byte sub_3B120, sub_3B49C
-	.4byte sub_3E79C, sub_3EB2C
-	.4byte sub_42E48, sub_43228
-	.4byte sub_19304, sub_19490
-	.4byte sub_19304, sub_19734
-	.4byte sub_11B9C, sub_11C98
-	.4byte sub_11B9C, sub_11F88
-	.4byte sub_1332C, sub_1333C
-	.4byte nullsub_19, sub_12524
-	.4byte nullsub_19, sub_12BF8
-	.4byte sub_4CEA8, sub_4CEB4
-	.4byte sub_50848, sub_50918
-	.4byte sub_50AD4, sub_50B80
-	.4byte sub_50D48, sub_50DB8
-	.4byte sub_50DE0, nullsub_20
-	.4byte sub_50F04, sub_50FAC
-	.4byte sub_50FD4, sub_51068
-	.4byte sub_51090, sub_51128
-	.4byte sub_51150, sub_511F8
+BoardProcPairs_086B077C:: @ 0x086B077C
+	.4byte AllBoardProcess_1A_47100, AllBoardProcess_1B_47160
+	.4byte AllBoardProcess_2A_4D6C4, MainBoardProcess_2B_4D960
+	.4byte AllBoardProcess_2A_4D6C4, BonusBoardProcess_2B_4DBFC
+	.4byte RubyBoardProcess_3A_19A20, RubyBoardProcess_3B_19B10
+	.4byte SapphireBoardProcess_3A_326F4, SapphireBoardProcess_3B_3276C
+	.4byte DuskullBonus_Setup, DusclopsBoardProcess_3B_33130
+	.4byte KecleonBoardProcess_3A_35860, KecleonBoardProcess_3B_35AA4
+	.4byte KyogreBoardProcess_3A_383E4, KyogreBoardProcess_3B_3869C
+	.4byte GroudonBoardProcess_3A_3B120, GroudonBoardProcess_3B_3B49C
+	.4byte RayquazaBoardProcess_3A_3E79C, RayquazaBoardProcess_3B_3EB2C
+	.4byte SphealBoardProcess_3A_42E48, SphealBoardProcess_3B_43228
+	.4byte AllBoardProcess_4A_19304, MainBoardProcess_4B_19490
+	.4byte AllBoardProcess_4A_19304, BonusBoardProcess_4B_19734
+	.4byte AllBoardProcess_5A_11B9C, MainBoardProcess_5B_11C98
+	.4byte AllBoardProcess_5A_11B9C, BonusBoardProcess_5B_11F88
+	.4byte AllBoardProcess_6A_4CEA8, AllBoardProcess_6B_1333C
+	.4byte nullsub_19, MainBoardProcess_7B_12524
+	.4byte nullsub_19, BonusBoardProcess_7B_12BF8
+	.4byte AllBoardProcess_8A_4CEA8, AllBoardProcess_8B_4CEB4
+	.4byte RubyBoardProcess_0A_50848, RubyBoardProcess_0B_50918
+	.4byte SapphireBoardProcess_0A_50AD4, SapphireBoardProcess_0B_50B80
+	.4byte DusclopsBoardProcess_0A_50D48, DusclopsBoardProcess_0B_50DB8
+	.4byte KecleonBoardProcess_0A_50DE0, nullsub_20
+	.4byte KyogreBoardProcess_0A_50F04, KyogreBoardProcess_0B_50FAC
+	.4byte GroudonBoardProcess_0A_50FD4, GroudonBoardProcess_0B_51068
+	.4byte RayquazaBoardProcess_0A_51090, RayquazaBoardProcess_0B_51128
+	.4byte SphealBoardProcess_0A_51150, SphealBoardProcess_0B_511F8
 	.4byte nullsub_19, nullsub_19
 
 gUnknown_086B085C:: @ 0x086B085C

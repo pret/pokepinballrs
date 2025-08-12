@@ -654,7 +654,7 @@ struct PinballGame
     /*0x1101*/u8 unk1101;
     /*0x1102*/u8 unk1102;
     /*0x1103*/u8 unk1103;
-    /*0x1104*/s8 unk1104;
+    /*0x1104*/s8 unk1104; //Pause Menu Pointer index
     /*0x1105*/u8 filler1105[0x1];
     /*0x1106*/volatile u16 unk1106;
     /*0x1108*/volatile u16 unk1108;
@@ -668,7 +668,7 @@ struct PinballGame
     /*0x1118*/u16 unk1118;
     /*0x111A*/u16 unk111A[OBJ_PLTT_SIZE / 0x20][0x10];
     /*0x131A*/u8 filler131A[0x2];
-    /*0x131C*/u32 unk131C;
+    /*0x131C*/u32 unk131C; //Time since paused
     /*0x1320*/s16 unk1320;
     /*0x1322*/s16 unk1322;
     /*0x1324*/s16 unk1324;
@@ -765,7 +765,7 @@ extern struct SongHeader gUnknown_086A17D8;
 extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
 extern const s16 gUnknown_086ACDF4[9];
 typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);
-extern Unk86ACE0C gUnknown_086ACE0C[8];
+extern Unk86ACE0C BoardCollisionFuncts_086ACE0C[8];
 extern struct Vector16 gUnknown_086ACE60[4];
 extern struct Unk086ACE8C gUnknown_086ACE8C[13];
 extern u16 gUnknown_086ACEF4[2];

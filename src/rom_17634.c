@@ -29,7 +29,7 @@ void sub_17634(u8 arg0)
     }
 }
 
-s16 sub_176B0(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_KECLEON_176B0(struct Vector16 *arg0, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -440,7 +440,7 @@ void sub_17C1C(struct Vector16 *arg0)
     }
 }
 
-s16 sub_17F28(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_KYOGRE_17F28(struct Vector16 *arg0, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -636,7 +636,7 @@ void sub_182B4(u8 arg0, u16 *arg1, u16 *arg2)
     }
 }
 
-s16 sub_18324(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_GROUDON_18324(struct Vector16 *arg0, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -838,7 +838,7 @@ void sub_18784(u8 arg0, u16 *arg1, u16 *arg2)
 }
 
 //One known callsite is 080145D2 during the rayquaza bonus stage
-s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_RAYQUAZA_187F4(struct Vector16 *arg0, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -988,7 +988,7 @@ void sub_18AE0(u8 arg0, u16 *arg1, u16 *arg2)
     }
 }
 
-s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_SPHEAL_18B50(struct Vector16 *arg0, u16 *arg1)
 {
     u16 sp0;
     u8 sp2;
