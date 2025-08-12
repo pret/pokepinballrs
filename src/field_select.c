@@ -131,7 +131,7 @@ void FieldSelect_State1_8C7C(void)
             }
             if (JOY_NEW(A_BUTTON))
             {
-                m4aSongNumStart(SE_MENU_SELECT_0x65);
+                m4aSongNumStart(SE_UNKNOWN_0x65);
                 gFieldSelectData.state = FIELD_SELECT_STATE_BALL_SPEED;
                 gFieldSelectData.unk14 = 1;
                 gFieldSelectData.unkE = 0;
@@ -154,7 +154,7 @@ void FieldSelect_State1_8C7C(void)
             }
             if (JOY_NEW(B_BUTTON))
             {
-                m4aSongNumStart(SE_MENU_CANCEL_0x66);
+                m4aSongNumStart(SE_UNKNOWN_0x66);
                 gMain.subState++;
                 gFieldSelectData.nextMainState = STATE_TITLE;
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
@@ -182,12 +182,12 @@ void FieldSelect_State1_8C7C(void)
         case FIELD_SELECT_STATE_BALL_SPEED:
             if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
             {
-                m4aSongNumStart(SE_MENU_MOVE_0x67);
+                m4aSongNumStart(SE_SELECT);
                 gFieldSelectData.ballSpeed = 1 - gFieldSelectData.ballSpeed;
             }
             if (JOY_NEW(A_BUTTON))
             {
-                m4aSongNumStart(SE_MENU_SELECT_0x65);
+                m4aSongNumStart(SE_UNKNOWN_0x65);
                 gFieldSelectData.unkE = 0;
                 gFieldSelectData.unkC = 0;
                 gMain_saveData.ballSpeed = gFieldSelectData.ballSpeed;
@@ -196,7 +196,7 @@ void FieldSelect_State1_8C7C(void)
             }
             if (JOY_NEW(B_BUTTON))
             {
-                m4aSongNumStart(SE_MENU_CANCEL_0x66);
+                m4aSongNumStart(SE_UNKNOWN_0x66);
                 gFieldSelectData.unk14 = 0;
                 gFieldSelectData.state = FIELD_SELECT_STATE_CHOOSE_FIELD;
             }

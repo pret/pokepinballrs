@@ -7165,7 +7165,7 @@ void sub_47670(void)
         {
             gMain.unkF |= 0x20;
             gMain.unk12 = 3600;
-            m4aSongNumStart(MUS_SLOTS_PRIZE);
+            m4aSongNumStart(MUS_GAME_OVER);
         }
     }
 }
@@ -8029,8 +8029,6 @@ void sub_497BC(void)
     sub_11F0(0);
 }
 
-
-// Save Game triggered???
 void sub_49850(void)
 {
     s16 i;

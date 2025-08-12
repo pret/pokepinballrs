@@ -8051,7 +8051,7 @@ _0801B82C:
 	lsls r6, r6, #1
 	adds r0, r2, r6
 	strh r1, [r0]
-	movs r0, SE_MENU_CANCEL_0x66
+	movs r0, SE_UNKNOWN_0x66
 	bl m4aSongNumStart
 _0801B85E:
 	ldr r0, _0801B928 @ =gCurrentPinballGame
@@ -19878,7 +19878,7 @@ _0802187C:
 	cmp r0, #0
 	beq _080218B0
 	bl m4aMPlayAllStop
-	movs r0, SE_MENU_CANCEL_0x66
+	movs r0, SE_UNKNOWN_0x66
 	bl m4aSongNumStart
 	ldr r1, [r4]
 	movs r0, #0x3c
@@ -30387,7 +30387,7 @@ _08026D92:
 	cmp r0, #0
 	beq _08026DC6
 	bl m4aMPlayAllStop
-	movs r0, SE_MENU_CANCEL_0x66
+	movs r0, SE_UNKNOWN_0x66
 	bl m4aSongNumStart
 	ldr r1, [r4]
 	movs r0, #0x3c

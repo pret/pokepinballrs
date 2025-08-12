@@ -46,8 +46,8 @@ struct Main
     /*0x0D*/ u8 unkD;
     /*0x0E*/ u8 unkE;
 
-    // x0 normal; 
-    // x1 Held for mode start banner Evo/Catch/travel, 
+    // UnkF hold a Bitmask for the following:
+    // x1 mode start banner Evo/Catch/Travel, 
     // x2 paused,
     // x4 debug mode,
     // x8 Reset Ball (ball saver)
@@ -55,6 +55,7 @@ struct Main
     // x20 end of game,
     // x40 End of bonus with expired timer,
     // x80 Bonus Score banner
+    // Most cause a board state transition once conditions are met.
     /*0x0F*/ u8 unkF;   
     /*0x10*/ u8 unk10;
     /*0x11*/ u8 unk11;

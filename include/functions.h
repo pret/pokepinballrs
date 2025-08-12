@@ -93,7 +93,7 @@ extern void sub_29C8(void);
 
 extern void EReaderMain(void);
 extern void LoadEReaderGraphics(void);
-extern void LeadEReaderGraphics_SubFunc1(void);
+extern void sub_2DF0(void);
 extern void Ereader_State1_2E40(void);
 extern void Ereader_State2_2FC0(void);
 extern void Ereader_State3_304C(void);

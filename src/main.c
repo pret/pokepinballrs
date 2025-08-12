@@ -9,7 +9,6 @@ static void sub_0B8C(void);
 static void InitIntrHandlers(void);
 static void ReadKeys(void);
 
-// Main entry point for the game; initializes the system and enters the main loop.
 void AgbMain(void)
 {
     RegisterRamReset(0xFF);
