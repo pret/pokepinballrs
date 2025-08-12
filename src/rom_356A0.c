@@ -47,6 +47,50 @@ extern const u16 gUnknown_086B9AB8[][2][3];
 extern const u8 gUnknown_0845588C[][0x100];
 
 
+void sub_350F0(void)
+{
+    gCurrentPinballGame->unk1100 = 1;
+    switch (gCurrentPinballGame->unk17)
+    {
+    case 0:
+        gCurrentPinballGame->unk18 = 65;
+        gCurrentPinballGame->unk17 = 1;
+        gMain.blendControl = 0x9F;
+        break;
+    case 1:
+        if (gCurrentPinballGame->unk18)
+        {
+            gCurrentPinballGame->unk18--;
+            gMain.blendBrightness = 16 - gCurrentPinballGame->unk18 / 4;
+            if (gCurrentPinballGame->unk18 == 0)
+                gCurrentPinballGame->unk17++;
+        }
+        break;
+    case 2:
+        if (gCurrentPinballGame->unk18 < 30)
+        {
+            gCurrentPinballGame->unk18++;
+        }
+        else
+        {
+            gCurrentPinballGame->unk18 = 0;
+            gCurrentPinballGame->unk17 = 0;
+            gMain.spriteGroups[6].available = 0;
+            gMain.spriteGroups[5].available = 0;
+            if (gMain.unk5 != gMain.selectedField)
+            {
+                sub_357B8();
+            }
+            else
+            {
+                ResetSomeGraphicsRelatedStuff();
+                gCurrentPinballGame->unk1D = 2;
+            }
+        }
+        break;
+    }
+}
+
 void sub_351A8(void)
 {
     s16 i;

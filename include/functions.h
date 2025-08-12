@@ -582,7 +582,7 @@ extern void sub_34450();
 extern void sub_350F0();
 extern void sub_351A8();
 extern void sub_356A0();
-//extern ? sub_357B8();
+extern void sub_357B8(void);
 //extern ? sub_35860();
 //extern ? sub_35AA4();
 //extern ? sub_35D54();
