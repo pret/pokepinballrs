@@ -166,6 +166,7 @@ extern void sub_19B4(void) // TODO
     DisableSerial();
 }
 
+//Main callback for link serial communication
 static void sub_19CC(void) // TODO
 {
     if ((REG_DISPSTAT & 0x8) != 0)

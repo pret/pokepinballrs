@@ -198,7 +198,7 @@ void sub_CFD4(void)
     gMain.bgOffsets[2].xOffset = gUnknown_02002882;
 }
 
-void HighScore_State1(void)
+void HighScore_State1_D20C(void)
 {
     u16 temp;
     switch(gUnknown_0202BED4)
@@ -252,7 +252,7 @@ void HighScore_State1(void)
     sub_E860();
 }
 
-void HighScore_State2(void)
+void HighScore_State2_D308(void)
 {
     if(!gUnknown_02002858.unk1A)
     {
@@ -319,7 +319,7 @@ void HighScore_State2(void)
     DmaCopy16(3, gUnknown_03005C00, 0x6000000, 0x1000);
 }
 
-void HighScore_State3(void)
+void HighScore_State3_D4B8(void)
 {
     sub_E464();
     if(!(gMain.systemFrameCount % 0xC))
@@ -410,7 +410,7 @@ void HighScore_State3(void)
     gMain.bgOffsets[2].xOffset = gUnknown_02002882;
 }
 
-void HighScore_State4(void)
+void HighScore_State4_D664(void)
 {
     int i, j, k;
 
@@ -540,7 +540,7 @@ void HighScore_State4(void)
         gUnknown_02002858.unk20--;
 }
 
-void HighScore_State5(void)
+void HighScore_State5_D9F8(void)
 {
     sub_19B4();
     sub_E908();
@@ -549,7 +549,7 @@ void HighScore_State5(void)
     gMain.subState = 6;
 }
 
-void HighScore_State6(void)
+void HighScore_State6_DA20(void)
 {
     sub_E464();
     if (JOY_NEW(B_BUTTON))
@@ -595,7 +595,7 @@ void HighScore_State6(void)
     }
 }
 
-void HighScore_State9(void)
+void HighScore_State9_DB4C(void)
 {
     if (++gUnknown_0201A444 > 2)
     {
@@ -604,7 +604,7 @@ void HighScore_State9(void)
     }
 }
 
-void HighScore_State7(void)
+void HighScore_State7_DB70(void)
 {
     int i, j;
 
@@ -630,7 +630,7 @@ void HighScore_State7(void)
     }
 }
 
-void HighScore_State8(void)
+void HighScore_State8_DBF4(void)
 {
     int i, j, k;
 
@@ -672,7 +672,7 @@ void HighScore_State8(void)
     gUnknown_02002858.unk22++;
 }
 
-void HighScore_State10(void)
+void HighScore_State10_DCF0(void)
 {
     sub_E464();
     if (JOY_NEW(A_BUTTON))
@@ -694,7 +694,7 @@ void HighScore_State10(void)
     }
 }
 
-void HighScore_State11(void)
+void HighScore_State11_DD4C(void)
 {
     sub_02B4();
     m4aMPlayAllStop();
@@ -703,7 +703,7 @@ void HighScore_State11(void)
     SetMainGameState(STATE_TITLE);
 }
 
-void sub_DD70(void)
+void IdleHighScore_State0_DD70(void)
 {
     ResetSomeGraphicsRelatedStuff();
     REG_DISPCNT = DISPCNT_OBJ_ON | DISPCNT_FORCED_BLANK;
@@ -755,7 +755,7 @@ void sub_DEB4(void)
     gMain.bgOffsets[2].xOffset = gUnknown_02002882;
 }
 
-void sub_DF68(void)
+void IdleHighScore_State1_DF68(void)
 {
     switch (gUnknown_02002858.unkA)
     {
@@ -813,7 +813,7 @@ void sub_DF68(void)
     }
 }
 
-void sub_E0C4(void)
+void IdleHighScore_State2_E0C4(void)
 {
     sub_02B4();
     m4aMPlayAllStop();
@@ -821,7 +821,7 @@ void sub_E0C4(void)
     SetMainGameState(gUnknown_02002858.unk24);
 }
 
-void HighScore_State12(void)
+void HighScore_State12_E0EC(void)
 {
     ResetSomeGraphicsRelatedStuff();
     REG_DISPCNT = DISPCNT_OBJ_ON | DISPCNT_FORCED_BLANK;
@@ -846,7 +846,7 @@ void HighScore_State12(void)
     gMain.subState++;
 }
 
-void HighScore_State13(void)
+void HighScore_State13_E230(void)
 {
     switch (gUnknown_02002858.unkA)
     {
@@ -908,7 +908,7 @@ void HighScore_State13(void)
     }
 }
 
-void HighScore_State14(void)
+void HighScore_State14_E390(void)
 {
     sub_02B4();
     m4aMPlayAllStop();

@@ -501,7 +501,7 @@ void Options_HandleInput(void)
     sub_11FC();
 }
 
-void sub_51C3C(void)
+void Options_State2_51C3C(void)
 {
     sub_111C();
     if (sub_1170())
@@ -511,7 +511,7 @@ void sub_51C3C(void)
     }
 }
 
-void sub_51C60(void)
+void Options_State3_51C60(void)
 {
     gMain_saveData.rumbleEnabled = gOptionsData.rumbleEnabled;
     SaveFile_WriteToSram();

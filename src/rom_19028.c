@@ -10,7 +10,7 @@ void IdlePinballGameMain(void)
     gIdlePinballGameStateFuncs[gMain.subState]();
 }
 
-void sub_19048(void)
+void PinballGameIdle0_19048(void)
 {
     s16 i;
     s16 unk30;
@@ -52,7 +52,7 @@ void sub_19048(void)
         break;
     }
 
-    sub_49ED4();
+    PinballGame_State0_49ED4();
 
     switch (unk30LowerBits)
     {
@@ -75,7 +75,7 @@ void sub_19048(void)
     gMain.unk30++;
 }
 
-void sub_19190(void)
+void PinballGameIdle1_19190(void)
 {
     u8 unk1D;
 
@@ -126,7 +126,7 @@ void sub_19190(void)
     }
 }
 
-void sub_19288(void)
+void PinballGameIdle3_19288(void)
 {
     s16 i;
 

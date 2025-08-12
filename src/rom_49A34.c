@@ -6854,6 +6854,7 @@ void sub_47160(void)
         }
     }
 
+    //Game is paused
     if (gMain.unkF & 0x2)
     {
         if (JOY_NEW(DPAD_UP))
@@ -6892,6 +6893,7 @@ void sub_47160(void)
             sub_49A34();
     }
 
+    //Game is not paused
     if (gMain.unkF == 0x0)
     {
         gCurrentPinballGame->unk740 = 0;
@@ -7941,6 +7943,9 @@ void sub_48190(void)
     }
 }
 
+// Pauses the game and saves the blend settings
+// Also stops the BGM if it was playing before
+// Sets the blend settings to a dimmed state
 void sub_495A0(void)
 {
     s16 i, j;
@@ -8007,6 +8012,8 @@ void sub_495A0(void)
     sub_11F0(1);
 }
 
+//Unpauses the game and restores the blend settings
+//Also starts the BGM if it was playing before
 void sub_497BC(void)
 {
     gMain.blendControl = gCurrentPinballGame->unk1106;
@@ -8022,6 +8029,8 @@ void sub_497BC(void)
     sub_11F0(0);
 }
 
+
+// Save Game triggered???
 void sub_49850(void)
 {
     s16 i;

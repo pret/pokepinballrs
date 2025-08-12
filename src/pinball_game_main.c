@@ -112,7 +112,7 @@ void PinballGameMain(void)
     gPinballGameStateFuncs[gMain.subState]();
 }
 
-void sub_49ED4(void)
+void PinballGame_State0_49ED4(void)
 {
     s16 i, j;
     s16 numRngAdvances;
@@ -545,7 +545,7 @@ void sub_4A90C(void)
     }
 }
 
-void sub_4AAD8(void)
+void PinballGame_State1_4AAD8(void)
 {
     switch (gCurrentPinballGame->unk1D)
     {
@@ -594,8 +594,9 @@ void sub_4AAD8(void)
     sub_11FC();
 }
 
-//gMain.subState = 2
-void sub_4ABC8(void)
+//Note: Used by both the main game mode and the idle game mode
+//gMain.subState = 2 in both.
+void PinballGame_State2_4ABC8(void)
 {
     sub_111C();
     if (sub_1170())
@@ -873,7 +874,7 @@ void sub_4B000(void)
     DmaCopy16(3, &gUnknown_03005C00[0x320], (void *)0x6002640, 0x40);
 }
 
-void sub_4B20C(void)
+void PinballGame_State3_4B20C(void)
 {
     gMain.unk36 = 0;
     sub_02B4();

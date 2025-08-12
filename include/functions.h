@@ -85,8 +85,8 @@ void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum);
 extern void BonusFieldSelectMain(void);
 extern void LoadBonusFieldSelectGraphics(void);
 extern void sub_2710(void);
-extern void sub_2768(void);
-extern void sub_2990(void);
+extern void BonusFieldSelect_State1_2768(void);
+extern void BonusFieldSelect_State2_2990(void);
 extern void sub_29C8(void);
 
 // src/ereader.c
@@ -94,14 +94,14 @@ extern void sub_29C8(void);
 extern void EReaderMain(void);
 extern void LoadEReaderGraphics(void);
 extern void LeadEReaderGraphics_SubFunc1(void);
-extern void Ereader_State1(void);
-extern void Ereader_State2(void);
-extern void Ereader_State3(void);
-extern void Ereader_State4(void);
-extern void Ereader_State5(void);
-extern void Ereader_State6(void);
-extern void Ereader_State7(void);
-extern void Ereader_State8(void);
+extern void Ereader_State1_2E40(void);
+extern void Ereader_State2_2FC0(void);
+extern void Ereader_State3_304C(void);
+extern void Ereader_State4_3208(void);
+extern void Ereader_State5_33A0(void);
+extern void Ereader_State6_343C(void);
+extern void Ereader_State7_33C8(void);
+extern void Ereader_State8_374C(void);
 extern void sub_377C(void);
 extern void sub_37B4(s8);
 extern void sub_3828(s8, s8);
@@ -117,33 +117,33 @@ extern s16 sub_3CD8(void);
 
 extern void FieldSelectMain(void);
 extern void LoadFieldSelectGraphics(void);
-extern void sub_8C7C(void);
-extern void sub_8F64(void);
+extern void FieldSelect_State1_8C7C(void);
+extern void FieldSelect_State2_8F64(void);
 
 // src/high_scores.s
 extern void HighScoresMain(void);
 extern void IdleHighScoresMain(void);
 extern void LoadHighScoreGraphics(void);
 extern void sub_CFD4(void);
-extern void HighScore_State1(void);
-extern void HighScore_State2(void);
-extern void HighScore_State3(void);
+extern void HighScore_State1_D20C(void);
+extern void HighScore_State2_D308(void);
+extern void HighScore_State3_D4B8(void);
 
 // asm/high_scores.s
 
-extern void HighScore_State4(void);
-extern void HighScore_State5(void);
-//extern ? HighScore_State9();
-//extern ? HighScore_State7();
-//extern ? HighScore_State8();
-//extern ? HighScore_State10();
-//extern ? HighScore_State11();
-//extern ? sub_DD70();
+extern void HighScore_State4_D664(void);
+extern void HighScore_State5_D9F8(void);
+//extern ? HighScore_State9_DB4C();
+//extern ? HighScore_State7_DB70();
+//extern ? HighScore_State8_DBF4();
+//extern ? HighScore_State10_DCF0();
+//extern ? HighScore_State11_DD4C();
+//extern ? IdleHighScore_State0_DD70();
 extern void sub_DEB4(void);
-//extern ? sub_E0C4();
-//extern ? HighScore_State12();
-//extern ? HighScore_State13();
-//extern ? HighScore_State14();
+//extern ? IdleHighScore_State2_E0C4();
+//extern ? HighScore_State12_E0EC();
+//extern ? HighScore_State13_E230();
+//extern ? HighScore_State14_E390();
 extern void sub_E3A8(void);
 extern void sub_E464(void);
 extern void sub_E860(void);
@@ -181,11 +181,11 @@ extern void PrintChar(u16 glyph, u16 color, int x, int y, int arg4, int arg5);
 
 // src/intro.c
 extern void IntroMain(void);
-extern void sub_929C(void);
-extern void sub_9348(void);
-extern void sub_9370(void);
-extern void sub_938C(void);
-extern void sub_93D0(void);
+extern void Intro_State0_929C(void);
+extern void Intro_State1_9348(void);
+extern void Intro_State2_9370(void);
+extern void Intro_State3_938C(void);
+extern void Intro_State4_93D0(void);
 extern void sub_93F8(void);
 extern void sub_9498(void);
 extern void sub_96A8(void);
@@ -329,8 +329,8 @@ extern void sub_A2A8(void);
 //extern ? Options_LoadGraphics();
 extern void Options_InitStates(void);
 //extern ? Options_HandleInput();
-//extern ? sub_51C3C();
-//extern ? sub_51C60();
+//extern ? Options_State2_51C3C();
+//extern ? Options_State3_51C60();
 extern void sub_51C9C(void);
 extern void sub_524BC(void);
 extern void sub_52528(void);
@@ -342,16 +342,16 @@ extern void PokedexMain(void);
 //extern ? LoadPokedexGraphics();
 extern void sub_3FAC(void);
 //extern ? Pokedex_HandleListInput();
-//extern ? sub_43D4();
-//extern ? sub_4428();
-//extern ? sub_45A4();
-//extern ? sub_4860();
+//extern ? Pokedex_State2_43D4();
+//extern ? Pokedex_State3_4428();
+//extern ? Pokedex_State5_45A4();
+//extern ? Pokedex_State4_4860();
 //extern ? Pokedex_LinkSetup();
-//extern ? sub_49D0();
-//extern ? sub_4B10();
-//extern ? sub_4B34();
-//extern ? sub_4BB4();
-//extern ? sub_4C80();
+//extern ? Pokedex_State7_49D0();
+//extern ? Pokedex_State10_4B10();
+//extern ? Pokedex_State8_4B34();
+//extern ? Pokedex_State9_4BB4();
+//extern ? Pokedex_State11_4C80();
 //extern ? Pokedex_ReturnToTitle();
 //extern ? sub_71DC();
 extern void sub_8974(s16);
@@ -411,10 +411,10 @@ extern s16 sub_18B50(struct Vector16*, u16*);
 extern void sub_18DAC(struct Vector16*, u16*, u8*);
 extern void sub_18F38(u8, u16*, u16*);
 extern void IdlePinballGameMain();
-extern void sub_19048(void);//gMain.subState = 0
-extern void sub_19190(void);//gMain.subState = 1
-extern void sub_4ABC8(void);//gMain.subState = 2
-extern void sub_19288(void);//gMain.subState = 3
+extern void PinballGameIdle0_19048(void);//gMain.subState = 0
+extern void PinballGameIdle1_19190(void);//gMain.subState = 1
+extern void PinballGame_State2_4ABC8(void);//gMain.subState = 2
+extern void PinballGameIdle3_19288(void);//gMain.subState = 3
 //extern ? sub_19304();
 extern void sub_1931C(struct Vector16 arg0);
 //extern ? sub_19490();
@@ -646,7 +646,7 @@ extern void sub_4B000();
 extern void sub_4B408(s16);
 //extern ? sub_4CEA8();
 //extern ? sub_4CEB4();
-extern void sub_49ED4(void);
+extern void PinballGame_State0_49ED4(void);
 //extern ? sub_4D3D0();
 //extern ? sub_4D648();
 //extern ? sub_4D6C4();

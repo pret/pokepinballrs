@@ -352,7 +352,7 @@ void Pokedex_HandleListInput(void)
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 }
 
-void sub_43D4(void)
+void Pokedex_State2_43D4(void)
 {
     sub_5174();
     gUnknown_0202A588 = 0;
@@ -365,7 +365,7 @@ void sub_43D4(void)
     gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
 }
 
-void sub_4428(void)
+void Pokedex_State3_4428(void)
 {
     int i;
 
@@ -401,7 +401,7 @@ void sub_4428(void)
 
 }
 
-void sub_45A4(void)
+void Pokedex_State5_45A4(void)
 {
     u16 var0;
 
@@ -532,7 +532,7 @@ void sub_45A4(void)
     sub_51FC();
 }
 
-void sub_4860(void)
+void Pokedex_State4_4860(void)
 {
     s32 i;
 
@@ -576,7 +576,7 @@ void Pokedex_LinkSetup(void)
     gMain.subState = POKEDEX_STATE_7;
 }
 
-void sub_49D0(void)
+void Pokedex_State7_49D0(void)
 {
     s16 var0;
 
@@ -634,7 +634,7 @@ void sub_49D0(void)
     }
 }
 
-void sub_4B10(void)
+void Pokedex_State10_4B10(void)
 {
     gUnknown_0201A444++;
 
@@ -644,7 +644,7 @@ void sub_4B10(void)
     }
 }
 
-void sub_4B34(void)
+void Pokedex_State8_4B34(void)
 {
     s32 iVar1;
 
@@ -674,7 +674,7 @@ void sub_4B34(void)
     }
 }
 
-void sub_4BB4(void)
+void Pokedex_State9_4BB4(void)
 {
     s32 index;
 
@@ -713,7 +713,7 @@ void sub_4BB4(void)
     gUnknown_0201B120 += 1;
 }
 
-void sub_4C80(void)
+void Pokedex_State11_4C80(void)
 {
     s32 i;
 
