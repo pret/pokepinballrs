@@ -284,14 +284,14 @@ void sub_31BE8(s16 arg0)
 
     if (gMain.selectedField == FIELD_SAPPHIRE)
     {
-        DmaCopy16(3, gUnknown_02031520.unk14.unk2C[arg0] + 0x10, (void*)OBJ_PLTT + 0x40, 0xC0);
+        DmaCopy16(3, gUnknown_02031520.unk14.unk2C[arg0] + 0x40, (void*)OBJ_PLTT + 0x40, 0xC0);
     }
     else
     {
-        DmaCopy16(3, gUnknown_02031520.unk14.unk2C[arg0] + 0x10, (void*)OBJ_PLTT + 0x40, 0xE0);
+        DmaCopy16(3, gUnknown_02031520.unk14.unk2C[arg0] + 0x40, (void*)OBJ_PLTT + 0x40, 0xE0);
     }
 
-    DmaCopy16(3, gUnknown_02031520.unk14.unk2C[arg0] + 0x50, (void *)OBJ_PLTT + 0x140, 0x20);
+    DmaCopy16(3, gUnknown_02031520.unk14.unk2C[arg0] + 0x140, (void *)OBJ_PLTT + 0x140, 0x20);
 
     // related to Y position of camera on the field
     if (gCurrentPinballGame->unk68 < 170)

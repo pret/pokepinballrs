@@ -17,7 +17,10 @@ extern void sub_3751C(void);
 extern void sub_37850(void);
 extern void sub_38218(void);
 
-extern const u8 gUnknown_0813A854[0x2000];
+extern const u8 gUnknown_0813A854[];
+extern const u8 gUnknown_0813C874[];
+extern const u8 gUnknown_0813E894[];
+extern const u8 gUnknown_081408B4[];
 
 struct Unk_086AE9E4
 {
@@ -43,6 +46,133 @@ extern const u16 gUnknown_086B9DAC[][2][3];
 extern const u16 gUnknown_086B9AB8[][2][3];
 extern const u8 gUnknown_0845588C[][0x100];
 
+
+void sub_351A8(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    s16 var0;
+    int var1;
+    s16 sp0[8];
+    s16 var2;
+
+    var0 = 8;
+    var1 = 0;
+    group = &gMain.spriteGroups[6];
+    if (gCurrentPinballGame->unk394 > 0)
+    {
+        gCurrentPinballGame->unk394 -= 6;
+        if (gCurrentPinballGame->unk394 < 0)
+            gCurrentPinballGame->unk394 = 0;
+    }
+
+    switch (gMain.selectedField)
+    {
+    case FIELD_DUSCLOPS:
+        if (gCurrentPinballGame->unk13 == 5 && gCurrentPinballGame->unk18 < 180)
+            var0 = (gCurrentPinballGame->unk18 % 24) / 12 + 8;
+        var1 = 30000000;
+        break;
+    case FIELD_KECLEON:
+        if (gCurrentPinballGame->unk13 == 3 && gCurrentPinballGame->unk18 < 180)
+            var0 = (gCurrentPinballGame->unk18 % 24) / 12 + 8;
+        var1 = 30000000;
+        break;
+    case FIELD_KYOGRE:
+        if (gCurrentPinballGame->unk13 == 3 && gCurrentPinballGame->unk18 < 180)
+            var0 = (gCurrentPinballGame->unk18 % 24) / 12 + 8;
+        var1 = 50000000;
+        break;
+    case FIELD_GROUDON:
+        if (gCurrentPinballGame->unk13 == 3 && gCurrentPinballGame->unk18 < 180)
+            var0 = (gCurrentPinballGame->unk18 % 24) / 12 + 8;
+        var1 = 50000000;
+        break;
+    case FIELD_RAYQUAZA:
+        if (gCurrentPinballGame->unk13 == 3 && gCurrentPinballGame->unk18 < 180)
+            var0 = (gCurrentPinballGame->unk18 % 24) / 12 + 8;
+        var1 = 99999999;
+        break;
+    }
+
+    DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0] + var0 * 0x20, (void *)0x05000300, 0x20);
+
+    if (group->available)
+    {
+        group->baseX = 120;
+        group->baseY = gCurrentPinballGame->unk394 + 50;
+        for (i = 0; i < 3; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+
+        group = &gMain.spriteGroups[5];
+        group->baseX = 120;
+        group->baseY = gCurrentPinballGame->unk394 + 50;
+        for (i = 0; i < 18; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+    }
+
+    sp0[0] = (var1 / 10000000);
+    sp0[1] = (var1 % 10000000) / 1000000;
+    sp0[2] = (var1 % 1000000) / 100000;
+    sp0[3] = (var1 % 100000) / 10000;
+    sp0[4] = (var1 % 10000) / 1000;
+    sp0[5] = (var1 % 1000) / 100;
+    sp0[6] = (var1 % 100) / 10;
+    sp0[7] = (var1 % 10);
+
+    switch (gMain.selectedField)
+    {
+    case FIELD_DUSCLOPS:
+        for (i = 0; i < 8; i++)
+        {
+            DmaCopy16(3, &gUnknown_08138834[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+        }
+        var2 = gCurrentPinballGame->unk5F6 + 0x71;
+        DmaCopy16(3, &gUnknown_08138834[var2 * 0x40], (void *)0x06017380, 0x40);
+        break;
+    case FIELD_KECLEON:
+        for (i = 0; i < 8; i++)
+        {
+            DmaCopy16(3, &gUnknown_0813A854[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+        }
+        var2 = gCurrentPinballGame->unk5F6 + 0x71;
+        DmaCopy16(3, &gUnknown_0813A854[var2 * 0x40], (void *)0x06017380, 0x40);
+        break;
+    case FIELD_KYOGRE:
+        for (i = 0; i < 8; i++)
+        {
+            DmaCopy16(3, &gUnknown_0813C874[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+        }
+        var2 = gCurrentPinballGame->unk5F6 + 0x71;
+        DmaCopy16(3, &gUnknown_0813C874[var2 * 0x40], (void *)0x06017380, 0x40);
+        break;
+    case FIELD_GROUDON:
+        for (i = 0; i < 8; i++)
+        {
+            DmaCopy16(3, &gUnknown_0813E894[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+        }
+        var2 = gCurrentPinballGame->unk5F6 + 0x71;
+        DmaCopy16(3, &gUnknown_0813E894[var2* 0x40], (void *)0x06017380, 0x40);
+        break;
+    case FIELD_RAYQUAZA:
+        for (i = 0; i < 8; i++)
+        {
+            DmaCopy16(3, &gUnknown_081408B4[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+        }
+        var2 = gCurrentPinballGame->unk5F6 + 0x71;
+        DmaCopy16(3, &gUnknown_081408B4[var2 * 0x40], (void *)0x06017380, 0x40);
+        break;
+    }
+}
 
 void sub_356A0(void)
 {

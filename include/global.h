@@ -702,7 +702,7 @@ struct Unk02031520_unk14
     /*0x24*/ s16 unk24;
     /*0x26*/ s16 unk26;
     /*0x28*/ s16 unk28;
-    /*0x2C*/ u32 *unk2C[3];
+    /*0x2C*/ u8 *unk2C[3];
     /*0x38*/ const s16 *unk38[4];
     /*0x48*/ const u16 *unk48[4];
     /*0x58*/ const u8 *unk58[4];
@@ -737,7 +737,7 @@ extern u8 gUnknown_02031590[];
 extern u16 gUnknown_08137B3C[][6][16];
 extern u16 gUnknown_08137D40[]; 
 extern const u8 gUnknown_08137E14[][0x20];
-extern const u8 gUnknown_08138834[0x2000];
+extern const u8 gUnknown_08138834[];
 extern struct Unk02031520_unk10 gUnknown_081450F4;
 extern struct Unk02031520_unk10 gUnknown_08148934;
 extern struct Unk02031520_unk10 gUnknown_0814C174;
