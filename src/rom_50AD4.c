@@ -1,6 +1,36 @@
 #include "global.h"
 #include "main.h"
 
+void RubyBoardProcess_0A_50848(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+
+    for (i = 0; i < 84; i++)
+        gMain.spriteGroups[i].available = 0;
+
+    gMain.spriteGroups[64].available = 1;
+    group = &gMain.spriteGroups[48]; // fake match?
+    gMain.spriteGroups[70].available = 1;
+    gMain.spriteGroups[0].available = 1;
+    gMain.spriteGroups[1].available = 1;
+    gMain.spriteGroups[2].available = 1;
+    gMain.spriteGroups[28].available = 1;
+    gMain.spriteGroups[81].available = 1;
+    gMain.spriteGroups[65].available = 1;
+    gMain.spriteGroups[71].available = 1;
+    gMain.spriteGroups[66].available = 1;
+    gMain.spriteGroups[51].available = 1;
+    gMain.spriteGroups[61].available = 1;
+    group->available = 1;
+    gMain.spriteGroups[52].available = 1;
+    gMain.spriteGroups[62].available = 1;
+    LoadSpriteSets(
+        gUnknown_086B155C[gMain.selectedField].spriteSets,
+        gUnknown_086B155C[gMain.selectedField].numSpriteSets,
+        gMain.spriteGroups);
+}
+
 void RubyBoardProcess_0B_50918(void)
 {
     s16 i;
