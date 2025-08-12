@@ -374,29 +374,29 @@ void sub_17C1C(struct Vector16 *arg0)
         gCurrentPinballGame->unk3F8 = 0;
         if (gCurrentPinballGame->unk412 == 0)
         {
-            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk434.x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk434.y)
+            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk434[0].x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk434[0].y)
             {
                 gCurrentPinballGame->unk42A[4] = 0x11;
-                gCurrentPinballGame->unk434.x = gCurrentPinballGame->unk400.x;
-                gCurrentPinballGame->unk434.y = gCurrentPinballGame->unk400.y;
+                gCurrentPinballGame->unk434[0].x = gCurrentPinballGame->unk400.x;
+                gCurrentPinballGame->unk434[0].y = gCurrentPinballGame->unk400.y;
             }
         }
         else if (gCurrentPinballGame->unk412 == 8)
         {
-            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk438.x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk438.y)
+            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk434[1].x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk434[1].y)
             {
                 gCurrentPinballGame->unk42A[5] = 0x11;
-                gCurrentPinballGame->unk438.x = gCurrentPinballGame->unk400.x;
-                gCurrentPinballGame->unk438.y = gCurrentPinballGame->unk400.y;
+                gCurrentPinballGame->unk434[1].x = gCurrentPinballGame->unk400.x;
+                gCurrentPinballGame->unk434[1].y = gCurrentPinballGame->unk400.y;
             }
         }
         else if (gCurrentPinballGame->unk412 == 16)
         {
-            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk43C.x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk43C.y)
+            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk434[2].x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk434[2].y)
             {
                 gCurrentPinballGame->unk42A[6] = 0x11;
-                gCurrentPinballGame->unk43C.x = gCurrentPinballGame->unk400.x;
-                gCurrentPinballGame->unk43C.y = gCurrentPinballGame->unk400.y;
+                gCurrentPinballGame->unk434[2].x = gCurrentPinballGame->unk400.x;
+                gCurrentPinballGame->unk434[2].y = gCurrentPinballGame->unk400.y;
             }
         }
         break;

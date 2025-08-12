@@ -123,7 +123,7 @@ struct PinballGame
     /*0x014*/ s8 unk14;
     /*0x015*/ s8 unk15;
     /*0x016*/ s8 unk16;
-    /*0x017*/ u8 unk17;
+    /*0x017*/ s8 unk17;
     /*0x018*/ u16 unk18;
     /*0x01A*/ s8 unk1A;
     /*0x01B*/ u8 unk1B;
@@ -415,12 +415,12 @@ struct PinballGame
     /*0x3FE*/ u8 filler3FE[0x2];
     /*0x400*/ struct Vector16 unk400;
     /*0x404*/ s8 unk404;
-    /*0x405*/ u8 unk405;
+    /*0x405*/ s8 unk405;
     /*0x406*/ s8 unk406;
     /*0x407*/ u8 filler407[0x1];
-    /*0x408*/ s16 unk408;
-    /*0x40A*/ s16 unk40A;
-    /*0x40C*/ s16 unk40C;
+    /*0x408*/ u16 unk408;
+    /*0x40A*/ u16 unk40A;
+    /*0x40C*/ u16 unk40C;
     /*0x40E*/ u16 unk40E;
     /*0x410*/ s16 unk410;
     /*0x412*/ s16 unk412;
@@ -428,11 +428,9 @@ struct PinballGame
     /*0x418*/ struct Vector16 unk418;
     /*0x41C*/ s8 unk41C[4];
     /*0x420*/ s8 unk420[10];
-    /*0x42A*/ u8 unk42A[7];
+    /*0x42A*/ s8 unk42A[7];
     /*0x431*/ u8 filler431[0x3];
-    /*0x434*/ struct Vector16 unk434;
-    /*0x438*/ struct Vector16 unk438;
-    /*0x43C*/ struct Vector16 unk43C;
+    /*0x434*/ struct Vector16 unk434[3];
     /*0x440*/ s8 unk440;
     /*0x441*/ s8 unk441[2];
     /*0x443*/ s8 unk443[2];
@@ -704,7 +702,7 @@ struct Unk02031520_unk14
     /*0x24*/ s16 unk24;
     /*0x26*/ s16 unk26;
     /*0x28*/ s16 unk28;
-    /*0x2C*/ u32 *unk2C[3];
+    /*0x2C*/ u8 *unk2C[3];
     /*0x38*/ const s16 *unk38[4];
     /*0x48*/ const u16 *unk48[4];
     /*0x58*/ const u8 *unk58[4];
@@ -723,13 +721,6 @@ struct Unk02031520
     /*0x68*/ const u8 *unk68;
 };
 
-struct Unk02031590
-{
-    u8 filler[0x16];
-    u8 unk16;
-    u8 unk17;
-};
-
 struct Unk086ACE8C
 {
     u16 unk0;
@@ -742,11 +733,11 @@ extern struct PinballGame *gCurrentPinballGame;
 extern const StateFunc gIdlePinballGameStateFuncs[];
 extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
-extern struct Unk02031590 gUnknown_02031590;
+extern u8 gUnknown_02031590[];
 extern u16 gUnknown_08137B3C[][6][16];
 extern u16 gUnknown_08137D40[]; 
 extern const u8 gUnknown_08137E14[][0x20];
-extern const u8 gUnknown_08138834[0x2000];
+extern const u8 gUnknown_08138834[];
 extern struct Unk02031520_unk10 gUnknown_081450F4;
 extern struct Unk02031520_unk10 gUnknown_08148934;
 extern struct Unk02031520_unk10 gUnknown_0814C174;
