@@ -5,7 +5,20 @@
 
 extern const u8 *gUnknown_086B0E6C[][2];
 extern const u8 *gUnknown_086B0F9C[][3][2];
+extern const u8 *gUnknown_086B12AC[][3];
 
+
+void sub_506B0(void)
+{
+    s16 i;
+
+    for (i = 0; i < 3; i++)
+    {
+        const u8 **src = &gUnknown_086B12AC[i][gCurrentPinballGame->ballPowerUpLight[i]];
+        const u8 **dest = &gUnknown_086B12AC[i][2];
+        DmaCopy16(3, *src, *dest, 0x40);
+    }
+}
 
 void sub_50710(void)
 {
