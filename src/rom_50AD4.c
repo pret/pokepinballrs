@@ -1,25 +1,56 @@
 #include "global.h"
+#include "m4a.h"
 #include "main.h"
+#include "constants/bg_music.h"
 
-struct Unk_086B0E6C
+extern const u8 *gUnknown_086B0E6C[][2];
+extern const u8 *gUnknown_086B0F9C[][3][2];
+
+
+void sub_50710(void)
 {
-    const u8 *unk0[5][2];
-    u8 *unk28[2];
-};
-extern const struct Unk_086B0E6C gUnknown_086B0E6C;
+    s16 i;
+    s16 srcIndex;
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->unk346 != 3)
+    {
+        for (i = 0; i < 10; i++)
+        {
+            if (gCurrentPinballGame->unk34B[i] > 0)
+            {
+                if (gCurrentPinballGame->unk34B[i] == 10)
+                    m4aSongNumStart(SE_UNKNOWN_0xDC);
+
+                gCurrentPinballGame->unk34B[i]--;
+                srcIndex = 1;
+            }
+            else
+            {
+                srcIndex = 0;
+            }
+
+            src = gUnknown_086B0F9C[i][srcIndex];
+            dest = gUnknown_086B0F9C[i][2];
+            DmaCopy16(3, src[0], dest[0], 0x40);
+            DmaCopy16(3, src[1], dest[1], 0x40);
+        }
+    }
+}
 
 void sub_507D4(void)
 {
     s16 index;
-    const u8 *const *src;
-    u8 *const *dest;
+    const u8 **src;
+    const u8 **dest;
 
     index = 0;
     if (gCurrentPinballGame->unk308 >= 100)
         index = (gCurrentPinballGame->unk70C % 20) / 4;
 
-    src = gUnknown_086B0E6C.unk0[index];
-    dest = gUnknown_086B0E6C.unk28;
+    src = gUnknown_086B0E6C[index];
+    dest = gUnknown_086B0E6C[5];
     if (gCurrentPinballGame->unk6A < 176)
     {
         DmaCopy16(3, src[0], dest[0], 0x40);
