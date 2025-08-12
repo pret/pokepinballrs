@@ -1,7 +1,7 @@
 #include "global.h"
 #include "main.h"
 
-void sub_50B80(void)
+void SapphireBoardProcess_0B_50B80(void)
 {
     s16 i;
 
@@ -66,7 +66,7 @@ void sub_50B80(void)
     LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets, gUnknown_086B155C[gMain.selectedField].numSpriteSets, gMain.spriteGroups);
 }
 
-void sub_50D48(void)
+void DusclopsBoardProcess_0A_50D48(void)
 {
     s16 i;
 
@@ -85,14 +85,14 @@ void sub_50D48(void)
                    gMain.spriteGroups);
 }
 
-void sub_50DB8(void)
+void DusclopsBoardProcess_0B_50DB8(void)
 {
     LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
                    gUnknown_086B155C[gMain.selectedField].numSpriteSets,
                    gMain.spriteGroups);
 }
 
-void sub_50DE0(void)
+void KecleonBoardProcess_0A_50DE0(void)
 {
     s16 i;
 
@@ -140,7 +140,7 @@ void sub_50DE0(void)
 void nullsub_20(void)
 {}
 
-void sub_50F04()
+void KyogreBoardProcess_0A_50F04()
 {
     s16 i;
 
@@ -167,14 +167,14 @@ void sub_50F04()
                    gMain.spriteGroups);
 }
 
-void sub_50FAC(void)
+void KyogreBoardProcess_0B_50FAC(void)
 {
     LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
                    gUnknown_086B155C[gMain.selectedField].numSpriteSets,
                    gMain.spriteGroups);
 }
 
-void sub_50FD4(void)
+void GroudonBoardProcess_0A_50FD4(void)
 {
     s16 i;
 
@@ -199,14 +199,14 @@ void sub_50FD4(void)
                    gMain.spriteGroups);
 }
 
-void sub_51068(void)
+void GroudonBoardProcess_0B_51068(void)
 {
     LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
                    gUnknown_086B155C[gMain.selectedField].numSpriteSets,
                    gMain.spriteGroups);
 }
 
-void sub_51090(void)
+void RayquazaBoardProcess_0A_51090(void)
 {
     s16 i;
 
@@ -230,14 +230,14 @@ void sub_51090(void)
                    gMain.spriteGroups);
 }
 
-void sub_51128(void)
+void RayquazaBoardProcess_0B_51128(void)
 {
     LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
                    gUnknown_086B155C[gMain.selectedField].numSpriteSets,
                    gMain.spriteGroups);
 }
 
-void sub_51150(void)
+void SphealBoardProcess_0A_51150(void)
 {
     s16 i;
 
@@ -263,7 +263,7 @@ void sub_51150(void)
                    gMain.spriteGroups);
 }
 
-void sub_511F8(void)
+void SphealBoardProcess_0B_511F8(void)
 {
     LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
                    gUnknown_086B155C[gMain.selectedField].numSpriteSets,

@@ -83,8 +83,8 @@ struct BallState
     /*0x04*/ u16 unk4;
     /*0x06*/ s16 unk6;
     /*0x08*/ u16 unk8;
-    /*0x0A*/ u16 unkA; //Ball Displayed Rotation
-    /*0x0C*/ u16 unkC; //Ball Displayed Previous Rotation
+    /*0x0A*/ u16 unkA;
+    /*0x0C*/ u16 unkC;
     /*0x0E*/ u16 unkE;
     /*0x10*/ struct Vector16 positionQ0;
     /*0x14*/ u8 filler14[0xB];
@@ -774,7 +774,7 @@ extern struct SongHeader gUnknown_086A17D8;
 extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
 extern const s16 gUnknown_086ACDF4[9];
 typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);
-extern Unk86ACE0C gUnknown_086ACE0C[8];
+extern Unk86ACE0C BoardCollisionFuncts_086ACE0C[8];
 extern struct Vector16 gUnknown_086ACE60[4];
 extern struct Unk086ACE8C gUnknown_086ACE8C[13];
 extern u16 gUnknown_086ACEF4[2];

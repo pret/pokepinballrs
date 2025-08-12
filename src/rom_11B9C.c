@@ -4,8 +4,8 @@
 #include "constants/fields.h"
 #include "m4a.h"
 
-void sub_12524(void);
-void sub_12BF8(void);
+void MainBoardProcess_7B_12524(void);
+void BonusBoardProcess_7B_12BF8(void);
 void sub_2AADC(void);
 
 extern const u8 gUnknown_08137E14[][0x20];
@@ -14,14 +14,14 @@ extern const u8 gUnknown_083BD36C[][0x200];
 extern const u32 gUnknown_083BDF6C[][0x80];
 extern const u32 gUnknown_083BF16C[][0x80];
 
-void sub_11B9C(void)
+void AllBoardProcess_5A_11B9C(void)
 {
     s16 i;
     if (gMain.unk6 == 0)
     {
         gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
         sub_11C14(0);
-        sub_12524();
+        MainBoardProcess_7B_12524();
     }
     else
     {
@@ -30,7 +30,7 @@ void sub_11B9C(void)
             gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[i];
             sub_11C14(i);
         }
-        sub_12BF8();
+        BonusBoardProcess_7B_12BF8();
     }
 }
 
@@ -79,7 +79,7 @@ extern const u16 gGravityDeltas_Light[4];
     unk132c->positionQ8.y += velocity.y;                   \
 }
 
-void sub_11C98(void)
+void MainBoardProcess_5B_11C98(void)
 {
     struct Vector16 velocity;
     struct BallState *unk132c;
@@ -164,7 +164,7 @@ void sub_11C98(void)
     unk132c->unkA += unk132c->unk6;
 }
 
-void sub_11F88(void)
+void BonusBoardProcess_5B_11F88(void)
 {
     struct Vector16 velocity;
     struct BallState *unk132c;
@@ -285,7 +285,7 @@ void sub_11F88(void)
     unk132c->unkA += unk132c->unk6;
 }
 
-void sub_12524(void)
+void MainBoardProcess_7B_12524(void)
 {
     s16 i;
     struct OamDataSimple *oam;
@@ -506,7 +506,7 @@ void sub_12524(void)
     }
 }
 
-void sub_12BF8()
+void BonusBoardProcess_7B_12BF8()
 {
     s16 i;
     s16 r5;

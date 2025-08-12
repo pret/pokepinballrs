@@ -281,7 +281,7 @@
 #define SE_UNKNOWN_0x147            0x147 // SE174 Peliper drops ball (Same as SE39)
 #define SE_UNKNOWN_0x148            0x148 // SE175 *Latch*
 #define SE_UNKNOWN_0x149            0x149 // SE176 *Double Step*
-#define SE_UNKNOWN_0x14A  0x14A // SE178 High Score Earned
+#define SE_UNKNOWN_0x14A            0x14A // SE178 High Score Earned
 #define SE_UNKNOWN_0x14B            0x14B // SE179 Duplicate of 36
 #define SE_UNKNOWN_0x14C            0x14C // SE177 *rumble*
 

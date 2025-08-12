@@ -131,7 +131,7 @@ void sub_357B8(void)
         gCurrentPinballGame->unk6EE = 120;
 }
 
-void sub_35860(void)
+void KecleonBoardProcess_3A_35860(void)
 {
     s16 i;
 
@@ -195,7 +195,7 @@ void sub_35860(void)
     DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
 }
 
-void sub_35AA4(void)
+void KecleonBoardProcess_3B_35AA4(void)
 {
     sub_38218();
     switch (gCurrentPinballGame->unk13)

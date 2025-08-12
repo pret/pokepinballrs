@@ -21,7 +21,7 @@ void sub_23E18(void);
 void sub_2C9A4(void);
 void sub_4E9F0(s8);
 
-void sub_19A20(void)
+void RubyBoardProcess_3A_19A20(void)
 {
     gCurrentPinballGame->catchModeArrows = 2;
     sub_1D5D8();
@@ -59,7 +59,7 @@ void sub_19A20(void)
     sub_31B30();
 }
 
-void sub_19B10(void)
+void RubyBoardProcess_3B_19B10(void)
 {
     sub_19B90();
     sub_19E10();

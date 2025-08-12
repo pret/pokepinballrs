@@ -1292,7 +1292,7 @@ void sub_3AE14(void)
     }
 }
 
-void sub_3B120(void)
+void GroudonBoardProcess_3A_3B120(void)
 {
     s16 i;
 
@@ -1394,7 +1394,7 @@ void sub_3B120(void)
     DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
 }
 
-void sub_3B49C(void)
+void GroudonBoardProcess_3B_3B49C(void)
 {
     switch (gCurrentPinballGame->unk13)
     {
@@ -2949,7 +2949,7 @@ void sub_3E644(void)
     }
 }
 
-void sub_3E79C(void)
+void RayquazaBoardProcess_3A_3E79C(void)
 {
     s16 i;
     s16 frame;
@@ -3059,7 +3059,7 @@ void sub_3E79C(void)
     DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
 }
 
-void sub_3EB2C(void)
+void RayquazaBoardProcess_3B_3EB2C(void)
 {
     switch (gCurrentPinballGame->unk13)
     {
@@ -5022,7 +5022,7 @@ void sub_423D8(void)
     gMain.bgOffsets[3].yOffset += gCurrentPinballGame->unk518 / 4 + 224;
 }
 
-void sub_42E48(void)
+void SphealBoardProcess_3A_42E48(void)
 {
     s16 i;
     s16 frame;
@@ -5128,7 +5128,7 @@ void sub_42E48(void)
     DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
 }
 
-void sub_43228(void)
+void SphealBoardProcess_3B_43228(void)
 {
     switch (gCurrentPinballGame->unk13)
     {
@@ -6823,7 +6823,7 @@ void sub_47030(void)
     gCurrentPinballGame->unk64 = r4;
 }
 
-void sub_47100(void)
+void AllBoardProcess_1A_47100(void)
 {
     gCurrentPinballGame->unkFC = 128;
 }
@@ -6838,7 +6838,7 @@ void sub_47110(void)
     DmaCopy16(3, gUnknown_03005C00, (void *)0x06002000, 0x1000);
 }
 
-void sub_47160(void)
+void AllBoardProcess_1B_47160(void)
 {
     if (JOY_NEW(START_BUTTON) && gMain.mainState != STATE_GAME_IDLE && gCurrentPinballGame->unk1100 == 0)
     {

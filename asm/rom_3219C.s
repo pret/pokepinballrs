@@ -2856,8 +2856,8 @@ _080383D8: .4byte gUnknown_02031590
 _080383DC: .4byte gUnknown_0202D880
 _080383E0: .4byte gMain+0x2F8 @gMain.spriteGroups
 
-	thumb_func_start sub_383E4
-sub_383E4: @ 0x080383E4
+	thumb_func_start KyogreBoardProcess_3A_383E4
+KyogreBoardProcess_3A_383E4: @ 0x080383E4
 	push {r4, r5, r6, r7, lr}
 	ldr r4, _08038438 @ =gCurrentPinballGame
 	ldr r0, [r4]
@@ -3175,8 +3175,8 @@ _08038690: .4byte 0x80000080
 _08038694: .4byte gUnknown_081B36A4
 _08038698: .4byte 0x05000320
 
-	thumb_func_start sub_3869C
-sub_3869C: @ 0x0803869C
+	thumb_func_start KyogreBoardProcess_3B_3869C
+KyogreBoardProcess_3B_3869C: @ 0x0803869C
 	push {r4, r5, r6, lr}
 	ldr r0, _080386B8 @ =gCurrentPinballGame
 	ldr r0, [r0]

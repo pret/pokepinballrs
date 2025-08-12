@@ -1,7 +1,7 @@
 #include "global.h"
 #include "main.h"
 
-void sub_50AD4(void)
+void SapphireBoardProcess_0A_50AD4(void)
 {
     s16 i;
 

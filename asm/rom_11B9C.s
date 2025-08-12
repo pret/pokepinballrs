@@ -846,8 +846,8 @@ _08014DFC: .4byte 0x00004E20
 _08014E00: .4byte 0xFFFF0000
 _08014E04: .4byte 0x0000FFFF
 
-	thumb_func_start sub_14E08
-sub_14E08: @ 0x08014E08
+	thumb_func_start COLLISION_CHECK_RUBY_14E08
+COLLISION_CHECK_RUBY_14E08: @ 0x08014E08
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -3178,8 +3178,8 @@ _08016082:
 _08016088: .4byte 0x000002DA
 _0801608C: .4byte 0x00001388
 
-	thumb_func_start sub_16090
-sub_16090: @ 0x08016090
+	thumb_func_start COLLISION_CHECK_SAPPHIRE_16090
+COLLISION_CHECK_SAPPHIRE_16090: @ 0x08016090
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5348,8 +5348,8 @@ _080171B8:
 	.align 2, 0
 _080171C4: .4byte 0x00000306
 
-	thumb_func_start sub_171C8
-sub_171C8: @ 0x080171C8
+	thumb_func_start COLLISION_CHECK_DUSCLOPS_171C8
+COLLISION_CHECK_DUSCLOPS_171C8: @ 0x080171C8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
