@@ -13,7 +13,40 @@ extern const u8 *gUnknown_086B1340[][5][3];
 extern const u8 *gUnknown_086B122C[][4];
 extern const u8 *gUnknown_086B11FC[][4];
 extern const u8 *gUnknown_086B13F4[][5][3];
+extern const u8 *gUnknown_086B11CC[][4];
 
+
+void sub_4FD88(void)
+{
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->unk724 > 300)
+    {
+        gCurrentPinballGame->unk726 = 1;
+    }
+    else if (gCurrentPinballGame->unk724)
+    {
+        if (gCurrentPinballGame->unk25)
+            gCurrentPinballGame->unk726 = 1;
+        else
+            gCurrentPinballGame->unk726 = (gMain.fieldFrameCount & 0xF) / 8;
+    }
+    else
+    {
+        gCurrentPinballGame->unk726 = 0;
+    }
+
+    src = gUnknown_086B11CC[gCurrentPinballGame->unk726];
+    dest = gUnknown_086B11CC[2];
+    DmaCopy16(3, src[0], dest[0], 0xE0);
+    DmaCopy16(3, src[1], dest[1], 0xE0);
+    if (gCurrentPinballGame->unk6A > 215)
+    {
+        DmaCopy16(3, src[2], dest[2], 0xC0);
+        DmaCopy16(3, src[3], dest[3], 0x40);
+    }
+}
 
 void sub_4FE6C(void)
 {
