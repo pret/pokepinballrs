@@ -9,7 +9,76 @@ extern const u8 *gUnknown_086B12AC[][3];
 extern const u8 *gUnknown_086B125C[][4];
 extern const u8 *gUnknown_086B12D0[][4];
 extern const u8 *gUnknown_086B14A8[][5][3];
+extern const u8 *gUnknown_086B1340[][5][3];
 
+
+void sub_50154(void)
+{
+    s16 sp0[3];
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->unk13 < 3)
+    {
+        if (gCurrentPinballGame->unk72E == 0)
+        {
+            sp0[0] = gCurrentPinballGame->unk734 * 2;
+            sp0[1] = gCurrentPinballGame->unk734;
+            sp0[2] = 0;
+        }
+        else if (gCurrentPinballGame->unk72E == 1)
+        {
+            sp0[0] = 3;
+            sp0[1] = gCurrentPinballGame->unk734 + 1;
+            sp0[2] = gCurrentPinballGame->unk734 * 2;
+        }
+        else if (gCurrentPinballGame->unk72E == 2)
+        {
+            sp0[0] = 3;
+            sp0[1] = 3;
+            sp0[2] = gCurrentPinballGame->unk734 + 2;
+        }
+        else
+        {
+            sp0[0] = 3;
+            sp0[1] = 3;
+            sp0[2] = 3;
+        }
+    }
+    else
+    {
+        sp0[0] = gCurrentPinballGame->unk739;
+        sp0[1] = gCurrentPinballGame->unk73A;
+        sp0[2] = gCurrentPinballGame->unk73B;
+    }
+
+
+    src = gUnknown_086B1340[0][sp0[0]];
+    dest = gUnknown_086B1340[0][4];
+    if (gCurrentPinballGame->unk6A < 264)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x60);
+    }
+    DmaCopy16(3, src[1], dest[1], 0x60);
+    DmaCopy16(3, src[2], dest[2], 0x60);
+
+    if (gCurrentPinballGame->unk6A > 120)
+    {
+        src = gUnknown_086B1340[1][sp0[1]];
+        dest = gUnknown_086B1340[1][4];
+        DmaCopy16(3, src[0], dest[0], 0x60);
+        DmaCopy16(3, src[1], dest[1], 0x60);
+        DmaCopy16(3, src[2], dest[2], 0x60);
+    }
+
+    if (gCurrentPinballGame->unk6A > 136) {
+        src = gUnknown_086B1340[2][sp0[2]];
+        dest = gUnknown_086B1340[2][4];
+        DmaCopy16(3, src[0], dest[0], 0x60);
+        DmaCopy16(3, src[1], dest[1], 0x60);
+        DmaCopy16(3, src[2], dest[2], 0x40);
+    }
+}
 
 void sub_5030C(void)
 {
