@@ -610,12 +610,9 @@ struct PinballGame
     /*0x70C*/ u16 unk70C;
     /*0x70E*/ s8 unk70E;
     /*0x70F*/ s8 unk70F;
-    /*0x710*/ s8 hLight; // 'H' light indicator in Ruby/Sapphire field
-    /*0x711*/ s8 oLight; // 'O' light indicator in Ruby/Sapphire field
-    /*0x712*/ s8 lLight; // 'L' light indicator in Ruby/Sapphire field
-    /*0x713*/ s8 eLight; // 'E' light indicator in Ruby/Sapphire field
+    /*0x710*/ s8 holeIndicators[4]; // 'HOLE' light indicators in Ruby/Sapphire field
     /*0x714*/ s8 unk714;
-    /*0x715*/ u8 filler715[0x1];
+    /*0x715*/ u8 unk715;
     /*0x716*/ s8 unk716;
     /*0x717*/ u8 unk717;
     /*0x718*/ s8 ballPowerUpLight[3];

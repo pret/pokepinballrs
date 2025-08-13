@@ -167,11 +167,11 @@ void sub_19FA0(void) {
             gCurrentPinballGame->outLanePikaPosition = 0;
         }
 
-        tmp = gCurrentPinballGame->hLight;
-        gCurrentPinballGame->hLight = gCurrentPinballGame->oLight;
-        gCurrentPinballGame->oLight = gCurrentPinballGame->lLight;
-        gCurrentPinballGame->lLight = gCurrentPinballGame->eLight;
-        gCurrentPinballGame->eLight = tmp;
+        tmp = gCurrentPinballGame->holeIndicators[0];
+        gCurrentPinballGame->holeIndicators[0] = gCurrentPinballGame->holeIndicators[1];
+        gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[2];
+        gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[3];
+        gCurrentPinballGame->holeIndicators[3] = tmp;
 
         tmp = gCurrentPinballGame->ballPowerUpLight[0];
         gCurrentPinballGame->ballPowerUpLight[0] = gCurrentPinballGame->ballPowerUpLight[1];
@@ -187,11 +187,11 @@ void sub_19FA0(void) {
             gCurrentPinballGame->outLanePikaPosition = 1;
         }
 
-        tmp = gCurrentPinballGame->eLight;
-        gCurrentPinballGame->eLight = gCurrentPinballGame->lLight;
-        gCurrentPinballGame->lLight = gCurrentPinballGame->oLight;
-        gCurrentPinballGame->oLight = gCurrentPinballGame->hLight;
-        gCurrentPinballGame->hLight = tmp;
+        tmp = gCurrentPinballGame->holeIndicators[3];
+        gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[2];
+        gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[1];
+        gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
+        gCurrentPinballGame->holeIndicators[0] = tmp;
 
         tmp = gCurrentPinballGame->ballPowerUpLight[2];
         gCurrentPinballGame->ballPowerUpLight[2] = gCurrentPinballGame->ballPowerUpLight[1];

@@ -14,7 +14,41 @@ extern const u8 *gUnknown_086B122C[][4];
 extern const u8 *gUnknown_086B11FC[][4];
 extern const u8 *gUnknown_086B13F4[][5][3];
 extern const u8 *gUnknown_086B11CC[][4];
+extern const u8 *gUnknown_086B1300[][4];
 
+
+void sub_4FC7C(void)
+{
+    s16 i;
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->unk714)
+    {
+        if (gCurrentPinballGame->unk715)
+        {
+            gCurrentPinballGame->holeIndicators[0] = (gCurrentPinballGame->unk715 % 36) / 18;
+            gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->unk715--;
+        }
+        else
+        {
+            gCurrentPinballGame->holeIndicators[0] = 1;
+            gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
+        }
+    }
+    
+    for (i = 0; i < 4; i++)
+    {
+        src = &gUnknown_086B1300[i][gCurrentPinballGame->holeIndicators[i]];
+        dest = &gUnknown_086B1300[i][2];
+        DmaCopy16(3, *src, *dest, 0x40);
+    }
+}
 
 void sub_4FD88(void)
 {

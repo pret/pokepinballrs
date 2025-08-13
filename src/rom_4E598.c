@@ -17,10 +17,10 @@ void sub_4E598(void)
         gCurrentPinballGame->unk17 = 8;
 
     gCurrentPinballGame->unk714 = 0;
-    gCurrentPinballGame->hLight = 0;
-    gCurrentPinballGame->oLight = gCurrentPinballGame->hLight;
-    gCurrentPinballGame->lLight = gCurrentPinballGame->hLight;
-    gCurrentPinballGame->eLight = gCurrentPinballGame->hLight;
+    gCurrentPinballGame->holeIndicators[0] = 0;
+    gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
+    gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
+    gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->unk614 = 0;
     gCurrentPinballGame->unk208 = 0;
     gCurrentPinballGame->unk20A = 0;
