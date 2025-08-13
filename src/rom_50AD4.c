@@ -7,7 +7,46 @@ extern const u8 *gUnknown_086B0E6C[][2];
 extern const u8 *gUnknown_086B0F9C[][3][2];
 extern const u8 *gUnknown_086B12AC[][3];
 extern const u8 *gUnknown_086B125C[][4];
+extern const u8 *gUnknown_086B12D0[][4];
 
+
+void sub_504C0(void)
+{
+    s16 index;
+    const u8 **src;
+    const u8 **dest;
+
+    index = 0;
+    gCurrentPinballGame->unk731 = 0;
+    if (gCurrentPinballGame->unk72F > 1 && gCurrentPinballGame->unk13 < 3)
+        gCurrentPinballGame->unk731 = 1;
+
+    if (gCurrentPinballGame->unk731 > 0)
+        index = 1 - gCurrentPinballGame->unk734;
+
+
+    src = gUnknown_086B12D0[index];
+    dest = gUnknown_086B12D0[2];
+    if (gCurrentPinballGame->unk6A < 232)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x60);
+    }
+
+    if (gCurrentPinballGame->unk6A < 240)
+    {
+        DmaCopy16(3, src[1], dest[1], 0x80);
+    }
+
+    if (gCurrentPinballGame->unk6A >= 80)
+    {
+        if (gCurrentPinballGame->unk6A < 248)
+        {
+            DmaCopy16(3, src[2], dest[2], 0x80);
+        }
+
+        DmaCopy16(3, src[3], dest[3], 0x60);
+    }
+}
 
 void sub_505A4(void)
 {
