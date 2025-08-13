@@ -8,7 +8,77 @@ extern const u8 *gUnknown_086B0F9C[][3][2];
 extern const u8 *gUnknown_086B12AC[][3];
 extern const u8 *gUnknown_086B125C[][4];
 extern const u8 *gUnknown_086B12D0[][4];
+extern const u8 *gUnknown_086B14A8[][5][3];
 
+
+void sub_5030C(void)
+{
+    s16 sp0[3];
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->unk13 < 3)
+    {
+        if (gCurrentPinballGame->unk72F == 0)
+        {
+            sp0[0] = gCurrentPinballGame->unk734 * 2;
+            sp0[1] = 0;
+            sp0[2] = 0;
+        }
+        else if (gCurrentPinballGame->unk72F == 1)
+        {
+            sp0[0] = 3;
+            sp0[1] = gCurrentPinballGame->unk734 + 1;
+            sp0[2] = gCurrentPinballGame->unk734 * 2;
+        }
+        else if (gCurrentPinballGame->unk72F == 2)
+        {
+            sp0[0] = 3;
+            sp0[1] = 3;
+            sp0[2] = (s16) gCurrentPinballGame->unk734 + 2;
+        }
+        else
+        {
+            sp0[0] = 3;
+            sp0[1] = 3;
+            sp0[2] = 3;
+        }
+    }
+    else
+    {
+        sp0[0] = gCurrentPinballGame->unk736;
+        sp0[1] = gCurrentPinballGame->unk737;
+        sp0[2] = gCurrentPinballGame->unk738;
+    }
+
+    src = gUnknown_086B14A8[0][sp0[0]];
+    dest = gUnknown_086B14A8[0][4];
+    if (gCurrentPinballGame->unk6A < 264)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x60);
+    }
+
+    DmaCopy16(3, src[1], dest[1], 0x60);
+    DmaCopy16(3, src[2], dest[2], 0x60);
+
+    if (gCurrentPinballGame->unk6A > 120)
+    {
+        src = gUnknown_086B14A8[1][sp0[1]];
+        dest = gUnknown_086B14A8[1][4];
+        DmaCopy16(3, src[0], dest[0], 0x40);
+        DmaCopy16(3, src[1], dest[1], 0x40);
+        DmaCopy16(3, src[2], dest[2], 0x60);
+    }
+
+    if (gCurrentPinballGame->unk6A > 136)
+    {
+        src = gUnknown_086B14A8[2][sp0[2]];
+        dest = gUnknown_086B14A8[2][4];
+        DmaCopy16(3, src[0], dest[0], 0x40);
+        DmaCopy16(3, src[1], dest[1], 0x60);
+        DmaCopy16(3, src[2], dest[2], 0x40);
+    }
+}
 
 void sub_504C0(void)
 {
@@ -61,7 +131,7 @@ void sub_505A4(void)
         gCurrentPinballGame->unk72A = 0;
 
     if (gCurrentPinballGame->unk72A > 0)
-        index = gCurrentPinballGame->unk1A5 * 2 - (gCurrentPinballGame->unk734 - 1);
+        index = gCurrentPinballGame->unk1A5 * 2 + 1 - gCurrentPinballGame->unk734;
     else
         index = gCurrentPinballGame->unk1A5 * 2;
 

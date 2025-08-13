@@ -633,8 +633,11 @@ struct PinballGame
     /*0x730*/ u8 unk730;
     /*0x731*/ s8 unk731;
     /*0x732*/ u8 filler732[0x2];
-    /*0x734*/ u16 unk734;
-    /*0x736*/ u8 filler736[0x6];
+    /*0x734*/ s16 unk734;
+    /*0x736*/ s8 unk736;
+    /*0x737*/ s8 unk737;
+    /*0x738*/ s8 unk738;
+    /*0x739*/ u8 filler739[0x3];
     /*0x73C*/ u8 unk73C; // TODO: unknown type
     /*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
     /*0x73E*/ u8 filler73E[0x2];
