@@ -1,6 +1,7 @@
 #include "global.h"
 #include "m4a.h"
 #include "main.h"
+#include "constants/bg_music.h"
 
 extern const u8 *gUnknown_086B0B70[][3];
 extern const u16 gUnknown_086B0E20[];
@@ -14,9 +15,38 @@ extern const u8 *gUnknown_086B09E8[][7][2];
 extern const u8 *gUnknown_086B09C8[][2];
 extern const u8 *gUnknown_086B0970[][2];
 extern const u8 *gUnknown_086B094C[][3];
+extern const s16 gUnknown_086B08CA[];
+extern const u8 *gUnknown_086B08D4[][3][5];
 
 extern struct SongHeader gUnknown_0869F664;
 
+
+void sub_4E920(void)
+{
+    s16 index;
+    const u8 **src;
+    const u8 **dest;
+
+    index = gUnknown_086B08CA[gCurrentPinballGame->unk716];
+    if (gCurrentPinballGame->unk716)
+    {
+        gCurrentPinballGame->unk716--;
+        if (gCurrentPinballGame->unk716 == 3)
+        {
+            m4aSongNumStart(SE_UNKNOWN_0x73);
+            gCurrentPinballGame->unk3C = 500;
+            sub_11B0(7);
+        }
+    }
+
+    src = gUnknown_086B08D4[gCurrentPinballGame->unk717][index];
+    dest = gUnknown_086B08D4[gCurrentPinballGame->unk717][2];
+    DmaCopy16(3, src[0], dest[0], 0x20);
+    DmaCopy16(3, src[1], dest[1], 0x40);
+    DmaCopy16(3, src[2], dest[2], 0x60);
+    DmaCopy16(3, src[3], dest[3], 0x60);
+    DmaCopy16(3, src[4], dest[4], 0x40);
+}
 
 void sub_4E9F0(s16 arg0)
 {
