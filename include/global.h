@@ -131,7 +131,8 @@ struct PinballGame
     /*0x01D*/ u8 unk1D;
     /*0x01E*/ u8 unk1E;
     /*0x01F*/ u8 unk1F;
-    /*0x020*/ u8 filler20[0x2];
+    /*0x020*/ u8 unk20;
+    /*0x021*/ u8 unk21;
     /*0x022*/ s8 unk22;
     /*0x023*/ u8 unk23; // Holds the value of some enum state
     /*0x024*/ s8 unk24;
@@ -214,7 +215,9 @@ struct PinballGame
     /*0x12D*/ u8 filler12D;
     /*0x12E*/ s16 totalWeight;       // Added weight of all possible mons in area
     /*0x130*/ s16 speciesWeights[25]; // Weight of each species
-    /*0x162*/ u8 filler162[0x4];
+    /*0x162*/ u8 filler162[0x1];
+    /*0x163*/ u8 unk163;
+    /*0x164*/ u8 filler164[0x2];
     /*0x166*/ u16 unk166;
     /*0x168*/ u8 filler168[0x4];
     /*0x16C*/ u8 unk16C;
@@ -243,7 +246,8 @@ struct PinballGame
     /*0x1B6*/ u8 filler1B6[0x4];
     /*0x1BA*/ u16 unk1BA;
     /*0x1BC*/ u16 unk1BC;
-    /*0x1BE*/ u8 filler1BE[0x2];
+    /*0x1BE*/ u8 unk1BE;
+    /*0x1BF*/ u8 filler1BF[0x1];
     /*0x1C0*/ u16 unk1C0;
     /*0x1C2*/ s8 unk1C2;
     /*0x1C3*/ u8 filler1C3[0x1];

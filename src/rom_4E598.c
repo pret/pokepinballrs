@@ -1,5 +1,72 @@
 #include "global.h"
+#include "m4a.h"
 #include "main.h"
+#include "constants/bg_music.h"
+
+void sub_4E2F8(void)
+{
+    struct BallState *unk1334;
+
+    if (gCurrentPinballGame->unk13 && gCurrentPinballGame->newButtonActions[1] && gCurrentPinballGame->unk20)
+    {
+        gCurrentPinballGame->unk21 = 1;
+        gCurrentPinballGame->unk163 = 1;
+    }
+
+    if (gCurrentPinballGame->unk21 && gCurrentPinballGame->releasedButtonActions[1])
+    {
+        gCurrentPinballGame->unk163 = 3;
+        if (gCurrentPinballGame->unk20)
+        {
+            sub_11B0(7);
+            gCurrentPinballGame->ball->velocity.y = -590;
+            gCurrentPinballGame->ball->velocity.x = 0;
+            m4aSongNumStart(SE_UNKNOWN_0xCD);
+        }
+
+        gCurrentPinballGame->unk21 = 0;
+    }
+
+    gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
+    unk1334 = &gCurrentPinballGame->unk1334[0];
+
+    if (unk1334->positionQ0.y >= gUnknown_02031520.unk14.unk2A)
+    {
+        unk1334->positionQ0.y = gUnknown_02031520.unk14.unk2A;
+        gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
+        gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
+        gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
+        gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
+        gCurrentPinballGame->ball->velocity.x = 0;
+        gCurrentPinballGame->ball->velocity.y = 0;
+        if (gMain.unk14 == 0)
+        {
+            if (gCurrentPinballGame->unk724)
+            {
+                gMain.unk14 = 4;
+                gMain.unk11 = 8;
+                gMain.unk12 = 204;
+            }
+            else
+            {
+                gMain.unk14 = 80;
+                gMain.unk11 = 16;
+                gMain.unk12 = 200;
+                m4aMPlayAllStop();
+                m4aSongNumStart(MUS_END_OF_BALL);
+                sub_4E598();
+                if (gCurrentPinballGame->outLanePikaPosition == 2 && gMain.eReaderBonuses[EREADER_DX_MODE_CARD] == 0)
+                {
+                    gCurrentPinballGame->unk1BE = 2;
+                    gCurrentPinballGame->unk1C0 = 800;
+                    gCurrentPinballGame->outLanePikaPosition = 0;
+                }
+            }
+        }
+    }
+
+    gCurrentPinballGame->unk20 = 0;
+}
 
 void sub_4E468(void)
 {
