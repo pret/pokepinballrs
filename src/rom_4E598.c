@@ -3,6 +3,134 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
+
+void sub_4DFA0(void)
+{
+    int i;
+    s16 sp0[4];
+
+    if (gCurrentPinballGame->unk25 == 0 && gCurrentPinballGame->unk5A4 != 2 && gCurrentPinballGame->unk61C == 0)
+    {
+        if (gCurrentPinballGame->newButtonActions[2])
+        {
+            if (gCurrentPinballGame->unk12A == 0)
+            {
+                gCurrentPinballGame->unk129 = 0;
+                if (gCurrentPinballGame->unk128 == 0)
+                {
+                    gCurrentPinballGame->unk128 = 4;
+                    m4aSongNumStart(SE_UNKNOWN_0x78);
+                    sub_11B0(8);
+                }
+            }
+        }
+
+        if (gCurrentPinballGame->newButtonActions[3] && gCurrentPinballGame->unk12A == 0) 
+        {
+            gCurrentPinballGame->unk129 = 1;
+            if (gCurrentPinballGame->unk128 == 0)
+            {
+                gCurrentPinballGame->unk128 = 4;
+                m4aSongNumStart(SE_UNKNOWN_0x78);
+                sub_11B0(8);
+            }
+        }
+
+        if (gCurrentPinballGame->newButtonActions[4] && gCurrentPinballGame->unk12A == 0)
+        {
+            gCurrentPinballGame->unk129 = 2;
+            if (gCurrentPinballGame->unk128 == 0)
+            {
+                gCurrentPinballGame->unk128 = 4;
+                m4aSongNumStart(SE_UNKNOWN_0x78);
+                sub_11B0(8);
+            }
+        }
+    }
+
+    if (gCurrentPinballGame->unk128)
+    {
+        gCurrentPinballGame->unk128--;
+        if (gCurrentPinballGame->unk128 == 0)
+        {
+            switch (gCurrentPinballGame->unk129)
+            {
+            case 0:
+                gCurrentPinballGame->unk118[0] = 6;
+                gCurrentPinballGame->unk11C[0] = -1;
+                gCurrentPinballGame->unk118[2] = 6;
+                gCurrentPinballGame->unk11C[2] = 1;
+                break;
+            case 1:
+                gCurrentPinballGame->unk118[1] = 6;
+                gCurrentPinballGame->unk11C[1] = 1;
+                gCurrentPinballGame->unk118[3] = 6;
+                gCurrentPinballGame->unk11C[3] = 1;
+                break;
+            case 2:
+                gCurrentPinballGame->unk118[2] = 6;
+                gCurrentPinballGame->unk11C[2] = 1;
+                gCurrentPinballGame->unk118[3] = 0;
+                gCurrentPinballGame->unk11C[3] = 1;
+                break;
+            }
+
+            gCurrentPinballGame->unk12A = 24;
+        }
+    }
+
+    if (gCurrentPinballGame->unk12A)
+        gCurrentPinballGame->unk12A--;
+
+    for (i = 0; i < 4; i++)
+    {
+        if (gCurrentPinballGame->unk118[i] > 0)
+            gCurrentPinballGame->unk118[i]--;
+
+        if (gCurrentPinballGame->unk118[i] < 3)
+            sp0[i] = gCurrentPinballGame->unk11C[i] * gCurrentPinballGame->unk118[i];
+        else
+            sp0[i] = gCurrentPinballGame->unk11C[i] * (6 - gCurrentPinballGame->unk118[i]);
+    }
+
+    gCurrentPinballGame->unk120 = sp0[0] + sp0[1];
+    gCurrentPinballGame->unk121 = sp0[2] + sp0[3];
+
+    if (gCurrentPinballGame->unk120 == 0 && gCurrentPinballGame->unk121 == 0)
+    {
+        gCurrentPinballGame->unk126 = 0;
+        gCurrentPinballGame->unk127 = 0;
+    }
+
+    if (gCurrentPinballGame->unk120 > 0)
+    {
+        if (gCurrentPinballGame->unk120 < gCurrentPinballGame->unk122)
+            gCurrentPinballGame->unk122--;
+    }
+    else if (gCurrentPinballGame->unk120 < 0)
+    {
+        if (gCurrentPinballGame->unk120 > gCurrentPinballGame->unk122)
+            gCurrentPinballGame->unk122++;
+    }
+
+    if (gCurrentPinballGame->unk121 > 0)
+    {
+        if (gCurrentPinballGame->unk121 < gCurrentPinballGame->unk123)
+            gCurrentPinballGame->unk123--;
+    }
+    else if (gCurrentPinballGame->unk121 < 0)
+    {
+        if (gCurrentPinballGame->unk121 > gCurrentPinballGame->unk123)
+            gCurrentPinballGame->unk123++;
+    }
+
+    if (gCurrentPinballGame->unk126 == 0)
+    {
+        gCurrentPinballGame->unk122 = gCurrentPinballGame->unk120;
+        gCurrentPinballGame->unk123 = gCurrentPinballGame->unk121;
+    }
+}
+
 void sub_4E2F8(void)
 {
     struct BallState *unk1334;

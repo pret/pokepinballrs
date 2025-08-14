@@ -199,7 +199,9 @@ struct PinballGame
     /*0x10E*/ s16 unk10E;
     /*0x110*/ s32 unk110;
     /*0x114*/ s32 unk114;
-    /*0x118*/ u8 filler118[0x9];
+    /*0x118*/ s8 unk118[4];
+    /*0x11C*/ s8 unk11C[4];
+    /*0x120*/ s8 unk120;
     /*0x121*/ s8 unk121;
     /*0x122*/ s8 unk122;
     /*0x123*/ s8 unk123;
@@ -208,8 +210,8 @@ struct PinballGame
     /*0x126*/ s8 unk126;
     /*0x127*/ s8 unk127;
     /*0x128*/ u8 unk128;
-    /*0x129*/ u8 unk129;
-    /*0x12A*/ u8 filler12A;
+    /*0x129*/ s8 unk129;
+    /*0x12A*/ u8 unk12A;
     /*0x12B*/ s8 forceSpecialMons;  // When on, force next catch mode species to be special mons
     /*0x12C*/ s8 forcePichuEgg;     // When on, force next egg mode species to be Pichu
     /*0x12D*/ u8 filler12D;
