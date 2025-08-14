@@ -1,13 +1,164 @@
 #include "global.h"
+#include "m4a.h"
 #include "main.h"
 
-extern u8* gUnknown_086B0B70[][3];
+extern const u8 *gUnknown_086B0B70[][3];
+extern const u16 gUnknown_086B0E20[];
+extern const u8 *gUnknown_086B0B94[][4];
+extern const u8 *gUnknown_086B0B20[][4];
+extern const u8 *gUnknown_086B0AF0[][4];
 
-void sub_4F258(void) {
+extern struct SongHeader gUnknown_0869F664;
+
+
+void sub_4EE74(void)
+{
+    s16 index;
+    const u8 **src;
+    const u8 **dest;
+
+    index = 0;
+    if (gCurrentPinballGame->unk729 > 0)
+        index = 1 - gCurrentPinballGame->unk734;
+
+    src = gUnknown_086B0AF0[index];
+    dest = gUnknown_086B0AF0[2];
+    if (gCurrentPinballGame->unk6A > 40)
+    {
+        if (gCurrentPinballGame->unk6A < 208)
+        {
+            DmaCopy16(3, src[0], dest[0], 0x40);
+        }
+
+        if (gCurrentPinballGame->unk6A < 216)
+        {
+            DmaCopy16(3, src[1], dest[1], 0x80);
+        }
+    }
+
+    if (gCurrentPinballGame->unk6A > 56)
+    {
+        if (gCurrentPinballGame->unk6A < 224)
+        {
+            DmaCopy16(3, src[2], dest[2], 0x80);
+        }
+
+        DmaCopy16(3, src[3], dest[3], 0x60);
+    }
+}
+
+void sub_4EF38(void)
+{
+    s16 index;
+    const u8 **src;
+    const u8 **dest;
+    
+    index = 0;
+    if (gCurrentPinballGame->unk2F0 > 2)
+        gCurrentPinballGame->unk72A = 1;
+    else if (gCurrentPinballGame->unk13)
+        gCurrentPinballGame->unk72A = 0;
+
+    if (gCurrentPinballGame->unk72A > 0)
+        index = gCurrentPinballGame->unk1A5 * 2 + 1 - gCurrentPinballGame->unk734;
+    else
+        index = gCurrentPinballGame->unk1A5 * 2;
+
+    src = gUnknown_086B0B20[index];
+    dest = gUnknown_086B0B20[4];
+    if (gCurrentPinballGame->unk6A < 240)
+    {
+        DmaCopy16(3, src[0], dest[0], 0xA0);
+    }
+
+    DmaCopy16(3, src[1], dest[1], 0xA0);
+    DmaCopy16(3, src[2], dest[2], 0xA0);
+    if (gCurrentPinballGame->unk6A > 88)
+    {
+        DmaCopy16(3, src[3], dest[3], 0x60);
+    }
+}
+
+void sub_4F028(void)
+{
+    s16 index;
+    const u8 **src;
+    const u8 **dest;
+
+    index = 0;
+    gCurrentPinballGame->unk731 = 0;
+    if (gCurrentPinballGame->unk72F > 1 && gCurrentPinballGame->unk13 < 3)
+        gCurrentPinballGame->unk731 = 1;
+
+    if (gCurrentPinballGame->unk731 > 0)
+        index = 1 - gCurrentPinballGame->unk734;
+
+    src = gUnknown_086B0B94[index];
+    dest = gUnknown_086B0B94[2];
+    if (gCurrentPinballGame->unk6A < 264)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x40);
+    }
+    DmaCopy16(3, src[1], dest[1], 0x80);
+    DmaCopy16(3, src[2], dest[2], 0x80);
+    DmaCopy16(3, src[3], dest[3], 0x80);
+}
+
+void sub_4F0F0(void)
+{
+    if (gCurrentPinballGame->unk71B == 0)
+        return;
+
+    if (gCurrentPinballGame->unk71C)
+    {
+        if (gCurrentPinballGame->unk2F8 == 0)
+        {
+            gCurrentPinballGame->ballPowerUpLight[0] = (gMain.fieldFrameCount % 20) / 10;
+            gCurrentPinballGame->ballPowerUpLight[1] = gCurrentPinballGame->ballPowerUpLight[0];
+            gCurrentPinballGame->ballPowerUpLight[2] = gCurrentPinballGame->ballPowerUpLight[0];
+        }
+
+        if (gCurrentPinballGame->unk71C == 28)
+        {
+            if (gCurrentPinballGame->unk5F6 < 3)
+            gCurrentPinballGame->unk5F6++;
+
+            gCurrentPinballGame->unk5F8 = 3600;
+            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+        }
+
+        if (gCurrentPinballGame->unk71C == 40)
+        MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F664);
+
+        if (gCurrentPinballGame->unk71C == 60)
+            gMain.unk44[43]->available = 1;
+
+        gCurrentPinballGame->unk6E = gUnknown_086B0E20[30 - gCurrentPinballGame->unk71C / 2];
+        gCurrentPinballGame->unk71C--;
+    }
+    else
+    {
+        gCurrentPinballGame->unk71B = 0;
+        if (gCurrentPinballGame->unk2F8 == 0)
+        {
+            gCurrentPinballGame->ballPowerUpLight[0] =
+                gCurrentPinballGame->ballPowerUpLight[1] =
+                gCurrentPinballGame->ballPowerUpLight[2] = 0;
+        }
+
+        gCurrentPinballGame->unk2F8 = 0;
+    }
+}
+
+void sub_4F258(void)
+{
     s16 i;
+    const u8 **src;
+    const u8 **dest;
+
     for (i = 0; i < 3; i++) {
-        u8 ** src = gUnknown_086B0B70[i] + gCurrentPinballGame->ballPowerUpLight[i];
-        u8 ** dst = gUnknown_086B0B70[i] + 2;
-        DmaCopy16(3, *src, *dst, 0x40);
+        src = &gUnknown_086B0B70[i][gCurrentPinballGame->ballPowerUpLight[i]];
+        dest = &gUnknown_086B0B70[i][2];
+        DmaCopy16(3, *src, *dest, 0x40);
     }
 }
