@@ -21,6 +21,54 @@ extern const u8 *gUnknown_086B08D4[][3][5];
 extern struct SongHeader gUnknown_0869F664;
 
 
+void sub_4E814(void)
+{
+    gCurrentPinballGame->unk734 = (gCurrentPinballGame->unk70C % 40) / 20;
+    gCurrentPinballGame->unk70C = gCurrentPinballGame->unk70C + 1;
+    sub_4EA44();
+    if (gCurrentPinballGame->unk6A < 232)
+    {
+        sub_4EDC0();
+        sub_4EE74();
+    }
+
+    if (gCurrentPinballGame->unk6A >= 81 && gCurrentPinballGame->unk6A < 248)
+        sub_4EF38();
+
+    sub_4F0F0();
+    if (gCurrentPinballGame->unk6A < 112)
+        sub_4F258();
+
+    if (gCurrentPinballGame->unk6A > 112)
+        sub_4F028();
+
+    if (gCurrentPinballGame->unk6A > 104)
+    {
+        sub_4F4B4();
+        sub_4F660();
+    }
+
+    if (gCurrentPinballGame->unk6A < 256)
+        sub_4F30C();
+
+    sub_4F2B8();
+    if (gCurrentPinballGame->unk6A > 110)
+        sub_4EAB0();
+
+    if (gCurrentPinballGame->unk6A > 178)
+    {
+        sub_4EAF8();
+        sub_4EBD0();
+        sub_4E920();
+    }
+
+    if (gCurrentPinballGame->unk6A > 202)
+        sub_4ECDC();
+
+    if (gCurrentPinballGame->unk724 && gCurrentPinballGame->unk25 == 0)
+        gCurrentPinballGame->unk724--;
+}
+
 void sub_4E920(void)
 {
     s16 index;
