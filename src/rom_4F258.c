@@ -8,9 +8,45 @@ extern const u8 *gUnknown_086B0B94[][4];
 extern const u8 *gUnknown_086B0B20[][4];
 extern const u8 *gUnknown_086B0AF0[][4];
 extern const u8 *gUnknown_086B0AC0[][4];
+extern const u8 *gUnknown_086B0A90[][4];
 
 extern struct SongHeader gUnknown_0869F664;
 
+
+void sub_4ECDC(void)
+{
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->unk724 > 300)
+    {
+        gCurrentPinballGame->unk726 = 1;
+    }
+    else
+    {
+        if (gCurrentPinballGame->unk724)
+        {
+            if (gCurrentPinballGame->unk25)
+                gCurrentPinballGame->unk726 = 1;
+            else
+                gCurrentPinballGame->unk726 = (gMain.fieldFrameCount % 16) / 8;
+        }
+        else
+        {
+            gCurrentPinballGame->unk726 = 0;
+        }
+    }
+
+    src = gUnknown_086B0A90[gCurrentPinballGame->unk726];
+    dest = gUnknown_086B0A90[2];
+    DmaCopy16(3, src[0], dest[0], 0xC0);
+    DmaCopy16(3, src[1], dest[1], 0xC0);
+    if (gCurrentPinballGame->unk6A >= 216)
+    {
+        DmaCopy16(3, src[2], dest[2], 0xA0);
+        DmaCopy16(3, src[3], dest[3], 0x40);
+    }
+}
 
 void sub_4EDC0(void)
 {
