@@ -532,7 +532,7 @@ extern void sub_22978();
 //extern ? sub_2C538();
 //extern ? sub_2C9A4();
 extern void sub_2CA9C();
-//extern ? sub_2CD98();
+extern void sub_2CD98(void);
 extern void sub_2CE80();
 extern void sub_2D104();
 //extern ? sub_2D204();

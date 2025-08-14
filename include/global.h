@@ -180,9 +180,12 @@ struct PinballGame
     /*0x0EA*/ u16 unkEA;
     /*0x0EC*/ u16 unkEC;
     /*0x0EE*/ s16 unkEE;
-    /*0x0F0*/ u8 fillerF0[0x2];
+    /*0x0F0*/ u16 unkF0;
     /*0x0F2*/ s8 unkF2;
-    /*0x0F3*/ u8 fillerF3[0x7];
+    /*0x0F3*/ u8 unkF3;
+    /*0x0F4*/ s16 unkF4;
+    /*0x0F6*/ s16 unkF6;
+    /*0x0F8*/ s16 unkF8;
     /*0x0FA*/ s8 unkFA;
     /*0x0FB*/ s8 unkFB;
     /*0x0FC*/ s16 unkFC;
@@ -603,7 +606,8 @@ struct PinballGame
     /*0x6CD*/ u8 unk6CD[6];
     /*0x6D3*/ u8 filler6D3[0x8];
     /*0x6DB*/ u8 unk6DB;
-    /*0x6DC*/ u8 filler6DC[0x8];
+    /*0x6DC*/ u8 unk6DC;
+    /*0x6DD*/ u8 filler6DD[0x7];
     /*0x6E4*/ struct Vector16 unk6E4;
     /*0x6E8*/ u8 filler6E8[0x6];
     /*0x6EE*/ u16 unk6EE;
@@ -777,6 +781,7 @@ extern u8 gUnknown_083FE44C[][0x200];
 extern u16 gUnknown_08494E4C[]; 
 extern u16 gUnknown_084EDACC[]; 
 extern u8 gUnknown_084FF30C[];
+extern struct SongHeader gUnknown_0869F7C8;
 extern struct SongHeader gUnknown_086A17D8;
 extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
 extern const s16 gUnknown_086ACDF4[9];
@@ -785,6 +790,8 @@ extern Unk86ACE0C BoardCollisionFuncts_086ACE0C[8];
 extern struct Vector16 gUnknown_086ACE60[4];
 extern struct Unk086ACE8C gUnknown_086ACE8C[13];
 extern u16 gUnknown_086ACEF4[2];
+extern const u8 *const gUnknown_086ACEF8[];
 extern s16 gUnknown_086AE68E[][2];
+extern u16 gUnknown_086B4568[][45];
 
 #endif // GUARD_GLOBAL_H
