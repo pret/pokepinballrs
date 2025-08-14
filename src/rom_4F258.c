@@ -13,9 +13,22 @@ extern const u8 *gUnknown_086B0BC4[][4];
 extern const u8 *gUnknown_086B09E8[][7][2];
 extern const u8 *gUnknown_086B09C8[][2];
 extern const u8 *gUnknown_086B0970[][2];
+extern const u8 *gUnknown_086B094C[][3];
 
 extern struct SongHeader gUnknown_0869F664;
 
+
+void sub_4E9F0(s16 arg0)
+{
+    const u8 **src;
+    const u8 **dest;
+
+    src = gUnknown_086B094C[arg0];
+    dest = gUnknown_086B094C[2];
+    DmaCopy16(3, src[0], dest[0], 0xC0);
+    DmaCopy16(3, src[1], dest[1], 0xC0);
+    DmaCopy16(3, src[2], dest[2], 0x20);
+}
 
 void sub_4EA44(void)
 {

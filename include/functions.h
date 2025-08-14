@@ -658,7 +658,7 @@ extern void PinballGame_State0_49ED4(void);
 extern void sub_4E598(void);
 extern void sub_4E814(void);
 //extern ? sub_4E920();
-extern void sub_4E9F0(s8);
+extern void sub_4E9F0(s16);
 //extern ? sub_4EA44();
 //extern ? sub_4EAB0();
 //extern ? sub_4EAF8();
