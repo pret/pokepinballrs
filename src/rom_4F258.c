@@ -10,9 +10,32 @@ extern const u8 *gUnknown_086B0AF0[][4];
 extern const u8 *gUnknown_086B0AC0[][4];
 extern const u8 *gUnknown_086B0A90[][4];
 extern const u8 *gUnknown_086B0BC4[][4];
+extern const u8 *gUnknown_086B09E8[][7][2];
 
 extern struct SongHeader gUnknown_0869F664;
 
+
+void sub_4EAF8(void)
+{
+    s16 i;
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->unk720)
+    {
+        gCurrentPinballGame->unk71D[gCurrentPinballGame->unk721] = 1 - (gCurrentPinballGame->unk720 % 36) / 18;
+        gCurrentPinballGame->unk71D[gCurrentPinballGame->unk722] = gCurrentPinballGame->unk71D[gCurrentPinballGame->unk721];
+        gCurrentPinballGame->unk720--;
+    }
+
+    for (i = 0; i < 3; i++)
+    {
+        src = gUnknown_086B09E8[i][gCurrentPinballGame->unk71D[i]];
+        dest = gUnknown_086B09E8[i][6];
+        DmaCopy16(3, src[0], dest[0], 0x40);
+        DmaCopy16(3, src[1], dest[1], 0x40);
+    }
+}
 
 void sub_4EBD0(void)
 {
