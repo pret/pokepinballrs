@@ -8,6 +8,7 @@
 #include "global.h"
 #include "gfx.h"
 #include "util.h"
+#include "oam_slices/oam_slicer.h"
 
 #define GET_GBA_PAL_RED(x)   (((x) >>  0) & 0x1F)
 #define GET_GBA_PAL_GREEN(x) (((x) >>  5) & 0x1F)
@@ -62,6 +63,23 @@ static void AdvancePinballHatchSpriteMetatilePosition(int *subTileX, int *subTil
 	}
 }
 
+static void AdvanceOamMetatilePosition(int *subTileX, int *subTileY, int *metatileX, int *metatileY, int metatilesWide, TileCoord *subTileCoords, int tileCount, int i) {
+
+	//First tile handled at start of loop; just track additional tiles
+	int tileIndex = (i+1) % tileCount;
+	*subTileX = subTileCoords[tileIndex].x;
+	*subTileY = subTileCoords[tileIndex].y;
+
+	if (tileIndex == 0) {
+		(*metatileX)++;
+		if (*metatileX == metatilesWide) {
+			*metatileX = 0;
+			(*metatileY)++;
+		}
+	}
+
+}
+
 static void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool invertColors)
 {
 	int subTileX = 0;
@@ -88,13 +106,21 @@ static void ConvertFromTiles1Bpp(unsigned char *src, unsigned char *dest, int nu
 	}
 }
 
-static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors)
+static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors, bool oamMap)
 {
 	int subTileX = 0;
 	int subTileY = 0;
 	int metatileX = 0;
 	int metatileY = 0;
 	int pitch = (metatilesWide * metatileWidth) * 4;
+	
+	TileCoord tileMappingCoord[MAX_OAM_TILE_SIDE_LENGTH_SQUARED];
+	int tileCount = 0;
+
+	if (oamMap)
+	{
+		tileCount = getOamTileIndex(metatileWidth, metatileHeight, tileMappingCoord);
+	}
 
 	for (int i = 0; i < numTiles; i++) {
 		for (int j = 0; j < 8; j++) {
@@ -117,6 +143,8 @@ static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int nu
 
 		if (pinballHatchSprite) {
 			AdvancePinballHatchSpriteMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide);
+		} else if (oamMap) {
+			AdvanceOamMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, tileMappingCoord, tileCount, i);
 		} else {
 			AdvanceMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, metatileWidth, metatileHeight);
 		}
@@ -211,13 +239,21 @@ void Convert4BppImageWithPaletteMap(struct Image *image)
 	image->bitDepth = 8;
 }
 
-static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors)
+static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool pinballHatchSprite, bool invertColors, bool oamMap)
 {
 	int subTileX = 0;
 	int subTileY = 0;
 	int metatileX = 0;
 	int metatileY = 0;
 	int pitch = (metatilesWide * metatileWidth) * 4;
+
+	TileCoord tileMappingCoord[MAX_OAM_TILE_SIDE_LENGTH_SQUARED];
+	int tileCount = 0;
+
+	if (oamMap)
+	{
+		tileCount = getOamTileIndex(metatileWidth, metatileHeight, tileMappingCoord);
+	}
 
 	for (int i = 0; i < numTiles; i++) {
 		for (int j = 0; j < 8; j++) {
@@ -240,6 +276,8 @@ static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numT
 
 		if (pinballHatchSprite) {
 			AdvancePinballHatchSpriteMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide);
+		} else if (oamMap) {
+			AdvanceOamMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, tileMappingCoord, tileCount, i);
 		} else {
 			AdvanceMetatilePosition(&subTileX, &subTileY, &metatileX, &metatileY, metatilesWide, metatileWidth, metatileHeight);
 		}
@@ -426,7 +464,7 @@ static unsigned char *DecodeTilemap(unsigned char *tiles, struct Tilemap *tilema
     return decoded;
 }
 
-void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors)
+void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors, bool oamMap)
 {
 	int tileSize = image->bitDepth * 8;
 
@@ -467,7 +505,7 @@ void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHe
 		ConvertFromTiles1Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
 		break;
 	case 4:
-		ConvertFromTiles4Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors);
+		ConvertFromTiles4Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors, oamMap);
 		break;
 	case 8:
 		ConvertFromTiles8Bpp(buffer, image->pixels, numTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
@@ -477,7 +515,7 @@ void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHe
 	free(buffer);
 }
 
-void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, int metatileWidth, int metatileHeight,  bool pinballHatchSprite, struct Image *image, bool invertColors)
+void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, int metatileWidth, int metatileHeight,  bool pinballHatchSprite, struct Image *image, bool invertColors, bool oamMap)
 {
 	int tileSize = image->bitDepth * 8;
 
@@ -517,7 +555,7 @@ void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, in
 		ConvertToTiles1Bpp(image->pixels, buffer, maxNumTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
 		break;
 	case 4:
-		ConvertToTiles4Bpp(image->pixels, buffer, maxNumTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors);
+		ConvertToTiles4Bpp(image->pixels, buffer, maxNumTiles, metatilesWide, metatileWidth, metatileHeight, pinballHatchSprite, invertColors, oamMap);
 		break;
 	case 8:
 		ConvertToTiles8Bpp(image->pixels, buffer, maxNumTiles, metatilesWide, metatileWidth, metatileHeight, invertColors);
