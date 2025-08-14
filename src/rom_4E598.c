@@ -1,6 +1,44 @@
 #include "global.h"
 #include "main.h"
 
+void sub_4E468(void)
+{
+    struct BallState *unk1334;
+
+    gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
+    unk1334 = &gCurrentPinballGame->unk1334[0];
+
+    if (unk1334->positionQ0.y >= gUnknown_02031520.unk14.unk2A)
+    {
+        unk1334->velocity.x = 0;
+        gCurrentPinballGame->ball->velocity.y = 0;
+        if (gMain.unkF & 0x40)
+        {
+            gCurrentPinballGame->unk386 = 1;
+            gMain.unkF = 0x80;
+            gCurrentPinballGame->ball->positionQ0.y = gUnknown_02031520.unk14.unk2A - 10;
+        }
+        else
+        {
+            gCurrentPinballGame->ball->unk0 = 1;
+            gCurrentPinballGame->unk388 = 1;
+            gCurrentPinballGame->unk392 = 0;
+            gCurrentPinballGame->ball->positionQ0.x = gUnknown_02031520.unk14.unk26;
+            gCurrentPinballGame->ball->positionQ0.y = gUnknown_02031520.unk14.unk28;
+            if (gCurrentPinballGame->unk5F6 > 0)
+                gCurrentPinballGame->unk5F6--;
+
+            gCurrentPinballGame->unk5F8 = 3600;
+            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+        }
+
+        gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
+        gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
+        gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
+        gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
+    }
+}
+
 void sub_4E598(void)
 {
     gCurrentPinballGame->unk18 = 10199;

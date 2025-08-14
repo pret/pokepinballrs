@@ -722,6 +722,7 @@ struct Unk02031520_unk14
     /*0x24*/ s16 unk24;
     /*0x26*/ s16 unk26;
     /*0x28*/ s16 unk28;
+    /*0x2A*/ s16 unk2A;
     /*0x2C*/ u8 *unk2C[3];
     /*0x38*/ const s16 *unk38[4];
     /*0x48*/ const u16 *unk48[4];
