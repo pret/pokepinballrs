@@ -9,9 +9,43 @@ extern const u8 *gUnknown_086B0B20[][4];
 extern const u8 *gUnknown_086B0AF0[][4];
 extern const u8 *gUnknown_086B0AC0[][4];
 extern const u8 *gUnknown_086B0A90[][4];
+extern const u8 *gUnknown_086B0BC4[][4];
 
 extern struct SongHeader gUnknown_0869F664;
 
+
+void sub_4EBD0(void)
+{
+    s16 i;
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->unk714)
+    {
+        if (gCurrentPinballGame->unk715)
+        {
+            gCurrentPinballGame->holeIndicators[0] = (gCurrentPinballGame->unk715 % 36) / 18;
+            gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->unk715--;
+        }
+        else
+        {
+            gCurrentPinballGame->holeIndicators[0] = 1;
+            gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
+            gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
+        }
+    }
+    
+    for (i = 0; i < 4; i++)
+    {
+        src = &gUnknown_086B0BC4[i][gCurrentPinballGame->holeIndicators[i]];
+        dest = &gUnknown_086B0BC4[i][2];
+        DmaCopy16(3, *src, *dest, 0x40);
+    }
+}
 
 void sub_4ECDC(void)
 {
