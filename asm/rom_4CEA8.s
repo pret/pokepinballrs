@@ -3160,39 +3160,3 @@ _0804EAA0: .4byte 0x0000070E
 _0804EAA4: .4byte gUnknown_086B0970
 _0804EAA8: .4byte 0x040000D4
 _0804EAAC: .4byte 0x80000010
-
-	thumb_func_start sub_4EAB0
-sub_4EAB0: @ 0x0804EAB0
-	push {r4, lr}
-	ldr r0, _0804EAE8 @ =gCurrentPinballGame
-	ldr r0, [r0]
-	movs r1, #0xe6
-	lsls r1, r1, #3
-	adds r0, r0, r1
-	movs r2, #0
-	ldrsb r2, [r0, r2]
-	lsls r2, r2, #3
-	ldr r3, _0804EAEC @ =gUnknown_086B09C8
-	adds r2, r2, r3
-	ldr r0, _0804EAF0 @ =0x040000D4
-	ldr r1, [r2]
-	str r1, [r0]
-	ldr r1, [r3, #0x18]
-	str r1, [r0, #4]
-	ldr r4, _0804EAF4 @ =0x80000020
-	str r4, [r0, #8]
-	ldr r1, [r0, #8]
-	ldr r1, [r2, #4]
-	str r1, [r0]
-	ldr r1, [r3, #0x1c]
-	str r1, [r0, #4]
-	str r4, [r0, #8]
-	ldr r0, [r0, #8]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804EAE8: .4byte gCurrentPinballGame
-_0804EAEC: .4byte gUnknown_086B09C8
-_0804EAF0: .4byte 0x040000D4
-_0804EAF4: .4byte 0x80000020
