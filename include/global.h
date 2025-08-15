@@ -139,7 +139,8 @@ struct PinballGame
     /*0x025*/ s8 unk25;
     /*0x026*/ u16 unk26;
     /*0x028*/ u16 unk28;
-    /*0x02A*/ u8 filler2A[0x6];
+    /*0x02A*/ u8 filler2A[0x2];
+    /*0x02C*/ int unk2C;
     /*0x030*/ s8 numLives;
     /*0x031*/ u8 ballSpeed;
     /*0x032*/ u16 unk32;
@@ -171,7 +172,8 @@ struct PinballGame
     /*0x071*/ s8 unk71;
     /*0x072*/ u8 filler72[0xC];
     /*0x07E*/ u16 unk7E;
-    /*0x080*/ u8 filler80[0x4C];
+    /*0x080*/ u8 filler80[0x4A];
+    /*0x0CA*/ s16 unkCA;
     /*0x0CC*/ u16 unkCC;
     /*0x0CE*/ u8 fillerCE[0x2];
     /*0x0D0*/ struct Vector16 unkD0[5];
@@ -573,10 +575,10 @@ struct PinballGame
     /*0x5F6*/ s8 unk5F6;
     /*0x5F7*/ u8 unk5F7;
     /*0x5F8*/ u16 unk5F8;
-    /*0x5FA*/ u8 unk5FA;
-    /*0x5FB*/ u8 unk5FB;
+    /*0x5FA*/ s8 unk5FA;
+    /*0x5FB*/ s8 unk5FB;
     /*0x5FC*/ s16 unk5FC;
-    /*0x5FE*/ u16 unk5FE;
+    /*0x5FE*/ s16 unk5FE;
     /*0x600*/ u16 unk600;
     /*0x602*/ u8 filler602[0x12];
     /*0x614*/ u16 unk614;
@@ -720,7 +722,9 @@ struct Unk02031520_unk14
     /* These field offsets are intentionally kept as relative to
        struct Unk02031520 to make decompiling easier. This struct
        is basically always accessed relative to struct Unk02031520. */
-    /*0x14*/ u8 filler14[0x8];
+    /*0x14*/ u8 filler14[0x4];
+    /*0x18*/ s16 unk18;
+    /*0x1A*/ s16 unk1A;
     /*0x1C*/ u16 unk1C;
     /*0x1E*/ u8 filler1E[0x2];
     /*0x20*/ s16 unk20;

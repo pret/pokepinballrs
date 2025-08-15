@@ -4,6 +4,116 @@
 #include "constants/bg_music.h"
 
 
+void BonusBoardProcess_2B_4DBFC(void)
+{
+    int var0;
+    int var1;
+    int var2;
+    s16 var3;
+    int var4;
+
+    var0 = 0x1000;
+    if ((gMain.unkF & ~0x40) == 0)
+        sub_4E468();
+
+    if (gCurrentPinballGame->unk5FB)
+    {
+        if (gCurrentPinballGame->unk5FC != gCurrentPinballGame->unk5FE)
+        {
+            if (gCurrentPinballGame->unk5FC > gCurrentPinballGame->unk5FE)
+                gCurrentPinballGame->unk5FC--;
+            else
+                gCurrentPinballGame->unk5FC++;
+        }
+        else
+        {
+            gCurrentPinballGame->unk5FB = 0;
+        }
+    }
+
+    if (gCurrentPinballGame->unk1F == 0)
+        var0 = gCurrentPinballGame->unk1330->velocity.y * 40 + 0x1000;
+
+    gCurrentPinballGame->unk2C += (var0 - gCurrentPinballGame->unk2C) / 10;
+    var1 = gCurrentPinballGame->unk1330->positionQ8.y + gCurrentPinballGame->unk2C;
+    if (var1 > gUnknown_02031520.unk14.unk18 << 8)
+        var1 = gUnknown_02031520.unk14.unk18 << 8;
+    else if (var1 < gUnknown_02031520.unk14.unk1A << 8)
+        var1 = gUnknown_02031520.unk14.unk1A << 8;
+
+    var1 -= 0x5000;
+    var4 = gCurrentPinballGame->unk54;
+    var2 = (var1 - var4) / 12;
+    if (var2 > 0)
+    {
+        if (var2 < 80)
+            var2 = 0;
+    }
+    else
+    {
+        if (var2 > -80)
+            var2 = 0;
+    }
+
+    var4 += var2;
+    if (gCurrentPinballGame->unk5FA == 0)
+    {
+        gCurrentPinballGame->unk54 = var4;
+        gCurrentPinballGame->unk4E = var4 / 0x100;
+    }
+
+    sub_4DFA0();
+    gMain.bgOffsets[2].xOffset = gCurrentPinballGame->unk4C + gCurrentPinballGame->unk120 + 8 + gCurrentPinballGame->unk2AA;
+    gCurrentPinballGame->unkCC = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk121 + gCurrentPinballGame->unk5FC + gCurrentPinballGame->unkE6 + gCurrentPinballGame->unk2AC;
+    var3 = gCurrentPinballGame->unkCA - gCurrentPinballGame->unkCC;
+    if (var3 > 8)
+        var3 = 8;
+    else if (var3 < -8)
+        var3 = -8;
+
+    if (var3)
+        gCurrentPinballGame->unkCA -= var3;
+
+    gMain.bgOffsets[2].yOffset = gCurrentPinballGame->unkCA;
+
+    switch (gMain.selectedField)
+    {
+    case 2:
+        gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset;
+        gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
+        gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
+        gMain.bgOffsets[1].yOffset = gCurrentPinballGame->unkCA / 2;
+        break;
+    case 3:
+        gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset + (gCurrentPinballGame->unk290 & 0x7FF) / 8;
+        gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
+        gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
+        gMain.bgOffsets[1].yOffset = 0;
+        break;
+    case 4:
+    case 5:
+        gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset;
+        gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
+        gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
+        gMain.bgOffsets[1].yOffset = gMain.bgOffsets[2].yOffset;
+        break;
+    case 6:
+        gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset;
+        gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset / 4;
+        gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
+        gMain.bgOffsets[1].yOffset = gMain.bgOffsets[2].yOffset;
+        break;
+    case 7:
+        gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset;
+        gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
+        break;
+    }
+
+    gCurrentPinballGame->unk58 = gCurrentPinballGame->unk4C + gCurrentPinballGame->unk120 + gCurrentPinballGame->unk2AA;
+    gCurrentPinballGame->unk5A = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk121 + gCurrentPinballGame->unk5FC + gCurrentPinballGame->unkE6 + gCurrentPinballGame->unk2AC;
+    gCurrentPinballGame->unk68 = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk121 + gCurrentPinballGame->unk5FC + gCurrentPinballGame->unkE6;
+}
+
 void sub_4DFA0(void)
 {
     int i;
