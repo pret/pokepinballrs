@@ -4,6 +4,21 @@
 #include "constants/bg_music.h"
 
 
+void sub_4D648(void)
+{
+    s16 i;
+
+    gCurrentPinballGame->unk294 = 0;
+    gCurrentPinballGame->eventTimer = 0;
+    for (i = 0; i < 4; i++)
+    {
+        gUnknown_03005C00[0x179 + i] = 0x1FF;
+        gUnknown_03005C00[0x199 + i] = 0x1FF;
+    }
+
+    DmaCopy16(3, &gUnknown_03005C00[0x160], (void *)0x060022C0, 0x80);
+}
+
 void AllBoardProcess_2A_4D6C4(void)
 {
     s16 var0;
