@@ -722,7 +722,8 @@ struct Unk02031520_unk14
     /* These field offsets are intentionally kept as relative to
        struct Unk02031520 to make decompiling easier. This struct
        is basically always accessed relative to struct Unk02031520. */
-    /*0x14*/ u8 filler14[0x4];
+    /*0x14*/ s16 unk14;
+    /*0x16*/ s16 unk16;
     /*0x18*/ s16 unk18;
     /*0x1A*/ s16 unk1A;
     /*0x1C*/ u16 unk1C;

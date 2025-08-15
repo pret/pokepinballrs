@@ -4,6 +4,90 @@
 #include "constants/bg_music.h"
 
 
+void AllBoardProcess_2A_4D6C4(void)
+{
+    s16 var0;
+    s16 var1;
+
+    var0 = 0;
+    if (gMain.selectedField == FIELD_RUBY)
+    {
+        var1 = 0;
+    }
+    else if (gMain.selectedField == FIELD_SAPPHIRE)
+    {
+        var1 = -24;
+    }
+    else
+    {
+        var1 = 0;
+        var0 = 8;
+    }
+
+    if (gMain.selectedField < MAIN_FIELD_COUNT)
+    {
+        gCurrentPinballGame->unk5FC = var1 - 244;
+        gCurrentPinballGame->unk5FE = 0;
+        gCurrentPinballGame->unk5FB = 0;
+        gCurrentPinballGame->unk4C = gUnknown_02031520.unk14.unk14;
+        gCurrentPinballGame->unk4E = gUnknown_02031520.unk14.unk16;
+        gCurrentPinballGame->unk54 = gUnknown_02031520.unk14.unk16 << 8;
+        gCurrentPinballGame->unk58 = gCurrentPinballGame->unk4C;
+        gCurrentPinballGame->unk5A = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
+        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->unk4C + var0;
+        gMain.bgOffsets[2].yOffset = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
+        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->unk4C + var0;
+        gMain.bgOffsets[3].yOffset = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
+        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->unk4C + var0;
+        gMain.bgOffsets[1].yOffset = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
+        if (gMain.selectedField == FIELD_RUBY)
+        {
+            if ((gCurrentPinballGame->numCompletedBonusStages / 5) % 2 == 0)
+                m4aSongNumStart(MUS_FIELD_RUBY);
+            else
+                m4aSongNumStart(MUS_FIELD_RUBY2);
+        }
+        else
+        {
+            if ((gCurrentPinballGame->numCompletedBonusStages / 5) % 2 == 0)
+                m4aSongNumStart(MUS_FIELD_SAPPHIRE);
+            else
+                m4aSongNumStart(MUS_FIELD_SAPPHIRE2);
+        }
+    }
+    else
+    {
+        gCurrentPinballGame->unk5FC = 0;
+        gCurrentPinballGame->unk5FE = 0;
+        gCurrentPinballGame->unk5FB = 0;
+        if (gMain.selectedField <= FIELD_KECLEON)
+            gCurrentPinballGame->unkE6 = -24;
+        else if (gMain.selectedField == FIELD_RAYQUAZA)
+            gCurrentPinballGame->unkE6 = -88;
+        else
+            gCurrentPinballGame->unkE6 = -64;
+
+        gCurrentPinballGame->unk4C = gUnknown_02031520.unk14.unk14;
+        gCurrentPinballGame->unk4E = gUnknown_02031520.unk14.unk16 + gCurrentPinballGame->unkE6;
+        gCurrentPinballGame->unk54 = gUnknown_02031520.unk14.unk16 << 8;
+        gCurrentPinballGame->unk58 = gCurrentPinballGame->unk4C;
+        gCurrentPinballGame->unk5A = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
+        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->unk4C + var0;
+        gMain.bgOffsets[2].yOffset = gCurrentPinballGame->unk4E;
+        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->unk4C + var0;
+        gMain.bgOffsets[3].yOffset = gCurrentPinballGame->unk4E;
+        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->unk4C + var0;
+        gMain.bgOffsets[1].yOffset = gCurrentPinballGame->unk4E / 2;
+        if (gMain.selectedField == FIELD_KECLEON)
+            gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset + (gCurrentPinballGame->unk290 & 0x7FF) / 8;
+    }
+
+    gMain.bgOffsets[0].yOffset = 80;
+    gCurrentPinballGame->unkCC = gMain.bgOffsets[3].yOffset;
+    gCurrentPinballGame->unkCA = gCurrentPinballGame->unkCC;
+    gCurrentPinballGame->unk2C = 0x1000;
+}
+
 void MainBoardProcess_2B_4D960(void)
 {
     int var0;
