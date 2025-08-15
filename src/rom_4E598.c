@@ -3,6 +3,86 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
+extern const u8 gUnknown_086B0884[];
+extern const u8 gUnknown_081C0064[];
+extern const u8 gUnknown_086B08A4[];
+
+void sub_4D3D0(void)
+{
+    s16 i;
+    s16 sp0[4];
+    s16 var2;
+
+    if (gCurrentPinballGame->unk294 == 0)
+        return;
+
+    if (gCurrentPinballGame->eventTimer == 0)
+        return;
+
+    if (gCurrentPinballGame->unk294 == 2 && gMain.unkF == 0)
+        gCurrentPinballGame->eventTimer--;
+
+    sp0[0] = gCurrentPinballGame->eventTimer / 3600;
+    var2 = gCurrentPinballGame->eventTimer % 3600;
+    sp0[1] = 10;
+    sp0[2] = var2 / 600;
+    var2 %= 600;
+    sp0[3] = var2 / 60;
+    if (gCurrentPinballGame->unk294 == 3)
+    {
+        for (i = 0; i < 4; i++)
+        {
+            gUnknown_03005C00[0x179 + i] = 0x1FF;
+            gUnknown_03005C00[0x199 + i] = 0x1FF;
+        }
+
+        DmaCopy16(3, &gUnknown_03005C00[0x160], (void *)0x060022C0, 0x80);
+        gCurrentPinballGame->unk294 = 0;
+        gCurrentPinballGame->eventTimer = 0;
+    }
+    else
+    {
+        if (gCurrentPinballGame->eventTimer == 0)
+        {
+            sub_4D648();
+        }
+        else
+        {
+            for (i = 0; i < 4; i++)
+            {
+                gUnknown_03005C00[i + 0x179] = sp0[i] * 2 - 0x3EC0;
+                gUnknown_03005C00[i + 0x199] = sp0[i] * 2 - 0x3EBF;
+            }
+        }
+        DmaCopy16(3, &gUnknown_03005C00[0x160], (void *)0x060022C0, 0x80);
+    }
+
+    if (gCurrentPinballGame->eventTimer <= 900)
+    {
+        if (gCurrentPinballGame->eventTimer & 0x8)
+        {
+            DmaCopy16(3, gUnknown_086B0884, (void *)0x05000180, 0x20);
+        }
+        else
+        {
+            DmaCopy16(3, gUnknown_081C0064, (void *)0x05000180, 0x20);
+        }
+
+        if (gCurrentPinballGame->eventTimer == 900)
+            m4aSongNumStart(MUS_HURRY_UP);
+    }
+    else if (gCurrentPinballGame->eventTimer <= 1800)
+    {
+        if ((gCurrentPinballGame->eventTimer % 22) / 11)
+        {
+            DmaCopy16(3, gUnknown_086B08A4, (void *)0x05000180, 0x20);
+        }
+        else
+        {
+            DmaCopy16(3, gUnknown_081C0064, (void *)0x05000180, 0x20);
+        }
+    }
+}
 
 void sub_4D648(void)
 {
