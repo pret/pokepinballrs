@@ -149,7 +149,7 @@ struct PinballGame
     /*0x036*/ u8 filler36[0x2];
     /*0x038*/ u32 unk38; //score to add every frame until unk3C score has been added to player's total
     /*0x03C*/ u32 unk3C; //score to add in a bonus field or mode (by completion or other ways, like hitting Duskulls)
-    /*0x040*/ u8 filler40[0x4];
+    /*0x040*/ u32 unk40;
     /*0x044*/ u32 unk44;
     /*0x048*/ u32 unk48;
     /*0x04C*/ s16 unk4C;
@@ -258,7 +258,7 @@ struct PinballGame
     /*0x1C4*/ u16 unk1C4;
     /*0x1C6*/ u16 unk1C6;
     /*0x1C8*/ u16 unk1C8;
-    /*0x1CA*/ u16 unk1CA;
+    /*0x1CA*/ s16 unk1CA;
     /*0x1CC*/ u16 unk1CC;
     /*0x1CE*/ u16 unk1CE;
     /*0x1D0*/ u16 unk1D0;

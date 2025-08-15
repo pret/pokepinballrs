@@ -65,7 +65,6 @@ SECTIONS
         src/rom_356A0.o(.text);
         src/rom_49A34.o(.text);
         src/pinball_game_main.o(.text);
-        asm/rom_4CEA8.o(.text);
         src/rom_4E598.o(.text);
         src/rom_4F258.o(.text);
         src/rom_50AD4.o(.text);
