@@ -347,3 +347,60 @@ void sub_1AF84(void)
     gMain.blendBrightness = 0;
     gCurrentPinballGame->unk5F7 = 1;
 }
+
+void sub_1AFD4(void)
+{
+
+    if (gCurrentPinballGame->unk28 > 0x18)
+    {
+        gCurrentPinballGame->ball->unk0 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk28 = gCurrentPinballGame->unk28 - 1;
+        gCurrentPinballGame->ball->velocity.x = 0;
+        gCurrentPinballGame->ball->velocity.y = 0;
+        gCurrentPinballGame->ball->positionQ0.x = 0xDC;
+        gCurrentPinballGame->ball->positionQ0.y = 0x62;
+        gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
+        gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
+        gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x * 256;
+        gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y * 256;
+
+        if (gCurrentPinballGame->unk28 > 0x9B)
+            gCurrentPinballGame->unk2F0 = (gCurrentPinballGame->unk28 - 0x9C) / 8;
+        if (gCurrentPinballGame->unk28 <= 0x31)
+            gCurrentPinballGame->unk28++;
+
+        sub_1B140(gCurrentPinballGame->unk1A5);
+        return;
+    }
+
+    if (gCurrentPinballGame->unk28 > 0)
+    {
+        gCurrentPinballGame->unk28--;
+        gCurrentPinballGame->unk2F0 = (0x18 - gCurrentPinballGame->unk28) / 8;
+        return;
+    }
+
+    gCurrentPinballGame->ball->unk0 = 0;
+    gCurrentPinballGame->unk1F = 0;
+    gCurrentPinballGame->unk26 = 0x3C;
+
+    gCurrentPinballGame->ball->velocity.x = 0x60;
+    gCurrentPinballGame->ball->velocity.y = 0xC0;
+    gCurrentPinballGame->ball->positionQ0.x = 0xDF;
+    gCurrentPinballGame->ball->positionQ0.y = 0x63;
+
+    gCurrentPinballGame->ball->unk6 = 0;
+    gCurrentPinballGame->unk5F7 = 0;
+    gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
+    gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
+    gCurrentPinballGame->unk25 = 0;
+    gCurrentPinballGame->unk2F0 = 0x13;
+
+    m4aSongNumStart(SE_UNKNOWN_0xC3);
+
+    if (gCurrentPinballGame->unk72E > 2 && gCurrentPinballGame->evolvablePartySize > 0)
+    {
+        sub_19B64(6);
+    }
+}
