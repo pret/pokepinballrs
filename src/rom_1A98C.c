@@ -11,6 +11,9 @@ void sub_1AFD4(void);
 void sub_1C560(void);
 void sub_1C5AC(void);
 void sub_19B64(u8);
+void sub_22A30(void);
+void sub_22C6C(void);
+void sub_22D54(void);
 
 
 void sub_1A98C(void)
@@ -258,4 +261,77 @@ void sub_1AD84(void)
     }
 
     gCurrentPinballGame->unk5F7 = 1;
+}
+
+void sub_1ADF4(void)
+{
+    u16 unk28 = gCurrentPinballGame->unk28;
+
+    if (unk28 != 0)
+    {
+        gCurrentPinballGame->ball->unk0 = 1;
+        gCurrentPinballGame->unk1F = 1;
+        gCurrentPinballGame->unk28--;
+
+        gCurrentPinballGame->ball->velocity.x = 0;
+        gCurrentPinballGame->ball->velocity.y = 0;
+        gCurrentPinballGame->ball->positionQ0.x = 0x58;
+        gCurrentPinballGame->ball->positionQ0.y = 0x94;
+        gCurrentPinballGame->ball->unk6 = 0;
+        gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
+        gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
+
+        if (gCurrentPinballGame->unk2D0 != 1)
+            return;
+        if (gCurrentPinballGame->unk28 > 0xC8)
+            return;
+
+        if (gCurrentPinballGame->unk28 == 0xC8)
+        {
+            if (gCurrentPinballGame->unkE4 != 0)
+                gCurrentPinballGame->unk28++;
+            else
+            {
+                if (gCurrentPinballGame->unk48 != 0 && gCurrentPinballGame->unk16C == 4)
+                    sub_22978();
+                else
+                    sub_22C6C();
+            }
+        }
+        else
+        {
+            if (gCurrentPinballGame->unk48 != 0 && gCurrentPinballGame->unk16C == 4)
+                sub_22A30();
+            else
+                sub_22D54();
+        }
+        if (gCurrentPinballGame->unk28 <= 9)
+            gCurrentPinballGame->unk28++;
+    }
+    else
+    {
+        gCurrentPinballGame->ball->unk0 = unk28;
+        gCurrentPinballGame->unk25 = unk28;
+
+        gCurrentPinballGame->ball->positionQ0.x = 0x58;
+        gCurrentPinballGame->ball->positionQ0.y = 0xA2;
+        gCurrentPinballGame->ball->unk6 = 0;
+        gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
+        gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
+        gCurrentPinballGame->unk5F7 = 0;
+
+        if (gCurrentPinballGame->unk2D0 == 2)
+        {
+            gCurrentPinballGame->unk2DA = 3;
+            gCurrentPinballGame->unk2DE = 0x30;
+            gCurrentPinballGame->unk2E0 = 0x1E;
+        }
+        else
+        {
+            gCurrentPinballGame->unk1F = 0;
+            gCurrentPinballGame->unk26 = 0x3C;
+            gCurrentPinballGame->ball->velocity.x = 0x14;
+            gCurrentPinballGame->ball->velocity.y = 0xC8;
+        }
+    }
 }
