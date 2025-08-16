@@ -6,46 +6,6 @@
 
 	.text
 
-	thumb_func_start sub_1AF84
-sub_1AF84: @ 0x0801AF84
-	push {r4, lr}
-	ldr r0, _0801AFC4 @ =gCurrentPinballGame
-	ldr r3, [r0]
-	movs r1, #0xdc
-	lsls r1, r1, #1
-	adds r0, r3, r1
-	movs r2, #0
-	strh r2, [r0]
-	movs r4, #0xdb
-	lsls r4, r4, #1
-	adds r0, r3, r4
-	strh r2, [r0]
-	movs r0, #0xb4
-	strh r0, [r3, #0x28]
-	adds r4, #4
-	adds r1, r3, r4
-	strh r0, [r1]
-	ldr r0, _0801AFC8 @ =0x0007A120
-	str r0, [r3, #0x3c]
-	ldr r0, _0801AFCC @ =gMain
-	ldrh r1, [r0, #0x38]
-	movs r1, #0xce
-	strh r1, [r0, #0x38]
-	ldrh r1, [r0, #0x3c]
-	strh r2, [r0, #0x3c]
-	ldr r0, _0801AFD0 @ =0x000005F7
-	adds r1, r3, r0
-	movs r0, #1
-	strb r0, [r1]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801AFC4: .4byte gCurrentPinballGame
-_0801AFC8: .4byte 0x0007A120
-_0801AFCC: .4byte gMain
-_0801AFD0: .4byte 0x000005F7
-
 	thumb_func_start sub_1AFD4
 sub_1AFD4: @ 0x0801AFD4
 	push {r4, r5, r6, r7, lr}

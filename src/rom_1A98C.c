@@ -335,3 +335,15 @@ void sub_1ADF4(void)
         }
     }
 }
+
+void sub_1AF84(void)
+{
+    gCurrentPinballGame->unk1B8 = 0;
+    gCurrentPinballGame->unk1B6 = 0;
+    gCurrentPinballGame->unk28 = 0xB4;
+    gCurrentPinballGame->unk1BA = 0xB4;
+    gCurrentPinballGame->unk3C = 0x7A120;
+    gMain.blendControl = 0xCE;
+    gMain.blendBrightness = 0;
+    gCurrentPinballGame->unk5F7 = 1;
+}
