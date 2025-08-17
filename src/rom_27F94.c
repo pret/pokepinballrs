@@ -8,6 +8,7 @@ extern u8 gUnknown_020306D0[];
 extern const u8 gUnknown_0839C78C[];
 extern const u8 gUnknown_0839DBAC[];
 extern const u8 gUnknown_086ACF80[];
+extern const u8 gUnknown_081C0064[];
 
 
 void sub_27F94(void)
@@ -202,4 +203,39 @@ void sub_27F94(void)
         }
         break;
     }
+}
+
+void sub_28404(void)
+{
+    gCurrentPinballGame->unk17 = 0;
+    gCurrentPinballGame->unk18 = 0;
+    gCurrentPinballGame->unk294 = 1;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 1800;
+    gCurrentPinballGame->timerBonus = 0;
+    gCurrentPinballGame->unk5A5 = 0;
+    gCurrentPinballGame->unk5AA = 0;
+    gCurrentPinballGame->unk5A9 = 0;
+    gCurrentPinballGame->unk7C = 0;
+    gCurrentPinballGame->unk80 = 900;
+    gCurrentPinballGame->unk82 = -1400;
+    gCurrentPinballGame->unk73 = 0;
+    gCurrentPinballGame->unkBC = 0;
+    gCurrentPinballGame->unkBE = 0;
+    gCurrentPinballGame->unkC0 = 0;
+    gCurrentPinballGame->unkC2 = 0;
+    gCurrentPinballGame->unkC4 = 0;
+    gCurrentPinballGame->unkC6 = 0;
+    gCurrentPinballGame->unk72F = 0;
+    gCurrentPinballGame->unk731 = 0;
+    gCurrentPinballGame->unk74 = 0;
+    gCurrentPinballGame->unk76 = 10;
+    gCurrentPinballGame->unk78 = 20;
+    gCurrentPinballGame->unk7A = 30;
+    gCurrentPinballGame->unk724 = 3240;
+    gCurrentPinballGame->unk714 = 0;
+    gCurrentPinballGame->holeIndicators[0] = 0;
+    gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
+    gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
+    gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
+    DmaCopy16(3, gUnknown_081C0064, (void *)0x05000180, 0x20);
 }
