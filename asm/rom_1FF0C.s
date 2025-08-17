@@ -306,7 +306,7 @@ _08020136:
 	strb r4, [r0]
 	movs r0, #7
 	bl sub_11B0
-	movs r0, SE_UNKNOWN_0xB7
+	movs r0, 0xB7 @=SE_UNKNOWN_0xB7
 	bl m4aSongNumStart
 	ldr r0, [r6]
 	ldr r1, _080201A8 @ =0x00000BB8
@@ -1294,7 +1294,7 @@ _08020928:
 	ldr r1, [r2]
 	ldr r0, _08020A48 @ =0x0000FED4
 	strh r0, [r1, #0x32]
-	movs r0, SE_UNKNOWN_0x7C
+	movs r0, 0x7C @=SE_UNKNOWN_0x7C
 	bl m4aSongNumStart
 	mov r7, sl
 	ldr r1, [r7]
@@ -2302,7 +2302,7 @@ _0802114A:
 	lsls r1, r1, #1
 	adds r0, r0, r1
 	strh r4, [r0]
-	movs r0, SE_UNKNOWN_0x75
+	movs r0, 0x75 @=SE_UNKNOWN_0x75
 	bl m4aSongNumStart
 	b _08021210
 	.align 2, 0
@@ -3049,11 +3049,11 @@ _080217AC: @ jump table
 	.4byte _080217C8 @ case 3
 	.4byte _080217C8 @ case 4
 _080217C0:
-	movs r0, MUS_BONUS_CHANCE
+	movs r0, 0x0E @ =MUS_BONUS_CHANCE
 	bl m4aSongNumStart
 	b _080217CE
 _080217C8:
-	movs r0, MUS_BONUS_CHANCE_LEGENDARY
+	movs r0, 0x0F @ =MUS_BONUS_CHANCE_LEGENDARY
 	bl m4aSongNumStart
 _080217CE:
 	bl sub_219A8
@@ -3145,7 +3145,7 @@ _0802187C:
 	cmp r0, #0
 	beq _080218B0
 	bl m4aMPlayAllStop
-	movs r0, SE_UNKNOWN_0x66
+	movs r0, 0x66 @=SE_UNKNOWN_0x66
 	bl m4aSongNumStart
 	ldr r1, [r4]
 	movs r0, #0x3c
@@ -3180,7 +3180,7 @@ _080218C4:
 	ldrh r0, [r0, #0x28]
 	cmp r0, #0x82
 	bne _080218E2
-	movs r0, SE_UNKNOWN_0x9F
+	movs r0, 0x9F @=SE_UNKNOWN_0x9F
 	bl m4aSongNumStart
 	ldr r1, [r4]
 	movs r0, #0x41
@@ -3902,7 +3902,7 @@ _08021E90: .4byte 0x80000010
 _08021E94:
 	cmp r4, #0x25
 	bne _08021E9E
-	movs r0, SE_UNKNOWN_0xCA
+	movs r0, 0xCA @=SE_UNKNOWN_0xCA
 	bl m4aSongNumStart
 _08021E9E:
 	ldr r4, _08021F90 @ =gCurrentPinballGame
