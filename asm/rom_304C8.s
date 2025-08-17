@@ -251,7 +251,7 @@ _08030696:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _080306BA
-	movs r0, MUS_EGG_MODE_START
+	movs r0, 0x16 @ =MUS_EGG_MODE_START
 	bl m4aSongNumStart
 _080306BA:
 	ldr r5, _08030784 @ =gCurrentPinballGame
@@ -273,7 +273,7 @@ _080306D2:
 	asrs r0, r0, #0x18
 	cmp r0, #0x1c
 	bne _080306E6
-	movs r0, SE_UNKNOWN_0x92
+	movs r0, 0x92 @=SE_UNKNOWN_0x92
 	bl m4aSongNumStart
 _080306E6:
 	ldr r2, _0803078C @ =gUnknown_086AD2EE
@@ -768,7 +768,7 @@ _08030AAC:
 	bhi _08030B58
 	cmp r0, #0
 	bne _08030AC6
-	movs r0, SE_UNKNOWN_0xE9
+	movs r0, 0xE9 @=SE_UNKNOWN_0xE9
 	bl m4aSongNumStart
 _08030AC6:
 	mov r1, sb
@@ -778,7 +778,7 @@ _08030AC6:
 	ldrh r0, [r0]
 	cmp r0, #0x1a
 	bne _08030ADA
-	movs r0, SE_UNKNOWN_0xEA
+	movs r0, 0xEA @=SE_UNKNOWN_0xEA
 	bl m4aSongNumStart
 _08030ADA:
 	mov r3, sb
@@ -946,7 +946,7 @@ _08030C10:
 	ands r4, r0
 	cmp r4, #0
 	bne _08030C28
-	movs r0, SE_UNKNOWN_0xEB
+	movs r0, 0xEB @=SE_UNKNOWN_0xEB
 	bl m4aSongNumStart
 _08030C28:
 	mov r0, sb

@@ -429,7 +429,7 @@ _08025650:
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	bne _0802566C
-	movs r0, SE_UNKNOWN_0x8C
+	movs r0, 0x8C @=SE_UNKNOWN_0x8C
 	bl m4aSongNumStart
 	bl sub_29664
 _0802566C:
@@ -732,7 +732,7 @@ _080258A8:
 	movs r4, #0
 	movs r0, #1
 	strh r0, [r1]
-	movs r0, SE_UNKNOWN_0x8D
+	movs r0, 0x8D @=SE_UNKNOWN_0x8D
 	bl m4aSongNumStart
 	ldr r1, [r7]
 	ldr r0, _08025920 @ =0x00000602
@@ -1144,7 +1144,7 @@ _08025C18:
 	adds r0, #1
 	strb r0, [r1]
 	bl sub_29924
-	movs r0, SE_UNKNOWN_0x8E
+	movs r0, 0x8E @=SE_UNKNOWN_0x8E
 	bl m4aSongNumStart
 	b _08025F36
 	.align 2, 0
@@ -2198,7 +2198,7 @@ _08026494:
 	ldr r1, [r0]
 	movs r0, #1
 	strh r0, [r1]
-	movs r0, SE_UNKNOWN_0x93
+	movs r0, 0x93 @=SE_UNKNOWN_0x93
 	bl m4aSongNumStart
 _080264E2:
 	ldr r6, _0802655C @ =gCurrentPinballGame
@@ -2326,7 +2326,7 @@ _080265A8:
 	movs r0, #0
 	movs r1, #1
 	bl sub_1C7F4
-	movs r0, SE_UNKNOWN_0x81
+	movs r0, 0x81 @=SE_UNKNOWN_0x81
 	bl m4aSongNumStart
 	b _0802674E
 	.align 2, 0
@@ -2862,7 +2862,7 @@ sub_26A10: @ 0x08026A10
 	cmp r0, #5
 	bgt _08026A4C
 	bl m4aMPlayAllStop
-	movs r0, MUS_END_OF_BALL2
+	movs r0, 0x13 @ =MUS_END_OF_BALL2
 	bl m4aSongNumStart
 	ldr r0, [r4]
 	movs r1, #0xc8
@@ -2931,7 +2931,7 @@ _08026AC4:
 	ldrh r0, [r0, #0x18]
 	cmp r0, #0x23
 	bne _08026ADC
-	movs r0, MUS_TRAVEL_MODE
+	movs r0, 0x17 @ =MUS_TRAVEL_MODE
 	bl m4aSongNumStart
 _08026ADC:
 	ldr r1, [r4]
@@ -2950,7 +2950,7 @@ _08026ADC:
 	ldrh r0, [r0, #0x18]
 	cmp r0, #0x22
 	bhi _08026B02
-	movs r0, MUS_TRAVEL_MODE
+	movs r0, 0x17 @ =MUS_TRAVEL_MODE
 	bl m4aSongNumStart
 _08026B02:
 	ldr r0, [r4]
@@ -3274,7 +3274,7 @@ _08026D92:
 	cmp r0, #0
 	beq _08026DC6
 	bl m4aMPlayAllStop
-	movs r0, SE_UNKNOWN_0x66
+	movs r0, 0x66 @=SE_UNKNOWN_0x66
 	bl m4aSongNumStart
 	ldr r1, [r4]
 	movs r0, #0x3c
@@ -3656,7 +3656,7 @@ sub_27080: @ 0x08027080
 	cmp r0, #7
 	bgt _080270C0
 	bl m4aMPlayAllStop
-	movs r0, MUS_END_OF_BALL2
+	movs r0, 0x13 @ =MUS_END_OF_BALL2
 	bl m4aSongNumStart
 	ldr r0, [r4]
 	movs r1, #0xc8
@@ -4211,7 +4211,7 @@ _08027520:
 	cmp r1, #0
 	bne _08027534
 	bl sub_2312C
-	movs r0, MUS_SUCCESS2
+	movs r0, 0x12 @ =MUS_SUCCESS2
 	bl m4aSongNumStart
 	b _0802758E
 	.align 2, 0

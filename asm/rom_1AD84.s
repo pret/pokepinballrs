@@ -254,7 +254,7 @@ _0801B332:
 	beq _0801B344
 	b _0801B44A
 _0801B344:
-	movs r0, MUS_SHOP
+	movs r0, 0x0B @ =MUS_SHOP
 	bl m4aSongNumStart
 	ldr r0, [r5]
 	movs r1, #0xd3
@@ -325,7 +325,7 @@ _0801B344:
 	movs r1, #0xf
 	strh r1, [r0]
 	strh r3, [r2, #0x28]
-	movs r0, SE_UNKNOWN_0x8F
+	movs r0, 0x8F @=SE_UNKNOWN_0x8F
 	bl m4aSongNumStart
 	mov r5, r8
 	ldr r1, [r5]
@@ -518,7 +518,7 @@ _0801B552:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bne _0801B5B2
-	movs r0, SE_UNKNOWN_0x82
+	movs r0, 0x82 @=SE_UNKNOWN_0x82
 	bl m4aSongNumStart
 	mov r1, r8
 	ldr r0, [r1]
@@ -567,7 +567,7 @@ _0801B5B2:
 	ldrsb r4, [r0, r4]
 	cmp r4, #0
 	bne _0801B614
-	movs r0, SE_UNKNOWN_0x82
+	movs r0, 0x82 @=SE_UNKNOWN_0x82
 	bl m4aSongNumStart
 	ldr r0, [r5]
 	movs r2, #0xd3
@@ -831,7 +831,7 @@ _0801B7AC:
 	subs r0, r0, r3
 	strb r0, [r1]
 	bl m4aMPlayAllStop
-	movs r0, SE_UNKNOWN_0x83
+	movs r0, 0x83 @=SE_UNKNOWN_0x83
 	bl m4aSongNumStart
 	ldr r0, [r4]
 	ldr r2, _0801B81C @ =0x000001AB
@@ -854,7 +854,7 @@ _0801B818: .4byte 0x000006DC
 _0801B81C: .4byte 0x000001AB
 _0801B820: .4byte 0x00000376
 _0801B824:
-	movs r0, SE_FAILURE
+	movs r0, 0x8A @ SE_FAILURE
 	bl m4aSongNumStart
 	b _0801B85E
 _0801B82C:
@@ -880,7 +880,7 @@ _0801B82C:
 	lsls r6, r6, #1
 	adds r0, r2, r6
 	strh r1, [r0]
-	movs r0, SE_UNKNOWN_0x66
+	movs r0, 0x66 @=SE_UNKNOWN_0x66
 	bl m4aSongNumStart
 _0801B85E:
 	ldr r0, _0801B928 @ =gCurrentPinballGame
@@ -1130,7 +1130,7 @@ _0801BA4A:
 	ands r0, r1
 	cmp r0, #0
 	bne _0801BA94
-	movs r0, MUS_FIELD_RUBY
+	movs r0, 0x1C @ =MUS_FIELD_RUBY
 	bl m4aSongNumStart
 	b _0801BAC6
 	.align 2, 0
@@ -1143,7 +1143,7 @@ _0801BA88: .4byte 0x00000252
 _0801BA8C: .4byte gMain
 _0801BA90: .4byte 0x00000283
 _0801BA94:
-	movs r0, MUS_FIELD_RUBY2
+	movs r0, 0x5B @ =MUS_FIELD_RUBY2
 	bl m4aSongNumStart
 	b _0801BAC6
 _0801BA9C:
@@ -1158,13 +1158,13 @@ _0801BA9C:
 	ands r0, r1
 	cmp r0, #0
 	bne _0801BAC0
-	movs r0, MUS_FIELD_SAPPHIRE
+	movs r0, 0x20 @ =MUS_FIELD_SAPPHIRE
 	bl m4aSongNumStart
 	b _0801BAC6
 	.align 2, 0
 _0801BABC: .4byte 0x00000283
 _0801BAC0:
-	movs r0, MUS_FIELD_SAPPHIRE2
+	movs r0, 0x5C @ =MUS_FIELD_SAPPHIRE2
 	bl m4aSongNumStart
 _0801BAC6:
 	ldr r0, _0801BAE4 @ =gCurrentPinballGame
@@ -1454,7 +1454,7 @@ _0801BCF8:
 	ldrb r0, [r0, #4]
 	cmp r0, #0
 	bne _0801BD50
-	movs r0, MUS_EVO_MODE
+	movs r0, 0x1E @ =MUS_EVO_MODE
 	bl m4aSongNumStart
 	b _0801BD56
 	.align 2, 0
@@ -1476,7 +1476,7 @@ _0801BD44: .4byte 0x05000180
 _0801BD48: .4byte 0x0000025D
 _0801BD4C: .4byte gSpeciesInfo
 _0801BD50:
-	movs r0, MUS_EVO_MODE2
+	movs r0, 0x22 @ =MUS_EVO_MODE2
 	bl m4aSongNumStart
 _0801BD56:
 	adds r0, r7, #0
@@ -1630,7 +1630,7 @@ _0801BE84:
 	ands r0, r1
 	cmp r0, #0
 	beq _0801BEEC
-	movs r0, SE_UNKNOWN_0x82
+	movs r0, 0x82 @=SE_UNKNOWN_0x82
 	bl m4aSongNumStart
 	ldr r2, [r4]
 	movs r3, #0xa0
@@ -1681,7 +1681,7 @@ _0801BEEC:
 	ands r0, r1
 	cmp r0, #0
 	beq _0801BFA6
-	movs r0, SE_UNKNOWN_0x82
+	movs r0, 0x82 @=SE_UNKNOWN_0x82
 	bl m4aSongNumStart
 	ldr r0, [r4]
 	movs r1, #0xa0
@@ -1800,7 +1800,7 @@ _0801BFA6:
 	ldrb r5, [r0, #0x15]
 	cmp r5, #0xcc
 	bgt _0801C058
-	movs r0, SE_UNKNOWN_0x82
+	movs r0, 0x82 @=SE_UNKNOWN_0x82
 	bl m4aSongNumStart
 	ldr r1, [r6]
 	ldr r4, _0801C010 @ =0x0000059A
@@ -1837,7 +1837,7 @@ _0801C014:
 	ldrb r5, [r0, #0x15]
 	cmp r5, #0xcc
 	bgt _0801C058
-	movs r0, SE_UNKNOWN_0x82
+	movs r0, 0x82 @=SE_UNKNOWN_0x82
 	bl m4aSongNumStart
 	ldr r1, [r6]
 	ldr r2, _0801C068 @ =0x0000059A
@@ -1891,7 +1891,7 @@ _0801C070:
 	ldrsh r0, [r0, r3]
 	cmp r0, #0xcc
 	bgt _0801C10C
-	movs r0, SE_UNKNOWN_0x82
+	movs r0, 0x82 @=SE_UNKNOWN_0x82
 	bl m4aSongNumStart
 	ldr r1, [r6]
 	ldr r2, _0801C0C0 @ =0x0000059A
@@ -1925,7 +1925,7 @@ _0801C0C4:
 	ldrb r5, [r0, #0x15]
 	cmp r5, #0xcc
 	bgt _0801C10C
-	movs r0, SE_UNKNOWN_0x82
+	movs r0, 0x82 @=SE_UNKNOWN_0x82
 	bl m4aSongNumStart
 	ldr r1, [r6]
 	ldr r4, _0801C14C @ =0x0000059A
@@ -2213,7 +2213,7 @@ _0801C2D8:
 	ldr r0, [r5]
 	adds r0, r0, r4
 	strh r2, [r0]
-	movs r0, SE_UNKNOWN_0x83
+	movs r0, 0x83 @=SE_UNKNOWN_0x83
 	bl m4aSongNumStart
 _0801C31A:
 	ldr r0, _0801C38C @ =gCurrentPinballGame
@@ -2623,7 +2623,7 @@ _0801C644:
 _0801C658:
 	cmp r0, #0x18
 	bne _0801C6B0
-	movs r0, SE_UNKNOWN_0x80
+	movs r0, 0x80 @=SE_UNKNOWN_0x80
 	bl m4aSongNumStart
 	ldr r0, [r5]
 	movs r1, #0xe6

@@ -161,7 +161,7 @@ _0802E7D4:
 	strh r2, [r1, #0x32]
 	ldr r0, [r0]
 	strh r2, [r0, #6]
-	movs r0, SE_UNKNOWN_0xE2
+	movs r0, 0xE2 @=SE_UNKNOWN_0xE2
 	bl m4aSongNumStart
 	movs r0, #7
 	bl sub_11B0
@@ -323,7 +323,7 @@ _0802E948:
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	bne _0802E95C
-	movs r0, SE_UNKNOWN_0xE3
+	movs r0, 0xE3 @=SE_UNKNOWN_0xE3
 	bl m4aSongNumStart
 _0802E95C:
 	ldr r2, _0802E994 @ =gUnknown_086AE3DC
@@ -537,7 +537,7 @@ _0802EB06:
 	beq _0802EB1A
 	b _0802EFFC
 _0802EB1A:
-	movs r0, SE_UNKNOWN_0xE3
+	movs r0, 0xE3 @=SE_UNKNOWN_0xE3
 	bl m4aSongNumStart
 	b _0802EFFC
 	.align 2, 0
@@ -566,7 +566,7 @@ _0802EB2C:
 	ldrh r0, [r0]
 	cmp r0, #0x41
 	bne _0802EB66
-	movs r0, SE_UNKNOWN_0x9F
+	movs r0, 0x9F @=SE_UNKNOWN_0x9F
 	bl m4aSongNumStart
 	ldr r0, _0802EBCC @ =gMain
 	ldrh r1, [r0, #0x38]
@@ -710,7 +710,7 @@ _0802EC40:
 	ldrh r0, [r4]
 	cmp r0, #0
 	bne _0802EC9A
-	movs r0, SE_UNKNOWN_0xE4
+	movs r0, 0xE4 @=SE_UNKNOWN_0xE4
 	bl m4aSongNumStart
 _0802EC9A:
 	ldr r2, [r6]
@@ -762,7 +762,7 @@ _0802ECE0:
 	adds r1, r1, r5
 	ldr r0, _0802EDFC @ =0x0000FC18
 	strh r0, [r1]
-	movs r0, SE_UNKNOWN_0xE3
+	movs r0, 0xE3 @=SE_UNKNOWN_0xE3
 	bl m4aSongNumStart
 	ldr r0, [r6]
 	movs r1, #0xc4
@@ -957,7 +957,7 @@ _0802EE14:
 	ldr r0, [r7]
 	adds r0, #0x24
 	strb r5, [r0]
-	movs r0, SE_UNKNOWN_0xE5
+	movs r0, 0xE5 @=SE_UNKNOWN_0xE5
 	bl m4aSongNumStart
 	movs r0, #7
 	bl sub_11B0
@@ -1594,7 +1594,7 @@ _0802F384:
 	ldr r0, _0802F400 @ =0x80000600
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
-	movs r0, SE_UNKNOWN_0xEC
+	movs r0, 0xEC @=SE_UNKNOWN_0xEC
 	bl m4aSongNumStart
 	ldr r1, [r5]
 	ldr r0, _0802F404 @ =0x00001388
@@ -2214,7 +2214,7 @@ _0802F8BC:
 	ldrsb r0, [r1, r0]
 	cmp r0, #5
 	bne _0802F8EC
-	movs r0, SE_UNKNOWN_0xE6
+	movs r0, 0xE6 @=SE_UNKNOWN_0xE6
 	bl m4aSongNumStart
 	ldr r1, [r7]
 	movs r0, #0xfa
@@ -2314,7 +2314,7 @@ _0802F980:
 	ldrsb r0, [r1, r0]
 	cmp r0, #8
 	bne _0802F9AC
-	movs r0, SE_UNKNOWN_0xE7
+	movs r0, 0xE7 @=SE_UNKNOWN_0xE7
 	bl m4aSongNumStart
 _0802F9AC:
 	mov r1, r8
@@ -2564,7 +2564,7 @@ _0802FB78:
 	beq _0802FBCE
 	cmp r0, #0x11
 	bne _0802FB9E
-	movs r0, SE_UNKNOWN_0xE8
+	movs r0, 0xE8 @=SE_UNKNOWN_0xE8
 	bl m4aSongNumStart
 	ldr r1, [r4]
 	movs r0, #0xa
@@ -3311,7 +3311,7 @@ _080301A0:
 	movs r0, #0xfa
 	lsls r0, r0, #1
 	str r0, [r3, #0x3c]
-	movs r0, SE_UNKNOWN_0xB6
+	movs r0, 0xB6 @=SE_UNKNOWN_0xB6
 	bl m4aSongNumStart
 	movs r0, #7
 	bl sub_11B0

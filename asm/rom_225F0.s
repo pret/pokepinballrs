@@ -172,7 +172,7 @@ _080226F0:
 	adds r1, r2, r5
 	movs r0, #0x8c
 	strh r0, [r1]
-	movs r0, SE_UNKNOWN_0x7E
+	movs r0, 0x7E @=SE_UNKNOWN_0x7E
 	bl m4aSongNumStart
 	mov r6, sl
 	ldr r1, [r6]
@@ -255,7 +255,7 @@ _080227A4:
 	ldrb r0, [r6]
 	adds r0, #1
 	strb r0, [r6]
-	movs r0, SE_UNKNOWN_0x7E
+	movs r0, 0x7E @=SE_UNKNOWN_0x7E
 	bl m4aSongNumStart
 	mov r6, sl
 	ldr r1, [r6]
@@ -947,7 +947,7 @@ _08022D82:
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08022D96
-	movs r0, SE_UNKNOWN_0xB8
+	movs r0, 0xB8 @=SE_UNKNOWN_0xB8
 	bl m4aSongNumStart
 _08022D96:
 	mov r2, sl
@@ -2718,7 +2718,7 @@ _08023B9E:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _08023BC2
-	movs r0, MUS_EGG_MODE_START
+	movs r0, 0x16 @ =MUS_EGG_MODE_START
 	bl m4aSongNumStart
 _08023BC2:
 	ldr r5, _08023C94 @ =gCurrentPinballGame
@@ -2740,7 +2740,7 @@ _08023BDA:
 	asrs r0, r0, #0x18
 	cmp r0, #0x1c
 	bne _08023BEE
-	movs r0, SE_UNKNOWN_0x92
+	movs r0, 0x92 @=SE_UNKNOWN_0x92
 	bl m4aSongNumStart
 _08023BEE:
 	ldr r2, _08023CA0 @ =gUnknown_086AD2EE
@@ -3296,7 +3296,7 @@ _08024004:
 	ldrsh r0, [r1, r2]
 	lsls r0, r0, #1
 	strh r0, [r1, #0x2a]
-	movs r0, SE_UNKNOWN_0xB9
+	movs r0, 0xB9 @=SE_UNKNOWN_0xB9
 	bl m4aSongNumStart
 	ldr r0, [r7]
 	ldr r3, _08024084 @ =0x000005FA
@@ -3900,7 +3900,7 @@ _08024520:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _0802453E
-	movs r0, MUS_EGG_MODE
+	movs r0, 0x15 @ =MUS_EGG_MODE
 	bl m4aSongNumStart
 _0802453E:
 	ldr r4, _0802459C @ =gCurrentPinballGame
@@ -4194,7 +4194,7 @@ _08024784:
 	adds r1, r4, r3
 	movs r0, #3
 	strb r0, [r1]
-	movs r0, SE_UNKNOWN_0xDD
+	movs r0, 0xDD @=SE_UNKNOWN_0xDD
 	bl m4aSongNumStart
 _080247AA:
 	movs r5, #0
@@ -4225,7 +4225,7 @@ _080247BC:
 	movs r0, #2
 	mov sl, r0
 	movs r5, #0
-	movs r0, MUS_EGG_MODE
+	movs r0, 0x15 @ =MUS_EGG_MODE
 	bl m4aSongNumStart
 	b _0802499E
 	.align 2, 0
@@ -4744,7 +4744,7 @@ _08024C24: .4byte gCurrentPinballGame
 _08024C28: .4byte 0x000009C3
 _08024C2C:
 	bl m4aMPlayAllStop
-	movs r0, MUS_END_OF_BALL
+	movs r0, 0x0D @ =MUS_END_OF_BALL
 	bl m4aSongNumStart
 	ldr r0, [r4]
 	movs r1, #0xc8
@@ -4996,7 +4996,7 @@ _08024E0A:
 	movs r0, #4
 	strb r0, [r1, #0x17]
 _08024E38:
-	movs r0, SE_UNKNOWN_0x75
+	movs r0, 0x75 @=SE_UNKNOWN_0x75
 	bl m4aSongNumStart
 	ldr r1, _08024EA8 @ =gCurrentPinballGame
 	ldr r0, [r1]

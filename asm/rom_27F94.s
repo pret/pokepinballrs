@@ -29,7 +29,7 @@ sub_27F94: @ 0x08027F94
 	cmp r0, #9
 	bgt _08027FD0
 	bl m4aMPlayAllStop
-	movs r0, MUS_END_OF_BALL2
+	movs r0, 0x13 @ =MUS_END_OF_BALL2
 	bl m4aSongNumStart
 	ldr r0, [r4]
 	movs r1, #0xc8
@@ -177,7 +177,7 @@ _080280F4:
 	beq _08028136
 	cmp r0, #0x49
 	bne _08028118
-	movs r0, MUS_CATCH_EM_MODE
+	movs r0, 0x1D @ =MUS_CATCH_EM_MODE
 	bl m4aSongNumStart
 	b _080281F6
 	.align 2, 0
@@ -275,7 +275,7 @@ _080281D0: .4byte 0x80000010
 _080281D4:
 	cmp r0, #0x2f
 	bne _080281E0
-	movs r0, MUS_CATCH_EM_MODE2
+	movs r0, 0x21 @ =MUS_CATCH_EM_MODE2
 	bl m4aSongNumStart
 	b _080281F6
 _080281E0:
@@ -339,7 +339,7 @@ _08028230:
 	ldr r0, _08028280 @ =0x80000010
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
-	movs r0, SE_UNKNOWN_0xA7
+	movs r0, 0xA7 @=SE_UNKNOWN_0xA7
 	bl m4aSongNumStart
 	ldr r1, [r5]
 	ldrb r0, [r1, #0x17]
@@ -840,7 +840,7 @@ _08028684:
 	cmp r0, #0x2f
 	bne _08028690
 _08028688:
-	movs r0, MUS_JIRACHI
+	movs r0, 0x2F @ =MUS_JIRACHI
 	bl m4aSongNumStart
 	b _08028AD2
 _08028690:
@@ -1253,7 +1253,7 @@ _080289D6:
 	b _08028AD2
 _080289E0:
 	bl m4aMPlayAllStop
-	movs r0, MUS_END_OF_BALL2
+	movs r0, 0x13 @ =MUS_END_OF_BALL2
 	bl m4aSongNumStart
 	mov r4, r8
 	ldr r1, [r4]
@@ -4425,7 +4425,7 @@ sub_2A354: @ 0x0802A354
 	bhi _0802A3A6
 	cmp r0, #4
 	bne _0802A36E
-	movs r0, MUS_UNKNOWN_0x14
+	movs r0, 0x14 @ =MUS_UNKNOWN_0x14
 	bl m4aSongNumStart
 _0802A36E:
 	ldr r1, [r4]
@@ -4438,7 +4438,7 @@ _0802A36E:
 	ldrh r0, [r0]
 	cmp r0, #0x78
 	bne _0802A388
-	movs r0, SE_UNKNOWN_0xB2
+	movs r0, 0xB2 @=SE_UNKNOWN_0xB2
 	bl m4aSongNumStart
 _0802A388:
 	ldr r0, _0802A3C4 @ =gCurrentPinballGame
@@ -5243,7 +5243,7 @@ _0802AA24:
 	ldrh r0, [r0]
 	cmp r0, #0x46
 	bne _0802AAD2
-	movs r0, SE_UNKNOWN_0x91
+	movs r0, 0x91 @=SE_UNKNOWN_0x91
 	bl m4aSongNumStart
 	ldr r1, [r5]
 	movs r0, #0x64
@@ -5258,7 +5258,7 @@ _0802AA44:
 	ldrh r0, [r0]
 	cmp r0, #0x46
 	bne _0802AAD2
-	movs r0, SE_UNKNOWN_0x91
+	movs r0, 0x91 @=SE_UNKNOWN_0x91
 	bl m4aSongNumStart
 	ldr r1, [r5]
 	movs r0, #0xfa
@@ -5274,7 +5274,7 @@ _0802AA64:
 	ldrh r0, [r0]
 	cmp r0, #0x46
 	bne _0802AAD2
-	movs r0, SE_UNKNOWN_0x91
+	movs r0, 0x91 @=SE_UNKNOWN_0x91
 	bl m4aSongNumStart
 	ldr r1, [r5]
 	movs r0, #0xe1
