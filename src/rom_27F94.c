@@ -3,14 +3,18 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
+extern u8 gUnknown_0202C7A0[];
 extern u8 gUnknown_020306D0[];
 extern u8 gUnknown_02030760[];
+extern u8 gUnknown_020315D0[];
 
 extern const u8 gUnknown_0839C78C[];
 extern const u8 gUnknown_0839DBAC[];
 extern const u8 gUnknown_086ACF80[];
 extern const u8 gUnknown_081C0064[];
 extern const struct Vector16 gUnknown_086AE124[];
+extern const u8 *gMonHatchSpriteGroupGfx[];
+extern const u8 *gMonHatchSpriteGroupPals[];
 
 extern struct SongHeader gUnknown_0869F58C;
 
@@ -466,4 +470,198 @@ void sub_28544(void)
             gCurrentPinballGame->unk17 = 0;
         }
     }
+}
+
+extern const u8 *gUnknown_086BB6F4[];
+extern const u8 *gUnknown_086B15B4[];
+
+extern u8 gUnknown_02030730[];
+
+#ifdef NONMATCHING
+void sub_28AE0(void)
+{
+    s16 i;
+    const u8 *sp0[3];
+    const u8 *spC[3];
+    s16 var0;
+    int var1;
+    s16 var2;
+    const struct PokemonSpecies *speciesInfo;
+    const u8 *src0;
+    const u8 *src1;
+    int catchIndex;
+
+    catchIndex = gSpeciesInfo[gCurrentPinballGame->currentSpecies].catchIndex;
+    for (i = 0; i < 3; i++)
+    {
+        var2 = catchIndex;
+        var0 = var2 / 5;
+        var1 = var2 % 5;
+        sp0[i] = gUnknown_086BB6F4[var0] + (var1 * 3 + i) * 0x480;
+        spC[i] = gUnknown_086B15B4[var0] + (var1 + i * 5) * 0x20;
+    }
+
+    for (i = 0; i < 3; i++)
+    {
+        do {
+            DmaCopy16(3, sp0[i], &gUnknown_02030760[i * 0x480], 0x480);
+            DmaCopy16(3, spC[i], &gUnknown_020306D0[i * 0x20], 0x20);
+        } while (0);
+    }
+
+    DmaCopy16(3, gUnknown_086B15B4[0] + (15 * 0x20), gUnknown_02030730, 0x20);
+}
+#else
+NAKED
+void sub_28AE0(void)
+{
+    asm_unified("\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	sub sp, #0x18\n\
+	ldr r2, _08028BD4 @ =gSpeciesInfo\n\
+	ldr r0, _08028BD8 @ =gCurrentPinballGame\n\
+	ldr r0, [r0]\n\
+	movs r1, #0xb3\n\
+	lsls r1, r1, #3\n\
+	adds r0, r0, r1\n\
+	ldrh r1, [r0]\n\
+	lsls r0, r1, #1\n\
+	adds r0, r0, r1\n\
+	lsls r0, r0, #3\n\
+	adds r0, r0, r2\n\
+	movs r7, #0\n\
+	ldr r6, _08028BDC @ =gUnknown_086BB6F4\n\
+	add r3, sp, #0xc\n\
+	mov r8, r3\n\
+	ldr r4, _08028BE0 @ =gUnknown_02030760\n\
+	mov sl, r4\n\
+	ldr r1, _08028BE4 @ =gUnknown_020306D0\n\
+	mov sb, r1\n\
+	ldrb r5, [r0, #0x11]\n\
+	adds r0, r5, #0\n\
+	movs r1, #5\n\
+	bl __divsi3\n\
+	adds r4, r0, #0\n\
+	adds r0, r5, #0\n\
+	movs r1, #5\n\
+	bl __modsi3\n\
+	lsls r4, r4, #0x10\n\
+	asrs r4, r4, #0xe\n\
+	adds r6, r4, r6\n\
+	lsls r0, r0, #0x10\n\
+	asrs r5, r0, #0x10\n\
+	ldr r6, [r6]\n\
+	mov ip, r6\n\
+	ldr r3, _08028BE8 @ =gUnknown_086B15B4\n\
+	adds r4, r4, r3\n\
+	ldr r6, [r4]\n\
+_08028B3A:\n\
+	lsls r3, r7, #0x10\n\
+	asrs r3, r3, #0x10\n\
+	lsls r2, r3, #2\n\
+	mov r0, sp\n\
+	adds r4, r0, r2\n\
+	lsls r1, r5, #1\n\
+	adds r1, r1, r5\n\
+	adds r1, r3, r1\n\
+	lsls r0, r1, #3\n\
+	adds r0, r0, r1\n\
+	lsls r0, r0, #7\n\
+	add r0, ip\n\
+	str r0, [r4]\n\
+	mov r1, r8\n\
+	adds r0, r1, r2\n\
+	adds r2, r2, r3\n\
+	adds r2, r2, r5\n\
+	lsls r2, r2, #5\n\
+	adds r2, r6, r2\n\
+	str r2, [r0]\n\
+	adds r3, #1\n\
+	lsls r3, r3, #0x10\n\
+	lsrs r7, r3, #0x10\n\
+	asrs r3, r3, #0x10\n\
+	cmp r3, #2\n\
+	ble _08028B3A\n\
+	movs r7, #0\n\
+	ldr r3, _08028BEC @ =0x040000D4\n\
+_08028B72:\n\
+	lsls r1, r7, #0x10\n\
+	asrs r1, r1, #0x10\n\
+	lsls r2, r1, #2\n\
+	mov r4, sp\n\
+	adds r0, r4, r2\n\
+	ldr r0, [r0]\n\
+	str r0, [r3]\n\
+	lsls r0, r1, #3\n\
+	adds r0, r0, r1\n\
+	lsls r0, r0, #7\n\
+	add r0, sl\n\
+	str r0, [r3, #4]\n\
+	ldr r0, _08028BF0 @ =0x80000240\n\
+	str r0, [r3, #8]\n\
+	ldr r0, [r3, #8]\n\
+	add r2, r8\n\
+	ldr r0, [r2]\n\
+	str r0, [r3]\n\
+	lsls r0, r1, #5\n\
+	add r0, sb\n\
+	str r0, [r3, #4]\n\
+	ldr r2, _08028BF4 @ =0x80000010\n\
+	str r2, [r3, #8]\n\
+	ldr r0, [r3, #8]\n\
+	adds r1, #1\n\
+	lsls r1, r1, #0x10\n\
+	lsrs r7, r1, #0x10\n\
+	asrs r1, r1, #0x10\n\
+	cmp r1, #2\n\
+	ble _08028B72\n\
+	ldr r0, _08028BEC @ =0x040000D4\n\
+	ldr r3, _08028BE8 @ =gUnknown_086B15B4\n\
+	ldr r1, [r3]\n\
+	movs r4, #0xf0\n\
+	lsls r4, r4, #1\n\
+	adds r1, r1, r4\n\
+	str r1, [r0]\n\
+	ldr r1, _08028BF8 @ =gUnknown_02030730\n\
+	str r1, [r0, #4]\n\
+	str r2, [r0, #8]\n\
+	ldr r0, [r0, #8]\n\
+	add sp, #0x18\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+_08028BD4: .4byte gSpeciesInfo\n\
+_08028BD8: .4byte gCurrentPinballGame\n\
+_08028BDC: .4byte gUnknown_086BB6F4\n\
+_08028BE0: .4byte gUnknown_02030760\n\
+_08028BE4: .4byte gUnknown_020306D0\n\
+_08028BE8: .4byte gUnknown_086B15B4\n\
+_08028BEC: .4byte 0x040000D4\n\
+_08028BF0: .4byte 0x80000240\n\
+_08028BF4: .4byte 0x80000010\n\
+_08028BF8: .4byte gUnknown_02030730\n\
+    ");
+}
+#endif
+
+void sub_28BFC(void)
+{
+    s16 eggIndex;
+    const u8 *src0;
+    const u8 *src1;
+
+    eggIndex= gSpeciesInfo[gCurrentPinballGame->currentSpecies].eggIndex;
+    src0 = gMonHatchSpriteGroupGfx[eggIndex / 6] + (eggIndex % 6) * 0x10E0;
+    src1 = gMonHatchSpriteGroupPals[eggIndex / 6] + (eggIndex % 6) * 0x20;
+    DmaCopy16(3, src0, gUnknown_0202C7A0, 0x10E0);
+    DmaCopy16(3, src1, gUnknown_020315D0, 0x20);
 }
