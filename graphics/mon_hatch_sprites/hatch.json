@@ -1,0 +1,178 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 3,
+    "mheight": 3,
+    "width": 15,
+    "oam": true
+  },
+  "rules": [],
+  "files": [
+    {
+      "f": "aron_hatch",
+      "tileCount": 135,
+      "palette": "aron_hatch.gbapal"
+    },
+    {
+      "f": "azurill_hatch",
+      "tileCount": 135,
+      "palette": "azurill_hatch.gbapal"
+    },
+    {
+      "f": "bagon_hatch",
+      "tileCount": 135,
+      "palette": "bagon_hatch.gbapal"
+    },
+    {
+      "f": "chimecho_hatch",
+      "tileCount": 135,
+      "palette": "chimecho_hatch.gbapal"
+    },
+    {
+      "f": "chinchou_hatch",
+      "tileCount": 135,
+      "palette": "chinchou_hatch.gbapal"
+    },
+    {
+      "f": "corsola_hatch",
+      "tileCount": 135,
+      "palette": "corsola_hatch.gbapal"
+    },
+    {
+      "f": "gulpin_hatch",
+      "tileCount": 135,
+      "palette": "gulpin_hatch.gbapal"
+    },
+    {
+      "f": "horsea_hatch",
+      "tileCount": 135,
+      "palette": "horsea_hatch.gbapal"
+    },
+    {
+      "f": "igglybuff_hatch",
+      "tileCount": 135,
+      "palette": "igglybuff_hatch.gbapal"
+    },
+    {
+      "f": "lotad_hatch",
+      "tileCount": 135,
+      "palette": "lotad_hatch.gbapal"
+    },
+    {
+      "f": "minun_hatch",
+      "tileCount": 135,
+      "palette": "minun_hatch.gbapal"
+    },
+    {
+      "f": "natu_hatch",
+      "tileCount": 135,
+      "palette": "natu_hatch.gbapal"
+    },
+    {
+      "f": "oddish_hatch",
+      "tileCount": 135,
+      "palette": "oddish_hatch.gbapal"
+    },
+    {
+      "f": "phanpy_hatch",
+      "tileCount": 135,
+      "palette": "phanpy_hatch.gbapal"
+    },
+    {
+      "f": "pichu_2_hatch",
+      "tileCount": 135,
+      "palette": "pichu_2_hatch.gbapal"
+    },
+    {
+      "f": "pichu_hatch",
+      "tileCount": 135,
+      "palette": "pichu_hatch.gbapal"
+    },
+    {
+      "f": "plusle_hatch",
+      "tileCount": 135,
+      "palette": "plusle_hatch.gbapal"
+    },
+    {
+      "f": "ralts_hatch",
+      "tileCount": 135,
+      "palette": "ralts_hatch.gbapal"
+    },
+    {
+      "f": "sandshrew_hatch",
+      "tileCount": 135,
+      "palette": "sandshrew_hatch.gbapal"
+    },
+    {
+      "f": "seedot_hatch",
+      "tileCount": 135,
+      "palette": "seedot_hatch.gbapal"
+    },
+    {
+      "f": "shroomish_hatch",
+      "tileCount": 135,
+      "palette": "shroomish_hatch.gbapal"
+    },
+    {
+      "f": "shuppet_hatch",
+      "tileCount": 135,
+      "palette": "shuppet_hatch.gbapal"
+    },
+    {
+      "f": "skitty_hatch",
+      "tileCount": 135,
+      "palette": "skitty_hatch.gbapal"
+    },
+    {
+      "f": "snorunt_hatch",
+      "tileCount": 135,
+      "palette": "snorunt_hatch.gbapal"
+    },
+    {
+      "f": "spheal_hatch",
+      "tileCount": 135,
+      "palette": "spheal_hatch.gbapal"
+    },
+    {
+      "f": "spinda_hatch",
+      "tileCount": 135,
+      "palette": "spinda_hatch.gbapal"
+    },
+    {
+      "f": "spoink_hatch",
+      "tileCount": 135,
+      "palette": "spoink_hatch.gbapal"
+    },
+    {
+      "f": "surskit_hatch",
+      "tileCount": 135,
+      "palette": "surskit_hatch.gbapal"
+    },
+    {
+      "f": "trapinch_hatch",
+      "tileCount": 135,
+      "palette": "trapinch_hatch.gbapal"
+    },
+    {
+      "f": "whismur_hatch",
+      "tileCount": 135,
+      "palette": "whismur_hatch.gbapal"
+    },
+    {
+      "f": "wurmple_hatch",
+      "tileCount": 135,
+      "palette": "wurmple_hatch.gbapal"
+    },
+    {
+      "f": "wynaut_hatch",
+      "tileCount": 135,
+      "palette": "wynaut_hatch.gbapal"
+    },
+    {
+      "f": "zubat_hatch",
+      "tileCount": 135,
+      "palette": "zubat_hatch.gbapal"
+    }
+  ]
+}
