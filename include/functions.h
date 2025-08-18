@@ -37,7 +37,6 @@ void DefaultMainCallback(void);
 // src/rom_3219C.c
 
 void PickSpeciesForCatchEmMode(void);
-void PickSpeciesForCatchEmMode(void);
 
 // src/rom_850.c
 
@@ -493,7 +492,7 @@ extern void sub_22978();
 //extern ? sub_242B4();
 //extern ? sub_24350();
 //extern ? sub_24408();
-//extern ? sub_2530C();
+extern void sub_2530C(void);
 //extern ? sub_253E0();
 //extern ? sub_25808();
 //extern ? sub_25F64();
@@ -507,20 +506,20 @@ extern void sub_22978();
 //extern ? sub_26F38();
 //extern ? sub_27080();
 //extern ? sub_278F4();
-//extern ? sub_27D44();
+extern void sub_27D44(void);
 //extern ? sub_27E08();
 //extern ? sub_27F94();
 //extern ? sub_28404();
 //extern ? sub_28544();
-//extern ? sub_28AE0();
+extern void sub_28AE0(void);
 //extern ? sub_28BFC();
-//extern ? sub_28C90();
-//extern ? sub_28E2C();
-//extern ? sub_28EA0();
-//extern ? sub_292A0();
-//extern ? sub_29334();
-//extern ? sub_293D8();
-//extern ? sub_29624();
+extern void sub_28C90(void);
+extern void sub_28E2C(void);
+extern void sub_28EA0(void);
+extern void sub_292A0(void);
+extern void sub_29334(void);
+extern void sub_293D8(void);
+extern void sub_29624(void);
 //extern ? sub_29664();
 //extern ? sub_2971C();
 //extern ? sub_29924();
@@ -557,7 +556,7 @@ extern void sub_31498();
 extern void sub_31B30(void);
 extern void sub_31BE8(s16);
 //extern ? sub_31CF8();
-//extern ? BuildSpeciesWeightsForCatchEmMode();
+extern void BuildSpeciesWeightsForCatchEmMode(void);
 
 // asm/rom_3219C.s
 
