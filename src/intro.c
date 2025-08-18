@@ -117,7 +117,7 @@ void IntroMain(void)
      gIntroStateFuncs[gMain.subState]();
 }
 
-void sub_929C(void)
+void Intro_State0_929C(void)
 {
   ResetSomeGraphicsRelatedStuff();
   REG_DISPCNT = 0x80;
@@ -138,7 +138,7 @@ void sub_929C(void)
   gMain.subState++;
 }
 
-void sub_9348(void)
+void Intro_State1_9348(void)
 {
     gUnknown_0202BF10++;
     if (gUnknown_0202BF10 > 0x78)
@@ -148,14 +148,14 @@ void sub_9348(void)
     }
 }
 
-void sub_9370(void)
+void Intro_State2_9370(void)
 {
     sub_FF74(NULL);
     sub_0D10();
     gMain.subState++;
 }
 
-void sub_938C(void)
+void Intro_State3_938C(void)
 {
     gIntroSceneFuncs[gIntroSceneIndex]();
     gUnknown_0202BF10++;
@@ -163,7 +163,7 @@ void sub_938C(void)
         gMain.subState = 4;
 }
 
-void sub_93D0(void)
+void Intro_State4_93D0(void)
 {
     sub_02B4();
     m4aMPlayAllStop();
@@ -173,6 +173,8 @@ void sub_93D0(void)
     SetMainGameState(STATE_TITLE);
 }
 
+
+// ? Main callback for intro state?
 void sub_93F8(void)
 {
     if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)

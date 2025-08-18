@@ -29,7 +29,7 @@ void sub_17634(u8 arg0)
     }
 }
 
-s16 sub_176B0(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_KECLEON_176B0(struct Vector16 *arg0, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -374,29 +374,29 @@ void sub_17C1C(struct Vector16 *arg0)
         gCurrentPinballGame->unk3F8 = 0;
         if (gCurrentPinballGame->unk412 == 0)
         {
-            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk434.x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk434.y)
+            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk434[0].x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk434[0].y)
             {
                 gCurrentPinballGame->unk42A[4] = 0x11;
-                gCurrentPinballGame->unk434.x = gCurrentPinballGame->unk400.x;
-                gCurrentPinballGame->unk434.y = gCurrentPinballGame->unk400.y;
+                gCurrentPinballGame->unk434[0].x = gCurrentPinballGame->unk400.x;
+                gCurrentPinballGame->unk434[0].y = gCurrentPinballGame->unk400.y;
             }
         }
         else if (gCurrentPinballGame->unk412 == 8)
         {
-            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk438.x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk438.y)
+            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk434[1].x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk434[1].y)
             {
                 gCurrentPinballGame->unk42A[5] = 0x11;
-                gCurrentPinballGame->unk438.x = gCurrentPinballGame->unk400.x;
-                gCurrentPinballGame->unk438.y = gCurrentPinballGame->unk400.y;
+                gCurrentPinballGame->unk434[1].x = gCurrentPinballGame->unk400.x;
+                gCurrentPinballGame->unk434[1].y = gCurrentPinballGame->unk400.y;
             }
         }
         else if (gCurrentPinballGame->unk412 == 16)
         {
-            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk43C.x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk43C.y)
+            if (gCurrentPinballGame->unk400.x != gCurrentPinballGame->unk434[2].x || gCurrentPinballGame->unk400.y != gCurrentPinballGame->unk434[2].y)
             {
                 gCurrentPinballGame->unk42A[6] = 0x11;
-                gCurrentPinballGame->unk43C.x = gCurrentPinballGame->unk400.x;
-                gCurrentPinballGame->unk43C.y = gCurrentPinballGame->unk400.y;
+                gCurrentPinballGame->unk434[2].x = gCurrentPinballGame->unk400.x;
+                gCurrentPinballGame->unk434[2].y = gCurrentPinballGame->unk400.y;
             }
         }
         break;
@@ -440,7 +440,7 @@ void sub_17C1C(struct Vector16 *arg0)
     }
 }
 
-s16 sub_17F28(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_KYOGRE_17F28(struct Vector16 *arg0, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -636,7 +636,7 @@ void sub_182B4(u8 arg0, u16 *arg1, u16 *arg2)
     }
 }
 
-s16 sub_18324(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_GROUDON_18324(struct Vector16 *arg0, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -838,7 +838,7 @@ void sub_18784(u8 arg0, u16 *arg1, u16 *arg2)
 }
 
 //One known callsite is 080145D2 during the rayquaza bonus stage
-s16 sub_187F4(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_RAYQUAZA_187F4(struct Vector16 *arg0, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -988,7 +988,7 @@ void sub_18AE0(u8 arg0, u16 *arg1, u16 *arg2)
     }
 }
 
-s16 sub_18B50(struct Vector16 *arg0, u16 *arg1)
+s16 COLLISION_CHECK_SPHEAL_18B50(struct Vector16 *arg0, u16 *arg1)
 {
     u16 sp0;
     u8 sp2;
