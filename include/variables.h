@@ -313,6 +313,8 @@ extern u8 gUnknown_0201B124;
 
 extern struct PokemonSpecies gSpeciesInfo[];
 extern const struct SpriteSet * const gUnknown_086A54D8[13];
+extern u8 (*gMonHatchSpriteGroupGfx[])[0x10E0];
+extern u8 (*gMonHatchSpriteGroupPals[])[0x20];
 
 extern u32 gUnknown_0202ADD0;
 extern s16 gUnknown_0202C5F0[];
