@@ -23,6 +23,7 @@ extern const s16 gUnknown_086AD436[][2];
 extern const u16 gUnknown_086B55DC[][18];
 extern const s16 gUnknown_086AE1A4[][12];
 extern const u16 gUnknown_086B53B4[][3];
+extern const s16 gUnknown_086AE2F4[][2];
 
 extern struct SongHeader gUnknown_0869F58C;
 
@@ -895,4 +896,28 @@ void sub_2971C(void)
         gCurrentPinballGame->unk6CA = 0x7100;
         gMain.unk44[12]->available = 0;
     }
+}
+
+void sub_29924(void)
+{
+    s16 i;
+    const struct Vector16 *var0;
+
+    for (i = 0; i < 6; i++)
+    {
+        gCurrentPinballGame->unk5C0[i].x = ((i % 3) * 16 - 24) * 100;
+        gCurrentPinballGame->unk5C0[i].y = ((i / 3) * 16 - 28) * 100;
+        gCurrentPinballGame->unk5D8[i].x = gUnknown_086AE2F4[i][0] - ((Random() % 200) - 60);
+        gCurrentPinballGame->unk5D8[i].y = gUnknown_086AE2F4[i][1] - ((Random() % 200) - 60);
+        gCurrentPinballGame->unk5B9[i] = (Random() % 4) + 1;
+    }
+
+    gCurrentPinballGame->unk5C0[0].x = -5600;
+    gCurrentPinballGame->unk5C0[0].y = -6000;
+    gCurrentPinballGame->unk5B9[0] = 3;
+    gCurrentPinballGame->unk5C0[4].x = -4000;
+    gCurrentPinballGame->unk5C0[4].y = -4400;
+    gCurrentPinballGame->unk5B9[4] = 3;
+    gCurrentPinballGame->unk606 = 0;
+    gMain.unk44[12]->available = 1;
 }
