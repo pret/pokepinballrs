@@ -60,7 +60,6 @@ SECTIONS
         asm/rom_2530C.o(.text);
         src/rom_27E08.o(.text);
         src/rom_27F94.o(.text);
-        asm/rom_27F94.o(.text);
         asm/rom_2AADC.o(.text);
         src/rom_2E67C.o(.text);
         asm/rom_2E6AC.o(.text);
