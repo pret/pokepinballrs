@@ -512,7 +512,7 @@ extern void sub_27D44(void);
 //extern ? sub_28404();
 //extern ? sub_28544();
 extern void sub_28AE0(void);
-//extern ? sub_28BFC();
+extern void sub_28BFC(void);
 extern void sub_28C90(void);
 extern void sub_28E2C(void);
 extern void sub_28EA0(void);
@@ -560,8 +560,8 @@ extern void BuildSpeciesWeightsForCatchEmMode(void);
 
 // asm/rom_3219C.s
 
-//extern ? BuildSpeciesWeightsForEggMode();
-//extern ? PickSpeciesForEggMode();
+extern void BuildSpeciesWeightsForEggMode(void);
+extern void PickSpeciesForEggMode(void);
 //extern ? SapphireBoardProcess_3A_326F4();
 //extern ? SapphireBoardProcess_3B_3276C();
 extern void sub_327C0();
