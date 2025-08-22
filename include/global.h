@@ -313,7 +313,8 @@ struct PinballGame
     /*0x281*/ s8 evolvablePartySize;
     /*0x282*/ s8 unk282;
     /*0x283*/ u8 numCompletedBonusStages;
-    /*0x284*/ u8 filler284[0x2];
+    /*0x284*/ s8 unk284;
+    /*0x285*/ u8 filler285[0x1];
     /*0x286*/ s16 unk286;
     /*0x288*/ s16 unk288;
     /*0x28A*/ s16 unk28A;
@@ -361,12 +362,12 @@ struct PinballGame
     /*0x301*/ u8 unk301;
     /*0x302*/ u8 filler302[0x4];
     /*0x306*/ s8 unk306;
-    /*0x307*/ u8 filler307[0x1];
+    /*0x307*/ s8 unk307;
     /*0x308*/ u16 unk308;
     /*0x30A*/ u16 unk30A;
     /*0x30C*/ u16 unk30C;
     /*0x30E*/ s16 unk30E;
-    /*0x310*/ u16 unk310;
+    /*0x310*/ s16 unk310;
     /*0x312*/ u8 filler312[0x2];
     /*0x314*/ s16 unk314;
     /*0x316*/ s16 unk316;

@@ -445,7 +445,7 @@ extern void sub_1B140(s8);
 //extern ? sub_1C544();
 extern void sub_1C560(void);
 extern void sub_1C5AC(void);
-//extern ? sub_1C73C();
+extern void sub_1C73C(void);
 extern void sub_1C7F4(u16, u16);
 extern void sub_1D128(void);
 extern void sub_1D4D0(void);
