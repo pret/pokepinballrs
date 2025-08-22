@@ -71,13 +71,6 @@ extern const u8 gUnknown_081408B4[0x2000];
 extern const u8 gUnknown_084AA18C[0x860];
 extern const u8 gUnknown_084B77EC[0x800];
 
-struct Unk86AD000
-{
-    u8 filler0[0x6];
-    u16 unk6;
-};
-
-extern const struct Unk86AD000 gUnknown_086AD000[];
 extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gUnknown_084C0C6C[];
 extern u8 *gMonPortraitGroupGfx[];
