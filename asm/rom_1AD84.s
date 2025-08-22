@@ -34,7 +34,7 @@ _0801B16A:
 	asrs r5, r0, #0x10
 	cmp r5, #0
 	beq _0801B176
-	bl sub_1BB68
+	bl _0801BB68
 _0801B176:
 	ldr r4, _0801B22C @ =gCurrentPinballGame
 	ldr r0, [r4]
@@ -1243,9 +1243,7 @@ _0801BB58: .4byte 0x000006C4
 _0801BB5C: .4byte 0x000006DB
 _0801BB60: .4byte 0x000006DD
 _0801BB64: .4byte gMain
-
-	thumb_func_start sub_1BB68
-sub_1BB68: @ 0x0801BB68
+_0801BB68:
 	movs r5, #0
 	mov r6, r8
 	ldr r1, [r6]
@@ -1256,7 +1254,7 @@ sub_1BB68: @ 0x0801BB68
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bgt _0801BB80
-	bl sub_1C544
+	bl _0801C544
 _0801BB80:
 	movs r6, #0xdd
 	lsls r6, r6, #1
@@ -2476,9 +2474,7 @@ _0801C534: .4byte 0x000006DB
 _0801C538: .4byte gMain
 _0801C53C: .4byte 0x0000071D
 _0801C540: .4byte 0x0000071E
-
-	thumb_func_start sub_1C544
-sub_1C544: @ 0x0801C544
+_0801C544:
 	movs r4, #0xdd
 	lsls r4, r4, #1
 	adds r0, r1, r4

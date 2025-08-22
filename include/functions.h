@@ -440,7 +440,7 @@ extern void sub_1AD84(void);
 //extern ? sub_1ADF4();
 //extern ? sub_1AF84();
 //extern ? sub_1AFD4();
-extern void sub_1B140(s8);
+extern void sub_1B140(s16);
 //extern ? sub_1BB68();
 //extern ? sub_1C544();
 extern void sub_1C560(void);

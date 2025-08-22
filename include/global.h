@@ -252,16 +252,24 @@ struct PinballGame
     /*0x194*/ s8 unk194;
     /*0x195*/ u8 filler195[0x1];
     /*0x196*/ u16 unk196;
-    /*0x198*/ u8 filler198[0xC];
+    /*0x198*/ u8 filler198[0xA];
+    /*0x1A2*/ u8 unk1A2;
+    /*0x1A3*/ u8 filler1A3[0x1];
     /*0x1A4*/ s8 unk1A4;
     /*0x1A5*/ s8 unk1A5;
     /*0x1A6*/ s8 unk1A6;
-    /*0x1A7*/ u8 filler1A7[0x5];
-    /*0x1B4*/ s8 unk1AC;
-    /*0x1B4*/ s8 unk1AD;
-    /*0x1A7*/ u8 unk1AE;
+    /*0x1A7*/ u8 unk1A7;
+    /*0x1A8*/ s8 unk1A8;
+    /*0x1A9*/ u8 unk1A9;
+    /*0x1AA*/ u8 unk1AA;
+    /*0x1AB*/ u8 unk1AB;
+    /*0x1AC*/ s8 unk1AC;
+    /*0x1AD*/ s8 unk1AD;
+    /*0x1AE*/ u8 unk1AE;
     /*0x1AF*/ s8 unk1AF;
-    /*0x1B0*/ u8 filler1B0[0x4];
+    /*0x1B0*/ s8 unk1B0;
+    /*0x1B1*/ u8 filler1B1[0x1];
+    /*0x1B2*/ u16 unk1B2;
     /*0x1B4*/ u16 unk1B4;
     /*0x1B6*/ u16 unk1B6;
     /*0x1B8*/ u16 unk1B8;
@@ -305,7 +313,12 @@ struct PinballGame
     /*0x204*/ u8 filler204[0x4];
     /*0x208*/ u16 unk208;
     /*0x20A*/ u8 unk20A;
-    /*0x20B*/ u8 filler20B[0x54];
+    /*0x20B*/ u8 filler20B[0x47];
+    /*0x252*/ u16 unk252;
+    /*0x253*/ u8 filler253[0x8];
+    /*0x25C*/ s8 unk25C;
+    /*0x25D*/ u8 unk25D;
+    /*0x25E*/ u8 filler25E[0x1];
     /*0x25F*/ s8 unk25F;
     /*0x260*/ u8 filler260[0x10];
     /*0x270*/ s8 evolvablePartySpecies[MAX_EVOLVABLE_PARTY_SIZE];
@@ -407,7 +420,9 @@ struct PinballGame
     /*0x36A*/ u8 unk36A[2];
     /*0x36C*/ u8 unk36C[2];
     /*0x36E*/ u16 unk36E[2];
-    /*0x372*/ u8 filler372[0x6];
+    /*0x372*/ u8 filler372[0x4];
+    /*0x376*/ u8 unk376;
+    /*0x377*/ u8 filler377[0x1];
     /*0x378*/ s8 unk378;
     /*0x379*/ u8 filler379[0x3];
     /*0x37C*/ s8 unk37C;
@@ -592,7 +607,7 @@ struct PinballGame
     /*0x594*/ u16 unk594;
     /*0x596*/ u16 unk596;
     /*0x598*/ u16 currentSpecies; // Current catch/hatch mode species? Is it evo mode as well?
-    /*0x59A*/ u8 filler59A[0x2];
+    /*0x59A*/ u16 unk59A;
     /*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
     /*0x59E*/ u16 lastEggSpecies; // Previous hatch/evo mode species?
     /*0x5A0*/ u8 filler5A0[0x4];

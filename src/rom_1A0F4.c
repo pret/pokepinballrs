@@ -196,7 +196,7 @@ void sub_1A2C0(void)
                                     gCurrentPinballGame->unk70 = 1;
                                     DmaCopy16(3, gUnknown_02031520.unk14.unk2C[2], (void *)(OBJ_PLTT), 0x20);
                                 }
-                                if (gMain.selectedField == 1)
+                                if (gMain.selectedField == FIELD_SAPPHIRE)
                                 {
                                     DmaCopy16(3, gUnknown_02031520.unk14.unk2C[2] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xC0);
                                 }
@@ -223,7 +223,7 @@ void sub_1A2C0(void)
                                     gCurrentPinballGame->unk70 = 1;
                                     DmaCopy16(3, gUnknown_02031520.unk14.unk2C[1], (void *)(OBJ_PLTT), 0x20);
                                 }
-                                if (gMain.selectedField == 1)
+                                if (gMain.selectedField == FIELD_SAPPHIRE)
                                 {
                                     DmaCopy16(3, gUnknown_02031520.unk14.unk2C[1] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xC0);
                                 }
