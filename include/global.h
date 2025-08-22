@@ -258,7 +258,7 @@ struct PinballGame
     /*0x1A4*/ s8 unk1A4;
     /*0x1A5*/ s8 unk1A5;
     /*0x1A6*/ s8 unk1A6;
-    /*0x1A7*/ u8 unk1A7;
+    /*0x1A7*/ s8 unk1A7;
     /*0x1A8*/ s8 unk1A8;
     /*0x1A9*/ u8 unk1A9;
     /*0x1AA*/ u8 unk1AA;
@@ -266,13 +266,13 @@ struct PinballGame
     /*0x1AC*/ s8 unk1AC;
     /*0x1AD*/ s8 unk1AD;
     /*0x1AE*/ u8 unk1AE;
-    /*0x1AF*/ s8 unk1AF;
+    /*0x1AF*/ u8 unk1AF;
     /*0x1B0*/ s8 unk1B0;
     /*0x1B1*/ u8 filler1B1[0x1];
     /*0x1B2*/ u16 unk1B2;
     /*0x1B4*/ u16 unk1B4;
     /*0x1B6*/ u16 unk1B6;
-    /*0x1B8*/ u16 unk1B8;
+    /*0x1B8*/ s16 unk1B8;
     /*0x1BA*/ u16 unk1BA;
     /*0x1BC*/ u16 unk1BC;
     /*0x1BE*/ u8 unk1BE;
@@ -321,7 +321,7 @@ struct PinballGame
     /*0x25E*/ u8 filler25E[0x1];
     /*0x25F*/ s8 unk25F;
     /*0x260*/ u8 filler260[0x10];
-    /*0x270*/ s8 evolvablePartySpecies[MAX_EVOLVABLE_PARTY_SIZE];
+    /*0x270*/ u8 evolvablePartySpecies[MAX_EVOLVABLE_PARTY_SIZE];
     /*0x280*/ s8 evolvingPartyIndex;
     /*0x281*/ s8 evolvablePartySize;
     /*0x282*/ s8 unk282;
@@ -421,8 +421,7 @@ struct PinballGame
     /*0x36C*/ u8 unk36C[2];
     /*0x36E*/ u16 unk36E[2];
     /*0x372*/ u8 filler372[0x4];
-    /*0x376*/ u8 unk376;
-    /*0x377*/ u8 filler377[0x1];
+    /*0x376*/ u16 unk376;
     /*0x378*/ s8 unk378;
     /*0x379*/ u8 filler379[0x3];
     /*0x37C*/ s8 unk37C;
@@ -681,7 +680,7 @@ struct PinballGame
     /*0x6D9*/ u8 filler6D9[0x2];
     /*0x6DB*/ u8 unk6DB;
     /*0x6DC*/ u8 unk6DC;
-    /*0x6DD*/ u8 unk6DD;
+    /*0x6DD*/ s8 unk6DD;
     /*0x6DE*/ u16 unk6DE;
     /*0x6E0*/ s16 unk6E0;
     /*0x6E2*/ u8 filler6E2[0x2];
@@ -886,5 +885,19 @@ extern const u8 *const gUnknown_086ACEF8[];
 extern const u8 *const gUnknown_086ACF18[];
 extern s16 gUnknown_086AE68E[][2];
 extern u16 gUnknown_086B4568[][45];
+extern const u8 gUnknown_084F61EC[]; 
+extern u8 gUnknown_081B45A4[]; 
+extern const u16 gUnknown_086AD2DE[];
+extern u8 gUnknown_081B8984[];
+extern u8 gUnknown_081B8784[];
+extern u8 gUnknown_081B4584[];
+extern u8 gUnknown_081B4784[];
+struct Unk86AD000
+{
+    u8 filler0[0x6];
+    u16 unk6;
+};
+extern const struct Unk86AD000 gUnknown_086AD000[];
+extern u32 gUnknown_086AD50C[];
 
 #endif // GUARD_GLOBAL_H
