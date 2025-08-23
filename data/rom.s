@@ -1891,7 +1891,7 @@ gUnknown_084C4B6C:: @ 0x084C4B6C
 .incbin "baserom.gba", 0x4ECF6C, 0x160 @ 0x4ED0CC - 0x4ECF6C
 
 gUnknown_084ED0CC:: @ 0x084ED0CC
-	.incbin "baserom.gba", 0x4ED0CC, 0x600
+	.incbin "graphics/stage/ruby/shop_door.4bpp";
 
 gUnknown_084ED6CC:: @ 0x084ED6CC
 	.incbin "baserom.gba", 0x4ED6CC, 0x400
@@ -1900,13 +1900,13 @@ gUnknown_084EDACC:: @ 0x084EDACC
 	.incbin "graphics/stage/dusclops/dusclops.4bpp";
 
 gUnknown_084F5ACC:: @ 0x084F5ACC
-	.incbin "baserom.gba", 0x4F5ACC, 0x720
+	.incbin "graphics/stage/ruby/sharpedo.4bpp";
 
 gUnknown_084F61EC:: @ 0x084F61EC
 	.incbin "graphics/stage/main/gunk_084F61EC.4bpp";
 
 gUnknown_084F6B0C:: @ 0x084F6B0C
-	.incbin "baserom.gba", 0x4F6B0C, 0x3700
+	.incbin "graphics/stage/ruby/shop.4bpp";
 
 gUnknown_084FA20C:: @ 0x084FA20C
 	.incbin "graphics/stage/misc/gunk_084FA20C.4bpp";
@@ -1915,7 +1915,7 @@ gUnknown_084FA48C:: @ 0x084FA48C
 	.incbin "graphics/stage/main/pika_spinner.4bpp";
 
 gUnknown_084FB68C:: @ 0x084FB68C
-	.incbin "baserom.gba", 0x4FB68C, 0x1B00
+	.incbin "graphics/stage/ruby/hatch_cave.4bpp";
 
 gUnknown_084FD18C:: @ 0x084FD18C
 	.incbin "baserom.gba", 0x4FD18C, 0xE00
@@ -1927,7 +1927,7 @@ gUnknown_084FEA0C:: @ 0x084FEA0C
 	.incbin "baserom.gba", 0x4FEA0C, 0x500
 
 gUnknown_084FEF0C:: @ 0x084FEF0C
-	.incbin "baserom.gba", 0x4FEF0C, 0x400
+	.incbin "graphics/stage/ruby/ramp_prize.4bpp";
 
 gUnknown_084FF30C:: @ 0x084FF30C
 	.incbin "graphics/stage/dusclops/dusclops_ball_grab.4bpp";

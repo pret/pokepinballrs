@@ -1,0 +1,47 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "rules": [],
+  "files": [
+    {
+      "f": "shop_door",
+      "tileCount": 48,
+      "mwidth":3,
+      "mheight":4,
+      "width":3,
+      "oam":true
+    },
+    {
+      "f": "sharpedo",
+      "tileCount": 57,
+      "mwidth":19,
+      "mheight":3
+    },
+    {
+      "f": "shop",
+      "tileCount": 448,
+      "mwidth":8
+    },
+    {
+      "f": "hatch_cave",
+      "tileCount": 224,
+      "mwidth":6,
+      "mheight":6,
+      "oam":true
+    },
+    {
+      "f": "ramp_prize",
+      "tileCount": 32,
+      "mheight":2,
+      "mwidth":2,
+      "width":8
+    }
+  ]
+}
