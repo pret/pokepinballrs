@@ -820,3 +820,13 @@ void sub_2FCD0(void)
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
 }
+
+void sub_300D8(void)
+{
+    gCurrentPinballGame->unk178 = 920;
+    gCurrentPinballGame->unk17A = (133 - (gCurrentPinballGame->unk290 % 60) / 30) * 10;
+    gCurrentPinballGame->unk17C = 1260;
+    gCurrentPinballGame->unk17E = (131 - ((gCurrentPinballGame->unk290 + 10) % 60) / 30) * 10;
+    gCurrentPinballGame->unk180 = 1080;
+    gCurrentPinballGame->unk182 = (161 - ((gCurrentPinballGame->unk290 + 20) % 60) / 30) * 10;
+}
