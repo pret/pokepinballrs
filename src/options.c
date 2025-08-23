@@ -11,7 +11,7 @@ enum OptionsState
 {
     OPTIONS_STATE_MAIN,
     OPTIONS_STATE_BGM_SELECT,
-    OPTIONS_STATE_SE_SELECT,
+    OPTIONS_STATE_SE_MENU_MOVE_0x67,
     OPTIONS_STATE_BUTTON_CONFIG_SELECT,
     OPTIONS_STATE_BUTTON_CONFIG_INPUT,
 };
@@ -242,7 +242,7 @@ void Options_HandleInput(void)
                 break;
             case CURSOR_POS_SE:
                 m4aSongNumStart(SE_UNKNOWN_0x65);
-                gOptionsData.stateMain = OPTIONS_STATE_SE_SELECT,
+                gOptionsData.stateMain = OPTIONS_STATE_SE_MENU_MOVE_0x67,
                 gOptionsData.scollWaitFrames = 0;
                 gOptionsData.unk30 = 1;
                 if (gOptionsData.unk2E == 1)
@@ -355,7 +355,7 @@ void Options_HandleInput(void)
         if (gOptionsData.scollWaitFrames > 0)
             gOptionsData.scollWaitFrames--;
         break;
-    case OPTIONS_STATE_SE_SELECT:
+    case OPTIONS_STATE_SE_MENU_MOVE_0x67:
         if (JOY_HELD(DPAD_LEFT))
         {
             if (gOptionsData.scollWaitFrames == 0)
@@ -501,7 +501,7 @@ void Options_HandleInput(void)
     sub_11FC();
 }
 
-void sub_51C3C(void)
+void Options_State2_51C3C(void)
 {
     sub_111C();
     if (sub_1170())
@@ -511,7 +511,7 @@ void sub_51C3C(void)
     }
 }
 
-void sub_51C60(void)
+void Options_State3_51C60(void)
 {
     gMain_saveData.rumbleEnabled = gOptionsData.rumbleEnabled;
     SaveFile_WriteToSram();

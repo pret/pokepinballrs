@@ -57,8 +57,6 @@ void sub_6F78(s16);
 
 extern u8 *gUnknown_086B15B4[];
 extern u8 *gUnknown_086BB6F4[];
-extern u8 *gMonHatchSpriteGroupGfx[];
-extern u8 *gMonHatchSpriteGroupPals[];
 
 extern u16 gUnknown_0201C180;
 extern u16 gUnknown_0202C5B4;
@@ -352,7 +350,7 @@ void Pokedex_HandleListInput(void)
     DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 }
 
-void sub_43D4(void)
+void Pokedex_State2_43D4(void)
 {
     sub_5174();
     gUnknown_0202A588 = 0;
@@ -365,7 +363,7 @@ void sub_43D4(void)
     gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
 }
 
-void sub_4428(void)
+void Pokedex_State3_4428(void)
 {
     int i;
 
@@ -401,7 +399,7 @@ void sub_4428(void)
 
 }
 
-void sub_45A4(void)
+void Pokedex_State5_45A4(void)
 {
     u16 var0;
 
@@ -532,7 +530,7 @@ void sub_45A4(void)
     sub_51FC();
 }
 
-void sub_4860(void)
+void Pokedex_State4_4860(void)
 {
     s32 i;
 
@@ -576,7 +574,7 @@ void Pokedex_LinkSetup(void)
     gMain.subState = POKEDEX_STATE_7;
 }
 
-void sub_49D0(void)
+void Pokedex_State7_49D0(void)
 {
     s16 var0;
 
@@ -634,7 +632,7 @@ void sub_49D0(void)
     }
 }
 
-void sub_4B10(void)
+void Pokedex_State10_4B10(void)
 {
     gUnknown_0201A444++;
 
@@ -644,7 +642,7 @@ void sub_4B10(void)
     }
 }
 
-void sub_4B34(void)
+void Pokedex_State8_4B34(void)
 {
     s32 iVar1;
 
@@ -674,7 +672,7 @@ void sub_4B34(void)
     }
 }
 
-void sub_4BB4(void)
+void Pokedex_State9_4BB4(void)
 {
     s32 index;
 
@@ -713,7 +711,7 @@ void sub_4BB4(void)
     gUnknown_0201B120 += 1;
 }
 
-void sub_4C80(void)
+void Pokedex_State11_4C80(void)
 {
     s32 i;
 
@@ -4959,8 +4957,8 @@ void sub_8974(s16 species)
         quotient = (var0 - 100) / 6;
         remainder = (var0 - 100) % 6;
 
-        sub_10708(gMonHatchSpriteGroupGfx[quotient] + remainder * 0x10E0, (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
-        DmaCopy16(3, gMonHatchSpriteGroupPals[quotient] + remainder * 0x20, (void *)OBJ_PLTT + 0x60, 0x20);
+        sub_10708(gMonHatchSpriteGroupGfx[quotient][remainder], (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
+        DmaCopy16(3, gMonHatchSpriteGroupPals[quotient][remainder], (void *)OBJ_PLTT + 0x60, 0x20);
     }
 }
 

@@ -45,7 +45,18 @@ struct Main
     /*0x0C*/ u8 unkC;
     /*0x0D*/ u8 unkD;
     /*0x0E*/ u8 unkE;
-    /*0x0F*/ u8 unkF;
+
+    // UnkF hold a Bitmask for the following:
+    // x1 mode start banner Evo/Catch/Travel, 
+    // x2 paused,
+    // x4 debug mode,
+    // x8 Reset Ball (ball saver)
+    // x10 End of ball (lose life reset Ball),
+    // x20 end of game,
+    // x40 End of bonus with expired timer,
+    // x80 Bonus Score banner
+    // Most cause a board state transition once conditions are met.
+    /*0x0F*/ u8 unkF;   
     /*0x10*/ u8 unk10;
     /*0x11*/ u8 unk11;
     /*0x12*/ u16 unk12;
@@ -61,7 +72,7 @@ struct Main
     /*0x28*/ s16 unk28;
     /*0x2A*/ s16 unk2A;
     /*0x2C*/ s16 unk2C;
-    /*0x2E*/ u8 filler2E[0x2];
+    /*0x2E*/ s16 unk2E;
     /*0x30*/ u16 unk30;
     /*0x32*/ u8 filler32[0x4];
     /*0x36*/ u8 unk36;
@@ -73,7 +84,7 @@ struct Main
     /*0x44*/ struct SpriteGroup **unk44;
     /*0x48*/ int rngValue;
     /*0x4C*/ u32 systemFrameCount;
-    /*0x50*/ int fieldFrameCount;
+    /*0x50*/ u32 fieldFrameCount;
     /*0x54*/ u32 unk54;
     /*0x58*/ u32 unk58;
     /*0x5C*/ u32 unk5C;

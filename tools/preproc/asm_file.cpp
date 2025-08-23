@@ -453,7 +453,7 @@ int AsmFile::ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft
         if (dexEncoding.count(c) == 0)
         {
             if (c.size() == 1 && IsAsciiPrintable(c[0]))
-                RaiseError("character '%c' not valid in dex string", c);
+                RaiseError("character '%c' not valid in dex string", c.c_str());
             else
             {
                 std::string hex;

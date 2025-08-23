@@ -93,7 +93,7 @@ static void sub_8C38(void)
 
 #define RESTART_GAME_BUTTONS (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)
 
-void sub_8C7C(void)
+void FieldSelect_State1_8C7C(void)
 {
     sub_8F94();
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
@@ -282,7 +282,7 @@ void sub_8C7C(void)
     }
 }
 
-void sub_8F64(void)
+void FieldSelect_State2_8F64(void)
 {
     sub_FE04(sub_8F94);
     m4aMPlayAllStop();

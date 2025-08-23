@@ -97,7 +97,7 @@ void sub_2710(void)
     gUnknown_0201A4C0 = gMain_saveData.ballSpeed;
 }
 
-void sub_2768(void)
+void BonusFieldSelect_State1_2768(void)
 {
     sub_29C8();
     switch (gBonusFieldSelectState)
@@ -197,7 +197,7 @@ void sub_2768(void)
     }
 }
 
-void sub_2990(void)
+void BonusFieldSelect_State2_2990(void)
 {
     sub_FE04(sub_29C8);
     m4aMPlayAllStop();

@@ -15,21 +15,19 @@ struct Unk20028D8
     void (*unk4)(void);
 };
 
-extern struct Unk20028D8 gUnknown_020028D8[9];
+extern struct Unk20028D8 CurrentBoardProcPairs_020028D8[9];
 extern u8 gUnknown_0200FBB0[];
 extern u8 gUnknown_020030A0[];
 
-extern const struct Unk20028D8 gUnknown_086B077C[];
+extern const struct Unk20028D8 BoardProcPairs_086B077C[];
 extern const VoidFunc gUnknown_086B085C[];
 extern struct SpriteGroup *gMainFieldSpriteGroups[][60];
 extern struct SpriteGroup *gBonusFieldSpriteGroups[][30];
-
 extern const u8 gUnknown_08158284[];
 extern const u8 gUnknown_08395A4C[];
 extern const u8 gUnknown_08397E6C[];
 extern const u8 gUnknown_083A704C[];
 extern const u8 gUnknown_0848FD8C[];
-extern const u8 *const gUnknown_086ACEF8[];
 extern const u8 gUnknown_081428D4[];
 extern const u8 gUnknown_081BCAA4[];
 extern const u8 gUnknown_081BE2C4[];
@@ -73,13 +71,6 @@ extern const u8 gUnknown_081408B4[0x2000];
 extern const u8 gUnknown_084AA18C[0x860];
 extern const u8 gUnknown_084B77EC[0x800];
 
-struct Unk86AD000
-{
-    u8 filler0[0x6];
-    u16 unk6;
-};
-
-extern const struct Unk86AD000 gUnknown_086AD000[];
 extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gUnknown_084C0C6C[];
 extern u8 *gMonPortraitGroupGfx[];
@@ -113,7 +104,7 @@ void PinballGameMain(void)
     gPinballGameStateFuncs[gMain.subState]();
 }
 
-void sub_49ED4(void)
+void PinballGame_State0_49ED4(void)
 {
     s16 i, j;
     s16 numRngAdvances;
@@ -148,7 +139,7 @@ void sub_49ED4(void)
 
         sub_4A90C();
         for (i = 0; i < 9; i++)
-            gUnknown_020028D8[i].unk0();
+            CurrentBoardProcPairs_020028D8[i].unk0();
 
         m4aMPlayAllStop();
         sub_47110();
@@ -180,7 +171,7 @@ void sub_49ED4(void)
 
         sub_4A90C();
         for (i = 0; i < 9; i++)
-            gUnknown_020028D8[i].unk0();
+            CurrentBoardProcPairs_020028D8[i].unk0();
 
         sub_47110();
         break;
@@ -203,7 +194,7 @@ void sub_49ED4(void)
         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         sub_4A90C();
         for (i = 0; i < 9; i++)
-            gUnknown_020028D8[i].unk0();
+            CurrentBoardProcPairs_020028D8[i].unk0();
 
         sub_47110();
         break;
@@ -466,87 +457,87 @@ void sub_4A6A0(void)
 
 void sub_4A90C(void)
 {
-    gUnknown_020028D8[1] = gUnknown_086B077C[0];
-    gUnknown_020028D8[8] = gUnknown_086B077C[18];
-    gUnknown_020028D8[6] = gUnknown_086B077C[15];
+    CurrentBoardProcPairs_020028D8[1] = BoardProcPairs_086B077C[0];
+    CurrentBoardProcPairs_020028D8[8] = BoardProcPairs_086B077C[18];
+    CurrentBoardProcPairs_020028D8[6] = BoardProcPairs_086B077C[15];
     switch (gMain.selectedField)
     {
     case FIELD_RUBY:
-        gUnknown_020028D8[3] = gUnknown_086B077C[3];
-        gUnknown_020028D8[7] = gUnknown_086B077C[16];
-        gUnknown_020028D8[0] = gUnknown_086B077C[19];
-        gUnknown_020028D8[4] = gUnknown_086B077C[11];
-        gUnknown_020028D8[2] = gUnknown_086B077C[1];
-        gUnknown_020028D8[5] = gUnknown_086B077C[13];
+        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[3];
+        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[16];
+        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[19];
+        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[11];
+        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[1];
+        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[13];
         gMain.unk44 = gMainFieldSpriteGroups[gMain.selectedField];
         break;
     case FIELD_SAPPHIRE:
-        gUnknown_020028D8[3] = gUnknown_086B077C[4];
-        gUnknown_020028D8[7] = gUnknown_086B077C[16];
-        gUnknown_020028D8[0] = gUnknown_086B077C[20];
-        gUnknown_020028D8[4] = gUnknown_086B077C[11];
-        gUnknown_020028D8[2] = gUnknown_086B077C[1];
-        gUnknown_020028D8[5] = gUnknown_086B077C[13];
+        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[4];
+        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[16];
+        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[20];
+        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[11];
+        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[1];
+        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[13];
         gMain.unk44 = gMainFieldSpriteGroups[gMain.selectedField];
         break;
     case FIELD_DUSCLOPS:
-        gUnknown_020028D8[3] = gUnknown_086B077C[5];
-        gUnknown_020028D8[7] = gUnknown_086B077C[17];
-        gUnknown_020028D8[0] = gUnknown_086B077C[21];
-        gUnknown_020028D8[4] = gUnknown_086B077C[12];
-        gUnknown_020028D8[2] = gUnknown_086B077C[2];
-        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[5];
+        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[21];
+        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
         gMain.unk44 = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_DUSCLOPS];
         break;
     case FIELD_KECLEON:
-        gUnknown_020028D8[3] = gUnknown_086B077C[6];
-        gUnknown_020028D8[7] = gUnknown_086B077C[17];
-        gUnknown_020028D8[0] = gUnknown_086B077C[22];
-        gUnknown_020028D8[4] = gUnknown_086B077C[12];
-        gUnknown_020028D8[2] = gUnknown_086B077C[2];
-        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[6];
+        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[22];
+        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
         gMain.unk44 = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_DUSCLOPS];
         break;
     case FIELD_KYOGRE:
-        gUnknown_020028D8[3] = gUnknown_086B077C[7];
-        gUnknown_020028D8[7] = gUnknown_086B077C[17];
-        gUnknown_020028D8[0] = gUnknown_086B077C[23];
-        gUnknown_020028D8[4] = gUnknown_086B077C[12];
-        gUnknown_020028D8[2] = gUnknown_086B077C[2];
-        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[7];
+        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[23];
+        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
         gMain.unk44 = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_DUSCLOPS];
         break;
     case FIELD_GROUDON:
-        gUnknown_020028D8[3] = gUnknown_086B077C[8];
-        gUnknown_020028D8[7] = gUnknown_086B077C[17];
-        gUnknown_020028D8[0] = gUnknown_086B077C[24];
-        gUnknown_020028D8[4] = gUnknown_086B077C[12];
-        gUnknown_020028D8[2] = gUnknown_086B077C[2];
-        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[8];
+        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[24];
+        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
         gMain.unk44 = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_DUSCLOPS];
         break;
     case FIELD_RAYQUAZA:
-        gUnknown_020028D8[3] = gUnknown_086B077C[9];
-        gUnknown_020028D8[7] = gUnknown_086B077C[17];
-        gUnknown_020028D8[0] = gUnknown_086B077C[25];
-        gUnknown_020028D8[4] = gUnknown_086B077C[12];
-        gUnknown_020028D8[2] = gUnknown_086B077C[2];
-        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[9];
+        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[25];
+        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
         gMain.unk44 = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_DUSCLOPS];
         break;
     case FIELD_SPHEAL:
-        gUnknown_020028D8[3] = gUnknown_086B077C[10];
-        gUnknown_020028D8[7] = gUnknown_086B077C[17];
-        gUnknown_020028D8[0] = gUnknown_086B077C[26];
-        gUnknown_020028D8[4] = gUnknown_086B077C[12];
-        gUnknown_020028D8[2] = gUnknown_086B077C[2];
-        gUnknown_020028D8[5] = gUnknown_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[10];
+        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[26];
+        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
         gMain.unk44 = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_DUSCLOPS];
         break;
     }
 }
 
-void sub_4AAD8(void)
+void PinballGame_State1_4AAD8(void)
 {
     switch (gCurrentPinballGame->unk1D)
     {
@@ -595,8 +586,9 @@ void sub_4AAD8(void)
     sub_11FC();
 }
 
-//gMain.subState = 2
-void sub_4ABC8(void)
+//Note: Used by both the main game mode and the idle game mode
+//gMain.subState = 2 in both.
+void PinballGame_State2_4ABC8(void)
 {
     sub_111C();
     if (sub_1170())
@@ -611,13 +603,13 @@ void sub_4ABEC(void)
     s16 i;
 
     UpdateButtonActionsFromJoy();
-    gUnknown_020028D8[1].unk4();
+    CurrentBoardProcPairs_020028D8[1].unk4();
     if (gMain.unkE == 0 && !(gMain.unkF & 0x2))
     {
-        gUnknown_020028D8[2].unk4();
-        gUnknown_020028D8[0].unk4();
-        gUnknown_020028D8[3].unk4();
-        gUnknown_020028D8[4].unk4();
+        CurrentBoardProcPairs_020028D8[2].unk4();
+        CurrentBoardProcPairs_020028D8[0].unk4();
+        CurrentBoardProcPairs_020028D8[3].unk4();
+        CurrentBoardProcPairs_020028D8[4].unk4();
         if (gMain.unkF)
         {
             if (!gCurrentPinballGame->unk1F)
@@ -625,7 +617,7 @@ void sub_4ABEC(void)
                 for (i = 0; i < 4; i++)
                 {
                     gCurrentPinballGame->unk1E = i;
-                    gUnknown_020028D8[6].unk4();
+                    CurrentBoardProcPairs_020028D8[6].unk4();
                 }
             }
         }
@@ -640,7 +632,7 @@ void sub_4ABEC(void)
                     for (i = 0; i < 4; i++)
                     {
                         gCurrentPinballGame->unk1E = i;
-                        gUnknown_020028D8[5].unk4();
+                        CurrentBoardProcPairs_020028D8[5].unk4();
                     }
                 }
             }
@@ -649,14 +641,14 @@ void sub_4ABEC(void)
                 for (i = 0; i < 4; i++)
                 {
                     gCurrentPinballGame->unk1E = i;
-                    gUnknown_020028D8[5].unk4();
-                    gUnknown_020028D8[6].unk4();
+                    CurrentBoardProcPairs_020028D8[5].unk4();
+                    CurrentBoardProcPairs_020028D8[6].unk4();
                 }
             }
         }
 
-        gUnknown_020028D8[7].unk4();
-        gUnknown_020028D8[8].unk4();
+        CurrentBoardProcPairs_020028D8[7].unk4();
+        CurrentBoardProcPairs_020028D8[8].unk4();
     }
 
     sub_47030();
@@ -667,13 +659,13 @@ void sub_4ACF0(void)
     s16 i;
 
     sub_4B334();
-    gUnknown_020028D8[1].unk4();
+    CurrentBoardProcPairs_020028D8[1].unk4();
     if (!(gMain.unkF & 0x2))
     {
-        gUnknown_020028D8[2].unk4();
-        gUnknown_020028D8[0].unk4();
-        gUnknown_020028D8[3].unk4();
-        gUnknown_020028D8[4].unk4();
+        CurrentBoardProcPairs_020028D8[2].unk4();
+        CurrentBoardProcPairs_020028D8[0].unk4();
+        CurrentBoardProcPairs_020028D8[3].unk4();
+        CurrentBoardProcPairs_020028D8[4].unk4();
         if (gMain.unkF)
         {
             if (!gCurrentPinballGame->unk1F)
@@ -681,7 +673,7 @@ void sub_4ACF0(void)
                 for (i = 0; i < 4; i++)
                 {
                     gCurrentPinballGame->unk1E = i;
-                    gUnknown_020028D8[6].unk4();
+                    CurrentBoardProcPairs_020028D8[6].unk4();
                 }
             }
         }
@@ -696,7 +688,7 @@ void sub_4ACF0(void)
                     for (i = 0; i < 4; i++)
                     {
                         gCurrentPinballGame->unk1E = i;
-                        gUnknown_020028D8[5].unk4();
+                        CurrentBoardProcPairs_020028D8[5].unk4();
                     }
                 }
             }
@@ -705,14 +697,14 @@ void sub_4ACF0(void)
                 for (i = 0; i < 4; i++)
                 {
                     gCurrentPinballGame->unk1E = i;
-                    gUnknown_020028D8[5].unk4();
-                    gUnknown_020028D8[6].unk4();
+                    CurrentBoardProcPairs_020028D8[5].unk4();
+                    CurrentBoardProcPairs_020028D8[6].unk4();
                 }
             }
         }
 
-        gUnknown_020028D8[7].unk4();
-        gUnknown_020028D8[8].unk4();
+        CurrentBoardProcPairs_020028D8[7].unk4();
+        CurrentBoardProcPairs_020028D8[8].unk4();
     }
 
     sub_47030();
@@ -735,14 +727,14 @@ void sub_4AE8C(void)
     s16 i;
 
     UpdateButtonActionsFromJoy();
-    gUnknown_020028D8[1].unk4();
+    CurrentBoardProcPairs_020028D8[1].unk4();
     if (gMain.unkF & 0x2)
         return;
 
-    gUnknown_020028D8[0].unk4();
-    gUnknown_020028D8[2].unk4();
-    gUnknown_020028D8[3].unk4();
-    gUnknown_020028D8[4].unk4();
+    CurrentBoardProcPairs_020028D8[0].unk4();
+    CurrentBoardProcPairs_020028D8[2].unk4();
+    CurrentBoardProcPairs_020028D8[3].unk4();
+    CurrentBoardProcPairs_020028D8[4].unk4();
     if (gMain.unkF & ~0x40)
     {
         if (!gCurrentPinballGame->unk1F)
@@ -752,7 +744,7 @@ void sub_4AE8C(void)
                 gCurrentPinballGame->unk66 = 0;
                 gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
                 gCurrentPinballGame->unk1E = i;
-                gUnknown_020028D8[6].unk4();
+                CurrentBoardProcPairs_020028D8[6].unk4();
             }
         }
     }
@@ -775,7 +767,7 @@ void sub_4AE8C(void)
                     gCurrentPinballGame->unk66 = 0;
                     gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
                     gCurrentPinballGame->unk1E = i;
-                    gUnknown_020028D8[5].unk4();
+                    CurrentBoardProcPairs_020028D8[5].unk4();
                 }
             }
         }
@@ -786,14 +778,14 @@ void sub_4AE8C(void)
                 gCurrentPinballGame->unk66 = 0;
                 gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
                 gCurrentPinballGame->unk1E = i;
-                gUnknown_020028D8[5].unk4();
-                gUnknown_020028D8[6].unk4();
+                CurrentBoardProcPairs_020028D8[5].unk4();
+                CurrentBoardProcPairs_020028D8[6].unk4();
             }
         }
     }
 
-    gUnknown_020028D8[7].unk4();
-    gUnknown_020028D8[8].unk4();
+    CurrentBoardProcPairs_020028D8[7].unk4();
+    CurrentBoardProcPairs_020028D8[8].unk4();
 }
 
 void sub_4B000(void)
@@ -803,10 +795,10 @@ void sub_4B000(void)
     sub_4B334();
     if (!(gMain.unkF & 0x2))
     {
-        gUnknown_020028D8[0].unk4();
-        gUnknown_020028D8[2].unk4();
-        gUnknown_020028D8[3].unk4();
-        gUnknown_020028D8[4].unk4();
+        CurrentBoardProcPairs_020028D8[0].unk4();
+        CurrentBoardProcPairs_020028D8[2].unk4();
+        CurrentBoardProcPairs_020028D8[3].unk4();
+        CurrentBoardProcPairs_020028D8[4].unk4();
         if (gMain.unkF & ~0x40)
         {
             if (!gCurrentPinballGame->unk1F)
@@ -816,7 +808,7 @@ void sub_4B000(void)
                     gCurrentPinballGame->unk66 = 0;
                     gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
                     gCurrentPinballGame->unk1E = i;
-                    gUnknown_020028D8[6].unk4();
+                    CurrentBoardProcPairs_020028D8[6].unk4();
                 }
             }
         }
@@ -839,7 +831,7 @@ void sub_4B000(void)
                         gCurrentPinballGame->unk66 = 0;
                         gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
                         gCurrentPinballGame->unk1E = i;
-                        gUnknown_020028D8[5].unk4();
+                        CurrentBoardProcPairs_020028D8[5].unk4();
                     }
                 }
             }
@@ -850,14 +842,14 @@ void sub_4B000(void)
                     gCurrentPinballGame->unk66 = 0;
                     gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
                     gCurrentPinballGame->unk1E = i;
-                    gUnknown_020028D8[5].unk4();
-                    gUnknown_020028D8[6].unk4();
+                    CurrentBoardProcPairs_020028D8[5].unk4();
+                    CurrentBoardProcPairs_020028D8[6].unk4();
                 }
             }
         }
 
-        gUnknown_020028D8[7].unk4();
-        gUnknown_020028D8[8].unk4();
+        CurrentBoardProcPairs_020028D8[7].unk4();
+        CurrentBoardProcPairs_020028D8[8].unk4();
     }
 
     if ((gMain.systemFrameCount % 32) / 16 > 0)
@@ -874,7 +866,7 @@ void sub_4B000(void)
     DmaCopy16(3, &gUnknown_03005C00[0x320], (void *)0x6002640, 0x40);
 }
 
-void sub_4B20C(void)
+void PinballGame_State3_4B20C(void)
 {
     gMain.unk36 = 0;
     sub_02B4();
@@ -1156,29 +1148,29 @@ void sub_4B678(u16 arg0)
     switch (gMain.selectedField)
     {
     case FIELD_RUBY:
-        sub_50848();
+        RubyBoardProcess_0A_50848();
         sub_4E9F0(gCurrentPinballGame->unk1A5);
         break;
     case FIELD_SAPPHIRE:
-        sub_50AD4();
+        SapphireBoardProcess_0A_50AD4();
         break;
     case FIELD_DUSCLOPS:
-        sub_50D48();
+        DusclopsBoardProcess_0A_50D48();
         break;
     case FIELD_KECLEON:
-        sub_50DE0();
+        KecleonBoardProcess_0A_50DE0();
         break;
     case FIELD_KYOGRE:
-        sub_50F04();
+        KyogreBoardProcess_0A_50F04();
         break;
     case FIELD_GROUDON:
-        sub_50FD4();
+        GroudonBoardProcess_0A_50FD4();
         break;
     case FIELD_RAYQUAZA:
-        sub_51090();
+        RayquazaBoardProcess_0A_51090();
         break;
     case FIELD_SPHEAL:
-        sub_51150();
+        SphealBoardProcess_0A_51150();
         break;
     }
 
