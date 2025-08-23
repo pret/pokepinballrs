@@ -1172,3 +1172,13 @@ void sub_1B140(s16 arg0)
 
     }
 }
+
+void sub_1C560(void)
+{
+    gCurrentPinballGame->unk28 = 0x96;
+    gMain.unk44[13]->available = 0;
+    gCurrentPinballGame->unk5F3 = 0;
+    gCurrentPinballGame->unk3C = 10000;
+    gCurrentPinballGame->unk5F7 = 1;
+    sub_11B0(8);
+}

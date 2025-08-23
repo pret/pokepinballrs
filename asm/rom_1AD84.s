@@ -6,41 +6,6 @@
 
 	.text
 
-	thumb_func_start sub_1C560
-sub_1C560: @ 0x0801C560
-	push {r4, lr}
-	ldr r3, _0801C598 @ =gCurrentPinballGame
-	ldr r1, [r3]
-	movs r4, #0
-	movs r2, #0
-	movs r0, #0x96
-	strh r0, [r1, #0x28]
-	ldr r0, _0801C59C @ =gMain
-	ldr r0, [r0, #0x44]
-	ldr r0, [r0, #0x34]
-	strh r2, [r0]
-	ldr r0, _0801C5A0 @ =0x000005F3
-	adds r1, r1, r0
-	strb r4, [r1]
-	ldr r0, [r3]
-	ldr r1, _0801C5A4 @ =0x00002710
-	str r1, [r0, #0x3c]
-	ldr r1, _0801C5A8 @ =0x000005F7
-	adds r0, r0, r1
-	movs r1, #1
-	strb r1, [r0]
-	movs r0, #8
-	bl sub_11B0
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801C598: .4byte gCurrentPinballGame
-_0801C59C: .4byte gMain
-_0801C5A0: .4byte 0x000005F3
-_0801C5A4: .4byte 0x00002710
-_0801C5A8: .4byte 0x000005F7
-
 	thumb_func_start sub_1C5AC
 sub_1C5AC: @ 0x0801C5AC
 	push {r4, r5, r6, lr}
