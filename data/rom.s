@@ -1909,8 +1909,8 @@ gUnknown_084F6B0C:: @ 0x084F6B0C
 	.incbin "baserom.gba", 0x4F6B0C, 0x3700
 
 gUnknown_084FA20C:: @ 0x084FA20C
-	.incbin "baserom.gba", 0x4FA20C, 0x280
-
+	.incbin "graphics/stage/misc/gunk_084FA20C.4bpp";
+	
 gUnknown_084FA48C:: @ 0x084FA48C
 	.incbin "graphics/stage/main/pika_spinner.4bpp";
 
@@ -1948,7 +1948,7 @@ gUnknown_0850398C:: @ 0x0850398C
 	.incbin "graphics/stage/main/end_of_ball.4bpp";
 
 gUnknown_0850558C:: @ 0x0850558C
-	.incbin "baserom.gba", 0x50558C, 0x600
+	.incbin "graphics/stage/misc/gunk_0850558C.4bpp";
 
 gUnknown_08505B8C:: @ 0x08505B8C
 	.incbin "baserom.gba", 0x505B8C, 0x40
