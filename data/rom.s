@@ -1894,8 +1894,8 @@ gUnknown_084ED0CC:: @ 0x084ED0CC
 	.incbin "graphics/stage/ruby/shop_door.4bpp";
 
 gUnknown_084ED6CC:: @ 0x084ED6CC
-	.incbin "baserom.gba", 0x4ED6CC, 0x400
-
+	.incbin "graphics/stage/gunk_084ED6CC.4bpp";
+	
 gUnknown_084EDACC:: @ 0x084EDACC
 	.incbin "graphics/stage/dusclops/dusclops.4bpp";
 
