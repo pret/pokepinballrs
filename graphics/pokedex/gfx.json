@@ -343,6 +343,11 @@
                 "oam":true
             },
             {
+                "seg":"select_mid",
+                "mheight":2,
+                "mwidth":2
+            },
+            {
                 "seg":"select_right",
                 "mheight":2,
                 "mwidth":1
@@ -483,7 +488,8 @@
                 "mwidth":1,
                 "mheight":1
             }
-        ]
+        ],
+        "align":16
     }
   ]
 }
