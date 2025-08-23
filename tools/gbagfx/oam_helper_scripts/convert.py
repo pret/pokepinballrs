@@ -99,8 +99,8 @@ def main():
     tool = Path(args.tool)
     cfg_path = Path(args.config)
     cfg = load_cfg(cfg_path)
+    io_base = cfg_path.parent
 
-    # In main(), REPLACE the "choose worklist" block and the loop that follows it.
 
     # build worklist (supports per-file segments)
     work = []  # each item: (target_id, fbase_for_io, opts)
@@ -119,9 +119,11 @@ def main():
                 f_aug = f"{f}_{sid}"
                 overlay = {k: v for k, v in seg.items() if k != "seg"}
                 opts = effective_opts(cfg, f, overlay=overlay)
+                f_aug = f"{io_base}/{f_aug}"
                 work.append((f_aug, f_aug, opts))
         else:
             opts = effective_opts(cfg, f)
+            f = f"{io_base}/{f}"
             work.append((f, f, opts))
 
     # optional --only filter (now matches the augmented id like graphics/foo_a)
