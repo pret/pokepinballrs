@@ -5,6 +5,30 @@
 
 extern const u8 gUnknown_081C0064[];
 
+void sub_27D44(void)
+{
+    s16 i;
+
+    gCurrentPinballGame->unk5A5 = 0;
+    gCurrentPinballGame->unk5A9 = 0;
+    gMain.unk44[18]->available = 0;
+    gMain.unk44[12]->available = 0;
+    gCurrentPinballGame->unk5F2 = 0;
+    sub_1C7F4(0, 0);
+    gCurrentPinballGame->unk6C4 = 0;
+    sub_4D648();
+    for (i = 0; i < 6; i++)
+        gCurrentPinballGame->unk6D3[i] = 13;
+
+    for (i = 0; i < 3; i++)
+    {
+        if (i < gCurrentPinballGame->unk723)
+            gCurrentPinballGame->unk71D[i] = 1;
+        else
+            gCurrentPinballGame->unk71D[i] = 0;
+    }
+}
+
 void sub_27E08(void)
 {
     s16 i, j;
