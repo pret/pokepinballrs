@@ -1903,7 +1903,7 @@ gUnknown_084F5ACC:: @ 0x084F5ACC
 	.incbin "baserom.gba", 0x4F5ACC, 0x720
 
 gUnknown_084F61EC:: @ 0x084F61EC
-	.incbin "baserom.gba", 0x4F61EC, 0x920
+	.incbin "graphics/stage/main/gunk_084F61EC.4bpp";
 
 gUnknown_084F6B0C:: @ 0x084F6B0C
 	.incbin "baserom.gba", 0x4F6B0C, 0x3700
@@ -1912,7 +1912,7 @@ gUnknown_084FA20C:: @ 0x084FA20C
 	.incbin "baserom.gba", 0x4FA20C, 0x280
 
 gUnknown_084FA48C:: @ 0x084FA48C
-	.incbin "baserom.gba", 0x4FA48C, 0x1200
+	.incbin "graphics/stage/main/pika_spinner.4bpp";
 
 gUnknown_084FB68C:: @ 0x084FB68C
 	.incbin "baserom.gba", 0x4FB68C, 0x1B00
@@ -1936,16 +1936,16 @@ gUnknown_084FF90C:: @ 0x084FF90C
 	.incbin "baserom.gba", 0x4FF90C, 0x1700
 
 gUnknown_0850100C:: @ 0x0850100C
-	.incbin "baserom.gba", 0x50100C, 0x18C0
-
+	.incbin "graphics/stage/main/ball_save.4bpp";
+	
 gUnknown_085028CC:: @ 0x085028CC
-	.incbin "baserom.gba", 0x5028CC, 0x1000
-
+	.incbin "graphics/stage/main/latios.4bpp";
+	
 gUnknown_085038CC:: @ 0x085038CC
-	.incbin "baserom.gba", 0x5038CC, 0xC0
+	.incbin "graphics/stage/main/latios_arm.4bpp";
 
 gUnknown_0850398C:: @ 0x0850398C
-	.incbin "baserom.gba", 0x50398C, 0x1C00
+	.incbin "graphics/stage/main/end_of_ball.4bpp";
 
 gUnknown_0850558C:: @ 0x0850558C
 	.incbin "baserom.gba", 0x50558C, 0x600
@@ -1954,19 +1954,19 @@ gUnknown_08505B8C:: @ 0x08505B8C
 	.incbin "baserom.gba", 0x505B8C, 0x40
 
 gUnknown_08505BCC:: @ 0x08505BCC
-	.incbin "baserom.gba", 0x505BCC, 0x4380
+	.incbin "graphics/stage/main/evo_banner.4bpp";
 
 gUnknown_08509F4C:: @ 0x08509F4C
-	.incbin "baserom.gba", 0x509F4C, 0x400
+	.incbin "graphics/stage/main/game_over_text.4bpp";
 
 gUnknown_0850A34C:: @ 0x0850A34C
-	.incbin "baserom.gba", 0x50A34C, 0x4380
+	.incbin "graphics/stage/main/jirachi_banner.4bpp";
 
 gUnknown_0850E6CC:: @ 0x0850E6CC
-	.incbin "baserom.gba", 0x50E6CC, 0x25E0
+	.incbin "graphics/stage/main/travel.4bpp";
 
 gUnknown_08510CAC:: @ 0x08510CAC
-	.incbin "baserom.gba", 0x510CAC, 0x1A0
+	.incbin "graphics/stage/main/pause_menu_text.4bpp";
 
 gUnknown_08510E4C:: @ 0x08510E4C
 	.incbin "graphics/stage/dusclops/duskull.4bpp";

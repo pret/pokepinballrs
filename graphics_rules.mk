@@ -2,7 +2,9 @@ MON_PORTRAITS_DIR := graphics/mon_portraits
 MON_HATCH_SPRITES_DIR := graphics/mon_hatch_sprites
 
 # 1. Preprocess JSON files into a lookup table
-graphics/graphic_cnvt_attrs.txt: $(wildcard graphics/**/*.json)
+GFX_JSONS := $(shell find graphics -type f -name '*.json')
+
+graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 	@echo "# path mwidth mheight oam align segments" > $@
 	@for json in $^; do \
 		if jq -e '.kind == "gfx-config"' "$$json" > /dev/null; then \

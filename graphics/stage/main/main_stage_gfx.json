@@ -1,0 +1,153 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "rules": [],
+  "files": [
+    {
+      "f": "gunk_084F61EC",
+      "tileCount": 80,
+      "mwidth":8,
+      "align":1
+    },
+    {
+      "f": "pika_spinner",
+      "tileCount": 144,
+      "mwidth":3,
+      "mheight":3,
+      "width":12,
+      "oam":true  
+    },
+    {
+      "f": "jirachi_banner",
+      "tileCount": 544,
+      "mwidth":30,
+      "mheight":9,
+      "oam":true
+    },
+    {
+      "f": "travel",
+      "tileCount": 304,
+      "segments":[
+        {
+          "tileCount": 240,
+          "seg": "banner",
+          "mwidth":30,
+          "mheight":8,
+          "oam":true
+        },
+        {
+          "tileCount": 5,
+          "seg": "bottom_border",
+          "width":5
+        },
+        {
+          "tileCount": 32,
+          "seg": "pole",
+          "width":4
+        },
+        {
+          "tileCount": 24,
+          "seg": "arrows",
+          "mwidth":3,
+          "mheight":4,
+          "oam":true
+        },
+        {
+          "seg": "pole_base",
+          "width":2
+        }
+      ]
+    },
+    {
+      "f": "evo_banner",
+      "tileCount": 544,
+      "mheight":9,
+      "mwidth":30,
+      "oam":true
+    },
+    {
+      "f": "game_over_text",
+      "tileCount": 32,
+      "mheight": 2,
+      "mwidth": 2,
+      "width":16
+    },
+    {
+      "f": "pause_menu_text",
+      "tileCount": 13
+    },
+    {
+      "f": "latios",
+      "tileCount": 128,
+      "mheight":8,
+      "mwidth":8
+    },
+    {
+      "f": "latios_arm",
+      "tileCount": 16,
+      "width":2
+    },
+    {
+      "f": "ball_save",
+      "tileCount": 208,
+      "segments": [
+        {
+            "seg":"banner",
+            "mwidth":16,
+            "mheight":8,
+            "oam":true
+        },
+        {
+            "seg":"latias",
+            "width":8,
+            "height":8
+        },
+        {
+            "seg":"latias_arm",
+            "width":2,
+            "height":3
+        }
+      ]
+    },
+    {
+      "f": "end_of_ball",
+      "tileCount": 224,
+      "segments": [
+        {
+            "seg":"left",
+            "mwidth":8,
+            "mheight":8
+        },
+        {
+            "seg":"top_corner",
+            "mwidth":2,
+            "mheight":2
+        },
+        {
+            "seg":"banner",
+            "mwidth":22,
+            "mheight":2,
+            "oam":true
+        },
+        {
+            "seg":"right",
+            "mwidth":8,
+            "mheight":8
+        },
+        {
+            "seg":"space",
+            "mwidth":24,
+            "mheight":2,
+            "oam":true
+        }
+      ]
+    }
+  ]
+}
