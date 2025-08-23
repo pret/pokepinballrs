@@ -1258,3 +1258,30 @@ void sub_1C5AC(void)
         gCurrentPinballGame->unk25 = 0;
     }
 }
+
+void sub_1C73C(void)
+{
+    gMain.unk44[13]->available = 0;
+    sub_4B408(0);
+    gCurrentPinballGame->ball->velocity.x = 0;
+    gCurrentPinballGame->ball->velocity.y = 0;
+    gCurrentPinballGame->ball->unk0 = 0;
+    gCurrentPinballGame->unk1F = 0;
+    gCurrentPinballGame->ball->unkE = 0x100;
+    gCurrentPinballGame->unk730 = 0;
+    gCurrentPinballGame->unk25 = 0;
+    if (gCurrentPinballGame->unk282 == 0)
+    {
+        gCurrentPinballGame->unk723 = 0;
+        gCurrentPinballGame->unk720 = 0;
+        gCurrentPinballGame->unk71D[0] = 0;
+        gCurrentPinballGame->unk71D[1] = 0;
+        gCurrentPinballGame->unk71D[2] = 0;
+    }
+    m4aMPlayAllStop();
+    sub_0D10();
+    gMain.unk5 = gMain.selectedField;
+    gMain.selectedField = gCurrentPinballGame->unk284;
+    gMain.unk6 = 1;
+    gMain.subState = 0;
+}
