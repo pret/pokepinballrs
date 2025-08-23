@@ -18,14 +18,14 @@
       "width":4
     },
     {
-      "f": "gUnk_084FF90C",
+      "f": "gunk_084FF90C",
       "tileCount": 192,
       "mheight":4,
       "mwidth":4,
       "width": 12
     },
     {
-      "f": "gUnk_0851DB8C",
+      "f": "gunk_0851DB8C",
       "tileCount": 560,
       "segments":[
         {
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "f": "gUnk_0851514C",
+      "f": "gunk_0851514C",
       "tileCount": 576,
       "segments":[
         {
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "f": "gUnk_0851976C",
+      "f": "gunk_0851976C",
       "tileCount": 560,
       "segments":[
         {
