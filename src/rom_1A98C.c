@@ -1185,10 +1185,10 @@ void sub_1C560(void)
 
 void sub_1C5AC(void)
 {
-    if (gCurrentPinballGame->unk28 != 0)
+    if (gCurrentPinballGame->unk28)
     {
         gCurrentPinballGame->unk28--;
-        if (gCurrentPinballGame->unk28 > 0x94)
+        if (gCurrentPinballGame->unk28 > 148)
         {
             gCurrentPinballGame->ball->unk0 = 1;
             gCurrentPinballGame->unk1F = 1;
@@ -1197,26 +1197,26 @@ void sub_1C5AC(void)
             gCurrentPinballGame->ball->positionQ0.x = 119;
             gCurrentPinballGame->ball->positionQ0.y = 279;
             gCurrentPinballGame->ball->unk6 = 0;
-            gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x * 256;
+            gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
             gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
             gCurrentPinballGame->unk730 = 1;
         }
-        else if (gCurrentPinballGame->unk28 == 0x94)
+        else if (gCurrentPinballGame->unk28 == 148)
         {
             gCurrentPinballGame->unk1F = 1;
             gCurrentPinballGame->unk730 = 0;
         }
-        else if (gCurrentPinballGame->unk28 > 0x24)
+        else if (gCurrentPinballGame->unk28 > 36)
         {
             gCurrentPinballGame->unk1F = 1;
             gCurrentPinballGame->unk730 = 0;
         }
-        else if (gCurrentPinballGame->unk28 > 0x18)
+        else if (gCurrentPinballGame->unk28 > 24)
         {
             gCurrentPinballGame->unk1F = 1;
             gCurrentPinballGame->unk730 = 1;
         }
-        else if (gCurrentPinballGame->unk28 == 0x18)
+        else if (gCurrentPinballGame->unk28 == 24)
         {
             m4aSongNumStart(SE_UNKNOWN_0x80);
             gCurrentPinballGame->unk730 = 2;
@@ -1228,23 +1228,23 @@ void sub_1C5AC(void)
             gCurrentPinballGame->ball->unkE = 136;
             gCurrentPinballGame->unk5F7 = 0;
         }
-        else if (gCurrentPinballGame->unk28 > 0xC)
+        else if (gCurrentPinballGame->unk28 > 12)
         {
             gCurrentPinballGame->unk730 = 2;
-            if (gCurrentPinballGame->unk28 > 0x15)
+            if (gCurrentPinballGame->unk28 > 21)
             {
                 gCurrentPinballGame->ball->unkE = ((24 - gCurrentPinballGame->unk28) * 112 / 3) + 144;
             }
             else
             {
-                gCurrentPinballGame->ball->unkE = 0x100;
+                gCurrentPinballGame->ball->unkE = 256;
             }
         }
         else
         {
             gCurrentPinballGame->unk730 = 1;
         }
-        if (gCurrentPinballGame->unk28 <= 0x28)
+        if (gCurrentPinballGame->unk28 <= 40)
         {
             if (gCurrentPinballGame->unkE6 > 0)
             {
