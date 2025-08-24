@@ -17,6 +17,32 @@ extern struct SongHeader gUnknown_0869F58C;
 extern struct SongHeader gUnknown_0869F5C8;
 extern struct SongHeader gUnknown_0869F618;
 
+extern const s16 gUnknown_08137AB8[];
+
+
+void sub_26778(void)
+{
+    s16 index;
+
+    index = (gMain.systemFrameCount % 100) / 10;
+    gCurrentPinballGame->unk70C = 0;
+    gCurrentPinballGame->unk72F = gUnknown_08137AB8[index];
+    gCurrentPinballGame->unk72E = gUnknown_08137AB8[index];
+    gCurrentPinballGame->unk72B = gUnknown_08137AB8[index];
+    if (index == 7 || index == 9)
+    {
+        gCurrentPinballGame->unk728 = 1;
+        gCurrentPinballGame->unk72A = 1;
+        gCurrentPinballGame->unk729 = 1;
+    }
+    else
+    {
+        gCurrentPinballGame->unk728 = 0;
+        gCurrentPinballGame->unk72A = 0;
+        gCurrentPinballGame->unk729 = 0;
+    }
+}
+
 void sub_26820(s16 arg0)
 {
     if (arg0)
