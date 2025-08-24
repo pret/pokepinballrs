@@ -113,7 +113,6 @@ def main():
             "width": args.defaults_width,
             "palette": args.defaults_palette
         },
-        "rules": [],
         "files": files
     }
 

@@ -8,7 +8,6 @@
     "width": 16,
     "palette": ""
   },
-  "rules": [],
   "files": [
     {
       "f": "gunk_084ED6CC",
@@ -29,17 +28,17 @@
       "tileCount": 560,
       "segments":[
         {
-            "seg": "a",
+            "segfile": "gunk_0851DB8C_a",
             "mheight":9,
             "mwidth":30,
             "oam":true
         },
         {
-            "seg": "b",
+            "segfile": "gunk_0851DB8C_b",
             "width":5
         },
         {
-            "seg": "c",
+            "segfile": "gunk_0851DB8C_c",
             "width":5
         }
       ]
@@ -49,13 +48,13 @@
       "tileCount": 576,
       "segments":[
         {
-            "seg": "a",
+            "segfile": "gunk_0851514C_a",
             "mheight":9,
             "mwidth":30,
             "oam":true
         },
         {
-            "seg": "b",
+            "segfile": "gunk_0851514C_b",
             "width":4
         }
       ]
@@ -65,13 +64,13 @@
       "tileCount": 560,
       "segments":[
         {
-            "seg": "a",
+            "segfile": "gunk_0851976C_a",
             "mheight":9,
             "mwidth":30,
             "oam":true
         },
         {
-            "seg": "b",
+            "segfile": "gunk_0851976C_b",
             "width":4
         }
       ]

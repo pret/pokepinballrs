@@ -11,8 +11,8 @@ graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 	done
 
 
-# 2. Pattern rule for .4bpp files using params.txt
-# Convert *.png -> *.4bpp using optional parameters from graphics/params.txt
+# 2. Pattern rule for .4bpp files using graphic_cnvt_attrs.txt
+# Convert *.png -> *.4bpp using optional parameters from graphics/graphic_cnvt_attrs.txt
 # - If no params line is found, call $(GFX) with no extra flags.
 # - If params exist:
 #     * If segments=[...] present: build each $*_SEG.png and concat
@@ -30,19 +30,19 @@ graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 	align_global=$$(printf '%s' "$$params" | sed -n 's/.*[[:space:]]align=\([0-9]\+\).*/\1/p'); \
 	\
 	if [ -n "$$segs" ]; then \
-		seglist=$$(printf '%s' "$$segs" | jq -r '.[].seg'); \
+		seglist=$$(printf '%s' "$$segs" | jq -r '.[].segfile'); \
 		segfiles=""; \
-		for seg in $$seglist; do \
-			mw=$$(printf '%s' "$$segs" | jq -r ".[] | select(.seg==\"$$seg\") | (.mwidth // \"\")"); \
-			mh=$$(printf '%s' "$$segs" | jq -r ".[] | select(.seg==\"$$seg\") | (.mheight // \"\")"); \
-			oam=$$(printf '%s' "$$segs" | jq -r ".[] | select(.seg==\"$$seg\") | (.oam // \"\")"); \
+		for segfile in $$seglist; do \
+			mw=$$(printf '%s' "$$segs" | jq -r ".[] | select(.segfile==\"$$segfile\") | (.mwidth // \"\")"); \
+			mh=$$(printf '%s' "$$segs" | jq -r ".[] | select(.segfile==\"$$segfile\") | (.mheight // \"\")"); \
+			oam=$$(printf '%s' "$$segs" | jq -r ".[] | select(.segfile==\"$$segfile\") | (.oam // \"\")"); \
 			mw_arg=""; mh_arg=""; oam_arg=""; \
 			if [ -n "$$mw" ] && [ "$$mw" != 0 ]; then mw_arg="-mwidth $$mw"; fi; \
 			if [ -n "$$mh" ] && [ "$$mh" != 0 ]; then mh_arg="-mheight $$mh"; fi; \
 			if [ "$$oam" = true ]; then oam_arg="-oam"; fi; \
-#			echo -e "Processing segment $$seg: $(GFX) $*_$$seg.png $*_$$seg.4bpp $$mw_arg $$mh_arg $$oam_arg; \n"; \
-			$(GFX) $*_$$seg.png $*_$$seg.4bpp $$mw_arg $$mh_arg $$oam_arg; \
-			segfiles="$$segfiles $*_$$seg.4bpp"; \
+#			echo -e "Processing segment $$segfile: $(GFX) $(dir $*)$$segfile.png $*_$$segfile.4bpp $$mw_arg $$mh_arg $$oam_arg; \n"; \
+			$(GFX) $(dir $*)$$segfile.png $*_$$segfile.4bpp $$mw_arg $$mh_arg $$oam_arg; \
+			segfiles="$$segfiles $*_$$segfile.4bpp"; \
 		done; \
 #		echo -e "catting segments: $$segfiles -> $@ \n"; \
 		cat $$segfiles > $@; \

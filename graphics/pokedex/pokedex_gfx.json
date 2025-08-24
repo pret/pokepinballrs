@@ -8,172 +8,171 @@
     "width": 16,
     "palette": ""
   },
-  "rules": [],
   "files": [
     {
         "f": "sprites",
         "segments":
         [
             {
-                "seg":"hand",
+                "segfile":"sprites_hand",
                 "mheight":2,
                 "mwidth":2
             },
             {
-                "seg":"select_full",
+                "segfile":"sprites_select_full",
                 "mheight":2,
                 "mwidth":7,
                 "oam":true
             },
             {
-                "seg":"select_left",
+                "segfile":"sprites_select_left",
                 "mheight":2,
                 "mwidth":4,
                 "oam":true
             },
             {
-                "seg":"select_mid",
+                "segfile":"sprites_select_mid",
                 "mheight":2,
                 "mwidth":2
             },
             {
-                "seg":"select_right",
+                "segfile":"sprites_select_right",
                 "mheight":2,
                 "mwidth":1
             },
             {
-                "seg":"transmission_start",
+                "segfile":"sprites_transmission_start",
                 "mwidth":13,
                 "mheight":8,
                 "oam":true
             },
             {
-                "seg":"transmitting",
+                "segfile":"sprites_transmitting",
                 "mwidth":10,
                 "mheight":4,
                 "oam":true
             },
             {
-                "seg":"transmission_error",
+                "segfile":"sprites_transmission_error",
                 "mwidth":12,
                 "mheight":4,
                 "oam":true
             },
             {
-                "seg":"transmission_completed",
+                "segfile":"sprites_transmission_completed",
                 "mwidth":14,
                 "mheight":4,
                 "oam":true
             },
             {
-                "seg":"delete_confirmation",
+                "segfile":"sprites_delete_confirmation",
                 "mwidth":12,
                 "mheight":4,
                 "oam":true
             },
             {
-                "seg":"spaceA",
+                "segfile":"sprites_spaceA",
                 "mwidth":4
             },
             {
-                "seg":"torchic",
+                "segfile":"sprites_torchic",
                 "mwidth":2,
                 "mheight":2,
                 "width":6
             },
             {
-                "seg":"spaceB",
+                "segfile":"sprites_spaceB",
                 "mwidth":4,
                 "mheight":2
             },
             {
-                "seg":"boxes",
+                "segfile":"sprites_boxes",
                 "mwidth":6,
                 "mheight":6,
                 "oam":true
             },
             {
-                "seg":"medal_top",
+                "segfile":"sprites_medal_top",
                 "mwidth":6,
                 "mheight":2,
                 "oam":true
             },
             {
-                "seg":"medal_mid",
+                "segfile":"sprites_medal_mid",
                 "mwidth":1,
                 "mheight":1
             },
             {
-                "seg":"medal_gem",
+                "segfile":"sprites_medal_gem",
                 "mwidth":2,
                 "mheight":2
             },
             {
-                "seg":"spaceC",
+                "segfile":"sprites_spaceC",
                 "mwidth":3
             },
             {
-                "seg":"azuril",
+                "segfile":"sprites_azuril",
                 "mwidth":3,
                 "mheight":3,
                 "width":15,
                 "oam":true
             },
             {
-                "seg":"spaceD",
+                "segfile":"sprites_spaceD",
                 "mwidth":5
             },
             {
-                "seg":"not_seen_pic",
+                "segfile":"sprites_not_seen_pic",
                 "mwidth":2,
                 "mheight":2,
                 "width":6
             },
             {
-                "seg":"spaceE",
+                "segfile":"sprites_spaceE",
                 "mwidth":4
             },
             {
-                "seg":"link_gbasp",
+                "segfile":"sprites_link_gbasp",
                 "mwidth":6,
                 "mheight":3,
                 "oam":true
             },
             {
-                "seg":"link_wire",
+                "segfile":"sprites_link_wire",
                 "mwidth":2,
                 "mheight":1
             },
             {
-                "seg":"link_cartridge",
+                "segfile":"sprites_link_cartridge",
                 "mwidth":2,
                 "mheight":3,
                 "oam":true
             },
             {
-                "seg":"link_gba",
+                "segfile":"sprites_link_gba",
                 "mwidth":4,
                 "mheight":5,
                 "oam":true
             },
             {
-                "seg":"link_activity",
+                "segfile":"sprites_link_activity",
                 "mwidth":1,
                 "mheight":2,
                 "width":3
             },
             {
-                "seg":"link_disconnected",
+                "segfile":"sprites_link_disconnected",
                 "mwidth":2,
                 "mheight":2
             },
             {
-                "seg":"press_start_trans",
+                "segfile":"sprites_press_start_trans",
                 "mwidth":3,
                 "mheight":1
             },
             {
-                "seg":"dex_entry_continue",
+                "segfile":"sprites_dex_entry_continue",
                 "mwidth":1,
                 "mheight":1
             }

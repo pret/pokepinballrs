@@ -8,7 +8,6 @@
     "width": 16,
     "palette": ""
   },
-  "rules": [],
   "files": [
     {
       "f": "gunk_084F61EC",
@@ -37,30 +36,30 @@
       "segments":[
         {
           "tileCount": 240,
-          "seg": "banner",
+          "segfile": "travel_banner",
           "mwidth":30,
           "mheight":8,
           "oam":true
         },
         {
           "tileCount": 5,
-          "seg": "bottom_border",
+          "segfile": "travel_bottom_border",
           "width":5
         },
         {
           "tileCount": 32,
-          "seg": "pole",
+          "segfile": "travel_pole",
           "width":4
         },
         {
           "tileCount": 24,
-          "seg": "arrows",
+          "segfile": "travel_arrows",
           "mwidth":3,
           "mheight":4,
           "oam":true
         },
         {
-          "seg": "pole_base",
+          "segfile": "travel_pole_base",
           "width":2
         }
       ]
@@ -99,18 +98,18 @@
       "tileCount": 208,
       "segments": [
         {
-            "seg":"banner",
+            "segfile":"ball_save_banner",
             "mwidth":16,
             "mheight":8,
             "oam":true
         },
         {
-            "seg":"latias",
+            "segfile":"ball_save_latias",
             "width":8,
             "height":8
         },
         {
-            "seg":"latias_arm",
+            "segfile":"ball_save_latias_arm",
             "width":2,
             "height":3
         }
@@ -121,28 +120,28 @@
       "tileCount": 224,
       "segments": [
         {
-            "seg":"left",
+            "segfile":"end_of_ball_left",
             "mwidth":8,
             "mheight":8
         },
         {
-            "seg":"top_corner",
+            "segfile":"end_of_ball_top_corner",
             "mwidth":2,
             "mheight":2
         },
         {
-            "seg":"banner",
+            "segfile":"end_of_ball_banner",
             "mwidth":22,
             "mheight":2,
             "oam":true
         },
         {
-            "seg":"right",
+            "segfile":"end_of_ball_right",
             "mwidth":8,
             "mheight":8
         },
         {
-            "seg":"space",
+            "segfile":"end_of_ball_space",
             "mwidth":24,
             "mheight":2,
             "oam":true

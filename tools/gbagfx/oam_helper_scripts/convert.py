@@ -113,11 +113,11 @@ def main():
             for seg in segs:
                 if not isinstance(seg, dict):
                     continue
-                sid = seg.get("seg")
+                sid = seg.get("segfile")
                 if not sid:
                     continue
                 f_aug = f"{f}_{sid}"
-                overlay = {k: v for k, v in seg.items() if k != "seg"}
+                overlay = {k: v for k, v in seg.items() if k != "segfile"}
                 opts = effective_opts(cfg, f, overlay=overlay)
                 f_aug = f"{io_base}/{f_aug}"
                 work.append((f_aug, f_aug, opts))
