@@ -138,7 +138,7 @@ struct PinballGame
     /*0x024*/ s8 unk24;
     /*0x025*/ s8 unk25;
     /*0x026*/ u16 unk26;
-    /*0x028*/ u16 unk28;
+    /*0x028*/ u16 unk28; // countdown timer for catch 'em lane animation
     /*0x02A*/ u8 filler2A[0x2];
     /*0x02C*/ int unk2C;
     /*0x030*/ s8 numLives;
@@ -382,7 +382,19 @@ struct PinballGame
     /*0x2F0*/ u8 unk2F0;
     /*0x2F1*/ u8 unk2F1;
     /*0x2F2*/ u8 filler2F2[0x2];
-    /*0x2F4*/ s8 unk2F4;
+    /*0x2F4*/ s8 unk2F4; /* 
+        catch em animation state:
+        2 = mouth open
+        3 = mouth open wide
+        4 = mouth neutral ball in mouth
+        5 = mouth closed ball in mouth
+        6 = lips puckered
+        7 = prepare to shoot ball
+        8 = open to shoot
+        9 = open wide for ball
+        10 = shoot ball
+        11 = knock back
+    */
     /*0x2F5*/ s8 unk2F5;
     /*0x2F6*/ u16 unk2F6;
     /*0x2F8*/ s8 unk2F8;

@@ -5,7 +5,7 @@
 #include "constants/bg_music.h"
 //#include "constants/pinball_game.h"
 
-extern void sub_32DF8(void);
+extern void CycleFlipperTriggers_32DF8(void);
 
 void SapphireBoardProcess_3A_326F4(void)
 {
@@ -38,7 +38,7 @@ void SapphireBoardProcess_3B_3276C(void)
     if (!gMain.unkF)
         sub_328C8();
 
-    sub_32DF8();
+    CycleFlipperTriggers_32DF8();
 
     if (gCurrentPinballGame->unk29C)
     {
@@ -250,6 +250,7 @@ void sub_329F4(void)
     }
 }
 
+//enter sapphire catch lane
 void sub_32B74(void)
 {
     if (gCurrentPinballGame->unk72F > 1)
@@ -267,7 +268,7 @@ void sub_32B74(void)
 }
 
 void sub_32BE4(void)
-{
+{ //initial unk28 = 100
     if (gCurrentPinballGame->unk28)
     {
         gCurrentPinballGame->unk5F7 = 1;
@@ -361,7 +362,7 @@ void sub_32BE4(void)
     }
 }
 
-void sub_32DF8(void)
+void CycleFlipperTriggers_32DF8(void)
 {
     int tmp;
 

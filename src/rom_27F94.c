@@ -208,7 +208,7 @@ void CatchEmMode_27F94(void)
         gCurrentPinballGame->unk17++;
         break;
     case 11:
-        sub_27D44();
+        CatchMon_27D44();
         gCurrentPinballGame->unk17++;
         break;
     case 12:
@@ -466,7 +466,7 @@ void sub_28544(void)
     case 5:
         sub_28EA0();
         sub_292A0();
-        sub_27D44();
+        CatchMon_27D44();
         gCurrentPinballGame->unk72 = 240;
         gCurrentPinballGame->unk17 = 6;
         gCurrentPinballGame->unk18 = 0;
