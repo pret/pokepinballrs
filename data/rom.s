@@ -1719,13 +1719,9 @@ gUnknown_083FFD4C:: @ 0x083FFD4C
 	.incbin "baserom.gba", 0x3FFD4C, 0x40
 
 gUnknown_083FFD8C:: @ 0x083FFD8C
-@	.incbin "baserom.gba", 0x3FFD8C, 0x47D00
-
 	.incbin "baserom.gba", 0x3FFD8C, 0xF00 @ 0x47D00
 
 	.include "data/graphics/mon_catch_sprites.inc"
-    @graphics in ~16.7 chunks of size 4380
-@	.incbin "baserom.gba", 0x400C8C, 0x46E00
 
 gUnknown_08447A8C:: @ 0x08447A8C
 	.incbin "baserom.gba", 0x447A8C, 0x900

@@ -20,9 +20,6 @@ const struct OamOverride oamShapeOverrides[] = {
     { 13, 8, 5, (const struct OamOverrideSegment[]) { //2 8x4 segments, rather than a single 8x8
         {0, 0, 8, 4}, {0, 4, 8, 4}, {8, 0, 4, 8}, {12, 0, 1, 4}, {12, 4, 1, 4}
     }},
-    { 6, 4, 6, (const struct OamOverrideSegment[]) { //6 2x2, rather than a 4x4, 2x4
-        {0,0,2,2}, {2,0,2,2}, {4,0,2,2}, {0,2,2,2}, {2,2,2,2}, {4,2,2,2}
-    }},
     { 6, 3, 4, (const struct OamOverrideSegment[]) { //ordering of middle 2 segments
         {0,0,4,2}, {0,2,4,1}, {4,0,2,2}, {4,2,2,1}
     }},
