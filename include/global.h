@@ -143,10 +143,11 @@ struct PinballGame
     /*0x02C*/ int unk2C;
     /*0x030*/ s8 numLives;
     /*0x031*/ u8 ballSpeed;
-    /*0x032*/ u16 unk32;
-    /*0x034*/ u8 filler34[0x1];
+    /*0x032*/ s8 unk32;
+    /*0x033*/ s8 unk33;
+    /*0x034*/ s8 unk34;
     /*0x035*/ s8 area;
-    /*0x036*/ u8 filler36[0x2];
+    /*0x036*/ s8 unk36;
     /*0x038*/ u32 unk38; //score to add every frame until unk3C score has been added to player's total
     /*0x03C*/ u32 unk3C; //score to add in a bonus field or mode (by completion or other ways, like hitting Duskulls)
     /*0x040*/ u32 unk40;
@@ -682,7 +683,7 @@ struct PinballGame
     /*0x678*/ s8 unk678[3][20];
     /*0x6B4*/ u32 unk6B4;
     /*0x6B8*/ u32 unk6B8;
-    /*0x6BC*/ u8 filler6BC[0x1];
+    /*0x6BC*/ s8 unk6BC;
     /*0x6BD*/ s8 unk6BD;
     /*0x6BE*/ s8 unk6BE;
     /*0x6BF*/ u8 filler6BF[0x1];
@@ -719,7 +720,8 @@ struct PinballGame
     /*0x6F6*/ u16 unk6F6;
     /*0x6F8*/ u16 unk6F8[6];
     /*0x704*/ u16 unk704;
-    /*0x706*/ u8 filler706[0x6];
+    /*0x706*/ u8 filler706[0x2];
+    /*0x708*/ u32 unk708;
     /*0x70C*/ u16 unk70C;
     /*0x70E*/ s8 unk70E;
     /*0x70F*/ s8 unk70F;
@@ -750,12 +752,8 @@ struct PinballGame
     /*0x731*/ s8 unk731;
     /*0x732*/ u8 filler732[0x2];
     /*0x734*/ s16 unk734;
-    /*0x736*/ s8 unk736;
-    /*0x737*/ s8 unk737;
-    /*0x738*/ s8 unk738;
-    /*0x739*/ s8 unk739;
-    /*0x73A*/ s8 unk73A;
-    /*0x73B*/ s8 unk73B;
+    /*0x736*/ s8 unk736[3];
+    /*0x739*/ s8 unk739[3];
     /*0x73C*/ u8 unk73C; // TODO: unknown type
     /*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
     /*0x73E*/ u8 filler73E[0x2];
