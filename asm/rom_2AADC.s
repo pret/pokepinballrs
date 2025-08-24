@@ -1571,7 +1571,7 @@ _0802B838:
 	ldrsb r0, [r1, r0]
 	cmp r0, #9
 	bne _0802B85A
-	bl sub_28E2C
+	bl StartCatchMon_28E2C
 	ldr r0, [r4]
 	ldr r4, _0802B8C4 @ =0x000005F2
 	adds r0, r0, r4

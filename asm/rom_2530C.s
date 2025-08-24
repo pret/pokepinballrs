@@ -141,7 +141,7 @@ sub_253E0: @ 0x080253E0
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	ble _08025410
-	bl sub_2971C
+	bl RevealCatchTile_2971C
 _08025410:
 	ldr r3, [r4]
 	ldr r2, _0802549C @ =0x000006C7
@@ -431,7 +431,7 @@ _08025650:
 	bne _0802566C
 	movs r0, 0x8C @=SE_UNKNOWN_0x8C
 	bl m4aSongNumStart
-	bl sub_29664
+	bl PickCatchTile_29664
 _0802566C:
 	ldr r0, _080256CC @ =gCurrentPinballGame
 	ldr r5, [r0]
