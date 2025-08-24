@@ -17,6 +17,31 @@ extern struct SongHeader gUnknown_0869F58C;
 extern struct SongHeader gUnknown_0869F5C8;
 extern struct SongHeader gUnknown_0869F618;
 
+void sub_26820(s16 arg0)
+{
+    if (arg0)
+    {
+        gCurrentPinballGame->unk72A = 1;
+        gCurrentPinballGame->unk728 = 1;
+        gCurrentPinballGame->unk731 = 1;
+        gCurrentPinballGame->unk72E = 3;
+        gCurrentPinballGame->unk72B = 3;
+        gCurrentPinballGame->unk72F = 3;
+        gCurrentPinballGame->unk729 = 1;
+    }
+    else
+    {
+        gCurrentPinballGame->unk729 = 0;
+        gCurrentPinballGame->unk72A = 0;
+        gCurrentPinballGame->unk728 = 0;
+        gCurrentPinballGame->unk72E = 0;
+        gCurrentPinballGame->unk72B = 0;
+        gCurrentPinballGame->unk72F = 2;
+    }
+
+    gCurrentPinballGame->unk70E = 1;
+}
+
 void sub_268CC(void)
 {
     gCurrentPinballGame->unk6BC = 0;
