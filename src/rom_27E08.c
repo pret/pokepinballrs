@@ -17,6 +17,30 @@ extern struct SongHeader gUnknown_0869F58C;
 extern struct SongHeader gUnknown_0869F5C8;
 extern struct SongHeader gUnknown_0869F618;
 
+void sub_268CC(void)
+{
+    gCurrentPinballGame->unk6BC = 0;
+    gCurrentPinballGame->unk6BD = 0;
+    if (gMain.selectedField == FIELD_RUBY)
+    {
+        gCurrentPinballGame->unk2BE = 0;
+        gCurrentPinballGame->unk2C2 = 0;
+        gCurrentPinballGame->unk2C0 = 0;
+    }
+
+    gCurrentPinballGame->unk6BE = 1;
+    gCurrentPinballGame->unk6C0 = 0;
+    sub_1C7F4(0, 0);
+    gCurrentPinballGame->unk6C4 = 0;
+    gMain.unk44[13]->available = 0;
+    gCurrentPinballGame->unk730 = 0;
+    gCurrentPinballGame->unk5F3 = 0;
+    gCurrentPinballGame->unk739[0] = gCurrentPinballGame->unk736[0] = 0;
+    gCurrentPinballGame->unk739[1] = gCurrentPinballGame->unk736[1] = 0;
+    gCurrentPinballGame->unk739[2] = gCurrentPinballGame->unk736[2] = 0;
+    sub_4D648();
+}
+
 void sub_269A4(void)
 {
     gCurrentPinballGame->unk17 = 0;
