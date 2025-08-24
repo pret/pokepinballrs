@@ -1,6 +1,3 @@
-MON_PORTRAITS_DIR := graphics/mon_portraits
-MON_HATCH_SPRITES_DIR := graphics/mon_hatch_sprites
-
 # 1. Preprocess JSON files into a lookup table
 GFX_JSONS := $(shell find graphics -type f -name '*.json')
 
@@ -64,26 +61,12 @@ graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 		dd if=/dev/zero bs=32 count=$$align_global >> $@; \
 	fi;
 
-# 3. Pattern rule for .gbapal files (if needed)
-#graphics/%/%.gbapal: graphics/%/%.pal graphics/params.txt
-#	@params="$$(grep -E "^file=$*" graphics/params.txt | head -n1)"; \
-#	mw=$$(echo $$params | sed -n 's/.*mwidth=\([0-9]*\).*/\1/p'); \
-#	mh=$$(echo $$params | sed -n 's/.*mheight=\([0-9]*\).*/\1/p'); \
-#	oam=$$(echo $$params | grep -q 'oam=true' && echo "-oam"); \
-#	$(GFX) $< $@ -mwidth $$mw -mheight $$mh $$oam
-
 
 graphics/field_select/sprites.4bpp: graphics/field_select/sprites.png
 	$(GFX) $< $@ -num_tiles 513
 
 graphics/options/sprites.4bpp: graphics/options/sprites.png
 	$(GFX) $< $@ -num_tiles 257
-
-$(MON_PORTRAITS_DIR)/%.4bpp: $(MON_PORTRAITS_DIR)/%.png
-	$(GFX) $< $@ -mwidth 2 -mheight 2
-
-#$(MON_HATCH_SPRITES_DIR)/%.4bpp: $(MON_HATCH_SPRITES_DIR)/%.png
-#	$(GFX) $< $@ -pinball-hatch-sprite
 
 graphics/pokedex/text_glyphs.4bpp: graphics/pokedex/text_glyphs.png
 	$(GFX) $< $@ -num_tiles 513
