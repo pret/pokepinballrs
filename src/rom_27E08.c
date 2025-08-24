@@ -12,11 +12,21 @@ extern const s16 gUnknown_086AE0E6[];
 extern const u16 gUnknown_086B4202[][15];
 extern const u8 *gUnknown_086AD49C[];
 extern const struct Vector16 gUnknown_086ACFA0[][8];
-extern const u8 gUnknown_081C0064[];
 
 extern struct SongHeader gUnknown_0869F58C;
 extern struct SongHeader gUnknown_0869F5C8;
 extern struct SongHeader gUnknown_0869F618;
+
+void sub_269A4(void)
+{
+    gCurrentPinballGame->unk17 = 0;
+    gCurrentPinballGame->unk18 = 0;
+    gCurrentPinballGame->unk294 = 2;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 3600;
+    gCurrentPinballGame->timerBonus = 0;
+    gCurrentPinballGame->unk724 = 1800;
+    DmaCopy16(3, gUnknown_081C0064, (void *)0x05000180, 0x20);
+}
 
 void sub_26A10(void)
 {
