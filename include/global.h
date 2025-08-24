@@ -329,7 +329,7 @@ struct PinballGame
     /*0x260*/ s8 unk260[3];
     /*0x263*/ s8 unk263[8];
     /*0x26B*/ s8 unk26B;
-    /*0x26C*/ u8 filler26C[0x2];
+    /*0x26C*/ s8 unk26C;
     /*0x26E*/ u16 unk26E;
     /*0x270*/ u8 evolvablePartySpecies[MAX_EVOLVABLE_PARTY_SIZE];
     /*0x280*/ s8 evolvingPartyIndex;

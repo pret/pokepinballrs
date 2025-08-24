@@ -12,11 +12,72 @@ extern const s16 gUnknown_086AE0E6[];
 extern const u16 gUnknown_086B4202[][15];
 extern const u8 *gUnknown_086AD49C[];
 extern const struct Vector16 gUnknown_086ACFA0[][8];
+extern const u8 gUnknown_081C0064[];
 
 extern struct SongHeader gUnknown_0869F58C;
 extern struct SongHeader gUnknown_0869F5C8;
 extern struct SongHeader gUnknown_0869F618;
 
+void sub_26EA4(void)
+{
+    s16 i;
+
+    sub_1C7F4(0, 0);
+    gCurrentPinballGame->unk6C4 = 0;
+    for (i = 0; i < 3; i++)
+    {
+        if (i < gCurrentPinballGame->unk723)
+            gCurrentPinballGame->unk71D[i] = 1;
+        else
+            gCurrentPinballGame->unk71D[i] = 0;
+    }
+
+    gMain.unk44[13]->available = 0;
+    gCurrentPinballGame->unk730 = 0;
+    gCurrentPinballGame->unk5F3 = 0;
+    sub_4D648();
+}
+
+void sub_26F38(void)
+{
+    gCurrentPinballGame->unk17 = 0;
+    gCurrentPinballGame->unk18 = 0;
+    gCurrentPinballGame->unk294 = 2;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
+    gCurrentPinballGame->timerBonus = 0;
+    gCurrentPinballGame->unk724 = 3600;
+    if (gCurrentPinballGame->currentSpecies == SPECIES_WURMPLE)
+    {
+        gCurrentPinballGame->unk25F = 0;
+    }
+    else if (gCurrentPinballGame->currentSpecies == SPECIES_GLOOM)
+    {
+        if (gMain.selectedField == FIELD_RUBY)
+            gCurrentPinballGame->unk25F = 1;
+        else
+            gCurrentPinballGame->unk25F = 7;
+    }
+    else if (gCurrentPinballGame->currentSpecies == SPECIES_CLAMPERL)
+    {
+        gCurrentPinballGame->unk25F = 3;
+    }
+    else
+    {
+        gCurrentPinballGame->unk25F = gSpeciesInfo[gCurrentPinballGame->currentSpecies].evolutionMethod - 1;
+        if (gCurrentPinballGame->unk25F < 0)
+            gCurrentPinballGame->unk25F = 0;
+    }
+
+    DmaCopy16(3, gUnknown_081C0064, (void *)0x05000180, 0x20);
+    gCurrentPinballGame->unk72E = 0;
+    gCurrentPinballGame->unk72A = 0;
+    gCurrentPinballGame->unk252 = 0;
+    gCurrentPinballGame->unk25E = 0;
+    gCurrentPinballGame->unk26B = 0;
+    gCurrentPinballGame->unk26C = 0;
+    gCurrentPinballGame->unk26E = 0;
+    sub_1C7F4(3, 0);
+}
 
 void sub_27080(void)
 {
