@@ -42,6 +42,37 @@ extern struct SongHeader gUnknown_0869F5C8;
 extern struct SongHeader gUnknown_0869F618;
 
 
+void sub_2530C(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+
+    group = gMain.unk44[18];
+    if (group->available)
+    {
+        for (i = 0; i < 6; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = 200;
+            gOamBuffer[oamSimple->oamId].y = 180;
+        }
+    }
+    gMain.unk44[18]->available = 0;
+    group = gMain.unk44[12];
+    if (group->available)
+    {
+        for (i = 0; i < 6; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = 200;
+            gOamBuffer[oamSimple->oamId].y = 180;
+        }
+    }
+    gMain.unk44[12]->available = 0;
+    gCurrentPinballGame->unkE4 = 0;
+}
+
 void sub_253E0(void)
 {
     s16 i;
