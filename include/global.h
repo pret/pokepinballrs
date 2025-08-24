@@ -314,7 +314,10 @@ struct PinballGame
     /*0x204*/ u8 filler204[0x4];
     /*0x208*/ u16 unk208;
     /*0x20A*/ u8 unk20A;
-    /*0x20B*/ u8 filler20B[0x47];
+    /*0x20B*/ u8 filler20B[0x5];
+    /*0x210*/ u16 unk210;
+    /*0x212*/ u8 filler212[0x3E];
+    /*0x250*/ u16 unk250;
     /*0x252*/ u16 unk252;
     /*0x254*/ u8 filler254[0x4];
     /*0x258*/ s16 unk258;
@@ -323,7 +326,8 @@ struct PinballGame
     /*0x25D*/ u8 unk25D;
     /*0x25E*/ s8 unk25E;
     /*0x25F*/ s8 unk25F;
-    /*0x260*/ u8 filler260[0xB];
+    /*0x260*/ s8 unk260[3];
+    /*0x263*/ s8 unk263[8];
     /*0x26B*/ s8 unk26B;
     /*0x26C*/ u8 filler26C[0x2];
     /*0x26E*/ u16 unk26E;
@@ -356,7 +360,9 @@ struct PinballGame
     /*0x2A8*/ u8 filler2A8[0x2];
     /*0x2AA*/ u16 unk2AA;
     /*0x2AC*/ s16 unk2AC;
-    /*0x2AE*/ u8 filler2AE[0x22];
+    /*0x2AE*/ u8 filler2AE[0xE];
+    /*0x2BC*/ u16 unk2BC;
+    /*0x2BE*/ u8 filler2BE[0x12];
     /*0x2D0*/ s8 unk2D0;
     /*0x2D1*/ u8 filler2D1[3];
     /*0x2D4*/ u16 unk2D4;
@@ -620,7 +626,8 @@ struct PinballGame
     /*0x59A*/ u16 unk59A;
     /*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
     /*0x59E*/ u16 lastEggSpecies; // Previous hatch/evo mode species?
-    /*0x5A0*/ u8 filler5A0[0x4];
+    /*0x5A0*/ u16 unk5A0;
+    /*0x5A2*/ u16 unk5A2;
     /*0x5A4*/ u8 unk5A4;
     /*0x5A5*/ u8 unk5A5;
     /*0x5A6*/ u16 unk5A6;
