@@ -1362,7 +1362,10 @@ gUnknown_0816A7C4:: @ 0x0816A7C4
 	.incbin "baserom.gba", 0x16A7C4, 0x1C20
 
 gUnknown_0816C3E4:: @ 0x0816C3E4
-	.incbin "baserom.gba", 0x16C3E4, 0x44A00
+	.incbin "baserom.gba", 0x16C3E4, 0x42800
+	.include "data/graphics/mon_catch_sprites_pals.inc"
+@	.incbin "baserom.gba", 0x1AEBE4, 0xA80
+	.incbin "baserom.gba", 0x1B0C64, 0x180
 
 gUnknown_081B0DE4:: @ 0x081B0DE4
 	.incbin "baserom.gba", 0x1B0DE4, 0x200

@@ -12,339 +12,423 @@
   "files": [
     {
       "f": "catch_mon_01_treecko",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_01_treecko.gbapal"
     },
     {
       "f": "catch_mon_02_torchic",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_02_torchic.gbapal"
     },
     {
       "f": "catch_mon_03_mudkip",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_03_mudkip.gbapal"
     },
     {
       "f": "catch_mon_04_poochyena",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_04_poochyena.gbapal"
     },
     {
       "f": "catch_mon_05_zigzagoon",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_05_zigzagoon.gbapal"
     },
     {
       "f": "catch_mon_06_silcoon",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_06_silcoon.gbapal"
     },
     {
       "f": "catch_mon_07_cascoon",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_07_cascoon.gbapal"
     },
     {
       "f": "catch_mon_08_lombre",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_08_lombre.gbapal"
     },
     {
       "f": "catch_mon_09_nuzleaf",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_09_nuzleaf.gbapal"
     },
     {
       "f": "catch_mon_10_tailow",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_10_tailow.gbapal"
     },
     {
       "f": "catch_mon_11_wingull",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_11_wingull.gbapal"
     },
     {
       "f": "catch_mon_12_slakoth",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_12_slakoth.gbapal"
     },
     {
       "f": "catch_mon_13_abra",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_13_abra.gbapal"
     },
     {
       "f": "catch_mon_14_nincada",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_14_nincada.gbapal"
     },
     {
       "f": "catch_mon_15_loudred",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_15_loudred.gbapal"
     },
     {
       "f": "catch_mon_16_makuhita",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_16_makuhita.gbapal"
     },
     {
       "f": "catch_mon_17_goldeen",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_17_goldeen.gbapal"
     },
     {
       "f": "catch_mon_18_magikarp",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_18_magikarp.gbapal"
     },
     {
       "f": "catch_mon_19_marill",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_19_marill.gbapal"
     },
     {
       "f": "catch_mon_20_geodude",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_20_geodude.gbapal"
     },
     {
       "f": "catch_mon_21_nosepass",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_21_nosepass.gbapal"
     },
     {
       "f": "catch_mon_22_tentacool",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_22_tentacool.gbapal"
     },
     {
       "f": "catch_mon_23_sableye",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_23_sableye.gbapal"
     },
     {
       "f": "catch_mon_24_mawile",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_24_mawile.gbapal"
     },
     {
       "f": "catch_mon_25_machop",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_25_machop.gbapal"
     },
     {
       "f": "catch_mon_26_meditite",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_26_meditite.gbapal"
     },
     {
       "f": "catch_mon_27_electrike",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_27_electrike.gbapal"
     },
     {
       "f": "catch_mon_28_magnemite",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_28_magnemite.gbapal"
     },
     {
       "f": "catch_mon_29_voltorb",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_29_voltorb.gbapal"
     },
     {
       "f": "catch_mon_30_volbeat",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_30_volbeat.gbapal"
     },
     {
       "f": "catch_mon_31_illumise",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_31_illumise.gbapal"
     },
     {
       "f": "catch_mon_32_doduo",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_32_doduo.gbapal"
     },
     {
       "f": "catch_mon_33_roselia",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_33_roselia.gbapal"
     },
     {
       "f": "catch_mon_34_carvanha",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_34_carvanha.gbapal"
     },
     {
       "f": "catch_mon_35_wailmer",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_35_wailmer.gbapal"
     },
     {
       "f": "catch_mon_36_numel",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_36_numel.gbapal"
     },
     {
       "f": "catch_mon_37_slugma",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_37_slugma.gbapal"
     },
     {
       "f": "catch_mon_38_torkoal",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_38_torkoal.gbapal"
     },
     {
       "f": "catch_mon_39_grimer",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_39_grimer.gbapal"
     },
     {
       "f": "catch_mon_40_koffing",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_40_koffing.gbapal"
     },
     {
       "f": "catch_mon_41_skarmory",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_41_skarmory.gbapal"
     },
     {
       "f": "catch_mon_42_vibrava",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_42_vibrava.gbapal"
     },
     {
       "f": "catch_mon_43_cacnea",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_43_cacnea.gbapal"
     },
     {
       "f": "catch_mon_44_swablu",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_44_swablu.gbapal"
     },
     {
       "f": "catch_mon_45_zangoose",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_45_zangoose.gbapal"
     },
     {
       "f": "catch_mon_46_seviper",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_46_seviper.gbapal"
     },
     {
       "f": "catch_mon_47_lunatone",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_47_lunatone.gbapal"
     },
     {
       "f": "catch_mon_48_solrock",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_48_solrock.gbapal"
     },
     {
       "f": "catch_mon_49_barboach",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_49_barboach.gbapal"
     },
     {
       "f": "catch_mon_50_corphish",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_50_corphish.gbapal"
     },
     {
       "f": "catch_mon_51_baltoy",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_51_baltoy.gbapal"
     },
     {
       "f": "catch_mon_52_lileep",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_52_lileep.gbapal"
     },
     {
       "f": "catch_mon_53_anorith",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_53_anorith.gbapal"
     },
     {
       "f": "catch_mon_54_jigglypuff",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_54_jigglypuff.gbapal"
     },
     {
       "f": "catch_mon_55_febas",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_55_febas.gbapal"
     },
     {
       "f": "catch_mon_56_castform",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_56_castform.gbapal"
     },
     {
       "f": "catch_mon_57_staryu",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_57_staryu.gbapal"
     },
     {
       "f": "catch_mon_58_kecleon",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_58_kecleon.gbapal"
     },
     {
       "f": "catch_mon_59_duskull",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_59_duskull.gbapal"
     },
     {
       "f": "catch_mon_60_tropius",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_60_tropius.gbapal"
     },
     {
       "f": "catch_mon_61_absol",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_61_absol.gbapal"
     },
     {
       "f": "catch_mon_62_vulpix",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_62_vulpix.gbapal"
     },
     {
       "f": "catch_mon_63_pikachu",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_63_pikachu.gbapal"
     },
     {
       "f": "catch_mon_64_psyduck",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_64_psyduck.gbapal"
     },
     {
       "f": "catch_mon_65_wobbuffet",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_65_wobbuffet.gbapal"
     },
     {
       "f": "catch_mon_66_girafarig",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_66_girafarig.gbapal"
     },
     {
       "f": "catch_mon_67_pinsir",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_67_pinsir.gbapal"
     },
     {
       "f": "catch_mon_68_heracross",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_68_heracross.gbapal"
     },
     {
       "f": "catch_mon_69_rhyhorn",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_69_rhyhorn.gbapal"
     },
     {
       "f": "catch_mon_70_clamperl",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_70_clamperl.gbapal"
     },
     {
       "f": "catch_mon_71_relicanth",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_71_relicanth.gbapal"
     },
     {
       "f": "catch_mon_72_luvdisc",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_72_luvdisc.gbapal"
     },
     {
       "f": "catch_mon_73_shelgon",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_73_shelgon.gbapal"
     },
     {
       "f": "catch_mon_74_beldum",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_74_beldum.gbapal"
     },
     {
       "f": "catch_mon_75_regirock",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_75_regirock.gbapal"
     },
     {
       "f": "catch_mon_76_regice",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_76_regice.gbapal"
     },
     {
       "f": "catch_mon_77_registeel",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_77_registeel.gbapal"
     },
     {
       "f": "catch_mon_78_latias",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_78_latias.gbapal"
     },
     {
       "f": "catch_mon_79_latios",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_79_latios.gbapal"
     },
     {
       "f": "catch_mon_80_jirachi",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_80_jirachi.gbapal"
     },
     {
       "f": "catch_mon_81_chikorita",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_81_chikorita.gbapal"
     },
     {
       "f": "catch_mon_82_cyndaquil",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_82_cyndaquil.gbapal"
     },
     {
       "f": "catch_mon_83_totodile",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_83_totodile.gbapal"
     },
     {
       "f": "catch_mon_84_aerodactyl",
-      "tileCount": 108
+      "tileCount": 108,
+      "palette": "catch_mon_84_aerodactyl.gbapal"
     }
   ]
 }

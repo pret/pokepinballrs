@@ -43,11 +43,11 @@ graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 			if [ -n "$$mw" ] && [ "$$mw" != 0 ]; then mw_arg="-mwidth $$mw"; fi; \
 			if [ -n "$$mh" ] && [ "$$mh" != 0 ]; then mh_arg="-mheight $$mh"; fi; \
 			if [ "$$oam" = true ]; then oam_arg="-oam"; fi; \
-			echo -e "Processing segment $$seg: $(GFX) $*_$$seg.png $*_$$seg.4bpp $$mw_arg $$mh_arg $$oam_arg; \n"; \
+#			echo -e "Processing segment $$seg: $(GFX) $*_$$seg.png $*_$$seg.4bpp $$mw_arg $$mh_arg $$oam_arg; \n"; \
 			$(GFX) $*_$$seg.png $*_$$seg.4bpp $$mw_arg $$mh_arg $$oam_arg; \
 			segfiles="$$segfiles $*_$$seg.4bpp"; \
 		done; \
-		echo -e "catting segments: $$segfiles -> $@ \n"; \
+#		echo -e "catting segments: $$segfiles -> $@ \n"; \
 		cat $$segfiles > $@; \
 	else \
 		mw=$$(printf '%s' "$$params" | sed -n 's/.*[[:space:]]mwidth=\([0-9]\+\).*/\1/p'); \
@@ -57,7 +57,7 @@ graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 		if [ -n "$$mw" ] && [ "$$mw" != 0 ]; then mw_arg="-mwidth $$mw"; fi; \
 		if [ -n "$$mh" ] && [ "$$mh" != 0 ]; then mh_arg="-mheight $$mh"; fi; \
 		if [ "$$oam" = true ]; then oam_arg="-oam"; fi; \
-		echo -e "Processing whole image: $(GFX) $*.png $@ $$mw_arg $$mh_arg $$oam_arg; \n"; \
+#		echo -e "Processing whole image: $(GFX) $*.png $@ $$mw_arg $$mh_arg $$oam_arg; \n"; \
 		$(GFX) $*.png $@ $$mw_arg $$mh_arg $$oam_arg; \
 	fi; \
 	if [ -n "$$align_global" ]; then \
