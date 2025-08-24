@@ -1,0 +1,350 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 6,
+    "mheight": 6,
+    "oam": true,
+    "width": 18,
+    "palette": ""
+  },
+  "rules": [],
+  "files": [
+    {
+      "f": "catch_mon_01_treecko",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_02_torchic",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_03_mudkip",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_04_poochyena",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_05_zigzagoon",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_06_silcoon",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_07_cascoon",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_08_lombre",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_09_nuzleaf",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_10_tailow",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_11_wingull",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_12_slakoth",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_13_abra",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_14_nincada",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_15_loudred",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_16_makuhita",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_17_goldeen",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_18_magikarp",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_19_marill",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_20_geodude",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_21_nosepass",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_22_tentacool",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_23_sableye",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_24_mawile",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_25_machop",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_26_meditite",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_27_electrike",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_28_magnemite",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_29_voltorb",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_30_volbeat",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_31_illumise",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_32_doduo",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_33_roselia",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_34_carvanha",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_35_wailmer",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_36_numel",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_37_slugma",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_38_torkoal",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_39_grimer",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_40_koffing",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_41_skarmory",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_42_vibrava",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_43_cacnea",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_44_swablu",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_45_zangoose",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_46_seviper",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_47_lunatone",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_48_solrock",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_49_barboach",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_50_corphish",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_51_baltoy",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_52_lileep",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_53_anorith",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_54_jigglypuff",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_55_febas",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_56_castform",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_57_staryu",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_58_kecleon",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_59_duskull",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_60_tropius",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_61_absol",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_62_vulpix",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_63_pikachu",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_64_psyduck",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_65_wobbuffet",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_66_girafarig",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_67_pinsir",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_68_heracross",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_69_rhyhorn",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_70_clamperl",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_71_relicanth",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_72_luvdisc",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_73_shelgon",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_74_beldum",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_75_regirock",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_76_regice",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_77_registeel",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_78_latias",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_79_latios",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_80_jirachi",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_81_chikorita",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_82_cyndaquil",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_83_totodile",
+      "tileCount": 108
+    },
+    {
+      "f": "catch_mon_84_aerodactyl",
+      "tileCount": 108
+    }
+  ]
+}
