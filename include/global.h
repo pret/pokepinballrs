@@ -143,10 +143,11 @@ struct PinballGame
     /*0x02C*/ int unk2C;
     /*0x030*/ s8 numLives;
     /*0x031*/ u8 ballSpeed;
-    /*0x032*/ u16 unk32;
-    /*0x034*/ u8 filler34[0x1];
+    /*0x032*/ s8 unk32;
+    /*0x033*/ s8 unk33;
+    /*0x034*/ s8 unk34;
     /*0x035*/ s8 area;
-    /*0x036*/ u8 filler36[0x2];
+    /*0x036*/ s8 unk36;
     /*0x038*/ u32 unk38; //score to add every frame until unk3C score has been added to player's total
     /*0x03C*/ u32 unk3C; //score to add in a bonus field or mode (by completion or other ways, like hitting Duskulls)
     /*0x040*/ u32 unk40;
@@ -314,7 +315,10 @@ struct PinballGame
     /*0x204*/ u8 filler204[0x4];
     /*0x208*/ u16 unk208;
     /*0x20A*/ u8 unk20A;
-    /*0x20B*/ u8 filler20B[0x47];
+    /*0x20B*/ u8 filler20B[0x5];
+    /*0x210*/ u16 unk210;
+    /*0x212*/ u8 filler212[0x3E];
+    /*0x250*/ u16 unk250;
     /*0x252*/ u16 unk252;
     /*0x254*/ u8 filler254[0x4];
     /*0x258*/ s16 unk258;
@@ -323,9 +327,10 @@ struct PinballGame
     /*0x25D*/ u8 unk25D;
     /*0x25E*/ s8 unk25E;
     /*0x25F*/ s8 unk25F;
-    /*0x260*/ u8 filler260[0xB];
+    /*0x260*/ s8 unk260[3];
+    /*0x263*/ s8 unk263[8];
     /*0x26B*/ s8 unk26B;
-    /*0x26C*/ u8 filler26C[0x2];
+    /*0x26C*/ s8 unk26C;
     /*0x26E*/ u16 unk26E;
     /*0x270*/ u8 evolvablePartySpecies[MAX_EVOLVABLE_PARTY_SIZE];
     /*0x280*/ s8 evolvingPartyIndex;
@@ -356,7 +361,12 @@ struct PinballGame
     /*0x2A8*/ u8 filler2A8[0x2];
     /*0x2AA*/ u16 unk2AA;
     /*0x2AC*/ s16 unk2AC;
-    /*0x2AE*/ u8 filler2AE[0x22];
+    /*0x2AE*/ u8 filler2AE[0xE];
+    /*0x2BC*/ u16 unk2BC;
+    /*0x2BE*/ u8 unk2BE;
+    /*0x2C0*/ u16 unk2C0;
+    /*0x2C2*/ u8 unk2C2;
+    /*0x2C3*/ u8 filler2C3[0xD];
     /*0x2D0*/ s8 unk2D0;
     /*0x2D1*/ u8 filler2D1[3];
     /*0x2D4*/ u16 unk2D4;
@@ -620,7 +630,8 @@ struct PinballGame
     /*0x59A*/ u16 unk59A;
     /*0x59C*/ u16 lastCatchSpecies; // Previous catch mode species?
     /*0x59E*/ u16 lastEggSpecies; // Previous hatch/evo mode species?
-    /*0x5A0*/ u8 filler5A0[0x4];
+    /*0x5A0*/ u16 unk5A0;
+    /*0x5A2*/ u16 unk5A2;
     /*0x5A4*/ u8 unk5A4;
     /*0x5A5*/ u8 unk5A5;
     /*0x5A6*/ u16 unk5A6;
@@ -647,8 +658,9 @@ struct PinballGame
     /*0x5FC*/ s16 unk5FC;
     /*0x5FE*/ s16 unk5FE;
     /*0x600*/ u16 unk600;
-    /*0x602*/ u8 unk602;
-    /*0x603*/ u8 filler603[0x3];
+    /*0x602*/ s8 unk602;
+    /*0x603*/ s8 unk603;
+    /*0x604*/ u16 unk604;
     /*0x606*/ u16 unk606;
     /*0x608*/ u8 filler608[0xC];
     /*0x614*/ u16 unk614;
@@ -675,7 +687,7 @@ struct PinballGame
     /*0x678*/ s8 unk678[3][20];
     /*0x6B4*/ u32 unk6B4;
     /*0x6B8*/ u32 unk6B8;
-    /*0x6BC*/ u8 filler6BC[0x1];
+    /*0x6BC*/ s8 unk6BC;
     /*0x6BD*/ s8 unk6BD;
     /*0x6BE*/ s8 unk6BE;
     /*0x6BF*/ u8 filler6BF[0x1];
@@ -684,14 +696,15 @@ struct PinballGame
     /*0x6C4*/ s8 unk6C4;
     /*0x6C5*/ s8 unk6C5;
     /*0x6C6*/ s8 unk6C6;
-    /*0x6C7*/ u8 unk6C7;
+    /*0x6C7*/ s8 unk6C7;
     /*0x6C8*/ s8 unk6C8;
     /*0x6C9*/ s8 unk6C9;
     /*0x6CA*/ u16 unk6CA;
     /*0x6CC*/ s8 unk6CC;
     /*0x6CD*/ u8 unk6CD[6];
     /*0x6D3*/ u8 unk6D3[6];
-    /*0x6D9*/ u8 filler6D9[0x2];
+    /*0x6D9*/ u8 unk6D9;
+    /*0x6D9*/ u8 unk6DA;
     /*0x6DB*/ u8 unk6DB;
     /*0x6DC*/ u8 unk6DC;
     /*0x6DD*/ s8 unk6DD;
@@ -712,7 +725,8 @@ struct PinballGame
     /*0x6F6*/ u16 unk6F6;
     /*0x6F8*/ u16 unk6F8[6];
     /*0x704*/ u16 unk704;
-    /*0x706*/ u8 filler706[0x6];
+    /*0x706*/ u8 filler706[0x2];
+    /*0x708*/ u32 unk708;
     /*0x70C*/ u16 unk70C;
     /*0x70E*/ s8 unk70E;
     /*0x70F*/ s8 unk70F;
@@ -743,12 +757,8 @@ struct PinballGame
     /*0x731*/ s8 unk731;
     /*0x732*/ u8 filler732[0x2];
     /*0x734*/ s16 unk734;
-    /*0x736*/ s8 unk736;
-    /*0x737*/ s8 unk737;
-    /*0x738*/ s8 unk738;
-    /*0x739*/ s8 unk739;
-    /*0x73A*/ s8 unk73A;
-    /*0x73B*/ s8 unk73B;
+    /*0x736*/ s8 unk736[3];
+    /*0x739*/ s8 unk739[3];
     /*0x73C*/ u8 unk73C; // TODO: unknown type
     /*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
     /*0x73E*/ u8 filler73E[0x2];

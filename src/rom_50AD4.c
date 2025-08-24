@@ -151,9 +151,9 @@ void sub_4F4B4(void)
     }
     else
     {
-        sp0[0] = gCurrentPinballGame->unk739;
-        sp0[1] = gCurrentPinballGame->unk73A;
-        sp0[2] = gCurrentPinballGame->unk73B;
+        sp0[0] = gCurrentPinballGame->unk739[0];
+        sp0[1] = gCurrentPinballGame->unk739[1];
+        sp0[2] = gCurrentPinballGame->unk739[2];
     }
 
     src = gUnknown_086B0C04[0][sp0[0]];
@@ -220,9 +220,9 @@ void sub_4F660(void)
     }
     else
     {
-        sp0[0] = gCurrentPinballGame->unk736;
-        sp0[1] = gCurrentPinballGame->unk737;
-        sp0[2] = gCurrentPinballGame->unk738;
+        sp0[0] = gCurrentPinballGame->unk736[0];
+        sp0[1] = gCurrentPinballGame->unk736[1];
+        sp0[2] = gCurrentPinballGame->unk736[2];
     }
 
     src = gUnknown_086B0D6C[0][sp0[0]];
@@ -649,9 +649,9 @@ void sub_50154(void)
     }
     else
     {
-        sp0[0] = gCurrentPinballGame->unk739;
-        sp0[1] = gCurrentPinballGame->unk73A;
-        sp0[2] = gCurrentPinballGame->unk73B;
+        sp0[0] = gCurrentPinballGame->unk739[0];
+        sp0[1] = gCurrentPinballGame->unk739[1];
+        sp0[2] = gCurrentPinballGame->unk739[2];
     }
 
 
@@ -717,9 +717,9 @@ void sub_5030C(void)
     }
     else
     {
-        sp0[0] = gCurrentPinballGame->unk736;
-        sp0[1] = gCurrentPinballGame->unk737;
-        sp0[2] = gCurrentPinballGame->unk738;
+        sp0[0] = gCurrentPinballGame->unk736[0];
+        sp0[1] = gCurrentPinballGame->unk736[1];
+        sp0[2] = gCurrentPinballGame->unk736[2];
     }
 
     src = gUnknown_086B14A8[0][sp0[0]];
