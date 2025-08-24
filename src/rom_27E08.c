@@ -17,10 +17,36 @@ extern const s16 gUnknown_08137944[];
 extern const s16 gUnknown_08055A68[][7];
 extern const s16 gUnknown_08137928[];
 extern const u16 gUnknown_086B51CE[][27];
+extern const u8 gUnknown_083A8AAC[];
+extern const u8 gUnknown_084FA20C[];
 
 extern struct SongHeader gUnknown_0869F58C;
 extern struct SongHeader gUnknown_0869F5C8;
 extern struct SongHeader gUnknown_0869F618;
+
+
+void sub_25F64(void)
+{
+    s16 i;
+
+    gCurrentPinballGame->unk17 = 1;
+    gCurrentPinballGame->unk18 = 0;
+    gCurrentPinballGame->unk6DB = 3;
+    gCurrentPinballGame->unk36 = 0;
+    gCurrentPinballGame->unk32 = (Random() + gMain.systemFrameCount) % 6;
+    gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][gCurrentPinballGame->unk32];
+    gCurrentPinballGame->unk6DA = gUnknown_08137928[gCurrentPinballGame->area];
+    gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][(gCurrentPinballGame->unk32 + 1) % 6];
+    gCurrentPinballGame->unk6D9 = gUnknown_08137928[gCurrentPinballGame->area];
+    sub_1C7F4(0, 0);
+    sub_1C7F4(0, 1);
+    for (i = 0; i < 6; i++)
+        gCurrentPinballGame->unk6D3[i] = 13;
+
+    DmaCopy16(3, gUnknown_083A8AAC, (void *)0x050003C0, 0x20);
+    DmaCopy16(3, gUnknown_084FA20C, (void *)0x06015800, 0x280);
+    gCurrentPinballGame->unkE4 = 12;
+}
 
 void sub_260B8(void)
 {
