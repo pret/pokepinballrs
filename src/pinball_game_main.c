@@ -1368,7 +1368,7 @@ void sub_4C290(void)
 	mov r5, r8\n\
 	push {r5, r6, r7}\n\
 	sub sp, #4\n\
-	bl InitializeTiles_28AE0\n\
+	bl InitializeTiles\n\
 	bl sub_28BFC\n\
 	movs r1, #0\n\
 	ldr r0, _0804C3B8 @ =gCurrentPinballGame\n\

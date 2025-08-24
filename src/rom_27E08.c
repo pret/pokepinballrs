@@ -85,7 +85,7 @@ void sub_253E0(void)
     var1 = 1;
     gMain.unk44[18]->available = 1;
     if (gCurrentPinballGame->unk6CC > 0)
-        RevealCatchTile_2971C();
+        RevealCatchTile();
 
     if (gCurrentPinballGame->unk6C7 < gCurrentPinballGame->unk6C6)
     {
@@ -157,7 +157,7 @@ void sub_253E0(void)
     if (gCurrentPinballGame->unk6CC == 1)
     {
         m4aSongNumStart(SE_UNKNOWN_0x8C);
-        PickCatchTile_29664();
+        PickCatchTile();
     }
 
     if (gCurrentPinballGame->unk6CC == 12)
@@ -1373,7 +1373,7 @@ void sub_278F4(void)
 }
 
 
-void CatchMon_27D44(void)
+void CatchMon(void)
 {
     s16 i;
 
@@ -1397,7 +1397,7 @@ void CatchMon_27D44(void)
     }
 }
 
-void InitializeCatchEmMode_27E08(void)
+void InitializeCatchEmMode(void)
 {
     s16 i, j;
 

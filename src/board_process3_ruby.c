@@ -312,7 +312,7 @@ void sub_19F70(void)
     }
 }
 
-//Duplicate of CycleFlipperTriggers_32DF8, with "gCurrentPinballGame->unk301 = 1;" added in the final if statement
+//Duplicate of CycleFlipperTriggersSapphire, with "gCurrentPinballGame->unk301 = 1;" added in the final if statement
 void sub_19FA0(void)
 {
     int tmp;

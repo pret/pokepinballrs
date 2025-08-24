@@ -82,7 +82,7 @@ void sub_1AA38(void)
 
 /*
 * Ruby board Sharpedo; during the initation of the catch mode
-* Echoes sub_32BE4, which is the equivalent 'catch hole' on the sapphire board.
+* Echoes SapphireCatchLaneAnimationStates, which is the equivalent 'catch hole' on the sapphire board.
 *
 * Note: this *does not* affect the start of the catch mode itself.
 * When this function is nulled out at sub_1A9E8, the banner *doesn't* show, and

@@ -36,7 +36,7 @@ extern struct SongHeader gUnknown_0869F664;
 extern const u8 gUnknown_084C156C[];
 
 
-void CatchEmMode_27F94(void)
+void CatchEmMode(void)
 {
     s16 i;
 
@@ -62,7 +62,7 @@ void CatchEmMode_27F94(void)
         gCurrentPinballGame->unk17++;
         break;
     case 2:
-        InitializeTiles_28AE0();
+        InitializeTiles();
         gCurrentPinballGame->catchModeArrows = 0;
         gCurrentPinballGame->unk17++;
         break;
@@ -173,10 +173,10 @@ void CatchEmMode_27F94(void)
         }
         break;
     case 7:
-        StartMonCatchMode_293D8();
+        StartMonCatchMode();
         return;
     case 8:
-        InitializeForMonCry_29624();
+        InitializeForMonCry();
         DmaCopy16(3, gUnknown_086ACF80, (void *)0x050003E0, 0x20);
         DmaCopy16(3, gUnknown_020306D0, (void *)0x050003A0, 0x20);
         gCurrentPinballGame->unk288 = 118;
@@ -185,7 +185,7 @@ void CatchEmMode_27F94(void)
         gCurrentPinballGame->unk71D[0] = 2;
         gCurrentPinballGame->unk71D[1] = 2;
         gCurrentPinballGame->unk71D[2] = 2;
-        RevealCatchMon_28C90();
+        RevealCatchMon();
         gCurrentPinballGame->unk5F2 = 1;
         gCurrentPinballGame->unk17++;
         gCurrentPinballGame->unk29C = 140;
@@ -198,17 +198,17 @@ void CatchEmMode_27F94(void)
             gCurrentPinballGame->unkEC = 0;
             gCurrentPinballGame->unk18++;
         }
-        RevealCatchMon_28C90();
+        RevealCatchMon();
         if (gCurrentPinballGame->unk5AA)
             gCurrentPinballGame->unk5AA--;
         break;
     case 10:
-        StartCatchMon_28E2C();
+        StartCatchMon();
         sub_2530C();
         gCurrentPinballGame->unk17++;
         break;
     case 11:
-        CatchMon_27D44();
+        CatchMon();
         gCurrentPinballGame->unk17++;
         break;
     case 12:
@@ -278,7 +278,7 @@ void sub_28544(void)
     {
     case 0:
         gCurrentPinballGame->currentSpecies = SPECIES_JIRACHI;
-        InitializeTiles_28AE0();
+        InitializeTiles();
         gCurrentPinballGame->unk17++;
         return;
     case 1:
@@ -466,7 +466,7 @@ void sub_28544(void)
     case 5:
         sub_28EA0();
         sub_292A0();
-        CatchMon_27D44();
+        CatchMon();
         gCurrentPinballGame->unk72 = 240;
         gCurrentPinballGame->unk17 = 6;
         gCurrentPinballGame->unk18 = 0;
@@ -489,7 +489,7 @@ void sub_28544(void)
     }
 }
 
-void InitializeTiles_28AE0(void)
+void InitializeTiles(void)
 {
     s16 i;
     s16 catchIndex;
@@ -525,7 +525,7 @@ void sub_28BFC(void)
     DmaCopy16(3, src1, gUnknown_020315D0, 0x20);
 }
 
-void RevealCatchMon_28C90(void)
+void RevealCatchMon(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -578,7 +578,7 @@ void RevealCatchMon_28C90(void)
     }
 }
 
-void StartCatchMon_28E2C(void)
+void StartCatchMon(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -770,7 +770,7 @@ void sub_29334(void)
         sub_253E0();
 }
 
-void StartMonCatchMode_293D8(void)
+void StartMonCatchMode(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -797,7 +797,7 @@ void StartMonCatchMode_293D8(void)
     {
         DmaCopy16(3, gUnknown_020306D0, (void *)0x050003A0, 0x20);
         DmaCopy16(3, gUnknown_02030760, (void *)0x06010CA0, 0x480);
-        RevealCatchMon_28C90();
+        RevealCatchMon();
     }
 
     group = gMain.unk44[18];
@@ -830,7 +830,7 @@ void StartMonCatchMode_293D8(void)
     }
 }
 
-void InitializeForMonCry_29624(void)
+void InitializeForMonCry(void)
 {
     s16 i;
 
@@ -839,7 +839,7 @@ void InitializeForMonCry_29624(void)
         gCurrentPinballGame->unk6D3[i] = 13;
 }
 
-void PickCatchTile_29664(void)
+void PickCatchTile(void)
 {
     s16 i;
 
@@ -856,7 +856,7 @@ void PickCatchTile_29664(void)
     gMain.unk44[12]->available = 1;
 }
 
-void RevealCatchTile_2971C(void)
+void RevealCatchTile(void)
 {
     s16 i;
     struct SpriteGroup *group;
