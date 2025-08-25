@@ -487,7 +487,7 @@ extern void sub_23300(void);
 //extern ? sub_23954();
 //extern ? sub_239A4();
 //extern ? sub_23E18();
-//extern ? sub_242B4();
+extern void sub_242B4(void);
 //extern ? sub_24350();
 //extern ? sub_24408();
 extern void sub_2530C(void);
