@@ -85,7 +85,7 @@ def main():
                         palette_rel = to_posix(pal_candidate)
 
             entry = {
-                "f": f,
+                "gfx_filename": f,
                 "tileCount": tile_count
             }
             if palette_rel:
