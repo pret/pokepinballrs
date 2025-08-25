@@ -50,7 +50,7 @@ extern const u8 gUnknown_08526DCC[];
 extern const s16 gUnknown_086ACFE0[];
 extern const u16 gUnknown_086AD2DE[];
 extern const u8 *gUnknown_086AD474[];
-extern const s16 gUnknown_086AD2EE[][4];
+extern const u16 gUnknown_086AD2EE[][4];
 extern const s16 gUnknown_086AD456[][7];
 extern const u8 gUnknown_084FB68C[][0x480];
 extern const u8 gUnknown_083C3C2C[][0x300];
