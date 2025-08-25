@@ -6,7 +6,7 @@ graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 	@for json in $^; do \
 		if jq -e '.kind == "gfx-config"' "$$json" > /dev/null; then \
 			dir=$$(dirname "$$json"); \
-			jq -r --arg dir "$$dir" '.defaults as $$d | .files[]? | (.f // .palette // "") as $$f | "file=graphics/" + ($$dir | sub("^graphics/";"")) + "/" + $$f + " mwidth=" + ((.mwidth // $$d.mwidth // "" )|tostring) + " mheight=" + ((.mheight // $$d.mheight // "" )|tostring) + " oam=" + ((.oam // $$d.oam // "" )|tostring) + " align=" + ((.align // $$d.align // "" )|tostring) + (if .segments then " segments=" + (.segments|tojson) else "" end)' "$$json" >> "$@"; \
+			jq -r --arg dir "$$dir" '.defaults as $$d | .files[]? | (.gfx_filename // .palette // "") as $$gfx_filename | "file=graphics/" + ($$dir | sub("^graphics/";"")) + "/" + $$gfx_filename + " mwidth=" + ((.mwidth // $$d.mwidth // "" )|tostring) + " mheight=" + ((.mheight // $$d.mheight // "" )|tostring) + " oam=" + ((.oam // $$d.oam // "" )|tostring) + " align=" + ((.align // $$d.align // "" )|tostring) + (if .segments then " segments=" + (.segments|tojson) else "" end)' "$$json" >> "$@"; \
 		fi; \
 	done
 

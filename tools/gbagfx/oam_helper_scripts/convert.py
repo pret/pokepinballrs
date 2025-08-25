@@ -37,10 +37,10 @@ def effective_opts(cfg: dict, fbase: str, overlay: dict | None = None) -> dict:
     # 3) apply exact file entry (capture presence of keys)
     file_entry = None
     for e in cfg.get("files", []):
-        if e.get("f") == fbase:
+        if e.get("gfx_filename") == fbase:
             file_entry = e
             for k, v in e.items():
-                if k != "f":
+                if k != "gfx_filename":
                     opts[k] = v
             break
 
@@ -105,9 +105,9 @@ def main():
     # build worklist (supports per-file segments)
     work = []  # each item: (target_id, fbase_for_io, opts)
     for e in cfg["files"]:
-        if "f" not in e:
+        if "gfx_filename" not in e:
             continue
-        f = posix(e["f"])
+        f = posix(e["gfx_filename"])
         segs = e.get("segments")
         if isinstance(segs, list) and segs:
             for seg in segs:

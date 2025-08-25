@@ -10,13 +10,13 @@
   },
   "files": [
     {
-      "f": "gunk_084F61EC",
+      "gfx_filename": "gunk_084F61EC",
       "tileCount": 80,
       "mwidth":8,
       "align":1
     },
     {
-      "f": "pika_spinner",
+      "gfx_filename": "pika_spinner",
       "tileCount": 144,
       "mwidth":3,
       "mheight":3,
@@ -24,14 +24,14 @@
       "oam":true  
     },
     {
-      "f": "jirachi_banner",
+      "gfx_filename": "jirachi_banner",
       "tileCount": 544,
       "mwidth":30,
       "mheight":9,
       "oam":true
     },
     {
-      "f": "travel",
+      "gfx_filename": "travel",
       "tileCount": 304,
       "segments":[
         {
@@ -65,36 +65,36 @@
       ]
     },
     {
-      "f": "evo_banner",
+      "gfx_filename": "evo_banner",
       "tileCount": 544,
       "mheight":9,
       "mwidth":30,
       "oam":true
     },
     {
-      "f": "game_over_text",
+      "gfx_filename": "game_over_text",
       "tileCount": 32,
       "mheight": 2,
       "mwidth": 2,
       "width":16
     },
     {
-      "f": "pause_menu_text",
+      "gfx_filename": "pause_menu_text",
       "tileCount": 13
     },
     {
-      "f": "latios",
+      "gfx_filename": "latios",
       "tileCount": 128,
       "mheight":8,
       "mwidth":8
     },
     {
-      "f": "latios_arm",
+      "gfx_filename": "latios_arm",
       "tileCount": 16,
       "width":2
     },
     {
-      "f": "ball_save",
+      "gfx_filename": "ball_save",
       "tileCount": 208,
       "segments": [
         {
@@ -116,7 +116,7 @@
       ]
     },
     {
-      "f": "end_of_ball",
+      "gfx_filename": "end_of_ball",
       "tileCount": 224,
       "segments": [
         {

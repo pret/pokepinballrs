@@ -10,7 +10,7 @@
   },
   "files": [
     {
-      "f": "seedot",
+      "gfx_filename": "seedot",
       "tileCount": 84,
       "mwidth":3,
       "mheight":4,
@@ -18,21 +18,21 @@
       "oam":true  
     },
     {
-      "f": "shop_shock_wall",
+      "gfx_filename": "shop_shock_wall",
       "tileCount": 48,
       "mwidth":2,
       "mheight":2,
       "width":10     
     },
     {
-      "f": "zigzagoon",
+      "gfx_filename": "zigzagoon",
       "tileCount": 280,
       "mheight":4,
       "mwidth":7,
       "oam":true
     },
     {
-      "f": "zigzagoon_fx",
+      "gfx_filename": "zigzagoon_fx",
       "tileCount": 96,
       "mwidth":4
     }

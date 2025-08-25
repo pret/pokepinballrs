@@ -10,13 +10,13 @@
   },
   "files": [
     {
-      "f": "gunk_084FA20C",
+      "gfx_filename": "gunk_084FA20C",
       "tileCount": 20,
       "mwidth":2,
       "mheight":2
     },
     {
-      "f": "gunk_0850558C",
+      "gfx_filename": "gunk_0850558C",
       "tileCount": 48
     }
   ]

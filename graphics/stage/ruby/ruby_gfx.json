@@ -10,7 +10,7 @@
   },
   "files": [
     {
-      "f": "shop_door",
+      "gfx_filename": "shop_door",
       "tileCount": 48,
       "mwidth":3,
       "mheight":4,
@@ -18,25 +18,25 @@
       "oam":true
     },
     {
-      "f": "sharpedo",
+      "gfx_filename": "sharpedo",
       "tileCount": 57,
       "mwidth":19,
       "mheight":3
     },
     {
-      "f": "shop",
+      "gfx_filename": "shop",
       "tileCount": 448,
       "mwidth":8
     },
     {
-      "f": "hatch_cave",
+      "gfx_filename": "hatch_cave",
       "tileCount": 224,
       "mwidth":6,
       "mheight":6,
       "oam":true
     },
     {
-      "f": "ramp_prize",
+      "gfx_filename": "ramp_prize",
       "tileCount": 32,
       "mheight":2,
       "mwidth":2,

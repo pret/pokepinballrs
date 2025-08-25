@@ -9,1052 +9,1052 @@
   },
   "files": [
     {
-      "f": "207_portrait",
+      "gfx_filename": "207_portrait",
       "tileCount": 24,
       "palette": "207_portrait.gbapal"
     },
     {
-      "f": "208_portrait",
+      "gfx_filename": "208_portrait",
       "tileCount": 24,
       "palette": "208_portrait.gbapal"
     },
     {
-      "f": "209_portrait",
+      "gfx_filename": "209_portrait",
       "tileCount": 24,
       "palette": "209_portrait.gbapal"
     },
     {
-      "f": "210_portrait",
+      "gfx_filename": "210_portrait",
       "tileCount": 24,
       "palette": "210_portrait.gbapal"
     },
     {
-      "f": "abra_portrait",
+      "gfx_filename": "abra_portrait",
       "tileCount": 24,
       "palette": "abra_portrait.gbapal"
     },
     {
-      "f": "absol_portrait",
+      "gfx_filename": "absol_portrait",
       "tileCount": 24,
       "palette": "absol_portrait.gbapal"
     },
     {
-      "f": "aerodactyl_portrait",
+      "gfx_filename": "aerodactyl_portrait",
       "tileCount": 24,
       "palette": "aerodactyl_portrait.gbapal"
     },
     {
-      "f": "aggron_portrait",
+      "gfx_filename": "aggron_portrait",
       "tileCount": 24,
       "palette": "aggron_portrait.gbapal"
     },
     {
-      "f": "alakazam_portrait",
+      "gfx_filename": "alakazam_portrait",
       "tileCount": 24,
       "palette": "alakazam_portrait.gbapal"
     },
     {
-      "f": "altaria_portrait",
+      "gfx_filename": "altaria_portrait",
       "tileCount": 24,
       "palette": "altaria_portrait.gbapal"
     },
     {
-      "f": "anorith_portrait",
+      "gfx_filename": "anorith_portrait",
       "tileCount": 24,
       "palette": "anorith_portrait.gbapal"
     },
     {
-      "f": "armaldo_portrait",
+      "gfx_filename": "armaldo_portrait",
       "tileCount": 24,
       "palette": "armaldo_portrait.gbapal"
     },
     {
-      "f": "aron_portrait",
+      "gfx_filename": "aron_portrait",
       "tileCount": 24,
       "palette": "aron_portrait.gbapal"
     },
     {
-      "f": "azumarill_portrait",
+      "gfx_filename": "azumarill_portrait",
       "tileCount": 24,
       "palette": "azumarill_portrait.gbapal"
     },
     {
-      "f": "azurill_portrait",
+      "gfx_filename": "azurill_portrait",
       "tileCount": 24,
       "palette": "azurill_portrait.gbapal"
     },
     {
-      "f": "bagon_portrait",
+      "gfx_filename": "bagon_portrait",
       "tileCount": 24,
       "palette": "bagon_portrait.gbapal"
     },
     {
-      "f": "baltoy_portrait",
+      "gfx_filename": "baltoy_portrait",
       "tileCount": 24,
       "palette": "baltoy_portrait.gbapal"
     },
     {
-      "f": "banette_portrait",
+      "gfx_filename": "banette_portrait",
       "tileCount": 24,
       "palette": "banette_portrait.gbapal"
     },
     {
-      "f": "barboach_portrait",
+      "gfx_filename": "barboach_portrait",
       "tileCount": 24,
       "palette": "barboach_portrait.gbapal"
     },
     {
-      "f": "beautifly_portrait",
+      "gfx_filename": "beautifly_portrait",
       "tileCount": 24,
       "palette": "beautifly_portrait.gbapal"
     },
     {
-      "f": "beldum_portrait",
+      "gfx_filename": "beldum_portrait",
       "tileCount": 24,
       "palette": "beldum_portrait.gbapal"
     },
     {
-      "f": "bellossom_portrait",
+      "gfx_filename": "bellossom_portrait",
       "tileCount": 24,
       "palette": "bellossom_portrait.gbapal"
     },
     {
-      "f": "blaziken_portrait",
+      "gfx_filename": "blaziken_portrait",
       "tileCount": 24,
       "palette": "blaziken_portrait.gbapal"
     },
     {
-      "f": "breloom_portrait",
+      "gfx_filename": "breloom_portrait",
       "tileCount": 24,
       "palette": "breloom_portrait.gbapal"
     },
     {
-      "f": "cacnea_portrait",
+      "gfx_filename": "cacnea_portrait",
       "tileCount": 24,
       "palette": "cacnea_portrait.gbapal"
     },
     {
-      "f": "cacturne_portrait",
+      "gfx_filename": "cacturne_portrait",
       "tileCount": 24,
       "palette": "cacturne_portrait.gbapal"
     },
     {
-      "f": "camerupt_portrait",
+      "gfx_filename": "camerupt_portrait",
       "tileCount": 24,
       "palette": "camerupt_portrait.gbapal"
     },
     {
-      "f": "carvanha_portrait",
+      "gfx_filename": "carvanha_portrait",
       "tileCount": 24,
       "palette": "carvanha_portrait.gbapal"
     },
     {
-      "f": "cascoon_portrait",
+      "gfx_filename": "cascoon_portrait",
       "tileCount": 24,
       "palette": "cascoon_portrait.gbapal"
     },
     {
-      "f": "castform_portrait",
+      "gfx_filename": "castform_portrait",
       "tileCount": 24,
       "palette": "castform_portrait.gbapal"
     },
     {
-      "f": "chikorita_portrait",
+      "gfx_filename": "chikorita_portrait",
       "tileCount": 24,
       "palette": "chikorita_portrait.gbapal"
     },
     {
-      "f": "chimecho_portrait",
+      "gfx_filename": "chimecho_portrait",
       "tileCount": 24,
       "palette": "chimecho_portrait.gbapal"
     },
     {
-      "f": "chinchou_portrait",
+      "gfx_filename": "chinchou_portrait",
       "tileCount": 24,
       "palette": "chinchou_portrait.gbapal"
     },
     {
-      "f": "clamperl_portrait",
+      "gfx_filename": "clamperl_portrait",
       "tileCount": 24,
       "palette": "clamperl_portrait.gbapal"
     },
     {
-      "f": "claydol_portrait",
+      "gfx_filename": "claydol_portrait",
       "tileCount": 24,
       "palette": "claydol_portrait.gbapal"
     },
     {
-      "f": "combusken_portrait",
+      "gfx_filename": "combusken_portrait",
       "tileCount": 24,
       "palette": "combusken_portrait.gbapal"
     },
     {
-      "f": "corphish_portrait",
+      "gfx_filename": "corphish_portrait",
       "tileCount": 24,
       "palette": "corphish_portrait.gbapal"
     },
     {
-      "f": "corsola_portrait",
+      "gfx_filename": "corsola_portrait",
       "tileCount": 24,
       "palette": "corsola_portrait.gbapal"
     },
     {
-      "f": "cradily_portrait",
+      "gfx_filename": "cradily_portrait",
       "tileCount": 24,
       "palette": "cradily_portrait.gbapal"
     },
     {
-      "f": "crawdaunt_portrait",
+      "gfx_filename": "crawdaunt_portrait",
       "tileCount": 24,
       "palette": "crawdaunt_portrait.gbapal"
     },
     {
-      "f": "crobat_portrait",
+      "gfx_filename": "crobat_portrait",
       "tileCount": 24,
       "palette": "crobat_portrait.gbapal"
     },
     {
-      "f": "cyndaquil_portrait",
+      "gfx_filename": "cyndaquil_portrait",
       "tileCount": 24,
       "palette": "cyndaquil_portrait.gbapal"
     },
     {
-      "f": "delcatty_portrait",
+      "gfx_filename": "delcatty_portrait",
       "tileCount": 24,
       "palette": "delcatty_portrait.gbapal"
     },
     {
-      "f": "dodrio_portrait",
+      "gfx_filename": "dodrio_portrait",
       "tileCount": 24,
       "palette": "dodrio_portrait.gbapal"
     },
     {
-      "f": "doduo_portrait",
+      "gfx_filename": "doduo_portrait",
       "tileCount": 24,
       "palette": "doduo_portrait.gbapal"
     },
     {
-      "f": "donphan_portrait",
+      "gfx_filename": "donphan_portrait",
       "tileCount": 24,
       "palette": "donphan_portrait.gbapal"
     },
     {
-      "f": "dusclops_portrait",
+      "gfx_filename": "dusclops_portrait",
       "tileCount": 24,
       "palette": "dusclops_portrait.gbapal"
     },
     {
-      "f": "duskull_portrait",
+      "gfx_filename": "duskull_portrait",
       "tileCount": 24,
       "palette": "duskull_portrait.gbapal"
     },
     {
-      "f": "dustox_portrait",
+      "gfx_filename": "dustox_portrait",
       "tileCount": 24,
       "palette": "dustox_portrait.gbapal"
     },
     {
-      "f": "electrike_portrait",
+      "gfx_filename": "electrike_portrait",
       "tileCount": 24,
       "palette": "electrike_portrait.gbapal"
     },
     {
-      "f": "electrode_portrait",
+      "gfx_filename": "electrode_portrait",
       "tileCount": 24,
       "palette": "electrode_portrait.gbapal"
     },
     {
-      "f": "exploud_portrait",
+      "gfx_filename": "exploud_portrait",
       "tileCount": 24,
       "palette": "exploud_portrait.gbapal"
     },
     {
-      "f": "feebas_portrait",
+      "gfx_filename": "feebas_portrait",
       "tileCount": 24,
       "palette": "feebas_portrait.gbapal"
     },
     {
-      "f": "flygon_portrait",
+      "gfx_filename": "flygon_portrait",
       "tileCount": 24,
       "palette": "flygon_portrait.gbapal"
     },
     {
-      "f": "gardevoir_portrait",
+      "gfx_filename": "gardevoir_portrait",
       "tileCount": 24,
       "palette": "gardevoir_portrait.gbapal"
     },
     {
-      "f": "geodude_portrait",
+      "gfx_filename": "geodude_portrait",
       "tileCount": 24,
       "palette": "geodude_portrait.gbapal"
     },
     {
-      "f": "girafarig_portrait",
+      "gfx_filename": "girafarig_portrait",
       "tileCount": 24,
       "palette": "girafarig_portrait.gbapal"
     },
     {
-      "f": "glalie_portrait",
+      "gfx_filename": "glalie_portrait",
       "tileCount": 24,
       "palette": "glalie_portrait.gbapal"
     },
     {
-      "f": "gloom_portrait",
+      "gfx_filename": "gloom_portrait",
       "tileCount": 24,
       "palette": "gloom_portrait.gbapal"
     },
     {
-      "f": "golbat_portrait",
+      "gfx_filename": "golbat_portrait",
       "tileCount": 24,
       "palette": "golbat_portrait.gbapal"
     },
     {
-      "f": "goldeen_portrait",
+      "gfx_filename": "goldeen_portrait",
       "tileCount": 24,
       "palette": "goldeen_portrait.gbapal"
     },
     {
-      "f": "golduck_portrait",
+      "gfx_filename": "golduck_portrait",
       "tileCount": 24,
       "palette": "golduck_portrait.gbapal"
     },
     {
-      "f": "golem_portrait",
+      "gfx_filename": "golem_portrait",
       "tileCount": 24,
       "palette": "golem_portrait.gbapal"
     },
     {
-      "f": "gorebyss_portrait",
+      "gfx_filename": "gorebyss_portrait",
       "tileCount": 24,
       "palette": "gorebyss_portrait.gbapal"
     },
     {
-      "f": "graveler_portrait",
+      "gfx_filename": "graveler_portrait",
       "tileCount": 24,
       "palette": "graveler_portrait.gbapal"
     },
     {
-      "f": "grimer_portrait",
+      "gfx_filename": "grimer_portrait",
       "tileCount": 24,
       "palette": "grimer_portrait.gbapal"
     },
     {
-      "f": "groudon_portrait",
+      "gfx_filename": "groudon_portrait",
       "tileCount": 24,
       "palette": "groudon_portrait.gbapal"
     },
     {
-      "f": "grovyle_portrait",
+      "gfx_filename": "grovyle_portrait",
       "tileCount": 24,
       "palette": "grovyle_portrait.gbapal"
     },
     {
-      "f": "grumpig_portrait",
+      "gfx_filename": "grumpig_portrait",
       "tileCount": 24,
       "palette": "grumpig_portrait.gbapal"
     },
     {
-      "f": "gulpin_portrait",
+      "gfx_filename": "gulpin_portrait",
       "tileCount": 24,
       "palette": "gulpin_portrait.gbapal"
     },
     {
-      "f": "gyarados_portrait",
+      "gfx_filename": "gyarados_portrait",
       "tileCount": 24,
       "palette": "gyarados_portrait.gbapal"
     },
     {
-      "f": "hariyama_portrait",
+      "gfx_filename": "hariyama_portrait",
       "tileCount": 24,
       "palette": "hariyama_portrait.gbapal"
     },
     {
-      "f": "heracross_portrait",
+      "gfx_filename": "heracross_portrait",
       "tileCount": 24,
       "palette": "heracross_portrait.gbapal"
     },
     {
-      "f": "horsea_portrait",
+      "gfx_filename": "horsea_portrait",
       "tileCount": 24,
       "palette": "horsea_portrait.gbapal"
     },
     {
-      "f": "huntail_portrait",
+      "gfx_filename": "huntail_portrait",
       "tileCount": 24,
       "palette": "huntail_portrait.gbapal"
     },
     {
-      "f": "igglybuff_portrait",
+      "gfx_filename": "igglybuff_portrait",
       "tileCount": 24,
       "palette": "igglybuff_portrait.gbapal"
     },
     {
-      "f": "illumise_portrait",
+      "gfx_filename": "illumise_portrait",
       "tileCount": 24,
       "palette": "illumise_portrait.gbapal"
     },
     {
-      "f": "jigglypuff_portrait",
+      "gfx_filename": "jigglypuff_portrait",
       "tileCount": 24,
       "palette": "jigglypuff_portrait.gbapal"
     },
     {
-      "f": "jirachi_portrait",
+      "gfx_filename": "jirachi_portrait",
       "tileCount": 24,
       "palette": "jirachi_portrait.gbapal"
     },
     {
-      "f": "kadabra_portrait",
+      "gfx_filename": "kadabra_portrait",
       "tileCount": 24,
       "palette": "kadabra_portrait.gbapal"
     },
     {
-      "f": "kecleon_portrait",
+      "gfx_filename": "kecleon_portrait",
       "tileCount": 24,
       "palette": "kecleon_portrait.gbapal"
     },
     {
-      "f": "kingdra_portrait",
+      "gfx_filename": "kingdra_portrait",
       "tileCount": 24,
       "palette": "kingdra_portrait.gbapal"
     },
     {
-      "f": "kirlia_portrait",
+      "gfx_filename": "kirlia_portrait",
       "tileCount": 24,
       "palette": "kirlia_portrait.gbapal"
     },
     {
-      "f": "koffing_portrait",
+      "gfx_filename": "koffing_portrait",
       "tileCount": 24,
       "palette": "koffing_portrait.gbapal"
     },
     {
-      "f": "kyogre_portrait",
+      "gfx_filename": "kyogre_portrait",
       "tileCount": 24,
       "palette": "kyogre_portrait.gbapal"
     },
     {
-      "f": "lairon_portrait",
+      "gfx_filename": "lairon_portrait",
       "tileCount": 24,
       "palette": "lairon_portrait.gbapal"
     },
     {
-      "f": "lanturn_portrait",
+      "gfx_filename": "lanturn_portrait",
       "tileCount": 24,
       "palette": "lanturn_portrait.gbapal"
     },
     {
-      "f": "latias_portrait",
+      "gfx_filename": "latias_portrait",
       "tileCount": 24,
       "palette": "latias_portrait.gbapal"
     },
     {
-      "f": "latios_portrait",
+      "gfx_filename": "latios_portrait",
       "tileCount": 24,
       "palette": "latios_portrait.gbapal"
     },
     {
-      "f": "lileep_portrait",
+      "gfx_filename": "lileep_portrait",
       "tileCount": 24,
       "palette": "lileep_portrait.gbapal"
     },
     {
-      "f": "linoone_portrait",
+      "gfx_filename": "linoone_portrait",
       "tileCount": 24,
       "palette": "linoone_portrait.gbapal"
     },
     {
-      "f": "lombre_portrait",
+      "gfx_filename": "lombre_portrait",
       "tileCount": 24,
       "palette": "lombre_portrait.gbapal"
     },
     {
-      "f": "lotad_portrait",
+      "gfx_filename": "lotad_portrait",
       "tileCount": 24,
       "palette": "lotad_portrait.gbapal"
     },
     {
-      "f": "loudred_portrait",
+      "gfx_filename": "loudred_portrait",
       "tileCount": 24,
       "palette": "loudred_portrait.gbapal"
     },
     {
-      "f": "ludicolo_portrait",
+      "gfx_filename": "ludicolo_portrait",
       "tileCount": 24,
       "palette": "ludicolo_portrait.gbapal"
     },
     {
-      "f": "lunatone_portrait",
+      "gfx_filename": "lunatone_portrait",
       "tileCount": 24,
       "palette": "lunatone_portrait.gbapal"
     },
     {
-      "f": "luvdisc_portrait",
+      "gfx_filename": "luvdisc_portrait",
       "tileCount": 24,
       "palette": "luvdisc_portrait.gbapal"
     },
     {
-      "f": "machamp_portrait",
+      "gfx_filename": "machamp_portrait",
       "tileCount": 24,
       "palette": "machamp_portrait.gbapal"
     },
     {
-      "f": "machoke_portrait",
+      "gfx_filename": "machoke_portrait",
       "tileCount": 24,
       "palette": "machoke_portrait.gbapal"
     },
     {
-      "f": "machop_portrait",
+      "gfx_filename": "machop_portrait",
       "tileCount": 24,
       "palette": "machop_portrait.gbapal"
     },
     {
-      "f": "magcargo_portrait",
+      "gfx_filename": "magcargo_portrait",
       "tileCount": 24,
       "palette": "magcargo_portrait.gbapal"
     },
     {
-      "f": "magikarp_portrait",
+      "gfx_filename": "magikarp_portrait",
       "tileCount": 24,
       "palette": "magikarp_portrait.gbapal"
     },
     {
-      "f": "magnemite_portrait",
+      "gfx_filename": "magnemite_portrait",
       "tileCount": 24,
       "palette": "magnemite_portrait.gbapal"
     },
     {
-      "f": "magneton_portrait",
+      "gfx_filename": "magneton_portrait",
       "tileCount": 24,
       "palette": "magneton_portrait.gbapal"
     },
     {
-      "f": "makuhita_portrait",
+      "gfx_filename": "makuhita_portrait",
       "tileCount": 24,
       "palette": "makuhita_portrait.gbapal"
     },
     {
-      "f": "manectric_portrait",
+      "gfx_filename": "manectric_portrait",
       "tileCount": 24,
       "palette": "manectric_portrait.gbapal"
     },
     {
-      "f": "marill_portrait",
+      "gfx_filename": "marill_portrait",
       "tileCount": 24,
       "palette": "marill_portrait.gbapal"
     },
     {
-      "f": "marshtomp_portrait",
+      "gfx_filename": "marshtomp_portrait",
       "tileCount": 24,
       "palette": "marshtomp_portrait.gbapal"
     },
     {
-      "f": "masquerain_portrait",
+      "gfx_filename": "masquerain_portrait",
       "tileCount": 24,
       "palette": "masquerain_portrait.gbapal"
     },
     {
-      "f": "mawile_portrait",
+      "gfx_filename": "mawile_portrait",
       "tileCount": 24,
       "palette": "mawile_portrait.gbapal"
     },
     {
-      "f": "medicham_portrait",
+      "gfx_filename": "medicham_portrait",
       "tileCount": 24,
       "palette": "medicham_portrait.gbapal"
     },
     {
-      "f": "meditite_portrait",
+      "gfx_filename": "meditite_portrait",
       "tileCount": 24,
       "palette": "meditite_portrait.gbapal"
     },
     {
-      "f": "metagross_portrait",
+      "gfx_filename": "metagross_portrait",
       "tileCount": 24,
       "palette": "metagross_portrait.gbapal"
     },
     {
-      "f": "metang_portrait",
+      "gfx_filename": "metang_portrait",
       "tileCount": 24,
       "palette": "metang_portrait.gbapal"
     },
     {
-      "f": "mightyena_portrait",
+      "gfx_filename": "mightyena_portrait",
       "tileCount": 24,
       "palette": "mightyena_portrait.gbapal"
     },
     {
-      "f": "milotic_portrait",
+      "gfx_filename": "milotic_portrait",
       "tileCount": 24,
       "palette": "milotic_portrait.gbapal"
     },
     {
-      "f": "minun_portrait",
+      "gfx_filename": "minun_portrait",
       "tileCount": 24,
       "palette": "minun_portrait.gbapal"
     },
     {
-      "f": "mudkip_portrait",
+      "gfx_filename": "mudkip_portrait",
       "tileCount": 24,
       "palette": "mudkip_portrait.gbapal"
     },
     {
-      "f": "muk_portrait",
+      "gfx_filename": "muk_portrait",
       "tileCount": 24,
       "palette": "muk_portrait.gbapal"
     },
     {
-      "f": "natu_portrait",
+      "gfx_filename": "natu_portrait",
       "tileCount": 24,
       "palette": "natu_portrait.gbapal"
     },
     {
-      "f": "nincada_portrait",
+      "gfx_filename": "nincada_portrait",
       "tileCount": 24,
       "palette": "nincada_portrait.gbapal"
     },
     {
-      "f": "ninetales_portrait",
+      "gfx_filename": "ninetales_portrait",
       "tileCount": 24,
       "palette": "ninetales_portrait.gbapal"
     },
     {
-      "f": "ninjask_portrait",
+      "gfx_filename": "ninjask_portrait",
       "tileCount": 24,
       "palette": "ninjask_portrait.gbapal"
     },
     {
-      "f": "nosepass_portrait",
+      "gfx_filename": "nosepass_portrait",
       "tileCount": 24,
       "palette": "nosepass_portrait.gbapal"
     },
     {
-      "f": "numel_portrait",
+      "gfx_filename": "numel_portrait",
       "tileCount": 24,
       "palette": "numel_portrait.gbapal"
     },
     {
-      "f": "nuzleaf_portrait",
+      "gfx_filename": "nuzleaf_portrait",
       "tileCount": 24,
       "palette": "nuzleaf_portrait.gbapal"
     },
     {
-      "f": "oddish_portrait",
+      "gfx_filename": "oddish_portrait",
       "tileCount": 24,
       "palette": "oddish_portrait.gbapal"
     },
     {
-      "f": "pelipper_portrait",
+      "gfx_filename": "pelipper_portrait",
       "tileCount": 24,
       "palette": "pelipper_portrait.gbapal"
     },
     {
-      "f": "phanpy_portrait",
+      "gfx_filename": "phanpy_portrait",
       "tileCount": 24,
       "palette": "phanpy_portrait.gbapal"
     },
     {
-      "f": "pichu_portrait",
+      "gfx_filename": "pichu_portrait",
       "tileCount": 24,
       "palette": "pichu_portrait.gbapal"
     },
     {
-      "f": "pikachu_portrait",
+      "gfx_filename": "pikachu_portrait",
       "tileCount": 24,
       "palette": "pikachu_portrait.gbapal"
     },
     {
-      "f": "pinsir_portrait",
+      "gfx_filename": "pinsir_portrait",
       "tileCount": 24,
       "palette": "pinsir_portrait.gbapal"
     },
     {
-      "f": "plusle_portrait",
+      "gfx_filename": "plusle_portrait",
       "tileCount": 24,
       "palette": "plusle_portrait.gbapal"
     },
     {
-      "f": "poochyena_portrait",
+      "gfx_filename": "poochyena_portrait",
       "tileCount": 24,
       "palette": "poochyena_portrait.gbapal"
     },
     {
-      "f": "psyduck_portrait",
+      "gfx_filename": "psyduck_portrait",
       "tileCount": 24,
       "palette": "psyduck_portrait.gbapal"
     },
     {
-      "f": "question_mark_portrait",
+      "gfx_filename": "question_mark_portrait",
       "tileCount": 24,
       "palette": "question_mark_portrait.gbapal"
     },
     {
-      "f": "raichu_portrait",
+      "gfx_filename": "raichu_portrait",
       "tileCount": 24,
       "palette": "raichu_portrait.gbapal"
     },
     {
-      "f": "ralts_portrait",
+      "gfx_filename": "ralts_portrait",
       "tileCount": 24,
       "palette": "ralts_portrait.gbapal"
     },
     {
-      "f": "rayquaza_portrait",
+      "gfx_filename": "rayquaza_portrait",
       "tileCount": 24,
       "palette": "rayquaza_portrait.gbapal"
     },
     {
-      "f": "regice_portrait",
+      "gfx_filename": "regice_portrait",
       "tileCount": 24,
       "palette": "regice_portrait.gbapal"
     },
     {
-      "f": "regirock_portrait",
+      "gfx_filename": "regirock_portrait",
       "tileCount": 24,
       "palette": "regirock_portrait.gbapal"
     },
     {
-      "f": "registeel_portrait",
+      "gfx_filename": "registeel_portrait",
       "tileCount": 24,
       "palette": "registeel_portrait.gbapal"
     },
     {
-      "f": "relicanth_portrait",
+      "gfx_filename": "relicanth_portrait",
       "tileCount": 24,
       "palette": "relicanth_portrait.gbapal"
     },
     {
-      "f": "rhydon_portrait",
+      "gfx_filename": "rhydon_portrait",
       "tileCount": 24,
       "palette": "rhydon_portrait.gbapal"
     },
     {
-      "f": "rhyhorn_portrait",
+      "gfx_filename": "rhyhorn_portrait",
       "tileCount": 24,
       "palette": "rhyhorn_portrait.gbapal"
     },
     {
-      "f": "roselia_portrait",
+      "gfx_filename": "roselia_portrait",
       "tileCount": 24,
       "palette": "roselia_portrait.gbapal"
     },
     {
-      "f": "sableye_portrait",
+      "gfx_filename": "sableye_portrait",
       "tileCount": 24,
       "palette": "sableye_portrait.gbapal"
     },
     {
-      "f": "salamence_portrait",
+      "gfx_filename": "salamence_portrait",
       "tileCount": 24,
       "palette": "salamence_portrait.gbapal"
     },
     {
-      "f": "sandshrew_portrait",
+      "gfx_filename": "sandshrew_portrait",
       "tileCount": 24,
       "palette": "sandshrew_portrait.gbapal"
     },
     {
-      "f": "sandslash_portrait",
+      "gfx_filename": "sandslash_portrait",
       "tileCount": 24,
       "palette": "sandslash_portrait.gbapal"
     },
     {
-      "f": "sceptile_portrait",
+      "gfx_filename": "sceptile_portrait",
       "tileCount": 24,
       "palette": "sceptile_portrait.gbapal"
     },
     {
-      "f": "seadra_portrait",
+      "gfx_filename": "seadra_portrait",
       "tileCount": 24,
       "palette": "seadra_portrait.gbapal"
     },
     {
-      "f": "seaking_portrait",
+      "gfx_filename": "seaking_portrait",
       "tileCount": 24,
       "palette": "seaking_portrait.gbapal"
     },
     {
-      "f": "sealeo_portrait",
+      "gfx_filename": "sealeo_portrait",
       "tileCount": 24,
       "palette": "sealeo_portrait.gbapal"
     },
     {
-      "f": "seedot_portrait",
+      "gfx_filename": "seedot_portrait",
       "tileCount": 24,
       "palette": "seedot_portrait.gbapal"
     },
     {
-      "f": "seviper_portrait",
+      "gfx_filename": "seviper_portrait",
       "tileCount": 24,
       "palette": "seviper_portrait.gbapal"
     },
     {
-      "f": "sharpedo_portrait",
+      "gfx_filename": "sharpedo_portrait",
       "tileCount": 24,
       "palette": "sharpedo_portrait.gbapal"
     },
     {
-      "f": "shedinja_portrait",
+      "gfx_filename": "shedinja_portrait",
       "tileCount": 24,
       "palette": "shedinja_portrait.gbapal"
     },
     {
-      "f": "shelgon_portrait",
+      "gfx_filename": "shelgon_portrait",
       "tileCount": 24,
       "palette": "shelgon_portrait.gbapal"
     },
     {
-      "f": "shiftry_portrait",
+      "gfx_filename": "shiftry_portrait",
       "tileCount": 24,
       "palette": "shiftry_portrait.gbapal"
     },
     {
-      "f": "shroomish_portrait",
+      "gfx_filename": "shroomish_portrait",
       "tileCount": 24,
       "palette": "shroomish_portrait.gbapal"
     },
     {
-      "f": "shuppet_portrait",
+      "gfx_filename": "shuppet_portrait",
       "tileCount": 24,
       "palette": "shuppet_portrait.gbapal"
     },
     {
-      "f": "silcoon_portrait",
+      "gfx_filename": "silcoon_portrait",
       "tileCount": 24,
       "palette": "silcoon_portrait.gbapal"
     },
     {
-      "f": "skarmory_portrait",
+      "gfx_filename": "skarmory_portrait",
       "tileCount": 24,
       "palette": "skarmory_portrait.gbapal"
     },
     {
-      "f": "skitty_portrait",
+      "gfx_filename": "skitty_portrait",
       "tileCount": 24,
       "palette": "skitty_portrait.gbapal"
     },
     {
-      "f": "slaking_portrait",
+      "gfx_filename": "slaking_portrait",
       "tileCount": 24,
       "palette": "slaking_portrait.gbapal"
     },
     {
-      "f": "slakoth_portrait",
+      "gfx_filename": "slakoth_portrait",
       "tileCount": 24,
       "palette": "slakoth_portrait.gbapal"
     },
     {
-      "f": "slugma_portrait",
+      "gfx_filename": "slugma_portrait",
       "tileCount": 24,
       "palette": "slugma_portrait.gbapal"
     },
     {
-      "f": "snorunt_portrait",
+      "gfx_filename": "snorunt_portrait",
       "tileCount": 24,
       "palette": "snorunt_portrait.gbapal"
     },
     {
-      "f": "solrock_portrait",
+      "gfx_filename": "solrock_portrait",
       "tileCount": 24,
       "palette": "solrock_portrait.gbapal"
     },
     {
-      "f": "spheal_portrait",
+      "gfx_filename": "spheal_portrait",
       "tileCount": 24,
       "palette": "spheal_portrait.gbapal"
     },
     {
-      "f": "spinda_portrait",
+      "gfx_filename": "spinda_portrait",
       "tileCount": 24,
       "palette": "spinda_portrait.gbapal"
     },
     {
-      "f": "spoink_portrait",
+      "gfx_filename": "spoink_portrait",
       "tileCount": 24,
       "palette": "spoink_portrait.gbapal"
     },
     {
-      "f": "starmie_portrait",
+      "gfx_filename": "starmie_portrait",
       "tileCount": 24,
       "palette": "starmie_portrait.gbapal"
     },
     {
-      "f": "staryu_portrait",
+      "gfx_filename": "staryu_portrait",
       "tileCount": 24,
       "palette": "staryu_portrait.gbapal"
     },
     {
-      "f": "surskit_portrait",
+      "gfx_filename": "surskit_portrait",
       "tileCount": 24,
       "palette": "surskit_portrait.gbapal"
     },
     {
-      "f": "swablu_portrait",
+      "gfx_filename": "swablu_portrait",
       "tileCount": 24,
       "palette": "swablu_portrait.gbapal"
     },
     {
-      "f": "swalot_portrait",
+      "gfx_filename": "swalot_portrait",
       "tileCount": 24,
       "palette": "swalot_portrait.gbapal"
     },
     {
-      "f": "swampert_portrait",
+      "gfx_filename": "swampert_portrait",
       "tileCount": 24,
       "palette": "swampert_portrait.gbapal"
     },
     {
-      "f": "swellow_portrait",
+      "gfx_filename": "swellow_portrait",
       "tileCount": 24,
       "palette": "swellow_portrait.gbapal"
     },
     {
-      "f": "taillow_portrait",
+      "gfx_filename": "taillow_portrait",
       "tileCount": 24,
       "palette": "taillow_portrait.gbapal"
     },
     {
-      "f": "tentacool_portrait",
+      "gfx_filename": "tentacool_portrait",
       "tileCount": 24,
       "palette": "tentacool_portrait.gbapal"
     },
     {
-      "f": "tentacruel_portrait",
+      "gfx_filename": "tentacruel_portrait",
       "tileCount": 24,
       "palette": "tentacruel_portrait.gbapal"
     },
     {
-      "f": "torchic_portrait",
+      "gfx_filename": "torchic_portrait",
       "tileCount": 24,
       "palette": "torchic_portrait.gbapal"
     },
     {
-      "f": "torkoal_portrait",
+      "gfx_filename": "torkoal_portrait",
       "tileCount": 24,
       "palette": "torkoal_portrait.gbapal"
     },
     {
-      "f": "totodile_portrait",
+      "gfx_filename": "totodile_portrait",
       "tileCount": 24,
       "palette": "totodile_portrait.gbapal"
     },
     {
-      "f": "trapinch_portrait",
+      "gfx_filename": "trapinch_portrait",
       "tileCount": 24,
       "palette": "trapinch_portrait.gbapal"
     },
     {
-      "f": "treecko_portrait",
+      "gfx_filename": "treecko_portrait",
       "tileCount": 24,
       "palette": "treecko_portrait.gbapal"
     },
     {
-      "f": "tropius_portrait",
+      "gfx_filename": "tropius_portrait",
       "tileCount": 24,
       "palette": "tropius_portrait.gbapal"
     },
     {
-      "f": "vibrava_portrait",
+      "gfx_filename": "vibrava_portrait",
       "tileCount": 24,
       "palette": "vibrava_portrait.gbapal"
     },
     {
-      "f": "vigoroth_portrait",
+      "gfx_filename": "vigoroth_portrait",
       "tileCount": 24,
       "palette": "vigoroth_portrait.gbapal"
     },
     {
-      "f": "vileplume_portrait",
+      "gfx_filename": "vileplume_portrait",
       "tileCount": 24,
       "palette": "vileplume_portrait.gbapal"
     },
     {
-      "f": "volbeat_portrait",
+      "gfx_filename": "volbeat_portrait",
       "tileCount": 24,
       "palette": "volbeat_portrait.gbapal"
     },
     {
-      "f": "voltorb_portrait",
+      "gfx_filename": "voltorb_portrait",
       "tileCount": 24,
       "palette": "voltorb_portrait.gbapal"
     },
     {
-      "f": "vulpix_portrait",
+      "gfx_filename": "vulpix_portrait",
       "tileCount": 24,
       "palette": "vulpix_portrait.gbapal"
     },
     {
-      "f": "wailmer_portrait",
+      "gfx_filename": "wailmer_portrait",
       "tileCount": 24,
       "palette": "wailmer_portrait.gbapal"
     },
     {
-      "f": "wailord_portrait",
+      "gfx_filename": "wailord_portrait",
       "tileCount": 24,
       "palette": "wailord_portrait.gbapal"
     },
     {
-      "f": "walrein_portrait",
+      "gfx_filename": "walrein_portrait",
       "tileCount": 24,
       "palette": "walrein_portrait.gbapal"
     },
     {
-      "f": "weezing_portrait",
+      "gfx_filename": "weezing_portrait",
       "tileCount": 24,
       "palette": "weezing_portrait.gbapal"
     },
     {
-      "f": "whiscash_portrait",
+      "gfx_filename": "whiscash_portrait",
       "tileCount": 24,
       "palette": "whiscash_portrait.gbapal"
     },
     {
-      "f": "whismur_portrait",
+      "gfx_filename": "whismur_portrait",
       "tileCount": 24,
       "palette": "whismur_portrait.gbapal"
     },
     {
-      "f": "wigglytuff_portrait",
+      "gfx_filename": "wigglytuff_portrait",
       "tileCount": 24,
       "palette": "wigglytuff_portrait.gbapal"
     },
     {
-      "f": "wingull_portrait",
+      "gfx_filename": "wingull_portrait",
       "tileCount": 24,
       "palette": "wingull_portrait.gbapal"
     },
     {
-      "f": "wobbuffet_portrait",
+      "gfx_filename": "wobbuffet_portrait",
       "tileCount": 24,
       "palette": "wobbuffet_portrait.gbapal"
     },
     {
-      "f": "wurmple_portrait",
+      "gfx_filename": "wurmple_portrait",
       "tileCount": 24,
       "palette": "wurmple_portrait.gbapal"
     },
     {
-      "f": "wynaut_portrait",
+      "gfx_filename": "wynaut_portrait",
       "tileCount": 24,
       "palette": "wynaut_portrait.gbapal"
     },
     {
-      "f": "xatu_portrait",
+      "gfx_filename": "xatu_portrait",
       "tileCount": 24,
       "palette": "xatu_portrait.gbapal"
     },
     {
-      "f": "zangoose_portrait",
+      "gfx_filename": "zangoose_portrait",
       "tileCount": 24,
       "palette": "zangoose_portrait.gbapal"
     },
     {
-      "f": "zigzagoon_portrait",
+      "gfx_filename": "zigzagoon_portrait",
       "tileCount": 24,
       "palette": "zigzagoon_portrait.gbapal"
     },
     {
-      "f": "zubat_portrait",
+      "gfx_filename": "zubat_portrait",
       "tileCount": 24,
       "palette": "zubat_portrait.gbapal"
     }

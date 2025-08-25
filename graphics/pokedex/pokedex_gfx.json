@@ -10,7 +10,7 @@
   },
   "files": [
     {
-        "f": "sprites",
+        "gfx_filename": "sprites",
         "segments":
         [
             {
