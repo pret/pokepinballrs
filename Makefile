@@ -122,7 +122,7 @@ endif
 compare: rom
 
 clean: tidy clean-tools
-	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
+	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' -o -iname 'graphic_cnvt_attrs.txt' \) -exec rm {} +
 
 tidy:
 	rm -f $(ROM) $(ELF) $(MAP)
@@ -144,7 +144,7 @@ include graphics_rules.mk
 %.aif: ;
 
 %.1bpp: %.png  ; $(GFX) $< $@
-%.4bpp: %.png  ; $(GFX) $< $@
+# %.4bpp: %.png  ; $(GFX) $< $@
 %.8bpp: %.png  ; $(GFX) $< $@
 %.gbapal: %.pal ; $(GFX) $< $@
 %.gbapal: %.png ; $(GFX) $< $@

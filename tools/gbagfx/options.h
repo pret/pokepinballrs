@@ -15,11 +15,11 @@ struct GbaToPngOptions {
     int width;
     int metatileWidth;
     int metatileHeight;
-    bool pinballHatchSprite;
     char *tilemapFilePath;
     bool isAffineMap;
     bool isTiled;
     int dataWidth;
+    bool oamSprite;
 };
 
 struct PngToGbaOptions {
@@ -28,11 +28,11 @@ struct PngToGbaOptions {
     int bitDepth;
     int metatileWidth;
     int metatileHeight;
-    bool pinballHatchSprite;
     char *tilemapFilePath;
     bool isAffineMap;
     bool isTiled;
     int dataWidth;
+    bool oamSprite;
 };
 
 #endif // OPTIONS_H
