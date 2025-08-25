@@ -1,5 +1,9 @@
+# Always re-expand prerequisites so we can use $* in them
+.SECONDEXPANSION:
+
 # 1. Preprocess JSON files into a lookup table
 GFX_JSONS := $(shell find graphics -type f -name '*.json')
+
 
 graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 	@echo "# path mwidth mheight oam align segments" > $@
@@ -10,6 +14,20 @@ graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 		fi; \
 	done
 
+# Where the attrs live
+ATTRS := graphics/graphic_cnvt_attrs.txt
+
+# Return a space-separated list of segfile basenames for a given stem, or empty
+getsegs = $(strip $(if $(wildcard $(ATTRS)),$(shell \
+  line=$$(grep -m1 -E "^file=$(1)([[:space:]]|$$)" $(ATTRS) 2>/dev/null || true); \
+  printf '%s\n' "$$line" | sed -n 's/.*segments=\(\[.*\]\).*/\1/p' | \
+  jq -r '.[].segfile' 2>/dev/null \
+)))
+deps_for = $(if $(wildcard $(ATTRS)), \
+              $(if $(call getsegs,$(1)), \
+                   $(addsuffix .png,$(addprefix $(dir $(1)),$(call getsegs,$(1)))), \
+                   $(1).png), \
+              )
 
 # 2. Pattern rule for .4bpp files using graphic_cnvt_attrs.txt
 # Convert *.png -> *.4bpp using optional parameters from graphics/graphic_cnvt_attrs.txt
@@ -19,7 +37,7 @@ graphics/graphic_cnvt_attrs.txt: $(GFX_JSONS)
 #     * Else: build whole image
 # - Only pass -mwidth/-mheight/-oam when non-blank and non-zero
 # - Apply final alignment padding if align=N is present
-%.4bpp: %.png graphics/graphic_cnvt_attrs.txt
+%.4bpp: graphics/graphic_cnvt_attrs.txt $$(call deps_for,$$*) 
 	@set -e; \
 	params="$$(grep -m1 -E '^(file)=$*([[:space:]]|$$)' graphics/graphic_cnvt_attrs.txt || true)"; \
 	if [ -z "$$params" ]; then \
