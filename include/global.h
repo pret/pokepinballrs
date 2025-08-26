@@ -320,9 +320,11 @@ struct PinballGame
     /*0x206*/ u16 unk206;
     /*0x208*/ u16 unk208;
     /*0x20A*/ u8 unk20A;
-    /*0x20B*/ u8 filler20B[0x5];
+    /*0x20B*/ u8 filler20B[0x3];
+    /*0x20E*/ s16 unk20E;
     /*0x210*/ u16 unk210;
-    /*0x212*/ u8 filler212[0x3E];
+    /*0x212*/ u16 unk212[10];
+    /*0x228*/ struct Vector16 unk228[10];
     /*0x250*/ u16 unk250;
     /*0x252*/ u16 unk252;
     /*0x254*/ u8 filler254[0x4];
@@ -816,7 +818,8 @@ struct PinballGame
     /*0x1330*/struct BallState *unk1330;
     /*0x1334*/struct BallState unk1334[2];
     /*0x13BC*/struct UnkPinballGame13BC unk13BC[2];
-    /*0x13D4*/u8 filler13D4[0x3C];
+    /*0x13D4*/u16 unk13D4[10];
+    /*0x13E8*/struct Vector16 unk13E8[10];
 } /* size=0x1410 */;
 
 struct Unk02031520_unk10
