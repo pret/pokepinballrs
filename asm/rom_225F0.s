@@ -1377,20 +1377,3 @@ _080230FC: .4byte gOamBuffer
 _08023100: .4byte 0xFFFFFE00
 _08023104: .4byte 0x0000020E
 _08023108: .4byte 0x000001FF
-
-	thumb_func_start sub_2310C
-sub_2310C: @ 0x0802310C
-	ldr r0, _08023124 @ =gMain
-	ldr r0, [r0, #0x44]
-	ldr r1, [r0, #0x10]
-	movs r2, #0
-	movs r0, #0
-	strh r0, [r1]
-	ldr r0, _08023128 @ =gCurrentPinballGame
-	ldr r0, [r0]
-	adds r0, #0xe4
-	strb r2, [r0]
-	bx lr
-	.align 2, 0
-_08023124: .4byte gMain
-_08023128: .4byte gCurrentPinballGame

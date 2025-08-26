@@ -64,6 +64,12 @@ extern struct SongHeader gUnknown_0869F5C8;
 extern struct SongHeader gUnknown_0869F618;
 
 
+void sub_2310C(void)
+{
+    gMain.unk44[4]->available = 0;
+    gCurrentPinballGame->unkE4 = 0;
+}
+
 void sub_2312C(void)
 {
     s16 i;
