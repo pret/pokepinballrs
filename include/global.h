@@ -667,7 +667,7 @@ struct PinballGame
     /*0x5F8*/ u16 unk5F8;
     /*0x5FA*/ s8 unk5FA;
     /*0x5FB*/ s8 unk5FB;
-    /*0x5FC*/ s16 unk5FC;
+    /*0x5FC*/ s16 unk5FC; //Animation timer for board pan at start
     /*0x5FE*/ s16 unk5FE;
     /*0x600*/ u16 unk600;
     /*0x602*/ s8 unk602;

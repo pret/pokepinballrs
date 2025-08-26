@@ -87,7 +87,7 @@ void AllBoardProcess_2A_4D6C4(void)
     gCurrentPinballGame->unk2C = 0x1000;
 }
 
-void MainBoardProcess_2B_4D960(void)
+void InitialBoardPanForPlunger(void)
 {
     int var0;
     int var1;

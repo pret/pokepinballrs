@@ -250,7 +250,6 @@ void sub_329F4(void)
     }
 }
 
-//enter sapphire catch lane
 void EnterSapphireCatchLane(void)
 {
     if (gCurrentPinballGame->unk72F > 1)

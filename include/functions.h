@@ -647,7 +647,7 @@ extern void PinballGame_State0_49ED4(void);
 extern void sub_4D3D0(void);
 extern void sub_4D648(void);
 //extern ? AllBoardProcess_2A_4D6C4();
-//extern ? MainBoardProcess_2B_4D960();
+//extern ? InitialBoardPanForPlunger();
 //extern ? BonusBoardProcess_2B_4DBFC();
 extern void sub_4DFA0(void);
 extern void sub_4E2F8(void);

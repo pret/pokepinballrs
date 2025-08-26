@@ -3235,7 +3235,7 @@ gBonusFieldSpriteGroups:: @ 0x086B04AC
 
 BoardProcPairs_086B077C:: @ 0x086B077C
 	.4byte AllBoardProcess_1A_47100, AllBoardProcess_1B_47160
-	.4byte AllBoardProcess_2A_4D6C4, MainBoardProcess_2B_4D960
+	.4byte AllBoardProcess_2A_4D6C4, InitialBoardPanForPlunger
 	.4byte AllBoardProcess_2A_4D6C4, BonusBoardProcess_2B_4DBFC
 	.4byte RubyBoardProcess_3A_19A20, RubyBoardProcess_3B_19B10
 	.4byte SapphireBoardProcess_3A_326F4, SapphireBoardProcess_3B_3276C
