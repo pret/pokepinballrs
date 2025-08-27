@@ -173,7 +173,7 @@ extern const s16 gEReaderAccessButtonSequence[];
 //extern ? gMonHatchSpriteGroup2_Gfx;
 //extern ? gMonHatchSpriteGroup3_Gfx;
 //extern ? gMonHatchSpriteGroup4_Gfx;
-//extern ? gMonHatchSpriteGroup5_Gfx;
+extern const u8 gMonHatchSpriteGroup5_Gfx[];
 extern struct VectorU16 gUnknown_086A6B28[];
 extern const struct SpriteSet *const gUnknown_086A6AD4[];
 extern const struct SpriteSet *const gUnknown_086A7DA8[];

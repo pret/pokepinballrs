@@ -56,7 +56,6 @@ SECTIONS
         asm/rom_1AD84.o(.text);
         asm/rom_1D5D8.o(.text);
         asm/rom_1FF0C.o(.text);
-        asm/rom_225F0.o(.text);
         src/rom_27E08.o(.text);
         src/rom_27F94.o(.text);
         asm/rom_2AADC.o(.text);

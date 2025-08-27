@@ -24,7 +24,6 @@ extern void sub_1FA48(void);
 extern void sub_1FBC4(void);
 extern void sub_1FF0C(void);
 extern void sub_201B8(void);
-extern void sub_21238(s32);
 extern void sub_21D78(void);
 extern void sub_23954(void);
 extern void sub_239A4(void);
