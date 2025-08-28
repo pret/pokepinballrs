@@ -65,8 +65,8 @@ void RubyBoardProcess_3A_19A20(void)
     gCurrentPinballGame->unk29F = 2;
     sub_2C9A4();
 
-    gCurrentPinballGame->unk2EC = 3;
-    gCurrentPinballGame->unk2EE = 3;
+    gCurrentPinballGame->unk2EC[0] = 3;
+    gCurrentPinballGame->unk2EC[1] = 3;
     sub_31B30();
 }
 
