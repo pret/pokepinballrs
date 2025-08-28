@@ -5,6 +5,111 @@
 
 extern const u8 gUnknown_0847FD0C[][0x100];
 extern const s16 gUnknown_086ADEB0[][2];
+extern const u16 gUnknown_086ADEB2[][2];
+
+void sub_1FF0C(void)
+{
+    s16 i;
+
+    for (i = 0; i < 2; i++)
+    {
+        if (gCurrentPinballGame->unk2E3[i] > 0)
+        {
+            if (gUnknown_086ADEB2[gCurrentPinballGame->unk2E5[i]][0] > gCurrentPinballGame->unk2E8[i])
+            {
+                gCurrentPinballGame->unk2E8[i]++;
+            }
+            else
+            {
+                gCurrentPinballGame->unk2E8[i] = 0;
+                gCurrentPinballGame->unk2E5[i]++;
+                if (gCurrentPinballGame->unk2E5[i] > 11)
+                {
+                    gCurrentPinballGame->unk2E5[i] = 0;
+                    gCurrentPinballGame->unk2E3[i]--;
+                }
+            }
+
+            if (gCurrentPinballGame->unk2E5[i] == 1)
+                gCurrentPinballGame->unk2EC[i] = gCurrentPinballGame->unk2E8[i] / 2;
+
+            if (gCurrentPinballGame->unk2E5[i] == 11)
+                gCurrentPinballGame->unk2EC[i] = 14 - gCurrentPinballGame->unk2E8[i] / 2;
+
+            if (gCurrentPinballGame->unk2EC[i] < 3)
+                gCurrentPinballGame->unk2EC[i] = 3;
+        }
+    }
+
+    if (gCurrentPinballGame->unk2E2)
+    {
+        if (gCurrentPinballGame->unk2E2 == 1)
+        {
+            if (gCurrentPinballGame->unk13 != 7)
+            {
+                if (gCurrentPinballGame->unk13 < 3) {
+                    if (gCurrentPinballGame->unk6BD < 3)
+                    {
+                        gCurrentPinballGame->unk6BD++;
+                        if (gCurrentPinballGame->unk6BD == 1)
+                        {
+                            gCurrentPinballGame->unk2C2 = 0;
+                            gCurrentPinballGame->unk2C0 = 0;
+                        }
+                        else if (gCurrentPinballGame->unk6BD == 2)
+                        {
+                            gCurrentPinballGame->unk2C2 = 12;
+                            gCurrentPinballGame->unk2C0 = 0;
+                        }
+                        else if (gCurrentPinballGame->unk6BD == 3)
+                        {
+                            gCurrentPinballGame->unk2C2 = 24;
+                            gCurrentPinballGame->unk2C0 = 0;
+                            gCurrentPinballGame->unk6C2 = 1;
+                        }
+                    }
+                }
+                else
+                {
+                    if (gCurrentPinballGame->unk6BD < 2)
+                    {
+                        gCurrentPinballGame->unk6BD++;
+                        if (gCurrentPinballGame->unk6BD == 1)
+                        {
+                            gCurrentPinballGame->unk2C2 = 0;
+                            gCurrentPinballGame->unk2C0 = 0;
+                        }
+                        else if (gCurrentPinballGame->unk6BD == 2)
+                        {
+                            gCurrentPinballGame->unk2C2 = 12;
+                            gCurrentPinballGame->unk2C0 = 0;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (gCurrentPinballGame->unk300 == 0)
+                gCurrentPinballGame->unk300 = 1;
+            else
+                gCurrentPinballGame->unk300 = 0;
+        }
+
+        gCurrentPinballGame->unk2E3[0] = 0;
+        gCurrentPinballGame->unk2E3[1] = 0;
+        gCurrentPinballGame->unk2E2 = 0;
+        sub_11B0(7);
+        m4aSongNumStart(SE_UNKNOWN_0xB7);
+        gCurrentPinballGame->unk3C = 3000;
+        gCurrentPinballGame->unk2E5[0] = 0;
+        gCurrentPinballGame->unk2E5[1] = 0;
+        gCurrentPinballGame->unk2E8[0] = 0;
+        gCurrentPinballGame->unk2E8[1] = 0;
+        gCurrentPinballGame->unk2EC[0] = 3;
+        gCurrentPinballGame->unk2EC[1] = 3;
+    }
+}
 
 void sub_201B8(void)
 {
