@@ -295,8 +295,8 @@ struct PinballGame
     /*0x1DE*/ u8 filler1DE[0x4];
     /*0x1E2*/ s8 outLanePikaPosition; //Pikachu coverage. 0= left lane, 1=right lane, 2 = both
     /*0x1E3*/ u8 filler1E3[0x2];
-    /*0x1E5*/ u8 unk1E5;
-    /*0x1E6*/ u8 unk1E6;
+    /*0x1E5*/ s8 unk1E5;
+    /*0x1E6*/ s8 unk1E6;
     /*0x1E7*/ u8 filler1E7[0x1];
     /*0x1E8*/ s16 unk1E8;
     /*0x1EA*/ s16 unk1EA;

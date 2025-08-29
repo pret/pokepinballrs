@@ -13,7 +13,37 @@ extern const s16 gUnknown_086ADA58[];
 extern const u8 gUnknown_083C3C2C[][0x300];
 extern const u8 gUnknown_083C562C[][0x100];
 extern const u8 gUnknown_083C542C[][0x80];
+extern const u8 gUnknown_084FA48C[][0x120];
 
+
+void sub_1F59C(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    s16 index;
+
+    index = gCurrentPinballGame->unk1E5;
+    group = gMain.unk44[31];
+    group->baseX = 206 - gCurrentPinballGame->unk58;
+    if (gMain.selectedField == FIELD_RUBY)
+        group->baseY = 174 - gCurrentPinballGame->unk5A;
+    else
+        group->baseY = 154 - gCurrentPinballGame->unk5A;
+
+    if (gCurrentPinballGame->unk1E5 != gCurrentPinballGame->unk1E6)
+    {
+        gCurrentPinballGame->unk1E6 = gCurrentPinballGame->unk1E5;
+        DmaCopy16(3, gUnknown_084FA48C[index], (void *)0x06010780, 0x120);
+    }
+
+    for (i = 0; i < 4; i++)
+    {
+        oamSimple = &group->oam[i];
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+    }
+}
 
 void sub_1F698(void)
 {
