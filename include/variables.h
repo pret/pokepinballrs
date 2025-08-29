@@ -173,7 +173,7 @@ extern const s16 gEReaderAccessButtonSequence[];
 //extern ? gMonHatchSpriteGroup2_Gfx;
 //extern ? gMonHatchSpriteGroup3_Gfx;
 //extern ? gMonHatchSpriteGroup4_Gfx;
-//extern ? gMonHatchSpriteGroup5_Gfx;
+extern const u8 gMonHatchSpriteGroup5_Gfx[];
 extern struct VectorU16 gUnknown_086A6B28[];
 extern const struct SpriteSet *const gUnknown_086A6AD4[];
 extern const struct SpriteSet *const gUnknown_086A7DA8[];
@@ -313,6 +313,8 @@ extern u8 gUnknown_0201B124;
 
 extern struct PokemonSpecies gSpeciesInfo[];
 extern const struct SpriteSet * const gUnknown_086A54D8[13];
+extern u8 (*gMonHatchSpriteGroupGfx[])[0x10E0];
+extern u8 (*gMonHatchSpriteGroupPals[])[0x20];
 
 extern u32 gUnknown_0202ADD0;
 extern s16 gUnknown_0202C5F0[];

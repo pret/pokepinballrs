@@ -57,8 +57,6 @@ void sub_6F78(s16);
 
 extern u8 *gUnknown_086B15B4[];
 extern u8 *gUnknown_086BB6F4[];
-extern u8 *gMonHatchSpriteGroupGfx[];
-extern u8 *gMonHatchSpriteGroupPals[];
 
 extern u16 gUnknown_0201C180;
 extern u16 gUnknown_0202C5B4;
@@ -4959,8 +4957,8 @@ void sub_8974(s16 species)
         quotient = (var0 - 100) / 6;
         remainder = (var0 - 100) % 6;
 
-        sub_10708(gMonHatchSpriteGroupGfx[quotient] + remainder * 0x10E0, (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
-        DmaCopy16(3, gMonHatchSpriteGroupPals[quotient] + remainder * 0x20, (void *)OBJ_PLTT + 0x60, 0x20);
+        sub_10708(gMonHatchSpriteGroupGfx[quotient][remainder], (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
+        DmaCopy16(3, gMonHatchSpriteGroupPals[quotient][remainder], (void *)OBJ_PLTT + 0x60, 0x20);
     }
 }
 
