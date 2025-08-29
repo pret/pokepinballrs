@@ -15,6 +15,121 @@ extern const u8 gUnknown_083C562C[][0x100];
 extern const u8 gUnknown_083C542C[][0x80];
 extern const u8 gUnknown_084FA48C[][0x120];
 
+extern struct SongHeader gUnknown_0869F2A0;
+extern struct SongHeader gUnknown_0869F240;
+
+
+void sub_1F2A4(void)
+{
+    if (gCurrentPinballGame->unk1C6 != gCurrentPinballGame->unk1C8)
+    {
+        gCurrentPinballGame->unk1C8 += 2;
+        gCurrentPinballGame->unk1CA = gCurrentPinballGame->unk1C8 / 14;
+        gCurrentPinballGame->unk1D0 = 80;
+        gCurrentPinballGame->unk1D8 = 256;
+        gCurrentPinballGame->unk1DA = 256;
+        if (gCurrentPinballGame->unk1CA == 11)
+            gCurrentPinballGame->unk1CE = 120;
+
+        if (gCurrentPinballGame->unk1CA > 11)
+        {
+            gCurrentPinballGame->unk1CA = 12;
+            gCurrentPinballGame->unk1D0 = 120;
+            gCurrentPinballGame->unk1D8 = 256;
+            gCurrentPinballGame->unk1DA = 256;
+        }
+
+        if (gCurrentPinballGame->unk1C8 < 168 && gCurrentPinballGame->unk1C8 % 8 == 0)
+        {
+            s8 offset = gCurrentPinballGame->unk1C8 / 21;
+            m4aSongNumStart(SE_UNKNOWN_0xA8 + offset);
+        }
+
+        if (gCurrentPinballGame->unk1C6 <= gCurrentPinballGame->unk1C8)
+        {
+            gCurrentPinballGame->unk1C8 = gCurrentPinballGame->unk1C6;
+            if (gCurrentPinballGame->unk1C8 >= 168)
+            {
+                MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F2A0);
+                gCurrentPinballGame->unk3C = 3000;
+            }
+        }
+    }
+
+    if (gCurrentPinballGame->unk616)
+        gCurrentPinballGame->unk616--;
+
+    if (gCurrentPinballGame->unk614 > 0)
+    {
+        gCurrentPinballGame->unk614 -= 3;
+        if (gCurrentPinballGame->unk614 < 0)
+            gCurrentPinballGame->unk614 = 0;
+
+        if (gCurrentPinballGame->unk618 < gCurrentPinballGame->unk61A - 1)
+        {
+            gCurrentPinballGame->unk618++;
+        }
+        else
+        {
+            gCurrentPinballGame->unk618 = 0;
+            MPlayStart(&gUnknown_02032FB0, &gUnknown_0869F240);
+            gCurrentPinballGame->unk3C = 100;
+            if (gCurrentPinballGame->unk1CA < 12 && gCurrentPinballGame->unk61C == 0)
+            {
+                gCurrentPinballGame->unk1D0 = 80;
+                gCurrentPinballGame->unk1D8 = 256;
+                gCurrentPinballGame->unk1DA = 256;
+            }
+        }
+
+        gCurrentPinballGame->unk61A = (450 - gCurrentPinballGame->unk614) / 10;
+        if (gCurrentPinballGame->unk61A < 5)
+            gCurrentPinballGame->unk61A = 5;
+
+        gCurrentPinballGame->unk1E5 = (gCurrentPinballGame->unk618 * 16) / gCurrentPinballGame->unk61A;
+    }
+    else
+    {
+        if (gCurrentPinballGame->unk614 < 0)
+        {
+            gCurrentPinballGame->unk614 += 3;
+            if (gCurrentPinballGame->unk614 > 0)
+                gCurrentPinballGame->unk614 = 0;
+
+            if (gCurrentPinballGame->unk618 < gCurrentPinballGame->unk61A - 1)
+            {
+                gCurrentPinballGame->unk618++;
+            }
+            else
+            {
+                gCurrentPinballGame->unk618 = 0;
+                MPlayStart(&gUnknown_02032FB0, &gUnknown_0869F240);
+                gCurrentPinballGame->unk3C = 100;
+                if (gCurrentPinballGame->unk1CA < 12 && gCurrentPinballGame->unk61C == 0)
+                {
+                    gCurrentPinballGame->unk1D0 = 80;
+                    gCurrentPinballGame->unk1D8 = 256;
+                    gCurrentPinballGame->unk1DA = 256;
+                }
+            }
+
+            gCurrentPinballGame->unk61A = (450 + gCurrentPinballGame->unk614) / 10;
+            if (gCurrentPinballGame->unk61A < 5)
+                gCurrentPinballGame->unk61A = 5;
+
+            gCurrentPinballGame->unk1E5 = (gCurrentPinballGame->unk618 * 16) / gCurrentPinballGame->unk61A;
+        }
+        else
+        {
+            if (gCurrentPinballGame->unk1E5 > 0)
+            {
+                gCurrentPinballGame->unk618++;
+                gCurrentPinballGame->unk618 %= 40;
+                gCurrentPinballGame->unk1E5 = (gCurrentPinballGame->unk618 * 16) / 40;
+            }
+        }
+    }
+}
 
 void sub_1F59C(void)
 {

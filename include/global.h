@@ -280,8 +280,8 @@ struct PinballGame
     /*0x1C2*/ s8 unk1C2;
     /*0x1C3*/ u8 filler1C3[0x1];
     /*0x1C4*/ u16 unk1C4;
-    /*0x1C6*/ u16 unk1C6;
-    /*0x1C8*/ u16 unk1C8;
+    /*0x1C6*/ s16 unk1C6;
+    /*0x1C8*/ s16 unk1C8;
     /*0x1CA*/ s16 unk1CA;
     /*0x1CC*/ s16 unk1CC;
     /*0x1CE*/ u16 unk1CE;
@@ -688,8 +688,10 @@ struct PinballGame
     /*0x604*/ u16 unk604;
     /*0x606*/ u16 unk606;
     /*0x608*/ u8 filler608[0xC];
-    /*0x614*/ u16 unk614;
-    /*0x616*/ u8 filler616[0x6];
+    /*0x614*/ s16 unk614;
+    /*0x616*/ u16 unk616;
+    /*0x618*/ u16 unk618;
+    /*0x61A*/ s16 unk61A;
     /*0x61C*/ s8 unk61C;
     /*0x61D*/ u8 filler61D[0x7];
     /*0x624*/ s8 unk624;
