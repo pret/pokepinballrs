@@ -11,7 +11,133 @@ extern const u16 gUnknown_086B2FC0[][18];
 extern const u8 gUnknown_08447A8C[][0x180];
 extern const s16 gUnknown_086ADA58[];
 extern const u8 gUnknown_083C3C2C[][0x300];
+extern const u8 gUnknown_083C562C[][0x100];
+extern const u8 gUnknown_083C542C[][0x80];
 
+
+void sub_1F698(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    s16 index;
+    s16 var0;
+
+    index = 0;
+    group = &gMain.spriteGroups[14];
+    if (gCurrentPinballGame->unk2BC < 60)
+    {
+        if (gCurrentPinballGame->unk2BC >= 27 && gCurrentPinballGame->unk2BC < 47)
+        {
+            index = (gCurrentPinballGame->unk2BC - 27) / 5;
+            DmaCopy16(3, gUnknown_083C562C[index], (void *)0x06014280, 0x100);
+            group->baseX = 176 - gCurrentPinballGame->unk58;
+        }
+        else
+        {
+            group->available = 0;
+            group->baseX = 176 - gCurrentPinballGame->unk58;
+        }
+    }
+    else
+    {
+        if (gCurrentPinballGame->unk2BC >= 100 && gCurrentPinballGame->unk2BC < 120)
+        {
+            index = (gCurrentPinballGame->unk2BC - 100) / 5;
+            DmaCopy16(3, gUnknown_083C562C[index], (void *)0x06014280, 0x100);
+            group->baseX = 32 - gCurrentPinballGame->unk58;
+        }
+        else
+        {
+            group->available = 0;
+            group->baseX = 32 - gCurrentPinballGame->unk58;
+        }
+
+    }
+
+    if (group->available)
+    {
+        group->baseY = 296 - gCurrentPinballGame->unk5A;
+        if (group->baseY > 180)
+            group->baseY = 180;
+
+        for (i = 0; i < 2; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+    }
+
+    group = &gMain.spriteGroups[13];
+    if (group->available)
+    {
+        if (gCurrentPinballGame->unk2BC < 120)
+        {
+            if (gCurrentPinballGame->unk2BC % 8 == 0)
+                m4aSongNumStart(SE_UNKNOWN_0xC6);
+
+            index = (gCurrentPinballGame->unk2BC % 16) / 4;
+            DmaCopy16(3, gUnknown_083C542C[index], (void *)0x06014200, 0x80);
+            var0 = (gCurrentPinballGame->unk2BC << 0x10) / 90;
+            gCurrentPinballGame->unk2B8 -= 2;
+            gCurrentPinballGame->unk2B4 += gCurrentPinballGame->unk2B8;
+            if (gCurrentPinballGame->unk2BC < 30)
+                gCurrentPinballGame->unk2B6 = gCurrentPinballGame->unk2BC + (Sin(var0) * 24) / 20000;
+            else
+                gCurrentPinballGame->unk2B6 = 30 + (Sin(var0) * 24) / 20000;
+
+            gCurrentPinballGame->unk2BC++;
+            if (gCurrentPinballGame->unk2BC == 27)
+            {
+                gMain.spriteGroups[14].available = 1;
+                m4aSongNumStart(SE_UNKNOWN_0xC7);
+                if (gCurrentPinballGame->unk2E3[1] > 0)
+                {
+                    gCurrentPinballGame->unk2E3[1]++;
+                }
+                else
+                {
+                    gCurrentPinballGame->unk2E3[1] = 2;
+                    gCurrentPinballGame->unk2E8[1] = 190;
+                }
+            }
+
+            if (gCurrentPinballGame->unk2BC == 100)
+            {
+                gMain.spriteGroups[14].available = 1;
+                m4aSongNumStart(SE_UNKNOWN_0xC7);
+                if (gCurrentPinballGame->unk2E3[0] > 0)
+                {
+                    gCurrentPinballGame->unk2E3[0]++;
+                }
+                else
+                {
+                    gCurrentPinballGame->unk2E3[0] = 2;
+                    gCurrentPinballGame->unk2E8[0] = 190;
+                }
+            }
+        }
+        else
+        {
+            gCurrentPinballGame->unk2BC = 0;
+            gCurrentPinballGame->unk2B4 = 0;
+            gCurrentPinballGame->unk2B6 = 190;
+            gCurrentPinballGame->unk2B8 = 100;
+            gCurrentPinballGame->unk2BA = 0;
+            group->available = 0;
+        }
+
+        group->baseX = (gCurrentPinballGame->unk2B4 / 20) + 71u - gCurrentPinballGame->unk58;
+        group->baseY = gCurrentPinballGame->unk2B6 + 248u - gCurrentPinballGame->unk5A;
+        if (group->baseY > 190)
+            group->baseY = 190;
+
+        oamSimple = &group->oam[0];
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+    }
+}
 
 void sub_1FA48(void)
 {
