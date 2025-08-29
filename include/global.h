@@ -87,9 +87,7 @@ struct BallState
     /*0x0C*/ u16 unkC;
     /*0x0E*/ u16 unkE;
     /*0x10*/ struct Vector16 positionQ0;
-    /*0x14*/ u8 filler14[0xB];
-    /*0x1F*/ u8 unk1F;
-    /*0x20*/ u8 filler20[0x4];
+    /*0x14*/ struct Vector16 unk14[4];
     /*0x24*/ u16 unk24;
     /*0x26*/ u16 unk26;
     /*0x28*/ struct Vector16 positionQ1;
