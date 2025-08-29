@@ -5,48 +5,49 @@
 
 extern u8 gUnknown_0202C7A0[];
 extern u8 gUnknown_020306D0[];
+extern u8 gUnknown_020306F0;
+extern u8 gUnknown_02030710;
+extern u8 gUnknown_02030730;
 extern u8 gUnknown_02030760[];
+extern struct Unk02031520 gUnknown_02031520;
 extern u8 gUnknown_020315D0[];
 extern u8 gUnknown_02031060[];
 
+
 extern const u8 gUnknown_0839C78C[];
 extern const u8 gUnknown_0839DBAC[];
-extern const u8 gUnknown_086ACF80[];
+extern const u8 gUnknown_08137F14;
+extern const u8 gUnknown_08138014[]; 
+extern const u8 gUnknown_081428D4[];
+extern const u16 gUnknown_081B0FE4[][0x30]; 
 extern const u8 gUnknown_081C0064[];
-extern const struct Vector16 gUnknown_086AE124[];
-extern const u8 (*gUnknown_086BB6F4[])[0x480];
-extern const u8 (*gUnknown_086B15B4[])[0x20];
 extern const u8 gUnknown_0844AA0C[][0x480];
-extern const u16 gUnknown_086B263C[][3][3];
-extern const u16 gUnknown_086AE154[][10];
+extern const u8 gUnknown_084C156C[];
+extern const s16 gUnknown_086ACF38[36]; 
+extern const u8 gUnknown_086ACF80[];
+extern const s8 gUnknown_086ACFF4[]; 
+extern u16 gUnknown_086AD180[][7];
 extern const s16 gUnknown_086AD436[][2];
-extern const u16 gUnknown_086B55DC[][18];
+extern const struct Vector16 gUnknown_086AE124[];
 extern const s16 gUnknown_086AE1A4[][12];
-extern const u16 gUnknown_086B53B4[][3];
-extern const s16 gUnknown_086AE2F4[][2];
+extern const u16 gUnknown_086AE154[][10];
 extern const s16 gUnknown_086AE234[][16];
-extern const u16 gUnknown_086B4E3E[][3];
+extern const s16 gUnknown_086AE2F4[][2];
 extern const s16 gUnknown_086AE30C[];
 extern const s16 gUnknown_086AE318[];
-extern u16 gUnknown_086AD180[][7];
+extern const u8 (*gUnknown_086B15B4[])[0x20];
+extern const u16 gUnknown_086B263C[][3][3];
+extern const u16 gUnknown_086B4E3E[][3];
+extern const u16 gUnknown_086B53B4[][3];
+extern const u16 gUnknown_086B55DC[][18];
+extern const u8 (*gUnknown_086BB6F4[])[0x480];
 
 extern struct SongHeader gUnknown_0869F58C;
 extern struct SongHeader gUnknown_0869F45C;
 extern struct SongHeader gUnknown_0869F664;
-extern const u8 gUnknown_084C156C[];
-
-
-extern const u8 gUnknown_081428D4[];
-extern struct Unk02031520 gUnknown_02031520;
-extern u8 gUnknown_020306F0;
-extern u8 gUnknown_02030710;
-extern u8 gUnknown_02030730;
-extern u8 gUnknown_08137F14;
-extern u8 gUnknown_08138014[]; 
-extern u16 gUnknown_081B0FE4[][0x30]; 
 extern struct SongHeader gUnknown_0869FCE4;
-extern s16 gUnknown_086ACF38[36]; 
-extern s8 gUnknown_086ACFF4[]; 
+
+
 
 
 void sub_27F94(void)
