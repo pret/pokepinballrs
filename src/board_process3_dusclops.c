@@ -596,7 +596,6 @@ void sub_340EC() {
             for (j = 0; j < 2; j++) 
             {
                 oamData = &spriteGroup->oam[j];
-
                 dst = (u16*)&gOamBuffer[oamData->oamId];
                 src = gDuskullSpritesheetOam[sb][j];
                 *dst++ = *src++;

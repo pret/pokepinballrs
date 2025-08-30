@@ -14,10 +14,47 @@ extern const u8 gUnknown_083C3C2C[][0x300];
 extern const u8 gUnknown_083C562C[][0x100];
 extern const u8 gUnknown_083C542C[][0x80];
 extern const u8 gUnknown_084FA48C[][0x120];
+extern const u8 gUnknown_084F5ACC[][0x260];
+extern const s16 gUnknown_086AD9FC[][2];
+extern const u16 gUnknown_086B3A04[][3][3];
 
 extern struct SongHeader gUnknown_0869F2A0;
 extern struct SongHeader gUnknown_0869F240;
 
+
+void sub_1F158(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    u16 * dst;
+    const u16 * src;
+    s16 index;
+    s16 var0;
+
+    index = (gMain.systemFrameCount % 55) / 11;
+    group = &gMain.spriteGroups[61];
+    DmaCopy16(3, gUnknown_084F5ACC[gCurrentPinballGame->unk2F5], (void *)0x06012C20, 0x260);
+    if (gCurrentPinballGame->unk2F4)
+        index = gCurrentPinballGame->unk2F4;
+
+    var0 = gUnknown_086AD9FC[index][0];
+    gCurrentPinballGame->unk2F5 = gUnknown_086AD9FC[index][1];
+    group->baseX = 179 - gCurrentPinballGame->unk58;
+    group->baseY = 174 - gCurrentPinballGame->unk5A;
+    for (i = 0; i < 3; i++)
+    {
+        oamSimple = &group->oam[i];
+        dst = (u16*)&gOamBuffer[oamSimple->oamId];
+        src = gUnknown_086B3A04[var0][i];
+        *dst++ = *src++;
+        *dst++ = *src++;
+        *dst++ = *src++;
+
+        gOamBuffer[oamSimple->oamId].x += group->baseX;
+        gOamBuffer[oamSimple->oamId].y += group->baseY;
+    }
+}
 
 void sub_1F2A4(void)
 {
