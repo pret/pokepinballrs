@@ -366,7 +366,7 @@ void sub_2E6AC(void)
             gMain.blendBrightness = 16 - gCurrentPinballGame->unk30C / 4;
             if (gCurrentPinballGame->unk30C == 0)
             {
-                gCurrentPinballGame->unk284 = 7;
+                gCurrentPinballGame->unk284 = FIELD_SPHEAL;
                 gCurrentPinballGame->unk282 = 2;
                 gCurrentPinballGame->unk73C = gCurrentPinballGame->unk72E;
                 gCurrentPinballGame->catchModeArrows = gCurrentPinballGame->unk72F;

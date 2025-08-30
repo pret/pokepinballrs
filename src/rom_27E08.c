@@ -327,16 +327,16 @@ void sub_21578(void)
         case 0:
         case 2:
             gCurrentPinballGame->unk6EC = 42;
-            gCurrentPinballGame->unk284 = 3;
+            gCurrentPinballGame->unk284 = FIELD_KECLEON;
             break;
         case 1:
         case 3:
             gCurrentPinballGame->unk6EC = 44;
-            gCurrentPinballGame->unk284 = 5;
+            gCurrentPinballGame->unk284 = FIELD_GROUDON;
             break;
         case 4:
             gCurrentPinballGame->unk6EC = 45;
-            gCurrentPinballGame->unk284 = 6;
+            gCurrentPinballGame->unk284 = FIELD_RAYQUAZA;
             break;
         }
     }
@@ -347,16 +347,16 @@ void sub_21578(void)
         case 0:
         case 2:
             gCurrentPinballGame->unk6EC = 41;
-            gCurrentPinballGame->unk284 = 2;
+            gCurrentPinballGame->unk284 = FIELD_DUSCLOPS;
             break;
         case 1:
         case 3:
             gCurrentPinballGame->unk6EC = 43;
-            gCurrentPinballGame->unk284 = 4;
+            gCurrentPinballGame->unk284 = FIELD_KYOGRE;
             break;
         case 4:
             gCurrentPinballGame->unk6EC = 45;
-            gCurrentPinballGame->unk284 = 6;
+            gCurrentPinballGame->unk284 = FIELD_RAYQUAZA;
             break;
         }
     }
