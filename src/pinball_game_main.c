@@ -351,7 +351,7 @@ void sub_4A518(void)
             gCurrentPinballGame->outLanePikaPosition = 2;
             gMain.unk44[41]->available = FALSE;
             gCurrentPinballGame->unk1C0 = 1;
-            gCurrentPinballGame->ballUpgradeType = BALL_POWER_UP_MASTER_BALL;
+            gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
             gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
             gCurrentPinballGame->numLives = 9;
             gCurrentPinballGame->coins = 99;

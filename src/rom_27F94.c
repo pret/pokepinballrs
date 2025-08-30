@@ -1079,7 +1079,7 @@ void sub_29D9C(void)
         }
         else if (gCurrentPinballGame->unk6F8[i] == 10)
         {
-            if (gCurrentPinballGame->ballUpgradeType < BALL_POWER_UP_MASTER_BALL)
+            if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
                 gCurrentPinballGame->unk6F8[i] = gCurrentPinballGame->ballUpgradeType + 10;
             else
                 gCurrentPinballGame->unk6F8[i] = 12;
@@ -1090,7 +1090,7 @@ void sub_29D9C(void)
             {
                 if (gMain.systemFrameCount & 1)
                 {
-                    if (gCurrentPinballGame->ballUpgradeType < BALL_POWER_UP_MASTER_BALL)
+                    if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
                         gCurrentPinballGame->unk6F8[i] = gCurrentPinballGame->ballUpgradeType + 10;
                     else
                         gCurrentPinballGame->unk6F8[i] = 12;
@@ -1376,7 +1376,7 @@ void sub_2A354(void)
     case 12:
         if (gCurrentPinballGame->unk6DE == 130)
         {
-            if (gCurrentPinballGame->ballUpgradeType < BALL_POWER_UP_MASTER_BALL)
+            if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
                 gCurrentPinballGame->ballUpgradeType++;
 
             gCurrentPinballGame->ballUpgradeCounter = 3600;
@@ -1387,7 +1387,7 @@ void sub_2A354(void)
     case 13:
         if (gCurrentPinballGame->unk6DE == 130)
         {
-            gCurrentPinballGame->ballUpgradeType = BALL_POWER_UP_MASTER_BALL;
+            gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
             gCurrentPinballGame->ballUpgradeCounter = 3600;
             MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F664);
             DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);

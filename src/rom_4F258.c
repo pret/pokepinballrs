@@ -365,7 +365,7 @@ void sub_4F0F0(void)
 
         if (gCurrentPinballGame->unk71C == 28)
         {
-            if (gCurrentPinballGame->ballUpgradeType < BALL_POWER_UP_MASTER_BALL)
+            if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
                 gCurrentPinballGame->ballUpgradeType++;
 
             gCurrentPinballGame->ballUpgradeCounter = 3600;

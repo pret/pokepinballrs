@@ -30,11 +30,11 @@ void MainBoardProcess_7B_12524(void)
     {
         if (--gCurrentPinballGame->ballUpgradeCounter == 0)
         {
-            if (gCurrentPinballGame->ballUpgradeType > BALL_POWER_UP_POKE_BALL)
+            if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
             {
                 gCurrentPinballGame->ballUpgradeType--;
                 
-                if (gCurrentPinballGame->ballUpgradeType > BALL_POWER_UP_POKE_BALL)
+                if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                     gCurrentPinballGame->ballUpgradeCounter = 3600;
             }
             
@@ -406,10 +406,10 @@ void BonusBoardProcess_7B_12BF8()
             gCurrentPinballGame->ballUpgradeCounter -= 1;
             if (gCurrentPinballGame->ballUpgradeCounter == 0)
             {
-                if (gCurrentPinballGame->ballUpgradeType > BALL_POWER_UP_POKE_BALL)
+                if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                 {
                     gCurrentPinballGame->ballUpgradeType -= 1;
-                    if (gCurrentPinballGame->ballUpgradeType > BALL_POWER_UP_POKE_BALL)
+                    if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                     {
                         gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
                     }

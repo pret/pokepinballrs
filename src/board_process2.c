@@ -502,7 +502,7 @@ void sub_4E468(void)
             gCurrentPinballGame->unk392 = 0;
             gCurrentPinballGame->ball->positionQ0.x = gUnknown_02031520.unk14.unk26;
             gCurrentPinballGame->ball->positionQ0.y = gUnknown_02031520.unk14.unk28;
-            if (gCurrentPinballGame->ballUpgradeType > BALL_POWER_UP_POKE_BALL)
+            if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                 gCurrentPinballGame->ballUpgradeType--;
 
             gCurrentPinballGame->ballUpgradeCounter = 3600;
@@ -559,7 +559,7 @@ void sub_4E598(void)
     gCurrentPinballGame->unk308 = 0;
     if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
-        gCurrentPinballGame->ballUpgradeType = BALL_POWER_UP_MASTER_BALL;
+        gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
         gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
         DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
     }
