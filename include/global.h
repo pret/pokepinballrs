@@ -231,14 +231,15 @@ struct PinballGame
     /*0x12D*/ u8 filler12D;
     /*0x12E*/ s16 totalWeight;       // Added weight of all possible mons in area
     /*0x130*/ s16 speciesWeights[25]; // Weight of each species
-    /*0x162*/ u8 unk162;
+    /*0x162*/ s8 unk162;
     /*0x163*/ u8 unk163;
     /*0x164*/ u8 filler164[0x2];
     /*0x166*/ u16 unk166;
     /*0x168*/ u8 filler168[0x4];
     /*0x16C*/ s8 unk16C;
-    /*0x16D*/ u8 filler16D[0x2];
-    /*0x16F*/ u8 unk16F;
+    /*0x16D*/ u8 filler16D[0x1];
+    /*0x16E*/ s8 unk16E;
+    /*0x16F*/ s8 unk16F;
     /*0x170*/ s8 unk170[3];
     /*0x173*/ u8 unk173;
     /*0x174*/ u16 unk174;
@@ -246,7 +247,7 @@ struct PinballGame
     /*0x177*/ u8 filler177[0x1];
     /*0x178*/ struct Vector16 unk178[3];
     /*0x184*/ struct Vector16 unk184[3];
-    /*0x190*/ u8 filler190[0x2];
+    /*0x190*/ s16 unk190;
     /*0x192*/ u8 coins;
     /*0x193*/ s8 unk193;
     /*0x194*/ s8 unk194;
@@ -345,7 +346,7 @@ struct PinballGame
     /*0x281*/ s8 evolvablePartySize;
     /*0x282*/ s8 unk282;
     /*0x283*/ u8 numCompletedBonusStages;
-    /*0x284*/ s8 unk284;
+    /*0x284*/ s8 unk284; // Bonus Field to transition to?
     /*0x285*/ u8 filler285[0x1];
     /*0x286*/ s16 unk286;
     /*0x288*/ s16 unk288;
@@ -359,14 +360,14 @@ struct PinballGame
     /*0x29A*/ u16 unk29A;
     /*0x29C*/ u16 unk29C;
     /*0x29E*/ u8 unk29E;
-    /*0x29F*/ u8 unk29F;
+    /*0x29F*/ s8 unk29F;
     /*0x2A0*/ u16 unk2A0;
-    /*0x2A2*/ u8 unk2A2;
-    /*0x2A3*/ u8 filler2A3[0x1];
+    /*0x2A2*/ s8 unk2A2;
+    /*0x2A3*/ s8 unk2A3;
     /*0x2A4*/ s8 unk2A4;
     /*0x2A5*/ s8 unk2A5;
     /*0x2A6*/ u16 unk2A6;
-    /*0x2A8*/ u8 filler2A8[0x2];
+    /*0x2A8*/ u16 unk2A8;
     /*0x2AA*/ u16 unk2AA;
     /*0x2AC*/ s16 unk2AC;
     /*0x2AE*/ u8 filler2AE[0x2];
@@ -406,15 +407,22 @@ struct PinballGame
     /*0x2EC*/ s16 unk2EC[2];
     /*0x2F0*/ u8 unk2F0;
     /*0x2F1*/ u8 unk2F1;
-    /*0x2F2*/ u8 filler2F2[0x2];
+    /*0x2F2*/ u16 unk2F2;
     /*0x2F4*/ s8 unk2F4;
     /*0x2F5*/ s8 unk2F5;
     /*0x2F6*/ u16 unk2F6;
     /*0x2F8*/ s8 unk2F8;
-    /*0x2F9*/ u8 filler2F9[0x7];
+    /*0x2F9*/ s8 unk2F9;
+    /*0x2FA*/ s8 unk2FA;
+    /*0x2FB*/ s8 unk2FB;
+    /*0x2FC*/ s8 unk2FC;
+    /*0x2FD*/ s8 unk2FD;
+    /*0x2FE*/ u16 unk2FE;
     /*0x300*/ s8 unk300;
-    /*0x301*/ u8 unk301;
-    /*0x302*/ u8 filler302[0x4];
+    /*0x301*/ s8 unk301;
+    /*0x302*/ s8 unk302;
+    /*0x303*/ s8 unk303;
+    /*0x304*/ u16 unk304;
     /*0x306*/ s8 unk306;
     /*0x307*/ s8 unk307;
     /*0x308*/ u16 unk308;
@@ -674,7 +682,7 @@ struct PinballGame
     /*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
     /*0x5F2*/ s8 unk5F2;
     /*0x5F3*/ s8 unk5F3;
-    /*0x5F4*/ u8 filler5F4[0x2];
+    /*0x5F4*/ u16 unk5F4;
     /*0x5F6*/ s8 unk5F6;
     /*0x5F7*/ u8 unk5F7;
     /*0x5F8*/ u16 unk5F8;
@@ -687,7 +695,13 @@ struct PinballGame
     /*0x603*/ s8 unk603;
     /*0x604*/ u16 unk604;
     /*0x606*/ u16 unk606;
-    /*0x608*/ u8 filler608[0xC];
+    /*0x608*/ u16 unk608;
+    /*0x60A*/ s8 unk60A;
+    /*0x60B*/ s8 unk60B;
+    /*0x60C*/ s16 unk60C;
+    /*0x60E*/ s16 unk60E;
+    /*0x610*/ u16 unk610;
+    /*0x612*/ u16 unk612;
     /*0x614*/ s16 unk614;
     /*0x616*/ u16 unk616;
     /*0x618*/ u16 unk618;
