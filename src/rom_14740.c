@@ -96,71 +96,65 @@ u16 sub_14740(struct Vector16 *arg0, u16 *arg1)
 }
 
 
-void sub_1493C(void) {
+void sub_1493C(void)
+{
     struct Vector16 vec1;
-    struct Vector32 vec2;
-    
-    s32 mag1;
-    u16 tan1;
+    struct Vector32 vec2;    
+    int squaredMagnitude;
+    u16 angle;
     u8 temp_adjust;
 
     vec1.x = gCurrentPinballGame->ball->positionQ1.x - 238;
     vec1.y = gCurrentPinballGame->ball->positionQ1.y - 558;
-    mag1 = (vec1.x * vec1.x) + (vec1.y * vec1.y);
+    squaredMagnitude = (vec1.x * vec1.x) + (vec1.y * vec1.y);
     
-    if ((mag1 <= 1763) && !(1 & gCurrentPinballGame->unk1E)) 
+    if (squaredMagnitude < 1764 && (gCurrentPinballGame->unk1E & 1) == 0) 
     {
-        tan1 = ArcTan2(-vec1.x, vec1.y);
-        
+        angle = ArcTan2(-vec1.x, vec1.y);
         temp_adjust = 30;
-        vec2.x = (temp_adjust  * Cos(tan1)) / 20000;
-        vec2.y = (-temp_adjust * Sin(tan1)) / 20000;
-        
+        vec2.x = (temp_adjust  * Cos(angle)) / 20000;
+        vec2.y = (-temp_adjust * Sin(angle)) / 20000;
         gCurrentPinballGame->ball->velocity.x = ((vec2.x * 100) + (98 * gCurrentPinballGame->ball->velocity.x)) / 100;
         gCurrentPinballGame->ball->velocity.y = ((vec2.y * 100) + (98 * gCurrentPinballGame->ball->velocity.y)) / 100;
     }
     
-    if (gCurrentPinballGame->unk5F4 <= 19) 
+    if (gCurrentPinballGame->unk5F4 < 20)
     {    
-        if (mag1 <= 39) 
+        if (squaredMagnitude < 40) 
         {
-            gCurrentPinballGame->unk5F4 += 1;
+            gCurrentPinballGame->unk5F4++;
             gCurrentPinballGame->ball->unkE = 256;
         }
         else
         {
             gCurrentPinballGame->ball->unkE = 256;
-            
-            if (mag1 > 100)
+            if (squaredMagnitude > 100)
                 gCurrentPinballGame->unk5F4 = 0;
         }
     } 
     else 
     {
-        if (gCurrentPinballGame->unk5F4 <= 29) 
+        if (gCurrentPinballGame->unk5F4 < 30) 
         {
-            gCurrentPinballGame->unk5F4 += 1;
+            gCurrentPinballGame->unk5F4++;
             gCurrentPinballGame->ball->unkE = ((30 - gCurrentPinballGame->unk5F4) * 128) / 10 + 128;
-            
             gCurrentPinballGame->ball->positionQ0.x = 119;
             gCurrentPinballGame->ball->positionQ0.y = 279;
             gCurrentPinballGame->ball->unk6 = 0;
-            
             gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
             gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
-            
-            return;
         }
-
-        gCurrentPinballGame->unk5F4 = 0;
-        gCurrentPinballGame->unk25 = 4;
-        
-        if (gMain.selectedField == 0)
-            sub_1A98C();
         else
-            sub_32914();
-        
-        gCurrentPinballGame->unk22 = 7;
-        gCurrentPinballGame->ball->unkE = 128;
+        {
+            gCurrentPinballGame->unk5F4 = 0;
+            gCurrentPinballGame->unk25 = 4;
+            if (gMain.selectedField == FIELD_RUBY)
+                sub_1A98C();
+            else
+                sub_32914();
+            
+            gCurrentPinballGame->unk22 = 7;
+            gCurrentPinballGame->ball->unkE = 128;
+        }
     }
 }
