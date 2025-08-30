@@ -29,11 +29,144 @@ extern const s16 gUnknown_0813798C[];
 extern const u8 gUnknown_081379D8[];
 extern const u8 gUnknown_084B7FEC[][0x480];
 extern const u8 gUnknown_084ED0CC[][0x180];
+extern const s16 gUnknown_086AD7C0[][3];
+extern const s16 gUnknown_086AD856[][2];
+extern const u8 gUnknown_0845710C[][0x280];
+extern const u16 gUnknown_086B2E64[][6];
 
 extern struct SongHeader gUnknown_0869F2A0;
 extern struct SongHeader gUnknown_0869F240;
 extern struct SongHeader gUnknown_086A0F30;
 
+
+void sub_1D5D8(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    u16 * dst;
+    s16 var0;
+    s16 var1;
+
+    group = &gMain.spriteGroups[71];
+    var0 = 0;
+    var1 = 0;
+    switch (gCurrentPinballGame->unk2FB)
+    {
+    case 0:
+        var0 = (gMain.systemFrameCount % 36) / 18;
+        var1 = var0;
+        break;
+    case 1:
+        gCurrentPinballGame->unk2FE = 0;
+        gCurrentPinballGame->unk2FD = 0;
+        gCurrentPinballGame->unk2FB = 2;
+        var1 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][0];
+        var0 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][2];
+        m4aSongNumStart(SE_UNKNOWN_0xCF);
+        sub_11B0(7);
+        gCurrentPinballGame->unk3C = 50000;
+        break;
+    case 2:
+        if (gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][1] > gCurrentPinballGame->unk2FE)
+        {
+            gCurrentPinballGame->unk2FE++;
+        }
+        else
+        {
+            gCurrentPinballGame->unk2FE = 0;
+            gCurrentPinballGame->unk2FD++;
+            if (gCurrentPinballGame->unk2FD == 7)
+            {
+                gCurrentPinballGame->unk2FB = 0;
+                gCurrentPinballGame->unk2FD = 0;
+                gCurrentPinballGame->unk2F9 = 1;
+            }
+        }
+        var1 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][0];
+        var0 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][2];
+        break;
+    case 3:
+        gCurrentPinballGame->unk2FE = 0;
+        gCurrentPinballGame->unk2FD = 7;
+        gCurrentPinballGame->unk2FB = 4;
+        var1 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][0];
+        var0 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][2];
+        m4aSongNumStart(SE_UNKNOWN_0xCF);
+        sub_11B0(7);
+        gCurrentPinballGame->unk3C = 100000;
+        break;
+    case 4:
+        if (gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][1] > gCurrentPinballGame->unk2FE)
+        {
+            gCurrentPinballGame->unk2FE++;
+        }
+        else
+        {
+            gCurrentPinballGame->unk2FE = 0;
+            gCurrentPinballGame->unk2FD++;
+            if (gCurrentPinballGame->unk2FD == 18)
+            {
+                gCurrentPinballGame->unk2FB = 5;
+                m4aSongNumStart(SE_UNKNOWN_0xD1);
+            }
+        }
+
+        if (gCurrentPinballGame->unk2FE == 6)
+            m4aSongNumStart(SE_UNKNOWN_0xD0);
+
+        var1 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][0];
+        var0 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][2];
+        break;
+    case 5:
+    case 6:
+        if (gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][1] > gCurrentPinballGame->unk2FE)
+        {
+            gCurrentPinballGame->unk2FE++;
+        }
+        else
+        {
+            gCurrentPinballGame->unk2FE = 0;
+            gCurrentPinballGame->unk2FD++;
+            if (gCurrentPinballGame->unk2FD == 24)
+                gCurrentPinballGame->unk2FD = 18;
+        }
+
+        var1 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][0];
+        var0 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][2];
+        break;
+    case 7:
+        gCurrentPinballGame->unk2FA = 0;
+        gCurrentPinballGame->unk2F9 = 0;
+        gCurrentPinballGame->unk2FE = 0;
+        gCurrentPinballGame->unk2FD = 0;
+        gCurrentPinballGame->unk2FB = 0;
+        gCurrentPinballGame->unk2FD = 24;
+        var1 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][0];
+        var0 = gUnknown_086AD7C0[gCurrentPinballGame->unk2FD][2];
+        break;
+    }
+
+    if (group->available)
+    {
+        group->baseX = gUnknown_086AD856[gCurrentPinballGame->unk2F9][0] - gCurrentPinballGame->unk58;
+        group->baseY = gUnknown_086AD856[gCurrentPinballGame->unk2F9][1] - gCurrentPinballGame->unk5A;
+        DmaCopy16(3, gUnknown_0845710C[gCurrentPinballGame->unk2FC], (void *)0x06014380, 0x260);
+        for (i = 0; i < 2; i++)
+        {
+            oamSimple = &group->oam[i];
+            dst = (u16 *)&gOamBuffer[oamSimple->oamId];
+            *dst++ = gUnknown_086B2E64[var1][i * 3 + 0];
+            *dst++ = gUnknown_086B2E64[var1][i * 3 + 1];
+            *dst++ = gUnknown_086B2E64[var1][i * 3 + 2];
+
+            gOamBuffer[oamSimple->oamId].x += group->baseX;
+            gOamBuffer[oamSimple->oamId].y += group->baseY;
+        }
+    }
+
+    gCurrentPinballGame->unk2FC = var0;
+}
 
 void sub_1DA74(void)
 {
