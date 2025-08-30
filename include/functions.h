@@ -554,6 +554,7 @@ extern void sub_31498();
 extern void sub_31B30(void);
 extern void sub_31BE8(s16);
 extern void sub_31CF8(s16);
+
 extern void BuildSpeciesWeightsForCatchEmMode(void);
 
 // asm/rom_3219C.s

@@ -87,9 +87,7 @@ struct BallState
     /*0x0C*/ u16 unkC;
     /*0x0E*/ u16 unkE;
     /*0x10*/ struct Vector16 positionQ0;
-    /*0x14*/ u8 filler14[0xB];
-    /*0x1F*/ u8 unk1F;
-    /*0x20*/ u8 filler20[0x4];
+    /*0x14*/ struct Vector16 unk14[4];
     /*0x24*/ u16 unk24;
     /*0x26*/ u16 unk26;
     /*0x28*/ struct Vector16 positionQ1;
@@ -282,8 +280,8 @@ struct PinballGame
     /*0x1C2*/ s8 unk1C2;
     /*0x1C3*/ u8 filler1C3[0x1];
     /*0x1C4*/ u16 unk1C4;
-    /*0x1C6*/ u16 unk1C6;
-    /*0x1C8*/ u16 unk1C8;
+    /*0x1C6*/ s16 unk1C6;
+    /*0x1C8*/ s16 unk1C8;
     /*0x1CA*/ s16 unk1CA;
     /*0x1CC*/ s16 unk1CC;
     /*0x1CE*/ u16 unk1CE;
@@ -297,8 +295,8 @@ struct PinballGame
     /*0x1DE*/ u8 filler1DE[0x4];
     /*0x1E2*/ s8 outLanePikaPosition; //Pikachu coverage. 0= left lane, 1=right lane, 2 = both
     /*0x1E3*/ u8 filler1E3[0x2];
-    /*0x1E5*/ u8 unk1E5;
-    /*0x1E6*/ u8 unk1E6;
+    /*0x1E5*/ s8 unk1E5;
+    /*0x1E6*/ s8 unk1E6;
     /*0x1E7*/ u8 filler1E7[0x1];
     /*0x1E8*/ s16 unk1E8;
     /*0x1EA*/ s16 unk1EA;
@@ -371,7 +369,14 @@ struct PinballGame
     /*0x2A8*/ u8 filler2A8[0x2];
     /*0x2AA*/ u16 unk2AA;
     /*0x2AC*/ s16 unk2AC;
-    /*0x2AE*/ u8 filler2AE[0xE];
+    /*0x2AE*/ u8 filler2AE[0x2];
+    /*0x2B0*/ u16 unk2B0;
+    /*0x2B2*/ s8 unk2B2;
+    /*0x2B3*/ u8 filler2B3[0x1];
+    /*0x2B4*/ s16 unk2B4;
+    /*0x2B6*/ s16 unk2B6;
+    /*0x2B8*/ u16 unk2B8;
+    /*0x2BA*/ u16 unk2BA;
     /*0x2BC*/ u16 unk2BC;
     /*0x2BE*/ s8 unk2BE;
     /*0x2C0*/ u16 unk2C0;
@@ -683,8 +688,10 @@ struct PinballGame
     /*0x604*/ u16 unk604;
     /*0x606*/ u16 unk606;
     /*0x608*/ u8 filler608[0xC];
-    /*0x614*/ u16 unk614;
-    /*0x616*/ u8 filler616[0x6];
+    /*0x614*/ s16 unk614;
+    /*0x616*/ u16 unk616;
+    /*0x618*/ u16 unk618;
+    /*0x61A*/ s16 unk61A;
     /*0x61C*/ s8 unk61C;
     /*0x61D*/ u8 filler61D[0x7];
     /*0x624*/ s8 unk624;
