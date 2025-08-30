@@ -1362,7 +1362,10 @@ gUnknown_0816A7C4:: @ 0x0816A7C4
 	.incbin "baserom.gba", 0x16A7C4, 0x1C20
 
 gUnknown_0816C3E4:: @ 0x0816C3E4
-	.incbin "baserom.gba", 0x16C3E4, 0x44A00
+	.incbin "baserom.gba", 0x16C3E4, 0x42800
+	.include "data/graphics/mon_catch_sprites_pals.inc"
+@	.incbin "baserom.gba", 0x1AEBE4, 0xA80
+	.incbin "baserom.gba", 0x1B0C64, 0x180
 
 gUnknown_081B0DE4:: @ 0x081B0DE4
 	.incbin "baserom.gba", 0x1B0DE4, 0x200
@@ -1719,7 +1722,9 @@ gUnknown_083FFD4C:: @ 0x083FFD4C
 	.incbin "baserom.gba", 0x3FFD4C, 0x40
 
 gUnknown_083FFD8C:: @ 0x083FFD8C
-	.incbin "baserom.gba", 0x3FFD8C, 0x47D00
+	.incbin "baserom.gba", 0x3FFD8C, 0xF00 @ 0x47D00
+
+	.include "data/graphics/mon_catch_sprites.inc"
 
 gUnknown_08447A8C:: @ 0x08447A8C
 	.incbin "baserom.gba", 0x447A8C, 0x900
@@ -1891,43 +1896,43 @@ gUnknown_084C4B6C:: @ 0x084C4B6C
 .incbin "baserom.gba", 0x4ECF6C, 0x160 @ 0x4ED0CC - 0x4ECF6C
 
 gUnknown_084ED0CC:: @ 0x084ED0CC
-	.incbin "baserom.gba", 0x4ED0CC, 0x600
+	.incbin "graphics/stage/ruby/shop_door.4bpp";
 
 gUnknown_084ED6CC:: @ 0x084ED6CC
-	.incbin "baserom.gba", 0x4ED6CC, 0x400
-
+	.incbin "graphics/stage/gunk_084ED6CC.4bpp";
+	
 gUnknown_084EDACC:: @ 0x084EDACC
 	.incbin "graphics/stage/dusclops/dusclops.4bpp";
 
 gUnknown_084F5ACC:: @ 0x084F5ACC
-	.incbin "baserom.gba", 0x4F5ACC, 0x720
+	.incbin "graphics/stage/ruby/sharpedo.4bpp";
 
 gUnknown_084F61EC:: @ 0x084F61EC
-	.incbin "baserom.gba", 0x4F61EC, 0x920
+	.incbin "graphics/stage/main/gunk_084F61EC.4bpp";
 
 gUnknown_084F6B0C:: @ 0x084F6B0C
-	.incbin "baserom.gba", 0x4F6B0C, 0x3700
+	.incbin "graphics/stage/ruby/shop.4bpp";
 
 gUnknown_084FA20C:: @ 0x084FA20C
-	.incbin "baserom.gba", 0x4FA20C, 0x280
+	.incbin "graphics/stage/misc/gunk_084FA20C.4bpp";
 
 gUnknown_084FA48C:: @ 0x084FA48C
-	.incbin "baserom.gba", 0x4FA48C, 0x1200
+	.incbin "graphics/stage/main/pika_spinner.4bpp";
 
 gUnknown_084FB68C:: @ 0x084FB68C
-	.incbin "baserom.gba", 0x4FB68C, 0x1B00
+	.incbin "graphics/stage/ruby/hatch_cave.4bpp";
 
 gUnknown_084FD18C:: @ 0x084FD18C
 	.incbin "baserom.gba", 0x4FD18C, 0xE00
 
 gUnknown_084FDF8C:: @ 0x084FDF8C
-	.incbin "baserom.gba", 0x4FDF8C, 0xA80
+	.incbin "graphics/stage/sapphire/seedot.4bpp";
 
 gUnknown_084FEA0C:: @ 0x084FEA0C
-	.incbin "baserom.gba", 0x4FEA0C, 0x500
+	.incbin "graphics/stage/sapphire/shop_shock_wall.4bpp";
 
 gUnknown_084FEF0C:: @ 0x084FEF0C
-	.incbin "baserom.gba", 0x4FEF0C, 0x400
+	.incbin "graphics/stage/ruby/ramp_prize.4bpp";
 
 gUnknown_084FF30C:: @ 0x084FF30C
 	.incbin "graphics/stage/dusclops/dusclops_ball_grab.4bpp";
@@ -1936,43 +1941,43 @@ gUnknown_084FF90C:: @ 0x084FF90C
 	.incbin "baserom.gba", 0x4FF90C, 0x1700
 
 gUnknown_0850100C:: @ 0x0850100C
-	.incbin "baserom.gba", 0x50100C, 0x18C0
-
+	.incbin "graphics/stage/main/ball_save.4bpp";
+	
 gUnknown_085028CC:: @ 0x085028CC
-	.incbin "baserom.gba", 0x5028CC, 0x1000
-
+	.incbin "graphics/stage/main/latios.4bpp";
+	
 gUnknown_085038CC:: @ 0x085038CC
-	.incbin "baserom.gba", 0x5038CC, 0xC0
+	.incbin "graphics/stage/main/latios_arm.4bpp";
 
 gUnknown_0850398C:: @ 0x0850398C
-	.incbin "baserom.gba", 0x50398C, 0x1C00
+	.incbin "graphics/stage/main/end_of_ball.4bpp";
 
 gUnknown_0850558C:: @ 0x0850558C
-	.incbin "baserom.gba", 0x50558C, 0x600
+	.incbin "graphics/stage/misc/gunk_0850558C.4bpp";
 
 gUnknown_08505B8C:: @ 0x08505B8C
 	.incbin "baserom.gba", 0x505B8C, 0x40
 
 gUnknown_08505BCC:: @ 0x08505BCC
-	.incbin "baserom.gba", 0x505BCC, 0x4380
+	.incbin "graphics/stage/main/evo_banner.4bpp";
 
 gUnknown_08509F4C:: @ 0x08509F4C
-	.incbin "baserom.gba", 0x509F4C, 0x400
+	.incbin "graphics/stage/main/game_over_text.4bpp";
 
 gUnknown_0850A34C:: @ 0x0850A34C
-	.incbin "baserom.gba", 0x50A34C, 0x4380
+	.incbin "graphics/stage/main/jirachi_banner.4bpp";
 
 gUnknown_0850E6CC:: @ 0x0850E6CC
-	.incbin "baserom.gba", 0x50E6CC, 0x25E0
+	.incbin "graphics/stage/main/travel.4bpp";
 
 gUnknown_08510CAC:: @ 0x08510CAC
-	.incbin "baserom.gba", 0x510CAC, 0x1A0
+	.incbin "graphics/stage/main/pause_menu_text.4bpp";
 
 gUnknown_08510E4C:: @ 0x08510E4C
 	.incbin "graphics/stage/dusclops/duskull.4bpp";
 
 gUnknown_08512C4C:: @ 0x08512C4C
-	.incbin "baserom.gba", 0x512C4C, 0x2300
+	.incbin "graphics/stage/sapphire/zigzagoon.4bpp";
 
 gUnknown_08514F4C:: @ 0x08514F4C
 	.incbin "baserom.gba", 0x514F4C, 0x20
@@ -1999,7 +2004,9 @@ gUnknown_085223AC:: @ 0x085223AC
 	.incbin "baserom.gba", 0x5223AC, 0x4A20
 
 gUnknown_08526DCC:: @ 0x08526DCC
-	.incbin "baserom.gba", 0x526DCC, 0xF56
+	.incbin "graphics/stage/sapphire/zigzagoon_fx.4bpp";
+
+	.incbin "baserom.gba", 0x5279CC, 0x356
 
 
 gOptionsBGMList:: @ 0x08527D22
