@@ -674,7 +674,7 @@ struct PinballGame
     /*0x5F0*/ u16 caughtMonCount; // Number of mons caught in this game
     /*0x5F2*/ s8 unk5F2;
     /*0x5F3*/ s8 unk5F3;
-    /*0x5F4*/ u8 filler5F4[0x2];
+    /*0x5F4*/ u16 unk5F4;
     /*0x5F6*/ s8 unk5F6;
     /*0x5F7*/ u8 unk5F7;
     /*0x5F8*/ u16 unk5F8;

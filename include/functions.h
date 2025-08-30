@@ -432,7 +432,8 @@ extern void sub_19B90(void);
 //extern ? sub_19FA0();
 extern void sub_1A0F4(void);
 //extern ? sub_1A2C0();
-//extern ? sub_1A98C();
+
+extern void sub_1A98C();
 extern void sub_1A9E8(void);
 //extern ? sub_1AA38();
 extern void sub_1AAA0();
@@ -565,7 +566,7 @@ extern void PickSpeciesForEggMode(void);
 //extern ? SapphireBoardProcess_3B_3276C();
 extern void sub_327C0();
 extern void sub_328C8();
-//extern ? sub_32914();
+extern void sub_32914();
 extern void sub_32968();
 extern void sub_329B0();
 extern void sub_329F4();
