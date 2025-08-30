@@ -28,11 +28,73 @@ extern const s16 gUnknown_086AD9EC[];
 extern const s16 gUnknown_0813798C[];
 extern const u8 gUnknown_081379D8[];
 extern const u8 gUnknown_084B7FEC[][0x480];
+extern const u8 gUnknown_084ED0CC[][0x180];
 
 extern struct SongHeader gUnknown_0869F2A0;
 extern struct SongHeader gUnknown_0869F240;
 extern struct SongHeader gUnknown_086A0F30;
 
+
+void sub_1DAD8(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    s16 priority;
+
+    group = &gMain.spriteGroups[65];
+    if ((gCurrentPinballGame->unk2F0 & 0xF) != gCurrentPinballGame->unk2F1)
+    {
+        if (gCurrentPinballGame->unk2F2)
+        {
+            if (gCurrentPinballGame->unk2F2 == 5)
+            {
+                gMain.unkF |= 0x1;
+                gCurrentPinballGame->unkEA = 0;
+                gCurrentPinballGame->unkEC = 3;
+                gCurrentPinballGame->unkE8 = 0;
+                gCurrentPinballGame->unkE6 = 0;
+                gCurrentPinballGame->unkEE = 0;
+                gCurrentPinballGame->unkF2 = 0;
+                gCurrentPinballGame->unkFA = 1;
+                gCurrentPinballGame->unkFB = 0;
+                m4aSongNumStart(SE_UNKNOWN_0xBD);
+            }
+
+            gCurrentPinballGame->unk2F2--;
+        }
+        else
+        {
+            if (gCurrentPinballGame->unk2F1 > (gCurrentPinballGame->unk2F0 & 0xF))
+            {
+                gCurrentPinballGame->unk2F1--;
+                gCurrentPinballGame->unk2F2 = 4;
+            }
+            else
+            {
+                gCurrentPinballGame->unk2F1++;
+                gCurrentPinballGame->unk2F2 = 4;
+            }
+
+            DmaCopy16(3, gUnknown_084ED0CC[gCurrentPinballGame->unk2F1], (void *)0x06013180, 0x180);
+        }
+    }
+
+    if (gCurrentPinballGame->unk2F1 < 3)
+        priority = 3;
+    else
+        priority = 2;
+
+    group->baseX = 208 - gCurrentPinballGame->unk58;
+    group->baseY = 80 - gCurrentPinballGame->unk5A;
+    for (i = 0; i < 2; i++)
+    {
+        oamSimple = &gMain.spriteGroups[65].oam[i];
+        gOamBuffer[oamSimple->oamId].priority = priority;
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+    }
+}
 
 void sub_1DC7C(void)
 {
