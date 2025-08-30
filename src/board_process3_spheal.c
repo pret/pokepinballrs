@@ -135,7 +135,7 @@ void SphealBoardProcess_3A_42E48(void)
 
     gMain.bgOffsets[1].yOffset = 126;
     DmaCopy16(3, &gUnknown_03005C00[0x800], (void *)0x06001140, 0x280);
-    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballPowerUp], (void *)0x05000220, 0x20);
+    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
     m4aSongNumStart(MUS_BONUS_FIELD_SPHEAL);
     DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
 }
@@ -1656,7 +1656,7 @@ void sub_45E90(void)
     sp18[8] = sp0[8] * 2 + 0x2D0;
     sp18[9] = sp0[9] * 2 + 0x2D0;
     sp18[10] = sp0[10] * 2 + 0x2D0;
-    value = gCurrentPinballGame->ballPowerUp + 1;
+    value = gCurrentPinballGame->ballUpgradeType + 1;
     sp0[0] = value;
     sp18[11] = sp0[0] * 2 + 0x2D0;
 

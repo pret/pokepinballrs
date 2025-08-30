@@ -144,7 +144,7 @@ void sub_351A8(void)
         {
             DmaCopy16(3, &gUnknown_08138834[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
-        var2 = gCurrentPinballGame->ballPowerUp + 0x71;
+        var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
         DmaCopy16(3, &gUnknown_08138834[var2 * 0x40], (void *)0x06017380, 0x40);
         break;
     case FIELD_KECLEON:
@@ -152,7 +152,7 @@ void sub_351A8(void)
         {
             DmaCopy16(3, &gUnknown_0813A854[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
-        var2 = gCurrentPinballGame->ballPowerUp + 0x71;
+        var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
         DmaCopy16(3, &gUnknown_0813A854[var2 * 0x40], (void *)0x06017380, 0x40);
         break;
     case FIELD_KYOGRE:
@@ -160,7 +160,7 @@ void sub_351A8(void)
         {
             DmaCopy16(3, &gUnknown_0813C874[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
-        var2 = gCurrentPinballGame->ballPowerUp + 0x71;
+        var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
         DmaCopy16(3, &gUnknown_0813C874[var2 * 0x40], (void *)0x06017380, 0x40);
         break;
     case FIELD_GROUDON:
@@ -168,7 +168,7 @@ void sub_351A8(void)
         {
             DmaCopy16(3, &gUnknown_0813E894[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
-        var2 = gCurrentPinballGame->ballPowerUp + 0x71;
+        var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
         DmaCopy16(3, &gUnknown_0813E894[var2* 0x40], (void *)0x06017380, 0x40);
         break;
     case FIELD_RAYQUAZA:
@@ -176,7 +176,7 @@ void sub_351A8(void)
         {
             DmaCopy16(3, &gUnknown_081408B4[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
-        var2 = gCurrentPinballGame->ballPowerUp + 0x71;
+        var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
         DmaCopy16(3, &gUnknown_081408B4[var2 * 0x40], (void *)0x06017380, 0x40);
         break;
     }
