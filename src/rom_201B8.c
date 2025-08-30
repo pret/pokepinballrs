@@ -26,11 +26,46 @@ extern const struct Vector16 gUnknown_086AD9DC[];
 extern const s16 gUnknown_086AD862[][4];
 extern const s16 gUnknown_086AD9EC[];
 extern const s16 gUnknown_0813798C[];
+extern const u8 gUnknown_081379D8[];
+extern const u8 gUnknown_084B7FEC[][0x480];
 
 extern struct SongHeader gUnknown_0869F2A0;
 extern struct SongHeader gUnknown_0869F240;
 extern struct SongHeader gUnknown_086A0F30;
 
+
+void sub_1DC7C(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    s16 var0;
+    const s16 *var1;
+
+    group = &gMain.spriteGroups[63];
+    var1 = gUnknown_086AD862[gCurrentPinballGame->unk2A5];
+    if (group->available)
+    {
+        var0 = var1[0];
+        DmaCopy16(3, gUnknown_081379D8 + gCurrentPinballGame->unk6F * 0x60, (void *)0x05000320, 0x20);
+        DmaCopy16(3, gUnknown_084B7FEC[var0], (void *)0x06014680, 0x460);
+        gCurrentPinballGame->unk184[0].x = -248;
+        gCurrentPinballGame->unk184[0].y = -316;
+        group->baseX = var1[2] + 124u - gCurrentPinballGame->unk58;
+        group->baseY = var1[3] + 150u - gCurrentPinballGame->unk5A;
+        for (i = 0; i < 4; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+
+        if (var0 == 4 || var0 == 10)
+            gCurrentPinballGame->unk2A3 = 0;
+        else
+            gCurrentPinballGame->unk2A3 = 1;
+    }
+}
 
 void sub_1DDDC(void)
 {
@@ -390,8 +425,8 @@ void sub_1DDDC(void)
         {
             angle = (gCurrentPinballGame->unk290 & 0x7F) * 0x200 + i * 0x5555;
             var1 = (gCurrentPinballGame->unk290 % 60) - 30;
-            if (var1)
-                var1++; // fake match--there was originally dead code here
+            if (var1 < 0)
+                var1 = -var1;
 
             gCurrentPinballGame->unk190 = 180;
             gCurrentPinballGame->unk178[i].x = (gCurrentPinballGame->unk190 * Cos(angle)) / 20000 + 1380;
