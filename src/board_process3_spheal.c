@@ -967,7 +967,7 @@ void sub_44D58(void)
 
     if (gCurrentPinballGame->unk7E)
     {
-        if (gMain.unk5 == 0)
+        if (gMain.unk5 == FIELD_RUBY)
             sub_44F3C();
         else
             sub_45164();

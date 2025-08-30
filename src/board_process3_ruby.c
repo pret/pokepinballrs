@@ -126,7 +126,7 @@ void sub_19C04(void)
 
     if (gCurrentPinballGame->unk15 > 0)
     {
-        if (gMain.selectedField == 0)
+        if (gMain.selectedField == FIELD_RUBY)
         {
             num1 = gCurrentPinballGame->numCompletedBonusStages / 5;
             if ((num1 & 1) == 0)

@@ -345,7 +345,7 @@ struct PinballGame
     /*0x281*/ s8 evolvablePartySize;
     /*0x282*/ s8 unk282;
     /*0x283*/ u8 numCompletedBonusStages;
-    /*0x284*/ s8 unk284;
+    /*0x284*/ s8 unk284; // Bonus Field to transition to?
     /*0x285*/ u8 filler285[0x1];
     /*0x286*/ s16 unk286;
     /*0x288*/ s16 unk288;

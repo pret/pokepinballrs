@@ -1528,7 +1528,7 @@ void sub_2AADC(void)
     case 0:
         gMain.blendControl = 0xCE;
         
-        if (gMain.selectedField <= 1 && (gCurrentPinballGame->unk13 == 4 || gCurrentPinballGame->unk13 == 8)) 
+        if (gMain.selectedField < MAIN_FIELD_COUNT && (gCurrentPinballGame->unk13 == 4 || gCurrentPinballGame->unk13 == 8)) 
             gCurrentPinballGame->unk294 = 1;
         
         gCurrentPinballGame->unk1F = 1;
@@ -1582,11 +1582,11 @@ void sub_2AADC(void)
         {
             DmaCopy16(3, gUnknown_02031520.unk14.unk2C[1], 0x05000200, 0x20);
         
-            if (gMain.selectedField == 1) 
+            if (gMain.selectedField == FIELD_SAPPHIRE)
             {
                 DmaCopy16(3, gUnknown_02031520.unk14.unk2C[1] + 0x40, 0x05000240, 0xC0);
-            } 
-            else 
+            }
+            else
                 DmaCopy16(3, gUnknown_02031520.unk14.unk2C[1] + 0x40, 0x05000240, 0xE0);
             
             DmaCopy16(3, gUnknown_02031520.unk14.unk2C[1] + 0x140, 0x05000340, 0x60);
@@ -1602,7 +1602,7 @@ void sub_2AADC(void)
         {
             DmaCopy16(3, gUnknown_02031520.unk14.unk2C[2], 0x05000200, 0x20);
         
-            if (gMain.selectedField == 1) 
+            if (gMain.selectedField == FIELD_SAPPHIRE) 
             {
                 DmaCopy16(3, gUnknown_02031520.unk14.unk2C[2] + 0x40, 0x05000240, 0xC0);
             } 
@@ -1953,7 +1953,7 @@ void sub_2AADC(void)
                 {
                     DmaCopy16(3, gUnknown_02031520.unk14.unk2C[1], 0x05000200, 0x20);
                 
-                    if (gMain.selectedField == 1) 
+                    if (gMain.selectedField == FIELD_SAPPHIRE) 
                     {
                         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[1] + 0x40, 0x05000240, 0xC0);
                     } 
@@ -1973,7 +1973,7 @@ void sub_2AADC(void)
                 {
                     DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], 0x05000200, 0x20);
                 
-                    if (gMain.selectedField == 1) 
+                    if (gMain.selectedField == FIELD_SAPPHIRE) 
                     {
                         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0] + 0x40, 0x05000240, 0xC0);
                     } 
@@ -2146,7 +2146,7 @@ void sub_2AADC(void)
         if (gCurrentPinballGame->unk5A6 <= 229 && gCurrentPinballGame->unk210 == 150)
             gCurrentPinballGame->unk210--;
         
-        if (gCurrentPinballGame->unk5A6 == 270 && gMain.selectedField <= 1)
+        if (gCurrentPinballGame->unk5A6 == 270 && gMain.selectedField < MAIN_FIELD_COUNT)
         {
             sub_1C7F4(0, 0);
             gCurrentPinballGame->unk6C4 = 0;
@@ -2187,7 +2187,7 @@ void sub_2AADC(void)
             {
                 gMain.unk2C = 0;
             
-                if (gMain.selectedField <= 1) 
+                if (gMain.selectedField < MAIN_FIELD_COUNT) 
                 {
                     gMain.blendControl = 0;
                     gMain.blendBrightness = 0;
@@ -2243,11 +2243,11 @@ void sub_2AADC(void)
                     gCurrentPinballGame->unk3C = 0x2DC6C0;
             }
             
-            if (gMain.selectedField > 2) 
+            if (gMain.selectedField > MAIN_FIELD_COUNT) 
             {
                 gCurrentPinballGame->unk1C = 1;
                 
-                if (gMain.selectedField == 6) 
+                if (gMain.selectedField == FIELD_RAYQUAZA) 
                 {
                     gCurrentPinballGame->unk38 = 0x61A80;
                     gCurrentPinballGame->unk3C = 0x01C9C380;
@@ -2269,7 +2269,7 @@ void sub_2AADC(void)
         gCurrentPinballGame->unk5A6 = 0;
         gCurrentPinballGame->unk5A8 = 0;
         
-        if (gMain.selectedField <= 1) 
+        if (gMain.selectedField < MAIN_FIELD_COUNT) 
         {
             gCurrentPinballGame->unk1F = 0;
             gCurrentPinballGame->ball->velocity.y = -10;
