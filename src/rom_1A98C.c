@@ -524,8 +524,8 @@ void sub_1B140(s16 arg0)
                     {
                         if (gCurrentPinballGame->unk1A6 == 3)
                         {
-                            if (gCurrentPinballGame->unk5F6 <= 2)
-                                gCurrentPinballGame->unk1A7 = gCurrentPinballGame->unk5F6 + 10;
+                            if (gCurrentPinballGame->ballPowerUp <= BALL_POWER_UP_ULTRA_BALL)
+                                gCurrentPinballGame->unk1A7 = gCurrentPinballGame->ballPowerUp + 10;
                             else
                                 gCurrentPinballGame->unk1A7 = 12;
                         }

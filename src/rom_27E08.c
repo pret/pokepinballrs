@@ -2059,8 +2059,8 @@ void sub_24408(void)
         gCurrentPinballGame->unkE4 = 9;
         DmaCopy16(3, gUnknown_086ACF80, (void *)0x050003E0, 0x20);
         DmaCopy16(3, gUnknown_081428D4, (void *)0x06015800, 0x1C00);
-        DmaCopy16(3, &gUnknown_08138014[gCurrentPinballGame->unk5F6 * 0x200], (void *)0x060164C0, 0x80);
-        DmaCopy16(3, &gUnknown_08138014[(gCurrentPinballGame->unk5F6 * 8 + 4) * 0x40], (void *)0x06016760, 0x80);
+        DmaCopy16(3, &gUnknown_08138014[gCurrentPinballGame->ballPowerUp * 0x200], (void *)0x060164C0, 0x80);
+        DmaCopy16(3, &gUnknown_08138014[(gCurrentPinballGame->ballPowerUp * 8 + 4) * 0x40], (void *)0x06016760, 0x80);
         gCurrentPinballGame->unk5A6 = 0;
         gCurrentPinballGame->unk5A4 = 2;
         gCurrentPinballGame->unk288 = gCurrentPinballGame->unk1FC / 10 + 8;

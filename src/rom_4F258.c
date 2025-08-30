@@ -365,11 +365,11 @@ void sub_4F0F0(void)
 
         if (gCurrentPinballGame->unk71C == 28)
         {
-            if (gCurrentPinballGame->unk5F6 < 3)
-            gCurrentPinballGame->unk5F6++;
+            if (gCurrentPinballGame->ballPowerUp < BALL_POWER_UP_MASTER_BALL)
+                gCurrentPinballGame->ballPowerUp++;
 
-            gCurrentPinballGame->unk5F8 = 3600;
-            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+            gCurrentPinballGame->ballPowerUpTimer = 3600;
+            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballPowerUp], (void *)0x05000220, 0x20);
         }
 
         if (gCurrentPinballGame->unk71C == 40)
