@@ -39,6 +39,51 @@ extern struct SongHeader gUnknown_0869F240;
 extern struct SongHeader gUnknown_086A0F30;
 
 
+void sub_1D4D0(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+
+    if (gCurrentPinballGame->unk6C4 == 1)
+    {
+        group = gMain.unk44[22];
+        group->baseY = 180;
+        for (i = 0; i < 6; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+
+        group = gMain.unk44[23];
+        group->baseY = 300 - gCurrentPinballGame->unk5A;
+        if (group->baseY >= 180)
+            group->baseY = 180;
+
+        for (i = 0; i < 6; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+
+        group = gMain.unk44[20];
+        group->baseY = 180;
+        for (i = 0; i < 6; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+
+        group = gMain.unk44[21];
+        group->baseY = 180;
+        for (i = 0; i < 6; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+    }
+}
+
 void sub_1D5D8(void)
 {
     s16 i;
