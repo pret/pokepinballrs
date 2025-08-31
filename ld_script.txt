@@ -54,13 +54,12 @@ SECTIONS
         src/board_process3_ruby.o(.text);
         src/rom_1A0F4.o(.text);
         src/rom_1A98C.o(.text);
-        asm/rom_1AD84.o(.text);
-        asm/rom_1D5D8.o(.text);
         src/rom_201B8.o(.text);
         asm/rom_203CC.o(.text);
         src/rom_27E08.o(.text);
         src/rom_27F94.o(.text);
-        asm/rom_2C538.o(.text);
+        src/rom_2C538.o(.text);
+        asm/rom_2CA9C.o(.text);
         src/rom_2E67C.o(.text);
         src/rom_30480.o(.text);
         src/rom_31BE8.o(.text);

@@ -326,17 +326,17 @@ void sub_21578(void)
         {
         case 0:
         case 2:
-            gCurrentPinballGame->unk6EC = 42;
-            gCurrentPinballGame->unk284 = 3;
+            gCurrentPinballGame->unk6EC[0] = 42;
+            gCurrentPinballGame->unk284 = FIELD_KECLEON;
             break;
         case 1:
         case 3:
-            gCurrentPinballGame->unk6EC = 44;
-            gCurrentPinballGame->unk284 = 5;
+            gCurrentPinballGame->unk6EC[0] = 44;
+            gCurrentPinballGame->unk284 = FIELD_GROUDON;
             break;
         case 4:
-            gCurrentPinballGame->unk6EC = 45;
-            gCurrentPinballGame->unk284 = 6;
+            gCurrentPinballGame->unk6EC[0] = 45;
+            gCurrentPinballGame->unk284 = FIELD_RAYQUAZA;
             break;
         }
     }
@@ -346,17 +346,17 @@ void sub_21578(void)
         {
         case 0:
         case 2:
-            gCurrentPinballGame->unk6EC = 41;
-            gCurrentPinballGame->unk284 = 2;
+            gCurrentPinballGame->unk6EC[0] = 41;
+            gCurrentPinballGame->unk284 = FIELD_DUSCLOPS;
             break;
         case 1:
         case 3:
-            gCurrentPinballGame->unk6EC = 43;
-            gCurrentPinballGame->unk284 = 4;
+            gCurrentPinballGame->unk6EC[0] = 43;
+            gCurrentPinballGame->unk284 = FIELD_KYOGRE;
             break;
         case 4:
-            gCurrentPinballGame->unk6EC = 45;
-            gCurrentPinballGame->unk284 = 6;
+            gCurrentPinballGame->unk6EC[0] = 45;
+            gCurrentPinballGame->unk284 = FIELD_RAYQUAZA;
             break;
         }
     }
@@ -431,7 +431,7 @@ void sub_216FC(void)
         gCurrentPinballGame->unk17++;
         gCurrentPinballGame->unk18 = 0;
         gCurrentPinballGame->unk708 = 0;
-        gCurrentPinballGame->unk6EC = 46;
+        gCurrentPinballGame->unk6EC[0] = 46;
         sub_1C7F4(7, 0);
         break;
     case 4:
@@ -453,7 +453,7 @@ void sub_216FC(void)
                     gCurrentPinballGame->unk6EE = 120;
             }
 
-            gCurrentPinballGame->unk6EC = 46;
+            gCurrentPinballGame->unk6EC[0] = 46;
             sub_1C7F4(7, 0);
         }
 
@@ -694,7 +694,7 @@ void sub_21FBC(s16 arg0)
     s16 i;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
-    const struct Unk86AD000 *var1;
+    const u16 *var1;
     u16 *dst;
     const u16 *src;
     s16 index;
@@ -702,12 +702,12 @@ void sub_21FBC(s16 arg0)
     s16 sp4[2];
 
     group = gMain.unk44[7];
-    var1 = &gUnknown_086AD000[gUnknown_086AD2DE[gCurrentPinballGame->unk1A6]];
+    var1 = gUnknown_086AD000[gUnknown_086AD2DE[gCurrentPinballGame->unk1A6]];
     if (arg0)
     {
-        index = var1->unk6 / 10;
+        index = var1[3] / 10;
         DmaCopy16(3, gUnknown_08480E0C[index], (void *)0x06015DA0, 0x40);
-        index = var1->unk6 % 10;
+        index = var1[3] % 10;
         DmaCopy16(3, gUnknown_08480E0C[index], (void *)0x06015E60, 0x40);
     }
 
@@ -2512,9 +2512,9 @@ void sub_25F64(void)
     gCurrentPinballGame->unk36 = 0;
     gCurrentPinballGame->unk32 = (Random() + gMain.systemFrameCount) % 6;
     gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][gCurrentPinballGame->unk32];
-    gCurrentPinballGame->unk6DA = gUnknown_08137928[gCurrentPinballGame->area];
+    gCurrentPinballGame->unk6D9[1] = gUnknown_08137928[gCurrentPinballGame->area];
     gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][(gCurrentPinballGame->unk32 + 1) % 6];
-    gCurrentPinballGame->unk6D9 = gUnknown_08137928[gCurrentPinballGame->area];
+    gCurrentPinballGame->unk6D9[0] = gUnknown_08137928[gCurrentPinballGame->area];
     sub_1C7F4(0, 0);
     sub_1C7F4(0, 1);
     for (i = 0; i < 6; i++)
@@ -2679,7 +2679,7 @@ void sub_260B8(void)
         gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->unk6F0 * 32) / gCurrentPinballGame->unk6F2;
         if (gCurrentPinballGame->unk6F0 == 0)
         {
-            gCurrentPinballGame->unk6D9 = gCurrentPinballGame->unk6DA;
+            gCurrentPinballGame->unk6D9[0] = gCurrentPinballGame->unk6D9[1];
             sub_1C7F4(0, 0);
         }
 
@@ -2699,7 +2699,7 @@ void sub_260B8(void)
             }
 
             gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][gCurrentPinballGame->unk32];
-            gCurrentPinballGame->unk6DA = gUnknown_08137928[gCurrentPinballGame->area];
+            gCurrentPinballGame->unk6D9[1] = gUnknown_08137928[gCurrentPinballGame->area];
             sub_1C7F4(0, 1);
             m4aSongNumStart(SE_UNKNOWN_0x81);
         }
@@ -2925,14 +2925,14 @@ void sub_26A10(void)
         gCurrentPinballGame->unk17++;
         gCurrentPinballGame->unk18 = 0;
         gCurrentPinballGame->unk708 = 0;
-        gCurrentPinballGame->unk6EC = 47;
+        gCurrentPinballGame->unk6EC[0] = 47;
         sub_1C7F4(7, 0);
         break;
     case 5:
         if (gCurrentPinballGame->unk28 == 145)
         {
             gCurrentPinballGame->unk28++;
-            gCurrentPinballGame->unk6EC = 47;
+            gCurrentPinballGame->unk6EC[0] = 47;
             sub_1C7F4(7, 0);
             if (JOY_NEW(A_BUTTON))
             {
