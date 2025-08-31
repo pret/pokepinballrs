@@ -382,7 +382,7 @@ extern u16 sub_14488(struct Vector16*, struct Vector16);
 extern u16 sub_1467C(struct Vector16*, u16*);
 extern u16 sub_14740(struct Vector16*, u16*);
 extern void sub_1493C(void);
-extern u16 sub_14AF4(struct Vector16 r0, s16 r1, s16 *r2 /* s16 or u16 */, s16 r3);
+extern u16 sub_14AF4(struct Vector16 r0, s16 r1, u16 *r2 /* s16 or u16 */, s16 r3);
 //extern ? sub_14B84();
 //extern ? COLLISION_CHECK_RUBY_14E08();
 //extern ? sub_15054();

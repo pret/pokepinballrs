@@ -4,7 +4,8 @@
 #include "constants/bg_music.h"
 
 extern u8 gUnknown_0839A28C[];
-
+extern u16 gUnknown_086ACE2C[][2];
+extern s8 gUnknown_086ACDB8[];
 
 
 u16 sub_14740(struct Vector16* arg0, u16* arg1) 
@@ -170,5 +171,102 @@ void sub_1493C(void) {
         
         gCurrentPinballGame->unk22 = 7;
         gCurrentPinballGame->ball->unkE = 128;
+    }
+}
+
+u16 sub_14AF4(struct Vector16 r0, s16 r1, u16 *r2, s16 r3) {
+    struct UnkPinballGame13BC* unk13BC;
+    u16 res;
+    int new_var;
+    unsigned short ix;
+    
+    res = 0;
+    
+    ix = (r0.y * 96) + r0.x; 
+    unk13BC = &gCurrentPinballGame->unk13BC[r3]; 
+
+    unk13BC->unk5 = gUnknown_086ACDB8[r1 + (unk13BC->unk2 * 5)];
+    
+    if (0xF & (&gUnknown_02031520.unk68[unk13BC->unk5 * 0x2400])[ix])
+    {
+        *r2 = 0xFFF0 & (&gUnknown_02031520.unk68[unk13BC->unk5 * 0x2400])[ix];
+        if (r3 == 1)
+        {
+            new_var = 0x8000;
+            *r2 = new_var - (*r2);
+        }
+        res = 1;
+    }
+
+    return res;
+}
+
+void sub_14B84(s32 arg0, s16 arg1, struct Vector16* arg2, u16 arg3) 
+{
+    u16 angle;
+    
+    angle = gCurrentPinballGame->unk13BC[arg1].unk5;
+    
+    if (gCurrentPinballGame->unk13BC[arg1].unk8 > 0)
+    {
+        if (gCurrentPinballGame->unk5C == 0)
+        {
+            u16 var0;
+            s32 scale;
+            s16 temp_r2;
+            s16 temp_r5;
+
+            temp_r2 = gCurrentPinballGame->unk13BC[arg1].unk5;
+            temp_r5 = (temp_r2 - 2) * 25;
+            arg0 -= temp_r5;
+
+            if (arg0 < 2850)
+            {
+                var0 = 0x4800 - (arg0 - 2600) * 2048 / 600;
+                scale = (arg0 - 2600) * 128 / 300 + 120;
+            }
+            else
+            {
+                var0 =
+                    gUnknown_086ACE2C[temp_r2][0] -
+                    ((gUnknown_086ACE2C[temp_r2][1] * (arg0 -2600)) / 5400);
+                scale = ((arg0 -2600) * 348 / 5400) + 406;
+            }
+
+            if (arg1)
+                var0 = 0x8000 - var0;
+
+            angle = (gCurrentPinballGame->ball->velocity.x * -0x600) / 0x80 +
+                    (gCurrentPinballGame->ball->unk8 * -0x180) / 0x100 +
+                    var0;
+            gCurrentPinballGame->unk60.x = scale * Cos(angle) / 20000;
+            gCurrentPinballGame->unk60.y = -scale * Sin(angle) / 20000;
+        }
+
+        gCurrentPinballGame->unk5C = 1;
+
+        if (arg1)
+            arg2->x = -gCurrentPinballGame->unk60.x;
+        else
+            arg2->x = gCurrentPinballGame->unk60.x;
+
+        arg2->y = gCurrentPinballGame->unk60.y;
+    }
+    else
+    {
+        struct Vector16 vec1;
+        s32 scale;
+        u16 angle2;
+
+        scale = arg0 / 20;
+        vec1.x = scale * Cos(arg3) / 20000;
+        vec1.y = -(scale * Sin(arg3)) / 20000;
+
+        arg2->x = vec1.x + arg2->x * 3 / 2;
+        arg2->y = vec1.y + arg2->y * 3 / 2;
+
+        angle2 = ArcTan2(arg2->x, -arg2->y);
+        arg2->x = scale * Cos(angle2) / 20000;
+        arg2->y = -scale * Sin(angle2) / 20000;
     }
 }
