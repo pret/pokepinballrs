@@ -82,7 +82,7 @@ struct BallState
     /*0x02*/ u8 filler2[0x2];
     /*0x04*/ u16 unk4;
     /*0x06*/ s16 unk6;
-    /*0x08*/ u16 unk8;
+    /*0x08*/ s16 unk8;
     /*0x0A*/ u16 unkA;
     /*0x0C*/ u16 unkC;
     /*0x0E*/ u16 unkE;
@@ -893,7 +893,7 @@ struct Unk02031520
     /*0x0C*/ struct PinballGame *unkC;
     /*0x10*/ struct Unk02031520_unk10 *unk10;
     /*0x14*/ struct Unk02031520_unk14 unk14;
-    /*0x68*/ const u8 *unk68;
+    /*0x68*/ const u16 *unk68;
 };
 
 struct Unk086ACE8C
