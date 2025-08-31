@@ -112,7 +112,7 @@ void sub_2E094(void)
                 if (gCurrentPinballGame->unk60A == 7)
                 {
                     gCurrentPinballGame->area =  gUnknown_08055A68[gMain.selectedField][gCurrentPinballGame->unk32];
-                    gCurrentPinballGame->unk6D9 = gUnknown_08137928[gCurrentPinballGame->area];
+                    gCurrentPinballGame->unk6D9[0] = gUnknown_08137928[gCurrentPinballGame->area];
                     sub_1C7F4(0, 0);
                 }
 

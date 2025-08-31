@@ -1117,8 +1117,8 @@ void sub_29D9C(void)
         gCurrentPinballGame->unk6EA++;
 
     gCurrentPinballGame->unk6EB = 1;
-    gCurrentPinballGame->unk6EC = gCurrentPinballGame->unk6F8[0];
-    gCurrentPinballGame->unk6ED = gCurrentPinballGame->unk6F8[1];
+    gCurrentPinballGame->unk6EC[0] = gCurrentPinballGame->unk6F8[0];
+    gCurrentPinballGame->unk6EC[1] = gCurrentPinballGame->unk6F8[1];
     sub_1C7F4(2, 0);
     sub_1C7F4(2, 1);
 }
@@ -1133,7 +1133,7 @@ void sub_2A054(void)
             {
                 gCurrentPinballGame->unk378 = 2;
                 if (gCurrentPinballGame->unk6E0 < 17)
-                    gCurrentPinballGame->unk6ED = gCurrentPinballGame->unk6EC;
+                    gCurrentPinballGame->unk6EC[1] = gCurrentPinballGame->unk6EC[0];
 
                 gCurrentPinballGame->unk6E8 = 1;
                 gCurrentPinballGame->unk6F2 = 40;
@@ -1201,9 +1201,9 @@ void sub_2A054(void)
 
     if (gCurrentPinballGame->unk6F0 == 0)
     {
-        gCurrentPinballGame->unk6EC = gCurrentPinballGame->unk6ED;
+        gCurrentPinballGame->unk6EC[0] = gCurrentPinballGame->unk6EC[1];
         sub_1C7F4(2, 0);
-        gCurrentPinballGame->unk6DC = gCurrentPinballGame->unk6EC;
+        gCurrentPinballGame->unk6DC = gCurrentPinballGame->unk6EC[0];
     }
 
     if (gCurrentPinballGame->unk6F0 == 1)
@@ -1213,7 +1213,7 @@ void sub_2A054(void)
         else
             gCurrentPinballGame->unk6EB = 0;
 
-        gCurrentPinballGame->unk6ED = gCurrentPinballGame->unk6F8[gCurrentPinballGame->unk6EB];
+        gCurrentPinballGame->unk6EC[1] = gCurrentPinballGame->unk6F8[gCurrentPinballGame->unk6EB];
         sub_1C7F4(2, 1);
         MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F45C);
     }

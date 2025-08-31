@@ -744,8 +744,7 @@ struct PinballGame
     /*0x6CC*/ s8 unk6CC;
     /*0x6CD*/ u8 unk6CD[6];
     /*0x6D3*/ u8 unk6D3[6];
-    /*0x6D9*/ u8 unk6D9;
-    /*0x6D9*/ u8 unk6DA;
+    /*0x6D9*/ s8 unk6D9[2];
     /*0x6DB*/ u8 unk6DB;
     /*0x6DC*/ u8 unk6DC;
     /*0x6DD*/ s8 unk6DD;
@@ -757,8 +756,7 @@ struct PinballGame
     /*0x6E9*/ s8 unk6E9;
     /*0x6EA*/ s8 unk6EA;
     /*0x6EB*/ s8 unk6EB;
-    /*0x6EC*/ s8 unk6EC;
-    /*0x6ED*/ s8 unk6ED;
+    /*0x6EC*/ s8 unk6EC[2];
     /*0x6EE*/ u16 unk6EE;
     /*0x6F0*/ u16 unk6F0;
     /*0x6F2*/ u16 unk6F2;
@@ -806,9 +804,9 @@ struct PinballGame
     /*0x740*/ u8 unk740;
     /*0x741*/ u8 filler741[0x5];
     /*0x746*/ u8 unk746;
-    /*0x747*/ u8 filler747[0x2];
-    /*0x749*/ u8 unk749;
-    /*0x74A*/ u8 filler74A[0x2];
+    /*0x747*/ u8 unk747[2];
+    /*0x749*/ u8 unk749[2];
+    /*0x74B*/ u8 filler74B[0x1];
     /*0x74C*/ volatile u8 unk74C[2][OBJ_PLTT_SIZE];
     /*0xB4C*/ volatile u8 unkB4C[2][BG_PLTT_SIZE];
     /*0xF4C*/ struct SongHeader *unkF4C;
@@ -958,12 +956,7 @@ extern u8 gUnknown_081B8984[];
 extern u8 gUnknown_081B8784[];
 extern u8 gUnknown_081B4584[];
 extern u8 gUnknown_081B4784[];
-struct Unk86AD000
-{
-    u8 filler0[0x6];
-    u16 unk6;
-};
-extern const struct Unk86AD000 gUnknown_086AD000[];
+extern const u16 gUnknown_086AD000[][4];
 extern u32 gUnknown_086AD50C[];
 
 #endif // GUARD_GLOBAL_H
