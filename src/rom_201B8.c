@@ -39,6 +39,118 @@ extern struct SongHeader gUnknown_0869F240;
 extern struct SongHeader gUnknown_086A0F30;
 
 
+void sub_1D128(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    s16 baseX;
+    s16 var1;
+    s16 var2;
+
+    if (gCurrentPinballGame->unk6C4 == 3)
+    {
+        baseX = 0;
+        var1 = 180;
+        var2 = 180;
+    }
+    else if (gCurrentPinballGame->unk6C4 == 2)
+    {
+        if (gMain.unk2A < 20)
+        {
+            var1 = 180;
+            var2 = 180;
+        }
+        else
+        {
+            var1 = 88 + gCurrentPinballGame->unk6E0;
+            var2 = 88;
+        }
+
+        baseX = 48;
+    }
+    else
+    {
+        baseX = 96 - gCurrentPinballGame->unk58;
+        var1 = gCurrentPinballGame->unk6E0 + 300u - gCurrentPinballGame->unk5A;
+        var2 = 300 - gCurrentPinballGame->unk5A;
+    }
+
+    group = gMain.unk44[22];
+    group->baseX = baseX;
+    group->baseY = var1;
+    gCurrentPinballGame->unk6E4.x = baseX;
+    gCurrentPinballGame->unk6E4.y = group->baseY;
+    if (group->baseY >= 200)
+        group->baseY = 200;
+
+    for (i = 0; i < 6; i++)
+    {
+        oamSimple = &group->oam[i];
+        gOamBuffer[oamSimple->oamId].paletteNum = gCurrentPinballGame->unk6D3[i];
+        gOamBuffer[oamSimple->oamId].priority = gCurrentPinballGame->unk6DB;
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+    }
+
+    if (gCurrentPinballGame->unk6C4 == 1)
+    {
+        group = gMain.unk44[23];
+        group->baseX = baseX;
+        group->baseY = var1 - 0x20;
+        if (group->baseY >= 180)
+            group->baseY = 180;
+
+        for (i = 0; i < 6; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].paletteNum = 12;
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+
+        group = gMain.unk44[20];
+        group->baseX = baseX;
+        group->baseY = 267 - gCurrentPinballGame->unk5A;
+        if (group->baseY >= 200)
+            group->baseY = 200;
+
+        for (i = 0; i < 6; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+
+        group = gMain.unk44[21];
+        group->baseX = baseX;
+        group->baseY = 333 - gCurrentPinballGame->unk5A;
+        if (group->baseY >= 200)
+            group->baseY = 200;
+
+        for (i = 0; i < 6; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+    }
+
+    group = gMain.unk44[19];
+    group->baseX = baseX - 8;
+    group->baseY = var2 - 8;
+    if (group->baseY >= 200)
+        group->baseY = 200;
+
+    for (i = 0; i < 6; i++)
+    {
+        oamSimple = &group->oam[i];
+        gOamBuffer[oamSimple->oamId].priority = gCurrentPinballGame->unk6DB;
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+    }
+}
+
 void sub_1D4D0(void)
 {
     s16 i;
