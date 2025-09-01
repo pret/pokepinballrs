@@ -49,6 +49,36 @@ extern const u8 gUnknown_083C076C[][0x1C0];
 extern u8 gUnknown_020028A8[][3];
 
 
+void sub_2CD98(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+
+    group = gMain.unk44[10];
+    if (group->available)
+    {
+        group->baseX = gCurrentPinballGame->unk16A;
+        group->baseY = 44;
+        for (i = 0; i < 7; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+    }
+
+    if (gCurrentPinballGame->unkF4 > 0)
+    {
+        if (gCurrentPinballGame->unkF4 == 120)
+            gMain.unk44[10]->available = 1;
+
+        gCurrentPinballGame->unk16A = 270 - ((120 - gCurrentPinballGame->unkF4) * 3);
+        if (gCurrentPinballGame->unkF4 == 1)
+            gMain.unk44[10]->available = 0;
+    }
+}
+
 void sub_2CE80(void)
 {
     if (gCurrentPinballGame->unk68 < 170)
