@@ -350,7 +350,7 @@ struct PinballGame
     /*0x283*/ u8 numCompletedBonusStages;
     /*0x284*/ s8 unk284; // Bonus Field to transition to?
     /*0x285*/ u8 filler285[0x1];
-    /*0x286*/ s16 unk286;
+    /*0x286*/ u16 unk286;
     /*0x288*/ s16 unk288;
     /*0x28A*/ s16 unk28A;
     /*0x28C*/ u8 filler28C[0x4];
