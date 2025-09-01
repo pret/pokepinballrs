@@ -233,7 +233,8 @@ struct PinballGame
     /*0x130*/ s16 speciesWeights[25]; // Weight of each species
     /*0x162*/ s8 unk162;
     /*0x163*/ u8 unk163;
-    /*0x164*/ u8 filler164[0x2];
+    /*0x164*/ u8 filler164[0x1];
+    /*0x165*/ u8 unk165;
     /*0x166*/ u16 unk166;
     /*0x168*/ u8 filler168[0x4];
     /*0x16C*/ s8 unk16C;
@@ -262,7 +263,7 @@ struct PinballGame
     /*0x1A8*/ s8 unk1A8;
     /*0x1A9*/ u8 unk1A9;
     /*0x1AA*/ s8 unk1AA;
-    /*0x1AB*/ u8 unk1AB;
+    /*0x1AB*/ s8 unk1AB;
     /*0x1AC*/ s8 unk1AC;
     /*0x1AD*/ s8 unk1AD;
     /*0x1AE*/ u8 unk1AE;
@@ -673,7 +674,7 @@ struct PinballGame
     /*0x5AA*/ u16 unk5AA;
     /*0x5AC*/ s32 unk5AC;
     /*0x5B0*/ u16 unk5B0;
-    /*0x5B2*/ u8 unk5B2;
+    /*0x5B2*/ s8 unk5B2;
     /*0x5B3*/ u8 filler5B3[0x6];
     /*0x5B9*/ s8 unk5B9[6];
     /*0x5BF*/ u8 filler5BF[0x1];
@@ -794,7 +795,8 @@ struct PinballGame
     /*0x72F*/ s8 unk72F;
     /*0x730*/ s8 unk730;
     /*0x731*/ s8 unk731;
-    /*0x732*/ u8 filler732[0x2];
+    /*0x732*/ s8 unk732;
+    /*0x733*/ u8 filler733[0x1];
     /*0x734*/ s16 unk734;
     /*0x736*/ s8 unk736[3];
     /*0x739*/ s8 unk739[3];
