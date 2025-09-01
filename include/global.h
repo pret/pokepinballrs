@@ -232,11 +232,12 @@ struct PinballGame
     /*0x12E*/ s16 totalWeight;       // Added weight of all possible mons in area
     /*0x130*/ s16 speciesWeights[25]; // Weight of each species
     /*0x162*/ s8 unk162;
-    /*0x163*/ u8 unk163;
+    /*0x163*/ s8 unk163;
     /*0x164*/ s8 unk164;
-    /*0x165*/ u8 unk165;
+    /*0x165*/ s8 unk165;
     /*0x166*/ u16 unk166;
-    /*0x168*/ u8 filler168[0x4];
+    /*0x168*/ u16 unk168;
+    /*0x16A*/ u8 filler16A[0x2];
     /*0x16C*/ s8 unk16C;
     /*0x16D*/ u8 filler16D[0x1];
     /*0x16E*/ s8 unk16E;
