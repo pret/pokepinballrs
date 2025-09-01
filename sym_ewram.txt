@@ -69,9 +69,7 @@ gUnknown_020028A4: @ 0x20028A4
 gUnknown_020028A5: @ 0x20028A5
 	.space 0x3
 gUnknown_020028A8: @ 0x020028A8
-	.space 0x2
-gUnknown_020028AA: @ 0x020028AA
-	.space 0x2E
+	.space 0x30
 CurrentBoardProcPairs_020028D8: @ 0x020028D8
 	.space 0x48
 gOptionsData: @ 0x02002920

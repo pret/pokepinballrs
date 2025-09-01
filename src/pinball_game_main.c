@@ -50,7 +50,7 @@ extern const u8 gUnknown_08526DCC[];
 extern const s16 gUnknown_086ACFE0[];
 extern const u16 gUnknown_086AD2DE[];
 extern const u8 *gUnknown_086AD474[];
-extern const s16 gUnknown_086AD2EE[][4];
+extern const u16 gUnknown_086AD2EE[][4];
 extern const s16 gUnknown_086AD456[][7];
 extern const u8 gUnknown_084FB68C[][0x480];
 extern const u8 gUnknown_083C3C2C[][0x300];
@@ -71,13 +71,6 @@ extern const u8 gUnknown_081408B4[0x2000];
 extern const u8 gUnknown_084AA18C[0x860];
 extern const u8 gUnknown_084B77EC[0x800];
 
-struct Unk86AD000
-{
-    u8 filler0[0x6];
-    u16 unk6;
-};
-
-extern const struct Unk86AD000 gUnknown_086AD000[];
 extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gUnknown_084C0C6C[];
 extern u8 *gMonPortraitGroupGfx[];
@@ -1195,7 +1188,7 @@ void sub_4BC34(void)
 {
     s16 i;
     struct PokemonSpecies *species;
-    const struct Unk86AD000 *var1;
+    const u16 *var1;
     s16 var2, var3;
 
     switch (gMain.selectedField)
@@ -1334,10 +1327,10 @@ void sub_4BC34(void)
         DmaCopy16(3, gUnknown_084F61EC, (void *)0x6015C00, 0x940);
         if (gCurrentPinballGame->unk1A5 == 0)
         {
-            var1 = &gUnknown_086AD000[gUnknown_086AD2DE[gCurrentPinballGame->unk1A6]];
-            var2 = var1->unk6 / 10;
+            var1 = gUnknown_086AD000[gUnknown_086AD2DE[gCurrentPinballGame->unk1A6]];
+            var2 = var1[3] / 10;
             DmaCopy16(3, gUnknown_08480E0C[var2], (void *)0x6015DA0, 0x40);
-            var3 = var1->unk6 % 10;
+            var3 = var1[3] % 10;
             DmaCopy16(3, gUnknown_08480E0C[var3], (void *)0x6015E60, 0x40);
         }
         break;
@@ -2074,7 +2067,7 @@ void sub_4CB30(void)
     DmaCopy16(3, gUnknown_0813C874, (void *)0x6015800, 0x2000);
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
         (void *)0x6010CA0,
         0x300
     );
@@ -2093,7 +2086,7 @@ void sub_4CBB4(void)
 
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
         (void *)0x6010CA0,
         0x300
     );
@@ -2124,7 +2117,7 @@ void sub_4CC58(void)
 
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
         (void *)0x6010CA0,
         0x300
     );
