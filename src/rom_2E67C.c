@@ -43,9 +43,38 @@ extern const u8 gUnknown_0815A6A4[];
 extern const u16 gUnknown_086B4112[][12];
 extern const u8 gUnknown_083A562C[];
 extern const u8 gUnknown_083A6E4C[];
+extern const s16 gUnknown_086AE344[][2];
+extern const u8 gUnknown_083C076C[][0x1C0];
 
 extern u8 gUnknown_020028A8[][3];
 
+
+void sub_2D104(void)
+{
+    s16 i;
+    struct SpriteGroup *group;
+    struct OamDataSimple *oamSimple;
+    s16 index;
+
+    group = gMain.unk44[44];
+    if (group->available)
+    {
+        if (gCurrentPinballGame->unk164 == 0)
+            index = (gCurrentPinballGame->unk290 % 30) / 15;
+        else
+            index = gUnknown_086AE344[gCurrentPinballGame->unk164][0];
+
+        DmaCopy16(3, gUnknown_083C076C[index], (void *)0x060120E0, 0x1C0);
+        group->baseX = 231 - gCurrentPinballGame->unk58;
+        group->baseY = 376 - gCurrentPinballGame->unk5A;
+        for (i = 0; i < 3; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+    }
+}
 
 void sub_2D204(void)
 {

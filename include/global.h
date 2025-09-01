@@ -233,7 +233,7 @@ struct PinballGame
     /*0x130*/ s16 speciesWeights[25]; // Weight of each species
     /*0x162*/ s8 unk162;
     /*0x163*/ u8 unk163;
-    /*0x164*/ u8 filler164[0x1];
+    /*0x164*/ s8 unk164;
     /*0x165*/ u8 unk165;
     /*0x166*/ u16 unk166;
     /*0x168*/ u8 filler168[0x4];
