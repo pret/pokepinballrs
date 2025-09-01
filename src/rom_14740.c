@@ -3,9 +3,15 @@
 #include "m4a.h"
 #include "constants/bg_music.h"
 
+extern const u16 gUnknown_08252B10[];
+extern const u16 gUnknown_08254B10[];
+extern const u16 gUnknown_08257390[];
+extern const u16 gUnknown_08259C10[];
+
 extern u8 gUnknown_0839A28C[];
 extern u16 gUnknown_086ACE2C[][2];
 extern s8 gUnknown_086ACDB8[];
+
 
 
 u16 sub_14740(struct Vector16 *arg0, u16 *arg1)
@@ -349,4 +355,160 @@ s16 COLLISION_CHECK_RUBY_14E08(struct Vector16 *arg0, u16* arg1) {
     sub_153CC((s32) some_enum, &return_val, arg1);
 
     return return_val;
+}
+
+
+void sub_15054(struct Vector16* arg0, u16* arg1, u8* arg2) 
+{
+    s16 deltaX;
+    s16 deltaY;
+    u16 maskedResult;
+    u8 lowerNibble;
+    s32 ix;
+
+    maskedResult = 0;
+    lowerNibble = 0;
+    ix = 0;
+    
+    if (gCurrentPinballGame->unk5B2 == 0)
+    {
+        if (gCurrentPinballGame->unk24 != 0)
+            return;
+
+        if (gCurrentPinballGame->unk2A4 != 0) 
+        {
+            if (gCurrentPinballGame->unk2A3 == 0)
+                return;
+            
+            deltaX = arg0->x + gCurrentPinballGame->unk184[0].x;
+            deltaY = arg0->y + gCurrentPinballGame->unk184[0].y;
+            
+            if (deltaX > 79U)
+                return;
+            
+            if (deltaY > 87U)
+                return;
+            
+            maskedResult = 0xFFF0 & gUnknown_08259C10[(deltaY * 80) + deltaX];
+            lowerNibble = 0xF & gUnknown_08259C10[(deltaY * 80) + deltaX];
+            
+            if (lowerNibble == 0)
+                return;
+            
+            *arg1 = maskedResult;
+            
+            if (gCurrentPinballGame->unk2A2 <= 1)
+            {
+                *arg2 = lowerNibble;
+                gCurrentPinballGame->unk2A2 = 7;
+                return;
+            }
+            
+            *arg2 = 1;
+            return;
+        }
+        
+        if (0xF & *arg2)
+            return;
+        
+        deltaX = arg0->x + (u16) gCurrentPinballGame->unk184[0].x;
+        deltaY = arg0->y + (u16) gCurrentPinballGame->unk184[0].y;
+        
+        if (deltaX <= 63U && deltaY <= 63U) 
+        {
+            maskedResult = 0xFFF0 & gUnknown_08252B10[(deltaY * 64) + deltaX];
+            lowerNibble = 0xF & gUnknown_08252B10[(deltaY * 64) + deltaX];
+            
+            if (lowerNibble != 0)
+                ix = 0;
+        }
+        
+        if (lowerNibble == 0) 
+        {
+            deltaX = gCurrentPinballGame->unk184[1].x + arg0->x;
+            deltaY = gCurrentPinballGame->unk184[1].y + arg0->y;
+            
+            if (deltaX <= 63U && deltaY <= 63U) 
+            {
+                maskedResult = 0xFFF0 & gUnknown_08252B10[(deltaY * 64) + deltaX];
+                lowerNibble = 0xF & gUnknown_08252B10[(deltaY * 64) + deltaX];
+                if (lowerNibble != 0)
+                    ix = 1;
+            }
+            
+            if (lowerNibble == 0) 
+            {
+                deltaX = gCurrentPinballGame->unk184[2].x + arg0->x;
+                deltaY = gCurrentPinballGame->unk184[2].y + arg0->y;
+                
+                if (deltaX <= 63U && deltaY <= 63U) 
+                {
+                    maskedResult = 0xFFF0 & gUnknown_08252B10[(deltaY * 64) + deltaX];
+                    lowerNibble = 0xF & gUnknown_08252B10[(deltaY * 64) + deltaX];
+                    
+                    if (lowerNibble == 0)
+                        return;
+                    
+                    ix = 2;
+                }
+                
+                if (lowerNibble == 0)
+                    return;
+            }
+        }
+
+        if (gCurrentPinballGame->unk16F == 0)
+            gCurrentPinballGame->unk170[ix] = 107;        
+        
+        *arg1 = maskedResult;
+        *arg2 = lowerNibble;
+        
+        if (gCurrentPinballGame->unk624 > 0)
+            return;
+        
+        gCurrentPinballGame->unk624 = 2;
+    }
+    else 
+    {
+        if ((*arg2 & 0xF) == 0) 
+        {
+            if (gCurrentPinballGame->unk2E5[0] > 0) 
+            {
+                s16 deltaY_alt;
+                deltaX = 2 * (-24 -gCurrentPinballGame->unk2EC[0]) + arg0->x;
+                deltaY_alt = arg0->y -580;
+                
+                if (deltaX <= 71U && deltaY_alt <= 71U) 
+                {
+                    *arg1 = 0xFFF0 & gUnknown_08254B10[(deltaY_alt * 72) + deltaX];
+                    *arg2 = 0xF & gUnknown_08254B10[(deltaY_alt * 72) + deltaX];
+                    
+                    if (*arg2 & 1) 
+                    {
+                        gCurrentPinballGame->unk2E2 = 1;
+                        *arg2 = 6;
+                    }
+                }
+            }
+            
+            if (gCurrentPinballGame->unk2E5[1] > 0) 
+            {
+                deltaX = ((gCurrentPinballGame->unk2EC[1] - 180) * 2) + arg0->x;
+                deltaY = arg0->y -580;
+                
+                if (deltaX <= 71U && deltaY <= 71U) 
+                {
+                    *arg1 = 0xFFF0 & gUnknown_08257390[(deltaY * 72) + deltaX];
+                    *arg2 = 0xF & gUnknown_08257390[(deltaY * 72) + deltaX];
+                    
+                    if (*arg2 & 1) 
+                    {
+                        gCurrentPinballGame->unk2E2 = 2;
+                        *arg2 = 6;
+                        return;
+                    }
+                }
+            }
+        }
+    }
 }

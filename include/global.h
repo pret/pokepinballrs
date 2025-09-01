@@ -673,7 +673,7 @@ struct PinballGame
     /*0x5AA*/ u16 unk5AA;
     /*0x5AC*/ s32 unk5AC;
     /*0x5B0*/ u16 unk5B0;
-    /*0x5B2*/ u8 unk5B2;
+    /*0x5B2*/ s8 unk5B2;
     /*0x5B3*/ u8 filler5B3[0x6];
     /*0x5B9*/ s8 unk5B9[6];
     /*0x5BF*/ u8 filler5BF[0x1];
