@@ -3,7 +3,6 @@
 #include "m4a.h"
 #include "constants/bg_music.h"
 
-extern const u16 gUnknown_08252B10[];
 extern const u16 gUnknown_08254B10[];
 extern const u16 gUnknown_08257390[];
 extern const u16 gUnknown_08259C10[];
