@@ -612,14 +612,14 @@ void sub_1B140(s16 arg0)
             if (JOY_NEW(A_BUTTON) && gCurrentPinballGame->unk6DD == 0)
             {
                 s16 var_r3;
-                const struct Unk86AD000 *struct0 = &gUnknown_086AD000[gCurrentPinballGame->unk1A7];
+                const u16 *arr = gUnknown_086AD000[gCurrentPinballGame->unk1A7];
 
                 if (gUnknown_086AD2DE[gCurrentPinballGame->unk1A6] == 3 && gCurrentPinballGame->outLanePikaPosition == 2)
                     var_r3 = 999;
                 else if (gUnknown_086AD2DE[gCurrentPinballGame->unk1A6] == 4 && gCurrentPinballGame->unk1AF)
                     var_r3 = 999;
                 else
-                    var_r3 = struct0->unk6;
+                    var_r3 = arr[3];
 
                 if (gCurrentPinballGame->coins >= var_r3)
                 {
