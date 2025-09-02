@@ -1,7 +1,204 @@
 #include "global.h"
 #include "main.h"
 
-void sub_17634(u8 arg0)
+
+s16 COLLISION_CHECK_DUSCLOPS_171C8(struct Vector16* arg0, u16* arg1) {
+    struct Vector16 vec1;
+    struct Vector16 vec2;
+    u16 sp00;
+    u8 sp02;
+    u16 return_val;
+    s16 unk0;
+    s32 unk1;
+    s32 unk2;
+
+    u32 some_enum;
+    u32 switch_enum;
+
+    return_val = 0;
+    gCurrentPinballGame->ball->unk4 = 0;
+    
+    vec1.x = arg0->x / 8;
+    vec1.y = arg0->y / 8;
+    vec2.x = arg0->x % 8;
+    vec2.y = arg0->y % 8;
+    unk1 = vec1.y / 64;
+    unk2 = gCurrentPinballGame->unk24;
+    vec1.y %= 64;
+    unk0 = gUnknown_02031520.unk14.unk38[unk2 + unk1][vec1.y * 64 + vec1.x];
+    sp00 = gUnknown_02031520.unk14.unk48[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+    sp02 = gUnknown_02031520.unk14.unk58[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+
+    sub_173FC(arg0, &sp00, &sp02);
+    switch_enum = sp02 & 0xF;
+    some_enum = sp02 >> 4;
+
+    switch (switch_enum)
+    {
+    case 1:
+    case 4:
+    case 6:
+        gCurrentPinballGame->unk23 = switch_enum - 1;
+        gCurrentPinballGame->unk22 = 1;
+        *arg1 = sp00;
+        if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
+        {
+            if (gCurrentPinballGame->ball->positionQ0.x < gUnknown_02031520.unk14.unk26 - 8 ||
+                gCurrentPinballGame->ball->positionQ0.y < gUnknown_02031520.unk14.unk28 - 8)
+            {
+
+                if (gCurrentPinballGame->ball->unk6 > 0)
+                {
+                    *arg1 = 0x3E00;
+                }
+                else if (gCurrentPinballGame->ball->unk6 != 0)
+                {
+                    *arg1 = 0x4100;
+                }
+                else
+                {
+                    if (gMain.systemFrameCount & 1)
+                    {
+                        gCurrentPinballGame->ball->unk4 = 0x28;
+                        gCurrentPinballGame->ball->unk6 = 1;
+                        *arg1 = 0x3E00;
+                    }
+                    else
+                    {
+                        gCurrentPinballGame->ball->unk4 = 0xFFD8;
+                        gCurrentPinballGame->ball->unk6 = 0xFFFF;
+                        *arg1 = 0x4100;
+                    }
+                }
+
+            }
+        }
+        return_val = 1;
+        break;
+    case 2:
+    case 3:
+        gCurrentPinballGame->unk23 = switch_enum - 1;
+        gCurrentPinballGame->unk22 = 2;
+        *arg1 = sp00 & 0x0000FFF0;
+        return_val = 1;
+        break;
+    case 5:
+        some_enum = 4;
+        break;
+    }
+
+    sub_17634(some_enum, &return_val, arg1);
+    return return_val;
+}
+
+void sub_173FC(struct Vector16 *arg0, s16* arg1, u8* arg2) {
+    s16 deltaX;
+    s16 deltaY;
+    u16 maskedResult;
+    u8 lowerNibble;
+    u8 temp;
+
+    maskedResult = 0;
+    lowerNibble = 0;
+    
+    if(gCurrentPinballGame->unk387 == 2) 
+    {
+        if (*arg2 != 0)
+            return;
+        
+        deltaX = arg0->x -gCurrentPinballGame->unk3F0;
+        deltaY = arg0->y -gCurrentPinballGame->unk3F2;
+        
+        if (deltaX > 95U || deltaY > 119U) 
+            return;
+        
+        maskedResult = 0xFFF0 & gUnknown_083071D4[(deltaY * 96 ) + deltaX]; 
+        lowerNibble = 0xF & gUnknown_083071D4[(deltaY * 96 ) + deltaX];
+        
+        if (lowerNibble == 0) 
+            return;
+
+        temp = gCurrentPinballGame->unk3DC -3; 
+        if (temp <= 1U) 
+            *arg2 = 1;
+        else
+            *arg2 = lowerNibble;
+        
+        gCurrentPinballGame->unk3DC = 4;
+        *arg1 = maskedResult;
+        
+        return;
+    }
+    
+    if(gCurrentPinballGame->unk387 == 1)
+    {
+        if (*arg2 != 0)
+            return;
+        
+        if (gCurrentPinballGame->unk3A9[0] != 0) 
+        {
+            deltaX = arg0->x - gCurrentPinballGame->unk3D0[0].x;
+            deltaY = arg0->y - gCurrentPinballGame->unk3D0[0].y;
+            
+            if (deltaX < 64U && deltaY < 64U) 
+            {
+                maskedResult = 0xFFF0 & gUnknown_08252B10[deltaY * 64 + deltaX];
+                lowerNibble = 0xF & gUnknown_08252B10[deltaY * 64 + deltaX];
+                
+                if (lowerNibble != 0)
+                    gCurrentPinballGame->unk3A0[0] = 4;
+            }
+        }
+        
+        if (lowerNibble == 0)
+        {
+            if (gCurrentPinballGame->unk3A9[1] != 0)
+            {
+                deltaX = arg0->x - gCurrentPinballGame->unk3D0[1].x;
+                deltaY = arg0->y - gCurrentPinballGame->unk3D0[1].y;
+                
+                if (deltaX < 64U && deltaY < 64U)
+                {
+                    maskedResult = 0xFFF0 & gUnknown_08252B10[deltaY * 64 + deltaX];
+                    lowerNibble = 0xF & gUnknown_08252B10[deltaY * 64 + deltaX];
+                    
+                    if (lowerNibble != 0)
+                        gCurrentPinballGame->unk3A0[1] = 4;
+                }
+            }
+        }
+        
+        if (lowerNibble == 0)
+        {
+            if ( gCurrentPinballGame->unk3A9[2] != 0)
+            {
+                deltaX = arg0->x - gCurrentPinballGame->unk3D0[2].x;
+                deltaY = arg0->y - gCurrentPinballGame->unk3D0[2].y;
+
+                if (deltaX < 64U && deltaY < 64U)
+                {
+                    maskedResult = 0xFFF0 & gUnknown_08252B10[deltaY * 64 + deltaX];
+                    lowerNibble = 0xF & gUnknown_08252B10[deltaY * 64 + deltaX];
+                    
+                    if (lowerNibble != 0)
+                    {
+                        gCurrentPinballGame->unk3A0[2] = 4;
+                    }
+                }
+            } 
+        }
+        
+        if (lowerNibble != 0)
+        {
+            *arg1 = maskedResult;
+            *arg2 = 6;
+        }                    
+        return;
+    }
+}
+
+
+void sub_17634(u8 arg0, u16 *arg1, u16 *arg2)
 {
     switch (arg0)
     {
