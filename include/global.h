@@ -805,7 +805,8 @@ struct PinballGame
     /*0x73D*/ s8 catchModeArrows;   // Affects which encounter table is used per area
     /*0x73E*/ u8 filler73E[0x2];
     /*0x740*/ u8 unk740;
-    /*0x741*/ u8 filler741[0x5];
+    /*0x741*/ u8 filler741[0x3];
+    /*0x744*/ u8 unk744[2];
     /*0x746*/ u8 unk746;
     /*0x747*/ u8 unk747[2];
     /*0x749*/ u8 unk749[2];
@@ -965,4 +966,20 @@ extern u32 gUnknown_086AD50C[];
 extern const u16 gUnknown_08252B10[];
 extern const u16 gUnknown_083071D4[];
 
+
+extern u8 *gMonPortraitGroupGfx[];
+extern u8 *gMonPortraitGroupPals[];
+extern u8 gUnknown_02030760[];
+extern u8 gUnknown_02031060[];
+extern const u8 gUnknown_083A8EEC[][0x300];
+extern const u8 gUnknown_083BB16C[][0x80];
+extern const u8 gUnknown_083BD36C[][0x200];
+extern const u8 gUnknown_0844838C[][0x300];
+extern const u8 gUnknown_0848D68C[][0x300];
+extern const u8 gUnknown_084C00EC[][0x80];
+extern const s8 gUnknown_084C07EC[];
+extern const u8 gUnknown_084FA48C[][0x120];
+extern const u8 gUnknown_084FD18C[][0x200];
+extern const u8 *gUnknown_086AD49C[];
+extern const u16 gUnknown_086AD2EE[][4];
 #endif // GUARD_GLOBAL_H
