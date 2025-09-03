@@ -599,10 +599,9 @@ void sub_14074(u16 arg0, struct Vector32 *arg1, u16 arg2)
     }   
 }
 
-// TODO: Hopefully we can match this properly without "goto" usage in the future...
 u16 sub_14488(struct Vector16* arg0, struct Vector16 arg1) {
-    struct Vector16 r8; 
-    
+    struct Vector16 r8;
+
     u32 toggleShiftMode;
     s16 (*spC)(struct Vector16*, u16*);
     u16 sp0_return;
@@ -616,96 +615,84 @@ u16 sub_14488(struct Vector16* arg0, struct Vector16 arg1) {
         arg1.x = -arg1.x;
     }
 
-    if (arg1.y < 0) 
+    if (arg1.y < 0)
     {
         r8.y = -1;
         arg1.y =  -arg1.y ;
     }
 
-    if (arg1.x  > arg1.y) 
+    if (arg1.x  > arg1.y)
         toggleShiftMode = 0;
-    else 
+    else
         toggleShiftMode = 1;
 
-    
     gCurrentPinballGame->unk22 = 0;
     gCurrentPinballGame->unk23 = 0;
 
     spC = BoardCollisionFuncts_086ACE0C[gMain.selectedField];
-    
-    do{
-        goto Lab_144;
-    
-        Lab_AE:
+
+    do
+    {
+        if(spC(arg0, &sp0_return) != 0)
         {
-            gCurrentPinballGame->unk22 = 0;
-            
-            if (sub_1467C(arg0, &sp0_return) != 0 ||
-                (gCurrentPinballGame->unk5F2 != 0 && sub_14740(arg0, &sp0_return) != 0))
-                goto Lab_1E0;
-        
-            goto Lab_E6;
-        }
-        Lab_E6:
-        {    
-            if (!(arg1.x > 0 || arg1.y > 0))
-                goto Lab_1E0;
-            
-            if (toggleShiftMode == 0) 
-            {
-                arg0->x = r8.x + arg0->x;
-                arg1.x--;
-                if (arg1.y >0)
-                    toggleShiftMode = 1;
-            } 
-            else 
-            {
-                arg0->y = arg0->y + r8.y;
-                arg1.y--;
-                if (arg1.x > 0)
-                    toggleShiftMode = 0;
-            }
-        }
-        Lab_144:
-        {
-            if(spC(arg0, &sp0_return) == 0)
-            {
-                goto Lab_AE;
-            }
-            else if (gCurrentPinballGame->unk22 == 1)
+            if (gCurrentPinballGame->unk22 == 1)
             {
                 if (gCurrentPinballGame->unk23 == 3)
                 {
                     u16 j;
                     u16 sp2_testRes;
                     struct Vector16 sp4_testPos;
-                    
+
                     for(j=0; j < 4; j++)
                     {
                         sp4_testPos.x = arg0->x + gUnknown_086ACE60[j].x;
                         sp4_testPos.y = arg0->y + gUnknown_086ACE60[j].y;
-            
+
                         spC(&sp4_testPos, &sp2_testRes);
+
                         if (gCurrentPinballGame->unk22 == 1 && gCurrentPinballGame->unk23 == 0)
                         {
-                            Lab_9C:
                             arg0->x = sp4_testPos.x;
                             arg0->y = sp4_testPos.y;
                             sp0_return = sp2_testRes;
-                    
+
                             break;
-                        }   
+                        }
                     }
                 }
-                goto Lab_E6;
             }
             else {
                 break;
             }
         }
+        else
+        {
+            gCurrentPinballGame->unk22 = 0;
+
+            if (sub_1467C(arg0, &sp0_return) != 0 ||
+                (gCurrentPinballGame->unk5F2 != 0 && sub_14740(arg0, &sp0_return) != 0))
+                break;
+        }
+
+        if (!(arg1.x > 0 || arg1.y > 0))
+            break;
+
+        if (toggleShiftMode == 0)
+        {
+            arg0->x = r8.x + arg0->x;
+            arg1.x--;
+            if (arg1.y >0)
+                toggleShiftMode = 1;
+        }
+        else
+        {
+            arg0->y = arg0->y + r8.y;
+            arg1.y--;
+            if (arg1.x > 0)
+                toggleShiftMode = 0;
+        }
     } while(1);
-    
-    Lab_1E0:
+
     return sp0_return;
 }
 

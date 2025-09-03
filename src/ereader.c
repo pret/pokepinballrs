@@ -644,48 +644,43 @@ s16 sub_3CD8(void)
     s32 i;
     s32 j;
 
-    if (!(JOY_NEW(A_BUTTON)))
+    if ((JOY_NEW(A_BUTTON)))
     {
-        // TODO I can buy goto end being the actual label, but there is no way they wrote this segment like this
-        goto fakematch;
-    }
-    if (gUnknown_0202A564 == 0)
-    {
-        gUnknown_0202A564 = -1;
-        gUnknown_0202ADE8 = -1;
-        gUnknown_0202A58C = 1;
-
-        fakematch:
-        if (gUnknown_0202A564 == 0) {
-            goto end;
+        if (gUnknown_0202A564 == 0)
+        {
+            gUnknown_0202A564 = -1;
+            gUnknown_0202ADE8 = -1;
+            gUnknown_0202A58C = 1;
         }
     }
 
-    if (gUnknown_02019C20 == 0)
+    if (gUnknown_0202A564 != 0)
     {
-        if (gUnknown_0201A4D0[0][0] == 0xFEDC)
+        if (gUnknown_02019C20 == 0)
         {
-            gUnknown_0202BEEC = gUnknown_0201A4D0[1][0];
-            gUnknown_02019C20 = -1;
-        }
-        else if (gUnknown_0201A4D0[0][1] == 0xFEDC)
-        {
-            gUnknown_0202BEEC = gUnknown_0201A4D0[1][1];
-            gUnknown_02019C20 = -1;
-        }
-    }
-    else
-    {
-        for (i = 0; i < 2; i++)
-        {
-            if (gUnknown_0201A4D0[0][i] == 0xDFDF)
+            if (gUnknown_0201A4D0[0][0] == 0xFEDC)
             {
-                return -1;
+                gUnknown_0202BEEC = gUnknown_0201A4D0[1][0];
+                gUnknown_02019C20 = -1;
+            }
+            else if (gUnknown_0201A4D0[0][1] == 0xFEDC)
+            {
+                gUnknown_0202BEEC = gUnknown_0201A4D0[1][1];
+                gUnknown_02019C20 = -1;
+            }
+        }
+        else
+        {
+            for (i = 0; i < 2; i++)
+            {
+                if (gUnknown_0201A4D0[0][i] == 0xDFDF)
+                {
+                    return -1;
+                }
             }
         }
     }
 
-    end:
     for (i = 0; i < 2; i++)
     {
         for (j = 0; j < 8; j++)
