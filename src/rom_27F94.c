@@ -8,10 +8,8 @@ extern u8 gUnknown_020306D0[];
 extern u8 gUnknown_020306F0;
 extern u8 gUnknown_02030710;
 extern u8 gUnknown_02030730;
-extern u8 gUnknown_02030760[];
 extern struct Unk02031520 gUnknown_02031520;
 extern u8 gUnknown_020315D0[];
-extern u8 gUnknown_02031060[];
 
 
 extern const u8 gUnknown_0839C78C[];

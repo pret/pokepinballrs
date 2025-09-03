@@ -75,8 +75,6 @@ extern const u16 gUnknown_086A5EE2[][51];
 extern const s16 gUnknown_086A6014[][51];
 extern const u16 gUnknown_086A5E12[][4];
 extern s16 gUnknown_086A64F0[];
-extern u8 *gMonPortraitGroupGfx[];
-extern u8 *gMonPortraitGroupPals[];
 
 // The japanese and english text glyphs are sourced from the same blob of tile graphics, and
 // each glyph is two tiles high.

@@ -4,8 +4,6 @@
 #include "constants/fields.h"
 #include "m4a.h"
 
-extern const u8 gUnknown_083BB16C[][0x80];
-extern const u8 gUnknown_083BD36C[][0x200];
 extern const u32 gUnknown_083BF16C[][0x80];
 extern const u32 gUnknown_083BDF6C[][0x80];
 
