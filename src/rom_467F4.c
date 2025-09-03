@@ -17,7 +17,7 @@ extern const struct Unk_86AFCB0 gUnknown_086AFCB0[][2];
 extern u8 gUnknown_020030A0[];
 extern u8 gUnknown_0200FBB0[];
 
-extern const u8 gUnknown_0816C3E4[];
+extern const u16 gUnknown_0816C3E4[];
 extern const u8 gUnknown_081C08E4[];
 extern const u8 gUnknown_081BFEE4[];
 extern const u8 gUnknown_0822E424[];

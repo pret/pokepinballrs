@@ -3,8 +3,6 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
-extern const u8 gUnknown_084FD18C[][0x200];
-extern const u16 gUnknown_086AD2EE[][4];
 extern const u16 gUnknown_086B4D4E[][2][3];
 extern const u16 gUnknown_086AE54A[];
 extern const u8 gUnknown_0844F20C[][0x280];

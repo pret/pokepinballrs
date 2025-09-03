@@ -1,7 +1,699 @@
 #include "global.h"
 #include "main.h"
+#include "m4a.h"
+#include "constants/bg_music.h"
 
-void sub_17634(u8 arg0)
+
+extern u16 gUnknown_086ACE70[];
+
+void sub_1642C(u8 arg0, u16* arg1, u16* arg2) 
+{
+    s16 absVelY; 
+    s16 x0Position;
+    s16 modRes;
+    s16 index;
+    u16 angle;
+    int squaredMagnitude;
+
+    switch (arg0) 
+    {
+    case 1:
+        if (gCurrentPinballGame->unk26 == 0) 
+        {    
+            if (gCurrentPinballGame->ball->positionQ1.x >= 200)
+                gCurrentPinballGame->unk25 = 1;
+            else
+                gCurrentPinballGame->unk25 = 3;
+            
+            sub_32914();
+            gCurrentPinballGame->unk22 = 7;
+            *arg1 = 1;
+        }
+        break;
+    case 2:
+        if (gCurrentPinballGame->unk24 == 0) 
+        {
+            gCurrentPinballGame->ball->unk1 = 2;
+            gCurrentPinballGame->unk24 = 2;
+        }
+        else if (gCurrentPinballGame->unk24 == 2) 
+        {
+            gCurrentPinballGame->ball->unk1 = 2;
+            gCurrentPinballGame->unk24 = 3;
+        }
+        else if (gCurrentPinballGame->unk24 == 3)
+        {
+            gCurrentPinballGame->ball->unk1 = 1;
+        }
+        break;
+    case 3:
+        if (gCurrentPinballGame->unk24 == 2)
+        {
+            gCurrentPinballGame->ball->unk1 = 3;
+            gCurrentPinballGame->unk24 = 0;
+        }
+        else if (gCurrentPinballGame->unk24 == 3)
+        {
+            gCurrentPinballGame->ball->unk1 = 2;
+            gCurrentPinballGame->unk24 = 2;
+        }
+        break;
+    case 4:
+        if (gCurrentPinballGame->unk600 == 0) 
+        {
+            if (gCurrentPinballGame->ball->positionQ0.y < 260) 
+            {
+                if (gCurrentPinballGame->ball->positionQ0.x < 74)
+                {
+                    if (gCurrentPinballGame->unk13 < 3 && gCurrentPinballGame->unk36A[1] < 3)
+                    {
+                        if (gCurrentPinballGame->unk36A[1] == 1)
+                            gCurrentPinballGame->unk36C[1] = 6;
+                        else
+                            gCurrentPinballGame->unk36C[1] = 4;
+                        
+                        gCurrentPinballGame->unk36E[1] = 0;
+                        gCurrentPinballGame->unk36A[1] = 1;
+                        sub_11B0(7);
+                        
+                        gCurrentPinballGame->ball->velocity.x /= 2;
+                        gCurrentPinballGame->ball->velocity.y /= 2;
+                        
+                        memcpy(&gCurrentPinballGame->unk1334[1], &gCurrentPinballGame->unk1334[0], sizeof(*gCurrentPinballGame->unk1334));
+                        
+                        gCurrentPinballGame->unk1330 = &gCurrentPinballGame->unk1334[1];
+                        gCurrentPinballGame->unk1328 = 25;
+                    }
+                } 
+                else if (gCurrentPinballGame->ball->positionQ0.x < 116) 
+                {
+                    if (gCurrentPinballGame->unk13 < 3 && gCurrentPinballGame->unk36A[0] < 3)
+                    {
+                        if (gCurrentPinballGame->unk36A[0] == 1)
+                            gCurrentPinballGame->unk36C[0] = 6;
+                        else
+                            gCurrentPinballGame->unk36C[0] = 4;
+                        
+                        gCurrentPinballGame->unk36E[0] = 0;
+                        gCurrentPinballGame->unk36A[0] = 1;
+
+                        sub_11B0(7);
+
+                        gCurrentPinballGame->ball->velocity.x /= 2;
+                        gCurrentPinballGame->ball->velocity.y /= 2;
+                        
+                        memcpy(&gCurrentPinballGame->unk1334[1], &gCurrentPinballGame->unk1334[0], sizeof(*gCurrentPinballGame->unk1334));
+                        
+                        gCurrentPinballGame->unk1330 = &gCurrentPinballGame->unk1334[1];
+                        gCurrentPinballGame->unk1328 = 25;
+                    }
+                } 
+                else 
+                {
+                    gCurrentPinballGame->unk30C = 1800;
+                    gCurrentPinballGame->unk306 = 1;
+                    
+                    if (gCurrentPinballGame->unk70E < 99)
+                        gCurrentPinballGame->unk70E++;
+
+                    gCurrentPinballGame->unk3C = 5000;
+                }
+            }
+            else 
+            {     
+                if (gCurrentPinballGame->ball->positionQ0.x < 110) 
+                {
+                    gCurrentPinballGame->unk328 = 1;
+                    gCurrentPinballGame->ball->velocity.y /= 2;
+                } 
+                else 
+                {
+                    if (gCurrentPinballGame->unk378 == 0)
+                        gCurrentPinballGame->unk378 = 1;
+                    else
+                        gCurrentPinballGame->unk378 = 0;
+                    
+                    gCurrentPinballGame->ball->velocity.y /=2;
+                    gCurrentPinballGame->unk3C = 3000;
+                }
+            }
+            
+            gCurrentPinballGame->unk600 = 45;
+            m4aSongNumStart(SE_UNKNOWN_0x76);
+        }
+        break;
+    case 5:
+        gCurrentPinballGame->unk165 = 1;
+        gCurrentPinballGame->unk20 = 1;
+        gCurrentPinballGame->unk732 = 0;
+        gCurrentPinballGame->unk342 = 0;
+        break;
+    case 6:
+        if (gCurrentPinballGame->ball->positionQ0.x < 120) 
+        {
+            if (gCurrentPinballGame->ball->velocity.y > 0) 
+            {
+                angle = 0xDA00;
+                squaredMagnitude = 
+                    gCurrentPinballGame->ball->velocity.x * gCurrentPinballGame->ball->velocity.x + 
+                    gCurrentPinballGame->ball->velocity.y * gCurrentPinballGame->ball->velocity.y;
+                
+                squaredMagnitude = Sqrt(squaredMagnitude * 4) / 2;
+                gCurrentPinballGame->ball->velocity.x = squaredMagnitude * Cos(angle) / 20000;
+                gCurrentPinballGame->ball->velocity.y = -squaredMagnitude * Sin(angle) / 20000;
+            }
+        } 
+        else
+            gCurrentPinballGame->unk342 = 1; 
+        break;
+    case 7:
+        if (gCurrentPinballGame->unk366 != 3) 
+        {
+            gCurrentPinballGame->unk368 = 17;
+            gCurrentPinballGame->unk23 = 0;
+            gCurrentPinballGame->unk22 = 2;
+            *arg2 = 0xD800;
+            *arg1 = 1;
+        }
+        break;
+    case 8:
+        x0Position = gCurrentPinballGame->ball->positionQ0.x;
+        if (gCurrentPinballGame->unk24 > 0) 
+        {
+            if (gCurrentPinballGame->unk732 == 7) 
+            {
+                gCurrentPinballGame->unk194 = 10;
+                if (gCurrentPinballGame->unk72B < 3)
+                {
+                    if (gCurrentPinballGame->unk72B == 0)
+                    {
+                        gCurrentPinballGame->unk3C = 2000;
+                        gCurrentPinballGame->unk194 = 1;
+                    } 
+                    else if (gCurrentPinballGame->unk72B == 1)
+                    {
+                        gCurrentPinballGame->unk3C = 5000;
+                        gCurrentPinballGame->unk194 = 5;
+                    }
+                    else
+                    {
+                        gCurrentPinballGame->unk3C = 10000;
+                        gCurrentPinballGame->unk194 = 10;
+                    }
+                    
+                    gCurrentPinballGame->unk72B++;
+                }
+                
+                gCurrentPinballGame->unk196 = 0;
+                gCurrentPinballGame->unk72C = 0;
+            }
+            
+            gCurrentPinballGame->unk732 = 1;
+        }
+        else
+        {
+            if (x0Position <= 72) 
+            {
+                if (gCurrentPinballGame->unk732 == 8) 
+                {
+                    if (gCurrentPinballGame->unk13 < 3 && gCurrentPinballGame->unk72E < 3)
+                    {
+                        if (gCurrentPinballGame->unk72E == 0)
+                            gCurrentPinballGame->unk3C = 2000;
+                        else if (gCurrentPinballGame->unk72E == 1)
+                            gCurrentPinballGame->unk3C = 5000;
+                        else
+                            gCurrentPinballGame->unk3C = 10000;
+                        
+                        gCurrentPinballGame->unk72E++;
+                        m4aSongNumStart(SE_UNKNOWN_0x99);
+                    }
+                    
+                    gCurrentPinballGame->unk6BC = 1;
+                }
+                
+                gCurrentPinballGame->unk732 = 2;
+            }
+            else if (x0Position <= 98) 
+            {
+                if (gCurrentPinballGame->ballPowerUpLight[0] == 0)
+                    gCurrentPinballGame->unk3C = 1000;
+                
+                gCurrentPinballGame->ballPowerUpLight[0] = 1;
+                gCurrentPinballGame->unk732 = 3;
+                
+                if (gCurrentPinballGame->unk71B == 0 && (gCurrentPinballGame->ballPowerUpLight[1] & gCurrentPinballGame->ballPowerUpLight[2]))
+                {   
+                    gCurrentPinballGame->unk71B = 1;
+                    gCurrentPinballGame->unk71C = 60;
+                    gCurrentPinballGame->unk3C = 4000;
+                }
+            }
+            else if (x0Position <= 118) 
+            {
+                if (gCurrentPinballGame->ballPowerUpLight[1] == 0) 
+                    gCurrentPinballGame->unk3C = 1000;
+                
+                gCurrentPinballGame->ballPowerUpLight[1] = 1;
+                gCurrentPinballGame->unk732 = 4;
+                
+                if (gCurrentPinballGame->unk71B == 0 && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[2]))
+                {
+                    gCurrentPinballGame->unk71B = 1;
+                    gCurrentPinballGame->unk71C = 60;
+                    gCurrentPinballGame->unk3C = 4000;
+                }
+            }
+            else if (x0Position <= 146) 
+            {
+                if (gCurrentPinballGame->ballPowerUpLight[2] == 0)
+                    gCurrentPinballGame->unk3C = 1000;
+                
+                gCurrentPinballGame->ballPowerUpLight[2] = 1;
+                gCurrentPinballGame->unk732 = 5;
+                
+                if (gCurrentPinballGame->unk71B == 0 && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[1]))
+                {
+                    gCurrentPinballGame->unk71B = 1;
+                    gCurrentPinballGame->unk71C = 60;
+                    gCurrentPinballGame->unk3C = 4000;
+                }
+            }
+            else
+            {
+                if (gCurrentPinballGame->unk732 == 9) 
+                {
+                    if (gCurrentPinballGame->unk13 <= 2 && gCurrentPinballGame->unk72F < 3) 
+                    {
+                        if (gCurrentPinballGame->unk72F == 0)
+                            gCurrentPinballGame->unk3C = 2000;
+                        else if (gCurrentPinballGame->unk72F == 1)
+                            gCurrentPinballGame->unk3C = 5000;
+                        else
+                            gCurrentPinballGame->unk3C = 10000;
+                        
+                        gCurrentPinballGame->unk72F++;
+                        
+                        if (gCurrentPinballGame->unk1CA == 13)
+                            m4aSongNumStart(SE_UNKNOWN_0x99);
+                        
+                        if (gCurrentPinballGame->unk72F > 1)
+                            gCurrentPinballGame->unk731 = 1;
+                    }
+
+                    gCurrentPinballGame->unk6BC = 2;
+                }
+            
+                gCurrentPinballGame->unk732 = 6;
+            }
+        }
+        break;
+    case 9:
+        x0Position = gCurrentPinballGame->ball->positionQ0.x;
+        if (gCurrentPinballGame->unk24 > 0)
+            gCurrentPinballGame->unk732 = 7;
+        else if (x0Position <= 50)
+            gCurrentPinballGame->unk732 = 8;
+        else
+            gCurrentPinballGame->unk732 = 9;
+        break;
+    case 10:
+        if (gCurrentPinballGame->ball->positionQ0.x <= 46)
+        {
+            gCurrentPinballGame->unk732 = 10;
+            if (gCurrentPinballGame->holeIndicators[0] == 0)
+            {
+                gCurrentPinballGame->unk3C = 1000;
+                gCurrentPinballGame->holeIndicators[0] = 1;
+                if (gCurrentPinballGame->unk714 == 0 && (
+                    gCurrentPinballGame->holeIndicators[1] & 
+                    gCurrentPinballGame->holeIndicators[2] & 
+                    gCurrentPinballGame->holeIndicators[3]))
+                {
+                    gCurrentPinballGame->unk714 = 1;
+                    gCurrentPinballGame->unk715 = 126;
+                    gCurrentPinballGame->unk3C = 4000;
+                }
+            }
+        }
+        else if (gCurrentPinballGame->ball->positionQ0.x <= 120)
+        {
+            gCurrentPinballGame->unk732 = 11;
+            
+            if (gCurrentPinballGame->holeIndicators[1] == 0)
+            {
+                gCurrentPinballGame->unk3C = 1000;
+                gCurrentPinballGame->holeIndicators[1] = 1;                
+                if (gCurrentPinballGame->unk714 == 0 && (
+                    gCurrentPinballGame->holeIndicators[0] & 
+                    gCurrentPinballGame->holeIndicators[2] & 
+                    gCurrentPinballGame->holeIndicators[3]))
+                {
+                    gCurrentPinballGame->unk714 = 1;
+                    gCurrentPinballGame->unk715 = 126;
+                    gCurrentPinballGame->unk3C = 4000;
+                }
+            }
+        }
+        else if (gCurrentPinballGame->ball->positionQ0.x <= 193)
+        {
+            gCurrentPinballGame->unk732 = 12;
+            if (gCurrentPinballGame->holeIndicators[2] == 0)
+            {
+                gCurrentPinballGame->unk3C = 1000;
+                gCurrentPinballGame->holeIndicators[2] = 1;
+                
+                if (gCurrentPinballGame->unk714 == 0 && (
+                    gCurrentPinballGame->holeIndicators[0] & 
+                    gCurrentPinballGame->holeIndicators[1] & 
+                    gCurrentPinballGame->holeIndicators[3]))
+                {
+                    gCurrentPinballGame->unk714 = 1;
+                    gCurrentPinballGame->unk715 = 126;
+                    gCurrentPinballGame->unk3C = 4000;
+                }
+            }
+        }
+        else
+        {
+            gCurrentPinballGame->unk732 = 13;
+            if (gCurrentPinballGame->holeIndicators[3] == 0)
+            {
+                gCurrentPinballGame->unk3C = 1000;
+                gCurrentPinballGame->holeIndicators[3] = 1;
+                if (gCurrentPinballGame->unk714 == 0 && (
+                    gCurrentPinballGame->holeIndicators[0] & 
+                    gCurrentPinballGame->holeIndicators[1] & 
+                    gCurrentPinballGame->holeIndicators[2]))
+                {
+                    gCurrentPinballGame->unk714 = 1;
+                    gCurrentPinballGame->unk715 = 126;
+                    gCurrentPinballGame->unk3C = 4000;
+                }
+            }
+        }
+        break;
+    case 11:
+        if (gCurrentPinballGame->unk1C4 == 0)
+        {
+            if (gCurrentPinballGame->ball->positionQ0.x <= 120)
+                gCurrentPinballGame->unk1C2 = 1;
+            else
+                gCurrentPinballGame->unk1C2 = 2;
+            
+            if (gCurrentPinballGame->outLanePikaPosition < 2)
+            {
+                if (gCurrentPinballGame->outLanePikaPosition == gCurrentPinballGame->unk1C2 - 1)
+                    gCurrentPinballGame->unk1C4 = 120;
+            }
+            else
+            {
+                gCurrentPinballGame->unk1C4 = 120;
+            }
+        }
+        break;
+    case 12:
+        if (gCurrentPinballGame->unk616 == 0)
+        {
+            absVelY = gCurrentPinballGame->ball->velocity.y;
+            gCurrentPinballGame->unk614 = absVelY;
+            if (absVelY < 0)
+                absVelY = -absVelY;
+            
+            gCurrentPinballGame->unk1C6 = gCurrentPinballGame->unk1C6 + (absVelY / 3);
+            if (gCurrentPinballGame->unk1C6 > 168)
+                gCurrentPinballGame->unk1C6 = 168;
+            
+            gCurrentPinballGame->unk616 = 20;
+        }
+        break;
+    case 13:
+        if (gCurrentPinballGame->unk732 != 14)
+        {
+            gCurrentPinballGame->unk732 = 14;
+            index = gUnknown_086ACE70[gCurrentPinballGame->unk34A];
+            gCurrentPinballGame->unk34B[index] = 10;
+            gCurrentPinballGame->unk34A++;
+            if (gCurrentPinballGame->unk34A == 3) 
+            {
+                memcpy(&gCurrentPinballGame->unk1334[1], &gCurrentPinballGame->unk1334[0], sizeof(*gCurrentPinballGame->unk1334));
+                gCurrentPinballGame->unk1330 = &gCurrentPinballGame->unk1334[1];
+                if (gCurrentPinballGame->unk342)
+                    gCurrentPinballGame->unk344 = 1;
+            }
+            
+            if (gCurrentPinballGame->unk34A == 11)
+                gCurrentPinballGame->unk1330 = gCurrentPinballGame->unk1334;
+
+            modRes = (gCurrentPinballGame->unk34A - 1) % 4;
+            gMain.spriteGroups[modRes + 47].available = 1;
+            gCurrentPinballGame->unk355[modRes] = 0;
+            gCurrentPinballGame->unk35E[modRes] = 0;
+            gCurrentPinballGame->unk359[modRes] = gCurrentPinballGame->unk34A - 1;
+
+            if (gCurrentPinballGame->unk34A > 12)
+                gCurrentPinballGame->unk34A = 0;
+            
+            if (index == 0 && gCurrentPinballGame->ball->velocity.y > -120)
+                gCurrentPinballGame->ball->velocity.y = -120;
+            
+            if (index == 2 && gCurrentPinballGame->ball->velocity.y > -180)
+                gCurrentPinballGame->ball->velocity.y = -180;
+        }
+        break;
+    case 14:
+        if (gCurrentPinballGame->unk732 != 15)
+        {
+            gCurrentPinballGame->unk732 = 15;
+            index = gUnknown_086ACE70[gCurrentPinballGame->unk34A];
+            gCurrentPinballGame->unk34B[index] = 10;
+            gCurrentPinballGame->unk34A++;
+
+            modRes = (gCurrentPinballGame->unk34A -1) % 4;
+            gMain.spriteGroups[modRes + 47].available = 1;
+            gCurrentPinballGame->unk355[modRes] = 0;
+            gCurrentPinballGame->unk35E[modRes] = 0;
+            gCurrentPinballGame->unk359[modRes] = gCurrentPinballGame->unk34A - 1;
+            if (index == 1 && gCurrentPinballGame->ball->velocity.y > -150) 
+                gCurrentPinballGame->ball->velocity.y = -150;
+        }
+        break;
+    case 15:
+        if (gCurrentPinballGame->ball->positionQ0.y < 80) 
+        {
+            if (gCurrentPinballGame->unk306 == 1)
+                gCurrentPinballGame->unk306 = 2;
+        } 
+        else 
+        {
+            if (gCurrentPinballGame->unk306 == 2) 
+            {    
+                gCurrentPinballGame->unk306 = 3;
+                gCurrentPinballGame->unk30C = 0;
+            }
+        }
+        
+        break;
+    }
+}
+
+s16 COLLISION_CHECK_DUSCLOPS_171C8(struct Vector16* arg0, u16* arg1) {
+    struct Vector16 vec1;
+    struct Vector16 vec2;
+    u16 sp00;
+    u8 sp02;
+    u16 return_val;
+    s16 unk0;
+    s32 unk1;
+    s32 unk2;
+
+    u32 some_enum;
+    u32 switch_enum;
+
+    return_val = 0;
+    gCurrentPinballGame->ball->unk4 = 0;
+    
+    vec1.x = arg0->x / 8;
+    vec1.y = arg0->y / 8;
+    vec2.x = arg0->x % 8;
+    vec2.y = arg0->y % 8;
+    unk1 = vec1.y / 64;
+    unk2 = gCurrentPinballGame->unk24;
+    vec1.y %= 64;
+    unk0 = gUnknown_02031520.unk14.unk38[unk2 + unk1][vec1.y * 64 + vec1.x];
+    sp00 = gUnknown_02031520.unk14.unk48[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+    sp02 = gUnknown_02031520.unk14.unk58[unk2 + unk1][unk0 * 64 + vec2.y * 8 + vec2.x];
+
+    sub_173FC(arg0, &sp00, &sp02);
+    switch_enum = sp02 & 0xF;
+    some_enum = sp02 >> 4;
+
+    switch (switch_enum)
+    {
+    case 1:
+    case 4:
+    case 6:
+        gCurrentPinballGame->unk23 = switch_enum - 1;
+        gCurrentPinballGame->unk22 = 1;
+        *arg1 = sp00;
+        if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
+        {
+            if (gCurrentPinballGame->ball->positionQ0.x < gUnknown_02031520.unk14.unk26 - 8 ||
+                gCurrentPinballGame->ball->positionQ0.y < gUnknown_02031520.unk14.unk28 - 8)
+            {
+
+                if (gCurrentPinballGame->ball->unk6 > 0)
+                {
+                    *arg1 = 0x3E00;
+                }
+                else if (gCurrentPinballGame->ball->unk6 != 0)
+                {
+                    *arg1 = 0x4100;
+                }
+                else
+                {
+                    if (gMain.systemFrameCount & 1)
+                    {
+                        gCurrentPinballGame->ball->unk4 = 0x28;
+                        gCurrentPinballGame->ball->unk6 = 1;
+                        *arg1 = 0x3E00;
+                    }
+                    else
+                    {
+                        gCurrentPinballGame->ball->unk4 = 0xFFD8;
+                        gCurrentPinballGame->ball->unk6 = 0xFFFF;
+                        *arg1 = 0x4100;
+                    }
+                }
+
+            }
+        }
+        return_val = 1;
+        break;
+    case 2:
+    case 3:
+        gCurrentPinballGame->unk23 = switch_enum - 1;
+        gCurrentPinballGame->unk22 = 2;
+        *arg1 = sp00 & 0x0000FFF0;
+        return_val = 1;
+        break;
+    case 5:
+        some_enum = 4;
+        break;
+    }
+
+    sub_17634(some_enum, &return_val, arg1);
+    return return_val;
+}
+
+void sub_173FC(struct Vector16 *arg0, s16* arg1, u8* arg2) {
+    s16 deltaX;
+    s16 deltaY;
+    u16 maskedResult;
+    u8 lowerNibble;
+    u8 temp;
+
+    maskedResult = 0;
+    lowerNibble = 0;
+    
+    if(gCurrentPinballGame->unk387 == 2) 
+    {
+        if (*arg2 != 0)
+            return;
+        
+        deltaX = arg0->x -gCurrentPinballGame->unk3F0;
+        deltaY = arg0->y -gCurrentPinballGame->unk3F2;
+        
+        if (deltaX > 95U || deltaY > 119U) 
+            return;
+        
+        maskedResult = 0xFFF0 & gUnknown_083071D4[(deltaY * 96 ) + deltaX]; 
+        lowerNibble = 0xF & gUnknown_083071D4[(deltaY * 96 ) + deltaX];
+        
+        if (lowerNibble == 0) 
+            return;
+
+        temp = gCurrentPinballGame->unk3DC -3; 
+        if (temp <= 1U) 
+            *arg2 = 1;
+        else
+            *arg2 = lowerNibble;
+        
+        gCurrentPinballGame->unk3DC = 4;
+        *arg1 = maskedResult;
+        
+        return;
+    }
+    
+    if(gCurrentPinballGame->unk387 == 1)
+    {
+        if (*arg2 != 0)
+            return;
+        
+        if (gCurrentPinballGame->unk3A9[0] != 0) 
+        {
+            deltaX = arg0->x - gCurrentPinballGame->unk3D0[0].x;
+            deltaY = arg0->y - gCurrentPinballGame->unk3D0[0].y;
+            
+            if (deltaX < 64U && deltaY < 64U) 
+            {
+                maskedResult = 0xFFF0 & gUnknown_08252B10[deltaY * 64 + deltaX];
+                lowerNibble = 0xF & gUnknown_08252B10[deltaY * 64 + deltaX];
+                
+                if (lowerNibble != 0)
+                    gCurrentPinballGame->unk3A0[0] = 4;
+            }
+        }
+        
+        if (lowerNibble == 0)
+        {
+            if (gCurrentPinballGame->unk3A9[1] != 0)
+            {
+                deltaX = arg0->x - gCurrentPinballGame->unk3D0[1].x;
+                deltaY = arg0->y - gCurrentPinballGame->unk3D0[1].y;
+                
+                if (deltaX < 64U && deltaY < 64U)
+                {
+                    maskedResult = 0xFFF0 & gUnknown_08252B10[deltaY * 64 + deltaX];
+                    lowerNibble = 0xF & gUnknown_08252B10[deltaY * 64 + deltaX];
+                    
+                    if (lowerNibble != 0)
+                        gCurrentPinballGame->unk3A0[1] = 4;
+                }
+            }
+        }
+        
+        if (lowerNibble == 0)
+        {
+            if ( gCurrentPinballGame->unk3A9[2] != 0)
+            {
+                deltaX = arg0->x - gCurrentPinballGame->unk3D0[2].x;
+                deltaY = arg0->y - gCurrentPinballGame->unk3D0[2].y;
+
+                if (deltaX < 64U && deltaY < 64U)
+                {
+                    maskedResult = 0xFFF0 & gUnknown_08252B10[deltaY * 64 + deltaX];
+                    lowerNibble = 0xF & gUnknown_08252B10[deltaY * 64 + deltaX];
+                    
+                    if (lowerNibble != 0)
+                    {
+                        gCurrentPinballGame->unk3A0[2] = 4;
+                    }
+                }
+            } 
+        }
+        
+        if (lowerNibble != 0)
+        {
+            *arg1 = maskedResult;
+            *arg2 = 6;
+        }                    
+        return;
+    }
+}
+
+
+void sub_17634(u8 arg0, u16 *arg1, u16 *arg2)
 {
     switch (arg0)
     {
