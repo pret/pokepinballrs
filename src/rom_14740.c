@@ -132,11 +132,11 @@ void sub_1493C(void)
         if (squaredMagnitude < 40) 
         {
             gCurrentPinballGame->unk5F4++;
-            gCurrentPinballGame->ball->unkE = 256;
+            gCurrentPinballGame->ball->scale = 0x100;
         }
         else
         {
-            gCurrentPinballGame->ball->unkE = 256;
+            gCurrentPinballGame->ball->scale = 0x100;
             if (squaredMagnitude > 100)
                 gCurrentPinballGame->unk5F4 = 0;
         }
@@ -146,7 +146,7 @@ void sub_1493C(void)
         if (gCurrentPinballGame->unk5F4 < 30) 
         {
             gCurrentPinballGame->unk5F4++;
-            gCurrentPinballGame->ball->unkE = ((30 - gCurrentPinballGame->unk5F4) * 128) / 10 + 128;
+            gCurrentPinballGame->ball->scale = ((30 - gCurrentPinballGame->unk5F4) * 0x80) / 10 + 0x80;
             gCurrentPinballGame->ball->positionQ0.x = 119;
             gCurrentPinballGame->ball->positionQ0.y = 279;
             gCurrentPinballGame->ball->unk6 = 0;
@@ -163,7 +163,7 @@ void sub_1493C(void)
                 sub_32914();
 
             gCurrentPinballGame->unk22 = 7;
-            gCurrentPinballGame->ball->unkE = 128;
+            gCurrentPinballGame->ball->scale = 0x80;
         }
     }
 }
@@ -543,14 +543,14 @@ void sub_153CC(s32 arg0, s16* arg1, u16* arg2)
     case 1:
         if (gCurrentPinballGame->unk24 == 0)
         {
-            gCurrentPinballGame->ball->unk1 = 2;
+            gCurrentPinballGame->ball->oamPriority = 2;
             gCurrentPinballGame->unk24 = 2;
             break;
         }
         
         if (gCurrentPinballGame->unk24 == 2) 
         {
-            gCurrentPinballGame->ball->unk1 = 2;
+            gCurrentPinballGame->ball->oamPriority = 2;
             gCurrentPinballGame->unk24 = 3;
         }
         
@@ -558,12 +558,12 @@ void sub_153CC(s32 arg0, s16* arg1, u16* arg2)
     case 2:
         if (gCurrentPinballGame->unk24 == 2)
         {
-            gCurrentPinballGame->ball->unk1 = 3;
+            gCurrentPinballGame->ball->oamPriority = 3;
             gCurrentPinballGame->unk24 = 0;
         }
         else if (gCurrentPinballGame->unk24 == 3)
         {
-            gCurrentPinballGame->ball->unk1 = 2;
+            gCurrentPinballGame->ball->oamPriority = 2;
             gCurrentPinballGame->unk24 = 2;
         }
         

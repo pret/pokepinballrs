@@ -1225,20 +1225,16 @@ void sub_1C5AC(void)
             gCurrentPinballGame->ball->unk0 = 0;
             gCurrentPinballGame->unk1F = 0;
             gCurrentPinballGame->unk5FA = 0;
-            gCurrentPinballGame->ball->unkE = 136;
+            gCurrentPinballGame->ball->scale = 0x88;
             gCurrentPinballGame->unk5F7 = 0;
         }
         else if (gCurrentPinballGame->unk28 > 12)
         {
             gCurrentPinballGame->unk730 = 2;
             if (gCurrentPinballGame->unk28 > 21)
-            {
-                gCurrentPinballGame->ball->unkE = ((24 - gCurrentPinballGame->unk28) * 112 / 3) + 144;
-            }
+                gCurrentPinballGame->ball->scale = ((24 - gCurrentPinballGame->unk28) * 0x70 / 3) + 0x90;
             else
-            {
-                gCurrentPinballGame->ball->unkE = 256;
-            }
+                gCurrentPinballGame->ball->scale = 0x100;
         }
         else
         {
@@ -1267,7 +1263,7 @@ void sub_1C73C(void)
     gCurrentPinballGame->ball->velocity.y = 0;
     gCurrentPinballGame->ball->unk0 = 0;
     gCurrentPinballGame->unk1F = 0;
-    gCurrentPinballGame->ball->unkE = 0x100;
+    gCurrentPinballGame->ball->scale = 0x100;
     gCurrentPinballGame->unk730 = 0;
     gCurrentPinballGame->unk25 = 0;
     if (gCurrentPinballGame->unk282 == 0)

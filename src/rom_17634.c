@@ -33,28 +33,28 @@ void sub_1642C(u8 arg0, u16* arg1, u16* arg2)
     case 2:
         if (gCurrentPinballGame->unk24 == 0) 
         {
-            gCurrentPinballGame->ball->unk1 = 2;
+            gCurrentPinballGame->ball->oamPriority = 2;
             gCurrentPinballGame->unk24 = 2;
         }
         else if (gCurrentPinballGame->unk24 == 2) 
         {
-            gCurrentPinballGame->ball->unk1 = 2;
+            gCurrentPinballGame->ball->oamPriority = 2;
             gCurrentPinballGame->unk24 = 3;
         }
         else if (gCurrentPinballGame->unk24 == 3)
         {
-            gCurrentPinballGame->ball->unk1 = 1;
+            gCurrentPinballGame->ball->oamPriority = 1;
         }
         break;
     case 3:
         if (gCurrentPinballGame->unk24 == 2)
         {
-            gCurrentPinballGame->ball->unk1 = 3;
+            gCurrentPinballGame->ball->oamPriority = 3;
             gCurrentPinballGame->unk24 = 0;
         }
         else if (gCurrentPinballGame->unk24 == 3)
         {
-            gCurrentPinballGame->ball->unk1 = 2;
+            gCurrentPinballGame->ball->oamPriority = 2;
             gCurrentPinballGame->unk24 = 2;
         }
         break;

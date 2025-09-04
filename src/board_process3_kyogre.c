@@ -977,8 +977,8 @@ void sub_39A40(void)
             gCurrentPinballGame->unk383 = 0;
         }
 
-        group->baseX = gCurrentPinballGame->ball->unk24;
-        group->baseY = gCurrentPinballGame->ball->unk26;
+        group->baseX = gCurrentPinballGame->ball->screenPosition.x;
+        group->baseY = gCurrentPinballGame->ball->screenPosition.y;
         if (group->baseY >= 200)
             group->baseY = 200;
 

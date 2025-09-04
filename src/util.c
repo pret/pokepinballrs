@@ -20,7 +20,7 @@ void sub_024C(void)
                 | BLDCNT_EFFECT_LIGHTEN
                 | BLDCNT_TGT1_BD;
     REG_DISPCNT &= ~DISPCNT_FORCED_BLANK;
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 
     for (i = 0; i < 32; i++)
     {
@@ -47,7 +47,7 @@ void sub_02B4(void)
         MainLoopIter();
     }
 
-    gMain.unk16 |= DISPCNT_FORCED_BLANK;
+    gMain.dispcntBackup |= DISPCNT_FORCED_BLANK;
     REG_DISPCNT |= DISPCNT_FORCED_BLANK;
     DmaFill16(3, 0, (void *)BG_VRAM, 0x18000);
     REG_BG0HOFS = 0;
@@ -94,7 +94,7 @@ s16 LoadSpriteSets(const struct SpriteSet *const *spriteSets, u16 numSpriteSets,
 
 void ResetSomeGraphicsRelatedStuff(void)
 {
-    gMain.unk16 |= DISPCNT_FORCED_BLANK;
+    gMain.dispcntBackup |= DISPCNT_FORCED_BLANK;
     REG_DISPCNT |= DISPCNT_FORCED_BLANK;
     ClearGraphicsMemory();
     sub_0518();

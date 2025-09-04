@@ -83,7 +83,7 @@ void LoadHighScoreGraphics(void)
   REG_DISPCNT |= DISPCNT_BG2_ON;
   REG_BG3CNT = 0x420f;
   REG_DISPCNT |= DISPCNT_BG3_ON;
-  gMain.unk16 = REG_DISPCNT;
+  gMain.dispcntBackup = REG_DISPCNT;
 
   DmaCopy16(3, gUnknown_0809DBE0, (void*) PLTT, 0x200);
   DmaCopy16(3, gUnknown_080957A0, (void*) BG_VRAM + 0x4000, 0x4800);
@@ -160,9 +160,9 @@ void sub_CFD4(void)
             sub_F434(gUnknown_02002858.newScoreHi, gUnknown_02002858.newScoreLo, gUnknown_02002858.mainField, gUnknown_02002858.highScoreIndex);
             for(i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
             {
-                gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[i] = gUnknown_0201A500[i];
+                gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[i] = gHighScoreNameEntry[i];
             }
-            gUnknown_02002858.unk16 = gUnknown_0201A500[0];
+            gUnknown_02002858.unk16 = gHighScoreNameEntry[0];
         }
         if(sub_FD20() == 1)
         {
@@ -281,13 +281,13 @@ void HighScore_State2_D308(void)
         if(!gUnknown_02002858.unk12)
         {
             gUnknown_02002858.unk12 = 1;
-            sub_10618(6 - (gUnknown_02002858.mainField << 1), gUnknown_08079870[gUnknown_02002858.highScoreIndex] + (gUnknown_02002858.mainField << 5), 0, 0x15, 4, 2);
-            sub_10618(0, 0x17, 6 - (gUnknown_02002858.mainField << 1), gUnknown_08079870[gUnknown_02002858.highScoreIndex] + (gUnknown_02002858.mainField << 5), 4, 2);
+            CopyString(6 - (gUnknown_02002858.mainField << 1), gUnknown_08079870[gUnknown_02002858.highScoreIndex] + (gUnknown_02002858.mainField << 5), 0, 0x15, 4, 2);
+            CopyString(0, 0x17, 6 - (gUnknown_02002858.mainField << 1), gUnknown_08079870[gUnknown_02002858.highScoreIndex] + (gUnknown_02002858.mainField << 5), 4, 2);
         }
         else
         {
             gUnknown_02002858.unk12 = 0;
-            sub_10618(0, 0x15, 6 - (gUnknown_02002858.mainField << 1), gUnknown_08079870[gUnknown_02002858.highScoreIndex] + (gUnknown_02002858.mainField << 5), 4, 2);
+            CopyString(0, 0x15, 6 - (gUnknown_02002858.mainField << 1), gUnknown_08079870[gUnknown_02002858.highScoreIndex] + (gUnknown_02002858.mainField << 5), 4, 2);
         }
     }
     gUnknown_02002858.unk1E++;
@@ -310,7 +310,7 @@ void HighScore_State2_D308(void)
         {
             gUnknown_02002858.unk12 = 0;
             gUnknown_02002858.unk14 = 0;
-            sub_10618(0, 0x15, 6 - (gUnknown_02002858.mainField << 1), gUnknown_08079870[gUnknown_02002858.highScoreIndex] +(gUnknown_02002858.mainField << 5), 4, 2);
+            CopyString(0, 0x15, 6 - (gUnknown_02002858.mainField << 1), gUnknown_08079870[gUnknown_02002858.highScoreIndex] +(gUnknown_02002858.mainField << 5), 4, 2);
         }
         m4aSongNumStart(MUS_HI_SCORE);
         gMain.subState = 4;
@@ -497,7 +497,7 @@ void HighScore_State4_D664(void)
             m4aSongNumStart(SE_UNKNOWN_0x65);
             sub_FAE8(gUnknown_02002858.mainField, gUnknown_02002858.highScoreIndex, gUnknown_02002858.unk1C);
             for (i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
-                gUnknown_0201A500[i] = gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[i];
+                gHighScoreNameEntry[i] = gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[i];
 
             for (i = 0; i < MAIN_FIELD_COUNT; i++)
             {
@@ -711,7 +711,7 @@ void IdleHighScore_State0_DD70(void)
     REG_DISPCNT |= DISPCNT_BG2_ON;
     REG_BG3CNT = 0x420F;
     REG_DISPCNT |= DISPCNT_BG3_ON;
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
     DmaCopy16(3, gUnknown_0809DBE0, (void*) PLTT, 0x200);
     DmaCopy16(3, gUnknown_080957A0, (void*) BG_VRAM + 0x4000, 0x4800);
     DmaCopy16(3, gUnknown_0809AFC0, (void *)BG_VRAM + 0xC000, 0x2C00);
@@ -829,7 +829,7 @@ void HighScore_State12_E0EC(void)
     REG_DISPCNT |= DISPCNT_BG2_ON;
     REG_BG3CNT = 0x420f;
     REG_DISPCNT |= DISPCNT_BG3_ON;
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
     DmaCopy16(3, gUnknown_0809DBE0, (void*) PLTT, 0x200);
     DmaCopy16(3, gUnknown_080957A0, (void*) BG_VRAM + 0x4000, 0x4800);
     DmaCopy16(3, gUnknown_0809AFC0, (void *)BG_VRAM + 0xC000, 0x2C00);
@@ -1867,7 +1867,7 @@ void sub_EE64(void)
     // Ruby Field Top name
     for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
+        PrintString(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
     }
 
     // Ruby Field 2nd-8th names
@@ -1875,7 +1875,7 @@ void sub_EE64(void)
     {
         for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][i].data.parts.name[j]] + 0xA0, 8, j + 6, i * 2 + 3, 1, 2);
+            PrintString(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_RUBY][i].data.parts.name[j]] + 0xA0, 8, j + 6, i * 2 + 3, 1, 2);
         }
     }
 
@@ -1884,11 +1884,11 @@ void sub_EE64(void)
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            PrintChar(gUnknown_0202C5C0[j] + 0x120, 9, j + 12, 2, 1, 2); // Thousands separator?
+            PrintString(gUnknown_0202C5C0[j] + 0x120, 9, j + 12, 2, 1, 2); // Thousands separator?
         else
-            PrintChar(gUnknown_0202C5C0[j] + 0xE0, 9, j + 12, 2, 1, 2);
+            PrintString(gUnknown_0202C5C0[j] + 0xE0, 9, j + 12, 2, 1, 2);
     }
-    PrintChar(gUnknown_0202C5C0[14] + 0xE0, 9, 26, 2, 1, 2);
+    PrintString(gUnknown_0202C5C0[14] + 0xE0, 9, 26, 2, 1, 2);
     // Ruby Field 2nd-8th scores
     for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
@@ -1896,18 +1896,18 @@ void sub_EE64(void)
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                PrintChar(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2); // Thousands separator?
+                PrintString(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2); // Thousands separator?
             else
-                PrintChar(gUnknown_0202C5C0[j] + 0x160, 9, j + 12, i * 2 + 3, 1, 2);
+                PrintString(gUnknown_0202C5C0[j] + 0x160, 9, j + 12, i * 2 + 3, 1, 2);
         }
 
-        PrintChar(gUnknown_0202C5C0[14] + 0x160, 9, 26, 3 + i * 2, 1, 2);
+        PrintString(gUnknown_0202C5C0[14] + 0x160, 9, 26, 3 + i * 2, 1, 2);
     }
 
     // Sapphire Field Top name
     for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
+        PrintString(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
     }
 
     // Sapphire Field 2nd-8th names
@@ -1915,7 +1915,7 @@ void sub_EE64(void)
     {
         for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            PrintChar(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
+            PrintString(gUnknown_086A7FAC[gUnknown_0202C610[FIELD_SAPPHIRE][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
         }
     }
     sub_F21C(gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.scoreHi, gUnknown_0202C610[FIELD_SAPPHIRE][0].data.parts.scoreLo);
@@ -1923,12 +1923,12 @@ void sub_EE64(void)
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            PrintChar(gUnknown_0202C5C0[j] + 0x120, 9, j + 10, 34, 1, 2); // Thousands separator?
+            PrintString(gUnknown_0202C5C0[j] + 0x120, 9, j + 10, 34, 1, 2); // Thousands separator?
         else
-            PrintChar(gUnknown_0202C5C0[j] + 0xE0, 9, j + 10, 34, 1, 2);
+            PrintString(gUnknown_0202C5C0[j] + 0xE0, 9, j + 10, 34, 1, 2);
     }
 
-    PrintChar(gUnknown_0202C5C0[j] + 0xE0, 9, 24, 34, 1, 2);
+    PrintString(gUnknown_0202C5C0[j] + 0xE0, 9, 24, 34, 1, 2);
     // Sapphire Field 2nd-8th scores
     for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
@@ -1936,12 +1936,12 @@ void sub_EE64(void)
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                PrintChar(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 10, i * 2 + 35, 1, 2); // Thousands separator?s
+                PrintString(gUnknown_0202C5C0[j] + 0x1A0, 9, j + 10, i * 2 + 35, 1, 2); // Thousands separator?s
             else
-                PrintChar(gUnknown_0202C5C0[j] + 0x160, 9, j + 10, i * 2 + 35, 1, 2);
+                PrintString(gUnknown_0202C5C0[j] + 0x160, 9, j + 10, i * 2 + 35, 1, 2);
         }
 
-        PrintChar(gUnknown_0202C5C0[j] + 0x160, 9, 24, i * 2 + 35, 1, 2);
+        PrintString(gUnknown_0202C5C0[j] + 0x160, 9, 24, i * 2 + 35, 1, 2);
     }
 }
 
@@ -2112,7 +2112,7 @@ u32 sub_F4FC(u32 field)
 void sub_F670(u32 arg0, u32 hsIndex, s16 arg2, u32 mainField)
 {
     arg0 = gUnknown_086A7FAC[arg0];
-    PrintChar(
+    PrintString(
         gUnknown_08079730[mainField][hsIndex].unk8 * 32 + 0x80 + arg0,
         8,
         gUnknown_08079730[mainField][hsIndex].unk0 + arg2,
@@ -2380,7 +2380,7 @@ void sub_FD5C(void (*func)(void))
     DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], PLTT_SIZE);
     DmaCopy16(3, gUnknown_0201A520[2], (void*)PLTT, PLTT_SIZE);
     
-    sub_1050C();
+    UnblankLCD();
 
     for (i = 0; i < 32; i++)
     {
@@ -2422,7 +2422,7 @@ void sub_FE04(void (*func)(void))
             DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
         }
     }
-    sub_10528();
+    ForceBlankLDC();
     MainLoopIter();
     ClearGraphicsMemory();
 }
@@ -2437,8 +2437,8 @@ void sub_FEB8(u8 * arg0, u8 * arg1, void (*func)(void))
     DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], PLTT_SIZE);
     DmaCopy16(3, gUnknown_0201A520[2], (void*)PLTT, PLTT_SIZE);
 
-    sub_1050C();
-    gMain.unk16 = REG_DISPCNT;
+    UnblankLCD();
+    gMain.dispcntBackup = REG_DISPCNT;
     
     for (i = 0; i < 32; i++)
     {
@@ -2615,7 +2615,7 @@ void sub_10424(void)
     REG_BLDY = 0x10;
     REG_BLDCNT = ((REG_DISPCNT & (DISPCNT_BG_ALL_ON | DISPCNT_OBJ_ON)) >> 8) | BLDCNT_EFFECT_LIGHTEN | BLDCNT_TGT1_BD;
     REG_DISPCNT &= ~DISPCNT_FORCED_BLANK;
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
     REG_BLDY = 0x10;
     MainLoopIter();
     REG_BLDY = 0x8;
@@ -2647,15 +2647,15 @@ void sub_10480(void)
     MainLoopIter();
 }
 
-void sub_1050C(void)
+void UnblankLCD(void)
 {
     REG_DISPCNT &= ~DISPCNT_FORCED_BLANK;
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 }
 
-void sub_10528(void)
+void ForceBlankLDC(void)
 {
-    gMain.unk16 |= DISPCNT_FORCED_BLANK;
+    gMain.dispcntBackup |= DISPCNT_FORCED_BLANK;
     REG_DISPCNT |= DISPCNT_FORCED_BLANK;
 }
 
@@ -2668,17 +2668,4 @@ void sub_10544(void)
     if(REG_IE == 0)
         REG_IME = 0;
     REG_IF |= 1;
-}
-
-// Print char? (also used by the Pokédex)
-void PrintChar(u16 glyph, u16 color, int x, int y, int arg4, int arg5)
-{
-    u16 i, j;
-    for(i = 0; i < arg5; i++)
-    {
-        for(j = 0; j < arg4; j++)
-        {
-            gUnknown_03005C00[y * 32 + x + i * 32 + j] = (glyph + i * 32 + j) | (color << 12);
-        }
-    }
 }

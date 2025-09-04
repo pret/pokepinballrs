@@ -62,6 +62,9 @@
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) >= (b) ? (a) : (b))
 
+// TODO: define RGB(r, g, b) macro
+#define RGB_WHITE 0x7FFF
+
 // Macros for checking the joypad
 #define TEST_BUTTON(field, button) ((field) & (button))
 #define TEST_BUTTON_EXACT(field, button) (((field) & (button)) == (button))
@@ -78,18 +81,17 @@ struct BgOffsets
 struct BallState
 {
     /*0x00*/ s8 unk0;
-    /*0x01*/ s8 unk1; // oam data priority
+    /*0x01*/ s8 oamPriority;
     /*0x02*/ u8 filler2[0x2];
     /*0x04*/ u16 unk4;
     /*0x06*/ s16 unk6;
     /*0x08*/ s16 unk8;
     /*0x0A*/ u16 unkA;
     /*0x0C*/ u16 unkC;
-    /*0x0E*/ u16 unkE;
+    /*0x0E*/ u16 scale;
     /*0x10*/ struct Vector16 positionQ0;
-    /*0x14*/ struct Vector16 unk14[4];
-    /*0x24*/ u16 unk24;
-    /*0x26*/ u16 unk26;
+    /*0x14*/ struct Vector16 prevPositionsQ0[4];
+    /*0x24*/ struct Vector16 screenPosition;
     /*0x28*/ struct Vector16 positionQ1;
     /*0x2C*/ struct Vector16 prevPositionQ1;
     /*0x30*/ struct Vector16 velocity;

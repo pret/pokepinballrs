@@ -147,7 +147,7 @@ static void sub_0B8C(void)
 {
     gMain.mainState = STATE_INTRO;
     gMain.subState = 0;
-    gMain.unk16 = 0;
+    gMain.dispcntBackup = 0;
     gMain.heldKeys = 0;
     gMain.newKeys = 0;
     gMain.unk20 = 0;
@@ -156,7 +156,7 @@ static void sub_0B8C(void)
     gMain.unk30 = 0;
     gMain.vCount = 144;
     gMain.unk2C = 0;
-    ClearSomeArray();
+    ClearHighScoreNameEntry();
     ResetSomeGraphicsRelatedStuff();
 }
 
@@ -292,7 +292,7 @@ void DefaultMainCallback(void)
     {
         VBlankIntrWait();
         DmaCopy32(3, gOamBuffer, (void *)OAM, OAM_SIZE);
-        REG_DISPCNT = gMain.unk16;
+        REG_DISPCNT = gMain.dispcntBackup;
         REG_BG0HOFS = gMain.bgOffsets[0].xOffset;
         REG_BG0VOFS = gMain.bgOffsets[0].yOffset;
         REG_BG1HOFS = gMain.bgOffsets[1].xOffset;

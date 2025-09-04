@@ -313,7 +313,7 @@ static void sub_4A270(void)
         break;
     }
 
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
     REG_MOSAIC = 0;
 }
 
@@ -385,7 +385,7 @@ void sub_4A6A0(void)
         gCurrentPinballGame->ball->unk6 = 0;
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
-        gCurrentPinballGame->ball->unkE = 128;
+        gCurrentPinballGame->ball->scale = 0x80;
         gCurrentPinballGame->ball->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk730 = 0;
@@ -407,7 +407,7 @@ void sub_4A6A0(void)
         gCurrentPinballGame->ball->unk6 = 0;
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
-        gCurrentPinballGame->ball->unkE = 128;
+        gCurrentPinballGame->ball->scale = 0x80;
         gCurrentPinballGame->ball->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk730 = 0;
@@ -423,7 +423,7 @@ void sub_4A6A0(void)
         gCurrentPinballGame->ball->unk6 = 0;
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
-        gCurrentPinballGame->ball->unkE = 128;
+        gCurrentPinballGame->ball->scale = 0x80;
         gCurrentPinballGame->ball->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk730 = 0;

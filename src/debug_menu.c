@@ -433,7 +433,7 @@ void sub_478D8(void)
                     gCurrentPinballGame->ball->positionQ8.y = 0x17100;
             }
 
-            gCurrentPinballGame->ball->unk1 = 0;
+            gCurrentPinballGame->ball->oamPriority = 0;
             gCurrentPinballGame->ball->prevPositionQ1 = gCurrentPinballGame->ball->positionQ1;
 
             newX = gCurrentPinballGame->ball->positionQ8.x;
@@ -497,9 +497,9 @@ void sub_478D8(void)
         sub_46FD4(0);
         gCurrentPinballGame->unk29E = 0;
         if (gMain.selectedField == FIELD_RUBY)
-            gCurrentPinballGame->ball->unk1 = 3;
+            gCurrentPinballGame->ball->oamPriority = 3;
         else
-            gCurrentPinballGame->ball->unk1 = 1;
+            gCurrentPinballGame->ball->oamPriority = 1;
 
         gCurrentPinballGame->unk5F7 = 0;
         gCurrentPinballGame->unkE4 = 0;

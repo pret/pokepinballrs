@@ -111,7 +111,7 @@ void LoadPokedexGraphics(void)
     REG_BG3CNT = BGCNT_PRIORITY(3) | BGCNT_CHARBASE(3) | BGCNT_16COLOR | BGCNT_SCREENBASE(2) | BGCNT_TXT256x256;
     REG_DISPCNT |= DISPCNT_BG3_ON;
 
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gPokedexBgText_Gfx, (void *)BG_CHAR_ADDR(1), 0x4400);
     DmaCopy16(3, gPokedexBg_Gfx, (void *)BG_CHAR_ADDR(3), 0x1400);
@@ -1708,22 +1708,22 @@ static void PrintSelectedMonDexNum(s16 species)
     {
         if (gPokedexFlags[SPECIES_JIRACHI] != SPECIES_UNSEEN)
         {
-            PrintChar(CHAR_2_FONT_1, 1, 5, 2, 1, 2);
-            PrintChar(CHAR_0_FONT_1, 1, 6, 2, 1, 2);
-            PrintChar(CHAR_1_FONT_1, 1, 7, 2, 1, 2);
+            PrintString(CHAR_2_FONT_1, 1, 5, 2, 1, 2);
+            PrintString(CHAR_0_FONT_1, 1, 6, 2, 1, 2);
+            PrintString(CHAR_1_FONT_1, 1, 7, 2, 1, 2);
         }
         else
         {
-            PrintChar(CHAR_SPACE_FONT_1, 1, 5, 2, 1, 2);
-            PrintChar(CHAR_SPACE_FONT_1, 1, 6, 2, 1, 2);
-            PrintChar(CHAR_SPACE_FONT_1, 1, 7, 2, 1, 2);
+            PrintString(CHAR_SPACE_FONT_1, 1, 5, 2, 1, 2);
+            PrintString(CHAR_SPACE_FONT_1, 1, 6, 2, 1, 2);
+            PrintString(CHAR_SPACE_FONT_1, 1, 7, 2, 1, 2);
         }
     }
     else
     {
         // Dex number of the selected species
         for (i = 0; i < DEX_NUM_DIGITS; i++)
-            PrintChar(gPokedexEntries[species].dexNum[i] + 32, 1, i + 5, 2, 1, 2);
+            PrintString(gPokedexEntries[species].dexNum[i] + 32, 1, i + 5, 2, 1, 2);
     }
 
     if (gPokedexFlags[species] > SPECIES_UNSEEN)
@@ -1741,14 +1741,14 @@ static void PrintSelectedMonDexNum(s16 species)
             var0 += var2;
         }
 
-        sub_10708(gUnknown_03000000, (void *)0x06004C00, 8, 2);
+        CopyBgTilesRect(gUnknown_03000000, (void *)0x06004C00, 8, 2);
         DmaFill16(3, 0, gUnknown_03000000, 0x800);
         var0 = 0;
     }
     else
     {
         for (i = 0; i < 10; i++)
-            sub_10708((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004C00 + i * 0x20, 1, 2);
+            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004C00 + i * 0x20, 1, 2);
     }
 
     if (gPokedexFlags[species] == SPECIES_SEEN || gPokedexFlags[species] > SPECIES_SHARED)
@@ -1766,32 +1766,32 @@ static void PrintSelectedMonDexNum(s16 species)
             var0 += var2;
         }
 
-        sub_10708(gUnknown_03000000, (void *)0x06004D00, 9, 2);
+        CopyBgTilesRect(gUnknown_03000000, (void *)0x06004D00, 9, 2);
         DmaFill16(3, 0, gUnknown_03000000, 0x800);
     }
     else
     {
         for (i = 0; i < 9; i++)
-            sub_10708((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004D00 + i * 0x20, 1, 2);
+            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004D00 + i * 0x20, 1, 2);
     }
 
     if (gPokedexFlags[species] == SPECIES_CAUGHT)
     {
-        PrintChar(gPokedexEntries[species].heightWeight[0] + 32, 1, 16, 6, 1, 2);
-        PrintChar(gPokedexEntries[species].heightWeight[1] + 32, 1, 17, 6, 1, 2);
-        PrintChar(gPokedexEntries[species].heightWeight[2] + 32, 1, 19, 6, 1, 2);
-        PrintChar(gPokedexEntries[species].heightWeight[3] + 32, 1, 20, 6, 1, 2);
+        PrintString(gPokedexEntries[species].heightWeight[0] + 32, 1, 16, 6, 1, 2);
+        PrintString(gPokedexEntries[species].heightWeight[1] + 32, 1, 17, 6, 1, 2);
+        PrintString(gPokedexEntries[species].heightWeight[2] + 32, 1, 19, 6, 1, 2);
+        PrintString(gPokedexEntries[species].heightWeight[3] + 32, 1, 20, 6, 1, 2);
         for (i = 0; i < POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH - 4; i++)
-            PrintChar(gPokedexEntries[species].heightWeight[4 + i], 1, i + 16, 8, 1, 1);
+            PrintString(gPokedexEntries[species].heightWeight[4 + i], 1, i + 16, 8, 1, 1);
     }
     else
     {
-        PrintChar(CHAR_DASH_FONT_1, 1, 16, 6, 1, 2);
-        PrintChar(CHAR_DASH_FONT_1, 1, 17, 6, 1, 2);
-        PrintChar(CHAR_DASH_FONT_1, 1, 19, 6, 1, 2);
-        PrintChar(CHAR_DASH_FONT_1, 1, 20, 6, 1, 2);
+        PrintString(CHAR_DASH_FONT_1, 1, 16, 6, 1, 2);
+        PrintString(CHAR_DASH_FONT_1, 1, 17, 6, 1, 2);
+        PrintString(CHAR_DASH_FONT_1, 1, 19, 6, 1, 2);
+        PrintString(CHAR_DASH_FONT_1, 1, 20, 6, 1, 2);
         for (i = 0; i < POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH - 4; i++)
-            PrintChar(CHAR_DASH_FONT_0, 1, i + 16, 8, 1, 1);
+            PrintString(CHAR_DASH_FONT_0, 1, i + 16, 8, 1, 1);
     }
 }
 
@@ -1816,8 +1816,8 @@ static void PrintSeenOwnedTotals(s16 seen, s16 owned)
 
     for (i = 0; i < DEX_NUM_DIGITS; i++)
     {
-        PrintChar(seenDigits[i], 2, i + 25, 15, 1, 1);
-        PrintChar(ownedDigits[i] + 32, 2, i + 25, 16, 1, 2);
+        PrintString(seenDigits[i], 2, i + 25, 15, 1, 1);
+        PrintString(ownedDigits[i] + 32, 2, i + 25, 16, 1, 2);
     }
 }
 
@@ -1836,22 +1836,22 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
         {
             if (gPokedexFlags[SPECIES_JIRACHI] != SPECIES_UNSEEN)
             {
-                PrintChar(CHAR_2_FONT_1, 2, 8, i * 2 + 10, 1, 2);
-                PrintChar(CHAR_0_FONT_1, 2, 9, i * 2 + 10, 1, 2);
-                PrintChar(CHAR_1_FONT_1, 2, 10, i * 2 + 10, 1, 2);
+                PrintString(CHAR_2_FONT_1, 2, 8, i * 2 + 10, 1, 2);
+                PrintString(CHAR_0_FONT_1, 2, 9, i * 2 + 10, 1, 2);
+                PrintString(CHAR_1_FONT_1, 2, 10, i * 2 + 10, 1, 2);
             }
             else
             {
-                PrintChar(CHAR_SPACE_FONT_1, 2, 8, i * 2 + 10, 1, 2);
-                PrintChar(CHAR_SPACE_FONT_1, 2, 9, i * 2 + 10, 1, 2);
-                PrintChar(CHAR_SPACE_FONT_1, 2, 10, i * 2 + 10, 1, 2);
+                PrintString(CHAR_SPACE_FONT_1, 2, 8, i * 2 + 10, 1, 2);
+                PrintString(CHAR_SPACE_FONT_1, 2, 9, i * 2 + 10, 1, 2);
+                PrintString(CHAR_SPACE_FONT_1, 2, 10, i * 2 + 10, 1, 2);
             }
         }
         else
         {
             // Doesn't use listPosition for some reason, despite being the only value passed
             for (j = 0; j < DEX_NUM_DIGITS; j++)
-                PrintChar(gPokedexEntries[gPokedexListPosition + i].dexNum[j] + 32, 2, j + 8, i * 2 + 10, 1, 2);
+                PrintString(gPokedexEntries[gPokedexListPosition + i].dexNum[j] + 32, 2, j + 8, i * 2 + 10, 1, 2);
         }
     }
 
@@ -1877,16 +1877,16 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
                 var0 += var2;
             }
 
-            sub_10708(gUnknown_03000000, (void *)0x06000000 + gUnknown_086A64F0[i], 8, 2);
+            CopyBgTilesRect(gUnknown_03000000, (void *)0x06000000 + gUnknown_086A64F0[i], 8, 2);
             DmaFill16(3, 0, gUnknown_03000000, 0x800);
             var0 = 0;
         }
         else
         {
             for (j = 0; j < 7; j++)
-                sub_10708((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
+                CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
         
-            sub_10708((void *)gPokedexTextGlyphs_Gfx, (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
+            CopyBgTilesRect((void *)gPokedexTextGlyphs_Gfx, (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
         }
     }
 }
@@ -1899,7 +1899,7 @@ static void PrintCaughtBallFromListPosition(s16 position)
     for (i = 0; i < ENTRIES_SHOWN_COUNT; i++)
     {
         var0 = gPokedexFlags[position + i] == SPECIES_CAUGHT ? CHAR_BALL_CAUGHT : CHAR_BALL_NOT_CAUGHT;
-        PrintChar(var0, 1, 4, 10 + i * 2, 2, 2);
+        PrintString(var0, 1, 4, 10 + i * 2, 2, 2);
     }
 }
 
@@ -1911,20 +1911,20 @@ void sub_6F78(s16 species)
     switch (state)
     {
         case SPECIES_UNSEEN:
-            sub_10708(gPokedexSprites_Gfx + 0x5C00, (void *)0x06013400, 24, 1);
+            CopyBgTilesRect(gPokedexSprites_Gfx + 0x5C00, (void *)0x06013400, 24, 1);
             DmaCopy16(3, gPokedexSprites_Pals, (void *)OBJ_PLTT + 0x20, 0x20);
             break;
         case SPECIES_SEEN:
-            sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
+            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
             DmaCopy16(3, gMonPortraitGroupPals[0] + 0x1E0, (void *)OBJ_PLTT + 0x20, 0x20);
             break;
         case SPECIES_SHARED:
         case SPECIES_SHARED_AND_SEEN:
-            sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
+            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
             sub_10170(gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20, 0xE);
             break;
         case SPECIES_CAUGHT:
-            sub_10708(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
+            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
             DmaCopy16(3, gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20);
             break;
     }
@@ -4946,7 +4946,7 @@ void sub_8974(s16 species)
         quotient = var0 / 5;
         remainder = var0 % 5;
 
-        sub_10708(gUnknown_086BB6F4[quotient] + remainder * 0xD80, (void *)(OBJ_VRAM0 + 0x3800), 108, 1);
+        CopyBgTilesRect(gUnknown_086BB6F4[quotient] + remainder * 0xD80, (void *)(OBJ_VRAM0 + 0x3800), 108, 1);
         DmaCopy16(3, gUnknown_086B15B4[quotient] + remainder * 0x20, (void *)OBJ_PLTT + 0x40, 0x20);
     }
     else
@@ -4955,7 +4955,7 @@ void sub_8974(s16 species)
         quotient = (var0 - 100) / 6;
         remainder = (var0 - 100) % 6;
 
-        sub_10708(gMonHatchSpriteGroupGfx[quotient][remainder], (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
+        CopyBgTilesRect(gMonHatchSpriteGroupGfx[quotient][remainder], (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
         DmaCopy16(3, gMonHatchSpriteGroupPals[quotient][remainder], (void *)OBJ_PLTT + 0x60, 0x20);
     }
 }
