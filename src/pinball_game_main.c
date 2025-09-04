@@ -870,8 +870,8 @@ void PinballGame_State3_4B20C(void)
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
-    gMain.finalScoreLow = gCurrentPinballGame->scoreLow;
-    gMain.finalScoreHigh = gCurrentPinballGame->scoreHigh;
+    gMain.finalScoreLo = gCurrentPinballGame->scoreLo;
+    gMain.finalScoreHi = gCurrentPinballGame->scoreHi;
     if (gMain.unkE == 2)
         sub_4B654();
 

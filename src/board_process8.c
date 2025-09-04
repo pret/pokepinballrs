@@ -24,7 +24,7 @@ void AllBoardProcess_8B_4CEB4(void)
     {
         if (gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON))
         {
-            gCurrentPinballGame->scoreLow += gCurrentPinballGame->scoreAdditionAccumulator;
+            gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
             gCurrentPinballGame->scoreAdditionAccumulator = 0;
             gCurrentPinballGame->scoreCounterAnimationEnabled = FALSE;
             gCurrentPinballGame->scoreAddStepSize = 40000;
@@ -36,14 +36,14 @@ void AllBoardProcess_8B_4CEB4(void)
             {
                 if (gCurrentPinballGame->scoreAdditionAccumulator <= gCurrentPinballGame->scoreAddStepSize)
                 {
-                    gCurrentPinballGame->scoreLow += gCurrentPinballGame->scoreAdditionAccumulator;
+                    gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
                     gCurrentPinballGame->scoreAdditionAccumulator = 0;
                     gCurrentPinballGame->scoreCounterAnimationEnabled = FALSE;
                     gCurrentPinballGame->scoreAddStepSize = 40000;
                 }
                 else
                 {
-                    gCurrentPinballGame->scoreLow += gCurrentPinballGame->scoreAddStepSize;
+                    gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAddStepSize;
                     gCurrentPinballGame->scoreAdditionAccumulator -= gCurrentPinballGame->scoreAddStepSize;
                     m4aSongNumStart(SE_UNKNOWN_0x91);
                 }
@@ -52,33 +52,33 @@ void AllBoardProcess_8B_4CEB4(void)
     }
     else
     {
-        gCurrentPinballGame->scoreLow += gCurrentPinballGame->scoreAdditionAccumulator;
+        gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
         gCurrentPinballGame->scoreAdditionAccumulator = 0;
     }
 
-    if (gCurrentPinballGame->scoreLow / 100000000 != 0)
+    if (gCurrentPinballGame->scoreLo / 100000000 != 0)
     {
-        if (gCurrentPinballGame->scoreHigh < 9999)
+        if (gCurrentPinballGame->scoreHi < 9999)
         {
-            gCurrentPinballGame->scoreHigh++;
-            gCurrentPinballGame->scoreLow -= 100000000;
+            gCurrentPinballGame->scoreHi++;
+            gCurrentPinballGame->scoreLo -= 100000000;
         }
         else
         {
-            gCurrentPinballGame->scoreHigh = 9999;
-            gCurrentPinballGame->scoreLow = 99999999;
+            gCurrentPinballGame->scoreHi = 9999;
+            gCurrentPinballGame->scoreLo = 99999999;
         }
     }
 
     gCurrentPinballGame->scoreAddedInFrame = 0;
 
-    value = gCurrentPinballGame->scoreHigh;
+    value = gCurrentPinballGame->scoreHi;
     sp0[0] = (value % 10000) / 1000 + 5;
     sp0[1] = (value % 1000) / 100 + 5;
     sp0[2] = (value % 100) / 10 + 19;
     sp0[3] = value % 10 + 5;
 
-    value = gCurrentPinballGame->scoreLow;
+    value = gCurrentPinballGame->scoreLo;
     sp0[4] = value / 10000000 + 5;
     sp0[5] = (value % 10000000) / 1000000 + 19;
     sp0[6] = (value % 1000000) / 100000 + 5;

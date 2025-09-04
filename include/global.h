@@ -149,8 +149,8 @@ struct PinballGame
     /*0x038*/ u32 scoreAddStepSize; //score to add every frame until scoreAddedInFrame score has been added to player's total
     /*0x03C*/ u32 scoreAddedInFrame; //score to add in a bonus field or mode (by completion or other ways, like hitting Duskulls)
     /*0x040*/ u32 scoreAdditionAccumulator; //score left to be counted up on the score registers
-    /*0x044*/ u32 scoreLow; //counts score until 99_999_999, overflows into scoreHigh
-    /*0x048*/ u32 scoreHigh; //counts score until 9_999, then freezes total score to 999_999_999_999!
+    /*0x044*/ u32 scoreLo; //counts score until 99_999_999, overflows into scoreHi
+    /*0x048*/ u32 scoreHi; //counts score until 9_999, then freezes total score to 999_999_999_999!
     /*0x04C*/ s16 unk4C;
     /*0x04E*/ s16 unk4E;
     /*0x050*/ u8 filler50[0x4];
