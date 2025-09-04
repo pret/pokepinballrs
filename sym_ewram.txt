@@ -309,7 +309,7 @@ gUnknown_0201A4F4: @ 0x0201A4F4
 	.space 0x4
 gSelectedBonusField: @ 0x0201A4F8
 	.space 0x8
-gUnknown_0201A500: @ 0x0201A500
+gHighScoreNameEntry: @ 0x0201A500
 	.space 0x10
 gUnknown_0201A510: @ 0x0201A510
 	.space 0x4

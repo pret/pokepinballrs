@@ -128,7 +128,7 @@ void Intro_State0_929C(void)
   DmaCopy16(3, gIntroCopyright_Gfx, BG_CHAR_ADDR(1), BG_SCREEN_SIZE);
   DmaCopy16(3, gIntroCopyright_Pal, BG_PLTT, BG_PLTT_SIZE);
 
-  gMain.unk16 = REG_DISPCNT;
+  gMain.dispcntBackup = REG_DISPCNT;
   gUnknown_0202BF10 = 0;
   gIntroSceneIndex = 0;
 
@@ -182,7 +182,7 @@ void sub_93F8(void)
         m4aSoundMain();
         VBlankIntrWait();
         DmaCopy32(3, gOamBuffer, (void *)OAM, OAM_SIZE);
-        REG_DISPCNT = gMain.unk16;
+        REG_DISPCNT = gMain.dispcntBackup;
         REG_BG0HOFS = gMain.bgOffsets[0].xOffset;
         REG_BG0VOFS = gMain.bgOffsets[0].yOffset;
         REG_BG1HOFS = gMain.bgOffsets[1].xOffset;
@@ -375,7 +375,7 @@ void sub_9920(void)
         }
         else
         {
-            sub_10708(&gUnknown_0201C1C0, (void *)0x60036e0, 8, 8);
+            CopyBgTilesRect(&gUnknown_0201C1C0, (void *)0x60036e0, 8, 8);
             gIntroSceneIndex++;
         }
 
@@ -410,7 +410,7 @@ void sub_999C(void)
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[1];
     if (++gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
     {
-        sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[4]]], (void *)0x60036E0, 8, 8);
+        CopyBgTilesRect(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[4]]], (void *)0x60036E0, 8, 8);
         if (++gUnknown_0202ADA0[4] > 3)
         {
             gUnknown_0201A450[3].unkC = 1;
@@ -447,9 +447,9 @@ void sub_9AB8(void)
     if (++gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
     {
         if (gUnknown_0202ADA0[4] < 7)
-            sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[0x4]]], (void *)0x60036e0, 8, 8);
+            CopyBgTilesRect(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[0x4]]], (void *)0x60036e0, 8, 8);
         else
-            sub_10708(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[0x4]]], (void *)0x60032c0, 10, 10);
+            CopyBgTilesRect(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[0x4]]], (void *)0x60032c0, 10, 10);
 
         gUnknown_0202ADA0[0x4]++;
     }
@@ -988,7 +988,7 @@ void sub_A968(void)
     DmaCopy16(3, gUnknown_080E1740, (void *) 0x600F000, 0x800);
     DmaCopy16(3, gUnknown_080E1F40, (void *) 0x6000000, 0x4000);
     DmaCopy16(3, gUnknown_080E1540, PLTT, 0x60);
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 
     sub_AAA8();
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
@@ -1145,7 +1145,7 @@ void sub_ADFC(void)
     gUnknown_0202ADA0[0x5] = 0;
     gUnknown_0202ADA0[0x2] = 0;
 
-    sub_10708(&gUnknown_03002300, (void *) 0x6002ee0, 8, 8);
+    CopyBgTilesRect(&gUnknown_03002300, (void *) 0x6002ee0, 8, 8);
 
     gUnknown_0202ADA0[0x6] = 0xA5;
     gUnknown_0202ADA0[0x7] = 0;
@@ -1180,7 +1180,7 @@ void sub_AE74(void)
     if (gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[4]].unk2)
     {
         gUnknown_0202ADA0[4]++;
-        sub_10708(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[4]]], (void *) 0x6002EE0, 8, 8);
+        CopyBgTilesRect(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[4]]], (void *) 0x6002EE0, 8, 8);
     }
 
     sub_B0E8();
@@ -1205,7 +1205,7 @@ void sub_AF80(void)
         if (gUnknown_0202ADA0[0x04] < 7)
         {
             gUnknown_0202ADA0[0x4]++;
-            sub_10708(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[0x4]]], (void *) 0x6002EE0, 8, 8);
+            CopyBgTilesRect(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[0x4]]], (void *) 0x6002EE0, 8, 8);
         }
     }
 
@@ -1575,7 +1575,7 @@ void sub_BA3C(void)
     DmaCopy16(3, gUnknown_0810CA00, 0x06010000, 0x2000);
     DmaCopy16(3, gUnknown_08100FE0, 0x05000200, 0x160);
 
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
     sub_BBE0();
 
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
@@ -1845,7 +1845,7 @@ void sub_C228(void)
     DmaCopy16(3, gUnknown_08112840, 0x06010000, 0x2C00);
     DmaCopy16(3, gUnknown_0810EA20, 0x05000200, 0x140);
 
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
     sub_C2F0();
     sub_C4F0();
     sub_0CBC();
@@ -2138,7 +2138,7 @@ void sub_C948(void)
     DmaCopy16(3, gUnknown_08118680, 0x06010000, 0x7000);
     DmaCopy16(3, gUnknown_08115860, 0x05000200, 0x40);
 
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
     sub_CA28();
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x1];

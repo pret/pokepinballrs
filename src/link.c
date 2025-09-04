@@ -171,7 +171,7 @@ static void sub_19CC(void) // TODO
     if ((REG_DISPSTAT & 0x8) != 0)
     {
         CpuSet(gOamBuffer, (void *) 0x7000000, 0x200);
-        REG_DISPCNT = gMain.unk16;
+        REG_DISPCNT = gMain.dispcntBackup;
 
         REG_BG0HOFS = gMain.bgOffsets[0].xOffset;
         REG_BG0VOFS = gMain.bgOffsets[0].yOffset;

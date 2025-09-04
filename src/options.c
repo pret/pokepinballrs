@@ -91,7 +91,7 @@ void Options_LoadGraphics(void)
     REG_BG1CNT = 0x109;
     REG_DISPCNT |= 0x200;
 
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gOptionsBackground_Pals, (void *)PLTT, 0x200);
     DmaCopy16(3, gOptionsText_Gfx, (void *)(VRAM + 0x4000), 0x1800);
@@ -101,8 +101,8 @@ void Options_LoadGraphics(void)
 
     if (gGameBoyPlayerEnabled != TRUE)
     {
-         sub_1068C(0x12, 4, 2, 1, 2);
-         sub_1068C(0x12, 5, 3, 2, 2);
+        SetStringPalette(18, 4, 2, 1, 2);
+        SetStringPalette(18, 5, 3, 2, 2);
     }
 
     DmaCopy16(3, gUnknown_03005C00, (void *)VRAM, 0x800);

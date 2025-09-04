@@ -62,7 +62,7 @@ void LoadEReaderGraphics(void)
 
     gMain.bgOffsets[0].xOffset = 0xffe8;
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
     DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
@@ -328,7 +328,7 @@ void Ereader_State6_343C(void)
 
     gMain.bgOffsets[0].xOffset = 0xffe8;
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
     DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
@@ -421,7 +421,7 @@ void sub_377C(void)
     {
         for(iVar4 = 0; iVar4 < 0x18; iVar4++)
         {
-            sub_10708(gUnknown_080ACC60, &gUnknown_03001800[iVar2][iVar4*0x20], 1, 2);
+            CopyBgTilesRect(gUnknown_080ACC60, &gUnknown_03001800[iVar2][iVar4*0x20], 1, 2);
         }
     }
 }
@@ -435,7 +435,7 @@ void sub_37B4(s8 arg0)
     {
         for (iVar3 = 0; iVar3 < 0x18; iVar3++)
         {
-            sub_10708(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
+            CopyBgTilesRect(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
         }
     }
 }
@@ -445,7 +445,7 @@ void sub_3828(s8 arg0, s8 arg1)
     s32 quotient = arg1 / 0x18;
     s32 remainder = arg1 % 0x18;
 
-    sub_10708(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
+    CopyBgTilesRect(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
 }
 
 void sub_38A0(s8 arg0, u16 arg1)
@@ -453,7 +453,7 @@ void sub_38A0(s8 arg0, u16 arg1)
     s32 quotient = arg0 / 0x18;
     s32 remainder = arg0 % 0x18;
 
-    sub_10708(gUnknown_080ACC60 + arg1, &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
+    CopyBgTilesRect(gUnknown_080ACC60 + arg1, &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
 }
 
 s16 GetEReaderCardIndex(void)

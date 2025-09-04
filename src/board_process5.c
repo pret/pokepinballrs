@@ -32,22 +32,22 @@ void AllBoardProcess_5A_11B9C(void)
 
 void sub_11C14(s16 arg0)
 {
-    struct BallState *var0 = &gCurrentPinballGame->unk1334[arg0];
-    var0->positionQ0.x = gUnknown_02031520.unk14.unk26;
-    var0->positionQ0.y = gUnknown_02031520.unk14.unk28;
-    var0->positionQ8.x = Q_24_8(var0->positionQ0.x);
-    var0->positionQ8.y = Q_24_8(var0->positionQ0.y);
-    var0->positionQ1.x = gUnknown_02031520.unk14.unk26 * 2;
-    var0->positionQ1.y = gUnknown_02031520.unk14.unk28 * 2;
-    var0->unkE = 0x100;
-    var0->velocity.x = 0;
-    var0->velocity.y = 0;
+    struct BallState *ball = &gCurrentPinballGame->unk1334[arg0];
+    ball->positionQ0.x = gUnknown_02031520.unk14.unk26;
+    ball->positionQ0.y = gUnknown_02031520.unk14.unk28;
+    ball->positionQ8.x = Q_24_8(ball->positionQ0.x);
+    ball->positionQ8.y = Q_24_8(ball->positionQ0.y);
+    ball->positionQ1.x = gUnknown_02031520.unk14.unk26 * 2;
+    ball->positionQ1.y = gUnknown_02031520.unk14.unk28 * 2;
+    ball->scale = 0x100;
+    ball->velocity.x = 0;
+    ball->velocity.y = 0;
     if (gMain.selectedField == FIELD_RUBY)
-        var0->unk1 = 3;
+        ball->oamPriority = 3;
     else
-        var0->unk1 = 1;
+        ball->oamPriority = 1;
 
-    var0->unk6 = 0;
+    ball->unk6 = 0;
     gCurrentPinballGame->unk5B2 = 1;
 }
 

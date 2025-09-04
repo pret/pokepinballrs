@@ -1097,7 +1097,7 @@ void sub_2E6AC(void)
             gCurrentPinballGame->unk316 = -25;
             gCurrentPinballGame->unk318 = (gCurrentPinballGame->unk320 / 10 + 157) * 10;
             gCurrentPinballGame->unk31A = (gCurrentPinballGame->unk322 / 10 + 134) * 10;
-            gCurrentPinballGame->ball->unk1 = 1;
+            gCurrentPinballGame->ball->oamPriority = 1;
         }
 
         if (gCurrentPinballGame->unk1F)
@@ -1125,7 +1125,7 @@ void sub_2E6AC(void)
                     gCurrentPinballGame->unk1F = 0;
                     gCurrentPinballGame->ball->velocity.x = 128;
                     gCurrentPinballGame->ball->velocity.y = 256;
-                    gCurrentPinballGame->ball->unk1 = 3;
+                    gCurrentPinballGame->ball->oamPriority = 3;
                     gCurrentPinballGame->unk24 = 0;
                     m4aSongNumStart(SE_UNKNOWN_0xE5);
                     sub_11B0(7);

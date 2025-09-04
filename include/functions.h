@@ -173,10 +173,10 @@ extern void sub_10170(u8 *, u8 *, u16, u16); // Very much subject to change
 extern void sub_102A8(u8 *, u8 *, u16, u16);
 extern void sub_10424(void);
 extern void sub_10480(void);
-extern void sub_1050C(void);
-extern void sub_10528(void);
+extern void UnblankLCD(void);
+extern void ForceBlankLDC(void);
 extern void sub_10544(void);
-extern void PrintChar(u16 glyph, u16 color, int x, int y, int arg4, int arg5);
+extern void PrintString(u16 glyph, u16 color, int x, int y, int arg4, int arg5);
 
 // src/intro.c
 extern void IntroMain(void);
@@ -359,13 +359,11 @@ extern void ResetPokedex(void);
 
 // asm/rom_1068C.s
 
-extern void sub_10618(int, int, int, int, int, int);
-void sub_1068C(int, int, int, int, u16);
-extern void sub_10708(void *volatile, void *volatile, s16, s16);
-//extern ? sub_10750();
-//extern ? sub_10798();
+extern void CopyString(int, int, int, int, int, int);
+void SetStringPalette(int, int, int, int, u16);
+extern void CopyBgTilesRect(void *volatile, void *volatile, s16, s16);
 //extern ? sub_10860();
-extern void ClearSomeArray(void);
+extern void ClearHighScoreNameEntry(void);
 
 // asm/rom_11B9C.s
 

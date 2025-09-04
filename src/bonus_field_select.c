@@ -65,7 +65,7 @@ void LoadBonusFieldSelectGraphics(void)
     REG_BG2CNT = BGCNT_CHARBASE(2) | BGCNT_SCREENBASE(2) | BGCNT_PRIORITY(3) | BGCNT_TXT256x256;
     REG_DISPCNT |= DISPCNT_BG2_ON;
 
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gBonusFieldSelectStages_Pals, (void *)PLTT, 0x200);
     DmaCopy16(3, gFieldSelectWindow_Gfx, (void *)(VRAM + 0x4000), 0x4000);

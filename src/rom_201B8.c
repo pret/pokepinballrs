@@ -653,7 +653,7 @@ void sub_1DDDC(void)
             gCurrentPinballGame->unk2A5 = 6;
             gCurrentPinballGame->unk2A6 = 0;
             gCurrentPinballGame->unk2A2 = 3;
-            gCurrentPinballGame->ball->unk1 = 0;
+            gCurrentPinballGame->ball->oamPriority = 0;
             gCurrentPinballGame->unk3C = 5000;
             m4aSongNumStart(SE_UNKNOWN_0xD5);
             sub_11B0(7);
@@ -725,7 +725,7 @@ void sub_1DDDC(void)
             gCurrentPinballGame->unk2A5 = 12;
             gCurrentPinballGame->unk2A6 = 0;
             gCurrentPinballGame->unk2A2 = 6;
-            gCurrentPinballGame->ball->unk1 = 0;
+            gCurrentPinballGame->ball->oamPriority = 0;
             break;
         case 6:
             if (gUnknown_086AD862[gCurrentPinballGame->unk2A5][1] > gCurrentPinballGame->unk2A6)
@@ -749,7 +749,7 @@ void sub_1DDDC(void)
                     gCurrentPinballGame->ball->positionQ8.y = 0xC700;
                     gCurrentPinballGame->ball->velocity.x = -120;
                     gCurrentPinballGame->ball->velocity.y = 210;
-                    gCurrentPinballGame->ball->unk1 = 3;
+                    gCurrentPinballGame->ball->oamPriority = 3;
                 }
 
                 if (gCurrentPinballGame->unk2A5 == 14)

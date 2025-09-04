@@ -1560,7 +1560,7 @@ void sub_2AADC(void)
             gCurrentPinballGame->unk71D[2] = 2;
         }
         
-        gCurrentPinballGame->ball->unk1 = 0;
+        gCurrentPinballGame->ball->oamPriority = 0;
         gCurrentPinballGame->ball->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
         gCurrentPinballGame->ball->positionQ8.x += gCurrentPinballGame->ball->velocity.x;
@@ -1649,8 +1649,8 @@ void sub_2AADC(void)
         
         if (spriteGroup->available != 0) 
         {
-            spriteGroup->baseX = gCurrentPinballGame->ball->unk24;
-            spriteGroup->baseY = gCurrentPinballGame->ball->unk26;
+            spriteGroup->baseX = gCurrentPinballGame->ball->screenPosition.x;
+            spriteGroup->baseY = gCurrentPinballGame->ball->screenPosition.y;
             
             if (gCurrentPinballGame->unk13 == 5) 
             {
@@ -1687,9 +1687,7 @@ void sub_2AADC(void)
         
         if (gCurrentPinballGame->unk5A8 == 10 && gCurrentPinballGame->unk5A6 == 3)
             gMain.unk44[3]->available = 0;
-        
         break;
-        
     case 11:
         //TODO: fakematch; unused i. Here for the +4 to parse correctly;
         DmaCopy16(3, gUnknown_08137E14[i=gCurrentPinballGame->ballUpgradeType + 4], 0x05000220, 0x20);
@@ -1703,21 +1701,21 @@ void sub_2AADC(void)
         gCurrentPinballGame->unk5B0 = ArcTan2(-tempVector.x, tempVector.y);
         
         if (gMain.selectedField > 3)
+        {
             gCurrentPinballGame->unk389 = 0;
+        }
         else if ((gCurrentPinballGame->unk13 == 4 && gCurrentPinballGame->unk17 == 9) ||
-                (gCurrentPinballGame->unk13 == 8 && gCurrentPinballGame->unk17 == 3))
+                 (gCurrentPinballGame->unk13 == 8 && gCurrentPinballGame->unk17 == 3))
         {
             DmaCopy16(3, &gUnknown_020306D0, 0x050003A0, 0x20);
         }
         
-        for (i = 0; i <= 3; i++) 
+        for (i = 0; i < 4; i++) 
         {
-            gCurrentPinballGame->ball->unk14[i].x = gCurrentPinballGame->ball->positionQ0.x;
-            gCurrentPinballGame->ball->unk14[i].y = gCurrentPinballGame->ball->positionQ0.y;
+            gCurrentPinballGame->ball->prevPositionsQ0[i].x = gCurrentPinballGame->ball->positionQ0.x;
+            gCurrentPinballGame->ball->prevPositionsQ0[i].y = gCurrentPinballGame->ball->positionQ0.y;
         }
-        
         break;
-        
     case 12:
         temp_r0 = 99 - gCurrentPinballGame->unk5A6;
         gCurrentPinballGame->unk5B0 -= (temp_r0 * 0x2000) / 100 - 0x2000;
@@ -1782,8 +1780,8 @@ void sub_2AADC(void)
         if (spriteGroup->available != 0) 
         {
             gCurrentPinballGame->ball->unk0 = 1;
-            spriteGroup->baseX = gCurrentPinballGame->ball->unk24;
-            spriteGroup->baseY = gCurrentPinballGame->ball->unk26;
+            spriteGroup->baseX = gCurrentPinballGame->ball->screenPosition.x;
+            spriteGroup->baseY = gCurrentPinballGame->ball->screenPosition.y;
             temp_r3 = gUnknown_086ACFF4[gCurrentPinballGame->unk5A8 - 17] + 7;
             
             if (gCurrentPinballGame->unk13 == 5) 
@@ -1877,8 +1875,8 @@ void sub_2AADC(void)
         
         if (spriteGroup->available != 0) 
         {
-            spriteGroup->baseX = gCurrentPinballGame->ball->unk24;
-            spriteGroup->baseY = gCurrentPinballGame->ball->unk26;
+            spriteGroup->baseX = gCurrentPinballGame->ball->screenPosition.x;
+            spriteGroup->baseY = gCurrentPinballGame->ball->screenPosition.y;
             
             temp_r3 = gUnknown_086ACFF4[gCurrentPinballGame->unk5A8 - 17] + 7;
             
@@ -2138,7 +2136,7 @@ void sub_2AADC(void)
         break;
         
     case 33:
-        gCurrentPinballGame->ball->unk1 = 3;
+        gCurrentPinballGame->ball->oamPriority = 3;
         sub_23300();
         
         if (gCurrentPinballGame->unk5A6 <= 229 && gCurrentPinballGame->unk210 == 150)
@@ -2262,7 +2260,7 @@ void sub_2AADC(void)
         
     case 34:
         gCurrentPinballGame->unk5F7 = 0;
-        gCurrentPinballGame->ball->unk1 = 3;
+        gCurrentPinballGame->ball->oamPriority = 3;
         gCurrentPinballGame->unk5A4 = 0;
         gCurrentPinballGame->unk5A6 = 0;
         gCurrentPinballGame->unk5A8 = 0;
@@ -2324,12 +2322,12 @@ void sub_2AADC(void)
         break;
     }
     
-    gCurrentPinballGame->ball->unk14[0].x = gCurrentPinballGame->ball->positionQ0.x;
-    gCurrentPinballGame->ball->unk14[0].y = gCurrentPinballGame->ball->positionQ0.y;
+    gCurrentPinballGame->ball->prevPositionsQ0[0].x = gCurrentPinballGame->ball->positionQ0.x;
+    gCurrentPinballGame->ball->prevPositionsQ0[0].y = gCurrentPinballGame->ball->positionQ0.y;
     
     for (i = 2; i >= 0; i--) 
     {
-        gCurrentPinballGame->ball->unk14[i + 1].x = gCurrentPinballGame->ball->unk14[i].x;
-        gCurrentPinballGame->ball->unk14[i + 1].y = gCurrentPinballGame->ball->unk14[i].y;
+        gCurrentPinballGame->ball->prevPositionsQ0[i + 1].x = gCurrentPinballGame->ball->prevPositionsQ0[i].x;
+        gCurrentPinballGame->ball->prevPositionsQ0[i + 1].y = gCurrentPinballGame->ball->prevPositionsQ0[i].y;
     }
 }
