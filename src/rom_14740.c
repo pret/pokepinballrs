@@ -1179,3 +1179,63 @@ s16 COLLISION_CHECK_SAPPHIRE_16090(struct Vector16 *arg0, u16* arg1) {
     sub_1642C((s32) some_enum, &return_val, arg1);
     return return_val;
 }
+
+void sub_162B8(struct Vector16 *arg0, s16 *arg1, u8 *arg2) {
+
+    s16 deltaX;
+    s16 deltaY;
+    u16 maskedResult = 0;
+    u8 lowerNibble = 0;
+    s32 ix = 0;
+
+    if (gCurrentPinballGame->unk5B2 == 0)
+    {
+        if (gCurrentPinballGame->unk24 != 0)
+            return;
+
+        deltaX = arg0->x + gCurrentPinballGame->unk184[0].x;
+        deltaY = arg0->y + gCurrentPinballGame->unk184[0].y;
+
+        if (deltaX <= 63U && deltaY <= 63U) 
+        {
+            maskedResult = 0xFFF0 & gUnknown_08252B10[(deltaY * 64) + deltaX];
+            lowerNibble = 0xF & gUnknown_08252B10[(deltaY * 64) + deltaX];
+            ix = 0;
+        }
+         if (lowerNibble == 0) 
+        {
+            deltaX = gCurrentPinballGame->unk184[1].x + arg0->x;
+            deltaY = gCurrentPinballGame->unk184[1].y + arg0->y;
+            
+            if (deltaX <= 63U && deltaY <= 63U) 
+            {
+                maskedResult = 0xFFF0 & gUnknown_08252B10[(deltaY * 64) + deltaX];
+                lowerNibble = 0xF & gUnknown_08252B10[(deltaY * 64) + deltaX];
+                ix = 1;
+            }
+            
+            if (lowerNibble == 0) 
+            {
+                deltaX = gCurrentPinballGame->unk184[2].x + arg0->x;
+                deltaY = gCurrentPinballGame->unk184[2].y + arg0->y;
+                
+                if (deltaX <= 63U && deltaY <= 63U) 
+                {
+                    maskedResult = 0xFFF0 & gUnknown_08252B10[(deltaY * 64) + deltaX];
+                    lowerNibble = 0xF & gUnknown_08252B10[(deltaY * 64) + deltaX];  
+                    ix = 2;
+                }
+                
+                if (lowerNibble == 0)
+                    return;
+            }
+        }
+        gCurrentPinballGame->unk170[ix] = 6;      
+
+        *arg1 = maskedResult;
+        *arg2 = lowerNibble;
+        
+        if (gCurrentPinballGame->unk624 <= 0)
+            gCurrentPinballGame->unk624 = 2;
+    }
+}
