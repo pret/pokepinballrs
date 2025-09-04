@@ -181,14 +181,14 @@ void GroudonBoardProcess_3B_3B49C(void)
         break;
     case 3:
         sub_351A8();
-        if (gCurrentPinballGame->unk1C)
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             gCurrentPinballGame->unk18 = 181;
 
         if (gCurrentPinballGame->unk18 == 180)
         {
-            gCurrentPinballGame->unk1C = 1;
-            gCurrentPinballGame->unk38 = 400000;
-            gCurrentPinballGame->unk3C = 50000000;
+            gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddedInFrame = 50000000;
         }
 
         if (gCurrentPinballGame->unk18 < 240)
@@ -221,14 +221,14 @@ void GroudonBoardProcess_3B_3B49C(void)
         break;
     case 5:
         sub_351A8();
-        if (gCurrentPinballGame->unk1C)
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             gCurrentPinballGame->unk18 = 181;
 
         if (gCurrentPinballGame->unk18 == 180)
         {
-            gCurrentPinballGame->unk1C = 1;
-            gCurrentPinballGame->unk38 = 400000;
-            gCurrentPinballGame->unk3C = 50000000;
+            gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddedInFrame = 50000000;
         }
 
         if (gCurrentPinballGame->unk18 < 240)
@@ -281,7 +281,7 @@ void sub_3B7C4(void)
         if (gCurrentPinballGame->unk452 == 35)
         {
             MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A22D8);
-            gCurrentPinballGame->unk3C = 500000;
+            gCurrentPinballGame->scoreAddedInFrame = 500000;
             sub_11B0(7);
             gCurrentPinballGame->unk385++;
             if (gCurrentPinballGame->unk385 >= gCurrentPinballGame->unk384)

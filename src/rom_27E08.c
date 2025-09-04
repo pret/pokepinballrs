@@ -900,7 +900,7 @@ void sub_225F0(void)
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
 
-                        gCurrentPinballGame->unk3C = (gCurrentPinballGame->unk194 - gCurrentPinballGame->unk193) * 100;
+                        gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->unk194 - gCurrentPinballGame->unk193) * 100;
                         gCurrentPinballGame->unk196 = (gCurrentPinballGame->unk194 * 9) + 1;
                         gCurrentPinballGame->unk193 = gCurrentPinballGame->unk194;
                     }
@@ -916,7 +916,7 @@ void sub_225F0(void)
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
 
-                        gCurrentPinballGame->unk3C = 100;
+                        gCurrentPinballGame->scoreAddedInFrame = 100;
                     }
                 }
             }
@@ -1022,7 +1022,7 @@ void sub_22A30(void)
         }
 
         if (gCurrentPinballGame->unk2C3 == 14)
-            gCurrentPinballGame->unk3C = 2000000;
+            gCurrentPinballGame->scoreAddedInFrame = 2000000;
     }
 
     if (gCurrentPinballGame->unk2C3 >= 14 && gCurrentPinballGame->unk2C3 < 38 && gCurrentPinballGame->unk290 % 7 == 0)
@@ -1094,7 +1094,7 @@ void sub_22D54(void)
         }
 
         if (gCurrentPinballGame->unk2C6 == 78)
-            gCurrentPinballGame->unk3C = 100000;
+            gCurrentPinballGame->scoreAddedInFrame = 100000;
 
         DmaCopy16(3, gUnknown_084FD18C[0], (void *)0x06011CE0, 0x200);
     }
@@ -2968,13 +2968,13 @@ void sub_26A10(void)
             if (gCurrentPinballGame->unk18 < 490)
             {
                 sub_2E094();
-                if (gCurrentPinballGame->unk1C && gCurrentPinballGame->unk18 >= 428)
+                if (gCurrentPinballGame->scoreCounterAnimationEnabled && gCurrentPinballGame->unk18 >= 428)
                     gCurrentPinballGame->unk18 = 428;
 
                 if (gCurrentPinballGame->unk18 == 394)
                 {
-                    gCurrentPinballGame->unk1C = 1;
-                    gCurrentPinballGame->unk3C = 500000;
+                    gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+                    gCurrentPinballGame->scoreAddedInFrame = 500000;
                 }
             }
             else
@@ -3231,12 +3231,12 @@ void sub_27080(void)
                         gCurrentPinballGame->unk6C4 = 0;
                     }
 
-                    if (gCurrentPinballGame->unk1C)
+                    if (gCurrentPinballGame->scoreCounterAnimationEnabled)
                         gCurrentPinballGame->unk18 = 181;
 
                     if (gCurrentPinballGame->unk18 == 180) {
-                        gCurrentPinballGame->unk1C = 1;
-                        gCurrentPinballGame->unk3C = 5000000;
+                        gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+                        gCurrentPinballGame->scoreAddedInFrame = 5000000;
                     }
                 }
 
@@ -3440,7 +3440,7 @@ void sub_278F4(void)
             ((gCurrentPinballGame->unk24 == 0 && gCurrentPinballGame->unk25E <= 5) || (gCurrentPinballGame->unk24 == 2 && gCurrentPinballGame->unk25E > 5)) &&
             gCurrentPinballGame->unk26B < 3)
         {    
-            gCurrentPinballGame->unk3C = 10000;
+            gCurrentPinballGame->scoreAddedInFrame = 10000;
             MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F618);
             gCurrentPinballGame->unk17 = 1;
             gCurrentPinballGame->unk71D[gCurrentPinballGame->unk26B] = 5;

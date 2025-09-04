@@ -366,7 +366,7 @@ void sub_4A518(void)
     if (gMain.mainState != STATE_GAME_IDLE)
         gCurrentPinballGame->ballSpeed = gMain_saveData.ballSpeed;
 
-    gCurrentPinballGame->unk38 = 40000;
+    gCurrentPinballGame->scoreAddStepSize = 40000;
     gCurrentPinballGame->unk1D = 0;
     gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
     gCurrentPinballGame->unk1330 = &gCurrentPinballGame->unk1334[0];
@@ -870,8 +870,8 @@ void PinballGame_State3_4B20C(void)
     sub_02B4();
     m4aMPlayAllStop();
     sub_0D10();
-    gMain.unk58 = gCurrentPinballGame->unk44;
-    gMain.unk5C = gCurrentPinballGame->unk48;
+    gMain.finalScoreLow = gCurrentPinballGame->scoreLow;
+    gMain.finalScoreHigh = gCurrentPinballGame->scoreHigh;
     if (gMain.unkE == 2)
         sub_4B654();
 

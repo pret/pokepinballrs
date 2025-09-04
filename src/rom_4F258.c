@@ -82,7 +82,7 @@ void sub_4E920(void)
         if (gCurrentPinballGame->unk716 == 3)
         {
             m4aSongNumStart(SE_UNKNOWN_0x73);
-            gCurrentPinballGame->unk3C = 500;
+            gCurrentPinballGame->scoreAddedInFrame = 500;
             sub_11B0(7);
         }
     }

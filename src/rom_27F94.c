@@ -68,7 +68,7 @@ void sub_27F94(void)
         break;
     case 1:
         PickSpeciesForCatchEmMode();
-        if (gMain.mainState != 3)
+        if (gMain.mainState != STATE_GAME_IDLE)
             SaveFile_SetPokedexFlags(gCurrentPinballGame->currentSpecies, 1);
 
         gCurrentPinballGame->unk17++;
@@ -765,7 +765,7 @@ void sub_29334(void)
             if (gCurrentPinballGame->unk6C6 + 6 == gCurrentPinballGame->unk625)
             {
                 gCurrentPinballGame->unk6C5 = 2;
-                gCurrentPinballGame->unk3C = 300000;
+                gCurrentPinballGame->scoreAddedInFrame = 300000;
             }
             else
             {
@@ -1441,32 +1441,32 @@ void sub_2A354(void)
     case 30:
     case 31:
     case 32:
-        if (gCurrentPinballGame->unk1C)
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             gCurrentPinballGame->unk6DE = 81;
 
         if (gCurrentPinballGame->unk6DE == 70)
         {
-            gCurrentPinballGame->unk1C = 1;
-            gCurrentPinballGame->unk3C = (gCurrentPinballGame->unk6DC - 23) * 1000000;
+            gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+            gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->unk6DC - 23) * 1000000;
         }
         break;
     case 33:
         if (gCurrentPinballGame->unk6DE == 70)
         {
             m4aSongNumStart(SE_UNKNOWN_0x91);
-            gCurrentPinballGame->unk3C = 100;
+            gCurrentPinballGame->scoreAddedInFrame = 100;
         }
         break;
     case 34:
         if (gCurrentPinballGame->unk6DE == 70) {
             m4aSongNumStart(SE_UNKNOWN_0x91);
-            gCurrentPinballGame->unk3C = 500;
+            gCurrentPinballGame->scoreAddedInFrame = 500;
         }
         break;
     case 35:
         if (gCurrentPinballGame->unk6DE == 70) {
             m4aSongNumStart(SE_UNKNOWN_0x91);
-            gCurrentPinballGame->unk3C = 900;
+            gCurrentPinballGame->scoreAddedInFrame = 900;
         }
         break;
     case 36:
@@ -2194,14 +2194,14 @@ void sub_2AADC(void)
             }
         }
         
-        if (gCurrentPinballGame->unk1C != 0) 
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled) 
             gCurrentPinballGame->unk5A6 = 181;
         
         if (gCurrentPinballGame->unk5A6 == 180) 
         {
             if (gCurrentPinballGame->unk13 == 4 || gCurrentPinballGame->unk13 == 8) 
             {
-                gCurrentPinballGame->unk1C = 1;
+                gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
                 
                 switch (gCurrentPinballGame->currentSpecies) 
                 {
@@ -2214,46 +2214,46 @@ void sub_2AADC(void)
                 case 144:
                 case 151:
                 case 160:
-                    gCurrentPinballGame->unk38 = 0x13880;
-                    gCurrentPinballGame->unk3C = 0x4C4B40;
+                    gCurrentPinballGame->scoreAddStepSize = 80000;
+                    gCurrentPinballGame->scoreAddedInFrame = 5000000;
                     break;
                 case 195:
                 case 196:
-                    gCurrentPinballGame->unk38 = 0x222E0;
-                    gCurrentPinballGame->unk3C = 0x989680;
+                    gCurrentPinballGame->scoreAddStepSize = 140000;
+                    gCurrentPinballGame->scoreAddedInFrame = 10000000;
                     break;
                 default:
-                    gCurrentPinballGame->unk3C = 0xF4240;
+                    gCurrentPinballGame->scoreAddedInFrame = 1000000;
                     break;
                 }
             }
             
             if (gCurrentPinballGame->unk13 == 5) 
             {
-                gCurrentPinballGame->unk1C = 1;
+                gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
             
                 if (gCurrentPinballGame->currentSpecies == 154) 
                 {
-                    gCurrentPinballGame->unk38 = 0x222E0;
-                    gCurrentPinballGame->unk3C = 0x989680;
+                    gCurrentPinballGame->scoreAddStepSize = 140000;
+                    gCurrentPinballGame->scoreAddedInFrame = 10000000;
                 }
                 else
-                    gCurrentPinballGame->unk3C = 0x2DC6C0;
+                    gCurrentPinballGame->scoreAddedInFrame = 3000000;
             }
             
             if (gMain.selectedField > MAIN_FIELD_COUNT) 
             {
-                gCurrentPinballGame->unk1C = 1;
+                gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
                 
                 if (gMain.selectedField == FIELD_RAYQUAZA) 
                 {
-                    gCurrentPinballGame->unk38 = 0x61A80;
-                    gCurrentPinballGame->unk3C = 0x01C9C380;
+                    gCurrentPinballGame->scoreAddStepSize = 400000;
+                    gCurrentPinballGame->scoreAddedInFrame = 30000000;
                 }
                 else
                 {
-                    gCurrentPinballGame->unk38 = 0x61A80;
-                    gCurrentPinballGame->unk3C = 0x989680;
+                    gCurrentPinballGame->scoreAddStepSize = 400000;
+                    gCurrentPinballGame->scoreAddedInFrame = 10000000;
                 }
             }
         }

@@ -125,7 +125,7 @@ struct PinballGame
     /*0x018*/ u16 unk18;
     /*0x01A*/ s8 unk1A;
     /*0x01B*/ u8 unk1B;
-    /*0x01C*/ u8 unk1C;
+    /*0x01C*/ bool8 scoreCounterAnimationEnabled;
     /*0x01D*/ u8 unk1D;
     /*0x01E*/ u8 unk1E;
     /*0x01F*/ u8 unk1F;
@@ -146,11 +146,11 @@ struct PinballGame
     /*0x034*/ s8 unk34;
     /*0x035*/ s8 area;
     /*0x036*/ s8 unk36;
-    /*0x038*/ u32 unk38; //score to add every frame until unk3C score has been added to player's total
-    /*0x03C*/ u32 unk3C; //score to add in a bonus field or mode (by completion or other ways, like hitting Duskulls)
-    /*0x040*/ u32 unk40;
-    /*0x044*/ u32 unk44;
-    /*0x048*/ u32 unk48;
+    /*0x038*/ u32 scoreAddStepSize; //score to add every frame until scoreAddedInFrame score has been added to player's total
+    /*0x03C*/ u32 scoreAddedInFrame; //score to add in a bonus field or mode (by completion or other ways, like hitting Duskulls)
+    /*0x040*/ u32 scoreAdditionAccumulator; //score left to be counted up on the score registers
+    /*0x044*/ u32 scoreLow; //counts score until 99_999_999, overflows into scoreHigh
+    /*0x048*/ u32 scoreHigh; //counts score until 9_999, then freezes total score to 999_999_999_999!
     /*0x04C*/ s16 unk4C;
     /*0x04E*/ s16 unk4E;
     /*0x050*/ u8 filler50[0x4];

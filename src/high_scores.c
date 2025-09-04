@@ -33,8 +33,8 @@ extern s8 gUnknown_02002885;
 
 struct unkStruct_2002858
 {
-    u32 unk0;
-    u32 unk4;
+    u32 newScoreHigh;
+    u32 newScoreLow;
     s16 unk8;
     u8 unkA;
     u8 unkB;
@@ -140,8 +140,8 @@ void sub_CFD4(void)
     gUnknown_02002885 = 0;
     if(gUnknown_0202C588 == 1)
     {
-        gUnknown_02002858.unk0 = gMain.unk5C;
-        gUnknown_02002858.unk4 = gMain.unk58;
+        gUnknown_02002858.newScoreHigh = gMain.finalScoreHigh;
+        gUnknown_02002858.newScoreLow = gMain.finalScoreLow;
         if(gMain.selectedField == FIELD_SAPPHIRE)
         {
             gUnknown_02002858.unkB = 1;
@@ -154,10 +154,10 @@ void sub_CFD4(void)
             gUnknown_02002882 = 0;
             gUnknown_02002880 = -1;
         }
-        gUnknown_02002858.unkC = GetNewHighScoreIndex(gUnknown_02002858.unk0, gUnknown_02002858.unk4, gUnknown_02002858.unkB);
+        gUnknown_02002858.unkC = GetNewHighScoreIndex(gUnknown_02002858.newScoreHigh, gUnknown_02002858.newScoreLow, gUnknown_02002858.unkB);
         if(gUnknown_02002858.unkC != -1)
         {
-            sub_F434(gUnknown_02002858.unk0, gUnknown_02002858.unk4, gUnknown_02002858.unkB, gUnknown_02002858.unkC);
+            sub_F434(gUnknown_02002858.newScoreHigh, gUnknown_02002858.newScoreLow, gUnknown_02002858.unkB, gUnknown_02002858.unkC);
             for(i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
             {
                 gUnknown_0202C610[gUnknown_02002858.unkB][gUnknown_02002858.unkC].data.parts.name[i] = gUnknown_0201A500[i];

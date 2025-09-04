@@ -43,7 +43,7 @@ void sub_1A98C(void)
 void sub_1A9E8(void)
 {
     if (gCurrentPinballGame->unk26 > 0)
-        gCurrentPinballGame->unk26 -= 1;
+        gCurrentPinballGame->unk26--;
 
     switch (gCurrentPinballGame->unk25)
     {
@@ -75,7 +75,7 @@ void sub_1AA38(void)
     gCurrentPinballGame->unk28 = 113;
     
     m4aSongNumStart(SE_UNKNOWN_0xCE);
-    gCurrentPinballGame->unk3C = 50000;
+    gCurrentPinballGame->scoreAddedInFrame = 50000;
 
     sub_11B0(8);
 }
@@ -243,7 +243,7 @@ void sub_1AAA0(void)
 
 void sub_1AD84(void)
 {
-    gCurrentPinballGame->unk3C = 100000;
+    gCurrentPinballGame->scoreAddedInFrame = 100000;
     if (gCurrentPinballGame->unk2DA == 3)
     {
         gCurrentPinballGame->unk2DA = 4;
@@ -292,7 +292,7 @@ void sub_1ADF4(void)
                 gCurrentPinballGame->unk28++;
             else
             {
-                if (gCurrentPinballGame->unk48 != 0 && gCurrentPinballGame->unk16C == 4)
+                if (gCurrentPinballGame->scoreHigh != 0 && gCurrentPinballGame->unk16C == 4)
                     sub_22978();
                 else
                     sub_22C6C();
@@ -300,7 +300,7 @@ void sub_1ADF4(void)
         }
         else
         {
-            if (gCurrentPinballGame->unk48 != 0 && gCurrentPinballGame->unk16C == 4)
+            if (gCurrentPinballGame->scoreHigh != 0 && gCurrentPinballGame->unk16C == 4)
                 sub_22A30();
             else
                 sub_22D54();
@@ -342,7 +342,7 @@ void sub_1AF84(void)
     gCurrentPinballGame->unk1B6 = 0;
     gCurrentPinballGame->unk28 = 0xB4;
     gCurrentPinballGame->unk1BA = 0xB4;
-    gCurrentPinballGame->unk3C = 0x7A120;
+    gCurrentPinballGame->scoreAddedInFrame = 500000;
     gMain.blendControl = 0xCE;
     gMain.blendBrightness = 0;
     gCurrentPinballGame->unk5F7 = 1;
@@ -1178,7 +1178,7 @@ void sub_1C560(void)
     gCurrentPinballGame->unk28 = 0x96;
     gMain.unk44[13]->available = 0;
     gCurrentPinballGame->unk5F3 = 0;
-    gCurrentPinballGame->unk3C = 10000;
+    gCurrentPinballGame->scoreAddedInFrame = 10000;
     gCurrentPinballGame->unk5F7 = 1;
     sub_11B0(8);
 }
