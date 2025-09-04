@@ -24,19 +24,19 @@ void MainBoardProcess_7B_12524(void)
 
     currentBallState->unkC = currentBallState->unkA;
     
-    if (!gCurrentPinballGame->unk5F7 && gCurrentPinballGame->unk5F8 > 0)
+    if (!gCurrentPinballGame->unk5F7 && gCurrentPinballGame->ballUpgradeCounter > 0)
     {
-        if (--gCurrentPinballGame->unk5F8 == 0)
+        if (--gCurrentPinballGame->ballUpgradeCounter == 0)
         {
-            if (gCurrentPinballGame->unk5F6 > 0)
+            if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
             {
-                gCurrentPinballGame->unk5F6--;
+                gCurrentPinballGame->ballUpgradeType--;
                 
-                if (gCurrentPinballGame->unk5F6 > 0)
-                    gCurrentPinballGame->unk5F8 = 3600;
+                if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
+                    gCurrentPinballGame->ballUpgradeCounter = 3600;
             }
             
-            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
         }
     }
 
@@ -77,7 +77,7 @@ void MainBoardProcess_7B_12524(void)
             oamData->priority = currentBallState->unk1;
 
         r8 = r8; // this fools the compiler into thinking r8 holds something that could need sign extending/truncation
-        DmaCopy16(3, gUnknown_083BB16C[r8 + gCurrentPinballGame->unk5F6 * 17], (void *)0x6010400, 0x80);
+        DmaCopy16(3, gUnknown_083BB16C[r8 + gCurrentPinballGame->ballUpgradeType * 17], (void *)0x6010400, 0x80);
 
         if (spriteGroup->baseY > 200)
             spriteGroup->baseY = 200;
@@ -118,7 +118,7 @@ void MainBoardProcess_7B_12524(void)
         else
             oamData->priority = currentBallState->unk1;
         
-        DmaCopy16(3, gUnknown_083BB16C[r8 + gCurrentPinballGame->unk5F6 * 17], (void *)0x6010400, 0x80);
+        DmaCopy16(3, gUnknown_083BB16C[r8 + gCurrentPinballGame->ballUpgradeType * 17], (void *)0x6010400, 0x80);
 
         if (spriteGroup->baseY > 200)
             spriteGroup->baseY = 200;
@@ -267,7 +267,7 @@ void BonusBoardProcess_7B_12BF8()
     }
 
     r5 = gCurrentPinballGame->ball->unkA >> 12;
-    DmaCopy16(3, &gUnknown_083BB16C[r5 + gCurrentPinballGame->unk5F6 * 17], (void *)VRAM + 0x10400, 0x80);
+    DmaCopy16(3, &gUnknown_083BB16C[r5 + gCurrentPinballGame->ballUpgradeType * 17], (void *)VRAM + 0x10400, 0x80);
 
     unk1334_0->positionQ0.x = unk1334_0->positionQ1.x / 2;
     unk1334_0->positionQ0.y = unk1334_0->positionQ1.y / 2;
@@ -342,7 +342,7 @@ void BonusBoardProcess_7B_12BF8()
                 gCurrentPinballGame->unk392++;
                 if (r5 >= 7 && r5 <= 10)
                 {
-                    DmaCopy16(3, &gUnknown_08137E14[(s16) (gCurrentPinballGame->unk5F6 + 4)], (void *)PLTT + 0x220, 0x20);
+                    DmaCopy16(3, &gUnknown_08137E14[(s16) (gCurrentPinballGame->ballUpgradeType + 4)], (void *)PLTT + 0x220, 0x20);
                 }
             }
 
@@ -357,7 +357,7 @@ void BonusBoardProcess_7B_12BF8()
                 gCurrentPinballGame->unk388 = 0;
                 spriteGroup->available = FALSE;
                 gCurrentPinballGame->unk1F = 0;
-                DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)PLTT + 0x220, 0x20);
+                DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
             }
         }
         else
@@ -393,26 +393,26 @@ void BonusBoardProcess_7B_12BF8()
             {
                 gCurrentPinballGame->unk388 = 0;
                 spriteGroup->available = FALSE;
-                DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)PLTT + 0x220, 0x20);
+                DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
             }
         }
     }
     else
     {
-        if (gCurrentPinballGame->unk5F7 == 0 && gCurrentPinballGame->unk5F8 != 0)
+        if (gCurrentPinballGame->unk5F7 == 0 && gCurrentPinballGame->ballUpgradeCounter != 0)
         {
-            gCurrentPinballGame->unk5F8 -= 1;
-            if (gCurrentPinballGame->unk5F8 == 0)
+            gCurrentPinballGame->ballUpgradeCounter -= 1;
+            if (gCurrentPinballGame->ballUpgradeCounter == 0)
             {
-                if (gCurrentPinballGame->unk5F6 > 0)
+                if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                 {
-                    gCurrentPinballGame->unk5F6 -= 1;
-                    if (gCurrentPinballGame->unk5F6 > 0)
+                    gCurrentPinballGame->ballUpgradeType -= 1;
+                    if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                     {
-                        gCurrentPinballGame->unk5F8 = 60 * 60;
+                        gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
                     }
                 }
-                DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)PLTT + 0x220, 0x20);
+                DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
             }
         }
     }

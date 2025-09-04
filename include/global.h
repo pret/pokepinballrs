@@ -685,9 +685,9 @@ struct PinballGame
     /*0x5F2*/ s8 unk5F2;
     /*0x5F3*/ s8 unk5F3;
     /*0x5F4*/ u16 unk5F4;
-    /*0x5F6*/ s8 unk5F6;
+    /*0x5F6*/ s8 ballUpgradeType;
     /*0x5F7*/ u8 unk5F7;
-    /*0x5F8*/ u16 unk5F8;
+    /*0x5F8*/ u16 ballUpgradeCounter;
     /*0x5FA*/ s8 unk5FA;
     /*0x5FB*/ s8 unk5FB;
     /*0x5FC*/ s16 unk5FC;

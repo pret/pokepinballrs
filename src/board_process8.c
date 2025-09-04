@@ -19,7 +19,7 @@ void AllBoardProcess_8B_4CEB4(void)
     u32 value;
 
     sub_4D3D0();
-    gCurrentPinballGame->unk40 += (gCurrentPinballGame->unk5F6 + 1) * gCurrentPinballGame->unk3C;
+    gCurrentPinballGame->unk40 += (gCurrentPinballGame->ballUpgradeType + 1) * gCurrentPinballGame->unk3C;
     if (gCurrentPinballGame->unk1C)
     {
         if (gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON))

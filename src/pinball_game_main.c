@@ -133,7 +133,7 @@ void PinballGame_State0_49ED4(void)
         sub_467F4();
         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
 
         sub_4A90C();
         for (i = 0; i < 9; i++)
@@ -165,7 +165,7 @@ void PinballGame_State0_49ED4(void)
         sub_467F4();
         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
 
         sub_4A90C();
         for (i = 0; i < 9; i++)
@@ -349,8 +349,8 @@ void sub_4A518(void)
             gCurrentPinballGame->outLanePikaPosition = 2;
             gMain.unk44[41]->available = FALSE;
             gCurrentPinballGame->unk1C0 = 1;
-            gCurrentPinballGame->unk5F6 = 3;
-            gCurrentPinballGame->unk5F8 = 60 * 60;
+            gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
+            gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
             gCurrentPinballGame->numLives = 9;
             gCurrentPinballGame->coins = 99;
         }
@@ -1141,7 +1141,7 @@ void sub_4B678(u16 arg0)
 
     DmaCopy16(3, gCurrentPinballGame->unk74C[gMain.unk6], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, gCurrentPinballGame->unkB4C[gMain.unk6], (void *)BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
     sub_4BC34();
     switch (gMain.selectedField)
     {

@@ -1077,8 +1077,8 @@ void sub_29D9C(void)
         }
         else if (gCurrentPinballGame->unk6F8[i] == 10)
         {
-            if (gCurrentPinballGame->unk5F6 < 3)
-                gCurrentPinballGame->unk6F8[i] = gCurrentPinballGame->unk5F6 + 10;
+            if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
+                gCurrentPinballGame->unk6F8[i] = gCurrentPinballGame->ballUpgradeType + 10;
             else
                 gCurrentPinballGame->unk6F8[i] = 12;
         }
@@ -1088,8 +1088,8 @@ void sub_29D9C(void)
             {
                 if (gMain.systemFrameCount & 1)
                 {
-                    if (gCurrentPinballGame->unk5F6 < 3)
-                        gCurrentPinballGame->unk6F8[i] = gCurrentPinballGame->unk5F6 + 10;
+                    if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
+                        gCurrentPinballGame->unk6F8[i] = gCurrentPinballGame->ballUpgradeType + 10;
                     else
                         gCurrentPinballGame->unk6F8[i] = 12;
                 }
@@ -1374,21 +1374,21 @@ void sub_2A354(void)
     case 12:
         if (gCurrentPinballGame->unk6DE == 130)
         {
-            if (gCurrentPinballGame->unk5F6 < 3)
-                gCurrentPinballGame->unk5F6++;
+            if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
+                gCurrentPinballGame->ballUpgradeType++;
 
-            gCurrentPinballGame->unk5F8 = 3600;
+            gCurrentPinballGame->ballUpgradeCounter = 3600;
             MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F664);
-            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
         break;
     case 13:
         if (gCurrentPinballGame->unk6DE == 130)
         {
-            gCurrentPinballGame->unk5F6 = 3;
-            gCurrentPinballGame->unk5F8 = 3600;
+            gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
+            gCurrentPinballGame->ballUpgradeCounter = 3600;
             MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F664);
-            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
         break;
     case 17:
@@ -1538,8 +1538,8 @@ void sub_2AADC(void)
         
         gCurrentPinballGame->unkE4 = 9;
         DmaCopy16(3, gUnknown_081428D4, 0x06015800, 0x1C00);
-        DmaCopy16(3, &gUnknown_08138014[gCurrentPinballGame->unk5F6 << 9], 0x060164C0, 0x80);
-        DmaCopy16(3, &gUnknown_08138014[((gCurrentPinballGame->unk5F6 * 8 + 4) << 6)], 0x06016760, 0x80);
+        DmaCopy16(3, &gUnknown_08138014[gCurrentPinballGame->ballUpgradeType << 9], 0x060164C0, 0x80);
+        DmaCopy16(3, &gUnknown_08138014[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], 0x06016760, 0x80);
         
         gCurrentPinballGame->unk5F7 = 1;
         
@@ -1573,7 +1573,7 @@ void sub_2AADC(void)
         
     case 2:
         //TODO: fakematch; unused i. Here for the +4 to parse correctly;
-        DmaCopy16(3, gUnknown_08137E14[i=gCurrentPinballGame->unk5F6 + 4], 0x05000220, 0x20);
+        DmaCopy16(3, gUnknown_08137E14[i=gCurrentPinballGame->ballUpgradeType + 4], 0x05000220, 0x20);
         gMain.blendBrightness = 4;
         
         if (gCurrentPinballGame->unk5A6 > 1) 
@@ -1641,7 +1641,7 @@ void sub_2AADC(void)
         else 
         {
             //TODO: fakematch; unused i. Here for the +4 to parse correctly;
-            DmaCopy16(3, gUnknown_08137E14[i=gCurrentPinballGame->unk5F6 + 4], 0x05000220, 0x20);
+            DmaCopy16(3, gUnknown_08137E14[i=gCurrentPinballGame->ballUpgradeType + 4], 0x05000220, 0x20);
             gMain.blendBrightness = 7;
         }
         
@@ -1692,7 +1692,7 @@ void sub_2AADC(void)
         
     case 11:
         //TODO: fakematch; unused i. Here for the +4 to parse correctly;
-        DmaCopy16(3, gUnknown_08137E14[i=gCurrentPinballGame->unk5F6 + 4], 0x05000220, 0x20);
+        DmaCopy16(3, gUnknown_08137E14[i=gCurrentPinballGame->ballUpgradeType + 4], 0x05000220, 0x20);
         
         tempVector.x = (gCurrentPinballGame->unk288 << 8) - gCurrentPinballGame->ball->positionQ8.x;
         tempVector.y = (gCurrentPinballGame->unk28A << 8) - gCurrentPinballGame->ball->positionQ8.y;
@@ -1748,13 +1748,13 @@ void sub_2AADC(void)
         break;
         
     case 14:
-        DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], 0x05000220, 0x20);
+        DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], 0x05000220, 0x20);
         gCurrentPinballGame->ball->unkA -= 0x2000;
         break;
         
     case 15:
         //TODO: fakematch; unused i. Here for the +4 to parse correctly;
-        DmaCopy16(3, gUnknown_08137E14[i= gCurrentPinballGame->unk5F6 + 4], 0x05000220, 0x20);
+        DmaCopy16(3, gUnknown_08137E14[i= gCurrentPinballGame->ballUpgradeType + 4], 0x05000220, 0x20);
         gCurrentPinballGame->ball->unkA -= 0x2000;
         break;
         
@@ -1762,7 +1762,7 @@ void sub_2AADC(void)
         if (gCurrentPinballGame->unk5A6 == 0)
             m4aSongNumStart(0x9B);
         
-        DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], 0x05000220, 0x20);
+        DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], 0x05000220, 0x20);
         gCurrentPinballGame->ball->unkA = 0x7000;
         break;
         
@@ -1917,7 +1917,7 @@ void sub_2AADC(void)
         
     case 29:
         gMain.blendBrightness = 4;
-        DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], 0x05000220, 0x20);
+        DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], 0x05000220, 0x20);
         
         spriteGroup = gMain.unk44[3];
         
