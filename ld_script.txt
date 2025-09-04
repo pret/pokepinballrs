@@ -47,7 +47,6 @@ SECTIONS
         src/board_process7.o(.text);
         src/board_process6.o(.text);
         src/rom_14740.o(.text);
-        asm/rom_14740.o(.text);
         src/rom_17634.o(.text);
         src/rom_19028.o(.text);
         src/board_process4.o(.text);
