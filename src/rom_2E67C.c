@@ -943,7 +943,7 @@ void sub_2E6AC(void)
                 gCurrentPinballGame->ball->unk6 = 0;
                 m4aSongNumStart(SE_UNKNOWN_0xE2);
                 sub_11B0(7);
-                gCurrentPinballGame->unk3C = 100000;
+                gCurrentPinballGame->scoreAddedInFrame = 100000;
             }
 
             gCurrentPinballGame->ball->positionQ0.x = 156;
@@ -1273,7 +1273,7 @@ void sub_2F26C(void)
         gCurrentPinballGame->unkE4 = 22;
         DmaCopy16(3, gUnknown_08526DCC, (void *)0x06015800, 0xC00);
         m4aSongNumStart(SE_UNKNOWN_0xEC);
-        gCurrentPinballGame->unk3C = 5000;
+        gCurrentPinballGame->scoreAddedInFrame = 5000;
         break;
     case 3:
         if (gUnknown_086AE496[gCurrentPinballGame->unk37D][1] > gCurrentPinballGame->unk37E)
@@ -1417,7 +1417,7 @@ void sub_2F79C(void)
                 if (gCurrentPinballGame->unk36C[i] == 5)
                 {
                     m4aSongNumStart(SE_UNKNOWN_0xE6);
-                    gCurrentPinballGame->unk3C = 2000;
+                    gCurrentPinballGame->scoreAddedInFrame = 2000;
                 }
             }
 
@@ -1528,7 +1528,7 @@ void sub_2F79C(void)
         if (gCurrentPinballGame->unk368 == 17)
         {
             m4aSongNumStart(SE_UNKNOWN_0xE8);
-            gCurrentPinballGame->unk3C = 10;
+            gCurrentPinballGame->scoreAddedInFrame = 10;
             sub_11B0(13);
         }
 
@@ -1699,7 +1699,7 @@ void sub_30178(void)
     {
         if (gCurrentPinballGame->unk624 == 2)
         {
-            gCurrentPinballGame->unk3C = 500;
+            gCurrentPinballGame->scoreAddedInFrame = 500;
             m4aSongNumStart(SE_UNKNOWN_0xB6);
             sub_11B0(7);
             if (gCurrentPinballGame->unk13 == 4 && gCurrentPinballGame->unk17 == 5)
@@ -1741,7 +1741,7 @@ void sub_30178(void)
             gCurrentPinballGame->unk176++;
             gCurrentPinballGame->unk308++;
             if (gCurrentPinballGame->unk308 == 100)
-                gCurrentPinballGame->unk3C = 50000;
+                gCurrentPinballGame->scoreAddedInFrame = 50000;
         }
 
         gCurrentPinballGame->unk624--;

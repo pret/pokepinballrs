@@ -19,32 +19,32 @@ void AllBoardProcess_8B_4CEB4(void)
     u32 value;
 
     sub_4D3D0();
-    gCurrentPinballGame->unk40 += (gCurrentPinballGame->ballUpgradeType + 1) * gCurrentPinballGame->unk3C;
-    if (gCurrentPinballGame->unk1C)
+    gCurrentPinballGame->scoreAdditionAccumulator += (gCurrentPinballGame->ballUpgradeType + 1) * gCurrentPinballGame->scoreAddedInFrame;
+    if (gCurrentPinballGame->scoreCounterAnimationEnabled)
     {
         if (gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON))
         {
-            gCurrentPinballGame->unk44 += gCurrentPinballGame->unk40;
-            gCurrentPinballGame->unk40 = 0;
-            gCurrentPinballGame->unk1C = 0;
-            gCurrentPinballGame->unk38 = 40000;
+            gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
+            gCurrentPinballGame->scoreAdditionAccumulator = 0;
+            gCurrentPinballGame->scoreCounterAnimationEnabled = FALSE;
+            gCurrentPinballGame->scoreAddStepSize = 40000;
         }
 
         if (gMain.systemFrameCount % 2 == 0)
         {
-            if (gCurrentPinballGame->unk40)
+            if (gCurrentPinballGame->scoreAdditionAccumulator)
             {
-                if (gCurrentPinballGame->unk40 <= gCurrentPinballGame->unk38)
+                if (gCurrentPinballGame->scoreAdditionAccumulator <= gCurrentPinballGame->scoreAddStepSize)
                 {
-                    gCurrentPinballGame->unk44 += gCurrentPinballGame->unk40;
-                    gCurrentPinballGame->unk40 = 0;
-                    gCurrentPinballGame->unk1C = 0;
-                    gCurrentPinballGame->unk38 = 40000;
+                    gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
+                    gCurrentPinballGame->scoreAdditionAccumulator = 0;
+                    gCurrentPinballGame->scoreCounterAnimationEnabled = FALSE;
+                    gCurrentPinballGame->scoreAddStepSize = 40000;
                 }
                 else
                 {
-                    gCurrentPinballGame->unk44 += gCurrentPinballGame->unk38;
-                    gCurrentPinballGame->unk40 -= gCurrentPinballGame->unk38;
+                    gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAddStepSize;
+                    gCurrentPinballGame->scoreAdditionAccumulator -= gCurrentPinballGame->scoreAddStepSize;
                     m4aSongNumStart(SE_UNKNOWN_0x91);
                 }
             }
@@ -52,33 +52,33 @@ void AllBoardProcess_8B_4CEB4(void)
     }
     else
     {
-        gCurrentPinballGame->unk44 += gCurrentPinballGame->unk40;
-        gCurrentPinballGame->unk40 = 0;
+        gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
+        gCurrentPinballGame->scoreAdditionAccumulator = 0;
     }
 
-    if (gCurrentPinballGame->unk44 / 100000000 != 0)
+    if (gCurrentPinballGame->scoreLo / 100000000 != 0)
     {
-        if (gCurrentPinballGame->unk48 < 9999)
+        if (gCurrentPinballGame->scoreHi < 9999)
         {
-            gCurrentPinballGame->unk48++;
-            gCurrentPinballGame->unk44 -= 100000000;
+            gCurrentPinballGame->scoreHi++;
+            gCurrentPinballGame->scoreLo -= 100000000;
         }
         else
         {
-            gCurrentPinballGame->unk48 = 9999;
-            gCurrentPinballGame->unk44 = 99999999;
+            gCurrentPinballGame->scoreHi = 9999;
+            gCurrentPinballGame->scoreLo = 99999999;
         }
     }
 
-    gCurrentPinballGame->unk3C = 0;
+    gCurrentPinballGame->scoreAddedInFrame = 0;
 
-    value = gCurrentPinballGame->unk48;
+    value = gCurrentPinballGame->scoreHi;
     sp0[0] = (value % 10000) / 1000 + 5;
     sp0[1] = (value % 1000) / 100 + 5;
     sp0[2] = (value % 100) / 10 + 19;
     sp0[3] = value % 10 + 5;
 
-    value = gCurrentPinballGame->unk44;
+    value = gCurrentPinballGame->scoreLo;
     sp0[4] = value / 10000000 + 5;
     sp0[5] = (value % 10000000) / 1000000 + 19;
     sp0[6] = (value % 1000000) / 100000 + 5;

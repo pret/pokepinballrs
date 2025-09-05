@@ -211,7 +211,7 @@ void sub_308DC(void)
         }
 
         gCurrentPinballGame->unk328 = 0;
-        gCurrentPinballGame->unk3C = 3000;
+        gCurrentPinballGame->scoreAddedInFrame = 3000;
     }
 
     for (i = 0; i < 3; i++)

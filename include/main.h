@@ -86,8 +86,8 @@ struct Main
     /*0x4C*/ u32 systemFrameCount;
     /*0x50*/ u32 fieldFrameCount;
     /*0x54*/ u32 unk54;
-    /*0x58*/ u32 unk58;
-    /*0x5C*/ u32 unk5C;
+    /*0x58*/ u32 finalScoreLo;
+    /*0x5C*/ u32 finalScoreHi;
 
     /***
      * First index = 'Action'
