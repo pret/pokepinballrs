@@ -2230,7 +2230,7 @@ void sub_2AADC(void)
             {
                 gCurrentPinballGame->unk1C = 1;
             
-                if (gCurrentPinballGame->currentSpecies == 154) 
+                if (gCurrentPinballGame->currentSpecies == SPECIES_PICHU) 
                 {
                     gCurrentPinballGame->unk38 = 0x222E0;
                     gCurrentPinballGame->unk3C = 0x989680;
