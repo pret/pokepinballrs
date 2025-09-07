@@ -41,9 +41,6 @@ extern const s16 gUnknown_086AD79C[];
 extern struct SongHeader gUnknown_0869F2A0;
 extern struct SongHeader gUnknown_0869F240;
 extern struct SongHeader gUnknown_086A0F30;
-
-
-extern void sub_20EC0();
 extern struct SongHeader gUnknown_086A2FA0;
 extern struct SongHeader gUnknown_086A0328;
 extern struct SongHeader gUnknown_086A0368;
