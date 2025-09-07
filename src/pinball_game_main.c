@@ -24,8 +24,6 @@ extern const VoidFunc gUnknown_086B085C[];
 extern struct SpriteGroup *gMainFieldSpriteGroups[][60];
 extern struct SpriteGroup *gBonusFieldSpriteGroups[][30];
 extern const u8 gUnknown_08158284[];
-extern const u8 gUnknown_08395A4C[];
-extern const u8 gUnknown_08397E6C[];
 extern const u8 gUnknown_083A704C[];
 extern const u8 gUnknown_0848FD8C[];
 extern const u8 gUnknown_081428D4[];
