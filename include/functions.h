@@ -461,7 +461,7 @@ extern void sub_1F59C();
 //extern ? sub_1FF0C();
 //extern ? sub_201B8();
 extern void sub_203CC();
-//extern ? sub_20EC0();
+extern void sub_20EC0();
 extern void sub_21238(s16);
 //extern ? sub_21300();
 //extern ? sub_21320();
