@@ -1215,9 +1215,9 @@ void sub_40288(void)
     }
 
     if (gCurrentPinballGame->unk38C > 0)
-        gCurrentPinballGame->ball->unk1 = 1;
+        gCurrentPinballGame->ball->oamPriority = 1;
     else
-        gCurrentPinballGame->ball->unk1 = 2;
+        gCurrentPinballGame->ball->oamPriority = 2;
 
     for (i = 0; i < 2; i++)
     {

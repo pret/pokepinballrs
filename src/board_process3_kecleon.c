@@ -1254,8 +1254,8 @@ void sub_37850(void)
     }
 
     group = &gMain.spriteGroups[32];
-    group->baseX = gCurrentPinballGame->ball->unk24;
-    group->baseY = gCurrentPinballGame->ball->unk26 + 14;
+    group->baseX = gCurrentPinballGame->ball->screenPosition.x;
+    group->baseY = gCurrentPinballGame->ball->screenPosition.y + 14;
     oamSimple = &group->oam[0];
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     if (gCurrentPinballGame->ball->unk0)

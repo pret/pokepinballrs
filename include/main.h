@@ -39,7 +39,7 @@ struct Main
     /*0x02*/ u8 mainState;
     /*0x03*/ u8 subState;
     /*0x04*/ u8 selectedField;
-    /*0x05*/ u8 unk5;
+    /*0x05*/ u8 unk5; // tempField (?)
     /*0x06*/ u8 unk6; // isBonusField (?)
     /*0x07*/ s8 eReaderBonuses[NUM_EREADER_CARDS];
     /*0x0C*/ u8 unkC;
@@ -61,7 +61,7 @@ struct Main
     /*0x11*/ u8 unk11;
     /*0x12*/ u16 unk12;
     /*0x14*/ u16 unk14;
-    /*0x16*/ u16 unk16;
+    /*0x16*/ u16 dispcntBackup;
     /*0x18*/ u16 newKeys;
     /*0x1A*/ u16 releasedKeys;
     /*0x1C*/ u16 heldKeys;

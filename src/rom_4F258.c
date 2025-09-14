@@ -365,11 +365,11 @@ void sub_4F0F0(void)
 
         if (gCurrentPinballGame->unk71C == 28)
         {
-            if (gCurrentPinballGame->unk5F6 < 3)
-            gCurrentPinballGame->unk5F6++;
+            if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
+                gCurrentPinballGame->ballUpgradeType++;
 
-            gCurrentPinballGame->unk5F8 = 3600;
-            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+            gCurrentPinballGame->ballUpgradeCounter = 3600;
+            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
 
         if (gCurrentPinballGame->unk71C == 40)

@@ -502,11 +502,11 @@ void sub_4E468(void)
             gCurrentPinballGame->unk392 = 0;
             gCurrentPinballGame->ball->positionQ0.x = gUnknown_02031520.unk14.unk26;
             gCurrentPinballGame->ball->positionQ0.y = gUnknown_02031520.unk14.unk28;
-            if (gCurrentPinballGame->unk5F6 > 0)
-                gCurrentPinballGame->unk5F6--;
+            if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
+                gCurrentPinballGame->ballUpgradeType--;
 
-            gCurrentPinballGame->unk5F8 = 3600;
-            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+            gCurrentPinballGame->ballUpgradeCounter = 3600;
+            DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
 
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
@@ -559,18 +559,18 @@ void sub_4E598(void)
     gCurrentPinballGame->unk308 = 0;
     if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
-        gCurrentPinballGame->unk5F6 = 3;
-        gCurrentPinballGame->unk5F8 = 60 * 60;
-        DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+        gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
+        gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
+        DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
     }
     else
     {
-        gCurrentPinballGame->unk5F6 = 0;
-        gCurrentPinballGame->unk5F8 = 0;
+        gCurrentPinballGame->ballUpgradeType = 0;
+        gCurrentPinballGame->ballUpgradeCounter = 0;
     }
 
     gCurrentPinballGame->unk5F7 = 0;
-    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
     gCurrentPinballGame->unk62F = gCurrentPinballGame->unk70E;
     gCurrentPinballGame->unk70E = 1;
     if (gCurrentPinballGame->unk2A5 == 45)

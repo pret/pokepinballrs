@@ -107,7 +107,7 @@ void KyogreBoardProcess_3A_383E4(void)
     sub_39A40();
     sub_3AE14();
     m4aSongNumStart(MUS_BONUS_FIELD_KYOGRE);
-    DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+    DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
     DmaCopy16(3, &gUnknown_086AEAE0[0][0], (void *)0x05000000, 0x100);
     DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
 }
@@ -857,7 +857,7 @@ void sub_39A40(void)
             if (gCurrentPinballGame->unk448 == 2)
             {
                 int a; // force addition of 8 instead of offsetting the global constant
-                DmaCopy16(3, &gUnknown_08137E14[a = gCurrentPinballGame->unk5F6 + 8], (void *)0x05000220, 0x20);
+                DmaCopy16(3, &gUnknown_08137E14[a = gCurrentPinballGame->ballUpgradeType + 8], (void *)0x05000220, 0x20);
             }
             break;
         case 1:
@@ -959,7 +959,7 @@ void sub_39A40(void)
 
                 if (gCurrentPinballGame->unk448 == 15)
                 {
-                    DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+                    DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
                     m4aSongNumStart(SE_UNKNOWN_0x112);
                 }
             }
@@ -977,8 +977,8 @@ void sub_39A40(void)
             gCurrentPinballGame->unk383 = 0;
         }
 
-        group->baseX = gCurrentPinballGame->ball->unk24;
-        group->baseY = gCurrentPinballGame->ball->unk26;
+        group->baseX = gCurrentPinballGame->ball->screenPosition.x;
+        group->baseY = gCurrentPinballGame->ball->screenPosition.y;
         if (group->baseY >= 200)
             group->baseY = 200;
 

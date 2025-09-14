@@ -1,117 +1,125 @@
 #include "global.h"
 #include "main.h"
 
-void sub_10618(int a, int b, int c, int d, int e, int f)
+void PrintString(u16 glyph, u16 palette, int x, int y, int width, int height)
 {
-    u16 i;
-    u16 j;
+    u16 i, j;
 
-    for (i = 0; i < f; i++)
-    {
-        for (j = 0; j < e; j++)
-        {
-          gUnknown_03005C00[d * 32 + c + i * 32 + j] = gUnknown_03005C00[b * 32 + a + i * 32 + j];
-        }
-    }
+    for (j = 0; j < height; j++)
+        for (i = 0; i < width; i++)
+            gUnknown_03005C00[y * 0x20 + x + j * 0x20 + i] = (glyph + j * 0x20 + i) | (palette << 12);
 }
 
-void sub_1068C(int a, int b, int c, int d, u16 e)
+void CopyString(int srcX, int srcY, int destX, int destY, int width, int height)
 {
-    u16 i;
-    u16 j;
+    u16 i, j;
 
-    for (i = 0; i < d; i++)
+    for (j = 0; j < height; j++)
+        for (i = 0; i < width; i++)
+            gUnknown_03005C00[destY * 0x20 + destX + j * 0x20 + i] = gUnknown_03005C00[srcY * 0x20 + srcX + j * 0x20 + i];
+}
+
+void SetStringPalette(int x, int y, int width, int height, u16 palette)
+{
+    u16 i, j;
+    u16 index;
+
+    for (j = 0; j < height; j++)
     {
-        for (j = 0; j < c; j++)
+        for (i = 0; i < width; i++)
         {
-            u16 index = b * 32 + a + i * 32 + j;
-
-            gUnknown_03005C00[index] = (gUnknown_03005C00[index] & 0xFFF) | (e << 12);
+            index = y * 0x20 + x + j * 0x20 + i;
+            gUnknown_03005C00[index] = (gUnknown_03005C00[index] & 0xFFF) | (palette << 12);
         }
     }
 }
 
 // This requires volatile parameters to match. There is no reason, *ever*, to do this.
-void sub_10708(void *volatile src, void *volatile dest, s16 numTilesX, s16 numTilesY)
+void CopyBgTilesRect(void *volatile src, void *volatile dest, s16 width, s16 height)
 {
-    int i;
+    int j;
 
-    for (i = 0; i < numTilesY; i++)
+    for (j = 0; j < height; j++)
     {
-        DmaCopy16(3, (u8 *)src + 0x400 * i, (u8 *)dest + 0x400 * i, numTilesX * 32);
+        DmaCopy16(3, (u8 *)src + 0x400 * j, (u8 *)dest + 0x400 * j, width * 0x20);
     }
 }
 
-void sub_10750(void *volatile src, void *volatile dest, s16 numTilesX, s16 numTilesY)
+// This function is unused. It appears to operates on a pixel canvas where each "tile" is represented by
+// 2 bytes.
+void sub_10750(void *volatile src, void *volatile dest, s16 width, s16 height)
 {
-    int i;
+    int j;
 
-    for (i = 0; i < numTilesY; i++)
+    for (j = 0; j < height; j++)
     {
-        DmaCopy16(3, (u8 *)src + 0x40 * i, (u8 *)dest + 0x40 * i, numTilesX * 2);
+        DmaCopy16(3, (u8 *)src + 0x40 * j, (u8 *)dest + 0x40 * j, width * 2);
     }
 }
 
-void sub_10798(void *a, void *b, void (*func)(void))
+// This function is unused.
+void sub_10798(void *src1, void *src2, void (*func)(void))
 {
     u16 i;
 
-    DmaCopy16(3, a, gUnknown_0201A520[1], 0x200);
-    DmaCopy16(3, b, gUnknown_0201A520[2], 0x200);
-    DmaFill16(3, 0x7FFF, gUnknown_0201A520[0], 0x400);
-    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], 0x400);
-    DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
+    DmaCopy16(3, src1, gUnknown_0201A520[1], BG_PLTT_SIZE);
+    DmaCopy16(3, src2, gUnknown_0201A520[2], BG_PLTT_SIZE);
+    DmaFill16(3, RGB_WHITE, gUnknown_0201A520, PLTT_SIZE);
+    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], PLTT_SIZE);
+    DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, PLTT_SIZE);
 
-    sub_1050C();
-    gMain.unk16 = REG_DISPCNT;
+    UnblankLCD();
+    gMain.dispcntBackup = REG_DISPCNT;
 
-    for (i = 0; i <= 32; i += 16)
+    for (i = 0; i <= 0x20; i += 0x10)
     {
         if (func != NULL)
             func();
+
         sub_1001C(i);
         MainLoopIter();
-        if (i == 32)
+        if (i == 0x20)
         {
-            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, 0x400);
+            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, PLTT_SIZE);
         }
         else
         {
-            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
+            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, PLTT_SIZE);
         }
     }
 }
 
+// This function is unused.
 void sub_10860(void (*func)(void))
 {
     u16 i;
 
-    DmaCopy16(3, (void *)PLTT, gUnknown_0201A520[0], 0x400);
-    DmaFill16(3, 0x7FFF, gUnknown_0201A520[1], 0x400);
-    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], 0x400);
+    DmaCopy16(3, (void *)PLTT, gUnknown_0201A520[0], PLTT_SIZE);
+    DmaFill16(3, RGB_WHITE, gUnknown_0201A520[1], PLTT_SIZE);
+    DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], PLTT_SIZE);
 
-    for (i = 0; i <= 32; i += 16)
+    for (i = 0; i <= 0x20; i += 0x10)
     {
         if (func != NULL)
             func();
         sub_1001C(i);
         MainLoopIter();
-        if (i == 32)
+        if (i == 0x20)
         {
-            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, 0x400);
+            DmaCopy16(3, gUnknown_0201A520[1], (void *)PLTT, PLTT_SIZE);
         }
         else
         {
-            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, 0x400);
+            DmaCopy16(3, gUnknown_0201A520[2], (void *)PLTT, PLTT_SIZE);
         }
     }
     MainLoopIter();
 }
 
-void ClearSomeArray(void)
+void ClearHighScoreNameEntry(void)
 {
     int i;
 
     for (i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
-        gUnknown_0201A500[i] = 0;
+        gHighScoreNameEntry[i] = 0;
 }

@@ -135,7 +135,7 @@ void SphealBoardProcess_3A_42E48(void)
 
     gMain.bgOffsets[1].yOffset = 126;
     DmaCopy16(3, &gUnknown_03005C00[0x800], (void *)0x06001140, 0x280);
-    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)0x05000220, 0x20);
+    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
     m4aSongNumStart(MUS_BONUS_FIELD_SPHEAL);
     DmaCopy16(3, gUnknown_081B36A4, (void *)0x05000320, 0x20);
 }
@@ -967,7 +967,7 @@ void sub_44D58(void)
 
     if (gCurrentPinballGame->unk7E)
     {
-        if (gMain.unk5 == 0)
+        if (gMain.unk5 == FIELD_RUBY)
             sub_44F3C();
         else
             sub_45164();
@@ -1023,7 +1023,7 @@ void sub_44F3C(void)
             gCurrentPinballGame->ball->positionQ8.y = 0xC800;
             gCurrentPinballGame->ball->velocity.x = -0x60;
             gCurrentPinballGame->ball->velocity.y = 0x54;
-            gCurrentPinballGame->ball->unk1 = 3;
+            gCurrentPinballGame->ball->oamPriority = 3;
             sub_11B0(7);
         }
 
@@ -1110,7 +1110,7 @@ void sub_45164(void)
             gCurrentPinballGame->unk316 = -25;
             gCurrentPinballGame->unk318 = ((gCurrentPinballGame->unk320 / 10) + 157) * 10;
             gCurrentPinballGame->unk31A = ((gCurrentPinballGame->unk322 / 10) + 134) * 10;
-            gCurrentPinballGame->ball->unk1 = 1;
+            gCurrentPinballGame->ball->oamPriority = 1;
         }
 
         if (gCurrentPinballGame->unk1F)
@@ -1139,7 +1139,7 @@ void sub_45164(void)
                     gCurrentPinballGame->ball->velocity.x = -10;
                     gCurrentPinballGame->ball->velocity.y = 0;
                     gCurrentPinballGame->unk5FA = 0;
-                    gCurrentPinballGame->ball->unk1 = 3;
+                    gCurrentPinballGame->ball->oamPriority = 3;
                     gCurrentPinballGame->unk24 = 0;
                     gCurrentPinballGame->unk7E = 0;
                     m4aSongNumStart(SE_UNKNOWN_0xE5);
@@ -1656,7 +1656,7 @@ void sub_45E90(void)
     sp18[8] = sp0[8] * 2 + 0x2D0;
     sp18[9] = sp0[9] * 2 + 0x2D0;
     sp18[10] = sp0[10] * 2 + 0x2D0;
-    value = gCurrentPinballGame->unk5F6 + 1;
+    value = gCurrentPinballGame->ballUpgradeType + 1;
     sp0[0] = value;
     sp18[11] = sp0[0] * 2 + 0x2D0;
 

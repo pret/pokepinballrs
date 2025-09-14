@@ -62,7 +62,7 @@ void LoadEReaderGraphics(void)
 
     gMain.bgOffsets[0].xOffset = 0xffe8;
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
     DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
@@ -328,7 +328,7 @@ void Ereader_State6_343C(void)
 
     gMain.bgOffsets[0].xOffset = 0xffe8;
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
     DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
@@ -421,7 +421,7 @@ void sub_377C(void)
     {
         for(iVar4 = 0; iVar4 < 0x18; iVar4++)
         {
-            sub_10708(gUnknown_080ACC60, &gUnknown_03001800[iVar2][iVar4*0x20], 1, 2);
+            CopyBgTilesRect(gUnknown_080ACC60, &gUnknown_03001800[iVar2][iVar4*0x20], 1, 2);
         }
     }
 }
@@ -435,7 +435,7 @@ void sub_37B4(s8 arg0)
     {
         for (iVar3 = 0; iVar3 < 0x18; iVar3++)
         {
-            sub_10708(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
+            CopyBgTilesRect(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
         }
     }
 }
@@ -445,7 +445,7 @@ void sub_3828(s8 arg0, s8 arg1)
     s32 quotient = arg1 / 0x18;
     s32 remainder = arg1 % 0x18;
 
-    sub_10708(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
+    CopyBgTilesRect(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
 }
 
 void sub_38A0(s8 arg0, u16 arg1)
@@ -453,7 +453,7 @@ void sub_38A0(s8 arg0, u16 arg1)
     s32 quotient = arg0 / 0x18;
     s32 remainder = arg0 % 0x18;
 
-    sub_10708(gUnknown_080ACC60 + arg1, &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
+    CopyBgTilesRect(gUnknown_080ACC60 + arg1, &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
 }
 
 s16 GetEReaderCardIndex(void)
@@ -644,48 +644,43 @@ s16 sub_3CD8(void)
     s32 i;
     s32 j;
 
-    if (!(JOY_NEW(A_BUTTON)))
+    if ((JOY_NEW(A_BUTTON)))
     {
-        // TODO I can buy goto end being the actual label, but there is no way they wrote this segment like this
-        goto fakematch;
-    }
-    if (gUnknown_0202A564 == 0)
-    {
-        gUnknown_0202A564 = -1;
-        gUnknown_0202ADE8 = -1;
-        gUnknown_0202A58C = 1;
-
-        fakematch:
-        if (gUnknown_0202A564 == 0) {
-            goto end;
+        if (gUnknown_0202A564 == 0)
+        {
+            gUnknown_0202A564 = -1;
+            gUnknown_0202ADE8 = -1;
+            gUnknown_0202A58C = 1;
         }
     }
 
-    if (gUnknown_02019C20 == 0)
+    if (gUnknown_0202A564 != 0)
     {
-        if (gUnknown_0201A4D0[0][0] == 0xFEDC)
+        if (gUnknown_02019C20 == 0)
         {
-            gUnknown_0202BEEC = gUnknown_0201A4D0[1][0];
-            gUnknown_02019C20 = -1;
-        }
-        else if (gUnknown_0201A4D0[0][1] == 0xFEDC)
-        {
-            gUnknown_0202BEEC = gUnknown_0201A4D0[1][1];
-            gUnknown_02019C20 = -1;
-        }
-    }
-    else
-    {
-        for (i = 0; i < 2; i++)
-        {
-            if (gUnknown_0201A4D0[0][i] == 0xDFDF)
+            if (gUnknown_0201A4D0[0][0] == 0xFEDC)
             {
-                return -1;
+                gUnknown_0202BEEC = gUnknown_0201A4D0[1][0];
+                gUnknown_02019C20 = -1;
+            }
+            else if (gUnknown_0201A4D0[0][1] == 0xFEDC)
+            {
+                gUnknown_0202BEEC = gUnknown_0201A4D0[1][1];
+                gUnknown_02019C20 = -1;
+            }
+        }
+        else
+        {
+            for (i = 0; i < 2; i++)
+            {
+                if (gUnknown_0201A4D0[0][i] == 0xDFDF)
+                {
+                    return -1;
+                }
             }
         }
     }
 
-    end:
     for (i = 0; i < 2; i++)
     {
         for (j = 0; j < 8; j++)

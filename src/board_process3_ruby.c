@@ -24,7 +24,6 @@ extern void sub_1FA48(void);
 extern void sub_1FBC4(void);
 extern void sub_1FF0C(void);
 extern void sub_201B8(void);
-extern void sub_21238(s32);
 extern void sub_21D78(void);
 extern void sub_23954(void);
 extern void sub_239A4(void);
@@ -48,9 +47,9 @@ void RubyBoardProcess_3A_19A20(void)
     sub_23E18();
     sub_1DDDC();
 
-    gCurrentPinballGame->unk170 = 10;
-    gCurrentPinballGame->unk171 = 10;
-    gCurrentPinballGame->unk172 = 10;
+    gCurrentPinballGame->unk170[0] = 10;
+    gCurrentPinballGame->unk170[1] = 10;
+    gCurrentPinballGame->unk170[2] = 10;
     gCurrentPinballGame->unk16C = 0;
     sub_1EC48();
     sub_1F158();
@@ -66,8 +65,8 @@ void RubyBoardProcess_3A_19A20(void)
     gCurrentPinballGame->unk29F = 2;
     sub_2C9A4();
 
-    gCurrentPinballGame->unk2EC = 3;
-    gCurrentPinballGame->unk2EE = 3;
+    gCurrentPinballGame->unk2EC[0] = 3;
+    gCurrentPinballGame->unk2EC[1] = 3;
     sub_31B30();
 }
 
@@ -127,7 +126,7 @@ void sub_19C04(void)
 
     if (gCurrentPinballGame->unk15 > 0)
     {
-        if (gMain.selectedField == 0)
+        if (gMain.selectedField == FIELD_RUBY)
         {
             num1 = gCurrentPinballGame->numCompletedBonusStages / 5;
             if ((num1 & 1) == 0)

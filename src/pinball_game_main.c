@@ -24,8 +24,6 @@ extern const VoidFunc gUnknown_086B085C[];
 extern struct SpriteGroup *gMainFieldSpriteGroups[][60];
 extern struct SpriteGroup *gBonusFieldSpriteGroups[][30];
 extern const u8 gUnknown_08158284[];
-extern const u8 gUnknown_08395A4C[];
-extern const u8 gUnknown_08397E6C[];
 extern const u8 gUnknown_083A704C[];
 extern const u8 gUnknown_0848FD8C[];
 extern const u8 gUnknown_081428D4[];
@@ -50,7 +48,6 @@ extern const u8 gUnknown_08526DCC[];
 extern const s16 gUnknown_086ACFE0[];
 extern const u16 gUnknown_086AD2DE[];
 extern const u8 *gUnknown_086AD474[];
-extern const s16 gUnknown_086AD2EE[][4];
 extern const s16 gUnknown_086AD456[][7];
 extern const u8 gUnknown_084FB68C[][0x480];
 extern const u8 gUnknown_083C3C2C[][0x300];
@@ -71,16 +68,8 @@ extern const u8 gUnknown_081408B4[0x2000];
 extern const u8 gUnknown_084AA18C[0x860];
 extern const u8 gUnknown_084B77EC[0x800];
 
-struct Unk86AD000
-{
-    u8 filler0[0x6];
-    u16 unk6;
-};
-
-extern const struct Unk86AD000 gUnknown_086AD000[];
 extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gUnknown_084C0C6C[];
-extern u8 *gMonPortraitGroupGfx[];
 
 void sub_1D4D0(void);
 void sub_4A6A0(void);
@@ -142,7 +131,7 @@ void PinballGame_State0_49ED4(void)
         sub_467F4();
         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
 
         sub_4A90C();
         for (i = 0; i < 9; i++)
@@ -174,7 +163,7 @@ void PinballGame_State0_49ED4(void)
         sub_467F4();
         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
 
         sub_4A90C();
         for (i = 0; i < 9; i++)
@@ -322,7 +311,7 @@ static void sub_4A270(void)
         break;
     }
 
-    gMain.unk16 = REG_DISPCNT;
+    gMain.dispcntBackup = REG_DISPCNT;
     REG_MOSAIC = 0;
 }
 
@@ -358,8 +347,8 @@ void sub_4A518(void)
             gCurrentPinballGame->outLanePikaPosition = 2;
             gMain.unk44[41]->available = FALSE;
             gCurrentPinballGame->unk1C0 = 1;
-            gCurrentPinballGame->unk5F6 = 3;
-            gCurrentPinballGame->unk5F8 = 60 * 60;
+            gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
+            gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
             gCurrentPinballGame->numLives = 9;
             gCurrentPinballGame->coins = 99;
         }
@@ -394,7 +383,7 @@ void sub_4A6A0(void)
         gCurrentPinballGame->ball->unk6 = 0;
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
-        gCurrentPinballGame->ball->unkE = 128;
+        gCurrentPinballGame->ball->scale = 0x80;
         gCurrentPinballGame->ball->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk730 = 0;
@@ -416,7 +405,7 @@ void sub_4A6A0(void)
         gCurrentPinballGame->ball->unk6 = 0;
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
-        gCurrentPinballGame->ball->unkE = 128;
+        gCurrentPinballGame->ball->scale = 0x80;
         gCurrentPinballGame->ball->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk730 = 0;
@@ -432,7 +421,7 @@ void sub_4A6A0(void)
         gCurrentPinballGame->ball->unk6 = 0;
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
-        gCurrentPinballGame->ball->unkE = 128;
+        gCurrentPinballGame->ball->scale = 0x80;
         gCurrentPinballGame->ball->unk0 = 1;
         gCurrentPinballGame->unk1F = 1;
         gCurrentPinballGame->unk730 = 0;
@@ -1150,7 +1139,7 @@ void sub_4B678(u16 arg0)
 
     DmaCopy16(3, gCurrentPinballGame->unk74C[gMain.unk6], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, gCurrentPinballGame->unkB4C[gMain.unk6], (void *)BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->unk5F6], (void *)OBJ_PLTT + 0x20, 0x20);
+    DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
     sub_4BC34();
     switch (gMain.selectedField)
     {
@@ -1195,7 +1184,7 @@ void sub_4BC34(void)
 {
     s16 i;
     struct PokemonSpecies *species;
-    const struct Unk86AD000 *var1;
+    const u16 *var1;
     s16 var2, var3;
 
     switch (gMain.selectedField)
@@ -1334,10 +1323,10 @@ void sub_4BC34(void)
         DmaCopy16(3, gUnknown_084F61EC, (void *)0x6015C00, 0x940);
         if (gCurrentPinballGame->unk1A5 == 0)
         {
-            var1 = &gUnknown_086AD000[gUnknown_086AD2DE[gCurrentPinballGame->unk1A6]];
-            var2 = var1->unk6 / 10;
+            var1 = gUnknown_086AD000[gUnknown_086AD2DE[gCurrentPinballGame->unk1A6]];
+            var2 = var1[3] / 10;
             DmaCopy16(3, gUnknown_08480E0C[var2], (void *)0x6015DA0, 0x40);
-            var3 = var1->unk6 % 10;
+            var3 = var1[3] % 10;
             DmaCopy16(3, gUnknown_08480E0C[var3], (void *)0x6015E60, 0x40);
         }
         break;
@@ -1365,648 +1354,147 @@ void sub_4BC34(void)
     }
 }
 
-NAKED
-void sub_4C290(void)
+void sub_4C290(void) 
 {
-    asm_unified("\n\
-	push {r4, r5, r6, r7, lr}\n\
-	mov r7, sl\n\
-	mov r6, sb\n\
-	mov r5, r8\n\
-	push {r5, r6, r7}\n\
-	sub sp, #4\n\
-	bl sub_28AE0\n\
-	bl sub_28BFC\n\
-	movs r1, #0\n\
-	ldr r0, _0804C3B8 @ =gCurrentPinballGame\n\
-	ldr r4, [r0]\n\
-	ldr r3, _0804C3BC @ =0x040000D4\n\
-	mov sb, r0\n\
-_0804C2AE:\n\
-	lsls r2, r1, #0x10\n\
-	asrs r2, r2, #0x10\n\
-	lsls r0, r2, #1\n\
-	adds r0, r0, r2\n\
-	lsls r0, r0, #2\n\
-	adds r0, r4, r0\n\
-	ldr r1, _0804C3C0 @ =0x000013BC\n\
-	adds r0, r0, r1\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	lsrs r1, r0, #0x1f\n\
-	adds r0, r0, r1\n\
-	asrs r0, r0, #1\n\
-	lsls r0, r0, #9\n\
-	ldr r1, _0804C3C4 @ =gUnknown_083FE44C\n\
-	adds r0, r0, r1\n\
-	str r0, [r3]\n\
-	lsls r0, r2, #9\n\
-	ldr r5, _0804C3C8 @ =0x06010000\n\
-	adds r0, r0, r5\n\
-	str r0, [r3, #4]\n\
-	ldr r0, _0804C3CC @ =0x80000100\n\
-	str r0, [r3, #8]\n\
-	ldr r0, [r3, #8]\n\
-	adds r2, #1\n\
-	lsls r2, r2, #0x10\n\
-	lsrs r1, r2, #0x10\n\
-	asrs r2, r2, #0x10\n\
-	cmp r2, #1\n\
-	ble _0804C2AE\n\
-	mov r1, sb\n\
-	ldr r0, [r1]\n\
-	ldr r2, _0804C3D0 @ =0x0000132C\n\
-	adds r0, r0, r2\n\
-	ldr r0, [r0]\n\
-	ldrh r0, [r0, #0xa]\n\
-	ldr r2, _0804C3BC @ =0x040000D4\n\
-	lsrs r0, r0, #0xc\n\
-	lsls r0, r0, #7\n\
-	ldr r1, _0804C3D4 @ =gUnknown_083BB16C\n\
-	adds r0, r0, r1\n\
-	str r0, [r2]\n\
-	ldr r0, _0804C3D8 @ =0x06010400\n\
-	str r0, [r2, #4]\n\
-	ldr r0, _0804C3DC @ =0x80000040\n\
-	str r0, [r2, #8]\n\
-	ldr r0, [r2, #8]\n\
-	movs r1, #0\n\
-	ldr r5, _0804C3E0 @ =gUnknown_084C07EC\n\
-	ldr r6, _0804C3E4 @ =gUnknown_084FA48C\n\
-	ldr r7, _0804C3E8 @ =gUnknown_084C00EC\n\
-	adds r3, r2, #0\n\
-	mov r2, sb\n\
-	ldr r0, [r2]\n\
-	ldr r2, _0804C3EC @ =0x00000744\n\
-	adds r4, r0, r2\n\
-_0804C320:\n\
-	lsls r2, r1, #0x10\n\
-	asrs r2, r2, #0x10\n\
-	adds r0, r4, r2\n\
-	ldrb r1, [r0]\n\
-	lsls r0, r1, #1\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #7\n\
-	adds r0, r0, r5\n\
-	str r0, [r3]\n\
-	lsls r0, r2, #1\n\
-	adds r0, r0, r2\n\
-	lsls r0, r0, #7\n\
-	ldr r1, _0804C3F0 @ =0x06010480\n\
-	adds r0, r0, r1\n\
-	str r0, [r3, #4]\n\
-	ldr r0, _0804C3F4 @ =0x800000C0\n\
-	str r0, [r3, #8]\n\
-	ldr r0, [r3, #8]\n\
-	adds r2, #1\n\
-	lsls r2, r2, #0x10\n\
-	lsrs r1, r2, #0x10\n\
-	asrs r2, r2, #0x10\n\
-	cmp r2, #1\n\
-	ble _0804C320\n\
-	mov r2, sb\n\
-	ldr r0, [r2]\n\
-	ldr r3, _0804C3F8 @ =0x000001E5\n\
-	adds r0, r0, r3\n\
-	ldr r2, _0804C3BC @ =0x040000D4\n\
-	movs r1, #0\n\
-	ldrsb r1, [r0, r1]\n\
-	lsls r0, r1, #3\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #5\n\
-	adds r0, r0, r6\n\
-	str r0, [r2]\n\
-	ldr r0, _0804C3FC @ =0x06010780\n\
-	str r0, [r2, #4]\n\
-	ldr r0, _0804C400 @ =0x80000090\n\
-	str r0, [r2, #8]\n\
-	ldr r0, [r2, #8]\n\
-	mov r5, sb\n\
-	ldr r0, [r5]\n\
-	movs r1, #0xe5\n\
-	lsls r1, r1, #1\n\
-	adds r0, r0, r1\n\
-	ldrh r3, [r0]\n\
-	mov sl, r3\n\
-	movs r5, #0\n\
-	ldrsh r0, [r0, r5]\n\
-	lsls r0, r0, #7\n\
-	adds r0, r0, r7\n\
-	str r0, [r2]\n\
-	ldr r0, _0804C404 @ =0x06010AE0\n\
-	str r0, [r2, #4]\n\
-	ldr r0, _0804C3DC @ =0x80000040\n\
-	str r0, [r2, #8]\n\
-	ldr r0, [r2, #8]\n\
-	movs r1, #0\n\
-_0804C396:\n\
-	mov r2, sb\n\
-	ldr r0, [r2]\n\
-	lsls r2, r1, #0x10\n\
-	asrs r1, r2, #0x10\n\
-	ldr r3, _0804C408 @ =0x00000747\n\
-	adds r0, r0, r3\n\
-	adds r0, r0, r1\n\
-	ldrb r0, [r0]\n\
-	adds r7, r2, #0\n\
-	cmp r0, #9\n\
-	bls _0804C3AE\n\
-	b _0804C602\n\
-_0804C3AE:\n\
-	lsls r0, r0, #2\n\
-	ldr r1, _0804C40C @ =_0804C410\n\
-	adds r0, r0, r1\n\
-	ldr r0, [r0]\n\
-	mov pc, r0\n\
-	.align 2, 0\n\
-_0804C3B8: .4byte gCurrentPinballGame\n\
-_0804C3BC: .4byte 0x040000D4\n\
-_0804C3C0: .4byte 0x000013BC\n\
-_0804C3C4: .4byte gUnknown_083FE44C\n\
-_0804C3C8: .4byte 0x06010000\n\
-_0804C3CC: .4byte 0x80000100\n\
-_0804C3D0: .4byte 0x0000132C\n\
-_0804C3D4: .4byte gUnknown_083BB16C\n\
-_0804C3D8: .4byte 0x06010400\n\
-_0804C3DC: .4byte 0x80000040\n\
-_0804C3E0: .4byte gUnknown_084C07EC\n\
-_0804C3E4: .4byte gUnknown_084FA48C\n\
-_0804C3E8: .4byte gUnknown_084C00EC\n\
-_0804C3EC: .4byte 0x00000744\n\
-_0804C3F0: .4byte 0x06010480\n\
-_0804C3F4: .4byte 0x800000C0\n\
-_0804C3F8: .4byte 0x000001E5\n\
-_0804C3FC: .4byte 0x06010780\n\
-_0804C400: .4byte 0x80000090\n\
-_0804C404: .4byte 0x06010AE0\n\
-_0804C408: .4byte 0x00000747\n\
-_0804C40C: .4byte _0804C410\n\
-_0804C410: @ jump table\n\
-	.4byte _0804C438 @ case 0\n\
-	.4byte _0804C5D4 @ case 1\n\
-	.4byte _0804C5D4 @ case 2\n\
-	.4byte _0804C55E @ case 3\n\
-	.4byte _0804C5D4 @ case 4\n\
-	.4byte _0804C602 @ case 5\n\
-	.4byte _0804C5D4 @ case 6\n\
-	.4byte _0804C5D4 @ case 7\n\
-	.4byte _0804C5D4 @ case 8\n\
-	.4byte _0804C460 @ case 9\n\
-_0804C438:\n\
-	ldr r3, _0804C454 @ =0x040000D4\n\
-	mov r5, sb\n\
-	ldr r0, [r5]\n\
-	asrs r2, r7, #0x10\n\
-	ldr r1, _0804C458 @ =0x00000749\n\
-	adds r0, r0, r1\n\
-	adds r0, r0, r2\n\
-	ldrb r1, [r0]\n\
-	lsls r0, r1, #1\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #8\n\
-	ldr r1, _0804C45C @ =gUnknown_0848D68C\n\
-	b _0804C5EC\n\
-	.align 2, 0\n\
-_0804C454: .4byte 0x040000D4\n\
-_0804C458: .4byte 0x00000749\n\
-_0804C45C: .4byte gUnknown_0848D68C\n\
-_0804C460:\n\
-	mov r5, sb\n\
-	ldr r4, [r5]\n\
-	movs r1, #0x97\n\
-	lsls r1, r1, #2\n\
-	adds r0, r4, r1\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	cmp r0, #0\n\
-	ble _0804C510\n\
-	ldr r1, _0804C498 @ =gMain+0x74\n\
-	ldr r2, _0804C49C @ =0x0000059A\n\
-	adds r0, r4, r2\n\
-	ldrh r3, [r0]\n\
-	adds r1, r3, r1\n\
-	ldrb r0, [r1]\n\
-	cmp r0, #0\n\
-	bne _0804C4AC\n\
-	asrs r3, r7, #0x10\n\
-	ldr r2, _0804C4A0 @ =0x00000749\n\
-	adds r0, r4, r2\n\
-	adds r0, r0, r3\n\
-	movs r1, #0xcd\n\
-	strb r1, [r0]\n\
-	ldr r6, _0804C4A4 @ =0x040000D4\n\
-	ldr r5, _0804C4A8 @ =gMonPortraitGroupPals\n\
-	mov r8, r5\n\
-	b _0804C528\n\
-	.align 2, 0\n\
-_0804C498: .4byte gMain+0x74\n\
-_0804C49C: .4byte 0x0000059A\n\
-_0804C4A0: .4byte 0x00000749\n\
-_0804C4A4: .4byte 0x040000D4\n\
-_0804C4A8: .4byte gMonPortraitGroupPals\n\
-_0804C4AC:\n\
-	cmp r0, #3\n\
-	bhi _0804C4E8\n\
-	asrs r1, r7, #0x10\n\
-	ldr r2, _0804C4D4 @ =0x00000749\n\
-	adds r0, r4, r2\n\
-	adds r0, r0, r1\n\
-	strb r3, [r0]\n\
-	ldr r1, _0804C4D8 @ =0x040000D4\n\
-	ldr r0, _0804C4DC @ =gMonPortraitGroupPals\n\
-	ldr r0, [r0]\n\
-	movs r3, #0xf0\n\
-	lsls r3, r3, #1\n\
-	adds r0, r0, r3\n\
-	str r0, [r1]\n\
-	ldr r0, _0804C4E0 @ =0x050003A0\n\
-	str r0, [r1, #4]\n\
-	ldr r0, _0804C4E4 @ =0x80000010\n\
-	str r0, [r1, #8]\n\
-	ldr r0, [r1, #8]\n\
-	b _0804C55E\n\
-	.align 2, 0\n\
-_0804C4D4: .4byte 0x00000749\n\
-_0804C4D8: .4byte 0x040000D4\n\
-_0804C4DC: .4byte gMonPortraitGroupPals\n\
-_0804C4E0: .4byte 0x050003A0\n\
-_0804C4E4: .4byte 0x80000010\n\
-_0804C4E8:\n\
-	asrs r2, r7, #0x10\n\
-	ldr r1, _0804C504 @ =0x00000749\n\
-	adds r0, r4, r1\n\
-	adds r0, r0, r2\n\
-	strb r3, [r0]\n\
-	ldr r6, _0804C508 @ =0x040000D4\n\
-	ldr r5, _0804C50C @ =gMonPortraitGroupPals\n\
-	mov r8, r5\n\
-	mov r3, sb\n\
-	ldr r0, [r3]\n\
-	adds r0, r0, r1\n\
-	adds r0, r0, r2\n\
-	b _0804C530\n\
-	.align 2, 0\n\
-_0804C504: .4byte 0x00000749\n\
-_0804C508: .4byte 0x040000D4\n\
-_0804C50C: .4byte gMonPortraitGroupPals\n\
-_0804C510:\n\
-	asrs r3, r7, #0x10\n\
-	ldr r2, _0804C5B4 @ =0x00000749\n\
-	adds r1, r4, r2\n\
-	adds r1, r1, r3\n\
-	movs r5, #0xb3\n\
-	lsls r5, r5, #3\n\
-	adds r0, r4, r5\n\
-	ldrh r0, [r0]\n\
-	strb r0, [r1]\n\
-	ldr r6, _0804C5B8 @ =0x040000D4\n\
-	ldr r0, _0804C5BC @ =gMonPortraitGroupPals\n\
-	mov r8, r0\n\
-_0804C528:\n\
-	mov r1, sb\n\
-	ldr r0, [r1]\n\
-	adds r0, r0, r2\n\
-	adds r0, r0, r3\n\
-_0804C530:\n\
-	ldrb r5, [r0]\n\
-	adds r0, r5, #0\n\
-	movs r1, #0xf\n\
-	bl __udivsi3\n\
-	adds r4, r0, #0\n\
-	lsls r4, r4, #0x18\n\
-	lsrs r4, r4, #0x16\n\
-	add r4, r8\n\
-	adds r0, r5, #0\n\
-	movs r1, #0xf\n\
-	bl __umodsi3\n\
-	lsls r0, r0, #0x18\n\
-	lsrs r0, r0, #0x13\n\
-	ldr r1, [r4]\n\
-	adds r1, r1, r0\n\
-	str r1, [r6]\n\
-	ldr r0, _0804C5C0 @ =0x050003A0\n\
-	str r0, [r6, #4]\n\
-	ldr r0, _0804C5C4 @ =0x80000010\n\
-	str r0, [r6, #8]\n\
-	ldr r0, [r6, #8]\n\
-_0804C55E:\n\
-	ldr r2, _0804C5B8 @ =0x040000D4\n\
-	ldr r3, _0804C5C8 @ =gMonPortraitGroupGfx\n\
-	mov r8, r3\n\
-	mov r5, sb\n\
-	ldr r0, [r5]\n\
-	asrs r6, r7, #0x10\n\
-	ldr r1, _0804C5B4 @ =0x00000749\n\
-	adds r0, r0, r1\n\
-	adds r0, r0, r6\n\
-	ldrb r5, [r0]\n\
-	adds r0, r5, #0\n\
-	movs r1, #0xf\n\
-	str r2, [sp]\n\
-	bl __udivsi3\n\
-	adds r4, r0, #0\n\
-	lsls r4, r4, #0x18\n\
-	lsrs r4, r4, #0x16\n\
-	add r4, r8\n\
-	adds r0, r5, #0\n\
-	movs r1, #0xf\n\
-	bl __umodsi3\n\
-	lsls r0, r0, #0x18\n\
-	lsrs r0, r0, #0x18\n\
-	lsls r1, r0, #1\n\
-	adds r1, r1, r0\n\
-	lsls r1, r1, #8\n\
-	ldr r0, [r4]\n\
-	adds r0, r0, r1\n\
-	ldr r2, [sp]\n\
-	str r0, [r2]\n\
-	lsls r0, r6, #1\n\
-	adds r0, r0, r6\n\
-	lsls r0, r0, #3\n\
-	ldr r3, _0804C5CC @ =0x06010CA0\n\
-	adds r0, r0, r3\n\
-	str r0, [r2, #4]\n\
-	ldr r0, _0804C5D0 @ =0x80000180\n\
-	str r0, [r2, #8]\n\
-	ldr r0, [r2, #8]\n\
-	b _0804C602\n\
-	.align 2, 0\n\
-_0804C5B4: .4byte 0x00000749\n\
-_0804C5B8: .4byte 0x040000D4\n\
-_0804C5BC: .4byte gMonPortraitGroupPals\n\
-_0804C5C0: .4byte 0x050003A0\n\
-_0804C5C4: .4byte 0x80000010\n\
-_0804C5C8: .4byte gMonPortraitGroupGfx\n\
-_0804C5CC: .4byte 0x06010CA0\n\
-_0804C5D0: .4byte 0x80000180\n\
-_0804C5D4:\n\
-	ldr r3, _0804C630 @ =0x040000D4\n\
-	mov r5, sb\n\
-	ldr r0, [r5]\n\
-	asrs r2, r7, #0x10\n\
-	ldr r1, _0804C634 @ =0x00000749\n\
-	adds r0, r0, r1\n\
-	adds r0, r0, r2\n\
-	ldrb r1, [r0]\n\
-	lsls r0, r1, #1\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #8\n\
-	ldr r1, _0804C638 @ =gUnknown_083A8EEC\n\
-_0804C5EC:\n\
-	adds r0, r0, r1\n\
-	str r0, [r3]\n\
-	lsls r0, r2, #1\n\
-	adds r0, r0, r2\n\
-	lsls r0, r0, #8\n\
-	ldr r2, _0804C63C @ =0x06010CA0\n\
-	adds r0, r0, r2\n\
-	str r0, [r3, #4]\n\
-	ldr r0, _0804C640 @ =0x80000180\n\
-	str r0, [r3, #8]\n\
-	ldr r0, [r3, #8]\n\
-_0804C602:\n\
-	movs r3, #0x80\n\
-	lsls r3, r3, #9\n\
-	adds r0, r7, r3\n\
-	lsrs r1, r0, #0x10\n\
-	asrs r0, r0, #0x10\n\
-	cmp r0, #1\n\
-	bgt _0804C612\n\
-	b _0804C396\n\
-_0804C612:\n\
-	mov r5, sb\n\
-	ldr r1, [r5]\n\
-	movs r0, #0x13\n\
-	ldrsb r0, [r1, r0]\n\
-	cmp r0, #4\n\
-	bne _0804C69C\n\
-	movs r0, #0x17\n\
-	ldrsb r0, [r1, r0]\n\
-	cmp r0, #7\n\
-	blt _0804C69C\n\
-	cmp r0, #8\n\
-	ble _0804C644\n\
-	cmp r0, #9\n\
-	beq _0804C660\n\
-	b _0804C69C\n\
-	.align 2, 0\n\
-_0804C630: .4byte 0x040000D4\n\
-_0804C634: .4byte 0x00000749\n\
-_0804C638: .4byte gUnknown_083A8EEC\n\
-_0804C63C: .4byte 0x06010CA0\n\
-_0804C640: .4byte 0x80000180\n\
-_0804C644:\n\
-	ldr r2, _0804C654 @ =0x000005A9\n\
-	adds r0, r1, r2\n\
-	ldrb r0, [r0]\n\
-	cmp r0, #4\n\
-	bls _0804C68C\n\
-	ldr r1, _0804C658 @ =0x040000D4\n\
-	ldr r0, _0804C65C @ =gUnknown_02031060\n\
-	b _0804C690\n\
-	.align 2, 0\n\
-_0804C654: .4byte 0x000005A9\n\
-_0804C658: .4byte 0x040000D4\n\
-_0804C65C: .4byte gUnknown_02031060\n\
-_0804C660:\n\
-	movs r3, #0xb5\n\
-	lsls r3, r3, #3\n\
-	adds r0, r1, r3\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	cmp r0, #0x1f\n\
-	bgt _0804C69C\n\
-	ldr r5, _0804C680 @ =0x000005A9\n\
-	adds r0, r1, r5\n\
-	ldrb r0, [r0]\n\
-	cmp r0, #4\n\
-	bls _0804C68C\n\
-	ldr r1, _0804C684 @ =0x040000D4\n\
-	ldr r0, _0804C688 @ =gUnknown_02031060\n\
-	b _0804C690\n\
-	.align 2, 0\n\
-_0804C680: .4byte 0x000005A9\n\
-_0804C684: .4byte 0x040000D4\n\
-_0804C688: .4byte gUnknown_02031060\n\
-_0804C68C:\n\
-	ldr r1, _0804C6B8 @ =0x040000D4\n\
-	ldr r0, _0804C6BC @ =gUnknown_02030760\n\
-_0804C690:\n\
-	str r0, [r1]\n\
-	ldr r0, _0804C6C0 @ =0x06010CA0\n\
-	str r0, [r1, #4]\n\
-	ldr r0, _0804C6C4 @ =0x80000240\n\
-	str r0, [r1, #8]\n\
-	ldr r0, [r1, #8]\n\
-_0804C69C:\n\
-	mov r0, sb\n\
-	ldr r1, [r0]\n\
-	movs r0, #0x13\n\
-	ldrsb r0, [r1, r0]\n\
-	cmp r0, #8\n\
-	bne _0804C720\n\
-	movs r0, #0x17\n\
-	ldrsb r0, [r1, r0]\n\
-	cmp r0, #2\n\
-	beq _0804C6C8\n\
-	cmp r0, #3\n\
-	beq _0804C6E4\n\
-	b _0804C720\n\
-	.align 2, 0\n\
-_0804C6B8: .4byte 0x040000D4\n\
-_0804C6BC: .4byte gUnknown_02030760\n\
-_0804C6C0: .4byte 0x06010CA0\n\
-_0804C6C4: .4byte 0x80000240\n\
-_0804C6C8:\n\
-	ldr r2, _0804C6D8 @ =0x000005A9\n\
-	adds r0, r1, r2\n\
-	ldrb r0, [r0]\n\
-	cmp r0, #4\n\
-	bls _0804C710\n\
-	ldr r1, _0804C6DC @ =0x040000D4\n\
-	ldr r0, _0804C6E0 @ =gUnknown_02031060\n\
-	b _0804C714\n\
-	.align 2, 0\n\
-_0804C6D8: .4byte 0x000005A9\n\
-_0804C6DC: .4byte 0x040000D4\n\
-_0804C6E0: .4byte gUnknown_02031060\n\
-_0804C6E4:\n\
-	movs r3, #0xb5\n\
-	lsls r3, r3, #3\n\
-	adds r0, r1, r3\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	cmp r0, #0x1f\n\
-	bgt _0804C720\n\
-	ldr r5, _0804C704 @ =0x000005A9\n\
-	adds r0, r1, r5\n\
-	ldrb r0, [r0]\n\
-	cmp r0, #4\n\
-	bls _0804C710\n\
-	ldr r1, _0804C708 @ =0x040000D4\n\
-	ldr r0, _0804C70C @ =gUnknown_02031060\n\
-	b _0804C714\n\
-	.align 2, 0\n\
-_0804C704: .4byte 0x000005A9\n\
-_0804C708: .4byte 0x040000D4\n\
-_0804C70C: .4byte gUnknown_02031060\n\
-_0804C710:\n\
-	ldr r1, _0804C7C4 @ =0x040000D4\n\
-	ldr r0, _0804C7C8 @ =gUnknown_02030760\n\
-_0804C714:\n\
-	str r0, [r1]\n\
-	ldr r0, _0804C7CC @ =0x06010CA0\n\
-	str r0, [r1, #4]\n\
-	ldr r0, _0804C7D0 @ =0x80000240\n\
-	str r0, [r1, #8]\n\
-	ldr r0, [r1, #8]\n\
-_0804C720:\n\
-	ldr r2, _0804C7C4 @ =0x040000D4\n\
-	mov r1, sb\n\
-	ldr r0, [r1]\n\
-	ldr r3, _0804C7D4 @ =0x0000020B\n\
-	adds r0, r0, r3\n\
-	movs r1, #0\n\
-	ldrsb r1, [r0, r1]\n\
-	lsls r0, r1, #1\n\
-	adds r0, r0, r1\n\
-	lsls r0, r0, #8\n\
-	ldr r5, _0804C7D8 @ =gUnknown_0844838C\n\
-	adds r0, r0, r5\n\
-	str r0, [r2]\n\
-	ldr r0, _0804C7DC @ =0x060113C0\n\
-	str r0, [r2, #4]\n\
-	ldr r0, _0804C7E0 @ =0x80000180\n\
-	str r0, [r2, #8]\n\
-	ldr r0, [r2, #8]\n\
-	mov r1, sb\n\
-	ldr r0, [r1]\n\
-	adds r3, #0x54\n\
-	adds r0, r0, r3\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	lsls r0, r0, #2\n\
-	ldr r5, _0804C7E4 @ =gUnknown_086AD49C\n\
-	adds r0, r0, r5\n\
-	mov r3, sl\n\
-	lsls r1, r3, #0x10\n\
-	asrs r1, r1, #7\n\
-	ldr r0, [r0]\n\
-	adds r0, r0, r1\n\
-	str r0, [r2]\n\
-	ldr r0, _0804C7E8 @ =0x060116C0\n\
-	str r0, [r2, #4]\n\
-	ldr r3, _0804C7EC @ =0x80000100\n\
-	str r3, [r2, #8]\n\
-	ldr r0, [r2, #8]\n\
-	mov r5, sb\n\
-	ldr r0, [r5]\n\
-	ldr r1, _0804C7F0 @ =0x000001ED\n\
-	adds r0, r0, r1\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	lsls r0, r0, #3\n\
-	ldr r1, _0804C7F4 @ =gUnknown_086AD2EE\n\
-	adds r1, #6\n\
-	adds r0, r0, r1\n\
-	movs r5, #0\n\
-	ldrsh r0, [r0, r5]\n\
-	lsls r0, r0, #9\n\
-	ldr r1, _0804C7F8 @ =gUnknown_084FD18C\n\
-	adds r0, r0, r1\n\
-	str r0, [r2]\n\
-	ldr r0, _0804C7FC @ =0x06011CE0\n\
-	str r0, [r2, #4]\n\
-	str r3, [r2, #8]\n\
-	ldr r0, [r2, #8]\n\
-	mov r5, sb\n\
-	ldr r0, [r5]\n\
-	adds r0, #0x6e\n\
-	ldrb r0, [r0]\n\
-	lsls r0, r0, #0x18\n\
-	asrs r0, r0, #0x18\n\
-	lsls r0, r0, #9\n\
-	ldr r1, _0804C800 @ =gUnknown_083BD36C\n\
-	adds r0, r0, r1\n\
-	str r0, [r2]\n\
-	ldr r0, _0804C804 @ =0x06011EE0\n\
-	str r0, [r2, #4]\n\
-	str r3, [r2, #8]\n\
-	ldr r0, [r2, #8]\n\
-	add sp, #4\n\
-	pop {r3, r4, r5}\n\
-	mov r8, r3\n\
-	mov sb, r4\n\
-	mov sl, r5\n\
-	pop {r4, r5, r6, r7}\n\
-	pop {r0}\n\
-	bx r0\n\
-	.align 2, 0\n\
-_0804C7C4: .4byte 0x040000D4\n\
-_0804C7C8: .4byte gUnknown_02030760\n\
-_0804C7CC: .4byte 0x06010CA0\n\
-_0804C7D0: .4byte 0x80000240\n\
-_0804C7D4: .4byte 0x0000020B\n\
-_0804C7D8: .4byte gUnknown_0844838C\n\
-_0804C7DC: .4byte 0x060113C0\n\
-_0804C7E0: .4byte 0x80000180\n\
-_0804C7E4: .4byte gUnknown_086AD49C\n\
-_0804C7E8: .4byte 0x060116C0\n\
-_0804C7EC: .4byte 0x80000100\n\
-_0804C7F0: .4byte 0x000001ED\n\
-_0804C7F4: .4byte gUnknown_086AD2EE\n\
-_0804C7F8: .4byte gUnknown_084FD18C\n\
-_0804C7FC: .4byte 0x06011CE0\n\
-_0804C800: .4byte gUnknown_083BD36C\n\
-_0804C804: .4byte 0x06011EE0\n\
-    ");
+    s16 i;
+    s16 var0;
+    
+    sub_28AE0();
+    sub_28BFC();
+
+    for (i = 0; i <= 1; i++) 
+    {
+        var0 = gCurrentPinballGame->unk13BC[i].unk0 / 2;
+        DmaCopy16(3, gUnknown_083FE44C[var0], ((i * 0x200) + 0x06010000), 0x200);
+    }
+    
+    var0 = gCurrentPinballGame->ball->unkA / 0x1000;
+    DmaCopy16(3, gUnknown_083BB16C[var0], 0x06010400, 0x80);
+
+    for (i = 0; i <= 1; i++) 
+    {
+        DmaCopy16(3, gUnknown_084C07EC + ((var0 =gCurrentPinballGame->unk744[i]) * 0x180), 0x06010480 + (i * 0x180), 0x180);
+    }
+    
+    var0 = gCurrentPinballGame->unk1E5;
+    DmaCopy16(3, gUnknown_084FA48C[var0 = gCurrentPinballGame->unk1E5], 0x06010780, 0x120);
+    var0 = gCurrentPinballGame->unk1CA;
+    DmaCopy16(3, gUnknown_084C00EC[var0], 0x06010AE0, 0x80);
+
+    for (i = 0; i <= 1; i++)
+    {
+        switch (gCurrentPinballGame->unk747[i]) 
+        {
+        case 0:
+            DmaCopy16(3, gUnknown_0848D68C[gCurrentPinballGame->unk749[i]], 0x06010CA0 + (i * 0x300), 0x300);
+            gCurrentPinballGame->ball += 0; //TODO: Dumb match is still a match...
+            break;
+        case 9:
+            if (gCurrentPinballGame->unk25C > 0) 
+            {
+                if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] == 0) 
+                {
+                    gCurrentPinballGame->unk749[i] = 205;
+                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->unk749[i] / 15] + (gCurrentPinballGame->unk749[i] % 15) * 0x20, 0x050003A0, 0x20);
+                } 
+                else if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] <= 3) 
+                {
+                    gCurrentPinballGame->unk749[i] = gCurrentPinballGame->unk59A;
+                    DmaCopy16(3, gMonPortraitGroupPals[0] + 15 * 0x20, 0x050003A0, 0x20);
+                } 
+                else 
+                {
+                    gCurrentPinballGame->unk749[i] = gCurrentPinballGame->unk59A;
+                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->unk749[i] / 15] + (gCurrentPinballGame->unk749[i] % 15) * 0x20, 0x050003A0, 0x20);
+                }
+            } 
+            else 
+            {
+                gCurrentPinballGame->unk749[i] = gCurrentPinballGame->currentSpecies;
+                DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->unk749[i] / 15] + ((gCurrentPinballGame->unk749[i] % 15) * 0x20), 0x050003A0, 0x20);
+            }
+        case 3:
+            DmaCopy16(3, gMonPortraitGroupGfx[gCurrentPinballGame->unk749[i] / 15] + (gCurrentPinballGame->unk749[i] % 15) * 0x300, 0x06010CA0 + (i * 0x18), 0x300);
+            break;
+        case 1:
+        case 2:
+        case 4:
+        case 6:
+        case 7:
+        case 8:
+            DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->unk749[i]], 0x06010CA0 + (i * 0x300), 0x300);
+            break;
+        }
+    }
+
+    if (gCurrentPinballGame->unk13 == 4) 
+    {
+        switch (gCurrentPinballGame->unk17)
+        {
+        case 7:
+        case 8:
+            if ((u32) gCurrentPinballGame->unk5A9 > 4) 
+            {
+                DmaCopy16(3, gUnknown_02031060, 0x06010CA0, 0x480);
+            } 
+            else 
+            {
+                DmaCopy16(3, gUnknown_02030760, 0x06010CA0, 0x480);
+            }
+            break;
+        case 9:
+            if (gCurrentPinballGame->unk5A8 <= 31) 
+            {
+                if (gCurrentPinballGame->unk5A9 > 4) 
+                {
+                    DmaCopy16(3, gUnknown_02031060, 0x06010CA0, 0x480);
+                } 
+                else 
+                {
+                    DmaCopy16(3, gUnknown_02030760, 0x06010CA0, 0x480);
+                }
+            }
+            break;
+        }
+    }
+
+    if (gCurrentPinballGame->unk13 == 8) 
+    {
+        switch (gCurrentPinballGame->unk17) 
+        {
+        case 2:
+            if (gCurrentPinballGame->unk5A9 > 4U) 
+            {
+                DmaCopy16(3, gUnknown_02031060, 0x06010CA0, 0x480);
+            } 
+            else 
+            {
+                DmaCopy16(3, gUnknown_02030760, 0x06010CA0, 0x480);
+            }
+            break;
+        case 3:
+            if (gCurrentPinballGame->unk5A8 <= 31) 
+            {
+                if (gCurrentPinballGame->unk5A9 > 4U) 
+                {
+                    DmaCopy16(3, gUnknown_02031060, 0x06010CA0, 0x480);
+                } 
+                else 
+                {
+                    DmaCopy16(3, gUnknown_02030760, 0x06010CA0, 0x480);
+                }
+            }
+            break;
+        }
+    }
+
+    DmaCopy16(3, gUnknown_0844838C[gCurrentPinballGame->unk20B], 0x060113C0, 0x300);
+    DmaCopy16(3, gUnknown_086AD49C[gCurrentPinballGame->unk25F] +  var0 * 0x200, 0x060116C0, 0x200);
+    DmaCopy16(3, gUnknown_084FD18C[(s16)gUnknown_086AD2EE[gCurrentPinballGame->unk1ED][3]], 0x06011CE0, 0x200);
+    DmaCopy16(3, gUnknown_083BD36C[gCurrentPinballGame->unk6E], 0x06011EE0, 0x200);
+    return;
 }
+
 
 void sub_4C808(void)
 {
@@ -2074,7 +1562,7 @@ void sub_4CB30(void)
     DmaCopy16(3, gUnknown_0813C874, (void *)0x6015800, 0x2000);
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
         (void *)0x6010CA0,
         0x300
     );
@@ -2093,7 +1581,7 @@ void sub_4CBB4(void)
 
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
         (void *)0x6010CA0,
         0x300
     );
@@ -2124,7 +1612,7 @@ void sub_4CC58(void)
 
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->unk749 / 15] + (gCurrentPinballGame->unk749 % 15) * 0x300,
+        gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
         (void *)0x6010CA0,
         0x300
     );
