@@ -11,7 +11,7 @@
 #define MUS_HI_SCORE                0x09  // BGM 5
 #define MUS_EMPTY_0x0A              0x0A  // No sound
 #define MUS_SHOP                    0x0B  // BGM 7
-#define MUS_GAME_OVER               0x0C  // BGM 8
+#define MUS_SLOTS_PRIZE             0x0C  // BGM 8
 #define MUS_END_OF_BALL             0x0D  // BGM 9
 #define MUS_BONUS_CHANCE            0x0E  // BGM 10
 #define MUS_BONUS_CHANCE_LEGENDARY  0x0F  // BGM 11
@@ -52,26 +52,26 @@
 #define MUS_FIELD_SAPPHIRE2         0x5C  // BGM 26 Sapphire Field background music after beating (not catching) Rayquaza
 /*Unknown Music at 0x5D*/
 
-#define SE_UNKNOWN_0x65             0x65 // SE 1 Menu Selection; RS: PokéNav turn on
-#define SE_UNKNOWN_0x66             0x66 // SE 2 Menu Cancel; RS: PokéNav turn off
-#define SE_SELECT                   0x67 // SE 3 Menu Momevent
-#define SE_UNKNOWN_0x68             0x68 // SE 4; Yellow window popup appears (eg: pokedox transfer confirmation)
-#define SE_UNKNOWN_0x69             0x69 // SE 5; Yellow window popup disappears (eg: pokedox transfer confirmation)
-#define SE_UNKNOWN_0x6A             0x6A // SE 6; Drum?
-#define SE_UNKNOWN_0x6B             0x6B // SE 7; RS: Pokédex scroll
+#define SE_MENU_SELECT              0x65 // SE 1 Menu Selection; RS: PokéNav turn on
+#define SE_MENU_CANCEL              0x66 // SE 2 Menu Cancel; RS: PokéNav turn off
+#define SE_MENU_MOVE                0x67 // SE 3 Menu Momevent
+#define SE_MENU_POPUP_OPEN          0x68 // SE 4; Yellow window popup appears (eg: pokedox transfer confirmation)
+#define SE_MENU_POPUP_CLOSE         0x69 // SE 5; Yellow window popup disappears (eg: pokedox transfer confirmation)
+#define SE_SCORE_ENTRY_A_B_MOVE     0x6A // SE 6; Drum?
+#define SE_SCORE_ENTRY_LETTER_CHANGE 0x6B // SE 7; RS: Pokédex scroll
 #define SE_UNKNOWN_0x6C             0x6C // RS: Bike hop
-#define SE_UNKNOWN_0x6D             0x6D // SE 8
+#define SE_UNKNOWN_0x6D             0x6D // SE 8 'page turn' sound effect (eg: pokedex detail pane swap/field select)
 #define SE_UNKNOWN_0x6E             0x6E // same as SE1
 #define SE_UNKNOWN_0x6F             0x6F // same as SE2
 #define SE_UNKNOWN_0x70             0x70 // No Sound
 #define SE_UNKNOWN_0x71             0x71 // Duplicated of SE 70 *thwip*
-#define SE_UNKNOWN_0x72             0x72 // SE9 Flipper
-#define SE_UNKNOWN_0x73             0x73 // SE10 Triangle bumper hit
-#define SE_UNKNOWN_0x74             0x74 // SE11 Pokemon Catch hit
+#define SE_FLIPPER_PRESSED          0x72 // SE9 Flipper
+#define SE_SLINGSHOT_HIT            0x73 // SE10 Triangle bumper hit
+#define SE_POKEMON_CATCH_HIT        0x74 // SE11 Pokemon Catch hit
 #define SE_UNKNOWN_0x75             0x75 // SE12 *high chirp*
-#define SE_UNKNOWN_0x76             0x76 // SE13 Trigger button hit
-#define SE_UNKNOWN_0x77             0x77 // SE14 ball hits wall
-#define SE_UNKNOWN_0x78             0x78 // SE15 *metal gate bounce?*
+#define SE_TRIGGER_BUTTON_HIT       0x76 // SE13 Trigger button hit
+#define SE_WALL_HIT                 0x77 // SE14 ball hits wall
+#define SE_TILT_TRIGGERED           0x78 // SE15 *metal gate bounce?*
 #define SE_UNKNOWN_0x79             0x79 // SE16 *ball flat clack*
 #define SE_UNKNOWN_0x7A             0x7A // SE17 *high trill - radar*
 #define SE_UNKNOWN_0x7B             0x7B // SE18 Sustained machine noise. - Same as 95
@@ -119,14 +119,14 @@
 #define SE_UNKNOWN_0xA5             0xA5 // SE54 Duplicate of SE01; Menu Selection
 #define SE_UNKNOWN_0xA6             0xA6 // SE55 Duplicate of SE02; Menu Cancel
 #define SE_UNKNOWN_0xA7             0xA7 // SE56 *Pokeball Escape? *
-#define SE_UNKNOWN_0xA8             0xA8 // SE57 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
-#define SE_UNKNOWN_0xA9             0xA9 // SE58 Re (Title pokemon pinball logo tones / ramp spin pikachu charger)
-#define SE_UNKNOWN_0xAA             0xAA // SE59 Mi (Title pokemon pinball logo tones / ramp spin pikachu charger)
-#define SE_UNKNOWN_0xAB             0xAB // SE60 Fa (Title pokemon pinball logo tones / ramp spin pikachu charger)
-#define SE_UNKNOWN_0xAC             0xAC // SE61 So (Title pokemon pinball logo tones / ramp spin pikachu charger)
-#define SE_UNKNOWN_0xAD             0xAD // SE62 La (Title pokemon pinball logo tones / ramp spin pikachu charger)
-#define SE_UNKNOWN_0xAE             0xAE // SE63 Ti (Title pokemon pinball logo tones / ramp spin pikachu charger)
-#define SE_UNKNOWN_0xAF             0xAF // SE64 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
+#define SE_PIKA_CHARGE_DO           0xA8 // SE57 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
+#define SE_PIKA_CHARGE_RE           0xA9 // SE58 Re (Title pokemon pinball logo tones / ramp spin pikachu charger)
+#define SE_PIKA_CHARGE_MI           0xAA // SE59 Mi (Title pokemon pinball logo tones / ramp spin pikachu charger)
+#define SE_PIKA_CHARGE_FA           0xAB // SE60 Fa (Title pokemon pinball logo tones / ramp spin pikachu charger)
+#define SE_PIKA_CHARGE_SO           0xAC // SE61 So (Title pokemon pinball logo tones / ramp spin pikachu charger)
+#define SE_PIKA_CHARGE_LA           0xAD // SE62 La (Title pokemon pinball logo tones / ramp spin pikachu charger)
+#define SE_PIKA_CHARGE_TI           0xAE // SE63 Ti (Title pokemon pinball logo tones / ramp spin pikachu charger)
+#define SE_PIKA_CHARGE_HIGH_DO         0xAF // SE64 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_UNKNOWN_0xB0             0xB0 // SE65 *extended flight takeoff*
 #define SE_UNKNOWN_0xB1             0xB1 // SE181 Pi~Ka CHU!
 #define SE_UNKNOWN_0xB2             0xB2 // SE182 Pika - pika - pi-ka
@@ -165,7 +165,7 @@
 #define SE_UNKNOWN_0xD3             0xD3 // SE86 *Wave shot*
 #define SE_UNKNOWN_0xD4             0xD4 // SE87 *Swamp frog bubbling*
 #define SE_UNKNOWN_0xD5             0xD5 // SE88 *Smaller puddle slap*
-#define SE_UNKNOWN_0xD6             0xD6 // SE89 *Juicy slash*
+#define SE_UNKNOWN_0xD6             0xD6 // SE89 Whalmer eject ball
 #define SE_UNKNOWN_0xD7             0xD7 // SE90 *Explosive collapse*
 #define SE_UNKNOWN_0xD8             0xD8 // SE91 *Ti-ring* RS: Exp. Bar filled up
 #define SE_UNKNOWN_0xD9             0xD9 // No Sound
@@ -275,13 +275,13 @@
 #define SE_UNKNOWN_0x141            0x141 // No Sound
 #define SE_UNKNOWN_0x142            0x142 // SE184 Pika!
 #define SE_UNKNOWN_0x143            0x143 // No Sound
-#define SE_UNKNOWN_0x144            0x144 // SE171 *Chime*
-#define SE_UNKNOWN_0x145            0x145 // SE172 *Rising success whistle*
+#define SE_JIRACHI_MOVE             0x144 // SE171 *Chime*
+#define SE_JIRACHI_HIT              0x145 // SE172 *Rising success whistle*
 #define SE_UNKNOWN_0x146            0x146 // SE173 Peliper flies after grabbing ball
 #define SE_UNKNOWN_0x147            0x147 // SE174 Peliper drops ball (Same as SE39)
 #define SE_UNKNOWN_0x148            0x148 // SE175 *Latch*
 #define SE_UNKNOWN_0x149            0x149 // SE176 *Double Step*
-#define SE_UNKNOWN_0x14A            0x14A // SE178 High Score Earned
+#define SE_HIGH_SCORE_EARNED_0x14A  0x14A // SE178 High Score Earned
 #define SE_UNKNOWN_0x14B            0x14B // SE179 Duplicate of 36
 #define SE_UNKNOWN_0x14C            0x14C // SE177 *rumble*
 

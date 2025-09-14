@@ -116,9 +116,25 @@ struct UnkPinballGame13BC
 struct PinballGame
 {
     /*0x000*/ u32 unk0;
+
+    /***
+     * e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
+     * 0:left flipper, 1:right flipper, 2:tilt left, 3:tilt right, 4=tilt up 
+     ***/
     /*0x004*/ u8 newButtonActions[5]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
+    
+    /***
+     * e.g. player let go of the appropriate buttons to trigger the left flipper action, etc.
+     * 0:left flipper, 1:right flipper, 2:tilt left, 3:tilt right, 4=tilt up 
+     ***/
     /*0x009*/ u8 releasedButtonActions[5];
+    
+    /***
+     * e.g. player is holding (initiated in current or past frame) the appropriate buttons to trigger the left flipper action, etc.
+     * 0:left flipper, 1:right flipper, 2:tilt left, 3:tilt right, 4=tilt up 
+     ***/
     /*0x00E*/ u8 heldButtonActions[5];
+
     /*0x013*/ s8 unk13; // Current field state. In main fields seems to be related to the 3 Pokeballs that unlock bonus fields, in bonus fields acts as a field state
     /*0x014*/ s8 unk14;
     /*0x015*/ s8 unk15;
@@ -857,6 +873,7 @@ struct PinballGame
     /*0x132C*/struct BallState *ball;
     /*0x1330*/struct BallState *unk1330;
     /*0x1334*/struct BallState unk1334[2];
+
     /*0x13BC*/struct UnkPinballGame13BC unk13BC[2];
     /*0x13D4*/u16 unk13D4[10];
     /*0x13E8*/struct Vector16 unk13E8[10];

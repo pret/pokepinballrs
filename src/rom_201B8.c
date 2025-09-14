@@ -1250,7 +1250,7 @@ void sub_1F2A4(void)
         if (gCurrentPinballGame->unk1C8 < 168 && gCurrentPinballGame->unk1C8 % 8 == 0)
         {
             s8 offset = gCurrentPinballGame->unk1C8 / 21;
-            m4aSongNumStart(SE_UNKNOWN_0xA8 + offset);
+            m4aSongNumStart(SE_PIKA_CHARGE_DO + offset);
         }
 
         if (gCurrentPinballGame->unk1C6 <= gCurrentPinballGame->unk1C8)
@@ -1882,58 +1882,53 @@ void sub_203CC(void)
 
     if (gCurrentPinballGame->unk1C4 != 0)
     {
-        if (gCurrentPinballGame->unk1C4 == 120)
+        if (gCurrentPinballGame->unk1C4 == 120 && gCurrentPinballGame->unk1E3[gCurrentPinballGame->unk1C2 - 1] != 0)
         {
-            // gCurrentPinballGame->unk1C2 + gCurrentPinballGame->unk1E2
-            // Note: this can be && chained off of the previous if, once we have this line deciphered.
-            if (gCurrentPinballGame->unk1E3[gCurrentPinballGame->unk1C2 - 1] != 0)
+            if (gCurrentPinballGame->unk1C6 > 167)
             {
-                if (gCurrentPinballGame->unk1C6 > 167)
+                gCurrentPinballGame->unk1F = 1;
+                gCurrentPinballGame->unk61C = 1;
+                gCurrentPinballGame->unk1DE = 120;
+                gCurrentPinballGame->unk1E0 = 120;
+                gCurrentPinballGame->unk61E = gCurrentPinballGame->unk1DE;
+                gCurrentPinballGame->unk5F7 = 1;
+                gCurrentPinballGame->unk208 = 0;
+                gCurrentPinballGame->unk20A = 0;
+
+                if (gCurrentPinballGame->outLanePikaPosition != 2)
                 {
-                    gCurrentPinballGame->unk1F = 1;
-                    gCurrentPinballGame->unk61C = 1;
-                    gCurrentPinballGame->unk1DE = 120;
-                    gCurrentPinballGame->unk1E0 = 120;
-                    gCurrentPinballGame->unk61E = gCurrentPinballGame->unk1DE;
-                    gCurrentPinballGame->unk5F7 = 1;
-                    gCurrentPinballGame->unk208 = 0;
-                    gCurrentPinballGame->unk20A = 0;
-
-                    if (gCurrentPinballGame->outLanePikaPosition != 2)
-                    {
-                        gCurrentPinballGame->unk1C6 = 0;
-                        gCurrentPinballGame->unk1C8 = 0;
-                        gCurrentPinballGame->unk1CC = 0;
-                        gCurrentPinballGame->unk1CA = 0;
-                        gCurrentPinballGame->unk1D4 = 0;
-                        gCurrentPinballGame->unk1D6 = -4;
-                        gCurrentPinballGame->unk1D8 = 256;
-                        gCurrentPinballGame->unk1DA = 256;
-                        gCurrentPinballGame->unk1CE = 0;
-                        gCurrentPinballGame->unk1D0 = 0;
-                    }
-
-                    gCurrentPinballGame->unk620 = gCurrentPinballGame->ball->positionQ1;
-                    gCurrentPinballGame->unk3C = 30000;
-
-                    if (gCurrentPinballGame->unk62E <= 98)
-                        gCurrentPinballGame->unk62E++;
-                }
-                else
-                {
-                    gCurrentPinballGame->unk1C4 = 60;
-                    MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2FA0);
+                    gCurrentPinballGame->unk1C6 = 0;
+                    gCurrentPinballGame->unk1C8 = 0;
+                    gCurrentPinballGame->unk1CC = 0;
+                    gCurrentPinballGame->unk1CA = 0;
+                    gCurrentPinballGame->unk1D4 = 0;
+                    gCurrentPinballGame->unk1D6 = -4;
+                    gCurrentPinballGame->unk1D8 = 256;
+                    gCurrentPinballGame->unk1DA = 256;
+                    gCurrentPinballGame->unk1CE = 0;
+                    gCurrentPinballGame->unk1D0 = 0;
                 }
 
-                i = gCurrentPinballGame->unk1C2 - 1;
+                gCurrentPinballGame->unk620 = gCurrentPinballGame->ball->positionQ1;
+                gCurrentPinballGame->unk3C = 30000;
 
-                if (gCurrentPinballGame->outLanePikaPosition == 2)
-                    gCurrentPinballGame->unk744[i] = (i) * 7 + 2;
-                else
-                    gCurrentPinballGame->unk744[i] = 2;
-
-                DmaCopy16(3, gUnknown_084C07EC + (gCurrentPinballGame->unk744[i] * 0x180), 0x06010480 + ((i) * 0x180), 0x180);
+                if (gCurrentPinballGame->unk62E <= 98)
+                    gCurrentPinballGame->unk62E++;
             }
+            else
+            {
+                gCurrentPinballGame->unk1C4 = 60;
+                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2FA0);
+            }
+
+            i = gCurrentPinballGame->unk1C2 - 1;
+
+            if (gCurrentPinballGame->outLanePikaPosition == 2)
+                gCurrentPinballGame->unk744[i] = (i) * 7 + 2;
+            else
+                gCurrentPinballGame->unk744[i] = 2;
+
+            DmaCopy16(3, gUnknown_084C07EC + (gCurrentPinballGame->unk744[i] * 0x180), 0x06010480 + ((i) * 0x180), 0x180);
         }
 
         if (gCurrentPinballGame->outLanePikaPosition == 2)
