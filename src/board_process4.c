@@ -100,7 +100,7 @@ void sub_195C4(void)
         if (gCurrentPinballGame->heldButtonActions[i])
         {
             if (unk13BC->unk6 == 0 && gCurrentPinballGame->unk25 == 0)
-                m4aSongNumStart(SE_UNKNOWN_0x72);
+                m4aSongNumStart(SE_FLIPPER_PRESSED);
 
             unk13BC->unk6 = 1;
             unk13BC->unk7 = 0;
@@ -110,7 +110,7 @@ void sub_195C4(void)
             if (unk13BC->unk0 == 10)
             {
                 if (unk13BC->unk7 > 2)
-                    unk13BC->unk6 = gCurrentPinballGame->heldButtonActions[i];
+                    unk13BC->unk6 = 0;
                 unk13BC->unk7++;
             }
         }
@@ -216,7 +216,7 @@ void sub_19894(void)
         {
             if (unk13BC->unk6 == 0 && gCurrentPinballGame->unk25 == 0 && gCurrentPinballGame->unk1A == 0)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x72);
+                m4aSongNumStart(SE_FLIPPER_PRESSED);
             }
             unk13BC->unk6 = 1;
             unk13BC->unk7 = 0;

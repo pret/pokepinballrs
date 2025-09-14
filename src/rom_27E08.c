@@ -440,7 +440,7 @@ void sub_216FC(void)
             else if (JOY_NEW(B_BUTTON))
             {
                 m4aMPlayAllStop();
-                m4aSongNumStart(SE_UNKNOWN_0x66);
+                m4aSongNumStart(SE_MENU_CANCEL);
                 gCurrentPinballGame->unk28 = 60;
                 gCurrentPinballGame->unk17 = 6;
                 if (gCurrentPinballGame->unk714)
@@ -2954,7 +2954,7 @@ void sub_26A10(void)
             else if (JOY_NEW(B_BUTTON))
             {
                 m4aMPlayAllStop();
-                m4aSongNumStart(SE_UNKNOWN_0x66);
+                m4aSongNumStart(SE_MENU_CANCEL);
                 gCurrentPinballGame->unk28 = 60;
                 gCurrentPinballGame->unk17 = 6;
                 if (gCurrentPinballGame->unk714)

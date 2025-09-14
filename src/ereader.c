@@ -141,7 +141,7 @@ void Ereader_State1_2E40(void)
         }
     }
     else if (JOY_NEW(B_BUTTON)) {
-        m4aSongNumStart(SE_UNKNOWN_0x66);
+        m4aSongNumStart(SE_MENU_CANCEL);
         gUnknown_0202BEF8 = STATE_TITLE;
         gMain.subState = 8;
     }
@@ -160,7 +160,7 @@ void Ereader_State2_2FC0(void)
             sub_3C1C();
             gUnknown_0201B124 = 0;
             gUnknown_0202C584 = 1;
-            m4aSongNumStart(SE_UNKNOWN_0x76);
+            m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
             gMain.subState = 3;
         }
     }
@@ -300,7 +300,7 @@ void Ereader_State5_33A0(void)
             break;
         case 0x96:
             gUnknown_0202A58C = 3;
-            m4aSongNumStart(SE_UNKNOWN_0x65);
+            m4aSongNumStart(SE_MENU_SELECT);
             break;
         case 0x10e:
             gUnknown_0201A44C = 0;

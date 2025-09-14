@@ -390,7 +390,7 @@ void sub_28544(void)
         gCurrentPinballGame->unkBC = gUnknown_086AE124[gCurrentPinballGame->unk73].x;
         gCurrentPinballGame->unkBE = gUnknown_086AE124[gCurrentPinballGame->unk73].y;
         gCurrentPinballGame->unk18 = 0;
-        m4aSongNumStart(SE_UNKNOWN_0x144);
+        m4aSongNumStart(SE_JIRACHI_MOVE);
         gCurrentPinballGame->unk17++;
         gCurrentPinballGame->unkC0 = gCurrentPinballGame->unk80;
         gCurrentPinballGame->unkC2 = gCurrentPinballGame->unk82;
@@ -425,7 +425,7 @@ void sub_28544(void)
                     else
                         gCurrentPinballGame->unk73 = 0;
 
-                    m4aSongNumStart(SE_UNKNOWN_0x144);
+                    m4aSongNumStart(SE_JIRACHI_MOVE);
                     gCurrentPinballGame->unkBC = gUnknown_086AE124[gCurrentPinballGame->unk73].x;
                     gCurrentPinballGame->unkBE = gUnknown_086AE124[gCurrentPinballGame->unk73].y;
                 }
@@ -1758,7 +1758,7 @@ void sub_2AADC(void)
         
     case 16:
         if (gCurrentPinballGame->unk5A6 == 0)
-            m4aSongNumStart(0x9B);
+            m4aSongNumStart(SE_UNKNOWN_0x9B);
         
         DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], 0x05000220, 0x20);
         gCurrentPinballGame->ball->unkA = 0x7000;
@@ -1866,7 +1866,7 @@ void sub_2AADC(void)
             }
             
             if (gCurrentPinballGame->unk5A6 == 2)
-                m4aSongNumStart(0x9C);
+                m4aSongNumStart(SE_UNKNOWN_0x9C);
         }
         break;
         
@@ -1993,10 +1993,10 @@ void sub_2AADC(void)
             if (gCurrentPinballGame->ball->positionQ8.y >= 314 << 8) 
             {
                 if (gCurrentPinballGame->ball->velocity.y > 49)
-                    m4aSongNumStart(0x9D);
+                    m4aSongNumStart(SE_UNKNOWN_0x9D);
                 
                 if (gCurrentPinballGame->ball->velocity.y <= -50)
-                    m4aSongNumStart(0x9D);
+                    m4aSongNumStart(SE_UNKNOWN_0x9D);
                 
                 gCurrentPinballGame->ball->positionQ8.y = 314 << 8;
                 gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * -45) / 100;
@@ -2029,7 +2029,7 @@ void sub_2AADC(void)
             
             if (gCurrentPinballGame->ball->positionQ8.y >= (gCurrentPinballGame->unk28A + 50) << 8) 
             {
-                m4aSongNumStart(0x9D);
+                m4aSongNumStart(SE_UNKNOWN_0x9D);
                 gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->unk28A + 50) << 8;
                 gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * -45) / 100;
                 gCurrentPinballGame->ball->unk6 = (gCurrentPinballGame->ball->unk6 * 7) / 10;
@@ -2064,7 +2064,7 @@ void sub_2AADC(void)
                     sub_11B0(6);
                 
                 if (temp_r0 == 184)
-                    m4aSongNumStart(158);
+                    m4aSongNumStart(SE_UNKNOWN_0x9E);
                 
                 gCurrentPinballGame->ball->positionQ8.x -= 96;
                 gCurrentPinballGame->ball->unkA -= 0x400;
@@ -2080,7 +2080,7 @@ void sub_2AADC(void)
                     sub_11B0(6);
                 
                 if (temp_r0 == 168) 
-                    m4aSongNumStart(0x9E);
+                    m4aSongNumStart(SE_UNKNOWN_0x9E);
                 
                 gCurrentPinballGame->ball->positionQ8.x -= 96;
                 gCurrentPinballGame->ball->unkA -= 0x400;
@@ -2098,7 +2098,7 @@ void sub_2AADC(void)
                         sub_11B0(6);
                     
                     if (temp_r0 == 116)
-                        m4aSongNumStart(0x9E);
+                        m4aSongNumStart(SE_UNKNOWN_0x9E);
                     
                     gCurrentPinballGame->ball->positionQ8.x -= 96;
                     gCurrentPinballGame->ball->unkA -= 0x400;
@@ -2114,7 +2114,7 @@ void sub_2AADC(void)
                         sub_11B0(6);
                     
                     if (temp_r0 == 100) 
-                        m4aSongNumStart(0x9E);
+                        m4aSongNumStart(SE_UNKNOWN_0x9E);
                     
                     gCurrentPinballGame->ball->positionQ8.x -= 96;
                     gCurrentPinballGame->ball->unkA -= 0x400;
@@ -2129,7 +2129,7 @@ void sub_2AADC(void)
         
         if (temp_r0 == 0) 
         {
-            m4aSongNumStart(0x11);
+            m4aSongNumStart(MUS_SUCCESS);
             sub_2312C();
         }
         

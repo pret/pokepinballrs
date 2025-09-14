@@ -351,7 +351,7 @@ void sub_153CC(s32 arg0, s16* arg1, u16* arg2)
             }
             gCurrentPinballGame->unk600 = 45;
             
-            m4aSongNumStart(SE_UNKNOWN_0x76);
+            m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
         }
         break;
     case 4:
@@ -1120,7 +1120,7 @@ void sub_1642C(u8 arg0, u16* arg1, u16* arg2)
             }
             
             gCurrentPinballGame->unk600 = 45;
-            m4aSongNumStart(SE_UNKNOWN_0x76);
+            m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
         }
         break;
     case 5:

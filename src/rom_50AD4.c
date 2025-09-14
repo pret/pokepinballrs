@@ -345,7 +345,7 @@ void sub_4F9F0(void)
         gCurrentPinballGame->unk716--;
         if (gCurrentPinballGame->unk716 == 3)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x73);
+            m4aSongNumStart(SE_SLINGSHOT_HIT);
             gCurrentPinballGame->unk3C = 500;
             sub_11B0(7);
         }
