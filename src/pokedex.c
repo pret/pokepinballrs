@@ -409,7 +409,7 @@ void Pokedex_State5_45A4(void)
             m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x100);
         }
     }
-    gUnknown_0202BEF4 = gUnknown_0202BEF4 + 1;
+    gUnknown_0202BEF4++;
     if (0x1e < gUnknown_0202BEF4)
     {
         gUnknown_0202BEF4 = 0;
@@ -706,7 +706,7 @@ void Pokedex_State9_4BB4(void)
             gMain.subState = POKEDEX_STATE_LOAD_GRAPHICS;
             break;
     }
-    gUnknown_0201B120 += 1;
+    gUnknown_0201B120++;
 }
 
 void Pokedex_State11_4C80(void)
@@ -1885,7 +1885,7 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
         {
             for (j = 0; j < 7; j++)
                 CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
-        
+
             CopyBgTilesRect((void *)gPokedexTextGlyphs_Gfx, (void *)0x06000000 + gUnknown_086A64F0[i] + j * 0x20, 1, 2);
         }
     }
@@ -1963,9 +1963,9 @@ void sub_70E0(s16 species, u32 page)
 void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
     int i;
     s32 temp_r2;
-    
+
     temp_r2 = ((arg1 / 8) * 0x10) + (arg2 * 0x400);
-    
+
     switch (arg0) {
     case 6:
         switch (arg1 % 8) {
@@ -2002,7 +2002,7 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
                 gUnknown_03000000[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
                 gUnknown_03000000[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 0xC);
                 gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2 + 1] & 0xF0) >> 0x4;
-                
+
                 gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
                 gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 0xC);
                 gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2 + 1] & 0xF0) >> 0x4;
@@ -2052,9 +2052,9 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
             return;
         }
         break;
-    case 5:     
+    case 5:
         switch (arg1 % 8) {
-        case 0:             
+        case 0:
             for(i = 0; i <=7; i++)
             {
                 gUnknown_03000000[i * 2 + temp_r2] |= gUnknown_0202BE30[i * 2];
@@ -2064,7 +2064,7 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
 
             }
             return;
-        case 1:           
+        case 1:
             for(i = 0; i <=7; i++)
             {
                 gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
@@ -2136,9 +2136,9 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
             return;
         }
         break;
-    case 4:     
+    case 4:
         switch (arg1 % 8) {
-        case 0:             
+        case 0:
             for(i = 0; i <=7; i++)
             {
                 gUnknown_03000000[(i * 2) + temp_r2] |= gUnknown_0202BE30[i * 2];
@@ -2276,7 +2276,7 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
             return;
         }
         break;
-    case 2:     
+    case 2:
         switch (arg1 % 8) {
         case 0:
             for(i = 0; i <=7; i++)

@@ -357,7 +357,7 @@ void sub_2D204(void)
         if (gCurrentPinballGame->unkCC < 236)
             gCurrentPinballGame->unkE6 = gCurrentPinballGame->unk18 / 2;;
 
-        if (gCurrentPinballGame->unk18 > 35) 
+        if (gCurrentPinballGame->unk18 > 35)
         {
             if (gCurrentPinballGame->unk18 < 68)
             {
@@ -664,7 +664,7 @@ void sub_2D204(void)
         {
             if (var0 == 1)
                 m4aMPlayStop(&gMPlayInfo_BGM);
-    
+
             gMain.blendControl = 0x9F;
             gMain.blendBrightness = 16 - (var0  / 4);
             if (var0 == 32)
@@ -672,7 +672,7 @@ void sub_2D204(void)
                 gCurrentPinballGame->unk29C = 140;
                 PlayCry_Normal(gSpeciesInfo[gCurrentPinballGame->currentSpecies].mainSeriesIndexNumber, 0);
             }
-    
+
             if (var0 == 64)
             {
                 gCurrentPinballGame->unk604 = 0;
@@ -701,14 +701,14 @@ void sub_2D204(void)
                     gCurrentPinballGame->unkE4 = 0;
                 }
             }
-    
+
             index = gCurrentPinballGame->unk603;
             group = gMain.unk44[37];
             group->baseX = 96 - gCurrentPinballGame->unk58;
             group->baseY = 300 - gCurrentPinballGame->unk5A;
             if (group->baseY >= 200)
                 group->baseY = 200;
-    
+
             for (i = 0; i < 4; i++)
             {
                 oamSimple = &group->oam[i];
@@ -850,7 +850,7 @@ void sub_2E094(void)
                 if (gCurrentPinballGame->unk18 % 10 == 0)
                     m4aSongNumStart(SE_UNKNOWN_0x97);
         }
-        
+
         if (gMain.selectedField == FIELD_RUBY)
         {
             DmaCopy16(3, gUnknown_08483D8C[index], (void *) 0x06015800, 0x480);
@@ -1314,7 +1314,7 @@ void sub_2F504(void)
     u16 *dst;
     const u16 *src;
     s16 index;
-    
+
     group = &gMain.spriteGroups[26];
     if (group->available)
     {
