@@ -126,7 +126,7 @@
 #define SE_PIKA_CHARGE_SO           0xAC // SE61 So (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_PIKA_CHARGE_LA           0xAD // SE62 La (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_PIKA_CHARGE_TI           0xAE // SE63 Ti (Title pokemon pinball logo tones / ramp spin pikachu charger)
-#define SE_PIKA_CHARGE_HIGH_DO         0xAF // SE64 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
+#define SE_PIKA_CHARGE_HIGH_DO      0xAF // SE64 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_UNKNOWN_0xB0             0xB0 // SE65 *extended flight takeoff*
 #define SE_UNKNOWN_0xB1             0xB1 // SE181 Pi~Ka CHU!
 #define SE_UNKNOWN_0xB2             0xB2 // SE182 Pika - pika - pi-ka
