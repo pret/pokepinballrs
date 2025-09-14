@@ -99,16 +99,18 @@ struct BallState
     /*0x3C*/ struct Vector32 prevPositionQ8;
 };
 
-struct UnkPinballGame13BC
+// Position rises in steps of 2 from 0 to 10.
+// Releasing the button continues rising till it reaches 10, and stalls for 3 frames before falling
+struct FlipperState
 {
-    /*0x00*/ s8 unk0;
-    /*0x01*/ s8 unk1;
+    /*0x00*/ s8 position;
+    /*0x01*/ s8 prevPosition;
     /*0x02*/ s8 unk2;
     /*0x03*/ s8 unk3;
     /*0x04*/ s8 unk4;
     /*0x05*/ s8 unk5;
-    /*0x06*/ s8 unk6;
-    /*0x07*/ u8 unk7;
+    /*0x06*/ s8 active;
+    /*0x07*/ u8 stallTicks;
     /*0x08*/ s8 unk8;
     /*0x09*/ u8 filler9[0x3];
 };
@@ -857,7 +859,7 @@ struct PinballGame
     /*0x132C*/struct BallState *ball;
     /*0x1330*/struct BallState *unk1330;
     /*0x1334*/struct BallState unk1334[2];
-    /*0x13BC*/struct UnkPinballGame13BC unk13BC[2];
+    /*0x13BC*/struct FlipperState flipper[2];
     /*0x13D4*/u16 unk13D4[10];
     /*0x13E8*/struct Vector16 unk13E8[10];
 } /* size=0x1410 */;

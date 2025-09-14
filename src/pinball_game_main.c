@@ -1364,7 +1364,7 @@ void sub_4C290(void)
 
     for (i = 0; i <= 1; i++) 
     {
-        var0 = gCurrentPinballGame->unk13BC[i].unk0 / 2;
+        var0 = gCurrentPinballGame->flipper[i].position / 2;
         DmaCopy16(3, gUnknown_083FE44C[var0], ((i * 0x200) + 0x06010000), 0x200);
     }
     

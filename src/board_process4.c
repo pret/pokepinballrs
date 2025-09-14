@@ -17,7 +17,7 @@ void sub_1931C(struct Vector16 arg0)
     struct Unk086ACE8C *line;
     struct Vector16 point1, point2;
 
-    line = &gUnknown_086ACE8C[gCurrentPinballGame->unk13BC[0].unk0];
+    line = &gUnknown_086ACE8C[gCurrentPinballGame->flipper[0].position];
     point1.x = line->unk0 + 0x53;
     point1.y = line->unk2 + gUnknown_02031520.unk14.unk1C;
 
@@ -27,11 +27,11 @@ void sub_1931C(struct Vector16 arg0)
     check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
 
     if (check >= 0)
-        gCurrentPinballGame->unk13BC[0].unk8 = 1;
+        gCurrentPinballGame->flipper[0].unk8 = 1;
     else
-        gCurrentPinballGame->unk13BC[0].unk8 = -1;
+        gCurrentPinballGame->flipper[0].unk8 = -1;
 
-    line = &gUnknown_086ACE8C[gCurrentPinballGame->unk13BC[1].unk0];
+    line = &gUnknown_086ACE8C[gCurrentPinballGame->flipper[1].position];
 
     point1.x = 0x9C - line->unk0;
     point1.y = line->unk2 + gUnknown_02031520.unk14.unk1C;
@@ -42,9 +42,9 @@ void sub_1931C(struct Vector16 arg0)
     check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
 
     if (check >= 0)
-        gCurrentPinballGame->unk13BC[1].unk8 = 1;
+        gCurrentPinballGame->flipper[1].unk8 = 1;
     else
-        gCurrentPinballGame->unk13BC[1].unk8 = -1;
+        gCurrentPinballGame->flipper[1].unk8 = -1;
 }
 
 void MainBoardProcess_4B_19490(void)
@@ -58,10 +58,10 @@ void MainBoardProcess_4B_19490(void)
     {
         struct SpriteGroup *spriteGroup;
 
-        if (gCurrentPinballGame->unk13BC[i].unk0 > 10)
-            gCurrentPinballGame->unk13BC[i].unk0 = 10;
-        else if (gCurrentPinballGame->unk13BC[i].unk0 < 0)
-            gCurrentPinballGame->unk13BC[i].unk0 = 0;
+        if (gCurrentPinballGame->flipper[i].position > 10)
+            gCurrentPinballGame->flipper[i].position = 10;
+        else if (gCurrentPinballGame->flipper[i].position < 0)
+            gCurrentPinballGame->flipper[i].position = 0;
 
         spriteGroup = &gMain.spriteGroups[10 + i];
         if (spriteGroup->available)
@@ -69,7 +69,7 @@ void MainBoardProcess_4B_19490(void)
             s8 unk0;
             struct OamDataSimple *oamData;
 
-            unk0 = gCurrentPinballGame->unk13BC[i].unk0 / 2;
+            unk0 = gCurrentPinballGame->flipper[i].position / 2;
             spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->unk58;
             spriteGroup->baseY = gUnknown_02031520.unk14.unk1C - gCurrentPinballGame->unk5A;
 
@@ -91,34 +91,34 @@ void sub_195C4(void)
     for (i = 0; i < 2; i++)
     {
         s16 dir;
-        struct UnkPinballGame13BC *unk13BC;
-        unk13BC = &gCurrentPinballGame->unk13BC[i];
+        struct FlipperState *flipper;
+        flipper = &gCurrentPinballGame->flipper[i];
 
-        unk13BC->unk1 = unk13BC->unk0;
-        unk13BC->unk2 = 0;
+        flipper->prevPosition = flipper->position;
+        flipper->unk2 = 0;
 
         if (gCurrentPinballGame->heldButtonActions[i])
         {
-            if (unk13BC->unk6 == 0 && gCurrentPinballGame->unk25 == 0)
+            if (flipper->active == 0 && gCurrentPinballGame->unk25 == 0)
                 m4aSongNumStart(SE_UNKNOWN_0x72);
 
-            unk13BC->unk6 = 1;
-            unk13BC->unk7 = 0;
+            flipper->active = 1;
+            flipper->stallTicks = 0;
         }
         else
         {
-            if (unk13BC->unk0 == 10)
+            if (flipper->position == 10)
             {
-                if (unk13BC->unk7 > 2)
-                    unk13BC->unk6 = gCurrentPinballGame->heldButtonActions[i];
-                unk13BC->unk7++;
+                if (flipper->stallTicks > 2)
+                    flipper->active = gCurrentPinballGame->heldButtonActions[i];
+                flipper->stallTicks++;
             }
         }
 
         dir = 0;
-        if (unk13BC->unk6 != 0)
+        if (flipper->active != 0)
         {
-            if (unk13BC->unk0 != 10)
+            if (flipper->position != 10)
             {
                 dir = 1;
             }
@@ -129,14 +129,14 @@ void sub_195C4(void)
                 gCurrentPinballGame->unk5C = 0;
                 sub_11B0(7);
             }
-            unk13BC->unk2 = unk13BC->unk0 / 2 + 1;
-            unk13BC->unk0 += 4;
+            flipper->unk2 = flipper->position / 2 + 1;
+            flipper->position += 4;
         }
         else
         {
-            if (unk13BC->unk0 != 0)
+            if (flipper->position != 0)
             {
-                unk13BC->unk2 = unk13BC->unk0 / 2 + 6;
+                flipper->unk2 = flipper->position / 2 + 6;
                 dir = -1;
             }
             else if (gCurrentPinballGame->unk5C != 0)
@@ -146,12 +146,12 @@ void sub_195C4(void)
                 gCurrentPinballGame->unk5C = 0;
                 sub_11B0(7);
             }
-            unk13BC->unk0 -= 2;
+            flipper->position -= 2;
         }
-        unk13BC->unk3 = unk13BC->unk3 * dir;
-        if (unk13BC->unk3 <= 0)
-            unk13BC->unk4 = 0;
-        unk13BC->unk3 = dir;
+        flipper->unk3 = flipper->unk3 * dir;
+        if (flipper->unk3 <= 0)
+            flipper->unk4 = 0;
+        flipper->unk3 = dir;
     }
 }
 
@@ -169,10 +169,10 @@ void BonusBoardProcess_4B_19734(void)
     {
         struct SpriteGroup *spriteGroup;
 
-        if (gCurrentPinballGame->unk13BC[i].unk0 > 10)
-            gCurrentPinballGame->unk13BC[i].unk0 = 10;
-        else if (gCurrentPinballGame->unk13BC[i].unk0 < 0)
-            gCurrentPinballGame->unk13BC[i].unk0 = 0;
+        if (gCurrentPinballGame->flipper[i].position > 10)
+            gCurrentPinballGame->flipper[i].position = 10;
+        else if (gCurrentPinballGame->flipper[i].position < 0)
+            gCurrentPinballGame->flipper[i].position = 0;
 
         spriteGroup = &gMain.spriteGroups[3 + i];
         if (spriteGroup->available)
@@ -180,7 +180,7 @@ void BonusBoardProcess_4B_19734(void)
             s8 unk0;
             struct OamDataSimple *oamData;
 
-            unk0 = gCurrentPinballGame->unk13BC[i].unk0 / 2;
+            unk0 = gCurrentPinballGame->flipper[i].position / 2;
             spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->unk58;
             spriteGroup->baseY = gUnknown_02031520.unk14.unk1C - gCurrentPinballGame->unk5A;
 
@@ -206,35 +206,35 @@ void sub_19894(void)
     for (i = 0; i < 2; i++)
     {
         s16 dir;
-        struct UnkPinballGame13BC *unk13BC;
-        unk13BC = &gCurrentPinballGame->unk13BC[i];
+        struct FlipperState *flipper;
+        flipper = &gCurrentPinballGame->flipper[i];
 
-        unk13BC->unk1 = unk13BC->unk0;
-        unk13BC->unk2 = 0;
+        flipper->prevPosition = flipper->position;
+        flipper->unk2 = 0;
 
         if (gCurrentPinballGame->heldButtonActions[i] && gMain.unkF == 0)
         {
-            if (unk13BC->unk6 == 0 && gCurrentPinballGame->unk25 == 0 && gCurrentPinballGame->unk1A == 0)
+            if (flipper->active == 0 && gCurrentPinballGame->unk25 == 0 && gCurrentPinballGame->unk1A == 0)
             {
                 m4aSongNumStart(SE_UNKNOWN_0x72);
             }
-            unk13BC->unk6 = 1;
-            unk13BC->unk7 = 0;
+            flipper->active = 1;
+            flipper->stallTicks = 0;
         }
         else
         {
-            if (unk13BC->unk0 == 10)
+            if (flipper->position == 10)
             {
-                if (unk13BC->unk7 > 2)
-                    unk13BC->unk6 = 0;
-                unk13BC->unk7++;
+                if (flipper->stallTicks > 2)
+                    flipper->active = 0;
+                flipper->stallTicks++;
             }
         }
 
         dir = 0;
-        if (unk13BC->unk6 != 0)
+        if (flipper->active != 0)
         {
-            if (unk13BC->unk0 != 10)
+            if (flipper->position != 10)
             {
                 dir = 1;
             }
@@ -245,14 +245,14 @@ void sub_19894(void)
                 gCurrentPinballGame->unk5C = 0;
                 sub_11B0(7);
             }
-            unk13BC->unk2 = unk13BC->unk0 / 2 + 1;
-            unk13BC->unk0 += 4;
+            flipper->unk2 = flipper->position / 2 + 1;
+            flipper->position += 4;
         }
         else
         {
-            if (unk13BC->unk0 != 0)
+            if (flipper->position != 0)
             {
-                unk13BC->unk2 = unk13BC->unk0 / 2 + 6;
+                flipper->unk2 = flipper->position / 2 + 6;
                 dir = -1;
             }
             else if (gCurrentPinballGame->unk5C != 0)
@@ -262,11 +262,11 @@ void sub_19894(void)
                 gCurrentPinballGame->unk5C = 0;
                 sub_11B0(7);
             }
-            unk13BC->unk0 -= 2;
+            flipper->position -= 2;
         }
-        unk13BC->unk3 = unk13BC->unk3 * dir;
-        if (unk13BC->unk3 <= 0)
-            unk13BC->unk4 = 0;
-        unk13BC->unk3 = dir;
+        flipper->unk3 = flipper->unk3 * dir;
+        if (flipper->unk3 <= 0)
+            flipper->unk4 = 0;
+        flipper->unk3 = dir;
     }
 }
