@@ -1354,28 +1354,28 @@ void sub_4BC34(void)
     }
 }
 
-void sub_4C290(void) 
+void sub_4C290(void)
 {
     s16 i;
     s16 var0;
-    
+
     sub_28AE0();
     sub_28BFC();
 
-    for (i = 0; i <= 1; i++) 
+    for (i = 0; i <= 1; i++)
     {
         var0 = gCurrentPinballGame->flipper[i].position / 2;
         DmaCopy16(3, gUnknown_083FE44C[var0], ((i * 0x200) + 0x06010000), 0x200);
     }
-    
+
     var0 = gCurrentPinballGame->ball->unkA / 0x1000;
     DmaCopy16(3, gUnknown_083BB16C[var0], 0x06010400, 0x80);
 
-    for (i = 0; i <= 1; i++) 
+    for (i = 0; i <= 1; i++)
     {
         DmaCopy16(3, gUnknown_084C07EC + ((var0 =gCurrentPinballGame->unk744[i]) * 0x180), 0x06010480 + (i * 0x180), 0x180);
     }
-    
+
     var0 = gCurrentPinballGame->unk1E5;
     DmaCopy16(3, gUnknown_084FA48C[var0 = gCurrentPinballGame->unk1E5], 0x06010780, 0x120);
     var0 = gCurrentPinballGame->unk1CA;
@@ -1383,32 +1383,32 @@ void sub_4C290(void)
 
     for (i = 0; i <= 1; i++)
     {
-        switch (gCurrentPinballGame->unk747[i]) 
+        switch (gCurrentPinballGame->unk747[i])
         {
         case 0:
             DmaCopy16(3, gUnknown_0848D68C[gCurrentPinballGame->unk749[i]], 0x06010CA0 + (i * 0x300), 0x300);
             gCurrentPinballGame->ball += 0; //TODO: Dumb match is still a match...
             break;
         case 9:
-            if (gCurrentPinballGame->unk25C > 0) 
+            if (gCurrentPinballGame->unk25C > 0)
             {
-                if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] == 0) 
+                if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] == 0)
                 {
                     gCurrentPinballGame->unk749[i] = 205;
                     DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->unk749[i] / 15] + (gCurrentPinballGame->unk749[i] % 15) * 0x20, 0x050003A0, 0x20);
-                } 
-                else if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] <= 3) 
+                }
+                else if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] <= 3)
                 {
                     gCurrentPinballGame->unk749[i] = gCurrentPinballGame->unk59A;
                     DmaCopy16(3, gMonPortraitGroupPals[0] + 15 * 0x20, 0x050003A0, 0x20);
-                } 
-                else 
+                }
+                else
                 {
                     gCurrentPinballGame->unk749[i] = gCurrentPinballGame->unk59A;
                     DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->unk749[i] / 15] + (gCurrentPinballGame->unk749[i] % 15) * 0x20, 0x050003A0, 0x20);
                 }
-            } 
-            else 
+            }
+            else
             {
                 gCurrentPinballGame->unk749[i] = gCurrentPinballGame->currentSpecies;
                 DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->unk749[i] / 15] + ((gCurrentPinballGame->unk749[i] % 15) * 0x20), 0x050003A0, 0x20);
@@ -1427,29 +1427,29 @@ void sub_4C290(void)
         }
     }
 
-    if (gCurrentPinballGame->unk13 == 4) 
+    if (gCurrentPinballGame->unk13 == 4)
     {
         switch (gCurrentPinballGame->unk17)
         {
         case 7:
         case 8:
-            if ((u32) gCurrentPinballGame->unk5A9 > 4) 
+            if ((u32) gCurrentPinballGame->unk5A9 > 4)
             {
                 DmaCopy16(3, gUnknown_02031060, 0x06010CA0, 0x480);
-            } 
-            else 
+            }
+            else
             {
                 DmaCopy16(3, gUnknown_02030760, 0x06010CA0, 0x480);
             }
             break;
         case 9:
-            if (gCurrentPinballGame->unk5A8 <= 31) 
+            if (gCurrentPinballGame->unk5A8 <= 31)
             {
-                if (gCurrentPinballGame->unk5A9 > 4) 
+                if (gCurrentPinballGame->unk5A9 > 4)
                 {
                     DmaCopy16(3, gUnknown_02031060, 0x06010CA0, 0x480);
-                } 
-                else 
+                }
+                else
                 {
                     DmaCopy16(3, gUnknown_02030760, 0x06010CA0, 0x480);
                 }
@@ -1458,28 +1458,28 @@ void sub_4C290(void)
         }
     }
 
-    if (gCurrentPinballGame->unk13 == 8) 
+    if (gCurrentPinballGame->unk13 == 8)
     {
-        switch (gCurrentPinballGame->unk17) 
+        switch (gCurrentPinballGame->unk17)
         {
         case 2:
-            if (gCurrentPinballGame->unk5A9 > 4U) 
+            if (gCurrentPinballGame->unk5A9 > 4U)
             {
                 DmaCopy16(3, gUnknown_02031060, 0x06010CA0, 0x480);
-            } 
-            else 
+            }
+            else
             {
                 DmaCopy16(3, gUnknown_02030760, 0x06010CA0, 0x480);
             }
             break;
         case 3:
-            if (gCurrentPinballGame->unk5A8 <= 31) 
+            if (gCurrentPinballGame->unk5A8 <= 31)
             {
-                if (gCurrentPinballGame->unk5A9 > 4U) 
+                if (gCurrentPinballGame->unk5A9 > 4U)
                 {
                     DmaCopy16(3, gUnknown_02031060, 0x06010CA0, 0x480);
-                } 
-                else 
+                }
+                else
                 {
                     DmaCopy16(3, gUnknown_02030760, 0x06010CA0, 0x480);
                 }

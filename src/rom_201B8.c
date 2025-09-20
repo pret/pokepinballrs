@@ -889,7 +889,7 @@ void sub_1DDDC(void)
                         if (gCurrentPinballGame->unk16C == var2)
                             gCurrentPinballGame->unk16C = ((gMain.systemFrameCount + 1) % 6) + 1;
                         else
-                            gCurrentPinballGame->unk16C = var2;   
+                            gCurrentPinballGame->unk16C = var2;
                     }
 
                     if (gCurrentPinballGame->unk162)
@@ -933,7 +933,7 @@ void sub_1DDDC(void)
                 if (gCurrentPinballGame->unk174 == 130)
                     m4aSongNumStart(SE_UNKNOWN_0xC8);
                 break;
-            case 4: 
+            case 4:
                 if (gCurrentPinballGame->unk174 == 102)
                     m4aSongNumStart(SE_UNKNOWN_0xC8);
                 if (gCurrentPinballGame->unk174 == 118)
@@ -941,7 +941,7 @@ void sub_1DDDC(void)
                 if (gCurrentPinballGame->unk174 == 134)
                     m4aSongNumStart(SE_UNKNOWN_0xC8);
                 break;
-            case 5: 
+            case 5:
                 if (gCurrentPinballGame->unk174 == 104)
                     m4aSongNumStart(SE_UNKNOWN_0xC8);
                 break;
@@ -1183,7 +1183,7 @@ void sub_1EC48(void)
         gCurrentPinballGame->unk184[i].y = (-(gCurrentPinballGame->unk178[i].y / 10) + 7) * 2;
         if (group->baseY < -40)
             group->baseY = -40;
-        
+
         for (j = 0; j < 2; j++)
         {
             oamSimple = &group->oam[j + i * 2];

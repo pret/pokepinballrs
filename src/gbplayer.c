@@ -340,7 +340,7 @@ void Sio32IDIntr(void)
                 gUnknown_02002808.send_id = 0x8000;
             }
             gUnknown_02002808.recv_id = ~receiverChunk;
-            REG_SIODATA32 = 
+            REG_SIODATA32 =
                 (gUnknown_02002808.send_id << ((1 - gUnknown_02002808.MS_mode) << 4)) +
                 (gUnknown_02002808.recv_id << (gUnknown_02002808.MS_mode << 4));
             break;

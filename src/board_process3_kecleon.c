@@ -57,7 +57,7 @@ extern const struct SpriteSet *gUnknown_086BB420[];
 void KecleonBoardProcess_3A_35860(void)
 {
     s16 i;
-    
+
     gCurrentPinballGame->unk18 = 0;
     gCurrentPinballGame->unk17 = 0;
     gCurrentPinballGame->unk13 = 0;
@@ -315,7 +315,7 @@ void sub_35D54(void)
                     gCurrentPinballGame->unk3F4 = gUnknown_086AE9E4[gCurrentPinballGame->unk3F4].unk0[rand & mask];
                 }
             }
-            
+
             if (gCurrentPinballGame->unk3E2 == 60 || gCurrentPinballGame->unk3E2 == 61)
                 MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1ABC);
         }
