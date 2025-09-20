@@ -78,10 +78,10 @@ void AllBoardProcess_6B_1333C()
             sub_13934(&var0, &var1, r7);
             var0.x -= (gUnknown_02031520.unk14.unk22 * 2);
             var0.y -= (gUnknown_02031520.unk14.unk20 * 2);
-            if (gCurrentPinballGame->unk13BC[0].unk4 == 0)
+            if (gCurrentPinballGame->flipper[0].unk4 == 0)
             {
                 sub_13D24(r7, &gCurrentPinballGame->ball->velocity, &var2);
-                gCurrentPinballGame->unk13BC[0].unk4 = 1;
+                gCurrentPinballGame->flipper[0].unk4 = 1;
             }
             else
             {
@@ -110,10 +110,10 @@ void AllBoardProcess_6B_1333C()
             sub_13934(&var0, &var1, r7);
             var0.x -= (gUnknown_02031520.unk14.unk24 * 2);
             var0.y -= (gUnknown_02031520.unk14.unk20 * 2);
-            if (gCurrentPinballGame->unk13BC[1].unk4 == 0)
+            if (gCurrentPinballGame->flipper[1].unk4 == 0)
             {
                 sub_13D24(r7, &gCurrentPinballGame->ball->velocity, &var2);
-                gCurrentPinballGame->unk13BC[1].unk4 = 1;
+                gCurrentPinballGame->flipper[1].unk4 = 1;
             }
             else
             {
@@ -276,14 +276,14 @@ void sub_13B28(struct Vector16* arg0, struct Vector16* arg1, s16 arg2)
 
     for (;;)
     {
-        sp12 = gCurrentPinballGame->unk13BC[arg2].unk0 - gCurrentPinballGame->unk13BC[arg2].unk1;
-
-        if ((sp12 *= gCurrentPinballGame->unk13BC[arg2].unk8) > 0)
+        sp12 = gCurrentPinballGame->flipper[arg2].position - gCurrentPinballGame->flipper[arg2].prevPosition;
+        
+        if ((sp12 *= gCurrentPinballGame->flipper[arg2].unk8) > 0)
         {
-            if (gCurrentPinballGame->unk13BC[arg2].unk2 < 7)
-                r4 = gUnknown_086ACD84[gCurrentPinballGame->unk13BC[arg2].unk5 - 1][0] +  0x4000;
+            if (gCurrentPinballGame->flipper[arg2].unk2 < 7)
+                r4 = gUnknown_086ACD84[gCurrentPinballGame->flipper[arg2].unk5 - 1][0] +  0x4000;
             else
-                r4 = gUnknown_086ACD84[gCurrentPinballGame->unk13BC[arg2].unk5 + 1][1] + -0x4000; // This changes compilation, apparently
+                r4 = gUnknown_086ACD84[gCurrentPinballGame->flipper[arg2].unk5 + 1][1] + -0x4000; // This changes compilation, apparently
         }
         else
         {
@@ -896,21 +896,21 @@ void sub_1493C(void)
 }
 
 u16 sub_14AF4(struct Vector16 r0, s16 r1, u16 *r2, s16 r3) {
-    struct UnkPinballGame13BC* unk13BC;
+    struct FlipperState* flipper;
     u16 res;
     int new_var;
     unsigned short ix;
 
     res = 0;
+    
+    ix = (r0.y * 96) + r0.x; 
+    flipper = &gCurrentPinballGame->flipper[r3]; 
 
-    ix = (r0.y * 96) + r0.x;
-    unk13BC = &gCurrentPinballGame->unk13BC[r3];
-
-    unk13BC->unk5 = gUnknown_086ACDB8[r1 + (unk13BC->unk2 * 5)];
-
-    if (0xF & (&gUnknown_02031520.unk68[unk13BC->unk5 * 0x2400])[ix])
+    flipper->unk5 = gUnknown_086ACDB8[r1 + (flipper->unk2 * 5)];
+    
+    if (0xF & (&gUnknown_02031520.unk68[flipper->unk5 * 0x2400])[ix])
     {
-        *r2 = 0xFFF0 & (&gUnknown_02031520.unk68[unk13BC->unk5 * 0x2400])[ix];
+        *r2 = 0xFFF0 & (&gUnknown_02031520.unk68[flipper->unk5 * 0x2400])[ix];
         if (r3 == 1)
         {
             new_var = 0x8000;
@@ -925,10 +925,10 @@ u16 sub_14AF4(struct Vector16 r0, s16 r1, u16 *r2, s16 r3) {
 void sub_14B84(s32 arg0, s16 arg1, struct Vector16* arg2, u16 arg3)
 {
     u16 angle;
-
-    angle = gCurrentPinballGame->unk13BC[arg1].unk5;
-
-    if (gCurrentPinballGame->unk13BC[arg1].unk8 > 0)
+    
+    angle = gCurrentPinballGame->flipper[arg1].unk5;
+    
+    if (gCurrentPinballGame->flipper[arg1].unk8 > 0)
     {
         if (gCurrentPinballGame->unk5C == 0)
         {
@@ -937,7 +937,7 @@ void sub_14B84(s32 arg0, s16 arg1, struct Vector16* arg2, u16 arg3)
             s16 temp_r2;
             s16 temp_r5;
 
-            temp_r2 = gCurrentPinballGame->unk13BC[arg1].unk5;
+            temp_r2 = gCurrentPinballGame->flipper[arg1].unk5;
             temp_r5 = (temp_r2 - 2) * 25;
             arg0 -= temp_r5;
 
