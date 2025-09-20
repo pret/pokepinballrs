@@ -24,7 +24,7 @@ extern struct SongHeader gUnknown_0869F664;
 void sub_4E814(void)
 {
     gCurrentPinballGame->unk734 = (gCurrentPinballGame->unk70C % 40) / 20;
-    gCurrentPinballGame->unk70C = gCurrentPinballGame->unk70C + 1;
+    gCurrentPinballGame->unk70C++;
     sub_4EA44();
     if (gCurrentPinballGame->unk6A < 232)
     {
@@ -181,7 +181,7 @@ void sub_4EBD0(void)
             gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
         }
     }
-    
+
     for (i = 0; i < 4; i++)
     {
         src = &gUnknown_086B0BC4[i][gCurrentPinballGame->holeIndicators[i]];
@@ -297,7 +297,7 @@ void sub_4EF38(void)
     s16 index;
     const u8 **src;
     const u8 **dest;
-    
+
     index = 0;
     if (gCurrentPinballGame->unk2F0 > 2)
         gCurrentPinballGame->unk72A = 1;

@@ -199,7 +199,7 @@ void sub_356A0(void)
 
         group->baseX = 240;
         group->baseY = 160;
-        
+
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + 240;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;

@@ -302,7 +302,7 @@ void sub_978C(void)
         if (gUnknown_0202BF10 >= gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][1])
         {
             m4aSongNumStart(gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][0]);
-            gUnknown_0202A578 = gUnknown_0202A578 + 1;
+            gUnknown_0202A578++;
         }
     }
 }
@@ -430,7 +430,7 @@ void sub_9AB8(void)
     gUnknown_0201A450[3].unk2 -= 0xD;
 
     gUnknown_0202ADA0[0x12] -= 0x10;
-    gUnknown_0202ADA0[0x13] += 1;
+    gUnknown_0202ADA0[0x13]++;
     gUnknown_0202ADA0[0x6]  -= 0x10;
 
     gUnknown_0201A450[2].unk0 -= 0xE;
@@ -1983,29 +1983,29 @@ void sub_C4F0(void)
     s32 j;
     s8 cVar1;
     s8 cVar2;
-    
+
 
     sg0 = &gMain.spriteGroups[0];
     sg1 = &gMain.spriteGroups[1];
-    
+
     spriteGroups[0] = &gMain.spriteGroups[(5 * gUnknown_0201A450[2].unk8) + 2];
     spriteGroups[1] = &gMain.spriteGroups[(5 * gUnknown_0201A450[3].unk8) + 3];
     spriteGroups[2] = &gMain.spriteGroups[(5 * gUnknown_0201A450[4].unk8) + 4];
     spriteGroups[3] = &gMain.spriteGroups[(5 * gUnknown_0201A450[5].unk8) + 5];
     spriteGroups[4] = &gMain.spriteGroups[(5 * gUnknown_0201A450[6].unk8) + 6];
 
-    
+
     sg0->available = gUnknown_0201A450[0].unkC;
     sg1->available = 1;
-    
+
     spriteGroups[0]->available = gUnknown_0201A450[2].unkC;
     spriteGroups[1]->available = gUnknown_0201A450[3].unkC;
     spriteGroups[2]->available = gUnknown_0201A450[4].unkC;
     spriteGroups[3]->available = gUnknown_0201A450[5].unkC;
     spriteGroups[4]->available = gUnknown_0201A450[6].unkC;
-    
+
     LoadSpriteSets(gUnknown_086A7C24, 0x11, gMain.spriteGroups);
-    
+
     if (sg0->available == 1)
     {
         sg0->baseX = gUnknown_0201A450[0].unk0;
@@ -2015,7 +2015,7 @@ void sub_C4F0(void)
         gOamBuffer[oamData->oamId].x = oamData->xOffset + sg0->baseX;
         gOamBuffer[oamData->oamId].y = oamData->yOffset + sg0->baseY;
     }
-    
+
     for (i = 0; i < 5; i++)
     {
         if (spriteGroups[i]->available == 1)
@@ -2031,14 +2031,14 @@ void sub_C4F0(void)
                 cVar1 = gUnknown_086A7C68[i].unk0;
                 cVar2 = gUnknown_086A7C68[i].unk1;
             }
-            
+
             gUnknown_0201A450[2 + i].unk0 += cVar1;
             gUnknown_0201A450[2 + i].unk2 += cVar2;
             spriteGroups[i]->baseX = gUnknown_0201A450[2 + i].unk0;
             spriteGroups[i]->baseY = gUnknown_0201A450[2 + i].unk2;
-            
+
             p = gUnknown_086A7C24[( 2 + i) + (5 * gUnknown_0201A450[2 + i].unk8)];
-            
+
             for (j = 0; j < p->count; j++)
             {
                 oamData = &spriteGroups[i]->oam[j];
@@ -2048,7 +2048,7 @@ void sub_C4F0(void)
             }
 
             gUnknown_0201A450[2 + i].unkA++;
-            
+
             if (gUnknown_0201A450[2 + i].unkA > 0x4)
             {
                 gUnknown_0201A450[2 + i].unkA = 0;
@@ -2064,7 +2064,7 @@ void sub_C4F0(void)
     {
         sg1->baseX = gUnknown_0201A450[1].unk0;
         sg1->baseY = gUnknown_0201A450[1].unk2;
-        
+
         for (j = 0; j < 4; j++)
         {
             oamData = &sg1->oam[j];
@@ -2074,10 +2074,10 @@ void sub_C4F0(void)
         }
 
     }
-    
+
     sg1->available = 0;
     sg0->available = 0;
-    
+
     spriteGroups[0]->available = 0;
     spriteGroups[1]->available = 0;
     spriteGroups[2]->available = 0;
