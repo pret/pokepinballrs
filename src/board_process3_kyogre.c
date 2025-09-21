@@ -965,7 +965,7 @@ void sub_39A40(void)
             }
         }
 
-        if (gCurrentPinballGame->unk448 < 18) 
+        if (gCurrentPinballGame->unk448 < 18)
         {
             gCurrentPinballGame->unk383 = 1;
             gCurrentPinballGame->ball->velocity.x = 0;

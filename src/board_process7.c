@@ -15,15 +15,15 @@ void MainBoardProcess_7B_12524(void)
     struct BallState *currentBallState;
     struct SpriteGroup *spriteGroup;
     s16 r8;
-    
+
     currentBallState = gCurrentPinballGame->ball;
     r8 = currentBallState->unkA >> 12;
-    
+
     if (currentBallState->positionQ0.y == 340 && (currentBallState->positionQ0.x == 90 || currentBallState->positionQ0.x == 149))
         currentBallState->unkA = currentBallState->unkC;
 
     currentBallState->unkC = currentBallState->unkA;
-    
+
     if (!gCurrentPinballGame->unk5F7 && gCurrentPinballGame->ballUpgradeCounter > 0)
     {
         if (--gCurrentPinballGame->ballUpgradeCounter == 0)
@@ -31,11 +31,11 @@ void MainBoardProcess_7B_12524(void)
             if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
             {
                 gCurrentPinballGame->ballUpgradeType--;
-                
+
                 if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                     gCurrentPinballGame->ballUpgradeCounter = 3600;
             }
-            
+
             DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
         }
     }
@@ -50,22 +50,22 @@ void MainBoardProcess_7B_12524(void)
 
     currentBallState->positionQ0.x = currentBallState->positionQ1.x / 2;
     currentBallState->positionQ0.y = currentBallState->positionQ1.y / 2;
-    
+
     spriteGroup = gMain.unk44[0];
-    
+
     if (spriteGroup->available)
     {
         SetMatrixScale(currentBallState->scale, currentBallState->scale, 0);
-        
+
         spriteGroup->baseX = -(gCurrentPinballGame->unk4C + 7) + currentBallState->positionQ0.x - gCurrentPinballGame->unk2AA;
         spriteGroup->baseY = -(gCurrentPinballGame->unk4E + 7) + currentBallState->positionQ0.y - gCurrentPinballGame->unk5FC - gCurrentPinballGame->unkE6 + gCurrentPinballGame->unk166;
-        
+
         currentBallState->screenPosition.x = spriteGroup->baseX;
         currentBallState->screenPosition.y = spriteGroup->baseY;
-        
+
         oam = &spriteGroup->oam[0];
         oamData = &gOamBuffer[oam->oamId];
-        
+
         if (currentBallState->oamPriority == 3)
         {
             if (currentBallState->positionQ0.y > 248)
@@ -81,12 +81,12 @@ void MainBoardProcess_7B_12524(void)
 
         if (spriteGroup->baseY > 200)
             spriteGroup->baseY = 200;
-        
+
         if (spriteGroup->baseY < -20)
             spriteGroup->baseY = -20;
 
         oamData->x = oam->xOffset + spriteGroup->baseX;
-        
+
         if (currentBallState->unk0)
             oamData->y = 200;
         else
@@ -98,16 +98,16 @@ void MainBoardProcess_7B_12524(void)
     if (spriteGroup->available)
     {
         SetMatrixScale(currentBallState->scale, currentBallState->scale, 0);
-        
+
         spriteGroup->baseX = -(gCurrentPinballGame->unk4C + 7) + currentBallState->positionQ0.x - gCurrentPinballGame->unk2AA;
         spriteGroup->baseY = -(gCurrentPinballGame->unk4E + 7) + currentBallState->positionQ0.y - gCurrentPinballGame->unk5FC - gCurrentPinballGame->unkE6 + gCurrentPinballGame->unk166;
-        
+
         currentBallState->screenPosition.x = spriteGroup->baseX;
         currentBallState->screenPosition.y = spriteGroup->baseY;
-        
+
         oam = &spriteGroup->oam[0];
         oamData = &gOamBuffer[oam->oamId];
-    
+
         if (currentBallState->oamPriority == 3)
         {
             if (currentBallState->positionQ0.y > 248)
@@ -117,12 +117,12 @@ void MainBoardProcess_7B_12524(void)
         }
         else
             oamData->priority = currentBallState->oamPriority;
-        
+
         DmaCopy16(3, gUnknown_083BB16C[r8 + gCurrentPinballGame->ballUpgradeType * 17], (void *)0x6010400, 0x80);
 
         if (spriteGroup->baseY > 200)
             spriteGroup->baseY = 200;
-        
+
         if (spriteGroup->baseY < -20)
             spriteGroup->baseY = -20;
 
@@ -142,21 +142,21 @@ void MainBoardProcess_7B_12524(void)
 
     gCurrentPinballGame->unkD0[0].x = currentBallState->positionQ0.x - 7;
     gCurrentPinballGame->unkD0[0].y = currentBallState->positionQ0.y - 7;
-    
+
     if (gCurrentPinballGame->unk71)
     {
         for (i = 0; i < 2; i++)
         {
             spriteGroup = gMain.unk44[i + 1];
-            
+
             if (spriteGroup->available)
             {
                 oam = &spriteGroup->oam[0];
                 oamData = &gOamBuffer[oam->oamId];
-                
+
                 oamData->priority = currentBallState->oamPriority;
                 oamData->x = oam->xOffset + (gCurrentPinballGame->unkD0[(i + 1) * 2].x - gCurrentPinballGame->unk4C);
-                
+
                 if (i == 0)
                     oamData->y = gCurrentPinballGame->unkD0[2].y - gCurrentPinballGame->unk4E + oam->yOffset;
                 else if (i == 1)
@@ -179,12 +179,12 @@ void MainBoardProcess_7B_12524(void)
         for (i = 0; i < 2; i++)
         {
             spriteGroup = gMain.unk44[i + 1];
-     
+
             if (spriteGroup->available)
             {
                 oam = &spriteGroup->oam[0];
                 oamData = &gOamBuffer[oam->oamId];
-                
+
                 oamData->priority = currentBallState->oamPriority;
                 oamData->x = oam->xOffset + (gCurrentPinballGame->unkD0[(i + 1) * 2].x - gCurrentPinballGame->unk4C);
                 oamData->y = 200;
@@ -198,7 +198,7 @@ void MainBoardProcess_7B_12524(void)
     }
 
     spriteGroup = gMain.unk44[43];
-    
+
     if (spriteGroup->available)
     {
         s8 newIx;
@@ -215,14 +215,14 @@ void MainBoardProcess_7B_12524(void)
 
         newIx = gCurrentPinballGame->unk6E;
         DmaCopy16(3, gUnknown_083BD36C[newIx], (void *)0x6011EE0, 0x200);
-        
+
         oam = &spriteGroup->oam[0];
-        
+
         gOamBuffer[oam->oamId].x = oam->xOffset + spriteGroup->baseX;
         gOamBuffer[oam->oamId].y = oam->yOffset + spriteGroup->baseY;
-        
+
         gOamBuffer[oam->oamId].priority = currentBallState->oamPriority;
-        
+
         if (gCurrentPinballGame->unk71C < 14)
             gMain.unk44[43]->available = 0;
     }
@@ -400,12 +400,12 @@ void BonusBoardProcess_7B_12BF8()
     {
         if (gCurrentPinballGame->unk5F7 == 0 && gCurrentPinballGame->ballUpgradeCounter != 0)
         {
-            gCurrentPinballGame->ballUpgradeCounter -= 1;
+            gCurrentPinballGame->ballUpgradeCounter--;
             if (gCurrentPinballGame->ballUpgradeCounter == 0)
             {
                 if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                 {
-                    gCurrentPinballGame->ballUpgradeType -= 1;
+                    gCurrentPinballGame->ballUpgradeType--;
                     if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                     {
                         gCurrentPinballGame->ballUpgradeCounter = 60 * 60;

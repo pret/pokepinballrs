@@ -39,7 +39,7 @@ void sub_2C538(void)
         gCurrentPinballGame->unk304++;
         if (gCurrentPinballGame->unk304 == 9)
         {
-             gCurrentPinballGame->unk300 = 3;  
+             gCurrentPinballGame->unk300 = 3;
             gCurrentPinballGame->unk304 = 0;
         }
         break;
@@ -99,14 +99,14 @@ void sub_2C538(void)
             group->baseX = 192 - gCurrentPinballGame->unk58;
             group->baseY = 278 - gCurrentPinballGame->unk5A;
         }
-        
+
         if (gCurrentPinballGame->unk302 > 0)
         {
             gCurrentPinballGame->unk302--;
             if (gCurrentPinballGame->unk302 == 0)
                 gMain.spriteGroups[68].available = 0;
         }
-       
+
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -136,7 +136,7 @@ void sub_2C538(void)
     group = &gMain.spriteGroups[58];
     if (group->available)
     {
-        group->baseX = 184 - gCurrentPinballGame->unk58;        
+        group->baseX = 184 - gCurrentPinballGame->unk58;
         group->baseY = 277 - gCurrentPinballGame->unk5A;
         DmaCopy16(3, gUnknown_0847DF0C[index], (void*) 0x06013580, 0x300);
         for (i = 0; i < 3;i++)

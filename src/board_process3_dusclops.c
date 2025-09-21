@@ -364,7 +364,7 @@ void sub_336E0(void) {
                 {
                     gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
                     gCurrentPinballGame->unk3A3[i]++; //Animation frame advance 'move left to neutral state'
-                    if (gCurrentPinballGame->unk3A3[i] > 6) //Animation frame at neutral forward, continue with move right 
+                    if (gCurrentPinballGame->unk3A3[i] > 6) //Animation frame at neutral forward, continue with move right
                     {
                         gCurrentPinballGame->unk3A3[i] = 7;
                         gCurrentPinballGame->unk3A0[i] = 3; //duskull lifecycle state. Move Right
@@ -374,7 +374,7 @@ void sub_336E0(void) {
             sp0 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][0];
             r7 = gUnknown_086AE5EC[gCurrentPinballGame->unk3A3[i]][2];
             break;
-        case 3: //Move Right state 
+        case 3: //Move Right state
             gCurrentPinballGame->unk3B6[i]++; //Time Alive
             if (gCurrentPinballGame->unk3C4[i].x < 800) //Dusclops x pos
             {
@@ -387,7 +387,7 @@ void sub_336E0(void) {
                 else
                 {
                     gCurrentPinballGame->unk3B0[i] = 0; //Time since last decision
-                    gCurrentPinballGame->unk3A3[i]++; //Animation frame advance 
+                    gCurrentPinballGame->unk3A3[i]++; //Animation frame advance
                     if (gCurrentPinballGame->unk3A3[i] > 10)
                         gCurrentPinballGame->unk3A3[i] = 7;
                 }
@@ -593,7 +593,7 @@ void sub_340EC() {
         }
         else
         {
-            for (j = 0; j < 2; j++) 
+            for (j = 0; j < 2; j++)
             {
                 oamData = &spriteGroup->oam[j];
                 dst = (u16*)&gOamBuffer[oamData->oamId];
@@ -610,20 +610,20 @@ void sub_340EC() {
     }
 }
 
-void sub_34450(void) 
-{    
+void sub_34450(void)
+{
     s16 r9;
     u16 available;
     struct OamDataSimple *oamSimple;
     struct SpriteGroup *spriteGroup;
-    
+
     r9 = 0;
     spriteGroup = &gMain.spriteGroups[14];
     switch(gCurrentPinballGame->unk3DC)
     {
     case 0:
     {
-        gCurrentPinballGame->unk3E8 = 880;  
+        gCurrentPinballGame->unk3E8 = 880;
         gCurrentPinballGame->unk3EA = 300;
         gCurrentPinballGame->unk3DC = 1;
         gCurrentPinballGame->unk3E6 = 184;
@@ -632,11 +632,11 @@ void sub_34450(void)
         gCurrentPinballGame->unk294 = 1;
         break;
     }
-        
+
     case 1:
     {
         if (gUnknown_086AE68E[gCurrentPinballGame->unk3E2][1] > gCurrentPinballGame->unk3E4)
-            gCurrentPinballGame->unk3E4++; 
+            gCurrentPinballGame->unk3E4++;
         else
         {
             gCurrentPinballGame->unk3E4 = 0;
@@ -645,7 +645,7 @@ void sub_34450(void)
             if (gCurrentPinballGame->unk3E2 > 28)
             {
                 gCurrentPinballGame->unk3E2 = 21;
-            
+
                 if (gCurrentPinballGame->unk3E0 <= 0)
                     gCurrentPinballGame->unk3E0++;
                 else
@@ -654,15 +654,15 @@ void sub_34450(void)
                     gCurrentPinballGame->unk3DC = 2;
                 }
             }
-            
+
             if (gCurrentPinballGame->unk3E2 == 23)
             {
                 gCurrentPinballGame->unk129 = 0;
                 gCurrentPinballGame->unk128 = 1;
                 m4aSongNumStart(SE_UNKNOWN_0xF4); //Dusclops entry; footstops
-                sub_11B0(8);                    
+                sub_11B0(8);
             }
-            
+
             if (gCurrentPinballGame->unk3E2 == 27)
             {
                 gCurrentPinballGame->unk129 = 1;
@@ -672,8 +672,8 @@ void sub_34450(void)
 
             }
         }
-        
-        r9 = 0;    
+
+        r9 = 0;
         break;
     }
     case 2:
@@ -682,12 +682,12 @@ void sub_34450(void)
         {
             r9 = gUnknown_08137D40[(gCurrentPinballGame->unk3E4 % 0x40) / 16];
             gCurrentPinballGame->unk3E4++;
-            
+
             if (gCurrentPinballGame->unk3E4 == 256)
             {
                 gCurrentPinballGame->unk3DC = 3;
                 gCurrentPinballGame->unk3E4 = 0;
-                
+
                 if (gCurrentPinballGame->unk3E0 > 3)
                     gCurrentPinballGame->unk3E0 = 0;
                 if (gCurrentPinballGame->unk3E0 <= 1)
@@ -696,11 +696,11 @@ void sub_34450(void)
                     gCurrentPinballGame->unk3E2 = 7;
             }
         }
-        
+
         if (gCurrentPinballGame->unk3E6 > 0)
         {
             if (gCurrentPinballGame->unk3E6 > 64)
-                gCurrentPinballGame->unk3E6 -= 1;
+                gCurrentPinballGame->unk3E6--;
             else
                 gCurrentPinballGame->unk3E6 -= 2;
 
@@ -712,16 +712,16 @@ void sub_34450(void)
             gCurrentPinballGame->unk387 = 2;
             gCurrentPinballGame->unk294 = 2;
         }
-        
+
         break;
     }
     case 3:
     {
         if (gUnknown_086AE68E[gCurrentPinballGame->unk3E2][1] > gCurrentPinballGame->unk3E4)
-        {    
-            gCurrentPinballGame->unk3E4++; 
+        {
+            gCurrentPinballGame->unk3E4++;
         }
-        else 
+        else
         {
             gCurrentPinballGame->unk3E4 = 0;
 
@@ -733,7 +733,7 @@ void sub_34450(void)
                 {
                     gCurrentPinballGame->unk3E2 = 0;
                     gCurrentPinballGame->unk3E0++;
-              
+
                     if ((gCurrentPinballGame->unk3E0 & 1) == 0)
                     {
                         gCurrentPinballGame->unk3DC = 2;
@@ -742,9 +742,9 @@ void sub_34450(void)
                 }
             }
             else if (--gCurrentPinballGame->unk3E2 < 0)
-            {                
+            {
                 gCurrentPinballGame->unk3E0++;
-                
+
                 if ((gCurrentPinballGame->unk3E0 & 1) == 0)
                 {
                     gCurrentPinballGame->unk3DC = 2;
@@ -758,27 +758,27 @@ void sub_34450(void)
             if (gCurrentPinballGame->unk3E2 == 2)
             {
                 gCurrentPinballGame->unk129 = 0;
-                gCurrentPinballGame->unk128 = 1; 
+                gCurrentPinballGame->unk128 = 1;
                 m4aSongNumStart(SE_UNKNOWN_0xF4); //Dusclops entry; footstops
-                sub_11B0(8);    
+                sub_11B0(8);
             }
-            
+
             if (gCurrentPinballGame->unk3E2 == 6)
             {
-                gCurrentPinballGame->unk129 = 1;                
-                gCurrentPinballGame->unk128 = 1; 
+                gCurrentPinballGame->unk129 = 1;
+                gCurrentPinballGame->unk128 = 1;
                 m4aSongNumStart(SE_UNKNOWN_0xF4); //Dusclops entry; footstops
                 sub_11B0(8);
             }
         }
 
         r9 = gUnknown_086AE68E[gCurrentPinballGame->unk3E2][0];
-        
+
         if((gCurrentPinballGame->unk3E2  == 0) || (gCurrentPinballGame->unk3E2 == 4))
         {
             break;
         }
-        
+
         if (gCurrentPinballGame->unk3E0 <= 1)
         {
             if (gCurrentPinballGame->unk3EA <= 583)
@@ -789,7 +789,7 @@ void sub_34450(void)
 
             if ((gCurrentPinballGame->unk3E2 % 4) != 0)
                 break;
-            
+
             gCurrentPinballGame->unk3DC = 2;
             gCurrentPinballGame->unk3E4 = 0;
             gCurrentPinballGame->unk3E2 = 0;
@@ -802,15 +802,15 @@ void sub_34450(void)
             gCurrentPinballGame->unk3EA--;
             break;
         }
-        
+
         if ((gCurrentPinballGame->unk3E2 % 4) != 0)
             break;
-        
+
         gCurrentPinballGame->unk3DC = 2;
         gCurrentPinballGame->unk3E4 = 0;
         gCurrentPinballGame->unk3E2 = 0;
         gCurrentPinballGame->unk3E0 = 4;
-    
+
         break;
     }
     case 4:
@@ -819,7 +819,7 @@ void sub_34450(void)
         gCurrentPinballGame->unk3E2 = 0;
         gCurrentPinballGame->unk3DC = 5;
         r9 = 7;
-        
+
         m4aSongNumStart(SE_UNKNOWN_0xF6); //Dusclops hit
         gCurrentPinballGame->unk387 = 0;
         sub_11B0(7);
@@ -847,33 +847,33 @@ void sub_34450(void)
             gCurrentPinballGame->unk3DC = 8;
             r9 = 7;
         }
-        
+
         gCurrentPinballGame->unk385++;
         gCurrentPinballGame->unk3C = 300000;
-        
+
         break;
     }
     case 6:
     {
         struct Vector16 tempVector;
-        
+
         gCurrentPinballGame->unk3E2 = 9;
         gCurrentPinballGame->unk3E4 = 0;
         gCurrentPinballGame->unk3DC = 7;
         gCurrentPinballGame->unk5A6 = 0;
         r9 = 8;
-        
+
         m4aSongNumStart(SE_UNKNOWN_0xF7); //Dusclops absorbs ball
         gCurrentPinballGame->unk288 = (gCurrentPinballGame->unk3E8 / 10) + 32;
         gCurrentPinballGame->unk28A = (gCurrentPinballGame->unk3EA / 10) + 36;
-        
+
         tempVector.x = (gCurrentPinballGame->unk288 << 8) - gCurrentPinballGame->ball->positionQ8.x;
         tempVector.y = (gCurrentPinballGame->unk28A << 8) - gCurrentPinballGame->ball->positionQ8.y;
 
         gCurrentPinballGame->unk5AC = (tempVector.x * tempVector.x) + (tempVector.y * tempVector.y);
         gCurrentPinballGame->unk5AC = Sqrt(gCurrentPinballGame->unk5AC * 4) / 2;
         gCurrentPinballGame->unk5B0 = ArcTan2(-tempVector.x, tempVector.y);
-        
+
         sub_11B0(13);
         break;
     }
@@ -885,19 +885,19 @@ void sub_34450(void)
         {
             gCurrentPinballGame->unk3E4 = 0;
             gCurrentPinballGame->unk3E2++;
-            
+
             if (gCurrentPinballGame->unk3E2 == 15)
             {
-                gCurrentPinballGame->ball->velocity.x = (gMain.systemFrameCount % 2 * 300) + 65386; 
+                gCurrentPinballGame->ball->velocity.x = (gMain.systemFrameCount % 2 * 300) + 65386;
                 gCurrentPinballGame->ball->velocity.y = 300;
                 gCurrentPinballGame->ball->unk0 = 0;
                 m4aSongNumStart(SE_UNKNOWN_0xF8); //Dusclops launch ball
                 sub_11B0(8);
             }
-            
+
             if (gCurrentPinballGame->unk3E2 == 16)
                 gCurrentPinballGame->unk1F = 0;
-            
+
             if (gCurrentPinballGame->unk3E2 > 16)
             {
                 gCurrentPinballGame->unk3E4 = 128;
@@ -921,16 +921,16 @@ void sub_34450(void)
         {
             s16 tr4 = 29 - gCurrentPinballGame->unk5A6;
             s32 sl;
-            
+
             gCurrentPinballGame->unk5B0 -= ((tr4 * 8192) / 30) - 8192;
             gCurrentPinballGame->ball->unkA = gCurrentPinballGame->ball->unkA - 8192;
-            
+
             sl = (gCurrentPinballGame->unk5AC * tr4) / 30;
-            
+
             gCurrentPinballGame->ball->positionQ8.x = (gCurrentPinballGame->unk288 * 256) + ((Cos(gCurrentPinballGame->unk5B0) * sl) / 20000);
-            
+
             gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->unk28A * 256) - ((Sin(gCurrentPinballGame->unk5B0) * sl) / 20000);
-            
+
             gCurrentPinballGame->ball->velocity.x = (gCurrentPinballGame->ball->velocity.x * 4) / 5;
             gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * 4) / 5;
         }
@@ -944,7 +944,7 @@ void sub_34450(void)
 
         gCurrentPinballGame->unk5A6++;
         r9 = gUnknown_086AE68E[gCurrentPinballGame->unk3E2][0];
-        
+
         break;
     }
     case 8:
@@ -957,7 +957,7 @@ void sub_34450(void)
             gCurrentPinballGame->unk388 = 2;
             gCurrentPinballGame->unk392 = 0;
         }
-        
+
         r9 = 15;
 
         if (gCurrentPinballGame->unk3E6 <= 183)
@@ -973,18 +973,18 @@ void sub_34450(void)
             }
             break;
         }
-        
+
         gMain.spriteGroups[13].available = 0;
         gMain.spriteGroups[14].available = 0;
         gMain.spriteGroups[12].available = 0;
         gCurrentPinballGame->unk13 = 4;
         gCurrentPinballGame->unk18 = 0;
         break;
-    } 
+    }
     default:
         break;
     } //End switch
-    
+
     DmaCopy16(3 , gUnknown_084EDACC + r9 * 1024, (void *)OBJ_VRAM0+0x10a0, BG_SCREEN_SIZE);
 
     gCurrentPinballGame->unk3F0 = ((gCurrentPinballGame->unk3E8 / 10) * 2) + 16;
@@ -1006,7 +1006,7 @@ void sub_34450(void)
         }
         else
             gOamBuffer[oamSimple->oamId].paletteNum = 3;
-        
+
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + spriteGroup->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + spriteGroup->baseY;
     }
@@ -1017,9 +1017,9 @@ void sub_34450(void)
         if (gCurrentPinballGame->unk386 == 0)
         {
             u32 offY = 92;
-            
+
             spriteGroup->baseX = -gCurrentPinballGame->unk58 + (gCurrentPinballGame->unk3E8 / 10);
-            spriteGroup->baseY = -gCurrentPinballGame->unk5A + (gCurrentPinballGame->unk3EA / 10) 
+            spriteGroup->baseY = -gCurrentPinballGame->unk5A + (gCurrentPinballGame->unk3EA / 10)
                 + ((gCurrentPinballGame->unk3E6 / 2) - offY);
         }
         else
@@ -1027,8 +1027,8 @@ void sub_34450(void)
             spriteGroup->baseX = 240;
             spriteGroup->baseY = 160;
         }
-     
-        {         
+
+        {
             s16 i;
             u8 r1;
             r1 = gMain.systemFrameCount % 4;
@@ -1039,7 +1039,7 @@ void sub_34450(void)
                 oamSimple = &spriteGroup->oam[i];
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + spriteGroup->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + spriteGroup->baseY;
-            }            
+            }
         }
     }
 
@@ -1061,7 +1061,7 @@ void sub_34450(void)
                 r9 = 1;
             else
                 r9 = 2;
-            
+
             DmaCopy16(3 , gUnknown_084FF30C + r9 * 0x200,(void *)OBJ_VRAM0+0x18a0, 0x200);
         }
         else

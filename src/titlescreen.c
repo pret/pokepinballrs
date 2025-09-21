@@ -270,7 +270,7 @@ void TitleScreen3_8010E00(void)
         gTitlescreen.unk6 = 9;
         gMain.subState = SUBSTATE_11;
     }
-    
+
     if (gUnknown_020028A4)
         return;
 
