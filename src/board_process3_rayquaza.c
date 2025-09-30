@@ -158,14 +158,14 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         break;
     case 3:
         sub_351A8();
-        if (gCurrentPinballGame->unk1C)
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             gCurrentPinballGame->unk18 = 181;
 
         if (gCurrentPinballGame->unk18 == 180)
         {
-            gCurrentPinballGame->unk1C = 1;
-            gCurrentPinballGame->unk38 = 400000;
-            gCurrentPinballGame->unk3C = 99999999;
+            gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddedInFrame = 99999999;
         }
 
         if (gCurrentPinballGame->unk18 < 240)
@@ -198,14 +198,14 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         break;
     case 5:
         sub_351A8();
-        if (gCurrentPinballGame->unk1C)
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             gCurrentPinballGame->unk18 = 181;
 
         if (gCurrentPinballGame->unk18 == 180)
         {
-            gCurrentPinballGame->unk1C = 1;
-            gCurrentPinballGame->unk38 = 400000;
-            gCurrentPinballGame->unk3C = 99999999;
+            gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddedInFrame = 99999999;
         }
 
         if (gCurrentPinballGame->unk18 < 240)
@@ -256,7 +256,7 @@ void sub_3EDF0(void)
         if (gCurrentPinballGame->unk452 == 5)
         {
             m4aSongNumStart(SE_UNKNOWN_0x126);
-            gCurrentPinballGame->unk3C = 1000000;
+            gCurrentPinballGame->scoreAddedInFrame = 1000000;
             gCurrentPinballGame->unk385++;
             sub_11B0(7);
             if (gCurrentPinballGame->unk385 >= gCurrentPinballGame->unk384 && gCurrentPinballGame->unk3DC != 6)

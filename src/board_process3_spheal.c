@@ -213,14 +213,14 @@ void SphealBoardProcess_3B_43228(void)
         break;
     case 3:
         sub_45E90();
-        if (gCurrentPinballGame->unk1C)
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             gCurrentPinballGame->unk18 = 181;
 
         if (gCurrentPinballGame->unk18 == 180 && gCurrentPinballGame->unk544 != 0)
         {
-            gCurrentPinballGame->unk1C = 1;
-            gCurrentPinballGame->unk38 = 400000;
-            gCurrentPinballGame->unk3C = gCurrentPinballGame->unk544;
+            gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddedInFrame = gCurrentPinballGame->unk544;
         }
 
         if (gCurrentPinballGame->unk18 > 189 && JOY_NEW(A_BUTTON))
@@ -292,7 +292,7 @@ void sub_43500(void)
             if (gCurrentPinballGame->unk548[i] == 23)
             {
                 MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2EAC);
-                gCurrentPinballGame->unk3C = 5000;
+                gCurrentPinballGame->scoreAddedInFrame = 5000;
                 sub_11B0(8);
             }
 
@@ -563,7 +563,7 @@ void sub_4387C(void)
 
                 sub_11B0(7);
                 gCurrentPinballGame->unk54F[i] = 0;
-                gCurrentPinballGame->unk3C = 3000;
+                gCurrentPinballGame->scoreAddedInFrame = 3000;
                 break;
             case 5:
                 if (gCurrentPinballGame->unk562[i] < 10)

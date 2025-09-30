@@ -782,13 +782,13 @@ u16 sub_14740(struct Vector16 *arg0, u16 *arg1)
                             gCurrentPinballGame->unk71D[gCurrentPinballGame->unk5A5 - 1] = 3;
                             gCurrentPinballGame->unk5A4 = 2;
                             gCurrentPinballGame->unk5A6 = 0;
-                            gCurrentPinballGame->unk3C = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = 10000;
                         }
                         else
                         {
                             gCurrentPinballGame->unk71D[gCurrentPinballGame->unk5A5 - 1] = 3;
                             gCurrentPinballGame->unk5A4 = 1;
-                            gCurrentPinballGame->unk3C = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = 10000;
                         }
 
                         gCurrentPinballGame->unk5AA = 4;
@@ -808,13 +808,13 @@ u16 sub_14740(struct Vector16 *arg0, u16 *arg1)
                             gCurrentPinballGame->unk71D[gCurrentPinballGame->unk5A5 - 1] = 3;
                             gCurrentPinballGame->unk5A4 = 2;
                             gCurrentPinballGame->unk5A6 = 0;
-                            gCurrentPinballGame->unk3C = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = 10000;
                         }
                         else
                         {
                             gCurrentPinballGame->unk71D[gCurrentPinballGame->unk5A5 - 1] = 3;
                             gCurrentPinballGame->unk5A4 = 1;
-                            gCurrentPinballGame->unk3C = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = 10000;
                         }
 
                         gCurrentPinballGame->unk5AA = 4;

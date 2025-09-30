@@ -178,14 +178,14 @@ void KecleonBoardProcess_3B_35AA4(void)
         break;
     case 3:
         sub_351A8();
-        if (gCurrentPinballGame->unk1C)
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             gCurrentPinballGame->unk18 = 181;
 
         if (gCurrentPinballGame->unk18 == 180)
         {
-            gCurrentPinballGame->unk1C = 1;
-            gCurrentPinballGame->unk38 = 400000;
-            gCurrentPinballGame->unk3C = BONUS_KECLEON_COMPLETE_POINTS;
+            gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddedInFrame = BONUS_KECLEON_COMPLETE_POINTS;
         }
 
         if (gCurrentPinballGame->unk18 < 240)
@@ -613,7 +613,7 @@ void sub_35D54(void)
         gCurrentPinballGame->unk3E2 = gCurrentPinballGame->unk3DE + 2;
         gCurrentPinballGame->unk3E4 = 0;
         gCurrentPinballGame->unk3FA = 0;
-        gCurrentPinballGame->unk3C = 500000;
+        gCurrentPinballGame->scoreAddedInFrame = 500000;
         gCurrentPinballGame->unk385++;
         MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1C88);
         sub_11B0(7);
@@ -975,7 +975,7 @@ void sub_372B4(void)
                 gCurrentPinballGame->unk404 = 0;
                 gCurrentPinballGame->unk406 = 1;
                 gCurrentPinballGame->unk408 = 0;
-                gCurrentPinballGame->unk3C = 10000;
+                gCurrentPinballGame->scoreAddedInFrame = 10000;
                 m4aSongNumStart(SE_UNKNOWN_0x106);
             }
 
