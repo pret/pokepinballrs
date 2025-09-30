@@ -162,28 +162,14 @@ my $incbin_bytes_as_string;
 # to convert to a number becomes 0. So if our converted number is 0, but our string
 # is nonzero, then the conversion was an error.
 my $undocumented = $undocumented_as_string + 0;
-(($undocumented != 0) and ($undocumented_as_string ne "0"))
-    or die "ERROR: Cannot convert string to num: '$undocumented_as_string'";
-
 my $partial_documented = $partial_documented_as_string + 0;
-(($partial_documented != 0) and ($partial_documented_as_string ne "0"))
-	or die "ERROR: Cannot convert string to num: '$partial_documented_as_string'";
 
 my $total_syms = $total_syms_as_string + 0;
-(($total_syms != 0) and ($total_syms_as_string ne "0"))
-    or die "ERROR: Cannot convert string to num: '$total_syms_as_string'";
-
 ($total_syms != 0)
     or die "ERROR: No symbols found.";
 
 my $incbin_count = $incbin_count_as_string + 0;
-(($incbin_count != 0) and ($incbin_count_as_string ne "0"))
-    or die "ERROR: Cannot convert string to num: '$incbin_count_as_string'";
-
 my $incbin_bytes = $incbin_bytes_as_string + 0;
-(($incbin_bytes != 0) and ($incbin_bytes_as_string ne "0"))
-    or die "ERROR: Cannot convert string to num: '$incbin_bytes_as_string'";
-
 
 my $functions_remaining_cmd = "git grep 'thumb_func_start' ':/asm/**.s'";
 my $functions_remaining_as_string;
@@ -193,9 +179,8 @@ my $functions_remaining_as_string;
     timeout => 60
 ))
     or die "ERROR: Error while calculating TODO totals: $?";
+
 my $functions_remaining_count = $functions_remaining_as_string + 0;
-(($functions_remaining_count != 0) and ($functions_remaining_as_string ne "0"))
-    or die "ERROR: Cannot convert string to num: '$functions_remaining_as_string'";
 
 my $nonmatching_cmd = "git grep -E 'asm_unified' ':/' ':(exclude)*.pl' ':(exclude)include/global.h'";
 my $nonmatching_as_string;
@@ -205,9 +190,8 @@ my $nonmatching_as_string;
     timeout => 60
 ))
     or die "ERROR: Error while calculating asm_unified totals: $?";
+
 my $nonmatching_count = $nonmatching_as_string + 0;
-(($nonmatching_count != 0) and ($nonmatching_as_string ne "0"))
-    or die "ERROR: Cannot convert string to num: '$nonmatching_as_string'";
 
 my $expected_objs_cmd = "ls -1 expected_objs/";
 my $expected_objs_as_string;
@@ -217,9 +201,8 @@ my $expected_objs_as_string;
     timeout => 60
 ))
     or die "ERROR: Error while calculating asm_unified totals: $?";
+
 my $expected_objs_count = $expected_objs_as_string + 0;
-(($expected_objs_count != 0) and ($expected_objs_as_string ne "0"))
-    or die "ERROR: Cannot convert string to num: '$expected_objs_as_string'";
 
 
 
@@ -314,9 +297,6 @@ if ($verbose != 0)
     ))
         or die "ERROR: Error while calculating TODO totals: $?";
     my $todo_count = $todo_as_string + 0;
-    (($todo_count != 0) and ($todo_as_string ne "0"))
-        or die "ERROR: Cannot convert string to num: '$todo_as_string'";
-    
     print "\n";
     printf "%8d comments are labeled TODO\n", $todo_count;
 }

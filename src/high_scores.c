@@ -109,7 +109,7 @@ void sub_CFD4(void)
     int i, j, k;
     for(i = 0; i < MAIN_FIELD_COUNT; i++)
     {
-        for(j = 0; j < NUM_HIGH_SCORES; j++) 
+        for(j = 0; j < NUM_HIGH_SCORES; j++)
         {
             for(k = 0; k < HIGH_SCORE_NAME_LENGTH + 2; k++) // ? use an array count instead?
                 gUnknown_0202C610[i][j].data.raw[k] = gMain_saveData.highScores[i][j].data.raw[k];
@@ -211,7 +211,7 @@ void HighScore_State1_D20C(void)
             }
             break;
         case 1:
-            gUnknown_0201A4B8 -= 1;
+            gUnknown_0201A4B8--;
 
             // TODO: FAKEMATCH - Seth
             temp = gUnknown_02002858.unk18;
@@ -248,7 +248,7 @@ void HighScore_State1_D20C(void)
             break;
     }
 
-    gUnknown_02002858.unk18 += 1;
+    gUnknown_02002858.unk18++;
     sub_E860();
 }
 
@@ -2185,7 +2185,7 @@ void sub_F8B0(u32 arg0, u32 arg1, s16 arg2)
     u32 r3;
     if(arg0 == 0)
     {
-        if(arg1 == 0) 
+        if(arg1 == 0)
         {
             r3 = (0 * 2 + 2) * 32 + 12;
             for(i = 0; i < 15; i++)
@@ -2226,7 +2226,7 @@ void sub_F8B0(u32 arg0, u32 arg1, s16 arg2)
     }
     else
     {
-        if(arg1 == 0) 
+        if(arg1 == 0)
         {
             r3 = (0 * 2 + 2) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
@@ -2273,7 +2273,7 @@ void sub_FAE8(u32 arg0, u32 arg1, s16 arg2)
     u32 r3;
     if(arg0 == 0)
     {
-        if(arg1 == 0) 
+        if(arg1 == 0)
         {
             r3 = (0 * 2 + 2) * 32 + 12;
             for(i = 0; i < 15; i++)
@@ -2314,7 +2314,7 @@ void sub_FAE8(u32 arg0, u32 arg1, s16 arg2)
     }
     else
     {
-        if(arg1 == 0) 
+        if(arg1 == 0)
         {
             r3 = (0 * 2 + 2) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
@@ -2359,7 +2359,7 @@ s8 sub_FD20(void)
 {
     int i;
     s16 sp0[NUM_SPECIES];
-    
+
     for(i = 0; i < NUM_SPECIES; i++)
         sp0[i] = gMain_saveData.pokedexFlags[i];
 
@@ -2379,7 +2379,7 @@ void sub_FD5C(void (*func)(void))
     DmaFill16(3, 0x7FFF, gUnknown_0201A520[0], PLTT_SIZE);
     DmaCopy16(3, gUnknown_0201A520[0], gUnknown_0201A520[2], PLTT_SIZE);
     DmaCopy16(3, gUnknown_0201A520[2], (void*)PLTT, PLTT_SIZE);
-    
+
     UnblankLCD();
 
     for (i = 0; i < 32; i++)
@@ -2439,7 +2439,7 @@ void sub_FEB8(u8 * arg0, u8 * arg1, void (*func)(void))
 
     UnblankLCD();
     gMain.dispcntBackup = REG_DISPCNT;
-    
+
     for (i = 0; i < 32; i++)
     {
         if (func != NULL)
@@ -2501,13 +2501,13 @@ void sub_1001C(u16 arg0)
 
     arg0 &= ~3;
     arg0 += 4;
-    
+
     while(var0 < var1)
     {
         r[0] = gUnknown_0201A520[0][var0] & 0x1F;
         g[0] = (gUnknown_0201A520[0][var0] & 0x3E0) >> 5;
         b[0] = (gUnknown_0201A520[0][var0] & 0x7C00) >> 10;
-        
+
         r[1] = gUnknown_0201A520[1][var0] & 0x1F;
         g[1] = (gUnknown_0201A520[1][var0] & 0x3E0) >> 5;
         b[1] = (gUnknown_0201A520[1][var0] & 0x7C00) >> 10;
@@ -2526,7 +2526,7 @@ void sub_1001C(u16 arg0)
             r[0] += ((r[1] - r[0]) * arg0) >> 5;
         else
             r[0] -= ((r[0] - r[1]) * arg0) >> 5;
-        
+
         gUnknown_0201A520[2][var0] = (b[0] << 10) | (g[0] << 5) | r[0];
         var0++;
     }
@@ -2537,16 +2537,16 @@ void sub_10170(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
     u16 i;
     u16 b[2];
     u16 g[2];
-    u16 r[2];   
+    u16 r[2];
     DmaCopy16(3, pal, gUnknown_0201A520[0], arg2);
     DmaFill16(3, 0, gUnknown_0201A520[1], arg2);
-    
+
     for(i = 0; i < arg2; i++)
     {
         r[0] = gUnknown_0201A520[0][i] & 0x1F;
         g[0] = (gUnknown_0201A520[0][i] & 0x3E0) >> 5;
         b[0] = (gUnknown_0201A520[0][i] & 0x7C00) >> 10;
-        
+
         r[1] = gUnknown_0201A520[1][i] & 0x1F;
         g[1] = (gUnknown_0201A520[1][i] & 0x3E0) >> 5;
         b[1] = (gUnknown_0201A520[1][i] & 0x7C00) >> 10;
@@ -2554,18 +2554,18 @@ void sub_10170(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
         if(b[0] > b[1])
             b[0] -= (b[0] * arg3) >> 5;
         else
-            b[0] = b[1]; 
+            b[0] = b[1];
 
         if(g[0] > g[1])
             g[0] -= (g[0] * arg3) >> 5;
         else
-            g[0] = g[1]; 
+            g[0] = g[1];
 
         if(r[0] > r[1])
             r[0] -= (r[0] * arg3) >> 5;
         else
-            r[0] = r[1]; 
-        
+            r[0] = r[1];
+
         gUnknown_0201A520[2][i] = (b[0] << 10) | (g[0] << 5) | r[0];
     }
     DmaCopy16(3, gUnknown_0201A520[2], dest, arg2);
@@ -2576,16 +2576,16 @@ void sub_102A8(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
     u16 i;
     u16 b[2];
     u16 g[2];
-    u16 r[2];   
+    u16 r[2];
     DmaCopy16(3, pal, gUnknown_0201A520[0], arg2);
     DmaFill16(3, 0x7FFF, gUnknown_0201A520[1], arg2);
-    
+
     for(i = 0; i < arg2; i++)
     {
         r[0] = gUnknown_0201A520[0][i] & 0x1F;
         g[0] = (gUnknown_0201A520[0][i] & 0x3E0) >> 5;
         b[0] = (gUnknown_0201A520[0][i] & 0x7C00) >> 10;
-        
+
         r[1] = gUnknown_0201A520[1][i] & 0x1F;
         g[1] = (gUnknown_0201A520[1][i] & 0x3E0) >> 5;
         b[1] = (gUnknown_0201A520[1][i] & 0x7C00) >> 10;
@@ -2604,7 +2604,7 @@ void sub_102A8(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
             r[0] += ((r[1] - r[0]) * arg3) >> 5;
         else
             r[0] -= ((r[0] - r[1]) * arg3) >> 5;
-        
+
         gUnknown_0201A520[2][i] = (b[0] << 10) | (g[0] << 5) | r[0];
     }
     DmaCopy16(3, gUnknown_0201A520[2], dest, arg2);

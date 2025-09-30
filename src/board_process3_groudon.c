@@ -108,7 +108,7 @@ void GroudonBoardProcess_3A_3B120(void)
         gCurrentPinballGame->unk4B4[i].x = 0;
         gCurrentPinballGame->unk4B4[i].y = 0;
     }
-    
+
     for (i = 0; i < 3; i++)
     {
         gCurrentPinballGame->unk4CC[i] = 0;
@@ -458,7 +458,7 @@ void sub_3B7C4(void)
             {
                 gCurrentPinballGame->unk3E2 = 0;
                 gCurrentPinballGame->unk3DC = 2;
-                
+
                 if (gCurrentPinballGame->unk47C & 1)
                 {
                     gCurrentPinballGame->unk3DD = 4;
@@ -1193,7 +1193,7 @@ void sub_3CBC4(void)
                         gCurrentPinballGame->unk4E4[i] = 0;
                     }
                 }
-                
+
                 if (gCurrentPinballGame->unk4E4[i] >= 0)
                 {
                     if (gCurrentPinballGame->unk4D8[i] == 0)
@@ -1201,7 +1201,7 @@ void sub_3CBC4(void)
                         m4aSongNumStart(SE_UNKNOWN_0x121);
                         sub_11B0(7);
                     }
-    
+
                     if (gCurrentPinballGame->unk4D8[i] < 5)
                     {
                         gCurrentPinballGame->unk4D2[i] = gUnknown_086AF3AC[i] + 1;
@@ -1216,7 +1216,7 @@ void sub_3CBC4(void)
                         gCurrentPinballGame->unk4D2[i] = gUnknown_086AF3AC[i];
                         gCurrentPinballGame->unk4CF[i] = 2;
                     }
-    
+
                     gCurrentPinballGame->unk4D8[i]++;
                 }
 

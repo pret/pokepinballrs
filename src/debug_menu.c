@@ -228,7 +228,7 @@ void sub_47670(void)
             m4aSongNumStart(SE_UNKNOWN_0xA4);
             for (i = 0; i < 3; i++)
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->unk63C[i][j] = 0;            
+                    gCurrentPinballGame->unk63C[i][j] = 0;
         }
         else if (gMain.unk12 == 1)
         {
@@ -629,21 +629,21 @@ void sub_48190(void)
                     gCurrentPinballGame->unk62C * 500000 +
                     gCurrentPinballGame->unk62D * 100000 +
                     gCurrentPinballGame->unk62E * 100000;
-                
+
                 gCurrentPinballGame->unk634 = 0;
                 gMain.unk12 = 150;
-    
+
                 for (j = 0; j < 20; j++)
                     gCurrentPinballGame->unk63C[0][j] = 1;
                 for (j = 0; j < 20; j++)
                     gCurrentPinballGame->unk63C[1][j] = 1;
                 for (j = 0; j < 20; j++)
                     gCurrentPinballGame->unk63C[2][j] = 1;
-    
+
                 for (i = 0; i < 3; i++)
                     for (j = 0; j < 20; j++)
                         gCurrentPinballGame->unk678[i][j] = gUnknown_086B0128[gCurrentPinballGame->unk638][i][j];
-    
+
                 sp14 = 1;
             }
             else
@@ -778,7 +778,7 @@ void sub_48190(void)
     value = 0;
     multiplier = 0;
     if (gCurrentPinballGame->unk63A == 212 || sp14 != 0)
-    {   
+    {
         switch (gCurrentPinballGame->unk638)
         {
         case 0:
@@ -919,7 +919,7 @@ void sub_48190(void)
             if (value / 100000000 > 0)
             {
                 value -= 100000000;
-                var4 += 1;
+                var4++;
             }
 
             gCurrentPinballGame->unk6B8 = var4;
@@ -1011,7 +1011,7 @@ void sub_48190(void)
                 sp0[i] = 0;
             for (j = 0; j < 20; j++)
                 gCurrentPinballGame->unk678[2][j] = gUnknown_086B0128[gCurrentPinballGame->unk638][2][j];
-            
+
             var4 = gCurrentPinballGame->unk6B8;
             value = gCurrentPinballGame->unk6B4;
             sp0[10] = (var4 % 1000) / 100;

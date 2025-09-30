@@ -23,7 +23,7 @@ void sub_313A0(void)
     s16 index;
 
     group = &gMain.spriteGroups[69];
-    if (group->available) 
+    if (group->available)
     {
         group->baseX = 16 - gCurrentPinballGame->unk58;
         group->baseY = 115 - gCurrentPinballGame->unk5A;
@@ -35,11 +35,11 @@ void sub_313A0(void)
             oamSimple = &group->oam[i];
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
-        } 
+        }
     }
 }
 
-void sub_31498(void) 
+void sub_31498(void)
 {
     s16 i, j;
     struct SpriteGroup *group;
@@ -55,7 +55,7 @@ void sub_31498(void)
             {
                 if (gCurrentPinballGame->unk345 < 3)
                 {
-                    gCurrentPinballGame->unk345 = gCurrentPinballGame->unk345 + 1;
+                    gCurrentPinballGame->unk345++;
                     gCurrentPinballGame->scoreAddedInFrame = 20000;
                     m4aSongNumStart(SE_UNKNOWN_0xDE);
                 }
@@ -128,14 +128,14 @@ void sub_31498(void)
             gCurrentPinballGame->unk345++;
             if (gCurrentPinballGame->unk345 == 10)
                 gCurrentPinballGame->unk346 = 4;
-            
+
             if (gCurrentPinballGame->unk345 == 6)
                 m4aSongNumStart(SE_UNKNOWN_0xE0);
 
             index = gUnknown_086AE5A0[gCurrentPinballGame->unk345][0];
             DmaCopy16(3, &gUnknown_08490A4C[index], (void *)0x600D900, 0x440);
         }
-        
+
         if (gCurrentPinballGame->unk345 < 6)
         {
             gCurrentPinballGame->unk200 = 280;
@@ -231,9 +231,9 @@ void sub_31498(void)
                 oamSimple = &group->oam[j];
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
-            } 
+            }
         }
-    }   
+    }
 }
 
 void sub_31B30(void)

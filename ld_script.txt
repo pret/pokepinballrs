@@ -46,15 +46,13 @@ SECTIONS
         src/board_process5.o(.text);
         src/board_process7.o(.text);
         src/board_process6.o(.text);
-        src/rom_14740.o(.text);
-        src/rom_17634.o(.text);
-        src/rom_19028.o(.text);
+        src/collision_checks.o(.text);
+        src/game_idle.o(.text);
         src/board_process4.o(.text);
         src/board_process3_ruby.o(.text);
         src/rom_1A0F4.o(.text);
         src/rom_1A98C.o(.text);
         src/rom_201B8.o(.text);
-        asm/rom_203CC.o(.text);
         src/rom_27E08.o(.text);
         src/rom_27F94.o(.text);
         src/rom_2C538.o(.text);

@@ -632,7 +632,7 @@ void sub_3EDF0(void)
                 gCurrentPinballGame->unk3DC = 12;
                 gCurrentPinballGame->unk3E1 = 0;
             }
-        
+
         break;
     case 12:
         DmaCopy16(3, gUnknown_084AA18C, (void *)0x06011620, 0x860);

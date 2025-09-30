@@ -590,7 +590,7 @@ void sub_21B0C(void)
         {
             DmaCopy16(3, gUnknown_084C00EC[gCurrentPinballGame->unk1CA], (void *)0x06010AE0, 0x80);
             gCurrentPinballGame->unk1CC = gCurrentPinballGame->unk1CA;
-        }   
+        }
     }
 
     if (gCurrentPinballGame->unk1D0)
@@ -1258,7 +1258,7 @@ void sub_23300(void)
         gCurrentPinballGame->unk210++;
         if (gCurrentPinballGame->unk210 < 156)
         {
-            
+
             group = gMain.unk44[4];
             for (i = 0; i < 10; i++)
             {
@@ -2251,7 +2251,7 @@ void sub_253E0(void)
     {
         var1 = 0;
     }
-    
+
     if (gCurrentPinballGame->unk6CC == 1)
     {
         m4aSongNumStart(SE_UNKNOWN_0x8C);
@@ -2624,7 +2624,7 @@ void sub_260B8(void)
                 }
             }
 
-            if (gCurrentPinballGame->unk6F4) 
+            if (gCurrentPinballGame->unk6F4)
             {
                 gCurrentPinballGame->unk6F4--;
                 if (gMain.eReaderBonuses[EREADER_RUIN_AREA_CARD])
@@ -2938,7 +2938,7 @@ void sub_26A10(void)
                     var0 = gCurrentPinballGame->unk34;
                     if (gCurrentPinballGame->unk6BC == 1)
                         gCurrentPinballGame->unk32 = gCurrentPinballGame->unk33;
-                    else 
+                    else
                         gCurrentPinballGame->unk32 = gCurrentPinballGame->unk34;
 
                     gCurrentPinballGame->unk33 = (var0 + 1) % 6;
@@ -3439,7 +3439,7 @@ void sub_278F4(void)
         if (squaredMagnitude < 82 &&
             ((gCurrentPinballGame->unk24 == 0 && gCurrentPinballGame->unk25E <= 5) || (gCurrentPinballGame->unk24 == 2 && gCurrentPinballGame->unk25E > 5)) &&
             gCurrentPinballGame->unk26B < 3)
-        {    
+        {
             gCurrentPinballGame->scoreAddedInFrame = 10000;
             MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F618);
             gCurrentPinballGame->unk17 = 1;
@@ -3522,7 +3522,7 @@ void sub_27E08(void)
     {
         gCurrentPinballGame->unk724 = 4200;
     }
-    gCurrentPinballGame->unk29A += 1;
+    gCurrentPinballGame->unk29A++;
 
     DmaCopy16(3, gUnknown_081C0064, (void *)PLTT + 0x180, 0x20);
 
