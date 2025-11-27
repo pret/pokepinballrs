@@ -91,11 +91,14 @@ void RubyBoardProcess_3B_19B10(void)
     }
 }
 
+/* begin new state
+ * arg0 the state to begin
+ */
 void sub_19B64(u8 arg0)
 {
-    gCurrentPinballGame->unk16 = 2;
-    gCurrentPinballGame->unk14 = arg0;
-    if (gCurrentPinballGame->unk13 == 2)
+    gCurrentPinballGame->unk16 = 2; // unk16: 0 first frame of new state, 1 no state change, 2 next frame is new state
+    gCurrentPinballGame->unk14 = arg0; // new state
+    if (gCurrentPinballGame->unk13 == 2) // slots are done
         gMain.unk44[13]->available = 0;
 }
 
