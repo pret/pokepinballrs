@@ -99,15 +99,57 @@ void sub_19B64(u8 arg0)
         gMain.unk44[13]->available = 0;
 }
 
+// These state functions are only used for the main boards (ruby & sapphire)
+/*
+ * State descriptions
+ * 0 - very start of the board when the player needs to select a starting area
+ * 1 - the main play state
+ * 2 - center of the board opens up to start slots
+ * 3 - center of the board opens up to start a bonus stage
+ * 4 - catch em mode is ready and ball enters sharpedo's or wailmer's mouth
+ * 5 - baby pokemon is hatched
+ * 6 - ball is in the shop and a pokemon is selected to evolve
+ * 7 - travel mode is activated
+ * 8 - jirachi is spawned
+ */
+
+/*
+ * gUnknown_086AD4C4 (board state init functions)
+ * 08025F65 (sub_25F64) 0 InitSelectStartingAreaState()
+ * 08019C05 (sub_19C04) 1 InitMainPinballState()
+ * 08021301 (sub_21300) 2 InitStartSlotState()
+ * 08021579 (sub_21578) 3 InitBonusStageState()
+ * 08027E09 (sub_27E08) 4 InitCatchEmState()
+ * 08024351 (sub_24350) 5 InitHatchState()
+ * 08026F39 (sub_26F38) 6 InitEvoState()
+ * 080269A5 (sub_269A4) 7 InitTravelState()
+ * 08028405 (sub_28404) 8 InitJirachiState()
+ */
+
+/*
+ * gUnknown_086AD4E8 (board state loop functions)
+ * 080260B9 (sub_260B8) 0 LoopSelectStartingAreaState()
+ * 08019CC9 (sub_19CC8) 1 LoopMainPinballState()
+ * 08021321 (sub_21320) 2 LoopStartSlotState()
+ * 080216FD (sub_216FC) 3 LoopBonusStageState()
+ * 08027F95 (sub_27F94) 4 LoopCatchEmState()
+ * 08024409 (sub_24408) 5 LoopHatchState()
+ * 08027081 (sub_27080) 6 LoopEvoState()
+ * 08026A11 (sub_26A10) 7 LoopTravelState()
+ * 08028545 (sub_28544) 8 LoopJirachiState()
+ */
+
 void sub_19B90(void)
 {
     switch (gCurrentPinballGame->unk16)
     {
         case 0:
+            // board state init functions
             gUnknown_086AD4C4[gCurrentPinballGame->unk13]();
             gCurrentPinballGame->unk16++;
             break;
         case 1:
+            // board state loop functions
             gUnknown_086AD4E8[gCurrentPinballGame->unk13]();
             break;
         case 2:

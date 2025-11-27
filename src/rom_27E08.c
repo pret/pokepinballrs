@@ -3,7 +3,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
-#define BONUS_CATCH_TIME 7200 //2 minutes, 60FPS
+#define BONUS_CATCH_TIME 7200 // 2 minutes, 60FPS
 
 extern const u8 gUnknown_081C0064[];
 extern const u8 *gUnknown_086AD474[];
@@ -3494,7 +3494,9 @@ void sub_27D44(void)
     }
 }
 
-void sub_27E08(void)
+// Called from sub_19B90
+/* sub_27E08 */
+void InitCatchEmState(void)
 {
     s16 i, j;
 
