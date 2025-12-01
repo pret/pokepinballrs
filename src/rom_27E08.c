@@ -2496,7 +2496,8 @@ void sub_25808(void)
     }
 }
 
-void sub_25F64(void)
+/* sub_25F64 */
+void InitSelectStartingAreaState(void)
 {
     s16 i;
 
@@ -2519,7 +2520,8 @@ void sub_25F64(void)
     gCurrentPinballGame->unkE4 = 12;
 }
 
-void sub_260B8(void)
+/* sub_260B8 */
+void LoopSelectStartingAreaState(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -2546,6 +2548,14 @@ void sub_260B8(void)
         gCurrentPinballGame->unk6F4 = 0;
         if (gMain.selectedField == FIELD_RUBY)
         {
+            /**
+             * On game start, index to chinchou spawn position
+             * 0: top left
+             * 1: bottom
+             * 2: top right
+             *
+             * State 10 = underwater
+             */
             gCurrentPinballGame->unk170[0] = 10;
             gCurrentPinballGame->unk170[1] = 10;
             gCurrentPinballGame->unk170[2] = 10;
@@ -2567,6 +2577,11 @@ void sub_260B8(void)
 
         if (gMain.selectedField == FIELD_RUBY)
         {
+            /**
+             * gUnknown_08137944 // chinchou animation states in ruby board opening cutscene
+             * 000A 0007 0006 0005 0004 0003 0002 0001 0000
+             * 0001 0000 0001 0000 0001 0000 0001 0000 0001
+             */
             if (gCurrentPinballGame->unk174 < 143)
                 gCurrentPinballGame->unk170[0] = gUnknown_08137944[gCurrentPinballGame->unk174 / 8];
 
@@ -2607,6 +2622,7 @@ void sub_260B8(void)
         else if (gCurrentPinballGame->unk17 == 4)
         {
             gCurrentPinballGame->unk6F0++;
+            // A button pressed
             if (gCurrentPinballGame->newButtonActions[1] && gCurrentPinballGame->unk17 == 4)
             {
                 if (gCurrentPinballGame->unk6F4 == 0)

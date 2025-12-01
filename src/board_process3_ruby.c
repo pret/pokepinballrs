@@ -91,7 +91,8 @@ void RubyBoardProcess_3B_19B10(void)
     }
 }
 
-/* begin new state
+/**
+ * begin new state
  * arg0 the state to begin
  */
 void sub_19B64(u8 arg0)
@@ -103,7 +104,7 @@ void sub_19B64(u8 arg0)
 }
 
 // These state functions are only used for the main boards (ruby & sapphire)
-/*
+/**
  * State descriptions
  * 0 - very start of the board when the player needs to select a starting area
  * 1 - the main play state
@@ -116,7 +117,7 @@ void sub_19B64(u8 arg0)
  * 8 - jirachi is spawned
  */
 
-/*
+/**
  * gUnknown_086AD4C4 (board state init functions)
  * 08025F65 (sub_25F64) 0 InitSelectStartingAreaState()
  * 08019C05 (sub_19C04) 1 InitMainPinballState()
@@ -129,7 +130,7 @@ void sub_19B64(u8 arg0)
  * 08028405 (sub_28404) 8 InitJirachiState()
  */
 
-/*
+/**
  * gUnknown_086AD4E8 (board state loop functions)
  * 080260B9 (sub_260B8) 0 LoopSelectStartingAreaState()
  * 08019CC9 (sub_19CC8) 1 LoopMainPinballState()
