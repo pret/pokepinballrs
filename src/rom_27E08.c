@@ -2622,7 +2622,7 @@ void LoopSelectStartingAreaState(void)
         else if (gCurrentPinballGame->unk17 == 4)
         {
             gCurrentPinballGame->unk6F0++;
-            // A button pressed
+            // button for right flipper pressed
             if (gCurrentPinballGame->newButtonActions[1] && gCurrentPinballGame->unk17 == 4)
             {
                 if (gCurrentPinballGame->unk6F4 == 0)
