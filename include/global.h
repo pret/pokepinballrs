@@ -145,9 +145,9 @@ struct PinballGame
     /*0x02C*/ int unk2C;
     /*0x030*/ s8 numLives;
     /*0x031*/ u8 ballSpeed;
-    /*0x032*/ s8 unk32;
-    /*0x033*/ s8 unk33;
-    /*0x034*/ s8 unk34;
+    /*0x032*/ s8 unk32; // Current field specific area index
+    /*0x033*/ s8 unk33; // Next field specific area index if travelling left (EVO rollover lane)
+    /*0x034*/ s8 unk34; // Next field specific area index if travelling right (GET rollover lane)
     /*0x035*/ s8 area;
     /*0x036*/ s8 unk36;
     /*0x038*/ u32 scoreAddStepSize; //score to add every frame until scoreAddedInFrame score has been added to player's total
@@ -695,8 +695,8 @@ struct PinballGame
     /*0x5F8*/ u16 ballUpgradeCounter;
     /*0x5FA*/ s8 unk5FA;
     /*0x5FB*/ s8 unk5FB;
-    /*0x5FC*/ s16 unk5FC; // Target camera Y position. Bottom of the field is 0, top is -244 for ruby and -268 for sapphire
-    /*0x5FE*/ s16 unk5FE;
+    /*0x5FC*/ s16 unk5FC; // Current camera Y position.
+    /*0x5FE*/ s16 unk5FE; // Target camera Y position. Bottom of the field is 0, top is -244 for ruby and -268 for sapphire
     /*0x600*/ u16 unk600;
     /*0x602*/ s8 unk602;
     /*0x603*/ s8 unk603;
@@ -752,9 +752,9 @@ struct PinballGame
     /*0x6CA*/ u16 unk6CA;
     /*0x6CC*/ s8 unk6CC;
     /*0x6CD*/ u8 unk6CD[6];
-    /*0x6D3*/ u8 unk6D3[6];
+    /*0x6D3*/ u8 unk6D3[6]; // Palettes
     /*0x6D9*/ s8 unk6D9[2];
-    /*0x6DB*/ u8 unk6DB;
+    /*0x6DB*/ u8 unk6DB; // Related to oam priority
     /*0x6DC*/ u8 unk6DC;
     /*0x6DD*/ s8 unk6DD;
     /*0x6DE*/ u16 unk6DE;

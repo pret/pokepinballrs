@@ -49,7 +49,13 @@ extern s16 gUnknown_086ADF8A[3];
 extern u16 gUnknown_086ADEE0[][2];
 extern s16 gUnknown_086B4922[][0xC];
 
-
+/**
+ * Draw to main field display. The display can show two images to animate
+ * scrolling between options, e.g. during slots.
+ *
+ * @param arg0 The type of screen to draw e.g. area, slot, bonus, catch em, etc.
+ * @param arg1 Which of the two image slots to draw to. 0 or 1.
+ */
 void sub_1C7F4(s16 arg0, s16 arg1)
 {
     s16 i;
