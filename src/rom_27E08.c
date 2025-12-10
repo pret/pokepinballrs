@@ -215,14 +215,14 @@ void sub_21238(s16 arg0)
         gCurrentPinballGame->unk2F0 = 0;
 }
 
-void sub_21300(void)
+void InitStartSlotState_21300(void)
 {
     gCurrentPinballGame->unk17 = 1;
     gCurrentPinballGame->unk18 = 0;
     gCurrentPinballGame->unk6DD = 0;
 }
 
-void sub_21320(void)
+void LoopStartSlotState_21320(void)
 {
     switch (gCurrentPinballGame->unk17)
     {
@@ -236,10 +236,14 @@ void sub_21320(void)
             }
             else if (gCurrentPinballGame->unk18 == 8)
             {
+                // draw the saucer magnet effect and open the saucer
                 sub_219A8();
+                // ?
                 gCurrentPinballGame->unk730 = 2;
+                // draw "START SLOT" screen to display
                 gCurrentPinballGame->unk708 = 0;
                 sub_1C7F4(1, 0);
+                // advance to case 2
                 gCurrentPinballGame->unk17++;
             }
         }
@@ -250,15 +254,19 @@ void sub_21320(void)
             sub_1C7F4(1, 0);
 
         if (gCurrentPinballGame->unk25 == 4)
+            // advance to case 3
             gCurrentPinballGame->unk17++;
         break;
     case 3:
         gCurrentPinballGame->unk714 = 0;
+        // clear all HOLE indicators
         gCurrentPinballGame->holeIndicators[0] = 0;
         gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
+        // advance to case 4
         gCurrentPinballGame->unk17++;
+        // calculate available slot rewards?
         sub_29D9C();
         if (gCurrentPinballGame->unk62D < 99)
             gCurrentPinballGame->unk62D++;
@@ -267,10 +275,12 @@ void sub_21320(void)
         if (gCurrentPinballGame->unk28 == 148)
         {
             gCurrentPinballGame->unk28++;
+            // scroll through slots
             sub_2A054();
         }
         else if (gCurrentPinballGame->unk28 == 139)
         {
+            // ???
         }
         else if (gCurrentPinballGame->unk28 == 24)
         {
@@ -278,6 +288,7 @@ void sub_21320(void)
         }
         else if (gCurrentPinballGame->unk28 == 0)
         {
+            // advance to case 5
             gCurrentPinballGame->unk17++;
         }
 
@@ -297,16 +308,19 @@ void sub_21320(void)
     case 5:
         sub_219EC();
         gMain.unk44[13]->available = 0;
+        // advance to case 6
         gCurrentPinballGame->unk17++;
         break;
     case 6:
         sub_21238(1);
+        // advance to case 7
         gCurrentPinballGame->unk17++;
         break;
     case 7:
         if (gCurrentPinballGame->unk18)
             gCurrentPinballGame->unk18--;
         else
+            // switch to main board state
             sub_19B64(1);
         break;
     }
@@ -516,6 +530,7 @@ void sub_219A8(void)
 {
     DmaCopy16(3, gUnknown_0844838C[0], (void *)0x060113C0, 0x300);
     gMain.unk44[13]->available = 1;
+    // open main board saucer
     gCurrentPinballGame->unk5F3 = 1;
 }
 
@@ -2756,11 +2771,13 @@ void LoopSelectStartingAreaState_260B8(void)
             gCurrentPinballGame->unk18++;
             if (gCurrentPinballGame->unk18 == 50)
             {
+                // go to main state after 50 frames; reset field substate to 0
                 gCurrentPinballGame->unk17 = 0;
                 sub_19B64(1);
             }
         }
 
+        // animate stars when area is selected
         if (gCurrentPinballGame->unk18 < 29)
         {
             if (gCurrentPinballGame->unk18 < 8)
@@ -2789,7 +2806,7 @@ void LoopSelectStartingAreaState_260B8(void)
                 }
             }
 
-            if (gCurrentPinballGame->unk18 == 0x1C) {
+            if (gCurrentPinballGame->unk18 == 28) {
                 gMain.unk44[34]->available = 0;
                 gCurrentPinballGame->unkE4 = 0;
             }

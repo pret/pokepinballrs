@@ -92,8 +92,8 @@ void RubyBoardProcess_3B_19B10(void)
 }
 
 /**
- * begin new state
- * arg0 the state to begin
+ * Change main board state
+ * @param arg0 The state to change to
  */
 void sub_19B64(u8 arg0)
 {
@@ -119,9 +119,9 @@ void sub_19B64(u8 arg0)
 
 /**
  * gUnknown_086AD4C4 (board state init functions)
- * 08025F65 (sub_25F64) 0 InitSelectStartingAreaState()
- * 08019C05 (sub_19C04) 1 InitMainPinballState()
- * 08021301 (sub_21300) 2 InitStartSlotState()
+ * 08025F65 (sub_25F64) 0 InitSelectStartingAreaState_25F64()
+ * 08019C05 (sub_19C04) 1 InitMainPinballState_19C04()
+ * 08021301 (sub_21300) 2 InitStartSlotState_21300()
  * 08021579 (sub_21578) 3 InitBonusStageState()
  * 08027E09 (sub_27E08) 4 InitCatchEmState()
  * 08024351 (sub_24350) 5 InitHatchState()
@@ -132,9 +132,9 @@ void sub_19B64(u8 arg0)
 
 /**
  * gUnknown_086AD4E8 (board state loop functions)
- * 080260B9 (sub_260B8) 0 LoopSelectStartingAreaState()
- * 08019CC9 (sub_19CC8) 1 LoopMainPinballState()
- * 08021321 (sub_21320) 2 LoopStartSlotState()
+ * 080260B9 (sub_260B8) 0 LoopSelectStartingAreaState_260B8()
+ * 08019CC9 (sub_19CC8) 1 LoopMainPinballState_19CC8()
+ * 08021321 (sub_21320) 2 LoopStartSlotState_21320()
  * 080216FD (sub_216FC) 3 LoopBonusStageState()
  * 08027F95 (sub_27F94) 4 LoopCatchEmState()
  * 08024409 (sub_24408) 5 LoopHatchState()
@@ -165,7 +165,7 @@ void sub_19B90(void)
     }
 }
 
-void sub_19C04(void)
+void InitMainPinballState_19C04(void)
 {
     s16 num1;
     u8 num2;
@@ -208,7 +208,7 @@ void sub_19C04(void)
     }
 }
 
-void sub_19CC8(void)
+void LoopMainPinballState_19CC8(void)
 {
     if (gCurrentPinballGame->unk714 != 0)
     {

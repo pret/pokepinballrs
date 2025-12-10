@@ -13,8 +13,8 @@
 #define AREA_VOLCANO            9
 #define AREA_LAKE               10
 #define AREA_WILDERNESS         11
-#define AREA_RUIN_RUBY         12
-#define AREA_RUIN_SAPPHIRE     13
+#define AREA_RUIN_RUBY          12
+#define AREA_RUIN_SAPPHIRE      13
 #define AREA_COUNT              14
 
 #endif // GUARD_CONSTANTS_AREAS_H

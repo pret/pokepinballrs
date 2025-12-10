@@ -1121,8 +1121,12 @@ void sub_29D9C(void)
     sub_1C7F4(2, 1);
 }
 
+/**
+ * Scroll through slots machine rewards in slots mode.
+ */
 void sub_2A054(void)
 {
+    // sapphire has zigzagoon mechanics
     if (gMain.selectedField == FIELD_SAPPHIRE)
     {
         if (gCurrentPinballGame->unk6E8 == 0)
@@ -2191,8 +2195,8 @@ void sub_2AADC(void)
                 }
             }
         }
-        
-        if (gCurrentPinballGame->scoreCounterAnimationEnabled) 
+
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             gCurrentPinballGame->unk5A6 = 181;
 
         if (gCurrentPinballGame->unk5A6 == 180)
@@ -2200,8 +2204,8 @@ void sub_2AADC(void)
             if (gCurrentPinballGame->unk13 == 4 || gCurrentPinballGame->unk13 == 8)
             {
                 gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-                
-                switch (gCurrentPinballGame->currentSpecies) 
+
+                switch (gCurrentPinballGame->currentSpecies)
                 {
                 case 59:
                 case 114:
@@ -2229,7 +2233,7 @@ void sub_2AADC(void)
             if (gCurrentPinballGame->unk13 == 5)
             {
                 gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            
+
                 if (gCurrentPinballGame->currentSpecies == SPECIES_PICHU)
                 {
                     gCurrentPinballGame->scoreAddStepSize = 140000;
@@ -2242,7 +2246,7 @@ void sub_2AADC(void)
             if (gMain.selectedField > MAIN_FIELD_COUNT)
             {
                 gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-                
+
                 if (gMain.selectedField == FIELD_RAYQUAZA)
                 {
                     gCurrentPinballGame->scoreAddStepSize = 400000;
