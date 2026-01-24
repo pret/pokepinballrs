@@ -2870,20 +2870,3 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .evolutionTarget = SPECIES_NONE
     },
 };
-
-/*
-    [SPECIES_] = {
-        .mainSeriesIndexNumber = ,
-        .unk2 = {
-            , , , , 
-        },
-        .name = {
-            '', '', '', '', '', '', '', '', '', ''
-        },
-        .catchIndex = ,
-        .eggIndex = ,
-        .unk13 = ,
-        .evolutionMethod = ,
-        .evolutionTarget = SPECIES_
-    },
-*/
