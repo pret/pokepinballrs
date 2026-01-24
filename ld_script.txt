@@ -99,7 +99,9 @@ SECTIONS
 
     .rodata :
     {
-        data/rom.o(.rodata)
+        data/rom_1.o(.rodata)
+        src/data.o(.rodata)
+        data/rom_2.o(.rodata)
     }=0xFF
 
     /* Discard everything not specifically mentioned above. */
