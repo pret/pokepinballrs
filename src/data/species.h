@@ -2,9 +2,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TREECKO] = {
         .mainSeriesIndexNumber = 277,
         .nameJapanese = __("キモリ　　"),
-        .name = {
-            'T', 'R', 'E', 'E', 'C', 'K', 'O', ' ', ' ', ' '
-        },
+        .name = "TREECKO   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -14,9 +12,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GROVYLE] = {
         .mainSeriesIndexNumber = 278,
         .nameJapanese = __("ジュプトル"),
-        .name = {
-            'G', 'R', 'O', 'V', 'Y', 'L', 'E', ' ', ' ', ' '
-        },
+        .name = "GROVYLE   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -26,9 +22,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SCEPTILE] = {
         .mainSeriesIndexNumber = 279,
         .nameJapanese = __("ジュカイン"),
-        .name = {
-            'S', 'C', 'E', 'P', 'T', 'I', 'L', 'E', ' ', ' '
-        },
+        .name = "SCEPTILE  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -38,9 +32,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TORCHIC] = {
         .mainSeriesIndexNumber = 280,
         .nameJapanese = __("アチャモ　"),
-        .name = {
-            'T', 'O', 'R', 'C', 'H', 'I', 'C', ' ', ' ', ' '
-        },
+        .name = "TORCHIC   ",
         .catchIndex = 1,
         .eggIndex = 0,
         .unk13 = 0,
@@ -50,9 +42,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_COMBUSKEN] = {
         .mainSeriesIndexNumber = 281,
         .nameJapanese = __("ワカシャモ"),
-        .name = {
-            'C', 'O', 'M', 'B', 'U', 'S', 'K', 'E', 'N', ' '
-        },
+        .name = "COMBUSKEN ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -62,9 +52,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_BLAZIKEN] = {
         .mainSeriesIndexNumber = 282,
         .nameJapanese = __("バシャーモ"),
-        .name = {
-            'B', 'L', 'A', 'Z', 'I', 'K', 'E', 'N', ' ', ' '
-        },
+        .name = "BLAZIKEN  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -74,9 +62,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MUDKIP] = {
         .mainSeriesIndexNumber = 283,
         .nameJapanese = __("ミズゴロウ"),
-        .name = {
-            'M', 'U', 'D', 'K', 'I', 'P', ' ', ' ', ' ', ' '
-        },
+        .name = "MUDKIP    ",
         .catchIndex = 2,
         .eggIndex = 0,
         .unk13 = 0,
@@ -86,9 +72,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MARSHTOMP] = {
         .mainSeriesIndexNumber = 284,
         .nameJapanese = __("ヌマクロー"),
-        .name = {
-            'M', 'A', 'R', 'S', 'H', 'T', 'O', 'M', 'P', ' '
-        },
+        .name = "MARSHTOMP ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -98,9 +82,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SWAMPERT] = {
         .mainSeriesIndexNumber = 285,
         .nameJapanese = __("ラグラージ"),
-        .name = {
-            'S', 'W', 'A', 'M', 'P', 'E', 'R', 'T', ' ', ' '
-        },
+        .name = "SWAMPERT  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -110,9 +92,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_POOCHYENA] = {
         .mainSeriesIndexNumber = 286,
         .nameJapanese = __("ポチエナ　"),
-        .name = {
-            'P', 'O', 'O', 'C', 'H', 'Y', 'E', 'N', 'A', ' '
-        },
+        .name = "POOCHYENA ",
         .catchIndex = 3,
         .eggIndex = 0,
         .unk13 = 0,
@@ -122,9 +102,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MIGHTYENA] = {
         .mainSeriesIndexNumber = 287,
         .nameJapanese = __("グラエナ　"),
-        .name = {
-            'M', 'I', 'G', 'H', 'T', 'Y', 'E', 'N', 'A', ' '
-        },
+        .name = "MIGHTYENA ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -134,9 +112,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ZIGZAGOON] = {
         .mainSeriesIndexNumber = 288,
         .nameJapanese = __("ジグザグマ"),
-        .name = {
-            'Z', 'I', 'G', 'Z', 'A', 'G', 'O', 'O', 'N', ' '
-        },
+        .name = "ZIGZAGOON ",
         .catchIndex = 4,
         .eggIndex = 0,
         .unk13 = 0,
@@ -146,9 +122,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LINOONE] = {
         .mainSeriesIndexNumber = 289,
         .nameJapanese = __("マッスグマ"),
-        .name = {
-            'L', 'I', 'N', 'O', 'O', 'N', 'E', ' ', ' ', ' '
-        },
+        .name = "LINOONE   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -158,9 +132,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WURMPLE] = {
         .mainSeriesIndexNumber = 290,
         .nameJapanese = __("ケムッソ　"),
-        .name = {
-            'W', 'U', 'R', 'M', 'P', 'L', 'E', ' ', ' ', ' '
-        },
+        .name = "WURMPLE   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -170,9 +142,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SILCOON] = {
         .mainSeriesIndexNumber = 291,
         .nameJapanese = __("カラサリス"),
-        .name = {
-            'S', 'I', 'L', 'C', 'O', 'O', 'N', ' ', ' ', ' '
-        },
+        .name = "SILCOON   ",
         .catchIndex = 5,
         .eggIndex = 0,
         .unk13 = 0,
@@ -182,9 +152,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_BEAUTIFLY] = {
         .mainSeriesIndexNumber = 292,
         .nameJapanese = __("アゲハント"),
-        .name = {
-            'B', 'E', 'A', 'U', 'T', 'I', 'F', 'L', 'Y', ' '
-        },
+        .name = "BEAUTIFLY ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -194,9 +162,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CASCOON] = {
         .mainSeriesIndexNumber = 293,
         .nameJapanese = __("マユルド　"),
-        .name = {
-            'C', 'A', 'S', 'C', 'O', 'O', 'N', ' ', ' ', ' '
-        },
+        .name = "CASCOON   ",
         .catchIndex = 6,
         .eggIndex = 0,
         .unk13 = 0,
@@ -206,9 +172,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_DUSTOX] = {
         .mainSeriesIndexNumber = 294,
         .nameJapanese = __("ドクケイル"),
-        .name = {
-            'D', 'U', 'S', 'T', 'O', 'X', ' ', ' ', ' ', ' '
-        },
+        .name = "DUSTOX    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -218,9 +182,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LOTAD] = {
         .mainSeriesIndexNumber = 295,
         .nameJapanese = __("ハスボー　"),
-        .name = {
-            'L', 'O', 'T', 'A', 'D', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "LOTAD     ",
         .catchIndex = 0,
         .eggIndex = 1,
         .unk13 = 0,
@@ -230,9 +192,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LOMBRE] = {
         .mainSeriesIndexNumber = 296,
         .nameJapanese = __("ハスブレロ"),
-        .name = {
-            'L', 'O', 'M', 'B', 'R', 'E', ' ', ' ', ' ', ' '
-        },
+        .name = "LOMBRE    ",
         .catchIndex = 7,
         .eggIndex = 0,
         .unk13 = 0,
@@ -242,9 +202,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LUDICOLO] = {
         .mainSeriesIndexNumber = 297,
         .nameJapanese = __("ルンパッパ"),
-        .name = {
-            'L', 'U', 'D', 'I', 'C', 'O', 'L', 'O', ' ', ' '
-        },
+        .name = "LUDICOLO  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -254,9 +212,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SEEDOT] = {
         .mainSeriesIndexNumber = 298,
         .nameJapanese = __("タネボー　"),
-        .name = {
-            'S', 'E', 'E', 'D', 'O', 'T', ' ', ' ', ' ', ' '
-        },
+        .name = "SEEDOT    ",
         .catchIndex = 0,
         .eggIndex = 2,
         .unk13 = 0,
@@ -266,9 +222,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_NUZLEAF] = {
         .mainSeriesIndexNumber = 299,
         .nameJapanese = __("コノハナ　"),
-        .name = {
-            'N', 'U', 'Z', 'L', 'E', 'A', 'F', ' ', ' ', ' '
-        },
+        .name = "NUZLEAF   ",
         .catchIndex = 8,
         .eggIndex = 0,
         .unk13 = 0,
@@ -278,9 +232,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SHIFTRY] = {
         .mainSeriesIndexNumber = 300,
         .nameJapanese = __("ダーテング"),
-        .name = {
-            'S', 'H', 'I', 'F', 'T', 'R', 'Y', ' ', ' ', ' '
-        },
+        .name = "SHIFTRY   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -290,9 +242,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TAILLOW] = {
         .mainSeriesIndexNumber = 304,
         .nameJapanese = __("スバメ　　"),
-        .name = {
-            'T', 'A', 'I', 'L', 'L', 'O', 'W', ' ', ' ', ' '
-        },
+        .name = "TAILLOW   ",
         .catchIndex = 9,
         .eggIndex = 0,
         .unk13 = 0,
@@ -302,9 +252,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SWELLOW] = {
         .mainSeriesIndexNumber = 305,
         .nameJapanese = __("オオスバメ"),
-        .name = {
-            'S', 'W', 'E', 'L', 'L', 'O', 'W', ' ', ' ', ' '
-        },
+        .name = "SWELLOW   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -314,9 +262,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WINGULL] = {
         .mainSeriesIndexNumber = 309,
         .nameJapanese = __("キャモメ　"),
-        .name = {
-            'W', 'I', 'N', 'G', 'U', 'L', 'L', ' ', ' ', ' '
-        },
+        .name = "WINGULL   ",
         .catchIndex = 10,
         .eggIndex = 0,
         .unk13 = 0,
@@ -326,9 +272,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_PELIPPER] = {
         .mainSeriesIndexNumber = 310,
         .nameJapanese = __("ペリッパー"),
-        .name = {
-            'P', 'E', 'L', 'I', 'P', 'P', 'E', 'R', ' ', ' '
-        },
+        .name = "PELIPPER  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -338,9 +282,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_RALTS] = {
         .mainSeriesIndexNumber = 392,
         .nameJapanese = __("ラルトス　"),
-        .name = {
-            'R', 'A', 'L', 'T', 'S', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "RALTS     ",
         .catchIndex = 0,
         .eggIndex = 3,
         .unk13 = 0,
@@ -350,9 +292,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_KIRLIA] = {
         .mainSeriesIndexNumber = 393,
         .nameJapanese = __("キルリア　"),
-        .name = {
-            'K', 'I', 'R', 'L', 'I', 'A', ' ', ' ', ' ', ' '
-        },
+        .name = "KIRLIA    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -362,9 +302,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GARDEVOIR] = {
         .mainSeriesIndexNumber = 394,
         .nameJapanese = __("サーナイト"),
-        .name = {
-            'G', 'A', 'R', 'D', 'E', 'V', 'O', 'I', 'R', ' '
-        },
+        .name = "GARDEVOIR ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -374,9 +312,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SURSKIT] = {
         .mainSeriesIndexNumber = 311,
         .nameJapanese = __("アメタマ　"),
-        .name = {
-            'S', 'U', 'R', 'S', 'K', 'I', 'T', ' ', ' ', ' '
-        },
+        .name = "SURSKIT   ",
         .catchIndex = 0,
         .eggIndex = 4,
         .unk13 = 0,
@@ -386,9 +322,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MASQUERAIN] = {
         .mainSeriesIndexNumber = 312,
         .nameJapanese = __("アメモース"),
-        .name = {
-            'M', 'A', 'S', 'Q', 'U', 'E', 'R', 'A', 'I', 'N'
-        },
+        .name = "MASQUERAIN",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -398,9 +332,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SHROOMISH] = {
         .mainSeriesIndexNumber = 306,
         .nameJapanese = __("キノココ　"),
-        .name = {
-            'S', 'H', 'R', 'O', 'O', 'M', 'I', 'S', 'H', ' '
-        },
+        .name = "SHROOMISH ",
         .catchIndex = 0,
         .eggIndex = 5,
         .unk13 = 0,
@@ -410,9 +342,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_BRELOOM] = {
         .mainSeriesIndexNumber = 307,
         .nameJapanese = __("キノガッサ"),
-        .name = {
-            'B', 'R', 'E', 'L', 'O', 'O', 'M', ' ', ' ', ' '
-        },
+        .name = "BRELOOM   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -422,9 +352,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SLAKOTH] = {
         .mainSeriesIndexNumber = 364,
         .nameJapanese = __("ナマケロ　"),
-        .name = {
-            'S', 'L', 'A', 'K', 'O', 'T', 'H', ' ', ' ', ' '
-        },
+        .name = "SLAKOTH   ",
         .catchIndex = 11,
         .eggIndex = 0,
         .unk13 = 0,
@@ -434,9 +362,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_VIGOROTH] = {
         .mainSeriesIndexNumber = 365,
         .nameJapanese = __("ヤルキモノ"),
-        .name = {
-            'V', 'I', 'G', 'O', 'R', 'O', 'T', 'H', ' ', ' '
-        },
+        .name = "VIGOROTH  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -446,9 +372,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SLAKING] = {
         .mainSeriesIndexNumber = 366,
         .nameJapanese = __("ケッキング"),
-        .name = {
-            'S', 'L', 'A', 'K', 'I', 'N', 'G', ' ', ' ', ' '
-        },
+        .name = "SLAKING   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -458,9 +382,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ABRA] = {
         .mainSeriesIndexNumber = 63,
         .nameJapanese = __("ケーシィ　"),
-        .name = {
-            'A', 'B', 'R', 'A', ' ', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "ABRA      ",
         .catchIndex = 12,
         .eggIndex = 0,
         .unk13 = 0,
@@ -470,9 +392,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_KADABRA] = {
         .mainSeriesIndexNumber = 64,
         .nameJapanese = __("ユンゲラー"),
-        .name = {
-            'K', 'A', 'D', 'A', 'B', 'R', 'A', ' ', ' ', ' '
-        },
+        .name = "KADABRA   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -482,9 +402,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ALAKAZAM] = {
         .mainSeriesIndexNumber = 65,
         .nameJapanese = __("フーディン"),
-        .name = {
-            'A', 'L', 'A', 'K', 'A', 'Z', 'A', 'M', ' ', ' '
-        },
+        .name = "ALAKAZAM  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -494,9 +412,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_NINCADA] = {
         .mainSeriesIndexNumber = 301,
         .nameJapanese = __("ツチニン　"),
-        .name = {
-            'N', 'I', 'N', 'C', 'A', 'D', 'A', ' ', ' ', ' '
-        },
+        .name = "NINCADA   ",
         .catchIndex = 13,
         .eggIndex = 0,
         .unk13 = 0,
@@ -506,9 +422,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_NINJASK] = {
         .mainSeriesIndexNumber = 302,
         .nameJapanese = __("テッカニン"),
-        .name = {
-            'N', 'I', 'N', 'J', 'A', 'S', 'K', ' ', ' ', ' '
-        },
+        .name = "NINJASK   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -518,9 +432,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SHEDINJA] = {
         .mainSeriesIndexNumber = 303,
         .nameJapanese = __("ヌケニン　"),
-        .name = {
-            'S', 'H', 'E', 'D', 'I', 'N', 'J', 'A', ' ', ' '
-        },
+        .name = "SHEDINJA  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -530,9 +442,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WHISMUR] = {
         .mainSeriesIndexNumber = 370,
         .nameJapanese = __("ゴニョニョ"),
-        .name = {
-            'W', 'H', 'I', 'S', 'M', 'U', 'R', ' ', ' ', ' '
-        },
+        .name = "WHISMUR   ",
         .catchIndex = 0,
         .eggIndex = 6,
         .unk13 = 0,
@@ -542,9 +452,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LOUDRED] = {
         .mainSeriesIndexNumber = 371,
         .nameJapanese = __("ドゴーム　"),
-        .name = {
-            'L', 'O', 'U', 'D', 'R', 'E', 'D', ' ', ' ', ' '
-        },
+        .name = "LOUDRED   ",
         .catchIndex = 14,
         .eggIndex = 0,
         .unk13 = 0,
@@ -554,9 +462,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_EXPLOUD] = {
         .mainSeriesIndexNumber = 372,
         .nameJapanese = __("バクオング"),
-        .name = {
-            'E', 'X', 'P', 'L', 'O', 'U', 'D', ' ', ' ', ' '
-        },
+        .name = "EXPLOUD   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -566,9 +472,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MAKUHITA] = {
         .mainSeriesIndexNumber = 335,
         .nameJapanese = __("マクノシタ"),
-        .name = {
-            'M', 'A', 'K', 'U', 'H', 'I', 'T', 'A', ' ', ' '
-        },
+        .name = "MAKUHITA  ",
         .catchIndex = 15,
         .eggIndex = 0,
         .unk13 = 0,
@@ -578,9 +482,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_HARIYAMA] = {
         .mainSeriesIndexNumber = 336,
         .nameJapanese = __("ハリテヤマ"),
-        .name = {
-            'H', 'A', 'R', 'I', 'Y', 'A', 'M', 'A', ' ', ' '
-        },
+        .name = "HARIYAMA  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -590,9 +492,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GOLDEEN] = {
         .mainSeriesIndexNumber = 118,
         .nameJapanese = __("トサキント"),
-        .name = {
-            'G', 'O', 'L', 'D', 'E', 'E', 'N', ' ', ' ', ' '
-        },
+        .name = "GOLDEEN   ",
         .catchIndex = 16,
         .eggIndex = 0,
         .unk13 = 0,
@@ -602,9 +502,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SEAKING] = {
         .mainSeriesIndexNumber = 119,
         .nameJapanese = __("アズマオウ"),
-        .name = {
-            'S', 'E', 'A', 'K', 'I', 'N', 'G', ' ', ' ', ' '
-        },
+        .name = "SEAKING   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -614,9 +512,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MAGIKARP] = {
         .mainSeriesIndexNumber = 129,
         .nameJapanese = __("コイキング"),
-        .name = {
-            'M', 'A', 'G', 'I', 'K', 'A', 'R', 'P', ' ', ' '
-        },
+        .name = "MAGIKARP  ",
         .catchIndex = 17,
         .eggIndex = 0,
         .unk13 = 0,
@@ -626,9 +522,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GYARADOS] = {
         .mainSeriesIndexNumber = 130,
         .nameJapanese = __("ギャラドス"),
-        .name = {
-            'G', 'Y', 'A', 'R', 'A', 'D', 'O', 'S', ' ', ' '
-        },
+        .name = "GYARADOS  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -638,9 +532,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_AZURILL] = {
         .mainSeriesIndexNumber = 350,
         .nameJapanese = __("ルリリ　　"),
-        .name = {
-            'A', 'Z', 'U', 'R', 'I', 'L', 'L', ' ', ' ', ' '
-        },
+        .name = "AZURILL   ",
         .catchIndex = 0,
         .eggIndex = 7,
         .unk13 = 1,
@@ -650,9 +542,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MARILL] = {
         .mainSeriesIndexNumber = 183,
         .nameJapanese = __("マリル　　"),
-        .name = {
-            'M', 'A', 'R', 'I', 'L', 'L', ' ', ' ', ' ', ' '
-        },
+        .name = "MARILL    ",
         .catchIndex = 18,
         .eggIndex = 0,
         .unk13 = 0,
@@ -662,9 +552,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_AZUMARILL] = {
         .mainSeriesIndexNumber = 184,
         .nameJapanese = __("マリルリ　"),
-        .name = {
-            'A', 'Z', 'U', 'M', 'A', 'R', 'I', 'L', 'L', ' '
-        },
+        .name = "AZUMARILL ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -674,9 +562,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GEODUDE] = {
         .mainSeriesIndexNumber = 74,
         .nameJapanese = __("イシツブテ"),
-        .name = {
-            'G', 'E', 'O', 'D', 'U', 'D', 'E', ' ', ' ', ' '
-        },
+        .name = "GEODUDE   ",
         .catchIndex = 19,
         .eggIndex = 0,
         .unk13 = 0,
@@ -686,9 +572,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GRAVELER] = {
         .mainSeriesIndexNumber = 75,
         .nameJapanese = __("ゴローン　"),
-        .name = {
-            'G', 'R', 'A', 'V', 'E', 'L', 'E', 'R', ' ', ' '
-        },
+        .name = "GRAVELER  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -698,9 +582,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GOLEM] = {
         .mainSeriesIndexNumber = 76,
         .nameJapanese = __("ゴローニャ"),
-        .name = {
-            'G', 'O', 'L', 'E', 'M', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "GOLEM     ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -710,9 +592,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_NOSEPASS] = {
         .mainSeriesIndexNumber = 320,
         .nameJapanese = __("ノズパス　"),
-        .name = {
-            'N', 'O', 'S', 'E', 'P', 'A', 'S', 'S', ' ', ' '
-        },
+        .name = "NOSEPASS  ",
         .catchIndex = 20,
         .eggIndex = 0,
         .unk13 = 0,
@@ -722,9 +602,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SKITTY] = {
         .mainSeriesIndexNumber = 315,
         .nameJapanese = __("エネコ　　"),
-        .name = {
-            'S', 'K', 'I', 'T', 'T', 'Y', ' ', ' ', ' ', ' '
-        },
+        .name = "SKITTY    ",
         .catchIndex = 0,
         .eggIndex = 8,
         .unk13 = 1,
@@ -734,9 +612,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_DELCATTY] = {
         .mainSeriesIndexNumber = 316,
         .nameJapanese = __("エネコロロ"),
-        .name = {
-            'D', 'E', 'L', 'C', 'A', 'T', 'T', 'Y', ' ', ' '
-        },
+        .name = "DELCATTY  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -746,9 +622,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ZUBAT] = {
         .mainSeriesIndexNumber = 41,
         .nameJapanese = __("ズバット　"),
-        .name = {
-            'Z', 'U', 'B', 'A', 'T', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "ZUBAT     ",
         .catchIndex = 0,
         .eggIndex = 9,
         .unk13 = 1,
@@ -758,9 +632,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GOLBAT] = {
         .mainSeriesIndexNumber = 42,
         .nameJapanese = __("ゴルバット"),
-        .name = {
-            'G', 'O', 'L', 'B', 'A', 'T', ' ', ' ', ' ', ' '
-        },
+        .name = "GOLBAT    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -770,9 +642,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CROBAT] = {
         .mainSeriesIndexNumber = 169,
         .nameJapanese = __("クロバット"),
-        .name = {
-            'C', 'R', 'O', 'B', 'A', 'T', ' ', ' ', ' ', ' '
-        },
+        .name = "CROBAT    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -782,9 +652,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TENTACOOL] = {
         .mainSeriesIndexNumber = 72,
         .nameJapanese = __("メノクラゲ"),
-        .name = {
-            'T', 'E', 'N', 'T', 'A', 'C', 'O', 'O', 'L', ' '
-        },
+        .name = "TENTACOOL ",
         .catchIndex = 21,
         .eggIndex = 0,
         .unk13 = 0,
@@ -794,9 +662,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TENTACRUEL] = {
         .mainSeriesIndexNumber = 73,
         .nameJapanese = __("ドククラゲ"),
-        .name = {
-            'T', 'E', 'N', 'T', 'A', 'C', 'R', 'U', 'E', 'L'
-        },
+        .name = "TENTACRUEL",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -806,9 +672,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SABLEYE] = {
         .mainSeriesIndexNumber = 322,
         .nameJapanese = __("ヤミラミ　"),
-        .name = {
-            'S', 'A', 'B', 'L', 'E', 'Y', 'E', ' ', ' ', ' '
-        },
+        .name = "SABLEYE   ",
         .catchIndex = 22,
         .eggIndex = 0,
         .unk13 = 0,
@@ -818,9 +682,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MAWILE] = {
         .mainSeriesIndexNumber = 355,
         .nameJapanese = __("クチート　"),
-        .name = {
-            'M', 'A', 'W', 'I', 'L', 'E', ' ', ' ', ' ', ' '
-        },
+        .name = "MAWILE    ",
         .catchIndex = 23,
         .eggIndex = 0,
         .unk13 = 0,
@@ -830,9 +692,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ARON] = {
         .mainSeriesIndexNumber = 382,
         .nameJapanese = __("ココドラ　"),
-        .name = {
-            'A', 'R', 'O', 'N', ' ', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "ARON      ",
         .catchIndex = 0,
         .eggIndex = 10,
         .unk13 = 0,
@@ -842,9 +702,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LAIRON] = {
         .mainSeriesIndexNumber = 383,
         .nameJapanese = __("コドラ　　"),
-        .name = {
-            'L', 'A', 'I', 'R', 'O', 'N', ' ', ' ', ' ', ' '
-        },
+        .name = "LAIRON    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -854,9 +712,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_AGGRON] = {
         .mainSeriesIndexNumber = 384,
         .nameJapanese = __("ボスゴドラ"),
-        .name = {
-            'A', 'G', 'G', 'R', 'O', 'N', ' ', ' ', ' ', ' '
-        },
+        .name = "AGGRON    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -866,9 +722,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MACHOP] = {
         .mainSeriesIndexNumber = 66,
         .nameJapanese = __("ワンリキー"),
-        .name = {
-            'M', 'A', 'C', 'H', 'O', 'P', ' ', ' ', ' ', ' '
-        },
+        .name = "MACHOP    ",
         .catchIndex = 24,
         .eggIndex = 0,
         .unk13 = 0,
@@ -878,9 +732,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MACHOKE] = {
         .mainSeriesIndexNumber = 67,
         .nameJapanese = __("ゴーリキー"),
-        .name = {
-            'M', 'A', 'C', 'H', 'O', 'K', 'E', ' ', ' ', ' '
-        },
+        .name = "MACHOKE   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -890,9 +742,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MACHAMP] = {
         .mainSeriesIndexNumber = 68,
         .nameJapanese = __("カイリキー"),
-        .name = {
-            'M', 'A', 'C', 'H', 'A', 'M', 'P', ' ', ' ', ' '
-        },
+        .name = "MACHAMP   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -902,9 +752,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MEDITITE] = {
         .mainSeriesIndexNumber = 356,
         .nameJapanese = __("アサナン　"),
-        .name = {
-            'M', 'E', 'D', 'I', 'T', 'I', 'T', 'E', ' ', ' '
-        },
+        .name = "MEDITITE  ",
         .catchIndex = 25,
         .eggIndex = 0,
         .unk13 = 0,
@@ -914,9 +762,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MEDICHAM] = {
         .mainSeriesIndexNumber = 357,
         .nameJapanese = __("チャーレム"),
-        .name = {
-            'M', 'E', 'D', 'I', 'C', 'H', 'A', 'M', ' ', ' '
-        },
+        .name = "MEDICHAM  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -926,9 +772,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ELECTRIKE] = {
         .mainSeriesIndexNumber = 337,
         .nameJapanese = __("ラクライ　"),
-        .name = {
-            'E', 'L', 'E', 'C', 'T', 'R', 'I', 'K', 'E', ' '
-        },
+        .name = "ELECTRIKE ",
         .catchIndex = 26,
         .eggIndex = 0,
         .unk13 = 0,
@@ -938,9 +782,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MANECTRIC] = {
         .mainSeriesIndexNumber = 338,
         .nameJapanese = __("ライボルト"),
-        .name = {
-            'M', 'A', 'N', 'E', 'C', 'T', 'R', 'I', 'C', ' '
-        },
+        .name = "MANECTRIC ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -950,9 +792,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_PLUSLE] = {
         .mainSeriesIndexNumber = 353,
         .nameJapanese = __("プラスル　"),
-        .name = {
-            'P', 'L', 'U', 'S', 'L', 'E', ' ', ' ', ' ', ' '
-        },
+        .name = "PLUSLE    ",
         .catchIndex = 0,
         .eggIndex = 11,
         .unk13 = 1,
@@ -962,9 +802,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MINUN] = {
         .mainSeriesIndexNumber = 354,
         .nameJapanese = __("マイナン　"),
-        .name = {
-            'M', 'I', 'N', 'U', 'N', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "MINUN     ",
         .catchIndex = 0,
         .eggIndex = 12,
         .unk13 = 1,
@@ -974,9 +812,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MAGNEMITE] = {
         .mainSeriesIndexNumber = 81,
         .nameJapanese = __("コイル　　"),
-        .name = {
-            'M', 'A', 'G', 'N', 'E', 'M', 'I', 'T', 'E', ' '
-        },
+        .name = "MAGNEMITE ",
         .catchIndex = 27,
         .eggIndex = 0,
         .unk13 = 0,
@@ -986,9 +822,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MAGNETON] = {
         .mainSeriesIndexNumber = 82,
         .nameJapanese = __("レアコイル"),
-        .name = {
-            'M', 'A', 'G', 'N', 'E', 'T', 'O', 'N', ' ', ' '
-        },
+        .name = "MAGNETON  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -998,9 +832,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_VOLTORB] = {
         .mainSeriesIndexNumber = 100,
         .nameJapanese = __("ビリリダマ"),
-        .name = {
-            'V', 'O', 'L', 'T', 'O', 'R', 'B', ' ', ' ', ' '
-        },
+        .name = "VOLTORB   ",
         .catchIndex = 28,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1010,9 +842,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ELECTRODE] = {
         .mainSeriesIndexNumber = 101,
         .nameJapanese = __("マルマイン"),
-        .name = {
-            'E', 'L', 'E', 'C', 'T', 'R', 'O', 'D', 'E', ' '
-        },
+        .name = "ELECTRODE ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1022,9 +852,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_VOLBEAT] = {
         .mainSeriesIndexNumber = 386,
         .nameJapanese = __("バルビート"),
-        .name = {
-            'V', 'O', 'L', 'B', 'E', 'A', 'T', ' ', ' ', ' '
-        },
+        .name = "VOLBEAT   ",
         .catchIndex = 29,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1034,9 +862,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ILLUMISE] = {
         .mainSeriesIndexNumber = 387,
         .nameJapanese = __("イルミーゼ"),
-        .name = {
-            'I', 'L', 'L', 'U', 'M', 'I', 'S', 'E', ' ', ' '
-        },
+        .name = "ILLUMISE  ",
         .catchIndex = 30,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1046,9 +872,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ODDISH] = {
         .mainSeriesIndexNumber = 43,
         .nameJapanese = __("ナゾノクサ"),
-        .name = {
-            'O', 'D', 'D', 'I', 'S', 'H', ' ', ' ', ' ', ' '
-        },
+        .name = "ODDISH    ",
         .catchIndex = 0,
         .eggIndex = 13,
         .unk13 = 0,
@@ -1058,9 +882,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GLOOM] = {
         .mainSeriesIndexNumber = 44,
         .nameJapanese = __("クサイハナ"),
-        .name = {
-            'G', 'L', 'O', 'O', 'M', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "GLOOM     ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1070,9 +892,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_VILEPLUME] = {
         .mainSeriesIndexNumber = 45,
         .nameJapanese = __("ラフレシア"),
-        .name = {
-            'V', 'I', 'L', 'E', 'P', 'L', 'U', 'M', 'E', ' '
-        },
+        .name = "VILEPLUME ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1082,9 +902,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_BELLOSSOM] = {
         .mainSeriesIndexNumber = 182,
         .nameJapanese = __("キレイハナ"),
-        .name = {
-            'B', 'E', 'L', 'L', 'O', 'S', 'S', 'O', 'M', ' '
-        },
+        .name = "BELLOSSOM ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1094,9 +912,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_DODUO] = {
         .mainSeriesIndexNumber = 84,
         .nameJapanese = __("ドードー　"),
-        .name = {
-            'D', 'O', 'D', 'U', 'O', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "DODUO     ",
         .catchIndex = 31,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1106,9 +922,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_DODRIO] = {
         .mainSeriesIndexNumber = 85,
         .nameJapanese = __("ドードリオ"),
-        .name = {
-            'D', 'O', 'D', 'R', 'I', 'O', ' ', ' ', ' ', ' '
-        },
+        .name = "DODRIO    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1118,9 +932,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ROSELIA] = {
         .mainSeriesIndexNumber = 363,
         .nameJapanese = __("ロゼリア　"),
-        .name = {
-            'R', 'O', 'S', 'E', 'L', 'I', 'A', ' ', ' ', ' '
-        },
+        .name = "ROSELIA   ",
         .catchIndex = 32,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1130,9 +942,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GULPIN] = {
         .mainSeriesIndexNumber = 367,
         .nameJapanese = __("ゴクリン　"),
-        .name = {
-            'G', 'U', 'L', 'P', 'I', 'N', ' ', ' ', ' ', ' '
-        },
+        .name = "GULPIN    ",
         .catchIndex = 0,
         .eggIndex = 14,
         .unk13 = 0,
@@ -1142,9 +952,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SWALOT] = {
         .mainSeriesIndexNumber = 368,
         .nameJapanese = __("マルノーム"),
-        .name = {
-            'S', 'W', 'A', 'L', 'O', 'T', ' ', ' ', ' ', ' '
-        },
+        .name = "SWALOT    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1154,9 +962,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CARVANHA] = {
         .mainSeriesIndexNumber = 330,
         .nameJapanese = __("キバニア　"),
-        .name = {
-            'C', 'A', 'R', 'V', 'A', 'N', 'H', 'A', ' ', ' '
-        },
+        .name = "CARVANHA  ",
         .catchIndex = 33,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1166,9 +972,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SHARPEDO] = {
         .mainSeriesIndexNumber = 331,
         .nameJapanese = __("サメハダー"),
-        .name = {
-            'S', 'H', 'A', 'R', 'P', 'E', 'D', 'O', ' ', ' '
-        },
+        .name = "SHARPEDO  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1178,9 +982,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WAILMER] = {
         .mainSeriesIndexNumber = 313,
         .nameJapanese = __("ホエルコ　"),
-        .name = {
-            'W', 'A', 'I', 'L', 'M', 'E', 'R', ' ', ' ', ' '
-        },
+        .name = "WAILMER   ",
         .catchIndex = 34,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1190,9 +992,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WAILORD] = {
         .mainSeriesIndexNumber = 314,
         .nameJapanese = __("ホエルオー"),
-        .name = {
-            'W', 'A', 'I', 'L', 'O', 'R', 'D', ' ', ' ', ' '
-        },
+        .name = "WAILORD   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1202,9 +1002,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_NUMEL] = {
         .mainSeriesIndexNumber = 339,
         .nameJapanese = __("ドンメル　"),
-        .name = {
-            'N', 'U', 'M', 'E', 'L', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "NUMEL     ",
         .catchIndex = 35,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1214,9 +1012,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CAMERUPT] = {
         .mainSeriesIndexNumber = 340,
         .nameJapanese = __("バクーダ　"),
-        .name = {
-            'C', 'A', 'M', 'E', 'R', 'U', 'P', 'T', ' ', ' '
-        },
+        .name = "CAMERUPT  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1226,9 +1022,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SLUGMA] = {
         .mainSeriesIndexNumber = 218,
         .nameJapanese = __("マグマッグ"),
-        .name = {
-            'S', 'L', 'U', 'G', 'M', 'A', ' ', ' ', ' ', ' '
-        },
+        .name = "SLUGMA    ",
         .catchIndex = 36,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1238,9 +1032,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MAGCARGO] = {
         .mainSeriesIndexNumber = 219,
         .nameJapanese = __("マグカルゴ"),
-        .name = {
-            'M', 'A', 'G', 'C', 'A', 'R', 'G', 'O', ' ', ' '
-        },
+        .name = "MAGCARGO  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1250,9 +1042,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TORKOAL] = {
         .mainSeriesIndexNumber = 321,
         .nameJapanese = __("コータス　"),
-        .name = {
-            'T', 'O', 'R', 'K', 'O', 'A', 'L', ' ', ' ', ' '
-        },
+        .name = "TORKOAL   ",
         .catchIndex = 37,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1262,9 +1052,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GRIMER] = {
         .mainSeriesIndexNumber = 88,
         .nameJapanese = __("ベトベター"),
-        .name = {
-            'G', 'R', 'I', 'M', 'E', 'R', ' ', ' ', ' ', ' '
-        },
+        .name = "GRIMER    ",
         .catchIndex = 38,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1274,9 +1062,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MUK] = {
         .mainSeriesIndexNumber = 89,
         .nameJapanese = __("ベトベトン"),
-        .name = {
-            'M', 'U', 'K', ' ', ' ', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "MUK       ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1286,9 +1072,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_KOFFING] = {
         .mainSeriesIndexNumber = 109,
         .nameJapanese = __("ドガース　"),
-        .name = {
-            'K', 'O', 'F', 'F', 'I', 'N', 'G', ' ', ' ', ' '
-        },
+        .name = "KOFFING   ",
         .catchIndex = 39,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1298,9 +1082,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WEEZING] = {
         .mainSeriesIndexNumber = 110,
         .nameJapanese = __("マタドガス"),
-        .name = {
-            'W', 'E', 'E', 'Z', 'I', 'N', 'G', ' ', ' ', ' '
-        },
+        .name = "WEEZING   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1310,9 +1092,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SPOINK] = {
         .mainSeriesIndexNumber = 351,
         .nameJapanese = __("バネブー　"),
-        .name = {
-            'S', 'P', 'O', 'I', 'N', 'K', ' ', ' ', ' ', ' '
-        },
+        .name = "SPOINK    ",
         .catchIndex = 0,
         .eggIndex = 15,
         .unk13 = 0,
@@ -1322,9 +1102,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GRUMPIG] = {
         .mainSeriesIndexNumber = 352,
         .nameJapanese = __("ブーピッグ"),
-        .name = {
-            'G', 'R', 'U', 'M', 'P', 'I', 'G', ' ', ' ', ' '
-        },
+        .name = "GRUMPIG   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1334,9 +1112,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SANDSHREW] = {
         .mainSeriesIndexNumber = 27,
         .nameJapanese = __("サンド　　"),
-        .name = {
-            'S', 'A', 'N', 'D', 'S', 'H', 'R', 'E', 'W', ' '
-        },
+        .name = "SANDSHREW ",
         .catchIndex = 0,
         .eggIndex = 16,
         .unk13 = 0,
@@ -1346,9 +1122,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SANDSLASH] = {
         .mainSeriesIndexNumber = 28,
         .nameJapanese = __("サンドパン"),
-        .name = {
-            'S', 'A', 'N', 'D', 'S', 'L', 'A', 'S', 'H', ' '
-        },
+        .name = "SANDSLASH ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1358,9 +1132,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SPINDA] = {
         .mainSeriesIndexNumber = 308,
         .nameJapanese = __("パッチール"),
-        .name = {
-            'S', 'P', 'I', 'N', 'D', 'A', ' ', ' ', ' ', ' '
-        },
+        .name = "SPINDA    ",
         .catchIndex = 0,
         .eggIndex = 17,
         .unk13 = 0,
@@ -1370,9 +1142,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SKARMORY] = {
         .mainSeriesIndexNumber = 227,
         .nameJapanese = __("エアームド"),
-        .name = {
-            'S', 'K', 'A', 'R', 'M', 'O', 'R', 'Y', ' ', ' '
-        },
+        .name = "SKARMORY  ",
         .catchIndex = 40,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1382,9 +1152,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TRAPINCH] = {
         .mainSeriesIndexNumber = 332,
         .nameJapanese = __("ナックラー"),
-        .name = {
-            'T', 'R', 'A', 'P', 'I', 'N', 'C', 'H', ' ', ' '
-        },
+        .name = "TRAPINCH  ",
         .catchIndex = 0,
         .eggIndex = 18,
         .unk13 = 0,
@@ -1394,9 +1162,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_VIBRAVA] = {
         .mainSeriesIndexNumber = 333,
         .nameJapanese = __("ビブラーバ"),
-        .name = {
-            'V', 'I', 'B', 'R', 'A', 'V', 'A', ' ', ' ', ' '
-        },
+        .name = "VIBRAVA   ",
         .catchIndex = 41,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1406,9 +1172,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_FLYGON] = {
         .mainSeriesIndexNumber = 334,
         .nameJapanese = __("フライゴン"),
-        .name = {
-            'F', 'L', 'Y', 'G', 'O', 'N', ' ', ' ', ' ', ' '
-        },
+        .name = "FLYGON    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1418,9 +1182,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CACNEA] = {
         .mainSeriesIndexNumber = 344,
         .nameJapanese = __("サボネア　"),
-        .name = {
-            'C', 'A', 'C', 'N', 'E', 'A', ' ', ' ', ' ', ' '
-        },
+        .name = "CACNEA    ",
         .catchIndex = 42,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1430,9 +1192,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CACTURNE] = {
         .mainSeriesIndexNumber = 345,
         .nameJapanese = __("ノクタス　"),
-        .name = {
-            'C', 'A', 'C', 'T', 'U', 'R', 'N', 'E', ' ', ' '
-        },
+        .name = "CACTURNE  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1442,9 +1202,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SWABLU] = {
         .mainSeriesIndexNumber = 358,
         .nameJapanese = __("チルット　"),
-        .name = {
-            'S', 'W', 'A', 'B', 'L', 'U', ' ', ' ', ' ', ' '
-        },
+        .name = "SWABLU    ",
         .catchIndex = 43,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1454,9 +1212,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ALTARIA] = {
         .mainSeriesIndexNumber = 359,
         .nameJapanese = __("チルタリス"),
-        .name = {
-            'A', 'L', 'T', 'A', 'R', 'I', 'A', ' ', ' ', ' '
-        },
+        .name = "ALTARIA   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1466,9 +1222,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ZANGOOSE] = {
         .mainSeriesIndexNumber = 380,
         .nameJapanese = __("ザングース"),
-        .name = {
-            'Z', 'A', 'N', 'G', 'O', 'O', 'S', 'E', ' ', ' '
-        },
+        .name = "ZANGOOSE  ",
         .catchIndex = 44,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1478,9 +1232,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SEVIPER] = {
         .mainSeriesIndexNumber = 379,
         .nameJapanese = __("ハブネーク"),
-        .name = {
-            'S', 'E', 'V', 'I', 'P', 'E', 'R', ' ', ' ', ' '
-        },
+        .name = "SEVIPER   ",
         .catchIndex = 45,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1490,9 +1242,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LUNATONE] = {
         .mainSeriesIndexNumber = 348,
         .nameJapanese = __("ルナトーン"),
-        .name = {
-            'L', 'U', 'N', 'A', 'T', 'O', 'N', 'E', ' ', ' '
-        },
+        .name = "LUNATONE  ",
         .catchIndex = 46,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1502,9 +1252,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SOLROCK] = {
         .mainSeriesIndexNumber = 349,
         .nameJapanese = __("ソルロック"),
-        .name = {
-            'S', 'O', 'L', 'R', 'O', 'C', 'K', ' ', ' ', ' '
-        },
+        .name = "SOLROCK   ",
         .catchIndex = 47,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1514,9 +1262,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_BARBOACH] = {
         .mainSeriesIndexNumber = 323,
         .nameJapanese = __("ドジョッチ"),
-        .name = {
-            'B', 'A', 'R', 'B', 'O', 'A', 'C', 'H', ' ', ' '
-        },
+        .name = "BARBOACH  ",
         .catchIndex = 48,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1526,9 +1272,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WHISCASH] = {
         .mainSeriesIndexNumber = 324,
         .nameJapanese = __("ナマズン　"),
-        .name = {
-            'W', 'H', 'I', 'S', 'C', 'A', 'S', 'H', ' ', ' '
-        },
+        .name = "WHISCASH  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1538,9 +1282,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CORPHISH] = {
         .mainSeriesIndexNumber = 326,
         .nameJapanese = __("ヘイガニ　"),
-        .name = {
-            'C', 'O', 'R', 'P', 'H', 'I', 'S', 'H', ' ', ' '
-        },
+        .name = "CORPHISH  ",
         .catchIndex = 49,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1550,9 +1292,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CRAWDAUNT] = {
         .mainSeriesIndexNumber = 327,
         .nameJapanese = __("シザリガー"),
-        .name = {
-            'C', 'R', 'A', 'W', 'D', 'A', 'U', 'N', 'T', ' '
-        },
+        .name = "CRAWDAUNT ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1562,9 +1302,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_BALTOY] = {
         .mainSeriesIndexNumber = 318,
         .nameJapanese = __("ヤジロン　"),
-        .name = {
-            'B', 'A', 'L', 'T', 'O', 'Y', ' ', ' ', ' ', ' '
-        },
+        .name = "BALTOY    ",
         .catchIndex = 50,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1574,9 +1312,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CLAYDOL] = {
         .mainSeriesIndexNumber = 319,
         .nameJapanese = __("ネンドール"),
-        .name = {
-            'C', 'L', 'A', 'Y', 'D', 'O', 'L', ' ', ' ', ' '
-        },
+        .name = "CLAYDOL   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1586,9 +1322,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LILEEP] = {
         .mainSeriesIndexNumber = 388,
         .nameJapanese = __("リリーラ　"),
-        .name = {
-            'L', 'I', 'L', 'E', 'E', 'P', ' ', ' ', ' ', ' '
-        },
+        .name = "LILEEP    ",
         .catchIndex = 51,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1598,9 +1332,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CRADILY] = {
         .mainSeriesIndexNumber = 389,
         .nameJapanese = __("ユレイドル"),
-        .name = {
-            'C', 'R', 'A', 'D', 'I', 'L', 'Y', ' ', ' ', ' '
-        },
+        .name = "CRADILY   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1610,9 +1342,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ANORITH] = {
         .mainSeriesIndexNumber = 390,
         .nameJapanese = __("アノプス　"),
-        .name = {
-            'A', 'N', 'O', 'R', 'I', 'T', 'H', ' ', ' ', ' '
-        },
+        .name = "ANORITH   ",
         .catchIndex = 52,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1622,9 +1352,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ARMALDO] = {
         .mainSeriesIndexNumber = 391,
         .nameJapanese = __("アーマルド"),
-        .name = {
-            'A', 'R', 'M', 'A', 'L', 'D', 'O', ' ', ' ', ' '
-        },
+        .name = "ARMALDO   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1634,9 +1362,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_IGGLYBUFF] = {
         .mainSeriesIndexNumber = 174,
         .nameJapanese = __("ププリン　"),
-        .name = {
-            'I', 'G', 'G', 'L', 'Y', 'B', 'U', 'F', 'F', ' '
-        },
+        .name = "IGGLYBUFF ",
         .catchIndex = 0,
         .eggIndex = 19,
         .unk13 = 1,
@@ -1646,9 +1372,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_JIGGLYPUFF] = {
         .mainSeriesIndexNumber = 39,
         .nameJapanese = __("プリン　　"),
-        .name = {
-            'J', 'I', 'G', 'G', 'L', 'Y', 'P', 'U', 'F', 'F'
-        },
+        .name = "JIGGLYPUFF",
         .catchIndex = 53,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1658,9 +1382,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WIGGLYTUFF] = {
         .mainSeriesIndexNumber = 40,
         .nameJapanese = __("プクリン　"),
-        .name = {
-            'W', 'I', 'G', 'G', 'L', 'Y', 'T', 'U', 'F', 'F'
-        },
+        .name = "WIGGLYTUFF",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1670,9 +1392,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_FEEBAS] = {
         .mainSeriesIndexNumber = 328,
         .nameJapanese = __("ヒンバス　"),
-        .name = {
-            'F', 'E', 'E', 'B', 'A', 'S', ' ', ' ', ' ', ' '
-        },
+        .name = "FEEBAS    ",
         .catchIndex = 54,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1682,9 +1402,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_MILOTIC] = {
         .mainSeriesIndexNumber = 329,
         .nameJapanese = __("ミロカロス"),
-        .name = {
-            'M', 'I', 'L', 'O', 'T', 'I', 'C', ' ', ' ', ' '
-        },
+        .name = "MILOTIC   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1694,9 +1412,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CASTFORM] = {
         .mainSeriesIndexNumber = 385,
         .nameJapanese = __("ポワルン　"),
-        .name = {
-            'C', 'A', 'S', 'T', 'F', 'O', 'R', 'M', ' ', ' '
-        },
+        .name = "CASTFORM  ",
         .catchIndex = 55,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1706,9 +1422,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_STARYU] = {
         .mainSeriesIndexNumber = 120,
         .nameJapanese = __("ヒトデマン"),
-        .name = {
-            'S', 'T', 'A', 'R', 'Y', 'U', ' ', ' ', ' ', ' '
-        },
+        .name = "STARYU    ",
         .catchIndex = 56,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1718,9 +1432,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_STARMIE] = {
         .mainSeriesIndexNumber = 121,
         .nameJapanese = __("スターミー"),
-        .name = {
-            'S', 'T', 'A', 'R', 'M', 'I', 'E', ' ', ' ', ' '
-        },
+        .name = "STARMIE   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1730,9 +1442,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_KECLEON] = {
         .mainSeriesIndexNumber = 317,
         .nameJapanese = __("カクレオン"),
-        .name = {
-            'K', 'E', 'C', 'L', 'E', 'O', 'N', ' ', ' ', ' '
-        },
+        .name = "KECLEON   ",
         .catchIndex = 57,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1742,9 +1452,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SHUPPET] = {
         .mainSeriesIndexNumber = 377,
         .nameJapanese = __("カゲボウズ"),
-        .name = {
-            'S', 'H', 'U', 'P', 'P', 'E', 'T', ' ', ' ', ' '
-        },
+        .name = "SHUPPET   ",
         .catchIndex = 0,
         .eggIndex = 20,
         .unk13 = 1,
@@ -1754,9 +1462,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_BANETTE] = {
         .mainSeriesIndexNumber = 378,
         .nameJapanese = __("ジュペッタ"),
-        .name = {
-            'B', 'A', 'N', 'E', 'T', 'T', 'E', ' ', ' ', ' '
-        },
+        .name = "BANETTE   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1766,9 +1472,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_DUSKULL] = {
         .mainSeriesIndexNumber = 361,
         .nameJapanese = __("ヨマワル　"),
-        .name = {
-            'D', 'U', 'S', 'K', 'U', 'L', 'L', ' ', ' ', ' '
-        },
+        .name = "DUSKULL   ",
         .catchIndex = 58,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1778,9 +1482,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_DUSCLOPS] = {
         .mainSeriesIndexNumber = 362,
         .nameJapanese = __("サマヨール"),
-        .name = {
-            'D', 'U', 'S', 'C', 'L', 'O', 'P', 'S', ' ', ' '
-        },
+        .name = "DUSCLOPS  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1790,9 +1492,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TROPIUS] = {
         .mainSeriesIndexNumber = 369,
         .nameJapanese = __("トロピウス"),
-        .name = {
-            'T', 'R', 'O', 'P', 'I', 'U', 'S', ' ', ' ', ' '
-        },
+        .name = "TROPIUS   ",
         .catchIndex = 59,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1802,9 +1502,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CHIMECHO] = {
         .mainSeriesIndexNumber = 411,
         .nameJapanese = __("チリーン　"),
-        .name = {
-            'C', 'H', 'I', 'M', 'E', 'C', 'H', 'O', ' ', ' '
-        },
+        .name = "CHIMECHO  ",
         .catchIndex = 0,
         .eggIndex = 21,
         .unk13 = 1,
@@ -1814,9 +1512,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_ABSOL] = {
         .mainSeriesIndexNumber = 376,
         .nameJapanese = __("アブソル　"),
-        .name = {
-            'A', 'B', 'S', 'O', 'L', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "ABSOL     ",
         .catchIndex = 60,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1826,9 +1522,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_VULPIX] = {
         .mainSeriesIndexNumber = 37,
         .nameJapanese = __("ロコン　　"),
-        .name = {
-            'V', 'U', 'L', 'P', 'I', 'X', ' ', ' ', ' ', ' '
-        },
+        .name = "VULPIX    ",
         .catchIndex = 61,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1838,9 +1532,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_NINETALES] = {
         .mainSeriesIndexNumber = 38,
         .nameJapanese = __("キュウコン"),
-        .name = {
-            'N', 'I', 'N', 'E', 'T', 'A', 'L', 'E', 'S', ' '
-        },
+        .name = "NINETALES ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1850,9 +1542,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_PICHU] = {
         .mainSeriesIndexNumber = 172,
         .nameJapanese = __("ピチュー　"),
-        .name = {
-            'P', 'I', 'C', 'H', 'U', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "PICHU     ",
         .catchIndex = 0,
         .eggIndex = 22,
         .unk13 = 1,
@@ -1862,9 +1552,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_PIKACHU] = {
         .mainSeriesIndexNumber = 25,
         .nameJapanese = __("ピカチュウ"),
-        .name = {
-            'P', 'I', 'K', 'A', 'C', 'H', 'U', ' ', ' ', ' '
-        },
+        .name = "PIKACHU   ",
         .catchIndex = 62,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1874,9 +1562,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_RAICHU] = {
         .mainSeriesIndexNumber = 26,
         .nameJapanese = __("ライチュウ"),
-        .name = {
-            'R', 'A', 'I', 'C', 'H', 'U', ' ', ' ', ' ', ' '
-        },
+        .name = "RAICHU    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1886,9 +1572,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_PSYDUCK] = {
         .mainSeriesIndexNumber = 54,
         .nameJapanese = __("コダック　"),
-        .name = {
-            'P', 'S', 'Y', 'D', 'U', 'C', 'K', ' ', ' ', ' '
-        },
+        .name = "PSYDUCK   ",
         .catchIndex = 63,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1898,9 +1582,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GOLDUCK] = {
         .mainSeriesIndexNumber = 55,
         .nameJapanese = __("ゴルダック"),
-        .name = {
-            'G', 'O', 'L', 'D', 'U', 'C', 'K', ' ', ' ', ' '
-        },
+        .name = "GOLDUCK   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1910,9 +1592,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WYNAUT] = {
         .mainSeriesIndexNumber = 360,
         .nameJapanese = __("ソーナノ　"),
-        .name = {
-            'W', 'Y', 'N', 'A', 'U', 'T', ' ', ' ', ' ', ' '
-        },
+        .name = "WYNAUT    ",
         .catchIndex = 0,
         .eggIndex = 23,
         .unk13 = 0,
@@ -1922,9 +1602,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WOBBUFFET] = {
         .mainSeriesIndexNumber = 202,
         .nameJapanese = __("ソーナンス"),
-        .name = {
-            'W', 'O', 'B', 'B', 'U', 'F', 'F', 'E', 'T', ' '
-        },
+        .name = "WOBBUFFET ",
         .catchIndex = 64,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1934,9 +1612,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_NATU] = {
         .mainSeriesIndexNumber = 177,
         .nameJapanese = __("ネイティ　"),
-        .name = {
-            'N', 'A', 'T', 'U', ' ', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "NATU      ",
         .catchIndex = 0,
         .eggIndex = 24,
         .unk13 = 1,
@@ -1946,9 +1622,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_XATU] = {
         .mainSeriesIndexNumber = 178,
         .nameJapanese = __("ネイティオ"),
-        .name = {
-            'X', 'A', 'T', 'U', ' ', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "XATU      ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1958,9 +1632,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GIRAFARIG] = {
         .mainSeriesIndexNumber = 203,
         .nameJapanese = __("キリンリキ"),
-        .name = {
-            'G', 'I', 'R', 'A', 'F', 'A', 'R', 'I', 'G', ' '
-        },
+        .name = "GIRAFARIG ",
         .catchIndex = 65,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1970,9 +1642,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_PHANPY] = {
         .mainSeriesIndexNumber = 231,
         .nameJapanese = __("ゴマゾウ　"),
-        .name = {
-            'P', 'H', 'A', 'N', 'P', 'Y', ' ', ' ', ' ', ' '
-        },
+        .name = "PHANPY    ",
         .catchIndex = 0,
         .eggIndex = 25,
         .unk13 = 0,
@@ -1982,9 +1652,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_DONPHAN] = {
         .mainSeriesIndexNumber = 232,
         .nameJapanese = __("ドンファン"),
-        .name = {
-            'D', 'O', 'N', 'P', 'H', 'A', 'N', ' ', ' ', ' '
-        },
+        .name = "DONPHAN   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -1994,9 +1662,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_PINSIR] = {
         .mainSeriesIndexNumber = 127,
         .nameJapanese = __("カイロス　"),
-        .name = {
-            'P', 'I', 'N', 'S', 'I', 'R', ' ', ' ', ' ', ' '
-        },
+        .name = "PINSIR    ",
         .catchIndex = 66,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2006,9 +1672,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_HERACROSS] = {
         .mainSeriesIndexNumber = 214,
         .nameJapanese = __("ヘラクロス"),
-        .name = {
-            'H', 'E', 'R', 'A', 'C', 'R', 'O', 'S', 'S', ' '
-        },
+        .name = "HERACROSS ",
         .catchIndex = 67,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2018,9 +1682,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_RHYHORN] = {
         .mainSeriesIndexNumber = 111,
         .nameJapanese = __("サイホーン"),
-        .name = {
-            'R', 'H', 'Y', 'H', 'O', 'R', 'N', ' ', ' ', ' '
-        },
+        .name = "RHYHORN   ",
         .catchIndex = 68,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2030,9 +1692,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_RHYDON] = {
         .mainSeriesIndexNumber = 112,
         .nameJapanese = __("サイドン　"),
-        .name = {
-            'R', 'H', 'Y', 'D', 'O', 'N', ' ', ' ', ' ', ' '
-        },
+        .name = "RHYDON    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2042,9 +1702,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SNORUNT] = {
         .mainSeriesIndexNumber = 346,
         .nameJapanese = __("ユキワラシ"),
-        .name = {
-            'S', 'N', 'O', 'R', 'U', 'N', 'T', ' ', ' ', ' '
-        },
+        .name = "SNORUNT   ",
         .catchIndex = 0,
         .eggIndex = 26,
         .unk13 = 0,
@@ -2054,9 +1712,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GLALIE] = {
         .mainSeriesIndexNumber = 347,
         .nameJapanese = __("オニゴーリ"),
-        .name = {
-            'G', 'L', 'A', 'L', 'I', 'E', ' ', ' ', ' ', ' '
-        },
+        .name = "GLALIE    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2066,9 +1722,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SPHEAL] = {
         .mainSeriesIndexNumber = 341,
         .nameJapanese = __("タマザラシ"),
-        .name = {
-            'S', 'P', 'H', 'E', 'A', 'L', ' ', ' ', ' ', ' '
-        },
+        .name = "SPHEAL    ",
         .catchIndex = 0,
         .eggIndex = 27,
         .unk13 = 0,
@@ -2078,9 +1732,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SEALEO] = {
         .mainSeriesIndexNumber = 342,
         .nameJapanese = __("トドグラー"),
-        .name = {
-            'S', 'E', 'A', 'L', 'E', 'O', ' ', ' ', ' ', ' '
-        },
+        .name = "SEALEO    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2090,9 +1742,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_WALREIN] = {
         .mainSeriesIndexNumber = 343,
         .nameJapanese = __("トドゼルガ"),
-        .name = {
-            'W', 'A', 'L', 'R', 'E', 'I', 'N', ' ', ' ', ' '
-        },
+        .name = "WALREIN   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2102,9 +1752,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CLAMPERL] = {
         .mainSeriesIndexNumber = 373,
         .nameJapanese = __("パールル　"),
-        .name = {
-            'C', 'L', 'A', 'M', 'P', 'E', 'R', 'L', ' ', ' '
-        },
+        .name = "CLAMPERL  ",
         .catchIndex = 69,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2114,9 +1762,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_HUNTAIL] = {
         .mainSeriesIndexNumber = 374,
         .nameJapanese = __("ハンテール"),
-        .name = {
-            'H', 'U', 'N', 'T', 'A', 'I', 'L', ' ', ' ', ' '
-        },
+        .name = "HUNTAIL   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2126,9 +1772,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GOREBYSS] = {
         .mainSeriesIndexNumber = 375,
         .nameJapanese = __("サクラビス"),
-        .name = {
-            'G', 'O', 'R', 'E', 'B', 'Y', 'S', 'S', ' ', ' '
-        },
+        .name = "GOREBYSS  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2138,9 +1782,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_RELICANTH] = {
         .mainSeriesIndexNumber = 381,
         .nameJapanese = __("ジーランス"),
-        .name = {
-            'R', 'E', 'L', 'I', 'C', 'A', 'N', 'T', 'H', ' '
-        },
+        .name = "RELICANTH ",
         .catchIndex = 70,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2150,9 +1792,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CORSOLA] = {
         .mainSeriesIndexNumber = 222,
         .nameJapanese = __("サニーゴ　"),
-        .name = {
-            'C', 'O', 'R', 'S', 'O', 'L', 'A', ' ', ' ', ' '
-        },
+        .name = "CORSOLA   ",
         .catchIndex = 0,
         .eggIndex = 28,
         .unk13 = 0,
@@ -2162,9 +1802,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CHINCHOU] = {
         .mainSeriesIndexNumber = 170,
         .nameJapanese = __("チョンチー"),
-        .name = {
-            'C', 'H', 'I', 'N', 'C', 'H', 'O', 'U', ' ', ' '
-        },
+        .name = "CHINCHOU  ",
         .catchIndex = 0,
         .eggIndex = 29,
         .unk13 = 0,
@@ -2174,9 +1812,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LANTURN] = {
         .mainSeriesIndexNumber = 171,
         .nameJapanese = __("ランターン"),
-        .name = {
-            'L', 'A', 'N', 'T', 'U', 'R', 'N', ' ', ' ', ' '
-        },
+        .name = "LANTURN   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2186,9 +1822,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LUVDISC] = {
         .mainSeriesIndexNumber = 325,
         .nameJapanese = __("ラブカス　"),
-        .name = {
-            'L', 'U', 'V', 'D', 'I', 'S', 'C', ' ', ' ', ' '
-        },
+        .name = "LUVDISC   ",
         .catchIndex = 71,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2198,9 +1832,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_HORSEA] = {
         .mainSeriesIndexNumber = 116,
         .nameJapanese = __("タッツー　"),
-        .name = {
-            'H', 'O', 'R', 'S', 'E', 'A', ' ', ' ', ' ', ' '
-        },
+        .name = "HORSEA    ",
         .catchIndex = 0,
         .eggIndex = 30,
         .unk13 = 0,
@@ -2210,9 +1842,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SEADRA] = {
         .mainSeriesIndexNumber = 117,
         .nameJapanese = __("シードラ　"),
-        .name = {
-            'S', 'E', 'A', 'D', 'R', 'A', ' ', ' ', ' ', ' '
-        },
+        .name = "SEADRA    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2222,9 +1852,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_KINGDRA] = {
         .mainSeriesIndexNumber = 230,
         .nameJapanese = __("キングドラ"),
-        .name = {
-            'K', 'I', 'N', 'G', 'D', 'R', 'A', ' ', ' ', ' '
-        },
+        .name = "KINGDRA   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2234,9 +1862,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_BAGON] = {
         .mainSeriesIndexNumber = 395,
         .nameJapanese = __("タツベイ　"),
-        .name = {
-            'B', 'A', 'G', 'O', 'N', ' ', ' ', ' ', ' ', ' '
-        },
+        .name = "BAGON     ",
         .catchIndex = 0,
         .eggIndex = 31,
         .unk13 = 0,
@@ -2246,9 +1872,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SHELGON] = {
         .mainSeriesIndexNumber = 396,
         .nameJapanese = __("コモルー　"),
-        .name = {
-            'S', 'H', 'E', 'L', 'G', 'O', 'N', ' ', ' ', ' '
-        },
+        .name = "SHELGON   ",
         .catchIndex = 72,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2258,9 +1882,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_SALAMENCE] = {
         .mainSeriesIndexNumber = 397,
         .nameJapanese = __("ボーマンダ"),
-        .name = {
-            'S', 'A', 'L', 'A', 'M', 'E', 'N', 'C', 'E', ' '
-        },
+        .name = "SALAMENCE ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2270,9 +1892,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_BELDUM] = {
         .mainSeriesIndexNumber = 398,
         .nameJapanese = __("ダンバル　"),
-        .name = {
-            'B', 'E', 'L', 'D', 'U', 'M', ' ', ' ', ' ', ' '
-        },
+        .name = "BELDUM    ",
         .catchIndex = 73,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2282,9 +1902,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_METANG] = {
         .mainSeriesIndexNumber = 399,
         .nameJapanese = __("メタング　"),
-        .name = {
-            'M', 'E', 'T', 'A', 'N', 'G', ' ', ' ', ' ', ' '
-        },
+        .name = "METANG    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2294,9 +1912,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_METAGROSS] = {
         .mainSeriesIndexNumber = 400,
         .nameJapanese = __("メタグロス"),
-        .name = {
-            'M', 'E', 'T', 'A', 'G', 'R', 'O', 'S', 'S', ' '
-        },
+        .name = "METAGROSS ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2306,9 +1922,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_REGIROCK] = {
         .mainSeriesIndexNumber = 401,
         .nameJapanese = __("レジロック"),
-        .name = {
-            'R', 'E', 'G', 'I', 'R', 'O', 'C', 'K', ' ', ' '
-        },
+        .name = "REGIROCK  ",
         .catchIndex = 74,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2318,9 +1932,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_REGICE] = {
         .mainSeriesIndexNumber = 402,
         .nameJapanese = __("レジアイス"),
-        .name = {
-            'R', 'E', 'G', 'I', 'C', 'E', ' ', ' ', ' ', ' '
-        },
+        .name = "REGICE    ",
         .catchIndex = 75,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2330,9 +1942,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_REGISTEEL] = {
         .mainSeriesIndexNumber = 403,
         .nameJapanese = __("レジスチル"),
-        .name = {
-            'R', 'E', 'G', 'I', 'S', 'T', 'E', 'E', 'L', ' '
-        },
+        .name = "REGISTEEL ",
         .catchIndex = 76,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2342,9 +1952,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LATIAS] = {
         .mainSeriesIndexNumber = 407,
         .nameJapanese = __("ラティアス"),
-        .name = {
-            'L', 'A', 'T', 'I', 'A', 'S', ' ', ' ', ' ', ' '
-        },
+        .name = "LATIAS    ",
         .catchIndex = 77,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2354,9 +1962,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_LATIOS] = {
         .mainSeriesIndexNumber = 408,
         .nameJapanese = __("ラティオス"),
-        .name = {
-            'L', 'A', 'T', 'I', 'O', 'S', ' ', ' ', ' ', ' '
-        },
+        .name = "LATIOS    ",
         .catchIndex = 78,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2366,9 +1972,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_KYOGRE] = {
         .mainSeriesIndexNumber = 404,
         .nameJapanese = __("カイオーガ"),
-        .name = {
-            'K', 'Y', 'O', 'G', 'R', 'E', ' ', ' ', ' ', ' '
-        },
+        .name = "KYOGRE    ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2378,9 +1982,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_GROUDON] = {
         .mainSeriesIndexNumber = 405,
         .nameJapanese = __("グラードン"),
-        .name = {
-            'G', 'R', 'O', 'U', 'D', 'O', 'N', ' ', ' ', ' '
-        },
+        .name = "GROUDON   ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2390,9 +1992,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_RAYQUAZA] = {
         .mainSeriesIndexNumber = 406,
         .nameJapanese = __("レックウザ"),
-        .name = {
-            'R', 'A', 'Y', 'Q', 'U', 'A', 'Z', 'A', ' ', ' '
-        },
+        .name = "RAYQUAZA  ",
         .catchIndex = 0,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2402,9 +2002,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_JIRACHI] = {
         .mainSeriesIndexNumber = 409,
         .nameJapanese = __("ジラーチ　"),
-        .name = {
-            'J', 'I', 'R', 'A', 'C', 'H', 'I', ' ', ' ', ' '
-        },
+        .name = "JIRACHI   ",
         .catchIndex = 79,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2414,9 +2012,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CHIKORITA] = {
         .mainSeriesIndexNumber = 152,
         .nameJapanese = __("チコリータ"),
-        .name = {
-            'C', 'H', 'I', 'K', 'O', 'R', 'I', 'T', 'A', ' '
-        },
+        .name = "CHIKORITA ",
         .catchIndex = 80,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2426,9 +2022,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_CYNDAQUIL] = {
         .mainSeriesIndexNumber = 155,
         .nameJapanese = __("ヒノアラシ"),
-        .name = {
-            'C', 'Y', 'N', 'D', 'A', 'Q', 'U', 'I', 'L', ' '
-        },
+        .name = "CYNDAQUIL ",
         .catchIndex = 81,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2438,9 +2032,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TOTODILE] = {
         .mainSeriesIndexNumber = 158,
         .nameJapanese = __("ワニノコ　"),
-        .name = {
-            'T', 'O', 'T', 'O', 'D', 'I', 'L', 'E', ' ', ' '
-        },
+        .name = "TOTODILE  ",
         .catchIndex = 82,
         .eggIndex = 0,
         .unk13 = 0,
@@ -2450,9 +2042,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_AERODACTYL] = {
         .mainSeriesIndexNumber = 142,
         .nameJapanese = __("プテラ　　"),
-        .name = {
-            'A', 'E', 'R', 'O', 'D', 'A', 'C', 'T', 'Y', 'L'
-        },
+        .name = "AERODACTYL",
         .catchIndex = 83,
         .eggIndex = 0,
         .unk13 = 0,
