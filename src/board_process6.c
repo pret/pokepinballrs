@@ -277,7 +277,7 @@ void sub_13B28(struct Vector16* arg0, struct Vector16* arg1, s16 arg2)
     for (;;)
     {
         sp12 = gCurrentPinballGame->flipper[arg2].position - gCurrentPinballGame->flipper[arg2].prevPosition;
-        
+
         if ((sp12 *= gCurrentPinballGame->flipper[arg2].unk8) > 0)
         {
             if (gCurrentPinballGame->flipper[arg2].unk2 < 7)
@@ -831,7 +831,12 @@ u16 sub_14740(struct Vector16 *arg0, u16 *arg1)
     return res;
 }
 
-
+/**
+ * Magnetize the ball towards the center board saucer.
+ *
+ * When the saucer is open, (e.g. slots, evo, travel, bonus) this function
+ * causes the ball to be attracted towards it
+ */
 void sub_1493C(void)
 {
     struct Vector16 vec1;
@@ -902,12 +907,12 @@ u16 sub_14AF4(struct Vector16 r0, s16 r1, u16 *r2, s16 r3) {
     unsigned short ix;
 
     res = 0;
-    
-    ix = (r0.y * 96) + r0.x; 
-    flipper = &gCurrentPinballGame->flipper[r3]; 
+
+    ix = (r0.y * 96) + r0.x;
+    flipper = &gCurrentPinballGame->flipper[r3];
 
     flipper->unk5 = gUnknown_086ACDB8[r1 + (flipper->unk2 * 5)];
-    
+
     if (0xF & (&gUnknown_02031520.unk68[flipper->unk5 * 0x2400])[ix])
     {
         *r2 = 0xFFF0 & (&gUnknown_02031520.unk68[flipper->unk5 * 0x2400])[ix];
@@ -925,9 +930,9 @@ u16 sub_14AF4(struct Vector16 r0, s16 r1, u16 *r2, s16 r3) {
 void sub_14B84(s32 arg0, s16 arg1, struct Vector16* arg2, u16 arg3)
 {
     u16 angle;
-    
+
     angle = gCurrentPinballGame->flipper[arg1].unk5;
-    
+
     if (gCurrentPinballGame->flipper[arg1].unk8 > 0)
     {
         if (gCurrentPinballGame->unk5C == 0)

@@ -3,7 +3,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
-#define BONUS_CATCH_TIME 7200 //2 minutes, 60FPS
+#define BONUS_CATCH_TIME 7200 // 2 minutes, 60FPS
 
 extern const u8 gUnknown_081C0064[];
 extern const u8 *gUnknown_086AD474[];
@@ -13,6 +13,19 @@ extern const u16 gUnknown_086B4202[][15];
 extern const struct Vector16 gUnknown_086ACFA0[][8];
 extern const s16 gUnknown_08137AB8[];
 extern const s16 gUnknown_08137944[];
+/**
+ * 08055A68
+ * 0000 0009 0002 0004 0008 0006 000C
+ * 0001 000A 0003 000B 0005 0007 000D
+ *
+ * 2D array to convert field specific area ids to global area ids. See areas.h
+ *
+ * Ruby
+ * AREA_FOREST_RUBY, AREA_VOLCANO, AREA_PLAINS_RUBY, AREA_OCEAN_RUBY, AREA_CAVE_RUBY, AREA_RUIN_RUBY
+ *
+ * Sapphire
+ * AREA_FOREST_SAPPHIRE, AREA_LAKE, AREA_PLAINS_SAPPHIRE, AREA_WILDERNESS, AREA_OCEAN_SAPPHIRE, AREA_CAVE_SAPPHIRE, AREA_RUIN_SAPPHIRE
+ */
 extern const s16 gUnknown_08055A68[][7];
 extern const s16 gUnknown_08137928[];
 extern const u16 gUnknown_086B51CE[][27];
@@ -202,14 +215,14 @@ void sub_21238(s16 arg0)
         gCurrentPinballGame->unk2F0 = 0;
 }
 
-void sub_21300(void)
+void InitStartSlotState_21300(void)
 {
     gCurrentPinballGame->unk17 = 1;
     gCurrentPinballGame->unk18 = 0;
     gCurrentPinballGame->unk6DD = 0;
 }
 
-void sub_21320(void)
+void LoopStartSlotState_21320(void)
 {
     switch (gCurrentPinballGame->unk17)
     {
@@ -223,10 +236,14 @@ void sub_21320(void)
             }
             else if (gCurrentPinballGame->unk18 == 8)
             {
+                // draw the saucer magnet effect and open the saucer
                 sub_219A8();
+                // ?
                 gCurrentPinballGame->unk730 = 2;
+                // draw "START SLOT" screen to display
                 gCurrentPinballGame->unk708 = 0;
                 sub_1C7F4(1, 0);
+                // advance to case 2
                 gCurrentPinballGame->unk17++;
             }
         }
@@ -237,15 +254,19 @@ void sub_21320(void)
             sub_1C7F4(1, 0);
 
         if (gCurrentPinballGame->unk25 == 4)
+            // advance to case 3
             gCurrentPinballGame->unk17++;
         break;
     case 3:
         gCurrentPinballGame->unk714 = 0;
+        // clear all HOLE indicators
         gCurrentPinballGame->holeIndicators[0] = 0;
         gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
+        // advance to case 4
         gCurrentPinballGame->unk17++;
+        // calculate available slot rewards?
         sub_29D9C();
         if (gCurrentPinballGame->unk62D < 99)
             gCurrentPinballGame->unk62D++;
@@ -254,10 +275,12 @@ void sub_21320(void)
         if (gCurrentPinballGame->unk28 == 148)
         {
             gCurrentPinballGame->unk28++;
+            // scroll through slots
             sub_2A054();
         }
         else if (gCurrentPinballGame->unk28 == 139)
         {
+            // ???
         }
         else if (gCurrentPinballGame->unk28 == 24)
         {
@@ -265,6 +288,7 @@ void sub_21320(void)
         }
         else if (gCurrentPinballGame->unk28 == 0)
         {
+            // advance to case 5
             gCurrentPinballGame->unk17++;
         }
 
@@ -284,16 +308,19 @@ void sub_21320(void)
     case 5:
         sub_219EC();
         gMain.unk44[13]->available = 0;
+        // advance to case 6
         gCurrentPinballGame->unk17++;
         break;
     case 6:
         sub_21238(1);
+        // advance to case 7
         gCurrentPinballGame->unk17++;
         break;
     case 7:
         if (gCurrentPinballGame->unk18)
             gCurrentPinballGame->unk18--;
         else
+            // switch to main board state
             sub_19B64(1);
         break;
     }
@@ -503,6 +530,7 @@ void sub_219A8(void)
 {
     DmaCopy16(3, gUnknown_0844838C[0], (void *)0x060113C0, 0x300);
     gMain.unk44[13]->available = 1;
+    // open main board saucer
     gCurrentPinballGame->unk5F3 = 1;
 }
 
@@ -2496,7 +2524,7 @@ void sub_25808(void)
     }
 }
 
-void sub_25F64(void)
+void InitSelectStartingAreaState_25F64(void)
 {
     s16 i;
 
@@ -2504,13 +2532,16 @@ void sub_25F64(void)
     gCurrentPinballGame->unk18 = 0;
     gCurrentPinballGame->unk6DB = 3;
     gCurrentPinballGame->unk36 = 0;
+    // start scrolling from random area
     gCurrentPinballGame->unk32 = (Random() + gMain.systemFrameCount) % 6;
     gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][gCurrentPinballGame->unk32];
     gCurrentPinballGame->unk6D9[1] = gUnknown_08137928[gCurrentPinballGame->area];
     gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][(gCurrentPinballGame->unk32 + 1) % 6];
     gCurrentPinballGame->unk6D9[0] = gUnknown_08137928[gCurrentPinballGame->area];
+    // setup oam
     sub_1C7F4(0, 0);
     sub_1C7F4(0, 1);
+    // setup palette
     for (i = 0; i < 6; i++)
         gCurrentPinballGame->unk6D3[i] = 13;
 
@@ -2519,7 +2550,7 @@ void sub_25F64(void)
     gCurrentPinballGame->unkE4 = 12;
 }
 
-void sub_260B8(void)
+void LoopSelectStartingAreaState_260B8(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -2546,6 +2577,14 @@ void sub_260B8(void)
         gCurrentPinballGame->unk6F4 = 0;
         if (gMain.selectedField == FIELD_RUBY)
         {
+            /**
+             * Indices to chinchou spawn position during intro cutscene
+             * 0: top left
+             * 1: bottom
+             * 2: top right
+             *
+             * State 10 = underwater
+             */
             gCurrentPinballGame->unk170[0] = 10;
             gCurrentPinballGame->unk170[1] = 10;
             gCurrentPinballGame->unk170[2] = 10;
@@ -2559,6 +2598,7 @@ void sub_260B8(void)
         gCurrentPinballGame->unk174 = 0;
         break;
     case 2:
+        // advance to case 3 when camera reaches bottom of board
         if (gCurrentPinballGame->unk5FC == 0)
         {
             gCurrentPinballGame->unk17++;
@@ -2567,6 +2607,11 @@ void sub_260B8(void)
 
         if (gMain.selectedField == FIELD_RUBY)
         {
+            /**
+             * gUnknown_08137944 // chinchou animation states in ruby board opening cutscene
+             * 000A 0007 0006 0005 0004 0003 0002 0001 0000
+             * 0001 0000 0001 0000 0001 0000 0001 0000 0001
+             */
             if (gCurrentPinballGame->unk174 < 143)
                 gCurrentPinballGame->unk170[0] = gUnknown_08137944[gCurrentPinballGame->unk174 / 8];
 
@@ -2585,12 +2630,14 @@ void sub_260B8(void)
         sub_26778();
         break;
     case 3:
+        // advance to case 4 after 15 frames
         if (gCurrentPinballGame->unk18 < 15)
         {
             gCurrentPinballGame->unk18++;
             if (gCurrentPinballGame->unk18 == 15)
             {
                 gCurrentPinballGame->unk17++;
+                // set area scroll limit to 6
                 gCurrentPinballGame->unk6F2 = 6;
                 gCurrentPinballGame->unk6F4 = 0;
             }
@@ -2599,14 +2646,18 @@ void sub_260B8(void)
         /* fallthrough */
     case 4:
     case 5:
+        // also case 3
         if (gCurrentPinballGame->unk17 == 3)
         {
             gCurrentPinballGame->unk6F0--;
             gCurrentPinballGame->unk6F0 %= gCurrentPinballGame->unk6F2;
         }
+        // case 4
         else if (gCurrentPinballGame->unk17 == 4)
         {
             gCurrentPinballGame->unk6F0++;
+            // button for right flipper pressed
+            // extra case 4 check?
             if (gCurrentPinballGame->newButtonActions[1] && gCurrentPinballGame->unk17 == 4)
             {
                 if (gCurrentPinballGame->unk6F4 == 0)
@@ -2633,6 +2684,7 @@ void sub_260B8(void)
                     if (gCurrentPinballGame->unk6F4 < 24)
                     {
                         gCurrentPinballGame->unk6F4 = 24;
+                        // rig the slots so that it lands on ruins
                         if (gCurrentPinballGame->unk32 == 6)
                             gCurrentPinballGame->unk6F4 = 0;
                     }
@@ -2640,6 +2692,7 @@ void sub_260B8(void)
 
                 if (gCurrentPinballGame->unk6F4 == 0)
                 {
+                    // advance to case 5
                     gCurrentPinballGame->unk17 = 5;
                 }
                 else
@@ -2652,15 +2705,18 @@ void sub_260B8(void)
                 }
             }
 
+            // cycle unk6F0 between 0 through 5, or 6 with the ruin area e-reader card
             gCurrentPinballGame->unk6F0 %= gCurrentPinballGame->unk6F2;
         }
         else
+        // case 5
         {
             gCurrentPinballGame->unk6F0++;
             gCurrentPinballGame->unk6F0 %= gCurrentPinballGame->unk6F2;
             if (gCurrentPinballGame->unk6F0 == 0)
             {
                 gCurrentPinballGame->unk18 = 0;
+                // advance to case 6
                 gCurrentPinballGame->unk17++;
                 gMain.unk44[23]->available = 0;
                 gMain.unk44[20]->available = 0;
@@ -2670,9 +2726,11 @@ void sub_260B8(void)
             }
         }
 
+        // runs for cases 3, 4, 5
         gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->unk6F0 * 32) / gCurrentPinballGame->unk6F2;
         if (gCurrentPinballGame->unk6F0 == 0)
         {
+            // Draw new display bottom screen
             gCurrentPinballGame->unk6D9[0] = gCurrentPinballGame->unk6D9[1];
             sub_1C7F4(0, 0);
         }
@@ -2681,20 +2739,29 @@ void sub_260B8(void)
         {
             if (gMain.eReaderBonuses[EREADER_RUIN_AREA_CARD])
             {
+                // scroll the slot machine through all the field's areas including ruins
                 gCurrentPinballGame->unk32 = (gCurrentPinballGame->unk32 + 1) % 7;
+                // rig left travel destination to 0 (ruins + 1)
                 gCurrentPinballGame->unk33 = 0;
+                // rig right travel destination to 1 (ruins + 2)
                 gCurrentPinballGame->unk34 = 1;
             }
             else
             {
+                // scroll the slot machine through all the field's areas excluding ruins
                 gCurrentPinballGame->unk32 = (gCurrentPinballGame->unk32 + 1) % 6;
+                // set left travel area to new current area + 1
                 gCurrentPinballGame->unk33 = (gCurrentPinballGame->unk32 + 1) % 6;
+                // set right travel area to new current area + 2
                 gCurrentPinballGame->unk34 = (gCurrentPinballGame->unk32 + 2) % 6;
             }
 
             gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][gCurrentPinballGame->unk32];
+
+            // Draw new display top screen
             gCurrentPinballGame->unk6D9[1] = gUnknown_08137928[gCurrentPinballGame->area];
             sub_1C7F4(0, 1);
+            // play slots sound effect
             m4aSongNumStart(SE_UNKNOWN_0x81);
         }
         break;
@@ -2704,11 +2771,13 @@ void sub_260B8(void)
             gCurrentPinballGame->unk18++;
             if (gCurrentPinballGame->unk18 == 50)
             {
+                // go to main state after 50 frames; reset field substate to 0
                 gCurrentPinballGame->unk17 = 0;
                 sub_19B64(1);
             }
         }
 
+        // animate stars when area is selected
         if (gCurrentPinballGame->unk18 < 29)
         {
             if (gCurrentPinballGame->unk18 < 8)
@@ -2737,7 +2806,7 @@ void sub_260B8(void)
                 }
             }
 
-            if (gCurrentPinballGame->unk18 == 0x1C) {
+            if (gCurrentPinballGame->unk18 == 28) {
                 gMain.unk44[34]->available = 0;
                 gCurrentPinballGame->unkE4 = 0;
             }
@@ -3494,7 +3563,8 @@ void sub_27D44(void)
     }
 }
 
-void sub_27E08(void)
+// Called from sub_19B90
+void InitCatchEmState_27E08(void)
 {
     s16 i, j;
 

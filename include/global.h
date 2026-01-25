@@ -125,8 +125,8 @@ struct PinballGame
     /*0x014*/ s8 unk14;
     /*0x015*/ s8 unk15;
     /*0x016*/ s8 unk16;
-    /*0x017*/ s8 unk17;
-    /*0x018*/ u16 unk18;
+    /*0x017*/ s8 unk17; // Current field sub-state. Used for FSM state tracking within a field state.
+    /*0x018*/ u16 unk18; // Field state timer. Incremented manually.
     /*0x01A*/ s8 unk1A;
     /*0x01B*/ u8 unk1B;
     /*0x01C*/ bool8 scoreCounterAnimationEnabled;
@@ -145,9 +145,9 @@ struct PinballGame
     /*0x02C*/ int unk2C;
     /*0x030*/ s8 numLives;
     /*0x031*/ u8 ballSpeed;
-    /*0x032*/ s8 unk32;
-    /*0x033*/ s8 unk33;
-    /*0x034*/ s8 unk34;
+    /*0x032*/ s8 unk32; // Current field specific area index
+    /*0x033*/ s8 unk33; // Next field specific area index if travelling left (EVO rollover lane)
+    /*0x034*/ s8 unk34; // Next field specific area index if travelling right (GET rollover lane)
     /*0x035*/ s8 area;
     /*0x036*/ s8 unk36;
     /*0x038*/ u32 scoreAddStepSize; //score to add every frame until scoreAddedInFrame score has been added to player's total
@@ -246,9 +246,9 @@ struct PinballGame
     /*0x16D*/ u8 filler16D[0x1];
     /*0x16E*/ s8 unk16E;
     /*0x16F*/ s8 unk16F;
-    /*0x170*/ s8 unk170[3];
+    /*0x170*/ s8 unk170[3]; // Chinchou animation states for ruby board
     /*0x173*/ u8 unk173;
-    /*0x174*/ u16 unk174;
+    /*0x174*/ u16 unk174; // Cutscene timer. Incremented manually.
     /*0x176*/ u8 unk176;
     /*0x177*/ u8 filler177[0x1];
     /*0x178*/ struct Vector16 unk178[3];
@@ -695,8 +695,8 @@ struct PinballGame
     /*0x5F8*/ u16 ballUpgradeCounter;
     /*0x5FA*/ s8 unk5FA;
     /*0x5FB*/ s8 unk5FB;
-    /*0x5FC*/ s16 unk5FC;
-    /*0x5FE*/ s16 unk5FE;
+    /*0x5FC*/ s16 unk5FC; // Current camera Y position.
+    /*0x5FE*/ s16 unk5FE; // Target camera Y position. Bottom of the field is 0, top is -244 for ruby and -268 for sapphire
     /*0x600*/ u16 unk600;
     /*0x602*/ s8 unk602;
     /*0x603*/ s8 unk603;
@@ -752,9 +752,9 @@ struct PinballGame
     /*0x6CA*/ u16 unk6CA;
     /*0x6CC*/ s8 unk6CC;
     /*0x6CD*/ u8 unk6CD[6];
-    /*0x6D3*/ u8 unk6D3[6];
+    /*0x6D3*/ u8 unk6D3[6]; // Palettes
     /*0x6D9*/ s8 unk6D9[2];
-    /*0x6DB*/ u8 unk6DB;
+    /*0x6DB*/ u8 unk6DB; // Related to oam priority
     /*0x6DC*/ u8 unk6DC;
     /*0x6DD*/ s8 unk6DD;
     /*0x6DE*/ u16 unk6DE;
@@ -921,7 +921,7 @@ extern u32 gUnknown_02031510;
 extern struct Unk02031520 gUnknown_02031520;
 extern u8 gUnknown_02031590[];
 extern u16 gUnknown_08137B3C[][6][16];
-extern u16 gUnknown_08137D40[]; 
+extern u16 gUnknown_08137D40[];
 extern const u8 gUnknown_08137E14[][0x20];
 extern const u8 gUnknown_08138834[];
 extern struct Unk02031520_unk10 gUnknown_081450F4;
@@ -944,8 +944,8 @@ extern u16 gUnknown_0835E9C8[0x2A80];
 extern const u16 gUnknown_08391A4C[0x1000];
 extern const u16 gUnknown_08393A4C[0x1000];
 extern u8 gUnknown_083FE44C[][0x200];
-extern u16 gUnknown_08494E4C[]; 
-extern u16 gUnknown_084EDACC[]; 
+extern u16 gUnknown_08494E4C[];
+extern u16 gUnknown_084EDACC[];
 extern u8 gUnknown_084FF30C[];
 extern struct SongHeader gUnknown_0869F7C8;
 extern struct SongHeader gUnknown_086A17D8;
@@ -960,8 +960,8 @@ extern const u8 *const gUnknown_086ACEF8[];
 extern const u8 *const gUnknown_086ACF18[];
 extern s16 gUnknown_086AE68E[][2];
 extern u16 gUnknown_086B4568[][45];
-extern const u8 gUnknown_084F61EC[]; 
-extern u8 gUnknown_081B45A4[]; 
+extern const u8 gUnknown_084F61EC[];
+extern u8 gUnknown_081B45A4[];
 extern const u16 gUnknown_086AD2DE[];
 extern u8 gUnknown_081B8984[];
 extern u8 gUnknown_081B8784[];
