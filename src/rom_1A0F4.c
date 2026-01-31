@@ -171,7 +171,7 @@ void sub_1A2C0(void)
                 {
                     if (gCurrentPinballGame->unkF0 == 0x28)
                     {
-                        MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F7C8);
+                        MPlayStart(&gMPlayInfo_SE1, &se_unk_8b);
                     }
                     gCurrentPinballGame->unkF0--;
                     if (gCurrentPinballGame->unkF0 <= 0xF)

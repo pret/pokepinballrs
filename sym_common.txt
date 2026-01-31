@@ -1,6 +1,6 @@
     .include "m4a.o"
 
-gUnknown_02032FB0: @ 0x02032FB0
+gMPlayInfo_SE3: @ 0x02032FB0
 	.space 0x40
 ReadSramFast: @ 0x02032FF0
 	.space 0x4

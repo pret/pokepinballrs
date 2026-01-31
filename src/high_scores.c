@@ -96,7 +96,7 @@ void LoadHighScoreGraphics(void)
   sub_EE64();
   DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
   if(gUnknown_0202C588 == 0)
-      m4aSongNumStart(MUS_HI_SCORE);
+      m4aSongNumStart(MUS_HIGH_SCORE);
 
   gUnknown_0202C588 = 0;
   sub_0CBC();
@@ -265,7 +265,7 @@ void HighScore_State2_D308(void)
         {
             gUnknown_02002858.unk18 = 999;
             gUnknown_02002858.unk1A = 0;
-            m4aSongNumStart(MUS_HI_SCORE);
+            m4aSongNumStart(MUS_HIGH_SCORE);
             gMain.subState = 3;
         }
         else
@@ -312,7 +312,7 @@ void HighScore_State2_D308(void)
             gUnknown_02002858.unk14 = 0;
             CopyString(0, 0x15, 6 - (gUnknown_02002858.mainField << 1), gUnknown_08079870[gUnknown_02002858.highScoreIndex] +(gUnknown_02002858.mainField << 5), 4, 2);
         }
-        m4aSongNumStart(MUS_HI_SCORE);
+        m4aSongNumStart(MUS_HIGH_SCORE);
         gMain.subState = 4;
     }
 
@@ -722,7 +722,7 @@ void IdleHighScore_State0_DD70(void)
     sub_DEB4();
     sub_EE64();
     DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
-    m4aSongNumStart(MUS_HI_SCORE);
+    m4aSongNumStart(MUS_HIGH_SCORE);
     sub_0CBC();
     sub_024C();
     gMain.subState++;
@@ -840,7 +840,7 @@ void HighScore_State12_E0EC(void)
     sub_DEB4();
     sub_EE64();
     DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
-    m4aSongNumStart(MUS_HI_SCORE);
+    m4aSongNumStart(MUS_HIGH_SCORE);
     sub_0CBC();
     sub_024C();
     gMain.subState++;

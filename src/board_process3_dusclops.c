@@ -7,7 +7,7 @@
 #define BONUS_DUSKULL_TIME 7200 //2 minutes, 60FPS
 #define BONUS_DUSKULL_COMPLETE_POINTS 30000000
 
-extern struct SongHeader gUnknown_086A1588;
+extern struct SongHeader se_unk_f1;
 extern s16 gUnknown_086AE5EC[][3];
 
 
@@ -290,7 +290,7 @@ void sub_336E0(void) {
                 sp0 = 4;
                 r7 = 4;
                 gCurrentPinballGame->unk3B6[i] = 0; //Time alive
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1588);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_f1);
                 for (j = 2; j > 0; j--)
                 {
                     if (gCurrentPinballGame->unk3C4[j].y > gCurrentPinballGame->unk3C4[j-1].y)
@@ -969,7 +969,7 @@ void sub_34450(void)
 
             if (gCurrentPinballGame->unk3E6 == 30)
             {
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A17D8);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_f5);
             }
             break;
         }

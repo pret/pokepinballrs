@@ -35,7 +35,7 @@ extern const s16 gUnknown_086AE394[][3];
 extern const s16 gUnknown_08137928[];
 extern const s16 gUnknown_08055A68[][7];
 extern u16 gUnknown_086B3FE6[][18];
-extern struct SongHeader gUnknown_086A11A4;
+extern struct SongHeader se_unk_e3;
 extern const s16 gUnknown_086AE0D0[];
 extern const u16 gUnknown_086B4E62[][12];
 extern const u8 gUnknown_08158284[];
@@ -49,8 +49,8 @@ extern const u8 gUnknown_08455E8C[][0x200];
 extern const u8 gUnknown_0845648C[][0x40];
 extern const u8 gUnknown_086AE324[];
 
-extern struct SongHeader gUnknown_086A1ABC;
-extern struct SongHeader gUnknown_0869F2A0;
+extern struct SongHeader se_unk_fc;
+extern struct SongHeader se_unk_7a;
 
 extern u8 gUnknown_020028A8[][3];
 
@@ -160,11 +160,11 @@ void sub_2CA9C(void)
         }
 
         if (gCurrentPinballGame->unk286 == 85)
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1ABC);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_fc);
 
         if (gCurrentPinballGame->unk286 == 58)
         {
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F2A0);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_7a);
             if (gCurrentPinballGame->numLives < 9)
                 gCurrentPinballGame->numLives++;
         }
@@ -1156,11 +1156,11 @@ void sub_2E6AC(void)
         {
             gCurrentPinballGame->unk30C = 0;
             gCurrentPinballGame->unk306 = 10;
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A11A4);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_e3);
         }
 
         if (gCurrentPinballGame->unk310++ % 35 == 34)
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A11A4);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_e3);
 
         gCurrentPinballGame->unk30C++;
         break;

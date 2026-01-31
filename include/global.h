@@ -947,8 +947,8 @@ extern u8 gUnknown_083FE44C[][0x200];
 extern u16 gUnknown_08494E4C[]; 
 extern u16 gUnknown_084EDACC[]; 
 extern u8 gUnknown_084FF30C[];
-extern struct SongHeader gUnknown_0869F7C8;
-extern struct SongHeader gUnknown_086A17D8;
+extern struct SongHeader se_unk_8b;
+extern struct SongHeader se_unk_f5;
 extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
 extern const s16 gUnknown_086ACDF4[9];
 typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);

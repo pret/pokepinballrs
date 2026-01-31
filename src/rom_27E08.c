@@ -75,9 +75,9 @@ extern const u8 gUnknown_084C156C[];
 
 extern u8 gUnknown_020315D0[];
 
-extern struct SongHeader gUnknown_0869F58C;
-extern struct SongHeader gUnknown_0869F5C8;
-extern struct SongHeader gUnknown_0869F618;
+extern struct SongHeader se_unk_84;
+extern struct SongHeader se_unk_85;
+extern struct SongHeader se_unk_86;
 
 
 void sub_20EC0(void)
@@ -3387,7 +3387,7 @@ void sub_278F4(void)
         }
 
         if (gCurrentPinballGame->unk26E == 60)
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F58C);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_84);
 
         if (gUnknown_086AE0E6[gCurrentPinballGame->unk626] > gCurrentPinballGame->unk628)
         {
@@ -3403,7 +3403,7 @@ void sub_278F4(void)
                 gCurrentPinballGame->unk26E = 1;
                 gMain.unk44[40]->available = 0;
                 gMain.unk44[32]->available = 1;
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F5C8);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_85);
                 gCurrentPinballGame->unkE4 = 0;
             }
         }
@@ -3441,7 +3441,7 @@ void sub_278F4(void)
             gCurrentPinballGame->unk26B < 3)
         {
             gCurrentPinballGame->scoreAddedInFrame = 10000;
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F618);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_86);
             gCurrentPinballGame->unk17 = 1;
             gCurrentPinballGame->unk71D[gCurrentPinballGame->unk26B] = 5;
             gCurrentPinballGame->unk26B++;

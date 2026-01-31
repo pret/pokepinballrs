@@ -40,10 +40,10 @@ extern const u16 gUnknown_086B53B4[][3];
 extern const u16 gUnknown_086B55DC[][18];
 extern const u8 (*gUnknown_086BB6F4[])[0x480];
 
-extern struct SongHeader gUnknown_0869F58C;
-extern struct SongHeader gUnknown_0869F45C;
-extern struct SongHeader gUnknown_0869F664;
-extern struct SongHeader gUnknown_0869FCE4;
+extern struct SongHeader se_unk_84;
+extern struct SongHeader se_unk_81;
+extern struct SongHeader se_unk_87;
+extern struct SongHeader se_unk_9a;
 
 
 
@@ -462,7 +462,7 @@ void sub_28544(void)
             gCurrentPinballGame->unk17 = 4;
             gCurrentPinballGame->unk18 = 150;
             gCurrentPinballGame->unk5F2 = 0;
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F58C);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_84);
         }
         return;
     case 4:
@@ -1213,7 +1213,7 @@ void sub_2A054(void)
 
         gCurrentPinballGame->unk6EC[1] = gCurrentPinballGame->unk6F8[gCurrentPinballGame->unk6EB];
         sub_1C7F4(2, 1);
-        MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F45C);
+        MPlayStart(&gMPlayInfo_SE1, &se_unk_81);
     }
 }
 
@@ -1378,7 +1378,7 @@ void sub_2A354(void)
                 gCurrentPinballGame->ballUpgradeType++;
 
             gCurrentPinballGame->ballUpgradeCounter = 3600;
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F664);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_87);
             DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
         break;
@@ -1387,7 +1387,7 @@ void sub_2A354(void)
         {
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
             gCurrentPinballGame->ballUpgradeCounter = 3600;
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F664);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_87);
             DmaCopy16(3, gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
         break;
@@ -1567,7 +1567,7 @@ void sub_2AADC(void)
         gCurrentPinballGame->ball->positionQ8.y += gCurrentPinballGame->ball->velocity.y;
 
         if (gCurrentPinballGame->unk5A6 == 0)
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869FCE4);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_9a);
 
         break;
 

@@ -81,7 +81,15 @@ gUnknown_02002935: @ 0x02002935
 gUnknown_0200293A: @ 0x0200293A
 	.space 0x1E
 gUnknown_02002958: @ 0x2002958
-	.space 0x5E0
+	.space 0x40
+gMPlayTrack_BGM: @ 0x2002998
+	.space 0x320
+gMPlayTrack_SE1: @ 0x2002CB8
+	.space 0xF0
+gMPlayTrack_SE2: @ 0x2002DA8
+	.space 0xF0
+gMPlayTrack_SE3: @ 0x2002E98
+	.space 0xA0
 verifySramFast_Work: @ 0x02002F38
 	.space 0xA0
 readSramFast_Work: @ 0x02002FD8

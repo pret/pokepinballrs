@@ -11,12 +11,12 @@ struct Unk_086AFAC0
 extern const struct Unk_086AFAC0 gUnknown_086AFAC0[];
 
 extern const s16 gUnknown_086AFC16[][4];
-extern struct SongHeader gUnknown_086A2D28;
-extern struct SongHeader gUnknown_086A2D94;
-extern struct SongHeader gUnknown_086A2E70;
-extern struct SongHeader gUnknown_086A2E90;
-extern struct SongHeader gUnknown_086A2EAC;
-extern struct SongHeader gUnknown_086A2EE4;
+extern struct SongHeader se_unk_137;
+extern struct SongHeader se_unk_138;
+extern struct SongHeader se_unk_139;
+extern struct SongHeader se_unk_13b;
+extern struct SongHeader se_unk_13c;
+extern struct SongHeader se_unk_13d;
 
 extern const s8 gUnknown_08137D60[];
 extern const u16 gUnknown_0837A4E8[];
@@ -170,7 +170,7 @@ void SphealBoardProcess_3B_43228(void)
             if (gCurrentPinballGame->unk18 == 0)
             {
                 m4aMPlayAllStop();
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2E90);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_13b);
                 gMain.unkF = 0x80;
                 gCurrentPinballGame->unk388 = 2;
                 gCurrentPinballGame->unk392 = 0;
@@ -291,7 +291,7 @@ void sub_43500(void)
         {
             if (gCurrentPinballGame->unk548[i] == 23)
             {
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2EAC);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_13c);
                 gCurrentPinballGame->scoreAddedInFrame = 5000;
                 sub_11B0(8);
             }
@@ -541,7 +541,7 @@ void sub_4387C(void)
                 gCurrentPinballGame->unk54F[i] = 1;
                 break;
             case 4:
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2D28);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_137);
                 if (gCurrentPinballGame->unk54F[i] == 1)
                 {
                     gCurrentPinballGame->unk562[i] = 0;
@@ -958,11 +958,11 @@ void sub_44D58(void)
     if (gCurrentPinballGame->unk13 < 2 && gMain.unkF == 0 && gCurrentPinballGame->unk542)
     {
         if (gCurrentPinballGame->unk542 == 21)
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2D94);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_138);
 
         gCurrentPinballGame->unk542--;
         if (gCurrentPinballGame->unk542 == 0)
-            MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2E70);
+            MPlayStart(&gMPlayInfo_SE1, &se_unk_139);
     }
 
     if (gCurrentPinballGame->unk7E)
@@ -1235,7 +1235,7 @@ void sub_455D0(void)
                     if (gCurrentPinballGame->unk580[i].y >= 0x6600)
                     {
                         gCurrentPinballGame->unk533[i]++;
-                        MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2EE4);
+                        MPlayStart(&gMPlayInfo_SE1, &se_unk_13d);
                         if (gCurrentPinballGame->unk533[i] < 3)
                         {
                             gCurrentPinballGame->unk580[i].y = 0x6600;
@@ -1277,7 +1277,7 @@ void sub_455D0(void)
                 if (gCurrentPinballGame->ball->positionQ8.y >= 0x6500)
                 {
                     gCurrentPinballGame->unk533[i]++;
-                    MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A2EE4);
+                    MPlayStart(&gMPlayInfo_SE1, &se_unk_13d);
                     sub_11B0(7);
                     if (gCurrentPinballGame->unk533[i] < 3)
                     {
