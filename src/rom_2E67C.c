@@ -37,7 +37,7 @@ extern const s16 gUnknown_08055A68[][7];
 extern u16 gUnknown_086B3FE6[][18];
 extern struct SongHeader se_unk_e3;
 extern const s16 gUnknown_086AE0D0[];
-extern const u16 gUnknown_086B4E62[][12];
+extern const u16 gUnknown_086B4E62[22][12];
 extern const u8 gUnknown_08158284[];
 extern const u8 gUnknown_0815A6A4[];
 extern const u16 gUnknown_086B4112[][12];

@@ -25,11 +25,11 @@ extern const s16 gUnknown_086AF3AC[];
 extern const s16 gUnknown_086AF3B2[];
 extern const s16 gUnknown_086AF3BE[];
 extern const u16 gUnknown_086AF3C6[];
-extern const u16 gUnknown_086B63AA[][2][3];
-extern const u16 gUnknown_086B63F2[][4][3];
-extern const u16 gUnknown_086B6512[][6][3];
-extern const u16 gUnknown_086B65EA[][19][3];
-extern const u16 gUnknown_086B8AE0[][10][3];
+extern const u16 gUnknown_086B63AA[12][2][3];
+extern const u16 gUnknown_086B63F2[24][4][3];
+extern const u16 gUnknown_086B6512[12][6][3];
+extern const u16 gUnknown_086B65EA[166][19][3];
+extern const u16 gUnknown_086B8AE0[58][10][3];
 
 
 void GroudonBoardProcess_3A_3B120(void)

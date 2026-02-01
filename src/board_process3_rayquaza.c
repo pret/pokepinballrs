@@ -14,12 +14,12 @@ extern const s16 gUnknown_086AEF28[];
 extern const u16 gUnknown_086AF3CC[][3];
 extern const struct Vector16 gUnknown_086AF744[32];
 extern const s16 gUnknown_086AF784[];
-extern const u16 gUnknown_086B5ECA[][6][3];
-extern const u16 gUnknown_086B5CC0[][5][3];
-extern const u16 gUnknown_086B5D56[][2][3];
-extern const u16 gUnknown_086B5DCE[][7][3];
-extern const u16 gUnknown_086B609E[][3][3];
-extern const u16 gUnknown_086B612E[][3];
+extern const u16 gUnknown_086B5ECA[39][6][3];
+extern const u16 gUnknown_086B5CC0[10][5][3];
+extern const u16 gUnknown_086B5D56[20][2][3];
+extern const u16 gUnknown_086B5DCE[12][7][3];
+extern const u16 gUnknown_086B609E[10][3][3];
+extern const u16 gUnknown_086B612E[212][3];
 
 void RayquazaBoardProcess_3A_3E79C(void)
 {

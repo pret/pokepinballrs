@@ -32,12 +32,12 @@ extern const u16 gUnknown_086AE154[][10];
 extern const s16 gUnknown_086AE234[][16];
 extern const s16 gUnknown_086AE2F4[][2];
 extern const s16 gUnknown_086AE30C[];
-extern const s16 gUnknown_086AE318[];
+extern const s16 gUnknown_086AE318[6];
 extern const u8 (*gUnknown_086B15B4[])[0x20];
 extern const u16 gUnknown_086B263C[][3][3];
 extern const u16 gUnknown_086B4E3E[][3];
 extern const u16 gUnknown_086B53B4[][3];
-extern const u16 gUnknown_086B55DC[][18];
+extern const u16 gUnknown_086B55DC[14][18];
 extern const u8 (*gUnknown_086BB6F4[])[0x480];
 
 extern struct SongHeader se_unk_84;
