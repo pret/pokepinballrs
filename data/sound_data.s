@@ -2786,19 +2786,19 @@ gDirectSound_0858AA14:: @ 0x0858AA14
 
 	.align 2
 gDirectSound_0858E078:: @ 0x0858E078
-	.incbin "sound/direct_sound_samples/gDirectSound_0858E078.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0858E078.bin"
 
 	.align 2
 gDirectSound_08595C7C:: @ 0x08595C7C
-	.incbin "sound/direct_sound_samples/gDirectSound_08595C7C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08595C7C.bin"
 
 	.align 2
 gDirectSound_08597170:: @ 0x08597170
-	.incbin "sound/direct_sound_samples/gDirectSound_08597170.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08597170.bin"
 
 	.align 2
 gDirectSound_0859BD58:: @ 0x0859BD58
-	.incbin "sound/direct_sound_samples/gDirectSound_0859BD58.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0859BD58.bin"
 
 	.align 2
 gDirectSound_085A37F4:: @ 0x085A37F4
@@ -2866,863 +2866,863 @@ gDirectSound_085ABE38:: @ 0x085ABE38
 
 	.align 2
 gDirectSound_085ABF3C:: @ 0x085ABF3C
-	.incbin "sound/direct_sound_samples/gDirectSound_085ABF3C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085ABF3C.bin"
 
 	.align 2
 gDirectSound_085ACFE4:: @ 0x085ACFE4
-	.incbin "sound/direct_sound_samples/gDirectSound_085ACFE4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085ACFE4.bin"
 
 	.align 2
 gDirectSound_085AE7A4:: @ 0x085AE7A4
-	.incbin "sound/direct_sound_samples/gDirectSound_085AE7A4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085AE7A4.bin"
 
 	.align 2
 gDirectSound_085AF0F8:: @ 0x085AF0F8
-	.incbin "sound/direct_sound_samples/gDirectSound_085AF0F8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085AF0F8.bin"
 
 	.align 2
 gDirectSound_085AFE88:: @ 0x085AFE88
-	.incbin "sound/direct_sound_samples/gDirectSound_085AFE88.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085AFE88.bin"
 
 	.align 2
 gDirectSound_085B1658:: @ 0x085B1658
-	.incbin "sound/direct_sound_samples/gDirectSound_085B1658.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085B1658.bin"
 
 	.align 2
 gDirectSound_085B2EC4:: @ 0x085B2EC4
-	.incbin "sound/direct_sound_samples/gDirectSound_085B2EC4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085B2EC4.bin"
 
 	.align 2
 gDirectSound_085B3428:: @ 0x085B3428
-	.incbin "sound/direct_sound_samples/gDirectSound_085B3428.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085B3428.bin"
 
 	.align 2
 gDirectSound_085B3AF0:: @ 0x085B3AF0
-	.incbin "sound/direct_sound_samples/gDirectSound_085B3AF0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085B3AF0.bin"
 
 	.align 2
 gDirectSound_085B4E5C:: @ 0x085B4E5C
-	.incbin "sound/direct_sound_samples/gDirectSound_085B4E5C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085B4E5C.bin"
 
 	.align 2
 gDirectSound_085B61C0:: @ 0x085B61C0
-	.incbin "sound/direct_sound_samples/gDirectSound_085B61C0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085B61C0.bin"
 
 	.align 2
 gDirectSound_085B705C:: @ 0x085B705C
-	.incbin "sound/direct_sound_samples/gDirectSound_085B705C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085B705C.bin"
 
 	.align 2
 gDirectSound_085B7CD8:: @ 0x085B7CD8
-	.incbin "sound/direct_sound_samples/gDirectSound_085B7CD8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085B7CD8.bin"
 
 	.align 2
 gDirectSound_085B9674:: @ 0x085B9674
-	.incbin "sound/direct_sound_samples/gDirectSound_085B9674.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085B9674.bin"
 
 	.align 2
 gDirectSound_085BA39C:: @ 0x085BA39C
-	.incbin "sound/direct_sound_samples/gDirectSound_085BA39C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085BA39C.bin"
 
 	.align 2
 gDirectSound_085BAEE4:: @ 0x085BAEE4
-	.incbin "sound/direct_sound_samples/gDirectSound_085BAEE4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085BAEE4.bin"
 
 	.align 2
 gDirectSound_085BC648:: @ 0x085BC648
-	.incbin "sound/direct_sound_samples/gDirectSound_085BC648.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085BC648.bin"
 
 	.align 2
 gDirectSound_085BE130:: @ 0x085BE130
-	.incbin "sound/direct_sound_samples/gDirectSound_085BE130.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085BE130.bin"
 
 	.align 2
 gDirectSound_085C00CC:: @ 0x085C00CC
-	.incbin "sound/direct_sound_samples/gDirectSound_085C00CC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085C00CC.bin"
 
 	.align 2
 gDirectSound_085C0E30:: @ 0x085C0E30
-	.incbin "sound/direct_sound_samples/gDirectSound_085C0E30.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085C0E30.bin"
 
 	.align 2
 gDirectSound_085C1BC0:: @ 0x085C1BC0
-	.incbin "sound/direct_sound_samples/gDirectSound_085C1BC0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085C1BC0.bin"
 
 	.align 2
 gDirectSound_085C2C48:: @ 0x085C2C48
-	.incbin "sound/direct_sound_samples/gDirectSound_085C2C48.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085C2C48.bin"
 
 	.align 2
 gDirectSound_085C3C38:: @ 0x085C3C38
-	.incbin "sound/direct_sound_samples/gDirectSound_085C3C38.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085C3C38.bin"
 
 	.align 2
 gDirectSound_085C5334:: @ 0x085C5334
-	.incbin "sound/direct_sound_samples/gDirectSound_085C5334.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085C5334.bin"
 
 	.align 2
 gDirectSound_085C6AE8:: @ 0x085C6AE8
-	.incbin "sound/direct_sound_samples/gDirectSound_085C6AE8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085C6AE8.bin"
 
 	.align 2
 gDirectSound_085C86D0:: @ 0x085C86D0
-	.incbin "sound/direct_sound_samples/gDirectSound_085C86D0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085C86D0.bin"
 
 	.align 2
 gDirectSound_085C94FC:: @ 0x085C94FC
-	.incbin "sound/direct_sound_samples/gDirectSound_085C94FC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085C94FC.bin"
 
 	.align 2
 gDirectSound_085CA840:: @ 0x085CA840
-	.incbin "sound/direct_sound_samples/gDirectSound_085CA840.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085CA840.bin"
 
 	.align 2
 gDirectSound_085CC028:: @ 0x085CC028
-	.incbin "sound/direct_sound_samples/gDirectSound_085CC028.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085CC028.bin"
 
 	.align 2
 gDirectSound_085CD36C:: @ 0x085CD36C
-	.incbin "sound/direct_sound_samples/gDirectSound_085CD36C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085CD36C.bin"
 
 	.align 2
 gDirectSound_085CE6E4:: @ 0x085CE6E4
-	.incbin "sound/direct_sound_samples/gDirectSound_085CE6E4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085CE6E4.bin"
 
 	.align 2
 gDirectSound_085CF16C:: @ 0x085CF16C
-	.incbin "sound/direct_sound_samples/gDirectSound_085CF16C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085CF16C.bin"
 
 	.align 2
 gDirectSound_085D002C:: @ 0x085D002C
-	.incbin "sound/direct_sound_samples/gDirectSound_085D002C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D002C.bin"
 
 	.align 2
 gDirectSound_085D18F0:: @ 0x085D18F0
-	.incbin "sound/direct_sound_samples/gDirectSound_085D18F0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D18F0.bin"
 
 	.align 2
 gDirectSound_085D3228:: @ 0x085D3228
-	.incbin "sound/direct_sound_samples/gDirectSound_085D3228.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D3228.bin"
 
 	.align 2
 gDirectSound_085D4684:: @ 0x085D4684
-	.incbin "sound/direct_sound_samples/gDirectSound_085D4684.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D4684.bin"
 
 	.align 2
 gDirectSound_085D5C30:: @ 0x085D5C30
-	.incbin "sound/direct_sound_samples/gDirectSound_085D5C30.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D5C30.bin"
 
 	.align 2
 gDirectSound_085D6F9C:: @ 0x085D6F9C
-	.incbin "sound/direct_sound_samples/gDirectSound_085D6F9C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D6F9C.bin"
 
 	.align 2
 gDirectSound_085D8408:: @ 0x085D8408
-	.incbin "sound/direct_sound_samples/gDirectSound_085D8408.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D8408.bin"
 
 	.align 2
 gDirectSound_085D8D84:: @ 0x085D8D84
-	.incbin "sound/direct_sound_samples/gDirectSound_085D8D84.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D8D84.bin"
 
 	.align 2
 gDirectSound_085D95F0:: @ 0x085D95F0
-	.incbin "sound/direct_sound_samples/gDirectSound_085D95F0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D95F0.bin"
 
 	.align 2
 gDirectSound_085D9FC8:: @ 0x085D9FC8
-	.incbin "sound/direct_sound_samples/gDirectSound_085D9FC8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085D9FC8.bin"
 
 	.align 2
 gDirectSound_085DB320:: @ 0x085DB320
-	.incbin "sound/direct_sound_samples/gDirectSound_085DB320.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085DB320.bin"
 
 	.align 2
 gDirectSound_085DC708:: @ 0x085DC708
-	.incbin "sound/direct_sound_samples/gDirectSound_085DC708.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085DC708.bin"
 
 	.align 2
 gDirectSound_085DDBE4:: @ 0x085DDBE4
-	.incbin "sound/direct_sound_samples/gDirectSound_085DDBE4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085DDBE4.bin"
 
 	.align 2
 gDirectSound_085DE840:: @ 0x085DE840
-	.incbin "sound/direct_sound_samples/gDirectSound_085DE840.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085DE840.bin"
 
 	.align 2
 gDirectSound_085DFB48:: @ 0x085DFB48
-	.incbin "sound/direct_sound_samples/gDirectSound_085DFB48.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085DFB48.bin"
 
 	.align 2
 gDirectSound_085E0F7C:: @ 0x085E0F7C
-	.incbin "sound/direct_sound_samples/gDirectSound_085E0F7C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085E0F7C.bin"
 
 	.align 2
 gDirectSound_085E27D8:: @ 0x085E27D8
-	.incbin "sound/direct_sound_samples/gDirectSound_085E27D8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085E27D8.bin"
 
 	.align 2
 gDirectSound_085E2D18:: @ 0x085E2D18
-	.incbin "sound/direct_sound_samples/gDirectSound_085E2D18.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085E2D18.bin"
 
 	.align 2
 gDirectSound_085E35E4:: @ 0x085E35E4
-	.incbin "sound/direct_sound_samples/gDirectSound_085E35E4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085E35E4.bin"
 
 	.align 2
 gDirectSound_085E461C:: @ 0x085E461C
-	.incbin "sound/direct_sound_samples/gDirectSound_085E461C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085E461C.bin"
 
 	.align 2
 gDirectSound_085E4D20:: @ 0x085E4D20
-	.incbin "sound/direct_sound_samples/gDirectSound_085E4D20.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085E4D20.bin"
 
 	.align 2
 gDirectSound_085E5908:: @ 0x085E5908
-	.incbin "sound/direct_sound_samples/gDirectSound_085E5908.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085E5908.bin"
 
 	.align 2
 gDirectSound_085E7F18:: @ 0x085E7F18
-	.incbin "sound/direct_sound_samples/gDirectSound_085E7F18.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085E7F18.bin"
 
 	.align 2
 gDirectSound_085E9170:: @ 0x085E9170
-	.incbin "sound/direct_sound_samples/gDirectSound_085E9170.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085E9170.bin"
 
 	.align 2
 gDirectSound_085EA5AC:: @ 0x085EA5AC
-	.incbin "sound/direct_sound_samples/gDirectSound_085EA5AC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085EA5AC.bin"
 
 	.align 2
 gDirectSound_085EBF30:: @ 0x085EBF30
-	.incbin "sound/direct_sound_samples/gDirectSound_085EBF30.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085EBF30.bin"
 
 	.align 2
 gDirectSound_085ED660:: @ 0x085ED660
-	.incbin "sound/direct_sound_samples/gDirectSound_085ED660.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085ED660.bin"
 
 	.align 2
 gDirectSound_085EE310:: @ 0x085EE310
-	.incbin "sound/direct_sound_samples/gDirectSound_085EE310.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085EE310.bin"
 
 	.align 2
 gDirectSound_085EED9C:: @ 0x085EED9C
-	.incbin "sound/direct_sound_samples/gDirectSound_085EED9C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085EED9C.bin"
 
 	.align 2
 gDirectSound_085EF4F0:: @ 0x085EF4F0
-	.incbin "sound/direct_sound_samples/gDirectSound_085EF4F0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085EF4F0.bin"
 
 	.align 2
 gDirectSound_085EFBEC:: @ 0x085EFBEC
-	.incbin "sound/direct_sound_samples/gDirectSound_085EFBEC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085EFBEC.bin"
 
 	.align 2
 gDirectSound_085F067C:: @ 0x085F067C
-	.incbin "sound/direct_sound_samples/gDirectSound_085F067C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F067C.bin"
 
 	.align 2
 gDirectSound_085F1548:: @ 0x085F1548
-	.incbin "sound/direct_sound_samples/gDirectSound_085F1548.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F1548.bin"
 
 	.align 2
 gDirectSound_085F2360:: @ 0x085F2360
-	.incbin "sound/direct_sound_samples/gDirectSound_085F2360.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F2360.bin"
 
 	.align 2
 gDirectSound_085F3074:: @ 0x085F3074
-	.incbin "sound/direct_sound_samples/gDirectSound_085F3074.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F3074.bin"
 
 	.align 2
 gDirectSound_085F4160:: @ 0x085F4160
-	.incbin "sound/direct_sound_samples/gDirectSound_085F4160.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F4160.bin"
 
 	.align 2
 gDirectSound_085F55FC:: @ 0x085F55FC
-	.incbin "sound/direct_sound_samples/gDirectSound_085F55FC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F55FC.bin"
 
 	.align 2
 gDirectSound_085F64B0:: @ 0x085F64B0
-	.incbin "sound/direct_sound_samples/gDirectSound_085F64B0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F64B0.bin"
 
 	.align 2
 gDirectSound_085F7704:: @ 0x085F7704
-	.incbin "sound/direct_sound_samples/gDirectSound_085F7704.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F7704.bin"
 
 	.align 2
 gDirectSound_085F881C:: @ 0x085F881C
-	.incbin "sound/direct_sound_samples/gDirectSound_085F881C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F881C.bin"
 
 	.align 2
 gDirectSound_085F9D24:: @ 0x085F9D24
-	.incbin "sound/direct_sound_samples/gDirectSound_085F9D24.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085F9D24.bin"
 
 	.align 2
 gDirectSound_085FAA04:: @ 0x085FAA04
-	.incbin "sound/direct_sound_samples/gDirectSound_085FAA04.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085FAA04.bin"
 
 	.align 2
 gDirectSound_085FC20C:: @ 0x085FC20C
-	.incbin "sound/direct_sound_samples/gDirectSound_085FC20C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085FC20C.bin"
 
 	.align 2
 gDirectSound_085FCFE4:: @ 0x085FCFE4
-	.incbin "sound/direct_sound_samples/gDirectSound_085FCFE4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085FCFE4.bin"
 
 	.align 2
 gDirectSound_085FDB34:: @ 0x085FDB34
-	.incbin "sound/direct_sound_samples/gDirectSound_085FDB34.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085FDB34.bin"
 
 	.align 2
 gDirectSound_085FEC58:: @ 0x085FEC58
-	.incbin "sound/direct_sound_samples/gDirectSound_085FEC58.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085FEC58.bin"
 
 	.align 2
 gDirectSound_085FFAD0:: @ 0x085FFAD0
-	.incbin "sound/direct_sound_samples/gDirectSound_085FFAD0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_085FFAD0.bin"
 
 	.align 2
 gDirectSound_08600330:: @ 0x08600330
-	.incbin "sound/direct_sound_samples/gDirectSound_08600330.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08600330.bin"
 
 	.align 2
 gDirectSound_08600DF0:: @ 0x08600DF0
-	.incbin "sound/direct_sound_samples/gDirectSound_08600DF0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08600DF0.bin"
 
 	.align 2
 gDirectSound_0860173C:: @ 0x0860173C
-	.incbin "sound/direct_sound_samples/gDirectSound_0860173C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860173C.bin"
 
 	.align 2
 gDirectSound_08602398:: @ 0x08602398
-	.incbin "sound/direct_sound_samples/gDirectSound_08602398.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08602398.bin"
 
 	.align 2
 gDirectSound_086038A0:: @ 0x086038A0
-	.incbin "sound/direct_sound_samples/gDirectSound_086038A0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086038A0.bin"
 
 	.align 2
 gDirectSound_08604338:: @ 0x08604338
-	.incbin "sound/direct_sound_samples/gDirectSound_08604338.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08604338.bin"
 
 	.align 2
 gDirectSound_08604F68:: @ 0x08604F68
-	.incbin "sound/direct_sound_samples/gDirectSound_08604F68.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08604F68.bin"
 
 	.align 2
 gDirectSound_08605D48:: @ 0x08605D48
-	.incbin "sound/direct_sound_samples/gDirectSound_08605D48.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08605D48.bin"
 
 	.align 2
 gDirectSound_086068E8:: @ 0x086068E8
-	.incbin "sound/direct_sound_samples/gDirectSound_086068E8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086068E8.bin"
 
 	.align 2
 gDirectSound_08607FF4:: @ 0x08607FF4
-	.incbin "sound/direct_sound_samples/gDirectSound_08607FF4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08607FF4.bin"
 
 	.align 2
 gDirectSound_08608984:: @ 0x08608984
-	.incbin "sound/direct_sound_samples/gDirectSound_08608984.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08608984.bin"
 
 	.align 2
 gDirectSound_086093EC:: @ 0x086093EC
-	.incbin "sound/direct_sound_samples/gDirectSound_086093EC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086093EC.bin"
 
 	.align 2
 gDirectSound_08609984:: @ 0x08609984
-	.incbin "sound/direct_sound_samples/gDirectSound_08609984.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08609984.bin"
 
 	.align 2
 gDirectSound_0860A4A0:: @ 0x0860A4A0
-	.incbin "sound/direct_sound_samples/gDirectSound_0860A4A0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860A4A0.bin"
 
 	.align 2
 gDirectSound_0860ADF4:: @ 0x0860ADF4
-	.incbin "sound/direct_sound_samples/gDirectSound_0860ADF4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860ADF4.bin"
 
 	.align 2
 gDirectSound_0860B3F4:: @ 0x0860B3F4
-	.incbin "sound/direct_sound_samples/gDirectSound_0860B3F4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860B3F4.bin"
 
 	.align 2
 gDirectSound_0860BCF8:: @ 0x0860BCF8
-	.incbin "sound/direct_sound_samples/gDirectSound_0860BCF8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860BCF8.bin"
 
 	.align 2
 gDirectSound_0860CEA8:: @ 0x0860CEA8
-	.incbin "sound/direct_sound_samples/gDirectSound_0860CEA8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860CEA8.bin"
 
 	.align 2
 gDirectSound_0860DB14:: @ 0x0860DB14
-	.incbin "sound/direct_sound_samples/gDirectSound_0860DB14.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860DB14.bin"
 
 	.align 2
 gDirectSound_0860E4BC:: @ 0x0860E4BC
-	.incbin "sound/direct_sound_samples/gDirectSound_0860E4BC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860E4BC.bin"
 
 	.align 2
 gDirectSound_08610190:: @ 0x08610190
-	.incbin "sound/direct_sound_samples/gDirectSound_08610190.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08610190.bin"
 
 	.align 2
 gDirectSound_08612110:: @ 0x08612110
-	.incbin "sound/direct_sound_samples/gDirectSound_08612110.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08612110.bin"
 
 	.align 2
 gDirectSound_08612CB8:: @ 0x08612CB8
-	.incbin "sound/direct_sound_samples/gDirectSound_08612CB8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08612CB8.bin"
 
 	.align 2
 gDirectSound_0861412C:: @ 0x0861412C
-	.incbin "sound/direct_sound_samples/gDirectSound_0861412C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0861412C.bin"
 
 	.align 2
 gDirectSound_08615B48:: @ 0x08615B48
-	.incbin "sound/direct_sound_samples/gDirectSound_08615B48.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08615B48.bin"
 
 	.align 2
 gDirectSound_086162CC:: @ 0x086162CC
-	.incbin "sound/direct_sound_samples/gDirectSound_086162CC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086162CC.bin"
 
 	.align 2
 gDirectSound_086173D0:: @ 0x086173D0
-	.incbin "sound/direct_sound_samples/gDirectSound_086173D0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086173D0.bin"
 
 	.align 2
 gDirectSound_08618A50:: @ 0x08618A50
-	.incbin "sound/direct_sound_samples/gDirectSound_08618A50.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08618A50.bin"
 
 	.align 2
 gDirectSound_08619618:: @ 0x08619618
-	.incbin "sound/direct_sound_samples/gDirectSound_08619618.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08619618.bin"
 
 	.align 2
 gDirectSound_0861A258:: @ 0x0861A258
-	.incbin "sound/direct_sound_samples/gDirectSound_0861A258.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0861A258.bin"
 
 	.align 2
 gDirectSound_0861AF00:: @ 0x0861AF00
-	.incbin "sound/direct_sound_samples/gDirectSound_0861AF00.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0861AF00.bin"
 
 	.align 2
 gDirectSound_0861B740:: @ 0x0861B740
-	.incbin "sound/direct_sound_samples/gDirectSound_0861B740.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0861B740.bin"
 
 	.align 2
 gDirectSound_0861BBA8:: @ 0x0861BBA8
-	.incbin "sound/direct_sound_samples/gDirectSound_0861BBA8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0861BBA8.bin"
 
 	.align 2
 gDirectSound_0861CA3C:: @ 0x0861CA3C
-	.incbin "sound/direct_sound_samples/gDirectSound_0861CA3C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0861CA3C.bin"
 
 	.align 2
 gDirectSound_0861DB0C:: @ 0x0861DB0C
-	.incbin "sound/direct_sound_samples/gDirectSound_0861DB0C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0861DB0C.bin"
 
 	.align 2
 gDirectSound_0861E338:: @ 0x0861E338
-	.incbin "sound/direct_sound_samples/gDirectSound_0861E338.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0861E338.bin"
 
 	.align 2
 gDirectSound_0861EEA0:: @ 0x0861EEA0
-	.incbin "sound/direct_sound_samples/gDirectSound_0861EEA0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0861EEA0.bin"
 
 	.align 2
 gDirectSound_08620264:: @ 0x08620264
-	.incbin "sound/direct_sound_samples/gDirectSound_08620264.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08620264.bin"
 
 	.align 2
 gDirectSound_08620C78:: @ 0x08620C78
-	.incbin "sound/direct_sound_samples/gDirectSound_08620C78.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08620C78.bin"
 
 	.align 2
 gDirectSound_08621544:: @ 0x08621544
-	.incbin "sound/direct_sound_samples/gDirectSound_08621544.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08621544.bin"
 
 	.align 2
 gDirectSound_08622570:: @ 0x08622570
-	.incbin "sound/direct_sound_samples/gDirectSound_08622570.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08622570.bin"
 
 	.align 2
 gDirectSound_08622DA8:: @ 0x08622DA8
-	.incbin "sound/direct_sound_samples/gDirectSound_08622DA8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08622DA8.bin"
 
 	.align 2
 gDirectSound_08623DEC:: @ 0x08623DEC
-	.incbin "sound/direct_sound_samples/gDirectSound_08623DEC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08623DEC.bin"
 
 	.align 2
 gDirectSound_08624A98:: @ 0x08624A98
-	.incbin "sound/direct_sound_samples/gDirectSound_08624A98.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08624A98.bin"
 
 	.align 2
 gDirectSound_086254B4:: @ 0x086254B4
-	.incbin "sound/direct_sound_samples/gDirectSound_086254B4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086254B4.bin"
 
 	.align 2
 gDirectSound_086260E4:: @ 0x086260E4
-	.incbin "sound/direct_sound_samples/gDirectSound_086260E4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086260E4.bin"
 
 	.align 2
 gDirectSound_08627948:: @ 0x08627948
-	.incbin "sound/direct_sound_samples/gDirectSound_08627948.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08627948.bin"
 
 	.align 2
 gDirectSound_086281CC:: @ 0x086281CC
-	.incbin "sound/direct_sound_samples/gDirectSound_086281CC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086281CC.bin"
 
 	.align 2
 gDirectSound_08629024:: @ 0x08629024
-	.incbin "sound/direct_sound_samples/gDirectSound_08629024.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08629024.bin"
 
 	.align 2
 gDirectSound_08629A10:: @ 0x08629A10
-	.incbin "sound/direct_sound_samples/gDirectSound_08629A10.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08629A10.bin"
 
 	.align 2
 gDirectSound_0862A080:: @ 0x0862A080
-	.incbin "sound/direct_sound_samples/gDirectSound_0862A080.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0862A080.bin"
 
 	.align 2
 gDirectSound_0862ACA8:: @ 0x0862ACA8
-	.incbin "sound/direct_sound_samples/gDirectSound_0862ACA8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0862ACA8.bin"
 
 	.align 2
 gDirectSound_0862B460:: @ 0x0862B460
-	.incbin "sound/direct_sound_samples/gDirectSound_0862B460.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0862B460.bin"
 
 	.align 2
 gDirectSound_0862BBBC:: @ 0x0862BBBC
-	.incbin "sound/direct_sound_samples/gDirectSound_0862BBBC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0862BBBC.bin"
 
 	.align 2
 gDirectSound_0862CC74:: @ 0x0862CC74
-	.incbin "sound/direct_sound_samples/gDirectSound_0862CC74.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0862CC74.bin"
 
 	.align 2
 gDirectSound_0862D9D8:: @ 0x0862D9D8
-	.incbin "sound/direct_sound_samples/gDirectSound_0862D9D8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0862D9D8.bin"
 
 	.align 2
 gDirectSound_0862EEBC:: @ 0x0862EEBC
-	.incbin "sound/direct_sound_samples/gDirectSound_0862EEBC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0862EEBC.bin"
 
 	.align 2
 gDirectSound_0862F7B8:: @ 0x0862F7B8
-	.incbin "sound/direct_sound_samples/gDirectSound_0862F7B8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0862F7B8.bin"
 
 	.align 2
 gDirectSound_086307C0:: @ 0x086307C0
-	.incbin "sound/direct_sound_samples/gDirectSound_086307C0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086307C0.bin"
 
 	.align 2
 gDirectSound_08631240:: @ 0x08631240
-	.incbin "sound/direct_sound_samples/gDirectSound_08631240.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08631240.bin"
 
 	.align 2
 gDirectSound_086325F4:: @ 0x086325F4
-	.incbin "sound/direct_sound_samples/gDirectSound_086325F4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086325F4.bin"
 
 	.align 2
 gDirectSound_08632D08:: @ 0x08632D08
-	.incbin "sound/direct_sound_samples/gDirectSound_08632D08.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08632D08.bin"
 
 	.align 2
 gDirectSound_08634220:: @ 0x08634220
-	.incbin "sound/direct_sound_samples/gDirectSound_08634220.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08634220.bin"
 
 	.align 2
 gDirectSound_08634A24:: @ 0x08634A24
-	.incbin "sound/direct_sound_samples/gDirectSound_08634A24.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08634A24.bin"
 
 	.align 2
 gDirectSound_08635B84:: @ 0x08635B84
-	.incbin "sound/direct_sound_samples/gDirectSound_08635B84.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08635B84.bin"
 
 	.align 2
 gDirectSound_086364D0:: @ 0x086364D0
-	.incbin "sound/direct_sound_samples/gDirectSound_086364D0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086364D0.bin"
 
 	.align 2
 gDirectSound_08637BF0:: @ 0x08637BF0
-	.incbin "sound/direct_sound_samples/gDirectSound_08637BF0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08637BF0.bin"
 
 	.align 2
 gDirectSound_0863852C:: @ 0x0863852C
-	.incbin "sound/direct_sound_samples/gDirectSound_0863852C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863852C.bin"
 
 	.align 2
 gDirectSound_08639628:: @ 0x08639628
-	.incbin "sound/direct_sound_samples/gDirectSound_08639628.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08639628.bin"
 
 	.align 2
 gDirectSound_0863A22C:: @ 0x0863A22C
-	.incbin "sound/direct_sound_samples/gDirectSound_0863A22C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863A22C.bin"
 
 	.align 2
 gDirectSound_0863BAE4:: @ 0x0863BAE4
-	.incbin "sound/direct_sound_samples/gDirectSound_0863BAE4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863BAE4.bin"
 
 	.align 2
 gDirectSound_0863C224:: @ 0x0863C224
-	.incbin "sound/direct_sound_samples/gDirectSound_0863C224.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863C224.bin"
 
 	.align 2
 gDirectSound_0863CEC4:: @ 0x0863CEC4
-	.incbin "sound/direct_sound_samples/gDirectSound_0863CEC4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863CEC4.bin"
 
 	.align 2
 gDirectSound_0863D8E8:: @ 0x0863D8E8
-	.incbin "sound/direct_sound_samples/gDirectSound_0863D8E8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863D8E8.bin"
 
 	.align 2
 gDirectSound_0863E6EC:: @ 0x0863E6EC
-	.incbin "sound/direct_sound_samples/gDirectSound_0863E6EC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863E6EC.bin"
 
 	.align 2
 gDirectSound_086400F4:: @ 0x086400F4
-	.incbin "sound/direct_sound_samples/gDirectSound_086400F4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086400F4.bin"
 
 	.align 2
 gDirectSound_086409E4:: @ 0x086409E4
-	.incbin "sound/direct_sound_samples/gDirectSound_086409E4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086409E4.bin"
 
 	.align 2
 gDirectSound_08642094:: @ 0x08642094
-	.incbin "sound/direct_sound_samples/gDirectSound_08642094.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08642094.bin"
 
 	.align 2
 gDirectSound_08642D18:: @ 0x08642D18
-	.incbin "sound/direct_sound_samples/gDirectSound_08642D18.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08642D18.bin"
 
 	.align 2
 gDirectSound_08644078:: @ 0x08644078
-	.incbin "sound/direct_sound_samples/gDirectSound_08644078.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08644078.bin"
 
 	.align 2
 gDirectSound_08645874:: @ 0x08645874
-	.incbin "sound/direct_sound_samples/gDirectSound_08645874.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08645874.bin"
 
 	.align 2
 gDirectSound_086468A0:: @ 0x086468A0
-	.incbin "sound/direct_sound_samples/gDirectSound_086468A0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086468A0.bin"
 
 	.align 2
 gDirectSound_08647074:: @ 0x08647074
-	.incbin "sound/direct_sound_samples/gDirectSound_08647074.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08647074.bin"
 
 	.align 2
 gDirectSound_086497B8:: @ 0x086497B8
-	.incbin "sound/direct_sound_samples/gDirectSound_086497B8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086497B8.bin"
 
 	.align 2
 gDirectSound_0864A234:: @ 0x0864A234
-	.incbin "sound/direct_sound_samples/gDirectSound_0864A234.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864A234.bin"
 
 	.align 2
 gDirectSound_0864AA54:: @ 0x0864AA54
-	.incbin "sound/direct_sound_samples/gDirectSound_0864AA54.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864AA54.bin"
 
 	.align 2
 gDirectSound_0864BAD8:: @ 0x0864BAD8
-	.incbin "sound/direct_sound_samples/gDirectSound_0864BAD8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864BAD8.bin"
 
 	.align 2
 gDirectSound_0864C08C:: @ 0x0864C08C
-	.incbin "sound/direct_sound_samples/gDirectSound_0864C08C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864C08C.bin"
 
 	.align 2
 gDirectSound_0864CC64:: @ 0x0864CC64
-	.incbin "sound/direct_sound_samples/gDirectSound_0864CC64.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864CC64.bin"
 
 	.align 2
 gDirectSound_0864F0B0:: @ 0x0864F0B0
-	.incbin "sound/direct_sound_samples/gDirectSound_0864F0B0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864F0B0.bin"
 
 	.align 2
 gDirectSound_08650300:: @ 0x08650300
-	.incbin "sound/direct_sound_samples/gDirectSound_08650300.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08650300.bin"
 
 	.align 2
 gDirectSound_086512E8:: @ 0x086512E8
-	.incbin "sound/direct_sound_samples/gDirectSound_086512E8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086512E8.bin"
 
 	.align 2
 gDirectSound_08652954:: @ 0x08652954
-	.incbin "sound/direct_sound_samples/gDirectSound_08652954.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08652954.bin"
 
 	.align 2
 gDirectSound_086532FC:: @ 0x086532FC
-	.incbin "sound/direct_sound_samples/gDirectSound_086532FC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086532FC.bin"
 
 	.align 2
 gDirectSound_0865502C:: @ 0x0865502C
-	.incbin "sound/direct_sound_samples/gDirectSound_0865502C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865502C.bin"
 
 	.align 2
 gDirectSound_08655BE4:: @ 0x08655BE4
-	.incbin "sound/direct_sound_samples/gDirectSound_08655BE4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08655BE4.bin"
 
 	.align 2
 gDirectSound_086572B8:: @ 0x086572B8
-	.incbin "sound/direct_sound_samples/gDirectSound_086572B8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086572B8.bin"
 
 	.align 2
 gDirectSound_08657C58:: @ 0x08657C58
-	.incbin "sound/direct_sound_samples/gDirectSound_08657C58.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08657C58.bin"
 
 	.align 2
 gDirectSound_08658F2C:: @ 0x08658F2C
-	.incbin "sound/direct_sound_samples/gDirectSound_08658F2C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08658F2C.bin"
 
 	.align 2
 gDirectSound_0865B6A4:: @ 0x0865B6A4
-	.incbin "sound/direct_sound_samples/gDirectSound_0865B6A4.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865B6A4.bin"
 
 	.align 2
 gDirectSound_0865BE78:: @ 0x0865BE78
-	.incbin "sound/direct_sound_samples/gDirectSound_0865BE78.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865BE78.bin"
 
 	.align 2
 gDirectSound_0865D280:: @ 0x0865D280
-	.incbin "sound/direct_sound_samples/gDirectSound_0865D280.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865D280.bin"
 
 	.align 2
 gDirectSound_0865F25C:: @ 0x0865F25C
-	.incbin "sound/direct_sound_samples/gDirectSound_0865F25C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865F25C.bin"
 
 	.align 2
 gDirectSound_0866125C:: @ 0x0866125C
-	.incbin "sound/direct_sound_samples/gDirectSound_0866125C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866125C.bin"
 
 	.align 2
 gDirectSound_08662960:: @ 0x08662960
-	.incbin "sound/direct_sound_samples/gDirectSound_08662960.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08662960.bin"
 
 	.align 2
 gDirectSound_086635F8:: @ 0x086635F8
-	.incbin "sound/direct_sound_samples/gDirectSound_086635F8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086635F8.bin"
 
 	.align 2
 gDirectSound_08664180:: @ 0x08664180
-	.incbin "sound/direct_sound_samples/gDirectSound_08664180.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08664180.bin"
 
 	.align 2
 gDirectSound_08665298:: @ 0x08665298
-	.incbin "sound/direct_sound_samples/gDirectSound_08665298.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08665298.bin"
 
 	.align 2
 gDirectSound_08665BE0:: @ 0x08665BE0
-	.incbin "sound/direct_sound_samples/gDirectSound_08665BE0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08665BE0.bin"
 
 	.align 2
 gDirectSound_08666F6C:: @ 0x08666F6C
-	.incbin "sound/direct_sound_samples/gDirectSound_08666F6C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08666F6C.bin"
 
 	.align 2
 gDirectSound_08667D24:: @ 0x08667D24
-	.incbin "sound/direct_sound_samples/gDirectSound_08667D24.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08667D24.bin"
 
 	.align 2
 gDirectSound_086688C8:: @ 0x086688C8
-	.incbin "sound/direct_sound_samples/gDirectSound_086688C8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086688C8.bin"
 
 	.align 2
 gDirectSound_08669448:: @ 0x08669448
-	.incbin "sound/direct_sound_samples/gDirectSound_08669448.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08669448.bin"
 
 	.align 2
 gDirectSound_08669D74:: @ 0x08669D74
-	.incbin "sound/direct_sound_samples/gDirectSound_08669D74.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08669D74.bin"
 
 	.align 2
 gDirectSound_0866B24C:: @ 0x0866B24C
-	.incbin "sound/direct_sound_samples/gDirectSound_0866B24C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866B24C.bin"
 
 	.align 2
 gDirectSound_0866CBF0:: @ 0x0866CBF0
-	.incbin "sound/direct_sound_samples/gDirectSound_0866CBF0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866CBF0.bin"
 
 	.align 2
 gDirectSound_0866E020:: @ 0x0866E020
-	.incbin "sound/direct_sound_samples/gDirectSound_0866E020.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866E020.bin"
 
 	.align 2
 gDirectSound_0866E4FC:: @ 0x0866E4FC
-	.incbin "sound/direct_sound_samples/gDirectSound_0866E4FC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866E4FC.bin"
 
 	.align 2
 gDirectSound_08670A08:: @ 0x08670A08
-	.incbin "sound/direct_sound_samples/gDirectSound_08670A08.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08670A08.bin"
 
 	.align 2
 gDirectSound_08672DC0:: @ 0x08672DC0
-	.incbin "sound/direct_sound_samples/gDirectSound_08672DC0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08672DC0.bin"
 
 	.align 2
 gDirectSound_08674AEC:: @ 0x08674AEC
-	.incbin "sound/direct_sound_samples/gDirectSound_08674AEC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08674AEC.bin"
 
 	.align 2
 gDirectSound_08676408:: @ 0x08676408
-	.incbin "sound/direct_sound_samples/gDirectSound_08676408.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08676408.bin"
 
 	.align 2
 gDirectSound_086770C8:: @ 0x086770C8
-	.incbin "sound/direct_sound_samples/gDirectSound_086770C8.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086770C8.bin"
 
 	.align 2
 gDirectSound_086779A0:: @ 0x086779A0
-	.incbin "sound/direct_sound_samples/gDirectSound_086779A0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086779A0.bin"
 
 	.align 2
 gDirectSound_0867983C:: @ 0x0867983C
-	.incbin "sound/direct_sound_samples/gDirectSound_0867983C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867983C.bin"
 
 	.align 2
 gDirectSound_0867B900:: @ 0x0867B900
-	.incbin "sound/direct_sound_samples/gDirectSound_0867B900.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867B900.bin"
 
 	.align 2
 gDirectSound_0867D560:: @ 0x0867D560
-	.incbin "sound/direct_sound_samples/gDirectSound_0867D560.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867D560.bin"
 
 	.align 2
 gDirectSound_0867E0F0:: @ 0x0867E0F0
-	.incbin "sound/direct_sound_samples/gDirectSound_0867E0F0.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867E0F0.bin"
 
 	.align 2
 gDirectSound_0867FD38:: @ 0x0867FD38
-	.incbin "sound/direct_sound_samples/gDirectSound_0867FD38.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867FD38.bin"
 
 	.align 2
 gDirectSound_08680A60:: @ 0x08680A60
-	.incbin "sound/direct_sound_samples/gDirectSound_08680A60.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08680A60.bin"
 
 	.align 2
 gDirectSound_08683470:: @ 0x08683470
-	.incbin "sound/direct_sound_samples/gDirectSound_08683470.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08683470.bin"
 
 	.align 2
 gDirectSound_08683C94:: @ 0x08683C94
-	.incbin "sound/direct_sound_samples/gDirectSound_08683C94.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08683C94.bin"
 
 	.align 2
 gDirectSound_08684D9C:: @ 0x08684D9C
-	.incbin "sound/direct_sound_samples/gDirectSound_08684D9C.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08684D9C.bin"
 
 	.align 2
 gDirectSound_08686394:: @ 0x08686394
-	.incbin "sound/direct_sound_samples/gDirectSound_08686394.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08686394.bin"
 
 	.align 2
 gDirectSound_08687118:: @ 0x08687118
-	.incbin "sound/direct_sound_samples/gDirectSound_08687118.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_08687118.bin"
 
 	.align 2
 gDirectSound_086885EC:: @ 0x086885EC
-	.incbin "sound/direct_sound_samples/gDirectSound_086885EC.bin"
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_086885EC.bin"
 
 .include "sound/songs/mus_title.s"
 .include "sound/songs/mus_table_select.s"
