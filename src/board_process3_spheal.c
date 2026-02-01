@@ -31,7 +31,7 @@ extern const s16 gUnknown_086AEED6[];
 extern const u16 gUnknown_086AFAE0[][2];
 extern const u16 gUnknown_086AFAE2[][2];
 extern const u16 gUnknown_086AFB2C[][3];
-extern const u16 gUnknown_086B56D8[][4][3];
+extern const u16 gUnknown_086B56D8[126][4][3];
 
 
 void SphealBoardProcess_3A_42E48(void)
