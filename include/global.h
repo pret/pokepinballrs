@@ -959,7 +959,7 @@ extern u16 gUnknown_086ACEF4[2];
 extern const u8 *const gUnknown_086ACEF8[];
 extern const u8 *const gUnknown_086ACF18[];
 extern s16 gUnknown_086AE68E[][2];
-extern u16 gUnknown_086B4568[][45];
+extern u16 gUnknown_086B4568[14][45];
 extern const u8 gUnknown_084F61EC[]; 
 extern u8 gUnknown_081B45A4[]; 
 extern const u16 gUnknown_086AD2DE[];
