@@ -34,7 +34,7 @@ extern const s16 gUnknown_086AE2F4[][2];
 extern const s16 gUnknown_086AE30C[];
 extern const s16 gUnknown_086AE318[6];
 extern const u8 (*gUnknown_086B15B4[])[0x20];
-extern const u16 gUnknown_086B263C[][3][3];
+extern const u16 gUnknown_086B263C[68][3][3];
 extern const u16 gUnknown_086B4E3E[][3];
 extern const u16 gUnknown_086B53B4[][3];
 extern const u16 gUnknown_086B55DC[14][18];
