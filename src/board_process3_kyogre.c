@@ -31,8 +31,8 @@ extern const s16 gUnknown_086AEEDE[];
 extern const s16 gUnknown_086AEEE6[];
 extern const u16 gUnknown_086AEEFE[];
 extern const s16 gUnknown_086AEF04[];
-extern const u16 gUnknown_086B91AC[][4][3];
-extern const u16 gUnknown_086B92FC[][10][3];
+extern const u16 gUnknown_086B91AC[28][4][3];
+extern const u16 gUnknown_086B92FC[66][10][3];
 
 
 void KyogreBoardProcess_3A_383E4(void)

@@ -50,8 +50,8 @@ extern const struct Vector16 gUnknown_086AEA3C[];
 extern const u16 *gUnknown_086AEA50[];
 extern const s16 gUnknown_086AEA68[];
 extern const struct Unk_086AEA70 gUnknown_086AEA70[];
-extern const u16 gUnknown_086B9AB8[][2][3];
-extern const u16 gUnknown_086B9DAC[][2][3];
+extern const u16 gUnknown_086B9AB8[126][2][3];
+extern const u16 gUnknown_086B9DAC[126][2][3];
 extern const struct SpriteSet *gUnknown_086BB420[];
 
 void KecleonBoardProcess_3A_35860(void)
