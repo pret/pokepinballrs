@@ -6,8 +6,6 @@
 #include "gba/io_reg.h"
 	.include "asm/macros.inc"
 
-.include "data/egg_locations.inc"
-
 gIntrTableTemplate:: @ 0x086A4AA0
 	.4byte SerialIntr
 	.4byte Timer3Intr
