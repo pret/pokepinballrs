@@ -10,167 +10,134 @@
   "files": [
     {
       "gfx_filename": "aron_hatch",
-      "tileCount": 135,
       "palette": "aron_hatch.gbapal"
     },
     {
       "gfx_filename": "azurill_hatch",
-      "tileCount": 135,
       "palette": "azurill_hatch.gbapal"
     },
     {
       "gfx_filename": "bagon_hatch",
-      "tileCount": 135,
       "palette": "bagon_hatch.gbapal"
     },
     {
       "gfx_filename": "chimecho_hatch",
-      "tileCount": 135,
       "palette": "chimecho_hatch.gbapal"
     },
     {
       "gfx_filename": "chinchou_hatch",
-      "tileCount": 135,
       "palette": "chinchou_hatch.gbapal"
     },
     {
       "gfx_filename": "corsola_hatch",
-      "tileCount": 135,
       "palette": "corsola_hatch.gbapal"
     },
     {
       "gfx_filename": "gulpin_hatch",
-      "tileCount": 135,
       "palette": "gulpin_hatch.gbapal"
     },
     {
       "gfx_filename": "horsea_hatch",
-      "tileCount": 135,
       "palette": "horsea_hatch.gbapal"
     },
     {
       "gfx_filename": "igglybuff_hatch",
-      "tileCount": 135,
       "palette": "igglybuff_hatch.gbapal"
     },
     {
       "gfx_filename": "lotad_hatch",
-      "tileCount": 135,
       "palette": "lotad_hatch.gbapal"
     },
     {
       "gfx_filename": "minun_hatch",
-      "tileCount": 135,
       "palette": "minun_hatch.gbapal"
     },
     {
       "gfx_filename": "natu_hatch",
-      "tileCount": 135,
       "palette": "natu_hatch.gbapal"
     },
     {
       "gfx_filename": "oddish_hatch",
-      "tileCount": 135,
       "palette": "oddish_hatch.gbapal"
     },
     {
       "gfx_filename": "phanpy_hatch",
-      "tileCount": 135,
       "palette": "phanpy_hatch.gbapal"
     },
     {
       "gfx_filename": "pichu_2_hatch",
-      "tileCount": 135,
       "palette": "pichu_2_hatch.gbapal"
     },
     {
       "gfx_filename": "pichu_hatch",
-      "tileCount": 135,
       "palette": "pichu_hatch.gbapal"
     },
     {
       "gfx_filename": "plusle_hatch",
-      "tileCount": 135,
       "palette": "plusle_hatch.gbapal"
     },
     {
       "gfx_filename": "ralts_hatch",
-      "tileCount": 135,
       "palette": "ralts_hatch.gbapal"
     },
     {
       "gfx_filename": "sandshrew_hatch",
-      "tileCount": 135,
       "palette": "sandshrew_hatch.gbapal"
     },
     {
       "gfx_filename": "seedot_hatch",
-      "tileCount": 135,
       "palette": "seedot_hatch.gbapal"
     },
     {
       "gfx_filename": "shroomish_hatch",
-      "tileCount": 135,
       "palette": "shroomish_hatch.gbapal"
     },
     {
       "gfx_filename": "shuppet_hatch",
-      "tileCount": 135,
       "palette": "shuppet_hatch.gbapal"
     },
     {
       "gfx_filename": "skitty_hatch",
-      "tileCount": 135,
       "palette": "skitty_hatch.gbapal"
     },
     {
       "gfx_filename": "snorunt_hatch",
-      "tileCount": 135,
       "palette": "snorunt_hatch.gbapal"
     },
     {
       "gfx_filename": "spheal_hatch",
-      "tileCount": 135,
       "palette": "spheal_hatch.gbapal"
     },
     {
       "gfx_filename": "spinda_hatch",
-      "tileCount": 135,
       "palette": "spinda_hatch.gbapal"
     },
     {
       "gfx_filename": "spoink_hatch",
-      "tileCount": 135,
       "palette": "spoink_hatch.gbapal"
     },
     {
       "gfx_filename": "surskit_hatch",
-      "tileCount": 135,
       "palette": "surskit_hatch.gbapal"
     },
     {
       "gfx_filename": "trapinch_hatch",
-      "tileCount": 135,
       "palette": "trapinch_hatch.gbapal"
     },
     {
       "gfx_filename": "whismur_hatch",
-      "tileCount": 135,
       "palette": "whismur_hatch.gbapal"
     },
     {
       "gfx_filename": "wurmple_hatch",
-      "tileCount": 135,
       "palette": "wurmple_hatch.gbapal"
     },
     {
       "gfx_filename": "wynaut_hatch",
-      "tileCount": 135,
       "palette": "wynaut_hatch.gbapal"
     },
     {
       "gfx_filename": "zubat_hatch",
-      "tileCount": 135,
       "palette": "zubat_hatch.gbapal"
     }
   ]

@@ -11,13 +11,11 @@
   "files": [
     {
       "gfx_filename": "gunk_084F61EC",
-      "tileCount": 80,
       "mwidth":8,
       "align":1
     },
     {
       "gfx_filename": "pika_spinner",
-      "tileCount": 144,
       "mwidth":3,
       "mheight":3,
       "width":12,
@@ -25,34 +23,28 @@
     },
     {
       "gfx_filename": "jirachi_banner",
-      "tileCount": 544,
       "mwidth":30,
       "mheight":9,
       "oam":true
     },
     {
       "gfx_filename": "travel",
-      "tileCount": 304,
       "segments":[
         {
-          "tileCount": 240,
           "segfile": "travel_banner",
           "mwidth":30,
           "mheight":8,
           "oam":true
         },
         {
-          "tileCount": 5,
           "segfile": "travel_bottom_border",
           "width":5
         },
         {
-          "tileCount": 32,
           "segfile": "travel_pole",
           "width":4
         },
         {
-          "tileCount": 24,
           "segfile": "travel_arrows",
           "mwidth":3,
           "mheight":4,
@@ -66,36 +58,30 @@
     },
     {
       "gfx_filename": "evo_banner",
-      "tileCount": 544,
       "mheight":9,
       "mwidth":30,
       "oam":true
     },
     {
       "gfx_filename": "game_over_text",
-      "tileCount": 32,
       "mheight": 2,
       "mwidth": 2,
       "width":16
     },
     {
-      "gfx_filename": "pause_menu_text",
-      "tileCount": 13
+      "gfx_filename": "pause_menu_text"
     },
     {
       "gfx_filename": "latios",
-      "tileCount": 128,
       "mheight":8,
       "mwidth":8
     },
     {
       "gfx_filename": "latios_arm",
-      "tileCount": 16,
       "width":2
     },
     {
       "gfx_filename": "ball_save",
-      "tileCount": 208,
       "segments": [
         {
             "segfile":"ball_save_banner",
@@ -117,7 +103,6 @@
     },
     {
       "gfx_filename": "end_of_ball",
-      "tileCount": 224,
       "segments": [
         {
             "segfile":"end_of_ball_left",

@@ -11,21 +11,18 @@
   "files": [
     {
       "gfx_filename": "gunk_084ED6CC",
-      "tileCount": 32,
       "mwidth":4,
       "mheight":4,
       "width":4
     },
     {
       "gfx_filename": "gunk_084FF90C",
-      "tileCount": 192,
       "mheight":4,
       "mwidth":4,
       "width": 12
     },
     {
       "gfx_filename": "gunk_0851DB8C",
-      "tileCount": 560,
       "segments":[
         {
             "segfile": "gunk_0851DB8C_a",
@@ -45,7 +42,6 @@
     },
     {
       "gfx_filename": "gunk_0851514C",
-      "tileCount": 576,
       "segments":[
         {
             "segfile": "gunk_0851514C_a",
@@ -61,7 +57,6 @@
     },
     {
       "gfx_filename": "gunk_0851976C",
-      "tileCount": 560,
       "segments":[
         {
             "segfile": "gunk_0851976C_a",

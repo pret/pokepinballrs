@@ -11,7 +11,6 @@
   "files": [
     {
       "gfx_filename": "seedot",
-      "tileCount": 84,
       "mwidth":3,
       "mheight":4,
       "width":12,
@@ -19,21 +18,18 @@
     },
     {
       "gfx_filename": "shop_shock_wall",
-      "tileCount": 48,
       "mwidth":2,
       "mheight":2,
       "width":10     
     },
     {
       "gfx_filename": "zigzagoon",
-      "tileCount": 280,
       "mheight":4,
       "mwidth":7,
       "oam":true
     },
     {
       "gfx_filename": "zigzagoon_fx",
-      "tileCount": 96,
       "mwidth":4
     }
   ]

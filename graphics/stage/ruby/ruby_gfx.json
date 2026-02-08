@@ -11,7 +11,6 @@
   "files": [
     {
       "gfx_filename": "shop_door",
-      "tileCount": 48,
       "mwidth":3,
       "mheight":4,
       "width":3,
@@ -19,25 +18,21 @@
     },
     {
       "gfx_filename": "sharpedo",
-      "tileCount": 57,
       "mwidth":19,
       "mheight":3
     },
     {
       "gfx_filename": "shop",
-      "tileCount": 448,
       "mwidth":8
     },
     {
       "gfx_filename": "hatch_cave",
-      "tileCount": 224,
       "mwidth":6,
       "mheight":6,
       "oam":true
     },
     {
       "gfx_filename": "ramp_prize",
-      "tileCount": 32,
       "mheight":2,
       "mwidth":2,
       "width":8
