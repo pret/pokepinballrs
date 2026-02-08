@@ -1610,7 +1610,7 @@ void ply_xswee(struct MusicPlayerInfo *mplayInfo, struct MusicPlayerTrack *track
     track->cmdPtr++;
 }
 
-void ply_xcmd_0C(struct MusicPlayerInfo *mplayInfo, struct MusicPlayerTrack *track)
+void ply_xwait(struct MusicPlayerInfo *mplayInfo, struct MusicPlayerTrack *track)
 {
     u32 unk;
 

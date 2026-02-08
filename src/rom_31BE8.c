@@ -56,7 +56,7 @@ void sub_31498(void)
                 if (gCurrentPinballGame->unk345 < 3)
                 {
                     gCurrentPinballGame->unk345++;
-                    gCurrentPinballGame->unk3C = 20000;
+                    gCurrentPinballGame->scoreAddedInFrame = 20000;
                     m4aSongNumStart(SE_UNKNOWN_0xDE);
                 }
                 else
@@ -73,7 +73,7 @@ void sub_31498(void)
                     gCurrentPinballGame->unk346 = 1;
                     gCurrentPinballGame->unk348 = 0;
                     m4aMPlayStop(&gMPlayInfo_BGM);
-                    gCurrentPinballGame->unk3C = 200000;
+                    gCurrentPinballGame->scoreAddedInFrame = 200000;
                     m4aSongNumStart(SE_UNKNOWN_0xDF);
                 }
             }
@@ -82,7 +82,7 @@ void sub_31498(void)
                 if (gCurrentPinballGame->unk345 < 3)
                 {
                     gCurrentPinballGame->unk345++;
-                    gCurrentPinballGame->unk3C = 20000;
+                    gCurrentPinballGame->scoreAddedInFrame = 20000;
                     m4aSongNumStart(SE_UNKNOWN_0xDE);
                 }
             }

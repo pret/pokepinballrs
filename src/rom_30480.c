@@ -3,12 +3,12 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
-extern const u16 gUnknown_086B4D4E[][2][3];
+extern const u16 gUnknown_086B4D4E[40][2][3];
 extern const u16 gUnknown_086AE54A[];
 extern const u8 gUnknown_0844F20C[][0x280];
 extern const u8 gUnknown_084FDF8C[][0x180];
 extern const u16 gUnknown_086AE544[];
-extern const u16 gUnknown_086B3E1E[][6][2][3];
+extern const u16 gUnknown_086B3E1E[6][6][2][3];
 extern const u16 gUnknown_08137D06[][14];
 extern const u16 gUnknown_08137CF6[][4];
 extern const u16 gUnknown_08137CE2[][5];
@@ -211,7 +211,7 @@ void sub_308DC(void)
         }
 
         gCurrentPinballGame->unk328 = 0;
-        gCurrentPinballGame->unk3C = 3000;
+        gCurrentPinballGame->scoreAddedInFrame = 3000;
     }
 
     for (i = 0; i < 3; i++)

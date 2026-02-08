@@ -8,7 +8,7 @@
 #define MUS_UNKNOWN_0x5             0x05  // BGM 3
 #define MUS_UNKNOWN_0x6             0x06
 #define MUS_OPENING                 0x08  // BGM 4
-#define MUS_HI_SCORE                0x09  // BGM 5
+#define MUS_HIGH_SCORE              0x09  // BGM 5
 #define MUS_EMPTY_0x0A              0x0A  // No sound
 #define MUS_SHOP                    0x0B  // BGM 7
 #define MUS_GAME_OVER               0x0C  // BGM 8
@@ -50,7 +50,7 @@
 
 #define MUS_FIELD_RUBY2             0x5B  // BGM 23  Ruby Field background music after beating (not catching) Rayquaza
 #define MUS_FIELD_SAPPHIRE2         0x5C  // BGM 26 Sapphire Field background music after beating (not catching) Rayquaza
-/*Unknown Music at 0x5D*/
+#define MUS_UNKNOWN_0x5D            0x5D  //
 
 #define SE_UNKNOWN_0x65             0x65 // SE 1 Menu Selection; RS: PokéNav turn on
 #define SE_UNKNOWN_0x66             0x66 // SE 2 Menu Cancel; RS: PokéNav turn off

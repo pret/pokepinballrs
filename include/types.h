@@ -73,7 +73,7 @@ struct VectorU32
 
 struct PokemonSpecies {
     /*0x00*/ u16 mainSeriesIndexNumber; // Refers to the generation three internal index number; e.g. Treecko is 0x115 (decimal 227).
-    /*0x02*/ u8 unk2[0x5];
+    /*0x02*/ u8 nameJapanese[5];
     /*0x07*/ u8 name[10]; // Space-padded ASCII
     /*0x11*/ u8 catchIndex; // Non-zero for all catch pokemon other than Treecko, zero for Treecko and all non-catch pokemon
     /*0x12*/ u8 eggIndex; // Non-zero for all hatch pokemon other than Wurmple, zero for Wurmple and all non-hatch pokemon

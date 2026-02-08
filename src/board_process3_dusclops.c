@@ -7,7 +7,7 @@
 #define BONUS_DUSKULL_TIME 7200 //2 minutes, 60FPS
 #define BONUS_DUSKULL_COMPLETE_POINTS 30000000
 
-extern struct SongHeader gUnknown_086A1588;
+extern struct SongHeader se_unk_f1;
 extern s16 gUnknown_086AE5EC[][3];
 
 
@@ -142,15 +142,15 @@ void DusclopsBoardProcess_3B_33130(void)
             break;
         case 5:
             sub_351A8();
-            if (gCurrentPinballGame->unk1C)
+            if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             {
                 gCurrentPinballGame->unk18 = 181;
             }
             if (gCurrentPinballGame->unk18 == 180)
             {
-                gCurrentPinballGame->unk1C = 1;
-                gCurrentPinballGame->unk38 = 400000;
-                gCurrentPinballGame->unk3C = BONUS_DUSKULL_COMPLETE_POINTS;
+                gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+                gCurrentPinballGame->scoreAddStepSize = 400000;
+                gCurrentPinballGame->scoreAddedInFrame = BONUS_DUSKULL_COMPLETE_POINTS;
             }
             if (gCurrentPinballGame->unk18 < 240)
             {
@@ -290,7 +290,7 @@ void sub_336E0(void) {
                 sp0 = 4;
                 r7 = 4;
                 gCurrentPinballGame->unk3B6[i] = 0; //Time alive
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1588);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_f1);
                 for (j = 2; j > 0; j--)
                 {
                     if (gCurrentPinballGame->unk3C4[j].y > gCurrentPinballGame->unk3C4[j-1].y)
@@ -422,7 +422,7 @@ void sub_336E0(void) {
             gCurrentPinballGame->unk3A9[i] = 0;
             if (gCurrentPinballGame->unk396 > 0)
                 gCurrentPinballGame->unk396--; //Number of active duskull
-            gCurrentPinballGame->unk3C = 100000;
+            gCurrentPinballGame->scoreAddedInFrame = 100000;
             gCurrentPinballGame->unk385++; // Number hit
             m4aSongNumStart(SE_UNKNOWN_0xF2); //Duskull Death cry
             sub_11B0(7);
@@ -849,8 +849,8 @@ void sub_34450(void)
         }
 
         gCurrentPinballGame->unk385++;
-        gCurrentPinballGame->unk3C = 300000;
-
+        gCurrentPinballGame->scoreAddedInFrame = 300000;
+        
         break;
     }
     case 6:
@@ -969,7 +969,7 @@ void sub_34450(void)
 
             if (gCurrentPinballGame->unk3E6 == 30)
             {
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A17D8);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_f5);
             }
             break;
         }

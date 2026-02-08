@@ -33,14 +33,14 @@ extern const u8 gUnknown_0813A854[];
 extern const u16 gUnknown_08327994[];
 extern const u8 gUnknown_0844F98C[][0x280];
 extern const u8 gUnknown_0845588C[][0x100];
-extern struct SongHeader gUnknown_086A1ABC;
-extern struct SongHeader gUnknown_086A1B9C;
-extern struct SongHeader gUnknown_086A1BC8;
-extern struct SongHeader gUnknown_086A1C00;
-extern struct SongHeader gUnknown_086A1C64;
-extern struct SongHeader gUnknown_086A1C88;
-extern struct SongHeader gUnknown_086A1CCC;
-extern struct SongHeader gUnknown_086A1D64;
+extern struct SongHeader se_unk_fc;
+extern struct SongHeader se_unk_fd;
+extern struct SongHeader se_unk_fe;
+extern struct SongHeader se_unk_ff;
+extern struct SongHeader se_unk_100;
+extern struct SongHeader se_unk_101;
+extern struct SongHeader se_unk_102;
+extern struct SongHeader se_unk_103;
 extern const u16 gUnknown_086AE718[][3];
 extern const s16 gUnknown_086AEA60[];
 extern const u16 gUnknown_086AE9C4[];
@@ -50,8 +50,8 @@ extern const struct Vector16 gUnknown_086AEA3C[];
 extern const u16 *gUnknown_086AEA50[];
 extern const s16 gUnknown_086AEA68[];
 extern const struct Unk_086AEA70 gUnknown_086AEA70[];
-extern const u16 gUnknown_086B9AB8[][2][3];
-extern const u16 gUnknown_086B9DAC[][2][3];
+extern const u16 gUnknown_086B9AB8[126][2][3];
+extern const u16 gUnknown_086B9DAC[126][2][3];
 extern const struct SpriteSet *gUnknown_086BB420[];
 
 void KecleonBoardProcess_3A_35860(void)
@@ -178,14 +178,14 @@ void KecleonBoardProcess_3B_35AA4(void)
         break;
     case 3:
         sub_351A8();
-        if (gCurrentPinballGame->unk1C)
+        if (gCurrentPinballGame->scoreCounterAnimationEnabled)
             gCurrentPinballGame->unk18 = 181;
 
         if (gCurrentPinballGame->unk18 == 180)
         {
-            gCurrentPinballGame->unk1C = 1;
-            gCurrentPinballGame->unk38 = 400000;
-            gCurrentPinballGame->unk3C = BONUS_KECLEON_COMPLETE_POINTS;
+            gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
+            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddedInFrame = BONUS_KECLEON_COMPLETE_POINTS;
         }
 
         if (gCurrentPinballGame->unk18 < 240)
@@ -317,14 +317,14 @@ void sub_35D54(void)
             }
 
             if (gCurrentPinballGame->unk3E2 == 60 || gCurrentPinballGame->unk3E2 == 61)
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1ABC);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_fc);
         }
 
         if (gCurrentPinballGame->unk3E2 == 64)
         {
             gCurrentPinballGame->unk3FA = gCurrentPinballGame->unk3E4 / 2;
             if (gCurrentPinballGame->unk3E4 == 4)
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1B9C);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_fd);
         }
         break;
     case 3:
@@ -382,7 +382,7 @@ void sub_35D54(void)
         if (gCurrentPinballGame->unk3E4 < 18)
         {
             if (gCurrentPinballGame->unk3E4 == 0)
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1BC8);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_fe);
 
             gCurrentPinballGame->unk3E4++;
             if (gCurrentPinballGame->unk3DE == 66)
@@ -470,9 +470,9 @@ void sub_35D54(void)
                 gCurrentPinballGame->unk3E2 = gCurrentPinballGame->unk3DE;
 
             if (gCurrentPinballGame->unk3E2 == gCurrentPinballGame->unk3DE + 1)
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1C00);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_ff);
             if (gCurrentPinballGame->unk3E2 == gCurrentPinballGame->unk3DE + 3)
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1C00);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_ff);
         }
         break;
     case 7:
@@ -587,7 +587,7 @@ void sub_35D54(void)
 
         gCurrentPinballGame->unk3E2 = gCurrentPinballGame->unk3DE;
         gCurrentPinballGame->unk3E4 = 0;
-        MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1C64);
+        MPlayStart(&gMPlayInfo_SE1, &se_unk_100);
         break;
     case 10:
         if (gUnknown_086AE718[gCurrentPinballGame->unk3E2][1] > gCurrentPinballGame->unk3E4)
@@ -613,9 +613,9 @@ void sub_35D54(void)
         gCurrentPinballGame->unk3E2 = gCurrentPinballGame->unk3DE + 2;
         gCurrentPinballGame->unk3E4 = 0;
         gCurrentPinballGame->unk3FA = 0;
-        gCurrentPinballGame->unk3C = 500000;
+        gCurrentPinballGame->scoreAddedInFrame = 500000;
         gCurrentPinballGame->unk385++;
-        MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1C88);
+        MPlayStart(&gMPlayInfo_SE1, &se_unk_101);
         sub_11B0(7);
         break;
     case 12:
@@ -746,10 +746,10 @@ void sub_35D54(void)
             }
 
             if (gCurrentPinballGame->unk3E2 == gCurrentPinballGame->unk3DE + 6)
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1CCC);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_102);
 
             if (gCurrentPinballGame->unk3E2 == gCurrentPinballGame->unk3DE + 8)
-                MPlayStart(&gMPlayInfo_SE1, &gUnknown_086A1D64);
+                MPlayStart(&gMPlayInfo_SE1, &se_unk_103);
         }
         break;
     case 15:
@@ -975,7 +975,7 @@ void sub_372B4(void)
                 gCurrentPinballGame->unk404 = 0;
                 gCurrentPinballGame->unk406 = 1;
                 gCurrentPinballGame->unk408 = 0;
-                gCurrentPinballGame->unk3C = 10000;
+                gCurrentPinballGame->scoreAddedInFrame = 10000;
                 m4aSongNumStart(SE_UNKNOWN_0x106);
             }
 

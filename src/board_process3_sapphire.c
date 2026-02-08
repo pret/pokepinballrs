@@ -173,7 +173,7 @@ void sub_32968(void)
         sub_329F4();
         break;
     case 4:
-        sub_1C5AC();
+        sub_1C5AC(); //Center Hole
         break;
     }
 }
@@ -182,7 +182,7 @@ void sub_329B0(void)
 {
     gCurrentPinballGame->unk28 = 0xB4;
     gCurrentPinballGame->unk1BA = 0xB4;
-    gCurrentPinballGame->unk3C = 500000;
+    gCurrentPinballGame->scoreAddedInFrame = 500000;
     gMain.blendControl = 0xCE;
     gMain.blendBrightness = 0;
     gCurrentPinballGame->unk5F7 = 1;
@@ -260,7 +260,7 @@ void sub_32B74(void)
     gCurrentPinballGame->unk5FC = 0;
     gCurrentPinballGame->unk5FE = 30;
     gCurrentPinballGame->unk5FB = 0;
-    gCurrentPinballGame->unk3C = 50000;
+    gCurrentPinballGame->scoreAddedInFrame = 50000;
 
     m4aSongNumStart(SE_UNKNOWN_0xD5);
     sub_11B0(8);

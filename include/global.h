@@ -129,7 +129,7 @@ struct PinballGame
     /*0x018*/ u16 unk18;
     /*0x01A*/ s8 unk1A;
     /*0x01B*/ u8 unk1B;
-    /*0x01C*/ u8 unk1C;
+    /*0x01C*/ bool8 scoreCounterAnimationEnabled;
     /*0x01D*/ u8 unk1D;
     /*0x01E*/ u8 unk1E;
     /*0x01F*/ u8 unk1F;
@@ -150,11 +150,11 @@ struct PinballGame
     /*0x034*/ s8 unk34;
     /*0x035*/ s8 area;
     /*0x036*/ s8 unk36;
-    /*0x038*/ u32 unk38; //score to add every frame until unk3C score has been added to player's total
-    /*0x03C*/ u32 unk3C; //score to add in a bonus field or mode (by completion or other ways, like hitting Duskulls)
-    /*0x040*/ u32 unk40;
-    /*0x044*/ u32 unk44;
-    /*0x048*/ u32 unk48;
+    /*0x038*/ u32 scoreAddStepSize; //score to add every frame until scoreAddedInFrame score has been added to player's total
+    /*0x03C*/ u32 scoreAddedInFrame; //score to add in a bonus field or mode (by completion or other ways, like hitting Duskulls)
+    /*0x040*/ u32 scoreAdditionAccumulator; //score left to be counted up on the score registers
+    /*0x044*/ u32 scoreLo; //counts score until 99_999_999, overflows into scoreHi
+    /*0x048*/ u32 scoreHi; //counts score until 9_999, then freezes total score to 999_999_999_999!
     /*0x04C*/ s16 unk4C;
     /*0x04E*/ s16 unk4E;
     /*0x050*/ u8 filler50[0x4];
@@ -947,8 +947,8 @@ extern u8 gUnknown_083FE44C[][0x200];
 extern u16 gUnknown_08494E4C[]; 
 extern u16 gUnknown_084EDACC[]; 
 extern u8 gUnknown_084FF30C[];
-extern struct SongHeader gUnknown_0869F7C8;
-extern struct SongHeader gUnknown_086A17D8;
+extern struct SongHeader se_unk_8b;
+extern struct SongHeader se_unk_f5;
 extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
 extern const s16 gUnknown_086ACDF4[9];
 typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);
@@ -959,7 +959,7 @@ extern u16 gUnknown_086ACEF4[2];
 extern const u8 *const gUnknown_086ACEF8[];
 extern const u8 *const gUnknown_086ACF18[];
 extern s16 gUnknown_086AE68E[][2];
-extern u16 gUnknown_086B4568[][45];
+extern u16 gUnknown_086B4568[14][45];
 extern const u8 gUnknown_084F61EC[]; 
 extern u8 gUnknown_081B45A4[]; 
 extern const u16 gUnknown_086AD2DE[];

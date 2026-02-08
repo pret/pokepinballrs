@@ -122,7 +122,7 @@ void sub_2C538(void)
             if (gCurrentPinballGame->unk302 <= 0)
             {
                 m4aSongNumStart(SE_UNKNOWN_0xC5);
-                gCurrentPinballGame->unk3C = 10000;
+                gCurrentPinballGame->scoreAddedInFrame = 10000;
                 gCurrentPinballGame->ball->velocity.x = -600;
                 gCurrentPinballGame->ball->velocity.y = -300;
                 gCurrentPinballGame->ball->unk6 = 0;

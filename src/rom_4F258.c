@@ -18,7 +18,7 @@ extern const u8 *gUnknown_086B094C[][3];
 extern const s16 gUnknown_086B08CA[];
 extern const u8 *gUnknown_086B08D4[][3][5];
 
-extern struct SongHeader gUnknown_0869F664;
+extern struct SongHeader se_unk_87;
 
 
 void sub_4E814(void)
@@ -82,7 +82,7 @@ void sub_4E920(void)
         if (gCurrentPinballGame->unk716 == 3)
         {
             m4aSongNumStart(SE_UNKNOWN_0x73);
-            gCurrentPinballGame->unk3C = 500;
+            gCurrentPinballGame->scoreAddedInFrame = 500;
             sub_11B0(7);
         }
     }
@@ -373,7 +373,7 @@ void sub_4F0F0(void)
         }
 
         if (gCurrentPinballGame->unk71C == 40)
-        MPlayStart(&gMPlayInfo_SE1, &gUnknown_0869F664);
+        MPlayStart(&gMPlayInfo_SE1, &se_unk_87);
 
         if (gCurrentPinballGame->unk71C == 60)
             gMain.unk44[43]->available = 1;

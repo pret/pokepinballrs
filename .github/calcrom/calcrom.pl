@@ -113,7 +113,7 @@ my $partial_doc_cmd = "grep -E '_[0-9a-fA-F]{4,}\$'";
 
 my $count_cmd = "wc -l";
 
-my $incbin_cmd = "find \"\$(dirname $elffname)\" \\( -name '*.s' -o -name '*.inc' \\) -exec cat {} ';' | grep -oE '^\\s*\\.incbin\\s*\"[^\"]+\"\s*,\\s*(0x)?[0-9a-fA-F]+\\s*,\\s*(0x)?[0-9a-fA-F]+' -";
+my $incbin_cmd = "find \"\$(dirname $elffname)\" \\( -name '*.s' -o -name '*.inc' \\) -exec cat {} ';' | grep -oE '^\\s*\\.incbin\\s*\"[^\"]+\"\\s*,\\s*(0x)?[0-9a-fA-F]+\\s*,\\s*(0x)?[0-9a-fA-F]+(\\s*-\\s*(0x)?[0-9a-fA-F]+)?' -";
 
 # It sucks that we have to run this three times, but I can't figure out how to get
 # stdin working for subcommands in perl while still having a timeout. It's decently
@@ -152,7 +152,7 @@ my $incbin_count_as_string;
 
 my $incbin_bytes_as_string;
 (run (
-    command => "(echo -n 'ibase=16;' ; $incbin_cmd | sed -E 's/.*,\\s*0x([0-9a-fA-F]+)/\\1/' | tr '\\n' '+'; echo '0' ) | bc",
+    command => "(echo -n 'ibase=16;' ; $incbin_cmd | sed -E 's/.*,\\s*//; s/0x//g; s/\\s*-\\s*/-/g' | tr '\\n' '+'; echo '0' ) | bc",
     buffer => \$incbin_bytes_as_string,
     timeout => 60
 ))

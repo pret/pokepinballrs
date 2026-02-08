@@ -653,8 +653,8 @@ void sub_48190(void)
                 var0 = 100;
                 if (gCurrentPinballGame->unk6B4 || gCurrentPinballGame->unk6B8)
                 {
-                    gCurrentPinballGame->unk44 += gCurrentPinballGame->unk6B4;
-                    gCurrentPinballGame->unk48 += gCurrentPinballGame->unk6B8;
+                    gCurrentPinballGame->scoreLo += gCurrentPinballGame->unk6B4;
+                    gCurrentPinballGame->scoreHi += gCurrentPinballGame->unk6B8;
                     gCurrentPinballGame->unk6B4 = 0;
                     gCurrentPinballGame->unk6B8 = 0;
                     m4aSongNumStart(SE_UNKNOWN_0x91);
@@ -989,19 +989,19 @@ void sub_48190(void)
                 if (gCurrentPinballGame->unk6B4 >= 200000)
                 {
                     gCurrentPinballGame->unk6B4 -= 200000;
-                    gCurrentPinballGame->unk44 += 200000;
+                    gCurrentPinballGame->scoreLo += 200000;
                     m4aSongNumStart(SE_UNKNOWN_0x91);
                 }
                 else if (gCurrentPinballGame->unk6B8 != 0)
                 {
                     gCurrentPinballGame->unk6B8--;
                     gCurrentPinballGame->unk6B4 += 99800000;
-                    gCurrentPinballGame->unk44 += 200000;
+                    gCurrentPinballGame->scoreLo += 200000;
                     m4aSongNumStart(SE_UNKNOWN_0x91);
                 }
                 else if (gCurrentPinballGame->unk6B4 != 0)
                 {
-                    gCurrentPinballGame->unk44 += gCurrentPinballGame->unk6B4;
+                    gCurrentPinballGame->scoreLo += gCurrentPinballGame->unk6B4;
                     gCurrentPinballGame->unk6B4 = 0;
                     m4aSongNumStart(SE_UNKNOWN_0x91);
                 }
