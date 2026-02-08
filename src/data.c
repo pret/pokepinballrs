@@ -3,3 +3,4 @@
 
 // 6a3700
 #include "data/species.h"
+#include "data/egg_locations.h"
