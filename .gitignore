@@ -38,6 +38,7 @@ baserom.*
 build-cmake-*/
 compile_commands.json
 CMakeLists.txt
+graphics_rules_generated.mk
 
 # clangd
 .cache/

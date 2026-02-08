@@ -1,0 +1,137 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "gunk_084F61EC",
+      "mwidth":8,
+      "align":1
+    },
+    {
+      "gfx_filename": "pika_spinner",
+      "mwidth":3,
+      "mheight":3,
+      "width":12,
+      "oam":true  
+    },
+    {
+      "gfx_filename": "jirachi_banner",
+      "mwidth":30,
+      "mheight":9,
+      "oam":true
+    },
+    {
+      "gfx_filename": "travel",
+      "segments":[
+        {
+          "segfile": "travel_banner",
+          "mwidth":30,
+          "mheight":8,
+          "oam":true
+        },
+        {
+          "segfile": "travel_bottom_border",
+          "width":5
+        },
+        {
+          "segfile": "travel_pole",
+          "width":4
+        },
+        {
+          "segfile": "travel_arrows",
+          "mwidth":3,
+          "mheight":4,
+          "oam":true
+        },
+        {
+          "segfile": "travel_pole_base",
+          "width":2
+        }
+      ]
+    },
+    {
+      "gfx_filename": "evo_banner",
+      "mheight":9,
+      "mwidth":30,
+      "oam":true
+    },
+    {
+      "gfx_filename": "game_over_text",
+      "mheight": 2,
+      "mwidth": 2,
+      "width":16
+    },
+    {
+      "gfx_filename": "pause_menu_text"
+    },
+    {
+      "gfx_filename": "latios",
+      "mheight":8,
+      "mwidth":8
+    },
+    {
+      "gfx_filename": "latios_arm",
+      "width":2
+    },
+    {
+      "gfx_filename": "ball_save",
+      "segments": [
+        {
+            "segfile":"ball_save_banner",
+            "mwidth":16,
+            "mheight":8,
+            "oam":true
+        },
+        {
+            "segfile":"ball_save_latias",
+            "width":8,
+            "height":8
+        },
+        {
+            "segfile":"ball_save_latias_arm",
+            "width":2,
+            "height":3
+        }
+      ]
+    },
+    {
+      "gfx_filename": "end_of_ball",
+      "segments": [
+        {
+            "segfile":"end_of_ball_left",
+            "mwidth":8,
+            "mheight":8
+        },
+        {
+            "segfile":"end_of_ball_top_corner",
+            "mwidth":2,
+            "mheight":2
+        },
+        {
+            "segfile":"end_of_ball_banner",
+            "mwidth":22,
+            "mheight":2,
+            "oam":true
+        },
+        {
+            "segfile":"end_of_ball_right",
+            "mwidth":8,
+            "mheight":8
+        },
+        {
+            "segfile":"end_of_ball_space",
+            "mwidth":24,
+            "mheight":2,
+            "oam":true
+        }
+      ]
+    }
+  ]
+}

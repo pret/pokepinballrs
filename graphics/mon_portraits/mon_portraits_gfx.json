@@ -1,0 +1,852 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 2,
+    "mheight": 2,
+    "oam": false,
+    "width": 6
+  },
+  "files": [
+    {
+      "gfx_filename": "207_portrait",
+      "palette": "207_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "208_portrait",
+      "palette": "208_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "209_portrait",
+      "palette": "209_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "210_portrait",
+      "palette": "210_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "abra_portrait",
+      "palette": "abra_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "absol_portrait",
+      "palette": "absol_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "aerodactyl_portrait",
+      "palette": "aerodactyl_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "aggron_portrait",
+      "palette": "aggron_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "alakazam_portrait",
+      "palette": "alakazam_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "altaria_portrait",
+      "palette": "altaria_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "anorith_portrait",
+      "palette": "anorith_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "armaldo_portrait",
+      "palette": "armaldo_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "aron_portrait",
+      "palette": "aron_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "azumarill_portrait",
+      "palette": "azumarill_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "azurill_portrait",
+      "palette": "azurill_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "bagon_portrait",
+      "palette": "bagon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "baltoy_portrait",
+      "palette": "baltoy_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "banette_portrait",
+      "palette": "banette_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "barboach_portrait",
+      "palette": "barboach_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "beautifly_portrait",
+      "palette": "beautifly_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "beldum_portrait",
+      "palette": "beldum_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "bellossom_portrait",
+      "palette": "bellossom_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "blaziken_portrait",
+      "palette": "blaziken_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "breloom_portrait",
+      "palette": "breloom_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "cacnea_portrait",
+      "palette": "cacnea_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "cacturne_portrait",
+      "palette": "cacturne_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "camerupt_portrait",
+      "palette": "camerupt_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "carvanha_portrait",
+      "palette": "carvanha_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "cascoon_portrait",
+      "palette": "cascoon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "castform_portrait",
+      "palette": "castform_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "chikorita_portrait",
+      "palette": "chikorita_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "chimecho_portrait",
+      "palette": "chimecho_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "chinchou_portrait",
+      "palette": "chinchou_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "clamperl_portrait",
+      "palette": "clamperl_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "claydol_portrait",
+      "palette": "claydol_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "combusken_portrait",
+      "palette": "combusken_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "corphish_portrait",
+      "palette": "corphish_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "corsola_portrait",
+      "palette": "corsola_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "cradily_portrait",
+      "palette": "cradily_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "crawdaunt_portrait",
+      "palette": "crawdaunt_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "crobat_portrait",
+      "palette": "crobat_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "cyndaquil_portrait",
+      "palette": "cyndaquil_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "delcatty_portrait",
+      "palette": "delcatty_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "dodrio_portrait",
+      "palette": "dodrio_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "doduo_portrait",
+      "palette": "doduo_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "donphan_portrait",
+      "palette": "donphan_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "dusclops_portrait",
+      "palette": "dusclops_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "duskull_portrait",
+      "palette": "duskull_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "dustox_portrait",
+      "palette": "dustox_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "electrike_portrait",
+      "palette": "electrike_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "electrode_portrait",
+      "palette": "electrode_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "exploud_portrait",
+      "palette": "exploud_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "feebas_portrait",
+      "palette": "feebas_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "flygon_portrait",
+      "palette": "flygon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "gardevoir_portrait",
+      "palette": "gardevoir_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "geodude_portrait",
+      "palette": "geodude_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "girafarig_portrait",
+      "palette": "girafarig_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "glalie_portrait",
+      "palette": "glalie_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "gloom_portrait",
+      "palette": "gloom_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "golbat_portrait",
+      "palette": "golbat_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "goldeen_portrait",
+      "palette": "goldeen_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "golduck_portrait",
+      "palette": "golduck_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "golem_portrait",
+      "palette": "golem_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "gorebyss_portrait",
+      "palette": "gorebyss_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "graveler_portrait",
+      "palette": "graveler_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "grimer_portrait",
+      "palette": "grimer_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "groudon_portrait",
+      "palette": "groudon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "grovyle_portrait",
+      "palette": "grovyle_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "grumpig_portrait",
+      "palette": "grumpig_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "gulpin_portrait",
+      "palette": "gulpin_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "gyarados_portrait",
+      "palette": "gyarados_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "hariyama_portrait",
+      "palette": "hariyama_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "heracross_portrait",
+      "palette": "heracross_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "horsea_portrait",
+      "palette": "horsea_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "huntail_portrait",
+      "palette": "huntail_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "igglybuff_portrait",
+      "palette": "igglybuff_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "illumise_portrait",
+      "palette": "illumise_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "jigglypuff_portrait",
+      "palette": "jigglypuff_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "jirachi_portrait",
+      "palette": "jirachi_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "kadabra_portrait",
+      "palette": "kadabra_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "kecleon_portrait",
+      "palette": "kecleon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "kingdra_portrait",
+      "palette": "kingdra_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "kirlia_portrait",
+      "palette": "kirlia_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "koffing_portrait",
+      "palette": "koffing_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "kyogre_portrait",
+      "palette": "kyogre_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "lairon_portrait",
+      "palette": "lairon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "lanturn_portrait",
+      "palette": "lanturn_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "latias_portrait",
+      "palette": "latias_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "latios_portrait",
+      "palette": "latios_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "lileep_portrait",
+      "palette": "lileep_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "linoone_portrait",
+      "palette": "linoone_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "lombre_portrait",
+      "palette": "lombre_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "lotad_portrait",
+      "palette": "lotad_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "loudred_portrait",
+      "palette": "loudred_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "ludicolo_portrait",
+      "palette": "ludicolo_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "lunatone_portrait",
+      "palette": "lunatone_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "luvdisc_portrait",
+      "palette": "luvdisc_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "machamp_portrait",
+      "palette": "machamp_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "machoke_portrait",
+      "palette": "machoke_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "machop_portrait",
+      "palette": "machop_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "magcargo_portrait",
+      "palette": "magcargo_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "magikarp_portrait",
+      "palette": "magikarp_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "magnemite_portrait",
+      "palette": "magnemite_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "magneton_portrait",
+      "palette": "magneton_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "makuhita_portrait",
+      "palette": "makuhita_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "manectric_portrait",
+      "palette": "manectric_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "marill_portrait",
+      "palette": "marill_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "marshtomp_portrait",
+      "palette": "marshtomp_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "masquerain_portrait",
+      "palette": "masquerain_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "mawile_portrait",
+      "palette": "mawile_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "medicham_portrait",
+      "palette": "medicham_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "meditite_portrait",
+      "palette": "meditite_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "metagross_portrait",
+      "palette": "metagross_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "metang_portrait",
+      "palette": "metang_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "mightyena_portrait",
+      "palette": "mightyena_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "milotic_portrait",
+      "palette": "milotic_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "minun_portrait",
+      "palette": "minun_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "mudkip_portrait",
+      "palette": "mudkip_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "muk_portrait",
+      "palette": "muk_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "natu_portrait",
+      "palette": "natu_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "nincada_portrait",
+      "palette": "nincada_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "ninetales_portrait",
+      "palette": "ninetales_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "ninjask_portrait",
+      "palette": "ninjask_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "nosepass_portrait",
+      "palette": "nosepass_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "numel_portrait",
+      "palette": "numel_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "nuzleaf_portrait",
+      "palette": "nuzleaf_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "oddish_portrait",
+      "palette": "oddish_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "pelipper_portrait",
+      "palette": "pelipper_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "phanpy_portrait",
+      "palette": "phanpy_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "pichu_portrait",
+      "palette": "pichu_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "pikachu_portrait",
+      "palette": "pikachu_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "pinsir_portrait",
+      "palette": "pinsir_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "plusle_portrait",
+      "palette": "plusle_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "poochyena_portrait",
+      "palette": "poochyena_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "psyduck_portrait",
+      "palette": "psyduck_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "question_mark_portrait",
+      "palette": "question_mark_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "raichu_portrait",
+      "palette": "raichu_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "ralts_portrait",
+      "palette": "ralts_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "rayquaza_portrait",
+      "palette": "rayquaza_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "regice_portrait",
+      "palette": "regice_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "regirock_portrait",
+      "palette": "regirock_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "registeel_portrait",
+      "palette": "registeel_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "relicanth_portrait",
+      "palette": "relicanth_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "rhydon_portrait",
+      "palette": "rhydon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "rhyhorn_portrait",
+      "palette": "rhyhorn_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "roselia_portrait",
+      "palette": "roselia_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "sableye_portrait",
+      "palette": "sableye_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "salamence_portrait",
+      "palette": "salamence_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "sandshrew_portrait",
+      "palette": "sandshrew_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "sandslash_portrait",
+      "palette": "sandslash_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "sceptile_portrait",
+      "palette": "sceptile_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "seadra_portrait",
+      "palette": "seadra_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "seaking_portrait",
+      "palette": "seaking_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "sealeo_portrait",
+      "palette": "sealeo_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "seedot_portrait",
+      "palette": "seedot_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "seviper_portrait",
+      "palette": "seviper_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "sharpedo_portrait",
+      "palette": "sharpedo_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "shedinja_portrait",
+      "palette": "shedinja_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "shelgon_portrait",
+      "palette": "shelgon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "shiftry_portrait",
+      "palette": "shiftry_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "shroomish_portrait",
+      "palette": "shroomish_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "shuppet_portrait",
+      "palette": "shuppet_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "silcoon_portrait",
+      "palette": "silcoon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "skarmory_portrait",
+      "palette": "skarmory_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "skitty_portrait",
+      "palette": "skitty_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "slaking_portrait",
+      "palette": "slaking_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "slakoth_portrait",
+      "palette": "slakoth_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "slugma_portrait",
+      "palette": "slugma_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "snorunt_portrait",
+      "palette": "snorunt_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "solrock_portrait",
+      "palette": "solrock_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "spheal_portrait",
+      "palette": "spheal_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "spinda_portrait",
+      "palette": "spinda_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "spoink_portrait",
+      "palette": "spoink_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "starmie_portrait",
+      "palette": "starmie_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "staryu_portrait",
+      "palette": "staryu_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "surskit_portrait",
+      "palette": "surskit_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "swablu_portrait",
+      "palette": "swablu_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "swalot_portrait",
+      "palette": "swalot_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "swampert_portrait",
+      "palette": "swampert_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "swellow_portrait",
+      "palette": "swellow_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "taillow_portrait",
+      "palette": "taillow_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "tentacool_portrait",
+      "palette": "tentacool_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "tentacruel_portrait",
+      "palette": "tentacruel_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "torchic_portrait",
+      "palette": "torchic_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "torkoal_portrait",
+      "palette": "torkoal_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "totodile_portrait",
+      "palette": "totodile_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "trapinch_portrait",
+      "palette": "trapinch_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "treecko_portrait",
+      "palette": "treecko_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "tropius_portrait",
+      "palette": "tropius_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "vibrava_portrait",
+      "palette": "vibrava_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "vigoroth_portrait",
+      "palette": "vigoroth_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "vileplume_portrait",
+      "palette": "vileplume_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "volbeat_portrait",
+      "palette": "volbeat_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "voltorb_portrait",
+      "palette": "voltorb_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "vulpix_portrait",
+      "palette": "vulpix_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "wailmer_portrait",
+      "palette": "wailmer_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "wailord_portrait",
+      "palette": "wailord_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "walrein_portrait",
+      "palette": "walrein_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "weezing_portrait",
+      "palette": "weezing_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "whiscash_portrait",
+      "palette": "whiscash_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "whismur_portrait",
+      "palette": "whismur_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "wigglytuff_portrait",
+      "palette": "wigglytuff_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "wingull_portrait",
+      "palette": "wingull_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "wobbuffet_portrait",
+      "palette": "wobbuffet_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "wurmple_portrait",
+      "palette": "wurmple_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "wynaut_portrait",
+      "palette": "wynaut_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "xatu_portrait",
+      "palette": "xatu_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "zangoose_portrait",
+      "palette": "zangoose_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "zigzagoon_portrait",
+      "palette": "zigzagoon_portrait.gbapal"
+    },
+    {
+      "gfx_filename": "zubat_portrait",
+      "palette": "zubat_portrait.gbapal"
+    }
+  ]
+}

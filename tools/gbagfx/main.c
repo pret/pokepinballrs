@@ -68,7 +68,7 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
             image.tilemap.size = fileSize;
         }
 
-        ReadTileImage(inputPath, options->width, options->metatileWidth, options->metatileHeight, options->pinballHatchSprite, &image, !image.hasPalette);
+        ReadTileImage(inputPath, options->width, options->metatileWidth, options->metatileHeight, &image, !image.hasPalette, options->oamSprite);
         if (image.paletteMap != NULL && image.bitDepth == 4)
         {
            Convert4BppImageWithPaletteMap(&image);
@@ -97,7 +97,7 @@ void ConvertPngToGba(char *inputPath, char *outputPath, struct PngToGbaOptions *
     ReadPng(inputPath, &image);
 
     if (options->isTiled)
-        WriteTileImage(outputPath, options->numTilesMode, options->numTiles, options->metatileWidth, options->metatileHeight, options->pinballHatchSprite, &image, !image.hasPalette);
+        WriteTileImage(outputPath, options->numTilesMode, options->numTiles, options->metatileWidth, options->metatileHeight, &image, !image.hasPalette, options->oamSprite);
     else
         WritePlainImage(outputPath, options->dataWidth, &image, !image.hasPalette);
 
@@ -115,7 +115,6 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     options.width = 1;
     options.metatileWidth = 1;
     options.metatileHeight = 1;
-    options.pinballHatchSprite = 0;
     options.tilemapFilePath = NULL;
     options.isAffineMap = false;
     options.isTiled = true;
@@ -186,8 +185,8 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.metatileHeight < 1)
                 FATAL_ERROR("metatile height must be positive.\n");
         }
-        else if (strcmp(option, "-pinball-hatch-sprite") == 0) {
-            options.pinballHatchSprite = 1;
+        else if (strcmp(option, "-oam") == 0) {
+            options.oamSprite = 1;
         }
         else if (strcmp(option, "-tilemap") == 0)
         {
@@ -222,21 +221,10 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
         }
     }
 
-    if (options.pinballHatchSprite) {
-        if (options.metatileWidth != 1 || options.metatileHeight != 1) {
-            FATAL_ERROR("Cannot specify metatile dimensions for pinball hatch sprites.\n");
+    if (options.oamSprite){
+        if (options.metatileHeight == 1 && options.metatileWidth == 1){
+            FATAL_ERROR("Must specify metatile dimensions when using oam chunk mapping.\n");
         }
-
-        if (options.width == 1) {
-            options.width = 3;
-        }
-
-        if (options.width % 3 != 0) {
-            FATAL_ERROR("Pinball hatch sprite width must be a multiple of 3.");
-        }
-
-        options.metatileWidth = 3;
-        options.metatileHeight = 3;
     }
 
     if (options.metatileWidth > options.width)
@@ -254,7 +242,6 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
     options.bitDepth = outputFileExtension[0] - '0';
     options.metatileWidth = 1;
     options.metatileHeight = 1;
-    options.pinballHatchSprite = 0;
     options.tilemapFilePath = NULL;
     options.isAffineMap = false;
     options.isTiled = true;
@@ -309,8 +296,8 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.metatileHeight < 1)
                 FATAL_ERROR("metatile height must be positive.\n");
         }
-        else if (strcmp(option, "-pinball-hatch-sprite") == 0) {
-            options.pinballHatchSprite = 1;
+        else if (strcmp(option, "-oam") == 0) {
+            options.oamSprite = 1;
         }
         else if (strcmp(option, "-plain") == 0)
         {
@@ -334,13 +321,10 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
         }
     }
 
-    if (options.pinballHatchSprite) {
-        if (options.metatileWidth != 1 || options.metatileHeight != 1) {
-            FATAL_ERROR("Cannot specify metatile dimensions for pinball hatch sprites.\n");
+    if (options.oamSprite){
+        if (options.metatileHeight == 1 && options.metatileWidth == 1){
+            FATAL_ERROR("Must specify metatile dimensions when using oam mapping.\n");
         }
-
-        options.metatileWidth = 3;
-        options.metatileHeight = 3;
     }
 
     ConvertPngToGba(inputPath, outputPath, &options);

@@ -52,8 +52,16 @@ enum NumTilesMode {
     NUM_TILES_ERROR,
 };
 
-void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors);
-void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, int metatileWidth, int metatileHeight, bool pinballHatchSprite, struct Image *image, bool invertColors);
+typedef struct {
+    int x;
+    int y;
+} TileCoord;
+
+#define MAX_OAM_TILE_SIDE_LENGTH 32
+#define MAX_OAM_TILE_SIDE_LENGTH_SQUARED MAX_OAM_TILE_SIDE_LENGTH * MAX_OAM_TILE_SIDE_LENGTH
+
+void ReadTileImage(char *path, int tilesWidth, int metatileWidth, int metatileHeight, struct Image *image, bool invertColors, bool optomized_2n_map);
+void WriteTileImage(char *path, enum NumTilesMode numTilesMode, int numTiles, int metatileWidth, int metatileHeight, struct Image *image, bool invertColors, bool optomized_2n_map);
 void ReadPlainImage(char *path, int dataWidth, struct Image *image, bool invertColors);
 void WritePlainImage(char *path, int dataWidth, struct Image *image, bool invertColors);
 void FreeImage(struct Image *image);

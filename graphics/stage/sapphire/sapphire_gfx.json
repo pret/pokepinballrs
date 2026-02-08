@@ -1,0 +1,36 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "seedot",
+      "mwidth":3,
+      "mheight":4,
+      "width":12,
+      "oam":true  
+    },
+    {
+      "gfx_filename": "shop_shock_wall",
+      "mwidth":2,
+      "mheight":2,
+      "width":10     
+    },
+    {
+      "gfx_filename": "zigzagoon",
+      "mheight":4,
+      "mwidth":7,
+      "oam":true
+    },
+    {
+      "gfx_filename": "zigzagoon_fx",
+      "mwidth":4
+    }
+  ]
+}

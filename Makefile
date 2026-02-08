@@ -72,7 +72,7 @@ FIX       := tools/gbafix/gbafix$(EXE)
 SHA1 := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
 
 TOOLS_DIR = tools
-TOOLDIRS = $(filter-out $(TOOLS_DIR)/agbcc $(TOOLS_DIR)/m2ctx.py,$(wildcard $(TOOLS_DIR)/*))
+TOOLDIRS = $(filter-out $(TOOLS_DIR)/agbcc $(TOOLS_DIR)/m2ctx.py $(TOOLS_DIR)/scripts,$(wildcard $(TOOLS_DIR)/*))
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
 
@@ -125,6 +125,7 @@ compare: rom
 
 clean: tidy clean-tools
 	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
+	rm -f graphics_rules_generated.mk
 	find sound -iname '*.bin' -exec rm {} +
 
 tidy:

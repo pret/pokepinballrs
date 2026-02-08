@@ -1,0 +1,74 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "gunk_084ED6CC",
+      "mwidth":4,
+      "mheight":4,
+      "width":4
+    },
+    {
+      "gfx_filename": "gunk_084FF90C",
+      "mheight":4,
+      "mwidth":4,
+      "width": 12
+    },
+    {
+      "gfx_filename": "gunk_0851DB8C",
+      "segments":[
+        {
+            "segfile": "gunk_0851DB8C_a",
+            "mheight":9,
+            "mwidth":30,
+            "oam":true
+        },
+        {
+            "segfile": "gunk_0851DB8C_b",
+            "width":5
+        },
+        {
+            "segfile": "gunk_0851DB8C_c",
+            "width":5
+        }
+      ]
+    },
+    {
+      "gfx_filename": "gunk_0851514C",
+      "segments":[
+        {
+            "segfile": "gunk_0851514C_a",
+            "mheight":9,
+            "mwidth":30,
+            "oam":true
+        },
+        {
+            "segfile": "gunk_0851514C_b",
+            "width":4
+        }
+      ]
+    },
+    {
+      "gfx_filename": "gunk_0851976C",
+      "segments":[
+        {
+            "segfile": "gunk_0851976C_a",
+            "mheight":9,
+            "mwidth":30,
+            "oam":true
+        },
+        {
+            "segfile": "gunk_0851976C_b",
+            "width":4
+        }
+      ]
+    }
+  ]
+}
