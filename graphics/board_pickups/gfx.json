@@ -1,0 +1,53 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 1,
+    "mheight": 1,
+    "oam": false,
+    "width": 4,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "icon1",
+      "tileCount": 16
+    },
+    {
+      "gfx_filename": "icon10",
+      "tileCount": 16
+    },
+    {
+      "gfx_filename": "icon2",
+      "tileCount": 16
+    },
+    {
+      "gfx_filename": "icon3",
+      "tileCount": 16
+    },
+    {
+      "gfx_filename": "icon4",
+      "tileCount": 16
+    },
+    {
+      "gfx_filename": "icon5",
+      "tileCount": 16
+    },
+    {
+      "gfx_filename": "icon6",
+      "tileCount": 16
+    },
+    {
+      "gfx_filename": "icon7",
+      "tileCount": 16
+    },
+    {
+      "gfx_filename": "icon8",
+      "tileCount": 16
+    },
+    {
+      "gfx_filename": "icon9",
+      "tileCount": 16
+    }
+  ]
+}
