@@ -1712,36 +1712,24 @@ gUnknown_083C806C:: @ 0x083C806C
 
 gUnknown_083EB84C:: @ 0x083EB84C
 	.incbin "graphics/board_pickups/icon1.4bpp"
-.incbin "baserom.gba", 0x3EBA4C, 0x1C00
 gUnknown_083ED64C:: @ 0x083ED64C
 	.incbin "graphics/board_pickups/icon2.4bpp"
-.incbin "baserom.gba", 0x3ED84C, 0x1C00
 gUnknown_083EF44C:: @ 0x083EF44C
 	.incbin "graphics/board_pickups/icon3.4bpp"
-.incbin "baserom.gba", 0x3EF64C, 0x1C00
 gUnknown_083F124C:: @ 0x083F124C
 	.incbin "graphics/board_pickups/icon9.4bpp"
-.incbin "baserom.gba", 0x3F144C, 0x1C00
 gUnknown_083F304C:: @ 0x083F304C
 	.incbin "graphics/board_pickups/icon4.4bpp"
-.incbin "baserom.gba", 0x3F324C, 0x1C00
 gUnknown_083F4E4C:: @ 0x083F4E4C
 	.incbin "graphics/board_pickups/icon5.4bpp"
-.incbin "baserom.gba", 0x3F504C, 0x1C00
 gUnknown_083F6C4C:: @ 0x083F6C4C
 	.incbin "graphics/board_pickups/icon6.4bpp"
-.incbin "baserom.gba", 0x3F6E4C, 0x1C00
 gUnknown_083F8A4C:: @ 0x083F8A4C
 	.incbin "graphics/board_pickups/icon10.4bpp"
-.incbin "baserom.gba", 0x3F8C4C, 0x1C00
 gUnknown_083FA84C:: @ 0x083FA84C
 	.incbin "graphics/board_pickups/icon8.4bpp"
-.incbin "baserom.gba", 0x3FAA4C, 0x1C00	
 gUnknown_083FC64C:: @ 0x083FC64C
 	.incbin "graphics/board_pickups/icon7.4bpp"
-
-
-.incbin "baserom.gba", 0x3FC84C, 0x1C00 @ 0x3FC84C - 0x3EB84C
 
 gUnknown_083FE44C:: @ 0x083FE44C
 	.incbin "baserom.gba", 0x3FE44C, 0xC00

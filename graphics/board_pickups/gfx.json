@@ -11,43 +11,43 @@
   "files": [
     {
       "gfx_filename": "icon1",
-      "tileCount": 16
+      "tileCount": 240
     },
     {
       "gfx_filename": "icon10",
-      "tileCount": 16
+      "tileCount": 240
     },
     {
       "gfx_filename": "icon2",
-      "tileCount": 16
+      "tileCount": 240
     },
     {
       "gfx_filename": "icon3",
-      "tileCount": 16
+      "tileCount": 240
     },
     {
       "gfx_filename": "icon4",
-      "tileCount": 16
+      "tileCount": 240
     },
     {
       "gfx_filename": "icon5",
-      "tileCount": 16
+      "tileCount": 240
     },
     {
       "gfx_filename": "icon6",
-      "tileCount": 16
+      "tileCount": 240
     },
     {
       "gfx_filename": "icon7",
-      "tileCount": 16
+      "tileCount": 240
     },
     {
       "gfx_filename": "icon8",
-      "tileCount": 16
+      "tileCount": 240
     },
     {
       "gfx_filename": "icon9",
-      "tileCount": 16
+      "tileCount": 240
     }
   ]
 }
