@@ -2,8 +2,6 @@
   "kind": "gfx-config",
   "version": 1,
   "defaults": {
-    "mwidth": 1,
-    "mheight": 1,
     "oam": false,
     "width": 16,
     "palette": ""
@@ -79,10 +77,6 @@
     {
       "gfx_filename": "latios_arm",
       "width":2
-    },
-    {
-      "gfx_filename": "egg",
-      "width":4
     },
     {
       "gfx_filename": "ball_save",

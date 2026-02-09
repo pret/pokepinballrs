@@ -38,7 +38,7 @@ extern const u16 gUnknown_086B53E4[28][18];
 extern const s16 gUnknown_086AD52C[28][3];
 extern const u8 gUnknown_0202C7A0[][0x120];
 extern const struct Vector32 gUnknown_086AD750[];
-extern const u16 gUnknown_086AD788[4];
+extern const u16 gUnknown_086AD788[];
 extern const struct Vector32 gUnknown_086AD580[][29];
 extern const u8 gUnknown_086ACF80[];
 extern const u8 gUnknown_081428D4[];

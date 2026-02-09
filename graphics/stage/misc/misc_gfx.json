@@ -2,8 +2,6 @@
   "kind": "gfx-config",
   "version": 1,
   "defaults": {
-    "mwidth": 1,
-    "mheight": 1,
     "oam": false,
     "width": 16,
     "palette": ""
@@ -13,9 +11,6 @@
       "gfx_filename": "gunk_084FA20C",
       "mwidth":2,
       "mheight":2
-    },
-    {
-      "gfx_filename": "gunk_0850558C"
     }
   ]
 }

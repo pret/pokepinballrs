@@ -36,7 +36,7 @@ extern const u16 gUnknown_081C00E4[];
 extern const u16 gUnknown_086AD798[2];
 extern const u16 gUnknown_086AD070[];
 extern const u16 gUnknown_081C02E4[];
-extern const s16 gUnknown_086AD79C[12];
+extern const s16 gUnknown_086AD79C[];
 
 extern struct SongHeader se_unk_7a;
 extern struct SongHeader se_unk_79;
