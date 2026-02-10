@@ -1722,7 +1722,7 @@ gUnknown_083FFD4C:: @ 0x083FFD4C
 	.incbin "baserom.gba", 0x3FFD4C, 0x40
 
 gUnknown_083FFD8C:: @ 0x083FFD8C
-	.incbin "baserom.gba", 0x3FFD8C, 0xF00 @ 0x47D00
+	.incbin "graphics/stage/sapphire/wailmer.4bpp";
 
 	.include "data/graphics/mon_catch_sprites.inc"
 

@@ -415,8 +415,8 @@ struct PinballGame
     /*0x2F0*/ u8 unk2F0;
     /*0x2F1*/ u8 unk2F1;
     /*0x2F2*/ u16 unk2F2;
-    /*0x2F4*/ s8 unk2F4;
-    /*0x2F5*/ s8 unk2F5;
+    /*0x2F4*/ s8 unk2F4; //Sharpedo/Wailmer Oam Ix
+    /*0x2F5*/ s8 unk2F5; //Sharpedo tile variant Ix
     /*0x2F6*/ u16 unk2F6;
     /*0x2F8*/ s8 unk2F8;
     /*0x2F9*/ s8 unk2F9;

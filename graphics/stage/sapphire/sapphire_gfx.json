@@ -31,6 +31,12 @@
     {
       "gfx_filename": "zigzagoon_fx",
       "mwidth":4
+    },
+    {
+      "gfx_filename": "wailmer",
+      "mheight":4,
+      "mwidth":6,
+      "oam":true
     }
   ]
 }
