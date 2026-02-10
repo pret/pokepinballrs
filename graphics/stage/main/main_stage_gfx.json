@@ -130,6 +130,12 @@
             "oam":true
         }
       ]
+    },
+    {
+      "gfx_filename": "bonus_trap",
+      "mwidth":6,
+      "mheight":4,
+      "oam":true
     }
   ]
 }

@@ -1746,16 +1746,16 @@ gUnknown_083FFD8C:: @ 0x083FFD8C
 	.include "data/graphics/mon_catch_sprites.inc"
 
 gUnknown_08447A8C:: @ 0x08447A8C
-	.incbin "baserom.gba", 0x447A8C, 0x900
+	.incbin "graphics/stage/ruby/gulpin.4bpp"
 
 gUnknown_0844838C:: @ 0x0844838C
-	.incbin "baserom.gba", 0x44838C, 0xF00
+	.incbin "graphics/stage/main/bonus_trap.4bpp"
 
 gUnknown_0844928C:: @ 0x0844928C
 	.incbin "baserom.gba", 0x44928C, 0xB00
 
 gUnknown_08449D8C:: @ 0x08449D8C
-	.incbin "baserom.gba", 0x449D8C, 0xC80
+	.incbin "graphics/stage/ruby/cyndaquil.4bpp"
 
 gUnknown_0844AA0C:: @ 0x0844AA0C
 	.incbin "baserom.gba", 0x44AA0C, 0x4800
