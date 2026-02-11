@@ -1758,16 +1758,16 @@ gUnknown_08449D8C:: @ 0x08449D8C
 	.incbin "graphics/stage/ruby/cyndaquil.4bpp"
 
 gUnknown_0844AA0C:: @ 0x0844AA0C
-	.incbin "baserom.gba", 0x44AA0C, 0x4800
+	.incbin "graphics/stage/main/gunk_0844AA0C.4bpp"
 
 gUnknown_0844F20C:: @ 0x0844F20C
-	.incbin "baserom.gba", 0x44F20C, 0x780
+	.incbin "graphics/stage/sapphire/seedot_basket.4bpp"
 
 gUnknown_0844F98C:: @ 0x0844F98C
-	.incbin "baserom.gba", 0x44F98C, 0x5F00
+	.incbin "graphics/stage/kecleon/kecleon.4bpp"
 
 gUnknown_0845588C:: @ 0x0845588C
-	.incbin "baserom.gba", 0x45588C, 0x600
+	.incbin "graphics/stage/kecleon/kecleon_fx.4bpp"
 
 gUnknown_08455E8C:: @ 0x08455E8C
 	.incbin "baserom.gba", 0x455E8C, 0x600

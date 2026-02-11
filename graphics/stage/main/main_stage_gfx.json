@@ -13,6 +13,12 @@
       "align":1
     },
     {
+      "gfx_filename": "gunk_0844AA0C",
+      "mwidth":6,
+      "mheight": 6,
+      "oam":true
+    },
+    {
       "gfx_filename": "pika_spinner",
       "mwidth":3,
       "mheight":3,
