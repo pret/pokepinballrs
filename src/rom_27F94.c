@@ -25,7 +25,7 @@ extern const s16 gUnknown_086ACF38[36];
 extern const u8 gUnknown_086ACF80[];
 extern const s8 gUnknown_086ACFF4[];
 extern u16 gUnknown_086AD180[][7];
-extern const s16 gUnknown_086AD436[][2];
+extern const s16 gUnknown_086AD436[8][2];
 extern const struct Vector16 gUnknown_086AE124[];
 extern const s16 gUnknown_086AE1A4[][12];
 extern const u16 gUnknown_086AE154[][10];
