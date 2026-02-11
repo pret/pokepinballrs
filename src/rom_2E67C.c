@@ -14,7 +14,7 @@ extern const u16 gWailmerSpritesheetOam[26][2][3];
 extern const u8 gSapphireBoardZigzagoonFx_Gfx[];
 extern const s16 gUnknown_086AE496[][3];
 extern const u8 gSapphireBoardZigzagoon_Gfx[][0x380];
-extern const u16 gUnknown_086B3CA4[42][3][3];
+extern const u16 gSapphireBoardZigzagoonSpritesheetOam[42][3][3];
 extern const u16 gUnknown_086B3B7E[14][7][3];
 extern const u8 gUnknown_084ED6CC[][0x200];
 extern const s16 gUnknown_086AE4FC[][2];
@@ -1327,7 +1327,7 @@ void sub_2F504(void)
         {
             oamSimple = &group->oam[i];
             dst = (u16*)&gOamBuffer[oamSimple->oamId];
-            src = gUnknown_086B3CA4[index][i];
+            src = gSapphireBoardZigzagoonSpritesheetOam[index][i];
             *dst++ = *src++;
             *dst++ = *src++;
             *dst++ = *src++;

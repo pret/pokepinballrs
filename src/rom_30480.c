@@ -8,7 +8,7 @@ extern const u16 gUnknown_086AE54A[];
 extern const u8 gUnknown_0844F20C[][0x280];
 extern const u8 gSapphireBoardSeedot_Gfx[][0x180];
 extern const u16 gUnknown_086AE544[];
-extern const u16 gUnknown_086B3E1E[6][6][2][3];
+extern const u16 gSapphireBoardSeedotSpritesheetOam[6][6][2][3];
 extern const u16 gUnknown_08137D06[][14];
 extern const u16 gUnknown_08137CF6[][4];
 extern const u16 gUnknown_08137CE2[][5];
@@ -421,7 +421,7 @@ void sub_30EB4(void)
         {
             oamSimple = &group->oam[i];
             dst = (u16*)&gOamBuffer[oamSimple->oamId];
-            src = gUnknown_086B3E1E[j][index][i];
+            src = gSapphireBoardSeedotSpritesheetOam[j][index][i];
             *dst++ = *src++;
             *dst++ = *src++;
             *dst++ = *src++;
