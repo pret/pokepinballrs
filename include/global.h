@@ -923,7 +923,7 @@ extern u8 gUnknown_02031590[];
 extern u16 gUnknown_08137B3C[][6][16];
 extern u16 gUnknown_08137D40[]; 
 extern const u8 gUnknown_08137E14[][0x20];
-extern const u8 gUnknown_08138834[];
+extern const u8 gDusclopsBonusClear_Gfx[];
 extern struct Unk02031520_unk10 gUnknown_081450F4;
 extern struct Unk02031520_unk10 gUnknown_08148934;
 extern struct Unk02031520_unk10 gUnknown_0814C174;

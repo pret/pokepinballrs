@@ -1277,23 +1277,23 @@ gUnknown_08137F14:: @ 0x08137F14
 gUnknown_08138014:: @ 0x08138014
 	.incbin "baserom.gba", 0x138014, 0x820
 
-gUnknown_08138834:: @ 0x08138834
+gDusclopsBonusClear_Gfx:: @ 0x08138834
 	.incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
 	.space 0x20
 
-gUnknown_0813A854:: @ 0x0813A854
+gKecleonBonusClear_Gfx:: @ 0x0813A854
 	.incbin "graphics/stage/kecleon/kecleon_bonus_clear.4bpp"
 	.space 0x20
 
-gUnknown_0813C874:: @ 0x0813C874
+gKyogreBonusClear_Gfx:: @ 0x0813C874
 	.incbin "graphics/stage/kyogre/kyogre_bonus_clear.4bpp"
 	.space 0x20
 
-gUnknown_0813E894:: @ 0x0813E894
+gGroudonBonusClear_Gfx:: @ 0x0813E894
 	.incbin "graphics/stage/groudon/groudon_bonus_clear.4bpp"
 	.space 0x20
 
-gUnknown_081408B4:: @ 0x081408B4
+gRayquazaBonusClear_Gfx:: @ 0x081408B4
 	.incbin "graphics/stage/rayquaza/rayquaza_bonus_clear.4bpp"
 	.space 0x20
 
