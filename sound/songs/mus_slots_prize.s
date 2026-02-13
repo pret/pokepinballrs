@@ -1,25 +1,25 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_game_over_grp, gUnknown_08532808
-	.equ	mus_game_over_pri, 0
-	.equ	mus_game_over_rev, reverb_set+50
-	.equ	mus_game_over_mvl, 127
-	.equ	mus_game_over_key, 0
-	.equ	mus_game_over_tbs, 1
-	.equ	mus_game_over_exg, 0
-	.equ	mus_game_over_cmp, 1
+	.equ	MUS_SLOTS_PRIZE_grp, gUnknown_08532808
+	.equ	MUS_SLOTS_PRIZE_pri, 0
+	.equ	MUS_SLOTS_PRIZE_rev, reverb_set+50
+	.equ	MUS_SLOTS_PRIZE_mvl, 127
+	.equ	MUS_SLOTS_PRIZE_key, 0
+	.equ	MUS_SLOTS_PRIZE_tbs, 1
+	.equ	MUS_SLOTS_PRIZE_exg, 0
+	.equ	MUS_SLOTS_PRIZE_cmp, 1
 
 	.section .rodata
-	.global	mus_game_over
+	.global	MUS_SLOTS_PRIZE
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-mus_game_over_0:  @ 0x0868C748
-	.byte	KEYSH , mus_game_over_key+0
-	.byte	TEMPO , 122*mus_game_over_tbs/2
+MUS_SLOTS_PRIZE_0:  @ 0x0868C748
+	.byte	KEYSH , MUS_SLOTS_PRIZE_key+0
+	.byte	TEMPO , 122*MUS_SLOTS_PRIZE_tbs/2
 	.byte		VOICE , 70
-	.byte		VOL   , 104*mus_game_over_mvl/mxv
+	.byte		VOL   , 104*MUS_SLOTS_PRIZE_mvl/mxv
 	.byte		PAN   , c_v-32
 	.byte		N07   , Cn4 , v076
 	.byte	W16
@@ -110,10 +110,10 @@ mus_game_over_0:  @ 0x0868C748
 
 @*********************** Track 02 ***********************@
 
-mus_game_over_1:  @ 0x0868C7E7
-	.byte	KEYSH , mus_game_over_key+0
+MUS_SLOTS_PRIZE_1:  @ 0x0868C7E7
+	.byte	KEYSH , MUS_SLOTS_PRIZE_key+0
 	.byte		VOICE , 1
-	.byte		VOL   , 100*mus_game_over_mvl/mxv
+	.byte		VOL   , 100*MUS_SLOTS_PRIZE_mvl/mxv
 	.byte		PAN   , c_v+0
 	.byte		N11   , Gs2 , v080
 	.byte		N11   , Ds3 , v084
@@ -183,10 +183,10 @@ mus_game_over_1:  @ 0x0868C7E7
 
 @*********************** Track 03 ***********************@
 
-mus_game_over_2:  @ 0x0868C861
-	.byte	KEYSH , mus_game_over_key+0
+MUS_SLOTS_PRIZE_2:  @ 0x0868C861
+	.byte	KEYSH , MUS_SLOTS_PRIZE_key+0
 	.byte		VOICE , 3
-	.byte		VOL   , 99*mus_game_over_mvl/mxv
+	.byte		VOL   , 99*MUS_SLOTS_PRIZE_mvl/mxv
 	.byte		PAN   , c_v+32
 	.byte		N07   , Cn4 , v076
 	.byte	W16
@@ -277,10 +277,10 @@ mus_game_over_2:  @ 0x0868C861
 
 @*********************** Track 04 ***********************@
 
-mus_game_over_3:  @ 0x0868C8FE
-	.byte	KEYSH , mus_game_over_key+0
+MUS_SLOTS_PRIZE_3:  @ 0x0868C8FE
+	.byte	KEYSH , MUS_SLOTS_PRIZE_key+0
 	.byte		VOICE , 11
-	.byte		VOL   , 86*mus_game_over_mvl/mxv
+	.byte		VOL   , 86*MUS_SLOTS_PRIZE_mvl/mxv
 	.byte		PAN   , c_v+0
 	.byte	W72
 	.byte		N04   , Gn4 , v080
@@ -318,10 +318,10 @@ mus_game_over_3:  @ 0x0868C8FE
 
 @*********************** Track 05 ***********************@
 
-mus_game_over_4:  @ 0x0868C944
-	.byte	KEYSH , mus_game_over_key+0
+MUS_SLOTS_PRIZE_4:  @ 0x0868C944
+	.byte	KEYSH , MUS_SLOTS_PRIZE_key+0
 	.byte		VOICE , 0
-	.byte		VOL   , 42*mus_game_over_mvl/mxv
+	.byte		VOL   , 42*MUS_SLOTS_PRIZE_mvl/mxv
 	.byte		N48   , Cs2 , v100
 	.byte	W96
 	.byte	W96
@@ -337,16 +337,16 @@ mus_game_over_4:  @ 0x0868C944
 
 	.align	2
 
-mus_game_over:  @ 0x0868C958
+MUS_SLOTS_PRIZE:  @ 0x0868C958
 	.byte	5	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	mus_game_over_pri	@ Priority
-	.byte	mus_game_over_rev	@ Reverb
+	.byte	MUS_SLOTS_PRIZE_pri	@ Priority
+	.byte	MUS_SLOTS_PRIZE_rev	@ Reverb
 
-	.word	mus_game_over_grp
+	.word	MUS_SLOTS_PRIZE_grp
 
-	.word	mus_game_over_0
-	.word	mus_game_over_1
-	.word	mus_game_over_2
-	.word	mus_game_over_3
-	.word	mus_game_over_4
+	.word	MUS_SLOTS_PRIZE_0
+	.word	MUS_SLOTS_PRIZE_1
+	.word	MUS_SLOTS_PRIZE_2
+	.word	MUS_SLOTS_PRIZE_3
+	.word	MUS_SLOTS_PRIZE_4

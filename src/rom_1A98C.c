@@ -550,7 +550,7 @@ void sub_1B140(s16 arg0)
             {
                 if (JOY_NEW(DPAD_LEFT) && gCurrentPinballGame->unk6DD == 0)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_0x82);
+                    m4aSongNumStart(SE_EVO_SELECTION_MOVE);
 
                     if (gCurrentPinballGame->unk1A6 > 0)
                         gCurrentPinballGame->unk1A6--;
@@ -565,7 +565,7 @@ void sub_1B140(s16 arg0)
                 {
                     if (gCurrentPinballGame->unk6DD == 0)
                     {
-                        m4aSongNumStart(SE_UNKNOWN_0x82);
+                        m4aSongNumStart(SE_EVO_SELECTION_MOVE);
 
                         if (gCurrentPinballGame->unk1A6 <= 6)
                             gCurrentPinballGame->unk1A6++;
@@ -628,7 +628,7 @@ void sub_1B140(s16 arg0)
                     gCurrentPinballGame->coins -= var_r3;
 
                     m4aMPlayAllStop();
-                    m4aSongNumStart(SE_UNKNOWN_0x83);
+                    m4aSongNumStart(SE_EVO_SELECTION_CONFIRM);
 
                     gCurrentPinballGame->unk1AB = 19;
                     gCurrentPinballGame->unk376 = 30;
@@ -640,7 +640,7 @@ void sub_1B140(s16 arg0)
             {
                 gCurrentPinballGame->unk252 = 30;
                 gCurrentPinballGame->unk1B8 = 30;
-                m4aSongNumStart(SE_UNKNOWN_0x66);
+                m4aSongNumStart(SE_MENU_CANCEL);
             }
         }
 
@@ -873,7 +873,7 @@ void sub_1B140(s16 arg0)
                             int stage1Evo;
                             int stage2Evo;
 
-                            m4aSongNumStart(SE_UNKNOWN_0x82);
+                            m4aSongNumStart(SE_EVO_SELECTION_MOVE);
 
                             if (gCurrentPinballGame->evolvingPartyIndex > 0)
                                 gCurrentPinballGame->evolvingPartyIndex--;
@@ -902,7 +902,7 @@ void sub_1B140(s16 arg0)
                             int stage1Evo;
                             int stage2Evo;
 
-                            m4aSongNumStart(SE_UNKNOWN_0x82);
+                            m4aSongNumStart(SE_EVO_SELECTION_MOVE);
 
                             if (gCurrentPinballGame->evolvingPartyIndex < gCurrentPinballGame->evolvablePartySize - 1)
                                 gCurrentPinballGame->evolvingPartyIndex++;
@@ -936,7 +936,7 @@ void sub_1B140(s16 arg0)
 
                             if (evoTarget < SPECIES_NONE)
                             {
-                                m4aSongNumStart(SE_UNKNOWN_0x82);
+                                m4aSongNumStart(SE_EVO_SELECTION_MOVE);
                                 gCurrentPinballGame->unk59A = evoTarget;
                                 gCurrentPinballGame->unk1B8 = 30;
                                 gCurrentPinballGame->unk1B0 = 1;
@@ -949,7 +949,7 @@ void sub_1B140(s16 arg0)
 
                             if (evoTarget < SPECIES_NONE)
                             {
-                                m4aSongNumStart(SE_UNKNOWN_0x82);
+                                m4aSongNumStart(SE_EVO_SELECTION_MOVE);
                                 gCurrentPinballGame->unk59A = evoTarget;
                                 gCurrentPinballGame->unk1B8 = 30;
                                 gCurrentPinballGame->unk1B0 = 1;
@@ -967,7 +967,7 @@ void sub_1B140(s16 arg0)
 
                             if (evoTarget < SPECIES_NONE)
                             {
-                                m4aSongNumStart(SE_UNKNOWN_0x82);
+                                m4aSongNumStart(SE_EVO_SELECTION_MOVE);
                                 gCurrentPinballGame->unk59A = evoTarget;
                                 gCurrentPinballGame->unk1B8 = 30;
                                 gCurrentPinballGame->unk1B0 = 1;
@@ -980,7 +980,7 @@ void sub_1B140(s16 arg0)
 
                             if (evoTarget < SPECIES_NONE)
                             {
-                                m4aSongNumStart(SE_UNKNOWN_0x82);
+                                m4aSongNumStart(SE_EVO_SELECTION_MOVE);
                                 gCurrentPinballGame->unk59A = evoTarget;
                                 gCurrentPinballGame->unk1B8 = 30;
                                 gCurrentPinballGame->unk1B0 = 1;
@@ -1088,7 +1088,7 @@ void sub_1B140(s16 arg0)
                 gCurrentPinballGame->unk252 = 30;
                 gCurrentPinballGame->unk1B0 = 0;
                 gCurrentPinballGame->unk1B8 = 30;
-                m4aSongNumStart(SE_UNKNOWN_0x83);
+                m4aSongNumStart(SE_EVO_SELECTION_CONFIRM);
             }
 
             if (gCurrentPinballGame->unk252 == 0)

@@ -3731,7 +3731,7 @@ gDirectSound_086885EC:: @ 0x086885EC
 .include "sound/songs/mus_opening.s"
 .include "sound/songs/mus_high_score.s"
 .include "sound/songs/mus_shop.s"
-.include "sound/songs/mus_game_over.s"
+.include "sound/songs/MUS_SLOTS_PRIZE.s"
 .include "sound/songs/mus_end_of_ball.s"
 .include "sound/songs/mus_bonus_chance.s"
 .include "sound/songs/mus_bonus_chance_legendary.s"

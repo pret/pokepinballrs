@@ -19,7 +19,7 @@ gSongTable:: @ 0x08534E04
 	song mus_high_score, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_shop, MUSIC_PLAYER_BGM, 0
-	song mus_game_over, MUSIC_PLAYER_BGM, 0
+	song MUS_SLOTS_PRIZE, MUSIC_PLAYER_BGM, 0
 	song mus_end_of_ball, MUSIC_PLAYER_BGM, 0
 	song mus_bonus_chance, MUSIC_PLAYER_BGM, 0
 	song mus_bonus_chance_legendary, MUSIC_PLAYER_BGM, 0

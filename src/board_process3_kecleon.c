@@ -951,7 +951,7 @@ void sub_372B4(void)
             m4aMPlayStop(&gMPlayInfo_SE2);
 
         if (gCurrentPinballGame->unk40A == 22)
-            m4aSongNumStart(SE_UNKNOWN_0x105);
+            m4aSongNumStart(SE_KECLEON_SCOPE_FALL);
 
         if (gCurrentPinballGame->unk40A > 20)
         {
@@ -976,7 +976,7 @@ void sub_372B4(void)
                 gCurrentPinballGame->unk406 = 1;
                 gCurrentPinballGame->unk408 = 0;
                 gCurrentPinballGame->scoreAddedInFrame = 10000;
-                m4aSongNumStart(SE_UNKNOWN_0x106);
+                m4aSongNumStart(SE_KECLEON_SCOPE_ACTIVATED);
             }
 
             group->baseX = -gCurrentPinballGame->unk58 + gCurrentPinballGame->unk418.x / 10;
@@ -1134,7 +1134,7 @@ void sub_37850(void)
 
     if (gCurrentPinballGame->unk40C == 40)
     {
-        m4aSongNumStart(SE_UNKNOWN_0x104);
+        m4aSongNumStart(SE_KECLEON_TREE_HIT);
         sub_11B0(7);
     }
 

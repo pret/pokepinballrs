@@ -465,7 +465,7 @@ void sub_336E0(void) {
                     gCurrentPinballGame->unk396--; //Number of active duskull
                 sp0 = 3;
                 r7 = 3;
-                m4aSongNumStart(SE_UNKNOWN_0xF3); //Duskull departs, not killed
+                m4aSongNumStart(SE_DUSCLOPS_DEPART_INCOMPLETE); //Duskull departs, not killed
             }
             break;
         case 7: //Escape while not in walk left state, turn to face
@@ -483,7 +483,7 @@ void sub_336E0(void) {
                 gCurrentPinballGame->unk3A9[i] = 0;
                 if (gCurrentPinballGame->unk396 > 0)
                     gCurrentPinballGame->unk396--; //Number of active duskull
-                m4aSongNumStart(SE_UNKNOWN_0xF3); //Duskull departs, not killed
+                m4aSongNumStart(SE_DUSCLOPS_DEPART_INCOMPLETE); //Duskull departs, not killed
                 sp0 = 9;
                 r7 = 3;
             }
@@ -659,7 +659,7 @@ void sub_34450(void)
             {
                 gCurrentPinballGame->unk129 = 0;
                 gCurrentPinballGame->unk128 = 1;
-                m4aSongNumStart(SE_UNKNOWN_0xF4); //Dusclops entry; footstops
+                m4aSongNumStart(SE_DUSCLOPS_MOVE); //Dusclops entry; footstops
                 sub_11B0(8);
             }
 
@@ -667,7 +667,7 @@ void sub_34450(void)
             {
                 gCurrentPinballGame->unk129 = 1;
                 gCurrentPinballGame->unk128 = 1;
-                m4aSongNumStart(SE_UNKNOWN_0xF4); //Dusclops entry; footstops
+                m4aSongNumStart(SE_DUSCLOPS_MOVE); //Dusclops entry; footstops
                 sub_11B0(8);
 
             }
@@ -705,7 +705,7 @@ void sub_34450(void)
                 gCurrentPinballGame->unk3E6 -= 2;
 
             if (gCurrentPinballGame->unk3E6 == 154)
-                m4aSongNumStart(SE_UNKNOWN_0xF5); //Dusclops Appears
+                m4aSongNumStart(SE_DUSCLOPS_APPEAR); //Dusclops Appears
         }
         else
         {
@@ -759,7 +759,7 @@ void sub_34450(void)
             {
                 gCurrentPinballGame->unk129 = 0;
                 gCurrentPinballGame->unk128 = 1;
-                m4aSongNumStart(SE_UNKNOWN_0xF4); //Dusclops entry; footstops
+                m4aSongNumStart(SE_DUSCLOPS_MOVE); //Dusclops entry; footstops
                 sub_11B0(8);
             }
 
@@ -767,7 +767,7 @@ void sub_34450(void)
             {
                 gCurrentPinballGame->unk129 = 1;
                 gCurrentPinballGame->unk128 = 1;
-                m4aSongNumStart(SE_UNKNOWN_0xF4); //Dusclops entry; footstops
+                m4aSongNumStart(SE_DUSCLOPS_MOVE); //Dusclops entry; footstops
                 sub_11B0(8);
             }
         }
@@ -820,7 +820,7 @@ void sub_34450(void)
         gCurrentPinballGame->unk3DC = 5;
         r9 = 7;
 
-        m4aSongNumStart(SE_UNKNOWN_0xF6); //Dusclops hit
+        m4aSongNumStart(SE_DUSCLOPS_HIT); //Dusclops hit
         gCurrentPinballGame->unk387 = 0;
         sub_11B0(7);
         break;
@@ -863,7 +863,7 @@ void sub_34450(void)
         gCurrentPinballGame->unk5A6 = 0;
         r9 = 8;
 
-        m4aSongNumStart(SE_UNKNOWN_0xF7); //Dusclops absorbs ball
+        m4aSongNumStart(SE_DUSCLOPS_BALL_ABSORB); //Dusclops absorbs ball
         gCurrentPinballGame->unk288 = (gCurrentPinballGame->unk3E8 / 10) + 32;
         gCurrentPinballGame->unk28A = (gCurrentPinballGame->unk3EA / 10) + 36;
 
@@ -891,7 +891,7 @@ void sub_34450(void)
                 gCurrentPinballGame->ball->velocity.x = (gMain.systemFrameCount % 2 * 300) + 65386;
                 gCurrentPinballGame->ball->velocity.y = 300;
                 gCurrentPinballGame->ball->unk0 = 0;
-                m4aSongNumStart(SE_UNKNOWN_0xF8); //Dusclops launch ball
+                m4aSongNumStart(SE_DUSCLOPS_BALL_LAUNCH); //Dusclops launch ball
                 sub_11B0(8);
             }
 
