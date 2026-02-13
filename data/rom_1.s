@@ -980,7 +980,8 @@ gUnknown_080947A0:: @ 0x080947A0
 	.incbin "baserom.gba", 0x947A0, 0x1000
 
 gUnknown_080957A0:: @ 0x080957A0
-	.incbin "baserom.gba", 0x957A0, 0x4820
+	.incbin "graphics/text/gUnknown_080957A0.4bpp"
+	.space 0x20
 
 gUnknown_08099FC0:: @ 0x08099FC0
 	.incbin "baserom.gba", 0x99FC0, 0x1000
@@ -995,7 +996,10 @@ gUnknown_0809DDE0:: @ 0x0809DDE0
 	.incbin "baserom.gba", 0x9DDE0, 0x200
 
 gUnknown_0809DFE0:: @ 0x0809DFE0
-	.incbin "baserom.gba", 0x9DFE0, 0x4420
+	@ sheet includes transmission windows, and the
+	@ pokedex completion certificate, with latios/latias
+	.incbin "graphics/pokedex/gUnknown_0809DFE0.4bpp"
+	.space 0x20
 
 gUnknown_080A2400:: @ 0x080A2400
 	.incbin "baserom.gba", 0xA2400, 0x800
@@ -1003,7 +1007,8 @@ gUnknown_080A2400:: @ 0x080A2400
 .include "data/graphics/field_select.inc"
 
 gUnknown_080ACC60:: @ 0x080ACC60
-	.incbin "baserom.gba", 0xACC60, 0x6E40
+	.incbin "graphics/text/gUnknown_080ACC60.4bpp"
+	.space 0x240
 
 gIntroScene1Sprites_Pals:: @ 0x080B3AA0
 	.incbin "graphics/intro/scene_1_sprites.gbapal"
@@ -1012,7 +1017,8 @@ gUnknown_080B3CA0:: @ 0x080B3CA0
 	.incbin "baserom.gba", 0xB3CA0, 0x800
 
 gUnknown_080B44A0:: @ 0x080B44A0
-	.incbin "baserom.gba", 0xB44A0, 0x5820
+	.incbin "graphics/intro/gUnknown_080B44A0.4bpp"
+	.space 0x20
 
 gUnknown_080B9CC0:: @ 0x080B9CC0
 	.incbin "baserom.gba", 0xB9CC0, 0x1800
@@ -1024,7 +1030,8 @@ gUnknown_080BC4C0:: @ 0x080BC4C0
 	.incbin "baserom.gba", 0xBC4C0, 0x1000
 
 gUnknown_080BD4C0:: @ 0x080BD4C0
-	.incbin "baserom.gba", 0xBD4C0, 0x6820
+	.incbin "graphics/intro/gIntroPokeballGrow.4bpp"
+	.space 0x20
 
 gIntroScene1Sprites_Gfx:: @ 0x080C3CE0
 	.incbin "graphics/intro/scene_1_sprites.4bpp"
@@ -1036,7 +1043,12 @@ gUnknown_080CBEE0:: @ 0x080CBEE0
 	.incbin "baserom.gba", 0xCBEE0, 0x800
 
 gUnknown_080CC6E0:: @ 0x080CC6E0
-	.incbin "baserom.gba", 0xCC6E0, 0x4020
+	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
+	@ with mostly blank secondary rows (reusing tiles)
+	@ (shown in pink with yellow text)
+	@ sheet also includes spoink, pelipper, and makuhita
+	.incbin "graphics/intro/gUnknown_080CC6E0.4bpp"
+	.space 0x20
 
 gUnknown_080D0700:: @ 0x080D0700
 	.incbin "baserom.gba", 0xD0700, 0x2000
@@ -1054,7 +1066,9 @@ gUnknown_080D5900:: @ 0x080D5900
 	.incbin "baserom.gba", 0xD5900, 0x800
 
 gUnknown_080D6100:: @ 0x080D6100
-	.incbin "baserom.gba", 0xD6100, 0x6C20
+	@ intro pane with treeko, pinball, flipper
+	.incbin "graphics/intro/gUnknown_080D6100.4bpp"
+	.space 0x20
 
 gUnknown_080DCD20:: @ 0x080DCD20
 	.incbin "baserom.gba", 0xDCD20, 0x800
@@ -1069,7 +1083,8 @@ gUnknown_080DE520:: @ 0x080DE520
 	.incbin "baserom.gba", 0xDE520, 0x1000
 
 gUnknown_080DF520:: @ 0x080DF520
-	.incbin "baserom.gba", 0xDF520, 0x2020
+	.incbin "graphics/intro/gIntroTreecko.4bpp"
+	.space 0x20
 
 gUnknown_080E1540:: @ 0x080E1540
 	.incbin "baserom.gba", 0xE1540, 0x200
@@ -1078,7 +1093,9 @@ gUnknown_080E1740:: @ 0x080E1740
 	.incbin "baserom.gba", 0xE1740, 0x800
 
 gUnknown_080E1F40:: @ 0x080E1F40
-	.incbin "baserom.gba", 0xE1F40, 0x4020
+	.incbin "graphics/intro/gIntroPlusleMinun.4bpp"
+	@.space 0x20
+	@.incbin "baserom.gba", 0xE1F40, 0x4020
 
 gUnknown_080E5F60:: @ 0x080E5F60
 	.incbin "baserom.gba", 0xE5F60, 0x2000
