@@ -972,7 +972,8 @@ gUnknown_0807FD00:: @ 0x0807FD00
 	.incbin "baserom.gba", 0x7FD00, 0x800
 
 gUnknown_08080500:: @ 0x08080500
-	.incbin "baserom.gba", 0x80500, 0x1820
+	.incbin "graphics/pokedex/gUnknown_08080500.4bpp"
+	.space 0x20
 
 gUnknown_08081D20:: @ 0x08081D20
 	.incbin "baserom.gba", 0x81D20, 0x200
@@ -1021,7 +1022,8 @@ gUnknown_08099FC0:: @ 0x08099FC0
 	.incbin "baserom.gba", 0x99FC0, 0x1000
 
 gUnknown_0809AFC0:: @ 0x0809AFC0
-	.incbin "baserom.gba", 0x9AFC0, 0x2C20
+	.incbin "graphics/gUnknown_0809AFC0.4bpp"
+	.space 0x20
 
 gUnknown_0809DBE0:: @ 0x0809DBE0
 	.incbin "baserom.gba", 0x9DBE0, 0x200
