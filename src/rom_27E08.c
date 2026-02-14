@@ -35,7 +35,7 @@ extern const u8 gUnknown_083A05CC[];
 extern const u8 gUnknown_0839DDAC[];
 extern const s16 gUnknown_086AD3FE[][2];
 extern const u16 gUnknown_086B53E4[28][18];
-extern const s16 gUnknown_086AD52C[][3];
+extern const s16 gUnknown_086AD52C[28][3];
 extern const u8 gUnknown_0202C7A0[][0x120];
 extern const struct Vector32 gUnknown_086AD750[];
 extern const u16 gUnknown_086AD788[];
@@ -440,7 +440,7 @@ void sub_216FC(void)
             else if (JOY_NEW(B_BUTTON))
             {
                 m4aMPlayAllStop();
-                m4aSongNumStart(SE_UNKNOWN_0x66);
+                m4aSongNumStart(SE_MENU_CANCEL);
                 gCurrentPinballGame->unk28 = 60;
                 gCurrentPinballGame->unk17 = 6;
                 if (gCurrentPinballGame->unk714)
@@ -2954,7 +2954,7 @@ void sub_26A10(void)
             else if (JOY_NEW(B_BUTTON))
             {
                 m4aMPlayAllStop();
-                m4aSongNumStart(SE_UNKNOWN_0x66);
+                m4aSongNumStart(SE_MENU_CANCEL);
                 gCurrentPinballGame->unk28 = 60;
                 gCurrentPinballGame->unk17 = 6;
                 if (gCurrentPinballGame->unk714)

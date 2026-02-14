@@ -119,6 +119,7 @@ void HandleGbaToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     options.isAffineMap = false;
     options.isTiled = true;
     options.dataWidth = 1;
+    options.oamSprite = false;
 
     for (int i = 3; i < argc; i++)
     {
@@ -246,11 +247,12 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
     options.isAffineMap = false;
     options.isTiled = true;
     options.dataWidth = 1;
+    options.oamSprite = false;
 
     for (int i = 3; i < argc; i++)
     {
         char *option = argv[i];
-
+        
         if (strcmp(option, "-num_tiles") == 0)
         {
             if (i + 1 >= argc)

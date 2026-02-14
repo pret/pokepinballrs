@@ -1,0 +1,30 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "scene_4_sprites",
+      "segments":[
+        {
+            "segfile": "scene_4_sprites_text",
+            "width":20
+        },
+        {
+            "segfile": "scene_4_sprites_space"
+        },
+        {
+            "segfile": "scene_4_sprites_mons",
+            "width":24
+        }
+      ],
+      "align":1
+    }
+  ]
+}

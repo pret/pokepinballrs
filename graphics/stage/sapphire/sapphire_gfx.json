@@ -31,6 +31,11 @@
     {
       "gfx_filename": "zigzagoon_fx",
       "mwidth":4
+    },
+    {
+      "gfx_filename": "seedot_basket",
+      "mwidth":4,
+      "oam":true
     }
   ]
 }

@@ -28,12 +28,12 @@ extern const s16 gUnknown_0813798C[];
 extern const u8 gUnknown_081379D8[];
 extern const u8 gUnknown_084B7FEC[][0x480];
 extern const u8 gUnknown_084ED0CC[][0x180];
-extern const s16 gUnknown_086AD7C0[][3];
+extern const s16 gUnknown_086AD7C0[50][3];
 extern const s16 gUnknown_086AD856[][2];
 extern const u8 gUnknown_0845710C[][0x280];
 extern const u16 gUnknown_086B2E64[58][6];
 extern const u16 gUnknown_081C00E4[];
-extern const u16 gUnknown_086AD798[];
+extern const u16 gUnknown_086AD798[2];
 extern const u16 gUnknown_086AD070[];
 extern const u16 gUnknown_081C02E4[];
 extern const s16 gUnknown_086AD79C[];
@@ -1250,7 +1250,7 @@ void sub_1F2A4(void)
         if (gCurrentPinballGame->unk1C8 < 168 && gCurrentPinballGame->unk1C8 % 8 == 0)
         {
             s8 offset = gCurrentPinballGame->unk1C8 / 21;
-            m4aSongNumStart(SE_UNKNOWN_0xA8 + offset);
+            m4aSongNumStart(SE_PIKA_CHARGE_DO + offset);
         }
 
         if (gCurrentPinballGame->unk1C6 <= gCurrentPinballGame->unk1C8)

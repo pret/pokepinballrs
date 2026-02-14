@@ -337,7 +337,7 @@ void sub_3B7C4(void)
                 {
                     gCurrentPinballGame->unk4CA = 31;
                     gCurrentPinballGame->unk4C9 = gCurrentPinballGame->unk3E4 / 110;
-                    m4aSongNumStart(SE_UNKNOWN_0x119);
+                    m4aSongNumStart(SE_GROUDON_STEP);
                     sub_11B0(8);
                 }
 
@@ -345,7 +345,7 @@ void sub_3B7C4(void)
                 {
                     gCurrentPinballGame->unk4CA = 31;
                     gCurrentPinballGame->unk4C9 = gCurrentPinballGame->unk3E4 / 110;
-                    m4aSongNumStart(SE_UNKNOWN_0x119);
+                    m4aSongNumStart(SE_GROUDON_STEP);
                     sub_11B0(8);
                 }
 
@@ -692,7 +692,7 @@ void sub_3B7C4(void)
                 {
                     gCurrentPinballGame->unk4CA = 31;
                     gCurrentPinballGame->unk4C9 = 6;
-                    m4aSongNumStart(SE_UNKNOWN_0x119);
+                    m4aSongNumStart(SE_GROUDON_STEP);
                     sub_11B0(8);
                 }
             }
@@ -703,7 +703,7 @@ void sub_3B7C4(void)
                 {
                     gCurrentPinballGame->unk4CA = 31;
                     gCurrentPinballGame->unk4C9 = 5;
-                    m4aSongNumStart(SE_UNKNOWN_0x119);
+                    m4aSongNumStart(SE_GROUDON_STEP);
                     sub_11B0(8);
                 }
             }
@@ -1198,7 +1198,7 @@ void sub_3CBC4(void)
                 {
                     if (gCurrentPinballGame->unk4D8[i] == 0)
                     {
-                        m4aSongNumStart(SE_UNKNOWN_0x121);
+                        m4aSongNumStart(SE_GROUDON_BOULDER_LAND);
                         sub_11B0(7);
                     }
 
@@ -1230,7 +1230,7 @@ void sub_3CBC4(void)
                 {
                     if (gCurrentPinballGame->unk4D8[i] == 1)
                     {
-                        m4aSongNumStart(SE_UNKNOWN_0x121);
+                        m4aSongNumStart(SE_GROUDON_BOULDER_LAND);
                         sub_11B0(7);
                     }
 
@@ -1260,7 +1260,7 @@ void sub_3CBC4(void)
                 {
                     if (gCurrentPinballGame->unk4D8[i] == 1)
                     {
-                        m4aSongNumStart(SE_UNKNOWN_0x121);
+                        m4aSongNumStart(SE_GROUDON_BOULDER_LAND);
                         sub_11B0(7);
                     }
 
@@ -1290,7 +1290,7 @@ void sub_3CBC4(void)
                 {
                     if (gCurrentPinballGame->unk4D8[i] == 1)
                     {
-                        m4aSongNumStart(SE_UNKNOWN_0x121);
+                        m4aSongNumStart(SE_GROUDON_BOULDER_LAND);
                         sub_11B0(7);
                     }
 
@@ -1378,7 +1378,7 @@ void sub_3CBC4(void)
                     gCurrentPinballGame->unk4A4[i]--;
                     if (gCurrentPinballGame->unk4A4[i] == 7)
                     {
-                        m4aSongNumStart(SE_UNKNOWN_0x123);
+                        m4aSongNumStart(SE_GROUDON_BALL_HIT_FIRE);
                         gCurrentPinballGame->unk48C[i] = 3;
                         sub_11B0(7);
                     }
@@ -1397,7 +1397,7 @@ void sub_3CBC4(void)
                     gCurrentPinballGame->unk4A4[i]--;
                     if (gCurrentPinballGame->unk4A4[i] == 7)
                     {
-                        m4aSongNumStart(SE_UNKNOWN_0x123);
+                        m4aSongNumStart(SE_GROUDON_BALL_HIT_FIRE);
                         gCurrentPinballGame->unk48C[i] = 5;
                         sub_11B0(7);
                     }
@@ -1416,7 +1416,7 @@ void sub_3CBC4(void)
                     gCurrentPinballGame->unk4A4[i]--;
                     if (gCurrentPinballGame->unk4A4[i] == 7)
                     {
-                        m4aSongNumStart(SE_UNKNOWN_0x123);
+                        m4aSongNumStart(SE_GROUDON_BALL_HIT_FIRE);
                         gCurrentPinballGame->unk48C[i] = 7;
                         sub_11B0(7);
                     }
@@ -1446,7 +1446,7 @@ void sub_3CBC4(void)
                             gCurrentPinballGame->unk48C[i] = 9;
                         }
 
-                        m4aSongNumStart(SE_UNKNOWN_0x123);
+                        m4aSongNumStart(SE_GROUDON_BALL_HIT_FIRE);
                         sub_11B0(7);
                     }
                 }
@@ -1538,16 +1538,16 @@ void sub_3CBC4(void)
     {
         gCurrentPinballGame->unk4C4--;
         if (gCurrentPinballGame->unk4C4 == 36)
-            m4aSongNumStart(SE_UNKNOWN_0x122);
+            m4aSongNumStart(SE_GROUDON_DUSTORM_LIFT);
 
         if (gCurrentPinballGame->unk4C4 == 24)
-            m4aSongNumStart(SE_UNKNOWN_0x122);
+            m4aSongNumStart(SE_GROUDON_DUSTORM_LIFT);
 
         if (gCurrentPinballGame->unk4C4 == 12)
-            m4aSongNumStart(SE_UNKNOWN_0x122);
+            m4aSongNumStart(SE_GROUDON_DUSTORM_LIFT);
 
         if (gCurrentPinballGame->unk4C4 == 0)
-            m4aSongNumStart(SE_UNKNOWN_0x122);
+            m4aSongNumStart(SE_GROUDON_DUSTORM_LIFT);
     }
 
     group = &gMain.spriteGroups[30];

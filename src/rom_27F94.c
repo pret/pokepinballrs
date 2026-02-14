@@ -25,7 +25,7 @@ extern const s16 gUnknown_086ACF38[36];
 extern const u8 gUnknown_086ACF80[];
 extern const s8 gUnknown_086ACFF4[];
 extern u16 gUnknown_086AD180[][7];
-extern const s16 gUnknown_086AD436[][2];
+extern const s16 gUnknown_086AD436[8][2];
 extern const struct Vector16 gUnknown_086AE124[];
 extern const s16 gUnknown_086AE1A4[][12];
 extern const u16 gUnknown_086AE154[][10];
@@ -390,7 +390,7 @@ void sub_28544(void)
         gCurrentPinballGame->unkBC = gUnknown_086AE124[gCurrentPinballGame->unk73].x;
         gCurrentPinballGame->unkBE = gUnknown_086AE124[gCurrentPinballGame->unk73].y;
         gCurrentPinballGame->unk18 = 0;
-        m4aSongNumStart(SE_UNKNOWN_0x144);
+        m4aSongNumStart(SE_JIRACHI_MOVE);
         gCurrentPinballGame->unk17++;
         gCurrentPinballGame->unkC0 = gCurrentPinballGame->unk80;
         gCurrentPinballGame->unkC2 = gCurrentPinballGame->unk82;
@@ -425,7 +425,7 @@ void sub_28544(void)
                     else
                         gCurrentPinballGame->unk73 = 0;
 
-                    m4aSongNumStart(SE_UNKNOWN_0x144);
+                    m4aSongNumStart(SE_JIRACHI_MOVE);
                     gCurrentPinballGame->unkBC = gUnknown_086AE124[gCurrentPinballGame->unk73].x;
                     gCurrentPinballGame->unkBE = gUnknown_086AE124[gCurrentPinballGame->unk73].y;
                 }

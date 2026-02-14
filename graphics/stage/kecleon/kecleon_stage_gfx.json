@@ -39,6 +39,16 @@
             }
         ],
         "align":12
+    },
+    {
+        "gfx_filename": "kecleon",
+        "mwidth":4,
+        "oam":true
+    },
+        {
+        "gfx_filename": "kecleon_fx",
+        "mwidth":4,
+        "oam":true
     }
   ]
 }
