@@ -1015,14 +1015,14 @@ gUnknown_080947A0:: @ 0x080947A0
 	.incbin "baserom.gba", 0x947A0, 0x1000
 
 gUnknown_080957A0:: @ 0x080957A0
-	.incbin "graphics/text/gUnknown_080957A0.4bpp"
+	.incbin "graphics/high_score/g_high_score_text.4bpp"
 	.space 0x20
 
 gUnknown_08099FC0:: @ 0x08099FC0
 	.incbin "baserom.gba", 0x99FC0, 0x1000
 
 gUnknown_0809AFC0:: @ 0x0809AFC0
-	.incbin "graphics/gUnknown_0809AFC0.4bpp"
+	.incbin "graphics/high_score/g_ball_watermark.4bpp"
 	.space 0x20
 
 gUnknown_0809DBE0:: @ 0x0809DBE0
