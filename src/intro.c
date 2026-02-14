@@ -1107,10 +1107,10 @@ void sub_AC38(void)
     DmaCopy16(3, gUnknown_080EB160, (void *) 0x6007000, 0x1000);
     DmaCopy16(3, gUnknown_080EA160, (void *) 0x600E000, 0x1000);
     DmaCopy16(3, gUnknown_080EC160, (void *) 0x600F000, 0x800);
-    DmaCopy16(3, gUnknown_080EC960, (void *) 0x6000000, 0x2800);
+    DmaCopy16(3, gIntroScene5Text_Gfx, (void *) 0x6000000, 0x2800);
     DmaCopy16(3, gIntroScene1Ball_Gfx, gUnknown_03000000, 0x4000);
     DmaCopy16(3, gUnknown_080E9F60, (void *) 0x5000000, 0x180);
-    DmaCopy16(3, gUnknown_080F2180, (void *) 0x6010000, 0x3000);
+    DmaCopy16(3, gIntroScene5Sprites_Gfx, (void *) 0x6010000, 0x3000);
     DmaCopy16(3, gUnknown_080E9F60, OBJ_PLTT, 0x180);
 
     sub_ADFC();
@@ -1339,9 +1339,9 @@ void sub_B2F8(void)
     DmaCopy16(3, gUnknown_080FDFC0, 0x0600D000, 0x2000);
     DmaCopy16(3, gUnknown_080FCFC0, 0x0600F000, 0x800);
     DmaCopy16(3, gUnknown_080F63A0, 0x0600F800, 0x800);
-    DmaCopy16(3, gUnknown_080F6BA0, 0x06000000, 0x6400);
+    DmaCopy16(3, gIntroScene6Sprites_Gfx, 0x06000000, 0x6400);
     DmaCopy16(3, gUnknown_080F61A0, 0x05000000, 0x80);
-    DmaCopy16(3, gUnknown_080FFFC0, 0x06010000, 0x1000);
+    DmaCopy16(3, gIntroScene6Stars_Gfx, 0x06010000, 0x1000);
     DmaCopy16(3, gUnknown_080F61A0, 0x05000200, 0x80);
 
     sub_B4A0();
@@ -1570,9 +1570,9 @@ void sub_BA3C(void)
     DmaCopy16(3, gUnknown_0810AA00, 0x0600C000, 0x2000);
     DmaCopy16(3, gUnknown_08106A00, 0x0600E000, 0x2000);
     DmaCopy16(3, gUnknown_081011E0, 0x06007800, 0x800);
-    DmaCopy16(3, gUnknown_081019E0, 0x06000000, 0x5000);
+    DmaCopy16(3, gIntroScene7Sprites_Gfx, 0x06000000, 0x5000);
     DmaCopy16(3, gUnknown_08100FE0, 0x05000000, 0x160);
-    DmaCopy16(3, gUnknown_0810CA00, 0x06010000, 0x2000);
+    DmaCopy16(3, gIntroScene7Wailmer_Gfx, 0x06010000, 0x2000);
     DmaCopy16(3, gUnknown_08100FE0, 0x05000200, 0x160);
 
     gMain.dispcntBackup = REG_DISPCNT;
@@ -1840,9 +1840,9 @@ void sub_C228(void)
     REG_DISPCNT |= (DISPCNT_BG2_ON);
 
     DmaCopy16(3, gUnknown_0810EC20, 0x06000000, 0x800);
-    DmaCopy16(3, gUnknown_0810F420, 0x06004000, 0x3400);
+    DmaCopy16(3, gIntroScene7Explosion_Gfx, 0x06004000, 0x3400);
     DmaCopy16(3, gUnknown_0810EA20, 0x05000000, 0x140);
-    DmaCopy16(3, gUnknown_08112840, 0x06010000, 0x2C00);
+    DmaCopy16(3, gIntroScene7WailmerLaunch_Gfx, 0x06010000, 0x2C00);
     DmaCopy16(3, gUnknown_0810EA20, 0x05000200, 0x140);
 
     gMain.dispcntBackup = REG_DISPCNT;
@@ -2133,9 +2133,9 @@ void sub_C948(void)
     REG_DISPCNT |= (DISPCNT_BG3_ON);
 
     DmaCopy16(3, gUnknown_08115A60, 0x06000000, 0x800);
-    DmaCopy16(3, gUnknown_08116260, 0x06004000, 0x2400);
+    DmaCopy16(3, gIntroScene8Clouds_Gfx, 0x06004000, 0x2400);
     DmaCopy16(3, gUnknown_08115860, 0x05000000, 0x40);
-    DmaCopy16(3, gUnknown_08118680, 0x06010000, 0x7000);
+    DmaCopy16(3, gIntroScene8Ball_Gfx, 0x06010000, 0x7000);
     DmaCopy16(3, gUnknown_08115860, 0x05000200, 0x40);
 
     gMain.dispcntBackup = REG_DISPCNT;

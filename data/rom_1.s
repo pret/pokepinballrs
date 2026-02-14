@@ -1014,14 +1014,14 @@ gPokedexTextGlyphs_Gfx:: @ 0x08090780
 gUnknown_080947A0:: @ 0x080947A0
 	.incbin "baserom.gba", 0x947A0, 0x1000
 
-gUnknown_080957A0:: @ 0x080957A0
+gHighScoreText_Gfx:: @ 0x080957A0
 	.incbin "graphics/high_score/text.4bpp"
 	.space 0x20
 
 gUnknown_08099FC0:: @ 0x08099FC0
 	.incbin "baserom.gba", 0x99FC0, 0x1000
 
-gUnknown_0809AFC0:: @ 0x0809AFC0
+gHighScoreBallWatermark_Gfx:: @ 0x0809AFC0
 	.incbin "graphics/high_score/ball_watermark.4bpp"
 	.space 0x20
 
@@ -1083,8 +1083,6 @@ gIntroScene2Sprites_Gfx:: @ 0x080CC6E0
 	@ with mostly blank secondary rows (reusing tiles)
 	@ (shown in pink with yellow text)
 	@ sheet also includes pichu/pikachu
-
-	@ spoink, pelipper, and makuhita
 	.incbin "graphics/intro/scene_2_sprites.4bpp"
 	.space 0x20
 
@@ -1132,8 +1130,6 @@ gUnknown_080E1740:: @ 0x080E1740
 
 gIntroScene4Sprites_Gfx:: @ 0x080E1F40
 	.incbin "graphics/intro/scene_4_sprites.4bpp"
-	@.space 0x20
-	@.incbin "baserom.gba", 0xE1F40, 0x4020
 
 gUnknown_080E5F60:: @ 0x080E5F60
 	.incbin "baserom.gba", 0xE5F60, 0x2000
@@ -1153,14 +1149,17 @@ gUnknown_080EB160:: @ 0x080EB160
 gUnknown_080EC160:: @ 0x080EC160
 	.incbin "baserom.gba", 0xEC160, 0x800
 
-gUnknown_080EC960:: @ 0x080EC960
-	.incbin "baserom.gba", 0xEC960, 0x5020
+gIntroScene5Text_Gfx:: @ 0x080EC960
+	.incbin "graphics/intro/scene_5_text.4bpp"
+	.space 0x20
 
 gUnknown_080F1980:: @ 0x080F1980
 	.incbin "baserom.gba", 0xF1980, 0x800
 
-gUnknown_080F2180:: @ 0x080F2180
-	.incbin "baserom.gba", 0xF2180, 0x4020
+gIntroScene5Sprites_Gfx:: @ 0x080F2180
+	.incbin "graphics/intro/scene_5_sprites.4bpp"
+	.space 0x20
+	.incbin "baserom.gba", 0xF51A0, 0x1000
 
 gUnknown_080F61A0:: @ 0x080F61A0
 	.incbin "baserom.gba", 0xF61A0, 0x200
@@ -1168,8 +1167,9 @@ gUnknown_080F61A0:: @ 0x080F61A0
 gUnknown_080F63A0:: @ 0x080F63A0
 	.incbin "baserom.gba", 0xF63A0, 0x800
 
-gUnknown_080F6BA0:: @ 0x080F6BA0
-	.incbin "baserom.gba", 0xF6BA0, 0x6420
+gIntroScene6Sprites_Gfx:: @ 0x080F6BA0
+	.incbin "graphics/intro/scene_6_sprites.4bpp"
+	.space 0x20
 
 gUnknown_080FCFC0:: @ 0x080FCFC0
 	.incbin "baserom.gba", 0xFCFC0, 0x800
@@ -1180,8 +1180,9 @@ gUnknown_080FD7C0:: @ 0x080FD7C0
 gUnknown_080FDFC0:: @ 0x080FDFC0
 	.incbin "baserom.gba", 0xFDFC0, 0x2000
 
-gUnknown_080FFFC0:: @ 0x080FFFC0
-	.incbin "baserom.gba", 0xFFFC0, 0x1020
+gIntroScene6Stars_Gfx:: @ 0x080FFFC0
+	.incbin "graphics/intro/scene_6_stars.4bpp"
+	.space 0x20
 
 gUnknown_08100FE0:: @ 0x08100FE0
 	.incbin "baserom.gba", 0x100FE0, 0x200
@@ -1189,8 +1190,14 @@ gUnknown_08100FE0:: @ 0x08100FE0
 gUnknown_081011E0:: @ 0x081011E0
 	.incbin "baserom.gba", 0x1011E0, 0x800
 
-gUnknown_081019E0:: @ 0x081019E0
-	.incbin "baserom.gba", 0x1019E0, 0x5020
+gIntroScene7Sprites_Gfx:: @ 0x081019E0
+	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
+	@ with mostly blank secondary rows (reusing tiles)
+	@ (shown in pink with yellow text)
+	@ sheet also includes pelipper, makuhita, spoink
+
+	.incbin "graphics/intro/scene_7_sprites.4bpp"
+	.space 0x20
 
 gUnknown_08106A00:: @ 0x08106A00
 	.incbin "baserom.gba", 0x106A00, 0x2000
@@ -1201,8 +1208,9 @@ gUnknown_08108A00:: @ 0x08108A00
 gUnknown_0810AA00:: @ 0x0810AA00
 	.incbin "baserom.gba", 0x10AA00, 0x2000
 
-gUnknown_0810CA00:: @ 0x0810CA00
-	.incbin "baserom.gba", 0x10CA00, 0x2020
+gIntroScene7Wailmer_Gfx:: @ 0x0810CA00
+	.incbin "graphics/intro/scene_7_wailmer.4bpp"
+	.space 0x20
 
 gUnknown_0810EA20:: @ 0x0810EA20
 	.incbin "baserom.gba", 0x10EA20, 0x200
@@ -1210,11 +1218,13 @@ gUnknown_0810EA20:: @ 0x0810EA20
 gUnknown_0810EC20:: @ 0x0810EC20
 	.incbin "baserom.gba", 0x10EC20, 0x800
 
-gUnknown_0810F420:: @ 0x0810F420
-	.incbin "baserom.gba", 0x10F420, 0x3420
+gIntroScene7Explosion_Gfx:: @ 0x0810F420
+	.incbin "graphics/intro/scene_7_explosion.4bpp"
+	.space 0x20
 
-gUnknown_08112840:: @ 0x08112840
-	.incbin "baserom.gba", 0x112840, 0x3020
+gIntroScene7WailmerLaunch_Gfx:: @ 0x08112840
+	.incbin "graphics/intro/scene_7_wailmer_launch.4bpp"
+	.space 0x20
 
 gUnknown_08115860:: @ 0x08115860
 	.incbin "baserom.gba", 0x115860, 0x200
@@ -1222,11 +1232,14 @@ gUnknown_08115860:: @ 0x08115860
 gUnknown_08115A60:: @ 0x08115A60
 	.incbin "baserom.gba", 0x115A60, 0x800
 
-gUnknown_08116260:: @ 0x08116260
-	.incbin "baserom.gba", 0x116260, 0x2420
+gIntroScene8Clouds_Gfx:: @ 0x08116260
+	.incbin "graphics/intro/scene_8_clouds.4bpp"
+	.space 0x20
 
-gUnknown_08118680:: @ 0x08118680
-	.incbin "baserom.gba", 0x118680, 0x8640
+gIntroScene8Ball_Gfx:: @ 0x08118680
+	.incbin "graphics/intro/scene_8_ball.4bpp"
+
+	.incbin "baserom.gba", 0x11F680, 0x1640
 
 .include "data/graphics/titlescreen.inc"
 
