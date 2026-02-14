@@ -1770,16 +1770,16 @@ gUnknown_0845588C:: @ 0x0845588C
 	.incbin "graphics/stage/kecleon/kecleon_fx.4bpp"
 
 gUnknown_08455E8C:: @ 0x08455E8C
-	.incbin "baserom.gba", 0x455E8C, 0x600
+	.incbin "graphics/stage/misc/gunk_08455E8C.4bpp"
 
 gUnknown_0845648C:: @ 0x0845648C
-	.incbin "baserom.gba", 0x45648C, 0x480
+	.incbin "graphics/stage/misc/gunk_0845648C.4bpp"
 
 gUnknown_0845690C:: @ 0x0845690C
-	.incbin "baserom.gba", 0x45690C, 0x800
+	.incbin "graphics/stage/misc/gunk_0845690C.4bpp"
 
 gUnknown_0845710C:: @ 0x0845710C
-	.incbin "baserom.gba", 0x45710C, 0x2F80
+	.incbin "graphics/stage/ruby/nuzleaf.4bpp"
 
 gUnknown_0845A08C:: @ 0x0845A08C
 	.incbin "baserom.gba", 0x45A08C, 0x400

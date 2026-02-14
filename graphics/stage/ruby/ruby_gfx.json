@@ -46,6 +46,11 @@
       "gfx_filename": "cyndaquil",
       "mwidth":4,
       "oam":true
+    },
+    { 
+      "gfx_filename": "nuzleaf",
+      "mwidth":4,
+      "oam":true
     }
   ]
 }
