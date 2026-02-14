@@ -61,7 +61,7 @@ extern struct HighScoreEntry gUnknown_0202C550[2];
 extern u8 gUnknown_0809AFC0[];
 extern u8 gUnknown_080947A0[];
 extern u8 gUnknown_0809DDE0[];
-extern u8 gUnknown_0809DFE0[];
+extern u8 gHighScoreDialogs_Gfx[];
 extern u32 gUnknown_08079870[8];
 extern const struct HighScoreEntry gDefaultHighScores[2][8];
 
@@ -91,7 +91,7 @@ void LoadHighScoreGraphics(void)
   DmaCopy16(3, gUnknown_080947A0, gUnknown_03005C00, 0x1000);
   DmaCopy16(3, gUnknown_08099FC0, (void *)BG_SCREEN_ADDR(2), 0x1000);
   DmaCopy16(3, gUnknown_0809DDE0, (void *)OBJ_PLTT, 0x100);
-  DmaCopy16(3, gUnknown_0809DFE0, (void *)OBJ_VRAM0, 0x4420);
+  DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
   sub_CFD4();
   sub_EE64();
   DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
@@ -718,7 +718,7 @@ void IdleHighScore_State0_DD70(void)
     DmaCopy16(3, gUnknown_080947A0, gUnknown_03005C00, 0x1000);
     DmaCopy16(3, gUnknown_08099FC0, (void *)BG_SCREEN_ADDR(2), 0x1000);
     DmaCopy16(3, gUnknown_0809DDE0, (void *)OBJ_PLTT, 0x20);
-    DmaCopy16(3, gUnknown_0809DFE0, (void *)OBJ_VRAM0, 0x4420);
+    DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
     sub_DEB4();
     sub_EE64();
     DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
@@ -836,7 +836,7 @@ void HighScore_State12_E0EC(void)
     DmaCopy16(3, gUnknown_080947A0, gUnknown_03005C00, 0x1000);
     DmaCopy16(3, gUnknown_08099FC0, (void *)BG_SCREEN_ADDR(2), 0x1000);
     DmaCopy16(3, gUnknown_0809DDE0, (void *)OBJ_PLTT, 0x20);
-    DmaCopy16(3, gUnknown_0809DFE0, (void *)OBJ_VRAM0, 0x4420);
+    DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
     sub_DEB4();
     sub_EE64();
     DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);

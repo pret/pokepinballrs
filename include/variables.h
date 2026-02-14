@@ -190,7 +190,7 @@ extern u8 gFieldSelectWindowTilemap[];
 extern u16 gFieldSelectBGPals[];
 extern u16 gFieldSelectSpritePals[];
 extern u8 gFieldSelectSpriteGfx[];
-extern u8 gUnknown_080ACC60[];
+extern u8 gEReaderText_Gfx[];
 extern const u8 gTitlescreenBgTilemap[];
 extern const u16 gTitlescreenBg_Pals[];
 extern const u8 gTitlescreenBg_Gfx[];
@@ -359,7 +359,7 @@ extern const struct SpriteSet *const gUnknown_086A795C[];
 extern const struct SpriteSet *const gUnknown_086A79EC[];
 extern u8 gUnknown_080E1540[];
 extern u8 gUnknown_080E1740[];
-extern u8 gUnknown_080E1F40[];
+extern u8 gIntroScene4Sprites_Gfx[];
 extern u8 gUnknown_080E5F60[];
 extern u8 gUnknown_080E7F60[];
 

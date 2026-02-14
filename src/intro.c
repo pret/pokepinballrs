@@ -32,8 +32,8 @@ extern u8 gUnknown_080B9CC0[];
 extern u8 gUnknown_080BC4C0[];
 extern u8 gUnknown_080BB4C0[];
 extern u8 gUnknown_080B3CA0[];
-extern u8 gUnknown_080B44A0[];
-extern u8 gUnknown_080BD4C0[];
+extern u8 gIntroScene1Text_Gfx[];
+extern u8 gIntroScene1Ball_Gfx[];
 extern s16 gUnknown_086A7788[0x8];
 
 extern u16 gUnknown_0201C1C0[];
@@ -51,7 +51,7 @@ extern s8 gIntroSceneIndex;
 extern u8 gUnknown_0202BE70[];
 
 extern u8 gUnknown_080CBEE0[];
-extern u8 gUnknown_080CC6E0[];
+extern u8 gIntroScene2Sprites_Gfx[];
 extern u8 gUnknown_080CBCE0[];
 extern u8 gUnknown_080D0700[];
 extern u8 gUnknown_080D2700[];
@@ -63,10 +63,10 @@ extern u8 gUnknown_080DE520[];
 extern u8 gUnknown_080DCD20[];
 extern u8 gUnknown_080D4900[];
 extern u8 gUnknown_080D5900[];
-extern u8 gUnknown_080D6100[];
+extern u8 gIntroScene3Sprites_Gfx[];
 extern u8 gUnknown_080DD520[];
 extern u8 gUnknown_080DDD20[];
-extern u8 gUnknown_080DF520[];
+extern u8 gIntroScene3Treecko_Gfx[];
 extern const struct SpriteSet *const gUnknown_086A7D20[];
 
 typedef void (*IntroFunc)(void);
@@ -214,8 +214,8 @@ void sub_9498(void)
     DmaCopy16(3, gUnknown_080BC4C0, 0x0600d800, 0x1000);
     DmaCopy16(3, gUnknown_080BB4C0, 0x0600e800 , 0x1000);
     DmaCopy16(3, gUnknown_080B3CA0, 0x0600f800 , BG_SCREEN_SIZE);
-    DmaCopy16(3, gUnknown_080B44A0, BG_CHAR_ADDR(0), 0x5800);
-    DmaCopy16(3, gUnknown_080BD4C0, gUnknown_0201C1C0, 0x6800);
+    DmaCopy16(3, gIntroScene1Text_Gfx, BG_CHAR_ADDR(0), 0x5800);
+    DmaCopy16(3, gIntroScene1Ball_Gfx, gUnknown_0201C1C0, 0x6800);
     sub_10170(gIntroScene1Sprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, 0x20);
     DmaCopy16(3, gIntroScene1Sprites_Gfx, BG_CHAR_ADDR(4), 0x8000);
     DmaCopy16(3, gIntroScene1Sprites_Pals, 0x05000200, BG_PLTT_SIZE);
@@ -681,7 +681,7 @@ void sub_A16C(void)
     DmaCopy16(3, gUnknown_080D0700, (void*) 0x06006000, 0x2000);
     DmaCopy16(3, gUnknown_080D2700, (void*) 0x0600D000, 0x2000);
     DmaCopy16(3, gUnknown_080CBEE0, (void*) 0x0600F000, 0x800);
-    DmaCopy16(3, gUnknown_080CC6E0, (void*) 0x06000000, 0x3C00);
+    DmaCopy16(3, gIntroScene2Sprites_Gfx, (void*) 0x06000000, 0x3C00);
     DmaCopy16(3, gUnknown_080CBCE0, (void*) PLTT, 0x80);
     sub_A2A8();
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
@@ -805,9 +805,9 @@ void sub_A454(void)
     DmaCopy16(3, gUnknown_080D5900, (void*) 0x0600F800, 0x800);
     DmaCopy16(3, gUnknown_080DD520, gUnknown_03005C00, 0x800);
     DmaCopy16(3, gUnknown_080DDD20, gUnknown_0201B180, 0x800);
-    DmaCopy16(3, gUnknown_080D6100, (void*) 0x06000000, 0x6C00);
+    DmaCopy16(3, gIntroScene3Sprites_Gfx, (void*) 0x06000000, 0x6C00);
     DmaCopy16(3, gUnknown_080D4700, (void*) PLTT, 0xE0);
-    DmaCopy16(3, gUnknown_080DF520, (void*) 0x06010000, 0x2000);
+    DmaCopy16(3, gIntroScene3Treecko_Gfx, (void*) 0x06010000, 0x2000);
     DmaCopy16(3, gUnknown_080D4700, (void*) OBJ_PLTT, 0xE0);
 
     sub_A628();
@@ -986,7 +986,7 @@ void sub_A968(void)
     DmaCopy16(3, gUnknown_080E5F60, (void *) 0x6006000, 0x2000);
     DmaCopy16(3, gUnknown_080E7F60, (void *) 0x600D000, 0x2000);
     DmaCopy16(3, gUnknown_080E1740, (void *) 0x600F000, 0x800);
-    DmaCopy16(3, gUnknown_080E1F40, (void *) 0x6000000, 0x4000);
+    DmaCopy16(3, gIntroScene4Sprites_Gfx, (void *) 0x6000000, 0x4000);
     DmaCopy16(3, gUnknown_080E1540, PLTT, 0x60);
     gMain.dispcntBackup = REG_DISPCNT;
 
@@ -1108,7 +1108,7 @@ void sub_AC38(void)
     DmaCopy16(3, gUnknown_080EA160, (void *) 0x600E000, 0x1000);
     DmaCopy16(3, gUnknown_080EC160, (void *) 0x600F000, 0x800);
     DmaCopy16(3, gUnknown_080EC960, (void *) 0x6000000, 0x2800);
-    DmaCopy16(3, gUnknown_080BD4C0, gUnknown_03000000, 0x4000);
+    DmaCopy16(3, gIntroScene1Ball_Gfx, gUnknown_03000000, 0x4000);
     DmaCopy16(3, gUnknown_080E9F60, (void *) 0x5000000, 0x180);
     DmaCopy16(3, gUnknown_080F2180, (void *) 0x6010000, 0x3000);
     DmaCopy16(3, gUnknown_080E9F60, OBJ_PLTT, 0x180);

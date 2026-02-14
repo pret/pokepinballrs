@@ -10,17 +10,17 @@
   },
   "files": [
     {
-      "gfx_filename": "gIntroPlusleMinun",
+      "gfx_filename": "scene_4_sprites",
       "segments":[
         {
-            "segfile": "gIntroPlusleMinun_text",
+            "segfile": "scene_4_sprites_text",
             "width":20
         },
         {
-            "segfile": "gIntroPlusleMinun_space"
+            "segfile": "scene_4_sprites_space"
         },
         {
-            "segfile": "gIntroPlusleMinun_mons",
+            "segfile": "scene_4_sprites_mons",
             "width":24
         }
       ],
