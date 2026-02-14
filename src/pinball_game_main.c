@@ -58,13 +58,13 @@ extern const u8 gUnknown_08449D8C[][0x280];
 extern const u8 gUnknown_084F6B0C[][0x500];
 extern const u8 gUnknown_08490A4C[][0x440];
 extern const s16 gUnknown_086AE5A0[][2];
-extern const u8 gUnknown_0813A854[0x2000];
-extern const u8 gUnknown_0813C874[0x2000];
+extern const u8 gKecleonBonusClear_Gfx[0x2000];
+extern const u8 gKyogreBonusClear_Gfx[0x2000];
 extern const u8 gUnknown_0849F1CC[0x2000];
-extern const u8 gUnknown_0813E894[0x2000];
+extern const u8 gGroudonBonusClear_Gfx[0x2000];
 extern const u8 gUnknown_083C5A2C[0x2800];
 extern const u8 gUnknown_084A856C[0x1C00];
-extern const u8 gUnknown_081408B4[0x2000];
+extern const u8 gRayquazaBonusClear_Gfx[0x2000];
 extern const u8 gUnknown_084AA18C[0x860];
 extern const u8 gUnknown_084B77EC[0x800];
 
@@ -1549,17 +1549,17 @@ void sub_4CA18(void)
 
 void sub_4CAE8(void)
 {
-    DmaCopy16(3, gUnknown_08138834, (void *)0x6015800, 0x2000);
+    DmaCopy16(3, gDusclopsBonusClear_Gfx, (void *)0x6015800, 0x2000);
 }
 
 void sub_4CB0C(void)
 {
-    DmaCopy16(3, gUnknown_0813A854, (void *)0x6015800, 0x2000);
+    DmaCopy16(3, gKecleonBonusClear_Gfx, (void *)0x6015800, 0x2000);
 }
 
 void sub_4CB30(void)
 {
-    DmaCopy16(3, gUnknown_0813C874, (void *)0x6015800, 0x2000);
+    DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x6015800, 0x2000);
     DmaCopy16(
         3,
         gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
@@ -1576,7 +1576,7 @@ void sub_4CBB4(void)
     }
     else
     {
-        DmaCopy16(3, gUnknown_0813E894, (void *)0x6015800, 0x2000);
+        DmaCopy16(3, gGroudonBonusClear_Gfx, (void *)0x6015800, 0x2000);
     }
 
     DmaCopy16(
@@ -1601,7 +1601,7 @@ void sub_4CC58(void)
     }
     else
     {
-        DmaCopy16(3, gUnknown_081408B4, (void *)0x6015800, 0x2000);
+        DmaCopy16(3, gRayquazaBonusClear_Gfx, (void *)0x6015800, 0x2000);
     }
 
     var0 = gCurrentPinballGame->unk3DC - 2;

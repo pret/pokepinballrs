@@ -4,7 +4,7 @@
 #include "constants/bg_music.h"
 
 extern const s16 gUnknown_08137D48[];
-extern const u8 gUnknown_081408B4[];
+extern const u8 gRayquazaBonusClear_Gfx[];
 extern const u8 gUnknown_083C5A2C[];
 extern const u8 gUnknown_084A6EEC[][0x280];
 extern const u8 gUnknown_084A856C[];
@@ -151,7 +151,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         gCurrentPinballGame->unk18 = 0;
         gMain.spriteGroups[6].available = 1;
         gMain.spriteGroups[5].available = 1;
-        DmaCopy16(3, gUnknown_081408B4, (void *)0x06015800, 0x2000);
+        DmaCopy16(3, gRayquazaBonusClear_Gfx, (void *)0x06015800, 0x2000);
         gCurrentPinballGame->unk394 = 136;
         gMain.unkF = 0x80;
         gCurrentPinballGame->unk5FA = 1;
@@ -192,7 +192,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         gCurrentPinballGame->unk18 = 140;
         gMain.spriteGroups[6].available = 1;
         gMain.spriteGroups[5].available = 1;
-        DmaCopy16(3, gUnknown_081408B4, (void *)0x06015800, 0x2000);
+        DmaCopy16(3, gRayquazaBonusClear_Gfx, (void *)0x06015800, 0x2000);
         gCurrentPinballGame->unk394 = 136;
         gMain.unkF = 0x80;
         break;

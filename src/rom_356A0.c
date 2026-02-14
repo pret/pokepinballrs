@@ -6,10 +6,10 @@
 extern struct SpriteGroup gMain_spriteGroups_12;
 extern struct SpriteGroup gMain_spriteGroups_14;
 
-extern const u8 gUnknown_0813A854[];
-extern const u8 gUnknown_0813C874[];
-extern const u8 gUnknown_0813E894[];
-extern const u8 gUnknown_081408B4[];
+extern const u8 gKecleonBonusClear_Gfx[];
+extern const u8 gKyogreBonusClear_Gfx[];
+extern const u8 gGroudonBonusClear_Gfx[];
+extern const u8 gRayquazaBonusClear_Gfx[];
 
 void sub_350F0(void)
 {
@@ -142,42 +142,42 @@ void sub_351A8(void)
     case FIELD_DUSCLOPS:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gUnknown_08138834[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gDusclopsBonusClear_Gfx[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
         var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gUnknown_08138834[var2 * 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gDusclopsBonusClear_Gfx[var2 * 0x40], (void *)0x06017380, 0x40);
         break;
     case FIELD_KECLEON:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gUnknown_0813A854[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gKecleonBonusClear_Gfx[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
         var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gUnknown_0813A854[var2 * 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gKecleonBonusClear_Gfx[var2 * 0x40], (void *)0x06017380, 0x40);
         break;
     case FIELD_KYOGRE:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gUnknown_0813C874[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gKyogreBonusClear_Gfx[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
         var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gUnknown_0813C874[var2 * 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gKyogreBonusClear_Gfx[var2 * 0x40], (void *)0x06017380, 0x40);
         break;
     case FIELD_GROUDON:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gUnknown_0813E894[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gGroudonBonusClear_Gfx[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
         var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gUnknown_0813E894[var2* 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gGroudonBonusClear_Gfx[var2* 0x40], (void *)0x06017380, 0x40);
         break;
     case FIELD_RAYQUAZA:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gUnknown_081408B4[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gRayquazaBonusClear_Gfx[(sp0[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
         }
         var2 = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gUnknown_081408B4[var2 * 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gRayquazaBonusClear_Gfx[var2 * 0x40], (void *)0x06017380, 0x40);
         break;
     }
 }

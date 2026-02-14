@@ -136,7 +136,7 @@ void DusclopsBoardProcess_3B_33130(void)
                 gCurrentPinballGame->unk18 = 0;
                 gMain.spriteGroups[6].available = 1;
                 gMain.spriteGroups[5].available = 1;
-                DmaCopy16(3, gUnknown_08138834, OBJ_VRAM1+0x1800, 8192);
+                DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_VRAM1+0x1800, 8192);
                 gCurrentPinballGame->unk394 = 136;
             }
             break;

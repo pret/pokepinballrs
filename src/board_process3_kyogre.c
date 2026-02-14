@@ -3,7 +3,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
-extern const u8 gUnknown_0813C874[];
+extern const u8 gKyogreBonusClear_Gfx[];
 extern const u8 gUnknown_081B0DE4[][0x20];
 extern const u16 gUnknown_08333004[];
 extern const u8 gUnknown_0833FF58[][0x20];
@@ -153,7 +153,7 @@ void KyogreBoardProcess_3B_3869C(void)
             gCurrentPinballGame->unk18 = 0;
             gMain.spriteGroups[6].available = 1;
             gMain.spriteGroups[5].available = 1;
-            DmaCopy16(3, gUnknown_0813C874, (void *)0x06015800, 0x2000);
+            DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x06015800, 0x2000);
             gCurrentPinballGame->unk394 = 136;
             gMain.unkF = 0x80;
             gCurrentPinballGame->unk5FA = 1;
@@ -195,7 +195,7 @@ void KyogreBoardProcess_3B_3869C(void)
         gCurrentPinballGame->unk18 = 140;
         gMain.spriteGroups[6].available = 1;
         gMain.spriteGroups[5].available = 1;
-        DmaCopy16(3, gUnknown_0813C874, (void *)0x06015800, 0x2000);
+        DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x06015800, 0x2000);
         gCurrentPinballGame->unk394 = 136;
         gMain.unkF = 0x80;
         break;

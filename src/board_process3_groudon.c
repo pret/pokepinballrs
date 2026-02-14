@@ -4,7 +4,7 @@
 #include "constants/bg_music.h"
 
 
-extern const u8 gUnknown_0813E894[];
+extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gUnknown_08352BD8[];
 extern const u8 gUnknown_0849F1CC[];
 extern const s8 gUnknown_084A11EC[][0x300];
@@ -173,7 +173,7 @@ void GroudonBoardProcess_3B_3B49C(void)
             gCurrentPinballGame->unk18 = 0;
             gMain.spriteGroups[6].available = 1;
             gMain.spriteGroups[5].available = 1;
-            DmaCopy16(3, gUnknown_0813E894, (void *)0x06015800, 0x2000);
+            DmaCopy16(3, gGroudonBonusClear_Gfx, (void *)0x06015800, 0x2000);
             gCurrentPinballGame->unk394 = 136;
             gMain.unkF = 0x80;
             gCurrentPinballGame->unk5FA = 1;
@@ -215,7 +215,7 @@ void GroudonBoardProcess_3B_3B49C(void)
         gCurrentPinballGame->unk18 = 140;
         gMain.spriteGroups[6].available = 1;
         gMain.spriteGroups[5].available = 1;
-        DmaCopy16(3, gUnknown_0813E894, (void *)0x06015800, 0x2000);
+        DmaCopy16(3, gGroudonBonusClear_Gfx, (void *)0x06015800, 0x2000);
         gCurrentPinballGame->unk394 = 136;
         gMain.unkF = 0x80;
         break;
