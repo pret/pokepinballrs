@@ -390,7 +390,7 @@ void sub_28544(void)
         gCurrentPinballGame->unkBC = gUnknown_086AE124[gCurrentPinballGame->unk73].x;
         gCurrentPinballGame->unkBE = gUnknown_086AE124[gCurrentPinballGame->unk73].y;
         gCurrentPinballGame->unk18 = 0;
-        m4aSongNumStart(SE_UNKNOWN_0x144);
+        m4aSongNumStart(SE_JIRACHI_MOVE);
         gCurrentPinballGame->unk17++;
         gCurrentPinballGame->unkC0 = gCurrentPinballGame->unk80;
         gCurrentPinballGame->unkC2 = gCurrentPinballGame->unk82;
@@ -425,7 +425,7 @@ void sub_28544(void)
                     else
                         gCurrentPinballGame->unk73 = 0;
 
-                    m4aSongNumStart(SE_UNKNOWN_0x144);
+                    m4aSongNumStart(SE_JIRACHI_MOVE);
                     gCurrentPinballGame->unkBC = gUnknown_086AE124[gCurrentPinballGame->unk73].x;
                     gCurrentPinballGame->unkBE = gUnknown_086AE124[gCurrentPinballGame->unk73].y;
                 }
