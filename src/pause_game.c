@@ -5,7 +5,7 @@
 
 extern const struct Vector16 gUnknown_08137D78[];
 extern const u16 gUnknown_08137DA4[];
-extern const u8 gUnknown_08510CAC[][0x20];
+extern const u8 gPauseMenuText_Gfx[][0x20];
 
 
 // Pauses the game and saves the blend settings
@@ -242,11 +242,11 @@ void sub_49A34(void)
         index = gUnknown_08137DA4[(gMain.systemFrameCount % 65) / 5];
         if (gMain.selectedField < MAIN_FIELD_COUNT)
         {
-            DmaCopy16(3, gUnknown_08510CAC[index], (void *)0x060118C0, 0x20);
+            DmaCopy16(3, gPauseMenuText_Gfx[index], (void *)0x060118C0, 0x20);
         }
         else
         {
-            DmaCopy16(3, gUnknown_08510CAC[index], (void *)0x06010480, 0x20);
+            DmaCopy16(3, gPauseMenuText_Gfx[index], (void *)0x06010480, 0x20);
         }
 
         offsets = gUnknown_08137D78;

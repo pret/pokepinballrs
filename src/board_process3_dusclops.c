@@ -535,7 +535,7 @@ void sub_336E0(void) {
     }
 }
 
-extern const u8 gUnknown_08510E4C[];
+extern const u8 gDusclopsBoardDuskull_Gfx[];
 extern const u16 gDuskullSpritesheetOam[][2][3];
 void sub_340EC() {
     s16 i, j;
@@ -548,7 +548,7 @@ void sub_340EC() {
     for (i = 0; i < 3; i++)
     {
         s16 r8 = gCurrentPinballGame->unk397[i];
-        DmaCopy16(3, gUnknown_08510E4C + r8 * 0x280, OBJ_VRAM0 + 0x920 + i * 0x280, 0x280);
+        DmaCopy16(3, gDusclopsBoardDuskull_Gfx + r8 * 0x280, OBJ_VRAM0 + 0x920 + i * 0x280, 0x280);
         sb = gCurrentPinballGame->unk39D[i];
         spriteGroup = &gMain_spriteGroups[7 + i];
         if (gCurrentPinballGame->unk3A6[i]) {
@@ -985,7 +985,7 @@ void sub_34450(void)
         break;
     } //End switch
 
-    DmaCopy16(3 , gUnknown_084EDACC + r9 * 1024, (void *)OBJ_VRAM0+0x10a0, BG_SCREEN_SIZE);
+    DmaCopy16(3 , gDusclopsBoardDusclops_Gfx + r9 * 1024, (void *)OBJ_VRAM0+0x10a0, BG_SCREEN_SIZE);
 
     gCurrentPinballGame->unk3F0 = ((gCurrentPinballGame->unk3E8 / 10) * 2) + 16;
     gCurrentPinballGame->unk3F2 = ((gCurrentPinballGame->unk3EA / 10) * 2) + 16;
@@ -1032,7 +1032,7 @@ void sub_34450(void)
             s16 i;
             u8 r1;
             r1 = gMain.systemFrameCount % 4;
-            DmaCopy16(3 , gUnknown_08494E4C + r1 / 2 * 0x600, (void *)OBJ_VRAM0 + 0x1aa0, 0xc00);
+            DmaCopy16(3 , gDusclopsBoardDusclopsAppearFx_Gfx + r1 / 2 * 0x600, (void *)OBJ_VRAM0 + 0x1aa0, 0xc00);
 
             for (i = 0; i < 2; i++)
             {
@@ -1062,7 +1062,7 @@ void sub_34450(void)
             else
                 r9 = 2;
 
-            DmaCopy16(3 , gUnknown_084FF30C + r9 * 0x200,(void *)OBJ_VRAM0+0x18a0, 0x200);
+            DmaCopy16(3 , gDusclopsBoardDusclopsBallGrabSwirl_Gfx + r9 * 0x200,(void *)OBJ_VRAM0+0x18a0, 0x200);
         }
         else
         {

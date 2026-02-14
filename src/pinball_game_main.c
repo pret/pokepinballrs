@@ -42,20 +42,20 @@ extern const u8 gUnknown_083FFD4C[0x40];
 extern const u8 gUnknown_08480E0C[][0x40];
 extern const u8 gUnknown_084F61EC[];
 extern const u8 gUnknown_084FA20C[];
-extern const u8 gUnknown_0850100C[];
-extern const u8 gUnknown_0850398C[];
-extern const u8 gUnknown_08526DCC[];
+extern const u8 gMainBoardBallSave_Gfx[];
+extern const u8 gMainBoardEndOfBall_Gfx[];
+extern const u8 gSapphireBoardZigzagoonFx_Gfx[];
 extern const s16 gUnknown_086ACFE0[];
 extern const u16 gUnknown_086AD2DE[];
 extern const u8 *gUnknown_086AD474[];
 extern const s16 gUnknown_086AD456[][7];
-extern const u8 gUnknown_084FB68C[][0x480];
+extern const u8 gRubyBoardHatchCave_Gfx[][0x480];
 extern const u8 gUnknown_083C3C2C[][0x300];
-extern const u8 gUnknown_084F5ACC[][0x260];
+extern const u8 gRubyBoardSharpedo_Gfx[][0x260];
 extern const u8 gUnknown_083C806C[][0x100];
-extern const u8 gUnknown_084ED0CC[][0x180];
+extern const u8 gRubyBoardShopDoor_Gfx[][0x180];
 extern const u8 gUnknown_08449D8C[][0x280];
-extern const u8 gUnknown_084F6B0C[][0x500];
+extern const u8 gRubyBoardShop_Gfx[][0x500];
 extern const u8 gUnknown_08490A4C[][0x440];
 extern const s16 gUnknown_086AE5A0[][2];
 extern const u8 gKecleonBonusClear_Gfx[0x2000];
@@ -1331,10 +1331,10 @@ void sub_4BC34(void)
         }
         break;
     case 18:
-        DmaCopy16(3, gUnknown_0850100C, (void *)0x6015800, 0x2400);
+        DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x6015800, 0x2400);
         break;
     case 19:
-        DmaCopy16(3, gUnknown_0850398C, (void *)0x6015800, 0x2800);
+        DmaCopy16(3, gMainBoardEndOfBall_Gfx, (void *)0x6015800, 0x2800);
         break;
     case 20:
         if (gMain.selectedField == FIELD_RUBY)
@@ -1349,7 +1349,7 @@ void sub_4BC34(void)
         }
         break;
     case 21:
-        DmaCopy16(3, gUnknown_08526DCC, (void *)0x6015800, 0xC00);
+        DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, (void *)0x6015800, 0xC00);
         break;
     }
 }
@@ -1377,7 +1377,7 @@ void sub_4C290(void)
     }
 
     var0 = gCurrentPinballGame->unk1E5;
-    DmaCopy16(3, gUnknown_084FA48C[var0 = gCurrentPinballGame->unk1E5], 0x06010780, 0x120);
+    DmaCopy16(3, gMainBoardPikaSpinner_Gfx[var0 = gCurrentPinballGame->unk1E5], 0x06010780, 0x120);
     var0 = gCurrentPinballGame->unk1CA;
     DmaCopy16(3, gUnknown_084C00EC[var0], 0x06010AE0, 0x80);
 
@@ -1502,15 +1502,15 @@ void sub_4C808(void)
     s16 var0;
 
     var0 = gUnknown_086AD2EE[gCurrentPinballGame->unk1ED][2];
-    DmaCopy16(3, gUnknown_084FB68C[var0], (void *)0x60122A0, 0x480);
+    DmaCopy16(3, gRubyBoardHatchCave_Gfx[var0], (void *)0x60122A0, 0x480);
     var0 = (gMain.systemFrameCount % 50) / 25;
     DmaCopy16(3, gUnknown_083C3C2C[var0], (void *)0x6012720, 0x300);
-    DmaCopy16(3, gUnknown_084F5ACC[gCurrentPinballGame->unk2F5], (void *)0x6012C20, 0x260);
+    DmaCopy16(3, gRubyBoardSharpedo_Gfx[gCurrentPinballGame->unk2F5], (void *)0x6012C20, 0x260);
     for (i = 0; i < 2; i++)
         DmaCopy16(3, gUnknown_083C806C[var0], (void *)0x6010000 + (0x174 + i * 8) * 0x20, 0x100);
 
     var0 = gCurrentPinballGame->unk2F1 & 0xF;
-    DmaCopy16(3, gUnknown_084ED0CC[var0], (void *)0x6013180, 0x180);
+    DmaCopy16(3, gRubyBoardShopDoor_Gfx[var0], (void *)0x6013180, 0x180);
     if (gCurrentPinballGame->unk2DA < 3)
         gCurrentPinballGame->unk746 = 0;
     else
@@ -1518,7 +1518,7 @@ void sub_4C808(void)
 
     DmaCopy16(3, gUnknown_08449D8C[gCurrentPinballGame->unk746], (void *)0x6013300, 0x280);
     var0 = gUnknown_086AD456[gCurrentPinballGame->unk1A5][(gCurrentPinballGame->unk1B4 % 42) / 6];
-    DmaCopy16(3, gUnknown_084F6B0C[var0], (void *)0x6013D00, 0x500);
+    DmaCopy16(3, gRubyBoardShop_Gfx[var0], (void *)0x6013D00, 0x500);
 }
 
 void sub_4CA18(void)
