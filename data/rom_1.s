@@ -1814,40 +1814,40 @@ gUnknown_083FFD8C:: @ 0x083FFD8C
 	.include "data/graphics/mon_catch_sprites.inc"
 
 gUnknown_08447A8C:: @ 0x08447A8C
-	.incbin "baserom.gba", 0x447A8C, 0x900
+	.incbin "graphics/stage/ruby/gulpin.4bpp"
 
 gUnknown_0844838C:: @ 0x0844838C
-	.incbin "baserom.gba", 0x44838C, 0xF00
+	.incbin "graphics/stage/main/bonus_trap.4bpp"
 
 gUnknown_0844928C:: @ 0x0844928C
 	.incbin "baserom.gba", 0x44928C, 0xB00
 
 gUnknown_08449D8C:: @ 0x08449D8C
-	.incbin "baserom.gba", 0x449D8C, 0xC80
+	.incbin "graphics/stage/ruby/cyndaquil.4bpp"
 
 gUnknown_0844AA0C:: @ 0x0844AA0C
-	.incbin "baserom.gba", 0x44AA0C, 0x4800
+	.incbin "graphics/stage/main/gunk_0844AA0C.4bpp"
 
 gUnknown_0844F20C:: @ 0x0844F20C
-	.incbin "baserom.gba", 0x44F20C, 0x780
+	.incbin "graphics/stage/sapphire/seedot_basket.4bpp"
 
 gUnknown_0844F98C:: @ 0x0844F98C
-	.incbin "baserom.gba", 0x44F98C, 0x5F00
+	.incbin "graphics/stage/kecleon/kecleon.4bpp"
 
 gUnknown_0845588C:: @ 0x0845588C
-	.incbin "baserom.gba", 0x45588C, 0x600
+	.incbin "graphics/stage/kecleon/kecleon_fx.4bpp"
 
 gUnknown_08455E8C:: @ 0x08455E8C
-	.incbin "baserom.gba", 0x455E8C, 0x600
+	.incbin "graphics/stage/misc/gunk_08455E8C.4bpp"
 
 gUnknown_0845648C:: @ 0x0845648C
-	.incbin "baserom.gba", 0x45648C, 0x480
+	.incbin "graphics/stage/misc/gunk_0845648C.4bpp"
 
 gUnknown_0845690C:: @ 0x0845690C
-	.incbin "baserom.gba", 0x45690C, 0x800
+	.incbin "graphics/stage/misc/gunk_0845690C.4bpp"
 
 gUnknown_0845710C:: @ 0x0845710C
-	.incbin "baserom.gba", 0x45710C, 0x2F80
+	.incbin "graphics/stage/ruby/nuzleaf.4bpp"
 
 gUnknown_0845A08C:: @ 0x0845A08C
 	.incbin "baserom.gba", 0x45A08C, 0x400

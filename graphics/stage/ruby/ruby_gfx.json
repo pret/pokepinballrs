@@ -36,6 +36,21 @@
       "mheight":2,
       "mwidth":2,
       "width":8
+    },
+    { 
+      "gfx_filename": "gulpin",
+      "mwidth":4,
+      "oam":true
+    },
+    { 
+      "gfx_filename": "cyndaquil",
+      "mwidth":4,
+      "oam":true
+    },
+    { 
+      "gfx_filename": "nuzleaf",
+      "mwidth":4,
+      "oam":true
     }
   ]
 }
