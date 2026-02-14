@@ -969,7 +969,7 @@ void sub_34450(void)
 
             if (gCurrentPinballGame->unk3E6 == 30)
             {
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_f5);
+                MPlayStart(&gMPlayInfo_SE1, &se_dusclops_appear);
             }
             break;
         }
