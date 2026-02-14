@@ -401,7 +401,7 @@ void sub_13D24(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg2)
     if (Cos(angleDelta)  > 0x1F3F)
     {
         if (forwardMag > 0x46)
-            m4aSongNumStart(SE_UNKNOWN_0x77);
+            m4aSongNumStart(SE_WALL_HIT);
 
         if (forwardMag > 0x118
             && gCurrentPinballGame->unk61C == 0
@@ -795,7 +795,7 @@ u16 sub_14740(struct Vector16 *arg0, u16 *arg1)
                     }
 
                     res = 1;
-                    m4aSongNumStart(SE_UNKNOWN_0x145);
+                    m4aSongNumStart(SE_JIRACHI_HIT);
                     sub_11B0(7);
                 }
                 else
@@ -821,7 +821,7 @@ u16 sub_14740(struct Vector16 *arg0, u16 *arg1)
                     }
 
                     res = 1;
-                    m4aSongNumStart(SE_UNKNOWN_0x74);
+                    m4aSongNumStart(SE_POKEMON_CATCH_HIT);
                     sub_11B0(7);
                 }
             }

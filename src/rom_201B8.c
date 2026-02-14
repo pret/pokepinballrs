@@ -1250,7 +1250,7 @@ void sub_1F2A4(void)
         if (gCurrentPinballGame->unk1C8 < 168 && gCurrentPinballGame->unk1C8 % 8 == 0)
         {
             s8 offset = gCurrentPinballGame->unk1C8 / 21;
-            m4aSongNumStart(SE_UNKNOWN_0xA8 + offset);
+            m4aSongNumStart(SE_PIKA_CHARGE_DO + offset);
         }
 
         if (gCurrentPinballGame->unk1C6 <= gCurrentPinballGame->unk1C8)

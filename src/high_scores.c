@@ -11,7 +11,7 @@ extern StateFunc gHighScoresStateFuncs[15];
 extern StateFunc gIdleHighScoresStateFuncs[15];
 extern u8 gUnknown_0809DBE0[];
 extern u8 gUnknown_08099FC0[];
-extern u8 gUnknown_080957A0[];
+extern u8 gHighScoreText_Gfx[];
 extern s16 gUnknown_0202C588;
 extern s8 gUnknown_0202BEB0;
 extern s8 gUnknown_0201C18C;
@@ -58,10 +58,10 @@ struct unkStruct_2002858 gUnknown_02002858;
 
 extern struct HighScoreEntry gUnknown_0202C610[MAIN_FIELD_COUNT][NUM_HIGH_SCORES];
 extern struct HighScoreEntry gUnknown_0202C550[2];
-extern u8 gUnknown_0809AFC0[];
+extern u8 gHighScoreBallWatermark_Gfx[];
 extern u8 gUnknown_080947A0[];
 extern u8 gUnknown_0809DDE0[];
-extern u8 gUnknown_0809DFE0[];
+extern u8 gHighScoreDialogs_Gfx[];
 extern u32 gUnknown_08079870[8];
 extern const struct HighScoreEntry gDefaultHighScores[2][8];
 
@@ -86,12 +86,12 @@ void LoadHighScoreGraphics(void)
   gMain.dispcntBackup = REG_DISPCNT;
 
   DmaCopy16(3, gUnknown_0809DBE0, (void*) PLTT, 0x200);
-  DmaCopy16(3, gUnknown_080957A0, (void*) BG_VRAM + 0x4000, 0x4800);
-  DmaCopy16(3, gUnknown_0809AFC0, (void *)BG_VRAM + 0xC000, 0x2C00);
+  DmaCopy16(3, gHighScoreText_Gfx, (void*) BG_VRAM + 0x4000, 0x4800);
+  DmaCopy16(3, gHighScoreBallWatermark_Gfx, (void *)BG_VRAM + 0xC000, 0x2C00);
   DmaCopy16(3, gUnknown_080947A0, gUnknown_03005C00, 0x1000);
   DmaCopy16(3, gUnknown_08099FC0, (void *)BG_SCREEN_ADDR(2), 0x1000);
   DmaCopy16(3, gUnknown_0809DDE0, (void *)OBJ_PLTT, 0x100);
-  DmaCopy16(3, gUnknown_0809DFE0, (void *)OBJ_VRAM0, 0x4420);
+  DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
   sub_CFD4();
   sub_EE64();
   DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
@@ -258,7 +258,7 @@ void HighScore_State2_D308(void)
     {
         if(gUnknown_02002858.highScoreIndex == 0)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x14A);
+            m4aSongNumStart(SE_HIGH_SCORE_EARNED);
             gUnknown_02002858.unk18 = 0xA0;
         }
         else if(gUnknown_02002858.highScoreIndex == -1)
@@ -353,14 +353,14 @@ void HighScore_State3_D4B8(void)
     }
     if(JOY_NEW(A_BUTTON | B_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x66);
+        m4aSongNumStart(SE_MENU_CANCEL);
         gMain.subState = 0xb;
     }
     if(JOY_NEW(START_BUTTON))
     {
         if(gUnknown_02002882 == 0 || (gUnknown_02002882 == 0xF0))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x68);
+            m4aSongNumStart(SE_MENU_POPUP_OPEN);
             gUnknown_0201B178 = 1;
             gUnknown_0202BEBC = 0;
             gMain.subState = 5;
@@ -379,7 +379,7 @@ void HighScore_State3_D4B8(void)
                 {
                     gUnknown_02002885 = 0;
                     gUnknown_02002884 = 0;
-                    m4aSongNumStart(SE_UNKNOWN_0x68);
+                    m4aSongNumStart(SE_MENU_POPUP_OPEN);
                     gUnknown_0201B178 = 1;
                     gUnknown_0202BEBC = 4;
                     gMain.subState = 0xA;
@@ -433,7 +433,7 @@ void HighScore_State4_D664(void)
     {
         if (gUnknown_02002858.unk20 == 0)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x6B);
+            m4aSongNumStart(SE_SCORE_ENTRY_LETTER_CHANGE);
             if (--gUnknown_02002858.currentNameChar < 0)
                 gUnknown_02002858.currentNameChar = 41;
 
@@ -445,7 +445,7 @@ void HighScore_State4_D664(void)
     {
         if (gUnknown_02002858.unk20 == 0)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x6B);
+            m4aSongNumStart(SE_SCORE_ENTRY_LETTER_CHANGE);
             if (++gUnknown_02002858.currentNameChar > 41)
                 gUnknown_02002858.currentNameChar = 0;
 
@@ -462,7 +462,7 @@ void HighScore_State4_D664(void)
         }
         else
         {
-            m4aSongNumStart(SE_SELECT);
+            m4aSongNumStart(SE_MENU_MOVE);
             gUnknown_02002858.unk12 = 1;
             sub_F670(gUnknown_02002858.currentNameChar, gUnknown_02002858.highScoreIndex, gUnknown_02002858.currentNameCharIndex, gUnknown_02002858.mainField);
             gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[gUnknown_02002858.currentNameCharIndex] = gUnknown_02002858.currentNameChar;
@@ -478,7 +478,7 @@ void HighScore_State4_D664(void)
         }
         else
         {
-            m4aSongNumStart(SE_SELECT);
+            m4aSongNumStart(SE_MENU_MOVE);
             gUnknown_02002858.unk12 = 1;
             sub_F670(gUnknown_02002858.currentNameChar, gUnknown_02002858.highScoreIndex, gUnknown_02002858.currentNameCharIndex, gUnknown_02002858.mainField);
             gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[gUnknown_02002858.currentNameCharIndex] = gUnknown_02002858.currentNameChar;
@@ -494,7 +494,7 @@ void HighScore_State4_D664(void)
         gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[gUnknown_02002858.currentNameCharIndex] = gUnknown_02002858.currentNameChar;
         if (gUnknown_02002858.currentNameCharIndex == HIGH_SCORE_NAME_LENGTH - 1)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x65);
+            m4aSongNumStart(SE_MENU_SELECT);
             sub_FAE8(gUnknown_02002858.mainField, gUnknown_02002858.highScoreIndex, gUnknown_02002858.unk1C);
             for (i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
                 gHighScoreNameEntry[i] = gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[i];
@@ -513,7 +513,7 @@ void HighScore_State4_D664(void)
         }
         else
         {
-            m4aSongNumStart(SE_UNKNOWN_0x6A);
+            m4aSongNumStart(SE_SCORE_ENTRY_A_B_MOVE);
             gUnknown_02002858.currentNameCharIndex++;
             gUnknown_02002858.currentNameChar = gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[gUnknown_02002858.currentNameCharIndex];
         }
@@ -526,7 +526,7 @@ void HighScore_State4_D664(void)
         }
         else
         {
-            m4aSongNumStart(SE_UNKNOWN_0x6A);
+            m4aSongNumStart(SE_SCORE_ENTRY_A_B_MOVE);
             gUnknown_02002858.unk12 = 1;
             sub_F670(gUnknown_02002858.currentNameChar, gUnknown_02002858.highScoreIndex, gUnknown_02002858.currentNameCharIndex, gUnknown_02002858.mainField);
             gUnknown_0202C610[gUnknown_02002858.mainField][gUnknown_02002858.highScoreIndex].data.parts.name[gUnknown_02002858.currentNameCharIndex] = gUnknown_02002858.currentNameChar;
@@ -554,7 +554,7 @@ void HighScore_State6_DA20(void)
     sub_E464();
     if (JOY_NEW(B_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x66);
+        m4aSongNumStart(SE_MENU_CANCEL);
         gUnknown_0201B178 = 0;
         gUnknown_0202BEBC = 0;
         sub_2568();
@@ -643,7 +643,7 @@ void HighScore_State8_DBF4(void)
         break;
     case 130:
         gUnknown_0202BEBC = 3;
-        m4aSongNumStart(SE_UNKNOWN_0x65);
+        m4aSongNumStart(SE_MENU_SELECT);
         break;
     case 250:
         gUnknown_02002858.unk22 = 0;
@@ -677,7 +677,7 @@ void HighScore_State10_DCF0(void)
     sub_E464();
     if (JOY_NEW(A_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x65);
+        m4aSongNumStart(SE_MENU_SELECT);
         SetDefaultHighScores();
         SaveFile_WriteToSram();
         sub_02B4();
@@ -687,7 +687,7 @@ void HighScore_State10_DCF0(void)
     }
     else if (JOY_NEW(B_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x66);
+        m4aSongNumStart(SE_MENU_CANCEL);
         gUnknown_0201B178 = 0;
         gUnknown_0202BEBC = 0;
         gMain.subState = 3;
@@ -713,12 +713,12 @@ void IdleHighScore_State0_DD70(void)
     REG_DISPCNT |= DISPCNT_BG3_ON;
     gMain.dispcntBackup = REG_DISPCNT;
     DmaCopy16(3, gUnknown_0809DBE0, (void*) PLTT, 0x200);
-    DmaCopy16(3, gUnknown_080957A0, (void*) BG_VRAM + 0x4000, 0x4800);
-    DmaCopy16(3, gUnknown_0809AFC0, (void *)BG_VRAM + 0xC000, 0x2C00);
+    DmaCopy16(3, gHighScoreText_Gfx, (void*) BG_VRAM + 0x4000, 0x4800);
+    DmaCopy16(3, gHighScoreBallWatermark_Gfx, (void *)BG_VRAM + 0xC000, 0x2C00);
     DmaCopy16(3, gUnknown_080947A0, gUnknown_03005C00, 0x1000);
     DmaCopy16(3, gUnknown_08099FC0, (void *)BG_SCREEN_ADDR(2), 0x1000);
     DmaCopy16(3, gUnknown_0809DDE0, (void *)OBJ_PLTT, 0x20);
-    DmaCopy16(3, gUnknown_0809DFE0, (void *)OBJ_VRAM0, 0x4420);
+    DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
     sub_DEB4();
     sub_EE64();
     DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
@@ -807,7 +807,7 @@ void IdleHighScore_State1_DF68(void)
 
     if (JOY_NEW(START_BUTTON | A_BUTTON | B_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x66);
+        m4aSongNumStart(SE_MENU_CANCEL);
         gUnknown_02002858.unk24 = STATE_TITLE;
         gMain.subState++;
     }
@@ -831,12 +831,12 @@ void HighScore_State12_E0EC(void)
     REG_DISPCNT |= DISPCNT_BG3_ON;
     gMain.dispcntBackup = REG_DISPCNT;
     DmaCopy16(3, gUnknown_0809DBE0, (void*) PLTT, 0x200);
-    DmaCopy16(3, gUnknown_080957A0, (void*) BG_VRAM + 0x4000, 0x4800);
-    DmaCopy16(3, gUnknown_0809AFC0, (void *)BG_VRAM + 0xC000, 0x2C00);
+    DmaCopy16(3, gHighScoreText_Gfx, (void*) BG_VRAM + 0x4000, 0x4800);
+    DmaCopy16(3, gHighScoreBallWatermark_Gfx, (void *)BG_VRAM + 0xC000, 0x2C00);
     DmaCopy16(3, gUnknown_080947A0, gUnknown_03005C00, 0x1000);
     DmaCopy16(3, gUnknown_08099FC0, (void *)BG_SCREEN_ADDR(2), 0x1000);
     DmaCopy16(3, gUnknown_0809DDE0, (void *)OBJ_PLTT, 0x20);
-    DmaCopy16(3, gUnknown_0809DFE0, (void *)OBJ_VRAM0, 0x4420);
+    DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
     sub_DEB4();
     sub_EE64();
     DmaCopy16(3, gUnknown_03005C00,0x6000000, 0x1000);
@@ -903,7 +903,7 @@ void HighScore_State13_E230(void)
 
     if (JOY_NEW(START_BUTTON | A_BUTTON | B_BUTTON))
     {
-        m4aSongNumStart(SE_UNKNOWN_0x66);
+        m4aSongNumStart(SE_MENU_CANCEL);
         gMain.subState++;
     }
 }

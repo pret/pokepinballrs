@@ -100,7 +100,7 @@ void sub_195C4(void)
         if (gCurrentPinballGame->heldButtonActions[i])
         {
             if (flipper->active == 0 && gCurrentPinballGame->unk25 == 0)
-                m4aSongNumStart(SE_UNKNOWN_0x72);
+                m4aSongNumStart(SE_FLIPPER_PRESSED);
 
             flipper->active = 1;
             flipper->stallTicks = 0;
@@ -216,7 +216,7 @@ void sub_19894(void)
         {
             if (flipper->active == 0 && gCurrentPinballGame->unk25 == 0 && gCurrentPinballGame->unk1A == 0)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x72);
+                m4aSongNumStart(SE_FLIPPER_PRESSED);
             }
             flipper->active = 1;
             flipper->stallTicks = 0;

@@ -948,7 +948,7 @@ extern u16 gDusclopsBoardDusclopsAppearFx_Gfx[];
 extern u16 gDusclopsBoardDusclops_Gfx[]; 
 extern u8 gDusclopsBoardDusclopsBallGrabSwirl_Gfx[];
 extern struct SongHeader se_unk_8b;
-extern struct SongHeader se_unk_f5;
+extern struct SongHeader se_dusclops_appear;
 extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
 extern const s16 gUnknown_086ACDF4[9];
 typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);

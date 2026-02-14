@@ -42,7 +42,7 @@ extern u8 gUnknown_0807DD00[];
 extern u8 gUnknown_0807D000[];
 extern u8 gPokedexSprites_Pals[];
 extern u16 gUnknown_03000000[];
-extern u8 gUnknown_08080500[];
+extern u8 gEReaderBackground_Gfx[];
 extern u8 gUnknown_0807FD00[];
 extern s16 gUnknown_086A550C[];
 
@@ -66,7 +66,7 @@ void LoadEReaderGraphics(void)
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
     DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
-    DmaCopy16(3, gUnknown_08080500,   gUnknown_03000000,         0x3000);
+    DmaCopy16(3, gEReaderBackground_Gfx,   gUnknown_03000000,         0x3000);
     DmaCopy16(3, gUnknown_0807DD00,   (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_0807FD00,   (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,   (void *)OBJ_PLTT,          0xC0);
@@ -141,7 +141,7 @@ void Ereader_State1_2E40(void)
         }
     }
     else if (JOY_NEW(B_BUTTON)) {
-        m4aSongNumStart(SE_UNKNOWN_0x66);
+        m4aSongNumStart(SE_MENU_CANCEL);
         gUnknown_0202BEF8 = STATE_TITLE;
         gMain.subState = 8;
     }
@@ -160,7 +160,7 @@ void Ereader_State2_2FC0(void)
             sub_3C1C();
             gUnknown_0201B124 = 0;
             gUnknown_0202C584 = 1;
-            m4aSongNumStart(SE_UNKNOWN_0x76);
+            m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
             gMain.subState = 3;
         }
     }
@@ -300,7 +300,7 @@ void Ereader_State5_33A0(void)
             break;
         case 0x96:
             gUnknown_0202A58C = 3;
-            m4aSongNumStart(SE_UNKNOWN_0x65);
+            m4aSongNumStart(SE_MENU_SELECT);
             break;
         case 0x10e:
             gUnknown_0201A44C = 0;
@@ -332,7 +332,7 @@ void Ereader_State6_343C(void)
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
     DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
-    DmaCopy16(3, gUnknown_08080500,   gUnknown_03000000,         0x3000);
+    DmaCopy16(3, gEReaderBackground_Gfx,   gUnknown_03000000,         0x3000);
     DmaCopy16(3, gUnknown_0807DD00,   (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_0807FD00,   (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,   (void *)OBJ_PLTT,          0xC0);
@@ -421,7 +421,7 @@ void sub_377C(void)
     {
         for(iVar4 = 0; iVar4 < 0x18; iVar4++)
         {
-            CopyBgTilesRect(gUnknown_080ACC60, &gUnknown_03001800[iVar2][iVar4*0x20], 1, 2);
+            CopyBgTilesRect(gEReaderText_Gfx, &gUnknown_03001800[iVar2][iVar4*0x20], 1, 2);
         }
     }
 }
@@ -435,7 +435,7 @@ void sub_37B4(s8 arg0)
     {
         for (iVar3 = 0; iVar3 < 0x18; iVar3++)
         {
-            CopyBgTilesRect(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
+            CopyBgTilesRect(gEReaderText_Gfx + (gUnknown_086A4CF8[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
         }
     }
 }
@@ -445,7 +445,7 @@ void sub_3828(s8 arg0, s8 arg1)
     s32 quotient = arg1 / 0x18;
     s32 remainder = arg1 % 0x18;
 
-    CopyBgTilesRect(gUnknown_080ACC60 + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
+    CopyBgTilesRect(gEReaderText_Gfx + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
 }
 
 void sub_38A0(s8 arg0, u16 arg1)
@@ -453,7 +453,7 @@ void sub_38A0(s8 arg0, u16 arg1)
     s32 quotient = arg0 / 0x18;
     s32 remainder = arg0 % 0x18;
 
-    CopyBgTilesRect(gUnknown_080ACC60 + arg1, &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
+    CopyBgTilesRect(gEReaderText_Gfx + arg1, &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
 }
 
 s16 GetEReaderCardIndex(void)

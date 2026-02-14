@@ -11,6 +11,16 @@
       "gfx_filename": "gunk_084FA20C",
       "mwidth":2,
       "mheight":2
+    },
+    {
+      "gfx_filename": "gunk_08455E8C",
+      "mwidth":4,
+      "oam":true
+    },
+    {
+      "gfx_filename": "gunk_0845690C",
+      "mwidth":4,
+      "oam":true
     }
   ]
 }

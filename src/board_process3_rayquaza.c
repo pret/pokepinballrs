@@ -255,7 +255,7 @@ void sub_3EDF0(void)
         gCurrentPinballGame->unk389 = 1;
         if (gCurrentPinballGame->unk452 == 5)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x126);
+            m4aSongNumStart(SE_RAYQUAZA_HIT);
             gCurrentPinballGame->scoreAddedInFrame = 1000000;
             gCurrentPinballGame->unk385++;
             sub_11B0(7);
@@ -509,7 +509,7 @@ void sub_3EDF0(void)
             gCurrentPinballGame->unk528.y = 0;
             gCurrentPinballGame->unk514 = 0;
             gCurrentPinballGame->unk3E4 = 0;
-            m4aSongNumStart(SE_UNKNOWN_0x127);
+            m4aSongNumStart(SE_RAYQUAZA_WIND);
         }
         break;
     case 8:
@@ -1064,7 +1064,7 @@ void sub_40288(void)
         {
             gCurrentPinballGame->unk510 = 0;
             gCurrentPinballGame->unk507 = 3;
-            m4aSongNumStart(SE_UNKNOWN_0x129);
+            m4aSongNumStart(SE_RAYQUAZA_FLYBY);
         }
         break;
     case 3:
@@ -1819,7 +1819,7 @@ void sub_423D8(void)
                     m4aMPlayFadeOutTemporarily(&gMPlayInfo_SE1, 5);
 
                 if (gCurrentPinballGame->unk516 % 160 == 1)
-                    m4aSongNumStart(SE_UNKNOWN_0x12E);
+                    m4aSongNumStart(SE_RAYQUAZA_STAGE_WIND);
 
                 if (gCurrentPinballGame->unk516 % 160 == 2)
                     m4aMPlayVolumeControl(&gMPlayInfo_SE1, TRACKS_ALL, 0x33);
