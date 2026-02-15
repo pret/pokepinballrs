@@ -1318,14 +1318,19 @@ gUnknown_08137D78:: @ 0x08137D78
 gUnknown_08137DA4:: @ 0x08137DA4
 	.incbin "baserom.gba", 0x137DA4, 0x1A
 
-gUnknown_08137DBE:: @ 0x08137DBE
-	.byte ' ','B','A','L','L','-','M','V',':',0,0,0,0,0
-	.byte ' ','B','A','L','L','-','S','P','D',':',0,0,0,0
-	.byte ' ',' ','D','E','B','U','G','1',':',0,0,0,0,0
+gDebugTextStrings:: @ 0x08137DBE
+	.ascii " BALL-MV:"
+	.byte 0,0,0,0,0
+	.ascii " BALL-SPD:"
+	.byte 0,0,0,0
+	.ascii "  DEBUG1:"
+	.byte 0,0,0,0,0
 
 gUnknown_08137DE8:: @ 0x08137DE8
-	.byte '(','0','0','0',' ','0','0','0',')',0,0,0
-	.byte '(','0','0','0',')',' ',' ',' ',' ',0,0,0
+	.ascii "(000 000)"
+	.byte 0,0,0
+	.ascii "(000)    "
+	.byte 0,0,0
 
 gUnknown_08137E00:: @ 0x08137E00
 	.incbin "baserom.gba", 0x137E00, 0x4
@@ -1345,21 +1350,25 @@ gUnknown_08137F14:: @ 0x08137F14
 gUnknown_08138014:: @ 0x08138014
 	.incbin "baserom.gba", 0x138014, 0x820
 
-gUnknown_08138834:: @ 0x08138834
+gDusclopsBonusClear_Gfx:: @ 0x08138834
 	.incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
 	.space 0x20
 
-gUnknown_0813A854:: @ 0x0813A854
-	.incbin "baserom.gba", 0x13A854, 0x2020
+gKecleonBonusClear_Gfx:: @ 0x0813A854
+	.incbin "graphics/stage/kecleon/kecleon_bonus_clear.4bpp"
+	.space 0x20
 
-gUnknown_0813C874:: @ 0x0813C874
-	.incbin "baserom.gba", 0x13C874, 0x2020
+gKyogreBonusClear_Gfx:: @ 0x0813C874
+	.incbin "graphics/stage/kyogre/kyogre_bonus_clear.4bpp"
+	.space 0x20
 
-gUnknown_0813E894:: @ 0x0813E894
-	.incbin "baserom.gba", 0x13E894, 0x2020
+gGroudonBonusClear_Gfx:: @ 0x0813E894
+	.incbin "graphics/stage/groudon/groudon_bonus_clear.4bpp"
+	.space 0x20
 
-gUnknown_081408B4:: @ 0x081408B4
-	.incbin "baserom.gba", 0x1408B4, 0x2020
+gRayquazaBonusClear_Gfx:: @ 0x081408B4
+	.incbin "graphics/stage/rayquaza/rayquaza_bonus_clear.4bpp"
+	.space 0x20
 
 gUnknown_081428D4:: @ 0x081428D4
 	.incbin "baserom.gba", 0x1428D4, 0x1C20
@@ -1778,25 +1787,25 @@ gUnknown_083C806C:: @ 0x083C806C
 
 .include "data/graphics/mon_hatch_sprites.inc"
 
-gUnknown_083EB84C:: @ 0x083EB84C
+gPickupIcon1_Gfx:: @ 0x083EB84C
 	.incbin "graphics/board_pickups/icon1.4bpp"
-gUnknown_083ED64C:: @ 0x083ED64C
+gPickupIcon2_Gfx:: @ 0x083ED64C
 	.incbin "graphics/board_pickups/icon2.4bpp"
-gUnknown_083EF44C:: @ 0x083EF44C
+gPickupIcon3_Gfx:: @ 0x083EF44C
 	.incbin "graphics/board_pickups/icon3.4bpp"
-gUnknown_083F124C:: @ 0x083F124C
+gPickupIcon9_Gfx:: @ 0x083F124C
 	.incbin "graphics/board_pickups/icon9.4bpp"
-gUnknown_083F304C:: @ 0x083F304C
+gPickupIcon4_Gfx:: @ 0x083F304C
 	.incbin "graphics/board_pickups/icon4.4bpp"
-gUnknown_083F4E4C:: @ 0x083F4E4C
+gPickupIcon5_Gfx:: @ 0x083F4E4C
 	.incbin "graphics/board_pickups/icon5.4bpp"
-gUnknown_083F6C4C:: @ 0x083F6C4C
+gPickupIcon6_Gfx:: @ 0x083F6C4C
 	.incbin "graphics/board_pickups/icon6.4bpp"
-gUnknown_083F8A4C:: @ 0x083F8A4C
+gPickupIcon10_Gfx:: @ 0x083F8A4C
 	.incbin "graphics/board_pickups/icon10.4bpp"
-gUnknown_083FA84C:: @ 0x083FA84C
+gPickupIcon8_Gfx:: @ 0x083FA84C
 	.incbin "graphics/board_pickups/icon8.4bpp"
-gUnknown_083FC64C:: @ 0x083FC64C
+gPickupIcon7_Gfx:: @ 0x083FC64C
 	.incbin "graphics/board_pickups/icon7.4bpp"
 
 gUnknown_083FE44C:: @ 0x083FE44C
@@ -1808,33 +1817,33 @@ gUnknown_083FF04C:: @ 0x083FF04C
 gUnknown_083FFD4C:: @ 0x083FFD4C
 	.incbin "baserom.gba", 0x3FFD4C, 0x40
 
-gUnknown_083FFD8C:: @ 0x083FFD8C
-	.incbin "baserom.gba", 0x3FFD8C, 0xF00 @ 0x47D00
+gSapphireBoardWailmer_Gfx:: @ 0x083FFD8C
+	.incbin "graphics/stage/sapphire/wailmer.4bpp";
 
 	.include "data/graphics/mon_catch_sprites.inc"
 
-gUnknown_08447A8C:: @ 0x08447A8C
+gRubyStageGulpin_Gfx:: @ 0x08447A8C
 	.incbin "graphics/stage/ruby/gulpin.4bpp"
 
-gUnknown_0844838C:: @ 0x0844838C
+gMainStageBonusTrap_Gfx:: @ 0x0844838C
 	.incbin "graphics/stage/main/bonus_trap.4bpp"
 
 gUnknown_0844928C:: @ 0x0844928C
 	.incbin "baserom.gba", 0x44928C, 0xB00
 
-gUnknown_08449D8C:: @ 0x08449D8C
+gRubyStageCyndaquil_Gfx:: @ 0x08449D8C
 	.incbin "graphics/stage/ruby/cyndaquil.4bpp"
 
 gUnknown_0844AA0C:: @ 0x0844AA0C
 	.incbin "graphics/stage/main/gunk_0844AA0C.4bpp"
 
-gUnknown_0844F20C:: @ 0x0844F20C
+gSapphireStageBasket_Gfx:: @ 0x0844F20C
 	.incbin "graphics/stage/sapphire/seedot_basket.4bpp"
 
-gUnknown_0844F98C:: @ 0x0844F98C
+gKecleonStageKecleon_Gfx:: @ 0x0844F98C
 	.incbin "graphics/stage/kecleon/kecleon.4bpp"
 
-gUnknown_0845588C:: @ 0x0845588C
+gKecleonStageKecleonFx_Gfx:: @ 0x0845588C
 	.incbin "graphics/stage/kecleon/kecleon_fx.4bpp"
 
 gUnknown_08455E8C:: @ 0x08455E8C
@@ -1846,17 +1855,17 @@ gUnknown_0845648C:: @ 0x0845648C
 gUnknown_0845690C:: @ 0x0845690C
 	.incbin "graphics/stage/misc/gunk_0845690C.4bpp"
 
-gUnknown_0845710C:: @ 0x0845710C
+gRubyStageNuzleaf_Gfx:: @ 0x0845710C
 	.incbin "graphics/stage/ruby/nuzleaf.4bpp"
 
 gUnknown_0845A08C:: @ 0x0845A08C
 	.incbin "baserom.gba", 0x45A08C, 0x400
 
-gUnknown_0845A48C:: @ 0x0845A48C
-	.incbin "baserom.gba", 0x45A48C, 0x5560
+gRubyIntroSprites_Gfx:: @ 0x0845A48C
+	.incbin "graphics/stage/ruby/intro_sprite.4bpp"
 
-gUnknown_0845F9EC:: @ 0x0845F9EC
-	.incbin "baserom.gba", 0x45F9EC, 0x5560
+gSapphireIntroSprites_Gfx:: @ 0x0845F9EC
+	.incbin "graphics/stage/sapphire/intro_sprite.4bpp"
 
 gDusclopsIntroSprite_Gfx:: @ 0x08464F4C
 	.incbin "graphics/stage/dusclops/intro_sprite.4bpp";
@@ -1912,7 +1921,7 @@ gUnknown_0848FD8C:: @ 0x0848FD8C
 gUnknown_08490A4C:: @ 0x08490A4C
 	.incbin "baserom.gba", 0x490A4C, 0x4400
 
-gUnknown_08494E4C:: @ 0x08494E4C
+gDusclopsBoardDusclopsAppearFx_Gfx:: @ 0x08494E4C
 	.incbin "graphics/stage/dusclops/dusclops_appear_fx.4bpp";
 
 gUnknown_0849664C:: @ 0x0849664C
@@ -1982,61 +1991,61 @@ gUnknown_084C4B6C:: @ 0x084C4B6C
 
 .incbin "baserom.gba", 0x4ECF6C, 0x160 @ 0x4ED0CC - 0x4ECF6C
 
-gUnknown_084ED0CC:: @ 0x084ED0CC
+gRubyBoardShopDoor_Gfx:: @ 0x084ED0CC
 	.incbin "graphics/stage/ruby/shop_door.4bpp";
 
 gUnknown_084ED6CC:: @ 0x084ED6CC
 	.incbin "graphics/stage/gunk_084ED6CC.4bpp";
-	
-gUnknown_084EDACC:: @ 0x084EDACC
+
+gDusclopsBoardDusclops_Gfx:: @ 0x084EDACC
 	.incbin "graphics/stage/dusclops/dusclops.4bpp";
 
-gUnknown_084F5ACC:: @ 0x084F5ACC
+gRubyBoardSharpedo_Gfx:: @ 0x084F5ACC
 	.incbin "graphics/stage/ruby/sharpedo.4bpp";
 
 gUnknown_084F61EC:: @ 0x084F61EC
 	.incbin "graphics/stage/main/gunk_084F61EC.4bpp";
 
-gUnknown_084F6B0C:: @ 0x084F6B0C
+gRubyBoardShop_Gfx:: @ 0x084F6B0C
 	.incbin "graphics/stage/ruby/shop.4bpp";
 
 gUnknown_084FA20C:: @ 0x084FA20C
 	.incbin "graphics/stage/misc/gunk_084FA20C.4bpp";
 
-gUnknown_084FA48C:: @ 0x084FA48C
+gMainBoardPikaSpinner_Gfx:: @ 0x084FA48C
 	.incbin "graphics/stage/main/pika_spinner.4bpp";
 
-gUnknown_084FB68C:: @ 0x084FB68C
+gRubyBoardHatchCave_Gfx:: @ 0x084FB68C
 	.incbin "graphics/stage/ruby/hatch_cave.4bpp";
 
 gUnknown_084FD18C:: @ 0x084FD18C
 	.incbin "graphics/stage/main/egg.4bpp";
 
-gUnknown_084FDF8C:: @ 0x084FDF8C
+gSapphireBoardSeedot_Gfx:: @ 0x084FDF8C
 	.incbin "graphics/stage/sapphire/seedot.4bpp";
 
-gUnknown_084FEA0C:: @ 0x084FEA0C
+gSapphireBoardShopShockWall_Gfx:: @ 0x084FEA0C
 	.incbin "graphics/stage/sapphire/shop_shock_wall.4bpp";
 
-gUnknown_084FEF0C:: @ 0x084FEF0C
+gRubyBoardRampPrize_Gfx:: @ 0x084FEF0C
 	.incbin "graphics/stage/ruby/ramp_prize.4bpp";
 
-gUnknown_084FF30C:: @ 0x084FF30C
+gDusclopsBoardDusclopsBallGrabSwirl_Gfx:: @ 0x084FF30C
 	.incbin "graphics/stage/dusclops/dusclops_ball_grab.4bpp";
 
 gUnknown_084FF90C:: @ 0x084FF90C
 	.incbin "baserom.gba", 0x4FF90C, 0x1700
 
-gUnknown_0850100C:: @ 0x0850100C
+gMainBoardBallSave_Gfx:: @ 0x0850100C
 	.incbin "graphics/stage/main/ball_save.4bpp";
-	
-gUnknown_085028CC:: @ 0x085028CC
+
+gMainBoardBallSaveLatios_Gfx:: @ 0x085028CC
 	.incbin "graphics/stage/main/latios.4bpp";
-	
-gUnknown_085038CC:: @ 0x085038CC
+
+gMainBoardBallSaveLatiosArm_Gfx:: @ 0x085038CC
 	.incbin "graphics/stage/main/latios_arm.4bpp";
 
-gUnknown_0850398C:: @ 0x0850398C
+gMainBoardEndOfBall_Gfx:: @ 0x0850398C
 	.incbin "graphics/stage/main/end_of_ball.4bpp";
 
 gUnknown_0850558C:: @ 0x0850558C
@@ -2045,25 +2054,25 @@ gUnknown_0850558C:: @ 0x0850558C
 gUnknown_08505B8C:: @ 0x08505B8C
 	.incbin "baserom.gba", 0x505B8C, 0x40
 
-gUnknown_08505BCC:: @ 0x08505BCC
+gMainBoardEvoBanner_Gfx:: @ 0x08505BCC
 	.incbin "graphics/stage/main/evo_banner.4bpp";
 
-gUnknown_08509F4C:: @ 0x08509F4C
+gMainBoardGameOverText_Gfx:: @ 0x08509F4C
 	.incbin "graphics/stage/main/game_over_text.4bpp";
 
-gUnknown_0850A34C:: @ 0x0850A34C
+gMainBoardJirachiBanner_Gfx:: @ 0x0850A34C
 	.incbin "graphics/stage/main/jirachi_banner.4bpp";
 
-gUnknown_0850E6CC:: @ 0x0850E6CC
+gMainBoardTravel_Gfx:: @ 0x0850E6CC
 	.incbin "graphics/stage/main/travel.4bpp";
 
-gUnknown_08510CAC:: @ 0x08510CAC
+gPauseMenuText_Gfx:: @ 0x08510CAC
 	.incbin "graphics/stage/main/pause_menu_text.4bpp";
 
-gUnknown_08510E4C:: @ 0x08510E4C
+gDusclopsBoardDuskull_Gfx:: @ 0x08510E4C
 	.incbin "graphics/stage/dusclops/duskull.4bpp";
 
-gUnknown_08512C4C:: @ 0x08512C4C
+gSapphireBoardZigzagoon_Gfx:: @ 0x08512C4C
 	.incbin "graphics/stage/sapphire/zigzagoon.4bpp";
 
 gUnknown_08514F4C:: @ 0x08514F4C
@@ -2090,7 +2099,7 @@ gUnknown_08521FCC:: @ 0x08521FCC
 gUnknown_085223AC:: @ 0x085223AC
 	.incbin "baserom.gba", 0x5223AC, 0x4A20
 
-gUnknown_08526DCC:: @ 0x08526DCC
+gSapphireBoardZigzagoonFx_Gfx:: @ 0x08526DCC
 	.incbin "graphics/stage/sapphire/zigzagoon_fx.4bpp";
 
 	.incbin "baserom.gba", 0x5279CC, 0x356
@@ -2126,7 +2135,7 @@ gOptionsSEList:: @ 0x08527D66
     .2byte SE_UNKNOWN_0xD3, SE_UNKNOWN_0xD4, SE_UNKNOWN_0xD5, SE_UNKNOWN_0xD6, SE_UNKNOWN_0xD7
     .2byte SE_UNKNOWN_0xD8, SE_UNKNOWN_0xDC, SE_UNKNOWN_0xDD, SE_UNKNOWN_0xDE, SE_UNKNOWN_0xDF
     .2byte SE_UNKNOWN_0xE0, SE_UNKNOWN_0xE1, SE_UNKNOWN_0xE2, SE_UNKNOWN_0xE3, SE_UNKNOWN_0xE4
-    
+
     .2byte SE_UNKNOWN_0xE5, SE_UNKNOWN_0xE6, SE_UNKNOWN_0xE7, SE_UNKNOWN_0xE8, SE_UNKNOWN_0xE9
     .2byte SE_UNKNOWN_0xEA, SE_UNKNOWN_0xEB, SE_UNKNOWN_0xEC, SE_UNKNOWN_0xF1, SE_UNKNOWN_0xF2
     .2byte SE_DUSCLOPS_DEPART_INCOMPLETE, SE_DUSCLOPS_MOVE, SE_DUSCLOPS_APPEAR, SE_DUSCLOPS_HIT, SE_DUSCLOPS_BALL_ABSORB

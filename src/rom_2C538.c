@@ -4,7 +4,7 @@
 #include "constants/bg_music.h"
 
 extern const u8 gUnknown_0847DF0C[][0x300];
-extern const u8 gUnknown_084FEF0C[][0x80];
+extern const u8 gRubyBoardRampPrize_Gfx[][0x80];
 
 
 void sub_2C538(void)
@@ -168,7 +168,7 @@ void sub_2C9A4(void)
         else
             index = (gCurrentPinballGame->unk290 % 32) / 8;
 
-        DmaCopy16(3, gUnknown_084FEF0C[index], (void *) 0x06014B00, 0x80);
+        DmaCopy16(3, gRubyBoardRampPrize_Gfx[index], (void *) 0x06014B00, 0x80);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x =  oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y =  oamSimple->yOffset + group->baseY;

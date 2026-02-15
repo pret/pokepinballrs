@@ -9,12 +9,12 @@ extern const s8 gUnknown_08137CBC[][2];
 extern const u8 gUnknown_084BB16C[][0x480];
 extern const u16 gUnknown_086B3EF6[20][4][3];
 extern const s16 gUnknown_086AE462[][2];
-extern const u8 gUnknown_083FFD8C[][0x300];
-extern const u16 gUnknown_086B4A72[26][2][3];
-extern const u8 gUnknown_08526DCC[];
+extern const u8 gSapphireBoardWailmer_Gfx[][0x300];
+extern const u16 gWailmerSpritesheetOam[26][2][3];
+extern const u8 gSapphireBoardZigzagoonFx_Gfx[];
 extern const s16 gUnknown_086AE496[][3];
-extern const u8 gUnknown_08512C4C[][0x380];
-extern const u16 gUnknown_086B3CA4[42][3][3];
+extern const u8 gSapphireBoardZigzagoon_Gfx[][0x380];
+extern const u16 gSapphireBoardZigzagoonSpritesheetOam[42][3][3];
 extern const u16 gUnknown_086B3B7E[14][7][3];
 extern const u8 gUnknown_084ED6CC[][0x200];
 extern const s16 gUnknown_086AE4FC[][2];
@@ -23,7 +23,7 @@ extern const u8 gUnknown_0847A40C[][0x300];
 extern const u8 gUnknown_0847D10C[][0x200];
 extern const u8 gUnknown_084C1E6C[][0x300];
 extern const u8 gUnknown_084C4B6C[][0x200];
-extern const u8 gUnknown_084FEA0C[][0x80];
+extern const u8 gSapphireBoardShopShockWall_Gfx[][0x80];
 extern const u8 gUnknown_0845690C[][0x200];
 extern const u8 gUnknown_08483D8C[][0x480];
 extern const u8 gUnknown_08488A0C[][0x480];
@@ -1211,12 +1211,12 @@ void sub_2F140(void)
     index = gUnknown_086AE462[index][1];
     group->baseX = 164 - gCurrentPinballGame->unk58;
     group->baseY = 166 - gCurrentPinballGame->unk5A;
-    DmaCopy16(3, gUnknown_083FFD8C[index], (void *)0x06012720, 0x300);
+    DmaCopy16(3, gSapphireBoardWailmer_Gfx[index], (void *)0x06012720, 0x300);
     for (i = 0; i < 2; i++)
     {
         oamSimple = &group->oam[i];
         dst = (u16*)&gOamBuffer[oamSimple->oamId];
-        src = gUnknown_086B4A72[var0][i];
+        src = gWailmerSpritesheetOam[var0][i];
         *dst++ = *src++;
         *dst++ = *src++;
         *dst++ = *src++;
@@ -1271,7 +1271,7 @@ void sub_2F26C(void)
         gCurrentPinballGame->unk37B = 0;
         gMain.spriteGroups[27].available = 1;
         gCurrentPinballGame->unkE4 = 22;
-        DmaCopy16(3, gUnknown_08526DCC, (void *)0x06015800, 0xC00);
+        DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, (void *)0x06015800, 0xC00);
         m4aSongNumStart(SE_UNKNOWN_0xEC);
         gCurrentPinballGame->scoreAddedInFrame = 5000;
         break;
@@ -1321,13 +1321,13 @@ void sub_2F504(void)
         group->baseX = 198 - gCurrentPinballGame->unk58;
         group->baseY = gCurrentPinballGame->unk380 + 284 - gCurrentPinballGame->unk5A;
         index = gCurrentPinballGame->unk379;
-        DmaCopy16(3, gUnknown_08512C4C[index], (void *)0x06012A20, 0x380);
+        DmaCopy16(3, gSapphireBoardZigzagoon_Gfx[index], (void *)0x06012A20, 0x380);
         index = gCurrentPinballGame->unk37A;
         for (i = 0; i < 3; i++)
         {
             oamSimple = &group->oam[i];
             dst = (u16*)&gOamBuffer[oamSimple->oamId];
-            src = gUnknown_086B3CA4[index][i];
+            src = gSapphireBoardZigzagoonSpritesheetOam[index][i];
             *dst++ = *src++;
             *dst++ = *src++;
             *dst++ = *src++;
@@ -1671,7 +1671,7 @@ void sub_2FCD0(void)
     else
         index = 9;
 
-    DmaCopy16(3, &gUnknown_084FEA0C[index], (void *)0x060146A0, 0x80);
+    DmaCopy16(3, &gSapphireBoardShopShockWall_Gfx[index], (void *)0x060146A0, 0x80);
     oamSimple = &group->oam[0];
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;

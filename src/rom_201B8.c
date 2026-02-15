@@ -8,14 +8,14 @@ extern const s16 gUnknown_086ADEB0[][2];
 extern const u16 gUnknown_086ADEB2[][2];
 extern const s16 gUnknown_086ADA6E[][5];
 extern const u16 gUnknown_086B2FC0[146][18];
-extern const u8 gUnknown_08447A8C[][0x180];
+extern const u8 gRubyStageGulpin_Gfx[][0x180];
 extern const s16 gUnknown_086ADA58[];
 extern const u8 gUnknown_083C3C2C[][0x300];
 extern const u8 gUnknown_083C562C[][0x100];
 extern const u8 gUnknown_083C542C[][0x80];
-extern const u8 gUnknown_084F5ACC[][0x260];
+extern const u8 gRubyBoardSharpedo_Gfx[][0x260];
 extern const s16 gUnknown_086AD9FC[][2];
-extern const u16 gUnknown_086B3A04[42][3][3];
+extern const u16 gSharpedoSpritesheetOam[42][3][3];
 extern const u8 gUnknown_083C806C[][0x100];
 extern const u8 gUnknown_0844928C[][0x100];
 extern const u8 gUnknown_08137998[];
@@ -27,10 +27,10 @@ extern const s16 gUnknown_086AD9EC[];
 extern const s16 gUnknown_0813798C[];
 extern const u8 gUnknown_081379D8[];
 extern const u8 gUnknown_084B7FEC[][0x480];
-extern const u8 gUnknown_084ED0CC[][0x180];
+extern const u8 gRubyBoardShopDoor_Gfx[][0x180];
 extern const s16 gUnknown_086AD7C0[50][3];
 extern const s16 gUnknown_086AD856[][2];
-extern const u8 gUnknown_0845710C[][0x280];
+extern const u8 gRubyStageNuzleaf_Gfx[][0x280];
 extern const u16 gUnknown_086B2E64[58][6];
 extern const u16 gUnknown_081C00E4[];
 extern const u16 gUnknown_086AD798[2];
@@ -477,7 +477,7 @@ void sub_1D5D8(void)
     {
         group->baseX = gUnknown_086AD856[gCurrentPinballGame->unk2F9][0] - gCurrentPinballGame->unk58;
         group->baseY = gUnknown_086AD856[gCurrentPinballGame->unk2F9][1] - gCurrentPinballGame->unk5A;
-        DmaCopy16(3, gUnknown_0845710C[gCurrentPinballGame->unk2FC], (void *)0x06014380, 0x260);
+        DmaCopy16(3, gRubyStageNuzleaf_Gfx[gCurrentPinballGame->unk2FC], (void *)0x06014380, 0x260);
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -553,7 +553,7 @@ void sub_1DAD8(void)
                 gCurrentPinballGame->unk2F2 = 4;
             }
 
-            DmaCopy16(3, gUnknown_084ED0CC[gCurrentPinballGame->unk2F1], (void *)0x06013180, 0x180);
+            DmaCopy16(3, gRubyBoardShopDoor_Gfx[gCurrentPinballGame->unk2F1], (void *)0x06013180, 0x180);
         }
     }
 
@@ -1205,7 +1205,7 @@ void sub_1F158(void)
 
     index = (gMain.systemFrameCount % 55) / 11;
     group = &gMain.spriteGroups[61];
-    DmaCopy16(3, gUnknown_084F5ACC[gCurrentPinballGame->unk2F5], (void *)0x06012C20, 0x260);
+    DmaCopy16(3, gRubyBoardSharpedo_Gfx[gCurrentPinballGame->unk2F5], (void *)0x06012C20, 0x260);
     if (gCurrentPinballGame->unk2F4)
         index = gCurrentPinballGame->unk2F4;
 
@@ -1217,7 +1217,7 @@ void sub_1F158(void)
     {
         oamSimple = &group->oam[i];
         dst = (u16*)&gOamBuffer[oamSimple->oamId];
-        src = gUnknown_086B3A04[var0][i];
+        src = gSharpedoSpritesheetOam[var0][i];
         *dst++ = *src++;
         *dst++ = *src++;
         *dst++ = *src++;
@@ -1357,7 +1357,7 @@ void sub_1F59C(void)
     if (gCurrentPinballGame->unk1E5 != gCurrentPinballGame->unk1E6)
     {
         gCurrentPinballGame->unk1E6 = gCurrentPinballGame->unk1E5;
-        DmaCopy16(3, gUnknown_084FA48C[index], (void *)0x06010780, 0x120);
+        DmaCopy16(3, gMainBoardPikaSpinner_Gfx[index], (void *)0x06010780, 0x120);
     }
 
     for (i = 0; i < 4; i++)
@@ -1660,9 +1660,9 @@ void sub_1FBC4(void)
     }
 
     index = var0[0];
-    DmaCopy16(3, gUnknown_08447A8C[var0[2]], (void *)0x06013B80, 0x180);
-    DmaCopy16(3, gUnknown_08447A8C[var0[3]], (void *)0x06013A00, 0x180);
-    DmaCopy16(3, gUnknown_08447A8C[var0[4]], (void *)0x06013880, 0x180);
+    DmaCopy16(3, gRubyStageGulpin_Gfx[var0[2]], (void *)0x06013B80, 0x180);
+    DmaCopy16(3, gRubyStageGulpin_Gfx[var0[3]], (void *)0x06013A00, 0x180);
+    DmaCopy16(3, gRubyStageGulpin_Gfx[var0[4]], (void *)0x06013880, 0x180);
     for (i = 0; i < 6; i++)
     {
         oamSimple = &group->oam[i];

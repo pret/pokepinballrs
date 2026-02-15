@@ -11,7 +11,7 @@ extern const s16 gUnknown_086AE58A[][2];
 extern const s16 gUnknown_086AE588[][2];
 extern const u8 gUnknown_08490A4C[][0x440];
 extern struct Vector16 gUnknown_086AE554[];
-extern const u8 gUnknown_08449D8C[][0x280];
+extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
 extern const u8 gUnknown_081BC984[][0x20];
 extern const u8 gUnknown_0848108C[][0x480];
 
