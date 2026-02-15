@@ -1,0 +1,65 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "intro_sprite",
+      "segments":
+      [
+    {
+        "segfile": "dusclops_flipper",
+        "mwidth":4,
+        "oam":true
+    },
+        {
+        "segfile": "dusclops_ball",
+        "mwidth":2,
+        "oam":true
+    },
+
+        {
+        "segfile": "dusclops_ball_2"
+    },
+        {
+        "segfile": "dusclops_save_cancel",
+        "mwidth":10,
+        "oam":true
+    },
+       {
+        "segfile": "dusclops_fx",
+        "mwidth":4,
+        "oam":true
+    },
+       {
+        "segfile": "dusclops_duskull",
+        "mwidth":4,
+        "oam":true
+    },
+       {
+        "segfile": "dusclops_dusclops",
+        "mwidth":8,
+        "oam":true
+    },
+
+       {
+        "segfile": "dusclops_swirl",
+        "mwidth":4,
+        "oam":true
+    },
+
+       {
+        "segfile": "dusclops_bg_fx",
+        "mwidth":4,
+        "oam":true
+    }
+  ]
+}
+]
+}

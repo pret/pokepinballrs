@@ -1858,8 +1858,8 @@ gUnknown_0845A48C:: @ 0x0845A48C
 gUnknown_0845F9EC:: @ 0x0845F9EC
 	.incbin "baserom.gba", 0x45F9EC, 0x5560
 
-gUnknown_08464F4C:: @ 0x08464F4C
-	.incbin "baserom.gba", 0x464F4C, 0x26A0
+gDusclopsIntroSprite_Gfx:: @ 0x08464F4C
+	.incbin "graphics/stage/dusclops/intro_sprite.4bpp";
 
 gUnknown_084675EC:: @ 0x084675EC
 	.incbin "baserom.gba", 0x4675EC, 0x2E20

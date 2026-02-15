@@ -69,7 +69,7 @@ extern const u8 gUnknown_083A8ACC[];
 
 extern const u8 gUnknown_0845A48C[];
 extern const u8 gUnknown_0845F9EC[];
-extern const u8 gUnknown_08464F4C[];
+extern const u8 gDusclopsIntroSprite_Gfx[];
 extern const u8 gUnknown_084675EC[];
 extern const u8 gUnknown_0846A40C[];
 extern const u8 gUnknown_0846D2AC[];
@@ -129,7 +129,7 @@ void sub_467F4(void)
         DmaCopy16(3, gUnknown_08301F00, (void *)0x06001000, 0x800);
         DmaCopy16(3, gUnknown_083A8ACC, (void *)0x06006800, 0x400);
         DmaCopy16(3, gUnknown_083A826C, (void *)0x06006C00, 0x800);
-        DmaCopy16(3, gUnknown_08464F4C, (void *)0x06010000, 0x8000);
+        DmaCopy16(3, gDusclopsIntroSprite_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_KECLEON:
         DmaCopy16(3, gUnknown_0830CBD4, (void *)BG_PLTT, BG_PLTT_SIZE);
