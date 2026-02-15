@@ -5,7 +5,7 @@
 
 extern const u16 gUnknown_086B4D4E[40][2][3];
 extern const u16 gUnknown_086AE54A[];
-extern const u8 gUnknown_0844F20C[][0x280];
+extern const u8 gSapphireStageBasket_Gfx[][0x280];
 extern const u8 gSapphireBoardSeedot_Gfx[][0x180];
 extern const u16 gUnknown_086AE544[];
 extern const u16 gSapphireBoardSeedotSpritesheetOam[6][6][2][3];
@@ -388,7 +388,7 @@ void sub_30EB4(void)
     group->baseX = 10 - gCurrentPinballGame->unk58;
     group->baseY = 298 - gCurrentPinballGame->unk5A;
     index = gCurrentPinballGame->unk324;
-    DmaCopy16(3, gUnknown_0844F20C[index], (void *)0x060139A0, 0x280);
+    DmaCopy16(3, gSapphireStageBasket_Gfx[index], (void *)0x060139A0, 0x280);
 
     for (i = 0; i < 2; i++)
     {

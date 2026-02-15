@@ -54,7 +54,7 @@ extern const u8 gUnknown_083C3C2C[][0x300];
 extern const u8 gRubyBoardSharpedo_Gfx[][0x260];
 extern const u8 gUnknown_083C806C[][0x100];
 extern const u8 gRubyBoardShopDoor_Gfx[][0x180];
-extern const u8 gUnknown_08449D8C[][0x280];
+extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
 extern const u8 gRubyBoardShop_Gfx[][0x500];
 extern const u8 gUnknown_08490A4C[][0x440];
 extern const s16 gUnknown_086AE5A0[][2];
@@ -1488,7 +1488,7 @@ void sub_4C290(void)
         }
     }
 
-    DmaCopy16(3, gUnknown_0844838C[gCurrentPinballGame->unk20B], 0x060113C0, 0x300);
+    DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->unk20B], 0x060113C0, 0x300);
     DmaCopy16(3, gUnknown_086AD49C[gCurrentPinballGame->unk25F] +  var0 * 0x200, 0x060116C0, 0x200);
     DmaCopy16(3, gUnknown_084FD18C[(s16)gUnknown_086AD2EE[gCurrentPinballGame->unk1ED][3]], 0x06011CE0, 0x200);
     DmaCopy16(3, gUnknown_083BD36C[gCurrentPinballGame->unk6E], 0x06011EE0, 0x200);
@@ -1516,7 +1516,7 @@ void sub_4C808(void)
     else
         gCurrentPinballGame->unk746 = 1;
 
-    DmaCopy16(3, gUnknown_08449D8C[gCurrentPinballGame->unk746], (void *)0x6013300, 0x280);
+    DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->unk746], (void *)0x6013300, 0x280);
     var0 = gUnknown_086AD456[gCurrentPinballGame->unk1A5][(gCurrentPinballGame->unk1B4 % 42) / 6];
     DmaCopy16(3, gRubyBoardShop_Gfx[var0], (void *)0x6013D00, 0x500);
 }

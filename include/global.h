@@ -983,7 +983,7 @@ extern const u8 gUnknown_08397E6C[];
 extern const u8 gUnknown_083A8EEC[][0x300];
 extern const u8 gUnknown_083BB16C[][0x80];
 extern const u8 gUnknown_083BD36C[][0x200];
-extern const u8 gUnknown_0844838C[][0x300];
+extern const u8 gMainStageBonusTrap_Gfx[][0x300];
 extern const u8 gUnknown_0848D68C[][0x300];
 extern const u8 gUnknown_084C00EC[][0x80];
 extern const u8 gUnknown_084C07EC[];
