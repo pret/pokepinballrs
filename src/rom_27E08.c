@@ -48,7 +48,7 @@ extern const u16 gUnknown_086B4B0E[48][4][3];
 extern const u16 gUnknown_086AE0B4[];
 extern const struct Vector16 gUnknown_086AE0A4[];
 extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
-extern const u8 gUnknown_084FB68C[][0x480];
+extern const u8 gRubyBoardHatchCave_Gfx[][0x480];
 extern const u16 gUnknown_086B4D4E[40][2][3];
 extern const u8 gUnknown_083FFD4C[][0x40];
 extern const u8 gUnknown_083FF04C[][0x40];
@@ -68,7 +68,7 @@ extern const s16 gUnknown_086ADFD4[];
 extern const u8 gUnknown_0847FF0C[][0x300];
 extern const u8 gUnknown_08480E0C[][0x40];
 extern const s16 gUnknown_086AD456[][7];
-extern const u8 gUnknown_084F6B0C[][0x500];
+extern const u8 gRubyBoardShop_Gfx[][0x500];
 extern const u8 gUnknown_083A8A8C[];
 extern const struct Vector32 gUnknown_086ADF90[];
 extern const u8 gUnknown_084C156C[];
@@ -658,7 +658,7 @@ void sub_21D78(void)
 
         if (gCurrentPinballGame->unk1B4 % 6 == 0)
         {
-            DmaCopy16(3, gUnknown_084F6B0C[index], (void *)0x06013D00, 0x500);
+            DmaCopy16(3, gRubyBoardShop_Gfx[index], (void *)0x06013D00, 0x500);
         }
 
         group->baseX = 181 - gCurrentPinballGame->unk58;
@@ -1447,7 +1447,7 @@ void sub_239A4(void)
     if (gCurrentPinballGame->unk1EE != gCurrentPinballGame->unk1ED)
     {
         index = gUnknown_086AD2EE[gCurrentPinballGame->unk1ED][2];
-        DmaCopy16(3, gUnknown_084FB68C[index], (void *)0x060122A0, 0x480);
+        DmaCopy16(3, gRubyBoardHatchCave_Gfx[index], (void *)0x060122A0, 0x480);
         index = gUnknown_086AD2EE[gCurrentPinballGame->unk1ED][3];
         DmaCopy16(3, gUnknown_084FD18C[index], (void *)0x06011CE0, 0x200);
         gCurrentPinballGame->unk1EE = gCurrentPinballGame->unk1ED;

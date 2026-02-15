@@ -6,9 +6,9 @@
 extern const u16 gUnknown_086B4D4E[40][2][3];
 extern const u16 gUnknown_086AE54A[];
 extern const u8 gSapphireStageBasket_Gfx[][0x280];
-extern const u8 gUnknown_084FDF8C[][0x180];
+extern const u8 gSapphireBoardSeedot_Gfx[][0x180];
 extern const u16 gUnknown_086AE544[];
-extern const u16 gUnknown_086B3E1E[6][6][2][3];
+extern const u16 gSapphireBoardSeedotSpritesheetOam[6][6][2][3];
 extern const u16 gUnknown_08137D06[][14];
 extern const u16 gUnknown_08137CF6[][4];
 extern const u16 gUnknown_08137CE2[][5];
@@ -415,13 +415,13 @@ void sub_30EB4(void)
         else
             group->baseY = 200;
 
-        DmaCopy16(3, gUnknown_084FDF8C[gCurrentPinballGame->unk32F[j]], (void *)0x06013C20 + j * 0x180, 0x160);
+        DmaCopy16(3, gSapphireBoardSeedot_Gfx[gCurrentPinballGame->unk32F[j]], (void *)0x06013C20 + j * 0x180, 0x160);
         index = gCurrentPinballGame->unk332[j];
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
             dst = (u16*)&gOamBuffer[oamSimple->oamId];
-            src = gUnknown_086B3E1E[j][index][i];
+            src = gSapphireBoardSeedotSpritesheetOam[j][index][i];
             *dst++ = *src++;
             *dst++ = *src++;
             *dst++ = *src++;

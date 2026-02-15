@@ -33,6 +33,12 @@
       "mwidth":4
     },
     {
+      "gfx_filename": "wailmer",
+      "mheight":4,
+      "mwidth":6,
+      "oam":true
+    },
+    {
       "gfx_filename": "seedot_basket",
       "mwidth":4,
       "oam":true

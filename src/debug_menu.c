@@ -8,15 +8,15 @@ extern s16 gUnknown_020306C0[];
 extern s16 gUnknown_02030750[];
 extern s16 gUnknown_02031500[];
 
-extern const u8 gUnknown_08137DBE[];
+extern const u8 gDebugTextStrings[];
 extern const u8 gUnknown_08137DE8[];
 extern u8 gUnknown_08137E00[];
-extern const u8 gUnknown_0850100C[];
-extern const u8 gUnknown_085028CC[];
-extern const u8 gUnknown_085038CC[];
-extern const u8 gUnknown_0850398C[];
+extern const u8 gMainBoardBallSave_Gfx[];
+extern const u8 gMainBoardBallSaveLatios_Gfx[];
+extern const u8 gMainBoardBallSaveLatiosArm_Gfx[];
+extern const u8 gMainBoardEndOfBall_Gfx[];
 extern const u8 gUnknown_0850558C[][0x20];
-extern const u8 gUnknown_08509F4C[];
+extern const u8 gMainBoardGameOverText_Gfx[];
 extern const u8 gUnknown_08514F4C[];
 extern const u8 gUnknown_08514F6C[];
 extern const u8 gUnknown_08521FAC[];
@@ -80,7 +80,7 @@ void sub_47344(void)
     u8 str0[42];
     u8 str1[24];
 
-    memcpy(str0, gUnknown_08137DBE, 42);
+    memcpy(str0, gDebugTextStrings, 42);
     memcpy(str1, gUnknown_08137DE8, 24);
 
     for (i = 0x340; i < 0x380; i++)
@@ -164,7 +164,7 @@ void sub_474F4(void)
 
     if (gMain.unk12 == 3600)
     {
-        DmaCopy16(3, gUnknown_08509F4C, (void *)0x06015800, 0x400);
+        DmaCopy16(3, gMainBoardGameOverText_Gfx, (void *)0x06015800, 0x400);
         gMain.unk44[42]->available = 1;
         for (i = 0; i < 8; i++)
         {
@@ -215,7 +215,7 @@ void sub_47670(void)
             gMain.spriteGroups[6].available = 1;
             gMain.spriteGroups[7].available = 1;
             gMain.spriteGroups[8].available = 1;
-            DmaCopy16(3, gUnknown_0850398C, (void *)0x6015800, 0x2800);
+            DmaCopy16(3, gMainBoardEndOfBall_Gfx, (void *)0x6015800, 0x2800);
             if (gMain.selectedField == FIELD_RUBY)
             {
                 DmaCopy16(3, gUnknown_08521FAC, (void *)0x050003C0, 0x20);
@@ -465,14 +465,14 @@ void sub_478D8(void)
             gMain.spriteGroups[3].available = 1;
             if (gMain.selectedField == FIELD_RUBY)
             {
-                DmaCopy16(3, gUnknown_0850100C, (void *)0x06015800, 0x2400);
-                DmaCopy16(3, gUnknown_085028CC, (void *)0x06016800, 0x800);
-                DmaCopy16(3, gUnknown_085038CC, (void *)0x06017000, 0xC0);
+                DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
+                DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, (void *)0x06016800, 0x800);
+                DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, (void *)0x06017000, 0xC0);
                 DmaCopy16(3, gUnknown_08514F4C, (void *)0x050003C0, 0x20);
             }
             else
             {
-                DmaCopy16(3, gUnknown_0850100C, (void *)0x06015800, 0x2400);
+                DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
                 DmaCopy16(3, gUnknown_08514F6C, (void *)0x050003C0, 0x20);
             }
 

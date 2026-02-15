@@ -29,7 +29,7 @@ struct Unk_086AEA70
     u8 unk5;
 };
 
-extern const u8 gUnknown_0813A854[];
+extern const u8 gKecleonBonusClear_Gfx[];
 extern const u16 gUnknown_08327994[];
 extern const u8 gKecleonStageKecleon_Gfx[][0x280];
 extern const u8 gKecleonStageKecleonFx_Gfx[][0x100];
@@ -171,7 +171,7 @@ void KecleonBoardProcess_3B_35AA4(void)
             gCurrentPinballGame->unk18 = 0;
             gMain.spriteGroups[6].available = 1;
             gMain.spriteGroups[5].available = 1;
-            DmaCopy16(3, gUnknown_0813A854, (void *)0x6015800, 0x2000);
+            DmaCopy16(3, gKecleonBonusClear_Gfx, (void *)0x6015800, 0x2000);
             gCurrentPinballGame->unk394 = 0x88;
             gMain.unkF = 0x80;
         }

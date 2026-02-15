@@ -415,8 +415,8 @@ struct PinballGame
     /*0x2F0*/ u8 unk2F0;
     /*0x2F1*/ u8 unk2F1;
     /*0x2F2*/ u16 unk2F2;
-    /*0x2F4*/ s8 unk2F4;
-    /*0x2F5*/ s8 unk2F5;
+    /*0x2F4*/ s8 unk2F4; //Sharpedo/Wailmer Oam Ix
+    /*0x2F5*/ s8 unk2F5; //Sharpedo tile variant Ix
     /*0x2F6*/ u16 unk2F6;
     /*0x2F8*/ s8 unk2F8;
     /*0x2F9*/ s8 unk2F9;
@@ -923,7 +923,7 @@ extern u8 gUnknown_02031590[];
 extern u16 gUnknown_08137B3C[][6][16];
 extern u16 gUnknown_08137D40[]; 
 extern const u8 gUnknown_08137E14[][0x20];
-extern const u8 gUnknown_08138834[];
+extern const u8 gDusclopsBonusClear_Gfx[];
 extern struct Unk02031520_unk10 gUnknown_081450F4;
 extern struct Unk02031520_unk10 gUnknown_08148934;
 extern struct Unk02031520_unk10 gUnknown_0814C174;
@@ -944,9 +944,9 @@ extern u16 gUnknown_0835E9C8[0x2A80];
 extern const u16 gUnknown_08391A4C[0x1000];
 extern const u16 gUnknown_08393A4C[0x1000];
 extern u8 gUnknown_083FE44C[][0x200];
-extern u16 gUnknown_08494E4C[]; 
-extern u16 gUnknown_084EDACC[]; 
-extern u8 gUnknown_084FF30C[];
+extern u16 gDusclopsBoardDusclopsAppearFx_Gfx[]; 
+extern u16 gDusclopsBoardDusclops_Gfx[]; 
+extern u8 gDusclopsBoardDusclopsBallGrabSwirl_Gfx[];
 extern struct SongHeader se_unk_8b;
 extern struct SongHeader se_dusclops_appear;
 extern const s16 gUnknown_086ACDF4[9]; //Possibly only 4, with a gap?
@@ -987,7 +987,7 @@ extern const u8 gMainStageBonusTrap_Gfx[][0x300];
 extern const u8 gUnknown_0848D68C[][0x300];
 extern const u8 gUnknown_084C00EC[][0x80];
 extern const u8 gUnknown_084C07EC[];
-extern const u8 gUnknown_084FA48C[][0x120];
+extern const u8 gMainBoardPikaSpinner_Gfx[][0x120];
 extern const u8 gUnknown_084FD18C[][0x200];
 extern const u8 *gUnknown_086AD49C[];
 extern const u16 gUnknown_086AD2EE[][4];
