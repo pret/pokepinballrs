@@ -10,35 +10,83 @@
   },
   "files": [
     {
-        "gfx_filename": "dusclops_bonus_clear",
-        "segments":[
-            {
-                "segfile":"dusclops_bonus_clear_top",
-                "mwidth":20,
-                "mheight":8,
-                "oam":true
-            },
-            {
-                "segfile":"dusclops_bonus_clear_score_region",
-                "mwidth":14,
-                "mheight":3,
-                "oam":true
-            },
-            {
-                "segfile":"dusclops_bonus_clear_score_right_cap",
-                "mwidth":1,
-                "mheight":2,
-                "oam":true
-            },
-            {
-                "segfile":"dusclops_bonus_clear_score_digits",
-                "mwidth":1,
-                "mheight":2,
-                "width":10,
-                "oam":true
-            }
-        ],
-        "align":12
+      "gfx_filename": "dusclops_bonus_clear",
+      "segments": [
+        {
+          "segfile": "dusclops_bonus_clear_top",
+          "mwidth": 20,
+          "mheight": 8,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_bonus_clear_score_region",
+          "mwidth": 14,
+          "mheight": 3,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_bonus_clear_score_right_cap",
+          "mwidth": 1,
+          "mheight": 2,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_bonus_clear_score_digits",
+          "mwidth": 1,
+          "mheight": 2,
+          "width": 10,
+          "oam": true
+        }
+      ],
+      "align": 12
+    },
+    {
+      "gfx_filename": "intro_sprite",
+      "segments": [
+        {
+          "segfile": "dusclops_flipper",
+          "mwidth": 4,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_ball",
+          "mwidth": 2,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_ball_2"
+        },
+        {
+          "segfile": "dusclops_save_cancel",
+          "mwidth": 10,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_fx",
+          "mwidth": 4,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_duskull",
+          "mwidth": 4,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_dusclops",
+          "mwidth": 8,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_swirl",
+          "mwidth": 4,
+          "oam": true
+        },
+        {
+          "segfile": "dusclops_bg_fx",
+          "mwidth": 4,
+          "oam": true
+        }
+      ]
     }
   ]
 }

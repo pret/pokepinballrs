@@ -620,7 +620,7 @@ extern void sub_45164(void);
 extern void sub_455D0(void);
 extern void sub_45E08(void);
 extern void sub_45E90(void);
-extern void sub_467F4(void);
+extern void loadIntroduction(void);
 extern void sub_46FD4(s16);
 extern void sub_47030(void);
 //extern ? AllBoardProcess_1A_47100();

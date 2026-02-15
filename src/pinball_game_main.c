@@ -128,7 +128,7 @@ void PinballGame_State0_49ED4(void)
     case 0:
         sub_4A270();
         sub_4A518();
-        sub_467F4();
+        loadIntroduction();
         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
@@ -160,7 +160,7 @@ void PinballGame_State0_49ED4(void)
     case 1:
         sub_4A270();
         sub_4A518();
-        sub_467F4();
+        loadIntroduction();
         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
@@ -186,7 +186,7 @@ void PinballGame_State0_49ED4(void)
     case 3:
         sub_4A270();
         sub_4A518();
-        sub_467F4();
+        loadIntroduction();
         DmaCopy16(3, gUnknown_02031520.unk14.unk2C[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         sub_4A90C();
         for (i = 0; i < 9; i++)
@@ -1089,7 +1089,7 @@ void sub_4B678(u16 arg0)
 
     gCurrentPinballGame->unk1D = 0;
     gMain.unkD = 0;
-    sub_467F4();
+    loadIntroduction();
     if (gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->unk29E)
         sub_46FD4(1);
 
