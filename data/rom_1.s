@@ -1863,11 +1863,9 @@ gUnknown_0845A08C:: @ 0x0845A08C
 
 gRubyIntroSprites_Gfx:: @ 0x0845A48C
 	.incbin "graphics/stage/ruby/intro_sprite.4bpp"
-	@.incbin "baserom.gba", 0x45A48C, 0x5560
 
 gSapphireIntroSprites_Gfx:: @ 0x0845F9EC
 	.incbin "graphics/stage/sapphire/intro_sprite.4bpp"
-	@.incbin "baserom.gba", 0x45F9EC, 0x5560
 
 gUnknown_08464F4C:: @ 0x08464F4C
 	.incbin "baserom.gba", 0x464F4C, 0x26A0
