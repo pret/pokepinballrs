@@ -67,8 +67,8 @@ extern const u8 gUnknown_0838E828[];
 extern const u8 gUnknown_083A826C[];
 extern const u8 gUnknown_083A8ACC[];
 
-extern const u8 gUnknown_0845A48C[];
-extern const u8 gUnknown_0845F9EC[];
+extern const u8 gRubyIntroSprites_Gfx[];
+extern const u8 gSapphireIntroSprites_Gfx[];
 extern const u8 gUnknown_08464F4C[];
 extern const u8 gUnknown_084675EC[];
 extern const u8 gUnknown_0846A40C[];
@@ -100,7 +100,7 @@ void sub_467F4(void)
         DmaCopy16(3, gUnknown_0822E424, (void *)0x06001000, 0x1000);
         DmaCopy16(3, gUnknown_083A8ACC, (void *)0x06006800, 0x400);
         DmaCopy16(3, gUnknown_083A826C, (void *)0x06006C00, 0x800);
-        DmaCopy16(3, gUnknown_0845A48C, (void *)0x06010000, 0x8000);
+        DmaCopy16(3, gRubyIntroSprites_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_SAPPHIRE:
         DmaCopy16(3, gUnknown_0826EC10, (void *)BG_PLTT, BG_PLTT_SIZE);
@@ -116,7 +116,7 @@ void sub_467F4(void)
         DmaCopy16(3, gUnknown_082AE6D0, (void *)0x06001000, 0x1000);
         DmaCopy16(3, gUnknown_083A8ACC, (void *)0x06006800, 0x400);
         DmaCopy16(3, gUnknown_083A826C, (void *)0x06006C00, 0x800);
-        DmaCopy16(3, gUnknown_0845F9EC, (void *)0x06010000, 0x8000);
+        DmaCopy16(3, gSapphireIntroSprites_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_DUSCLOPS:
         DmaCopy16(3, gUnknown_082EDEE0, (void *)BG_PLTT, BG_PLTT_SIZE);

@@ -643,16 +643,16 @@ gUnknown_086AD474:: @ 0x086AD474
 	.4byte gUnknown_08166F84
 
 gUnknown_086AD49C:: @ 0x086AD49C
-	.4byte gUnknown_083EB84C
-    .4byte gUnknown_083ED64C
-    .4byte gUnknown_083EF44C
-    .4byte gUnknown_083F304C
-    .4byte gUnknown_083F4E4C
-    .4byte gUnknown_083F6C4C
-    .4byte gUnknown_083FC64C
-    .4byte gUnknown_083FA84C
-    .4byte gUnknown_083F124C
-    .4byte gUnknown_083F8A4C
+	.4byte gPickupIcon1_Gfx
+    .4byte gPickupIcon2_Gfx
+    .4byte gPickupIcon3_Gfx
+    .4byte gPickupIcon4_Gfx
+    .4byte gPickupIcon5_Gfx
+    .4byte gPickupIcon6_Gfx
+    .4byte gPickupIcon7_Gfx
+    .4byte gPickupIcon8_Gfx
+    .4byte gPickupIcon9_Gfx
+    .4byte gPickupIcon10_Gfx
 
 
 gUnknown_086AD4C4:: @ 0x086AD4C4

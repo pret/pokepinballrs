@@ -8,7 +8,7 @@ extern const s16 gUnknown_086ADEB0[][2];
 extern const u16 gUnknown_086ADEB2[][2];
 extern const s16 gUnknown_086ADA6E[][5];
 extern const u16 gUnknown_086B2FC0[146][18];
-extern const u8 gUnknown_08447A8C[][0x180];
+extern const u8 gRubyStageGulpin_Gfx[][0x180];
 extern const s16 gUnknown_086ADA58[];
 extern const u8 gUnknown_083C3C2C[][0x300];
 extern const u8 gUnknown_083C562C[][0x100];
@@ -30,7 +30,7 @@ extern const u8 gUnknown_084B7FEC[][0x480];
 extern const u8 gRubyBoardShopDoor_Gfx[][0x180];
 extern const s16 gUnknown_086AD7C0[50][3];
 extern const s16 gUnknown_086AD856[][2];
-extern const u8 gUnknown_0845710C[][0x280];
+extern const u8 gRubyStageNuzleaf_Gfx[][0x280];
 extern const u16 gUnknown_086B2E64[58][6];
 extern const u16 gUnknown_081C00E4[];
 extern const u16 gUnknown_086AD798[2];
@@ -477,7 +477,7 @@ void sub_1D5D8(void)
     {
         group->baseX = gUnknown_086AD856[gCurrentPinballGame->unk2F9][0] - gCurrentPinballGame->unk58;
         group->baseY = gUnknown_086AD856[gCurrentPinballGame->unk2F9][1] - gCurrentPinballGame->unk5A;
-        DmaCopy16(3, gUnknown_0845710C[gCurrentPinballGame->unk2FC], (void *)0x06014380, 0x260);
+        DmaCopy16(3, gRubyStageNuzleaf_Gfx[gCurrentPinballGame->unk2FC], (void *)0x06014380, 0x260);
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -1660,9 +1660,9 @@ void sub_1FBC4(void)
     }
 
     index = var0[0];
-    DmaCopy16(3, gUnknown_08447A8C[var0[2]], (void *)0x06013B80, 0x180);
-    DmaCopy16(3, gUnknown_08447A8C[var0[3]], (void *)0x06013A00, 0x180);
-    DmaCopy16(3, gUnknown_08447A8C[var0[4]], (void *)0x06013880, 0x180);
+    DmaCopy16(3, gRubyStageGulpin_Gfx[var0[2]], (void *)0x06013B80, 0x180);
+    DmaCopy16(3, gRubyStageGulpin_Gfx[var0[3]], (void *)0x06013A00, 0x180);
+    DmaCopy16(3, gRubyStageGulpin_Gfx[var0[4]], (void *)0x06013880, 0x180);
     for (i = 0; i < 6; i++)
     {
         oamSimple = &group->oam[i];
