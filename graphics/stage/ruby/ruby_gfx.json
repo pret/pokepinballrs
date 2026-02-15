@@ -126,7 +126,7 @@
         },
         {
           "segfile":"intro_sprite_pause_select",
-          "width":4
+          "width":1
         },
         {
           "segfile":"intro_sprite_pause_text",

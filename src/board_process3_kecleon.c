@@ -31,8 +31,8 @@ struct Unk_086AEA70
 
 extern const u8 gUnknown_0813A854[];
 extern const u16 gUnknown_08327994[];
-extern const u8 gUnknown_0844F98C[][0x280];
-extern const u8 gUnknown_0845588C[][0x100];
+extern const u8 gKecleonStageKecleon_Gfx[][0x280];
+extern const u8 gKecleonStageKecleonFx_Gfx[][0x100];
 extern struct SongHeader se_unk_fc;
 extern struct SongHeader se_unk_fd;
 extern struct SongHeader se_unk_fe;
@@ -789,7 +789,7 @@ void sub_36CB4(void)
 
     sp0 = gCurrentPinballGame->unk3DF;
     gCurrentPinballGame->unk3DF = gUnknown_086AE718[gCurrentPinballGame->unk3E2][2];
-    DmaCopy16(3, gUnknown_0844F98C[sp0], (void *)0x6010920, 0x280);
+    DmaCopy16(3, gKecleonStageKecleon_Gfx[sp0], (void *)0x6010920, 0x280);
     sp4 = gUnknown_086AE718[gCurrentPinballGame->unk3E2][0];
     spriteGroup->baseX = gCurrentPinballGame->unk3E8 / 10 + baseX - gCurrentPinballGame->unk58;
     spriteGroup->baseY = gCurrentPinballGame->unk3EA / 10 + baseY - gCurrentPinballGame->unk5A;
@@ -899,7 +899,7 @@ void sub_36CB4(void)
     var0 = gCurrentPinballGame->unk3F8 * 3;
     var1 = gCurrentPinballGame->unk3FC / 8 - 2;
 
-    DmaCopy16(3, gUnknown_0845588C[var0 - var1], (void *)0x6010BA0, 0x100);
+    DmaCopy16(3, gKecleonStageKecleonFx_Gfx[var0 - var1], (void *)0x6010BA0, 0x100);
     if (gCurrentPinballGame->unk3FC > 0)
     {
         gCurrentPinballGame->unk3FC--;

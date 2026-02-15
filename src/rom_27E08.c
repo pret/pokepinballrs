@@ -47,7 +47,7 @@ extern const u8 gUnknown_0202D760[];
 extern const u16 gUnknown_086B4B0E[48][4][3];
 extern const u16 gUnknown_086AE0B4[];
 extern const struct Vector16 gUnknown_086AE0A4[];
-extern const u8 gUnknown_08449D8C[][0x280];
+extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
 extern const u8 gUnknown_084FB68C[][0x480];
 extern const u16 gUnknown_086B4D4E[40][2][3];
 extern const u8 gUnknown_083FFD4C[][0x40];
@@ -501,7 +501,7 @@ void sub_216FC(void)
 
 void sub_219A8(void)
 {
-    DmaCopy16(3, gUnknown_0844838C[0], (void *)0x060113C0, 0x300);
+    DmaCopy16(3, gMainStageBonusTrap_Gfx[0], (void *)0x060113C0, 0x300);
     gMain.unk44[13]->available = 1;
     gCurrentPinballGame->unk5F3 = 1;
 }
@@ -529,7 +529,7 @@ void sub_219EC(void)
         {
             if (gCurrentPinballGame->unk20B != gCurrentPinballGame->unk20C)
             {
-                DmaCopy16(3, gUnknown_0844838C[gCurrentPinballGame->unk20B], (void *)0x060113C0, 0x300);
+                DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->unk20B], (void *)0x060113C0, 0x300);
                 gCurrentPinballGame->unk20C = gCurrentPinballGame->unk20B;
             }
         }
@@ -1569,7 +1569,7 @@ void sub_23E18(void)
         group->baseY = gCurrentPinballGame->unk2D6 - gCurrentPinballGame->unk5A;
         if (var0 % 6 == 0)
         {
-            DmaCopy16(3, gUnknown_08449D8C[gCurrentPinballGame->unk746], (void *)0x06013300, 0x280);
+            DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->unk746], (void *)0x06013300, 0x280);
         }
     }
     else if (gCurrentPinballGame->unk2DA == 3)
@@ -1580,7 +1580,7 @@ void sub_23E18(void)
             {
                 gCurrentPinballGame->unk1EC = 2;
                 gCurrentPinballGame->unk746 = 1;
-                DmaCopy16(3, gUnknown_08449D8C[gCurrentPinballGame->unk746], (void *)0x06013300, 0x280);
+                DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->unk746], (void *)0x06013300, 0x280);
                 gMain.unkF |= 0x1;
                 gCurrentPinballGame->unkEA = 0;
                 gCurrentPinballGame->unkEC = 60;
