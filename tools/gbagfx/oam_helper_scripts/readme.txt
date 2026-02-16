@@ -1,3 +1,13 @@
+'segment_gfx.py'
+* Interactive tool for turning a .4bpp file into PNG and json segments.
+*   (uses the existing split / gbagfx tools)
+* To use:
+* Move this tool to a working folder.
+* Update constants as needed. (default wiring uses python3, and expects to be run in a sibling folder beside the pokepinballrs folder.)
+* Load your .4bpp file to the working folder, run the tool, following prompts.
+* PNGs created by the script will appear in your working folder, (sorting by date modified is recommended) for verification before the naming/json data recording step.
+* When done, move the .png files, and the appropriate segments of the json file to the appropriate folders.
+
 'init_gfx_json.py'
 * For reading a folder and building an initial json file for the .4bpp files in it.
 * This prepopulates a tilecount, which can be useful for ballpark sizing the height/width
