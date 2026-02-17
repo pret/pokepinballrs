@@ -1876,8 +1876,8 @@ gKecleonIntroSprite_Gfx:: @ 0x084675EC
 gKyogreIntroSprite_Gfx:: @ 0x0846A40C
 	.incbin "graphics/stage/kyogre/intro_sprite.4bpp"
 
-gUnknown_0846D2AC:: @ 0x0846D2AC
-	.incbin "baserom.gba", 0x46D2AC, 0x57C0
+gGroudonIntroSprite_Gfx:: @ 0x0846D2AC
+	.incbin "graphics/stage/groudon/intro_sprite.4bpp"
 
 gUnknown_08472A6C:: @ 0x08472A6C
 	.incbin "baserom.gba", 0x472A6C, 0x4F80
