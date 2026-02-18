@@ -34,3 +34,10 @@
 * Sample from pulling the link_gbasp segment out of sprites.4bpp (tool and byte file in the same folder being run from): 
    split_gfx.py sprites.4bpp link_gbasp 768 18
   *this creates a sprites_link_gbasp.4bpp file.
+
+'split_pal'
+* For splitting a file into a collection of .gbapal files.
+* This creates new files with the name being {filename}_{x}.gbapal 
+* x being 0 to calculated number of palettes.
+* Sanity checks: This only accepts files that are a multiple of 0x20 in size, and only allows for dumping 16 palettes at once. (0x200) 
+* Called with splitpal.py {path to file}
