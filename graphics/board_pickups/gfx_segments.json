@@ -1,0 +1,92 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "evo_item_ex",
+      "segments": [
+        {
+          "segfile": "evo_item_ex_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_ex_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_ex_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_ex_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_ex_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_ex_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_ex_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_ex_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_ex_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_collected_fade",
+          "width": 2
+        }
+      ]
+    }
+  ]
+}
