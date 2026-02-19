@@ -630,17 +630,17 @@ gUnknown_086AD456:: @ 0x086AD456
 	.2byte 0x0000, 0x0001, 0x0002, 0x0003, 0x0004, 0x0005, 0x0006;
 
     .align 2, 0
-gUnknown_086AD474:: @ 0x086AD474
-	.4byte gUnknown_0815A8A4
-	.4byte gUnknown_0815C6C4
-	.4byte gUnknown_0815E2E4
-	.4byte gUnknown_08161B24
-	.4byte gUnknown_08163744
-	.4byte gUnknown_08165364
-	.4byte gUnknown_0816A7C4
-	.4byte gUnknown_08168BA4
-	.4byte gUnknown_0815FF04
-	.4byte gUnknown_08166F84
+gEvoAppear_GfxList:: @ 0x086AD474
+	.4byte gEvoExAppear_Gfx
+	.4byte gEvoLeafAppear_Gfx
+	.4byte gEvoFireAppear_Gfx
+	.4byte gEvoLinkAppear_Gfx
+	.4byte gEvoMoonAppear_Gfx
+	.4byte gEvoWaterAppear_Gfx
+	.4byte gEvoBoltAppear_Gfx
+	.4byte gEvoSunAppear_Gfx
+	.4byte gEvoHeartAppear_Gfx
+	.4byte gEvoBoxAppear_Gfx
 
 gUnknown_086AD49C:: @ 0x086AD49C
 	.4byte gPickupIcon1_Gfx

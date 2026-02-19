@@ -654,33 +654,33 @@
       "align":1,
       "segments": [
         {
-          "segfile": "evo_item_appear_1",
+          "segfile": "evo_item_sun_appear_1",
           "width": 4
         },
         {
-          "segfile": "evo_item_appear_2",
+          "segfile": "evo_item_sun_appear_2",
           "oam": true,
           "mwidth": 6,
           "mheight": 6
         },
         {
-          "segfile": "evo_item_appear_3",
+          "segfile": "evo_item_sun_appear_3",
           "oam": true,
           "mwidth": 6,
           "mheight": 6
         },
         {
-          "segfile": "evo_item_appear_4",
+          "segfile": "evo_item_sun_appear_4",
           "oam": true,
           "mwidth": 6,
           "mheight": 6
         },
         {
-          "segfile": "evo_item_appear_5",
+          "segfile": "evo_item_sun_appear_5",
           "width": 4
         },
         {
-          "segfile": "evo_item_appear_6",
+          "segfile": "evo_item_sun_appear_6",
           "width": 4
         },
         {
@@ -688,7 +688,7 @@
           "width": 2
         },
         {
-          "segfile": "evo_item_appear_7",
+          "segfile": "evo_item_sun_appear_7",
           "width": 4
         },
         {
@@ -696,7 +696,7 @@
           "width": 2
         },
         {
-          "segfile": "evo_item_sparkle_1",
+          "segfile": "evo_item_sun_sparkle_1",
           "width": 2
         },
         {
@@ -704,7 +704,7 @@
           "width": 2
         },
         {
-          "segfile": "evo_item_sparkle_2",
+          "segfile": "evo_item_sun_sparkle_2",
           "width": 2
         },
         {
@@ -712,11 +712,11 @@
           "width": 2
         },
         {
-          "segfile": "evo_item_sparkle_3",
+          "segfile": "evo_item_sun_sparkle_3",
           "width": 2
         },
         {
-          "segfile": "evo_item_appear_8",
+          "segfile": "evo_item_sun_appear_8",
           "width": 4
         },
         {
@@ -729,7 +729,7 @@
         }
       ]
     },
-        {
+    {
       "gfx_filename": "evo_item_bolt",
       "align":1,
       "segments": [

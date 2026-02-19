@@ -1405,38 +1405,37 @@ gUnknown_08158284:: @ 0x08158284
 gUnknown_0815A6A4:: @ 0x0815A6A4
 	.incbin "baserom.gba", 0x15A6A4, 0x200
 
-gUnknown_0815A8A4:: @ 0x0815A8A4
+gEvoExAppear_Gfx:: @ 0x0815A8A4
 	.incbin "graphics/board_pickups/evo_item_ex.4bpp";
 
 gUnknown_0815C4C4:: @ 0x0815C4C4
 	.incbin "baserom.gba", 0x15C4C4, 0x200
 
-gUnknown_0815C6C4:: @ 0x0815C6C4
+gEvoLeafAppear_Gfx:: @ 0x0815C6C4
 	.incbin "graphics/board_pickups/evo_item_leaf.4bpp";
 
-gUnknown_0815E2E4:: @ 0x0815E2E4
+gEvoFireAppear_Gfx:: @ 0x0815E2E4
 	.incbin "graphics/board_pickups/evo_item_fire.4bpp";
 
-gUnknown_0815FF04:: @ 0x0815FF04
+gEvoHeartAppear_Gfx:: @ 0x0815FF04
 	.incbin "graphics/board_pickups/evo_item_heart.4bpp";
 
-gUnknown_08161B24:: @ 0x08161B24
+gEvoLinkAppear_Gfx:: @ 0x08161B24
 	.incbin "graphics/board_pickups/evo_item_link.4bpp";
 
-gUnknown_08163744:: @ 0x08163744
+gEvoMoonAppear_Gfx:: @ 0x08163744
 	.incbin "graphics/board_pickups/evo_item_moon.4bpp";
 
-gUnknown_08165364:: @ 0x08165364
+gEvoWaterAppear_Gfx:: @ 0x08165364
 	.incbin "graphics/board_pickups/evo_item_water.4bpp";
 
-gUnknown_08166F84:: @ 0x08166F84
+gEvoBoxAppear_Gfx:: @ 0x08166F84
 	.incbin "graphics/board_pickups/evo_item_box.4bpp";
 
-gUnknown_08168BA4:: @ 0x08168BA4
-	.incbin "baserom.gba", 0x168BA4, 0x1C20
-	@mismatch .incbin "graphics/board_pickups/evo_item_sun.4bpp";
+gEvoSunAppear_Gfx:: @ 0x08168BA4
+	.incbin "graphics/board_pickups/evo_item_sun.4bpp";
 
-gUnknown_0816A7C4:: @ 0x0816A7C4
+gEvoBoltAppear_Gfx:: @ 0x0816A7C4
 	.incbin "graphics/board_pickups/evo_item_bolt.4bpp";
 
 gUnknown_0816C3E4:: @ 0x0816C3E4
