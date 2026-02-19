@@ -630,7 +630,7 @@ gUnknown_086AD456:: @ 0x086AD456
 	.2byte 0x0000, 0x0001, 0x0002, 0x0003, 0x0004, 0x0005, 0x0006;
 
     .align 2, 0
-gEvoAppear_GfxList:: @ 0x086AD474
+gEvoItemAppear_GfxList:: @ 0x086AD474
 	.4byte gEvoExAppear_Gfx
 	.4byte gEvoLeafAppear_Gfx
 	.4byte gEvoFireAppear_Gfx

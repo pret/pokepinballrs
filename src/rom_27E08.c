@@ -6,7 +6,7 @@
 #define BONUS_CATCH_TIME 7200 //2 minutes, 60FPS
 
 extern const u8 gUnknown_081C0064[];
-extern const u8 *gEvoAppear_GfxList[];
+extern const u8 *gEvoItemAppear_GfxList[];
 extern const u8 gUnknown_0815C4C4[][0x20];
 extern const s16 gUnknown_086AE0E6[];
 extern const u16 gUnknown_086B4202[58][15];
@@ -3380,7 +3380,7 @@ void sub_278F4(void)
         if (gCurrentPinballGame->unk26E == 80)
         {
             gCurrentPinballGame->unkE4 = 15;
-            DmaCopy16(3, gEvoAppear_GfxList[gCurrentPinballGame->unk25F], (void *)0x06015800, 0x1C00);
+            DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->unk25F], (void *)0x06015800, 0x1C00);
             DmaCopy16(3, &gUnknown_0815C4C4[gCurrentPinballGame->unk25F], (void *)0x050003E0, 0x20);
             gCurrentPinballGame->unk626 = 0;
             gCurrentPinballGame->unk628 = 0;

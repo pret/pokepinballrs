@@ -47,7 +47,7 @@ extern const u8 gMainBoardEndOfBall_Gfx[];
 extern const u8 gSapphireBoardZigzagoonFx_Gfx[];
 extern const s16 gUnknown_086ACFE0[];
 extern const u16 gUnknown_086AD2DE[];
-extern const u8 *gEvoAppear_GfxList[];
+extern const u8 *gEvoItemAppear_GfxList[];
 extern const s16 gUnknown_086AD456[][7];
 extern const u8 gRubyBoardHatchCave_Gfx[][0x480];
 extern const u8 gUnknown_083C3C2C[][0x300];
@@ -1311,7 +1311,7 @@ void sub_4BC34(void)
         }
         break;
     case 14:
-        DmaCopy16(3, gEvoAppear_GfxList[gCurrentPinballGame->unk25F], (void *)0x6015800, 0x1C00);
+        DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->unk25F], (void *)0x6015800, 0x1C00);
         break;
     case 15:
         DmaCopy16(3, gUnknown_08158284, (void *)0x6015800, 0x2400);
