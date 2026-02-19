@@ -1413,7 +1413,9 @@ gUnknown_0815C4C4:: @ 0x0815C4C4
 	.incbin "baserom.gba", 0x15C4C4, 0x200
 
 gUnknown_0815C6C4:: @ 0x0815C6C4
-	.incbin "baserom.gba", 0x15C6C4, 0x1C20
+	.incbin "graphics/board_pickups/evo_item_leaf.4bpp";
+	.space 0x20
+	@.incbin "baserom.gba", 0x15C6C4, 0x1C20
 
 gUnknown_0815E2E4:: @ 0x0815E2E4
 	.incbin "baserom.gba", 0x15E2E4, 0x1C20
