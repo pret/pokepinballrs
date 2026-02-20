@@ -150,7 +150,7 @@ void Options_InitStates(void)
     for (i = 0; i < 4; i++)
     {
         for (j = 0; j < 10; j++)
-            gUnknown_02031AF0[i][j] = gUnknown_08527ED6[i][j];
+            gUnknown_02031AF0[i][j] = gDefaultButtonConfigs6[i][j];
     }
     sub_52528();
     if (gGameBoyPlayerEnabled == TRUE)
