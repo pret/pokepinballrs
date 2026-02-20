@@ -1879,8 +1879,8 @@ gKyogreIntroSprite_Gfx:: @ 0x0846A40C
 gGroudonIntroSprite_Gfx:: @ 0x0846D2AC
 	.incbin "graphics/stage/groudon/intro_sprite.4bpp"
 
-gUnknown_08472A6C:: @ 0x08472A6C
-	.incbin "baserom.gba", 0x472A6C, 0x4F80
+gRayquazaIntroSprite_Gfx:: @ 0x08472A6C
+	.incbin "graphics/stage/rayquaza/intro_sprite.4bpp"
 
 gUnknown_084779EC:: @ 0x084779EC
 	.incbin "baserom.gba", 0x4779EC, 0x2A20

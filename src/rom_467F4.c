@@ -73,7 +73,7 @@ extern const u8 gDusclopsIntroSprite_Gfx[];
 extern const u8 gKecleonIntroSprite_Gfx[];
 extern const u8 gKyogreIntroSprite_Gfx[];
 extern const u8 gGroudonIntroSprite_Gfx[];
-extern const u8 gUnknown_08472A6C[];
+extern const u8 gRayquazaIntroSprite_Gfx[];
 extern const u8 gUnknown_084779EC[];
 
 extern const struct Unk02031520_unk14 gUnknown_086AFD70[];
@@ -179,7 +179,7 @@ void loadIntroduction(void)
         DmaCopy16(3, gUnknown_0836E808, (void *)0x06003000, 0x1000);
         DmaCopy16(3, gUnknown_083A8ACC, (void *)0x06006800, 0x400);
         DmaCopy16(3, gUnknown_083A826C, (void *)0x06006C00, 0x800);
-        DmaCopy16(3, gUnknown_08472A6C, (void *)0x06010000, 0x8000);
+        DmaCopy16(3, gRayquazaIntroSprite_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_SPHEAL:
         DmaCopy16(3, gUnknown_0837A2E8, (void *)BG_PLTT, BG_PLTT_SIZE);
