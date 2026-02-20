@@ -51,7 +51,7 @@ extern u16 gUnknown_086BB910[11][4];
 extern struct {u8 unk0; s16 unk2;} gUnknown_086BB9B4[];
 extern u16 gOptionsSEList[];
 extern u8 gUnknown_02031AF0[][10];
-extern u8 gDefaultButtonConfigs6[4][10];
+extern u8 gDefaultButtonConfigs[4][10];
 extern void (*const gOptionsStateFuncs[])(void);
 extern u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
 extern u16 gUnknown_0201A520[3][BG_PLTT_SIZE];
