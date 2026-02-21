@@ -39,6 +39,111 @@
             }
         ],
         "align":12
+    },
+    {
+      "gfx_filename": "intro_sprite",
+      "segments": [
+        {
+          "segfile": "intro_sprite_flipper",
+          "width": 4
+        },
+        {
+          "segfile": "intro_sprite_ball",
+          "width": 2
+        },
+        {
+          "segfile": "intro_sprite_pause_cursor",
+          "width": 1
+        },
+        {
+          "segfile": "intro_sprite_pause_text",
+          "width": 10
+        },
+        {
+          "segfile": "intro_sprite_swirl",
+          "width": 4
+        },
+        {
+          "segfile": "intro_sprite_balls",
+          "width": 2
+        },
+        {
+          "segfile": "intro_sprite_catch_window_h",
+          "width": 4
+        },
+        {
+          "segfile": "intro_sprite_catch_window_v",
+          "width": 1
+        },
+        {
+          "segfile": "intro_sprite_catch_mon",
+          "mwidth": 2,
+          "mheight": 2,
+          "width": 6
+        },
+        {
+          "segfile": "intro_sprite_kyogre_tail",
+          "width": 4
+        },
+        {
+          "segfile": "intro_sprite_kyogre_body",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "intro_sprite_whirlpool",
+          "width": 4
+        },
+        {
+          "segfile": "intro_sprite_quarter_circle",
+          "width": 8
+        },
+        {
+          "segfile": "intro_sprite_ice_1_left",
+          "width": 1
+        },
+        {
+          "segfile": "intro_sprite_ice_1_right",
+          "width": 2
+        },
+        {
+          "segfile": "intro_sprite_ice_2_left",
+          "width": 1
+        },
+        {
+          "segfile": "intro_sprite_ice_2_right",
+          "width": 2
+        },
+        {
+          "segfile": "intro_sprite_ice_3_left",
+          "width": 1
+        },
+        {
+          "segfile": "intro_sprite_ice_3_right",
+          "width": 2
+        },
+        {
+          "segfile": "intro_sprite_frost",
+          "oam": true,
+          "mwidth": 3,
+          "mheight": 2
+        },
+        {
+          "segfile": "intro_sprite_iceberg",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 4
+        },
+        {
+          "segfile": "intro_sprite_ice_bits",
+          "width": 6
+        },
+        {
+          "segfile": "intro_sprite_rock_highlight",
+          "width": 4
+        }
+      ]
     }
   ]
 }
