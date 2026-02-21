@@ -1609,18 +1609,18 @@ gUnknown_086B2E64:: @ 0x086B2E64
     packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x22c, priority=0x2, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x21c, priority=0x2, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x22c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x21c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x22c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x21c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x22c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x21c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x22c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x21c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x22c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x21c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x22c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x21c, priority=0x2, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x22c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x21c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x22c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x21c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x22c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x21c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x22c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x21c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x22c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x21c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x22c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x21c, priority=0x2, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x22c, priority=0x2, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x21c, priority=0x2, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x22c, priority=0x2, paletteNum=0x4
     packed_sprite_oam x=0x4, y=-0x3, spriteSize=SPRITE_SIZE_32x32, tileNum=0x21c, priority=0x2, paletteNum=0x4
@@ -1936,32 +1936,32 @@ gUnknown_086B2FC0:: @ 0x086B2FC0
     packed_sprite_oam x=0x0, y=0x6, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x9, y=-0x15, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1c4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x9, y=-0x5, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1cc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x9, y=-0x15, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1c4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x9, y=-0x5, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=-0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x6, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x11, y=-0x1A, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1c4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x11, y=-0xA, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1cc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x11, y=-0x1A, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1c4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x11, y=-0xA, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=-0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x6, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x18, y=-0x19, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1c4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x18, y=-0x9, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1cc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x18, y=-0x19, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1c4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x18, y=-0x9, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=-0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x6, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x1E, y=-0x14, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1c4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x1E, y=-0x4, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1cc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x1E, y=-0x14, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1c4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x1E, y=-0x4, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=-0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x6, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x24, y=-0xA, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1c4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x24, y=0x6, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1cc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x24, y=-0xA, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1c4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x24, y=0x6, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=-0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x6, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
@@ -1970,8 +1970,8 @@ gUnknown_086B2FC0:: @ 0x086B2FC0
     packed_sprite_oam x=0x0, y=0x6, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x29, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1dc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x29, y=0x10, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1e4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x29, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1dc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x29, y=0x10, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=-0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
@@ -1986,44 +1986,38 @@ gUnknown_086B2FC0:: @ 0x086B2FC0
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x8, y=-0xA, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1d0, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x8, y=0x6, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1d8, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x8, y=-0xA, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1d0, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x8, y=0x6, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0xD, y=-0x11, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1d0, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0xD, y=-0x1, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1d8, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0xD, y=-0x11, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1d0, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0xD, y=-0x1, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x15, y=-0x15, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1d0, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x15, y=-0x5, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1d8, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x15, y=-0x15, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1d0, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x15, y=-0x5, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x1D, y=-0x13, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1d0, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x1D, y=-0x3, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1d8, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x1D, y=-0x13, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1d0, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x1D, y=-0x3, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x24, y=-0xE, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1d0, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x24, y=0x2, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1d8, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x24, y=-0xE, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1d0, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x24, y=0x2, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x27, y=-0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1d0, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x27, y=0x4, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1d8, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x21, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x21, y=0x5, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x27, y=-0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1d0, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x27, y=0x4, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1d8, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
@@ -2036,38 +2030,44 @@ gUnknown_086B2FC0:: @ 0x086B2FC0
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=0x5, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x8, y=-0x1, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1dc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x8, y=0xF, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1e4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=0x5, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0xE, y=-0x5, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1dc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0xE, y=0xB, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1e4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x8, y=-0x1, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1dc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x8, y=0xF, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=0x5, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x15, y=-0x7, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1dc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x15, y=0x9, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1e4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0xE, y=-0x5, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1dc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0xE, y=0xB, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=0x5, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x1E, y=-0x7, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1dc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x1E, y=0x9, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1e4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x15, y=-0x7, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1dc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x15, y=0x9, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=0x5, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x24, y=-0x3, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1dc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x24, y=0xD, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1e4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x1E, y=-0x7, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1dc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x1E, y=0x9, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x21, y=0x5, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x29, y=0x2, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x1dc, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=-0x29, y=0x12, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x1e4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x24, y=-0x3, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1dc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x24, y=0xD, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x21, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x21, y=0x5, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x29, y=0x2, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x1dc, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=-0x29, y=0x12, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x20, y=0x7, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
@@ -2354,10 +2354,10 @@ gUnknown_086B3EF6:: @ 0x086B3EF6
     packed_sprite_oam x=-0x4, y=-0x14, mosaic=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x125, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=-0x24, y=0xC, mosaic=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x12d, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=-0x4, y=0xC, mosaic=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x135, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x10, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x115, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x125, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x10, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x12d, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x135, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x10, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x115, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x125, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x10, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x12d, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x135, priority=0x1, paletteNum=0x4
 
 
 gUnknown_086B3FE6:: @ 0x086B3FE6
@@ -2405,12 +2405,12 @@ gUnknown_086B3FE6:: @ 0x086B3FE6
     packed_sprite_oam x=0x18, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x374, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x8, y=-0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x326, paletteNum=0xe
     packed_sprite_oam x=-0x10, y=-0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x346, paletteNum=0xe
-    packed_sprite_oam x=0x18, y=-0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, hFlip=0x1,tileNum=0x326, paletteNum=0xe
-    packed_sprite_oam x=0x38, y=-0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x346, paletteNum=0xe
+    packed_sprite_oam x=0x18, y=-0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, hFlip=0x1, tileNum=0x326, paletteNum=0xe
+    packed_sprite_oam x=0x38, y=-0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x346, paletteNum=0xe
     packed_sprite_oam x=-0x8, y=-0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x34a, paletteNum=0xe
     packed_sprite_oam x=-0x10, y=-0x18, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x36a, paletteNum=0xe
-    packed_sprite_oam x=0x18, y=-0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, hFlip=0x1,tileNum=0x34a, paletteNum=0xe
-    packed_sprite_oam x=0x38, y=-0x18, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x36a, paletteNum=0xe
+    packed_sprite_oam x=0x18, y=-0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, hFlip=0x1, tileNum=0x34a, paletteNum=0xe
+    packed_sprite_oam x=0x38, y=-0x18, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x36a, paletteNum=0xe
 
 
 
@@ -2500,24 +2500,24 @@ gUnknown_086B4202:: @ 0x086B4202
     packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, vFlip=0x1, tileNum=0x348, paletteNum=0xf
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x350, paletteNum=0xf
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x354, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x33c, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x33c, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x33c, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x33c, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x33c, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x33c, paletteNum=0xf
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x358, paletteNum=0xf
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x354, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x33c, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x33c, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x33c, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x33c, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x33c, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x33c, paletteNum=0xf
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x35c, paletteNum=0xf
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x354, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x348, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x348, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x348, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x348, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x348, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x348, paletteNum=0xf
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x354, paletteNum=0xf
-    packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x360, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x348, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x348, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x348, paletteNum=0xf
+    packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x360, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x348, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x348, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x348, paletteNum=0xf
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x364, paletteNum=0xf
     packed_sprite_oam x=-0x10, y=0x3, spriteSize=SPRITE_SIZE_16x16, tileNum=0x354, paletteNum=0xf
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x368, paletteNum=0xf
@@ -2541,18 +2541,18 @@ gUnknown_086B4202:: @ 0x086B4202
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x370, paletteNum=0xf
     packed_sprite_oam x=-0x10, y=0x3, spriteSize=SPRITE_SIZE_16x16, tileNum=0x364, paletteNum=0xf
     packed_sprite_oam x=0x6, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0x354, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x378, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x378, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x378, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x378, paletteNum=0xf
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x380, paletteNum=0xf
     packed_sprite_oam x=-0x10, y=0x3, spriteSize=SPRITE_SIZE_16x16, tileNum=0x364, paletteNum=0xf
     packed_sprite_oam x=0x6, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0x354, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x378, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x378, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x378, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x378, paletteNum=0xf
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x384, paletteNum=0xf
     packed_sprite_oam x=-0x10, y=0x3, spriteSize=SPRITE_SIZE_16x16, tileNum=0x364, paletteNum=0xf
     packed_sprite_oam x=0x6, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0x354, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x378, paletteNum=0xf
-    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x378, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x378, paletteNum=0xf
+    packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x378, paletteNum=0xf
     packed_sprite_oam x=-0x10, y=0x3, spriteSize=SPRITE_SIZE_16x16, tileNum=0x374, paletteNum=0xf
     packed_sprite_oam x=0x6, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0x354, paletteNum=0xf
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x384, paletteNum=0xf
@@ -2665,7 +2665,7 @@ gUnknown_086B4568:: @ 0x086B4568
     packed_sprite_oam x=0x9, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b1, paletteNum=0xe
     packed_sprite_oam x=0x29, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b1, paletteNum=0xe
     packed_sprite_oam x=0x49, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b1, paletteNum=0xe
-    packed_sprite_oam x=0x69, y=0x40, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,tileNum=0x3b0, paletteNum=0xe
+    packed_sprite_oam x=0x69, y=0x40, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, tileNum=0x3b0, paletteNum=0xe
     packed_sprite_oam x=-0x7F, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, paletteNum=0xe
     packed_sprite_oam x=-0x3F, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x300, paletteNum=0xe
     packed_sprite_oam x=0x1, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x340, paletteNum=0xe
@@ -2716,7 +2716,7 @@ gUnknown_086B4568:: @ 0x086B4568
 gUnknown_086B47DE:: @ 0x086B47DE
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x2f5, paletteNum=0xe
     packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2f9, paletteNum=0xe
-    packed_sprite_oam x=0x48, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x2f5, paletteNum=0xe
+    packed_sprite_oam x=0x48, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x2f5, paletteNum=0xe
     packed_sprite_oam x=0x28, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2f9, paletteNum=0xe
     packed_sprite_oam x=0x28, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2f9, paletteNum=0xe
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x2f5, paletteNum=0xe
@@ -3195,60 +3195,60 @@ gUnknown_086B51CE:: @ 0x086B51CE
     packed_sprite_oam x=0x18, y=0xD, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0xB, y=0xD, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0x1E, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
-    packed_sprite_oam x=0x7, y=-0x2, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2c8, paletteNum=0xe
+    packed_sprite_oam x=0x7, y=-0x2, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0xF, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0x1B, y=-0x4, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
-    packed_sprite_oam x=0x22, y=0x4, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2c8, paletteNum=0xe
+    packed_sprite_oam x=0x22, y=0x4, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0x22, y=0xF, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0xB, y=0x17, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
-    packed_sprite_oam x=0x3, y=0x12, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2c8, paletteNum=0xe
+    packed_sprite_oam x=0x3, y=0x12, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0x0, y=0x7, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
-    packed_sprite_oam x=0x1A, y=0x15, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2c8, paletteNum=0xe
+    packed_sprite_oam x=0x1A, y=0x15, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0x1, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=0xB, y=-0xA, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=0x1E, y=-0x8, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=0xB, y=-0xA, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=0x1E, y=-0x8, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=0x27, y=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=0x27, y=0x12, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=0x27, y=0x12, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=0x1C, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=0x8, y=0x1C, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=0x8, y=0x1C, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=-0x1, y=0x15, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=-0x5, y=0x8, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=-0x1, y=-0x7, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=-0x5, y=0x8, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=-0x1, y=-0x7, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=0xB, y=-0xE, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=0x1F, y=-0xB, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=0x29, y=0x0, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=0x29, y=0x0, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=0x29, y=0x15, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=0x1D, y=0x1B, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=0x1D, y=0x1B, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=0x7, y=0x1E, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=-0x3, y=0x17, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=-0x3, y=0x17, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=-0x7, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=-0x6, y=-0xA, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d0, paletteNum=0xe
-    packed_sprite_oam x=0x9, y=-0x11, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2d0, paletteNum=0xe
-    packed_sprite_oam x=-0xC, y=0xB, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2d0, paletteNum=0xe
+    packed_sprite_oam x=0x9, y=-0x11, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2d0, paletteNum=0xe
+    packed_sprite_oam x=-0xC, y=0xB, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2d0, paletteNum=0xe
     packed_sprite_oam x=-0x5, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d0, paletteNum=0xe
-    packed_sprite_oam x=0x5, y=0x20, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2d0, paletteNum=0xe
+    packed_sprite_oam x=0x5, y=0x20, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2d0, paletteNum=0xe
     packed_sprite_oam x=0x1F, y=0x1D, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d0, paletteNum=0xe
-    packed_sprite_oam x=0x2C, y=0x17, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2d0, paletteNum=0xe
+    packed_sprite_oam x=0x2C, y=0x17, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2d0, paletteNum=0xe
     packed_sprite_oam x=0x2B, y=-0x2, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d0, paletteNum=0xe
     packed_sprite_oam x=0x21, y=-0xE, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d0, paletteNum=0xe
-    packed_sprite_oam x=-0x8, y=-0xC, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=-0x8, y=-0xC, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=0x8, y=-0x16, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=0x23, y=-0x10, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=0x2E, y=-0x4, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=0x23, y=-0x10, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=0x2E, y=-0x4, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=0x2F, y=0x1A, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=0x4, y=0x23, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
-    packed_sprite_oam x=-0x7, y=0x1B, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2cc, paletteNum=0xe
+    packed_sprite_oam x=-0x7, y=0x1B, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=-0xF, y=0xB, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xe
     packed_sprite_oam x=-0xA, y=-0xE, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
-    packed_sprite_oam x=0x7, y=-0x18, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2c8, paletteNum=0xe
+    packed_sprite_oam x=0x7, y=-0x18, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0x25, y=-0x14, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0x31, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
-    packed_sprite_oam x=0x32, y=0x1D, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2c8, paletteNum=0xe
+    packed_sprite_oam x=0x32, y=0x1D, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0x22, y=0x23, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
-    packed_sprite_oam x=0x3, y=0x28, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2c8, paletteNum=0xe
+    packed_sprite_oam x=0x3, y=0x28, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=-0xA, y=0x1E, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
-    packed_sprite_oam x=-0x13, y=0xC, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,tileNum=0x2c8, paletteNum=0xe
+    packed_sprite_oam x=-0x13, y=0xC, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1, tileNum=0x2c8, paletteNum=0xe
 
 
 gUnknown_086B53B4:: @ 0x086B53B4
@@ -3307,40 +3307,40 @@ gUnknown_086B53E4:: @ 0x086B53E4
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x331, paletteNum=0xe
     packed_sprite_oam x=-0x8, y=0x8, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, vFlip=0x1, tileNum=0x331, paletteNum=0xe
     packed_sprite_oam x=-0x19, y=-0x1A, spriteSize=SPRITE_SIZE_32x32, tileNum=0x339, paletteNum=0xe
-    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x339, paletteNum=0xe
-    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x339, paletteNum=0xe
+    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x339, paletteNum=0xe
+    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x339, paletteNum=0xe
     packed_sprite_oam x=0x9, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x339, paletteNum=0xe
-    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x339, paletteNum=0xe
+    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x339, paletteNum=0xe
     packed_sprite_oam x=0x9, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x339, paletteNum=0xe
     packed_sprite_oam x=-0x19, y=-0x1A, spriteSize=SPRITE_SIZE_32x32, tileNum=0x349, paletteNum=0xe
-    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x349, paletteNum=0xe
+    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x349, paletteNum=0xe
     packed_sprite_oam x=0x9, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x349, paletteNum=0xe
-    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x349, paletteNum=0xe
+    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x349, paletteNum=0xe
     packed_sprite_oam x=0x9, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x349, paletteNum=0xe
-    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x349, paletteNum=0xe
+    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x349, paletteNum=0xe
     packed_sprite_oam x=-0x18, y=-0x18, spriteSize=SPRITE_SIZE_32x32, tileNum=0x359, paletteNum=0xe
-    packed_sprite_oam x=-0x15, y=0xA, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x359, paletteNum=0xe
-    packed_sprite_oam x=0xA, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x359, paletteNum=0xe
+    packed_sprite_oam x=-0x15, y=0xA, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x359, paletteNum=0xe
+    packed_sprite_oam x=0xA, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x359, paletteNum=0xe
     packed_sprite_oam x=0x9, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x359, paletteNum=0xe
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x369, paletteNum=0xe
-    packed_sprite_oam x=-0x8, y=0x8, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x369, paletteNum=0xe
+    packed_sprite_oam x=-0x8, y=0x8, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x369, paletteNum=0xe
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x371, paletteNum=0xe
-    packed_sprite_oam x=-0x8, y=0x8, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x371, paletteNum=0xe
+    packed_sprite_oam x=-0x8, y=0x8, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x371, paletteNum=0xe
     packed_sprite_oam x=-0x1A, y=-0x19, spriteSize=SPRITE_SIZE_32x32, tileNum=0x379, paletteNum=0xe
-    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x379, paletteNum=0xe
-    packed_sprite_oam x=0xC, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x379, paletteNum=0xe
+    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x379, paletteNum=0xe
+    packed_sprite_oam x=0xC, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x379, paletteNum=0xe
     packed_sprite_oam x=0x7, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x379, paletteNum=0xe
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x389, paletteNum=0xe
-    packed_sprite_oam x=-0x8, y=0x8, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,tileNum=0x389, paletteNum=0xe
+    packed_sprite_oam x=-0x8, y=0x8, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1, tileNum=0x389, paletteNum=0xe
     packed_sprite_oam x=-0x19, y=-0x1A, spriteSize=SPRITE_SIZE_32x32, tileNum=0x391, paletteNum=0xe
-    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x391, paletteNum=0xe
+    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x391, paletteNum=0xe
     packed_sprite_oam x=0x8, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x391, paletteNum=0xe
-    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x391, paletteNum=0xe
+    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x391, paletteNum=0xe
     packed_sprite_oam x=-0x19, y=-0x1A, spriteSize=SPRITE_SIZE_32x32, tileNum=0x3a1, paletteNum=0xe
-    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x3a1, paletteNum=0xe
-    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x3a1, paletteNum=0xe
+    packed_sprite_oam x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x3a1, paletteNum=0xe
+    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x3a1, paletteNum=0xe
     packed_sprite_oam x=0x8, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x3a1, paletteNum=0xe
-    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x3a1, paletteNum=0xe
+    packed_sprite_oam x=0xD, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x3a1, paletteNum=0xe
     packed_sprite_oam x=0x8, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x3a1, paletteNum=0xe
 
 
@@ -3614,18 +3614,18 @@ gUnknown_086B56D8:: @ 0x086B56D8
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0xe9, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0xeb, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xed, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xe5, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0xe9, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xeb, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,tileNum=0xed, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xe5, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0xe9, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xeb, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,tileNum=0xed, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xe5, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0xe9, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xeb, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,tileNum=0xed, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xe5, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0xe9, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xeb, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, tileNum=0xed, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xe5, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0xe9, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xeb, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, tileNum=0xed, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xe5, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0xe9, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xeb, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, tileNum=0xed, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xe5, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0xe9, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0xeb, priority=0x1, paletteNum=0x4
@@ -3655,19 +3655,19 @@ gUnknown_086B5CC0:: @ 0x086B5CC0
     packed_sprite_oam x=0x0, y=-0x18, spriteSize=SPRITE_SIZE_32x32, tileNum=0x139, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x149, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x149, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=-0x30, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x139, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x149, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x151, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=-0x30, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x139, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x149, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x151, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_32x8, tileNum=0x159, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15d, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=-0x38, spriteSize=SPRITE_SIZE_32x32, tileNum=0x165, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=-0x18, spriteSize=SPRITE_SIZE_32x16, tileNum=0x175, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=-0x8, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x151, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=-0x8, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x151, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x159, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15d, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=-0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x17d, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=-0x28, spriteSize=SPRITE_SIZE_32x8, tileNum=0x185, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=-0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x151, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=-0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x151, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=-0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x159, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15d, priority=0x1, paletteNum=0xc
 
@@ -3683,8 +3683,8 @@ gUnknown_086B5D56:: @ 0x086B5D56
     packed_sprite_oam x=0xE, y=0x1, spriteSize=SPRITE_SIZE_8x16, tileNum=0x264, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x2, spriteSize=SPRITE_SIZE_8x16, tileNum=0x266, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x268, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x8, y=0x2, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x266, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=-0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x268, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x8, y=0x2, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x266, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=-0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x268, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=-0x4, y=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x260, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0xC, y=0x1, spriteSize=SPRITE_SIZE_8x16, tileNum=0x264, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=-0x1, y=-0x3, spriteSize=SPRITE_SIZE_16x16, tileNum=0x26c, priority=0x1, paletteNum=0xc
@@ -3765,49 +3765,49 @@ gUnknown_086B5ECA:: @ 0x086B5ECA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x46, y=-0x43, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1da, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x45, y=-0x23, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x1de, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3E, y=-0x13, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1e0, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3E, y=0xD, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1e4, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3E, y=0x2D, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x1ea, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x36, y=0x2D, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1ec, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3D, y=-0x12, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1e0, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3D, y=0xE, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1e4, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3D, y=0x2E, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x1ea, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x35, y=0x2E, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1ec, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x42, y=-0x2B, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1,tileNum=0x1f0, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x46, y=-0x43, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1da, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x45, y=-0x23, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x1de, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x3E, y=-0x13, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1e0, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x3E, y=0xD, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x3E, y=0x2D, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x1ea, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x36, y=0x2D, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1ec, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x3D, y=-0x12, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1e0, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x3D, y=0xE, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x3D, y=0x2E, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x1ea, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x35, y=0x2E, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1ec, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x42, y=-0x2B, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1, tileNum=0x1f0, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3D, y=0x2E, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x1ea, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x35, y=0x2E, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1ec, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3D, y=0x16, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1,tileNum=0x1f0, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3D, y=0x1A, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1,tileNum=0x1f0, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x37, y=0x3C, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x1f4, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x3D, y=0x2E, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x1ea, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x35, y=0x2E, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1ec, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x3D, y=0x16, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1, tileNum=0x1f0, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x3D, y=0x1A, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1, tileNum=0x1f0, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x37, y=0x3C, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x1f4, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x23, y=0x13, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1,tileNum=0x1da, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x23, y=0x13, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1, tileNum=0x1da, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x23, y=0x3, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, vFlip=0x1, tileNum=0x1de, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x1C, y=-0x1D, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, vFlip=0x1, tileNum=0x1e0, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x1C, y=-0x3D, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, vFlip=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x1E, y=0x32, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1ec, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x1E, y=0x32, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1ec, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x22, y=0x14, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1,tileNum=0x1da, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x22, y=0x14, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1, tileNum=0x1da, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x22, y=0x4, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, vFlip=0x1, tileNum=0x1de, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x1D, y=0x33, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1ec, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x1D, y=0x33, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1ec, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x1E, y=-0x17, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, vFlip=0x1, tileNum=0x1f0, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x1D, y=0x33, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x1ec, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x22, y=0x16, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1,tileNum=0x1f0, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x1D, y=0x33, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x1ec, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x22, y=0x16, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1, tileNum=0x1f0, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x1F, y=0x2F, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1,tileNum=0x1f0, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x1F, y=0x2F, spriteSize=SPRITE_SIZE_8x32, vFlip=0x1, tileNum=0x1f0, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
@@ -3989,22 +3989,22 @@ gUnknown_086B63F2:: @ 0x086B63F2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x318, paletteNum=0xc
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x320, paletteNum=0xc
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x318, paletteNum=0xc
-    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x30c, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x314, paletteNum=0xc
-    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x30c, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x314, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x320, paletteNum=0xc
-    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x318, paletteNum=0xc
-    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x320, paletteNum=0xc
-    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x318, paletteNum=0xc
+    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x30c, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x314, paletteNum=0xc
+    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x30c, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x314, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x320, paletteNum=0xc
+    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x318, paletteNum=0xc
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x320, paletteNum=0xc
+    packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x318, paletteNum=0xc
     packed_sprite_oam x=-0x10, y=-0x7, spriteSize=SPRITE_SIZE_16x32, tileNum=0x324, paletteNum=0xc
     packed_sprite_oam x=0x0, y=-0x7, spriteSize=SPRITE_SIZE_8x32, tileNum=0x32c, paletteNum=0xc
-    packed_sprite_oam x=0x10, y=-0x7, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x324, paletteNum=0xc
-    packed_sprite_oam x=0x8, y=-0x7, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x32c, paletteNum=0xc
+    packed_sprite_oam x=0x10, y=-0x7, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x324, paletteNum=0xc
+    packed_sprite_oam x=0x8, y=-0x7, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x32c, paletteNum=0xc
     packed_sprite_oam x=-0x10, y=-0x3, spriteSize=SPRITE_SIZE_16x32, tileNum=0x330, paletteNum=0xc
     packed_sprite_oam x=0x0, y=-0x3, spriteSize=SPRITE_SIZE_8x32, tileNum=0x338, paletteNum=0xc
-    packed_sprite_oam x=0x10, y=-0x3, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x330, paletteNum=0xc
-    packed_sprite_oam x=0x8, y=-0x3, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x338, paletteNum=0xc
+    packed_sprite_oam x=0x10, y=-0x3, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x330, paletteNum=0xc
+    packed_sprite_oam x=0x8, y=-0x3, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x338, paletteNum=0xc
     packed_sprite_oam x=-0xA, y=-0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x33c, paletteNum=0xc
     packed_sprite_oam x=-0xA, y=0xB, spriteSize=SPRITE_SIZE_32x8, tileNum=0x344, paletteNum=0xc
     packed_sprite_oam x=0x16, y=0x3, spriteSize=SPRITE_SIZE_8x16, tileNum=0x348, paletteNum=0xc
@@ -4013,29 +4013,29 @@ gUnknown_086B63F2:: @ 0x086B63F2
     packed_sprite_oam x=0xE, y=-0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x35c, paletteNum=0xc
     packed_sprite_oam x=-0x12, y=-0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x34c, paletteNum=0xc
     packed_sprite_oam x=0xE, y=-0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x35c, paletteNum=0xc
-    packed_sprite_oam x=-0x6, y=-0x5, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x33c, paletteNum=0xc
-    packed_sprite_oam x=-0x6, y=0xB, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x344, paletteNum=0xc
-    packed_sprite_oam x=-0xE, y=0x3, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x348, paletteNum=0xc
-    packed_sprite_oam x=-0xB, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x34a, paletteNum=0xc
-    packed_sprite_oam x=0x2, y=-0x1, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x34c, paletteNum=0xc
-    packed_sprite_oam x=-0xE, y=-0x1, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x35c, paletteNum=0xc
-    packed_sprite_oam x=0x2, y=-0x1, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x34c, paletteNum=0xc
-    packed_sprite_oam x=-0xE, y=-0x1, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x35c, paletteNum=0xc
+    packed_sprite_oam x=-0x6, y=-0x5, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x33c, paletteNum=0xc
+    packed_sprite_oam x=-0x6, y=0xB, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x344, paletteNum=0xc
+    packed_sprite_oam x=-0xE, y=0x3, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x348, paletteNum=0xc
+    packed_sprite_oam x=-0xB, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x34a, paletteNum=0xc
+    packed_sprite_oam x=0x2, y=-0x1, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x34c, paletteNum=0xc
+    packed_sprite_oam x=-0xE, y=-0x1, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x35c, paletteNum=0xc
+    packed_sprite_oam x=0x2, y=-0x1, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x34c, paletteNum=0xc
+    packed_sprite_oam x=-0xE, y=-0x1, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x35c, paletteNum=0xc
 
 
 gUnknown_086B6512:: @ 0x086B6512
 	packed_sprite_oam x=-0x4, y=0x1D, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, paletteNum=0xc
     packed_sprite_oam x=0xC, y=0x1D, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2c4, paletteNum=0xc
-    packed_sprite_oam x=0x1C, y=0x1D, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2c0, paletteNum=0xc
-    packed_sprite_oam x=0x14, y=0x1D, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x2c4, paletteNum=0xc
-    packed_sprite_oam x=0x14, y=0x1D, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x2c4, paletteNum=0xc
-    packed_sprite_oam x=0x14, y=0x1D, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x2c4, paletteNum=0xc
+    packed_sprite_oam x=0x1C, y=0x1D, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2c0, paletteNum=0xc
+    packed_sprite_oam x=0x14, y=0x1D, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x2c4, paletteNum=0xc
+    packed_sprite_oam x=0x14, y=0x1D, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x2c4, paletteNum=0xc
+    packed_sprite_oam x=0x14, y=0x1D, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x2c4, paletteNum=0xc
     packed_sprite_oam x=-0xA, y=0x1B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2c6, paletteNum=0xc
     packed_sprite_oam x=-0xA, y=0x22, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ca, paletteNum=0xc
     packed_sprite_oam x=-0x2, y=0x2A, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xc
-    packed_sprite_oam x=0x12, y=0x1B, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x2c6, paletteNum=0xc
-    packed_sprite_oam x=0x2A, y=0x22, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x2ca, paletteNum=0xc
-    packed_sprite_oam x=0x1A, y=0x2A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2cc, paletteNum=0xc
+    packed_sprite_oam x=0x12, y=0x1B, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x2c6, paletteNum=0xc
+    packed_sprite_oam x=0x2A, y=0x22, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x2ca, paletteNum=0xc
+    packed_sprite_oam x=0x1A, y=0x2A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2cc, paletteNum=0xc
     packed_sprite_oam x=-0xE, y=0x18, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2d0, paletteNum=0xc
     packed_sprite_oam x=0x12, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d8, paletteNum=0xc
     packed_sprite_oam x=0x2, y=0x28, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2dc, paletteNum=0xc
@@ -4048,70 +4048,70 @@ gUnknown_086B6512:: @ 0x086B6512
     packed_sprite_oam x=0x9, y=0x33, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2e8, paletteNum=0xc
     packed_sprite_oam x=0xA, y=0x1B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2ec, paletteNum=0xc
     packed_sprite_oam x=0x17, y=0x23, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2ee, paletteNum=0xc
-    packed_sprite_oam x=0x16, y=0x18, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x2d0, paletteNum=0xc
-    packed_sprite_oam x=0x6, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2d8, paletteNum=0xc
-    packed_sprite_oam x=0x6, y=0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x2dc, paletteNum=0xc
-    packed_sprite_oam x=0x6, y=0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x2dc, paletteNum=0xc
-    packed_sprite_oam x=0x6, y=0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x2dc, paletteNum=0xc
-    packed_sprite_oam x=0x6, y=0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x2dc, paletteNum=0xc
-    packed_sprite_oam x=0x1A, y=0x1A, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x2e0, paletteNum=0xc
-    packed_sprite_oam x=0x2F, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2e4, paletteNum=0xc
-    packed_sprite_oam x=0x27, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2e6, paletteNum=0xc
-    packed_sprite_oam x=-0x1, y=0x33, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x2e8, paletteNum=0xc
-    packed_sprite_oam x=0xE, y=0x1B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2ec, paletteNum=0xc
-    packed_sprite_oam x=0x1, y=0x23, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2ee, paletteNum=0xc
+    packed_sprite_oam x=0x16, y=0x18, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x2d0, paletteNum=0xc
+    packed_sprite_oam x=0x6, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2d8, paletteNum=0xc
+    packed_sprite_oam x=0x6, y=0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x2dc, paletteNum=0xc
+    packed_sprite_oam x=0x6, y=0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x2dc, paletteNum=0xc
+    packed_sprite_oam x=0x6, y=0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x2dc, paletteNum=0xc
+    packed_sprite_oam x=0x6, y=0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x2dc, paletteNum=0xc
+    packed_sprite_oam x=0x1A, y=0x1A, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x2e0, paletteNum=0xc
+    packed_sprite_oam x=0x2F, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2e4, paletteNum=0xc
+    packed_sprite_oam x=0x27, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2e6, paletteNum=0xc
+    packed_sprite_oam x=-0x1, y=0x33, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x2e8, paletteNum=0xc
+    packed_sprite_oam x=0xE, y=0x1B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2ec, paletteNum=0xc
+    packed_sprite_oam x=0x1, y=0x23, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2ee, paletteNum=0xc
 
 
 gUnknown_086B65EA:: @ 0x086B65EA
 	packed_sprite_oam x=0x1, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x2, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xD, y=-0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x5, y=0x4, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xD, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=0x20, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=0x28, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
@@ -4120,8 +4120,8 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x18, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=0x22, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
@@ -4129,18 +4129,18 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xD, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x5, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xD, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x20, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x28, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x20, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x28, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x17, y=0x12, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x1A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x12, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x1A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
@@ -4148,7 +4148,7 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x24, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x2C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_32x32, tileNum=0x201, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, tileNum=0x211, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, tileNum=0x211, priority=0x1, paletteNum=0xf
@@ -4158,14 +4158,14 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x17, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x1C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x6, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x16, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xE, spriteSize=SPRITE_SIZE_32x32, tileNum=0x201, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, tileNum=0x211, priority=0x1, paletteNum=0xf
@@ -4177,14 +4177,14 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x16, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1E, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xF, spriteSize=SPRITE_SIZE_32x32, tileNum=0x201, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, tileNum=0x211, priority=0x1, paletteNum=0xf
@@ -4199,11 +4199,11 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x16, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1E, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xF, spriteSize=SPRITE_SIZE_32x32, tileNum=0x201, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, tileNum=0x211, priority=0x1, paletteNum=0xf
@@ -4215,8 +4215,8 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x16, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xB, y=-0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
@@ -4224,9 +4224,9 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xB, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x22, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x2A, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1A, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x13, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x13, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1A, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x13, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x13, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
@@ -4236,10 +4236,10 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1A, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1A, y=0x2A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1A, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1A, y=0x2A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xB, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x3, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xB, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
@@ -4247,65 +4247,65 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=-0x3, y=0x28, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1, y=0x12, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x1A, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x2C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x24, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x2C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x201, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x201, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x6, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x16, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0xE, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x201, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0xE, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x201, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2E, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x16, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1E, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x16, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1E, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0xF, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x201, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0xF, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x201, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
@@ -4315,41 +4315,41 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xC, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x16, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1E, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x16, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1E, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0xF, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x201, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0xF, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x201, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x4, y=0x2F, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x211, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x2, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xD, y=-0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x5, y=0x4, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xD, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x2A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x2A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x5, y=0xA, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x5, y=0x2A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x18, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=0x22, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
@@ -4357,261 +4357,261 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xD, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x5, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xD, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x20, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x28, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x20, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x28, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d7, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d9, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d7, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d9, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d7, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d9, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0xC, y=0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0xC, y=0x1A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=-0x2, y=-0x3D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x215, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=-0x35, spriteSize=SPRITE_SIZE_16x16, tileNum=0x217, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=-0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x215, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=-0x34, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x217, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=-0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x215, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=-0x34, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x217, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=-0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=-0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=-0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=-0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=-0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=-0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x50, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x48, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x38, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x42, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x22, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x42, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x42, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=-0x2, y=-0x23, spriteSize=SPRITE_SIZE_16x8, tileNum=0x215, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=-0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x217, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=-0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x215, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=-0x1A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x217, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=-0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x215, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=-0x1A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x217, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=-0x12, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=-0xA, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=-0x12, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=-0xA, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=-0x12, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=-0xA, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x36, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x2E, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1E, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x28, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x8, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x28, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x8, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x28, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x8, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=-0x2, y=-0xB, spriteSize=SPRITE_SIZE_16x8, tileNum=0x215, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=-0x3, spriteSize=SPRITE_SIZE_16x16, tileNum=0x217, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=-0xA, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x215, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=-0x2, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x217, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=-0xA, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x215, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=-0x2, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x217, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0xE, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x6, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0xE, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x6, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0xE, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1E, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x16, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=-0x4, y=0x29, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2ab, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x24, y=0x29, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x2a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2ab, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x24, y=0x29, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x2a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2ab, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x1A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0xB, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2af, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x5, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x25, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2af, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x15, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x25, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2af, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x15, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x1A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x21, spriteSize=SPRITE_SIZE_16x16, tileNum=0x283, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0xE, y=0x21, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2b7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x21, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x283, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x26, y=0x21, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2b7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x21, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x283, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x26, y=0x21, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2b7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x15, y=0x16, spriteSize=SPRITE_SIZE_16x16, tileNum=0x247, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x247, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x3, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x247, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x16, y=0x15, spriteSize=SPRITE_SIZE_16x16, tileNum=0x24b, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x1, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x24b, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x24b, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1A, y=0x17, spriteSize=SPRITE_SIZE_16x16, tileNum=0x24f, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=-0x1, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x24f, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=-0x1, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x24f, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1B, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x253, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=-0x4, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x253, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=-0x4, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x253, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x1, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0xC, y=-0x5, spriteSize=SPRITE_SIZE_16x8, tileNum=0x257, priority=0x1, paletteNum=0xf
@@ -4619,22 +4619,22 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xC, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x261, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x16, y=0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1fb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1fd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1fb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1fd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0xF, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1fb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x17, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1fd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x263, priority=0x1, paletteNum=0xf
@@ -4642,28 +4642,28 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xC, y=0x12, spriteSize=SPRITE_SIZE_16x8, tileNum=0x26d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x9, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x29, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x9, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x9, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
@@ -4673,18 +4673,18 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
@@ -4692,57 +4692,57 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
@@ -4750,169 +4750,169 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xB, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x233, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x3, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x235, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xB, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x23d, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1A, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1A, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1A, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1A, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x2, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x2, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0xD, y=0x0, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x233, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x5, y=0x8, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x235, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0xD, y=0x18, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x23d, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1A, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1A, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0xD, y=0x0, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x233, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x5, y=0x8, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x235, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0xD, y=0x18, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x23d, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1A, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1A, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x2, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x2, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x14, y=0x12, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x277, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x13, y=0x1A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x279, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x12, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x277, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x13, y=0x1A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x279, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x12, spriteSize=SPRITE_SIZE_16x8, tileNum=0x277, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x5, y=0x1A, spriteSize=SPRITE_SIZE_16x16, tileNum=0x279, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x6, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x16, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x19, y=0xE, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x27d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x9, y=0xE, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x27f, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=0xE, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x27d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x9, y=0xE, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x27f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x6, y=0xF, spriteSize=SPRITE_SIZE_8x16, tileNum=0x27d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xE, y=0xF, spriteSize=SPRITE_SIZE_16x16, tileNum=0x27f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x16, y=0x10, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x273, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x16, y=0x10, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x273, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x2, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x273, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=-0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x4, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x2A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x16, y=0x10, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x273, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x16, y=0x10, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x273, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x2, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x273, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=-0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x4, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x2A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0xC, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x7
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x7
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0x7
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
@@ -4920,37 +4920,37 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
@@ -4958,458 +4958,458 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x2, y=0xF, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x17, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x12, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x9, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x29, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x9, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x9, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xE, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x1E, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x23, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xE, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x1E, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x23, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xE, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x1E, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x23, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x1A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x19, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x19, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x19, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x19, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x1, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x1, y=0x1C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0xF, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x1F, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xF, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x1F, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xF, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x1F, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x2, y=0xA, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x12, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0xA, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0x12, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0xA, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x12, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x1, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x1, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=0x1C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=0x1C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=0x24, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x9, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0xF, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x24, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x4, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x24, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x4, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x24, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xD, y=0x2A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x244, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x3, y=0x2E, spriteSize=SPRITE_SIZE_16x8, tileNum=0x23f, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2E, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x23f, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2E, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x23f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x2, y=-0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x4, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=-0x4, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0x4, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=-0x4, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x4, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0xD, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x15, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0xD, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x15, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0xD, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x15, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0xF, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x15, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x15, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xD, y=0x28, spriteSize=SPRITE_SIZE_16x8, tileNum=0x244, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x23f, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x23f, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x23f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x2, y=-0xC, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=-0x4, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=-0xC, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=-0x4, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=-0xC, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=-0x4, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x5, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0xD, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x5, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0xD, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x5, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0xD, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1F, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x17, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x7, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x13, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1C, y=0x27, spriteSize=SPRITE_SIZE_16x8, tileNum=0x245, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=-0x4, y=0x28, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x245, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0xB, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x245, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=-0x4, y=0x28, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x245, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0xB, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x245, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1, y=-0xF, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=-0x7, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=-0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=-0x7, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=-0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=-0x7, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x9, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x9, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x9, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x9, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x14, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x14, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x4, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x1, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x14, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x4, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x1, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=-0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1f5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=-0x9, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1f7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=-0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1f5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=-0x9, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1f7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=-0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1f5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=-0x9, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1f7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=-0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x6, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=-0x2, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x6, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=-0x2, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x6, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x24, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x1C, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0xC, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x17, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x7, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x2, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x7, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x2, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x7, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x2, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=-0xF, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1f5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=-0x7, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1f7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=-0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1f5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=-0x7, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1f7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=-0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1f5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=-0x7, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1f7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x9, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x1, y=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x1, y=0x9, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=0x1, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x19, y=0x9, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=0x1, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x19, y=0x9, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x13, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x13, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0x3, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x13, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0x3, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=-0x9, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1f5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=-0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1f7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=-0x9, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1f5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=-0x1, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1f7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=-0x9, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1f5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=-0x1, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1f7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=0xE, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1A, y=0x6, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1A, y=0xE, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1A, y=0x6, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1A, y=0xE, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0xD, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=-0xD, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x3, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x8, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=-0xD, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x3, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x8, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1f5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1f7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x4, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1f5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0xC, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1f7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x4, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1f5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0xC, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1f7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0xE, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=-0x6, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0xA, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x2, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1A, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1A, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1A, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1A, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x15, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x15, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x15, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=-0x4, y=0x29, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2ab, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x24, y=0x29, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,tileNum=0x2a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2ab, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x24, y=0x29, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1, tileNum=0x2a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2ab, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0xC, y=0x1A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0xC, y=0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d7, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d9, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d7, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d9, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d7, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d9, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0xC, y=0x25, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2af, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x25, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x24, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2af, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x24, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2af, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0xC, y=0x1A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0xC, y=0x2, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0x4, y=0x2D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x14, y=0xD, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x14, y=0x2D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d7, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d9, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d7, priority=0x1, paletteNum=0xe
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d9, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d7, priority=0x1, paletteNum=0xe
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d9, priority=0x1, paletteNum=0xe
     packed_sprite_oam x=0x4, y=0x22, spriteSize=SPRITE_SIZE_16x16, tileNum=0x283, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0xE, y=0x22, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2b7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x22, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x283, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x26, y=0x22, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x2b7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x22, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x283, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x26, y=0x22, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x2b7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x3, spriteSize=SPRITE_SIZE_16x16, tileNum=0x28f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x4, y=0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x293, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x13, spriteSize=SPRITE_SIZE_16x32, tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x3, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x28f, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x24, y=0x13, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x293, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x3, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x28f, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x24, y=0x13, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x293, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x13, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x297, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_16x32, tileNum=0x29f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x25, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x5, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x29f, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x5, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x29f, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x2a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x15, y=0x16, spriteSize=SPRITE_SIZE_16x16, tileNum=0x247, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x3, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x247, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x3, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x247, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x16, y=0x15, spriteSize=SPRITE_SIZE_16x16, tileNum=0x24b, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x1, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x24b, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x24b, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1A, y=0x17, spriteSize=SPRITE_SIZE_16x16, tileNum=0x24f, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=-0x1, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x24f, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=-0x1, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x24f, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1bf, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1c9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1B, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x253, priority=0x1, paletteNum=0xc
-    packed_sprite_oam x=-0x4, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x253, priority=0x1, paletteNum=0xc
+    packed_sprite_oam x=-0x4, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x253, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x1, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x19, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x19, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19f, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=0x15, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a7, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xB, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0xC, y=-0x5, spriteSize=SPRITE_SIZE_16x8, tileNum=0x257, priority=0x1, paletteNum=0xf
@@ -5417,22 +5417,22 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xC, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x261, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1d1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1d3, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1d1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x17, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1d3, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1d1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x17, y=0x18, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1d3, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x2A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0xA, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x2A, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x16, y=0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1fb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x16, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1fd, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1fb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x16, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1fd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0xF, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1fb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x17, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1fd, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0xC, y=-0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x263, priority=0x1, paletteNum=0xf
@@ -5440,18 +5440,18 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xC, y=0x12, spriteSize=SPRITE_SIZE_16x8, tileNum=0x26d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x9, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x4, y=0x29, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x9, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x9, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x14, y=0x29, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x15, y=0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1fb, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x15, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1fd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x15, y=0xF, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1fb, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x15, y=0x17, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1fd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x1, y=0xF, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1fb, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x1, y=0x17, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1fd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xB, y=-0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x263, priority=0x1, paletteNum=0xa
@@ -5459,106 +5459,106 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xB, y=0x12, spriteSize=SPRITE_SIZE_16x8, tileNum=0x26d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x4, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x4, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1A, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1A, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1A, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1A, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x3, y=0x9, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x3, y=0x29, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x13, y=0x9, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x13, y=0x29, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x13, y=0x9, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x13, y=0x29, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0xE, spriteSize=SPRITE_SIZE_16x8, tileNum=0x277, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x5, y=0x16, spriteSize=SPRITE_SIZE_16x16, tileNum=0x279, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xE, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x277, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x13, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x279, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xE, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x277, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x13, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x279, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=-0x7, spriteSize=SPRITE_SIZE_16x8, tileNum=0x263, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x265, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x26d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x28, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x8, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x28, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x8, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x28, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x3, y=0xE, spriteSize=SPRITE_SIZE_16x8, tileNum=0x277, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x16, spriteSize=SPRITE_SIZE_16x16, tileNum=0x279, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x13, y=0xE, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x277, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x12, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x279, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x13, y=0xE, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x277, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x12, y=0x16, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x279, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xB, y=-0x7, spriteSize=SPRITE_SIZE_16x8, tileNum=0x263, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x3, y=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x265, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xB, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x26d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x4, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x4, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1bb, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1A, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1A, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1bb, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1A, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1A, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1bb, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x3, y=0x8, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x3, y=0x28, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x13, y=0x8, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x13, y=0x28, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x13, y=0x8, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x13, y=0x28, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=0x1D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x19, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x19, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x19, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x19, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x1, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x1, y=0x1C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=0x5, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x12, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x22, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x12, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x12, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=0x1B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x19, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x19, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xC, y=0x3, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x11, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x25, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x11, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x11, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21d, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x225, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x18, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x18, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x0, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x21, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1cb, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=-0x3, y=0x29, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1cd, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1cb, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1cd, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x21, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1cb, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x1B, y=0x29, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1cd, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0xC, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a9, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0x4, y=0x2C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b1, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0xa
-    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b1, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0xC, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0xa
+    packed_sprite_oam x=0x14, y=0x2C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b1, priority=0x1, paletteNum=0xa
     packed_sprite_oam x=0xC, y=-0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
@@ -5567,18 +5567,18 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0x9, y=0x5, spriteSize=SPRITE_SIZE_16x8, tileNum=0x233, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x1, y=0xD, spriteSize=SPRITE_SIZE_32x16, tileNum=0x235, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x9, y=0x1D, spriteSize=SPRITE_SIZE_16x8, tileNum=0x23d, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x16, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x16, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x16, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x16, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x2, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x2, y=0x1C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x2, y=0x13, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x2, y=0x23, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x12, y=0x13, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x12, y=0x23, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x12, y=0x13, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x12, y=0x23, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
@@ -5586,55 +5586,55 @@ gUnknown_086B65EA:: @ 0x086B65EA
     packed_sprite_oam x=0xA, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x233, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x2, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x235, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0xA, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x23d, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x17, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x17, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x17, y=0x13, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x17, y=0x1B, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x1, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x1, y=0x1C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x3, y=0x12, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x2, y=0x22, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x13, y=0x12, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x12, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x13, y=0x12, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x12, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x25, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0xF, y=0x5, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x233, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x7, y=0xD, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x235, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0xF, y=0x1D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x23d, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0xF, y=0x5, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x233, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x7, y=0xD, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x235, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0xF, y=0x1D, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x23d, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x2, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x2, y=0x1C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1A, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1A, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x16, y=0x13, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x16, y=0x23, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1A, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1A, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x16, y=0x13, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x16, y=0x23, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x6, y=0x13, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x6, y=0x23, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0xE, y=0x4, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x233, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x6, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x235, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0xE, y=0x1C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x23d, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0xE, y=0x4, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x233, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x6, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x235, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0xE, y=0x1C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x23d, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x1, y=0x13, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1b3, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x1, y=0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1b5, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x19, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1b3, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x19, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1b5, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x15, y=0x12, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1a9, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x16, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0x1ad, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x19, y=0x14, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1b3, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x19, y=0x1C, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1b5, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x15, y=0x12, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1a9, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x16, y=0x22, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x1ad, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x5, y=0x12, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1a9, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x6, y=0x22, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1ad, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=-0x3, y=0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1dd, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1dd, priority=0x1, paletteNum=0x6
-    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0x1af, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x1B, y=0x26, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1dd, priority=0x1, paletteNum=0x6
+    packed_sprite_oam x=0x14, y=0x25, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0x1af, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x4, y=0x25, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1af, priority=0x1, paletteNum=0x6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
@@ -5697,7 +5697,7 @@ gUnknown_086B8AE0:: @ 0x086B8AE0
     packed_sprite_oam x=0x22, y=0x2C, spriteSize=SPRITE_SIZE_8x8, tileNum=0x195, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=-0x6, y=0x3A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x198, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x1E, y=0x1B, spriteSize=SPRITE_SIZE_8x8, tileNum=0x195, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=-0x6, y=0x1B, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,tileNum=0x198, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=-0x6, y=0x1B, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, tileNum=0x198, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x8, y=0xE, spriteSize=SPRITE_SIZE_8x8, tileNum=0x199, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x10, y=0x25, spriteSize=SPRITE_SIZE_8x8, tileNum=0x195, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x11d, priority=0x1, paletteNum=0x5
@@ -5706,7 +5706,7 @@ gUnknown_086B8AE0:: @ 0x086B8AE0
     packed_sprite_oam x=-0xD, y=0x3D, spriteSize=SPRITE_SIZE_8x8, tileNum=0x199, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x29, y=0x2A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x196, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x24, y=0x18, spriteSize=SPRITE_SIZE_8x8, tileNum=0x196, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=-0xE, y=0x18, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,tileNum=0x199, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=-0xE, y=0x18, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, tileNum=0x199, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0xE, y=0x1A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x196, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x17d, priority=0x1, paletteNum=0x5
     packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x11d, priority=0x1, paletteNum=0x5
@@ -5999,46 +5999,46 @@ gUnknown_086B92FC:: @ 0x086B92FC
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x2, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x12, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x12, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x32, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x32, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x2, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x12, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x12, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x32, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x32, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x4, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x14, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x14, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x34, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x34, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x2, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x12, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x12, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x32, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x32, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x4, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x14, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x14, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x34, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x34, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x4, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x14, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x14, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
@@ -6049,136 +6049,136 @@ gUnknown_086B92FC:: @ 0x086B92FC
     packed_sprite_oam x=0x20, y=0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x38, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x8, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x18, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x18, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x38, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x38, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x8, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x18, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x18, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x38, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x38, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x12, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x22, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x22, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x32, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x42, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x32, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x42, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x32, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x32, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x42, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x32, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x42, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x32, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x12, y=0x2, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x12, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x22, y=0x12, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x2, y=0x32, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x22, y=0x32, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x32, y=0x2, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x42, y=0x12, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x32, y=0x12, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x42, y=0x32, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x32, y=0x32, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x31, y=0x4, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x41, y=0x14, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x31, y=0x14, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x41, y=0x34, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x31, y=0x34, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x32, y=0x2, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x42, y=0x12, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x32, y=0x12, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x42, y=0x32, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x32, y=0x32, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x31, y=0x4, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x41, y=0x14, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x31, y=0x14, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x41, y=0x34, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x31, y=0x34, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x11, y=0x4, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x14, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x21, y=0x14, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
@@ -6189,160 +6189,160 @@ gUnknown_086B92FC:: @ 0x086B92FC
     packed_sprite_oam x=0x21, y=0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x1, y=0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x21, y=0x38, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x31, y=0x8, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x41, y=0x18, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x31, y=0x18, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x41, y=0x38, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x31, y=0x38, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x31, y=0x8, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x41, y=0x18, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x31, y=0x18, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x41, y=0x38, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x31, y=0x38, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x12, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0x3
     packed_sprite_oam x=0x2, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0x3
     packed_sprite_oam x=0x22, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0x3
     packed_sprite_oam x=0x2, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0x3
     packed_sprite_oam x=0x22, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0x3
-    packed_sprite_oam x=0x32, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0x3
-    packed_sprite_oam x=0x42, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0x3
-    packed_sprite_oam x=0x32, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0x3
-    packed_sprite_oam x=0x42, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0x3
-    packed_sprite_oam x=0x32, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,tileNum=0xa5, priority=0x1, paletteNum=0x3
+    packed_sprite_oam x=0x32, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0x3
+    packed_sprite_oam x=0x42, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0x3
+    packed_sprite_oam x=0x32, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0x3
+    packed_sprite_oam x=0x42, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0x3
+    packed_sprite_oam x=0x32, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0x3
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x4, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x14, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x14, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x34, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x34, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x4, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x14, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x14, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x34, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x34, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x4, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x14, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x14, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x34, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x34, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x18, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x38, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x38, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x8, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x18, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x18, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x38, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x38, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x8, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x18, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x18, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x38, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x38, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1C, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x1C, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x3C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x3C, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1C, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x1C, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x3C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x3C, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1C, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x1C, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x3C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x3C, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1C, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x1C, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x3C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x3C, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1C, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x1C, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x3C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x3C, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x10, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x1C, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x1C, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x0, y=0x3C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x9d, priority=0x1, paletteNum=0xf
     packed_sprite_oam x=0x20, y=0x3C, spriteSize=SPRITE_SIZE_16x8, tileNum=0xa1, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,tileNum=0x7d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x85, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,tileNum=0x95, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x9d, priority=0x1, paletteNum=0xf
-    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,tileNum=0xa1, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x40, y=0x3C, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oam x=0x30, y=0x3C, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0xa1, priority=0x1, paletteNum=0xf
 
 
 gUnknown_086B9AB8:: @ 0x086B9AB8
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
@@ -6353,34 +6353,34 @@ gUnknown_086B9AB8:: @ 0x086B9AB8
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0xC, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0xC, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0xC, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0xC, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0xC, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0xC, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
@@ -6389,20 +6389,20 @@ gUnknown_086B9AB8:: @ 0x086B9AB8
     packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
@@ -6417,24 +6417,24 @@ gUnknown_086B9AB8:: @ 0x086B9AB8
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,tileNum=0x49, priority=0x3, paletteNum=0x4
-    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
     packed_sprite_oam x=0x18, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x49, priority=0x3, paletteNum=0x4
@@ -6472,16 +6472,16 @@ gUnknown_086B9DAC:: @ 0x086B9DAC
     packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
@@ -6510,14 +6510,14 @@ gUnknown_086B9DAC:: @ 0x086B9DAC
     packed_sprite_oam x=-0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=-0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0xC, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0xC, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0xC, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0xC, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
@@ -6532,20 +6532,20 @@ gUnknown_086B9DAC:: @ 0x086B9DAC
     packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=-0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=-0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
@@ -6564,24 +6564,24 @@ gUnknown_086B9DAC:: @ 0x086B9DAC
     packed_sprite_oam x=-0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=-0x18, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
     packed_sprite_oam x=-0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x2, paletteNum=0x2
-    packed_sprite_oam x=0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oam x=0x18, y=0x24, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
 
 
 gDuskullSpritesheetOam:: @ 0x086BA0A0
@@ -6597,18 +6597,18 @@ gDuskullSpritesheetOam:: @ 0x086BA0A0
     packed_sprite_oam x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x59, priority=0x1, paletteNum=0x2
     packed_sprite_oam x=-0x2, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x1, paletteNum=0x2
     packed_sprite_oam x=0x1E, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x59, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x59, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x59, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x59, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x59, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x59, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0x6, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,tileNum=0x49, priority=0x1, paletteNum=0x2
-    packed_sprite_oam x=-0xE, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,tileNum=0x59, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x59, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x59, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x59, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x59, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x59, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0x6, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x49, priority=0x1, paletteNum=0x2
+    packed_sprite_oam x=-0xE, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1, tileNum=0x59, priority=0x1, paletteNum=0x2
     packed_sprite_oam x=-0x3, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x1, paletteNum=0x2
     packed_sprite_oam x=0x1D, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x59, priority=0x1, paletteNum=0x2
     packed_sprite_oam x=0x0, y=-0x2, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x1, paletteNum=0x2
