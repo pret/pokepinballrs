@@ -2,6 +2,7 @@
 #define GUARD_GBA_TYPES_H
 
 #include <stdint.h>
+#include "oam_types.h"
 
 typedef uint8_t   u8;
 typedef uint16_t u16;
@@ -67,25 +68,6 @@ struct OamData
              u16 paletteNum:4;
     /*0x06*/ u16 affineParam;
 };
-
-#define ST_OAM_OBJ_NORMAL 0
-#define ST_OAM_OBJ_BLEND  1
-#define ST_OAM_OBJ_WINDOW 2
-
-#define ST_OAM_AFFINE_OFF    0
-#define ST_OAM_AFFINE_NORMAL 1
-#define ST_OAM_AFFINE_ERASE  2
-#define ST_OAM_AFFINE_DOUBLE 3
-
-#define ST_OAM_AFFINE_ON_MASK     1
-#define ST_OAM_AFFINE_DOUBLE_MASK 2
-
-#define ST_OAM_4BPP 0
-#define ST_OAM_8BPP 1
-
-#define ST_OAM_SQUARE      0
-#define ST_OAM_H_RECTANGLE 1
-#define ST_OAM_V_RECTANGLE 2
 
 struct BgAffineSrcData
 {
