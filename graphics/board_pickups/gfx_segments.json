@@ -1,0 +1,813 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "evo_item_ex",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_ex_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_ex_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_ex_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_ex_collected_fade",
+          "width": 2
+        }
+      ]
+    },
+    {
+      "gfx_filename": "evo_item_leaf",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_leaf_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_leaf_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_leaf_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_leaf_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_leaf_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_leaf_collected_fade",
+          "width": 2
+        }
+      ]
+    },
+    {
+      "gfx_filename": "evo_item_fire",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_fire_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_fire_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_fire_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_fire_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_fire_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_fire_collected_fade",
+          "width": 2
+        }
+      ]
+    },
+    {
+      "gfx_filename": "evo_item_heart",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_heart_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_heart_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_heart_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_heart_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_heart_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_heart_collected_fade",
+          "width": 2
+        }
+      ]
+    },
+    {
+      "gfx_filename": "evo_item_link",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_link_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_link_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_link_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_link_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_link_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_link_collected_fade",
+          "width": 2
+        }
+      ]
+    },
+    {
+      "gfx_filename": "evo_item_moon",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_moon_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_moon_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_moon_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_moon_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_moon_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_moon_collected_fade",
+          "width": 2
+        }
+      ]
+    },
+        {
+      "gfx_filename": "evo_item_water",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_water_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_water_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_water_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_water_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_water_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_water_collected_fade",
+          "width": 2
+        }
+      ]
+    },
+        {
+      "gfx_filename": "evo_item_box",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_box_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_box_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_box_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_box_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_box_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_box_collected_fade",
+          "width": 2
+        }
+      ]
+    },
+        {
+      "gfx_filename": "evo_item_sun",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_sun_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_sun_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_sun_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_sun_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_sun_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_sun_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_sun_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sun_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_sun_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sun_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sun_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sun_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sun_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sun_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sun_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_sun_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sun_collected_fade",
+          "width": 2
+        }
+      ]
+    },
+    {
+      "gfx_filename": "evo_item_bolt",
+      "align":1,
+      "segments": [
+        {
+          "segfile": "evo_item_appear_1",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_2",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_3",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 6
+        },
+        {
+          "segfile": "evo_item_appear_5",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_appear_6",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_bolt_turn_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_7",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_bolt_turn_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_1",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_bolt_turn_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_2",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_bolt_turn_4",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_sparkle_3",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_appear_8",
+          "width": 4
+        },
+        {
+          "segfile": "evo_item_bolt_turn_5",
+          "width": 2
+        },
+        {
+          "segfile": "evo_item_bolt_collected_fade",
+          "width": 2
+        }
+      ]
+    }
+  ]
+}
