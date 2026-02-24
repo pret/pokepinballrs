@@ -142,6 +142,22 @@
       "mwidth":6,
       "mheight":4,
       "oam":true
+    },
+    {
+      "gfx_filename": "pokeball_regular",
+      "mwidth":2 
+    },
+    {
+      "gfx_filename": "pokeball_great",
+      "mwidth":2 
+    },
+    {
+      "gfx_filename": "pokeball_ultra",
+      "mwidth":2 
+    },
+    {
+      "gfx_filename": "pokeball_master",
+      "mwidth":2 
     }
   ]
 }

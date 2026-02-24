@@ -1107,7 +1107,10 @@ gUnknown_083A8EEC:: @ 0x083A8EEC
 	.incbin "baserom.gba", 0x3A8EEC, 0x12280
 
 gUnknown_083BB16C:: @ 0x083BB16C
-	.incbin "baserom.gba", 0x3BB16C, 0x2200
+	.incbin "graphics/stage/main/pokeball_regular.4bpp"
+	.incbin "graphics/stage/main/pokeball_great.4bpp"
+	.incbin "graphics/stage/main/pokeball_ultra.4bpp"
+	.incbin "graphics/stage/main/pokeball_master.4bpp"
 
 gUnknown_083BD36C:: @ 0x083BD36C
 	.incbin "baserom.gba", 0x3BD36C, 0xC00
