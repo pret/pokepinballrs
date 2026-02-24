@@ -47,19 +47,27 @@ def hex_or_signed(val):
         return f"0x{val:X}"
 
 def main():
-    if len(sys.argv) != 4:
-        print(f"Usage: {sys.argv[0]} <file> <offset> <length>")
+    if len(sys.argv) != 5:
+        print(f"Usage: {sys.argv[0]} <file> <offset> <length> <array_pack>")
         sys.exit(1)
     filename = sys.argv[1]
     offset = int(sys.argv[2], 0)
     length = int(sys.argv[3], 0)
+    array_pack = sys.argv[4]
+    if array_pack == "0":
+        dataSize = 6
+    elif array_pack == "1":
+        dataSize = 8
+    else:
+        print("Error: array_pack must be 0 or 1")
+        sys.exit(1)
     with open(filename, 'rb') as f:
         f.seek(offset)
         data = f.read(length)
-    if len(data) % 6 != 0:
-        print("Error: length must be a multiple of 6")
+    if len(data) % dataSize != 0:
+        print("Error: length must be a multiple of 6 or 8 depending on array_pack")
         sys.exit(1)
-    for i in range(0, len(data), 6):
+    for i in range(0, len(data), dataSize):
         e = parse_oam_entry(data[i:i+6])
         print(
             "    packed_sprite_oam x={x}, y={y}, affineMode={affineMode}, objMode={objMode}, mosaic={mosaic}, "
@@ -82,6 +90,8 @@ def main():
                 paletteNum=hex(e['paletteNum']),
             )
         )
+        if array_pack == "1":
+            print(".2byte 0")
 
 if __name__ == "__main__":
     main()
