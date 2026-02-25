@@ -1,0 +1,401 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 2,
+    "mheight": 2,
+    "oam": true,
+    "width": 6,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "slot_options_1",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_2",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_3",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_4",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_5",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_6",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_7",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_8",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_9",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_10",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_11",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_12",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_13",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_14",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_15",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_16",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_17",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_18",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_19",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_20",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_21",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_22",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_23",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_24",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_25",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_26",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_27",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_28",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_29",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_30",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_31",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_32",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_33",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_34",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_35",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_36",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_37",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_38",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_39",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_40",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_41",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_42",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_43",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_44",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_45",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_46",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_47",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_48",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_49",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_50",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_51",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_52",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_53",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_54",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_55",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_56",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_57",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_58",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_59",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_60",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_61",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_62",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_63",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_64",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_65",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_66",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_67",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_68",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_69",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_70",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_71",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_72",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_73",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_74",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_75",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_76",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_77",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_78",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_79",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_80",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_81",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_82",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_83",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_84",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_85",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_86",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_87",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_88",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_89",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_90",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_91",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_92",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_93",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_94",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_95",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_96",
+      "width": 6
+    },
+    {
+      "gfx_filename": "slot_options_97",
+      "width": 6
+    }
+  ]
+}
