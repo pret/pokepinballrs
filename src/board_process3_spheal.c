@@ -25,8 +25,8 @@ extern const u8 gUnknown_084AFFEC[][0x180];
 extern const u8 gUnknown_084B046C[][0x120];
 extern const u8 gUnknown_084B47EC[][0x800];
 extern const u8 gUnknown_084B77EC[];
-extern const u8 gUnknown_084B7FEC[][0x480];
-extern const u8 gUnknown_084BB16C[][0x480];
+extern const u8 gWhiscash_Gfx[][0x480];
+extern const u8 gPelliper_Gfx[][0x480];
 extern const s16 gUnknown_086AEED6[];
 extern const u16 gUnknown_086AFAE0[][2];
 extern const u16 gUnknown_086AFAE2[][2];
@@ -968,13 +968,13 @@ void sub_44D58(void)
     if (gCurrentPinballGame->unk7E)
     {
         if (gMain.unk5 == FIELD_RUBY)
-            sub_44F3C();
+            SphealBoard_WhiscashDeliversBall();
         else
-            sub_45164();
+            SphealBoard_PelliperDeliversBall();
     }
 }
 
-void sub_44F3C(void)
+void SphealBoard_WhiscashDeliversBall(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -989,7 +989,7 @@ void sub_44F3C(void)
         group->baseX = 134 + offsets[2] - gCurrentPinballGame->unk58;
         group->baseY = 154 + offsets[3] - gCurrentPinballGame->unk5A;
         var0 = offsets[0];
-        DmaCopy16(3, gUnknown_084B7FEC[var0], (void *)0x06012120, 0x460);
+        DmaCopy16(3, gWhiscash_Gfx[var0], (void *)0x06012120, 0x460);
         for (i = 0; i < 4; i++)
         {
             oamSimple = &group->oam[i];
@@ -1028,14 +1028,14 @@ void sub_44F3C(void)
         }
 
         if (gCurrentPinballGame->unk591 == 2)
-            m4aSongNumStart(SE_UNKNOWN_0xD3);
+            m4aSongNumStart(SE_WHISCASH_EMERGE_SPLASH);
 
         if (gCurrentPinballGame->unk591 == 15)
-            m4aSongNumStart(SE_UNKNOWN_0xD4);
+            m4aSongNumStart(SE_WHISCASH_LEAVE_BURBLE);
 
         if (gCurrentPinballGame->unk591 == 8)
         {
-            m4aSongNumStart(SE_UNKNOWN_0xD6);
+            m4aSongNumStart(SE_WHISCASH_SPIT_BALL);
             gCurrentPinballGame->ball->unk0 = 0;
             gCurrentPinballGame->ball->unkA -= 0x40;
             gCurrentPinballGame->ball->positionQ8.x = 0x8F00;
@@ -1049,7 +1049,7 @@ void sub_44F3C(void)
     }
 }
 
-void sub_45164(void)
+void SphealBoard_PelliperDeliversBall(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -1062,7 +1062,7 @@ void sub_45164(void)
         group->baseX = (gCurrentPinballGame->unk320 / 10) - (gCurrentPinballGame->unk58 - 146);
         group->baseY = (gCurrentPinballGame->unk322 / 10) - (gCurrentPinballGame->unk5A - 110) + (gCurrentPinballGame->unk30E / 10);
         index = gCurrentPinballGame->unk591;
-        DmaCopy16(3, gUnknown_084BB16C[index], (void *)0x060125A0, 0x480);
+        DmaCopy16(3, gPelliper_Gfx[index], (void *)0x060125A0, 0x480);
         for (i = 0; i < 4; i++)
         {
             oamSimple = &group->oam[i];

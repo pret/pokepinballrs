@@ -166,7 +166,7 @@ gSongTable:: @ 0x08534E04
 	song se_unk_9c, MUSIC_PLAYER_SE2, 2
 	song se_unk_9d, MUSIC_PLAYER_SE2, 2
 	song se_unk_9e, MUSIC_PLAYER_SE2, 2
-	song se_unk_9f, MUSIC_PLAYER_SE2, 2
+	song se_warp, MUSIC_PLAYER_SE2, 2
 	song se_unk_a0, MUSIC_PLAYER_SE2, 2
 	song se_unk_a1, MUSIC_PLAYER_SE2, 2
 	song se_unk_a2, MUSIC_PLAYER_SE2, 2
@@ -189,7 +189,7 @@ gSongTable:: @ 0x08534E04
 	song se_unk_b3, MUSIC_PLAYER_SE2, 2
 	song se_unk_b4, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_b6, MUSIC_PLAYER_SE2, 2
+	song se_ruby_bumper_hit, MUSIC_PLAYER_SE2, 2
 	song se_unk_b7, MUSIC_PLAYER_SE2, 2
 	song se_unk_b8, MUSIC_PLAYER_SE2, 2
 	song se_unk_b9, MUSIC_PLAYER_SE2, 2
@@ -207,8 +207,8 @@ gSongTable:: @ 0x08534E04
 	song se_unk_c5, MUSIC_PLAYER_SE2, 2
 	song se_unk_c6, MUSIC_PLAYER_SE2, 2
 	song se_unk_c7, MUSIC_PLAYER_SE2, 2
-	song se_unk_c8, MUSIC_PLAYER_SE2, 2
-	song se_unk_c9, MUSIC_PLAYER_SE2, 2
+	song se_ruby_bumper_emerges, MUSIC_PLAYER_SE2, 2
+	song se_ruby_bumper_leaves, MUSIC_PLAYER_SE2, 2
 	song se_unk_ca, MUSIC_PLAYER_SE2, 2
 	song se_unk_cb, MUSIC_PLAYER_SE2, 2
 	song se_unk_cc, MUSIC_PLAYER_SE2, 2
@@ -218,11 +218,11 @@ gSongTable:: @ 0x08534E04
 	song se_unk_d0, MUSIC_PLAYER_SE2, 2
 	song se_unk_d1, MUSIC_PLAYER_SE2, 2
 	song se_unk_d2, MUSIC_PLAYER_SE2, 2
-	song se_unk_d3, MUSIC_PLAYER_SE2, 2
-	song se_unk_d4, MUSIC_PLAYER_SE2, 2
-	song se_unk_d5, MUSIC_PLAYER_SE2, 2
-	song se_unk_d6, MUSIC_PLAYER_SE2, 2
-	song se_unk_d7, MUSIC_PLAYER_SE2, 2
+	song se_whiscash_emerge_splash, MUSIC_PLAYER_SE2, 2
+	song se_whiscash_leave_burble, MUSIC_PLAYER_SE2, 2
+	song se_whiscash_catch_ball, MUSIC_PLAYER_SE2, 2
+	song se_whiscash_spit_ball, MUSIC_PLAYER_SE2, 2
+	song se_whiscash_splashdown, MUSIC_PLAYER_SE2, 2
 	song se_unk_d8, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
@@ -339,4 +339,4 @@ gSongTable:: @ 0x08534E04
 	song se_unk_149, MUSIC_PLAYER_SE2, 2
 	song se_high_score_earned, MUSIC_PLAYER_SE2, 2
 	song se_unk_14b, MUSIC_PLAYER_SE2, 2
-	song se_unk_14c, MUSIC_PLAYER_SE2, 2
+	song se_whiscash_earthquake, MUSIC_PLAYER_SE2, 2

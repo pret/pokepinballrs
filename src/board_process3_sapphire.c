@@ -262,7 +262,7 @@ void sub_32B74(void)
     gCurrentPinballGame->unk5FB = 0;
     gCurrentPinballGame->scoreAddedInFrame = 50000;
 
-    m4aSongNumStart(SE_UNKNOWN_0xD5);
+    m4aSongNumStart(SE_WHISCASH_CATCH_BALL);
     PlayRumble(8);
 }
 
@@ -354,7 +354,7 @@ void sub_32BE4(void)
         gCurrentPinballGame->ball->prevPositionQ1 = gCurrentPinballGame->ball->positionQ1;
         gCurrentPinballGame->unk25 = 0;
         gCurrentPinballGame->unk5F7 = 0;
-        m4aSongNumStart(SE_UNKNOWN_0xD6);
+        m4aSongNumStart(SE_WHISCASH_SPIT_BALL);
         gCurrentPinballGame->unk5FE = 0;
         gCurrentPinballGame->unk5FB = 1;
         gCurrentPinballGame->unk5FA = 0;

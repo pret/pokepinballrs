@@ -2,6 +2,7 @@
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
+#include "constants/ruby_states.h"
 
 void AllBoardProcess_2A_4D6C4(void)
 {
@@ -556,7 +557,7 @@ void sub_4E598(void)
     gCurrentPinballGame->ballPowerUpLight[0] = 0;
     gCurrentPinballGame->ballPowerUpLight[1] = gCurrentPinballGame->ballPowerUpLight[0];
     gCurrentPinballGame->ballPowerUpLight[2] = gCurrentPinballGame->ballPowerUpLight[0];
-    gCurrentPinballGame->unk308 = 0;
+    gCurrentPinballGame->bumperHitsSinceReset = 0;
     if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
         gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
@@ -573,13 +574,13 @@ void sub_4E598(void)
     DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
     gCurrentPinballGame->unk62F = gCurrentPinballGame->unk70E;
     gCurrentPinballGame->unk70E = 1;
-    if (gCurrentPinballGame->unk2A5 == 45)
+    if (gCurrentPinballGame->whiscashFrameIx == WHISCASH_FRAME_GONE_AFTER_HIT)
     {
-        gCurrentPinballGame->unk2A4 = 0;
-        gCurrentPinballGame->unk2A5 = 0;
-        gCurrentPinballGame->unk2A6 = 0;
-        gCurrentPinballGame->unk16F = 1;
-        gCurrentPinballGame->unk174 = 0x40;
+        gCurrentPinballGame->shouldProcessWhiscash = FALSE;
+        gCurrentPinballGame->whiscashFrameIx = WHISCASH_FRAME_SUBMERGED;
+        gCurrentPinballGame->whiscashStateTimer = 0;
+        gCurrentPinballGame->rubyPondContentsChanging = TRUE;
+        gCurrentPinballGame->rubyPondChangeTimer = 0x40;
         gCurrentPinballGame->unk2AA = 0;
 
     }

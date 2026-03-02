@@ -62,7 +62,7 @@ void RubyBoardProcess_0B_50918(void)
         gMain.spriteGroups[51].available = 1;
         gMain.spriteGroups[61].available = 1;
         gMain.spriteGroups[64].available = 1;
-        if (gCurrentPinballGame->unk2A4 != 0)
+        if (gCurrentPinballGame->shouldProcessWhiscash)
             gMain.spriteGroups[63].available = 1;
         else
             gMain.spriteGroups[62].available = 1;

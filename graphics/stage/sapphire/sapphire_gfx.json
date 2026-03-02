@@ -243,6 +243,18 @@
           "width":1
         }
       ]
+    },
+    {
+      "gfx_filename": "pelliper",
+      "oam": true,
+      "mheight": 6,
+      "mwidth": 6
+    },
+    {
+      "gfx_filename": "charger",
+      "mheight":4,
+      "mwidth":2,
+      "width":6
     }
   ]
 }

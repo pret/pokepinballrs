@@ -290,6 +290,12 @@
           "width":1
         }
       ]
+    },
+    {
+      "gfx_filename":"whiscash",
+      "oam":true,
+      "mheight": 6,
+      "mwidth": 6
     }
   ]
 }

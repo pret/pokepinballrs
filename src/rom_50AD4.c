@@ -881,7 +881,7 @@ void sub_507D4(void)
     const u8 **dest;
 
     index = 0;
-    if (gCurrentPinballGame->unk308 >= 100)
+    if (gCurrentPinballGame->bumperHitsSinceReset >= 100)
         index = (gCurrentPinballGame->unk70C % 20) / 4;
 
     src = gUnknown_086B0E6C[index];
