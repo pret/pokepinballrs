@@ -2420,7 +2420,59 @@ gUnknown_086A807E:: @ 0x086A807E
 .2byte 0
 
 
-.incbin "baserom.gba", 0x6A80A8, 0xA54
+gUnknown_086A80A8:: @ 0x086A80A8
+	.incbin "baserom.gba", 0x6A80A8, 0x7A
+
+gUnknown_086A8122:: @ 0x086A8122
+	.incbin "baserom.gba", 0x6A8122, 0x92
+
+gUnknown_086A81B4:: @ 0x086A81B4
+	.incbin "baserom.gba", 0x6A81B4, 0x8A
+
+gUnknown_086A823E:: @ 0x086A823E
+	.incbin "baserom.gba", 0x6A823E, 0xCA
+
+gUnknown_086A8308:: @ 0x086A8308
+	.incbin "baserom.gba", 0x6A8308, 0xDA
+
+gUnknown_086A83E2:: @ 0x086A83E2
+	.incbin "baserom.gba", 0x6A83E2, 0xEA
+
+gUnknown_086A84CC:: @ 0x086A84CC
+	.incbin "baserom.gba", 0x6A84CC, 0xFA
+
+gUnknown_086A85C6:: @ 0x086A85C6
+	.incbin "baserom.gba", 0x6A85C6, 0x102
+
+gUnknown_086A86C8:: @ 0x086A86C8
+	.incbin "baserom.gba", 0x6A86C8, 0xF2
+
+gUnknown_086A87BA:: @ 0x086A87BA
+	.incbin "baserom.gba", 0x6A87BA, 0xFA
+
+gUnknown_086A88B4:: @ 0x086A88B4
+	.incbin "baserom.gba", 0x6A88B4, 0xFA
+
+gUnknown_086A89AE:: @ 0x086A89AE
+	.incbin "baserom.gba", 0x6A89AE, 0x112
+
+gUnknown_086A8AC0:: @ 0x086A8AC0
+	.incbin "baserom.gba", 0x6A8AC0, 0xA
+
+gUnknown_086A8ACA:: @ 0x086A8ACA
+	.incbin "baserom.gba", 0x6A8ACA, 0xA
+
+gUnknown_086A8AD4:: @ 0x086A8AD4
+	.incbin "baserom.gba", 0x6A8AD4, 0xA
+
+gUnknown_086A8ADE:: @ 0x086A8ADE
+	.incbin "baserom.gba", 0x6A8ADE, 0xA
+
+gUnknown_086A8AE8:: @ 0x086A8AE8
+	.incbin "baserom.gba", 0x6A8AE8, 0xA
+
+gUnknown_086A8AF2:: @ 0x086A8AF2
+    .incbin "baserom.gba", 0x6A8AF2, 0xA
 
 gUnknown_086A8AFC:: @ 0x086A8AFC
 .2byte 0x2
@@ -2429,7 +2481,62 @@ gUnknown_086A8AFC:: @ 0x086A8AFC
     packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x2
 .2byte 0
 
-.incbin "baserom.gba", 0x6A8B0E, 0xB3E
+.incbin "baserom.gba", 0x6A8B0E, 0xA8
+
+gUnknown_086A8BB6:: @ 0x086A8BB6
+    .incbin "baserom.gba", 0x6A8BB6, 0x7A
+
+gUnknown_086A8C30:: @ 0x086A8C30
+    .incbin "baserom.gba", 0x6A8C30, 0x92
+
+gUnknown_086A8CC2:: @ 0x086A8CC2
+    .incbin "baserom.gba", 0x6A8CC2, 0x8A
+
+gUnknown_086A8D4C:: @ 0x086A8D4C
+    .incbin "baserom.gba", 0x6A8D4C, 0xCA
+
+gUnknown_086A8E16:: @ 0x086A8E16
+    .incbin "baserom.gba", 0x6A8E16, 0xDA
+
+gUnknown_086A8EF0:: @ 0x086A8EF0
+    .incbin "baserom.gba", 0x6A8EF0, 0xEA
+
+gUnknown_086A8FDA:: @ 0x086A8FDA
+    .incbin "baserom.gba", 0x6A8FDA, 0xFA
+
+gUnknown_086A90D4:: @ 0x086A90D4
+    .incbin "baserom.gba", 0x6A90D4, 0x10A
+
+gUnknown_086A91DE:: @ 0x086A91DE
+    .incbin "baserom.gba", 0x6A91DE, 0x10A
+
+gUnknown_086A92E8:: @ 0x086A92E8
+    .incbin "baserom.gba", 0x6A92E8, 0x102
+
+gUnknown_086A93EA:: @ 0x086A93EA
+    .incbin "baserom.gba", 0x6A93EA, 0x10A
+
+gUnknown_086A94F4:: @ 0x086A94F4
+    .incbin "baserom.gba", 0x6A94F4, 0x10A
+
+gUnknown_086A95FE:: @ 0x086A95FE
+    .incbin "baserom.gba", 0x6A95FE, 0xA
+
+gUnknown_086A9608:: @ 0x086A9608
+    .incbin "baserom.gba", 0x6A9608, 0xA
+
+gUnknown_086A9612:: @ 0x086A9612
+    .incbin "baserom.gba", 0x6A9612, 0xA
+
+gUnknown_086A961C:: @ 0x086A961C
+    .incbin "baserom.gba", 0x6A961C, 0xA
+
+gUnknown_086A9626:: @ 0x086A9626
+    .incbin "baserom.gba", 0x6A9626, 0xA
+
+gUnknown_086A9630:: @ 0x086A9630
+    .incbin "baserom.gba", 0x6A9630, 0x1C
+
 
 gUnknown_086A964C:: @ 0x086A964C
 	.2byte 0x0002
@@ -2519,54 +2626,54 @@ gUnknown_086A96E4:: @ 0x086A96E4
 	.4byte gUnknown_086A8AFC
 
 gUnknown_086A96F8:: @ 0x086A96F8
-	.4byte 0x086A8AC0
-	.4byte 0x086A8ACA
-	.4byte 0x086A8AD4
-	.4byte 0x086A8ADE
-	.4byte 0x086A8AE8
-	.4byte 0x086A8AF2
-	.4byte 0x086A80A8
+	.4byte gUnknown_086A8AC0
+	.4byte gUnknown_086A8ACA
+	.4byte gUnknown_086A8AD4
+	.4byte gUnknown_086A8ADE
+	.4byte gUnknown_086A8AE8
+	.4byte gUnknown_086A8AF2
+	.4byte gUnknown_086A80A8
 
 gUnknown_086A9714:: @ 0x086A9714
-	.4byte 0x086A80A8
-	.4byte 0x086A8122
-	.4byte 0x086A81B4
-	.4byte 0x086A823E
-	.4byte 0x086A8308
-	.4byte 0x086A83E2
-	.4byte 0x086A84CC
-	.4byte 0x086A85C6
-	.4byte 0x086A86C8
-	.4byte 0x086A87BA
-	.4byte 0x086A88B4
-	.4byte 0x086A89AE
+	.4byte gUnknown_086A80A8
+	.4byte gUnknown_086A8122
+	.4byte gUnknown_086A81B4
+	.4byte gUnknown_086A823E
+	.4byte gUnknown_086A8308
+	.4byte gUnknown_086A83E2
+	.4byte gUnknown_086A84CC
+	.4byte gUnknown_086A85C6
+	.4byte gUnknown_086A86C8
+	.4byte gUnknown_086A87BA
+	.4byte gUnknown_086A88B4
+	.4byte gUnknown_086A89AE
 	.4byte 0x00000000
 
 gUnknown_086A9748:: @ 0x086A9748
 	.byte 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0
 
 gUnknown_086A975C:: @ 0x086A975C
-	.4byte 0x086A95FE
-	.4byte 0x086A9608
-	.4byte 0x086A9612
-	.4byte 0x086A961C
-	.4byte 0x086A9626
-	.4byte 0x086A9630
-	.4byte 0x086A8BB6
+	.4byte gUnknown_086A95FE
+	.4byte gUnknown_086A9608
+	.4byte gUnknown_086A9612
+	.4byte gUnknown_086A961C
+	.4byte gUnknown_086A9626
+	.4byte gUnknown_086A9630
+	.4byte gUnknown_086A8BB6
 
 gUnknown_086A9778:: @ 0x086A9778
-	.4byte 0x086A8BB6
-	.4byte 0x086A8C30
-	.4byte 0x086A8CC2
-	.4byte 0x086A8D4C
-	.4byte 0x086A8E16
-	.4byte 0x086A8EF0
-	.4byte 0x086A8FDA
-	.4byte 0x086A90D4
-	.4byte 0x086A91DE
-	.4byte 0x086A92E8
-	.4byte 0x086A93EA
-	.4byte 0x086A94F4
+	.4byte gUnknown_086A8BB6
+	.4byte gUnknown_086A8C30
+	.4byte gUnknown_086A8CC2
+	.4byte gUnknown_086A8D4C
+	.4byte gUnknown_086A8E16
+	.4byte gUnknown_086A8EF0
+	.4byte gUnknown_086A8FDA
+	.4byte gUnknown_086A90D4
+	.4byte gUnknown_086A91DE
+	.4byte gUnknown_086A92E8
+	.4byte gUnknown_086A93EA
+	.4byte gUnknown_086A94F4
 	.4byte 0x00000000
 
 gEReaderAccessButtonSequence:: @ 0x086A97AC
