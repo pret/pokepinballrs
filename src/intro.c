@@ -84,10 +84,10 @@ struct UnkStruct_0201A450
 }; // 0x10 size in memory
 extern struct UnkStruct_0201A450 gUnknown_0201A450[6];
 
-extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
-extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
-extern struct UnkStruct_086A7768 gUnknown_086A79FC[];
-extern struct UnkStruct_086A7768 gUnknown_086A7B7C[0x4];
+extern struct Vector16 gUnknown_086A7768[0x8];
+extern struct Vector16 gUnknown_086A7798[0x4];
+extern struct Vector16 gUnknown_086A79FC[];
+extern struct Vector16 gUnknown_086A7B7C[0x4];
 
 struct UnkStruct_086A7AC0 {
     s8 unk0;
@@ -299,9 +299,9 @@ void sub_978C(void)
             gUnknown_0201A450[0].unk8++;
         }
 
-        if (gUnknown_0202BF10 >= gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][1])
+        if (gUnknown_0202BF10 >= gTitleRevealJingle[gUnknown_0202C5A8][gUnknown_0202A578][1])
         {
-            m4aSongNumStart(gUnknown_086A77A8[gUnknown_0202C5A8][gUnknown_0202A578][0]);
+            m4aSongNumStart(gTitleRevealJingle[gUnknown_0202C5A8][gUnknown_0202A578][0]);
             gUnknown_0202A578++;
         }
     }
@@ -408,7 +408,7 @@ void sub_999C(void)
 
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[1];
-    if (++gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
+    if (++gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].y)
     {
         CopyBgTilesRect(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[4]]], (void *)0x60036E0, 8, 8);
         if (++gUnknown_0202ADA0[4] > 3)
@@ -444,7 +444,7 @@ void sub_9AB8(void)
         gUnknown_0202ADA0[0x1]--;
     }
 
-    if (++gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].unk2)
+    if (++gUnknown_0202ADA0[5] > gUnknown_086A7768[gUnknown_0202ADA0[4]].y)
     {
         if (gUnknown_0202ADA0[4] < 7)
             CopyBgTilesRect(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[0x4]]], (void *)0x60036e0, 8, 8);
@@ -561,8 +561,8 @@ void sub_9D70(void)
         for (i = 0; i < 4; i++)
         {
             puVar2 = &puVar4->oam[i];
-            gOamBuffer[puVar2->oamId].x = gUnknown_086A7798[i].unk0 * gUnknown_02019C30 / 0x100 + puVar4->baseX;
-            gOamBuffer[puVar2->oamId].y = gUnknown_086A7798[i].unk2 * gUnknown_0201C188 / 0x100 + puVar4->baseY;
+            gOamBuffer[puVar2->oamId].x = gUnknown_086A7798[i].x * gUnknown_02019C30 / 0x100 + puVar4->baseX;
+            gOamBuffer[puVar2->oamId].y = gUnknown_086A7798[i].y * gUnknown_0201C188 / 0x100 + puVar4->baseY;
 
             gOamBuffer[puVar2->oamId].affineMode = 1;
             gOamBuffer[puVar2->oamId].matrixNum = 0;
@@ -1177,7 +1177,7 @@ void sub_AE74(void)
     gUnknown_0202ADA0[0x2]++;
     gUnknown_0202ADA0[0x5]++;
 
-    if (gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[4]].unk2)
+    if (gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[4]].y)
     {
         gUnknown_0202ADA0[4]++;
         CopyBgTilesRect(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[4]]], (void *) 0x6002EE0, 8, 8);
@@ -1200,7 +1200,7 @@ void sub_AE74(void)
 
 void sub_AF80(void)
 {
-    if (++gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[0x4]].unk2)
+    if (++gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[0x4]].y)
     {
         if (gUnknown_0202ADA0[0x04] < 7)
         {
@@ -1817,8 +1817,8 @@ void sub_C0D8(void)
         {
             oamData = &spriteGroup->oam[i];
             gOamBuffer[oamData->oamId].priority = 1;
-            gOamBuffer[oamData->oamId].x = gUnknown_086A7B7C[i].unk0 * gUnknown_0202C5E4 / 0x100 + spriteGroup->baseX;
-            gOamBuffer[oamData->oamId].y = gUnknown_086A7B7C[i].unk2 * gUnknown_0202ADD8 / 0x100 + spriteGroup->baseY;
+            gOamBuffer[oamData->oamId].x = gUnknown_086A7B7C[i].x * gUnknown_0202C5E4 / 0x100 + spriteGroup->baseX;
+            gOamBuffer[oamData->oamId].y = gUnknown_086A7B7C[i].y * gUnknown_0202ADD8 / 0x100 + spriteGroup->baseY;
             gOamBuffer[oamData->oamId].affineMode = 1;
             gOamBuffer[oamData->oamId].matrixNum = 0;
         }

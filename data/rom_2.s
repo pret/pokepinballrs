@@ -572,8 +572,9 @@ gUnknown_086A6148:: @ 0x086A6148
     .4byte gUnknown_086A5DC6
     .4byte gUnknown_086A5DD0
 
-gUnknown_086A61BC:: @ 0x086A61BC
-    @ pokedex mon ?? indicator
+gDexAnimationIx:: @ 0x086A61BC
+    @ marks which anim to show with the 'select' button in pokedex
+    @ -1 = none, <100 = catch mon, >99 = hatch mon
     .2byte   0,  -1,  -1,   1,  -1
     .2byte  -1,   2,  -1,  -1,   3
     .2byte  -1,   4,  -1, 100,   5
@@ -619,10 +620,37 @@ gUnknown_086A61BC:: @ 0x086A61BC
     .2byte  79,  80,  81,  82,  83
 
 gUnknown_086A6356:: @ 0x086A6356
-	.incbin "baserom.gba", 0x6A6356, 0x19A
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+    .2byte 0, 0, 0, -1, 0, 0, 0, 0, 0, 0
+    .2byte -1, 0, -1, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, -1
+    .2byte -1, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, -1, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, -1, 0, 0, 0, 0
+
+    .2byte -1, 0, 0, 0, -1, 0, 0, 0, 0, 0
+    .2byte 0, -1, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    .2byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+    .2byte 0, 0, 0, 0, 0
 
 gUnknown_086A64F0:: @ 0x086A64F0
-	.incbin "baserom.gba", 0x6A64F0, 0x340
+    .2byte 0x4E20, 0x5400, 0x5500, 0x5600, 0x5700
+
+gUnknown_086A64FA:: @ 0x086A64FA
+	.incbin "baserom.gba", 0x6A64FA, 0x336
 
 gUnknown_086A6830:: @ 0x086A6830
 .2byte 1
@@ -858,10 +886,12 @@ gUnknown_086A6AD4:: @ 0x086A6AD4
     .4byte gUnknown_086A6AAA
 
 gUnknown_086A6B14:: @ 0x086A6B14
-	.incbin "baserom.gba", 0x6A6B14, 0x14
+    .2byte 2, 4, 5, 6, 7
+    .2byte 3, 8, 9, 10, 11
 
 gUnknown_086A6B28:: @ 0x086A6B28
-	.incbin "baserom.gba", 0x6A6B28, 0x8
+    .2byte 36, 72
+    .2byte 140, 72
 
 gUnknown_086A6B30:: @ 0x086A6B30
 .2byte 1
@@ -1764,17 +1794,129 @@ gUnknown_086A769C:: @ 0x086A769C
 
 gUnknown_086A7760:: @ 0x086A7760
 	.incbin "baserom.gba", 0x6A7760, 0x8
+
 gUnknown_086A7768:: @ 0x086A7768
-	.incbin "baserom.gba", 0x6A7768, 0x20
+    .2byte 0x1, 0x14
+    .2byte 0x2, 0x20
+    .2byte 0x3, 0x28
+    .2byte 0x4, 0x2F
+    .2byte 0x5, 0x33
+    .2byte 0x6, 0x35
+    .2byte 0x7, 0x37
+    .2byte 0x8, 0x39
 
 gUnknown_086A7788:: @ 0x086A7788
-	.incbin "baserom.gba", 0x6A7788, 0x10
+    .2byte 0x80, 0x100, 0x180, 0x1000, 0x1080, 0x1100, 0x1180, 0x2000
 
 gUnknown_086A7798:: @ 0x086A7798
-	.incbin "baserom.gba", 0x6A7798, 0x10
+    .2byte -64, -16
+    .2byte -32, -16
+    .2byte 0, -16
+    .2byte 32, -16
 
-gUnknown_086A77A8:: @ 0x086A77A8
-	.incbin "baserom.gba", 0x6A77A8, 0x190
+gTitleRevealJingle:: @ 0x086A77A8
+    @ Only uses set 8 in code
+	.2byte SE_PIKA_CHARGE_DO, 10
+    .2byte SE_PIKA_CHARGE_DO, 15
+    .2byte SE_PIKA_CHARGE_DO, 25
+    .2byte SE_PIKA_CHARGE_DO, 35
+    .2byte SE_PIKA_CHARGE_DO, 45
+    .2byte SE_PIKA_CHARGE_DO, 50
+    .2byte SE_PIKA_CHARGE_DO, 55
+    .2byte SE_PIKA_CHARGE_DO, 65
+    .2byte SE_PIKA_CHARGE_DO, 70
+    .2byte SE_PIKA_CHARGE_DO, 80
+
+    .2byte SE_PIKA_CHARGE_RE, 10
+    .2byte SE_PIKA_CHARGE_RE, 15
+    .2byte SE_PIKA_CHARGE_RE, 25
+    .2byte SE_PIKA_CHARGE_RE, 35
+    .2byte SE_PIKA_CHARGE_RE, 45
+    .2byte SE_PIKA_CHARGE_RE, 50
+    .2byte SE_PIKA_CHARGE_RE, 55
+    .2byte SE_PIKA_CHARGE_RE, 65
+    .2byte SE_PIKA_CHARGE_RE, 70
+    .2byte SE_PIKA_CHARGE_RE, 80
+
+    .2byte SE_PIKA_CHARGE_MI, 10
+    .2byte SE_PIKA_CHARGE_MI, 15
+    .2byte SE_PIKA_CHARGE_MI, 25
+    .2byte SE_PIKA_CHARGE_MI, 35
+    .2byte SE_PIKA_CHARGE_MI, 45
+    .2byte SE_PIKA_CHARGE_MI, 50
+    .2byte SE_PIKA_CHARGE_MI, 55
+    .2byte SE_PIKA_CHARGE_MI, 65
+    .2byte SE_PIKA_CHARGE_MI, 70
+    .2byte SE_PIKA_CHARGE_MI, 80
+
+    .2byte SE_PIKA_CHARGE_FA, 10
+    .2byte SE_PIKA_CHARGE_FA, 15
+    .2byte SE_PIKA_CHARGE_FA, 25
+    .2byte SE_PIKA_CHARGE_FA, 35
+    .2byte SE_PIKA_CHARGE_FA, 45
+    .2byte SE_PIKA_CHARGE_FA, 50
+    .2byte SE_PIKA_CHARGE_FA, 55
+    .2byte SE_PIKA_CHARGE_FA, 65
+    .2byte SE_PIKA_CHARGE_FA, 70
+    .2byte SE_PIKA_CHARGE_FA, 80
+
+    .2byte SE_PIKA_CHARGE_SO, 10
+    .2byte SE_PIKA_CHARGE_SO, 15
+    .2byte SE_PIKA_CHARGE_SO, 25
+    .2byte SE_PIKA_CHARGE_SO, 35
+    .2byte SE_PIKA_CHARGE_SO, 45
+    .2byte SE_PIKA_CHARGE_SO, 50
+    .2byte SE_PIKA_CHARGE_SO, 55
+    .2byte SE_PIKA_CHARGE_SO, 65
+    .2byte SE_PIKA_CHARGE_SO, 70
+    .2byte SE_PIKA_CHARGE_SO, 80
+
+    .2byte SE_PIKA_CHARGE_LA, 10
+    .2byte SE_PIKA_CHARGE_LA, 15
+    .2byte SE_PIKA_CHARGE_LA, 25
+    .2byte SE_PIKA_CHARGE_LA, 35
+    .2byte SE_PIKA_CHARGE_LA, 45
+    .2byte SE_PIKA_CHARGE_LA, 50
+    .2byte SE_PIKA_CHARGE_LA, 55
+    .2byte SE_PIKA_CHARGE_LA, 65
+    .2byte SE_PIKA_CHARGE_LA, 70
+    .2byte SE_PIKA_CHARGE_LA, 80
+
+    .2byte SE_PIKA_CHARGE_TI, 10
+    .2byte SE_PIKA_CHARGE_TI, 15
+    .2byte SE_PIKA_CHARGE_TI, 25
+    .2byte SE_PIKA_CHARGE_TI, 35
+    .2byte SE_PIKA_CHARGE_TI, 45
+    .2byte SE_PIKA_CHARGE_TI, 50
+    .2byte SE_PIKA_CHARGE_TI, 55
+    .2byte SE_PIKA_CHARGE_TI, 65
+    .2byte SE_PIKA_CHARGE_TI, 70
+    .2byte SE_PIKA_CHARGE_TI, 80
+
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 10
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 15
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 25
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 35
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 45
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 50
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 55
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 65
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 70
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 80
+
+    .2byte SE_PIKA_CHARGE_DO, 10
+    .2byte SE_PIKA_CHARGE_RE, 15
+    .2byte SE_PIKA_CHARGE_MI, 25
+    .2byte SE_PIKA_CHARGE_FA, 35
+    .2byte SE_PIKA_CHARGE_SO, 45
+    .2byte SE_PIKA_CHARGE_LA, 50
+    .2byte SE_PIKA_CHARGE_TI, 55
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 65
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 70
+    .2byte SE_PIKA_CHARGE_HIGH_DO, 80
+
+    .2byte 0,0,0,0,0,0,0,0,0,0
+    .2byte 0,0,0,0,0,0,0,0,0,0
 
 gUnknown_086A7938:: @ 0x086A7938
 .2byte 4
@@ -1789,9 +1931,7 @@ gUnknown_086A7938:: @ 0x086A7938
 
 gUnknown_086A795C:: @ 0x086A795C
     .4byte gUnknown_086A7938
-
-gUnknown_086A7960:: @ 0x086A7960
-	.incbin "baserom.gba", 0x6A7960, 0x4
+    .space 0x4
 
 gUnknown_086A7964:: @ 0x086A7964
 .2byte 4
@@ -1842,10 +1982,17 @@ gUnknown_086A79EC:: @ 0x086A79EC
     .4byte 0
 
 gUnknown_086A79FC:: @ 0x086A79FC
-	.incbin "baserom.gba", 0x6A79FC, 0x20
+    .2byte 1, 3
+    .2byte 2, 6
+    .2byte 3, 9
+    .2byte 4, 12
+    .2byte 5, 15
+    .2byte 6, 18
+    .2byte 7, 20
+    .2byte 0, 0
 
 gUnknown_086A7A1C:: @ 0x086A7A1C
-	.incbin "baserom.gba", 0x6A7A1C, 0x10
+    .2byte 0x1100, 0x1080, 0x1000, 0x0180, 0x100, 0x80, 0, 0
 
 gUnknown_086A7A2C:: @ 0x086A7A2C
 .2byte 2
@@ -1926,10 +2073,55 @@ gUnknown_086A7B74:: @ 0x086A7B74
     .4byte 0
 
 gUnknown_086A7B7C:: @ 0x086A7B7C
-	.incbin "baserom.gba", 0x6A7B7C, 0xA8
+    .2byte -64, -64
+    .2byte   0, -64
+    .2byte -64,   0
+    .2byte 0, 0
+
+gUnknown_086A7B8C:: @ 0x086A7B8C
+	.incbin "baserom.gba", 0x6A7B8C, 0x22
+
+gUnknown_086A7BAE:: @ 0x086A7BAE
+	.incbin "baserom.gba", 0x6A7BAE, 0xA
+
+gUnknown_086A7BB8:: @ 0x086A7BB8
+	.incbin "baserom.gba", 0x6A7BB8, 0xA
+
+gUnknown_086A7BC2:: @ 0x086A7BC2
+	.incbin "baserom.gba", 0x6A7BC2, 0x22
+
+gUnknown_086A7BE4:: @ 0x086A7BE4
+	.incbin "baserom.gba", 0x6A7BE4, 0xA
+
+gUnknown_086A7BEE:: @ 0x086A7BEE
+	.incbin "baserom.gba", 0x6A7BEE, 0xA
+
+gUnknown_086A7BF8:: @ 0x086A7BF8
+	.incbin "baserom.gba", 0x6A7BF8, 0x22
+
+gUnknown_086A7C1A:: @ 0x086A7C1A
+	.incbin "baserom.gba", 0x6A7C1A, 0xA
 
 gUnknown_086A7C24:: @ 0x086A7C24
-	.incbin "baserom.gba", 0x6A7C24, 0x44
+    .4byte gUnknown_086A7C1A
+    .4byte gUnknown_086A7BF8
+    .4byte gUnknown_086A7BB8
+    .4byte gUnknown_086A7BEE
+    .4byte gUnknown_086A7BB8
+    .4byte gUnknown_086A7BEE
+    .4byte gUnknown_086A7BB8
+    .4byte gUnknown_086A7BAE
+    .4byte gUnknown_086A7BE4
+    .4byte gUnknown_086A7BAE
+    .4byte gUnknown_086A7BE4
+    .4byte gUnknown_086A7BAE
+    .4byte gUnknown_086A7B8C
+    .4byte gUnknown_086A7BC2
+    .4byte gUnknown_086A7B8C
+    .4byte gUnknown_086A7BC2
+    .4byte gUnknown_086A7B8C
+
+	@.incbin "baserom.gba", 0x6A7C24, 0x44
 
 gUnknown_086A7C68:: @ 0x086A7C68
 	.byte 0x05, 0x02, 0x03, 0x01, 0x06, 0x01
