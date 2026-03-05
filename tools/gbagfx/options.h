@@ -20,6 +20,7 @@ struct GbaToPngOptions {
     bool isTiled;
     int dataWidth;
     bool oamSprite;
+    char *oamSequenceFilePath;
 };
 
 struct PngToGbaOptions {
@@ -33,6 +34,7 @@ struct PngToGbaOptions {
     bool isTiled;
     int dataWidth;
     bool oamSprite;
+    char *oamSequenceFilePath;
 };
 
 #endif // OPTIONS_H

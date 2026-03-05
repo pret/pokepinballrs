@@ -7,7 +7,7 @@
 extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gUnknown_08352BD8[];
 extern const u8 gUnknown_0849F1CC[];
-extern const s8 gUnknown_084A11EC[][0x300];
+extern const s8 gGroudonBoardBoulders_Gfx[][0x300];
 extern struct SongHeader se_unk_118;
 extern struct SongHeader se_unk_11b;
 extern struct SongHeader se_unk_11c;
@@ -1332,7 +1332,7 @@ void sub_3CBC4(void)
             }
 
             var0 = gCurrentPinballGame->unk4D2[i];
-            DmaCopy16(3, gUnknown_084A11EC[var0], (void *)0x06010FA0 + i * 0x300, 0x300);
+            DmaCopy16(3, gGroudonBoardBoulders_Gfx[var0], (void *)0x06010FA0 + i * 0x300, 0x300);
 
             group->baseX = (gCurrentPinballGame->unk4EC[i].x / 10) + i - gCurrentPinballGame->unk58;
             group->baseY = (gCurrentPinballGame->unk4E4[i] / 10) + (gCurrentPinballGame->unk4EC[i].y / 10) - gCurrentPinballGame->unk5A;
