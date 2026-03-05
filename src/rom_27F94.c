@@ -21,7 +21,7 @@ extern const u16 gUnknown_081B0FE4[][0x30];
 extern const u8 gUnknown_081C0064[];
 extern const u8 gUnknown_0844AA0C[][0x480];
 extern const u8 gUnknown_084C156C[];
-extern const s16 gUnknown_086ACF38[36];
+extern const s16 gUnknown_086ACF38[34];
 extern const u8 gUnknown_086ACF80[];
 extern const s8 gUnknown_086ACFF4[];
 extern u16 gUnknown_086AD180[][7];

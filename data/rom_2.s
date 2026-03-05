@@ -3760,8 +3760,6 @@ gUnknown_086ACC98:: @ 0x086ACC98
 gUnknown_086ACCA0:: @ 0x086ACCA0
     .incbin "baserom.gba", 0x6ACCA0, 0xB0
 
-@TODO next continue examiniation here
-
 gUnknown_086ACD50:: @ 0x086ACD50
 	.incbin "baserom.gba", 0x6ACD50, 0x24
 
@@ -3769,10 +3767,7 @@ gUnknown_086ACD74:: @ 0x086ACD74
 	.incbin "baserom.gba", 0x6ACD74, 0x10
 
 gUnknown_086ACD84:: @ 0x086ACD84
-	.incbin "baserom.gba", 0x6ACD84, 0x2
-
-gUnknown_086ACD86:: @ 0x086ACD86
-	.incbin "baserom.gba", 0x6ACD86, 0x32
+	.incbin "baserom.gba", 0x6ACD84, 0x34
 
 gUnknown_086ACDB8:: @ 0x086ACDB8
 	.incbin "baserom.gba", 0x6ACDB8, 0x3C
@@ -3800,7 +3795,8 @@ gUnknown_086ACE60:: @ 0x086ACE60
 	.2byte  0, -1;
 
 gUnknown_086ACE70:: @ 0x086ACE70
-	.incbin "baserom.gba", 0x6ACE70, 0x1C
+    .2byte 0, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 9
+    .space 0x2
 
 gUnknown_086ACE8C:: @ 0x086ACE8C
 	@tagged in sets of 4
@@ -3832,10 +3828,26 @@ gUnknown_086ACEF8:: @ 0x086ACEF8
 	.4byte gUnknown_0851DB8C
 
 gUnknown_086ACF18:: @ 0x086ACF18
-	.incbin "baserom.gba", 0x6ACF18, 0x20
+    .4byte 0x000000
+    .4byte gUnknown_0851956C
+    .4byte gUnknown_085267CC
+    .4byte gUnknown_085221AC
+    .4byte gUnknown_08526BCC
+    .4byte gUnknown_085269CC
+    .4byte gUnknown_0851958C
+    .4byte gUnknown_085195AC
 
 gUnknown_086ACF38:: @ 0x086ACF38
-	.incbin "baserom.gba", 0x6ACF38, 0x48
+    @frame timer, 34 frame states.
+    .2byte 20, 5, 4, 4, 4
+    .2byte 4, 4, 4, 4, 4
+    .2byte 4, 1, 100, 1, 10
+    .2byte 4, 4, 4, 6, 6
+    .2byte 6, 6, 6, 6, 6
+    .2byte 6, 1, 6, 3, 1
+    .2byte 120, 1, 238, 280
+
+    .space 0x4
 
 gUnknown_086ACF80:: @ 0x086ACF80
 	.incbin "baserom.gba", 0x6ACF80, 0x20
@@ -3847,7 +3859,7 @@ gUnknown_086ACFE0:: @ 0x086ACFE0
 	.2byte 'W','A','S',' ','C','A','U','G','H','T';
 
 gUnknown_086ACFF4:: @ 0x086ACFF4
-	.incbin "baserom.gba", 0x6ACFF4, 0xC
+    .byte 0, 1, 2, 3, 1, 2, 4, 5, 1, 1, 6, 7
 
 gUnknown_086AD000:: @ 0x086AD000
 	.incbin "baserom.gba", 0x6AD000, 0x70
@@ -3866,7 +3878,22 @@ gUnknown_086AD2EE:: @ 0x086AD2EE
 	.incbin "baserom.gba", 0x6AD2EE, 0x110
 
 gUnknown_086AD3FE:: @ 0x086AD3FE
-	.incbin "baserom.gba", 0x6AD3FE, 0x38
+    @ 12 pairs of frameset data
+    .2byte 0, 3
+    .2byte 1, 1
+    .2byte 2, 2
+    .2byte 3, 2
+    .2byte 4, 1
+    .2byte 6, 3
+    .2byte 7, 2
+    .2byte 10, 4
+    .2byte 11, 4
+    .2byte 12, 3
+    .2byte 8, 2
+    .2byte 13, 2
+
+    @ 8 bytes unidentified data
+    .byte 0, 0, 0, 0x70, 0, 0, 0xff, 0x7f
 
 gUnknown_086AD436:: @ 0x086AD436
 	.2byte 0x0000, 0x0005
@@ -3932,7 +3959,14 @@ gUnknown_086AD4E8:: @ 0x086AD4E8
     .4byte sub_28544
 
 gUnknown_086AD50C:: @ 0x086AD50C
-	.incbin "baserom.gba", 0x6AD50C, 0x20
+    .4byte gUnknown_081B8984
+    .4byte gUnknown_081B9984
+    .4byte gUnknown_081BA984
+    .4byte gUnknown_081BB984
+    .4byte gUnknown_081B4784
+    .4byte gUnknown_081B5784
+    .4byte gUnknown_081B6784
+    .4byte gUnknown_081B7784
 
 gUnknown_086AD52C:: @ 0x086AD52C
 	.incbin "baserom.gba", 0x6AD52C, 0x54
@@ -3996,10 +4030,15 @@ gUnknown_086AD862:: @ 0x086AD862
 	.incbin "baserom.gba", 0x6AD862, 0x17A
 
 gUnknown_086AD9DC:: @ 0x086AD9DC
-	.incbin "baserom.gba", 0x6AD9DC, 0x10
+    @ 4 Vector16
+    .2byte 120, 135
+    .2byte 159, 144
+    .2byte 151, 167
+    .2byte 131, 179
 
 gUnknown_086AD9EC:: @ 0x086AD9EC
-	.incbin "baserom.gba", 0x6AD9EC, 0x10
+    @ 8 s16 vals
+    .2byte 1,3,1,0,-1,-3,-1,0
 
 gUnknown_086AD9FC:: @ 0x086AD9FC
 	.2byte 0x0, 0x0
