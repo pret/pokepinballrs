@@ -105,6 +105,15 @@ SECTIONS
         data/rom_2.o(.rodata)
     }=0xFF
 
+    /* Debug sections - address 0 so they don't affect ROM layout */
+    .debug_info     0 : { *(.debug_info) }
+    .debug_abbrev   0 : { *(.debug_abbrev) }
+    .debug_line     0 : { *(.debug_line) }
+    .debug_str      0 : { *(.debug_str) }
+    .debug_loc      0 : { *(.debug_loc) }
+    .debug_ranges   0 : { *(.debug_ranges) }
+    .debug_frame    0 : { *(.debug_frame) }
+
     /* Discard everything not specifically mentioned above. */
     /DISCARD/ :
     {

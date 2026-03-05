@@ -2,6 +2,7 @@
 #include "main.h"
 #include "m4a.h"
 #include "constants/bg_music.h"
+#include "constants/ruby_states.h"
 
 void sub_1AAA0(void);
 void sub_1AA38(void);
@@ -292,7 +293,7 @@ void sub_1ADF4(void)
                 gCurrentPinballGame->unk28++;
             else
             {
-                if (gCurrentPinballGame->scoreHi != 0 && gCurrentPinballGame->unk16C == 4)
+                if (gCurrentPinballGame->scoreHi != 0 && gCurrentPinballGame->rubyPondState == RUBY_POND_STATE_LOTAD)
                     sub_22978();
                 else
                     sub_22C6C();
@@ -300,7 +301,7 @@ void sub_1ADF4(void)
         }
         else
         {
-            if (gCurrentPinballGame->scoreHi != 0 && gCurrentPinballGame->unk16C == 4)
+            if (gCurrentPinballGame->scoreHi != 0 && gCurrentPinballGame->rubyPondState == RUBY_POND_STATE_LOTAD)
                 sub_22A30();
             else
                 sub_22D54();

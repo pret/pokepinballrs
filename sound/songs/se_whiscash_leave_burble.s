@@ -1,25 +1,25 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_d4_grp, gUnknown_08531D4C
-	.equ	se_unk_d4_pri, 5
-	.equ	se_unk_d4_rev, reverb_set+50
-	.equ	se_unk_d4_mvl, 127
-	.equ	se_unk_d4_key, 0
-	.equ	se_unk_d4_tbs, 1
-	.equ	se_unk_d4_exg, 0
-	.equ	se_unk_d4_cmp, 1
+	.equ	se_whiscash_leave_burble_grp, gUnknown_08531D4C
+	.equ	se_whiscash_leave_burble_pri, 5
+	.equ	se_whiscash_leave_burble_rev, reverb_set+50
+	.equ	se_whiscash_leave_burble_mvl, 127
+	.equ	se_whiscash_leave_burble_key, 0
+	.equ	se_whiscash_leave_burble_tbs, 1
+	.equ	se_whiscash_leave_burble_exg, 0
+	.equ	se_whiscash_leave_burble_cmp, 1
 
 	.section .rodata
-	.global	se_unk_d4
+	.global	se_whiscash_leave_burble
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_d4_0:  @ 0x086A0D04
-	.byte	KEYSH , se_unk_d4_key+0
-	.byte	TEMPO , 150*se_unk_d4_tbs/2
+se_whiscash_leave_burble_0:  @ 0x086A0D04
+	.byte	KEYSH , se_whiscash_leave_burble_key+0
+	.byte	TEMPO , 150*se_whiscash_leave_burble_tbs/2
 	.byte		VOICE , 31
-	.byte		VOL   , 110*se_unk_d4_mvl/mxv
+	.byte		VOL   , 110*se_whiscash_leave_burble_mvl/mxv
 	.byte		BENDR , 24
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v-37
@@ -190,13 +190,13 @@ se_unk_d4_0:  @ 0x086A0D04
 
 	.align	2
 
-se_unk_d4:  @ 0x086A0E14
+se_whiscash_leave_burble:  @ 0x086A0E14
 	.byte	1	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_d4_pri	@ Priority
-	.byte	se_unk_d4_rev	@ Reverb
+	.byte	se_whiscash_leave_burble_pri	@ Priority
+	.byte	se_whiscash_leave_burble_rev	@ Reverb
 
-	.word	se_unk_d4_grp
+	.word	se_whiscash_leave_burble_grp
 
-	.word	se_unk_d4_0
+	.word	se_whiscash_leave_burble_0
 @ 0x086A0E20

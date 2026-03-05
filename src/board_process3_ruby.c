@@ -3,6 +3,7 @@
 #include "main.h"
 #include "m4a.h"
 #include "constants/bg_music.h"
+#include "constants/ruby_states.h"
 
 extern const void (*gUnknown_086AD4C4[])(void);
 extern const void (*gUnknown_086AD4E8[])(void);
@@ -14,9 +15,9 @@ extern void sub_19FA0(void);
 extern void sub_1D5D8(void);
 extern void sub_1DA74(void);
 extern void sub_1DAD8(void);
-extern void sub_1DC7C(void);
-extern void sub_1DDDC(void);
-extern void sub_1EC48(void);
+extern void DrawWhiscash(void);
+extern void RubyPond_EntityLogic(void);
+extern void RubyPondTriBumperHandleHitAndDraw(void);
 extern void sub_1F158(void);
 extern void sub_1F59C(void);
 extern void sub_1F698(void);
@@ -45,13 +46,13 @@ void RubyBoardProcess_3A_19A20(void)
     gCurrentPinballGame->unk2D6 = 154;
     gCurrentPinballGame->unk2DA = 0;
     sub_23E18();
-    sub_1DDDC();
+    RubyPond_EntityLogic();
 
     gCurrentPinballGame->unk170[0] = 10;
     gCurrentPinballGame->unk170[1] = 10;
     gCurrentPinballGame->unk170[2] = 10;
-    gCurrentPinballGame->unk16C = 0;
-    sub_1EC48();
+    gCurrentPinballGame->rubyPondState = RUBY_POND_STATE_CHINCHOU_STAGGERED;
+    RubyPondTriBumperHandleHitAndDraw();
     sub_1F158();
 
     gCurrentPinballGame->unk1E5 = 0;
@@ -246,13 +247,13 @@ void sub_19E10(void)
     if (gCurrentPinballGame->unk68 < 220)
     {
         sub_23E18();
-        if (gCurrentPinballGame->unk2A4 != 0)
+        if (gCurrentPinballGame->shouldProcessWhiscash)
         {
-            sub_1DC7C();
+            DrawWhiscash();
         }
         else
         {
-            sub_1EC48();
+            RubyPondTriBumperHandleHitAndDraw();
         }
         sub_1F158();
         sub_1F59C();
@@ -301,7 +302,7 @@ void sub_19E10(void)
 
 void sub_19F70(void)
 {
-    sub_1DDDC();
+    RubyPond_EntityLogic();
     sub_1A9E8();
     sub_1F2A4();
     sub_1FF0C();

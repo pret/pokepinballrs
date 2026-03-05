@@ -110,7 +110,7 @@
 #define SE_UNKNOWN_0x9C             0x9C // SE46 Pokemon entered Pokeball (when catching)
 #define SE_UNKNOWN_0x9D             0x9D // SE47 Pokeball hit ground; High pitched related to 22
 #define SE_UNKNOWN_0x9E             0x9E // SE48 Pokeball shake, During catch confirmation
-#define SE_UNKNOWN_0x9F             0x9F // SE49 *Up warp?*
+#define SE_WARP                     0x9F // SE49 *Up warp?*
 #define SE_UNKNOWN_0xA0             0xA0 // ?? *Downward complement to SE49* ??
 #define SE_UNKNOWN_0xA1             0xA1 // SE50 *hit clack*
 #define SE_UNKNOWN_0xA2             0xA2 // SE51 *Brush*
@@ -133,7 +133,7 @@
 #define SE_UNKNOWN_0xB3             0xB3 // SE183 Pi~ Chu!
 #define SE_UNKNOWN_0xB4             0xB4 // ?? Duplicate of SE49
 #define SE_UNKNOWN_0xB5             0xB5 // No Sound
-#define SE_UNKNOWN_0xB6             0xB6 // SE66 *Puddle slap?*
+#define SE_RUBY_BUMPER_HIT          0xB6 // SE66 *Puddle slap* (Hit lotad/chinchou/whiscash)
 #define SE_UNKNOWN_0xB7             0xB7 // SE67 *Spring Gate Bounce*
 #define SE_UNKNOWN_0xB8             0xB8 // SE68 *Slap*
 #define SE_UNKNOWN_0xB9             0xB9 // SE69 *Fall into water*
@@ -151,8 +151,8 @@
 #define SE_UNKNOWN_0xC5             0xC5 // SE73 *Jump off tin clatter*
 #define SE_UNKNOWN_0xC6             0xC6 // SE74 Chikorita leaf blades
 #define SE_UNKNOWN_0xC7             0xC7 // SE75 Zigzagoon emerge
-#define SE_UNKNOWN_0xC8             0xC8 // SE76 Ruby Pond Contents change; Duplicate of 66
-#define SE_UNKNOWN_0xC9             0xC9 // SE77 Ruby Pond Chinchou leave
+#define SE_RUBY_BUMPER_EMERGES      0xC8 // SE76 Ruby Pond Contents change; Duplicate of 66
+#define SE_RUBY_BUMPER_LEAVES       0xC9 // SE77 Ruby Pond Chinchou leave
 #define SE_UNKNOWN_0xCA             0xCA // SE78 *flipper 2?*
 #define SE_UNKNOWN_0xCB             0xCB // Duplicate of SE70/SE72
 #define SE_UNKNOWN_0xCC             0xCC // SE79 *tong vwii vwii vwii*
@@ -162,11 +162,11 @@
 #define SE_UNKNOWN_0xD0             0xD0 // SE83 *Chirp*
 #define SE_UNKNOWN_0xD1             0xD1 // SE84 *Flat board hit ground*
 #define SE_UNKNOWN_0xD2             0xD2 // SE85 Shroomish hit; Duplicate of SE66
-#define SE_UNKNOWN_0xD3             0xD3 // SE86 *Wave shot*
-#define SE_UNKNOWN_0xD4             0xD4 // SE87 *Swamp frog bubbling*
-#define SE_UNKNOWN_0xD5             0xD5 // SE88 *Smaller puddle slap*
-#define SE_UNKNOWN_0xD6             0xD6 // SE89 *Juicy slash*
-#define SE_UNKNOWN_0xD7             0xD7 // SE90 *Explosive collapse*
+#define SE_WHISCASH_EMERGE_SPLASH   0xD3 // SE86 *Wave shot*
+#define SE_WHISCASH_LEAVE_BURBLE    0xD4 // SE87 *Swamp frog bubbling*
+#define SE_WHISCASH_CATCH_BALL      0xD5 // SE88 *Smaller puddle slap* // Also used for *something* in the sapphire board
+#define SE_WHISCASH_SPIT_BALL       0xD6 // SE89 *Juicy slash* // Also used for *something* in the sapphire board
+#define SE_WHISCASH_SPLASHDOWN      0xD7 // SE90 *Explosive splash* (mostly buried under earthquake)
 #define SE_UNKNOWN_0xD8             0xD8 // SE91 *Ti-ring* RS: Exp. Bar filled up
 #define SE_UNKNOWN_0xD9             0xD9 // No Sound
 #define SE_UNKNOWN_0xDA             0xDA // No Sound
@@ -283,6 +283,6 @@
 #define SE_UNKNOWN_0x149            0x149 // SE176 *Double Step*
 #define SE_HIGH_SCORE_EARNED        0x14A // SE178 High Score Earned
 #define SE_UNKNOWN_0x14B            0x14B // SE179 Duplicate of 36
-#define SE_UNKNOWN_0x14C            0x14C // SE177 *rumble*
+#define SE_WHISCASH_EARTHQUAKE      0x14C // SE177 *rumble*
 
 #endif // GUARD_CONSTANTS_BG_MUSIC_H

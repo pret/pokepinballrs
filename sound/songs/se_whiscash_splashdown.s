@@ -1,25 +1,25 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_d7_grp, gUnknown_08531D4C
-	.equ	se_unk_d7_pri, 5
-	.equ	se_unk_d7_rev, reverb_set+50
-	.equ	se_unk_d7_mvl, 127
-	.equ	se_unk_d7_key, 0
-	.equ	se_unk_d7_tbs, 1
-	.equ	se_unk_d7_exg, 0
-	.equ	se_unk_d7_cmp, 1
+	.equ	se_whiscash_splashdown_grp, gUnknown_08531D4C
+	.equ	se_whiscash_splashdown_pri, 5
+	.equ	se_whiscash_splashdown_rev, reverb_set+50
+	.equ	se_whiscash_splashdown_mvl, 127
+	.equ	se_whiscash_splashdown_key, 0
+	.equ	se_whiscash_splashdown_tbs, 1
+	.equ	se_whiscash_splashdown_exg, 0
+	.equ	se_whiscash_splashdown_cmp, 1
 
 	.section .rodata
-	.global	se_unk_d7
+	.global	se_whiscash_splashdown
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_d7_0:  @ 0x086A0EB4
-	.byte	KEYSH , se_unk_d7_key+0
-	.byte	TEMPO , 150*se_unk_d7_tbs/2
+se_whiscash_splashdown_0:  @ 0x086A0EB4
+	.byte	KEYSH , se_whiscash_splashdown_key+0
+	.byte	TEMPO , 150*se_whiscash_splashdown_tbs/2
 	.byte		VOICE , 41
-	.byte		VOL   , 125*se_unk_d7_mvl/mxv
+	.byte		VOL   , 125*se_whiscash_splashdown_mvl/mxv
 	.byte		BENDR , 12
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v+0
@@ -82,20 +82,20 @@ se_unk_d7_0:  @ 0x086A0EB4
 
 @*********************** Track 02 ***********************@
 
-se_unk_d7_1:  @ 0x086A0F13
-	.byte	KEYSH , se_unk_d7_key+0
+se_whiscash_splashdown_1:  @ 0x086A0F13
+	.byte	KEYSH , se_whiscash_splashdown_key+0
 	.byte		VOICE , 4
-	.byte		VOL   , 125*se_unk_d7_mvl/mxv
+	.byte		VOL   , 125*se_whiscash_splashdown_mvl/mxv
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v+1
 	.byte		N02   , Cn3 , v052
 	.byte	W01
-	.byte		VOL   , 74*se_unk_d7_mvl/mxv
+	.byte		VOL   , 74*se_whiscash_splashdown_mvl/mxv
 	.byte	W06
-	.byte		        125*se_unk_d7_mvl/mxv
+	.byte		        125*se_whiscash_splashdown_mvl/mxv
 	.byte		N02
 	.byte	W01
-	.byte		VOL   , 74*se_unk_d7_mvl/mxv
+	.byte		VOL   , 74*se_whiscash_splashdown_mvl/mxv
 	.byte	W16
 	.byte	W24
 	.byte	W24
@@ -105,14 +105,14 @@ se_unk_d7_1:  @ 0x086A0F13
 
 	.align	2
 
-se_unk_d7:  @ 0x086A0F30
+se_whiscash_splashdown:  @ 0x086A0F30
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_d7_pri	@ Priority
-	.byte	se_unk_d7_rev	@ Reverb
+	.byte	se_whiscash_splashdown_pri	@ Priority
+	.byte	se_whiscash_splashdown_rev	@ Reverb
 
-	.word	se_unk_d7_grp
+	.word	se_whiscash_splashdown_grp
 
-	.word	se_unk_d7_0
-	.word	se_unk_d7_1
+	.word	se_whiscash_splashdown_0
+	.word	se_whiscash_splashdown_1
 @ 0x086A0F40

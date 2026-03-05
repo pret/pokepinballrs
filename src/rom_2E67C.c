@@ -6,7 +6,7 @@
 extern const s16 gUnknown_086AE45A[];
 extern const s16 gUnknown_086AE3DC[][3];
 extern const s8 gUnknown_08137CBC[][2];
-extern const u8 gUnknown_084BB16C[][0x480];
+extern const u8 gPelliper_Gfx[][0x480];
 extern const u16 gUnknown_086B3EF6[20][4][3];
 extern const s16 gUnknown_086AE462[][2];
 extern const u8 gSapphireBoardWailmer_Gfx[][0x300];
@@ -895,6 +895,7 @@ void sub_2E67C(void)
     }
 }
 
+//Sapphire pond - Pelliper
 void sub_2E6AC(void)
 {
     s16 i;
@@ -1019,9 +1020,9 @@ void sub_2E6AC(void)
         gCurrentPinballGame->unk30C++;
         if (gCurrentPinballGame->ball->positionQ0.y < -12)
         {
-            if (gCurrentPinballGame->unk308 > 99)
+            if (gCurrentPinballGame->bumperHitsSinceReset > 99)
             {
-                gCurrentPinballGame->unk308 = 0;
+                gCurrentPinballGame->bumperHitsSinceReset = 0;
                 gCurrentPinballGame->unk306 = 6;
                 gCurrentPinballGame->unk30C = 65;
                 m4aMPlayAllStop();
@@ -1041,7 +1042,7 @@ void sub_2E6AC(void)
         var_sl = gUnknown_08137CBC[0][0];
         if (gCurrentPinballGame->unk30C == 65)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x9F);
+            m4aSongNumStart(SE_WARP);
             gMain.blendControl = 0x9E;
         }
 
@@ -1174,7 +1175,7 @@ void sub_2E6AC(void)
 
     if (group->available)
     {
-        DmaCopy16(3, gUnknown_084BB16C[var_sl], (void *)0x060122A0, 0x480);
+        DmaCopy16(3, gPelliper_Gfx[var_sl], (void *)0x060122A0, 0x480);
         group->baseX = gCurrentPinballGame->unk320 / 10 + 146 - gCurrentPinballGame->unk58;
         group->baseY = gCurrentPinballGame->unk322 / 10 + 110 - gCurrentPinballGame->unk5A + gCurrentPinballGame->unk30E / 10;
         for (i = 0; i < 4; i++)
@@ -1679,12 +1680,12 @@ void sub_2FCD0(void)
 
 void sub_300D8(void)
 {
-    gCurrentPinballGame->unk178[0].x = 920;
-    gCurrentPinballGame->unk178[0].y = (133 - (gCurrentPinballGame->unk290 % 60) / 30) * 10;
-    gCurrentPinballGame->unk178[1].x = 1260;
-    gCurrentPinballGame->unk178[1].y = (131 - ((gCurrentPinballGame->unk290 + 10) % 60) / 30) * 10;
-    gCurrentPinballGame->unk178[2].x = 1080;
-    gCurrentPinballGame->unk178[2].y = (161 - ((gCurrentPinballGame->unk290 + 20) % 60) / 30) * 10;
+    gCurrentPinballGame->rubyBumperLogicPosition[0].x = 920;
+    gCurrentPinballGame->rubyBumperLogicPosition[0].y = (133 - (gCurrentPinballGame->unk290 % 60) / 30) * 10;
+    gCurrentPinballGame->rubyBumperLogicPosition[1].x = 1260;
+    gCurrentPinballGame->rubyBumperLogicPosition[1].y = (131 - ((gCurrentPinballGame->unk290 + 10) % 60) / 30) * 10;
+    gCurrentPinballGame->rubyBumperLogicPosition[2].x = 1080;
+    gCurrentPinballGame->rubyBumperLogicPosition[2].y = (161 - ((gCurrentPinballGame->unk290 + 20) % 60) / 30) * 10;
 }
 
 void sub_30178(void)
@@ -1695,27 +1696,27 @@ void sub_30178(void)
     s16 index;
 
     group = &gMain.spriteGroups[63];
-    if (gCurrentPinballGame->unk624 > 0)
+    if (gCurrentPinballGame->bumperHitCountdown > 0)
     {
-        if (gCurrentPinballGame->unk624 == 2)
+        if (gCurrentPinballGame->bumperHitCountdown == 2)
         {
             gCurrentPinballGame->scoreAddedInFrame = 500;
-            m4aSongNumStart(SE_UNKNOWN_0xB6);
+            m4aSongNumStart(SE_RUBY_BUMPER_HIT);
             PlayRumble(7);
             if (gCurrentPinballGame->unk13 == 4 && gCurrentPinballGame->unk17 == 5)
             {
-                if (gCurrentPinballGame->unk625 < 6)
+                if (gCurrentPinballGame->hatchTilesBumperAcknowledged < 6)
                 {
-                    if (gCurrentPinballGame->unk625 == 0)
-                        gCurrentPinballGame->unk625 = 1;
-                    else if (gCurrentPinballGame->unk625 == 1)
-                        gCurrentPinballGame->unk625 = 3;
+                    if (gCurrentPinballGame->hatchTilesBumperAcknowledged == 0)
+                        gCurrentPinballGame->hatchTilesBumperAcknowledged = 1;
+                    else if (gCurrentPinballGame->hatchTilesBumperAcknowledged == 1)
+                        gCurrentPinballGame->hatchTilesBumperAcknowledged = 3;
                     else
-                        gCurrentPinballGame->unk625 = 6;
+                        gCurrentPinballGame->hatchTilesBumperAcknowledged = 6;
 
-                    if (gCurrentPinballGame->unk625 == 6)
+                    if (gCurrentPinballGame->hatchTilesBumperAcknowledged == 6)
                     {
-                        if (gCurrentPinballGame->unk6C6 == 0)
+                        if (gCurrentPinballGame->hatchTilesBoardAcknowledged == 0)
                         {
                             gMain.modeChangeFlags |= MODE_CHANGE_BANNER;
                             gCurrentPinballGame->unkEA = 50;
@@ -1739,12 +1740,12 @@ void sub_30178(void)
             }
 
             gCurrentPinballGame->unk176++;
-            gCurrentPinballGame->unk308++;
-            if (gCurrentPinballGame->unk308 == 100)
+            gCurrentPinballGame->bumperHitsSinceReset++;
+            if (gCurrentPinballGame->bumperHitsSinceReset == 100)
                 gCurrentPinballGame->scoreAddedInFrame = 50000;
         }
 
-        gCurrentPinballGame->unk624--;
+        gCurrentPinballGame->bumperHitCountdown--;
     }
 
     if (group->available)
@@ -1766,10 +1767,10 @@ void sub_30178(void)
 
             DmaCopy16(3, &gUnknown_0845690C[index], (void *)0x060133A0 + i * 0x200, 0x200);
 
-            group->baseX = gCurrentPinballGame->unk178[i].x / 10 - gCurrentPinballGame->unk58 - 8;
-            group->baseY = gCurrentPinballGame->unk178[i].y / 10 - gCurrentPinballGame->unk5A - 10;
-            gCurrentPinballGame->unk184[i].x = (-(gCurrentPinballGame->unk178[i].x / 10) + 8) * 2;
-            gCurrentPinballGame->unk184[i].y = (-(gCurrentPinballGame->unk178[i].y / 10) + 3) * 2;
+            group->baseX = gCurrentPinballGame->rubyBumperLogicPosition[i].x / 10 - gCurrentPinballGame->unk58 - 8;
+            group->baseY = gCurrentPinballGame->rubyBumperLogicPosition[i].y / 10 - gCurrentPinballGame->unk5A - 10;
+            gCurrentPinballGame->rubyBumperCollisionPosition[i].x = (-(gCurrentPinballGame->rubyBumperLogicPosition[i].x / 10) + 8) * 2;
+            gCurrentPinballGame->rubyBumperCollisionPosition[i].y = (-(gCurrentPinballGame->rubyBumperLogicPosition[i].y / 10) + 3) * 2;
 
             oamSimple = &group->oam[i];
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
