@@ -83,7 +83,7 @@ void sub_27F94(void)
         gCurrentPinballGame->unk17++;
         break;
     case 3:
-        sub_1C7F4(3, 0);
+        updateSlotDisplay(3, 0);
         gCurrentPinballGame->hatchTileRevealState = HATCH_TILE_REVEAL_NONE;
         gCurrentPinballGame->unk602 = 0;
         gCurrentPinballGame->unk17++;
@@ -1035,9 +1035,9 @@ void sub_29D9C(void)
     gMain.unk44[21]->available = 1;
     gMain.blendControl = 0x1C10;
     gMain.blendAlpha = BLDALPHA_BLEND(0, 16);
-    gCurrentPinballGame->unk6E8 = 0;
-    gCurrentPinballGame->unk6F2 = 8;
-    gCurrentPinballGame->unk6F4 = 0;
+    gCurrentPinballGame->slotSpinState = 0;
+    gCurrentPinballGame->slotScrollTime = 8;
+    gCurrentPinballGame->slotStopCoolDown = 0;
     gCurrentPinballGame->unk6E0 = 0;
     if (gCurrentPinballGame->unk6E9 == 25)
         gCurrentPinballGame->unk6E9 = 10;
@@ -1124,15 +1124,15 @@ void sub_29D9C(void)
     gCurrentPinballGame->unk6EB = 1;
     gCurrentPinballGame->unk6EC[0] = gCurrentPinballGame->unk6F8[0];
     gCurrentPinballGame->unk6EC[1] = gCurrentPinballGame->unk6F8[1];
-    sub_1C7F4(2, 0);
-    sub_1C7F4(2, 1);
+    updateSlotDisplay(2, 0);
+    updateSlotDisplay(2, 1);
 }
 
 void sub_2A054(void)
 {
     if (gMain.selectedField == FIELD_SAPPHIRE)
     {
-        if (gCurrentPinballGame->unk6E8 == 0)
+        if (gCurrentPinballGame->slotSpinState == 0)
         {
             if ((gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON)) && gCurrentPinballGame->unk37C)
             {
@@ -1140,57 +1140,57 @@ void sub_2A054(void)
                 if (gCurrentPinballGame->unk6E0 < 17)
                     gCurrentPinballGame->unk6EC[1] = gCurrentPinballGame->unk6EC[0];
 
-                gCurrentPinballGame->unk6E8 = 1;
-                gCurrentPinballGame->unk6F2 = 40;
-                gCurrentPinballGame->unk6F0 = 39;
+                gCurrentPinballGame->slotSpinState = 1;
+                gCurrentPinballGame->slotScrollTime = 40;
+                gCurrentPinballGame->slotTimer = 39;
             }
         }
     }
 
-    if (gCurrentPinballGame->unk6E8 == 0)
+    if (gCurrentPinballGame->slotSpinState == 0)
     {
         gCurrentPinballGame->unk6C4 = 1;
-        gCurrentPinballGame->unk6F0++;
-        if (gCurrentPinballGame->unk6F4)
+        gCurrentPinballGame->slotTimer++;
+        if (gCurrentPinballGame->slotStopCoolDown)
         {
-            gCurrentPinballGame->unk6F4--;
-            if (gCurrentPinballGame->unk6F4 == 0)
+            gCurrentPinballGame->slotStopCoolDown--;
+            if (gCurrentPinballGame->slotStopCoolDown == 0)
             {
-                gCurrentPinballGame->unk6E8 = 1;
+                gCurrentPinballGame->slotSpinState = 1;
             }
             else
             {
-                if (gCurrentPinballGame->unk6F0 == gCurrentPinballGame->unk6F2)
+                if (gCurrentPinballGame->slotTimer == gCurrentPinballGame->slotScrollTime) //counts up by 2 each iteration
                 {
-                    gCurrentPinballGame->unk6F2 = 40 - (gCurrentPinballGame->unk6F4 * 34) / gCurrentPinballGame->unk6F6;
-                    gCurrentPinballGame->unk6F0 = 0;
+                    gCurrentPinballGame->slotScrollTime = 40 - (gCurrentPinballGame->slotStopCoolDown * 34) / gCurrentPinballGame->unk6F6;
+                    gCurrentPinballGame->slotTimer = 0;
                 }
             }
         }
         else if (gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON))
         {
-            gCurrentPinballGame->unk6F4 = (Random() % 200) + 100;
+            gCurrentPinballGame->slotStopCoolDown = (Random() % 200) + 100;
             if (gMain.selectedField == FIELD_SAPPHIRE)
             {
                 if (gCurrentPinballGame->unk378 == 1)
                 {
-                    gCurrentPinballGame->unk6F4 = 320;
+                    gCurrentPinballGame->slotStopCoolDown = 320;
                     gCurrentPinballGame->unk37C = 1;
                 }
             }
 
-            gCurrentPinballGame->unk6F6 = gCurrentPinballGame->unk6F4;
+            gCurrentPinballGame->unk6F6 = gCurrentPinballGame->slotStopCoolDown;
         }
 
-        gCurrentPinballGame->unk6F0 %= gCurrentPinballGame->unk6F2;
-        gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->unk6F0 * 32) / gCurrentPinballGame->unk6F2;
+        gCurrentPinballGame->slotTimer %= gCurrentPinballGame->slotScrollTime;
+        gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->slotTimer * 32) / gCurrentPinballGame->slotScrollTime;
     }
     else
     {
-        gCurrentPinballGame->unk6F0++;
-        gCurrentPinballGame->unk6F0 %= gCurrentPinballGame->unk6F2;
-        gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->unk6F0 * 32) / gCurrentPinballGame->unk6F2;
-        if (gCurrentPinballGame->unk6F0 == 0)
+        gCurrentPinballGame->slotTimer++;
+        gCurrentPinballGame->slotTimer %= gCurrentPinballGame->slotScrollTime;
+        gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->slotTimer * 32) / gCurrentPinballGame->slotScrollTime;
+        if (gCurrentPinballGame->slotTimer == 0)
         {
             gCurrentPinballGame->unk28 = 140;
             gMain.unk44[23]->available = 0;
@@ -1204,14 +1204,14 @@ void sub_2A054(void)
         }
     }
 
-    if (gCurrentPinballGame->unk6F0 == 0)
+    if (gCurrentPinballGame->slotTimer == 0)
     {
         gCurrentPinballGame->unk6EC[0] = gCurrentPinballGame->unk6EC[1];
-        sub_1C7F4(2, 0);
+        updateSlotDisplay(2, 0);
         gCurrentPinballGame->unk6DC = gCurrentPinballGame->unk6EC[0];
     }
 
-    if (gCurrentPinballGame->unk6F0 == 1)
+    if (gCurrentPinballGame->slotTimer == 1)
     {
         if (gCurrentPinballGame->unk6EB < gCurrentPinballGame->unk6EA)
             gCurrentPinballGame->unk6EB++;
@@ -1219,7 +1219,7 @@ void sub_2A054(void)
             gCurrentPinballGame->unk6EB = 0;
 
         gCurrentPinballGame->unk6EC[1] = gCurrentPinballGame->unk6F8[gCurrentPinballGame->unk6EB];
-        sub_1C7F4(2, 1);
+        updateSlotDisplay(2, 1);
         MPlayStart(&gMPlayInfo_SE1, &se_unk_81);
     }
 }
@@ -1239,7 +1239,7 @@ void sub_2A354(void)
 
         gCurrentPinballGame->unk6DE++;
         if (gCurrentPinballGame->unk6DE < 80)
-            sub_1C7F4(8, 0);
+            updateSlotDisplay(8, 0);
     }
 
     switch (gCurrentPinballGame->unk6DC)
@@ -2151,7 +2151,7 @@ void sub_2AADC(void)
 
         if (gCurrentPinballGame->unk5A6 == 270 && gMain.selectedField < MAIN_FIELD_COUNT)
         {
-            sub_1C7F4(0, 0);
+            updateSlotDisplay(0, 0);
             gCurrentPinballGame->unk6C4 = 0;
         }
 

@@ -484,7 +484,7 @@ void sub_1B140(s16 arg0)
             gCurrentPinballGame->unk1A8 = 0;
             gCurrentPinballGame->unk1A7 = gUnknown_086AD2DE[gCurrentPinballGame->unk1A6];
 
-            sub_1C7F4(6, 0);
+            updateSlotDisplay(6, 0);
             sub_21FBC(1);
 
             gMain.unk44[7]->available = 1;
@@ -540,7 +540,7 @@ void sub_1B140(s16 arg0)
                         else
                             gCurrentPinballGame->unk1A7 = gUnknown_086AD2DE[gCurrentPinballGame->unk1A6];
 
-                        sub_1C7F4(6, 0);
+                        updateSlotDisplay(6, 0);
                         var_r7 = 1;
                     }
                 }
@@ -735,9 +735,9 @@ void sub_1B140(s16 arg0)
                     gCurrentPinballGame->unk28 = 24;
 
                 if (gCurrentPinballGame->unk13 == 2)
-                    sub_1C7F4(1, 0);
+                    updateSlotDisplay(1, 0);
                 else
-                    sub_1C7F4(0, 0);
+                    updateSlotDisplay(0, 0);
 
                 gCurrentPinballGame->unk6C4 = 0;
                 gCurrentPinballGame->unk6DB = 3;

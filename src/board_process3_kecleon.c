@@ -245,7 +245,7 @@ void sub_35D54(void)
 
     switch (gCurrentPinballGame->unk3DC)
     {
-    case 0:
+    case 0: // start bonus stage
         gCurrentPinballGame->unk3DC = 1;
         gCurrentPinballGame->unk3E2 = 3;
         gCurrentPinballGame->unk3E4 = 0;
@@ -349,7 +349,7 @@ void sub_35D54(void)
         tempVec.y = -6 * Sin(angle) / VECTORSCALEDOWN;
         gCurrentPinballGame->unk3E8 += tempVec.x;
         gCurrentPinballGame->unk3EA += tempVec.y;
-        if (deltaMagSquared < 2500)
+        if (deltaMagSquared < 2500) //close to kecleon
         {
             gCurrentPinballGame->unk3DC = 8;
             if (gCurrentPinballGame->unk3DE == 3)
@@ -378,7 +378,7 @@ void sub_35D54(void)
                 gCurrentPinballGame->unk3E2 = gCurrentPinballGame->unk3DE;
         }
         break;
-    case 5:
+    case 5: //play jingle and move to next position
         if (gCurrentPinballGame->unk3E4 < 18)
         {
             if (gCurrentPinballGame->unk3E4 == 0)
@@ -475,7 +475,7 @@ void sub_35D54(void)
                 MPlayStart(&gMPlayInfo_SE1, &se_unk_ff);
         }
         break;
-    case 7:
+    case 7: //kecleon main loop, move to next position or play jingle and move to next position
         if (gUnknown_086AE718[gCurrentPinballGame->unk3E2][1] > gCurrentPinballGame->unk3E4)
         {
             gCurrentPinballGame->unk3E4++;
@@ -504,7 +504,7 @@ void sub_35D54(void)
                         gCurrentPinballGame->unk3F5 = 1;
                     }
 
-                    gCurrentPinballGame->unk3DC = 5;
+                    gCurrentPinballGame->unk3DC = 5; //play jingle and move to next position
                 }
 
                 rand = Random() + gMain.systemFrameCount;
@@ -519,7 +519,7 @@ void sub_35D54(void)
         {
             gCurrentPinballGame->unk3E4++;
         }
-        else
+        else //move kecleon to next position or play jingle and move to next position
         {
             int rand, mask;
 
@@ -553,7 +553,7 @@ void sub_35D54(void)
             }
         }
         break;
-    case 9:
+    case 9: //hit tree
         gCurrentPinballGame->unk3DC = 10;
         if (gMain.systemFrameCount & 1)
         {
@@ -589,7 +589,7 @@ void sub_35D54(void)
         gCurrentPinballGame->unk3E4 = 0;
         MPlayStart(&gMPlayInfo_SE1, &se_unk_100);
         break;
-    case 10:
+    case 10: //shake tree
         if (gUnknown_086AE718[gCurrentPinballGame->unk3E2][1] > gCurrentPinballGame->unk3E4)
         {
             gCurrentPinballGame->unk3E4++;
@@ -608,7 +608,7 @@ void sub_35D54(void)
             }
         }
         break;
-    case 11:
+    case 11://hit kecleon
         gCurrentPinballGame->unk3DC = 12;
         gCurrentPinballGame->unk3E2 = gCurrentPinballGame->unk3DE + 2;
         gCurrentPinballGame->unk3E4 = 0;
@@ -649,7 +649,7 @@ void sub_35D54(void)
             }
         }
         break;
-    case 13:
+    case 13: //kecleon down
         gCurrentPinballGame->unk3E2 = gCurrentPinballGame->unk3DE + 4;
         if (gCurrentPinballGame->unk3E4 < 8)
         {
@@ -729,7 +729,7 @@ void sub_35D54(void)
             }
         }
         break;
-    case 14:
+    case 14: //win at kecleon stage
         gCurrentPinballGame->unk3FA = 0;
         if (gUnknown_086AE718[gCurrentPinballGame->unk3E2][1] > gCurrentPinballGame->unk3E4)
         {

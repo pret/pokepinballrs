@@ -194,7 +194,7 @@ void sub_21238(s16 arg0)
     {
         if ((gCurrentPinballGame->unk72 & 0xF) == 0)
         {
-            sub_1C7F4(0, 0);
+            updateSlotDisplay(0, 0);
             gCurrentPinballGame->unk6C4 = 0;
         }
     }
@@ -227,7 +227,7 @@ void sub_21320(void)
                 sub_219A8();
                 gCurrentPinballGame->unk730 = 2;
                 gCurrentPinballGame->unk708 = 0;
-                sub_1C7F4(1, 0);
+                updateSlotDisplay(1, 0);
                 gCurrentPinballGame->unk17++;
             }
         }
@@ -235,7 +235,7 @@ void sub_21320(void)
     case 2:
         sub_219EC();
         if (gCurrentPinballGame->unk25 == 0)
-            sub_1C7F4(1, 0);
+            updateSlotDisplay(1, 0);
 
         if (gCurrentPinballGame->unk25 == 4)
             gCurrentPinballGame->unk17++;
@@ -262,7 +262,7 @@ void sub_21320(void)
         }
         else if (gCurrentPinballGame->unk28 == 24)
         {
-            sub_1C7F4(0, 0);
+            updateSlotDisplay(0, 0);
         }
         else if (gCurrentPinballGame->unk28 == 0)
         {
@@ -304,7 +304,7 @@ void sub_21514(void)
 {
     gCurrentPinballGame->unk730 = 0;
     gCurrentPinballGame->unk5F3 = 0;
-    sub_1C7F4(0, 0);
+    updateSlotDisplay(0, 0);
     gCurrentPinballGame->unk6C4 = 0;
     gCurrentPinballGame->unk723 = 0;
     gCurrentPinballGame->unk720 = 0;
@@ -367,7 +367,7 @@ void sub_21578(void)
         gCurrentPinballGame->unk17 = 0;
         gCurrentPinballGame->unk18 = 0;
         gCurrentPinballGame->unk708 = 0;
-        sub_1C7F4(7, 0);
+        updateSlotDisplay(7, 0);
     }
 }
 
@@ -418,7 +418,7 @@ void sub_216FC(void)
         break;
     case 2:
         sub_219EC();
-        sub_1C7F4(7, 0);
+        updateSlotDisplay(7, 0);
         if (gCurrentPinballGame->unk25 == 4)
             gCurrentPinballGame->unk17++;
         break;
@@ -427,7 +427,7 @@ void sub_216FC(void)
         gCurrentPinballGame->unk18 = 0;
         gCurrentPinballGame->unk708 = 0;
         gCurrentPinballGame->unk6EC[0] = 46;
-        sub_1C7F4(7, 0);
+        updateSlotDisplay(7, 0);
         break;
     case 4:
         if (gCurrentPinballGame->unk28 == 145)
@@ -449,7 +449,7 @@ void sub_216FC(void)
             }
 
             gCurrentPinballGame->unk6EC[0] = 46;
-            sub_1C7F4(7, 0);
+            updateSlotDisplay(7, 0);
         }
 
         if (gCurrentPinballGame->unk28 == 130)
@@ -1128,7 +1128,7 @@ void sub_22FA4(void)
     int index;
 
     gCurrentPinballGame->unk20E = 0;
-    sub_1C7F4(9, 0);
+    updateSlotDisplay(9, 0);
     gCurrentPinballGame->unkE4 = 14;
     gMain.unk44[4]->available = 1;
     for (i = 0; i < 10; i++)
@@ -1179,7 +1179,7 @@ void sub_2312C(void)
     gCurrentPinballGame->unk20E = 0;
     gCurrentPinballGame->unk6DB = 0;
     gCurrentPinballGame->unk210 = 0;
-    sub_1C7F4(3, 0);
+    updateSlotDisplay(3, 0);
     gCurrentPinballGame->unkE4 = 13;
     gMain.unk44[4]->available = 1;
     for (i = 0; i < 10; i++)
@@ -1700,7 +1700,7 @@ void sub_242B4(void)
         gCurrentPinballGame->unk343 = 1;
 
     gCurrentPinballGame->unk5A5 = 0;
-    sub_1C7F4(0, 0);
+    updateSlotDisplay(0, 0);
     gCurrentPinballGame->unk6C4 = 0;
     for (i = 0; i < 3; i++)
     {
@@ -2507,11 +2507,11 @@ void sub_25F64(void)
     gCurrentPinballGame->unk36 = 0;
     gCurrentPinballGame->unk32 = (Random() + gMain.systemFrameCount) % 6;
     gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][gCurrentPinballGame->unk32];
-    gCurrentPinballGame->unk6D9[1] = gUnknown_08137928[gCurrentPinballGame->area];
+    gCurrentPinballGame->displayedAreaSlot[1] = gUnknown_08137928[gCurrentPinballGame->area];
     gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][(gCurrentPinballGame->unk32 + 1) % 6];
-    gCurrentPinballGame->unk6D9[0] = gUnknown_08137928[gCurrentPinballGame->area];
-    sub_1C7F4(0, 0);
-    sub_1C7F4(0, 1);
+    gCurrentPinballGame->displayedAreaSlot[0] = gUnknown_08137928[gCurrentPinballGame->area];
+    updateSlotDisplay(0, 0);
+    updateSlotDisplay(0, 1);
     for (i = 0; i < 6; i++)
         gCurrentPinballGame->unk6D3[i] = 13;
 
@@ -2542,9 +2542,9 @@ void sub_260B8(void)
         gMain.unk44[23]->available = 1;
         gMain.unk44[22]->available = 1;
         gMain.unk44[19]->available = 1;
-        gCurrentPinballGame->unk6F0 = 30;
-        gCurrentPinballGame->unk6F2 = 30;
-        gCurrentPinballGame->unk6F4 = 0;
+        gCurrentPinballGame->slotTimer = 30;
+        gCurrentPinballGame->slotScrollTime = 30;
+        gCurrentPinballGame->slotStopCoolDown = 0;
         if (gMain.selectedField == FIELD_RUBY)
         {
             gCurrentPinballGame->unk170[0] = 10;
@@ -2580,7 +2580,7 @@ void sub_260B8(void)
             gCurrentPinballGame->rubyPondChangeTimer++;
         }
 
-        gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->unk6F0 * 32) / gCurrentPinballGame->unk6F2;
+        gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->slotTimer * 32) / gCurrentPinballGame->slotScrollTime;
         gCurrentPinballGame->unk6C4 = 1;
         gCurrentPinballGame->unk18++;
         sub_26778();
@@ -2592,8 +2592,8 @@ void sub_260B8(void)
             if (gCurrentPinballGame->unk18 == 15)
             {
                 gCurrentPinballGame->unk17++;
-                gCurrentPinballGame->unk6F2 = 6;
-                gCurrentPinballGame->unk6F4 = 0;
+                gCurrentPinballGame->slotScrollTime = 6;
+                gCurrentPinballGame->slotStopCoolDown = 0;
             }
         }
         sub_26820(0);
@@ -2602,22 +2602,22 @@ void sub_260B8(void)
     case 5:
         if (gCurrentPinballGame->unk17 == 3)
         {
-            gCurrentPinballGame->unk6F0--;
-            gCurrentPinballGame->unk6F0 %= gCurrentPinballGame->unk6F2;
+            gCurrentPinballGame->slotTimer--;
+            gCurrentPinballGame->slotTimer %= gCurrentPinballGame->slotScrollTime;
         }
         else if (gCurrentPinballGame->unk17 == 4)
         {
-            gCurrentPinballGame->unk6F0++;
+            gCurrentPinballGame->slotTimer++;
             if (gCurrentPinballGame->newButtonActions[1] && gCurrentPinballGame->unk17 == 4)
             {
-                if (gCurrentPinballGame->unk6F4 == 0)
+                if (gCurrentPinballGame->slotStopCoolDown == 0)
                 {
                     if (gMain.eReaderBonuses[EREADER_RUIN_AREA_CARD])
-                        gCurrentPinballGame->unk6F4 = 48;
+                        gCurrentPinballGame->slotStopCoolDown = 48;
                     else
-                        gCurrentPinballGame->unk6F4 = 1;
+                        gCurrentPinballGame->slotStopCoolDown = 1;
 
-                    gCurrentPinballGame->unk6F6 = gCurrentPinballGame->unk6F4;
+                    gCurrentPinballGame->unk6F6 = gCurrentPinballGame->slotStopCoolDown;
                     gCurrentPinballGame->unk163 = 1;
                     gCurrentPinballGame->unk21 = 1;
                     gCurrentPinballGame->unk724 = 3600;
@@ -2625,41 +2625,41 @@ void sub_260B8(void)
                 }
             }
 
-            if (gCurrentPinballGame->unk6F4)
+            if (gCurrentPinballGame->slotStopCoolDown)
             {
-                gCurrentPinballGame->unk6F4--;
+                gCurrentPinballGame->slotStopCoolDown--;
                 if (gMain.eReaderBonuses[EREADER_RUIN_AREA_CARD])
                 {
                     gCurrentPinballGame->numCompletedBonusStages = 4;
-                    if (gCurrentPinballGame->unk6F4 < 24)
+                    if (gCurrentPinballGame->slotStopCoolDown < 24)
                     {
-                        gCurrentPinballGame->unk6F4 = 24;
+                        gCurrentPinballGame->slotStopCoolDown = 24;
                         if (gCurrentPinballGame->unk32 == 6)
-                            gCurrentPinballGame->unk6F4 = 0;
+                            gCurrentPinballGame->slotStopCoolDown = 0;
                     }
                 }
 
-                if (gCurrentPinballGame->unk6F4 == 0)
+                if (gCurrentPinballGame->slotStopCoolDown == 0)
                 {
                     gCurrentPinballGame->unk17 = 5;
                 }
                 else
                 {
-                    if (gCurrentPinballGame->unk6F0 == gCurrentPinballGame->unk6F2)
+                    if (gCurrentPinballGame->slotTimer == gCurrentPinballGame->slotScrollTime)
                     {
-                        gCurrentPinballGame->unk6F2 = 40 - (gCurrentPinballGame->unk6F4 * 30) / gCurrentPinballGame->unk6F6;
-                        gCurrentPinballGame->unk6F0 = 0;
+                        gCurrentPinballGame->slotScrollTime = 40 - (gCurrentPinballGame->slotStopCoolDown * 30) / gCurrentPinballGame->unk6F6;
+                        gCurrentPinballGame->slotTimer = 0;
                     }
                 }
             }
 
-            gCurrentPinballGame->unk6F0 %= gCurrentPinballGame->unk6F2;
+            gCurrentPinballGame->slotTimer %= gCurrentPinballGame->slotScrollTime;
         }
         else
         {
-            gCurrentPinballGame->unk6F0++;
-            gCurrentPinballGame->unk6F0 %= gCurrentPinballGame->unk6F2;
-            if (gCurrentPinballGame->unk6F0 == 0)
+            gCurrentPinballGame->slotTimer++;
+            gCurrentPinballGame->slotTimer %= gCurrentPinballGame->slotScrollTime;
+            if (gCurrentPinballGame->slotTimer == 0)
             {
                 gCurrentPinballGame->unk18 = 0;
                 gCurrentPinballGame->unk17++;
@@ -2671,14 +2671,14 @@ void sub_260B8(void)
             }
         }
 
-        gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->unk6F0 * 32) / gCurrentPinballGame->unk6F2;
-        if (gCurrentPinballGame->unk6F0 == 0)
+        gCurrentPinballGame->unk6E0 = (gCurrentPinballGame->slotTimer * 32) / gCurrentPinballGame->slotScrollTime;
+        if (gCurrentPinballGame->slotTimer == 0)
         {
-            gCurrentPinballGame->unk6D9[0] = gCurrentPinballGame->unk6D9[1];
-            sub_1C7F4(0, 0);
+            gCurrentPinballGame->displayedAreaSlot[0] = gCurrentPinballGame->displayedAreaSlot[1];
+            updateSlotDisplay(0, 0);
         }
 
-        if (gCurrentPinballGame->unk6F0 == 1)
+        if (gCurrentPinballGame->slotTimer == 1)
         {
             if (gMain.eReaderBonuses[EREADER_RUIN_AREA_CARD])
             {
@@ -2694,8 +2694,8 @@ void sub_260B8(void)
             }
 
             gCurrentPinballGame->area = gUnknown_08055A68[gMain.selectedField][gCurrentPinballGame->unk32];
-            gCurrentPinballGame->unk6D9[1] = gUnknown_08137928[gCurrentPinballGame->area];
-            sub_1C7F4(0, 1);
+            gCurrentPinballGame->displayedAreaSlot[1] = gUnknown_08137928[gCurrentPinballGame->area];
+            updateSlotDisplay(0, 1);
             m4aSongNumStart(SE_UNKNOWN_0x81);
         }
         break;
@@ -2810,7 +2810,7 @@ void sub_268CC(void)
 
     gCurrentPinballGame->unk6BE = 1;
     gCurrentPinballGame->unk6C0 = 0;
-    sub_1C7F4(0, 0);
+    updateSlotDisplay(0, 0);
     gCurrentPinballGame->unk6C4 = 0;
     gMain.unk44[13]->available = 0;
     gCurrentPinballGame->unk730 = 0;
@@ -2855,7 +2855,7 @@ void sub_26A10(void)
         gCurrentPinballGame->unk6BC = 0;
         break;
     case 1:
-        sub_1C7F4(4, 0);
+        updateSlotDisplay(4, 0);
         if (gCurrentPinballGame->unk18 == 35)
             m4aSongNumStart(MUS_TRAVEL_MODE);
 
@@ -2904,7 +2904,7 @@ void sub_26A10(void)
     case 2:
         sub_219A8();
         gCurrentPinballGame->unk730 = 2;
-        sub_1C7F4(0, 0);
+        updateSlotDisplay(0, 0);
         gCurrentPinballGame->unk739[0] = gCurrentPinballGame->unk736[0] = 0;
         gCurrentPinballGame->unk739[1] = gCurrentPinballGame->unk736[1] = 0;
         gCurrentPinballGame->unk739[2] = gCurrentPinballGame->unk736[2] = 0;
@@ -2921,19 +2921,19 @@ void sub_26A10(void)
         gCurrentPinballGame->unk18 = 0;
         gCurrentPinballGame->unk708 = 0;
         gCurrentPinballGame->unk6EC[0] = 47;
-        sub_1C7F4(7, 0);
+        updateSlotDisplay(7, 0);
         break;
     case 5:
         if (gCurrentPinballGame->unk28 == 145)
         {
             gCurrentPinballGame->unk28++;
             gCurrentPinballGame->unk6EC[0] = 47;
-            sub_1C7F4(7, 0);
+            updateSlotDisplay(7, 0);
             if (JOY_NEW(A_BUTTON))
             {
                 gCurrentPinballGame->unk28 = 144;
                 m4aMPlayAllStop();
-                sub_1C7F4(0, 0);
+                updateSlotDisplay(0, 0);
                 if (gCurrentPinballGame->unk36 < 5)
                 {
                     var0 = gCurrentPinballGame->unk34;
@@ -3017,7 +3017,7 @@ void sub_26EA4(void)
 {
     s16 i;
 
-    sub_1C7F4(0, 0);
+    updateSlotDisplay(0, 0);
     gCurrentPinballGame->unk6C4 = 0;
     for (i = 0; i < 3; i++)
     {
@@ -3071,7 +3071,7 @@ void sub_26F38(void)
     gCurrentPinballGame->unk26B = 0;
     gCurrentPinballGame->unk26C = 0;
     gCurrentPinballGame->unk26E = 0;
-    sub_1C7F4(3, 0);
+    updateSlotDisplay(3, 0);
 }
 
 void sub_27080(void)
@@ -3228,7 +3228,7 @@ void sub_27080(void)
 
                     if (gCurrentPinballGame->unk18 == 270)
                     {
-                        sub_1C7F4(0, 0);
+                        updateSlotDisplay(0, 0);
                         gCurrentPinballGame->unk6C4 = 0;
                     }
 
@@ -3480,7 +3480,7 @@ void sub_27D44(void)
     gMain.unk44[18]->available = 0;
     gMain.unk44[12]->available = 0;
     gCurrentPinballGame->unk5F2 = 0;
-    sub_1C7F4(0, 0);
+    updateSlotDisplay(0, 0);
     gCurrentPinballGame->unk6C4 = 0;
     sub_4D648();
     for (i = 0; i < 6; i++)

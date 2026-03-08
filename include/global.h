@@ -765,7 +765,7 @@ struct PinballGame
     /*0x6CC*/ s8 hatchFrameId;
     /*0x6CD*/ u8 unk6CD[6];
     /*0x6D3*/ u8 unk6D3[6];
-    /*0x6D9*/ s8 unk6D9[2];
+    /*0x6D9*/ s8 displayedAreaSlot[2]; //current and previous tile for the area slots
     /*0x6DB*/ u8 unk6DB;
     /*0x6DC*/ u8 unk6DC;
     /*0x6DD*/ s8 unk6DD;
@@ -773,15 +773,15 @@ struct PinballGame
     /*0x6E0*/ s16 unk6E0;
     /*0x6E2*/ u8 filler6E2[0x2];
     /*0x6E4*/ struct Vector16 unk6E4;
-    /*0x6E8*/ s8 unk6E8;
+    /*0x6E8*/ s8 slotSpinState; // Slot spin state. 0 = spinning, 1 = not spinning
     /*0x6E9*/ s8 unk6E9;
     /*0x6EA*/ s8 unk6EA;
     /*0x6EB*/ s8 unk6EB;
     /*0x6EC*/ s8 unk6EC[2];
     /*0x6EE*/ u16 unk6EE;
-    /*0x6F0*/ u16 unk6F0;
-    /*0x6F2*/ u16 unk6F2;
-    /*0x6F4*/ u16 unk6F4;
+    /*0x6F0*/ u16 slotTimer; // count up to next slot scroll after a press
+    /*0x6F2*/ u16 slotScrollTime; // time to next slot scroll after a press
+    /*0x6F4*/ u16 slotStopCoolDown; // time to slot stop after a press
     /*0x6F6*/ u16 unk6F6;
     /*0x6F8*/ u16 unk6F8[6];
     /*0x704*/ u16 unk704;
@@ -828,7 +828,7 @@ struct PinballGame
     /*0x744*/ u8 unk744[2];
     /*0x746*/ u8 unk746;
     /*0x747*/ u8 unk747[2];
-    /*0x749*/ u8 unk749[2];
+    /*0x749*/ u8 currentSlotItems[2]; //current and previous tile for bonus slots
     /*0x74B*/ u8 filler74B[0x1];
     /*0x74C*/ volatile u8 unk74C[2][OBJ_PLTT_SIZE];
     /*0xB4C*/ volatile u8 unkB4C[2][BG_PLTT_SIZE];

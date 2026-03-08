@@ -53,7 +53,7 @@ extern s16 gUnknown_086B4922[28][12];
 #define MIN_POND_SWITCHES_BEFORE_WHISCASH_AVAILABLE 3
 
 
-void sub_1C7F4(s16 arg0, s16 arg1)
+void updateSlotDisplay(s16 slotMode, s16 arg1)
 {
     s16 i;
     s16 var0;
@@ -64,39 +64,39 @@ void sub_1C7F4(s16 arg0, s16 arg1)
     const u16 *ptr2;
     u16 index2;
 
-    switch (arg0)
+    switch (slotMode)
     {
-    case 0:
+    case 0:// slot neutral
         gCurrentPinballGame->unk6DB = 3;
-        gCurrentPinballGame->unk749[arg1] = gCurrentPinballGame->unk6D9[arg1];
-        DmaCopy16(3, gUnknown_0848D68C[gCurrentPinballGame->unk749[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
-        index = gCurrentPinballGame->unk6D9[arg1] * 0x10;
+        gCurrentPinballGame->currentSlotItems[arg1] = gCurrentPinballGame->displayedAreaSlot[arg1];
+        DmaCopy16(3, gUnknown_0848D68C[gCurrentPinballGame->currentSlotItems[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
+        index = gCurrentPinballGame->displayedAreaSlot[arg1] * 0x10;
         DmaCopy16(3, &gUnknown_081C00E4[index], (void *)0x05000200 + gUnknown_086AD798[arg1] * 0x20, 0x20);
         break;
-    case 1:
+    case 1: // display start slot
         ptr = gUnknown_086AD070;
-        gCurrentPinballGame->unk749[arg1] = ptr[(gCurrentPinballGame->unk708 % 48) / 24];
+        gCurrentPinballGame->currentSlotItems[arg1] = ptr[(gCurrentPinballGame->unk708 % 48) / 24];
         index = ptr[2] * 0x10;
-        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->unk749[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
+        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->currentSlotItems[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
         DmaCopy16(3, &gUnknown_081C02E4[index], (void *)0x05000200 + gUnknown_086AD798[arg1] * 0x20, 0x20);
         break;
-    case 2:
+    case 2: //begin slot animation
         ptr = gUnknown_086AD000[gCurrentPinballGame->unk6EC[arg1]];
-        gCurrentPinballGame->unk749[arg1] = ptr[0];
+        gCurrentPinballGame->currentSlotItems[arg1] = ptr[0];
         index = ptr[2] * 0x10;
-        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->unk749[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
+        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->currentSlotItems[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
         DmaCopy16(3, &gUnknown_081C02E4[index], (void *)0x05000200 + gUnknown_086AD798[arg1] * 0x20, 0x20);
         break;
-    case 3:
-        gCurrentPinballGame->unk749[arg1] = gCurrentPinballGame->currentSpecies;
+    case 3: //display a portiat in the slots
+        gCurrentPinballGame->currentSlotItems[arg1] = gCurrentPinballGame->currentSpecies;
         DmaCopy16(
             3,
-            gMonPortraitGroupGfx[gCurrentPinballGame->unk749[arg1] / 15] + (gCurrentPinballGame->unk749[arg1] % 15) * 0x300,
+            gMonPortraitGroupGfx[gCurrentPinballGame->currentSlotItems[arg1] / 15] + (gCurrentPinballGame->currentSlotItems[arg1] % 15) * 0x300,
             (void *)0x06010CA0 + arg1 * 24,
             0x300);
         DmaCopy16(
             3,
-            gMonPortraitGroupPals[gCurrentPinballGame->unk749[arg1] / 15] + (gCurrentPinballGame->unk749[arg1] % 15) * 0x20,
+            gMonPortraitGroupPals[gCurrentPinballGame->currentSlotItems[arg1] / 15] + (gCurrentPinballGame->currentSlotItems[arg1] % 15) * 0x20,
             (void *)0x050003A0 ,
             0x20);
         DmaCopy16(3, gMonPortraitGroupPals[0] + 15 * 0x20, (void *)0x050003E0, 0x20);
@@ -106,66 +106,66 @@ void sub_1C7F4(s16 arg0, s16 arg1)
         {
             if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] == SPECIES_UNSEEN)
             {
-                gCurrentPinballGame->unk749[arg1] = SPECIES_NONE;
+                gCurrentPinballGame->currentSlotItems[arg1] = SPECIES_NONE;
                 DmaCopy16(
                     3,
-                    gMonPortraitGroupPals[gCurrentPinballGame->unk749[arg1] / 15] + (gCurrentPinballGame->unk749[arg1] % 15) * 0x20,
+                    gMonPortraitGroupPals[gCurrentPinballGame->currentSlotItems[arg1] / 15] + (gCurrentPinballGame->currentSlotItems[arg1] % 15) * 0x20,
                     (void *)0x050003A0,
                     0x20);
             }
             else if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] < SPECIES_CAUGHT)
             {
-                gCurrentPinballGame->unk749[arg1] = gCurrentPinballGame->unk59A;
+                gCurrentPinballGame->currentSlotItems[arg1] = gCurrentPinballGame->unk59A;
                 DmaCopy16(3, gMonPortraitGroupPals[0] + 15 * 0x20, (void *)0x050003A0, 0x20);
             }
             else
             {
-                gCurrentPinballGame->unk749[arg1] = gCurrentPinballGame->unk59A;
+                gCurrentPinballGame->currentSlotItems[arg1] = gCurrentPinballGame->unk59A;
                 DmaCopy16(
                     3,
-                    gMonPortraitGroupPals[gCurrentPinballGame->unk749[arg1] / 15] + (gCurrentPinballGame->unk749[arg1] % 15) * 0x20,
+                    gMonPortraitGroupPals[gCurrentPinballGame->currentSlotItems[arg1] / 15] + (gCurrentPinballGame->currentSlotItems[arg1] % 15) * 0x20,
                     (void *)0x050003A0,
                     0x20);
             }
         }
         else
         {
-            gCurrentPinballGame->unk749[arg1] = gCurrentPinballGame->currentSpecies;
+            gCurrentPinballGame->currentSlotItems[arg1] = gCurrentPinballGame->currentSpecies;
             DmaCopy16(
                 3,
-                gMonPortraitGroupPals[gCurrentPinballGame->unk749[arg1] / 15] + (gCurrentPinballGame->unk749[arg1] % 15) * 0x20,
+                gMonPortraitGroupPals[gCurrentPinballGame->currentSlotItems[arg1] / 15] + (gCurrentPinballGame->currentSlotItems[arg1] % 15) * 0x20,
                 (void *)0x050003A0,
                 0x20);
         }
 
         DmaCopy16(
             3,
-            gMonPortraitGroupGfx[gCurrentPinballGame->unk749[arg1] / 15] + (gCurrentPinballGame->unk749[arg1] % 15) * 0x300,
+            gMonPortraitGroupGfx[gCurrentPinballGame->currentSlotItems[arg1] / 15] + (gCurrentPinballGame->currentSlotItems[arg1] % 15) * 0x300,
             (void *)0x06010CA0 + arg1 * 0x18,
             0x300);
         break;
-    case 4:
+    case 4: //travel mode
         if (gCurrentPinballGame->unk17 == 2)
         {
-            gCurrentPinballGame->unk749[arg1] = gUnknown_086AD000[15][(gCurrentPinballGame->unk708 % 48) / 24];
-            DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->unk749[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
+            gCurrentPinballGame->currentSlotItems[arg1] = gUnknown_086AD000[15][(gCurrentPinballGame->unk708 % 48) / 24];
+            DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->currentSlotItems[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
 
             // !!!!! BUG: this should be multiplied by 16 !!
             index = gUnknown_086AD000[15][2];
         }
         else
         {
-            gCurrentPinballGame->unk749[arg1] = gUnknown_086AD000[16][(gCurrentPinballGame->unk708 % 48) / 24];
-            DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->unk749[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
+            gCurrentPinballGame->currentSlotItems[arg1] = gUnknown_086AD000[16][(gCurrentPinballGame->unk708 % 48) / 24];
+            DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->currentSlotItems[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
             index = gUnknown_086AD000[16][2] * 16;
         }
         DmaCopy16(3, &gUnknown_081C02E4[index], (void *)0x05000200 + gUnknown_086AD798[arg1] * 0x20, 0x20);
         break;
     case 6:
         ptr = gUnknown_086AD000[gCurrentPinballGame->unk1A7];
-        gCurrentPinballGame->unk749[arg1] = ptr[0];
+        gCurrentPinballGame->currentSlotItems[arg1] = ptr[0];
         index = ptr[2] * 16;
-        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->unk749[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
+        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->currentSlotItems[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
         if (gCurrentPinballGame->coins < ptr[3] ||
             (
                 (gUnknown_086AD2DE[gCurrentPinballGame->unk1A6] == 3 && gCurrentPinballGame->outLanePikaPosition == 2)
@@ -189,25 +189,25 @@ void sub_1C7F4(s16 arg0, s16 arg1)
             DmaCopy16(3, &gUnknown_081C02E4[index], (void *)0x05000200 + gUnknown_086AD798[arg1] * 0x20, 0x20);
         }
         break;
-    case 7:
+    case 7: //start travel mode menu animation
         // TODO: fake match
         ptr2 = ptr = gUnknown_086AD000[gCurrentPinballGame->unk6EC[arg1]];
-        gCurrentPinballGame->unk749[arg1] = *(ptr2 += (gCurrentPinballGame->unk708 % 48) / 24);
+        gCurrentPinballGame->currentSlotItems[arg1] = *(ptr2 += (gCurrentPinballGame->unk708 % 48) / 24);
         index = ptr[2] * 16;
-        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->unk749[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
+        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->currentSlotItems[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
         DmaCopy16(3, &gUnknown_081C02E4[index], (void *)0x05000200 + gUnknown_086AD798[arg1] * 0x20, 0x20);
         break;
     case 8:
         // TODO: fake match
         ptr2 = ptr = gUnknown_086AD000[gCurrentPinballGame->unk6DC];
-        gCurrentPinballGame->unk749[arg1] = *(ptr2 += gUnknown_086AD79C[gCurrentPinballGame->unk6DE / 12]);
+        gCurrentPinballGame->currentSlotItems[arg1] = *(ptr2 += gUnknown_086AD79C[gCurrentPinballGame->unk6DE / 12]);
         index = ptr[2] * 16;
-        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->unk749[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
+        DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->currentSlotItems[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
         DmaCopy16(3, &gUnknown_081C02E4[index], (void *)0x05000200 + gUnknown_086AD798[arg1] * 0x20, 0x20);
         break;
     }
 
-    gCurrentPinballGame->unk747[arg1] = arg0;
+    gCurrentPinballGame->unk747[arg1] = slotMode;
     gCurrentPinballGame->unk708++;
 }
 

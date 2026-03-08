@@ -181,7 +181,7 @@ void PinballGame_State0_49ED4(void)
         if (gMain.selectedField == FIELD_RUBY)
             sub_46FD4(1);
 
-        sub_1C7F4(0, 0);
+        updateSlotDisplay(0, 0);
         gCurrentPinballGame->unk6C4 = 0;
         break;
     case 3:
@@ -1387,7 +1387,7 @@ void sub_4C290(void)
         switch (gCurrentPinballGame->unk747[i])
         {
         case 0:
-            DmaCopy16(3, gUnknown_0848D68C[gCurrentPinballGame->unk749[i]], 0x06010CA0 + (i * 0x300), 0x300);
+            DmaCopy16(3, gUnknown_0848D68C[gCurrentPinballGame->currentSlotItems[i]], 0x06010CA0 + (i * 0x300), 0x300);
             gCurrentPinballGame->ball += 0; //TODO: Dumb match is still a match...
             break;
         case 9:
@@ -1395,27 +1395,27 @@ void sub_4C290(void)
             {
                 if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] == 0)
                 {
-                    gCurrentPinballGame->unk749[i] = 205;
-                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->unk749[i] / 15] + (gCurrentPinballGame->unk749[i] % 15) * 0x20, 0x050003A0, 0x20);
+                    gCurrentPinballGame->currentSlotItems[i] = 205;
+                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->currentSlotItems[i] / 15] + (gCurrentPinballGame->currentSlotItems[i] % 15) * 0x20, 0x050003A0, 0x20);
                 }
                 else if (gMain_saveData.pokedexFlags[gCurrentPinballGame->unk59A] <= 3)
                 {
-                    gCurrentPinballGame->unk749[i] = gCurrentPinballGame->unk59A;
+                    gCurrentPinballGame->currentSlotItems[i] = gCurrentPinballGame->unk59A;
                     DmaCopy16(3, gMonPortraitGroupPals[0] + 15 * 0x20, 0x050003A0, 0x20);
                 }
                 else
                 {
-                    gCurrentPinballGame->unk749[i] = gCurrentPinballGame->unk59A;
-                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->unk749[i] / 15] + (gCurrentPinballGame->unk749[i] % 15) * 0x20, 0x050003A0, 0x20);
+                    gCurrentPinballGame->currentSlotItems[i] = gCurrentPinballGame->unk59A;
+                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->currentSlotItems[i] / 15] + (gCurrentPinballGame->currentSlotItems[i] % 15) * 0x20, 0x050003A0, 0x20);
                 }
             }
             else
             {
-                gCurrentPinballGame->unk749[i] = gCurrentPinballGame->currentSpecies;
-                DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->unk749[i] / 15] + ((gCurrentPinballGame->unk749[i] % 15) * 0x20), 0x050003A0, 0x20);
+                gCurrentPinballGame->currentSlotItems[i] = gCurrentPinballGame->currentSpecies;
+                DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->currentSlotItems[i] / 15] + ((gCurrentPinballGame->currentSlotItems[i] % 15) * 0x20), 0x050003A0, 0x20);
             }
         case 3:
-            DmaCopy16(3, gMonPortraitGroupGfx[gCurrentPinballGame->unk749[i] / 15] + (gCurrentPinballGame->unk749[i] % 15) * 0x300, 0x06010CA0 + (i * 0x18), 0x300);
+            DmaCopy16(3, gMonPortraitGroupGfx[gCurrentPinballGame->currentSlotItems[i] / 15] + (gCurrentPinballGame->currentSlotItems[i] % 15) * 0x300, 0x06010CA0 + (i * 0x18), 0x300);
             break;
         case 1:
         case 2:
@@ -1423,7 +1423,7 @@ void sub_4C290(void)
         case 6:
         case 7:
         case 8:
-            DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->unk749[i]], 0x06010CA0 + (i * 0x300), 0x300);
+            DmaCopy16(3, gUnknown_083A8EEC[gCurrentPinballGame->currentSlotItems[i]], 0x06010CA0 + (i * 0x300), 0x300);
             break;
         }
     }
@@ -1563,7 +1563,7 @@ void sub_4CB30(void)
     DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x6015800, 0x2000);
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
+        gMonPortraitGroupGfx[gCurrentPinballGame->currentSlotItems[0] / 15] + (gCurrentPinballGame->currentSlotItems[0] % 15) * 0x300,
         (void *)0x6010CA0,
         0x300
     );
@@ -1582,7 +1582,7 @@ void sub_4CBB4(void)
 
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
+        gMonPortraitGroupGfx[gCurrentPinballGame->currentSlotItems[0] / 15] + (gCurrentPinballGame->currentSlotItems[0] % 15) * 0x300,
         (void *)0x6010CA0,
         0x300
     );
@@ -1613,7 +1613,7 @@ void sub_4CC58(void)
 
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->unk749[0] / 15] + (gCurrentPinballGame->unk749[0] % 15) * 0x300,
+        gMonPortraitGroupGfx[gCurrentPinballGame->currentSlotItems[0] / 15] + (gCurrentPinballGame->currentSlotItems[0] % 15) * 0x300,
         (void *)0x6010CA0,
         0x300
     );

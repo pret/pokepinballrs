@@ -650,7 +650,7 @@ void sub_2D204(void)
             gMain.unk44[28]->available = 0;
             gMain.unk44[15]->available = 0;
             gCurrentPinballGame->currentSpecies = gCurrentPinballGame->unk5A2;
-            sub_1C7F4(3, 0);
+            updateSlotDisplay(3, 0);
             gCurrentPinballGame->unkE4 = 17;
             DmaCopy16(3, gUnknown_083A562C, (void *)0x06015800, 0x1800);
             DmaCopy16(3, gUnknown_083A6E4C, (void *)0x050003C0, 0x20);
@@ -797,8 +797,8 @@ void sub_2E094(void)
                 if (gCurrentPinballGame->unk60A == 7)
                 {
                     gCurrentPinballGame->area =  gUnknown_08055A68[gMain.selectedField][gCurrentPinballGame->unk32];
-                    gCurrentPinballGame->unk6D9[0] = gUnknown_08137928[gCurrentPinballGame->area];
-                    sub_1C7F4(0, 0);
+                    gCurrentPinballGame->displayedAreaSlot[0] = gUnknown_08137928[gCurrentPinballGame->area]; //show next area in the background
+                    updateSlotDisplay(0, 0);
                 }
 
                 if (gCurrentPinballGame->unk60A == 11)

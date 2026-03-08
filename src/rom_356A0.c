@@ -263,7 +263,7 @@ void sub_357B8(void)
     gCurrentPinballGame->unk16 = 0;
     gCurrentPinballGame->unk5FA = 0;
     gCurrentPinballGame->unkE6 = 0;
-    sub_1C7F4(0, 0);
+    updateSlotDisplay(0, 0);
     gCurrentPinballGame->unk6C4 = 0;
     if (gCurrentPinballGame->unk714)
         gCurrentPinballGame->unk6EE = 120;
