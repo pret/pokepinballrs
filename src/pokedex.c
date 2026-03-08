@@ -484,7 +484,7 @@ void Pokedex_State5_45A4(void)
     {
         if (gPokedexFlags[gPokedexSelectedMon] == SPECIES_CAUGHT)
         {
-            if (gUnknown_086A61BC[gPokedexSelectedMon] == -1)
+            if (gDexAnimationIx[gPokedexSelectedMon] == -1)
             {
                 gUnknown_0202A588 = 0;
                 gUnknown_0202A55C = 1;
@@ -495,7 +495,7 @@ void Pokedex_State5_45A4(void)
             }
             else
             {
-                if (gUnknown_086A61BC[gPokedexSelectedMon] < 100)
+                if (gDexAnimationIx[gPokedexSelectedMon] < 100)
                 {
                     gUnknown_0202A588 = 0;
                     gUnknown_0202A55C = 0;
@@ -921,7 +921,7 @@ void sub_5064(void)
 {
     if (gPokedexFlags[gPokedexSelectedMon] == SPECIES_CAUGHT)
     {
-        if (gUnknown_086A61BC[gPokedexSelectedMon] == -1)
+        if (gDexAnimationIx[gPokedexSelectedMon] == -1)
         {
             gUnknown_0202A588 = 0;
             gUnknown_0202A55C = 1;
@@ -930,7 +930,7 @@ void sub_5064(void)
             gUnknown_0201A440 = 0;
             gUnknown_0202BF0C = 0;
         }
-        else if (gUnknown_086A61BC[gPokedexSelectedMon] < 100)
+        else if (gDexAnimationIx[gPokedexSelectedMon] < 100)
         {
             gUnknown_0202A588 = 0;
             gUnknown_0202A55C = 0;
@@ -956,9 +956,9 @@ void sub_5064(void)
 
 u8 sub_5134(void)
 {
-    if (gPokedexFlags[gPokedexSelectedMon] == SPECIES_CAUGHT && gUnknown_086A61BC[gPokedexSelectedMon] != -1)
+    if (gPokedexFlags[gPokedexSelectedMon] == SPECIES_CAUGHT && gDexAnimationIx[gPokedexSelectedMon] != -1)
     {
-        if (gUnknown_086A61BC[gPokedexSelectedMon] < 100)
+        if (gDexAnimationIx[gPokedexSelectedMon] < 100)
             return 1;
 
         return 2;
@@ -2393,7 +2393,7 @@ void sub_8974(s16 species)
     s16 remainder;
     s16 var1;
 
-    var0 = gUnknown_086A61BC[species];
+    var0 = gDexAnimationIx[species];
     if (var0 == -1)
         return;
 
@@ -2419,7 +2419,7 @@ void sub_8974(s16 species)
 
 s16 sub_8A78(s16 species)
 {
-    if (gPokedexFlags[species] == 4 && gUnknown_086A61BC[species] != -1)
+    if (gPokedexFlags[species] == 4 && gDexAnimationIx[species] != -1)
         gUnknown_0202A588 = 1;
     else
         gUnknown_0202A588 = 0;

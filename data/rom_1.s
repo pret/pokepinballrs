@@ -818,13 +818,31 @@ gUnknown_081B45A4:: @ 0x081B45A4
 	.incbin "baserom.gba", 0x1B45A4, 0x1E0
 
 gUnknown_081B4784:: @ 0x081B4784
-	.incbin "baserom.gba", 0x1B4784, 0x4000
+	.incbin "baserom.gba", 0x1B4784, 0x1000
+
+gUnknown_081B5784:: @ 0x081B5784
+	.incbin "baserom.gba", 0x1B5784, 0x1000
+
+gUnknown_081B6784:: @ 0x081B6784
+	.incbin "baserom.gba", 0x1B6784, 0x1000
+
+gUnknown_081B7784:: @ 0x081B7784
+	.incbin "baserom.gba", 0x1B7784, 0x1000
 
 gUnknown_081B8784:: @ 0x081B8784
 	.incbin "baserom.gba", 0x1B8784, 0x200
 
 gUnknown_081B8984:: @ 0x081B8984
-	.incbin "baserom.gba", 0x1B8984, 0x4000
+	.incbin "baserom.gba", 0x1B8984, 0x1000
+
+gUnknown_081B9984:: @ 0x081B9984
+	.incbin "baserom.gba", 0x1B9984, 0x1000
+
+gUnknown_081BA984:: @ 0x081BA984
+	.incbin "baserom.gba", 0x1BA984, 0x1000
+
+gUnknown_081BB984:: @ 0x081BB984
+	.incbin "baserom.gba", 0x1BB984, 0x1000
 
 gUnknown_081BC984:: @ 0x081BC984
 	.incbin "baserom.gba", 0x1BC984, 0x120
@@ -1540,7 +1558,16 @@ gUnknown_08514F6C:: @ 0x08514F6C
 	.incbin "baserom.gba", 0x514F6C, 0x1E0
 
 gUnknown_0851514C:: @ 0x0851514C
-	.incbin "baserom.gba", 0x51514C, 0x4620
+	.incbin "baserom.gba", 0x51514C, 0x4420
+
+gUnknown_0851956C:: @ 0x0851956C
+    .incbin "baserom.gba", 0x51956C, 0x20
+
+gUnknown_0851958C:: @ 0x0851958C
+    .incbin "baserom.gba", 0x51958C, 0x20
+
+gUnknown_085195AC:: @ 0x085195AC
+    .incbin "baserom.gba", 0x5195AC, 0x1C0
 
 gUnknown_0851976C:: @ 0x0851976C
 	.incbin "baserom.gba", 0x51976C, 0x4420
@@ -1552,10 +1579,22 @@ gUnknown_08521FAC:: @ 0x08521FAC
 	.incbin "baserom.gba", 0x521FAC, 0x20
 
 gUnknown_08521FCC:: @ 0x08521FCC
-	.incbin "baserom.gba", 0x521FCC, 0x3E0
+	.incbin "baserom.gba", 0x521FCC, 0x1E0
+
+gUnknown_085221AC:: @ 0x085221AC
+    .incbin "baserom.gba", 0x5221AC, 0x200
 
 gUnknown_085223AC:: @ 0x085223AC
-	.incbin "baserom.gba", 0x5223AC, 0x4A20
+	.incbin "baserom.gba", 0x5223AC, 0x4420
+
+gUnknown_085267CC:: @ 0x085267CC
+    .incbin "baserom.gba", 0x5267CC, 0x200
+
+gUnknown_085269CC:: @ 0x085269CC
+    .incbin "baserom.gba", 0x5269CC, 0x200
+
+gUnknown_08526BCC:: @ 0x08526BCC
+    .incbin "baserom.gba", 0x526BCC, 0x200
 
 gSapphireBoardZigzagoonFx_Gfx:: @ 0x08526DCC
 	.incbin "graphics/stage/sapphire/zigzagoon_fx.4bpp";

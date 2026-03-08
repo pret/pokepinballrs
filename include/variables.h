@@ -316,8 +316,8 @@ extern u16 gDexInfoWindowEmptyRowTiles[];
 extern u16 gUnknown_0202A590[];
 extern u16 gUnknown_08086B40[];
 extern u16 gUnknown_083722E8[0x4000];
-extern s16 gUnknown_086A61BC[];
-extern s16 gUnknown_086A77A8[][10][2];
+extern s16 gDexAnimationIx[];
+extern s16 gTitleRevealJingle[][10][2];
 extern u8 gUnknown_0201B124;
 
 extern const struct PokemonSpecies gSpeciesInfo[];
@@ -349,19 +349,14 @@ struct unkStruct_8079730
 };
 extern const struct unkStruct_8079730 gUnknown_08079730[][8];
 
-struct UnkStruct_086A7768 {
-    s16 unk0;
-    s16 unk2;
-};
-
-extern struct UnkStruct_086A7768 gUnknown_086A7768[0x8];
+extern struct Vector16 gUnknown_086A7768[0x8];
 extern s16 gUnknown_086A7788[0x8];
 extern s16 gUnknown_0202ADA0[];
 extern s32 gUnknown_0202BEF0;
 extern const struct SpriteSet *const gUnknown_086A769C[];
 extern struct SpriteGroup gMain_spriteGroups_40[];
 extern struct SpriteGroup gMain_spriteGroups_48;
-extern struct UnkStruct_086A7768 gUnknown_086A7798[0x4];
+extern struct Vector16 gUnknown_086A7798[0x4];
 extern s32 gUnknown_0201C188;
 
 extern const struct SpriteSet *const gUnknown_086A795C[];
