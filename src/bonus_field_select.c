@@ -45,8 +45,8 @@ extern const u8 gBonusFieldSelectBg2_Tilemap[];
 extern const u16 gBonusFieldSelectStages_Pals[];
 extern const u8 gBonusFieldSelectStages_Gfx[];
 
-void sub_2710(void);
-void sub_29C8(void);
+void InitBonusFieldSelectState(void);
+void RefreshBonusFieldSelectDisplay(void);
 
 void BonusFieldSelectMain(void)
 {
@@ -76,15 +76,15 @@ void LoadBonusFieldSelectGraphics(void)
     DmaCopy16(3, gFieldSelectSpritePals, (void *)(PLTT + 0x200), 0x60);
     DmaCopy16(3, gFieldSelectSpriteGfx, (void *)(VRAM + 0x10000), 0x4020);
 
-    sub_0CBC();
-    sub_2710();
-    sub_FD5C(sub_29C8);
+    EnableVBlankProcessing();
+    InitBonusFieldSelectState();
+    FadeInFromWhiteWithCallback(RefreshBonusFieldSelectDisplay);
     m4aSongNumStart(MUS_TABLE_SELECT);
 
     gMain.subState++;
 }
 
-void sub_2710(void)
+void InitBonusFieldSelectState(void)
 {
     gSelectedBonusField = FIELD_SELECT_DUSCLOPS;
     gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
@@ -99,7 +99,7 @@ void sub_2710(void)
 
 void BonusFieldSelect_State1_2768(void)
 {
-    sub_29C8();
+    RefreshBonusFieldSelectDisplay();
     switch (gBonusFieldSelectState)
     {
     case BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD:
@@ -186,9 +186,9 @@ void BonusFieldSelect_State1_2768(void)
             gUnknown_0202BE1C++;
             if (gUnknown_0202BE1C > 5)
             {
-                gMain.unkD = 0;
-                gMain.unk5 = gMain.selectedField = gBonusFieldMenuSelectionToField[gSelectedBonusField];
-                gMain.unk6 = 1;
+                gMain.isResuming = 0;
+                gMain.currentField = gMain.selectedField = gBonusFieldMenuSelectionToField[gSelectedBonusField];
+                gMain.isBonusField = 1;
                 gBonusFieldSelectNextMainState = STATE_GAME_MAIN;
                 gMain.subState++;
             }
@@ -199,14 +199,14 @@ void BonusFieldSelect_State1_2768(void)
 
 void BonusFieldSelect_State2_2990(void)
 {
-    sub_FE04(sub_29C8);
+    FadeOutToWhiteWithCallback(RefreshBonusFieldSelectDisplay);
     m4aMPlayAllStop();
-    sub_0D10();
+    DisableVBlankProcessing();
     gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(gBonusFieldSelectNextMainState);
 }
 
-void sub_29C8(void)
+void RefreshBonusFieldSelectDisplay(void)
 {
     struct SpriteGroup * sgptrs[6];
     struct SpriteGroup * r8;

@@ -1,4 +1,4 @@
-﻿    .section .rodata
+    .section .rodata
 #include "constants/areas.h"
 #include "constants/fields.h"
 #include "constants/species.h"
@@ -4494,18 +4494,18 @@ BoardProcPairs_086B077C:: @ 0x086B077C
 	.4byte AllBoardProcess_5A_11B9C, MainBoardProcess_5B_11C98
 	.4byte AllBoardProcess_5A_11B9C, BonusBoardProcess_5B_11F88
 	.4byte AllBoardProcess_6A_4CEA8, AllBoardProcess_6B_1333C
-	.4byte nullsub_19, MainBoardProcess_7B_12524
-	.4byte nullsub_19, BonusBoardProcess_7B_12BF8
+	.4byte PinballGameState_NoOp, MainBoardProcess_7B_12524
+	.4byte PinballGameState_NoOp, BonusBoardProcess_7B_12BF8
 	.4byte AllBoardProcess_8A_4CEA8, AllBoardProcess_8B_4CEB4
 	.4byte RubyBoardProcess_0A_50848, RubyBoardProcess_0B_50918
 	.4byte SapphireBoardProcess_0A_50AD4, SapphireBoardProcess_0B_50B80
 	.4byte DusclopsBoardProcess_0A_50D48, DusclopsBoardProcess_0B_50DB8
-	.4byte KecleonBoardProcess_0A_50DE0, nullsub_20
+	.4byte KecleonBoardProcess_0A_50DE0, BoardProcess0_NoOp
 	.4byte KyogreBoardProcess_0A_50F04, KyogreBoardProcess_0B_50FAC
 	.4byte GroudonBoardProcess_0A_50FD4, GroudonBoardProcess_0B_51068
 	.4byte RayquazaBoardProcess_0A_51090, RayquazaBoardProcess_0B_51128
 	.4byte SphealBoardProcess_0A_51150, SphealBoardProcess_0B_511F8
-	.4byte nullsub_19, nullsub_19
+	.4byte PinballGameState_NoOp, PinballGameState_NoOp
 
 gUnknown_086B085C:: @ 0x086B085C
 	.4byte sub_4ABEC

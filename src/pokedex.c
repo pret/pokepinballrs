@@ -29,31 +29,31 @@ enum PokedexStates
     POKEDEX_STATE_RETURN_TO_TITLE,
 };
 
-void sub_5174(void);
+void RefreshPokedexDisplay(void);
 static void PokedexListScrollUp(void);
 static void PokedexListScrollDown(void);
 static void PokedexListScrollUpFast(void);
 static void PokedexListScrollDownFast(void);
 void Pokedex_CheckDeleteKeyComboPressed(void);
-void sub_5064(void);
-void sub_51CC(void);
-static s16 sub_5EA4(void);
-s16 sub_5EC8(void);
-void sub_70E0(s16, u32);
-void sub_88E4(void);
-void sub_51FC(void);
+void SetPokedexSpriteAnimState(void);
+void UpdatePokedexSpriteDisplay(void);
+static s16 ProcessPokedexLinkExchange(void);
+s16 SendPokedexLinkData(void);
+void RenderPokedexDescriptionPage(s16, u32);
+void InitPokedexAnimationState(void);
+void UpdatePokedexSpriteVisibility(void);
 static void RenderLinkGraphics(void);
-static void sub_5E60(void);
-int sub_639C(void);
-static int sub_5EEC(void);
-static int sub_6144(void);
-static int sub_65DC(void);
+static void InitPokedexLinkTransferState(void);
+int ReceivePokedexLinkDataAsMaster(void);
+static int SendPokedexLinkDataAsMaster(void);
+static int SendPokedexLinkDataAsClient(void);
+static int ReceivePokedexLinkDataAsClient(void);
 static void PrintSelectedMonDexNum(s16);
 static void PrintSeenOwnedTotals(s16, s16);
-void sub_71DC(int, int, int);
+void PlacePokedexTextGlyph(int, int, int);
 void PrintDexNumbersFromListPosition(s16);
 static void PrintCaughtBallFromListPosition(s16);
-void sub_6F78(s16);
+void RenderPokemonPortrait(s16);
 
 extern u8 *gUnknown_086B15B4[];
 extern u8 *gUnknown_086BB6F4[];
@@ -124,36 +124,36 @@ void LoadPokedexGraphics(void)
     DmaCopy16(3, gPokedexBgText_Gfx, (void *)BG_CHAR_ADDR(1), 0x4400);
     DmaCopy16(3, gPokedexBg_Gfx, (void *)BG_CHAR_ADDR(3), 0x1400);
     DmaCopy16(3, gPokedexBackground_Pals, (void *)BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gPokedexBg1_Tilemap, gUnknown_03005C00, BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexBg2_Tilemap, gUnknown_02019C40, BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexBg1_Tilemap, gBgScreenBuffer, BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexBg2_Tilemap, gPokedexBgScreenBuffer, BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexBg3_Tilemap, (void *)BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, gPokedexSprites_Gfx, (void *)OBJ_VRAM0, 0x6C20);
 
-    sub_3FAC();
+    InitPokedexState();
     PrintSeenOwnedTotals(gPokedexNumSeen, gPokedexNumOwned);
     PrintSelectedMonDexNum(gPokedexSelectedMon);
     PrintDexNumbersFromListPosition(gPokedexListPosition);
     PrintCaughtBallFromListPosition(gPokedexListPosition);
-    sub_6F78(gPokedexSelectedMon);
-    sub_8974(gPokedexSelectedMon);
-    sub_8A78(gPokedexSelectedMon);
+    RenderPokemonPortrait(gPokedexSelectedMon);
+    RenderAnimatedPokemonPortrait(gPokedexSelectedMon);
+    CheckPokemonHasAnimation(gPokedexSelectedMon);
 
-    gUnknown_02019C40[0x134] = 0x59;
+    gPokedexBgScreenBuffer[0x134] = 0x59;
 
-    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
-    DmaCopy16(3, gUnknown_02019C40, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBgScreenBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexBgScreenBuffer, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
 
-    sub_51FC();
-    sub_0CBC();
-    sub_024C();
+    UpdatePokedexSpriteVisibility();
+    EnableVBlankProcessing();
+    FadeInFromWhite();
 
     gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
 
     m4aSongNumStart(MUS_POKEDEX);
 }
 
-void sub_3FAC(void)
+void InitPokedexState(void)
 {
     s32 i;
 
@@ -181,8 +181,8 @@ void sub_3FAC(void)
     gUnknown_0202BEE0 = 0;
     gUnknown_0202BF04 = 1;
 
-    sub_88E4();
-    if (sub_FD20() == 1)
+    InitPokedexAnimationState();
+    if (CheckAllPokemonCaught() == 1)
     {
         gUnknown_0202C590 = 1;
     }
@@ -229,35 +229,35 @@ void Pokedex_HandleListInput(void)
         if (JOY_HELD(DPAD_UP))
         {
             PokedexListScrollUp();
-            sub_5064();
-            sub_51CC();
+            SetPokedexSpriteAnimState();
+            UpdatePokedexSpriteDisplay();
             gMain.subState = POKEDEX_STATE_2;
         }
         else if (JOY_HELD(DPAD_DOWN))
         {
             PokedexListScrollDown();
-            sub_5064();
-            sub_51CC();
+            SetPokedexSpriteAnimState();
+            UpdatePokedexSpriteDisplay();
             gMain.subState = POKEDEX_STATE_2;
         }
         else if (JOY_HELD(DPAD_LEFT))
         {
             PokedexListScrollUpFast();
-            sub_5064();
-            sub_51CC();
+            SetPokedexSpriteAnimState();
+            UpdatePokedexSpriteDisplay();
             gMain.subState = POKEDEX_STATE_2;
         }
         else if (JOY_HELD(DPAD_RIGHT))
         {
             PokedexListScrollDownFast();
-            sub_5064();
-            sub_51CC();
+            SetPokedexSpriteAnimState();
+            UpdatePokedexSpriteDisplay();
             gMain.subState = POKEDEX_STATE_2;
         }
         else
         {
             gUnknown_02019C24 = 0;
-            sub_5064();
+            SetPokedexSpriteAnimState();
         }
 
         if (JOY_NEW(A_BUTTON))
@@ -283,29 +283,29 @@ void Pokedex_HandleListInput(void)
         if (JOY_HELD(DPAD_UP))
         {
             PokedexListScrollUp();
-            sub_5174();
+            RefreshPokedexDisplay();
         }
         else if (JOY_HELD(DPAD_DOWN))
         {
             PokedexListScrollDown();
-            sub_5174();
+            RefreshPokedexDisplay();
         }
         else if (JOY_HELD(DPAD_LEFT))
         {
             PokedexListScrollUpFast();
-            sub_5174();
+            RefreshPokedexDisplay();
         }
         else if (JOY_HELD(DPAD_RIGHT))
         {
             PokedexListScrollDownFast();
-            sub_5174();
+            RefreshPokedexDisplay();
         }
         else
         {
             gUnknown_02019C24 = 0;
         }
 
-        if (sub_8A78(gPokedexSelectedMon) == 1)
+        if (CheckPokemonHasAnimation(gPokedexSelectedMon) == 1)
             gUnknown_0202A588 = 1;
         else
             gUnknown_0202A588 = 0;
@@ -352,20 +352,20 @@ void Pokedex_HandleListInput(void)
     if (gPokedexScrollWaitFrames > 0)
         gPokedexScrollWaitFrames--;
 
-    sub_51FC();
-    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    UpdatePokedexSpriteVisibility();
+    DmaCopy16(3, gBgScreenBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 }
 
 void Pokedex_State2_43D4(void)
 {
-    sub_5174();
+    RefreshPokedexDisplay();
     gUnknown_0202A588 = 0;
 
     if (gPokedexScrollWaitFrames > 0)
         gPokedexScrollWaitFrames--;
 
-    sub_51FC();
-    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    UpdatePokedexSpriteVisibility();
+    DmaCopy16(3, gBgScreenBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
 }
 
@@ -375,15 +375,15 @@ void Pokedex_State3_4428(void)
 
     for (i = 0; i < 0x20; i++)
     {
-        gUnknown_03005C00[0x20*(gUnknown_0202A558 + 10) + i] = gDexInfoWindowEmptyTextRowTiles[i];
-        gUnknown_02019C40[0x20*(gUnknown_0202A558 + 9) + i] = gDexInfoWindowMiddleRowTiles[i];
-        gUnknown_02019C40[0x20*(gUnknown_0202A558 + 10) + i] = gDexInfoWindowBottomRowTiles[i];
+        gBgScreenBuffer[0x20*(gUnknown_0202A558 + 10) + i] = gDexInfoWindowEmptyTextRowTiles[i];
+        gPokedexBgScreenBuffer[0x20*(gUnknown_0202A558 + 9) + i] = gDexInfoWindowMiddleRowTiles[i];
+        gPokedexBgScreenBuffer[0x20*(gUnknown_0202A558 + 10) + i] = gDexInfoWindowBottomRowTiles[i];
     }
 
     gUnknown_0202A558++;
-    gUnknown_02019C40[0x134] = 0x59;
-    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
-    DmaCopy16(3, gUnknown_02019C40, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    gPokedexBgScreenBuffer[0x134] = 0x59;
+    DmaCopy16(3, gBgScreenBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexBgScreenBuffer, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
 
     if (gUnknown_0202A558 > 7)
     {
@@ -397,7 +397,7 @@ void Pokedex_State3_4428(void)
             gUnknown_0201C1B4 = 1;
 
         DmaCopy16(3, gUnknown_08086B40, (void *)0x6000280, 2*0xE0);
-        sub_70E0(gPokedexSelectedMon, gUnknown_0202C794);
+        RenderPokedexDescriptionPage(gPokedexSelectedMon, gUnknown_0202C794);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
         PlayCry_NormalNoDucking(gSpeciesInfo[gPokedexSelectedMon].mainSeriesIndexNumber, 0, 127, 10);
         gMain.subState = POKEDEX_STATE_5;
@@ -431,7 +431,7 @@ void Pokedex_State5_45A4(void)
         {
             m4aSongNumStart(SE_UNKNOWN_0x6D);
             gUnknown_0202C794 = 0;
-            sub_70E0(gPokedexSelectedMon, 0);
+            RenderPokedexDescriptionPage(gPokedexSelectedMon, 0);
             gUnknown_02019C28 = gUnknown_0202C794;
         }
     }
@@ -441,7 +441,7 @@ void Pokedex_State5_45A4(void)
         {
             m4aSongNumStart(SE_UNKNOWN_0x6D);
             gUnknown_0202C794 = 1;
-            sub_70E0(gPokedexSelectedMon, 1);
+            RenderPokedexDescriptionPage(gPokedexSelectedMon, 1);
             gUnknown_02019C28 = gUnknown_0202C794;
         }
     }
@@ -454,7 +454,7 @@ void Pokedex_State5_45A4(void)
             {
                 m4aSongNumStart(SE_UNKNOWN_0x6D);
                 gUnknown_0202C794 = 1 - gUnknown_0202C794;
-                sub_70E0(gPokedexSelectedMon, gUnknown_0202C794);
+                RenderPokedexDescriptionPage(gPokedexSelectedMon, gUnknown_0202C794);
                 gUnknown_02019C28 = gUnknown_0202C794;
             }
             else
@@ -521,7 +521,7 @@ void Pokedex_State5_45A4(void)
     }
     else
     {
-        if (sub_8A78(gPokedexSelectedMon) == 1)
+        if (CheckPokemonHasAnimation(gPokedexSelectedMon) == 1)
             gUnknown_0202A588 = 1;
         else
             gUnknown_0202A588 = 0;
@@ -533,7 +533,7 @@ void Pokedex_State5_45A4(void)
         gUnknown_0202BF0C = 0;
     }
 
-    sub_51FC();
+    UpdatePokedexSpriteVisibility();
 }
 
 void Pokedex_State4_4860(void)
@@ -542,22 +542,22 @@ void Pokedex_State4_4860(void)
 
     for (i = 0; i < 0x20; i++)
     {
-        gUnknown_02019C40[0x20 * (0x11 - gUnknown_0202A558) + i] = gDexInfoWindowBottomRowTiles[i];
-        gUnknown_02019C40[0x20 * (0x12 - gUnknown_0202A558) + i] = gDexInfoWindowEmptyRowTiles[i];
+        gPokedexBgScreenBuffer[0x20 * (0x11 - gUnknown_0202A558) + i] = gDexInfoWindowBottomRowTiles[i];
+        gPokedexBgScreenBuffer[0x20 * (0x12 - gUnknown_0202A558) + i] = gDexInfoWindowEmptyRowTiles[i];
     }
 
     if (gUnknown_0202A558 < 8)
     {
         for (i = 0; i < 0x20; i++)
         {
-            gUnknown_03005C00[0x20 * (0x11 - gUnknown_0202A558) + i] = gUnknown_0202A590[0x20 * (0x7 - gUnknown_0202A558) + i];
+            gBgScreenBuffer[0x20 * (0x11 - gUnknown_0202A558) + i] = gUnknown_0202A590[0x20 * (0x7 - gUnknown_0202A558) + i];
         }
     }
     gUnknown_0202A558++;
 
-    gUnknown_02019C40[0x134] = 0x59;
-    DmaCopy16(3, gUnknown_02019C40, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
-    DmaCopy16(3, gUnknown_03005C00, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    gPokedexBgScreenBuffer[0x134] = 0x59;
+    DmaCopy16(3, gPokedexBgScreenBuffer, (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBgScreenBuffer, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 
     if (gUnknown_0202A558 > 8)
     {
@@ -565,7 +565,7 @@ void Pokedex_State4_4860(void)
         gUnknown_0202A588 = 0;
         gUnknown_0202BF04 = 1;
 
-        DmaFill16(3, 0, (void *)gUnknown_03000000, 0x1800);
+        DmaFill16(3, 0, (void *)gTempGfxBuffer, 0x1800);
         DmaFill16(3, 0, (void *)0x6005C00, 0x1800);
         gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
     }
@@ -573,8 +573,8 @@ void Pokedex_State4_4860(void)
 
 void Pokedex_LinkSetup(void)
 {
-    sub_19B4();
-    sub_5E60();
+    InitSerialForEReader();
+    InitPokedexLinkTransferState();
     gUnknown_0201B124 = 0;
     RenderLinkGraphics();
     gMain.subState = POKEDEX_STATE_7;
@@ -593,7 +593,7 @@ void Pokedex_State7_49D0(void)
         Pokedex_PopupTypeIx = POKEDEX_POPUP_TRANSMISSION_CONNECT_PROMPT;
         gUnknown_0202BF04 = 1;
         gUnknown_0202A588 = 1;
-        sub_2568();
+        ResetDisplayAndCallbacks();
         gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
     }
     else
@@ -605,11 +605,11 @@ void Pokedex_State7_49D0(void)
 
         if ((gUnknown_0202ADD0 & 0x40) && (gUnknown_0202BDF0 < 2))
         {
-            sub_5EC8();
+            SendPokedexLinkData();
 
             if (!(gUnknown_0202ADD0 & 0x100))
             {
-                var0 = sub_5EA4();
+                var0 = ProcessPokedexLinkExchange();
                 if (var0 == -1)
                 {
                     gMain.subState = POKEDEX_STATE_9;
@@ -663,7 +663,7 @@ void Pokedex_State8_4B34(void)
         gUnknown_0202BF04 = 1;
         gUnknown_0202A588 = 1;
 
-        sub_2568();
+        ResetDisplayAndCallbacks();
         DisableSerial();
 
         for(iVar1 = 0; iVar1 < 0xE1; iVar1++)
@@ -671,9 +671,9 @@ void Pokedex_State8_4B34(void)
             gPokedexFlagExchangeBuffer[iVar1] = gPokedexFlags[iVar1];
         }
 
-        sub_02B4();
+        FadeOutToWhite();
         m4aMPlayAllStop();
-        sub_0D10();
+        DisableVBlankProcessing();
         gMain.subState = POKEDEX_STATE_LOAD_GRAPHICS;
     }
 }
@@ -686,7 +686,7 @@ void Pokedex_State9_4BB4(void)
     switch(gUnknown_0201B120)
     {
         case 0x4:
-            sub_2568();
+            ResetDisplayAndCallbacks();
             DisableSerial();
             break;
         case 0x82:
@@ -708,9 +708,9 @@ void Pokedex_State9_4BB4(void)
                 gMain_saveData.pokedexFlags[index] = gPokedexFlags[index];
             }
             SaveFile_WriteToSram();
-            sub_02B4();
+            FadeOutToWhite();
             m4aMPlayAllStop();
-            sub_0D10();
+            DisableVBlankProcessing();
             gMain.subState = POKEDEX_STATE_LOAD_GRAPHICS;
             break;
     }
@@ -721,7 +721,7 @@ void Pokedex_DeleteConfirmation(void)
 {
     s32 i;
 
-    sub_51FC();
+    UpdatePokedexSpriteVisibility();
 
     if (JOY_NEW(A_BUTTON))
     {
@@ -742,9 +742,9 @@ void Pokedex_DeleteConfirmation(void)
         gUnknown_0202A588 = 1;
 
         SaveFile_WriteToSram();
-        sub_02B4();
+        FadeOutToWhite();
         m4aMPlayAllStop();
-        sub_0D10();
+        DisableVBlankProcessing();
         gMain.subState = POKEDEX_STATE_LOAD_GRAPHICS;
     }
     else if (JOY_NEW(B_BUTTON))
@@ -762,9 +762,9 @@ void Pokedex_DeleteConfirmation(void)
 
 void Pokedex_ReturnToTitle(void)
 {
-    sub_02B4();
+    FadeOutToWhite();
     m4aMPlayAllStop();
-    sub_0D10();
+    DisableVBlankProcessing();
 
     gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(STATE_TITLE);
@@ -917,7 +917,7 @@ void Pokedex_CheckDeleteKeyComboPressed(void)
     }
 }
 
-void sub_5064(void)
+void SetPokedexSpriteAnimState(void)
 {
     if (gPokedexFlags[gPokedexSelectedMon] == SPECIES_CAUGHT)
     {
@@ -954,7 +954,7 @@ void sub_5064(void)
     }
 }
 
-u8 sub_5134(void)
+u8 GetSelectedMonAnimationType(void)
 {
     if (gPokedexFlags[gPokedexSelectedMon] == SPECIES_CAUGHT && gDexAnimationIx[gPokedexSelectedMon] != -1)
     {
@@ -967,27 +967,27 @@ u8 sub_5134(void)
     return 0;
 }
 
-void sub_5174(void)
+void RefreshPokedexDisplay(void)
 {
     PrintDexNumbersFromListPosition(gPokedexListPosition);
     PrintCaughtBallFromListPosition(gPokedexListPosition);
     PrintSelectedMonDexNum(gPokedexSelectedMon);
-    sub_6F78(gPokedexSelectedMon);
-    sub_8974(gPokedexSelectedMon);
-    sub_8A78(gPokedexSelectedMon);
+    RenderPokemonPortrait(gPokedexSelectedMon);
+    RenderAnimatedPokemonPortrait(gPokedexSelectedMon);
+    CheckPokemonHasAnimation(gPokedexSelectedMon);
     gUnknown_0202BF00 = 0;
     gUnknown_0201A448 = 0;
 }
 
-void sub_51CC(void)
+void UpdatePokedexSpriteDisplay(void)
 {
-    if (sub_5134() == 0)
-        sub_6F78(gPokedexSelectedMon);
+    if (GetSelectedMonAnimationType() == 0)
+        RenderPokemonPortrait(gPokedexSelectedMon);
     else
-        sub_8974(gPokedexSelectedMon);
+        RenderAnimatedPokemonPortrait(gPokedexSelectedMon);
 }
 
-void sub_51FC(void)
+void UpdatePokedexSpriteVisibility(void)
 {
     int i;
     struct SpriteGroup *group0;
@@ -1237,7 +1237,7 @@ static void RenderLinkGraphics(void)
     group6->available = FALSE;
     group7->available = gUnknown_0202BEC4;
     group5->available = gUnknown_0202C590;
-    sub_2414(gUnknown_086A6148, 29, group0);
+    InitOamFromSpriteSets(gUnknown_086A6148, 29, group0);
 
     group0->baseX = 20 + gUnknown_0201A4F0;
     group0->baseY = 84 + gUnknown_0202A57C * 16;
@@ -1346,7 +1346,7 @@ static void RenderLinkGraphics(void)
     group7->available = FALSE;
 }
 
-static void sub_5E60(void)
+static void InitPokedexLinkTransferState(void)
 {
     gUnknown_0202C5F0[0] = 0xDDDD;
     gUnknown_0202C5B4 = 1;
@@ -1357,31 +1357,31 @@ static void sub_5E60(void)
     gUnknown_0202BECC = 0;
 }
 
-static s16 sub_5EA4(void)
+static s16 ProcessPokedexLinkExchange(void)
 {
     s16 result;
 
     if (gLink.isMaster)
-        result = sub_639C();
+        result = ReceivePokedexLinkDataAsMaster();
     else
-        result = sub_65DC();
+        result = ReceivePokedexLinkDataAsClient();
 
     return result;
 }
 
-s16 sub_5EC8(void)
+s16 SendPokedexLinkData(void)
 {
     s16 result;
 
     if (gLink.isMaster)
-        result = sub_5EEC();
+        result = SendPokedexLinkDataAsMaster();
     else
-        result = sub_6144();
+        result = SendPokedexLinkDataAsClient();
 
     return result;
 }
 
-static int sub_5EEC(void)
+static int SendPokedexLinkDataAsMaster(void)
 {
     int i;
     u16 var0;
@@ -1455,7 +1455,7 @@ static int sub_5EEC(void)
     return 0;
 }
 
-static int sub_6144(void)
+static int SendPokedexLinkDataAsClient(void)
 {
     int i;
     u16 var0;
@@ -1529,8 +1529,8 @@ static int sub_6144(void)
     return 0;
 }
 
-//Link transfer as host (See sub_65DC for client)
-int sub_639C(void)
+//Link transfer as host (See ReceivePokedexLinkDataAsClient for client)
+int ReceivePokedexLinkDataAsMaster(void)
 {
     int i, j;
     u16 var0;
@@ -1618,8 +1618,8 @@ int sub_639C(void)
     return 0;
 }
 
-//Link transfer as client (See sub_639C for host)
-static int sub_65DC(void)
+//Link transfer as client (See ReceivePokedexLinkDataAsMaster for host)
+static int ReceivePokedexLinkDataAsClient(void)
 {
     int i, j;
     u16 var0;
@@ -1714,7 +1714,7 @@ static void PrintSelectedMonDexNum(s16 species)
     u16 var1;
     u16 var2;
 
-    DmaFill16(3, 0, gUnknown_03000000, 0x800);
+    DmaFill16(3, 0, gTempGfxBuffer, 0x800);
     var0 = 0;
     if (species == SPECIES_JIRACHI)
     {
@@ -1749,12 +1749,12 @@ static void PrintSelectedMonDexNum(s16 species)
 
             DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gUnknown_0202BE30, 0x20);
             DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1 + 0x400], gUnknown_0201B130, 0x20);
-            sub_71DC(var2, var0, 0);
+            PlacePokedexTextGlyph(var2, var0, 0);
             var0 += var2;
         }
 
-        CopyBgTilesRect(gUnknown_03000000, (void *)0x06004C00, 8, 2);
-        DmaFill16(3, 0, gUnknown_03000000, 0x800);
+        CopyBgTilesRect(gTempGfxBuffer, (void *)0x06004C00, 8, 2);
+        DmaFill16(3, 0, gTempGfxBuffer, 0x800);
         var0 = 0;
     }
     else
@@ -1774,12 +1774,12 @@ static void PrintSelectedMonDexNum(s16 species)
 
             DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gUnknown_0202BE30, 0x20);
             DmaCopy16(3, &gPokedexTextGlyphs_Gfx[0x400 + var1], gUnknown_0201B130, 0x20);
-            sub_71DC(var2, var0, 0);
+            PlacePokedexTextGlyph(var2, var0, 0);
             var0 += var2;
         }
 
-        CopyBgTilesRect(gUnknown_03000000, (void *)0x06004D00, 9, 2);
-        DmaFill16(3, 0, gUnknown_03000000, 0x800);
+        CopyBgTilesRect(gTempGfxBuffer, (void *)0x06004D00, 9, 2);
+        DmaFill16(3, 0, gTempGfxBuffer, 0x800);
     }
     else
     {
@@ -1840,7 +1840,7 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
     u16 var1;
     u16 var2;
 
-    DmaFill16(3, 0, gUnknown_03000000, 0x800);
+    DmaFill16(3, 0, gTempGfxBuffer, 0x800);
     var0 = 0;
     for (i = 0; i < ENTRIES_SHOWN_COUNT; i++)
     {
@@ -1885,12 +1885,12 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
 
                 DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gUnknown_0202BE30, 0x20);
                 DmaCopy16(3, &gPokedexTextGlyphs_Gfx[0x400 + var1], gUnknown_0201B130, 0x20);
-                sub_71DC(var2, var0, 0);
+                PlacePokedexTextGlyph(var2, var0, 0);
                 var0 += var2;
             }
 
-            CopyBgTilesRect(gUnknown_03000000, (void *)0x06000000 + gUnknown_086A64F0[i], 8, 2);
-            DmaFill16(3, 0, gUnknown_03000000, 0x800);
+            CopyBgTilesRect(gTempGfxBuffer, (void *)0x06000000 + gUnknown_086A64F0[i], 8, 2);
+            DmaFill16(3, 0, gTempGfxBuffer, 0x800);
             var0 = 0;
         }
         else
@@ -1915,7 +1915,7 @@ static void PrintCaughtBallFromListPosition(s16 position)
     }
 }
 
-void sub_6F78(s16 species)
+void RenderPokemonPortrait(s16 species)
 {
     s16 state = gPokedexFlags[gPokedexSelectedMon];
     s16 var1 = species / 15;
@@ -1933,7 +1933,7 @@ void sub_6F78(s16 species)
         case SPECIES_SHARED:
         case SPECIES_SHARED_AND_SEEN:
             CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
-            sub_10170(gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20, 0xE);
+            ApplyPaletteFadeEffect(gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20, 0xE);
             break;
         case SPECIES_CAUGHT:
             CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
@@ -1942,7 +1942,7 @@ void sub_6F78(s16 species)
     }
 }
 
-void sub_70E0(s16 species, u32 page)
+void RenderPokedexDescriptionPage(s16 species, u32 page)
 {
     int i, j;
     int var0;
@@ -1950,7 +1950,7 @@ void sub_70E0(s16 species, u32 page)
     u16 var2;
 
     var0 = 0;
-    DmaFill16(3, 0, gUnknown_03000000, 0x1800);
+    DmaFill16(3, 0, gTempGfxBuffer, 0x1800);
     for (i = 0; i < 3; i++)
     {
         for (j = 0; j < 42; j++)
@@ -1962,17 +1962,17 @@ void sub_70E0(s16 species, u32 page)
 
             DmaCopy16(3, &gPokedexTextGlyphs_Gfx[var1], gUnknown_0202BE30, 0x20);
             DmaCopy16(3, &gPokedexTextGlyphs_Gfx[0x400 + var1], gUnknown_0201B130, 0x20);
-            sub_71DC(var2, var0, i);
+            PlacePokedexTextGlyph(var2, var0, i);
             var0 += var2;
         }
 
         var0 = 0;
     }
 
-    DmaCopy16(3, gUnknown_03000000, (void *)VRAM + 0x5C00, 0x1800);
+    DmaCopy16(3, gTempGfxBuffer, (void *)VRAM + 0x5C00, 0x1800);
 }
 
-void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
+void PlacePokedexTextGlyph(s32 arg0, s32 arg1, s32 arg2) {
     int i;
     s32 temp_r2;
 
@@ -1984,79 +1984,79 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
         case 0:
             for(i = 0; i < 8; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= gUnknown_0202BE30[i * 2];
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2 + 1] & 0xFF;
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2 + 1] & 0xFF;
+                gTempGfxBuffer[i * 2 + temp_r2] |= gUnknown_0202BE30[i * 2];
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2 + 1] & 0xFF;
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2 + 1] & 0xFF;
             }
             return;
         case 1:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0202BE30[i * 2 + 1] & 0xFF) << 4);
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0201B130[i * 2 + 1] & 0xFF) << 4);
+                gTempGfxBuffer[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0202BE30[i * 2 + 1] & 0xFF) << 4);
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0201B130[i * 2 + 1] & 0xFF) << 4);
             }
             return;
         case 2:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFF00) >> 8) | (gUnknown_0202BE30[i * 2 + 1] & 0xFF) << 8;
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFF00) >> 8) | (gUnknown_0201B130[i * 2 + 1] & 0xFF) << 8;
+                gTempGfxBuffer[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFF00) >> 8) | (gUnknown_0202BE30[i * 2 + 1] & 0xFF) << 8;
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFF00) >> 8) | (gUnknown_0201B130[i * 2 + 1] & 0xFF) << 8;
             }
             return;
         case 3:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 0xC);
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2 + 1] & 0xF0) >> 0x4;
+                gTempGfxBuffer[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 0xC);
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2 + 1] & 0xF0) >> 0x4;
 
-                gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 0xC);
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2 + 1] & 0xF0) >> 0x4;
+                gTempGfxBuffer[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 0xC);
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2 + 1] & 0xF0) >> 0x4;
             }
             return;
         case 4:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2];
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= gUnknown_0202BE30[i * 2 + 1] & 0xFF;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2 + 1] & 0xFF;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2];
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= gUnknown_0202BE30[i * 2 + 1] & 0xFF;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2 + 1] & 0xFF;
             }
             return;
         case 5:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0202BE30[i * 2 + 1] & 0xFF) << 4);
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0201B130[i * 2 + 1] & 0xFF) << 4);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0202BE30[i * 2 + 1] & 0xFF) << 4);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0201B130[i * 2 + 1] & 0xFF) << 4);
 
             }
             return;
         case 6:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0202BE30[i * 2 + 1] & 0xFF) << 8);
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0201B130[i * 2 + 1] & 0xFF) << 8);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0202BE30[i * 2 + 1] & 0xFF) << 8);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0201B130[i * 2 + 1] & 0xFF) << 8);
             }
             return;
         case 7:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 0xC);
-                gUnknown_03000000[(i * 2 + 0x11) + temp_r2] |= (gUnknown_0202BE30[i * 2 + 1] & 0xF0) >> 4;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 0xC);
-                gUnknown_03000000[(i * 2 + 0x11) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2 + 1] & 0xF0) >> 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 0xC);
+                gTempGfxBuffer[(i * 2 + 0x11) + temp_r2] |= (gUnknown_0202BE30[i * 2 + 1] & 0xF0) >> 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 0xC);
+                gTempGfxBuffer[(i * 2 + 0x11) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2 + 1] & 0xF0) >> 4;
 
             }
             return;
@@ -2069,80 +2069,80 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
         case 0:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= gUnknown_0202BE30[i * 2];
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2 + 1] & 0xF;
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2 + 1] & 0xF;
+                gTempGfxBuffer[i * 2 + temp_r2] |= gUnknown_0202BE30[i * 2];
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2 + 1] & 0xF;
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2 + 1] & 0xF;
 
             }
             return;
         case 1:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 4);
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 4);
+                gTempGfxBuffer[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 4);
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 4);
 
             }
             return;
         case 2:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 8);
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 8);
+                gTempGfxBuffer[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 8);
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 8);
 
             }
             return;
         case 3:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 0xC);
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 0xC);
+                gTempGfxBuffer[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 0xC);
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFFF0) >> 0x4) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 0xC);
 
             }
             return;
         case 4:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2];
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= gUnknown_0202BE30[i * 2 + 1] & 0xF;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2 + 1] & 0xF;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2];
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= gUnknown_0202BE30[i * 2 + 1] & 0xF;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2 + 1] & 0xF;
 
             }
             return;
         case 5:
            for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 4);
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 4);
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 4);
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xF000) >> 0xC) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 4);
 
             }
             return;
         case 6:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFF00) >> 8) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 8);
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 8);
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFF00) >> 8) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 8);
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFF00) >> 0x8) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 8);
 
             }
             return;
         case 7:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFFF0) >> 4) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 0xC);
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFFF0) >> 4) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 0xC);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= ((gUnknown_0202BE30[i * 2] & 0xFFF0) >> 4) | ((gUnknown_0202BE30[i * 2 + 1] & 0xF) << 0xC);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= ((gUnknown_0201B130[i * 2] & 0xFFF0) >> 4) | ((gUnknown_0201B130[i * 2 + 1] & 0xF) << 0xC);
 
             }
             return;
@@ -2153,69 +2153,69 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
         case 0:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2) + temp_r2] |= gUnknown_0202BE30[i * 2];
-                gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
+                gTempGfxBuffer[(i * 2) + temp_r2] |= gUnknown_0202BE30[i * 2];
+                gTempGfxBuffer[(i * 2) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
             }
             return;
         case 1:
            for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC;
-                gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF000) >> 0xC;
+                gTempGfxBuffer[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC;
+                gTempGfxBuffer[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF000) >> 0xC;
             }
             return;
         case 2:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF00) >> 8;
-                gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF00) >> 8;
+                gTempGfxBuffer[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF00) >> 8;
+                gTempGfxBuffer[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF00) >> 8;
             }
             return;
         case 3:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF0) >> 4;
-                gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF0) >> 4;
+                gTempGfxBuffer[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF0) >> 4;
+                gTempGfxBuffer[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF0) >> 4;
             }
             return;
         case 4:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2];
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= gUnknown_0202BE30[i * 2];
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= gUnknown_0201B130[i * 2];
             }
             return;
         case 5:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF000) >> 0xC;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF000) >> 0xC;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF000) >> 0xC;
             }
             return;
         case 6:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF00) >> 8;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF00) >> 8;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF00) >> 8;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF00) >> 8;
             }
             return;
         case 7:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF0) >> 4;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF0) >> 4;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF0) >> 4;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF0) >> 4;
             }
             return;
         }
@@ -2225,65 +2225,65 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
         case 0:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF);
-                gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF);
+                gTempGfxBuffer[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF);
+                gTempGfxBuffer[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF);
             }
             return;
         case 1:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
             }
             return;
         case 2:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF00) >> 8;
-                gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF00) >> 8;
+                gTempGfxBuffer[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF00) >> 8;
+                gTempGfxBuffer[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF00) >> 8;
             }
             return;
         case 3:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF0) >> 4;
-                gUnknown_03000000[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF0) >> 4;
+                gTempGfxBuffer[(i * 2) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF0) >> 4;
+                gTempGfxBuffer[(i * 2) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF0) >> 4;
             }
             return;
         case 4:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF);
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF);
             }
             return;
         case 5:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFFF) << 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFFF) << 4;
             }
             return;
         case 6:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF00) >> 8;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF00) >> 8;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF00) >> 8;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF00) >> 8;
             }
             return;
         case 7:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF0) >> 4;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF0) >> 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF0) >> 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF0) >> 4;
             }
             return;
         }
@@ -2293,61 +2293,61 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
         case 0:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF);
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF);
+                gTempGfxBuffer[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF);
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF);
             }
             return;
         case 1:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 4;
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 4;
+                gTempGfxBuffer[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 4;
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 4;
             }
             return;
         case 2:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 8;
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 8;
             }
             return;
         case 3:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF0) >> 4;
-                gUnknown_03000000[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF0) >> 4;
+                gTempGfxBuffer[i * 2 + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF0) >> 4;
+                gTempGfxBuffer[i * 2 + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF0) >> 4;
             }
             return;
         case 4:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF);
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF);
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF);
             }
             return;
         case 5:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 0x4;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 0x4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 0x4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 0x4;
             }
             return;
         case 6:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 0x8;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 0x8;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xFF) << 0x8;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xFF) << 0x8;
             }
             return;
         case 7:
             for(i = 0; i <=7; i++)
             {
-                gUnknown_03000000[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF0) >> 4;
-                gUnknown_03000000[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
-                gUnknown_03000000[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF0) >> 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2] |= (gUnknown_0202BE30[i * 2] & 0xF0) >> 4;
+                gTempGfxBuffer[(i * 2 + 1) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF) << 0xC;
+                gTempGfxBuffer[(i * 2 + 0x10) + temp_r2 + 0x200] |= (gUnknown_0201B130[i * 2] & 0xF0) >> 4;
             }
             break;
         }
@@ -2356,7 +2356,7 @@ void sub_71DC(s32 arg0, s32 arg1, s32 arg2) {
 }
 
 
-void sub_88E4(void)
+void InitPokedexAnimationState(void)
 {
     int i;
 
@@ -2386,7 +2386,7 @@ void sub_88E4(void)
     }
 }
 
-void sub_8974(s16 species)
+void RenderAnimatedPokemonPortrait(s16 species)
 {
     int var0;
     s16 quotient;
@@ -2417,7 +2417,7 @@ void sub_8974(s16 species)
     }
 }
 
-s16 sub_8A78(s16 species)
+s16 CheckPokemonHasAnimation(s16 species)
 {
     if (gPokedexFlags[species] == 4 && gDexAnimationIx[species] != -1)
         gUnknown_0202A588 = 1;

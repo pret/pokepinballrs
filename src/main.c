@@ -5,7 +5,7 @@
 #include "m4a.h"
 
 static void InitGame(void);
-static void sub_0B8C(void);
+static void InitMainState(void);
 static void InitIntrHandlers(void);
 static void ReadKeys(void);
 
@@ -30,8 +30,8 @@ void Main_09BC(void)
     switch (gMain.subState)
     {
     case 0:
-        sub_0CBC();
-        sub_024C();
+        EnableVBlankProcessing();
+        FadeInFromWhite();
         gMain.subState++;
         break;
     case 1:
@@ -39,8 +39,8 @@ void Main_09BC(void)
             gMain.subState = 2;
         break;
     default:
-        sub_02B4();
-        sub_0D10();
+        FadeOutToWhite();
+        DisableVBlankProcessing();
         SetMainGameState(STATE_TITLE);
         break;
     }
@@ -59,11 +59,11 @@ void VCountIntr(void)
     if (gMain.mainState == STATE_GAME_MAIN)
     {
         REG_BG0HOFS = 0;
-        if (gMain.unk28)
+        if (gMain.splitScreenEnabled)
         {
             if (gMain.vCount == 72)
             {
-                REG_BG0VOFS = gMain.unk2A * 4 + 88;
+                REG_BG0VOFS = gMain.splitScreenOffset * 4 + 88;
                 gMain.vCount = 144;
                 REG_DISPSTAT &= 0xFF;
                 REG_DISPSTAT |= (gMain.vCount << 8) + DISPSTAT_VCOUNT_INTR;
@@ -76,7 +76,7 @@ void VCountIntr(void)
                 REG_DISPSTAT |= (gMain.vCount << 8) + DISPSTAT_VCOUNT_INTR;
             }
         }
-        else if (gMain.unk2C)
+        else if (gMain.blendScanlineEnabled)
         {
             if (gMain.vCount == 40)
             {
@@ -137,13 +137,13 @@ static void InitGame(void)
                 | WAITCNT_SRAM_2;
     REG_IE = INTR_FLAG_GAMEPAK;
     REG_IME = INTR_FLAG_VBLANK;
-    sub_0B8C();
+    InitMainState();
     m4aSoundInit();
     m4aSoundVSyncOff();
     SaveFile_LoadGameData();
 }
 
-static void sub_0B8C(void)
+static void InitMainState(void)
 {
     gMain.mainState = STATE_INTRO;
     gMain.subState = 0;
@@ -153,9 +153,9 @@ static void sub_0B8C(void)
     gMain.unk20 = 0;
     gMain.rngValue = 0;
     gMain.systemFrameCount = 0;
-    gMain.unk30 = 0;
+    gMain.idleDemoIndex = 0;
     gMain.vCount = 144;
-    gMain.unk2C = 0;
+    gMain.blendScanlineEnabled = 0;
     ClearHighScoreNameEntry();
     ResetSomeGraphicsRelatedStuff();
 }
@@ -211,7 +211,7 @@ static void ReadKeys(void)
     gMain.heldKeys = keyInput;
 }
 
-void sub_0CBC(void)
+void EnableVBlankProcessing(void)
 {
     if (!(REG_IE & INTR_FLAG_VBLANK))
     {
@@ -237,7 +237,7 @@ void sub_0CBC(void)
     }
 }
 
-void sub_0D10(void)
+void DisableVBlankProcessing(void)
 {
     REG_DISPSTAT &= ~DISPSTAT_VBLANK_INTR;
     REG_DISPSTAT &= ~DISPSTAT_VCOUNT_INTR;
@@ -277,9 +277,9 @@ void sub_0D10(void)
 
 void MainLoopIter(void)
 {
-    gMainCallback = gUnknown_02017BD4;
-    *gVBlankIntrFuncPtr = gUnknown_02017BD0;
-    *gVCountIntrFuncPtr = gUnknown_0200FBA0;
+    gMainCallback = gMainCallbackShadow;
+    *gVBlankIntrFuncPtr = gVBlankIntrFuncShadow;
+    *gVCountIntrFuncPtr = gVCountIntrFuncShadow;
     if (gMainCallback)
         gMainCallback();
 
@@ -301,7 +301,7 @@ void DefaultMainCallback(void)
         REG_BG2VOFS = gMain.bgOffsets[2].yOffset;
         REG_BG3HOFS = gMain.bgOffsets[3].xOffset;
         REG_BG3VOFS = gMain.bgOffsets[3].yOffset;
-        if (gMain.unk36)
+        if (gMain.updateBlendRegisters)
         {
             REG_BLDCNT = gMain.blendControl;
             REG_BLDALPHA = gMain.blendAlpha;

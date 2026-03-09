@@ -43,21 +43,21 @@ void RubyBoardProcess_0B_50918(void)
     for (i = 51; i < 67; i++)
         gMain.spriteGroups[i].available = 0;
 
-    gCurrentPinballGame->unk1BC = gMain.systemFrameCount % 25;
-    if (gCurrentPinballGame->unk68 < 110)
+    gCurrentPinballGame->spriteUpdateSlot = gMain.systemFrameCount % 25;
+    if (gCurrentPinballGame->viewportBottomY < 110)
     {
         gMain.spriteGroups[65].available = 1;
         gMain.spriteGroups[71].available = 1;
         gMain.spriteGroups[66].available = 1;
     }
 
-    if (gCurrentPinballGame->unk68 < 168)
+    if (gCurrentPinballGame->viewportBottomY < 168)
     {
         gMain.spriteGroups[48].available = 1;
         gMain.spriteGroups[52].available = 1;
     }
 
-    if (gCurrentPinballGame->unk68 < 220)
+    if (gCurrentPinballGame->viewportBottomY < 220)
     {
         gMain.spriteGroups[51].available = 1;
         gMain.spriteGroups[61].available = 1;
@@ -68,22 +68,22 @@ void RubyBoardProcess_0B_50918(void)
             gMain.spriteGroups[62].available = 1;
     }
 
-    if (gCurrentPinballGame->unk68 > 63)
+    if (gCurrentPinballGame->viewportBottomY > 63)
     {
         gMain.spriteGroups[53].available = 1;
         gMain.spriteGroups[57].available = 1;
     }
 
-    if (gCurrentPinballGame->unk68 > 115)
+    if (gCurrentPinballGame->viewportBottomY > 115)
         gMain.spriteGroups[58].available = 1;
 
-    if (gCurrentPinballGame->unk68 > 130)
+    if (gCurrentPinballGame->viewportBottomY > 130)
     {
         gMain.spriteGroups[59].available = 1;
         gMain.spriteGroups[60].available = 1;
     }
 
-    if (gCurrentPinballGame->unk68 > 216)
+    if (gCurrentPinballGame->viewportBottomY > 216)
     {
         gMain.spriteGroups[56].available = 1;
         gMain.spriteGroups[54].available = 1;
@@ -136,27 +136,27 @@ void SapphireBoardProcess_0B_50B80(void)
     gMain.spriteGroups[75].available = 0;
     gMain.spriteGroups[10].available = 0;
     gMain.spriteGroups[11].available = 0;
-    gCurrentPinballGame->unk1BC = gMain.systemFrameCount % 25;
-    if (gCurrentPinballGame->unk68 < 90)
+    gCurrentPinballGame->spriteUpdateSlot = gMain.systemFrameCount % 25;
+    if (gCurrentPinballGame->viewportBottomY < 90)
     {
         gMain.spriteGroups[52].available = 1;
         gMain.spriteGroups[51].available = 1;
     }
-    if (gCurrentPinballGame->unk68 < 220)
+    if (gCurrentPinballGame->viewportBottomY < 220)
     {
         gMain.spriteGroups[72].available = 1;
     }
-    if (gCurrentPinballGame->unk68 < 150)
+    if (gCurrentPinballGame->viewportBottomY < 150)
     {
         gMain.spriteGroups[60].available = 1;
         gMain.spriteGroups[69].available = 1;
     }
-    if (gCurrentPinballGame->unk68 < 196)
+    if (gCurrentPinballGame->viewportBottomY < 196)
     {
         gMain.spriteGroups[63].available = 1;
         gMain.spriteGroups[75].available = 1;
     }
-    if (gCurrentPinballGame->unk68 < 202)
+    if (gCurrentPinballGame->viewportBottomY < 202)
     {
         gMain.spriteGroups[61].available = 1;
         gMain.spriteGroups[58].available = 1;
@@ -164,7 +164,7 @@ void SapphireBoardProcess_0B_50B80(void)
         gMain.spriteGroups[59].available = 1;
         gMain.spriteGroups[76].available = 1;
     }
-    if (gCurrentPinballGame->unk68 > 118)
+    if (gCurrentPinballGame->viewportBottomY > 118)
     {
         gMain.spriteGroups[70].available = 1;
         gMain.spriteGroups[26].available = 1;
@@ -174,7 +174,7 @@ void SapphireBoardProcess_0B_50B80(void)
         gMain.spriteGroups[66].available = 1;
         gMain.spriteGroups[67].available = 1;
     }
-    if (gCurrentPinballGame->unk68 > 216)
+    if (gCurrentPinballGame->viewportBottomY > 216)
     {
         gMain.spriteGroups[57].available = 1;
         gMain.spriteGroups[55].available = 1;
@@ -198,7 +198,7 @@ void DusclopsBoardProcess_0A_50D48(void)
             gMain.spriteGroups[i].available = 0;
     }
 
-    gMain.unk44[0]->available = 1;
+    gMain.boardSpriteGroups[0]->available = 1;
 
     LoadSpriteSets(gUnknown_086B155C[gMain.selectedField].spriteSets,
                    gUnknown_086B155C[gMain.selectedField].numSpriteSets,
@@ -224,7 +224,7 @@ void KecleonBoardProcess_0A_50DE0(void)
             gMain.spriteGroups[i].available = 0;
     }
 
-    gMain.unk44[0]->available = 1;
+    gMain.boardSpriteGroups[0]->available = 1;
     gMain.spriteGroups[23].available = 1;
     gMain.spriteGroups[9].available = 1;
     gMain.spriteGroups[24].available = 1;
@@ -257,7 +257,7 @@ void KecleonBoardProcess_0A_50DE0(void)
     );
 }
 
-void nullsub_20(void)
+void BoardProcess0_NoOp(void)
 {}
 
 void KyogreBoardProcess_0A_50F04()
@@ -272,7 +272,7 @@ void KyogreBoardProcess_0A_50F04()
             gMain.spriteGroups[i].available = 0;
     }
 
-    gMain.unk44[0]->available = 1;
+    gMain.boardSpriteGroups[0]->available = 1;
     gMain.spriteGroups[11].available = 1;
     gMain.spriteGroups[12].available = 1;
     gMain.spriteGroups[13].available = 1;
@@ -307,7 +307,7 @@ void GroudonBoardProcess_0A_50FD4(void)
         }
     }
 
-    gMain.unk44[0]->available = 1;
+    gMain.boardSpriteGroups[0]->available = 1;
     gMain.spriteGroups[11].available = 1;
     gMain.spriteGroups[12].available = 1;
     gMain.spriteGroups[13].available = 1;
@@ -338,7 +338,7 @@ void RayquazaBoardProcess_0A_51090(void)
             gMain.spriteGroups[i].available = 0;
     }
 
-    gMain.unk44[0]->available = 1;
+    gMain.boardSpriteGroups[0]->available = 1;
     gMain.spriteGroups[42].available = 1;
     gMain.spriteGroups[11].available = 1;
     gMain.spriteGroups[12].available = 1;
@@ -369,7 +369,7 @@ void SphealBoardProcess_0A_51150(void)
             gMain.spriteGroups[i].available = 0;
     }
 
-    gMain.unk44[0]->available = 1;
+    gMain.boardSpriteGroups[0]->available = 1;
     gMain.spriteGroups[18].available = 1;
     gMain.spriteGroups[21].available = 1;
     gMain.spriteGroups[22].available = 1;

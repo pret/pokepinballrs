@@ -37,10 +37,10 @@ enum CursorPositions
 struct OptionsData
 {
     s16 stateMain;
-    u16 unk2;
-    u16 unk4;
-    u16 unk6;
-    s16 unk8;
+    u16 cursorBlinkToggle;
+    u16 soundMenuBlinkToggle;
+    u16 buttonConfigFlashToggle;
+    s16 buttonConfigBlinkTimer;
     s16 cursorPosition;
     u16 buttonConfigType;
     s16 selectedBGM;
@@ -52,18 +52,18 @@ struct OptionsData
     u8 digit10sSE;
     u8 digit1sSE;
     s16 scollWaitFrames;
-    u8 unk1A[6];
-    s16 unk20;
-    s16 unk22;
-    s16 unk24[2];
-    s16 unk28;
+    u8 buttonInputActive[6];
+    s16 buttonInputCountdown;
+    s16 detectedKeyMask;
+    s16 detectedButtonKeys[2];
+    s16 detectedButtonCount;
     bool8 rumbleEnabled;
-    s8 unk2B;
-    s8 unk2C;
-    u8 unk2D;
-    s8 unk2E;
+    s8 rumbleBlinkTimer;
+    s8 rumbleAnimFrame;
+    u8 rumbleVisState;
+    s8 rumbleActive;
     u8 unk2F;
-    u8 unk30;
+    u8 scrollActive;
 };
 
 extern struct OptionsData gOptionsData;
@@ -96,8 +96,8 @@ void Options_LoadGraphics(void)
     DmaCopy16(3, gOptionsBackground_Pals, (void *)PLTT, 0x200);
     DmaCopy16(3, gOptionsText_Gfx, (void *)(VRAM + 0x4000), 0x1800);
     DmaCopy16(3, gOptionsBackground_Gfx, (void *)(VRAM + 0x8000), 0xC00);
-    DmaCopy16(3, gOptionsText_Tilemap, gUnknown_03005C00, 0x800);
-    DmaCopy16(3, gUnknown_03005C00, (void *)VRAM, 0x800);
+    DmaCopy16(3, gOptionsText_Tilemap, gBgScreenBuffer, 0x800);
+    DmaCopy16(3, gBgScreenBuffer, (void *)VRAM, 0x800);
 
     if (gGameBoyPlayerEnabled != TRUE)
     {
@@ -105,16 +105,16 @@ void Options_LoadGraphics(void)
         SetStringPalette(18, 5, 3, 2, 2);
     }
 
-    DmaCopy16(3, gUnknown_03005C00, (void *)VRAM, 0x800);
+    DmaCopy16(3, gBgScreenBuffer, (void *)VRAM, 0x800);
     DmaCopy16(3, gOptionsBackground_Tilemap, (void *)(VRAM + 0x800), 0x800);
     DmaCopy16(3, gGBAButtonIcons_Pals, (void *)(PLTT + 0x200), 0x60);
     DmaCopy16(3, gOptionsSprites_Gfx, (void *)(VRAM + 0x10000), 0x2020);
     Options_InitStates();
-    sub_51C9C();
+    RenderOptionsScreenSprites();
     m4aMPlayAllStop();
-    sub_0CBC();
-    sub_024C();
-    sub_10C0();
+    EnableVBlankProcessing();
+    FadeInFromWhite();
+    StartGbPlayerCommunication();
 
     gMain.subState++;
 }
@@ -125,10 +125,10 @@ void Options_InitStates(void)
     int j;
 
     gOptionsData.stateMain = OPTIONS_STATE_MAIN;
-    gOptionsData.unk2 = 0;
-    gOptionsData.unk4 = 0;
-    gOptionsData.unk6 = 1;
-    gOptionsData.unk8 = 0;
+    gOptionsData.cursorBlinkToggle = 0;
+    gOptionsData.soundMenuBlinkToggle = 0;
+    gOptionsData.buttonConfigFlashToggle = 1;
+    gOptionsData.buttonConfigBlinkTimer = 0;
     gOptionsData.cursorPosition = CURSOR_POS_BGM;
     gOptionsData.buttonConfigType = gMain_saveData.buttonConfigType;
     gOptionsData.selectedBGM = 0;
@@ -141,18 +141,18 @@ void Options_InitStates(void)
     gOptionsData.digit1sSE = 1;
     gOptionsData.scollWaitFrames = 0;
     for (i = 0; i < 6; i++)
-        gOptionsData.unk1A[i] = 0;
-    gOptionsData.unk20 = 0;
-    gOptionsData.unk22 = 0;
+        gOptionsData.buttonInputActive[i] = 0;
+    gOptionsData.buttonInputCountdown = 0;
+    gOptionsData.detectedKeyMask = 0;
     for (i = 0; i < 2; i++)
-        gOptionsData.unk24[i] = 10;
-    gOptionsData.unk28 = 0;
+        gOptionsData.detectedButtonKeys[i] = 10;
+    gOptionsData.detectedButtonCount = 0;
     for (i = 0; i < 4; i++)
     {
         for (j = 0; j < 10; j++)
             gUnknown_02031AF0[i][j] = gDefaultButtonConfigs[i][j];
     }
-    sub_52528();
+    ConvertCustomButtonConfigToIndices();
     if (gGameBoyPlayerEnabled == TRUE)
     {
         gOptionsData.rumbleEnabled = gMain_saveData.rumbleEnabled;
@@ -163,19 +163,19 @@ void Options_InitStates(void)
         gOptionsData.rumbleEnabled = FALSE;
         gMain_saveData.rumbleEnabled = FALSE;
     }
-    gOptionsData.unk2E = 0;
-    gOptionsData.unk2B = 0;
-    gOptionsData.unk2C = 0;
-    gOptionsData.unk2D = 0;
+    gOptionsData.rumbleActive = 0;
+    gOptionsData.rumbleBlinkTimer = 0;
+    gOptionsData.rumbleAnimFrame = 0;
+    gOptionsData.rumbleVisState = 0;
     gOptionsData.unk2F = 0;
-    gOptionsData.unk30 = 0;
+    gOptionsData.scrollActive = 0;
 }
 
 void Options_HandleInput(void)
 {
     s16 r4;
 
-    sub_51C9C();
+    RenderOptionsScreenSprites();
     switch (gOptionsData.stateMain)
     {
     case OPTIONS_STATE_MAIN:
@@ -231,26 +231,26 @@ void Options_HandleInput(void)
                 m4aSongNumStart(SE_MENU_SELECT);
                 gOptionsData.stateMain = OPTIONS_STATE_BGM_SELECT,
                 gOptionsData.scollWaitFrames = 0;
-                gOptionsData.unk30 = 1;
-                if (gOptionsData.unk2E == 1)
+                gOptionsData.scrollActive = 1;
+                if (gOptionsData.rumbleActive == 1)
                 {
-                    gOptionsData.unk2B = 0;
-                    gOptionsData.unk2D = 0;
-                    gOptionsData.unk2C = 0;
-                    gOptionsData.unk2E = 0;
+                    gOptionsData.rumbleBlinkTimer = 0;
+                    gOptionsData.rumbleVisState = 0;
+                    gOptionsData.rumbleAnimFrame = 0;
+                    gOptionsData.rumbleActive = 0;
                 }
                 break;
             case CURSOR_POS_SE:
                 m4aSongNumStart(SE_MENU_SELECT);
                 gOptionsData.stateMain = OPTIONS_STATE_SE_MENU_MOVE_0x67,
                 gOptionsData.scollWaitFrames = 0;
-                gOptionsData.unk30 = 1;
-                if (gOptionsData.unk2E == 1)
+                gOptionsData.scrollActive = 1;
+                if (gOptionsData.rumbleActive == 1)
                 {
-                    gOptionsData.unk2B = 0;
-                    gOptionsData.unk2D = 0;
-                    gOptionsData.unk2C = 0;
-                    gOptionsData.unk2E = 0;
+                    gOptionsData.rumbleBlinkTimer = 0;
+                    gOptionsData.rumbleVisState = 0;
+                    gOptionsData.rumbleAnimFrame = 0;
+                    gOptionsData.rumbleActive = 0;
                 }
                 break;
             case CURSOR_POS_BUTTON_CONFIG_TYPE_A:
@@ -272,11 +272,11 @@ void Options_HandleInput(void)
                 if (gGameBoyPlayerEnabled == TRUE)
                 {
                     m4aSongNumStart(SE_MENU_SELECT);
-                    gOptionsData.unk2D = 0;
-                    if (gOptionsData.unk2E == 1)
-                        gOptionsData.unk2E = 0;
-                    gOptionsData.unk2B = 0;
-                    gOptionsData.unk2C = 0;
+                    gOptionsData.rumbleVisState = 0;
+                    if (gOptionsData.rumbleActive == 1)
+                        gOptionsData.rumbleActive = 0;
+                    gOptionsData.rumbleBlinkTimer = 0;
+                    gOptionsData.rumbleAnimFrame = 0;
                     gOptionsData.rumbleEnabled = FALSE;
                 }
                 break;
@@ -285,11 +285,11 @@ void Options_HandleInput(void)
                 {
                     m4aSongNumStart(SE_MENU_SELECT);
                     PlayRumble(11);
-                    if (gOptionsData.unk2E == 0)
-                        gOptionsData.unk2E = 1;
+                    if (gOptionsData.rumbleActive == 0)
+                        gOptionsData.rumbleActive = 1;
 
-                    gOptionsData.unk2B = 0;
-                    gOptionsData.unk2C = 0;
+                    gOptionsData.rumbleBlinkTimer = 0;
+                    gOptionsData.rumbleAnimFrame = 0;
                     gOptionsData.rumbleEnabled = TRUE;
                 }
                 break;
@@ -302,7 +302,7 @@ void Options_HandleInput(void)
             SetButtonConfigInputs(gMain_saveData.buttonConfigType);
         }
         if (!(gMain.systemFrameCount & 7))
-            gOptionsData.unk2 = 1 - gOptionsData.unk2;
+            gOptionsData.cursorBlinkToggle = 1 - gOptionsData.cursorBlinkToggle;
         break;
     case OPTIONS_STATE_BGM_SELECT:
         if (JOY_HELD(DPAD_LEFT))
@@ -346,12 +346,12 @@ void Options_HandleInput(void)
         {
             m4aMPlayAllStop();
             m4aSongNumStart(SE_MENU_CANCEL);
-            gOptionsData.unk4 = 0;
-            gOptionsData.unk30 = 0;
+            gOptionsData.soundMenuBlinkToggle = 0;
+            gOptionsData.scrollActive = 0;
             gOptionsData.stateMain = OPTIONS_STATE_MAIN;
         }
         if (!(gMain.systemFrameCount & 7))
-            gOptionsData.unk4 = 1 - gOptionsData.unk4;
+            gOptionsData.soundMenuBlinkToggle = 1 - gOptionsData.soundMenuBlinkToggle;
         if (gOptionsData.scollWaitFrames > 0)
             gOptionsData.scollWaitFrames--;
         break;
@@ -397,12 +397,12 @@ void Options_HandleInput(void)
         {
             m4aMPlayAllStop();
             m4aSongNumStart(SE_MENU_CANCEL);
-            gOptionsData.unk4 = 0;
-            gOptionsData.unk30 = 0;
+            gOptionsData.soundMenuBlinkToggle = 0;
+            gOptionsData.scrollActive = 0;
             gOptionsData.stateMain = OPTIONS_STATE_MAIN;
         }
         if (!(gMain.systemFrameCount & 7))
-            gOptionsData.unk4 = 1 - gOptionsData.unk4;
+            gOptionsData.soundMenuBlinkToggle = 1 - gOptionsData.soundMenuBlinkToggle;
         if (gOptionsData.scollWaitFrames > 0)
             gOptionsData.scollWaitFrames--;
         break;
@@ -427,7 +427,7 @@ void Options_HandleInput(void)
         {
             m4aSongNumStart(SE_MENU_SELECT);
             gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_INPUT,
-            gOptionsData.unk1A[gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER] = 1;
+            gOptionsData.buttonInputActive[gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER] = 1;
         }
         else if (JOY_NEW(B_BUTTON))
         {
@@ -436,77 +436,77 @@ void Options_HandleInput(void)
             gOptionsData.stateMain = OPTIONS_STATE_MAIN;
         }
         if (!(gMain.systemFrameCount & 7))
-            gOptionsData.unk2 = 1 - gOptionsData.unk2;
+            gOptionsData.cursorBlinkToggle = 1 - gOptionsData.cursorBlinkToggle;
         break;
     case OPTIONS_STATE_BUTTON_CONFIG_INPUT:
-        gOptionsData.unk8++;
-        if (gOptionsData.unk8 > 24)
+        gOptionsData.buttonConfigBlinkTimer++;
+        if (gOptionsData.buttonConfigBlinkTimer > 24)
         {
-            gOptionsData.unk8 = 0;
-            gOptionsData.unk6 = 1 - gOptionsData.unk6;
+            gOptionsData.buttonConfigBlinkTimer = 0;
+            gOptionsData.buttonConfigFlashToggle = 1 - gOptionsData.buttonConfigFlashToggle;
         }
         if (JOY_NEW(KEYS_MASK ^ START_BUTTON))
         {
             s16 i;
 
             m4aSongNumStart(SE_MENU_SELECT);
-            gOptionsData.unk20 = 10;
-            gOptionsData.unk22 = 0;
+            gOptionsData.buttonInputCountdown = 10;
+            gOptionsData.detectedKeyMask = 0;
             for (i = 0; i < 2; i++)
-                gOptionsData.unk24[i] = 10;
-            gOptionsData.unk28 = 0;
+                gOptionsData.detectedButtonKeys[i] = 10;
+            gOptionsData.detectedButtonCount = 0;
         }
-        if (gOptionsData.unk20 > 0)
+        if (gOptionsData.buttonInputCountdown > 0)
         {
-            sub_524BC();
-            gOptionsData.unk20--;
-            if (gOptionsData.unk20 == 0)
+            DetectButtonConfigInput();
+            gOptionsData.buttonInputCountdown--;
+            if (gOptionsData.buttonInputCountdown == 0)
             {
-                gUnknown_02031AF0[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 0] = gOptionsData.unk24[0];
-                gUnknown_02031AF0[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 1] = gOptionsData.unk24[1];
-                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][0] = gUnknown_086BB910[gOptionsData.unk24[0]][0];
-                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][1] = gUnknown_086BB910[gOptionsData.unk24[1]][0];
+                gUnknown_02031AF0[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 0] = gOptionsData.detectedButtonKeys[0];
+                gUnknown_02031AF0[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 1] = gOptionsData.detectedButtonKeys[1];
+                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][0] = gUnknown_086BB910[gOptionsData.detectedButtonKeys[0]][0];
+                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][1] = gUnknown_086BB910[gOptionsData.detectedButtonKeys[1]][0];
                 gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_SELECT,
-                gOptionsData.unk1A[gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER] = 0;
-                gOptionsData.unk8 = 0;
-                gOptionsData.unk6 = 1;
+                gOptionsData.buttonInputActive[gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER] = 0;
+                gOptionsData.buttonConfigBlinkTimer = 0;
+                gOptionsData.buttonConfigFlashToggle = 1;
             }
         }
         break;
     }
-    if (gOptionsData.unk2E == 1)
+    if (gOptionsData.rumbleActive == 1)
     {
-        if (++gOptionsData.unk2B > gUnknown_086BB9B4[gOptionsData.unk2C].unk2)
+        if (++gOptionsData.rumbleBlinkTimer > gUnknown_086BB9B4[gOptionsData.rumbleAnimFrame].duration)
         {
-            gOptionsData.unk2B = 0;
-            gOptionsData.unk2C++;
-            if (gOptionsData.unk2C > 12)
+            gOptionsData.rumbleBlinkTimer = 0;
+            gOptionsData.rumbleAnimFrame++;
+            if (gOptionsData.rumbleAnimFrame > 12)
             {
-                gOptionsData.unk2C = 0;
-                gOptionsData.unk2D = 0;
-                gOptionsData.unk2E = 0;
+                gOptionsData.rumbleAnimFrame = 0;
+                gOptionsData.rumbleVisState = 0;
+                gOptionsData.rumbleActive = 0;
             }
-            gOptionsData.unk2D = gUnknown_086BB9B4[gOptionsData.unk2C].unk0;
+            gOptionsData.rumbleVisState = gUnknown_086BB9B4[gOptionsData.rumbleAnimFrame].visState;
         }
     }
     else
     {
-        gOptionsData.unk2B++;
-        if (gOptionsData.unk2B > 18)
+        gOptionsData.rumbleBlinkTimer++;
+        if (gOptionsData.rumbleBlinkTimer > 18)
         {
-            gOptionsData.unk2B = 0;
-            gOptionsData.unk2D = 1 - gOptionsData.unk2D;
+            gOptionsData.rumbleBlinkTimer = 0;
+            gOptionsData.rumbleVisState = 1 - gOptionsData.rumbleVisState;
         }
     }
-    sub_11FC();
+    UpdateGbPlayerRumble();
 }
 
 void Options_State2_51C3C(void)
 {
-    sub_111C();
-    if (sub_1170())
+    ResetGbPlayerState();
+    if (IsGbPlayerCommDone())
     {
-        sub_1198();
+        RestoreDefaultInterrupts();
         gMain.subState++;
     }
 }
@@ -515,16 +515,16 @@ void Options_State3_51C60(void)
 {
     gMain_saveData.rumbleEnabled = gOptionsData.rumbleEnabled;
     SaveFile_WriteToSram();
-    sub_02B4();
+    FadeOutToWhite();
     m4aMPlayAllStop();
-    sub_0D10();
+    DisableVBlankProcessing();
     gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(STATE_TITLE);
 }
 
 // TODO
 NAKED
-void sub_51C9C(void)
+void RenderOptionsScreenSprites(void)
 {
     asm_unified("\n\
     push {r4, r5, r6, r7, lr}\n\
@@ -1557,10 +1557,10 @@ _080524B4: .4byte gMain_spriteGroups_31\n\
 _080524B8: .4byte gMain");
 }
 
-void sub_524BC(void)
+void DetectButtonConfigInput(void)
 {
     int i, pressedKeys;
-    if (gOptionsData.unk28 >= 2)
+    if (gOptionsData.detectedButtonCount >= 2)
         return;
 
     pressedKeys = JOY_HELD(KEYS_MASK ^ START_BUTTON);
@@ -1570,17 +1570,17 @@ void sub_524BC(void)
     for (i = 0; i < 10; i++)
     {
         int key = pressedKeys & (1 << i);
-        if (key && !(gOptionsData.unk22 & key))
+        if (key && !(gOptionsData.detectedKeyMask & key))
         {
-            gOptionsData.unk22 |= key;
-            gOptionsData.unk24[gOptionsData.unk28] = i;
-            if (++gOptionsData.unk28 == 2)
+            gOptionsData.detectedKeyMask |= key;
+            gOptionsData.detectedButtonKeys[gOptionsData.detectedButtonCount] = i;
+            if (++gOptionsData.detectedButtonCount == 2)
                 return;
         }
     }
 }
 
-void sub_52528(void)
+void ConvertCustomButtonConfigToIndices(void)
 {
     int i, j;
     u8 var0;

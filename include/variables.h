@@ -17,7 +17,7 @@
 
 // Place all external variable declarations in this file
 
-extern struct {u16 unk0[5]; u16 unkA[5];} gUnknown_086A6B14;
+extern struct {u16 rubyFrames[5]; u16 sapphireFrames[5];} gUnknown_086A6B14;
 extern s8 gUnknown_02002850;
 extern struct ToneData gUnknown_08532D6C[];
 extern struct ToneData gUnknown_08533360[];
@@ -48,18 +48,18 @@ extern u16 gOptionsBGMList[];
 *   3 : px wide
 ***/
 extern u16 gUnknown_086BB910[11][4];
-extern struct {u8 unk0; s16 unk2;} gUnknown_086BB9B4[];
+extern struct {u8 visState; s16 duration;} gUnknown_086BB9B4[];
 extern u16 gOptionsSEList[];
 extern u8 gUnknown_02031AF0[][10];
 extern u8 gDefaultButtonConfigs[4][10];
 extern void (*const gOptionsStateFuncs[])(void);
 extern u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
-extern u16 gUnknown_0201A520[3][BG_PLTT_SIZE];
-extern u16 gUnknown_03000000[];
-extern u8 gUnknown_03001800[3][0x800];
+extern u16 gPaletteFadeBuffers[3][BG_PLTT_SIZE];
+extern u16 gTempGfxBuffer[];
+extern u8 gEReaderTextBuffer[3][0x800];
 //extern ? gOamBuffer;
 //extern ? IntrMain_Buffer;
-extern u16 gUnknown_03005C00[];
+extern u16 gBgScreenBuffer[];
 //extern ? SoundMainRAM_Buffer;
 extern u16 sGbPlayerCurKeys;
 extern u16 sGbPlayerPrevKeys;
@@ -87,23 +87,23 @@ extern u32 gUnknown_0200281C;
 //extern ? gMain;
 //extern ? gVBlankIntrFuncPtr;
 //extern ? gMainCallback;
-//extern ? gUnknown_0200FBA0;
-//extern ? gUnknown_02017BD0;
-//extern ? gUnknown_02017BD4;
+//extern ? gVCountIntrFuncShadow;
+//extern ? gVBlankIntrFuncShadow;
+//extern ? gMainCallbackShadow;
 //extern ? gUnknown_02017BE0;
 //extern ? gVCountIntrFuncPtr;
-//extern ? gUnknown_02019BE4;
-//extern ? gUnknown_02019BE8;
-//extern ? gUnknown_02019BEC;
-//extern ? gUnknown_02019BF0;
-//extern ? gUnknown_02019BF4;
-//extern ? gUnknown_02019BF8;
-//extern ? gUnknown_02019BFC;
-//extern ? gUnknown_02019C00;
-//extern ? gUnknown_02019C04;
-//extern ? gUnknown_02019C08;
+//extern ? gGbPlayerRumbleTimer;
+//extern ? gGbPlayerFrameCounter;
+//extern ? gGbPlayerCommandState;
+//extern ? gGbPlayerTimeout;
+//extern ? gGbPlayerReady;
+//extern ? gGbPlayerDataIndex;
+//extern ? gGbPlayerCmdIndex;
+//extern ? gGbPlayerRumbleMode;
+//extern ? gGbPlayerPaused;
+//extern ? gGbPlayerMotorMode;
 //extern ? gGameBoyPlayerEnabled;
-//extern ? gUnknown_02019C10;
+//extern ? gGbPlayerCommPhase;
 extern s8 gAutoDisplayTitlescreenMenu;
 //extern ? gUnknown_0201C190;
 //extern ? gUnknown_0202BE00;
@@ -111,7 +111,7 @@ extern s8 gAutoDisplayTitlescreenMenu;
 extern s16 gUnknown_0202BEEC;
 //extern ? gUnknown_0202C588;
 //extern ? gCurrentPinballGame;
-//extern ? gUnknown_02031520;
+//extern ? gBoardConfig;
 //extern ? gSoundInfo;
 //extern ? gPokemonCryMusicPlayers;
 //extern ? gMPlayJumpTable;
@@ -239,16 +239,16 @@ extern struct VectorU16 gUnknown_086A96AC[5];
 extern struct VectorU16 gUnknown_086A96C0[5];
 extern const struct VectorU32 gUnknown_080797F0[2][8];
 
-struct Unk086ACD50
+struct CollisionVelocityEntry
 {
-    s8 unk0;
-    s8 unk1;
-    u16 unk2;
+    s8 deltaX;
+    s8 deltaY;
+    u16 speedThreshold;
 };
-extern struct Unk086ACD50 gUnknown_086ACD50[8];
-extern struct Unk086ACD50 gUnknown_086ACD74[3];
+extern struct CollisionVelocityEntry gUnknown_086ACD50[8];
+extern struct CollisionVelocityEntry gUnknown_086ACD74[3];
 
-extern u16 gUnknown_02019C40[];
+extern u16 gPokedexBgScreenBuffer[];
 extern s16 gPokedexNumOwned;
 extern s16 gPokedexSelectedMon;
 extern s8 gUnknown_0202ADE4;

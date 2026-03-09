@@ -122,34 +122,34 @@ gIntroSceneFuncs:: @ 0x080792E0
 	.4byte sub_9920
 	.4byte sub_999C
 	.4byte sub_9AB8
-	.4byte nullsub_4
+	.4byte IntroScene1_NoOp1
 	.4byte sub_9C10
-	.4byte nullsub_5
-	.4byte nullsub_17
+	.4byte IntroScene1_NoOp2
+	.4byte IntroScene1_NoOp3
 	.4byte sub_9C9C
 	.4byte sub_A154
 	.4byte sub_A16C
-	.4byte nullsub_6
+	.4byte IntroScene2_NoOp1
 	.4byte sub_A2F0
-	.4byte nullsub_7
+	.4byte IntroScene2_NoOp2
 	.4byte sub_A39C
 	.4byte sub_A43C
 	.4byte sub_A454
 	.4byte sub_A674
 	.4byte sub_A710
-	.4byte nullsub_8
+	.4byte IntroScene3_NoOp
 	.4byte sub_A860
 	.4byte sub_A950
 	.4byte sub_A968
-	.4byte nullsub_9
+	.4byte IntroScene4_NoOp1
 	.4byte sub_AAF4
-	.4byte nullsub_10
+	.4byte IntroScene4_NoOp2
 	.4byte sub_AB90
 	.4byte sub_AC20
 	.4byte sub_AC38
 	.4byte sub_AE74
 	.4byte sub_AF80
-	.4byte nullsub_11
+	.4byte IntroScene5_NoOp
 	.4byte sub_B090
 	.4byte sub_B2E0
 	.4byte sub_B2F8
@@ -169,15 +169,15 @@ gIntroSceneFuncs:: @ 0x080792E0
 	.4byte sub_C38C
 	.4byte sub_C3D0
 	.4byte sub_C450
-	.4byte nullsub_12
-	.4byte nullsub_13
+	.4byte IntroScene7b_NoOp1
+	.4byte IntroScene7b_NoOp2
 	.4byte sub_C498
 	.4byte sub_C814
 	.4byte sub_C948
 	.4byte sub_CAA0
 	.4byte sub_CB6C
 	.4byte sub_CBA4
-	.4byte nullsub_14
+	.4byte IntroScene8_NoOp
 	.4byte sub_CC94
 	.4byte sub_CCF8
 

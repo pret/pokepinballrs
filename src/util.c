@@ -1,8 +1,8 @@
 #include "global.h"
 #include "main.h"
 
-static u8 *sub_0734(u32, u8*, u32);
-static int sub_0780(int, int);
+static u8 *IntToStringRecursive(u32, u8*, u32);
+static int IntPow(int, int);
 
 void SetMainGameState(u16 mainState)
 {
@@ -10,7 +10,7 @@ void SetMainGameState(u16 mainState)
     gMain.subState = 0;
 }
 
-void sub_024C(void)
+void FadeInFromWhite(void)
 {
     u16 i;
 
@@ -31,7 +31,7 @@ void sub_024C(void)
     REG_BLDCNT = 0;
 }
 
-void sub_02B4(void)
+void FadeOutToWhite(void)
 {
     u16 i;
 
@@ -97,22 +97,22 @@ void ResetSomeGraphicsRelatedStuff(void)
     gMain.dispcntBackup |= DISPCNT_FORCED_BLANK;
     REG_DISPCNT |= DISPCNT_FORCED_BLANK;
     ClearGraphicsMemory();
-    sub_0518();
+    ClearTilemapBuffers();
     ClearSprites();
     gMain.modeChangeFlags = MODE_CHANGE_NONE;
-    gMain.unk10 = 0;
+    gMain.debugOption = 0;
     gMain.fieldFrameCount = 0;
-    gMain.unk11 = 0;
-    gMain.unk12 = 0;
-    gMain.unk14 = 0;
+    gMain.pendingModeChangeFlags = 0;
+    gMain.stateTimer = 0;
+    gMain.modeTransitionDelay = 0;
     gMain.vCount = 144;
-    gMain.unk28 = 0;
-    gMain.unk2A = 0;
-    gMain.unk36 = 0;
+    gMain.splitScreenEnabled = 0;
+    gMain.splitScreenOffset = 0;
+    gMain.updateBlendRegisters = 0;
     gMain.blendControl = 0;
     gMain.blendAlpha = 0;
     gMain.blendBrightness = 0;
-    gMain.unk2C = 0;
+    gMain.blendScanlineEnabled = 0;
 }
 
 void ClearGraphicsMemory(void)
@@ -134,11 +134,11 @@ void ClearGraphicsMemory(void)
     REG_BLDALPHA = 0;
 }
 
-void sub_0518(void)
+void ClearTilemapBuffers(void)
 {
     s16 i;
 
-    DmaFill16(3, 0, gUnknown_03005C00, 0xC00);
+    DmaFill16(3, 0, gBgScreenBuffer, 0xC00);
     for (i = 0; i < 4; i++)
     {
         gMain.bgOffsets[i].xOffset = 0;
@@ -183,11 +183,11 @@ void ClearSprites(void)
     }
 }
 
-void sub_0678(u8 *arg0, s16 arg1, s16 arg2)
+void DrawTextToTilemap(u8 *arg0, s16 arg1, s16 arg2)
 {
     // Rumble Pak related?
     s16 var0 = strlen(arg0) - 1;
-    u16 *dest = &gUnknown_03005C00[arg1 * 32 + arg2];
+    u16 *dest = &gBgScreenBuffer[arg1 * 32 + arg2];
     do
     {
         *dest = (*arg0) - 32;
@@ -196,7 +196,7 @@ void sub_0678(u8 *arg0, s16 arg1, s16 arg2)
     } while (var0-- > 0);
 }
 
-u8 *sub_06CC(int arg0, u8 *arg1, int arg2, s16 arg3)
+u8 *IntToDecString(int arg0, u8 *arg1, int arg2, s16 arg3)
 {
     if (arg0 < 0)
     {
@@ -211,7 +211,7 @@ u8 *sub_06CC(int arg0, u8 *arg1, int arg2, s16 arg3)
             break;
 
         arg2--;
-        if (arg0 < sub_0780(10, arg2))
+        if (arg0 < IntPow(10, arg2))
         {
             *arg1 = 0x30;
             arg1++;
@@ -224,23 +224,23 @@ u8 *sub_06CC(int arg0, u8 *arg1, int arg2, s16 arg3)
 
     if (arg3)
     {
-        sub_0734(arg0, arg1, 10);
+        IntToStringRecursive(arg0, arg1, 10);
     }
     else
     {
-        u8 *ptr = sub_0734(arg0, arg1, 10);
+        u8 *ptr = IntToStringRecursive(arg0, arg1, 10);
         *ptr = 0;
     }
 
     return arg1;
 }
 
-static u8 *sub_0734(u32 arg0, u8 *arg1, u32 arg2)
+static u8 *IntToStringRecursive(u32 arg0, u8 *arg1, u32 arg2)
 {
     u8 mod = arg0 % arg2;
     int div = arg0 / arg2;
     if (div != 0)
-        arg1 = sub_0734(div, arg1, arg2);
+        arg1 = IntToStringRecursive(div, arg1, arg2);
 
     if (mod < 10)
         *arg1 = mod + 48;
@@ -250,7 +250,7 @@ static u8 *sub_0734(u32 arg0, u8 *arg1, u32 arg2)
     return arg1 + 1;
 }
 
-static int sub_0780(int arg0, int arg1)
+static int IntPow(int arg0, int arg1)
 {
     int var0;
     int var1 = arg1;

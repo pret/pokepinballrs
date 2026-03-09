@@ -26,20 +26,20 @@ void AllBoardProcess_2A_4D6C4(void)
 
     if (gMain.selectedField < MAIN_FIELD_COUNT)
     {
-        gCurrentPinballGame->unk5FC = var1 - 244;
-        gCurrentPinballGame->unk5FE = 0;
-        gCurrentPinballGame->unk5FB = 0;
-        gCurrentPinballGame->unk4C = gUnknown_02031520.unk14.unk14;
-        gCurrentPinballGame->unk4E = gUnknown_02031520.unk14.unk16;
-        gCurrentPinballGame->unk54 = gUnknown_02031520.unk14.unk16 << 8;
-        gCurrentPinballGame->unk58 = gCurrentPinballGame->unk4C;
-        gCurrentPinballGame->unk5A = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
-        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->unk4C + var0;
-        gMain.bgOffsets[2].yOffset = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
-        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->unk4C + var0;
-        gMain.bgOffsets[3].yOffset = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
-        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->unk4C + var0;
-        gMain.bgOffsets[1].yOffset = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
+        gCurrentPinballGame->scrollNudgeY = var1 - 244;
+        gCurrentPinballGame->scrollNudgeTargetY = 0;
+        gCurrentPinballGame->scrollNudgeActive = 0;
+        gCurrentPinballGame->cameraScrollX = gBoardConfig.fieldLayout.initialScrollX;
+        gCurrentPinballGame->cameraScrollY = gBoardConfig.fieldLayout.initialScrollY;
+        gCurrentPinballGame->cameraScrollYQ8 = gBoardConfig.fieldLayout.initialScrollY << 8;
+        gCurrentPinballGame->bgScrollXCopy = gCurrentPinballGame->cameraScrollX;
+        gCurrentPinballGame->bgScrollYWithOffset = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->scrollNudgeY;
+        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->cameraScrollX + var0;
+        gMain.bgOffsets[2].yOffset = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->scrollNudgeY;
+        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->cameraScrollX + var0;
+        gMain.bgOffsets[3].yOffset = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->scrollNudgeY;
+        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->cameraScrollX + var0;
+        gMain.bgOffsets[1].yOffset = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->scrollNudgeY;
         if (gMain.selectedField == FIELD_RUBY)
         {
             if ((gCurrentPinballGame->numCompletedBonusStages / 5) % 2 == 0)
@@ -57,35 +57,35 @@ void AllBoardProcess_2A_4D6C4(void)
     }
     else
     {
-        gCurrentPinballGame->unk5FC = 0;
-        gCurrentPinballGame->unk5FE = 0;
-        gCurrentPinballGame->unk5FB = 0;
+        gCurrentPinballGame->scrollNudgeY = 0;
+        gCurrentPinballGame->scrollNudgeTargetY = 0;
+        gCurrentPinballGame->scrollNudgeActive = 0;
         if (gMain.selectedField <= FIELD_KECLEON)
-            gCurrentPinballGame->unkE6 = -24;
+            gCurrentPinballGame->fieldScrollOffsetY = -24;
         else if (gMain.selectedField == FIELD_RAYQUAZA)
-            gCurrentPinballGame->unkE6 = -88;
+            gCurrentPinballGame->fieldScrollOffsetY = -88;
         else
-            gCurrentPinballGame->unkE6 = -64;
+            gCurrentPinballGame->fieldScrollOffsetY = -64;
 
-        gCurrentPinballGame->unk4C = gUnknown_02031520.unk14.unk14;
-        gCurrentPinballGame->unk4E = gUnknown_02031520.unk14.unk16 + gCurrentPinballGame->unkE6;
-        gCurrentPinballGame->unk54 = gUnknown_02031520.unk14.unk16 << 8;
-        gCurrentPinballGame->unk58 = gCurrentPinballGame->unk4C;
-        gCurrentPinballGame->unk5A = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk5FC;
-        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->unk4C + var0;
-        gMain.bgOffsets[2].yOffset = gCurrentPinballGame->unk4E;
-        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->unk4C + var0;
-        gMain.bgOffsets[3].yOffset = gCurrentPinballGame->unk4E;
-        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->unk4C + var0;
-        gMain.bgOffsets[1].yOffset = gCurrentPinballGame->unk4E / 2;
+        gCurrentPinballGame->cameraScrollX = gBoardConfig.fieldLayout.initialScrollX;
+        gCurrentPinballGame->cameraScrollY = gBoardConfig.fieldLayout.initialScrollY + gCurrentPinballGame->fieldScrollOffsetY;
+        gCurrentPinballGame->cameraScrollYQ8 = gBoardConfig.fieldLayout.initialScrollY << 8;
+        gCurrentPinballGame->bgScrollXCopy = gCurrentPinballGame->cameraScrollX;
+        gCurrentPinballGame->bgScrollYWithOffset = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->scrollNudgeY;
+        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->cameraScrollX + var0;
+        gMain.bgOffsets[2].yOffset = gCurrentPinballGame->cameraScrollY;
+        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->cameraScrollX + var0;
+        gMain.bgOffsets[3].yOffset = gCurrentPinballGame->cameraScrollY;
+        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->cameraScrollX + var0;
+        gMain.bgOffsets[1].yOffset = gCurrentPinballGame->cameraScrollY / 2;
         if (gMain.selectedField == FIELD_KECLEON)
-            gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset + (gCurrentPinballGame->unk290 & 0x7FF) / 8;
+            gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset + (gCurrentPinballGame->gameFrameCount & 0x7FF) / 8;
     }
 
     gMain.bgOffsets[0].yOffset = 80;
-    gCurrentPinballGame->unkCC = gMain.bgOffsets[3].yOffset;
-    gCurrentPinballGame->unkCA = gCurrentPinballGame->unkCC;
-    gCurrentPinballGame->unk2C = 0x1000;
+    gCurrentPinballGame->bgTargetScrollY = gMain.bgOffsets[3].yOffset;
+    gCurrentPinballGame->bgSmoothScrollY = gCurrentPinballGame->bgTargetScrollY;
+    gCurrentPinballGame->cameraFollowOffsetQ8 = 0x1000;
 }
 
 void MainBoardProcess_2B_4D960(void)
@@ -98,35 +98,35 @@ void MainBoardProcess_2B_4D960(void)
 
     var0 = 0x1000;
     if (gMain.modeChangeFlags == MODE_CHANGE_NONE)
-        sub_4E2F8();
+        CheckMainBoardBallOutOfBounds();
 
-    if (gCurrentPinballGame->unk5FB)
+    if (gCurrentPinballGame->scrollNudgeActive)
     {
-        if (gCurrentPinballGame->unk5FC != gCurrentPinballGame->unk5FE)
+        if (gCurrentPinballGame->scrollNudgeY != gCurrentPinballGame->scrollNudgeTargetY)
         {
-            if (gCurrentPinballGame->unk5FC > gCurrentPinballGame->unk5FE)
-                gCurrentPinballGame->unk5FC--;
+            if (gCurrentPinballGame->scrollNudgeY > gCurrentPinballGame->scrollNudgeTargetY)
+                gCurrentPinballGame->scrollNudgeY--;
             else
-                gCurrentPinballGame->unk5FC++;
+                gCurrentPinballGame->scrollNudgeY++;
         }
         else
         {
-            gCurrentPinballGame->unk5FB = 0;
+            gCurrentPinballGame->scrollNudgeActive = 0;
         }
     }
 
-    if (gCurrentPinballGame->unk1F == 0)
-        var0 = (gCurrentPinballGame->unk1330->velocity.y * 40) + 0x1000;
+    if (gCurrentPinballGame->ballLockState == 0)
+        var0 = (gCurrentPinballGame->boardState30->velocity.y * 40) + 0x1000;
 
-    gCurrentPinballGame->unk2C += (var0 - gCurrentPinballGame->unk2C) / 10;
-    var1 = gCurrentPinballGame->unk1330->positionQ8.y + gCurrentPinballGame->unk2C;
-    if (var1 > gUnknown_02031520.unk14.unk18 << 8)
-        var1 = gUnknown_02031520.unk14.unk18 << 8;
-    else if (var1 < gUnknown_02031520.unk14.unk1A << 8)
-        var1 = gUnknown_02031520.unk14.unk1A << 8;
+    gCurrentPinballGame->cameraFollowOffsetQ8 += (var0 - gCurrentPinballGame->cameraFollowOffsetQ8) / 10;
+    var1 = gCurrentPinballGame->boardState30->positionQ8.y + gCurrentPinballGame->cameraFollowOffsetQ8;
+    if (var1 > gBoardConfig.fieldLayout.cameraScrollMaxY << 8)
+        var1 = gBoardConfig.fieldLayout.cameraScrollMaxY << 8;
+    else if (var1 < gBoardConfig.fieldLayout.cameraScrollMinY << 8)
+        var1 = gBoardConfig.fieldLayout.cameraScrollMinY << 8;
 
     var1 -= 0x5000;
-    var4 = gCurrentPinballGame->unk54;
+    var4 = gCurrentPinballGame->cameraScrollYQ8;
     var2 = (var1 - var4) / 12;
     if (var2 > 0)
     {
@@ -140,25 +140,25 @@ void MainBoardProcess_2B_4D960(void)
     }
 
     var4 += var2;
-    if (gCurrentPinballGame->unk5FA == 0)
+    if (gCurrentPinballGame->bossActive == 0)
     {
-        gCurrentPinballGame->unk54 = var4;
-        gCurrentPinballGame->unk4E = var4 / 0x100;
-        if (gCurrentPinballGame->unk1330->positionQ0.x >= 230)
-            gCurrentPinballGame->unk4C++;
+        gCurrentPinballGame->cameraScrollYQ8 = var4;
+        gCurrentPinballGame->cameraScrollY = var4 / 0x100;
+        if (gCurrentPinballGame->boardState30->positionQ0.x >= 230)
+            gCurrentPinballGame->cameraScrollX++;
         else
-            gCurrentPinballGame->unk4C--;
+            gCurrentPinballGame->cameraScrollX--;
 
-        if (gCurrentPinballGame->unk4C > 16)
-            gCurrentPinballGame->unk4C = 16;
-        else if (gCurrentPinballGame->unk4C < 0)
-            gCurrentPinballGame->unk4C = 0;
+        if (gCurrentPinballGame->cameraScrollX > 16)
+            gCurrentPinballGame->cameraScrollX = 16;
+        else if (gCurrentPinballGame->cameraScrollX < 0)
+            gCurrentPinballGame->cameraScrollX = 0;
     }
 
-    sub_4DFA0();
-    gMain.bgOffsets[3].xOffset = gCurrentPinballGame->unk4C + gCurrentPinballGame->unk120 + gCurrentPinballGame->unk2AA;
-    gCurrentPinballGame->unkCC = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk121 + gCurrentPinballGame->unk5FC + gCurrentPinballGame->unkE6;
-    var3 = gMain.bgOffsets[3].yOffset - gCurrentPinballGame->unkCC;
+    ProcessBoardTiltShake();
+    gMain.bgOffsets[3].xOffset = gCurrentPinballGame->cameraScrollX + gCurrentPinballGame->shakeOffsetX + gCurrentPinballGame->bossShakeOffsetX;
+    gCurrentPinballGame->bgTargetScrollY = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->shakeOffsetY + gCurrentPinballGame->scrollNudgeY + gCurrentPinballGame->fieldScrollOffsetY;
+    var3 = gMain.bgOffsets[3].yOffset - gCurrentPinballGame->bgTargetScrollY;
     if (var3 > 8)
         var3 = 8;
     else if (var3 < -8)
@@ -171,10 +171,10 @@ void MainBoardProcess_2B_4D960(void)
     gMain.bgOffsets[2].yOffset = gMain.bgOffsets[3].yOffset;
     gMain.bgOffsets[1].xOffset = gMain.bgOffsets[3].xOffset;
     gMain.bgOffsets[1].yOffset = gMain.bgOffsets[3].yOffset;
-    gCurrentPinballGame->unk58 = gCurrentPinballGame->unk4C + gCurrentPinballGame->unk120 + gCurrentPinballGame->unk2AA;
-    gCurrentPinballGame->unk5A = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk121 + gCurrentPinballGame->unk5FC + gCurrentPinballGame->unkE6;
-    gCurrentPinballGame->unk6A = gCurrentPinballGame->unk68;
-    gCurrentPinballGame->unk68 = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk121 + gCurrentPinballGame->unk5FC + gCurrentPinballGame->unkE6;
+    gCurrentPinballGame->bgScrollXCopy = gCurrentPinballGame->cameraScrollX + gCurrentPinballGame->shakeOffsetX + gCurrentPinballGame->bossShakeOffsetX;
+    gCurrentPinballGame->bgScrollYWithOffset = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->shakeOffsetY + gCurrentPinballGame->scrollNudgeY + gCurrentPinballGame->fieldScrollOffsetY;
+    gCurrentPinballGame->viewportBottomYPrev = gCurrentPinballGame->viewportBottomY;
+    gCurrentPinballGame->viewportBottomY = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->shakeOffsetY + gCurrentPinballGame->scrollNudgeY + gCurrentPinballGame->fieldScrollOffsetY;
 }
 
 void BonusBoardProcess_2B_4DBFC(void)
@@ -187,35 +187,35 @@ void BonusBoardProcess_2B_4DBFC(void)
 
     var0 = 0x1000;
     if ((gMain.modeChangeFlags & ~MODE_CHANGE_EXPIRED_BONUS) == 0)
-        sub_4E468();
+        CheckBonusBoardBallOutOfBounds();
 
-    if (gCurrentPinballGame->unk5FB)
+    if (gCurrentPinballGame->scrollNudgeActive)
     {
-        if (gCurrentPinballGame->unk5FC != gCurrentPinballGame->unk5FE)
+        if (gCurrentPinballGame->scrollNudgeY != gCurrentPinballGame->scrollNudgeTargetY)
         {
-            if (gCurrentPinballGame->unk5FC > gCurrentPinballGame->unk5FE)
-                gCurrentPinballGame->unk5FC--;
+            if (gCurrentPinballGame->scrollNudgeY > gCurrentPinballGame->scrollNudgeTargetY)
+                gCurrentPinballGame->scrollNudgeY--;
             else
-                gCurrentPinballGame->unk5FC++;
+                gCurrentPinballGame->scrollNudgeY++;
         }
         else
         {
-            gCurrentPinballGame->unk5FB = 0;
+            gCurrentPinballGame->scrollNudgeActive = 0;
         }
     }
 
-    if (gCurrentPinballGame->unk1F == 0)
-        var0 = gCurrentPinballGame->unk1330->velocity.y * 40 + 0x1000;
+    if (gCurrentPinballGame->ballLockState == 0)
+        var0 = gCurrentPinballGame->boardState30->velocity.y * 40 + 0x1000;
 
-    gCurrentPinballGame->unk2C += (var0 - gCurrentPinballGame->unk2C) / 10;
-    var1 = gCurrentPinballGame->unk1330->positionQ8.y + gCurrentPinballGame->unk2C;
-    if (var1 > gUnknown_02031520.unk14.unk18 << 8)
-        var1 = gUnknown_02031520.unk14.unk18 << 8;
-    else if (var1 < gUnknown_02031520.unk14.unk1A << 8)
-        var1 = gUnknown_02031520.unk14.unk1A << 8;
+    gCurrentPinballGame->cameraFollowOffsetQ8 += (var0 - gCurrentPinballGame->cameraFollowOffsetQ8) / 10;
+    var1 = gCurrentPinballGame->boardState30->positionQ8.y + gCurrentPinballGame->cameraFollowOffsetQ8;
+    if (var1 > gBoardConfig.fieldLayout.cameraScrollMaxY << 8)
+        var1 = gBoardConfig.fieldLayout.cameraScrollMaxY << 8;
+    else if (var1 < gBoardConfig.fieldLayout.cameraScrollMinY << 8)
+        var1 = gBoardConfig.fieldLayout.cameraScrollMinY << 8;
 
     var1 -= 0x5000;
-    var4 = gCurrentPinballGame->unk54;
+    var4 = gCurrentPinballGame->cameraScrollYQ8;
     var2 = (var1 - var4) / 12;
     if (var2 > 0)
     {
@@ -229,25 +229,25 @@ void BonusBoardProcess_2B_4DBFC(void)
     }
 
     var4 += var2;
-    if (gCurrentPinballGame->unk5FA == 0)
+    if (gCurrentPinballGame->bossActive == 0)
     {
-        gCurrentPinballGame->unk54 = var4;
-        gCurrentPinballGame->unk4E = var4 / 0x100;
+        gCurrentPinballGame->cameraScrollYQ8 = var4;
+        gCurrentPinballGame->cameraScrollY = var4 / 0x100;
     }
 
-    sub_4DFA0();
-    gMain.bgOffsets[2].xOffset = gCurrentPinballGame->unk4C + gCurrentPinballGame->unk120 + 8 + gCurrentPinballGame->unk2AA;
-    gCurrentPinballGame->unkCC = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk121 + gCurrentPinballGame->unk5FC + gCurrentPinballGame->unkE6 + gCurrentPinballGame->unk2AC;
-    var3 = gCurrentPinballGame->unkCA - gCurrentPinballGame->unkCC;
+    ProcessBoardTiltShake();
+    gMain.bgOffsets[2].xOffset = gCurrentPinballGame->cameraScrollX + gCurrentPinballGame->shakeOffsetX + 8 + gCurrentPinballGame->bossShakeOffsetX;
+    gCurrentPinballGame->bgTargetScrollY = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->shakeOffsetY + gCurrentPinballGame->scrollNudgeY + gCurrentPinballGame->fieldScrollOffsetY + gCurrentPinballGame->bossShakeOffsetY;
+    var3 = gCurrentPinballGame->bgSmoothScrollY - gCurrentPinballGame->bgTargetScrollY;
     if (var3 > 8)
         var3 = 8;
     else if (var3 < -8)
         var3 = -8;
 
     if (var3)
-        gCurrentPinballGame->unkCA -= var3;
+        gCurrentPinballGame->bgSmoothScrollY -= var3;
 
-    gMain.bgOffsets[2].yOffset = gCurrentPinballGame->unkCA;
+    gMain.bgOffsets[2].yOffset = gCurrentPinballGame->bgSmoothScrollY;
 
     switch (gMain.selectedField)
     {
@@ -255,10 +255,10 @@ void BonusBoardProcess_2B_4DBFC(void)
         gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
         gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
-        gMain.bgOffsets[1].yOffset = gCurrentPinballGame->unkCA / 2;
+        gMain.bgOffsets[1].yOffset = gCurrentPinballGame->bgSmoothScrollY / 2;
         break;
     case 3:
-        gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset + (gCurrentPinballGame->unk290 & 0x7FF) / 8;
+        gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset + (gCurrentPinballGame->gameFrameCount & 0x7FF) / 8;
         gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
         gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[1].yOffset = 0;
@@ -282,152 +282,152 @@ void BonusBoardProcess_2B_4DBFC(void)
         break;
     }
 
-    gCurrentPinballGame->unk58 = gCurrentPinballGame->unk4C + gCurrentPinballGame->unk120 + gCurrentPinballGame->unk2AA;
-    gCurrentPinballGame->unk5A = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk121 + gCurrentPinballGame->unk5FC + gCurrentPinballGame->unkE6 + gCurrentPinballGame->unk2AC;
-    gCurrentPinballGame->unk68 = gCurrentPinballGame->unk4E + gCurrentPinballGame->unk121 + gCurrentPinballGame->unk5FC + gCurrentPinballGame->unkE6;
+    gCurrentPinballGame->bgScrollXCopy = gCurrentPinballGame->cameraScrollX + gCurrentPinballGame->shakeOffsetX + gCurrentPinballGame->bossShakeOffsetX;
+    gCurrentPinballGame->bgScrollYWithOffset = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->shakeOffsetY + gCurrentPinballGame->scrollNudgeY + gCurrentPinballGame->fieldScrollOffsetY + gCurrentPinballGame->bossShakeOffsetY;
+    gCurrentPinballGame->viewportBottomY = gCurrentPinballGame->cameraScrollY + gCurrentPinballGame->shakeOffsetY + gCurrentPinballGame->scrollNudgeY + gCurrentPinballGame->fieldScrollOffsetY;
 }
 
-void sub_4DFA0(void)
+void ProcessBoardTiltShake(void)
 {
     int i;
     s16 sp0[4];
 
-    if (gCurrentPinballGame->unk25 == 0 && gCurrentPinballGame->unk5A4 != 2 && gCurrentPinballGame->unk61C == 0)
+    if (gCurrentPinballGame->boardEntryMode == 0 && gCurrentPinballGame->catchModeHitPhase != 2 && gCurrentPinballGame->inputLockActive == 0)
     {
         if (gCurrentPinballGame->newButtonActions[2])
         {
-            if (gCurrentPinballGame->unk12A == 0)
+            if (gCurrentPinballGame->shakeCooldown == 0)
             {
-                gCurrentPinballGame->unk129 = 0;
-                if (gCurrentPinballGame->unk128 == 0)
+                gCurrentPinballGame->bumperShakeAxis = 0;
+                if (gCurrentPinballGame->bumperShakeTimer == 0)
                 {
-                    gCurrentPinballGame->unk128 = 4;
+                    gCurrentPinballGame->bumperShakeTimer = 4;
                     m4aSongNumStart(SE_TILT_TRIGGERED);
                     PlayRumble(8);
                 }
             }
         }
 
-        if (gCurrentPinballGame->newButtonActions[3] && gCurrentPinballGame->unk12A == 0)
+        if (gCurrentPinballGame->newButtonActions[3] && gCurrentPinballGame->shakeCooldown == 0)
         {
-            gCurrentPinballGame->unk129 = 1;
-            if (gCurrentPinballGame->unk128 == 0)
+            gCurrentPinballGame->bumperShakeAxis = 1;
+            if (gCurrentPinballGame->bumperShakeTimer == 0)
             {
-                gCurrentPinballGame->unk128 = 4;
+                gCurrentPinballGame->bumperShakeTimer = 4;
                 m4aSongNumStart(SE_TILT_TRIGGERED);
                 PlayRumble(8);
             }
         }
 
-        if (gCurrentPinballGame->newButtonActions[4] && gCurrentPinballGame->unk12A == 0)
+        if (gCurrentPinballGame->newButtonActions[4] && gCurrentPinballGame->shakeCooldown == 0)
         {
-            gCurrentPinballGame->unk129 = 2;
-            if (gCurrentPinballGame->unk128 == 0)
+            gCurrentPinballGame->bumperShakeAxis = 2;
+            if (gCurrentPinballGame->bumperShakeTimer == 0)
             {
-                gCurrentPinballGame->unk128 = 4;
+                gCurrentPinballGame->bumperShakeTimer = 4;
                 m4aSongNumStart(SE_TILT_TRIGGERED);
                 PlayRumble(8);
             }
         }
     }
 
-    if (gCurrentPinballGame->unk128)
+    if (gCurrentPinballGame->bumperShakeTimer)
     {
-        gCurrentPinballGame->unk128--;
-        if (gCurrentPinballGame->unk128 == 0)
+        gCurrentPinballGame->bumperShakeTimer--;
+        if (gCurrentPinballGame->bumperShakeTimer == 0)
         {
-            switch (gCurrentPinballGame->unk129)
+            switch (gCurrentPinballGame->bumperShakeAxis)
             {
             case 0:
-                gCurrentPinballGame->unk118[0] = 6;
-                gCurrentPinballGame->unk11C[0] = -1;
-                gCurrentPinballGame->unk118[2] = 6;
-                gCurrentPinballGame->unk11C[2] = 1;
+                gCurrentPinballGame->boardShakeTimers[0] = 6;
+                gCurrentPinballGame->boardShakeDirections[0] = -1;
+                gCurrentPinballGame->boardShakeTimers[2] = 6;
+                gCurrentPinballGame->boardShakeDirections[2] = 1;
                 break;
             case 1:
-                gCurrentPinballGame->unk118[1] = 6;
-                gCurrentPinballGame->unk11C[1] = 1;
-                gCurrentPinballGame->unk118[3] = 6;
-                gCurrentPinballGame->unk11C[3] = 1;
+                gCurrentPinballGame->boardShakeTimers[1] = 6;
+                gCurrentPinballGame->boardShakeDirections[1] = 1;
+                gCurrentPinballGame->boardShakeTimers[3] = 6;
+                gCurrentPinballGame->boardShakeDirections[3] = 1;
                 break;
             case 2:
-                gCurrentPinballGame->unk118[2] = 6;
-                gCurrentPinballGame->unk11C[2] = 1;
-                gCurrentPinballGame->unk118[3] = 0;
-                gCurrentPinballGame->unk11C[3] = 1;
+                gCurrentPinballGame->boardShakeTimers[2] = 6;
+                gCurrentPinballGame->boardShakeDirections[2] = 1;
+                gCurrentPinballGame->boardShakeTimers[3] = 0;
+                gCurrentPinballGame->boardShakeDirections[3] = 1;
                 break;
             }
 
-            gCurrentPinballGame->unk12A = 24;
+            gCurrentPinballGame->shakeCooldown = 24;
         }
     }
 
-    if (gCurrentPinballGame->unk12A)
-        gCurrentPinballGame->unk12A--;
+    if (gCurrentPinballGame->shakeCooldown)
+        gCurrentPinballGame->shakeCooldown--;
 
     for (i = 0; i < 4; i++)
     {
-        if (gCurrentPinballGame->unk118[i] > 0)
-            gCurrentPinballGame->unk118[i]--;
+        if (gCurrentPinballGame->boardShakeTimers[i] > 0)
+            gCurrentPinballGame->boardShakeTimers[i]--;
 
-        if (gCurrentPinballGame->unk118[i] < 3)
-            sp0[i] = gCurrentPinballGame->unk11C[i] * gCurrentPinballGame->unk118[i];
+        if (gCurrentPinballGame->boardShakeTimers[i] < 3)
+            sp0[i] = gCurrentPinballGame->boardShakeDirections[i] * gCurrentPinballGame->boardShakeTimers[i];
         else
-            sp0[i] = gCurrentPinballGame->unk11C[i] * (6 - gCurrentPinballGame->unk118[i]);
+            sp0[i] = gCurrentPinballGame->boardShakeDirections[i] * (6 - gCurrentPinballGame->boardShakeTimers[i]);
     }
 
-    gCurrentPinballGame->unk120 = sp0[0] + sp0[1];
-    gCurrentPinballGame->unk121 = sp0[2] + sp0[3];
+    gCurrentPinballGame->shakeOffsetX = sp0[0] + sp0[1];
+    gCurrentPinballGame->shakeOffsetY = sp0[2] + sp0[3];
 
-    if (gCurrentPinballGame->unk120 == 0 && gCurrentPinballGame->unk121 == 0)
+    if (gCurrentPinballGame->shakeOffsetX == 0 && gCurrentPinballGame->shakeOffsetY == 0)
     {
-        gCurrentPinballGame->unk126 = 0;
-        gCurrentPinballGame->unk127 = 0;
-    }
-
-    if (gCurrentPinballGame->unk120 > 0)
-    {
-        if (gCurrentPinballGame->unk120 < gCurrentPinballGame->unk122)
-            gCurrentPinballGame->unk122--;
-    }
-    else if (gCurrentPinballGame->unk120 < 0)
-    {
-        if (gCurrentPinballGame->unk120 > gCurrentPinballGame->unk122)
-            gCurrentPinballGame->unk122++;
+        gCurrentPinballGame->shakeApplied = 0;
+        gCurrentPinballGame->shakeVelocityDirection = 0;
     }
 
-    if (gCurrentPinballGame->unk121 > 0)
+    if (gCurrentPinballGame->shakeOffsetX > 0)
     {
-        if (gCurrentPinballGame->unk121 < gCurrentPinballGame->unk123)
-            gCurrentPinballGame->unk123--;
+        if (gCurrentPinballGame->shakeOffsetX < gCurrentPinballGame->shakePeakX)
+            gCurrentPinballGame->shakePeakX--;
     }
-    else if (gCurrentPinballGame->unk121 < 0)
+    else if (gCurrentPinballGame->shakeOffsetX < 0)
     {
-        if (gCurrentPinballGame->unk121 > gCurrentPinballGame->unk123)
-            gCurrentPinballGame->unk123++;
+        if (gCurrentPinballGame->shakeOffsetX > gCurrentPinballGame->shakePeakX)
+            gCurrentPinballGame->shakePeakX++;
     }
 
-    if (gCurrentPinballGame->unk126 == 0)
+    if (gCurrentPinballGame->shakeOffsetY > 0)
     {
-        gCurrentPinballGame->unk122 = gCurrentPinballGame->unk120;
-        gCurrentPinballGame->unk123 = gCurrentPinballGame->unk121;
+        if (gCurrentPinballGame->shakeOffsetY < gCurrentPinballGame->shakePeakY)
+            gCurrentPinballGame->shakePeakY--;
+    }
+    else if (gCurrentPinballGame->shakeOffsetY < 0)
+    {
+        if (gCurrentPinballGame->shakeOffsetY > gCurrentPinballGame->shakePeakY)
+            gCurrentPinballGame->shakePeakY++;
+    }
+
+    if (gCurrentPinballGame->shakeApplied == 0)
+    {
+        gCurrentPinballGame->shakePeakX = gCurrentPinballGame->shakeOffsetX;
+        gCurrentPinballGame->shakePeakY = gCurrentPinballGame->shakeOffsetY;
     }
 }
 
-void sub_4E2F8(void)
+void CheckMainBoardBallOutOfBounds(void)
 {
-    struct BallState *unk1334;
+    struct BallState *ballInstances;
 
-    if (gCurrentPinballGame->unk13 && gCurrentPinballGame->newButtonActions[1] && gCurrentPinballGame->unk20)
+    if (gCurrentPinballGame->boardState && gCurrentPinballGame->newButtonActions[1] && gCurrentPinballGame->tiltDetected)
     {
-        gCurrentPinballGame->unk21 = 1;
-        gCurrentPinballGame->unk163 = 1;
+        gCurrentPinballGame->tiltButtonHeld = 1;
+        gCurrentPinballGame->peliAnimState = 1;
     }
 
-    if (gCurrentPinballGame->unk21 && gCurrentPinballGame->releasedButtonActions[1])
+    if (gCurrentPinballGame->tiltButtonHeld && gCurrentPinballGame->releasedButtonActions[1])
     {
-        gCurrentPinballGame->unk163 = 3;
-        if (gCurrentPinballGame->unk20)
+        gCurrentPinballGame->peliAnimState = 3;
+        if (gCurrentPinballGame->tiltDetected)
         {
             PlayRumble(7);
             gCurrentPinballGame->ball->velocity.y = -590;
@@ -435,74 +435,74 @@ void sub_4E2F8(void)
             m4aSongNumStart(SE_UNKNOWN_0xCD);
         }
 
-        gCurrentPinballGame->unk21 = 0;
+        gCurrentPinballGame->tiltButtonHeld = 0;
     }
 
-    gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
-    unk1334 = &gCurrentPinballGame->unk1334[0];
+    gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+    ballInstances = &gCurrentPinballGame->boardState34[0];
 
-    if (unk1334->positionQ0.y >= gUnknown_02031520.unk14.unk2A)
+    if (ballInstances->positionQ0.y >= gBoardConfig.fieldLayout.ballLossY)
     {
-        unk1334->positionQ0.y = gUnknown_02031520.unk14.unk2A;
+        ballInstances->positionQ0.y = gBoardConfig.fieldLayout.ballLossY;
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
-        if (gMain.unk14 == 0)
+        if (gMain.modeTransitionDelay == 0)
         {
-            if (gCurrentPinballGame->unk724)
+            if (gCurrentPinballGame->modeTimerFrames)
             {
-                gMain.unk14 = 4;
-                gMain.unk11 = 8;
-                gMain.unk12 = 204;
+                gMain.modeTransitionDelay = 4;
+                gMain.pendingModeChangeFlags = 8;
+                gMain.stateTimer = 204;
             }
             else
             {
-                gMain.unk14 = 80;
-                gMain.unk11 = 16;
-                gMain.unk12 = 200;
+                gMain.modeTransitionDelay = 80;
+                gMain.pendingModeChangeFlags = 16;
+                gMain.stateTimer = 200;
                 m4aMPlayAllStop();
                 m4aSongNumStart(MUS_END_OF_BALL);
-                sub_4E598();
+                ResetBoardStateAfterBallLoss();
                 if (gCurrentPinballGame->outLanePikaPosition == 2 && gMain.eReaderBonuses[EREADER_DX_MODE_CARD] == 0)
                 {
-                    gCurrentPinballGame->unk1BE = 2;
-                    gCurrentPinballGame->unk1C0 = 800;
+                    gCurrentPinballGame->pikaSaverLossType = 2;
+                    gCurrentPinballGame->pikaSaverAnimTimer = 800;
                     gCurrentPinballGame->outLanePikaPosition = 0;
                 }
             }
         }
     }
 
-    gCurrentPinballGame->unk20 = 0;
+    gCurrentPinballGame->tiltDetected = 0;
 }
 
-void sub_4E468(void)
+void CheckBonusBoardBallOutOfBounds(void)
 {
-    struct BallState *unk1334;
+    struct BallState *ballInstances;
 
-    gCurrentPinballGame->ball = &gCurrentPinballGame->unk1334[0];
-    unk1334 = &gCurrentPinballGame->unk1334[0];
+    gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+    ballInstances = &gCurrentPinballGame->boardState34[0];
 
-    if (unk1334->positionQ0.y >= gUnknown_02031520.unk14.unk2A)
+    if (ballInstances->positionQ0.y >= gBoardConfig.fieldLayout.ballLossY)
     {
-        unk1334->velocity.x = 0;
+        ballInstances->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
         if (gMain.modeChangeFlags & MODE_CHANGE_EXPIRED_BONUS)
         {
             gCurrentPinballGame->returnToMainBoardFlag = 1;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-            gCurrentPinballGame->ball->positionQ0.y = gUnknown_02031520.unk14.unk2A - 10;
+            gCurrentPinballGame->ball->positionQ0.y = gBoardConfig.fieldLayout.ballLossY - 10;
         }
         else
         {
-            gCurrentPinballGame->ball->unk0 = 1;
-            gCurrentPinballGame->unk388 = 1;
-            gCurrentPinballGame->unk392 = 0;
-            gCurrentPinballGame->ball->positionQ0.x = gUnknown_02031520.unk14.unk26;
-            gCurrentPinballGame->ball->positionQ0.y = gUnknown_02031520.unk14.unk28;
+            gCurrentPinballGame->ball->isGrabbed = 1;
+            gCurrentPinballGame->bonusCaptureState = 1;
+            gCurrentPinballGame->bonusSequenceTimer = 0;
+            gCurrentPinballGame->ball->positionQ0.x = gBoardConfig.fieldLayout.ballStartX;
+            gCurrentPinballGame->ball->positionQ0.y = gBoardConfig.fieldLayout.ballStartY;
             if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                 gCurrentPinballGame->ballUpgradeType--;
 
@@ -517,41 +517,41 @@ void sub_4E468(void)
     }
 }
 
-void sub_4E598(void)
+void ResetBoardStateAfterBallLoss(void)
 {
-    gCurrentPinballGame->unk18 = 10199;
+    gCurrentPinballGame->stageTimer = 10199;
 
-    if (gCurrentPinballGame->unk13 == 2)
-        gCurrentPinballGame->unk17 = 5;
-    if (gCurrentPinballGame->unk13 == 7)
-        gCurrentPinballGame->unk17 = 6;
-    if (gCurrentPinballGame->unk13 == 4)
-        gCurrentPinballGame->unk17 = 10;
-    if (gCurrentPinballGame->unk13 == 5)
-        gCurrentPinballGame->unk17 = 6;
-    if (gCurrentPinballGame->unk13 == 6)
-        gCurrentPinballGame->unk17 = 8;
+    if (gCurrentPinballGame->boardState == 2)
+        gCurrentPinballGame->boardSubState = 5;
+    if (gCurrentPinballGame->boardState == 7)
+        gCurrentPinballGame->boardSubState = 6;
+    if (gCurrentPinballGame->boardState == 4)
+        gCurrentPinballGame->boardSubState = 10;
+    if (gCurrentPinballGame->boardState == 5)
+        gCurrentPinballGame->boardSubState = 6;
+    if (gCurrentPinballGame->boardState == 6)
+        gCurrentPinballGame->boardSubState = 8;
 
-    gCurrentPinballGame->unk714 = 0;
+    gCurrentPinballGame->allHolesCompleted = 0;
     gCurrentPinballGame->holeIndicators[0] = 0;
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
-    gCurrentPinballGame->unk614 = 0;
-    gCurrentPinballGame->unk208 = 0;
-    gCurrentPinballGame->unk20A = 0;
+    gCurrentPinballGame->lastBallImpactVelocityY = 0;
+    gCurrentPinballGame->outLanePikaAnimSubFrame = 0;
+    gCurrentPinballGame->outLanePikaAnimKeyframe = 0;
     if (gCurrentPinballGame->outLanePikaPosition != 2 || !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
-        gCurrentPinballGame->unk1C6 = 0;
-        gCurrentPinballGame->unk1C8 = 0;
-        gCurrentPinballGame->unk1CC = 0;
-        gCurrentPinballGame->unk1CA = 0;
-        gCurrentPinballGame->unk1D4 = 0;
-        gCurrentPinballGame->unk1D6 = -4;
-        gCurrentPinballGame->unk1D8 = 0x100;
-        gCurrentPinballGame->unk1DA = 0x100;
-        gCurrentPinballGame->unk1CE = 0;
-        gCurrentPinballGame->unk1D0 = 0;
+        gCurrentPinballGame->pikaChargeTarget = 0;
+        gCurrentPinballGame->pikaChargeDisplay = 0;
+        gCurrentPinballGame->pikaChargeSegmentPrev = 0;
+        gCurrentPinballGame->pikaChargeSegment = 0;
+        gCurrentPinballGame->pikaChargeSpriteOffsetX = 0;
+        gCurrentPinballGame->pikaChargeSpriteY = -4;
+        gCurrentPinballGame->pikaChargeSpriteScaleX = 0x100;
+        gCurrentPinballGame->pikaChargeSpriteScaleY = 0x100;
+        gCurrentPinballGame->pikaChargeFlashTimer = 0;
+        gCurrentPinballGame->pikaChargeAnimDuration = 0;
     }
 
     gCurrentPinballGame->ballPowerUpLight[0] = 0;
@@ -570,10 +570,10 @@ void sub_4E598(void)
         gCurrentPinballGame->ballUpgradeCounter = 0;
     }
 
-    gCurrentPinballGame->unk5F7 = 0;
+    gCurrentPinballGame->ballLocked = 0;
     DmaCopy16(3, &gUnknown_08137E14[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
-    gCurrentPinballGame->unk62F = gCurrentPinballGame->unk70E;
-    gCurrentPinballGame->unk70E = 1;
+    gCurrentPinballGame->savedBonusMultiplier = gCurrentPinballGame->bonusMultiplier;
+    gCurrentPinballGame->bonusMultiplier = 1;
     if (gCurrentPinballGame->whiscashFrameIx == WHISCASH_FRAME_GONE_AFTER_HIT)
     {
         gCurrentPinballGame->shouldProcessWhiscash = FALSE;
@@ -581,9 +581,9 @@ void sub_4E598(void)
         gCurrentPinballGame->whiscashStateTimer = 0;
         gCurrentPinballGame->rubyPondContentsChanging = TRUE;
         gCurrentPinballGame->rubyPondChangeTimer = 0x40;
-        gCurrentPinballGame->unk2AA = 0;
+        gCurrentPinballGame->bossShakeOffsetX = 0;
 
     }
 
-    gCurrentPinballGame->unk300 = 0;
+    gCurrentPinballGame->rampPrizeAnimState = 0;
 }

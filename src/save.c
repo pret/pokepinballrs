@@ -9,14 +9,14 @@ static bool16 LoadSaveDataFromSram(void);
 void SaveFile_LoadGameData(void)
 {
     SetSramFastFunc();
-    gMain.unkC = 0;
+    gMain.saveDataLoaded = 0;
     if (LoadSaveDataFromSram() == FALSE)
     {
         ResetSaveFile();
         SaveFile_WriteToSram();
         if (LoadSaveDataFromSram() == FALSE)
         {
-            gMain.unkC = 1;
+            gMain.saveDataLoaded = 1;
             ResetSaveFile();
         }
     }

@@ -87,58 +87,58 @@ void InitGameBoyPlayer(void)
     REG_BLDCNT = BLDCNT_TGT2_ALL | BLDCNT_EFFECT_LIGHTEN | BLDCNT_TGT1_ALL;
     REG_BLDY = 0x10;
     REG_DISPCNT = DISPCNT_OBJ_ON | DISPCNT_BG0_ON;
-    gUnknown_02019C00 = 0;
-    gUnknown_02019BEC = 0;
-    gUnknown_02019BF4 = 0;
-    gUnknown_02019BF0 = 0;
+    gGbPlayerRumbleMode = 0;
+    gGbPlayerCommandState = 0;
+    gGbPlayerReady = 0;
+    gGbPlayerTimeout = 0;
     gGameBoyPlayerEnabled = CheckGameBoyPlayer();
     REG_IE &= ~INTR_FLAG_VBLANK;
     REG_DISPSTAT &= ~DISPSTAT_VBLANK_INTR;
     REG_DISPCNT = 0;
-    gUnknown_02019BFC = -1;
-    gUnknown_02019BE4 = 0;
-    gUnknown_02019BE8 = 0;
-    gUnknown_02019BF8 = 0;
-    gUnknown_02019C08 = 2;
+    gGbPlayerCmdIndex = -1;
+    gGbPlayerRumbleTimer = 0;
+    gGbPlayerFrameCounter = 0;
+    gGbPlayerDataIndex = 0;
+    gGbPlayerMotorMode = 2;
 }
 
-void sub_10C0(void)
+void StartGbPlayerCommunication(void)
 {
     if (gGameBoyPlayerEnabled == 1)
     {
         gIntrTable[0] = Sio32IDIntr;
-        gIntrTable[1] = sub_1828;
-        gUnknown_02019BF4 = 1;
-        sub_1340();
+        gIntrTable[1] = GbPlayerTimeoutIntr;
+        gGbPlayerReady = 1;
+        InitGbPlayerSerialComm();
     }
 
-    gUnknown_02019BFC = -1;
-    gUnknown_02019BE4 = 0;
-    gUnknown_02019C08 = 2;
-    gUnknown_02019C04 = 0;
+    gGbPlayerCmdIndex = -1;
+    gGbPlayerRumbleTimer = 0;
+    gGbPlayerMotorMode = 2;
+    gGbPlayerPaused = 0;
 }
 
-void sub_111C(void)
+void ResetGbPlayerState(void)
 {
     // TODO This probably wasn't the original code, but it matches.
-    int *var0 = &gUnknown_02019BF4;
+    int *var0 = &gGbPlayerReady;
     int val = 0;
-    gUnknown_02019C00 = val;
-    gUnknown_02019BEC = val;
+    gGbPlayerRumbleMode = val;
+    gGbPlayerCommandState = val;
     *var0 = val;
-    gUnknown_02019BF0 = val;
-    gUnknown_02019BFC = -1;
-    gUnknown_02019BE4 = val;
-    gUnknown_02019BE8 = val;
-    gUnknown_02019BF8 = val;
-    gUnknown_02019C08 = 2;
+    gGbPlayerTimeout = val;
+    gGbPlayerCmdIndex = -1;
+    gGbPlayerRumbleTimer = val;
+    gGbPlayerFrameCounter = val;
+    gGbPlayerDataIndex = val;
+    gGbPlayerMotorMode = 2;
 }
 
-int sub_1170(void)
+int IsGbPlayerCommDone(void)
 {
     if (gGameBoyPlayerEnabled == 1)
     {
-        u8 val = gUnknown_02019C10 - 4;
+        u8 val = gGbPlayerCommPhase - 4;
         if (val > 1)
             return 0;
     }
@@ -146,7 +146,7 @@ int sub_1170(void)
     return 1;
 }
 
-void sub_1198(void)
+void RestoreDefaultInterrupts(void)
 {
     gIntrTable[0] = SerialIntr;
     gIntrTable[1] = Timer3Intr;
@@ -156,31 +156,31 @@ void PlayRumble(int arg0)
 {
     if (gMain_saveData.rumbleEnabled)
     {
-        gUnknown_02019BF8 = arg0;
-        gUnknown_02019BFC = 0;
-        gUnknown_02019BE4 = 0;
-        gUnknown_02019BE8 = 0;
+        gGbPlayerDataIndex = arg0;
+        gGbPlayerCmdIndex = 0;
+        gGbPlayerRumbleTimer = 0;
+        gGbPlayerFrameCounter = 0;
     }
 }
 
-void sub_11E4(int arg0)
+void SetGbPlayerMotorMode(int arg0)
 {
-    gUnknown_02019C08 = arg0;
+    gGbPlayerMotorMode = arg0;
 }
 
-void sub_11F0(int arg0)
+void SetGbPlayerPaused(int arg0)
 {
-    gUnknown_02019C04 = arg0;
+    gGbPlayerPaused = arg0;
 }
 
-void sub_11FC(void)
+void UpdateGbPlayerRumble(void)
 {
     int var0;
     int var1;
 
     if (gGameBoyPlayerEnabled == 1)
     {
-        switch (gUnknown_02019C10)
+        switch (gGbPlayerCommPhase)
         {
         case 0:
         case 1:
@@ -188,75 +188,75 @@ void sub_11FC(void)
             break;
         case 3:
         case 4:
-            if (gUnknown_02019BFC >= 0 && gUnknown_02019C08 && !gUnknown_02019C04)
+            if (gGbPlayerCmdIndex >= 0 && gGbPlayerMotorMode && !gGbPlayerPaused)
             {
-                if (!(gUnknown_02019BE8 & 1))
+                if (!(gGbPlayerFrameCounter & 1))
                 {
                     while (1)
                     {
-                        var0 = gUnknown_086A4C44[gUnknown_02019BF8][gUnknown_02019BFC++];
-                        var1 = gUnknown_086A4C44[gUnknown_02019BF8][gUnknown_02019BFC];
+                        var0 = gUnknown_086A4C44[gGbPlayerDataIndex][gGbPlayerCmdIndex++];
+                        var1 = gUnknown_086A4C44[gGbPlayerDataIndex][gGbPlayerCmdIndex];
                         if (var0 == -1)
                         {
-                            gUnknown_02019BFC = var0;
-                            gUnknown_02019C00 = 0;
+                            gGbPlayerCmdIndex = var0;
+                            gGbPlayerRumbleMode = 0;
                             break;
                         }
 
                         if (var0 < -1)
                         {
-                            if (gUnknown_02019BE4)
+                            if (gGbPlayerRumbleTimer)
                             {
-                                if (--gUnknown_02019BE4 == 0)
+                                if (--gGbPlayerRumbleTimer == 0)
                                 {
-                                    gUnknown_02019BFC++;
+                                    gGbPlayerCmdIndex++;
                                 }
                                 else
                                 {
-                                    gUnknown_02019BFC--;
-                                    gUnknown_02019BFC -= var1;
+                                    gGbPlayerCmdIndex--;
+                                    gGbPlayerCmdIndex -= var1;
                                 }
                             }
                             else
                             {
-                                gUnknown_02019BE4 = ~var0;
-                                gUnknown_02019BFC--;
-                                gUnknown_02019BFC -= var1;
+                                gGbPlayerRumbleTimer = ~var0;
+                                gGbPlayerCmdIndex--;
+                                gGbPlayerCmdIndex -= var1;
                             }
                         }
                         else
                         {
-                            gUnknown_02019C00 = var0;
+                            gGbPlayerRumbleMode = var0;
                             break;
                         }
                     }
                 }
-                else if (gUnknown_02019BE8 % 2 == 1 && gUnknown_02019C08 == 1)
+                else if (gGbPlayerFrameCounter % 2 == 1 && gGbPlayerMotorMode == 1)
                 {
-                    gUnknown_02019C00 = 0;
+                    gGbPlayerRumbleMode = 0;
                 }
             }
             else
             {
-                gUnknown_02019C00 = 0;
+                gGbPlayerRumbleMode = 0;
             }
             break;
         case 5:
-            if (++gUnknown_02019BF0 > 60)
+            if (++gGbPlayerTimeout > 60)
             {
-                if (gUnknown_02019BF4)
-                    sub_1340();
+                if (gGbPlayerReady)
+                    InitGbPlayerSerialComm();
 
-                gUnknown_02019BF0 = 0;
+                gGbPlayerTimeout = 0;
             }
             break;
         }
     }
 
-    gUnknown_02019BE8++;
+    gGbPlayerFrameCounter++;
 }
 
-void sub_1340(void)
+void InitGbPlayerSerialComm(void)
 {
     REG_IME = 0;
     REG_IE &= ~(INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL);
@@ -269,7 +269,7 @@ void sub_1340(void)
     REG_IE |= INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL;
     REG_IME = INTR_FLAG_VBLANK;
     REG_SIOCNT_L &= -2;
-    gUnknown_02019C10 = 0;
+    gGbPlayerCommPhase = 0;
     CpuFill32(0, &gUnknown_02002808, 0xC);
     REG_IME = 0;
     REG_SIOCNT |= SIO_MULTI_BUSY;
@@ -287,7 +287,7 @@ void Sio32IDIntr(void)
     REG_TM3CNT_H = 0;
     REG_TM3CNT_L = 0x8000;
 
-    switch (gUnknown_02019C10)
+    switch (gGbPlayerCommPhase)
     {
         case 0: {
             u32 receiverChunk = REG_SIODATA32;
@@ -312,8 +312,8 @@ void Sio32IDIntr(void)
                         gUnknown_02002808.lastId = receiverChunk;
                         if (receiverChunk == 0x8002)
                         {
-                            gUnknown_02019C10 = 1;
-                            gUnknown_02002814 = sub_1748(1);
+                            gGbPlayerCommPhase = 1;
+                            gUnknown_02002814 = GetGbPlayerCommResult(1);
                             REG_SIODATA32 = gUnknown_02002814;
                             gUnknown_02002808.count = 0;
                             break;
@@ -346,65 +346,65 @@ void Sio32IDIntr(void)
             break;
     }
         case 1:
-            iVar6 = sub_16A0(gUnknown_02019C10);
+            iVar6 = ValidateGbPlayerResponse(gGbPlayerCommPhase);
             if (iVar6 != 0)
             {
                 u32 stack_temp;
                 gUnknown_02002808.count = 0;
                 stack_temp = 0;
                 CpuSet(&stack_temp, &gUnknown_02002808, 0x5000003);
-                gUnknown_02019C10 = 0;
+                gGbPlayerCommPhase = 0;
             }
             else
             {
-                gUnknown_02019C10 = 2;
+                gGbPlayerCommPhase = 2;
             }
 
-            if (gUnknown_02019BF4 == 0)
+            if (gGbPlayerReady == 0)
             {
-                gUnknown_02019C10 = 4;
+                gGbPlayerCommPhase = 4;
             }
-            gUnknown_02002814 = sub_1748(gUnknown_02019C10);
+            gUnknown_02002814 = GetGbPlayerCommResult(gGbPlayerCommPhase);
             REG_SIODATA32 = gUnknown_02002814;
             break;
         case 2:
-            iVar6 = sub_16A0(gUnknown_02019C10);
+            iVar6 = ValidateGbPlayerResponse(gGbPlayerCommPhase);
             if (iVar6 != 0)
             {
                 u32 stack_temp;
                 gUnknown_02002808.count = 0;
                 stack_temp = 0;
                 CpuSet(&stack_temp, &gUnknown_02002808, 0x5000003);
-                gUnknown_02019C10 = 0;
+                gGbPlayerCommPhase = 0;
             }
             else
             {
-                gUnknown_02019C10 = 3;
+                gGbPlayerCommPhase = 3;
             }
 
-            if (gUnknown_02019BF4 == 0)
+            if (gGbPlayerReady == 0)
             {
-                gUnknown_02019C10 = 4;
+                gGbPlayerCommPhase = 4;
             }
-            gUnknown_02002814 = sub_1748(gUnknown_02019C10);
+            gUnknown_02002814 = GetGbPlayerCommResult(gGbPlayerCommPhase);
             REG_SIODATA32 = gUnknown_02002814;
             break;
         case 3:
-            iVar6 = sub_16A0(gUnknown_02019C10);
+            iVar6 = ValidateGbPlayerResponse(gGbPlayerCommPhase);
             if (iVar6 != 0)
             {
                 u32 stack_temp;
                 gUnknown_02002808.count = 0;
                 stack_temp = 0;
                 CpuSet(&stack_temp, &gUnknown_02002808, 0x5000003);
-                gUnknown_02019C10 = 0;
+                gGbPlayerCommPhase = 0;
             }
 
-            if (gUnknown_02019BF4 == 0)
+            if (gGbPlayerReady == 0)
             {
-                gUnknown_02019C10 = 4;
+                gGbPlayerCommPhase = 4;
             }
-            gUnknown_02002814 = sub_1748(gUnknown_02019C10);
+            gUnknown_02002814 = GetGbPlayerCommResult(gGbPlayerCommPhase);
             REG_SIODATA32 = gUnknown_02002814;
             break;
         case 4:
@@ -420,7 +420,7 @@ void Sio32IDIntr(void)
     REG_TM3CNT_H = 0xC1;
 }
 
-u32 sub_1668(u32 arg1, u32 arg2)
+u32 EncodeGbPlayerPacket(u32 arg1, u32 arg2)
 {
     u8 uVar1;
     u32 uVar2;
@@ -441,13 +441,13 @@ u32 sub_1668(u32 arg1, u32 arg2)
     return uVar2;
 }
 
-u32 sub_16A0(u8 param_1)
+u32 ValidateGbPlayerResponse(u8 param_1)
 {
     s8 cVar1;
     u32 uVar3;
 
     uVar3 = gUnknown_02002818 >> 0x1C;
-    cVar1 = sub_170C();
+    cVar1 = VerifyGbPlayerChecksum();
 
     if (cVar1) return 1;
     switch (param_1)
@@ -478,7 +478,7 @@ u32 sub_16A0(u8 param_1)
     return 0;
 }
 
-u32 sub_170C(void)
+u32 VerifyGbPlayerChecksum(void)
 {
     u8 uVar1;
     u32 uVar2;
@@ -508,7 +508,7 @@ u32 sub_170C(void)
     }
 }
 
-u32 sub_1748(u8 param_1)
+u32 GetGbPlayerCommResult(u8 param_1)
 {
     u32 uVar1;
     u32 uVar2;
@@ -521,18 +521,18 @@ u32 sub_1748(u8 param_1)
             uVar2 = 2;
             goto case_fallthrough;
         case 3:
-            if (gUnknown_02019C00 == 0)
+            if (gGbPlayerRumbleMode == 0)
             {
-                uVar1 = sub_17D8(0);
-                param_3 = sub_1668(uVar1, 4);
+                uVar1 = ShiftRumbleByCommandState(0);
+                param_3 = EncodeGbPlayerPacket(uVar1, 4);
             }
-            if (gUnknown_02019C00 == 1)
+            if (gGbPlayerRumbleMode == 1)
             {
-                uVar1 = sub_17D8(1);
-                param_3 = sub_1668(uVar1, 4);
+                uVar1 = ShiftRumbleByCommandState(1);
+                param_3 = EncodeGbPlayerPacket(uVar1, 4);
             }
-            if (gUnknown_02019C00 != 2) break;
-            uVar1 = sub_17D8(2);
+            if (gGbPlayerRumbleMode != 2) break;
+            uVar1 = ShiftRumbleByCommandState(2);
             uVar2 = 4;
             goto case_fallthrough;
         case 1:
@@ -541,17 +541,17 @@ u32 sub_1748(u8 param_1)
             uVar1 = 1;
             uVar2 = 1;
         case_fallthrough: // Fairly confident that this is not in fact a fakematch, due to the break above
-            param_3 = sub_1668(uVar1, uVar2);
+            param_3 = EncodeGbPlayerPacket(uVar1, uVar2);
     }
 
     return param_3;
 }
 
-u32 sub_17D8(u32 arg1)
+u32 ShiftRumbleByCommandState(u32 arg1)
 {
     u32 retVal;
 
-    switch (gUnknown_02019BEC)
+    switch (gGbPlayerCommandState)
     {
     case 0:
         retVal = arg1;
@@ -572,7 +572,7 @@ u32 sub_17D8(u32 arg1)
     return retVal;
 }
 
-void sub_1828(void)
+void GbPlayerTimeoutIntr(void)
 {
     // TODO macro?
     REG_IME = 0;
@@ -586,5 +586,5 @@ void sub_1828(void)
     REG_TM3CNT_H = 0;
     REG_TM3CNT_L = 0x8000;
 
-    gUnknown_02019C10 = 5;
+    gGbPlayerCommPhase = 5;
 }

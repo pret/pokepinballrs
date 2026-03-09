@@ -18,7 +18,7 @@ void AllBoardProcess_8B_4CEB4(void)
     s16 sp0[12];
     u32 value;
 
-    sub_4D3D0();
+    UpdateEventTimerDisplay();
     gCurrentPinballGame->scoreAdditionAccumulator += (gCurrentPinballGame->ballUpgradeType + 1) * gCurrentPinballGame->scoreAddedInFrame;
     if (gCurrentPinballGame->scoreCounterAnimationEnabled)
     {
@@ -97,8 +97,8 @@ void AllBoardProcess_8B_4CEB4(void)
     }
     for (j = i; j < 12; j++)
     {
-        gUnknown_03005C00[0x7C1 + (j - i)] = sp0[j] * 2 - 0x3EA0;
-        gUnknown_03005C00[0x7E1 + (j - i)] = sp0[j] * 2 - 0x3E9F;
+        gBgScreenBuffer[0x7C1 + (j - i)] = sp0[j] * 2 - 0x3EA0;
+        gBgScreenBuffer[0x7E1 + (j - i)] = sp0[j] * 2 - 0x3E9F;
     }
 
     if (gCurrentPinballGame->caughtMonCount > 999)
@@ -106,71 +106,71 @@ void AllBoardProcess_8B_4CEB4(void)
     sp0[2] = gCurrentPinballGame->caughtMonCount / 100;
     sp0[1] = (gCurrentPinballGame->caughtMonCount % 100) / 10;
     sp0[0] = gCurrentPinballGame->caughtMonCount % 10;
-    gUnknown_03005C00[0x7D1] = 0xC17E;
-    gUnknown_03005C00[0x7F1] = 0xC17F;
-    gUnknown_03005C00[0x7D2] = (sp0[2] + 5) * 2 - 0x3EA0;
-    gUnknown_03005C00[0x7F2] = (sp0[2] + 5) * 2 - 0x3E9F;
-    gUnknown_03005C00[0x7D3] = (sp0[1] + 5) * 2 - 0x3EA0;
-    gUnknown_03005C00[0x7F3] = (sp0[1] + 5) * 2 - 0x3E9F;
-    gUnknown_03005C00[0x7D4] = (sp0[0] + 5) * 2 - 0x3EA0;
-    gUnknown_03005C00[0x7F4] = (sp0[0] + 5) * 2 - 0x3E9F;
+    gBgScreenBuffer[0x7D1] = 0xC17E;
+    gBgScreenBuffer[0x7F1] = 0xC17F;
+    gBgScreenBuffer[0x7D2] = (sp0[2] + 5) * 2 - 0x3EA0;
+    gBgScreenBuffer[0x7F2] = (sp0[2] + 5) * 2 - 0x3E9F;
+    gBgScreenBuffer[0x7D3] = (sp0[1] + 5) * 2 - 0x3EA0;
+    gBgScreenBuffer[0x7F3] = (sp0[1] + 5) * 2 - 0x3E9F;
+    gBgScreenBuffer[0x7D4] = (sp0[0] + 5) * 2 - 0x3EA0;
+    gBgScreenBuffer[0x7F4] = (sp0[0] + 5) * 2 - 0x3E9F;
 
     if (gCurrentPinballGame->coins > 99)
         gCurrentPinballGame->coins = 99;
     sp0[1] = gCurrentPinballGame->coins / 10;
     sp0[0] = gCurrentPinballGame->coins % 10;
-    gUnknown_03005C00[0x7D6] = 0xC19C;
-    gUnknown_03005C00[0x7F6] = 0xC19D;
-    gUnknown_03005C00[0x7D7] = (sp0[1] + 5) * 2 - 0x3EA0;
-    gUnknown_03005C00[0x7F7] = (sp0[1] + 5) * 2 - 0x3E9F;
-    gUnknown_03005C00[0x7D8] = (sp0[0] + 5) * 2 - 0x3EA0;
-    gUnknown_03005C00[0x7F8] = (sp0[0] + 5) * 2 - 0x3E9F;
+    gBgScreenBuffer[0x7D6] = 0xC19C;
+    gBgScreenBuffer[0x7F6] = 0xC19D;
+    gBgScreenBuffer[0x7D7] = (sp0[1] + 5) * 2 - 0x3EA0;
+    gBgScreenBuffer[0x7F7] = (sp0[1] + 5) * 2 - 0x3E9F;
+    gBgScreenBuffer[0x7D8] = (sp0[0] + 5) * 2 - 0x3EA0;
+    gBgScreenBuffer[0x7F8] = (sp0[0] + 5) * 2 - 0x3E9F;
 
     if (gCurrentPinballGame->numLives > 9)
         gCurrentPinballGame->numLives = 9;
-    gUnknown_03005C00[0x7DA] = 0xC180;
-    gUnknown_03005C00[0x7FA] = 0xC181;
-    gUnknown_03005C00[0x7DB] = (gCurrentPinballGame->numLives + 5) * 2 - 0x3EA0;
-    gUnknown_03005C00[0x7FB] = (gCurrentPinballGame->numLives + 5) * 2 - 0x3E9F;
+    gBgScreenBuffer[0x7DA] = 0xC180;
+    gBgScreenBuffer[0x7FA] = 0xC181;
+    gBgScreenBuffer[0x7DB] = (gCurrentPinballGame->numLives + 5) * 2 - 0x3EA0;
+    gBgScreenBuffer[0x7FB] = (gCurrentPinballGame->numLives + 5) * 2 - 0x3E9F;
 
-    if (gCurrentPinballGame->unk1CA == 13)
+    if (gCurrentPinballGame->pikaChargeSegment == 13)
     {
-        if (gCurrentPinballGame->unk1DC & 0x8)
+        if (gCurrentPinballGame->pikaChargeFullFlashTimer & 0x8)
         {
-            gUnknown_03005C00[0x7DD] = 0xC19A;
-            gUnknown_03005C00[0x7FD] = 0xC19B;
+            gBgScreenBuffer[0x7DD] = 0xC19A;
+            gBgScreenBuffer[0x7FD] = 0xC19B;
         }
         else
         {
-            gUnknown_03005C00[0x7DD] = 0xC182;
-            gUnknown_03005C00[0x7FD] = 0xC183;
+            gBgScreenBuffer[0x7DD] = 0xC182;
+            gBgScreenBuffer[0x7FD] = 0xC183;
         }
 
-        if (gCurrentPinballGame->unk1DC)
-            gCurrentPinballGame->unk1DC--;
+        if (gCurrentPinballGame->pikaChargeFullFlashTimer)
+            gCurrentPinballGame->pikaChargeFullFlashTimer--;
     }
     else
     {
-        gUnknown_03005C00[0x7DD] = 0xC19E;
-        gUnknown_03005C00[0x7FD] = 0xC19F;
+        gBgScreenBuffer[0x7DD] = 0xC19E;
+        gBgScreenBuffer[0x7FD] = 0xC19F;
     }
 
-    DmaCopy16(3, &gUnknown_03005C00[0x7C0], (void *)0x06002F80, 0x80);
+    DmaCopy16(3, &gBgScreenBuffer[0x7C0], (void *)0x06002F80, 0x80);
 }
 
-void sub_4D3D0(void)
+void UpdateEventTimerDisplay(void)
 {
     s16 i;
     s16 sp0[4];
     s16 var2;
 
-    if (gCurrentPinballGame->unk294 == 0)
+    if (gCurrentPinballGame->entityActivePhase == 0)
         return;
 
     if (gCurrentPinballGame->eventTimer == 0)
         return;
 
-    if (gCurrentPinballGame->unk294 == 2 && gMain.modeChangeFlags == MODE_CHANGE_NONE)
+    if (gCurrentPinballGame->entityActivePhase == 2 && gMain.modeChangeFlags == MODE_CHANGE_NONE)
         gCurrentPinballGame->eventTimer--;
 
     sp0[0] = gCurrentPinballGame->eventTimer / 3600;
@@ -179,33 +179,33 @@ void sub_4D3D0(void)
     sp0[2] = var2 / 600;
     var2 %= 600;
     sp0[3] = var2 / 60;
-    if (gCurrentPinballGame->unk294 == 3)
+    if (gCurrentPinballGame->entityActivePhase == 3)
     {
         for (i = 0; i < 4; i++)
         {
-            gUnknown_03005C00[0x179 + i] = 0x1FF;
-            gUnknown_03005C00[0x199 + i] = 0x1FF;
+            gBgScreenBuffer[0x179 + i] = 0x1FF;
+            gBgScreenBuffer[0x199 + i] = 0x1FF;
         }
 
-        DmaCopy16(3, &gUnknown_03005C00[0x160], (void *)0x060022C0, 0x80);
-        gCurrentPinballGame->unk294 = 0;
+        DmaCopy16(3, &gBgScreenBuffer[0x160], (void *)0x060022C0, 0x80);
+        gCurrentPinballGame->entityActivePhase = 0;
         gCurrentPinballGame->eventTimer = 0;
     }
     else
     {
         if (gCurrentPinballGame->eventTimer == 0)
         {
-            sub_4D648();
+            ClearEventIndicatorDisplay();
         }
         else
         {
             for (i = 0; i < 4; i++)
             {
-                gUnknown_03005C00[i + 0x179] = sp0[i] * 2 - 0x3EC0;
-                gUnknown_03005C00[i + 0x199] = sp0[i] * 2 - 0x3EBF;
+                gBgScreenBuffer[i + 0x179] = sp0[i] * 2 - 0x3EC0;
+                gBgScreenBuffer[i + 0x199] = sp0[i] * 2 - 0x3EBF;
             }
         }
-        DmaCopy16(3, &gUnknown_03005C00[0x160], (void *)0x060022C0, 0x80);
+        DmaCopy16(3, &gBgScreenBuffer[0x160], (void *)0x060022C0, 0x80);
     }
 
     if (gCurrentPinballGame->eventTimer <= 900)
@@ -235,17 +235,17 @@ void sub_4D3D0(void)
     }
 }
 
-void sub_4D648(void)
+void ClearEventIndicatorDisplay(void)
 {
     s16 i;
 
-    gCurrentPinballGame->unk294 = 0;
+    gCurrentPinballGame->entityActivePhase = 0;
     gCurrentPinballGame->eventTimer = 0;
     for (i = 0; i < 4; i++)
     {
-        gUnknown_03005C00[0x179 + i] = 0x1FF;
-        gUnknown_03005C00[0x199 + i] = 0x1FF;
+        gBgScreenBuffer[0x179 + i] = 0x1FF;
+        gBgScreenBuffer[0x199 + i] = 0x1FF;
     }
 
-    DmaCopy16(3, &gUnknown_03005C00[0x160], (void *)0x060022C0, 0x80);
+    DmaCopy16(3, &gBgScreenBuffer[0x160], (void *)0x060022C0, 0x80);
 }

@@ -41,7 +41,7 @@ extern u8 gUnknown_08081D20[];
 extern u8 gUnknown_0807DD00[];
 extern u8 gUnknown_0807D000[];
 extern u8 gPokedexSprites_Pals[];
-extern u16 gUnknown_03000000[];
+extern u16 gTempGfxBuffer[];
 extern u8 gEReaderBackground_Gfx[];
 extern u8 gUnknown_0807FD00[];
 extern s16 gUnknown_086A550C[];
@@ -78,29 +78,29 @@ void LoadEReaderGraphics(void)
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
     DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
-    DmaCopy16(3, gEReaderBackground_Gfx,   gUnknown_03000000,         0x3000);
+    DmaCopy16(3, gEReaderBackground_Gfx,   gTempGfxBuffer,         0x3000);
     DmaCopy16(3, gUnknown_0807DD00,   (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_0807FD00,   (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,   (void *)OBJ_PLTT,          0xC0);
     DmaCopy16(3, gPokedexSprites_Gfx,   (void *)OBJ_VRAM0,         0x6C20);
 
-    sub_2DF0();
+    InitEReaderState();
     gUnknown_0202C604 = 0;
     gUnknown_0202A580 = 0;
     gUnknown_0202C5A4 = 0;
     gUnknown_0202AD90 = 0;
-    sub_377C();
+    CopyEReaderTextBuffer();
 
-    DmaCopy16(3, gUnknown_03000000, (void *)VRAM + 0x4000, 0x3000);
+    DmaCopy16(3, gTempGfxBuffer, (void *)VRAM + 0x4000, 0x3000);
 
-    sub_394C();
+    UpdateEReaderSprites();
     m4aSongNumStart(MUS_UNKNOWN_0x5);
-    sub_0CBC();
-    sub_024C();
+    EnableVBlankProcessing();
+    FadeInFromWhite();
     gMain.subState = EREADER_STATE_1;
 }
 
-void sub_2DF0(void)
+void InitEReaderState(void)
 {
     gUnknown_0202A58C = 0;
     gUnknown_0202C584 = 0;
@@ -119,7 +119,7 @@ void Ereader_State1_2E40(void)
         gUnknown_0202A580++;
         if (2 < gUnknown_0202A580) {
             gUnknown_0202A580 = 0;
-            sub_3828(gUnknown_0202AD90,gUnknown_0202C604);
+            RevealNextEReaderTextTile(gUnknown_0202AD90,gUnknown_0202C604);
             gUnknown_0202C604++;
         }
     }
@@ -128,24 +128,24 @@ void Ereader_State1_2E40(void)
         if (6 < gUnknown_0202A580) {
             gUnknown_0202A580 = 0;
             if (gUnknown_0202C5A4 == 0) {
-                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90],0x3a80);
+                CopyEReaderTextTile(gUnknown_086A551A[gUnknown_0202AD90],0x3a80);
             }
             else {
-                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90],0);
+                CopyEReaderTextTile(gUnknown_086A551A[gUnknown_0202AD90],0);
             }
             gUnknown_0202C5A4 = 1 - gUnknown_0202C5A4;
         }
     }
     if (JOY_NEW(A_BUTTON)) {
         if (gUnknown_0202C604 <= gUnknown_086A551A[gUnknown_0202AD90]) {
-            sub_37B4(gUnknown_0202AD90);
+            RevealAllEReaderText(gUnknown_0202AD90);
             gUnknown_0202C604 = gUnknown_086A551A[gUnknown_0202AD90] + 1;
         }
         else if (gUnknown_086A5528[gUnknown_0202AD90] == 0) {
             gMain.subState = EREADER_STATE_2;
         }
         else {
-            sub_377C();
+            CopyEReaderTextBuffer();
             gUnknown_0202C604 = 0;
             gUnknown_0202A580 = 0;
             gUnknown_0202C5A4 = 0;
@@ -157,8 +157,8 @@ void Ereader_State1_2E40(void)
         gUnknown_0202BEF8 = STATE_TITLE;
         gMain.subState = EREADER_STATE_8;
     }
-    sub_394C();
-    DmaCopy16(3, gUnknown_03000000, (void*) VRAM + 0x4000, 0x3000);
+    UpdateEReaderSprites();
+    DmaCopy16(3, gTempGfxBuffer, (void*) VRAM + 0x4000, 0x3000);
 }
 
 void Ereader_State2_2FC0(void)
@@ -168,8 +168,8 @@ void Ereader_State2_2FC0(void)
         gUnknown_0202C5A0 = 0;
         gUnknown_0201B174++;
         if (gUnknown_0201B174 == 6) {
-            sub_19B4();
-            sub_3C1C();
+            InitSerialForEReader();
+            InitLinkTransferBuffers();
             gUnknown_0201B124 = 0;
             gUnknown_0202C584 = 1;
             m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
@@ -178,7 +178,7 @@ void Ereader_State2_2FC0(void)
     }
     gUnknown_0202A58C = 0;
     gUnknown_0202BEC0 = gUnknown_0201B174 + 4;
-    sub_3AB4();
+    UpdateEReaderSpritesOamOnly();
 }
 
 void Ereader_State3_304C(void)
@@ -186,13 +186,13 @@ void Ereader_State3_304C(void)
     s32 index;
     u16 temp;
 
-    sub_3AB4();
+    UpdateEReaderSpritesOamOnly();
     if (JOY_NEW(B_BUTTON)) {
-        sub_2568();
+        ResetDisplayAndCallbacks();
         DisableSerial();
-        sub_02B4();
+        FadeOutToWhite();
         m4aMPlayAllStop();
-        sub_0D10();
+        DisableVBlankProcessing();
         gMain.subState = 0;
     }
     gUnknown_0202ADD0 = LinkMain1(&gUnknown_0202BEC8, gUnknown_0202C5F0, gUnknown_0201A4D0);
@@ -200,8 +200,8 @@ void Ereader_State3_304C(void)
     gUnknown_0201C1AC = ((gUnknown_0202ADD0 & 0x1c) >> 2);
     gUnknown_0202ADDC = ((gUnknown_0202ADD0 & 0xe00) >> 9);
     if (((gUnknown_0202ADD0 & 0x40) != 0) && (gUnknown_0202BDF0 < 2)) {
-        sub_3C78();
-        if (((gUnknown_0202ADD0 & 0x100) == 0) && (sub_3CD8() == -1)) {
+        PrepareLinkSendData();
+        if (((gUnknown_0202ADD0 & 0x100) == 0) && (ProcessLinkReceivedData() == -1)) {
             gEReaderCardIndex = GetEReaderCardIndex();
             if ((gEReaderCardIndex != -1) && (NUM_EREADER_CARDS > gEReaderCardIndex)) {
                 for(index = 0; index < NUM_EREADER_CARDS; index++)
@@ -219,7 +219,7 @@ void Ereader_State3_304C(void)
                 gUnknown_0202C604 = 0;
                 gUnknown_0202C5A4 = 0;
                 gUnknown_0202AD90 = 13;
-                sub_377C();
+                CopyEReaderTextBuffer();
                 gMain.subState = EREADER_STATE_4;
                 m4aSongNumStart(SE_FAILURE);
             }
@@ -238,7 +238,7 @@ void Ereader_State3_304C(void)
                 gUnknown_0202C604 = 0;
                 gUnknown_0202C5A4 = 0;
                 gUnknown_0202AD90 = 13;
-                sub_377C();
+                CopyEReaderTextBuffer();
                 gMain.subState = EREADER_STATE_4;
                 m4aSongNumStart(SE_FAILURE);
             }
@@ -257,7 +257,7 @@ void Ereader_State4_3208(void)
         gUnknown_0202A580++;
         if (2 < gUnknown_0202A580) {
             gUnknown_0202A580 = 0;
-            sub_3828(gUnknown_0202AD90,gUnknown_0202C604);
+            RevealNextEReaderTextTile(gUnknown_0202AD90,gUnknown_0202C604);
             gUnknown_0202C604++;
         }
     }
@@ -266,48 +266,48 @@ void Ereader_State4_3208(void)
         if (6 < gUnknown_0202A580) {
             gUnknown_0202A580 = 0;
             if (gUnknown_0202C5A4 == 0) {
-                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90],0x3a80);
+                CopyEReaderTextTile(gUnknown_086A551A[gUnknown_0202AD90],0x3a80);
             }
             else {
-                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90],0);
+                CopyEReaderTextTile(gUnknown_086A551A[gUnknown_0202AD90],0);
             }
             gUnknown_0202C5A4 = 1 - gUnknown_0202C5A4;
         }
     }
     if (JOY_NEW(A_BUTTON)) {
         if (gUnknown_0202C604 <= gUnknown_086A551A[gUnknown_0202AD90]) {
-            sub_37B4(gUnknown_0202AD90);
+            RevealAllEReaderText(gUnknown_0202AD90);
             gUnknown_0202C604 = gUnknown_086A551A[gUnknown_0202AD90] + 1;
         }
         else if (gUnknown_086A5528[gUnknown_0202AD90] == 0) {
-            sub_2568();
+            ResetDisplayAndCallbacks();
             DisableSerial();
-            sub_02B4();
+            FadeOutToWhite();
             m4aMPlayAllStop();
-            sub_0D10();
+            DisableVBlankProcessing();
             gMain.subState = 0;
         }
         else {
-            sub_377C();
+            CopyEReaderTextBuffer();
             gUnknown_0202C604 = 0;
             gUnknown_0202A580 = 0;
             gUnknown_0202C5A4 = 0;
             gUnknown_0202AD90++;
         }
     }
-    sub_394C();
-    DmaCopy16(3, gUnknown_03000000, (void*) VRAM + 0x4000, 0x3000);
+    UpdateEReaderSprites();
+    DmaCopy16(3, gTempGfxBuffer, (void*) VRAM + 0x4000, 0x3000);
 }
 
 void Ereader_State5_33A0(void)
 {
     u16 temp;
-    sub_3AB4();
+    UpdateEReaderSpritesOamOnly();
 
     switch(gUnknown_0201A44C)
     {
         case 4:
-            sub_2568();
+            ResetDisplayAndCallbacks();
             DisableSerial();
             break;
         case 0x96:
@@ -316,9 +316,9 @@ void Ereader_State5_33A0(void)
             break;
         case 0x10e:
             gUnknown_0201A44C = 0;
-            sub_02B4();
+            FadeOutToWhite();
             m4aMPlayAllStop();
-            sub_0D10();
+            DisableVBlankProcessing();
             gMain.subState = EREADER_STATE_6;
             break;
     }
@@ -344,25 +344,25 @@ void Ereader_State6_343C(void)
 
     DmaCopy16(3, gUnknown_08081D20,   (void*) PLTT,              0x40);
     DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
-    DmaCopy16(3, gEReaderBackground_Gfx,   gUnknown_03000000,         0x3000);
+    DmaCopy16(3, gEReaderBackground_Gfx,   gTempGfxBuffer,         0x3000);
     DmaCopy16(3, gUnknown_0807DD00,   (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gUnknown_0807FD00,   (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,   (void *)OBJ_PLTT,          0xC0);
     DmaCopy16(3, gPokedexSprites_Gfx,   (void *)OBJ_VRAM0,         0x6C20);
 
-    sub_2DF0();
+    InitEReaderState();
     gUnknown_0202C604 = 0;
     gUnknown_0202A580 = 0;
     gUnknown_0202C5A4 = 0;
     gUnknown_0202AD90 = gUnknown_086A5536[gEReaderCardIndex];
-    sub_377C();
+    CopyEReaderTextBuffer();
 
-    DmaCopy16(3, gUnknown_03000000, (void *)VRAM + 0x4000, 0x3000);
+    DmaCopy16(3, gTempGfxBuffer, (void *)VRAM + 0x4000, 0x3000);
 
-    sub_394C();
+    UpdateEReaderSprites();
     m4aSongNumStart(MUS_UNKNOWN_0x5);
-    sub_0CBC();
-    sub_024C();
+    EnableVBlankProcessing();
+    FadeInFromWhite();
     gMain.subState = EREADER_STATE_7;
 }
 
@@ -372,7 +372,7 @@ void Ereader_State7_33C8(void)
         gUnknown_0202A580++;
         if (2 < gUnknown_0202A580) {
             gUnknown_0202A580 = 0;
-            sub_3828(gUnknown_0202AD90, gUnknown_0202C604);
+            RevealNextEReaderTextTile(gUnknown_0202AD90, gUnknown_0202C604);
             gUnknown_0202C604++;
         }
     }
@@ -381,17 +381,17 @@ void Ereader_State7_33C8(void)
         if (6 < gUnknown_0202A580) {
             gUnknown_0202A580 = 0;
             if (gUnknown_0202C5A4 == 0) {
-                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90], 0x3a80);
+                CopyEReaderTextTile(gUnknown_086A551A[gUnknown_0202AD90], 0x3a80);
             }
             else {
-                sub_38A0(gUnknown_086A551A[gUnknown_0202AD90], 0);
+                CopyEReaderTextTile(gUnknown_086A551A[gUnknown_0202AD90], 0);
             }
             gUnknown_0202C5A4 = 1 - gUnknown_0202C5A4;
         }
     }
     if (JOY_NEW(A_BUTTON)) {
         if (gUnknown_0202C604 <= gUnknown_086A551A[gUnknown_0202AD90]) {
-            sub_37B4(gUnknown_0202AD90);
+            RevealAllEReaderText(gUnknown_0202AD90);
             gUnknown_0202C604 = gUnknown_086A551A[gUnknown_0202AD90] + 1;
         }
         else if (gUnknown_086A5528[gUnknown_0202AD90] == 0) {
@@ -404,27 +404,27 @@ void Ereader_State7_33C8(void)
             gMain.subState = EREADER_STATE_8;
         }
         else {
-            sub_377C();
+            CopyEReaderTextBuffer();
             gUnknown_0202C604 = 0;
             gUnknown_0202A580 = 0;
             gUnknown_0202C5A4 = 0;
             gUnknown_0202AD90++;
         }
     }
-    sub_394C();
-    DmaCopy16(3, gUnknown_03000000, (void*) VRAM + 0x4000, 0x3000);
+    UpdateEReaderSprites();
+    DmaCopy16(3, gTempGfxBuffer, (void*) VRAM + 0x4000, 0x3000);
 }
 
 void Ereader_State8_374C(void)
 {
-    sub_02B4();
+    FadeOutToWhite();
     m4aMPlayAllStop();
-    sub_0D10();
+    DisableVBlankProcessing();
     gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(gUnknown_0202BEF8);
 }
 
-void sub_377C(void)
+void CopyEReaderTextBuffer(void)
 {
     s32 iVar2;
     s32 iVar4;
@@ -433,12 +433,12 @@ void sub_377C(void)
     {
         for(iVar4 = 0; iVar4 < 0x18; iVar4++)
         {
-            CopyBgTilesRect(gEReaderText_Gfx, &gUnknown_03001800[iVar2][iVar4*0x20], 1, 2);
+            CopyBgTilesRect(gEReaderText_Gfx, &gEReaderTextBuffer[iVar2][iVar4*0x20], 1, 2);
         }
     }
 }
 
-void sub_37B4(s8 arg0)
+void RevealAllEReaderText(s8 arg0)
 {
     s32 iVar4;
     s32 iVar3;
@@ -447,25 +447,25 @@ void sub_37B4(s8 arg0)
     {
         for (iVar3 = 0; iVar3 < 0x18; iVar3++)
         {
-            CopyBgTilesRect(gEReaderText_Gfx + (gUnknown_086A4CF8[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gUnknown_03001800[iVar4][iVar3*0x20], 1, 2);
+            CopyBgTilesRect(gEReaderText_Gfx + (gUnknown_086A4CF8[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gEReaderTextBuffer[iVar4][iVar3*0x20], 1, 2);
         }
     }
 }
 
-void sub_3828(s8 arg0, s8 arg1)
+void RevealNextEReaderTextTile(s8 arg0, s8 arg1)
 {
     s32 quotient = arg1 / 0x18;
     s32 remainder = arg1 % 0x18;
 
-    CopyBgTilesRect(gEReaderText_Gfx + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
+    CopyBgTilesRect(gEReaderText_Gfx + (gUnknown_086A4CF8[arg0][quotient*0x18 + remainder] & 0xFFF0), &gEReaderTextBuffer[quotient][remainder*0x20], 1, 2);
 }
 
-void sub_38A0(s8 arg0, u16 arg1)
+void CopyEReaderTextTile(s8 arg0, u16 arg1)
 {
     s32 quotient = arg0 / 0x18;
     s32 remainder = arg0 % 0x18;
 
-    CopyBgTilesRect(gEReaderText_Gfx + arg1, &gUnknown_03001800[quotient][remainder*0x20], 1, 2);
+    CopyBgTilesRect(gEReaderText_Gfx + arg1, &gEReaderTextBuffer[quotient][remainder*0x20], 1, 2);
 }
 
 s16 GetEReaderCardIndex(void)
@@ -498,7 +498,7 @@ s16 GetEReaderCardIndex(void)
     }
 }
 
-void sub_394C(void)
+void UpdateEReaderSprites(void)
 {
     struct SpriteGroup *puVar9;
     struct SpriteGroup *puVar5;
@@ -550,7 +550,7 @@ void sub_394C(void)
     puVar5->available = FALSE;
 }
 
-void sub_3AB4(void) {
+void UpdateEReaderSpritesOamOnly(void) {
     struct SpriteGroup *puVar9;
     struct SpriteGroup *puVar5;
     s32 iVar7;
@@ -561,7 +561,7 @@ void sub_3AB4(void) {
     puVar5 = &gMain_spriteGroups[gUnknown_0202BEC0];
     puVar9->available = gUnknown_0202C584;
     puVar5->available = TRUE;
-    sub_2414(gUnknown_086A54D8, 13, gMain_spriteGroups);
+    InitOamFromSpriteSets(gUnknown_086A54D8, 13, gMain_spriteGroups);
 
     if (puVar9->available == 1)
     {
@@ -601,7 +601,7 @@ void sub_3AB4(void) {
     puVar5->available = FALSE;
 }
 
-void sub_3C1C(void)
+void InitLinkTransferBuffers(void)
 {
     s32 i;
     s32 j;
@@ -624,7 +624,7 @@ void sub_3C1C(void)
     }
 }
 
-s32 sub_3C78(void)
+s32 PrepareLinkSendData(void)
 {
     s32 i;
 
@@ -651,7 +651,7 @@ s32 sub_3C78(void)
     return 0;
 }
 
-s16 sub_3CD8(void)
+s16 ProcessLinkReceivedData(void)
 {
     s32 i;
     s32 j;

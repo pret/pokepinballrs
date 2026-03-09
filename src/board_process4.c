@@ -11,40 +11,40 @@ void AllBoardProcess_4A_19304(void)
         BonusBoardProcess_4B_19734();
 }
 
-void sub_1931C(struct Vector16 arg0)
+void DetermineFlipperBallSide(struct Vector16 arg0)
 {
     s16 check;
-    struct Unk086ACE8C *line;
+    struct FlipperLineSegment *line;
     struct Vector16 point1, point2;
 
     line = &gUnknown_086ACE8C[gCurrentPinballGame->flipper[0].position];
-    point1.x = line->unk0 + 0x53;
-    point1.y = line->unk2 + gUnknown_02031520.unk14.unk1C;
+    point1.x = line->startX + 0x53;
+    point1.y = line->startY + gBoardConfig.fieldLayout.flipperYOffset;
 
-    point2.x = line->unk4 + 0x53;
-    point2.y = line->unk6 + gUnknown_02031520.unk14.unk1C;
+    point2.x = line->endX + 0x53;
+    point2.y = line->endY + gBoardConfig.fieldLayout.flipperYOffset;
 
     check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
 
     if (check >= 0)
-        gCurrentPinballGame->flipper[0].unk8 = 1;
+        gCurrentPinballGame->flipper[0].ballSide = 1;
     else
-        gCurrentPinballGame->flipper[0].unk8 = -1;
+        gCurrentPinballGame->flipper[0].ballSide = -1;
 
     line = &gUnknown_086ACE8C[gCurrentPinballGame->flipper[1].position];
 
-    point1.x = 0x9C - line->unk0;
-    point1.y = line->unk2 + gUnknown_02031520.unk14.unk1C;
+    point1.x = 0x9C - line->startX;
+    point1.y = line->startY + gBoardConfig.fieldLayout.flipperYOffset;
 
-    point2.x = 0x9C - line->unk4;
-    point2.y = line->unk6 + gUnknown_02031520.unk14.unk1C;
+    point2.x = 0x9C - line->endX;
+    point2.y = line->endY + gBoardConfig.fieldLayout.flipperYOffset;
 
     check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
 
     if (check >= 0)
-        gCurrentPinballGame->flipper[1].unk8 = 1;
+        gCurrentPinballGame->flipper[1].ballSide = 1;
     else
-        gCurrentPinballGame->flipper[1].unk8 = -1;
+        gCurrentPinballGame->flipper[1].ballSide = -1;
 }
 
 void MainBoardProcess_4B_19490(void)
@@ -52,7 +52,7 @@ void MainBoardProcess_4B_19490(void)
     s16 i;
 
     if ((gMain.modeChangeFlags & MODE_CHANGE_BANNER) == 0)
-        sub_195C4();
+        UpdateMainBoardFlippers();
 
     for (i = 0; i < 2; i++)
     {
@@ -66,14 +66,14 @@ void MainBoardProcess_4B_19490(void)
         spriteGroup = &gMain.spriteGroups[10 + i];
         if (spriteGroup->available)
         {
-            s8 unk0;
+            s8 flipperFrame;
             struct OamDataSimple *oamData;
 
-            unk0 = gCurrentPinballGame->flipper[i].position / 2;
-            spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->unk58;
-            spriteGroup->baseY = gUnknown_02031520.unk14.unk1C - gCurrentPinballGame->unk5A;
+            flipperFrame = gCurrentPinballGame->flipper[i].position / 2;
+            spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->bgScrollXCopy;
+            spriteGroup->baseY = gBoardConfig.fieldLayout.flipperYOffset - gCurrentPinballGame->bgScrollYWithOffset;
 
-            DmaCopy16(3, gUnknown_083FE44C[unk0], OBJ_VRAM0 + i * 0x200, 0x200);
+            DmaCopy16(3, gUnknown_083FE44C[flipperFrame], OBJ_VRAM0 + i * 0x200, 0x200);
 
             oamData = &spriteGroup->oam[0];
             gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup->baseX;
@@ -82,11 +82,11 @@ void MainBoardProcess_4B_19490(void)
     }
 }
 
-void sub_195C4(void)
+void UpdateMainBoardFlippers(void)
 {
     s16 i;
 
-    sub_1931C(gCurrentPinballGame->ball->positionQ0);
+    DetermineFlipperBallSide(gCurrentPinballGame->ball->positionQ0);
 
     for (i = 0; i < 2; i++)
     {
@@ -95,11 +95,11 @@ void sub_195C4(void)
         flipper = &gCurrentPinballGame->flipper[i];
 
         flipper->prevPosition = flipper->position;
-        flipper->unk2 = 0;
+        flipper->collisionFrame = 0;
 
         if (gCurrentPinballGame->heldButtonActions[i])
         {
-            if (flipper->active == 0 && gCurrentPinballGame->unk25 == 0)
+            if (flipper->active == 0 && gCurrentPinballGame->boardEntryMode == 0)
                 m4aSongNumStart(SE_FLIPPER_PRESSED);
 
             flipper->active = 1;
@@ -122,36 +122,36 @@ void sub_195C4(void)
             {
                 dir = 1;
             }
-            else if (gCurrentPinballGame->unk5C != 0)
+            else if (gCurrentPinballGame->flipperBounceReady != 0)
             {
-                gCurrentPinballGame->unk1334[0].velocity.x = gCurrentPinballGame->unk60.x;
-                gCurrentPinballGame->unk1334[0].velocity.y = gCurrentPinballGame->unk60.y;
-                gCurrentPinballGame->unk5C = 0;
+                gCurrentPinballGame->ballInstances[0].velocity.x = gCurrentPinballGame->flipperBounceVelocity.x;
+                gCurrentPinballGame->ballInstances[0].velocity.y = gCurrentPinballGame->flipperBounceVelocity.y;
+                gCurrentPinballGame->flipperBounceReady = 0;
                 PlayRumble(7);
             }
-            flipper->unk2 = flipper->position / 2 + 1;
+            flipper->collisionFrame = flipper->position / 2 + 1;
             flipper->position += 4;
         }
         else
         {
             if (flipper->position != 0)
             {
-                flipper->unk2 = flipper->position / 2 + 6;
+                flipper->collisionFrame = flipper->position / 2 + 6;
                 dir = -1;
             }
-            else if (gCurrentPinballGame->unk5C != 0)
+            else if (gCurrentPinballGame->flipperBounceReady != 0)
             {
-                gCurrentPinballGame->unk1334[0].velocity.x = gCurrentPinballGame->unk60.x;
-                gCurrentPinballGame->unk1334[0].velocity.y = gCurrentPinballGame->unk60.y;
-                gCurrentPinballGame->unk5C = 0;
+                gCurrentPinballGame->ballInstances[0].velocity.x = gCurrentPinballGame->flipperBounceVelocity.x;
+                gCurrentPinballGame->ballInstances[0].velocity.y = gCurrentPinballGame->flipperBounceVelocity.y;
+                gCurrentPinballGame->flipperBounceReady = 0;
                 PlayRumble(7);
             }
             flipper->position -= 2;
         }
-        flipper->unk3 = flipper->unk3 * dir;
-        if (flipper->unk3 <= 0)
-            flipper->unk4 = 0;
-        flipper->unk3 = dir;
+        flipper->prevMoveDir = flipper->prevMoveDir * dir;
+        if (flipper->prevMoveDir <= 0)
+            flipper->collisionProcessed = 0;
+        flipper->prevMoveDir = dir;
     }
 }
 
@@ -162,7 +162,7 @@ void BonusBoardProcess_4B_19734(void)
 
     if ((gMain.modeChangeFlags & MODE_CHANGE_BANNER) == 0)
     {
-        sub_19894();
+        UpdateBonusBoardFlippers();
         gMain.modeChangeFlags = gMain.modeChangeFlags;
     }
     for (i = 0; i < 2; i++)
@@ -177,14 +177,14 @@ void BonusBoardProcess_4B_19734(void)
         spriteGroup = &gMain.spriteGroups[3 + i];
         if (spriteGroup->available)
         {
-            s8 unk0;
+            s8 flipperFrame;
             struct OamDataSimple *oamData;
 
-            unk0 = gCurrentPinballGame->flipper[i].position / 2;
-            spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->unk58;
-            spriteGroup->baseY = gUnknown_02031520.unk14.unk1C - gCurrentPinballGame->unk5A;
+            flipperFrame = gCurrentPinballGame->flipper[i].position / 2;
+            spriteGroup->baseX = gUnknown_086ACEF4[i] - gCurrentPinballGame->bgScrollXCopy;
+            spriteGroup->baseY = gBoardConfig.fieldLayout.flipperYOffset - gCurrentPinballGame->bgScrollYWithOffset;
 
-            DmaCopy16(3, gUnknown_083FE44C[unk0], OBJ_VRAM0 + i * 0x200, 0x200);
+            DmaCopy16(3, gUnknown_083FE44C[flipperFrame], OBJ_VRAM0 + i * 0x200, 0x200);
 
             if (spriteGroup->baseY > 180)
                 spriteGroup->baseY = 180;
@@ -197,11 +197,11 @@ void BonusBoardProcess_4B_19734(void)
     }
 }
 
-void sub_19894(void)
+void UpdateBonusBoardFlippers(void)
 {
     s16 i;
 
-    sub_1931C(gCurrentPinballGame->ball->positionQ0);
+    DetermineFlipperBallSide(gCurrentPinballGame->ball->positionQ0);
 
     for (i = 0; i < 2; i++)
     {
@@ -210,11 +210,11 @@ void sub_19894(void)
         flipper = &gCurrentPinballGame->flipper[i];
 
         flipper->prevPosition = flipper->position;
-        flipper->unk2 = 0;
+        flipper->collisionFrame = 0;
 
         if (gCurrentPinballGame->heldButtonActions[i] && gMain.modeChangeFlags == MODE_CHANGE_NONE)
         {
-            if (flipper->active == 0 && gCurrentPinballGame->unk25 == 0 && gCurrentPinballGame->unk1A == 0)
+            if (flipper->active == 0 && gCurrentPinballGame->boardEntryMode == 0 && gCurrentPinballGame->fieldEntryInProgress == 0)
             {
                 m4aSongNumStart(SE_FLIPPER_PRESSED);
             }
@@ -238,35 +238,35 @@ void sub_19894(void)
             {
                 dir = 1;
             }
-            else if (gCurrentPinballGame->unk5C != 0)
+            else if (gCurrentPinballGame->flipperBounceReady != 0)
             {
-                gCurrentPinballGame->unk1334[0].velocity.x = gCurrentPinballGame->unk60.x;
-                gCurrentPinballGame->unk1334[0].velocity.y = gCurrentPinballGame->unk60.y;
-                gCurrentPinballGame->unk5C = 0;
+                gCurrentPinballGame->ballInstances[0].velocity.x = gCurrentPinballGame->flipperBounceVelocity.x;
+                gCurrentPinballGame->ballInstances[0].velocity.y = gCurrentPinballGame->flipperBounceVelocity.y;
+                gCurrentPinballGame->flipperBounceReady = 0;
                 PlayRumble(7);
             }
-            flipper->unk2 = flipper->position / 2 + 1;
+            flipper->collisionFrame = flipper->position / 2 + 1;
             flipper->position += 4;
         }
         else
         {
             if (flipper->position != 0)
             {
-                flipper->unk2 = flipper->position / 2 + 6;
+                flipper->collisionFrame = flipper->position / 2 + 6;
                 dir = -1;
             }
-            else if (gCurrentPinballGame->unk5C != 0)
+            else if (gCurrentPinballGame->flipperBounceReady != 0)
             {
-                gCurrentPinballGame->unk1334[0].velocity.x = gCurrentPinballGame->unk60.x;
-                gCurrentPinballGame->unk1334[0].velocity.y = gCurrentPinballGame->unk60.y;
-                gCurrentPinballGame->unk5C = 0;
+                gCurrentPinballGame->ballInstances[0].velocity.x = gCurrentPinballGame->flipperBounceVelocity.x;
+                gCurrentPinballGame->ballInstances[0].velocity.y = gCurrentPinballGame->flipperBounceVelocity.y;
+                gCurrentPinballGame->flipperBounceReady = 0;
                 PlayRumble(7);
             }
             flipper->position -= 2;
         }
-        flipper->unk3 = flipper->unk3 * dir;
-        if (flipper->unk3 <= 0)
-            flipper->unk4 = 0;
-        flipper->unk3 = dir;
+        flipper->prevMoveDir = flipper->prevMoveDir * dir;
+        if (flipper->prevMoveDir <= 0)
+            flipper->collisionProcessed = 0;
+        flipper->prevMoveDir = dir;
     }
 }

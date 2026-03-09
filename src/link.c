@@ -87,9 +87,9 @@ enum
 
 // static function declarations
 static void EnableSerial(void);
-static void sub_19CC(void);
+static void LinkMainCallback(void);
 static void LinkVBlankIntr(void);
-static void nullsub_15(void);
+static void LinkSystem_NoOp(void);
 static void CheckMasterOrSlave(void);
 static void InitTimer(void);
 static void EnqueueSendCmd(u16 *);
@@ -131,7 +131,7 @@ static void EnableSerial(void)
     REG_SIOCNT |= SIO_115200_BPS | SIO_INTR_ENABLE;
 
     gLinkSavedIme = REG_IME;
-    SetMainCallback(sub_19CC);
+    SetMainCallback(LinkMainCallback);
     SetVBlankIntrFunc(LinkVBlankIntr);
     REG_IME = 0;
     REG_IE |= INTR_FLAG_SERIAL;
@@ -158,15 +158,15 @@ static void EnableSerial(void)
     gUnknown_0200282A = 0;
 }
 
-extern void sub_19B4(void) // TODO
+extern void InitSerialForEReader(void) // TODO
 {
-    sub_24DC();
-    sub_250C();
+    ResetSerialIO();
+    SetBasicInterrupts();
     EnableSerial();
     DisableSerial();
 }
 
-static void sub_19CC(void) // TODO
+static void LinkMainCallback(void) // TODO
 {
     if ((REG_DISPSTAT & 0x8) != 0)
     {
@@ -182,7 +182,7 @@ static void sub_19CC(void) // TODO
         REG_BG3HOFS = gMain.bgOffsets[3].xOffset;
         REG_BG3VOFS = gMain.bgOffsets[3].yOffset;
 
-        if (gMain.unk36)
+        if (gMain.updateBlendRegisters)
         {
             REG_BLDCNT = gMain.blendControl;
             REG_BLDALPHA = gMain.blendAlpha;
@@ -204,7 +204,7 @@ static void LinkVBlankIntr(void)
     REG_IME = 1;
 }
 
-static void nullsub_15(void)
+static void LinkSystem_NoOp(void)
 {
 }
 

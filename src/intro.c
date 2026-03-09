@@ -6,19 +6,19 @@
 #include "titlescreen.h"
 #include "constants/bg_music.h"
 
-void sub_A628(void);
-void sub_A87C(void);
-void sub_AAA8(void);
-void sub_ADFC(void);
-extern void sub_B0E8(void);
-void sub_B4A0(void);
-void sub_B7F8(void);
-void sub_BBE0(void);
-void sub_C0D8(void);
-void sub_C2F0(void);
-void sub_C4F0(void);
-void sub_CA28(void);
-void sub_CD18(void);
+void InitIntroScene3State(void);
+void RenderIntroScene3Sprites(void);
+void InitIntroScene4State(void);
+void InitIntroScene5State(void);
+extern void RenderIntroScene5Sprites(void);
+void InitIntroScene6State(void);
+void RenderIntroScene5PokemonSprites(void);
+void InitIntroScene7aState(void);
+void RenderIntroScene7aPokemonSprite(void);
+void InitIntroScene7bState(void);
+void UpdateIntroScene7Sprites(void);
+void InitIntroScene8State(void);
+void RenderIntroScene8Sprites(void);
 
 extern StateFunc gIntroStateFuncs[15];
 extern u8 gIntroCopyright_Tilemap[];
@@ -72,17 +72,17 @@ extern const struct SpriteSet *const gUnknown_086A7D20[];
 typedef void (*IntroFunc)(void);
 extern const IntroFunc gIntroSceneFuncs[];
 
-struct UnkStruct_0201A450
+struct IntroSpriteState
 {
-    u16 unk0;
-    s16 unk2;
-    u16 unk4;
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-    s8 unkC;
+    u16 posX;
+    s16 posY;
+    u16 velX;
+    s16 velY;
+    s16 animFrame;
+    s16 animSubFrame;
+    s8 active;
 }; // 0x10 size in memory
-extern struct UnkStruct_0201A450 gUnknown_0201A450[6];
+extern struct IntroSpriteState gUnknown_0201A450[6];
 
 extern struct Vector16 gUnknown_086A7768[0x8];
 extern struct Vector16 gUnknown_086A7798[0x4];
@@ -132,9 +132,9 @@ void Intro_State0_929C(void)
   gUnknown_0202BF10 = 0;
   gIntroSceneIndex = 0;
 
-  SetMainCallback(sub_93F8 + 1);
-  sub_0CBC();
-  sub_024C();
+  SetMainCallback(IntroVBlankCallback + 1);
+  EnableVBlankProcessing();
+  FadeInFromWhite();
   gMain.subState++;
 }
 
@@ -150,8 +150,8 @@ void Intro_State1_9348(void)
 
 void Intro_State2_9370(void)
 {
-    sub_FF74(NULL);
-    sub_0D10();
+    FadeOutToBlackWithCallback(NULL);
+    DisableVBlankProcessing();
     gMain.subState++;
 }
 
@@ -165,9 +165,9 @@ void Intro_State3_938C(void)
 
 void Intro_State4_93D0(void)
 {
-    sub_02B4();
+    FadeOutToWhite();
     m4aMPlayAllStop();
-    sub_0D10();
+    DisableVBlankProcessing();
     ResetMainCallback();
     gAutoDisplayTitlescreenMenu = FALSE;
     SetMainGameState(STATE_TITLE);
@@ -175,7 +175,7 @@ void Intro_State4_93D0(void)
 
 
 // ? Main callback for intro state?
-void sub_93F8(void)
+void IntroVBlankCallback(void)
 {
     if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
     {
@@ -194,10 +194,10 @@ void sub_93F8(void)
     }
 }
 
-void sub_9498(void)
+void InitIntroScene1(void)
 {
     ClearGraphicsMemory();
-    sub_0518();
+    ClearTilemapBuffers();
     ClearSprites();
 
     REG_DISPCNT = DISPCNT_OBJ_ON;
@@ -216,10 +216,10 @@ void sub_9498(void)
     DmaCopy16(3, gUnknown_080B3CA0, 0x0600f800 , BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene1Text_Gfx, BG_CHAR_ADDR(0), 0x5800);
     DmaCopy16(3, gIntroScene1Ball_Gfx, gUnknown_0201C1C0, 0x6800);
-    sub_10170(gIntroScene1Sprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, 0x20);
+    ApplyPaletteFadeEffect(gIntroScene1Sprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, 0x20);
     DmaCopy16(3, gIntroScene1Sprites_Gfx, BG_CHAR_ADDR(4), 0x8000);
     DmaCopy16(3, gIntroScene1Sprites_Pals, 0x05000200, BG_PLTT_SIZE);
-    sub_96A8();
+    InitIntroScene1State();
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[1];
     gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[18];
@@ -228,29 +228,29 @@ void sub_9498(void)
     gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[7];
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[12];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[13];
-    sub_0CBC();
-    sub_FEB8((void*)BG_PLTT, gIntroScene1Sprites_Pals, NULL);
+    EnableVBlankProcessing();
+    CustomPaletteFadeTransition((void*)BG_PLTT, gIntroScene1Sprites_Pals, NULL);
     DmaCopy16(3, gIntroScene1Sprites_Pals, 0x05000200, BG_PLTT_SIZE);
     DmaCopy16(3, 0, 0x05000200, 0x20);
     gIntroSceneIndex++;
 }
 
-void sub_96A8(void)
+void InitIntroScene1State(void)
 {
-    gUnknown_0201A450[1].unk0 = 0x78;
-    gUnknown_0201A450[1].unk2 = 0x50;
-    gUnknown_0201A450[1].unk8 = 0;
-    gUnknown_0201A450[1].unkC = 1;
-    gUnknown_0201A450[3].unk0 = 0x9c;
-    gUnknown_0201A450[3].unk2 = 0x92;
-    gUnknown_0201A450[3].unkC = 0;
-    gUnknown_0201A450[3].unkA = 0;
-    gUnknown_0201A450[2].unk0 = 0x9d;
-    gUnknown_0201A450[2].unk2 = 0x93;
-    gUnknown_0201A450[2].unkC = 0;
-    gUnknown_0201A450[4].unk0 = 0x80;
-    gUnknown_0201A450[4].unk2 = 0x80;
-    gUnknown_0201A450[4].unkC = 1;
+    gUnknown_0201A450[1].posX = 0x78;
+    gUnknown_0201A450[1].posY = 0x50;
+    gUnknown_0201A450[1].animFrame = 0;
+    gUnknown_0201A450[1].active = 1;
+    gUnknown_0201A450[3].posX = 0x9c;
+    gUnknown_0201A450[3].posY = 0x92;
+    gUnknown_0201A450[3].active = 0;
+    gUnknown_0201A450[3].animSubFrame = 0;
+    gUnknown_0201A450[2].posX = 0x9d;
+    gUnknown_0201A450[2].posY = 0x93;
+    gUnknown_0201A450[2].active = 0;
+    gUnknown_0201A450[4].posX = 0x80;
+    gUnknown_0201A450[4].posY = 0x80;
+    gUnknown_0201A450[4].active = 1;
     gUnknown_0202ADA0[0] = 0xffa8;
     gUnknown_0202ADA0[1] = 0xffca;
     gUnknown_0202ADA0[4] = 0;
@@ -263,11 +263,11 @@ void sub_96A8(void)
     gUnknown_0202ADA0[22] = 0;
     gUnknown_0202ADA0[12] = 0;
     gUnknown_0202ADA0[13] = 0;
-    gUnknown_0201A450[0].unk0 = 0x78;
-    gUnknown_0201A450[0].unk2 = 0x50;
-    gUnknown_0201A450[0].unk8 = 0;
-    gUnknown_0201A450[0].unkA = 0;
-    gUnknown_0201A450[0].unkC = 1;
+    gUnknown_0201A450[0].posX = 0x78;
+    gUnknown_0201A450[0].posY = 0x50;
+    gUnknown_0201A450[0].animFrame = 0;
+    gUnknown_0201A450[0].animSubFrame = 0;
+    gUnknown_0201A450[0].active = 1;
     gUnknown_0201C1B8 = 0;
     gUnknown_0202ADD4 = 0x10;
     gUnknown_0202C594 = 0;
@@ -279,24 +279,24 @@ void sub_96A8(void)
     gUnknown_0202C5A8 = 8;
 }
 
-void sub_978C(void)
+void IntroScene1_AnimateTitleReveal(void)
 {
-    sub_9CB8();
-    if (gUnknown_0201A450[0].unk8 == 0x24)
+    RenderIntroScene1TitleSprite();
+    if (gUnknown_0201A450[0].animFrame == 0x24)
     {
-        if (++gUnknown_0201A450[0].unkA > 27)
+        if (++gUnknown_0201A450[0].animSubFrame > 27)
         {
-            gUnknown_0201A450[0].unkA = 0;
+            gUnknown_0201A450[0].animSubFrame = 0;
             gUnknown_0202A578 = 0;
             gIntroSceneIndex++;
         }
     }
     else
     {
-        if (++gUnknown_0201A450[0].unkA > 1)
+        if (++gUnknown_0201A450[0].animSubFrame > 1)
         {
-            gUnknown_0201A450[0].unkA = 0;
-            gUnknown_0201A450[0].unk8++;
+            gUnknown_0201A450[0].animSubFrame = 0;
+            gUnknown_0201A450[0].animFrame++;
         }
 
         if (gUnknown_0202BF10 >= gTitleRevealJingle[gUnknown_0202C5A8][gUnknown_0202A578][1])
@@ -307,60 +307,60 @@ void sub_978C(void)
     }
 }
 
-void sub_9830(void)
+void IntroScene1_ShrinkTitle(void)
 {
     gUnknown_02019C30 -= 0x10;
     gUnknown_0201C188 -= 0x10;
-    gUnknown_0201A450[0].unk0--;
+    gUnknown_0201A450[0].posX--;
 
     if (gUnknown_02019C30 < 0x20)
     {
-        gUnknown_0201A450[0].unkA = 0;
-        gUnknown_0201A450[0].unk8 = 0x25;
+        gUnknown_0201A450[0].animSubFrame = 0;
+        gUnknown_0201A450[0].animFrame = 0x25;
         gIntroSceneIndex++;
     }
 
-    sub_9D70();
+    RenderIntroScene1ScaledTitleSprite();
 }
 
-void sub_9878(void)
+void IntroScene1_PauseBeforeBallOpen(void)
 {
-    if (++gUnknown_0201A450[0].unkA > 3)
+    if (++gUnknown_0201A450[0].animSubFrame > 3)
     {
-        gUnknown_0201A450[0].unkA = 0;
-        gUnknown_0201A450[0].unk0 = 0x78;
-        gUnknown_0201A450[0].unk2 = 0x58;
-        gUnknown_0201A450[0].unkC = 1;
+        gUnknown_0201A450[0].animSubFrame = 0;
+        gUnknown_0201A450[0].posX = 0x78;
+        gUnknown_0201A450[0].posY = 0x58;
+        gUnknown_0201A450[0].active = 1;
         m4aSongNumStart(SE_UNKNOWN_0xD8);
         gIntroSceneIndex++;
     }
 }
 
-void sub_98B4(void)
+void IntroScene1_AnimateBallOpen(void)
 {
-    if (gUnknown_0201A450[0].unk8 == 43)
+    if (gUnknown_0201A450[0].animFrame == 43)
     {
-        if (++gUnknown_0201A450[0].unkA > 1)
+        if (++gUnknown_0201A450[0].animSubFrame > 1)
         {
-            gUnknown_0201A450[0].unkC = 0;
-            sub_10170(&gIntroScene1Sprites_Pals[0x1C0], (void*)BG_PLTT + 0xE0, 0x20, 0);
+            gUnknown_0201A450[0].active = 0;
+            ApplyPaletteFadeEffect(&gIntroScene1Sprites_Pals[0x1C0], (void*)BG_PLTT + 0xE0, 0x20, 0);
             m4aSongNumStart(MUS_OPENING);
             gIntroSceneIndex++;
         }
     }
     else
     {
-        if (++gUnknown_0201A450[0].unkA > 1)
+        if (++gUnknown_0201A450[0].animSubFrame > 1)
         {
-            gUnknown_0201A450[0].unkA = 0;
-            gUnknown_0201A450[0].unk8++;
+            gUnknown_0201A450[0].animSubFrame = 0;
+            gUnknown_0201A450[0].animFrame++;
         }
     }
 
-    sub_9CB8();
+    RenderIntroScene1TitleSprite();
 }
 
-void sub_9920(void)
+void IntroScene1_RevealBallGlow(void)
 {
     int remainder;
 
@@ -379,13 +379,13 @@ void sub_9920(void)
             gIntroSceneIndex++;
         }
 
-        gUnknown_0201A450[1].unk8 = 1 - gUnknown_0201A450[1].unk8;
+        gUnknown_0201A450[1].animFrame = 1 - gUnknown_0201A450[1].animFrame;
     }
 
-    sub_9E90();
+    RenderIntroScene4Sprites();
 }
 
-void sub_999C(void)
+void IntroScene1_ScrollWithBallAnimation(void)
 {
     if (gUnknown_0202BEF0 > 0)
     {
@@ -394,12 +394,12 @@ void sub_999C(void)
         {
             gUnknown_0202BEF0 = 0;
         }
-        sub_10170(gIntroScene1Sprites_Pals, (void*)BG_PLTT, 0x200, gUnknown_0202BEF0);
-        sub_10170(gIntroScene1Sprites_Pals, (void*)OBJ_PLTT, 0x20, gUnknown_0202BEF0);
+        ApplyPaletteFadeEffect(gIntroScene1Sprites_Pals, (void*)BG_PLTT, 0x200, gUnknown_0202BEF0);
+        ApplyPaletteFadeEffect(gIntroScene1Sprites_Pals, (void*)OBJ_PLTT, 0x20, gUnknown_0202BEF0);
     }
 
     if (gUnknown_0202BF10 % 3 == 0)
-        gUnknown_0201A450[1].unk8 = 1 - gUnknown_0201A450[1].unk8;
+        gUnknown_0201A450[1].animFrame = 1 - gUnknown_0201A450[1].animFrame;
 
     gUnknown_0202ADA0[0]--;
 
@@ -413,30 +413,30 @@ void sub_999C(void)
         CopyBgTilesRect(&gUnknown_0201C1C0[gUnknown_086A7788[gUnknown_0202ADA0[4]]], (void *)0x60036E0, 8, 8);
         if (++gUnknown_0202ADA0[4] > 3)
         {
-            gUnknown_0201A450[3].unkC = 1;
-            gUnknown_0201A450[2].unkC = 1;
-            gUnknown_0201A450[1].unkC = 0;
+            gUnknown_0201A450[3].active = 1;
+            gUnknown_0201A450[2].active = 1;
+            gUnknown_0201A450[1].active = 0;
             gUnknown_0202ADA0[10] = 0;
             gIntroSceneIndex++;
         }
     }
 
-    sub_9E90();
+    RenderIntroScene4Sprites();
 }
 
-void sub_9AB8(void)
+void IntroScene1_PanAndZoomOut(void)
 {
-    gUnknown_0201A450[3].unk0 -= 0xE;
-    gUnknown_0201A450[3].unk2 -= 0xD;
+    gUnknown_0201A450[3].posX -= 0xE;
+    gUnknown_0201A450[3].posY -= 0xD;
 
     gUnknown_0202ADA0[0x12] -= 0x10;
     gUnknown_0202ADA0[0x13]++;
     gUnknown_0202ADA0[0x6]  -= 0x10;
 
-    gUnknown_0201A450[2].unk0 -= 0xE;
-    gUnknown_0201A450[2].unk2 -= 0xD;
-    gUnknown_0201A450[4].unk0 += 0xB;
-    gUnknown_0201A450[4].unk2 -= 0x2;
+    gUnknown_0201A450[2].posX -= 0xE;
+    gUnknown_0201A450[2].posY -= 0xD;
+    gUnknown_0201A450[4].posX += 0xB;
+    gUnknown_0201A450[4].posY -= 0x2;
 
     if (gUnknown_0202BF10 % 2 == 0)
     {
@@ -461,7 +461,7 @@ void sub_9AB8(void)
         gIntroSceneIndex += 2;
     }
 
-    sub_9E90();
+    RenderIntroScene4Sprites();
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
     gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x12];
@@ -470,67 +470,67 @@ void sub_9AB8(void)
     gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0x7];
 }
 
-void nullsub_4(void)
+void IntroScene1_NoOp1(void)
 {
 }
 
-void sub_9C10(void)
+void IntroScene1_ScrollStarsOverlay(void)
 {
     gUnknown_0202ADA0[0xC]++;
 
     if (gUnknown_0202BF10 % 2 == 0)
     {
-        gUnknown_0201A450[3].unk0--;
-        gUnknown_0201A450[3].unk2--;
-        gUnknown_0201A450[2].unk0 -= 2;
-        gUnknown_0201A450[2].unk2 -= 2;
+        gUnknown_0201A450[3].posX--;
+        gUnknown_0201A450[3].posY--;
+        gUnknown_0201A450[2].posX -= 2;
+        gUnknown_0201A450[2].posY -= 2;
     }
 
-    sub_9E90();
+    RenderIntroScene4Sprites();
 
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
-    gUnknown_0201A450[3].unkA++;
+    gUnknown_0201A450[3].animSubFrame++;
 
-    if (gUnknown_0201A450[3].unkA > 0x14)
+    if (gUnknown_0201A450[3].animSubFrame > 0x14)
     {
-        gUnknown_0201A450[3].unkA = 0;
+        gUnknown_0201A450[3].animSubFrame = 0;
         gIntroSceneIndex += 3;
     }
 }
 
-void nullsub_5(void)
+void IntroScene1_NoOp2(void)
 {
 }
 
-void nullsub_17(void)
+void IntroScene1_NoOp3(void)
 {
 }
 
-void sub_9C9C(void)
+void IntroScene1_FadeOutAndDisable(void)
 {
-    sub_10480();
-    sub_10544();
+    FadeOutAndClearScreen();
+    DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
 
-void sub_9CB8(void)
+void RenderIntroScene1TitleSprite(void)
 {
     s32 i;
     struct OamDataSimple *test2;
     struct SpriteGroup *puVar4;
     const struct SpriteSet *puVar6;
 
-    puVar4 = &gMain.spriteGroups[4 + gUnknown_0201A450[0].unk8];
-    puVar4->available = gUnknown_0201A450[0].unkC;
+    puVar4 = &gMain.spriteGroups[4 + gUnknown_0201A450[0].animFrame];
+    puVar4->available = gUnknown_0201A450[0].active;
     LoadSpriteSets(gUnknown_086A769C, 0x31, gMain.spriteGroups);
 
     if (puVar4->available == 1)
     {
-        puVar4->baseX = gUnknown_0201A450[0].unk0;
-        puVar4->baseY = gUnknown_0201A450[0].unk2;
+        puVar4->baseX = gUnknown_0201A450[0].posX;
+        puVar4->baseY = gUnknown_0201A450[0].posY;
 
-        puVar6 = gUnknown_086A769C[gUnknown_0201A450[0].unk8 + 4];
+        puVar6 = gUnknown_086A769C[gUnknown_0201A450[0].animFrame + 4];
         for (i = 0; i < puVar6->count; i++)
         {
             test2 = &puVar4->oam[i];
@@ -542,21 +542,21 @@ void sub_9CB8(void)
     puVar4->available = FALSE;
 }
 
-void sub_9D70(void)
+void RenderIntroScene1ScaledTitleSprite(void)
 {
     s32 i;
     struct SpriteGroup *puVar4;
     struct OamDataSimple *puVar2;
 
     puVar4 = &gMain.spriteGroups[0x28];
-    puVar4->available = gUnknown_0201A450[0].unkC;
+    puVar4->available = gUnknown_0201A450[0].active;
     LoadSpriteSets(gUnknown_086A769C, 0x31, gMain.spriteGroups);
 
     if (puVar4->available == 1)
     {
         SetMatrixScale(gUnknown_02019C30, gUnknown_0201C188, 0);
-        puVar4->baseX = gUnknown_0201A450[0].unk0;
-        puVar4->baseY = gUnknown_0201A450[0].unk2;
+        puVar4->baseX = gUnknown_0201A450[0].posX;
+        puVar4->baseY = gUnknown_0201A450[0].posY;
 
         for (i = 0; i < 4; i++)
         {
@@ -571,7 +571,7 @@ void sub_9D70(void)
     puVar4->available = FALSE;
 }
 
-void sub_9E90(void)
+void RenderIntroScene4Sprites(void)
 {
     struct OamDataSimple *puVar5;
     struct SpriteGroup *puVar1;
@@ -586,22 +586,22 @@ void sub_9E90(void)
     REG_BLDCNT = gMain.blendControl;
     REG_BLDALPHA = gMain.blendAlpha;
 
-    puVar1 = &gMain.spriteGroups[gUnknown_0201A450[1].unk8];
+    puVar1 = &gMain.spriteGroups[gUnknown_0201A450[1].animFrame];
     mainSg3 = &gMain.spriteGroups[3];
     mainSg2 = &gMain.spriteGroups[2];
     otherSg = &gMain_spriteGroups_48;
 
-    puVar1->available = gUnknown_0201A450[1].unkC;
-    mainSg3->available = gUnknown_0201A450[2].unkC;
-    mainSg2->available = gUnknown_0201A450[3].unkC;
-    otherSg->available = gUnknown_0201A450[4].unkC;
+    puVar1->available = gUnknown_0201A450[1].active;
+    mainSg3->available = gUnknown_0201A450[2].active;
+    mainSg2->available = gUnknown_0201A450[3].active;
+    otherSg->available = gUnknown_0201A450[4].active;
     LoadSpriteSets(gUnknown_086A769C, 0x31, gMain.spriteGroups);
 
     if (puVar1->available == 1)
     {
-        puVar1->baseX = gUnknown_0201A450[1].unk0;
-        puVar1->baseY = gUnknown_0201A450[1].unk2;
-        p = &gUnknown_086A769C[gUnknown_0201A450[1].unk8]->count;
+        puVar1->baseX = gUnknown_0201A450[1].posX;
+        puVar1->baseY = gUnknown_0201A450[1].posY;
+        p = &gUnknown_086A769C[gUnknown_0201A450[1].animFrame]->count;
 
         for (i = 0;
             i < *p;
@@ -615,8 +615,8 @@ void sub_9E90(void)
     }
     if (mainSg3->available == 1)
     {
-        mainSg3->baseX = gUnknown_0201A450[2].unk0;
-        mainSg3->baseY = gUnknown_0201A450[2].unk2;
+        mainSg3->baseX = gUnknown_0201A450[2].posX;
+        mainSg3->baseY = gUnknown_0201A450[2].posY;
 
         for (i = 0; i < 4; i++)
         {
@@ -629,8 +629,8 @@ void sub_9E90(void)
     }
     if (mainSg2->available == 1)
     {
-        mainSg2->baseX = gUnknown_0201A450[3].unk0;
-        mainSg2->baseY = gUnknown_0201A450[3].unk2;
+        mainSg2->baseX = gUnknown_0201A450[3].posX;
+        mainSg2->baseY = gUnknown_0201A450[3].posY;
 
         for (i = 0; i < 4; i++)
         {
@@ -643,8 +643,8 @@ void sub_9E90(void)
     }
     if (otherSg->available == 1)
     {
-        otherSg->baseX = gUnknown_0201A450[4].unk0;
-        otherSg->baseY = gUnknown_0201A450[4].unk2;
+        otherSg->baseX = gUnknown_0201A450[4].posX;
+        otherSg->baseY = gUnknown_0201A450[4].posY;
 
         for (i = 0; i < 8; i++)
         {
@@ -661,13 +661,13 @@ void sub_9E90(void)
     otherSg->available = FALSE; // TODO Possible Bug?
 }
 
-void sub_A154(void)
+void IntroScene2_ClearTilemaps(void)
 {
-    sub_0518();
+    ClearTilemapBuffers();
     gIntroSceneIndex++;
 }
 
-void sub_A16C(void)
+void InitIntroScene2(void)
 {
     // TODO use proper constants - see LoadEReaderGraphics?
     REG_DISPCNT = 0;
@@ -683,19 +683,19 @@ void sub_A16C(void)
     DmaCopy16(3, gUnknown_080CBEE0, (void*) 0x0600F000, 0x800);
     DmaCopy16(3, gIntroScene2Sprites_Gfx, (void*) 0x06000000, 0x3C00);
     DmaCopy16(3, gUnknown_080CBCE0, (void*) PLTT, 0x80);
-    sub_A2A8();
+    InitIntroScene2State();
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
     gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
     gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
-    sub_0CBC();
-    sub_10424();
+    EnableVBlankProcessing();
+    FadeInWithBlend();
     gIntroSceneIndex += 2;
 }
 
-void sub_A2A8(void)
+void InitIntroScene2State(void)
 {
     gUnknown_0202ADA0[0x0] = 0x1C;
     gUnknown_0202ADA0[0x1] = 0xFF2C;
@@ -712,11 +712,11 @@ void sub_A2A8(void)
     gUnknown_0202A578 = 0;
 }
 
-void nullsub_6(void)
+void IntroScene2_NoOp1(void)
 {
 }
 
-void sub_A2F0(void)
+void IntroScene2_ScrollBgLayers(void)
 {
     gUnknown_0202ADA0[0x1] += gUnknown_0202ADA0[0x3];
     gUnknown_0202ADA0[0x7] += gUnknown_0202ADA0[0x9];
@@ -731,7 +731,7 @@ void sub_A2F0(void)
         gUnknown_0202ADA0[0x9]--;
     }
 
-    // TODO same as sub_A16C - possible inline function?
+    // TODO same as InitIntroScene2 - possible inline function?
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
     gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
@@ -747,11 +747,11 @@ void sub_A2F0(void)
     }
 }
 
-void nullsub_7(void)
+void IntroScene2_NoOp2(void)
 {
 }
 
-void sub_A39C(void)
+void IntroScene2_FinalScrollAndFadeOut(void)
 {
     gUnknown_0202ADA0[0x1]++;
     gUnknown_0202ADA0[0x7]++;
@@ -760,14 +760,14 @@ void sub_A39C(void)
     gUnknown_0202ADA0[0x0]--;
     gUnknown_0202ADA0[0x6]++;
 
-    // TODO same as sub_A2F0 - possible inline function?
+    // TODO same as IntroScene2_ScrollBgLayers - possible inline function?
     if (gUnknown_0202BF10 % 2 == 0)
     {
         gUnknown_0202ADA0[0x3]--;
         gUnknown_0202ADA0[0x9]--;
     }
 
-    // TODO same as sub_A16C - possible inline function?
+    // TODO same as InitIntroScene2 - possible inline function?
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
     gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
@@ -775,18 +775,18 @@ void sub_A39C(void)
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
 
-    sub_10480();
-    sub_10544();
+    FadeOutAndClearScreen();
+    DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
 
-void sub_A43C(void)
+void IntroScene3_ClearTilemaps(void)
 {
-    sub_0518();
+    ClearTilemapBuffers();
     gIntroSceneIndex++;
 }
 
-void sub_A454(void)
+void InitIntroScene3(void)
 {
     // TODO use proper constants - see LoadEReaderGraphics?
     REG_DISPCNT = 0x1000;
@@ -803,15 +803,15 @@ void sub_A454(void)
     DmaCopy16(3, gUnknown_080DCD20, (void*) 0x0600E000, 0x800);
     DmaCopy16(3, gUnknown_080D4900, (void*) 0x0600E800, 0x1000);
     DmaCopy16(3, gUnknown_080D5900, (void*) 0x0600F800, 0x800);
-    DmaCopy16(3, gUnknown_080DD520, gUnknown_03005C00, 0x800);
+    DmaCopy16(3, gUnknown_080DD520, gBgScreenBuffer, 0x800);
     DmaCopy16(3, gUnknown_080DDD20, gUnknown_0201B180, 0x800);
     DmaCopy16(3, gIntroScene3Sprites_Gfx, (void*) 0x06000000, 0x6C00);
     DmaCopy16(3, gUnknown_080D4700, (void*) PLTT, 0xE0);
     DmaCopy16(3, gIntroScene3Treecko_Gfx, (void*) 0x06010000, 0x2000);
     DmaCopy16(3, gUnknown_080D4700, (void*) OBJ_PLTT, 0xE0);
 
-    sub_A628();
-    sub_A87C();
+    InitIntroScene3State();
+    RenderIntroScene3Sprites();
 
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
@@ -822,18 +822,18 @@ void sub_A454(void)
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
-    sub_0CBC();
-    sub_10424();
+    EnableVBlankProcessing();
+    FadeInWithBlend();
     gIntroSceneIndex++;
 }
 
-void sub_A628(void)
+void InitIntroScene3State(void)
 {
     gUnknown_0202ADA0[0x0] = 0x2C;
     gUnknown_0202ADA0[0x1] = 0xFF8E;
 
-    gUnknown_0201A450[0].unk0 = 0xFFD4;
-    gUnknown_0201A450[0].unk2 = 0x72;
+    gUnknown_0201A450[0].posX = 0xFFD4;
+    gUnknown_0201A450[0].posY = 0x72;
 
     gUnknown_0202ADA0[0x6] = 0xFFCE;
     gUnknown_0202ADA0[0x7] = 0x1E;
@@ -847,13 +847,13 @@ void sub_A628(void)
     gUnknown_0202A578 = 0;
 }
 
-void sub_A674(void)
+void IntroScene3_PanToTreecko(void)
 {
     gUnknown_0202ADA0[0x0] -= 0x11;
     gUnknown_0202ADA0[0x1] += 0xA;
 
-    gUnknown_0201A450[0].unk0 += 0x11;
-    gUnknown_0201A450[0].unk2 -= 0xA;
+    gUnknown_0201A450[0].posX += 0x11;
+    gUnknown_0201A450[0].posY -= 0xA;
 
     gUnknown_0202ADA0[0xC] += 0x10;
     gUnknown_0202ADA0[0x6] += 0x4;
@@ -866,7 +866,7 @@ void sub_A674(void)
         gIntroSceneIndex++;
     }
 
-    sub_A87C();
+    RenderIntroScene3Sprites();
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
     gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
@@ -875,7 +875,7 @@ void sub_A674(void)
     gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
 }
 
-void sub_A710(void)
+void IntroScene3_TreeckoAnimation(void)
 {
     gUnknown_0202ADA0[0x12]--;
 
@@ -883,8 +883,8 @@ void sub_A710(void)
     {
         gUnknown_0202ADA0[0x0]--;
         gUnknown_0202ADA0[0x1]++;
-        gUnknown_0201A450[0].unk0 += 2;
-        gUnknown_0201A450[0].unk2 -= 2;
+        gUnknown_0201A450[0].posX += 2;
+        gUnknown_0201A450[0].posY -= 2;
     }
     if (gUnknown_0202BF10 % 3 == 0)
     {
@@ -897,11 +897,11 @@ void sub_A710(void)
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
-    sub_A87C();
+    RenderIntroScene3Sprites();
 
     if (gUnknown_0202ADA0[0x10] == 2)
     {
-        DmaCopy16(3, gUnknown_03005C00, (void*) 0x0600E000, 0x800);
+        DmaCopy16(3, gBgScreenBuffer, (void*) 0x0600E000, 0x800);
         gUnknown_0202ADA0[0x6] = 0;
         gUnknown_0202ADA0[0x7] = 0;
         gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
@@ -924,18 +924,18 @@ void sub_A710(void)
     }
 }
 
-void nullsub_8(void)
+void IntroScene3_NoOp(void)
 {
 }
 
-void sub_A860(void)
+void IntroScene3_FadeOutAndDisable(void)
 {
-    sub_10480();
-    sub_10544();
+    FadeOutAndClearScreen();
+    DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
 
-void sub_A87C(void)
+void RenderIntroScene3Sprites(void)
 {
     s32 i;
     struct SpriteGroup *puVar4;
@@ -952,8 +952,8 @@ void sub_A87C(void)
 
     if (puVar4->available == 1)
     {
-        puVar4->baseX = gUnknown_0201A450[0].unk0;
-        puVar4->baseY = gUnknown_0201A450[0].unk2;
+        puVar4->baseX = gUnknown_0201A450[0].posX;
+        puVar4->baseY = gUnknown_0201A450[0].posY;
 
         for (i = 0; i < 4; i++)
         {
@@ -966,13 +966,13 @@ void sub_A87C(void)
     puVar4->available = FALSE;
 }
 
-void sub_A950(void)
+void IntroScene4_ClearTilemaps(void)
 {
-    sub_0518();
+    ClearTilemapBuffers();
     gIntroSceneIndex++;
 }
 
-void sub_A968(void)
+void InitIntroScene4(void)
 {
     // TODO use proper constants - see LoadEReaderGraphics?
     REG_DISPCNT = 0;
@@ -990,7 +990,7 @@ void sub_A968(void)
     DmaCopy16(3, gUnknown_080E1540, PLTT, 0x60);
     gMain.dispcntBackup = REG_DISPCNT;
 
-    sub_AAA8();
+    InitIntroScene4State();
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
     gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
@@ -998,12 +998,12 @@ void sub_A968(void)
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0xD];
 
-    sub_0CBC();
-    sub_10424();
+    EnableVBlankProcessing();
+    FadeInWithBlend();
     gIntroSceneIndex += 2;
 }
 
-void sub_AAA8(void)
+void InitIntroScene4State(void)
 {
     gUnknown_0202ADA0[0x0] = 0x1C;
     gUnknown_0202ADA0[0x1] = 0xFF20;
@@ -1021,11 +1021,11 @@ void sub_AAA8(void)
     gUnknown_0202A578 = 0;
 }
 
-void nullsub_9(void)
+void IntroScene4_NoOp1(void)
 {
 }
 
-void sub_AAF4(void)
+void IntroScene4_ScrollBgLayers(void)
 {
     gUnknown_0202ADA0[0x1] += gUnknown_0202ADA0[0x3];
     gUnknown_0202ADA0[0x7] += gUnknown_0202ADA0[0x9];
@@ -1053,13 +1053,13 @@ void sub_AAF4(void)
     }
 }
 
-void nullsub_10(void)
+void IntroScene4_NoOp2(void)
 {
 }
 
-void sub_AB90(void)
+void IntroScene4_FinalScrollAndFadeOut(void)
 {
-    // TODO Near duplicate of sub_AAF4
+    // TODO Near duplicate of IntroScene4_ScrollBgLayers
     gUnknown_0202ADA0[0x1] += gUnknown_0202ADA0[0x3];
     gUnknown_0202ADA0[0x7] += gUnknown_0202ADA0[0x9];
     gUnknown_0202ADA0[0xC]--;
@@ -1078,19 +1078,19 @@ void sub_AB90(void)
     gMain.bgOffsets[1].yOffset = gUnknown_0202ADA0[0x7];
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0xC];
 
-    sub_10480();
-    sub_10544();
+    FadeOutAndClearScreen();
+    DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
 
-void sub_AC20(void)
+void IntroScene5_ClearTilemaps(void)
 {
-    // TODO Duplicate of sub_A950?
-    sub_0518();
+    // TODO Duplicate of IntroScene4_ClearTilemaps?
+    ClearTilemapBuffers();
     gIntroSceneIndex++;
 }
 
-void sub_AC38(void)
+void InitIntroScene5(void)
 {
     // TODO use proper constants - see LoadEReaderGraphics?
     REG_DISPCNT = 0x1000;
@@ -1108,13 +1108,13 @@ void sub_AC38(void)
     DmaCopy16(3, gUnknown_080EA160, (void *) 0x600E000, 0x1000);
     DmaCopy16(3, gUnknown_080EC160, (void *) 0x600F000, 0x800);
     DmaCopy16(3, gIntroScene5Text_Gfx, (void *) 0x6000000, 0x2800);
-    DmaCopy16(3, gIntroScene1Ball_Gfx, gUnknown_03000000, 0x4000);
+    DmaCopy16(3, gIntroScene1Ball_Gfx, gTempGfxBuffer, 0x4000);
     DmaCopy16(3, gUnknown_080E9F60, (void *) 0x5000000, 0x180);
     DmaCopy16(3, gIntroScene5Sprites_Gfx, (void *) 0x6010000, 0x3000);
     DmaCopy16(3, gUnknown_080E9F60, OBJ_PLTT, 0x180);
 
-    sub_ADFC();
-    sub_B0E8();
+    InitIntroScene5State();
+    RenderIntroScene5Sprites();
 
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
@@ -1125,19 +1125,19 @@ void sub_AC38(void)
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
-    sub_0CBC();
-    sub_10424();
+    EnableVBlankProcessing();
+    FadeInWithBlend();
     gIntroSceneIndex++;
 }
 
-void sub_ADFC(void)
+void InitIntroScene5State(void)
 {
-    gUnknown_0201A450[1].unk0 = 0xB4;
-    gUnknown_0201A450[1].unk2 = 0xFFBC;
-    gUnknown_0201A450[0].unk0 = 0xB4;
-    gUnknown_0201A450[0].unk2 = 0xFFBC;
-    gUnknown_0201A450[2].unk0 = 0x80;
-    gUnknown_0201A450[2].unk2 = 0x88;
+    gUnknown_0201A450[1].posX = 0xB4;
+    gUnknown_0201A450[1].posY = 0xFFBC;
+    gUnknown_0201A450[0].posX = 0xB4;
+    gUnknown_0201A450[0].posY = 0xFFBC;
+    gUnknown_0201A450[2].posX = 0x80;
+    gUnknown_0201A450[2].posY = 0x88;
 
     gUnknown_0202ADA0[0x0] = 0xFF58;
     gUnknown_0202ADA0[0x1] = 0xFF98;
@@ -1160,14 +1160,14 @@ void sub_ADFC(void)
     gUnknown_0202A578 = 0;
 }
 
-void sub_AE74(void)
+void IntroScene5_PanWithBallReveal(void)
 {
-    gUnknown_0201A450[1].unk0 -= 0x10;
-    gUnknown_0201A450[1].unk2 += 0xA;
-    gUnknown_0201A450[0].unk0 -= 0x10;
-    gUnknown_0201A450[0].unk2 += 0xA;
-    gUnknown_0201A450[2].unk0 += 0x5;
-    gUnknown_0201A450[2].unk2 -= 0x3;
+    gUnknown_0201A450[1].posX -= 0x10;
+    gUnknown_0201A450[1].posY += 0xA;
+    gUnknown_0201A450[0].posX -= 0x10;
+    gUnknown_0201A450[0].posY += 0xA;
+    gUnknown_0201A450[2].posX += 0x5;
+    gUnknown_0201A450[2].posY -= 0x3;
 
     gUnknown_0202ADA0[0x6] -= 0x10;
     gUnknown_0202ADA0[0x7]++;
@@ -1180,10 +1180,10 @@ void sub_AE74(void)
     if (gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[4]].y)
     {
         gUnknown_0202ADA0[4]++;
-        CopyBgTilesRect(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[4]]], (void *) 0x6002EE0, 8, 8);
+        CopyBgTilesRect(&gTempGfxBuffer[gUnknown_086A7A1C[gUnknown_0202ADA0[4]]], (void *) 0x6002EE0, 8, 8);
     }
 
-    sub_B0E8();
+    RenderIntroScene5Sprites();
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
     gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
@@ -1198,25 +1198,25 @@ void sub_AE74(void)
     }
 }
 
-void sub_AF80(void)
+void IntroScene5_ContinueBallAndScroll(void)
 {
     if (++gUnknown_0202ADA0[0x5] > gUnknown_086A79FC[gUnknown_0202ADA0[0x4]].y)
     {
         if (gUnknown_0202ADA0[0x04] < 7)
         {
             gUnknown_0202ADA0[0x4]++;
-            CopyBgTilesRect(&gUnknown_03000000[gUnknown_086A7A1C[gUnknown_0202ADA0[0x4]]], (void *) 0x6002EE0, 8, 8);
+            CopyBgTilesRect(&gTempGfxBuffer[gUnknown_086A7A1C[gUnknown_0202ADA0[0x4]]], (void *) 0x6002EE0, 8, 8);
         }
     }
 
-    sub_B0E8();
+    RenderIntroScene5Sprites();
     gUnknown_0202ADA0[0x12]++;
     if (gUnknown_0202BF10 % 2 == 0)
     {
-        gUnknown_0201A450[1].unk0--;
-        gUnknown_0201A450[1].unk2++;
-        gUnknown_0201A450[0].unk0 -= 2;
-        gUnknown_0201A450[0].unk2 += 2;
+        gUnknown_0201A450[1].posX--;
+        gUnknown_0201A450[1].posY++;
+        gUnknown_0201A450[0].posX -= 2;
+        gUnknown_0201A450[0].posY += 2;
     }
 
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
@@ -1235,21 +1235,21 @@ void sub_AF80(void)
     }
 }
 
-void nullsub_11(void)
+void IntroScene5_NoOp(void)
 {
 }
 
-void sub_B090(void)
+void IntroScene5_FadeOutAndClearOam(void)
 {
-    sub_10480();
+    FadeOutAndClearScreen();
     ClearSprites();
     DmaFill32(3, 0, OAM, 0x400);
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
-    sub_10544();
+    DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
 
-void sub_B0E8(void)
+void RenderIntroScene5Sprites(void)
 {
     int i;
     struct OamDataSimple *oamData;
@@ -1273,8 +1273,8 @@ void sub_B0E8(void)
 
     if (mainSg1->available == 1)
     {
-        mainSg1->baseX = gUnknown_0201A450[0].unk0;
-        mainSg1->baseY = gUnknown_0201A450[0].unk2;
+        mainSg1->baseX = gUnknown_0201A450[0].posX;
+        mainSg1->baseY = gUnknown_0201A450[0].posY;
         for (i = 0; i < 4; i++)
         {
             oamData = &mainSg1->oam[i];
@@ -1287,8 +1287,8 @@ void sub_B0E8(void)
 
     if (mainSg0->available == 1)
     {
-        mainSg0->baseX = gUnknown_0201A450[1].unk0;
-        mainSg0->baseY = gUnknown_0201A450[1].unk2;
+        mainSg0->baseX = gUnknown_0201A450[1].posX;
+        mainSg0->baseY = gUnknown_0201A450[1].posY;
         for (i = 0; i < 4; i++)
         {
             oamData = &mainSg0->oam[i];
@@ -1301,8 +1301,8 @@ void sub_B0E8(void)
 
     if (mainSg2->available == 1)
     {
-        mainSg2->baseX = gUnknown_0201A450[2].unk0;
-        mainSg2->baseY = gUnknown_0201A450[2].unk2;
+        mainSg2->baseX = gUnknown_0201A450[2].posX;
+        mainSg2->baseY = gUnknown_0201A450[2].posY;
         for (i = 0; i < 8; i++)
         {
             oamData = &mainSg2->oam[i];
@@ -1317,13 +1317,13 @@ void sub_B0E8(void)
     mainSg2->available = FALSE;
 }
 
-void sub_B2E0(void)
+void IntroScene6_ClearTilemaps(void)
 {
-    sub_0518();
+    ClearTilemapBuffers();
     gIntroSceneIndex++;
 }
 
-void sub_B2F8(void)
+void InitIntroScene6(void)
 {
     REG_DISPCNT = DISPCNT_OBJ_ON;
     REG_BG0CNT = 0xF00;
@@ -1344,7 +1344,7 @@ void sub_B2F8(void)
     DmaCopy16(3, gIntroScene6Stars_Gfx, 0x06010000, 0x1000);
     DmaCopy16(3, gUnknown_080F61A0, 0x05000200, 0x80);
 
-    sub_B4A0();
+    InitIntroScene6State();
 
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
@@ -1355,12 +1355,12 @@ void sub_B2F8(void)
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
-    sub_0CBC();
-    sub_10424();
+    EnableVBlankProcessing();
+    FadeInWithBlend();
     gIntroSceneIndex++;
 }
 
-void sub_B4A0(void)
+void InitIntroScene6State(void)
 {
     int i;
 
@@ -1378,24 +1378,24 @@ void sub_B4A0(void)
     gUnknown_0202ADA0[0x12] = 0x0;
     gUnknown_0202ADA0[0x13] = 0x0;
 
-    gUnknown_0201A450[0].unk0 = 0x32;
-    gUnknown_0201A450[0].unk2 = 0x3C;
-    gUnknown_0201A450[1].unk0 = 0x50;
-    gUnknown_0201A450[1].unk2 = 0x3C;
-    gUnknown_0201A450[2].unk0 = 0x8C;
-    gUnknown_0201A450[2].unk2 = 0x64;
-    gUnknown_0201A450[3].unk0 = 0xC8;
-    gUnknown_0201A450[3].unk2 = 0x5A;
-    gUnknown_0201A450[4].unk0 = 0x3C;
-    gUnknown_0201A450[4].unk2 = 0x1E;
-    gUnknown_0201A450[5].unk0 = 0x96;
-    gUnknown_0201A450[5].unk2 = 0x64;
+    gUnknown_0201A450[0].posX = 0x32;
+    gUnknown_0201A450[0].posY = 0x3C;
+    gUnknown_0201A450[1].posX = 0x50;
+    gUnknown_0201A450[1].posY = 0x3C;
+    gUnknown_0201A450[2].posX = 0x8C;
+    gUnknown_0201A450[2].posY = 0x64;
+    gUnknown_0201A450[3].posX = 0xC8;
+    gUnknown_0201A450[3].posY = 0x5A;
+    gUnknown_0201A450[4].posX = 0x3C;
+    gUnknown_0201A450[4].posY = 0x1E;
+    gUnknown_0201A450[5].posX = 0x96;
+    gUnknown_0201A450[5].posY = 0x64;
 
     for (i = 0; i < 6; i++)
     {
-        gUnknown_0201A450[i].unk8 = 0;
-        gUnknown_0201A450[i].unkA = 0;
-        gUnknown_0201A450[i].unkC = 0;
+        gUnknown_0201A450[i].animFrame = 0;
+        gUnknown_0201A450[i].animSubFrame = 0;
+        gUnknown_0201A450[i].active = 0;
     }
 
     gUnknown_0202C548 = 0;
@@ -1404,7 +1404,7 @@ void sub_B4A0(void)
     gUnknown_0202BEB4 = 0;
 }
 
-void sub_B560(void)
+void IntroScene6_AnimateStarsEntering(void)
 {
     gUnknown_0202ADA0[0x6] += gUnknown_086A7AC0[gUnknown_0202C548].unk0;
     gUnknown_0202ADA0[0x7] += gUnknown_086A7AC0[gUnknown_0202C548].unk1;
@@ -1434,11 +1434,11 @@ void sub_B560(void)
 
     if (gUnknown_0202BF10 == gUnknown_086A7B34[gUnknown_0202BEB4].unk2)
     {
-        gUnknown_0201A450[gUnknown_0202BEB4].unkC = 1;
+        gUnknown_0201A450[gUnknown_0202BEB4].active = 1;
         gUnknown_0202BEB4++;
     }
 
-    sub_B7F8();
+    RenderIntroScene5PokemonSprites();
     if (++gUnknown_0202A578 > gUnknown_086A7AC0[gUnknown_0202C548].unk2)
     {
         gUnknown_0202A578 = 0;
@@ -1447,7 +1447,7 @@ void sub_B560(void)
     }
 }
 
-void sub_B6C4(void)
+void IntroScene6_StarsHoldAndBounce(void)
 {
     if (gUnknown_086A7AE4[gUnknown_0202BF10] & 0x10)
     {
@@ -1472,7 +1472,7 @@ void sub_B6C4(void)
     gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
     gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
 
-    sub_B7F8();
+    RenderIntroScene5PokemonSprites();
     if (++gUnknown_0202A578 > 16)
     {
         gUnknown_0202A578 = 0;
@@ -1480,36 +1480,36 @@ void sub_B6C4(void)
     }
 }
 
-void sub_B7A0(void)
+void IntroScene6_FadeOutAndClearOam(void)
 {
     ClearSprites();
     DmaFill32(3, 0, OAM, 0x400);
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
-    sub_10480();
-    sub_10544();
+    FadeOutAndClearScreen();
+    DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
 
-void sub_B7F8(void)
+void RenderIntroScene5PokemonSprites(void)
 {
     s32 i;
     s32 j;
     const struct SpriteSet *p;
     struct SpriteGroup *spriteGroups[6];
 
-    spriteGroups[0] = &gMain.spriteGroups[6 * gUnknown_0201A450[0].unk8];
-    spriteGroups[1] = &gMain.spriteGroups[6 * gUnknown_0201A450[1].unk8 + 1];
-    spriteGroups[2] = &gMain.spriteGroups[6 * gUnknown_0201A450[2].unk8 + 2];
-    spriteGroups[3] = &gMain.spriteGroups[6 * gUnknown_0201A450[3].unk8 + 3];
-    spriteGroups[4] = &gMain.spriteGroups[6 * gUnknown_0201A450[4].unk8 + 4];
-    spriteGroups[5] = &gMain.spriteGroups[6 * gUnknown_0201A450[5].unk8 + 5];
+    spriteGroups[0] = &gMain.spriteGroups[6 * gUnknown_0201A450[0].animFrame];
+    spriteGroups[1] = &gMain.spriteGroups[6 * gUnknown_0201A450[1].animFrame + 1];
+    spriteGroups[2] = &gMain.spriteGroups[6 * gUnknown_0201A450[2].animFrame + 2];
+    spriteGroups[3] = &gMain.spriteGroups[6 * gUnknown_0201A450[3].animFrame + 3];
+    spriteGroups[4] = &gMain.spriteGroups[6 * gUnknown_0201A450[4].animFrame + 4];
+    spriteGroups[5] = &gMain.spriteGroups[6 * gUnknown_0201A450[5].animFrame + 5];
 
-    spriteGroups[0]->available = gUnknown_0201A450[0].unkC;
-    spriteGroups[1]->available = gUnknown_0201A450[1].unkC;
-    spriteGroups[2]->available = gUnknown_0201A450[2].unkC;
-    spriteGroups[3]->available = gUnknown_0201A450[3].unkC;
-    spriteGroups[4]->available = gUnknown_0201A450[4].unkC;
-    spriteGroups[5]->available = gUnknown_0201A450[5].unkC;
+    spriteGroups[0]->available = gUnknown_0201A450[0].active;
+    spriteGroups[1]->available = gUnknown_0201A450[1].active;
+    spriteGroups[2]->available = gUnknown_0201A450[2].active;
+    spriteGroups[3]->available = gUnknown_0201A450[3].active;
+    spriteGroups[4]->available = gUnknown_0201A450[4].active;
+    spriteGroups[5]->available = gUnknown_0201A450[5].active;
 
     LoadSpriteSets(gUnknown_086A7A78, 0x12, &gMain.spriteGroups[0]);
     for (i = 0; i < 6; i++)
@@ -1517,12 +1517,12 @@ void sub_B7F8(void)
         if (spriteGroups[i]->available != 1)
             continue;
 
-        gUnknown_0201A450[i].unk0 += gUnknown_086A7B34[i].unk0;
-        gUnknown_0201A450[i].unk2 += gUnknown_086A7B34[i].unk1;
-        spriteGroups[i]->baseX = gUnknown_0201A450[i].unk0;
-        spriteGroups[i]->baseY = gUnknown_0201A450[i].unk2;
+        gUnknown_0201A450[i].posX += gUnknown_086A7B34[i].unk0;
+        gUnknown_0201A450[i].posY += gUnknown_086A7B34[i].unk1;
+        spriteGroups[i]->baseX = gUnknown_0201A450[i].posX;
+        spriteGroups[i]->baseY = gUnknown_0201A450[i].posY;
 
-        p = gUnknown_086A7A78[i + gUnknown_0201A450[i].unk8 * 6];
+        p = gUnknown_086A7A78[i + gUnknown_0201A450[i].animFrame * 6];
         for (j = 0; j < p->count; j++)
         {
             struct OamDataSimple *ods = &spriteGroups[i]->oam[j];
@@ -1530,15 +1530,15 @@ void sub_B7F8(void)
             gOamBuffer[ods->oamId].y = ods->yOffset + spriteGroups[i]->baseY;
         }
 
-        if (++gUnknown_0201A450[i].unkA > 4)
+        if (++gUnknown_0201A450[i].animSubFrame > 4)
         {
-            gUnknown_0201A450[i].unkA = 0;
-            if (gUnknown_0201A450[i].unk8 < 2)
-                gUnknown_0201A450[i].unk8++;
+            gUnknown_0201A450[i].animSubFrame = 0;
+            if (gUnknown_0201A450[i].animFrame < 2)
+                gUnknown_0201A450[i].animFrame++;
         }
 
         if (gUnknown_0202BF10 == gUnknown_086A7B34[i].unk3)
-            gUnknown_0201A450[i].unkC = 0;
+            gUnknown_0201A450[i].active = 0;
     }
 
     spriteGroups[0]->available = 0;
@@ -1549,12 +1549,12 @@ void sub_B7F8(void)
     spriteGroups[5]->available = 0;
 }
 
-void sub_BA2C(void)
+void IntroScene7a_AdvanceIndex(void)
 {
     gIntroSceneIndex++;
 }
 
-void sub_BA3C(void)
+void InitIntroScene7a(void)
 {
     REG_DISPCNT = DISPCNT_OBJ_ON;
     REG_BG0CNT = 0xD400;
@@ -1576,7 +1576,7 @@ void sub_BA3C(void)
     DmaCopy16(3, gUnknown_08100FE0, 0x05000200, 0x160);
 
     gMain.dispcntBackup = REG_DISPCNT;
-    sub_BBE0();
+    InitIntroScene7aState();
 
     gMain.bgOffsets[0].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[0].yOffset = gUnknown_0202ADA0[0x1];
@@ -1587,12 +1587,12 @@ void sub_BA3C(void)
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
-    sub_0CBC();
-    sub_10424();
+    EnableVBlankProcessing();
+    FadeInWithBlend();
     gIntroSceneIndex++;
 }
 
-void sub_BBE0(void)
+void InitIntroScene7aState(void)
 {
     gUnknown_0202ADA0[0x0] = 0xFEFC;
     gUnknown_0202ADA0[0x1] = 0x46;
@@ -1606,10 +1606,10 @@ void sub_BBE0(void)
     gUnknown_0202ADA0[0x12] = 0;
     gUnknown_0202ADA0[0x13] = 0;
 
-    gUnknown_0201A450[0].unk0 = 0x128;
-    gUnknown_0201A450[0].unk2 = 0x2C;
-    gUnknown_0201A450[0].unk4 = 0;
-    gUnknown_0201A450[0].unk6 = 0;
+    gUnknown_0201A450[0].posX = 0x128;
+    gUnknown_0201A450[0].posY = 0x2C;
+    gUnknown_0201A450[0].velX = 0;
+    gUnknown_0201A450[0].velY = 0;
 
     gUnknown_0202BF10 = 0;
     gUnknown_0202A578 = 0;
@@ -1617,7 +1617,7 @@ void sub_BBE0(void)
     gUnknown_0202ADD8 = 0x100;
 }
 
-void sub_BC54(void)
+void IntroScene7a_ScrollWavesLayer(void)
 {
     gUnknown_0202ADA0[0xC] += 2;
     gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
@@ -1639,7 +1639,7 @@ void sub_BC54(void)
         gIntroSceneIndex++;
 }
 
-void sub_BCE8(void)
+void IntroScene7a_ScrollTwoWaveLayers(void)
 {
     gUnknown_0202ADA0[0xC] += 2;
     gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
@@ -1660,7 +1660,7 @@ void sub_BCE8(void)
     gUnknown_0202ADA0[0x12]--;
     gUnknown_0202ADA0[0x13]--;
 
-    // TODO rearrangement like this suggests one inline function per pair of statements, but see sub_9498
+    // TODO rearrangement like this suggests one inline function per pair of statements, but see InitIntroScene1
     gMain.bgOffsets[2].xOffset = gUnknown_0202ADA0[0xC];
     gMain.bgOffsets[2].yOffset = gUnknown_0202ADA0[0xD];
     gMain.bgOffsets[1].xOffset = gUnknown_0202ADA0[0x6];
@@ -1672,7 +1672,7 @@ void sub_BCE8(void)
         gIntroSceneIndex++;
 }
 
-void sub_BDC0(void)
+void IntroScene7a_ScrollAllThreeLayers(void)
 {
     gUnknown_0202ADA0[0xC] += 2;
     gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
@@ -1714,7 +1714,7 @@ void sub_BDC0(void)
         gIntroSceneIndex++;
 }
 
-void sub_BED0(void)
+void IntroScene7a_WailmerAppears(void)
 {
     gUnknown_0202ADA0[0xC] += 2;
     gUnknown_0202ADA0[0xD] -= gUnknown_0202ADA0[0xF];
@@ -1740,12 +1740,12 @@ void sub_BED0(void)
             gUnknown_0202ADA0[0x3] = -3;
     }
 
-    gUnknown_0201A450[0].unk0 -= 2;
-    gUnknown_0201A450[0].unk2 += gUnknown_0201A450[0].unk6;
+    gUnknown_0201A450[0].posX -= 2;
+    gUnknown_0201A450[0].posY += gUnknown_0201A450[0].velY;
     if (gUnknown_0202BF10 % 4 == 0)
     {
-        if (++gUnknown_0201A450[0].unk6 > 4)
-            gUnknown_0201A450[0].unk6 = -4;
+        if (++gUnknown_0201A450[0].velY > 4)
+            gUnknown_0201A450[0].velY = -4;
     }
 
     gUnknown_0202ADA0[0x12]--;
@@ -1760,12 +1760,12 @@ void sub_BED0(void)
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
-    sub_C0D8();
+    RenderIntroScene7aPokemonSprite();
     if (gUnknown_0202BF10 > 192)
         gIntroSceneIndex++;
 }
 
-void sub_C018(void)
+void IntroScene7a_WailmerShrinksAndExit(void)
 {
     int remainder;
 
@@ -1774,9 +1774,9 @@ void sub_C018(void)
 
     remainder = gUnknown_0202BF10 % 6;
     if (remainder == 0)
-        gUnknown_0201A450[0].unk0 -= 3;
+        gUnknown_0201A450[0].posX -= 3;
     else if (remainder == 3)
-        gUnknown_0201A450[0].unk0 += 3;
+        gUnknown_0201A450[0].posX += 3;
 
     if (gUnknown_0202BF10 > 202)
     {
@@ -1787,19 +1787,19 @@ void sub_C018(void)
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x12];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x13];
 
-    sub_C0D8();
+    RenderIntroScene7aPokemonSprite();
     if (gUnknown_0202BF10 > 222)
         gIntroSceneIndex++;
 }
 
-void sub_C0BC(void)
+void IntroScene7a_FadeOutAndDisable(void)
 {
-    sub_10480();
-    sub_10544();
+    FadeOutAndClearScreen();
+    DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
 
-void sub_C0D8(void)
+void RenderIntroScene7aPokemonSprite(void)
 {
     s32 i;
     struct SpriteGroup *spriteGroup;
@@ -1811,8 +1811,8 @@ void sub_C0D8(void)
     if (spriteGroup->available == 1)
     {
         SetMatrixScale(gUnknown_0202C5E4, gUnknown_0202ADD8, 0);
-        spriteGroup->baseX = gUnknown_0201A450[0].unk0;
-        spriteGroup->baseY = gUnknown_0201A450[0].unk2;
+        spriteGroup->baseX = gUnknown_0201A450[0].posX;
+        spriteGroup->baseY = gUnknown_0201A450[0].posY;
         for (i = 0; i < 4; i++)
         {
             oamData = &spriteGroup->oam[i];
@@ -1827,13 +1827,13 @@ void sub_C0D8(void)
     spriteGroup->available = FALSE;
 }
 
-void sub_C210(void)
+void IntroScene7b_ClearTilemaps(void)
 {
-    sub_0518();
+    ClearTilemapBuffers();
     gIntroSceneIndex++;
 }
 
-void sub_C228(void)
+void InitIntroScene7b(void)
 {
     REG_DISPCNT = DISPCNT_OBJ_ON;
     REG_BG2CNT = 0x7;
@@ -1846,133 +1846,133 @@ void sub_C228(void)
     DmaCopy16(3, gUnknown_0810EA20, 0x05000200, 0x140);
 
     gMain.dispcntBackup = REG_DISPCNT;
-    sub_C2F0();
-    sub_C4F0();
-    sub_0CBC();
-    sub_10424();
+    InitIntroScene7bState();
+    UpdateIntroScene7Sprites();
+    EnableVBlankProcessing();
+    FadeInWithBlend();
     gIntroSceneIndex++;
 }
 
-void sub_C2F0(void)
+void InitIntroScene7bState(void)
 {
-    gUnknown_0201A450[1].unk0 = 0x78;
-    gUnknown_0201A450[1].unk2 = 0x50;
-    gUnknown_0201A450[1].unk4 = 0x4;
-    gUnknown_0201A450[1].unk6 = 0x4;
-    gUnknown_0201A450[1].unk8 = 0;
+    gUnknown_0201A450[1].posX = 0x78;
+    gUnknown_0201A450[1].posY = 0x50;
+    gUnknown_0201A450[1].velX = 0x4;
+    gUnknown_0201A450[1].velY = 0x4;
+    gUnknown_0201A450[1].animFrame = 0;
 
-    gUnknown_0201A450[0].unk0 = 0x78;
-    gUnknown_0201A450[0].unk2 = 0x50;
-    gUnknown_0201A450[0].unkC = 0;
+    gUnknown_0201A450[0].posX = 0x78;
+    gUnknown_0201A450[0].posY = 0x50;
+    gUnknown_0201A450[0].active = 0;
 
-    gUnknown_0201A450[2].unk0 = 0x80;
-    gUnknown_0201A450[2].unk2 = 0x58;
-    gUnknown_0201A450[2].unk8 = 0;
-    gUnknown_0201A450[2].unkA = 0;
-    gUnknown_0201A450[2].unkC = 0;
+    gUnknown_0201A450[2].posX = 0x80;
+    gUnknown_0201A450[2].posY = 0x58;
+    gUnknown_0201A450[2].animFrame = 0;
+    gUnknown_0201A450[2].animSubFrame = 0;
+    gUnknown_0201A450[2].active = 0;
 
-    gUnknown_0201A450[3].unk0 = 0x80;
-    gUnknown_0201A450[3].unk2 = 0x48;
-    gUnknown_0201A450[3].unk8 = 0;
-    gUnknown_0201A450[3].unkA = 0;
-    gUnknown_0201A450[3].unkC = 0;
+    gUnknown_0201A450[3].posX = 0x80;
+    gUnknown_0201A450[3].posY = 0x48;
+    gUnknown_0201A450[3].animFrame = 0;
+    gUnknown_0201A450[3].animSubFrame = 0;
+    gUnknown_0201A450[3].active = 0;
 
-    gUnknown_0201A450[4].unk0 = 0x70;
-    gUnknown_0201A450[4].unk2 = 0x58;
-    gUnknown_0201A450[4].unk8 = 0;
-    gUnknown_0201A450[4].unkA = 0;
-    gUnknown_0201A450[4].unkC = 0;
+    gUnknown_0201A450[4].posX = 0x70;
+    gUnknown_0201A450[4].posY = 0x58;
+    gUnknown_0201A450[4].animFrame = 0;
+    gUnknown_0201A450[4].animSubFrame = 0;
+    gUnknown_0201A450[4].active = 0;
 
-    gUnknown_0201A450[5].unk0 = 0x78;
-    gUnknown_0201A450[5].unk2 = 0x58;
-    gUnknown_0201A450[5].unk8 = 0;
-    gUnknown_0201A450[5].unkA = 0;
-    gUnknown_0201A450[5].unkC = 0;
+    gUnknown_0201A450[5].posX = 0x78;
+    gUnknown_0201A450[5].posY = 0x58;
+    gUnknown_0201A450[5].animFrame = 0;
+    gUnknown_0201A450[5].animSubFrame = 0;
+    gUnknown_0201A450[5].active = 0;
 
     // TODO FIXME overlapping symbols (gAutoDisplayTitlescreenMenu)
-    gUnknown_0201A450[6].unk0 = 0x70;
-    gUnknown_0201A450[6].unk2 = 0x48;
-    gUnknown_0201A450[6].unk8 = 0;
-    gUnknown_0201A450[6].unkA = 0;
-    gUnknown_0201A450[6].unkC = 0;
+    gUnknown_0201A450[6].posX = 0x70;
+    gUnknown_0201A450[6].posY = 0x48;
+    gUnknown_0201A450[6].animFrame = 0;
+    gUnknown_0201A450[6].animSubFrame = 0;
+    gUnknown_0201A450[6].active = 0;
 
     gUnknown_0202BF10 = 0;
     gUnknown_0202A578 = 0;
 }
 
-void sub_C38C(void)
+void IntroScene7b_WaitThenShowDebris(void)
 {
-    sub_C4F0();
+    UpdateIntroScene7Sprites();
 
     if (gUnknown_0202BF10 > 1)
     {
-        gUnknown_0201A450[0].unkC = 1;
-        gUnknown_0201A450[2].unkC = 1;
-        gUnknown_0201A450[3].unkC = 1;
-        gUnknown_0201A450[4].unkC = 1;
-        gUnknown_0201A450[5].unkC = 1;
-        gUnknown_0201A450[6].unkC = 1; // TODO FIXME overlapping symbols (gAutoDisplayTitlescreenMenu)
+        gUnknown_0201A450[0].active = 1;
+        gUnknown_0201A450[2].active = 1;
+        gUnknown_0201A450[3].active = 1;
+        gUnknown_0201A450[4].active = 1;
+        gUnknown_0201A450[5].active = 1;
+        gUnknown_0201A450[6].active = 1; // TODO FIXME overlapping symbols (gAutoDisplayTitlescreenMenu)
         gIntroSceneIndex++;
     }
 }
 
-void sub_C3D0(void)
+void IntroScene7b_ExplosionAndDebrisFly(void)
 {
-    gUnknown_0201A450[0].unk0 -= 9;
-    gUnknown_0201A450[0].unk2 -= 6;
-    gUnknown_0201A450[1].unk8++;
+    gUnknown_0201A450[0].posX -= 9;
+    gUnknown_0201A450[0].posY -= 6;
+    gUnknown_0201A450[1].animFrame++;
 
-    if (gUnknown_0201A450[1].unk8 < 4)
+    if (gUnknown_0201A450[1].animFrame < 4)
     {
-        gUnknown_0201A450[1].unk0 += gUnknown_0201A450[1].unk4;
-        gUnknown_0201A450[1].unk2 += gUnknown_0201A450[1].unk6;
-        gUnknown_0201A450[1].unk4--;
-        gUnknown_0201A450[1].unk6--;
+        gUnknown_0201A450[1].posX += gUnknown_0201A450[1].velX;
+        gUnknown_0201A450[1].posY += gUnknown_0201A450[1].velY;
+        gUnknown_0201A450[1].velX--;
+        gUnknown_0201A450[1].velY--;
     }
     else if (gUnknown_0202BF10 % 2 == 0)
     {
-        gUnknown_0201A450[1].unk0++;
-        gUnknown_0201A450[1].unk2++;
+        gUnknown_0201A450[1].posX++;
+        gUnknown_0201A450[1].posY++;
     }
 
-    sub_C4F0();
-    if (gUnknown_0201A450[0].unk2 < -32)
+    UpdateIntroScene7Sprites();
+    if (gUnknown_0201A450[0].posY < -32)
         gIntroSceneIndex++;
 }
 
-void sub_C450(void)
+void IntroScene7b_ExplosionLinger(void)
 {
-    sub_C4F0();
+    UpdateIntroScene7Sprites();
 
     if ((gUnknown_0202BF10 % 2) == 0)
     {
-        gUnknown_0201A450[1].unk0++;
-        gUnknown_0201A450[1].unk2++;
+        gUnknown_0201A450[1].posX++;
+        gUnknown_0201A450[1].posY++;
     }
 
     if (gUnknown_0202BF10 > 20)
         gIntroSceneIndex += 3;
 }
 
-void nullsub_12(void)
+void IntroScene7b_NoOp1(void)
 {
 }
 
-void nullsub_13(void)
+void IntroScene7b_NoOp2(void)
 {
 }
 
-void sub_C498(void)
+void IntroScene7b_FadeOutAndClearOam(void)
 {
-    sub_10480();
+    FadeOutAndClearScreen();
     ClearSprites();
     DmaFill32(3, 0, OAM, 0x400);
     DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
-    sub_10544();
+    DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
 
-void sub_C4F0(void)
+void UpdateIntroScene7Sprites(void)
 {
     struct SpriteGroup *sg0;
     struct SpriteGroup *sg1;
@@ -1988,28 +1988,28 @@ void sub_C4F0(void)
     sg0 = &gMain.spriteGroups[0];
     sg1 = &gMain.spriteGroups[1];
 
-    spriteGroups[0] = &gMain.spriteGroups[(5 * gUnknown_0201A450[2].unk8) + 2];
-    spriteGroups[1] = &gMain.spriteGroups[(5 * gUnknown_0201A450[3].unk8) + 3];
-    spriteGroups[2] = &gMain.spriteGroups[(5 * gUnknown_0201A450[4].unk8) + 4];
-    spriteGroups[3] = &gMain.spriteGroups[(5 * gUnknown_0201A450[5].unk8) + 5];
-    spriteGroups[4] = &gMain.spriteGroups[(5 * gUnknown_0201A450[6].unk8) + 6];
+    spriteGroups[0] = &gMain.spriteGroups[(5 * gUnknown_0201A450[2].animFrame) + 2];
+    spriteGroups[1] = &gMain.spriteGroups[(5 * gUnknown_0201A450[3].animFrame) + 3];
+    spriteGroups[2] = &gMain.spriteGroups[(5 * gUnknown_0201A450[4].animFrame) + 4];
+    spriteGroups[3] = &gMain.spriteGroups[(5 * gUnknown_0201A450[5].animFrame) + 5];
+    spriteGroups[4] = &gMain.spriteGroups[(5 * gUnknown_0201A450[6].animFrame) + 6];
 
 
-    sg0->available = gUnknown_0201A450[0].unkC;
+    sg0->available = gUnknown_0201A450[0].active;
     sg1->available = 1;
 
-    spriteGroups[0]->available = gUnknown_0201A450[2].unkC;
-    spriteGroups[1]->available = gUnknown_0201A450[3].unkC;
-    spriteGroups[2]->available = gUnknown_0201A450[4].unkC;
-    spriteGroups[3]->available = gUnknown_0201A450[5].unkC;
-    spriteGroups[4]->available = gUnknown_0201A450[6].unkC;
+    spriteGroups[0]->available = gUnknown_0201A450[2].active;
+    spriteGroups[1]->available = gUnknown_0201A450[3].active;
+    spriteGroups[2]->available = gUnknown_0201A450[4].active;
+    spriteGroups[3]->available = gUnknown_0201A450[5].active;
+    spriteGroups[4]->available = gUnknown_0201A450[6].active;
 
     LoadSpriteSets(gUnknown_086A7C24, 0x11, gMain.spriteGroups);
 
     if (sg0->available == 1)
     {
-        sg0->baseX = gUnknown_0201A450[0].unk0;
-        sg0->baseY = gUnknown_0201A450[0].unk2;
+        sg0->baseX = gUnknown_0201A450[0].posX;
+        sg0->baseY = gUnknown_0201A450[0].posY;
         oamData = &sg0->oam[0];
         gOamBuffer[oamData->oamId].priority = 0;
         gOamBuffer[oamData->oamId].x = oamData->xOffset + sg0->baseX;
@@ -2032,12 +2032,12 @@ void sub_C4F0(void)
                 cVar2 = gUnknown_086A7C68[i].unk1;
             }
 
-            gUnknown_0201A450[2 + i].unk0 += cVar1;
-            gUnknown_0201A450[2 + i].unk2 += cVar2;
-            spriteGroups[i]->baseX = gUnknown_0201A450[2 + i].unk0;
-            spriteGroups[i]->baseY = gUnknown_0201A450[2 + i].unk2;
+            gUnknown_0201A450[2 + i].posX += cVar1;
+            gUnknown_0201A450[2 + i].posY += cVar2;
+            spriteGroups[i]->baseX = gUnknown_0201A450[2 + i].posX;
+            spriteGroups[i]->baseY = gUnknown_0201A450[2 + i].posY;
 
-            p = gUnknown_086A7C24[( 2 + i) + (5 * gUnknown_0201A450[2 + i].unk8)];
+            p = gUnknown_086A7C24[( 2 + i) + (5 * gUnknown_0201A450[2 + i].animFrame)];
 
             for (j = 0; j < p->count; j++)
             {
@@ -2047,14 +2047,14 @@ void sub_C4F0(void)
                 gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroups[i]->baseY;
             }
 
-            gUnknown_0201A450[2 + i].unkA++;
+            gUnknown_0201A450[2 + i].animSubFrame++;
 
-            if (gUnknown_0201A450[2 + i].unkA > 0x4)
+            if (gUnknown_0201A450[2 + i].animSubFrame > 0x4)
             {
-                gUnknown_0201A450[2 + i].unkA = 0;
-                if (gUnknown_0201A450[2 + i].unk8 < 0x2)
+                gUnknown_0201A450[2 + i].animSubFrame = 0;
+                if (gUnknown_0201A450[2 + i].animFrame < 0x2)
                 {
-                    gUnknown_0201A450[2 + i].unk8++;
+                    gUnknown_0201A450[2 + i].animFrame++;
                 }
             }
         }
@@ -2062,8 +2062,8 @@ void sub_C4F0(void)
 
     if (sg1->available == 1)
     {
-        sg1->baseX = gUnknown_0201A450[1].unk0;
-        sg1->baseY = gUnknown_0201A450[1].unk2;
+        sg1->baseX = gUnknown_0201A450[1].posX;
+        sg1->baseY = gUnknown_0201A450[1].posY;
 
         for (j = 0; j < 4; j++)
         {
@@ -2084,12 +2084,12 @@ void sub_C4F0(void)
     spriteGroups[3]->available = 0;
     spriteGroups[4]->available = 0;
 }
-void sub_C814(void)
+void IntroScene8_ClearAndResetSprites(void)
 {
     u16 i;
     u16 j;
 
-    sub_0518();
+    ClearTilemapBuffers();
     DmaFill32(3, 0, OAM, 0x400);
     for (i = 0; i < 20; i++)
     {
@@ -2126,7 +2126,7 @@ void sub_C814(void)
     gIntroSceneIndex++;
 }
 
-void sub_C948(void)
+void InitIntroScene8(void)
 {
     REG_DISPCNT = DISPCNT_OBJ_ON;
     REG_BG3CNT = 0x7;
@@ -2139,29 +2139,29 @@ void sub_C948(void)
     DmaCopy16(3, gUnknown_08115860, 0x05000200, 0x40);
 
     gMain.dispcntBackup = REG_DISPCNT;
-    sub_CA28();
+    InitIntroScene8State();
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x0];
     gMain.bgOffsets[3].yOffset = gUnknown_0202ADA0[0x1];
-    sub_0CBC();
-    sub_10424();
+    EnableVBlankProcessing();
+    FadeInWithBlend();
     gIntroSceneIndex++;
 }
 
-void sub_CA28(void)
+void InitIntroScene8State(void)
 {
     gUnknown_0202ADA0[0x0] = 0;
     gUnknown_0202ADA0[0x1] = 0;
 
-    gUnknown_0201A450[0].unk0 = 0xF0;
-    gUnknown_0201A450[0].unk2 = 0x1E;
-    gUnknown_0201A450[0].unk4 = 0xE;
-    gUnknown_0201A450[0].unk8 = 0x1;
-    gUnknown_0201A450[0].unkC = 0x1;
+    gUnknown_0201A450[0].posX = 0xF0;
+    gUnknown_0201A450[0].posY = 0x1E;
+    gUnknown_0201A450[0].velX = 0xE;
+    gUnknown_0201A450[0].animFrame = 0x1;
+    gUnknown_0201A450[0].active = 0x1;
 
-    gUnknown_0201A450[1].unk0 = 0x108;
-    gUnknown_0201A450[1].unk2 = 0x50;
-    gUnknown_0201A450[1].unk4 = 0x6;
-    gUnknown_0201A450[1].unkC = 0;
+    gUnknown_0201A450[1].posX = 0x108;
+    gUnknown_0201A450[1].posY = 0x50;
+    gUnknown_0201A450[1].velX = 0x6;
+    gUnknown_0201A450[1].active = 0;
 
     gUnknown_0202BF10 = 0;
     gUnknown_0202A578 = 0;
@@ -2171,38 +2171,38 @@ void sub_CA28(void)
     gUnknown_0202A56C = 0;
 }
 
-void sub_CAA0(void)
+void IntroScene8_BallFliesIn(void)
 {
     gUnknown_0202ADA0[0x0] -= 0x24;
-    gUnknown_0201A450[0].unk0 -= gUnknown_086A7D4C[gUnknown_0202A578];
+    gUnknown_0201A450[0].posX -= gUnknown_086A7D4C[gUnknown_0202A578];
     gUnknown_0202A578++;
 
     if (gUnknown_0202BF10 % 5 == 0)
     {
-        if (++gUnknown_0201A450[0].unk8 > 10)
-            gUnknown_0201A450[0].unk8 = 1;
+        if (++gUnknown_0201A450[0].animFrame > 10)
+            gUnknown_0201A450[0].animFrame = 1;
     }
 
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x0];
-    sub_CD18();
+    RenderIntroScene8Sprites();
 
     if (gUnknown_0202BF10 > 40)
     {
         gUnknown_0202C5E4 += 6;
         gUnknown_0202ADD8 += 6;
         if (gUnknown_0202BF10 % 2 == 0)
-            gUnknown_0201A450[0].unk2++;
+            gUnknown_0201A450[0].posY++;
     }
 
     if (gUnknown_0202BF10 > 90)
     {
-        gUnknown_0201A450[0].unkC = 0;
-        gUnknown_0201A450[1].unkC = 1;
+        gUnknown_0201A450[0].active = 0;
+        gUnknown_0201A450[1].active = 1;
         gIntroSceneIndex++;
     }
 }
 
-void sub_CB6C(void)
+void IntroScene8_ContinueBgScroll(void)
 {
     gUnknown_0202ADA0[0] -= 0x24;
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0];
@@ -2210,12 +2210,12 @@ void sub_CB6C(void)
         gIntroSceneIndex++;
 }
 
-void sub_CBA4(void)
+void IntroScene8_LatiasFlyInAndFadeOut(void)
 {
     if (gUnknown_0202BF10 < 135)
-        gUnknown_0201A450[1].unk0 -= 12;
+        gUnknown_0201A450[1].posX -= 12;
     else
-        gUnknown_0201A450[1].unk0--;
+        gUnknown_0201A450[1].posX--;
 
     if (gUnknown_0202BF10 % 2 == 0)
     {
@@ -2224,19 +2224,19 @@ void sub_CBA4(void)
             gUnknown_0202BEDC = 32;
     }
 
-    sub_102A8(gUnknown_08115860, (void *) OBJ_PLTT, 0x20, gUnknown_0202BEDC);
+    ApplyPaletteWhitenEffect(gUnknown_08115860, (void *) OBJ_PLTT, 0x20, gUnknown_0202BEDC);
     if (gUnknown_0202BF10 > 136)
     {
         gUnknown_0202A56C += 2;
         if (gUnknown_0202A56C > 32)
             gUnknown_0202A56C = 0x20;
 
-        sub_102A8(gUnknown_08115860, (void *) PLTT, 0x40, gUnknown_0202A56C);
+        ApplyPaletteWhitenEffect(gUnknown_08115860, (void *) PLTT, 0x40, gUnknown_0202A56C);
     }
 
     gUnknown_0202ADA0[0x0] -= 0x24;
     gMain.bgOffsets[3].xOffset = gUnknown_0202ADA0[0x0];
-    sub_CD18();
+    RenderIntroScene8Sprites();
 
     if (gUnknown_0202BF10 > 152)
     {
@@ -2246,11 +2246,11 @@ void sub_CBA4(void)
     }
 }
 
-void nullsub_14(void)
+void IntroScene8_NoOp(void)
 {
 }
 
-void sub_CC94(void)
+void IntroScene8_FadeOutMusic(void)
 {
     if (gUnknown_0202BF10 % 10 == 0)
     {
@@ -2262,31 +2262,31 @@ void sub_CC94(void)
         gIntroSceneIndex++;
 }
 
-void sub_CCF8(void)
+void IntroScene8_EndIntro(void)
 {
-    sub_02B4();
+    FadeOutToWhite();
     m4aMPlayAllStop();
-    sub_0D10();
+    DisableVBlankProcessing();
     gMain.subState++;
 }
 
-void sub_CD18(void)
+void RenderIntroScene8Sprites(void)
 {
     int i;
     struct SpriteGroup *spriteGroup0;
     struct SpriteGroup *spriteGroup1;
     struct OamDataSimple *oamData;
 
-    spriteGroup0 = &gMain.spriteGroups[gUnknown_0201A450[0].unk8];
+    spriteGroup0 = &gMain.spriteGroups[gUnknown_0201A450[0].animFrame];
     spriteGroup1 = &gMain.spriteGroups[0];
-    spriteGroup0->available = gUnknown_0201A450[0].unkC;
-    spriteGroup1->available = gUnknown_0201A450[1].unkC;
+    spriteGroup0->available = gUnknown_0201A450[0].active;
+    spriteGroup1->available = gUnknown_0201A450[1].active;
     LoadSpriteSets(gUnknown_086A7D20, 11, gMain.spriteGroups);
     if (spriteGroup0->available == 1)
     {
         SetMatrixScale(gUnknown_0202C5E4, gUnknown_0202ADD8, 0);
-        spriteGroup0->baseX = gUnknown_0201A450[0].unk0;
-        spriteGroup0->baseY = gUnknown_0201A450[0].unk2;
+        spriteGroup0->baseX = gUnknown_0201A450[0].posX;
+        spriteGroup0->baseY = gUnknown_0201A450[0].posY;
         oamData = &spriteGroup0->oam[0];
         gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup0->baseX;
         gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup0->baseY;
@@ -2296,8 +2296,8 @@ void sub_CD18(void)
 
     if (spriteGroup1->available == 1)
     {
-        spriteGroup1->baseX = gUnknown_0201A450[1].unk0;
-        spriteGroup1->baseY = gUnknown_0201A450[1].unk2;
+        spriteGroup1->baseX = gUnknown_0201A450[1].posX;
+        spriteGroup1->baseY = gUnknown_0201A450[1].posY;
         for (i = 0; i < 4; i++)
         {
             oamData = &spriteGroup1->oam[i];

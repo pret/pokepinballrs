@@ -11,50 +11,50 @@ extern const u8 gPauseMenuText_Gfx[][0x20];
 // Pauses the game and saves the blend settings
 // Also stops the BGM if it was playing before
 // Sets the blend settings to a dimmed state
-void sub_495A0(void)
+void PauseGame(void)
 {
     s16 i, j;
     u16 objPalettes[OBJ_PLTT_SIZE / 0x20][0x10];
     u8 rgb[3];
 
-    gCurrentPinballGame->unk1104 = 1;
-    gCurrentPinballGame->unk131C = 0;
+    gCurrentPinballGame->pauseMenuCursorIndex = 1;
+    gCurrentPinballGame->pauseMenuAnimFrame = 0;
     if (gMPlayInfo_BGM.status >= 0)
     {
-        gCurrentPinballGame->unkF4C = gMPlayInfo_BGM.songHeader;
+        gCurrentPinballGame->savedBgmSongHeader = gMPlayInfo_BGM.songHeader;
         m4aMPlayStop(&gMPlayInfo_BGM);
     }
     else
     {
-        gCurrentPinballGame->unkF4C = NULL;
+        gCurrentPinballGame->savedBgmSongHeader = NULL;
     }
 
     m4aMPlayAllStop();
     m4aSongNumStart(SE_UNKNOWN_0xA5);
     if (gMain.selectedField < MAIN_FIELD_COUNT)
     {
-        gCurrentPinballGame->unk6A = gCurrentPinballGame->unk68;
+        gCurrentPinballGame->viewportBottomYPrev = gCurrentPinballGame->viewportBottomY;
         if (gMain.selectedField == FIELD_RUBY)
-            sub_4E814();
+            RenderRubyBoardDynamicEntities();
         else if (gMain.selectedField == FIELD_SAPPHIRE)
-            sub_4F814();
+            RenderBoardDynamicEntities();
     }
 
-    gCurrentPinballGame->unk1106 = gMain.blendControl;
-    gCurrentPinballGame->unk1108 = gMain.blendAlpha;
-    gCurrentPinballGame->unk110A = gMain.blendBrightness;
-    gCurrentPinballGame->unk110C = gMain.unk2C;
-    gCurrentPinballGame->unk110E = gMain.vCount;
-    DmaCopy16(3, (void *)OBJ_PLTT, gCurrentPinballGame->unk111A, OBJ_PLTT_SIZE);
+    gCurrentPinballGame->savedBlendControl = gMain.blendControl;
+    gCurrentPinballGame->savedBlendAlpha = gMain.blendAlpha;
+    gCurrentPinballGame->savedBlendBrightness = gMain.blendBrightness;
+    gCurrentPinballGame->savedBlendScanlineEnabled = gMain.blendScanlineEnabled;
+    gCurrentPinballGame->savedVCount = gMain.vCount;
+    DmaCopy16(3, (void *)OBJ_PLTT, gCurrentPinballGame->savedObjPaletteForPause, OBJ_PLTT_SIZE);
     for (i = 0; i < 16; i++)
     {
         for (j = 0; j < 16; j++)
         {
             if (i != 9 || j != 12)
             {
-                rgb[0] = (((gCurrentPinballGame->unk111A[i][j] & 0x001F) >>  0) * 2) / 5;
-                rgb[1] = (((gCurrentPinballGame->unk111A[i][j] & 0x03E0) >>  5) * 2) / 5;
-                rgb[2] = (((gCurrentPinballGame->unk111A[i][j] & 0x7C00) >> 10) * 2) / 5;
+                rgb[0] = (((gCurrentPinballGame->savedObjPaletteForPause[i][j] & 0x001F) >>  0) * 2) / 5;
+                rgb[1] = (((gCurrentPinballGame->savedObjPaletteForPause[i][j] & 0x03E0) >>  5) * 2) / 5;
+                rgb[2] = (((gCurrentPinballGame->savedObjPaletteForPause[i][j] & 0x7C00) >> 10) * 2) / 5;
                 objPalettes[i][j] = rgb[0] | (rgb[1] << 5) | (rgb[2] << 10);
             }
             else
@@ -66,35 +66,35 @@ void sub_495A0(void)
 
     DmaCopy16(3, objPalettes, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
     if (gMain.selectedField < MAIN_FIELD_COUNT)
-        sub_1D4D0();
+        UpdateRubyBonusFieldYPositions();
     else if (gMain.selectedField == FIELD_DUSCLOPS)
-        sub_356A0();
+        UpdatePointerSpritePosition();
     else if (gMain.selectedField == FIELD_KYOGRE)
-        sub_3ADA0();
+        HideKyogreShockwaveSprite();
     else if (gMain.selectedField == FIELD_GROUDON)
-        sub_3E5D0();
+        HideGroudonShockwaveSprite();
 
-    sub_11F0(1);
+    SetGbPlayerPaused(1);
 }
 
 //Unpauses the game and restores the blend settings
 //Also starts the BGM if it was playing before
-void sub_497BC(void)
+void UnpauseGame(void)
 {
-    gMain.blendControl = gCurrentPinballGame->unk1106;
-    gMain.blendAlpha = gCurrentPinballGame->unk1108;
-    gMain.blendBrightness = gCurrentPinballGame->unk110A;
-    gMain.unk2C = gCurrentPinballGame->unk110C;
-    gMain.vCount = gCurrentPinballGame->unk110E;
-    DmaCopy16(3, gCurrentPinballGame->unk111A, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
-    if (gCurrentPinballGame->unkF4C)
+    gMain.blendControl = gCurrentPinballGame->savedBlendControl;
+    gMain.blendAlpha = gCurrentPinballGame->savedBlendAlpha;
+    gMain.blendBrightness = gCurrentPinballGame->savedBlendBrightness;
+    gMain.blendScanlineEnabled = gCurrentPinballGame->savedBlendScanlineEnabled;
+    gMain.vCount = gCurrentPinballGame->savedVCount;
+    DmaCopy16(3, gCurrentPinballGame->savedObjPaletteForPause, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+    if (gCurrentPinballGame->savedBgmSongHeader)
         m4aMPlayContinue(&gMPlayInfo_BGM);
 
     m4aSongNumStart(SE_UNKNOWN_0xA6);
-    sub_11F0(0);
+    SetGbPlayerPaused(0);
 }
 
-void sub_49850(void)
+void SetupGameEndSprites(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -142,7 +142,7 @@ void sub_49850(void)
     }
 }
 
-void sub_49A34(void)
+void DrawPauseMenuOverlay(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -154,57 +154,57 @@ void sub_49A34(void)
     s16 sb;
     s16 yScale = 8;
 
-    if (gCurrentPinballGame->unk131C == 0)
+    if (gCurrentPinballGame->pauseMenuAnimFrame == 0)
     {
         gMain.blendControl = 0xCF;
         gMain.blendBrightness = 0xA;
-        gMain.unk2C = 0;
+        gMain.blendScanlineEnabled = 0;
         gMain.vCount = 144;
     }
 
-    if (gCurrentPinballGame->unk131C < 16)
+    if (gCurrentPinballGame->pauseMenuAnimFrame < 16)
     {
-        xOffset = 160 - gCurrentPinballGame->unk131C * 10;
+        xOffset = 160 - gCurrentPinballGame->pauseMenuAnimFrame * 10;
         yOffset = 24;
         var0 = -1;
         sb = -1;
         yScale = 16;
     }
-    else if (gCurrentPinballGame->unk131C < 24)
+    else if (gCurrentPinballGame->pauseMenuAnimFrame < 24)
     {
         xOffset = 0;
-        yOffset = 24 - (gCurrentPinballGame->unk131C - 15) * 3;
-        if (gCurrentPinballGame->unk131C < 18)
+        yOffset = 24 - (gCurrentPinballGame->pauseMenuAnimFrame - 15) * 3;
+        if (gCurrentPinballGame->pauseMenuAnimFrame < 18)
         {
             var0 = -1;
             sb = -1;
             yScale = 8;
         }
-        else if (gCurrentPinballGame->unk131C == 18)
+        else if (gCurrentPinballGame->pauseMenuAnimFrame == 18)
         {
             var0 = 9;
             sb = -10;
             yScale = 16;
         }
-        else if (gCurrentPinballGame->unk131C == 19)
+        else if (gCurrentPinballGame->pauseMenuAnimFrame == 19)
         {
             var0 = 9;
             sb = -9;
             yScale = 128;
         }
-        else if (gCurrentPinballGame->unk131C == 20)
+        else if (gCurrentPinballGame->pauseMenuAnimFrame == 20)
         {
             var0 = 7;
             sb = -8;
             yScale = 160;
         }
-        else if (gCurrentPinballGame->unk131C == 21)
+        else if (gCurrentPinballGame->pauseMenuAnimFrame == 21)
         {
             var0 = 6;
             sb = -7;
             yScale = 192;
         }
-        else if (gCurrentPinballGame->unk131C == 22)
+        else if (gCurrentPinballGame->pauseMenuAnimFrame == 22)
         {
             var0 = 4;
             sb = -5;
@@ -235,7 +235,7 @@ void sub_49A34(void)
         group->baseY = 80 + var0;
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX + gUnknown_08137D78[0].x;
-        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY + gUnknown_08137D78[0].y + gCurrentPinballGame->unk1104 * 12;
+        gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY + gUnknown_08137D78[0].y + gCurrentPinballGame->pauseMenuCursorIndex * 12;
         gOamBuffer[oamSimple->oamId].affineMode = ST_OAM_AFFINE_DOUBLE;
         gOamBuffer[oamSimple->oamId].matrixNum = 5;
 
@@ -295,5 +295,5 @@ void sub_49A34(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    gCurrentPinballGame->unk131C++;
+    gCurrentPinballGame->pauseMenuAnimFrame++;
 }

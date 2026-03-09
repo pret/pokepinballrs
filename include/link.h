@@ -53,7 +53,7 @@ struct Link
 };
 
 // extern function declarations
-extern void sub_19B4(void);
+extern void InitSerialForEReader(void);
 extern void DisableSerial(void);
 extern s32 LinkMain1(u8 *shouldAdvanceLinkState, s16 *sendCmd, u16 (*recvCmds)[MAX_LINK_PLAYERS]);
 extern void Timer3Init(void);

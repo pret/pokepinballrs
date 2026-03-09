@@ -77,8 +77,8 @@ struct PokemonSpecies {
     /*0x07*/ u8 name[10]; // Space-padded ASCII
     /*0x11*/ u8 catchIndex; // Non-zero for all catch pokemon other than Treecko, zero for Treecko and all non-catch pokemon
     /*0x12*/ u8 eggIndex; // Non-zero for all hatch pokemon other than Wurmple, zero for Wurmple and all non-hatch pokemon
-    /*0x13*/ u8 unk13; // Something egg related; only hatch pokemon have this set to 1, but not all do, and there is no other pattern
-    // unk13 list: Azurill, Skitty, Zubat, Plusle, Minun, Igglybuff, Shuppet, Chimecho, Pichu, Natu
+    /*0x13*/ u8 hatchAnimSimple; // 1=3-frame animation cycle, 0=4-frame cycle. Only some hatch pokemon
+    // hatchAnimSimple=1: Azurill, Skitty, Zubat, Plusle, Minun, Igglybuff, Shuppet, Chimecho, Pichu, Natu
     /*0x14*/ s8 evolutionMethod; // Exp, Stone, etc.
     /*0x15*/ u8 evolutionTarget; // Uses the standard index numbers; e.g. Treecko is 0x00 (SPECIES_TREECKO)
 };

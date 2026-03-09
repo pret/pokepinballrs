@@ -8,124 +8,124 @@
 extern const void (*gUnknown_086AD4C4[])(void);
 extern const void (*gUnknown_086AD4E8[])(void);
 
-extern void sub_19D04(void);
-extern void sub_19E10(void);
-extern void sub_19F70(void);
-extern void sub_19FA0(void);
-extern void sub_1D5D8(void);
-extern void sub_1DA74(void);
-extern void sub_1DAD8(void);
+extern void RestoreSavedProgressOnTransition(void);
+extern void UpdateRubyBoardVisuals(void);
+extern void UpdateRubyBoardEntityLogic(void);
+extern void RotateRubyHoleIndicators(void);
+extern void UpdateRubyNuzleafAnimation(void);
+extern void UpdateRubyShopDoorState(void);
+extern void AnimateRubyShopDoor(void);
 extern void DrawWhiscash(void);
 extern void RubyPond_EntityLogic(void);
 extern void RubyPondTriBumperHandleHitAndDraw(void);
-extern void sub_1F158(void);
-extern void sub_1F59C(void);
-extern void sub_1F698(void);
-extern void sub_1FA48(void);
-extern void sub_1FBC4(void);
-extern void sub_1FF0C(void);
-extern void sub_201B8(void);
-extern void sub_21D78(void);
-extern void sub_23954(void);
-extern void sub_239A4(void);
-extern void sub_23E18(void);
-extern void sub_2C538(void);
-extern void sub_2C9A4(void);
-extern void sub_4E9F0(s16);
+extern void DrawRubySharpedoSprite(void);
+extern void UpdatePikaSpinnerGraphics(void);
+extern void AnimateRubyGulpinProjectile(void);
+extern void UpdateRubyGulpinBodySprite(void);
+extern void DrawRubyPondGulpinPlatforms(void);
+extern void UpdateRubyPondGateHitLogic(void);
+extern void DrawRubyPondGateSprites(void);
+extern void UpdateEvolutionShopIcon(void);
+extern void ResetHatchCaveAnimationState(void);
+extern void UpdateHatchCaveAnimation(void);
+extern void UpdateCyndaquilHatchCaveSprite(void);
+extern void UpdateRubyRampGulpinEntity(void);
+extern void DrawRubyRampPrizeIndicator(void);
+extern void CopyRubyTrapGfxToVram(s16);
 
 void RubyBoardProcess_3A_19A20(void)
 {
     gCurrentPinballGame->catchModeArrows = 2;
-    sub_1D5D8();
-    sub_4E9F0(0);
-    sub_1DAD8();
-    sub_23954();
-    sub_239A4();
+    UpdateRubyNuzleafAnimation();
+    CopyRubyTrapGfxToVram(0);
+    AnimateRubyShopDoor();
+    ResetHatchCaveAnimationState();
+    UpdateHatchCaveAnimation();
 
-    gCurrentPinballGame->unk2D4 = 73;
-    gCurrentPinballGame->unk2D6 = 154;
-    gCurrentPinballGame->unk2DA = 0;
-    sub_23E18();
+    gCurrentPinballGame->cyndaquilSpriteX = 73;
+    gCurrentPinballGame->cyndaquilSpriteY = 154;
+    gCurrentPinballGame->hatchCaveState = 0;
+    UpdateCyndaquilHatchCaveSprite();
     RubyPond_EntityLogic();
 
-    gCurrentPinballGame->unk170[0] = 10;
-    gCurrentPinballGame->unk170[1] = 10;
-    gCurrentPinballGame->unk170[2] = 10;
+    gCurrentPinballGame->pondBumperAnimState[0] = 10;
+    gCurrentPinballGame->pondBumperAnimState[1] = 10;
+    gCurrentPinballGame->pondBumperAnimState[2] = 10;
     gCurrentPinballGame->rubyPondState = RUBY_POND_STATE_CHINCHOU_STAGGERED;
     RubyPondTriBumperHandleHitAndDraw();
-    sub_1F158();
+    DrawRubySharpedoSprite();
 
-    gCurrentPinballGame->unk1E5 = 0;
-    gCurrentPinballGame->unk1E6 = 1;
-    sub_1F2A4();
-    sub_21B0C();
-    sub_1F59C();
+    gCurrentPinballGame->pikaSpinnerFrame = 0;
+    gCurrentPinballGame->pikaSpinnerFramePrev = 1;
+    UpdatePikachuChargeProgress();
+    UpdatePikachuChargeAnimation();
+    UpdatePikaSpinnerGraphics();
 
-    gCurrentPinballGame->unk1D8 = 256;
-    gCurrentPinballGame->unk1DA = 256;
-    gCurrentPinballGame->unk29F = 2;
-    sub_2C9A4();
+    gCurrentPinballGame->pikaChargeSpriteScaleX = 256;
+    gCurrentPinballGame->pikaChargeSpriteScaleY = 256;
+    gCurrentPinballGame->rampPrizeType = 2;
+    DrawRubyRampPrizeIndicator();
 
-    gCurrentPinballGame->unk2EC[0] = 3;
-    gCurrentPinballGame->unk2EC[1] = 3;
-    sub_31B30();
+    gCurrentPinballGame->pondGateSpriteOffset[0] = 3;
+    gCurrentPinballGame->pondGateSpriteOffset[1] = 3;
+    UpdateEdgeIndicatorSprite();
 }
 
 void RubyBoardProcess_3B_19B10(void)
 {
-    sub_19B90();
-    sub_19E10();
+    ProcessBoardStateTransition();
+    UpdateRubyBoardVisuals();
 
     if (gMain.modeChangeFlags == MODE_CHANGE_NONE)
     {
-        sub_19F70();
+        UpdateRubyBoardEntityLogic();
     }
 
-    sub_19FA0();
-    if (gCurrentPinballGame->unk29C != 0)
+    RotateRubyHoleIndicators();
+    if (gCurrentPinballGame->bgmVolumeRestoreTimer != 0)
     {
-        gCurrentPinballGame->unk29C--;
-        if (gCurrentPinballGame->unk29C == 0)
+        gCurrentPinballGame->bgmVolumeRestoreTimer--;
+        if (gCurrentPinballGame->bgmVolumeRestoreTimer == 0)
         {
             m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 256);
         }
     }
 }
 
-void sub_19B64(u8 arg0)
+void RequestBoardTransition(u8 arg0)
 {
-    gCurrentPinballGame->unk16 = 2;
-    gCurrentPinballGame->unk14 = arg0;
-    if (gCurrentPinballGame->unk13 == 2)
-        gMain.unk44[13]->available = 0;
+    gCurrentPinballGame->boardTransitionPhase = 2;
+    gCurrentPinballGame->nextBoardState = arg0;
+    if (gCurrentPinballGame->boardState == 2)
+        gMain.boardSpriteGroups[13]->available = 0;
 }
 
-void sub_19B90(void)
+void ProcessBoardStateTransition(void)
 {
-    switch (gCurrentPinballGame->unk16)
+    switch (gCurrentPinballGame->boardTransitionPhase)
     {
         case 0:
-            gUnknown_086AD4C4[gCurrentPinballGame->unk13]();
-            gCurrentPinballGame->unk16++;
+            gUnknown_086AD4C4[gCurrentPinballGame->boardState]();
+            gCurrentPinballGame->boardTransitionPhase++;
             break;
         case 1:
-            gUnknown_086AD4E8[gCurrentPinballGame->unk13]();
+            gUnknown_086AD4E8[gCurrentPinballGame->boardState]();
             break;
         case 2:
-            sub_19D04();
-            gCurrentPinballGame->unk15 = gCurrentPinballGame->unk13;
-            gCurrentPinballGame->unk13 = gCurrentPinballGame->unk14;
-            gCurrentPinballGame->unk16 = 0;
+            RestoreSavedProgressOnTransition();
+            gCurrentPinballGame->prevBoardState = gCurrentPinballGame->boardState;
+            gCurrentPinballGame->boardState = gCurrentPinballGame->nextBoardState;
+            gCurrentPinballGame->boardTransitionPhase = 0;
             break;
     }
 }
 
-void sub_19C04(void)
+void SelectFieldMusic(void)
 {
     s16 num1;
     u8 num2;
 
-    if (gCurrentPinballGame->unk15 > 0)
+    if (gCurrentPinballGame->prevBoardState > 0)
     {
         if (gMain.selectedField == FIELD_RUBY)
         {
@@ -153,100 +153,100 @@ void sub_19C04(void)
         }
     }
 
-    num2 = gCurrentPinballGame->unk15 - 1;
+    num2 = gCurrentPinballGame->prevBoardState - 1;
     if (num2 > 1)
     {
-        gCurrentPinballGame->unk72E = gCurrentPinballGame->unk73C;
-        gCurrentPinballGame->unk72F = gCurrentPinballGame->catchModeArrows;
-        gCurrentPinballGame->unk73C = 0;
+        gCurrentPinballGame->savedEvoHitCount = gCurrentPinballGame->activeEvoHitCount;
+        gCurrentPinballGame->savedCatchArrows = gCurrentPinballGame->catchModeArrows;
+        gCurrentPinballGame->activeEvoHitCount = 0;
         gCurrentPinballGame->catchModeArrows = 0;
     }
 }
 
-void sub_19CC8(void)
+void CheckBonusStageReturnTimer(void)
 {
-    if (gCurrentPinballGame->unk714 != 0)
+    if (gCurrentPinballGame->allHolesCompleted != 0)
     {
-        if (gCurrentPinballGame->unk6EE != 0)
+        if (gCurrentPinballGame->allHolesCompleteCooldown != 0)
         {
-            gCurrentPinballGame->unk6EE--;
+            gCurrentPinballGame->allHolesCompleteCooldown--;
         }
         else
         {
-            sub_19B64(2);
+            RequestBoardTransition(2);
         }
     }
 }
 
-void sub_19D04(void)
+void RestoreSavedProgressOnTransition(void)
 {
-    if (gCurrentPinballGame->unk13 == 2 && gCurrentPinballGame->unk14 > 2)
-        sub_21238(0);
+    if (gCurrentPinballGame->boardState == 2 && gCurrentPinballGame->nextBoardState > 2)
+        ResetBonusStageIndicators(0);
 
-    if (gCurrentPinballGame->unk13 > 2)
+    if (gCurrentPinballGame->boardState > 2)
         return;
 
-    if (gCurrentPinballGame->unk14 == 3)
+    if (gCurrentPinballGame->nextBoardState == 3)
     {
-        gCurrentPinballGame->unk73C = gCurrentPinballGame->unk72E;
-        gCurrentPinballGame->catchModeArrows = gCurrentPinballGame->unk72F;
-        gCurrentPinballGame->unk72E = 0;
-        gCurrentPinballGame->unk72F = 0;
+        gCurrentPinballGame->activeEvoHitCount = gCurrentPinballGame->savedEvoHitCount;
+        gCurrentPinballGame->catchModeArrows = gCurrentPinballGame->savedCatchArrows;
+        gCurrentPinballGame->savedEvoHitCount = 0;
+        gCurrentPinballGame->savedCatchArrows = 0;
     }
 
-    if (gCurrentPinballGame->unk14 == 4)
+    if (gCurrentPinballGame->nextBoardState == 4)
     {
-        gCurrentPinballGame->unk73C = gCurrentPinballGame->unk72E;
-        gCurrentPinballGame->catchModeArrows = gCurrentPinballGame->unk72F;
-        gCurrentPinballGame->unk72E = 0;
-        gCurrentPinballGame->unk72F = 0;
+        gCurrentPinballGame->activeEvoHitCount = gCurrentPinballGame->savedEvoHitCount;
+        gCurrentPinballGame->catchModeArrows = gCurrentPinballGame->savedCatchArrows;
+        gCurrentPinballGame->savedEvoHitCount = 0;
+        gCurrentPinballGame->savedCatchArrows = 0;
     }
-    else if (gCurrentPinballGame->unk14 == 6)
+    else if (gCurrentPinballGame->nextBoardState == 6)
     {
-        gCurrentPinballGame->catchModeArrows = gCurrentPinballGame->unk72F;
-        gCurrentPinballGame->unk73C = 0;
-        gCurrentPinballGame->unk72E = 0;
-        gCurrentPinballGame->unk72F = 0;
+        gCurrentPinballGame->catchModeArrows = gCurrentPinballGame->savedCatchArrows;
+        gCurrentPinballGame->activeEvoHitCount = 0;
+        gCurrentPinballGame->savedEvoHitCount = 0;
+        gCurrentPinballGame->savedCatchArrows = 0;
     }
-    else if (gCurrentPinballGame->unk14 > 3)
+    else if (gCurrentPinballGame->nextBoardState > 3)
     {
-        gCurrentPinballGame->unk73C = gCurrentPinballGame->unk72E;
-        gCurrentPinballGame->catchModeArrows = gCurrentPinballGame->unk72F;
-        gCurrentPinballGame->unk72E = 0;
-        gCurrentPinballGame->unk72F = 0;
+        gCurrentPinballGame->activeEvoHitCount = gCurrentPinballGame->savedEvoHitCount;
+        gCurrentPinballGame->catchModeArrows = gCurrentPinballGame->savedCatchArrows;
+        gCurrentPinballGame->savedEvoHitCount = 0;
+        gCurrentPinballGame->savedCatchArrows = 0;
     }
 }
 
-void sub_19E10(void)
+void UpdateRubyBoardVisuals(void)
 {
     int randNum;
 
-    sub_1A0F4();
-    sub_1DA74();
-    if (gCurrentPinballGame->unk2A0 != 0)
+    UpdateBannerScrolling();
+    UpdateRubyShopDoorState();
+    if (gCurrentPinballGame->rampPrizeCooldown != 0)
     {
-        gCurrentPinballGame->unk2A0--;
-        if (gCurrentPinballGame->unk2A0 == 0)
+        gCurrentPinballGame->rampPrizeCooldown--;
+        if (gCurrentPinballGame->rampPrizeCooldown == 0)
         {
             randNum = Random();
-            gCurrentPinballGame->unk29F = ((randNum + gMain.systemFrameCount) % 100) + 1;
+            gCurrentPinballGame->rampPrizeType = ((randNum + gMain.systemFrameCount) % 100) + 1;
         }
     }
 
-    if (gCurrentPinballGame->unk68 < 110)
+    if (gCurrentPinballGame->viewportBottomY < 110)
     {
-        sub_1D5D8();
-        sub_1DAD8();
-        sub_2C9A4();
+        UpdateRubyNuzleafAnimation();
+        AnimateRubyShopDoor();
+        DrawRubyRampPrizeIndicator();
     }
-    sub_2CA9C();
-    if (gCurrentPinballGame->unk68 < 168)
+    UpdateSapphirePokeballSprite();
+    if (gCurrentPinballGame->viewportBottomY < 168)
     {
-        sub_239A4();
+        UpdateHatchCaveAnimation();
     }
-    if (gCurrentPinballGame->unk68 < 220)
+    if (gCurrentPinballGame->viewportBottomY < 220)
     {
-        sub_23E18();
+        UpdateCyndaquilHatchCaveSprite();
         if (gCurrentPinballGame->shouldProcessWhiscash)
         {
             DrawWhiscash();
@@ -255,72 +255,72 @@ void sub_19E10(void)
         {
             RubyPondTriBumperHandleHitAndDraw();
         }
-        sub_1F158();
-        sub_1F59C();
+        DrawRubySharpedoSprite();
+        UpdatePikaSpinnerGraphics();
     }
-    sub_1F698();
-    if (gCurrentPinballGame->unk68 > 63)
+    AnimateRubyGulpinProjectile();
+    if (gCurrentPinballGame->viewportBottomY > 63)
     {
-        sub_1FA48();
-        sub_1FBC4();
+        UpdateRubyGulpinBodySprite();
+        DrawRubyPondGulpinPlatforms();
     }
-    if (gCurrentPinballGame->unk68 > 115)
+    if (gCurrentPinballGame->viewportBottomY > 115)
     {
-        sub_2C538();
+        UpdateRubyRampGulpinEntity();
     }
-    if (gCurrentPinballGame->unk68 > 130)
+    if (gCurrentPinballGame->viewportBottomY > 130)
     {
-        sub_201B8();
+        DrawRubyPondGateSprites();
     }
-    sub_2CE80();
-    if (gCurrentPinballGame->unk68 > 168)
+    UpdateSapphireChimechoAnimState();
+    if (gCurrentPinballGame->viewportBottomY > 168)
     {
-        sub_2D104();
+        DrawSapphireChimechoSprite();
     }
-    sub_203CC();
-    sub_21B0C();
-    sub_4E814();
-    sub_1D128();
-    sub_21D78();
-    sub_31B30();
+    RunPikachuThunderboltSequence();
+    UpdatePikachuChargeAnimation();
+    RenderRubyBoardDynamicEntities();
+    DrawBoardPortraitSprites();
+    UpdateEvolutionShopIcon();
+    UpdateEdgeIndicatorSprite();
 
-    if (gCurrentPinballGame->unk194 != 0)
+    if (gCurrentPinballGame->coinsTotalToCollect != 0)
     {
-        sub_225F0();
+        UpdateCoinCollectionAnimation();
     }
     BonusStage_HandleModeChangeFlags();
 
-    if (gCurrentPinballGame->unk1328 != 0)
+    if (gCurrentPinballGame->boardState28 != 0)
     {
-        gCurrentPinballGame->unk1328--;
-        if (gCurrentPinballGame->unk1328 == 0)
+        gCurrentPinballGame->boardState28--;
+        if (gCurrentPinballGame->boardState28 == 0)
         {
-            gCurrentPinballGame->unk1330 = gCurrentPinballGame->unk1334;
+            gCurrentPinballGame->boardState30 = gCurrentPinballGame->boardState34;
         }
     }
 }
 
-void sub_19F70(void)
+void UpdateRubyBoardEntityLogic(void)
 {
     RubyPond_EntityLogic();
-    sub_1A9E8();
-    sub_1F2A4();
-    sub_1FF0C();
-    if (gCurrentPinballGame->unk600 != 0)
+    UpdateBoardEntryHole();
+    UpdatePikachuChargeProgress();
+    UpdateRubyPondGateHitLogic();
+    if (gCurrentPinballGame->triggerButtonCooldown != 0)
     {
-        gCurrentPinballGame->unk600--;
+        gCurrentPinballGame->triggerButtonCooldown--;
     }
 }
 
-//Duplicate of sub_32DF8, with "gCurrentPinballGame->unk301 = 1;" added in the final if statement
-void sub_19FA0(void)
+//Duplicate of RotateSapphireHoleIndicators, with "gCurrentPinballGame->rampPrizeHitPending = 1;" added in the final if statement
+void RotateRubyHoleIndicators(void)
 {
     int tmp;
 
     if (gCurrentPinballGame->newButtonActions[0])
     {
-        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
+        if (gCurrentPinballGame->outLaneSaverTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
+            gCurrentPinballGame->pikaSaverAnimTimer == 0 && gCurrentPinballGame->inputLockActive == 0)
         {
             gCurrentPinballGame->outLanePikaPosition = 0;
         }
@@ -339,8 +339,8 @@ void sub_19FA0(void)
 
     if (gCurrentPinballGame->newButtonActions[1])
     {
-        if (gCurrentPinballGame->unk1C4 == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->unk1C0 == 0 && gCurrentPinballGame->unk61C == 0)
+        if (gCurrentPinballGame->outLaneSaverTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
+            gCurrentPinballGame->pikaSaverAnimTimer == 0 && gCurrentPinballGame->inputLockActive == 0)
         {
             gCurrentPinballGame->outLanePikaPosition = 1;
         }
@@ -356,6 +356,6 @@ void sub_19FA0(void)
         gCurrentPinballGame->ballPowerUpLight[1] = gCurrentPinballGame->ballPowerUpLight[0];
         gCurrentPinballGame->ballPowerUpLight[0] = tmp;
 
-        gCurrentPinballGame->unk301 = 1;
+        gCurrentPinballGame->rampPrizeHitPending = 1;
     }
 }
