@@ -394,10 +394,10 @@ void CheckRubyAbsorbZoneHit(s32 arg0, s16* arg1, u16* arg2)
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->ball->velocity.y = 0;
 
-            memcpy(&gCurrentPinballGame->boardState34[1], gCurrentPinballGame->boardState34, 0x44U);
+            memcpy(&gCurrentPinballGame->ballInstances[1], gCurrentPinballGame->ballInstances, 0x44U);
 
-            gCurrentPinballGame->boardState30 = &gCurrentPinballGame->boardState34[1];
-            gCurrentPinballGame->boardState28 = 120;
+            gCurrentPinballGame->ballInstancesBase = &gCurrentPinballGame->ballInstances[1];
+            gCurrentPinballGame->unk1328 = 120;
         }
 
         gCurrentPinballGame->boardTargetState = 14;
@@ -1064,10 +1064,10 @@ void CheckSapphireAbsorbZoneHit(u8 arg0, u16* arg1, u16* arg2)
                         gCurrentPinballGame->ball->velocity.x /= 2;
                         gCurrentPinballGame->ball->velocity.y /= 2;
 
-                        memcpy(&gCurrentPinballGame->boardState34[1], &gCurrentPinballGame->boardState34[0], sizeof(*gCurrentPinballGame->boardState34));
+                        memcpy(&gCurrentPinballGame->ballInstances[1], &gCurrentPinballGame->ballInstances[0], sizeof(*gCurrentPinballGame->ballInstances));
 
-                        gCurrentPinballGame->boardState30 = &gCurrentPinballGame->boardState34[1];
-                        gCurrentPinballGame->boardState28 = 25;
+                        gCurrentPinballGame->ballInstancesBase = &gCurrentPinballGame->ballInstances[1];
+                        gCurrentPinballGame->unk1328 = 25;
                     }
                 }
                 else if (gCurrentPinballGame->ball->positionQ0.x < 116)
@@ -1087,10 +1087,10 @@ void CheckSapphireAbsorbZoneHit(u8 arg0, u16* arg1, u16* arg2)
                         gCurrentPinballGame->ball->velocity.x /= 2;
                         gCurrentPinballGame->ball->velocity.y /= 2;
 
-                        memcpy(&gCurrentPinballGame->boardState34[1], &gCurrentPinballGame->boardState34[0], sizeof(*gCurrentPinballGame->boardState34));
+                        memcpy(&gCurrentPinballGame->ballInstances[1], &gCurrentPinballGame->ballInstances[0], sizeof(*gCurrentPinballGame->ballInstances));
 
-                        gCurrentPinballGame->boardState30 = &gCurrentPinballGame->boardState34[1];
-                        gCurrentPinballGame->boardState28 = 25;
+                        gCurrentPinballGame->ballInstancesBase = &gCurrentPinballGame->ballInstances[1];
+                        gCurrentPinballGame->unk1328 = 25;
                     }
                 }
                 else
@@ -1421,14 +1421,14 @@ void CheckSapphireAbsorbZoneHit(u8 arg0, u16* arg1, u16* arg2)
             gCurrentPinballGame->edgeTargetHitIndex++;
             if (gCurrentPinballGame->edgeTargetHitIndex == 3)
             {
-                memcpy(&gCurrentPinballGame->boardState34[1], &gCurrentPinballGame->boardState34[0], sizeof(*gCurrentPinballGame->boardState34));
-                gCurrentPinballGame->boardState30 = &gCurrentPinballGame->boardState34[1];
+                memcpy(&gCurrentPinballGame->ballInstances[1], &gCurrentPinballGame->ballInstances[0], sizeof(*gCurrentPinballGame->ballInstances));
+                gCurrentPinballGame->ballInstancesBase = &gCurrentPinballGame->ballInstances[1];
                 if (gCurrentPinballGame->edgeBallSideFlag)
                     gCurrentPinballGame->cyndaquilHitPending = 1;
             }
 
             if (gCurrentPinballGame->edgeTargetHitIndex == 11)
-                gCurrentPinballGame->boardState30 = gCurrentPinballGame->boardState34;
+                gCurrentPinballGame->ballInstancesBase = gCurrentPinballGame->ballInstances;
 
             modRes = (gCurrentPinballGame->edgeTargetHitIndex - 1) % 4;
             gMain.spriteGroups[modRes + 47].available = 1;

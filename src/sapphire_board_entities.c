@@ -1517,11 +1517,11 @@ void UpdateSapphireShockWallState(void)
             gCurrentPinballGame->evoTargetCooldown--;
     }
 
-    if (gCurrentPinballGame->boardState28)
+    if (gCurrentPinballGame->unk1328)
     {
-        gCurrentPinballGame->boardState28--;
-        if (gCurrentPinballGame->boardState28 == 0)
-            gCurrentPinballGame->boardState30 = gCurrentPinballGame->boardState34;
+        gCurrentPinballGame->unk1328--;
+        if (gCurrentPinballGame->unk1328 == 0)
+            gCurrentPinballGame->ballInstancesBase = gCurrentPinballGame->ballInstances;
     }
 
     if (gCurrentPinballGame->mosaicShakeTimer)

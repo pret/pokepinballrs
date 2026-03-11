@@ -367,8 +367,8 @@ void InitPinballGameState(void)
 
     gCurrentPinballGame->scoreAddStepSize = 40000;
     gCurrentPinballGame->gamePhase = 0;
-    gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
-    gCurrentPinballGame->boardState30 = &gCurrentPinballGame->boardState34[0];
+    gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
+    gCurrentPinballGame->ballInstancesBase = &gCurrentPinballGame->ballInstances[0];
     gCurrentPinballGame->activeBallIndex = 0;
 }
 
@@ -739,7 +739,7 @@ void RunBonusBoardFrame(void)
             for (i = 0; i < 4; i++)
             {
                 gCurrentPinballGame->activeBallIndex = 0;
-                gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+                gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
                 gCurrentPinballGame->currentProcessPass = i;
                 CurrentBoardProcPairs_020028D8[6].update();
             }
@@ -754,7 +754,7 @@ void RunBonusBoardFrame(void)
             if (gCurrentPinballGame->ballLockState == 2)
             {
                 gCurrentPinballGame->activeBallIndex = 0;
-                gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+                gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
                 gCurrentPinballGame->currentProcessPass = 0;
             }
             else
@@ -762,7 +762,7 @@ void RunBonusBoardFrame(void)
                 for (i = 0; i < 4; i++)
                 {
                     gCurrentPinballGame->activeBallIndex = 0;
-                    gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+                    gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
                     gCurrentPinballGame->currentProcessPass = i;
                     CurrentBoardProcPairs_020028D8[5].update();
                 }
@@ -773,7 +773,7 @@ void RunBonusBoardFrame(void)
             for (i = 0; i < 4; i++)
             {
                 gCurrentPinballGame->activeBallIndex = 0;
-                gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+                gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
                 gCurrentPinballGame->currentProcessPass = i;
                 CurrentBoardProcPairs_020028D8[5].update();
                 CurrentBoardProcPairs_020028D8[6].update();
@@ -803,7 +803,7 @@ void RunIdleBonusBoardFrame(void)
                 for (i = 0; i < 4; i++)
                 {
                     gCurrentPinballGame->activeBallIndex = 0;
-                    gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+                    gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
                     gCurrentPinballGame->currentProcessPass = i;
                     CurrentBoardProcPairs_020028D8[6].update();
                 }
@@ -818,7 +818,7 @@ void RunIdleBonusBoardFrame(void)
                 if (gCurrentPinballGame->ballLockState == 2)
                 {
                     gCurrentPinballGame->activeBallIndex = 0;
-                    gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+                    gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
                     gCurrentPinballGame->currentProcessPass = 0;
                 }
                 else
@@ -826,7 +826,7 @@ void RunIdleBonusBoardFrame(void)
                     for (i = 0; i < 4; i++)
                     {
                         gCurrentPinballGame->activeBallIndex = 0;
-                        gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+                        gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
                         gCurrentPinballGame->currentProcessPass = i;
                         CurrentBoardProcPairs_020028D8[5].update();
                     }
@@ -837,7 +837,7 @@ void RunIdleBonusBoardFrame(void)
                 for (i = 0; i < 4; i++)
                 {
                     gCurrentPinballGame->activeBallIndex = 0;
-                    gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
+                    gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
                     gCurrentPinballGame->currentProcessPass = i;
                     CurrentBoardProcPairs_020028D8[5].update();
                     CurrentBoardProcPairs_020028D8[6].update();
@@ -995,10 +995,10 @@ void SaveBoardStateForPause(s16 arg0)
     gCurrentPinballGame->savedModeChangeFlags = gMain.modeChangeFlags;
     gCurrentPinballGame->savedDebugOption = gMain.debugOption;
     gCurrentPinballGame->savedPendingModeChangeFlags = gMain.pendingModeChangeFlags;
-    gCurrentPinballGame->boardState20 = gMain.stateTimer;
-    gCurrentPinballGame->boardState22 = gMain.modeTransitionDelay;
-    gCurrentPinballGame->boardState24 = gMain.splitScreenEnabled;
-    gCurrentPinballGame->boardState26 = gMain.splitScreenOffset;
+    gCurrentPinballGame->unk1320 = gMain.stateTimer;
+    gCurrentPinballGame->unk1322 = gMain.modeTransitionDelay;
+    gCurrentPinballGame->unk1324 = gMain.splitScreenEnabled;
+    gCurrentPinballGame->unk1326 = gMain.splitScreenOffset;
     gCurrentPinballGame->savedBlendControlForRestore = gCurrentPinballGame->savedBlendControl;
     gCurrentPinballGame->savedBlendAlphaForRestore = gCurrentPinballGame->savedBlendAlpha;
     gCurrentPinballGame->savedBlendBrightnessForRestore = gCurrentPinballGame->savedBlendBrightness;
@@ -1029,8 +1029,8 @@ void RestoreBoardStateFromSave(u16 arg0)
     else if (arg0 == 2)
     {
         DmaCopy16(3, gBoardConfig.initialGameState, gCurrentPinballGame, sizeof(*gCurrentPinballGame));
-        gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
-        gCurrentPinballGame->boardState30 = &gCurrentPinballGame->boardState34[0];
+        gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
+        gCurrentPinballGame->ballInstancesBase = &gCurrentPinballGame->ballInstances[0];
         var2 = gMain.idleDemoIndex;
         if ((var2 & 0x3) == 1)
         {
@@ -1058,10 +1058,10 @@ void RestoreBoardStateFromSave(u16 arg0)
         gMain.modeChangeFlags = gCurrentPinballGame->savedModeChangeFlags;
         gMain.debugOption = gCurrentPinballGame->savedDebugOption;
         gMain.pendingModeChangeFlags = gCurrentPinballGame->savedPendingModeChangeFlags;
-        gMain.stateTimer = gCurrentPinballGame->boardState20;
-        gMain.modeTransitionDelay = gCurrentPinballGame->boardState22;
-        gMain.splitScreenEnabled = gCurrentPinballGame->boardState24;
-        gMain.splitScreenOffset = gCurrentPinballGame->boardState26;
+        gMain.stateTimer = gCurrentPinballGame->unk1320;
+        gMain.modeTransitionDelay = gCurrentPinballGame->unk1322;
+        gMain.splitScreenEnabled = gCurrentPinballGame->unk1324;
+        gMain.splitScreenOffset = gCurrentPinballGame->unk1326;
         gMain.blendControl = gCurrentPinballGame->savedBlendControlForRestore;
         gMain.blendAlpha = gCurrentPinballGame->savedBlendAlphaForRestore;
         gMain.blendBrightness = gCurrentPinballGame->savedBlendBrightnessForRestore;

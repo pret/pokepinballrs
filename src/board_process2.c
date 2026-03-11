@@ -116,10 +116,10 @@ void MainBoardProcess_2B_4D960(void)
     }
 
     if (gCurrentPinballGame->ballLockState == 0)
-        var0 = (gCurrentPinballGame->boardState30->velocity.y * 40) + 0x1000;
+        var0 = (gCurrentPinballGame->ballInstancesBase->velocity.y * 40) + 0x1000;
 
     gCurrentPinballGame->cameraFollowOffsetQ8 += (var0 - gCurrentPinballGame->cameraFollowOffsetQ8) / 10;
-    var1 = gCurrentPinballGame->boardState30->positionQ8.y + gCurrentPinballGame->cameraFollowOffsetQ8;
+    var1 = gCurrentPinballGame->ballInstancesBase->positionQ8.y + gCurrentPinballGame->cameraFollowOffsetQ8;
     if (var1 > gBoardConfig.fieldLayout.cameraScrollMaxY << 8)
         var1 = gBoardConfig.fieldLayout.cameraScrollMaxY << 8;
     else if (var1 < gBoardConfig.fieldLayout.cameraScrollMinY << 8)
@@ -144,7 +144,7 @@ void MainBoardProcess_2B_4D960(void)
     {
         gCurrentPinballGame->cameraScrollYQ8 = var4;
         gCurrentPinballGame->cameraScrollY = var4 / 0x100;
-        if (gCurrentPinballGame->boardState30->positionQ0.x >= 230)
+        if (gCurrentPinballGame->ballInstancesBase->positionQ0.x >= 230)
             gCurrentPinballGame->cameraScrollX++;
         else
             gCurrentPinballGame->cameraScrollX--;
@@ -205,10 +205,10 @@ void BonusBoardProcess_2B_4DBFC(void)
     }
 
     if (gCurrentPinballGame->ballLockState == 0)
-        var0 = gCurrentPinballGame->boardState30->velocity.y * 40 + 0x1000;
+        var0 = gCurrentPinballGame->ballInstancesBase->velocity.y * 40 + 0x1000;
 
     gCurrentPinballGame->cameraFollowOffsetQ8 += (var0 - gCurrentPinballGame->cameraFollowOffsetQ8) / 10;
-    var1 = gCurrentPinballGame->boardState30->positionQ8.y + gCurrentPinballGame->cameraFollowOffsetQ8;
+    var1 = gCurrentPinballGame->ballInstancesBase->positionQ8.y + gCurrentPinballGame->cameraFollowOffsetQ8;
     if (var1 > gBoardConfig.fieldLayout.cameraScrollMaxY << 8)
         var1 = gBoardConfig.fieldLayout.cameraScrollMaxY << 8;
     else if (var1 < gBoardConfig.fieldLayout.cameraScrollMinY << 8)
@@ -438,8 +438,8 @@ void CheckMainBoardBallOutOfBounds(void)
         gCurrentPinballGame->tiltButtonHeld = 0;
     }
 
-    gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
-    ballInstances = &gCurrentPinballGame->boardState34[0];
+    gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
+    ballInstances = &gCurrentPinballGame->ballInstances[0];
 
     if (ballInstances->positionQ0.y >= gBoardConfig.fieldLayout.ballLossY)
     {
@@ -483,8 +483,8 @@ void CheckBonusBoardBallOutOfBounds(void)
 {
     struct BallState *ballInstances;
 
-    gCurrentPinballGame->ball = &gCurrentPinballGame->boardState34[0];
-    ballInstances = &gCurrentPinballGame->boardState34[0];
+    gCurrentPinballGame->ball = &gCurrentPinballGame->ballInstances[0];
+    ballInstances = &gCurrentPinballGame->ballInstances[0];
 
     if (ballInstances->positionQ0.y >= gBoardConfig.fieldLayout.ballLossY)
     {

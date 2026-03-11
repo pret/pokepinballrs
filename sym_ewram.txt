@@ -96,7 +96,7 @@ readSramFast_Work: @ 0x02002FD8
 	.space 0x88
 gIntrTable: @ 0x2003060
 	.space 0x40
-gUnknown_020030A0: @ 0x020030A0
+gBgTilemapBuffer: @ 0x020030A0
 	.space 0x8020
 gMain: @ 0x200B0C0
 	.space 0x40
@@ -241,41 +241,41 @@ gVBlankIntrFuncPtr: @ 0x200FB98
 	.space 0x4
 gMainCallback: @ 0x200FB9C
 	.space 0x4
-gUnknown_0200FBA0: @ 0x200FBA0
+gVCountIntrFuncShadow: @ 0x200FBA0
 	.space 0x10
 gUnknown_0200FBB0: @ 0x0200FBB0
 	.space 0x8020
-gUnknown_02017BD0: @ 0x2017BD0
+gVBlankIntrFuncShadow: @ 0x2017BD0
 	.space 0x4
-gUnknown_02017BD4: @ 0x2017BD4
+gMainCallbackShadow: @ 0x2017BD4
 	.space 0xC
 gUnknown_02017BE0: @ 0x2017BE0
 	.space 0x2000
 gVCountIntrFuncPtr: @ 0x2019BE0
 	.space 0x4
-gUnknown_02019BE4: @ 0x2019BE4
+gGbPlayerRumbleTimer: @ 0x2019BE4
 	.space 0x4
-gUnknown_02019BE8: @ 0x2019BE8
+gGbPlayerFrameCounter: @ 0x2019BE8
 	.space 0x4
-gUnknown_02019BEC: @ 0x02019BEC
+gGbPlayerCommandState: @ 0x02019BEC
 	.space 0x4
-gUnknown_02019BF0: @ 0x02019BF0
+gGbPlayerTimeout: @ 0x02019BF0
 	.space 0x4
-gUnknown_02019BF4: @ 0x02019BF4
+gGbPlayerReady: @ 0x02019BF4
 	.space 0x4
-gUnknown_02019BF8: @ 0x2019BF8
+gGbPlayerDataIndex: @ 0x2019BF8
 	.space 0x4
-gUnknown_02019BFC: @ 0x2019BFC
+gGbPlayerCmdIndex: @ 0x2019BFC
 	.space 0x4
-gUnknown_02019C00: @ 0x02019C00
+gGbPlayerRumbleMode: @ 0x02019C00
 	.space 0x4
-gUnknown_02019C04: @ 0x2019C04
+gGbPlayerPaused: @ 0x2019C04
 	.space 0x4
-gUnknown_02019C08: @ 0x2019C08
+gGbPlayerMotorMode: @ 0x2019C08
 	.space 0x4
 gGameBoyPlayerEnabled: @ 0x2019C0C
 	.space 0x4
-gUnknown_02019C10: @ 0x02019C10
+gGbPlayerCommPhase: @ 0x02019C10
 	.space 0x10
 gUnknown_02019C20: @ 0x02019C20
 	.space 0x4
@@ -287,7 +287,7 @@ gLastSendQueueCount: @ 0x02019C2C
 	.space 0x4
 gUnknown_02019C30: @ 0x02019C30
 	.space 0x10
-gUnknown_02019C40: @ 0x02019C40
+gPokedexBgScreenBuffer: @ 0x02019C40
 	.space 0x800
 gUnknown_0201A440: @ 0x0201A440
 	.space 0x4
@@ -325,7 +325,7 @@ gPokedexNumOwned: @ 0x0201A514
 	.space 0x4
 gUnknown_0201A518: @ 0x0201A518
 	.space 0x8
-gUnknown_0201A520: @ 0x0201A520
+gPaletteFadeBuffers: @ 0x0201A520
 	.space 0xC00
 gUnknown_0201B120: @ 0x0201B120
 	.space 0x4
@@ -569,11 +569,11 @@ gCurrentPinballGame: @ 0x20314E0
 	.space 0x20
 gUnknown_02031500: @ 0x02031500
 	.space 0x10
-gUnknown_02031510: @ 0x02031510
+gDemoPlaybackFrame: @ 0x02031510
 	.space 0x10
-gUnknown_02031520: @ 0x2031520
+gBoardConfig: @ 0x2031520
 	.space 0x70
-gUnknown_02031590: @ 0x02031590
+gSpriteSlotMap: @ 0x02031590
 	.space 0x40
 gUnknown_020315D0: @ 0x020315D0
 	.space 0x520

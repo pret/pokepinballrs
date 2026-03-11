@@ -311,8 +311,8 @@ void UpdateHatchHoleAnimation(void)
     }
     else
     {
-        gCurrentPinballGame->ball->isGrabbed = ballStartY;
-        gCurrentPinballGame->boardEntryMode = ballStartY;
+        gCurrentPinballGame->ball->isGrabbed = seqTimer;
+        gCurrentPinballGame->boardEntryMode = seqTimer;
 
         gCurrentPinballGame->ball->positionQ0.x = 0x58;
         gCurrentPinballGame->ball->positionQ0.y = 0xA2;

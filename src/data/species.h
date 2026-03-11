@@ -5,7 +5,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "TREECKO   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_GROVYLE
     },
@@ -15,7 +15,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GROVYLE   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SCEPTILE
     },
@@ -25,7 +25,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SCEPTILE  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -35,7 +35,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "TORCHIC   ",
         .catchIndex = 1,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_COMBUSKEN
     },
@@ -45,7 +45,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "COMBUSKEN ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_BLAZIKEN
     },
@@ -55,7 +55,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "BLAZIKEN  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -65,7 +65,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MUDKIP    ",
         .catchIndex = 2,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_MARSHTOMP
     },
@@ -75,7 +75,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MARSHTOMP ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SWAMPERT
     },
@@ -85,7 +85,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SWAMPERT  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -95,7 +95,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "POOCHYENA ",
         .catchIndex = 3,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_MIGHTYENA
     },
@@ -105,7 +105,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MIGHTYENA ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -115,7 +115,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ZIGZAGOON ",
         .catchIndex = 4,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_LINOONE
     },
@@ -125,7 +125,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LINOONE   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -135,7 +135,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WURMPLE   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 11,
         .evolutionTarget = SPECIES_SILCOON
     },
@@ -145,7 +145,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SILCOON   ",
         .catchIndex = 5,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_BEAUTIFLY
     },
@@ -155,7 +155,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "BEAUTIFLY ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -165,7 +165,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CASCOON   ",
         .catchIndex = 6,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_DUSTOX
     },
@@ -175,7 +175,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "DUSTOX    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -185,7 +185,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LOTAD     ",
         .catchIndex = 0,
         .eggIndex = 1,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_LOMBRE
     },
@@ -195,7 +195,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LOMBRE    ",
         .catchIndex = 7,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 6,
         .evolutionTarget = SPECIES_LUDICOLO
     },
@@ -205,7 +205,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LUDICOLO  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -215,7 +215,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SEEDOT    ",
         .catchIndex = 0,
         .eggIndex = 2,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_NUZLEAF
     },
@@ -225,7 +225,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "NUZLEAF   ",
         .catchIndex = 8,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 2,
         .evolutionTarget = SPECIES_SHIFTRY
     },
@@ -235,7 +235,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SHIFTRY   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -245,7 +245,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "TAILLOW   ",
         .catchIndex = 9,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SWELLOW
     },
@@ -255,7 +255,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SWELLOW   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -265,7 +265,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WINGULL   ",
         .catchIndex = 10,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_PELIPPER
     },
@@ -275,7 +275,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "PELIPPER  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -285,7 +285,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "RALTS     ",
         .catchIndex = 0,
         .eggIndex = 3,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_KIRLIA
     },
@@ -295,7 +295,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "KIRLIA    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_GARDEVOIR
     },
@@ -305,7 +305,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GARDEVOIR ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -315,7 +315,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SURSKIT   ",
         .catchIndex = 0,
         .eggIndex = 4,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_MASQUERAIN
     },
@@ -325,7 +325,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MASQUERAIN",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -335,7 +335,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SHROOMISH ",
         .catchIndex = 0,
         .eggIndex = 5,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_BRELOOM
     },
@@ -345,7 +345,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "BRELOOM   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -355,7 +355,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SLAKOTH   ",
         .catchIndex = 11,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_VIGOROTH
     },
@@ -365,7 +365,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "VIGOROTH  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SLAKING
     },
@@ -375,7 +375,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SLAKING   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -385,7 +385,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ABRA      ",
         .catchIndex = 12,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_KADABRA
     },
@@ -395,7 +395,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "KADABRA   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 4,
         .evolutionTarget = SPECIES_ALAKAZAM
     },
@@ -405,7 +405,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ALAKAZAM  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -415,7 +415,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "NINCADA   ",
         .catchIndex = 13,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_NINJASK
     },
@@ -425,7 +425,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "NINJASK   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -435,7 +435,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SHEDINJA  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -445,7 +445,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WHISMUR   ",
         .catchIndex = 0,
         .eggIndex = 6,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_LOUDRED
     },
@@ -455,7 +455,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LOUDRED   ",
         .catchIndex = 14,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_EXPLOUD
     },
@@ -465,7 +465,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "EXPLOUD   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -475,7 +475,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MAKUHITA  ",
         .catchIndex = 15,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_HARIYAMA
     },
@@ -485,7 +485,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "HARIYAMA  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -495,7 +495,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GOLDEEN   ",
         .catchIndex = 16,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SEAKING
     },
@@ -505,7 +505,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SEAKING   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -515,7 +515,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MAGIKARP  ",
         .catchIndex = 17,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_GYARADOS
     },
@@ -525,7 +525,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GYARADOS  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -535,7 +535,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "AZURILL   ",
         .catchIndex = 0,
         .eggIndex = 7,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 9,
         .evolutionTarget = SPECIES_MARILL
     },
@@ -545,7 +545,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MARILL    ",
         .catchIndex = 18,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_AZUMARILL
     },
@@ -555,7 +555,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "AZUMARILL ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -565,7 +565,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GEODUDE   ",
         .catchIndex = 19,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_GRAVELER
     },
@@ -575,7 +575,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GRAVELER  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 4,
         .evolutionTarget = SPECIES_GOLEM
     },
@@ -585,7 +585,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GOLEM     ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -595,7 +595,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "NOSEPASS  ",
         .catchIndex = 20,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -605,7 +605,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SKITTY    ",
         .catchIndex = 0,
         .eggIndex = 8,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 5,
         .evolutionTarget = SPECIES_DELCATTY
     },
@@ -615,7 +615,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "DELCATTY  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -625,7 +625,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ZUBAT     ",
         .catchIndex = 0,
         .eggIndex = 9,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_GOLBAT
     },
@@ -635,7 +635,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GOLBAT    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 9,
         .evolutionTarget = SPECIES_CROBAT
     },
@@ -645,7 +645,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CROBAT    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -655,7 +655,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "TENTACOOL ",
         .catchIndex = 21,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_TENTACRUEL
     },
@@ -665,7 +665,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "TENTACRUEL",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -675,7 +675,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SABLEYE   ",
         .catchIndex = 22,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -685,7 +685,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MAWILE    ",
         .catchIndex = 23,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -695,7 +695,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ARON      ",
         .catchIndex = 0,
         .eggIndex = 10,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_LAIRON
     },
@@ -705,7 +705,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LAIRON    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_AGGRON
     },
@@ -715,7 +715,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "AGGRON    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -725,7 +725,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MACHOP    ",
         .catchIndex = 24,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_MACHOKE
     },
@@ -735,7 +735,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MACHOKE   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 4,
         .evolutionTarget = SPECIES_MACHAMP
     },
@@ -745,7 +745,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MACHAMP   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -755,7 +755,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MEDITITE  ",
         .catchIndex = 25,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_MEDICHAM
     },
@@ -765,7 +765,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MEDICHAM  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -775,7 +775,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ELECTRIKE ",
         .catchIndex = 26,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_MANECTRIC
     },
@@ -785,7 +785,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MANECTRIC ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -795,7 +795,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "PLUSLE    ",
         .catchIndex = 0,
         .eggIndex = 11,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -805,7 +805,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MINUN     ",
         .catchIndex = 0,
         .eggIndex = 12,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -815,7 +815,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MAGNEMITE ",
         .catchIndex = 27,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_MAGNETON
     },
@@ -825,7 +825,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MAGNETON  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -835,7 +835,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "VOLTORB   ",
         .catchIndex = 28,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_ELECTRODE
     },
@@ -845,7 +845,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ELECTRODE ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -855,7 +855,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "VOLBEAT   ",
         .catchIndex = 29,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -865,7 +865,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ILLUMISE  ",
         .catchIndex = 30,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -875,7 +875,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ODDISH    ",
         .catchIndex = 0,
         .eggIndex = 13,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_GLOOM
     },
@@ -885,7 +885,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GLOOM     ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 11,
         .evolutionTarget = SPECIES_VILEPLUME
     },
@@ -895,7 +895,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "VILEPLUME ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -905,7 +905,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "BELLOSSOM ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -915,7 +915,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "DODUO     ",
         .catchIndex = 31,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_DODRIO
     },
@@ -925,7 +925,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "DODRIO    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -935,7 +935,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ROSELIA   ",
         .catchIndex = 32,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -945,7 +945,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GULPIN    ",
         .catchIndex = 0,
         .eggIndex = 14,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SWALOT
     },
@@ -955,7 +955,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SWALOT    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -965,7 +965,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CARVANHA  ",
         .catchIndex = 33,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SHARPEDO
     },
@@ -975,7 +975,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SHARPEDO  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -985,7 +985,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WAILMER   ",
         .catchIndex = 34,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_WAILORD
     },
@@ -995,7 +995,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WAILORD   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1005,7 +1005,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "NUMEL     ",
         .catchIndex = 35,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_CAMERUPT
     },
@@ -1015,7 +1015,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CAMERUPT  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1025,7 +1025,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SLUGMA    ",
         .catchIndex = 36,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_MAGCARGO
     },
@@ -1035,7 +1035,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MAGCARGO  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1045,7 +1045,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "TORKOAL   ",
         .catchIndex = 37,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1055,7 +1055,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GRIMER    ",
         .catchIndex = 38,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_MUK
     },
@@ -1065,7 +1065,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MUK       ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1075,7 +1075,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "KOFFING   ",
         .catchIndex = 39,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_WEEZING
     },
@@ -1085,7 +1085,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WEEZING   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1095,7 +1095,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SPOINK    ",
         .catchIndex = 0,
         .eggIndex = 15,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_GRUMPIG
     },
@@ -1105,7 +1105,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GRUMPIG   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1115,7 +1115,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SANDSHREW ",
         .catchIndex = 0,
         .eggIndex = 16,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SANDSLASH
     },
@@ -1125,7 +1125,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SANDSLASH ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1135,7 +1135,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SPINDA    ",
         .catchIndex = 0,
         .eggIndex = 17,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1145,7 +1145,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SKARMORY  ",
         .catchIndex = 40,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1155,7 +1155,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "TRAPINCH  ",
         .catchIndex = 0,
         .eggIndex = 18,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_VIBRAVA
     },
@@ -1165,7 +1165,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "VIBRAVA   ",
         .catchIndex = 41,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_FLYGON
     },
@@ -1175,7 +1175,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "FLYGON    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1185,7 +1185,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CACNEA    ",
         .catchIndex = 42,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_CACTURNE
     },
@@ -1195,7 +1195,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CACTURNE  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1205,7 +1205,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SWABLU    ",
         .catchIndex = 43,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_ALTARIA
     },
@@ -1215,7 +1215,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ALTARIA   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1225,7 +1225,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ZANGOOSE  ",
         .catchIndex = 44,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1235,7 +1235,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SEVIPER   ",
         .catchIndex = 45,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1245,7 +1245,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LUNATONE  ",
         .catchIndex = 46,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1255,7 +1255,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SOLROCK   ",
         .catchIndex = 47,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1265,7 +1265,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "BARBOACH  ",
         .catchIndex = 48,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_WHISCASH
     },
@@ -1275,7 +1275,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WHISCASH  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1285,7 +1285,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CORPHISH  ",
         .catchIndex = 49,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_CRAWDAUNT
     },
@@ -1295,7 +1295,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CRAWDAUNT ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1305,7 +1305,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "BALTOY    ",
         .catchIndex = 50,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_CLAYDOL
     },
@@ -1315,7 +1315,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CLAYDOL   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1325,7 +1325,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LILEEP    ",
         .catchIndex = 51,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_CRADILY
     },
@@ -1335,7 +1335,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CRADILY   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1345,7 +1345,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ANORITH   ",
         .catchIndex = 52,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_ARMALDO
     },
@@ -1355,7 +1355,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ARMALDO   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1365,7 +1365,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "IGGLYBUFF ",
         .catchIndex = 0,
         .eggIndex = 19,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 9,
         .evolutionTarget = SPECIES_JIGGLYPUFF
     },
@@ -1375,7 +1375,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "JIGGLYPUFF",
         .catchIndex = 53,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 5,
         .evolutionTarget = SPECIES_WIGGLYTUFF
     },
@@ -1385,7 +1385,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WIGGLYTUFF",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1395,7 +1395,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "FEEBAS    ",
         .catchIndex = 54,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 10,
         .evolutionTarget = SPECIES_MILOTIC
     },
@@ -1405,7 +1405,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "MILOTIC   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1415,7 +1415,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CASTFORM  ",
         .catchIndex = 55,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1425,7 +1425,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "STARYU    ",
         .catchIndex = 56,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 6,
         .evolutionTarget = SPECIES_STARMIE
     },
@@ -1435,7 +1435,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "STARMIE   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1445,7 +1445,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "KECLEON   ",
         .catchIndex = 57,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1455,7 +1455,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SHUPPET   ",
         .catchIndex = 0,
         .eggIndex = 20,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_BANETTE
     },
@@ -1465,7 +1465,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "BANETTE   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1475,7 +1475,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "DUSKULL   ",
         .catchIndex = 58,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_DUSCLOPS
     },
@@ -1485,7 +1485,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "DUSCLOPS  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1495,7 +1495,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "TROPIUS   ",
         .catchIndex = 59,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1505,7 +1505,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CHIMECHO  ",
         .catchIndex = 0,
         .eggIndex = 21,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1515,7 +1515,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "ABSOL     ",
         .catchIndex = 60,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1525,7 +1525,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "VULPIX    ",
         .catchIndex = 61,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 3,
         .evolutionTarget = SPECIES_NINETALES
     },
@@ -1535,7 +1535,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "NINETALES ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1545,7 +1545,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "PICHU     ",
         .catchIndex = 0,
         .eggIndex = 22,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 9,
         .evolutionTarget = SPECIES_PIKACHU
     },
@@ -1555,7 +1555,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "PIKACHU   ",
         .catchIndex = 62,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 7,
         .evolutionTarget = SPECIES_RAICHU
     },
@@ -1565,7 +1565,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "RAICHU    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1575,7 +1575,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "PSYDUCK   ",
         .catchIndex = 63,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_GOLDUCK
     },
@@ -1585,7 +1585,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GOLDUCK   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1595,7 +1595,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WYNAUT    ",
         .catchIndex = 0,
         .eggIndex = 23,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_WOBBUFFET
     },
@@ -1605,7 +1605,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WOBBUFFET ",
         .catchIndex = 64,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1615,7 +1615,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "NATU      ",
         .catchIndex = 0,
         .eggIndex = 24,
-        .unk13 = 1,
+        .hatchAnimSimple = 1,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_XATU
     },
@@ -1625,7 +1625,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "XATU      ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1635,7 +1635,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GIRAFARIG ",
         .catchIndex = 65,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1645,7 +1645,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "PHANPY    ",
         .catchIndex = 0,
         .eggIndex = 25,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_DONPHAN
     },
@@ -1655,7 +1655,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "DONPHAN   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1665,7 +1665,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "PINSIR    ",
         .catchIndex = 66,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1675,7 +1675,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "HERACROSS ",
         .catchIndex = 67,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1685,7 +1685,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "RHYHORN   ",
         .catchIndex = 68,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_RHYDON
     },
@@ -1695,7 +1695,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "RHYDON    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1705,7 +1705,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SNORUNT   ",
         .catchIndex = 0,
         .eggIndex = 26,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_GLALIE
     },
@@ -1715,7 +1715,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GLALIE    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1725,7 +1725,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SPHEAL    ",
         .catchIndex = 0,
         .eggIndex = 27,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SEALEO
     },
@@ -1735,7 +1735,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SEALEO    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_WALREIN
     },
@@ -1745,7 +1745,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "WALREIN   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1755,7 +1755,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CLAMPERL  ",
         .catchIndex = 69,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 11,
         .evolutionTarget = SPECIES_HUNTAIL
     },
@@ -1765,7 +1765,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "HUNTAIL   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1775,7 +1775,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GOREBYSS  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1785,7 +1785,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "RELICANTH ",
         .catchIndex = 70,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1795,7 +1795,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CORSOLA   ",
         .catchIndex = 0,
         .eggIndex = 28,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1805,7 +1805,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CHINCHOU  ",
         .catchIndex = 0,
         .eggIndex = 29,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_LANTURN
     },
@@ -1815,7 +1815,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LANTURN   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1825,7 +1825,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LUVDISC   ",
         .catchIndex = 71,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1835,7 +1835,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "HORSEA    ",
         .catchIndex = 0,
         .eggIndex = 30,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SEADRA
     },
@@ -1845,7 +1845,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SEADRA    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 4,
         .evolutionTarget = SPECIES_KINGDRA
     },
@@ -1855,7 +1855,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "KINGDRA   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1865,7 +1865,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "BAGON     ",
         .catchIndex = 0,
         .eggIndex = 31,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SHELGON
     },
@@ -1875,7 +1875,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SHELGON   ",
         .catchIndex = 72,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_SALAMENCE
     },
@@ -1885,7 +1885,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "SALAMENCE ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1895,7 +1895,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "BELDUM    ",
         .catchIndex = 73,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_METANG
     },
@@ -1905,7 +1905,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "METANG    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 1,
         .evolutionTarget = SPECIES_METAGROSS
     },
@@ -1915,7 +1915,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "METAGROSS ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1925,7 +1925,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "REGIROCK  ",
         .catchIndex = 74,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1935,7 +1935,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "REGICE    ",
         .catchIndex = 75,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1945,7 +1945,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "REGISTEEL ",
         .catchIndex = 76,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1955,7 +1955,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LATIAS    ",
         .catchIndex = 77,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1965,7 +1965,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "LATIOS    ",
         .catchIndex = 78,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1975,7 +1975,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "KYOGRE    ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1985,7 +1985,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "GROUDON   ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -1995,7 +1995,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "RAYQUAZA  ",
         .catchIndex = 0,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -2005,7 +2005,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "JIRACHI   ",
         .catchIndex = 79,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -2015,7 +2015,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CHIKORITA ",
         .catchIndex = 80,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -2025,7 +2025,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "CYNDAQUIL ",
         .catchIndex = 81,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -2035,7 +2035,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "TOTODILE  ",
         .catchIndex = 82,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },
@@ -2045,7 +2045,7 @@ const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
         .name = "AERODACTYL",
         .catchIndex = 83,
         .eggIndex = 0,
-        .unk13 = 0,
+        .hatchAnimSimple = 0,
         .evolutionMethod = 0,
         .evolutionTarget = SPECIES_NONE
     },

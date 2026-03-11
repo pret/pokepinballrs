@@ -3937,26 +3937,26 @@ gUnknown_086AD49C:: @ 0x086AD49C
 
 
 gUnknown_086AD4C4:: @ 0x086AD4C4
-    .4byte sub_25F64
-    .4byte sub_19C04
-    .4byte sub_21300
-    .4byte sub_21578
-    .4byte sub_27E08
-    .4byte sub_24350
-    .4byte sub_26F38
-    .4byte sub_269A4
-    .4byte sub_28404
+    .4byte InitAreaRouletteMode
+    .4byte SelectFieldMusic
+    .4byte InitHatchCatchCountdownMode
+    .4byte InitBonusStageLegendaryMode
+    .4byte InitCatchMode
+    .4byte InitEggHatchMode
+    .4byte InitEvolutionMode
+    .4byte UpdateTravelMode
+    .4byte InitCatchEmMode
 
 gUnknown_086AD4E8:: @ 0x086AD4E8
-    .4byte sub_260B8
-    .4byte sub_19CC8
-    .4byte sub_21320
-    .4byte sub_216FC
-    .4byte sub_27F94
-    .4byte sub_24408
-    .4byte sub_27080
-    .4byte sub_26A10
-    .4byte sub_28544
+    .4byte UpdateAreaRouletteMode
+    .4byte CheckBonusStageReturnTimer
+    .4byte UpdateHatchCatchCountdownMode
+    .4byte UpdateBonusStageLegendaryMode
+    .4byte RunCatchEmModeStateMachine
+    .4byte UpdateEggHatchMode
+    .4byte UpdateEvolutionMode
+    .4byte UpdateTravelMode
+    .4byte RunJirachiModeStateMachine
 
 gUnknown_086AD50C:: @ 0x086AD50C
     .4byte gUnknown_081B8984
@@ -4508,8 +4508,8 @@ BoardProcPairs_086B077C:: @ 0x086B077C
 	.4byte PinballGameState_NoOp, PinballGameState_NoOp
 
 gUnknown_086B085C:: @ 0x086B085C
-	.4byte sub_4ABEC
-	.4byte sub_4AE8C
+	.4byte RunMainBoardFrame
+	.4byte RunBonusBoardFrame
 
 gUnknown_086B0864:: @ 0x086B0664
 	.incbin "baserom.gba", 0x6B0864, 0x20

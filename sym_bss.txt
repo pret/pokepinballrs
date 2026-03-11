@@ -1,6 +1,6 @@
-gUnknown_03000000: @ 0x03000000
+gTempGfxBuffer: @ 0x03000000
 	.space 0x1800
-gUnknown_03001800: @ 0x03001800
+gEReaderTextBuffer: @ 0x03001800
 	.space 0xB00
 gUnknown_03002300: @ 0x03002300
 	.space 0x2D00
@@ -8,7 +8,7 @@ gOamBuffer: @ 0x3005000
 	.space 0x400
 IntrMain_Buffer: @ 0x3005400
 	.space 0x800
-gUnknown_03005C00: @ 0x03005C00
+gBgScreenBuffer: @ 0x03005C00
 	.space 0x2C0
 gUnknown_03005EC0: @ 0x03005EC0
 	.space 0x380

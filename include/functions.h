@@ -362,7 +362,7 @@ extern void ResetPokedex(void);
 extern void CopyString(int, int, int, int, int, int);
 void SetStringPalette(int, int, int, int, u16);
 extern void CopyBgTilesRect(void *volatile, void *volatile, s16, s16);
-//extern ? FadeOutToWhiteWithCallback();
+//extern ? FadeOutToWhiteWithCallback_unused();
 extern void ClearHighScoreNameEntry(void);
 
 // asm/rom_11B9C.s

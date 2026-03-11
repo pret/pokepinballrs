@@ -82,7 +82,7 @@ void loadIntroduction(void)
 {
     struct BoardConfig *dest = &gBoardConfig;
     const struct FieldLayout *src = gUnknown_086AFD70;
-    memcpy(&dest->initialScrollX, &src[gMain.selectedField], sizeof(dest->initialScrollX));
+    memcpy(&dest->fieldLayout, &src[gMain.selectedField], sizeof(dest->fieldLayout));
 
     switch (gMain.selectedField)
     {
