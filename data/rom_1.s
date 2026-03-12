@@ -127,75 +127,59 @@ gIntroSceneFuncs:: @ 0x080792E0
 	.4byte IntroScene1_NoOp2
 	.4byte IntroScene1_NoOp3
 	.4byte IntroScene1_FadeOutAndDisable
-	.4byte RenderIntroScene1TitleSprite
-	.4byte RenderIntroScene1ScaledTitleSprite
-	.4byte RenderIntroScene4Sprites
 	.4byte IntroScene2_ClearTilemaps
 	.4byte InitIntroScene2
-	.4byte InitIntroScene2State
-	.4byte IntroScene2_NoOp1;
-.4byte IntroScene2_ScrollBgLayers;
-.4byte IntroScene2_NoOp2;
-.4byte IntroScene2_FinalScrollAndFadeOut;
-.4byte IntroScene3_ClearTilemaps;
-.4byte InitIntroScene3;
-.4byte InitIntroScene3State;
-.4byte IntroScene3_PanToTreecko;
-.4byte IntroScene3_TreeckoAnimation;
-.4byte IntroScene3_NoOp;
-.4byte IntroScene3_FadeOutAndDisable;
-.4byte RenderIntroScene3Sprites;
-.4byte IntroScene4_ClearTilemaps;
-.4byte InitIntroScene4;
-.4byte InitIntroScene4State;
-.4byte IntroScene4_NoOp1;
-.4byte IntroScene4_ScrollBgLayers;
-.4byte IntroScene4_NoOp2;
-.4byte IntroScene4_FinalScrollAndFadeOut;
-.4byte IntroScene5_ClearTilemaps;
-.4byte InitIntroScene5;
-.4byte InitIntroScene5State;
-.4byte IntroScene5_PanWithBallReveal;
-.4byte IntroScene5_ContinueBallAndScroll;
-.4byte IntroScene5_NoOp;
-.4byte IntroScene5_FadeOutAndClearOam;
-.4byte RenderIntroScene5Sprites;
-.4byte IntroScene6_ClearTilemaps;
-.4byte InitIntroScene6;
-.4byte InitIntroScene6State;
-.4byte IntroScene6_AnimateStarsEntering;
-.4byte IntroScene6_StarsHoldAndBounce;
-.4byte IntroScene6_FadeOutAndClearOam;
-.4byte RenderIntroScene5PokemonSprites;
-.4byte IntroScene7a_AdvanceIndex;
-.4byte InitIntroScene7a;
-.4byte InitIntroScene7aState;
-.4byte IntroScene7a_ScrollWavesLayer;
-.4byte IntroScene7a_ScrollTwoWaveLayers;
-.4byte IntroScene7a_ScrollAllThreeLayers;
-.4byte IntroScene7a_WailmerAppears;
-.4byte IntroScene7a_WailmerShrinksAndExit;
-.4byte IntroScene7a_FadeOutAndDisable;
-.4byte RenderIntroScene7aPokemonSprite;
-.4byte IntroScene7b_ClearTilemaps;
-.4byte InitIntroScene7b;
-.4byte InitIntroScene7bState;
-.4byte IntroScene7b_WaitThenShowDebris;
-.4byte IntroScene7b_ExplosionAndDebrisFly;
-.4byte IntroScene7b_ExplosionLinger;
-.4byte IntroScene7b_NoOp1;
-.4byte IntroScene7b_NoOp2;
-.4byte IntroScene7b_FadeOutAndClearOam;
-.4byte UpdateIntroScene7Sprites;
-.4byte IntroScene8_ClearAndResetSprites;
-.4byte InitIntroScene8;
-.4byte InitIntroScene8State;
-.4byte IntroScene8_BallFliesIn;
-.4byte IntroScene8_ContinueBgScroll;
-.4byte IntroScene8_LatiasFlyInAndFadeOut;
-.4byte IntroScene8_NoOp;
-.4byte IntroScene8_FadeOutMusic;
-.4byte IntroScene8_EndIntro;
+	.4byte IntroScene2_NoOp1
+	.4byte IntroScene2_ScrollBgLayers
+	.4byte IntroScene2_NoOp2
+	.4byte IntroScene2_FinalScrollAndFadeOut
+	.4byte IntroScene3_ClearTilemaps
+	.4byte InitIntroScene3
+	.4byte IntroScene3_PanToTreecko
+	.4byte IntroScene3_TreeckoAnimation
+	.4byte IntroScene3_NoOp
+	.4byte IntroScene3_FadeOutAndDisable
+	.4byte IntroScene4_ClearTilemaps
+	.4byte InitIntroScene4
+	.4byte IntroScene4_NoOp1
+	.4byte IntroScene4_ScrollBgLayers
+	.4byte IntroScene4_NoOp2
+	.4byte IntroScene4_FinalScrollAndFadeOut
+	.4byte IntroScene5_ClearTilemaps
+	.4byte InitIntroScene5
+	.4byte IntroScene5_PanWithBallReveal
+	.4byte IntroScene5_ContinueBallAndScroll
+	.4byte IntroScene5_NoOp
+	.4byte IntroScene5_FadeOutAndClearOam
+	.4byte IntroScene6_ClearTilemaps
+	.4byte InitIntroScene6
+	.4byte IntroScene6_AnimateStarsEntering
+	.4byte IntroScene6_StarsHoldAndBounce
+	.4byte IntroScene6_FadeOutAndClearOam
+	.4byte IntroScene7a_AdvanceIndex
+	.4byte InitIntroScene7a
+	.4byte IntroScene7a_ScrollWavesLayer
+	.4byte IntroScene7a_ScrollTwoWaveLayers
+	.4byte IntroScene7a_ScrollAllThreeLayers
+	.4byte IntroScene7a_WailmerAppears
+	.4byte IntroScene7a_WailmerShrinksAndExit
+	.4byte IntroScene7a_FadeOutAndDisable
+	.4byte IntroScene7b_ClearTilemaps
+	.4byte InitIntroScene7b
+	.4byte IntroScene7b_WaitThenShowDebris
+	.4byte IntroScene7b_ExplosionAndDebrisFly
+	.4byte IntroScene7b_ExplosionLinger
+	.4byte IntroScene7b_NoOp1
+	.4byte IntroScene7b_NoOp2
+	.4byte IntroScene7b_FadeOutAndClearOam
+	.4byte IntroScene8_ClearAndResetSprites
+	.4byte InitIntroScene8
+	.4byte IntroScene8_BallFliesIn
+	.4byte IntroScene8_ContinueBgScroll
+	.4byte IntroScene8_LatiasFlyInAndFadeOut
+	.4byte IntroScene8_NoOp
+	.4byte IntroScene8_FadeOutMusic
+	.4byte IntroScene8_EndIntro
 
 gHighScoresStateFuncs:: @ 0x080793E8
 	.4byte LoadHighScoreGraphics

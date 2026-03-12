@@ -90,7 +90,7 @@ void FadeInFromWhiteWithPalettes(void *src1, void *src2, void (*func)(void))
 }
 
 // This function is unused.
-void FadeOutToWhiteWithCallback_10860(void (*func)(void))
+void FadeOutToWhiteWithCallback_unused(void (*func)(void))
 {
     u16 i;
 

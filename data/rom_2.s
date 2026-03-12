@@ -3944,7 +3944,7 @@ gUnknown_086AD4C4:: @ 0x086AD4C4
     .4byte InitCatchMode
     .4byte InitEggHatchMode
     .4byte InitEvolutionMode
-    .4byte UpdateTravelMode
+    .4byte InitTravelMode
     .4byte InitCatchEmMode
 
 gUnknown_086AD4E8:: @ 0x086AD4E8
