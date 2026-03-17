@@ -429,7 +429,7 @@ void Pokedex_DetailViewInput(void)
     {
         if ((gPokedexSelectedMon < BONUS_SPECIES_START) && (gPokedexDescriptionPage == 1))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x6D);
+            m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
             gPokedexDescriptionPage = 0;
             PrintDexDescription(gPokedexSelectedMon, 0);
             gPokedexSpriteIndexBase = gPokedexDescriptionPage;
@@ -439,7 +439,7 @@ void Pokedex_DetailViewInput(void)
     {
         if ((gPokedexSelectedMon < BONUS_SPECIES_START) && (gPokedexDescriptionPage == 0))
         {
-            m4aSongNumStart(SE_UNKNOWN_0x6D);
+            m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
             gPokedexDescriptionPage = 1;
             PrintDexDescription(gPokedexSelectedMon, 1);
             gPokedexSpriteIndexBase = gPokedexDescriptionPage;
@@ -452,7 +452,7 @@ void Pokedex_DetailViewInput(void)
         {
             if (!gPokedexDescriptionPage)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x6D);
+                m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                 gPokedexDescriptionPage = 1 - gPokedexDescriptionPage;
                 PrintDexDescription(gPokedexSelectedMon, gPokedexDescriptionPage);
                 gPokedexSpriteIndexBase = gPokedexDescriptionPage;

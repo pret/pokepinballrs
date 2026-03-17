@@ -1,24 +1,24 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_7a_grp, gUnknown_08532310
-	.equ	se_unk_7a_pri, 5
-	.equ	se_unk_7a_rev, reverb_set+50
-	.equ	se_unk_7a_mvl, 127
-	.equ	se_unk_7a_key, 0
-	.equ	se_unk_7a_tbs, 1
-	.equ	se_unk_7a_exg, 0
-	.equ	se_unk_7a_cmp, 1
+	.equ	se_pika_full_charge_1_up_grp, gUnknown_08532310
+	.equ	se_pika_full_charge_1_up_pri, 5
+	.equ	se_pika_full_charge_1_up_rev, reverb_set+50
+	.equ	se_pika_full_charge_1_up_mvl, 127
+	.equ	se_pika_full_charge_1_up_key, 0
+	.equ	se_pika_full_charge_1_up_tbs, 1
+	.equ	se_pika_full_charge_1_up_exg, 0
+	.equ	se_pika_full_charge_1_up_cmp, 1
 
 	.section .rodata
-	.global	se_unk_7a
+	.global	se_pika_full_charge_1_up
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_7a_0:  @ 0x0869F24C
-	.byte	KEYSH , se_unk_7a_key+0
-	.byte	TEMPO , 150*se_unk_7a_tbs/2
-	.byte		VOL   , 80*se_unk_7a_mvl/mxv
+se_pika_full_charge_1_up_0:  @ 0x0869F24C
+	.byte	KEYSH , se_pika_full_charge_1_up_key+0
+	.byte	TEMPO , 150*se_pika_full_charge_1_up_tbs/2
+	.byte		VOL   , 80*se_pika_full_charge_1_up_mvl/mxv
 	.byte		PAN   , c_v+0
 	.byte		VOICE , 12
 	.byte		N03   , An5 , v127
@@ -63,13 +63,13 @@ se_unk_7a_0:  @ 0x0869F24C
 
 	.align	2
 
-se_unk_7a:  @ 0x0869F2A0
+se_pika_full_charge_1_up:  @ 0x0869F2A0
 	.byte	1	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_7a_pri	@ Priority
-	.byte	se_unk_7a_rev	@ Reverb
+	.byte	se_pika_full_charge_1_up_pri	@ Priority
+	.byte	se_pika_full_charge_1_up_rev	@ Reverb
 
-	.word	se_unk_7a_grp
+	.word	se_pika_full_charge_1_up_grp
 
-	.word	se_unk_7a_0
+	.word	se_pika_full_charge_1_up_0
 @ 0x0869F2AC

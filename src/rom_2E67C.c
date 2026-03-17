@@ -2,6 +2,7 @@
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
+#include "constants/main_board.h"
 
 extern const s16 gPelipperIdleFrameIndices[];
 extern const s16 gPelipperSwallowAnimData[][3];
@@ -50,7 +51,7 @@ extern const u8 gLifeCountDigit_Gfx[][0x40];
 extern const u8 gOneUpSpritePalette[];
 
 extern struct SongHeader se_unk_fc;
-extern struct SongHeader se_unk_7a;
+extern struct SongHeader se_pika_full_charge_1_up;
 
 extern u8 gPaletteFadeRGBCache[][3];
 
@@ -164,7 +165,7 @@ void AnimateOneUpSprite(void)
 
         if (gCurrentPinballGame->oneUpAnimTimer == 58)
         {
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_7a);
+            MPlayStart(&gMPlayInfo_SE1, &se_pika_full_charge_1_up);
             if (gCurrentPinballGame->numLives < 9)
                 gCurrentPinballGame->numLives++;
         }
@@ -1261,7 +1262,7 @@ void UpdateZigzagoonEntity(void)
             gCurrentPinballGame->zigzagoonOamFrame = 1;
         }
 
-        if (gCurrentPinballGame->ballCatchState != 4)
+        if (gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE)
             gCurrentPinballGame->zigzagoonShockWallActive = 0;
         break;
     case 2:
@@ -1511,7 +1512,7 @@ void UpdateSapphireBumperLogic(void)
         }
     }
 
-    if (gCurrentPinballGame->ballCatchState != 3)
+    if (gCurrentPinballGame->ballCatchState != TRAP_EVO_SHOP_HOLE)
     {
         if (gCurrentPinballGame->sapphireBumperLitCountdown)
             gCurrentPinballGame->sapphireBumperLitCountdown--;

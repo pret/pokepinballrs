@@ -3,6 +3,7 @@
 #include "constants/bg_music.h"
 #include "m4a.h"
 #include "constants/anglemath.h"
+#include "constants/main_board.h"
 
 extern u8 gCatchTargetCollisionBitmap[];
 extern u16 gFlipperCollisionAngles[][2];
@@ -404,7 +405,7 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
             m4aSongNumStart(SE_WALL_HIT);
 
         if (forwardMag > 0x118
-            && gCurrentPinballGame->entityOverlayCollisionState == 0
+            && gCurrentPinballGame->kickbackFiring == 0
             && gMain.selectedField < MAIN_FIELD_COUNT)
         {
             PlayRumble(6);
@@ -883,7 +884,7 @@ void ProcessBonusTrapPhysics(void)
         else
         {
             gCurrentPinballGame->collisionMapScrollY = 0;
-            gCurrentPinballGame->ballCatchState = 4;
+            gCurrentPinballGame->ballCatchState = TRAP_CENTER_HOLE;
             if (gMain.selectedField == FIELD_RUBY)
                 DispatchRubyCatchModeInit();
             else

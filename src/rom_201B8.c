@@ -39,14 +39,14 @@ extern const u16 gPortraitIdleCycleData[];
 extern const u16 gPortraitAnimPalettes[];
 extern const s16 gRouletteOutcomeFrameOffsets[];
 
-extern struct SongHeader se_unk_7a;
-extern struct SongHeader se_unk_79;
+extern struct SongHeader se_pika_full_charge_1_up;
+extern struct SongHeader se_pika_spinner_clack;
 extern struct SongHeader se_whiscash_splashdown;
-extern struct SongHeader se_unk_142;
-extern struct SongHeader se_unk_b1;
-extern struct SongHeader se_unk_b3;
+extern struct SongHeader se_pika_no_kickback;
+extern struct SongHeader se_pikachu_kickback;
+extern struct SongHeader se_pichu_kickback;
 extern s16 gPikaSaverAnimFrameTable[100];
-extern s16 gCatchHoleXPositions[3];
+extern s16 gOutlaneCenterXPositions[2];
 extern u16 gCatchOverlayAnimData[][2];
 extern s16 gCatchOverlayOamData[28][12];
 
@@ -798,8 +798,8 @@ void RubyPond_EntityLogic(void)
             gCurrentPinballGame->scoreAddedInFrame = 10;
             m4aSongNumStart(SE_RUBY_BUMPER_HIT);
             PlayRumble(7);
-            if (gCurrentPinballGame->modeTimeRemaining)
-                gCurrentPinballGame->modeTimeRemaining = 1;
+            if (gCurrentPinballGame->saverTimeRemaining)
+                gCurrentPinballGame->saverTimeRemaining = 1;
             break;
         case WHISCASH_STATE_ANGRY:
             if (gWhiscashFramesetData[gCurrentPinballGame->whiscashFrameIx][1] > gCurrentPinballGame->whiscashStateTimer)
@@ -1248,19 +1248,19 @@ void UpdatePikachuChargeCounter(void)
     if (gCurrentPinballGame->pikaChargeTarget != gCurrentPinballGame->pikaChargeProgress)
     {
         gCurrentPinballGame->pikaChargeProgress += 2;
-        gCurrentPinballGame->catchCounterValue = gCurrentPinballGame->pikaChargeProgress / 14;
-        gCurrentPinballGame->catchCounterSlideTimer = 80;
-        gCurrentPinballGame->catchCounterAnimState = 256;
-        gCurrentPinballGame->catchCounterScaleY = 256;
-        if (gCurrentPinballGame->catchCounterValue == 11)
-            gCurrentPinballGame->pikachuAnimTimer = 120;
+        gCurrentPinballGame->chargeFillValue = gCurrentPinballGame->pikaChargeProgress / 14;
+        gCurrentPinballGame->fullChargeSlideAnimTimer = 80;
+        gCurrentPinballGame->chargeIndicatorScaleX = 256;
+        gCurrentPinballGame->chargeIndicatorScaleY = 256;
+        if (gCurrentPinballGame->chargeFillValue == 11)
+            gCurrentPinballGame->chargeFillAnimTimer = 120;
 
-        if (gCurrentPinballGame->catchCounterValue > 11)
+        if (gCurrentPinballGame->chargeFillValue > 11)
         {
-            gCurrentPinballGame->catchCounterValue = 12;
-            gCurrentPinballGame->catchCounterSlideTimer = 120;
-            gCurrentPinballGame->catchCounterAnimState = 256;
-            gCurrentPinballGame->catchCounterScaleY = 256;
+            gCurrentPinballGame->chargeFillValue = 12;
+            gCurrentPinballGame->fullChargeSlideAnimTimer = 120;
+            gCurrentPinballGame->chargeIndicatorScaleX = 256;
+            gCurrentPinballGame->chargeIndicatorScaleY = 256;
         }
 
         if (gCurrentPinballGame->pikaChargeProgress < 168 && gCurrentPinballGame->pikaChargeProgress % 8 == 0)
@@ -1274,7 +1274,7 @@ void UpdatePikachuChargeCounter(void)
             gCurrentPinballGame->pikaChargeProgress = gCurrentPinballGame->pikaChargeTarget;
             if (gCurrentPinballGame->pikaChargeProgress >= 168)
             {
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_7a);
+                MPlayStart(&gMPlayInfo_SE1, &se_pika_full_charge_1_up);
                 gCurrentPinballGame->scoreAddedInFrame = 3000;
             }
         }
@@ -1296,13 +1296,13 @@ void UpdatePikachuChargeCounter(void)
         else
         {
             gCurrentPinballGame->pikaSpinFrameCounter = 0;
-            MPlayStart(&gMPlayInfo_SE3, &se_unk_79);
+            MPlayStart(&gMPlayInfo_SE3, &se_pika_spinner_clack);
             gCurrentPinballGame->scoreAddedInFrame = 100;
-            if (gCurrentPinballGame->catchCounterValue < 12 && gCurrentPinballGame->entityOverlayCollisionState == 0)
+            if (gCurrentPinballGame->chargeFillValue < 12 && gCurrentPinballGame->kickbackFiring == 0)
             {
-                gCurrentPinballGame->catchCounterSlideTimer = 80;
-                gCurrentPinballGame->catchCounterAnimState = 256;
-                gCurrentPinballGame->catchCounterScaleY = 256;
+                gCurrentPinballGame->fullChargeSlideAnimTimer = 80;
+                gCurrentPinballGame->chargeIndicatorScaleX = 256;
+                gCurrentPinballGame->chargeIndicatorScaleY = 256;
             }
         }
 
@@ -1327,13 +1327,13 @@ void UpdatePikachuChargeCounter(void)
             else
             {
                 gCurrentPinballGame->pikaSpinFrameCounter = 0;
-                MPlayStart(&gMPlayInfo_SE3, &se_unk_79);
+                MPlayStart(&gMPlayInfo_SE3, &se_pika_spinner_clack);
                 gCurrentPinballGame->scoreAddedInFrame = 100;
-                if (gCurrentPinballGame->catchCounterValue < 12 && gCurrentPinballGame->entityOverlayCollisionState == 0)
+                if (gCurrentPinballGame->chargeFillValue < 12 && gCurrentPinballGame->kickbackFiring == 0)
                 {
-                    gCurrentPinballGame->catchCounterSlideTimer = 80;
-                    gCurrentPinballGame->catchCounterAnimState = 256;
-                    gCurrentPinballGame->catchCounterScaleY = 256;
+                    gCurrentPinballGame->fullChargeSlideAnimTimer = 80;
+                    gCurrentPinballGame->chargeIndicatorScaleX = 256;
+                    gCurrentPinballGame->chargeIndicatorScaleY = 256;
                 }
             }
 
@@ -1855,18 +1855,19 @@ void DrawSideBumperSprites(void)
     }
 }
 
-void UpdateCatchModeLogic(void)
+void UpdateKickbackLogic(void)
 {
-    s16 i;
+    s16 outlaneChuteIx;
     s16 j;
     s16 r5;
+    s16 oamIx;
     s16 tempY;
     struct SpriteGroup *spriteGroup;
     struct OamDataSimple *oamSimple;
     u16 *dst;
     const u16 *src;
 
-    AnimateCreatureApproach();
+    PichuArrivalSequence();
 
     if (gCurrentPinballGame->pikaChargeTarget > 167)
     {
@@ -1887,13 +1888,13 @@ void UpdateCatchModeLogic(void)
 
     if (gCurrentPinballGame->outLanePikaPosition == 2)
     {
-        gCurrentPinballGame->catchHoleOccupied[0] = 1;
-        gCurrentPinballGame->catchHoleOccupied[1] = 1;
+        gCurrentPinballGame->kickbackOccupied[0] = 1;
+        gCurrentPinballGame->kickbackOccupied[1] = 1;
     }
     else
     {
-        gCurrentPinballGame->catchHoleOccupied[0 + gCurrentPinballGame->outLanePikaPosition] = 1;
-        gCurrentPinballGame->catchHoleOccupied[1 - gCurrentPinballGame->outLanePikaPosition] = 0;
+        gCurrentPinballGame->kickbackOccupied[0 + gCurrentPinballGame->outLanePikaPosition] = 1;
+        gCurrentPinballGame->kickbackOccupied[1 - gCurrentPinballGame->outLanePikaPosition] = 0;
     }
 
     if (gCurrentPinballGame->pikaKickbackTimer != 0)
@@ -1902,34 +1903,34 @@ void UpdateCatchModeLogic(void)
         {
             // gCurrentPinballGame->outLaneSide + gCurrentPinballGame->outLanePikaPosition
             // Note: this can be && chained off of the previous if, once we have this line deciphered.
-            if (gCurrentPinballGame->catchHoleOccupied[gCurrentPinballGame->outLaneSide - 1] != 0)
+            if (gCurrentPinballGame->kickbackOccupied[gCurrentPinballGame->outLaneSide - 1] != 0)
             {
                 if (gCurrentPinballGame->pikaChargeTarget > 167)
                 {
                     gCurrentPinballGame->ballFrozenState = 1;
-                    gCurrentPinballGame->entityOverlayCollisionState = 1;
-                    gCurrentPinballGame->catchAnimProgress = 120;
-                    gCurrentPinballGame->catchAnimDuration = 120;
-                    gCurrentPinballGame->catchOverlayTimer = gCurrentPinballGame->catchAnimProgress;
+                    gCurrentPinballGame->kickbackFiring = 1;
+                    gCurrentPinballGame->kickbackAnimProgress = 120;
+                    gCurrentPinballGame->kickbackAnimDuration = 120;
+                    gCurrentPinballGame->kickbackLaunchTimer = gCurrentPinballGame->kickbackAnimProgress;
                     gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
-                    gCurrentPinballGame->catchOverlayFrameTimer = 0;
-                    gCurrentPinballGame->catchOverlayKeyframeIndex = 0;
+                    gCurrentPinballGame->kickbackAnimFrameTimer = 0;
+                    gCurrentPinballGame->kickbackFrameId = 0;
 
                     if (gCurrentPinballGame->outLanePikaPosition != 2)
                     {
                         gCurrentPinballGame->pikaChargeTarget = 0;
                         gCurrentPinballGame->pikaChargeProgress = 0;
-                        gCurrentPinballGame->prevCatchCounterValue = 0;
-                        gCurrentPinballGame->catchCounterValue = 0;
-                        gCurrentPinballGame->catchCounterXShift = 0;
-                        gCurrentPinballGame->catchCounterSlideOffsetY = -4;
-                        gCurrentPinballGame->catchCounterAnimState = 256;
-                        gCurrentPinballGame->catchCounterScaleY = 256;
-                        gCurrentPinballGame->pikachuAnimTimer = 0;
-                        gCurrentPinballGame->catchCounterSlideTimer = 0;
+                        gCurrentPinballGame->prevChargeFillValue = 0;
+                        gCurrentPinballGame->chargeFillValue = 0;
+                        gCurrentPinballGame->chargeIndicatorXOffset = 0;
+                        gCurrentPinballGame->chargeIndicatorYOffset = -4;
+                        gCurrentPinballGame->chargeIndicatorScaleX = 256;
+                        gCurrentPinballGame->chargeIndicatorScaleY = 256;
+                        gCurrentPinballGame->chargeFillAnimTimer = 0;
+                        gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
                     }
 
-                    gCurrentPinballGame->catchBallStartPos = gCurrentPinballGame->ball->positionQ1;
+                    gCurrentPinballGame->kickbackBallHoverPos = gCurrentPinballGame->ball->positionQ1;
                     gCurrentPinballGame->scoreAddedInFrame = 30000;
 
                     if (gCurrentPinballGame->bonusPikaSaverCount <= 98)
@@ -1938,17 +1939,17 @@ void UpdateCatchModeLogic(void)
                 else
                 {
                     gCurrentPinballGame->pikaKickbackTimer = 60;
-                    MPlayStart(&gMPlayInfo_SE1, &se_unk_142);
+                    MPlayStart(&gMPlayInfo_SE1, &se_pika_no_kickback);
                 }
 
-                i = gCurrentPinballGame->outLaneSide - 1;
+                outlaneChuteIx = gCurrentPinballGame->outLaneSide - 1;
 
                 if (gCurrentPinballGame->outLanePikaPosition == 2)
-                    gCurrentPinballGame->pikaSaverTileIndex[i] = (i) * 7 + 2;
+                    gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] = (outlaneChuteIx) * 7 + 2;
                 else
-                    gCurrentPinballGame->pikaSaverTileIndex[i] = 2;
+                    gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] = 2;
 
-                DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[i] * 0x180), 0x06010480 + ((i) * 0x180), 0x180);
+                DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] * 0x180), 0x06010480 + ((outlaneChuteIx) * 0x180), 0x180);
             }
         }
 
@@ -1960,66 +1961,67 @@ void UpdateCatchModeLogic(void)
         gCurrentPinballGame->pikaKickbackTimer--;
     }
 
-    if (gCurrentPinballGame->entityOverlayCollisionState != 0)
+    if (gCurrentPinballGame->kickbackFiring != 0)
     {
-        if (gCurrentPinballGame->catchOverlayTimer > 1)
+        if (gCurrentPinballGame->kickbackLaunchTimer > 1)
         {
-            r5 = (gCurrentPinballGame->catchAnimProgress * 0x10000) / 10;
-            gCurrentPinballGame->catchOverlayTimer--;
-            if (gCurrentPinballGame->catchAnimProgress != 0)
+            r5 = (gCurrentPinballGame->kickbackAnimProgress * 0x10000) / 10;
+            gCurrentPinballGame->kickbackLaunchTimer--;
+            if (gCurrentPinballGame->kickbackAnimProgress != 0)
             {
-                gCurrentPinballGame->catchAnimProgress--;
-                if (gCurrentPinballGame->catchAnimProgress == 40 && gCurrentPinballGame->catchOverlayTimer > 40)
+                gCurrentPinballGame->kickbackAnimProgress--;
+                if (gCurrentPinballGame->kickbackAnimProgress == 40 && gCurrentPinballGame->kickbackLaunchTimer > 40)
                 {
-                    gCurrentPinballGame->catchAnimProgress = 60;
+                    gCurrentPinballGame->kickbackAnimProgress = 60;
                 }
             }
-            if (gCurrentPinballGame->catchOverlayTimer == 116)
+            if (gCurrentPinballGame->kickbackLaunchTimer == 116)
             {
                 if (gCurrentPinballGame->activePortraitType)
-                    gCurrentPinballGame->catchOverlayTimer = 120;
+                    gCurrentPinballGame->kickbackLaunchTimer = 120;
                 else
                 {
                     gCurrentPinballGame->activePortraitType = 1;
                     if (gCurrentPinballGame->outLanePikaPosition == 2)
                     {
                         if (gCurrentPinballGame->outLaneSide == 1)
-                            MPlayStart(&gMPlayInfo_SE1, &se_unk_b1);
+                            MPlayStart(&gMPlayInfo_SE1, &se_pikachu_kickback);
                         else
-                            MPlayStart(&gMPlayInfo_SE1, &se_unk_b3);
+                            MPlayStart(&gMPlayInfo_SE1, &se_pichu_kickback);
                         m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x40);
                     }
                     else
                     {
-                        MPlayStart(&gMPlayInfo_SE1, &se_unk_b1);
+                        MPlayStart(&gMPlayInfo_SE1, &se_pikachu_kickback);
                         m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x40);
                     }
                 }
             }
-            if (gCurrentPinballGame->catchOverlayTimer == 115 && gCurrentPinballGame->activePortraitType == 1)
+            if (gCurrentPinballGame->kickbackLaunchTimer == 115 && gCurrentPinballGame->activePortraitType == 1)
                 m4aMPlayVolumeControl(&gMPlayInfo_SE1, 0xFFFF, 0x200);
 
+            // used for the horizontal 'floaty' movement when electric builds pre-launch.
             gCurrentPinballGame->ball->positionQ1.x =
-                gCurrentPinballGame->catchBallStartPos.x + ((Sin(r5) * 6) / 20000) +
-                ((gCatchHoleXPositions[gCurrentPinballGame->outLaneSide - 1] * 2 - gCurrentPinballGame->catchBallStartPos.x) * (gCurrentPinballGame->catchAnimDuration - gCurrentPinballGame->catchAnimProgress)) / gCurrentPinballGame->catchAnimDuration;
+                gCurrentPinballGame->kickbackBallHoverPos.x + ((Sin(r5) * 6) / 20000) +
+                ((gOutlaneCenterXPositions[gCurrentPinballGame->outLaneSide - 1] * 2 - gCurrentPinballGame->kickbackBallHoverPos.x) * (gCurrentPinballGame->kickbackAnimDuration - gCurrentPinballGame->kickbackAnimProgress)) / gCurrentPinballGame->kickbackAnimDuration;
 
-            tempY = ((gCurrentPinballGame->catchAnimDuration - gCurrentPinballGame->catchAnimProgress) * 40) / gCurrentPinballGame->catchAnimDuration;
-            gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->catchBallStartPos.y - tempY;
+            tempY = ((gCurrentPinballGame->kickbackAnimDuration - gCurrentPinballGame->kickbackAnimProgress) * 40) / gCurrentPinballGame->kickbackAnimDuration;
+            gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->kickbackBallHoverPos.y - tempY;
 
             gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ1.x * 128;
             gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ1.y * 128;
         }
-        else if (gCurrentPinballGame->catchOverlayTimer == 1)
+        else if (gCurrentPinballGame->kickbackLaunchTimer == 1)
         {
-            gCurrentPinballGame->ball->positionQ1.x = gCatchHoleXPositions[gCurrentPinballGame->outLaneSide - 1] * 2;
+            gCurrentPinballGame->ball->positionQ1.x = gOutlaneCenterXPositions[gCurrentPinballGame->outLaneSide - 1] * 2;
             gCurrentPinballGame->ball->positionQ1.y = 702;
             gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ1.x * 128;
             gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ1.y * 128;
             gCurrentPinballGame->ball->velocity.x = 0;
             // fly me to the moon
             gCurrentPinballGame->ball->velocity.y = -300;
-            m4aSongNumStart(SE_UNKNOWN_0x7C);
-            gCurrentPinballGame->catchOverlayTimer = 0;
+            m4aSongNumStart(SE_KICKBACK_THUNDERWAVE);
+            gCurrentPinballGame->kickbackLaunchTimer = 0;
             gCurrentPinballGame->ballFrozenState = 0;
             gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
             gCurrentPinballGame->holeIndicators[(gCurrentPinballGame->outLaneSide - 1) * 3] = 1;
@@ -2038,14 +2040,14 @@ void UpdateCatchModeLogic(void)
             PlayRumble(11);
         }
 
-        if (gCurrentPinballGame->catchOverlayTimer >= 100)
+        if (gCurrentPinballGame->kickbackLaunchTimer >= 100)
         {
             if (gCurrentPinballGame->outLanePikaPosition == 2)
                 gCurrentPinballGame->pikaSaverTileIndex[gCurrentPinballGame->outLaneSide - 1] = (gCurrentPinballGame->outLaneSide - 1) * 7 + 2;
             else
                 gCurrentPinballGame->pikaSaverTileIndex[gCurrentPinballGame->outLaneSide - 1] = 2;
 
-            if (gCurrentPinballGame->catchOverlayTimer == 100)
+            if (gCurrentPinballGame->kickbackLaunchTimer == 100)
             {
                 gMain.fieldSpriteGroups[38]->available = 1;
 
@@ -2061,37 +2063,37 @@ void UpdateCatchModeLogic(void)
         }
         else
         {
-            if (gCatchOverlayAnimData[gCurrentPinballGame->catchOverlayKeyframeIndex][1] > gCurrentPinballGame->catchOverlayFrameTimer)
-                gCurrentPinballGame->catchOverlayFrameTimer++;
+            if (gCatchOverlayAnimData[gCurrentPinballGame->kickbackFrameId][1] > gCurrentPinballGame->kickbackAnimFrameTimer)
+                gCurrentPinballGame->kickbackAnimFrameTimer++;
             else
             {
-                gCurrentPinballGame->catchOverlayFrameTimer = 0;
-                gCurrentPinballGame->catchOverlayKeyframeIndex++;
+                gCurrentPinballGame->kickbackAnimFrameTimer = 0;
+                gCurrentPinballGame->kickbackFrameId++;
 
-                if (gCurrentPinballGame->catchOverlayKeyframeIndex == 23)
+                if (gCurrentPinballGame->kickbackFrameId == 23)
                 {
-                    m4aSongNumStop(SE_UNKNOWN_0x7C);
+                    m4aSongNumStop(SE_KICKBACK_THUNDERWAVE);
                     m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0x100);
                 }
 
-                if (gCurrentPinballGame->catchOverlayKeyframeIndex > 25)
+                if (gCurrentPinballGame->kickbackFrameId > 25)
                 {
-                    gCurrentPinballGame->catchOverlayKeyframeIndex = 25;
-                    gCurrentPinballGame->entityOverlayCollisionState = 0;
+                    gCurrentPinballGame->kickbackFrameId = 25;
+                    gCurrentPinballGame->kickbackFiring = 0;
                     gMain.fieldSpriteGroups[38]->available = 0;
                     gCurrentPinballGame->activePortraitType = 0;
 
-                    i = gCurrentPinballGame->outLaneSide - 1;
+                    outlaneChuteIx = gCurrentPinballGame->outLaneSide - 1;
                     if (gCurrentPinballGame->outLanePikaPosition == 2)
-                        gCurrentPinballGame->pikaSaverTileIndex[i] = i * 9;
+                        gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] = outlaneChuteIx * 9;
                     else
-                        gCurrentPinballGame->pikaSaverTileIndex[i] = 0;
+                        gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] = 0;
 
-                    DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[i] * 0x180), 0x06010480 + (i * 0x180), 0x180);
+                    DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] * 0x180), 0x06010480 + (outlaneChuteIx * 0x180), 0x180);
                 }
             }
 
-            if (gCurrentPinballGame->catchOverlayKeyframeIndex >= 17 && gCurrentPinballGame->catchOverlayKeyframeIndex <= 23)
+            if (gCurrentPinballGame->kickbackFrameId >= 17 && gCurrentPinballGame->kickbackFrameId <= 23)
             {
                 if ((gMain.systemFrameCount & 3) >> 1)
                     gCurrentPinballGame->cameraBaseX = -3;
@@ -2099,29 +2101,29 @@ void UpdateCatchModeLogic(void)
                     gCurrentPinballGame->cameraBaseX = 3;
             }
 
-            r5 = gCatchOverlayAnimData[gCurrentPinballGame->catchOverlayKeyframeIndex][0];
-            i = gCurrentPinballGame->outLaneSide - 1;
+            oamIx = gCatchOverlayAnimData[gCurrentPinballGame->kickbackFrameId][0];
+            outlaneChuteIx = gCurrentPinballGame->outLaneSide - 1;
 
             spriteGroup = gMain.fieldSpriteGroups[38];
-            spriteGroup->baseX = (i * 177) - (gCurrentPinballGame->cameraXOffset - 16);
-            if (gCurrentPinballGame->entityOverlayCollisionState)
+            spriteGroup->baseX = (outlaneChuteIx * 177) - (gCurrentPinballGame->cameraXOffset - 16);
+            if (gCurrentPinballGame->kickbackFiring)
             {
                 spriteGroup->baseY = 380 - gCurrentPinballGame->cameraYOffset;
-                gCurrentPinballGame->catchHoleOccupied[i] = 0;
+                gCurrentPinballGame->kickbackOccupied[outlaneChuteIx] = 0;
             }
             else
             {
                 spriteGroup->baseY = 180;
-                gCurrentPinballGame->catchHoleOccupied[i] = 1;
+                gCurrentPinballGame->kickbackOccupied[outlaneChuteIx] = 1;
             }
 
             for (j = 0; j < 4; j++)
             {
                 oamSimple = &spriteGroup->oam[j];
                 dst = (u16 *)&gOamBuffer[oamSimple->oamId];
-                *dst++ = gCatchOverlayOamData[r5][j * 3 + 0];
-                *dst++ = gCatchOverlayOamData[r5][j * 3 + 1];
-                *dst++ = gCatchOverlayOamData[r5][j * 3 + 2];
+                *dst++ = gCatchOverlayOamData[oamIx][j * 3 + 0];
+                *dst++ = gCatchOverlayOamData[oamIx][j * 3 + 1];
+                *dst++ = gCatchOverlayOamData[oamIx][j * 3 + 2];
 
                 gOamBuffer[oamSimple->oamId].x += spriteGroup->baseX;
                 gOamBuffer[oamSimple->oamId].y += spriteGroup->baseY;
@@ -2132,15 +2134,15 @@ void UpdateCatchModeLogic(void)
 
     if (spriteGroup->available)
     {
-        for (i = 0; i <= 1; i++)
+        for (outlaneChuteIx = 0; outlaneChuteIx <= 1; outlaneChuteIx++)
         {
-            spriteGroup = gMain.fieldSpriteGroups[29 + i];
-            spriteGroup->baseX = (i * 177) - (gCurrentPinballGame->cameraXOffset - 16);
-            if (gCurrentPinballGame->catchHoleOccupied[i])
+            spriteGroup = gMain.fieldSpriteGroups[29 + outlaneChuteIx];
+            spriteGroup->baseX = (outlaneChuteIx * 177) - (gCurrentPinballGame->cameraXOffset - 16);
+            if (gCurrentPinballGame->kickbackOccupied[outlaneChuteIx])
             {
                 if ((gMain.fieldFrameCount % 5) == 0)
                 {
-                    DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[i] * 0x180), 0x06010480 + (i * 0x180), 0x180);
+                    DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] * 0x180), 0x06010480 + (outlaneChuteIx * 0x180), 0x180);
                 }
 
                 tempY = 380 - gCurrentPinballGame->cameraYOffset;

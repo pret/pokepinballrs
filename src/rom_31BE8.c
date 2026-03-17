@@ -138,13 +138,13 @@ void UpdateSapphireHoleLetterSystem(void)
 
         if (gCurrentPinballGame->holeLetterCount < 6)
         {
-            gCurrentPinballGame->catchCreatureY = 280;
+            gCurrentPinballGame->walkMonYPos = 280;
         }
         else
         {
-            gCurrentPinballGame->catchCreatureY += 6;
+            gCurrentPinballGame->walkMonYPos += 6;
             if (gCurrentPinballGame->holeLetterSystemState == 4)
-                gCurrentPinballGame->catchCreatureY = gCurrentPinballGame->catchCreatureY + 20;
+                gCurrentPinballGame->walkMonYPos = gCurrentPinballGame->walkMonYPos + 20;
         }
         break;
     case 4:

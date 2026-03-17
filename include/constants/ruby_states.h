@@ -1,5 +1,6 @@
 #ifndef GUARD_CONSTANTS_RUBY_STATES_H
 #define GUARD_CONSTANTS_RUBY_STATES_H
+#include "main_board.h"
 
 enum RubyPondStates{
     RUBY_POND_STATE_CHINCHOU_STAGGERED = 0,

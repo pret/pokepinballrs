@@ -65,8 +65,8 @@ void UpdateRubyBoardAnimations(void)
     if (gCurrentPinballGame->hudSpriteBaseY > 202)
         DrawRubyModeTimerDisplay();
 
-    if (gCurrentPinballGame->modeTimeRemaining && gCurrentPinballGame->ballCatchState == 0)
-        gCurrentPinballGame->modeTimeRemaining--;
+    if (gCurrentPinballGame->saverTimeRemaining && gCurrentPinballGame->ballCatchState == 0)
+        gCurrentPinballGame->saverTimeRemaining--;
 }
 
 void AnimateRubySlingshotTimer(void)
@@ -195,26 +195,26 @@ void DrawRubyModeTimerDisplay(void)
     const u8 **src;
     const u8 **dest;
 
-    if (gCurrentPinballGame->modeTimeRemaining > 300)
+    if (gCurrentPinballGame->saverTimeRemaining > 300)
     {
-        gCurrentPinballGame->modeTimerDisplayIndex = 1;
+        gCurrentPinballGame->saverLit = 1;
     }
     else
     {
-        if (gCurrentPinballGame->modeTimeRemaining)
+        if (gCurrentPinballGame->saverTimeRemaining)
         {
             if (gCurrentPinballGame->ballCatchState)
-                gCurrentPinballGame->modeTimerDisplayIndex = 1;
+                gCurrentPinballGame->saverLit = 1;
             else
-                gCurrentPinballGame->modeTimerDisplayIndex = (gMain.fieldFrameCount % 16) / 8;
+                gCurrentPinballGame->saverLit = (gMain.fieldFrameCount % 16) / 8;
         }
         else
         {
-            gCurrentPinballGame->modeTimerDisplayIndex = 0;
+            gCurrentPinballGame->saverLit = 0;
         }
     }
 
-    src = gRubyModeTimerTilePointers[gCurrentPinballGame->modeTimerDisplayIndex];
+    src = gRubyModeTimerTilePointers[gCurrentPinballGame->saverLit];
     dest = gRubyModeTimerTilePointers[2];
     DmaCopy16(3, src[0], dest[0], 0xC0);
     DmaCopy16(3, src[1], dest[1], 0xC0);

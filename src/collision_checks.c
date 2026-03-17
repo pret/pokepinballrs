@@ -276,12 +276,12 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
             if (gCurrentPinballGame->ball->positionQ1.x > 359)
             {
                 if (gCurrentPinballGame->ball->positionQ1.y > 199)
-                    gCurrentPinballGame->ballCatchState = 1;
+                    gCurrentPinballGame->ballCatchState = TRAP_CATCH_HOLE;
                 else
-                    gCurrentPinballGame->ballCatchState = 3;
+                    gCurrentPinballGame->ballCatchState = TRAP_EVO_SHOP_HOLE;
             }
             else
-                gCurrentPinballGame->ballCatchState= 2;
+                gCurrentPinballGame->ballCatchState= TRAP_EGG_HOLE;
 
             DispatchRubyCatchModeInit();
             gCurrentPinballGame->collisionResponseType = 7;
@@ -1006,9 +1006,9 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
         if (gCurrentPinballGame->collisionCooldownTimer == 0)
         {
             if (gCurrentPinballGame->ball->positionQ1.x >= 200)
-                gCurrentPinballGame->ballCatchState = 1;
+                gCurrentPinballGame->ballCatchState = TRAP_CATCH_HOLE;
             else
-                gCurrentPinballGame->ballCatchState = 3;
+                gCurrentPinballGame->ballCatchState = TRAP_EVO_SHOP_HOLE;
 
             DispatchSapphireCatchModeInit();
             gCurrentPinballGame->collisionResponseType = 7;
@@ -1279,7 +1279,7 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
                         
                         gCurrentPinballGame->catchArrowProgress++;
 
-                        if (gCurrentPinballGame->catchCounterValue == 13)
+                        if (gCurrentPinballGame->chargeFillValue == 13)
                             m4aSongNumStart(SE_UNKNOWN_0x99);
 
                         if (gCurrentPinballGame->catchArrowProgress > 1)

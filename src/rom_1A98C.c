@@ -24,16 +24,16 @@ void DispatchRubyCatchModeInit(void)
 
     switch (gCurrentPinballGame->ballCatchState)
     {
-    case 1:
+    case TRAP_CATCH_HOLE:
         InitSharpedoCatchMode();
         break;
-    case 2:
+    case TRAP_EGG_HOLE:
         InitEggHatchMode();
         break;
-    case 3:
+    case TRAP_EVO_SHOP_HOLE:
         InitRubyEvolutionShopMode();
         break;
-    case 4:
+    case TRAP_CENTER_HOLE:
         InitCenterTrapMode();
         break;
     }
@@ -48,16 +48,16 @@ void UpdateRubyCatchModeAnimation(void)
 
     switch (gCurrentPinballGame->ballCatchState)
     {
-    case 1:
+    case TRAP_CATCH_HOLE:
         AnimateSharpedoCatchSequence(); // Catch hole
         break;
-    case 2:
+    case TRAP_EGG_HOLE:
         AnimateEggHatchSequence(); //Hatch hole
         break;
-    case 3:
+    case TRAP_EVO_SHOP_HOLE:
         AnimateRubyEvolutionShopSequence(); //Mart / Evo hole
         break;
-    case 4:
+    case TRAP_CENTER_HOLE:
         AnimateCenterTrapSequence(); //Center Hole
         break;
     }
@@ -235,7 +235,7 @@ void AnimateSharpedoCatchSequence(void)
         gCurrentPinballGame->collisionCooldownTimer = 30;
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
-        gCurrentPinballGame->ballCatchState = 0;
+        gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
         gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
         gCurrentPinballGame->catchHoleAnimFrame = 0;
     }
@@ -311,8 +311,8 @@ void AnimateEggHatchSequence(void)
     }
     else
     {
-        gCurrentPinballGame->ball->ballHidden = modeAnimTimer;
-        gCurrentPinballGame->ballCatchState = modeAnimTimer;
+        gCurrentPinballGame->ball->ballHidden = 0;
+        gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
 
         gCurrentPinballGame->ball->positionQ0.x = 0x58;
         gCurrentPinballGame->ball->positionQ0.y = 0xA2;
@@ -395,7 +395,7 @@ void AnimateRubyEvolutionShopSequence(void)
     gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
     gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
     gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
-    gCurrentPinballGame->ballCatchState = 0;
+    gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
     gCurrentPinballGame->shopDoorTargetFrame = 0x13;
 
     m4aSongNumStart(SE_UNKNOWN_0xC3);
@@ -729,7 +729,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                         m4aSongNumStart(MUS_FIELD_SAPPHIRE2);
                 }
 
-                if (gCurrentPinballGame->ballCatchState == 4)
+                if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE)
                     gCurrentPinballGame->outcomeFrameCounter = 170;
                 else
                     gCurrentPinballGame->modeAnimTimer = 24;
@@ -1147,7 +1147,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
             if (gCurrentPinballGame->catchModeEventTimer == 0)
             {
-                if (gCurrentPinballGame->ballCatchState == 4)
+                if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE)
                     gCurrentPinballGame->outcomeFrameCounter = 170;
                 else
                     gCurrentPinballGame->modeAnimTimer = 24;
@@ -1252,7 +1252,7 @@ void AnimateCenterTrapSequence(void)
     else
     {
         gCurrentPinballGame->trapAnimState = 0;
-        gCurrentPinballGame->ballCatchState = 0;
+        gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
     }
 }
 
@@ -1266,7 +1266,7 @@ void TransitionToBonusField(void)
     gCurrentPinballGame->ballFrozenState = 0;
     gCurrentPinballGame->ball->scale = 0x100;
     gCurrentPinballGame->trapAnimState = 0;
-    gCurrentPinballGame->ballCatchState = 0;
+    gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
     if (gCurrentPinballGame->bonusReturnState == 0)
     {
         gCurrentPinballGame->evoItemCount = 0;

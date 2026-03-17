@@ -133,9 +133,9 @@ void AllBoardProcess_8B_4CEB4(void)
     gBG0TilemapBuffer[0x7DB] = (gCurrentPinballGame->numLives + 5) * 2 - 0x3EA0;
     gBG0TilemapBuffer[0x7FB] = (gCurrentPinballGame->numLives + 5) * 2 - 0x3E9F;
 
-    if (gCurrentPinballGame->catchCounterValue == 13)
+    if (gCurrentPinballGame->chargeFillValue == 13)
     {
-        if (gCurrentPinballGame->catchCounterBlinkTimer & 0x8)
+        if (gCurrentPinballGame->fullChargeIndicatorBlinkTimer & 0x8)
         {
             gBG0TilemapBuffer[0x7DD] = 0xC19A;
             gBG0TilemapBuffer[0x7FD] = 0xC19B;
@@ -146,8 +146,8 @@ void AllBoardProcess_8B_4CEB4(void)
             gBG0TilemapBuffer[0x7FD] = 0xC183;
         }
 
-        if (gCurrentPinballGame->catchCounterBlinkTimer)
-            gCurrentPinballGame->catchCounterBlinkTimer--;
+        if (gCurrentPinballGame->fullChargeIndicatorBlinkTimer)
+            gCurrentPinballGame->fullChargeIndicatorBlinkTimer--;
     }
     else
     {

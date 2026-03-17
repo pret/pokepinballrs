@@ -244,7 +244,7 @@ void EndOfBallSequence(void)
         ClearDebugTextDisplay();
         if (gCurrentPinballGame->numLives > 0)
         {
-            gCurrentPinballGame->modeTimeRemaining = 1800;
+            gCurrentPinballGame->saverTimeRemaining = 1800;
             gCurrentPinballGame->numLives--;
             gCurrentPinballGame->collisionCooldownTimer = 60;
             gCurrentPinballGame->bonusCatchCount = 0;

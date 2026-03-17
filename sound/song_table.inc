@@ -116,7 +116,7 @@ gSongTable:: @ 0x08534E04
 	song se_score_entry_a_b_move, MUSIC_PLAYER_SE2, 2
 	song se_score_entry_letter_change, MUSIC_PLAYER_SE2, 2
 	song se_unk_6c, MUSIC_PLAYER_SE2, 2
-	song se_unk_6d, MUSIC_PLAYER_SE2, 2
+	song se_dex_info_field_select_move, MUSIC_PLAYER_SE2, 2
 	song se_unk_6e, MUSIC_PLAYER_SE2, 2
 	song se_unk_6f, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
@@ -124,14 +124,14 @@ gSongTable:: @ 0x08534E04
 	song se_flipper_pressed, MUSIC_PLAYER_SE3, 3
 	song se_slingshot_hit, MUSIC_PLAYER_SE2, 2
 	song se_pokemon_catch_hit, MUSIC_PLAYER_SE2, 2
-	song se_unk_75, MUSIC_PLAYER_SE2, 2
+	song se_pichu_in_position_chirp, MUSIC_PLAYER_SE2, 2
 	song se_trigger_button_hit, MUSIC_PLAYER_SE2, 2
 	song se_wall_hit, MUSIC_PLAYER_SE3, 3
 	song se_tilt_triggered, MUSIC_PLAYER_SE3, 3
-	song se_unk_79, MUSIC_PLAYER_SE2, 2
-	song se_unk_7a, MUSIC_PLAYER_SE2, 2
+	song se_pika_spinner_clack, MUSIC_PLAYER_SE2, 2
+	song se_pika_full_charge_1_up, MUSIC_PLAYER_SE2, 2
 	song se_unk_7b, MUSIC_PLAYER_SE2, 2
-	song se_unk_7c, MUSIC_PLAYER_SE2, 2
+	song se_kickback_thunderwave, MUSIC_PLAYER_SE2, 2
 	song se_unk_7d, MUSIC_PLAYER_SE2, 2
 	song se_unk_7e, MUSIC_PLAYER_SE2, 2
 	song se_unk_7f, MUSIC_PLAYER_SE2, 2
@@ -184,9 +184,9 @@ gSongTable:: @ 0x08534E04
 	song se_pika_charge_ti, MUSIC_PLAYER_SE2, 2
 	song se_pika_charge_high_do, MUSIC_PLAYER_SE2, 2
 	song se_unk_b0, MUSIC_PLAYER_SE2, 2
-	song se_unk_b1, MUSIC_PLAYER_SE2, 2
+	song se_pikachu_kickback, MUSIC_PLAYER_SE2, 2
 	song se_unk_b2, MUSIC_PLAYER_SE2, 2
-	song se_unk_b3, MUSIC_PLAYER_SE2, 2
+	song se_pichu_kickback, MUSIC_PLAYER_SE2, 2
 	song se_unk_b4, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_ruby_bumper_hit, MUSIC_PLAYER_SE2, 2
@@ -329,7 +329,7 @@ gSongTable:: @ 0x08534E04
 	song se_unk_13f, MUSIC_PLAYER_SE2, 2
 	song se_unk_140, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_142, MUSIC_PLAYER_SE2, 2
+	song se_pika_no_kickback, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_jirachi_move, MUSIC_PLAYER_SE2, 2
 	song se_jirachi_hit, MUSIC_PLAYER_SE2, 2

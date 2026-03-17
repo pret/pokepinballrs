@@ -111,7 +111,7 @@ void FieldSelect_State1_8C7C(void)
             {
                 if (gFieldSelectData.selectedField == FIELD_SAPPHIRE)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_0x6D);
+                    m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                     gFieldSelectData.selectedField = FIELD_RUBY;
                     gFieldSelectData.rubyHighlightVisible = 0;
                     gFieldSelectData.sapphireHighlightVisible = 1;
@@ -122,7 +122,7 @@ void FieldSelect_State1_8C7C(void)
             {
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_0x6D);
+                    m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                     gFieldSelectData.selectedField = FIELD_SAPPHIRE;
                     gFieldSelectData.rubyHighlightVisible = 1;
                     gFieldSelectData.sapphireHighlightVisible = 0;
@@ -234,7 +234,7 @@ void FieldSelect_State1_8C7C(void)
             {
                 if (gFieldSelectData.selectedField == FIELD_SAPPHIRE)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_0x6D);
+                    m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                     gFieldSelectData.selectedField = FIELD_RUBY;
                     gFieldSelectData.rubyHighlightVisible = 0;
                     gFieldSelectData.sapphireHighlightVisible = 1;
@@ -248,7 +248,7 @@ void FieldSelect_State1_8C7C(void)
             {
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_0x6D);
+                    m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                     gFieldSelectData.selectedField = FIELD_SAPPHIRE;
                     gFieldSelectData.rubyHighlightVisible = 1;
                     gFieldSelectData.sapphireHighlightVisible = 0;

@@ -58,11 +58,11 @@ void RubyBoardProcess_3A_19A20(void)
     gCurrentPinballGame->pikachuSpinFrame = 0;
     gCurrentPinballGame->pikachuSpinPrevFrame = 1;
     UpdatePikachuChargeCounter();
-    AnimateCatchCounterDisplay();
+    ProcessChargeIndicator();
     DrawPikachuSpinner();
 
-    gCurrentPinballGame->catchCounterAnimState = 256;
-    gCurrentPinballGame->catchCounterScaleY = 256;
+    gCurrentPinballGame->chargeIndicatorScaleX = 256;
+    gCurrentPinballGame->chargeIndicatorScaleY = 256;
     gCurrentPinballGame->rampPrizeType = 2;
     DrawRubyNuzleafPlatformSprite();
 
@@ -277,8 +277,8 @@ void UpdateRubyBoardEntityRendering(void)
     {
         DrawSpoinkSprite();
     }
-    UpdateCatchModeLogic();
-    AnimateCatchCounterDisplay();
+    UpdateKickbackLogic();
+    ProcessChargeIndicator();
     UpdateRubyBoardAnimations();
     UpdatePortraitSpritePositions();
     UpdateEvolutionShopSprite();
@@ -320,7 +320,7 @@ void HandleRubyFlipperButtonInput(void)
     if (gCurrentPinballGame->newButtonActions[0])
     {
         if (gCurrentPinballGame->pikaKickbackTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->pikaSaverTimer == 0 && gCurrentPinballGame->entityOverlayCollisionState == 0)
+            gCurrentPinballGame->pichuEntranceTimer == 0 && gCurrentPinballGame->kickbackFiring == 0)
         {
             gCurrentPinballGame->outLanePikaPosition = 0;
         }
@@ -340,7 +340,7 @@ void HandleRubyFlipperButtonInput(void)
     if (gCurrentPinballGame->newButtonActions[1])
     {
         if (gCurrentPinballGame->pikaKickbackTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->pikaSaverTimer == 0 && gCurrentPinballGame->entityOverlayCollisionState == 0)
+            gCurrentPinballGame->pichuEntranceTimer == 0 && gCurrentPinballGame->kickbackFiring == 0)
         {
             gCurrentPinballGame->outLanePikaPosition = 1;
         }
