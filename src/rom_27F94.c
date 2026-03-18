@@ -40,9 +40,9 @@ extern const u16 gHatchAnimOamAttributes[][3];
 extern const u16 gSapphireHatchOamFramesets[14][18];
 extern const u8 (*gCatchSpriteGfxPtrs[])[0x480];
 
-extern struct SongHeader se_unk_84;
-extern struct SongHeader se_unk_81;
-extern struct SongHeader se_unk_87;
+extern struct SongHeader se_evo_item_appear;
+extern struct SongHeader se_roulette_tick;
+extern struct SongHeader se_ball_upgrade;
 extern struct SongHeader se_unk_9a;
 
 enum HatchTileRevealStates {
@@ -466,7 +466,7 @@ void UpdateJirachiBonus(void)
             gCurrentPinballGame->boardSubState = 4;
             gCurrentPinballGame->stageTimer = 150;
             gCurrentPinballGame->jirachiCollisionEnabled = 0;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_84);
+            MPlayStart(&gMPlayInfo_SE1, &se_evo_item_appear);
         }
         return;
     case 4:
@@ -1220,7 +1220,7 @@ void RunRouletteWheel(void)
 
         gCurrentPinballGame->modeOutcomeValues[1] = gCurrentPinballGame->rouletteSlotValues[gCurrentPinballGame->rouletteSlotCursor];
         LoadPortraitGraphics(2, 1);
-        MPlayStart(&gMPlayInfo_SE1, &se_unk_81);
+        MPlayStart(&gMPlayInfo_SE1, &se_roulette_tick);
     }
 }
 
@@ -1385,7 +1385,7 @@ void ProcessRouletteOutcome(void)
                 gCurrentPinballGame->ballUpgradeType++;
 
             gCurrentPinballGame->ballUpgradeCounter = 3600;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_87);
+            MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
         break;
@@ -1394,7 +1394,7 @@ void ProcessRouletteOutcome(void)
         {
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
             gCurrentPinballGame->ballUpgradeCounter = 3600;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_87);
+            MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
         break;
@@ -1460,19 +1460,19 @@ void ProcessRouletteOutcome(void)
     case 33:
         if (gCurrentPinballGame->outcomeFrameCounter == 70)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x91);
+            m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
             gCurrentPinballGame->scoreAddedInFrame = 100;
         }
         break;
     case 34:
         if (gCurrentPinballGame->outcomeFrameCounter == 70) {
-            m4aSongNumStart(SE_UNKNOWN_0x91);
+            m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
             gCurrentPinballGame->scoreAddedInFrame = 500;
         }
         break;
     case 35:
         if (gCurrentPinballGame->outcomeFrameCounter == 70) {
-            m4aSongNumStart(SE_UNKNOWN_0x91);
+            m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
             gCurrentPinballGame->scoreAddedInFrame = 900;
         }
         break;

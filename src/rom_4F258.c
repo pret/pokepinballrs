@@ -18,7 +18,7 @@ extern const u8 *gShopItemTilePointers[][3];
 extern const s16 gRubySlingshotAnimIndices[];
 extern const u8 *gRubySlingshotTilePointers[][3][5];
 
-extern struct SongHeader se_unk_87;
+extern struct SongHeader se_ball_upgrade;
 
 
 void UpdateRubyBoardAnimations(void)
@@ -373,7 +373,7 @@ void AnimateRubyBallPowerUpSequence(void)
         }
 
         if (gCurrentPinballGame->ballShadowTimer == 40)
-        MPlayStart(&gMPlayInfo_SE1, &se_unk_87);
+        MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
 
         if (gCurrentPinballGame->ballShadowTimer == 60)
             gMain.fieldSpriteGroups[43]->available = 1;

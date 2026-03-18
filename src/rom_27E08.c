@@ -76,9 +76,9 @@ extern const u8 gPikachuSaverTilesGfx[];
 
 extern u8 gCatchSpritePaletteBuffer[];
 
-extern struct SongHeader se_unk_84;
-extern struct SongHeader se_unk_85;
-extern struct SongHeader se_unk_86;
+extern struct SongHeader se_evo_item_appear;
+extern struct SongHeader se_evo_item_finish_appear;
+extern struct SongHeader se_evo_item_collected;
 
 
 void PichuArrivalSequence(void)
@@ -898,7 +898,7 @@ void AnimateCoinReward(void)
                         gCurrentPinballGame->coinBounceTimer[var2] = 17;
                         gCurrentPinballGame->coinSpritePos[var2].x = 188;
                         gCurrentPinballGame->coinSpritePos[var2].y = 140;
-                        m4aSongNumStart(SE_UNKNOWN_0x7E);
+                        m4aSongNumStart(SE_COIN_COLLECTED);
                         gCurrentPinballGame->coins += gCurrentPinballGame->coinRewardAmount - gCurrentPinballGame->coinsAwarded;
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
@@ -914,7 +914,7 @@ void AnimateCoinReward(void)
                         gCurrentPinballGame->coinSpritePos[var2].x = 188;
                         gCurrentPinballGame->coinSpritePos[var2].y = 140;
                         gCurrentPinballGame->coinsAwarded++;
-                        m4aSongNumStart(SE_UNKNOWN_0x7E);
+                        m4aSongNumStart(SE_COIN_COLLECTED);
                         gCurrentPinballGame->coins++;
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
@@ -1495,7 +1495,7 @@ void UpdateEggModeAnimation(void)
                 RequestBoardStateTransition(5);
 
             if (gCurrentPinballGame->eggAnimFrameIndex == 28)
-                m4aSongNumStart(SE_UNKNOWN_0x92);
+                m4aSongNumStart(SE_HATCH_FLOURISH);
         }
 
         var3 = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][0];
@@ -2257,7 +2257,7 @@ void RevealSequentialHatchTiles(void)
 
     if (gCurrentPinballGame->hatchFrameId == 1)
     {
-        m4aSongNumStart(SE_UNKNOWN_0x8C);
+        m4aSongNumStart(SE_CATCH_TILE_REVEAL);
         InitSequentialTileParticles();
     }
 
@@ -2319,7 +2319,7 @@ void RevealAllHatchTilesAtOnce(void)
         DmaCopy16(3, gHatchStartTilesGfx, (void *)0x06015800, 0x2000);
         DmaCopy16(3, gHatchStartPalette, (void *)0x050003C0, 0x20);
         gMain.fieldSpriteGroups[35]->available = 1;
-        m4aSongNumStart(SE_UNKNOWN_0x8D);
+        m4aSongNumStart(SE_CATCH_ALL_REVEAL_LIGHTNING);
         gCurrentPinballGame->hatchRevealPhase++;
         gCurrentPinballGame->revealAnimFrameCounter = 0;
         gCurrentPinballGame->revealFramesetIndex = 0;
@@ -2407,7 +2407,7 @@ void RevealAllHatchTilesAtOnce(void)
         DmaCopy16(3, gHatchStage3Palette, (void *)0x050003C0, 0x20);
         gCurrentPinballGame->hatchRevealPhase++;
         InitBurstTileParticles();
-        m4aSongNumStart(SE_UNKNOWN_0x8E);
+        m4aSongNumStart(SE_CATCH_ALL_REVEAL_SHATTER);
         break;
     case 6:
         gMain.blendBrightness = 0;
@@ -2669,7 +2669,7 @@ void UpdateAreaRoulette(void)
                 gMain.fieldSpriteGroups[20]->available = 0;
                 gMain.fieldSpriteGroups[21]->available = 0;
                 gMain.fieldSpriteGroups[34]->available = 1;
-                m4aSongNumStart(SE_UNKNOWN_0x93);
+                m4aSongNumStart(SE_AREA_ROULETTE_SELECTED);
             }
         }
 
@@ -2698,7 +2698,7 @@ void UpdateAreaRoulette(void)
             gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
             gCurrentPinballGame->rouletteAreaIndex[1] = gAreaToSpeciesTable[gCurrentPinballGame->area];
             LoadPortraitGraphics(0, 1);
-            m4aSongNumStart(SE_UNKNOWN_0x81);
+            m4aSongNumStart(SE_ROULETTE_TICK);
         }
         break;
     case 6:
@@ -3390,7 +3390,7 @@ void UpdateEvolutionItemAnimation(void)
         }
 
         if (gCurrentPinballGame->evoItemAppearTimer == 60)
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_84);
+            MPlayStart(&gMPlayInfo_SE1, &se_evo_item_appear);
 
         if (gEvoItemAppearFrameThresholds[gCurrentPinballGame->evoItemAnimFrame] > gCurrentPinballGame->evoItemAnimFrameTimer)
         {
@@ -3406,7 +3406,7 @@ void UpdateEvolutionItemAnimation(void)
                 gCurrentPinballGame->evoItemAppearTimer = 1;
                 gMain.fieldSpriteGroups[40]->available = 0;
                 gMain.fieldSpriteGroups[32]->available = 1;
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_85);
+                MPlayStart(&gMPlayInfo_SE1, &se_evo_item_finish_appear);
                 gCurrentPinballGame->activePortraitType = 0;
             }
         }
@@ -3444,7 +3444,7 @@ void UpdateEvolutionItemAnimation(void)
             gCurrentPinballGame->evoItemsCaught < 3)
         {
             gCurrentPinballGame->scoreAddedInFrame = 10000;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_86);
+            MPlayStart(&gMPlayInfo_SE1, &se_evo_item_collected);
             gCurrentPinballGame->boardSubState = 1;
             gCurrentPinballGame->catchLights[gCurrentPinballGame->evoItemsCaught] = 5;
             gCurrentPinballGame->evoItemsCaught++;

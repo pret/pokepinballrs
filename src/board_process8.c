@@ -45,7 +45,7 @@ void AllBoardProcess_8B_4CEB4(void)
                 {
                     gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAddStepSize;
                     gCurrentPinballGame->scoreAdditionAccumulator -= gCurrentPinballGame->scoreAddStepSize;
-                    m4aSongNumStart(SE_UNKNOWN_0x91);
+                    m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
                 }
             }
         }

@@ -500,7 +500,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gCurrentPinballGame->shopAnimSlideTimer = 15;
             gMain.shopPanelActive = 1;
 
-            m4aSongNumStart(SE_UNKNOWN_0x8F);
+            m4aSongNumStart(SE_SHOP_LIST_REVEAL);
 
             if (gCurrentPinballGame->outLanePikaPosition == 2)
                 gCurrentPinballGame->shopPikaSaverMaxed = 1;
@@ -1219,7 +1219,7 @@ void AnimateCenterTrapSequence(void)
         }
         else if (gCurrentPinballGame->modeAnimTimer == 24)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x80);
+            m4aSongNumStart(SE_CENTER_HOLE_EJECT);
             gCurrentPinballGame->trapAnimState = 2;
             gCurrentPinballGame->ball->velocity.x = 73;
             gCurrentPinballGame->ball->velocity.y = 236;

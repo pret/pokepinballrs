@@ -961,7 +961,7 @@ extern u8 gFlipperTileGraphics[][0x200];
 extern u16 gDusclopsBoardDusclopsAppearFx_Gfx[]; 
 extern u16 gDusclopsBoardDusclops_Gfx[]; 
 extern u8 gDusclopsBoardDusclopsBallGrabSwirl_Gfx[];
-extern struct SongHeader se_unk_8b;
+extern struct SongHeader se_catch_evo_banner;
 extern struct SongHeader se_dusclops_appear;
 extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
 extern const s16 gBounceBackForceMagnitudes[9];

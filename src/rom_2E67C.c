@@ -764,7 +764,7 @@ void RunTravelEventCutscene(void)
             gCurrentPinballGame->travelPainterVelY = -30;
             index = (gCurrentPinballGame->stageTimer % 4) / 2;
             if (gCurrentPinballGame->stageTimer % 10 == 0)
-                m4aSongNumStart(SE_UNKNOWN_0x97);
+                m4aSongNumStart(SE_TRAVEL_PAINTER_FLIGHT);
         }
         else if (gCurrentPinballGame->stageTimer < 90)
         {
@@ -808,7 +808,7 @@ void RunTravelEventCutscene(void)
 
             index = gTravelEventAnimData[gCurrentPinballGame->travelAnimKeyframeIndex][1];
             if (gTravelEventAnimData[gCurrentPinballGame->travelAnimKeyframeIndex][2] == 5 && gCurrentPinballGame->travelAnimSubTimer == 1)
-                m4aSongNumStart(SE_UNKNOWN_0x98);
+                m4aSongNumStart(SE_TRAVEL_PAINTER_PAINTS);
 
             if (index == 16)
                 gCurrentPinballGame->travelPainterPosX = -80;
@@ -849,7 +849,7 @@ void RunTravelEventCutscene(void)
                 gCurrentPinballGame->travelPainterPosX += gCurrentPinballGame->travelPainterVelX;
                 gCurrentPinballGame->travelPainterPosY += gCurrentPinballGame->travelPainterVelY;
                 if (gCurrentPinballGame->stageTimer % 10 == 0)
-                    m4aSongNumStart(SE_UNKNOWN_0x97);
+                    m4aSongNumStart(SE_TRAVEL_PAINTER_FLIGHT);
         }
 
         if (gMain.selectedField == FIELD_RUBY)

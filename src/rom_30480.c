@@ -116,7 +116,7 @@ void UpdateSapphireEggCaveAnimation(void)
                 RequestBoardStateTransition(5);
 
             if (gCurrentPinballGame->eggAnimFrameIndex == 28)
-                m4aSongNumStart(SE_UNKNOWN_0x92);
+                m4aSongNumStart(SE_HATCH_FLOURISH);
         }
 
         sp0 = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][0];

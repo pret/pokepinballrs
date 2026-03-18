@@ -172,7 +172,7 @@ void RenderBannerSlideAnimation(void)
                 {
                     if (gCurrentPinballGame->bannerSlideTimer == 0x28)
                     {
-                        MPlayStart(&gMPlayInfo_SE1, &se_unk_8b);
+                        MPlayStart(&gMPlayInfo_SE1, &se_catch_evo_banner);
                     }
                     gCurrentPinballGame->bannerSlideTimer--;
                     if (gCurrentPinballGame->bannerSlideTimer <= 0xF)

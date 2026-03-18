@@ -77,34 +77,34 @@
 #define SE_UNKNOWN_0x7B             0x7B // SE18 Otherwise unused. Sustained machine noise. - Same as 95
 #define SE_KICKBACK_THUNDERWAVE     0x7C // SE19 *extended stable electric tone* (SE153 has a short form)
 #define SE_UNKNOWN_0x7D             0x7D // ?? *Kerplunk* ??
-#define SE_UNKNOWN_0x7E             0x7E // SE20 Same as SE1
+#define SE_COIN_COLLECTED           0x7E // SE20 Same as SE1
 #define SE_UNKNOWN_0x7F             0x7F // ?? Questioning Cry??
-#define SE_UNKNOWN_0x80             0x80 // SE21 *flying slash*
-#define SE_UNKNOWN_0x81             0x81 // *SE22 *Pokeball hit ground; low pitched related to SE47*
+#define SE_CENTER_HOLE_EJECT        0x80 // SE21 *flying slash*
+#define SE_ROULETTE_TICK            0x81 // SE22 *Pokeball hit ground; low pitched related to SE47*
 #define SE_EVO_SELECTION_MOVE       0x82 // SE23 Evo Selection list move
 #define SE_EVO_SELECTION_CONFIRM    0x83 // SE24 Evo Selection confirmed
-#define SE_UNKNOWN_0x84             0x84 // *SE25 Evo Symbol Spawned; Ball Respawn - Bonus board
-#define SE_UNKNOWN_0x85             0x85 // *SE26 Evo Symbol finished spawning (Same as SE43)
-#define SE_UNKNOWN_0x86             0x86 // *SE27 Evo Symbol collected
-#define SE_UNKNOWN_0x87             0x87 // *SE28 *Pokeball/power upgrade? *
+#define SE_EVO_ITEM_APPEAR          0x84 // SE25 Evo Symbol Spawned; Ball Respawn - Bonus board
+#define SE_EVO_ITEM_FINISH_APPEAR   0x85 // SE26 Evo Symbol finished spawning (Same as SE43)
+#define SE_EVO_ITEM_COLLECTED       0x86 // SE27 Evo Symbol collected
+#define SE_BALL_UPGRADE             0x87 // *SE28 *Pokeball/power upgrade? *
 #define SE_UNKNOWN_0x88             0x88 // ?? *Downward compliment to SE28* ??
 #define SE_UNKNOWN_0x89             0x89 // ?? *Coin collect*??
 #define SE_FAILURE                  0x8A // SE29 Denied. ('Unable to select' in pokedex)
-#define SE_UNKNOWN_0x8B             0x8B // *SE30 Evo/Catch mode initiated
-#define SE_UNKNOWN_0x8C             0x8C // SE31 Catch Tile Revealed (Same as 114, 129, 139, 151)
-#define SE_UNKNOWN_0x8D             0x8D // SE32 *Descending roar*
-#define SE_UNKNOWN_0x8E             0x8E // SE33 *Vibrating ting*
-#define SE_UNKNOWN_0x8F             0x8F // SE34 *drum brush*
+#define SE_CATCH_EVO_BANNER         0x8B // SE30 Evo/Catch mode initiated
+#define SE_CATCH_TILE_REVEAL        0x8C // SE31 Catch Tile Revealed (Same as 114, 129, 139, 151)
+#define SE_CATCH_ALL_REVEAL_LIGHTNING 0x8D // SE32 *Descending roar*
+#define SE_CATCH_ALL_REVEAL_SHATTER 0x8E // SE33 *Vibrating ting*
+#define SE_SHOP_LIST_REVEAL         0x8F // SE34 *drum brush*
 #define SE_UNKNOWN_0x90             0x90 // No Sound
-#define SE_UNKNOWN_0x91             0x91 // SE35 Bonus point tally finished; RS: Pokédex page change
-#define SE_UNKNOWN_0x92             0x92 // SE36 Egg hatched flourish*
-#define SE_UNKNOWN_0x93             0x93 // SE37 Duplicate of SE1 Menu Selection; RS: PokéNav turn on
-#define SE_UNKNOWN_0x94             0x94 // SE38 Ball Sunk sound *Pokemon leaves ball/escape?* Same as SE163
-#define SE_UNKNOWN_0x95             0x95 // SE39 Latias/Latios delivers ball to plunger
-#define SE_UNKNOWN_0x96             0x96 // SE40 Launcher catches ball
-#define SE_UNKNOWN_0x97             0x97 // SE41 *Hit closed door*
-#define SE_UNKNOWN_0x98             0x98 // SE42 *Hit and enclose*
-#define SE_UNKNOWN_0x99             0x99 // *SE43 ?Launcher fully charged? Duplicate of SE26
+#define SE_BONUS_SCORE_TALLIED      0x91 // SE35 Bonus point tally finished; RS: Pokédex page change
+#define SE_HATCH_FLOURISH           0x92 // SE36 Egg hatched flourish*
+#define SE_AREA_ROULETTE_SELECTED   0x93 // SE37 Duplicate of SE1 Menu Selection; RS: PokéNav turn on
+#define SE_BALL_SAVED               0x94 // SE38 Ball Sunk sound *Pokemon leaves ball/escape?* Same as SE163
+#define SE_LATI_DELIVERY            0x95 // SE39 Latias/Latios delivers ball to plunger
+#define SE_SAVER_PLUNGER_DROP       0x96 // SE40 Launcher catches ball
+#define SE_TRAVEL_PAINTER_FLIGHT    0x97 // SE41 Volbeat/Illumise flight
+#define SE_TRAVEL_PAINTER_PAINTS    0x98 // SE42 Volbeat/Illumise painting new travel board
+#define SE_UNKNOWN_0x99             0x99 // *SE43 Evo Arrow earned & (sapphire)pika charge already full - Duplicate of SE26S
 #define SE_UNKNOWN_0x9A             0x9A // *SE44 Pokemon being absorbed into ball (when catching)
 #define SE_UNKNOWN_0x9B             0x9B // SE45 *gusty wind landing*
 #define SE_UNKNOWN_0x9C             0x9C // SE46 Pokemon entered Pokeball (when catching)
