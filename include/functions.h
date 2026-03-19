@@ -435,7 +435,7 @@ extern void DispatchRubyCatchModeInit();
 extern void UpdateRubyCatchModeAnimation(void);
 //extern ? InitSharpedoCatchMode();
 extern void AnimateSharpedoCatchSequence();
-extern void InitEggHatchMode(void);
+extern void InitRubyEggHatchMode(void);
 //extern ? AnimateEggHatchSequence();
 //extern ? InitRubyEvolutionShopMode();
 //extern ? AnimateRubyEvolutionShopSequence();

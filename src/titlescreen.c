@@ -31,6 +31,14 @@ enum
     SUBSTATE_11,
 };
 
+void ClearHighScoreNameEntry(void)
+{
+    int i;
+
+    for (i = 0; i < HIGH_SCORE_NAME_LENGTH; i++)
+        gHighScoreNameEntry[i] = 0;
+}
+
 void TitlescreenMain(void)
 {
     gTitlescreenStateFuncs[gMain.subState]();
