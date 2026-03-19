@@ -51,6 +51,7 @@ enum HatchTileRevealStates {
     HATCH_TILE_REVEAL_ALL_AT_ONCE = 2
 };
 
+//catch_mode.c continues here
 
 void UpdateCatchEmMode(void)
 {
@@ -246,6 +247,7 @@ void UpdateCatchEmMode(void)
     }
 }
 
+//jirachi.c starts here
 void InitJirachiBonus(void)
 {
     gCurrentPinballGame->boardSubState = 0;
@@ -505,6 +507,7 @@ void UpdateJirachiBonus(void)
     }
 }
 
+//sprite graphics starts here
 void LoadCatchSpriteGraphics(void)
 {
     s16 i;
@@ -760,6 +763,7 @@ void CleanupJirachiSprites(void)
         gMain.fieldSpriteGroups[45 + i]->available = 0;
 }
 
+//draw_catch_tiles
 void CheckHatchTileRevealState(void)
 {
     // Cross vertical threshold, check completion
@@ -1026,6 +1030,7 @@ void UpdateBurstTileParticles(void)
     }
 }
 
+//roulette
 void InitRouletteWheel(void)
 {
     s16 i;
@@ -1499,6 +1504,7 @@ void ProcessRouletteOutcome(void)
     }
 }
 
+//Which one?
 void RunBallCaptureSequence(void)
 {
     s16 i;

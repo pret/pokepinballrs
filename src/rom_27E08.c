@@ -2401,6 +2401,7 @@ void RevealAllHatchTilesAtOnce(void)
     }
 }
 
+//start 'roulette.c' here
 void InitAreaRoulette(void)
 {
     s16 i;
@@ -2917,6 +2918,7 @@ void UpdateTravelMode(void)
     }
 }
 
+//Evolution_mode.c starts here
 void CleanupEvolutionModeState(void)
 {
     s16 i;
@@ -3375,6 +3377,7 @@ void UpdateEvolutionItemAnimation(void)
     }
 }
 
+//catch_mode.c starts here
 void CleanupCatchEmState(void)
 {
     s16 i;

@@ -8,6 +8,11 @@ extern const u16 gPortraitAnimPalettes[];
 
 extern const s16 gRouletteOutcomeFrameOffsets[];
 
+/*
+    File is used for the center screen display on the main board.
+    Can contain travel location picture, catch mon, roulette wheel
+*/
+
 void LoadPortraitGraphics(s16 arg0, s16 arg1)
 {
     s16 i;
