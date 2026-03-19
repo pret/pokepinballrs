@@ -79,8 +79,6 @@ extern struct SongHeader se_evo_item_appear;
 extern struct SongHeader se_evo_item_finish_appear;
 extern struct SongHeader se_evo_item_collected;
 
-
-
 void ResetCatchState(s16 resetHoleIndicators)
 {
     if (resetHoleIndicators)
