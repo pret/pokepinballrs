@@ -4,6 +4,7 @@
 #include "main.h"
 #include "m4a.h"
 #include "constants/bg_music.h"
+#include "constants/main_board.h"
 
 void AllBoardProcess_4A_19304(void)
 {
@@ -99,7 +100,7 @@ void UpdateMainBoardFlipperPhysics(void)
 
         if (gCurrentPinballGame->heldButtonActions[i])
         {
-            if (flipper->active == 0 && gCurrentPinballGame->ballCatchState == 0)
+            if (flipper->active == 0 && gCurrentPinballGame->ballCatchState == NOT_TRAPPED)
                 m4aSongNumStart(SE_FLIPPER_PRESSED);
 
             flipper->active = 1;
@@ -214,7 +215,9 @@ void UpdateBonusBoardFlipperPhysics(void)
 
         if (gCurrentPinballGame->heldButtonActions[i] && gMain.modeChangeFlags == MODE_CHANGE_NONE)
         {
-            if (flipper->active == 0 && gCurrentPinballGame->ballCatchState == 0 && gCurrentPinballGame->flippersDisabled == 0)
+            if (flipper->active == 0 &&
+                gCurrentPinballGame->ballCatchState == NOT_TRAPPED &&
+                gCurrentPinballGame->flippersDisabled == 0)
             {
                 m4aSongNumStart(SE_FLIPPER_PRESSED);
             }

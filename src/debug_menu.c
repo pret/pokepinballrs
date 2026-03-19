@@ -244,7 +244,7 @@ void EndOfBallSequence(void)
         ClearDebugTextDisplay();
         if (gCurrentPinballGame->numLives > 0)
         {
-            gCurrentPinballGame->modeTimeRemaining = 1800;
+            gCurrentPinballGame->saverTimeRemaining = 1800;
             gCurrentPinballGame->numLives--;
             gCurrentPinballGame->collisionCooldownTimer = 60;
             gCurrentPinballGame->bonusCatchCount = 0;
@@ -400,7 +400,7 @@ void BallSaverAnimation(void)
                 gCurrentPinballGame->ballSaverBallPosX = gCurrentPinballGame->ballSaverPosX;
                 gCurrentPinballGame->ballSaverBallPosY = gCurrentPinballGame->ballSaverPosY;
                 if (gMain.animationTimer == 56)
-                    m4aSongNumStart(SE_UNKNOWN_0x95);
+                    m4aSongNumStart(SE_LATI_DELIVERY);
 
                 gCurrentPinballGame->ball->positionQ8.x = (gCurrentPinballGame->ballSaverBallPosX / 100 + 86) << 8;
                 gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->ballSaverSlideY + 372 + gCurrentPinballGame->ballSaverBallPosY / 100) << 8;
@@ -414,7 +414,7 @@ void BallSaverAnimation(void)
                 if (gMain.animationTimer == 32)
                 {
                     gCurrentPinballGame->boardEntityActive = 0;
-                    m4aSongNumStart(SE_UNKNOWN_0x96);
+                    m4aSongNumStart(SE_SAVER_PLUNGER_DROP);
                     PlayRumble(6);
                 }
 
@@ -480,7 +480,7 @@ void BallSaverAnimation(void)
             gCurrentPinballGame->boardEntityActive = 1;
             gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
             gCurrentPinballGame->startButtonDisabled = 1;
-            m4aSongNumStart(SE_UNKNOWN_0x94);
+            m4aSongNumStart(SE_BALL_SAVED);
         }
         else if (gMain.animationTimer == 0)
         {
@@ -657,7 +657,7 @@ void EndOfBallBonusSummary(void)
                     gCurrentPinballGame->scoreHi += gCurrentPinballGame->bonusTotalScoreHi;
                     gCurrentPinballGame->bonusTotalScoreLo = 0;
                     gCurrentPinballGame->bonusTotalScoreHi = 0;
-                    m4aSongNumStart(SE_UNKNOWN_0x91);
+                    m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
                 }
             }
 
@@ -954,13 +954,13 @@ void EndOfBallBonusSummary(void)
                 {
                     gCurrentPinballGame->bonusCategoryScore -= 200000;
                     gCurrentPinballGame->bonusSubtotal += 200000;
-                    m4aSongNumStart(SE_UNKNOWN_0x91);
+                    m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
                 }
                 else if (gCurrentPinballGame->bonusCategoryScore != 0)
                 {
                     gCurrentPinballGame->bonusSubtotal += gCurrentPinballGame->bonusCategoryScore;
                     gCurrentPinballGame->bonusCategoryScore = 0;
-                    m4aSongNumStart(SE_UNKNOWN_0x91);
+                    m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
                 }
             }
 
@@ -990,20 +990,20 @@ void EndOfBallBonusSummary(void)
                 {
                     gCurrentPinballGame->bonusTotalScoreLo -= 200000;
                     gCurrentPinballGame->scoreLo += 200000;
-                    m4aSongNumStart(SE_UNKNOWN_0x91);
+                    m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
                 }
                 else if (gCurrentPinballGame->bonusTotalScoreHi != 0)
                 {
                     gCurrentPinballGame->bonusTotalScoreHi--;
                     gCurrentPinballGame->bonusTotalScoreLo += 99800000;
                     gCurrentPinballGame->scoreLo += 200000;
-                    m4aSongNumStart(SE_UNKNOWN_0x91);
+                    m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
                 }
                 else if (gCurrentPinballGame->bonusTotalScoreLo != 0)
                 {
                     gCurrentPinballGame->scoreLo += gCurrentPinballGame->bonusTotalScoreLo;
                     gCurrentPinballGame->bonusTotalScoreLo = 0;
-                    m4aSongNumStart(SE_UNKNOWN_0x91);
+                    m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
                 }
             }
 

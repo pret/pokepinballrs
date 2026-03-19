@@ -308,8 +308,8 @@ void UpdateSapphireBoardAnimations(void)
     if (gCurrentPinballGame->hudSpriteBaseY >= 8 && gCurrentPinballGame->hudSpriteBaseY < 182)
         AnimateBumperHitCounter();
 
-    if (gCurrentPinballGame->modeTimeRemaining && gCurrentPinballGame->ballCatchState == 0)
-        gCurrentPinballGame->modeTimeRemaining--;
+    if (gCurrentPinballGame->saverTimeRemaining && gCurrentPinballGame->ballCatchState == 0)
+        gCurrentPinballGame->saverTimeRemaining--;
 }
 
 void DrawSapphireProgressDigits(void)
@@ -456,23 +456,23 @@ void DrawSapphireModeTimerDisplay(void)
     const u8 **src;
     const u8 **dest;
 
-    if (gCurrentPinballGame->modeTimeRemaining > 300)
+    if (gCurrentPinballGame->saverTimeRemaining > 300)
     {
-        gCurrentPinballGame->modeTimerDisplayIndex = 1;
+        gCurrentPinballGame->saverLit = 1;
     }
-    else if (gCurrentPinballGame->modeTimeRemaining)
+    else if (gCurrentPinballGame->saverTimeRemaining)
     {
         if (gCurrentPinballGame->ballCatchState)
-            gCurrentPinballGame->modeTimerDisplayIndex = 1;
+            gCurrentPinballGame->saverLit = 1;
         else
-            gCurrentPinballGame->modeTimerDisplayIndex = (gMain.fieldFrameCount & 0xF) / 8;
+            gCurrentPinballGame->saverLit = (gMain.fieldFrameCount & 0xF) / 8;
     }
     else
     {
-        gCurrentPinballGame->modeTimerDisplayIndex = 0;
+        gCurrentPinballGame->saverLit = 0;
     }
 
-    src = gSapphireModeTimerDisplayTilePtrs[gCurrentPinballGame->modeTimerDisplayIndex];
+    src = gSapphireModeTimerDisplayTilePtrs[gCurrentPinballGame->saverLit];
     dest = gSapphireModeTimerDisplayTilePtrs[2];
     DmaCopy16(3, src[0], dest[0], 0xE0);
     DmaCopy16(3, src[1], dest[1], 0xE0);

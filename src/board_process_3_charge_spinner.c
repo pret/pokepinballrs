@@ -3,27 +3,27 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
-extern struct SongHeader se_unk_7a;
-extern struct SongHeader se_unk_79;
+extern struct SongHeader se_pika_full_charge_1_up;
+extern struct SongHeader se_pika_spinner_clack;
 
 void UpdatePikachuChargeCounter(void)
 {
     if (gCurrentPinballGame->pikaChargeTarget != gCurrentPinballGame->pikaChargeProgress)
     {
         gCurrentPinballGame->pikaChargeProgress += 2;
-        gCurrentPinballGame->catchCounterValue = gCurrentPinballGame->pikaChargeProgress / 14;
-        gCurrentPinballGame->catchCounterSlideTimer = 80;
-        gCurrentPinballGame->catchCounterAnimState = 256;
-        gCurrentPinballGame->catchCounterScaleY = 256;
-        if (gCurrentPinballGame->catchCounterValue == 11)
-            gCurrentPinballGame->pikachuAnimTimer = 120;
+        gCurrentPinballGame->chargeFillValue = gCurrentPinballGame->pikaChargeProgress / 14;
+        gCurrentPinballGame->fullChargeSlideAnimTimer = 80;
+        gCurrentPinballGame->chargeIndicatorScaleX = 256;
+        gCurrentPinballGame->chargeIndicatorScaleY = 256;
+        if (gCurrentPinballGame->chargeFillValue == 11)
+            gCurrentPinballGame->chargeFillAnimTimer = 120;
 
-        if (gCurrentPinballGame->catchCounterValue > 11)
+        if (gCurrentPinballGame->chargeFillValue > 11)
         {
-            gCurrentPinballGame->catchCounterValue = 12;
-            gCurrentPinballGame->catchCounterSlideTimer = 120;
-            gCurrentPinballGame->catchCounterAnimState = 256;
-            gCurrentPinballGame->catchCounterScaleY = 256;
+            gCurrentPinballGame->chargeFillValue = 12;
+            gCurrentPinballGame->fullChargeSlideAnimTimer = 120;
+            gCurrentPinballGame->chargeIndicatorScaleX = 256;
+            gCurrentPinballGame->chargeIndicatorScaleY = 256;
         }
 
         if (gCurrentPinballGame->pikaChargeProgress < 168 && gCurrentPinballGame->pikaChargeProgress % 8 == 0)
@@ -37,7 +37,7 @@ void UpdatePikachuChargeCounter(void)
             gCurrentPinballGame->pikaChargeProgress = gCurrentPinballGame->pikaChargeTarget;
             if (gCurrentPinballGame->pikaChargeProgress >= 168)
             {
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_7a);
+                MPlayStart(&gMPlayInfo_SE1, &se_pika_full_charge_1_up);
                 gCurrentPinballGame->scoreAddedInFrame = 3000;
             }
         }
@@ -59,13 +59,13 @@ void UpdatePikachuChargeCounter(void)
         else
         {
             gCurrentPinballGame->pikaSpinFrameCounter = 0;
-            MPlayStart(&gMPlayInfo_SE3, &se_unk_79);
+            MPlayStart(&gMPlayInfo_SE3, &se_pika_spinner_clack);
             gCurrentPinballGame->scoreAddedInFrame = 100;
-            if (gCurrentPinballGame->catchCounterValue < 12 && gCurrentPinballGame->entityOverlayCollisionState == 0)
+            if (gCurrentPinballGame->chargeFillValue < 12 && gCurrentPinballGame->kickbackFiring == 0)
             {
-                gCurrentPinballGame->catchCounterSlideTimer = 80;
-                gCurrentPinballGame->catchCounterAnimState = 256;
-                gCurrentPinballGame->catchCounterScaleY = 256;
+                gCurrentPinballGame->fullChargeSlideAnimTimer = 80;
+                gCurrentPinballGame->chargeIndicatorScaleX = 256;
+                gCurrentPinballGame->chargeIndicatorScaleY = 256;
             }
         }
 
@@ -90,13 +90,13 @@ void UpdatePikachuChargeCounter(void)
             else
             {
                 gCurrentPinballGame->pikaSpinFrameCounter = 0;
-                MPlayStart(&gMPlayInfo_SE3, &se_unk_79);
+                MPlayStart(&gMPlayInfo_SE3, &se_pika_spinner_clack);
                 gCurrentPinballGame->scoreAddedInFrame = 100;
-                if (gCurrentPinballGame->catchCounterValue < 12 && gCurrentPinballGame->entityOverlayCollisionState == 0)
+                if (gCurrentPinballGame->chargeFillValue < 12 && gCurrentPinballGame->kickbackFiring == 0)
                 {
-                    gCurrentPinballGame->catchCounterSlideTimer = 80;
-                    gCurrentPinballGame->catchCounterAnimState = 256;
-                    gCurrentPinballGame->catchCounterScaleY = 256;
+                    gCurrentPinballGame->fullChargeSlideAnimTimer = 80;
+                    gCurrentPinballGame->chargeIndicatorScaleX = 256;
+                    gCurrentPinballGame->chargeIndicatorScaleY = 256;
                 }
             }
 

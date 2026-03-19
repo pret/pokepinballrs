@@ -98,7 +98,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gCurrentPinballGame->shopAnimSlideTimer = 15;
             gMain.shopPanelActive = 1;
 
-            m4aSongNumStart(SE_UNKNOWN_0x8F);
+            m4aSongNumStart(SE_SHOP_LIST_REVEAL);
 
             if (gCurrentPinballGame->outLanePikaPosition == 2)
                 gCurrentPinballGame->shopPikaSaverMaxed = 1;
@@ -327,7 +327,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                         m4aSongNumStart(MUS_FIELD_SAPPHIRE2);
                 }
 
-                if (gCurrentPinballGame->ballCatchState == 4)
+                if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE)
                     gCurrentPinballGame->outcomeFrameCounter = 170;
                 else
                     gCurrentPinballGame->modeAnimTimer = 24;
@@ -745,7 +745,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
             if (gCurrentPinballGame->catchModeEventTimer == 0)
             {
-                if (gCurrentPinballGame->ballCatchState == 4)
+                if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE)
                     gCurrentPinballGame->outcomeFrameCounter = 170;
                 else
                     gCurrentPinballGame->modeAnimTimer = 24;
@@ -817,7 +817,7 @@ void AnimateCenterTrapSequence(void)
         }
         else if (gCurrentPinballGame->modeAnimTimer == 24)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x80);
+            m4aSongNumStart(SE_CENTER_HOLE_EJECT);
             gCurrentPinballGame->trapAnimState = 2;
             gCurrentPinballGame->ball->velocity.x = 73;
             gCurrentPinballGame->ball->velocity.y = 236;
@@ -850,7 +850,7 @@ void AnimateCenterTrapSequence(void)
     else
     {
         gCurrentPinballGame->trapAnimState = 0;
-        gCurrentPinballGame->ballCatchState = 0;
+        gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
     }
 }
 
@@ -864,7 +864,7 @@ void TransitionToBonusField(void)
     gCurrentPinballGame->ballFrozenState = 0;
     gCurrentPinballGame->ball->scale = 0x100;
     gCurrentPinballGame->trapAnimState = 0;
-    gCurrentPinballGame->ballCatchState = 0;
+    gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
     if (gCurrentPinballGame->bonusReturnState == 0)
     {
         gCurrentPinballGame->evoItemCount = 0;

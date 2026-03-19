@@ -150,7 +150,7 @@ struct PinballGame
     /*0x022*/ s8 collisionResponseType;
     /*0x023*/ u8 collisionSurfaceType; // Holds the value of some enum state
     /*0x024*/ s8 boardLayerDepth;
-    /*0x025*/ s8 ballCatchState;
+    /*0x025*/ s8 ballCatchState; // 0=Not caught, 1=Catch mode hole, 2=Egg Hatch Hole, 3=Evo Shop hole, 4=Center hole
     /*0x026*/ u16 collisionCooldownTimer;
     /*0x028*/ u16 modeAnimTimer;
     /*0x02A*/ u16 unk2A;
@@ -293,28 +293,28 @@ struct PinballGame
     /*0x1B8*/ s16 shopAnimSlideTimer;
     /*0x1BA*/ u16 shopEntryTimer;
     /*0x1BC*/ u16 randomSpriteVariantSeed;
-    /*0x1BE*/ s8 pikaRescuePath;
+    /*0x1BE*/ s8 pichuWalkMode; //1=entrance, 2=exit
     /*0x1BF*/ u8 filler1BF[0x1];
-    /*0x1C0*/ u16 pikaSaverTimer;
-    /*0x1C2*/ s8 outLaneSide;
+    /*0x1C0*/ u16 pichuEntranceTimer;
+    /*0x1C2*/ s8 outLaneSide; // 1=Left; 2=Right
     /*0x1C3*/ u8 filler1C3[0x1];
     /*0x1C4*/ u16 pikaKickbackTimer;
     /*0x1C6*/ s16 pikaChargeTarget;
     /*0x1C8*/ s16 pikaChargeProgress;
-    /*0x1CA*/ s16 catchCounterValue;
-    /*0x1CC*/ s16 prevCatchCounterValue;
-    /*0x1CE*/ u16 pikachuAnimTimer;
-    /*0x1D0*/ u16 catchCounterSlideTimer;
+    /*0x1CA*/ s16 chargeFillValue;
+    /*0x1CC*/ s16 prevChargeFillValue;
+    /*0x1CE*/ u16 chargeFillAnimTimer;
+    /*0x1D0*/ u16 fullChargeSlideAnimTimer;
     /*0x1D2*/ u16 unk1D2;
-    /*0x1D4*/ u16 catchCounterXShift;
-    /*0x1D6*/ u16 catchCounterSlideOffsetY;
-    /*0x1D8*/ u16 catchCounterAnimState;
-    /*0x1DA*/ u16 catchCounterScaleY;
-    /*0x1DC*/ u16 catchCounterBlinkTimer;
-    /*0x1DE*/ u16 catchAnimProgress;
-    /*0x1E0*/ u16 catchAnimDuration;
+    /*0x1D4*/ u16 chargeIndicatorXOffset;
+    /*0x1D6*/ u16 chargeIndicatorYOffset;
+    /*0x1D8*/ u16 chargeIndicatorScaleX;
+    /*0x1DA*/ u16 chargeIndicatorScaleY;
+    /*0x1DC*/ u16 fullChargeIndicatorBlinkTimer;
+    /*0x1DE*/ u16 kickbackAnimProgress;
+    /*0x1E0*/ u16 kickbackAnimDuration;
     /*0x1E2*/ s8 outLanePikaPosition; //Pikachu coverage. 0= left lane, 1=right lane, 2 = both
-    /*0x1E3*/ s8 catchHoleOccupied[2];
+    /*0x1E3*/ s8 kickbackOccupied[2];
     /*0x1E5*/ s8 pikachuSpinFrame;
     /*0x1E6*/ s8 pikachuSpinPrevFrame;
     /*0x1E7*/ u8 filler1E7[0x1];
@@ -329,15 +329,15 @@ struct PinballGame
     /*0x1F3*/ u8 unk1F3;
     /*0x1F4*/ s16 portraitOffsetX;
     /*0x1F6*/ s16 portraitOffsetY;
-    /*0x1F8*/ s16 creatureVelX;
-    /*0x1FA*/ s16 creatureVelY;
-    /*0x1FC*/ s32 catchCreatureX;
-    /*0x200*/ s32 catchCreatureY;
-    /*0x204*/ s8 creatureWaypointIndex;
+    /*0x1F8*/ s16 walkMonXVelocity;
+    /*0x1FA*/ s16 walkMonYVelocity;
+    /*0x1FC*/ s32 walkMonXPos; // Used for both hatch mons, and for pichu kickback walk
+    /*0x200*/ s32 walkMonYPos; // Used for both hatch mons, and for pichu kickback walk
+    /*0x204*/ s8 creatureWaypointIndex; // Used for both hatch mons, and for pichu kickback walk
     /*0x205*/ u8 filler205[0x1];
     /*0x206*/ u16 waypointSubTimer;
-    /*0x208*/ u16 catchOverlayFrameTimer;
-    /*0x20A*/ s8 catchOverlayKeyframeIndex;
+    /*0x208*/ u16 kickbackAnimFrameTimer;
+    /*0x20A*/ s8 kickbackFrameId;
     /*0x20B*/ s8 bonusTrapAnimFrame;
     /*0x20C*/ s8 prevBonusTrapFrame;
     /*0x20D*/ u8 filler20D[0x1];
@@ -725,10 +725,10 @@ struct PinballGame
     /*0x616*/ u16 pikaSpinCooldownTimer;
     /*0x618*/ u16 pikaSpinFrameCounter;
     /*0x61A*/ s16 pikaSpinPeriod;
-    /*0x61C*/ s8 entityOverlayCollisionState;
+    /*0x61C*/ s8 kickbackFiring;
     /*0x61D*/ u8 filler61D;
-    /*0x61E*/ u16 catchOverlayTimer;
-    /*0x620*/ struct Vector16 catchBallStartPos;
+    /*0x61E*/ u16 kickbackLaunchTimer;
+    /*0x620*/ struct Vector16 kickbackBallHoverPos;
     /*0x624*/ s8 bumperHitCountdown; // 2 when Hit, one frame of ignored collision, then ready to hit again
     /*0x625*/ s8 hatchTilesBumperAcknowledged;
     /*0x626*/ s8 evoItemAnimFrame;
@@ -803,8 +803,8 @@ struct PinballGame
     /*0x721*/ s8 evoCatchLightSlot1;
     /*0x722*/ s8 evoCatchLightSlot2;
     /*0x723*/ s8 evoItemCount;
-    /*0x724*/ u16 modeTimeRemaining;
-    /*0x726*/ s8 modeTimerDisplayIndex;
+    /*0x724*/ u16 saverTimeRemaining;
+    /*0x726*/ s8 saverLit;
     /*0x727*/ u8 filler727[0x1];
     /*0x728*/ s8 catchArrowPaletteActive;
     /*0x729*/ s8 evoArrowPaletteActive;
@@ -961,7 +961,7 @@ extern u8 gFlipperTileGraphics[][0x200];
 extern u16 gDusclopsBoardDusclopsAppearFx_Gfx[]; 
 extern u16 gDusclopsBoardDusclops_Gfx[]; 
 extern u8 gDusclopsBoardDusclopsBallGrabSwirl_Gfx[];
-extern struct SongHeader se_unk_8b;
+extern struct SongHeader se_catch_evo_banner;
 extern struct SongHeader se_dusclops_appear;
 extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
 extern const s16 gBounceBackForceMagnitudes[9];
@@ -999,7 +999,7 @@ extern const u8 gBallRotationTileGraphics[][0x80];
 extern const u8 gBallShadowTileGraphics[][0x200];
 extern const u8 gMainStageBonusTrap_Gfx[][0x300];
 extern const u8 gPortraitGenericGraphics[][0x300];
-extern const u8 gCatchCounterDigitTilesGfx[][0x80];
+extern const u8 gChargeFillIndicator_Gfx[][0x80];
 extern const u8 gPikaSaverTilesGfx[];
 extern const u8 gMainBoardPikaSpinner_Gfx[][0x120];
 extern const u8 gEggFrameTilesGfx[][0x200];

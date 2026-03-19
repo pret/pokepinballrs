@@ -1,24 +1,24 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_87_grp, gUnknown_08532310
-	.equ	se_unk_87_pri, 5
-	.equ	se_unk_87_rev, reverb_set+50
-	.equ	se_unk_87_mvl, 127
-	.equ	se_unk_87_key, 0
-	.equ	se_unk_87_tbs, 1
-	.equ	se_unk_87_exg, 0
-	.equ	se_unk_87_cmp, 1
+	.equ	se_ball_upgrade_grp, gUnknown_08532310
+	.equ	se_ball_upgrade_pri, 5
+	.equ	se_ball_upgrade_rev, reverb_set+50
+	.equ	se_ball_upgrade_mvl, 127
+	.equ	se_ball_upgrade_key, 0
+	.equ	se_ball_upgrade_tbs, 1
+	.equ	se_ball_upgrade_exg, 0
+	.equ	se_ball_upgrade_cmp, 1
 
 	.section .rodata
-	.global	se_unk_87
+	.global	se_ball_upgrade
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_87_0:  @ 0x0869F628
-	.byte	KEYSH , se_unk_87_key+0
-	.byte	TEMPO , 150*se_unk_87_tbs/2
-	.byte		VOL   , 100*se_unk_87_mvl/mxv
+se_ball_upgrade_0:  @ 0x0869F628
+	.byte	KEYSH , se_ball_upgrade_key+0
+	.byte	TEMPO , 150*se_ball_upgrade_tbs/2
+	.byte		VOL   , 100*se_ball_upgrade_mvl/mxv
 	.byte		PAN   , c_v+0
 	.byte		VOICE , 17
 	.byte		N04   , Cs4 , v127
@@ -51,13 +51,13 @@ se_unk_87_0:  @ 0x0869F628
 
 	.align	2
 
-se_unk_87:  @ 0x0869F664
+se_ball_upgrade:  @ 0x0869F664
 	.byte	1	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_87_pri	@ Priority
-	.byte	se_unk_87_rev	@ Reverb
+	.byte	se_ball_upgrade_pri	@ Priority
+	.byte	se_ball_upgrade_rev	@ Reverb
 
-	.word	se_unk_87_grp
+	.word	se_ball_upgrade_grp
 
-	.word	se_unk_87_0
+	.word	se_ball_upgrade_0
 @ 0x0869F670

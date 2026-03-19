@@ -107,7 +107,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             if (gSelectedBonusField != FIELD_SELECT_DUSCLOPS && gSelectedBonusField != FIELD_SELECT_GROUDON)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x6D);
+                m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                 gSelectedBonusField--;
             }
         }
@@ -115,7 +115,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             if (gSelectedBonusField != FIELD_SELECT_SPHEAL && gSelectedBonusField != FIELD_SELECT_RAYQUAZA)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x6D);
+                m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                 gSelectedBonusField++;
             }
         }
@@ -123,7 +123,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             if (gSelectedBonusField > FIELD_SELECT_SPHEAL)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x6D);
+                m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                 gSelectedBonusField -= 3;
             }
         }
@@ -131,7 +131,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             if (gSelectedBonusField < FIELD_SELECT_GROUDON)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x6D);
+                m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                 gSelectedBonusField += 3;
             }
         }

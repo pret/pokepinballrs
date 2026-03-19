@@ -1,25 +1,25 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_84_grp, gUnknown_08531D4C
-	.equ	se_unk_84_pri, 5
-	.equ	se_unk_84_rev, reverb_set+50
-	.equ	se_unk_84_mvl, 127
-	.equ	se_unk_84_key, 0
-	.equ	se_unk_84_tbs, 1
-	.equ	se_unk_84_exg, 0
-	.equ	se_unk_84_cmp, 1
+	.equ	se_evo_item_appear_grp, gUnknown_08531D4C
+	.equ	se_evo_item_appear_pri, 5
+	.equ	se_evo_item_appear_rev, reverb_set+50
+	.equ	se_evo_item_appear_mvl, 127
+	.equ	se_evo_item_appear_key, 0
+	.equ	se_evo_item_appear_tbs, 1
+	.equ	se_evo_item_appear_exg, 0
+	.equ	se_evo_item_appear_cmp, 1
 
 	.section .rodata
-	.global	se_unk_84
+	.global	se_evo_item_appear
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_84_0:  @ 0x0869F4E0
-	.byte	KEYSH , se_unk_84_key+0
-	.byte	TEMPO , 150*se_unk_84_tbs/2
+se_evo_item_appear_0:  @ 0x0869F4E0
+	.byte	KEYSH , se_evo_item_appear_key+0
+	.byte	TEMPO , 150*se_evo_item_appear_tbs/2
 	.byte		VOICE , 46
-	.byte		VOL   , 110*se_unk_84_mvl/mxv
+	.byte		VOL   , 110*se_evo_item_appear_mvl/mxv
 	.byte		BENDR , 2
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v+15
@@ -81,11 +81,11 @@ se_unk_84_0:  @ 0x0869F4E0
 
 @*********************** Track 02 ***********************@
 
-se_unk_84_1:  @ 0x0869F53F
-	.byte	KEYSH , se_unk_84_key+0
+se_evo_item_appear_1:  @ 0x0869F53F
+	.byte	KEYSH , se_evo_item_appear_key+0
 	.byte		VOICE , 53
 	.byte		BENDR , 2
-	.byte		VOL   , 43*se_unk_84_mvl/mxv
+	.byte		VOL   , 43*se_evo_item_appear_mvl/mxv
 	.byte		BEND  , c_v+15
 	.byte		N02   , An6 , v112
 	.byte	W02
@@ -142,14 +142,14 @@ se_unk_84_1:  @ 0x0869F53F
 
 	.align	2
 
-se_unk_84:  @ 0x0869F58C
+se_evo_item_appear:  @ 0x0869F58C
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_84_pri	@ Priority
-	.byte	se_unk_84_rev	@ Reverb
+	.byte	se_evo_item_appear_pri	@ Priority
+	.byte	se_evo_item_appear_rev	@ Reverb
 
-	.word	se_unk_84_grp
+	.word	se_evo_item_appear_grp
 
-	.word	se_unk_84_0
-	.word	se_unk_84_1
+	.word	se_evo_item_appear_0
+	.word	se_evo_item_appear_1
 @ 0x0869F59C

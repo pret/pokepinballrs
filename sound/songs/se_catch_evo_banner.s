@@ -1,31 +1,31 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_8b_grp, gUnknown_08531D4C
-	.equ	se_unk_8b_pri, 5
-	.equ	se_unk_8b_rev, reverb_set+50
-	.equ	se_unk_8b_mvl, 127
-	.equ	se_unk_8b_key, 0
-	.equ	se_unk_8b_tbs, 1
-	.equ	se_unk_8b_exg, 0
-	.equ	se_unk_8b_cmp, 1
+	.equ	se_catch_evo_banner_grp, gUnknown_08531D4C
+	.equ	se_catch_evo_banner_pri, 5
+	.equ	se_catch_evo_banner_rev, reverb_set+50
+	.equ	se_catch_evo_banner_mvl, 127
+	.equ	se_catch_evo_banner_key, 0
+	.equ	se_catch_evo_banner_tbs, 1
+	.equ	se_catch_evo_banner_exg, 0
+	.equ	se_catch_evo_banner_cmp, 1
 
 	.section .rodata
-	.global	se_unk_8b
+	.global	se_catch_evo_banner
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_8b_0:  @ 0x0869F70C
-	.byte	KEYSH , se_unk_8b_key+0
-	.byte	TEMPO , 150*se_unk_8b_tbs/2
+se_catch_evo_banner_0:  @ 0x0869F70C
+	.byte	KEYSH , se_catch_evo_banner_key+0
+	.byte	TEMPO , 150*se_catch_evo_banner_tbs/2
 	.byte		VOICE , 22
 	.byte		BENDR , 12
 	.byte		PAN   , c_v+0
-	.byte		VOL   , 63*se_unk_8b_mvl/mxv
+	.byte		VOL   , 63*se_catch_evo_banner_mvl/mxv
 	.byte		BEND  , c_v-48
 	.byte		N72   , Fn4 , v108
 	.byte	W02
-	.byte		VOL   , 68*se_unk_8b_mvl/mxv
+	.byte		VOL   , 68*se_catch_evo_banner_mvl/mxv
 	.byte		BEND  , c_v-43
 	.byte	W01
 	.byte		PAN   , c_v+5
@@ -33,31 +33,31 @@ se_unk_8b_0:  @ 0x0869F70C
 	.byte		BEND  , c_v-38
 	.byte	W02
 	.byte		PAN   , c_v+15
-	.byte		VOL   , 70*se_unk_8b_mvl/mxv
+	.byte		VOL   , 70*se_catch_evo_banner_mvl/mxv
 	.byte	W01
 	.byte		BEND  , c_v-34
 	.byte	W02
 	.byte		PAN   , c_v+6
-	.byte		VOL   , 75*se_unk_8b_mvl/mxv
+	.byte		VOL   , 75*se_catch_evo_banner_mvl/mxv
 	.byte		BEND  , c_v-30
 	.byte	W03
 	.byte		PAN   , c_v-1
 	.byte		BEND  , c_v-28
 	.byte	W01
-	.byte		VOL   , 78*se_unk_8b_mvl/mxv
+	.byte		VOL   , 78*se_catch_evo_banner_mvl/mxv
 	.byte	W01
 	.byte		BEND  , c_v-24
 	.byte	W01
 	.byte		PAN   , c_v-9
 	.byte	W01
-	.byte		VOL   , 85*se_unk_8b_mvl/mxv
+	.byte		VOL   , 85*se_catch_evo_banner_mvl/mxv
 	.byte		BEND  , c_v-21
 	.byte	W02
 	.byte		PAN   , c_v-15
 	.byte	W01
 	.byte		BEND  , c_v-16
 	.byte	W01
-	.byte		VOL   , 90*se_unk_8b_mvl/mxv
+	.byte		VOL   , 90*se_catch_evo_banner_mvl/mxv
 	.byte	W01
 	.byte		PAN   , c_v-9
 	.byte		BEND  , c_v-12
@@ -103,32 +103,32 @@ se_unk_8b_0:  @ 0x0869F70C
 	.byte	W01
 	.byte		BEND  , c_v+35
 	.byte	W02
-	.byte		VOL   , 74*se_unk_8b_mvl/mxv
+	.byte		VOL   , 74*se_catch_evo_banner_mvl/mxv
 	.byte		PAN   , c_v+15
 	.byte	W01
 	.byte		BEND  , c_v+38
 	.byte	W02
-	.byte		VOL   , 58*se_unk_8b_mvl/mxv
+	.byte		VOL   , 58*se_catch_evo_banner_mvl/mxv
 	.byte		PAN   , c_v+6
 	.byte		BEND  , c_v+42
 	.byte	W03
-	.byte		VOL   , 47*se_unk_8b_mvl/mxv
+	.byte		VOL   , 47*se_catch_evo_banner_mvl/mxv
 	.byte		PAN   , c_v-1
 	.byte		BEND  , c_v+45
 	.byte	W02
 	.byte		        c_v+48
 	.byte	W01
-	.byte		VOL   , 34*se_unk_8b_mvl/mxv
+	.byte		VOL   , 34*se_catch_evo_banner_mvl/mxv
 	.byte		PAN   , c_v-9
 	.byte	W01
 	.byte		BEND  , c_v+50
 	.byte	W02
-	.byte		VOL   , 22*se_unk_8b_mvl/mxv
+	.byte		VOL   , 22*se_catch_evo_banner_mvl/mxv
 	.byte		PAN   , c_v-15
 	.byte	W01
 	.byte		BEND  , c_v+54
 	.byte	W02
-	.byte		VOL   , 6*se_unk_8b_mvl/mxv
+	.byte		VOL   , 6*se_catch_evo_banner_mvl/mxv
 	.byte		PAN   , c_v-9
 	.byte		BEND  , c_v+58
 	.byte	W03
@@ -138,13 +138,13 @@ se_unk_8b_0:  @ 0x0869F70C
 
 	.align	2
 
-se_unk_8b:  @ 0x0869F7C8
+se_catch_evo_banner:  @ 0x0869F7C8
 	.byte	1	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_8b_pri	@ Priority
-	.byte	se_unk_8b_rev	@ Reverb
+	.byte	se_catch_evo_banner_pri	@ Priority
+	.byte	se_catch_evo_banner_rev	@ Reverb
 
-	.word	se_unk_8b_grp
+	.word	se_catch_evo_banner_grp
 
-	.word	se_unk_8b_0
+	.word	se_catch_evo_banner_0
 @ 0x0869F7D4

@@ -40,9 +40,9 @@ extern const u16 gHatchAnimOamAttributes[][3];
 extern const u16 gSapphireHatchOamFramesets[14][18];
 extern const u8 (*gCatchSpriteGfxPtrs[])[0x480];
 
-extern struct SongHeader se_unk_84;
-extern struct SongHeader se_unk_81;
-extern struct SongHeader se_unk_87;
+extern struct SongHeader se_evo_item_appear;
+extern struct SongHeader se_roulette_tick;
+extern struct SongHeader se_ball_upgrade;
 extern struct SongHeader se_unk_9a;
 
 enum HatchTileRevealStates {
@@ -272,7 +272,7 @@ void InitJirachiBonus(void)
     gCurrentPinballGame->jirachiTagTimer[1] = 10;
     gCurrentPinballGame->jirachiTagTimer[2] = 20;
     gCurrentPinballGame->jirachiTagTimer[3] = 30;
-    gCurrentPinballGame->modeTimeRemaining = 3240;
+    gCurrentPinballGame->saverTimeRemaining = 3240;
     gCurrentPinballGame->allHolesLit = 0;
     gCurrentPinballGame->holeIndicators[0] = 0;
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
@@ -466,7 +466,7 @@ void UpdateJirachiBonus(void)
             gCurrentPinballGame->boardSubState = 4;
             gCurrentPinballGame->stageTimer = 150;
             gCurrentPinballGame->jirachiCollisionEnabled = 0;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_84);
+            MPlayStart(&gMPlayInfo_SE1, &se_evo_item_appear);
         }
         return;
     case 4:
@@ -1220,7 +1220,7 @@ void RunRouletteWheel(void)
 
         gCurrentPinballGame->modeOutcomeValues[1] = gCurrentPinballGame->rouletteSlotValues[gCurrentPinballGame->rouletteSlotCursor];
         LoadPortraitGraphics(2, 1);
-        MPlayStart(&gMPlayInfo_SE1, &se_unk_81);
+        MPlayStart(&gMPlayInfo_SE1, &se_roulette_tick);
     }
 }
 
@@ -1247,7 +1247,7 @@ void ProcessRouletteOutcome(void)
     case 0:
     case 1:
     case 2:
-        gCurrentPinballGame->modeTimeRemaining = (gCurrentPinballGame->rouletteOutcomeId + 1) * 1800;
+        gCurrentPinballGame->saverTimeRemaining = (gCurrentPinballGame->rouletteOutcomeId + 1) * 1800;
         break;
     case 3:
         if (gCurrentPinballGame->ballCatchState == 3)
@@ -1265,15 +1265,15 @@ void ProcessRouletteOutcome(void)
             {
                 gCurrentPinballGame->pikaChargeTarget = 168;
                 gCurrentPinballGame->pikaChargeProgress = 168;
-                gCurrentPinballGame->prevCatchCounterValue = 13;
-                gCurrentPinballGame->catchCounterValue = 13;
-                gCurrentPinballGame->catchCounterSlideTimer = 0;
-                gCurrentPinballGame->catchCounterSlideOffsetY = 120;
-                gCurrentPinballGame->catchCounterBlinkTimer = 60;
+                gCurrentPinballGame->prevChargeFillValue = 13;
+                gCurrentPinballGame->chargeFillValue = 13;
+                gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
+                gCurrentPinballGame->chargeIndicatorYOffset = 120;
+                gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
                 DmaCopy16(3, gPikachuSaverTilesGfx, (void *)0x06010600, 0x180);
                 gCurrentPinballGame->outLanePikaPosition = 2;
                 gMain.fieldSpriteGroups[41]->available = 0;
-                gCurrentPinballGame->pikaSaverTimer = 1;
+                gCurrentPinballGame->pichuEntranceTimer = 1;
             }
         }
         else
@@ -1289,19 +1289,19 @@ void ProcessRouletteOutcome(void)
                 gCurrentPinballGame->bannerGfxIndex = 0;
                 gCurrentPinballGame->bannerActive = 1;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
-                gCurrentPinballGame->pikaRescuePath = 1;
-                gCurrentPinballGame->pikaSaverTimer = 800;
+                gCurrentPinballGame->pichuWalkMode = 1;
+                gCurrentPinballGame->pichuEntranceTimer = 800;
                 gCurrentPinballGame->outLanePikaPosition = 0;
                 gCurrentPinballGame->pikaChargeTarget = 168;
                 gCurrentPinballGame->pikaChargeProgress = 168;
-                gCurrentPinballGame->prevCatchCounterValue = 13;
-                gCurrentPinballGame->catchCounterValue = 13;
-                gCurrentPinballGame->catchCounterSlideTimer = 0;
-                gCurrentPinballGame->catchCounterSlideOffsetY = 120;
-                gCurrentPinballGame->catchCounterBlinkTimer = 60;
+                gCurrentPinballGame->prevChargeFillValue = 13;
+                gCurrentPinballGame->chargeFillValue = 13;
+                gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
+                gCurrentPinballGame->chargeIndicatorYOffset = 120;
+                gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
             }
 
-            if (gCurrentPinballGame->pikaSaverTimer)
+            if (gCurrentPinballGame->pichuEntranceTimer)
             {
                 if (gCurrentPinballGame->outcomeFrameCounter >= 176)
                     gCurrentPinballGame->outcomeFrameCounter = 176;
@@ -1385,7 +1385,7 @@ void ProcessRouletteOutcome(void)
                 gCurrentPinballGame->ballUpgradeType++;
 
             gCurrentPinballGame->ballUpgradeCounter = 3600;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_87);
+            MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
         break;
@@ -1394,7 +1394,7 @@ void ProcessRouletteOutcome(void)
         {
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
             gCurrentPinballGame->ballUpgradeCounter = 3600;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_87);
+            MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
         break;
@@ -1460,19 +1460,19 @@ void ProcessRouletteOutcome(void)
     case 33:
         if (gCurrentPinballGame->outcomeFrameCounter == 70)
         {
-            m4aSongNumStart(SE_UNKNOWN_0x91);
+            m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
             gCurrentPinballGame->scoreAddedInFrame = 100;
         }
         break;
     case 34:
         if (gCurrentPinballGame->outcomeFrameCounter == 70) {
-            m4aSongNumStart(SE_UNKNOWN_0x91);
+            m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
             gCurrentPinballGame->scoreAddedInFrame = 500;
         }
         break;
     case 35:
         if (gCurrentPinballGame->outcomeFrameCounter == 70) {
-            m4aSongNumStart(SE_UNKNOWN_0x91);
+            m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
             gCurrentPinballGame->scoreAddedInFrame = 900;
         }
         break;

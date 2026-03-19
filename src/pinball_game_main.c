@@ -338,16 +338,16 @@ void InitPinballGameState(void)
         {
             gCurrentPinballGame->pikaChargeTarget = 168;
             gCurrentPinballGame->pikaChargeProgress = 168;
-            gCurrentPinballGame->prevCatchCounterValue = 13;
-            gCurrentPinballGame->catchCounterValue = 13;
-            gCurrentPinballGame->catchCounterSlideTimer = 0;
-            gCurrentPinballGame->catchCounterXShift = 0;
-            gCurrentPinballGame->catchCounterSlideOffsetY = 120;
-            gCurrentPinballGame->catchCounterBlinkTimer = 60;
+            gCurrentPinballGame->prevChargeFillValue = 13;
+            gCurrentPinballGame->chargeFillValue = 13;
+            gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
+            gCurrentPinballGame->chargeIndicatorXOffset = 0;
+            gCurrentPinballGame->chargeIndicatorYOffset = 120;
+            gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
             DmaCopy16(3, gDxModePikachuObjTiles, (void *)OBJ_VRAM0 + 0x600, 0x180);
             gCurrentPinballGame->outLanePikaPosition = 2;
             gMain.fieldSpriteGroups[41]->available = FALSE;
-            gCurrentPinballGame->pikaSaverTimer = 1;
+            gCurrentPinballGame->pichuEntranceTimer = 1;
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
             gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
             gCurrentPinballGame->numLives = 9;
@@ -355,8 +355,8 @@ void InitPinballGameState(void)
         }
         else
         {
-            gCurrentPinballGame->catchCounterXShift = 0;
-            gCurrentPinballGame->catchCounterSlideOffsetY = -4;
+            gCurrentPinballGame->chargeIndicatorXOffset = 0;
+            gCurrentPinballGame->chargeIndicatorYOffset = -4;
             gCurrentPinballGame->numLives = 2;
             gCurrentPinballGame->coins = 10;
         }
@@ -389,7 +389,7 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ballFrozenState = 1;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->modeAnimTimer = 120;
-        gCurrentPinballGame->ballCatchState = 4;
+        gCurrentPinballGame->ballCatchState = TRAP_CENTER_HOLE;
         if (gMain.selectedField == FIELD_RUBY)
             UpdateRubyCatchModeAnimation();
         else
@@ -1035,18 +1035,18 @@ void RestoreGameState(u16 arg0)
         if ((var2 & 0x3) == 1)
         {
             gCurrentPinballGame->pikaSpinMomentum = 0;
-            gCurrentPinballGame->catchOverlayFrameTimer = 0;
-            gCurrentPinballGame->catchOverlayKeyframeIndex = 0;
+            gCurrentPinballGame->kickbackAnimFrameTimer = 0;
+            gCurrentPinballGame->kickbackFrameId = 0;
             gCurrentPinballGame->pikaChargeTarget = 0;
             gCurrentPinballGame->pikaChargeProgress = 0;
-            gCurrentPinballGame->prevCatchCounterValue = 0;
-            gCurrentPinballGame->catchCounterValue = 0;
-            gCurrentPinballGame->catchCounterXShift = 0;
-            gCurrentPinballGame->catchCounterSlideOffsetY = -4;
-            gCurrentPinballGame->catchCounterAnimState = 256;
-            gCurrentPinballGame->catchCounterScaleY = 256;
-            gCurrentPinballGame->pikachuAnimTimer = 0;
-            gCurrentPinballGame->catchCounterSlideTimer = 0;
+            gCurrentPinballGame->prevChargeFillValue = 0;
+            gCurrentPinballGame->chargeFillValue = 0;
+            gCurrentPinballGame->chargeIndicatorXOffset = 0;
+            gCurrentPinballGame->chargeIndicatorYOffset = -4;
+            gCurrentPinballGame->chargeIndicatorScaleX = 256;
+            gCurrentPinballGame->chargeIndicatorScaleY = 256;
+            gCurrentPinballGame->chargeFillAnimTimer = 0;
+            gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
         }
     }
 
@@ -1379,8 +1379,8 @@ void RestoreMainFieldDynamicGraphics(void)
 
     var0 = gCurrentPinballGame->pikachuSpinFrame;
     DmaCopy16(3, gMainBoardPikaSpinner_Gfx[var0 = gCurrentPinballGame->pikachuSpinFrame], 0x06010780, 0x120);
-    var0 = gCurrentPinballGame->catchCounterValue;
-    DmaCopy16(3, gCatchCounterDigitTilesGfx[var0], 0x06010AE0, 0x80);
+    var0 = gCurrentPinballGame->chargeFillValue;
+    DmaCopy16(3, gChargeFillIndicator_Gfx[var0], 0x06010AE0, 0x80);
 
     for (i = 0; i <= 1; i++)
     {

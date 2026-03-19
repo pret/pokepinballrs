@@ -1482,7 +1482,7 @@ void UpdateSphealResultsScreen(void)
             if ((gCurrentPinballGame->resultsAnimTimer % 3) == 0)
             {
                 gCurrentPinballGame->sphealKnockdownDisplayCount[0]++;
-                m4aSongNumStart(SE_UNKNOWN_0x91);
+                m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
             }
         }
         else
@@ -1498,7 +1498,7 @@ void UpdateSphealResultsScreen(void)
             if ((gCurrentPinballGame->resultsAnimTimer % 3) == 0)
             {
                 gCurrentPinballGame->sphealKnockdownDisplayCount[1]++;
-                m4aSongNumStart(SE_UNKNOWN_0x91);
+                m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
             }
         }
         else

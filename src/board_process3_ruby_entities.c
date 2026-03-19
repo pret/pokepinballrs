@@ -63,8 +63,9 @@ void UpdateRubyBoardEntityRendering(void)
     {
         DrawSpoinkSprite();
     }
-    UpdateCatchModeLogic();
-    AnimateCatchCounterDisplay();
+
+    UpdateKickbackLogic();
+    ProcessChargeIndicator();
     UpdateRubyBoardAnimations();
     UpdatePortraitSpritePositions();
     UpdateEvolutionShopSprite();
@@ -106,7 +107,7 @@ void HandleRubyFlipperButtonInput(void)
     if (gCurrentPinballGame->newButtonActions[0])
     {
         if (gCurrentPinballGame->pikaKickbackTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->pikaSaverTimer == 0 && gCurrentPinballGame->entityOverlayCollisionState == 0)
+            gCurrentPinballGame->pichuEntranceTimer == 0 && gCurrentPinballGame->kickbackFiring == 0)
         {
             gCurrentPinballGame->outLanePikaPosition = 0;
         }
@@ -126,7 +127,7 @@ void HandleRubyFlipperButtonInput(void)
     if (gCurrentPinballGame->newButtonActions[1])
     {
         if (gCurrentPinballGame->pikaKickbackTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->pikaSaverTimer == 0 && gCurrentPinballGame->entityOverlayCollisionState == 0)
+            gCurrentPinballGame->pichuEntranceTimer == 0 && gCurrentPinballGame->kickbackFiring == 0)
         {
             gCurrentPinballGame->outLanePikaPosition = 1;
         }

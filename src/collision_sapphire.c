@@ -441,7 +441,7 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
                         
                         gCurrentPinballGame->catchArrowProgress++;
 
-                        if (gCurrentPinballGame->catchCounterValue == 13)
+                        if (gCurrentPinballGame->chargeFillValue == 13)
                             m4aSongNumStart(SE_UNKNOWN_0x99);
 
                         if (gCurrentPinballGame->catchArrowProgress > 1)

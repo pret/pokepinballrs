@@ -4131,11 +4131,19 @@ gCatchOverlayAnimData:: @ 0x086ADEE0
 gPikaSaverAnimFrameTable:: @ 0x086ADF48
 	.incbin "baserom.gba", 0x6ADF48, 0x42
 
-gCatchHoleXPositions:: @ 0x086ADF8A
-	.incbin "baserom.gba", 0x6ADF8A, 0x6
+gOutlaneCenterXPositions:: @ 0x086ADF8A
+    .2byte 33,206
+    .align 2,0
 
 gPikaSaverWaypoints:: @ 0x086ADF90
-	.incbin "baserom.gba", 0x6ADF90, 0x38
+    @vector32 positions
+    .4byte 1320, 4480 @ Start Walk In
+    .4byte 1350, 4260
+    .4byte 2040, 3860
+    .4byte 2100, 3960 @ Home in Chute
+    .4byte 1930, 3860 @ Start Walk Out
+    .4byte 1340, 4260
+    .4byte 1320, 4480
 
 gArrowBounceOffsets:: @ 0x086ADFC8
 	.incbin "baserom.gba", 0x6ADFC8, 0xC

@@ -59,53 +59,53 @@
 #define SE_MENU_POPUP_CLOSE         0x69 // SE 5; Yellow window popup disappears (eg: pokedox transfer confirmation)
 #define SE_SCORE_ENTRY_A_B_MOVE     0x6A // SE 6; Drum?
 #define SE_SCORE_ENTRY_LETTER_CHANGE 0x6B // SE 7; RS: Pokédex scroll
-#define SE_UNKNOWN_0x6C             0x6C // RS: Bike hop
-#define SE_UNKNOWN_0x6D             0x6D // SE 8
-#define SE_UNKNOWN_0x6E             0x6E // same as SE1
-#define SE_UNKNOWN_0x6F             0x6F // same as SE2
+#define SE_UNKNOWN_0x6C             0x6C // Unused: RS: Bike hop
+#define SE_DEX_INFO_FIELD_SELECT_MOVE 0x6D // SE 8; bonus/normal field selection, dex info page
+#define SE_UNKNOWN_0x6E             0x6E // Unused: same as SE1
+#define SE_UNKNOWN_0x6F             0x6F // Unused: same as SE2
 #define SE_UNKNOWN_0x70             0x70 // No Sound
 #define SE_UNKNOWN_0x71             0x71 // Duplicated of SE 70 *thwip*
 #define SE_FLIPPER_PRESSED          0x72 // SE9 Flipper
 #define SE_SLINGSHOT_HIT            0x73 // SE10 Triangle bumper hit
 #define SE_POKEMON_CATCH_HIT        0x74 // SE11 Pokemon Catch hit
-#define SE_UNKNOWN_0x75             0x75 // SE12 *high chirp*
+#define SE_PICHU_IN_POSITION_CHIRP  0x75 // SE12 *high chirp*
 #define SE_TRIGGER_BUTTON_HIT       0x76 // SE13 Trigger button hit
 #define SE_WALL_HIT                 0x77 // SE14 ball hits wall
 #define SE_TILT_TRIGGERED           0x78 // SE15 *metal gate bounce?*
-#define SE_UNKNOWN_0x79             0x79 // SE16 *ball flat clack*
-#define SE_UNKNOWN_0x7A             0x7A // SE17 *high trill - radar*
-#define SE_UNKNOWN_0x7B             0x7B // SE18 Sustained machine noise. - Same as 95
-#define SE_UNKNOWN_0x7C             0x7C // SE19 *extended stable electric tone* (SE153 has a short form)
+#define SE_PIKA_SPINNER_CLACK       0x79 // SE16 *ball flat clack*
+#define SE_PIKA_FULL_CHARGE_1_UP    0x7A // SE17 *high trill - radar*
+#define SE_UNKNOWN_0x7B             0x7B // SE18 Otherwise unused. Sustained machine noise. - Same as 95
+#define SE_KICKBACK_THUNDERWAVE     0x7C // SE19 *extended stable electric tone* (SE153 has a short form)
 #define SE_UNKNOWN_0x7D             0x7D // ?? *Kerplunk* ??
-#define SE_UNKNOWN_0x7E             0x7E // SE20 Same as SE1
+#define SE_COIN_COLLECTED           0x7E // SE20 Same as SE1
 #define SE_UNKNOWN_0x7F             0x7F // ?? Questioning Cry??
-#define SE_UNKNOWN_0x80             0x80 // SE21 *flying slash*
-#define SE_UNKNOWN_0x81             0x81 // SE22 *Pokeball hit ground; low pitched related to SE47*
+#define SE_CENTER_HOLE_EJECT        0x80 // SE21 *flying slash*
+#define SE_ROULETTE_TICK            0x81 // SE22 *Pokeball hit ground; low pitched related to SE47*
 #define SE_EVO_SELECTION_MOVE       0x82 // SE23 Evo Selection list move
 #define SE_EVO_SELECTION_CONFIRM    0x83 // SE24 Evo Selection confirmed
-#define SE_UNKNOWN_0x84             0x84 // SE25 Evo Symbol Spawned; Ball Respawn - Bonus board
-#define SE_UNKNOWN_0x85             0x85 // SE26 Evo Symbol finished spawning (Same as SE43)
-#define SE_UNKNOWN_0x86             0x86 // SE27 Evo Symbol collected
-#define SE_UNKNOWN_0x87             0x87 // SE28 *Pokeball/power upgrade? *
+#define SE_EVO_ITEM_APPEAR          0x84 // SE25 Evo Symbol Spawned; Ball Respawn - Bonus board
+#define SE_EVO_ITEM_FINISH_APPEAR   0x85 // SE26 Evo Symbol finished spawning (Same as SE43)
+#define SE_EVO_ITEM_COLLECTED       0x86 // SE27 Evo Symbol collected
+#define SE_BALL_UPGRADE             0x87 // *SE28 *Pokeball/power upgrade? *
 #define SE_UNKNOWN_0x88             0x88 // ?? *Downward compliment to SE28* ??
 #define SE_UNKNOWN_0x89             0x89 // ?? *Coin collect*??
 #define SE_FAILURE                  0x8A // SE29 Denied. ('Unable to select' in pokedex)
-#define SE_UNKNOWN_0x8B             0x8B // SE30 Evo/Catch mode initiated
-#define SE_UNKNOWN_0x8C             0x8C // SE31 Catch Tile Revealed (Same as 114, 129, 139, 151)
-#define SE_UNKNOWN_0x8D             0x8D // SE32 *Descending roar*
-#define SE_UNKNOWN_0x8E             0x8E // SE33 *Vibrating ting*
-#define SE_UNKNOWN_0x8F             0x8F // SE34 *drum brush*
+#define SE_CATCH_EVO_BANNER         0x8B // SE30 Evo/Catch mode initiated
+#define SE_CATCH_TILE_REVEAL        0x8C // SE31 Catch Tile Revealed (Same as 114, 129, 139, 151)
+#define SE_CATCH_ALL_REVEAL_LIGHTNING 0x8D // SE32 *Descending roar*
+#define SE_CATCH_ALL_REVEAL_SHATTER 0x8E // SE33 *Vibrating ting*
+#define SE_SHOP_LIST_REVEAL         0x8F // SE34 *drum brush*
 #define SE_UNKNOWN_0x90             0x90 // No Sound
-#define SE_UNKNOWN_0x91             0x91 // SE35 Bonus point tally finished; RS: Pokédex page change
-#define SE_UNKNOWN_0x92             0x92 // SE36 Egg hatched flourish*
-#define SE_UNKNOWN_0x93             0x93 // SE37 Duplicate of SE1 Menu Selection; RS: PokéNav turn on
-#define SE_UNKNOWN_0x94             0x94 // SE38 Ball Sunk sound *Pokemon leaves ball/escape?* Same as SE163
-#define SE_UNKNOWN_0x95             0x95 // SE39 Latias/Latios delivers ball to plunger
-#define SE_UNKNOWN_0x96             0x96 // SE40 Launcher catches ball
-#define SE_UNKNOWN_0x97             0x97 // SE41 *Hit closed door*
-#define SE_UNKNOWN_0x98             0x98 // SE42 *Hit and enclose*
-#define SE_UNKNOWN_0x99             0x99 // SE43 ?Launcher fully charged? Duplicate of SE26
-#define SE_UNKNOWN_0x9A             0x9A // SE44 Pokemon being absorbed into ball (when catching)
+#define SE_BONUS_SCORE_TALLIED      0x91 // SE35 Bonus point tally finished; RS: Pokédex page change
+#define SE_HATCH_FLOURISH           0x92 // SE36 Egg hatched flourish*
+#define SE_AREA_ROULETTE_SELECTED   0x93 // SE37 Duplicate of SE1 Menu Selection; RS: PokéNav turn on
+#define SE_BALL_SAVED               0x94 // SE38 Ball Sunk sound *Pokemon leaves ball/escape?* Same as SE163
+#define SE_LATI_DELIVERY            0x95 // SE39 Latias/Latios delivers ball to plunger
+#define SE_SAVER_PLUNGER_DROP       0x96 // SE40 Launcher catches ball
+#define SE_TRAVEL_PAINTER_FLIGHT    0x97 // SE41 Volbeat/Illumise flight
+#define SE_TRAVEL_PAINTER_PAINTS    0x98 // SE42 Volbeat/Illumise painting new travel board
+#define SE_UNKNOWN_0x99             0x99 // *SE43 Evo Arrow earned & (sapphire)pika charge already full - Duplicate of SE26S
+#define SE_UNKNOWN_0x9A             0x9A // *SE44 Pokemon being absorbed into ball (when catching)
 #define SE_UNKNOWN_0x9B             0x9B // SE45 *gusty wind landing*
 #define SE_UNKNOWN_0x9C             0x9C // SE46 Pokemon entered Pokeball (when catching)
 #define SE_UNKNOWN_0x9D             0x9D // SE47 Pokeball hit ground; High pitched related to 22
@@ -128,9 +128,9 @@
 #define SE_PIKA_CHARGE_TI           0xAE // SE63 Ti (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_PIKA_CHARGE_HIGH_DO      0xAF // SE64 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_UNKNOWN_0xB0             0xB0 // SE65 *extended flight takeoff*
-#define SE_UNKNOWN_0xB1             0xB1 // SE181 Pi~Ka CHU!
+#define SE_PIKACHU_KICKBACK         0xB1 // SE181 Pi~Ka CHU!
 #define SE_UNKNOWN_0xB2             0xB2 // SE182 Pika - pika - pi-ka
-#define SE_UNKNOWN_0xB3             0xB3 // SE183 Pi~ Chu!
+#define SE_PICHU_KICKBACK           0xB3 // SE183 Pi~ Chu!
 #define SE_UNKNOWN_0xB4             0xB4 // ?? Duplicate of SE49
 #define SE_UNKNOWN_0xB5             0xB5 // No Sound
 #define SE_RUBY_BUMPER_HIT          0xB6 // SE66 *Puddle slap* (Hit lotad/chinchou/whiscash)
@@ -177,7 +177,7 @@
 #define SE_UNKNOWN_0xDF             0xDF // SE95 Sapphire board Hatch machine
 #define SE_UNKNOWN_0xE0             0xE0 // SE96 Sapphire Lower Hatched Pokemon
 #define SE_UNKNOWN_0xE1             0xE1 // SE97 *Close tailgate*
-#define SE_UNKNOWN_0xE2             0xE2 // SE98 *Water 3*
+#define SE_UNKNOWN_0xE2             0xE2 // *SE98 *Water 3*
 #define SE_UNKNOWN_0xE3             0xE3 // SE99 Duplicate of SE68
 #define SE_UNKNOWN_0xE4             0xE4 // SE100 *Bird Cry*
 #define SE_UNKNOWN_0xE5             0xE5 // SE101 Duplicate of SE70
@@ -203,26 +203,26 @@
 #define SE_UNKNOWN_0xF9             0xF9 // SE117 Dusclops Captured
 #define SE_UNKNOWN_0xFA             0xFA // *Muted Triangle tripple tap*
 #define SE_UNKNOWN_0xFB             0xFB // No Sound
-#define SE_UNKNOWN_0xFC             0xFC // SE118 Kecleon looks side (same as SE84)
-#define SE_UNKNOWN_0xFD             0xFD // SE119 Kecleon Vanish (same as 109)
-#define SE_UNKNOWN_0xFE             0xFE // SE120 Kecleon found exclamation
-#define SE_UNKNOWN_0xFF             0xFF // SE121 Kecleon walk
-#define SE_UNKNOWN_0x100            0x100 // SE122 Kecleon trip
-#define SE_UNKNOWN_0x101            0x101 // SE123 Kecleon hit
-#define SE_UNKNOWN_0x102            0x102 // SE124 Kecleon hits ground; Duplicate of 97
-#define SE_UNKNOWN_0x103            0x103 // SE125 Kecleon surrenders
+#define SE_UNKNOWN_0xFC             0xFC // *SE118 Kecleon looks side (same as SE84)
+#define SE_UNKNOWN_0xFD             0xFD // *SE119 Kecleon Vanish (same as 109)
+#define SE_UNKNOWN_0xFE             0xFE // *SE120 Kecleon found exclamation
+#define SE_UNKNOWN_0xFF             0xFF // *SE121 Kecleon walk
+#define SE_UNKNOWN_0x100            0x100 // *SE122 Kecleon trip
+#define SE_UNKNOWN_0x101            0x101 // *SE123 Kecleon hit
+#define SE_UNKNOWN_0x102            0x102 // *SE124 Kecleon hits ground; Duplicate of 97
+#define SE_UNKNOWN_0x103            0x103 // *SE125 Kecleon surrenders
 #define SE_KECLEON_TREE_HIT         0x104 // SE126 Kecleon tree hit
 #define SE_KECLEON_SCOPE_FALL       0x105 // SE127 Package falls from tree; Duplicate of 105
 #define SE_KECLEON_SCOPE_ACTIVATED  0x106 // SE128 Scope initiates
 #define SE_UNKNOWN_0x107            0x107 // No Sound
 #define SE_UNKNOWN_0x108            0x108 // No Sound
 #define SE_UNKNOWN_0x109            0x109 // No Sound
-#define SE_UNKNOWN_0x10A            0x10A // SE129 Kyogre Hit
-#define SE_UNKNOWN_0x10B            0x10B // SE130 Kyogre Emerges / 'jumps'
-#define SE_UNKNOWN_0x10C            0x10C // SE131 Kyogre Dives / jump landing
-#define SE_UNKNOWN_0x10D            0x10D // SE132 Kyogre Create Whirlpool
-#define SE_UNKNOWN_0x10E            0x10E // SE133 Kyogre Ice Breath ring
-#define SE_UNKNOWN_0x10F            0x10F // SE134 *Whirlpool launches ball skyward*
+#define SE_UNKNOWN_0x10A            0x10A // *SE129 Kyogre Hit
+#define SE_UNKNOWN_0x10B            0x10B // *SE130 Kyogre Emerges / 'jumps'
+#define SE_UNKNOWN_0x10C            0x10C // *SE131 Kyogre Dives / jump landing
+#define SE_UNKNOWN_0x10D            0x10D // *SE132 Kyogre Create Whirlpool
+#define SE_UNKNOWN_0x10E            0x10E // *SE133 Kyogre Ice Breath ring
+#define SE_UNKNOWN_0x10F            0x10F // *SE134 *Whirlpool launches ball skyward*
 #define SE_UNKNOWN_0x110            0x110 // SE135 Kyrogre freezes ball
 #define SE_UNKNOWN_0x111            0x111 // SE136 Freeze escape hit
 #define SE_UNKNOWN_0x112            0x112 // SE137 *Flash Frozen*
@@ -231,14 +231,14 @@
 #define SE_UNKNOWN_0x115            0x115 // No Sound
 #define SE_UNKNOWN_0x116            0x116 // No Sound
 #define SE_UNKNOWN_0x117            0x117 // No Sound
-#define SE_UNKNOWN_0x118            0x118 // SE139 Groudon Hit (Same as 31, 114, 129, 151)
+#define SE_UNKNOWN_0x118            0x118 // *SE139 Groudon Hit (Same as 31, 114, 129, 151)
 #define SE_GROUDON_STEP             0x119 // SE140 Groudon Step
 #define SE_UNKNOWN_0x11A            0x11A // SE141 *medium power hit*
-#define SE_UNKNOWN_0x11B            0x11B // SE142 Groudon Lands
-#define SE_UNKNOWN_0x11C            0x11C // SE143 *??Lava Splash?*
-#define SE_UNKNOWN_0x11D            0x11D // SE144 Groudon Fire Ring
+#define SE_UNKNOWN_0x11B            0x11B // *SE142 Groudon Lands
+#define SE_UNKNOWN_0x11C            0x11C // *SE143 *??Lava Splash?*
+#define SE_UNKNOWN_0x11D            0x11D // *SE144 Groudon Fire Ring
 #define SE_UNKNOWN_0x11E            0x11E // SE145 *Bark?*
-#define SE_UNKNOWN_0x11F            0x11F // SE146 *Sandstorm?*
+#define SE_UNKNOWN_0x11F            0x11F // *SE146 *Sandstorm?*
 #define SE_UNKNOWN_0x120            0x120 // SE147 *Door Slam*
 #define SE_GROUDON_BOULDER_LAND     0x121 // SE148 Groudon Boulders Land/Hit
 #define SE_GROUDON_DUSTORM_LIFT     0x122 // SE149 *Ground duststorm lift*
@@ -262,18 +262,18 @@
 #define SE_UNKNOWN_0x134            0x134 // SE160 *splash?*
 #define SE_UNKNOWN_0x135            0x135 // SE161 *deeper splash*
 #define SE_UNKNOWN_0x136            0x136 // SE162 *water engulf*
-#define SE_UNKNOWN_0x137            0x137 // SE163 *Pokemon leaves ball/escape?* Same as 38
-#define SE_UNKNOWN_0x138            0x138 // SE164 *Snare brush*
-#define SE_UNKNOWN_0x139            0x139 // SE165 *Crowd cheer*
+#define SE_UNKNOWN_0x137            0x137 // *SE163 *Pokemon leaves ball/escape?* Same as 38
+#define SE_UNKNOWN_0x138            0x138 // *SE164 *Snare brush*
+#define SE_UNKNOWN_0x139            0x139 // *SE165 *Crowd cheer*
 #define SE_UNKNOWN_0x13A            0x13A // No Sound
-#define SE_UNKNOWN_0x13B            0x13B // SE166 *Traffic whistle two blast*
-#define SE_UNKNOWN_0x13C            0x13C // SE167 Hit Sealeo in bonus game *Thud*
-#define SE_UNKNOWN_0x13D            0x13D // SE168 Sealeo nose bounce in bonus game (Same as 169)
+#define SE_UNKNOWN_0x13B            0x13B // *SE166 *Traffic whistle two blast*
+#define SE_UNKNOWN_0x13C            0x13C // *SE167 Hit Sealeo in bonus game *Thud*
+#define SE_UNKNOWN_0x13D            0x13D // *SE168 Sealeo nose bounce in bonus game (Same as 169)
 #define SE_UNKNOWN_0x13E            0x13E // SE169 Sealeo nose bounce in bonus game (Same as 168)
 #define SE_UNKNOWN_0x13F            0x13F // *coin*
 #define SE_UNKNOWN_0x140            0x140 // SE170 Spheal emerges from water
 #define SE_UNKNOWN_0x141            0x141 // No Sound
-#define SE_UNKNOWN_0x142            0x142 // SE184 Pika!
+#define SE_PIKA_NO_KICKBACK         0x142 // *SE184 Pika!
 #define SE_UNKNOWN_0x143            0x143 // No Sound
 #define SE_JIRACHI_MOVE             0x144 // SE171 *Chime*
 #define SE_JIRACHI_HIT              0x145 // SE172 *Rising success whistle*

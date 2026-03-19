@@ -292,7 +292,7 @@ void ProcessTiltInput(void)
     int i;
     s16 sp0[4];
 
-    if (gCurrentPinballGame->ballCatchState == 0 && gCurrentPinballGame->captureState != 2 && gCurrentPinballGame->entityOverlayCollisionState == 0)
+    if (gCurrentPinballGame->ballCatchState == NOT_TRAPPED && gCurrentPinballGame->captureState != 2 && gCurrentPinballGame->kickbackFiring == 0)
     {
         if (gCurrentPinballGame->newButtonActions[2])
         {
@@ -452,7 +452,7 @@ void ProcessMainBoardBallDrainAndLaunch(void)
         gCurrentPinballGame->ball->velocity.y = 0;
         if (gMain.modeChangeDelayTimer == 0)
         {
-            if (gCurrentPinballGame->modeTimeRemaining)
+            if (gCurrentPinballGame->saverTimeRemaining)
             {
                 gMain.modeChangeDelayTimer = 4;
                 gMain.pendingModeChangeType = 8;
@@ -468,8 +468,8 @@ void ProcessMainBoardBallDrainAndLaunch(void)
                 ResetBoardStateOnDeath();
                 if (gCurrentPinballGame->outLanePikaPosition == 2 && gMain.eReaderBonuses[EREADER_DX_MODE_CARD] == 0)
                 {
-                    gCurrentPinballGame->pikaRescuePath = 2;
-                    gCurrentPinballGame->pikaSaverTimer = 800;
+                    gCurrentPinballGame->pichuWalkMode = 2;
+                    gCurrentPinballGame->pichuEntranceTimer = 800;
                     gCurrentPinballGame->outLanePikaPosition = 0;
                 }
             }
@@ -538,20 +538,20 @@ void ResetBoardStateOnDeath(void)
     gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->pikaSpinMomentum = 0;
-    gCurrentPinballGame->catchOverlayFrameTimer = 0;
-    gCurrentPinballGame->catchOverlayKeyframeIndex = 0;
+    gCurrentPinballGame->kickbackAnimFrameTimer = 0;
+    gCurrentPinballGame->kickbackFrameId = 0;
     if (gCurrentPinballGame->outLanePikaPosition != 2 || !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
         gCurrentPinballGame->pikaChargeTarget = 0;
         gCurrentPinballGame->pikaChargeProgress = 0;
-        gCurrentPinballGame->prevCatchCounterValue = 0;
-        gCurrentPinballGame->catchCounterValue = 0;
-        gCurrentPinballGame->catchCounterXShift = 0;
-        gCurrentPinballGame->catchCounterSlideOffsetY = -4;
-        gCurrentPinballGame->catchCounterAnimState = 0x100;
-        gCurrentPinballGame->catchCounterScaleY = 0x100;
-        gCurrentPinballGame->pikachuAnimTimer = 0;
-        gCurrentPinballGame->catchCounterSlideTimer = 0;
+        gCurrentPinballGame->prevChargeFillValue = 0;
+        gCurrentPinballGame->chargeFillValue = 0;
+        gCurrentPinballGame->chargeIndicatorXOffset = 0;
+        gCurrentPinballGame->chargeIndicatorYOffset = -4;
+        gCurrentPinballGame->chargeIndicatorScaleX = 0x100;
+        gCurrentPinballGame->chargeIndicatorScaleY = 0x100;
+        gCurrentPinballGame->chargeFillAnimTimer = 0;
+        gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
     }
 
     gCurrentPinballGame->ballPowerUpLight[0] = 0;

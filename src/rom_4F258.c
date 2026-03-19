@@ -18,7 +18,7 @@ extern const u8 *gShopItemTilePointers[][3];
 extern const s16 gRubySlingshotAnimIndices[];
 extern const u8 *gRubySlingshotTilePointers[][3][5];
 
-extern struct SongHeader se_unk_87;
+extern struct SongHeader se_ball_upgrade;
 
 
 void UpdateRubyBoardAnimations(void)
@@ -65,8 +65,8 @@ void UpdateRubyBoardAnimations(void)
     if (gCurrentPinballGame->hudSpriteBaseY > 202)
         DrawRubyModeTimerDisplay();
 
-    if (gCurrentPinballGame->modeTimeRemaining && gCurrentPinballGame->ballCatchState == 0)
-        gCurrentPinballGame->modeTimeRemaining--;
+    if (gCurrentPinballGame->saverTimeRemaining && gCurrentPinballGame->ballCatchState == 0)
+        gCurrentPinballGame->saverTimeRemaining--;
 }
 
 void AnimateRubySlingshotTimer(void)
@@ -195,26 +195,26 @@ void DrawRubyModeTimerDisplay(void)
     const u8 **src;
     const u8 **dest;
 
-    if (gCurrentPinballGame->modeTimeRemaining > 300)
+    if (gCurrentPinballGame->saverTimeRemaining > 300)
     {
-        gCurrentPinballGame->modeTimerDisplayIndex = 1;
+        gCurrentPinballGame->saverLit = 1;
     }
     else
     {
-        if (gCurrentPinballGame->modeTimeRemaining)
+        if (gCurrentPinballGame->saverTimeRemaining)
         {
             if (gCurrentPinballGame->ballCatchState)
-                gCurrentPinballGame->modeTimerDisplayIndex = 1;
+                gCurrentPinballGame->saverLit = 1;
             else
-                gCurrentPinballGame->modeTimerDisplayIndex = (gMain.fieldFrameCount % 16) / 8;
+                gCurrentPinballGame->saverLit = (gMain.fieldFrameCount % 16) / 8;
         }
         else
         {
-            gCurrentPinballGame->modeTimerDisplayIndex = 0;
+            gCurrentPinballGame->saverLit = 0;
         }
     }
 
-    src = gRubyModeTimerTilePointers[gCurrentPinballGame->modeTimerDisplayIndex];
+    src = gRubyModeTimerTilePointers[gCurrentPinballGame->saverLit];
     dest = gRubyModeTimerTilePointers[2];
     DmaCopy16(3, src[0], dest[0], 0xC0);
     DmaCopy16(3, src[1], dest[1], 0xC0);
@@ -373,7 +373,7 @@ void AnimateRubyBallPowerUpSequence(void)
         }
 
         if (gCurrentPinballGame->ballShadowTimer == 40)
-        MPlayStart(&gMPlayInfo_SE1, &se_unk_87);
+        MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
 
         if (gCurrentPinballGame->ballShadowTimer == 60)
             gMain.fieldSpriteGroups[43]->available = 1;

@@ -116,7 +116,7 @@ gSongTable:: @ 0x08534E04
 	song se_score_entry_a_b_move, MUSIC_PLAYER_SE2, 2
 	song se_score_entry_letter_change, MUSIC_PLAYER_SE2, 2
 	song se_unk_6c, MUSIC_PLAYER_SE2, 2
-	song se_unk_6d, MUSIC_PLAYER_SE2, 2
+	song se_dex_info_field_select_move, MUSIC_PLAYER_SE2, 2
 	song se_unk_6e, MUSIC_PLAYER_SE2, 2
 	song se_unk_6f, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
@@ -124,42 +124,42 @@ gSongTable:: @ 0x08534E04
 	song se_flipper_pressed, MUSIC_PLAYER_SE3, 3
 	song se_slingshot_hit, MUSIC_PLAYER_SE2, 2
 	song se_pokemon_catch_hit, MUSIC_PLAYER_SE2, 2
-	song se_unk_75, MUSIC_PLAYER_SE2, 2
+	song se_pichu_in_position_chirp, MUSIC_PLAYER_SE2, 2
 	song se_trigger_button_hit, MUSIC_PLAYER_SE2, 2
 	song se_wall_hit, MUSIC_PLAYER_SE3, 3
 	song se_tilt_triggered, MUSIC_PLAYER_SE3, 3
-	song se_unk_79, MUSIC_PLAYER_SE2, 2
-	song se_unk_7a, MUSIC_PLAYER_SE2, 2
+	song se_pika_spinner_clack, MUSIC_PLAYER_SE2, 2
+	song se_pika_full_charge_1_up, MUSIC_PLAYER_SE2, 2
 	song se_unk_7b, MUSIC_PLAYER_SE2, 2
-	song se_unk_7c, MUSIC_PLAYER_SE2, 2
+	song se_kickback_thunderwave, MUSIC_PLAYER_SE2, 2
 	song se_unk_7d, MUSIC_PLAYER_SE2, 2
-	song se_unk_7e, MUSIC_PLAYER_SE2, 2
+	song se_coin_collected, MUSIC_PLAYER_SE2, 2
 	song se_unk_7f, MUSIC_PLAYER_SE2, 2
-	song se_unk_80, MUSIC_PLAYER_SE2, 2
-	song se_unk_81, MUSIC_PLAYER_SE2, 2
+	song se_center_hole_eject, MUSIC_PLAYER_SE2, 2
+	song se_roulette_tick, MUSIC_PLAYER_SE2, 2
 	song se_evo_selection_move, MUSIC_PLAYER_SE2, 2
 	song se_evo_selection_confirm, MUSIC_PLAYER_SE2, 2
-	song se_unk_84, MUSIC_PLAYER_SE2, 2
-	song se_unk_85, MUSIC_PLAYER_SE2, 2
-	song se_unk_86, MUSIC_PLAYER_SE2, 2
-	song se_unk_87, MUSIC_PLAYER_SE2, 2
+	song se_evo_item_appear, MUSIC_PLAYER_SE2, 2
+	song se_evo_item_finish_appear, MUSIC_PLAYER_SE2, 2
+	song se_evo_item_collected, MUSIC_PLAYER_SE2, 2
+	song se_ball_upgrade, MUSIC_PLAYER_SE2, 2
 	song se_unk_88, MUSIC_PLAYER_SE2, 2
 	song se_unk_89, MUSIC_PLAYER_SE2, 2
 	song se_failure, MUSIC_PLAYER_SE2, 2
-	song se_unk_8b, MUSIC_PLAYER_SE2, 2
-	song se_unk_8c, MUSIC_PLAYER_SE2, 2
-	song se_unk_8d, MUSIC_PLAYER_SE2, 2
-	song se_unk_8e, MUSIC_PLAYER_SE2, 2
-	song se_unk_8f, MUSIC_PLAYER_SE2, 2
+	song se_catch_evo_banner, MUSIC_PLAYER_SE2, 2
+	song se_catch_tile_reveal, MUSIC_PLAYER_SE2, 2
+	song se_catch_all_reveal_lightning, MUSIC_PLAYER_SE2, 2
+	song se_catch_all_reveal_shatter, MUSIC_PLAYER_SE2, 2
+	song se_shop_list_reveal, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_91, MUSIC_PLAYER_SE2, 2
-	song se_unk_92, MUSIC_PLAYER_SE2, 2
-	song se_unk_93, MUSIC_PLAYER_SE2, 2
-	song se_unk_94, MUSIC_PLAYER_SE2, 2
-	song se_unk_95, MUSIC_PLAYER_SE2, 2
-	song se_unk_96, MUSIC_PLAYER_SE2, 2
-	song se_unk_97, MUSIC_PLAYER_SE2, 2
-	song se_unk_98, MUSIC_PLAYER_SE2, 2
+	song se_bonus_score_tallied, MUSIC_PLAYER_SE2, 2
+	song se_hatch_flourish, MUSIC_PLAYER_SE2, 2
+	song se_area_roulette_selected, MUSIC_PLAYER_SE2, 2
+	song se_ball_saved, MUSIC_PLAYER_SE2, 2
+	song se_lati_delivery, MUSIC_PLAYER_SE2, 2
+	song se_saver_plunger_drop, MUSIC_PLAYER_SE2, 2
+	song se_travel_painter_flight, MUSIC_PLAYER_SE2, 2
+	song se_travel_painter_paints, MUSIC_PLAYER_SE2, 2
 	song se_unk_99, MUSIC_PLAYER_SE2, 2
 	song se_unk_9a, MUSIC_PLAYER_SE2, 2
 	song se_unk_9b, MUSIC_PLAYER_SE2, 2
@@ -184,9 +184,9 @@ gSongTable:: @ 0x08534E04
 	song se_pika_charge_ti, MUSIC_PLAYER_SE2, 2
 	song se_pika_charge_high_do, MUSIC_PLAYER_SE2, 2
 	song se_unk_b0, MUSIC_PLAYER_SE2, 2
-	song se_unk_b1, MUSIC_PLAYER_SE2, 2
+	song se_pikachu_kickback, MUSIC_PLAYER_SE2, 2
 	song se_unk_b2, MUSIC_PLAYER_SE2, 2
-	song se_unk_b3, MUSIC_PLAYER_SE2, 2
+	song se_pichu_kickback, MUSIC_PLAYER_SE2, 2
 	song se_unk_b4, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_ruby_bumper_hit, MUSIC_PLAYER_SE2, 2
@@ -329,7 +329,7 @@ gSongTable:: @ 0x08534E04
 	song se_unk_13f, MUSIC_PLAYER_SE2, 2
 	song se_unk_140, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_142, MUSIC_PLAYER_SE2, 2
+	song se_pika_no_kickback, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_jirachi_move, MUSIC_PLAYER_SE2, 2
 	song se_jirachi_hit, MUSIC_PLAYER_SE2, 2

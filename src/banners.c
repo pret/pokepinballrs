@@ -2,6 +2,7 @@
 #include "main.h"
 #include "m4a.h"
 #include "constants/bg_music.h"
+#include "constants/main_board.h"
 
 extern void RenderBannerSlideAnimation(void);
 
@@ -170,7 +171,7 @@ void RenderBannerSlideAnimation(void)
                 {
                     if (gCurrentPinballGame->bannerSlideTimer == 0x28)
                     {
-                        MPlayStart(&gMPlayInfo_SE1, &se_unk_8b);
+                        MPlayStart(&gMPlayInfo_SE1, &se_catch_evo_banner);
                     }
                     gCurrentPinballGame->bannerSlideTimer--;
                     if (gCurrentPinballGame->bannerSlideTimer <= 0xF)
@@ -185,8 +186,8 @@ void RenderBannerSlideAnimation(void)
                             if (gCurrentPinballGame->bannerSlideTimer < 36)
                             {
 
-                                if ((gCurrentPinballGame->ballCatchState == 3 && gCurrentPinballGame->evolutionShopActive == 1) ||
-                                    (gCurrentPinballGame->ballCatchState == 4 && gCurrentPinballGame->rouletteOutcomeId == 9))
+                                if ((gCurrentPinballGame->ballCatchState == TRAP_EVO_SHOP_HOLE && gCurrentPinballGame->evolutionShopActive == 1) ||
+                                    (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE && gCurrentPinballGame->rouletteOutcomeId == 9))
                                 {
                                     gCurrentPinballGame->paletteSwapActive = 0;
                                 }
@@ -212,8 +213,8 @@ void RenderBannerSlideAnimation(void)
                             gMain.blendBrightness = 4;
                             if (gCurrentPinballGame->bannerSlideTimer <= 0x27)
                             {
-                                if ((gCurrentPinballGame->ballCatchState == 3 && gCurrentPinballGame->evolutionShopActive == 1) ||
-                                    (gCurrentPinballGame->ballCatchState == 4 && gCurrentPinballGame->rouletteOutcomeId == 9))
+                                if ((gCurrentPinballGame->ballCatchState == TRAP_EVO_SHOP_HOLE && gCurrentPinballGame->evolutionShopActive == 1) ||
+                                    (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE && gCurrentPinballGame->rouletteOutcomeId == 9))
                                 {
                                     gCurrentPinballGame->paletteSwapActive = 0;
                                 }
@@ -253,8 +254,8 @@ void RenderBannerSlideAnimation(void)
                 gCurrentPinballGame->bannerSlideTimer++;
                 gCurrentPinballGame->bannerSlideVelocity -= 0xA;
                 if (gCurrentPinballGame->bannerSlideTimer > 0x18 &&
-                    (gCurrentPinballGame->ballCatchState != 3 || gCurrentPinballGame->evolutionShopActive != 1) &&
-                    (gCurrentPinballGame->ballCatchState != 4 || gCurrentPinballGame->rouletteOutcomeId != 9))
+                    (gCurrentPinballGame->ballCatchState != TRAP_EVO_SHOP_HOLE || gCurrentPinballGame->evolutionShopActive != 1) &&
+                    (gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE || gCurrentPinballGame->rouletteOutcomeId != 9))
                 {
                     gMain.blendBrightness = 4;
                     if (gCurrentPinballGame->bannerSlideTimer > 0x19)
@@ -282,8 +283,8 @@ void RenderBannerSlideAnimation(void)
                     gMain.fieldSpriteGroups[11]->available = 0;
                     gCurrentPinballGame->bannerGfxIndex = 0;
                     gCurrentPinballGame->activePortraitType = 0;
-                    if ((gCurrentPinballGame->ballCatchState != 3 || gCurrentPinballGame->evolutionShopActive != 1) &&
-                        (gCurrentPinballGame->ballCatchState != 4 || gCurrentPinballGame->rouletteOutcomeId != 9))
+                    if ((gCurrentPinballGame->ballCatchState != TRAP_EVO_SHOP_HOLE || gCurrentPinballGame->evolutionShopActive != 1) &&
+                        (gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE || gCurrentPinballGame->rouletteOutcomeId != 9))
                     {
                         gMain.blendBrightness = 0;
                         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0], (void *)(OBJ_PLTT), 0x20);

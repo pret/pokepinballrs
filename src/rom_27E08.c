@@ -39,7 +39,6 @@ extern const u16 gHatchSequentialTileBreakSpritesheetOam[28][18];
 extern const s16 gEggHatchAnimData[28][3];
 extern const u8 gCatchSpriteFrameBuffer[][0x120];
 extern const struct Vector32 gSapphireEggWaypoints[];
-extern const u16 gAngleToDirectionTable[];
 extern const struct Vector32 gEggWalkPathWaypoints[][29];
 extern const u8 gCapturePalette[];
 extern const u8 gCaptureScreenTilesGfx[];
@@ -71,115 +70,20 @@ extern const u8 gDecimalDigitTilesGfx[][0x40];
 extern const s16 gEvoShopAnimFrames[][7];
 extern const u8 gRubyBoardShop_Gfx[][0x500];
 extern const u8 gShopPalette[];
-extern const struct Vector32 gPikaSaverWaypoints[];
-extern const u8 gPikachuSaverTilesGfx[];
+
+extern const u16 gAngleToDirectionTable[];
 
 extern u8 gCatchSpritePaletteBuffer[];
 
-extern struct SongHeader se_unk_84;
-extern struct SongHeader se_unk_85;
-extern struct SongHeader se_unk_86;
+extern struct SongHeader se_evo_item_appear;
+extern struct SongHeader se_evo_item_finish_appear;
+extern struct SongHeader se_evo_item_collected;
 
 
-void AnimateCreatureApproach(void)
+
+void ResetCatchState(s16 resetHoleIndicators)
 {
-    s16 i;
-    struct SpriteGroup *group;
-    struct OamDataSimple *oamSimple;
-    struct Vector32 tempVec;
-    struct Vector32 tempVec2;
-    u16 angle;
-    int xx, yy;
-    int squaredMagnitude;
-    s16 index;
-
-    group = gMain.fieldSpriteGroups[41];
-    if (gCurrentPinballGame->pikaSaverTimer == 0)
-        return;
-
-    if (gCurrentPinballGame->pikaSaverTimer == 800)
-    {
-        group->available = 1;
-        if (gCurrentPinballGame->pikaRescuePath == 1)
-        {
-            gCurrentPinballGame->catchCreatureX = 1090;
-            gCurrentPinballGame->catchCreatureY = 4680;
-            gCurrentPinballGame->creatureWaypointIndex = 0;
-        }
-        else
-        {
-            gCurrentPinballGame->catchCreatureX = 2000;
-            gCurrentPinballGame->catchCreatureY = 3820;
-            gCurrentPinballGame->creatureWaypointIndex = 4;
-        }
-    }
-    else
-    {
-        if (gCurrentPinballGame->pikaSaverTimer == 799)
-        {
-            if (gCurrentPinballGame->pikaRescuePath != 1)
-            {
-                DmaCopy16(3, gPikaSaverTilesGfx, (void *)0x06010600, 0x180);
-            }
-        }
-        tempVec.x = gPikaSaverWaypoints[gCurrentPinballGame->creatureWaypointIndex].x - 120 - gCurrentPinballGame->catchCreatureX;
-        tempVec.y = gPikaSaverWaypoints[gCurrentPinballGame->creatureWaypointIndex].y - 160 - gCurrentPinballGame->catchCreatureY;
-        xx = tempVec.x * tempVec.x;
-        yy = tempVec.y * tempVec.y;
-        squaredMagnitude = xx + yy;
-        angle = ArcTan2(tempVec.x, -tempVec.y);
-        tempVec2.x = (Cos(angle) * 7) / 20000;
-        tempVec2.y = (Sin(angle) * -7) / 20000;
-        index = gAngleToDirectionTable[angle / 0x2000] + (gMain.systemFrameCount % 24) / 8;
-        gCurrentPinballGame->catchCreatureX += tempVec2.x;
-        gCurrentPinballGame->catchCreatureY += tempVec2.y;
-        if (group->available)
-        {
-            group->baseX = gCurrentPinballGame->catchCreatureX / 10 - gCurrentPinballGame->cameraXOffset;
-            group->baseY = gCurrentPinballGame->catchCreatureY / 10 - gCurrentPinballGame->cameraYOffset;
-            if (group->baseY > 180)
-                group->baseY = 180;
-            else if (group->baseY < -30)
-                group->baseY = -30;
-
-            DmaCopy16(3, gMonHatchSpriteGroup5_Gfx + (index + 30) * 0x120 , (void *)0x060112A0, 0x120);
-            for (i = 0; i < 4; i++)
-            {
-                oamSimple = &group->oam[i];
-                gOamBuffer[oamSimple->oamId].priority = 1;
-                gOamBuffer[oamSimple->oamId].paletteNum = 3;
-                gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
-                gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
-            }
-        }
-        if (squaredMagnitude < 2500)
-        {
-            gCurrentPinballGame->creatureWaypointIndex++;
-            if (gCurrentPinballGame->pikaRescuePath == 1)
-            {
-                if (gCurrentPinballGame->creatureWaypointIndex == 4)
-                {
-                    DmaCopy16(3, gPikachuSaverTilesGfx, (void *)0x06010600, 0x180);
-                    gCurrentPinballGame->outLanePikaPosition = 2;
-                    gMain.fieldSpriteGroups[41]->available = 0;
-                    gCurrentPinballGame->pikaSaverTimer = 1;
-                    m4aSongNumStart(SE_UNKNOWN_0x75);
-                }
-            }
-            else if (gCurrentPinballGame->creatureWaypointIndex == 7)
-            {
-                gMain.fieldSpriteGroups[41]->available = 0;
-                gCurrentPinballGame->pikaSaverTimer = 1;
-            }
-        }
-    }
-
-    gCurrentPinballGame->pikaSaverTimer--;
-}
-
-void ResetCatchState(s16 arg0)
-{
-    if (arg0)
+    if (resetHoleIndicators)
     {
         gCurrentPinballGame->allHolesLit = 0;
         gCurrentPinballGame->holeIndicators[0] = 0;
@@ -544,70 +448,70 @@ void AnimateBonusTrapSprite(void)
     }
 }
 
-void AnimateCatchCounterDisplay(void)
+void ProcessChargeIndicator(void)
 {
     s16 i;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
-    s16 index;
+    s16 chargeLevelIx;
     s16 sp0[3];
 
     group = gMain.fieldSpriteGroups[17];
     memset(sp0, 0, sizeof(sp0));
-    if (gCurrentPinballGame->catchCounterValue != gCurrentPinballGame->prevCatchCounterValue)
+    if (gCurrentPinballGame->chargeFillValue != gCurrentPinballGame->prevChargeFillValue)
     {
-        if (gCurrentPinballGame->catchCounterValue == 12) {
-            if (gCurrentPinballGame->pikachuAnimTimer)
+        if (gCurrentPinballGame->chargeFillValue == 12) {
+            if (gCurrentPinballGame->chargeFillAnimTimer)
             {
-                gCurrentPinballGame->pikachuAnimTimer--;
-                index = ((gCurrentPinballGame->pikachuAnimTimer % 20) / 10) + 12;
-                if (gCurrentPinballGame->pikachuAnimTimer < 41)
+                gCurrentPinballGame->chargeFillAnimTimer--;
+                chargeLevelIx = ((gCurrentPinballGame->chargeFillAnimTimer % 20) / 10) + 12;
+                if (gCurrentPinballGame->chargeFillAnimTimer < 41)
                 {
-                    if (gCurrentPinballGame->pikachuAnimTimer > 2)
+                    if (gCurrentPinballGame->chargeFillAnimTimer > 2)
                     {
-                        gCurrentPinballGame->catchCounterXShift += 3;
-                        gCurrentPinballGame->catchCounterSlideOffsetY += 2;
+                        gCurrentPinballGame->chargeIndicatorXOffset += 3;
+                        gCurrentPinballGame->chargeIndicatorYOffset += 2;
                     }
 
-                    gCurrentPinballGame->catchCounterAnimState = gCurrentPinballGame->catchCounterScaleY = ((gCurrentPinballGame->pikachuAnimTimer * 128) / 40) + 128;
-                    sp0[1] =  ((40 - gCurrentPinballGame->pikachuAnimTimer) * 16) / 40;
-                    sp0[0] = -((40 - gCurrentPinballGame->pikachuAnimTimer) * 16) / 40;
+                    gCurrentPinballGame->chargeIndicatorScaleX = gCurrentPinballGame->chargeIndicatorScaleY = ((gCurrentPinballGame->chargeFillAnimTimer * 128) / 40) + 128;
+                    sp0[1] =  ((40 - gCurrentPinballGame->chargeFillAnimTimer) * 16) / 40;
+                    sp0[0] = -((40 - gCurrentPinballGame->chargeFillAnimTimer) * 16) / 40;
                     sp0[2] = 0;
                 }
             }
             else
             {
-                gCurrentPinballGame->prevCatchCounterValue = 13;
-                gCurrentPinballGame->catchCounterValue = 13;
-                index = 13;
-                gCurrentPinballGame->catchCounterSlideTimer = 0;
-                gCurrentPinballGame->catchCounterSlideOffsetY = 120;
-                gCurrentPinballGame->catchCounterBlinkTimer = 60;
+                gCurrentPinballGame->prevChargeFillValue = 13;
+                gCurrentPinballGame->chargeFillValue = 13;
+                chargeLevelIx = 13;
+                gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
+                gCurrentPinballGame->chargeIndicatorYOffset = 120;
+                gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
             }
 
-            DmaCopy16(3, gCatchCounterDigitTilesGfx[index], (void *)0x06010AE0, 0x80);
+            DmaCopy16(3, gChargeFillIndicator_Gfx[chargeLevelIx], (void *)0x06010AE0, 0x80);
         }
         else
         {
-            DmaCopy16(3, gCatchCounterDigitTilesGfx[gCurrentPinballGame->catchCounterValue], (void *)0x06010AE0, 0x80);
-            gCurrentPinballGame->prevCatchCounterValue = gCurrentPinballGame->catchCounterValue;
+            DmaCopy16(3, gChargeFillIndicator_Gfx[gCurrentPinballGame->chargeFillValue], (void *)0x06010AE0, 0x80);
+            gCurrentPinballGame->prevChargeFillValue = gCurrentPinballGame->chargeFillValue;
         }
     }
 
-    if (gCurrentPinballGame->catchCounterSlideTimer)
+    if (gCurrentPinballGame->fullChargeSlideAnimTimer)
     {
-        gCurrentPinballGame->catchCounterSlideTimer--;
-        group->baseY = 80 + gCurrentPinballGame->catchCounterSlideOffsetY;
-        if (gCurrentPinballGame->catchCounterSlideTimer < 20)
-            gCurrentPinballGame->catchCounterScaleY = (gCurrentPinballGame->catchCounterSlideTimer * 12) + 16;
+        gCurrentPinballGame->fullChargeSlideAnimTimer--;
+        group->baseY = 80 + gCurrentPinballGame->chargeIndicatorYOffset;
+        if (gCurrentPinballGame->fullChargeSlideAnimTimer < 20)
+            gCurrentPinballGame->chargeIndicatorScaleY = (gCurrentPinballGame->fullChargeSlideAnimTimer * 12) + 16;
     }
     else
     {
         group->baseY = 180;
     }
 
-    group->baseX = 119 + gCurrentPinballGame->catchCounterXShift;
-    SetMatrixScale(gCurrentPinballGame->catchCounterAnimState, gCurrentPinballGame->catchCounterScaleY, 1);
+    group->baseX = 119 + gCurrentPinballGame->chargeIndicatorXOffset;
+    SetMatrixScale(gCurrentPinballGame->chargeIndicatorScaleX, gCurrentPinballGame->chargeIndicatorScaleY, 1);
     for (i = 0; i < 3; i++)
     {
         oamSimple = &group->oam[i];
@@ -896,7 +800,7 @@ void AnimateCoinReward(void)
                         gCurrentPinballGame->coinBounceTimer[var2] = 17;
                         gCurrentPinballGame->coinSpritePos[var2].x = 188;
                         gCurrentPinballGame->coinSpritePos[var2].y = 140;
-                        m4aSongNumStart(SE_UNKNOWN_0x7E);
+                        m4aSongNumStart(SE_COIN_COLLECTED);
                         gCurrentPinballGame->coins += gCurrentPinballGame->coinRewardAmount - gCurrentPinballGame->coinsAwarded;
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
@@ -912,7 +816,7 @@ void AnimateCoinReward(void)
                         gCurrentPinballGame->coinSpritePos[var2].x = 188;
                         gCurrentPinballGame->coinSpritePos[var2].y = 140;
                         gCurrentPinballGame->coinsAwarded++;
-                        m4aSongNumStart(SE_UNKNOWN_0x7E);
+                        m4aSongNumStart(SE_COIN_COLLECTED);
                         gCurrentPinballGame->coins++;
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
@@ -1493,7 +1397,7 @@ void UpdateEggModeAnimation(void)
                 RequestBoardStateTransition(5);
 
             if (gCurrentPinballGame->eggAnimFrameIndex == 28)
-                m4aSongNumStart(SE_UNKNOWN_0x92);
+                m4aSongNumStart(SE_HATCH_FLOURISH);
         }
 
         var3 = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][0];
@@ -1715,25 +1619,25 @@ void InitEggMode(void)
 {
     gCurrentPinballGame->boardSubState = 0;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->modeTimeRemaining = 1800;
+    gCurrentPinballGame->saverTimeRemaining = 1800;
     gCurrentPinballGame->creatureHitCount = 0;
-    gCurrentPinballGame->creatureVelX = 0;
-    gCurrentPinballGame->creatureVelY = 0;
+    gCurrentPinballGame->walkMonXVelocity = 0;
+    gCurrentPinballGame->walkMonYVelocity = 0;
     if (gMain.selectedField == FIELD_RUBY)
     {
-        gCurrentPinballGame->catchCreatureX = 750;
-        gCurrentPinballGame->catchCreatureY = 1040;
+        gCurrentPinballGame->walkMonXPos = 750;
+        gCurrentPinballGame->walkMonYPos = 1040;
     }
     else
     {
-        gCurrentPinballGame->catchCreatureX = 1960;
-        gCurrentPinballGame->catchCreatureY = 300;
+        gCurrentPinballGame->walkMonXPos = 1960;
+        gCurrentPinballGame->walkMonYPos = 300;
     }
 
     gCurrentPinballGame->creatureWaypointIndex = 0;
     gCurrentPinballGame->waypointSubTimer = 0;
-    gCurrentPinballGame->creatureVelX = 0;
-    gCurrentPinballGame->creatureVelY = 0;
+    gCurrentPinballGame->walkMonXVelocity = 0;
+    gCurrentPinballGame->walkMonYVelocity = 0;
     gCurrentPinballGame->creatureHitCooldown = 0;
     gCurrentPinballGame->captureFlashTimer = 0;
 }
@@ -1779,8 +1683,8 @@ void UpdateEggMode(void)
                 {
                     gCurrentPinballGame->creatureWaypointIndex = 0;
                     gCurrentPinballGame->boardSubState = 3;
-                    gCurrentPinballGame->creatureVelX = 0;
-                    gCurrentPinballGame->creatureVelY = 0;
+                    gCurrentPinballGame->walkMonXVelocity = 0;
+                    gCurrentPinballGame->walkMonYVelocity = 0;
                 }
 
                 if (gCurrentPinballGame->creatureWaypointIndex == 12)
@@ -1797,13 +1701,13 @@ void UpdateEggMode(void)
 
                 if (gCurrentPinballGame->creatureWaypointIndex == 12)
                 {
-                    gCurrentPinballGame->creatureVelX = -8;
-                    gCurrentPinballGame->creatureVelY = -30;
+                    gCurrentPinballGame->walkMonXVelocity = -8;
+                    gCurrentPinballGame->walkMonYVelocity = -30;
                 }
                 else
                 {
-                    gCurrentPinballGame->creatureVelX = 0;
-                    gCurrentPinballGame->creatureVelY = 0;
+                    gCurrentPinballGame->walkMonXVelocity = 0;
+                    gCurrentPinballGame->walkMonYVelocity = 0;
                 }
             }
             else
@@ -1813,8 +1717,8 @@ void UpdateEggMode(void)
                     gCurrentPinballGame->waypointSubTimer = 0;
                     gCurrentPinballGame->creatureWaypointIndex = 10;
                     gCurrentPinballGame->boardSubState = 2;
-                    gCurrentPinballGame->creatureVelX = 0;
-                    gCurrentPinballGame->creatureVelY = 0;
+                    gCurrentPinballGame->walkMonXVelocity = 0;
+                    gCurrentPinballGame->walkMonYVelocity = 0;
                 }
             }
         }
@@ -1823,13 +1727,13 @@ void UpdateEggMode(void)
         var1 = gEggHatchAnimData[gCurrentPinballGame->creatureWaypointIndex][2];
         if (gCurrentPinballGame->creatureWaypointIndex == 12)
         {
-            gCurrentPinballGame->creatureVelY += 2;
-            gCurrentPinballGame->catchCreatureX += gCurrentPinballGame->creatureVelX;
-            gCurrentPinballGame->catchCreatureY += gCurrentPinballGame->creatureVelY;
+            gCurrentPinballGame->walkMonYVelocity += 2;
+            gCurrentPinballGame->walkMonXPos += gCurrentPinballGame->walkMonXVelocity;
+            gCurrentPinballGame->walkMonYPos += gCurrentPinballGame->walkMonYVelocity;
         }
 
-        group->baseX = gCurrentPinballGame->catchCreatureX / 10 - gCurrentPinballGame->cameraXOffset;
-        group->baseY = gCurrentPinballGame->catchCreatureY / 10 - gCurrentPinballGame->cameraYOffset;
+        group->baseX = gCurrentPinballGame->walkMonXPos / 10 - gCurrentPinballGame->cameraXOffset;
+        group->baseY = gCurrentPinballGame->walkMonYPos / 10 - gCurrentPinballGame->cameraYOffset;
         DmaCopy16(3, gCatchSpriteFrameBuffer[var0], (void *)0x060112A0, 0x120);
         DmaCopy16(3, gCatchSpritePaletteBuffer, (void *)0x050003A0, 0x20);
         for (i = 0; i < 4; i++)
@@ -1859,8 +1763,8 @@ void UpdateEggMode(void)
         }
         else if (gCurrentPinballGame->waypointSubTimer == 240)
         {
-            gCurrentPinballGame->catchCreatureX = 2260;
-            gCurrentPinballGame->catchCreatureY = 740;
+            gCurrentPinballGame->walkMonXPos = 2260;
+            gCurrentPinballGame->walkMonYPos = 740;
             gCurrentPinballGame->creatureWaypointIndex = 0;
             priority = 2;
             var0 = 0;
@@ -1868,8 +1772,8 @@ void UpdateEggMode(void)
         }
         else
         {
-            tempVec.x = gSapphireEggWaypoints[gCurrentPinballGame->creatureWaypointIndex].x - 120 - gCurrentPinballGame->catchCreatureX;
-            tempVec.y = gSapphireEggWaypoints[gCurrentPinballGame->creatureWaypointIndex].y - 160 - gCurrentPinballGame->catchCreatureY;
+            tempVec.x = gSapphireEggWaypoints[gCurrentPinballGame->creatureWaypointIndex].x - 120 - gCurrentPinballGame->walkMonXPos;
+            tempVec.y = gSapphireEggWaypoints[gCurrentPinballGame->creatureWaypointIndex].y - 160 - gCurrentPinballGame->walkMonYPos;
             xx = tempVec.x * tempVec.x;
             yy = tempVec.y * tempVec.y;
             squaredMagnitude = xx + yy;
@@ -1892,8 +1796,8 @@ void UpdateEggMode(void)
                 tempVec2.y = -(Sin(angle) * 7) / 20000;
             }
 
-            gCurrentPinballGame->catchCreatureX += tempVec2.x;
-            gCurrentPinballGame->catchCreatureY += tempVec2.y;
+            gCurrentPinballGame->walkMonXPos += tempVec2.x;
+            gCurrentPinballGame->walkMonYPos += tempVec2.y;
             if (squaredMagnitude < 2500)
             {
                 if (gCurrentPinballGame->creatureWaypointIndex < 6)
@@ -1904,8 +1808,8 @@ void UpdateEggMode(void)
                 {
                     gCurrentPinballGame->creatureWaypointIndex = 3;
                     gCurrentPinballGame->boardSubState = 3;
-                    gCurrentPinballGame->creatureVelX = 0;
-                    gCurrentPinballGame->creatureVelY = 0;
+                    gCurrentPinballGame->walkMonXVelocity = 0;
+                    gCurrentPinballGame->walkMonYVelocity = 0;
                 }
             }
 
@@ -1922,8 +1826,8 @@ void UpdateEggMode(void)
 
         DmaCopy16(3, gCatchSpriteFrameBuffer[var0], (void *)0x060112A0, 0x120);
         gCurrentPinballGame->waypointSubTimer++;
-        group->baseX = gCurrentPinballGame->catchCreatureX / 10 - gCurrentPinballGame->cameraXOffset;
-        group->baseY = gCurrentPinballGame->catchCreatureY / 10 - gCurrentPinballGame->cameraYOffset;
+        group->baseX = gCurrentPinballGame->walkMonXPos / 10 - gCurrentPinballGame->cameraXOffset;
+        group->baseY = gCurrentPinballGame->walkMonYPos / 10 - gCurrentPinballGame->cameraYOffset;
         if (group->baseY > 180)
             group->baseY = 180;
         else if (group->baseY < -30)
@@ -1938,8 +1842,8 @@ void UpdateEggMode(void)
         }
         break;
     case 3:
-        tempVec.x = gEggWalkPathWaypoints[gMain.selectedField][gCurrentPinballGame->creatureWaypointIndex].x - 120 - gCurrentPinballGame->catchCreatureX;
-        tempVec.y = gEggWalkPathWaypoints[gMain.selectedField][gCurrentPinballGame->creatureWaypointIndex].y - 160 - gCurrentPinballGame->catchCreatureY;
+        tempVec.x = gEggWalkPathWaypoints[gMain.selectedField][gCurrentPinballGame->creatureWaypointIndex].x - 120 - gCurrentPinballGame->walkMonXPos;
+        tempVec.y = gEggWalkPathWaypoints[gMain.selectedField][gCurrentPinballGame->creatureWaypointIndex].y - 160 - gCurrentPinballGame->walkMonYPos;
         xx = tempVec.x * tempVec.x;
         yy = tempVec.y * tempVec.y;
         squaredMagnitude = xx + yy;
@@ -1962,8 +1866,8 @@ void UpdateEggMode(void)
                 var0 = gAngleToDirectionTable[angle / 0x2000] + (gMain.systemFrameCount % 32) / 8 - ((gMain.systemFrameCount % 32) / 24) * 2;
             }
 
-            gCurrentPinballGame->catchCreatureX += tempVec2.x;
-            gCurrentPinballGame->catchCreatureY += tempVec2.y;
+            gCurrentPinballGame->walkMonXPos += tempVec2.x;
+            gCurrentPinballGame->walkMonYPos += tempVec2.y;
         }
 
         if (squaredMagnitude < 2500)
@@ -1998,8 +1902,8 @@ void UpdateEggMode(void)
             priority = 1;
         }
 
-        group->baseX = gCurrentPinballGame->catchCreatureX / 10 - gCurrentPinballGame->cameraXOffset;
-        group->baseY = gCurrentPinballGame->catchCreatureY / 10 - gCurrentPinballGame->cameraYOffset;;
+        group->baseX = gCurrentPinballGame->walkMonXPos / 10 - gCurrentPinballGame->cameraXOffset;
+        group->baseY = gCurrentPinballGame->walkMonYPos / 10 - gCurrentPinballGame->cameraYOffset;;
         if (group->baseY > 180)
             group->baseY = 180;
         else if (group->baseY < -30)
@@ -2020,8 +1924,8 @@ void UpdateEggMode(void)
         }
         else
         {
-            tempVec.x = gCurrentPinballGame->ball->positionQ0.x - (gCurrentPinballGame->catchCreatureX / 10 + 12);
-            tempVec.y = gCurrentPinballGame->ball->positionQ0.y - (gCurrentPinballGame->catchCreatureY / 10 + 14);
+            tempVec.x = gCurrentPinballGame->ball->positionQ0.x - (gCurrentPinballGame->walkMonXPos / 10 + 12);
+            tempVec.y = gCurrentPinballGame->ball->positionQ0.y - (gCurrentPinballGame->walkMonYPos / 10 + 14);
             xx = tempVec.x * tempVec.x;
             yy = tempVec.y * tempVec.y;
             squaredMagnitude = xx + yy;
@@ -2033,7 +1937,7 @@ void UpdateEggMode(void)
                 if (gCurrentPinballGame->creatureHitCount > 1)
                     gCurrentPinballGame->boardSubState = 4;
 
-                m4aSongNumStart(SE_UNKNOWN_0x75);
+                m4aSongNumStart(SE_PICHU_IN_POSITION_CHIRP);
                 angle2 = ArcTan2(-gCurrentPinballGame->ball->velocity.x, gCurrentPinballGame->ball->velocity.y);
                 if (gCurrentPinballGame->creatureHitCount > 1)
                 {
@@ -2058,14 +1962,14 @@ void UpdateEggMode(void)
         DmaCopy16(3, &gBallUpgradeTilesGfx[(gCurrentPinballGame->ballUpgradeType * 8 + 4) * 0x40], (void *)0x06016760, 0x80);
         gCurrentPinballGame->captureSequenceFrame = 0;
         gCurrentPinballGame->captureState = 2;
-        gCurrentPinballGame->catchTargetX = gCurrentPinballGame->catchCreatureX / 10 + 8;
-        gCurrentPinballGame->catchTargetY = gCurrentPinballGame->catchCreatureY / 10 - 31;
+        gCurrentPinballGame->catchTargetX = gCurrentPinballGame->walkMonXPos / 10 + 8;
+        gCurrentPinballGame->catchTargetY = gCurrentPinballGame->walkMonYPos / 10 - 31;
         for (i = 0; i < 6; i++)
             gCurrentPinballGame->hatchTilePalette[i] = 13;
 
         gCurrentPinballGame->boardSubState++;
-        group->baseX = gCurrentPinballGame->catchCreatureX / 10 - gCurrentPinballGame->cameraXOffset;
-        group->baseY = gCurrentPinballGame->catchCreatureY / 10 - gCurrentPinballGame->cameraYOffset;
+        group->baseX = gCurrentPinballGame->walkMonXPos / 10 - gCurrentPinballGame->cameraXOffset;
+        group->baseY = gCurrentPinballGame->walkMonYPos / 10 - gCurrentPinballGame->cameraYOffset;
         if (group->baseY > 180)
             group->baseY = 180;
 
@@ -2088,8 +1992,8 @@ void UpdateEggMode(void)
 
         if (group->available)
         {
-            group->baseX = gCurrentPinballGame->catchCreatureX / 10 - gCurrentPinballGame->cameraXOffset;
-            group->baseY = gCurrentPinballGame->catchCreatureY / 10 - gCurrentPinballGame->cameraYOffset;
+            group->baseX = gCurrentPinballGame->walkMonXPos / 10 - gCurrentPinballGame->cameraXOffset;
+            group->baseY = gCurrentPinballGame->walkMonYPos / 10 - gCurrentPinballGame->cameraYOffset;
             for (i = 0; i < 4; i++)
             {
                 oamSimple = &group->oam[i];
@@ -2255,7 +2159,7 @@ void RevealSequentialHatchTiles(void)
 
     if (gCurrentPinballGame->hatchFrameId == 1)
     {
-        m4aSongNumStart(SE_UNKNOWN_0x8C);
+        m4aSongNumStart(SE_CATCH_TILE_REVEAL);
         InitSequentialTileParticles();
     }
 
@@ -2317,7 +2221,7 @@ void RevealAllHatchTilesAtOnce(void)
         DmaCopy16(3, gHatchStartTilesGfx, (void *)0x06015800, 0x2000);
         DmaCopy16(3, gHatchStartPalette, (void *)0x050003C0, 0x20);
         gMain.fieldSpriteGroups[35]->available = 1;
-        m4aSongNumStart(SE_UNKNOWN_0x8D);
+        m4aSongNumStart(SE_CATCH_ALL_REVEAL_LIGHTNING);
         gCurrentPinballGame->hatchRevealPhase++;
         gCurrentPinballGame->revealAnimFrameCounter = 0;
         gCurrentPinballGame->revealFramesetIndex = 0;
@@ -2405,7 +2309,7 @@ void RevealAllHatchTilesAtOnce(void)
         DmaCopy16(3, gHatchStage3Palette, (void *)0x050003C0, 0x20);
         gCurrentPinballGame->hatchRevealPhase++;
         InitBurstTileParticles();
-        m4aSongNumStart(SE_UNKNOWN_0x8E);
+        m4aSongNumStart(SE_CATCH_ALL_REVEAL_SHATTER);
         break;
     case 6:
         gMain.blendBrightness = 0;
@@ -2620,7 +2524,7 @@ void UpdateAreaRoulette(void)
                     gCurrentPinballGame->rouletteInitialSpeed = gCurrentPinballGame->rouletteSpinSpeed;
                     gCurrentPinballGame->sapphirePondFlag = 1;
                     gCurrentPinballGame->launcherCharging = 1;
-                    gCurrentPinballGame->modeTimeRemaining = 3600;
+                    gCurrentPinballGame->saverTimeRemaining = 3600;
                     gCurrentPinballGame->rubyPondState = RUBY_POND_STATE_CHINCHOU_COUNTERCLOCKWISE;
                 }
             }
@@ -2667,7 +2571,7 @@ void UpdateAreaRoulette(void)
                 gMain.fieldSpriteGroups[20]->available = 0;
                 gMain.fieldSpriteGroups[21]->available = 0;
                 gMain.fieldSpriteGroups[34]->available = 1;
-                m4aSongNumStart(SE_UNKNOWN_0x93);
+                m4aSongNumStart(SE_AREA_ROULETTE_SELECTED);
             }
         }
 
@@ -2696,7 +2600,7 @@ void UpdateAreaRoulette(void)
             gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
             gCurrentPinballGame->rouletteAreaIndex[1] = gAreaToSpeciesTable[gCurrentPinballGame->area];
             LoadPortraitGraphics(0, 1);
-            m4aSongNumStart(SE_UNKNOWN_0x81);
+            m4aSongNumStart(SE_ROULETTE_TICK);
         }
         break;
     case 6:
@@ -2828,7 +2732,7 @@ void InitTravelMode(void)
     gCurrentPinballGame->boardModeType = 2;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 3600;
     gCurrentPinballGame->timerBonus = 0;
-    gCurrentPinballGame->modeTimeRemaining = 1800;
+    gCurrentPinballGame->saverTimeRemaining = 1800;
     DmaCopy16(3, gDefaultBallPalette, (void *)0x05000180, 0x20);
 }
 
@@ -3040,7 +2944,7 @@ void InitEvolutionMode(void)
     gCurrentPinballGame->boardModeType = 2;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
     gCurrentPinballGame->timerBonus = 0;
-    gCurrentPinballGame->modeTimeRemaining = 3600;
+    gCurrentPinballGame->saverTimeRemaining = 3600;
     if (gCurrentPinballGame->currentSpecies == SPECIES_WURMPLE)
     {
         gCurrentPinballGame->evoItemGfxIndex = 0;
@@ -3388,7 +3292,7 @@ void UpdateEvolutionItemAnimation(void)
         }
 
         if (gCurrentPinballGame->evoItemAppearTimer == 60)
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_84);
+            MPlayStart(&gMPlayInfo_SE1, &se_evo_item_appear);
 
         if (gEvoItemAppearFrameThresholds[gCurrentPinballGame->evoItemAnimFrame] > gCurrentPinballGame->evoItemAnimFrameTimer)
         {
@@ -3404,7 +3308,7 @@ void UpdateEvolutionItemAnimation(void)
                 gCurrentPinballGame->evoItemAppearTimer = 1;
                 gMain.fieldSpriteGroups[40]->available = 0;
                 gMain.fieldSpriteGroups[32]->available = 1;
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_85);
+                MPlayStart(&gMPlayInfo_SE1, &se_evo_item_finish_appear);
                 gCurrentPinballGame->activePortraitType = 0;
             }
         }
@@ -3442,7 +3346,7 @@ void UpdateEvolutionItemAnimation(void)
             gCurrentPinballGame->evoItemsCaught < 3)
         {
             gCurrentPinballGame->scoreAddedInFrame = 10000;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_86);
+            MPlayStart(&gMPlayInfo_SE1, &se_evo_item_collected);
             gCurrentPinballGame->boardSubState = 1;
             gCurrentPinballGame->catchLights[gCurrentPinballGame->evoItemsCaught] = 5;
             gCurrentPinballGame->evoItemsCaught++;
@@ -3517,11 +3421,11 @@ void InitCatchEmMode(void)
 
     if (gCurrentPinballGame->catchEmModeStartCount == 0)
     {
-        gCurrentPinballGame->modeTimeRemaining = 6000;
+        gCurrentPinballGame->saverTimeRemaining = 6000;
     }
     else
     {
-        gCurrentPinballGame->modeTimeRemaining = 4200;
+        gCurrentPinballGame->saverTimeRemaining = 4200;
     }
     gCurrentPinballGame->catchEmModeStartCount++;
 

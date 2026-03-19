@@ -461,8 +461,8 @@ void RubyPond_EntityLogic(void)
             gCurrentPinballGame->scoreAddedInFrame = 10;
             m4aSongNumStart(SE_RUBY_BUMPER_HIT);
             PlayRumble(7);
-            if (gCurrentPinballGame->modeTimeRemaining)
-                gCurrentPinballGame->modeTimeRemaining = 1;
+            if (gCurrentPinballGame->saverTimeRemaining)
+                gCurrentPinballGame->saverTimeRemaining = 1;
             break;
         case WHISCASH_STATE_ANGRY:
             if (gWhiscashFramesetData[gCurrentPinballGame->whiscashFrameIx][1] > gCurrentPinballGame->whiscashStateTimer)

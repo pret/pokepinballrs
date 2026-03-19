@@ -31,11 +31,11 @@ void RubyBoardProcess_3A_19A20(void)
     gCurrentPinballGame->pikachuSpinFrame = 0;
     gCurrentPinballGame->pikachuSpinPrevFrame = 1;
     UpdatePikachuChargeCounter();
-    AnimateCatchCounterDisplay();
+    ProcessChargeIndicator();
     DrawPikachuSpinner();
 
-    gCurrentPinballGame->catchCounterAnimState = 256;
-    gCurrentPinballGame->catchCounterScaleY = 256;
+    gCurrentPinballGame->chargeIndicatorScaleX = 256;
+    gCurrentPinballGame->chargeIndicatorScaleY = 256;
     gCurrentPinballGame->rampPrizeType = 2;
     DrawRubyNuzleafPlatformSprite();
 
