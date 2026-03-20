@@ -67,11 +67,13 @@ SECTIONS
         src/pichu_entity.o(.text);
         src/rom_27E08.o(.text);
         src/rom_27F94.o(.text);
+        src/center_capture_hole.o(.text);
+
+
         src/rom_2C538.o(.text);
         src/rom_2E67C.o(.text);
         src/rom_30480.o(.text);
         src/rom_31BE8.o(.text);
-        src/rom_31CF8.o(.text);
         src/catch_hatch_picker.o(.text);
         src/board_process3_sapphire.o(.text);
         src/board_process3_dusclops.o(.text);
@@ -83,7 +85,7 @@ SECTIONS
         src/board_process3_spheal.o(.text);
         src/board_setup.o(.text);
         src/board_process1.o(.text);
-        src/debug_menu.o(.text);
+        src/mode_change_and_debug_menu.o(.text);
         src/pause_game.o(.text);
         src/pinball_game_main.o(.text);
         src/save_and_restore_game.o(.text);
