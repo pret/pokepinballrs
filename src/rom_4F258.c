@@ -28,8 +28,8 @@ void UpdateRubyBoardAnimations(void)
     DrawRubyProgressDigits();
     if (gCurrentPinballGame->hudSpriteBaseY < 232)
     {
-        AnimateRubyCatchArrow();
-        AnimateRubyEvoArrow();
+        AnimateRubyCatchArrowPalette();
+        AnimateRubyEvoArrowPalette();
     }
 
     if (gCurrentPinballGame->hudSpriteBaseY >= 81 && gCurrentPinballGame->hudSpriteBaseY < 248)
@@ -44,12 +44,12 @@ void UpdateRubyBoardAnimations(void)
 
     if (gCurrentPinballGame->hudSpriteBaseY > 104)
     {
-        DrawEvoArrowProgress();
+        DrawRubyEvoArrowProgress();
         DrawCatchArrowProgress();
     }
 
     if (gCurrentPinballGame->hudSpriteBaseY < 256)
-        DrawCoinRewardMeter();
+        DrawRubyCoinRewardMeter();
 
     UpdateCoinRewardTimer();
     if (gCurrentPinballGame->hudSpriteBaseY > 110)
@@ -59,7 +59,7 @@ void UpdateRubyBoardAnimations(void)
     {
         AnimateRubyCatchLightBlink();
         AnimateRubyHoleIndicators();
-        AnimateRubySlingshotTimer();
+        AnimateRubySlingshotHit();
     }
 
     if (gCurrentPinballGame->hudSpriteBaseY > 202)
@@ -69,7 +69,7 @@ void UpdateRubyBoardAnimations(void)
         gCurrentPinballGame->saverTimeRemaining--;
 }
 
-void AnimateRubySlingshotTimer(void)
+void AnimateRubySlingshotHit(void)
 {
     s16 index;
     const u8 **src;
@@ -225,7 +225,7 @@ void DrawRubyModeTimerDisplay(void)
     }
 }
 
-void AnimateRubyCatchArrow(void)
+void AnimateRubyCatchArrowPalette(void)
 {
     s16 index;
     const u8 **src;
@@ -256,7 +256,7 @@ void AnimateRubyCatchArrow(void)
     }
 }
 
-void AnimateRubyEvoArrow(void)
+void AnimateRubyEvoArrowPalette(void)
 {
     s16 index;
     const u8 **src;

@@ -904,7 +904,7 @@ void AnimateTotodileEggDelivery(void)
         {
             gCurrentPinballGame->totodileDeliveryFrame = 40;
             group->available = 0;
-            gCurrentPinballGame->eggDeliveryState = 2;
+            gCurrentPinballGame->rubyEggDeliveryState = 2;
             gCurrentPinballGame->activePortraitType = 0;
         }
 
@@ -1005,7 +1005,7 @@ void AnimateAerodactylEggDelivery(void)
     {
         group->available = 0;
         do {} while (0); // needed to match, there was probably some dead code
-        gCurrentPinballGame->eggDeliveryState = 2;
+        gCurrentPinballGame->rubyEggDeliveryState = 2;
         gCurrentPinballGame->activePortraitType = 0;
     }
 
@@ -1290,7 +1290,7 @@ void AnimateEvolutionSuccessScreen(void)
     }
 }
 
-void InitEggModeAnimation(void)
+void InitRubyEggModeAnimation(void)
 {
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->prevEggAnimFrame = 0;
@@ -1450,7 +1450,7 @@ void UpdateEggModeAnimation(void)
     }
 }
 
-void UpdateEggHatchDisplay(void)
+void UpdateHatchCave(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -1477,7 +1477,7 @@ void UpdateEggHatchDisplay(void)
     }
     else if (gCurrentPinballGame->eggCaveState == 3)
     {
-        if (gCurrentPinballGame->eggDeliveryState != 2)
+        if (gCurrentPinballGame->rubyEggDeliveryState != 2)
         {
             if (gCurrentPinballGame->eggAnimationPhase == 1)
             {
@@ -1527,9 +1527,9 @@ void UpdateEggHatchDisplay(void)
                 }
                 else
                 {
-                    InitEggModeAnimation();
+                    InitRubyEggModeAnimation();
                     gCurrentPinballGame->eggCaveState = 0;
-                    gCurrentPinballGame->eggDeliveryState = 0;
+                    gCurrentPinballGame->rubyEggDeliveryState = 0;
                 }
             }
             else
@@ -1551,7 +1551,7 @@ void UpdateEggHatchDisplay(void)
         group->baseY = gCurrentPinballGame->cyndaquilCaveSpriteY - gCurrentPinballGame->cameraYOffset;
         if (gCurrentPinballGame->boardState < 3)
         {
-            if (gCurrentPinballGame->eggCaveState == 3 && gCurrentPinballGame->eggDeliveryState != 2)
+            if (gCurrentPinballGame->eggCaveState == 3 && gCurrentPinballGame->rubyEggDeliveryState != 2)
                 gCurrentPinballGame->catchArrowPaletteActive = 1;
             else
                 gCurrentPinballGame->catchArrowPaletteActive = 0;
@@ -1597,9 +1597,9 @@ void CleanupEggModeState(void)
     s16 i;
 
     if (gMain.selectedField == FIELD_RUBY)
-        gCurrentPinballGame->eggDeliveryState = 1;
+        gCurrentPinballGame->rubyEggDeliveryState = 1;
     else
-        gCurrentPinballGame->holeCaptureReady = 1;
+        gCurrentPinballGame->sapphirerubyEggDeliveryState = 1;
 
     gCurrentPinballGame->creatureHitCount = 0;
     LoadPortraitGraphics(0, 0);
@@ -1754,7 +1754,7 @@ void UpdateEggMode(void)
             priority = 1;
             if (gCurrentPinballGame->waypointSubTimer == 0)
             {
-                gCurrentPinballGame->holeLetterSystemState = 3;
+                gCurrentPinballGame->sapphireHatchMachineState = 3;
                 m4aSongNumStart(SE_UNKNOWN_0xDD);
             }
             var0 = 0;
@@ -2521,7 +2521,7 @@ void UpdateAreaRoulette(void)
                         gCurrentPinballGame->rouletteSpinSpeed = 1;
 
                     gCurrentPinballGame->rouletteInitialSpeed = gCurrentPinballGame->rouletteSpinSpeed;
-                    gCurrentPinballGame->sapphirePondFlag = 1;
+                    gCurrentPinballGame->spoinkEntityState = 1;
                     gCurrentPinballGame->launcherCharging = 1;
                     gCurrentPinballGame->saverTimeRemaining = 3600;
                     gCurrentPinballGame->rubyPondState = RUBY_POND_STATE_CHINCHOU_COUNTERCLOCKWISE;

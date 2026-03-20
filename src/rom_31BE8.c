@@ -39,23 +39,23 @@ void DrawSapphireShopSignSprite(void)
     }
 }
 
-void UpdateSapphireHoleLetterSystem(void)
+void UpdateSapphireEggMachine(void)
 {
     s16 i, j;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    switch (gCurrentPinballGame->holeLetterSystemState)
+    switch (gCurrentPinballGame->sapphireHatchMachineState)
     {
     case 0:
-        if (gCurrentPinballGame->holeLetterNewHit)
+        if (gCurrentPinballGame->hatchMachineNewHit)
         {
             if (gCurrentPinballGame->boardState < 3)
             {
-                if (gCurrentPinballGame->holeLetterCount < 3)
+                if (gCurrentPinballGame->sapphireHatchMachineFrameIx < 3)
                 {
-                    gCurrentPinballGame->holeLetterCount++;
+                    gCurrentPinballGame->sapphireHatchMachineFrameIx++;
                     gCurrentPinballGame->scoreAddedInFrame = 20000;
                     m4aSongNumStart(SE_UNKNOWN_0xDE);
                 }
@@ -70,7 +70,7 @@ void UpdateSapphireHoleLetterSystem(void)
                     gCurrentPinballGame->bannerGfxIndex = 0;
                     gCurrentPinballGame->bannerActive = 1;
                     gCurrentPinballGame->bannerPreserveBallState = 0;
-                    gCurrentPinballGame->holeLetterSystemState = 1;
+                    gCurrentPinballGame->sapphireHatchMachineState = 1;
                     gCurrentPinballGame->holeAnimFrameCounter = 0;
                     m4aMPlayStop(&gMPlayInfo_BGM);
                     gCurrentPinballGame->scoreAddedInFrame = 200000;
@@ -79,17 +79,17 @@ void UpdateSapphireHoleLetterSystem(void)
             }
             else
             {
-                if (gCurrentPinballGame->holeLetterCount < 3)
+                if (gCurrentPinballGame->sapphireHatchMachineFrameIx < 3)
                 {
-                    gCurrentPinballGame->holeLetterCount++;
+                    gCurrentPinballGame->sapphireHatchMachineFrameIx++;
                     gCurrentPinballGame->scoreAddedInFrame = 20000;
                     m4aSongNumStart(SE_UNKNOWN_0xDE);
                 }
             }
 
-            index = gCurrentPinballGame->holeLetterCount;
+            index = gCurrentPinballGame->sapphireHatchMachineFrameIx;
             DmaCopy16(3, &gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
-            gCurrentPinballGame->holeLetterNewHit = 0;
+            gCurrentPinballGame->hatchMachineNewHit = 0;
         }
         break;
     case 1:
@@ -102,8 +102,8 @@ void UpdateSapphireHoleLetterSystem(void)
         {
             index = 0;
             DmaCopy16(3, &gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
-            gCurrentPinballGame->holeLetterSystemState = 2;
-            gCurrentPinballGame->holeLetterCount = 0;
+            gCurrentPinballGame->sapphireHatchMachineState = 2;
+            gCurrentPinballGame->sapphireHatchMachineFrameIx = 0;
         }
 
         if (gCurrentPinballGame->holeAnimFrameCounter == 60)
@@ -118,37 +118,37 @@ void UpdateSapphireHoleLetterSystem(void)
         gCurrentPinballGame->holeAnimFrameCounter++;
         break;
     case 3:
-        if (gHoleAnimKeyframeData[gCurrentPinballGame->holeLetterCount][1] > gCurrentPinballGame->holeAnimFrameCounter)
+        if (gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][1] > gCurrentPinballGame->holeAnimFrameCounter)
         {
             gCurrentPinballGame->holeAnimFrameCounter++;
         }
         else
         {
             gCurrentPinballGame->holeAnimFrameCounter = 0;
-            gCurrentPinballGame->holeLetterCount++;
-            if (gCurrentPinballGame->holeLetterCount == 10)
-                gCurrentPinballGame->holeLetterSystemState = 4;
+            gCurrentPinballGame->sapphireHatchMachineFrameIx++;
+            if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 10)
+                gCurrentPinballGame->sapphireHatchMachineState = 4;
 
-            if (gCurrentPinballGame->holeLetterCount == 6)
+            if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 6)
                 m4aSongNumStart(SE_UNKNOWN_0xE0);
 
-            index = gHoleAnimKeyframeData[gCurrentPinballGame->holeLetterCount][0];
+            index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
             DmaCopy16(3, &gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
         }
 
-        if (gCurrentPinballGame->holeLetterCount < 6)
+        if (gCurrentPinballGame->sapphireHatchMachineFrameIx < 6)
         {
             gCurrentPinballGame->walkMonYPos = 280;
         }
         else
         {
             gCurrentPinballGame->walkMonYPos += 6;
-            if (gCurrentPinballGame->holeLetterSystemState == 4)
+            if (gCurrentPinballGame->sapphireHatchMachineState == 4)
                 gCurrentPinballGame->walkMonYPos = gCurrentPinballGame->walkMonYPos + 20;
         }
         break;
     case 4:
-        if (gCurrentPinballGame->holeCaptureReady && gCurrentPinballGame->holeLetterNewHit)
+        if (gCurrentPinballGame->sapphirerubyEggDeliveryState && gCurrentPinballGame->hatchMachineNewHit)
         {
             gMain.modeChangeFlags |= MODE_CHANGE_BANNER;
             gCurrentPinballGame->bannerDelayTimer = 0;
@@ -159,34 +159,34 @@ void UpdateSapphireHoleLetterSystem(void)
             gCurrentPinballGame->bannerGfxIndex = 0;
             gCurrentPinballGame->bannerActive = 1;
             gCurrentPinballGame->bannerPreserveBallState = 0;
-            gCurrentPinballGame->holeLetterSystemState = 5;
+            gCurrentPinballGame->sapphireHatchMachineState = 5;
             gCurrentPinballGame->holeAnimFrameCounter = 0;
-            gCurrentPinballGame->holeLetterCount = 10;
+            gCurrentPinballGame->sapphireHatchMachineFrameIx = 10;
             m4aSongNumStart(SE_UNKNOWN_0xE0);
             gCurrentPinballGame->eggAnimationPhase = 1;
             gCurrentPinballGame->portraitOffsetX = 2080;
             gCurrentPinballGame->portraitOffsetY = 960;
         }
 
-        gCurrentPinballGame->holeLetterNewHit = 0;
+        gCurrentPinballGame->hatchMachineNewHit = 0;
         break;
     case 5:
-        if (gHoleAnimKeyframeData[gCurrentPinballGame->holeLetterCount][1] > gCurrentPinballGame->holeAnimFrameCounter)
+        if (gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][1] > gCurrentPinballGame->holeAnimFrameCounter)
         {
             gCurrentPinballGame->holeAnimFrameCounter++;
         }
         else
         {
             gCurrentPinballGame->holeAnimFrameCounter = 0;
-            gCurrentPinballGame->holeLetterCount++;
-            if (gCurrentPinballGame->holeLetterCount == 15)
-                gCurrentPinballGame->holeLetterSystemState = 6;
+            gCurrentPinballGame->sapphireHatchMachineFrameIx++;
+            if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 15)
+                gCurrentPinballGame->sapphireHatchMachineState = 6;
 
-            index = gHoleAnimKeyframeData[gCurrentPinballGame->holeLetterCount][0];
+            index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
             DmaCopy16(3, gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
         }
 
-        if (gCurrentPinballGame->holeLetterCount == 14 && gCurrentPinballGame->holeAnimFrameCounter == 10)
+        if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 14 && gCurrentPinballGame->holeAnimFrameCounter == 10)
             m4aSongNumStart(SE_UNKNOWN_0xE1);
 
         if (gCurrentPinballGame->portraitOffsetY > 700)
@@ -195,10 +195,10 @@ void UpdateSapphireHoleLetterSystem(void)
             gCurrentPinballGame->portraitOffsetY = 700;
         break;
     case 6:
-        gCurrentPinballGame->holeLetterCount = 0;
+        gCurrentPinballGame->sapphireHatchMachineFrameIx = 0;
         gCurrentPinballGame->holeAnimFrameCounter = 0;
-        gCurrentPinballGame->holeLetterSystemState = 0;
-        gCurrentPinballGame->holeCaptureReady = 0;
+        gCurrentPinballGame->sapphireHatchMachineState = 0;
+        gCurrentPinballGame->sapphirerubyEggDeliveryState = 0;
         break;
     }
 

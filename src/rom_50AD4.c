@@ -12,7 +12,7 @@ extern const u8 *gSapphireCatchArrowBonusTilePtrs[][5][3];
 extern const u8 *gSapphireEvoArrowBonusTilePtrs[][5][3];
 extern const u8 *gSapphireEvoArrowPaletteTilePtrs[][4];
 extern const u8 *gSapphireCatchArrowPaletteTilePtrs[][4];
-extern const u8 *gSapphireCoinRewardAltTilePtrs[][5][3];
+extern const u8 *gSapphireCoinRewardTilePtrs[][5][3];
 extern const u8 *gSapphireModeTimerDisplayTilePtrs[][4];
 extern const u8 *gSapphireHoleIndicatorTilePtrs[][4];
 extern const u8 *gSapphireCatchLightTilePtrs[][7][2];
@@ -23,7 +23,7 @@ extern const u8 *gSapphireSlingshotTilePtrs[][3][5];
 extern const u8 *gSapphireProgressDigitTilePtrs[][4];
 extern const u8 *gSapphireCatchArrowTilePtrs[][5][3];
 extern const u8 *gSapphireEvoArrowTilePtrs[][5][3];
-extern const u8 *gSapphireCoinRewardTilePtrs[][5][3];
+extern const u8 *gRubyCoinRewardTilePtrs[][5][3];
 extern const s16 gCoinRewardLevelTimerThresholds[];
 
 
@@ -43,7 +43,7 @@ void UpdateCoinRewardTimer(void)
     }
 }
 
-void DrawCoinRewardMeter(void)
+void DrawRubyCoinRewardMeter(void)
 {
     s16 sp0[3];
     const u8 **src;
@@ -74,8 +74,8 @@ void DrawCoinRewardMeter(void)
         sp0[2] = 3;
     }
 
-    src = gSapphireCoinRewardTilePtrs[0][sp0[0]];
-    dest = gSapphireCoinRewardTilePtrs[0][4];
+    src = gRubyCoinRewardTilePtrs[0][sp0[0]];
+    dest = gRubyCoinRewardTilePtrs[0][4];
     if (gCurrentPinballGame->hudSpriteBaseY >= 42 && gCurrentPinballGame->hudSpriteBaseY < 208)
     {
         DmaCopy16(3, src[0], dest[0], 0x60);
@@ -86,8 +86,8 @@ void DrawCoinRewardMeter(void)
         DmaCopy16(3, src[1], dest[1], 0x60);
     }
 
-    src = gSapphireCoinRewardTilePtrs[1][sp0[1]];
-    dest = gSapphireCoinRewardTilePtrs[1][4];
+    src = gRubyCoinRewardTilePtrs[1][sp0[1]];
+    dest = gRubyCoinRewardTilePtrs[1][4];
     if (gCurrentPinballGame->hudSpriteBaseY >= 58 && gCurrentPinballGame->hudSpriteBaseY < 224)
     {
         DmaCopy16(3, src[0], dest[0], 0x60);
@@ -98,8 +98,8 @@ void DrawCoinRewardMeter(void)
         DmaCopy16(3, src[1], dest[1], 0x60);
     }
 
-    src = gSapphireCoinRewardTilePtrs[2][sp0[2]];
-    dest = gSapphireCoinRewardTilePtrs[2][4];
+    src = gRubyCoinRewardTilePtrs[2][sp0[2]];
+    dest = gRubyCoinRewardTilePtrs[2][4];
     if (gCurrentPinballGame->hudSpriteBaseY >= 74 && gCurrentPinballGame->hudSpriteBaseY < 240)
     {
         DmaCopy16(3, src[0], dest[0], 0x60);
@@ -116,7 +116,7 @@ void DrawCoinRewardMeter(void)
     }
 }
 
-void DrawEvoArrowProgress(void)
+void DrawRubyEvoArrowProgress(void)
 {
     s16 sp0[3];
     const u8 **src;
@@ -284,12 +284,12 @@ void UpdateSapphireBoardAnimations(void)
 
     if (gCurrentPinballGame->hudSpriteBaseY > 104)
     {
-        DrawEvoArrowBonusField();
+        DrawSapphireEvoArrowProgress();
         DrawCatchArrowBonusField();
     }
 
     if (gCurrentPinballGame->hudSpriteBaseY > 72)
-        DrawCoinRewardMeterAlt();
+        DrawSapphireCoinRewardMeter();
 
     UpdateCoinRewardTimer();
     if (gCurrentPinballGame->hudSpriteBaseY > 110)
@@ -483,7 +483,7 @@ void DrawSapphireModeTimerDisplay(void)
     }
 }
 
-void DrawCoinRewardMeterAlt(void)
+void DrawSapphireCoinRewardMeter(void)
 {
     s16 sp0[3];
     const u8 **src;
@@ -514,8 +514,8 @@ void DrawCoinRewardMeterAlt(void)
         sp0[2] = 2;
     }
 
-    src = gSapphireCoinRewardAltTilePtrs[0][sp0[0]];
-    dest = gSapphireCoinRewardAltTilePtrs[0][3];
+    src = gSapphireCoinRewardTilePtrs[0][sp0[0]];
+    dest = gSapphireCoinRewardTilePtrs[0][3];
     if (gCurrentPinballGame->hudSpriteBaseY < 240)
     {
         DmaCopy16(3, src[0], dest[0], 0x40);
@@ -528,8 +528,8 @@ void DrawCoinRewardMeterAlt(void)
 
     if (gCurrentPinballGame->hudSpriteBaseY > 88)
     {
-        src = gSapphireCoinRewardAltTilePtrs[1][sp0[1]];
-        dest = gSapphireCoinRewardAltTilePtrs[1][3];
+        src = gSapphireCoinRewardTilePtrs[1][sp0[1]];
+        dest = gSapphireCoinRewardTilePtrs[1][3];
         if (gCurrentPinballGame->hudSpriteBaseY < 254)
         {
             DmaCopy16(3, src[0], dest[0], 0x40);
@@ -542,8 +542,8 @@ void DrawCoinRewardMeterAlt(void)
 
     if (gCurrentPinballGame->hudSpriteBaseY > 96)
     {
-        src = gSapphireCoinRewardAltTilePtrs[2][sp0[2]];
-        dest = gSapphireCoinRewardAltTilePtrs[2][3];
+        src = gSapphireCoinRewardTilePtrs[2][sp0[2]];
+        dest = gSapphireCoinRewardTilePtrs[2][3];
         if (gCurrentPinballGame->hudSpriteBaseY < 264)
         {
             DmaCopy16(3, src[0], dest[0], 0x40);
@@ -614,7 +614,7 @@ void AnimateSapphireEvoArrowPalette(void)
     }
 }
 
-void DrawEvoArrowBonusField(void)
+void DrawSapphireEvoArrowProgress(void)
 {
     s16 sp0[3];
     const u8 **src;
@@ -849,7 +849,7 @@ void AnimateBonusModeIndicators(void)
     const u8 **src;
     const u8 **dest;
 
-    if (gCurrentPinballGame->holeLetterSystemState != 3)
+    if (gCurrentPinballGame->sapphireHatchMachineState != 3)
     {
         for (i = 0; i < 10; i++)
         {

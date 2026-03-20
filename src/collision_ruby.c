@@ -357,7 +357,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
         break;
     case 4:
         gCurrentPinballGame->ballInLaunchChute = 1;
-        gCurrentPinballGame->sapphireEntityCollisionFlag = 1;
+        gCurrentPinballGame->ballTouchingSpoink = 1;
         gCurrentPinballGame->ballCollisionZone = 0;
         return;
     case 5:

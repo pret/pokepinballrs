@@ -24,7 +24,7 @@ void InitSapphireEggCaveState(void)
     gCurrentPinballGame->portraitOffsetY = 700;
 }
 
-void UpdateSapphireEggCaveAnimation(void)
+void UpdateSapphireEggHatchAnimation(void)
 {
     s16 i;
     struct SpriteGroup *group;
@@ -160,7 +160,7 @@ void UpdateSapphireEggCaveAnimation(void)
     if (group->available)
     {
         group->baseX = 192 - gCurrentPinballGame->cameraXOffset;
-        if (gCurrentPinballGame->holeLetterSystemState > 2 && gMain.modeChangeFlags)
+        if (gCurrentPinballGame->sapphireHatchMachineState > 2 && gMain.modeChangeFlags)
             group->baseY = 56 - gCurrentPinballGame->cameraYOffset;
         else
             group->baseY = 200;

@@ -248,11 +248,11 @@ struct PinballGame
     /*0x12E*/ s16 totalWeight;       // Added weight of all possible mons in area
     /*0x130*/ s16 speciesWeights[25]; // Weight of each species
     /*0x162*/ s8 forcePondToWhiscash;
-    /*0x163*/ s8 sapphirePondFlag;
-    /*0x164*/ s8 pondAnimFrameIndex;
-    /*0x165*/ s8 sapphireEntityCollisionFlag;
-    /*0x166*/ u16 sapphireSpriteTimer;
-    /*0x168*/ u16 pondAnimSubTimer;
+    /*0x163*/ s8 spoinkEntityState;
+    /*0x164*/ s8 spoinkAnimFrameIx;
+    /*0x165*/ s8 ballTouchingSpoink;
+    /*0x166*/ u16 spoinkPullbackYDistance;
+    /*0x168*/ u16 spoinkAnimFrameTimer;
     /*0x16A*/ s16 bannerSlideX;
     /*0x16C*/ s8 rubyPondState;
     /*0x16D*/ u8 filler16D[0x1];
@@ -408,7 +408,7 @@ struct PinballGame
     /*0x2CA*/ s16 eggDeliveryY;
     /*0x2CC*/ s16 eggDeliveryVelX;
     /*0x2CE*/ s16 eggDeliveryVelY;
-    /*0x2D0*/ s8 eggDeliveryState;
+    /*0x2D0*/ s8 rubyEggDeliveryState;
     /*0x2D1*/ u8 filler2D1[3];
     /*0x2D4*/ u16 cyndaquilCaveSpriteX;
     /*0x2D6*/ u16 cyndaquilCaveSpriteY;
@@ -470,11 +470,11 @@ struct PinballGame
     /*0x335*/ u8 filler335[0x1];
     /*0x336*/ u16 seedotAnimTimer[3];
     /*0x33C*/ u16 seedotYOffset[3];
-    /*0x342*/ s8 sapphireDiverterActive;
-    /*0x343*/ s8 holeCaptureReady;
-    /*0x344*/ s8 holeLetterNewHit;
-    /*0x345*/ s8 holeLetterCount;
-    /*0x346*/ s8 holeLetterSystemState;
+    /*0x342*/ s8 hatchMachineActive; // Turns off while launching, Reenabled when ball touches ramp
+    /*0x343*/ s8 sapphirerubyEggDeliveryState;
+    /*0x344*/ s8 hatchMachineNewHit;
+    /*0x345*/ s8 sapphireHatchMachineFrameIx;
+    /*0x346*/ s8 sapphireHatchMachineState; // 0-6
     /*0x347*/ u8 filler347[0x1];
     /*0x348*/ u16 holeAnimFrameCounter;
     /*0x34A*/ s8 targetBumperHitCounter;

@@ -12,13 +12,13 @@ void RubyBoardProcess_3A_19A20(void)
     UpdateNuzleafEntity();
     LoadShopItemGraphics(0);
     AnimateRubyShopDoor();
-    InitEggModeAnimation();
+    InitRubyEggModeAnimation();
     UpdateEggModeAnimation();
 
     gCurrentPinballGame->cyndaquilCaveSpriteX = 73;
     gCurrentPinballGame->cyndaquilCaveSpriteY = 154;
     gCurrentPinballGame->eggCaveState = 0;
-    UpdateEggHatchDisplay();
+    UpdateHatchCave();
     RubyPond_EntityLogic();
 
     gCurrentPinballGame->pondBumperStates[0] = 10;

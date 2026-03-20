@@ -421,12 +421,12 @@ void ProcessMainBoardBallDrainAndLaunch(void)
     if (gCurrentPinballGame->boardState && gCurrentPinballGame->newButtonActions[1] && gCurrentPinballGame->ballInLaunchChute)
     {
         gCurrentPinballGame->launcherCharging = 1;
-        gCurrentPinballGame->sapphirePondFlag = 1;
+        gCurrentPinballGame->spoinkEntityState = 1;
     }
 
     if (gCurrentPinballGame->launcherCharging && gCurrentPinballGame->releasedButtonActions[1])
     {
-        gCurrentPinballGame->sapphirePondFlag = 3;
+        gCurrentPinballGame->spoinkEntityState = 3;
         if (gCurrentPinballGame->ballInLaunchChute)
         {
             PlayRumble(7);

@@ -1526,12 +1526,12 @@ void RestoreSapphireBoardTileGraphics(void)
 {
     s16 index;
 
-    switch (gCurrentPinballGame->holeLetterSystemState)
+    switch (gCurrentPinballGame->sapphireHatchMachineState)
     {
     case 0:
     case 1:
     case 2:
-        index = gCurrentPinballGame->holeLetterCount;
+        index = gCurrentPinballGame->sapphireHatchMachineFrameIx;
         DmaCopy16(3, gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
         break;
     case 3:
@@ -1540,7 +1540,7 @@ void RestoreSapphireBoardTileGraphics(void)
         DmaCopy16(3, gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
         break;
     case 5:
-        index = gHoleAnimKeyframeData[gCurrentPinballGame->holeLetterCount][0];
+        index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
         DmaCopy16(3, gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
         break;
     case 6:

@@ -248,7 +248,7 @@ void InitRubyEggHatchMode(void)
         PlayRumble(7);
         gCurrentPinballGame->modeAnimTimer = 500;
     }
-    else if (gCurrentPinballGame->eggDeliveryState !=0)
+    else if (gCurrentPinballGame->rubyEggDeliveryState !=0)
     {
         gCurrentPinballGame->modeAnimTimer = 300;
     }
@@ -278,7 +278,7 @@ void AnimateRubyEggHatchSequence(void)
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
 
-        if (gCurrentPinballGame->eggDeliveryState != 1)
+        if (gCurrentPinballGame->rubyEggDeliveryState != 1)
             return;
         if (gCurrentPinballGame->modeAnimTimer > 0xC8)
             return;
@@ -317,7 +317,7 @@ void AnimateRubyEggHatchSequence(void)
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
         gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
 
-        if (gCurrentPinballGame->eggDeliveryState == 2)
+        if (gCurrentPinballGame->rubyEggDeliveryState == 2)
         {
             gCurrentPinballGame->eggCaveState = 3;
             gCurrentPinballGame->eggCaveLiftTimer = 0x30;

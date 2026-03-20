@@ -920,7 +920,121 @@ gSapphireBoardCompressedTiles2:: @ 0x082D523C
 	.incbin "baserom.gba", 0x2D523C, 0x375C
 
 gSapphireBoardCompressedBGTileBuffer:: @ 0x082D8998
-	.incbin "baserom.gba", 0x2D8998, 0xC548
+	.incbin "baserom.gba", 0x2D8998, 0x5848
+
+gUnknown_082DE1E0:: @ 0x082DE1E0
+    .incbin "baserom.gba", 0x2DE1E0, 0x400
+
+gUnknown_082DE5E0:: @ 0x082DE5E0
+    .incbin "baserom.gba", 0x2DE5E0, 0x40
+
+gUnknown_082DE620:: @ 0x082DE620
+    .incbin "baserom.gba", 0x2DE620, 0x40
+
+gUnknown_082DE660:: @ 0x082DE660
+    .incbin "baserom.gba", 0x2DE660, 0x40
+
+gUnknown_082DE6A0:: @ 0x082DE6A0
+    .incbin "baserom.gba", 0x2DE6A0, 0x40
+
+gUnknown_082DE6E0:: @ 0x082DE6E0
+    .incbin "baserom.gba", 0x2DE6E0, 0x40
+
+gUnknown_082DE720:: @ 0x082DE720
+    .incbin "baserom.gba", 0x2DE720, 0xC0
+
+gUnknown_082DE7E0:: @ 0x082DE7E0
+    .incbin "baserom.gba", 0x2DE7E0, 0x40
+
+gUnknown_082DE820:: @ 0x082DE820
+    .incbin "baserom.gba", 0x2DE820, 0x40
+
+gUnknown_082DE860:: @ 0x082DE860
+    .incbin "baserom.gba", 0x2DE860, 0x40
+
+gUnknown_082DE8A0:: @ 0x082DE8A0
+    .incbin "baserom.gba", 0x2DE8A0, 0x40
+
+gUnknown_082DE8E0:: @ 0x082DE8E0
+    .incbin "baserom.gba", 0x2DE8E0, 0x40
+
+gUnknown_082DE920:: @ 0x082DE920
+    .incbin "baserom.gba", 0x2DE920, 0x40
+
+gUnknown_082DE960:: @ 0x082DE960
+    .incbin "baserom.gba", 0x2DE960, 0x40
+
+gUnknown_082DE9A0:: @ 0x082DE9A0
+    .incbin "baserom.gba", 0x2DE9A0, 0x40
+
+gUnknown_082DE9E0:: @ 0x082DE9E0
+    .incbin "baserom.gba", 0x2DE9E0, 0x40
+
+gUnknown_082DEA20:: @ 0x082DEA20
+    .incbin "baserom.gba", 0x2DEA20, 0x40
+
+gUnknown_082DEA60:: @ 0x082DEA60
+    .incbin "baserom.gba", 0x2DEA60, 0x40
+
+gUnknown_082DEAA0:: @ 0x082DEAA0
+    .incbin "baserom.gba", 0x2DEAA0, 0x40
+
+gUnknown_082DEAE0:: @ 0x082DEAE0
+    .incbin "baserom.gba", 0x2DEAE0, 0x40
+
+gUnknown_082DEB20:: @ 0x082DEB20
+    .incbin "baserom.gba", 0x2DEB20, 0x40
+
+gUnknown_082DEB60:: @ 0x082DEB60
+    .incbin "baserom.gba", 0x2DEB60, 0x40
+
+gUnknown_082DEBA0:: @ 0x082DEBA0
+    .incbin "baserom.gba", 0x2DEBA0, 0x40
+
+gUnknown_082DEBE0:: @ 0x082DEBE0
+    .incbin "baserom.gba", 0x2DEBE0, 0x40
+
+gUnknown_082DEC20:: @ 0x082DEC20
+    .incbin "baserom.gba", 0x2DEC20, 0x40
+
+gUnknown_082DEC60:: @ 0x082DEC60
+    .incbin "baserom.gba", 0x2DEC60, 0x40
+
+gUnknown_082DECA0:: @ 0x082DECA0
+    .incbin "baserom.gba", 0x2DECA0, 0x40
+
+gUnknown_082DECE0:: @ 0x082DECE0
+    .incbin "baserom.gba", 0x2DECE0, 0x40
+
+gUnknown_082DED20:: @ 0x082DED20
+    .incbin "baserom.gba", 0x2DED20, 0x40
+
+gUnknown_082DED60:: @ 0x082DED60
+    .incbin "baserom.gba", 0x2DED60, 0x40
+
+gUnknown_082DEDA0:: @ 0x082DEDA0
+    .incbin "baserom.gba", 0x2DEDA0, 0x40
+
+gUnknown_082DEDE0:: @ 0x082DEDE0
+    .incbin "baserom.gba", 0x2DEDE0, 0x40
+
+gUnknown_082DEE20:: @ 0x082DEE20
+    .incbin "baserom.gba", 0x2DEE20, 0x40
+
+gUnknown_082DEE60:: @ 0x082DEE60
+    .incbin "baserom.gba", 0x2DEE60, 0x40
+
+gUnknown_082DEEA0:: @ 0x082DEEA0
+    .incbin "baserom.gba", 0x2DEEA0, 0x380
+
+gUnknown_082DF220:: @ 0x082DF220
+    .incbin "baserom.gba", 0x2DF220, 0x40
+
+gUnknown_082DF260:: @ 0x082DF260
+    .incbin "baserom.gba", 0x2DF260, 0x40
+
+gUnknown_082DF2A0:: @ 0x082DF2A0
+    .incbin "baserom.gba", 0x2DF2A0, 0x5C40
 
 gSapphireBoardBGTiles:: @ 0x082E4EE0
 	.incbin "baserom.gba", 0x2E4EE0, 0x8000
@@ -1236,7 +1350,7 @@ gBallSpawnGlowTiles_Type2:: @ 0x083BDF6C
 gBallSpawnGlowTiles_Type1:: @ 0x083BF16C
 	.incbin "baserom.gba", 0x3BF16C, 0x1600
 
-gSapphirePondEntity_Gfx:: @ 0x083C076C
+gSpoinkEntity_Gfx:: @ 0x083C076C
 	.incbin "baserom.gba", 0x3C076C, 0xC40
 
 gKyogreSplashSpriteFrames:: @ 0x083C13AC

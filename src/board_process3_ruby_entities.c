@@ -32,7 +32,7 @@ void UpdateRubyBoardEntityRendering(void)
     }
     if (gCurrentPinballGame->cameraYViewport < 220)
     {
-        UpdateEggHatchDisplay();
+        UpdateHatchCave();
         if (gCurrentPinballGame->shouldProcessWhiscash)
         {
             DrawWhiscash();

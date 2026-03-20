@@ -290,10 +290,10 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
         }
         break;
     case 5:
-        gCurrentPinballGame->sapphireEntityCollisionFlag = 1;
+        gCurrentPinballGame->ballTouchingSpoink = 1;
         gCurrentPinballGame->ballInLaunchChute = 1;
         gCurrentPinballGame->ballCollisionZone = 0;
-        gCurrentPinballGame->sapphireDiverterActive = 0;
+        gCurrentPinballGame->hatchMachineActive = 0;
         break;
     case 6:
         if (gCurrentPinballGame->ball->positionQ0.x < 120)
@@ -311,7 +311,7 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
             }
         }
         else
-            gCurrentPinballGame->sapphireDiverterActive = 1;
+            gCurrentPinballGame->hatchMachineActive = 1;
         break;
     case 7:
         if (gCurrentPinballGame->shopShockWallAnimState != 3)
@@ -585,8 +585,8 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
             {
                 memcpy(&gCurrentPinballGame->ballStates[1], &gCurrentPinballGame->ballStates[0], sizeof(*gCurrentPinballGame->ballStates));
                 gCurrentPinballGame->secondaryBall = &gCurrentPinballGame->ballStates[1];
-                if (gCurrentPinballGame->sapphireDiverterActive)
-                    gCurrentPinballGame->holeLetterNewHit = 1;
+                if (gCurrentPinballGame->hatchMachineActive)
+                    gCurrentPinballGame->hatchMachineNewHit = 1;
             }
 
             if (gCurrentPinballGame->targetBumperHitCounter == 11)

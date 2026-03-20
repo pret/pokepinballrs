@@ -4206,7 +4206,7 @@ gHatchPieceMatrixNums:: @ 0x086AE318
 gOneUpSpritePalette:: @ 0x086AE324
 	.incbin "baserom.gba", 0x6AE324, 0x20
 
-gSapphirePondAnimFramesets:: @ 0x086AE344
+gSpoinkAnimFrameset:: @ 0x086AE344
 	.incbin "baserom.gba", 0x6AE344, 0x50
 
 gTravelEventAnimData:: @ 0x086AE394
@@ -4573,7 +4573,7 @@ gRubyHoleIndicatorTilePointers:: @ 0x086B0BC4
 gSapphireEvoArrowTilePtrs:: @ 0x086B0C04
 	.incbin "baserom.gba", 0x6B0C04, 0xB4
 
-gSapphireCoinRewardTilePtrs:: @ 0x086B0CB8
+gRubyCoinRewardTilePtrs:: @ 0x086B0CB8
 	.incbin "baserom.gba", 0x6B0CB8, 0xB4
 
 gSapphireCatchArrowTilePtrs:: @ 0x086B0D6C
@@ -4595,10 +4595,45 @@ gRotatingBackgroundTilePtrs:: @ 0x086B0F4C
 	.incbin "baserom.gba", 0x6B0F4C, 0x50
 
 gBonusModeIndicatorTilePtrs:: @ 0x086B0F9C
-	.incbin "baserom.gba", 0x6B0F9C, 0x10
+    .4byte gUnknown_082DE1E0, gUnknown_082DE5E0
+    .4byte gUnknown_082DE620, gUnknown_082DEA20
+    .4byte 0x0600DD40, 0x0600DD80
 
-gUnknown_086B0FAC:: @ 0x086B0FAC
-	.incbin "baserom.gba", 0x6B0FAC, 0xE0
+    .4byte gUnknown_082DE660, gUnknown_082DEA60
+    .4byte gUnknown_082DE6A0, gUnknown_082DEAA0
+    .4byte 0x0600DDC0, 0x0600DE00
+
+    .4byte gUnknown_082DE6E0, gUnknown_082DEAE0
+    .4byte gUnknown_082DE720, gUnknown_082DEB20
+    .4byte 0x0600D9C0, 0x0600DAC0
+
+    .4byte gUnknown_082DEB60, gUnknown_082DEB60
+    .4byte gUnknown_082DEBA0, gUnknown_082DEBA0
+    .4byte 0x0600DE40, 0x0600DE40
+
+    .4byte gUnknown_082DE7E0, gUnknown_082DEBE0
+    .4byte gUnknown_082DE820, gUnknown_082DEC20
+    .4byte 0x0600D900, 0x0600DA00
+
+    .4byte gUnknown_082DE860, gUnknown_082DEC60
+    .4byte gUnknown_082DE8A0, gUnknown_082DECA0
+    .4byte 0x0600DE80, 0x0600DEC0
+
+    .4byte gUnknown_082DE8E0, gUnknown_082DECE0
+    .4byte gUnknown_082DE920, gUnknown_082DED20
+    .4byte 0x0600DF00, 0x0600DF40
+
+    .4byte gUnknown_082DE960, gUnknown_082DED60
+    .4byte gUnknown_082DE9A0, gUnknown_082DEDA0
+    .4byte 0x0600DF80, 0x0600DFC0
+
+    .4byte gUnknown_082DE9E0, gUnknown_082DEDE0
+    .4byte gUnknown_082DEE20, gUnknown_082DF220
+    .4byte 0x0600E000, 0x0600E040
+
+    .4byte gUnknown_082DEE60, gUnknown_082DF260
+    .4byte gUnknown_082DEEA0, gUnknown_082DF2A0
+    .4byte 0x0600E080, 0x0600E0C0
 
 gSapphireSlingshotTilePtrs:: @ 0x086B108C
 	.incbin "baserom.gba", 0x6B108C, 0x78
@@ -4633,7 +4668,7 @@ gSapphireHoleIndicatorTilePtrs:: @ 0x086B1300
 gSapphireEvoArrowBonusTilePtrs:: @ 0x086B1340
 	.incbin "baserom.gba", 0x6B1340, 0xB4
 
-gSapphireCoinRewardAltTilePtrs:: @ 0x086B13F4
+gSapphireCoinRewardTilePtrs:: @ 0x086B13F4
 	.incbin "baserom.gba", 0x6B13F4, 0x78
 
 gUnknown_086B146C:: @ 0x086B146C

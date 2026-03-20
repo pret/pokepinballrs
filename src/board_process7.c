@@ -58,7 +58,7 @@ void MainBoardProcess_7B_12524(void)
         SetMatrixScale(currentBallState->scale, currentBallState->scale, 0);
 
         spriteGroup->baseX = -(gCurrentPinballGame->cameraBaseX + 7) + currentBallState->positionQ0.x - gCurrentPinballGame->screenShakeX;
-        spriteGroup->baseY = -(gCurrentPinballGame->cameraBaseY + 7) + currentBallState->positionQ0.y - gCurrentPinballGame->cameraScrollOffset - gCurrentPinballGame->cameraYAdjust + gCurrentPinballGame->sapphireSpriteTimer;
+        spriteGroup->baseY = -(gCurrentPinballGame->cameraBaseY + 7) + currentBallState->positionQ0.y - gCurrentPinballGame->cameraScrollOffset - gCurrentPinballGame->cameraYAdjust + gCurrentPinballGame->spoinkPullbackYDistance;
 
         currentBallState->screenPosition.x = spriteGroup->baseX;
         currentBallState->screenPosition.y = spriteGroup->baseY;
@@ -100,7 +100,7 @@ void MainBoardProcess_7B_12524(void)
         SetMatrixScale(currentBallState->scale, currentBallState->scale, 0);
 
         spriteGroup->baseX = -(gCurrentPinballGame->cameraBaseX + 7) + currentBallState->positionQ0.x - gCurrentPinballGame->screenShakeX;
-        spriteGroup->baseY = -(gCurrentPinballGame->cameraBaseY + 7) + currentBallState->positionQ0.y - gCurrentPinballGame->cameraScrollOffset - gCurrentPinballGame->cameraYAdjust + gCurrentPinballGame->sapphireSpriteTimer;
+        spriteGroup->baseY = -(gCurrentPinballGame->cameraBaseY + 7) + currentBallState->positionQ0.y - gCurrentPinballGame->cameraScrollOffset - gCurrentPinballGame->cameraYAdjust + gCurrentPinballGame->spoinkPullbackYDistance;
 
         currentBallState->screenPosition.x = spriteGroup->baseX;
         currentBallState->screenPosition.y = spriteGroup->baseY;

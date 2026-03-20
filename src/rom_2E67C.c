@@ -44,8 +44,8 @@ extern const u8 gBoardActionObjPal[];
 extern const u16 gEvolutionSparkleSpritesheetOam[20][12];
 extern const u8 gHatchFinalTilesGfx[];
 extern const u8 gHatchFinalPalette[];
-extern const s16 gSapphirePondAnimFramesets[][2];
-extern const u8 gSapphirePondEntity_Gfx[][0x1C0];
+extern const s16 gSpoinkAnimFrameset[][2];
+extern const u8 gSpoinkEntity_Gfx[][0x1C0];
 extern const u8 gOneUpBannerSprite_Gfx[][0x200];
 extern const u8 gLifeCountDigit_Gfx[][0x40];
 extern const u8 gOneUpSpritePalette[];
@@ -217,76 +217,76 @@ void UpdateSpoinkAnimation(void)
         DmaCopy16(3, gFieldPaletteVariants[gMain.selectedField][gCurrentPinballGame->activePaletteIndex * 2 + 1], (void *)OBJ_PLTT + 0x160, 0x20);
     }
 
-    switch (gCurrentPinballGame->sapphirePondFlag)
+    switch (gCurrentPinballGame->spoinkEntityState)
     {
     case 0:
-        gCurrentPinballGame->pondAnimFrameIndex = 0;
-        gCurrentPinballGame->pondAnimSubTimer = 0;
-        if (gCurrentPinballGame->sapphireEntityCollisionFlag)
-            gCurrentPinballGame->sapphireSpriteTimer = (gCurrentPinballGame->globalAnimFrameCounter % 30) / 15;
+        gCurrentPinballGame->spoinkAnimFrameIx = 0;
+        gCurrentPinballGame->spoinkAnimFrameTimer = 0;
+        if (gCurrentPinballGame->ballTouchingSpoink)
+            gCurrentPinballGame->spoinkPullbackYDistance = (gCurrentPinballGame->globalAnimFrameCounter % 30) / 15;
         else
-            gCurrentPinballGame->sapphireSpriteTimer = 0;
+            gCurrentPinballGame->spoinkPullbackYDistance = 0;
 
-        gCurrentPinballGame->sapphireEntityCollisionFlag = 0;
+        gCurrentPinballGame->ballTouchingSpoink = 0;
         break;
     case 1:
-        if (gCurrentPinballGame->pondAnimSubTimer < 5)
+        if (gCurrentPinballGame->spoinkAnimFrameTimer < 5)
         {
-            if (gCurrentPinballGame->pondAnimSubTimer < 2)
+            if (gCurrentPinballGame->spoinkAnimFrameTimer < 2)
             {
-                gCurrentPinballGame->pondAnimFrameIndex = 2;
-                gCurrentPinballGame->sapphireSpriteTimer = 3;
+                gCurrentPinballGame->spoinkAnimFrameIx = 2;
+                gCurrentPinballGame->spoinkPullbackYDistance = 3;
             }
             else
             {
-                gCurrentPinballGame->pondAnimFrameIndex = 3;
-                gCurrentPinballGame->sapphireSpriteTimer = 5;
+                gCurrentPinballGame->spoinkAnimFrameIx = 3;
+                gCurrentPinballGame->spoinkPullbackYDistance = 5;
             }
 
-            if (gCurrentPinballGame->pondAnimSubTimer == 0)
+            if (gCurrentPinballGame->spoinkAnimFrameTimer == 0)
                 m4aSongNumStart(SE_UNKNOWN_0xCC);
 
-            gCurrentPinballGame->pondAnimSubTimer++;
+            gCurrentPinballGame->spoinkAnimFrameTimer++;
         }
         else
         {
-            gCurrentPinballGame->sapphirePondFlag = 2;
-            gCurrentPinballGame->pondAnimFrameIndex = 4;
-            gCurrentPinballGame->pondAnimSubTimer = 0;
+            gCurrentPinballGame->spoinkEntityState = 2;
+            gCurrentPinballGame->spoinkAnimFrameIx = 4;
+            gCurrentPinballGame->spoinkAnimFrameTimer = 0;
         }
         break;
     case 2:
-        if (gSapphirePondAnimFramesets[gCurrentPinballGame->pondAnimFrameIndex][1] <= gCurrentPinballGame->pondAnimSubTimer)
+        if (gSpoinkAnimFrameset[gCurrentPinballGame->spoinkAnimFrameIx][1] <= gCurrentPinballGame->spoinkAnimFrameTimer)
         {
-            gCurrentPinballGame->pondAnimSubTimer = 0;
-            gCurrentPinballGame->pondAnimFrameIndex++;
-            if (gCurrentPinballGame->pondAnimFrameIndex > 7)
-                gCurrentPinballGame->pondAnimFrameIndex = 4;
+            gCurrentPinballGame->spoinkAnimFrameTimer = 0;
+            gCurrentPinballGame->spoinkAnimFrameIx++;
+            if (gCurrentPinballGame->spoinkAnimFrameIx > 7)
+                gCurrentPinballGame->spoinkAnimFrameIx = 4;
         }
         else
         {
-            gCurrentPinballGame->pondAnimSubTimer++;
+            gCurrentPinballGame->spoinkAnimFrameTimer++;
         }
         break;
     case 3:
-        gCurrentPinballGame->pondAnimFrameIndex = 8;
-        gCurrentPinballGame->pondAnimSubTimer = 0;
-        gCurrentPinballGame->sapphirePondFlag = 4;
-        gCurrentPinballGame->sapphireSpriteTimer = 0;
+        gCurrentPinballGame->spoinkAnimFrameIx = 8;
+        gCurrentPinballGame->spoinkAnimFrameTimer = 0;
+        gCurrentPinballGame->spoinkEntityState = 4;
+        gCurrentPinballGame->spoinkPullbackYDistance = 0;
         break;
     case 4:
-        if (gSapphirePondAnimFramesets[gCurrentPinballGame->pondAnimFrameIndex][1] > gCurrentPinballGame->pondAnimSubTimer)
+        if (gSpoinkAnimFrameset[gCurrentPinballGame->spoinkAnimFrameIx][1] > gCurrentPinballGame->spoinkAnimFrameTimer)
         {
-            gCurrentPinballGame->pondAnimSubTimer++;
+            gCurrentPinballGame->spoinkAnimFrameTimer++;
         }
         else
         {
-            gCurrentPinballGame->pondAnimSubTimer = 0;
-            gCurrentPinballGame->pondAnimFrameIndex++;
-            if (gCurrentPinballGame->pondAnimFrameIndex > 0x13)
+            gCurrentPinballGame->spoinkAnimFrameTimer = 0;
+            gCurrentPinballGame->spoinkAnimFrameIx++;
+            if (gCurrentPinballGame->spoinkAnimFrameIx > 0x13)
             {
-                gCurrentPinballGame->pondAnimFrameIndex = 0;
-                gCurrentPinballGame->sapphirePondFlag = 0;
+                gCurrentPinballGame->spoinkAnimFrameIx = 0;
+                gCurrentPinballGame->spoinkEntityState = 0;
             }
         }
         break;
@@ -303,12 +303,12 @@ void DrawSpoinkSprite(void)
     group = gMain.fieldSpriteGroups[44];
     if (group->available)
     {
-        if (gCurrentPinballGame->pondAnimFrameIndex == 0)
+        if (gCurrentPinballGame->spoinkAnimFrameIx == 0)
             index = (gCurrentPinballGame->globalAnimFrameCounter % 30) / 15;
         else
-            index = gSapphirePondAnimFramesets[gCurrentPinballGame->pondAnimFrameIndex][0];
+            index = gSpoinkAnimFrameset[gCurrentPinballGame->spoinkAnimFrameIx][0];
 
-        DmaCopy16(3, gSapphirePondEntity_Gfx[index], (void *)0x060120E0, 0x1C0);
+        DmaCopy16(3, gSpoinkEntity_Gfx[index], (void *)0x060120E0, 0x1C0);
         group->baseX = 231 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 376 - gCurrentPinballGame->cameraYOffset;
         for (i = 0; i < 3; i++)
