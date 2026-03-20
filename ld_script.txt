@@ -86,6 +86,7 @@ SECTIONS
         src/debug_menu.o(.text);
         src/pause_game.o(.text);
         src/pinball_game_main.o(.text);
+        src/save_and_restore_game.o(.text);
         src/board_process8.o(.text);
         src/board_process2.o(.text);
         src/rom_4F258.o(.text);
