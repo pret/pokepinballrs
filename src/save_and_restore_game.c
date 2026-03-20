@@ -10,7 +10,7 @@ extern const u8 gMainBoardEndOfBall_Gfx[];
 extern const u8 gBoardActionTilesGfx[];
 
 extern const u8 gEggModeTilesGfx[];
-extern const u8 gEggPortraitTilesGfx[];
+extern const u8 gAreaRouletteSelectedFx_Gfx[];
 
 extern const u8 gCaptureModeTilesGfx[];
 extern const u8 gCaptureScreenTilesGfx[];
@@ -379,7 +379,7 @@ void RestoreFieldSpecificGraphics(void)
         DmaCopy16(3, gHatchRevealTilesGfx, (void *)0x6015800, 0x2800);
         break;
     case 11:
-        DmaCopy16(3, gEggPortraitTilesGfx, (void *)0x6015800, 0x280);
+        DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, (void *)0x6015800, 0x280);
         break;
     case 13:
         for (i = 0; i < 10; i++)

@@ -66,14 +66,18 @@ SECTIONS
         src/ruby_trigger_targets.o(.text);
         src/pichu_entity.o(.text);
         src/rom_27E08.o(.text);
-        src/rom_27F94.o(.text);
+        src/catch_tile_logic.o(.text);
+        src/travel_mode.o(.text);
+        src/evolution_mode.o(.text);
+        src/catch_and_hatch_modes.o(.text);
+        src/catch_tile_particles.o(.text);
         src/center_capture_hole.o(.text);
-
-
-        src/rom_2C538.o(.text);
-        src/rom_2E67C.o(.text);
-        src/rom_30480.o(.text);
-        src/rom_31BE8.o(.text);
+        src/ruby_ramp.o(.text);
+        src/launcher_and_cutscenes.o(.text);
+        src/sapphire_pond_and_zigzagoon.o(.text);
+        src/board_bumpers.o(.text);
+        src/sapphire_seedot_egg_shop.o(.text);
+        src/board_edge.o(.text);
         src/catch_hatch_picker.o(.text);
         src/board_process3_sapphire.o(.text);
         src/board_process3_dusclops.o(.text);

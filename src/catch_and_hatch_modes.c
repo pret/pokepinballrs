@@ -9,7 +9,6 @@ extern struct BoardConfig gBoardConfig;
 extern u8 gCatchSpritePaletteBuffer[];
 extern u8 gCatchSpritePalettes[];
 
-
 extern const u8 gSapphireCatchTilesGfx[];
 extern const u8 gSapphireCatchPalette[];
 extern const u8 gDefaultBallPalette[];
@@ -17,16 +16,10 @@ extern const u8 gBasketAnimationTilesGfx[][0x480];
 extern const u8 gCapturePalette[];
 extern const s16 gHatchSequentialFrameData[8][2];
 extern const struct Vector16 gJirachiWaypoints[];
-extern const s16 gHatchPieceAnimIndices[][12];
 extern const u16 gJirachiStarFrameIndices[][10];
-extern const s16 gHatchRevealPieceIndices[][16];
-extern const s16 gHatchPieceVelocities[][2];
-extern const s16 gHatchPieceAffineModes[];
-extern const s16 gHatchPieceMatrixNums[6];
+
 extern const u8 (*gMonIconPalettes[])[0x20];
 extern const u16 gSapphireFloatOamFramesets[68][3][3];
-extern const u16 gHatchParticleOamAttributes[][3];
-extern const u16 gHatchAnimOamAttributes[][3];
 extern const u16 gSapphireHatchOamFramesets[14][18];
 extern const u8 (*gCatchSpriteGfxPtrs[])[0x480];
 
@@ -38,7 +31,77 @@ enum HatchTileRevealStates {
     HATCH_TILE_REVEAL_ALL_AT_ONCE = 2
 };
 
-//catch_mode.c continues here
+#define BONUS_CATCH_TIME 7200 //2 minutes, 60FPS
+
+void CleanupCatchEmState(void)
+{
+    s16 i;
+
+    gCurrentPinballGame->creatureHitCount = 0;
+    gCurrentPinballGame->captureFlashTimer = 0;
+    gMain.fieldSpriteGroups[18]->available = 0;
+    gMain.fieldSpriteGroups[12]->available = 0;
+    gCurrentPinballGame->jirachiCollisionEnabled = 0;
+    LoadPortraitGraphics(0, 0);
+    gCurrentPinballGame->portraitDisplayState = 0;
+    ResetEventState();
+    for (i = 0; i < 6; i++)
+        gCurrentPinballGame->hatchTilePalette[i] = 13;
+
+    for (i = 0; i < 3; i++)
+    {
+        if (i < gCurrentPinballGame->evoItemCount)
+            gCurrentPinballGame->catchLights[i] = 1;
+        else
+            gCurrentPinballGame->catchLights[i] = 0;
+    }
+}
+
+void InitCatchEmMode(void)
+{
+    s16 i, j;
+
+    gCurrentPinballGame->boardSubState = 0;
+    gCurrentPinballGame->stageTimer = 0;
+    gCurrentPinballGame->boardModeType = 1;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_CATCH_TIME;
+    gCurrentPinballGame->timerBonus = 0;
+    gCurrentPinballGame->creatureHitCount = 0;
+    gCurrentPinballGame->creatureHitCooldown = 0;
+    gCurrentPinballGame->captureFlashTimer = 0;
+    gCurrentPinballGame->hatchTilesBoardAcknowledged = 0;
+    gCurrentPinballGame->hatchSequentialTilesRevealed = 0;
+    gCurrentPinballGame->hatchTilesBumperAcknowledged = 0;
+    gCurrentPinballGame->hatchSequentialTileRevealFrameAnimTimer = 0;
+    gCurrentPinballGame->hatchFrameId = 0;
+    gCurrentPinballGame->catchArrowProgress = 0;
+    gCurrentPinballGame->catchProgressFlashing = 0;
+
+    if (gCurrentPinballGame->catchEmModeStartCount == 0)
+    {
+        gCurrentPinballGame->saverTimeRemaining = 6000;
+    }
+    else
+    {
+        gCurrentPinballGame->saverTimeRemaining = 4200;
+    }
+    gCurrentPinballGame->catchEmModeStartCount++;
+
+    DmaCopy16(3, gDefaultBallPalette, (void *)PLTT + 0x180, 0x20);
+
+    for (i = 0; i < 6; i++)
+    {
+        gCurrentPinballGame->hatchTileShufflePool[i] = i;
+    }
+
+    gCurrentPinballGame->hatchGridCellIndex = gMain.systemFrameCount % 6;
+    gCurrentPinballGame->hatchTilesRemaining = 5;
+
+    for (j = gCurrentPinballGame->hatchGridCellIndex; j < gCurrentPinballGame->hatchTilesRemaining; j++)
+    {
+        gCurrentPinballGame->hatchTileShufflePool[j] = gCurrentPinballGame->hatchTileShufflePool[j+1];
+    }
+}
 
 void UpdateCatchEmMode(void)
 {
@@ -849,170 +912,3 @@ void ResetHatchFrameState(void)
         gCurrentPinballGame->hatchTilePalette[i] = 13;
 }
 
-void InitSequentialTileParticles(void)
-{
-    s16 i;
-
-    for (i = 0; i < 6; i++)
-    {
-        gCurrentPinballGame->tileParticlePos[i].x = 0;
-        gCurrentPinballGame->tileParticlePos[i].y = 0;
-        gCurrentPinballGame->tileParticleVel[i].x = 200 - (Random() % 400);
-        gCurrentPinballGame->tileParticleVel[i].y = 80 - (Random() % 550);
-        gCurrentPinballGame->tileParticleGravity[i] = 10 + (Random() % 15);
-    }
-
-    gCurrentPinballGame->particleAnimTimer = 0;
-    gMain.fieldSpriteGroups[12]->available = 1;
-}
-
-void UpdateSequentialTileParticles(void)
-{
-    s16 i;
-    struct SpriteGroup *group;
-    struct OamDataSimple *oamSimple;
-    u16 *dst;
-    const u16 *src;
-    s16 var0;
-    struct Vector16 tempVector;
-
-    group = gMain.fieldSpriteGroups[12];
-    if (group->available)
-    {
-        for (i = 0; i < 6; i++)
-        {
-            var0 = gHatchPieceAnimIndices[i][gCurrentPinballGame->particleAnimTimer / 4];
-            gCurrentPinballGame->tileParticleVel[i].y += gCurrentPinballGame->tileParticleGravity[i];
-            if (gCurrentPinballGame->tileParticlePos[i].y < 14000)
-            {
-                gCurrentPinballGame->tileParticlePos[i].x += gCurrentPinballGame->tileParticleVel[i].x;
-                gCurrentPinballGame->tileParticlePos[i].y += gCurrentPinballGame->tileParticleVel[i].y;
-            }
-
-            tempVector.x = ((gCurrentPinballGame->hatchGridCellIndex % 3) * 16 +  96u - gCurrentPinballGame->cameraXOffset) + (gCurrentPinballGame->tileParticlePos[i].x / 100);
-            tempVector.y = ((gCurrentPinballGame->hatchGridCellIndex / 3) * 16 + 300u - gCurrentPinballGame->cameraYOffset) + (gCurrentPinballGame->tileParticlePos[i].y / 100);
-            if (tempVector.y >= 200)
-                tempVector.y = 200;
-
-            oamSimple = &group->oam[i];
-            dst = (u16*)&gOamBuffer[oamSimple->oamId];
-            *dst++ = gHatchAnimOamAttributes[var0][0];
-            *dst++ = gHatchAnimOamAttributes[var0][1];
-            *dst++ = gHatchAnimOamAttributes[var0][2];
-
-            gOamBuffer[oamSimple->oamId].x += tempVector.x;
-            gOamBuffer[oamSimple->oamId].y += tempVector.y;
-        }
-    }
-
-    if (gCurrentPinballGame->particleAnimTimer < 48)
-    {
-        gCurrentPinballGame->particleAnimTimer++;
-    }
-    else
-    {
-        gCurrentPinballGame->hatchSequentialTileRevealFrameAnimTimer = 0x7100;
-        gMain.fieldSpriteGroups[12]->available = 0;
-    }
-}
-
-void InitBurstTileParticles(void)
-{
-    s16 i;
-    const struct Vector16 *var0;
-
-    for (i = 0; i < 6; i++)
-    {
-        gCurrentPinballGame->tileParticlePos[i].x = ((i % 3) * 16 - 24) * 100;
-        gCurrentPinballGame->tileParticlePos[i].y = ((i / 3) * 16 - 28) * 100;
-        gCurrentPinballGame->tileParticleVel[i].x = gHatchPieceVelocities[i][0] - ((Random() % 200) - 60);
-        gCurrentPinballGame->tileParticleVel[i].y = gHatchPieceVelocities[i][1] - ((Random() % 200) - 60);
-        gCurrentPinballGame->tileParticleGravity[i] = (Random() % 4) + 1;
-    }
-
-    gCurrentPinballGame->tileParticlePos[0].x = -5600;
-    gCurrentPinballGame->tileParticlePos[0].y = -6000;
-    gCurrentPinballGame->tileParticleGravity[0] = 3;
-    gCurrentPinballGame->tileParticlePos[4].x = -4000;
-    gCurrentPinballGame->tileParticlePos[4].y = -4400;
-    gCurrentPinballGame->tileParticleGravity[4] = 3;
-    gCurrentPinballGame->particleAnimTimer = 0;
-    gMain.fieldSpriteGroups[12]->available = 1;
-}
-
-void UpdateBurstTileParticles(void)
-{
-    s16 i;
-    struct SpriteGroup *group;
-    struct OamDataSimple *oamSimple;
-    u16 *dst;
-    s16 index;
-    struct Vector16 tempVector;
-    s16 sp0[6];
-    s16 scale;
-
-    group = gMain.fieldSpriteGroups[12];
-    if (group->available)
-    {
-        for (i = 0; i < 6; i++)
-        {
-            index = gCurrentPinballGame->particleAnimTimer / 5;
-            sp0[i] = gHatchRevealPieceIndices[i][index];
-            if (gCurrentPinballGame->particleAnimTimer > 4)
-            {
-                gCurrentPinballGame->tileParticleVel[i].y += gCurrentPinballGame->tileParticleGravity[i];
-                if (i == 4)
-                    gCurrentPinballGame->tileParticleVel[i].x += gCurrentPinballGame->tileParticleGravity[4] * 4;
-
-                gCurrentPinballGame->tileParticlePos[i].x += gCurrentPinballGame->tileParticleVel[i].x;
-                gCurrentPinballGame->tileParticlePos[i].y += gCurrentPinballGame->tileParticleVel[i].y;
-            }
-
-            tempVector.x = (gCurrentPinballGame->tileParticlePos[i].x / 100) +  96u - gCurrentPinballGame->cameraXOffset;
-            tempVector.y = (gCurrentPinballGame->tileParticlePos[i].y / 100) + 304u - gCurrentPinballGame->cameraYOffset;
-            if (tempVector.y >= 160)
-                tempVector.y = 160;
-
-            oamSimple = &group->oam[i];
-            dst = (u16*)&gOamBuffer[oamSimple->oamId];
-            *dst++ = gHatchParticleOamAttributes[sp0[i]][0];
-            *dst++ = gHatchParticleOamAttributes[sp0[i]][1];
-            *dst++ = gHatchParticleOamAttributes[sp0[i]][2];
-
-            gOamBuffer[oamSimple->oamId].x += tempVector.x;
-            gOamBuffer[oamSimple->oamId].y += tempVector.y;
-            gOamBuffer[oamSimple->oamId].affineMode = gHatchPieceAffineModes[i];
-            gOamBuffer[oamSimple->oamId].matrixNum = gHatchPieceMatrixNums[i];
-        }
-    }
-
-    scale = ((gCurrentPinballGame->particleAnimTimer * gCurrentPinballGame->particleAnimTimer * 0xD0) / 0x510) + 0x80;
-    if (sp0[0] == 4)
-        scale = -scale;
-    SetMatrixScale(scale, scale, 2);
-
-    scale = 0x80;
-    if (sp0[1] == 4)
-        scale = -scale;
-    SetMatrixScale(scale, scale, 3);
-
-    scale = ((gCurrentPinballGame->particleAnimTimer * gCurrentPinballGame->particleAnimTimer * 0x100) / 0x510) + 0x80;
-    if (sp0[3] == 4)
-        scale = -scale;
-    SetMatrixScale(scale, scale, 4);
-
-    scale = ((gCurrentPinballGame->particleAnimTimer * gCurrentPinballGame->particleAnimTimer * 0x1C0) / 0x510) + 0x40;
-    if (sp0[4]== 4)
-        scale = -scale;
-    SetMatrixScale(scale, scale, 5);
-
-    if (gCurrentPinballGame->particleAnimTimer < 47)
-    {
-        gCurrentPinballGame->particleAnimTimer++;
-    }
-    else
-    {
-        gCurrentPinballGame->hatchSequentialTileRevealFrameAnimTimer = 0x7100;
-        gMain.fieldSpriteGroups[12]->available = 0;
-    }
-}

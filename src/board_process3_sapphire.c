@@ -24,7 +24,7 @@ void SapphireBoardProcess_3A_326F4(void)
     gCurrentPinballGame->chargeIndicatorScaleX = 0x100;
     gCurrentPinballGame->chargeIndicatorScaleY = 0x100;
 
-    InitSapphireEggCaveState();
+    InitSapphireEggHatchState();
     UpdateSapphireEggHatchAnimation();
     UpdateSapphireShopSignAnimation();
     DrawSapphireShopSignSprite();
@@ -104,7 +104,7 @@ void UpdateSapphireBoardEntityRendering(void)
 
     if (0x76 < gCurrentPinballGame->cameraYViewport)
     {
-        DrawZigzagoonAndShockWall();
+        DrawZigzagoonAndRouletteStopPrompt();
         DrawSapphireSeedotAndBasketSprites();
     }
 
@@ -134,7 +134,7 @@ void UpdateSapphireBoardEntityLogic(void)
         gCurrentPinballGame->mainBoardCountdownTimer--;
 
     UpdateZigzagoonEntity();
-    DecrementFieldTimer();
+    DecrementPelipperTimer();
     UpdateSapphireShopSignAnimation();
 
     if (!(gMain.modeChangeFlags & MODE_CHANGE_END_OF_GAME))

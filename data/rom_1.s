@@ -1230,7 +1230,7 @@ gBoardHudTilemapB:: @ 0x083A826C
 gShopPalette:: @ 0x083A8A8C
 	.incbin "baserom.gba", 0x3A8A8C, 0x20
 
-gHatchCompletePalette:: @ 0x083A8AAC
+gTravelPortraitPalette:: @ 0x083A8AAC
 	.incbin "baserom.gba", 0x3A8AAC, 0x20
 
 gBoardHudTilemapA:: @ 0x083A8ACC
@@ -1599,8 +1599,8 @@ gPokemonNameDisplayGfx:: @ 0x084F61EC
 gRubyBoardShop_Gfx:: @ 0x084F6B0C
 	.incbin "graphics/stage/ruby/shop.4bpp";
 
-gEggPortraitTilesGfx:: @ 0x084FA20C
-	.incbin "graphics/stage/misc/gunk_084FA20C.4bpp";
+gAreaRouletteSelectedFx_Gfx:: @ 0x084FA20C
+	.incbin "graphics/stage/main/area_roulette_selected_fx.4bpp";
 
 gMainBoardPikaSpinner_Gfx:: @ 0x084FA48C
 	.incbin "graphics/stage/main/pika_spinner.4bpp";
