@@ -4,12 +4,12 @@
 #include "constants/bg_music.h"
 
 extern const u8 *gBumperHitCounterTilePtrs[][2];
-extern const u8 *gBonusModeIndicatorTilePtrs[][3][2];
+extern const u8 *gHatchMachineDrawSegment[][3][2];
 extern const u8 *gSapphireBallPowerUpLightTilePtrs[][3];
 extern const u8 *gSapphireRouletteSlotTilePtrs[][4];
 extern const u8 *gSapphireCatchFlashTilePtrs[][4];
-extern const u8 *gSapphireCatchArrowBonusTilePtrs[][5][3];
-extern const u8 *gSapphireEvoArrowBonusTilePtrs[][5][3];
+extern const u8 *gSapphireCatchArrowTilePtrs[][5][3];
+extern const u8 *gSapphireEvoArrowTilePtrs[][5][3];
 extern const u8 *gSapphireEvoArrowPaletteTilePtrs[][4];
 extern const u8 *gSapphireCatchArrowPaletteTilePtrs[][4];
 extern const u8 *gSapphireCoinRewardTilePtrs[][5][3];
@@ -21,245 +21,14 @@ extern const u8 *gSapphireTrapIndicatorTilePtrs[][2];
 extern const u16 gSlingshotHitFrameIndices[];
 extern const u8 *gSapphireSlingshotTilePtrs[][3][5];
 extern const u8 *gSapphireProgressDigitTilePtrs[][4];
-extern const u8 *gSapphireCatchArrowTilePtrs[][5][3];
-extern const u8 *gSapphireEvoArrowTilePtrs[][5][3];
-extern const u8 *gRubyCoinRewardTilePtrs[][5][3];
-extern const s16 gCoinRewardLevelTimerThresholds[];
 
-
-void UpdateCoinRewardTimer(void)
-{
-    if (gCurrentPinballGame->coinRewardLevel > 0)
-    {
-        if (gCurrentPinballGame->coinRewardLevelTimer < gCoinRewardLevelTimerThresholds[gCurrentPinballGame->coinRewardLevel - 1])
-        {
-            gCurrentPinballGame->coinRewardLevelTimer++;
-        }
-        else
-        {
-            gCurrentPinballGame->coinRewardLevelTimer = 0;
-            gCurrentPinballGame->coinRewardLevel--;
-        }
-    }
-}
-
-void DrawRubyCoinRewardMeter(void)
-{
-    s16 sp0[3];
-    const u8 **src;
-    const u8 **dest;
-
-    if (gCurrentPinballGame->coinRewardLevel == 0)
-    {
-        sp0[0] = gCurrentPinballGame->hudBlinkPhase * 2;
-        sp0[1] = gCurrentPinballGame->hudBlinkPhase;
-        sp0[2] = 0;
-    }
-    else if (gCurrentPinballGame->coinRewardLevel == 1)
-    {
-        sp0[0] = 3;
-        sp0[1] = gCurrentPinballGame->hudBlinkPhase + 1;
-        sp0[2] = gCurrentPinballGame->hudBlinkPhase * 2;
-    }
-    else if (gCurrentPinballGame->coinRewardLevel == 2)
-    {
-        sp0[0] = 3;
-        sp0[1] = 3;
-        sp0[2] = gCurrentPinballGame->hudBlinkPhase + 2;
-    }
-    else
-    {
-        sp0[0] = 3;
-        sp0[1] = 3;
-        sp0[2] = 3;
-    }
-
-    src = gRubyCoinRewardTilePtrs[0][sp0[0]];
-    dest = gRubyCoinRewardTilePtrs[0][4];
-    if (gCurrentPinballGame->hudSpriteBaseY >= 42 && gCurrentPinballGame->hudSpriteBaseY < 208)
-    {
-        DmaCopy16(3, src[0], dest[0], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY >= 50 && gCurrentPinballGame->hudSpriteBaseY < 216)
-    {
-        DmaCopy16(3, src[1], dest[1], 0x60);
-    }
-
-    src = gRubyCoinRewardTilePtrs[1][sp0[1]];
-    dest = gRubyCoinRewardTilePtrs[1][4];
-    if (gCurrentPinballGame->hudSpriteBaseY >= 58 && gCurrentPinballGame->hudSpriteBaseY < 224)
-    {
-        DmaCopy16(3, src[0], dest[0], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY >= 66 && gCurrentPinballGame->hudSpriteBaseY < 232)
-    {
-        DmaCopy16(3, src[1], dest[1], 0x60);
-    }
-
-    src = gRubyCoinRewardTilePtrs[2][sp0[2]];
-    dest = gRubyCoinRewardTilePtrs[2][4];
-    if (gCurrentPinballGame->hudSpriteBaseY >= 74 && gCurrentPinballGame->hudSpriteBaseY < 240)
-    {
-        DmaCopy16(3, src[0], dest[0], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY >= 82 && gCurrentPinballGame->hudSpriteBaseY < 248)
-    {
-        DmaCopy16(3, src[1], dest[1], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY >= 90)
-    {
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
-}
-
-void DrawRubyEvoArrowProgress(void)
-{
-    s16 sp0[3];
-    const u8 **src;
-    const u8 **dest;
-
-    if (gCurrentPinballGame->boardState < 3)
-    {
-        if (gCurrentPinballGame->evoArrowProgress == 0)
-        {
-            sp0[0] = gCurrentPinballGame->hudBlinkPhase * 2;
-            sp0[1] = 0;
-            sp0[2] = 0;
-        }
-        else if (gCurrentPinballGame->evoArrowProgress == 1)
-        {
-            sp0[0] = 3;
-            sp0[1] = gCurrentPinballGame->hudBlinkPhase + 1;
-            sp0[2] = gCurrentPinballGame->hudBlinkPhase * 2;
-        }
-        else if (gCurrentPinballGame->evoArrowProgress == 2)
-        {
-            sp0[0] = 3;
-            sp0[1] = 3;
-            sp0[2] = gCurrentPinballGame->hudBlinkPhase + 2;
-        }
-        else
-        {
-            sp0[0] = 3;
-            sp0[1] = 3;
-            sp0[2] = 3;
-        }
-    }
-    else
-    {
-        sp0[0] = gCurrentPinballGame->prevTravelArrowTiles[0];
-        sp0[1] = gCurrentPinballGame->prevTravelArrowTiles[1];
-        sp0[2] = gCurrentPinballGame->prevTravelArrowTiles[2];
-    }
-
-    src = gSapphireEvoArrowTilePtrs[0][sp0[0]];
-    dest = gSapphireEvoArrowTilePtrs[0][4];
-    if (gCurrentPinballGame->hudSpriteBaseY < 264)
-    {
-        DmaCopy16(3, src[0], dest[0], 0x60);
-    }
-
-    DmaCopy16(3, src[1], dest[1], 0x60);
-    DmaCopy16(3, src[2], dest[2], 0x60);
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 120)
-    {
-        src = gSapphireEvoArrowTilePtrs[1][sp0[1]];
-        dest = gSapphireEvoArrowTilePtrs[1][4];
-        DmaCopy16(3, src[0], dest[0], 0x60);
-        DmaCopy16(3, src[1], dest[1], 0x60);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 136)
-    {
-        src = gSapphireEvoArrowTilePtrs[2][sp0[2]];
-        dest = gSapphireEvoArrowTilePtrs[2][4];
-        DmaCopy16(3, src[0], dest[0], 0x60);
-        DmaCopy16(3, src[1], dest[1], 0x60);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
-}
-
-void DrawCatchArrowProgress(void)
-{
-    s16 sp0[3];
-    const u8 **src;
-    const u8 **dest;
-
-    if (gCurrentPinballGame->boardState < 3)
-    {
-        if (gCurrentPinballGame->catchArrowProgress == 0)
-        {
-            sp0[0] = gCurrentPinballGame->hudBlinkPhase * 2;
-            sp0[1] = 0;
-            sp0[2] = 0;
-        }
-        else if (gCurrentPinballGame->catchArrowProgress == 1)
-        {
-            sp0[0] = 3;
-            sp0[1] = gCurrentPinballGame->hudBlinkPhase + 1;
-            sp0[2] = gCurrentPinballGame->hudBlinkPhase * 2;
-        }
-        else if (gCurrentPinballGame->catchArrowProgress == 2)
-        {
-            sp0[0] = 3;
-            sp0[1] = 3;
-            sp0[2] = (s16) gCurrentPinballGame->hudBlinkPhase + 2;
-        }
-        else
-        {
-            sp0[0] = 3;
-            sp0[1] = 3;
-            sp0[2] = 3;
-        }
-    }
-    else
-    {
-        sp0[0] = gCurrentPinballGame->travelArrowTiles[0];
-        sp0[1] = gCurrentPinballGame->travelArrowTiles[1];
-        sp0[2] = gCurrentPinballGame->travelArrowTiles[2];
-    }
-
-    src = gSapphireCatchArrowTilePtrs[0][sp0[0]];
-    dest = gSapphireCatchArrowTilePtrs[0][4];
-    if (gCurrentPinballGame->hudSpriteBaseY < 264)
-    {
-        DmaCopy16(3, src[0], dest[0], 0x60);
-    }
-
-    DmaCopy16(3, src[1], dest[1], 0x60);
-    DmaCopy16(3, src[2], dest[2], 0x60);
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 120)
-    {
-        src = gSapphireCatchArrowTilePtrs[1][sp0[1]];
-        dest = gSapphireCatchArrowTilePtrs[1][4];
-        DmaCopy16(3, src[0], dest[0], 0x40);
-        DmaCopy16(3, src[1], dest[1], 0x40);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 136)
-    {
-        src = gSapphireCatchArrowTilePtrs[2][sp0[2]];
-        dest = gSapphireCatchArrowTilePtrs[2][4];
-        DmaCopy16(3, src[0], dest[0], 0x40);
-        DmaCopy16(3, src[1], dest[1], 0x60);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
-}
 
 void UpdateSapphireBoardAnimations(void)
 {
 
     gCurrentPinballGame->hudBlinkPhase = (gCurrentPinballGame->hudAnimFrameCounter % 40) / 20;
     gCurrentPinballGame->hudAnimFrameCounter++;
-    AnimateBonusModeIndicators();
+    AnimateHatchMachineSpinner();
     if (gCurrentPinballGame->hudSpriteBaseY > 83)
         AnimateSapphireCatchArrowPalette();
 
@@ -271,10 +40,10 @@ void UpdateSapphireBoardAnimations(void)
 
     AnimateRubyBallPowerUpSequence();
     if (gCurrentPinballGame->hudSpriteBaseY < 112)
-        DrawBallPowerUpLights();
+        DrawSapphireBallPowerUpLights();
 
     if (gCurrentPinballGame->hudSpriteBaseY >= 64 && gCurrentPinballGame->hudSpriteBaseY < 254)
-        AnimateCatchArrowPaletteFlash();
+        AnimateSapphireCatchArrowPaletteFlash();
 
     if (gCurrentPinballGame->hudSpriteBaseY >= 27 && gCurrentPinballGame->hudSpriteBaseY < 211)
     {
@@ -285,7 +54,7 @@ void UpdateSapphireBoardAnimations(void)
     if (gCurrentPinballGame->hudSpriteBaseY > 104)
     {
         DrawSapphireEvoArrowProgress();
-        DrawCatchArrowBonusField();
+        DrawSapphireCatchArrowProgress();
     }
 
     if (gCurrentPinballGame->hudSpriteBaseY > 72)
@@ -306,7 +75,7 @@ void UpdateSapphireBoardAnimations(void)
         DrawSapphireModeTimerDisplay();
 
     if (gCurrentPinballGame->hudSpriteBaseY >= 8 && gCurrentPinballGame->hudSpriteBaseY < 182)
-        AnimateBumperHitCounter();
+        AnimatePelliperBumper();
 
     if (gCurrentPinballGame->saverTimeRemaining && gCurrentPinballGame->ballCatchState == 0)
         gCurrentPinballGame->saverTimeRemaining--;
@@ -655,8 +424,8 @@ void DrawSapphireEvoArrowProgress(void)
     }
 
 
-    src = gSapphireEvoArrowBonusTilePtrs[0][sp0[0]];
-    dest = gSapphireEvoArrowBonusTilePtrs[0][4];
+    src = gSapphireEvoArrowTilePtrs[0][sp0[0]];
+    dest = gSapphireEvoArrowTilePtrs[0][4];
     if (gCurrentPinballGame->hudSpriteBaseY < 264)
     {
         DmaCopy16(3, src[0], dest[0], 0x60);
@@ -666,23 +435,23 @@ void DrawSapphireEvoArrowProgress(void)
 
     if (gCurrentPinballGame->hudSpriteBaseY > 120)
     {
-        src = gSapphireEvoArrowBonusTilePtrs[1][sp0[1]];
-        dest = gSapphireEvoArrowBonusTilePtrs[1][4];
+        src = gSapphireEvoArrowTilePtrs[1][sp0[1]];
+        dest = gSapphireEvoArrowTilePtrs[1][4];
         DmaCopy16(3, src[0], dest[0], 0x60);
         DmaCopy16(3, src[1], dest[1], 0x60);
         DmaCopy16(3, src[2], dest[2], 0x60);
     }
 
     if (gCurrentPinballGame->hudSpriteBaseY > 136) {
-        src = gSapphireEvoArrowBonusTilePtrs[2][sp0[2]];
-        dest = gSapphireEvoArrowBonusTilePtrs[2][4];
+        src = gSapphireEvoArrowTilePtrs[2][sp0[2]];
+        dest = gSapphireEvoArrowTilePtrs[2][4];
         DmaCopy16(3, src[0], dest[0], 0x60);
         DmaCopy16(3, src[1], dest[1], 0x60);
         DmaCopy16(3, src[2], dest[2], 0x40);
     }
 }
 
-void DrawCatchArrowBonusField(void)
+void DrawSapphireCatchArrowProgress(void)
 {
     s16 sp0[3];
     const u8 **src;
@@ -722,8 +491,8 @@ void DrawCatchArrowBonusField(void)
         sp0[2] = gCurrentPinballGame->travelArrowTiles[2];
     }
 
-    src = gSapphireCatchArrowBonusTilePtrs[0][sp0[0]];
-    dest = gSapphireCatchArrowBonusTilePtrs[0][4];
+    src = gSapphireCatchArrowTilePtrs[0][sp0[0]];
+    dest = gSapphireCatchArrowTilePtrs[0][4];
     if (gCurrentPinballGame->hudSpriteBaseY < 264)
     {
         DmaCopy16(3, src[0], dest[0], 0x60);
@@ -734,8 +503,8 @@ void DrawCatchArrowBonusField(void)
 
     if (gCurrentPinballGame->hudSpriteBaseY > 120)
     {
-        src = gSapphireCatchArrowBonusTilePtrs[1][sp0[1]];
-        dest = gSapphireCatchArrowBonusTilePtrs[1][4];
+        src = gSapphireCatchArrowTilePtrs[1][sp0[1]];
+        dest = gSapphireCatchArrowTilePtrs[1][4];
         DmaCopy16(3, src[0], dest[0], 0x40);
         DmaCopy16(3, src[1], dest[1], 0x40);
         DmaCopy16(3, src[2], dest[2], 0x60);
@@ -743,15 +512,15 @@ void DrawCatchArrowBonusField(void)
 
     if (gCurrentPinballGame->hudSpriteBaseY > 136)
     {
-        src = gSapphireCatchArrowBonusTilePtrs[2][sp0[2]];
-        dest = gSapphireCatchArrowBonusTilePtrs[2][4];
+        src = gSapphireCatchArrowTilePtrs[2][sp0[2]];
+        dest = gSapphireCatchArrowTilePtrs[2][4];
         DmaCopy16(3, src[0], dest[0], 0x40);
         DmaCopy16(3, src[1], dest[1], 0x60);
         DmaCopy16(3, src[2], dest[2], 0x40);
     }
 }
 
-void AnimateCatchArrowPaletteFlash(void)
+void AnimateSapphireCatchArrowPaletteFlash(void)
 {
     s16 index;
     const u8 **src;
@@ -830,7 +599,7 @@ void AnimateSapphireRouletteSlot(void)
     }
 }
 
-void DrawBallPowerUpLights(void)
+void DrawSapphireBallPowerUpLights(void)
 {
     s16 i;
 
@@ -842,7 +611,7 @@ void DrawBallPowerUpLights(void)
     }
 }
 
-void AnimateBonusModeIndicators(void)
+void AnimateHatchMachineSpinner(void)
 {
     s16 i;
     s16 srcIndex;
@@ -866,15 +635,15 @@ void AnimateBonusModeIndicators(void)
                 srcIndex = 0;
             }
 
-            src = gBonusModeIndicatorTilePtrs[i][srcIndex];
-            dest = gBonusModeIndicatorTilePtrs[i][2];
+            src = gHatchMachineDrawSegment[i][srcIndex];
+            dest = gHatchMachineDrawSegment[i][2];
             DmaCopy16(3, src[0], dest[0], 0x40);
             DmaCopy16(3, src[1], dest[1], 0x40);
         }
     }
 }
 
-void AnimateBumperHitCounter(void)
+void AnimatePelliperBumper(void)
 {
     s16 index;
     const u8 **src;

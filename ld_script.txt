@@ -81,7 +81,7 @@ SECTIONS
         src/board_process3_groudon.o(.text);
         src/board_process3_rayquaza.o(.text);
         src/board_process3_spheal.o(.text);
-        src/rom_467F4.o(.text);
+        src/board_setup.o(.text);
         src/board_process1.o(.text);
         src/debug_menu.o(.text);
         src/pause_game.o(.text);
@@ -89,8 +89,8 @@ SECTIONS
         src/save_and_restore_game.o(.text);
         src/board_process8.o(.text);
         src/board_process2.o(.text);
-        src/rom_4F258.o(.text);
-        src/rom_50AD4.o(.text);
+        src/ruby_board_indicators.o(.text);
+        src/sapphire_board_indicators.o(.text);
         src/board_process0_sprite_init.o(.text);
         src/options.o(.text);
         src/pokemon_cry.o(.text);

@@ -4570,13 +4570,13 @@ gRubyCatchProgressArrowTilePointers:: @ 0x086B0B94
 gRubyHoleIndicatorTilePointers:: @ 0x086B0BC4
 	.incbin "baserom.gba", 0x6B0BC4, 0x40
 
-gSapphireEvoArrowTilePtrs:: @ 0x086B0C04
+gRubyEvoArrowTilePtrs:: @ 0x086B0C04
 	.incbin "baserom.gba", 0x6B0C04, 0xB4
 
 gRubyCoinRewardTilePtrs:: @ 0x086B0CB8
 	.incbin "baserom.gba", 0x6B0CB8, 0xB4
 
-gSapphireCatchArrowTilePtrs:: @ 0x086B0D6C
+gRubyCatchArrowTilePtrs:: @ 0x086B0D6C
 	.incbin "baserom.gba", 0x6B0D6C, 0xB4
 
 gBallShadowTileIndices:: @ 0x086B0E20
@@ -4594,7 +4594,7 @@ gSapphireProgressDigitTilePtrs:: @ 0x086B0E9C
 gRotatingBackgroundTilePtrs:: @ 0x086B0F4C
 	.incbin "baserom.gba", 0x6B0F4C, 0x50
 
-gBonusModeIndicatorTilePtrs:: @ 0x086B0F9C
+gHatchMachineDrawSegment:: @ 0x086B0F9C
     .4byte gUnknown_082DE1E0, gUnknown_082DE5E0
     .4byte gUnknown_082DE620, gUnknown_082DEA20
     .4byte 0x0600DD40, 0x0600DD80
@@ -4665,7 +4665,7 @@ gSapphireCatchFlashTilePtrs:: @ 0x086B12D0
 gSapphireHoleIndicatorTilePtrs:: @ 0x086B1300
 	.incbin "baserom.gba", 0x6B1300, 0x40
 
-gSapphireEvoArrowBonusTilePtrs:: @ 0x086B1340
+gSapphireEvoArrowTilePtrs:: @ 0x086B1340
 	.incbin "baserom.gba", 0x6B1340, 0xB4
 
 gSapphireCoinRewardTilePtrs:: @ 0x086B13F4
@@ -4674,7 +4674,7 @@ gSapphireCoinRewardTilePtrs:: @ 0x086B13F4
 gUnknown_086B146C:: @ 0x086B146C
 	.incbin "baserom.gba", 0x6B146C, 0x3C
 
-gSapphireCatchArrowBonusTilePtrs:: @ 0x086B14A8
+gSapphireCatchArrowTilePtrs:: @ 0x086B14A8
 	.incbin "baserom.gba", 0x6B14A8, 0xB4
 
 gFieldSpriteSets:: @ 0x086B155C

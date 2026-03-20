@@ -70,7 +70,7 @@ void PinballGame_State0_49ED4(void)
     case 0:
         SetupDisplayRegistersForField();
         InitPinballGameState();
-        loadIntroduction();
+        loadFieldBoardGraphics();
         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
@@ -102,7 +102,7 @@ void PinballGame_State0_49ED4(void)
     case 1:
         SetupDisplayRegistersForField();
         InitPinballGameState();
-        loadIntroduction();
+        loadFieldBoardGraphics();
         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
             DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
@@ -128,7 +128,7 @@ void PinballGame_State0_49ED4(void)
     case 3:
         SetupDisplayRegistersForField();
         InitPinballGameState();
-        loadIntroduction();
+        loadFieldBoardGraphics();
         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
         ConfigureBoardProcessesForField();
         for (i = 0; i < 9; i++)

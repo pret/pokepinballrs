@@ -202,7 +202,7 @@ void RestoreGameState(u16 arg0)
 
     gCurrentPinballGame->fadeSubState = 0;
     gMain.continueFromSave = 0;
-    loadIntroduction();
+    loadFieldBoardGraphics();
     if (gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->boardCollisionConfigChanged)
         SetBoardCollisionConfig(1);
 

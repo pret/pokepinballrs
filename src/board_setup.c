@@ -78,7 +78,7 @@ extern const u8 gSphealIntroSprites_Gfx[];
 
 extern const struct FieldBoardLayout gFieldBoardConfigs[];
 
-void loadIntroduction(void)
+void loadFieldBoardGraphics(void)
 {
     struct BoardConfig *dest = &gBoardConfig;
     const struct FieldBoardLayout *src = gFieldBoardConfigs;

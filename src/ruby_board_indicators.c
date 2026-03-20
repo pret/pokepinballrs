@@ -17,6 +17,10 @@ extern const u8 *gRubyProgressDigitTilePointers[][2];
 extern const u8 *gShopItemTilePointers[][3];
 extern const s16 gRubySlingshotAnimIndices[];
 extern const u8 *gRubySlingshotTilePointers[][3][5];
+extern const u8 *gRubyCoinRewardTilePtrs[][5][3];
+extern const s16 gCoinRewardLevelTimerThresholds[];
+extern const u8 *gRubyEvoArrowTilePtrs[][5][3];
+extern const u8 *gRubyCatchArrowTilePtrs[][5][3];
 
 extern struct SongHeader se_ball_upgrade;
 
@@ -45,7 +49,7 @@ void UpdateRubyBoardAnimations(void)
     if (gCurrentPinballGame->hudSpriteBaseY > 104)
     {
         DrawRubyEvoArrowProgress();
-        DrawCatchArrowProgress();
+        DrawRubyCatchArrowProgress();
     }
 
     if (gCurrentPinballGame->hudSpriteBaseY < 256)
@@ -405,5 +409,232 @@ void DrawRubyBallPowerUpLights(void)
         src = &gRubyBallPowerUpLightTilePointers[i][gCurrentPinballGame->ballPowerUpLight[i]];
         dest = &gRubyBallPowerUpLightTilePointers[i][2];
         DmaCopy16(3, *src, *dest, 0x40);
+    }
+}
+
+void UpdateCoinRewardTimer(void)
+{
+    if (gCurrentPinballGame->coinRewardLevel > 0)
+    {
+        if (gCurrentPinballGame->coinRewardLevelTimer < gCoinRewardLevelTimerThresholds[gCurrentPinballGame->coinRewardLevel - 1])
+        {
+            gCurrentPinballGame->coinRewardLevelTimer++;
+        }
+        else
+        {
+            gCurrentPinballGame->coinRewardLevelTimer = 0;
+            gCurrentPinballGame->coinRewardLevel--;
+        }
+    }
+}
+
+void DrawRubyCoinRewardMeter(void)
+{
+    s16 sp0[3];
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->coinRewardLevel == 0)
+    {
+        sp0[0] = gCurrentPinballGame->hudBlinkPhase * 2;
+        sp0[1] = gCurrentPinballGame->hudBlinkPhase;
+        sp0[2] = 0;
+    }
+    else if (gCurrentPinballGame->coinRewardLevel == 1)
+    {
+        sp0[0] = 3;
+        sp0[1] = gCurrentPinballGame->hudBlinkPhase + 1;
+        sp0[2] = gCurrentPinballGame->hudBlinkPhase * 2;
+    }
+    else if (gCurrentPinballGame->coinRewardLevel == 2)
+    {
+        sp0[0] = 3;
+        sp0[1] = 3;
+        sp0[2] = gCurrentPinballGame->hudBlinkPhase + 2;
+    }
+    else
+    {
+        sp0[0] = 3;
+        sp0[1] = 3;
+        sp0[2] = 3;
+    }
+
+    src = gRubyCoinRewardTilePtrs[0][sp0[0]];
+    dest = gRubyCoinRewardTilePtrs[0][4];
+    if (gCurrentPinballGame->hudSpriteBaseY >= 42 && gCurrentPinballGame->hudSpriteBaseY < 208)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x60);
+    }
+
+    if (gCurrentPinballGame->hudSpriteBaseY >= 50 && gCurrentPinballGame->hudSpriteBaseY < 216)
+    {
+        DmaCopy16(3, src[1], dest[1], 0x60);
+    }
+
+    src = gRubyCoinRewardTilePtrs[1][sp0[1]];
+    dest = gRubyCoinRewardTilePtrs[1][4];
+    if (gCurrentPinballGame->hudSpriteBaseY >= 58 && gCurrentPinballGame->hudSpriteBaseY < 224)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x60);
+    }
+
+    if (gCurrentPinballGame->hudSpriteBaseY >= 66 && gCurrentPinballGame->hudSpriteBaseY < 232)
+    {
+        DmaCopy16(3, src[1], dest[1], 0x60);
+    }
+
+    src = gRubyCoinRewardTilePtrs[2][sp0[2]];
+    dest = gRubyCoinRewardTilePtrs[2][4];
+    if (gCurrentPinballGame->hudSpriteBaseY >= 74 && gCurrentPinballGame->hudSpriteBaseY < 240)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x60);
+    }
+
+    if (gCurrentPinballGame->hudSpriteBaseY >= 82 && gCurrentPinballGame->hudSpriteBaseY < 248)
+    {
+        DmaCopy16(3, src[1], dest[1], 0x60);
+    }
+
+    if (gCurrentPinballGame->hudSpriteBaseY >= 90)
+    {
+        DmaCopy16(3, src[2], dest[2], 0x60);
+    }
+}
+
+void DrawRubyEvoArrowProgress(void)
+{
+    s16 sp0[3];
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->boardState < 3)
+    {
+        if (gCurrentPinballGame->evoArrowProgress == 0)
+        {
+            sp0[0] = gCurrentPinballGame->hudBlinkPhase * 2;
+            sp0[1] = 0;
+            sp0[2] = 0;
+        }
+        else if (gCurrentPinballGame->evoArrowProgress == 1)
+        {
+            sp0[0] = 3;
+            sp0[1] = gCurrentPinballGame->hudBlinkPhase + 1;
+            sp0[2] = gCurrentPinballGame->hudBlinkPhase * 2;
+        }
+        else if (gCurrentPinballGame->evoArrowProgress == 2)
+        {
+            sp0[0] = 3;
+            sp0[1] = 3;
+            sp0[2] = gCurrentPinballGame->hudBlinkPhase + 2;
+        }
+        else
+        {
+            sp0[0] = 3;
+            sp0[1] = 3;
+            sp0[2] = 3;
+        }
+    }
+    else
+    {
+        sp0[0] = gCurrentPinballGame->prevTravelArrowTiles[0];
+        sp0[1] = gCurrentPinballGame->prevTravelArrowTiles[1];
+        sp0[2] = gCurrentPinballGame->prevTravelArrowTiles[2];
+    }
+
+    src = gRubyEvoArrowTilePtrs[0][sp0[0]];
+    dest = gRubyEvoArrowTilePtrs[0][4];
+    if (gCurrentPinballGame->hudSpriteBaseY < 264)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x60);
+    }
+
+    DmaCopy16(3, src[1], dest[1], 0x60);
+    DmaCopy16(3, src[2], dest[2], 0x60);
+
+    if (gCurrentPinballGame->hudSpriteBaseY > 120)
+    {
+        src = gRubyEvoArrowTilePtrs[1][sp0[1]];
+        dest = gRubyEvoArrowTilePtrs[1][4];
+        DmaCopy16(3, src[0], dest[0], 0x60);
+        DmaCopy16(3, src[1], dest[1], 0x60);
+        DmaCopy16(3, src[2], dest[2], 0x60);
+    }
+
+    if (gCurrentPinballGame->hudSpriteBaseY > 136)
+    {
+        src = gRubyEvoArrowTilePtrs[2][sp0[2]];
+        dest = gRubyEvoArrowTilePtrs[2][4];
+        DmaCopy16(3, src[0], dest[0], 0x60);
+        DmaCopy16(3, src[1], dest[1], 0x60);
+        DmaCopy16(3, src[2], dest[2], 0x60);
+    }
+}
+
+void DrawRubyCatchArrowProgress(void)
+{
+    s16 sp0[3];
+    const u8 **src;
+    const u8 **dest;
+
+    if (gCurrentPinballGame->boardState < 3)
+    {
+        if (gCurrentPinballGame->catchArrowProgress == 0)
+        {
+            sp0[0] = gCurrentPinballGame->hudBlinkPhase * 2;
+            sp0[1] = 0;
+            sp0[2] = 0;
+        }
+        else if (gCurrentPinballGame->catchArrowProgress == 1)
+        {
+            sp0[0] = 3;
+            sp0[1] = gCurrentPinballGame->hudBlinkPhase + 1;
+            sp0[2] = gCurrentPinballGame->hudBlinkPhase * 2;
+        }
+        else if (gCurrentPinballGame->catchArrowProgress == 2)
+        {
+            sp0[0] = 3;
+            sp0[1] = 3;
+            sp0[2] = (s16) gCurrentPinballGame->hudBlinkPhase + 2;
+        }
+        else
+        {
+            sp0[0] = 3;
+            sp0[1] = 3;
+            sp0[2] = 3;
+        }
+    }
+    else
+    {
+        sp0[0] = gCurrentPinballGame->travelArrowTiles[0];
+        sp0[1] = gCurrentPinballGame->travelArrowTiles[1];
+        sp0[2] = gCurrentPinballGame->travelArrowTiles[2];
+    }
+
+    src = gRubyCatchArrowTilePtrs[0][sp0[0]];
+    dest = gRubyCatchArrowTilePtrs[0][4];
+    if (gCurrentPinballGame->hudSpriteBaseY < 264)
+    {
+        DmaCopy16(3, src[0], dest[0], 0x60);
+    }
+
+    DmaCopy16(3, src[1], dest[1], 0x60);
+    DmaCopy16(3, src[2], dest[2], 0x60);
+
+    if (gCurrentPinballGame->hudSpriteBaseY > 120)
+    {
+        src = gRubyCatchArrowTilePtrs[1][sp0[1]];
+        dest = gRubyCatchArrowTilePtrs[1][4];
+        DmaCopy16(3, src[0], dest[0], 0x40);
+        DmaCopy16(3, src[1], dest[1], 0x40);
+        DmaCopy16(3, src[2], dest[2], 0x60);
+    }
+
+    if (gCurrentPinballGame->hudSpriteBaseY > 136)
+    {
+        src = gRubyCatchArrowTilePtrs[2][sp0[2]];
+        dest = gRubyCatchArrowTilePtrs[2][4];
+        DmaCopy16(3, src[0], dest[0], 0x40);
+        DmaCopy16(3, src[1], dest[1], 0x60);
+        DmaCopy16(3, src[2], dest[2], 0x60);
     }
 }
