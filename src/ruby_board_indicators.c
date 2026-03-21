@@ -16,7 +16,7 @@ extern const u8 *gRubyTrapIndicatorTilePointers[][2];
 extern const u8 *gRubyProgressDigitTilePointers[][2];
 extern const u8 *gShopItemTilePointers[][3];
 extern const s16 gRubySlingshotAnimIndices[];
-extern const u8 *gRubySlingshotTilePointers[][3][5];
+extern const u8 *gRubySlingshotTilePointers[2][3][5];
 extern const u8 *gRubyCoinRewardTilePtrs[][5][3];
 extern const s16 gCoinRewardLevelTimerThresholds[];
 extern const u8 *gRubyEvoArrowTilePtrs[][5][3];
