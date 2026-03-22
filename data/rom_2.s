@@ -4372,7 +4372,12 @@ gKecleonSpriteYSortData:: @ 0x086AEA70
 	.incbin "baserom.gba", 0x6AEA70, 0x70
 
 gKyogreOceanPaletteProgression:: @ 0x086AEAE0
-	.incbin "baserom.gba", 0x6AEAE0, 0x18
+    .4byte gUnknown_08340958
+    .4byte gUnknown_08340758
+    .4byte gUnknown_08340558
+    .4byte gUnknown_08340358
+    .4byte gUnknown_08340158
+    .4byte gKyogreBoardPalette
 
 gKyogreAnimFramesetTable:: @ 0x086AEAF8
 	.incbin "baserom.gba", 0x6AEAF8, 0x2AC
@@ -4993,7 +4998,23 @@ gMonHatchSpriteGroupPals:: @ 0x086B159C
 	.4byte gMonHatchSpriteGroup5_Pals
 
 gMonIconPalettes:: @ 0x086B15B4
-	.incbin "baserom.gba", 0x6B15B4, 0x44
+    .4byte gMonCatchSpriteGroup0_Pal
+    .4byte gMonCatchSpriteGroup1_Pal
+    .4byte gMonCatchSpriteGroup2_Pal
+    .4byte gMonCatchSpriteGroup3_Pal
+    .4byte gMonCatchSpriteGroup4_Pal
+    .4byte gMonCatchSpriteGroup5_Pal
+    .4byte gMonCatchSpriteGroup6_Pal
+    .4byte gMonCatchSpriteGroup7_Pal
+    .4byte gMonCatchSpriteGroup8_Pal
+    .4byte gMonCatchSpriteGroup9_Pal
+    .4byte gMonCatchSpriteGroup10_Pal
+    .4byte gMonCatchSpriteGroup11_Pal
+    .4byte gMonCatchSpriteGroup12_Pal
+    .4byte gMonCatchSpriteGroup13_Pal
+    .4byte gMonCatchSpriteGroup14_Pal
+    .4byte gMonCatchSpriteGroup15_Pal
+    .4byte gMonCatchSpriteGroup16_Pal
 
 gUnknown_086B15F8:: @ 0x086B15F8
 .2byte 1
@@ -13307,7 +13328,23 @@ gMonHatchSpriteGroupGfx:: @ 0x086BB6DC
 	.4byte gMonHatchSpriteGroup5_Gfx
 
 gCatchSpriteGfxPtrs:: @ 0x086BB6F4
-	.incbin "baserom.gba", 0x6BB6F4, 0x44
+    .4byte gMonCatchSpriteGroup0_Gfx
+    .4byte gMonCatchSpriteGroup1_Gfx
+    .4byte gMonCatchSpriteGroup2_Gfx
+    .4byte gMonCatchSpriteGroup3_Gfx
+    .4byte gMonCatchSpriteGroup4_Gfx
+    .4byte gMonCatchSpriteGroup5_Gfx
+    .4byte gMonCatchSpriteGroup6_Gfx
+    .4byte gMonCatchSpriteGroup7_Gfx
+    .4byte gMonCatchSpriteGroup8_Gfx
+    .4byte gMonCatchSpriteGroup9_Gfx
+    .4byte gMonCatchSpriteGroup10_Gfx
+    .4byte gMonCatchSpriteGroup11_Gfx
+    .4byte gMonCatchSpriteGroup12_Gfx
+    .4byte gMonCatchSpriteGroup13_Gfx
+    .4byte gMonCatchSpriteGroup14_Gfx
+    .4byte gMonCatchSpriteGroup15_Gfx
+    .4byte gMonCatchSpriteGroup16_Gfx
 
 gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup0_Gfx

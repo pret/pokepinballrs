@@ -1,4 +1,4 @@
-gMonCatchSprite_Pal:: @ 0x081AEBE4
+gMonCatchSpriteGroup0_Pal:: @ 0x081AEBE4
 	.incbin "graphics/mon_catch_sprites/catch_mon_01_treecko.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_02_torchic.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_03_mudkip.gbapal"
@@ -7,6 +7,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AEC84, 0x160
 
+gMonCatchSpriteGroup1_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_06_silcoon.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_07_cascoon.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_08_lombre.gbapal"
@@ -15,6 +16,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AEE84, 0x160
 
+gMonCatchSpriteGroup2_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_11_wingull.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_12_slakoth.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_13_abra.gbapal"
@@ -23,6 +25,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AF084, 0x160
 
+gMonCatchSpriteGroup3_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_16_makuhita.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_17_goldeen.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_18_magikarp.gbapal"
@@ -31,6 +34,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AF284, 0x160
 
+gMonCatchSpriteGroup4_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_21_nosepass.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_22_tentacool.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_23_sableye.gbapal"
@@ -39,6 +43,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AF484, 0x160
 
+gMonCatchSpriteGroup5_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_26_meditite.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_27_electrike.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_28_magnemite.gbapal"
@@ -47,6 +52,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AF684, 0x160
 
+gMonCatchSpriteGroup6_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_31_illumise.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_32_doduo.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_33_roselia.gbapal"
@@ -55,6 +61,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AF884, 0x160
 
+gMonCatchSpriteGroup7_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_36_numel.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_37_slugma.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_38_torkoal.gbapal"
@@ -63,6 +70,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AFA84, 0x160
 
+gMonCatchSpriteGroup8_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_41_skarmory.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_42_vibrava.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_43_cacnea.gbapal"
@@ -71,6 +79,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AFC84, 0x160
 
+gMonCatchSpriteGroup9_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_46_seviper.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_47_lunatone.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_48_solrock.gbapal"
@@ -79,6 +88,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1AFE84, 0x160
 
+gMonCatchSpriteGroup10_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_51_baltoy.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_52_lileep.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_53_anorith.gbapal"
@@ -87,6 +97,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1B0084, 0x160
 
+gMonCatchSpriteGroup11_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_56_castform.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_57_staryu.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_58_kecleon.gbapal"
@@ -95,6 +106,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1B0284, 0x160
 
+gMonCatchSpriteGroup12_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_61_absol.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_62_vulpix.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_63_pikachu.gbapal"
@@ -103,6 +115,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1B0484, 0x160
 
+gMonCatchSpriteGroup13_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_66_girafarig.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_67_pinsir.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_68_heracross.gbapal"
@@ -111,6 +124,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1B0684, 0x160
 
+gMonCatchSpriteGroup14_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_71_relicanth.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_72_luvdisc.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_73_shelgon.gbapal"
@@ -119,6 +133,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1B0884, 0x160
 
+gMonCatchSpriteGroup15_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_76_regice.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_77_registeel.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_78_latias.gbapal"
@@ -127,6 +142,7 @@ gMonCatchSprite_Pal:: @ 0x081AEBE4
 
     .incbin "baserom.gba", 0x1B0A84, 0x160
 
+gMonCatchSpriteGroup16_Pal::
 	.incbin "graphics/mon_catch_sprites/catch_mon_81_chikorita.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_82_cyndaquil.gbapal"
 	.incbin "graphics/mon_catch_sprites/catch_mon_83_totodile.gbapal"

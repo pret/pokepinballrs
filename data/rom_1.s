@@ -2591,7 +2591,22 @@ gKyogreBoardCompressedBGTiles:: @ 0x0833E044
 	.incbin "baserom.gba", 0x33E044, 0x1F14
 
 gKyogreIntroShorePalette:: @ 0x0833FF58
-	.incbin "baserom.gba", 0x33FF58, 0xC00
+	.incbin "baserom.gba", 0x33FF58, 0x200
+
+gUnknown_08340158:: @ 0x08340158
+    .incbin "baserom.gba", 0x340158, 0x200
+
+gUnknown_08340358:: @ 0x08340358
+    .incbin "baserom.gba", 0x340358, 0x200
+
+gUnknown_08340558:: @ 0x08340558
+    .incbin "baserom.gba", 0x340558, 0x200
+
+gUnknown_08340758:: @ 0x08340758
+    .incbin "baserom.gba", 0x340758, 0x200
+
+gUnknown_08340958:: @ 0x08340958
+    .incbin "baserom.gba", 0x340958, 0x200
 
 gKyogreForm1CollisionMap:: @ 0x08340B58
 	.incbin "baserom.gba", 0x340B58, 0x8E80
