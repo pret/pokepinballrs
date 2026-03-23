@@ -25,7 +25,7 @@ extern const u8 *gEvoItemAppear_GfxList[];
 extern const s16 gEvoShopAnimFrames[][7];
 extern const u16 gShopCursorToItemMap[];
 
-extern const u8 gRubyBoardBonusGfx[];
+extern const u8 gRubyTravelPaint_Gfx[];
 extern const u8 gRubyBoardBonusObjPalette[];
 extern const u8 gRubyBoardHatchCave_Gfx[][0x480];
 extern const u8 gRubyFlashingDecorationTiles[][0x300];
@@ -35,7 +35,7 @@ extern const u8 gRubyBoardShopDoor_Gfx[][0x180];
 extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
 extern const u8 gRubyBoardShop_Gfx[][0x500];
 
-extern const u8 gSapphireBoardBonusGfx[];
+extern const u8 gSapphireTravelPaint_Gfx[];
 extern const u8 gSapphireBoardBonusObjPalette[];
 extern const u8 gSapphireCatchTilesGfx[];
 extern const u8 gSapphireBoardZigzagoonFx_Gfx[];
@@ -452,12 +452,12 @@ void RestoreFieldSpecificGraphics(void)
     case 20:
         if (gMain.selectedField == FIELD_RUBY)
         {
-            DmaCopy16(3, gRubyBoardBonusGfx, (void *)0x6015800, 0x1800);
+            DmaCopy16(3, gRubyTravelPaint_Gfx, (void *)0x6015800, 0x1800);
             DmaCopy16(3, gRubyBoardBonusObjPalette, (void *)OBJ_PLTT + 0x1C0, 0x20);
         }
         else
         {
-            DmaCopy16(3, gSapphireBoardBonusGfx, (void *)0x6015800, 0x1800);
+            DmaCopy16(3, gSapphireTravelPaint_Gfx, (void *)0x6015800, 0x1800);
             DmaCopy16(3, gSapphireBoardBonusObjPalette, (void *)OBJ_PLTT + 0x1C0, 0x20);
         }
         break;

@@ -889,15 +889,16 @@ gUnknown_081BB984:: @ 0x081BB984
 gSapphireShopSignPalettes:: @ 0x081BC984
 	.incbin "baserom.gba", 0x1BC984, 0x120
 
-gRubyBoardBonusGfx:: @ 0x081BCAA4
-	.incbin "graphics/stage/main/travel_paint.4bpp"
+gRubyTravelPaint_Gfx:: @ 0x081BCAA4
+	.incbin "graphics/stage/ruby/travel_paint.4bpp"
 	.space 0x120
 
 gRubyBoardBonusObjPalette:: @ 0x081BE2C4
 	.incbin "baserom.gba", 0x1BE2C4, 0x200
 
-gSapphireBoardBonusGfx:: @ 0x081BE4C4
-	.incbin "baserom.gba", 0x1BE4C4, 0x1820
+gSapphireTravelPaint_Gfx:: @ 0x081BE4C4
+	.incbin "graphics/stage/sapphire/travel_paint.4bpp"
+	.space 0x120
 
 gSapphireBoardBonusObjPalette:: @ 0x081BFCE4
 	.incbin "baserom.gba", 0x1BFCE4, 0x200
