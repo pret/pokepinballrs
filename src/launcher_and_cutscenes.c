@@ -6,9 +6,9 @@
 extern const u8 gRubyTravelVolbeat_Gfx[][0x480];
 extern const u8 gSapphireTravelIllumise_Gfx[][0x480];
 extern const u8 gRubyTravelPaint_Gfx[];
-extern const u8 gRubyBoardBonusObjPalette[];
+extern const u8 gRubyPainterPalette[];
 extern const u8 gSapphireTravelPaint_Gfx[];
-extern const u8 gSapphireBoardBonusObjPalette[];
+extern const u8 gSapphirePainterPalette[];
 extern const s16 gTravelEventAnimData[][3];
 extern const s16 gAreaToSpeciesTable[];
 extern const s16 gAreaRouletteTable[][7];
@@ -718,13 +718,13 @@ void RunTravelEventCutscene(void)
         if (gMain.selectedField == FIELD_RUBY)
         {
             DmaCopy16(3, gRubyTravelPaint_Gfx, (void *)0x06015800, 0x1800);
-            DmaCopy16(3, gRubyBoardBonusObjPalette, (void *)0x050003C0, 0x20);
+            DmaCopy16(3, gRubyPainterPalette, (void *)0x050003C0, 0x20);
             DmaCopy16(3, gRubyTravelVolbeat_Gfx, (void *)0x06015800, 0x480);
         }
         else
         {
             DmaCopy16(3, gSapphireTravelPaint_Gfx, (void *)0x06015800, 0x1800);
-            DmaCopy16(3, gSapphireBoardBonusObjPalette, (void *)0x050003C0, 0x20);
+            DmaCopy16(3, gSapphirePainterPalette, (void *)0x050003C0, 0x20);
             DmaCopy16(3, gSapphireTravelIllumise_Gfx, (void *)0x06015800, 0x480);
         }
     }

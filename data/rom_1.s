@@ -893,14 +893,14 @@ gRubyTravelPaint_Gfx:: @ 0x081BCAA4
 	.incbin "graphics/stage/ruby/travel_paint.4bpp"
 	.space 0x120
 
-gRubyBoardBonusObjPalette:: @ 0x081BE2C4
+gRubyPainterPalette:: @ 0x081BE2C4
 	.incbin "baserom.gba", 0x1BE2C4, 0x200
 
 gSapphireTravelPaint_Gfx:: @ 0x081BE4C4
 	.incbin "graphics/stage/sapphire/travel_paint.4bpp"
 	.space 0x120
 
-gSapphireBoardBonusObjPalette:: @ 0x081BFCE4
+gSapphirePainterPalette:: @ 0x081BFCE4
 	.incbin "baserom.gba", 0x1BFCE4, 0x200
 
 gRubyBoardPalette:: @ 0x081BFEE4
@@ -970,7 +970,8 @@ gUnknown_0825D610:: @ 0x0825D610
     .incbin "baserom.gba", 0x25D610, 0x60
 
 gUnknown_0825D670:: @ 0x0825D670
-    .incbin "baserom.gba", 0x25D670, 0xA0
+    .incbin "baserom.gba", 0x25D670, 0x60
+	.space 0x40
 
 gUnknown_0825D710:: @ 0x0825D710
     .incbin "baserom.gba", 0x25D710, 0x60
@@ -1000,7 +1001,8 @@ gUnknown_0825DA10:: @ 0x0825DA10
     .incbin "baserom.gba", 0x25DA10, 0x60
 
 gUnknown_0825DA70:: @ 0x0825DA70
-    .incbin "baserom.gba", 0x25DA70, 0xA0
+    .incbin "baserom.gba", 0x25DA70, 0x60
+	.space 0x40
 
 gUnknown_0825DB10:: @ 0x0825DB10
     .incbin "baserom.gba", 0x25DB10, 0x60
@@ -1030,7 +1032,8 @@ gUnknown_0825DE10:: @ 0x0825DE10
     .incbin "baserom.gba", 0x25DE10, 0x60
 
 gUnknown_0825DE70:: @ 0x0825DE70
-    .incbin "baserom.gba", 0x25DE70, 0xA0
+    .incbin "baserom.gba", 0x25DE70, 0x60
+	.space 0x40
 
 gUnknown_0825DF10:: @ 0x0825DF10
     .incbin "baserom.gba", 0x25DF10, 0x60
