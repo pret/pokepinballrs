@@ -158,6 +158,37 @@
     {
       "gfx_filename": "pokeball_master",
       "mwidth":2 
+    },
+    {
+      "gfx_filename": "travel_paint",
+      "segments": [
+        {
+          "segfile": "travel_paint_space",
+          "width": 4
+        },
+        {
+          "segfile": "travel_paint_brush1",
+          "width": 8
+        },
+        {
+          "segfile": "travel_paint_brush1_tail",
+          "width": 4
+        },
+        {
+          "segfile": "travel_paint_brush2",
+          "width": 4
+        },
+        {
+          "segfile": "travel_paint_brush3",
+          "width": 8
+        },
+        {
+          "segfile": "travel_paint_brush4",
+          "oam": true,
+          "mheight": 4,
+          "mwidth": 5
+        }
+      ]
     }
   ]
 }
