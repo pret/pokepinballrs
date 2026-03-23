@@ -4914,22 +4914,22 @@ gSapphireHoleIndicatorTilePtrs:: @ 0x086B1300
 gSapphireEvoArrowTilePtrs:: @ 0x086B1340
     @ 3 sets of 5 sets of 3
     @ fifth set has destination address
-    .4byte gUnknown_082DA9E0, gUnknown_082DADE0, gUnknown_082DB1E0
-    .4byte gUnknown_082DA9E0, gUnknown_082DADE0, gUnknown_082DB1E0
-    .4byte gUnknown_082DAA40, gUnknown_082DAE40, gUnknown_082DB240
-    .4byte gUnknown_082DAAA0, gUnknown_082DAEA0, gUnknown_082DB2A0
+    .4byte gSapphireEvo_EArrow_Top0, gSapphireEvo_EArrow_Mid0, gSapphireEvo_EArrow_Bot0
+    .4byte gSapphireEvo_EArrow_Top0, gSapphireEvo_EArrow_Mid0, gSapphireEvo_EArrow_Bot0
+    .4byte gSapphireEvo_EArrow_Top1, gSapphireEvo_EArrow_Mid1, gSapphireEvo_EArrow_Bot1
+    .4byte gSapphireEvo_EArrow_Top2, gSapphireEvo_EArrow_Mid2, gSapphireEvo_EArrow_Bot2
     .4byte 0x0600D080, 0x0600D480, 0x06008080
 
-    .4byte gUnknown_082DAB00, gUnknown_082DAF00, gUnknown_082DB300
-    .4byte gUnknown_082DAB60, gUnknown_082DAF60, gUnknown_082DB360
-    .4byte gUnknown_082DABC0, gUnknown_082DAFC0, gUnknown_082DB3C0
-    .4byte gUnknown_082DAC20, gUnknown_082DB020, gUnknown_082DB420
+    .4byte gSapphireEvo_VArrow_Top0, gSapphireEvo_VArrow_Mid0, gSapphireEvo_VArrow_Bot0
+    .4byte gSapphireEvo_VArrow_Top1, gSapphireEvo_VArrow_Mid1, gSapphireEvo_VArrow_Bot1
+    .4byte gSapphireEvo_VArrow_Top2, gSapphireEvo_VArrow_Mid2, gSapphireEvo_VArrow_Bot2
+    .4byte gSapphireEvo_VArrow_Top3, gSapphireEvo_VArrow_Mid3, gSapphireEvo_VArrow_Bot3
     .4byte 0x060080A0, 0x060084A0, 0x060088A0
 
-    .4byte gUnknown_082DAC80, gUnknown_082DB080, gUnknown_082DB4A0
-    .4byte gUnknown_082DAC80, gUnknown_082DB080, gUnknown_082DB4A0
-    .4byte gUnknown_082DACE0, gUnknown_082DB0E0, gUnknown_082DB500
-    .4byte gUnknown_082DAD40, gUnknown_082DB140, gUnknown_082DB560
+    .4byte gSapphireEvo_OArrow_Top0, gSapphireEvo_OArrow_Mid0, gSapphireEvo_OArrow_Bot0
+    .4byte gSapphireEvo_OArrow_Top0, gSapphireEvo_OArrow_Mid0, gSapphireEvo_OArrow_Bot0
+    .4byte gSapphireEvo_OArrow_Top1, gSapphireEvo_OArrow_Mid1, gSapphireEvo_OArrow_Bot1
+    .4byte gSapphireEvo_OArrow_Top2, gSapphireEvo_OArrow_Mid2, gSapphireEvo_OArrow_Bot2
     .4byte 0x060088C0, 0x06008CC0, 0x060090E0
 
 gSapphireCoinRewardTilePtrs:: @ 0x086B13F4
