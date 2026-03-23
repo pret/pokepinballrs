@@ -732,7 +732,7 @@ gDebugMenuValueTemplate:: @ 0x08137DE8
 	.byte 0,0,0
 
 gDebugMenuCursorGfx:: @ 0x08137E00
-	.incbin "baserom.gba", 0x137E00, 0x4
+	.byte 0x2A,0,0,0
 
 gPinballGameStateFuncs:: @ 0x08137E04
 	.4byte PinballGame_State0_49ED4 @ called once upon loading the field
@@ -747,7 +747,8 @@ gBallFlashPalette:: @ 0x08137F14
 	.incbin "baserom.gba", 0x137F14, 0x100
 
 gBallUpgradeTilesGfx:: @ 0x08138014
-	.incbin "baserom.gba", 0x138014, 0x820
+	.incbin "graphics/stage/main/ball_upgrade.4bpp"
+	.space 0x20
 
 gDusclopsBonusClear_Gfx:: @ 0x08138834
 	.incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
