@@ -4665,22 +4665,22 @@ gRubyHoleIndicatorTilePointers:: @ 0x086B0BC4
 gRubyEvoArrowTilePtrs:: @ 0x086B0C04
     @ 3 sets of 5 sets of 3
     @ fifth set has the destination address
-	.4byte gUnknown_0825D310, gUnknown_0825D710, gUnknown_0825DB10
-    .4byte gUnknown_0825D310, gUnknown_0825D710, gUnknown_0825DB10
-    .4byte gUnknown_0825D370, gUnknown_0825D770, gUnknown_0825DB70
-    .4byte gUnknown_0825D3D0, gUnknown_0825D7D0, gUnknown_0825DBD0
+	.4byte gRubyEvo_EArrow_Top0, gRubyEvo_EArrow_Mid0, gRubyEvo_EArrow_Bot0
+    .4byte gRubyEvo_EArrow_Top0, gRubyEvo_EArrow_Mid0, gRubyEvo_EArrow_Bot0
+    .4byte gRubyEvo_EArrow_Top1, gRubyEvo_EArrow_Mid1, gRubyEvo_EArrow_Bot1
+    .4byte gRubyEvo_EArrow_Top2, gRubyEvo_EArrow_Mid2, gRubyEvo_EArrow_Bot2
     .4byte 0x0600D080, 0x0600D480, 0x06008080
 
-    .4byte gUnknown_0825D430, gUnknown_0825D830, gUnknown_0825DC30
-    .4byte gUnknown_0825D490, gUnknown_0825D890, gUnknown_0825DC90
-    .4byte gUnknown_0825D4F0, gUnknown_0825D8F0, gUnknown_0825DCF0
-    .4byte gUnknown_0825D550, gUnknown_0825D950, gUnknown_0825DD50
+    .4byte gRubyEvo_VArrow_Top0, gRubyEvo_VArrow_Mid0, gRubyEvo_VArrow_Bot0
+    .4byte gRubyEvo_VArrow_Top1, gRubyEvo_VArrow_Mid1, gRubyEvo_VArrow_Bot1
+    .4byte gRubyEvo_VArrow_Top2, gRubyEvo_VArrow_Mid2, gRubyEvo_VArrow_Bot2
+    .4byte gRubyEvo_VArrow_Top3, gRubyEvo_VArrow_Mid3, gRubyEvo_VArrow_Bot3
     .4byte 0x060080A0, 0x060084A0, 0x060088A0
 
-    .4byte gUnknown_0825D5B0, gUnknown_0825D9B0, gUnknown_0825DDB0
-    .4byte gUnknown_0825D5B0, gUnknown_0825D9B0, gUnknown_0825DDB0
-    .4byte gUnknown_0825D610, gUnknown_0825DA10, gUnknown_0825DE10
-    .4byte gUnknown_0825D670, gUnknown_0825DA70, gUnknown_0825DE70
+    .4byte gRubyEvo_OArrow_Top0, gRubyEvo_OArrow_Mid0, gRubyEvo_OArrow_Bot0
+    .4byte gRubyEvo_OArrow_Top0, gRubyEvo_OArrow_Mid0, gRubyEvo_OArrow_Bot0
+    .4byte gRubyEvo_OArrow_Top1, gRubyEvo_OArrow_Mid1, gRubyEvo_OArrow_Bot1
+    .4byte gRubyEvo_OArrow_Top2, gRubyEvo_OArrow_Mid2, gRubyEvo_OArrow_Bot2
     .4byte 0x060088C0, 0x06008CC0, 0x060090C0
 
 gRubyCoinRewardTilePtrs:: @ 0x086B0CB8

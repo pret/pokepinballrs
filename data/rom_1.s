@@ -942,97 +942,100 @@ gRubyAltEntity1CollisionMap:: @ 0x08257390
 gWhiscashCollisionMap:: @ 0x08259C10
 	.incbin "baserom.gba", 0x259C10, 0x3700
 
-gUnknown_0825D310:: @ 0x0825D310
-    .incbin "baserom.gba", 0x25D310, 0x60
+@ Evo Arrows. Named this way for comprehension in folder.
+@ E/V/O arrows. Second digit is '0 Top/1 Mid/2 Bottom',
+@ First digit is 'variant'.
+gRubyEvo_EArrow_Top0:: @ 0x0825D310
+    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_0_0.4bpp"
 
-gUnknown_0825D370:: @ 0x0825D370
-    .incbin "baserom.gba", 0x25D370, 0x60
+gRubyEvo_EArrow_Top1:: @ 0x0825D370
+    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_1_0.4bpp"
 
-gUnknown_0825D3D0:: @ 0x0825D3D0
-    .incbin "baserom.gba", 0x25D3D0, 0x60
+gRubyEvo_EArrow_Top2:: @ 0x0825D3D0
+    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_2_0.4bpp"
 
-gUnknown_0825D430:: @ 0x0825D430
-    .incbin "baserom.gba", 0x25D430, 0x60
+gRubyEvo_VArrow_Top0:: @ 0x0825D430
+    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_0_0.4bpp"
 
-gUnknown_0825D490:: @ 0x0825D490
-    .incbin "baserom.gba", 0x25D490, 0x60
+gRubyEvo_VArrow_Top1:: @ 0x0825D490
+    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_1_0.4bpp"
 
-gUnknown_0825D4F0:: @ 0x0825D4F0
-    .incbin "baserom.gba", 0x25D4F0, 0x60
+gRubyEvo_VArrow_Top2:: @ 0x0825D4F0
+    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_2_0.4bpp"
 
-gUnknown_0825D550:: @ 0x0825D550
-    .incbin "baserom.gba", 0x25D550, 0x60
+gRubyEvo_VArrow_Top3:: @ 0x0825D550
+    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_3_0.4bpp"
 
-gUnknown_0825D5B0:: @ 0x0825D5B0
-    .incbin "baserom.gba", 0x25D5B0, 0x60
+gRubyEvo_OArrow_Top0:: @ 0x0825D5B0
+    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_0_0.4bpp"
 
-gUnknown_0825D610:: @ 0x0825D610
-    .incbin "baserom.gba", 0x25D610, 0x60
+gRubyEvo_OArrow_Top1:: @ 0x0825D610
+    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_1_0.4bpp"
 
-gUnknown_0825D670:: @ 0x0825D670
-    .incbin "baserom.gba", 0x25D670, 0x60
+gRubyEvo_OArrow_Top2:: @ 0x0825D670
+    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_2_0.4bpp"
 	.space 0x40
 
-gUnknown_0825D710:: @ 0x0825D710
-    .incbin "baserom.gba", 0x25D710, 0x60
+gRubyEvo_EArrow_Mid0:: @ 0x0825D710
+    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_0_1.4bpp"
 
-gUnknown_0825D770:: @ 0x0825D770
-    .incbin "baserom.gba", 0x25D770, 0x60
+gRubyEvo_EArrow_Mid1:: @ 0x0825D770
+    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_1_1.4bpp"
 
-gUnknown_0825D7D0:: @ 0x0825D7D0
-    .incbin "baserom.gba", 0x25D7D0, 0x60
+gRubyEvo_EArrow_Mid2:: @ 0x0825D7D0
+    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_2_1.4bpp"
 
-gUnknown_0825D830:: @ 0x0825D830
-    .incbin "baserom.gba", 0x25D830, 0x60
+gRubyEvo_VArrow_Mid0:: @ 0x0825D830
+    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_0_1.4bpp"
 
-gUnknown_0825D890:: @ 0x0825D890
-    .incbin "baserom.gba", 0x25D890, 0x60
+gRubyEvo_VArrow_Mid1:: @ 0x0825D890
+	.incbin "graphics/stage/ruby/ruby_evo_v_arrow_1_1.4bpp"
 
-gUnknown_0825D8F0:: @ 0x0825D8F0
-    .incbin "baserom.gba", 0x25D8F0, 0x60
+gRubyEvo_VArrow_Mid2:: @ 0x0825D8F0
+	.incbin "graphics/stage/ruby/ruby_evo_v_arrow_2_1.4bpp"
 
-gUnknown_0825D950:: @ 0x0825D950
-    .incbin "baserom.gba", 0x25D950, 0x60
+gRubyEvo_VArrow_Mid3:: @ 0x0825D950
+	.incbin "graphics/stage/ruby/ruby_evo_v_arrow_3_1.4bpp"
 
-gUnknown_0825D9B0:: @ 0x0825D9B0
-    .incbin "baserom.gba", 0x25D9B0, 0x60
+gRubyEvo_OArrow_Mid0:: @ 0x0825D9B0
+    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_0_1.4bpp"
 
-gUnknown_0825DA10:: @ 0x0825DA10
-    .incbin "baserom.gba", 0x25DA10, 0x60
+gRubyEvo_OArrow_Mid1:: @ 0x0825DA10
+    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_1_1.4bpp"
 
-gUnknown_0825DA70:: @ 0x0825DA70
-    .incbin "baserom.gba", 0x25DA70, 0x60
+gRubyEvo_OArrow_Mid2:: @ 0x0825DA70
+    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_2_1.4bpp"
 	.space 0x40
 
-gUnknown_0825DB10:: @ 0x0825DB10
-    .incbin "baserom.gba", 0x25DB10, 0x60
+gRubyEvo_EArrow_Bot0:: @ 0x0825DB10
+	.incbin "graphics/stage/ruby/ruby_evo_e_arrow_0_2.4bpp"
 
-gUnknown_0825DB70:: @ 0x0825DB70
-    .incbin "baserom.gba", 0x25DB70, 0x60
+gRubyEvo_EArrow_Bot1:: @ 0x0825DB70
+	.incbin "graphics/stage/ruby/ruby_evo_e_arrow_1_2.4bpp"
 
-gUnknown_0825DBD0:: @ 0x0825DBD0
-    .incbin "baserom.gba", 0x25DBD0, 0x60
+gRubyEvo_EArrow_Bot2:: @ 0x0825DBD0
+	.incbin "graphics/stage/ruby/ruby_evo_e_arrow_2_2.4bpp"
 
-gUnknown_0825DC30:: @ 0x0825DC30
-    .incbin "baserom.gba", 0x25DC30, 0x60
+gRubyEvo_VArrow_Bot0:: @ 0x0825DC30
+    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_0_2.4bpp"
 
-gUnknown_0825DC90:: @ 0x0825DC90
-    .incbin "baserom.gba", 0x25DC90, 0x60
+gRubyEvo_VArrow_Bot1:: @ 0x0825DC90
+    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_1_2.4bpp"
 
-gUnknown_0825DCF0:: @ 0x0825DCF0
-    .incbin "baserom.gba", 0x25DCF0, 0x60
+gRubyEvo_VArrow_Bot2:: @ 0x0825DCF0
+    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_2_2.4bpp"
 
-gUnknown_0825DD50:: @ 0x0825DD50
-    .incbin "baserom.gba", 0x25DD50, 0x60
+gRubyEvo_VArrow_Bot3:: @ 0x0825DD50
+    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_3_2.4bpp"
 
-gUnknown_0825DDB0:: @ 0x0825DDB0
-    .incbin "baserom.gba", 0x25DDB0, 0x60
+gRubyEvo_OArrow_Bot0:: @ 0x0825DDB0
+    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_0_2.4bpp"
 
-gUnknown_0825DE10:: @ 0x0825DE10
-    .incbin "baserom.gba", 0x25DE10, 0x60
+gRubyEvo_OArrow_Bot1:: @ 0x0825DE10
+    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_1_2.4bpp"
 
-gUnknown_0825DE70:: @ 0x0825DE70
-    .incbin "baserom.gba", 0x25DE70, 0x60
+gRubyEvo_OArrow_Bot2:: @ 0x0825DE70
+    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_2_2.4bpp"
 	.space 0x40
 
 gUnknown_0825DF10:: @ 0x0825DF10
