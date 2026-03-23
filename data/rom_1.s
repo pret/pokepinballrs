@@ -596,7 +596,9 @@ gIntroScene8Clouds_Gfx:: @ 0x08116260
 gIntroScene8Ball_Gfx:: @ 0x08118680
 	.incbin "graphics/intro/scene_8_ball.4bpp"
 
-	.incbin "baserom.gba", 0x11F680, 0x1640
+	.incbin "graphics/intro/wailmer_swallow.4bpp"
+
+	.incbin "baserom.gba", 0x120A80, 0x240
 
 .include "data/graphics/titlescreen.inc"
 
@@ -616,17 +618,18 @@ gIdlePinballGameStateFuncs:: @ 0x08137918
 	.4byte PinballGameIdle3_19288
 
 gAreaToSpeciesTable:: @ 0x08137928
-	.incbin "baserom.gba", 0x137928, 0x1C
+	.2byte 0, 1, 2, 3, 4
+	.2byte 5, 6, 7, 8, 9
+	.2byte 10, 11, 12, 12
 
 gPondDialAnimFrames:: @ 0x08137944
-	.incbin "baserom.gba", 0x137944, 0x24
+	.2byte 10, 7,6,5,4,3,2,1,0,1,0,1,0,1,0,1,0,1
 
 gPondBumperTransitionFrames:: @ 0x08137968
 	.2byte 0,2,3,4,5,6,7,10,10,10,7,6,5,4,3,2,1,0
-	@.incbin "baserom.gba", 0x137968, 0x24
 
 gLotadBobOffsets:: @ 0x0813798C
-	.incbin "baserom.gba", 0x13798C, 0xC
+	.2byte 0, 10, 20, 30, 20, 10
 
 gChinchouBumperPalettes:: @ 0x08137998
 	.incbin "baserom.gba", 0x137998, 0x20
@@ -638,43 +641,81 @@ gWhiscashPalettes:: @ 0x081379D8
 	.incbin "baserom.gba", 0x1379D8, 0xE0
 
 gBumperAnimFrames:: @ 0x08137AB8
-	.incbin "baserom.gba", 0x137AB8, 0x84
+	.2byte 0,1,2,3,2,1,0,3,0,3
+
+	@ Outside range used by the bumperAnimFrames.
+	.2byte 0,0,0,0,0,0,0,0,0,0
+	.2byte 0,0,0,0,0,0,0,0,0,0
+	.2byte 0,0,0,1,0,0,0,1,0,0
+	.2byte 0,1,0,1,0,1,0,1,0,1
+	.2byte 0,1,1,1,0,1,1,1,0,1
+	.2byte 1,1,1,1,1,1
 
 gFieldPaletteVariants:: @ 0x08137B3C
-	.incbin "baserom.gba", 0x137B3C, 0x20
-
-gUnknown_08137B5C:: @ 0x08137B5C
-	.incbin "baserom.gba", 0x137B5C, 0x160
+	.incbin "baserom.gba", 0x137B3C, 0x180
 
 gPelipperFlyAnimTable:: @ 0x08137CBC
-	.incbin "baserom.gba", 0x137CBC, 0x1A
+	@ frameId, yOffset
+	.byte 9, -4
+	.byte 9, -4
+	.byte 9, -4
+	.byte 9, -4
+	.byte 10, -2
+	.byte 10, -2
+	.byte 11, 0
+	.byte 11, 0
+	.byte 11, 0
+	.byte 12, -2
+	.byte 12, -2
+	.byte 12, -2
+	.byte 12, -2
 
 gBumperMosaicValues:: @ 0x08137CD6
-	.incbin "baserom.gba", 0x137CD6, 0xC
+	.2byte 0,4,2,0,4,2
 
 gShopSignLoopFrames:: @ 0x08137CE2
-	.incbin "baserom.gba", 0x137CE2, 0x14
+	@2 sets of 5
+	.2byte 0,1,2,2,1
+	.2byte 7,8,9,8,0
 
 gShopSignIntroFrames:: @ 0x08137CF6
-	.incbin "baserom.gba", 0x137CF6, 0x10
+	@2 sets of 4
+	.2byte 3,0,3,0
+	.2byte 6,7,6,7
 
 gShopSignTransitionFrames:: @ 0x08137D06
-	.incbin "baserom.gba", 0x137D06, 0x3A
+	@2 sets of 14
+	.2byte 6,7,6,4,4,5,5,4,4,5,5,3,0,3
+	.2byte 3,0,3,4,4,5,5,4,4,5,5,6,7,6
+	.space 2, 0
 
 gDusclopsBossAnimFrames:: @ 0x08137D40
-	.incbin "baserom.gba", 0x137D40, 0x8
+	.2byte 12,13,12,14
 
 gWhirlwindGrabAnimFrameIndices:: @ 0x08137D48
-	.incbin "baserom.gba", 0x137D48, 0x18
+	.2byte 0,1,2,3,4,7,2,1,7,5,6,0
 
 gSphealScoreDigitSpriteIndices:: @ 0x08137D60
-	.incbin "baserom.gba", 0x137D60, 0x18
+	.byte 0,2,2,2,2,2,0,0,0,0
+	.byte 2,2,2,2,2,1,1,1,1,1
+	.byte 1,1,0,0
 
 gPauseMenuSpriteOffsets:: @ 0x08137D78
-	.incbin "baserom.gba", 0x137D78, 0x2C
+	@ Vector16
+	.2byte -16, 0
+	.2byte 0, 0
+	.2byte 8, 0
+	.2byte 16, 0
+	.2byte 24, 0
+	.2byte 0, 12
+	.2byte 8, 12
+	.2byte 16, 12
+	.2byte 24, 12
+	.2byte 32, 12
+	.2byte 40, 12
 
 gPauseMenuTextAnimFrames:: @ 0x08137DA4
-	.incbin "baserom.gba", 0x137DA4, 0x1A
+	.2byte 0,0,0,0,0,1,2,3,3,3,3,4,5
 
 gDebugTextStrings:: @ 0x08137DBE
 	.ascii " BALL-MV:"
@@ -2564,7 +2605,16 @@ gKecleonBoardBG1Tilemap:: @ 0x0830CDD4
 	.incbin "baserom.gba", 0x30CDD4, 0x1ABC0
 
 gKecleonBerryOverlayTilemap:: @ 0x08327994
-	.incbin "baserom.gba", 0x327994, 0x2000
+	.incbin "baserom.gba", 0x327994, 0x800
+
+gKecleonOverlayTilemap1:: @ 0x08328194
+    .incbin "baserom.gba", 0x328194, 0x800
+
+gKecleonOverlayTilemap2:: @ 0x08328994
+    .incbin "baserom.gba", 0x328994, 0x800
+
+gKecleonOverlayTilemap3:: @ 0x08329194
+    .incbin "baserom.gba", 0x329194, 0x800
 
 gKecleonBoardBG0Tilemap:: @ 0x08329994
 	.incbin "baserom.gba", 0x329994, 0x800

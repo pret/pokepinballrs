@@ -4360,7 +4360,10 @@ gKecleonScopeFallTargets:: @ 0x086AEA3C
 	.incbin "baserom.gba", 0x6AEA3C, 0x14
 
 gKecleonOverlayTilemapPointers:: @ 0x086AEA50
-	.incbin "baserom.gba", 0x6AEA50, 0x10
+    .4byte gKecleonBerryOverlayTilemap
+    .4byte gKecleonOverlayTilemap1
+    .4byte gKecleonOverlayTilemap2
+    .4byte gKecleonOverlayTilemap3
 
 gKecleonOverlayTileAnimIndices:: @ 0x086AEA60
 	.incbin "baserom.gba", 0x6AEA60, 0x8
