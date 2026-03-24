@@ -14,7 +14,7 @@ extern const s16 gCaptureSequenceTimings[34];
 extern const u8 gCaptureScreenTilesGfx[];
 extern const s8 gCaptureShakeOffsets[];
 extern const u16 gPokeballCaptureOamFrames[][0x30];
-extern const u8 gBallUpgradeTilesGfx[];
+extern const u8 gCaptureBallTilesGfx[];
 extern const u8 gBallFlashPalette;
 
 extern u8 gCatchSequencePalA;
@@ -542,8 +542,8 @@ void RunBallCaptureSequence(void)
 
         gCurrentPinballGame->activePortraitType = 9;
         DmaCopy16(3, gCaptureScreenTilesGfx, 0x06015800, 0x1C00);
-        DmaCopy16(3, &gBallUpgradeTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], 0x060164C0, 0x80);
-        DmaCopy16(3, &gBallUpgradeTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], 0x06016760, 0x80);
+        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], 0x060164C0, 0x80);
+        DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], 0x06016760, 0x80);
 
         gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
 

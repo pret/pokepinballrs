@@ -746,8 +746,8 @@ gBallPalettes:: @ 0x08137E14
 gBallFlashPalette:: @ 0x08137F14
 	.incbin "baserom.gba", 0x137F14, 0x100
 
-gBallUpgradeTilesGfx:: @ 0x08138014
-	.incbin "graphics/stage/main/ball_upgrade.4bpp"
+gCaptureBallTilesGfx:: @ 0x08138014
+	.incbin "graphics/stage/main/capture_ball_variants.4bpp"
 	.space 0x20
 
 gDusclopsBonusClear_Gfx:: @ 0x08138834
