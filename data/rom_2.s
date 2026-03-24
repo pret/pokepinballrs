@@ -4610,25 +4610,25 @@ gRubyCatchLightTilePointers:: @ 0x086B09E8
     .4byte gUnknown_082602B0, gUnknown_082606B0
     .4byte 0x0600A200, 0x0600A600
 
-gRubyModeTimerTilePointers:: @ 0x086B0A90
+gRubySaverTilePointers:: @ 0x086B0A90
     @ 3 sets of 4
     @ third set has destination address
-    .4byte gUnknown_08260770, gUnknown_08260B70, gUnknown_08260F90, gUnknown_082613F0
-    .4byte gUnknown_08260870, gUnknown_08260C70, gUnknown_08261090, gUnknown_082614F0
+    .4byte gRubySaverRow0Tile_Off, gRubySaverRow1Tile_Off, gRubySaverRow2Tile_Off, gRubySaverRow3Tile_Off
+    .4byte gRubySaverRow0Tile_On, gRubySaverRow1Tile_On, gRubySaverRow2Tile_On, gRubySaverRow3Tile_On
     .4byte 0x0600AD80, 0x0600B180, 0x0600B5A0, 0x0600BA00
 
-gRubyCatchArrowTilePointers:: @ 0x086B0AC0
+gRubyHatchArrowTilePointer:: @ 0x086B0AC0
     @ 3 sets of 4
     @ third set has destination address
-    .4byte gUnknown_08261770, gUnknown_08261B70, gUnknown_08261F70, gUnknown_08262370
-    .4byte gUnknown_082617F0, gUnknown_08261BF0, gUnknown_08261FF0, gUnknown_082623F0
+    .4byte gRubyHatchArrowRow0Tile_Off, gRubyHatchArrowRow1Tile_Off, gRubyHatchArrowRow2Tile_Off, gRubyHatchArrowRow3Tile_Off
+    .4byte gRubyHatchArrowRow0Tile_On, gRubyHatchArrowRow1Tile_On, gRubyHatchArrowRow2Tile_On, gRubyHatchArrowRow3Tile_On
     .4byte 0x0600B960, 0x0600BD60, 0x0600C160, 0x0600C560
 
-gRubyEvoArrowTilePointers:: @ 0x086B0AF0
+gRubyBumperArrowTilePointer:: @ 0x086B0AF0
     @ 3 sets of 4
     @ third set has destination address
-    .4byte gUnknown_082619B0, gUnknown_08261D70, gUnknown_08262170, gUnknown_08262570
-    .4byte gUnknown_08261A30, gUnknown_08261DF0, gUnknown_082621F0, gUnknown_082625F0
+    .4byte gRubyBumperArrowRow0Tile_Off, gRubyBumperArrowRow1Tile_Off, gRubyBumperArrowRow2Tile_Off, gRubyBumperArrowRow3Tile_Off
+    .4byte gRubyBumperArrowRow0Tile_On, gRubyBumperArrowRow1Tile_On, gRubyBumperArrowRow2Tile_On, gRubyBumperArrowRow3Tile_On
     .4byte 0x0600B620, 0x0600B9E0, 0x0600BDE0, 0x0600C1E0
 
 gRubyRouletteSlotTilePointers:: @ 0x086B0B20
@@ -4643,24 +4643,24 @@ gRubyRouletteSlotTilePointers:: @ 0x086B0B20
 gRubyBallPowerUpLightTilePointers:: @ 0x086B0B70
     @ 3 sets of 3
     @ third value has the destination address
-    .4byte gUnknown_0825F730, gUnknown_0825F770, 0x060085C0
-    .4byte gUnknown_0825F7B0, gUnknown_0825F7F0, 0x06008600
-    .4byte gUnknown_0825F830, gUnknown_0825F870, 0x06008660
+    .4byte gRubyBallPowerUpLight0off, gRubyBallPowerUpLight0on, 0x060085C0
+    .4byte gRubyBallPowerUpLight1off, gRubyBallPowerUpLight1on, 0x06008600
+    .4byte gRubyBallPowerUpLight2off, gRubyBallPowerUpLight2on, 0x06008660
 
-gRubyCatchProgressArrowTilePointers:: @ 0x086B0B94
+gRubyCatchArrowTilePointer:: @ 0x086B0B94
     @ 3 sets of 4
     @ third set has the destination address
-	.4byte gUnknown_082618B0, gUnknown_08261C70, gUnknown_08262070, gUnknown_08262470
-    .4byte gUnknown_08261930, gUnknown_08261CF0, gUnknown_082620F0, gUnknown_082624F0
+	.4byte gRubyCatchArrowRow0Tile_Off, gRubyCatchArrowRow1Tile_Off, gRubyCatchArrowRow2Tile_Off, gRubyCatchArrowRow3Tile_Off
+    .4byte gRubyCatchArrowRow0Tile_On, gRubyCatchArrowRow1Tile_On, gRubyCatchArrowRow2Tile_On, gRubyCatchArrowRow3Tile_On
     .4byte 0x0600D2A0, 0x0600D660, 0x06008260, 0x06008660
 
 gRubyHoleIndicatorTilePointers:: @ 0x086B0BC4
     @ 4 sets of 4
     @ third value has the destination; fouth value blank.
-    .4byte gUnknown_0825F8B0, gUnknown_0825F8F0, 0x0600A460, 0
-    .4byte gUnknown_0825F930, gUnknown_0825F970, 0x0600A4C0, 0
-    .4byte gUnknown_0825F9B0, gUnknown_0825F9F0, 0x0600A6C0, 0
-    .4byte gUnknown_0825FA30, gUnknown_0825FA70, 0x0600A720, 0
+    .4byte gRubyHoleLightH_Off, gRubyHoleLightH_On, 0x0600A460, 0
+    .4byte gRubyHoleLightO_Off, gRubyHoleLightO_On, 0x0600A4C0, 0
+    .4byte gRubyHoleLightL_Off, gRubyHoleLightL_On, 0x0600A6C0, 0
+    .4byte gRubyHoleLightE_Off, gRubyHoleLightE_On, 0x0600A720, 0
 
 gRubyEvoArrowTilePtrs:: @ 0x086B0C04
     @ 3 sets of 5 sets of 3
@@ -4704,7 +4704,7 @@ gRubyCoinRewardTilePtrs:: @ 0x086B0CB8
     .4byte gUnknown_0825E270, gUnknown_0825E670, gUnknown_0825EA70
     .4byte 0x0600C500, 0x0600C900, 0x0600CD00
 
-gRubyCatchArrowTilePtrs:: @ 0x086B0D6C
+gRubyGetArrowTilePtrs:: @ 0x086B0D6C
     @ 3 sets of 5 sets of 3
     @ fifth set has the destination address
     .4byte gUnknown_0825EB10, gUnknown_0825EF10, gUnknown_0825F310

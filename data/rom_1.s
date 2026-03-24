@@ -1220,47 +1220,47 @@ gUnknown_0825F610:: @ 0x0825F610
 gUnknown_0825F670:: @ 0x0825F670
     .incbin "baserom.gba", 0x25F670, 0xC0
 
-gUnknown_0825F730:: @ 0x0825F730
-    .incbin "baserom.gba", 0x25F730, 0x40
+gRubyBallPowerUpLight0off:: @ 0x0825F730
+	.incbin "graphics/stage/ruby/ruby_ball_power_up_light_0_off.4bpp"
 
-gUnknown_0825F770:: @ 0x0825F770
-    .incbin "baserom.gba", 0x25F770, 0x40
+gRubyBallPowerUpLight0on:: @ 0x0825F770
+    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_0_on.4bpp"
 
-gUnknown_0825F7B0:: @ 0x0825F7B0
-    .incbin "baserom.gba", 0x25F7B0, 0x40
+gRubyBallPowerUpLight1off:: @ 0x0825F7B0
+    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_1_off.4bpp"
 
-gUnknown_0825F7F0:: @ 0x0825F7F0
-    .incbin "baserom.gba", 0x25F7F0, 0x40
+gRubyBallPowerUpLight1on:: @ 0x0825F7F0
+    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_1_on.4bpp"
 
-gUnknown_0825F830:: @ 0x0825F830
-    .incbin "baserom.gba", 0x25F830, 0x40
+gRubyBallPowerUpLight2off:: @ 0x0825F830
+    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_2_off.4bpp"
 
-gUnknown_0825F870:: @ 0x0825F870
-    .incbin "baserom.gba", 0x25F870, 0x40
+gRubyBallPowerUpLight2on:: @ 0x0825F870
+    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_2_on.4bpp"
 
-gUnknown_0825F8B0:: @ 0x0825F8B0
-    .incbin "baserom.gba", 0x25F8B0, 0x40
+gRubyHoleLightH_Off:: @ 0x0825F8B0
+	.incbin "graphics/stage/ruby/ruby_hole_light_h_off.4bpp"
 
-gUnknown_0825F8F0:: @ 0x0825F8F0
-    .incbin "baserom.gba", 0x25F8F0, 0x40
+gRubyHoleLightH_On:: @ 0x0825F8F0
+	.incbin "graphics/stage/ruby/ruby_hole_light_h_on.4bpp"
 
-gUnknown_0825F930:: @ 0x0825F930
-    .incbin "baserom.gba", 0x25F930, 0x40
+gRubyHoleLightO_Off:: @ 0x0825F930
+	.incbin "graphics/stage/ruby/ruby_hole_light_o_off.4bpp"
 
-gUnknown_0825F970:: @ 0x0825F970
-    .incbin "baserom.gba", 0x25F970, 0x40
+gRubyHoleLightO_On:: @ 0x0825F970
+	.incbin "graphics/stage/ruby/ruby_hole_light_o_on.4bpp"
 
-gUnknown_0825F9B0:: @ 0x0825F9B0
-    .incbin "baserom.gba", 0x25F9B0, 0x40
+gRubyHoleLightL_Off:: @ 0x0825F9B0
+	.incbin "graphics/stage/ruby/ruby_hole_light_l_off.4bpp"
 
-gUnknown_0825F9F0:: @ 0x0825F9F0
-    .incbin "baserom.gba", 0x25F9F0, 0x40
+gRubyHoleLightL_On:: @ 0x0825F9F0
+	.incbin "graphics/stage/ruby/ruby_hole_light_l_on.4bpp"
 
-gUnknown_0825FA30:: @ 0x0825FA30
-    .incbin "baserom.gba", 0x25FA30, 0x40
+gRubyHoleLightE_Off:: @ 0x0825FA30
+	.incbin "graphics/stage/ruby/ruby_hole_light_e_off.4bpp"
 
-gUnknown_0825FA70:: @ 0x0825FA70
-    .incbin "baserom.gba", 0x25FA70, 0x40
+gRubyHoleLightE_On:: @ 0x0825FA70
+	.incbin "graphics/stage/ruby/ruby_hole_light_e_on.4bpp"
 
 gUnknown_0825FAB0:: @ 0x0825FAB0
     .incbin "baserom.gba", 0x25FAB0, 0x40
@@ -1364,100 +1364,100 @@ gUnknown_08260670:: @ 0x08260670
 gUnknown_082606B0:: @ 0x082606B0
     .incbin "baserom.gba", 0x2606B0, 0xC0
 
-gUnknown_08260770:: @ 0x08260770
+gRubySaverRow0Tile_Off:: @ 0x08260770
     .incbin "baserom.gba", 0x260770, 0x100
 
-gUnknown_08260870:: @ 0x08260870
+gRubySaverRow0Tile_On:: @ 0x08260870
     .incbin "baserom.gba", 0x260870, 0x300
 
-gUnknown_08260B70:: @ 0x08260B70
+gRubySaverRow1Tile_Off:: @ 0x08260B70
     .incbin "baserom.gba", 0x260B70, 0x100
 
-gUnknown_08260C70:: @ 0x08260C70
+gRubySaverRow1Tile_On:: @ 0x08260C70
     .incbin "baserom.gba", 0x260C70, 0x320
 
-gUnknown_08260F90:: @ 0x08260F90
+gRubySaverRow2Tile_Off:: @ 0x08260F90
     .incbin "baserom.gba", 0x260F90, 0x100
 
-gUnknown_08261090:: @ 0x08261090
+gRubySaverRow2Tile_On:: @ 0x08261090
     .incbin "baserom.gba", 0x261090, 0x360
 
-gUnknown_082613F0:: @ 0x082613F0
+gRubySaverRow3Tile_Off:: @ 0x082613F0
     .incbin "baserom.gba", 0x2613F0, 0x100
 
-gUnknown_082614F0:: @ 0x082614F0
+gRubySaverRow3Tile_On:: @ 0x082614F0
     .incbin "baserom.gba", 0x2614F0, 0x280
 
-gUnknown_08261770:: @ 0x08261770
+gRubyHatchArrowRow0Tile_Off:: @ 0x08261770
     .incbin "baserom.gba", 0x261770, 0x80
 
-gUnknown_082617F0:: @ 0x082617F0
+gRubyHatchArrowRow0Tile_On:: @ 0x082617F0
     .incbin "baserom.gba", 0x2617F0, 0xC0
 
-gUnknown_082618B0:: @ 0x082618B0
+gRubyCatchArrowRow0Tile_Off:: @ 0x082618B0
     .incbin "baserom.gba", 0x2618B0, 0x80
 
-gUnknown_08261930:: @ 0x08261930
+gRubyCatchArrowRow0Tile_On:: @ 0x08261930
     .incbin "baserom.gba", 0x261930, 0x80
 
-gUnknown_082619B0:: @ 0x082619B0
+gRubyBumperArrowRow0Tile_Off:: @ 0x082619B0
     .incbin "baserom.gba", 0x2619B0, 0x80
 
-gUnknown_08261A30:: @ 0x08261A30
+gRubyBumperArrowRow0Tile_On:: @ 0x08261A30
     .incbin "baserom.gba", 0x261A30, 0x140
 
-gUnknown_08261B70:: @ 0x08261B70
+gRubyHatchArrowRow1Tile_Off:: @ 0x08261B70
     .incbin "baserom.gba", 0x261B70, 0x80
 
-gUnknown_08261BF0:: @ 0x08261BF0
+gRubyHatchArrowRow1Tile_On:: @ 0x08261BF0
     .incbin "baserom.gba", 0x261BF0, 0x80
 
-gUnknown_08261C70:: @ 0x08261C70
+gRubyCatchArrowRow1Tile_Off:: @ 0x08261C70
     .incbin "baserom.gba", 0x261C70, 0x80
 
-gUnknown_08261CF0:: @ 0x08261CF0
+gRubyCatchArrowRow1Tile_On:: @ 0x08261CF0
     .incbin "baserom.gba", 0x261CF0, 0x80
 
-gUnknown_08261D70:: @ 0x08261D70
+gRubyBumperArrowRow1Tile_Off:: @ 0x08261D70
     .incbin "baserom.gba", 0x261D70, 0x80
 
-gUnknown_08261DF0:: @ 0x08261DF0
+gRubyBumperArrowRow1Tile_On:: @ 0x08261DF0
     .incbin "baserom.gba", 0x261DF0, 0x180
 
-gUnknown_08261F70:: @ 0x08261F70
+gRubyHatchArrowRow2Tile_Off:: @ 0x08261F70
     .incbin "baserom.gba", 0x261F70, 0x80
 
-gUnknown_08261FF0:: @ 0x08261FF0
+gRubyHatchArrowRow2Tile_On:: @ 0x08261FF0
     .incbin "baserom.gba", 0x261FF0, 0x80
 
-gUnknown_08262070:: @ 0x08262070
+gRubyCatchArrowRow2Tile_Off:: @ 0x08262070
     .incbin "baserom.gba", 0x262070, 0x80
 
-gUnknown_082620F0:: @ 0x082620F0
+gRubyCatchArrowRow2Tile_On:: @ 0x082620F0
     .incbin "baserom.gba", 0x2620F0, 0x80
 
-gUnknown_08262170:: @ 0x08262170
+gRubyBumperArrowRow2Tile_Off:: @ 0x08262170
     .incbin "baserom.gba", 0x262170, 0x80
 
-gUnknown_082621F0:: @ 0x082621F0
+gRubyBumperArrowRow2Tile_On:: @ 0x082621F0
     .incbin "baserom.gba", 0x2621F0, 0x180
 
-gUnknown_08262370:: @ 0x08262370
+gRubyHatchArrowRow3Tile_Off:: @ 0x08262370
     .incbin "baserom.gba", 0x262370, 0x80
 
-gUnknown_082623F0:: @ 0x082623F0
+gRubyHatchArrowRow3Tile_On:: @ 0x082623F0
     .incbin "baserom.gba", 0x2623F0, 0x80
 
-gUnknown_08262470:: @ 0x08262470
+gRubyCatchArrowRow3Tile_Off:: @ 0x08262470
     .incbin "baserom.gba", 0x262470, 0x80
 
-gUnknown_082624F0:: @ 0x082624F0
+gRubyCatchArrowRow3Tile_On:: @ 0x082624F0
     .incbin "baserom.gba", 0x2624F0, 0x80
 
-gUnknown_08262570:: @ 0x08262570
+gRubyBumperArrowRow3Tile_Off:: @ 0x08262570
     .incbin "baserom.gba", 0x262570, 0x80
 
-gUnknown_082625F0:: @ 0x082625F0
+gRubyBumperArrowRow3Tile_On:: @ 0x082625F0
     .incbin "baserom.gba", 0x2625F0, 0x1A0
 
 gUnknown_08262790:: @ 0x08262790

@@ -5,11 +5,11 @@
 
 extern const u8 *gRubyBallPowerUpLightTilePointers[][3];
 extern const u16 gBallShadowTileIndices[];
-extern const u8 *gRubyCatchProgressArrowTilePointers[][4];
+extern const u8 *gRubyCatchArrowTilePointer[][4];
 extern const u8 *gRubyRouletteSlotTilePointers[][4];
-extern const u8 *gRubyEvoArrowTilePointers[][4];
-extern const u8 *gRubyCatchArrowTilePointers[][4];
-extern const u8 *gRubyModeTimerTilePointers[][4];
+extern const u8 *gRubyBumperArrowTilePointer[][4];
+extern const u8 *gRubyHatchArrowTilePointer[][4];
+extern const u8 *gRubySaverTilePointers[][4];
 extern const u8 *gRubyHoleIndicatorTilePointers[][4];
 extern const u8 *gRubyCatchLightTilePointers[][7][2];
 extern const u8 *gRubyTrapIndicatorTilePointers[][2];
@@ -20,7 +20,7 @@ extern const u8 *gRubySlingshotTilePointers[2][3][5];
 extern const u8 *gRubyCoinRewardTilePtrs[][5][3];
 extern const s16 gCoinRewardLevelTimerThresholds[];
 extern const u8 *gRubyEvoArrowTilePtrs[][5][3];
-extern const u8 *gRubyCatchArrowTilePtrs[][5][3];
+extern const u8 *gRubyGetArrowTilePtrs[][5][3];
 
 extern struct SongHeader se_ball_upgrade;
 
@@ -218,8 +218,8 @@ void DrawRubyModeTimerDisplay(void)
         }
     }
 
-    src = gRubyModeTimerTilePointers[gCurrentPinballGame->saverLit];
-    dest = gRubyModeTimerTilePointers[2];
+    src = gRubySaverTilePointers[gCurrentPinballGame->saverLit];
+    dest = gRubySaverTilePointers[2];
     DmaCopy16(3, src[0], dest[0], 0xC0);
     DmaCopy16(3, src[1], dest[1], 0xC0);
     if (gCurrentPinballGame->hudSpriteBaseY >= 216)
@@ -239,8 +239,8 @@ void AnimateRubyCatchArrowPalette(void)
     if (gCurrentPinballGame->catchArrowPaletteActive > 0)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
 
-    src = gRubyCatchArrowTilePointers[index];
-    dest = gRubyCatchArrowTilePointers[2];
+    src = gRubyHatchArrowTilePointer[index];
+    dest = gRubyHatchArrowTilePointer[2];
     if (gCurrentPinballGame->hudSpriteBaseY > 48)
     {
         if (gCurrentPinballGame->hudSpriteBaseY < 216)
@@ -270,8 +270,8 @@ void AnimateRubyEvoArrowPalette(void)
     if (gCurrentPinballGame->evoArrowPaletteActive > 0)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
 
-    src = gRubyEvoArrowTilePointers[index];
-    dest = gRubyEvoArrowTilePointers[2];
+    src = gRubyBumperArrowTilePointer[index];
+    dest = gRubyBumperArrowTilePointer[2];
     if (gCurrentPinballGame->hudSpriteBaseY > 40)
     {
         if (gCurrentPinballGame->hudSpriteBaseY < 208)
@@ -342,8 +342,8 @@ void AnimateRubyCatchProgressArrow(void)
     if (gCurrentPinballGame->catchProgressFlashing > 0)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
 
-    src = gRubyCatchProgressArrowTilePointers[index];
-    dest = gRubyCatchProgressArrowTilePointers[2];
+    src = gRubyCatchArrowTilePointer[index];
+    dest = gRubyCatchArrowTilePointer[2];
     if (gCurrentPinballGame->hudSpriteBaseY < 264)
     {
         DmaCopy16(3, src[0], dest[0], 0x40);
@@ -610,8 +610,8 @@ void DrawRubyCatchArrowProgress(void)
         sp0[2] = gCurrentPinballGame->travelArrowTiles[2];
     }
 
-    src = gRubyCatchArrowTilePtrs[0][sp0[0]];
-    dest = gRubyCatchArrowTilePtrs[0][4];
+    src = gRubyGetArrowTilePtrs[0][sp0[0]];
+    dest = gRubyGetArrowTilePtrs[0][4];
     if (gCurrentPinballGame->hudSpriteBaseY < 264)
     {
         DmaCopy16(3, src[0], dest[0], 0x60);
@@ -622,8 +622,8 @@ void DrawRubyCatchArrowProgress(void)
 
     if (gCurrentPinballGame->hudSpriteBaseY > 120)
     {
-        src = gRubyCatchArrowTilePtrs[1][sp0[1]];
-        dest = gRubyCatchArrowTilePtrs[1][4];
+        src = gRubyGetArrowTilePtrs[1][sp0[1]];
+        dest = gRubyGetArrowTilePtrs[1][4];
         DmaCopy16(3, src[0], dest[0], 0x40);
         DmaCopy16(3, src[1], dest[1], 0x40);
         DmaCopy16(3, src[2], dest[2], 0x60);
@@ -631,8 +631,8 @@ void DrawRubyCatchArrowProgress(void)
 
     if (gCurrentPinballGame->hudSpriteBaseY > 136)
     {
-        src = gRubyCatchArrowTilePtrs[2][sp0[2]];
-        dest = gRubyCatchArrowTilePtrs[2][4];
+        src = gRubyGetArrowTilePtrs[2][sp0[2]];
+        dest = gRubyGetArrowTilePtrs[2][4];
         DmaCopy16(3, src[0], dest[0], 0x40);
         DmaCopy16(3, src[1], dest[1], 0x60);
         DmaCopy16(3, src[2], dest[2], 0x60);
