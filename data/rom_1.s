@@ -1672,100 +1672,100 @@ gSapphireBoardCompressedBGTileBuffer:: @ 0x082D8998
 @ E/V/O arrows. Second digit is '0 Top/1 Mid/2 Bottom',
 @ First digit is 'variant'.
 gSapphireEvo_EArrow_Top0:: @ 0x082DA9E0
-    .incbin "baserom.gba", 0x2DA9E0, 0x60
-	@.incbin "graphics/stage/sapphire/evo_e_arrow_0_0.4bpp"
-
+    .incbin "graphics/stage/sapphire/evo_e_arrow_0_0.4bpp"
 
 gSapphireEvo_EArrow_Top1:: @ 0x082DAA40
-    .incbin "baserom.gba", 0x2DAA40, 0x60
+    .incbin "graphics/stage/sapphire/evo_e_arrow_1_0.4bpp"
 
 gSapphireEvo_EArrow_Top2:: @ 0x082DAAA0
-    .incbin "baserom.gba", 0x2DAAA0, 0x60
+    .incbin "graphics/stage/sapphire/evo_e_arrow_2_0.4bpp"
 
 gSapphireEvo_VArrow_Top0:: @ 0x082DAB00
-    .incbin "baserom.gba", 0x2DAB00, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_0_0.4bpp"
 
 gSapphireEvo_VArrow_Top1:: @ 0x082DAB60
-    .incbin "baserom.gba", 0x2DAB60, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_1_0.4bpp"
 
 gSapphireEvo_VArrow_Top2:: @ 0x082DABC0
-    .incbin "baserom.gba", 0x2DABC0, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_2_0.4bpp"
 
 gSapphireEvo_VArrow_Top3:: @ 0x082DAC20
-    .incbin "baserom.gba", 0x2DAC20, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_3_0.4bpp"
 
 gSapphireEvo_OArrow_Top0:: @ 0x082DAC80
-    .incbin "baserom.gba", 0x2DAC80, 0x60
+    .incbin "graphics/stage/sapphire/evo_o_arrow_0_0.4bpp"
 
 gSapphireEvo_OArrow_Top1:: @ 0x082DACE0
-    .incbin "baserom.gba", 0x2DACE0, 0x60
+    .incbin "graphics/stage/sapphire/evo_o_arrow_1_0.4bpp"
 
 gSapphireEvo_OArrow_Top2:: @ 0x082DAD40
-    .incbin "baserom.gba", 0x2DAD40, 0x60
+    .incbin "graphics/stage/sapphire/evo_o_arrow_2_0.4bpp"
 	.space 0x40
 
 gSapphireEvo_EArrow_Mid0:: @ 0x082DADE0
-    .incbin "baserom.gba", 0x2DADE0, 0x60
+    .incbin "graphics/stage/sapphire/evo_e_arrow_0_1.4bpp"
 
 gSapphireEvo_EArrow_Mid1:: @ 0x082DAE40
-    .incbin "baserom.gba", 0x2DAE40, 0x60
+    .incbin "graphics/stage/sapphire/evo_e_arrow_1_1.4bpp"
 
 gSapphireEvo_EArrow_Mid2:: @ 0x082DAEA0
-    .incbin "baserom.gba", 0x2DAEA0, 0x60
+    .incbin "graphics/stage/sapphire/evo_e_arrow_2_1.4bpp"
 
 gSapphireEvo_VArrow_Mid0:: @ 0x082DAF00
-    .incbin "baserom.gba", 0x2DAF00, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_0_1.4bpp"
 
 gSapphireEvo_VArrow_Mid1:: @ 0x082DAF60
-    .incbin "baserom.gba", 0x2DAF60, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_1_1.4bpp"
 
 gSapphireEvo_VArrow_Mid2:: @ 0x082DAFC0
-    .incbin "baserom.gba", 0x2DAFC0, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_2_1.4bpp"
 
 gSapphireEvo_VArrow_Mid3:: @ 0x082DB020
-    .incbin "baserom.gba", 0x2DB020, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_3_1.4bpp"
 
 gSapphireEvo_OArrow_Mid0:: @ 0x082DB080
-    .incbin "baserom.gba", 0x2DB080, 0x60
+    .incbin "graphics/stage/sapphire/evo_o_arrow_0_1.4bpp"
 
 gSapphireEvo_OArrow_Mid1:: @ 0x082DB0E0
-    .incbin "baserom.gba", 0x2DB0E0, 0x60
+    .incbin "graphics/stage/sapphire/evo_o_arrow_1_1.4bpp"
 
 gSapphireEvo_OArrow_Mid2:: @ 0x082DB140
-    .incbin "baserom.gba", 0x2DB140, 0x60
+    .incbin "graphics/stage/sapphire/evo_o_arrow_2_1.4bpp"
 	.space 0x40
 
 gSapphireEvo_EArrow_Bot0:: @ 0x082DB1E0
-    .incbin "baserom.gba", 0x2DB1E0, 0x60
+    .incbin "graphics/stage/sapphire/evo_e_arrow_0_2.4bpp"
 
 gSapphireEvo_EArrow_Bot1:: @ 0x082DB240
-    .incbin "baserom.gba", 0x2DB240, 0x60
+    .incbin "graphics/stage/sapphire/evo_e_arrow_1_2.4bpp"
 
 gSapphireEvo_EArrow_Bot2:: @ 0x082DB2A0
-    .incbin "baserom.gba", 0x2DB2A0, 0x60
+    .incbin "graphics/stage/sapphire/evo_e_arrow_2_2.4bpp"
 
 gSapphireEvo_VArrow_Bot0:: @ 0x082DB300
-    .incbin "baserom.gba", 0x2DB300, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_0_2.4bpp"
 
 gSapphireEvo_VArrow_Bot1:: @ 0x082DB360
-    .incbin "baserom.gba", 0x2DB360, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_1_2.4bpp"
 
 gSapphireEvo_VArrow_Bot2:: @ 0x082DB3C0
-    .incbin "baserom.gba", 0x2DB3C0, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_2_2.4bpp"
 
 gSapphireEvo_VArrow_Bot3:: @ 0x082DB420
-    .incbin "baserom.gba", 0x2DB420, 0x60
+    .incbin "graphics/stage/sapphire/evo_v_arrow_3_2.4bpp"
 	.space 0x20
 
 gSapphireEvo_OArrow_Bot0:: @ 0x082DB4A0
-    .incbin "baserom.gba", 0x2DB4A0, 0x60
+    .incbin "graphics/stage/sapphire/evo_o_arrow_0_2.4bpp"
+	.space 0x20
 
 gSapphireEvo_OArrow_Bot1:: @ 0x082DB500
-    .incbin "baserom.gba", 0x2DB500, 0x60
+    .incbin "graphics/stage/sapphire/evo_o_arrow_1_2.4bpp"
+	.space 0x20
 
 gSapphireEvo_OArrow_Bot2:: @ 0x082DB560
-    .incbin "baserom.gba", 0x2DB560, 0x60
-	.space 0x20
+    .incbin "graphics/stage/sapphire/evo_o_arrow_2_2.4bpp"
+	.space 0x40
 
 gUnknown_082DB5E0:: @ 0x082DB5E0
     .incbin "baserom.gba", 0x2DB5E0, 0x60
