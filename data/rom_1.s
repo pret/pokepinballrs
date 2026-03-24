@@ -1039,6 +1039,8 @@ gRubyEvo_OArrow_Bot2:: @ 0x0825DE70
 	.space 0x40
 
 gUnknown_0825DF10:: @ 0x0825DF10
+	@.incbin "graphics/stage/ruby/ruby_coin_arrows.4bpp"
+
     .incbin "baserom.gba", 0x25DF10, 0x60
 
 gUnknown_0825DF70:: @ 0x0825DF70
