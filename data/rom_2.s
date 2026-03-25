@@ -13734,7 +13734,32 @@ gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup12_Gfx
 	.4byte gMonPortraitsGroup13_Gfx
 
-.incbin "baserom.gba", 0x6BB770, 0x1A0 @ 0x6BB910 - 0x6BB770
+gUnknown_086BB770:: @ 0x086BB770
+    .incbin "baserom.gba", 0x6BB770, 0x64
+
+gUnknown_086BB7D4:: @ 0x086BB7D4
+    .incbin "baserom.gba", 0x6BB7D4, 0x14
+
+gUnknown_086BB7E8:: @ 0x086BB7E8
+    .incbin "baserom.gba", 0x6BB7E8, 0x6E
+
+gUnknown_086BB856:: @ 0x086BB856
+    .incbin "baserom.gba", 0x6BB856, 0x12
+
+gUnknown_086BB868:: @ 0x086BB868
+    .incbin "baserom.gba", 0x6BB868, 0xA
+
+gUnknown_086BB872:: @ 0x086BB872
+    .incbin "baserom.gba", 0x6BB872, 0x12
+
+gUnknown_086BB884:: @ 0x086BB884
+    .incbin "baserom.gba", 0x6BB884, 0x1C
+
+gUnknown_086BB8A0:: @ 0x086BB8A0
+    .incbin "baserom.gba", 0x6BB8A0, 0x5A
+
+gUnknown_086BB8FA:: @ 0x086BB8FA
+    .incbin "baserom.gba", 0x6BB8FA, 0x16
 
 gButtonInfoTable:: @ 0x086BB910
 	.2byte A_BUTTON, 0x4, 0x0, 0x8
@@ -13759,12 +13784,183 @@ gButtonAnimData:: @ 0x086BB9B4
 	.incbin "baserom.gba", 0x6BB9B4, 0x38
 
 gOptionsSpriteSets:: @ 0x086BB9EC
-	.incbin "baserom.gba", 0x6BB9EC, 0x80
+    .4byte gUnknown_086BB7D4
+    .4byte gUnknown_086BB770
+    .4byte gUnknown_086BB770
+    .4byte gUnknown_086BB770
+    .4byte gUnknown_086BB770
+    .4byte gUnknown_086BB770
+    .4byte gUnknown_086BB770
+    .4byte gUnknown_086BB872
+    .4byte gUnknown_086BB7E8
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB868
+    .4byte gUnknown_086BB884
+    .4byte gUnknown_086BB856
+    .4byte gUnknown_086BB7E8
+    .4byte gUnknown_086BB8A0
+    .4byte gUnknown_086BB8FA
 
 gSaveFileSignature:: @ 0x086BBA6C
 	.ascii "POKEPINAGB"
+    .space 0x2
 
-	.incbin "baserom.gba", 0x6BBA76, 0x564 @ 0x6BBA6C + 0xA, 0x6BBFD0 - 0x6BBA6C
+    .4byte gUnknown_086BBB04
+    .4byte gUnknown_086BBB0C
+    .4byte gUnknown_086BBB14
+    .4byte gUnknown_086BBB1C
+    .4byte gUnknown_086BBB24
+    .4byte gUnknown_086BBB2C
+    .4byte gUnknown_086BBB34
+    .4byte gUnknown_086BBB3C
+    .4byte gUnknown_086BBB44
+    .4byte gUnknown_086BBB4C
+    .4byte gUnknown_086BBB54
+    .4byte gUnknown_086BBB5C
+    .4byte gUnknown_086BBB64
+    .4byte gUnknown_086BBB6C
+    .4byte gUnknown_086BBB74
+    .4byte gUnknown_086BBB7C
+    .4byte gUnknown_086BBB84
+    .4byte gUnknown_086BBB8C
+    .4byte gUnknown_086BBB94
+    .4byte gUnknown_086BBB9C
+    .4byte gUnknown_086BBBA4
+    .4byte gUnknown_086BBBAC
+    .4byte gUnknown_086BBBB4
+    .4byte gUnknown_086BBBBC
+    .4byte gUnknown_086BBBCA
+    .4byte gUnknown_086BBBD2
+    .4byte gUnknown_086BBBE0
+    .4byte gUnknown_086BBBEE
+    .4byte gUnknown_086BBBF6
+    .4byte gUnknown_086BBC04
+    .4byte gUnknown_086BBC12
+    .4byte gUnknown_086BBC20
+    .4byte gUnknown_086BBC2E
+    .4byte gUnknown_086BBC3C
+    .4byte gUnknown_086BBC44
+
+gUnknown_086BBB04:: @ 0x086BBB04
+    .incbin "baserom.gba", 0x6BBB04, 0x8
+
+gUnknown_086BBB0C:: @ 0x086BBB0C
+    .incbin "baserom.gba", 0x6BBB0C, 0x8
+
+gUnknown_086BBB14:: @ 0x086BBB14
+    .incbin "baserom.gba", 0x6BBB14, 0x8
+
+gUnknown_086BBB1C:: @ 0x086BBB1C
+    .incbin "baserom.gba", 0x6BBB1C, 0x8
+
+gUnknown_086BBB24:: @ 0x086BBB24
+    .incbin "baserom.gba", 0x6BBB24, 0x8
+
+gUnknown_086BBB2C:: @ 0x086BBB2C
+    .incbin "baserom.gba", 0x6BBB2C, 0x8
+
+gUnknown_086BBB34:: @ 0x086BBB34
+    .incbin "baserom.gba", 0x6BBB34, 0x8
+
+gUnknown_086BBB3C:: @ 0x086BBB3C
+    .incbin "baserom.gba", 0x6BBB3C, 0x8
+
+gUnknown_086BBB44:: @ 0x086BBB44
+    .incbin "baserom.gba", 0x6BBB44, 0x8
+
+gUnknown_086BBB4C:: @ 0x086BBB4C
+    .incbin "baserom.gba", 0x6BBB4C, 0x8
+
+gUnknown_086BBB54:: @ 0x086BBB54
+    .incbin "baserom.gba", 0x6BBB54, 0x8
+
+gUnknown_086BBB5C:: @ 0x086BBB5C
+    .incbin "baserom.gba", 0x6BBB5C, 0x8
+
+gUnknown_086BBB64:: @ 0x086BBB64
+    .incbin "baserom.gba", 0x6BBB64, 0x8
+
+gUnknown_086BBB6C:: @ 0x086BBB6C
+    .incbin "baserom.gba", 0x6BBB6C, 0x8
+
+gUnknown_086BBB74:: @ 0x086BBB74
+    .incbin "baserom.gba", 0x6BBB74, 0x8
+
+gUnknown_086BBB7C:: @ 0x086BBB7C
+    .incbin "baserom.gba", 0x6BBB7C, 0x8
+
+gUnknown_086BBB84:: @ 0x086BBB84
+    .incbin "baserom.gba", 0x6BBB84, 0x8
+
+gUnknown_086BBB8C:: @ 0x086BBB8C
+    .incbin "baserom.gba", 0x6BBB8C, 0x8
+
+gUnknown_086BBB94:: @ 0x086BBB94
+    .incbin "baserom.gba", 0x6BBB94, 0x8
+
+gUnknown_086BBB9C:: @ 0x086BBB9C
+    .incbin "baserom.gba", 0x6BBB9C, 0x8
+
+gUnknown_086BBBA4:: @ 0x086BBBA4
+    .incbin "baserom.gba", 0x6BBBA4, 0x8
+
+gUnknown_086BBBAC:: @ 0x086BBBAC
+    .incbin "baserom.gba", 0x6BBBAC, 0x8
+
+gUnknown_086BBBB4:: @ 0x086BBBB4
+    .incbin "baserom.gba", 0x6BBBB4, 0x8
+
+gUnknown_086BBBBC:: @ 0x086BBBBC
+    .incbin "baserom.gba", 0x6BBBBC, 0xE
+
+gUnknown_086BBBCA:: @ 0x086BBBCA
+    .incbin "baserom.gba", 0x6BBBCA, 0x8
+
+gUnknown_086BBBD2:: @ 0x086BBBD2
+    .incbin "baserom.gba", 0x6BBBD2, 0xE
+
+gUnknown_086BBBE0:: @ 0x086BBBE0
+    .incbin "baserom.gba", 0x6BBBE0, 0xE
+
+gUnknown_086BBBEE:: @ 0x086BBBEE
+    .incbin "baserom.gba", 0x6BBBEE, 0x8
+
+gUnknown_086BBBF6:: @ 0x086BBBF6
+    .incbin "baserom.gba", 0x6BBBF6, 0xE
+
+gUnknown_086BBC04:: @ 0x086BBC04
+    .incbin "baserom.gba", 0x6BBC04, 0xE
+
+gUnknown_086BBC12:: @ 0x086BBC12
+    .incbin "baserom.gba", 0x6BBC12, 0xE
+
+gUnknown_086BBC20:: @ 0x086BBC20
+    .incbin "baserom.gba", 0x6BBC20, 0xE
+
+gUnknown_086BBC2E:: @ 0x086BBC2E
+    .incbin "baserom.gba", 0x6BBC2E, 0xE
+
+gUnknown_086BBC3C:: @ 0x086BBC3C
+    .incbin "baserom.gba", 0x6BBC3C, 0x8
+
+gUnknown_086BBC44:: @ 0x086BBC44
+    .incbin "baserom.gba", 0x6BBC44, 0x38C @ 0x6BBFD0 - 0x6BBC44
 
 @ rom end 0x6BBFD0
 
