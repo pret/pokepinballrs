@@ -848,10 +848,82 @@ gKyogreWaterAnimPaletteFrames:: @ 0x081B0DE4
 	.incbin "baserom.gba", 0x1B0DE4, 0x200
 
 gPokeballCaptureOamFrames:: @ 0x081B0FE4
-	.incbin "baserom.gba", 0x1B0FE4, 0x26C0
+	.incbin "baserom.gba", 0x1B0FE4, 0x5A0
+
+gUnknown_081B1584:: @ 0x081B1584
+    .incbin "baserom.gba", 0x1B1584, 0x200
+
+gUnknown_081B1784:: @ 0x081B1784
+    .incbin "baserom.gba", 0x1B1784, 0x200
+
+gUnknown_081B1984:: @ 0x081B1984
+    .incbin "baserom.gba", 0x1B1984, 0x200
+
+gUnknown_081B1B84:: @ 0x081B1B84
+    .incbin "baserom.gba", 0x1B1B84, 0x200
+
+gUnknown_081B1D84:: @ 0x081B1D84
+    .incbin "baserom.gba", 0x1B1D84, 0x200
+
+gUnknown_081B1F84:: @ 0x081B1F84
+    .incbin "baserom.gba", 0x1B1F84, 0x200
+
+gUnknown_081B2184:: @ 0x081B2184
+    .incbin "baserom.gba", 0x1B2184, 0x200
+
+gUnknown_081B2384:: @ 0x081B2384
+    .incbin "baserom.gba", 0x1B2384, 0x200
+
+gUnknown_081B2584:: @ 0x081B2584
+    .incbin "baserom.gba", 0x1B2584, 0x200
+
+gUnknown_081B2784:: @ 0x081B2784
+    .incbin "baserom.gba", 0x1B2784, 0x200
+
+gUnknown_081B2984:: @ 0x081B2984
+    .incbin "baserom.gba", 0x1B2984, 0x200
+
+gUnknown_081B2B84:: @ 0x081B2B84
+    .incbin "baserom.gba", 0x1B2B84, 0x200
+
+gUnknown_081B2D84:: @ 0x081B2D84
+    .incbin "baserom.gba", 0x1B2D84, 0x200
+
+gUnknown_081B2F84:: @ 0x081B2F84
+    .incbin "baserom.gba", 0x1B2F84, 0x200
+
+gUnknown_081B3184:: @ 0x081B3184
+    .incbin "baserom.gba", 0x1B3184, 0x200
+
+gUnknown_081B3384:: @ 0x081B3384
+    .incbin "baserom.gba", 0x1B3384, 0x200
+
+gUnknown_081B3584:: @ 0x081B3584
+    .incbin "baserom.gba", 0x1B3584, 0x120
 
 gBonusStageObjPal:: @ 0x081B36A4
-	.incbin "baserom.gba", 0x1B36A4, 0xEE0
+	.incbin "baserom.gba", 0x1B36A4, 0xE0
+
+gUnknown_081B3784:: @ 0x081B3784
+    .incbin "baserom.gba", 0x1B3784, 0x200
+
+gUnknown_081B3984:: @ 0x081B3984
+    .incbin "baserom.gba", 0x1B3984, 0x200
+
+gUnknown_081B3B84:: @ 0x081B3B84
+    .incbin "baserom.gba", 0x1B3B84, 0x200
+
+gUnknown_081B3D84:: @ 0x081B3D84
+    .incbin "baserom.gba", 0x1B3D84, 0x200
+
+gUnknown_081B3F84:: @ 0x081B3F84
+    .incbin "baserom.gba", 0x1B3F84, 0x200
+
+gUnknown_081B4184:: @ 0x081B4184
+    .incbin "baserom.gba", 0x1B4184, 0x200
+
+gUnknown_081B4384:: @ 0x081B4384
+    .incbin "baserom.gba", 0x1B4384, 0x200
 
 gEvoNameDisplay_Pals:: @ 0x081B4584
 	.incbin "baserom.gba", 0x1B4584, 0x20
@@ -2673,7 +2745,16 @@ gDusclopsAnimPalettes:: @ 0x082EE0E0
 	.incbin "baserom.gba", 0x2EE0E0, 0x3E0
 
 gDusclopsBoardBG0Tilemap:: @ 0x082EE4C0
-	.incbin "baserom.gba", 0x2EE4C0, 0x13240
+	.incbin "baserom.gba", 0x2EE4C0, 0x800
+
+gUnknown_082EECC0:: @ 0x082EECC0
+    .incbin "baserom.gba", 0x2EECC0, 0x2000
+
+gUnknown_082F0CC0:: @ 0x082F0CC0
+    .incbin "baserom.gba", 0x2F0CC0, 0xB180
+
+gUnknown_082FBE40:: @ 0x082FBE40
+    .incbin "baserom.gba", 0x2FBE40, 0x58C0
 
 gDusclopsBoardBG1Tilemap:: @ 0x08301700
 	.incbin "baserom.gba", 0x301700, 0x800
@@ -2694,7 +2775,16 @@ gKecleonBoardPalette:: @ 0x0830CBD4
 	.incbin "baserom.gba", 0x30CBD4, 0x200
 
 gKecleonBoardBG1Tilemap:: @ 0x0830CDD4
-	.incbin "baserom.gba", 0x30CDD4, 0x1ABC0
+	.incbin "baserom.gba", 0x30CDD4, 0x800
+
+gUnknown_0830D5D4:: @ 0x0830D5D4
+    .incbin "baserom.gba", 0x30D5D4, 0x2000
+
+gUnknown_0830F5D4:: @ 0x0830F5D4
+    .incbin "baserom.gba", 0x30F5D4, 0x10280
+
+gUnknown_0831F854:: @ 0x0831F854
+    .incbin "baserom.gba", 0x31F854, 0x8140
 
 gKecleonBerryOverlayTilemap:: @ 0x08327994
 	.incbin "baserom.gba", 0x327994, 0x800
@@ -2724,7 +2814,16 @@ gKyogreBoardPalette:: @ 0x08332E04
 	.incbin "baserom.gba", 0x332E04, 0x200
 
 gKyogreWaterBackgroundTilemap:: @ 0x08333004
-	.incbin "baserom.gba", 0x333004, 0xA840
+	.incbin "baserom.gba", 0x333004, 0x800
+
+gUnknown_08333804:: @ 0x08333804
+    .incbin "baserom.gba", 0x333804, 0x2000
+
+gUnknown_08335804:: @ 0x08335804
+    .incbin "baserom.gba", 0x335804, 0x5580
+
+gUnknown_0833AD84:: @ 0x0833AD84
+    .incbin "baserom.gba", 0x33AD84, 0x2AC0
 
 gKyogreBoardBG1Tilemap:: @ 0x0833D844
 	.incbin "baserom.gba", 0x33D844, 0x800
@@ -2784,7 +2883,16 @@ gRayquazaBoardPalette:: @ 0x08363EC8
 	.incbin "baserom.gba", 0x363EC8, 0x200
 
 gRayquazaBoardBG0Tilemap:: @ 0x083640C8
-	.incbin "baserom.gba", 0x3640C8, 0xA740
+	.incbin "baserom.gba", 0x3640C8, 0x1000
+
+gUnknown_083650C8:: @ 0x083650C8
+    .incbin "baserom.gba", 0x3650C8, 0x2000
+
+gUnknown_083670C8:: @ 0x083670C8
+    .incbin "baserom.gba", 0x3670C8, 0x4F80
+
+gUnknown_0836C048:: @ 0x0836C048
+    .incbin "baserom.gba", 0x36C048, 0x27C0
 
 gRayquazaBoardBGScrollTilemap:: @ 0x0836E808
 	.incbin "baserom.gba", 0x36E808, 0x1000
@@ -2802,7 +2910,16 @@ gSphealBoardPalette:: @ 0x0837A2E8
 	.incbin "baserom.gba", 0x37A2E8, 0x200
 
 gSphealWaterBackgroundTilemap:: @ 0x0837A4E8
-	.incbin "baserom.gba", 0x37A4E8, 0x13B40
+	.incbin "baserom.gba", 0x37A4E8, 0x800
+
+gUnknown_0837ACE8:: @ 0x0837ACE8
+    .incbin "baserom.gba", 0x37ACE8, 0x2000
+
+gUnknown_0837CCE8:: @ 0x0837CCE8
+    .incbin "baserom.gba", 0x37CCE8, 0xB780
+
+gUnknown_08388468:: @ 0x08388468
+    .incbin "baserom.gba", 0x388468, 0x5BC0
 
 gSphealBoardBG1Tilemap:: @ 0x0838E028
 	.incbin "baserom.gba", 0x38E028, 0x800
