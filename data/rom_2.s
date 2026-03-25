@@ -4746,11 +4746,8 @@ gSphealFlightPathData:: @ 0x086AFAC0
     .2byte 51
     .space 0x2
 
-gSphealFramesetToSpriteMap:: @ 0x086AFAE0
-	.incbin "baserom.gba", 0x6AFAE0, 0x2
-
-gSphealAnimTimingTable:: @ 0x086AFAE2
-	.incbin "baserom.gba", 0x6AFAE2, 0x4A
+gSphealFramesetData:: @ 0x086AFAE0
+	.incbin "baserom.gba", 0x6AFAE0, 0x4C
 
 gSphealFlyingEnemyFramesetTable:: @ 0x086AFB2C
 	.incbin "baserom.gba", 0x6AFB2C, 0xEA

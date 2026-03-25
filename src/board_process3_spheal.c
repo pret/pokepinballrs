@@ -28,8 +28,7 @@ extern const u8 gSphealResultsScreenGfx[];
 extern const u8 gWhiscash_Gfx[][0x480];
 extern const u8 gPelipper_Gfx[][0x480];
 extern const s16 gWaterTilePaletteCycle[];
-extern const u16 gSphealFramesetToSpriteMap[][2];
-extern const u16 gSphealAnimTimingTable[][2];
+extern const u16 gSphealFramesetData[][2];
 extern const u16 gSphealFlyingEnemyFramesetTable[][3];
 extern const u16 gSphealFlyingEnemyOamData[126][4][3];
 
@@ -310,7 +309,7 @@ void UpdateSealeoEntityLogic(void)
                 }
                 else
                 {
-                    if (gSphealAnimTimingTable[gCurrentPinballGame->minionFramesetIx[i]][0] > gCurrentPinballGame->minionStateTimer[i])
+                    if (gSphealFramesetData[gCurrentPinballGame->minionFramesetIx[i]][1] > gCurrentPinballGame->minionStateTimer[i])
                     {
                         gCurrentPinballGame->minionStateTimer[i]++;
                     }
@@ -348,7 +347,7 @@ void UpdateSealeoEntityLogic(void)
                 }
                 else
                 {
-                    if (gSphealAnimTimingTable[gCurrentPinballGame->minionFramesetIx[i]][0] > gCurrentPinballGame->minionStateTimer[i])
+                    if (gSphealFramesetData[gCurrentPinballGame->minionFramesetIx[i]][1] > gCurrentPinballGame->minionStateTimer[i])
                     {
                         gCurrentPinballGame->minionStateTimer[i]++;
                     }
@@ -376,7 +375,7 @@ void UpdateSealeoEntityLogic(void)
         if (gCurrentPinballGame->minionHitFlashTimer[0] > 0)
             var0 = 0;
         else
-            var0 = gSphealFramesetToSpriteMap[gCurrentPinballGame->minionFramesetIx[0]][0];
+            var0 = gSphealFramesetData[gCurrentPinballGame->minionFramesetIx[0]][0];
 
         DmaCopy16(3, gSphealMinionBodySprites[var0], (void *)0x060114A0, 0x600);
         oamSimple = &group->oam[0];
@@ -392,7 +391,7 @@ void UpdateSealeoEntityLogic(void)
         if (gCurrentPinballGame->minionHitFlashTimer[1] > 0)
             var0 = 0;
         else
-            var0 = gSphealFramesetToSpriteMap[gCurrentPinballGame->minionFramesetIx[1]][0];
+            var0 = gSphealFramesetData[gCurrentPinballGame->minionFramesetIx[1]][0];
 
         DmaCopy16(3, gSphealMinionBodySprites[var0], (void *)0x06010CA0, 0x600);
         oamSimple = &group->oam[0];
