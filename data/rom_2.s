@@ -4746,10 +4746,10 @@ gSphealFlightPathData:: @ 0x086AFAC0
     .2byte 51
     .space 0x2
 
-gSphealFramesetData:: @ 0x086AFAE0
+gSealeoFramesetData:: @ 0x086AFAE0
 	.incbin "baserom.gba", 0x6AFAE0, 0x4C
 
-gSphealFlyingEnemyFramesetTable:: @ 0x086AFB2C
+gSphealFramesetData:: @ 0x086AFB2C
 	.incbin "baserom.gba", 0x6AFB2C, 0xEA
 
 gSphealWhiscashAnimFrameset:: @ 0x086AFC16
