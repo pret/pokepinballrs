@@ -524,6 +524,7 @@ void Options_State3_51C60(void)
 
 // TODO
 NAKED
+//sub_51C9C
 void UpdateOptionsSpritePositions(void)
 {
     asm_unified("\n\

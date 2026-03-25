@@ -1092,6 +1092,7 @@ void RenderHighScoreSprites(void)
 }
 #else
 NAKED
+//sub_E464
 void RenderHighScoreSprites(void)
 {
     asm_unified("\n\
