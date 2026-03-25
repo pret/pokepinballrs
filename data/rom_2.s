@@ -4372,7 +4372,62 @@ gKecleonBerryFlashAnimIndices:: @ 0x086AEA68
 	.incbin "baserom.gba", 0x6AEA68, 0x8
 
 gKecleonSpriteYSortData:: @ 0x086AEA70
-	.incbin "baserom.gba", 0x6AEA70, 0x70
+    @ 14 sets: {Pointer, 2 u8 vals, 0x2 spacer}
+    .4byte gUnknown_086BA394
+    .byte 131,0
+    .space 0x2
+
+    .4byte gUnknown_086BA382
+    .byte 124,1
+    .space 0x2
+
+    .4byte gUnknown_086BA35E
+    .byte 123,2
+    .space 0x2
+
+    .4byte gUnknown_086BA370
+    .byte 116,3
+    .space 0x2
+
+    .4byte gUnknown_086BA34C
+    .byte 115,4
+    .space 0x2
+
+    .4byte gUnknown_086BA33A
+    .byte 112,5
+    .space 0x2
+
+    .4byte gUnknown_086BA29C
+    .byte 109,6
+    .space 0x2
+
+    .4byte gUnknown_086BA2BE
+    .byte 76,7
+    .space 0x2
+
+    .4byte gUnknown_086BA328
+    .byte 40,8
+    .space 0x2
+
+    .4byte gUnknown_086BA304
+    .byte 40,9
+    .space 0x2
+
+    .4byte gUnknown_086BA316
+    .byte 30,10
+    .space 0x2
+
+    .4byte gUnknown_086BA2F2
+    .byte 30,11
+    .space 0x2
+
+    .4byte gUnknown_086BA180
+    .byte 0,12
+    .space 0x2
+
+    .4byte gUnknown_086BA276
+    .byte 0,13
+    .space 0x2
 
 gKyogreOceanPaletteProgression:: @ 0x086AEAE0
     .4byte gUnknown_08340958
