@@ -916,10 +916,46 @@ gPortraitAnimPalettes:: @ 0x081C02E4
 	.incbin "baserom.gba", 0x1C02E4, 0x600
 
 gRubyBoardBG0Tilemap:: @ 0x081C08E4
-	.incbin "baserom.gba", 0x1C08E4, 0x6DB40
+	.incbin "baserom.gba", 0x1C08E4, 0x1000
+
+gUnknown_081C18E4:: @ 0x081C18E4
+    .incbin "baserom.gba", 0x1C18E4, 0x2000
+
+gUnknown_081C38E4:: @ 0x081C38E4
+    .incbin "baserom.gba", 0x1C38E4, 0x18780
+
+gUnknown_081DC064:: @ 0x081DC064
+    .incbin "baserom.gba", 0x1DC064, 0xC3C0
+
+gUnknown_081E8424:: @ 0x081E8424
+    .incbin "baserom.gba", 0x1E8424, 0x2000
+
+gUnknown_081EA424:: @ 0x081EA424
+    .incbin "baserom.gba", 0x1EA424, 0x18380
+
+gUnknown_082027A4:: @ 0x082027A4
+    .incbin "baserom.gba", 0x2027A4, 0xC1C0
+
+gUnknown_0820E964:: @ 0x0820E964
+    .incbin "baserom.gba", 0x20E964, 0x2000
+
+gUnknown_08210964:: @ 0x08210964
+    .incbin "baserom.gba", 0x210964, 0x13C80
+
+gUnknown_082245E4:: @ 0x082245E4
+    .incbin "baserom.gba", 0x2245E4, 0x9E40
 
 gRubyBoardBG1Tilemap:: @ 0x0822E424
-	.incbin "baserom.gba", 0x22E424, 0x1DDC0
+	.incbin "baserom.gba", 0x22E424, 0x1000
+
+gUnknown_0822F424:: @ 0x0822F424
+    .incbin "baserom.gba", 0x22F424, 0x2000
+
+gUnknown_08231424:: @ 0x08231424
+    .incbin "baserom.gba", 0x231424, 0x11E80
+
+gUnknown_082432A4:: @ 0x082432A4
+    .incbin "baserom.gba", 0x2432A4, 0x8F40
 
 gRubyBoardCompressedTiles1:: @ 0x0824C1E4
 	.incbin "baserom.gba", 0x24C1E4, 0x1B7C
@@ -1656,10 +1692,46 @@ gSapphireBoardPalette:: @ 0x0826EC10
 	.incbin "baserom.gba", 0x26EC10, 0x200
 
 gSapphireBoardBG0Tilemap:: @ 0x0826EE10
-	.incbin "baserom.gba", 0x26EE10, 0x3F8C0
+	.incbin "baserom.gba", 0x26EE10, 0x1000
+
+gUnknown_0826FE10:: @ 0x0826FE10
+    .incbin "baserom.gba", 0x26FE10, 0x2000
+
+gUnknown_08271E10:: @ 0x08271E10
+    .incbin "baserom.gba", 0x271E10, 0x14C00
+
+gUnknown_08286A10:: @ 0x08286A10
+    .incbin "baserom.gba", 0x286A10, 0xA600
+
+gUnknown_08291010:: @ 0x08291010
+    .incbin "baserom.gba", 0x291010, 0x2000
+
+gUnknown_08293010:: @ 0x08293010
+    .incbin "baserom.gba", 0x293010, 0x12480
+
+gUnknown_082A5490:: @ 0x082A5490
+    .incbin "baserom.gba", 0x2A5490, 0x9240
 
 gSapphireBoardBG1Tilemap:: @ 0x082AE6D0
-	.incbin "baserom.gba", 0x2AE6D0, 0x24E00
+	.incbin "baserom.gba", 0x2AE6D0, 0x1000
+
+gUnknown_082AF6D0:: @ 0x082AF6D0
+    .incbin "baserom.gba", 0x2AF6D0, 0x2000
+
+gUnknown_082B16D0:: @ 0x082B16D0
+    .incbin "baserom.gba", 0x2B16D0, 0xD100
+
+gUnknown_082BE7D0:: @ 0x082BE7D0
+    .incbin "baserom.gba", 0x2BE7D0, 0x6880
+
+gUnknown_082C5050:: @ 0x082C5050
+    .incbin "baserom.gba", 0x2C5050, 0x2000
+
+gUnknown_082C7050:: @ 0x082C7050
+    .incbin "baserom.gba", 0x2C7050, 0x8300
+
+gUnknown_082CF350:: @ 0x082CF350
+    .incbin "baserom.gba", 0x2CF350, 0x4180
 
 gSapphireBoardCompressedTiles1:: @ 0x082D34D0
 	.incbin "baserom.gba", 0x2D34D0, 0x1D6C

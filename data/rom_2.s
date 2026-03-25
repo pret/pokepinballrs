@@ -4473,7 +4473,27 @@ gSphealWhiscashAnimFrameset:: @ 0x086AFC16
 	.incbin "baserom.gba", 0x6AFC16, 0x9A
 
 gBoardCollisionDataSets:: @ 0x086AFCB0
-	.incbin "baserom.gba", 0x6AFCB0, 0xC0
+    @ Note: only usage seems to use 1 pointer (tileData), then skip 3 entries
+    @ then 1 pointer (angleData), skip 3, 1 pointer (typeData) then skip 3
+    @ Place the data gets loaded into to seems to have an array of 4 of each of the pointer types
+    @ This possibly suggests that this is an array of 4 pointers for each of those data pieces here
+    @ ... but that only the first entry from those listed here for each object are used.
+
+    .4byte gUnknown_081C18E4, gUnknown_0820E964, gUnknown_0822F424, 0x00000000
+    .4byte gUnknown_081C38E4, gUnknown_08210964, gUnknown_08231424, 0x00000000
+    .4byte gUnknown_081DC064, gUnknown_082245E4, gUnknown_082432A4, 0x00000000
+
+    .4byte gUnknown_081E8424, gUnknown_0820E964, gUnknown_0822F424, 0x00000000
+    .4byte gUnknown_081EA424, gUnknown_08210964, gUnknown_08231424, 0x00000000
+    .4byte gUnknown_082027A4, gUnknown_082245E4, gUnknown_082432A4, 0x00000000
+
+    .4byte gUnknown_0826FE10, gUnknown_08291010, gUnknown_082AF6D0, gUnknown_082C5050
+    .4byte gUnknown_08271E10, gUnknown_08293010, gUnknown_082B16D0, gUnknown_082C7050
+    .4byte gUnknown_08286A10, gUnknown_082A5490, gUnknown_082BE7D0, gUnknown_082CF350
+
+    .4byte gUnknown_0826FE10, gUnknown_08291010, gUnknown_082AF6D0, gUnknown_082C5050
+    .4byte gUnknown_08271E10, gUnknown_08293010, gUnknown_082B16D0, gUnknown_082C7050
+    .4byte gUnknown_08286A10, gUnknown_082A5490, gUnknown_082BE7D0, gUnknown_082CF350
 
 gFieldBoardConfigs:: @ 0x086AFD70
 	.incbin "baserom.gba", 0x6AFD70, 0x2A0
@@ -4527,7 +4547,7 @@ gFieldInitFuncs:: @ 0x086B085C
 	.4byte MainGameFrameUpdate
 	.4byte BonusFieldFrameUpdate
 
-gUnknown_086B0864:: @ 0x086B0664
+gUnknown_086B0864:: @ 0x086B0864
 	.incbin "baserom.gba", 0x6B0864, 0x20
 
 gTimerWarningPalette_Fast:: @ 0x086B0884
