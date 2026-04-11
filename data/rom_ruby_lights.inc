@@ -333,18 +333,19 @@ gRubyHoleLightE_On:: @ 0x0825FA70
 
 
 
-@ Catch light arrows
+@ Catch light arrows : 3 balls / CATCH! / EVO
 
-gRubyCatchArrow_0825FAB0:: @ 0x0825FAB0
+gRubyCatchLight_0825FAB0:: @ 0x0825FAB0
     .incbin "baserom.gba", 0x25FAB0, 0x40
 
-gRubyCatchArrow_0825FAF0:: @ 0x0825FAF0
-    .incbin "baserom.gba", 0x25FAF0, 0x3C0
+gRubyCatchLight_0825FAF0:: @ 0x0825FAF0
+    .incbin "baserom.gba", 0x25FAF0, 0x40
+    .space 0x380
 
-gRubyCatchArrow_0825FEB0:: @ 0x0825FEB0
+gRubyCatchLight_0825FEB0:: @ 0x0825FEB0
     .incbin "baserom.gba", 0x25FEB0, 0x40
 
-gRubyCatchArrow_0825FEF0:: @ 0x0825FEF0
+gRubyCatchLight_0825FEF0:: @ 0x0825FEF0
     .incbin "baserom.gba", 0x25FEF0, 0x40
 
 gRubyTrapTile_0825FF30:: @ 0x0825FF30
@@ -356,40 +357,40 @@ gRubyTrapTile_0825FF70:: @ 0x0825FF70
 gRubyTrapTile_0825FFB0:: @ 0x0825FFB0
     .incbin "baserom.gba", 0x25FFB0, 0x40
 
-gRubyCatchArrow_0825FFF0:: @ 0x0825FFF0
+gRubyCatchLight_0825FFF0:: @ 0x0825FFF0
     .incbin "baserom.gba", 0x25FFF0, 0x40
 
-gRubyCatchArrow_08260030:: @ 0x08260030
+gRubyCatchLight_08260030:: @ 0x08260030
     .incbin "baserom.gba", 0x260030, 0x40
 
-gRubyCatchArrow_08260070:: @ 0x08260070
+gRubyCatchLight_08260070:: @ 0x08260070
     .incbin "baserom.gba", 0x260070, 0x40
 
-gRubyCatchArrow_082600B0:: @ 0x082600B0
+gRubyCatchLight_082600B0:: @ 0x082600B0
     .incbin "baserom.gba", 0x2600B0, 0x40
 
-gRubyCatchArrow_082600F0:: @ 0x082600F0
+gRubyCatchLight_082600F0:: @ 0x082600F0
     .incbin "baserom.gba", 0x2600F0, 0x40
 
-gRubyCatchArrow_08260130:: @ 0x08260130
+gRubyCatchLight_08260130:: @ 0x08260130
     .incbin "baserom.gba", 0x260130, 0x40
 
-gRubyCatchArrow_08260170:: @ 0x08260170
+gRubyCatchLight_08260170:: @ 0x08260170
     .incbin "baserom.gba", 0x260170, 0x40
 
-gRubyCatchArrow_082601B0:: @ 0x082601B0
+gRubyCatchLight_082601B0:: @ 0x082601B0
     .incbin "baserom.gba", 0x2601B0, 0x40
 
-gRubyCatchArrow_082601F0:: @ 0x082601F0
+gRubyCatchLight_082601F0:: @ 0x082601F0
     .incbin "baserom.gba", 0x2601F0, 0x40
 
-gRubyCatchArrow_08260230:: @ 0x08260230
+gRubyCatchLight_08260230:: @ 0x08260230
     .incbin "baserom.gba", 0x260230, 0x40
 
-gRubyCatchArrow_08260270:: @ 0x08260270
+gRubyCatchLight_08260270:: @ 0x08260270
     .incbin "baserom.gba", 0x260270, 0x40
 
-gRubyCatchArrow_082602B0:: @ 0x082602B0
+gRubyCatchLight_082602B0:: @ 0x082602B0
     .incbin "baserom.gba", 0x2602B0, 0x80
 
 gRubyTrapTile_08260330:: @ 0x08260330
@@ -401,40 +402,40 @@ gRubyTrapTile_08260370:: @ 0x08260370
 gRubyTrapTile_082603B0:: @ 0x082603B0
     .incbin "baserom.gba", 0x2603B0, 0x40
 
-gRubyCatchArrow_082603F0:: @ 0x082603F0
+gRubyCatchLight_082603F0:: @ 0x082603F0
     .incbin "baserom.gba", 0x2603F0, 0x40
 
-gRubyCatchArrow_08260430:: @ 0x08260430
+gRubyCatchLight_08260430:: @ 0x08260430
     .incbin "baserom.gba", 0x260430, 0x40
 
-gRubyCatchArrow_08260470:: @ 0x08260470
+gRubyCatchLight_08260470:: @ 0x08260470
     .incbin "baserom.gba", 0x260470, 0x40
 
-gRubyCatchArrow_082604B0:: @ 0x082604B0
+gRubyCatchLight_082604B0:: @ 0x082604B0
     .incbin "baserom.gba", 0x2604B0, 0x40
 
-gRubyCatchArrow_082604F0:: @ 0x082604F0
+gRubyCatchLight_082604F0:: @ 0x082604F0
     .incbin "baserom.gba", 0x2604F0, 0x40
 
-gRubyCatchArrow_08260530:: @ 0x08260530
+gRubyCatchLight_08260530:: @ 0x08260530
     .incbin "baserom.gba", 0x260530, 0x40
 
-gRubyCatchArrow_08260570:: @ 0x08260570
+gRubyCatchLight_08260570:: @ 0x08260570
     .incbin "baserom.gba", 0x260570, 0x40
 
-gRubyCatchArrow_082605B0:: @ 0x082605B0
+gRubyCatchLight_082605B0:: @ 0x082605B0
     .incbin "baserom.gba", 0x2605B0, 0x40
 
-gRubyCatchArrow_082605F0:: @ 0x082605F0
+gRubyCatchLight_082605F0:: @ 0x082605F0
     .incbin "baserom.gba", 0x2605F0, 0x40
 
-gRubyCatchArrow_08260630:: @ 0x08260630
+gRubyCatchLight_08260630:: @ 0x08260630
     .incbin "baserom.gba", 0x260630, 0x40
 
-gRubyCatchArrow_08260670:: @ 0x08260670
+gRubyCatchLight_08260670:: @ 0x08260670
     .incbin "baserom.gba", 0x260670, 0x40
 
-gRubyCatchArrow_082606B0:: @ 0x082606B0
+gRubyCatchLight_082606B0:: @ 0x082606B0
     .incbin "baserom.gba", 0x2606B0, 0xC0
 
 

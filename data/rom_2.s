@@ -4762,6 +4762,12 @@ gBoardCollisionDataSets:: @ 0x086AFCB0
     @ This possibly suggests that this is an array of 4 pointers for each of those data pieces here
     @ ... but that only the first entry from those listed here for each object are used.
 
+    @ 2 sets each for Ruby/Sapphire board.
+
+    @ TileData, ???, ???, ???
+    @ AngleData, ???, ???, ???
+    @ TypeData, ???, ???, ???
+
     .4byte gUnknown_081C18E4, gUnknown_0820E964, gUnknown_0822F424, 0x00000000
     .4byte gUnknown_081C38E4, gUnknown_08210964, gUnknown_08231424, 0x00000000
     .4byte gUnknown_081DC064, gUnknown_082245E4, gUnknown_082432A4, 0x00000000
@@ -4955,28 +4961,28 @@ gRubyTrapIndicatorTilePointers:: @ 0x086B09C8
 gRubyCatchLightTilePointers:: @ 0x086B09E8
     @ 3 sets of 7 sets of 2
     @ seventh set has destination address
-    .4byte gRubyCatchArrow_0825FAB0, gRubyCatchArrow_0825FEB0
-    .4byte gRubyCatchArrow_0825FAF0, gRubyCatchArrow_0825FEF0
-    .4byte gRubyCatchArrow_0825FFF0, gRubyCatchArrow_082603F0
-    .4byte gRubyCatchArrow_08260030, gRubyCatchArrow_08260430
-    .4byte gRubyCatchArrow_08260170, gRubyCatchArrow_08260570
-    .4byte gRubyCatchArrow_082601B0, gRubyCatchArrow_082605B0
+    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
+    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
+    .4byte gRubyCatchLight_0825FFF0, gRubyCatchLight_082603F0
+    .4byte gRubyCatchLight_08260030, gRubyCatchLight_08260430
+    .4byte gRubyCatchLight_08260170, gRubyCatchLight_08260570
+    .4byte gRubyCatchLight_082601B0, gRubyCatchLight_082605B0
     .4byte 0x0600A180, 0x0600A580
 
-    .4byte gRubyCatchArrow_0825FAB0, gRubyCatchArrow_0825FEB0
-    .4byte gRubyCatchArrow_0825FAF0, gRubyCatchArrow_0825FEF0
-    .4byte gRubyCatchArrow_08260070, gRubyCatchArrow_08260470
-    .4byte gRubyCatchArrow_082600B0, gRubyCatchArrow_082604B0
-    .4byte gRubyCatchArrow_082601F0, gRubyCatchArrow_082605F0
-    .4byte gRubyCatchArrow_08260230, gRubyCatchArrow_08260630
+    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
+    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
+    .4byte gRubyCatchLight_08260070, gRubyCatchLight_08260470
+    .4byte gRubyCatchLight_082600B0, gRubyCatchLight_082604B0
+    .4byte gRubyCatchLight_082601F0, gRubyCatchLight_082605F0
+    .4byte gRubyCatchLight_08260230, gRubyCatchLight_08260630
     .4byte 0x0600A1C0, 0x0600A5C0
 
-    .4byte gRubyCatchArrow_0825FAB0, gRubyCatchArrow_0825FEB0
-    .4byte gRubyCatchArrow_0825FAF0, gRubyCatchArrow_0825FEF0
-    .4byte gRubyCatchArrow_082600F0, gRubyCatchArrow_082604F0
-    .4byte gRubyCatchArrow_08260130, gRubyCatchArrow_08260530
-    .4byte gRubyCatchArrow_08260270, gRubyCatchArrow_08260670
-    .4byte gRubyCatchArrow_082602B0, gRubyCatchArrow_082606B0
+    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
+    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
+    .4byte gRubyCatchLight_082600F0, gRubyCatchLight_082604F0
+    .4byte gRubyCatchLight_08260130, gRubyCatchLight_08260530
+    .4byte gRubyCatchLight_08260270, gRubyCatchLight_08260670
+    .4byte gRubyCatchLight_082602B0, gRubyCatchLight_082606B0
     .4byte 0x0600A200, 0x0600A600
 
 gRubySaverTilePointers:: @ 0x086B0A90
@@ -5107,180 +5113,181 @@ gBallShadowTileIndices:: @ 0x086B0E20
 gSlingshotHitFrameIndices:: @ 0x086B0E60
     .2byte 0,1,1,1,1,0
 
-gBumperHitCounterTilePtrs:: @ 0x086B0E6C
+gSapphirePSquareIndicator:: @ 0x086B0E6C
     @ 6 sets of 2
     @ sixth set has destination address
-    .4byte gUnknown_082DEEE0, gUnknown_082DF2E0
-    .4byte gUnknown_082DEF20, gUnknown_082DF320
-    .4byte gUnknown_082DEF60, gUnknown_082DF360
-    .4byte gUnknown_082DEFA0, gUnknown_082DF3A0
-    .4byte gUnknown_082DEFE0, gUnknown_082DF3E0
+    .4byte gSapphirePIndicator_082DEEE0, gSapphirePIndicator_082DF2E0
+    .4byte gSapphirePIndicator_082DEF20, gSapphirePIndicator_082DF320
+    .4byte gSapphirePIndicator_082DEF60, gSapphirePIndicator_082DF360
+    .4byte gSapphirePIndicator_082DEFA0, gSapphirePIndicator_082DF3A0
+    .4byte gSapphirePIndicator_082DEFE0, gSapphirePIndicator_082DF3E0
     .4byte 0x0600A640, 0x0600AA40
 
 gSapphireProgressDigitTilePtrs:: @ 0x086B0E9C
 	@ 11 sets of 4
     @ eleventh set has destination address
-    .4byte gUnknown_082DCE00, gUnknown_082DD200, gUnknown_082DCF40, gUnknown_082DD340
-    .4byte gUnknown_082DCE20, gUnknown_082DD220, gUnknown_082DCF60, gUnknown_082DD360
-    .4byte gUnknown_082DCE40, gUnknown_082DD240, gUnknown_082DCF80, gUnknown_082DD380
-    .4byte gUnknown_082DCE60, gUnknown_082DD260, gUnknown_082DCFA0, gUnknown_082DD3A0
-    .4byte gUnknown_082DCE80, gUnknown_082DD280, gUnknown_082DCFC0, gUnknown_082DD3C0
-    .4byte gUnknown_082DCEA0, gUnknown_082DD2A0, gUnknown_082DCFE0, gUnknown_082DD3E0
-    .4byte gUnknown_082DCEC0, gUnknown_082DD2C0, gUnknown_082DD000, gUnknown_082DD400
-    .4byte gUnknown_082DCEE0, gUnknown_082DD2E0, gUnknown_082DD020, gUnknown_082DD420
-    .4byte gUnknown_082DCF00, gUnknown_082DD300, gUnknown_082DD040, gUnknown_082DD440
-    .4byte gUnknown_082DCF20, gUnknown_082DD320, gUnknown_082DD060, gUnknown_082DD460
+    .4byte gSapphireBonusArrow_00_Top, gSapphireBonusArrow_00_Bot, gSapphireBonusArrow_0_Top, gSapphireBonusArrow_0_Bot
+    .4byte gSapphireBonusArrow_10_Top, gSapphireBonusArrow_10_Bot, gSapphireBonusArrow_1_Top, gSapphireBonusArrow_1_Bot
+    .4byte gSapphireBonusArrow_20_Top, gSapphireBonusArrow_20_Bot, gSapphireBonusArrow_2_Top, gSapphireBonusArrow_2_Bot
+    .4byte gSapphireBonusArrow_30_Top, gSapphireBonusArrow_30_Bot, gSapphireBonusArrow_3_Top, gSapphireBonusArrow_3_Bot
+    .4byte gSapphireBonusArrow_40_Top, gSapphireBonusArrow_40_Bot, gSapphireBonusArrow_4_Top, gSapphireBonusArrow_4_Bot
+    .4byte gSapphireBonusArrow_50_Top, gSapphireBonusArrow_50_Bot, gSapphireBonusArrow_5_Top, gSapphireBonusArrow_5_Bot
+    .4byte gSapphireBonusArrow_60_Top, gSapphireBonusArrow_60_Bot, gSapphireBonusArrow_6_Top, gSapphireBonusArrow_6_Bot
+    .4byte gSapphireBonusArrow_70_Top, gSapphireBonusArrow_70_Bot, gSapphireBonusArrow_7_Top, gSapphireBonusArrow_7_Bot
+    .4byte gSapphireBonusArrow_80_Top, gSapphireBonusArrow_80_Bot, gSapphireBonusArrow_8_Top, gSapphireBonusArrow_8_Bot
+    .4byte gSapphireBonusArrow_90_Top, gSapphireBonusArrow_90_Bot, gSapphireBonusArrow_9_Top, gSapphireBonusArrow_9_Bot
     .4byte 0x0600B220, 0x0600B620, 0x0600B240, 0x0600B640
 
 gRotatingBackgroundTilePtrs:: @ 0x086B0F4C
     @ 5 sets of 4
     @ fifth set has destination address
-    .4byte gUnknown_082E3EC0, gUnknown_082E42C0, gUnknown_082E46C0, gUnknown_082E4AC0
-    .4byte gUnknown_082E3F40, gUnknown_082E4340, gUnknown_082E4740, gUnknown_082E4B40
-    .4byte gUnknown_082E3FC0, gUnknown_082E43C0, gUnknown_082E47C0, gUnknown_082E4BC0
-    .4byte gUnknown_082E3F40, gUnknown_082E4340, gUnknown_082E4740, gUnknown_082E4B40
+    .4byte gWailmerWater_082E3EC0, gWailmerWater_082E42C0, gWailmerWater_082E46C0, gWailmerWater_082E4AC0
+    .4byte gWailmerWater_082E3F40, gWailmerWater_082E4340, gWailmerWater_082E4740, gWailmerWater_082E4B40
+    .4byte gWailmerWater_082E3FC0, gWailmerWater_082E43C0, gWailmerWater_082E47C0, gWailmerWater_082E4BC0
+    .4byte gWailmerWater_082E3F40, gWailmerWater_082E4340, gWailmerWater_082E4740, gWailmerWater_082E4B40
     .4byte 0x0600AEA0, 0x0600B2A0, 0x0600B6A0, 0x0600BAA0
 
 gHatchMachineDrawSegment:: @ 0x086B0F9C
     @ 10 sets of 3 sets of 2
     @ third set has destination address
-    .4byte gUnknown_082DE1E0, gUnknown_082DE5E0
-    .4byte gUnknown_082DE620, gUnknown_082DEA20
+    .4byte gHatchMachine_082DE1E0, gHatchMachine_082DE5E0
+    .4byte gHatchMachine_082DE620, gHatchMachine_082DEA20
     .4byte 0x0600DD40, 0x0600DD80
 
-    .4byte gUnknown_082DE660, gUnknown_082DEA60
-    .4byte gUnknown_082DE6A0, gUnknown_082DEAA0
+    .4byte gHatchMachine_082DE660, gHatchMachine_082DEA60
+    .4byte gHatchMachine_082DE6A0, gHatchMachine_082DEAA0
     .4byte 0x0600DDC0, 0x0600DE00
 
-    .4byte gUnknown_082DE6E0, gUnknown_082DEAE0
-    .4byte gUnknown_082DE720, gUnknown_082DEB20
+    .4byte gHatchMachine_082DE6E0, gHatchMachine_082DEAE0
+    .4byte gHatchMachine_082DE720, gHatchMachine_082DEB20
     .4byte 0x0600D9C0, 0x0600DAC0
 
-    .4byte gUnknown_082DEB60, gUnknown_082DEB60
-    .4byte gUnknown_082DEBA0, gUnknown_082DEBA0
+    .4byte gHatchMachine_082DEB60, gHatchMachine_082DEB60
+    .4byte gHatchMachine_082DEBA0, gHatchMachine_082DEBA0
     .4byte 0x0600DE40, 0x0600DE40
 
-    .4byte gUnknown_082DE7E0, gUnknown_082DEBE0
-    .4byte gUnknown_082DE820, gUnknown_082DEC20
+    .4byte gHatchMachine_082DE7E0, gHatchMachine_082DEBE0
+    .4byte gHatchMachine_082DE820, gHatchMachine_082DEC20
     .4byte 0x0600D900, 0x0600DA00
 
-    .4byte gUnknown_082DE860, gUnknown_082DEC60
-    .4byte gUnknown_082DE8A0, gUnknown_082DECA0
+    .4byte gHatchMachine_082DE860, gHatchMachine_082DEC60
+    .4byte gHatchMachine_082DE8A0, gHatchMachine_082DECA0
     .4byte 0x0600DE80, 0x0600DEC0
 
-    .4byte gUnknown_082DE8E0, gUnknown_082DECE0
-    .4byte gUnknown_082DE920, gUnknown_082DED20
+    .4byte gHatchMachine_082DE8E0, gHatchMachine_082DECE0
+    .4byte gHatchMachine_082DE920, gHatchMachine_082DED20
     .4byte 0x0600DF00, 0x0600DF40
 
-    .4byte gUnknown_082DE960, gUnknown_082DED60
-    .4byte gUnknown_082DE9A0, gUnknown_082DEDA0
+    .4byte gHatchMachine_082DE960, gHatchMachine_082DED60
+    .4byte gHatchMachine_082DE9A0, gHatchMachine_082DEDA0
     .4byte 0x0600DF80, 0x0600DFC0
 
-    .4byte gUnknown_082DE9E0, gUnknown_082DEDE0
-    .4byte gUnknown_082DEE20, gUnknown_082DF220
+    .4byte gHatchMachine_082DE9E0, gHatchMachine_082DEDE0
+    .4byte gHatchMachine_082DEE20, gHatchMachine_082DF220
     .4byte 0x0600E000, 0x0600E040
 
-    .4byte gUnknown_082DEE60, gUnknown_082DF260
-    .4byte gUnknown_082DEEA0, gUnknown_082DF2A0
+    .4byte gHatchMachine_082DEE60, gHatchMachine_082DF260
+    .4byte gHatchMachine_082DEEA0, gHatchMachine_082DF2A0
     .4byte 0x0600E080, 0x0600E0C0
 
 gSapphireSlingshotTilePtrs:: @ 0x086B108C
     @ 2 sets (sides) of 3 sets of 5
     @ third set has destination address
-    .4byte gUnknown_082E2AA0, gUnknown_082E2EA0, gUnknown_082E32A0, gUnknown_082E36A0, gUnknown_082E3AC0
-    .4byte gUnknown_082E2B00, gUnknown_082E2F00, gUnknown_082E3300, gUnknown_082E3700, gUnknown_082E3B20
+    .4byte gSapphireSlingshot_082E2AA0, gSapphireSlingshot_082E2EA0, gSapphireSlingshot_082E32A0, gSapphireSlingshot_082E36A0, gSapphireSlingshot_082E3AC0
+    .4byte gSapphireSlingshot_082E2B00, gSapphireSlingshot_082E2F00, gSapphireSlingshot_082E3300, gSapphireSlingshot_082E3700, gSapphireSlingshot_082E3B20
     .4byte 0x0600E100, 0x0600E120, 0x0600E160, 0x0600E1C0, 0x0600E220
 
-    .4byte gUnknown_082E2BA0, gUnknown_082E2F80, gUnknown_082E3360, gUnknown_082E3760, gUnknown_082E3B60
-    .4byte gUnknown_082E2C00, gUnknown_082E2FE0, gUnknown_082E33C0, gUnknown_082E37C0, gUnknown_082E3BC0
+    .4byte gSapphireSlingshot_082E2BA0, gSapphireSlingshot_082E2F80, gSapphireSlingshot_082E3360, gSapphireSlingshot_082E3760, gSapphireSlingshot_082E3B60
+    .4byte gSapphireSlingshot_082E2C00, gSapphireSlingshot_082E2FE0, gSapphireSlingshot_082E33C0, gSapphireSlingshot_082E37C0, gSapphireSlingshot_082E3BC0
     .4byte 0x0600E260, 0x0600E280, 0x0600E2C0, 0x0600E320, 0x0600E380
 
 gSapphireTrapIndicatorTilePtrs:: @ 0x086B1104
     @ 4 sets of 2
     @ fourth set has destination address
-    .4byte gUnknown_082DDE20, gUnknown_082DE220
-    .4byte gUnknown_082DDE60, gUnknown_082DE260
-    .4byte gUnknown_082DDEA0, gUnknown_082DE2A0
+    .4byte gSapphireCenterTrap_082DDE20, gSapphireCenterTrap_082DE220
+    .4byte gSapphireCenterTrap_082DDE60, gSapphireCenterTrap_082DE260
+    .4byte gSapphireCenterTrap_082DDEA0, gSapphireCenterTrap_082DE2A0
     .4byte 0x060081C0, 0x060085C0
 
 gSapphireCatchLightTilePtrs:: @ 0x086B1124
     @ 3 sets of 7 sets of 2
     @ seventh set has destination address
-    .4byte gUnknown_082DD9A0, gUnknown_082DDDA0
-    .4byte gUnknown_082DD9E0, gUnknown_082DDDE0
-    .4byte gUnknown_082DDEE0, gUnknown_082DE2E0
-    .4byte gUnknown_082DDF20, gUnknown_082DE320
-    .4byte gUnknown_082DE060, gUnknown_082DE460
-    .4byte gUnknown_082DE0A0, gUnknown_082DE4A0
+    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
+    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
+    .4byte gSapphireCatchLight_082DDEE0, gSapphireCatchLight_082DE2E0
+    .4byte gSapphireCatchLight_082DDF20, gSapphireCatchLight_082DE320
+    .4byte gSapphireCatchLight_082DE060, gSapphireCatchLight_082DE460
+    .4byte gSapphireCatchLight_082DE0A0, gSapphireCatchLight_082DE4A0
     .4byte 0x0600A180, 0x0600A580
 
-    .4byte gUnknown_082DD9A0, gUnknown_082DDDA0
-    .4byte gUnknown_082DD9E0, gUnknown_082DDDE0
-    .4byte gUnknown_082DDF60, gUnknown_082DE360
-    .4byte gUnknown_082DDFA0, gUnknown_082DE3A0
-    .4byte gUnknown_082DE0E0, gUnknown_082DE4E0
-    .4byte gUnknown_082DE120, gUnknown_082DE520
+    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
+    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
+    .4byte gSapphireCatchLight_082DDF60, gSapphireCatchLight_082DE360
+    .4byte gSapphireCatchLight_082DDFA0, gSapphireCatchLight_082DE3A0
+    .4byte gSapphireCatchLight_082DE0E0, gSapphireCatchLight_082DE4E0
+    .4byte gSapphireCatchLight_082DE120, gSapphireCatchLight_082DE520
     .4byte 0x0600A1C0, 0x0600A5C0
 
-    .4byte gUnknown_082DD9A0, gUnknown_082DDDA0
-    .4byte gUnknown_082DD9E0, gUnknown_082DDDE0
-    .4byte gUnknown_082DDFE0, gUnknown_082DE3E0
-    .4byte gUnknown_082DE020, gUnknown_082DE420
-    .4byte gUnknown_082DE160, gUnknown_082DE560
-    .4byte gUnknown_082DE1A0, gUnknown_082DE5A0
+    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
+    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
+    .4byte gSapphireCatchLight_082DDFE0, gSapphireCatchLight_082DE3E0
+    .4byte gSapphireCatchLight_082DE020, gSapphireCatchLight_082DE420
+    .4byte gSapphireCatchLight_082DE160, gSapphireCatchLight_082DE560
+    .4byte gSapphireCatchLight_082DE1A0, gSapphireCatchLight_082DE5A0
     .4byte 0x0600A200, 0x0600A600
 
-gSapphireModeTimerDisplayTilePtrs:: @ 0x086B11CC
+gSapphireSaverDisplayTilePtrs:: @ 0x086B11CC
     @ 3 sets of 4
     @ third set has destination address
-    .4byte gUnknown_082DF660, gUnknown_082DFA60, gUnknown_082DFE80, gUnknown_082E02E0
-    .4byte gUnknown_082DF760, gUnknown_082DFB60, gUnknown_082DFF80, gUnknown_082E03E0
+    .4byte gSapphireSaver_082DF660, gSapphireSaver_082DFA60, gSapphireSaver_082DFE80, gSapphireSaver_082E02E0
+    .4byte gSapphireSaver_082DF760, gSapphireSaver_082DFB60, gSapphireSaver_082DFF80, gSapphireSaver_082E03E0
     .4byte 0x0600AD80, 0x0600B180, 0x0600B5A0, 0x0600BA00
 
-gSapphireCatchArrowPaletteTilePtrs:: @ 0x086B11FC
+gSapphireHatchArrowTilePtrs:: @ 0x086B11FC
     @ 3 sets of 4
     @ third set has destination address
-    .4byte gUnknown_082E06A0, gUnknown_082E0A60, gUnknown_082E0E60, gUnknown_082E1260
-    .4byte gUnknown_082E0720, gUnknown_082E0AE0, gUnknown_082E0EE0, gUnknown_082E12E0
+    .4byte gSapphireHatchArrow_082E06A0, gSapphireHatchArrow_082E0A60, gSapphireHatchArrow_082E0E60, gSapphireHatchArrow_082E1260
+    .4byte gSapphireHatchArrow_082E0720, gSapphireHatchArrow_082E0AE0, gSapphireHatchArrow_082E0EE0, gSapphireHatchArrow_082E12E0
     .4byte 0x0600CEA0, 0x0600D260, 0x0600D660, 0x06008260
 
-gSapphireEvoArrowPaletteTilePtrs:: @ 0x086B122C
+gSapphireBumperArrowTilePtrs:: @ 0x086B122C
     @ 3 sets of 4
     @ third set has destination address
-    .4byte gUnknown_082E0860, gUnknown_082E0C60, gUnknown_082E1060, gUnknown_082E1460
-    .4byte gUnknown_082E08E0, gUnknown_082E0CE0, gUnknown_082E10E0, gUnknown_082E14E0
+    @ note: first row data has blank tiles, and not actually referenced.
+    .4byte gSapphireBumperArrow_082E0860, gSapphireBumperArrow_082E0C60, gSapphireBumperArrow_082E1060, gSapphireBumperArrow_082E1460
+    .4byte gSapphireBumperArrow_082E08E0, gSapphireBumperArrow_082E0CE0, gSapphireBumperArrow_082E10E0, gSapphireBumperArrow_082E14E0
     .4byte 0x0600A9A0, 0x0600ADA0, 0x0600B1A0, 0x0600B5A0
 
-gSapphireRouletteSlotTilePtrs:: @ 0x086B125C
+gSapphireShopArrowTilePtrs:: @ 0x086B125C
     @ 5 sets of 4
     @ fifth set has destination address
-    .4byte gUnknown_082E1680, gUnknown_082E1A80, gUnknown_082E1E80, gUnknown_082E2280
-    .4byte gUnknown_082E1700, gUnknown_082E1B00, gUnknown_082E1F00, gUnknown_082E2300
-    .4byte gUnknown_082E1780, gUnknown_082E1B80, gUnknown_082E1F80, gUnknown_082E2380
-    .4byte gUnknown_082E1800, gUnknown_082E1C00, gUnknown_082E2000, gUnknown_082E2400
+    .4byte gSapphireMartArrow_082E1680, gSapphireMartArrow_082E1A80, gSapphireMartArrow_082E1E80, gSapphireMartArrow_082E2280
+    .4byte gSapphireMartArrow_082E1700, gSapphireMartArrow_082E1B00, gSapphireMartArrow_082E1F00, gSapphireMartArrow_082E2300
+    .4byte gSapphireEvoArrow_082E1780, gSapphireEvoArrow_082E1B80, gSapphireEvoArrow_082E1F80, gSapphireEvoArrow_082E2380
+    .4byte gSapphireEvoArrow_082E1800, gSapphireEvoArrow_082E1C00, gSapphireEvoArrow_082E2000, gSapphireEvoArrow_082E2400
     .4byte 0x0600BD20, 0x0600C120, 0x0600C520, 0x0600C920
 
 gSapphireBallPowerUpLightTilePtrs:: @ 0x086B12AC
     @ 3 sets of 3
     @ third value has destination address
-    .4byte gUnknown_082DD620, gUnknown_082DD660, 0x06008540
-    .4byte gUnknown_082DD6A0, gUnknown_082DD6E0, 0x060085A0
-    .4byte gUnknown_082DD720, gUnknown_082DD760, 0x060085E0
+    .4byte gSapphireBallPowerUpLight0off, gSapphireBallPowerUpLight0on, 0x06008540
+    .4byte gSapphireBallPowerUpLight1off, gSapphireBallPowerUpLight1on, 0x060085A0
+    .4byte gSapphireBallPowerUpLight2off, gSapphireBallPowerUpLight2on, 0x060085E0
 
-gSapphireCatchFlashTilePtrs:: @ 0x086B12D0
+gSapphireCatchArrowTilePtrs:: @ 0x086B12D0
     @ 3 sets of 4
     @ third set has destination address
-    .4byte gUnknown_082E0780, gUnknown_082E0B60, gUnknown_082E0F60, gUnknown_082E1360
-    .4byte gUnknown_082E0800, gUnknown_082E0BE0, gUnknown_082E0FE0, gUnknown_082E13E0
+    .4byte gSapphireCatchArrow_082E0780, gSapphireCatchArrow_082E0B60, gSapphireCatchArrow_082E0F60, gSapphireCatchArrow_082E1360
+    .4byte gSapphireCatchArrow_082E0800, gSapphireCatchArrow_082E0BE0, gSapphireCatchArrow_082E0FE0, gSapphireCatchArrow_082E13E0
     .4byte 0x0600C260, 0x0600C640, 0x0600CA40, 0x0600CE40
 
 gSapphireHoleIndicatorTilePtrs:: @ 0x086B1300
     @ 4 sets of 4
     @ third value has the destination; fouth value blank.
-	.4byte gUnknown_082DD7A0, gUnknown_082DD7E0, 0x0600A460, 0
-    .4byte gUnknown_082DD820, gUnknown_082DD860, 0x0600A4C0, 0
-    .4byte gUnknown_082DD8A0, gUnknown_082DD8E0, 0x0600A6C0, 0
-    .4byte gUnknown_082DD920, gUnknown_082DD960, 0x0600A720, 0
+	.4byte gSapphireHoleLightH_Off, gSapphireHoleLightH_On, 0x0600A460, 0
+    .4byte gSapphireHoleLightO_Off, gSapphireHoleLightO_On, 0x0600A4C0, 0
+    .4byte gSapphireHoleLightL_Off, gSapphireHoleLightL_On, 0x0600A6C0, 0
+    .4byte gSapphireHoleLightE_Off, gSapphireHoleLightE_On, 0x0600A720, 0
 
 gSapphireEvoArrowTilePtrs:: @ 0x086B1340
     @ 3 sets of 5 sets of 3
@@ -5306,43 +5313,43 @@ gSapphireEvoArrowTilePtrs:: @ 0x086B1340
 gSapphireCoinRewardTilePtrs:: @ 0x086B13F4
     @ 3 sets of 5 sets of 3
     @ fourth set has destination address; fifth has spacers
-    .4byte gUnknown_082DB5E0, gUnknown_082DB9E0, gUnknown_082DBDE0
-    .4byte gUnknown_082DB640, gUnknown_082DBA40, gUnknown_082DBE40
-    .4byte gUnknown_082DB6A0, gUnknown_082DBAA0, gUnknown_082DBEA0
+    .4byte gSapphireCoinArrow_082DB5E0, gSapphireCoinArrow_082DB9E0, gSapphireCoinArrow_082DBDE0
+    .4byte gSapphireCoinArrow_082DB640, gSapphireCoinArrow_082DBA40, gSapphireCoinArrow_082DBE40
+    .4byte gSapphireCoinArrow_082DB6A0, gSapphireCoinArrow_082DBAA0, gSapphireCoinArrow_082DBEA0
     .4byte 0x0600C4A0, 0x0600C8A0, 0x0600CCA0
     .4byte 0,0,0
 
-    .4byte gUnknown_082DB720, gUnknown_082DBB20, gUnknown_082DBF20
-    .4byte gUnknown_082DB780, gUnknown_082DBB80, gUnknown_082DBF80
-    .4byte gUnknown_082DB7E0, gUnknown_082DBBE0, gUnknown_082DBFE0
+    .4byte gSapphireCoinArrow_082DB720, gSapphireCoinArrow_082DBB20, gSapphireCoinArrow_082DBF20
+    .4byte gSapphireCoinArrow_082DB780, gSapphireCoinArrow_082DBB80, gSapphireCoinArrow_082DBF80
+    .4byte gSapphireCoinArrow_082DB7E0, gSapphireCoinArrow_082DBBE0, gSapphireCoinArrow_082DBFE0
     .4byte 0x0600CCE0, 0x0600D0E0, 0x0600D4C0
     .4byte 0,0,0
 
-    .4byte gUnknown_082DB820, gUnknown_082DBC20, gUnknown_082DC020
-    .4byte gUnknown_082DB880, gUnknown_082DBC80, gUnknown_082DC080
-    .4byte gUnknown_082DB8E0, gUnknown_082DBCE0, gUnknown_082DC0E0
+    .4byte gSapphireCoinArrow_082DB820, gSapphireCoinArrow_082DBC20, gSapphireCoinArrow_082DC020
+    .4byte gSapphireCoinArrow_082DB880, gSapphireCoinArrow_082DBC80, gSapphireCoinArrow_082DC080
+    .4byte gSapphireCoinArrow_082DB8E0, gSapphireCoinArrow_082DBCE0, gSapphireCoinArrow_082DC0E0
     .4byte 0x0600D0E0, 0x0600D4E0, 0x060080E0
     .4byte 0,0,0
 
-gSapphireCatchArrowTilePtrs:: @ 0x086B14A8
+gSapphireGetArrowTilePtrs:: @ 0x086B14A8
 	@ 3 sets of 5 sets of 3
     @ fifth set has destination address
-    .4byte gUnknown_082DC1E0, gUnknown_082DC5E0, gUnknown_082DC9E0
-    .4byte gUnknown_082DC1E0, gUnknown_082DC5E0, gUnknown_082DC9E0
-    .4byte gUnknown_082DC240, gUnknown_082DC640, gUnknown_082DCA40
-    .4byte gUnknown_082DC2A0, gUnknown_082DC6A0, gUnknown_082DCAA0
+    .4byte gSapphireGetArrow_082DC1E0, gSapphireGetArrow_082DC5E0, gSapphireGetArrow_082DC9E0
+    .4byte gSapphireGetArrow_082DC1E0, gSapphireGetArrow_082DC5E0, gSapphireGetArrow_082DC9E0
+    .4byte gSapphireGetArrow_082DC240, gSapphireGetArrow_082DC640, gSapphireGetArrow_082DCA40
+    .4byte gSapphireGetArrow_082DC2A0, gSapphireGetArrow_082DC6A0, gSapphireGetArrow_082DCAA0
     .4byte 0x0600D2E0, 0x0600D6E0, 0x060082E0
 
-    .4byte gUnknown_082DC320, gUnknown_082DC720, gUnknown_082DCB00
-    .4byte gUnknown_082DC380, gUnknown_082DC780, gUnknown_082DCB60
-    .4byte gUnknown_082DC3E0, gUnknown_082DC7E0, gUnknown_082DCBC0
-    .4byte gUnknown_082DC440, gUnknown_082DC840, gUnknown_082DCC20
+    .4byte gSapphireGetArrow_082DC320, gSapphireGetArrow_082DC720, gSapphireGetArrow_082DCB00
+    .4byte gSapphireGetArrow_082DC380, gSapphireGetArrow_082DC780, gSapphireGetArrow_082DCB60
+    .4byte gSapphireGetArrow_082DC3E0, gSapphireGetArrow_082DC7E0, gSapphireGetArrow_082DCBC0
+    .4byte gSapphireGetArrow_082DC440, gSapphireGetArrow_082DC840, gSapphireGetArrow_082DCC20
     .4byte 0x060082E0, 0x060086E0, 0x06008AC0
 
-    .4byte gUnknown_082DC4A0, gUnknown_082DC880, gUnknown_082DCC80
-    .4byte gUnknown_082DC4A0, gUnknown_082DC880, gUnknown_082DCC80
-    .4byte gUnknown_082DC500, gUnknown_082DC8E0, gUnknown_082DCCE0
-    .4byte gUnknown_082DC560, gUnknown_082DC940, gUnknown_082DCD40
+    .4byte gSapphireGetArrow_082DC4A0, gSapphireGetArrow_082DC880, gSapphireGetArrow_082DCC80
+    .4byte gSapphireGetArrow_082DC4A0, gSapphireGetArrow_082DC880, gSapphireGetArrow_082DCC80
+    .4byte gSapphireGetArrow_082DC500, gSapphireGetArrow_082DC8E0, gSapphireGetArrow_082DCCE0
+    .4byte gSapphireGetArrow_082DC560, gSapphireGetArrow_082DC940, gSapphireGetArrow_082DCD40
     .4byte 0x06008AC0, 0x06008EA0, 0x060092A0
 
 gFieldSpriteSets:: @ 0x086B155C
