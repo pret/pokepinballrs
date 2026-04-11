@@ -688,7 +688,7 @@ extern void AnimateSapphireCatchArrowPaletteFlash(void);
 extern void AnimateSapphireRouletteSlot(void);
 extern void DrawSapphireBallPowerUpLights(void);
 extern void AnimateHatchMachineSpinner(void);
-extern void AnimatePelliperBumper(void);
+extern void AnimatePelipperBumper(void);
 extern void RubyBoardProcess_0A_50848(void);
 //extern ? RubyBoardProcess_0B_50918();
 extern void SapphireBoardProcess_0A_50AD4(void);

@@ -1054,96 +1054,96 @@ gWhiscashCollisionMap:: @ 0x08259C10
 @ E/V/O arrows. Second digit is '0 Top/1 Mid/2 Bottom',
 @ First digit is 'variant'.
 gRubyEvo_EArrow_Top0:: @ 0x0825D310
-    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_0_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_0.4bpp"
 
 gRubyEvo_EArrow_Top1:: @ 0x0825D370
-    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_1_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_0.4bpp"
 
 gRubyEvo_EArrow_Top2:: @ 0x0825D3D0
-    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_2_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_0.4bpp"
 
 gRubyEvo_VArrow_Top0:: @ 0x0825D430
-    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_0_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_0.4bpp"
 
 gRubyEvo_VArrow_Top1:: @ 0x0825D490
-    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_1_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_0.4bpp"
 
 gRubyEvo_VArrow_Top2:: @ 0x0825D4F0
-    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_2_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_0.4bpp"
 
 gRubyEvo_VArrow_Top3:: @ 0x0825D550
-    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_3_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_0.4bpp"
 
 gRubyEvo_OArrow_Top0:: @ 0x0825D5B0
-    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_0_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_0.4bpp"
 
 gRubyEvo_OArrow_Top1:: @ 0x0825D610
-    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_1_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_0.4bpp"
 
 gRubyEvo_OArrow_Top2:: @ 0x0825D670
-    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_2_0.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_0.4bpp"
 	.space 0x40
 
 gRubyEvo_EArrow_Mid0:: @ 0x0825D710
-    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_0_1.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_1.4bpp"
 
 gRubyEvo_EArrow_Mid1:: @ 0x0825D770
-    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_1_1.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_1.4bpp"
 
 gRubyEvo_EArrow_Mid2:: @ 0x0825D7D0
-    .incbin "graphics/stage/ruby/ruby_evo_e_arrow_2_1.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_1.4bpp"
 
 gRubyEvo_VArrow_Mid0:: @ 0x0825D830
-    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_0_1.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_1.4bpp"
 
 gRubyEvo_VArrow_Mid1:: @ 0x0825D890
-	.incbin "graphics/stage/ruby/ruby_evo_v_arrow_1_1.4bpp"
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_1.4bpp"
 
 gRubyEvo_VArrow_Mid2:: @ 0x0825D8F0
-	.incbin "graphics/stage/ruby/ruby_evo_v_arrow_2_1.4bpp"
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_1.4bpp"
 
 gRubyEvo_VArrow_Mid3:: @ 0x0825D950
-	.incbin "graphics/stage/ruby/ruby_evo_v_arrow_3_1.4bpp"
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_1.4bpp"
 
 gRubyEvo_OArrow_Mid0:: @ 0x0825D9B0
-    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_0_1.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_1.4bpp"
 
 gRubyEvo_OArrow_Mid1:: @ 0x0825DA10
-    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_1_1.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_1.4bpp"
 
 gRubyEvo_OArrow_Mid2:: @ 0x0825DA70
-    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_2_1.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_1.4bpp"
 	.space 0x40
 
 gRubyEvo_EArrow_Bot0:: @ 0x0825DB10
-	.incbin "graphics/stage/ruby/ruby_evo_e_arrow_0_2.4bpp"
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_2.4bpp"
 
 gRubyEvo_EArrow_Bot1:: @ 0x0825DB70
-	.incbin "graphics/stage/ruby/ruby_evo_e_arrow_1_2.4bpp"
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_2.4bpp"
 
 gRubyEvo_EArrow_Bot2:: @ 0x0825DBD0
-	.incbin "graphics/stage/ruby/ruby_evo_e_arrow_2_2.4bpp"
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_2.4bpp"
 
 gRubyEvo_VArrow_Bot0:: @ 0x0825DC30
-    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_0_2.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_2.4bpp"
 
 gRubyEvo_VArrow_Bot1:: @ 0x0825DC90
-    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_1_2.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_2.4bpp"
 
 gRubyEvo_VArrow_Bot2:: @ 0x0825DCF0
-    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_2_2.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_2.4bpp"
 
 gRubyEvo_VArrow_Bot3:: @ 0x0825DD50
-    .incbin "graphics/stage/ruby/ruby_evo_v_arrow_3_2.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_2.4bpp"
 
 gRubyEvo_OArrow_Bot0:: @ 0x0825DDB0
-    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_0_2.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_2.4bpp"
 
 gRubyEvo_OArrow_Bot1:: @ 0x0825DE10
-    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_1_2.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_2.4bpp"
 
 gRubyEvo_OArrow_Bot2:: @ 0x0825DE70
-    .incbin "graphics/stage/ruby/ruby_evo_o_arrow_2_2.4bpp"
+    .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_2.4bpp"
 	.space 0x40
 
 gUnknown_0825DF10:: @ 0x0825DF10
@@ -1329,46 +1329,46 @@ gUnknown_0825F670:: @ 0x0825F670
     .incbin "baserom.gba", 0x25F670, 0xC0
 
 gRubyBallPowerUpLight0off:: @ 0x0825F730
-	.incbin "graphics/stage/ruby/ruby_ball_power_up_light_0_off.4bpp"
+	.incbin "graphics/stage/ruby/ball_power_up_lights/ruby_ball_power_up_light_0_off.4bpp"
 
 gRubyBallPowerUpLight0on:: @ 0x0825F770
-    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_0_on.4bpp"
+    .incbin "graphics/stage/ruby/ball_power_up_lights/ruby_ball_power_up_light_0_on.4bpp"
 
 gRubyBallPowerUpLight1off:: @ 0x0825F7B0
-    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_1_off.4bpp"
+    .incbin "graphics/stage/ruby/ball_power_up_lights/ruby_ball_power_up_light_1_off.4bpp"
 
 gRubyBallPowerUpLight1on:: @ 0x0825F7F0
-    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_1_on.4bpp"
+    .incbin "graphics/stage/ruby/ball_power_up_lights/ruby_ball_power_up_light_1_on.4bpp"
 
 gRubyBallPowerUpLight2off:: @ 0x0825F830
-    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_2_off.4bpp"
+    .incbin "graphics/stage/ruby/ball_power_up_lights/ruby_ball_power_up_light_2_off.4bpp"
 
 gRubyBallPowerUpLight2on:: @ 0x0825F870
-    .incbin "graphics/stage/ruby/ruby_ball_power_up_light_2_on.4bpp"
+    .incbin "graphics/stage/ruby/ball_power_up_lights/ruby_ball_power_up_light_2_on.4bpp"
 
 gRubyHoleLightH_Off:: @ 0x0825F8B0
-	.incbin "graphics/stage/ruby/ruby_hole_light_h_off.4bpp"
+	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_h_off.4bpp"
 
 gRubyHoleLightH_On:: @ 0x0825F8F0
-	.incbin "graphics/stage/ruby/ruby_hole_light_h_on.4bpp"
+	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_h_on.4bpp"
 
 gRubyHoleLightO_Off:: @ 0x0825F930
-	.incbin "graphics/stage/ruby/ruby_hole_light_o_off.4bpp"
+	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_o_off.4bpp"
 
 gRubyHoleLightO_On:: @ 0x0825F970
-	.incbin "graphics/stage/ruby/ruby_hole_light_o_on.4bpp"
+	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_o_on.4bpp"
 
 gRubyHoleLightL_Off:: @ 0x0825F9B0
-	.incbin "graphics/stage/ruby/ruby_hole_light_l_off.4bpp"
+	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_l_off.4bpp"
 
 gRubyHoleLightL_On:: @ 0x0825F9F0
-	.incbin "graphics/stage/ruby/ruby_hole_light_l_on.4bpp"
+	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_l_on.4bpp"
 
 gRubyHoleLightE_Off:: @ 0x0825FA30
-	.incbin "graphics/stage/ruby/ruby_hole_light_e_off.4bpp"
+	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_e_off.4bpp"
 
 gRubyHoleLightE_On:: @ 0x0825FA70
-	.incbin "graphics/stage/ruby/ruby_hole_light_e_on.4bpp"
+	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_e_on.4bpp"
 
 gUnknown_0825FAB0:: @ 0x0825FAB0
     .incbin "baserom.gba", 0x25FAB0, 0x40
@@ -1818,99 +1818,99 @@ gSapphireBoardCompressedBGTileBuffer:: @ 0x082D8998
 @ E/V/O arrows. Second digit is '0 Top/1 Mid/2 Bottom',
 @ First digit is 'variant'.
 gSapphireEvo_EArrow_Top0:: @ 0x082DA9E0
-    .incbin "graphics/stage/sapphire/evo_e_arrow_0_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_0.4bpp"
 
 gSapphireEvo_EArrow_Top1:: @ 0x082DAA40
-    .incbin "graphics/stage/sapphire/evo_e_arrow_1_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_0.4bpp"
 
 gSapphireEvo_EArrow_Top2:: @ 0x082DAAA0
-    .incbin "graphics/stage/sapphire/evo_e_arrow_2_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_0.4bpp"
 
 gSapphireEvo_VArrow_Top0:: @ 0x082DAB00
-    .incbin "graphics/stage/sapphire/evo_v_arrow_0_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_0.4bpp"
 
 gSapphireEvo_VArrow_Top1:: @ 0x082DAB60
-    .incbin "graphics/stage/sapphire/evo_v_arrow_1_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_0.4bpp"
 
 gSapphireEvo_VArrow_Top2:: @ 0x082DABC0
-    .incbin "graphics/stage/sapphire/evo_v_arrow_2_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_0.4bpp"
 
 gSapphireEvo_VArrow_Top3:: @ 0x082DAC20
-    .incbin "graphics/stage/sapphire/evo_v_arrow_3_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_0.4bpp"
 
 gSapphireEvo_OArrow_Top0:: @ 0x082DAC80
-    .incbin "graphics/stage/sapphire/evo_o_arrow_0_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_0.4bpp"
 
 gSapphireEvo_OArrow_Top1:: @ 0x082DACE0
-    .incbin "graphics/stage/sapphire/evo_o_arrow_1_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_0.4bpp"
 
 gSapphireEvo_OArrow_Top2:: @ 0x082DAD40
-    .incbin "graphics/stage/sapphire/evo_o_arrow_2_0.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_0.4bpp"
 	.space 0x40
 
 gSapphireEvo_EArrow_Mid0:: @ 0x082DADE0
-    .incbin "graphics/stage/sapphire/evo_e_arrow_0_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_1.4bpp"
 
 gSapphireEvo_EArrow_Mid1:: @ 0x082DAE40
-    .incbin "graphics/stage/sapphire/evo_e_arrow_1_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_1.4bpp"
 
 gSapphireEvo_EArrow_Mid2:: @ 0x082DAEA0
-    .incbin "graphics/stage/sapphire/evo_e_arrow_2_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_1.4bpp"
 
 gSapphireEvo_VArrow_Mid0:: @ 0x082DAF00
-    .incbin "graphics/stage/sapphire/evo_v_arrow_0_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_1.4bpp"
 
 gSapphireEvo_VArrow_Mid1:: @ 0x082DAF60
-    .incbin "graphics/stage/sapphire/evo_v_arrow_1_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_1.4bpp"
 
 gSapphireEvo_VArrow_Mid2:: @ 0x082DAFC0
-    .incbin "graphics/stage/sapphire/evo_v_arrow_2_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_1.4bpp"
 
 gSapphireEvo_VArrow_Mid3:: @ 0x082DB020
-    .incbin "graphics/stage/sapphire/evo_v_arrow_3_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_1.4bpp"
 
 gSapphireEvo_OArrow_Mid0:: @ 0x082DB080
-    .incbin "graphics/stage/sapphire/evo_o_arrow_0_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_1.4bpp"
 
 gSapphireEvo_OArrow_Mid1:: @ 0x082DB0E0
-    .incbin "graphics/stage/sapphire/evo_o_arrow_1_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_1.4bpp"
 
 gSapphireEvo_OArrow_Mid2:: @ 0x082DB140
-    .incbin "graphics/stage/sapphire/evo_o_arrow_2_1.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_1.4bpp"
 	.space 0x40
 
 gSapphireEvo_EArrow_Bot0:: @ 0x082DB1E0
-    .incbin "graphics/stage/sapphire/evo_e_arrow_0_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_2.4bpp"
 
 gSapphireEvo_EArrow_Bot1:: @ 0x082DB240
-    .incbin "graphics/stage/sapphire/evo_e_arrow_1_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_2.4bpp"
 
 gSapphireEvo_EArrow_Bot2:: @ 0x082DB2A0
-    .incbin "graphics/stage/sapphire/evo_e_arrow_2_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_2.4bpp"
 
 gSapphireEvo_VArrow_Bot0:: @ 0x082DB300
-    .incbin "graphics/stage/sapphire/evo_v_arrow_0_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_2.4bpp"
 
 gSapphireEvo_VArrow_Bot1:: @ 0x082DB360
-    .incbin "graphics/stage/sapphire/evo_v_arrow_1_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_2.4bpp"
 
 gSapphireEvo_VArrow_Bot2:: @ 0x082DB3C0
-    .incbin "graphics/stage/sapphire/evo_v_arrow_2_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_2.4bpp"
 
 gSapphireEvo_VArrow_Bot3:: @ 0x082DB420
-    .incbin "graphics/stage/sapphire/evo_v_arrow_3_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_2.4bpp"
 	.space 0x20
 
 gSapphireEvo_OArrow_Bot0:: @ 0x082DB4A0
-    .incbin "graphics/stage/sapphire/evo_o_arrow_0_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_2.4bpp"
 	.space 0x20
 
 gSapphireEvo_OArrow_Bot1:: @ 0x082DB500
-    .incbin "graphics/stage/sapphire/evo_o_arrow_1_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_2.4bpp"
 	.space 0x20
 
 gSapphireEvo_OArrow_Bot2:: @ 0x082DB560
-    .incbin "graphics/stage/sapphire/evo_o_arrow_2_2.4bpp"
+    .incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_2.4bpp"
 	.space 0x40
 
 gUnknown_082DB5E0:: @ 0x082DB5E0

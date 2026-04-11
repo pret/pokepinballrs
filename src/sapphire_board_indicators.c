@@ -75,7 +75,7 @@ void UpdateSapphireBoardAnimations(void)
         DrawSapphireModeTimerDisplay();
 
     if (gCurrentPinballGame->hudSpriteBaseY >= 8 && gCurrentPinballGame->hudSpriteBaseY < 182)
-        AnimatePelliperBumper();
+        AnimatePelipperBumper();
 
     if (gCurrentPinballGame->saverTimeRemaining && gCurrentPinballGame->ballCatchState == 0)
         gCurrentPinballGame->saverTimeRemaining--;
@@ -643,7 +643,7 @@ void AnimateHatchMachineSpinner(void)
     }
 }
 
-void AnimatePelliperBumper(void)
+void AnimatePelipperBumper(void)
 {
     s16 index;
     const u8 **src;
