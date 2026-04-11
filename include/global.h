@@ -808,7 +808,7 @@ struct PinballGame
     /*0x727*/ u8 filler727[0x1];
     /*0x728*/ s8 catchArrowPaletteActive;
     /*0x729*/ s8 evoArrowPaletteActive;
-    /*0x72A*/ s8 rouletteSlotActive;
+    /*0x72A*/ s8 shopArrowActive;
     /*0x72B*/ s8 coinRewardLevel;
     /*0x72C*/ u16 coinRewardLevelTimer;
     /*0x72E*/ s8 evoArrowProgress;

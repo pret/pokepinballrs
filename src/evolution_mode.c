@@ -66,7 +66,7 @@ void InitEvolutionMode(void)
 
     DmaCopy16(3, gDefaultBallPalette, (void *)0x05000180, 0x20);
     gCurrentPinballGame->evoArrowProgress = 0;
-    gCurrentPinballGame->rouletteSlotActive = 0;
+    gCurrentPinballGame->shopArrowActive = 0;
     gCurrentPinballGame->catchModeEventTimer = 0;
     gCurrentPinballGame->evoItemSlotIndex = 0;
     gCurrentPinballGame->evoItemsCaught = 0;

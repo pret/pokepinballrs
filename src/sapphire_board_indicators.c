@@ -36,7 +36,7 @@ void UpdateSapphireBoardAnimations(void)
         AnimateSapphireEvoArrowPalette();
 
     if (gCurrentPinballGame->hudSpriteBaseY >= 56 && gCurrentPinballGame->hudSpriteBaseY < 243)
-        AnimateSapphireRouletteSlot();
+        AnimateSapphireShopArrow();
 
     AnimateRubyBallPowerUpSequence();
     if (gCurrentPinballGame->hudSpriteBaseY < 112)
@@ -558,7 +558,7 @@ void AnimateSapphireCatchArrowPaletteFlash(void)
     }
 }
 
-void AnimateSapphireRouletteSlot(void)
+void AnimateSapphireShopArrow(void)
 {
     s16 index;
     const u8 **src;
@@ -566,11 +566,11 @@ void AnimateSapphireRouletteSlot(void)
 
     index = 0;
     if (gCurrentPinballGame->shopShockWallAnimState == 3)
-        gCurrentPinballGame->rouletteSlotActive = 1;
+        gCurrentPinballGame->shopArrowActive = 1;
     else if (gCurrentPinballGame->boardState)
-        gCurrentPinballGame->rouletteSlotActive = 0;
+        gCurrentPinballGame->shopArrowActive = 0;
 
-    if (gCurrentPinballGame->rouletteSlotActive > 0)
+    if (gCurrentPinballGame->shopArrowActive > 0)
         index = gCurrentPinballGame->evolutionShopActive * 2 + 1 - gCurrentPinballGame->hudBlinkPhase;
     else
         index = gCurrentPinballGame->evolutionShopActive * 2;

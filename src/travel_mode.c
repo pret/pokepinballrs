@@ -102,7 +102,7 @@ void UpdateAreaRoulette(void)
         gCurrentPinballGame->rouletteSubOffset = (gCurrentPinballGame->rouletteFrameIndex * 32) / gCurrentPinballGame->rouletteRotationPeriod;
         gCurrentPinballGame->portraitDisplayState = 1;
         gCurrentPinballGame->stageTimer++;
-        UpdateRouletteAnimState();
+        UpdateBoardArrowAnimState();
         break;
     case 3:
         if (gCurrentPinballGame->stageTimer < 15)
@@ -115,7 +115,7 @@ void UpdateAreaRoulette(void)
                 gCurrentPinballGame->rouletteSpinSpeed = 0;
             }
         }
-        SetRouletteActiveState(0);
+        SetBoardArrowState(0);
         /* fallthrough */
     case 4:
     case 5:
@@ -268,7 +268,7 @@ void UpdateAreaRoulette(void)
     }
 }
 
-void UpdateRouletteAnimState(void)
+void UpdateBoardArrowAnimState(void)
 {
     s16 index;
 
@@ -280,22 +280,22 @@ void UpdateRouletteAnimState(void)
     if (index == 7 || index == 9)
     {
         gCurrentPinballGame->catchArrowPaletteActive = 1;
-        gCurrentPinballGame->rouletteSlotActive = 1;
+        gCurrentPinballGame->shopArrowActive = 1;
         gCurrentPinballGame->evoArrowPaletteActive = 1;
     }
     else
     {
         gCurrentPinballGame->catchArrowPaletteActive = 0;
-        gCurrentPinballGame->rouletteSlotActive = 0;
+        gCurrentPinballGame->shopArrowActive = 0;
         gCurrentPinballGame->evoArrowPaletteActive = 0;
     }
 }
 
-void SetRouletteActiveState(s16 arg0)
+void SetBoardArrowState(s16 arg0)
 {
     if (arg0)
     {
-        gCurrentPinballGame->rouletteSlotActive = 1;
+        gCurrentPinballGame->shopArrowActive = 1;
         gCurrentPinballGame->catchArrowPaletteActive = 1;
         gCurrentPinballGame->catchProgressFlashing = 1;
         gCurrentPinballGame->evoArrowProgress = 3;
@@ -306,7 +306,7 @@ void SetRouletteActiveState(s16 arg0)
     else
     {
         gCurrentPinballGame->evoArrowPaletteActive = 0;
-        gCurrentPinballGame->rouletteSlotActive = 0;
+        gCurrentPinballGame->shopArrowActive = 0;
         gCurrentPinballGame->catchArrowPaletteActive = 0;
         gCurrentPinballGame->evoArrowProgress = 0;
         gCurrentPinballGame->coinRewardLevel = 0;

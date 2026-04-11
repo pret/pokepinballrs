@@ -6,7 +6,7 @@
 extern const u8 *gRubyBallPowerUpLightTilePointers[][3];
 extern const u16 gBallShadowTileIndices[];
 extern const u8 *gRubyCatchArrowTilePointer[][4];
-extern const u8 *gRubyRouletteSlotTilePointers[][4];
+extern const u8 *gRubyShopRampArrowTilePointsers[][4];
 extern const u8 *gRubyBumperArrowTilePointer[][4];
 extern const u8 *gRubyHatchArrowTilePointer[][4];
 extern const u8 *gRubySaverTilePointers[][4];
@@ -37,7 +37,7 @@ void UpdateRubyBoardAnimations(void)
     }
 
     if (gCurrentPinballGame->hudSpriteBaseY >= 81 && gCurrentPinballGame->hudSpriteBaseY < 248)
-        AnimateRubyRouletteSlot();
+        AnimateRubyShopRampArrow();
 
     AnimateRubyBallPowerUpSequence();
     if (gCurrentPinballGame->hudSpriteBaseY < 112)
@@ -296,7 +296,7 @@ void AnimateRubyEvoArrowPalette(void)
     }
 }
 
-void AnimateRubyRouletteSlot(void)
+void AnimateRubyShopRampArrow(void)
 {
     s16 index;
     const u8 **src;
@@ -304,17 +304,17 @@ void AnimateRubyRouletteSlot(void)
 
     index = 0;
     if (gCurrentPinballGame->shopDoorTargetFrame > 2)
-        gCurrentPinballGame->rouletteSlotActive = 1;
+        gCurrentPinballGame->shopArrowActive = 1;
     else if (gCurrentPinballGame->boardState)
-        gCurrentPinballGame->rouletteSlotActive = 0;
+        gCurrentPinballGame->shopArrowActive = 0;
 
-    if (gCurrentPinballGame->rouletteSlotActive > 0)
+    if (gCurrentPinballGame->shopArrowActive > 0)
         index = gCurrentPinballGame->evolutionShopActive * 2 + 1 - gCurrentPinballGame->hudBlinkPhase;
     else
         index = gCurrentPinballGame->evolutionShopActive * 2;
 
-    src = gRubyRouletteSlotTilePointers[index];
-    dest = gRubyRouletteSlotTilePointers[4];
+    src = gRubyShopRampArrowTilePointsers[index];
+    dest = gRubyShopRampArrowTilePointsers[4];
     if (gCurrentPinballGame->hudSpriteBaseY < 240)
     {
         DmaCopy16(3, src[0], dest[0], 0xA0);

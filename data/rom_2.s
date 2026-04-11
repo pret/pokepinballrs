@@ -4914,69 +4914,69 @@ gRubySlingshotAnimIndices:: @ 0x086B08CA
 gRubySlingshotTilePointers:: @ 0x086B08D4
     @ Arranged into 2(sides) sets of 3 sets of 5.
     @ Third set of 5 is the destination address.
-	.4byte gUnknown_082647F0, gUnknown_08264BF0, gUnknown_08264FF0, gUnknown_082653F0, gUnknown_08265810
-    .4byte gUnknown_08264850, gUnknown_08264C50, gUnknown_08265050, gUnknown_08265450, gUnknown_08265870
+	.4byte gRuby_LSlingshot_Off_R0, gRuby_LSlingshot_Off_R1, gRuby_LSlingshot_Off_R2, gRuby_LSlingshot_Off_R3, gRuby_LSlingshot_Off_R4
+    .4byte gRuby_LSlingshot_On_R0,  gRuby_LSlingshot_On_R1,  gRuby_LSlingshot_On_R2,  gRuby_LSlingshot_On_R3,  gRuby_LSlingshot_On_R4
     .4byte 0x0600DA00, 0x0600DA20, 0x0600DA60, 0x0600DAC0, 0x0600DB20
 
-    .4byte gUnknown_082648F0, gUnknown_08264CD0, gUnknown_082650B0, gUnknown_082654B0, gUnknown_082658B0
-    .4byte gUnknown_08264950, gUnknown_08264D30, gUnknown_08265110, gUnknown_08265510, gUnknown_08265910
+    .4byte gRuby_RSlingshot_Off_R0, gRuby_RSlingshot_Off_R1, gRuby_RSlingshot_Off_R2, gRuby_RSlingshot_Off_R3, gRuby_RSlingshot_Off_R4
+    .4byte gRuby_RSlingshot_On_R0, gRuby_RSlingshot_On_R1, gRuby_RSlingshot_On_R2, gRuby_RSlingshot_On_R3, gRuby_RSlingshot_On_R4
     .4byte 0x0600DB60, 0x0600DB80, 0x0600DBC0, 0x0600DC20, 0x0600DC80
 
 gShopItemTilePointers:: @ 0x086B094C
     @ Arranged into 3 sets of 3.
     @ Third set is the destination address.
-	.4byte gUnknown_08262BB0, gUnknown_08262FB0, gUnknown_08263430
-    .4byte gUnknown_08262C70, gUnknown_08263070, gUnknown_082634F0
+	.4byte gStoreSignText_08262BB0, gStoreSignText_08262FB0, gStoreSignText_08263430
+    .4byte gStoreSignText_08262C70, gStoreSignText_08263070, gStoreSignText_082634F0
     .4byte 0x0600D860, 0x0600D920, 0x0600D9E0
 
 gRubyProgressDigitTilePointers:: @ 0x086B0970
     @ 11 sets of 2.
     @ Eleventh has the destination address.
-    .4byte gUnknown_08262790, gUnknown_082628D0
-    .4byte gUnknown_082627B0, gUnknown_082628F0
-    .4byte gUnknown_082627D0, gUnknown_08262910
-    .4byte gUnknown_082627F0, gUnknown_08262930
-    .4byte gUnknown_08262810, gUnknown_08262950
-    .4byte gUnknown_08262830, gUnknown_08262970
-    .4byte gUnknown_08262850, gUnknown_08262990
-    .4byte gUnknown_08262870, gUnknown_082629B0
-    .4byte gUnknown_08262890, gUnknown_082629D0
-    .4byte gUnknown_082628B0, gUnknown_082629F0
+    .4byte gRubyBonusMultDigit_08262790, gRubyBonusMultDigit_082628D0
+    .4byte gRubyBonusMultDigit_082627B0, gRubyBonusMultDigit_082628F0
+    .4byte gRubyBonusMultDigit_082627D0, gRubyBonusMultDigit_08262910
+    .4byte gRubyBonusMultDigit_082627F0, gRubyBonusMultDigit_08262930
+    .4byte gRubyBonusMultDigit_08262810, gRubyBonusMultDigit_08262950
+    .4byte gRubyBonusMultDigit_08262830, gRubyBonusMultDigit_08262970
+    .4byte gRubyBonusMultDigit_08262850, gRubyBonusMultDigit_08262990
+    .4byte gRubyBonusMultDigit_08262870, gRubyBonusMultDigit_082629B0
+    .4byte gRubyBonusMultDigit_08262890, gRubyBonusMultDigit_082629D0
+    .4byte gRubyBonusMultDigit_082628B0, gRubyBonusMultDigit_082629F0
     .4byte 0x0600D820, 0x0600D840
 
 gRubyTrapIndicatorTilePointers:: @ 0x086B09C8
     @ 4 sets of 2
     @ fourth set has destination address
-    .4byte gUnknown_0825FF30, gUnknown_08260330
-    .4byte gUnknown_0825FF70, gUnknown_08260370
-    .4byte gUnknown_0825FFB0, gUnknown_082603B0
+    .4byte gRubyTrapTile_0825FF30, gRubyTrapTile_08260330
+    .4byte gRubyTrapTile_0825FF70, gRubyTrapTile_08260370
+    .4byte gRubyTrapTile_0825FFB0, gRubyTrapTile_082603B0
     .4byte 0x060081C0, 0x060085C0
 
 gRubyCatchLightTilePointers:: @ 0x086B09E8
     @ 3 sets of 7 sets of 2
     @ seventh set has destination address
-    .4byte gUnknown_0825FAB0, gUnknown_0825FEB0
-    .4byte gUnknown_0825FAF0, gUnknown_0825FEF0
-    .4byte gUnknown_0825FFF0, gUnknown_082603F0
-    .4byte gUnknown_08260030, gUnknown_08260430
-    .4byte gUnknown_08260170, gUnknown_08260570
-    .4byte gUnknown_082601B0, gUnknown_082605B0
+    .4byte gRubyCatchArrow_0825FAB0, gRubyCatchArrow_0825FEB0
+    .4byte gRubyCatchArrow_0825FAF0, gRubyCatchArrow_0825FEF0
+    .4byte gRubyCatchArrow_0825FFF0, gRubyCatchArrow_082603F0
+    .4byte gRubyCatchArrow_08260030, gRubyCatchArrow_08260430
+    .4byte gRubyCatchArrow_08260170, gRubyCatchArrow_08260570
+    .4byte gRubyCatchArrow_082601B0, gRubyCatchArrow_082605B0
     .4byte 0x0600A180, 0x0600A580
 
-    .4byte gUnknown_0825FAB0, gUnknown_0825FEB0
-    .4byte gUnknown_0825FAF0, gUnknown_0825FEF0
-    .4byte gUnknown_08260070, gUnknown_08260470
-    .4byte gUnknown_082600B0, gUnknown_082604B0
-    .4byte gUnknown_082601F0, gUnknown_082605F0
-    .4byte gUnknown_08260230, gUnknown_08260630
+    .4byte gRubyCatchArrow_0825FAB0, gRubyCatchArrow_0825FEB0
+    .4byte gRubyCatchArrow_0825FAF0, gRubyCatchArrow_0825FEF0
+    .4byte gRubyCatchArrow_08260070, gRubyCatchArrow_08260470
+    .4byte gRubyCatchArrow_082600B0, gRubyCatchArrow_082604B0
+    .4byte gRubyCatchArrow_082601F0, gRubyCatchArrow_082605F0
+    .4byte gRubyCatchArrow_08260230, gRubyCatchArrow_08260630
     .4byte 0x0600A1C0, 0x0600A5C0
 
-    .4byte gUnknown_0825FAB0, gUnknown_0825FEB0
-    .4byte gUnknown_0825FAF0, gUnknown_0825FEF0
-    .4byte gUnknown_082600F0, gUnknown_082604F0
-    .4byte gUnknown_08260130, gUnknown_08260530
-    .4byte gUnknown_08260270, gUnknown_08260670
-    .4byte gUnknown_082602B0, gUnknown_082606B0
+    .4byte gRubyCatchArrow_0825FAB0, gRubyCatchArrow_0825FEB0
+    .4byte gRubyCatchArrow_0825FAF0, gRubyCatchArrow_0825FEF0
+    .4byte gRubyCatchArrow_082600F0, gRubyCatchArrow_082604F0
+    .4byte gRubyCatchArrow_08260130, gRubyCatchArrow_08260530
+    .4byte gRubyCatchArrow_08260270, gRubyCatchArrow_08260670
+    .4byte gRubyCatchArrow_082602B0, gRubyCatchArrow_082606B0
     .4byte 0x0600A200, 0x0600A600
 
 gRubySaverTilePointers:: @ 0x086B0A90
@@ -5000,13 +5000,15 @@ gRubyBumperArrowTilePointer:: @ 0x086B0AF0
     .4byte gRubyBumperArrowRow0Tile_On, gRubyBumperArrowRow1Tile_On, gRubyBumperArrowRow2Tile_On, gRubyBumperArrowRow3Tile_On
     .4byte 0x0600B620, 0x0600B9E0, 0x0600BDE0, 0x0600C1E0
 
-gRubyRouletteSlotTilePointers:: @ 0x086B0B20
+gRubyShopRampArrowTilePointsers:: @ 0x086B0B20
     @ 5 sets of 4
+    @ Mart mode is set one and two
+    @ Evo mode is set sets three and four:
     @ fifth set has the destination address
-    .4byte gUnknown_08263910, gUnknown_08263D10, gUnknown_08264110, gUnknown_08264510
-    .4byte gUnknown_082639B0, gUnknown_08263DB0, gUnknown_082641B0, gUnknown_082645B0
-    .4byte gUnknown_082637D0, gUnknown_08263BD0, gUnknown_08263FD0, gUnknown_082643D0
-    .4byte gUnknown_08263870, gUnknown_08263C70, gUnknown_08264070, gUnknown_08264470
+    .4byte gRubyMartArrow_R0_Off, gRubyMartArrow_R1_Off, gRubyMartArrow_R2_Off, gRubyMartArrow_R3_Off
+    .4byte gRubyMartArrow_R0_On,  gRubyMartArrow_R1_On,  gRubyMartArrow_R2_On,  gRubyMartArrow_R3_On
+    .4byte gRubyEvoArrow_R0_Off,  gRubyEvoArrow_R1_Off,  gRubyEvoArrow_R2_Off,  gRubyEvoArrow_R3_Off
+    .4byte gRubyEvoArrow_R0_On,   gRubyEvoArrow_R1_On,   gRubyEvoArrow_R2_On,   gRubyEvoArrow_R3_On
     .4byte 0x0600C620, 0x0600CA20, 0x0600CE20, 0x0600D220
 
 gRubyBallPowerUpLightTilePointers:: @ 0x086B0B70
@@ -5055,43 +5057,43 @@ gRubyEvoArrowTilePtrs:: @ 0x086B0C04
 gRubyCoinRewardTilePtrs:: @ 0x086B0CB8
     @ 3 sets of 5 sets of 3
     @ fifth set has the destination address
-    .4byte gUnknown_0825DF10, gUnknown_0825E310, gUnknown_0825E710
-    .4byte gUnknown_0825DF10, gUnknown_0825E310, gUnknown_0825E710
-    .4byte gUnknown_0825DF70, gUnknown_0825E370, gUnknown_0825E770
-    .4byte gUnknown_0825DFD0, gUnknown_0825E3D0, gUnknown_0825E7D0
+    .4byte gRubyCoinArrow_0825DF10, gRubyCoinArrow_0825E310, gRubyCoinArrow_0825E710
+    .4byte gRubyCoinArrow_0825DF10, gRubyCoinArrow_0825E310, gRubyCoinArrow_0825E710
+    .4byte gRubyCoinArrow_0825DF70, gRubyCoinArrow_0825E370, gRubyCoinArrow_0825E770
+    .4byte gRubyCoinArrow_0825DFD0, gRubyCoinArrow_0825E3D0, gRubyCoinArrow_0825E7D0
     .4byte 0x0600B4E0, 0x0600B8E0, 0x0600BCE0
 
-    .4byte gUnknown_0825E030, gUnknown_0825E430, gUnknown_0825E830
-    .4byte gUnknown_0825E090, gUnknown_0825E490, gUnknown_0825E890
-    .4byte gUnknown_0825E0F0, gUnknown_0825E4F0, gUnknown_0825E8F0
-    .4byte gUnknown_0825E150, gUnknown_0825E550, gUnknown_0825E950
+    .4byte gRubyCoinArrow_0825E030, gRubyCoinArrow_0825E430, gRubyCoinArrow_0825E830
+    .4byte gRubyCoinArrow_0825E090, gRubyCoinArrow_0825E490, gRubyCoinArrow_0825E890
+    .4byte gRubyCoinArrow_0825E0F0, gRubyCoinArrow_0825E4F0, gRubyCoinArrow_0825E8F0
+    .4byte gRubyCoinArrow_0825E150, gRubyCoinArrow_0825E550, gRubyCoinArrow_0825E950
     .4byte 0x0600BCE0, 0x0600C0E0, 0x0600C4E0
 
-    .4byte gUnknown_0825E1B0, gUnknown_0825E5B0, gUnknown_0825E9B0
-    .4byte gUnknown_0825E1B0, gUnknown_0825E5B0, gUnknown_0825E9B0
-    .4byte gUnknown_0825E210, gUnknown_0825E610, gUnknown_0825EA10
-    .4byte gUnknown_0825E270, gUnknown_0825E670, gUnknown_0825EA70
+    .4byte gRubyCoinArrow_0825E1B0, gRubyCoinArrow_0825E5B0, gRubyCoinArrow_0825E9B0
+    .4byte gRubyCoinArrow_0825E1B0, gRubyCoinArrow_0825E5B0, gRubyCoinArrow_0825E9B0
+    .4byte gRubyCoinArrow_0825E210, gRubyCoinArrow_0825E610, gRubyCoinArrow_0825EA10
+    .4byte gRubyCoinArrow_0825E270, gRubyCoinArrow_0825E670, gRubyCoinArrow_0825EA70
     .4byte 0x0600C500, 0x0600C900, 0x0600CD00
 
 gRubyGetArrowTilePtrs:: @ 0x086B0D6C
     @ 3 sets of 5 sets of 3
     @ fifth set has the destination address
-    .4byte gUnknown_0825EB10, gUnknown_0825EF10, gUnknown_0825F310
-    .4byte gUnknown_0825EB10, gUnknown_0825EF10, gUnknown_0825F310
-    .4byte gUnknown_0825EB70, gUnknown_0825EF70, gUnknown_0825F370
-    .4byte gUnknown_0825EBD0, gUnknown_0825EFD0, gUnknown_0825F3D0
+    .4byte gRubyGetArrow_0825EB10, gRubyGetArrow_0825EF10, gRubyGetArrow_0825F310
+    .4byte gRubyGetArrow_0825EB10, gRubyGetArrow_0825EF10, gRubyGetArrow_0825F310
+    .4byte gRubyGetArrow_0825EB70, gRubyGetArrow_0825EF70, gRubyGetArrow_0825F370
+    .4byte gRubyGetArrow_0825EBD0, gRubyGetArrow_0825EFD0, gRubyGetArrow_0825F3D0
     .4byte 0x0600D2E0, 0x0600D6E0, 0x060082E0
 
-    .4byte gUnknown_0825EC50, gUnknown_0825F050, gUnknown_0825F430
-    .4byte gUnknown_0825ECB0, gUnknown_0825F0B0, gUnknown_0825F490
-    .4byte gUnknown_0825ED10, gUnknown_0825F110, gUnknown_0825F4F0
-    .4byte gUnknown_0825ED70, gUnknown_0825F170, gUnknown_0825F550
+    .4byte gRubyGetArrow_0825EC50, gRubyGetArrow_0825F050, gRubyGetArrow_0825F430
+    .4byte gRubyGetArrow_0825ECB0, gRubyGetArrow_0825F0B0, gRubyGetArrow_0825F490
+    .4byte gRubyGetArrow_0825ED10, gRubyGetArrow_0825F110, gRubyGetArrow_0825F4F0
+    .4byte gRubyGetArrow_0825ED70, gRubyGetArrow_0825F170, gRubyGetArrow_0825F550
     .4byte 0x060082E0, 0x060086E0, 0x06008AC0
 
-    .4byte gUnknown_0825EDD0, gUnknown_0825F1B0, gUnknown_0825F5B0
-    .4byte gUnknown_0825EDD0, gUnknown_0825F1B0, gUnknown_0825F5B0
-    .4byte gUnknown_0825EE30, gUnknown_0825F210, gUnknown_0825F610
-    .4byte gUnknown_0825EE90, gUnknown_0825F270, gUnknown_0825F670
+    .4byte gRubyGetArrow_0825EDD0, gRubyGetArrow_0825F1B0, gRubyGetArrow_0825F5B0
+    .4byte gRubyGetArrow_0825EDD0, gRubyGetArrow_0825F1B0, gRubyGetArrow_0825F5B0
+    .4byte gRubyGetArrow_0825EE30, gRubyGetArrow_0825F210, gRubyGetArrow_0825F610
+    .4byte gRubyGetArrow_0825EE90, gRubyGetArrow_0825F270, gRubyGetArrow_0825F670
     .4byte 0x06008AC0, 0x06008EA0, 0x060092A0
 
 gBallShadowTileIndices:: @ 0x086B0E20
