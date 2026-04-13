@@ -499,7 +499,7 @@ struct PinballGame
     /*0x37D*/ s8 zigzagoonAnimKeyframeIndex;
     /*0x37E*/ u16 sapphireBumperAnimFrame;
     /*0x380*/ u16 sapphireBumperTimer;
-    /*0x382*/ s8 bossPhaseCounter;
+    /*0x382*/ s8 bossLightFadeInCounter;
     /*0x383*/ s8 ballGrabbed;
     /*0x384*/ s8 legendaryHitsRequired;
     /*0x385*/ s8 bonusModeHitCount;

@@ -53,7 +53,7 @@ void GroudonBoardProcess_3A_3B120(void)
     gCurrentPinballGame->returnToMainBoardFlag = 0;
     gCurrentPinballGame->boardEntityCollisionMode = 1;
     gCurrentPinballGame->portraitDisplayState = 3;
-    gCurrentPinballGame->bossPhaseCounter = 0;
+    gCurrentPinballGame->bossLightFadeInCounter = 0;
     gCurrentPinballGame->ballGrabbed = 0;
     gCurrentPinballGame->bonusModeHitCount = 0;
     gCurrentPinballGame->legendaryFlashState = 0;

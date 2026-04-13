@@ -4429,12 +4429,12 @@ gKecleonSpriteYSortData:: @ 0x086AEA70
     .byte 0,13
     .space 0x2
 
-gKyogreOceanPaletteProgression:: @ 0x086AEAE0
-    .4byte gUnknown_08340958
-    .4byte gUnknown_08340758
-    .4byte gUnknown_08340558
-    .4byte gUnknown_08340358
-    .4byte gUnknown_08340158
+gKyogreFadeInPaletteProgression:: @ 0x086AEAE0
+    .4byte gKyogreFadeInPaletteStep0
+    .4byte gKyogreFadeInPaletteStep1
+    .4byte gKyogreFadeInPaletteStep2
+    .4byte gKyogreFadeInPaletteStep3
+    .4byte gKyogreFadeInPaletteStep4
     .4byte gKyogreBoardPalette
 
 gKyogreAnimFramesetTable:: @ 0x086AEAF8
@@ -4766,24 +4766,24 @@ gBoardCollisionDataSets:: @ 0x086AFCB0
     @ TypeData, ???, ???, ???
 
     @ Ruby default
-    .4byte gUnknown_081C18E4, gUnknown_0820E964, gUnknown_0822F424, 0
-    .4byte gUnknown_081C38E4, gUnknown_08210964, gUnknown_08231424, 0
-    .4byte gUnknown_081DC064, gUnknown_082245E4, gUnknown_082432A4, 0
+    .4byte gRubyBoardCollisionTileDataLayer0, gRubyBoardCollisionTileDataLayer1, gRubyBoardCollisionTileDataLayer2, 0
+    .4byte gRubyBoardCollisionAngleDataLayer0, gRubyBoardCollisionAngleDataLayer1, gRubyBoardCollisionAngleDataLayer2, 0
+    .4byte gRubyBoardCollisionTypeDataLayer0, gRubyBoardCollisionTypeDataLayer1, gRubyBoardCollisionTypeDataLayer2, 0
 
     @ Ruby alternate
-    .4byte gUnknown_081E8424, gUnknown_0820E964, gUnknown_0822F424, 0
-    .4byte gUnknown_081EA424, gUnknown_08210964, gUnknown_08231424, 0
-    .4byte gUnknown_082027A4, gUnknown_082245E4, gUnknown_082432A4, 0
+    .4byte gRubyBoardCollisionTileDataLayer0Alt, gRubyBoardCollisionTileDataLayer1, gRubyBoardCollisionTileDataLayer2, 0
+    .4byte gRubyBoardCollisionAngleDataLayer0Alt, gRubyBoardCollisionAngleDataLayer1, gRubyBoardCollisionAngleDataLayer2, 0
+    .4byte gRubyBoardCollisionTypeDataLayer0Alt, gRubyBoardCollisionTypeDataLayer1, gRubyBoardCollisionTypeDataLayer2, 0
 
     @ Sapphire default
-    .4byte gUnknown_0826FE10, gUnknown_08291010, gUnknown_082AF6D0, gUnknown_082C5050
-    .4byte gUnknown_08271E10, gUnknown_08293010, gUnknown_082B16D0, gUnknown_082C7050
-    .4byte gUnknown_08286A10, gUnknown_082A5490, gUnknown_082BE7D0, gUnknown_082CF350
+    .4byte gSapphireBoardCollisionTileDataLayer0, gSapphireBoardCollisionTileDataLayer1, gSapphireBoardCollisionTileDataLayer2, gSapphireBoardCollisionTileDataLayer3
+    .4byte gSapphireBoardCollisionAngleDataLayer0, gSapphireBoardCollisionAngleDataLayer1, gSapphireBoardCollisionAngleDataLayer2, gSapphireBoardCollisionAngleDataLayer3
+    .4byte gSapphireBoardCollisionTypeDataLayer0, gSapphireBoardCollisionTypeDataLayer1, gSapphireBoardCollisionTypeDataLayer2, gSapphireBoardCollisionTypeDataLayer3
 
     @ Sapphire alternate (same as default)
-    .4byte gUnknown_0826FE10, gUnknown_08291010, gUnknown_082AF6D0, gUnknown_082C5050
-    .4byte gUnknown_08271E10, gUnknown_08293010, gUnknown_082B16D0, gUnknown_082C7050
-    .4byte gUnknown_08286A10, gUnknown_082A5490, gUnknown_082BE7D0, gUnknown_082CF350
+    .4byte gSapphireBoardCollisionTileDataLayer0, gSapphireBoardCollisionTileDataLayer1, gSapphireBoardCollisionTileDataLayer2, gSapphireBoardCollisionTileDataLayer3
+    .4byte gSapphireBoardCollisionAngleDataLayer0, gSapphireBoardCollisionAngleDataLayer1, gSapphireBoardCollisionAngleDataLayer2, gSapphireBoardCollisionAngleDataLayer3
+    .4byte gSapphireBoardCollisionTypeDataLayer0, gSapphireBoardCollisionTypeDataLayer1, gSapphireBoardCollisionTypeDataLayer2, gSapphireBoardCollisionTypeDataLayer3
 
 gFieldBoardConfigs:: @ 0x086AFD70
     @ 8 boards of type FieldBoardLayout
@@ -4793,66 +4793,66 @@ gFieldBoardConfigs:: @ 0x086AFD70
     .2byte 0x0010, 0x010C, 0x0164, 0x0064, 0x0180, 0x0078
     .2byte 0x0178, 0x004B, 0x0075, 0x00F2, 0x0171, 0x01C0
 
-    .4byte gUnknown_081B3584, gUnknown_081B1584, gUnknown_081B2584
-    .4byte gUnknown_081C18E4, gUnknown_0820E964, gUnknown_0822F424, 0
-    .4byte gUnknown_081C38E4, gUnknown_08210964, gUnknown_08231424, 0
-    .4byte gUnknown_081DC064, gUnknown_082245E4, gUnknown_082432A4, 0
+    .4byte gRubyBoardPaletteSet0, gRubyBoardPaletteSet1, gRubyBoardPaletteSet2
+    .4byte gRubyBoardCollisionTileDataLayer0, gRubyBoardCollisionTileDataLayer1, gRubyBoardCollisionTileDataLayer2, 0
+    .4byte gRubyBoardCollisionAngleDataLayer0, gRubyBoardCollisionAngleDataLayer1, gRubyBoardCollisionAngleDataLayer2, 0
+    .4byte gRubyBoardCollisionTypeDataLayer0, gRubyBoardCollisionTypeDataLayer1, gRubyBoardCollisionTypeDataLayer2, 0
 
     @ Sapphire board 0x086AFDC4
     .2byte 0x0010, 0x010C, 0x0164, 0x004C, 0x0180, 0x0078
     .2byte 0x0178, 0x004B, 0x0075, 0x00F2, 0x0171, 0x01C0
-    .4byte gUnknown_081B3784, gUnknown_081B1784, gUnknown_081B2784
-    .4byte gUnknown_0826FE10, gUnknown_08291010, gUnknown_082AF6D0, gUnknown_082C5050
-    .4byte gUnknown_08271E10, gUnknown_08293010, gUnknown_082B16D0, gUnknown_082C7050
-    .4byte gUnknown_08286A10, gUnknown_082A5490, gUnknown_082BE7D0, gUnknown_082CF350
+    .4byte gSapphireBoardPaletteSet0, gSapphireBoardPaletteSet1, gSapphireBoardPaletteSet2
+    .4byte gSapphireBoardCollisionTileDataLayer0, gSapphireBoardCollisionTileDataLayer1, gSapphireBoardCollisionTileDataLayer2, gSapphireBoardCollisionTileDataLayer3
+    .4byte gSapphireBoardCollisionAngleDataLayer0, gSapphireBoardCollisionAngleDataLayer1, gSapphireBoardCollisionAngleDataLayer2, gSapphireBoardCollisionAngleDataLayer3
+    .4byte gSapphireBoardCollisionTypeDataLayer0, gSapphireBoardCollisionTypeDataLayer1, gSapphireBoardCollisionTypeDataLayer2, gSapphireBoardCollisionTypeDataLayer3
 
     @ Dusclops board 0x086AFE18
     .2byte 0x0000, 0x0018, 0x006C, 0x0051, 0x0098, 0x0000
     .2byte 0x0090, 0x004B, 0x0075, 0x00A0, 0x0088, 0x00CA
-    .4byte gUnknown_081B3984, gUnknown_081B1984, gUnknown_081B2984
-    .4byte gUnknown_082EECC0, gUnknown_082EECC0, gUnknown_082EECC0, gUnknown_082EECC0
-    .4byte gUnknown_082F0CC0, gUnknown_082F0CC0, gUnknown_082F0CC0, gUnknown_082F0CC0
-    .4byte gUnknown_082FBE40, gUnknown_082FBE40, gUnknown_082FBE40, gUnknown_082FBE40
+    .4byte gDusclopsBoardPaletteSet0, gDusclopsBoardPaletteSet1, gDusclopsBoardPaletteSet2
+    .4byte gDusclopsBoardCollisionTileDataAllLayers, gDusclopsBoardCollisionTileDataAllLayers, gDusclopsBoardCollisionTileDataAllLayers, gDusclopsBoardCollisionTileDataAllLayers
+    .4byte gDusclopsBoardCollisionAngleDataAllLayers, gDusclopsBoardCollisionAngleDataAllLayers, gDusclopsBoardCollisionAngleDataAllLayers, gDusclopsBoardCollisionAngleDataAllLayers
+    .4byte gDusclopsBoardCollisionTypeDataAllLayers, gDusclopsBoardCollisionTypeDataAllLayers, gDusclopsBoardCollisionTypeDataAllLayers, gDusclopsBoardCollisionTypeDataAllLayers
 
     @ Kecleon board 0x086AFE6C
     .2byte 0x0000, 0x0018, 0x006C, 0x0051, 0x0098, 0x0000
     .2byte 0x0090, 0x004B, 0x0075, 0x00A0, 0x0088, 0x00CA
-    .4byte gUnknown_081B3B84, gUnknown_081B1B84, gUnknown_081B2B84
-    .4byte gUnknown_0830D5D4, gUnknown_0830D5D4, gUnknown_0830D5D4, gUnknown_0830D5D4
-    .4byte gUnknown_0830F5D4, gUnknown_0830F5D4, gUnknown_0830F5D4, gUnknown_0830F5D4
-    .4byte gUnknown_0831F854, gUnknown_0831F854, gUnknown_0831F854, gUnknown_0831F854
+    .4byte gKecleonBoardPaletteSet0, gKecleonBoardPaletteSet1, gKecleonBoardPaletteSet2
+    .4byte gKecleonBoardCollisionTileDataAllLayers, gKecleonBoardCollisionTileDataAllLayers, gKecleonBoardCollisionTileDataAllLayers, gKecleonBoardCollisionTileDataAllLayers
+    .4byte gKecleonBoardCollisionAngleDataAllLayers, gKecleonBoardCollisionAngleDataAllLayers, gKecleonBoardCollisionAngleDataAllLayers, gKecleonBoardCollisionAngleDataAllLayers
+    .4byte gKecleonBoardCollisionTypeDataAllLayers, gKecleonBoardCollisionTypeDataAllLayers, gKecleonBoardCollisionTypeDataAllLayers, gKecleonBoardCollisionTypeDataAllLayers
 
     @ Kyogre board 0x086AFEC0
     .2byte 0x0000, 0x0058, 0x00AC, 0x0091, 0x00D8, 0x0000
     .2byte 0x00D0, 0x004B, 0x0075, 0x00A0, 0x00C8, 0x010A
-    .4byte gUnknown_081B3D84, gUnknown_081B1D84, gUnknown_081B2D84
-    .4byte gUnknown_08333804, gUnknown_08333804, gUnknown_08333804, gUnknown_08333804
-    .4byte gUnknown_08335804, gUnknown_08335804, gUnknown_08335804, gUnknown_08335804
-    .4byte gUnknown_0833AD84, gUnknown_0833AD84, gUnknown_0833AD84, gUnknown_0833AD84
+    .4byte gKyogreBoardPaletteSet0, gKyogreBoardPaletteSet1, gKyogreBoardPaletteSet2
+    .4byte gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers
+    .4byte gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers
+    .4byte gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers
 
     @ Groudon board 0x086AFF14
     .2byte 0x0000, 0x0058, 0x00AC, 0x0091, 0x00D8, 0x0000
     .2byte 0x00D0, 0x004B, 0x0075, 0x00A0, 0x00C8, 0x010A
-    .4byte gUnknown_081B3F84, gUnknown_081B1F84, gUnknown_081B2F84
-    .4byte gUnknown_08333804, gUnknown_08333804, gUnknown_08333804, gUnknown_08333804
-    .4byte gUnknown_08335804, gUnknown_08335804, gUnknown_08335804, gUnknown_08335804
-    .4byte gUnknown_0833AD84, gUnknown_0833AD84, gUnknown_0833AD84, gUnknown_0833AD84
+    .4byte gGroudonBoardPaletteSet0, gGroudonBoardPaletteSet1, gGroudonBoardPaletteSet2
+    .4byte gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers
+    .4byte gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers
+    .4byte gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers
 
     @ Rayquaza board 0x086AFF68
     .2byte 0x0000, 0x0058, 0x00AC, 0x0091, 0x00D8, 0x0000
     .2byte 0x00D0, 0x004B, 0x0075, 0x00A0, 0x00C8, 0x010A
-    .4byte gUnknown_081B4184, gUnknown_081B2184, gUnknown_081B3184
-    .4byte gUnknown_083650C8, gUnknown_083650C8, gUnknown_083650C8, gUnknown_083650C8
-    .4byte gUnknown_083670C8, gUnknown_083670C8, gUnknown_083670C8, gUnknown_083670C8
-    .4byte gUnknown_0836C048, gUnknown_0836C048, gUnknown_0836C048, gUnknown_0836C048
+    .4byte gRayquazaBoardPaletteSet0, gRayquazaBoardPaletteSet1, gRayquazaBoardPaletteSet2
+    .4byte gRayquazaBoardCollisionTileDataAllLayers, gRayquazaBoardCollisionTileDataAllLayers, gRayquazaBoardCollisionTileDataAllLayers, gRayquazaBoardCollisionTileDataAllLayers
+    .4byte gRayquazaBoardCollisionAngleDataAllLayers, gRayquazaBoardCollisionAngleDataAllLayers, gRayquazaBoardCollisionAngleDataAllLayers, gRayquazaBoardCollisionAngleDataAllLayers
+    .4byte gRayquazaBoardCollisionTypeDataAllLayers, gRayquazaBoardCollisionTypeDataAllLayers, gRayquazaBoardCollisionTypeDataAllLayers, gRayquazaBoardCollisionTypeDataAllLayers
 
     @ Spheal board 0x086AFFBC
     .2byte 0x0000, 0x0058, 0x00AC, 0x0081, 0x00D8, 0x0000
     .2byte 0x00D0, 0x004B, 0x0075, 0x00A0, 0x00C8, 0x010A
-    .4byte gUnknown_081B4384, gUnknown_081B2384, gUnknown_081B3384
-    .4byte gUnknown_0837ACE8, gUnknown_0837ACE8, gUnknown_0837ACE8, gUnknown_0837ACE8
-    .4byte gUnknown_0837CCE8, gUnknown_0837CCE8, gUnknown_0837CCE8, gUnknown_0837CCE8
-    .4byte gUnknown_08388468, gUnknown_08388468, gUnknown_08388468, gUnknown_08388468
+    .4byte gSphealBoardPaletteSet0, gSphealBoardPaletteSet1, gSphealBoardPaletteSet2
+    .4byte gSphealBoardCollisionTileDataAllLayers, gSphealBoardCollisionTileDataAllLayers, gSphealBoardCollisionTileDataAllLayers, gSphealBoardCollisionTileDataAllLayers
+    .4byte gSphealBoardCollisionAngleDataAllLayers, gSphealBoardCollisionAngleDataAllLayers, gSphealBoardCollisionAngleDataAllLayers, gSphealBoardCollisionAngleDataAllLayers
+    .4byte gSphealBoardCollisionTypeDataAllLayers, gSphealBoardCollisionTypeDataAllLayers, gSphealBoardCollisionTypeDataAllLayers, gSphealBoardCollisionTypeDataAllLayers
 
 gScrollTileUpdateTable:: @ 0x086B0010
 	.incbin "baserom.gba", 0x6B0010, 0x118

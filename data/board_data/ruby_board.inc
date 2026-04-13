@@ -1,3 +1,69 @@
+@ Note: file has a shared 'bumper collision map' at 0x08252B10
+@ All other entries in this file are ruby board specific
+
+gRubyBoardBG0Tilemap:: @ 0x081C08E4
+	.incbin "baserom.gba", 0x1C08E4, 0x1000
+
+gRubyBoardCollisionTileDataLayer0:: @ 0x081C18E4
+    .incbin "baserom.gba", 0x1C18E4, 0x2000
+
+gRubyBoardCollisionAngleDataLayer0:: @ 0x081C38E4
+    .incbin "baserom.gba", 0x1C38E4, 0x18780
+
+gRubyBoardCollisionTypeDataLayer0:: @ 0x081DC064
+    .incbin "baserom.gba", 0x1DC064, 0xC3C0
+
+gRubyBoardCollisionTileDataLayer0Alt:: @ 0x081E8424
+    .incbin "baserom.gba", 0x1E8424, 0x2000
+
+gRubyBoardCollisionAngleDataLayer0Alt:: @ 0x081EA424
+    .incbin "baserom.gba", 0x1EA424, 0x18380
+
+gRubyBoardCollisionTypeDataLayer0Alt:: @ 0x082027A4
+    .incbin "baserom.gba", 0x2027A4, 0xC1C0
+
+gRubyBoardCollisionTileDataLayer1:: @ 0x0820E964
+    .incbin "baserom.gba", 0x20E964, 0x2000
+
+gRubyBoardCollisionAngleDataLayer1:: @ 0x08210964
+    .incbin "baserom.gba", 0x210964, 0x13C80
+
+gRubyBoardCollisionTypeDataLayer1:: @ 0x082245E4
+    .incbin "baserom.gba", 0x2245E4, 0x9E40
+
+gRubyBoardBG1Tilemap:: @ 0x0822E424
+	.incbin "baserom.gba", 0x22E424, 0x1000
+
+gRubyBoardCollisionTileDataLayer2:: @ 0x0822F424
+    .incbin "baserom.gba", 0x22F424, 0x2000
+
+gRubyBoardCollisionAngleDataLayer2:: @ 0x08231424
+    .incbin "baserom.gba", 0x231424, 0x11E80
+
+gRubyBoardCollisionTypeDataLayer2:: @ 0x082432A4
+    .incbin "baserom.gba", 0x2432A4, 0x8F40
+
+gRubyBoardCompressedTiles1:: @ 0x0824C1E4
+	.incbin "baserom.gba", 0x24C1E4, 0x1B7C
+
+gRubyBoardCompressedTiles2:: @ 0x0824DD60
+	.incbin "baserom.gba", 0x24DD60, 0x2BD4
+
+gRubyBoardCompressedBGTileBuffer:: @ 0x08250934
+	.incbin "baserom.gba", 0x250934, 0x21DC
+
+gSharedBumperCollisionMap:: @ 0x08252B10
+	.incbin "baserom.gba", 0x252B10, 0x2000
+
+gRubyAltEntity0CollisionMap:: @ 0x08254B10
+	.incbin "baserom.gba", 0x254B10, 0x2880
+
+gRubyAltEntity1CollisionMap:: @ 0x08257390
+	.incbin "baserom.gba", 0x257390, 0x2880
+
+gWhiscashCollisionMap:: @ 0x08259C10
+	.incbin "baserom.gba", 0x259C10, 0x3700
+
 
 @ Evo Arrows. Named this way for comprehension in folder.
 @ E/V/O arrows. Second digit is '0 Top/1 Mid/2 Bottom',
@@ -746,3 +812,11 @@ gRuby_RSlingshot_Off_R4:: @ 0x082658B0
 
 gRuby_RSlingshot_On_R4:: @ 0x08265910
     .incbin "baserom.gba", 0x265910, 0x300
+
+
+
+gRubyBoardBGTiles:: @ 0x08265C10
+	.incbin "baserom.gba", 0x265C10, 0x8000
+
+gRubyBoardBGTilemap:: @ 0x0826DC10
+	.incbin "baserom.gba", 0x26DC10, 0x1000

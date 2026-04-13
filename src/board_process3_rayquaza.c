@@ -47,7 +47,7 @@ void RayquazaBoardProcess_3A_3E79C(void)
     gCurrentPinballGame->cameraYAdjust = -88;
     gCurrentPinballGame->boardEntityCollisionMode = 1;
     gCurrentPinballGame->portraitDisplayState = 3;
-    gCurrentPinballGame->bossPhaseCounter = 0;
+    gCurrentPinballGame->bossLightFadeInCounter = 0;
     gCurrentPinballGame->ballGrabbed = 0;
     gCurrentPinballGame->bonusModeHitCount = 0;
     gCurrentPinballGame->returnToMainBoardFlag = 0;

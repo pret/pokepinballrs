@@ -1,3 +1,60 @@
+@ Note: ruby_board.inc file has a shared 'bumper collision map' at 0x08252B10
+
+gSapphireBoardPalette:: @ 0x0826EC10
+	.incbin "baserom.gba", 0x26EC10, 0x200
+
+gSapphireBoardBG0Tilemap:: @ 0x0826EE10
+	.incbin "baserom.gba", 0x26EE10, 0x1000
+
+gSapphireBoardCollisionTileDataLayer0:: @ 0x0826FE10
+    .incbin "baserom.gba", 0x26FE10, 0x2000
+
+gSapphireBoardCollisionAngleDataLayer0:: @ 0x08271E10
+    .incbin "baserom.gba", 0x271E10, 0x14C00
+
+gSapphireBoardCollisionTypeDataLayer0:: @ 0x08286A10
+    .incbin "baserom.gba", 0x286A10, 0xA600
+
+gSapphireBoardCollisionTileDataLayer1:: @ 0x08291010
+    .incbin "baserom.gba", 0x291010, 0x2000
+
+gSapphireBoardCollisionAngleDataLayer1:: @ 0x08293010
+    .incbin "baserom.gba", 0x293010, 0x12480
+
+gSapphireBoardCollisionTypeDataLayer1:: @ 0x082A5490
+    .incbin "baserom.gba", 0x2A5490, 0x9240
+
+gSapphireBoardBG1Tilemap:: @ 0x082AE6D0
+	.incbin "baserom.gba", 0x2AE6D0, 0x1000
+
+gSapphireBoardCollisionTileDataLayer2:: @ 0x082AF6D0
+    .incbin "baserom.gba", 0x2AF6D0, 0x2000
+
+gSapphireBoardCollisionAngleDataLayer2:: @ 0x082B16D0
+    .incbin "baserom.gba", 0x2B16D0, 0xD100
+
+gSapphireBoardCollisionTypeDataLayer2:: @ 0x082BE7D0
+    .incbin "baserom.gba", 0x2BE7D0, 0x6880
+
+gSapphireBoardCollisionTileDataLayer3:: @ 0x082C5050
+    .incbin "baserom.gba", 0x2C5050, 0x2000
+
+gSapphireBoardCollisionAngleDataLayer3:: @ 0x082C7050
+    .incbin "baserom.gba", 0x2C7050, 0x8300
+
+gSapphireBoardCollisionTypeDataLayer3:: @ 0x082CF350
+    .incbin "baserom.gba", 0x2CF350, 0x4180
+
+gSapphireBoardCompressedTiles1:: @ 0x082D34D0
+	.incbin "baserom.gba", 0x2D34D0, 0x1D6C
+
+gSapphireBoardCompressedTiles2:: @ 0x082D523C
+	.incbin "baserom.gba", 0x2D523C, 0x375C
+
+gSapphireBoardCompressedBGTileBuffer:: @ 0x082D8998
+	.incbin "baserom.gba", 0x2D8998, 0x2048
+
+
 
 @ Evo Arrows. Named this way for comprehension in folder.
 @ E/V/O arrows. Second digit is '0 Top/1 Mid/2 Bottom',
@@ -945,3 +1002,45 @@ gSapphireSlingshot_082E3B60:: @ 0x082E3B60
 gSapphireSlingshot_082E3BC0:: @ 0x082E3BC0
     .incbin "baserom.gba", 0x2E3BC0, 0x300
 
+
+gWailmerWater_082E3EC0:: @ 0x082E3EC0
+    .incbin "baserom.gba", 0x2E3EC0, 0x80
+
+gWailmerWater_082E3F40:: @ 0x082E3F40
+    .incbin "baserom.gba", 0x2E3F40, 0x80
+
+gWailmerWater_082E3FC0:: @ 0x082E3FC0
+    .incbin "baserom.gba", 0x2E3FC0, 0x300
+
+gWailmerWater_082E42C0:: @ 0x082E42C0
+    .incbin "baserom.gba", 0x2E42C0, 0x80
+
+gWailmerWater_082E4340:: @ 0x082E4340
+    .incbin "baserom.gba", 0x2E4340, 0x80
+
+gWailmerWater_082E43C0:: @ 0x082E43C0
+    .incbin "baserom.gba", 0x2E43C0, 0x300
+
+gWailmerWater_082E46C0:: @ 0x082E46C0
+    .incbin "baserom.gba", 0x2E46C0, 0x80
+
+gWailmerWater_082E4740:: @ 0x082E4740
+    .incbin "baserom.gba", 0x2E4740, 0x80
+
+gWailmerWater_082E47C0:: @ 0x082E47C0
+    .incbin "baserom.gba", 0x2E47C0, 0x300
+
+gWailmerWater_082E4AC0:: @ 0x082E4AC0
+    .incbin "baserom.gba", 0x2E4AC0, 0x80
+
+gWailmerWater_082E4B40:: @ 0x082E4B40
+    .incbin "baserom.gba", 0x2E4B40, 0x80
+
+gWailmerWater_082E4BC0:: @ 0x082E4BC0
+    .incbin "baserom.gba", 0x2E4BC0, 0x320
+
+gSapphireBoardBGTiles:: @ 0x082E4EE0
+	.incbin "baserom.gba", 0x2E4EE0, 0x8000
+
+gSapphireBoardBGTilemap:: @ 0x082ECEE0
+	.incbin "baserom.gba", 0x2ECEE0, 0x1000
