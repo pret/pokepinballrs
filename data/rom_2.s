@@ -37,67 +37,67 @@ gMainFuncs:: @ 0x086A4AD8
 	.4byte FieldSelectMain
 	.4byte BonusFieldSelectMain
 
-gUnknown_086A4B08:: @ 0x086A4B08
+gRumblePattern0:: @ 0x086A4B08
 	.4byte 2, 1, -1
 
-gUnknown_086A4B14:: @ 0x086A4B14
+gRumblePattern1:: @ 0x086A4B14
 	.4byte 2, 0, -1
 
-gUnknown_086A4B20:: @ 0x086A4B20
+gRumblePattern2:: @ 0x086A4B20
 	.4byte 2, 2, 1, -1
 
-gUnknown_086A4B30:: @ 0x086A4B30
+gRumblePattern3:: @ 0x086A4B30
 	.4byte 2, 2, 0, -1
 
-gUnknown_086A4B40:: @ 0x086A4B40
+gRumblePattern4:: @ 0x086A4B40
 	.4byte 2, 1, -21, 2, -1
 
-gUnknown_086A4B54:: @ 0x086A4B54
+gRumblePattern5:: @ 0x086A4B54
 	.4byte 2, 2, 1, 0, -11, 4, -1
 
-gUnknown_086A4B70:: @ 0x086A4B70
+gRumblePattern6:: @ 0x086A4B70
 	.4byte 2, 2, 1, -1
 
-gUnknown_086A4B80:: @ 0x086A4B80
+gRumblePattern7:: @ 0x086A4B80
 	.4byte 2, 2, 2, 1, -1
 
-gUnknown_086A4B94:: @ 0x086A4B94
+gRumblePattern8:: @ 0x086A4B94
 	.4byte 2, 2, 2, 2, 1, -1
 
-gUnknown_086A4BAC:: @ 0x086A4BAC
+gRumblePattern9:: @ 0x086A4BAC
 	.4byte 2, 2, 2, 2, 2, 1, -1
 
-gUnknown_086A4BC8:: @ 0x086A4BC8
+gRumblePattern10:: @ 0x086A4BC8
 	.4byte 1, 1, 2, 2, 2, 2, 1, -1
 
-gUnknown_086A4BE8:: @ 0x086A4BE8
+gRumblePattern11:: @ 0x086A4BE8
 	.4byte 2, 2, -10, 2, -1
 
-gUnknown_086A4BFC:: @ 0x086A4BFC
+gRumblePattern12:: @ 0x086A4BFC
 	.4byte 2, 2, 1, 1, -3, 4, -1
 
-gUnknown_086A4C18:: @ 0x086A4C18
+gRumblePattern13:: @ 0x086A4C18
 	.4byte 2, 2, -5, 2, -1
 
-gUnknown_086A4C2C:: @ 0x086A4C2C
+gRumblePattern14:: @ 0x086A4C2C
 	.4byte 2, 2, 1, -11, 3, -1
 
 gRumblePatterns:: @ 0x086A4C44
-	.4byte gUnknown_086A4B08
-	.4byte gUnknown_086A4B14
-	.4byte gUnknown_086A4B20
-	.4byte gUnknown_086A4B30
-	.4byte gUnknown_086A4B40
-	.4byte gUnknown_086A4B54
-	.4byte gUnknown_086A4B70
-	.4byte gUnknown_086A4B80
-	.4byte gUnknown_086A4B94
-	.4byte gUnknown_086A4BAC
-	.4byte gUnknown_086A4BC8
-	.4byte gUnknown_086A4BE8
-	.4byte gUnknown_086A4BFC
-	.4byte gUnknown_086A4C18
-	.4byte gUnknown_086A4C2C
+	.4byte gRumblePattern0
+	.4byte gRumblePattern1
+	.4byte gRumblePattern2
+	.4byte gRumblePattern3
+	.4byte gRumblePattern4
+	.4byte gRumblePattern5
+	.4byte gRumblePattern6
+	.4byte gRumblePattern7
+	.4byte gRumblePattern8
+	.4byte gRumblePattern9
+	.4byte gRumblePattern10
+	.4byte gRumblePattern11
+	.4byte gRumblePattern12
+	.4byte gRumblePattern13
+	.4byte gRumblePattern14
 
 	.align 2, 0
 gBonusFieldSelectSpriteSets:: @ 0x086A4C80
@@ -3819,23 +3819,23 @@ gFlipperBaseXPositions:: @ 0x086ACEF4
 
 gModeBannerTilemaps:: @ 0x086ACEF8
 	.4byte 0x000000
-	.4byte gUnknown_0851514C
-	.4byte gUnknown_085223AC
+	.4byte gRubyChinchouCatchBurstBanner_Gfx
+	.4byte gMainCatchModeBanner_Gfx
 	.4byte gMainBoardEvoBanner_Gfx
 	.4byte gMainBoardTravel_Gfx
 	.4byte gMainBoardJirachiBanner_Gfx
-	.4byte gUnknown_0851976C
-	.4byte gUnknown_0851DB8C
+	.4byte gRubyLotadCatchBurstBanner_Gfx
+	.4byte gSapphireShroomishCatchBurstBanner_Gfx
 
 gModeBannerPalettes:: @ 0x086ACF18
     .4byte 0x000000
-    .4byte gUnknown_0851956C
-    .4byte gUnknown_085267CC
-    .4byte gUnknown_085221AC
-    .4byte gUnknown_08526BCC
-    .4byte gUnknown_085269CC
-    .4byte gUnknown_0851958C
-    .4byte gUnknown_085195AC
+    .4byte gRubyChinchouCatchBurstBanner_Pal
+    .4byte gMainCatchModeBanner_Pal
+    .4byte gMainBoardEvoBanner_Pal
+    .4byte gMainBoardTravel_Pal
+    .4byte gMainBoardJirachiBanner_Pal
+    .4byte gRubyLotadCatchBurstBanner_Pal
+    .4byte gSapphireShroomishCatchBurstBanner_Pal
 
 gCaptureSequenceTimings:: @ 0x086ACF38
     @frame timer, 34 frame states.

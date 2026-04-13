@@ -327,6 +327,18 @@
           "mwidth": 5
         }
       ]
+    },
+    {
+      "gfx_filename": "chinchou_catch_burst_banner",
+      "oam": true,
+      "mheight": 9,
+      "mwidth": 30
+    },
+    {
+      "gfx_filename": "lotad_catch_burst_banner",
+      "oam": true,
+      "mheight": 9,
+      "mwidth": 30
     }
   ]
 }

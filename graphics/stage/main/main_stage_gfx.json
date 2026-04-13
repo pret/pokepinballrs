@@ -158,6 +158,12 @@
     {
       "gfx_filename": "pokeball_master",
       "mwidth":2 
+    },
+    {
+      "gfx_filename": "catch_mode_banner",
+      "oam": true,
+      "mheight": 9,
+      "mwidth": 30
     }
   ]
 }

@@ -17,7 +17,7 @@ extern const struct Vector16 gCyndaquilCavePositions[];
 extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
 extern const u8 gRubyBoardHatchCave_Gfx[][0x480];
 extern const u16 gHatchCaveOamFramesets[40][2][3];
-extern const u8 gSpaceTileGfx[][0x40];
+extern const u8 gSpaceTileGfx[0x40];
 extern const u8 gAlphabetTilesGfx[][0x40];
 extern const s16 gCaughtTextChars[];
 extern const struct Vector16 gFlyingCreatureCameraOffsets[];
@@ -1002,7 +1002,7 @@ void LoadPokemonNameGraphics(void)
     {
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
         {
-            DmaCopy16(3, gSpaceTileGfx[0], (void *)0x06015800 + i * 0x40, 0x40);
+            DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + i * 0x40, 0x40);
             gCurrentPinballGame->nameSpacingOffset += 4;
         }
         else
@@ -1053,7 +1053,7 @@ void InitEvolutionSuccessDisplay(void)
     {
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
         {
-            DmaCopy16(3, gSpaceTileGfx[0], (void *)0x06015800 + i * 0x40, 0x40);
+            DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + i * 0x40, 0x40);
             gCurrentPinballGame->nameSpacingOffset += 4;
         }
         else
@@ -1068,7 +1068,7 @@ void InitEvolutionSuccessDisplay(void)
     {
         if (gCaughtTextChars[i] == 0x20)
         {
-            DmaCopy16(3, gSpaceTileGfx[0], (void *)0x06015800 + (i + 10) * 0x40, 0x40);
+            DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + (i + 10) * 0x40, 0x40);
         }
         else
         {

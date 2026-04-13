@@ -1239,7 +1239,7 @@ gAlphabetTilesGfx:: @ 0x083FF04C
 	.incbin "baserom.gba", 0x3FF04C, 0xD00
 
 gSpaceTileGfx:: @ 0x083FFD4C
-	.incbin "baserom.gba", 0x3FFD4C, 0x40
+	.space 0x40
 
 gSapphireBoardWailmer_Gfx:: @ 0x083FFD8C
 	.incbin "graphics/stage/sapphire/wailmer.4bpp";
@@ -1476,8 +1476,7 @@ gMainBoardEndOfBall_Gfx:: @ 0x0850398C
 gBonusSummaryCharTiles:: @ 0x0850558C
 	.incbin "graphics/stage/misc/gunk_0850558C.4bpp";
 
-gUnknown_08505B8C:: @ 0x08505B8C
-	.incbin "baserom.gba", 0x505B8C, 0x40
+.space 0x40
 
 gMainBoardEvoBanner_Gfx:: @ 0x08505BCC
 	.incbin "graphics/stage/main/evo_banner.4bpp";
@@ -1506,23 +1505,26 @@ gBonusStagePal_Lit:: @ 0x08514F4C
 gBonusStagePal_Dark:: @ 0x08514F6C
 	.incbin "baserom.gba", 0x514F6C, 0x1E0
 
-gUnknown_0851514C:: @ 0x0851514C
-	.incbin "baserom.gba", 0x51514C, 0x4420
+gRubyChinchouCatchBurstBanner_Gfx:: @ 0x0851514C
+	.incbin "graphics/stage/ruby/chinchou_catch_burst_banner.4bpp"
+	.space 0xA0
 
-gUnknown_0851956C:: @ 0x0851956C
+gRubyChinchouCatchBurstBanner_Pal:: @ 0x0851956C
     .incbin "baserom.gba", 0x51956C, 0x20
 
-gUnknown_0851958C:: @ 0x0851958C
+gRubyLotadCatchBurstBanner_Pal:: @ 0x0851958C
     .incbin "baserom.gba", 0x51958C, 0x20
 
-gUnknown_085195AC:: @ 0x085195AC
+gSapphireShroomishCatchBurstBanner_Pal:: @ 0x085195AC
     .incbin "baserom.gba", 0x5195AC, 0x1C0
 
-gUnknown_0851976C:: @ 0x0851976C
-	.incbin "baserom.gba", 0x51976C, 0x4420
+gRubyLotadCatchBurstBanner_Gfx:: @ 0x0851976C
+	.incbin "graphics/stage/ruby/lotad_catch_burst_banner.4bpp"
+	.space 0xA0
 
-gUnknown_0851DB8C:: @ 0x0851DB8C
-	.incbin "baserom.gba", 0x51DB8C, 0x4420
+gSapphireShroomishCatchBurstBanner_Gfx:: @ 0x0851DB8C
+	.incbin "graphics/stage/sapphire/shroomish_catch_burst_banner.4bpp"
+	.space 0xA0
 
 gBonusClearTextPal_Lit:: @ 0x08521FAC
 	.incbin "baserom.gba", 0x521FAC, 0x20
@@ -1530,19 +1532,20 @@ gBonusClearTextPal_Lit:: @ 0x08521FAC
 gBonusClearTextPal_Dark:: @ 0x08521FCC
 	.incbin "baserom.gba", 0x521FCC, 0x1E0
 
-gUnknown_085221AC:: @ 0x085221AC
+gMainBoardEvoBanner_Pal:: @ 0x085221AC
     .incbin "baserom.gba", 0x5221AC, 0x200
 
-gUnknown_085223AC:: @ 0x085223AC
-	.incbin "baserom.gba", 0x5223AC, 0x4420
+gMainCatchModeBanner_Gfx:: @ 0x085223AC
+	.incbin "graphics/stage/main/catch_mode_banner.4bpp"
+	.space 0xA0
 
-gUnknown_085267CC:: @ 0x085267CC
+gMainCatchModeBanner_Pal:: @ 0x085267CC
     .incbin "baserom.gba", 0x5267CC, 0x200
 
-gUnknown_085269CC:: @ 0x085269CC
+gMainBoardJirachiBanner_Pal:: @ 0x085269CC
     .incbin "baserom.gba", 0x5269CC, 0x200
 
-gUnknown_08526BCC:: @ 0x08526BCC
+gMainBoardTravel_Pal:: @ 0x08526BCC
     .incbin "baserom.gba", 0x526BCC, 0x200
 
 gSapphireBoardZigzagoonFx_Gfx:: @ 0x08526DCC

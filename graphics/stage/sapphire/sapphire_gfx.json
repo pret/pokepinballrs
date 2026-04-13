@@ -286,6 +286,12 @@
           "mwidth": 5
         }
       ]
+    },
+    {
+      "gfx_filename": "shroomish_catch_burst_banner",
+      "oam": true,
+      "mheight": 9,
+      "mwidth": 30
     }
   ]
 }
