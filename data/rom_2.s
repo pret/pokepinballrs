@@ -4756,30 +4756,31 @@ gSphealWhiscashAnimFrameset:: @ 0x086AFC16
 	.incbin "baserom.gba", 0x6AFC16, 0x9A
 
 gBoardCollisionDataSets:: @ 0x086AFCB0
-    @ Note: only usage seems to use 1 pointer (tileData), then skip 3 entries
-    @ then 1 pointer (angleData), skip 3, 1 pointer (typeData) then skip 3
-    @ Place the data gets loaded into to seems to have an array of 4 of each of the pointer types
-    @ This possibly suggests that this is an array of 4 pointers for each of those data pieces here
-    @ ... but that only the first entry from those listed here for each object are used.
-
+    @ Note: Only the layer 0 (1st column) from this data is referenced in code.
+    @ Also, only the ruby board has any actual differences when on the second set here.
+    @ Otherwise, all entries match what is listed in gFieldBoardConfigs
     @ 2 sets each for Ruby/Sapphire board.
 
     @ TileData, ???, ???, ???
     @ AngleData, ???, ???, ???
     @ TypeData, ???, ???, ???
 
-    .4byte gUnknown_081C18E4, gUnknown_0820E964, gUnknown_0822F424, 0x00000000
-    .4byte gUnknown_081C38E4, gUnknown_08210964, gUnknown_08231424, 0x00000000
-    .4byte gUnknown_081DC064, gUnknown_082245E4, gUnknown_082432A4, 0x00000000
+    @ Ruby default
+    .4byte gUnknown_081C18E4, gUnknown_0820E964, gUnknown_0822F424, 0
+    .4byte gUnknown_081C38E4, gUnknown_08210964, gUnknown_08231424, 0
+    .4byte gUnknown_081DC064, gUnknown_082245E4, gUnknown_082432A4, 0
 
-    .4byte gUnknown_081E8424, gUnknown_0820E964, gUnknown_0822F424, 0x00000000
-    .4byte gUnknown_081EA424, gUnknown_08210964, gUnknown_08231424, 0x00000000
-    .4byte gUnknown_082027A4, gUnknown_082245E4, gUnknown_082432A4, 0x00000000
+    @ Ruby alternate
+    .4byte gUnknown_081E8424, gUnknown_0820E964, gUnknown_0822F424, 0
+    .4byte gUnknown_081EA424, gUnknown_08210964, gUnknown_08231424, 0
+    .4byte gUnknown_082027A4, gUnknown_082245E4, gUnknown_082432A4, 0
 
+    @ Sapphire default
     .4byte gUnknown_0826FE10, gUnknown_08291010, gUnknown_082AF6D0, gUnknown_082C5050
     .4byte gUnknown_08271E10, gUnknown_08293010, gUnknown_082B16D0, gUnknown_082C7050
     .4byte gUnknown_08286A10, gUnknown_082A5490, gUnknown_082BE7D0, gUnknown_082CF350
 
+    @ Sapphire alternate (same as default)
     .4byte gUnknown_0826FE10, gUnknown_08291010, gUnknown_082AF6D0, gUnknown_082C5050
     .4byte gUnknown_08271E10, gUnknown_08293010, gUnknown_082B16D0, gUnknown_082C7050
     .4byte gUnknown_08286A10, gUnknown_082A5490, gUnknown_082BE7D0, gUnknown_082CF350

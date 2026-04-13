@@ -885,6 +885,13 @@ struct ReplayInputFrame
     /*0x2*/ u8 heldButtonBits;
 };
 
+struct BoardCollisionDataSet
+{
+    const s16 *tileData[4];
+    const u16 *angleData[4];
+    const u8 *typeData[4];
+};
+
 struct FieldBoardLayout
 {
     /* These field offsets are intentionally kept as relative to
@@ -903,9 +910,7 @@ struct FieldBoardLayout
     /*0x28*/ s16 ballSpawnY;
     /*0x2A*/ s16 ballDrainY;
     /*0x2C*/ u8 *objPaletteSets[3];
-    /*0x38*/ const s16 *collisionTileMap[4];
-    /*0x48*/ const u16 *collisionAngleMap[4];
-    /*0x58*/ const u8 *collisionTypeMap[4];
+    /*0x38*/ struct BoardCollisionDataSet collision;
 };
 
 struct BoardConfig

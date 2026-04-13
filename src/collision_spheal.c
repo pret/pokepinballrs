@@ -25,9 +25,9 @@ s16 CollisionCheck_Spheal(struct Vector16 *arg0, u16 *arg1)
     boardLayer = gCurrentPinballGame->boardLayerDepth;
     div_result.y %= 64;
 
-    collisionTileIndex = gBoardConfig.fieldLayout.collisionTileMap[boardLayer + tileMapPage][div_result.y * 64 + div_result.x];
-    sp0 = gBoardConfig.fieldLayout.collisionAngleMap[boardLayer + tileMapPage][collisionTileIndex * 64 + div_remainder.y * 8 + div_remainder.x];
-    sp2 = gBoardConfig.fieldLayout.collisionTypeMap[boardLayer + tileMapPage][collisionTileIndex * 64 + div_remainder.y * 8 + div_remainder.x];
+    collisionTileIndex = gBoardConfig.fieldLayout.collision.tileData[boardLayer + tileMapPage][div_result.y * 64 + div_result.x];
+    sp0 = gBoardConfig.fieldLayout.collision.angleData[boardLayer + tileMapPage][collisionTileIndex * 64 + div_remainder.y * 8 + div_remainder.x];
+    sp2 = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][collisionTileIndex * 64 + div_remainder.y * 8 + div_remainder.x];
 
     CheckSphealEntityCollision(arg0, &sp0, &sp2);
 

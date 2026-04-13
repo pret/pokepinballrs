@@ -27,9 +27,9 @@ s16 CollisionCheck_Rayquaza(struct Vector16 *arg0, u16 *arg1)
         tileMapPage = vec1.y / 64;
         boardLayer = gCurrentPinballGame->boardLayerDepth;
         vec1.y %= 64;
-        r2 = gBoardConfig.fieldLayout.collisionTileMap[boardLayer + tileMapPage][vec1.y * 64 + vec1.x];
-        sp00 = gBoardConfig.fieldLayout.collisionAngleMap[boardLayer + tileMapPage][r2 * 64 + vec2.y * 8 + vec2.x];
-        sp02 = gBoardConfig.fieldLayout.collisionTypeMap[boardLayer + tileMapPage][r2 * 64 + vec2.y * 8 + vec2.x];
+        r2 = gBoardConfig.fieldLayout.collision.tileData[boardLayer + tileMapPage][vec1.y * 64 + vec1.x];
+        sp00 = gBoardConfig.fieldLayout.collision.angleData[boardLayer + tileMapPage][r2 * 64 + vec2.y * 8 + vec2.x];
+        sp02 = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][r2 * 64 + vec2.y * 8 + vec2.x];
     }
     else
     {

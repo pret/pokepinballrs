@@ -23,17 +23,6 @@ extern const u8 gBonusClearTextPal_Lit[];
 extern const u8 gBonusClearTextPal_Dark[];
 extern const s8 gBonusSummaryTextTemplates[][3][20];
 
-struct BoardCollisionDataSet
-{
-    const s16 *tileData;
-    u8 filler4[0xC];
-    const u16 *angleData;
-    u8 filler14[0xC];
-    const u8 *typeData;
-    u8 filler24[0xC];
-};
-extern const struct BoardCollisionDataSet gBoardCollisionDataSets[][2];
-
 // Handle debug system flags
 void BonusStage_HandleModeChangeFlags(void)
 {

@@ -3,15 +3,6 @@
 
 extern const s16 gScrollTileUpdateTable[][4];
 
-struct BoardCollisionDataSet
-{
-    const s16 *tileData;
-    u8 filler4[0xC];
-    const u16 *angleData;
-    u8 filler14[0xC];
-    const u8 *typeData;
-    u8 filler24[0xC];
-};
 extern const struct BoardCollisionDataSet gBoardCollisionDataSets[][2];
 
 extern u8 gBoardBGTileBufferAlt[];
@@ -200,9 +191,9 @@ void loadFieldBoardGraphics(void)
 
 void SetBoardCollisionConfig(s16 arg0)
 {
-    gBoardConfig.fieldLayout.collisionTileMap[0] = gBoardCollisionDataSets[gMain.selectedField][arg0].tileData;
-    gBoardConfig.fieldLayout.collisionAngleMap[0] = gBoardCollisionDataSets[gMain.selectedField][arg0].angleData;
-    gBoardConfig.fieldLayout.collisionTypeMap[0] = gBoardCollisionDataSets[gMain.selectedField][arg0].typeData;
+    gBoardConfig.fieldLayout.collision.tileData[0] = gBoardCollisionDataSets[gMain.selectedField][arg0].tileData[0];
+    gBoardConfig.fieldLayout.collision.angleData[0] = gBoardCollisionDataSets[gMain.selectedField][arg0].angleData[0];
+    gBoardConfig.fieldLayout.collision.typeData[0] = gBoardCollisionDataSets[gMain.selectedField][arg0].typeData[0];
 }
 
 void UpdateScrollingBackgroundTiles(void)
