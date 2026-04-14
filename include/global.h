@@ -940,7 +940,7 @@ extern u32 gReplayFrameCounter;
 extern struct BoardConfig gBoardConfig;
 extern u8 gKecleonSpriteOrderMap[];
 extern u16 gFieldPaletteVariants[][6][16];
-extern u16 gDusclopsBossAnimFrames[]; 
+extern u16 gDusclopsBossGuardReadyTileOffsets[]; 
 extern const u8 gBallPalettes[][0x20];
 extern const u8 gDusclopsBonusClear_Gfx[];
 extern struct ReplayInputFrame gIdleBoardConfig0;

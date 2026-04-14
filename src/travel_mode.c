@@ -13,8 +13,8 @@ extern const u8 gAreaRouletteSelectedFx_Gfx[];
 
 extern const u8 gDefaultBallPalette[];
 
-extern const s16 gPondDialAnimFrames[];
-extern const s16 gBumperAnimFrames[];
+extern const s16 gPondBumperRetractFrames[];
+extern const s16 gBoardArrowAnimFrames[];
 
 void InitAreaRoulette(void)
 {
@@ -88,13 +88,13 @@ void UpdateAreaRoulette(void)
         if (gMain.selectedField == FIELD_RUBY)
         {
             if (gCurrentPinballGame->rubyPondChangeTimer < 143)
-                gCurrentPinballGame->pondBumperStates[0] = gPondDialAnimFrames[gCurrentPinballGame->rubyPondChangeTimer / 8];
+                gCurrentPinballGame->pondBumperStates[0] = gPondBumperRetractFrames[gCurrentPinballGame->rubyPondChangeTimer / 8];
 
             if (gCurrentPinballGame->rubyPondChangeTimer >= 18 && gCurrentPinballGame->rubyPondChangeTimer < 161)
-                gCurrentPinballGame->pondBumperStates[2] = gPondDialAnimFrames[(gCurrentPinballGame->rubyPondChangeTimer - 18) / 8];
+                gCurrentPinballGame->pondBumperStates[2] = gPondBumperRetractFrames[(gCurrentPinballGame->rubyPondChangeTimer - 18) / 8];
 
             if (gCurrentPinballGame->rubyPondChangeTimer >= 36 && gCurrentPinballGame->rubyPondChangeTimer < 179)
-                gCurrentPinballGame->pondBumperStates[1] = gPondDialAnimFrames[(gCurrentPinballGame->rubyPondChangeTimer - 36) / 8];
+                gCurrentPinballGame->pondBumperStates[1] = gPondBumperRetractFrames[(gCurrentPinballGame->rubyPondChangeTimer - 36) / 8];
 
             gCurrentPinballGame->rubyPondChangeTimer++;
         }
@@ -274,9 +274,9 @@ void UpdateBoardArrowAnimState(void)
 
     index = (gMain.systemFrameCount % 100) / 10;
     gCurrentPinballGame->hudAnimFrameCounter = 0;
-    gCurrentPinballGame->catchArrowProgress = gBumperAnimFrames[index];
-    gCurrentPinballGame->evoArrowProgress = gBumperAnimFrames[index];
-    gCurrentPinballGame->coinRewardLevel = gBumperAnimFrames[index];
+    gCurrentPinballGame->catchArrowProgress = gBoardArrowAnimFrames[index];
+    gCurrentPinballGame->evoArrowProgress = gBoardArrowAnimFrames[index];
+    gCurrentPinballGame->coinRewardLevel = gBoardArrowAnimFrames[index];
     if (index == 7 || index == 9)
     {
         gCurrentPinballGame->catchArrowPaletteActive = 1;

@@ -701,7 +701,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
     {
         if (gCurrentPinballGame->bossFrameTimer <= 255)
         {
-            tileOffset = gDusclopsBossAnimFrames[(gCurrentPinballGame->bossFrameTimer % 0x40) / 16];
+            tileOffset = gDusclopsBossGuardReadyTileOffsets[(gCurrentPinballGame->bossFrameTimer % 0x40) / 16];
             gCurrentPinballGame->bossFrameTimer++;
 
             if (gCurrentPinballGame->bossFrameTimer == 256)

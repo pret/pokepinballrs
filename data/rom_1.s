@@ -624,7 +624,7 @@ gAreaPortraitIndexes:: @ 0x08137928
 	.2byte 5, 6, 7, 8, 9
 	.2byte 10, 11, 12, 12
 
-gPondDialAnimFrames:: @ 0x08137944
+gPondBumperRetractFrames:: @ 0x08137944
 	.2byte 10, 7,6,5,4,3,2,1,0,1,0,1,0,1,0,1,0,1
 
 gPondBumperTransitionFrames:: @ 0x08137968
@@ -642,7 +642,7 @@ gLotadBumperPalettes:: @ 0x081379B8
 gWhiscashPalettes:: @ 0x081379D8
 	.incbin "baserom.gba", 0x1379D8, 0xE0
 
-gBumperAnimFrames:: @ 0x08137AB8
+gBoardArrowAnimFrames:: @ 0x08137AB8
 	.2byte 0,1,2,3,2,1,0,3,0,3
 
 	@ Outside range used by the bumperAnimFrames.
@@ -691,7 +691,7 @@ gShopSignTransitionFrames:: @ 0x08137D06
 	.2byte 3,0,3,4,4,5,5,4,4,5,5,6,7,6
 	.space 2, 0
 
-gDusclopsBossAnimFrames:: @ 0x08137D40
+gDusclopsBossGuardReadyTileOffsets:: @ 0x08137D40
 	.2byte 12,13,12,14
 
 gWhirlwindGrabAnimFrameIndices:: @ 0x08137D48
@@ -733,9 +733,11 @@ gDebugMenuValueTemplate:: @ 0x08137DE8
 	.ascii "(000)    "
 	.byte 0,0,0
 
-gDebugMenuCursorGfx:: @ 0x08137E00
-	.byte 0x2A,0,0,0
+gDebugMenuCursorText:: @ 0x08137E00
+	.ascii "*"
+	.byte 0
 
+	.align 2, 0
 gPinballGameStateFuncs:: @ 0x08137E04
 	.4byte PinballGame_State0_49ED4 @ called once upon loading the field
 	.4byte PinballGame_State1_4AAD8 @ called once every frame while playing

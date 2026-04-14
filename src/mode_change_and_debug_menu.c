@@ -10,7 +10,7 @@ extern s16 gGameOverLetterYOffsets[];
 
 extern const u8 gDebugTextStrings[];
 extern const u8 gDebugMenuValueTemplate[];
-extern u8 gDebugMenuCursorGfx[];
+extern u8 gDebugMenuCursorText[];
 extern const u8 gMainBoardBallSave_Gfx[];
 extern const u8 gMainBoardBallSaveLatios_Gfx[];
 extern const u8 gMainBoardBallSaveLatiosArm_Gfx[];
@@ -85,7 +85,7 @@ void DebugMenu_RenderAndHandleInput(void)
     if (JOY_HELD(B_BUTTON))
     {
         if (gMain.systemFrameCount & 0x8)
-            DrawTextToTilemap(gDebugMenuCursorGfx, gMain.debugMenuCursorIndex + 26, 0);
+            DrawTextToTilemap(gDebugMenuCursorText, gMain.debugMenuCursorIndex + 26, 0);
 
         if (JOY_NEW(DPAD_UP) && gMain.debugMenuCursorIndex != 0)
             gMain.debugMenuCursorIndex--;
@@ -108,7 +108,7 @@ void DebugMenu_RenderAndHandleInput(void)
             break;
         }
 
-        DrawTextToTilemap(gDebugMenuCursorGfx, gMain.debugMenuCursorIndex + 26, 0);
+        DrawTextToTilemap(gDebugMenuCursorText, gMain.debugMenuCursorIndex + 26, 0);
     }
 
     for (i = 0x340; i < 0x380; i++)
