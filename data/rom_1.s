@@ -1644,5 +1644,3 @@ gGBAButtonIcons_Pals:: @ 0x0852B668
 
 gOptionsSprites_Gfx:: @ 0x0852B868
 	.incbin "graphics/options/sprites.4bpp"
-
-.incbin "baserom.gba", 0x52D888, 0xA0 @ 0x52D928 - 0x52D888

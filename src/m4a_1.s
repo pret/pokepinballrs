@@ -814,7 +814,7 @@ chk_adr_r2_done:
 	bx lr
 
 	.align 2, 0
-lt_MPlayJumpTableTemplate: .word 0x852D888 @ gMPlayJumpTableTemplate
+lt_MPlayJumpTableTemplate: .word gMPlayJumpTableTemplate
 
 	thumb_func_start ld_r3_tp_adr_i
 ld_r3_tp_adr_i:

@@ -119,6 +119,7 @@ SECTIONS
     .rodata :
     {
         data/rom_1.o(.rodata)
+        src/m4a_tables.o(.rodata);
         data/sound_data.o(.rodata)
         src/data.o(.rodata)
         data/rom_2.o(.rodata)

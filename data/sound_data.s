@@ -1,29 +1,6 @@
 .section .rodata
 
-
-gScaleTable:: @ 0x0852D928
-	.incbin "baserom.gba", 0x52D928, 0xB4
-
-gFreqTable:: @ 0x0852D9DC
-	.incbin "baserom.gba", 0x52D9DC, 0x30
-
-gPcmSamplesPerVBlankTable:: @ 0x0852DA0C
-	.incbin "baserom.gba", 0x52DA0C, 0x18
-
-gCgbScaleTable:: @ 0x0852DA24
-	.incbin "baserom.gba", 0x52DA24, 0x84
-
-gCgbFreqTable:: @ 0x0852DAA8
-	.incbin "baserom.gba", 0x52DAA8, 0x18
-
-gNoiseTable:: @ 0x0852DAC0
-	.incbin "baserom.gba", 0x52DAC0, 0x3C
-
-gCgb3Vol:: @ 0x0852DAFC
-	.incbin "baserom.gba", 0x52DAFC, 0x10
-
-gClockTable:: @ 0x0852DB0C
-	.incbin "baserom.gba", 0x52DB0C, 0x34
+@ Pokemon Cry template and xcmd table can probably move to m4a_tables.c
 
 gPokemonCrySongTemplate:: @ 0x0852DB40
     .byte 1, 0, 0xFF, 0
