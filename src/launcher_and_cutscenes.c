@@ -10,7 +10,7 @@ extern const u8 gRubyPainterPalette[];
 extern const u8 gSapphireTravelPaint_Gfx[];
 extern const u8 gSapphirePainterPalette[];
 extern const s16 gTravelEventAnimData[][3];
-extern const s16 gAreaToSpeciesTable[];
+extern const s16 gAreaPortraitIndexes[];
 extern const s16 gAreaRouletteTable[][7];
 extern u16 gTravelEventSpritesheetOam[][18];
 extern const s16 gHatchRevealFinalTimings[];
@@ -773,7 +773,7 @@ void RunTravelEventCutscene(void)
                 if (gCurrentPinballGame->travelAnimKeyframeIndex == 7)
                 {
                     gCurrentPinballGame->area =  gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
-                    gCurrentPinballGame->rouletteAreaIndex[0] = gAreaToSpeciesTable[gCurrentPinballGame->area];
+                    gCurrentPinballGame->roulettePortraitIndexes[0] = gAreaPortraitIndexes[gCurrentPinballGame->area];
                     LoadPortraitGraphics(0, 0);
                 }
 

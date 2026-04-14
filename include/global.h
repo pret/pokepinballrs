@@ -765,7 +765,7 @@ struct PinballGame
     /*0x6CC*/ s8 hatchFrameId;
     /*0x6CD*/ u8 hatchTileShufflePool[6];
     /*0x6D3*/ u8 hatchTilePalette[6];
-    /*0x6D9*/ s8 rouletteAreaIndex[2];
+    /*0x6D9*/ s8 roulettePortraitIndexes[2];
     /*0x6DB*/ u8 creatureOamPriority;
     /*0x6DC*/ u8 rouletteOutcomeId;
     /*0x6DD*/ s8 shopPurchaseConfirmed;

@@ -5,7 +5,7 @@
 #include "constants/ruby_states.h"
 
 extern const s16 gAreaRouletteTable[][7];
-extern const s16 gAreaToSpeciesTable[];
+extern const s16 gAreaPortraitIndexes[];
 extern const u16 gAreaRouletteOamFramesets[18][27];
 
 extern const u8 gTravelPortraitPalette[];
@@ -26,9 +26,9 @@ void InitAreaRoulette(void)
     gCurrentPinballGame->areaVisitCount = 0;
     gCurrentPinballGame->areaRouletteSlotIndex = (Random() + gMain.systemFrameCount) % 6;
     gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
-    gCurrentPinballGame->rouletteAreaIndex[1] = gAreaToSpeciesTable[gCurrentPinballGame->area];
+    gCurrentPinballGame->roulettePortraitIndexes[1] = gAreaPortraitIndexes[gCurrentPinballGame->area];
     gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][(gCurrentPinballGame->areaRouletteSlotIndex + 1) % 6];
-    gCurrentPinballGame->rouletteAreaIndex[0] = gAreaToSpeciesTable[gCurrentPinballGame->area];
+    gCurrentPinballGame->roulettePortraitIndexes[0] = gAreaPortraitIndexes[gCurrentPinballGame->area];
     LoadPortraitGraphics(0, 0);
     LoadPortraitGraphics(0, 1);
     for (i = 0; i < 6; i++)
@@ -193,7 +193,7 @@ void UpdateAreaRoulette(void)
         gCurrentPinballGame->rouletteSubOffset = (gCurrentPinballGame->rouletteFrameIndex * 32) / gCurrentPinballGame->rouletteRotationPeriod;
         if (gCurrentPinballGame->rouletteFrameIndex == 0)
         {
-            gCurrentPinballGame->rouletteAreaIndex[0] = gCurrentPinballGame->rouletteAreaIndex[1];
+            gCurrentPinballGame->roulettePortraitIndexes[0] = gCurrentPinballGame->roulettePortraitIndexes[1];
             LoadPortraitGraphics(0, 0);
         }
 
@@ -213,7 +213,7 @@ void UpdateAreaRoulette(void)
             }
 
             gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
-            gCurrentPinballGame->rouletteAreaIndex[1] = gAreaToSpeciesTable[gCurrentPinballGame->area];
+            gCurrentPinballGame->roulettePortraitIndexes[1] = gAreaPortraitIndexes[gCurrentPinballGame->area];
             LoadPortraitGraphics(0, 1);
             m4aSongNumStart(SE_ROULETTE_TICK);
         }

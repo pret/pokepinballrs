@@ -619,7 +619,7 @@ gIdlePinballGameStateFuncs:: @ 0x08137918
 	.4byte PinballGame_State2_4ABC8 @shared with main game mode
 	.4byte PinballGameIdle3_19288
 
-gAreaToSpeciesTable:: @ 0x08137928
+gAreaPortraitIndexes:: @ 0x08137928
 	.2byte 0, 1, 2, 3, 4
 	.2byte 5, 6, 7, 8, 9
 	.2byte 10, 11, 12, 12

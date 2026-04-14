@@ -28,9 +28,9 @@ void LoadPortraitGraphics(s16 arg0, s16 arg1)
     {
     case 0:
         gCurrentPinballGame->creatureOamPriority = 3;
-        gCurrentPinballGame->portraitGfxIndex[arg1] = gCurrentPinballGame->rouletteAreaIndex[arg1];
+        gCurrentPinballGame->portraitGfxIndex[arg1] = gCurrentPinballGame->roulettePortraitIndexes[arg1];
         DmaCopy16(3, gPortraitGenericGraphics[gCurrentPinballGame->portraitGfxIndex[arg1]], (void *)0x06010CA0 + arg1 * 0x300, 0x300);
-        index = gCurrentPinballGame->rouletteAreaIndex[arg1] * 0x10;
+        index = gCurrentPinballGame->roulettePortraitIndexes[arg1] * 0x10;
         DmaCopy16(3, &gPortraitGenericPalettes[index], (void *)0x05000200 + gPortraitPaletteSlots[arg1] * 0x20, 0x20);
         break;
     case 1:
