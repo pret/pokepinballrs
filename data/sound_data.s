@@ -3970,9 +3970,3 @@ gDirectSound_086885EC:: @ 0x086885EC
 .include "sound/songs/se_high_score_earned.s"
 .include "sound/songs/se_unk_14b.s"
 .include "sound/songs/se_whiscash_earthquake.s"
-
-@ This is not sound data below. It's some kind of save file descriptor (SRAM_F_V102).
-@.incbin "baserom.gba", 0x6A369C, 0x6A3700 - 0x6A369C
-
-.ascii "SRAM_F_V102"
-.align 2,0
