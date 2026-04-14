@@ -122,7 +122,7 @@ SECTIONS
         . = ALIGN(4); src/m4a_tables.o(.rodata);
         . = ALIGN(4); data/sound_data.o(.rodata)
         . = ALIGN(4); src/agb_sram.o(.rodata);
-        . = ALIGN(4); data/rom_1a.o(.rodata)
+        . = ALIGN(4); data/sound_data_2.o(.rodata)
         . = ALIGN(4); src/data.o(.rodata)
         . = ALIGN(4); data/rom_2.o(.rodata)
     }=0xFF
