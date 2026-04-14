@@ -679,7 +679,7 @@ sub_522D0:
 	add r2, r2, r1
 	add r2, r2, 0x10
 	ldr r5, =gDpcmSampleBuffer
-	ldr r6, =0x852D918 @ gDeltaEncodingTable
+	ldr r6, =gDeltaEncodingTable
 	mov r7, 0x40
 	ldrb lr, [r2], 1
 	strb lr, [r5], 1
