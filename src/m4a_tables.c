@@ -174,6 +174,9 @@ const u8 gCgb3Vol[] =
     0x20, 0x20,
 };
 
+/* Possibly can be brought in from sound_data; needs voiceGroup_dummy handled.
+
+
 const u8 gClockTable[] =
 {
     0x00,
@@ -224,11 +227,8 @@ const u8 gClockTable[] =
     0x58,
     0x5A,
     0x5C,
-    0x60,
-    0,0,0
+    0x60
 };
-
-/* Possibly can be brought in from sound_data; needs voiceGroup_dummy handled.
 
 
 #define FINE   0xb1

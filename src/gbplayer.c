@@ -125,6 +125,7 @@ void DisableGbPlayerRumble(void)
     int val = 0;
     gRumbleCommand = 0;
     gRumbleMotorMode = 0;
+    gSio32SerialEnabled = 0;
     *var0 = val;
     gSio32ReconnectTimer = 0;
     gRumblePatternPosition = -1;

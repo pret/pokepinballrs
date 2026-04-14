@@ -1,6 +1,11 @@
 .section .rodata
 
-@ Pokemon Cry template and xcmd table can probably move to m4a_tables.c
+
+@ Clock, Pokemon Cry template and xcmd table can probably move to m4a_tables.c
+@ Clock table matches, but has 3 extra 0s after it. (likely padding)
+
+gClockTable:: @ 0x0852DB0C
+	.incbin "baserom.gba", 0x52DB0C, 0x34
 
 gPokemonCrySongTemplate:: @ 0x0852DB40
     .byte 1, 0, 0xFF, 0
