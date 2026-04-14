@@ -7,6 +7,8 @@
 #include "gba/oam_types.h"
 	.include "asm/macros.inc"
 
+.align 2
+
 gIntrTableTemplate:: @ 0x086A4AA0
 	.4byte SerialIntr
 	.4byte Timer3Intr
@@ -13971,6 +13973,8 @@ gUnknown_086BBC3C:: @ 0x086BBC3C
 
 gUnknown_086BBC44:: @ 0x086BBC44
     .incbin "baserom.gba", 0x6BBC44, 0x38C @ 0x6BBFD0 - 0x6BBC44
+
+.align 2
 
 @ rom end 0x6BBFD0
 

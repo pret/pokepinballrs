@@ -1,4 +1,6 @@
 .section .rodata
+.align 2
+
 #include "constants/areas.h"
 #include "constants/fields.h"
 #include "constants/species.h"
@@ -1644,3 +1646,5 @@ gGBAButtonIcons_Pals:: @ 0x0852B668
 
 gOptionsSprites_Gfx:: @ 0x0852B868
 	.incbin "graphics/options/sprites.4bpp"
+
+.align 2

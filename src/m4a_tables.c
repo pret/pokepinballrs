@@ -174,9 +174,6 @@ const u8 gCgb3Vol[] =
     0x20, 0x20,
 };
 
-/* Possibly can be brought in from sound_data; needs voiceGroup_dummy handled.
-
-
 const u8 gClockTable[] =
 {
     0x00,
@@ -266,7 +263,7 @@ const struct PokemonCrySong gPokemonCrySongTemplate =
     .blockCount = 0,
     .priority = 255,
     .reverb = 0,
-    .tone = (struct ToneData *)&voicegroup_dummy,
+    .tone = (struct ToneData *)&voicegroup_base_gUnknown_0852DBAC,
     .part = {NULL, NULL},
     .gap = 0,
     .part0 = TUNE,
@@ -309,4 +306,3 @@ const XcmdFunc gXcmdTable[] =
     ply_xwait,
     ply_xcmd_0D,
 };
-*/
