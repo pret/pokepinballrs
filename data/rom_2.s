@@ -3852,7 +3852,7 @@ gCaptureSequenceTimings:: @ 0x086ACF38
     .space 0x4
 
 gCapturePalette:: @ 0x086ACF80
-	.incbin "baserom.gba", 0x6ACF80, 0x20
+	.byte 139, 66, 255, 127, 63, 62, 63, 62, 223, 0, 246, 122, 114, 102, 95, 123, 159, 118, 127, 117, 255, 75, 191, 11, 29, 11, 31, 0, 33, 4, 207, 61
 
 gEvoItemPositions:: @ 0x086ACFA0
 	.incbin "baserom.gba", 0x6ACFA0, 0x40
