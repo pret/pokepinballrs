@@ -251,32 +251,32 @@ void BonusBoardProcess_2B_4DBFC(void)
 
     switch (gMain.selectedField)
     {
-    case 2:
+    case FIELD_DUSCLOPS:
         gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
         gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[1].yOffset = gCurrentPinballGame->scrollEffectX / 2;
         break;
-    case 3:
+    case FIELD_KECLEON:
         gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset + (gCurrentPinballGame->globalAnimFrameCounter & 0x7FF) / 8;
         gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
         gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[1].yOffset = 0;
         break;
-    case 4:
-    case 5:
+    case FIELD_KYOGRE:
+    case FIELD_GROUDON:
         gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
         gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[1].yOffset = gMain.bgOffsets[2].yOffset;
         break;
-    case 6:
+    case FIELD_RAYQUAZA:
         gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset / 4;
         gMain.bgOffsets[1].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[1].yOffset = gMain.bgOffsets[2].yOffset;
         break;
-    case 7:
+    case FIELD_SPHEAL:
         gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset;
         gMain.bgOffsets[3].yOffset = gMain.bgOffsets[2].yOffset;
         break;

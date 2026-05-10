@@ -6,6 +6,7 @@
 #include "constants/high_scores.h"
 #include "constants/pinball_inputs.h"
 #include "constants/species.h"
+#include "constants/spriteGroups.h"
 
 struct HighScoreEntry
 {
@@ -123,7 +124,6 @@ struct Main
 };
 
 extern struct Main gMain;
-extern struct SpriteGroup gMain_spriteGroups[];
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
 extern IntrFunc *gVBlankIntrFuncPtr;

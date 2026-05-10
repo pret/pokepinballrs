@@ -17,7 +17,7 @@ extern s8 gCompletionBannerDone;
 extern s8 gCompletionBannerVisible;
 extern s16 gCompletionBannerY;
 extern s8 gCompletionBannerPhase;
-extern s8 gCompletionBannerFrame;
+extern s8 gCompletionBannerSpriteGroup;
 extern s8 gShowDialogFlag;
 extern u8 gDialogType;
 extern u16 gLinkExchangeCommand;
@@ -40,7 +40,7 @@ struct HighScoreScreenState
     u8 mainField;
     s32 highScoreIndex;
     s16 currentNameCharIndex;
-    s16 nameFlashToggle;
+    s16 nameFlashSpriteGroup;
     s16 flashFrameCounter;
     s16 currentNameChar;
     s16 flashDuration;
@@ -50,7 +50,7 @@ struct HighScoreScreenState
     s16 inputRepeatDelay;
     s16 linkWaitTimer;
     s8 nextIdleState;
-    u8 arrowBlinkToggle;
+    s8 arrowBlinkToggle;
     s8 displayModeVisible;
 };
 
@@ -141,7 +141,7 @@ void InitHighScoreData(void)
         }
     }
     gHighScoreScreenState.currentNameCharIndex = 0;
-    gHighScoreScreenState.nameFlashToggle = 0;
+    gHighScoreScreenState.nameFlashSpriteGroup = SG_0;
     gHighScoreScreenState.flashFrameCounter = 0;
     gHighScoreScreenState.flashDuration = 0;
     gHighScoreScreenState.flashElapsedFrames = 0;
@@ -188,7 +188,7 @@ void InitHighScoreData(void)
             {
                 gCompletionBannerVisible = 1;
                 gCompletionBannerY = 0xB8;
-                gCompletionBannerFrame = 0;
+                gCompletionBannerSpriteGroup = SG_0;
                 gCompletionBannerPhase = 0;
                 gHighScoreScreenState.nextSubState = 1;
             }
@@ -235,22 +235,22 @@ void HighScore_ShowCompletionBanner(void)
             temp = gHighScoreScreenState.flashDuration;
             if((gHighScoreScreenState.flashDuration & 3) == 0)
             {
-                gCompletionBannerFrame++;
-                if(gCompletionBannerFrame > 4)
+                gCompletionBannerSpriteGroup++;
+                if(gCompletionBannerSpriteGroup > SG_4)
                 {
-                    gCompletionBannerFrame = 0;
+                    gCompletionBannerSpriteGroup = SG_0;
                 }
             }
             if(gCompletionBannerY == 0x50)
             {
-                gCompletionBannerFrame = 0;
+                gCompletionBannerSpriteGroup = SG_0;
                 gCompletionBannerPhase++;
             }
             break;
         case 2:
             if(JOY_NEW(A_BUTTON | B_BUTTON))
             {
-                gCompletionBannerFrame = 0;
+                gCompletionBannerSpriteGroup = SG_0;
                 gCompletionBannerPhase++;
             }
             break;
@@ -296,15 +296,15 @@ void HighScore_FlashNewEntry(void)
     if(gHighScoreScreenState.flashFrameCounter > 8)
     {
         gHighScoreScreenState.flashFrameCounter = 0;
-        if(!gHighScoreScreenState.nameFlashToggle)
+        if(!gHighScoreScreenState.nameFlashSpriteGroup)
         {
-            gHighScoreScreenState.nameFlashToggle = 1;
+            gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
             CopyString(6 - (gHighScoreScreenState.mainField << 1), gHighScoreNameRowTilemapOffsets[gHighScoreScreenState.highScoreIndex] + (gHighScoreScreenState.mainField << 5), 0, 0x15, 4, 2);
             CopyString(0, 0x17, 6 - (gHighScoreScreenState.mainField << 1), gHighScoreNameRowTilemapOffsets[gHighScoreScreenState.highScoreIndex] + (gHighScoreScreenState.mainField << 5), 4, 2);
         }
         else
         {
-            gHighScoreScreenState.nameFlashToggle = 0;
+            gHighScoreScreenState.nameFlashSpriteGroup = SG_0;
             CopyString(0, 0x15, 6 - (gHighScoreScreenState.mainField << 1), gHighScoreNameRowTilemapOffsets[gHighScoreScreenState.highScoreIndex] + (gHighScoreScreenState.mainField << 5), 4, 2);
         }
     }
@@ -324,9 +324,9 @@ void HighScore_FlashNewEntry(void)
     if(gHighScoreScreenState.flashElapsedFrames > gHighScoreScreenState.flashDuration)
     {
         gHighScoreScreenState.flashElapsedFrames = 0;
-        if(gHighScoreScreenState.nameFlashToggle == 1)
+        if(gHighScoreScreenState.nameFlashSpriteGroup == SG_1)
         {
-            gHighScoreScreenState.nameFlashToggle = 0;
+            gHighScoreScreenState.nameFlashSpriteGroup = SG_0;
             gHighScoreScreenState.flashFrameCounter = 0;
             CopyString(0, 0x15, 6 - (gHighScoreScreenState.mainField << 1), gHighScoreNameRowTilemapOffsets[gHighScoreScreenState.highScoreIndex] +(gHighScoreScreenState.mainField << 5), 4, 2);
         }
@@ -436,7 +436,7 @@ void HighScore_NameEntry(void)
     if (++gHighScoreScreenState.flashFrameCounter > 12)
     {
         gHighScoreScreenState.flashFrameCounter = 0;
-        gHighScoreScreenState.nameFlashToggle = 1 - gHighScoreScreenState.nameFlashToggle;
+        gHighScoreScreenState.nameFlashSpriteGroup = SG_1 - gHighScoreScreenState.nameFlashSpriteGroup;
     }
 
     if (++gHighScoreScreenState.paletteAnimTimer > 8)
@@ -481,7 +481,7 @@ void HighScore_NameEntry(void)
         else
         {
             m4aSongNumStart(SE_MENU_MOVE);
-            gHighScoreScreenState.nameFlashToggle = 1;
+            gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
             PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
             gWorkingHighScores[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].data.parts.name[gHighScoreScreenState.currentNameCharIndex] = gHighScoreScreenState.currentNameChar;
             gHighScoreScreenState.currentNameCharIndex++;
@@ -497,7 +497,7 @@ void HighScore_NameEntry(void)
         else
         {
             m4aSongNumStart(SE_MENU_MOVE);
-            gHighScoreScreenState.nameFlashToggle = 1;
+            gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
             PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
             gWorkingHighScores[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].data.parts.name[gHighScoreScreenState.currentNameCharIndex] = gHighScoreScreenState.currentNameChar;
             gHighScoreScreenState.currentNameCharIndex--;
@@ -507,7 +507,7 @@ void HighScore_NameEntry(void)
 
     if (JOY_NEW(A_BUTTON))
     {
-        gHighScoreScreenState.nameFlashToggle = 1;
+        gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
         PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
         gWorkingHighScores[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].data.parts.name[gHighScoreScreenState.currentNameCharIndex] = gHighScoreScreenState.currentNameChar;
         if (gHighScoreScreenState.currentNameCharIndex == HIGH_SCORE_NAME_LENGTH - 1)
@@ -545,7 +545,7 @@ void HighScore_NameEntry(void)
         else
         {
             m4aSongNumStart(SE_SCORE_ENTRY_A_B_MOVE);
-            gHighScoreScreenState.nameFlashToggle = 1;
+            gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
             PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
             gWorkingHighScores[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].data.parts.name[gHighScoreScreenState.currentNameCharIndex] = gHighScoreScreenState.currentNameChar;
             gHighScoreScreenState.currentNameCharIndex--;
@@ -939,9 +939,9 @@ void UpdateNameEntryCursor(void)
     int i;
     struct SpriteGroup *spriteGroup;
 
-    spriteGroup = &gMain_spriteGroups[gHighScoreScreenState.nameFlashToggle];
+    spriteGroup = &gMain.spriteGroups[gHighScoreScreenState.nameFlashSpriteGroup];
     spriteGroup->active = TRUE;
-    LoadSpriteSets(gNameEntryCursorSpriteSets, 2, gMain_spriteGroups);
+    LoadSpriteSets(gNameEntryCursorSpriteSets, 2, gMain.spriteGroups);
 
     spriteGroup->baseX = gHighScoreNamePixelPositions[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].x + gHighScoreScreenState.currentNameCharIndex * 8;
     spriteGroup->baseY = gHighScoreNamePixelPositions[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].y;
@@ -987,7 +987,7 @@ void RenderHighScoreSprites(void)
     const struct SpriteSet *spriteSet;
     struct OamDataSimple *oamData;
 
-    spriteGroups = gMain_spriteGroups;
+    spriteGroups = gMain.spriteGroups;
     spriteGroup1 = spriteGroups;
     spriteGroup2 = &spriteGroups[1];
     spriteGroup3 = &spriteGroups[2 + (s8)gDialogType];
@@ -1043,7 +1043,7 @@ void RenderHighScoreSprites(void)
         spriteGroup2->active = TRUE;
         spriteGroup3->active = gShowDialogFlag;
         spriteGroup4->active = var1_02002858->collisionCooldownTimer;
-        LoadSpriteSets(gHighScoreScreenSpriteSets, 2, gMain_spriteGroups);
+        LoadSpriteSets(gHighScoreScreenSpriteSets, 2, gMain.spriteGroups);
         RenderHighScoreSprites_HELPER(4, spriteGroup2, spriteGroup4, spriteGroup3);
         if (spriteGroup4->active == TRUE)
     {
@@ -1084,7 +1084,7 @@ void RenderHighScoreSprites(void)
     {
         spriteGroup1->active = FALSE;
         spriteGroup2->active = FALSE;
-        LoadSpriteSets(gHighScoreScreenSpriteSets, 9, gMain_spriteGroups);
+        LoadSpriteSets(gHighScoreScreenSpriteSets, 9, gMain.spriteGroups);
     }
 
     spriteGroup3->active = FALSE;
@@ -1603,9 +1603,9 @@ void RenderCompletionBanner(void)
     int i;
     struct SpriteGroup *spriteGroup;
 
-    spriteGroup = &gMain_spriteGroups[gCompletionBannerFrame];
+    spriteGroup = &gMain.spriteGroups[gCompletionBannerSpriteGroup];
     spriteGroup->active = gCompletionBannerVisible;
-    LoadSpriteSets(gCompletionBannerSpriteSets, 5, gMain_spriteGroups);
+    LoadSpriteSets(gCompletionBannerSpriteSets, 5, gMain.spriteGroups);
     if (spriteGroup->active == TRUE)
     {
         spriteGroup->baseX = 120;

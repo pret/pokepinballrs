@@ -1004,16 +1004,16 @@ void RenderPokedexSprites(void)
     const struct SpriteSet *spriteSet;
     int var0, var1;
 
-    group0 = &gMain_spriteGroups[0];
-    group1 = &gMain_spriteGroups[1];
-    group2 = &gMain_spriteGroups[2];
-    group3 = &gMain_spriteGroups[3];
-    group4 = &gMain_spriteGroups[4];
-    group5 = &gMain_spriteGroups[5 + gPokedexAnimatedIconFrame];
-    group6 = &gMain_spriteGroups[17 + gPokedexPopupTypeIndex];
-    group7 = &gMain_spriteGroups[22 + gPokedexButtonPromptFrame];
-    group8 = &gMain_spriteGroups[24];
-    group9 = &gMain_spriteGroups[25 + gPokedexSpriteIndexBase * 2 + gPokedexPageIndicatorBlink];
+    group0 = &gMain.spriteGroups[SG_0];
+    group1 = &gMain.spriteGroups[SG_1];
+    group2 = &gMain.spriteGroups[SG_2];
+    group3 = &gMain.spriteGroups[SG_3];
+    group4 = &gMain.spriteGroups[SG_4];
+    group5 = &gMain.spriteGroups[SG_5 + gPokedexAnimatedIconFrame];
+    group6 = &gMain.spriteGroups[SG_17 + gPokedexPopupTypeIndex];
+    group7 = &gMain.spriteGroups[SG_22 + gPokedexButtonPromptFrame];
+    group8 = &gMain.spriteGroups[SG_24];
+    group9 = &gMain.spriteGroups[SG_25 + gPokedexSpriteIndexBase * 2 + gPokedexPageIndicatorBlink];
 
     group0->active = TRUE;
     group1->active = TRUE;
@@ -1220,14 +1220,14 @@ static void RenderLinkGraphics(void)
     struct OamDataSimple *groupOam;
     const struct SpriteSet *spriteSet;
 
-    group0 = &gMain_spriteGroups[0];
-    group1 = &gMain_spriteGroups[1];
-    group2 = &gMain_spriteGroups[2];
-    group3 = &gMain_spriteGroups[3];
-    group4 = &gMain_spriteGroups[4];
-    group6 = &gMain_spriteGroups[5 + gPokedexAnimatedIconFrame];
-    group7 = &gMain_spriteGroups[17 + gPokedexPopupTypeIndex];
-    group5 = &gMain_spriteGroups[24];
+    group0 = &gMain.spriteGroups[SG_0];
+    group1 = &gMain.spriteGroups[SG_1];
+    group2 = &gMain.spriteGroups[SG_2];
+    group3 = &gMain.spriteGroups[SG_3];
+    group4 = &gMain.spriteGroups[SG_4];
+    group6 = &gMain.spriteGroups[SG_5 + gPokedexAnimatedIconFrame];
+    group7 = &gMain.spriteGroups[SG_17 + gPokedexPopupTypeIndex];
+    group5 = &gMain.spriteGroups[SG_24];
 
     group0->active = TRUE;
     group1->active = TRUE;

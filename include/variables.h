@@ -156,7 +156,7 @@ extern const s8 gScorePaletteResetOffsets[3]; //Same as above
 extern const s16 gTitleMenuStateTable[11];
 extern const s8 gTitlePressStartAnimDurations[4];
 extern const s8 gTitleMenuSlideInAnimData[6][2];
-extern const s8 gTitleMenuSlideOutAnimData[9][2];
+extern const s8 gTitleMenuSlideOutAnimSpriteGroupData[9][2];
 extern const u16 gTitleNoSaveMenuActions[4];
 extern const u16 gTitleSavedMenuActions[];
 extern const struct SpriteSet *const gTitlePressStartSpriteSets[];
@@ -354,8 +354,6 @@ extern s16 gIntroScene1_TileOffsets[0x8];
 extern s16 gIntroBGParams[];
 extern s32 gIntroPalFadeLevel;
 extern const struct SpriteSet *const gIntroScene1_SpriteSets[];
-extern struct SpriteGroup gMain_spriteGroups_40[];
-extern struct SpriteGroup gMain_spriteGroups_48;
 extern struct Vector16 gIntroScene1_ScaleOffsets[0x4];
 extern s32 gIntroScaleY;
 

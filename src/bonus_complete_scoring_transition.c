@@ -9,9 +9,6 @@
 #include "constants/board/kyogre_states.h"
 #include "constants/board/rayquaza_states.h"
 
-extern struct SpriteGroup gMain_spriteGroups_12;
-extern struct SpriteGroup gMain_spriteGroups_14;
-
 extern const u8 gKecleonBonusClear_Gfx[];
 extern const u8 gKyogreBonusClear_Gfx[];
 extern const u8 gGroudonBonusClear_Gfx[];
@@ -45,8 +42,8 @@ void FadeToMainBoard(void)
         {
             gCurrentPinballGame->stageTimer = 0;
             gCurrentPinballGame->boardSubState = DEFAULT_MODE_SUBSTATE_INIT;
-            gMain.spriteGroups[6].active = FALSE;
-            gMain.spriteGroups[5].active = FALSE;
+            gMain.spriteGroups[SG_6].active = FALSE;
+            gMain.spriteGroups[SG_5].active = FALSE;
             if (gMain.tempField != gMain.selectedField)
             {
                 TransitionFromBonusToMainBoard();
@@ -73,7 +70,7 @@ void ProcessBonusBannerAndScoring(void)
 
     var0 = 8;
     var1 = 0;
-    group = &gMain.spriteGroups[6];
+    group = &gMain.spriteGroups[SG_6];
     if (gCurrentPinballGame->bannerSlideYOffset > 0)
     {
         gCurrentPinballGame->bannerSlideYOffset -= 6;
@@ -125,7 +122,7 @@ void ProcessBonusBannerAndScoring(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = &gMain.spriteGroups[5];
+        group = &gMain.spriteGroups[SG_5];
         group->baseX = 120;
         group->baseY = gCurrentPinballGame->bannerSlideYOffset + 50;
         for (i = 0; i < 18; i++)
@@ -196,7 +193,7 @@ void RenderBonusStageOverlaySprites(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = &gMain_spriteGroups_14;
+    group = &gMain.spriteGroups[SG_14];
     switch (gCurrentPinballGame->bossEntityState)
     {
     case 0:
@@ -234,7 +231,7 @@ void RenderBonusStageOverlaySprites(void)
         break;
     }
 
-    group = &gMain_spriteGroups_12;
+    group = &gMain.spriteGroups[SG_12];
     if (!group->active)
         return;
 

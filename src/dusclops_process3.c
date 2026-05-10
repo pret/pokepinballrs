@@ -97,9 +97,9 @@ void DusclopsBoardProcess_3B_33130(void)
             else
             {
                 gCurrentPinballGame->cameraYAdjust = 0;
-                gMain.spriteGroups[7].active = TRUE;
-                gMain.spriteGroups[8].active = TRUE;
-                gMain.spriteGroups[9].active = TRUE;
+                gMain.spriteGroups[SG_7].active = TRUE;
+                gMain.spriteGroups[SG_8].active = TRUE;
+                gMain.spriteGroups[SG_9].active = TRUE;
                 gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_1_DUSKULL_PHASE;
                 gCurrentPinballGame->stageTimer = 0;
             }
@@ -117,9 +117,9 @@ void DusclopsBoardProcess_3B_33130(void)
             break;
         case DUSCLOPS_BOARD_STATE_2_INIT_DUSCLOPS_PHASE:
             gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_3_DUSCLOPS_PHASE;
-            gMain.spriteGroups[13].active = TRUE;
-            gMain.spriteGroups[14].active = TRUE;
-            gMain.spriteGroups[12].active = TRUE;
+            gMain.spriteGroups[SG_13].active = TRUE;
+            gMain.spriteGroups[SG_14].active = TRUE;
+            gMain.spriteGroups[SG_12].active = TRUE;
             gCurrentPinballGame->boardEntityCollisionMode = DUSCLOPS_ENTITY_COLLISION_MODE_NONE;
             gCurrentPinballGame->bonusModeHitCount = 0;
             m4aSongNumStart(MUS_BONUS_FIELD_DUSCLOPS);
@@ -141,8 +141,8 @@ void DusclopsBoardProcess_3B_33130(void)
             {
                 gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_SCORE_PHASE;
                 gCurrentPinballGame->stageTimer = 0;
-                gMain.spriteGroups[6].active = TRUE;
-                gMain.spriteGroups[5].active = TRUE;
+                gMain.spriteGroups[SG_6].active = TRUE;
+                gMain.spriteGroups[SG_5].active = TRUE;
                 DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_VRAM1+0x1800, 8192);
                 gCurrentPinballGame->bannerSlideYOffset = 136;
             }
@@ -273,9 +273,9 @@ void DuskullPhase_ProcessEntityLogic(void) {
         if (r4)
         {
             gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_2_INIT_DUSCLOPS_PHASE;
-            gMain.spriteGroups[7].active = FALSE;
-            gMain.spriteGroups[8].active = FALSE;
-            gMain.spriteGroups[9].active = FALSE;
+            gMain.spriteGroups[SG_7].active = FALSE;
+            gMain.spriteGroups[SG_8].active = FALSE;
+            gMain.spriteGroups[SG_9].active = FALSE;
         }
     }
 
@@ -568,7 +568,7 @@ void DuskullPhase_ProcessGraphics() {
         s16 spriteVariant = gCurrentPinballGame->minionSpriteVariant[i];
         DmaCopy16(3, gDusclopsBoardDuskull_Gfx + spriteVariant * 0x280, OBJ_VRAM0 + 0x920 + i * 0x280, 0x280);
         oamIx = gCurrentPinballGame->minionOamIx[i];
-        spriteGroup = &gMain_spriteGroups[7 + i];
+        spriteGroup = &gMain.spriteGroups[SG_7 + i];
 
         if (gCurrentPinballGame->minionDrawInFrame[i]) {
             s32 x = 0; // Scrub C to get the compiler to add before subtracting
@@ -638,7 +638,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
     struct SpriteGroup *spriteGroup;
 
     tileOffset = 0;
-    spriteGroup = &gMain.spriteGroups[14];
+    spriteGroup = &gMain.spriteGroups[SG_14];
     switch(gCurrentPinballGame->bossEntityState)
     {
     case DUSCLOPS_ENTITY_STATE_INIT:
@@ -995,9 +995,9 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
             break;
         }
 
-        gMain.spriteGroups[13].active = FALSE;
-        gMain.spriteGroups[14].active = FALSE;
-        gMain.spriteGroups[12].active = FALSE;
+        gMain.spriteGroups[SG_13].active = FALSE;
+        gMain.spriteGroups[SG_14].active = FALSE;
+        gMain.spriteGroups[SG_12].active = FALSE;
         gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_4_INIT_SCORE_PHASE;
         gCurrentPinballGame->stageTimer = 0;
         break;
@@ -1035,7 +1035,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
     }
 
     // Blend appearance Lines
-    spriteGroup = &gMain.spriteGroups[12];
+    spriteGroup = &gMain.spriteGroups[SG_12];
     if (spriteGroup->active)
     {
         if (gCurrentPinballGame->returnToMainBoardFlag == 0)
@@ -1068,7 +1068,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
     }
 
     // Draw ball capture vortex
-    spriteGroup = &gMain.spriteGroups[13];
+    spriteGroup = &gMain.spriteGroups[SG_13];
 
     if (spriteGroup->active)
     {

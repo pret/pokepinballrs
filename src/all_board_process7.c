@@ -248,7 +248,7 @@ void BonusBoardProcess_7B_12BF8()
     {
     case FIELD_KECLEON:
         primaryBall->oamPriority = 2;
-        spriteGroup = &gMain_spriteGroups[gKecleonSpriteOrderMap[22]];
+        spriteGroup = &gMain.spriteGroups[gKecleonSpriteGroupOrderMap[22]];
         break;
     case FIELD_KYOGRE:
     case FIELD_GROUDON:

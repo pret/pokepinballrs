@@ -40,7 +40,7 @@ void UpdateNuzleafEntity(void)
     s16 var0;
     s16 var1;
 
-    group = &gMain.spriteGroups[71];
+    group = &gMain.spriteGroups[SG_71];
     var0 = 0;
     var1 = 0;
     switch (gCurrentPinballGame->nuzleafAnimState)
@@ -185,7 +185,7 @@ void AnimateRubyShopDoor(void)
     struct OamDataSimple *oamSimple;
     s16 priority;
 
-    group = &gMain.spriteGroups[65];
+    group = &gMain.spriteGroups[SG_65];
     if ((gCurrentPinballGame->shopDoorTargetFrame & 0xF) != gCurrentPinballGame->shopDoorCurrentFrame)
     {
         if (gCurrentPinballGame->shopDoorAnimDelay)
@@ -232,7 +232,7 @@ void AnimateRubyShopDoor(void)
     group->baseY = 80 - gCurrentPinballGame->cameraYOffset;
     for (i = 0; i < 2; i++)
     {
-        oamSimple = &gMain.spriteGroups[65].oam[i];
+        oamSimple = &gMain.spriteGroups[SG_65].oam[i];
         gOamBuffer[oamSimple->oamId].priority = priority;
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -247,7 +247,7 @@ void DrawWhiscash(void)
     s16 var0;
     const s16 *var1;
 
-    group = &gMain.spriteGroups[63];
+    group = &gMain.spriteGroups[SG_63];
     var1 = gWhiscashFramesetData[gCurrentPinballGame->whiscashFrameIx];
     if (group->active)
     {
@@ -795,7 +795,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
         gCurrentPinballGame->bumperHitCountdown--;
     }
 
-    group = &gMain.spriteGroups[62];
+    group = &gMain.spriteGroups[SG_62];
     if (gCurrentPinballGame->rubyPondState == RUBY_POND_STATE_LOTAD)
     {
         for (i = 0; i < 3; i++)
@@ -885,7 +885,7 @@ void AnimateSharpedoEntity(void)
     s16 var0;
 
     index = (gMain.systemFrameCount % 55) / 11;
-    group = &gMain.spriteGroups[61];
+    group = &gMain.spriteGroups[SG_61];
     DmaCopy16(3, gRubyBoardSharpedo_Gfx[gCurrentPinballGame->catchHoleTileVariant], (void *)0x06012C20, 0x260);
     if (gCurrentPinballGame->catchHoleAnimFrame)
         index = gCurrentPinballGame->catchHoleAnimFrame;

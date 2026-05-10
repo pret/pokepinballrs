@@ -103,13 +103,13 @@ void InitTitlescreenStates(void)
     gTitlescreen.animTimer = 0;
     gTitlescreen.animPhase = 0;
     gTitlescreen.menuAction = 0;
-    gTitlescreen.pressStartAnimFrame = 0;
-    gTitlescreen.deleteSaveGroupId = 4;
+    gTitlescreen.pressStartAnimSpriteGroupId = SG_0;
+    gTitlescreen.deleteSaveSpriteGroupId = SG_4;
     gTitlescreen.pressStartAndFlippersVisible = TRUE;
     gTitlescreen.deleteSaveWindowVisible = FALSE;
-    gTitlescreen.menuSpriteGroupId = 6;
-    gTitlescreen.cursorSpriteGroupId = 0;
-    gTitlescreen.selectorSpriteGroupId = 3;
+    gTitlescreen.menuSpriteGroupId = SG_6;
+    gTitlescreen.cursorSpriteGroupId = SG_0;
+    gTitlescreen.selectorSpriteGroupId = SG_3;
     gTitlescreen.menuVisible = FALSE;
     gTitlescreen.cursorArrowVisible = 0;
     gTitlescreen.selectorVisible = 0;
@@ -167,11 +167,11 @@ void TitleScreen1_WaitForStartButton(void)
     if (!gTitleTransitionActive)
     {
         gTitlescreen.animTimer++;
-        if (gTitlescreen.animTimer >= gTitlePressStartAnimDurations[gTitlescreen.pressStartAnimFrame])
+        if (gTitlescreen.animTimer >= gTitlePressStartAnimDurations[gTitlescreen.pressStartAnimSpriteGroupId])
         {
             gTitlescreen.animTimer = 0;
-            if (++gTitlescreen.pressStartAnimFrame > 3)
-                gTitlescreen.pressStartAnimFrame = 0;
+            if (++gTitlescreen.pressStartAnimSpriteGroupId > SG_3)
+                gTitlescreen.pressStartAnimSpriteGroupId = SG_0;
         }
 
         if (JOY_HELD(KEYS_MASK))
@@ -224,7 +224,7 @@ void TitleScreen2_AnimOpenMenu(void)
         if (gTitlescreen.animTimer >= gTitleMenuSlideInAnimData[gTitlescreen.animPhase][1])
         {
             gTitlescreen.animTimer = 0;
-            gTitlescreen.pressStartAnimFrame = gTitleMenuSlideInAnimData[gTitlescreen.animPhase][0];
+            gTitlescreen.pressStartAnimSpriteGroupId = gTitleMenuSlideInAnimData[gTitlescreen.animPhase][0];
             if (++gTitlescreen.animPhase > 5)
             {
                 gTitlescreen.animPhase = 0;
@@ -332,14 +332,14 @@ void TitleScreen4_MenuInputNoSavedGame(void)
     if (!gTitleTransitionActive)
     {
         gTitlescreen.animTimer++;
-        if (gTitlescreen.animTimer >= gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][1])
+        if (gTitlescreen.animTimer >= gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][1])
         {
             gTitlescreen.animTimer = 0;
             if (++gTitlescreen.animPhase > 6)
                 gTitlescreen.animPhase = 0;
 
-            gTitlescreen.cursorSpriteGroupId = gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][0];
-            gTitlescreen.selectorSpriteGroupId = gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][0] + 3;
+            gTitlescreen.cursorSpriteGroupId = gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][0];
+            gTitlescreen.selectorSpriteGroupId = gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][0] + 3;
         }
 
         if (JOY_NEW(DPAD_UP))
@@ -431,14 +431,14 @@ void TitleScreen5_MenuInputSavedGame(void)
     if (!gTitleTransitionActive)
     {
         gTitlescreen.animTimer++;
-        if (gTitlescreen.animTimer >= gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][1])
+        if (gTitlescreen.animTimer >= gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][1])
         {
             gTitlescreen.animTimer = 0;
             if (++gTitlescreen.animPhase > 6)
                 gTitlescreen.animPhase = 0;
 
-            gTitlescreen.cursorSpriteGroupId = gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][0];
-            gTitlescreen.selectorSpriteGroupId = gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][0] + 3;
+            gTitlescreen.cursorSpriteGroupId = gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][0];
+            gTitlescreen.selectorSpriteGroupId = gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][0] + 3;
         }
 
         if (JOY_NEW(DPAD_UP))
@@ -676,19 +676,19 @@ static void RenderTitlePressStartSprites(void)
 {
     int i;
     const struct SpriteSet *spriteSet;
-    struct SpriteGroup *startAndFlippersGroup = &gMain_spriteGroups[gTitlescreen.pressStartAnimFrame];
-    struct SpriteGroup *deleteMenuGroup = &gMain_spriteGroups[gTitlescreen.deleteSaveGroupId];
+    struct SpriteGroup *startAndFlippersGroup = &gMain.spriteGroups[gTitlescreen.pressStartAnimSpriteGroupId];
+    struct SpriteGroup *deleteMenuGroup = &gMain.spriteGroups[gTitlescreen.deleteSaveSpriteGroupId];
 
     startAndFlippersGroup->active = gTitlescreen.pressStartAndFlippersVisible;
     deleteMenuGroup->active = gTitlescreen.deleteSaveWindowVisible;
 
-    LoadSpriteSets(gTitlePressStartSpriteSets, 5, gMain_spriteGroups);
+    LoadSpriteSets(gTitlePressStartSpriteSets, 5, gMain.spriteGroups);
 
     if (startAndFlippersGroup->active == TRUE)
     {
         startAndFlippersGroup->baseX = 120;
         startAndFlippersGroup->baseY = 102;
-        spriteSet = gTitlePressStartSpriteSets[gTitlescreen.pressStartAnimFrame];
+        spriteSet = gTitlePressStartSpriteSets[gTitlescreen.pressStartAnimSpriteGroupId];
         for (i = 0; i < spriteSet->count; i++)
         {
             gOamBuffer[startAndFlippersGroup->oam[i].oamId].x = startAndFlippersGroup->oam[i].xOffset + startAndFlippersGroup->baseX;

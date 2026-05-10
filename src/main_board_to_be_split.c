@@ -498,7 +498,7 @@ void UpdateEvolutionShopSprite(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[78];
+    group = &gMain.spriteGroups[SG_78];
     if (gCurrentPinballGame->shopTransitionActive == 0)
     {
         if (gCurrentPinballGame->evoArrowProgress > 2)
@@ -554,7 +554,7 @@ void UpdateEvolutionShopSprite(void)
         {
             LoadShopItemGraphics(gCurrentPinballGame->evolutionShopActive);
             gCurrentPinballGame->shopTransitionActive = 0;
-            gMain.spriteGroups[78].active = FALSE;
+            gMain.spriteGroups[SG_78].active = FALSE;
         }
     }
 }
@@ -846,7 +846,7 @@ void InitTotodileEggDelivery(void)
     gCurrentPinballGame->eggDeliveryY = 2080;
     gCurrentPinballGame->totodileDeliveryFrame = 0;
     gCurrentPinballGame->totodileDeliveryTimer = 0;
-    gMain.spriteGroups[82].active = TRUE;
+    gMain.spriteGroups[SG_82].active = TRUE;
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->portraitOffsetX = 240;
     gCurrentPinballGame->portraitOffsetY = 160;
@@ -865,7 +865,7 @@ void AnimateTotodileEggDelivery(void)
     s16 var0;
 
     var0 = 0;
-    group = &gMain.spriteGroups[82];
+    group = &gMain.spriteGroups[SG_82];
     if (gPikaSaverFrameData[gCurrentPinballGame->totodileDeliveryFrame][1] > gCurrentPinballGame->totodileDeliveryTimer)
     {
         gCurrentPinballGame->totodileDeliveryTimer++;
@@ -929,7 +929,7 @@ void InitAerodactylEggDelivery(void)
     gCurrentPinballGame->eggDeliveryY = -40;
     gCurrentPinballGame->eggDeliveryVelX = -36;
     gCurrentPinballGame->eggDeliveryVelY = 60;
-    gMain.spriteGroups[12].active = TRUE;
+    gMain.spriteGroups[SG_12].active = TRUE;
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->portraitOffsetX = gCurrentPinballGame->eggDeliveryX / 20 - gFlyingCreatureCameraOffsets[0].x;
     gCurrentPinballGame->portraitOffsetY = gCurrentPinballGame->eggDeliveryY / 20 - gFlyingCreatureCameraOffsets[0].y;
@@ -947,7 +947,7 @@ void AnimateAerodactylEggDelivery(void)
     s16 var0;
 
     var0 = (gCurrentPinballGame->eggDropTimer % 56) / 8;
-    group = &gMain.spriteGroups[12];
+    group = &gMain.spriteGroups[SG_12];
     if (gCurrentPinballGame->eggDropTimer < 130)
     {
         if (gCurrentPinballGame->eggDropTimer % 36U == 0)
@@ -1292,7 +1292,7 @@ void UpdateRubyEggHatchAnimation(void)
     var0 = 0;
     var1 = 0;
     var2 = 0;
-    group = &gMain.spriteGroups[48];
+    group = &gMain.spriteGroups[SG_48];
     var3 = 0;
     switch (gCurrentPinballGame->eggAnimationPhase)
     {
@@ -1412,12 +1412,12 @@ void UpdateRubyEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
 
-    group = &gMain.spriteGroups[52];
+    group = &gMain.spriteGroups[SG_52];
     group->baseX = gCurrentPinballGame->eggBasePosX;
     group->baseY = gCurrentPinballGame->eggBasePosY;
     for (i = 0; i < 4; i++)
     {
-        oamSimple = &gMain.spriteGroups[52].oam[i];
+        oamSimple = &gMain.spriteGroups[SG_52].oam[i];
         gOamBuffer[oamSimple->oamId].priority = priority;
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -1433,7 +1433,7 @@ void UpdateHatchCave(void)
     s16 var0;
 
     priority = 1;
-    group = &gMain.spriteGroups[51];
+    group = &gMain.spriteGroups[SG_51];
     var0 = gMain.systemFrameCount % 36;
     gCurrentPinballGame->cyndaquilFrame = 0;
     gCurrentPinballGame->cyndaquilCollisionEnabled = 1;

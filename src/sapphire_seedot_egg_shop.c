@@ -52,7 +52,7 @@ void UpdateSapphireEggHatchAnimation(void)
     var3 = 0;
     var1 = 0;
     var2 = 0;
-    group = &gMain.spriteGroups[52];
+    group = &gMain.spriteGroups[SG_52];
     sp0 = 0;
     switch (gCurrentPinballGame->eggAnimationPhase)
     {
@@ -167,7 +167,7 @@ void UpdateSapphireEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
 
-    group = &gMain.spriteGroups[51];
+    group = &gMain.spriteGroups[SG_51];
     if (group->active)
     {
         group->baseX = 192 - gCurrentPinballGame->cameraXOffset;
@@ -392,7 +392,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
     s16 index;
     int var0;
 
-    group = &gMain.spriteGroups[64];
+    group = &gMain.spriteGroups[SG_64];
     if (!group->active)
         return;
 
@@ -408,7 +408,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[68];
+    group = &gMain.spriteGroups[SG_68];
     group->baseX = 10 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 298 - gCurrentPinballGame->cameraYOffset;
     oamSimple = &group->oam[0];
@@ -417,7 +417,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
 
     for (j = 0; j < 3; j++)
     {
-        group = &gMain.spriteGroups[65 + j];
+        group = &gMain.spriteGroups[SG_65 + j];
 
         var0 = gSeedotBaseXPositions[j] - j;
         group->baseX = var0 - gCurrentPinballGame->cameraXOffset;
@@ -545,7 +545,7 @@ void DrawSapphireShopSignSprite(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[69];
+    group = &gMain.spriteGroups[SG_69];
     if (group->active)
     {
         group->baseX = 16 - gCurrentPinballGame->cameraXOffset;
@@ -727,7 +727,7 @@ void UpdateSapphireEggMachine(void)
 
     for (i = 0; i < 4; i++)
     {
-        group = &gMain.spriteGroups[47 + i];
+        group = &gMain.spriteGroups[SG_47 + i];
         if (group->active)
         {
             if (gSplashEffectFrameDurations[gCurrentPinballGame->splashEffectFrameIndex[i]][0] > gCurrentPinballGame->splashEffectFrameTimer[i])

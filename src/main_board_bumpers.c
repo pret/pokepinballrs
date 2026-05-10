@@ -218,7 +218,7 @@ void DrawSapphireBumperSprites(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[61];
+    group = &gMain.spriteGroups[SG_61];
     if (!group->active)
         return;
 
@@ -233,7 +233,7 @@ void DrawSapphireBumperSprites(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[58];
+    group = &gMain.spriteGroups[SG_58];
     group->baseX = 68 - gCurrentPinballGame->cameraXOffset;
     if (gCurrentPinballGame->sapphireBumperHitFxTimer[0] < 14)
     {
@@ -250,7 +250,7 @@ void DrawSapphireBumperSprites(void)
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
 
-    group = &gMain.spriteGroups[62];
+    group = &gMain.spriteGroups[SG_62];
     group->baseX = 36 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 163 - gCurrentPinballGame->cameraYOffset;
     index = gSapphireBumperAnimFrames[gCurrentPinballGame->sapphireBumperAnimKeyframe[1]][0];
@@ -262,7 +262,7 @@ void DrawSapphireBumperSprites(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[59];
+    group = &gMain.spriteGroups[SG_59];
     group->baseX = 36 - gCurrentPinballGame->cameraXOffset;
     if (gCurrentPinballGame->sapphireBumperHitFxTimer[1] < 14)
     {
@@ -279,7 +279,7 @@ void DrawSapphireBumperSprites(void)
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
 
-    group = &gMain.spriteGroups[76];
+    group = &gMain.spriteGroups[SG_76];
     group->baseX = 61 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 186 - gCurrentPinballGame->cameraYOffset;
     if (gCurrentPinballGame->eggHatchShockWallOverride)
@@ -330,7 +330,7 @@ void HandleRubyBumperHit(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[63];
+    group = &gMain.spriteGroups[SG_63];
     if (gCurrentPinballGame->bumperHitCountdown > 0)
     {
         if (gCurrentPinballGame->bumperHitCountdown == 2)
