@@ -68,7 +68,7 @@ void PauseGame(void)
     if (gMain.selectedField < MAIN_FIELD_COUNT)
         ClampPortraitSpritesToOffscreen();
     else if (gMain.selectedField == FIELD_DUSCLOPS)
-        RenderBonusStageOverlaySprites();
+        HideDusclopsSprites();
     else if (gMain.selectedField == FIELD_KYOGRE)
         HideKyogreSplashSprite();
     else if (gMain.selectedField == FIELD_GROUDON)

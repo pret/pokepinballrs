@@ -93,7 +93,7 @@ void PinballGame_State0_49ED4(void)
         if (gMain.selectedField == FIELD_RUBY || gMain.selectedField == FIELD_SAPPHIRE)
             ClampPortraitSpritesToOffscreen();
         else if (gMain.selectedField == FIELD_DUSCLOPS)
-            RenderBonusStageOverlaySprites();
+            HideDusclopsSprites();
         else if (gMain.selectedField == FIELD_KYOGRE)
             HideKyogreSplashSprite();
         else if (gMain.selectedField == FIELD_GROUDON)
@@ -497,7 +497,7 @@ void PinballGame_State1_4AAD8(void)
             }
             else if (gMain.selectedField == FIELD_DUSCLOPS)
             {
-                RenderBonusStageOverlaySprites();
+                HideDusclopsSprites();
             }
             else if (gMain.selectedField == FIELD_KYOGRE)
             {

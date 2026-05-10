@@ -105,9 +105,9 @@ void PinballGameIdle1_19190(void)
                 ClampPortraitSpritesToOffscreen();
                 RestoreBoardObjPalettes(0);
             }
-            else if (gMain.selectedField == FIELD_KECLEON)
+            else if (gMain.selectedField == FIELD_KECLEON) // bug? other references are Dusclops
             {
-                RenderBonusStageOverlaySprites();
+                HideDusclopsSprites();
             }
 
             if ((gMain.modeChangeFlags & MODE_CHANGE_PAUSE) != 0)

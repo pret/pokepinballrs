@@ -153,8 +153,8 @@ void KyogreBoardProcess_3B_3869C(void)
         {
             gCurrentPinballGame->boardState = LEGENDARY_BOARD_STATE_SUCCESS_SCORING;
             gCurrentPinballGame->stageTimer = 0;
-            gMain.spriteGroups[SG_6].active = TRUE;
-            gMain.spriteGroups[SG_5].active = TRUE;
+            gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
+            gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
             DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x06015800, 0x2000);
             gCurrentPinballGame->bannerSlideYOffset = 136;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
@@ -195,8 +195,8 @@ void KyogreBoardProcess_3B_3869C(void)
     case LEGENDARY_BOARD_STATE_CATCH_BANNER:
         gCurrentPinballGame->boardState = LEGENDARY_BOARD_STATE_CATCH_SCORING;
         gCurrentPinballGame->stageTimer = 140;
-        gMain.spriteGroups[SG_6].active = TRUE;
-        gMain.spriteGroups[SG_5].active = TRUE;
+        gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
+        gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
         DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x06015800, 0x2000);
         gCurrentPinballGame->bannerSlideYOffset = 136;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;

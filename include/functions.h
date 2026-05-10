@@ -578,7 +578,7 @@ extern void DuskullPhase_ProcessGraphics();
 extern void DusclopsPhase_ProcessEntityLogicAndGraphics();
 extern void FadeToMainBoard();
 extern void ProcessBonusBannerAndScoring();
-extern void RenderBonusStageOverlaySprites();
+extern void HideDusclopsSprites();
 extern void TransitionFromBonusToMainBoard(void);
 //extern ? KecleonBoardProcess_3A_35860();
 //extern ? KecleonBoardProcess_3B_35AA4();
