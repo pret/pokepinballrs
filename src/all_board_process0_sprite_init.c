@@ -273,14 +273,14 @@ void KyogreBoardProcess_0A_50F04()
     }
 
     gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[SG_11].active = TRUE;
-    gMain.spriteGroups[SG_12].active = TRUE;
-    gMain.spriteGroups[SG_13].active = TRUE;
-    gMain.spriteGroups[SG_14].active = TRUE;
-    gMain.spriteGroups[SG_21].active = TRUE;
-    gMain.spriteGroups[SG_22].active = TRUE;
-    gMain.spriteGroups[SG_23].active = TRUE;
-    gMain.spriteGroups[SG_15].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_CRYSTAL_TOP_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_CRYSTAL_TOP_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_CRYSTAL_BOTTOM_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_CRYSTAL_BOTTOM_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_ENTITY].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_WHIRLPOOL_0].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_WHIRLPOOL_1].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_INTRO_CRYSTAL_GROUND].active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
