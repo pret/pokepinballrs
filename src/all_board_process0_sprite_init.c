@@ -36,8 +36,8 @@ void RubyBoardProcess_0B_50918(void)
 {
     s16 i;
 
-    gMain.spriteGroups[SG_10].active = FALSE;
-    gMain.spriteGroups[SG_11].active = FALSE;
+    gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = FALSE;
+    gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = FALSE;
     gMain.spriteGroups[SG_48].active = FALSE;
     gMain.spriteGroups[SG_71].active = FALSE;
     for (i = 51; i < 67; i++)
@@ -88,8 +88,8 @@ void RubyBoardProcess_0B_50918(void)
         gMain.spriteGroups[SG_56].active = TRUE;
         gMain.spriteGroups[SG_54].active = TRUE;
         gMain.spriteGroups[SG_55].active = TRUE;
-        gMain.spriteGroups[SG_10].active = TRUE;
-        gMain.spriteGroups[SG_11].active = TRUE;
+        gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = TRUE;
+        gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = TRUE;
     }
 
     LoadSpriteSets(
@@ -134,8 +134,8 @@ void SapphireBoardProcess_0B_50B80(void)
     gMain.spriteGroups[SG_51].active = FALSE;
     gMain.spriteGroups[SG_76].active = FALSE;
     gMain.spriteGroups[SG_75].active = FALSE;
-    gMain.spriteGroups[SG_10].active = FALSE;
-    gMain.spriteGroups[SG_11].active = FALSE;
+    gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = FALSE;
+    gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = FALSE;
     gCurrentPinballGame->randomSpriteVariantSeed = gMain.systemFrameCount % 25;
     if (gCurrentPinballGame->cameraYViewport < 90)
     {
@@ -179,8 +179,8 @@ void SapphireBoardProcess_0B_50B80(void)
         gMain.spriteGroups[SG_57].active = TRUE;
         gMain.spriteGroups[SG_55].active = TRUE;
         gMain.spriteGroups[SG_56].active = TRUE;
-        gMain.spriteGroups[SG_10].active = TRUE;
-        gMain.spriteGroups[SG_11].active = TRUE;
+        gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = TRUE;
+        gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = TRUE;
     }
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets, gFieldSpriteSets[gMain.selectedField].numSpriteSets, gMain.spriteGroups);

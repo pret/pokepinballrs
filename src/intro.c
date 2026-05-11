@@ -1497,12 +1497,12 @@ void IntroScene6_RenderStarSprites(void)
     const struct SpriteSet *p;
     struct SpriteGroup *spriteGroups[6];
 
-    spriteGroups[0] = &gMain.spriteGroups[SG_6 * gIntroSpriteEntities[0].animFrame];
-    spriteGroups[1] = &gMain.spriteGroups[SG_6 * gIntroSpriteEntities[1].animFrame + 1];
-    spriteGroups[2] = &gMain.spriteGroups[SG_6 * gIntroSpriteEntities[2].animFrame + 2];
-    spriteGroups[3] = &gMain.spriteGroups[SG_6 * gIntroSpriteEntities[3].animFrame + 3];
-    spriteGroups[4] = &gMain.spriteGroups[SG_6 * gIntroSpriteEntities[4].animFrame + 4];
-    spriteGroups[5] = &gMain.spriteGroups[SG_6 * gIntroSpriteEntities[5].animFrame + 5];
+    spriteGroups[0] = &gMain.spriteGroups[SG_0 + (6 * gIntroSpriteEntities[0].animFrame)];
+    spriteGroups[1] = &gMain.spriteGroups[SG_1 + (6 * gIntroSpriteEntities[1].animFrame)];
+    spriteGroups[2] = &gMain.spriteGroups[SG_2 + (6 * gIntroSpriteEntities[2].animFrame)];
+    spriteGroups[3] = &gMain.spriteGroups[SG_3 + (6 * gIntroSpriteEntities[3].animFrame)];
+    spriteGroups[4] = &gMain.spriteGroups[SG_4 + (6 * gIntroSpriteEntities[4].animFrame)];
+    spriteGroups[5] = &gMain.spriteGroups[SG_5 + (6 * gIntroSpriteEntities[5].animFrame)];
 
     spriteGroups[0]->active = gIntroSpriteEntities[0].visible;
     spriteGroups[1]->active = gIntroSpriteEntities[1].visible;

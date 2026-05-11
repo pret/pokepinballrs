@@ -5,7 +5,10 @@
 #define SG_1 1
 #define SG_2 2
 #define SG_3 3
+#define SG_BONUS_BOARD_FLIPPER_BASE 3 // Of 2. Left, Right
+#define SG_BONUS_BOARD_LEFT_FLIPPER 3
 #define SG_4 4
+#define SG_BONUS_BOARD_RIGHT_FLIPPER 4
 #define SG_5 5
 #define SG_BONUS_COMPLETE_BANNER_SCORE 5
 #define SG_6 6
@@ -23,11 +26,14 @@
 #define SG_10 10
 #define SG_LEGENDARY_CATCH_PORTRAIT_BORDERS 10
 #define SG_KECLEON_DRAW_ORDER_SPRITES_BASE 10 // Includes bushes, ball, kecleon entity -- 14 total reserved
+#define SG_MAIN_BOARD_FLIPPER_BASE 10 // Of 2. Left, Right
+#define SG_MAIN_BOARD_LEFT_FLIPPER 10
 #define SG_11 11
 #define SG_GROUDON_CRYSTAL_BASE 11 // Of 4. Top right; bottom right; top left; bottom left
 #define SG_GROUDON_CRYSTAL_TOP_RIGHT 11
 #define SG_KYOGRE_CRYSTAL_BASE 11 // Of 4. Top right; top left, bottom right, bottom left.
 #define SG_KYOGRE_CRYSTAL_TOP_RIGHT 11
+#define SG_MAIN_BOARD_RIGHT_FLIPPER 11
 #define SG_12 12
 #define SG_DUSCLOPS_PHASING_FX 12
 #define SG_GROUDON_CRYSTAL_BOTTOM_RIGHT 12

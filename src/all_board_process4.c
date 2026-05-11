@@ -64,7 +64,7 @@ void MainBoardProcess_4B_19490(void)
         else if (gCurrentPinballGame->flipper[i].position < 0)
             gCurrentPinballGame->flipper[i].position = 0;
 
-        spriteGroup = &gMain.spriteGroups[SG_10 + i];
+        spriteGroup = &gMain.spriteGroups[SG_MAIN_BOARD_FLIPPER_BASE + i];
         if (spriteGroup->active)
         {
             s8 flipperTileIndex;
@@ -175,7 +175,7 @@ void BonusBoardProcess_4B_19734(void)
         else if (gCurrentPinballGame->flipper[i].position < 0)
             gCurrentPinballGame->flipper[i].position = 0;
 
-        spriteGroup = &gMain.spriteGroups[SG_3 + i];
+        spriteGroup = &gMain.spriteGroups[SG_BONUS_BOARD_FLIPPER_BASE + i];
         if (spriteGroup->active)
         {
             s8 flipperTileIndex;
