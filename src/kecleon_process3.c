@@ -857,7 +857,7 @@ void RenderKecleonSprites(void)
 
     baseX = 104;
     baseY = 60;
-    spriteGroup = &gMain.spriteGroups[SG_31];
+    spriteGroup = &gMain.spriteGroups[SG_KECLEON_REFLECTION_HEAD];
     spriteGroup->baseX = gCurrentPinballGame->bossPositionX / 10 + baseX - gCurrentPinballGame->cameraXOffset;
     spriteGroup->baseY = gCurrentPinballGame->bossPositionY / 10 + baseY - gCurrentPinballGame->cameraYOffset;
 
@@ -895,7 +895,7 @@ void RenderKecleonSprites(void)
 
     baseX = 104;
     baseY = 26;
-    spriteGroup = &gMain.spriteGroups[SG_9];
+    spriteGroup = &gMain.spriteGroups[SG_KECLEON_DUST_FX];
     var0 = gCurrentPinballGame->kecleonCollisionEnabled * 3;
     var1 = gCurrentPinballGame->kecleonDustGfxFrame / 8 - 2;
 
@@ -931,7 +931,7 @@ void UpdateKecleonScopeItem(void)
     int xx, yy;
     int squaredMagnitude;
 
-    group = &gMain.spriteGroups[SG_24];
+    group = &gMain.spriteGroups[SG_KECLEON_SCOPE_ITEM];
     if (!group->active)
         return;
 
@@ -1123,7 +1123,7 @@ void RenderKecleonBoardElements(void)
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
 
-    group = &gMain.spriteGroups[SG_7];
+    group = &gMain.spriteGroups[SG_KECLEON_TREE_LEAVES];
     var0 = 5 - gCurrentPinballGame->kecleonCollisionY % 10;
     if (gCurrentPinballGame->kecleonCollisionY > 30)
         var1 = 20;
@@ -1195,7 +1195,7 @@ void RenderKecleonBoardElements(void)
         }
     }
 
-    group = &gMain.spriteGroups[SG_25];
+    group = &gMain.spriteGroups[SG_KECLEON_FLOWER_BY_TREE];
     group->baseX = 120 - gCurrentPinballGame->cameraXOffset;
     group->baseY = -gCurrentPinballGame->cameraYOffset - 128;
     var2 = 0;
@@ -1215,7 +1215,7 @@ void RenderKecleonBoardElements(void)
 
     for (i = 0; i < 2; i++)
     {
-        group = &gMain.spriteGroups[SG_26 + i];
+        group = &gMain.spriteGroups[SG_KECLEON_FLOWER_PAIR_LEFT + i];
         group->baseX = 120 - gCurrentPinballGame->cameraXOffset;
         group->baseY = -gCurrentPinballGame->cameraYOffset - 128;
 
@@ -1235,7 +1235,7 @@ void RenderKecleonBoardElements(void)
         }
     }
 
-    group = &gMain.spriteGroups[SG_28];
+    group = &gMain.spriteGroups[SG_KECLEON_FLOWER_TRIPLE_RIGHT];
     group->baseX = 120 - gCurrentPinballGame->cameraXOffset;
     group->baseY = -gCurrentPinballGame->cameraYOffset - 128;
     var2 = 0;
@@ -1253,7 +1253,7 @@ void RenderKecleonBoardElements(void)
         gOamBuffer[oamSimple->oamId].tileNum = 0x132 + var2 * 12 + j * 8;
     }
 
-    group = &gMain.spriteGroups[SG_32];
+    group = &gMain.spriteGroups[SG_KECLEON_REFLECTION_BALL];
     group->baseX = gCurrentPinballGame->ball->screenPosition.x;
     group->baseY = gCurrentPinballGame->ball->screenPosition.y + 14;
     oamSimple = &group->oam[0];
@@ -1263,7 +1263,7 @@ void RenderKecleonBoardElements(void)
     else
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
 
-    group = &gMain.spriteGroups[SG_29];
+    group = &gMain.spriteGroups[SG_KECLEON_BALL_RIPPLE_FX];
     if (gCurrentPinballGame->kecleonWaterBallCollisionTimer < 12)
         gCurrentPinballGame->kecleonWaterBallCollisionTimer++;
     else
@@ -1290,7 +1290,7 @@ void RenderKecleonBoardElements(void)
         gOamBuffer[oamSimple->oamId].tileNum = 0x16E + var2;
     }
 
-    group = &gMain.spriteGroups[SG_30];
+    group = &gMain.spriteGroups[SG_KECLEON_STEP_RIPPLE_FX];
     if (gCurrentPinballGame->kecleonWaterCollisionTimer < 24)
         gCurrentPinballGame->kecleonWaterCollisionTimer++;
     else
@@ -1361,7 +1361,7 @@ void SortKecleonSpritesByY(void)
 
     for (i = 0; i < 14; i++)
     {
-        gKecleonSpriteGroupOrderMap[10 + sp0[i].spriteIndex] = SG_10 + i;
+        gKecleonSpriteGroupOrderMap[10 + sp0[i].spriteIndex] = SG_KECLEON_DRAW_ORDER_SPRITES_BASE + i;
         gKecleonSpriteSets[i + 10] = sp0[i].spriteSet;
     }
 

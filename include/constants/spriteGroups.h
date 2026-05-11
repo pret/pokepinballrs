@@ -13,13 +13,16 @@
 #define SG_7 7
 #define SG_DUSKULL_BASE 7 // Of 3
 #define SG_DUSKULL_0 7
+#define SG_KECLEON_TREE_LEAVES 7
 #define SG_8 8
 #define SG_DUSKULL_1 8
 #define SG_9 9
 #define SG_DUSKULL_2 9
 #define SG_LEGENDARY_CATCH_PORTRAIT 9
+#define SG_KECLEON_DUST_FX 9
 #define SG_10 10
 #define SG_LEGENDARY_CATCH_PORTRAIT_BORDERS 10
+#define SG_KECLEON_DRAW_ORDER_SPRITES_BASE 10 // Includes bushes, ball, kecleon entity -- 14 total reserved
 #define SG_11 11
 #define SG_GROUDON_CRYSTAL_BASE 11 // Of 4. Top right; bottom right; top left; bottom left
 #define SG_GROUDON_CRYSTAL_TOP_RIGHT 11
@@ -47,16 +50,25 @@
 #define SG_GROUDON_FIREBALL_LAUNCH_FX 23
 #define SG_24 24
 #define SG_GROUDON_FIREBALL_CAUGHT_BALL 24
+#define SG_KECLEON_SCOPE_ITEM 24
 #define SG_25 25
+#define SG_KECLEON_FLOWER_BY_TREE 25
 #define SG_26 26
+#define SG_KECLEON_FLOWER_PAIR_LEFT 26
 #define SG_27 27
+#define SG_KECLEON_FLOWER_PAIR_BOTTOM_RIGHT 27
 #define SG_28 28
+#define SG_KECLEON_FLOWER_TRIPLE_RIGHT 28
 #define SG_29 29
 #define SG_GROUDON_ENTITY 29
+#define SG_KECLEON_BALL_RIPPLE_FX 29
 #define SG_30 30
 #define SG_GROUDON_SHOCKWAVE 30
+#define SG_KECLEON_STEP_RIPPLE_FX 30
 #define SG_31 31
+#define SG_KECLEON_REFLECTION_HEAD 31
 #define SG_32 32
+#define SG_KECLEON_REFLECTION_BALL 32
 #define SG_33 33
 #define SG_34 34
 #define SG_35 35

@@ -225,30 +225,30 @@ void KecleonBoardProcess_0A_50DE0(void)
     }
 
     gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[SG_23].active = TRUE;
-    gMain.spriteGroups[SG_9].active = TRUE;
-    gMain.spriteGroups[SG_24].active = TRUE;
-    gMain.spriteGroups[SG_16].active = TRUE;
-    gMain.spriteGroups[SG_17].active = TRUE;
-    gMain.spriteGroups[SG_7].active = TRUE;
-    gMain.spriteGroups[SG_10].active = TRUE;
-    gMain.spriteGroups[SG_11].active = TRUE;
-    gMain.spriteGroups[SG_12].active = TRUE;
-    gMain.spriteGroups[SG_13].active = TRUE;
-    gMain.spriteGroups[SG_14].active = TRUE;
-    gMain.spriteGroups[SG_15].active = TRUE;
-    gMain.spriteGroups[SG_18].active = TRUE;
-    gMain.spriteGroups[SG_19].active = TRUE;
-    gMain.spriteGroups[SG_20].active = TRUE;
-    gMain.spriteGroups[SG_21].active = TRUE;
-    gMain.spriteGroups[SG_25].active = TRUE;
-    gMain.spriteGroups[SG_26].active = TRUE;
-    gMain.spriteGroups[SG_27].active = TRUE;
-    gMain.spriteGroups[SG_28].active = TRUE;
-    gMain.spriteGroups[SG_31].active = TRUE;
-    gMain.spriteGroups[SG_32].active = TRUE;
-    gMain.spriteGroups[SG_29].active = TRUE;
-    gMain.spriteGroups[SG_30].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +13].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DUST_FX].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_SCOPE_ITEM].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +6].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +7].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_TREE_LEAVES].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +0].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +1].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +2].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +3].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +4].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +5].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +8].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +9].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +10].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +11].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_FLOWER_BY_TREE].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_FLOWER_PAIR_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_FLOWER_PAIR_BOTTOM_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_FLOWER_TRIPLE_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_REFLECTION_HEAD].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_REFLECTION_BALL].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_BALL_RIPPLE_FX].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_STEP_RIPPLE_FX].active = TRUE;
 
     LoadSpriteSets(
         gFieldSpriteSets[gMain.selectedField].spriteSets,
