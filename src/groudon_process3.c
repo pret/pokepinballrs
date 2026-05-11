@@ -483,7 +483,7 @@ void UpdateGroudonEntityLogic(void)
                 MPlayStart(&gMPlayInfo_SE1, &se_unk_11c);
                 gCurrentPinballGame->projectileAttackAnimTimer = 8;
                 gCurrentPinballGame->projectileFlightTimer = 35;
-                gMain.spriteGroups[SG_22].active = TRUE;
+                gMain.spriteGroups[SG_GROUDON_FIREBALL].active = TRUE;
                 gCurrentPinballGame->projectilePosition.x = 1200;
                 gCurrentPinballGame->projectilePosition.y = 1240;
                 tempVector.x = gCurrentPinballGame->projectilePosition.x / 10 - gCurrentPinballGame->ball->positionQ0.x;
@@ -560,7 +560,7 @@ void UpdateGroudonEntityLogic(void)
             {
                 if (gCurrentPinballGame->bossFrameTimer == 0)
                 {
-                    gMain.spriteGroups[SG_30].active = TRUE;
+                    gMain.spriteGroups[SG_GROUDON_SHOCKWAVE].active = TRUE;
                     gCurrentPinballGame->shockwaveAnimTimer = 0;
                     MPlayStart(&gMPlayInfo_SE1, &se_unk_11d);
                 }
@@ -607,8 +607,8 @@ void UpdateGroudonEntityLogic(void)
             // catch groudon
             gCurrentPinballGame->bossEntityState = GROUDON_ENTITY_STATE_CAPTURE;
             gCurrentPinballGame->bossFramesetIndex = 0;
-            gMain.spriteGroups[SG_10].active = TRUE;
-            gMain.spriteGroups[SG_9].active = TRUE;
+            gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS].active = TRUE;
+            gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT].active = TRUE;
             gCurrentPinballGame->currentSpecies = SPECIES_GROUDON;
             gCurrentPinballGame->bossAttackTimer = 0;
             gCurrentPinballGame->captureSequenceTimer = 0;
@@ -628,7 +628,7 @@ void UpdateGroudonEntityLogic(void)
 
         gCurrentPinballGame->bossMovementPhase = 0;
         gCurrentPinballGame->bossFrameTimer = 0;
-        if (gMain.spriteGroups[SG_24].active)
+        if (gMain.spriteGroups[SG_GROUDON_FIREBALL_CAUGHT_BALL].active)
             gCurrentPinballGame->ballGrabTimer = 1;
         break;
     case GROUDON_ENTITY_STATE_PREPARE_LEAVING:
@@ -764,7 +764,7 @@ void UpdateGroudonEntityLogic(void)
         if (gCurrentPinballGame->impactShakeTimer == 8)
         {
             i = 0;
-            gMain.spriteGroups[SG_15 + i].active = TRUE;
+            gMain.spriteGroups[SG_GROUDON_BOULDER_BASE + i].active = TRUE;
             gCurrentPinballGame->boulderState[i] = GROUDON_BOULDER_STATE_SPAWN;
             gCurrentPinballGame->boulderSpriteFrame[i] = 0;
             gCurrentPinballGame->boulderAnimTimer[i] = 0;
@@ -773,7 +773,7 @@ void UpdateGroudonEntityLogic(void)
         if (gCurrentPinballGame->impactShakeTimer == 20)
         {
             i = 1;
-            gMain.spriteGroups[SG_15 + i].active = TRUE;
+            gMain.spriteGroups[SG_GROUDON_BOULDER_BASE + i].active = TRUE;
             gCurrentPinballGame->boulderState[i] = GROUDON_BOULDER_STATE_SPAWN;
             gCurrentPinballGame->boulderSpriteFrame[i] = 13;
             gCurrentPinballGame->boulderAnimTimer[i] = 0;
@@ -782,7 +782,7 @@ void UpdateGroudonEntityLogic(void)
         if (gCurrentPinballGame->impactShakeTimer == 53)
         {
             i = 2;
-            gMain.spriteGroups[SG_15 + i].active = TRUE;
+            gMain.spriteGroups[SG_GROUDON_BOULDER_BASE + i].active = TRUE;
             gCurrentPinballGame->boulderState[i] = GROUDON_BOULDER_STATE_SPAWN;
             gCurrentPinballGame->boulderSpriteFrame[i] = 22;
             gCurrentPinballGame->boulderAnimTimer[i] = 0;
@@ -830,7 +830,7 @@ void RenderGroudonSprites(void)
     s16 var0;
     int palette;
 
-    group = &gMain.spriteGroups[SG_29];
+    group = &gMain.spriteGroups[SG_GROUDON_ENTITY];
     if (group->active)
     {
         var0 = gGroudonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][0];
@@ -907,7 +907,8 @@ void RenderGroudonSprites(void)
         }
     }
 
-    group = &gMain.spriteGroups[SG_23];
+    // Special effect that appears for a small number of frames around groudon's face, when launching a fireball
+    group = &gMain.spriteGroups[SG_GROUDON_FIREBALL_LAUNCH_FX];
     if (group->active)
     {
         if (gCurrentPinballGame->projectileAttackAnimTimer > 0)
@@ -935,7 +936,7 @@ void RenderGroudonSprites(void)
 
         if (gCurrentPinballGame->captureState == MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE)
         {
-            gMain.spriteGroups[SG_23].active = FALSE;
+            gMain.spriteGroups[SG_GROUDON_FIREBALL_LAUNCH_FX].active = FALSE;
             gCurrentPinballGame->projectileAttackAnimTimer = 0;
         }
     }
@@ -960,7 +961,7 @@ void UpdateGroudonFieldEntities(void)
     s8 var0;
 
     varSL = 0;
-    group = &gMain.spriteGroups[SG_10];
+    group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS];
     if (group->active)
     {
         if (gCurrentPinballGame->portraitDisplayState == PORTRAIT_DISPLAY_MODE_BANNER)
@@ -988,7 +989,7 @@ void UpdateGroudonFieldEntities(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = &gMain.spriteGroups[SG_9];
+        group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT];
         group->baseX = gCurrentPinballGame->rouletteBasePos.x - 8;
         group->baseY = gCurrentPinballGame->rouletteBasePos.y - 8;
         if (group->baseY >= 200)
@@ -1003,7 +1004,7 @@ void UpdateGroudonFieldEntities(void)
         }
     }
 
-    group = &gMain.spriteGroups[SG_24];
+    group = &gMain.spriteGroups[SG_GROUDON_FIREBALL_CAUGHT_BALL];
     if (group->active)
     {
         gCurrentPinballGame->ballGrabTimer--;
@@ -1055,7 +1056,7 @@ void UpdateGroudonFieldEntities(void)
 
         if (gCurrentPinballGame->ballGrabTimer == 0)
         {
-            gMain.spriteGroups[SG_24].active = FALSE;
+            gMain.spriteGroups[SG_GROUDON_FIREBALL_CAUGHT_BALL].active = FALSE;
             gCurrentPinballGame->ballGrabFlashTimer = 0;
             gCurrentPinballGame->ballGrabbed = 0;
         }
@@ -1083,7 +1084,7 @@ void UpdateGroudonFieldEntities(void)
         }
     }
 
-    group = &gMain.spriteGroups[SG_22];
+    group = &gMain.spriteGroups[SG_GROUDON_FIREBALL];
     if (group->active)
     {
         tempVector.x = gCurrentPinballGame->projectilePosition.x / 10 - gCurrentPinballGame->ball->positionQ0.x;
@@ -1101,7 +1102,7 @@ void UpdateGroudonFieldEntities(void)
                 {
                     MPlayStart(&gMPlayInfo_SE1, &se_unk_11f);
                     gCurrentPinballGame->projectileFlightTimer = 10;
-                    gMain.spriteGroups[SG_24].active = TRUE;
+                    gMain.spriteGroups[SG_GROUDON_FIREBALL_CAUGHT_BALL].active = TRUE;
                     gCurrentPinballGame->ballGrabTimer = 612;
                     PlayRumble(9);
                 }
@@ -1144,7 +1145,7 @@ void UpdateGroudonFieldEntities(void)
             }
 
             if (gCurrentPinballGame->projectileFlightTimer == 0)
-                gMain.spriteGroups[SG_22].active = FALSE;
+                gMain.spriteGroups[SG_GROUDON_FIREBALL].active = FALSE;
         }
 
         group->baseX = gCurrentPinballGame->projectilePosition.x / 10 - gCurrentPinballGame->cameraXOffset - 12;
@@ -1164,14 +1165,14 @@ void UpdateGroudonFieldEntities(void)
 
         if (gCurrentPinballGame->captureState == MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE)
         {
-            gMain.spriteGroups[SG_22].active = FALSE;
+            gMain.spriteGroups[SG_GROUDON_FIREBALL].active = FALSE;
             gCurrentPinballGame->projectileFlightTimer = 0;
         }
     }
 
     for (i = 0; i < 3; i++)
     {
-        group = &gMain.spriteGroups[SG_15 + i];
+        group = &gMain.spriteGroups[SG_GROUDON_BOULDER_BASE + i];
         if (group->active)
         {
             switch (gCurrentPinballGame->boulderState[i])
@@ -1334,7 +1335,7 @@ void UpdateGroudonFieldEntities(void)
             case GROUDON_BOULDER_STATE_CLEANUP:
                 gCurrentPinballGame->boulderCollisionPos[i].x = 0;
                 gCurrentPinballGame->boulderCollisionPos[i].y = 0;
-                gMain.spriteGroups[SG_15 + i].active = FALSE;
+                gMain.spriteGroups[SG_GROUDON_BOULDER_BASE + i].active = FALSE;
                 break;
             }
 
@@ -1372,7 +1373,7 @@ void UpdateGroudonFieldEntities(void)
     */
     for (i = 0; i < 4; i++)
     {
-        group = &gMain.spriteGroups[SG_18 + i];
+        group = &gMain.spriteGroups[SG_GROUDON_FILE_PILLAR_BASE + i];
         if (group->active)
         {
             switch(gCurrentPinballGame->firePillarState[i])
@@ -1476,7 +1477,7 @@ void UpdateGroudonFieldEntities(void)
                 gCurrentPinballGame->firePillarAnimLoopCount[i] = 0;
                 break;
             case GROUDON_FIRE_PILLAR_STATE_CLEANUP:
-                gMain.spriteGroups[SG_18 + i].active = FALSE;
+                gMain.spriteGroups[SG_GROUDON_FILE_PILLAR_BASE + i].active = FALSE;
                 break;
             }
 
@@ -1568,7 +1569,7 @@ void UpdateGroudonFieldEntities(void)
             m4aSongNumStart(SE_GROUDON_DUSTORM_LIFT);
     }
 
-    group = &gMain.spriteGroups[SG_30];
+    group = &gMain.spriteGroups[SG_GROUDON_SHOCKWAVE];
     if (group->active)
     {
         s16 scale;
@@ -1601,7 +1602,7 @@ void UpdateGroudonFieldEntities(void)
         {
             for (i = 0; i < 4; i++)
             {
-                gMain.spriteGroups[SG_18 + i].active = TRUE;
+                gMain.spriteGroups[SG_GROUDON_FILE_PILLAR_BASE + i].active = TRUE;
                 gCurrentPinballGame->firePillarState[i] = GROUDON_FIRE_PILLAR_STATE_SPAWN;
                 gCurrentPinballGame->firePillarAnimFrame[i] = 0;
                 gCurrentPinballGame->firePillarFrameTimer[i] = 0;
@@ -1656,7 +1657,7 @@ void UpdateGroudonFieldEntities(void)
         }
 
         if ((gMain.modeChangeFlags & MODE_CHANGE_EXPIRED_BONUS_BANNER) != 0)
-            gMain.spriteGroups[SG_30].active = FALSE;
+            gMain.spriteGroups[SG_GROUDON_SHOCKWAVE].active = FALSE;
     }
 }
 
@@ -1666,7 +1667,7 @@ void HideGroudonShockwaveSprite(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = &gMain.spriteGroups[SG_30];
+    group = &gMain.spriteGroups[SG_GROUDON_SHOCKWAVE];
     if (group->active)
     {
         group->baseX = 240;
@@ -1694,7 +1695,7 @@ void AnimateGroudonBackground(void)
     var0 = gGroudonBgTileAnimIndices[(gMain.systemFrameCount % 96) / 24];
     for (i = 0; i < 4; i++)
     {
-        group = &gMain.spriteGroups[SG_11 + i];
+        group = &gMain.spriteGroups[SG_GROUDON_CRYSTAL_BASE + i];
         group->baseX = 120 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 128 - gCurrentPinballGame->cameraYOffset;
         for (j = 0; j < 3; j++)

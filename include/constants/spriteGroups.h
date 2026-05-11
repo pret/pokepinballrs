@@ -11,36 +11,50 @@
 #define SG_6 6
 #define SG_BONUS_COMPLETE_BANNER 6
 #define SG_7 7
-#define SG_DUSKULL_BASE 7
+#define SG_DUSKULL_BASE 7 // Of 3
 #define SG_DUSKULL_0 7
 #define SG_8 8
 #define SG_DUSKULL_1 8
 #define SG_9 9
 #define SG_DUSKULL_2 9
+#define SG_LEGENDARY_CATCH_PORTRAIT 9
 #define SG_10 10
+#define SG_LEGENDARY_CATCH_PORTRAIT_BORDERS 10
 #define SG_11 11
+#define SG_GROUDON_CRYSTAL_BASE 11 // Of 4. Top right; bottom right; top left; bottom left
+#define SG_GROUDON_CRYSTAL_TOP_RIGHT 11
 #define SG_12 12
 #define SG_DUSCLOPS_PHASING_FX 12
+#define SG_GROUDON_CRYSTAL_BOTTOM_RIGHT 12
 #define SG_13 13
 #define SG_DUSCLOPS_CAPTURE_VORTEX 13
+#define SG_GROUDON_CRYSTAL_TOP_LEFT 13
 #define SG_14 14
 #define SG_DUSCLOPS_ENTITY 14
+#define SG_GROUDON_CRYSTAL_BOTTOM_LEFT 14
 #define SG_15 15
+#define SG_GROUDON_BOULDER_BASE 15 // Of 3
 #define SG_16 16
 #define SG_17 17
 #define SG_18 18
+#define SG_GROUDON_FILE_PILLAR_BASE 18 // Of 4
 #define SG_19 19
 #define SG_20 20
 #define SG_21 21
 #define SG_22 22
+#define SG_GROUDON_FIREBALL 22
 #define SG_23 23
+#define SG_GROUDON_FIREBALL_LAUNCH_FX 23
 #define SG_24 24
+#define SG_GROUDON_FIREBALL_CAUGHT_BALL 24
 #define SG_25 25
 #define SG_26 26
 #define SG_27 27
 #define SG_28 28
 #define SG_29 29
+#define SG_GROUDON_ENTITY 29
 #define SG_30 30
+#define SG_GROUDON_SHOCKWAVE 30
 #define SG_31 31
 #define SG_32 32
 #define SG_33 33

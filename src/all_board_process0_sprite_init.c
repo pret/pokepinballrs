@@ -308,11 +308,11 @@ void GroudonBoardProcess_0A_50FD4(void)
     }
 
     gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[SG_11].active = TRUE;
-    gMain.spriteGroups[SG_12].active = TRUE;
-    gMain.spriteGroups[SG_13].active = TRUE;
-    gMain.spriteGroups[SG_14].active = TRUE;
-    gMain.spriteGroups[SG_29].active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_CRYSTAL_TOP_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_CRYSTAL_BOTTOM_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_CRYSTAL_TOP_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_CRYSTAL_BOTTOM_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_ENTITY].active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
