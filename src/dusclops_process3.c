@@ -97,9 +97,9 @@ void DusclopsBoardProcess_3B_33130(void)
             else
             {
                 gCurrentPinballGame->cameraYAdjust = 0;
-                gMain.spriteGroups[SG_DUSKULL_0].active = TRUE;
-                gMain.spriteGroups[SG_DUSKULL_1].active = TRUE;
-                gMain.spriteGroups[SG_DUSKULL_2].active = TRUE;
+                gMain.spriteGroups[SG_DUSKULL_ENTITY_0].active = TRUE;
+                gMain.spriteGroups[SG_DUSKULL_ENTITY_1].active = TRUE;
+                gMain.spriteGroups[SG_DUSKULL_ENTITY_2].active = TRUE;
                 gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_1_DUSKULL_PHASE;
                 gCurrentPinballGame->stageTimer = 0;
             }
@@ -273,9 +273,9 @@ void DuskullPhase_ProcessEntityLogic(void) {
         if (should_draw_duskull)
         {
             gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_2_INIT_DUSCLOPS_PHASE;
-            gMain.spriteGroups[SG_DUSKULL_0].active = FALSE;
-            gMain.spriteGroups[SG_DUSKULL_1].active = FALSE;
-            gMain.spriteGroups[SG_DUSKULL_2].active = FALSE;
+            gMain.spriteGroups[SG_DUSKULL_ENTITY_0].active = FALSE;
+            gMain.spriteGroups[SG_DUSKULL_ENTITY_1].active = FALSE;
+            gMain.spriteGroups[SG_DUSKULL_ENTITY_2].active = FALSE;
         }
     }
 
@@ -568,7 +568,7 @@ void DuskullPhase_ProcessGraphics() {
         s16 spriteVariant = gCurrentPinballGame->minionSpriteVariant[i];
         DmaCopy16(3, gDusclopsBoardDuskull_Gfx + spriteVariant * 0x280, OBJ_VRAM0 + 0x920 + i * 0x280, 0x280);
         oamIx = gCurrentPinballGame->minionOamIx[i];
-        spriteGroup = &gMain.spriteGroups[SG_DUSKULL_BASE + i];
+        spriteGroup = &gMain.spriteGroups[SG_DUSKULL_ENTITY_BASE + i];
 
         if (gCurrentPinballGame->minionDrawInFrame[i]) {
             s32 x = 0; // Scrub C to get the compiler to add before subtracting

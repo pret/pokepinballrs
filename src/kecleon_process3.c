@@ -50,7 +50,7 @@ extern const s16 gKecleonPlantAnimIndices[];
 extern const struct KecleonSpriteSortEntry gKecleonSpriteYSortData[];
 extern const u16 gKecleonLowerBodyOamData[126][2][3];
 extern const u16 gKecleonUpperBodyOamData[126][2][3];
-extern const struct SpriteSet *gKecleonDefaultSpriteSets[];
+extern const struct SpriteSet *gKecleonBoardSpriteSets[];
 
 void KecleonBoardProcess_3A_35860(void)
 {
@@ -1324,7 +1324,7 @@ void SortKecleonSpritesByY(void)
     struct KecleonSpriteSortEntry sp0[14];
 
     for (i = 0; i < 33; i++)
-        gKecleonSpriteSets[i] = gKecleonDefaultSpriteSets[i];
+        gKecleonSpriteSets[i] = gKecleonBoardSpriteSets[i];
 
     sp0[12] = gKecleonSpriteYSortData[12];
     sp0[12].ySortKey = gCurrentPinballGame->ball->positionQ0.y;

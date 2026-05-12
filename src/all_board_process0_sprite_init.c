@@ -13,9 +13,9 @@ void RubyBoardProcess_0A_50848(void)
     gMain.spriteGroups[SG_64].active = TRUE;
     group = &gMain.spriteGroups[SG_48]; // fake match?
     gMain.spriteGroups[SG_70].active = TRUE;
-    gMain.spriteGroups[SG_0].active = TRUE;
-    gMain.spriteGroups[SG_1].active = TRUE;
-    gMain.spriteGroups[SG_2].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_PANEL].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_TOP_BORDER].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER].active = TRUE;
     gMain.spriteGroups[SG_28].active = TRUE;
     gMain.spriteGroups[SG_81].active = TRUE;
     gMain.spriteGroups[SG_65].active = TRUE;
@@ -111,9 +111,9 @@ void SapphireBoardProcess_0A_50AD4(void)
     gMain.spriteGroups[SG_69].active = TRUE;
     gMain.spriteGroups[SG_52].active = TRUE;
     gMain.spriteGroups[SG_74].active = TRUE;
-    gMain.spriteGroups[SG_0].active = TRUE;
-    gMain.spriteGroups[SG_1].active = TRUE;
-    gMain.spriteGroups[SG_2].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_PANEL].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_TOP_BORDER].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER].active = TRUE;
     gMain.spriteGroups[SG_25].active = TRUE;
     gMain.spriteGroups[SG_85].active = TRUE;
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,

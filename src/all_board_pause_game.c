@@ -100,7 +100,7 @@ void PositionPauseMenuSprites(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = &gMain.spriteGroups[SG_0];
+    group = &gMain.spriteGroups[SG_PAUSE_PANEL];
     oamSimple = &group->oam[0];
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset;
@@ -125,7 +125,7 @@ void PositionPauseMenuSprites(void)
         gOamBuffer[oamSimple->oamId].matrixNum = 0;
     }
 
-    group = &gMain.spriteGroups[SG_1];
+    group = &gMain.spriteGroups[SG_PAUSE_TOP_BORDER];
     for (i = 0; i < 2; i++)
     {
         oamSimple = &group->oam[i];
@@ -133,7 +133,7 @@ void PositionPauseMenuSprites(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset;
     }
 
-    group = &gMain.spriteGroups[SG_2];
+    group = &gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER];
     for (i = 0; i < 3; i++)
     {
         oamSimple = &group->oam[i];
@@ -226,7 +226,7 @@ void AnimatePauseMenuOverlay(void)
         yScale = 256;
     }
 
-    group = &gMain.spriteGroups[SG_0];
+    group = &gMain.spriteGroups[SG_PAUSE_PANEL];
     if (var0 >= 0)
     {
         s16 index;
@@ -275,7 +275,7 @@ void AnimatePauseMenuOverlay(void)
 
     SetMatrixScale(0x100, yScale, 5);
 
-    group = &gMain.spriteGroups[SG_1];
+    group = &gMain.spriteGroups[SG_PAUSE_TOP_BORDER];
     group->baseX = 100 - xOffset;
     group->baseY = 80 + yOffset;
     for (i = 0; i < 2; i++)
@@ -285,7 +285,7 @@ void AnimatePauseMenuOverlay(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[SG_2];
+    group = &gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER];
     group->baseX = 68 + xOffset;
     group->baseY = 108 - yOffset;
     for (i = 0; i < 3; i++)

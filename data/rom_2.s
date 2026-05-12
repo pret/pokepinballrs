@@ -4422,7 +4422,7 @@ gKecleonSpriteYSortData:: @ 0x086AEA70
     .byte 30,11
     .space 0x2
 
-    .4byte gUnknown_086BA180
+    .4byte gBonusBoardBallSpriteSet
     .byte 0,12
     .space 0x2
 
@@ -5355,22 +5355,22 @@ gSapphireGetArrowTilePtrs:: @ 0x086B14A8
     .4byte 0x06008AC0, 0x06008EA0, 0x060092A0
 
 gFieldSpriteSets:: @ 0x086B155C
-    .4byte gUnknown_086B2390
-    .2byte 0x54, 0
-    .4byte gUnknown_086B24E0
-    .2byte 0x57, 0
-    .4byte gUnknown_086BB3E4
-    .2byte 0xF, 0
-    .4byte gKecleonDefaultSpriteSets
-    .2byte 0x21, 0
-    .4byte gUnknown_086BB4A4
-    .2byte 0x1B, 0
-    .4byte gUnknown_086BB510
-    .2byte 0x20, 0
-    .4byte gUnknown_086BB590
-    .2byte 0x2E, 0
-    .4byte gUnknown_086BB648
-    .2byte 0x17, 0
+    .4byte gRubyBoardSpriteSets
+    .2byte 84, 0
+    .4byte gSapphireBoardSpriteSets
+    .2byte 87, 0
+    .4byte gDusclopsBoardSpriteSets
+    .2byte 15, 0
+    .4byte gKecleonBoardSpriteSets
+    .2byte 33, 0
+    .4byte gKyogreBoardSpriteSets
+    .2byte 27, 0
+    .4byte gGroudonBoardSpriteSets
+    .2byte 32, 0
+    .4byte gRayquazaBoardSpriteSets
+    .2byte 46, 0
+    .4byte gSphealBoardSpriteSets
+    .2byte 23, 0
 
 gMonHatchSpriteGroupPals:: @ 0x086B159C
 	.4byte gMonHatchSpriteGroup0_Pals
@@ -6530,7 +6530,7 @@ gUnknown_086B235E:: @ 0x086B235E
 .2byte 0
 
 
-gUnknown_086B2390:: @ 0x086B2390
+gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B17AE
 .4byte gUnknown_086B1808
 .4byte gUnknown_086B181A
@@ -6615,7 +6615,7 @@ gUnknown_086B2390:: @ 0x086B2390
 .4byte gUnknown_086B19E8
 .4byte gUnknown_086B235E
 .4byte gUnknown_086B1A98
-gUnknown_086B24E0:: @ 0x086B24E0
+gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B17AE
 .4byte gUnknown_086B1808
 .4byte gUnknown_086B181A
@@ -12087,22 +12087,22 @@ gDuskullSpritesheetOam:: @ 0x086BA0A0
     packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x1, paletteNum=0x2
     packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x59, priority=0x1, paletteNum=0x2
 
-gUnknown_086BA16C:: @ 0x086BA16C
+gBonusBoardLeftFlipperSpriteSet:: @ 0x086BA16C
 .2byte 1
     packed_sprite_oam x=-0x1, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x0, priority=0x1, paletteNum=0x0
 .2byte 0
 
-gUnknown_086BA176:: @ 0x086BA176
+gBonusBoardRightFlipperSpriteSet:: @ 0x086BA176
 .2byte 1
     packed_sprite_oam x=0x1, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x10, priority=0x1, paletteNum=0x0
 .2byte 0
 
-gUnknown_086BA180:: @ 0x086BA180
+gBonusBoardBallSpriteSet:: @ 0x086BA180
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x20, priority=0x1, paletteNum=0x1
 .2byte 0
 
-gUnknown_086BA18A:: @ 0x086BA18A
+gBonusBoardPausePanelSpriteSet:: @ 0x086BA18A
 .2byte 11
     packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x24, priority=0x0, paletteNum=0x9
 .2byte 0
@@ -12127,14 +12127,14 @@ gUnknown_086BA18A:: @ 0x086BA18A
     packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e, priority=0x0, paletteNum=0x9
 .2byte 0
 
-gUnknown_086BA1E4:: @ 0x086BA1E4
+gBonusBoardPauseTopBorderSpriteSet:: @ 0x086BA1E4
 .2byte 2
     packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f, priority=0x0, paletteNum=0x9
 .2byte 0
     packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f, priority=0x0, paletteNum=0x9
 .2byte 0
 
-gUnknown_086BA1F6:: @ 0x086BA1F6
+gBonusBoardPauseBottomBorderSpriteSet:: @ 0x086BA1F6
 .2byte 3
     packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0x33, priority=0x0, paletteNum=0x9
 .2byte 0
@@ -12143,43 +12143,43 @@ gUnknown_086BA1F6:: @ 0x086BA1F6
     packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0x33, priority=0x0, paletteNum=0x9
 .2byte 0
 
-gUnknown_086BA210:: @ 0x086BA210
+gBonusBoardBallRespawnFxSpriteSet:: @ 0x086BA210
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x39, priority=0x1, paletteNum=0x1
 .2byte 0
 
-gUnknown_086BA21A:: @ 0x086BA21A
+gDusclopsBoardDuskullEntity0SpriteSet:: @ 0x086BA21A
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x49, priority=0x1, paletteNum=0x2
 .2byte 0
     packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x59, priority=0x1, paletteNum=0x2
 .2byte 0
 
-gUnknown_086BA22C:: @ 0x086BA22C
+gDusclopsBoardDuskullEntity1SpriteSet:: @ 0x086BA22C
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x5d, priority=0x1, paletteNum=0x2
 .2byte 0
     packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x6d, priority=0x1, paletteNum=0x2
 .2byte 0
 
-gUnknown_086BA23E:: @ 0x086BA23E
+gDusclopsBoardDuskullEntity2SpriteSet:: @ 0x086BA23E
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x71, priority=0x1, paletteNum=0x2
 .2byte 0
     packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x81, priority=0x1, paletteNum=0x2
 .2byte 0
 
-gUnknown_086BA250:: @ 0x086BA250
+gDusclopsBoardDusclopsEntitySpriteSet:: @ 0x086BA250
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x85, priority=0x3, paletteNum=0x3
 .2byte 0
 
-gUnknown_086BA25A:: @ 0x086BA25A
+gDusclopsBoardBallCaptureVortexFxSpriteSet:: @ 0x086BA25A
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xc5, priority=0x3, paletteNum=0x3
 .2byte 0
 
-gUnknown_086BA264:: @ 0x086BA264
+gDusclopsBoardPhasingFxSpriteSet:: @ 0x086BA264
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xd5, priority=0x3, paletteNum=0x0
 .2byte 0
@@ -12813,7 +12813,7 @@ gUnknown_086BAA1E:: @ 0x086BAA1E
     packed_sprite_oam x=0x20, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x14d, priority=0x1, paletteNum=0x8
 .2byte 0
 
-gUnknown_086BAA40:: @ 0x086BAA40
+gBonusBoardScoreBannerGraphicSpriteSet:: @ 0x086BAA40
 .2byte 3
     packed_sprite_oam x=-0x50, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x0, paletteNum=0x8
 .2byte 0
@@ -12822,7 +12822,7 @@ gUnknown_086BAA40:: @ 0x086BAA40
     packed_sprite_oam x=0x30, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x340, priority=0x0, paletteNum=0x8
 .2byte 0
 
-gUnknown_086BAA5A:: @ 0x086BAA5A
+gBonusBoardEndScoreSpriteSet:: @ 0x086BAA5A
 .2byte 18
     packed_sprite_oam x=-0x25, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x38c, priority=0x0, paletteNum=0x8
 .2byte 0
@@ -13497,192 +13497,193 @@ gUnknown_086BB382:: @ 0x086BB382
     packed_sprite_oam x=0x56, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d2, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086BB3E4:: @ 0x086BB3E4
-    .4byte gUnknown_086BA18A
-    .4byte gUnknown_086BA1E4
-    .4byte gUnknown_086BA1F6
-    .4byte gUnknown_086BA16C
-    .4byte gUnknown_086BA176
-    .4byte gUnknown_086BAA5A
-    .4byte gUnknown_086BAA40
-    .4byte gUnknown_086BA21A
-    .4byte gUnknown_086BA22C
-    .4byte gUnknown_086BA23E
-    .4byte gUnknown_086BA210
-    .4byte gUnknown_086BA180
-    .4byte gUnknown_086BA264
-    .4byte gUnknown_086BA25A
-    .4byte gUnknown_086BA250
+gDusclopsBoardSpriteSets:: @ 0x086BB3E4
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gDusclopsBoardDuskullEntity0SpriteSet
+    .4byte gDusclopsBoardDuskullEntity1SpriteSet
+    .4byte gDusclopsBoardDuskullEntity2SpriteSet
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gDusclopsBoardPhasingFxSpriteSet
+    .4byte gDusclopsBoardBallCaptureVortexFxSpriteSet
+    .4byte gDusclopsBoardDusclopsEntitySpriteSet
 
-gKecleonDefaultSpriteSets:: @ 0x086BB420
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086BA2C8
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA288
-.4byte gUnknown_086BA394
-.4byte gUnknown_086BA382
-.4byte gUnknown_086BA35E
-.4byte gUnknown_086BA370
-.4byte gUnknown_086BA34C
-.4byte gUnknown_086BA33A
-.4byte gUnknown_086BA29C
-.4byte gUnknown_086BA2BE
-.4byte gUnknown_086BA328
-.4byte gUnknown_086BA304
-.4byte gUnknown_086BA316
-.4byte gUnknown_086BA2F2
-.4byte gUnknown_086BA180
-.4byte gUnknown_086BA276
-.4byte gUnknown_086BA292
-.4byte gUnknown_086BA3A6
-.4byte gUnknown_086BA3C0
-.4byte gUnknown_086BA3D2
-.4byte gUnknown_086BA3E4
-.4byte gUnknown_086BA412
-.4byte gUnknown_086BA434
-.4byte gUnknown_086BA3F6
-.4byte gUnknown_086BA408
-gUnknown_086BB4A4:: @ 0x086BB4A4
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086B1F26
-.4byte gUnknown_086B1F78
-.4byte gUnknown_086B1676
-.4byte gUnknown_086B16A8
-.4byte gUnknown_086BA4D6
-.4byte gUnknown_086BA4F0
-.4byte gUnknown_086BA50A
-.4byte gUnknown_086BA524
-.4byte gUnknown_086BA572
-.4byte gUnknown_086BA550
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA180
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086BA44E
-.4byte gUnknown_086BA4A0
-.4byte gUnknown_086BA4AA
-.4byte gUnknown_086BA4B4
-.4byte gUnknown_086B1DC4
-.4byte gUnknown_086BA53E
-gUnknown_086BB510:: @ 0x086BB510
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086B1F26
-.4byte gUnknown_086B1F78
-.4byte gUnknown_086B1676
-.4byte gUnknown_086B16A8
-.4byte gUnknown_086BA624
-.4byte gUnknown_086BA63E
-.4byte gUnknown_086BA658
-.4byte gUnknown_086BA672
-.4byte gUnknown_086BA5B4
-.4byte gUnknown_086BA5CE
-.4byte gUnknown_086BA5E8
-.4byte gUnknown_086BA68C
-.4byte gUnknown_086BA68C
-.4byte gUnknown_086BA68C
-.4byte gUnknown_086BA68C
-.4byte gUnknown_086BAB1E
-.4byte gUnknown_086BAAEC
-.4byte gUnknown_086BAB40
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA180
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086BA6CA
-.4byte gUnknown_086BA602
-.4byte gUnknown_086B1DC4
-gUnknown_086BB590:: @ 0x086BB590
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086B1F26
-.4byte gUnknown_086B1F78
-.4byte gUnknown_086B1676
-.4byte gUnknown_086B16A8
-.4byte gUnknown_086BAB52
-.4byte gUnknown_086BAB74
-.4byte gUnknown_086BABA6
-.4byte gUnknown_086BA75C
-.4byte gUnknown_086BA85E
-.4byte gUnknown_086BA85E
-.4byte gUnknown_086BA8BE
-.4byte gUnknown_086BA8D8
-.4byte gUnknown_086BA90A
-.4byte gUnknown_086BA882
-.4byte gUnknown_086BA870
-.4byte gUnknown_086BABD0
-.4byte gUnknown_086BAC62
-.4byte gUnknown_086BACF4
-.4byte gUnknown_086BAD6E
-.4byte gUnknown_086BADE0
-.4byte gUnknown_086BAE5A
-.4byte gUnknown_086BAEA4
-.4byte gUnknown_086BAF1E
-.4byte gUnknown_086BAF80
-.4byte gUnknown_086BAFFA
-.4byte gUnknown_086BB06C
-.4byte gUnknown_086BB0E6
-.4byte gUnknown_086BB130
-.4byte gUnknown_086BB1AA
-.4byte gUnknown_086BA8AC
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA180
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086BA854
-.4byte gUnknown_086BA766
-.4byte gUnknown_086BA7D8
-.4byte gUnknown_086B1DC4
-.4byte gUnknown_086BA84A
+gKecleonBoardSpriteSets:: @ 0x086BB420
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gUnknown_086BA2C8
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gUnknown_086BA288
+    .4byte gUnknown_086BA394
+    .4byte gUnknown_086BA382
+    .4byte gUnknown_086BA35E
+    .4byte gUnknown_086BA370
+    .4byte gUnknown_086BA34C
+    .4byte gUnknown_086BA33A
+    .4byte gUnknown_086BA29C
+    .4byte gUnknown_086BA2BE
+    .4byte gUnknown_086BA328
+    .4byte gUnknown_086BA304
+    .4byte gUnknown_086BA316
+    .4byte gUnknown_086BA2F2
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gUnknown_086BA276
+    .4byte gUnknown_086BA292
+    .4byte gUnknown_086BA3A6
+    .4byte gUnknown_086BA3C0
+    .4byte gUnknown_086BA3D2
+    .4byte gUnknown_086BA3E4
+    .4byte gUnknown_086BA412
+    .4byte gUnknown_086BA434
+    .4byte gUnknown_086BA3F6
+    .4byte gUnknown_086BA408
 
+gKyogreBoardSpriteSets:: @ 0x086BB4A4
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gUnknown_086B1F26
+    .4byte gUnknown_086B1F78
+    .4byte gUnknown_086B1676
+    .4byte gUnknown_086B16A8
+    .4byte gUnknown_086BA4D6
+    .4byte gUnknown_086BA4F0
+    .4byte gUnknown_086BA50A
+    .4byte gUnknown_086BA524
+    .4byte gUnknown_086BA572
+    .4byte gUnknown_086BA550
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gUnknown_086B1E46
+    .4byte gUnknown_086B1E46
+    .4byte gUnknown_086BA44E
+    .4byte gUnknown_086BA4A0
+    .4byte gUnknown_086BA4AA
+    .4byte gUnknown_086BA4B4
+    .4byte gUnknown_086B1DC4
+    .4byte gUnknown_086BA53E
 
+gGroudonBoardSpriteSets:: @ 0x086BB510
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gUnknown_086B1F26
+    .4byte gUnknown_086B1F78
+    .4byte gUnknown_086B1676
+    .4byte gUnknown_086B16A8
+    .4byte gUnknown_086BA624
+    .4byte gUnknown_086BA63E
+    .4byte gUnknown_086BA658
+    .4byte gUnknown_086BA672
+    .4byte gUnknown_086BA5B4
+    .4byte gUnknown_086BA5CE
+    .4byte gUnknown_086BA5E8
+    .4byte gUnknown_086BA68C
+    .4byte gUnknown_086BA68C
+    .4byte gUnknown_086BA68C
+    .4byte gUnknown_086BA68C
+    .4byte gUnknown_086BAB1E
+    .4byte gUnknown_086BAAEC
+    .4byte gUnknown_086BAB40
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gUnknown_086B1E46
+    .4byte gUnknown_086B1E46
+    .4byte gUnknown_086BA6CA
+    .4byte gUnknown_086BA602
+    .4byte gUnknown_086B1DC4
 
-gUnknown_086BB648:: @ 0x086BB648
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086BB20C
-.4byte gUnknown_086BB2BE
-.4byte gUnknown_086BB320
-.4byte gUnknown_086BB382
-.4byte gUnknown_086BA94E
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA180
-.4byte gUnknown_086BA974
-.4byte gUnknown_086BA996
-.4byte gUnknown_086BA9B8
-.4byte gUnknown_086BA9DA
-.4byte gUnknown_086BA944
-.4byte gUnknown_086BA9FC
-.4byte gUnknown_086BAA1E
-.4byte gUnknown_086BA960
-.4byte gUnknown_086BA96A
+gRayquazaBoardSpriteSets:: @ 0x086BB590
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gUnknown_086B1F26
+    .4byte gUnknown_086B1F78
+    .4byte gUnknown_086B1676
+    .4byte gUnknown_086B16A8
+    .4byte gUnknown_086BAB52
+    .4byte gUnknown_086BAB74
+    .4byte gUnknown_086BABA6
+    .4byte gUnknown_086BA75C
+    .4byte gUnknown_086BA85E
+    .4byte gUnknown_086BA85E
+    .4byte gUnknown_086BA8BE
+    .4byte gUnknown_086BA8D8
+    .4byte gUnknown_086BA90A
+    .4byte gUnknown_086BA882
+    .4byte gUnknown_086BA870
+    .4byte gUnknown_086BABD0
+    .4byte gUnknown_086BAC62
+    .4byte gUnknown_086BACF4
+    .4byte gUnknown_086BAD6E
+    .4byte gUnknown_086BADE0
+    .4byte gUnknown_086BAE5A
+    .4byte gUnknown_086BAEA4
+    .4byte gUnknown_086BAF1E
+    .4byte gUnknown_086BAF80
+    .4byte gUnknown_086BAFFA
+    .4byte gUnknown_086BB06C
+    .4byte gUnknown_086BB0E6
+    .4byte gUnknown_086BB130
+    .4byte gUnknown_086BB1AA
+    .4byte gUnknown_086BA8AC
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gUnknown_086B1E46
+    .4byte gUnknown_086B1E46
+    .4byte gUnknown_086BA854
+    .4byte gUnknown_086BA766
+    .4byte gUnknown_086BA7D8
+    .4byte gUnknown_086B1DC4
+    .4byte gUnknown_086BA84A
+
+gSphealBoardSpriteSets:: @ 0x086BB648
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gUnknown_086BB20C
+    .4byte gUnknown_086BB2BE
+    .4byte gUnknown_086BB320
+    .4byte gUnknown_086BB382
+    .4byte gUnknown_086BA94E
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gUnknown_086BA974
+    .4byte gUnknown_086BA996
+    .4byte gUnknown_086BA9B8
+    .4byte gUnknown_086BA9DA
+    .4byte gUnknown_086BA944
+    .4byte gUnknown_086BA9FC
+    .4byte gUnknown_086BAA1E
+    .4byte gUnknown_086BA960
+    .4byte gUnknown_086BA96A
 
 
 
