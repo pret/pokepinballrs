@@ -9162,7 +9162,7 @@ gRayquazaWhirlwindGrabOamData:: @ 0x086B5D56
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
 
 
-gRayquazaSwoopAttackOamData:: @ 0x086B5DCE
+gRayquazaLightningStrikeOamData:: @ 0x086B5DCE
     packed_sprite_oam x=-0x18, y=-0x60, spriteSize=SPRITE_SIZE_16x32, tileNum=0x208, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=-0x8, y=-0x50, spriteSize=SPRITE_SIZE_8x16, tileNum=0x210, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=-0x10, y=-0x40, spriteSize=SPRITE_SIZE_16x32, tileNum=0x212, priority=0x1, paletteNum=0xc
@@ -9207,7 +9207,7 @@ gRayquazaSwoopAttackOamData:: @ 0x086B5DCE
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
 
 
-gRayquazaNeckSegmentOamData:: @ 0x086B5ECA
+gRayquazaLightningWarningStrikeOamData:: @ 0x086B5ECA
     packed_sprite_oam x=-0x3, y=-0x3D, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1da, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=-0x2, y=-0x1D, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1de, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x5, y=-0xD, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1e0, priority=0x1, paletteNum=0xc
@@ -9288,7 +9288,7 @@ gRayquazaNeckSegmentOamData:: @ 0x086B5ECA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
 
 
-gRayquazaHeadOamData:: @ 0x086B609E
+gRayquazaLightningChargeRingOamData:: @ 0x086B609E
     packed_sprite_oam x=0x0, y=0x2B, spriteSize=SPRITE_SIZE_32x16, tileNum=0x18a, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x20, y=0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x192, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x20, y=0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x192, priority=0x1, paletteNum=0xc

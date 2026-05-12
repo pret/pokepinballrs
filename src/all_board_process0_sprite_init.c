@@ -339,11 +339,11 @@ void RayquazaBoardProcess_0A_51090(void)
     }
 
     gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[SG_42].active = TRUE;
-    gMain.spriteGroups[SG_11].active = TRUE;
-    gMain.spriteGroups[SG_12].active = TRUE;
-    gMain.spriteGroups[SG_13].active = TRUE;
-    gMain.spriteGroups[SG_21].active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_ENTITY_BACKGROUND_FLY_UP].active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_INTRO_CLOUD_0].active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_INTRO_CLOUD_1].active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_INTRO_CLOUD_2].active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_ENTITY_ROAR_HEAD_EXTENSION].active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,

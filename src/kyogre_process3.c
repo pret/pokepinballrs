@@ -1189,7 +1189,7 @@ void UpdateKyogreFieldEntities(void)
             }
         }
 
-        DmaCopy16(3, gKyogreWhirlpoolMinionSprites[index], (void *)0x06011520 + i * 0x200, 0x200);
+        DmaCopy16(3, gKyogreWhirlpoolMinionSprites[index], (void *)(0x06011520 + i * 0x200), 0x200);
         if (group->active)
         {
             if (gCurrentPinballGame->vortexEntityState[i] > KYOGRE_WHIRLPOOL_PHASE_INIT)
