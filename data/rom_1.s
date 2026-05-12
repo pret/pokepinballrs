@@ -1376,7 +1376,7 @@ gRayquazaSpriteSheet:: @ 0x084AA18C
 gRayquazaBodyVariantTiles:: @ 0x084AA9EC
 	.incbin "baserom.gba", 0x4AA9EC, 0x5000
 
-gSphealScoreCounterDigitSprites:: @ 0x084AF9EC
+gSphealNetGfx:: @ 0x084AF9EC
 	.incbin "baserom.gba", 0x4AF9EC, 0x600
 
 gSphealExtendedScoreSprites:: @ 0x084AFFEC

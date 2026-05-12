@@ -370,13 +370,13 @@ void SphealBoardProcess_0A_51150(void)
     }
 
     gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[SG_18].active = TRUE;
-    gMain.spriteGroups[SG_21].active = TRUE;
-    gMain.spriteGroups[SG_22].active = TRUE;
-    gMain.spriteGroups[SG_14].active = TRUE;
-    gMain.spriteGroups[SG_15].active = TRUE;
-    gMain.spriteGroups[SG_16].active = TRUE;
-    gMain.spriteGroups[SG_17].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_NET].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_LEFT_SEALEO_ENTITY].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_RIGHT_SEALEO_ENTITY].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_ENTITY_0].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_ENTITY_1].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_ENTITY_REFLECTION_0].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_ENTITY_REFLECTION_1].active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
