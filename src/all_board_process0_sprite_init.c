@@ -198,7 +198,7 @@ void DusclopsBoardProcess_0A_50D48(void)
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
@@ -224,7 +224,7 @@ void KecleonBoardProcess_0A_50DE0(void)
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
     gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +13].active = TRUE;
     gMain.spriteGroups[SG_KECLEON_DUST_FX].active = TRUE;
     gMain.spriteGroups[SG_KECLEON_SCOPE_ITEM].active = TRUE;
@@ -272,7 +272,7 @@ void KyogreBoardProcess_0A_50F04()
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
     gMain.spriteGroups[SG_KYOGRE_CRYSTAL_TOP_RIGHT].active = TRUE;
     gMain.spriteGroups[SG_KYOGRE_CRYSTAL_TOP_LEFT].active = TRUE;
     gMain.spriteGroups[SG_KYOGRE_CRYSTAL_BOTTOM_RIGHT].active = TRUE;
@@ -307,7 +307,7 @@ void GroudonBoardProcess_0A_50FD4(void)
         }
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
     gMain.spriteGroups[SG_GROUDON_CRYSTAL_TOP_RIGHT].active = TRUE;
     gMain.spriteGroups[SG_GROUDON_CRYSTAL_BOTTOM_RIGHT].active = TRUE;
     gMain.spriteGroups[SG_GROUDON_CRYSTAL_TOP_LEFT].active = TRUE;
@@ -338,7 +338,7 @@ void RayquazaBoardProcess_0A_51090(void)
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
     gMain.spriteGroups[SG_RAYQUAZA_ENTITY_BACKGROUND_FLY_UP].active = TRUE;
     gMain.spriteGroups[SG_RAYQUAZA_INTRO_CLOUD_0].active = TRUE;
     gMain.spriteGroups[SG_RAYQUAZA_INTRO_CLOUD_1].active = TRUE;
@@ -369,7 +369,7 @@ void SphealBoardProcess_0A_51150(void)
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
     gMain.spriteGroups[SG_SPHEAL_NET].active = TRUE;
     gMain.spriteGroups[SG_SPHEAL_LEFT_SEALEO_ENTITY].active = TRUE;
     gMain.spriteGroups[SG_SPHEAL_RIGHT_SEALEO_ENTITY].active = TRUE;

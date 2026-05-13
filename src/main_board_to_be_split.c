@@ -1006,7 +1006,7 @@ void LoadPokemonNameGraphics(void)
     gCurrentPinballGame->nameSpacingOffset = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_EVO_PREVIEW, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->activePortraitType = 14;
-    gMain.fieldSpriteGroups[4]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
@@ -1028,7 +1028,7 @@ void UpdatePokemonNamePosition(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = gMain.fieldSpriteGroups[4];
+    group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
     for (i = 0; i < 10; i++)
     {
         group->baseX = i * 8 + (gCurrentPinballGame->nameSpacingOffset + 152) + gCurrentPinballGame->shopUISlideOffset;
@@ -1041,7 +1041,7 @@ void UpdatePokemonNamePosition(void)
 
 void HidePokemonNameDisplay(void)
 {
-    gMain.fieldSpriteGroups[4]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = FALSE;
     gCurrentPinballGame->activePortraitType = 0;
 }
 
@@ -1057,7 +1057,7 @@ void InitEvolutionSuccessDisplay(void)
     gCurrentPinballGame->nameRevealAnimFrame = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_POKEMON_DISPLAY, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->activePortraitType = 13;
-    gMain.fieldSpriteGroups[4]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
@@ -1072,7 +1072,7 @@ void InitEvolutionSuccessDisplay(void)
         }
     }
 
-    gMain.fieldSpriteGroups[5]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
         if (gCaughtTextChars[i] == 0x20)
@@ -1099,7 +1099,7 @@ void InitEvolutionSuccessDisplay(void)
     }
 }
 
-void AnimateEvolutionSuccessScreen(void)
+void AnimateWasCaughtBanner(void)
 {
     s16 i, j, k;
     struct SpriteGroup *group;
@@ -1110,7 +1110,7 @@ void AnimateEvolutionSuccessScreen(void)
     if (gCurrentPinballGame->nameRevealAnimFrame == 0)
     {
         gCurrentPinballGame->nameRevealAnimFrame++;
-        group = gMain.fieldSpriteGroups[4];
+        group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
         group->baseX = 0;
         group->baseY = 180;
         for (i = 0; i < 10; i++)
@@ -1120,7 +1120,7 @@ void AnimateEvolutionSuccessScreen(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = gMain.fieldSpriteGroups[5];
+        group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
         group->baseX = 0;
         group->baseY = 180;
         for (i = 0; i < 10; i++)
@@ -1136,7 +1136,7 @@ void AnimateEvolutionSuccessScreen(void)
         if (gCurrentPinballGame->nameRevealAnimFrame < 156)
         {
 
-            group = gMain.fieldSpriteGroups[4];
+            group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
             for (i = 0; i < 10; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelays[i])
@@ -1158,7 +1158,7 @@ void AnimateEvolutionSuccessScreen(void)
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
 
-            group = gMain.fieldSpriteGroups[5];
+            group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
             for (i = 0; i < 10; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelaysRow2[i])
@@ -1197,7 +1197,7 @@ void AnimateEvolutionSuccessScreen(void)
         }
         else
         {
-            group = gMain.fieldSpriteGroups[4];
+            group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
             for (i = 0; i < 10; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelays[i])
@@ -1213,7 +1213,7 @@ void AnimateEvolutionSuccessScreen(void)
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
 
-            group = gMain.fieldSpriteGroups[5];
+            group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
             for (i = 0; i < 10; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelaysRow2[i])
@@ -1232,7 +1232,7 @@ void AnimateEvolutionSuccessScreen(void)
     }
     else
     {
-        group = gMain.fieldSpriteGroups[4];
+        group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
         if (group->active)
         {
             group->baseX = 0;
@@ -1245,7 +1245,7 @@ void AnimateEvolutionSuccessScreen(void)
             }
         }
 
-        group = gMain.fieldSpriteGroups[5];
+        group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
         if (group->active)
         {
             group->baseX = 0;
@@ -1258,8 +1258,8 @@ void AnimateEvolutionSuccessScreen(void)
             }
         }
 
-        gMain.fieldSpriteGroups[4]->active = FALSE;
-        gMain.fieldSpriteGroups[5]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT]->active = FALSE;
         gCurrentPinballGame->activePortraitType = 0;
     }
 }

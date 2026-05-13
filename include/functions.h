@@ -482,7 +482,7 @@ extern void LoadPokemonNameGraphics();
 extern void UpdatePokemonNamePosition();
 extern void HidePokemonNameDisplay();
 extern void InitEvolutionSuccessDisplay(void);
-extern void AnimateEvolutionSuccessScreen(void);
+extern void AnimateWasCaughtBanner(void);
 extern void InitRubyEggHatchAnimation(void);
 //extern ? UpdateRubyEggHatchAnimation();
 //extern ? UpdateHatchCave();

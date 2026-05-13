@@ -222,7 +222,7 @@ void UpdateEvolutionMode(void)
                 }
                 else
                 {
-                    AnimateEvolutionSuccessScreen();
+                    AnimateWasCaughtBanner();
                     if (gCurrentPinballGame->stageTimer < 230)
                     {
                         if (gCurrentPinballGame->nameRevealAnimFrame == 150)

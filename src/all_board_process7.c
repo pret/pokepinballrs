@@ -52,7 +52,7 @@ void MainBoardProcess_7B_12524(void)
     currentBallState->positionQ0.x = currentBallState->positionQ1.x / 2;
     currentBallState->positionQ0.y = currentBallState->positionQ1.y / 2;
 
-    spriteGroup = gMain.fieldSpriteGroups[0];
+    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL];
 
     if (spriteGroup->active)
     {
@@ -148,7 +148,7 @@ void MainBoardProcess_7B_12524(void)
     {
         for (i = 0; i < 2; i++)
         {
-            spriteGroup = gMain.fieldSpriteGroups[i + 1];
+            spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_BASE + i];
 
             if (spriteGroup->active)
             {
@@ -170,10 +170,10 @@ void MainBoardProcess_7B_12524(void)
             }
         }
 
-        gMain.fieldSpriteGroups[1]->active = TRUE;
-        gMain.fieldSpriteGroups[2]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_0]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_1]->active = TRUE;
         gMain.fieldSpriteGroups[49]->active = TRUE;
-        gMain.fieldSpriteGroups[0]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = FALSE;
     }
     else
     {
@@ -192,10 +192,10 @@ void MainBoardProcess_7B_12524(void)
             }
         }
 
-        gMain.fieldSpriteGroups[1]->active = FALSE;
-        gMain.fieldSpriteGroups[2]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_0]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_1]->active = FALSE;
         gMain.fieldSpriteGroups[49]->active = FALSE;
-        gMain.fieldSpriteGroups[0]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
     }
 
     spriteGroup = gMain.fieldSpriteGroups[43];
@@ -205,8 +205,8 @@ void MainBoardProcess_7B_12524(void)
         s8 newIx;
         if (gCurrentPinballGame->ballShadowTimer < 59)
         {
-            spriteGroup->baseX = gMain.fieldSpriteGroups[0]->baseX - 8;
-            spriteGroup->baseY = gMain.fieldSpriteGroups[0]->baseY - 8;
+            spriteGroup->baseX = gMain.fieldSpriteGroups[FIELD_SG_BALL]->baseX - 8;
+            spriteGroup->baseY = gMain.fieldSpriteGroups[FIELD_SG_BALL]->baseY - 8;
         }
         else
         {
@@ -254,16 +254,16 @@ void BonusBoardProcess_7B_12BF8()
     case FIELD_GROUDON:
     case FIELD_SPHEAL:
         primaryBall->oamPriority = 1;
-        spriteGroup = gMain.fieldSpriteGroups[0];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL];
         break;
     case FIELD_RAYQUAZA:
         if (primaryBall->oamPriority > 2)
             primaryBall->oamPriority = 2;
-        spriteGroup = gMain.fieldSpriteGroups[0];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL];
         break;
     default:
         primaryBall->oamPriority = 3;
-        spriteGroup = gMain.fieldSpriteGroups[0];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL];
         break;
     }
 
@@ -305,7 +305,7 @@ void BonusBoardProcess_7B_12BF8()
 
     if (gCurrentPinballGame->ballRespawnState)
     {
-        spriteGroup = gMain.fieldSpriteGroups[1];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_RESPAWN_FX];
         if (spriteGroup->active)
         {
             spriteGroup->baseX = primaryBall->screenPosition.x - 8;
@@ -434,7 +434,7 @@ void BonusBoardProcess_7B_12BF8()
 
             for (i = 0; i < 2; i++)
             {
-                spriteGroup = gMain.fieldSpriteGroups[i + 6];
+                spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_BASE + i];
                 if (spriteGroup->active)
                 {
                     oam = &spriteGroup->oam[0];
@@ -467,8 +467,8 @@ void BonusBoardProcess_7B_12BF8()
                     }
                 }
             }
-            gMain.fieldSpriteGroups[6]->active = TRUE;
-            gMain.fieldSpriteGroups[7]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_0]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_1]->active = TRUE;
         }
         else
         {
@@ -485,8 +485,8 @@ void BonusBoardProcess_7B_12BF8()
                     oamData->y = 200;
                 }
             }
-            gMain.fieldSpriteGroups[6]->active = FALSE;
-            gMain.fieldSpriteGroups[7]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_0]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_1]->active = FALSE;
         }
     }
 }

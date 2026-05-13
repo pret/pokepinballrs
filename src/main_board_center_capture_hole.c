@@ -663,7 +663,7 @@ void RunMonCaptureSequence(void)
             gMain.blendBrightness = 7;
         }
 
-        spriteGroup = gMain.fieldSpriteGroups[3];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX];
 
         if (spriteGroup->active)
         {
@@ -701,10 +701,10 @@ void RunMonCaptureSequence(void)
             }
         }
 
-        gMain.fieldSpriteGroups[3]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX]->active = TRUE;
 
         if (gCurrentPinballGame->captureSequenceTimer == 10 && gCurrentPinballGame->captureSequenceFrame == 3)
-            gMain.fieldSpriteGroups[3]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX]->active = FALSE;
         break;
     case 11:
         //TODO: fakematch; unused i. Here for the +4 to parse correctly;
@@ -796,7 +796,7 @@ void RunMonCaptureSequence(void)
     case 25:
     case 27:
     case 28:
-        spriteGroup = gMain.fieldSpriteGroups[3];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX];
 
         if (spriteGroup->active)
         {
@@ -835,7 +835,7 @@ void RunMonCaptureSequence(void)
                 }
             }
         }
-        gMain.fieldSpriteGroups[3]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX]->active = TRUE;
 
         if (gCurrentPinballGame->captureSequenceTimer == 18 || gCurrentPinballGame->captureSequenceTimer == 20 || gCurrentPinballGame->captureSequenceTimer == 21)
         {
@@ -900,7 +900,7 @@ void RunMonCaptureSequence(void)
         break;
 
     case 26:
-        spriteGroup = gMain.fieldSpriteGroups[3];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX];
 
         if (spriteGroup->active)
         {
@@ -946,7 +946,7 @@ void RunMonCaptureSequence(void)
         gMain.blendBrightness = 4;
         DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], 0x05000220, 0x20);
 
-        spriteGroup = gMain.fieldSpriteGroups[3];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX];
 
         if (spriteGroup->active)
         {
@@ -957,7 +957,7 @@ void RunMonCaptureSequence(void)
             }
         }
 
-        gMain.fieldSpriteGroups[3]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX]->active = FALSE;
         gCurrentPinballGame->ball->ballHidden = 0;
         gCurrentPinballGame->ball->velocity.y = -256;
         gCurrentPinballGame->ball->velocity.x = 40;
@@ -1167,7 +1167,7 @@ void RunMonCaptureSequence(void)
 
     case 33:
         gCurrentPinballGame->ball->oamPriority = 3;
-        AnimateEvolutionSuccessScreen();
+        AnimateWasCaughtBanner();
 
         if (gCurrentPinballGame->captureSequenceFrame <= 229 && gCurrentPinballGame->nameRevealAnimFrame == 150)
             gCurrentPinballGame->nameRevealAnimFrame--;
