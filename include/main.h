@@ -82,6 +82,19 @@ struct Main
     /*0x3C*/ volatile u16 blendBrightness;
              // may be a sub-struct. possibly for saved game?
     /*0x40*/ int hasSavedGame;
+
+    /***
+     * Allows for a 'board' level indirect sprite group references, so that multiple boards
+     * use a shared 'logical' reference for a sprite group, separate from the actual group
+     * being used for the specific board.
+     *
+     * EG: all fieldSpriteGroup[board][0] are a reference to the ball sprite group, but the
+     * actual sprite groups used for the ball (by field) are groups 70/74/11/22/18/26/38/13.
+     *
+     * Non boss bonuses use 2 entries (ball/respawn graphics)
+     * Boss bonus boards use those 2, plus an additional 5 for the 'capture' cutscene.
+     * Main boards have several, for shared features on the 2 main boards.
+     ***/
     /*0x44*/ struct SpriteGroup **fieldSpriteGroups;
     /*0x48*/ int rngValue;
     /*0x4C*/ u32 systemFrameCount;
