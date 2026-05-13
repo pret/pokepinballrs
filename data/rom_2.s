@@ -418,6 +418,7 @@ gUnknown_086A5B62:: @ 0x086A5B62
 .2byte 0
     packed_sprite_oam x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x33a, priority=0x0, paletteNum=0x5
 .2byte 0
+
 gUnknown_086A5BDC:: @ 0x086A5BDC
 .2byte 14
     packed_sprite_oam x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, priority=0x0, paletteNum=0x4
@@ -4865,10 +4866,60 @@ gUnknown_086B0150:: @ 0x086B0150
 	.ascii "SUBTOTAL____________POK^MON_EVOLVED_____BONUS_______________SUBTOTAL____________TRAVELED_AREA_______BONUS_______________SUBTOTAL____________SLOT_PLAYED_________BONUS_______________SUBTOTAL____________PIKA_SAVER__________BONUS_______________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________MULTIPLIER__________TOTAL_______________"
 
 gMainFieldSpriteGroups:: @ 0x086B02CC
-	.incbin "baserom.gba", 0x6B02CC, 0x1E0
+    @ ruby
+    spriteGroupAddrs 70, 41, 42, 50, 15, 16, 17, 18, 19, 20
+    spriteGroupAddrs 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+    spriteGroupAddrs 31, 32, 33, 34, 35, 36, 37, 38, 39, 54
+    spriteGroupAddrs 55, 64, 67, 43, 72, 73, 74, 75, 76, 77
+    spriteGroupAddrs 79, 49, 80, 69, 56, 44, 45, 46, 47, 40
+    spriteGroupAddrs 83
+    .4byte 0,0,0,0,0,0,0,0,0
+
+    @ sapphire
+    spriteGroupAddrs 74, 40, 41, 54, 12, 13, 14, 15, 16, 17
+    spriteGroupAddrs 18, 19, 20, 21, 22, 23, 24, 25, 28, 29
+    spriteGroupAddrs 30, 31, 32, 33, 34, 35, 36, 37, 38, 55
+    spriteGroupAddrs 56, 72, 71, 42, 77, 78, 79, 80, 81, 82
+    spriteGroupAddrs 83, 53, 84, 73, 57, 43, 44, 45, 46, 39
+    spriteGroupAddrs 86
+    .4byte 0,0,0,0,0,0,0,0,0
 
 gBonusFieldSpriteGroups:: @ 0x086B04AC
-	.incbin "baserom.gba", 0x6B04AC, 0x2D0
+    @ dusclops
+    spriteGroupAddrs 11, 10
+    .4byte 0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ kecleon
+    spriteGroupAddrs 22, 8
+    .4byte 0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ kyogre
+    spriteGroupAddrs 18, 17, 0, 25, 7, 8, 19, 20
+    .4byte 0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ groudon
+    spriteGroupAddrs 26, 25, 0, 31, 7, 8, 27, 28
+    .4byte 0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ rayquaza
+    spriteGroupAddrs 38, 37, 0, 44, 7, 8, 39, 40
+    .4byte 0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ spheal
+    spriteGroupAddrs 13, 12
+	.4byte 0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
 
 BoardProcPairs_086B077C:: @ 0x086B077C
 	.4byte AllBoardProcess_1A_47100, AllBoardProcess_1B_47160
@@ -5448,7 +5499,7 @@ gUnknown_086B165C:: @ 0x086B165C
     packed_sprite_oam x=-0x8, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x55, priority=0x0, paletteNum=0x9
 .2byte 0
 
-gUnknown_086B1676:: @ 0x086B1676
+gLegendaryCatchPortraitSpriteSet:: @ 0x086B1676
 .2byte 6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x5d, priority=0x3, paletteNum=0x1
 .2byte 0
@@ -5463,7 +5514,7 @@ gUnknown_086B1676:: @ 0x086B1676
     packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,  tileNum=0x61, priority=0x3, paletteNum=0x1
 .2byte 0
 
-gUnknown_086B16A8:: @ 0x086B16A8
+gLegendaryCatchPortraitBordersSpriteSet:: @ 0x086B16A8
 .2byte 6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x65, priority=0x3, paletteNum=0x0
 .2byte 0
@@ -6561,10 +6612,10 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B22F2
 .4byte gUnknown_086B165C
 .4byte gUnknown_086B1CDA
-.4byte gUnknown_086B1676
+.4byte gLegendaryCatchPortraitSpriteSet
 .4byte gUnknown_086B170C
 .4byte gUnknown_086B170C
-.4byte gUnknown_086B16A8
+.4byte gLegendaryCatchPortraitBordersSpriteSet
 .4byte gUnknown_086B16DA
 .4byte gUnknown_086B21E4
 .4byte gUnknown_086B2206
@@ -6645,10 +6696,10 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B1AE6
 .4byte gUnknown_086B2324
 .4byte gUnknown_086B1CDA
-.4byte gUnknown_086B1676
+.4byte gLegendaryCatchPortraitSpriteSet
 .4byte gUnknown_086B170C
 .4byte gUnknown_086B170C
-.4byte gUnknown_086B16A8
+.4byte gLegendaryCatchPortraitBordersSpriteSet
 .4byte gUnknown_086B16DA
 .4byte gUnknown_086B21E4
 .4byte gUnknown_086B2206
@@ -12193,12 +12244,12 @@ gUnknown_086BA276:: @ 0x086BA276
     packed_sprite_oam x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
 .2byte 0
 
-gUnknown_086BA288:: @ 0x086BA288
+gKecleonDustFxSpriteSet:: @ 0x086BA288
 .2byte 1
   packed_sprite_oam x=0x0, y=0x18, spriteSize=SPRITE_SIZE_32x16, tileNum=0x5d, priority=0x2, paletteNum=0x3
 .2byte 0
 
-gUnknown_086BA292:: @ 0x086BA292
+gKecleonScopeItemSpriteSet:: @ 0x086BA292
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x65, priority=0x2, paletteNum=0xc
 .2byte 0
@@ -12219,7 +12270,7 @@ gUnknown_086BA2BE:: @ 0x086BA2BE
     packed_sprite_oam x=0x30, y=-0x48, spriteSize=SPRITE_SIZE_32x32, tileNum=0x72, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA2C8:: @ 0x086BA2C8
+gKecleonTreeLeavesSpriteSet:: @ 0x086BA2C8
 .2byte 5
     packed_sprite_oam x=-0x48, y=-0x80, spriteSize=SPRITE_SIZE_64x32, tileNum=0x82, priority=0x2, paletteNum=0x6
 .2byte 0
@@ -12302,7 +12353,7 @@ gUnknown_086BA394:: @ 0x086BA394
     packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA3A6:: @ 0x086BA3A6
+gKecleonFlowerByTreeSpriteSet:: @ 0x086BA3A6
 .2byte 3
     packed_sprite_oam x=-0x30, y=-0x68, spriteSize=SPRITE_SIZE_16x16, tileNum=0xf6, priority=0x2, paletteNum=0x5
 .2byte 0
@@ -12311,40 +12362,40 @@ gUnknown_086BA3A6:: @ 0x086BA3A6
     packed_sprite_oam x=-0x20, y=-0x60, spriteSize=SPRITE_SIZE_8x16, tileNum=0xfc, priority=0x2, paletteNum=0x5
 .2byte 0
 
-gUnknown_086BA3C0:: @ 0x086BA3C0
+gKecleonFlowerPairLeftSpriteSet:: @ 0x086BA3C0
 .2byte 2
     packed_sprite_oam x=-0x60, y=-0x48, spriteSize=SPRITE_SIZE_32x16, tileNum=0x10e, priority=0x2, paletteNum=0x5
 .2byte 0
     packed_sprite_oam x=-0x60, y=-0x38, spriteSize=SPRITE_SIZE_32x8, tileNum=0x116, priority=0x2, paletteNum=0x5
 .2byte 0
 
-gUnknown_086BA3D2:: @ 0x086BA3D2
+gKecleonFlowerPairBottomRightSpriteSet:: @ 0x086BA3D2
 .2byte 2
     packed_sprite_oam x=0x10, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x11a, priority=0x2, paletteNum=0x5
 .2byte 0
     packed_sprite_oam x=0x10, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x122, priority=0x2, paletteNum=0x5
 .2byte 0
 
-gUnknown_086BA3E4:: @ 0x086BA3E4
+gKecleonFlowerTrippleRightSpriteSet:: @ 0x086BA3E4
 .2byte 2
     packed_sprite_oam x=0x48, y=-0x50, spriteSize=SPRITE_SIZE_16x32, tileNum=0x132, priority=0x2, paletteNum=0x5
 .2byte 0
     packed_sprite_oam x=0x58, y=-0x50, spriteSize=SPRITE_SIZE_8x32, tileNum=0x13a, priority=0x2, paletteNum=0x5
 .2byte 0
 
-gUnknown_086BA3F6:: @ 0x086BA3F6
+gKecleonReflectionHeadSpriteSet:: @ 0x086BA3F6
 .2byte 2
     packed_sprite_oam x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,  tileNum=0x49, priority=0x3, paletteNum=0x4
 .2byte 0
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,  tileNum=0x59, priority=0x3, paletteNum=0x4
 .2byte 0
 
-gUnknown_086BA408:: @ 0x086BA408
+gKecleonReflectionBallSpriteSet:: @ 0x086BA408
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,  tileNum=0x20, priority=0x3, paletteNum=0x1
 .2byte 0
 
-gUnknown_086BA412:: @ 0x086BA412
+gKecleonBallRippleFxSpriteSet:: @ 0x086BA412
 .2byte 4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16e, priority=0x3, paletteNum=0x0
 .2byte 0
@@ -12356,7 +12407,7 @@ gUnknown_086BA412:: @ 0x086BA412
 .2byte 0
 
 
-gUnknown_086BA434:: @ 0x086BA434
+gKecleonStepRippleFxSpriteSet:: @ 0x086BA434
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16e, priority=0x3, paletteNum=0x0
 .2byte 0
@@ -12365,7 +12416,7 @@ gUnknown_086BA434:: @ 0x086BA434
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x170, priority=0x3, paletteNum=0x0
 .2byte 0
 
-gUnknown_086BA44E:: @ 0x086BA44E
+gKyogreEntitySpriteSet:: @ 0x086BA44E
 .2byte 10
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
 .2byte 0
@@ -12388,17 +12439,17 @@ gUnknown_086BA44E:: @ 0x086BA44E
     packed_sprite_oam x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0xa5, priority=0x1, paletteNum=0xf
 .2byte 0
 
-gUnknown_086BA4A0:: @ 0x086BA4A0
+gKyogreWhirlpool0SpriteSet:: @ 0x086BA4A0
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xa9, priority=0x3, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA4AA:: @ 0x086BA4AA
+gKyogreWhirlpool1SpriteSet:: @ 0x086BA4AA
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xb9, priority=0x3, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA4B4:: @ 0x086BA4B4
+gKyogreShockwaveSpriteSet:: @ 0x086BA4B4
 .2byte 4
     packed_sprite_oam x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc9, priority=0x2, paletteNum=0xc
 .2byte 0
@@ -12409,7 +12460,7 @@ gUnknown_086BA4B4:: @ 0x086BA4B4
     packed_sprite_oam x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc9, priority=0x2, paletteNum=0xc
 .2byte 0
 
-gUnknown_086BA4D6:: @ 0x086BA4D6
+gKyogreCrystalTopRightSpriteSet:: @ 0x086BA4D6
 .2byte 3
     packed_sprite_oam x=0x5E, y=-0x47, spriteSize=SPRITE_SIZE_8x16, tileNum=0x109, priority=0x1, paletteNum=0x5
 .2byte 0
@@ -12418,7 +12469,7 @@ gUnknown_086BA4D6:: @ 0x086BA4D6
     packed_sprite_oam x=0x66, y=-0x37, spriteSize=SPRITE_SIZE_16x8, tileNum=0x10f, priority=0x1, paletteNum=0x5
 .2byte 0
 
-gUnknown_086BA4F0:: @ 0x086BA4F0
+gKyogreCrystalTopLeftSpriteSet:: @ 0x086BA4F0
 .2byte 3
     packed_sprite_oam x=-0x80, y=-0x37, spriteSize=SPRITE_SIZE_8x16, tileNum=0x111, priority=0x1, paletteNum=0x5
 .2byte 0
@@ -12427,7 +12478,7 @@ gUnknown_086BA4F0:: @ 0x086BA4F0
     packed_sprite_oam x=-0x78, y=-0x27, spriteSize=SPRITE_SIZE_16x8, tileNum=0x117, priority=0x1, paletteNum=0x5
 .2byte 0
 
-gUnknown_086BA50A:: @ 0x086BA50A
+gKyogreCrystalBottomRightSpriteSet:: @ 0x086BA50A
 .2byte 3
     packed_sprite_oam x=0x66, y=0x31, spriteSize=SPRITE_SIZE_8x16, tileNum=0x119, priority=0x1, paletteNum=0x5
 .2byte 0
@@ -12436,7 +12487,7 @@ gUnknown_086BA50A:: @ 0x086BA50A
     packed_sprite_oam x=0x6E, y=0x41, spriteSize=SPRITE_SIZE_16x8, tileNum=0x11f, priority=0x1, paletteNum=0x5
 .2byte 0
 
-gUnknown_086BA524:: @ 0x086BA524
+gKyogreCrystalBottomLeftSpriteSet:: @ 0x086BA524
 .2byte 3
     packed_sprite_oam x=-0x72, y=0x51, spriteSize=SPRITE_SIZE_8x16, tileNum=0x119, priority=0x1, paletteNum=0x5
 .2byte 0
@@ -12445,14 +12496,14 @@ gUnknown_086BA524:: @ 0x086BA524
     packed_sprite_oam x=-0x6A, y=0x61, spriteSize=SPRITE_SIZE_16x8, tileNum=0x11f, priority=0x1, paletteNum=0x5
 .2byte 0
 
-gUnknown_086BA53E:: @ 0x086BA53E
+gKyogreSurfacingFxSpriteSet:: @ 0x086BA53E
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x121, priority=0x1, paletteNum=0xf
 .2byte 0
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x125, priority=0x1, paletteNum=0xf
 .2byte 0
 
-gUnknown_086BA550:: @ 0x086BA550
+gKyogreFreezeTrapSpriteSet:: @ 0x086BA550
 .2byte 4
     packed_sprite_oam x=-0x10, y=-0x9, spriteSize=SPRITE_SIZE_32x32, tileNum=0x127, priority=0x1, paletteNum=0xc
 .2byte 0
@@ -12463,7 +12514,7 @@ gUnknown_086BA550:: @ 0x086BA550
     packed_sprite_oam x=0x10, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x143, priority=0x1, paletteNum=0xc
 .2byte 0
 
-gUnknown_086BA572:: @ 0x086BA572
+gKyogreIntroCrystalGroundSpriteSet:: @ 0x086BA572
 .2byte 8
     packed_sprite_oam x=-0x80, y=-0x34, spriteSize=SPRITE_SIZE_32x16, tileNum=0x145, priority=0x1, paletteNum=0xa
 .2byte 0
@@ -13522,9 +13573,9 @@ gKecleonBoardSpriteSets:: @ 0x086BB420
     .4byte gBonusBoardRightFlipperSpriteSet
     .4byte gBonusBoardEndScoreSpriteSet
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
-    .4byte gUnknown_086BA2C8
+    .4byte gKecleonTreeLeavesSpriteSet
     .4byte gBonusBoardBallRespawnFxSpriteSet
-    .4byte gUnknown_086BA288
+    .4byte gKecleonDustFxSpriteSet
     .4byte gUnknown_086BA394
     .4byte gUnknown_086BA382
     .4byte gUnknown_086BA35E
@@ -13539,15 +13590,15 @@ gKecleonBoardSpriteSets:: @ 0x086BB420
     .4byte gUnknown_086BA2F2
     .4byte gBonusBoardBallSpriteSet
     .4byte gUnknown_086BA276
-    .4byte gUnknown_086BA292
-    .4byte gUnknown_086BA3A6
-    .4byte gUnknown_086BA3C0
-    .4byte gUnknown_086BA3D2
-    .4byte gUnknown_086BA3E4
-    .4byte gUnknown_086BA412
-    .4byte gUnknown_086BA434
-    .4byte gUnknown_086BA3F6
-    .4byte gUnknown_086BA408
+    .4byte gKecleonScopeItemSpriteSet
+    .4byte gKecleonFlowerByTreeSpriteSet
+    .4byte gKecleonFlowerPairLeftSpriteSet
+    .4byte gKecleonFlowerPairBottomRightSpriteSet
+    .4byte gKecleonFlowerTrippleRightSpriteSet
+    .4byte gKecleonBallRippleFxSpriteSet
+    .4byte gKecleonStepRippleFxSpriteSet
+    .4byte gKecleonReflectionHeadSpriteSet
+    .4byte gKecleonReflectionBallSpriteSet
 
 gKyogreBoardSpriteSets:: @ 0x086BB4A4
     .4byte gBonusBoardPausePanelSpriteSet
@@ -13559,24 +13610,24 @@ gKyogreBoardSpriteSets:: @ 0x086BB4A4
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
     .4byte gUnknown_086B1F26
     .4byte gUnknown_086B1F78
-    .4byte gUnknown_086B1676
-    .4byte gUnknown_086B16A8
-    .4byte gUnknown_086BA4D6
-    .4byte gUnknown_086BA4F0
-    .4byte gUnknown_086BA50A
-    .4byte gUnknown_086BA524
-    .4byte gUnknown_086BA572
-    .4byte gUnknown_086BA550
+    .4byte gLegendaryCatchPortraitSpriteSet
+    .4byte gLegendaryCatchPortraitBordersSpriteSet
+    .4byte gKyogreCrystalTopRightSpriteSet
+    .4byte gKyogreCrystalTopLeftSpriteSet
+    .4byte gKyogreCrystalBottomRightSpriteSet
+    .4byte gKyogreCrystalBottomLeftSpriteSet
+    .4byte gKyogreIntroCrystalGroundSpriteSet
+    .4byte gKyogreFreezeTrapSpriteSet
     .4byte gBonusBoardBallRespawnFxSpriteSet
     .4byte gBonusBoardBallSpriteSet
     .4byte gUnknown_086B1E46
     .4byte gUnknown_086B1E46
-    .4byte gUnknown_086BA44E
-    .4byte gUnknown_086BA4A0
-    .4byte gUnknown_086BA4AA
-    .4byte gUnknown_086BA4B4
+    .4byte gKyogreEntitySpriteSet
+    .4byte gKyogreWhirlpool0SpriteSet
+    .4byte gKyogreWhirlpool1SpriteSet
+    .4byte gKyogreShockwaveSpriteSet
     .4byte gUnknown_086B1DC4
-    .4byte gUnknown_086BA53E
+    .4byte gKyogreSurfacingFxSpriteSet
 
 gGroudonBoardSpriteSets:: @ 0x086BB510
     .4byte gBonusBoardPausePanelSpriteSet
@@ -13588,8 +13639,8 @@ gGroudonBoardSpriteSets:: @ 0x086BB510
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
     .4byte gUnknown_086B1F26
     .4byte gUnknown_086B1F78
-    .4byte gUnknown_086B1676
-    .4byte gUnknown_086B16A8
+    .4byte gLegendaryCatchPortraitSpriteSet
+    .4byte gLegendaryCatchPortraitBordersSpriteSet
     .4byte gUnknown_086BA624
     .4byte gUnknown_086BA63E
     .4byte gUnknown_086BA658
@@ -13622,8 +13673,8 @@ gRayquazaBoardSpriteSets:: @ 0x086BB590
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
     .4byte gUnknown_086B1F26
     .4byte gUnknown_086B1F78
-    .4byte gUnknown_086B1676
-    .4byte gUnknown_086B16A8
+    .4byte gLegendaryCatchPortraitSpriteSet
+    .4byte gLegendaryCatchPortraitBordersSpriteSet
     .4byte gUnknown_086BAB52
     .4byte gUnknown_086BAB74
     .4byte gUnknown_086BABA6
