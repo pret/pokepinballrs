@@ -179,7 +179,7 @@ void MainBoardProcess_7B_12524(void)
     {
         for (i = 0; i < 2; i++)
         {
-            spriteGroup = gMain.fieldSpriteGroups[i + 1];
+            spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_BASE + i];
 
             if (spriteGroup->active)
             {

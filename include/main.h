@@ -84,7 +84,7 @@ struct Main
     /*0x40*/ int hasSavedGame;
 
     /***
-     * Allows for a 'board' level indirect sprite group references, so that multiple boards
+     * Allows for 'board' level indirect sprite group references, so that multiple boards
      * use a shared 'logical' reference for a sprite group, separate from the actual group
      * being used for the specific board.
      *
