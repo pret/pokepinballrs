@@ -12,10 +12,10 @@ struct TitlescreenStruct
     /*0x09*/ s8 pressStartAndFlippersVisible;
     /*0x0A*/ s8 menuSpriteGroupId;
     /*0x0B*/ s8 menuVisible;
-    /*0x0C*/ s8 cursorSpriteGroupId;
-    /*0x0D*/ s8 cursorArrowVisible;
-    /*0x0E*/ s8 selectorSpriteGroupId;
-    /*0x0F*/ s8 selectorVisible;
+    /*0x0C*/ s8 titleScreenLeftFlipperSpriteGroup;
+    /*0x0D*/ s8 leftFlipperCursorVisible;
+    /*0x0E*/ s8 titleScreenRightFlipperSpriteGroup;
+    /*0x0F*/ s8 rightFlipperCursorVisible;
     /*0x10*/ s8 deleteSaveSpriteGroupId;
     /*0x11*/ s8 deleteSaveWindowVisible;
     /*0x12*/ s16 idleFadeoutCounter;
