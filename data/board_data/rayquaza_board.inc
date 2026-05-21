@@ -6,13 +6,13 @@ gRayquazaBoardBG0Tilemap:: @ 0x083640C8
 	.incbin "baserom.gba", 0x3640C8, 0x1000
 
 gRayquazaBoardCollisionTileDataAllLayers:: @ 0x083650C8
-    .incbin "baserom.gba", 0x3650C8, 0x2000
+.incbin "data/board_data/collision/rayquaza/tiledata.bin"
 
 gRayquazaBoardCollisionAngleDataAllLayers:: @ 0x083670C8
-    .incbin "baserom.gba", 0x3670C8, 0x4F80
+.incbin "data/board_data/collision/rayquaza/angledata.bin"
 
 gRayquazaBoardCollisionTypeDataAllLayers:: @ 0x0836C048
-    .incbin "baserom.gba", 0x36C048, 0x27C0
+.incbin "data/board_data/collision/rayquaza/typedata.bin"
 
 gRayquazaBoardBGScrollTilemap:: @ 0x0836E808
 	.incbin "baserom.gba", 0x36E808, 0x1000

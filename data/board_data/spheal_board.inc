@@ -6,13 +6,13 @@ gSphealWaterBackgroundTilemap:: @ 0x0837A4E8
 	.incbin "baserom.gba", 0x37A4E8, 0x800
 
 gSphealBoardCollisionTileDataAllLayers:: @ 0x0837ACE8
-    .incbin "baserom.gba", 0x37ACE8, 0x2000
+.incbin "data/board_data/collision/spheal/tiledata.bin"
 
 gSphealBoardCollisionAngleDataAllLayers:: @ 0x0837CCE8
-    .incbin "baserom.gba", 0x37CCE8, 0xB780
+.incbin "data/board_data/collision/spheal/angledata.bin"
 
 gSphealBoardCollisionTypeDataAllLayers:: @ 0x08388468
-    .incbin "baserom.gba", 0x388468, 0x5BC0
+.incbin "data/board_data/collision/spheal/typedata.bin"
 
 gSphealBoardBG1Tilemap:: @ 0x0838E028
 	.incbin "baserom.gba", 0x38E028, 0x800

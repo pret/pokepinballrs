@@ -5,13 +5,13 @@ gKecleonBoardBG1Tilemap:: @ 0x0830CDD4
 	.incbin "baserom.gba", 0x30CDD4, 0x800
 
 gKecleonBoardCollisionTileDataAllLayers:: @ 0x0830D5D4
-    .incbin "baserom.gba", 0x30D5D4, 0x2000
+.incbin "data/board_data/collision/kecleon/tiledata.bin"
 
 gKecleonBoardCollisionAngleDataAllLayers:: @ 0x0830F5D4
-    .incbin "baserom.gba", 0x30F5D4, 0x10280
+.incbin "data/board_data/collision/kecleon/angledata.bin"
 
 gKecleonBoardCollisionTypeDataAllLayers:: @ 0x0831F854
-    .incbin "baserom.gba", 0x31F854, 0x8140
+.incbin "data/board_data/collision/kecleon/typedata.bin"
 
 gKecleonBerryOverlayTilemap:: @ 0x08327994
 	.incbin "baserom.gba", 0x327994, 0x800

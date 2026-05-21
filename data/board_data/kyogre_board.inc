@@ -9,13 +9,13 @@ gKyogreWaterBackgroundTilemap:: @ 0x08333004
 	.incbin "baserom.gba", 0x333004, 0x800
 
 gKyrGrouBoardCollisionTileDataAllLayers:: @ 0x08333804
-    .incbin "baserom.gba", 0x333804, 0x2000
+.incbin "data/board_data/collision/kyogre/tiledata.bin"
 
 gKyrGrouBoardCollisionAngleDataAllLayers:: @ 0x08335804
-    .incbin "baserom.gba", 0x335804, 0x5580
+.incbin "data/board_data/collision/kyogre/angledata.bin"
 
 gKyrGrouBoardCollisionTypeDataAllLayers:: @ 0x0833AD84
-    .incbin "baserom.gba", 0x33AD84, 0x2AC0
+.incbin "data/board_data/collision/kyogre/typedata.bin"
 
 gKyogreBoardBG1Tilemap:: @ 0x0833D844
 	.incbin "baserom.gba", 0x33D844, 0x800
