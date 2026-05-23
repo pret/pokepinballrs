@@ -22,7 +22,7 @@ extern struct SongHeader se_unk_13d;
 extern const s8 gSphealScoreDigitSpriteIndices[];
 extern const u16 gSphealWaterBackgroundTilemap[];
 extern const u8 gSphealNetGfx[][0x200];
-extern const u8 gSphealExtendedScoreSprites[][0x180];
+extern const u8 gSphealNetFrontGfx[][0x180];
 extern const u8 gSphealFlyingEnemyVariantSprites[][0x120];
 extern const u8 gSphealMinionBodySprites[][0x800];
 extern const u8 gSphealResultsScreenGfx[];
@@ -961,12 +961,12 @@ void UpdateSphealScoreAndDelivery(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[SG_SPHEAL_SCORED_COUNTER];
+    group = &gMain.spriteGroups[SG_SPHEAL_NET_FRONT];
     if (group->active)
     {
         group->baseX = 104 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 94 - gCurrentPinballGame->cameraYOffset;
-        DmaCopy16(3, gSphealExtendedScoreSprites[var0], (void *)0x06010B20, 0x180);
+        DmaCopy16(3, gSphealNetFrontGfx[var0], (void *)0x06010B20, 0x180);
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -976,7 +976,7 @@ void UpdateSphealScoreAndDelivery(void)
     }
 
     if (gCurrentPinballGame->boardState == SPHEAL_BOARD_STATE_ACTIVE_PHASE)
-        gMain.spriteGroups[SG_SPHEAL_SCORED_COUNTER].active = TRUE;
+        gMain.spriteGroups[SG_SPHEAL_NET_FRONT].active = TRUE;
 
     if (gCurrentPinballGame->boardState < SPHEAL_BOARD_STATE_ENDING && gMain.modeChangeFlags == MODE_CHANGE_NONE && gCurrentPinballGame->scoreCountdownTimer)
     {

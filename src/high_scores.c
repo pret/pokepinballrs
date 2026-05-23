@@ -8,7 +8,7 @@
 #include "constants/fields.h"
 
 extern StateFunc gHighScoresStateFuncs[15];
-extern StateFunc gIdleHighScoresStateFuncs[15];
+extern StateFunc gIdleHighScoresStateFuncs[3];
 extern u8 gHighScoreBG_Pals[];
 extern u8 gHighScoreBallWatermark_Tilemap[];
 extern u8 gHighScoreText_Gfx[];
@@ -40,9 +40,9 @@ struct HighScoreScreenState
     u8 mainField;
     s32 highScoreIndex;
     s16 currentNameCharIndex;
-    s16 nameFlashSpriteGroup;
+    s16 nameFlashToggle;
     s16 flashFrameCounter;
-    s16 currentNameChar;
+    s16 currentNameChar; //0-25="A"-"Z", 26-35="0"-"9" 41=" "
     s16 flashDuration;
     s16 flashElapsedFrames;
     s16 paletteAnimPhase;
@@ -55,21 +55,27 @@ struct HighScoreScreenState
 };
 
 enum HighScoreStates{
-    HIGH_SCORE_STATE_0 = 0,
-    HIGH_SCORE_STATE_1 = 1,
-    HIGH_SCORE_STATE_2 = 2,
-    HIGH_SCORE_STATE_3 = 3,
-    HIGH_SCORE_STATE_4 = 4,
-    HIGH_SCORE_STATE_5 = 5,
-    HIGH_SCORE_STATE_6 = 6,
-    HIGH_SCORE_STATE_7 = 7,
-    HIGH_SCORE_STATE_8 = 8,
-    HIGH_SCORE_STATE_9 = 9,
-    HIGH_SCORE_STATE_10 = 10,
-    HIGH_SCORE_STATE_11 = 11,
-    HIGH_SCORE_STATE_12 = 12,
-    HIGH_SCORE_STATE_13 = 13,
-    HIGH_SCORE_STATE_14 = 14
+    HIGH_SCORE_STATE_INIT = 0,
+    HIGH_SCORE_STATE_SHOW_COMPLETION_BANNER = 1,
+    HIGH_SCORE_STATE_FLASH_NEW_SCORE_POSITION = 2,
+    HIGH_SCORE_STATE_BROWSE_SCORES = 3,
+    HIGH_SCORE_STATE_NAME_ENTRY = 4,
+    HIGH_SCORE_STATE_INIT_LINK_EXCHANGE = 5,
+    HIGH_SCORE_STATE_LINK_EXCHANGE_LOOP = 6,
+    HIGH_SCORE_STATE_LINK_ERROR = 7,
+    HIGH_SCORE_STATE_LINK_SUCCESS = 8,
+    HIGH_SCORE_STATE_LINK_RETRY_WAIT = 9,
+    HIGH_SCORE_STATE_RESET_CONFIRMATION = 10,
+    HIGH_SCORE_STATE_EXIT_TO_TITLE = 11,
+    HIGH_SCORE_STATE_RELOAD_AFTER_LINK = 12,
+    HIGH_SCORE_STATE_SHOW_MERGED_SCORES = 13,
+    HIGH_SCORE_STATE_RETURN_TO_MAIN = 14
+};
+
+enum IdleHighScoreStates{
+    IDLE_HIGH_SCORE_STATE_INIT = 0,
+    IDLE_HIGH_SCORE_STATE_AUTOSCROLL = 1,
+    IDLE_HIGH_SCORE_STATE_EXIT = 2
 };
 
 struct HighScoreScreenState gHighScoreScreenState;
@@ -141,7 +147,7 @@ void InitHighScoreData(void)
         }
     }
     gHighScoreScreenState.currentNameCharIndex = 0;
-    gHighScoreScreenState.nameFlashSpriteGroup = SG_0;
+    gHighScoreScreenState.nameFlashToggle = 0;
     gHighScoreScreenState.flashFrameCounter = 0;
     gHighScoreScreenState.flashDuration = 0;
     gHighScoreScreenState.flashElapsedFrames = 0;
@@ -188,20 +194,20 @@ void InitHighScoreData(void)
             {
                 gCompletionBannerVisible = 1;
                 gCompletionBannerY = 0xB8;
-                gCompletionBannerSpriteGroup = SG_0;
+                gCompletionBannerSpriteGroup = SG_HIGH_SCORE_COMPLETION_BANNER_LOOP_START;
                 gCompletionBannerPhase = 0;
-                gHighScoreScreenState.nextSubState = 1;
+                gHighScoreScreenState.nextSubState = HIGH_SCORE_STATE_SHOW_COMPLETION_BANNER;
             }
             else
             {
                 gCompletionBannerVisible = 0;
-                gHighScoreScreenState.nextSubState = 2;
+                gHighScoreScreenState.nextSubState = HIGH_SCORE_STATE_FLASH_NEW_SCORE_POSITION;
             }
         }
         else
         {
             gCompletionBannerDone = 0;
-            gHighScoreScreenState.nextSubState = 2;
+            gHighScoreScreenState.nextSubState = HIGH_SCORE_STATE_FLASH_NEW_SCORE_POSITION;
         }
     }
     else
@@ -210,7 +216,7 @@ void InitHighScoreData(void)
         gScrollXOffset = 0;
         gScrollDirection = -1;
         RenderHighScoreSprites();
-        gHighScoreScreenState.nextSubState = 3;
+        gHighScoreScreenState.nextSubState = HIGH_SCORE_STATE_BROWSE_SCORES;
     }
     gMain.bgOffsets[3].xOffset = gScrollXOffset;
     gMain.bgOffsets[2].xOffset = gScrollXOffset;
@@ -236,21 +242,21 @@ void HighScore_ShowCompletionBanner(void)
             if((gHighScoreScreenState.flashDuration & 3) == 0)
             {
                 gCompletionBannerSpriteGroup++;
-                if(gCompletionBannerSpriteGroup > SG_4)
+                if(gCompletionBannerSpriteGroup > SG_HIGH_SCORE_COMPLETION_BANNER_LOOP_END)
                 {
-                    gCompletionBannerSpriteGroup = SG_0;
+                    gCompletionBannerSpriteGroup = SG_HIGH_SCORE_COMPLETION_BANNER_LOOP_START;
                 }
             }
             if(gCompletionBannerY == 0x50)
             {
-                gCompletionBannerSpriteGroup = SG_0;
+                gCompletionBannerSpriteGroup = SG_HIGH_SCORE_COMPLETION_BANNER_LOOP_START;
                 gCompletionBannerPhase++;
             }
             break;
         case 2:
             if(JOY_NEW(A_BUTTON | B_BUTTON))
             {
-                gCompletionBannerSpriteGroup = SG_0;
+                gCompletionBannerSpriteGroup = SG_HIGH_SCORE_COMPLETION_BANNER_LOOP_START;
                 gCompletionBannerPhase++;
             }
             break;
@@ -261,7 +267,7 @@ void HighScore_ShowCompletionBanner(void)
                 gHighScoreScreenState.flashDuration = 0;
                 gCompletionBannerDone = 1;
                 gCompletionBannerVisible = 0;
-                gMain.subState = HIGH_SCORE_STATE_2;
+                gMain.subState = HIGH_SCORE_STATE_FLASH_NEW_SCORE_POSITION;
             }
             break;
     }
@@ -284,7 +290,7 @@ void HighScore_FlashNewEntry(void)
             gHighScoreScreenState.flashDuration = 999;
             gHighScoreScreenState.flashElapsedFrames = 0;
             m4aSongNumStart(MUS_HIGH_SCORE);
-            gMain.subState = HIGH_SCORE_STATE_3;
+            gMain.subState = HIGH_SCORE_STATE_BROWSE_SCORES;
         }
         else
         {
@@ -296,15 +302,16 @@ void HighScore_FlashNewEntry(void)
     if(gHighScoreScreenState.flashFrameCounter > 8)
     {
         gHighScoreScreenState.flashFrameCounter = 0;
-        if(!gHighScoreScreenState.nameFlashSpriteGroup)
+
+        if(!gHighScoreScreenState.nameFlashToggle)
         {
-            gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
+            gHighScoreScreenState.nameFlashToggle = 1;
             CopyString(6 - (gHighScoreScreenState.mainField << 1), gHighScoreNameRowTilemapOffsets[gHighScoreScreenState.highScoreIndex] + (gHighScoreScreenState.mainField << 5), 0, 0x15, 4, 2);
             CopyString(0, 0x17, 6 - (gHighScoreScreenState.mainField << 1), gHighScoreNameRowTilemapOffsets[gHighScoreScreenState.highScoreIndex] + (gHighScoreScreenState.mainField << 5), 4, 2);
         }
         else
         {
-            gHighScoreScreenState.nameFlashSpriteGroup = SG_0;
+            gHighScoreScreenState.nameFlashToggle = 0;
             CopyString(0, 0x15, 6 - (gHighScoreScreenState.mainField << 1), gHighScoreNameRowTilemapOffsets[gHighScoreScreenState.highScoreIndex] + (gHighScoreScreenState.mainField << 5), 4, 2);
         }
     }
@@ -324,14 +331,14 @@ void HighScore_FlashNewEntry(void)
     if(gHighScoreScreenState.flashElapsedFrames > gHighScoreScreenState.flashDuration)
     {
         gHighScoreScreenState.flashElapsedFrames = 0;
-        if(gHighScoreScreenState.nameFlashSpriteGroup == SG_1)
+        if(gHighScoreScreenState.nameFlashToggle == 1)
         {
-            gHighScoreScreenState.nameFlashSpriteGroup = SG_0;
+            gHighScoreScreenState.nameFlashToggle = 0;
             gHighScoreScreenState.flashFrameCounter = 0;
             CopyString(0, 0x15, 6 - (gHighScoreScreenState.mainField << 1), gHighScoreNameRowTilemapOffsets[gHighScoreScreenState.highScoreIndex] +(gHighScoreScreenState.mainField << 5), 4, 2);
         }
         m4aSongNumStart(MUS_HIGH_SCORE);
-        gMain.subState = HIGH_SCORE_STATE_4;
+        gMain.subState = HIGH_SCORE_STATE_NAME_ENTRY;
     }
 
     DmaCopy16(3, gBG0TilemapBuffer, 0x6000000, 0x1000);
@@ -372,7 +379,7 @@ void HighScore_BrowseScores(void)
     if(JOY_NEW(A_BUTTON | B_BUTTON))
     {
         m4aSongNumStart(SE_MENU_CANCEL);
-        gMain.subState = HIGH_SCORE_STATE_11;
+        gMain.subState = HIGH_SCORE_STATE_EXIT_TO_TITLE;
     }
     if(JOY_NEW(START_BUTTON))
     {
@@ -381,7 +388,7 @@ void HighScore_BrowseScores(void)
             m4aSongNumStart(SE_MENU_POPUP_OPEN);
             gShowDialogFlag = 1;
             gDialogType = 0;
-            gMain.subState = HIGH_SCORE_STATE_5;
+            gMain.subState = HIGH_SCORE_STATE_INIT_LINK_EXCHANGE;
         }
     }
 
@@ -400,7 +407,7 @@ void HighScore_BrowseScores(void)
                     m4aSongNumStart(SE_MENU_POPUP_OPEN);
                     gShowDialogFlag = 1;
                     gDialogType = 4;
-                    gMain.subState = HIGH_SCORE_STATE_10;
+                    gMain.subState = HIGH_SCORE_STATE_RESET_CONFIRMATION;
                 }
             }
             if(gResetComboTimer > 0)
@@ -436,7 +443,7 @@ void HighScore_NameEntry(void)
     if (++gHighScoreScreenState.flashFrameCounter > 12)
     {
         gHighScoreScreenState.flashFrameCounter = 0;
-        gHighScoreScreenState.nameFlashSpriteGroup = SG_1 - gHighScoreScreenState.nameFlashSpriteGroup;
+        gHighScoreScreenState.nameFlashToggle = SG_HIGH_SCORE_ENTRY_CURSOR_ARROW_1 - gHighScoreScreenState.nameFlashToggle;
     }
 
     if (++gHighScoreScreenState.paletteAnimTimer > 8)
@@ -481,7 +488,7 @@ void HighScore_NameEntry(void)
         else
         {
             m4aSongNumStart(SE_MENU_MOVE);
-            gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
+            gHighScoreScreenState.nameFlashToggle = SG_HIGH_SCORE_ENTRY_CURSOR_ARROW_1;
             PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
             gWorkingHighScores[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].data.parts.name[gHighScoreScreenState.currentNameCharIndex] = gHighScoreScreenState.currentNameChar;
             gHighScoreScreenState.currentNameCharIndex++;
@@ -497,7 +504,7 @@ void HighScore_NameEntry(void)
         else
         {
             m4aSongNumStart(SE_MENU_MOVE);
-            gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
+            gHighScoreScreenState.nameFlashToggle = SG_HIGH_SCORE_ENTRY_CURSOR_ARROW_1;
             PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
             gWorkingHighScores[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].data.parts.name[gHighScoreScreenState.currentNameCharIndex] = gHighScoreScreenState.currentNameChar;
             gHighScoreScreenState.currentNameCharIndex--;
@@ -507,7 +514,7 @@ void HighScore_NameEntry(void)
 
     if (JOY_NEW(A_BUTTON))
     {
-        gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
+        gHighScoreScreenState.nameFlashToggle = SG_HIGH_SCORE_ENTRY_CURSOR_ARROW_1;
         PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
         gWorkingHighScores[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].data.parts.name[gHighScoreScreenState.currentNameCharIndex] = gHighScoreScreenState.currentNameChar;
         if (gHighScoreScreenState.currentNameCharIndex == HIGH_SCORE_NAME_LENGTH - 1)
@@ -527,7 +534,7 @@ void HighScore_NameEntry(void)
             }
 
             SaveFile_WriteToSram();
-            gMain.subState = HIGH_SCORE_STATE_3;
+            gMain.subState = HIGH_SCORE_STATE_BROWSE_SCORES;
         }
         else
         {
@@ -545,7 +552,7 @@ void HighScore_NameEntry(void)
         else
         {
             m4aSongNumStart(SE_SCORE_ENTRY_A_B_MOVE);
-            gHighScoreScreenState.nameFlashSpriteGroup = SG_1;
+            gHighScoreScreenState.nameFlashToggle = SG_HIGH_SCORE_ENTRY_CURSOR_ARROW_1;
             PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
             gWorkingHighScores[gHighScoreScreenState.mainField][gHighScoreScreenState.highScoreIndex].data.parts.name[gHighScoreScreenState.currentNameCharIndex] = gHighScoreScreenState.currentNameChar;
             gHighScoreScreenState.currentNameCharIndex--;
@@ -564,7 +571,7 @@ void HighScore_InitLinkExchange(void)
     InitLinkExchangeBuffers();
     gLinkExchangeStep = 0;
     RenderHighScoreSprites();
-    gMain.subState = HIGH_SCORE_STATE_6;
+    gMain.subState = HIGH_SCORE_STATE_LINK_EXCHANGE_LOOP;
 }
 
 void HighScore_LinkExchangeLoop(void)
@@ -576,7 +583,7 @@ void HighScore_LinkExchangeLoop(void)
         gShowDialogFlag = 0;
         gDialogType = 0;
         ResetSerialAndInterrupts();
-        gMain.subState = HIGH_SCORE_STATE_3;
+        gMain.subState = HIGH_SCORE_STATE_BROWSE_SCORES;
     }
     else
     {
@@ -592,12 +599,12 @@ void HighScore_LinkExchangeLoop(void)
                 s16 var0 = HighScore_ProcessLinkExchange();
                 if (var0 == -1)
                 {
-                    gMain.subState = HIGH_SCORE_STATE_8;
+                    gMain.subState = HIGH_SCORE_STATE_LINK_SUCCESS;
                 }
                 else if (var0 == 1)
                 {
                     gDialogType = 2;
-                    gMain.subState = HIGH_SCORE_STATE_7;
+                    gMain.subState = HIGH_SCORE_STATE_LINK_ERROR;
                     m4aSongNumStart(SE_FAILURE);
                 }
             }
@@ -606,7 +613,7 @@ void HighScore_LinkExchangeLoop(void)
             if ((gLinkStatusResult & 0x7f0000) != 0 && gLinkExchangeResult == -1 && ++gLinkTimeoutCounter > 180)
             {
                 gDialogType = 2;
-                gMain.subState = HIGH_SCORE_STATE_7;
+                gMain.subState = HIGH_SCORE_STATE_LINK_ERROR;
                 m4aSongNumStart(SE_FAILURE);
             }
         }
@@ -618,7 +625,7 @@ void HighScore_LinkRetryWait(void)
     if (++gLinkTimeoutCounter > 2)
     {
         gLinkTimeoutCounter = 0;
-        gMain.subState = HIGH_SCORE_STATE_5;
+        gMain.subState = HIGH_SCORE_STATE_INIT_LINK_EXCHANGE;
     }
 }
 
@@ -644,7 +651,7 @@ void HighScore_LinkError(void)
         FadeOutScreen();
         m4aMPlayAllStop();
         DisableVBlankInterrupts();
-        gMain.subState = HIGH_SCORE_STATE_0;
+        gMain.subState = HIGH_SCORE_STATE_INIT;
     }
 }
 
@@ -683,7 +690,7 @@ void HighScore_LinkSuccess(void)
         FadeOutScreen();
         m4aMPlayAllStop();
         DisableVBlankInterrupts();
-        gMain.subState = HIGH_SCORE_STATE_12;
+        gMain.subState = HIGH_SCORE_STATE_RELOAD_AFTER_LINK;
         break;
     }
 
@@ -701,14 +708,14 @@ void HighScore_ResetConfirmation(void)
         FadeOutScreen();
         m4aMPlayAllStop();
         DisableVBlankInterrupts();
-        gMain.subState = HIGH_SCORE_STATE_0;
+        gMain.subState = HIGH_SCORE_STATE_INIT;
     }
     else if (JOY_NEW(B_BUTTON))
     {
         m4aSongNumStart(SE_MENU_CANCEL);
         gShowDialogFlag = 0;
         gDialogType = 0;
-        gMain.subState = HIGH_SCORE_STATE_3;
+        gMain.subState = HIGH_SCORE_STATE_BROWSE_SCORES;
     }
 }
 
@@ -777,7 +784,7 @@ void IdleHighScore_AutoScroll(void)
 {
     switch (gHighScoreScreenState.nextSubState)
     {
-    case 0:
+    case IDLE_HIGH_SCORE_STATE_INIT:
         if (++gHighScoreScreenState.paletteAnimTimer > 8)
         {
             gHighScoreScreenState.paletteAnimTimer = 0;
@@ -790,20 +797,20 @@ void IdleHighScore_AutoScroll(void)
             gHighScoreScreenState.displayTimer = 0;
             gHighScoreScreenState.paletteAnimTimer = 0;
             gHighScoreScreenState.paletteAnimPhase = 0;
-            gHighScoreScreenState.nextSubState = 1;
+            gHighScoreScreenState.nextSubState = IDLE_HIGH_SCORE_STATE_AUTOSCROLL;
         }
         break;
-    case 1:
+    case IDLE_HIGH_SCORE_STATE_AUTOSCROLL:
         gScrollXOffset += 8;
         if (gScrollXOffset >= 240)
         {
             gHighScoreScreenState.displayTimer = 0;
-            gHighScoreScreenState.nextSubState = 2;
+            gHighScoreScreenState.nextSubState = IDLE_HIGH_SCORE_STATE_EXIT;
         }
         gMain.bgOffsets[3].xOffset = gScrollXOffset;
         gMain.bgOffsets[2].xOffset = gScrollXOffset;
         break;
-    case 2:
+    case IDLE_HIGH_SCORE_STATE_EXIT:
         if (++gHighScoreScreenState.paletteAnimTimer > 8)
         {
             gHighScoreScreenState.paletteAnimTimer = 0;
@@ -939,7 +946,8 @@ void UpdateNameEntryCursor(void)
     int i;
     struct SpriteGroup *spriteGroup;
 
-    spriteGroup = &gMain.spriteGroups[gHighScoreScreenState.nameFlashSpriteGroup];
+    //Arrow swaps between 2 variants, and then clones/positions both from the same base position
+    spriteGroup = &gMain.spriteGroups[gHighScoreScreenState.nameFlashToggle];
     spriteGroup->active = TRUE;
     LoadSpriteSets(gNameEntryCursorSpriteSets, 2, gMain.spriteGroups);
 

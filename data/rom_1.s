@@ -1379,7 +1379,7 @@ gRayquazaBodyVariantTiles:: @ 0x084AA9EC
 gSphealNetGfx:: @ 0x084AF9EC
 	.incbin "baserom.gba", 0x4AF9EC, 0x600
 
-gSphealExtendedScoreSprites:: @ 0x084AFFEC
+gSphealNetFrontGfx:: @ 0x084AFFEC
 	.incbin "baserom.gba", 0x4AFFEC, 0x480
 
 gSphealFlyingEnemyVariantSprites:: @ 0x084B046C
