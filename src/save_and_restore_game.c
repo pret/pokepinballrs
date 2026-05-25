@@ -502,7 +502,7 @@ void RestoreMainFieldDynamicGraphics(void)
         switch (gCurrentPinballGame->portraitRenderMode[i])
         {
         case 0:
-            DmaCopy16(3, gPortraitGenericGraphics[gCurrentPinballGame->portraitGfxIndex[i]], 0x06010CA0 + (i * 0x300), 0x300);
+            DmaCopy16(3, gLocationPortraitGfx[gCurrentPinballGame->portraitGfxIndex[i]], 0x06010CA0 + (i * 0x300), 0x300);
             gCurrentPinballGame->ball += 0; //TODO: Dumb match is still a match...
             break;
         case 9:

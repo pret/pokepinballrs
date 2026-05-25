@@ -985,7 +985,7 @@ gRubyBoardPalette:: @ 0x081BFEE4
 gDefaultBallPalette:: @ 0x081C0064
 	.incbin "baserom.gba", 0x1C0064, 0x80
 
-gPortraitGenericPalettes:: @ 0x081C00E4
+gLocationPalettes:: @ 0x081C00E4
 	.incbin "baserom.gba", 0x1C00E4, 0x200
 
 gPortraitAnimPalettes:: @ 0x081C02E4
@@ -1340,7 +1340,7 @@ gRubyTravelVolbeat_Gfx:: @ 0x08483D8C
 gSapphireTravelIllumise_Gfx:: @ 0x08488A0C
 	.incbin "baserom.gba", 0x488A0C, 0x4C80
 
-gPortraitGenericGraphics:: @ 0x0848D68C
+gLocationPortraitGfx:: @ 0x0848D68C
 	.incbin "baserom.gba", 0x48D68C, 0x2700
 
 gCaptureModeTilesGfx:: @ 0x0848FD8C

@@ -499,7 +499,7 @@ gHighScoreEntrySource: @ 0x202C588
 	.space 0x4
 gPokedexScrollWaitFrames: @ 0x0202C58C
 	.space 0x4
-gPokedexShowLinkCableIcon: @ 0x0202C590
+gPokedexShowCompletionBadge: @ 0x0202C590
 	.space 0x4
 gIntroOverlayFadeStep: @ 0x0202C594
 	.space 0x4

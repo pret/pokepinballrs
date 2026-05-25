@@ -3,7 +3,7 @@
 #include "constants/board/center_screen_states.h"
 #include "constants/board/main_board.h"
 
-extern const u16 gPortraitGenericPalettes[];
+extern const u16 gLocationPalettes[];
 extern const u16 gPortraitPaletteSlots[2];
 extern const u16 gPortraitIdleCycleData[];
 extern const u16 gPortraitAnimPalettes[];
@@ -31,13 +31,12 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
 
     switch (displayMode)
     {
-    // Show the 
     case PORTRAIT_STATE_CURRENT_LOCATION:
         gCurrentPinballGame->creatureOamPriority = 3;
-        gCurrentPinballGame->portraitGfxIndex[picIx] = gCurrentPinballGame->roulettePortraitIndexes[picIx];
-        DmaCopy16(3, gPortraitGenericGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
-        index = gCurrentPinballGame->roulettePortraitIndexes[picIx] * 0x10;
-        DmaCopy16(3, &gPortraitGenericPalettes[index], (void *)0x05000200 + gPortraitPaletteSlots[picIx] * 0x20, 0x20);
+        gCurrentPinballGame->portraitGfxIndex[picIx] = gCurrentPinballGame->areaRoulettePortraitIndex[picIx];
+        DmaCopy16(3, gLocationPortraitGfx[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
+        index = gCurrentPinballGame->areaRoulettePortraitIndex[picIx] * 0x10;
+        DmaCopy16(3, &gLocationPalettes[index], (void *)0x05000200 + gPortraitPaletteSlots[picIx] * 0x20, 0x20);
         break;
     case PORTRAIT_STATE_SLOT_START_CARD:
         ptr = gPortraitIdleCycleData;

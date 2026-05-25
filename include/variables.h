@@ -283,7 +283,7 @@ extern s16 gPokedexInfoWindowSlideStep;
 extern s8 gPokedexButtonPromptFrame;
 extern s8 gPokedexShowButtonPrompt;
 extern s16 gPokedexSpriteCategory;
-extern s8 gPokedexShowLinkCableIcon;
+extern s8 gPokedexShowCompletionBadge;
 extern s16 gPokedexLinkStateTimer;
 extern s8 gPokedexShowPopupWindow;
 

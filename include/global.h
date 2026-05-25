@@ -766,7 +766,7 @@ struct PinballGame
     /*0x6CC*/ s8 catchRevealFrameId;
     /*0x6CD*/ u8 catchTileShufflePool[6];
     /*0x6D3*/ u8 catchTilePalette[6];
-    /*0x6D9*/ s8 roulettePortraitIndexes[2];
+    /*0x6D9*/ s8 areaRoulettePortraitIndex[2];
     /*0x6DB*/ u8 creatureOamPriority;
     /*0x6DC*/ u8 prizeId; //Used both for roulette and shop purchases
     /*0x6DD*/ s8 prizeSelected;
@@ -1004,7 +1004,7 @@ extern const u8 gPortraitAnimFrameGraphics[][0x300];
 extern const u8 gBallRotationTileGraphics[][0x80];
 extern const u8 gBallShadowTileGraphics[][0x200];
 extern const u8 gMainStageBonusTrap_Gfx[][0x300];
-extern const u8 gPortraitGenericGraphics[][0x300];
+extern const u8 gLocationPortraitGfx[][0x300];
 extern const u8 gChargeFillIndicator_Gfx[][0x80];
 extern const u8 gPikaSaverTilesGfx[];
 extern const u8 gMainBoardPikaSpinner_Gfx[][0x120];
