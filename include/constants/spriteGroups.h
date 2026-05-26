@@ -32,10 +32,31 @@
 #define SG_PAUSE_TOP_BORDER 1
 #define SG_PAUSE_BOTTOM_BORDER 2
 
+
 // Shared by main boards
+// 0-2 shared
+#define SG_BALL_SAVE_LATI_ARM 3 // Drawn above ball
+#define SG_BALL_SAVE_LATI 4 // Drawn below ball
+#define SG_BALL_SAVE_BANNER 5
+#define SG_END_OF_BALL_BONUS_TEXT_BASE 6 // Of 3. Lines 0, 1, 2
+#define SG_END_OF_BALL_BONUS_TEXT_LINE_0 6
+#define SG_END_OF_BALL_BONUS_TEXT_LINE_1 7
+#define SG_END_OF_BALL_BONUS_TEXT_LINE_2 8
+#define SG_END_OF_BALL_BONUS_BANNER 9
 #define SG_MAIN_BOARD_FLIPPER_BASE 10 // Of 2. Left, Right
 #define SG_MAIN_BOARD_LEFT_FLIPPER 10
 #define SG_MAIN_BOARD_RIGHT_FLIPPER 11
+
+// Ruby board
+// 0-11 shared
+#define SG_RUBY_AERODACTLY_EGG_DELIVERY 12
+#define SG_RUBY_CHIKORITA_PROJECTILE 13
+#define SG_RUBY_CHIKORITA_PROJECTILE_COLLISION_FX 14
+ #define SG_RUBY_POKEMON_NAME_TEXT 15
+ #define SG_RUBY_WAS_CAUGHT_TEXT 16
+ #define SG_RUBY_SHOP_ARROWS 17 // Left/Right, and evo Up/down arrow
+ #define SG_RUBY_SHOP_COINS 18
+ #define SG_RUBY_SHOP_CONFIRMATION_PANEL 19 
 
 // Shared by bonus / boss boards
 #define SG_BONUS_BOARD_FLIPPER_BASE 3 // Of 2. Left, Right
@@ -49,7 +70,7 @@
 #define SG_LEGENDARY_CATCH_PORTRAIT_BORDERS 10
 
 // Dusclops board
-//1-6 shared
+//0-6 shared
 #define SG_DUSKULL_ENTITY_BASE 7 // Of 3
 #define SG_DUSKULL_ENTITY_0 7
 #define SG_DUSKULL_ENTITY_1 8
@@ -61,7 +82,7 @@
 #define SG_DUSCLOPS_ENTITY 14
 
 // Groudon board
-//1-10 shared
+//0-10 shared
 #define SG_GROUDON_CRYSTAL_BASE 11 // Of 4. Top right; bottom right; top left; bottom left
 #define SG_GROUDON_CRYSTAL_TOP_RIGHT 11
 #define SG_GROUDON_CRYSTAL_BOTTOM_RIGHT 12
@@ -80,7 +101,7 @@
 #define SG_GROUDON_SHOCKWAVE 30
 
 // Kecleon board
-//1-6 shared
+//0-6 shared
 #define SG_KECLEON_TREE_LEAVES 7
  #define SG_KECLEON_BALL_RESPAWN 8
 #define SG_KECLEON_DUST_FX 9
@@ -97,7 +118,7 @@
 #define SG_KECLEON_REFLECTION_BALL 32
 
 // Kyogre board
-//1-10 shared
+//0-10 shared
 #define SG_KYOGRE_CRYSTAL_BASE 11 // Of 4. Top right; top left, bottom right, bottom left.
 #define SG_KYOGRE_CRYSTAL_TOP_RIGHT 11
 #define SG_KYOGRE_CRYSTAL_TOP_LEFT 12
@@ -116,7 +137,7 @@
 #define SG_KYOGRE_SURFACING_FX 26
 
 // Rayquaza board
-//1-10 shared
+//0-10 shared
 #define SG_RAYQUAZA_INTRO_CLOUD_0 11
 #define SG_RAYQUAZA_INTRO_CLOUD_1 12
 #define SG_RAYQUAZA_INTRO_CLOUD_2 13
@@ -154,7 +175,7 @@
 #define SG_RAYQUAZA_ENTITY_SHADOW_FX 45
 
 // Spheal board
-//1-6 shared
+//0-6 shared
 #define SG_SPHEAL_END_SCORE_PANEL 7
 #define SG_SPHEAL_END_SCORE_SPHEALS_SUNK 8
 #define SG_SPHEAL_END_SCORE_BALLS_SUNK 9
@@ -321,6 +342,13 @@
 #define FIELD_SG_MAIN_BOARD_BALL_TRAIL_BASE 1 // Of 2
 #define FIELD_SG_MAIN_BOARD_BALL_TRAIL_0 1
 #define FIELD_SG_MAIN_BOARD_BALL_TRAIL_1 2
+#define FIELD_SG_MAIN_SHOP_ARROWS 6 // Left/Right, and evo Up/down arrow
+#define FIELD_SG_MAIN_SHOP_COINS 7
+#define FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL 8 // Yellow bar displaying cost/mon name
+#define FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY 9 // Change sheen, Sold Out indicator
+#define FIELD_SG_MAIN_BOARD_LEGENDARY_CATCH_PORTRAIT 19
+#define FIELD_SG_MAIN_BOARD_LEGENDARY_CATCH_PORTRAIT_BORDERS 22
+#define FIELD_SG_MAIN_BOARD_BALL_OVERRIDE 49
 
 // bonus/legendary boards
 //0,3-5 shared

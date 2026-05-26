@@ -94,7 +94,7 @@ void MainBoardProcess_7B_12524(void)
             oamData->y = oam->yOffset + spriteGroup->baseY;
     }
 
-    spriteGroup = gMain.fieldSpriteGroups[49];
+    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_OVERRIDE];
 
     if (spriteGroup->active)
     {
@@ -172,7 +172,7 @@ void MainBoardProcess_7B_12524(void)
 
         gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_0]->active = TRUE;
         gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_1]->active = TRUE;
-        gMain.fieldSpriteGroups[49]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_OVERRIDE]->active = TRUE;
         gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = FALSE;
     }
     else
@@ -194,7 +194,7 @@ void MainBoardProcess_7B_12524(void)
 
         gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_0]->active = FALSE;
         gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_1]->active = FALSE;
-        gMain.fieldSpriteGroups[49]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_OVERRIDE]->active = FALSE;
         gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
     }
 

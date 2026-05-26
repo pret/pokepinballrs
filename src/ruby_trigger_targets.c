@@ -27,7 +27,7 @@ void UpdateChikoritaAttackAnimation(void)
     s16 var0;
 
     index = 0;
-    group = &gMain.spriteGroups[SG_14];
+    group = &gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE_COLLISION_FX];
     if (gCurrentPinballGame->chikoritaProjectileTimer < 60)
     {
         if (gCurrentPinballGame->chikoritaProjectileTimer >= 27 && gCurrentPinballGame->chikoritaProjectileTimer < 47)
@@ -72,7 +72,7 @@ void UpdateChikoritaAttackAnimation(void)
         }
     }
 
-    group = &gMain.spriteGroups[SG_13];
+    group = &gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE];
     if (group->active)
     {
         if (gCurrentPinballGame->chikoritaProjectileTimer < 120)
@@ -93,7 +93,7 @@ void UpdateChikoritaAttackAnimation(void)
             gCurrentPinballGame->chikoritaProjectileTimer++;
             if (gCurrentPinballGame->chikoritaProjectileTimer == 27)
             {
-                gMain.spriteGroups[SG_14].active = TRUE;
+                gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE_COLLISION_FX].active = TRUE;
                 m4aSongNumStart(SE_UNKNOWN_0xC7);
                 if (gCurrentPinballGame->sideBumperBounceCount[1] > 0)
                 {
@@ -108,7 +108,7 @@ void UpdateChikoritaAttackAnimation(void)
 
             if (gCurrentPinballGame->chikoritaProjectileTimer == 100)
             {
-                gMain.spriteGroups[SG_14].active = TRUE;
+                gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE_COLLISION_FX].active = TRUE;
                 m4aSongNumStart(SE_UNKNOWN_0xC7);
                 if (gCurrentPinballGame->sideBumperBounceCount[0] > 0)
                 {
@@ -160,7 +160,7 @@ void AnimateChikoritaSprite(void)
             gCurrentPinballGame->chikoritaProjectileY = 0;
             gCurrentPinballGame->chikoritaProjectileVelX = 100;
             gCurrentPinballGame->chikoritaProjectileUnused = 0;
-            gMain.spriteGroups[SG_13].active = TRUE;
+            gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE].active = TRUE;
         }
 
         if (gCurrentPinballGame->chikoritaFlashTimer < 54)

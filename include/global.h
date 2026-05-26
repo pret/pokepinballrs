@@ -284,7 +284,7 @@ struct PinballGame
     /*0x1AC*/ s8 shopSignFrame;
     /*0x1AD*/ s8 shopSignPaletteIndex;
     /*0x1AE*/ u8 shopOutcomeRepeatCount;
-    /*0x1AF*/ u8 shopBonusStageAlreadyBought;
+    /*0x1AF*/ u8 shopExtraBallPreviouslyPurchased;
     /*0x1B0*/ s8 evoNameSlideOnly;
     /*0x1B1*/ u8 filler1B1[0x1];
     /*0x1B2*/ u16 evoFormAlternateTimer;

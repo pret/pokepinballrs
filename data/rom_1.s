@@ -1325,7 +1325,7 @@ gRubyRampGateTileGfx:: @ 0x0847DF0C
 gSideBumperGfx:: @ 0x0847FD0C
 	.incbin "baserom.gba", 0x47FD0C, 0x200
 
-gShopDigitTilesGfx:: @ 0x0847FF0C
+gShopPortraitOverlayGfx:: @ 0x0847FF0C
 	.incbin "baserom.gba", 0x47FF0C, 0xF00
 
 gDecimalDigitTilesGfx:: @ 0x08480E0C

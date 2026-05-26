@@ -33,7 +33,7 @@ extern const u16 gShopOamAttributes[18][3];
 extern const u16 gShopNumberOamFramesets[4][15];
 extern const s16 gArrowBounceOffsets[];
 extern const s16 gTimerIndicatorFrames[];
-extern const u8 gShopDigitTilesGfx[][0x300];
+extern const u8 gShopPortraitOverlayGfx[][0x300];
 extern const u8 gDecimalDigitTilesGfx[][0x40];
 extern const s16 gEvoShopAnimFrames[][7];
 extern const u8 gRubyBoardShop_Gfx[][0x500];
@@ -571,7 +571,7 @@ void RenderEvolutionUI(s16 arg0)
     s16 sp0[2];
     s16 sp4[2];
 
-    group = gMain.fieldSpriteGroups[7];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS];
     var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
     if (arg0)
     {
@@ -593,7 +593,7 @@ void RenderEvolutionUI(s16 arg0)
         }
     }
 
-    group = gMain.fieldSpriteGroups[8];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL];
     index = gCurrentPinballGame->evolutionShopActive != 0 ? 1 : 0;
     if (group->active)
     {
@@ -612,7 +612,7 @@ void RenderEvolutionUI(s16 arg0)
         }
     }
 
-    group = gMain.fieldSpriteGroups[6];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS];
     if (group->active)
     {
         if (gMain.shopPanelSlideOffset < 20)
@@ -699,14 +699,15 @@ void RenderEvolutionUI(s16 arg0)
         else
             group->baseY = 88;
 
-        if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 4)
+        if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL)
         {
-            if (gCurrentPinballGame->shopBonusStageAlreadyBought && gCurrentPinballGame->shopAnimSlideTimer / 5 == 0)
+            if (gCurrentPinballGame->shopExtraBallPreviouslyPurchased
+                && gCurrentPinballGame->shopAnimSlideTimer / 5 == 0)
                 index = 4;
             else
                 index = gTimerIndicatorFrames[gCurrentPinballGame->shopAnimSlideTimer / 5];
         }
-        else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 3)
+        else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_PICHU_SAVER)
         {
             if (gCurrentPinballGame->shopPikaSaverMaxed && gCurrentPinballGame->shopAnimSlideTimer / 5 == 0)
                 index = 4;
@@ -718,7 +719,8 @@ void RenderEvolutionUI(s16 arg0)
             index = gTimerIndicatorFrames[gCurrentPinballGame->shopAnimSlideTimer / 5];
         }
 
-        DmaCopy16(3, gShopDigitTilesGfx[index], (void *)0x06016220, 0x300);
+        // Used for change selection sheen, sold out banner/greying
+        DmaCopy16(3, gShopPortraitOverlayGfx[index], (void *)0x06016220, 0x300);
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -929,7 +931,7 @@ void InitAerodactylEggDelivery(void)
     gCurrentPinballGame->eggDeliveryY = -40;
     gCurrentPinballGame->eggDeliveryVelX = -36;
     gCurrentPinballGame->eggDeliveryVelY = 60;
-    gMain.spriteGroups[SG_12].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_AERODACTLY_EGG_DELIVERY].active = TRUE;
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->portraitOffsetX = gCurrentPinballGame->eggDeliveryX / 20 - gFlyingCreatureCameraOffsets[0].x;
     gCurrentPinballGame->portraitOffsetY = gCurrentPinballGame->eggDeliveryY / 20 - gFlyingCreatureCameraOffsets[0].y;
@@ -947,7 +949,7 @@ void AnimateAerodactylEggDelivery(void)
     s16 var0;
 
     var0 = (gCurrentPinballGame->eggDropTimer % 56) / 8;
-    group = &gMain.spriteGroups[SG_12];
+    group = &gMain.spriteGroups[SG_RUBY_AERODACTLY_EGG_DELIVERY];
     if (gCurrentPinballGame->eggDropTimer < 130)
     {
         if (gCurrentPinballGame->eggDropTimer % 36U == 0)

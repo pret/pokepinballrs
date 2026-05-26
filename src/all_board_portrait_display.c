@@ -112,6 +112,7 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
     case PORTRAIT_STATE_TRAVEL_RAMP_INDICATOR:
         if (gCurrentPinballGame->boardSubState == TRAVEL_SUBSTATE_STOP_LANE_INDICATORS)
         {
+            // This code state likely doesn't matter - Board is in this board substate for exactly 1 frame.
             gCurrentPinballGame->portraitGfxIndex[picIx] = gShopItemData[15][(gCurrentPinballGame->portraitCycleFrame % 48) / 24];
             DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
 
@@ -133,9 +134,11 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
         if (gCurrentPinballGame->coins < ptr[3] ||
             (
-                (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 3 && gCurrentPinballGame->outLanePikaPosition == 2)
+                (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_PICHU_SAVER
+                    && gCurrentPinballGame->outLanePikaPosition == 2)
                 ||
-                (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 4 && gCurrentPinballGame->shopBonusStageAlreadyBought)
+                (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL
+                    && gCurrentPinballGame->shopExtraBallPreviouslyPurchased)
             ))
         {
             DmaCopy16(3, &gPortraitAnimPalettes[index], sp0, 0x20);

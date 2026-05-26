@@ -5460,7 +5460,7 @@ gUnknown_086B1602:: @ 0x086B1602
     packed_sprite_oam x=0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x10, priority=0x2, paletteNum=0x0
 .2byte 0
 
-gUnknown_086B160C:: @ 0x086B160C
+gMainBoardBallSpriteSet:: @ 0x086B160C
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, priority=0x0, paletteNum=0x1
 .2byte 0
@@ -6592,7 +6592,7 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B214E
 .4byte gUnknown_086B2178
 .4byte gUnknown_086B20B2
-.4byte gUnknown_086B15F8
+.4byte gUnknown_086B15F8 @ 10
 .4byte gUnknown_086B1602
 .4byte gUnknown_086B1FCA
 .4byte gUnknown_086B19BA
@@ -6602,7 +6602,7 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B1FF4
 .4byte gUnknown_086B2026
 .4byte gUnknown_086B2048
-.4byte gUnknown_086B2072
+.4byte gUnknown_086B2072 @ 20
 .4byte gUnknown_086B1ECA
 .4byte gUnknown_086B1E50
 .4byte gUnknown_086B1D0C
@@ -6612,7 +6612,7 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B22F2
 .4byte gUnknown_086B165C
 .4byte gUnknown_086B1CDA
-.4byte gLegendaryCatchPortraitSpriteSet
+.4byte gLegendaryCatchPortraitSpriteSet @ 30
 .4byte gUnknown_086B170C
 .4byte gUnknown_086B170C
 .4byte gLegendaryCatchPortraitBordersSpriteSet
@@ -6622,7 +6622,7 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B2228
 .4byte gUnknown_086B224A
 .4byte gUnknown_086B226C
-.4byte gUnknown_086B160C
+.4byte gMainBoardBallSpriteSet @ 40
 .4byte gMonCatchBallTrailSpriteSet
 .4byte gMonCatchBallTrailSpriteSet
 .4byte gUnknown_086B173E
@@ -6632,7 +6632,7 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B1A84
 .4byte gUnknown_086B1846
 .4byte gUnknown_086B1760
-.4byte gMonCatchBallAbsorbPokemonFxSpriteSet
+.4byte gMonCatchBallAbsorbPokemonFxSpriteSet @ 50
 .4byte gUnknown_086B1942
 .4byte gUnknown_086B187C
 .4byte gUnknown_086B189E
@@ -6642,7 +6642,7 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B196E
 .4byte gUnknown_086B1954
 .4byte gUnknown_086B18B0
-.4byte gUnknown_086B18CA
+.4byte gUnknown_086B18CA @ 60
 .4byte gUnknown_086B18E4
 .4byte gUnknown_086B18FE
 .4byte gUnknown_086B1A12
@@ -6652,7 +6652,7 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B17A4
 .4byte gUnknown_086B1A3E
 .4byte gUnknown_086B1858
-.4byte gUnknown_086B160C
+.4byte gMainBoardBallSpriteSet @ 70
 .4byte gUnknown_086B19D6
 .4byte gUnknown_086B1C90
 .4byte gUnknown_086B1D3E
@@ -6662,7 +6662,7 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B1834
 .4byte gUnknown_086B19A0
 .4byte gUnknown_086B1C66
-.4byte gUnknown_086B21A2
+.4byte gUnknown_086B21A2 @ 80
 .4byte gUnknown_086B19E8
 .4byte gUnknown_086B235E
 .4byte gUnknown_086B1A98
@@ -6678,7 +6678,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B214E
 .4byte gUnknown_086B2178
 .4byte gUnknown_086B20B2
-.4byte gUnknown_086B15F8
+.4byte gUnknown_086B15F8 @ 10
 .4byte gUnknown_086B1602
 .4byte gLegendaryCatchNameBannerSpriteSheet
 .4byte gLegendaryCatchWasCaughtTextSpriteSheet
@@ -6688,7 +6688,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B2072
 .4byte gUnknown_086B1ECA
 .4byte gUnknown_086B1E50
-.4byte gUnknown_086B1D0C
+.4byte gUnknown_086B1D0C @ 20
 .4byte gUnknown_086B1782
 .4byte gUnknown_086B22AE
 .4byte gUnknown_086B22D0
@@ -6698,7 +6698,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B2324
 .4byte gUnknown_086B1CDA
 .4byte gLegendaryCatchPortraitSpriteSet
-.4byte gUnknown_086B170C
+.4byte gUnknown_086B170C @ 30
 .4byte gUnknown_086B170C
 .4byte gLegendaryCatchPortraitBordersSpriteSet
 .4byte gUnknown_086B16DA
@@ -6708,8 +6708,8 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B224A
 .4byte gUnknown_086B226C
 .4byte gMonCatchBallTrailSpriteSet
-.4byte gMonCatchBallTrailSpriteSet
-.4byte gUnknown_086B160C
+.4byte gMonCatchBallTrailSpriteSet @40
+.4byte gMainBoardBallSpriteSet
 .4byte gUnknown_086B173E
 .4byte gUnknown_086B1A48
 .4byte gUnknown_086B1A5C
@@ -6718,7 +6718,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B1B90
 .4byte gUnknown_086B1BAA
 .4byte gUnknown_086B1BC4
-.4byte gUnknown_086B1BDE
+.4byte gUnknown_086B1BDE @ 50
 .4byte gUnknown_086B1BF8
 .4byte gUnknown_086B1846
 .4byte gUnknown_086B1760
@@ -6728,7 +6728,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B1862
 .4byte gUnknown_086B1C0C
 .4byte gUnknown_086B1C16
-.4byte gUnknown_086B1AB2
+.4byte gUnknown_086B1AB2 @ 60
 .4byte gUnknown_086B1B00
 .4byte gUnknown_086B1B12
 .4byte gUnknown_086B1B24
@@ -6738,17 +6738,17 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B1B7E
 .4byte gUnknown_086B1B50
 .4byte gUnknown_086B1C20
-.4byte gUnknown_086B1C32
+.4byte gUnknown_086B1C32 @ 70
 .4byte gUnknown_086B17A4
 .4byte gUnknown_086B163A
 .4byte gUnknown_086B1858
-.4byte gUnknown_086B160C
+.4byte gMainBoardBallSpriteSet
 .4byte gUnknown_086B1AD4
 .4byte gUnknown_086B1C02
 .4byte gUnknown_086B1C90
 .4byte gUnknown_086B1D3E
 .4byte gUnknown_086B1D70
-.4byte gUnknown_086B1DA2
+.4byte gUnknown_086B1DA2 @ 80
 .4byte gUnknown_086B1F04
 .4byte gUnknown_086B1834
 .4byte gUnknown_086B1C66

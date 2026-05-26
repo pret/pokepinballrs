@@ -21,10 +21,10 @@
 #define    PRIZE_BALL_UPGRADE_C 12
 #define    PRIZE_BALL_UPGRADE_TO_MASTER 13
 
-//Note Prize 14-16 unused
-#define    PRIZE_14 14
-#define    PRIZE_15 15
-#define    PRIZE_16 16
+//Note Prize 14-16 unused in shop/roulette
+#define    PRIZE_14 14 // 'Start Slot' graphic
+#define    PRIZE_15 15 // Goto next graphic (up arrow)
+#define    PRIZE_16 16 // Travel ramp indicator graphic
 
 #define    PRIZE_10_COINS 17
 #define    PRIZE_30_COINS 18

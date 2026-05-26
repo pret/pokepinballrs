@@ -219,7 +219,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
             gCurrentPinballGame->stageTimer = 0;
             gCurrentPinballGame->boardState = LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED;
             gCurrentPinballGame->numCompletedBonusStages++;
-            gCurrentPinballGame->shopBonusStageAlreadyBought = 0;
+            gCurrentPinballGame->shopExtraBallPreviouslyPurchased = 0;
         }
         break;
     case LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED:

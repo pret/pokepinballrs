@@ -85,9 +85,9 @@ void UpdateShopEntryAnimation(s16 arg0)
             LoadPortraitGraphics(PORTRAIT_STATE_SHOP_SELECTOR, PORTRAIT_MAIN_SLOT);
             RenderEvolutionUI(1);
 
-            gMain.fieldSpriteGroups[7]->active = TRUE;
-            gMain.fieldSpriteGroups[8]->active = TRUE;
-            gMain.fieldSpriteGroups[6]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
             gMain.fieldSpriteGroups[9]->active = TRUE;
 
             DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT + 0x1C0, 0x20);
@@ -213,9 +213,11 @@ void UpdateShopEntryAnimation(s16 arg0)
                 s16 var_r3;
                 const u16 *arr = gShopItemData[gCurrentPinballGame->shopSelectedItemId];
 
-                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 3 && gCurrentPinballGame->outLanePikaPosition == 2)
+                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_PICHU_SAVER
+                    && gCurrentPinballGame->outLanePikaPosition == 2)
                     var_r3 = 999;
-                else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 4 && gCurrentPinballGame->shopBonusStageAlreadyBought)
+                else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL
+                    && gCurrentPinballGame->shopExtraBallPreviouslyPurchased)
                     var_r3 = 999;
                 else
                     var_r3 = arr[3];
@@ -252,8 +254,8 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->catchModeEventTimer = 30;
                 gCurrentPinballGame->shopAnimSlideTimer = 30;
 
-                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 4)
-                    gCurrentPinballGame->shopBonusStageAlreadyBought = 1;
+                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL)
+                    gCurrentPinballGame->shopExtraBallPreviouslyPurchased = 1;
             }
         }
 
@@ -341,9 +343,9 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->creatureOamPriority = 3;
                 gCurrentPinballGame->prizeSelected = 0;
 
-                gMain.fieldSpriteGroups[7]->active = FALSE;
-                gMain.fieldSpriteGroups[8]->active = FALSE;
-                gMain.fieldSpriteGroups[6]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = FALSE;
                 gMain.fieldSpriteGroups[9]->active = FALSE;
 
                 gCurrentPinballGame->activePortraitType = 0;
@@ -421,9 +423,9 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                 RenderEvolutionUI(var_r7);
 
-                gMain.fieldSpriteGroups[8]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = TRUE;
                 gMain.fieldSpriteGroups[9]->active = TRUE;
-                gMain.fieldSpriteGroups[6]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
 
                 DmaCopy16(3, &gShopEvoUI_Pals, PLTT + 0x3C0, 0x20);
 
@@ -753,8 +755,8 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
                 gCurrentPinballGame->creatureOamPriority = 3;
 
-                gMain.fieldSpriteGroups[8]->active = FALSE;
-                gMain.fieldSpriteGroups[6]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = FALSE;
                 gMain.fieldSpriteGroups[9]->active = FALSE;
 
                 gCurrentPinballGame->evoBlinkTimer = 0;
