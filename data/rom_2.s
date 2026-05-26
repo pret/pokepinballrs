@@ -115,10 +115,10 @@ gBonusFieldSelectSpriteSets:: @ 0x086A4C80
 	.4byte gUnknown_086A69F6
 	.4byte gUnknown_086A6A08
 	.4byte gUnknown_086A6A1A
-	.4byte gUnknown_086A6A2C
-	.4byte gUnknown_086A6A56
-	.4byte gUnknown_086A6A80
-	.4byte gUnknown_086A6AAA
+	.4byte gFieldSelectBallSpeedNormal0SpriteSet
+	.4byte gFieldSelectBallSpeedNormal1SpriteSet
+	.4byte gFieldSelectBallSpeedSlow0SpriteSet
+	.4byte gFieldSelectBallSpeedSlow1SpriteSet
 
 gBonusFieldStageIconPositions:: @ 0x086A4CC0
 	.2byte 0x20, 0x20
@@ -148,11 +148,11 @@ gBonusFieldMenuSelectionToField:: @ 0x086A4CF0
 gEReaderTextGlyphTable:: @ 0x086A4CF8
 	.incbin "baserom.gba", 0x6A4CF8, 0x7E0
 
-gCatchHatchSpriteSets:: @ 0x086A54D8
-	.4byte gUnknown_086A5710
-    .4byte gUnknown_086A573A
-    .4byte gUnknown_086A574C
-    .4byte gUnknown_086A575E
+gEReaderSpriteSets:: @ 0x086A54D8
+	.4byte gPokedexStartTransmissionPopupSpriteSet
+    .4byte gPokedexTransmittingPopupSpriteSet
+    .4byte gPokedexTransmissionErrorPopupSpriteSet
+    .4byte gPokedexTransferCompletePopupSpriteSet
     .4byte gUnknown_086A5988
     .4byte gUnknown_086A59CA
     .4byte gUnknown_086A5A14
@@ -178,38 +178,38 @@ gEReaderTextHasNextPage:: @ 0x086A5528
 gEReaderCardStartPages:: @ 0x086A5536
     .byte 0x02, 0x04, 0x06, 0x09, 0x0B, 0x00
 
-gUnknown_086A553C:: @ 0x086A553C
+gPokedexCursorHandSpriteSet:: @ 0x086A553C
     .incbin "baserom.gba", 0x6A553C, 0x14
-gUnknown_086A5550:: @ 0x086A5550
+gPokedexPressSelectText0SpriteSet:: @ 0x086A5550
     .incbin "baserom.gba", 0x6A5550, 0x1A
-gUnknown_086A556A:: @ 0x086A556A
+gPokedexPressSelectText1SpriteSet:: @ 0x086A556A
     .incbin "baserom.gba", 0x6A556A, 0x1A
-gUnknown_086A5584:: @ 0x086A5584
+gPokedexPressSelectText2SpriteSet:: @ 0x086A5584
     .incbin "baserom.gba", 0x6A5584, 0x1A
-gUnknown_086A559E:: @ 0x086A559E
+gPokedexPressSelectText3SpriteSet:: @ 0x086A559E
     .incbin "baserom.gba", 0x6A559E, 0x1A
-gUnknown_086A55B8:: @ 0x086A55B8
+gPokedexPressSelectText4SpriteSet:: @ 0x086A55B8
     .incbin "baserom.gba", 0x6A55B8, 0x1A
-gUnknown_086A55D2:: @ 0x086A55D2
+gPokedexPressSelectText5SpriteSet:: @ 0x086A55D2
     .incbin "baserom.gba", 0x6A55D2, 0x1A
-gUnknown_086A55EC:: @ 0x086A55EC
+gPokedexPressSelectText6SpriteSet:: @ 0x086A55EC
     .incbin "baserom.gba", 0x6A55EC, 0x1A
-gUnknown_086A5606:: @ 0x086A5606
+gPokedexPressSelectText7SpriteSet:: @ 0x086A5606
     .incbin "baserom.gba", 0x6A5606, 0x1A
-gUnknown_086A5620:: @ 0x086A5620
+gPokedexPressSelectText8SpriteSet:: @ 0x086A5620
     .incbin "baserom.gba", 0x6A5620, 0x1A
-gUnknown_086A563A:: @ 0x086A563A
+gPokedexPressSelectText9SpriteSet:: @ 0x086A563A
     .incbin "baserom.gba", 0x6A563A, 0x1A
-gUnknown_086A5654:: @ 0x086A5654
+gPokedexPressSelectText10SpriteSet:: @ 0x086A5654
     .incbin "baserom.gba", 0x6A5654, 0x1A
-gUnknown_086A566E:: @ 0x086A566E
+gPokedexMonPortraitSpriteSet:: @ 0x086A566E
     .incbin "baserom.gba", 0x6A566E, 0x32
-gUnknown_086A56A0:: @ 0x086A56A0
+gPokedexCatchSpriteSpriteSet:: @ 0x086A56A0
     .incbin "baserom.gba", 0x6A56A0, 0x66
-gUnknown_086A5706:: @ 0x086A5706
+gPokedexScrollIndicatorSpriteSet:: @ 0x086A5706
     .incbin "baserom.gba", 0x6A5706, 0xA
 
-gUnknown_086A5710:: @ 0x086A5710
+gPokedexStartTransmissionPopupSpriteSet:: @ 0x086A5710
 .2byte 5
     packed_sprite_oam x=-0x34, y=-0x1E, spriteSize=SPRITE_SIZE_64x32, tileNum=0x60, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -222,21 +222,21 @@ gUnknown_086A5710:: @ 0x086A5710
     packed_sprite_oam x=0x2C, y=0x2, spriteSize=SPRITE_SIZE_8x32, tileNum=0xc4, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A573A:: @ 0x086A573A
+gPokedexTransmittingPopupSpriteSet:: @ 0x086A573A
 .2byte 2
     packed_sprite_oam x=-0x28, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0xc8, priority=0x0, paletteNum=0x0
 .2byte 0
     packed_sprite_oam x=0x18, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0xe8, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A574C:: @ 0x086A574C
+gPokedexTransmissionErrorPopupSpriteSet:: @ 0x086A574C
 .2byte 2
     packed_sprite_oam x=-0x30, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0xf0, priority=0x0, paletteNum=0x0
 .2byte 0
     packed_sprite_oam x=0x10, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0x110, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A575E:: @ 0x086A575E
+gPokedexTransferCompletePopupSpriteSet:: @ 0x086A575E
 .2byte 3
     packed_sprite_oam x=-0x38, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x120, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -245,14 +245,14 @@ gUnknown_086A575E:: @ 0x086A575E
     packed_sprite_oam x=0x28, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x150, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A5778:: @ 0x086A5778
+gPokedexDeleteConfirmationPopupSpriteSet:: @ 0x086A5778
 .2byte 2
     packed_sprite_oam x=-0x2C, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x158, priority=0x0, paletteNum=0x0
 .2byte 0
     packed_sprite_oam x=0x14, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x178, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A578A:: @ 0x086A578A
+gPokedexHatchSpriteSpriteSet:: @ 0x086A578A
 .incbin "baserom.gba", 0x6A578A, 0x1FE
 
 gUnknown_086A5988:: @ 0x086A5988
@@ -512,21 +512,21 @@ gUnknown_086A5CC0:: @ 0x086A5CC0
     packed_sprite_oam x=-0x8, y=0xE, spriteSize=SPRITE_SIZE_16x16, tileNum=0x33c, priority=0x0, paletteNum=0x4
 .2byte 0
 
-gUnknown_086A5D32:: @ 0x086A5D32
+gPokedexPressStart0SpriteSet:: @ 0x086A5D32
     .incbin "baserom.gba", 0x6A5D32, 0x32
-gUnknown_086A5D64:: @ 0x086A5D64
+gPokedexPressStart1SpriteSet:: @ 0x086A5D64
     .incbin "baserom.gba", 0x6A5D64, 0x1A
-gUnknown_086A5D7E:: @ 0x086A5D7E
+gPokedexCompletionBadgeSpriteSet:: @ 0x086A5D7E
     .incbin "baserom.gba", 0x6A5D7E, 0x1A
-gUnknown_086A5D98:: @ 0x086A5D98
+gPokedexPressSelectText11SpriteSet:: @ 0x086A5D98
     .incbin "baserom.gba", 0x6A5D98, 0x1A
-gUnknown_086A5DB2:: @ 0x086A5DB2
+gPokedexTextPageChangeArrowDown0SpriteSet:: @ 0x086A5DB2
     .incbin "baserom.gba", 0x6A5DB2, 0xA
-gUnknown_086A5DBC:: @ 0x086A5DBC
+gPokedexTextPageChangeArrowDown1SpriteSet:: @ 0x086A5DBC
     .incbin "baserom.gba", 0x6A5DBC, 0xA
-gUnknown_086A5DC6:: @ 0x086A5DC6
+gPokedexTextPageChangeArrowUp0SpriteSet:: @ 0x086A5DC6
     .incbin "baserom.gba", 0x6A5DC6, 0xA
-gUnknown_086A5DD0:: @ 0x086A5DD0
+gPokedexTextPageChangeArrowUp1SpriteSet:: @ 0x086A5DD0
     .incbin "baserom.gba", 0x6A5DD0, 0xA
 
 gPokedexAnimBaseTileNums:: @ 0x086A5DDA
@@ -545,35 +545,35 @@ gPokedexAnimFrameDurations:: @ 0x086A6014
 	.incbin "baserom.gba", 0x6A6014, 0x134
 
 gPokedexSpriteSets:: @ 0x086A6148
-    .4byte gUnknown_086A553C
-    .4byte gUnknown_086A5706
-    .4byte gUnknown_086A566E
-    .4byte gUnknown_086A56A0
-    .4byte gUnknown_086A578A
-    .4byte gUnknown_086A5550
-    .4byte gUnknown_086A556A
-    .4byte gUnknown_086A5584
-    .4byte gUnknown_086A559E
-    .4byte gUnknown_086A55B8
-    .4byte gUnknown_086A55D2
-    .4byte gUnknown_086A55EC
-    .4byte gUnknown_086A5606
-    .4byte gUnknown_086A5620
-    .4byte gUnknown_086A563A
-    .4byte gUnknown_086A5654
-    .4byte gUnknown_086A5D98
-    .4byte gUnknown_086A5710
-    .4byte gUnknown_086A573A
-    .4byte gUnknown_086A574C
-    .4byte gUnknown_086A575E
-    .4byte gUnknown_086A5778
-    .4byte gUnknown_086A5D32
-    .4byte gUnknown_086A5D64
-    .4byte gUnknown_086A5D7E
-    .4byte gUnknown_086A5DB2
-    .4byte gUnknown_086A5DBC
-    .4byte gUnknown_086A5DC6
-    .4byte gUnknown_086A5DD0
+    .4byte gPokedexCursorHandSpriteSet
+    .4byte gPokedexScrollIndicatorSpriteSet
+    .4byte gPokedexMonPortraitSpriteSet
+    .4byte gPokedexCatchSpriteSpriteSet
+    .4byte gPokedexHatchSpriteSpriteSet
+    .4byte gPokedexPressSelectText0SpriteSet
+    .4byte gPokedexPressSelectText1SpriteSet
+    .4byte gPokedexPressSelectText2SpriteSet
+    .4byte gPokedexPressSelectText3SpriteSet
+    .4byte gPokedexPressSelectText4SpriteSet
+    .4byte gPokedexPressSelectText5SpriteSet
+    .4byte gPokedexPressSelectText6SpriteSet
+    .4byte gPokedexPressSelectText7SpriteSet
+    .4byte gPokedexPressSelectText8SpriteSet
+    .4byte gPokedexPressSelectText9SpriteSet
+    .4byte gPokedexPressSelectText10SpriteSet
+    .4byte gPokedexPressSelectText11SpriteSet
+    .4byte gPokedexStartTransmissionPopupSpriteSet
+    .4byte gPokedexTransmittingPopupSpriteSet
+    .4byte gPokedexTransmissionErrorPopupSpriteSet
+    .4byte gPokedexTransferCompletePopupSpriteSet
+    .4byte gPokedexDeleteConfirmationPopupSpriteSet
+    .4byte gPokedexPressStart0SpriteSet
+    .4byte gPokedexPressStart1SpriteSet
+    .4byte gPokedexCompletionBadgeSpriteSet
+    .4byte gPokedexTextPageChangeArrowDown0SpriteSet
+    .4byte gPokedexTextPageChangeArrowDown1SpriteSet
+    .4byte gPokedexTextPageChangeArrowUp0SpriteSet
+    .4byte gPokedexTextPageChangeArrowUp1SpriteSet
 
 gDexAnimationIx:: @ 0x086A61BC
     @ marks which anim to show with the 'select' button in pokedex
@@ -655,12 +655,12 @@ gPokedexListNameVramOffsets:: @ 0x086A64F0
 gUnknown_086A64FA:: @ 0x086A64FA
 	.incbin "baserom.gba", 0x6A64FA, 0x336
 
-gUnknown_086A6830:: @ 0x086A6830
+gFieldSelectFullHighlightSpriteSet:: @ 0x086A6830
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x9, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A683A:: @ 0x086A683A
+gFieldSelectFullShadowSpriteSet:: @ 0x086A683A
 .2byte 9
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x0, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -681,7 +681,7 @@ gUnknown_086A683A:: @ 0x086A683A
     packed_sprite_oam x=0x20, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A6884:: @ 0x086A6884
+gFieldSelectDim3SpriteSet:: @ 0x086A6884
 .2byte 13
      packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x0, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -710,7 +710,7 @@ gUnknown_086A6884:: @ 0x086A6884
     packed_sprite_oam x=0x20, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A68EE:: @ 0x086A68EE
+gFieldSelectDim2SpriteSet:: @ 0x086A68EE
 .2byte 11
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x0, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -735,7 +735,7 @@ gUnknown_086A68EE:: @ 0x086A68EE
     packed_sprite_oam x=0x20, y=0x60, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4c, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A6948:: @ 0x086A6948
+gFieldSelectDim1SpriteSet:: @ 0x086A6948
 .2byte 6
     packed_sprite_oam x=0x40, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -751,14 +751,14 @@ gUnknown_086A6948:: @ 0x086A6948
 .2byte 0
 
 
-gUnknown_086A697A:: @ 0x086A697A
+gFieldSelectRubyBoardNameHighlightSpriteSet:: @ 0x086A697A
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x140, priority=0x0, paletteNum=0x0
 .2byte 0
     packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x144, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A698C:: @ 0x086A698C
+gFieldSelectSapphireBoardNameHighlightSpriteSet:: @ 0x086A698C
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x148, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -818,7 +818,7 @@ gUnknown_086A6A1A:: @ 0x086A6A1A
     packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1cc, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A6A2C:: @ 0x086A6A2C
+gFieldSelectBallSpeedNormal0SpriteSet:: @ 0x086A6A2C
 	.2byte 5
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x150, priority=0x0, paletteNum=0x1
 .2byte 0
@@ -831,7 +831,7 @@ gUnknown_086A6A2C:: @ 0x086A6A2C
     packed_sprite_oam x=0x30, y=0x10, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x11f, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086A6A56:: @ 0x086A6A56
+gFieldSelectBallSpeedNormal1SpriteSet:: @ 0x086A6A56
 	.2byte 5
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x150, priority=0x0, paletteNum=0x1
 .2byte 0
@@ -844,7 +844,7 @@ gUnknown_086A6A56:: @ 0x086A6A56
     packed_sprite_oam x=0x31, y=0x10, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x11f, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086A6A80:: @ 0x086A6A80
+gFieldSelectBallSpeedSlow0SpriteSet:: @ 0x086A6A80
 	.2byte 5
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x150, priority=0x0, paletteNum=0x1
 .2byte 0
@@ -857,7 +857,7 @@ gUnknown_086A6A80:: @ 0x086A6A80
     packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15c, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086A6AAA:: @ 0x086A6AAA
+gFieldSelectBallSpeedSlow1SpriteSet:: @ 0x086A6AAA
 	.2byte 5
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x150, priority=0x0, paletteNum=0x1
 .2byte 0
@@ -871,22 +871,22 @@ gUnknown_086A6AAA:: @ 0x086A6AAA
 .2byte 0
 
 gFieldSelectSpriteSets:: @ 0x086A6AD4
-	.4byte gUnknown_086A697A
-    .4byte gUnknown_086A698C
-    .4byte gUnknown_086A6830
-    .4byte gUnknown_086A683A
-    .4byte gUnknown_086A6948
-    .4byte gUnknown_086A68EE
-    .4byte gUnknown_086A6884
-    .4byte gUnknown_086A683A
-    .4byte gUnknown_086A6884
-    .4byte gUnknown_086A68EE
-    .4byte gUnknown_086A6948
-    .4byte gUnknown_086A6830
-    .4byte gUnknown_086A6A2C
-    .4byte gUnknown_086A6A56
-    .4byte gUnknown_086A6A80
-    .4byte gUnknown_086A6AAA
+	.4byte gFieldSelectRubyBoardNameHighlightSpriteSet
+    .4byte gFieldSelectSapphireBoardNameHighlightSpriteSet
+    .4byte gFieldSelectFullHighlightSpriteSet
+    .4byte gFieldSelectFullShadowSpriteSet
+    .4byte gFieldSelectDim1SpriteSet
+    .4byte gFieldSelectDim2SpriteSet
+    .4byte gFieldSelectDim3SpriteSet
+    .4byte gFieldSelectFullShadowSpriteSet
+    .4byte gFieldSelectDim3SpriteSet
+    .4byte gFieldSelectDim2SpriteSet
+    .4byte gFieldSelectDim1SpriteSet
+    .4byte gFieldSelectFullHighlightSpriteSet
+    .4byte gFieldSelectBallSpeedNormal0SpriteSet
+    .4byte gFieldSelectBallSpeedNormal1SpriteSet
+    .4byte gFieldSelectBallSpeedSlow0SpriteSet
+    .4byte gFieldSelectBallSpeedSlow1SpriteSet
 
 gFieldTransitionAnimData:: @ 0x086A6B14
     .2byte 2, 4, 5, 6, 7
@@ -2188,56 +2188,55 @@ gIntroScene8b_BallDecelTable:: @ 0x086A7D4C
 	.incbin "baserom.gba", 0x6A7D4C, 0x5C
 
 gNameEntryCursorSpriteSets:: @ 0x086A7DA8
-	.4byte gUnknown_086A7DE8
-    .4byte gUnknown_086A7DFA
+	.4byte gHighScoreNameEntryCursor0SpriteSet
+    .4byte gHighScoreNameEntryCursor1SpriteSet
 
 gHighScoreScreenSpriteSets:: @ 0x086A7DB0
-	.4byte gUnknown_086A7E0C
-    .4byte gUnknown_086A7E20
-    .4byte gUnknown_086A7E34
-    .4byte gUnknown_086A7E5E
-    .4byte gUnknown_086A7E70
-    .4byte gUnknown_086A7E82
-    .4byte gUnknown_086A7E9C
-    .4byte gUnknown_086A7EAE
-    .4byte gUnknown_086A7EC8
-
+	.4byte gHighScorePageRightArrowSpriteSet
+    .4byte gHighScorePageLeftArrowSpriteSet
+    .4byte gHighScoreStartTransmissionPopupSpriteSet
+    .4byte gHighScoreTransmittingPopupSpriteSet
+    .4byte gHighScoreTransmissionErrorPopupSpriteSet
+    .4byte gHighScoreTransmissionCompletePopupSpriteSet
+    .4byte gHighScoreDeleteConfirmationPopupSpriteSet
+    .4byte gHighScorePressStart0SpriteSet
+    .4byte gHighScorePressStart1SpriteSet
 
 gCompletionBannerSpriteSets:: @ 0x086A7DD4
-	.4byte gUnknown_086A7EFA
-    .4byte gUnknown_086A7F1C
-    .4byte gUnknown_086A7F3E
-    .4byte gUnknown_086A7F60
-    .4byte gUnknown_086A7F82
+	.4byte gHighScoreDexCompletionBanner0SpriteSet
+    .4byte gHighScoreDexCompletionBanner1SpriteSet
+    .4byte gHighScoreDexCompletionBanner2SpriteSet
+    .4byte gHighScoreDexCompletionBanner3SpriteSet
+    .4byte gHighScoreDexCompletionBanner4SpriteSet
 
-gUnknown_086A7DE8:: @ 0x086A7DE8
+gHighScoreNameEntryCursor0SpriteSet:: @ 0x086A7DE8
 .2byte 2
     packed_sprite_oam x=0x0, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, priority=0x0, paletteNum=0x0
 .2byte 0
     packed_sprite_oam x=0x0, y=0x7, spriteSize=SPRITE_SIZE_8x8, vFlip=0x1,  tileNum=0x1, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7DFA:: @ 0x086A7DFA
+gHighScoreNameEntryCursor1SpriteSet:: @ 0x086A7DFA
 .2byte 2
     packed_sprite_oam x=0x0, y=-0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, priority=0x0, paletteNum=0x0
 .2byte 0
     packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_8x8, vFlip=0x1,  tileNum=0x1, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7E0C:: @ 0x086A7E0C
+gHighScorePageRightArrowSpriteSet:: @ 0x086A7E0C
 .2byte 1
     packed_sprite_oam x=-0x1, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2, priority=0x0, paletteNum=0x0
 .2byte 0
 
 .incbin "baserom.gba", 0x6A7E16, 0xA
 
-gUnknown_086A7E20:: @ 0x086A7E20
+gHighScorePageLeftArrowSpriteSet:: @ 0x086A7E20
 .2byte 1
     packed_sprite_oam x=0x1, y=0x4, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x2, priority=0x0, paletteNum=0x0
 .2byte 0
 .incbin "baserom.gba", 0x6A7E2A, 0xA
 
-gUnknown_086A7E34:: @ 0x086A7E34
+gHighScoreStartTransmissionPopupSpriteSet:: @ 0x086A7E34
 .2byte 5
     packed_sprite_oam x=0xC, y=-0x1E, spriteSize=SPRITE_SIZE_32x64, tileNum=0x120, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -2250,21 +2249,21 @@ gUnknown_086A7E34:: @ 0x086A7E34
     packed_sprite_oam x=-0x34, y=0x2, spriteSize=SPRITE_SIZE_64x32, tileNum=0xb8, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7E5E:: @ 0x086A7E5E
+gHighScoreTransmittingPopupSpriteSet:: @ 0x086A7E5E
 .2byte 2
     packed_sprite_oam x=-0x28, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x20, priority=0x0, paletteNum=0x0
 .2byte 0
     packed_sprite_oam x=0x18, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x28, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7E70:: @ 0x086A7E70
+gHighScoreTransmissionErrorPopupSpriteSet:: @ 0x086A7E70
 .2byte 2
     packed_sprite_oam x=-0x30, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2a, priority=0x0, paletteNum=0x0
 .2byte 0
     packed_sprite_oam x=0x10, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0x32, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7E82:: @ 0x086A7E82
+gHighScoreTransmissionCompletePopupSpriteSet:: @ 0x086A7E82
 .2byte 3
     packed_sprite_oam x=-0x38, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x36, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -2273,14 +2272,14 @@ gUnknown_086A7E82:: @ 0x086A7E82
     packed_sprite_oam x=0x28, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x3e, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7E9C:: @ 0x086A7E9C
+gHighScoreDeleteConfirmationPopupSpriteSet:: @ 0x086A7E9C
 .2byte 2
     packed_sprite_oam x=-0x2C, y=-0x13, spriteSize=SPRITE_SIZE_64x32, tileNum=0xa4, priority=0x0, paletteNum=0x0
 .2byte 0
     packed_sprite_oam x=0x14, y=-0x13, spriteSize=SPRITE_SIZE_32x32, tileNum=0xac, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7EAE:: @ 0x086A7EAE
+gHighScorePressStart0SpriteSet:: @ 0x086A7EAE
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x6, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -2289,7 +2288,7 @@ gUnknown_086A7EAE:: @ 0x086A7EAE
     packed_sprite_oam x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0xe, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7EC8:: @ 0x086A7EC8
+gHighScorePressStart1SpriteSet:: @ 0x086A7EC8
 .2byte 6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x6, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -2304,7 +2303,7 @@ gUnknown_086A7EC8:: @ 0x086A7EC8
     packed_sprite_oam x=0x28, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x11, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7EFA:: @ 0x086A7EFA
+gHighScoreDexCompletionBanner0SpriteSet:: @ 0x086A7EFA
 .2byte 4
     packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, priority=0x0, paletteNum=0x2
 .2byte 0
@@ -2315,7 +2314,7 @@ gUnknown_086A7EFA:: @ 0x086A7EFA
     packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12e, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A7F1C:: @ 0x086A7F1C
+gHighScoreDexCompletionBanner1SpriteSet:: @ 0x086A7F1C
 .2byte 4
     packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, priority=0x0, paletteNum=0x2
 .2byte 0
@@ -2326,7 +2325,7 @@ gUnknown_086A7F1C:: @ 0x086A7F1C
     packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12e, priority=0x0, paletteNum=0x4
 .2byte 0
 
-gUnknown_086A7F3E:: @ 0x086A7F3E
+gHighScoreDexCompletionBanner2SpriteSet:: @ 0x086A7F3E
 .2byte 4
     packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, priority=0x0, paletteNum=0x2
 .2byte 0
@@ -2337,7 +2336,7 @@ gUnknown_086A7F3E:: @ 0x086A7F3E
     packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12e, priority=0x0, paletteNum=0x5
 .2byte 0
 
-gUnknown_086A7F60:: @ 0x086A7F60
+gHighScoreDexCompletionBanner3SpriteSet:: @ 0x086A7F60
 .2byte 4
     packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, priority=0x0, paletteNum=0x2
 .2byte 0
@@ -2348,7 +2347,7 @@ gUnknown_086A7F60:: @ 0x086A7F60
     packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12e, priority=0x0, paletteNum=0x6
 .2byte 0
 
-gUnknown_086A7F82:: @ 0x086A7F82
+gHighScoreDexCompletionBanner4SpriteSet:: @ 0x086A7F82
 .2byte 4
     packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, priority=0x0, paletteNum=0x2
 .2byte 0
@@ -2370,7 +2369,7 @@ gScorePaletteResetOffsets:: @ 0x086A7FA8
 gHighScoreCharToTileMap:: @ 0x086A7FAC
 	.incbin "baserom.gba", 0x6A7FAC, 0x54
 
-gUnknown_086A8000:: @ 0x086A8000
+gTitleFlippersAndStartAnim0SpriteSet:: @ 0x086A8000
     .2byte 0x5
     packed_sprite_oam x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14e, priority=0x0, paletteNum=0x4
 .2byte 0
@@ -2383,7 +2382,7 @@ gUnknown_086A8000:: @ 0x086A8000
     packed_sprite_oam x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x168, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A802A:: @ 0x086A802A
+gTitleFlippersAndStartAnim1SpriteSet:: @ 0x086A802A
     .2byte 0x5
     packed_sprite_oam x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14c, priority=0x0, paletteNum=0x4
 .2byte 0
@@ -2396,7 +2395,7 @@ gUnknown_086A802A:: @ 0x086A802A
     packed_sprite_oam x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x168, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A8054:: @ 0x086A8054
+gTitleFlippersAndStartAnim2SpriteSet:: @ 0x086A8054
 .2byte 0x5
     packed_sprite_oam x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x16c, priority=0x0, paletteNum=0x4
 .2byte 0
@@ -2409,7 +2408,7 @@ gUnknown_086A8054:: @ 0x086A8054
     packed_sprite_oam x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, priority=0x0, paletteNum=0x0
 .2byte 0
 
-gUnknown_086A807E:: @ 0x086A807E
+gTitleFlippersAndStartAnim3SpriteSet:: @ 0x086A807E
 .2byte 0x5
     packed_sprite_oam x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14c, priority=0x0, paletteNum=0x4
 .2byte 0
@@ -2423,7 +2422,7 @@ gUnknown_086A807E:: @ 0x086A807E
 .2byte 0
 
 
-gUnknown_086A80A8:: @ 0x086A80A8
+gTitleMenuPanelSpriteSet:: @ 0x086A80A8
 	.incbin "baserom.gba", 0x6A80A8, 0x7A
 
 gUnknown_086A8122:: @ 0x086A8122
@@ -2459,25 +2458,25 @@ gUnknown_086A88B4:: @ 0x086A88B4
 gUnknown_086A89AE:: @ 0x086A89AE
 	.incbin "baserom.gba", 0x6A89AE, 0x112
 
-gUnknown_086A8AC0:: @ 0x086A8AC0
+gTitleLeftCursorFlipperAnim0SpriteSet:: @ 0x086A8AC0
 	.incbin "baserom.gba", 0x6A8AC0, 0xA
 
-gUnknown_086A8ACA:: @ 0x086A8ACA
+gTitleLeftCursorFlipperAnim1SpriteSet:: @ 0x086A8ACA
 	.incbin "baserom.gba", 0x6A8ACA, 0xA
 
-gUnknown_086A8AD4:: @ 0x086A8AD4
+gTitleLeftCursorFlipperAnim2SpriteSet:: @ 0x086A8AD4
 	.incbin "baserom.gba", 0x6A8AD4, 0xA
 
-gUnknown_086A8ADE:: @ 0x086A8ADE
+gTitleRightCursorFlipperAnim0SpriteSet:: @ 0x086A8ADE
 	.incbin "baserom.gba", 0x6A8ADE, 0xA
 
-gUnknown_086A8AE8:: @ 0x086A8AE8
+gTitleRightCursorFlipperAnim1SpriteSet:: @ 0x086A8AE8
 	.incbin "baserom.gba", 0x6A8AE8, 0xA
 
-gUnknown_086A8AF2:: @ 0x086A8AF2
+gTitleRightCursorFlipperAnim2SpriteSet:: @ 0x086A8AF2
     .incbin "baserom.gba", 0x6A8AF2, 0xA
 
-gUnknown_086A8AFC:: @ 0x086A8AFC
+gTitleDeleteSaveConfirmationPopupSpriteSet:: @ 0x086A8AFC
 .2byte 0x2
     packed_sprite_oam x=-0x30, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x298, priority=0x0, paletteNum=0x2
 .2byte 0
@@ -2624,23 +2623,23 @@ gTitleSavedMenuActions:: @ 0x086A96D4
     .2byte 0x0500, 0x0302, 0x0000
 
 gTitlePressStartSpriteSets:: @ 0x086A96E4
-	.4byte gUnknown_086A8000
-	.4byte gUnknown_086A802A
-	.4byte gUnknown_086A8054
-	.4byte gUnknown_086A807E
-	.4byte gUnknown_086A8AFC
+	.4byte gTitleFlippersAndStartAnim0SpriteSet
+	.4byte gTitleFlippersAndStartAnim1SpriteSet
+	.4byte gTitleFlippersAndStartAnim2SpriteSet
+	.4byte gTitleFlippersAndStartAnim3SpriteSet
+	.4byte gTitleDeleteSaveConfirmationPopupSpriteSet
 
 gTitleNoSaveDefaultSprites:: @ 0x086A96F8
-	.4byte gUnknown_086A8AC0
-	.4byte gUnknown_086A8ACA
-	.4byte gUnknown_086A8AD4
-	.4byte gUnknown_086A8ADE
-	.4byte gUnknown_086A8AE8
-	.4byte gUnknown_086A8AF2
-	.4byte gUnknown_086A80A8
+	.4byte gTitleLeftCursorFlipperAnim0SpriteSet
+	.4byte gTitleLeftCursorFlipperAnim1SpriteSet
+	.4byte gTitleLeftCursorFlipperAnim2SpriteSet
+	.4byte gTitleRightCursorFlipperAnim0SpriteSet
+	.4byte gTitleRightCursorFlipperAnim1SpriteSet
+	.4byte gTitleRightCursorFlipperAnim2SpriteSet
+	.4byte gTitleMenuPanelSpriteSet
 
 gTitleNoSaveAnimSprites:: @ 0x086A9714
-	.4byte gUnknown_086A80A8
+	.4byte gTitleMenuPanelSpriteSet
 	.4byte gUnknown_086A8122
 	.4byte gUnknown_086A81B4
 	.4byte gUnknown_086A823E

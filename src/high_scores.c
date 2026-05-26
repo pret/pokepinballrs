@@ -18,8 +18,8 @@ extern s8 gCompletionBannerVisible;
 extern s16 gCompletionBannerY;
 extern s8 gCompletionBannerPhase;
 extern s8 gCompletionBannerSpriteGroup;
-extern s8 gShowDialogFlag;
-extern u8 gDialogType;
+extern s8 gHighScoreShowPopupFlag;
+extern u8 gHighScorePopupType;
 extern u16 gLinkExchangeCommand;
 extern u16 gLinkPacketCounter;
 extern s8 gLinkExchangeSendPhase;
@@ -44,13 +44,13 @@ struct HighScoreScreenState
     s16 flashFrameCounter;
     s16 currentNameChar; //0-25="A"-"Z", 26-35="0"-"9" 41=" "
     s16 flashDuration;
-    s16 flashElapsedFrames;
+    s16 flashElapsedFrames; // also used for page arrow blink toggle
     s16 paletteAnimPhase;
     s16 paletteAnimTimer;
     s16 inputRepeatDelay;
     s16 linkWaitTimer;
     s8 nextIdleState;
-    s8 arrowBlinkToggle;
+    s8 pressStartBlinkToggle; // press start blink toggle
     s8 displayModeVisible;
 };
 
@@ -88,6 +88,15 @@ extern u8 gHighScoreSprite_Pals[];
 extern u8 gHighScoreDialogs_Gfx[];
 extern u32 gHighScoreNameRowTilemapOffsets[8];
 extern const struct HighScoreEntry gDefaultHighScores[2][8];
+
+enum HighScorePopupType {
+    HIGH_SCORE_POPUP_DEFAULT = 0,
+    HIGH_SCORE_POPUP_TRANSMISSION_CONNECT_PROMPT = 0,
+    HIGH_SCORE_POPUP_TRANSMITTING_ACTIVE = 1,
+    HIGH_SCORE_POPUP_TRANSMISSION_ERROR = 2,
+    HIGH_SCORE_POPUP_TRANSMISSION_COMPLETE = 3,
+    HIGH_SCORE_POPUP_DELETE_CONFIRMATION_PROMPT = 4
+};
 
 void HighScoresMain(void)
 {
@@ -155,10 +164,10 @@ void InitHighScoreData(void)
     gHighScoreScreenState.paletteAnimPhase = 0;
     gHighScoreScreenState.inputRepeatDelay = 0;
     gHighScoreScreenState.linkWaitTimer = 0;
-    gHighScoreScreenState.arrowBlinkToggle = 0;
+    gHighScoreScreenState.pressStartBlinkToggle = 0;
     gHighScoreScreenState.displayModeVisible = 1;
-    gShowDialogFlag = 0;
-    gDialogType = 1;
+    gHighScoreShowPopupFlag = FALSE;
+    gHighScorePopupType = HIGH_SCORE_POPUP_TRANSMITTING_ACTIVE;
     gCompletionBannerVisible = 0;
     gResetComboTimer = 0;
     gResetComboCount = 0;
@@ -350,7 +359,7 @@ void HighScore_BrowseScores(void)
     if(!(gMain.systemFrameCount % 0xC))
     {
         gHighScoreScreenState.flashElapsedFrames = 1 - gHighScoreScreenState.flashElapsedFrames;
-        gHighScoreScreenState.arrowBlinkToggle = 1 - gHighScoreScreenState.arrowBlinkToggle;
+        gHighScoreScreenState.pressStartBlinkToggle = 1 - gHighScoreScreenState.pressStartBlinkToggle;
     }
     if(JOY_NEW(DPAD_LEFT))
     {
@@ -386,8 +395,8 @@ void HighScore_BrowseScores(void)
         if(gScrollXOffset == 0 || (gScrollXOffset == 0xF0))
         {
             m4aSongNumStart(SE_MENU_POPUP_OPEN);
-            gShowDialogFlag = 1;
-            gDialogType = 0;
+            gHighScoreShowPopupFlag = TRUE;
+            gHighScorePopupType = HIGH_SCORE_POPUP_TRANSMISSION_CONNECT_PROMPT;
             gMain.subState = HIGH_SCORE_STATE_INIT_LINK_EXCHANGE;
         }
     }
@@ -405,8 +414,8 @@ void HighScore_BrowseScores(void)
                     gResetComboCount = 0;
                     gResetComboTimer = 0;
                     m4aSongNumStart(SE_MENU_POPUP_OPEN);
-                    gShowDialogFlag = 1;
-                    gDialogType = 4;
+                    gHighScoreShowPopupFlag = TRUE;
+                    gHighScorePopupType = HIGH_SCORE_POPUP_DELETE_CONFIRMATION_PROMPT;
                     gMain.subState = HIGH_SCORE_STATE_RESET_CONFIRMATION;
                 }
             }
@@ -580,8 +589,8 @@ void HighScore_LinkExchangeLoop(void)
     if (JOY_NEW(B_BUTTON))
     {
         m4aSongNumStart(SE_MENU_CANCEL);
-        gShowDialogFlag = 0;
-        gDialogType = 0;
+        gHighScoreShowPopupFlag = FALSE;
+        gHighScorePopupType = HIGH_SCORE_POPUP_DEFAULT;
         ResetSerialAndInterrupts();
         gMain.subState = HIGH_SCORE_STATE_BROWSE_SCORES;
     }
@@ -603,7 +612,7 @@ void HighScore_LinkExchangeLoop(void)
                 }
                 else if (var0 == 1)
                 {
-                    gDialogType = 2;
+                    gHighScorePopupType = HIGH_SCORE_POPUP_TRANSMISSION_ERROR;
                     gMain.subState = HIGH_SCORE_STATE_LINK_ERROR;
                     m4aSongNumStart(SE_FAILURE);
                 }
@@ -612,7 +621,7 @@ void HighScore_LinkExchangeLoop(void)
             gLinkExchangeFrameCounter++;
             if ((gLinkStatusResult & 0x7f0000) != 0 && gLinkExchangeResult == -1 && ++gLinkTimeoutCounter > 180)
             {
-                gDialogType = 2;
+                gHighScorePopupType = HIGH_SCORE_POPUP_TRANSMISSION_ERROR;
                 gMain.subState = HIGH_SCORE_STATE_LINK_ERROR;
                 m4aSongNumStart(SE_FAILURE);
             }
@@ -637,8 +646,8 @@ void HighScore_LinkError(void)
     if (++gHighScoreScreenState.linkWaitTimer > 90)
     {
         gHighScoreScreenState.linkWaitTimer = 0;
-        gShowDialogFlag = 0;
-        gDialogType = 0;
+        gHighScoreShowPopupFlag = FALSE;
+        gHighScorePopupType = HIGH_SCORE_POPUP_DEFAULT;
         ResetSerialAndInterrupts();
         DisableSerial();
         for (i = 0; i < MAIN_FIELD_COUNT; i++)
@@ -667,13 +676,13 @@ void HighScore_LinkSuccess(void)
         DisableSerial();
         break;
     case 130:
-        gDialogType = 3;
+        gHighScorePopupType = HIGH_SCORE_POPUP_TRANSMISSION_COMPLETE;
         m4aSongNumStart(SE_MENU_SELECT);
         break;
     case 250:
         gHighScoreScreenState.linkWaitTimer = 0;
-        gShowDialogFlag = 0;
-        gDialogType = 0;
+        gHighScoreShowPopupFlag = FALSE;
+        gHighScorePopupType = HIGH_SCORE_POPUP_TRANSMISSION_CONNECT_PROMPT;
         gMergedRubyScoreIndex = MergeReceivedTopScore(0);
         gMergedSapphireScoreIndex = MergeReceivedTopScore(1);
         for (i = 0; i < MAIN_FIELD_COUNT; i++)
@@ -713,8 +722,8 @@ void HighScore_ResetConfirmation(void)
     else if (JOY_NEW(B_BUTTON))
     {
         m4aSongNumStart(SE_MENU_CANCEL);
-        gShowDialogFlag = 0;
-        gDialogType = 0;
+        gHighScoreShowPopupFlag = FALSE;
+        gHighScorePopupType = HIGH_SCORE_POPUP_DEFAULT;
         gMain.subState = HIGH_SCORE_STATE_BROWSE_SCORES;
     }
 }
@@ -998,7 +1007,7 @@ void RenderHighScoreSprites(void)
     spriteGroups = gMain.spriteGroups;
     spriteGroup1 = spriteGroups;
     spriteGroup2 = &spriteGroups[1];
-    spriteGroup3 = &spriteGroups[2 + (s8)gDialogType];
+    spriteGroup3 = &spriteGroups[2 + (s8)gHighScorePopupType];
     var1_02002858 = &gHighScoreScreenState;
     spriteGroup4 = &spriteGroups[7 + gHighScoreDisplayMode];
 
@@ -1006,7 +1015,7 @@ void RenderHighScoreSprites(void)
     {
         spriteGroups->active = TRUE;
         spriteGroup2->active = FALSE;
-        spriteGroup3->active = gShowDialogFlag;
+        spriteGroup3->active = gHighScoreShowPopupFlag;
         spriteGroup4->active = var1_02002858->collisionCooldownTimer;
         LoadSpriteSets(gHighScoreScreenSpriteSets, 9, spriteGroups);
         RenderHighScoreSprites_HELPER(220, spriteGroup1, spriteGroup4, spriteGroup3);
@@ -1024,7 +1033,7 @@ void RenderHighScoreSprites(void)
         }
         if (spriteGroup3->active == TRUE)
         {
-            switch ((s8)gDialogType)
+            switch ((s8)gHighScorePopupType)
             {
             case 0:
             case 4:
@@ -1036,7 +1045,7 @@ void RenderHighScoreSprites(void)
                 spriteGroup3->baseY = 80;
                 break;
             }
-            spriteSet = gHighScoreScreenSpriteSets[(s8)gDialogType + 2];
+            spriteSet = gHighScoreScreenSpriteSets[(s8)gHighScorePopupType + 2];
             for (i = 0; i < spriteSet->count; i++)
             {
                 oamData = &spriteGroup3->oam[i];
@@ -1049,7 +1058,7 @@ void RenderHighScoreSprites(void)
     {
         spriteGroup1->active = FALSE;
         spriteGroup2->active = TRUE;
-        spriteGroup3->active = gShowDialogFlag;
+        spriteGroup3->active = gHighScoreShowPopupFlag;
         spriteGroup4->active = var1_02002858->collisionCooldownTimer;
         LoadSpriteSets(gHighScoreScreenSpriteSets, 2, gMain.spriteGroups);
         RenderHighScoreSprites_HELPER(4, spriteGroup2, spriteGroup4, spriteGroup3);
@@ -1067,7 +1076,7 @@ void RenderHighScoreSprites(void)
     }
     if (spriteGroup3->active == TRUE)
     {
-        switch ((s8)gDialogType)
+        switch ((s8)gHighScorePopupType)
         {
         case 0:
         case 4:
@@ -1079,7 +1088,7 @@ void RenderHighScoreSprites(void)
             spriteGroup3->baseY = 80;
             break;
         }
-        spriteSet = gHighScoreScreenSpriteSets[(s8)gDialogType + 2];
+        spriteSet = gHighScoreScreenSpriteSets[(s8)gHighScorePopupType + 2];
         for (i = 0; i < spriteSet->count; i++)
         {
             oamData = &spriteGroup3->oam[i];
@@ -1115,7 +1124,7 @@ void RenderHighScoreSprites(void)
 	adds r0, r0, r6\n\
 	mov sl, r0\n\
 	mov r5, sl\n\
-	ldr r0, _0800E5D0 @ =gDialogType\n\
+	ldr r0, _0800E5D0 @ =gHighScorePopupType\n\
 	ldrb r0, [r0]\n\
 	lsls r0, r0, #0x18\n\
 	asrs r0, r0, #0x18\n\
@@ -1148,7 +1157,7 @@ _0800E4B4:\n\
 	movs r0, #1\n\
 	strh r0, [r6]\n\
 	strh r1, [r5]\n\
-	ldr r0, _0800E5E0 @ =gShowDialogFlag\n\
+	ldr r0, _0800E5E0 @ =gHighScoreShowPopupFlag\n\
 	ldrb r0, [r0]\n\
 	lsls r0, r0, #0x18\n\
 	asrs r0, r0, #0x18\n\
@@ -1274,7 +1283,7 @@ _0800E5AA:\n\
 	beq _0800E5B2\n\
 	b _0800E846\n\
 _0800E5B2:\n\
-	ldr r0, _0800E5D0 @ =gDialogType\n\
+	ldr r0, _0800E5D0 @ =gHighScorePopupType\n\
 	movs r1, #0\n\
 	ldrsb r1, [r0, r1]\n\
 	adds r2, r0, #0\n\
@@ -1289,11 +1298,11 @@ _0800E5C2:\n\
 	b _0800E602\n\
 	.align 2, 0\n\
 _0800E5CC: .4byte gMain_spriteGroups\n\
-_0800E5D0: .4byte gDialogType\n\
+_0800E5D0: .4byte gHighScorePopupType\n\
 _0800E5D4: .4byte gHighScoreScreenState\n\
 _0800E5D8: .4byte gHighScoreDisplayMode\n\
 _0800E5DC: .4byte gScrollXOffset\n\
-_0800E5E0: .4byte gShowDialogFlag\n\
+_0800E5E0: .4byte gHighScoreShowPopupFlag\n\
 _0800E5E4: .4byte gHighScoreScreenSpriteSets\n\
 _0800E5E8: .4byte gOamBuffer\n\
 _0800E5EC: .4byte 0x000003FF\n\
@@ -1370,7 +1379,7 @@ _0800E67A:\n\
 	movs r0, #1\n\
 	mov r1, sl\n\
 	strh r0, [r1]\n\
-	ldr r0, _0800E79C @ =gShowDialogFlag\n\
+	ldr r0, _0800E79C @ =gHighScoreShowPopupFlag\n\
 	ldrb r0, [r0]\n\
 	lsls r0, r0, #0x18\n\
 	asrs r0, r0, #0x18\n\
@@ -1498,7 +1507,7 @@ _0800E77C:\n\
 	ldrh r0, [r7]\n\
 	cmp r0, #1\n\
 	bne _0800E846\n\
-	ldr r0, _0800E7BC @ =gDialogType\n\
+	ldr r0, _0800E7BC @ =gHighScorePopupType\n\
 	movs r1, #0\n\
 	ldrsb r1, [r0, r1]\n\
 	adds r2, r0, #0\n\
@@ -1512,7 +1521,7 @@ _0800E792:\n\
 	movs r0, #0x64\n\
 	b _0800E7C6\n\
 	.align 2, 0\n\
-_0800E79C: .4byte gShowDialogFlag\n\
+_0800E79C: .4byte gHighScoreShowPopupFlag\n\
 _0800E7A0: .4byte gHighScoreScreenSpriteSets\n\
 _0800E7A4: .4byte gOamBuffer\n\
 _0800E7A8: .4byte 0x000003FF\n\
@@ -1520,7 +1529,7 @@ _0800E7AC: .4byte 0xFFFFFC00\n\
 _0800E7B0: .4byte 0x000001FF\n\
 _0800E7B4: .4byte 0xFFFFFE00\n\
 _0800E7B8: .4byte gHighScoreDisplayMode\n\
-_0800E7BC: .4byte gDialogType\n\
+_0800E7BC: .4byte gHighScorePopupType\n\
 _0800E7C0:\n\
 	movs r0, #0x78\n\
 	strh r0, [r7, #2]\n\
@@ -1795,7 +1804,7 @@ s16 MasterReceiveHighScores(void)
             if (gLinkRecvBuffer[0][0] == 0xEDED && gLinkRecvBuffer[0][1] == 0xEDED)
             {
                 gLinkExchangeResult = -1;
-                gDialogType = 1;
+                gHighScorePopupType = HIGH_SCORE_POPUP_TRANSMITTING_ACTIVE;
                 gLinkPacketCounter = 1;
             }
             else
@@ -1850,7 +1859,7 @@ s16 SlaveReceiveHighScores(void)
             if (gLinkRecvBuffer[0][0] == 0xEDED && gLinkRecvBuffer[0][1] == 0xEDED)
             {
                 gLinkExchangeResult = -1;
-                gDialogType = 1;
+                gHighScorePopupType = HIGH_SCORE_POPUP_TRANSMITTING_ACTIVE;
                 gLinkPacketCounter = 1;
             }
             else

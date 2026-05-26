@@ -474,23 +474,23 @@ s16 GetEReaderCardIndex(void)
 
     if (gEReaderReceivedCardId == 0x1f52)
     {
-        return 0;
+        return EREADER_SPECIAL_GUESTS_CARD;
     }
     else if (gEReaderReceivedCardId == 0x3e1a)
     {
-        return 1;
+        return EREADER_ENCOUNTER_RATE_UP_CARD;
     }
     else if (gEReaderReceivedCardId == 0x25af)
     {
-        return 2;
+        return EREADER_DX_MODE_CARD;
     }
     else if (gEReaderReceivedCardId == 0x4a09)
     {
-        return 3;
+        return EREADER_RUIN_AREA_CARD;
     }
     else if (gEReaderReceivedCardId == 0x6b12)
     {
-        return 4;
+        return EREADER_BONUS_STAGE_CARD;
     }
     else
     {
@@ -510,7 +510,7 @@ void UpdateEReaderSprites(void)
     puVar5 = &gMain.spriteGroups[gEReaderHeaderAnimSpriteGroup];
     puVar9->active = gEReaderStatusSpriteVisible;
     puVar5->active = TRUE;
-    LoadSpriteSets(gCatchHatchSpriteSets, 13, gMain.spriteGroups);
+    LoadSpriteSets(gEReaderSpriteSets, 13, gMain.spriteGroups);
 
     if (puVar9->active == TRUE)
     {
@@ -525,7 +525,7 @@ void UpdateEReaderSprites(void)
             puVar9->baseY = 0x50;
         }
 
-        puVar8 = gCatchHatchSpriteSets[gEReaderStatusAnimSpriteGroup];
+        puVar8 = gEReaderSpriteSets[gEReaderStatusAnimSpriteGroup];
 
         for (iVar7 = 0; iVar7 < puVar8->count; iVar7++)
         {
@@ -537,7 +537,7 @@ void UpdateEReaderSprites(void)
 
     puVar5->baseX = 0x78;
     puVar5->baseY = 0x18;
-    puVar8 = gCatchHatchSpriteSets[gEReaderHeaderAnimSpriteGroup];
+    puVar8 = gEReaderSpriteSets[gEReaderHeaderAnimSpriteGroup];
 
     for (iVar7 = 0; iVar7 < puVar8->count; iVar7++)
     {
@@ -561,7 +561,7 @@ void UpdateEReaderSpritesViaOam(void) {
     puVar5 = &gMain.spriteGroups[gEReaderHeaderAnimSpriteGroup];
     puVar9->active = gEReaderStatusSpriteVisible;
     puVar5->active = TRUE;
-    LoadSpriteSetsWithCpuCopy(gCatchHatchSpriteSets, 13, gMain.spriteGroups);
+    LoadSpriteSetsWithCpuCopy(gEReaderSpriteSets, 13, gMain.spriteGroups);
 
     if (puVar9->active == TRUE)
     {
@@ -576,7 +576,7 @@ void UpdateEReaderSpritesViaOam(void) {
             puVar9->baseY = 0x50;
         }
 
-        puVar8 = gCatchHatchSpriteSets[gEReaderStatusAnimSpriteGroup];
+        puVar8 = gEReaderSpriteSets[gEReaderStatusAnimSpriteGroup];
 
         for (iVar7 = 0; iVar7 < puVar8->count; iVar7++)
         {
@@ -588,7 +588,7 @@ void UpdateEReaderSpritesViaOam(void) {
 
     puVar5->baseX = 0x78;
     puVar5->baseY = 0x18;
-    puVar8 = gCatchHatchSpriteSets[gEReaderHeaderAnimSpriteGroup];
+    puVar8 = gEReaderSpriteSets[gEReaderHeaderAnimSpriteGroup];
 
     for (iVar7 = 0; iVar7 < puVar8->count; iVar7++)
     {
