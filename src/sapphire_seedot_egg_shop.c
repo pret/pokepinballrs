@@ -332,7 +332,7 @@ void UpdateSapphireSeedotCollection(void)
                 gCurrentPinballGame->cameraYScrollTarget = 0;
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 0;
-                gCurrentPinballGame->bannerGfxIndex = 4;
+                gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_TRAVEL;
                 gCurrentPinballGame->bannerActive = 1;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
                 gCurrentPinballGame->bannerDisplayDuration = 120;
@@ -590,7 +590,7 @@ void UpdateSapphireEggMachine(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 0;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                     gCurrentPinballGame->bannerActive = 1;
                     gCurrentPinballGame->bannerPreserveBallState = 0;
                     gCurrentPinballGame->sapphireHatchMachineState = 1;
@@ -679,7 +679,7 @@ void UpdateSapphireEggMachine(void)
             gCurrentPinballGame->cameraYScrollTarget = 0;
             gCurrentPinballGame->cameraYAdjust = 0;
             gCurrentPinballGame->cameraYScrollSpeed = 0;
-            gCurrentPinballGame->bannerGfxIndex = 0;
+            gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
             gCurrentPinballGame->bannerActive = 1;
             gCurrentPinballGame->bannerPreserveBallState = 0;
             gCurrentPinballGame->sapphireHatchMachineState = 5;

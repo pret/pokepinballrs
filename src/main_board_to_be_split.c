@@ -690,7 +690,7 @@ void RenderEvolutionUI(s16 arg0)
         }
     }
 
-    group = gMain.fieldSpriteGroups[9];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY];
     if (group->active)
     {
         group->baseX = 48;
@@ -1466,7 +1466,7 @@ void UpdateHatchCave(void)
                 gCurrentPinballGame->cameraYScrollTarget = 72;
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 2;
-                gCurrentPinballGame->bannerGfxIndex = 0;
+                gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                 gCurrentPinballGame->bannerActive = 1;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
                 gCurrentPinballGame->eggCaveLiftTimer = 48;

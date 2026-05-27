@@ -5449,12 +5449,12 @@ gMonIconPalettes:: @ 0x086B15B4
     .4byte gMonCatchSpriteGroup15_Pal
     .4byte gMonCatchSpriteGroup16_Pal
 
-gUnknown_086B15F8:: @ 0x086B15F8
+gMainLeftFlipperSpriteSet:: @ 0x086B15F8
 .2byte 1
     packed_sprite_oam x=-0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x0, priority=0x2, paletteNum=0x0
 .2byte 0
 
-gUnknown_086B1602:: @ 0x086B1602
+gMainRightFlipperSpriteSet:: @ 0x086B1602
 .2byte 1
     packed_sprite_oam x=0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x10, priority=0x2, paletteNum=0x0
 .2byte 0
@@ -5596,7 +5596,7 @@ gUnknown_086B17A4:: @ 0x086B17A4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xb6, priority=0x1, paletteNum=0xf
 .2byte 0
 
-gUnknown_086B17AE:: @ 0x086B17AE
+gMainBoardPausePanelSpriteSet:: @ 0x086B17AE
 .2byte 11
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xc6, priority=0x0, paletteNum=0x9
 .2byte 0
@@ -5621,14 +5621,14 @@ gUnknown_086B17AE:: @ 0x086B17AE
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xd0, priority=0x0, paletteNum=0x9
 .2byte 0
 
-gUnknown_086B1808:: @ 0x086B1808
+gMainBoardPauseTopBorderSpriteSet:: @ 0x086B1808
 .2byte 2
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0xd1, priority=0x0, paletteNum=0x9
 .2byte 0
     packed_sprite_oam x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0xd1, priority=0x0, paletteNum=0x9
 .2byte 0
 
-gUnknown_086B181A:: @ 0x086B181A
+gMainBoardPauseBottomBorderSpriteSet:: @ 0x086B181A
 .2byte 3
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,  tileNum=0xd5, priority=0x0, paletteNum=0x9
 .2byte 0
@@ -5772,12 +5772,12 @@ gUnknown_086B19A0:: @ 0x086B19A0
     packed_sprite_oam x=0x20, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x20c, priority=0x0, paletteNum=0x2
 .2byte 0
 
-gUnknown_086B19BA:: @ 0x086B19BA
+gRubyChikoritaProjectileSpriteSet:: @ 0x086B19BA
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x210, priority=0x0, paletteNum=0x3
 .2byte 0
 
-gUnknown_086B19C4:: @ 0x086B19C4
+gRubyChikoritaProjectileCollisionFxSpriteSet:: @ 0x086B19C4
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x214, priority=0x0, paletteNum=0x3
 .2byte 0
@@ -6170,7 +6170,7 @@ gMonCatchBallTrailSpriteSet:: @ 0x086B1E46
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086B1E50:: @ 0x086B1E50
+gMainTravelBannerSpriteSet:: @ 0x086B1E50
 .2byte 15
     packed_sprite_oam x=-0x7F, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6203,7 +6203,7 @@ gUnknown_086B1E50:: @ 0x086B1E50
     packed_sprite_oam x=0x61, y=0x40, spriteSize=SPRITE_SIZE_16x8, tileNum=0x3cc, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B1ECA:: @ 0x086B1ECA
+gMainTravelBanner_SignpostSpriteSet:: @ 0x086B1ECA
 .2byte 7
     packed_sprite_oam x=0x18, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x3b5, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6231,7 +6231,7 @@ gUnknown_086B1F04:: @ 0x086B1F04
     packed_sprite_oam x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2c8, priority=0x2, paletteNum=0x3
 .2byte 0
 
-gLegendaryCatchNameBannerSpriteSheet:: @ 0x086B1F26
+gLegendaryCatchNameBannerSpriteSet:: @ 0x086B1F26
 .2byte 10
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2c0, priority=0x0, paletteNum=0x1
 .2byte 0
@@ -6254,7 +6254,7 @@ gLegendaryCatchNameBannerSpriteSheet:: @ 0x086B1F26
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d2, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gLegendaryCatchWasCaughtTextSpriteSheet:: @ 0x086B1F78
+gLegendaryCatchWasCaughtTextSpriteSet:: @ 0x086B1F78
 .2byte 10
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d4, priority=0x0, paletteNum=0x1
 .2byte 0
@@ -6278,7 +6278,7 @@ gLegendaryCatchWasCaughtTextSpriteSheet:: @ 0x086B1F78
 .2byte 0
 
 
-gUnknown_086B1FCA:: @ 0x086B1FCA
+gRubyAerodactylEggDeliverySpriteSet:: @ 0x086B1FCA
 .2byte 5
     packed_sprite_oam x=0x23, y=0x2, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2d2, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6291,7 +6291,7 @@ gUnknown_086B1FCA:: @ 0x086B1FCA
     packed_sprite_oam x=0x3, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2de, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B1FF4:: @ 0x086B1FF4
+gMainShopArrowsSpriteSet:: @ 0x086B1FF4
 .2byte 6
   packed_sprite_oam x=-0x9, y=0x8, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2e0, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6306,7 +6306,7 @@ gUnknown_086B1FF4:: @ 0x086B1FF4
     packed_sprite_oam x=0x10, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2e7, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B2026:: @ 0x086B2026
+gMainShopPriceSpriteSet:: @ 0x086B2026
 .2byte 4
     packed_sprite_oam x=0x15, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ed, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6317,7 +6317,7 @@ gUnknown_086B2026:: @ 0x086B2026
     packed_sprite_oam x=0x1E, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2f3, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B2048:: @ 0x086B2048
+gMainShopConfirmationPanelSpriteSet:: @ 0x086B2048
 .2byte 5
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x2f5, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6330,33 +6330,33 @@ gUnknown_086B2048:: @ 0x086B2048
     packed_sprite_oam x=0x68, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x309, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B2072:: @ 0x086B2072
+gMainShopPortraitOverlaySpriteSet:: @ 0x086B2072
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x311, priority=0x0, paletteNum=0xe
 .2byte 0
     packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x321, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B2084:: @ 0x086B2084
+gMainBallSaveBannerSpriteSet:: @ 0x086B2084
 .2byte 2
     packed_sprite_oam x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, priority=0x1, paletteNum=0xe
 .2byte 0
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x300, priority=0x1, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B2096:: @ 0x086B2096
+gMainBallSaveLatiSpriteSet:: @ 0x086B2096
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x340, priority=0x1, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B20A0:: @ 0x086B20A0
+gMainBallSaveLatiArmSpriteSet:: @ 0x086B20A0
 .2byte 2
     packed_sprite_oam x=0x10, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x380, priority=0x0, paletteNum=0xe
 .2byte 0
     packed_sprite_oam x=0x10, y=0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0x384, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B20B2:: @ 0x086B20B2
+gMainEndOfBallBonusBannerSpriteSet:: @ 0x086B20B2
 .2byte 14
    packed_sprite_oam x=-0x68, y=0x10, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, priority=0x1, paletteNum=0xe
 .2byte 0
@@ -6388,7 +6388,7 @@ gUnknown_086B20B2:: @ 0x086B20B2
 .2byte 0
 
 
-gUnknown_086B2124:: @ 0x086B2124
+gMainEndOfBallBonusTextLine0SpriteSet:: @ 0x086B2124
 .2byte 5
     packed_sprite_oam x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3a0, priority=0x1, paletteNum=0xe
 .2byte 0
@@ -6401,7 +6401,7 @@ gUnknown_086B2124:: @ 0x086B2124
     packed_sprite_oam x=0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b0, priority=0x1, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B214E:: @ 0x086B214E
+gMainEndOfBallBonusTextLine1SpriteSet:: @ 0x086B214E
 .2byte 5
     packed_sprite_oam x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b6, priority=0x1, paletteNum=0xe
 .2byte 0
@@ -6414,7 +6414,7 @@ gUnknown_086B214E:: @ 0x086B214E
     packed_sprite_oam x=0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3c6, priority=0x1, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B2178:: @ 0x086B2178
+gMainEndOfBallBonusTextLine2SpriteSet:: @ 0x086B2178
 .2byte 5
     packed_sprite_oam x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3cc, priority=0x1, paletteNum=0xe
 .2byte 0
@@ -6581,29 +6581,29 @@ gUnknown_086B235E:: @ 0x086B235E
 
 
 gRubyBoardSpriteSets:: @ 0x086B2390
-.4byte gUnknown_086B17AE
-.4byte gUnknown_086B1808
-.4byte gUnknown_086B181A
-.4byte gUnknown_086B20A0
-.4byte gUnknown_086B2096
-.4byte gUnknown_086B2084
-.4byte gUnknown_086B2124
-.4byte gUnknown_086B214E
-.4byte gUnknown_086B2178
-.4byte gUnknown_086B20B2
-.4byte gUnknown_086B15F8 @ 10
-.4byte gUnknown_086B1602
-.4byte gUnknown_086B1FCA
-.4byte gUnknown_086B19BA
-.4byte gUnknown_086B19C4
-.4byte gLegendaryCatchNameBannerSpriteSheet
-.4byte gLegendaryCatchWasCaughtTextSpriteSheet
-.4byte gUnknown_086B1FF4
-.4byte gUnknown_086B2026
-.4byte gUnknown_086B2048
-.4byte gUnknown_086B2072 @ 20
-.4byte gUnknown_086B1ECA
-.4byte gUnknown_086B1E50
+.4byte gMainBoardPausePanelSpriteSet
+.4byte gMainBoardPauseTopBorderSpriteSet
+.4byte gMainBoardPauseBottomBorderSpriteSet
+.4byte gMainBallSaveLatiArmSpriteSet
+.4byte gMainBallSaveLatiSpriteSet
+.4byte gMainBallSaveBannerSpriteSet
+.4byte gMainEndOfBallBonusTextLine0SpriteSet
+.4byte gMainEndOfBallBonusTextLine1SpriteSet
+.4byte gMainEndOfBallBonusTextLine2SpriteSet
+.4byte gMainEndOfBallBonusBannerSpriteSet
+.4byte gMainLeftFlipperSpriteSet @ 10
+.4byte gMainRightFlipperSpriteSet
+.4byte gRubyAerodactylEggDeliverySpriteSet
+.4byte gRubyChikoritaProjectileSpriteSet
+.4byte gRubyChikoritaProjectileCollisionFxSpriteSet
+.4byte gLegendaryCatchNameBannerSpriteSet
+.4byte gLegendaryCatchWasCaughtTextSpriteSet
+.4byte gMainShopArrowsSpriteSet
+.4byte gMainShopPriceSpriteSet
+.4byte gMainShopConfirmationPanelSpriteSet
+.4byte gMainShopPortraitOverlaySpriteSet @ 20
+.4byte gMainTravelBanner_SignpostSpriteSet
+.4byte gMainTravelBannerSpriteSet
 .4byte gUnknown_086B1D0C
 .4byte gUnknown_086B1782
 .4byte gUnknown_086B22AE
@@ -6667,26 +6667,26 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gUnknown_086B1A98
 
 gSapphireBoardSpriteSets:: @ 0x086B24E0
-.4byte gUnknown_086B17AE
-.4byte gUnknown_086B1808
-.4byte gUnknown_086B181A
-.4byte gUnknown_086B20A0
-.4byte gUnknown_086B2096
-.4byte gUnknown_086B2084
-.4byte gUnknown_086B2124
-.4byte gUnknown_086B214E
-.4byte gUnknown_086B2178
-.4byte gUnknown_086B20B2
-.4byte gUnknown_086B15F8 @ 10
-.4byte gUnknown_086B1602
-.4byte gLegendaryCatchNameBannerSpriteSheet
-.4byte gLegendaryCatchWasCaughtTextSpriteSheet
-.4byte gUnknown_086B1FF4
-.4byte gUnknown_086B2026
-.4byte gUnknown_086B2048
-.4byte gUnknown_086B2072
-.4byte gUnknown_086B1ECA
-.4byte gUnknown_086B1E50
+.4byte gMainBoardPausePanelSpriteSet
+.4byte gMainBoardPauseTopBorderSpriteSet
+.4byte gMainBoardPauseBottomBorderSpriteSet
+.4byte gMainBallSaveLatiArmSpriteSet
+.4byte gMainBallSaveLatiSpriteSet
+.4byte gMainBallSaveBannerSpriteSet
+.4byte gMainEndOfBallBonusTextLine0SpriteSet
+.4byte gMainEndOfBallBonusTextLine1SpriteSet
+.4byte gMainEndOfBallBonusTextLine2SpriteSet
+.4byte gMainEndOfBallBonusBannerSpriteSet
+.4byte gMainLeftFlipperSpriteSet @ 10
+.4byte gMainRightFlipperSpriteSet
+.4byte gLegendaryCatchNameBannerSpriteSet
+.4byte gLegendaryCatchWasCaughtTextSpriteSet
+.4byte gMainShopArrowsSpriteSet
+.4byte gMainShopPriceSpriteSet
+.4byte gMainShopConfirmationPanelSpriteSet
+.4byte gMainShopPortraitOverlaySpriteSet
+.4byte gMainTravelBanner_SignpostSpriteSet
+.4byte gMainTravelBannerSpriteSet
 .4byte gUnknown_086B1D0C @ 20
 .4byte gUnknown_086B1782
 .4byte gUnknown_086B22AE
@@ -13608,8 +13608,8 @@ gKyogreBoardSpriteSets:: @ 0x086BB4A4
     .4byte gBonusBoardRightFlipperSpriteSet
     .4byte gBonusBoardEndScoreSpriteSet
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
-    .4byte gLegendaryCatchNameBannerSpriteSheet
-    .4byte gLegendaryCatchWasCaughtTextSpriteSheet
+    .4byte gLegendaryCatchNameBannerSpriteSet
+    .4byte gLegendaryCatchWasCaughtTextSpriteSet
     .4byte gLegendaryCatchPortraitSpriteSet
     .4byte gLegendaryCatchPortraitBordersSpriteSet
     .4byte gKyogreCrystalTopRightSpriteSet
@@ -13637,8 +13637,8 @@ gGroudonBoardSpriteSets:: @ 0x086BB510
     .4byte gBonusBoardRightFlipperSpriteSet
     .4byte gBonusBoardEndScoreSpriteSet
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
-    .4byte gLegendaryCatchNameBannerSpriteSheet
-    .4byte gLegendaryCatchWasCaughtTextSpriteSheet
+    .4byte gLegendaryCatchNameBannerSpriteSet
+    .4byte gLegendaryCatchWasCaughtTextSpriteSet
     .4byte gLegendaryCatchPortraitSpriteSet
     .4byte gLegendaryCatchPortraitBordersSpriteSet
     .4byte gGroudonCrystalTopRightSpriteSet
@@ -13671,8 +13671,8 @@ gRayquazaBoardSpriteSets:: @ 0x086BB590
     .4byte gBonusBoardRightFlipperSpriteSet
     .4byte gBonusBoardEndScoreSpriteSet
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
-    .4byte gLegendaryCatchNameBannerSpriteSheet
-    .4byte gLegendaryCatchWasCaughtTextSpriteSheet
+    .4byte gLegendaryCatchNameBannerSpriteSet
+    .4byte gLegendaryCatchWasCaughtTextSpriteSet
     .4byte gLegendaryCatchPortraitSpriteSet
     .4byte gLegendaryCatchPortraitBordersSpriteSet
     .4byte gRaquazaIntroCloud0SpriteSet
@@ -13797,31 +13797,31 @@ gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup12_Gfx
 	.4byte gMonPortraitsGroup13_Gfx
 
-gUnknown_086BB770:: @ 0x086BB770
+gOptionsSoundDigitSpriteSet:: @ 0x086BB770
     .incbin "baserom.gba", 0x6BB770, 0x64
 
-gUnknown_086BB7D4:: @ 0x086BB7D4
+gOptionsHandCursorSpriteSet:: @ 0x086BB7D4
     .incbin "baserom.gba", 0x6BB7D4, 0x14
 
-gUnknown_086BB7E8:: @ 0x086BB7E8
+gOptionsSettingSelectionArrowSpriteSet:: @ 0x086BB7E8
     .incbin "baserom.gba", 0x6BB7E8, 0x6E
 
-gUnknown_086BB856:: @ 0x086BB856
+gOptionsButtonEditPressButtonTextSpriteSet:: @ 0x086BB856
     .incbin "baserom.gba", 0x6BB856, 0x12
 
-gUnknown_086BB868:: @ 0x086BB868
+gOptionsGbaButtonIconSpriteSet:: @ 0x086BB868
     .incbin "baserom.gba", 0x6BB868, 0xA
 
-gUnknown_086BB872:: @ 0x086BB872
+gOptionsSoundSelectionArrow0SpriteSet:: @ 0x086BB872
     .incbin "baserom.gba", 0x6BB872, 0x12
 
-gUnknown_086BB884:: @ 0x086BB884
+gOptionsSoundSelectionArrow1SpriteSet:: @ 0x086BB884
     .incbin "baserom.gba", 0x6BB884, 0x1C
 
-gUnknown_086BB8A0:: @ 0x086BB8A0
+gOptionsTorchicEntitySpriteSet:: @ 0x086BB8A0
     .incbin "baserom.gba", 0x6BB8A0, 0x5A
 
-gUnknown_086BB8FA:: @ 0x086BB8FA
+gOptionsTorchicNoteBubbleSpriteSet:: @ 0x086BB8FA
     .incbin "baserom.gba", 0x6BB8FA, 0x16
 
 gButtonInfoTable:: @ 0x086BB910
@@ -13847,38 +13847,38 @@ gButtonAnimData:: @ 0x086BB9B4
 	.incbin "baserom.gba", 0x6BB9B4, 0x38
 
 gOptionsSpriteSets:: @ 0x086BB9EC
-    .4byte gUnknown_086BB7D4
-    .4byte gUnknown_086BB770
-    .4byte gUnknown_086BB770
-    .4byte gUnknown_086BB770
-    .4byte gUnknown_086BB770
-    .4byte gUnknown_086BB770
-    .4byte gUnknown_086BB770
-    .4byte gUnknown_086BB872
-    .4byte gUnknown_086BB7E8
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB868
-    .4byte gUnknown_086BB884
-    .4byte gUnknown_086BB856
-    .4byte gUnknown_086BB7E8
-    .4byte gUnknown_086BB8A0
-    .4byte gUnknown_086BB8FA
+    .4byte gOptionsHandCursorSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundSelectionArrow0SpriteSet @ Paired with one in slot 27
+    .4byte gOptionsSettingSelectionArrowSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsSoundSelectionArrow1SpriteSet @ Paired with one in slot 7
+    .4byte gOptionsButtonEditPressButtonTextSpriteSet
+    .4byte gOptionsSettingSelectionArrowSpriteSet
+    .4byte gOptionsTorchicEntitySpriteSet
+    .4byte gOptionsTorchicNoteBubbleSpriteSet
 
 gSaveFileSignature:: @ 0x086BBA6C
 	.ascii "POKEPINAGB"

@@ -88,7 +88,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
-            gMain.fieldSpriteGroups[9]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
 
             DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT + 0x1C0, 0x20);
             DmaCopy16(3, gShopModeBG_Gfx, BG_VRAM + 0x2000, 0xC40);
@@ -346,7 +346,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS]->active = FALSE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = FALSE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = FALSE;
-                gMain.fieldSpriteGroups[9]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = FALSE;
 
                 gCurrentPinballGame->activePortraitType = 0;
             }
@@ -368,7 +368,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->cameraYScrollTarget = 0;
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 0;
-                gCurrentPinballGame->bannerGfxIndex = 3;
+                gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_EVOLUTION;
                 gCurrentPinballGame->bannerActive = 1;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
                 gCurrentPinballGame->bannerDisplayDuration = 80;
@@ -424,7 +424,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 RenderEvolutionUI(var_r7);
 
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = TRUE;
-                gMain.fieldSpriteGroups[9]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
 
                 DmaCopy16(3, &gShopEvoUI_Pals, PLTT + 0x3C0, 0x20);
@@ -757,7 +757,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = FALSE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = FALSE;
-                gMain.fieldSpriteGroups[9]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = FALSE;
 
                 gCurrentPinballGame->evoBlinkTimer = 0;
                 gCurrentPinballGame->catchLights[0] = 4;

@@ -288,7 +288,7 @@ void GivePrize(void)
                 gCurrentPinballGame->cameraYScrollTarget = 272;
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 2;
-                gCurrentPinballGame->bannerGfxIndex = 0;
+                gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                 gCurrentPinballGame->bannerActive = 1;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
                 gCurrentPinballGame->pichuWalkMode = 1;

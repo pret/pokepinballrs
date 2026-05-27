@@ -360,7 +360,7 @@ void HandleRubyBumperHit(void)
                             gCurrentPinballGame->cameraYScrollTarget = 0xEC;
                             gCurrentPinballGame->cameraYAdjust = 0;
                             gCurrentPinballGame->cameraYScrollSpeed = 4;
-                            gCurrentPinballGame->bannerGfxIndex = 7;
+                            gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_SHROOMISH_CATCH_BURST;
                             gCurrentPinballGame->bannerActive = 1;
                             gCurrentPinballGame->bannerPreserveBallState = 0;
                             gCurrentPinballGame->bannerDisplayDuration = 80;

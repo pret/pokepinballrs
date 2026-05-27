@@ -50,7 +50,7 @@ void ProcessBannerCameraTransition(void)
                 }
             }
 
-            if (gCurrentPinballGame->bannerGfxIndex != 0)
+            if (gCurrentPinballGame->bannerGfxIndex != BANNER_MODE_NONE)
             {
                 RenderBannerSlideAnimation();
             }
@@ -118,14 +118,14 @@ void RenderBannerSlideAnimation(void)
     u32 frameCount;
 
     sp00 = gCurrentPinballGame->bannerGfxIndex - 1;
-    spriteGroup = gMain.fieldSpriteGroups[11];
+    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER];
     frameCount = ((gMain.systemFrameCount & 7) / 4);
 
     if (spriteGroup->active)
     {
         spriteGroup->baseX = 0;
         spriteGroup->baseY = 200;
-        if (gCurrentPinballGame->bannerGfxIndex == 4)
+        if (gCurrentPinballGame->bannerGfxIndex == BANNER_MODE_TRAVEL)
         {
             if (gCurrentPinballGame->bannerDelayTimer != 0)
             {
@@ -153,8 +153,8 @@ void RenderBannerSlideAnimation(void)
                 {
                     spriteGroup->baseX = -110;
                     spriteGroup->baseY = 44;
-                    gMain.fieldSpriteGroups[11]->active = FALSE; // direct index required here
-                    gCurrentPinballGame->bannerGfxIndex = 0;
+                    gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER]->active = FALSE; // direct index required here
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                     gCurrentPinballGame->activePortraitType = 0;
                 }
             }
@@ -286,8 +286,8 @@ void RenderBannerSlideAnimation(void)
                 }
                 if (gCurrentPinballGame->bannerSlideTimer == 0x1E)
                 {
-                    gMain.fieldSpriteGroups[11]->active = FALSE;
-                    gCurrentPinballGame->bannerGfxIndex = 0;
+                    gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER]->active = FALSE;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                     gCurrentPinballGame->activePortraitType = 0;
                     if ((gCurrentPinballGame->ballCatchState != TRAP_EVO_SHOP_HOLE
                             || gCurrentPinballGame->evolutionShopActive != 1)

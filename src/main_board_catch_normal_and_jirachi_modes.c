@@ -162,7 +162,7 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 2;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_CATCH_EM;
                     gCurrentPinballGame->bannerActive = 1;
                     gCurrentPinballGame->bannerPreserveBallState = 1;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
@@ -197,7 +197,7 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 2;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_CATCH_EM;
                     gCurrentPinballGame->bannerActive = 1;
                     gCurrentPinballGame->bannerPreserveBallState = 1;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
@@ -370,7 +370,7 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 5;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_JIRACHI;
                     gCurrentPinballGame->bannerActive = 1;
                     gCurrentPinballGame->bannerPreserveBallState = 1;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
@@ -404,7 +404,7 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 5;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_JIRACHI;
                     gCurrentPinballGame->bannerActive = 1;
                     gCurrentPinballGame->bannerPreserveBallState = 1;
                     gCurrentPinballGame->bannerDisplayDuration = 80;

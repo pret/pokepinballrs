@@ -6,7 +6,7 @@
 #include "constants/high_scores.h"
 #include "constants/pinball_inputs.h"
 #include "constants/species.h"
-#include "constants/spriteGroups.h"
+#include "constants/sprite_groups.h"
 
 struct HighScoreEntry
 {

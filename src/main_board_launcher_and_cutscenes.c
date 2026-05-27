@@ -158,7 +158,7 @@ void AnimateBannerSlide(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = gMain.fieldSpriteGroups[10];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_TRAVEL_BANNER_SIGNPOST];
     if (group->active)
     {
         group->baseX = gCurrentPinballGame->bannerSlideX;
@@ -174,11 +174,11 @@ void AnimateBannerSlide(void)
     if (gCurrentPinballGame->bannerDisplayDuration > 0)
     {
         if (gCurrentPinballGame->bannerDisplayDuration == 120)
-            gMain.fieldSpriteGroups[10]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_TRAVEL_BANNER_SIGNPOST]->active = TRUE;
 
         gCurrentPinballGame->bannerSlideX = 270 - ((120 - gCurrentPinballGame->bannerDisplayDuration) * 3);
         if (gCurrentPinballGame->bannerDisplayDuration == 1)
-            gMain.fieldSpriteGroups[10]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_TRAVEL_BANNER_SIGNPOST]->active = FALSE;
     }
 }
 
