@@ -38,19 +38,15 @@ struct OptionsData
 {
     s16 stateMain;
     u16 cursorBlinkToggle;
-    u16 soundTestBlinkToggle;
-    u16 buttonFlashVisible;
+    s16 soundTestBlinkToggle;
+    s16 buttonFlashVisible;
     s16 buttonFlashTimer;
     s16 cursorPosition;
-    u16 buttonConfigType;
+    s16 buttonConfigType;
     s16 selectedBGM;
     s16 selectedSE;
-    u8 digit100sBGM;
-    u8 digit10sBGM;
-    u8 digit1sBGM;
-    u8 digit100sSE;
-    u8 digit10sSE;
-    u8 digit1sSE;
+    u8 digitsBGM[3];
+    u8 digitsSE[3];
     s16 scollWaitFrames;
     u8 buttonEditFlags[6];
     s16 captureFramesRemaining;
@@ -58,12 +54,12 @@ struct OptionsData
     s16 capturedButtonSlots[2];
     s16 capturedButtonCount;
     bool8 rumbleEnabled;
-    s8 rumbleAnimTimer;
-    s8 rumbleAnimFrame;
-    u8 rumbleAnimTileId;
-    s8 rumbleAnimActive;
-    u8 rumbleIdleBlinkState;
-    u8 soundTestActive;
+    s8 torchicAnimTimer;
+    s8 torchicAnimFrame;
+    u8 torchicAnimTileId;
+    s8 torchicHeadShakeAnimActive;
+    u8 noteSizeBlinkState;
+    s8 soundTestActive;
 };
 
 extern struct OptionsData gOptionsData;
@@ -133,12 +129,12 @@ void Options_InitStates(void)
     gOptionsData.buttonConfigType = gMain_saveData.buttonConfigType;
     gOptionsData.selectedBGM = 0;
     gOptionsData.selectedSE = 0;
-    gOptionsData.digit100sBGM = 0;
-    gOptionsData.digit10sBGM = 0;
-    gOptionsData.digit1sBGM = 1;
-    gOptionsData.digit100sSE = 0;
-    gOptionsData.digit10sSE = 0;
-    gOptionsData.digit1sSE = 1;
+    gOptionsData.digitsBGM[0] = 0;
+    gOptionsData.digitsBGM[1] = 0;
+    gOptionsData.digitsBGM[2] = 1;
+    gOptionsData.digitsSE[0] = 0;
+    gOptionsData.digitsSE[1] = 0;
+    gOptionsData.digitsSE[2] = 1;
     gOptionsData.scollWaitFrames = 0;
     for (i = 0; i < 6; i++)
         gOptionsData.buttonEditFlags[i] = 0;
@@ -163,11 +159,11 @@ void Options_InitStates(void)
         gOptionsData.rumbleEnabled = FALSE;
         gMain_saveData.rumbleEnabled = FALSE;
     }
-    gOptionsData.rumbleAnimActive = 0;
-    gOptionsData.rumbleAnimTimer = 0;
-    gOptionsData.rumbleAnimFrame = 0;
-    gOptionsData.rumbleAnimTileId = 0;
-    gOptionsData.rumbleIdleBlinkState = 0;
+    gOptionsData.torchicHeadShakeAnimActive = 0;
+    gOptionsData.torchicAnimTimer = 0;
+    gOptionsData.torchicAnimFrame = 0;
+    gOptionsData.torchicAnimTileId = 0;
+    gOptionsData.noteSizeBlinkState = 0;
     gOptionsData.soundTestActive = 0;
 }
 
@@ -232,12 +228,12 @@ void Options_HandleInput(void)
                 gOptionsData.stateMain = OPTIONS_STATE_BGM_SELECT,
                 gOptionsData.scollWaitFrames = 0;
                 gOptionsData.soundTestActive = 1;
-                if (gOptionsData.rumbleAnimActive == 1)
+                if (gOptionsData.torchicHeadShakeAnimActive == 1)
                 {
-                    gOptionsData.rumbleAnimTimer = 0;
-                    gOptionsData.rumbleAnimTileId = 0;
-                    gOptionsData.rumbleAnimFrame = 0;
-                    gOptionsData.rumbleAnimActive = 0;
+                    gOptionsData.torchicAnimTimer = 0;
+                    gOptionsData.torchicAnimTileId = 0;
+                    gOptionsData.torchicAnimFrame = 0;
+                    gOptionsData.torchicHeadShakeAnimActive = 0;
                 }
                 break;
             case CURSOR_POS_SE:
@@ -245,12 +241,12 @@ void Options_HandleInput(void)
                 gOptionsData.stateMain = OPTIONS_STATE_SE_MENU_MOVE_0x67,
                 gOptionsData.scollWaitFrames = 0;
                 gOptionsData.soundTestActive = 1;
-                if (gOptionsData.rumbleAnimActive == 1)
+                if (gOptionsData.torchicHeadShakeAnimActive == 1)
                 {
-                    gOptionsData.rumbleAnimTimer = 0;
-                    gOptionsData.rumbleAnimTileId = 0;
-                    gOptionsData.rumbleAnimFrame = 0;
-                    gOptionsData.rumbleAnimActive = 0;
+                    gOptionsData.torchicAnimTimer = 0;
+                    gOptionsData.torchicAnimTileId = 0;
+                    gOptionsData.torchicAnimFrame = 0;
+                    gOptionsData.torchicHeadShakeAnimActive = 0;
                 }
                 break;
             case CURSOR_POS_BUTTON_CONFIG_TYPE_A:
@@ -272,11 +268,11 @@ void Options_HandleInput(void)
                 if (gGameBoyPlayerEnabled == TRUE)
                 {
                     m4aSongNumStart(SE_MENU_SELECT);
-                    gOptionsData.rumbleAnimTileId = 0;
-                    if (gOptionsData.rumbleAnimActive == 1)
-                        gOptionsData.rumbleAnimActive = 0;
-                    gOptionsData.rumbleAnimTimer = 0;
-                    gOptionsData.rumbleAnimFrame = 0;
+                    gOptionsData.torchicAnimTileId = 0;
+                    if (gOptionsData.torchicHeadShakeAnimActive == 1)
+                        gOptionsData.torchicHeadShakeAnimActive = 0;
+                    gOptionsData.torchicAnimTimer = 0;
+                    gOptionsData.torchicAnimFrame = 0;
                     gOptionsData.rumbleEnabled = FALSE;
                 }
                 break;
@@ -285,11 +281,11 @@ void Options_HandleInput(void)
                 {
                     m4aSongNumStart(SE_MENU_SELECT);
                     PlayRumble(11);
-                    if (gOptionsData.rumbleAnimActive == 0)
-                        gOptionsData.rumbleAnimActive = 1;
+                    if (gOptionsData.torchicHeadShakeAnimActive == 0)
+                        gOptionsData.torchicHeadShakeAnimActive = 1;
 
-                    gOptionsData.rumbleAnimTimer = 0;
-                    gOptionsData.rumbleAnimFrame = 0;
+                    gOptionsData.torchicAnimTimer = 0;
+                    gOptionsData.torchicAnimFrame = 0;
                     gOptionsData.rumbleEnabled = TRUE;
                 }
                 break;
@@ -333,10 +329,10 @@ void Options_HandleInput(void)
             gOptionsData.selectedBGM = 0;
 
         r4 = gOptionsData.selectedBGM + 1;
-        gOptionsData.digit100sBGM = r4 / 100;
+        gOptionsData.digitsBGM[0] = r4 / 100;
         r4 %= 100;
-        gOptionsData.digit10sBGM = r4 / 10;
-        gOptionsData.digit1sBGM = r4 % 10;
+        gOptionsData.digitsBGM[1] = r4 / 10;
+        gOptionsData.digitsBGM[2] = r4 % 10;
         if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();
@@ -384,10 +380,10 @@ void Options_HandleInput(void)
             gOptionsData.selectedSE = 0;
 
         r4 = gOptionsData.selectedSE + 1;
-        gOptionsData.digit100sSE = r4 / 100;
+        gOptionsData.digitsSE[0] = r4 / 100;
         r4 %= 100;
-        gOptionsData.digit10sSE = r4 / 10;
-        gOptionsData.digit1sSE = r4 % 10;
+        gOptionsData.digitsSE[1] = r4 / 10;
+        gOptionsData.digitsSE[2] = r4 % 10;
         if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();
@@ -474,28 +470,28 @@ void Options_HandleInput(void)
         }
         break;
     }
-    if (gOptionsData.rumbleAnimActive == 1)
+    if (gOptionsData.torchicHeadShakeAnimActive == 1)
     {
-        if (++gOptionsData.rumbleAnimTimer > gButtonAnimData[gOptionsData.rumbleAnimFrame].frameDuration)
+        if (++gOptionsData.torchicAnimTimer > gButtonAnimData[gOptionsData.torchicAnimFrame].frameDuration)
         {
-            gOptionsData.rumbleAnimTimer = 0;
-            gOptionsData.rumbleAnimFrame++;
-            if (gOptionsData.rumbleAnimFrame > 12)
+            gOptionsData.torchicAnimTimer = 0;
+            gOptionsData.torchicAnimFrame++;
+            if (gOptionsData.torchicAnimFrame > 12)
             {
-                gOptionsData.rumbleAnimFrame = 0;
-                gOptionsData.rumbleAnimTileId = 0;
-                gOptionsData.rumbleAnimActive = 0;
+                gOptionsData.torchicAnimFrame = 0;
+                gOptionsData.torchicAnimTileId = 0;
+                gOptionsData.torchicHeadShakeAnimActive = 0;
             }
-            gOptionsData.rumbleAnimTileId = gButtonAnimData[gOptionsData.rumbleAnimFrame].tileId;
+            gOptionsData.torchicAnimTileId = gButtonAnimData[gOptionsData.torchicAnimFrame].tileId;
         }
     }
     else
     {
-        gOptionsData.rumbleAnimTimer++;
-        if (gOptionsData.rumbleAnimTimer > 18)
+        gOptionsData.torchicAnimTimer++;
+        if (gOptionsData.torchicAnimTimer > 18)
         {
-            gOptionsData.rumbleAnimTimer = 0;
-            gOptionsData.rumbleAnimTileId = 1 - gOptionsData.rumbleAnimTileId;
+            gOptionsData.torchicAnimTimer = 0;
+            gOptionsData.torchicAnimTileId = 1 - gOptionsData.torchicAnimTileId;
         }
     }
     ProcessRumbleFrame();
