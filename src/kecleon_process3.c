@@ -239,7 +239,7 @@ void UpdateKecleonEntityLogic(void)
     struct Vector32 deltaVec;
     u16 angle;
     int xx, yy;
-    int deltaMagSquared;
+    int squaredDistance;
 
     switch (gCurrentPinballGame->bossEntityState)
     {
@@ -342,13 +342,13 @@ void UpdateKecleonEntityLogic(void)
         deltaVec.y = gCurrentPinballGame->bossTargetYPosition - gCurrentPinballGame->bossPositionY;
         xx = deltaVec.x * deltaVec.x;
         yy = deltaVec.y * deltaVec.y;
-        deltaMagSquared = xx + yy;
+        squaredDistance = xx + yy;
         angle = ArcTan2(deltaVec.x, -deltaVec.y);
         tempVec.x = 6 * Cos(angle) / VECTORSCALEDOWN;
         tempVec.y = -6 * Sin(angle) / VECTORSCALEDOWN;
         gCurrentPinballGame->bossPositionX += tempVec.x;
         gCurrentPinballGame->bossPositionY += tempVec.y;
-        if (deltaMagSquared < 2500)
+        if (squaredDistance < 2500)
         {
             gCurrentPinballGame->bossEntityState = KECLEON_ENTITY_STATE_OBSERVING;
             if (gCurrentPinballGame->kecleonFramesetBase == 3)
@@ -407,13 +407,13 @@ void UpdateKecleonEntityLogic(void)
         deltaVec.y = gCurrentPinballGame->bossTargetYPosition - gCurrentPinballGame->bossPositionY;
         xx = deltaVec.x * deltaVec.x;
         yy = deltaVec.y * deltaVec.y;
-        deltaMagSquared = xx + yy;
+        squaredDistance = xx + yy;
         angle = ArcTan2(deltaVec.x, -deltaVec.y);
         tempVec.x = 10 * Cos(angle) / VECTORSCALEDOWN;
         tempVec.y = -10 * Sin(angle) / VECTORSCALEDOWN;
         gCurrentPinballGame->bossPositionX += tempVec.x;
         gCurrentPinballGame->bossPositionY += tempVec.y;
-        if (deltaMagSquared < 2500)
+        if (squaredDistance < 2500)
         {
             if (gCurrentPinballGame->bonusModeHitCount > 9)
             {
@@ -929,7 +929,7 @@ void UpdateKecleonScopeItem(void)
     struct OamDataSimple *oamSimple;
     struct Vector32 tempVector;
     int xx, yy;
-    int squaredMagnitude;
+    int squaredDistance;
 
     group = &gMain.spriteGroups[SG_KECLEON_SCOPE_ITEM];
     if (!group->active)
@@ -969,8 +969,8 @@ void UpdateKecleonScopeItem(void)
             tempVector.y = gCurrentPinballGame->ball->positionQ0.y - (gCurrentPinballGame->orbCollisionPosition.y / 10 + 8);
             xx = tempVector.x * tempVector.x;
             yy = tempVector.y * tempVector.y;
-            squaredMagnitude = xx + yy;
-            if (squaredMagnitude <= 120)
+            squaredDistance = xx + yy;
+            if (squaredDistance <= 120)
             {
                 gCurrentPinballGame->kecleonBoardHitState = 0;
                 gCurrentPinballGame->kecleonTargetActive = 1;

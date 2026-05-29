@@ -184,7 +184,7 @@ void UpdateBoardIntroMode(void)
                 gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1]->active = FALSE;
                 gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM]->active = FALSE;
                 gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM]->active = FALSE;
-                gMain.fieldSpriteGroups[FIELD_SG_34]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_INITIAL_LOCATION_SELECTED_FX]->active = TRUE;
                 m4aSongNumStart(SE_AREA_ROULETTE_SELECTED);
             }
         }
@@ -235,7 +235,7 @@ void UpdateBoardIntroMode(void)
             else
                 var0 = ((gCurrentPinballGame->stageTimer - 8) / 3) + 2;
 
-            group = gMain.fieldSpriteGroups[FIELD_SG_34];
+            group = gMain.fieldSpriteGroups[FIELD_SG_INITIAL_LOCATION_SELECTED_FX];
             if (group->active)
             {
                 group->baseX = 96u - gCurrentPinballGame->cameraXOffset;
@@ -257,7 +257,7 @@ void UpdateBoardIntroMode(void)
             }
 
             if (gCurrentPinballGame->stageTimer == 28) {
-                gMain.fieldSpriteGroups[FIELD_SG_34]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_INITIAL_LOCATION_SELECTED_FX]->active = FALSE;
                 gCurrentPinballGame->activePortraitType = 0;
             }
         }

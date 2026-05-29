@@ -43,7 +43,7 @@ void AnimateOneUpSprite(void)
     s16 scale;
 
     var0 = 0;
-    group = gMain.fieldSpriteGroups[FIELD_SG_50];
+    group = gMain.fieldSpriteGroups[FIELD_SG_TREECKO_1UP_DELIVERY];
     if (group->active)
     {
         group->baseX = 202;
@@ -276,7 +276,7 @@ void DrawSpoinkSprite(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = gMain.fieldSpriteGroups[FIELD_SG_44];
+    group = gMain.fieldSpriteGroups[FIELD_SG_SPOINK_LAUNCHER];
     if (group->active)
     {
         if (gCurrentPinballGame->spoinkAnimFrameIx == 0)
@@ -654,7 +654,7 @@ void RunEvolutionCutscene(void)
             {
                 gCurrentPinballGame->revealAnimFrameCounter = 0;
                 gCurrentPinballGame->revealFramesetIndex = 0;
-                gMain.fieldSpriteGroups[FIELD_SG_37]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = TRUE;
             }
         }
         else
@@ -670,7 +670,7 @@ void RunEvolutionCutscene(void)
                 gCurrentPinballGame->revealFramesetIndex++;
                 if (gCurrentPinballGame->revealFramesetIndex > 10)
                 {
-                    gMain.fieldSpriteGroups[FIELD_SG_37]->active = FALSE;
+                    gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = FALSE;
                     gCurrentPinballGame->revealFramesetIndex = 10;
                     gCurrentPinballGame->stageTimer = 0;
                     gCurrentPinballGame->boardSubState++;
@@ -680,7 +680,7 @@ void RunEvolutionCutscene(void)
             }
 
             index = gCurrentPinballGame->revealFramesetIndex;
-            group = gMain.fieldSpriteGroups[FIELD_SG_37];
+            group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX];
             group->baseX = 96 - gCurrentPinballGame->cameraXOffset;
             group->baseY = 300 - gCurrentPinballGame->cameraYOffset;
             if (group->baseY >= 200)

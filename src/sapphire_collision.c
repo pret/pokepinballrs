@@ -161,7 +161,7 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
     s16 modRes;
     s16 index;
     u16 angle;
-    int squaredMagnitude;
+    int squaredSpeed;
 
     switch (arg0)
     {
@@ -304,13 +304,13 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
             if (gCurrentPinballGame->ball->velocity.y > 0)
             {
                 angle = 0xDA00;
-                squaredMagnitude =
+                squaredSpeed =
                     gCurrentPinballGame->ball->velocity.x * gCurrentPinballGame->ball->velocity.x +
                     gCurrentPinballGame->ball->velocity.y * gCurrentPinballGame->ball->velocity.y;
 
-                squaredMagnitude = Sqrt(squaredMagnitude * 4) / 2;
-                gCurrentPinballGame->ball->velocity.x = squaredMagnitude * Cos(angle) / 20000;
-                gCurrentPinballGame->ball->velocity.y = -squaredMagnitude * Sin(angle) / 20000;
+                squaredSpeed = Sqrt(squaredSpeed * 4) / 2;
+                gCurrentPinballGame->ball->velocity.x = squaredSpeed * Cos(angle) / 20000;
+                gCurrentPinballGame->ball->velocity.y = -squaredSpeed * Sin(angle) / 20000;
             }
         }
         else

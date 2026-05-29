@@ -198,7 +198,7 @@ void RevealCatchTilesBurst(void)
         gCurrentPinballGame->activePortraitType = 5;
         DmaCopy16(3, gCatchTile_BurstStart_Gfx, (void *)0x06015800, 0x2000);
         DmaCopy16(3, gCatchTile_BurstStart_Pal, (void *)0x050003C0, 0x20);
-        gMain.fieldSpriteGroups[FIELD_SG_35]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_LIGHTNING_STRIKE]->active = TRUE;
         m4aSongNumStart(SE_CATCH_ALL_REVEAL_LIGHTNING);
         gCurrentPinballGame->hatchRevealPhase++;
         gCurrentPinballGame->revealAnimFrameCounter = 0;
@@ -217,12 +217,12 @@ void RevealCatchTilesBurst(void)
             {
                 gCurrentPinballGame->revealFramesetIndex = 7;
                 gCurrentPinballGame->hatchRevealPhase++;
-                gMain.fieldSpriteGroups[FIELD_SG_35]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_LIGHTNING_STRIKE]->active = FALSE;
             }
         }
 
         var0 = gCurrentPinballGame->revealFramesetIndex;
-        group = gMain.fieldSpriteGroups[FIELD_SG_35];
+        group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_LIGHTNING_STRIKE];
         group->baseX = 124 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 244 - gCurrentPinballGame->cameraYOffset;
         if (group->baseY >= 200)
@@ -244,7 +244,7 @@ void RevealCatchTilesBurst(void)
         gCurrentPinballGame->activePortraitType = 6;
         DmaCopy16(3, gCatchTile_BurstStage2_Gfx, (void *)0x06015800, 0x800);
         DmaCopy16(3, gCatchTile_BurstStage2_Pal, (void *)0x050003C0, 0x20);
-        gMain.fieldSpriteGroups[FIELD_SG_36]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_TILE_FLASH_FX]->active = TRUE;
         gCurrentPinballGame->hatchRevealPhase++;
         gCurrentPinballGame->revealAnimFrameCounter = 0;
         gCurrentPinballGame->startButtonDisabled = 1;
@@ -257,13 +257,13 @@ void RevealCatchTilesBurst(void)
         }
         else
         {
-            gMain.fieldSpriteGroups[FIELD_SG_36]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_TILE_FLASH_FX]->active = FALSE;
             gCurrentPinballGame->hatchRevealPhase++;
             gCurrentPinballGame->revealAnimFrameCounter = 0;
             gCurrentPinballGame->revealFramesetIndex = 0;
         }
 
-        group = gMain.fieldSpriteGroups[FIELD_SG_36];
+        group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_TILE_FLASH_FX];
         group->baseX = 96 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 300 - gCurrentPinballGame->cameraYOffset;
         if (group->baseY >= 200)
@@ -329,7 +329,7 @@ void RevealCatchTilesBurst(void)
         gCurrentPinballGame->activePortraitType = 8;
         DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x06015800, 0x1800);
         DmaCopy16(3, gCatchTile_BurstStage4_Pal, (void *)0x050003C0, 0x20);
-        gMain.fieldSpriteGroups[FIELD_SG_37]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = TRUE;
         gCurrentPinballGame->hatchRevealPhase++;
         gCurrentPinballGame->startButtonDisabled = 0;
         break;
@@ -345,20 +345,20 @@ void RevealCatchTilesBurst(void)
             if (gCurrentPinballGame->revealFramesetIndex > 10)
             {
                 gCurrentPinballGame->boardSubState++; //Move to next Catch phase
-                gMain.fieldSpriteGroups[FIELD_SG_37]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = FALSE;
                 gCurrentPinballGame->catchTilesBoardAcknowledged = 0;
                 gCurrentPinballGame->catchSequentialTilesRevealed = 0;
                 gCurrentPinballGame->catchTilesBumperAcknowledged = 0;
                 gMain.blendControl = 0xCE;
                 gMain.blendBrightness = 0;
-                gMain.fieldSpriteGroups[FIELD_SG_37]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = FALSE;
                 gCurrentPinballGame->revealFramesetIndex = 10;
                 gCurrentPinballGame->activePortraitType = 0;
             }
         }
 
         var0 = gCurrentPinballGame->revealFramesetIndex;
-        group = gMain.fieldSpriteGroups[FIELD_SG_37];
+        group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX];
         group->baseX = 96 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 300 - gCurrentPinballGame->cameraYOffset;
         if (group->baseY >= 200)

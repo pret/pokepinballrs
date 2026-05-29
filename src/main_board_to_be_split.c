@@ -741,7 +741,7 @@ void AnimateCoinReward(void)
     int var1;
     s16 var2;
 
-    group = gMain.fieldSpriteGroups[FIELD_SG_39];
+    group = gMain.fieldSpriteGroups[FIELD_SG_COIN_COLLECTED];
     if (gCurrentPinballGame->coinRewardTimer < ((gCurrentPinballGame->coinRewardAmount - 1) * 9) + 19)
     {
         if (gCurrentPinballGame->coinRewardTimer == 0)
@@ -834,7 +834,7 @@ void AnimateCoinReward(void)
         gCurrentPinballGame->coinRewardTimer++;
         if (gCurrentPinballGame->coinRewardTimer == ((gCurrentPinballGame->coinRewardAmount - 1) * 9) + 19)
         {
-            gMain.fieldSpriteGroups[FIELD_SG_39]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_COIN_COLLECTED]->active = FALSE;
             gCurrentPinballGame->coinRewardAmount = 0;
             if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE)
                 gCurrentPinballGame->outcomeFrameCounter = 170;
@@ -1631,15 +1631,15 @@ void UpdateEggMode(void)
     u16 angle;
     u16 angle2;
     int xx, yy;
-    int squaredMagnitude;
+    int squaredDistance;
 
-    group = gMain.fieldSpriteGroups[FIELD_SG_41];
+    group = gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY];
     priority = 1;
     switch (gCurrentPinballGame->boardSubState)
     {
     case EGG_HATCH_SUBSTATE_INIT:
         gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
-        gMain.fieldSpriteGroups[FIELD_SG_41]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = TRUE;
         gCurrentPinballGame->boardSubState++;
         break;
     case EGG_HATCH_SUBSTATE_SETUP_WANDERING:
@@ -1750,7 +1750,7 @@ void UpdateEggMode(void)
             tempVec.y = gSapphireEggWaypoints[gCurrentPinballGame->creatureWaypointIndex].y - 160 - gCurrentPinballGame->walkMonYPos;
             xx = tempVec.x * tempVec.x;
             yy = tempVec.y * tempVec.y;
-            squaredMagnitude = xx + yy;
+            squaredDistance = xx + yy;
             angle = ArcTan2(tempVec.x,-tempVec.y);
             if (gCurrentPinballGame->waypointSubTimer < 324)
                 priority = 2;
@@ -1772,7 +1772,7 @@ void UpdateEggMode(void)
 
             gCurrentPinballGame->walkMonXPos += tempVec2.x;
             gCurrentPinballGame->walkMonYPos += tempVec2.y;
-            if (squaredMagnitude < 2500)
+            if (squaredDistance < 2500)
             {
                 if (gCurrentPinballGame->creatureWaypointIndex < 6)
                 {
@@ -1820,7 +1820,7 @@ void UpdateEggMode(void)
         tempVec.y = gEggWalkPathWaypoints[gMain.selectedField][gCurrentPinballGame->creatureWaypointIndex].y - 160 - gCurrentPinballGame->walkMonYPos;
         xx = tempVec.x * tempVec.x;
         yy = tempVec.y * tempVec.y;
-        squaredMagnitude = xx + yy;
+        squaredDistance = xx + yy;
         angle = ArcTan2(tempVec.x, -tempVec.y);
         tempVec2.x = (Cos(angle) * 7) / 20000;
         tempVec2.y = -(Sin(angle) * 7) / 20000;
@@ -1844,7 +1844,7 @@ void UpdateEggMode(void)
             gCurrentPinballGame->walkMonYPos += tempVec2.y;
         }
 
-        if (squaredMagnitude < 2500)
+        if (squaredDistance < 2500)
         {
             if (gCurrentPinballGame->creatureWaypointIndex < 28)
             {
@@ -1902,8 +1902,8 @@ void UpdateEggMode(void)
             tempVec.y = gCurrentPinballGame->ball->positionQ0.y - (gCurrentPinballGame->walkMonYPos / 10 + 14);
             xx = tempVec.x * tempVec.x;
             yy = tempVec.y * tempVec.y;
-            squaredMagnitude = xx + yy;
-            if (squaredMagnitude < 82)
+            squaredDistance = xx + yy;
+            if (squaredDistance < 82)
             {
                 gCurrentPinballGame->creatureHitCount++;
                 gCurrentPinballGame->creatureHitCooldown = 4;
@@ -1978,7 +1978,7 @@ void UpdateEggMode(void)
 
             DmaCopy16(3, gCatchAnimTileBuffer, (void *)0x060112A0, 0x120);
             if (gCurrentPinballGame->captureSequenceTimer == 23)
-                gMain.fieldSpriteGroups[FIELD_SG_41]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
         }
         break;
     case EGG_HATCH_SUBSTATE_CLEANUP_MON_SPRITES:
@@ -1993,7 +1993,7 @@ void UpdateEggMode(void)
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
         }
-        gMain.fieldSpriteGroups[FIELD_SG_41]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
         gCurrentPinballGame->boardSubState++;
         break;
     case EGG_HATCH_SUBSTATE_BOARD_STATE_CLEANUP:

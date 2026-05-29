@@ -127,7 +127,7 @@ void GameOverAnimation(void)
     struct OamDataSimple *oamSimple;
     u16 var0;
 
-    group = gMain.fieldSpriteGroups[FIELD_SG_42];
+    group = gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT];
     if (group->active)
     {
         group->baseX = 63;
@@ -155,7 +155,7 @@ void GameOverAnimation(void)
     if (gMain.animationTimer == 3600)
     {
         DmaCopy16(3, gMainBoardGameOverText_Gfx, (void *)0x06015800, 0x400);
-        gMain.fieldSpriteGroups[FIELD_SG_42]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT]->active = TRUE;
         for (i = 0; i < 8; i++)
         {
             gGameOverLetterYOffsets[i] = 0xE0C0;

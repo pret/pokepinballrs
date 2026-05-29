@@ -198,7 +198,7 @@ void MainBoardProcess_7B_12524(void)
         gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
     }
 
-    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_43];
+    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL_UPGRADE_FX];
 
     if (spriteGroup->active)
     {
@@ -225,7 +225,7 @@ void MainBoardProcess_7B_12524(void)
         gOamBuffer[oam->oamId].priority = currentBallState->oamPriority;
 
         if (gCurrentPinballGame->ballShadowTimer < 14)
-            gMain.fieldSpriteGroups[FIELD_SG_43]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_BALL_UPGRADE_FX]->active = FALSE;
     }
 }
 

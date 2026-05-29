@@ -805,7 +805,7 @@ void UpdateKyogreFieldEntities(void)
     s16 index;
     int xx, yy;
     u16 angle;
-    int squaredMagnitude;
+    int squaredDistance;
     struct Vector32 tempVector2;
     struct Vector32 tempVector;
     struct Vector32 tempVector3;
@@ -1063,10 +1063,10 @@ void UpdateKyogreFieldEntities(void)
                     tempVector.y = (gCurrentPinballGame->ball->positionQ0.y - yoff) - (gCurrentPinballGame->vortexScreenPosition[i].y / 10);
                     xx = tempVector.x * tempVector.x;
                     yy = tempVector.y * tempVector.y;
-                    squaredMagnitude = xx + yy;
+                    squaredDistance = xx + yy;
                     if (gCurrentPinballGame->ballGrabbed == 0 && gCurrentPinballGame->ballRespawnState == 0 &&
                         gCurrentPinballGame->bonusModeHitCount < gCurrentPinballGame->legendaryHitsRequired &&
-                        gCurrentPinballGame->bossHitFlashTimer == 0 && squaredMagnitude < 400)
+                        gCurrentPinballGame->bossHitFlashTimer == 0 && squaredDistance < 400)
                     {
                         m4aSongNumStart(SE_UNKNOWN_0x113);
                         PlayRumble(12);
@@ -1174,13 +1174,13 @@ void UpdateKyogreFieldEntities(void)
                 tempVector.y = gCurrentPinballGame->vortexOrbitCenter[i].y - gCurrentPinballGame->vortexScreenPosition[i].y;
                 xx = tempVector.x * tempVector.x;
                 yy = tempVector.y * tempVector.y;
-                squaredMagnitude = xx + yy;
+                squaredDistance = xx + yy;
                 angle = ArcTan2(tempVector.x, -tempVector.y);
                 tempVector3.x =  (Cos(angle) * 4) / 20000;
                 tempVector3.y = -(Sin(angle) * 4) / 20000;
                 gCurrentPinballGame->vortexScreenPosition[i].x += tempVector3.x;
                 gCurrentPinballGame->vortexScreenPosition[i].y += tempVector3.y;
-                if (squaredMagnitude < 2500)
+                if (squaredDistance < 2500)
                 {
                     gCurrentPinballGame->vortexTargetWaypointIndex[i] = i * 7 + ((Random() + gMain.systemFrameCount) % 7);
                     gCurrentPinballGame->vortexOrbitCenter[i].x = gKyogreWhirlpoolTargetPositions[gCurrentPinballGame->vortexTargetWaypointIndex[i]].x;
@@ -1275,10 +1275,10 @@ void UpdateKyogreFieldEntities(void)
             tempVector.y = gCurrentPinballGame->ball->positionQ0.y - 127;
             xx = tempVector.x * tempVector.x;
             yy = tempVector.y * tempVector.y;
-            squaredMagnitude = xx + yy;
+            squaredDistance = xx + yy;
 
             //Check if shockwave close enough to the ball.
-            if (gCurrentPinballGame->ballRespawnState == 0 && squaredMagnitude < gShockwaveSplashDistanceThresholds[gCurrentPinballGame->shockwaveAnimTimer])
+            if (gCurrentPinballGame->ballRespawnState == 0 && squaredDistance < gShockwaveSplashDistanceThresholds[gCurrentPinballGame->shockwaveAnimTimer])
             {
                 gCurrentPinballGame->freezeTrapPhase = KYOGRE_FREEZE_PHASE_ENCLOSE_BALL;
                 gCurrentPinballGame->freezeTrapAnimFrame = 0;

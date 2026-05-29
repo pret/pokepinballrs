@@ -20,7 +20,7 @@ void RubyBoardProcess_0A_50848(void)
     gMain.spriteGroups[SG_81].active = TRUE;
     gMain.spriteGroups[SG_65].active = TRUE;
     gMain.spriteGroups[SG_71].active = TRUE;
-    gMain.spriteGroups[SG_66].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_RAMP_PRIZE].active = TRUE;
     gMain.spriteGroups[SG_51].active = TRUE;
     gMain.spriteGroups[SG_61].active = TRUE;
     group->active = TRUE;
@@ -48,7 +48,7 @@ void RubyBoardProcess_0B_50918(void)
     {
         gMain.spriteGroups[SG_65].active = TRUE;
         gMain.spriteGroups[SG_71].active = TRUE;
-        gMain.spriteGroups[SG_66].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_RAMP_PRIZE].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport < 168)
@@ -171,7 +171,7 @@ void SapphireBoardProcess_0B_50B80(void)
         gMain.spriteGroups[SG_64].active = TRUE;
         gMain.spriteGroups[SG_68].active = TRUE;
         gMain.spriteGroups[SG_65].active = TRUE;
-        gMain.spriteGroups[SG_66].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_RAMP_PRIZE].active = TRUE;
         gMain.spriteGroups[SG_67].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport > 216)

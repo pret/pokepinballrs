@@ -343,7 +343,7 @@ void UpdateJirachiBonus(void)
     struct Vector32 deltaVec;
     u16 angle;
     int xx, yy;
-    int deltaMagSquared;
+    int squaredDistance;
     u16 var0;
 
     switch (gCurrentPinballGame->boardSubState)
@@ -441,7 +441,7 @@ void UpdateJirachiBonus(void)
         gCurrentPinballGame->catchLights[1] = 2;
         gCurrentPinballGame->catchLights[2] = 2;
         gCurrentPinballGame->catchMonCollisionEnabled = 1;
-        gMain.fieldSpriteGroups[FIELD_SG_33]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = TRUE;
         DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
         gCurrentPinballGame->modeAnimTimer = 40;
         gCurrentPinballGame->jirachiLogicX = 900;
@@ -467,9 +467,9 @@ void UpdateJirachiBonus(void)
             deltaVec.y = gCurrentPinballGame->jirachiTargetY - gCurrentPinballGame->jirachiLogicY;
             xx = deltaVec.x * deltaVec.x;
             yy = deltaVec.y * deltaVec.y;
-            deltaMagSquared = xx + yy;
+            squaredDistance = xx + yy;
             angle = ArcTan2(deltaVec.x, -deltaVec.y);
-            if (deltaMagSquared < 2500)
+            if (squaredDistance < 2500)
             {
                 tempVec.x = 0;
                 tempVec.y = 0;
@@ -608,7 +608,7 @@ void DrawCatchMonBoardSprite(void)
     s16 index;
 
     index = (gMain.fieldFrameCount % 50) / 25;
-    group = gMain.fieldSpriteGroups[FIELD_SG_33];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY];
     if (!group->active)
         return;
 
@@ -658,7 +658,7 @@ void CleanupCatchMonBoardSprite(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = gMain.fieldSpriteGroups[FIELD_SG_33];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY];
     if (group->active)
     {
         for (i = 0; i < 4; i++)
@@ -669,7 +669,7 @@ void CleanupCatchMonBoardSprite(void)
         }
     }
 
-    gMain.fieldSpriteGroups[FIELD_SG_33]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = FALSE;
 }
 
 void DrawJirachiSprites(void)
@@ -684,7 +684,7 @@ void DrawJirachiSprites(void)
     s16 var1;
 
     index = (gMain.fieldFrameCount % 50) / 25;
-    group = gMain.fieldSpriteGroups[FIELD_SG_33];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY];
     if (group->active)
     {
         gCurrentPinballGame->jirachiCenterX = gCurrentPinballGame->jirachiDisplayX / 10 + 96;
@@ -751,7 +751,7 @@ void DrawJirachiSprites(void)
     for (j = 0; j < 4; j++)
     {
 
-        group = gMain.fieldSpriteGroups[FIELD_SG_45 + j];
+        group = gMain.fieldSpriteGroups[FIELD_SG_JIRACHI_STAR_TRAIL_FX_BASE + j];
         if (group->active)
         {
             group->baseX = gCurrentPinballGame->jirachiStarTagPos[j].x - gCurrentPinballGame->cameraXOffset;
@@ -784,7 +784,7 @@ void DrawJirachiSprites(void)
                 gCurrentPinballGame->jirachiTagTimer[j] = 40;
                 gCurrentPinballGame->jirachiStarTagPos[j].x = gCurrentPinballGame->jirachiCenterX;
                 gCurrentPinballGame->jirachiStarTagPos[j].y = gCurrentPinballGame->jirachiCenterY + 16;
-                gMain.fieldSpriteGroups[FIELD_SG_45 + j]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_JIRACHI_STAR_TRAIL_FX_BASE + j]->active = TRUE;
             }
         }
 
@@ -792,7 +792,7 @@ void DrawJirachiSprites(void)
         {
             gCurrentPinballGame->jirachiTagTimer[j]--;
             if (gCurrentPinballGame->jirachiTagTimer[j] == 0)
-                gMain.fieldSpriteGroups[FIELD_SG_45 + j]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_JIRACHI_STAR_TRAIL_FX_BASE + j]->active = FALSE;
         }
     }
 }
@@ -803,7 +803,7 @@ void CleanupJirachiSprites(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = gMain.fieldSpriteGroups[FIELD_SG_33];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY];
     if (group->active)
     {
         for (i = 0; i < 4; i++)
@@ -814,9 +814,9 @@ void CleanupJirachiSprites(void)
         }
     }
 
-    gMain.fieldSpriteGroups[FIELD_SG_33]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = FALSE;
     for (i = 0; i < 4; i++)
-        gMain.fieldSpriteGroups[FIELD_SG_45 + i]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_JIRACHI_STAR_TRAIL_FX_BASE + i]->active = FALSE;
 }
 
 //draw_catch_tiles
@@ -869,7 +869,7 @@ void PlayCatchMonAppearsAnimation(void)
     if (gCurrentPinballGame->catchRevealFrameId == 2 && gCurrentPinballGame->catchTileRevealFrameAnimTimer > 3)
     {
         gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
-        gMain.fieldSpriteGroups[FIELD_SG_33]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = TRUE;
     }
 
     if (gCurrentPinballGame->catchRevealFrameId > 2)

@@ -956,7 +956,7 @@ void UpdateGroudonFieldEntities(void)
     const u16 *src;
     s16 varSL;
     int xx, yy;
-    int squaredMagnitude;
+    int squaredDistance;
     struct Vector32 tempVector;
     s8 var0;
 
@@ -1091,14 +1091,14 @@ void UpdateGroudonFieldEntities(void)
         tempVector.y = gCurrentPinballGame->projectilePosition.y / 10 - gCurrentPinballGame->ball->positionQ0.y;
         xx = tempVector.x * tempVector.x;
         yy = tempVector.y * tempVector.y;
-        squaredMagnitude = xx + yy;
+        squaredDistance = xx + yy;
         if (gCurrentPinballGame->projectileFlightTimer)
         {
             gCurrentPinballGame->projectileFlightTimer--;
             if (gCurrentPinballGame->projectileFlightTimer >= 10)
             {
                 varSL = (gCurrentPinballGame->projectileFlightTimer % 8) / 4 + gCurrentPinballGame->projectileDirection * 2;
-                if (squaredMagnitude <= 240 && gCurrentPinballGame->ballRespawnState == 0 && gCurrentPinballGame->ballGrabTimer < 600)
+                if (squaredDistance <= 240 && gCurrentPinballGame->ballRespawnState == 0 && gCurrentPinballGame->ballGrabTimer < 600)
                 {
                     MPlayStart(&gMPlayInfo_SE1, &se_unk_11f);
                     gCurrentPinballGame->projectileFlightTimer = 10;
@@ -1116,7 +1116,7 @@ void UpdateGroudonFieldEntities(void)
                 varSL = (gCurrentPinballGame->projectileDirection * 2) - ((gCurrentPinballGame->projectileFlightTimer / 5) - 7);
                 if (gCurrentPinballGame->projectileFlightTimer == 9)
                 {
-                    if (squaredMagnitude <= 240)
+                    if (squaredDistance <= 240)
                     {
                         gCurrentPinballGame->projectilePosition.x = (gCurrentPinballGame->ball->positionQ0.x + 4) * 10;
                         gCurrentPinballGame->projectilePosition.y = (gCurrentPinballGame->ball->positionQ0.y + 14) * 10;
@@ -1646,8 +1646,8 @@ void UpdateGroudonFieldEntities(void)
             tempVector.y = gCurrentPinballGame->ball->positionQ0.y - 147;
             xx = tempVector.x * tempVector.x;
             yy = tempVector.y * tempVector.y;
-            squaredMagnitude = xx + yy;
-            if (gCurrentPinballGame->ballRespawnState == 0 && squaredMagnitude < gShockwaveSplashDistanceThresholds[gCurrentPinballGame->shockwaveAnimTimer])
+            squaredDistance = xx + yy;
+            if (gCurrentPinballGame->ballRespawnState == 0 && squaredDistance < gShockwaveSplashDistanceThresholds[gCurrentPinballGame->shockwaveAnimTimer])
             {
                 gCurrentPinballGame->trapAngleQ16 = ArcTan2(-tempVector.x, tempVector.y);
                 gCurrentPinballGame->ball->velocity.x = (Cos(gCurrentPinballGame->trapAngleQ16) * -400) / 20000;

@@ -62,7 +62,7 @@ extern const u16 gGravityDeltas_Light[4];
 #define UPDATE_BALL_POSITION(max_speed, angle)           \
 {                                                        \
     maxSpeed = (max_speed);                              \
-    if (squaredMagnitude > maxSpeed * maxSpeed)          \
+    if (squaredSpeed > maxSpeed * maxSpeed)              \
     {                                                    \
         velocity.x =  (maxSpeed * Cos((angle))) / 20000; \
         velocity.y = (-maxSpeed * Sin((angle))) / 20000; \
@@ -81,7 +81,7 @@ void MainBoardProcess_5B_11C98(void)
     struct Vector16 velocity;
     struct BallState *currentBall;
     int xx, yy;
-    int squaredMagnitude;
+    int squaredSpeed;
     int maxSpeed;
 
     currentBall = gCurrentPinballGame->ball;
@@ -108,7 +108,7 @@ void MainBoardProcess_5B_11C98(void)
             angle = ArcTan2(currentBall->velocity.x, -currentBall->velocity.y);
             xx = currentBall->velocity.x * currentBall->velocity.x;
             yy = currentBall->velocity.y * currentBall->velocity.y;
-            squaredMagnitude = xx + yy;
+            squaredSpeed = xx + yy;
 
             if (currentBall->positionQ0.y < 380)
             {
@@ -138,7 +138,7 @@ void MainBoardProcess_5B_11C98(void)
             angle = ArcTan2(currentBall->velocity.x, -currentBall->velocity.y);
             xx = currentBall->velocity.x * currentBall->velocity.x;
             yy = currentBall->velocity.y * currentBall->velocity.y;
-            squaredMagnitude = xx + yy;
+            squaredSpeed = xx + yy;
 
             if (currentBall->positionQ0.y < 380)
             {
@@ -167,7 +167,7 @@ void BonusBoardProcess_5B_11F88(void)
     struct Vector16 velocity;
     struct BallState *currentBall;
     int xx, yy;
-    int squaredMagnitude;
+    int squaredSpeed;
     int maxSpeed;
 
     currentBall = gCurrentPinballGame->ball;
@@ -192,7 +192,7 @@ void BonusBoardProcess_5B_11F88(void)
             angle = ArcTan2(currentBall->velocity.x, -currentBall->velocity.y);
             xx = currentBall->velocity.x * currentBall->velocity.x;
             yy = currentBall->velocity.y * currentBall->velocity.y;
-            squaredMagnitude = xx + yy;
+            squaredSpeed = xx + yy;
 
             if (gMain.selectedField < FIELD_BOSS_START)
             {
@@ -234,7 +234,7 @@ void BonusBoardProcess_5B_11F88(void)
             angle = ArcTan2(currentBall->velocity.x, -currentBall->velocity.y);
             xx = currentBall->velocity.x * currentBall->velocity.x;
             yy = currentBall->velocity.y * currentBall->velocity.y;
-            squaredMagnitude = xx + yy;
+            squaredSpeed = xx + yy;
 
             if (gMain.selectedField < FIELD_BOSS_START)
             {

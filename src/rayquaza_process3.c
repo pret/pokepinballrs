@@ -936,7 +936,7 @@ void UpdateRayquazaMinionsAndEffects(void)
     s16 var0;
     int x, y;
     int xx, yy;
-    int squaredMagnitude;
+    int squaredDistance;
     u16 *dst;
     const u16 *src;
     struct OamDataSimple *oamSimple;
@@ -1094,12 +1094,12 @@ void UpdateRayquazaMinionsAndEffects(void)
                 tempVector.y = gCurrentPinballGame->ball->positionQ0.y - b - gCurrentPinballGame->lightningTargetPosition.y;
                 xx = tempVector.x * tempVector.x;
                 yy = tempVector.y * tempVector.y;
-                squaredMagnitude = xx + yy;
+                squaredDistance = xx + yy;
 
                 PlayRumble(8);
                 if (gCurrentPinballGame->vortexEntityState[0] < RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL
                     && gCurrentPinballGame->vortexEntityState[1] < RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL
-                    && gCurrentPinballGame->ballRespawnState == 0 && squaredMagnitude < 200)
+                    && gCurrentPinballGame->ballRespawnState == 0 && squaredDistance < 200)
                 {
                     gMain.spriteGroups[SG_RAYQUAZA_LIGHTNING_BALL_GRAB_FX].active = TRUE;
                     gCurrentPinballGame->ballGrabTimer = 600;
@@ -1270,10 +1270,10 @@ void UpdateRayquazaMinionsAndEffects(void)
                 tempVector.y = gCurrentPinballGame->ball->positionQ0.y - (gCurrentPinballGame->vortexScreenPosition[i].y / 10) - 32;;
                 xx = tempVector.x * tempVector.x;
                 yy = tempVector.y * tempVector.y;
-                squaredMagnitude = xx + yy;
+                squaredDistance = xx + yy;
                 if (gCurrentPinballGame->ballGrabbed == 0 && gCurrentPinballGame->ballRespawnState == 0 &&
                     gCurrentPinballGame->bonusModeHitCount < gCurrentPinballGame->legendaryHitsRequired &&
-                    gCurrentPinballGame->bossHitFlashTimer == 0 && squaredMagnitude < 300)
+                    gCurrentPinballGame->bossHitFlashTimer == 0 && squaredDistance < 300)
                 {
                     gCurrentPinballGame->ballGrabTimer = 6;
                     gCurrentPinballGame->ballFrozenState = 1;

@@ -13,7 +13,7 @@ void UpdateRubyRampPrizeGate(void)
     struct OamDataSimple *oamSimple;
     struct SpriteGroup *group;
     int x, y;
-    int squaredMagnitude;
+    int squaredDistance;
     s16 index;
 
     index = 0;
@@ -116,8 +116,8 @@ void UpdateRubyRampPrizeGate(void)
     {
         x = gCurrentPinballGame->ball->positionQ0.x - 190;
         y = gCurrentPinballGame->ball->positionQ0.y - 285;
-        squaredMagnitude = (x * x) + (y * y);
-        if(squaredMagnitude >= 0 && squaredMagnitude <= 140)
+        squaredDistance = (x * x) + (y * y);
+        if(squaredDistance >= 0 && squaredDistance <= 140)
         {
             if (gCurrentPinballGame->rampPrizeVisibilityTimer <= 0)
             {
@@ -154,7 +154,7 @@ void DrawRubyNuzleafPlatformSprite(void)
     struct SpriteGroup *group;
     s16 index;
 
-    group = &gMain.spriteGroups[SG_66];
+    group = &gMain.spriteGroups[SG_RUBY_RAMP_PRIZE];
     if (group->active)
     {
         if (gCurrentPinballGame->rampPrizeType)

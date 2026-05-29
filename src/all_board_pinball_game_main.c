@@ -287,7 +287,7 @@ void InitPinballGameState(void)
             gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
             DmaCopy16(3, gDxModePikachuObjTiles, (void *)OBJ_VRAM0 + 0x600, 0x180);
             gCurrentPinballGame->outLanePikaPosition = 2;
-            gMain.fieldSpriteGroups[FIELD_SG_41]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
             gCurrentPinballGame->pichuEntranceTimer = 1;
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
             gCurrentPinballGame->ballUpgradeCounter = 60 * 60;

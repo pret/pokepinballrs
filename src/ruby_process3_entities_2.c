@@ -282,7 +282,7 @@ void RubyPond_EntityLogic(void)
     s16 frameDecidedNextPondState;
     struct Vector32 tempVec;
     struct Vector32 tempVec2;
-    int squaredMagnitude;
+    int squaredDistance;
 
     if (gCurrentPinballGame->shouldProcessWhiscash)
     {
@@ -688,13 +688,13 @@ void RubyPond_EntityLogic(void)
     case RUBY_POND_STATE_CHINCHOU_SINGLE_CLOCKWISE:
         tempVec.x = gChinchouWaypointPositions[gCurrentPinballGame->chinchouWaypointTarget].x * 10 - gCurrentPinballGame->rubyBumperLogicPosition[0].x;
         tempVec.y = gChinchouWaypointPositions[gCurrentPinballGame->chinchouWaypointTarget].y * 10 - gCurrentPinballGame->rubyBumperLogicPosition[0].y;
-        squaredMagnitude = (tempVec.x * tempVec.x) + (tempVec.y * tempVec.y);
+        squaredDistance = (tempVec.x * tempVec.x) + (tempVec.y * tempVec.y);
         angle2 = ArcTan2(tempVec.x, -tempVec.y);
         tempVec2.x = (Cos(angle2) * 7) / 20000;
         tempVec2.y = (Sin(angle2) * -7) / 20000;
         gCurrentPinballGame->rubyBumperLogicPosition[0].x += tempVec2.x;
         gCurrentPinballGame->rubyBumperLogicPosition[0].y += tempVec2.y;
-        if (squaredMagnitude < 2500)
+        if (squaredDistance < 2500)
             gCurrentPinballGame->chinchouWaypointTarget = Random() % 4;
 
         // moved off screen

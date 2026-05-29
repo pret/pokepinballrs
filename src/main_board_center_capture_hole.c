@@ -274,7 +274,7 @@ void GivePrize(void)
                 gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
                 DmaCopy16(3, gPikachuSaverTilesGfx, (void *)0x06010600, 0x180);
                 gCurrentPinballGame->outLanePikaPosition = 2;
-                gMain.fieldSpriteGroups[FIELD_SG_41]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
                 gCurrentPinballGame->pichuEntranceTimer = 1;
             }
         }

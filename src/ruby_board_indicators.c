@@ -383,7 +383,7 @@ void AnimateRubyBallPowerUpSequence(void)
         MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
 
         if (gCurrentPinballGame->ballShadowTimer == 60)
-            gMain.fieldSpriteGroups[FIELD_SG_43]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_BALL_UPGRADE_FX]->active = TRUE;
 
         gCurrentPinballGame->ballShadowTileIndex = gBallShadowTileIndices[30 - gCurrentPinballGame->ballShadowTimer / 2];
         gCurrentPinballGame->ballShadowTimer--;

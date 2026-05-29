@@ -484,7 +484,7 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
 void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
 {
     const u16 VECTORSCALEDOWN = 20000;
-    s32 vMagSquared;
+    s32 squaredSpeed;
     s16 x, y;
     s16 var0;
 
@@ -492,7 +492,7 @@ void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
 
     x = gCurrentPinballGame->ball->velocity.x;
     y = gCurrentPinballGame->ball->velocity.y;
-    vMagSquared = (x * x) + (y * y);
+    squaredSpeed = (x * x) + (y * y);
 
     if (gCurrentPinballGame->collisionSurfaceType == 2)
     {
@@ -509,7 +509,7 @@ void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
             arg0 = 0x15e4;
         }
 
-        if (var0 >= 0 && var0 <= 0x1200 && vMagSquared < 0x4000)
+        if (var0 >= 0 && var0 <= 0x1200 && squaredSpeed < 0x4000)
         {
             tempVec.x = 0;
             tempVec.y = 0;
@@ -580,11 +580,11 @@ void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
         if (gCurrentPinballGame->captureState == MON_CAPTURE_SPECIAL_STATE_MON_HIT_IN_CATCH_MODE)
         {
             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_INACTIVE;
-            vMagSquared  = 0x80;
+            squaredSpeed  = 0x80;
         }
         else
         {
-            vMagSquared  = 0x280;
+            squaredSpeed  = 0x280;
         }
 
         if (x2 < 0)
@@ -598,8 +598,8 @@ void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
 
         gCurrentPinballGame->ball->spinSpeed = 0;
         angle = ArcTan2(arg1->x, -arg1->y);
-        arg1->x = vMagSquared  * Cos(angle) / VECTORSCALEDOWN;
-        arg1->y = -vMagSquared  * Sin(angle) / VECTORSCALEDOWN;
+        arg1->x = squaredSpeed  * Cos(angle) / VECTORSCALEDOWN;
+        arg1->y = -squaredSpeed  * Sin(angle) / VECTORSCALEDOWN;
     }
 }
 
@@ -834,15 +834,15 @@ void ProcessBonusTrapPhysics(void)
 {
     struct Vector16 vec1;
     struct Vector32 vec2;
-    int squaredMagnitude;
+    int squaredDistance;
     u16 angle;
     u8 temp_adjust;
 
     vec1.x = gCurrentPinballGame->ball->positionQ1.x - 238;
     vec1.y = gCurrentPinballGame->ball->positionQ1.y - 558;
-    squaredMagnitude = (vec1.x * vec1.x) + (vec1.y * vec1.y);
+    squaredDistance = (vec1.x * vec1.x) + (vec1.y * vec1.y);
 
-    if (squaredMagnitude < 1764 && (gCurrentPinballGame->gravityStrengthIndex & 1) == 0)
+    if (squaredDistance < 1764 && (gCurrentPinballGame->gravityStrengthIndex & 1) == 0)
     {
         angle = ArcTan2(-vec1.x, vec1.y);
         temp_adjust = 30;
@@ -854,7 +854,7 @@ void ProcessBonusTrapPhysics(void)
 
     if (gCurrentPinballGame->collisionMapScrollY < 20)
     {
-        if (squaredMagnitude < 40)
+        if (squaredDistance < 40)
         {
             gCurrentPinballGame->collisionMapScrollY++;
             gCurrentPinballGame->ball->scale = 0x100;
@@ -862,7 +862,7 @@ void ProcessBonusTrapPhysics(void)
         else
         {
             gCurrentPinballGame->ball->scale = 0x100;
-            if (squaredMagnitude > 100)
+            if (squaredDistance > 100)
                 gCurrentPinballGame->collisionMapScrollY = 0;
         }
     }
