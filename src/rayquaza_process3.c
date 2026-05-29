@@ -565,8 +565,8 @@ void UpdateRayquazaEntityLogic(void)
             // Catch Rayquaza
             gCurrentPinballGame->bossEntityState = RAYQUAZA_ENTITY_STATE_CAPTURE;
             gCurrentPinballGame->bossFramesetIndex = 0;
-            gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS].active = TRUE;
             gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT].active = TRUE;
+            gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS].active = TRUE;
             gCurrentPinballGame->currentSpecies = SPECIES_RAYQUAZA;
             gCurrentPinballGame->bossAttackTimer = 0;
             gCurrentPinballGame->captureSequenceTimer = 0;
@@ -947,7 +947,7 @@ void UpdateRayquazaMinionsAndEffects(void)
     sp0 = 0;
 
     //screen, used for catch mon display.
-    group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS];
+    group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT];
     if (group->active)
     {
         if (gCurrentPinballGame->portraitDisplayState == PORTRAIT_DISPLAY_MODE_BANNER)
@@ -975,7 +975,7 @@ void UpdateRayquazaMinionsAndEffects(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT];
+        group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS];
         group->baseX = gCurrentPinballGame->rouletteBasePos.x - 8;
         group->baseY = gCurrentPinballGame->rouletteBasePos.y - 8;
         if (group->baseY >= 200)

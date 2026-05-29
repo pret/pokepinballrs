@@ -369,7 +369,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 0;
                 gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_EVOLUTION;
-                gCurrentPinballGame->bannerActive = 1;
+                gCurrentPinballGame->bannerActive = TRUE;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
                 gCurrentPinballGame->bannerDisplayDuration = 80;
                 gCurrentPinballGame->bannerSlidePosition = 0xF63C; //-2500
@@ -777,7 +777,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 void InitCenterTrapMode(void)
 {
     gCurrentPinballGame->modeAnimTimer = 0x96;
-    gMain.fieldSpriteGroups[13]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     gCurrentPinballGame->bonusTrapEnabled = 0;
     gCurrentPinballGame->scoreAddedInFrame = 10000;
     gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
@@ -858,7 +858,7 @@ void AnimateCenterTrapSequence(void)
 
 void TransitionToBonusField(void)
 {
-    gMain.fieldSpriteGroups[13]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     SaveGameStateSnapshot(0);
     gCurrentPinballGame->ball->velocity.x = 0;
     gCurrentPinballGame->ball->velocity.y = 0;

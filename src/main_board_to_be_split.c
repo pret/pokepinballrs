@@ -155,7 +155,7 @@ void UpdateCatchTrigger(void)
         break;
     case BONUS_HOLE_SUBSTATE_START_CLOSING:
         AnimateBonusTrapSprite();
-        gMain.fieldSpriteGroups[13]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
         gCurrentPinballGame->boardSubState++;
         break;
     case BONUS_HOLE_SUBSTATE_BOARD_STATE_CLEANUP:
@@ -359,7 +359,7 @@ void UpdateBonusStageSelect(void)
         break;
     case BOSS_HOLE_SUBSTATE_CANCEL_BONUS:
         AnimateBonusTrapSprite();
-        gMain.fieldSpriteGroups[13]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
         gCurrentPinballGame->boardSubState++;
         gCurrentPinballGame->stageTimer = 0;
         break;
@@ -376,7 +376,7 @@ void UpdateBonusStageSelect(void)
 void ShowBonusTrapSprite(void)
 {
     DmaCopy16(3, gMainStageBonusTrap_Gfx[0], (void *)0x060113C0, 0x300);
-    gMain.fieldSpriteGroups[13]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = TRUE;
     gCurrentPinballGame->bonusTrapEnabled = 1;
 }
 
@@ -386,7 +386,7 @@ void AnimateBonusTrapSprite(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = gMain.fieldSpriteGroups[13];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX];
     gCurrentPinballGame->bonusTrapAnimFrame = (gCurrentPinballGame->globalAnimFrameCounter % 35) / 7;
     if (group->active)
     {
@@ -425,7 +425,7 @@ void ProcessChargeIndicator(void)
     s16 chargeLevelIx;
     s16 sp0[3];
 
-    group = gMain.fieldSpriteGroups[17];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CHARGE_INDICATOR_DEVICE];
     memset(sp0, 0, sizeof(sp0));
     if (gCurrentPinballGame->chargeFillValue != gCurrentPinballGame->prevChargeFillValue)
     {
@@ -741,7 +741,7 @@ void AnimateCoinReward(void)
     int var1;
     s16 var2;
 
-    group = gMain.fieldSpriteGroups[39];
+    group = gMain.fieldSpriteGroups[FIELD_SG_39];
     if (gCurrentPinballGame->coinRewardTimer < ((gCurrentPinballGame->coinRewardAmount - 1) * 9) + 19)
     {
         if (gCurrentPinballGame->coinRewardTimer == 0)
@@ -834,7 +834,7 @@ void AnimateCoinReward(void)
         gCurrentPinballGame->coinRewardTimer++;
         if (gCurrentPinballGame->coinRewardTimer == ((gCurrentPinballGame->coinRewardAmount - 1) * 9) + 19)
         {
-            gMain.fieldSpriteGroups[39]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_39]->active = FALSE;
             gCurrentPinballGame->coinRewardAmount = 0;
             if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE)
                 gCurrentPinballGame->outcomeFrameCounter = 170;
@@ -1467,7 +1467,7 @@ void UpdateHatchCave(void)
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 2;
                 gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
-                gCurrentPinballGame->bannerActive = 1;
+                gCurrentPinballGame->bannerActive = TRUE;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
                 gCurrentPinballGame->eggCaveLiftTimer = 48;
             }
@@ -1633,13 +1633,13 @@ void UpdateEggMode(void)
     int xx, yy;
     int squaredMagnitude;
 
-    group = gMain.fieldSpriteGroups[41];
+    group = gMain.fieldSpriteGroups[FIELD_SG_41];
     priority = 1;
     switch (gCurrentPinballGame->boardSubState)
     {
     case EGG_HATCH_SUBSTATE_INIT:
         gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
-        gMain.fieldSpriteGroups[41]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_41]->active = TRUE;
         gCurrentPinballGame->boardSubState++;
         break;
     case EGG_HATCH_SUBSTATE_SETUP_WANDERING:
@@ -1978,7 +1978,7 @@ void UpdateEggMode(void)
 
             DmaCopy16(3, gCatchAnimTileBuffer, (void *)0x060112A0, 0x120);
             if (gCurrentPinballGame->captureSequenceTimer == 23)
-                gMain.fieldSpriteGroups[41]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_41]->active = FALSE;
         }
         break;
     case EGG_HATCH_SUBSTATE_CLEANUP_MON_SPRITES:
@@ -1993,7 +1993,7 @@ void UpdateEggMode(void)
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
         }
-        gMain.fieldSpriteGroups[41]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_41]->active = FALSE;
         gCurrentPinballGame->boardSubState++;
         break;
     case EGG_HATCH_SUBSTATE_BOARD_STATE_CLEANUP:

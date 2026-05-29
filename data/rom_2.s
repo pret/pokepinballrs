@@ -5489,7 +5489,7 @@ gUnknown_086B163A:: @ 0x086B163A
     packed_sprite_oam x=0x10, y=0x10, mosaic=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x44, priority=0x3, paletteNum=0x3
 .2byte 0
 
-gUnknown_086B165C:: @ 0x086B165C
+gChargeIndicatorDeviceSpriteSet:: @ 0x086B165C
 .2byte 3
     packed_sprite_oam x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x45, priority=0x0, paletteNum=0x9
 .2byte 0
@@ -5498,7 +5498,7 @@ gUnknown_086B165C:: @ 0x086B165C
     packed_sprite_oam x=-0x8, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x55, priority=0x0, paletteNum=0x9
 .2byte 0
 
-gLegendaryCatchPortraitSpriteSet:: @ 0x086B1676
+gPortraitBordersSpriteSet:: @ 0x086B1676
 .2byte 6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x5d, priority=0x3, paletteNum=0x1
 .2byte 0
@@ -5513,7 +5513,7 @@ gLegendaryCatchPortraitSpriteSet:: @ 0x086B1676
     packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,  tileNum=0x61, priority=0x3, paletteNum=0x1
 .2byte 0
 
-gLegendaryCatchPortraitBordersSpriteSet:: @ 0x086B16A8
+gPortraitSpriteSet:: @ 0x086B16A8
 .2byte 6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x65, priority=0x3, paletteNum=0x0
 .2byte 0
@@ -5528,7 +5528,7 @@ gLegendaryCatchPortraitBordersSpriteSet:: @ 0x086B16A8
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x79, priority=0x3, paletteNum=0x0
 .2byte 0
 
-gUnknown_086B16DA:: @ 0x086B16DA
+gPortrait1SpriteSet:: @ 0x086B16DA
 .2byte 6
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x7d, priority=0x3, paletteNum=0x0
 .2byte 0
@@ -5543,7 +5543,7 @@ gUnknown_086B16DA:: @ 0x086B16DA
     packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x91, priority=0x3, paletteNum=0x0
 .2byte 0
 
-gUnknown_086B170C:: @ 0x086B170C
+gPortraitTrimSpriteSet:: @ 0x086B170C
 .2byte 6
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x7d, priority=0x3, paletteNum=0x0
 .2byte 0
@@ -5580,7 +5580,7 @@ gUnknown_086B1760:: @ 0x086B1760
     packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9d, priority=0x1, paletteNum=0xd
 .2byte 0
 
-gUnknown_086B1782:: @ 0x086B1782
+gCenterHoleGravityFxSpriteSet:: @ 0x086B1782
 .2byte 4
     packed_sprite_oam x=-0x8, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1,  tileNum=0x9e, priority=0x3, paletteNum=0x1
 .2byte 0
@@ -6074,7 +6074,7 @@ gUnknown_086B1CDA:: @ 0x086B1CDA
     packed_sprite_oam x=0x7, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1,  tileNum=0x379, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B1D0C:: @ 0x086B1D0C
+gMainTileBreakSpriteSet:: @ 0x086B1D0C
 .2byte 6
     packed_sprite_oam x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x324, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6170,7 +6170,7 @@ gMonCatchBallTrailSpriteSet:: @ 0x086B1E46
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gMainTravelBannerSpriteSet:: @ 0x086B1E50
+gMainModeStartBannerSpriteSet:: @ 0x086B1E50
 .2byte 15
     packed_sprite_oam x=-0x7F, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6446,7 +6446,7 @@ gUnknown_086B21A2:: @ 0x086B21A2
     packed_sprite_oam x=0x70, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2dc, priority=0x1, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B21E4:: @ 0x086B21E4
+gEvolutionBannerTextLargeBottomSpriteSet:: @ 0x086B21E4
 .2byte 4
     packed_sprite_oam x=0x18, y=0x21, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2c0, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6457,7 +6457,7 @@ gUnknown_086B21E4:: @ 0x086B21E4
     packed_sprite_oam x=-0x40, y=0x21, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2e0, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B2206:: @ 0x086B2206
+gEvolutionBannerTextLargeTopSpriteSet:: @ 0x086B2206
 .2byte 4
     packed_sprite_oam x=0x18, y=-0x28, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2c0, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6468,7 +6468,7 @@ gUnknown_086B2206:: @ 0x086B2206
     packed_sprite_oam x=-0x40, y=-0x28, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2e0, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B2228:: @ 0x086B2228
+gEvolutionBannerTextMediumLowerSpriteSet:: @ 0x086B2228
 .2byte 4
     packed_sprite_oam x=-0x80, y=0x16, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6479,7 +6479,7 @@ gUnknown_086B2228:: @ 0x086B2228
     packed_sprite_oam x=0x6A, y=0x16, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B224A:: @ 0x086B224A
+gEvolutionBannerTextMediumUpperSpriteSet:: @ 0x086B224A
 .2byte 4
     packed_sprite_oam x=-0x32, y=-0xD, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6490,7 +6490,7 @@ gUnknown_086B224A:: @ 0x086B224A
     packed_sprite_oam x=0x1C, y=-0xE, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B226C:: @ 0x086B226C
+gEvolutionBannerTextSmallMiddleSpriteSet:: @ 0x086B226C
 .2byte 8
     packed_sprite_oam x=-0x40, y=0x4, spriteSize=SPRITE_SIZE_32x8, tileNum=0x320, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6521,7 +6521,7 @@ gUnknown_086B22AE:: @ 0x086B22AE
     packed_sprite_oam x=0x38, y=-0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,  tileNum=0x346, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B22D0:: @ 0x086B22D0
+gEvolutionBannerLightningSpriteSet:: @ 0x086B22D0
 .2byte 4
     packed_sprite_oam x=-0x38, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x38e, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6532,7 +6532,7 @@ gUnknown_086B22D0:: @ 0x086B22D0
     packed_sprite_oam x=0x20, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x3a6, priority=0x0, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B22F2:: @ 0x086B22F2
+gTravelPainterSpriteSet:: @ 0x086B22F2
 .2byte 6
     packed_sprite_oam x=0x0, y=-0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2c0, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6603,24 +6603,24 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gMainShopConfirmationPanelSpriteSet
 .4byte gMainShopPortraitOverlaySpriteSet @ 20
 .4byte gMainTravelBanner_SignpostSpriteSet
-.4byte gMainTravelBannerSpriteSet
-.4byte gUnknown_086B1D0C
-.4byte gUnknown_086B1782
+.4byte gMainModeStartBannerSpriteSet
+.4byte gMainTileBreakSpriteSet
+.4byte gCenterHoleGravityFxSpriteSet
 .4byte gUnknown_086B22AE
-.4byte gUnknown_086B22D0
-.4byte gUnknown_086B22F2
-.4byte gUnknown_086B165C
+.4byte gEvolutionBannerLightningSpriteSet
+.4byte gTravelPainterSpriteSet
+.4byte gChargeIndicatorDeviceSpriteSet
 .4byte gUnknown_086B1CDA
-.4byte gLegendaryCatchPortraitSpriteSet @ 30
-.4byte gUnknown_086B170C
-.4byte gUnknown_086B170C
-.4byte gLegendaryCatchPortraitBordersSpriteSet
-.4byte gUnknown_086B16DA
-.4byte gUnknown_086B21E4
-.4byte gUnknown_086B2206
-.4byte gUnknown_086B2228
-.4byte gUnknown_086B224A
-.4byte gUnknown_086B226C
+.4byte gPortraitBordersSpriteSet @ 30
+.4byte gPortraitTrimSpriteSet
+.4byte gPortraitTrimSpriteSet
+.4byte gPortraitSpriteSet
+.4byte gPortrait1SpriteSet
+.4byte gEvolutionBannerTextLargeBottomSpriteSet
+.4byte gEvolutionBannerTextLargeTopSpriteSet
+.4byte gEvolutionBannerTextMediumLowerSpriteSet
+.4byte gEvolutionBannerTextMediumUpperSpriteSet
+.4byte gEvolutionBannerTextSmallMiddleSpriteSet
 .4byte gMainBoardBallSpriteSet @ 40
 .4byte gMonCatchBallTrailSpriteSet
 .4byte gMonCatchBallTrailSpriteSet
@@ -6686,26 +6686,26 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gMainShopConfirmationPanelSpriteSet
 .4byte gMainShopPortraitOverlaySpriteSet
 .4byte gMainTravelBanner_SignpostSpriteSet
-.4byte gMainTravelBannerSpriteSet
-.4byte gUnknown_086B1D0C @ 20
-.4byte gUnknown_086B1782
+.4byte gMainModeStartBannerSpriteSet
+.4byte gMainTileBreakSpriteSet @ 20
+.4byte gCenterHoleGravityFxSpriteSet
 .4byte gUnknown_086B22AE
-.4byte gUnknown_086B22D0
-.4byte gUnknown_086B22F2
-.4byte gUnknown_086B165C
+.4byte gEvolutionBannerLightningSpriteSet
+.4byte gTravelPainterSpriteSet
+.4byte gChargeIndicatorDeviceSpriteSet
 .4byte gUnknown_086B1AE6
 .4byte gUnknown_086B2324
 .4byte gUnknown_086B1CDA
-.4byte gLegendaryCatchPortraitSpriteSet
-.4byte gUnknown_086B170C @ 30
-.4byte gUnknown_086B170C
-.4byte gLegendaryCatchPortraitBordersSpriteSet
-.4byte gUnknown_086B16DA
-.4byte gUnknown_086B21E4
-.4byte gUnknown_086B2206
-.4byte gUnknown_086B2228
-.4byte gUnknown_086B224A
-.4byte gUnknown_086B226C
+.4byte gPortraitBordersSpriteSet
+.4byte gPortraitTrimSpriteSet @ 30
+.4byte gPortraitTrimSpriteSet
+.4byte gPortraitSpriteSet
+.4byte gPortrait1SpriteSet
+.4byte gEvolutionBannerTextLargeBottomSpriteSet
+.4byte gEvolutionBannerTextLargeTopSpriteSet
+.4byte gEvolutionBannerTextMediumLowerSpriteSet
+.4byte gEvolutionBannerTextMediumUpperSpriteSet
+.4byte gEvolutionBannerTextSmallMiddleSpriteSet
 .4byte gMonCatchBallTrailSpriteSet
 .4byte gMonCatchBallTrailSpriteSet @40
 .4byte gMainBoardBallSpriteSet
@@ -13610,8 +13610,8 @@ gKyogreBoardSpriteSets:: @ 0x086BB4A4
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
     .4byte gLegendaryCatchNameBannerSpriteSet
     .4byte gLegendaryCatchWasCaughtTextSpriteSet
-    .4byte gLegendaryCatchPortraitSpriteSet
-    .4byte gLegendaryCatchPortraitBordersSpriteSet
+    .4byte gPortraitBordersSpriteSet
+    .4byte gPortraitSpriteSet
     .4byte gKyogreCrystalTopRightSpriteSet
     .4byte gKyogreCrystalTopLeftSpriteSet
     .4byte gKyogreCrystalBottomRightSpriteSet
@@ -13639,8 +13639,8 @@ gGroudonBoardSpriteSets:: @ 0x086BB510
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
     .4byte gLegendaryCatchNameBannerSpriteSet
     .4byte gLegendaryCatchWasCaughtTextSpriteSet
-    .4byte gLegendaryCatchPortraitSpriteSet
-    .4byte gLegendaryCatchPortraitBordersSpriteSet
+    .4byte gPortraitBordersSpriteSet
+    .4byte gPortraitSpriteSet
     .4byte gGroudonCrystalTopRightSpriteSet
     .4byte gGroudonCrystalBottomRightSpriteSet
     .4byte gGroudonCrystalTopLeftSpriteSet
@@ -13673,8 +13673,8 @@ gRayquazaBoardSpriteSets:: @ 0x086BB590
     .4byte gBonusBoardScoreBannerGraphicSpriteSet
     .4byte gLegendaryCatchNameBannerSpriteSet
     .4byte gLegendaryCatchWasCaughtTextSpriteSet
-    .4byte gLegendaryCatchPortraitSpriteSet
-    .4byte gLegendaryCatchPortraitBordersSpriteSet
+    .4byte gPortraitBordersSpriteSet
+    .4byte gPortraitSpriteSet
     .4byte gRaquazaIntroCloud0SpriteSet
     .4byte gRaquazaIntroCloud1SpriteSet
     .4byte gRaquazaIntroCloud2SpriteSet

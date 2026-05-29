@@ -378,7 +378,7 @@ struct PinballGame
     /*0x298*/ u16 cutsceneTilemapColumn;
     /*0x29A*/ u16 catchEmModeStartCount;
     /*0x29C*/ u16 bgmFadeTimer;
-    /*0x29E*/ u8 boardCollisionConfigChanged;
+    /*0x29E*/ u8 boardCollisionConfigChanged; //swapped after launch, preventing ball falling into launch ramp.
     /*0x29F*/ s8 rampPrizeType;
     /*0x2A0*/ u16 rampPrizeRespawnTimer;
     /*0x2A2*/ s8 whiscashState;
@@ -755,12 +755,12 @@ struct PinballGame
     /*0x6BE*/ s8 seedotExitSequenceActive;
     /*0x6BF*/ u8 filler6BF[0x1];
     /*0x6C0*/ u16 seedotExitSequenceTimer;
-    /*0x6C2*/ u16 seedotModeStartDelay;
+    /*0x6C2*/ u16 travelModeStartDelay;
     /*0x6C4*/ s8 portraitDisplayState;
     /*0x6C5*/ s8 catchTileRevealState;
     /*0x6C6*/ s8 catchTilesBoardAcknowledged;
-    /*0x6C7*/ s8 hatchSequentialTilesRevealed;
-    /*0x6C8*/ s8 hatchGridCellIndex;
+    /*0x6C7*/ s8 catchSequentialTilesRevealed;
+    /*0x6C8*/ s8 catchGridCellIndex;
     /*0x6C9*/ s8 catchTilesRemaining;
     /*0x6CA*/ u16 catchTileRevealFrameAnimTimer;
     /*0x6CC*/ s8 catchRevealFrameId;

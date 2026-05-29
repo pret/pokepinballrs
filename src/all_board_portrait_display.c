@@ -216,7 +216,7 @@ void UpdatePortraitSpritePositions(void)
         var2 = 300 - gCurrentPinballGame->cameraYOffset;
     }
 
-    group = gMain.fieldSpriteGroups[22];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_PORTRAIT];
     group->baseX = baseX;
     group->baseY = var1;
     gCurrentPinballGame->rouletteBasePos.x = baseX;
@@ -235,7 +235,7 @@ void UpdatePortraitSpritePositions(void)
 
     if (gCurrentPinballGame->portraitDisplayState == PORTRAIT_DISPLAY_MODE_ROULETTE)
     {
-        group = gMain.fieldSpriteGroups[23];
+        group = gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1];
         group->baseX = baseX;
         group->baseY = var1 - 0x20;
         if (group->baseY >= 180)
@@ -249,7 +249,7 @@ void UpdatePortraitSpritePositions(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = gMain.fieldSpriteGroups[20];
+        group = gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM];
         group->baseX = baseX;
         group->baseY = 267 - gCurrentPinballGame->cameraYOffset;
         if (group->baseY >= 200)
@@ -262,7 +262,7 @@ void UpdatePortraitSpritePositions(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = gMain.fieldSpriteGroups[21];
+        group = gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM];
         group->baseX = baseX;
         group->baseY = 333 - gCurrentPinballGame->cameraYOffset;
         if (group->baseY >= 200)
@@ -276,7 +276,7 @@ void UpdatePortraitSpritePositions(void)
         }
     }
 
-    group = gMain.fieldSpriteGroups[19];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_PORTRAIT_BORDERS];
     group->baseX = baseX - 8;
     group->baseY = var2 - 8;
     if (group->baseY >= 200)
@@ -299,7 +299,7 @@ void ClampPortraitSpritesToOffscreen(void)
 
     if (gCurrentPinballGame->portraitDisplayState == PORTRAIT_DISPLAY_MODE_ROULETTE)
     {
-        group = gMain.fieldSpriteGroups[22];
+        group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_PORTRAIT];
         group->baseY = 180;
         for (i = 0; i < 6; i++)
         {
@@ -307,7 +307,7 @@ void ClampPortraitSpritesToOffscreen(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = gMain.fieldSpriteGroups[23];
+        group = gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1];
         group->baseY = 300 - gCurrentPinballGame->cameraYOffset;
         if (group->baseY >= 180)
             group->baseY = 180;
@@ -318,7 +318,7 @@ void ClampPortraitSpritesToOffscreen(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = gMain.fieldSpriteGroups[20];
+        group = gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM];
         group->baseY = 180;
         for (i = 0; i < 6; i++)
         {
@@ -326,7 +326,7 @@ void ClampPortraitSpritesToOffscreen(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = gMain.fieldSpriteGroups[21];
+        group = gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM];
         group->baseY = 180;
         for (i = 0; i < 6; i++)
         {

@@ -54,11 +54,11 @@ void UpdateBoardIntroMode(void)
         gCurrentPinballGame->rouletteSubOffset = 0;
         gCurrentPinballGame->cameraScrollTarget = 0;
         gCurrentPinballGame->cameraScrollEnabled = 1;
-        gMain.fieldSpriteGroups[20]->active = TRUE;
-        gMain.fieldSpriteGroups[21]->active = TRUE;
-        gMain.fieldSpriteGroups[23]->active = TRUE;
-        gMain.fieldSpriteGroups[22]->active = TRUE;
-        gMain.fieldSpriteGroups[19]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_PORTRAIT]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_PORTRAIT_BORDERS]->active = TRUE;
         gCurrentPinballGame->rouletteFrameIndex = 30;
         gCurrentPinballGame->rouletteRotationPeriod = 30;
         gCurrentPinballGame->rouletteSpinSpeed = 0;
@@ -181,10 +181,10 @@ void UpdateBoardIntroMode(void)
             {
                 gCurrentPinballGame->stageTimer = 0;
                 gCurrentPinballGame->boardSubState++;
-                gMain.fieldSpriteGroups[23]->active = FALSE;
-                gMain.fieldSpriteGroups[20]->active = FALSE;
-                gMain.fieldSpriteGroups[21]->active = FALSE;
-                gMain.fieldSpriteGroups[34]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_34]->active = TRUE;
                 m4aSongNumStart(SE_AREA_ROULETTE_SELECTED);
             }
         }
@@ -235,7 +235,7 @@ void UpdateBoardIntroMode(void)
             else
                 var0 = ((gCurrentPinballGame->stageTimer - 8) / 3) + 2;
 
-            group = gMain.fieldSpriteGroups[34];
+            group = gMain.fieldSpriteGroups[FIELD_SG_34];
             if (group->active)
             {
                 group->baseX = 96u - gCurrentPinballGame->cameraXOffset;
@@ -257,7 +257,7 @@ void UpdateBoardIntroMode(void)
             }
 
             if (gCurrentPinballGame->stageTimer == 28) {
-                gMain.fieldSpriteGroups[34]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_34]->active = FALSE;
                 gCurrentPinballGame->activePortraitType = 0;
             }
         }

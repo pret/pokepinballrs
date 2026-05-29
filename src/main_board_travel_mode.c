@@ -21,7 +21,7 @@ void CleanupTravelModeState(void)
     gCurrentPinballGame->seedotExitSequenceTimer = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
-    gMain.fieldSpriteGroups[13]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     gCurrentPinballGame->trapAnimState = 0;
     gCurrentPinballGame->bonusTrapEnabled = 0;
     gCurrentPinballGame->prevTravelArrowTiles[0] = gCurrentPinballGame->travelArrowTiles[0] = 0;
@@ -205,7 +205,7 @@ void UpdateTravelMode(void)
         break;
     case TRAVEL_SUBSTATE_BOARD_STATE_CLEANUP:
         AnimateBonusTrapSprite();
-        gMain.fieldSpriteGroups[13]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
         CleanupTravelModeState();
         gCurrentPinballGame->boardSubState++;
         break;

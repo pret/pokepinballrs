@@ -494,8 +494,8 @@ void UpdateKyogreEntityLogic(void)
             // catch kyogre
             gCurrentPinballGame->bossEntityState = KYOGRE_ENTITY_STATE_CAPTURE;
             gCurrentPinballGame->bossFramesetIndex = 0;
-            gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS].active = TRUE;
             gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT].active = TRUE;
+            gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS].active = TRUE;
             gCurrentPinballGame->currentSpecies = SPECIES_KYOGRE;
             gCurrentPinballGame->bossAttackTimer = 0;
             gCurrentPinballGame->captureSequenceTimer = 0;
@@ -813,7 +813,7 @@ void UpdateKyogreFieldEntities(void)
     index = 0;
 
     //Portrait display (during catch)
-    group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS];
+    group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT];
     if (group->active)
     {
         if (gCurrentPinballGame->portraitDisplayState == PORTRAIT_DISPLAY_MODE_BANNER)
@@ -841,7 +841,7 @@ void UpdateKyogreFieldEntities(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT];
+        group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT_BORDERS];
         group->baseX = gCurrentPinballGame->rouletteBasePos.x - 8;
         group->baseY = gCurrentPinballGame->rouletteBasePos.y - 8;
         if (group->baseY >= 200)

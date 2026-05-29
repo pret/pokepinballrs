@@ -209,7 +209,7 @@ void UpdateKickbackLogic(void)
 
             if (gCurrentPinballGame->kickbackLaunchTimer == 100)
             {
-                gMain.fieldSpriteGroups[38]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_38]->active = TRUE;
 
                 if (gCurrentPinballGame->outLanePikaPosition == 2 && gCurrentPinballGame->outLaneSide == 2)
                 {
@@ -240,7 +240,7 @@ void UpdateKickbackLogic(void)
                 {
                     gCurrentPinballGame->kickbackFrameId = 25;
                     gCurrentPinballGame->kickbackFiring = 0;
-                    gMain.fieldSpriteGroups[38]->active = FALSE;
+                    gMain.fieldSpriteGroups[FIELD_SG_38]->active = FALSE;
                     gCurrentPinballGame->activePortraitType = 0;
 
                     outlaneChuteIx = gCurrentPinballGame->outLaneSide - 1;
@@ -264,7 +264,7 @@ void UpdateKickbackLogic(void)
             oamIx = gCatchOverlayAnimData[gCurrentPinballGame->kickbackFrameId][0];
             outlaneChuteIx = gCurrentPinballGame->outLaneSide - 1;
 
-            spriteGroup = gMain.fieldSpriteGroups[38];
+            spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_38];
             spriteGroup->baseX = (outlaneChuteIx * 177) - (gCurrentPinballGame->cameraXOffset - 16);
             if (gCurrentPinballGame->kickbackFiring)
             {
@@ -290,13 +290,13 @@ void UpdateKickbackLogic(void)
             }
         }
     }
-    spriteGroup = gMain.fieldSpriteGroups[29];
+    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_29];
 
     if (spriteGroup->active)
     {
         for (outlaneChuteIx = 0; outlaneChuteIx <= 1; outlaneChuteIx++)
         {
-            spriteGroup = gMain.fieldSpriteGroups[29 + outlaneChuteIx];
+            spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_29 + outlaneChuteIx];
             spriteGroup->baseX = (outlaneChuteIx * 177) - (gCurrentPinballGame->cameraXOffset - 16);
             if (gCurrentPinballGame->kickbackOccupied[outlaneChuteIx])
             {
@@ -334,7 +334,7 @@ void PichuArrivalSequence(void)
     int squaredMagnitude;
     s16 index;
 
-    group = gMain.fieldSpriteGroups[41];
+    group = gMain.fieldSpriteGroups[FIELD_SG_41];
     if (gCurrentPinballGame->pichuEntranceTimer == 0)
         return;
 
@@ -404,14 +404,14 @@ void PichuArrivalSequence(void)
                 {
                     DmaCopy16(3, gPikachuSaverTilesGfx, (void *)0x06010600, 0x180);
                     gCurrentPinballGame->outLanePikaPosition = 2;
-                    gMain.fieldSpriteGroups[41]->active = FALSE;
+                    gMain.fieldSpriteGroups[FIELD_SG_41]->active = FALSE;
                     gCurrentPinballGame->pichuEntranceTimer = 1;
                     m4aSongNumStart(SE_PICHU_IN_POSITION_CHIRP);
                 }
             }
             else if (gCurrentPinballGame->creatureWaypointIndex == 7)
             {
-                gMain.fieldSpriteGroups[41]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_41]->active = FALSE;
                 gCurrentPinballGame->pichuEntranceTimer = 1;
             }
         }

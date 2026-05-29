@@ -126,7 +126,7 @@ void DrawPikachuSpinner(void)
     s16 index;
 
     index = gCurrentPinballGame->pikachuSpinFrame;
-    group = gMain.fieldSpriteGroups[31];
+    group = gMain.fieldSpriteGroups[FIELD_SG_31];
     group->baseX = 206 - gCurrentPinballGame->cameraXOffset;
     if (gMain.selectedField == FIELD_RUBY)
         group->baseY = 174 - gCurrentPinballGame->cameraYOffset;

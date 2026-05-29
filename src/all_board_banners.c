@@ -11,7 +11,7 @@ void ProcessBannerCameraTransition(void)
     if ((gMain.modeChangeFlags & MODE_CHANGE_BANNER) != 0)
     {
         gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
-        if (gCurrentPinballGame->bannerActive != 0)
+        if (gCurrentPinballGame->bannerActive)
         {
             gCurrentPinballGame->ballFrozenState = 2;
             gCurrentPinballGame->boardEntityActive = 1;
@@ -27,7 +27,7 @@ void ProcessBannerCameraTransition(void)
                 }
                 else
                 {
-                    gCurrentPinballGame->bannerActive = 0;
+                    gCurrentPinballGame->bannerActive = FALSE;
                 }
             }
             else
@@ -46,7 +46,7 @@ void ProcessBannerCameraTransition(void)
                 }
                 else
                 {
-                    gCurrentPinballGame->bannerActive = 0;
+                    gCurrentPinballGame->bannerActive = FALSE;
                 }
             }
 

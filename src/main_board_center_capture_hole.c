@@ -28,9 +28,9 @@ void InitRouletteWheel(void)
 {
     s16 i;
 
-    gMain.fieldSpriteGroups[23]->active = TRUE;
-    gMain.fieldSpriteGroups[20]->active = TRUE;
-    gMain.fieldSpriteGroups[21]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM]->active = TRUE;
     gMain.blendControl = 0x1C10;
     gMain.blendAlpha = BLDALPHA_BLEND(0, 16);
     gCurrentPinballGame->rouletteStopRequested = 0;
@@ -191,9 +191,9 @@ void RunRouletteWheel(void)
         if (gCurrentPinballGame->rouletteFrameIndex == 0)
         {
             gCurrentPinballGame->modeAnimTimer = 140;
-            gMain.fieldSpriteGroups[23]->active = FALSE;
-            gMain.fieldSpriteGroups[20]->active = FALSE;
-            gMain.fieldSpriteGroups[21]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM]->active = FALSE;
             gCurrentPinballGame->rouletteSubOffset = 0;
             gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
             m4aMPlayStop(&gMPlayInfo_BGM);
@@ -274,7 +274,7 @@ void GivePrize(void)
                 gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
                 DmaCopy16(3, gPikachuSaverTilesGfx, (void *)0x06010600, 0x180);
                 gCurrentPinballGame->outLanePikaPosition = 2;
-                gMain.fieldSpriteGroups[41]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_41]->active = FALSE;
                 gCurrentPinballGame->pichuEntranceTimer = 1;
             }
         }
@@ -289,7 +289,7 @@ void GivePrize(void)
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 2;
                 gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
-                gCurrentPinballGame->bannerActive = 1;
+                gCurrentPinballGame->bannerActive = TRUE;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
                 gCurrentPinballGame->pichuWalkMode = 1;
                 gCurrentPinballGame->pichuEntranceTimer = 800;
@@ -408,7 +408,7 @@ void GivePrize(void)
         if (gCurrentPinballGame->outcomeFrameCounter == 130)
         {
             gCurrentPinballGame->coinRewardLevel = 1;
-            gCurrentPinballGame->coinRewardAmount = (gCurrentPinballGame->prizeId - 17) * 20 + 10;
+            gCurrentPinballGame->coinRewardAmount = (gCurrentPinballGame->prizeId - PRIZE_10_COINS) * 20 + 10;
             gCurrentPinballGame->coinRewardTimer = 0;
         }
 

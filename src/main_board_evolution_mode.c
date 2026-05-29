@@ -29,7 +29,7 @@ void CleanupEvolutionModeState(void)
             gCurrentPinballGame->catchLights[i] = 0;
     }
 
-    gMain.fieldSpriteGroups[13]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     gCurrentPinballGame->trapAnimState = 0;
     gCurrentPinballGame->bonusTrapEnabled = 0;
     ResetEventState();
@@ -155,7 +155,7 @@ void UpdateEvolutionMode(void)
         gCurrentPinballGame->evoItemPosX = gEvoItemPositions[gMain.selectedField][gCurrentPinballGame->evoItemSlotIndex].x;
         gCurrentPinballGame->evoItemPosY = gEvoItemPositions[gMain.selectedField][gCurrentPinballGame->evoItemSlotIndex].y;
         gCurrentPinballGame->evoItemAppearTimer = 80;
-        gMain.fieldSpriteGroups[40]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_40]->active = TRUE;
         gCurrentPinballGame->boardSubState++;
         break;
     case EVOLUTION_SUBSTATE_SPAWN_EVO_ITEM_AND_CHECK_FOR_COLLECTION:
@@ -324,17 +324,17 @@ void UpdateEvolutionMode(void)
         }
         break;
     case EVOLUTION_SUBSTATE_END_EVO_PHASE:
-        group = gMain.fieldSpriteGroups[32];
+        group = gMain.fieldSpriteGroups[FIELD_SG_32];
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset - 56;
 
-        gMain.fieldSpriteGroups[32]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_32]->active = FALSE;
         UpdateEvolutionItemAnimation();
-        gMain.fieldSpriteGroups[40]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_40]->active = FALSE;
         gCurrentPinballGame->activePortraitType = 0;
         AnimateBonusTrapSprite();
-        gMain.fieldSpriteGroups[13]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
         gCurrentPinballGame->shopTransitionActive = 1;
         gCurrentPinballGame->shopAnimTimer = 0;
         gCurrentPinballGame->evolutionShopActive = 0;
@@ -377,10 +377,10 @@ void UpdateEvolutionItemAnimation(void)
     s16 index;
 
     index = (gMain.systemFrameCount % 75) / 3;
-    group = gMain.fieldSpriteGroups[32];
+    group = gMain.fieldSpriteGroups[FIELD_SG_32];
     if (gCurrentPinballGame->evoItemAppearTimer)
     {
-        group = gMain.fieldSpriteGroups[40];
+        group = gMain.fieldSpriteGroups[FIELD_SG_40];
         if (gCurrentPinballGame->evoItemAppearTimer == 80)
         {
             gCurrentPinballGame->activePortraitType = 15;
@@ -405,8 +405,8 @@ void UpdateEvolutionItemAnimation(void)
             {
                 gCurrentPinballGame->evoItemAnimFrame = 28;
                 gCurrentPinballGame->evoItemAppearTimer = 1;
-                gMain.fieldSpriteGroups[40]->active = FALSE;
-                gMain.fieldSpriteGroups[32]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_40]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_32]->active = TRUE;
                 MPlayStart(&gMPlayInfo_SE1, &se_evo_item_finish_appear);
                 gCurrentPinballGame->activePortraitType = 0;
             }
@@ -449,7 +449,7 @@ void UpdateEvolutionItemAnimation(void)
             gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_PREP_SPAWN_EVO_ITEM;
             gCurrentPinballGame->catchLights[gCurrentPinballGame->evoItemsCaught] = 5;
             gCurrentPinballGame->evoItemsCaught++;
-            gMain.fieldSpriteGroups[32]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_32]->active = FALSE;
             if (gCurrentPinballGame->evoItemsCaught == 3)
             {
                 gCurrentPinballGame->evoItemsCaught = 0;

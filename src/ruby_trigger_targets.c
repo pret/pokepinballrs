@@ -384,7 +384,7 @@ void UpdateRubySideBumperAnimation(void)
                         {
                             gCurrentPinballGame->gulpinAnimFrameIndex = 24;
                             gCurrentPinballGame->gulpinAnimFrameTimer = 0;
-                            gCurrentPinballGame->seedotModeStartDelay = 1;
+                            gCurrentPinballGame->travelModeStartDelay = 1;
                         }
                     }
                 }
@@ -456,17 +456,17 @@ void DrawRubySideBumperSprites(void)
         }
     }
 
-    if (gCurrentPinballGame->seedotModeStartDelay)
+    if (gCurrentPinballGame->travelModeStartDelay)
     {
-        gCurrentPinballGame->seedotModeStartDelay--;
-        if (gCurrentPinballGame->seedotModeStartDelay == 0)
+        gCurrentPinballGame->travelModeStartDelay--;
+        if (gCurrentPinballGame->travelModeStartDelay == 0)
         {
             if (gCurrentPinballGame->activePortraitType)
-                gCurrentPinballGame->seedotModeStartDelay = 1;
+                gCurrentPinballGame->travelModeStartDelay = 1;
             else
                 gCurrentPinballGame->activePortraitType = 4;
 
-            if (gCurrentPinballGame->seedotModeStartDelay == 0)
+            if (gCurrentPinballGame->travelModeStartDelay == 0)
             {
                 gMain.modeChangeFlags |= MODE_CHANGE_BANNER;
                 gCurrentPinballGame->bannerDelayTimer = 70;
@@ -475,7 +475,7 @@ void DrawRubySideBumperSprites(void)
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 0;
                 gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_TRAVEL;
-                gCurrentPinballGame->bannerActive = 1;
+                gCurrentPinballGame->bannerActive = TRUE;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
                 gCurrentPinballGame->bannerDisplayDuration = 120;
                 gCurrentPinballGame->bannerSlidePosition = 0;
