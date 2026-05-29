@@ -6677,7 +6677,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gMainEndOfBallBonusTextLine1SpriteSet
 .4byte gMainEndOfBallBonusTextLine2SpriteSet
 .4byte gMainEndOfBallBonusBannerSpriteSet
-.4byte gMainLeftFlipperSpriteSet @ 10
+.4byte gMainLeftFlipperSpriteSet    @ 10
 .4byte gMainRightFlipperSpriteSet
 .4byte gLegendaryCatchNameBannerSpriteSet
 .4byte gLegendaryCatchWasCaughtTextSpriteSet
@@ -6687,7 +6687,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gMainShopPortraitOverlaySpriteSet
 .4byte gMainTravelBanner_SignpostSpriteSet
 .4byte gMainModeStartBannerSpriteSet
-.4byte gMainTileBreakSpriteSet @ 20
+.4byte gMainTileBreakSpriteSet    @ 20
 .4byte gCenterHoleGravityFxSpriteSet
 .4byte gUnknown_086B22AE
 .4byte gEvolutionBannerLightningSpriteSet
@@ -6697,7 +6697,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B2324
 .4byte gUnknown_086B1CDA
 .4byte gPortraitBordersSpriteSet
-.4byte gPortraitTrimSpriteSet @ 30
+.4byte gPortraitTrimSpriteSet    @ 30
 .4byte gPortraitTrimSpriteSet
 .4byte gPortraitSpriteSet
 .4byte gPortrait1SpriteSet
@@ -6707,7 +6707,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gEvolutionBannerTextMediumUpperSpriteSet
 .4byte gEvolutionBannerTextSmallMiddleSpriteSet
 .4byte gMonCatchBallTrailSpriteSet
-.4byte gMonCatchBallTrailSpriteSet @40
+.4byte gMonCatchBallTrailSpriteSet    @40
 .4byte gMainBoardBallSpriteSet
 .4byte gCatchMonEntitySpriteSet
 .4byte gJirachiStarTrailFx0SpriteSet
@@ -6717,7 +6717,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B1B90
 .4byte gUnknown_086B1BAA
 .4byte gUnknown_086B1BC4
-.4byte gUnknown_086B1BDE @ 50
+.4byte gUnknown_086B1BDE    @ 50
 .4byte gUnknown_086B1BF8
 .4byte gUnknown_086B1846
 .4byte gHatchMonEntitySpriteSet
@@ -6727,7 +6727,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gSpoinkLauncherSpriteSet
 .4byte gUnknown_086B1C0C
 .4byte gUnknown_086B1C16
-.4byte gUnknown_086B1AB2 @ 60
+.4byte gUnknown_086B1AB2    @ 60
 .4byte gUnknown_086B1B00
 .4byte gUnknown_086B1B12
 .4byte gUnknown_086B1B24
@@ -6737,7 +6737,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B1B7E
 .4byte gUnknown_086B1B50
 .4byte gUnknown_086B1C20
-.4byte gUnknown_086B1C32 @ 70
+.4byte gUnknown_086B1C32    @ 70
 .4byte gEvoItemSpriteSet
 .4byte gPikaChargingSpinnerSpriteSet
 .4byte gBallUpgradeFxSpriteSet
@@ -6747,7 +6747,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gInitialLocationSelectedFxSpriteSet
 .4byte gCatchBurstLightningStrikeSpriteSet
 .4byte gCatchBurstTileFlashFxSpriteSet
-.4byte gCatchBurstPanelElectrifyFxSpriteSet @ 80
+.4byte gCatchBurstPanelElectrifyFxSpriteSet    @ 80
 .4byte gPikaKickbackLaunchFxSpriteSet
 .4byte gCoinsCollectedSpriteSet
 .4byte gEvoItemSpawnFxSpriteSet

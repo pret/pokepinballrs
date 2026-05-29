@@ -8,7 +8,7 @@ extern void UpdateHatchCave(void);
 
 extern void DrawPikachuSpinner(void);
 
-extern void UpdateEvolutionShopSprite(void);
+extern void UpdateRubyEvolutionShopSprite(void);
 extern void InitRubyEggHatchAnimation(void);
 extern void LoadShopItemGraphics(s16);
 

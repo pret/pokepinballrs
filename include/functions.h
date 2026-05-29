@@ -471,7 +471,7 @@ extern void FullCatchStateCleanup(void);
 extern void ShowBonusTrapSprite(void);
 extern void AnimateBonusTrapSprite(void);
 extern void ProcessChargeIndicator();
-//extern ? UpdateEvolutionShopSprite();
+//extern ? UpdateRubyEvolutionShopSprite();
 extern void RenderEvolutionUI(s16);
 extern void AnimateCoinReward();
 extern void InitTotodileEggDelivery();
