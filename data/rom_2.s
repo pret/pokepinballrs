@@ -5644,7 +5644,7 @@ gCoinsCollectedSpriteSet:: @ 0x086B1834
     packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xdb, priority=0x0, paletteNum=0x3
 .2byte 0
 
-gRubyHatchEggSprite:: @ 0x086B1846
+gMainBoardHatchEggSprite:: @ 0x086B1846
 .2byte 2
     packed_sprite_oam x=-0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x32, tileNum=0xe7, priority=0x1, paletteNum=0xb
 .2byte 0
@@ -5858,7 +5858,7 @@ gTreecko1UpDeliverySpriteSet:: @ 0x086B1A98
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2a9, priority=0x0, paletteNum=0xc
 .2byte 0
 
-gUnknown_086B1AB2:: @ 0x086B1AB2
+gSapphirePelipperSpriteSet:: @ 0x086B1AB2
 .2byte 4
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x115, priority=0x1, paletteNum=0x4
 .2byte 0
@@ -5870,14 +5870,14 @@ gUnknown_086B1AB2:: @ 0x086B1AB2
 .2byte 0
 
 
-gUnknown_086B1AD4:: @ 0x086B1AD4
+gSapphireWailmerSpriteSet:: @ 0x086B1AD4
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x139, priority=0x3, paletteNum=0x2
 .2byte 0
     packed_sprite_oam x=0x20, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x149, priority=0x3, paletteNum=0x2
 .2byte 0
 
-gUnknown_086B1AE6:: @ 0x086B1AE6
+gSapphireZigzagoonSpriteSet:: @ 0x086B1AE6
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x151, priority=0x1, paletteNum=0x6
 .2byte 0
@@ -5887,14 +5887,14 @@ gUnknown_086B1AE6:: @ 0x086B1AE6
 .2byte 0
 
 
-gUnknown_086B1B00:: @ 0x086B1B00
+gSapphireMinunSpriteSet:: @ 0x086B1B00
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x16d, priority=0x1, paletteNum=0xa
 .2byte 0
     packed_sprite_oam x=0x0, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x17d, priority=0x1, paletteNum=0xa
 .2byte 0
 
-gUnknown_086B1B12:: @ 0x086B1B12
+gSapphirePlusleSpriteSet:: @ 0x086B1B12
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x185, priority=0x1, paletteNum=0xa
 .2byte 0
@@ -5902,7 +5902,7 @@ gUnknown_086B1B12:: @ 0x086B1B12
 .2byte 0
 
 
-gUnknown_086B1B24:: @ 0x086B1B24
+gSapphireShroomishBumpersSpriteSet:: @ 0x086B1B24
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x19d, priority=0x2, paletteNum=0x5
 .2byte 0
@@ -5911,40 +5911,40 @@ gUnknown_086B1B24:: @ 0x086B1B24
     packed_sprite_oam x=0x0, y=-0x1, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1bd, priority=0x2, paletteNum=0x5
 .2byte 0
 
-gUnknown_086B1B3E:: @ 0x086B1B3E
+gSapphireSeedotBasketBackSpriteSet:: @ 0x086B1B3E
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1cd, priority=0x1, paletteNum=0x7
 .2byte 0
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d5, priority=0x1, paletteNum=0x7
 .2byte 0
 
-gUnknown_086B1B50:: @ 0x086B1B50
+gSapphireSeedotBasketFrontSpriteSet:: @ 0x086B1B50
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d9, priority=0x2, paletteNum=0x7
 .2byte 0
 
-gUnknown_086B1B5A:: @ 0x086B1B5A
+gSapphireSeedotEntity0SpriteSet:: @ 0x086B1B5A
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1e1, priority=0x1, paletteNum=0x7
 .2byte 0
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1e9, priority=0x1, paletteNum=0x7
 .2byte 0
 
-gUnknown_086B1B6C:: @ 0x086B1B6C
+gSapphireSeedotEntity1SpriteSet:: @ 0x086B1B6C
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1ed, priority=0x1, paletteNum=0x7
 .2byte 0
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1f5, priority=0x1, paletteNum=0x7
 .2byte 0
 
-gUnknown_086B1B7E:: @ 0x086B1B7E
+gSapphireSeedotEntity2SpriteSet:: @ 0x086B1B7E
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1f9, priority=0x1, paletteNum=0x7
 .2byte 0
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x201, priority=0x1, paletteNum=0x7
 .2byte 0
 
-gUnknown_086B1B90:: @ 0x086B1B90
+gSapphireHatchMachineLightSparkFx0SpriteSet:: @ 0x086B1B90
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x205, priority=0x1, paletteNum=0x0
 .2byte 0
@@ -5953,7 +5953,7 @@ gUnknown_086B1B90:: @ 0x086B1B90
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x20b, priority=0x1, paletteNum=0x0
 .2byte 0
 
-gUnknown_086B1BAA:: @ 0x086B1BAA
+gSapphireHatchMachineLightSparkFx1SpriteSet:: @ 0x086B1BAA
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20d, priority=0x1, paletteNum=0x0
 .2byte 0
@@ -5962,7 +5962,7 @@ gUnknown_086B1BAA:: @ 0x086B1BAA
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x213, priority=0x1, paletteNum=0x0
 .2byte 0
 
-gUnknown_086B1BC4:: @ 0x086B1BC4
+gSapphireHatchMachineLightSparkFx2SpriteSet:: @ 0x086B1BC4
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x215, priority=0x1, paletteNum=0x0
 .2byte 0
@@ -5971,7 +5971,7 @@ gUnknown_086B1BC4:: @ 0x086B1BC4
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0x0
 .2byte 0
 
-gUnknown_086B1BDE:: @ 0x086B1BDE
+gSapphireHatchMachineLightSparkFx3SpriteSet:: @ 0x086B1BDE
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x21d, priority=0x1, paletteNum=0x0
 .2byte 0
@@ -5980,34 +5980,34 @@ gUnknown_086B1BDE:: @ 0x086B1BDE
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x223, priority=0x1, paletteNum=0x0
 .2byte 0
 
-gUnknown_086B1BF8:: @ 0x086B1BF8
+gSapphireHatchMachineLowerSegmentSpriteSet:: @ 0x086B1BF8
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x225, priority=0x0, paletteNum=0xb
 .2byte 0
 
-gUnknown_086B1C02:: @ 0x086B1C02
+gSapphireMartElectricalGateFxSpriteSet:: @ 0x086B1C02
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x235, priority=0x3, paletteNum=0xa
 .2byte 0
 
-gUnknown_086B1C0C:: @ 0x086B1C0C
+gSapphireMinunElectricityFxSpriteSet:: @ 0x086B1C0C
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x239, priority=0x1, paletteNum=0xa
 .2byte 0
 
-gUnknown_086B1C16:: @ 0x086B1C16
+gSapphirePlusleElectricityFxSpriteSet:: @ 0x086B1C16
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x249, priority=0x1, paletteNum=0xa
 .2byte 0
 
-gUnknown_086B1C20:: @ 0x086B1C20
+gSapphireMartSignSpriteSet:: @ 0x086B1C20
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_64x32, tileNum=0x259, priority=0x1, paletteNum=0x8
 .2byte 0
     packed_sprite_oam x=0x0, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_32x8, tileNum=0x279, priority=0x1, paletteNum=0x8
 .2byte 0
 
-gUnknown_086B1C32:: @ 0x086B1C32
+gSapphireZigzagoonSpeechBubbleSpriteSet:: @ 0x086B1C32
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x27d, priority=0x1, paletteNum=0x3
 .2byte 0
@@ -6547,7 +6547,7 @@ gTravelPainterSpriteSet:: @ 0x086B22F2
     packed_sprite_oam x=0x18, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x304, priority=0x1, paletteNum=0xe
 .2byte 0
 
-gUnknown_086B2324:: @ 0x086B2324
+gSapphireZigzagoonTrailFxSpriteSet:: @ 0x086B2324
 .2byte 7
     packed_sprite_oam x=-0x47, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2c0, priority=0x1, paletteNum=0x6
 .2byte 0
@@ -6629,7 +6629,7 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gJirachiStarTrailFx1SpriteSet
 .4byte gJirachiStarTrailFx2SpriteSet
 .4byte gJirachiStarTrailFx3SpriteSet
-.4byte gRubyHatchEggSprite
+.4byte gMainBoardHatchEggSprite
 .4byte gHatchMonEntitySpriteSet
 .4byte gMonCatchBallAbsorbPokemonFxSpriteSet    @ 50
 .4byte gRubyCyndaquilSpriteSet
@@ -6693,8 +6693,8 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gEvolutionBannerLightningSpriteSet
 .4byte gTravelPainterSpriteSet
 .4byte gChargeIndicatorDeviceSpriteSet
-.4byte gUnknown_086B1AE6
-.4byte gUnknown_086B2324
+.4byte gSapphireZigzagoonSpriteSet
+.4byte gSapphireZigzagoonTrailFxSpriteSet
 .4byte gUnknown_086B1CDA @ Catch tile related, can't narrow further
 .4byte gPortraitBordersSpriteSet
 .4byte gPortraitTrimSpriteSet    @ 30
@@ -6714,36 +6714,36 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gJirachiStarTrailFx1SpriteSet
 .4byte gJirachiStarTrailFx2SpriteSet
 .4byte gJirachiStarTrailFx3SpriteSet
-.4byte gUnknown_086B1B90
-.4byte gUnknown_086B1BAA
-.4byte gUnknown_086B1BC4
-.4byte gUnknown_086B1BDE    @ 50
-.4byte gUnknown_086B1BF8
-.4byte gRubyHatchEggSprite
+.4byte gSapphireHatchMachineLightSparkFx0SpriteSet
+.4byte gSapphireHatchMachineLightSparkFx1SpriteSet
+.4byte gSapphireHatchMachineLightSparkFx2SpriteSet
+.4byte gSapphireHatchMachineLightSparkFx3SpriteSet    @ 50
+.4byte gSapphireHatchMachineLowerSegmentSpriteSet
+.4byte gMainBoardHatchEggSprite
 .4byte gHatchMonEntitySpriteSet
 .4byte gMonCatchBallAbsorbPokemonFxSpriteSet
 .4byte gPikachuKickbackSpriteSet
 .4byte gPichuKickbackSpriteSet
 .4byte gSpoinkLauncherSpriteSet
-.4byte gUnknown_086B1C0C
-.4byte gUnknown_086B1C16
-.4byte gUnknown_086B1AB2    @ 60
-.4byte gUnknown_086B1B00
-.4byte gUnknown_086B1B12
-.4byte gUnknown_086B1B24
-.4byte gUnknown_086B1B3E
-.4byte gUnknown_086B1B5A
-.4byte gUnknown_086B1B6C
-.4byte gUnknown_086B1B7E
-.4byte gUnknown_086B1B50
-.4byte gUnknown_086B1C20
-.4byte gUnknown_086B1C32    @ 70
+.4byte gSapphireMinunElectricityFxSpriteSet
+.4byte gSapphirePlusleElectricityFxSpriteSet
+.4byte gSapphirePelipperSpriteSet    @ 60
+.4byte gSapphireMinunSpriteSet
+.4byte gSapphirePlusleSpriteSet
+.4byte gSapphireShroomishBumpersSpriteSet
+.4byte gSapphireSeedotBasketBackSpriteSet
+.4byte gSapphireSeedotEntity0SpriteSet
+.4byte gSapphireSeedotEntity1SpriteSet
+.4byte gSapphireSeedotEntity2SpriteSet
+.4byte gSapphireSeedotBasketFrontSpriteSet
+.4byte gSapphireMartSignSpriteSet
+.4byte gSapphireZigzagoonSpeechBubbleSpriteSet    @ 70
 .4byte gEvoItemSpriteSet
 .4byte gPikaChargingSpinnerSpriteSet
 .4byte gBallUpgradeFxSpriteSet
 .4byte gMainBoardBallSpriteSet
-.4byte gUnknown_086B1AD4
-.4byte gUnknown_086B1C02
+.4byte gSapphireWailmerSpriteSet
+.4byte gSapphireMartElectricalGateFxSpriteSet
 .4byte gInitialLocationSelectedFxSpriteSet
 .4byte gCatchBurstLightningStrikeSpriteSet
 .4byte gCatchBurstTileFlashFxSpriteSet

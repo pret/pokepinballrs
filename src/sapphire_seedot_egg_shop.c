@@ -52,7 +52,7 @@ void UpdateSapphireEggHatchAnimation(void)
     var3 = 0;
     var1 = 0;
     var2 = 0;
-    group = &gMain.spriteGroups[SG_SAPPHIRE_52];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG];
     sp0 = 0;
     switch (gCurrentPinballGame->eggAnimationPhase)
     {
@@ -167,7 +167,7 @@ void UpdateSapphireEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
 
-    group = &gMain.spriteGroups[SG_SAPPHIRE_51];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LOWER_SEGMENT];
     if (group->active)
     {
         group->baseX = 192 - gCurrentPinballGame->cameraXOffset;
@@ -392,7 +392,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
     s16 index;
     int var0;
 
-    group = &gMain.spriteGroups[SG_SAPPHIRE_64];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_BASKET_BACK];
     if (!group->active)
         return;
 
@@ -408,7 +408,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[SG_SAPPHIRE_68];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_BASKET_FRONT];
     group->baseX = 10 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 298 - gCurrentPinballGame->cameraYOffset;
     oamSimple = &group->oam[0];
@@ -417,7 +417,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
 
     for (j = 0; j < 3; j++)
     {
-        group = &gMain.spriteGroups[SG_SAPPHIRE_65 + j];
+        group = &gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_ENTITY_BASE + j];
 
         var0 = gSeedotBaseXPositions[j] - j;
         group->baseX = var0 - gCurrentPinballGame->cameraXOffset;
@@ -545,7 +545,7 @@ void DrawSapphireShopSignSprite(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[SG_SAPPHIRE_69];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_MART_SIGN];
     if (group->active)
     {
         group->baseX = 16 - gCurrentPinballGame->cameraXOffset;
@@ -727,7 +727,7 @@ void UpdateSapphireEggMachine(void)
 
     for (i = 0; i < 4; i++)
     {
-        group = &gMain.spriteGroups[SG_SAPPHIRE_47 + i];
+        group = &gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LIGHT_SPARK_FX_BASE + i];
         if (group->active)
         {
             if (gSplashEffectFrameDurations[gCurrentPinballGame->splashEffectFrameIndex[i]][0] > gCurrentPinballGame->splashEffectFrameTimer[i])

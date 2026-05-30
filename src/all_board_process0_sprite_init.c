@@ -106,10 +106,10 @@ void SapphireBoardProcess_0A_50AD4(void)
         gMain.spriteGroups[i].active = FALSE;
 
     gMain.spriteGroups[SG_SAPPHIRE_PIKA_CHARGING_SPINNER].active = TRUE;
-    gMain.spriteGroups[SG_SAPPHIRE_63].active = TRUE;
-    gMain.spriteGroups[SG_SAPPHIRE_60].active = TRUE;
-    gMain.spriteGroups[SG_SAPPHIRE_69].active = TRUE;
-    gMain.spriteGroups[SG_SAPPHIRE_52].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_SHROOMISH_BUMPERS].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_PELIPPER].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_MART_SIGN].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG].active = TRUE;
     gMain.spriteGroups[SG_SAPPHIRE_BALL].active = TRUE;
     gMain.spriteGroups[SG_PAUSE_PANEL].active = TRUE;
     gMain.spriteGroups[SG_PAUSE_TOP_BORDER].active = TRUE;
@@ -128,19 +128,19 @@ void SapphireBoardProcess_0B_50B80(void)
     for (i = 55; i < 71; i++)
         gMain.spriteGroups[i].active = FALSE;
 
-    gMain.spriteGroups[SG_SAPPHIRE_52].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG].active = FALSE;
     gMain.spriteGroups[SG_SAPPHIRE_PIKA_CHARGING_SPINNER].active = FALSE;
-    gMain.spriteGroups[SG_SAPPHIRE_26].active = FALSE;
-    gMain.spriteGroups[SG_SAPPHIRE_51].active = FALSE;
-    gMain.spriteGroups[SG_SAPPHIRE_76].active = FALSE;
-    gMain.spriteGroups[SG_SAPPHIRE_75].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LOWER_SEGMENT].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_MART_ELECTRICAL_GATE_FX].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_WAILMER].active = FALSE;
     gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = FALSE;
     gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = FALSE;
     gCurrentPinballGame->randomSpriteVariantSeed = gMain.systemFrameCount % 25;
     if (gCurrentPinballGame->cameraYViewport < 90)
     {
-        gMain.spriteGroups[SG_SAPPHIRE_52].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_51].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LOWER_SEGMENT].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport < 220)
     {
@@ -148,31 +148,31 @@ void SapphireBoardProcess_0B_50B80(void)
     }
     if (gCurrentPinballGame->cameraYViewport < 150)
     {
-        gMain.spriteGroups[SG_SAPPHIRE_60].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_69].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_PELIPPER].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_MART_SIGN].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport < 196)
     {
-        gMain.spriteGroups[SG_SAPPHIRE_63].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_75].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SHROOMISH_BUMPERS].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_WAILMER].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport < 202)
     {
-        gMain.spriteGroups[SG_SAPPHIRE_61].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_58].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_62].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_59].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_76].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_MINUN].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_MINUN_ELECTRICITY_FX].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_PLUSLE].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_PLUSLE_ELECTRICITY_FX].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_MART_ELECTRICAL_GATE_FX].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport > 118)
     {
-        gMain.spriteGroups[SG_SAPPHIRE_70].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_26].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_64].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_68].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_65].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_66].active = TRUE;
-        gMain.spriteGroups[SG_SAPPHIRE_67].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON_SPEECH_BUBBLE].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_BASKET_BACK].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_BASKET_FRONT].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_ENTITY_0].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_ENTITY_1].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_ENTITY_2].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport > 216)
     {

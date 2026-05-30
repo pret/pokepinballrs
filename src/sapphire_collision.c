@@ -598,7 +598,7 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
                 gCurrentPinballGame->secondaryBall = gCurrentPinballGame->ballStates;
 
             modRes = (gCurrentPinballGame->targetBumperHitCounter - 1) % 4;
-            gMain.spriteGroups[SG_SAPPHIRE_47 + modRes].active = TRUE;
+            gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LIGHT_SPARK_FX_BASE + modRes].active = TRUE;
             gCurrentPinballGame->splashEffectFrameIndex[modRes] = 0;
             gCurrentPinballGame->splashEffectFrameTimer[modRes] = 0;
             gCurrentPinballGame->splashEffectPositionIndex[modRes] = gCurrentPinballGame->targetBumperHitCounter - 1;
@@ -622,7 +622,7 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
             gCurrentPinballGame->targetBumperHitCounter++;
 
             modRes = (gCurrentPinballGame->targetBumperHitCounter -1) % 4;
-            gMain.spriteGroups[SG_SAPPHIRE_47 + modRes].active = TRUE;
+            gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LIGHT_SPARK_FX_BASE + modRes].active = TRUE;
             gCurrentPinballGame->splashEffectFrameIndex[modRes] = 0;
             gCurrentPinballGame->splashEffectFrameTimer[modRes] = 0;
             gCurrentPinballGame->splashEffectPositionIndex[modRes] = gCurrentPinballGame->targetBumperHitCounter - 1;

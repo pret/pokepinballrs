@@ -35,7 +35,7 @@ void DecrementPelipperTimer(void)
 void UpdatePelipperPondEntity(void)
 {
     s16 i;
-    struct SpriteGroup *group = &gMain.spriteGroups[SG_SAPPHIRE_60];
+    struct SpriteGroup *group = &gMain.spriteGroups[SG_SAPPHIRE_PELIPPER];
     struct OamDataSimple *oamSimple;
     u16 *dst;
     const u16 *src;
@@ -340,7 +340,7 @@ void AnimateWailmerEntity(void)
     s16 var0;
 
     index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 16;
-    group = &gMain.spriteGroups[SG_SAPPHIRE_75];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_WAILMER];
     if (gCurrentPinballGame->catchHoleAnimFrame)
         index = gCurrentPinballGame->catchHoleAnimFrame;
 
@@ -406,7 +406,7 @@ void UpdateZigzagoonEntity(void)
         gCurrentPinballGame->sapphireBumperAnimFrame = 0;
         gCurrentPinballGame->zigzagoonState = 3;
         gCurrentPinballGame->zigzagoonFxFrame = 0;
-        gMain.spriteGroups[SG_SAPPHIRE_27].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON_TRAIL_FX].active = TRUE;
         gCurrentPinballGame->activePortraitType = 22;
         DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, (void *)0x06015800, 0xC00);
         m4aSongNumStart(SE_UNKNOWN_0xEC);
@@ -437,7 +437,7 @@ void UpdateZigzagoonEntity(void)
         break;
     case 4:
         gCurrentPinballGame->activePortraitType = 0;
-        gMain.spriteGroups[SG_SAPPHIRE_27].active = FALSE;
+        gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON_TRAIL_FX].active = FALSE;
         gCurrentPinballGame->zigzagoonState = 0;
         break;
     }
@@ -452,7 +452,7 @@ void DrawZigzagoonAndRouletteStopPrompt(void)
     const u16 *src;
     s16 index;
 
-    group = &gMain.spriteGroups[SG_SAPPHIRE_26];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON];
     if (group->active)
     {
         group->baseX = 198 - gCurrentPinballGame->cameraXOffset;
@@ -474,7 +474,7 @@ void DrawZigzagoonAndRouletteStopPrompt(void)
         }
     }
 
-    group = &gMain.spriteGroups[SG_SAPPHIRE_27];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON_TRAIL_FX];
     if (group->active)
     {
         group->baseX = 198 - gCurrentPinballGame->cameraXOffset;
@@ -494,7 +494,7 @@ void DrawZigzagoonAndRouletteStopPrompt(void)
         }
     }
 
-    group = &gMain.spriteGroups[SG_SAPPHIRE_70];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON_SPEECH_BUBBLE];
     if (group->active)
     {
         group->baseX = 206 - gCurrentPinballGame->cameraXOffset;
