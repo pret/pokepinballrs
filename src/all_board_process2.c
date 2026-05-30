@@ -294,23 +294,22 @@ void ProcessTiltInput(void)
 
     if (gCurrentPinballGame->ballCatchState == NOT_TRAPPED
         && gCurrentPinballGame->captureState != MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE
-        && gCurrentPinballGame->kickbackFiring == 0)
+        && !gCurrentPinballGame->kickbackFiring)
     {
-        if (gCurrentPinballGame->newButtonActions[2])
+        if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_TILT_LEFT]
+            && gCurrentPinballGame->boardShakeTimer == 0)
         {
-            if (gCurrentPinballGame->boardShakeTimer == 0)
+            gCurrentPinballGame->boardShakeDirection = 0;
+            if (gCurrentPinballGame->boardShakeIntensity == 0)
             {
-                gCurrentPinballGame->boardShakeDirection = 0;
-                if (gCurrentPinballGame->boardShakeIntensity == 0)
-                {
-                    gCurrentPinballGame->boardShakeIntensity = 4;
-                    m4aSongNumStart(SE_TILT_TRIGGERED);
-                    PlayRumble(8);
-                }
+                gCurrentPinballGame->boardShakeIntensity = 4;
+                m4aSongNumStart(SE_TILT_TRIGGERED);
+                PlayRumble(8);
             }
         }
 
-        if (gCurrentPinballGame->newButtonActions[3] && gCurrentPinballGame->boardShakeTimer == 0)
+        if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_TILT_RIGHT]
+            && gCurrentPinballGame->boardShakeTimer == 0)
         {
             gCurrentPinballGame->boardShakeDirection = 1;
             if (gCurrentPinballGame->boardShakeIntensity == 0)
@@ -321,7 +320,8 @@ void ProcessTiltInput(void)
             }
         }
 
-        if (gCurrentPinballGame->newButtonActions[4] && gCurrentPinballGame->boardShakeTimer == 0)
+        if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_TILT_UP]
+            && gCurrentPinballGame->boardShakeTimer == 0)
         {
             gCurrentPinballGame->boardShakeDirection = 2;
             if (gCurrentPinballGame->boardShakeIntensity == 0)
@@ -421,13 +421,15 @@ void ProcessMainBoardBallDrainAndLaunch(void)
     struct BallState *ballStates;
 
     if (gCurrentPinballGame->boardState != MAIN_BOARD_STATE_BOARD_INTRO
-        && gCurrentPinballGame->newButtonActions[1] && gCurrentPinballGame->ballInLaunchChute)
+        && gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER]
+        && gCurrentPinballGame->ballInLaunchChute)
     {
-        gCurrentPinballGame->launcherCharging = 1;
+        gCurrentPinballGame->launcherCharging = TRUE;
         gCurrentPinballGame->spoinkEntityState = 1;
     }
 
-    if (gCurrentPinballGame->launcherCharging && gCurrentPinballGame->releasedButtonActions[1])
+    if (gCurrentPinballGame->launcherCharging
+        && gCurrentPinballGame->releasedButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
     {
         gCurrentPinballGame->spoinkEntityState = 3;
         if (gCurrentPinballGame->ballInLaunchChute)
@@ -438,7 +440,7 @@ void ProcessMainBoardBallDrainAndLaunch(void)
             m4aSongNumStart(SE_UNKNOWN_0xCD);
         }
 
-        gCurrentPinballGame->launcherCharging = 0;
+        gCurrentPinballGame->launcherCharging = FALSE;
     }
 
     gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
@@ -469,11 +471,12 @@ void ProcessMainBoardBallDrainAndLaunch(void)
                 m4aMPlayAllStop();
                 m4aSongNumStart(MUS_END_OF_BALL);
                 ResetBoardStateOnDeath();
-                if (gCurrentPinballGame->outLanePikaPosition == 2 && gMain.eReaderBonuses[EREADER_DX_MODE_CARD] == 0)
+                if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES
+                    && gMain.eReaderBonuses[EREADER_DX_MODE_CARD] == 0)
                 {
                     gCurrentPinballGame->pichuWalkMode = 2;
                     gCurrentPinballGame->pichuEntranceTimer = 800;
-                    gCurrentPinballGame->outLanePikaPosition = 0;
+                    gCurrentPinballGame->outLanePikaPosition = PIKA_LEFT_SIDE;
                 }
             }
         }
@@ -543,7 +546,8 @@ void ResetBoardStateOnDeath(void)
     gCurrentPinballGame->pikaSpinMomentum = 0;
     gCurrentPinballGame->kickbackAnimFrameTimer = 0;
     gCurrentPinballGame->kickbackFrameId = 0;
-    if (gCurrentPinballGame->outLanePikaPosition != 2 || !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
+    if (gCurrentPinballGame->outLanePikaPosition != PIKA_BOTH_SIDES
+        || !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
         gCurrentPinballGame->pikaChargeTarget = 0;
         gCurrentPinballGame->pikaChargeProgress = 0;

@@ -1476,7 +1476,8 @@ void UpdateLightningGrabEntity(void)
         }
         else
         {
-            if (gCurrentPinballGame->newButtonActions[0] || gCurrentPinballGame->newButtonActions[1])
+            if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER]
+                || gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
             {
                 gCurrentPinballGame->ballGrabTimer -= 30;
                 if (gCurrentPinballGame->ballGrabTimer < 5)
@@ -1497,7 +1498,8 @@ void UpdateLightningGrabEntity(void)
         }
         else
         {
-            if (gCurrentPinballGame->newButtonActions[0] || gCurrentPinballGame->newButtonActions[1])
+            if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER]
+                || gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
                 gCurrentPinballGame->ballGrabFlashTimer = 60;
         }
 

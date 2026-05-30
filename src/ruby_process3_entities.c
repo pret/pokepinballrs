@@ -2,6 +2,7 @@
 #include "functions.h"
 #include "functions_ruby.h"
 #include "main.h"
+#include "constants/board/main_board.h"
 
 void UpdateRubyBoardEntityRendering(void)
 {
@@ -104,12 +105,14 @@ void HandleRubyFlipperButtonInput(void)
 {
     int tmp;
 
-    if (gCurrentPinballGame->newButtonActions[0])
+    if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER])
     {
-        if (gCurrentPinballGame->pikaKickbackTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->pichuEntranceTimer == 0 && gCurrentPinballGame->kickbackFiring == 0)
+        if (gCurrentPinballGame->pikaKickbackTimer == 0
+            && gCurrentPinballGame->outLanePikaPosition != PIKA_BOTH_SIDES
+            && gCurrentPinballGame->pichuEntranceTimer == 0
+            && !gCurrentPinballGame->kickbackFiring)
         {
-            gCurrentPinballGame->outLanePikaPosition = 0;
+            gCurrentPinballGame->outLanePikaPosition = PIKA_LEFT_SIDE;
         }
 
         tmp = gCurrentPinballGame->holeIndicators[0];
@@ -124,12 +127,14 @@ void HandleRubyFlipperButtonInput(void)
         gCurrentPinballGame->ballPowerUpLight[2] = tmp;
     }
 
-    if (gCurrentPinballGame->newButtonActions[1])
+    if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
     {
-        if (gCurrentPinballGame->pikaKickbackTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->pichuEntranceTimer == 0 && gCurrentPinballGame->kickbackFiring == 0)
+        if (gCurrentPinballGame->pikaKickbackTimer == 0
+            && gCurrentPinballGame->outLanePikaPosition != PIKA_BOTH_SIDES
+            && gCurrentPinballGame->pichuEntranceTimer == 0
+            && !gCurrentPinballGame->kickbackFiring)
         {
-            gCurrentPinballGame->outLanePikaPosition = 1;
+            gCurrentPinballGame->outLanePikaPosition = PIKA_RIGHT_SIDE;
         }
 
         tmp = gCurrentPinballGame->holeIndicators[3];

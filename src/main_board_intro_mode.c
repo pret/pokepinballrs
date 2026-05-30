@@ -125,7 +125,7 @@ void UpdateBoardIntroMode(void)
         else if (gCurrentPinballGame->boardSubState == BOARD_INTRO_SUBSTATE_WAIT_FOR_LAUNCH)
         {
             gCurrentPinballGame->rouletteFrameIndex++;
-            if (gCurrentPinballGame->newButtonActions[1]
+            if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER]
                 && gCurrentPinballGame->boardSubState == BOARD_INTRO_SUBSTATE_WAIT_FOR_LAUNCH)
             {
                 if (gCurrentPinballGame->rouletteSpinSpeed == 0)
@@ -137,7 +137,7 @@ void UpdateBoardIntroMode(void)
 
                     gCurrentPinballGame->rouletteInitialSpeed = gCurrentPinballGame->rouletteSpinSpeed;
                     gCurrentPinballGame->spoinkEntityState = 1;
-                    gCurrentPinballGame->launcherCharging = 1;
+                    gCurrentPinballGame->launcherCharging = TRUE;
                     gCurrentPinballGame->saverTimeRemaining = 3600;
                     gCurrentPinballGame->rubyPondState = RUBY_POND_STATE_CHINCHOU_COUNTERCLOCKWISE;
                 }

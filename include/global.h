@@ -9,6 +9,7 @@
 #include "variables.h"
 #include "constants/global.h"
 #include "constants/ereader.h"
+#include "constants/pinball_inputs.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -130,9 +131,9 @@ struct FlipperState
 struct PinballGame
 {
     /*0x000*/ u32 saveDataValid;
-    /*0x004*/ u8 newButtonActions[5]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
-    /*0x009*/ u8 releasedButtonActions[5];
-    /*0x00E*/ u8 heldButtonActions[5];
+    /*0x004*/ u8 newButtonActions[NUM_PINBALL_INPUTS]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
+    /*0x009*/ u8 releasedButtonActions[NUM_PINBALL_INPUTS];
+    /*0x00E*/ u8 heldButtonActions[NUM_PINBALL_INPUTS];
     /*0x013*/ s8 boardState; // Indexes into gBoardStateInitFuncs/gBoardStateUpdateFuncs dispatch tables (9 states)
     /*0x014*/ s8 nextBoardState; // Target state set by RequestBoardStateTransition
     /*0x015*/ s8 prevBoardState; // Previous state saved during dispatcher teardown

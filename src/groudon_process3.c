@@ -1026,7 +1026,8 @@ void UpdateGroudonFieldEntities(void)
 
                 gCurrentPinballGame->ballGrabShakeTimer--;
             }
-            else if (gCurrentPinballGame->newButtonActions[0] || gCurrentPinballGame->newButtonActions[1])
+            else if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER]
+                || gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
             {
                 gCurrentPinballGame->ballGrabTimer = gCurrentPinballGame->ballGrabTimer - 30;
                 if (gCurrentPinballGame->ballGrabTimer < 5)
@@ -1044,7 +1045,8 @@ void UpdateGroudonFieldEntities(void)
                 else if (gCurrentPinballGame->ballGrabFlashTimer > 40)
                     varSL = 5;
             }
-            else if (gCurrentPinballGame->newButtonActions[0] || gCurrentPinballGame->newButtonActions[1])
+            else if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER]
+                || gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
             {
                 gCurrentPinballGame->ballGrabFlashTimer = 60;
             }

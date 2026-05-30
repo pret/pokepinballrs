@@ -22,7 +22,8 @@ void AllBoardProcess_8B_4CEB4(void)
     gCurrentPinballGame->scoreAdditionAccumulator += (gCurrentPinballGame->ballUpgradeType + 1) * gCurrentPinballGame->scoreAddedInFrame;
     if (gCurrentPinballGame->scoreCounterAnimationEnabled)
     {
-        if (gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON))
+        if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER] 
+            || JOY_NEW(A_BUTTON))
         {
             gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
             gCurrentPinballGame->scoreAdditionAccumulator = 0;

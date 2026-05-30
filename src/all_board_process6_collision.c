@@ -404,7 +404,7 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
             m4aSongNumStart(SE_WALL_HIT);
 
         if (forwardMag > 0x118
-            && gCurrentPinballGame->kickbackFiring == 0
+            && !gCurrentPinballGame->kickbackFiring
             && gMain.selectedField < MAIN_FIELD_COUNT)
         {
             PlayRumble(6);

@@ -135,7 +135,7 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         if (gCurrentPinballGame->coins < ptr[3] ||
             (
                 (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_PICHU_SAVER
-                    && gCurrentPinballGame->outLanePikaPosition == 2)
+                    && gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)
                 ||
                 (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL
                     && gCurrentPinballGame->shopExtraBallPreviouslyPurchased)

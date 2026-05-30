@@ -342,7 +342,8 @@ void RestoreFieldSpecificGraphics(void)
     switch (gCurrentPinballGame->activePortraitType - 1)
     {
     case 0:
-        if (gCurrentPinballGame->outLanePikaPosition == 2 && gCurrentPinballGame->outLaneSide == 2)
+        if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES
+            && gCurrentPinballGame->outLaneSide == OUTLANE_RIGHT)
         {
             DmaCopy16(3, gPikaSaverFullCoverageGfx, (void *)0x6015800, 0x2400);
         }

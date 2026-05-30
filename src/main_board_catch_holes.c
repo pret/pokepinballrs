@@ -100,7 +100,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
             m4aSongNumStart(SE_SHOP_LIST_REVEAL);
 
-            if (gCurrentPinballGame->outLanePikaPosition == 2)
+            if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)
                 gCurrentPinballGame->shopPikaSaverMaxed = 1;
             else
                 gCurrentPinballGame->shopPikaSaverMaxed = 0;
@@ -214,7 +214,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 const u16 *arr = gShopItemData[gCurrentPinballGame->shopSelectedItemId];
 
                 if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_PICHU_SAVER
-                    && gCurrentPinballGame->outLanePikaPosition == 2)
+                    && gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)
                     var_r3 = 999;
                 else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL
                     && gCurrentPinballGame->shopExtraBallPreviouslyPurchased)

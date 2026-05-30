@@ -549,11 +549,11 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
         if (gCurrentPinballGame->pikaKickbackTimer == 0)
         {
             if (gCurrentPinballGame->ball->positionQ0.x <= 120)
-                gCurrentPinballGame->outLaneSide = 1;
+                gCurrentPinballGame->outLaneSide = OUTLANE_LEFT;
             else
-                gCurrentPinballGame->outLaneSide = 2;
+                gCurrentPinballGame->outLaneSide = OUTLANE_RIGHT;
 
-            if (gCurrentPinballGame->outLanePikaPosition < 2)
+            if (gCurrentPinballGame->outLanePikaPosition < PIKA_BOTH_SIDES)
             {
                 if (gCurrentPinballGame->outLanePikaPosition == gCurrentPinballGame->outLaneSide - 1)
                     gCurrentPinballGame->pikaKickbackTimer = 120;

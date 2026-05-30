@@ -111,7 +111,7 @@ struct Main
      * An action can be triggered by pressing 2 buttons simultaneously
      *   Each data element holds a mask for the button it looks for.
      ***/
-    /*0x60*/ u16 buttonConfigs[5][2]; 
+    /*0x60*/ u16 buttonConfigs[NUM_PINBALL_INPUTS][2]; 
 
     // This field must be accessed using the following macro to produce matching code.
 #define gMain_saveData (*(struct SaveData *)(&gMain.saveData))

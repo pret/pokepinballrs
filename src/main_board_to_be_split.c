@@ -760,7 +760,8 @@ void AnimateCoinReward(void)
         else
         {
             if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE
-                && (gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON)))
+                && (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER]
+                    || JOY_NEW(A_BUTTON)))
                 gCurrentPinballGame->coinRewardFastPayout = 1;
 
             if (gCurrentPinballGame->coinsAwarded < gCurrentPinballGame->coinRewardAmount)

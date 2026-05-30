@@ -286,7 +286,7 @@ void InitPinballGameState(void)
             gCurrentPinballGame->chargeIndicatorYOffset = 120;
             gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
             DmaCopy16(3, gDxModePikachuObjTiles, (void *)OBJ_VRAM0 + 0x600, 0x180);
-            gCurrentPinballGame->outLanePikaPosition = 2;
+            gCurrentPinballGame->outLanePikaPosition = PIKA_BOTH_SIDES;
             gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
             gCurrentPinballGame->pichuEntranceTimer = 1;
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
@@ -845,31 +845,31 @@ void UpdateButtonActionsFromJoy(void)
 {
     u16 i;
 
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < NUM_PINBALL_INPUTS; i++)
     {
-        gCurrentPinballGame->newButtonActions[i] = 0;
-        gCurrentPinballGame->releasedButtonActions[i] = 0;
+        gCurrentPinballGame->newButtonActions[i] = FALSE;
+        gCurrentPinballGame->releasedButtonActions[i] = FALSE;
     }
 
     if (gMain.modeChangeFlags)
         return;
 
-    for (i =  0; i < 5; i++)
+    for (i =  0; i < NUM_PINBALL_INPUTS; i++)
     {
         int buttonConfigKeyMask = (gMain.buttonConfigs[i][0] | gMain.buttonConfigs[i][1]) & KEYS_MASK;
         if (buttonConfigKeyMask == JOY_HELD(buttonConfigKeyMask))
         {
-            if (gCurrentPinballGame->heldButtonActions[i] == 0)
-                gCurrentPinballGame->newButtonActions[i] = 1;
+            if (gCurrentPinballGame->heldButtonActions[i] == FALSE)
+                gCurrentPinballGame->newButtonActions[i] = TRUE;
 
-            gCurrentPinballGame->heldButtonActions[i] = 1;
+            gCurrentPinballGame->heldButtonActions[i] = TRUE;
         }
         else
         {
             if (gCurrentPinballGame->heldButtonActions[i])
-                gCurrentPinballGame->releasedButtonActions[i] = 1;
+                gCurrentPinballGame->releasedButtonActions[i] = TRUE;
 
-            gCurrentPinballGame->heldButtonActions[i] = 0;
+            gCurrentPinballGame->heldButtonActions[i] = FALSE;
         }
     }
 }
@@ -878,10 +878,10 @@ void ReplayButtonActionsFromRecording(void)
 {
     u16 i;
 
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < NUM_PINBALL_INPUTS; i++)
     {
-        gCurrentPinballGame->newButtonActions[i] = 0;
-        gCurrentPinballGame->releasedButtonActions[i] = 0;
+        gCurrentPinballGame->newButtonActions[i] = FALSE;
+        gCurrentPinballGame->releasedButtonActions[i] = FALSE;
     }
 
     if (gMain.modeChangeFlags)
@@ -889,7 +889,7 @@ void ReplayButtonActionsFromRecording(void)
 
     if (gReplayFrameCounter < 60 * 60)
     {
-        for (i =  0; i < 5; i++)
+        for (i =  0; i < NUM_PINBALL_INPUTS; i++)
         {
             gCurrentPinballGame->newButtonActions[i] = (gBoardConfig.replayInputData[gReplayFrameCounter].newButtonBits >> i) & 0x1;
             gCurrentPinballGame->releasedButtonActions[i] = (gBoardConfig.replayInputData[gReplayFrameCounter].releasedButtonBits >> i) & 0x1;
@@ -899,6 +899,6 @@ void ReplayButtonActionsFromRecording(void)
         gReplayFrameCounter++;
     }
 
-    if (gCurrentPinballGame->newButtonActions[1])
+    if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
         gMain.newKeys = A_BUTTON;
 }

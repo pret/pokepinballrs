@@ -89,7 +89,7 @@ void InitRouletteWheel(void)
         }
         else if (gCurrentPinballGame->rouletteSlotValues[i] == PRIZE_PICHU_SAVER)
         {
-            if (gCurrentPinballGame->outLanePikaPosition == 2)
+            if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)
             {
                 if (gMain.systemFrameCount & 1)
                 {
@@ -132,7 +132,9 @@ void RunRouletteWheel(void)
     {
         if (gCurrentPinballGame->rouletteStopRequested == 0)
         {
-            if ((gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON)) && gCurrentPinballGame->zigzagoonShockWallActive)
+            if (    (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER]
+                    || JOY_NEW(A_BUTTON))
+                && gCurrentPinballGame->zigzagoonShockWallActive)
             {
                 gCurrentPinballGame->zigzagoonState = 2;
                 if (gCurrentPinballGame->rouletteSubOffset < 17)
@@ -165,7 +167,8 @@ void RunRouletteWheel(void)
                 }
             }
         }
-        else if (gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON))
+        else if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER]
+                || JOY_NEW(A_BUTTON))
         {
             gCurrentPinballGame->rouletteSpinSpeed = (Random() % 200) + 100;
             if (gMain.selectedField == FIELD_SAPPHIRE)
@@ -273,7 +276,7 @@ void GivePrize(void)
                 gCurrentPinballGame->chargeIndicatorYOffset = 120;
                 gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
                 DmaCopy16(3, gPikachuSaverTilesGfx, (void *)0x06010600, 0x180);
-                gCurrentPinballGame->outLanePikaPosition = 2;
+                gCurrentPinballGame->outLanePikaPosition = PIKA_BOTH_SIDES;
                 gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
                 gCurrentPinballGame->pichuEntranceTimer = 1;
             }
@@ -293,7 +296,7 @@ void GivePrize(void)
                 gCurrentPinballGame->bannerPreserveBallState = 0;
                 gCurrentPinballGame->pichuWalkMode = 1;
                 gCurrentPinballGame->pichuEntranceTimer = 800;
-                gCurrentPinballGame->outLanePikaPosition = 0;
+                gCurrentPinballGame->outLanePikaPosition = PIKA_LEFT_SIDE;
                 gCurrentPinballGame->pikaChargeTarget = 168;
                 gCurrentPinballGame->pikaChargeProgress = 168;
                 gCurrentPinballGame->prevChargeFillValue = 13;

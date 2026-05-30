@@ -889,7 +889,8 @@ void UpdateKyogreFieldEntities(void)
             gCurrentPinballGame->freezeTrapPhase = KYOGRE_FREEZE_PHASE_CRACKED_VULNERABLE;
             break;
         case KYOGRE_FREEZE_PHASE_CRACKED_VULNERABLE:
-            if (gCurrentPinballGame->newButtonActions[0] || gCurrentPinballGame->newButtonActions[1])
+            if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER]
+                || gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
             {
                 gCurrentPinballGame->freezeTrapPauseTimer -= 90;
                 if (gCurrentPinballGame->freezeTrapPauseTimer < 0)
@@ -908,7 +909,8 @@ void UpdateKyogreFieldEntities(void)
             gCurrentPinballGame->freezeTrapPhase = KYOGRE_FREEZE_PHASE_SPLIT_VULNERABLE;
             break;
         case KYOGRE_FREEZE_PHASE_SPLIT_VULNERABLE:
-            if (gCurrentPinballGame->newButtonActions[0] || gCurrentPinballGame->newButtonActions[1])
+            if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER]
+                || gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
             {
                 gCurrentPinballGame->freezeTrapPauseTimer -= 90;
                 if (gCurrentPinballGame->freezeTrapPauseTimer < 0)
@@ -927,7 +929,8 @@ void UpdateKyogreFieldEntities(void)
             gCurrentPinballGame->freezeTrapPhase = KYOGRE_FREEZE_PHASE_LAST_HIT_VULNERABLE;
             break;
         case KYOGRE_FREEZE_PHASE_LAST_HIT_VULNERABLE:
-            if (gCurrentPinballGame->newButtonActions[0] || gCurrentPinballGame->newButtonActions[1])
+            if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER]
+                || gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
             {
                 gCurrentPinballGame->freezeTrapPauseTimer -= 90;
                 if (gCurrentPinballGame->freezeTrapPauseTimer < 0)
@@ -1096,8 +1099,11 @@ void UpdateKyogreFieldEntities(void)
                 break;
             case KYOGRE_WHIRLPOOL_PHASE_FULL_CAUGHT_BALL:
                 index = ((gCurrentPinballGame->vortexAnimTimer[i] % 40) / 8) + 6;
-                if (gCurrentPinballGame->newButtonActions[0] || gCurrentPinballGame->newButtonActions[1])
+                if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER]
+                    || gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
+                {
                     gCurrentPinballGame->vortexAnimTimer[i] += 8;
+                }
 
                 var4 = 29 - gCurrentPinballGame->vortexAnimTimer[i];
                 if (var4 < 10)
