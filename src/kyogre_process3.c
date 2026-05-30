@@ -56,9 +56,9 @@ void KyogreBoardProcess_3A_383E4(void)
     gCurrentPinballGame->legendaryFlashState = 0;
     gCurrentPinballGame->ballGrabbed = 0;
     gCurrentPinballGame->bossLightFadeInCounter = 0;
-    gCurrentPinballGame->ballRespawnState = 3;
+    gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
-    gCurrentPinballGame->ball->ballHidden = 1;
+    gCurrentPinballGame->ball->ballHidden = TRUE;
     gCurrentPinballGame->returnToMainBoardFlag = 0;
     gCurrentPinballGame->bannerSlideYOffset = 0;
     gCurrentPinballGame->bossAttackTimer = 0;
@@ -119,7 +119,7 @@ void KyogreBoardProcess_3B_3869C(void)
     switch (gCurrentPinballGame->boardState)
     {
     case LEGENDARY_BOARD_STATE_INTRO:
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+        gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
         if (gCurrentPinballGame->stageTimer < 500)
         {
             gCurrentPinballGame->cameraYAdjust = -64;
@@ -511,7 +511,7 @@ void UpdateKyogreEntityLogic(void)
             gCurrentPinballGame->bossEntityState = KYOGRE_ENTITY_STATE_PREPARE_LEAVING;
             gCurrentPinballGame->bossFramesetIndex = 79;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-            gCurrentPinballGame->ballRespawnState = 2;
+            gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_DISABLED;
             gCurrentPinballGame->ballRespawnTimer = 0;
         }
 
@@ -1070,9 +1070,11 @@ void UpdateKyogreFieldEntities(void)
                     xx = tempVector.x * tempVector.x;
                     yy = tempVector.y * tempVector.y;
                     squaredDistance = xx + yy;
-                    if (gCurrentPinballGame->ballGrabbed == 0 && gCurrentPinballGame->ballRespawnState == 0 &&
-                        gCurrentPinballGame->bonusModeHitCount < gCurrentPinballGame->legendaryHitsRequired &&
-                        gCurrentPinballGame->bossHitFlashTimer == 0 && squaredDistance < 400)
+                    if (gCurrentPinballGame->ballGrabbed == 0
+                        && !gCurrentPinballGame->ballRespawnState
+                        && gCurrentPinballGame->bonusModeHitCount < gCurrentPinballGame->legendaryHitsRequired
+                        &&gCurrentPinballGame->bossHitFlashTimer == 0
+                        && squaredDistance < 400)
                     {
                         m4aSongNumStart(SE_UNKNOWN_0x113);
                         PlayRumble(12);
@@ -1287,7 +1289,8 @@ void UpdateKyogreFieldEntities(void)
             squaredDistance = xx + yy;
 
             //Check if shockwave close enough to the ball.
-            if (gCurrentPinballGame->ballRespawnState == 0 && squaredDistance < gShockwaveSplashDistanceThresholds[gCurrentPinballGame->shockwaveAnimTimer])
+            if (!gCurrentPinballGame->ballRespawnState
+                && squaredDistance < gShockwaveSplashDistanceThresholds[gCurrentPinballGame->shockwaveAnimTimer])
             {
                 gCurrentPinballGame->freezeTrapPhase = KYOGRE_FREEZE_PHASE_ENCLOSE_BALL;
                 gCurrentPinballGame->freezeTrapAnimFrame = 0;

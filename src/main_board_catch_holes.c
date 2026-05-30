@@ -780,7 +780,7 @@ void InitCenterTrapMode(void)
     gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     gCurrentPinballGame->bonusTrapEnabled = 0;
     gCurrentPinballGame->scoreAddedInFrame = 10000;
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+    gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
     PlayRumble(8);
 }
 
@@ -791,7 +791,7 @@ void AnimateCenterTrapSequence(void)
         gCurrentPinballGame->modeAnimTimer--;
         if (gCurrentPinballGame->modeAnimTimer > 148)
         {
-            gCurrentPinballGame->ball->ballHidden = 1;
+            gCurrentPinballGame->ball->ballHidden = TRUE;
             gCurrentPinballGame->ballFrozenState = 1;
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->ball->velocity.y = 0;
@@ -823,11 +823,11 @@ void AnimateCenterTrapSequence(void)
             gCurrentPinballGame->trapAnimState = 2;
             gCurrentPinballGame->ball->velocity.x = 73;
             gCurrentPinballGame->ball->velocity.y = 236;
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->ballFrozenState = 0;
             gCurrentPinballGame->boardEntityActive = 0;
             gCurrentPinballGame->ball->scale = 0x88;
-            gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+            gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         }
         else if (gCurrentPinballGame->modeAnimTimer > 12)
         {
@@ -862,7 +862,7 @@ void TransitionToBonusField(void)
     SaveGameStateSnapshot(0);
     gCurrentPinballGame->ball->velocity.x = 0;
     gCurrentPinballGame->ball->velocity.y = 0;
-    gCurrentPinballGame->ball->ballHidden = 0;
+    gCurrentPinballGame->ball->ballHidden = FALSE;
     gCurrentPinballGame->ballFrozenState = 0;
     gCurrentPinballGame->ball->scale = 0x100;
     gCurrentPinballGame->trapAnimState = 0;

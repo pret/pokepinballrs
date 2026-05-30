@@ -43,9 +43,9 @@ void RayquazaBoardProcess_3A_3E79C(void)
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
     gCurrentPinballGame->timerBonus = 0;
-    gCurrentPinballGame->ballRespawnState = 3;
+    gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
-    gCurrentPinballGame->ball->ballHidden = 1;
+    gCurrentPinballGame->ball->ballHidden = TRUE;
     gCurrentPinballGame->cameraYAdjust = -88;
     gCurrentPinballGame->boardEntityCollisionMode = 1;
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
@@ -138,7 +138,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
     switch (gCurrentPinballGame->boardState)
     {
     case LEGENDARY_BOARD_STATE_INTRO:
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+        gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
         if (gCurrentPinballGame->introSequencePhase == 1)
         {
             gCurrentPinballGame->cameraYAdjust = 0;
@@ -581,7 +581,7 @@ void UpdateRayquazaEntityLogic(void)
             gCurrentPinballGame->bossEntityState = RAYQUAZA_ENTITY_STATE_YELLS;
             gCurrentPinballGame->bossFramesetIndex = 98;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-            gCurrentPinballGame->ballRespawnState = 2;
+            gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_DISABLED;
             gCurrentPinballGame->ballRespawnTimer = 0;
         }
 
@@ -1101,7 +1101,8 @@ void UpdateRayquazaMinionsAndEffects(void)
                 PlayRumble(8);
                 if (gCurrentPinballGame->vortexEntityState[0] < RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL
                     && gCurrentPinballGame->vortexEntityState[1] < RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL
-                    && gCurrentPinballGame->ballRespawnState == 0 && squaredDistance < 200)
+                    && !gCurrentPinballGame->ballRespawnState
+                    && squaredDistance < 200)
                 {
                     gMain.spriteGroups[SG_RAYQUAZA_LIGHTNING_BALL_GRAB_FX].active = TRUE;
                     gCurrentPinballGame->ballGrabTimer = 600;
@@ -1273,9 +1274,10 @@ void UpdateRayquazaMinionsAndEffects(void)
                 xx = tempVector.x * tempVector.x;
                 yy = tempVector.y * tempVector.y;
                 squaredDistance = xx + yy;
-                if (gCurrentPinballGame->ballGrabbed == 0 && gCurrentPinballGame->ballRespawnState == 0 &&
-                    gCurrentPinballGame->bonusModeHitCount < gCurrentPinballGame->legendaryHitsRequired &&
-                    gCurrentPinballGame->bossHitFlashTimer == 0 && squaredDistance < 300)
+                if (gCurrentPinballGame->ballGrabbed == 0
+                    && !gCurrentPinballGame->ballRespawnState
+                    && gCurrentPinballGame->bonusModeHitCount < gCurrentPinballGame->legendaryHitsRequired
+                    && gCurrentPinballGame->bossHitFlashTimer == 0 && squaredDistance < 300)
                 {
                     gCurrentPinballGame->ballGrabTimer = 6;
                     gCurrentPinballGame->ballFrozenState = 1;
@@ -1697,7 +1699,7 @@ void RenderWindCloudSprites(void)
             gMain.spriteGroups[SG_RAYQUAZA_FLYBY_RIGHT_WIND_SPEEDLINES_1B].active = TRUE;
             if (gCurrentPinballGame->vortexEntityState[0] < RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL
                 && gCurrentPinballGame->vortexEntityState[1] < RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL
-                && gCurrentPinballGame->ballRespawnState == 0)
+                && !gCurrentPinballGame->ballRespawnState)
             {
                 gCurrentPinballGame->ball->velocity.x += 500;
                 PlayRumble(13);
@@ -1728,7 +1730,7 @@ void RenderWindCloudSprites(void)
             gMain.spriteGroups[SG_RAYQUAZA_FLYBY_LEFT_WIND_SPEEDLINES_1B].active = TRUE;
             if (gCurrentPinballGame->vortexEntityState[0] < RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL
                 && gCurrentPinballGame->vortexEntityState[1] < RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL
-                && gCurrentPinballGame->ballRespawnState == 0)
+                && !gCurrentPinballGame->ballRespawnState)
             {
                 gCurrentPinballGame->ball->velocity.x -= 500;
                 PlayRumble(13);

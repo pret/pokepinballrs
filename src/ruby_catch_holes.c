@@ -95,7 +95,7 @@ void AnimateSharpedoCatchSequence(void)
         gCurrentPinballGame->modeAnimTimer--;
         if (gCurrentPinballGame->modeAnimTimer > 100)
         {
-            gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+            gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
             gCurrentPinballGame->ballFrozenState = 1;
 
             gCurrentPinballGame->ball->velocity.x = 0;
@@ -128,7 +128,7 @@ void AnimateSharpedoCatchSequence(void)
             }
             else
             {
-                gCurrentPinballGame->ball->ballHidden = 1;
+                gCurrentPinballGame->ball->ballHidden = TRUE;
                 gCurrentPinballGame->catchHoleAnimFrame = 8;
             }
         }
@@ -179,7 +179,7 @@ void AnimateSharpedoCatchSequence(void)
         {
             gCurrentPinballGame->ball->positionQ0.x = 193;
             gCurrentPinballGame->ball->positionQ0.y = 226;
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->catchHoleAnimFrame = 17;
         }
         else if (gCurrentPinballGame->modeAnimTimer > 16)
@@ -233,7 +233,7 @@ void AnimateSharpedoCatchSequence(void)
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
         gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         gCurrentPinballGame->catchHoleAnimFrame = 0;
     }
 }
@@ -257,7 +257,7 @@ void InitRubyEggHatchMode(void)
         gCurrentPinballGame->modeAnimTimer = 120;
     }
 
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+    gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 }
 
 void AnimateRubyEggHatchSequence(void)
@@ -266,7 +266,7 @@ void AnimateRubyEggHatchSequence(void)
 
     if (modeAnimTimer != 0)
     {
-        gCurrentPinballGame->ball->ballHidden = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
         gCurrentPinballGame->ballFrozenState = 1;
         gCurrentPinballGame->modeAnimTimer--;
 
@@ -307,7 +307,7 @@ void AnimateRubyEggHatchSequence(void)
     }
     else
     {
-        gCurrentPinballGame->ball->ballHidden = 0;
+        gCurrentPinballGame->ball->ballHidden = FALSE;
         gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
 
         gCurrentPinballGame->ball->positionQ0.x = 0x58;
@@ -315,7 +315,7 @@ void AnimateRubyEggHatchSequence(void)
         gCurrentPinballGame->ball->spinSpeed = 0;
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
         if (gCurrentPinballGame->rubyEggDeliveryState == 2)
         {
@@ -342,7 +342,7 @@ void InitRubyEvolutionShopMode(void)
     gCurrentPinballGame->scoreAddedInFrame = 500000;
     gMain.blendControl = 0xCE;
     gMain.blendBrightness = 0;
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+    gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 }
 
 void AnimateRubyEvolutionShopSequence(void)
@@ -350,7 +350,7 @@ void AnimateRubyEvolutionShopSequence(void)
 
     if (gCurrentPinballGame->modeAnimTimer > 0x18)
     {
-        gCurrentPinballGame->ball->ballHidden = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
         gCurrentPinballGame->ballFrozenState = 1;
         gCurrentPinballGame->modeAnimTimer--;
         gCurrentPinballGame->ball->velocity.x = 0;
@@ -378,7 +378,7 @@ void AnimateRubyEvolutionShopSequence(void)
         return;
     }
 
-    gCurrentPinballGame->ball->ballHidden = 0;
+    gCurrentPinballGame->ball->ballHidden = FALSE;
     gCurrentPinballGame->ballFrozenState = 0;
     gCurrentPinballGame->collisionCooldownTimer = 0x3C;
 
@@ -388,7 +388,7 @@ void AnimateRubyEvolutionShopSequence(void)
     gCurrentPinballGame->ball->positionQ0.y = 0x63;
 
     gCurrentPinballGame->ball->spinSpeed = 0;
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+    gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
     gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
     gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
     gCurrentPinballGame->ballCatchState = NOT_TRAPPED;

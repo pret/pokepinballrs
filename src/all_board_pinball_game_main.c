@@ -326,7 +326,7 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->scale = 0x80;
-        gCurrentPinballGame->ball->ballHidden = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
         gCurrentPinballGame->ballFrozenState = 1;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->modeAnimTimer = 120;
@@ -348,7 +348,7 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->scale = 0x80;
-        gCurrentPinballGame->ball->ballHidden = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
         gCurrentPinballGame->ballFrozenState = 1;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->whiscashState = WHISCASH_STATE_INIT_RETURN_FROM_BONUS;
@@ -364,7 +364,7 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->scale = 0x80;
-        gCurrentPinballGame->ball->ballHidden = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
         gCurrentPinballGame->ballFrozenState = 1;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->pelipperFrameTimer = 0;

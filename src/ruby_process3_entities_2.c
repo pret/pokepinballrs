@@ -374,7 +374,7 @@ void RubyPond_EntityLogic(void)
             }
 
             if (gCurrentPinballGame->whiscashFrameIx == WHISCASH_FRAME_ABSORB_BALL_START+2)
-                gCurrentPinballGame->ball->ballHidden = 1;
+                gCurrentPinballGame->ball->ballHidden = TRUE;
             break;
         case WHISCASH_STATE_TO_SPHEAL_BOARD:
             gCurrentPinballGame->startButtonDisabled = 1;
@@ -443,7 +443,7 @@ void RubyPond_EntityLogic(void)
 
             if (gCurrentPinballGame->whiscashFrameIx == WHISCASH_FRAME_SPITBALL)
             {
-                gCurrentPinballGame->ball->ballHidden = 0;
+                gCurrentPinballGame->ball->ballHidden = FALSE;
                 gCurrentPinballGame->ball->spinAngle -= 64;
                 gCurrentPinballGame->ball->positionQ8.x = 0x8500;
                 gCurrentPinballGame->ball->positionQ8.y = 0xC000;

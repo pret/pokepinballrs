@@ -28,8 +28,8 @@ void DuskullBonus_Setup(void)
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_DUSKULL_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballGrabbed = 0;
-    gCurrentPinballGame->ballRespawnState = 3;
-    gCurrentPinballGame->ball->ballHidden = 1;
+    gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
+    gCurrentPinballGame->ball->ballHidden = TRUE;
     gCurrentPinballGame->bonusModeHitCount = 0;
     gCurrentPinballGame->returnToMainBoardFlag = 0;
     gCurrentPinballGame->boardEntityCollisionMode = DUSCLOPS_ENTITY_COLLISION_MODE_NONE;
@@ -85,7 +85,7 @@ void DusclopsBoardProcess_3B_33130(void)
     switch (gCurrentPinballGame->boardState)
     {
         case DUSCLOPS_BOARD_STATE_0_INTRO:
-            gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+            gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
             if (gCurrentPinballGame->stageTimer < 120)
             {
                 temp = gCurrentPinballGame->stageTimer / 24;
@@ -911,7 +911,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
             {
                 gCurrentPinballGame->ball->velocity.x = (gMain.systemFrameCount % 2 * 300) + 65386;
                 gCurrentPinballGame->ball->velocity.y = 300;
-                gCurrentPinballGame->ball->ballHidden = 0;
+                gCurrentPinballGame->ball->ballHidden = FALSE;
                 m4aSongNumStart(SE_DUSCLOPS_BALL_LAUNCH); //Dusclops launch ball
                 PlayRumble(8);
             }
@@ -958,7 +958,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
 
         if (gCurrentPinballGame->captureSequenceFrame == 40)
         {
-            gCurrentPinballGame->ball->ballHidden = 1;
+            gCurrentPinballGame->ball->ballHidden = TRUE;
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->ball->velocity.y = 0;
         }
@@ -975,7 +975,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
 
         if (gCurrentPinballGame->bossAnimLoopCount == 0)
         {
-            gCurrentPinballGame->ballRespawnState = 2;
+            gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_DISABLED;
             gCurrentPinballGame->ballRespawnTimer = 0;
         }
 

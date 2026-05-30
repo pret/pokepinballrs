@@ -70,7 +70,7 @@ void UpdateKickbackLogic(void)
                 gCurrentPinballGame->kickbackAnimProgress = 120;
                 gCurrentPinballGame->kickbackAnimDuration = 120;
                 gCurrentPinballGame->kickbackLaunchTimer = gCurrentPinballGame->kickbackAnimProgress;
-                gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+                gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
                 gCurrentPinballGame->kickbackAnimFrameTimer = 0;
                 gCurrentPinballGame->kickbackFrameId = 0;
 
@@ -180,7 +180,7 @@ void UpdateKickbackLogic(void)
             m4aSongNumStart(SE_KICKBACK_THUNDERWAVE);
             gCurrentPinballGame->kickbackLaunchTimer = 0;
             gCurrentPinballGame->ballFrozenState = 0;
-            gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+            gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
             gCurrentPinballGame->holeIndicators[(gCurrentPinballGame->outLaneSide - 1) * 3] = 1;
 
             if (gCurrentPinballGame->allHolesLit == 0 &&

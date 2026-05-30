@@ -25,7 +25,7 @@ void MainBoardProcess_7B_12524(void)
 
     currentBallState->prevSpinAngle = currentBallState->spinAngle;
 
-    if (!gCurrentPinballGame->ballUpgradeTimerFrozen && gCurrentPinballGame->ballUpgradeCounter > 0)
+    if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeCounter > 0)
     {
         if (--gCurrentPinballGame->ballUpgradeCounter == 0)
         {
@@ -315,7 +315,8 @@ void BonusBoardProcess_7B_12BF8()
             gOamBuffer[oam->oamId].y = oam->yOffset + spriteGroup->baseY;
         }
 
-        if (gCurrentPinballGame->ballRespawnState == 1 || gCurrentPinballGame->ballRespawnState == 3)
+        if (gCurrentPinballGame->ballRespawnState == BALL_SPAWN_STATE_RESPAWN
+            || gCurrentPinballGame->ballRespawnState == BALL_SPAWN_STATE_INITIAL_SPAWN)
         {
             if (gCurrentPinballGame->ballRespawnTimer == 0)
             {
@@ -348,14 +349,14 @@ void BonusBoardProcess_7B_12BF8()
             }
 
             if (gCurrentPinballGame->ballRespawnTimer == 186)
-                primaryBall->ballHidden = 0;
+                primaryBall->ballHidden = FALSE;
 
             if (gCurrentPinballGame->ballRespawnTimer > 215)
             {
-                if (gCurrentPinballGame->ballRespawnState == 3)
+                if (gCurrentPinballGame->ballRespawnState == BALL_SPAWN_STATE_INITIAL_SPAWN)
                     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
 
-                gCurrentPinballGame->ballRespawnState = 0;
+                gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
                 spriteGroup->active = FALSE;
                 gCurrentPinballGame->ballFrozenState = 0;
                 DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
@@ -388,11 +389,11 @@ void BonusBoardProcess_7B_12BF8()
                 m4aSongNumStart(SE_UNKNOWN_0xF9);
 
             if (gCurrentPinballGame->ballRespawnTimer == 20)
-                primaryBall->ballHidden = 1;
+                primaryBall->ballHidden = TRUE;
 
             if (gCurrentPinballGame->ballRespawnTimer > 67)
             {
-                gCurrentPinballGame->ballRespawnState = 0;
+                gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
                 spriteGroup->active = FALSE;
                 DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
             }
@@ -400,7 +401,7 @@ void BonusBoardProcess_7B_12BF8()
     }
     else
     {
-        if (gCurrentPinballGame->ballUpgradeTimerFrozen == 0 && gCurrentPinballGame->ballUpgradeCounter != 0)
+        if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeCounter != 0)
         {
             gCurrentPinballGame->ballUpgradeCounter--;
             if (gCurrentPinballGame->ballUpgradeCounter == 0)

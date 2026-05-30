@@ -504,8 +504,8 @@ void ProcessBonusBoardBallDrain(void)
         }
         else
         {
-            gCurrentPinballGame->ball->ballHidden = 1;
-            gCurrentPinballGame->ballRespawnState = 1;
+            gCurrentPinballGame->ball->ballHidden = TRUE;
+            gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_RESPAWN;
             gCurrentPinballGame->ballRespawnTimer = 0;
             gCurrentPinballGame->ball->positionQ0.x = gBoardConfig.fieldLayout.ballSpawnX;
             gCurrentPinballGame->ball->positionQ0.y = gBoardConfig.fieldLayout.ballSpawnY;
@@ -577,7 +577,7 @@ void ResetBoardStateOnDeath(void)
         gCurrentPinballGame->ballUpgradeCounter = 0;
     }
 
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+    gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
     DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
     gCurrentPinballGame->bonusMultiplier = gCurrentPinballGame->progressLevel;
     gCurrentPinballGame->progressLevel = 1;

@@ -63,9 +63,9 @@ void KecleonBoardProcess_3A_35860(void)
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 120 * 60; // 120 seconds
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballGrabbed = 0;
-    gCurrentPinballGame->ballRespawnState = 3;
+    gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
-    gCurrentPinballGame->ball->ballHidden = 1;
+    gCurrentPinballGame->ball->ballHidden = TRUE;
     gCurrentPinballGame->returnToMainBoardFlag = 0;
     gCurrentPinballGame->kecleonTargetVisible = 1;
     gCurrentPinballGame->bossEntityState = KECLEON_ENTITY_STATE_SPAWN;
@@ -122,7 +122,7 @@ void KecleonBoardProcess_3B_35AA4(void)
     switch (gCurrentPinballGame->boardState)
     {
     case KECLEON_BOARD_STATE_INTRO:
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+        gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
         if (gCurrentPinballGame->stageTimer < 120)
         {
             gCurrentPinballGame->cameraYAdjust = (gCurrentPinballGame->stageTimer / 5) + 0xFFE8;
@@ -640,7 +640,7 @@ void UpdateKecleonEntityLogic(void)
                 {
                     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
                     gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-                    gCurrentPinballGame->ballRespawnState = 2;
+                    gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_DISABLED;
                     gCurrentPinballGame->ballRespawnTimer = 0;
                     gCurrentPinballGame->bossEntityState = KECLEON_ENTITY_STATE_RISE_FROM_DOWN;
                     gCurrentPinballGame->kecleonBoardHitState = 0;

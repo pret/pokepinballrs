@@ -90,6 +90,11 @@
 #define EVENT_TIMER_MODE_RUNNING 2
 #define EVENT_TIMER_MODE_COMPLETED 3
 
+#define BALL_SPAWN_STATE_LIVE_BALL 0
+#define BALL_SPAWN_STATE_RESPAWN 1
+#define BALL_SPAWN_STATE_DISABLED 2
+#define BALL_SPAWN_STATE_INITIAL_SPAWN 3
+
 struct BgOffsets
 {
     u16 xOffset;
@@ -711,7 +716,7 @@ struct PinballGame
     /*0x5F3*/ s8 bonusTrapEnabled;
     /*0x5F4*/ u16 collisionMapScrollY;
     /*0x5F6*/ s8 ballUpgradeType;
-    /*0x5F7*/ u8 ballUpgradeTimerFrozen;
+    /*0x5F7*/ u8 ballUpgradeTimerPaused;
     /*0x5F8*/ u16 ballUpgradeCounter;
     /*0x5FA*/ s8 boardEntityActive;
     /*0x5FB*/ s8 cameraScrollEnabled;

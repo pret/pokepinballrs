@@ -468,7 +468,7 @@ void BallSaverAnimation(void)
 
             gCurrentPinballGame->ballFrozenState = 2;
             gCurrentPinballGame->boardEntityActive = 1;
-            gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+            gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
             gCurrentPinballGame->startButtonDisabled = 1;
             m4aSongNumStart(SE_BALL_SAVED);
         }
@@ -491,7 +491,7 @@ void BallSaverAnimation(void)
         else
             gCurrentPinballGame->ball->oamPriority = 1;
 
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         gCurrentPinballGame->activePortraitType = 0;
         gCurrentPinballGame->startButtonDisabled = 0;
     }

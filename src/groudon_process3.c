@@ -49,9 +49,9 @@ void GroudonBoardProcess_3A_3B120(void)
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
     gCurrentPinballGame->timerBonus = 0;
-    gCurrentPinballGame->ballRespawnState = 3;
+    gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
-    gCurrentPinballGame->ball->ballHidden = 1;
+    gCurrentPinballGame->ball->ballHidden = TRUE;
     gCurrentPinballGame->returnToMainBoardFlag = 0;
     gCurrentPinballGame->boardEntityCollisionMode = GROUDON_COLLISION_MODE_ACTIVE;
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
@@ -141,7 +141,7 @@ void GroudonBoardProcess_3B_3B49C(void)
     switch (gCurrentPinballGame->boardState)
     {
     case LEGENDARY_BOARD_STATE_INTRO:
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+        gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
         if (gCurrentPinballGame->stageTimer < 500)
         {
             gCurrentPinballGame->cameraYAdjust = -64;
@@ -623,7 +623,7 @@ void UpdateGroudonEntityLogic(void)
             gCurrentPinballGame->bossFramesetIndex = 32;
             gCurrentPinballGame->boardEntityCollisionMode = GROUDON_COLLISION_MODE_NONE;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-            gCurrentPinballGame->ballRespawnState = 2;
+            gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_DISABLED;
             gCurrentPinballGame->ballRespawnTimer = 0;
         }
 
@@ -1101,7 +1101,9 @@ void UpdateGroudonFieldEntities(void)
             if (gCurrentPinballGame->projectileFlightTimer >= 10)
             {
                 varSL = (gCurrentPinballGame->projectileFlightTimer % 8) / 4 + gCurrentPinballGame->projectileDirection * 2;
-                if (squaredDistance <= 240 && gCurrentPinballGame->ballRespawnState == 0 && gCurrentPinballGame->ballGrabTimer < 600)
+                if (squaredDistance <= 240
+                    && !gCurrentPinballGame->ballRespawnState
+                    && gCurrentPinballGame->ballGrabTimer < 600)
                 {
                     MPlayStart(&gMPlayInfo_SE1, &se_unk_11f);
                     gCurrentPinballGame->projectileFlightTimer = 10;
@@ -1650,7 +1652,8 @@ void UpdateGroudonFieldEntities(void)
             xx = tempVector.x * tempVector.x;
             yy = tempVector.y * tempVector.y;
             squaredDistance = xx + yy;
-            if (gCurrentPinballGame->ballRespawnState == 0 && squaredDistance < gShockwaveSplashDistanceThresholds[gCurrentPinballGame->shockwaveAnimTimer])
+            if (!gCurrentPinballGame->ballRespawnState
+                && squaredDistance < gShockwaveSplashDistanceThresholds[gCurrentPinballGame->shockwaveAnimTimer])
             {
                 gCurrentPinballGame->trapAngleQ16 = ArcTan2(-tempVector.x, tempVector.y);
                 gCurrentPinballGame->ball->velocity.x = (Cos(gCurrentPinballGame->trapAngleQ16) * -400) / 20000;

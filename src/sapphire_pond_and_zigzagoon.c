@@ -73,7 +73,7 @@ void UpdatePelipperPondEntity(void)
         {
             if (gCurrentPinballGame->pelipperFrameTimer == 0)
             {
-                gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+                gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
                 gCurrentPinballGame->ballFrozenState = 1;
                 gCurrentPinballGame->ball->velocity.x = 0;
                 gCurrentPinballGame->ball->velocity.y = 0;
@@ -91,7 +91,7 @@ void UpdatePelipperPondEntity(void)
         {
             gCurrentPinballGame->ball->positionQ0.x = 157;
             gCurrentPinballGame->ball->positionQ0.y = 134;
-            gCurrentPinballGame->ball->ballHidden = 1;
+            gCurrentPinballGame->ball->ballHidden = TRUE;
             var_sl = 5;
         }
         else
@@ -229,7 +229,7 @@ void UpdatePelipperPondEntity(void)
 
         if (gCurrentPinballGame->pelipperFrameTimer == 13)
         {
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->pelipperBallDropVelX = 5;
             gCurrentPinballGame->pelipperBallDropVelY = -25;
             gCurrentPinballGame->pelipperBallDropPosX = (gCurrentPinballGame->pelipperPosX / 10 + 157) * 10;
@@ -258,7 +258,7 @@ void UpdatePelipperPondEntity(void)
                 if (gCurrentPinballGame->ball->positionQ0.y >= 91)
                 {
                     gCurrentPinballGame->ball->positionQ0.y = 91;
-                    gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+                    gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
                     gCurrentPinballGame->ballFrozenState = 0;
                     gCurrentPinballGame->ball->velocity.x = 128;
                     gCurrentPinballGame->ball->velocity.y = 256;

@@ -52,8 +52,8 @@ void SphealBoardProcess_3A_42E48(void)
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnTimer = 0;
     gCurrentPinballGame->ballGrabbed = 0;
-    gCurrentPinballGame->ballRespawnState = 0;
-    gCurrentPinballGame->ball->ballHidden = 1;
+    gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
+    gCurrentPinballGame->ball->ballHidden = TRUE;
     gCurrentPinballGame->ballFrozenState = 1;
     gCurrentPinballGame->ball->velocity.x = 0;
     gCurrentPinballGame->ball->velocity.y = 0;
@@ -69,7 +69,7 @@ void SphealBoardProcess_3A_42E48(void)
     gCurrentPinballGame->deliveryAnimTimer = 0;
     gCurrentPinballGame->unk594 = 0;
     gCurrentPinballGame->unk596 = 0;
-    gCurrentPinballGame->ballDeliveryActive = 1;
+    gCurrentPinballGame->ballDeliveryActive = TRUE;
 
     // Clear minion info, used for Sealeo. (3rd slot not used on this board)
     for (i = 0; i < 3; i++)
@@ -149,7 +149,7 @@ void SphealBoardProcess_3B_43228(void)
     switch (gCurrentPinballGame->boardState)
     {
     case SPHEAL_BOARD_STATE_INTRO:
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+        gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
         if (gCurrentPinballGame->stageTimer < 340)
         {
             if (gCurrentPinballGame->stageTimer < 321)
@@ -176,7 +176,7 @@ void SphealBoardProcess_3B_43228(void)
                 m4aMPlayAllStop();
                 MPlayStart(&gMPlayInfo_SE1, &se_unk_13b);
                 gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-                gCurrentPinballGame->ballRespawnState = 2;
+                gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_DISABLED;
                 gCurrentPinballGame->ballRespawnTimer = 0;
             }
 
@@ -1036,7 +1036,7 @@ void SphealBoard_WhiscashDeliversBall(void)
         {
             gCurrentPinballGame->deliveryAnimFrameIndex = 18;
             gMain.spriteGroups[SG_SPHEAL_WHISCASH_ENTITY].active = FALSE;
-            gCurrentPinballGame->ballDeliveryActive = 0;
+            gCurrentPinballGame->ballDeliveryActive = FALSE;
         }
 
         if (gCurrentPinballGame->deliveryAnimFrameIndex == 9)
@@ -1059,7 +1059,7 @@ void SphealBoard_WhiscashDeliversBall(void)
         if (gCurrentPinballGame->deliveryAnimFrameIndex == 8)
         {
             m4aSongNumStart(SE_WHISCASH_SPIT_BALL);
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->ball->spinAngle -= 0x40;
             gCurrentPinballGame->ball->positionQ8.x = 0x8F00;
             gCurrentPinballGame->ball->positionQ8.y = 0xC300;
@@ -1128,7 +1128,7 @@ void SphealBoard_PelipperDeliversBall(void)
 
         if (gCurrentPinballGame->pelipperFrameTimer == 13)
         {
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->pelipperBallDropVelX = -10;
             gCurrentPinballGame->pelipperBallDropVelY = -25;
             gCurrentPinballGame->pelipperBallDropPosX = ((gCurrentPinballGame->pelipperPosX / 10) + 157) * 10;
@@ -1157,14 +1157,14 @@ void SphealBoard_PelipperDeliversBall(void)
                 if (gCurrentPinballGame->ball->positionQ0.y >= 181)
                 {
                     gCurrentPinballGame->ball->positionQ0.y = 181;
-                    gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+                    gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
                     gCurrentPinballGame->ballFrozenState = 0;
                     gCurrentPinballGame->ball->velocity.x = -10;
                     gCurrentPinballGame->ball->velocity.y = 0;
                     gCurrentPinballGame->boardEntityActive = 0;
                     gCurrentPinballGame->ball->oamPriority = 3;
                     gCurrentPinballGame->boardLayerDepth = 0;
-                    gCurrentPinballGame->ballDeliveryActive = 0;
+                    gCurrentPinballGame->ballDeliveryActive = FALSE;
                     m4aSongNumStart(SE_UNKNOWN_0xE5);
                     PlayRumble(7);
                 }

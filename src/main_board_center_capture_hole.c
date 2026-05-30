@@ -560,7 +560,7 @@ void RunMonCaptureSequence(void)
         DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], 0x060164C0, 0x80);
         DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], 0x06016760, 0x80);
 
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+        gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 
         if (gCurrentPinballGame->captureSequenceFrame == 1)
         {
@@ -750,7 +750,7 @@ void RunMonCaptureSequence(void)
         if (temp_r0 < 0)
         {
             temp_r0 = 0;
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
         }
 
         {
@@ -803,7 +803,7 @@ void RunMonCaptureSequence(void)
 
         if (spriteGroup->active)
         {
-            gCurrentPinballGame->ball->ballHidden = 1;
+            gCurrentPinballGame->ball->ballHidden = TRUE;
             spriteGroup->baseX = gCurrentPinballGame->ball->screenPosition.x;
             spriteGroup->baseY = gCurrentPinballGame->ball->screenPosition.y;
             temp_r3 = gCaptureShakeOffsets[gCurrentPinballGame->captureSequenceTimer - 17] + 7;
@@ -961,7 +961,7 @@ void RunMonCaptureSequence(void)
         }
 
         gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX]->active = FALSE;
-        gCurrentPinballGame->ball->ballHidden = 0;
+        gCurrentPinballGame->ball->ballHidden = FALSE;
         gCurrentPinballGame->ball->velocity.y = -256;
         gCurrentPinballGame->ball->velocity.x = 40;
         gCurrentPinballGame->ball->spinSpeed = 256;
@@ -1293,7 +1293,7 @@ void RunMonCaptureSequence(void)
         break;
 
     case 34:
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         gCurrentPinballGame->ball->oamPriority = 3;
         gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_INACTIVE;
         gCurrentPinballGame->captureSequenceFrame = 0;

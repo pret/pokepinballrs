@@ -91,7 +91,7 @@ void CheckKecleonEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
 
         if (arrayValue == 0)
             return;
-        if (gCurrentPinballGame->ball->ballHidden != 0)
+        if (gCurrentPinballGame->ball->ballHidden)
             return;
         if (gCurrentPinballGame->bossEntityState >= KECLEON_ENTITY_STATE_HIT_WHILE_STANDING)
             return;
@@ -116,7 +116,7 @@ void CheckKecleonEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
 
         if (arrayValue == 0)
             return;
-        if (gCurrentPinballGame->ball->ballHidden != 0)
+        if (gCurrentPinballGame->ball->ballHidden)
             return;
         if (gCurrentPinballGame->bossEntityState == KECLEON_ENTITY_STATE_RESPOND_TO_HIT)
             return;
