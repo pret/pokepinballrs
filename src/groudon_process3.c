@@ -46,7 +46,7 @@ void GroudonBoardProcess_3A_3B120(void)
     else
         gCurrentPinballGame->legendaryHitsRequired = 15;
 
-    gCurrentPinballGame->boardModeType = 0;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnState = 3;
@@ -155,7 +155,7 @@ void GroudonBoardProcess_3B_3B49C(void)
                 gCurrentPinballGame->flippersDisabled = 0;
 
             if (gCurrentPinballGame->stageTimer == 650)
-                gCurrentPinballGame->boardModeType = 1;
+                gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
         }
         else
         {
@@ -256,7 +256,8 @@ void GroudonBoardProcess_3B_3B49C(void)
     RenderGroudonSprites();
     AnimateGroudonBackground();
 
-    if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2
+    if (gCurrentPinballGame->eventTimerType 
+        && gCurrentPinballGame->eventTimer < 2
         && gMain.modeChangeFlags == MODE_CHANGE_NONE)
     {
         m4aMPlayAllStop();
@@ -598,7 +599,7 @@ void UpdateGroudonEntityLogic(void)
         }
         break;
     case GROUDON_ENTITY_STATE_SUFFICIENT_HITS:
-        gCurrentPinballGame->boardModeType = 3;
+        gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
 
         // Alternating completions lead to escape vs catch
         // This will happen on the 4th/9th/etc board. ( %5 == 3 completed)

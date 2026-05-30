@@ -12,7 +12,7 @@ extern u8 gCatchSpritePalettes[];
 
 extern const u8 gCatchMonAppearFx_Gfx[];
 extern const u8 gCatchMonAppearFx_Pal[];
-extern const u8 gDefaultBallPalette[];
+extern const u8 gDefaultTimerPalette[];
 extern const u8 gJirachiFx_Gfx[][0x480];
 extern const u8 gCapturePalette[];
 extern const s16 gCatchMonRevealFrameData[8][2];
@@ -65,7 +65,7 @@ void InitCatchEmMode(void)
 
     gCurrentPinballGame->boardSubState = CATCH_EM_SUBSTATE_BUILD_WEIGHTS;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->boardModeType = 1;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_CATCH_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->creatureHitCount = 0;
@@ -89,7 +89,7 @@ void InitCatchEmMode(void)
     }
     gCurrentPinballGame->catchEmModeStartCount++;
 
-    DmaCopy16(3, gDefaultBallPalette, (void *)PLTT + 0x180, 0x20);
+    DmaCopy16(3, gDefaultTimerPalette, (void *)PLTT + 0x180, 0x20);
 
     for (i = 0; i < 6; i++)
     {
@@ -109,7 +109,8 @@ void UpdateCatchEmMode(void)
 {
     s16 i;
 
-    if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2
+    if (gCurrentPinballGame->eventTimerType
+        && gCurrentPinballGame->eventTimer < 2
         && gCurrentPinballGame->boardSubState < CATCH_EM_SUBSTATE_END_CATCH_HIT_PHASE)
     {
         m4aMPlayAllStop();
@@ -179,7 +180,7 @@ void UpdateCatchEmMode(void)
                 }
                 else if (gCurrentPinballGame->modeAnimTimer < 17)
                 {
-                    gCurrentPinballGame->boardModeType = 2;
+                    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
                     gCurrentPinballGame->boardSubState++;
                 }
             }
@@ -214,7 +215,7 @@ void UpdateCatchEmMode(void)
                 }
                 else if (gCurrentPinballGame->modeAnimTimer == 0)
                 {
-                    gCurrentPinballGame->boardModeType = 2;
+                    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
                     gCurrentPinballGame->boardSubState++;
                 }
             }
@@ -306,7 +307,7 @@ void InitJirachiBonus(void)
 {
     gCurrentPinballGame->boardSubState = JIRACHI_CATCH_SUBSTATE_LOAD_MON_SPRITE;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->boardModeType = 1;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 1800;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->creatureHitCount = 0;
@@ -334,7 +335,7 @@ void InitJirachiBonus(void)
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
-    DmaCopy16(3, gDefaultBallPalette, (void *)0x05000180, 0x20);
+    DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
 }
 
 void UpdateJirachiBonus(void)
@@ -507,7 +508,7 @@ void UpdateJirachiBonus(void)
         {
             gCurrentPinballGame->modeAnimTimer = 40;
             if (gCurrentPinballGame->stageTimer == 499)
-                gCurrentPinballGame->boardModeType = 2;
+                gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
         }
 
         gCurrentPinballGame->stageTimer++;
@@ -515,7 +516,8 @@ void UpdateJirachiBonus(void)
         if (gCurrentPinballGame->creatureHitCooldown)
             gCurrentPinballGame->creatureHitCooldown--;
 
-        if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2 
+        if (gCurrentPinballGame->eventTimerType
+            && gCurrentPinballGame->eventTimer < 2
             && gCurrentPinballGame->boardSubState < JIRACHI_CATCH_SUBSTATE_BOARD_STATE_CLEANUP)
         {
             m4aMPlayAllStop();

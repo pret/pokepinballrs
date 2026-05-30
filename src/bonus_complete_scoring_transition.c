@@ -259,7 +259,7 @@ void TransitionFromBonusToMainBoard(void)
     gMain.isBonusField = 0;
     gMain.modeChangeFlags = MODE_CHANGE_NONE;
     gCurrentPinballGame->eventTimer = 0;
-    gCurrentPinballGame->boardModeType = 0;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
     if (gCurrentPinballGame->numCompletedBonusStages > 4)
         gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD] = 1;
 

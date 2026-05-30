@@ -59,7 +59,7 @@ void KecleonBoardProcess_3A_35860(void)
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = KECLEON_BOARD_STATE_INTRO;
-    gCurrentPinballGame->boardModeType = 1;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 120 * 60; // 120 seconds
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballGrabbed = 0;
@@ -213,7 +213,9 @@ void KecleonBoardProcess_3B_35AA4(void)
     RenderKecleonSprites();
     UpdateKecleonScopeItem();
     UpdateKecleonScopeVision();
-    if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2 && gMain.modeChangeFlags == MODE_CHANGE_NONE)
+    if (gCurrentPinballGame->eventTimerType
+        && gCurrentPinballGame->eventTimer < 2
+        && gMain.modeChangeFlags == MODE_CHANGE_NONE)
     {
         m4aMPlayAllStop();
         m4aSongNumStart(MUS_END_OF_BALL3);
@@ -636,7 +638,7 @@ void UpdateKecleonEntityLogic(void)
                 }
                 else
                 {
-                    gCurrentPinballGame->boardModeType = 3;
+                    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
                     gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
                     gCurrentPinballGame->ballRespawnState = 2;
                     gCurrentPinballGame->ballRespawnTimer = 0;

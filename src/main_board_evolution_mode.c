@@ -8,7 +8,7 @@ extern struct SongHeader se_evo_item_appear;
 extern struct SongHeader se_evo_item_finish_appear;
 extern struct SongHeader se_evo_item_collected;
 
-extern const u8 gDefaultBallPalette[];
+extern const u8 gDefaultTimerPalette[];
 extern const u8 *gEvoItemAppear_GfxList[];
 extern const u8 gEvoItemPalettes[][0x20];
 extern const s16 gEvoItemAppearFrameThresholds[];
@@ -39,7 +39,7 @@ void InitEvolutionMode(void)
 {
     gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_SHUFFLE_EVO_ITEM_PLACEMENTS;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->boardModeType = 2;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->saverTimeRemaining = 3600;
@@ -65,7 +65,7 @@ void InitEvolutionMode(void)
             gCurrentPinballGame->evoItemGfxIndex = 0;
     }
 
-    DmaCopy16(3, gDefaultBallPalette, (void *)0x05000180, 0x20);
+    DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
     gCurrentPinballGame->evoArrowProgress = 0;
     gCurrentPinballGame->shopArrowActive = 0;
     gCurrentPinballGame->catchModeEventTimer = 0;
@@ -84,7 +84,8 @@ void UpdateEvolutionMode(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2
+    if (gCurrentPinballGame->eventTimerType
+        && gCurrentPinballGame->eventTimer < 2
         && gCurrentPinballGame->boardSubState < EVOLUTION_SUBSTATE_END_EVO_PHASE)
     {
         m4aMPlayAllStop();
@@ -181,7 +182,7 @@ void UpdateEvolutionMode(void)
             gCurrentPinballGame->boardSubState++;
         break;
     case EVOLUTION_SUBSTATE_REGISTER_CAPTURE:
-        gCurrentPinballGame->boardModeType = 3;
+        gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
         gCurrentPinballGame->preEvoSpecies = gCurrentPinballGame->currentSpecies;
         RegisterCaptureOrEvolution(1);
         gCurrentPinballGame->postEvoSpecies = gCurrentPinballGame->currentSpecies;

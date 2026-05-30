@@ -83,6 +83,12 @@
 #define MODE_CHANGE_BONUS_BANNER  0x80 //2^7
 #define MODE_CHANGE_EXPIRED_BONUS_BANNER 0xC0 // 2^6 + 2^7
 
+#define EVENT_TIMER_MODE_NONE 0
+// Note: Bonus boards start with timer 'paused', and it gets started
+// when the ball spawns. (board process 7)
+#define EVENT_TIMER_MODE_PAUSED 1
+#define EVENT_TIMER_MODE_RUNNING 2
+#define EVENT_TIMER_MODE_COMPLETED 3
 
 struct BgOffsets
 {
@@ -373,7 +379,7 @@ struct PinballGame
     /*0x28A*/ s16 catchTargetY;
     /*0x28C*/ u8 filler28C[0x4];
     /*0x290*/ u32 globalAnimFrameCounter;
-    /*0x294*/ s8 boardModeType;
+    /*0x294*/ s8 eventTimerType;
     /*0x295*/ u8 unk295;
     /*0x296*/ u16 eventTimer; //Timer for events (Only bonus fields or all events?)
     /*0x298*/ u16 cutsceneTilemapColumn;

@@ -4,7 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 
-extern const u8 gDefaultBallPalette[];
+extern const u8 gDefaultTimerPalette[];
 
 void CleanupTravelModeState(void)
 {
@@ -34,18 +34,19 @@ void InitTravelMode(void)
 {
     gCurrentPinballGame->boardSubState = TRAVEL_SUBSTATE_INIT;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->boardModeType = 2;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 3600;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->saverTimeRemaining = 1800;
-    DmaCopy16(3, gDefaultBallPalette, (void *)0x05000180, 0x20);
+    DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
 }
 
 void UpdateTravelMode(void)
 {
     s16 var0;
 
-    if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2
+    if (gCurrentPinballGame->eventTimerType
+        && gCurrentPinballGame->eventTimer < 2
         && gCurrentPinballGame->boardSubState < TRAVEL_SUBSTATE_BOARD_STATE_CLEANUP)
     {
         m4aMPlayAllStop();
@@ -126,7 +127,7 @@ void UpdateTravelMode(void)
             gCurrentPinballGame->boardSubState++;
         break;
     case TRAVEL_SUBSTATE_GRAVITY_WELL:
-        gCurrentPinballGame->boardModeType = 3;
+        gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
         gCurrentPinballGame->boardSubState++;
         gCurrentPinballGame->stageTimer = 0;
         gCurrentPinballGame->portraitCycleFrame = 0;

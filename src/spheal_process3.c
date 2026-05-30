@@ -47,7 +47,7 @@ void SphealBoardProcess_3A_42E48(void)
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = SPHEAL_BOARD_STATE_INTRO;
-    gCurrentPinballGame->boardModeType = 1;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnTimer = 0;
@@ -156,7 +156,7 @@ void SphealBoardProcess_3B_43228(void)
                 gCurrentPinballGame->cameraYAdjust = (gCurrentPinballGame->stageTimer / 5) + 0xFFC0;
 
             if (gCurrentPinballGame->stageTimer == 325)
-                gCurrentPinballGame->boardModeType = 2;
+                gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
 
             gCurrentPinballGame->stageTimer++;
         }
@@ -170,7 +170,7 @@ void SphealBoardProcess_3B_43228(void)
     case SPHEAL_BOARD_STATE_ACTIVE_PHASE:
         if (gCurrentPinballGame->eventTimer == 0)
         {
-            gCurrentPinballGame->boardModeType = 3;
+            gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
             if (gCurrentPinballGame->stageTimer == 0)
             {
                 m4aMPlayAllStop();

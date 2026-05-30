@@ -982,7 +982,7 @@ gSapphirePainterPalette:: @ 0x081BFCE4
 gRubyBoardPalette:: @ 0x081BFEE4
 	.incbin "baserom.gba", 0x1BFEE4, 0x180
 
-gDefaultBallPalette:: @ 0x081C0064
+gDefaultTimerPalette:: @ 0x081C0064
 	.incbin "baserom.gba", 0x1C0064, 0x80
 
 gLocationPalettes:: @ 0x081C00E4

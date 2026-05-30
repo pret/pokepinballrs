@@ -24,7 +24,7 @@ void DuskullBonus_Setup(void)
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_0_INTRO;
-    gCurrentPinballGame->boardModeType = 1;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_DUSKULL_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballGrabbed = 0;
@@ -182,7 +182,7 @@ void DusclopsBoardProcess_3B_33130(void)
             break;
     }
 
-    if (gCurrentPinballGame->boardModeType)
+    if (gCurrentPinballGame->eventTimerType)
     {
         if (gCurrentPinballGame->eventTimer < 2)
         {
@@ -649,7 +649,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
         gCurrentPinballGame->bossAnimLoopCount = 184;
         gCurrentPinballGame->bossFramesetIndex = DUSCLOPS_FRAME_INTRO_START;
         tileOffset = 0;
-        gCurrentPinballGame->boardModeType = 1;
+        gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
         break;
     }
 
@@ -730,7 +730,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
         else
         {
             gCurrentPinballGame->boardEntityCollisionMode = DUSCLOPS_ENTITY_COLLISION_MODE_DUSCLOPS;
-            gCurrentPinballGame->boardModeType = 2;
+            gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
         }
 
         break;
@@ -970,7 +970,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
     }
     case DUSCLOPS_ENTITY_STATE_VANISH:
     {
-        gCurrentPinballGame->boardModeType = 3;
+        gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
 
         if (gCurrentPinballGame->bossAnimLoopCount == 0)

@@ -44,7 +44,7 @@ void KyogreBoardProcess_3A_383E4(void)
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = LEGENDARY_BOARD_STATE_INTRO;
-    gCurrentPinballGame->boardModeType = 0;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
     gCurrentPinballGame->timerBonus = 0;
     if (gCurrentPinballGame->numCompletedBonusStages % 5 == 3)
@@ -234,7 +234,10 @@ void KyogreBoardProcess_3B_3869C(void)
     UpdateKyogreEntityLogic();
     RenderKyogreSprites();
     AnimateKyogreBackground();
-    if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2 && gMain.modeChangeFlags == MODE_CHANGE_NONE)
+
+    if (gCurrentPinballGame->eventTimerType
+        && gCurrentPinballGame->eventTimer < 2
+        && gMain.modeChangeFlags == MODE_CHANGE_NONE)
     {
         m4aMPlayAllStop();
         m4aSongNumStart(MUS_END_OF_BALL3);
@@ -310,7 +313,7 @@ void UpdateKyogreEntityLogic(void)
             }
 
             if (gCurrentPinballGame->bossFramesetIndex == 32)
-                gCurrentPinballGame->boardModeType = 1;
+                gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
 
             if (gCurrentPinballGame->bossFramesetIndex == 33)
             {
@@ -487,7 +490,7 @@ void UpdateKyogreEntityLogic(void)
             gCurrentPinballGame->shockwaveAlreadyHit = 1;
         break;
     case KYOGRE_ENTITY_STATE_SUFFICIENT_HITS:
-        gCurrentPinballGame->boardModeType = 3;
+        gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
 
         if (gCurrentPinballGame->numCompletedBonusStages % 5 == 3)
         {

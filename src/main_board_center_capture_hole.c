@@ -546,7 +546,7 @@ void RunMonCaptureSequence(void)
         if (gMain.selectedField < MAIN_FIELD_COUNT
             && (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_CATCH_EM_MODE
                 || gCurrentPinballGame->boardState == MAIN_BOARD_STATE_JIRACHI_CATCH_MODE))
-            gCurrentPinballGame->boardModeType = 1;
+            gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
 
         gCurrentPinballGame->ballFrozenState = 1;
 

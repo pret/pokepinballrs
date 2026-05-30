@@ -4,7 +4,7 @@
 #include "constants/bg_music.h"
 
 extern const u8 gTimerWarningPalette_Fast[];
-extern const u8 gDefaultBallPalette[];
+extern const u8 gDefaultTimerPalette[];
 extern const u8 gTimerWarningPalette_Slow[];
 
 void AllBoardProcess_8A_4CEA8(void)
@@ -165,13 +165,14 @@ void ProcessEventTimer(void)
     s16 sp0[4];
     s16 var2;
 
-    if (gCurrentPinballGame->boardModeType == 0)
+    if (gCurrentPinballGame->eventTimerType == EVENT_TIMER_MODE_NONE)
         return;
 
     if (gCurrentPinballGame->eventTimer == 0)
         return;
 
-    if (gCurrentPinballGame->boardModeType == 2 && gMain.modeChangeFlags == MODE_CHANGE_NONE)
+    if (gCurrentPinballGame->eventTimerType == EVENT_TIMER_MODE_RUNNING
+        && gMain.modeChangeFlags == MODE_CHANGE_NONE)
         gCurrentPinballGame->eventTimer--;
 
     sp0[0] = gCurrentPinballGame->eventTimer / 3600;
@@ -180,7 +181,7 @@ void ProcessEventTimer(void)
     sp0[2] = var2 / 600;
     var2 %= 600;
     sp0[3] = var2 / 60;
-    if (gCurrentPinballGame->boardModeType == 3)
+    if (gCurrentPinballGame->eventTimerType == EVENT_TIMER_MODE_COMPLETED)
     {
         for (i = 0; i < 4; i++)
         {
@@ -189,7 +190,7 @@ void ProcessEventTimer(void)
         }
 
         DmaCopy16(3, &gBG0TilemapBuffer[0x160], (void *)0x060022C0, 0x80);
-        gCurrentPinballGame->boardModeType = 0;
+        gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
         gCurrentPinballGame->eventTimer = 0;
     }
     else
@@ -217,7 +218,7 @@ void ProcessEventTimer(void)
         }
         else
         {
-            DmaCopy16(3, gDefaultBallPalette, (void *)0x05000180, 0x20);
+            DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
         }
 
         if (gCurrentPinballGame->eventTimer == 900)
@@ -231,7 +232,7 @@ void ProcessEventTimer(void)
         }
         else
         {
-            DmaCopy16(3, gDefaultBallPalette, (void *)0x05000180, 0x20);
+            DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
         }
     }
 }
@@ -240,7 +241,7 @@ void ResetEventState(void)
 {
     s16 i;
 
-    gCurrentPinballGame->boardModeType = 0;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
     gCurrentPinballGame->eventTimer = 0;
     for (i = 0; i < 4; i++)
     {

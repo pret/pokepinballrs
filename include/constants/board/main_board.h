@@ -148,11 +148,10 @@ enum BannerGfxModes{
     BANNER_MODE_SHROOMISH_CATCH_BURST = 7,
 };
 
-enum outlaneSide{
+enum OutlaneSide{
     OUTLANE_LEFT = 1,
     OUTLANE_RIGHT = 2
 };
-//kickbackOccupied
 
 enum PikaCoverage {
     PIKA_LEFT_SIDE = 0,

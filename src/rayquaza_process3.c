@@ -40,7 +40,7 @@ void RayquazaBoardProcess_3A_3E79C(void)
     else
         gCurrentPinballGame->legendaryHitsRequired = 15;
 
-    gCurrentPinballGame->boardModeType = 0;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnState = 3;
@@ -233,7 +233,9 @@ void RayquazaBoardProcess_3B_3EB2C(void)
     UpdateRayquazaMinionsAndEffects();
     UpdateRayquazaEntityLogic();
     RenderRayquazaSprites();
-    if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2 && gMain.modeChangeFlags == MODE_CHANGE_NONE)
+    if (gCurrentPinballGame->eventTimerType
+        && gCurrentPinballGame->eventTimer < 2
+        && gMain.modeChangeFlags == MODE_CHANGE_NONE)
     {
         m4aMPlayAllStop();
         m4aSongNumStart(MUS_END_OF_BALL3);
@@ -559,7 +561,7 @@ void UpdateRayquazaEntityLogic(void)
         }
         break;
     case RAYQUAZA_ENTITY_STATE_SUFFICIENT_HITS:
-        gCurrentPinballGame->boardModeType = 3;
+        gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
         if (gCurrentPinballGame->numCompletedBonusStages % 10 == 9)
         {
             // Catch Rayquaza
@@ -1844,7 +1846,7 @@ void UpdateRayquazaIntroSequence(void)
                 gCurrentPinballGame->cameraYAdjust = (gCurrentPinballGame->introFrameCounter - 512) / 2 - 88;
 
             if (gCurrentPinballGame->introFrameCounter == 624)
-                gCurrentPinballGame->boardModeType = 1;
+                gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
 
             if (gCurrentPinballGame->introFrameCounter < 513)
                 gCurrentPinballGame->bgScrollSpeed = gCurrentPinballGame->introFrameCounter / 2;

@@ -353,7 +353,7 @@ void BonusBoardProcess_7B_12BF8()
             if (gCurrentPinballGame->ballRespawnTimer > 215)
             {
                 if (gCurrentPinballGame->ballRespawnState == 3)
-                    gCurrentPinballGame->boardModeType = 2;
+                    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
 
                 gCurrentPinballGame->ballRespawnState = 0;
                 spriteGroup->active = FALSE;
