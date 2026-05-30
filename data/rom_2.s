@@ -5644,7 +5644,7 @@ gCoinsCollectedSpriteSet:: @ 0x086B1834
     packed_sprite_oam x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xdb, priority=0x0, paletteNum=0x3
 .2byte 0
 
-gUnknown_086B1846:: @ 0x086B1846
+gRubyHatchEggSprite:: @ 0x086B1846
 .2byte 2
     packed_sprite_oam x=-0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x32, tileNum=0xe7, priority=0x1, paletteNum=0xb
 .2byte 0
@@ -5665,7 +5665,7 @@ gSpoinkLauncherSpriteSet:: @ 0x086B1862
     packed_sprite_oam x=0x4, y=0x20, spriteSize=SPRITE_SIZE_16x8, tileNum=0x113, priority=0x1, paletteNum=0xb
 .2byte 0
 
-gUnknown_086B187C:: @ 0x086B187C
+gRubyHatchCaveSpriteSet:: @ 0x086B187C
 .2byte 4
     packed_sprite_oam x=-0x18, y=-0x20, spriteSize=SPRITE_SIZE_32x32, tileNum=0x115, priority=0x1, paletteNum=0xb
 .2byte 0
@@ -5676,14 +5676,14 @@ gUnknown_086B187C:: @ 0x086B187C
     packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x135, priority=0x1, paletteNum=0xb
 .2byte 0
 
-gUnknown_086B189E:: @ 0x086B189E
+gRubyChikoritaSpriteSet:: @ 0x086B189E
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x139, priority=0x1, paletteNum=0x3
 .2byte 0
     packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x149, priority=0x1, paletteNum=0x3
 .2byte 0
 
-gUnknown_086B18B0:: @ 0x086B18B0
+gRubyLinooneLeftSpriteSet:: @ 0x086B18B0
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x151, priority=0x2, paletteNum=0x4
 .2byte 0
@@ -5692,7 +5692,7 @@ gUnknown_086B18B0:: @ 0x086B18B0
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x157, priority=0x2, paletteNum=0x4
 .2byte 0
 
-gUnknown_086B18CA:: @ 0x086B18CA
+gRubyLinooneRightSpriteSet:: @ 0x086B18CA
 .2byte 3
     packed_sprite_oam x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x159, priority=0x2, paletteNum=0x4
 .2byte 0
@@ -5701,7 +5701,7 @@ gUnknown_086B18CA:: @ 0x086B18CA
     packed_sprite_oam x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x15f, priority=0x2, paletteNum=0x4
 .2byte 0
 
-gUnknown_086B18E4:: @ 0x086B18E4
+gRubySharpedoSpriteSet:: @ 0x086B18E4
 .2byte 3
     packed_sprite_oam x=0xA, y=-0x1, spriteSize=SPRITE_SIZE_8x16, tileNum=0x161, priority=0x1, paletteNum=0x6
 .2byte 0
@@ -5710,7 +5710,7 @@ gUnknown_086B18E4:: @ 0x086B18E4
     packed_sprite_oam x=0x20, y=0x17, spriteSize=SPRITE_SIZE_8x8, tileNum=0x173, priority=0x1, paletteNum=0x6
 .2byte 0
 
-gUnknown_086B18FE:: @ 0x086B18FE
+gRubyBumpersSpriteSet:: @ 0x086B18FE
 .2byte 6
    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x174, priority=0x2, paletteNum=0x9
 .2byte 0
@@ -5725,21 +5725,21 @@ gUnknown_086B18FE:: @ 0x086B18FE
     packed_sprite_oam x=0xF, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x184, priority=0x2, paletteNum=0x9
 .2byte 0
 
-gUnknown_086B1930:: @ 0x086B1930
+gRubyMartDoorSpriteSet:: @ 0x086B1930
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x18c, priority=0x1, paletteNum=0x5
 .2byte 0
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x194, priority=0x1, paletteNum=0x5
 .2byte 0
 
-gUnknown_086B1942:: @ 0x086B1942
+gRubyCyndaquilSpriteSet:: @ 0x086B1942
 .2byte 2
     packed_sprite_oam x=-0x11, y=-0xE, spriteSize=SPRITE_SIZE_32x32, tileNum=0x198, priority=0x1, paletteNum=0x3
 .2byte 0
     packed_sprite_oam x=-0x11, y=0x12, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1a8, priority=0x1, paletteNum=0x3
 .2byte 0
 
-gUnknown_086B1954:: @ 0x086B1954
+gRubyMakuhitaSpriteSet:: @ 0x086B1954
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1ac, priority=0x1, paletteNum=0x8
 .2byte 0
@@ -5748,7 +5748,7 @@ gUnknown_086B1954:: @ 0x086B1954
     packed_sprite_oam x=0x8, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1c0, priority=0x1, paletteNum=0x8
 .2byte 0
 
-gUnknown_086B196E:: @ 0x086B196E
+gRubyGulpinStackSpriteSet:: @ 0x086B196E
 .2byte 6
     packed_sprite_oam x=-0x20, y=-0xE, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
 .2byte 0
@@ -5763,7 +5763,7 @@ gUnknown_086B196E:: @ 0x086B196E
     packed_sprite_oam x=-0xF, y=-0x3, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
 .2byte 0
 
-gUnknown_086B19A0:: @ 0x086B19A0
+gRubyShopSignChangeSpriteSet:: @ 0x086B19A0
 .2byte 3
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x32, tileNum=0x1e8, priority=0x0, paletteNum=0x2
 .2byte 0
@@ -5784,14 +5784,14 @@ gRubyChikoritaProjectileCollisionFxSpriteSet:: @ 0x086B19C4
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, vFlip=0x1,  tileNum=0x214, priority=0x0, paletteNum=0x3
 .2byte 0
 
-gUnknown_086B19D6:: @ 0x086B19D6
+gRubyNuzleafSpriteSet:: @ 0x086B19D6
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x21c, priority=0x2, paletteNum=0x4
 .2byte 0
     packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x22c, priority=0x2, paletteNum=0x4
 .2byte 0
 
-gUnknown_086B19E8:: @ 0x086B19E8
+gRubyBoardRightEdgeSpriteSet:: @ 0x086B19E8
 .2byte 5
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x230, priority=0x0, paletteNum=0x7
 .2byte 0
@@ -5804,7 +5804,7 @@ gUnknown_086B19E8:: @ 0x086B19E8
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x230, priority=0x0, paletteNum=0x7
 .2byte 0
 
-gUnknown_086B1A12:: @ 0x086B1A12
+gRubyWhiscashSpriteSet:: @ 0x086B1A12
 .2byte 4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x234, priority=0x1, paletteNum=0x9
 .2byte 0
@@ -5815,12 +5815,12 @@ gUnknown_086B1A12:: @ 0x086B1A12
     packed_sprite_oam x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x254, priority=0x1, paletteNum=0x9
 .2byte 0
 
-gUnknown_086B1A34:: @ 0x086B1A34
+gRubyRampPrizeSpriteSet:: @ 0x086B1A34
 .2byte 1
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x258, priority=0x1, paletteNum=0xa
 .2byte 0
 
-gUnknown_086B1A3E:: @ 0x086B1A3E
+gRubyMakuhitaPunchFxSpriteSet:: @ 0x086B1A3E
 .2byte 1
    packed_sprite_oam x=-0x11, y=-0xF, spriteSize=SPRITE_SIZE_32x32, tileNum=0x25c, priority=0x0, paletteNum=0x3
 .2byte 0
@@ -6012,7 +6012,7 @@ gUnknown_086B1C32:: @ 0x086B1C32
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x27d, priority=0x1, paletteNum=0x3
 .2byte 0
 
-gUnknown_086B1C3C:: @ 0x086B1C3C
+gSapphireBoardRightEdgeSpriteSet:: @ 0x086B1C3C
 .2byte 5
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x28d, priority=0x0, paletteNum=0x5
 .2byte 0
@@ -6564,7 +6564,7 @@ gUnknown_086B2324:: @ 0x086B2324
     packed_sprite_oam x=-0x52, y=0x2C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2f6, priority=0x1, paletteNum=0x6
 .2byte 0
 
-gUnknown_086B235E:: @ 0x086B235E
+gRubyTotodileEggDeliverySpriteSet:: @ 0x086B235E
 .2byte 6
     packed_sprite_oam x=0xC, y=-0x33, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2f8, priority=0x0, paletteNum=0xe
 .2byte 0
@@ -6606,11 +6606,11 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gMainModeStartBannerSpriteSet
 .4byte gMainTileBreakSpriteSet
 .4byte gCenterHoleGravityFxSpriteSet
-.4byte gUnknown_086B22AE
+.4byte gUnknown_086B22AE @ Unused?
 .4byte gEvolutionBannerLightningSpriteSet
 .4byte gTravelPainterSpriteSet
 .4byte gChargeIndicatorDeviceSpriteSet
-.4byte gUnknown_086B1CDA
+.4byte gUnknown_086B1CDA @ Catch tile related, can't narrow further
 .4byte gPortraitBordersSpriteSet    @ 30
 .4byte gPortraitTrimSpriteSet
 .4byte gPortraitTrimSpriteSet
@@ -6629,41 +6629,41 @@ gRubyBoardSpriteSets:: @ 0x086B2390
 .4byte gJirachiStarTrailFx1SpriteSet
 .4byte gJirachiStarTrailFx2SpriteSet
 .4byte gJirachiStarTrailFx3SpriteSet
-.4byte gUnknown_086B1846
+.4byte gRubyHatchEggSprite
 .4byte gHatchMonEntitySpriteSet
 .4byte gMonCatchBallAbsorbPokemonFxSpriteSet    @ 50
-.4byte gUnknown_086B1942
-.4byte gUnknown_086B187C
-.4byte gUnknown_086B189E
+.4byte gRubyCyndaquilSpriteSet
+.4byte gRubyHatchCaveSpriteSet
+.4byte gRubyChikoritaSpriteSet
 .4byte gPikachuKickbackSpriteSet
 .4byte gPichuKickbackSpriteSet
 .4byte gSpoinkLauncherSpriteSet
-.4byte gUnknown_086B196E
-.4byte gUnknown_086B1954
-.4byte gUnknown_086B18B0
-.4byte gUnknown_086B18CA    @ 60
-.4byte gUnknown_086B18E4
-.4byte gUnknown_086B18FE
-.4byte gUnknown_086B1A12
+.4byte gRubyGulpinStackSpriteSet
+.4byte gRubyMakuhitaSpriteSet
+.4byte gRubyLinooneLeftSpriteSet
+.4byte gRubyLinooneRightSpriteSet    @ 60
+.4byte gRubySharpedoSpriteSet
+.4byte gRubyBumpersSpriteSet
+.4byte gRubyWhiscashSpriteSet
 .4byte gPikaChargingSpinnerSpriteSet
-.4byte gUnknown_086B1930
-.4byte gUnknown_086B1A34
+.4byte gRubyMartDoorSpriteSet
+.4byte gRubyRampPrizeSpriteSet
 .4byte gEvoItemSpriteSet
-.4byte gUnknown_086B1A3E
+.4byte gRubyMakuhitaPunchFxSpriteSet
 .4byte gBallUpgradeFxSpriteSet
 .4byte gMainBoardBallSpriteSet    @ 70
-.4byte gUnknown_086B19D6
+.4byte gRubyNuzleafSpriteSet
 .4byte gInitialLocationSelectedFxSpriteSet
 .4byte gCatchBurstLightningStrikeSpriteSet
 .4byte gCatchBurstTileFlashFxSpriteSet
 .4byte gCatchBurstPanelElectrifyFxSpriteSet
 .4byte gPikaKickbackLaunchFxSpriteSet
 .4byte gCoinsCollectedSpriteSet
-.4byte gUnknown_086B19A0
+.4byte gRubyShopSignChangeSpriteSet
 .4byte gEvoItemSpawnFxSpriteSet
 .4byte gGameOverTextSpriteSet    @ 80
-.4byte gUnknown_086B19E8
-.4byte gUnknown_086B235E
+.4byte gRubyBoardRightEdgeSpriteSet
+.4byte gRubyTotodileEggDeliverySpriteSet
 .4byte gTreecko1UpDeliverySpriteSet
 
 gSapphireBoardSpriteSets:: @ 0x086B24E0
@@ -6689,13 +6689,13 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gMainModeStartBannerSpriteSet
 .4byte gMainTileBreakSpriteSet    @ 20
 .4byte gCenterHoleGravityFxSpriteSet
-.4byte gUnknown_086B22AE
+.4byte gUnknown_086B22AE @ Unused?
 .4byte gEvolutionBannerLightningSpriteSet
 .4byte gTravelPainterSpriteSet
 .4byte gChargeIndicatorDeviceSpriteSet
 .4byte gUnknown_086B1AE6
 .4byte gUnknown_086B2324
-.4byte gUnknown_086B1CDA
+.4byte gUnknown_086B1CDA @ Catch tile related, can't narrow further
 .4byte gPortraitBordersSpriteSet
 .4byte gPortraitTrimSpriteSet    @ 30
 .4byte gPortraitTrimSpriteSet
@@ -6719,7 +6719,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gUnknown_086B1BC4
 .4byte gUnknown_086B1BDE    @ 50
 .4byte gUnknown_086B1BF8
-.4byte gUnknown_086B1846
+.4byte gRubyHatchEggSprite
 .4byte gHatchMonEntitySpriteSet
 .4byte gMonCatchBallAbsorbPokemonFxSpriteSet
 .4byte gPikachuKickbackSpriteSet
@@ -6752,7 +6752,7 @@ gSapphireBoardSpriteSets:: @ 0x086B24E0
 .4byte gCoinsCollectedSpriteSet
 .4byte gEvoItemSpawnFxSpriteSet
 .4byte gGameOverTextSpriteSet
-.4byte gUnknown_086B1C3C
+.4byte gSapphireBoardRightEdgeSpriteSet
 .4byte gTreecko1UpDeliverySpriteSet
 
 

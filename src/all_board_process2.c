@@ -588,5 +588,5 @@ void ResetBoardStateOnDeath(void)
 
     }
 
-    gCurrentPinballGame->rampGateState = 0;
+    gCurrentPinballGame->makuhitaPunchState = 0;
 }

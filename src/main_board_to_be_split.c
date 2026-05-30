@@ -498,7 +498,7 @@ void UpdateRubyEvolutionShopSprite(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[SG_RUBY_78];
+    group = &gMain.spriteGroups[SG_RUBY_SHOP_SIGN_CHANGE];
     if (gCurrentPinballGame->shopTransitionActive == 0)
     {
         if (gCurrentPinballGame->evoArrowProgress > 2)
@@ -554,7 +554,7 @@ void UpdateRubyEvolutionShopSprite(void)
         {
             LoadShopItemGraphics(gCurrentPinballGame->evolutionShopActive);
             gCurrentPinballGame->shopTransitionActive = 0;
-            gMain.spriteGroups[SG_RUBY_78].active = FALSE;
+            gMain.spriteGroups[SG_RUBY_SHOP_SIGN_CHANGE].active = FALSE;
         }
     }
 }
@@ -848,7 +848,7 @@ void InitTotodileEggDelivery(void)
     gCurrentPinballGame->eggDeliveryY = 2080;
     gCurrentPinballGame->totodileDeliveryFrame = 0;
     gCurrentPinballGame->totodileDeliveryTimer = 0;
-    gMain.spriteGroups[SG_RUBY_82].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_TOTODILE_EGG_DELIVERY].active = TRUE;
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->portraitOffsetX = 240;
     gCurrentPinballGame->portraitOffsetY = 160;
@@ -867,7 +867,7 @@ void AnimateTotodileEggDelivery(void)
     s16 var0;
 
     var0 = 0;
-    group = &gMain.spriteGroups[SG_RUBY_82];
+    group = &gMain.spriteGroups[SG_RUBY_TOTODILE_EGG_DELIVERY];
     if (gPikaSaverFrameData[gCurrentPinballGame->totodileDeliveryFrame][1] > gCurrentPinballGame->totodileDeliveryTimer)
     {
         gCurrentPinballGame->totodileDeliveryTimer++;
@@ -1294,7 +1294,7 @@ void UpdateRubyEggHatchAnimation(void)
     var0 = 0;
     var1 = 0;
     var2 = 0;
-    group = &gMain.spriteGroups[SG_RUBY_48];
+    group = &gMain.spriteGroups[SG_RUBY_HATCH_EGG];
     var3 = 0;
     switch (gCurrentPinballGame->eggAnimationPhase)
     {
@@ -1414,12 +1414,12 @@ void UpdateRubyEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
 
-    group = &gMain.spriteGroups[SG_RUBY_52];
+    group = &gMain.spriteGroups[SG_RUBY_HATCH_CAVE];
     group->baseX = gCurrentPinballGame->eggBasePosX;
     group->baseY = gCurrentPinballGame->eggBasePosY;
     for (i = 0; i < 4; i++)
     {
-        oamSimple = &gMain.spriteGroups[SG_RUBY_52].oam[i];
+        oamSimple = &gMain.spriteGroups[SG_RUBY_HATCH_CAVE].oam[i];
         gOamBuffer[oamSimple->oamId].priority = priority;
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -1435,7 +1435,7 @@ void UpdateHatchCave(void)
     s16 var0;
 
     priority = 1;
-    group = &gMain.spriteGroups[SG_RUBY_51];
+    group = &gMain.spriteGroups[SG_RUBY_CYNDAQUIL];
     var0 = gMain.systemFrameCount % 36;
     gCurrentPinballGame->cyndaquilFrame = 0;
     gCurrentPinballGame->cyndaquilCollisionEnabled = 1;

@@ -37,7 +37,7 @@ void RubyBoardProcess_3A_19A20(void)
     gCurrentPinballGame->chargeIndicatorScaleX = 256;
     gCurrentPinballGame->chargeIndicatorScaleY = 256;
     gCurrentPinballGame->rampPrizeType = 2;
-    DrawRubyNuzleafPlatformSprite();
+    DrawRubyRampPrize();
 
     gCurrentPinballGame->sideBumperShakeOffset[0] = 3;
     gCurrentPinballGame->sideBumperShakeOffset[1] = 3;

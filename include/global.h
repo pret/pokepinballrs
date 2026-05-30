@@ -437,11 +437,11 @@ struct PinballGame
     /*0x2FC*/ s8 nuzleafGfxTileIndex;
     /*0x2FD*/ s8 nuzleafFrameIndex;
     /*0x2FE*/ u16 nuzleafFrameTimer;
-    /*0x300*/ s8 rampGateState;
-    /*0x301*/ s8 rampGateHitFlag;
-    /*0x302*/ s8 rampPrizeVisibilityTimer;
+    /*0x300*/ s8 makuhitaPunchState;
+    /*0x301*/ s8 makuhitaPunchTriggeredFlag;
+    /*0x302*/ s8 makuhitaHitAnimationTimer;
     /*0x303*/ s8 unk303;
-    /*0x304*/ u16 rampGateAnimCounter;
+    /*0x304*/ u16 makuhitaAnimCounter;
     /*0x306*/ s8 pelipperState;
     /*0x307*/ s8 pelipperSwallowAnimIndex;
     /*0x308*/ u16 bumperHitsSinceReset;

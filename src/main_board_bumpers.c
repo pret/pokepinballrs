@@ -330,7 +330,7 @@ void HandleRubyBumperHit(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[SG_RUBY_63];
+    group = &gMain.spriteGroups[SG_RUBY_WHISCASH];
     if (gCurrentPinballGame->bumperHitCountdown > 0)
     {
         if (gCurrentPinballGame->bumperHitCountdown == 2)

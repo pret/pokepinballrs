@@ -1319,7 +1319,7 @@ gSapphireBumperLeft_Gfx:: @ 0x0847A40C
 gSapphireBumperLeftHit_Gfx:: @ 0x0847D10C
 	.incbin "baserom.gba", 0x47D10C, 0xE00
 
-gRubyRampGateTileGfx:: @ 0x0847DF0C
+gRubyMakuhitaGfx:: @ 0x0847DF0C
 	.incbin "baserom.gba", 0x47DF0C, 0x1E00
 
 gSideBumperGfx:: @ 0x0847FD0C

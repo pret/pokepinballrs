@@ -23,7 +23,7 @@ void UpdateRubyBoardEntityRendering(void)
     {
         UpdateNuzleafEntity();
         AnimateRubyShopDoor();
-        DrawRubyNuzleafPlatformSprite();
+        DrawRubyRampPrize();
     }
     AnimateOneUpSprite();
     if (gCurrentPinballGame->cameraYViewport < 168)
@@ -52,7 +52,7 @@ void UpdateRubyBoardEntityRendering(void)
     }
     if (gCurrentPinballGame->cameraYViewport > 115)
     {
-        UpdateRubyRampPrizeGate();
+        UpdateMakuhitaEntity();
     }
     if (gCurrentPinballGame->cameraYViewport > 130)
     {
@@ -99,7 +99,7 @@ void UpdateRubyBoardEntityLogic(void)
     }
 }
 
-//Duplicate of HandleSapphireFlipperButtonInput, with "gCurrentPinballGame->rampGateHitFlag = 1;" added in the final if statement
+//Duplicate of HandleSapphireFlipperButtonInput, with "gCurrentPinballGame->makuhitaPunchTriggeredFlag = 1;" added in the final if statement
 void HandleRubyFlipperButtonInput(void)
 {
     int tmp;
@@ -143,6 +143,6 @@ void HandleRubyFlipperButtonInput(void)
         gCurrentPinballGame->ballPowerUpLight[1] = gCurrentPinballGame->ballPowerUpLight[0];
         gCurrentPinballGame->ballPowerUpLight[0] = tmp;
 
-        gCurrentPinballGame->rampGateHitFlag = 1;
+        gCurrentPinballGame->makuhitaPunchTriggeredFlag = 1;
     }
 }

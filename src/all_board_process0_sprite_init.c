@@ -11,21 +11,21 @@ void RubyBoardProcess_0A_50848(void)
         gMain.spriteGroups[i].active = FALSE;
 
     gMain.spriteGroups[SG_RUBY_PIKA_CHARGING_SPINNER].active = TRUE;
-    group = &gMain.spriteGroups[SG_RUBY_48]; // fake match?
+    group = &gMain.spriteGroups[SG_RUBY_HATCH_EGG]; // fake match?
     gMain.spriteGroups[SG_RUBY_BALL].active = TRUE;
     gMain.spriteGroups[SG_PAUSE_PANEL].active = TRUE;
     gMain.spriteGroups[SG_PAUSE_TOP_BORDER].active = TRUE;
     gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER].active = TRUE;
     gMain.spriteGroups[SG_RUBY_CHARGE_INDICATOR_DEVICE].active = TRUE;
-    gMain.spriteGroups[SG_RUBY_81].active = TRUE;
-    gMain.spriteGroups[SG_RUBY_65].active = TRUE;
-    gMain.spriteGroups[SG_RUBY_71].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_BOARD_RIGHT_EDGE].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_MART_DOOR].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_NUZLEAF].active = TRUE;
     gMain.spriteGroups[SG_RUBY_RAMP_PRIZE].active = TRUE;
-    gMain.spriteGroups[SG_RUBY_51].active = TRUE;
-    gMain.spriteGroups[SG_RUBY_61].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_CYNDAQUIL].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_SHARPEDO].active = TRUE;
     group->active = TRUE;
-    gMain.spriteGroups[SG_RUBY_52].active = TRUE;
-    gMain.spriteGroups[SG_RUBY_62].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_HATCH_CAVE].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_BUMPERS].active = TRUE;
     LoadSpriteSets(
         gFieldSpriteSets[gMain.selectedField].spriteSets,
         gFieldSpriteSets[gMain.selectedField].numSpriteSets,
@@ -38,49 +38,49 @@ void RubyBoardProcess_0B_50918(void)
 
     gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = FALSE;
     gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = FALSE;
-    gMain.spriteGroups[SG_RUBY_48].active = FALSE;
-    gMain.spriteGroups[SG_RUBY_71].active = FALSE;
+    gMain.spriteGroups[SG_RUBY_HATCH_EGG].active = FALSE;
+    gMain.spriteGroups[SG_RUBY_NUZLEAF].active = FALSE;
     for (i = 51; i < 67; i++)
         gMain.spriteGroups[i].active = FALSE;
 
     gCurrentPinballGame->randomSpriteVariantSeed = gMain.systemFrameCount % 25;
     if (gCurrentPinballGame->cameraYViewport < 110)
     {
-        gMain.spriteGroups[SG_RUBY_65].active = TRUE;
-        gMain.spriteGroups[SG_RUBY_71].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_MART_DOOR].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_NUZLEAF].active = TRUE;
         gMain.spriteGroups[SG_RUBY_RAMP_PRIZE].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport < 168)
     {
-        gMain.spriteGroups[SG_RUBY_48].active = TRUE;
-        gMain.spriteGroups[SG_RUBY_52].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_HATCH_EGG].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_HATCH_CAVE].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport < 220)
     {
-        gMain.spriteGroups[SG_RUBY_51].active = TRUE;
-        gMain.spriteGroups[SG_RUBY_61].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_CYNDAQUIL].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_SHARPEDO].active = TRUE;
         gMain.spriteGroups[SG_RUBY_PIKA_CHARGING_SPINNER].active = TRUE;
         if (gCurrentPinballGame->shouldProcessWhiscash)
-            gMain.spriteGroups[SG_RUBY_63].active = TRUE;
+            gMain.spriteGroups[SG_RUBY_WHISCASH].active = TRUE;
         else
-            gMain.spriteGroups[SG_RUBY_62].active = TRUE;
+            gMain.spriteGroups[SG_RUBY_BUMPERS].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport > 63)
     {
-        gMain.spriteGroups[SG_RUBY_53].active = TRUE;
-        gMain.spriteGroups[SG_RUBY_57].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_CHIKORITA].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_GULPIN_STACK].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport > 115)
-        gMain.spriteGroups[SG_RUBY_58].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_MAKUHITA].active = TRUE;
 
     if (gCurrentPinballGame->cameraYViewport > 130)
     {
-        gMain.spriteGroups[SG_RUBY_59].active = TRUE;
-        gMain.spriteGroups[SG_RUBY_60].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_LINOONE_LEFT].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_LINOONE_RIGHT].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport > 216)
@@ -115,7 +115,7 @@ void SapphireBoardProcess_0A_50AD4(void)
     gMain.spriteGroups[SG_PAUSE_TOP_BORDER].active = TRUE;
     gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER].active = TRUE;
     gMain.spriteGroups[SG_SAPPHIRE_CHARGE_INDICATOR_DEVICE].active = TRUE;
-    gMain.spriteGroups[SG_SAPPHIRE_85].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_BOARD_RIGHT_EDGE].active = TRUE;
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
                    gMain.spriteGroups);

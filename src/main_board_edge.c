@@ -13,9 +13,9 @@ void DrawBoardEdgeBanner(void)
     struct SpriteGroup *group;
 
     if (gMain.selectedField == FIELD_RUBY)
-        group = &gMain.spriteGroups[SG_RUBY_81];
+        group = &gMain.spriteGroups[SG_RUBY_BOARD_RIGHT_EDGE];
     else
-        group = &gMain.spriteGroups[SG_SAPPHIRE_85];
+        group = &gMain.spriteGroups[SG_SAPPHIRE_BOARD_RIGHT_EDGE];
 
     if (group->active)
     {

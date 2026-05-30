@@ -149,7 +149,7 @@ void AnimateChikoritaSprite(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[SG_RUBY_53];
+    group = &gMain.spriteGroups[SG_RUBY_CHIKORITA];
     if (gCurrentPinballGame->chikoritaFlashActive)
     {
         index = gChikoritaFlashFrameIndices[gCurrentPinballGame->chikoritaFlashTimer / 5];
@@ -200,7 +200,7 @@ void UpdateGulpinBossState(void)
     s16 index;
 
     var0 = gGulpinAnimData[gCurrentPinballGame->gulpinAnimFrameIndex];
-    group = &gMain.spriteGroups[SG_RUBY_57];
+    group = &gMain.spriteGroups[SG_RUBY_GULPIN_STACK];
     group->baseX = 9 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 288 - gCurrentPinballGame->cameraYOffset;
     if (gCurrentPinballGame->gulpinCurrentLevel > gCurrentPinballGame->seedotCount)
@@ -409,10 +409,10 @@ void UpdateRubySideBumperAnimation(void)
         }
         else
         {
-            if (gCurrentPinballGame->rampGateState == 0)
-                gCurrentPinballGame->rampGateState = 1;
+            if (gCurrentPinballGame->makuhitaPunchState == 0)
+                gCurrentPinballGame->makuhitaPunchState = 1;
             else
-                gCurrentPinballGame->rampGateState = 0;
+                gCurrentPinballGame->makuhitaPunchState = 0;
         }
 
         gCurrentPinballGame->sideBumperBounceCount[0] = 0;
@@ -441,7 +441,7 @@ void DrawRubySideBumperSprites(void)
     {
         index = gSideBumperGfxFrameIndices[gCurrentPinballGame->sideBumperAnimPhase[i]][0];
         DmaCopy16(3, gSideBumperGfx[index], (void *)0x06012A20 + i * 0x100, 0x100);
-        group = &gMain.spriteGroups[SG_RUBY_59 + i];
+        group = &gMain.spriteGroups[SG_RUBY_LINOONE_LEFT + i];
         if (group->active)
         {
             int var0 = i * 120 - (gCurrentPinballGame->cameraXOffset - 48);
