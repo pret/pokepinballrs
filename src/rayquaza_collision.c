@@ -3,7 +3,7 @@
 #include "constants/board/rayquaza_states.h"
 
 //One known callsite is 080145D2 during the rayquaza bonus stage
-s16 CollisionCheck_Rayquaza(struct Vector16 *arg0, u16 *arg1)
+s16 CollisionCheck_Rayquaza(struct Vector16 *ballPosition, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -16,15 +16,15 @@ s16 CollisionCheck_Rayquaza(struct Vector16 *arg0, u16 *arg1)
     return_val = 0;
     gCurrentPinballGame->ball->spinAcceleration = 0;
 
-    if (arg0->y < 0x200)
+    if (ballPosition->y < 0x200)
     {
         s16 r2;
         s32 tileMapPage;
         s32 boardLayer;
-        vec1.x = arg0->x / 8;
-        vec1.y = arg0->y / 8;
-        vec2.x = arg0->x % 8;
-        vec2.y = arg0->y % 8;
+        vec1.x = ballPosition->x / 8;
+        vec1.y = ballPosition->y / 8;
+        vec2.x = ballPosition->x % 8;
+        vec2.y = ballPosition->y % 8;
         tileMapPage = vec1.y / 64;
         boardLayer = gCurrentPinballGame->boardLayerDepth;
         vec1.y %= 64;
@@ -38,7 +38,7 @@ s16 CollisionCheck_Rayquaza(struct Vector16 *arg0, u16 *arg1)
         sp02 = 0;
     }
 
-    CheckRayquazaEntityCollision(arg0, &sp00, &sp02);
+    CheckRayquazaEntityCollision(ballPosition, &sp00, &sp02);
     switch_enum = sp02 & 0xF;
     some_enum = sp02 >> 4;
 
@@ -97,7 +97,7 @@ s16 CollisionCheck_Rayquaza(struct Vector16 *arg0, u16 *arg1)
     return return_val;
 }
 
-void CheckRayquazaEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
+void CheckRayquazaEntityCollision(struct Vector16 *ballPosition, u16 *arg1, u8 *arg2)
 {
     s16 deltaX;
     s16 deltaY;
@@ -109,8 +109,8 @@ void CheckRayquazaEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
     if (*arg2 & 0xF)
         return;
 
-    deltaX = arg0->x - gCurrentPinballGame->bossCollisionX;
-    deltaY = arg0->y - gCurrentPinballGame->bossCollisionY;
+    deltaX = ballPosition->x - gCurrentPinballGame->bossCollisionX;
+    deltaY = ballPosition->y - gCurrentPinballGame->bossCollisionY;
 
     if ((deltaX < 0 || deltaX >= 0x80) || (deltaY < 0 || deltaY >= 0x80))
         return;

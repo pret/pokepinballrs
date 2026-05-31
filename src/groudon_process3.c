@@ -126,7 +126,7 @@ void GroudonBoardProcess_3A_3B120(void)
         gCurrentPinballGame->boulderCollisionPos[i].y = 0;
     }
 
-    gCurrentPinballGame->flippersDisabled = 1;
+    gCurrentPinballGame->flippersDisabled = TRUE;
     UpdateGroudonFieldEntities();
     UpdateGroudonEntityLogic();
     RenderGroudonSprites();
@@ -152,7 +152,7 @@ void GroudonBoardProcess_3B_3B49C(void)
             gCurrentPinballGame->cameraYAdjust = (gCurrentPinballGame->stageTimer - 500) / 5 - 64;
             gCurrentPinballGame->stageTimer++;;
             if (gCurrentPinballGame->cameraYAdjust >= -32)
-                gCurrentPinballGame->flippersDisabled = 0;
+                gCurrentPinballGame->flippersDisabled = FALSE;
 
             if (gCurrentPinballGame->stageTimer == 650)
                 gCurrentPinballGame->boardModeType = 1;

@@ -1,7 +1,7 @@
 #include "global.h"
 #include "constants/board/kecleon_states.h"
 
-s16 CollisionCheck_Kecleon(struct Vector16 *arg0, u16 *arg1)
+s16 CollisionCheck_Kecleon(struct Vector16 *ballPosition, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -18,10 +18,10 @@ s16 CollisionCheck_Kecleon(struct Vector16 *arg0, u16 *arg1)
     return_val = 0;
     gCurrentPinballGame->ball->spinAcceleration = 0;
 
-    vec1.x = arg0->x / 8;
-    vec1.y = arg0->y / 8;
-    vec2.x = arg0->x % 8;
-    vec2.y = arg0->y % 8;
+    vec1.x = ballPosition->x / 8;
+    vec1.y = ballPosition->y / 8;
+    vec2.x = ballPosition->x % 8;
+    vec2.y = ballPosition->y % 8;
     tileMapPage = vec1.y / 64;
     boardLayer = gCurrentPinballGame->boardLayerDepth;
     vec1.y %= 64;
@@ -29,7 +29,7 @@ s16 CollisionCheck_Kecleon(struct Vector16 *arg0, u16 *arg1)
     sp00 = gBoardConfig.fieldLayout.collision.angleData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
     sp02 = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
 
-    CheckKecleonEntityCollision(arg0, &sp00, &sp02);
+    CheckKecleonEntityCollision(ballPosition, &sp00, &sp02);
     switch_enum = sp02 & 0xF;
     some_enum = sp02 >> 4;
 
@@ -70,7 +70,7 @@ s16 CollisionCheck_Kecleon(struct Vector16 *arg0, u16 *arg1)
 }
 
 // This handles the ball hitting the kecleon
-void CheckKecleonEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
+void CheckKecleonEntityCollision(struct Vector16 *ballPosition, u16 *arg1, u8 *arg2)
 {
     s16 deltaX;
     s16 deltaY;
@@ -81,8 +81,8 @@ void CheckKecleonEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
         if (*arg2 & 0xF)
             return;
 
-        deltaX = arg0->x - gCurrentPinballGame->bossCollisionX;
-        deltaY = arg0->y - gCurrentPinballGame->bossCollisionY;
+        deltaX = ballPosition->x - gCurrentPinballGame->bossCollisionX;
+        deltaY = ballPosition->y - gCurrentPinballGame->bossCollisionY;
 
         if ((deltaX < 0 || deltaX > 0x3F) || (deltaY < 0 || deltaY > 0x57))
             return;
@@ -105,8 +105,8 @@ void CheckKecleonEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
         if (*arg2 & 0xF)
             return;
 
-        deltaX = arg0->x - gCurrentPinballGame->bossCollisionX;
-        deltaY = arg0->y - gCurrentPinballGame->bossCollisionY;
+        deltaX = ballPosition->x - gCurrentPinballGame->bossCollisionX;
+        deltaY = ballPosition->y - gCurrentPinballGame->bossCollisionY;
 
         if ((deltaX < 0 || deltaX > 0x57) || (deltaY < 0 || deltaY > 0x3F))
             return;
@@ -264,7 +264,7 @@ void ProcessKecleonBallDisturbanceCollisionEvent(u8 arg0, u16 *arg1, u16 *arg2)
 }
 
 //This handles the signs of motion in the flowers/bushes/water that *kecleon* triggers when it moves.
-void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *arg0)
+void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *kecleonPosition)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -277,10 +277,10 @@ void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *arg0)
     u32 some_enum;
 
     gCurrentPinballGame->kecleonCollisionEnabled = 1;
-    vec1.x = arg0->x / 8;
-    vec1.y = arg0->y / 8;
-    vec2.x = arg0->x % 8;
-    vec2.y = arg0->y % 8;
+    vec1.x = kecleonPosition->x / 8;
+    vec1.y = kecleonPosition->y / 8;
+    vec2.x = kecleonPosition->x % 8;
+    vec2.y = kecleonPosition->y % 8;
     tileMapPage = vec1.y / 64;
     boardLayer = gCurrentPinballGame->boardLayerDepth;
     vec1.y %= 64;

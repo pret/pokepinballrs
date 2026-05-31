@@ -82,6 +82,13 @@
 #define MODE_CHANGE_BONUS_BANNER  0x80 //2^7
 #define MODE_CHANGE_EXPIRED_BONUS_BANNER 0xC0 // 2^6 + 2^7
 
+#define SIDE_IX_LEFT 0
+#define SIDE_IX_RIGHT 1
+#define SIDE_COUNT 2
+
+#define SIDE_COLLISION_NONE 0
+#define SIDE_COLLISION_LEFT 1
+#define SIDE_COLLISION_RIGHT 2
 
 struct BgOffsets
 {
@@ -314,7 +321,7 @@ struct PinballGame
     /*0x1DE*/ u16 kickbackAnimProgress;
     /*0x1E0*/ u16 kickbackAnimDuration;
     /*0x1E2*/ s8 outLanePikaPosition; //Pikachu coverage. 0= left lane, 1=right lane, 2 = both
-    /*0x1E3*/ s8 kickbackOccupied[2];
+    /*0x1E3*/ s8 kickbackOccupied[SIDE_COUNT];
     /*0x1E5*/ s8 pikachuSpinFrame;
     /*0x1E6*/ s8 pikachuSpinPrevFrame;
     /*0x1E7*/ u8 filler1E7[0x1];
@@ -418,12 +425,12 @@ struct PinballGame
     /*0x2DB*/ u8 filler2DB[0x3];
     /*0x2DE*/ u16 eggCaveLiftTimer;
     /*0x2E0*/ u16 eggCaveExitDelayTimer;
-    /*0x2E2*/ s8 sideBumperHitFlag;
-    /*0x2E3*/ s8 sideBumperBounceCount[2];
-    /*0x2E5*/ s8 sideBumperAnimPhase[2];
+    /*0x2E2*/ s8 linooneSideBumperHitFlag;
+    /*0x2E3*/ s8 linooneSideBumperExtensionsPending[SIDE_COUNT];
+    /*0x2E5*/ s8 linooneSideBumperAnimPhase[SIDE_COUNT];
     /*0x2E7*/ u8 filler2E7[0x1];
-    /*0x2E8*/ u16 sideBumperAnimTimer[2];
-    /*0x2EC*/ s16 sideBumperShakeOffset[2];
+    /*0x2E8*/ u16 linooneSideBumperAnimTimer[SIDE_COUNT];
+    /*0x2EC*/ s16 linooneSideBumperExtensionOffset[SIDE_COUNT];
     /*0x2F0*/ u8 shopDoorTargetFrame;
     /*0x2F1*/ u8 shopDoorCurrentFrame;
     /*0x2F2*/ u16 shopDoorAnimDelay;
@@ -971,8 +978,8 @@ extern struct SongHeader se_catch_evo_banner;
 extern struct SongHeader se_dusclops_appear;
 extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
 extern const s16 gBounceBackForceMagnitudes[9];
-typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);
-extern Unk86ACE0C BoardCollisionFuncts_086ACE0C[8];
+typedef s16 (*BoardCollisionFunc)(struct Vector16*, u16*);
+extern BoardCollisionFunc BoardCollisionFuncts_086ACE0C[8];
 extern struct Vector16 gWallEscapeOffsets[4];
 extern struct FlipperLineSegment gFlipperLineGeometry[13];
 extern u16 gFlipperBaseXPositions[2];

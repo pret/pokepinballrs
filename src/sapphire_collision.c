@@ -6,7 +6,7 @@
 
 extern u16 gSapphireTargetBumperIndexMap[];
 
-s16 CollisionCheck_Sapphire(struct Vector16 *arg0, u16* arg1) {
+s16 CollisionCheck_Sapphire(struct Vector16 *ballPosition, u16* arg1) {
     struct Vector16 vec1;
     struct Vector16 vec2;
     u16 sp00;
@@ -22,10 +22,10 @@ s16 CollisionCheck_Sapphire(struct Vector16 *arg0, u16* arg1) {
     return_val = 0;
     gCurrentPinballGame->ball->spinAcceleration = 0;
 
-    vec1.x = arg0->x / 8;
-    vec1.y = arg0->y / 8;
-    vec2.x = arg0->x % 8;
-    vec2.y = arg0->y % 8;
+    vec1.x = ballPosition->x / 8;
+    vec1.y = ballPosition->y / 8;
+    vec2.x = ballPosition->x % 8;
+    vec2.y = ballPosition->y % 8;
     tileMapPage = vec1.y / 64;
     boardLayer = gCurrentPinballGame->boardLayerDepth;
     vec1.y %= 64;
@@ -34,7 +34,7 @@ s16 CollisionCheck_Sapphire(struct Vector16 *arg0, u16* arg1) {
     sp00 = gBoardConfig.fieldLayout.collision.angleData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
     sp02 = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
 
-    CheckSapphireBumperCollision(arg0, &sp00, &sp02);
+    CheckSapphireBumperCollision(ballPosition, &sp00, &sp02);
 
     switch_enum = sp02 & 0xF;
     some_enum = sp02 >> 4;
@@ -93,7 +93,7 @@ s16 CollisionCheck_Sapphire(struct Vector16 *arg0, u16* arg1) {
     return return_val;
 }
 
-void CheckSapphireBumperCollision(struct Vector16 *arg0, s16 *arg1, u8 *arg2) {
+void CheckSapphireBumperCollision(struct Vector16 *ballPosition, s16 *arg1, u8 *arg2) {
 
     s16 deltaX;
     s16 deltaY;
@@ -106,8 +106,8 @@ void CheckSapphireBumperCollision(struct Vector16 *arg0, s16 *arg1, u8 *arg2) {
         if (gCurrentPinballGame->boardLayerDepth != 0)
             return;
 
-        deltaX = arg0->x + gCurrentPinballGame->rubyBumperCollisionPosition[0].x;
-        deltaY = arg0->y + gCurrentPinballGame->rubyBumperCollisionPosition[0].y;
+        deltaX = ballPosition->x + gCurrentPinballGame->rubyBumperCollisionPosition[0].x;
+        deltaY = ballPosition->y + gCurrentPinballGame->rubyBumperCollisionPosition[0].y;
 
         if (deltaX <= 63U && deltaY <= 63U)
         {
@@ -117,8 +117,8 @@ void CheckSapphireBumperCollision(struct Vector16 *arg0, s16 *arg1, u8 *arg2) {
         }
          if (lowerNibble == 0)
         {
-            deltaX = gCurrentPinballGame->rubyBumperCollisionPosition[1].x + arg0->x;
-            deltaY = gCurrentPinballGame->rubyBumperCollisionPosition[1].y + arg0->y;
+            deltaX = gCurrentPinballGame->rubyBumperCollisionPosition[1].x + ballPosition->x;
+            deltaY = gCurrentPinballGame->rubyBumperCollisionPosition[1].y + ballPosition->y;
 
             if (deltaX <= 63U && deltaY <= 63U)
             {
@@ -129,8 +129,8 @@ void CheckSapphireBumperCollision(struct Vector16 *arg0, s16 *arg1, u8 *arg2) {
 
             if (lowerNibble == 0)
             {
-                deltaX = gCurrentPinballGame->rubyBumperCollisionPosition[2].x + arg0->x;
-                deltaY = gCurrentPinballGame->rubyBumperCollisionPosition[2].y + arg0->y;
+                deltaX = gCurrentPinballGame->rubyBumperCollisionPosition[2].x + ballPosition->x;
+                deltaY = gCurrentPinballGame->rubyBumperCollisionPosition[2].y + ballPosition->y;
 
                 if (deltaX <= 63U && deltaY <= 63U)
                 {
@@ -294,7 +294,7 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
         break;
     case 5:
         gCurrentPinballGame->ballTouchingSpoink = 1;
-        gCurrentPinballGame->ballInLaunchChute = 1;
+        gCurrentPinballGame->ballInLaunchChute = TRUE;
         gCurrentPinballGame->ballCollisionZone = 0;
         gCurrentPinballGame->hatchMachineActive = 0;
         break;

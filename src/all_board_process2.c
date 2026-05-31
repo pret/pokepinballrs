@@ -469,7 +469,8 @@ void ProcessMainBoardBallDrainAndLaunch(void)
                 m4aMPlayAllStop();
                 m4aSongNumStart(MUS_END_OF_BALL);
                 ResetBoardStateOnDeath();
-                if (gCurrentPinballGame->outLanePikaPosition == 2 && gMain.eReaderBonuses[EREADER_DX_MODE_CARD] == 0)
+                if (gCurrentPinballGame->outLanePikaPosition == 2
+                    && !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
                 {
                     gCurrentPinballGame->pichuWalkMode = 2;
                     gCurrentPinballGame->pichuEntranceTimer = 800;
@@ -479,7 +480,7 @@ void ProcessMainBoardBallDrainAndLaunch(void)
         }
     }
 
-    gCurrentPinballGame->ballInLaunchChute = 0;
+    gCurrentPinballGame->ballInLaunchChute = FALSE;
 }
 
 void ProcessBonusBoardBallDrain(void)

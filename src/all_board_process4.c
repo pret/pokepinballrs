@@ -100,7 +100,8 @@ void UpdateMainBoardFlipperPhysics(void)
 
         if (gCurrentPinballGame->heldButtonActions[i])
         {
-            if (flipper->active == 0 && gCurrentPinballGame->ballCatchState == NOT_TRAPPED)
+            if (!flipper->active
+                && gCurrentPinballGame->ballCatchState == NOT_TRAPPED)
                 m4aSongNumStart(SE_FLIPPER_PRESSED);
 
             flipper->active = TRUE;
@@ -117,7 +118,7 @@ void UpdateMainBoardFlipperPhysics(void)
         }
 
         dir = 0;
-        if (flipper->active != 0)
+        if (flipper->active)
         {
             if (flipper->position != 10)
             {
@@ -215,9 +216,9 @@ void UpdateBonusBoardFlipperPhysics(void)
 
         if (gCurrentPinballGame->heldButtonActions[i] && gMain.modeChangeFlags == MODE_CHANGE_NONE)
         {
-            if (flipper->active == 0 &&
+            if (!flipper->active &&
                 gCurrentPinballGame->ballCatchState == NOT_TRAPPED &&
-                gCurrentPinballGame->flippersDisabled == 0)
+                !gCurrentPinballGame->flippersDisabled)
             {
                 m4aSongNumStart(SE_FLIPPER_PRESSED);
             }
@@ -235,7 +236,7 @@ void UpdateBonusBoardFlipperPhysics(void)
         }
 
         dir = 0;
-        if (flipper->active != 0)
+        if (flipper->active)
         {
             if (flipper->position != 10)
             {

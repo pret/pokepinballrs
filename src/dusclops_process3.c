@@ -69,7 +69,7 @@ void DuskullBonus_Setup(void)
     gCurrentPinballGame->bossTargetYPosition = 0;
     gCurrentPinballGame->bossCollisionX = 0;
     gCurrentPinballGame->bossCollisionY = 0;
-    gCurrentPinballGame->flippersDisabled = 0;
+    gCurrentPinballGame->flippersDisabled = FALSE;
 
     DuskullPhase_ProcessEntityLogic();
     DuskullPhase_ProcessGraphics();

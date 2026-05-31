@@ -174,28 +174,28 @@ void AllBoardProcess_6B_1333C()
     }
 }
 
-u16 DetectBallCollision(struct Vector16* param)
+u16 DetectBallCollision(struct Vector16* ballPosition)
 {
     u16 retVal;
     struct Vector16 test;
     test.x = gCurrentPinballGame->ball->positionQ1.x - gCurrentPinballGame->ball->prevPositionQ1.x;
     test.y = gCurrentPinballGame->ball->positionQ1.y - gCurrentPinballGame->ball->prevPositionQ1.y;
-    param->x = gCurrentPinballGame->ball->prevPositionQ1.x;
-    param->y = gCurrentPinballGame->ball->prevPositionQ1.y;
-    retVal = PixelWalkCollisionDetection(param, test);
+    ballPosition->x = gCurrentPinballGame->ball->prevPositionQ1.x;
+    ballPosition->y = gCurrentPinballGame->ball->prevPositionQ1.y;
+    retVal = PixelWalkCollisionDetection(ballPosition, test);
 
     gCurrentPinballGame->tiltInputCounterX = 0;
     gCurrentPinballGame->tiltInputCounterY = 0;
 
     if (!gCurrentPinballGame->collisionResponseType && (gCurrentPinballGame->tiltTargetXOffset || gCurrentPinballGame->tiltTargetYOffset))
     {
-        param->x = gCurrentPinballGame->ball->positionQ1.x;
-        param->y = gCurrentPinballGame->ball->positionQ1.y;
+        ballPosition->x = gCurrentPinballGame->ball->positionQ1.x;
+        ballPosition->y = gCurrentPinballGame->ball->positionQ1.y;
         test.x = gCurrentPinballGame->tiltTargetXOffset;
         test.y = gCurrentPinballGame->tiltTargetYOffset;
-        retVal = PixelWalkCollisionDetection(param, test);
-        gCurrentPinballGame->tiltInputCounterX = param->x - gCurrentPinballGame->ball->positionQ1.x;
-        gCurrentPinballGame->tiltInputCounterY = param->y - gCurrentPinballGame->ball->positionQ1.y;
+        retVal = PixelWalkCollisionDetection(ballPosition, test);
+        gCurrentPinballGame->tiltInputCounterX = ballPosition->x - gCurrentPinballGame->ball->positionQ1.x;
+        gCurrentPinballGame->tiltInputCounterY = ballPosition->y - gCurrentPinballGame->ball->positionQ1.y;
     }
     return retVal;
 }
@@ -603,11 +603,11 @@ void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
     }
 }
 
-u16 PixelWalkCollisionDetection(struct Vector16* arg0, struct Vector16 arg1) {
+u16 PixelWalkCollisionDetection(struct Vector16* ballPosition, struct Vector16 arg1) {
     struct Vector16 r8;
 
     u32 toggleShiftMode;
-    s16 (*spC)(struct Vector16*, u16*);
+    s16 (*boardCollisionFunc)(struct Vector16*, u16*);
     u16 sp0_return;
 
     r8.x =1;
@@ -633,11 +633,11 @@ u16 PixelWalkCollisionDetection(struct Vector16* arg0, struct Vector16 arg1) {
     gCurrentPinballGame->collisionResponseType = 0;
     gCurrentPinballGame->collisionSurfaceType = 0;
 
-    spC = BoardCollisionFuncts_086ACE0C[gMain.selectedField];
+    boardCollisionFunc = BoardCollisionFuncts_086ACE0C[gMain.selectedField];
 
     do
     {
-        if(spC(arg0, &sp0_return) != 0)
+        if(boardCollisionFunc(ballPosition, &sp0_return) != 0)
         {
             if (gCurrentPinballGame->collisionResponseType == 1)
             {
@@ -649,15 +649,15 @@ u16 PixelWalkCollisionDetection(struct Vector16* arg0, struct Vector16 arg1) {
 
                     for(j=0; j < 4; j++)
                     {
-                        sp4_testPos.x = arg0->x + gWallEscapeOffsets[j].x;
-                        sp4_testPos.y = arg0->y + gWallEscapeOffsets[j].y;
+                        sp4_testPos.x = ballPosition->x + gWallEscapeOffsets[j].x;
+                        sp4_testPos.y = ballPosition->y + gWallEscapeOffsets[j].y;
 
-                        spC(&sp4_testPos, &sp2_testRes);
+                        boardCollisionFunc(&sp4_testPos, &sp2_testRes);
 
                         if (gCurrentPinballGame->collisionResponseType == 1 && gCurrentPinballGame->collisionSurfaceType == 0)
                         {
-                            arg0->x = sp4_testPos.x;
-                            arg0->y = sp4_testPos.y;
+                            ballPosition->x = sp4_testPos.x;
+                            ballPosition->y = sp4_testPos.y;
                             sp0_return = sp2_testRes;
 
                             break;
@@ -673,8 +673,8 @@ u16 PixelWalkCollisionDetection(struct Vector16* arg0, struct Vector16 arg1) {
         {
             gCurrentPinballGame->collisionResponseType = 0;
 
-            if (CheckFlipperCollision(arg0, &sp0_return) != 0 ||
-                (gCurrentPinballGame->catchMonCollisionEnabled != 0 && CheckCatchTargetCollision(arg0, &sp0_return) != 0))
+            if (CheckFlipperCollision(ballPosition, &sp0_return) != 0 ||
+                (gCurrentPinballGame->catchMonCollisionEnabled != 0 && CheckCatchTargetCollision(ballPosition, &sp0_return) != 0))
                 break;
         }
 
@@ -683,14 +683,14 @@ u16 PixelWalkCollisionDetection(struct Vector16* arg0, struct Vector16 arg1) {
 
         if (toggleShiftMode == 0)
         {
-            arg0->x = r8.x + arg0->x;
+            ballPosition->x = r8.x + ballPosition->x;
             arg1.x--;
             if (arg1.y >0)
                 toggleShiftMode = 1;
         }
         else
         {
-            arg0->y = arg0->y + r8.y;
+            ballPosition->y = ballPosition->y + r8.y;
             arg1.y--;
             if (arg1.x > 0)
                 toggleShiftMode = 0;

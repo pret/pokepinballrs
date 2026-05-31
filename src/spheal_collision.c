@@ -2,7 +2,7 @@
 #include "main.h"
 #include "constants/board/spheal_states.h"
 
-s16 CollisionCheck_Spheal(struct Vector16 *arg0, u16 *arg1)
+s16 CollisionCheck_Spheal(struct Vector16 *ballPosition, u16 *arg1)
 {
     u16 sp0;
     u8 sp2;
@@ -18,10 +18,10 @@ s16 CollisionCheck_Spheal(struct Vector16 *arg0, u16 *arg1)
     sp4_return = 0;
     gCurrentPinballGame->ball->spinAcceleration = 0;
 
-    div_result.x = arg0->x / 8;
-    div_result.y = arg0->y / 8;
-    div_remainder.x = arg0->x % 8;
-    div_remainder.y = arg0->y % 8;
+    div_result.x = ballPosition->x / 8;
+    div_result.y = ballPosition->y / 8;
+    div_remainder.x = ballPosition->x % 8;
+    div_remainder.y = ballPosition->y % 8;
     tileMapPage = div_result.y / 64;
     boardLayer = gCurrentPinballGame->boardLayerDepth;
     div_result.y %= 64;
@@ -30,7 +30,7 @@ s16 CollisionCheck_Spheal(struct Vector16 *arg0, u16 *arg1)
     sp0 = gBoardConfig.fieldLayout.collision.angleData[boardLayer + tileMapPage][collisionTileIndex * 64 + div_remainder.y * 8 + div_remainder.x];
     sp2 = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][collisionTileIndex * 64 + div_remainder.y * 8 + div_remainder.x];
 
-    CheckSphealEntityCollision(arg0, &sp0, &sp2);
+    CheckSphealEntityCollision(ballPosition, &sp0, &sp2);
 
     enum1 = sp2 & 0xF;
     enum2 = sp2 >> 4;
@@ -96,7 +96,7 @@ s16 CollisionCheck_Spheal(struct Vector16 *arg0, u16 *arg1)
     return sp4_return;
 }
 
-void CheckSphealEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
+void CheckSphealEntityCollision(struct Vector16 *ballPosition, u16 *arg1, u8 *arg2)
 {
     s16 i;
     s16 deltaX, deltaY;
@@ -110,8 +110,8 @@ void CheckSphealEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
             if ((arg2[0] & 0xf) != 0)
                 continue;
 
-            deltaX = arg0->x - gCurrentPinballGame->sphealEntityCollisionPos[i].x;
-            deltaY = arg0->y - gCurrentPinballGame->sphealEntityCollisionPos[i].y;
+            deltaX = ballPosition->x - gCurrentPinballGame->sphealEntityCollisionPos[i].x;
+            deltaY = ballPosition->y - gCurrentPinballGame->sphealEntityCollisionPos[i].y;
             if ((deltaX >= 64 || deltaX < 0) || (deltaY >= 64 || deltaY < 0))
                 continue;
 
@@ -135,8 +135,8 @@ void CheckSphealEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
             if ((arg2[0] & 0xf) != 0)
                 continue;
 
-            deltaX = arg0->x - gCurrentPinballGame->sphealEntityCollisionPos[i].x;
-            deltaY = arg0->y - gCurrentPinballGame->sphealEntityCollisionPos[i].y;
+            deltaX = ballPosition->x - gCurrentPinballGame->sphealEntityCollisionPos[i].x;
+            deltaY = ballPosition->y - gCurrentPinballGame->sphealEntityCollisionPos[i].y;
             if ((deltaX >= 64 || deltaX < 0) || (deltaY >= 64 || deltaY < 0))
                 continue;
 

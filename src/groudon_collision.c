@@ -2,7 +2,7 @@
 #include "main.h"
 #include "constants/board/groudon_states.h"
 
-s16 CollisionCheck_Groudon(struct Vector16 *arg0, u16 *arg1)
+s16 CollisionCheck_Groudon(struct Vector16 *ballPosition, u16 *arg1)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
@@ -15,15 +15,15 @@ s16 CollisionCheck_Groudon(struct Vector16 *arg0, u16 *arg1)
     return_val = 0;
     gCurrentPinballGame->ball->spinAcceleration = 0;
 
-    if (arg0->y < 0x200)
+    if (ballPosition->y < 0x200)
     {
         s16 r2;
         s32 tileMapPage;
         s32 boardLayer;
-        vec1.x = arg0->x / 8;
-        vec1.y = arg0->y / 8;
-        vec2.x = arg0->x % 8;
-        vec2.y = arg0->y % 8;
+        vec1.x = ballPosition->x / 8;
+        vec1.y = ballPosition->y / 8;
+        vec2.x = ballPosition->x % 8;
+        vec2.y = ballPosition->y % 8;
         tileMapPage = vec1.y / 64;
         boardLayer = gCurrentPinballGame->boardLayerDepth;
         vec1.y %= 64;
@@ -37,7 +37,7 @@ s16 CollisionCheck_Groudon(struct Vector16 *arg0, u16 *arg1)
         sp02 = 0;
     }
 
-    CheckGroudonEntityCollision(arg0, &sp00, &sp02);
+    CheckGroudonEntityCollision(ballPosition, &sp00, &sp02);
     switch_enum = sp02 & 0xF;
     some_enum = sp02 >> 4;
 
@@ -96,7 +96,7 @@ s16 CollisionCheck_Groudon(struct Vector16 *arg0, u16 *arg1)
     return return_val;
 }
 
-void CheckGroudonEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
+void CheckGroudonEntityCollision(struct Vector16 *ballPosition, u16 *arg1, u8 *arg2)
 {
     s16 deltaX;
     s16 deltaY;
@@ -109,8 +109,8 @@ void CheckGroudonEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
     {
         if ((*arg2 & 0xF) == 0)
         {
-            deltaX = arg0->x - gCurrentPinballGame->bossCollisionX;
-            deltaY = arg0->y - gCurrentPinballGame->bossCollisionY;
+            deltaX = ballPosition->x - gCurrentPinballGame->bossCollisionX;
+            deltaY = ballPosition->y - gCurrentPinballGame->bossCollisionY;
 
             if ((deltaX >= 0 && deltaX < 0x70) && (deltaY >= 0 && deltaY < 0x80))
             {
@@ -135,8 +135,8 @@ void CheckGroudonEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
         if ((*arg2 & 0xF) != 0)
             continue;
 
-        deltaX = arg0->x - gCurrentPinballGame->boulderCollisionPos[i].x;
-        deltaY = arg0->y - gCurrentPinballGame->boulderCollisionPos[i].y;
+        deltaX = ballPosition->x - gCurrentPinballGame->boulderCollisionPos[i].x;
+        deltaY = ballPosition->y - gCurrentPinballGame->boulderCollisionPos[i].y;
 
         if ((deltaX < 0 || deltaX >= 0x50) || (deltaY < 0 || deltaY >= 0x50))
             continue;
@@ -158,8 +158,8 @@ void CheckGroudonEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
         if ((*arg2 & 0xF) != 0)
             continue;
 
-        deltaX = arg0->x - gCurrentPinballGame->firePillarCollisionPos[i].x;
-        deltaY = arg0->y - gCurrentPinballGame->firePillarCollisionPos[i].y;
+        deltaX = ballPosition->x - gCurrentPinballGame->firePillarCollisionPos[i].x;
+        deltaY = ballPosition->y - gCurrentPinballGame->firePillarCollisionPos[i].y;
 
         if ((deltaX < 0 || deltaX >= 0x50) || (deltaY < 0 || deltaY >= 0x50))
             continue;

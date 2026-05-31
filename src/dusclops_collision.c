@@ -2,7 +2,7 @@
 #include "main.h"
 #include "constants/board/dusclops_states.h"
 
-s16 CollisionCheck_Dusclops(struct Vector16* arg0, u16* arg1) {
+s16 CollisionCheck_Dusclops(struct Vector16* ballPosition, u16* arg1) {
     struct Vector16 vec1;
     struct Vector16 vec2;
     u16 sp00;
@@ -18,10 +18,10 @@ s16 CollisionCheck_Dusclops(struct Vector16* arg0, u16* arg1) {
     return_val = 0;
     gCurrentPinballGame->ball->spinAcceleration = 0;
 
-    vec1.x = arg0->x / 8;
-    vec1.y = arg0->y / 8;
-    vec2.x = arg0->x % 8;
-    vec2.y = arg0->y % 8;
+    vec1.x = ballPosition->x / 8;
+    vec1.y = ballPosition->y / 8;
+    vec2.x = ballPosition->x % 8;
+    vec2.y = ballPosition->y % 8;
     tileMapPage = vec1.y / 64;
     boardLayer = gCurrentPinballGame->boardLayerDepth;
     vec1.y %= 64;
@@ -29,7 +29,7 @@ s16 CollisionCheck_Dusclops(struct Vector16* arg0, u16* arg1) {
     sp00 = gBoardConfig.fieldLayout.collision.angleData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
     sp02 = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
 
-    CheckDusclopsEntitiesCollision(arg0, &sp00, &sp02);
+    CheckDusclopsEntitiesCollision(ballPosition, &sp00, &sp02);
     switch_enum = sp02 & 0xF;
     some_enum = sp02 >> 4;
 
@@ -91,7 +91,7 @@ s16 CollisionCheck_Dusclops(struct Vector16* arg0, u16* arg1) {
     return return_val;
 }
 
-void CheckDusclopsEntitiesCollision(struct Vector16 *arg0, s16* arg1, u8* arg2) {
+void CheckDusclopsEntitiesCollision(struct Vector16 *ballPosition, s16* arg1, u8* arg2) {
     s16 deltaX;
     s16 deltaY;
     u16 maskedResult;
@@ -106,8 +106,8 @@ void CheckDusclopsEntitiesCollision(struct Vector16 *arg0, s16* arg1, u8* arg2) 
         if (*arg2 != 0)
             return;
 
-        deltaX = arg0->x -gCurrentPinballGame->bossCollisionX;
-        deltaY = arg0->y -gCurrentPinballGame->bossCollisionY;
+        deltaX = ballPosition->x -gCurrentPinballGame->bossCollisionX;
+        deltaY = ballPosition->y -gCurrentPinballGame->bossCollisionY;
 
         if (deltaX > 95U || deltaY > 119U)
             return;
@@ -138,8 +138,8 @@ void CheckDusclopsEntitiesCollision(struct Vector16 *arg0, s16* arg1, u8* arg2) 
 
         if (gCurrentPinballGame->minionCanCollide[0] )
         {
-            deltaX = arg0->x - gCurrentPinballGame->minionCollisionPosition[0].x;
-            deltaY = arg0->y - gCurrentPinballGame->minionCollisionPosition[0].y;
+            deltaX = ballPosition->x - gCurrentPinballGame->minionCollisionPosition[0].x;
+            deltaY = ballPosition->y - gCurrentPinballGame->minionCollisionPosition[0].y;
 
             if (deltaX < 64U && deltaY < 64U)
             {
@@ -155,8 +155,8 @@ void CheckDusclopsEntitiesCollision(struct Vector16 *arg0, s16* arg1, u8* arg2) 
         {
             if (gCurrentPinballGame->minionCanCollide[1] )
             {
-                deltaX = arg0->x - gCurrentPinballGame->minionCollisionPosition[1].x;
-                deltaY = arg0->y - gCurrentPinballGame->minionCollisionPosition[1].y;
+                deltaX = ballPosition->x - gCurrentPinballGame->minionCollisionPosition[1].x;
+                deltaY = ballPosition->y - gCurrentPinballGame->minionCollisionPosition[1].y;
 
                 if (deltaX < 64U && deltaY < 64U)
                 {
@@ -173,8 +173,8 @@ void CheckDusclopsEntitiesCollision(struct Vector16 *arg0, s16* arg1, u8* arg2) 
         {
             if ( gCurrentPinballGame->minionCanCollide[2] )
             {
-                deltaX = arg0->x - gCurrentPinballGame->minionCollisionPosition[2].x;
-                deltaY = arg0->y - gCurrentPinballGame->minionCollisionPosition[2].y;
+                deltaX = ballPosition->x - gCurrentPinballGame->minionCollisionPosition[2].x;
+                deltaY = ballPosition->y - gCurrentPinballGame->minionCollisionPosition[2].y;
 
                 if (deltaX < 64U && deltaY < 64U)
                 {

@@ -39,8 +39,8 @@ void RubyBoardProcess_3A_19A20(void)
     gCurrentPinballGame->rampPrizeType = 2;
     DrawRubyNuzleafPlatformSprite();
 
-    gCurrentPinballGame->sideBumperShakeOffset[0] = 3;
-    gCurrentPinballGame->sideBumperShakeOffset[1] = 3;
+    gCurrentPinballGame->linooneSideBumperExtensionOffset[SIDE_IX_LEFT] = 3;
+    gCurrentPinballGame->linooneSideBumperExtensionOffset[SIDE_IX_RIGHT] = 3;
     DrawBoardEdgeBanner();
 }
 

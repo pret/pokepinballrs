@@ -206,9 +206,9 @@ void Ereader_State3_304C(void)
             if ((gEReaderCardIndex != -1) && (NUM_EREADER_CARDS > gEReaderCardIndex)) {
                 for(index = 0; index < NUM_EREADER_CARDS; index++)
                 {
-                    gMain.eReaderBonuses[index] = 0;
+                    gMain.eReaderBonuses[index] = FALSE;
                 }
-                gMain.eReaderBonuses[gEReaderCardIndex] = 1;
+                gMain.eReaderBonuses[gEReaderCardIndex] = TRUE;
                 gEReaderGeneralTimer = 0;
                 gMain.subState = EREADER_STATE_5;
             }
