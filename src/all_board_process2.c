@@ -140,7 +140,7 @@ void MainBoardProcess_2B_4D960(void)
     }
 
     var4 += var2;
-    if (gCurrentPinballGame->boardEntityActive == 0)
+    if (!gCurrentPinballGame->cameraLocked)
     {
         gCurrentPinballGame->cameraYQ8 = var4;
         gCurrentPinballGame->cameraBaseY = var4 / 0x100;
@@ -229,7 +229,7 @@ void BonusBoardProcess_2B_4DBFC(void)
     }
 
     var4 += var2;
-    if (gCurrentPinballGame->boardEntityActive == 0)
+    if (!gCurrentPinballGame->cameraLocked)
     {
         gCurrentPinballGame->cameraYQ8 = var4;
         gCurrentPinballGame->cameraBaseY = var4 / 0x100;

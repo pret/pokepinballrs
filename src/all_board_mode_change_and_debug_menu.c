@@ -403,7 +403,7 @@ void BallSaverAnimation(void)
                 gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM].active = FALSE;
                 if (gMain.animationTimer == 32)
                 {
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                     m4aSongNumStart(SE_SAVER_PLUNGER_DROP);
                     PlayRumble(6);
                 }
@@ -467,7 +467,7 @@ void BallSaverAnimation(void)
             }
 
             gCurrentPinballGame->ballFrozenState = 2;
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->cameraLocked = TRUE;
             gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
             gCurrentPinballGame->startButtonDisabled = 1;
             m4aSongNumStart(SE_BALL_SAVED);

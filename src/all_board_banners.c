@@ -14,7 +14,7 @@ void ProcessBannerCameraTransition(void)
         if (gCurrentPinballGame->bannerActive)
         {
             gCurrentPinballGame->ballFrozenState = 2;
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->cameraLocked = TRUE;
             if (gCurrentPinballGame->bannerDelayTimer != 0)
             {
                 gCurrentPinballGame->bannerDelayTimer--;
@@ -66,7 +66,7 @@ void ProcessBannerCameraTransition(void)
 
                 if (gCurrentPinballGame->bannerPreserveBallState == 0)
                 {
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                 }
             }
 
@@ -85,7 +85,7 @@ void ProcessBannerCameraTransition(void)
 
                 if (gCurrentPinballGame->bannerPreserveBallState == 0)
                 {
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                 }
             }
 
@@ -101,7 +101,7 @@ void ProcessBannerCameraTransition(void)
 
                     if (gCurrentPinballGame->bannerPreserveBallState == 0)
                     {
-                        gCurrentPinballGame->boardEntityActive = 0;
+                        gCurrentPinballGame->cameraLocked = FALSE;
                     }
                 }
             }

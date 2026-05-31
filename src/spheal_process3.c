@@ -212,7 +212,7 @@ void SphealBoardProcess_3B_43228(void)
             gMain.spriteGroups[SG_SPHEAL_END_SCORE_TOTAL].active = TRUE;
             DmaCopy16(3, gSphealResultsScreenGfx, (void *)0x06015800, 0x800);
             gCurrentPinballGame->bannerSlideYOffset = -126;
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->cameraLocked = TRUE;
         }
         break;
     case SPHEAL_BOARD_STATE_SCORE_DISPLAY:
@@ -243,7 +243,7 @@ void SphealBoardProcess_3B_43228(void)
             gCurrentPinballGame->boardState = SPHEAL_BOARD_STATE_SCORE_DISPLAY_CLEANUP;
         }
 
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     case SPHEAL_BOARD_STATE_SCORE_DISPLAY_CLEANUP:
         UpdateSphealResultsScreen();
@@ -262,7 +262,7 @@ void SphealBoardProcess_3B_43228(void)
     case SPHEAL_BOARD_STATE_PREPARE_RETURN:
         UpdateSphealResultsScreen();
         gCurrentPinballGame->returnToMainBoardFlag = 1;
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     }
 
@@ -272,7 +272,7 @@ void SphealBoardProcess_3B_43228(void)
     AnimateSphealBackground();
     if (gCurrentPinballGame->returnToMainBoardFlag)
     {
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         FadeToMainBoard();
     }
 
@@ -1106,7 +1106,7 @@ void SphealBoard_PelipperDeliversBall(void)
             gCurrentPinballGame->pelipperState = 8;
             gCurrentPinballGame->deliveryAnimFrameIndex = 13;
             gMain.spriteGroups[SG_SPHEAL_PELIPPER_ENTITY].active = TRUE;
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->cameraLocked = TRUE;
         }
     }
     else
@@ -1161,7 +1161,7 @@ void SphealBoard_PelipperDeliversBall(void)
                     gCurrentPinballGame->ballFrozenState = 0;
                     gCurrentPinballGame->ball->velocity.x = -10;
                     gCurrentPinballGame->ball->velocity.y = 0;
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                     gCurrentPinballGame->ball->oamPriority = 3;
                     gCurrentPinballGame->boardLayerDepth = 0;
                     gCurrentPinballGame->ballDeliveryActive = FALSE;

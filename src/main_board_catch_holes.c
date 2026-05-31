@@ -825,7 +825,7 @@ void AnimateCenterTrapSequence(void)
             gCurrentPinballGame->ball->velocity.y = 236;
             gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->ballFrozenState = 0;
-            gCurrentPinballGame->boardEntityActive = 0;
+            gCurrentPinballGame->cameraLocked = FALSE;
             gCurrentPinballGame->ball->scale = 0x88;
             gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         }

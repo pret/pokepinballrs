@@ -104,7 +104,7 @@ void AnimateSharpedoCatchSequence(void)
 
             if (gCurrentPinballGame->modeAnimTimer > 108)
             {
-                gCurrentPinballGame->boardEntityActive = 1;
+                gCurrentPinballGame->cameraLocked = TRUE;
 
                 if (gCurrentPinballGame->modeAnimTimer > 110)
                 {
@@ -187,7 +187,7 @@ void AnimateSharpedoCatchSequence(void)
             gCurrentPinballGame->ballFrozenState = 0;
             gCurrentPinballGame->cameraScrollTarget = 0;
             gCurrentPinballGame->cameraScrollEnabled = 1;
-            gCurrentPinballGame->boardEntityActive = 0;
+            gCurrentPinballGame->cameraLocked = FALSE;
             gCurrentPinballGame->ball->spinSpeed = 0;
             gCurrentPinballGame->ball->velocity.x = 0xFF56;
             gCurrentPinballGame->ball->velocity.y = 220;

@@ -315,7 +315,7 @@ void RunEvolutionCutscene(void)
             m4aMPlayAllStop();
             DmaCopy16(3, (void *)0x05000200, gCurrentPinballGame->pauseObjPalette, 0x200);
             gCurrentPinballGame->creatureOamPriority = 0;
-            gCurrentPinballGame->boardEntityActive = 0;
+            gCurrentPinballGame->cameraLocked = FALSE;
         }
 
         if (gCurrentPinballGame->stageTimer == 10)

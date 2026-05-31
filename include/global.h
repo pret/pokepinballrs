@@ -95,6 +95,10 @@
 #define BALL_SPAWN_STATE_DISABLED 2
 #define BALL_SPAWN_STATE_INITIAL_SPAWN 3
 
+#define FLIPPER_LEFT 0
+#define FLIPPER_RIGHT 1
+#define FLIPPER_COUNT 2
+
 struct BgOffsets
 {
     u16 xOffset;
@@ -718,7 +722,7 @@ struct PinballGame
     /*0x5F6*/ s8 ballUpgradeType;
     /*0x5F7*/ u8 ballUpgradeTimerPaused;
     /*0x5F8*/ u16 ballUpgradeCounter;
-    /*0x5FA*/ s8 boardEntityActive;
+    /*0x5FA*/ s8 cameraLocked;
     /*0x5FB*/ s8 cameraScrollEnabled;
     /*0x5FC*/ s16 cameraScrollOffset;
     /*0x5FE*/ s16 cameraScrollTarget;
@@ -886,7 +890,7 @@ struct PinballGame
     /*0x132C*/struct BallState *ball;
     /*0x1330*/struct BallState *secondaryBall;
     /*0x1334*/struct BallState ballStates[2];
-    /*0x13BC*/struct FlipperState flipper[2];
+    /*0x13BC*/struct FlipperState flipper[FLIPPER_COUNT];
     /*0x13D4*/u16 nameRevealDelaysRow2[10];
     /*0x13E8*/struct Vector16 nameSlideRow2[10];
 } /* size=0x1410 */;

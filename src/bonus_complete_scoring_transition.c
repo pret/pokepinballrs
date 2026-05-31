@@ -267,7 +267,7 @@ void TransitionFromBonusToMainBoard(void)
     gCurrentPinballGame->prevBoardState = 3;
     gCurrentPinballGame->boardState = MAIN_BOARD_STATE_DEFAULT;
     gCurrentPinballGame->boardTransitionPhase = BOARD_STATE_DISPATCHER_STATE_INIT;
-    gCurrentPinballGame->boardEntityActive = 0;
+    gCurrentPinballGame->cameraLocked = FALSE;
     gCurrentPinballGame->cameraYAdjust = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION,
         PORTRAIT_MAIN_SLOT);

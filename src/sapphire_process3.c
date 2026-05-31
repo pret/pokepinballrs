@@ -281,7 +281,7 @@ void UpdateSapphireWailmerCatchSequence(void)
         gCurrentPinballGame->ball->spinSpeed = 0;
         if (gCurrentPinballGame->modeAnimTimer > 97)
         {
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->cameraLocked = TRUE;
             gCurrentPinballGame->catchHoleAnimFrame = 2;
             gCurrentPinballGame->ball->positionQ0.x = 0xb5;
             gCurrentPinballGame->ball->positionQ0.y = 0xc3;
@@ -360,7 +360,7 @@ void UpdateSapphireWailmerCatchSequence(void)
         m4aSongNumStart(SE_WHISCASH_SPIT_BALL);
         gCurrentPinballGame->cameraScrollTarget = 0;
         gCurrentPinballGame->cameraScrollEnabled = 1;
-        gCurrentPinballGame->boardEntityActive = 0;
+        gCurrentPinballGame->cameraLocked = FALSE;
     }
 }
 

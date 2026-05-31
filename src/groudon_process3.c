@@ -178,7 +178,7 @@ void GroudonBoardProcess_3B_3B49C(void)
             DmaCopy16(3, gGroudonBonusClear_Gfx, (void *)0x06015800, 0x2000);
             gCurrentPinballGame->bannerSlideYOffset = 136;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->cameraLocked = TRUE;
         }
         break;
     case LEGENDARY_BOARD_STATE_SUCCESS_SCORING:
@@ -210,7 +210,7 @@ void GroudonBoardProcess_3B_3B49C(void)
             gCurrentPinballGame->numCompletedBonusStages++;
         }
 
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     case LEGENDARY_BOARD_STATE_CATCH_BANNER:
         gCurrentPinballGame->boardState = LEGENDARY_BOARD_STATE_CATCH_SCORING;
@@ -247,7 +247,7 @@ void GroudonBoardProcess_3B_3B49C(void)
     case LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED:
         ProcessBonusBannerAndScoring();
         gCurrentPinballGame->returnToMainBoardFlag = 1;
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     }
 
@@ -267,7 +267,7 @@ void GroudonBoardProcess_3B_3B49C(void)
 
     if (gCurrentPinballGame->returnToMainBoardFlag)
     {
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         FadeToMainBoard();
     }
 

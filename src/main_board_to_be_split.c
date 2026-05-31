@@ -1495,7 +1495,7 @@ void UpdateHatchCave(void)
                     gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
                     gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
                     m4aSongNumStart(SE_UNKNOWN_0xB9);
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                 }
 
                 if (gCurrentPinballGame->eggCaveExitDelayTimer)
@@ -1518,7 +1518,7 @@ void UpdateHatchCave(void)
                 gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
                 gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
                 gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
-                gCurrentPinballGame->boardEntityActive = 1;
+                gCurrentPinballGame->cameraLocked = TRUE;
             }
         }
 

@@ -158,7 +158,7 @@ void KyogreBoardProcess_3B_3869C(void)
             DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x06015800, 0x2000);
             gCurrentPinballGame->bannerSlideYOffset = 136;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->cameraLocked = TRUE;
         }
         break;
     case LEGENDARY_BOARD_STATE_SUCCESS_SCORING:
@@ -190,7 +190,7 @@ void KyogreBoardProcess_3B_3869C(void)
             gCurrentPinballGame->numCompletedBonusStages++;
         }
 
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     case LEGENDARY_BOARD_STATE_CATCH_BANNER:
         gCurrentPinballGame->boardState = LEGENDARY_BOARD_STATE_CATCH_SCORING;
@@ -227,7 +227,7 @@ void KyogreBoardProcess_3B_3869C(void)
     case LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED:
         ProcessBonusBannerAndScoring();
         gCurrentPinballGame->returnToMainBoardFlag = 1;
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
     }
 
     UpdateKyogreFieldEntities();
@@ -246,7 +246,7 @@ void KyogreBoardProcess_3B_3869C(void)
 
     if (gCurrentPinballGame->returnToMainBoardFlag)
     {
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         FadeToMainBoard();
     }
 
@@ -1081,7 +1081,7 @@ void UpdateKyogreFieldEntities(void)
                         gCurrentPinballGame->ballFrozenState = 1;
                         gCurrentPinballGame->vortexAnimTimer[i] = 0;
                         gCurrentPinballGame->vortexEntityState[i] = KYOGRE_WHIRLPOOL_PHASE_FULL_CAUGHT_BALL;
-                        gCurrentPinballGame->boardEntityActive = 1;
+                        gCurrentPinballGame->cameraLocked = TRUE;
                         tempVector2.x = gCurrentPinballGame->vortexScreenPosition[i].x / 10 + 120;
                         tempVector2.y = gCurrentPinballGame->vortexScreenPosition[i].y / 10 + 144;
                         tempVector.x = (tempVector2.x << 8) - gCurrentPinballGame->ball->positionQ8.x;
@@ -1161,7 +1161,7 @@ void UpdateKyogreFieldEntities(void)
                     gCurrentPinballGame->ball->velocity.y = 300;
                     gCurrentPinballGame->ballFrozenState = 0;
                     gCurrentPinballGame->vortexEntityState[i] = KYOGRE_WHIRLPOOL_PHASE_INIT;
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                 }
                 break;
             case KYOGRE_WHIRLPOOL_PHASE_SHRUNK:

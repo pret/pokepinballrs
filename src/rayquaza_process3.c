@@ -156,7 +156,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         DmaCopy16(3, gRayquazaBonusClear_Gfx, (void *)0x06015800, 0x2000);
         gCurrentPinballGame->bannerSlideYOffset = 136;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     case LEGENDARY_BOARD_STATE_SUCCESS_SCORING:
         ProcessBonusBannerAndScoring();
@@ -187,7 +187,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
             gCurrentPinballGame->numCompletedBonusStages++;
         }
 
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     case LEGENDARY_BOARD_STATE_CATCH_BANNER:
         gCurrentPinballGame->boardState = LEGENDARY_BOARD_STATE_CATCH_SCORING;
@@ -225,7 +225,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
     case LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED:
         ProcessBonusBannerAndScoring();
         gCurrentPinballGame->returnToMainBoardFlag = 1;
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     }
 
@@ -244,7 +244,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
 
     if (gCurrentPinballGame->returnToMainBoardFlag)
     {
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         FadeToMainBoard();
     }
 
@@ -648,7 +648,7 @@ void UpdateRayquazaEntityLogic(void)
         gCurrentPinballGame->bossPositionY = -1200;
         gCurrentPinballGame->introSequencePhase = 2;
         gCurrentPinballGame->introFrameCounter = 0;
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         gMain.spriteGroups[SG_RAYQUAZA_FLYING_SPARKLE].active = TRUE;
         gCurrentPinballGame->minionLogicPosition[0].x = 0;
@@ -1283,7 +1283,7 @@ void UpdateRayquazaMinionsAndEffects(void)
                     gCurrentPinballGame->ballFrozenState = 1;
                     gCurrentPinballGame->vortexAnimTimer[i] = 0;
                     gCurrentPinballGame->vortexEntityState[i] = RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL;
-                    gCurrentPinballGame->boardEntityActive = 1;
+                    gCurrentPinballGame->cameraLocked = TRUE;
 
                     tempVector2.x = gCurrentPinballGame->vortexScreenPosition[i].x / 10 + 16;
                     tempVector2.y = gCurrentPinballGame->vortexScreenPosition[i].y / 10 + 32;
@@ -1372,7 +1372,7 @@ void UpdateRayquazaMinionsAndEffects(void)
                     gCurrentPinballGame->vortexAnimTimer[i] = 0;
                     gCurrentPinballGame->ball->velocity.x = 0;
                     gCurrentPinballGame->vortexEntityState[i] = RAYQUAZA_WHIRLWIND_STATE_INIT;
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                     PlayRumble(8);
                 }
 
