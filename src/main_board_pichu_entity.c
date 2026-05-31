@@ -65,7 +65,7 @@ void UpdateKickbackLogic(void)
         {
             if (gCurrentPinballGame->pikaChargeTarget > 167)
             {
-                gCurrentPinballGame->ballFrozenState = 1;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                 gCurrentPinballGame->kickbackFiring = TRUE;
                 gCurrentPinballGame->kickbackAnimProgress = 120;
                 gCurrentPinballGame->kickbackAnimDuration = 120;
@@ -179,7 +179,7 @@ void UpdateKickbackLogic(void)
             gCurrentPinballGame->ball->velocity.y = -300;
             m4aSongNumStart(SE_KICKBACK_THUNDERWAVE);
             gCurrentPinballGame->kickbackLaunchTimer = 0;
-            gCurrentPinballGame->ballFrozenState = 0;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
             gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
             gCurrentPinballGame->holeIndicators[(gCurrentPinballGame->outLaneSide - 1) * 3] = 1;
 

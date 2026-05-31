@@ -466,7 +466,7 @@ void BallSaverAnimation(void)
                 DmaCopy16(3, gBonusStagePal_Dark, (void *)0x050003C0, 0x20);
             }
 
-            gCurrentPinballGame->ballFrozenState = 2;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_FROZEN;
             gCurrentPinballGame->cameraLocked = TRUE;
             gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
             gCurrentPinballGame->startButtonDisabled = 1;
@@ -483,7 +483,7 @@ void BallSaverAnimation(void)
         gMain.modeChangeFlags &= ~MODE_CHANGE_BALL_SAVER;
         gCurrentPinballGame->collisionCooldownTimer = 60;
         InitBallState(0);
-        gCurrentPinballGame->ballFrozenState = 0;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
         SetBoardCollisionConfig(0);
         gCurrentPinballGame->boardCollisionConfigChanged = 0;
         if (gMain.selectedField == FIELD_RUBY)

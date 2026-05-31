@@ -186,7 +186,7 @@ void ProcessGroudonCollisionEvent(u8 arg0, u16 *arg1, u16 *arg2)
         break;
     case 4:
         gCurrentPinballGame->bossEntityState = GROUDON_ENTITY_STATE_SUFFICIENT_HITS;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         break;
     case 5:
     case 6:

@@ -115,7 +115,7 @@ void MainBoardProcess_2B_4D960(void)
         }
     }
 
-    if (gCurrentPinballGame->ballFrozenState == 0)
+    if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
         var0 = (gCurrentPinballGame->secondaryBall->velocity.y * 40) + 0x1000;
 
     gCurrentPinballGame->cameraLookAhead += (var0 - gCurrentPinballGame->cameraLookAhead) / 10;
@@ -204,7 +204,7 @@ void BonusBoardProcess_2B_4DBFC(void)
         }
     }
 
-    if (gCurrentPinballGame->ballFrozenState == 0)
+    if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
         var0 = gCurrentPinballGame->secondaryBall->velocity.y * 40 + 0x1000;
 
     gCurrentPinballGame->cameraLookAhead += (var0 - gCurrentPinballGame->cameraLookAhead) / 10;

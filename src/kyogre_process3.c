@@ -1078,7 +1078,7 @@ void UpdateKyogreFieldEntities(void)
                     {
                         m4aSongNumStart(SE_UNKNOWN_0x113);
                         PlayRumble(12);
-                        gCurrentPinballGame->ballFrozenState = 1;
+                        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                         gCurrentPinballGame->vortexAnimTimer[i] = 0;
                         gCurrentPinballGame->vortexEntityState[i] = KYOGRE_WHIRLPOOL_PHASE_FULL_CAUGHT_BALL;
                         gCurrentPinballGame->cameraLocked = TRUE;
@@ -1159,7 +1159,7 @@ void UpdateKyogreFieldEntities(void)
                     gCurrentPinballGame->vortexAnimTimer[i] = 0;
                     gCurrentPinballGame->ball->velocity.x = -150 + (gMain.systemFrameCount % 2) * 300;
                     gCurrentPinballGame->ball->velocity.y = 300;
-                    gCurrentPinballGame->ballFrozenState = 0;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                     gCurrentPinballGame->vortexEntityState[i] = KYOGRE_WHIRLPOOL_PHASE_INIT;
                     gCurrentPinballGame->cameraLocked = FALSE;
                 }

@@ -198,7 +198,7 @@ void UpdateSapphireEvolutionShopSequence(void)
     if (gCurrentPinballGame->modeAnimTimer > 0x18)
     {
         gCurrentPinballGame->ball->ballHidden = TRUE;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->modeAnimTimer--;
         gCurrentPinballGame->ball->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
@@ -233,7 +233,7 @@ void UpdateSapphireEvolutionShopSequence(void)
     else
     {
         gCurrentPinballGame->ball->ballHidden = FALSE;
-        gCurrentPinballGame->ballFrozenState = 0;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
         gCurrentPinballGame->collisionCooldownTimer = 0x3C;
         gCurrentPinballGame->ball->velocity.x = 0x60;
         gCurrentPinballGame->ball->velocity.y = 0xC0;
@@ -274,7 +274,7 @@ void UpdateSapphireWailmerCatchSequence(void)
     if (gCurrentPinballGame->modeAnimTimer)
     {
         gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->modeAnimTimer--;
         gCurrentPinballGame->ball->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
@@ -343,7 +343,7 @@ void UpdateSapphireWailmerCatchSequence(void)
     else
     {
         gCurrentPinballGame->catchHoleAnimFrame = 0;
-        gCurrentPinballGame->ballFrozenState = 0;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
         gCurrentPinballGame->collisionCooldownTimer = 60;
         gCurrentPinballGame->ball->spinSpeed = 0;
         gCurrentPinballGame->ball->velocity.x = -0x66;

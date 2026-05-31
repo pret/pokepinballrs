@@ -93,7 +93,7 @@ void MainBoardProcess_5B_11C98(void)
         {
             u16 angle;
 
-            if (!gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
             {
                 // Gravity is applied at different strengths, depending on fast the ball is
                 // currently moving downwards.
@@ -123,7 +123,7 @@ void MainBoardProcess_5B_11C98(void)
         {
             u16 angle;
 
-            if (!gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
             {
                 // Gravity is applied at different strengths, depending on fast the ball is
                 // currently moving downwards.
@@ -174,7 +174,8 @@ void BonusBoardProcess_5B_11F88(void)
     currentBall->prevPositionQ8 = currentBall->positionQ8;
     if (gCurrentPinballGame->captureState != MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE)
     {
-        if (!gCurrentPinballGame->ballFrozenState && !gCurrentPinballGame->ballGrabbed)
+        if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL
+            && !gCurrentPinballGame->ballGrabbed)
         {
             // Gravity is applied at different strengths, depending on fast the ball is
             // currently moving downwards.

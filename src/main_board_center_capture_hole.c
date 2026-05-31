@@ -548,7 +548,7 @@ void RunMonCaptureSequence(void)
                 || gCurrentPinballGame->boardState == MAIN_BOARD_STATE_JIRACHI_CATCH_MODE))
             gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
 
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
 
         gCurrentPinballGame->ball->velocity.x = (gCurrentPinballGame->ball->velocity.x * 4) / 5;
         gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * 4) / 5;
@@ -1301,7 +1301,7 @@ void RunMonCaptureSequence(void)
 
         if (gMain.selectedField < MAIN_FIELD_COUNT)
         {
-            gCurrentPinballGame->ballFrozenState = 0;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
             gCurrentPinballGame->ball->velocity.y = -10;
             gCurrentPinballGame->ball->velocity.x = 20;
 
@@ -1342,7 +1342,7 @@ void RunMonCaptureSequence(void)
         }
         else
         {
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             gCurrentPinballGame->ball->velocity.y = 0;
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;

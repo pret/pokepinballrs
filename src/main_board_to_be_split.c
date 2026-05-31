@@ -1485,7 +1485,7 @@ void UpdateHatchCave(void)
             {
                 if (gCurrentPinballGame->eggCaveExitDelayTimer == 30)
                 {
-                    gCurrentPinballGame->ballFrozenState = 0;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                     gCurrentPinballGame->collisionCooldownTimer = 60;
                     gCurrentPinballGame->ball->velocity.x = 20;
                     gCurrentPinballGame->ball->velocity.y = 200;

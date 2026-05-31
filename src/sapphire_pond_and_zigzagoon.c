@@ -74,7 +74,7 @@ void UpdatePelipperPondEntity(void)
             if (gCurrentPinballGame->pelipperFrameTimer == 0)
             {
                 gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
-                gCurrentPinballGame->ballFrozenState = 1;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                 gCurrentPinballGame->ball->velocity.x = 0;
                 gCurrentPinballGame->ball->velocity.y = 0;
                 gCurrentPinballGame->ball->spinSpeed = 0;
@@ -237,7 +237,7 @@ void UpdatePelipperPondEntity(void)
             gCurrentPinballGame->ball->oamPriority = 1;
         }
 
-        if (gCurrentPinballGame->ballFrozenState)
+        if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
         {
             if (gCurrentPinballGame->pelipperFrameTimer < 13)
             {
@@ -259,7 +259,7 @@ void UpdatePelipperPondEntity(void)
                 {
                     gCurrentPinballGame->ball->positionQ0.y = 91;
                     gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
-                    gCurrentPinballGame->ballFrozenState = 0;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                     gCurrentPinballGame->ball->velocity.x = 128;
                     gCurrentPinballGame->ball->velocity.y = 256;
                     gCurrentPinballGame->ball->oamPriority = 3;

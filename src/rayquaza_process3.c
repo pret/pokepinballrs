@@ -1280,7 +1280,7 @@ void UpdateRayquazaMinionsAndEffects(void)
                     && gCurrentPinballGame->bossHitFlashTimer == 0 && squaredDistance < 300)
                 {
                     gCurrentPinballGame->ballGrabTimer = 6;
-                    gCurrentPinballGame->ballFrozenState = 1;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                     gCurrentPinballGame->vortexAnimTimer[i] = 0;
                     gCurrentPinballGame->vortexEntityState[i] = RAYQUAZA_WHIRLWIND_STATE_FULL_CAUGHT_BALL;
                     gCurrentPinballGame->cameraLocked = TRUE;
@@ -1368,7 +1368,7 @@ void UpdateRayquazaMinionsAndEffects(void)
                 {
                     gCurrentPinballGame->ballWhirlwindLiftY = 0;
                     gCurrentPinballGame->ball->velocity.y = -((gCurrentPinballGame->ballWhirlwindFallAcceleration * 0x80) / 10) / 2;
-                    gCurrentPinballGame->ballFrozenState = 0;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                     gCurrentPinballGame->vortexAnimTimer[i] = 0;
                     gCurrentPinballGame->ball->velocity.x = 0;
                     gCurrentPinballGame->vortexEntityState[i] = RAYQUAZA_WHIRLWIND_STATE_INIT;

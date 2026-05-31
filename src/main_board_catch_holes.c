@@ -792,7 +792,7 @@ void AnimateCenterTrapSequence(void)
         if (gCurrentPinballGame->modeAnimTimer > 148)
         {
             gCurrentPinballGame->ball->ballHidden = TRUE;
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->ball->velocity.y = 0;
             gCurrentPinballGame->ball->positionQ0.x = 119;
@@ -804,17 +804,17 @@ void AnimateCenterTrapSequence(void)
         }
         else if (gCurrentPinballGame->modeAnimTimer == 148)
         {
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             gCurrentPinballGame->trapAnimState = 0;
         }
         else if (gCurrentPinballGame->modeAnimTimer > 36)
         {
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             gCurrentPinballGame->trapAnimState = 0;
         }
         else if (gCurrentPinballGame->modeAnimTimer > 24)
         {
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             gCurrentPinballGame->trapAnimState = 1;
         }
         else if (gCurrentPinballGame->modeAnimTimer == 24)
@@ -824,7 +824,7 @@ void AnimateCenterTrapSequence(void)
             gCurrentPinballGame->ball->velocity.x = 73;
             gCurrentPinballGame->ball->velocity.y = 236;
             gCurrentPinballGame->ball->ballHidden = FALSE;
-            gCurrentPinballGame->ballFrozenState = 0;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
             gCurrentPinballGame->cameraLocked = FALSE;
             gCurrentPinballGame->ball->scale = 0x88;
             gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
@@ -863,7 +863,7 @@ void TransitionToBonusField(void)
     gCurrentPinballGame->ball->velocity.x = 0;
     gCurrentPinballGame->ball->velocity.y = 0;
     gCurrentPinballGame->ball->ballHidden = FALSE;
-    gCurrentPinballGame->ballFrozenState = 0;
+    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
     gCurrentPinballGame->ball->scale = 0x100;
     gCurrentPinballGame->trapAnimState = 0;
     gCurrentPinballGame->ballCatchState = NOT_TRAPPED;

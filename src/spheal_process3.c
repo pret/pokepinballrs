@@ -54,7 +54,7 @@ void SphealBoardProcess_3A_42E48(void)
     gCurrentPinballGame->ballGrabbed = 0;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
     gCurrentPinballGame->ball->ballHidden = TRUE;
-    gCurrentPinballGame->ballFrozenState = 1;
+    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
     gCurrentPinballGame->ball->velocity.x = 0;
     gCurrentPinballGame->ball->velocity.y = 0;
     gCurrentPinballGame->ball->spinSpeed = 0;
@@ -1068,7 +1068,7 @@ void SphealBoard_WhiscashDeliversBall(void)
         }
 
         if (gCurrentPinballGame->deliveryAnimFrameIndex == 10)
-            gCurrentPinballGame->ballFrozenState = 0;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
     }
 }
 
@@ -1136,7 +1136,7 @@ void SphealBoard_PelipperDeliversBall(void)
             gCurrentPinballGame->ball->oamPriority = 1;
         }
 
-        if (gCurrentPinballGame->ballFrozenState)
+        if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
         {
             if (gCurrentPinballGame->pelipperFrameTimer < 13)
             {
@@ -1158,7 +1158,7 @@ void SphealBoard_PelipperDeliversBall(void)
                 {
                     gCurrentPinballGame->ball->positionQ0.y = 181;
                     gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
-                    gCurrentPinballGame->ballFrozenState = 0;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                     gCurrentPinballGame->ball->velocity.x = -10;
                     gCurrentPinballGame->ball->velocity.y = 0;
                     gCurrentPinballGame->cameraLocked = FALSE;
@@ -1221,7 +1221,7 @@ void UpdateSealeoKnockdownPhysics(void)
             if (i == 2)
             {
                 // Ball
-                gCurrentPinballGame->ballFrozenState = 1;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                 gCurrentPinballGame->ball->velocity.x += 5 - targetSealeoIx * 10;
             }
 
@@ -1391,7 +1391,7 @@ void UpdateSealeoKnockdownPhysics(void)
                     {
                         gCurrentPinballGame->ball->velocity.y = 0;
                         gCurrentPinballGame->ball->velocity.x = 5 - targetSealeoIx * 10;
-                        gCurrentPinballGame->ballFrozenState = 0;
+                        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                         gCurrentPinballGame->knockdownPhase[i] = SPHEAL_KNOCKDOWN_PHASE_WAITING;
                     }
                 }
@@ -1451,7 +1451,7 @@ void UpdateSealeoKnockdownPhysics(void)
                     {
                         gCurrentPinballGame->ball->velocity.y = 0;
                         gCurrentPinballGame->ball->velocity.x = 5 - targetSealeoIx * 10;
-                        gCurrentPinballGame->ballFrozenState = 0;
+                        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                         gCurrentPinballGame->knockdownPhase[i] = SPHEAL_KNOCKDOWN_PHASE_WAITING;
                     }
                 }

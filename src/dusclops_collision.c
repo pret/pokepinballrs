@@ -208,7 +208,7 @@ void CheckDusclopsAbsorbZoneHit(u8 arg0, u16 *arg1, u16 *arg2)
         break;
     case 4:
         gCurrentPinballGame->bossEntityState = DUSCLOPS_ENTITY_STATE_HIT_ABSORB_ZONE;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->boardEntityCollisionMode = DUSCLOPS_ENTITY_COLLISION_MODE_NONE;
         break;
     case 5:

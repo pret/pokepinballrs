@@ -327,7 +327,7 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->scale = 0x80;
         gCurrentPinballGame->ball->ballHidden = TRUE;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->modeAnimTimer = 120;
         gCurrentPinballGame->ballCatchState = TRAP_CENTER_HOLE;
@@ -349,7 +349,7 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->scale = 0x80;
         gCurrentPinballGame->ball->ballHidden = TRUE;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->whiscashState = WHISCASH_STATE_INIT_RETURN_FROM_BONUS;
         gCurrentPinballGame->cameraBaseX = 0;
@@ -365,7 +365,7 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->scale = 0x80;
         gCurrentPinballGame->ball->ballHidden = TRUE;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->pelipperFrameTimer = 0;
         gCurrentPinballGame->pelipperState = 7;
@@ -550,7 +550,7 @@ void MainGameFrameUpdate(void)
         CurrentBoardProcPairs_020028D8[4].updateFunc();
         if (gMain.modeChangeFlags)
         {
-            if (!gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
             {
                 for (i = 0; i < 4; i++)
                 {
@@ -563,9 +563,9 @@ void MainGameFrameUpdate(void)
         {
             gMain.fieldFrameCount++;
             gCurrentPinballGame->globalAnimFrameCounter++;
-            if (gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
             {
-                if (gCurrentPinballGame->ballFrozenState != 2)
+                if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_FROZEN)
                 {
                     for (i = 0; i < 4; i++)
                     {
@@ -606,7 +606,7 @@ void IdleGameFrameUpdate(void)
         CurrentBoardProcPairs_020028D8[4].updateFunc();
         if (gMain.modeChangeFlags)
         {
-            if (!gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
             {
                 for (i = 0; i < 4; i++)
                 {
@@ -619,9 +619,9 @@ void IdleGameFrameUpdate(void)
         {
             gMain.fieldFrameCount++;
             gCurrentPinballGame->globalAnimFrameCounter++;
-            if (gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
             {
-                if (gCurrentPinballGame->ballFrozenState != 2)
+                if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_FROZEN)
                 {
                     for (i = 0; i < 4; i++)
                     {
@@ -675,7 +675,7 @@ void BonusFieldFrameUpdate(void)
     CurrentBoardProcPairs_020028D8[4].updateFunc();
     if (gMain.modeChangeFlags & ~MODE_CHANGE_EXPIRED_BONUS)
     {
-        if (!gCurrentPinballGame->ballFrozenState)
+        if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
         {
             for (i = 0; i < 4; i++)
             {
@@ -690,9 +690,9 @@ void BonusFieldFrameUpdate(void)
     {
         gMain.fieldFrameCount++;
         gCurrentPinballGame->globalAnimFrameCounter++;
-        if (gCurrentPinballGame->ballFrozenState)
+        if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
         {
-            if (gCurrentPinballGame->ballFrozenState == 2)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_FROZEN)
             {
                 gCurrentPinballGame->activeBallIndex = 0;
                 gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
@@ -739,7 +739,7 @@ void IdleBonusFieldFrameUpdate(void)
         CurrentBoardProcPairs_020028D8[4].updateFunc();
         if (gMain.modeChangeFlags & ~MODE_CHANGE_EXPIRED_BONUS)
         {
-            if (!gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
             {
                 for (i = 0; i < 4; i++)
                 {
@@ -754,9 +754,9 @@ void IdleBonusFieldFrameUpdate(void)
         {
             gMain.fieldFrameCount++;
             gCurrentPinballGame->globalAnimFrameCounter++;
-            if (gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
             {
-                if (gCurrentPinballGame->ballFrozenState == 2)
+                if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_FROZEN)
                 {
                     gCurrentPinballGame->activeBallIndex = 0;
                     gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];

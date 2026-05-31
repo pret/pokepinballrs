@@ -96,7 +96,7 @@ void AnimateSharpedoCatchSequence(void)
         if (gCurrentPinballGame->modeAnimTimer > 100)
         {
             gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
 
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->ball->velocity.y = 0;
@@ -184,7 +184,7 @@ void AnimateSharpedoCatchSequence(void)
         }
         else if (gCurrentPinballGame->modeAnimTimer > 16)
         {
-            gCurrentPinballGame->ballFrozenState = 0;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
             gCurrentPinballGame->cameraScrollTarget = 0;
             gCurrentPinballGame->cameraScrollEnabled = 1;
             gCurrentPinballGame->cameraLocked = FALSE;
@@ -267,7 +267,7 @@ void AnimateRubyEggHatchSequence(void)
     if (modeAnimTimer != 0)
     {
         gCurrentPinballGame->ball->ballHidden = TRUE;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->modeAnimTimer--;
 
         gCurrentPinballGame->ball->velocity.x = 0;
@@ -325,7 +325,7 @@ void AnimateRubyEggHatchSequence(void)
         }
         else
         {
-            gCurrentPinballGame->ballFrozenState = 0;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
             gCurrentPinballGame->collisionCooldownTimer = 0x3C;
             gCurrentPinballGame->ball->velocity.x = 0x14;
             gCurrentPinballGame->ball->velocity.y = 0xC8;
@@ -351,7 +351,7 @@ void AnimateRubyEvolutionShopSequence(void)
     if (gCurrentPinballGame->modeAnimTimer > 0x18)
     {
         gCurrentPinballGame->ball->ballHidden = TRUE;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->modeAnimTimer--;
         gCurrentPinballGame->ball->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
@@ -379,7 +379,7 @@ void AnimateRubyEvolutionShopSequence(void)
     }
 
     gCurrentPinballGame->ball->ballHidden = FALSE;
-    gCurrentPinballGame->ballFrozenState = 0;
+    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
     gCurrentPinballGame->collisionCooldownTimer = 0x3C;
 
     gCurrentPinballGame->ball->velocity.x = 0x60;

@@ -13,7 +13,7 @@ void ProcessBannerCameraTransition(void)
         gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
         if (gCurrentPinballGame->bannerActive)
         {
-            gCurrentPinballGame->ballFrozenState = 2;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_FROZEN;
             gCurrentPinballGame->cameraLocked = TRUE;
             if (gCurrentPinballGame->bannerDelayTimer != 0)
             {
@@ -60,7 +60,7 @@ void ProcessBannerCameraTransition(void)
             if (gCurrentPinballGame->cameraYScrollSpeed == 0 || gCurrentPinballGame->cameraYAdjust == 0)
             {
                 gCurrentPinballGame->cameraYAdjust = 0;
-                gCurrentPinballGame->ballFrozenState = 0;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                 gMain.modeChangeFlags &= ~MODE_CHANGE_BANNER;
                 gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
@@ -79,7 +79,7 @@ void ProcessBannerCameraTransition(void)
                 }
 
                 gCurrentPinballGame->cameraYAdjust = 0;
-                gCurrentPinballGame->ballFrozenState = 0;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                 gMain.modeChangeFlags &= ~MODE_CHANGE_BANNER;
                 gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
@@ -95,7 +95,7 @@ void ProcessBannerCameraTransition(void)
                 if (gCurrentPinballGame->cameraYAdjust >= 0)
                 {
                     gCurrentPinballGame->cameraYAdjust = 0;
-                    gCurrentPinballGame->ballFrozenState = 0;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                     gMain.modeChangeFlags &= ~MODE_CHANGE_BANNER;
                     gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 

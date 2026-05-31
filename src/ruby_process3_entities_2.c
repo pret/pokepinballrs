@@ -452,7 +452,7 @@ void RubyPond_EntityLogic(void)
             }
 
             if (gCurrentPinballGame->whiscashFrameIx == WHISCASH_FRAME_SPITBALL+2)
-                gCurrentPinballGame->ballFrozenState = 0;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
             break;
         case WHISCASH_STATE_HIT:
             gCurrentPinballGame->whiscashFrameIx = WHISCASH_FRAME_HIT;

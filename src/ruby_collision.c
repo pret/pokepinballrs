@@ -94,7 +94,7 @@ s16 CollisionCheck_Ruby(struct Vector16 *arg0, u16* arg1) {
         break;
     case 4:
         gCurrentPinballGame->whiscashState = WHISCASH_STATE_ABSORB_ZONE_HIT;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         some_enum = 0;
         break;
     }

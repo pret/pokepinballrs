@@ -917,7 +917,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
             }
 
             if (gCurrentPinballGame->bossFramesetIndex == DUSCLOPS_FRAME_ABSOLB_LAUNCH)
-                gCurrentPinballGame->ballFrozenState = 0;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
 
             if (gCurrentPinballGame->bossFramesetIndex > DUSCLOPS_FRAME_ABSOLB_LAUNCH)
             {

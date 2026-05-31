@@ -95,6 +95,10 @@
 #define BALL_SPAWN_STATE_DISABLED 2
 #define BALL_SPAWN_STATE_INITIAL_SPAWN 3
 
+#define BALL_PHYSICS_NORMAL 0
+#define BALL_PHYSICS_MANUAL 1
+#define BALL_PHYSICS_FROZEN 2
+
 #define FLIPPER_LEFT 0
 #define FLIPPER_RIGHT 1
 #define FLIPPER_COUNT 2
@@ -160,7 +164,7 @@ struct PinballGame
     /*0x01C*/ bool8 scoreCounterAnimationEnabled;
     /*0x01D*/ u8 fadeSubState;
     /*0x01E*/ u8 gravityStrengthIndex;
-    /*0x01F*/ u8 ballFrozenState;
+    /*0x01F*/ u8 ballPhysicsState;
     /*0x020*/ u8 ballInLaunchChute;
     /*0x021*/ u8 launcherCharging;
     /*0x022*/ s8 collisionResponseType;

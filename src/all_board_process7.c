@@ -320,7 +320,7 @@ void BonusBoardProcess_7B_12BF8()
         {
             if (gCurrentPinballGame->ballRespawnTimer == 0)
             {
-                gCurrentPinballGame->ballFrozenState = 1;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                 primaryBall->velocity.x = 0;
                 primaryBall->velocity.y = 0;
                 primaryBall->spinSpeed = 0;
@@ -358,7 +358,7 @@ void BonusBoardProcess_7B_12BF8()
 
                 gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
                 spriteGroup->active = FALSE;
-                gCurrentPinballGame->ballFrozenState = 0;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                 DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
             }
         }
@@ -366,7 +366,7 @@ void BonusBoardProcess_7B_12BF8()
         {
             if (gCurrentPinballGame->ballRespawnTimer == 0)
             {
-                gCurrentPinballGame->ballFrozenState = 1;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                 primaryBall->velocity.x = 0;
                 primaryBall->velocity.y = 0;
                 primaryBall->spinSpeed = 0;
