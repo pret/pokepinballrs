@@ -55,10 +55,10 @@ gRubyBoardCompressedBGTileBuffer:: @ 0x08250934
 gSharedBumperCollisionMap:: @ 0x08252B10
 	.incbin "baserom.gba", 0x252B10, 0x2000
 
-gRubyAltEntity0CollisionMap:: @ 0x08254B10
+gRubyLinooneLeftCollisionMap:: @ 0x08254B10
 	.incbin "baserom.gba", 0x254B10, 0x2880
 
-gRubyAltEntity1CollisionMap:: @ 0x08257390
+gRubyLinooneRightCollisionMap:: @ 0x08257390
 	.incbin "baserom.gba", 0x257390, 0x2880
 
 gWhiscashCollisionMap:: @ 0x08259C10

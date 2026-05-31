@@ -4,8 +4,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 
-extern const u16 gRubyAltEntity0CollisionMap[];
-extern const u16 gRubyAltEntity1CollisionMap[];
+extern const u16 gRubyLinooneLeftCollisionMap[];
+extern const u16 gRubyLinooneRightCollisionMap[];
 extern const u16 gWhiscashCollisionMap[];
 
 extern struct SongHeader se_unk_99;
@@ -20,7 +20,7 @@ s16 CollisionCheck_Ruby(struct Vector16 *ballPosition, u16* arg1) {
     s32 tileMapPage;
     s32 boardLayer;
 
-    u32 some_enum;
+    u32 boardTriggerType;
     u32 switch_enum;
 
     return_val = 0;
@@ -41,64 +41,65 @@ s16 CollisionCheck_Ruby(struct Vector16 *ballPosition, u16* arg1) {
     CheckRubyBoardCollision(ballPosition, &boardCollisionAngle, &boardCollisionType);
 
     switch_enum = boardCollisionType & 0xF;
-    some_enum = boardCollisionType >> 4;
+    boardTriggerType = boardCollisionType >> 4;
 
-    switch (switch_enum-1) {
-    case 0:
-    case 3:
-    case 5:
-        gCurrentPinballGame->collisionSurfaceType = (switch_enum - 1);
-        gCurrentPinballGame->collisionResponseType = 1;
-        *arg1 = boardCollisionAngle;
+    switch (switch_enum) {
+        case 1:
+        case 4:
+        case 6:
+            gCurrentPinballGame->collisionSurfaceType = (switch_enum - 1);
+            gCurrentPinballGame->collisionResponseType = 1;
+            *arg1 = boardCollisionAngle;
 
-        if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
-        {
-            if (gCurrentPinballGame->ball->positionQ0.x < gBoardConfig.fieldLayout.ballSpawnX - 8 ||
-                gCurrentPinballGame->ball->positionQ0.y < gBoardConfig.fieldLayout.ballSpawnY - 8)
+            // angle range is "up", with a tiny margin
+            if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
             {
+                if (gCurrentPinballGame->ball->positionQ0.x < gBoardConfig.fieldLayout.ballSpawnX - 8 ||
+                    gCurrentPinballGame->ball->positionQ0.y < gBoardConfig.fieldLayout.ballSpawnY - 8)
+                {
 
-                if (gCurrentPinballGame->ball->spinSpeed > 0)
-                {
-                    *arg1 = 0x3E00;
-                }
-                else if (gCurrentPinballGame->ball->spinSpeed != 0)
-                {
-                    *arg1 = 0x4100;
-                }
-                else
-                {
-                    if (gMain.systemFrameCount & 1)
+                    if (gCurrentPinballGame->ball->spinSpeed > 0)
                     {
-                        gCurrentPinballGame->ball->spinAcceleration = 0x28;
-                        gCurrentPinballGame->ball->spinSpeed = 1;
-                        *arg1 = 0x3E00;
+                        *arg1 = 0x3E00; //Slight Right bounce
+                    }
+                    else if (gCurrentPinballGame->ball->spinSpeed != 0)
+                    {
+                        *arg1 = 0x4100; //Slight Left bounce
                     }
                     else
                     {
-                        gCurrentPinballGame->ball->spinAcceleration = 0xFFD8;
-                        gCurrentPinballGame->ball->spinSpeed = 0xFFFF;
-                        *arg1 = 0x4100;
+                        if (gMain.systemFrameCount & 1)
+                        {
+                            gCurrentPinballGame->ball->spinAcceleration = 0x28;
+                            gCurrentPinballGame->ball->spinSpeed = 1;
+                            *arg1 = 0x3E00;
+                        }
+                        else
+                        {
+                            gCurrentPinballGame->ball->spinAcceleration = 0xFFD8;
+                            gCurrentPinballGame->ball->spinSpeed = 0xFFFF;
+                            *arg1 = 0x4100;
+                        }
                     }
                 }
             }
-        }
-        return_val = 1;
-        break;
-    case 1:
-    case 2:
-        gCurrentPinballGame->collisionSurfaceType = switch_enum - 1;
-        gCurrentPinballGame->collisionResponseType = 2;
-        *arg1 = boardCollisionAngle & 0x0000FFF0;
-        return_val = 1;
+            return_val = 1;
+            break;
+        case 2:
+        case 3:
+            gCurrentPinballGame->collisionSurfaceType = switch_enum - 1;
+            gCurrentPinballGame->collisionResponseType = 2;
+            *arg1 = boardCollisionAngle & 0x0000FFF0;
+            return_val = 1;
 
-        break;
-    case 4:
-        gCurrentPinballGame->whiscashState = WHISCASH_STATE_ABSORB_ZONE_HIT;
-        gCurrentPinballGame->ballFrozenState = 1;
-        some_enum = 0;
-        break;
+            break;
+        case 5:
+            gCurrentPinballGame->whiscashState = WHISCASH_STATE_ABSORB_ZONE_HIT;
+            gCurrentPinballGame->ballFrozenState = 1;
+            boardTriggerType = 0;
+            break;
     }
-    ProcessRubyCollisionEvent((s32) some_enum, &return_val, arg1);
+    ProcessRubyCollisionEvent((s32) boardTriggerType, &return_val, arg1);
 
     return return_val;
 }
@@ -228,8 +229,8 @@ void CheckRubyBoardCollision(struct Vector16* ballPosition, u16* collisionAngle,
 
                 if (deltaX <= 71U && deltaY_alt <= 71U)
                 {
-                    *collisionAngle = 0xFFF0 & gRubyAltEntity0CollisionMap[(deltaY_alt * 72) + deltaX];
-                    *collisionType = 0xF & gRubyAltEntity0CollisionMap[(deltaY_alt * 72) + deltaX];
+                    *collisionAngle = 0xFFF0 & gRubyLinooneLeftCollisionMap[(deltaY_alt * 72) + deltaX];
+                    *collisionType = 0xF & gRubyLinooneLeftCollisionMap[(deltaY_alt * 72) + deltaX];
 
                     if (*collisionType & 1)
                     {
@@ -246,8 +247,8 @@ void CheckRubyBoardCollision(struct Vector16* ballPosition, u16* collisionAngle,
 
                 if (deltaX <= 71U && deltaY <= 71U)
                 {
-                    *collisionAngle = 0xFFF0 & gRubyAltEntity1CollisionMap[(deltaY * 72) + deltaX];
-                    *collisionType = 0xF & gRubyAltEntity1CollisionMap[(deltaY * 72) + deltaX];
+                    *collisionAngle = 0xFFF0 & gRubyLinooneRightCollisionMap[(deltaY * 72) + deltaX];
+                    *collisionType = 0xF & gRubyLinooneRightCollisionMap[(deltaY * 72) + deltaX];
 
                     if (*collisionType & 1)
                     {
@@ -265,9 +266,9 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
 {
     s16 absVelY;
 
-    switch ((u8)arg0 - 1)
+    switch ((u8)arg0)
     {
-    case 0:
+    case 1:
         if (gCurrentPinballGame->collisionCooldownTimer == 0)
         {
             if (gCurrentPinballGame->ball->positionQ1.x > 359)
@@ -287,7 +288,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
         }
     default:
         return;
-    case 1:
+    case 2:
         if (gCurrentPinballGame->boardLayerDepth == 0)
         {
             gCurrentPinballGame->ball->oamPriority = 2;
@@ -302,7 +303,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
         }
 
         break;
-    case 2:
+    case 3:
         if (gCurrentPinballGame->boardLayerDepth == 2)
         {
             gCurrentPinballGame->ball->oamPriority = 3;
@@ -324,7 +325,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
             gCurrentPinballGame->shopDoorOpenLevel = 0;
 
         break;
-    case 3:
+    case 4:
         if (gCurrentPinballGame->mainBoardCountdownTimer == 0)
         {
             if (gCurrentPinballGame->ball->positionQ0.x > 131)
@@ -355,19 +356,19 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
             m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
         }
         break;
-    case 4:
+    case 5:
         gCurrentPinballGame->ballInLaunchChute = TRUE;
         gCurrentPinballGame->ballTouchingSpoink = 1;
         gCurrentPinballGame->ballCollisionZone = 0;
         return;
-    case 5:
+    case 6:
         if (gCurrentPinballGame->ballInLowerHalf == 0)
         {
             SetBoardCollisionConfig(1);
             gCurrentPinballGame->boardCollisionConfigChanged = 1;
         }
         break;
-    case 6:
+    case 7:
         if (gCurrentPinballGame->ball->positionQ0.x < 50)
         {
             if (gCurrentPinballGame->nuzleafHitFlag == 0)
@@ -399,7 +400,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
 
         gCurrentPinballGame->ballCollisionZone = 14;
         return;
-    case 7:
+    case 8:
         if (gCurrentPinballGame->ball->positionQ0.x <= 50)
         {
             if (gCurrentPinballGame->ballCollisionZone == 8)
@@ -550,7 +551,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
             return;
         }
         break;
-    case 8:
+    case 9:
         if (gCurrentPinballGame->ball->positionQ0.x <= 50)
         {
             gCurrentPinballGame->ballCollisionZone = 8;
@@ -565,7 +566,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
 
         gCurrentPinballGame->ballCollisionZone = 9;
         return;
-    case 9:
+    case 10:
         if (gCurrentPinballGame->ball->positionQ0.x <= 46)
         {
             gCurrentPinballGame->ballCollisionZone = 10;
@@ -658,7 +659,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
         gCurrentPinballGame->allHolesLitBlinkTimer = 126;
         gCurrentPinballGame->scoreAddedInFrame = 4000;
         return;
-    case 10:
+    case 11:
         if (gCurrentPinballGame->ballInLowerHalf == 0)
         {
             if (gCurrentPinballGame->ball->positionQ0.x > 170)
@@ -731,7 +732,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
         gCurrentPinballGame->pikaKickbackTimer = 120;
         return;
 
-    case 11:
+    case 12:
         if (gCurrentPinballGame->pikaSpinCooldownTimer != 0)
             return;
 
@@ -749,7 +750,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
 
         gCurrentPinballGame->pikaSpinCooldownTimer = 20;
         return;
-    case 12:
+    case 13:
         if (gCurrentPinballGame->cyndaquilCollisionEnabled == 0)
             return;
 
@@ -771,7 +772,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
         m4aSongNumStart(SE_UNKNOWN_0xB7);
         PlayRumble(7);
         return;
-    case 13:
+    case 14:
         if (gCurrentPinballGame->cyndaquilCollisionEnabled == 0)
             return;
 
@@ -792,7 +793,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
         gCurrentPinballGame->scoreAddedInFrame = 5000;
         PlayRumble(7);
         return;
-    case 14:
+    case 15:
         if (gCurrentPinballGame->boardState > MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
             && gCurrentPinballGame->boardState != MAIN_BOARD_STATE_EGG_HATCH_MODE)
         {

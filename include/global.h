@@ -103,7 +103,7 @@ struct BallState
     /*0x01*/ s8 oamPriority;
     /*0x02*/ u8 filler2[0x2];
     /*0x04*/ u16 spinAcceleration;
-    /*0x06*/ s16 spinSpeed;
+    /*0x06*/ s16 spinSpeed; //positive = clockwise, negative = counterclockwise
     /*0x08*/ s16 prevSpinSpeed;
     /*0x0A*/ u16 spinAngle;
     /*0x0C*/ u16 prevSpinAngle;

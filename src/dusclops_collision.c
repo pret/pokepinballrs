@@ -6,13 +6,13 @@ s16 CollisionCheck_Dusclops(struct Vector16* ballPosition, u16* arg1) {
     struct Vector16 vec1;
     struct Vector16 vec2;
     u16 sp00;
-    u8 sp02;
+    u8 boardCollisionType;
     u16 return_val;
     s16 collisionTileIndex;
     s32 tileMapPage;
     s32 boardLayer;
 
-    u32 some_enum;
+    u32 boardTriggerType;
     u32 switch_enum;
 
     return_val = 0;
@@ -27,11 +27,11 @@ s16 CollisionCheck_Dusclops(struct Vector16* ballPosition, u16* arg1) {
     vec1.y %= 64;
     collisionTileIndex = gBoardConfig.fieldLayout.collision.tileData[boardLayer + tileMapPage][vec1.y * 64 + vec1.x];
     sp00 = gBoardConfig.fieldLayout.collision.angleData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
-    sp02 = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
+    boardCollisionType = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
 
-    CheckDusclopsEntitiesCollision(ballPosition, &sp00, &sp02);
-    switch_enum = sp02 & 0xF;
-    some_enum = sp02 >> 4;
+    CheckDusclopsEntitiesCollision(ballPosition, &sp00, &boardCollisionType);
+    switch_enum = boardCollisionType & 0xF;
+    boardTriggerType = boardCollisionType >> 4;
 
     switch (switch_enum)
     {
@@ -83,11 +83,11 @@ s16 CollisionCheck_Dusclops(struct Vector16* ballPosition, u16* arg1) {
         return_val = 1;
         break;
     case 5:
-        some_enum = 4;
+        boardTriggerType = 4;
         break;
     }
 
-    CheckDusclopsAbsorbZoneHit(some_enum, &return_val, arg1);
+    CheckDusclopsAbsorbZoneHit(boardTriggerType, &return_val, arg1);
     return return_val;
 }
 
