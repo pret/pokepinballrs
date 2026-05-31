@@ -99,9 +99,13 @@
 #define BALL_PHYSICS_MANUAL 1
 #define BALL_PHYSICS_FROZEN 2
 
-#define FLIPPER_LEFT 0
-#define FLIPPER_RIGHT 1
-#define FLIPPER_COUNT 2
+#define SIDE_IX_LEFT 0
+#define SIDE_IX_RIGHT 1
+#define SIDE_COUNT 2
+
+#define SIDE_COLLISION_NONE 0
+#define SIDE_COLLISION_LEFT 1
+#define SIDE_COLLISION_RIGHT 2
 
 struct BgOffsets
 {
@@ -894,7 +898,7 @@ struct PinballGame
     /*0x132C*/struct BallState *ball;
     /*0x1330*/struct BallState *secondaryBall;
     /*0x1334*/struct BallState ballStates[2];
-    /*0x13BC*/struct FlipperState flipper[FLIPPER_COUNT];
+    /*0x13BC*/struct FlipperState flipper[SIDE_COUNT];
     /*0x13D4*/u16 nameRevealDelaysRow2[10];
     /*0x13E8*/struct Vector16 nameSlideRow2[10];
 } /* size=0x1410 */;

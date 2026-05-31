@@ -479,7 +479,7 @@ void RestoreMainFieldDynamicGraphics(void)
     LoadCatchSpriteGraphics();
     LoadMonFieldSpriteGraphics();
 
-    for (i = 0; i < FLIPPER_COUNT; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         var0 = gCurrentPinballGame->flipper[i].position / 2;
         DmaCopy16(3, gFlipperTileGraphics[var0], ((i * 0x200) + 0x06010000), 0x200);
