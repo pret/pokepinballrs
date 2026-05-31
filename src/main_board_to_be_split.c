@@ -1469,7 +1469,7 @@ void UpdateHatchCave(void)
                 gCurrentPinballGame->cameraYScrollSpeed = 2;
                 gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                 gCurrentPinballGame->bannerActive = TRUE;
-                gCurrentPinballGame->bannerPreserveBallState = 0;
+                gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                 gCurrentPinballGame->eggCaveLiftTimer = 48;
             }
 

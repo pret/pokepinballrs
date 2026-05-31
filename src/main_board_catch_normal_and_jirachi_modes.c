@@ -165,7 +165,7 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
                     gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_CATCH_EM;
                     gCurrentPinballGame->bannerActive = TRUE;
-                    gCurrentPinballGame->bannerPreserveBallState = 1;
+                    gCurrentPinballGame->holdCameraLockAfterBanner = TRUE;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
@@ -200,7 +200,7 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
                     gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_CATCH_EM;
                     gCurrentPinballGame->bannerActive = TRUE;
-                    gCurrentPinballGame->bannerPreserveBallState = 1;
+                    gCurrentPinballGame->holdCameraLockAfterBanner = TRUE;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
@@ -373,7 +373,7 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
                     gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_JIRACHI;
                     gCurrentPinballGame->bannerActive = TRUE;
-                    gCurrentPinballGame->bannerPreserveBallState = 1;
+                    gCurrentPinballGame->holdCameraLockAfterBanner = TRUE;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
@@ -407,7 +407,7 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
                     gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_JIRACHI;
                     gCurrentPinballGame->bannerActive = TRUE;
-                    gCurrentPinballGame->bannerPreserveBallState = 1;
+                    gCurrentPinballGame->holdCameraLockAfterBanner = TRUE;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;

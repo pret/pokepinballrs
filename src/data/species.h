@@ -1,3 +1,6 @@
+#include "constants/species.h"
+#include "types.h"
+
 const struct PokemonSpecies gSpeciesInfo[NUM_SPECIES] = {
     [SPECIES_TREECKO] = {
         .speciesIdRS = 277,

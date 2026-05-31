@@ -293,7 +293,7 @@ void GivePrize(void)
                 gCurrentPinballGame->cameraYScrollSpeed = 2;
                 gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                 gCurrentPinballGame->bannerActive = TRUE;
-                gCurrentPinballGame->bannerPreserveBallState = 0;
+                gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                 gCurrentPinballGame->pichuWalkMode = 1;
                 gCurrentPinballGame->pichuEntranceTimer = 800;
                 gCurrentPinballGame->outLanePikaPosition = PIKA_LEFT_SIDE;

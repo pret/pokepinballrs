@@ -7,6 +7,7 @@
 #include "constants/pinball_inputs.h"
 #include "constants/species.h"
 #include "constants/sprite_groups.h"
+#include "functions.h"
 
 struct HighScoreEntry
 {
@@ -177,6 +178,5 @@ void EnableVBlankInterrupts(void);
 void DisableVBlankInterrupts(void);
 void MainLoopIter(void);
 void DefaultMainCallback(void);
-
 
 #endif // GUARD_MAIN_H

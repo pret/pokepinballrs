@@ -324,7 +324,7 @@ extern void IntroScene2_InitVars(void);
 
 // asm/options.s
 
-//extern ? Options_Main();
+extern void Options_Main();
 //extern ? Options_LoadGraphics();
 extern void Options_InitStates(void);
 //extern ? Options_HandleInput();
@@ -407,6 +407,7 @@ extern void ProcessRayquazaCollisionEvent(u8, u16*, u16*);
 extern s16 CollisionCheck_Spheal(struct Vector16*, u16*);
 extern void CheckSphealEntityCollision(struct Vector16*, u16*, u8*);
 extern void ProcessSphealCollisionEvent(u8, u16*, u16*);
+extern void PinballGameMain();
 extern void IdlePinballGameMain();
 extern void PinballGameIdle0_19048(void);//gMain.subState = 0
 extern void PinballGameIdle1_19190(void);//gMain.subState = 1

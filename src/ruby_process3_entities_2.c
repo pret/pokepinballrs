@@ -200,7 +200,7 @@ void AnimateRubyShopDoor(void)
                 gCurrentPinballGame->cameraYScrollSpeed = 0;
                 gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                 gCurrentPinballGame->bannerActive = TRUE;
-                gCurrentPinballGame->bannerPreserveBallState = 0;
+                gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                 m4aSongNumStart(SE_UNKNOWN_0xBD);
             }
 
@@ -756,7 +756,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
                             gCurrentPinballGame->cameraYScrollSpeed = 4;
                             gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_LOTAD_CATCH_BURST;
                             gCurrentPinballGame->bannerActive = TRUE;
-                            gCurrentPinballGame->bannerPreserveBallState = 0;
+                            gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                             gCurrentPinballGame->bannerDisplayDuration = 80;
                             gCurrentPinballGame->bannerSlidePosition = -2500;
                             gCurrentPinballGame->bannerSlideTimer = 50;
@@ -774,7 +774,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
                             gCurrentPinballGame->cameraYScrollSpeed = 4;
                             gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_CHINCHOU_CATCH_BURST;
                             gCurrentPinballGame->bannerActive = TRUE;
-                            gCurrentPinballGame->bannerPreserveBallState = 0;
+                            gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                             gCurrentPinballGame->bannerDisplayDuration = 80;
                             gCurrentPinballGame->bannerSlidePosition = -2500;
                             gCurrentPinballGame->bannerSlideTimer = 50;

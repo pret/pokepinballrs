@@ -362,7 +362,7 @@ void HandleRubyBumperHit(void)
                             gCurrentPinballGame->cameraYScrollSpeed = 4;
                             gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_SHROOMISH_CATCH_BURST;
                             gCurrentPinballGame->bannerActive = TRUE;
-                            gCurrentPinballGame->bannerPreserveBallState = 0;
+                            gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                             gCurrentPinballGame->bannerDisplayDuration = 80;
                             gCurrentPinballGame->bannerSlidePosition = -2500;
                             gCurrentPinballGame->bannerSlideTimer = 50;

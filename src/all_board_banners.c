@@ -64,7 +64,7 @@ void ProcessBannerCameraTransition(void)
                 gMain.modeChangeFlags &= ~MODE_CHANGE_BANNER;
                 gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
-                if (gCurrentPinballGame->bannerPreserveBallState == 0)
+                if (!gCurrentPinballGame->holdCameraLockAfterBanner)
                 {
                     gCurrentPinballGame->cameraLocked = FALSE;
                 }
@@ -83,7 +83,7 @@ void ProcessBannerCameraTransition(void)
                 gMain.modeChangeFlags &= ~MODE_CHANGE_BANNER;
                 gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
-                if (gCurrentPinballGame->bannerPreserveBallState == 0)
+                if (!gCurrentPinballGame->holdCameraLockAfterBanner)
                 {
                     gCurrentPinballGame->cameraLocked = FALSE;
                 }
@@ -99,7 +99,7 @@ void ProcessBannerCameraTransition(void)
                     gMain.modeChangeFlags &= ~MODE_CHANGE_BANNER;
                     gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
-                    if (gCurrentPinballGame->bannerPreserveBallState == 0)
+                    if (!gCurrentPinballGame->holdCameraLockAfterBanner)
                     {
                         gCurrentPinballGame->cameraLocked = FALSE;
                     }
@@ -112,12 +112,12 @@ void ProcessBannerCameraTransition(void)
 void RenderBannerSlideAnimation(void)
 {
     s16 i;
-    s16 sp00;
+    s16 bannerTypeIx;
     struct SpriteGroup *spriteGroup;
     struct OamDataSimple *simple;
     u32 frameCount;
 
-    sp00 = gCurrentPinballGame->bannerGfxIndex - 1;
+    bannerTypeIx = gCurrentPinballGame->bannerGfxIndex - 1;
     spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER];
     frameCount = ((gMain.systemFrameCount & 7) / 4);
 
@@ -320,9 +320,9 @@ void RenderBannerSlideAnimation(void)
             u16 *dst;
             simple = &spriteGroup->oam[i];
             dst = (u16 *)&gOamBuffer[simple->oamId];
-            *dst++ = gModeBannerOamAttributes[sp00][i * 3 + 0];
-            *dst++ = gModeBannerOamAttributes[sp00][i * 3 + 1];
-            *dst++ = gModeBannerOamAttributes[sp00][i * 3 + 2];
+            *dst++ = gModeBannerOamAttributes[bannerTypeIx][i * 3 + 0];
+            *dst++ = gModeBannerOamAttributes[bannerTypeIx][i * 3 + 1];
+            *dst++ = gModeBannerOamAttributes[bannerTypeIx][i * 3 + 2];
 
             gOamBuffer[simple->oamId].x = gOamBuffer[simple->oamId].x + spriteGroup->baseX;
             gOamBuffer[simple->oamId].y = gOamBuffer[simple->oamId].y + spriteGroup->baseY;

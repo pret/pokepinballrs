@@ -370,7 +370,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->cameraYScrollSpeed = 0;
                 gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_EVOLUTION;
                 gCurrentPinballGame->bannerActive = TRUE;
-                gCurrentPinballGame->bannerPreserveBallState = 0;
+                gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                 gCurrentPinballGame->bannerDisplayDuration = 80;
                 gCurrentPinballGame->bannerSlidePosition = 0xF63C; //-2500
                 gCurrentPinballGame->bannerSlideTimer = 50;
