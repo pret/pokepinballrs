@@ -90,7 +90,7 @@ s16 CollisionCheck_Sapphire(struct Vector16 *ballPosition, u16* collisionAngle) 
         break;
     }
 
-    ProcessSapphireCollisionEvent((s32) boardTriggerType, &hasCollisionImpact, collisionAngle);
+    ProcessSapphireCollisionEvent(boardTriggerType, &hasCollisionImpact, collisionAngle);
     return hasCollisionImpact;
 }
 
@@ -166,490 +166,490 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
 
     switch (triggerType)
     {
-    case 1:
-        if (gCurrentPinballGame->collisionCooldownTimer == 0)
-        {
-            if (gCurrentPinballGame->ball->positionQ1.x >= 200)
-                gCurrentPinballGame->ballCatchState = TRAP_CATCH_HOLE;
-            else
-                gCurrentPinballGame->ballCatchState = TRAP_EVO_SHOP_HOLE;
-
-            DispatchSapphireCatchModeInit();
-            gCurrentPinballGame->collisionResponseType = 7;
-            *hasCollisionImpact = TRUE;
-        }
-        break;
-    case 2:
-        if (gCurrentPinballGame->boardLayerDepth == 0)
-        {
-            gCurrentPinballGame->ball->oamPriority = 2;
-            gCurrentPinballGame->boardLayerDepth = 2;
-        }
-        else if (gCurrentPinballGame->boardLayerDepth == 2)
-        {
-            gCurrentPinballGame->ball->oamPriority = 2;
-            gCurrentPinballGame->boardLayerDepth = 3;
-        }
-        else if (gCurrentPinballGame->boardLayerDepth == 3)
-        {
-            gCurrentPinballGame->ball->oamPriority = 1;
-        }
-        break;
-    case 3:
-        if (gCurrentPinballGame->boardLayerDepth == 2)
-        {
-            gCurrentPinballGame->ball->oamPriority = 3;
-            gCurrentPinballGame->boardLayerDepth = 0;
-        }
-        else if (gCurrentPinballGame->boardLayerDepth == 3)
-        {
-            gCurrentPinballGame->ball->oamPriority = 2;
-            gCurrentPinballGame->boardLayerDepth = 2;
-        }
-        break;
-    case 4:
-        if (gCurrentPinballGame->mainBoardCountdownTimer == 0)
-        {
-            if (gCurrentPinballGame->ball->positionQ0.y < 260)
+        case SAPPHIRE_TRIGGER_MODE_START_BALL_LOCK:
+            if (gCurrentPinballGame->collisionCooldownTimer == 0)
             {
-                if (gCurrentPinballGame->ball->positionQ0.x < 74)
-                {
-                    if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
-                        && gCurrentPinballGame->sapphireBumperState[1] < 3)
-                    {
-                        if (gCurrentPinballGame->sapphireBumperState[1] == 1)
-                            gCurrentPinballGame->sapphireBumperAnimKeyframe[1] = 6;
-                        else
-                            gCurrentPinballGame->sapphireBumperAnimKeyframe[1] = 4;
-
-                        gCurrentPinballGame->sapphireBumperAnimSubTimer[1] = 0;
-                        gCurrentPinballGame->sapphireBumperState[1] = 1;
-                        PlayRumble(7);
-
-                        gCurrentPinballGame->ball->velocity.x /= 2;
-                        gCurrentPinballGame->ball->velocity.y /= 2;
-
-                        memcpy(&gCurrentPinballGame->ballStates[1], &gCurrentPinballGame->ballStates[0], sizeof(*gCurrentPinballGame->ballStates));
-
-                        gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[1];
-                        gCurrentPinballGame->altBallCameraTimer = 25;
-                    }
-                }
-                else if (gCurrentPinballGame->ball->positionQ0.x < 116)
-                {
-                    if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
-                        && gCurrentPinballGame->sapphireBumperState[0] < 3)
-                    {
-                        if (gCurrentPinballGame->sapphireBumperState[0] == 1)
-                            gCurrentPinballGame->sapphireBumperAnimKeyframe[0] = 6;
-                        else
-                            gCurrentPinballGame->sapphireBumperAnimKeyframe[0] = 4;
-
-                        gCurrentPinballGame->sapphireBumperAnimSubTimer[0] = 0;
-                        gCurrentPinballGame->sapphireBumperState[0] = 1;
-
-                        PlayRumble(7);
-
-                        gCurrentPinballGame->ball->velocity.x /= 2;
-                        gCurrentPinballGame->ball->velocity.y /= 2;
-
-                        memcpy(&gCurrentPinballGame->ballStates[1], &gCurrentPinballGame->ballStates[0], sizeof(*gCurrentPinballGame->ballStates));
-
-                        gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[1];
-                        gCurrentPinballGame->altBallCameraTimer = 25;
-                    }
-                }
+                if (gCurrentPinballGame->ball->positionQ1.x >= 200)
+                    gCurrentPinballGame->ballCatchState = TRAP_CATCH_HOLE;
                 else
-                {
-                    gCurrentPinballGame->pelipperFrameTimer = 1800;
-                    gCurrentPinballGame->pelipperState = 1;
+                    gCurrentPinballGame->ballCatchState = TRAP_EVO_SHOP_HOLE;
 
-                    if (gCurrentPinballGame->progressLevel < 99)
-                        gCurrentPinballGame->progressLevel++;
-
-                    gCurrentPinballGame->scoreAddedInFrame = 5000;
-                }
+                DispatchSapphireCatchModeInit();
+                gCurrentPinballGame->collisionResponseType = 7;
+                *hasCollisionImpact = TRUE;
             }
-            else
+            break;
+        case SAPPHIRE_TRIGGER_2:
+            if (gCurrentPinballGame->boardLayerDepth == 0)
             {
-                if (gCurrentPinballGame->ball->positionQ0.x < 110)
+                gCurrentPinballGame->ball->oamPriority = 2;
+                gCurrentPinballGame->boardLayerDepth = 2;
+            }
+            else if (gCurrentPinballGame->boardLayerDepth == 2)
+            {
+                gCurrentPinballGame->ball->oamPriority = 2;
+                gCurrentPinballGame->boardLayerDepth = 3;
+            }
+            else if (gCurrentPinballGame->boardLayerDepth == 3)
+            {
+                gCurrentPinballGame->ball->oamPriority = 1;
+            }
+            break;
+        case SAPPHIRE_TRIGGER_3:
+            if (gCurrentPinballGame->boardLayerDepth == 2)
+            {
+                gCurrentPinballGame->ball->oamPriority = 3;
+                gCurrentPinballGame->boardLayerDepth = 0;
+            }
+            else if (gCurrentPinballGame->boardLayerDepth == 3)
+            {
+                gCurrentPinballGame->ball->oamPriority = 2;
+                gCurrentPinballGame->boardLayerDepth = 2;
+            }
+            break;
+        case SAPPHIRE_TRIGGER_4:
+            if (gCurrentPinballGame->mainBoardCountdownTimer == 0)
+            {
+                if (gCurrentPinballGame->ball->positionQ0.y < 260)
                 {
-                    gCurrentPinballGame->seedotCollisionTrigger = 1;
-                    gCurrentPinballGame->ball->velocity.y /= 2;
-                }
-                else
-                {
-                    if (gCurrentPinballGame->zigzagoonState == 0)
-                        gCurrentPinballGame->zigzagoonState = 1;
+                    if (gCurrentPinballGame->ball->positionQ0.x < 74)
+                    {
+                        if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
+                            && gCurrentPinballGame->sapphireBumperState[1] < 3)
+                        {
+                            if (gCurrentPinballGame->sapphireBumperState[1] == 1)
+                                gCurrentPinballGame->sapphireBumperAnimKeyframe[1] = 6;
+                            else
+                                gCurrentPinballGame->sapphireBumperAnimKeyframe[1] = 4;
+
+                            gCurrentPinballGame->sapphireBumperAnimSubTimer[1] = 0;
+                            gCurrentPinballGame->sapphireBumperState[1] = 1;
+                            PlayRumble(7);
+
+                            gCurrentPinballGame->ball->velocity.x /= 2;
+                            gCurrentPinballGame->ball->velocity.y /= 2;
+
+                            memcpy(&gCurrentPinballGame->ballStates[1], &gCurrentPinballGame->ballStates[0], sizeof(*gCurrentPinballGame->ballStates));
+
+                            gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[1];
+                            gCurrentPinballGame->altBallCameraTimer = 25;
+                        }
+                    }
+                    else if (gCurrentPinballGame->ball->positionQ0.x < 116)
+                    {
+                        if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
+                            && gCurrentPinballGame->sapphireBumperState[0] < 3)
+                        {
+                            if (gCurrentPinballGame->sapphireBumperState[0] == 1)
+                                gCurrentPinballGame->sapphireBumperAnimKeyframe[0] = 6;
+                            else
+                                gCurrentPinballGame->sapphireBumperAnimKeyframe[0] = 4;
+
+                            gCurrentPinballGame->sapphireBumperAnimSubTimer[0] = 0;
+                            gCurrentPinballGame->sapphireBumperState[0] = 1;
+
+                            PlayRumble(7);
+
+                            gCurrentPinballGame->ball->velocity.x /= 2;
+                            gCurrentPinballGame->ball->velocity.y /= 2;
+
+                            memcpy(&gCurrentPinballGame->ballStates[1], &gCurrentPinballGame->ballStates[0], sizeof(*gCurrentPinballGame->ballStates));
+
+                            gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[1];
+                            gCurrentPinballGame->altBallCameraTimer = 25;
+                        }
+                    }
                     else
-                        gCurrentPinballGame->zigzagoonState = 0;
-
-                    gCurrentPinballGame->ball->velocity.y /=2;
-                    gCurrentPinballGame->scoreAddedInFrame = 3000;
-                }
-            }
-
-            gCurrentPinballGame->mainBoardCountdownTimer = 45;
-            m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
-        }
-        break;
-    case 5:
-        gCurrentPinballGame->ballTouchingSpoink = 1;
-        gCurrentPinballGame->ballInLaunchChute = TRUE;
-        gCurrentPinballGame->ballCollisionZone = 0;
-        gCurrentPinballGame->hatchMachineActive = 0;
-        break;
-    case 6:
-        if (gCurrentPinballGame->ball->positionQ0.x < 120)
-        {
-            if (gCurrentPinballGame->ball->velocity.y > 0)
-            {
-                angle = 0xDA00;
-                squaredMagnitude =
-                    gCurrentPinballGame->ball->velocity.x * gCurrentPinballGame->ball->velocity.x +
-                    gCurrentPinballGame->ball->velocity.y * gCurrentPinballGame->ball->velocity.y;
-
-                squaredMagnitude = Sqrt(squaredMagnitude * 4) / 2;
-                gCurrentPinballGame->ball->velocity.x = squaredMagnitude * Cos(angle) / 20000;
-                gCurrentPinballGame->ball->velocity.y = -squaredMagnitude * Sin(angle) / 20000;
-            }
-        }
-        else
-            gCurrentPinballGame->hatchMachineActive = 1;
-        break;
-    case 7:
-        if (gCurrentPinballGame->shopShockWallAnimState != 3)
-        {
-            gCurrentPinballGame->shopBumperHitTimer = 17;
-            gCurrentPinballGame->collisionSurfaceType = 0;
-            gCurrentPinballGame->collisionResponseType = 2;
-            *collisionAngle = 0xD800;
-            *hasCollisionImpact = TRUE;
-        }
-        break;
-    case 8:
-        x0Position = gCurrentPinballGame->ball->positionQ0.x;
-        if (gCurrentPinballGame->boardLayerDepth > 0)
-        {
-            if (gCurrentPinballGame->ballCollisionZone == 7)
-            {
-                gCurrentPinballGame->coinRewardAmount = 10;
-                if (gCurrentPinballGame->coinRewardLevel < 3)
-                {
-                    if (gCurrentPinballGame->coinRewardLevel == 0)
                     {
-                        gCurrentPinballGame->scoreAddedInFrame = 2000;
-                        gCurrentPinballGame->coinRewardAmount = 1;
-                    }
-                    else if (gCurrentPinballGame->coinRewardLevel == 1)
-                    {
+                        gCurrentPinballGame->pelipperFrameTimer = 1800;
+                        gCurrentPinballGame->pelipperState = 1;
+
+                        if (gCurrentPinballGame->progressLevel < 99)
+                            gCurrentPinballGame->progressLevel++;
+
                         gCurrentPinballGame->scoreAddedInFrame = 5000;
-                        gCurrentPinballGame->coinRewardAmount = 5;
+                    }
+                }
+                else
+                {
+                    if (gCurrentPinballGame->ball->positionQ0.x < 110)
+                    {
+                        gCurrentPinballGame->seedotCollisionTrigger = 1;
+                        gCurrentPinballGame->ball->velocity.y /= 2;
                     }
                     else
                     {
-                        gCurrentPinballGame->scoreAddedInFrame = 10000;
-                        gCurrentPinballGame->coinRewardAmount = 10;
-                    }
-
-                    gCurrentPinballGame->coinRewardLevel++;
-                }
-
-                gCurrentPinballGame->coinRewardTimer = 0;
-                gCurrentPinballGame->coinRewardLevelTimer = 0;
-            }
-
-            gCurrentPinballGame->ballCollisionZone = 1;
-        }
-        else
-        {
-            if (x0Position <= 72)
-            {
-                if (gCurrentPinballGame->ballCollisionZone == 8)
-                {
-                    if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
-                        && gCurrentPinballGame->evoArrowProgress < 3)
-                    {
-                        if (gCurrentPinballGame->evoArrowProgress == 0)
-                            gCurrentPinballGame->scoreAddedInFrame = 2000;
-                        else if (gCurrentPinballGame->evoArrowProgress == 1)
-                            gCurrentPinballGame->scoreAddedInFrame = 5000;
+                        if (gCurrentPinballGame->zigzagoonState == 0)
+                            gCurrentPinballGame->zigzagoonState = 1;
                         else
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
-                        
-                        gCurrentPinballGame->evoArrowProgress++;
-                        m4aSongNumStart(SE_UNKNOWN_0x99);
+                            gCurrentPinballGame->zigzagoonState = 0;
+
+                        gCurrentPinballGame->ball->velocity.y /=2;
+                        gCurrentPinballGame->scoreAddedInFrame = 3000;
                     }
-
-                    gCurrentPinballGame->travelRolloverTriggerHitZone = TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_LEFT;
                 }
 
-                gCurrentPinballGame->ballCollisionZone = 2;
+                gCurrentPinballGame->mainBoardCountdownTimer = 45;
+                m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
             }
-            else if (x0Position <= 98)
+            break;
+        case SAPPHIRE_TRIGGER_5:
+            gCurrentPinballGame->ballTouchingSpoink = 1;
+            gCurrentPinballGame->ballInLaunchChute = TRUE;
+            gCurrentPinballGame->ballCollisionZone = 0;
+            gCurrentPinballGame->hatchMachineActive = 0;
+            break;
+        case SAPPHIRE_TRIGGER_6:
+            if (gCurrentPinballGame->ball->positionQ0.x < 120)
             {
-                if (gCurrentPinballGame->ballPowerUpLight[0] == 0)
-                    gCurrentPinballGame->scoreAddedInFrame = 1000;
-                
-                gCurrentPinballGame->ballPowerUpLight[0] = 1;
-                gCurrentPinballGame->ballCollisionZone = 3;
-
-                if (gCurrentPinballGame->ballPowerUpAnimActive == 0 && (gCurrentPinballGame->ballPowerUpLight[1] & gCurrentPinballGame->ballPowerUpLight[2]))
+                if (gCurrentPinballGame->ball->velocity.y > 0)
                 {
-                    gCurrentPinballGame->ballPowerUpAnimActive = 1;
-                    gCurrentPinballGame->ballShadowTimer = 60;
-                    gCurrentPinballGame->scoreAddedInFrame = 4000;
-                }
-            }
-            else if (x0Position <= 118)
-            {
-                if (gCurrentPinballGame->ballPowerUpLight[1] == 0) 
-                    gCurrentPinballGame->scoreAddedInFrame = 1000;
-                
-                gCurrentPinballGame->ballPowerUpLight[1] = 1;
-                gCurrentPinballGame->ballCollisionZone = 4;
+                    angle = 0xDA00;
+                    squaredMagnitude =
+                        gCurrentPinballGame->ball->velocity.x * gCurrentPinballGame->ball->velocity.x +
+                        gCurrentPinballGame->ball->velocity.y * gCurrentPinballGame->ball->velocity.y;
 
-                if (gCurrentPinballGame->ballPowerUpAnimActive == 0 && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[2]))
-                {
-                    gCurrentPinballGame->ballPowerUpAnimActive = 1;
-                    gCurrentPinballGame->ballShadowTimer = 60;
-                    gCurrentPinballGame->scoreAddedInFrame = 4000;
-                }
-            }
-            else if (x0Position <= 146)
-            {
-                if (gCurrentPinballGame->ballPowerUpLight[2] == 0)
-                    gCurrentPinballGame->scoreAddedInFrame = 1000;
-                
-                gCurrentPinballGame->ballPowerUpLight[2] = 1;
-                gCurrentPinballGame->ballCollisionZone = 5;
-
-                if (gCurrentPinballGame->ballPowerUpAnimActive == 0 && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[1]))
-                {
-                    gCurrentPinballGame->ballPowerUpAnimActive = 1;
-                    gCurrentPinballGame->ballShadowTimer = 60;
-                    gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    squaredMagnitude = Sqrt(squaredMagnitude * 4) / 2;
+                    gCurrentPinballGame->ball->velocity.x = squaredMagnitude * Cos(angle) / 20000;
+                    gCurrentPinballGame->ball->velocity.y = -squaredMagnitude * Sin(angle) / 20000;
                 }
             }
             else
+                gCurrentPinballGame->hatchMachineActive = 1;
+            break;
+        case SAPPHIRE_TRIGGER_7:
+            if (gCurrentPinballGame->shopShockWallAnimState != 3)
             {
-                if (gCurrentPinballGame->ballCollisionZone == 9)
+                gCurrentPinballGame->shopBumperHitTimer = 17;
+                gCurrentPinballGame->collisionSurfaceType = 0;
+                gCurrentPinballGame->collisionResponseType = 2;
+                *collisionAngle = 0xD800;
+                *hasCollisionImpact = TRUE;
+            }
+            break;
+        case SAPPHIRE_TRIGGER_8:
+            x0Position = gCurrentPinballGame->ball->positionQ0.x;
+            if (gCurrentPinballGame->boardLayerDepth > 0)
+            {
+                if (gCurrentPinballGame->ballCollisionZone == 7)
                 {
-                    if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
-                        && gCurrentPinballGame->catchArrowProgress < 3)
+                    gCurrentPinballGame->coinRewardAmount = 10;
+                    if (gCurrentPinballGame->coinRewardLevel < 3)
                     {
-                        if (gCurrentPinballGame->catchArrowProgress == 0)
+                        if (gCurrentPinballGame->coinRewardLevel == 0)
+                        {
                             gCurrentPinballGame->scoreAddedInFrame = 2000;
-                        else if (gCurrentPinballGame->catchArrowProgress == 1)
+                            gCurrentPinballGame->coinRewardAmount = 1;
+                        }
+                        else if (gCurrentPinballGame->coinRewardLevel == 1)
+                        {
                             gCurrentPinballGame->scoreAddedInFrame = 5000;
+                            gCurrentPinballGame->coinRewardAmount = 5;
+                        }
                         else
+                        {
                             gCurrentPinballGame->scoreAddedInFrame = 10000;
-                        
-                        gCurrentPinballGame->catchArrowProgress++;
+                            gCurrentPinballGame->coinRewardAmount = 10;
+                        }
 
-                        if (gCurrentPinballGame->chargeFillValue == 13)
+                        gCurrentPinballGame->coinRewardLevel++;
+                    }
+
+                    gCurrentPinballGame->coinRewardTimer = 0;
+                    gCurrentPinballGame->coinRewardLevelTimer = 0;
+                }
+
+                gCurrentPinballGame->ballCollisionZone = 1;
+            }
+            else
+            {
+                if (x0Position <= 72)
+                {
+                    if (gCurrentPinballGame->ballCollisionZone == 8)
+                    {
+                        if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
+                            && gCurrentPinballGame->evoArrowProgress < 3)
+                        {
+                            if (gCurrentPinballGame->evoArrowProgress == 0)
+                                gCurrentPinballGame->scoreAddedInFrame = 2000;
+                            else if (gCurrentPinballGame->evoArrowProgress == 1)
+                                gCurrentPinballGame->scoreAddedInFrame = 5000;
+                            else
+                                gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            
+                            gCurrentPinballGame->evoArrowProgress++;
                             m4aSongNumStart(SE_UNKNOWN_0x99);
+                        }
 
-                        if (gCurrentPinballGame->catchArrowProgress > 1)
-                            gCurrentPinballGame->catchProgressFlashing = 1;
+                        gCurrentPinballGame->travelRolloverTriggerHitZone = TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_LEFT;
                     }
 
-                    gCurrentPinballGame->travelRolloverTriggerHitZone = TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_RIGHT;
+                    gCurrentPinballGame->ballCollisionZone = 2;
                 }
+                else if (x0Position <= 98)
+                {
+                    if (gCurrentPinballGame->ballPowerUpLight[0] == 0)
+                        gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    
+                    gCurrentPinballGame->ballPowerUpLight[0] = 1;
+                    gCurrentPinballGame->ballCollisionZone = 3;
 
-                gCurrentPinballGame->ballCollisionZone = 6;
-            }
-        }
-        break;
-    case 9:
-        x0Position = gCurrentPinballGame->ball->positionQ0.x;
-        if (gCurrentPinballGame->boardLayerDepth > 0)
-            gCurrentPinballGame->ballCollisionZone = 7;
-        else if (x0Position <= 50)
-            gCurrentPinballGame->ballCollisionZone = 8;
-        else
-            gCurrentPinballGame->ballCollisionZone = 9;
-        break;
-    case 10:
-        if (gCurrentPinballGame->ball->positionQ0.x <= 46)
-        {
-            gCurrentPinballGame->ballCollisionZone = 10;
-            if (gCurrentPinballGame->holeIndicators[0] == 0)
-            {
-                gCurrentPinballGame->scoreAddedInFrame = 1000;
-                gCurrentPinballGame->holeIndicators[0] = 1;
-                if (!gCurrentPinballGame->allHolesLit && (
-                    gCurrentPinballGame->holeIndicators[1] &
-                    gCurrentPinballGame->holeIndicators[2] &
-                    gCurrentPinballGame->holeIndicators[3]))
-                {
-                    gCurrentPinballGame->allHolesLit = TRUE;
-                    gCurrentPinballGame->allHolesLitBlinkTimer = 126;
-                    gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    if (gCurrentPinballGame->ballPowerUpAnimActive == 0 && (gCurrentPinballGame->ballPowerUpLight[1] & gCurrentPinballGame->ballPowerUpLight[2]))
+                    {
+                        gCurrentPinballGame->ballPowerUpAnimActive = 1;
+                        gCurrentPinballGame->ballShadowTimer = 60;
+                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    }
                 }
-            }
-        }
-        else if (gCurrentPinballGame->ball->positionQ0.x <= 120)
-        {
-            gCurrentPinballGame->ballCollisionZone = 11;
+                else if (x0Position <= 118)
+                {
+                    if (gCurrentPinballGame->ballPowerUpLight[1] == 0) 
+                        gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    
+                    gCurrentPinballGame->ballPowerUpLight[1] = 1;
+                    gCurrentPinballGame->ballCollisionZone = 4;
 
-            if (gCurrentPinballGame->holeIndicators[1] == 0)
-            {
-                gCurrentPinballGame->scoreAddedInFrame = 1000;
-                gCurrentPinballGame->holeIndicators[1] = 1; 
-                if (!gCurrentPinballGame->allHolesLit && (
-                    gCurrentPinballGame->holeIndicators[0] &
-                    gCurrentPinballGame->holeIndicators[2] &
-                    gCurrentPinballGame->holeIndicators[3]))
-                {
-                    gCurrentPinballGame->allHolesLit = TRUE;
-                    gCurrentPinballGame->allHolesLitBlinkTimer = 126;
-                    gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    if (gCurrentPinballGame->ballPowerUpAnimActive == 0 && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[2]))
+                    {
+                        gCurrentPinballGame->ballPowerUpAnimActive = 1;
+                        gCurrentPinballGame->ballShadowTimer = 60;
+                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    }
                 }
-            }
-        }
-        else if (gCurrentPinballGame->ball->positionQ0.x <= 193)
-        {
-            gCurrentPinballGame->ballCollisionZone = 12;
-            if (gCurrentPinballGame->holeIndicators[2] == 0)
-            {
-                gCurrentPinballGame->scoreAddedInFrame = 1000;
-                gCurrentPinballGame->holeIndicators[2] = 1;
+                else if (x0Position <= 146)
+                {
+                    if (gCurrentPinballGame->ballPowerUpLight[2] == 0)
+                        gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    
+                    gCurrentPinballGame->ballPowerUpLight[2] = 1;
+                    gCurrentPinballGame->ballCollisionZone = 5;
 
-                if (!gCurrentPinballGame->allHolesLit && (
-                    gCurrentPinballGame->holeIndicators[0] &
-                    gCurrentPinballGame->holeIndicators[1] &
-                    gCurrentPinballGame->holeIndicators[3]))
+                    if (gCurrentPinballGame->ballPowerUpAnimActive == 0 && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[1]))
+                    {
+                        gCurrentPinballGame->ballPowerUpAnimActive = 1;
+                        gCurrentPinballGame->ballShadowTimer = 60;
+                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    }
+                }
+                else
                 {
-                    gCurrentPinballGame->allHolesLit = TRUE;
-                    gCurrentPinballGame->allHolesLitBlinkTimer = 126;
-                    gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    if (gCurrentPinballGame->ballCollisionZone == 9)
+                    {
+                        if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
+                            && gCurrentPinballGame->catchArrowProgress < 3)
+                        {
+                            if (gCurrentPinballGame->catchArrowProgress == 0)
+                                gCurrentPinballGame->scoreAddedInFrame = 2000;
+                            else if (gCurrentPinballGame->catchArrowProgress == 1)
+                                gCurrentPinballGame->scoreAddedInFrame = 5000;
+                            else
+                                gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            
+                            gCurrentPinballGame->catchArrowProgress++;
+
+                            if (gCurrentPinballGame->chargeFillValue == 13)
+                                m4aSongNumStart(SE_UNKNOWN_0x99);
+
+                            if (gCurrentPinballGame->catchArrowProgress > 1)
+                                gCurrentPinballGame->catchProgressFlashing = 1;
+                        }
+
+                        gCurrentPinballGame->travelRolloverTriggerHitZone = TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_RIGHT;
+                    }
+
+                    gCurrentPinballGame->ballCollisionZone = 6;
                 }
             }
-        }
-        else
-        {
-            gCurrentPinballGame->ballCollisionZone = 13;
-            if (gCurrentPinballGame->holeIndicators[3] == 0)
-            {
-                gCurrentPinballGame->scoreAddedInFrame = 1000;
-                gCurrentPinballGame->holeIndicators[3] = 1;
-                if (!gCurrentPinballGame->allHolesLit && (
-                    gCurrentPinballGame->holeIndicators[0] &
-                    gCurrentPinballGame->holeIndicators[1] &
-                    gCurrentPinballGame->holeIndicators[2]))
-                {
-                    gCurrentPinballGame->allHolesLit = TRUE;
-                    gCurrentPinballGame->allHolesLitBlinkTimer = 126;
-                    gCurrentPinballGame->scoreAddedInFrame = 4000;
-                }
-            }
-        }
-        break;
-    case 11:
-        if (gCurrentPinballGame->pikaKickbackTimer == 0)
-        {
-            if (gCurrentPinballGame->ball->positionQ0.x <= 120)
-                gCurrentPinballGame->outLaneSide = 1;
+            break;
+        case SAPPHIRE_TRIGGER_9:
+            x0Position = gCurrentPinballGame->ball->positionQ0.x;
+            if (gCurrentPinballGame->boardLayerDepth > 0)
+                gCurrentPinballGame->ballCollisionZone = 7;
+            else if (x0Position <= 50)
+                gCurrentPinballGame->ballCollisionZone = 8;
             else
-                gCurrentPinballGame->outLaneSide = 2;
-
-            if (gCurrentPinballGame->outLanePikaPosition < 2)
+                gCurrentPinballGame->ballCollisionZone = 9;
+            break;
+        case SAPPHIRE_TRIGGER_10:
+            if (gCurrentPinballGame->ball->positionQ0.x <= 46)
             {
-                if (gCurrentPinballGame->outLanePikaPosition == gCurrentPinballGame->outLaneSide - 1)
+                gCurrentPinballGame->ballCollisionZone = 10;
+                if (gCurrentPinballGame->holeIndicators[0] == 0)
+                {
+                    gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    gCurrentPinballGame->holeIndicators[0] = 1;
+                    if (!gCurrentPinballGame->allHolesLit && (
+                        gCurrentPinballGame->holeIndicators[1] &
+                        gCurrentPinballGame->holeIndicators[2] &
+                        gCurrentPinballGame->holeIndicators[3]))
+                    {
+                        gCurrentPinballGame->allHolesLit = TRUE;
+                        gCurrentPinballGame->allHolesLitBlinkTimer = 126;
+                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    }
+                }
+            }
+            else if (gCurrentPinballGame->ball->positionQ0.x <= 120)
+            {
+                gCurrentPinballGame->ballCollisionZone = 11;
+
+                if (gCurrentPinballGame->holeIndicators[1] == 0)
+                {
+                    gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    gCurrentPinballGame->holeIndicators[1] = 1; 
+                    if (!gCurrentPinballGame->allHolesLit && (
+                        gCurrentPinballGame->holeIndicators[0] &
+                        gCurrentPinballGame->holeIndicators[2] &
+                        gCurrentPinballGame->holeIndicators[3]))
+                    {
+                        gCurrentPinballGame->allHolesLit = TRUE;
+                        gCurrentPinballGame->allHolesLitBlinkTimer = 126;
+                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    }
+                }
+            }
+            else if (gCurrentPinballGame->ball->positionQ0.x <= 193)
+            {
+                gCurrentPinballGame->ballCollisionZone = 12;
+                if (gCurrentPinballGame->holeIndicators[2] == 0)
+                {
+                    gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    gCurrentPinballGame->holeIndicators[2] = 1;
+
+                    if (!gCurrentPinballGame->allHolesLit && (
+                        gCurrentPinballGame->holeIndicators[0] &
+                        gCurrentPinballGame->holeIndicators[1] &
+                        gCurrentPinballGame->holeIndicators[3]))
+                    {
+                        gCurrentPinballGame->allHolesLit = TRUE;
+                        gCurrentPinballGame->allHolesLitBlinkTimer = 126;
+                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    }
+                }
+            }
+            else
+            {
+                gCurrentPinballGame->ballCollisionZone = 13;
+                if (gCurrentPinballGame->holeIndicators[3] == 0)
+                {
+                    gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    gCurrentPinballGame->holeIndicators[3] = 1;
+                    if (!gCurrentPinballGame->allHolesLit && (
+                        gCurrentPinballGame->holeIndicators[0] &
+                        gCurrentPinballGame->holeIndicators[1] &
+                        gCurrentPinballGame->holeIndicators[2]))
+                    {
+                        gCurrentPinballGame->allHolesLit = TRUE;
+                        gCurrentPinballGame->allHolesLitBlinkTimer = 126;
+                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                    }
+                }
+            }
+            break;
+        case SAPPHIRE_TRIGGER_11:
+            if (gCurrentPinballGame->pikaKickbackTimer == 0)
+            {
+                if (gCurrentPinballGame->ball->positionQ0.x <= 120)
+                    gCurrentPinballGame->outLaneSide = 1;
+                else
+                    gCurrentPinballGame->outLaneSide = 2;
+
+                if (gCurrentPinballGame->outLanePikaPosition < 2)
+                {
+                    if (gCurrentPinballGame->outLanePikaPosition == gCurrentPinballGame->outLaneSide - 1)
+                        gCurrentPinballGame->pikaKickbackTimer = 120;
+                }
+                else
+                {
                     gCurrentPinballGame->pikaKickbackTimer = 120;
+                }
+            }
+            break;
+        case SAPPHIRE_TRIGGER_12:
+            if (gCurrentPinballGame->pikaSpinCooldownTimer == 0)
+            {
+                absVelY = gCurrentPinballGame->ball->velocity.y;
+                gCurrentPinballGame->pikaSpinMomentum = absVelY;
+                if (absVelY < 0)
+                    absVelY = -absVelY;
+
+                gCurrentPinballGame->pikaChargeTarget = gCurrentPinballGame->pikaChargeTarget + (absVelY / 3);
+                if (gCurrentPinballGame->pikaChargeTarget > 168)
+                    gCurrentPinballGame->pikaChargeTarget = 168;
+
+                gCurrentPinballGame->pikaSpinCooldownTimer = 20;
+            }
+            break;
+        case SAPPHIRE_TRIGGER_13:
+            if (gCurrentPinballGame->ballCollisionZone != 14)
+            {
+                gCurrentPinballGame->ballCollisionZone = 14;
+                index = gSapphireTargetBumperIndexMap[gCurrentPinballGame->hatchMachineTriggerCounter];
+                gCurrentPinballGame->targetBumperAnimTimers[index] = 10;
+                gCurrentPinballGame->hatchMachineTriggerCounter++;
+
+                // Lock camera in place while in hatch machine loop
+                if (gCurrentPinballGame->hatchMachineTriggerCounter == 3)
+                {
+                    memcpy(&gCurrentPinballGame->ballStates[1], &gCurrentPinballGame->ballStates[0], sizeof(*gCurrentPinballGame->ballStates));
+                    gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[1];
+                    if (gCurrentPinballGame->hatchMachineActive)
+                        gCurrentPinballGame->hatchMachineProgressTickSignaled = TRUE;
+                }
+
+                // Release camera when leaving hatch ramp.
+                if (gCurrentPinballGame->hatchMachineTriggerCounter == 11)
+                    gCurrentPinballGame->cameraBall = gCurrentPinballGame->ballStates;
+
+                modRes = (gCurrentPinballGame->hatchMachineTriggerCounter - 1) % 4;
+                gMain.spriteGroups[47 + modRes].active = TRUE;
+                gCurrentPinballGame->splashEffectFrameIndex[modRes] = 0;
+                gCurrentPinballGame->splashEffectFrameTimer[modRes] = 0;
+                gCurrentPinballGame->splashEffectPositionIndex[modRes] = gCurrentPinballGame->hatchMachineTriggerCounter - 1;
+
+                if (gCurrentPinballGame->hatchMachineTriggerCounter > 12)
+                    gCurrentPinballGame->hatchMachineTriggerCounter = 0;
+
+                // Ensure sufficient speed to make it through the loop.
+                if (index == 0 && gCurrentPinballGame->ball->velocity.y > -120)
+                    gCurrentPinballGame->ball->velocity.y = -120;
+
+                if (index == 2 && gCurrentPinballGame->ball->velocity.y > -180)
+                    gCurrentPinballGame->ball->velocity.y = -180;
+            }
+            break;
+        case SAPPHIRE_TRIGGER_14:
+            if (gCurrentPinballGame->ballCollisionZone != 15)
+            {
+                gCurrentPinballGame->ballCollisionZone = 15;
+                index = gSapphireTargetBumperIndexMap[gCurrentPinballGame->hatchMachineTriggerCounter];
+                gCurrentPinballGame->targetBumperAnimTimers[index] = 10;
+                gCurrentPinballGame->hatchMachineTriggerCounter++;
+
+                modRes = (gCurrentPinballGame->hatchMachineTriggerCounter -1) % 4;
+                gMain.spriteGroups[47 + modRes].active = TRUE;
+                gCurrentPinballGame->splashEffectFrameIndex[modRes] = 0;
+                gCurrentPinballGame->splashEffectFrameTimer[modRes] = 0;
+                gCurrentPinballGame->splashEffectPositionIndex[modRes] = gCurrentPinballGame->hatchMachineTriggerCounter - 1;
+                if (index == 1 && gCurrentPinballGame->ball->velocity.y > -150)
+                    gCurrentPinballGame->ball->velocity.y = -150;
+            }
+            break;
+        case SAPPHIRE_TRIGGER_15:
+            if (gCurrentPinballGame->ball->positionQ0.y < 80)
+            {
+                if (gCurrentPinballGame->pelipperState == 1)
+                    gCurrentPinballGame->pelipperState = 2;
             }
             else
             {
-                gCurrentPinballGame->pikaKickbackTimer = 120;
-            }
-        }
-        break;
-    case 12:
-        if (gCurrentPinballGame->pikaSpinCooldownTimer == 0)
-        {
-            absVelY = gCurrentPinballGame->ball->velocity.y;
-            gCurrentPinballGame->pikaSpinMomentum = absVelY;
-            if (absVelY < 0)
-                absVelY = -absVelY;
-
-            gCurrentPinballGame->pikaChargeTarget = gCurrentPinballGame->pikaChargeTarget + (absVelY / 3);
-            if (gCurrentPinballGame->pikaChargeTarget > 168)
-                gCurrentPinballGame->pikaChargeTarget = 168;
-
-            gCurrentPinballGame->pikaSpinCooldownTimer = 20;
-        }
-        break;
-    case 13:
-        if (gCurrentPinballGame->ballCollisionZone != 14)
-        {
-            gCurrentPinballGame->ballCollisionZone = 14;
-            index = gSapphireTargetBumperIndexMap[gCurrentPinballGame->hatchMachineTriggerCounter];
-            gCurrentPinballGame->targetBumperAnimTimers[index] = 10;
-            gCurrentPinballGame->hatchMachineTriggerCounter++;
-
-            // Lock camera in place while in hatch machine loop
-            if (gCurrentPinballGame->hatchMachineTriggerCounter == 3)
-            {
-                memcpy(&gCurrentPinballGame->ballStates[1], &gCurrentPinballGame->ballStates[0], sizeof(*gCurrentPinballGame->ballStates));
-                gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[1];
-                if (gCurrentPinballGame->hatchMachineActive)
-                    gCurrentPinballGame->hatchMachineProgressTickSignaled = TRUE;
+                if (gCurrentPinballGame->pelipperState == 2)
+                {
+                    gCurrentPinballGame->pelipperState = 3;
+                    gCurrentPinballGame->pelipperFrameTimer = 0;
+                }
             }
 
-            // Release camera when leaving hatch ramp.
-            if (gCurrentPinballGame->hatchMachineTriggerCounter == 11)
-                gCurrentPinballGame->cameraBall = gCurrentPinballGame->ballStates;
-
-            modRes = (gCurrentPinballGame->hatchMachineTriggerCounter - 1) % 4;
-            gMain.spriteGroups[47 + modRes].active = TRUE;
-            gCurrentPinballGame->splashEffectFrameIndex[modRes] = 0;
-            gCurrentPinballGame->splashEffectFrameTimer[modRes] = 0;
-            gCurrentPinballGame->splashEffectPositionIndex[modRes] = gCurrentPinballGame->hatchMachineTriggerCounter - 1;
-
-            if (gCurrentPinballGame->hatchMachineTriggerCounter > 12)
-                gCurrentPinballGame->hatchMachineTriggerCounter = 0;
-
-            // Ensure sufficient speed to make it through the loop.
-            if (index == 0 && gCurrentPinballGame->ball->velocity.y > -120)
-                gCurrentPinballGame->ball->velocity.y = -120;
-
-            if (index == 2 && gCurrentPinballGame->ball->velocity.y > -180)
-                gCurrentPinballGame->ball->velocity.y = -180;
-        }
-        break;
-    case 14:
-        if (gCurrentPinballGame->ballCollisionZone != 15)
-        {
-            gCurrentPinballGame->ballCollisionZone = 15;
-            index = gSapphireTargetBumperIndexMap[gCurrentPinballGame->hatchMachineTriggerCounter];
-            gCurrentPinballGame->targetBumperAnimTimers[index] = 10;
-            gCurrentPinballGame->hatchMachineTriggerCounter++;
-
-            modRes = (gCurrentPinballGame->hatchMachineTriggerCounter -1) % 4;
-            gMain.spriteGroups[47 + modRes].active = TRUE;
-            gCurrentPinballGame->splashEffectFrameIndex[modRes] = 0;
-            gCurrentPinballGame->splashEffectFrameTimer[modRes] = 0;
-            gCurrentPinballGame->splashEffectPositionIndex[modRes] = gCurrentPinballGame->hatchMachineTriggerCounter - 1;
-            if (index == 1 && gCurrentPinballGame->ball->velocity.y > -150)
-                gCurrentPinballGame->ball->velocity.y = -150;
-        }
-        break;
-    case 15:
-        if (gCurrentPinballGame->ball->positionQ0.y < 80)
-        {
-            if (gCurrentPinballGame->pelipperState == 1)
-                gCurrentPinballGame->pelipperState = 2;
-        }
-        else
-        {
-            if (gCurrentPinballGame->pelipperState == 2)
-            {
-                gCurrentPinballGame->pelipperState = 3;
-                gCurrentPinballGame->pelipperFrameTimer = 0;
-            }
-        }
-
-        break;
+            break;
     }
 }

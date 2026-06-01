@@ -53,16 +53,16 @@ gRubyBoardCompressedBGTileBuffer:: @ 0x08250934
 	.incbin "baserom.gba", 0x250934, 0x21DC
 
 gSharedBumperCollisionMap:: @ 0x08252B10
-	.incbin "baserom.gba", 0x252B10, 0x2000
+	.incbin "data/board_data/collision/ruby/shared_bumper_entity_collision_64x64.bin"
 
 gRubyLinooneLeftCollisionMap:: @ 0x08254B10
-	.incbin "baserom.gba", 0x254B10, 0x2880
+    .incbin "data/board_data/collision/ruby/linoone_left_collision_map_72x72.bin"
 
 gRubyLinooneRightCollisionMap:: @ 0x08257390
-	.incbin "baserom.gba", 0x257390, 0x2880
+    .incbin "data/board_data/collision/ruby/linoone_right_collision_map_72x72.bin"
 
 gWhiscashCollisionMap:: @ 0x08259C10
-	.incbin "baserom.gba", 0x259C10, 0x3700
+	.incbin "data/board_data/collision/ruby/whiscash_entity_collision_80x88.bin"
 
 
 @ Evo Arrows. Named this way for comprehension in folder.

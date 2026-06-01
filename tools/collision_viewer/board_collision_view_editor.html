@@ -38,7 +38,7 @@
 
     main {
       display: grid;
-      grid-template-columns: minmax(560px, 1fr) 440px;
+      grid-template-columns: minmax(560px, 1fr) 420px;
       gap: 14px;
       padding: 14px;
     }
@@ -109,11 +109,11 @@
 
     .meta {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin: 10px 0 14px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .meta div {
@@ -125,8 +125,8 @@
 
     .grid-4 {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 4px;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 3px;
       margin: 8px 0 14px;
     }
 
@@ -137,15 +137,30 @@
       color: var(--text);
       background: var(--cell);
       border: 1px solid var(--grid);
-      border-radius: 5px;
-      font-size: 11px;
+      border-radius: 4px;
+      font-size: 9px;
       padding: 0;
       text-transform: uppercase;
+    }
+
+    input.subcell {
+      font-family: sans-serif;
+      font-size: small;
     }
 
     .subcell:focus {
       outline: 2px solid var(--accent);
       outline-offset: 1px;
+    }
+
+    .subcell.nonzero {
+      border-color: rgba(255, 255, 255, 0.72);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      font-weight: 700;
+    }
+
+    .subcell.zeroish {
+      color: var(--muted);
     }
 
     .editor-title {
@@ -209,7 +224,7 @@
 <body>
 <header>
   <h1>Pinball Collision Data Viewer</h1>
-  <div class="subtle">Single-layer first pass: visualize collision data as 4×4 sub-quads, edit the selected 4×4 source segment, save regenerated tile map.</div>
+  <div class="subtle">Single-layer first pass: visualize collision data as 8×8 source tiles, edit the selected 8×8 tile, save regenerated tile map.</div>
 </header>
 
 <main>
@@ -223,12 +238,6 @@
           <option value="wall">Type</option>
           <option value="angle">Angles</option>
           <option value="tile">Tile index</option>
-        </select>
-      </label>
-      <label class="subtle">Detail granularity
-        <select id="detailGranularity">
-          <option value="4" selected>4×4 quad</option>
-          <option value="8">8×8 tile</option>
         </select>
       </label>
     </div>
@@ -245,59 +254,61 @@
     </div>
     <div class="legend">
       <span><span class="swatch" style="background:#ffd166"></span>selected 8×8 board tile</span>
-      <span><span class="swatch" style="background:#ffffff"></span>selected 4×4 segment</span>
-      <span><span class="swatch" style="background:hsl(20,70%,46%)"></span>type 1: wall inner edge</span>
-      <span><span class="swatch" style="background:hsl(210,70%,46%)"></span>type 4: wall outer edge</span>
-      <span>Click any quarter of a board tile to inspect/edit that 4×4 segment.</span>
+      <span><span class="swatch" style="background:#ffffff"></span>selected 8×8 tile</span>
+      <span><span class="swatch" style="background:hsl(26,76%,47%)"></span>low 1: wall inner edge</span>
+      <span><span class="swatch" style="background:hsl(212,76%,44%)"></span>low 4: wall outer edge</span>
+      <span><span class="swatch" style="background:hsl(0,82%,48%)"></span>low 3: bouncy surface</span>
+      <span><span class="swatch" style="background:hsl(262,66%,42%)"></span>upper nibble: trigger/layer state</span>
+      <span>Click any board tile to inspect/edit its full 8×8 collision tile.</span>
     </div>
-  </section>
 
-  <aside class="panel">
     <div class="editor-title">
-      <h2>Selected board segment</h2>
+      <h2>Selected collision tile</h2>
       <span class="subtle" id="selectedLabel">none</span>
     </div>
 
     <div class="meta">
       <div>Board X/Y<br><strong id="boardXY">—</strong></div>
-      <div>Quad X/Y<br><strong id="quadXY">—</strong></div>
       <div>Collision tile index<br><strong id="tileIndexLabel">—</strong></div>
-      <div>Segment cell range<br><strong id="segmentRangeLabel">—</strong></div>
+      <div>Cell range<br><strong id="segmentRangeLabel">—</strong></div>
       <div>Angle byte offset<br><strong id="angleOffsetLabel">—</strong></div>
       <div>Type byte offset<br><strong id="typeOffsetLabel">—</strong></div>
+      <div>Placement index<br><strong id="placementIndexLabel">—</strong></div>
     </div>
 
     <label class="subtle">Edit placement map index for selected board tile, hex</label>
-    <div class="two-col" style="margin: 6px 0 10px;">
+    <div class="two-col" style="margin: 6px 0 10px; max-width: 360px;">
       <input id="tileIndexInput" type="text" disabled placeholder="0000">
       <button id="applyTileIndexBtn" disabled>Apply</button>
     </div>
     <div class="subtle">Note: edited placement indices affect the current session; saving tileData regenerates a compact placement map from non-empty board cells.</div>
+  </section>
 
-    <div class="editor-title">
-      <h2>Angle data, selected 4×4 u16 hex</h2>
+  <aside class="panel">
+    <div class="editor-title" style="margin-top:0;">
+      <h2>Angle data, selected 8×8 u16 hex</h2>
       <span class="subtle">0000–FFFF</span>
     </div>
     <div id="angleGrid" class="grid-4"></div>
 
     <div class="editor-title">
-      <h2>Type data, selected 4×4 u8 hex</h2>
+      <h2>Type data, selected 8×8 u8 hex</h2>
       <span class="subtle">00–FF</span>
     </div>
     <div id="typeGrid" class="grid-4"></div>
 
     <div class="type-key">
-      <span><span class="swatch" style="background:hsl(20,70%,46%)"></span>01 wall, inner edge</span>
-      <span><span class="swatch" style="background:hsl(210,70%,46%)"></span>04 wall, outer edge</span>
-      <span><span class="swatch" style="background:hsl(90,65%,40%)"></span>02 other observed</span>
-      <span><span class="swatch" style="background:hsl(280,60%,45%)"></span>20/30/21/etc.</span>
+      <span><span class="swatch" style="background:hsl(26,76%,47%)"></span>01 inner wall edge</span>
+      <span><span class="swatch" style="background:hsl(212,76%,44%)"></span>04 outer wall edge</span>
+      <span><span class="swatch" style="background:hsl(0,82%,48%)"></span>03 bouncy surface</span>
+      <span><span class="swatch" style="background:hsl(262,66%,42%)"></span>x0 trigger/layer only</span>
     </div>
 
     <div class="toolbar" style="margin-top:14px;">
-      <button id="copyTileBtn" disabled>Copy 4×4 segment JSON</button>
-      <button id="pasteTileBtn" disabled>Paste 4×4 segment JSON</button>
+      <button id="copyTileBtn" disabled>Copy 8×8 tile JSON</button>
+      <button id="pasteTileBtn" disabled>Paste 8×8 tile JSON</button>
     </div>
-    <textarea id="jsonBox" placeholder="Copied 4×4 segment JSON appears here. Hex strings are accepted when pasting." style="width:100%; min-height:110px; background:#11151e; color:var(--text); border:1px solid #3b4252; border-radius:8px; padding:8px;"></textarea>
+    <textarea id="jsonBox" placeholder="Copied 8×8 tile JSON appears here. Hex strings are accepted when pasting." style="width:100%; min-height:110px; background:#11151e; color:var(--text); border:1px solid #3b4252; border-radius:8px; padding:8px;"></textarea>
   </aside>
 </main>
 
@@ -468,15 +479,97 @@
     renderSelected();
   }
 
+  function hueFromTrigger(trigger) {
+    // Upper nibble: collision/board triggers such as rollovers, ramps, layer transitions.
+    // Spread the 15 nonzero trigger states around the color wheel so even x0 values are visible.
+    return (trigger * 47 + 215) % 360;
+  }
+
+  function collisionHue(collisionType) {
+    // Lower nibble: physical collision type.
+    // Keep 1/4 distinct, and make 3 immediately recognizable as bounce/red.
+    switch (collisionType) {
+      case 0x1: return 26;   // inner wall edge: orange
+      case 0x4: return 212;  // outer wall edge: blue
+      case 0x3: return 0;    // bouncy surface: red
+      case 0x2: return 96;   // other observed: green
+      default: return (collisionType * 39 + 70) % 360;
+    }
+  }
+
   function typeColor(value) {
-    switch (value) {
-      case 0x00: return "#11151e";
-      case 0x01: return "hsl(20,70%,46%)";
-      case 0x04: return "hsl(210,70%,46%)";
-      case 0x02: return "hsl(90,65%,40%)";
-      case 0x20: case 0x21: case 0x24: case 0x30: case 0x31: case 0x34:
-        return "hsl(280,60%,45%)";
-      default: return `hsl(${Math.floor((value * 41) % 360)}, 65%, 42%)`;
+    const v = Number(value) & 0xFF;
+    const trigger = (v >> 4) & 0x0F;
+    const collision = v & 0x0F;
+
+    if (v === 0) return "#11151e";
+
+    // Trigger-only cells must not collapse to gray; they get their own base color.
+    if (collision === 0) {
+      return `hsl(${hueFromTrigger(trigger)}, 66%, 42%)`;
+    }
+
+    const hue = collisionHue(collision);
+
+    // If a trigger is also present, keep the collision family recognizable while
+    // shifting lightness/saturation enough to distinguish 0x01 from 0x11/0x21/etc.
+    const triggerLightShift = trigger ? ((trigger % 4) - 1.5) * 5 : 0;
+    const triggerSatShift = trigger ? 8 : 0;
+
+    switch (collision) {
+      case 0x1:
+        return `hsl(${hue}, ${76 + triggerSatShift}%, ${47 + triggerLightShift}%)`;
+      case 0x4:
+        return `hsl(${hue}, ${76 + triggerSatShift}%, ${44 + triggerLightShift}%)`;
+      case 0x3:
+        return `hsl(${hue}, ${82 + triggerSatShift}%, ${48 + triggerLightShift}%)`;
+      case 0x2:
+        return `hsl(${hue}, ${68 + triggerSatShift}%, ${40 + triggerLightShift}%)`;
+      default:
+        return `hsl(${hue}, ${62 + triggerSatShift}%, ${42 + triggerLightShift}%)`;
+    }
+  }
+
+  function typeInputTextColor(value) {
+    const v = Number(value) & 0xFF;
+    if (!v) return "";
+    const collision = v & 0x0F;
+    // The green and some trigger-only colors can be relatively bright, so black is easier to read there.
+    return collision === 0x2 ? "#07110a" : "#ffffff";
+  }
+
+  function styleTypeInput(input, value) {
+    const v = Number(value) & 0xFF;
+    input.classList.toggle("nonzero", v !== 0);
+    input.classList.toggle("zeroish", v === 0);
+    if (v) {
+      input.style.background = typeColor(v);
+      input.style.color = typeInputTextColor(v);
+    } else {
+      input.style.background = "";
+      input.style.color = "";
+    }
+  }
+
+  function angleColor(angle, type, maxAngle) {
+    const a = Number(angle) || 0;
+    const t = Number(type) || 0;
+    if (!a && !t) return "#11151e";
+    return `hsl(${Math.floor((a / Math.max(maxAngle, 1)) * 260 + 40)}, 60%, 40%)`;
+  }
+
+  function styleAngleInput(input, angle, type) {
+    const a = Number(angle) || 0;
+    const t = Number(type) || 0;
+    input.classList.toggle("nonzero", a !== 0 || t !== 0);
+    input.classList.toggle("zeroish", a === 0 && t === 0);
+    if (a || t) {
+      const maxAngle = state.angleData && state.angleData.length ? state.angleData.reduce((m, v) => Math.max(m, v), 0) : 65535;
+      input.style.background = angleColor(a, t, maxAngle);
+      input.style.color = "#ffffff";
+    } else {
+      input.style.background = "";
+      input.style.color = "";
     }
   }
 
@@ -523,16 +616,11 @@
   }
   
   function detailGranularity() {
-    return Number($("detailGranularity").value) || QUAD;
+    return 8;
   }
 
   function selectedEditStart() {
-    const size = detailGranularity();
-    return {
-      sx: size === 8 ? 0 : state.selectedQuadX * QUAD,
-      sy: size === 8 ? 0 : state.selectedQuadY * QUAD,
-      size
-    };
+    return { sx: 0, sy: 0, size: 8 };
   }
 
   function selectedEditIndices(tileIndex) {
@@ -588,8 +676,7 @@
                   ? `hsl(${Math.floor((angle / Math.max(maxAngle, 1)) * 260 + 40)}, 60%, 40%)`
                   : "#11151e";
               } else if (mode === "wall") {
-                const t = state.typeData[dataIndex] ?? 0;
-                fill = (t === 0x01 || t === 0x04) ? typeColor(t) : (t ? "#303540" : "#11151e");
+                fill = typeColor(state.typeData[dataIndex] ?? 0);
               } else {
                 fill = typeColor(state.typeData[dataIndex] ?? 0);
               }
@@ -619,16 +706,11 @@
       ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--selectedQuad");
       ctx.lineWidth = 2;
 
-      const g = detailGranularity();
-      const subZoom = zoom / 8;
-      const selectX = g === 8 ? 0 : state.selectedQuadX * QUAD;
-      const selectY = g === 8 ? 0 : state.selectedQuadY * QUAD;
-
       ctx.strokeRect(
-        state.selectedX * zoom + selectX * subZoom + 2.5,
-        state.selectedY * zoom + selectY * subZoom + 2.5,
-        g * subZoom - 5,
-        g * subZoom - 5
+        state.selectedX * zoom + 2.5,
+        state.selectedY * zoom + 2.5,
+        zoom - 5,
+        zoom - 5
       );
     } catch (err) {
       $("status").textContent = `Render error: ${err.message}`;
@@ -641,6 +723,37 @@
     return state.tileData[state.selectedY * BOARD_W + state.selectedX] || 0;
   }
 
+
+  function selectedBoardMapIndex() {
+    return state.selectedY * BOARD_W + state.selectedX;
+  }
+
+  function appendBlankCollisionTile() {
+    const newIndex = collisionTileCount();
+
+    const nextAngle = new Uint16Array(state.angleData.length + SUBCELLS);
+    nextAngle.set(state.angleData, 0);
+    state.angleData = nextAngle;
+
+    const nextType = new Uint8Array(state.typeData.length + SUBCELLS);
+    nextType.set(state.typeData, 0);
+    state.typeData = nextType;
+
+    return newIndex;
+  }
+
+  function ensureSelectedTileEditable() {
+    let tileIndex = selectedTileIndex();
+    if (tileIndex !== 0) return tileIndex;
+
+    // Tile index 0 is the shared blank tile. Editing it would update every empty
+    // board cell, so give this board cell its own newly tracked collision tile.
+    tileIndex = appendBlankCollisionTile();
+    state.tileData[selectedBoardMapIndex()] = tileIndex;
+    state.dirty.tile = true;
+    return tileIndex;
+  }
+
   function renderSelected() {
     const hasData = !!(state.tileData && state.angleData && state.typeData);
     const tileIndex = selectedTileIndex();
@@ -648,13 +761,13 @@
     const first = indices[0] ?? 0;
     const { sx, sy, size } = selectedEditStart();
 
-    $("selectedLabel").textContent = hasData ? `tile ${state.selectedX}, ${state.selectedY}; quad ${state.selectedQuadX}, ${state.selectedQuadY}` : "none";
+    $("selectedLabel").textContent = hasData ? `board ${state.selectedX}, ${state.selectedY}` : "none";
     $("boardXY").textContent = hasData ? `${state.selectedX}, ${state.selectedY}` : "—";
-    $("quadXY").textContent = hasData ? `${state.selectedQuadX}, ${state.selectedQuadY}` : "—";
     $("tileIndexLabel").textContent = hasData ? `0x${toHex(tileIndex, 4)}` : "—";
     $("segmentRangeLabel").textContent = hasData ? `x ${sx}–${sx + size - 1}, y ${sy}–${sy + size - 1}` : "—";
     $("angleOffsetLabel").textContent = hasData ? `0x${toHex(first * 2, 6)}` : "—";
     $("typeOffsetLabel").textContent = hasData ? `0x${toHex(first, 6)}` : "—";
+    $("placementIndexLabel").textContent = hasData ? `0x${toHex(tileIndex, 4)}` : "—";
     $("tileIndexInput").value = hasData ? toHex(tileIndex, 4) : "";
 
     renderGrid("angleGrid", "angle", 0xFFFF, 4);
@@ -679,20 +792,34 @@
       input.className = "subcell";
       input.type = "text";
       input.value = toHex(source[i] ?? 0, width);
-      const cellX = state.selectedQuadX * QUAD + (local % QUAD);
-      const cellY = state.selectedQuadY * QUAD + Math.floor(local / QUAD);
+      const { sx, sy, size } = selectedEditStart();
+      const cellX = sx + (local % size);
+      const cellY = sy + Math.floor(local / size);
       input.title = `subcell x=${cellX}, y=${cellY}, file index=0x${toHex(i, 6)}`;
+      if (kind === "type") styleTypeInput(input, source[i] ?? 0);
+      if (kind === "angle") styleAngleInput(input, source[i] ?? 0, state.typeData[i] ?? 0);
       input.addEventListener("change", () => {
         try {
           const value = parseHexish(input.value, maxValue);
-          source[i] = value;
+          const editableTileIndex = ensureSelectedTileEditable();
+          const editIndex = editableTileIndex * SUBCELLS + local;
+          const editSource = kind === "angle" ? state.angleData : state.typeData;
+
+          editSource[editIndex] = value;
           input.value = toHex(value, width);
+          if (kind === "type") styleTypeInput(input, value);
+          if (kind === "angle") styleAngleInput(input, value, state.typeData[editIndex] ?? 0);
           state.dirty[kind] = true;
+
           renderBoard();
+          renderSelected();
           updateDirtyStatus();
         } catch (err) {
           alert(err.message);
-          input.value = toHex(source[i] ?? 0, width);
+          const currentTileIndex = selectedTileIndex();
+          const currentIndex = currentTileIndex * SUBCELLS + local;
+          const currentSource = kind === "angle" ? state.angleData : state.typeData;
+          input.value = toHex(currentSource[currentIndex] ?? 0, width);
         }
       });
       container.appendChild(input);
@@ -705,29 +832,61 @@
     else validateAndRefresh();
   }
 
-  function regenerateTileData() {
+  function buildCompactedCollisionSet() {
     const oldToNew = new Map([[0, 0]]);
-    let next = 1;
-    const generated = new Uint16Array(BOARD_W * BOARD_H);
+    const generatedTileData = new Uint16Array(BOARD_W * BOARD_H);
     const count = collisionTileCount();
+    const angleTiles = [new Uint16Array(SUBCELLS)];
+    const typeTiles = [new Uint8Array(SUBCELLS)];
 
     function tileHasCollision(tileIndex) {
       if (tileIndex <= 0 || tileIndex >= count) return false;
       const base = tileIndex * SUBCELLS;
-      for (let i = 0; i < SUBCELLS; i++) if ((state.typeData[base + i] ?? 0) !== 0) return true;
+      for (let i = 0; i < SUBCELLS; i++) {
+        if ((state.typeData[base + i] ?? 0) !== 0) return true;
+      }
       return false;
     }
 
-    for (let i = 0; i < generated.length; i++) {
-      const old = state.tileData[i] || 0;
-      if (!tileHasCollision(old)) {
-        generated[i] = 0;
+    function copyTile(oldTileIndex) {
+      const newTileIndex = angleTiles.length;
+      const oldBase = oldTileIndex * SUBCELLS;
+      const angleTile = new Uint16Array(SUBCELLS);
+      const typeTile = new Uint8Array(SUBCELLS);
+
+      for (let i = 0; i < SUBCELLS; i++) {
+        angleTile[i] = state.angleData[oldBase + i] ?? 0;
+        typeTile[i] = state.typeData[oldBase + i] ?? 0;
+      }
+
+      angleTiles.push(angleTile);
+      typeTiles.push(typeTile);
+      oldToNew.set(oldTileIndex, newTileIndex);
+      return newTileIndex;
+    }
+
+    // Rebuild in the game's map order: left-to-right, top-to-bottom.
+    // This keeps newly-created collision tiles in the position implied by their
+    // board location instead of leaving append-created tiles at the end.
+    for (let mapIndex = 0; mapIndex < generatedTileData.length; mapIndex++) {
+      const oldTileIndex = state.tileData[mapIndex] || 0;
+      if (!tileHasCollision(oldTileIndex)) {
+        generatedTileData[mapIndex] = 0;
         continue;
       }
-      if (!oldToNew.has(old)) oldToNew.set(old, next++);
-      generated[i] = oldToNew.get(old);
+
+      if (!oldToNew.has(oldTileIndex)) copyTile(oldTileIndex);
+      generatedTileData[mapIndex] = oldToNew.get(oldTileIndex);
     }
-    return { generated, oldToNew };
+
+    const generatedAngleData = new Uint16Array(angleTiles.length * SUBCELLS);
+    const generatedTypeData = new Uint8Array(typeTiles.length * SUBCELLS);
+    for (let tileIndex = 0; tileIndex < angleTiles.length; tileIndex++) {
+      generatedAngleData.set(angleTiles[tileIndex], tileIndex * SUBCELLS);
+      generatedTypeData.set(typeTiles[tileIndex], tileIndex * SUBCELLS);
+    }
+
+    return { generatedTileData, generatedAngleData, generatedTypeData, oldToNew };
   }
 
   canvas.addEventListener("click", ev => {
@@ -765,25 +924,10 @@
 
     ev.preventDefault();
 
-    const g = detailGranularity();
-
-    if (g === 8) {
-      state.selectedX = Math.max(0, Math.min(BOARD_W - 1, state.selectedX + dx));
-      state.selectedY = Math.max(0, Math.min(BOARD_H - 1, state.selectedY + dy));
-      state.selectedQuadX = 0;
-      state.selectedQuadY = 0;
-    } else {
-      const absBlockX = state.selectedX * 2 + state.selectedQuadX + dx;
-      const absBlockY = state.selectedY * 2 + state.selectedQuadY + dy;
-
-      const clampedBlockX = Math.max(0, Math.min(BOARD_W * 2 - 1, absBlockX));
-      const clampedBlockY = Math.max(0, Math.min(BOARD_H * 2 - 1, absBlockY));
-
-      state.selectedX = Math.floor(clampedBlockX / 2);
-      state.selectedY = Math.floor(clampedBlockY / 2);
-      state.selectedQuadX = clampedBlockX % 2;
-      state.selectedQuadY = clampedBlockY % 2;
-    }
+    state.selectedX = Math.max(0, Math.min(BOARD_W - 1, state.selectedX + dx));
+    state.selectedY = Math.max(0, Math.min(BOARD_H - 1, state.selectedY + dy));
+    state.selectedQuadX = 0;
+    state.selectedQuadY = 0;
 
     renderBoard();
     renderSelected();
@@ -795,11 +939,7 @@
 
   $("zoomInput").addEventListener("change", renderBoard);
   $("colorMode").addEventListener("change", renderBoard);
-  
-  $("detailGranularity").addEventListener("change", () => {
-    renderBoard();
-    renderSelected();
-  });
+
 
   $("applyTileIndexBtn").addEventListener("click", () => {
     if (!state.tileData) return;
@@ -820,29 +960,31 @@
   $("saveSetBtn").addEventListener("click", () => {
     const base = state.baseName || "edited_";
 
-    const { generated } = regenerateTileData();
-    saveBlob(writeU16LE(generated), `${base}tiledata.4bpp`);
-    saveBlob(writeU16LE(state.angleData), `${base}angledata.4bpp`);
-    saveBlob(new Blob([state.typeData], { type: "application/octet-stream" }), `${base}typedata.4bpp`);
+    const { generatedTileData, generatedAngleData, generatedTypeData } = buildCompactedCollisionSet();
+    saveBlob(writeU16LE(generatedTileData), `${base}tiledata.bin`);
+    saveBlob(writeU16LE(generatedAngleData), `${base}angledata.bin`);
+    saveBlob(new Blob([generatedTypeData], { type: "application/octet-stream" }), `${base}typedata.bin`);
 
-    state.tileData = generated;
+    state.tileData = generatedTileData;
+    state.angleData = generatedAngleData;
+    state.typeData = generatedTypeData;
     state.dirty.tile = false;
     state.dirty.angle = false;
     state.dirty.type = false;
 
     renderBoard();
     renderSelected();
-    $("status").textContent = `Saved edited set using base "${base}".`;
+    $("status").textContent = `Saved edited set using base "${base}" with ${collisionTileCount()} collision tiles in board scan order.`;
   });
 
   $("copyTileBtn").addEventListener("click", () => {
     const tileIndex = selectedTileIndex();
     const indices = selectedEditIndices(tileIndex);
-    const { sx, sy } = selectedSegmentStart();
+    const { sx, sy, size } = selectedEditStart();
     const data = {
       collisionTileIndex: `0x${toHex(tileIndex, 4)}`,
       board: { x: state.selectedX, y: state.selectedY },
-      quad: { x: state.selectedQuadX, y: state.selectedQuadY, cellRange: { x0: sx, y0: sy, x1: sx + 3, y1: sy + 3 } },
+      tileCells: { x0: sx, y0: sy, x1: sx + size - 1, y1: sy + size - 1 },
       angle: indices.map(i => `0x${toHex(state.angleData[i] ?? 0, 4)}`),
       type: indices.map(i => `0x${toHex(state.typeData[i] ?? 0, 2)}`)
     };
@@ -856,6 +998,7 @@
       if (!Array.isArray(data.angle) || !Array.isArray(data.type) || data.angle.length !== expected || data.type.length !== expected) {
         throw new Error(`JSON must contain angle[${expected}] and type[${expected}] for the selected edit region.`);
       }
+      const tileIndex = ensureSelectedTileEditable();
       const indices = selectedEditIndices(tileIndex);
       for (let i = 0; i < indices.length; i++) {
         state.angleData[indices[i]] = typeof data.angle[i] === "string" ? parseHexish(data.angle[i], 0xFFFF) : Math.max(0, Math.min(0xFFFF, Number(data.angle[i]) || 0));

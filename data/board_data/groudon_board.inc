@@ -14,7 +14,8 @@ gGroudonBoardCompressedBGTiles:: @ 0x08353DD8
 	.incbin "baserom.gba", 0x353DD8, 0x3BF0
 
 gGroudonBodyCollisionMap:: @ 0x083579C8
-	.incbin "baserom.gba", 0x3579C8, 0x7000
+.incbin "data/board_data/collision/groudon/groudon_entity_collision_112x128.bin"
 
 gGroudonProjectileCollisionMap:: @ 0x0835E9C8
-	.incbin "baserom.gba", 0x35E9C8, 0x5500
+.incbin "data/board_data/collision/groudon/groudon_projectile_collision_80x80.bin"
+.incbin "data/board_data/collision/groudon/groudon_projectile_collision2_80x56.bin"
