@@ -21,7 +21,8 @@ void UpdateSapphireBumperLogic(void)
 
     for (i = 0; i < 2; i++)
     {
-        switch (gCurrentPinballGame->sapphireBumperState[i])
+        // Mart gate buttons
+        switch (gCurrentPinballGame->sapphireMartGateBumperState[i])
         {
         case 0:
             if (gSapphireBumperAnimFrames[gCurrentPinballGame->sapphireBumperAnimKeyframe[i]][1] > gCurrentPinballGame->sapphireBumperAnimSubTimer[i])
@@ -64,7 +65,7 @@ void UpdateSapphireBumperLogic(void)
                     if (gCurrentPinballGame->sapphireBumperLitCountdown == 1)
                     {
                         gCurrentPinballGame->sapphireBumperAnimKeyframe[i] = 7;
-                        gCurrentPinballGame->sapphireBumperState[i] = 2;
+                        gCurrentPinballGame->sapphireMartGateBumperState[i] = 2;
                     }
                 }
 
@@ -88,7 +89,7 @@ void UpdateSapphireBumperLogic(void)
                 if (gCurrentPinballGame->sapphireBumperAnimKeyframe[i] > 8)
                 {
                     gCurrentPinballGame->sapphireBumperAnimKeyframe[i] = 0;
-                    gCurrentPinballGame->sapphireBumperState[i] = 0;
+                    gCurrentPinballGame->sapphireMartGateBumperState[i] = 0;
                 }
             }
 
@@ -97,7 +98,7 @@ void UpdateSapphireBumperLogic(void)
         case 3:
             gCurrentPinballGame->sapphireBumperAnimKeyframe[i] = 9;
             gCurrentPinballGame->sapphireBumperAnimSubTimer[i] = 0;
-            gCurrentPinballGame->sapphireBumperState[i] = 4;
+            gCurrentPinballGame->sapphireMartGateBumperState[i] = 4;
             gCurrentPinballGame->sapphireBumperHitFxTimer[i] = 20;
             break;
         case 4:
@@ -114,7 +115,7 @@ void UpdateSapphireBumperLogic(void)
                     if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_EVO_MODE)
                     {
                         gCurrentPinballGame->sapphireBumperAnimKeyframe[i] = 0;
-                        gCurrentPinballGame->sapphireBumperState[i] = 0;
+                        gCurrentPinballGame->sapphireMartGateBumperState[i] = 0;
                     }
                     else
                     {
@@ -136,7 +137,7 @@ void UpdateSapphireBumperLogic(void)
                 gCurrentPinballGame->sapphireBumperAnimSubTimer[i] = 0;
                 if (gCurrentPinballGame->sapphireBumperAnimKeyframe[i] > 17)
                 {
-                    gCurrentPinballGame->sapphireBumperState[i] = 0;
+                    gCurrentPinballGame->sapphireMartGateBumperState[i] = 0;
                     gCurrentPinballGame->sapphireBumperAnimKeyframe[i] = 0;
                 }
             }
@@ -179,9 +180,9 @@ void UpdateSapphireBumperLogic(void)
         {
             for (i = 0; i < 2; i++)
             {
-                if (gCurrentPinballGame->sapphireBumperState[i])
+                if (gCurrentPinballGame->sapphireMartGateBumperState[i])
                 {
-                    gCurrentPinballGame->sapphireBumperState[i] = 0;
+                    gCurrentPinballGame->sapphireMartGateBumperState[i] = 0;
                     gCurrentPinballGame->sapphireBumperAnimKeyframe[i] = 0;
                     gCurrentPinballGame->sapphireBumperAnimSubTimer[i] = 0;
                 }
@@ -192,20 +193,20 @@ void UpdateSapphireBumperLogic(void)
     {
         if (gCurrentPinballGame->evolvablePartySize > 0)
         {
-            if (gCurrentPinballGame->sapphireBumperState[0] < 3)
+            if (gCurrentPinballGame->sapphireMartGateBumperState[0] < 3)
             {
-                gCurrentPinballGame->sapphireBumperState[0] = 3;
-                gCurrentPinballGame->sapphireBumperState[1] = 3;
+                gCurrentPinballGame->sapphireMartGateBumperState[0] = 3;
+                gCurrentPinballGame->sapphireMartGateBumperState[1] = 3;
             }
         }
     }
     else
     {
-        if (gCurrentPinballGame->sapphireBumperState[0] > 2)
+        if (gCurrentPinballGame->sapphireMartGateBumperState[0] > 2)
         {
-            gCurrentPinballGame->sapphireBumperState[0] = 0;
+            gCurrentPinballGame->sapphireMartGateBumperState[0] = 0;
             gCurrentPinballGame->sapphireBumperAnimKeyframe[0] = 0;
-            gCurrentPinballGame->sapphireBumperState[1] = 0;
+            gCurrentPinballGame->sapphireMartGateBumperState[1] = 0;
             gCurrentPinballGame->sapphireBumperAnimKeyframe[1] = 0;
         }
     }
@@ -286,14 +287,14 @@ void DrawSapphireBumperSprites(void)
     {
         gCurrentPinballGame->shopShockWallAnimState = 3;
     }
-    else if (gCurrentPinballGame->sapphireBumperState[0])
+    else if (gCurrentPinballGame->sapphireMartGateBumperState[0])
     {
-        if (gCurrentPinballGame->sapphireBumperState[1])
+        if (gCurrentPinballGame->sapphireMartGateBumperState[1])
             gCurrentPinballGame->shopShockWallAnimState = 3;
         else
             gCurrentPinballGame->shopShockWallAnimState = 2;
     }
-    else if (gCurrentPinballGame->sapphireBumperState[1])
+    else if (gCurrentPinballGame->sapphireMartGateBumperState[1])
     {
         gCurrentPinballGame->shopShockWallAnimState = 1;
     }

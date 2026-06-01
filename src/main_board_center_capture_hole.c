@@ -366,8 +366,8 @@ void GivePrize(void)
                 gCurrentPinballGame->outcomeFrameCounter = 149;
                 gCurrentPinballGame->evolutionShopActive = 1;
                 UpdateShopEntryAnimation(1);
-                gCurrentPinballGame->sapphireBumperState[0] = 3;
-                gCurrentPinballGame->sapphireBumperState[1] = 3;
+                gCurrentPinballGame->sapphireMartGateBumperState[0] = 3;
+                gCurrentPinballGame->sapphireMartGateBumperState[1] = 3;
             }
 
             if (gCurrentPinballGame->outcomeFrameCounter == 170)

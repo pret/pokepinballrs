@@ -152,57 +152,65 @@ void ProcessKecleonBallDisturbanceCollisionEvent(u8 triggerType, u16 *hasCollisi
         case 14:
         case 15:
             return;
-        case 8:
+        case KECLEON_TRIGGER_FLOWERS:
             if (x <= 0x72)
             {
                 if (y <= 0x38)
                 {
+                    // Single top, under tree
                     if (gCurrentPinballGame->kecleonFlowerMotionTimer[0] <= 0)
                         gCurrentPinballGame->kecleonFlowerMotionTimer[0] = 0x18;
                 }
                 else
                 {
+                    // Double left
                     if (gCurrentPinballGame->kecleonFlowerMotionTimer[1] <= 0)
                         gCurrentPinballGame->kecleonFlowerMotionTimer[1] = 0x18;
                 }
             }
             else if (y <= 0x63)
             {
+                // Top right triple
                 if (gCurrentPinballGame->kecleonFlowerMotionTimer[3] <= 0)
                     gCurrentPinballGame->kecleonFlowerMotionTimer[3] = 0x18;
             }
             else
             {
+                // Bottom right double
                 if (gCurrentPinballGame->kecleonFlowerMotionTimer[2] <= 0)
                     gCurrentPinballGame->kecleonFlowerMotionTimer[2] = 0x18;
             }
             break;
-        case 9:
+        case KECLEON_TRIGGER_BUSH_GROUP_0:
             if (x <= 0x72)
             {
                 if (y <= 0x45)
                 {
+                    // left bush of top left pair
                     if (gCurrentPinballGame->kecleonBushMotionTimer[7] <= 0)
                         gCurrentPinballGame->kecleonBushMotionTimer[7] = 0x18;
                 }
                 else
                 {
+                    // left bush of lower left trio
                     if (gCurrentPinballGame->kecleonBushMotionTimer[5] <= 0)
                         gCurrentPinballGame->kecleonBushMotionTimer[5] = 0x18;
                 }
             }
             else if (y <= 0x45)
             {
+                // left bush of top right pair
                 if (gCurrentPinballGame->kecleonBushMotionTimer[8] <= 0)
                     gCurrentPinballGame->kecleonBushMotionTimer[8] = 0x18;
             }
             else
             {
+                // left bush of bottom right trio
                 if (gCurrentPinballGame->kecleonBushMotionTimer[0] <= 0)
                     gCurrentPinballGame->kecleonBushMotionTimer[0] = 0x18;
             }
             break;
-        case 10:
+        case KECLEON_TRIGGER_WATER:
             if (gCurrentPinballGame->kecleonWaterBallCollisionTimer == 0)
             {
                 gCurrentPinballGame->kecleonWaterMotionTimer[0] = 0xB;
@@ -228,39 +236,45 @@ void ProcessKecleonBallDisturbanceCollisionEvent(u8 triggerType, u16 *hasCollisi
                 gCurrentPinballGame->ballTrailPosition[3].y = gCurrentPinballGame->ball->positionQ0.y - 7;
             }
             break;
-        case 11:
+        case KECLEON_TRIGGER_BUSH_GROUP_1:
             if (x <= 0x72)
             {
                 if (y <= 0x45)
                 {
+                    // Right bush of top left pair
                     if (gCurrentPinballGame->kecleonBushMotionTimer[9] <= 0)
                         gCurrentPinballGame->kecleonBushMotionTimer[9] = 0x18;
                 }
                 else
                 {
+                    // Middle bush of bottom left trio
                     if (gCurrentPinballGame->kecleonBushMotionTimer[2] <= 0)
                         gCurrentPinballGame->kecleonBushMotionTimer[2] = 0x18;
                 }
             }
             else if (y <= 0x45)
             {
+                // Right bush of top right pair
                 if (gCurrentPinballGame->kecleonBushMotionTimer[6] <= 0)
                     gCurrentPinballGame->kecleonBushMotionTimer[6] = 0x18;
             }
             else
             {
+                // Middle bush of bottom right trio
                 if (gCurrentPinballGame->kecleonBushMotionTimer[1] <= 0)
                     gCurrentPinballGame->kecleonBushMotionTimer[1] = 0x18;
             }
             break;
-        case 12:
+        case KECLEON_TRIGGER_BUSH_GROUP_2:
             if (x <= 0x72)
             {
+                // Right bush of bottom left trio
                 if (gCurrentPinballGame->kecleonBushMotionTimer[4] <= 0)
                     gCurrentPinballGame->kecleonBushMotionTimer[4] = 0x18;
             }
             else
             {
+                // Right bush of bottom right trio
                 if (gCurrentPinballGame->kecleonBushMotionTimer[3] <= 0)
                     gCurrentPinballGame->kecleonBushMotionTimer[3] = 0x18;
             }
@@ -301,7 +315,7 @@ void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *kecleonPos
 
     switch (some_enum)
     {
-        case 8:
+        case KECLEON_TRIGGER_FLOWERS:
             if (x <= 0x72)
             {
                 if (y <= 0x38)
@@ -326,7 +340,7 @@ void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *kecleonPos
                     gCurrentPinballGame->kecleonFlowerMotionTimer[2] = 0x18;
             }
             break;
-        case 9:
+        case KECLEON_TRIGGER_BUSH_GROUP_0:
             if (x <= 0x72)
             {
                 if (y <= 0x45)
@@ -351,7 +365,7 @@ void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *kecleonPos
                     gCurrentPinballGame->kecleonBushMotionTimer[0] = 0x18;
             }
             break;
-        case 10:
+        case KECLEON_TRIGGER_WATER:
             gCurrentPinballGame->kecleonCollisionEnabled = 0;
             if (gCurrentPinballGame->kecleonWaterCollisionTimer == 0)
             {
@@ -381,7 +395,7 @@ void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *kecleonPos
                 }
             }
             break;
-        case 11:
+        case KECLEON_TRIGGER_BUSH_GROUP_1:
             if (x <= 0x72)
             {
                 if (y <= 0x45)
@@ -406,7 +420,7 @@ void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *kecleonPos
                     gCurrentPinballGame->kecleonBushMotionTimer[1] = 0x18;
             }
             break;
-        case 12:
+        case KECLEON_TRIGGER_BUSH_GROUP_2:
             if (x <= 0x72)
             {
                 if (gCurrentPinballGame->kecleonBushMotionTimer[4] <= 0)

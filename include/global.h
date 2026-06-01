@@ -493,7 +493,7 @@ struct PinballGame
     /*0x366*/ s8 shopShockWallAnimState;
     /*0x367*/ s8 eggHatchShockWallOverride;
     /*0x368*/ u16 shopBumperHitTimer;
-    /*0x36A*/ s8 sapphireBumperState[2];
+    /*0x36A*/ s8 sapphireMartGateBumperState[2];
     /*0x36C*/ s8 sapphireBumperAnimKeyframe[2];
     /*0x36E*/ u16 sapphireBumperAnimSubTimer[2];
     /*0x372*/ u16 sapphireBumperHitFxTimer[2];

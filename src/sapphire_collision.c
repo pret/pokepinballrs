@@ -179,7 +179,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 *hasCollisionImpact = TRUE;
             }
             break;
-        case SAPPHIRE_TRIGGER_2:
+        case SAPPHIRE_TRIGGER_CHANGE_LAYER_UP:
             if (gCurrentPinballGame->boardLayerDepth == 0)
             {
                 gCurrentPinballGame->ball->oamPriority = 2;
@@ -195,7 +195,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 gCurrentPinballGame->ball->oamPriority = 1;
             }
             break;
-        case SAPPHIRE_TRIGGER_3:
+        case SAPPHIRE_TRIGGER_CHANGE_LAYER_DOWN:
             if (gCurrentPinballGame->boardLayerDepth == 2)
             {
                 gCurrentPinballGame->ball->oamPriority = 3;
@@ -207,23 +207,24 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 gCurrentPinballGame->boardLayerDepth = 2;
             }
             break;
-        case SAPPHIRE_TRIGGER_4:
+        case SAPPHIRE_TRIGGER_TARGET_SWITCH:
             if (gCurrentPinballGame->mainBoardCountdownTimer == 0)
             {
                 if (gCurrentPinballGame->ball->positionQ0.y < 260)
                 {
                     if (gCurrentPinballGame->ball->positionQ0.x < 74)
                     {
+                        // Minun's button
                         if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
-                            && gCurrentPinballGame->sapphireBumperState[1] < 3)
+                            && gCurrentPinballGame->sapphireMartGateBumperState[1] < 3)
                         {
-                            if (gCurrentPinballGame->sapphireBumperState[1] == 1)
+                            if (gCurrentPinballGame->sapphireMartGateBumperState[1] == 1)
                                 gCurrentPinballGame->sapphireBumperAnimKeyframe[1] = 6;
                             else
                                 gCurrentPinballGame->sapphireBumperAnimKeyframe[1] = 4;
 
                             gCurrentPinballGame->sapphireBumperAnimSubTimer[1] = 0;
-                            gCurrentPinballGame->sapphireBumperState[1] = 1;
+                            gCurrentPinballGame->sapphireMartGateBumperState[1] = 1;
                             PlayRumble(7);
 
                             gCurrentPinballGame->ball->velocity.x /= 2;
@@ -237,16 +238,17 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     }
                     else if (gCurrentPinballGame->ball->positionQ0.x < 116)
                     {
+                        // Plusle's button
                         if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
-                            && gCurrentPinballGame->sapphireBumperState[0] < 3)
+                            && gCurrentPinballGame->sapphireMartGateBumperState[0] < 3)
                         {
-                            if (gCurrentPinballGame->sapphireBumperState[0] == 1)
+                            if (gCurrentPinballGame->sapphireMartGateBumperState[0] == 1)
                                 gCurrentPinballGame->sapphireBumperAnimKeyframe[0] = 6;
                             else
                                 gCurrentPinballGame->sapphireBumperAnimKeyframe[0] = 4;
 
                             gCurrentPinballGame->sapphireBumperAnimSubTimer[0] = 0;
-                            gCurrentPinballGame->sapphireBumperState[0] = 1;
+                            gCurrentPinballGame->sapphireMartGateBumperState[0] = 1;
 
                             PlayRumble(7);
 
@@ -261,6 +263,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     }
                     else
                     {
+                        // Bonus Multiplier Addition button
                         gCurrentPinballGame->pelipperFrameTimer = 1800;
                         gCurrentPinballGame->pelipperState = 1;
 
@@ -274,11 +277,13 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 {
                     if (gCurrentPinballGame->ball->positionQ0.x < 110)
                     {
+                        // Seedot button
                         gCurrentPinballGame->seedotCollisionTrigger = 1;
                         gCurrentPinballGame->ball->velocity.y /= 2;
                     }
                     else
                     {
+                        // Zigzagoon button
                         if (gCurrentPinballGame->zigzagoonState == 0)
                             gCurrentPinballGame->zigzagoonState = 1;
                         else
@@ -293,10 +298,10 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
             }
             break;
-        case SAPPHIRE_TRIGGER_5:
+        case SAPPHIRE_TRIGGER_BALL_LAUNCH_POSITION:
             gCurrentPinballGame->ballTouchingSpoink = 1;
             gCurrentPinballGame->ballInLaunchChute = TRUE;
-            gCurrentPinballGame->ballCollisionZone = 0;
+            gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_LAUNCH_CHUTE;
             gCurrentPinballGame->hatchMachineActive = 0;
             break;
         case SAPPHIRE_TRIGGER_6:
@@ -304,6 +309,9 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
             {
                 if (gCurrentPinballGame->ball->velocity.y > 0)
                 {
+                    // Intended to adjust the angle for the left ramp, but may also (Possible bug)
+                    // affect this trigger type when used in the lower board, when firing out of
+                    // the left pika kickback, or trying to hop out from the lower outlane.
                     angle = 0xDA00;
                     squaredMagnitude =
                         gCurrentPinballGame->ball->velocity.x * gCurrentPinballGame->ball->velocity.x +
@@ -315,9 +323,12 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 }
             }
             else
+            {
+                // Intended for use of the hatch machine ramp, to activate it. (turned off during ball launches)
                 gCurrentPinballGame->hatchMachineActive = 1;
+            }
             break;
-        case SAPPHIRE_TRIGGER_7:
+        case SAPPHIRE_TRIGGER_SHOCK_WALL:
             if (gCurrentPinballGame->shopShockWallAnimState != 3)
             {
                 gCurrentPinballGame->shopBumperHitTimer = 17;
@@ -327,11 +338,12 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 *hasCollisionImpact = TRUE;
             }
             break;
-        case SAPPHIRE_TRIGGER_8:
+        case SAPPHIRE_TRIGGER_UPPER_LANE_ROLLOVER:
             x0Position = gCurrentPinballGame->ball->positionQ0.x;
             if (gCurrentPinballGame->boardLayerDepth > 0)
             {
-                if (gCurrentPinballGame->ballCollisionZone == 7)
+                // Upper Coin ramp rollover
+                if (gCurrentPinballGame->ballCollisionZone == SAPPHIRE_ZONE_COIN_LANE_BOTTOM)
                 {
                     gCurrentPinballGame->coinRewardAmount = 10;
                     if (gCurrentPinballGame->coinRewardLevel < 3)
@@ -359,13 +371,14 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     gCurrentPinballGame->coinRewardLevelTimer = 0;
                 }
 
-                gCurrentPinballGame->ballCollisionZone = 1;
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_COIN_LANE_TOP;
             }
             else
             {
                 if (x0Position <= 72)
                 {
-                    if (gCurrentPinballGame->ballCollisionZone == 8)
+                    // Upper Evo lane rollover
+                    if (gCurrentPinballGame->ballCollisionZone == SAPPHIRE_ZONE_EVO_LANE_BOTTOM)
                     {
                         if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
                             && gCurrentPinballGame->evoArrowProgress < 3)
@@ -376,7 +389,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                                 gCurrentPinballGame->scoreAddedInFrame = 5000;
                             else
                                 gCurrentPinballGame->scoreAddedInFrame = 10000;
-                            
+
                             gCurrentPinballGame->evoArrowProgress++;
                             m4aSongNumStart(SE_UNKNOWN_0x99);
                         }
@@ -384,15 +397,16 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                         gCurrentPinballGame->travelRolloverTriggerHitZone = TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_LEFT;
                     }
 
-                    gCurrentPinballGame->ballCollisionZone = 2;
+                    gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_EVO_LANE_TOP;
                 }
                 else if (x0Position <= 98)
                 {
+                    // Left Ball Upgrade rollover
                     if (gCurrentPinballGame->ballPowerUpLight[0] == 0)
                         gCurrentPinballGame->scoreAddedInFrame = 1000;
-                    
+
                     gCurrentPinballGame->ballPowerUpLight[0] = 1;
-                    gCurrentPinballGame->ballCollisionZone = 3;
+                    gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_LEFT_BALL_UPGRADE_LANE;
 
                     if (gCurrentPinballGame->ballPowerUpAnimActive == 0 && (gCurrentPinballGame->ballPowerUpLight[1] & gCurrentPinballGame->ballPowerUpLight[2]))
                     {
@@ -403,11 +417,12 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 }
                 else if (x0Position <= 118)
                 {
-                    if (gCurrentPinballGame->ballPowerUpLight[1] == 0) 
+                    // Middle Ball Upgrade rollover
+                    if (gCurrentPinballGame->ballPowerUpLight[1] == 0)
                         gCurrentPinballGame->scoreAddedInFrame = 1000;
-                    
+
                     gCurrentPinballGame->ballPowerUpLight[1] = 1;
-                    gCurrentPinballGame->ballCollisionZone = 4;
+                    gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_CENTER_BALL_UPGRADE_LANE;
 
                     if (gCurrentPinballGame->ballPowerUpAnimActive == 0 && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[2]))
                     {
@@ -418,11 +433,12 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 }
                 else if (x0Position <= 146)
                 {
+                    // Right Ball Upgrade rollover
                     if (gCurrentPinballGame->ballPowerUpLight[2] == 0)
                         gCurrentPinballGame->scoreAddedInFrame = 1000;
-                    
+
                     gCurrentPinballGame->ballPowerUpLight[2] = 1;
-                    gCurrentPinballGame->ballCollisionZone = 5;
+                    gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_RIGHT_BALL_UPGRADE_LANE;
 
                     if (gCurrentPinballGame->ballPowerUpAnimActive == 0 && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[1]))
                     {
@@ -433,7 +449,8 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 }
                 else
                 {
-                    if (gCurrentPinballGame->ballCollisionZone == 9)
+                    // Get lane upper rollover
+                    if (gCurrentPinballGame->ballCollisionZone == SAPPHIRE_ZONE_GET_LANE_BOTTOM)
                     {
                         if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE
                             && gCurrentPinballGame->catchArrowProgress < 3)
@@ -444,7 +461,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                                 gCurrentPinballGame->scoreAddedInFrame = 5000;
                             else
                                 gCurrentPinballGame->scoreAddedInFrame = 10000;
-                            
+
                             gCurrentPinballGame->catchArrowProgress++;
 
                             if (gCurrentPinballGame->chargeFillValue == 13)
@@ -457,23 +474,33 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                         gCurrentPinballGame->travelRolloverTriggerHitZone = TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_RIGHT;
                     }
 
-                    gCurrentPinballGame->ballCollisionZone = 6;
+                    gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_GET_LANE_TOP;
                 }
             }
             break;
-        case SAPPHIRE_TRIGGER_9:
+        case SAPPHIRE_TRIGGER_LOWER_LANE_ROLLOVER:
             x0Position = gCurrentPinballGame->ball->positionQ0.x;
             if (gCurrentPinballGame->boardLayerDepth > 0)
-                gCurrentPinballGame->ballCollisionZone = 7;
+            {
+                // Coin ramp lower rollover
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_COIN_LANE_BOTTOM;
+            }
             else if (x0Position <= 50)
-                gCurrentPinballGame->ballCollisionZone = 8;
+            {
+                // Evo lane lower rollover
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_EVO_LANE_BOTTOM;
+            }
             else
-                gCurrentPinballGame->ballCollisionZone = 9;
+            {
+                // Get lane lower rollover
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_GET_LANE_BOTTOM;
+            }
             break;
-        case SAPPHIRE_TRIGGER_10:
+        case SAPPHIRE_TRIGGER_HOLE_ROLLOVER:
             if (gCurrentPinballGame->ball->positionQ0.x <= 46)
             {
-                gCurrentPinballGame->ballCollisionZone = 10;
+                // H rollover trigger
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_H_OUTLANE;
                 if (gCurrentPinballGame->holeIndicators[0] == 0)
                 {
                     gCurrentPinballGame->scoreAddedInFrame = 1000;
@@ -491,7 +518,8 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
             }
             else if (gCurrentPinballGame->ball->positionQ0.x <= 120)
             {
-                gCurrentPinballGame->ballCollisionZone = 11;
+                // O rollover trigger
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_O_INLANE;
 
                 if (gCurrentPinballGame->holeIndicators[1] == 0)
                 {
@@ -510,7 +538,8 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
             }
             else if (gCurrentPinballGame->ball->positionQ0.x <= 193)
             {
-                gCurrentPinballGame->ballCollisionZone = 12;
+                // L rollover trigger
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_L_INLANE;
                 if (gCurrentPinballGame->holeIndicators[2] == 0)
                 {
                     gCurrentPinballGame->scoreAddedInFrame = 1000;
@@ -529,7 +558,8 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
             }
             else
             {
-                gCurrentPinballGame->ballCollisionZone = 13;
+                // E rollover trigger
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_E_OUTLANE;
                 if (gCurrentPinballGame->holeIndicators[3] == 0)
                 {
                     gCurrentPinballGame->scoreAddedInFrame = 1000;
@@ -546,7 +576,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 }
             }
             break;
-        case SAPPHIRE_TRIGGER_11:
+        case SAPPHIRE_TRIGGER_PIKA_KICKBACK_ROLLOVER_TRIGGER:
             if (gCurrentPinballGame->pikaKickbackTimer == 0)
             {
                 if (gCurrentPinballGame->ball->positionQ0.x <= 120)
@@ -565,7 +595,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 }
             }
             break;
-        case SAPPHIRE_TRIGGER_12:
+        case SAPPHIRE_TRIGGER_PIKA_CHARGE_SPINNER:
             if (gCurrentPinballGame->pikaSpinCooldownTimer == 0)
             {
                 absVelY = gCurrentPinballGame->ball->velocity.y;
@@ -580,10 +610,10 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 gCurrentPinballGame->pikaSpinCooldownTimer = 20;
             }
             break;
-        case SAPPHIRE_TRIGGER_13:
-            if (gCurrentPinballGame->ballCollisionZone != 14)
+        case SAPPHIRE_TRIGGER_HATCH_MACHINE_ALTERNATING_TRIGGER_TYPE_A:
+            if (gCurrentPinballGame->ballCollisionZone != SAPPHIRE_ZONE_HATCH_ALTERNATER_A)
             {
-                gCurrentPinballGame->ballCollisionZone = 14;
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_HATCH_ALTERNATER_A;
                 index = gSapphireTargetBumperIndexMap[gCurrentPinballGame->hatchMachineTriggerCounter];
                 gCurrentPinballGame->targetBumperAnimTimers[index] = 10;
                 gCurrentPinballGame->hatchMachineTriggerCounter++;
@@ -618,10 +648,10 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     gCurrentPinballGame->ball->velocity.y = -180;
             }
             break;
-        case SAPPHIRE_TRIGGER_14:
-            if (gCurrentPinballGame->ballCollisionZone != 15)
+        case SAPPHIRE_TRIGGER_HATCH_MACHINE_ALTERNATING_TRIGGER_TYPE_B:
+            if (gCurrentPinballGame->ballCollisionZone != SAPPHIRE_ZONE_HATCH_ALTERNATER_B)
             {
-                gCurrentPinballGame->ballCollisionZone = 15;
+                gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_HATCH_ALTERNATER_B;
                 index = gSapphireTargetBumperIndexMap[gCurrentPinballGame->hatchMachineTriggerCounter];
                 gCurrentPinballGame->targetBumperAnimTimers[index] = 10;
                 gCurrentPinballGame->hatchMachineTriggerCounter++;
@@ -635,7 +665,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     gCurrentPinballGame->ball->velocity.y = -150;
             }
             break;
-        case SAPPHIRE_TRIGGER_15:
+        case SAPPHIRE_TRIGGER_PELIPPER_ENTITY_TRIGGER:
             if (gCurrentPinballGame->ball->positionQ0.y < 80)
             {
                 if (gCurrentPinballGame->pelipperState == 1)

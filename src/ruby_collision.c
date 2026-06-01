@@ -759,23 +759,20 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             return;
         }
     case RUBY_TRIGGER_PIKA_CHARGE_SPINNER:
-        if (gCurrentPinballGame->pikaSpinCooldownTimer != 0)
-            return;
+        if (gCurrentPinballGame->pikaSpinCooldownTimer == 0)
+        {
+            absVelY = gCurrentPinballGame->ball->velocity.y;
+            gCurrentPinballGame->pikaSpinMomentum = absVelY;
+            if (absVelY < 0)
+                absVelY = -absVelY;
 
-        absVelY = gCurrentPinballGame->ball->velocity.y;
-        gCurrentPinballGame->pikaSpinMomentum = gCurrentPinballGame->ball->velocity.y;
+            gCurrentPinballGame->pikaChargeTarget = gCurrentPinballGame->pikaChargeTarget + (absVelY / 3);
+            if (gCurrentPinballGame->pikaChargeTarget > 168)
+                gCurrentPinballGame->pikaChargeTarget = 168;
 
-        if (absVelY < 0) {
-            absVelY = -absVelY;
+            gCurrentPinballGame->pikaSpinCooldownTimer = 20;
         }
-
-        gCurrentPinballGame->pikaChargeTarget += (absVelY) / 3;
-
-        if (gCurrentPinballGame->pikaChargeTarget > 168)
-            gCurrentPinballGame->pikaChargeTarget = 168;
-
-        gCurrentPinballGame->pikaSpinCooldownTimer = 20;
-        return;
+        break;
     case RUBY_TRIGGER_CYNDAQUIL_LOW_POSITION:
         if (gCurrentPinballGame->cyndaquilCollisionEnabled == 0)
             return;
