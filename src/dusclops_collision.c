@@ -14,7 +14,7 @@ s16 CollisionCheck_Dusclops(struct Vector16* ballPosition, u16* collisionAngle) 
     s32 boardLayer;
 
     u32 boardTriggerType;
-    u32 switch_enum;
+    u32 collisionType;
 
     hasCollisionImpact = FALSE;
     gCurrentPinballGame->ball->spinAcceleration = SPIN_BOOST_NONE;
@@ -31,15 +31,15 @@ s16 CollisionCheck_Dusclops(struct Vector16* ballPosition, u16* collisionAngle) 
     boardCollisionType = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
 
     CheckDusclopsEntitiesCollision(ballPosition, &boardCollisionAngle, &boardCollisionType);
-    switch_enum = boardCollisionType & COLLISION_TYPE_MASK;
+    collisionType = boardCollisionType & COLLISION_TYPE_MASK;
     boardTriggerType = boardCollisionType >> 4;
 
-    switch (switch_enum)
+    switch (collisionType)
     {
         case 1:
         case 4:
         case 6:
-            gCurrentPinballGame->collisionSurfaceType = switch_enum - 1;
+            gCurrentPinballGame->collisionSurfaceType = collisionType - 1;
             gCurrentPinballGame->collisionResponseType = 1;
             *collisionAngle = boardCollisionAngle;
             if (*collisionAngle >= ANGLE_UP_RANGE_MIN && *collisionAngle <= ANGLE_UP_RANGE_MAX)
@@ -78,7 +78,7 @@ s16 CollisionCheck_Dusclops(struct Vector16* ballPosition, u16* collisionAngle) 
             break;
         case 2:
         case 3:
-            gCurrentPinballGame->collisionSurfaceType = switch_enum - 1;
+            gCurrentPinballGame->collisionSurfaceType = collisionType - 1;
             gCurrentPinballGame->collisionResponseType = 2;
             *collisionAngle = boardCollisionAngle & COLLISION_ANGLE_MASK;
             hasCollisionImpact = TRUE;
