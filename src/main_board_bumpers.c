@@ -152,11 +152,11 @@ void UpdateSapphireBumperLogic(void)
             gCurrentPinballGame->sapphireBumperLitCountdown--;
     }
 
-    if (gCurrentPinballGame->ballLaunchTimer)
+    if (gCurrentPinballGame->altBallCameraTimer)
     {
-        gCurrentPinballGame->ballLaunchTimer--;
-        if (gCurrentPinballGame->ballLaunchTimer == 0)
-            gCurrentPinballGame->secondaryBall = gCurrentPinballGame->ballStates;
+        gCurrentPinballGame->altBallCameraTimer--;
+        if (gCurrentPinballGame->altBallCameraTimer == 0)
+            gCurrentPinballGame->cameraBall = gCurrentPinballGame->ballStates;
     }
 
     if (gCurrentPinballGame->shopBumperHitTimer)

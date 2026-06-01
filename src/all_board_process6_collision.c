@@ -4,6 +4,7 @@
 #include "m4a.h"
 #include "constants/anglemath.h"
 #include "constants/board/main_board.h"
+#include "constants/collision.h"
 
 extern u8 gCatchTargetCollisionBitmap[];
 extern u16 gFlipperCollisionAngles[][2];
@@ -906,9 +907,9 @@ u16 LookupFlipperCollisionMap(struct Vector16 r0, s16 r1, u16 *r2, s16 r3) {
 
     flipper->collisionMapFrame = gFlipperCollisionFrameMapping[r1 + (flipper->collisionFrameIndex * 5)];
     
-    if (0xF & (&gBoardConfig.flipperCollisionData[flipper->collisionMapFrame * 0x2400])[ix])
+    if (COLLISION_TYPE_MASK & (&gBoardConfig.flipperCollisionData[flipper->collisionMapFrame * 0x2400])[ix])
     {
-        *r2 = 0xFFF0 & (&gBoardConfig.flipperCollisionData[flipper->collisionMapFrame * 0x2400])[ix];
+        *r2 = COLLISION_ANGLE_MASK & (&gBoardConfig.flipperCollisionData[flipper->collisionMapFrame * 0x2400])[ix];
         if (r3 == 1)
         {
             new_var = 0x8000;

@@ -245,7 +245,7 @@ void EndOfBallSequence(void)
             gCurrentPinballGame->bonusMultiplier = 0;
             InitBallState(0);
             SetBoardCollisionConfig(0);
-            gCurrentPinballGame->boardCollisionConfigChanged = 0;
+            gCurrentPinballGame->boardCollisionConfigChanged = FALSE;
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_BOSS_HOLE_ACTIVE)
             {
                 var0 = gCurrentPinballGame->numCompletedBonusStages % 5;
@@ -485,7 +485,7 @@ void BallSaverAnimation(void)
         InitBallState(0);
         gCurrentPinballGame->ballFrozenState = 0;
         SetBoardCollisionConfig(0);
-        gCurrentPinballGame->boardCollisionConfigChanged = 0;
+        gCurrentPinballGame->boardCollisionConfigChanged = FALSE;
         if (gMain.selectedField == FIELD_RUBY)
             gCurrentPinballGame->ball->oamPriority = 3;
         else

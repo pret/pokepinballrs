@@ -31,8 +31,8 @@ gKecleonBoardBG0Tilemap:: @ 0x08329994
 gKecleonBoardCompressedBGTiles:: @ 0x0832A194
 	.incbin "baserom.gba", 0x32A194, 0x3470
 
-gKecleonTongueCollisionMap:: @ 0x0832D604
+gKecleonUprightCollisionMap:: @ 0x0832D604
 	.incbin "baserom.gba", 0x32D604, 0x2C00
 
-gKecleonBodyCollisionMap:: @ 0x08330204
+gKecleonKnockedDownCollisionMap:: @ 0x08330204
 	.incbin "baserom.gba", 0x330204, 0x2C00

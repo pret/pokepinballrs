@@ -14,6 +14,7 @@ void UpdateRubyBoardEntityRendering(void)
         gCurrentPinballGame->rampPrizeRespawnTimer--;
         if (gCurrentPinballGame->rampPrizeRespawnTimer == 0)
         {
+            // Determine prize. Prize 1 = "1Up". (1% chance) All others is 'Ball Upgrade'.
             randNum = Random();
             gCurrentPinballGame->rampPrizeType = ((randNum + gMain.systemFrameCount) % 100) + 1;
         }
@@ -77,12 +78,12 @@ void UpdateRubyBoardEntityRendering(void)
     }
     BonusStage_HandleModeChangeFlags();
 
-    if (gCurrentPinballGame->ballLaunchTimer != 0)
+    if (gCurrentPinballGame->altBallCameraTimer != 0)
     {
-        gCurrentPinballGame->ballLaunchTimer--;
-        if (gCurrentPinballGame->ballLaunchTimer == 0)
+        gCurrentPinballGame->altBallCameraTimer--;
+        if (gCurrentPinballGame->altBallCameraTimer == 0)
         {
-            gCurrentPinballGame->secondaryBall = gCurrentPinballGame->ballStates;
+            gCurrentPinballGame->cameraBall = gCurrentPinballGame->ballStates;
         }
     }
 }

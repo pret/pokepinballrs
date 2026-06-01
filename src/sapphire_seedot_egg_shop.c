@@ -572,7 +572,7 @@ void UpdateSapphireEggMachine(void)
     switch (gCurrentPinballGame->sapphireHatchMachineState)
     {
     case 0:
-        if (gCurrentPinballGame->hatchMachineNewHit)
+        if (gCurrentPinballGame->hatchMachineProgressTickSignaled)
         {
             if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE)
             {
@@ -612,7 +612,7 @@ void UpdateSapphireEggMachine(void)
 
             index = gCurrentPinballGame->sapphireHatchMachineFrameIx;
             DmaCopy16(3, &gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
-            gCurrentPinballGame->hatchMachineNewHit = 0;
+            gCurrentPinballGame->hatchMachineProgressTickSignaled = FALSE;
         }
         break;
     case 1:
@@ -671,7 +671,7 @@ void UpdateSapphireEggMachine(void)
         }
         break;
     case 4:
-        if (gCurrentPinballGame->sapphirerubyEggDeliveryState && gCurrentPinballGame->hatchMachineNewHit)
+        if (gCurrentPinballGame->sapphirerubyEggDeliveryState && gCurrentPinballGame->hatchMachineProgressTickSignaled)
         {
             gMain.modeChangeFlags |= MODE_CHANGE_BANNER;
             gCurrentPinballGame->bannerDelayTimer = 0;
@@ -691,7 +691,7 @@ void UpdateSapphireEggMachine(void)
             gCurrentPinballGame->portraitOffsetY = 960;
         }
 
-        gCurrentPinballGame->hatchMachineNewHit = 0;
+        gCurrentPinballGame->hatchMachineProgressTickSignaled = FALSE;
         break;
     case 5:
         if (gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][1] > gCurrentPinballGame->holeAnimFrameCounter)

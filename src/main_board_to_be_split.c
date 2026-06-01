@@ -50,8 +50,8 @@ void ResetCatchState(s16 resetHoleIndicators)
 {
     if (resetHoleIndicators)
     {
-        gCurrentPinballGame->allHolesLit = 0;
-        gCurrentPinballGame->holeIndicators[0] = 0;
+        gCurrentPinballGame->allHolesLit = FALSE;
+        gCurrentPinballGame->holeIndicators[0] = FALSE;
         gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
@@ -112,7 +112,7 @@ void UpdateCatchTrigger(void)
             gCurrentPinballGame->boardSubState++;
         break;
     case BONUS_HOLE_SUBSTATE_START_ROULETTE:
-        gCurrentPinballGame->allHolesLit = 0;
+        gCurrentPinballGame->allHolesLit = FALSE;
         gCurrentPinballGame->holeIndicators[0] = 0;
         gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];

@@ -163,7 +163,7 @@ void DrawRubyNuzleafPlatformSprite(void)
             group->baseY = 180;
 
         group->baseX = 120 - gCurrentPinballGame->cameraXOffset;
-        if (gCurrentPinballGame->rampPrizeType == 1)
+        if (gCurrentPinballGame->rampPrizeType == 1) //1Up
             index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 8 + 4;
         else
             index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 8;

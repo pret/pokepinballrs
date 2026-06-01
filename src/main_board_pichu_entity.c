@@ -186,13 +186,13 @@ void UpdateKickbackLogic(void)
             gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
             gCurrentPinballGame->holeIndicators[(gCurrentPinballGame->outLaneSide - 1) * 3] = 1;
 
-            if (gCurrentPinballGame->allHolesLit == 0 &&
+            if (!gCurrentPinballGame->allHolesLit &&
                 (gCurrentPinballGame->holeIndicators[0] &
                  gCurrentPinballGame->holeIndicators[1] &
                  gCurrentPinballGame->holeIndicators[2] &
                  gCurrentPinballGame->holeIndicators[3]))
             {
-                gCurrentPinballGame->allHolesLit = 1;
+                gCurrentPinballGame->allHolesLit = TRUE;
                 gCurrentPinballGame->allHolesLitBlinkTimer = 126;
                 gCurrentPinballGame->scoreAddedInFrame = 4000;
             }

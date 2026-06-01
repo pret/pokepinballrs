@@ -239,7 +239,7 @@ void BonusBoardProcess_7B_12BF8()
     struct OamDataSimple *oam;
     struct BallState *primaryBall;
 
-    gCurrentPinballGame->secondaryBall = gCurrentPinballGame->ballStates;
+    gCurrentPinballGame->cameraBall = gCurrentPinballGame->ballStates;
     gCurrentPinballGame->ball = gCurrentPinballGame->ballStates;
 
     primaryBall = &gCurrentPinballGame->ballStates[0];

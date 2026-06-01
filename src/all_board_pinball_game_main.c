@@ -309,7 +309,7 @@ void InitPinballGameState(void)
     gCurrentPinballGame->scoreAddStepSize = 40000;
     gCurrentPinballGame->fadeSubState = 0;
     gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
-    gCurrentPinballGame->secondaryBall = &gCurrentPinballGame->ballStates[0];
+    gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[0];
     gCurrentPinballGame->activeBallIndex = 0;
 }
 

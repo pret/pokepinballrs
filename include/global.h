@@ -479,12 +479,12 @@ struct PinballGame
     /*0x33C*/ u16 seedotYOffset[3];
     /*0x342*/ s8 hatchMachineActive; // Turns off while launching, Reenabled when ball touches ramp
     /*0x343*/ s8 sapphirerubyEggDeliveryState;
-    /*0x344*/ s8 hatchMachineNewHit;
+    /*0x344*/ s8 hatchMachineProgressTickSignaled;
     /*0x345*/ s8 sapphireHatchMachineFrameIx;
     /*0x346*/ s8 sapphireHatchMachineState; // 0-6
     /*0x347*/ u8 filler347[0x1];
     /*0x348*/ u16 holeAnimFrameCounter;
-    /*0x34A*/ s8 targetBumperHitCounter;
+    /*0x34A*/ s8 hatchMachineTriggerCounter;
     /*0x34B*/ s8 targetBumperAnimTimers[10];
     /*0x355*/ s8 splashEffectFrameIndex[4];
     /*0x359*/ s8 splashEffectPositionIndex[4];
@@ -876,10 +876,10 @@ struct PinballGame
     /*0x1322*/s16 savedModeChangeDelayTimer;
     /*0x1324*/s16 savedShopPanelActive;
     /*0x1326*/s16 savedShopPanelSlideOffset;
-    /*0x1328*/u16 ballLaunchTimer; // Countdown to activate secondaryBall (multiball)
+    /*0x1328*/u16 altBallCameraTimer; // Countdown to return to following ball position
     /*0x132A*/u8 filler132A[0x2];
     /*0x132C*/struct BallState *ball;
-    /*0x1330*/struct BallState *secondaryBall;
+    /*0x1330*/struct BallState *cameraBall;
     /*0x1334*/struct BallState ballStates[2];
     /*0x13BC*/struct FlipperState flipper[2];
     /*0x13D4*/u16 nameRevealDelaysRow2[10];
@@ -961,8 +961,8 @@ extern struct PinballGame gIdleBoardGameState3;
 extern struct PinballGame gIdleBoardGameState1;
 extern s32 gBonusStageObjPal[64];
 extern s32 gDusclopsAnimPalettes[0x3E0];
-extern u16 gKecleonTongueCollisionMap[0x1600];
-extern u16 gKecleonBodyCollisionMap[0x1600];
+extern u16 gKecleonUprightCollisionMap[0x1600];
+extern u16 gKecleonKnockedDownCollisionMap[0x1600];
 extern u16 gKyogreForm1CollisionMap[];
 extern u16 gKyogreForm2CollisionMap[];
 extern u16 gKyogreForm3CollisionMap[];

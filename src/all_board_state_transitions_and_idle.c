@@ -82,7 +82,7 @@ void InitFieldIdle(void)
 
 void UpdateFieldIdle(void)
 {
-    if (gCurrentPinballGame->allHolesLit != 0)
+    if (gCurrentPinballGame->allHolesLit)
     {
         if (gCurrentPinballGame->allHolesLitDelayTimer != 0)
         {
