@@ -15,12 +15,12 @@ extern const u8 gKyogreWhirlpoolSpriteFrames[][0x3C0];
 extern const u8 gKyogreBodySprites_First15[][0x580];
 extern const u8 gKyogreBodySprites_After15[][0x4C0];
 extern const u8 gKyogreWhirlpoolMinionSprites[][0x200];
-extern struct SongHeader se_unk_10a;
-extern struct SongHeader se_unk_10b;
-extern struct SongHeader se_unk_10c;
-extern struct SongHeader se_unk_10d;
-extern struct SongHeader se_unk_10e;
-extern struct SongHeader se_unk_10f;
+extern struct SongHeader se_kyogre_hit;
+extern struct SongHeader se_kyogre_breach_surface;
+extern struct SongHeader se_kyogre_dive;
+extern struct SongHeader se_kyogre_spawn_whirlpool;
+extern struct SongHeader se_kyogre_freeze_ring;
+extern struct SongHeader se_kyogre_departs;
 extern const u8 *gKyogreFadeInPaletteProgression[];
 extern const u16 gKyogreAnimFramesetTable[][3];
 extern const s16 gKyogreRisingPaletteCycleIndices[];
@@ -263,7 +263,7 @@ void UpdateKyogreEntityLogic(void)
             gCurrentPinballGame->legendaryFlashState = 1;
             if (gCurrentPinballGame->bossHitFlashTimer == 4)
             {
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_10a);
+                MPlayStart(&gMPlayInfo_SE1, &se_kyogre_hit);
                 PlayRumble(7);
                 gCurrentPinballGame->scoreAddedInFrame = 500000;
                 gCurrentPinballGame->bonusModeHitCount++;
@@ -314,7 +314,7 @@ void UpdateKyogreEntityLogic(void)
 
             if (gCurrentPinballGame->bossFramesetIndex == 33)
             {
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_10b);
+                MPlayStart(&gMPlayInfo_SE1, &se_kyogre_breach_surface);
                 gCurrentPinballGame->boardEntityCollisionMode = KYOGRE_COLLISION_MODE_TOP_POSITION;
             }
         }
@@ -342,7 +342,7 @@ void UpdateKyogreEntityLogic(void)
             if (gCurrentPinballGame->bossFramesetIndex == 11)
             {
                 gCurrentPinballGame->boardEntityCollisionMode = KYOGRE_COLLISION_MODE_TOP_POSITION;
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_10b);
+                MPlayStart(&gMPlayInfo_SE1, &se_kyogre_breach_surface);
             }
         }
         break;
@@ -365,7 +365,7 @@ void UpdateKyogreEntityLogic(void)
             if (gCurrentPinballGame->bossFramesetIndex == 5)
             {
                 gCurrentPinballGame->boardEntityCollisionMode = KYOGRE_COLLISION_MODE_NONE;
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_10c);
+                MPlayStart(&gMPlayInfo_SE1, &se_kyogre_dive);
             }
         }
         break;
@@ -446,7 +446,7 @@ void UpdateKyogreEntityLogic(void)
             }
 
             if (gCurrentPinballGame->bossFramesetIndex == 50 || gCurrentPinballGame->bossFramesetIndex == 56 || gCurrentPinballGame->bossFramesetIndex == 62)
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_10d);
+                MPlayStart(&gMPlayInfo_SE1, &se_kyogre_spawn_whirlpool);
         }
         break;
     case KYOGRE_ENTITY_STATE_SHOCKWAVE:
@@ -478,7 +478,7 @@ void UpdateKyogreEntityLogic(void)
             {
                 gMain.spriteGroups[24].active = TRUE;
                 gCurrentPinballGame->shockwaveAnimTimer = 0;
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_10e);
+                MPlayStart(&gMPlayInfo_SE1, &se_kyogre_freeze_ring);
             }
         }
 
@@ -542,7 +542,7 @@ void UpdateKyogreEntityLogic(void)
             if (gCurrentPinballGame->bossFramesetIndex == 97)
             {
                 gCurrentPinballGame->boardEntityCollisionMode = KYOGRE_COLLISION_MODE_NONE;
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_10f);
+                MPlayStart(&gMPlayInfo_SE1, &se_kyogre_departs);
             }
         }
         break;
@@ -609,7 +609,7 @@ void UpdateKyogreEntityLogic(void)
             gCurrentPinballGame->bossFramesetIndex = 67;
             gCurrentPinballGame->bossEntityState = KYOGRE_ENTITY_STATE_LEAP;
             gCurrentPinballGame->boardEntityCollisionMode = KYOGRE_COLLISION_MODE_EMERGING_FROM_WATER;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_10b);
+            MPlayStart(&gMPlayInfo_SE1, &se_kyogre_breach_surface);
             PlayRumble(8);
         }
         break;
@@ -648,7 +648,7 @@ void UpdateKyogreEntityLogic(void)
 
             if (gCurrentPinballGame->bossFramesetIndex == 72)
             {
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_10c);
+                MPlayStart(&gMPlayInfo_SE1, &se_kyogre_dive);
                 PlayRumble(8);
             }
         }
@@ -895,7 +895,7 @@ void UpdateKyogreFieldEntities(void)
                 if (gCurrentPinballGame->freezeTrapPauseTimer < 0)
                     gCurrentPinballGame->freezeTrapPauseTimer = 0;
 
-                m4aSongNumStart(SE_UNKNOWN_0x111);
+                m4aSongNumStart(SE_KYOGRE_FREEZE_CRACK);
             }
 
             gCurrentPinballGame->freezeTrapAnimLoopStart = 5;
@@ -914,7 +914,7 @@ void UpdateKyogreFieldEntities(void)
                 if (gCurrentPinballGame->freezeTrapPauseTimer < 0)
                     gCurrentPinballGame->freezeTrapPauseTimer = 0;
 
-                m4aSongNumStart(SE_UNKNOWN_0x111);
+                m4aSongNumStart(SE_KYOGRE_FREEZE_CRACK);
             }
 
             gCurrentPinballGame->freezeTrapAnimLoopStart = 9;
@@ -933,7 +933,7 @@ void UpdateKyogreFieldEntities(void)
                 if (gCurrentPinballGame->freezeTrapPauseTimer < 0)
                     gCurrentPinballGame->freezeTrapPauseTimer = 0;
 
-                m4aSongNumStart(SE_UNKNOWN_0x111);
+                m4aSongNumStart(SE_KYOGRE_FREEZE_CRACK);
             }
 
             gCurrentPinballGame->freezeTrapAnimLoopStart = 13;
@@ -949,7 +949,7 @@ void UpdateKyogreFieldEntities(void)
         {
             gCurrentPinballGame->freezeTrapPauseTimer--;
             if (gCurrentPinballGame->freezeTrapPauseTimer == 0)
-                m4aSongNumStart(SE_UNKNOWN_0x111);
+                m4aSongNumStart(SE_KYOGRE_FREEZE_CRACK);
         }
         else
         {
@@ -978,12 +978,12 @@ void UpdateKyogreFieldEntities(void)
                 }
 
                 if (gCurrentPinballGame->freezeTrapAnimFrame == 1)
-                    m4aSongNumStart(SE_UNKNOWN_0x110);
+                    m4aSongNumStart(SE_KYOGRE_FREEZE_HITS_BALL);
 
                 if (gCurrentPinballGame->freezeTrapAnimFrame == 15)
                 {
                     DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
-                    m4aSongNumStart(SE_UNKNOWN_0x112);
+                    m4aSongNumStart(SE_KYOGRE_FREEZE_ESCAPED);
                 }
             }
         }
@@ -1068,7 +1068,7 @@ void UpdateKyogreFieldEntities(void)
                         gCurrentPinballGame->bonusModeHitCount < gCurrentPinballGame->legendaryHitsRequired &&
                         gCurrentPinballGame->bossHitFlashTimer == 0 && squaredMagnitude < 400)
                     {
-                        m4aSongNumStart(SE_UNKNOWN_0x113);
+                        m4aSongNumStart(SE_KYOGRE_WHIRLPOOL_GRABS_BALL);
                         PlayRumble(12);
                         gCurrentPinballGame->ballFrozenState = 1;
                         gCurrentPinballGame->vortexAnimTimer[i] = 0;

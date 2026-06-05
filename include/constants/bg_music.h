@@ -192,7 +192,7 @@
 #define SE_UNKNOWN_0xEE             0xEE // No Sound
 #define SE_UNKNOWN_0xEF             0xEF // No Sound
 #define SE_UNKNOWN_0xF0             0xF0 // No Sound
-#define SE_DUSKULL_APPEAR             0xF1 // SE109 Dusclops stage start, and Duskull hit (same as 119)
+#define SE_DUSKULL_APPEAR           0xF1 // SE109 Dusclops stage start, and Duskull hit (same as 119)
 #define SE_DUSKULL_DEATH_CRY        0xF2 // SE110 Duskull death cry
 #define SE_DUSCLOPS_DEPART_INCOMPLETE  0xF3 // SE111 Duskull leaves, unhit
 #define SE_DUSCLOPS_MOVE            0xF4 // SE112 Dusclops entry, footsteps
@@ -200,46 +200,46 @@
 #define SE_DUSCLOPS_HIT             0xF6 // SE114 Dusclops Hit (same as 31, 129, 139, 151)
 #define SE_DUSCLOPS_BALL_ABSORB     0xF7 // SE115 Dusclops absorbs ball
 #define SE_DUSCLOPS_BALL_LAUNCH     0xF8 // SE116 Dusclops launch absorbed ball
-#define SE_UNKNOWN_0xF9             0xF9 // SE117 Dusclops Captured
+#define SE_BONUS_BOARD_BALL_SPAWN   0xF9 // SE117
 #define SE_UNKNOWN_0xFA             0xFA // *Muted Triangle tripple tap*
 #define SE_UNKNOWN_0xFB             0xFB // No Sound
-#define SE_UNKNOWN_0xFC             0xFC // *SE118 Kecleon looks side (same as SE84)
-#define SE_UNKNOWN_0xFD             0xFD // *SE119 Kecleon Vanish (same as 109)
-#define SE_UNKNOWN_0xFE             0xFE // *SE120 Kecleon found exclamation
-#define SE_UNKNOWN_0xFF             0xFF // *SE121 Kecleon walk
-#define SE_UNKNOWN_0x100            0x100 // *SE122 Kecleon trip
-#define SE_UNKNOWN_0x101            0x101 // *SE123 Kecleon hit
-#define SE_UNKNOWN_0x102            0x102 // *SE124 Kecleon hits ground; Duplicate of 97
-#define SE_UNKNOWN_0x103            0x103 // *SE125 Kecleon surrenders
+#define SE_KECLEON_SIDE_LOOK        0xFC // *SE118 Kecleon looks side (same as SE84) // also with collecting 1 up
+#define SE_KECLEON_VANISH           0xFD // *SE119 Kecleon Vanish (same as 109)
+#define SE_KECLEON_STARTLED         0xFE // *SE120 Kecleon found exclamation
+#define SE_KECLEON_RUNNING          0xFF // *SE121 Kecleon walk
+#define SE_KECLEON_KNOCKED_OVER     0x100 // *SE122 Kecleon trip
+#define SE_KECLEON_HIT_DAMAGED      0x101 // *SE123 Kecleon hit
+#define SE_KECLEON_HITS_GROUND_DEFEATED 0x102 // *SE124 Kecleon hits ground; Duplicate of 97
+#define SE_KECLEON_SEEING_STARS     0x103 // *SE125 Kecleon surrenders
 #define SE_KECLEON_TREE_HIT         0x104 // SE126 Kecleon tree hit
 #define SE_KECLEON_SCOPE_FALL       0x105 // SE127 Package falls from tree; Duplicate of 105
 #define SE_KECLEON_SCOPE_ACTIVATED  0x106 // SE128 Scope initiates
 #define SE_UNKNOWN_0x107            0x107 // No Sound
 #define SE_UNKNOWN_0x108            0x108 // No Sound
 #define SE_UNKNOWN_0x109            0x109 // No Sound
-#define SE_UNKNOWN_0x10A            0x10A // *SE129 Kyogre Hit
-#define SE_UNKNOWN_0x10B            0x10B // *SE130 Kyogre Emerges / 'jumps'
-#define SE_UNKNOWN_0x10C            0x10C // *SE131 Kyogre Dives / jump landing
-#define SE_UNKNOWN_0x10D            0x10D // *SE132 Kyogre Create Whirlpool
-#define SE_UNKNOWN_0x10E            0x10E // *SE133 Kyogre Ice Breath ring
-#define SE_UNKNOWN_0x10F            0x10F // *SE134 *Whirlpool launches ball skyward*
-#define SE_UNKNOWN_0x110            0x110 // SE135 Kyrogre freezes ball
-#define SE_UNKNOWN_0x111            0x111 // SE136 Freeze escape hit
-#define SE_UNKNOWN_0x112            0x112 // SE137 *Flash Frozen*
-#define SE_UNKNOWN_0x113            0x113 // SE138 Whirlpool catches ball
+#define SE_KYOGRE_HIT               0x10A // *SE129 Kyogre Hit
+#define SE_KYOGRE_BREACH_SURFACE    0x10B // *SE130 Kyogre Emerges / 'jumps'
+#define SE_KYOGRE_DIVE              0x10C // *SE131 Kyogre Dives / jump landing
+#define SE_KYOGRE_SPAWN_WHIRLPOOL   0x10D // *SE132 Kyogre Create Whirlpool
+#define SE_KYOGRE_FREEZE_RING       0x10E // *SE133 Kyogre Ice Breath ring
+#define SE_KYOGRE_DEPARTS           0x10F // *SE134
+#define SE_KYOGRE_FREEZE_HITS_BALL  0x110 // SE135 Kyrogre freezes ball
+#define SE_KYOGRE_FREEZE_CRACK      0x111 // SE136 Freeze escape hit
+#define SE_KYOGRE_FREEZE_ESCAPED    0x112 // SE137 
+#define SE_KYOGRE_WHIRLPOOL_GRABS_BALL 0x113 // SE138 Whirlpool catches ball
 #define SE_UNKNOWN_0x114            0x114 // No Sound
 #define SE_UNKNOWN_0x115            0x115 // No Sound
 #define SE_UNKNOWN_0x116            0x116 // No Sound
 #define SE_UNKNOWN_0x117            0x117 // No Sound
-#define SE_UNKNOWN_0x118            0x118 // *SE139 Groudon Hit (Same as 31, 114, 129, 151)
+#define SE_GROUDON_HIT              0x118 // *SE139 Groudon Hit (Same as 31, 114, 129, 151)
 #define SE_GROUDON_STEP             0x119 // SE140 Groudon Step
-#define SE_UNKNOWN_0x11A            0x11A // SE141 *medium power hit*
-#define SE_UNKNOWN_0x11B            0x11B // *SE142 Groudon Lands
-#define SE_UNKNOWN_0x11C            0x11C // *SE143 *??Lava Splash?*
-#define SE_UNKNOWN_0x11D            0x11D // *SE144 Groudon Fire Ring
-#define SE_UNKNOWN_0x11E            0x11E // SE145 *Bark?*
-#define SE_UNKNOWN_0x11F            0x11F // *SE146 *Sandstorm?*
-#define SE_UNKNOWN_0x120            0x120 // SE147 *Door Slam*
+#define SE_GROUDON_INTRO_LEAP       0x11A // SE141 (plays after 3 steps, last sound before he lands in the arena)
+#define SE_GROUDON_LANDS            0x11B // *SE142 Groudon Lands
+#define SE_GROUDON_SPITS_FIRE       0x11C // *SE143 *??Lava Splash?*
+#define SE_GROUDON_FIRE_RING        0x11D // *SE144 Groudon Fire Ring
+#define SE_GROUDON_FIRE_GRAB_RESIST 0x11E // SE145 (Escape hit from the fire grab... doesn't *sound*/behave like a hit?)
+#define SE_GROUDON_FIRE_GRAB        0x11F // *SE146 Plays with SE 147 when fireball hits pinball - burn sound
+#define SE_GROUDON_FIREBALL_CONNECTS 0x120 // SE147 Plays with SE 146 when fireball hits pinball - hit sound
 #define SE_GROUDON_BOULDER_LAND     0x121 // SE148 Groudon Boulders Land/Hit
 #define SE_GROUDON_DUSTORM_LIFT     0x122 // SE149 *Ground duststorm lift*
 #define SE_GROUDON_BALL_HIT_FIRE    0x123 // SE150 Ball hit Groudon Fire

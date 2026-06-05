@@ -329,7 +329,7 @@ void BonusBoardProcess_7B_12BF8()
                 spriteGroup->active = TRUE;
 
             if (gCurrentPinballGame->ballRespawnTimer == 154)
-                m4aSongNumStart(SE_UNKNOWN_0xF9);
+                m4aSongNumStart(SE_BONUS_BOARD_BALL_SPAWN);
 
             if (gCurrentPinballGame->ballRespawnTimer > 149)
             {
@@ -385,7 +385,7 @@ void BonusBoardProcess_7B_12BF8()
                 gCurrentPinballGame->ballRespawnTimer++;
 
             if (gCurrentPinballGame->ballRespawnTimer == 23)
-                m4aSongNumStart(SE_UNKNOWN_0xF9);
+                m4aSongNumStart(SE_BONUS_BOARD_BALL_SPAWN);
 
             if (gCurrentPinballGame->ballRespawnTimer == 20)
                 primaryBall->ballHidden = 1;

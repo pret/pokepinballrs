@@ -1,25 +1,25 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_10a_grp, gUnknown_0853174C
-	.equ	se_unk_10a_pri, 5
-	.equ	se_unk_10a_rev, reverb_set+50
-	.equ	se_unk_10a_mvl, 127
-	.equ	se_unk_10a_key, 0
-	.equ	se_unk_10a_tbs, 1
-	.equ	se_unk_10a_exg, 0
-	.equ	se_unk_10a_cmp, 1
+	.equ	se_kyogre_hit_grp, gUnknown_0853174C
+	.equ	se_kyogre_hit_pri, 5
+	.equ	se_kyogre_hit_rev, reverb_set+50
+	.equ	se_kyogre_hit_mvl, 127
+	.equ	se_kyogre_hit_key, 0
+	.equ	se_kyogre_hit_tbs, 1
+	.equ	se_kyogre_hit_exg, 0
+	.equ	se_kyogre_hit_cmp, 1
 
 	.section .rodata
-	.global	se_unk_10a
+	.global	se_kyogre_hit
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_10a_0:  @ 0x086A1E38
-	.byte	KEYSH , se_unk_10a_key+0
-	.byte	TEMPO , 90*se_unk_10a_tbs/2
+se_kyogre_hit_0:  @ 0x086A1E38
+	.byte	KEYSH , se_kyogre_hit_key+0
+	.byte	TEMPO , 90*se_kyogre_hit_tbs/2
 	.byte		VOICE , 125
-	.byte		VOL   , 110*se_unk_10a_mvl/mxv
+	.byte		VOL   , 110*se_kyogre_hit_mvl/mxv
 	.byte		BEND  , c_v+0
 	.byte		N03   , As2 , v100
 	.byte	W03
@@ -43,10 +43,10 @@ se_unk_10a_0:  @ 0x086A1E38
 
 @*********************** Track 02 ***********************@
 
-se_unk_10a_1:  @ 0x086A1E5A
-	.byte	KEYSH , se_unk_10a_key+0
+se_kyogre_hit_1:  @ 0x086A1E5A
+	.byte	KEYSH , se_kyogre_hit_key+0
 	.byte		VOICE , 0
-	.byte		VOL   , 110*se_unk_10a_mvl/mxv
+	.byte		VOL   , 110*se_kyogre_hit_mvl/mxv
 	.byte		N03   , Cn3 , v127
 	.byte	W03
 	.byte		N18
@@ -69,14 +69,14 @@ se_unk_10a_1:  @ 0x086A1E5A
 
 	.align	2
 
-se_unk_10a:  @ 0x086A1E74
+se_kyogre_hit:  @ 0x086A1E74
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_10a_pri	@ Priority
-	.byte	se_unk_10a_rev	@ Reverb
+	.byte	se_kyogre_hit_pri	@ Priority
+	.byte	se_kyogre_hit_rev	@ Reverb
 
-	.word	se_unk_10a_grp
+	.word	se_kyogre_hit_grp
 
-	.word	se_unk_10a_0
-	.word	se_unk_10a_1
+	.word	se_kyogre_hit_0
+	.word	se_kyogre_hit_1
 @ 0x086A1E84

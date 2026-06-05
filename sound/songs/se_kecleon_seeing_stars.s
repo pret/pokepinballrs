@@ -1,27 +1,27 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_103_grp, gUnknown_08531D4C
-	.equ	se_unk_103_pri, 5
-	.equ	se_unk_103_rev, reverb_set+50
-	.equ	se_unk_103_mvl, 127
-	.equ	se_unk_103_key, 0
-	.equ	se_unk_103_tbs, 1
-	.equ	se_unk_103_exg, 0
-	.equ	se_unk_103_cmp, 1
+	.equ	se_kecleon_seeing_stars_grp, gUnknown_08531D4C
+	.equ	se_kecleon_seeing_stars_pri, 5
+	.equ	se_kecleon_seeing_stars_rev, reverb_set+50
+	.equ	se_kecleon_seeing_stars_mvl, 127
+	.equ	se_kecleon_seeing_stars_key, 0
+	.equ	se_kecleon_seeing_stars_tbs, 1
+	.equ	se_kecleon_seeing_stars_exg, 0
+	.equ	se_kecleon_seeing_stars_cmp, 1
 
 	.section .rodata
-	.global	se_unk_103
+	.global	se_kecleon_seeing_stars
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_103_0:  @ 0x086A1CDC
-	.byte	KEYSH , se_unk_103_key+0
-	.byte	TEMPO , 150*se_unk_103_tbs/2
+se_kecleon_seeing_stars_0:  @ 0x086A1CDC
+	.byte	KEYSH , se_kecleon_seeing_stars_key+0
+	.byte	TEMPO , 150*se_kecleon_seeing_stars_tbs/2
 	.byte		VOICE , 61
 	.byte		BENDR , 44
 	.byte		PAN   , c_v+0
-	.byte		VOL   , 110*se_unk_103_mvl/mxv
+	.byte		VOL   , 110*se_kecleon_seeing_stars_mvl/mxv
 	.byte		MOD   , 30
 	.byte		BEND  , c_v+2
 	.byte		N54   , Dn4 , v080
@@ -69,11 +69,11 @@ se_unk_103_0:  @ 0x086A1CDC
 
 @*********************** Track 02 ***********************@
 
-se_unk_103_1:  @ 0x086A1D1F
-	.byte	KEYSH , se_unk_103_key+0
+se_kecleon_seeing_stars_1:  @ 0x086A1D1F
+	.byte	KEYSH , se_kecleon_seeing_stars_key+0
 	.byte		VOICE , 62
 	.byte		BENDR , 44
-	.byte		VOL   , 110*se_unk_103_mvl/mxv
+	.byte		VOL   , 110*se_kecleon_seeing_stars_mvl/mxv
 	.byte		MOD   , 30
 	.byte		PAN   , c_v+1
 	.byte		BEND  , c_v+1
@@ -114,14 +114,14 @@ se_unk_103_1:  @ 0x086A1D1F
 
 	.align	2
 
-se_unk_103:  @ 0x086A1D64
+se_kecleon_seeing_stars:  @ 0x086A1D64
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_103_pri	@ Priority
-	.byte	se_unk_103_rev	@ Reverb
+	.byte	se_kecleon_seeing_stars_pri	@ Priority
+	.byte	se_kecleon_seeing_stars_rev	@ Reverb
 
-	.word	se_unk_103_grp
+	.word	se_kecleon_seeing_stars_grp
 
-	.word	se_unk_103_0
-	.word	se_unk_103_1
+	.word	se_kecleon_seeing_stars_0
+	.word	se_kecleon_seeing_stars_1
 @ 0x086A1D74

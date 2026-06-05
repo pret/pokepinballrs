@@ -1,27 +1,27 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_120_grp, gUnknown_08531D4C
-	.equ	se_unk_120_pri, 5
-	.equ	se_unk_120_rev, reverb_set+50
-	.equ	se_unk_120_mvl, 127
-	.equ	se_unk_120_key, 0
-	.equ	se_unk_120_tbs, 1
-	.equ	se_unk_120_exg, 0
-	.equ	se_unk_120_cmp, 1
+	.equ	se_groudon_fireball_connects_grp, gUnknown_08531D4C
+	.equ	se_groudon_fireball_connects_pri, 5
+	.equ	se_groudon_fireball_connects_rev, reverb_set+50
+	.equ	se_groudon_fireball_connects_mvl, 127
+	.equ	se_groudon_fireball_connects_key, 0
+	.equ	se_groudon_fireball_connects_tbs, 1
+	.equ	se_groudon_fireball_connects_exg, 0
+	.equ	se_groudon_fireball_connects_cmp, 1
 
 	.section .rodata
-	.global	se_unk_120
+	.global	se_groudon_fireball_connects
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_120_0:  @ 0x086A26B0
-	.byte	KEYSH , se_unk_120_key+0
-	.byte	TEMPO , 150*se_unk_120_tbs/2
+se_groudon_fireball_connects_0:  @ 0x086A26B0
+	.byte	KEYSH , se_groudon_fireball_connects_key+0
+	.byte	TEMPO , 150*se_groudon_fireball_connects_tbs/2
 	.byte		VOICE , 26
 	.byte		BENDR , 12
 	.byte		PAN   , c_v+0
-	.byte		VOL   , 110*se_unk_120_mvl/mxv
+	.byte		VOL   , 110*se_groudon_fireball_connects_mvl/mxv
 	.byte		BEND  , c_v+0
 	.byte		N03   , Gn2 , v127
 	.byte	W03
@@ -44,11 +44,11 @@ se_unk_120_0:  @ 0x086A26B0
 
 @*********************** Track 02 ***********************@
 
-se_unk_120_1:  @ 0x086A26E1
-	.byte	KEYSH , se_unk_120_key+0
+se_groudon_fireball_connects_1:  @ 0x086A26E1
+	.byte	KEYSH , se_groudon_fireball_connects_key+0
 	.byte		VOICE , 5
 	.byte		PAN   , c_v+0
-	.byte		VOL   , 110*se_unk_120_mvl/mxv
+	.byte		VOL   , 110*se_groudon_fireball_connects_mvl/mxv
 	.byte		N02   , Fn2 , v072
 	.byte	W02
 	.byte		N01
@@ -71,14 +71,14 @@ se_unk_120_1:  @ 0x086A26E1
 
 	.align	2
 
-se_unk_120:  @ 0x086A2708
+se_groudon_fireball_connects:  @ 0x086A2708
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_120_pri	@ Priority
-	.byte	se_unk_120_rev	@ Reverb
+	.byte	se_groudon_fireball_connects_pri	@ Priority
+	.byte	se_groudon_fireball_connects_rev	@ Reverb
 
-	.word	se_unk_120_grp
+	.word	se_groudon_fireball_connects_grp
 
-	.word	se_unk_120_0
-	.word	se_unk_120_1
+	.word	se_groudon_fireball_connects_0
+	.word	se_groudon_fireball_connects_1
 @ 0x086A2718

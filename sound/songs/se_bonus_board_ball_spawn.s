@@ -1,25 +1,25 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_f9_grp, gUnknown_08531D4C
-	.equ	se_unk_f9_pri, 5
-	.equ	se_unk_f9_rev, reverb_set+50
-	.equ	se_unk_f9_mvl, 127
-	.equ	se_unk_f9_key, 0
-	.equ	se_unk_f9_tbs, 1
-	.equ	se_unk_f9_exg, 0
-	.equ	se_unk_f9_cmp, 1
+	.equ	se_bonus_board_ball_spawn_grp, gUnknown_08531D4C
+	.equ	se_bonus_board_ball_spawn_pri, 5
+	.equ	se_bonus_board_ball_spawn_rev, reverb_set+50
+	.equ	se_bonus_board_ball_spawn_mvl, 127
+	.equ	se_bonus_board_ball_spawn_key, 0
+	.equ	se_bonus_board_ball_spawn_tbs, 1
+	.equ	se_bonus_board_ball_spawn_exg, 0
+	.equ	se_bonus_board_ball_spawn_cmp, 1
 
 	.section .rodata
-	.global	se_unk_f9
+	.global	se_bonus_board_ball_spawn
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_f9_0:  @ 0x086A1940
-	.byte	KEYSH , se_unk_f9_key+0
-	.byte	TEMPO , 150*se_unk_f9_tbs/2
+se_bonus_board_ball_spawn_0:  @ 0x086A1940
+	.byte	KEYSH , se_bonus_board_ball_spawn_key+0
+	.byte	TEMPO , 150*se_bonus_board_ball_spawn_tbs/2
 	.byte		VOICE , 46
-	.byte		VOL   , 110*se_unk_f9_mvl/mxv
+	.byte		VOL   , 110*se_bonus_board_ball_spawn_mvl/mxv
 	.byte		BENDR , 2
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v+15
@@ -81,11 +81,11 @@ se_unk_f9_0:  @ 0x086A1940
 
 @*********************** Track 02 ***********************@
 
-se_unk_f9_1:  @ 0x086A199F
-	.byte	KEYSH , se_unk_f9_key+0
+se_bonus_board_ball_spawn_1:  @ 0x086A199F
+	.byte	KEYSH , se_bonus_board_ball_spawn_key+0
 	.byte		VOICE , 53
 	.byte		BENDR , 2
-	.byte		VOL   , 43*se_unk_f9_mvl/mxv
+	.byte		VOL   , 43*se_bonus_board_ball_spawn_mvl/mxv
 	.byte		BEND  , c_v+15
 	.byte		N02   , An6 , v112
 	.byte	W02
@@ -142,14 +142,14 @@ se_unk_f9_1:  @ 0x086A199F
 
 	.align	2
 
-se_unk_f9:  @ 0x086A19EC
+se_bonus_board_ball_spawn:  @ 0x086A19EC
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_f9_pri	@ Priority
-	.byte	se_unk_f9_rev	@ Reverb
+	.byte	se_bonus_board_ball_spawn_pri	@ Priority
+	.byte	se_bonus_board_ball_spawn_rev	@ Reverb
 
-	.word	se_unk_f9_grp
+	.word	se_bonus_board_ball_spawn_grp
 
-	.word	se_unk_f9_0
-	.word	se_unk_f9_1
+	.word	se_bonus_board_ball_spawn_0
+	.word	se_bonus_board_ball_spawn_1
 @ 0x086A19FC

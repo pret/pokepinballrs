@@ -10,11 +10,11 @@ extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gGroudonLavaPaletteCycleData[];
 extern const u8 gGroudonBoardBackgroundGfx[];
 extern const s8 gGroudonBoulderSpriteFrames[][0x300];
-extern struct SongHeader se_unk_118;
-extern struct SongHeader se_unk_11b;
-extern struct SongHeader se_unk_11c;
-extern struct SongHeader se_unk_11d;
-extern struct SongHeader se_unk_11f;
+extern struct SongHeader se_groudon_hit;
+extern struct SongHeader se_groudon_lands;
+extern struct SongHeader se_groudon_spits_fire;
+extern struct SongHeader se_groudon_fire_ring;
+extern struct SongHeader se_groudon_fire_grab;
 extern const s16 gShockwaveSplashDistanceThresholds[];
 extern const s16 gScreenShakeOscillationValues[];
 extern const u16 gGroudonFootstepShakePatterns[][31];
@@ -284,7 +284,7 @@ void UpdateGroudonEntityLogic(void)
         gCurrentPinballGame->legendaryFlashState = 1;
         if (gCurrentPinballGame->bossHitFlashTimer == 35)
         {
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_118);
+            MPlayStart(&gMPlayInfo_SE1, &se_groudon_hit);
             gCurrentPinballGame->scoreAddedInFrame = 500000;
             PlayRumble(7);
             gCurrentPinballGame->bonusModeHitCount++;
@@ -357,7 +357,7 @@ void UpdateGroudonEntityLogic(void)
                 {
                     gCurrentPinballGame->footstepShakeTimer = 31;
                     gCurrentPinballGame->footstepShakePattern = 4;
-                    m4aSongNumStart(SE_UNKNOWN_0x11A);
+                    m4aSongNumStart(SE_GROUDON_INTRO_LEAP);
                     PlayRumble(8);
                 }
             }
@@ -376,7 +376,7 @@ void UpdateGroudonEntityLogic(void)
             if (gCurrentPinballGame->bossPositionY >= 0)
             {
                 gCurrentPinballGame->impactShakeTimer = 60;
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_11b);
+                MPlayStart(&gMPlayInfo_SE1, &se_groudon_lands);
                 PlayRumble(13);
             }
         }
@@ -480,7 +480,7 @@ void UpdateGroudonEntityLogic(void)
 
             if (gCurrentPinballGame->bossFramesetIndex == 90)
             {
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_11c);
+                MPlayStart(&gMPlayInfo_SE1, &se_groudon_spits_fire);
                 gCurrentPinballGame->projectileAttackAnimTimer = 8;
                 gCurrentPinballGame->projectileFlightTimer = 35;
                 gMain.spriteGroups[22].active = TRUE;
@@ -562,7 +562,7 @@ void UpdateGroudonEntityLogic(void)
                 {
                     gMain.spriteGroups[30].active = TRUE;
                     gCurrentPinballGame->shockwaveAnimTimer = 0;
-                    MPlayStart(&gMPlayInfo_SE1, &se_unk_11d);
+                    MPlayStart(&gMPlayInfo_SE1, &se_groudon_fire_ring);
                 }
             }
         }
@@ -592,7 +592,7 @@ void UpdateGroudonEntityLogic(void)
                     gCurrentPinballGame->boardShakeIntensity = 1;
                     gCurrentPinballGame->impactShakeTimer = 60;
                     PlayRumble(13);
-                    MPlayStart(&gMPlayInfo_SE1, &se_unk_11b);
+                    MPlayStart(&gMPlayInfo_SE1, &se_groudon_lands);
                 }
             }
         }
@@ -1032,7 +1032,7 @@ void UpdateGroudonFieldEntities(void)
                     gCurrentPinballGame->ballGrabTimer = 5;
 
                 gCurrentPinballGame->ballGrabShakeTimer = 7;
-                m4aSongNumStart(SE_UNKNOWN_0x11E);
+                m4aSongNumStart(SE_GROUDON_FIRE_GRAB_RESIST);
             }
 
             if (gCurrentPinballGame->ballGrabFlashTimer)
@@ -1099,7 +1099,7 @@ void UpdateGroudonFieldEntities(void)
                 varSL = (gCurrentPinballGame->projectileFlightTimer % 8) / 4 + gCurrentPinballGame->projectileDirection * 2;
                 if (squaredMagnitude <= 240 && gCurrentPinballGame->ballRespawnState == 0 && gCurrentPinballGame->ballGrabTimer < 600)
                 {
-                    MPlayStart(&gMPlayInfo_SE1, &se_unk_11f);
+                    MPlayStart(&gMPlayInfo_SE1, &se_groudon_fire_grab);
                     gCurrentPinballGame->projectileFlightTimer = 10;
                     gMain.spriteGroups[24].active = TRUE;
                     gCurrentPinballGame->ballGrabTimer = 612;
@@ -1139,7 +1139,7 @@ void UpdateGroudonFieldEntities(void)
                         }
                     }
 
-                    m4aSongNumStart(SE_UNKNOWN_0x120);
+                    m4aSongNumStart(SE_GROUDON_FIREBALL_CONNECTS);
                 }
             }
 

@@ -256,46 +256,46 @@ gSongTable:: @ 0x08534E04
 	song se_dusclops_hit, MUSIC_PLAYER_SE2, 2
 	song se_dusclops_ball_absorb, MUSIC_PLAYER_SE2, 2
 	song se_dusclops_ball_launch, MUSIC_PLAYER_SE2, 2
-	song se_unk_f9, MUSIC_PLAYER_SE2, 2
+	song se_bonus_board_ball_spawn, MUSIC_PLAYER_SE2, 2
 	song se_unk_fa, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_fc, MUSIC_PLAYER_SE2, 2
-	song se_unk_fd, MUSIC_PLAYER_SE2, 2
-	song se_unk_fe, MUSIC_PLAYER_SE2, 2
-	song se_unk_ff, MUSIC_PLAYER_SE2, 2
-	song se_unk_100, MUSIC_PLAYER_SE2, 2
-	song se_unk_101, MUSIC_PLAYER_SE2, 2
-	song se_unk_102, MUSIC_PLAYER_SE2, 2
-	song se_unk_103, MUSIC_PLAYER_SE2, 2
+	song se_kecleon_side_look, MUSIC_PLAYER_SE2, 2
+	song se_kecleon_vanish, MUSIC_PLAYER_SE2, 2
+	song se_kecleon_startled, MUSIC_PLAYER_SE2, 2
+	song se_kecleon_running, MUSIC_PLAYER_SE2, 2
+	song se_kecleon_knocked_over, MUSIC_PLAYER_SE2, 2
+	song se_kecleon_hit_damaged, MUSIC_PLAYER_SE2, 2
+	song se_kecleon_hits_ground_defeated, MUSIC_PLAYER_SE2, 2
+	song se_kecleon_seeing_stars, MUSIC_PLAYER_SE2, 2
 	song se_kecleon_tree_hit, MUSIC_PLAYER_SE2, 2
 	song se_kecleon_scope_fall, MUSIC_PLAYER_SE2, 2
 	song se_kecleon_scope_activated, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_10a, MUSIC_PLAYER_SE2, 2
-	song se_unk_10b, MUSIC_PLAYER_SE2, 2
-	song se_unk_10c, MUSIC_PLAYER_SE2, 2
-	song se_unk_10d, MUSIC_PLAYER_SE2, 2
-	song se_unk_10e, MUSIC_PLAYER_SE2, 2
-	song se_unk_10f, MUSIC_PLAYER_SE2, 2
-	song se_unk_110, MUSIC_PLAYER_SE2, 2
-	song se_unk_111, MUSIC_PLAYER_SE2, 2
-	song se_unk_112, MUSIC_PLAYER_SE2, 2
-	song se_unk_113, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_hit, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_breach_surface, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_dive, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_spawn_whirlpool, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_freeze_ring, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_departs, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_freeze_hits_ball, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_freeze_crack, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_freeze_escaped, MUSIC_PLAYER_SE2, 2
+	song se_kyogre_whirlpool_grabs_ball, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_118, MUSIC_PLAYER_SE2, 2
+	song se_groudon_hit, MUSIC_PLAYER_SE2, 2
 	song se_unk_119, MUSIC_PLAYER_SE2, 2
-	song se_unk_11a, MUSIC_PLAYER_SE2, 2
-	song se_unk_11b, MUSIC_PLAYER_SE2, 2
-	song se_unk_11c, MUSIC_PLAYER_SE2, 2
-	song se_unk_11d, MUSIC_PLAYER_SE2, 2
-	song se_unk_11e, MUSIC_PLAYER_SE2, 2
-	song se_unk_11f, MUSIC_PLAYER_SE2, 2
-	song se_unk_120, MUSIC_PLAYER_SE2, 2
+	song se_groudon_intro_leap, MUSIC_PLAYER_SE2, 2
+	song se_groudon_lands, MUSIC_PLAYER_SE2, 2
+	song se_groudon_spits_fire, MUSIC_PLAYER_SE2, 2
+	song se_groudon_fire_ring, MUSIC_PLAYER_SE2, 2
+	song se_groudon_fire_grab_resist, MUSIC_PLAYER_SE2, 2
+	song se_groudon_fire_grab, MUSIC_PLAYER_SE2, 2
+	song se_groudon_fireball_connects, MUSIC_PLAYER_SE2, 2
 	song se_groudon_boulder_land, MUSIC_PLAYER_SE2, 2
 	song se_groudon_dustorm_lift, MUSIC_PLAYER_SE2, 2
 	song se_groudon_ball_hit_fire, MUSIC_PLAYER_SE2, 2

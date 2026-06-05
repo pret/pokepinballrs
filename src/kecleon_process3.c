@@ -34,14 +34,14 @@ extern const u8 gKecleonBonusClear_Gfx[];
 extern const u16 gKecleonBerryOverlayTilemap[];
 extern const u8 gKecleonStageKecleon_Gfx[][0x280];
 extern const u8 gKecleonStageKecleonFx_Gfx[][0x100];
-extern struct SongHeader se_unk_fc;
-extern struct SongHeader se_unk_fd;
-extern struct SongHeader se_unk_fe;
-extern struct SongHeader se_unk_ff;
-extern struct SongHeader se_unk_100;
-extern struct SongHeader se_unk_101;
-extern struct SongHeader se_unk_102;
-extern struct SongHeader se_unk_103;
+extern struct SongHeader se_kecleon_side_look;
+extern struct SongHeader se_kecleon_vanish;
+extern struct SongHeader se_kecleon_startled;
+extern struct SongHeader se_kecleon_running;
+extern struct SongHeader se_kecleon_knocked_over;
+extern struct SongHeader se_kecleon_hit_damaged;
+extern struct SongHeader se_kecleon_hits_ground_defeated;
+extern struct SongHeader se_kecleon_seeing_stars;
 extern const u16 gKecleonAnimFramesetTable[][3];
 extern const s16 gKecleonOverlayTileAnimIndices[];
 extern const u16 gKecleonVisibleWalkDirectionMap[];
@@ -318,14 +318,14 @@ void UpdateKecleonEntityLogic(void)
             }
 
             if (gCurrentPinballGame->bossFramesetIndex == 60 || gCurrentPinballGame->bossFramesetIndex == 61)
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_fc);
+                MPlayStart(&gMPlayInfo_SE1, &se_kecleon_side_look);
         }
 
         if (gCurrentPinballGame->bossFramesetIndex == 64)
         {
             gCurrentPinballGame->kecleonCamoStrength = gCurrentPinballGame->bossFrameTimer / 2;
             if (gCurrentPinballGame->bossFrameTimer == 4)
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_fd);
+                MPlayStart(&gMPlayInfo_SE1, &se_kecleon_vanish);
         }
         break;
     case KECLEON_ENTITY_STATE_CHOOSE_WALK_LOCATION:
@@ -385,7 +385,7 @@ void UpdateKecleonEntityLogic(void)
         if (gCurrentPinballGame->bossFrameTimer < 18)
         {
             if (gCurrentPinballGame->bossFrameTimer == 0)
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_fe);
+                MPlayStart(&gMPlayInfo_SE1, &se_kecleon_startled);
 
             gCurrentPinballGame->bossFrameTimer++;
             if (gCurrentPinballGame->kecleonFramesetBase == 66)
@@ -473,9 +473,9 @@ void UpdateKecleonEntityLogic(void)
                 gCurrentPinballGame->bossFramesetIndex = gCurrentPinballGame->kecleonFramesetBase;
 
             if (gCurrentPinballGame->bossFramesetIndex == gCurrentPinballGame->kecleonFramesetBase + 1)
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_ff);
+                MPlayStart(&gMPlayInfo_SE1, &se_kecleon_running);
             if (gCurrentPinballGame->bossFramesetIndex == gCurrentPinballGame->kecleonFramesetBase + 3)
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_ff);
+                MPlayStart(&gMPlayInfo_SE1, &se_kecleon_running);
         }
         break;
     case KECLEON_ENTITY_STATE_RESTING:
@@ -590,7 +590,7 @@ void UpdateKecleonEntityLogic(void)
 
         gCurrentPinballGame->bossFramesetIndex = gCurrentPinballGame->kecleonFramesetBase;
         gCurrentPinballGame->bossFrameTimer = 0;
-        MPlayStart(&gMPlayInfo_SE1, &se_unk_100);
+        MPlayStart(&gMPlayInfo_SE1, &se_kecleon_knocked_over);
         break;
     case KECLEON_ENTITY_STATE_KNOCKED_OVER:
         if (gKecleonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][1] > gCurrentPinballGame->bossFrameTimer)
@@ -618,7 +618,7 @@ void UpdateKecleonEntityLogic(void)
         gCurrentPinballGame->kecleonCamoStrength = 0;
         gCurrentPinballGame->scoreAddedInFrame = 500000;
         gCurrentPinballGame->bonusModeHitCount++;
-        MPlayStart(&gMPlayInfo_SE1, &se_unk_101);
+        MPlayStart(&gMPlayInfo_SE1, &se_kecleon_hit_damaged);
         PlayRumble(7);
         break;
     case KECLEON_ENTITY_STATE_RESPOND_TO_HIT:
@@ -749,10 +749,10 @@ void UpdateKecleonEntityLogic(void)
             }
 
             if (gCurrentPinballGame->bossFramesetIndex == gCurrentPinballGame->kecleonFramesetBase + 6)
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_102);
+                MPlayStart(&gMPlayInfo_SE1, &se_kecleon_hits_ground_defeated);
 
             if (gCurrentPinballGame->bossFramesetIndex == gCurrentPinballGame->kecleonFramesetBase + 8)
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_103);
+                MPlayStart(&gMPlayInfo_SE1, &se_kecleon_seeing_stars);
         }
         break;
     case KECLEON_ENTITY_STATE_ENDING:
