@@ -1,27 +1,27 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_119_grp, gUnknown_08531D4C
-	.equ	se_unk_119_pri, 5
-	.equ	se_unk_119_rev, reverb_set+50
-	.equ	se_unk_119_mvl, 127
-	.equ	se_unk_119_key, 0
-	.equ	se_unk_119_tbs, 1
-	.equ	se_unk_119_exg, 0
-	.equ	se_unk_119_cmp, 1
+	.equ	se_groudon_step_grp, gUnknown_08531D4C
+	.equ	se_groudon_step_pri, 5
+	.equ	se_groudon_step_rev, reverb_set+50
+	.equ	se_groudon_step_mvl, 127
+	.equ	se_groudon_step_key, 0
+	.equ	se_groudon_step_tbs, 1
+	.equ	se_groudon_step_exg, 0
+	.equ	se_groudon_step_cmp, 1
 
 	.section .rodata
-	.global	se_unk_119
+	.global	se_groudon_step
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_119_0:  @ 0x086A22E8
-	.byte	KEYSH , se_unk_119_key+0
-	.byte	TEMPO , 150*se_unk_119_tbs/2
+se_groudon_step_0:  @ 0x086A22E8
+	.byte	KEYSH , se_groudon_step_key+0
+	.byte	TEMPO , 150*se_groudon_step_tbs/2
 	.byte		VOICE , 26
 	.byte		BENDR , 12
 	.byte		PAN   , c_v+0
-	.byte		VOL   , 110*se_unk_119_mvl/mxv
+	.byte		VOL   , 110*se_groudon_step_mvl/mxv
 	.byte		BEND  , c_v+0
 	.byte		N03   , Gn2 , v127
 	.byte	W03
@@ -44,11 +44,11 @@ se_unk_119_0:  @ 0x086A22E8
 
 @*********************** Track 02 ***********************@
 
-se_unk_119_1:  @ 0x086A2319
-	.byte	KEYSH , se_unk_119_key+0
+se_groudon_step_1:  @ 0x086A2319
+	.byte	KEYSH , se_groudon_step_key+0
 	.byte		VOICE , 5
 	.byte		PAN   , c_v+0
-	.byte		VOL   , 110*se_unk_119_mvl/mxv
+	.byte		VOL   , 110*se_groudon_step_mvl/mxv
 	.byte		N02   , Fn2 , v072
 	.byte	W02
 	.byte		N01
@@ -71,14 +71,14 @@ se_unk_119_1:  @ 0x086A2319
 
 	.align	2
 
-se_unk_119:  @ 0x086A2340
+se_groudon_step:  @ 0x086A2340
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_119_pri	@ Priority
-	.byte	se_unk_119_rev	@ Reverb
+	.byte	se_groudon_step_pri	@ Priority
+	.byte	se_groudon_step_rev	@ Reverb
 
-	.word	se_unk_119_grp
+	.word	se_groudon_step_grp
 
-	.word	se_unk_119_0
-	.word	se_unk_119_1
+	.word	se_groudon_step_0
+	.word	se_groudon_step_1
 @ 0x086A2350

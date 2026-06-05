@@ -288,7 +288,7 @@ gSongTable:: @ 0x08534E04
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_groudon_hit, MUSIC_PLAYER_SE2, 2
-	song se_unk_119, MUSIC_PLAYER_SE2, 2
+	song se_groudon_step, MUSIC_PLAYER_SE2, 2
 	song se_groudon_intro_leap, MUSIC_PLAYER_SE2, 2
 	song se_groudon_lands, MUSIC_PLAYER_SE2, 2
 	song se_groudon_spits_fire, MUSIC_PLAYER_SE2, 2

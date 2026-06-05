@@ -3928,7 +3928,7 @@ gDirectSound_086885EC:: @ 0x086885EC
 .include "sound/songs/se_kyogre_freeze_escaped.s"
 .include "sound/songs/se_kyogre_whirlpool_grabs_ball.s"
 .include "sound/songs/se_groudon_hit.s"
-.include "sound/songs/se_unk_119.s"
+.include "sound/songs/se_groudon_step.s"
 .include "sound/songs/se_groudon_intro_leap.s"
 .include "sound/songs/se_groudon_lands.s"
 .include "sound/songs/se_groudon_spits_fire.s"
