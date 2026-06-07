@@ -1,25 +1,25 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_c4_grp, gUnknown_08531D4C
-	.equ	se_unk_c4_pri, 5
-	.equ	se_unk_c4_rev, reverb_set+50
-	.equ	se_unk_c4_mvl, 127
-	.equ	se_unk_c4_key, 0
-	.equ	se_unk_c4_tbs, 1
-	.equ	se_unk_c4_exg, 0
-	.equ	se_unk_c4_cmp, 1
+	.equ	se_unused_0xc4_grp, gUnknown_08531D4C
+	.equ	se_unused_0xc4_pri, 5
+	.equ	se_unused_0xc4_rev, reverb_set+50
+	.equ	se_unused_0xc4_mvl, 127
+	.equ	se_unused_0xc4_key, 0
+	.equ	se_unused_0xc4_tbs, 1
+	.equ	se_unused_0xc4_exg, 0
+	.equ	se_unused_0xc4_cmp, 1
 
 	.section .rodata
-	.global	se_unk_c4
+	.global	se_unused_0xc4
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_c4_0:  @ 0x086A0750
-	.byte	KEYSH , se_unk_c4_key+0
-	.byte	TEMPO , 150*se_unk_c4_tbs/2
+se_unused_0xc4_0:  @ 0x086A0750
+	.byte	KEYSH , se_unused_0xc4_key+0
+	.byte	TEMPO , 150*se_unused_0xc4_tbs/2
 	.byte		VOICE , 41
-	.byte		VOL   , 125*se_unk_c4_mvl/mxv
+	.byte		VOL   , 125*se_unused_0xc4_mvl/mxv
 	.byte		BENDR , 12
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v+0
@@ -82,20 +82,20 @@ se_unk_c4_0:  @ 0x086A0750
 
 @*********************** Track 02 ***********************@
 
-se_unk_c4_1:  @ 0x086A07AF
-	.byte	KEYSH , se_unk_c4_key+0
+se_unused_0xc4_1:  @ 0x086A07AF
+	.byte	KEYSH , se_unused_0xc4_key+0
 	.byte		VOICE , 4
-	.byte		VOL   , 125*se_unk_c4_mvl/mxv
+	.byte		VOL   , 125*se_unused_0xc4_mvl/mxv
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v+1
 	.byte		N02   , Cn3 , v052
 	.byte	W01
-	.byte		VOL   , 74*se_unk_c4_mvl/mxv
+	.byte		VOL   , 74*se_unused_0xc4_mvl/mxv
 	.byte	W06
-	.byte		        125*se_unk_c4_mvl/mxv
+	.byte		        125*se_unused_0xc4_mvl/mxv
 	.byte		N02
 	.byte	W01
-	.byte		VOL   , 74*se_unk_c4_mvl/mxv
+	.byte		VOL   , 74*se_unused_0xc4_mvl/mxv
 	.byte	W16
 	.byte	W24
 	.byte	W24
@@ -105,14 +105,14 @@ se_unk_c4_1:  @ 0x086A07AF
 
 	.align	2
 
-se_unk_c4:  @ 0x086A07CC
+se_unused_0xc4:  @ 0x086A07CC
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_c4_pri	@ Priority
-	.byte	se_unk_c4_rev	@ Reverb
+	.byte	se_unused_0xc4_pri	@ Priority
+	.byte	se_unused_0xc4_rev	@ Reverb
 
-	.word	se_unk_c4_grp
+	.word	se_unused_0xc4_grp
 
-	.word	se_unk_c4_0
-	.word	se_unk_c4_1
+	.word	se_unused_0xc4_0
+	.word	se_unused_0xc4_1
 @ 0x086A07DC

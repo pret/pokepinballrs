@@ -115,10 +115,10 @@ gSongTable:: @ 0x08534E04
 	song se_menu_popup_close, MUSIC_PLAYER_SE2, 2
 	song se_score_entry_a_b_move, MUSIC_PLAYER_SE2, 2
 	song se_score_entry_letter_change, MUSIC_PLAYER_SE2, 2
-	song se_unk_6c, MUSIC_PLAYER_SE2, 2
+	song se_unused_0x6c, MUSIC_PLAYER_SE2, 2
 	song se_dex_info_field_select_move, MUSIC_PLAYER_SE2, 2
-	song se_unk_6e, MUSIC_PLAYER_SE2, 2
-	song se_unk_6f, MUSIC_PLAYER_SE2, 2
+	song se_unused_0x6e, MUSIC_PLAYER_SE2, 2
+	song se_unused_0x6f, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_unk_71, MUSIC_PLAYER_SE2, 2
 	song se_flipper_pressed, MUSIC_PLAYER_SE3, 3
@@ -132,9 +132,9 @@ gSongTable:: @ 0x08534E04
 	song se_pika_full_charge_1_up, MUSIC_PLAYER_SE2, 2
 	song se_unk_7b, MUSIC_PLAYER_SE2, 2
 	song se_kickback_thunderwave, MUSIC_PLAYER_SE2, 2
-	song se_unk_7d, MUSIC_PLAYER_SE2, 2
+	song se_unused_0x7d, MUSIC_PLAYER_SE2, 2
 	song se_coin_collected, MUSIC_PLAYER_SE2, 2
-	song se_unk_7f, MUSIC_PLAYER_SE2, 2
+	song se_unused_0x7f, MUSIC_PLAYER_SE2, 2
 	song se_center_hole_eject, MUSIC_PLAYER_SE2, 2
 	song se_roulette_tick, MUSIC_PLAYER_SE2, 2
 	song se_evo_selection_move, MUSIC_PLAYER_SE2, 2
@@ -143,8 +143,8 @@ gSongTable:: @ 0x08534E04
 	song se_evo_item_finish_appear, MUSIC_PLAYER_SE2, 2
 	song se_evo_item_collected, MUSIC_PLAYER_SE2, 2
 	song se_ball_upgrade, MUSIC_PLAYER_SE2, 2
-	song se_unk_88, MUSIC_PLAYER_SE2, 2
-	song se_unk_89, MUSIC_PLAYER_SE2, 2
+	song se_unused_0x88, MUSIC_PLAYER_SE2, 2
+	song se_unused_0x89, MUSIC_PLAYER_SE2, 2
 	song se_failure, MUSIC_PLAYER_SE2, 2
 	song se_catch_evo_banner, MUSIC_PLAYER_SE2, 2
 	song se_catch_tile_reveal, MUSIC_PLAYER_SE2, 2
@@ -167,7 +167,7 @@ gSongTable:: @ 0x08534E04
 	song se_unk_9d, MUSIC_PLAYER_SE2, 2
 	song se_unk_9e, MUSIC_PLAYER_SE2, 2
 	song se_warp, MUSIC_PLAYER_SE2, 2
-	song se_unk_a0, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xa0, MUSIC_PLAYER_SE2, 2
 	song se_unk_a1, MUSIC_PLAYER_SE2, 2
 	song se_unk_a2, MUSIC_PLAYER_SE2, 2
 	song se_unk_a3, MUSIC_PLAYER_SE2, 2
@@ -187,30 +187,30 @@ gSongTable:: @ 0x08534E04
 	song se_pikachu_kickback, MUSIC_PLAYER_SE2, 2
 	song se_unk_b2, MUSIC_PLAYER_SE2, 2
 	song se_pichu_kickback, MUSIC_PLAYER_SE2, 2
-	song se_unk_b4, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xb4, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_ruby_bumper_hit, MUSIC_PLAYER_SE2, 2
 	song se_unk_b7, MUSIC_PLAYER_SE2, 2
 	song se_unk_b8, MUSIC_PLAYER_SE2, 2
 	song se_unk_b9, MUSIC_PLAYER_SE2, 2
-	song se_unk_ba, MUSIC_PLAYER_SE2, 2
-	song se_unk_bb, MUSIC_PLAYER_SE2, 2
-	song se_unk_bc, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xba, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xbb, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xbc, MUSIC_PLAYER_SE2, 2
 	song se_unk_bd, MUSIC_PLAYER_SE2, 2
-	song se_unk_be, MUSIC_PLAYER_SE2, 2
-	song se_unk_bf, MUSIC_PLAYER_SE2, 2
-	song se_unk_c0, MUSIC_PLAYER_SE2, 2
-	song se_unk_c1, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xbe, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xbf, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xc0, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xc1, MUSIC_PLAYER_SE2, 2
 	song se_unk_c2, MUSIC_PLAYER_SE2, 2
 	song se_unk_c3, MUSIC_PLAYER_SE2, 2
-	song se_unk_c4, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xc4, MUSIC_PLAYER_SE2, 2
 	song se_unk_c5, MUSIC_PLAYER_SE2, 2
 	song se_unk_c6, MUSIC_PLAYER_SE2, 2
 	song se_unk_c7, MUSIC_PLAYER_SE2, 2
 	song se_ruby_bumper_emerges, MUSIC_PLAYER_SE2, 2
 	song se_ruby_bumper_leaves, MUSIC_PLAYER_SE2, 2
 	song se_unk_ca, MUSIC_PLAYER_SE2, 2
-	song se_unk_cb, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xcb, MUSIC_PLAYER_SE2, 2
 	song se_unk_cc, MUSIC_PLAYER_SE2, 2
 	song se_unk_cd, MUSIC_PLAYER_SE2, 2
 	song se_unk_ce, MUSIC_PLAYER_SE2, 2
@@ -257,7 +257,7 @@ gSongTable:: @ 0x08534E04
 	song se_dusclops_ball_absorb, MUSIC_PLAYER_SE2, 2
 	song se_dusclops_ball_launch, MUSIC_PLAYER_SE2, 2
 	song se_bonus_board_ball_spawn, MUSIC_PLAYER_SE2, 2
-	song se_unk_fa, MUSIC_PLAYER_SE2, 2
+	song se_unused_0xfa, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_kecleon_side_look, MUSIC_PLAYER_SE2, 2
 	song se_kecleon_vanish, MUSIC_PLAYER_SE2, 2
@@ -326,7 +326,7 @@ gSongTable:: @ 0x08534E04
 	song se_sealeo_hit_thud, MUSIC_PLAYER_SE2, 2
 	song se_sealeo_nose_bounce, MUSIC_PLAYER_SE2, 2
 	song se_spheal_land_under_net, MUSIC_PLAYER_SE2, 2
-	song se_unk_13f, MUSIC_PLAYER_SE2, 2
+	song se_unused_0x13f, MUSIC_PLAYER_SE2, 2
 	song se_spheal_surface_at_ramp, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_pika_no_kickback, MUSIC_PLAYER_SE2, 2

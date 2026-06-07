@@ -59,12 +59,12 @@
 #define SE_MENU_POPUP_CLOSE         0x69 // SE 5; Yellow window popup disappears (eg: pokedox transfer confirmation)
 #define SE_SCORE_ENTRY_A_B_MOVE     0x6A // SE 6; Drum?
 #define SE_SCORE_ENTRY_LETTER_CHANGE 0x6B // SE 7; RS: Pokédex scroll
-#define SE_UNKNOWN_0x6C             0x6C // Unused: RS: Bike hop
+#define SE_UNUSED_0x6C              0x6C // Unused: RS: Bike hop
 #define SE_DEX_INFO_FIELD_SELECT_MOVE 0x6D // SE 8; bonus/normal field selection, dex info page
-#define SE_UNKNOWN_0x6E             0x6E // Unused: same as SE1
-#define SE_UNKNOWN_0x6F             0x6F // Unused: same as SE2
+#define SE_UNUSED_0x6E              0x6E // Unused: same as SE1
+#define SE_UNUSED_0x6F              0x6F // Unused: same as SE2
 #define SE_EMPTY_0x70               0x70 // No Sound
-#define SE_UNKNOWN_0x71             0x71 // Duplicated of SE 70 *thwip*
+#define SE_UNKNOWN_0x71             0x71 // SE 180, Otherwise unused. Duplicated of SE 70 *thwip*
 #define SE_FLIPPER_PRESSED          0x72 // SE9 Flipper
 #define SE_SLINGSHOT_HIT            0x73 // SE10 Triangle bumper hit
 #define SE_POKEMON_CATCH_HIT        0x74 // SE11 Pokemon Catch hit
@@ -76,9 +76,9 @@
 #define SE_PIKA_FULL_CHARGE_1_UP    0x7A // SE17 *high trill - radar*
 #define SE_UNKNOWN_0x7B             0x7B // SE18 Otherwise unused. Sustained machine noise. - Same as 95
 #define SE_KICKBACK_THUNDERWAVE     0x7C // SE19 *extended stable electric tone* (SE153 has a short form)
-#define SE_UNKNOWN_0x7D             0x7D // ?? *Kerplunk* ??
+#define SE_UNUSED_0x7D              0x7D // ?? *Kerplunk* ??
 #define SE_COIN_COLLECTED           0x7E // SE20 Same as SE1
-#define SE_UNKNOWN_0x7F             0x7F // ?? Questioning Cry??
+#define SE_UNUSED_0x7F              0x7F // ?? Questioning Cry??
 #define SE_CENTER_HOLE_EJECT        0x80 // SE21 *flying slash*
 #define SE_ROULETTE_TICK            0x81 // SE22 *Pokeball hit ground; low pitched related to SE47*
 #define SE_EVO_SELECTION_MOVE       0x82 // SE23 Evo Selection list move
@@ -87,8 +87,8 @@
 #define SE_EVO_ITEM_FINISH_APPEAR   0x85 // SE26 Evo Symbol finished spawning (Same as SE43)
 #define SE_EVO_ITEM_COLLECTED       0x86 // SE27 Evo Symbol collected
 #define SE_BALL_UPGRADE             0x87 // *SE28 *Pokeball/power upgrade? *
-#define SE_UNKNOWN_0x88             0x88 // ?? *Downward compliment to SE28* ??
-#define SE_UNKNOWN_0x89             0x89 // ?? *Coin collect*??
+#define SE_UNUSED_0x88              0x88 // ?? *Downward compliment to SE28* ??
+#define SE_UNUSED_0x89              0x89 // ?? *Coin collect*??
 #define SE_FAILURE                  0x8A // SE29 Denied. ('Unable to select' in pokedex)
 #define SE_CATCH_EVO_BANNER         0x8B // SE30 Evo/Catch mode initiated
 #define SE_CATCH_TILE_REVEAL        0x8C // SE31 Catch Tile Revealed (Same as 114, 129, 139, 151)
@@ -111,7 +111,7 @@
 #define SE_UNKNOWN_0x9D             0x9D // SE47 Pokeball hit ground; High pitched related to 22
 #define SE_UNKNOWN_0x9E             0x9E // SE48 Pokeball shake, During catch confirmation
 #define SE_WARP                     0x9F // SE49 *Up warp?*
-#define SE_UNKNOWN_0xA0             0xA0 // ?? *Downward complement to SE49* ??
+#define SE_UNUSED_0xA0              0xA0 // ?? *Downward complement to SE49* ??
 #define SE_UNKNOWN_0xA1             0xA1 // SE50 *hit clack*
 #define SE_UNKNOWN_0xA2             0xA2 // SE51 *Brush*
 #define SE_UNKNOWN_0xA3             0xA3 // SE52 Duplicate of SE3; Coins collected?
@@ -131,30 +131,30 @@
 #define SE_PIKACHU_KICKBACK         0xB1 // SE181 Pi~Ka CHU!
 #define SE_UNKNOWN_0xB2             0xB2 // SE182 Pika - pika - pi-ka
 #define SE_PICHU_KICKBACK           0xB3 // SE183 Pi~ Chu!
-#define SE_UNKNOWN_0xB4             0xB4 // ?? Duplicate of SE49
+#define SE_UNUSED_0xB4              0xB4 // ?? Duplicate of SE49; Unused
 #define SE_EMPTY_0xB5               0xB5 // No Sound
 #define SE_RUBY_BUMPER_HIT          0xB6 // SE66 *Puddle slap* (Hit lotad/chinchou/whiscash)
 #define SE_UNKNOWN_0xB7             0xB7 // SE67 *Spring Gate Bounce*
 #define SE_UNKNOWN_0xB8             0xB8 // SE68 *Slap*
 #define SE_UNKNOWN_0xB9             0xB9 // SE69 *Fall into water*
-#define SE_UNKNOWN_0xBA             0xBA // *Ground thud*
-#define SE_UNKNOWN_0xBB             0xBB // *Landing*
-#define SE_UNKNOWN_0xBC             0xBC // *Dumpster lid*
+#define SE_UNUSED_0xBA              0xBA // *Ground thud*
+#define SE_UNUSED_0xBB              0xBB // *Landing*
+#define SE_UNUSED_0xBC              0xBC // *Dumpster lid*
 #define SE_UNKNOWN_0xBD             0xBD // SE 70 Ruby board Pokemart gate open
-#define SE_UNKNOWN_0xBE             0xBE // *5 note rise*
-#define SE_UNKNOWN_0xBF             0xBF // *5 note fall*
-#define SE_UNKNOWN_0xC0             0xC0 // *Duplicate of SE66*
-#define SE_UNKNOWN_0xC1             0xC1 // *Duplicate of SE88*
+#define SE_UNUSED_0xBE              0xBE // *5 note rise*
+#define SE_UNUSED_0xBF              0xBF // *5 note fall*
+#define SE_UNUSED_0xC0              0xC0 // *Duplicate of SE66*
+#define SE_UNUSED_0xC1              0xC1 // *Duplicate of SE88*
 #define SE_UNKNOWN_0xC2             0xC2 // SE71 Ruby board Sharpedo spit ball
 #define SE_UNKNOWN_0xC3             0xC3 // SE72 Duplicate of SE70?
-#define SE_UNKNOWN_0xC4             0xC4 // *Explosive at water surface*
+#define SE_UNUSED_0xC4              0xC4 // *Explosive at water surface*
 #define SE_UNKNOWN_0xC5             0xC5 // SE73 *Jump off tin clatter*
 #define SE_UNKNOWN_0xC6             0xC6 // SE74 Chikorita leaf blades
 #define SE_UNKNOWN_0xC7             0xC7 // SE75 Zigzagoon emerge
 #define SE_RUBY_BUMPER_EMERGES      0xC8 // SE76 Ruby Pond Contents change; Duplicate of 66
 #define SE_RUBY_BUMPER_LEAVES       0xC9 // SE77 Ruby Pond Chinchou leave
 #define SE_UNKNOWN_0xCA             0xCA // SE78 *flipper 2?*
-#define SE_UNKNOWN_0xCB             0xCB // Duplicate of SE70/SE72
+#define SE_UNUSED_0xCB              0xCB // Duplicate of SE70/SE72; Unused
 #define SE_UNKNOWN_0xCC             0xCC // SE79 *tong vwii vwii vwii*
 #define SE_UNKNOWN_0xCD             0xCD // SE80 *Metal coin gate*
 #define SE_UNKNOWN_0xCE             0xCE // SE81 *Springy landing thud*
@@ -201,7 +201,7 @@
 #define SE_DUSCLOPS_BALL_ABSORB     0xF7 // SE115 Dusclops absorbs ball
 #define SE_DUSCLOPS_BALL_LAUNCH     0xF8 // SE116 Dusclops launch absorbed ball
 #define SE_BONUS_BOARD_BALL_SPAWN   0xF9 // SE117
-#define SE_UNKNOWN_0xFA             0xFA // *Muted Triangle tripple tap*
+#define SE_UNUSED_0xFA             0xFA // *Muted Triangle tripple tap*
 #define SE_EMPTY_0xFB               0xFB // No Sound
 #define SE_KECLEON_SIDE_LOOK        0xFC // *SE118 Kecleon looks side (same as SE84) // also with collecting 1 up
 #define SE_KECLEON_VANISH           0xFD // *SE119 Kecleon Vanish (same as 109)
@@ -270,7 +270,7 @@
 #define SE_SEALEO_HIT_THUD          0x13C // *SE167 Hit Sealeo in bonus game *Thud*
 #define SE_SEALEO_NOSE_BOUNCE       0x13D // *SE168 Sealeo nose bounce in bonus game (Same as 169)
 #define SE_SPHEAL_LAND_UNDER_NET    0x13E // SE169 Sealeo nose bounce in bonus game (Same as 168)
-#define SE_UNKNOWN_0x13F            0x13F // *coin*
+#define SE_UNUSED_0x13F            0x13F // unused: *coin*
 #define SE_SPHEAL_SURFACE_AT_RAMP   0x140 // SE170 Spheal emerges from water
 #define SE_EMPTY_0x141              0x141 // No Sound
 #define SE_PIKA_NO_KICKBACK         0x142 // *SE184 Pika!

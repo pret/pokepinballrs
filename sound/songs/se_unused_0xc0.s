@@ -1,26 +1,26 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_c0_grp, gUnknown_08531D4C
-	.equ	se_unk_c0_pri, 5
-	.equ	se_unk_c0_rev, reverb_set+50
-	.equ	se_unk_c0_mvl, 127
-	.equ	se_unk_c0_key, 0
-	.equ	se_unk_c0_tbs, 1
-	.equ	se_unk_c0_exg, 0
-	.equ	se_unk_c0_cmp, 1
+	.equ	se_unused_0xc0_grp, gUnknown_08531D4C
+	.equ	se_unused_0xc0_pri, 5
+	.equ	se_unused_0xc0_rev, reverb_set+50
+	.equ	se_unused_0xc0_mvl, 127
+	.equ	se_unused_0xc0_key, 0
+	.equ	se_unused_0xc0_tbs, 1
+	.equ	se_unused_0xc0_exg, 0
+	.equ	se_unused_0xc0_cmp, 1
 
 	.section .rodata
-	.global	se_unk_c0
+	.global	se_unused_0xc0
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_c0_0:  @ 0x086A06A4
-	.byte	KEYSH , se_unk_c0_key+0
-	.byte	TEMPO , 240*se_unk_c0_tbs/2
+se_unused_0xc0_0:  @ 0x086A06A4
+	.byte	KEYSH , se_unused_0xc0_key+0
+	.byte	TEMPO , 240*se_unused_0xc0_tbs/2
 	.byte		VOICE , 2
 	.byte		BENDR , 12
-	.byte		VOL   , 105*se_unk_c0_mvl/mxv
+	.byte		VOL   , 105*se_unused_0xc0_mvl/mxv
 	.byte		BEND  , c_v+0
 	.byte		N02   , Fn3 , v127
 	.byte	W02
@@ -48,13 +48,13 @@ se_unk_c0_0:  @ 0x086A06A4
 
 	.align	2
 
-se_unk_c0:  @ 0x086A06D0
+se_unused_0xc0:  @ 0x086A06D0
 	.byte	1	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_c0_pri	@ Priority
-	.byte	se_unk_c0_rev	@ Reverb
+	.byte	se_unused_0xc0_pri	@ Priority
+	.byte	se_unused_0xc0_rev	@ Reverb
 
-	.word	se_unk_c0_grp
+	.word	se_unused_0xc0_grp
 
-	.word	se_unk_c0_0
+	.word	se_unused_0xc0_0
 @ 0x086A06DC
