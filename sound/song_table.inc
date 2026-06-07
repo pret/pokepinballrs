@@ -322,21 +322,21 @@ gSongTable:: @ 0x08534E04
 	song se_spheal_net_swoosh, MUSIC_PLAYER_SE2, 2
 	song se_spheal_crowd_cheer, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_13b, MUSIC_PLAYER_SE2, 2
-	song se_unk_13c, MUSIC_PLAYER_SE2, 2
-	song se_unk_13d, MUSIC_PLAYER_SE2, 2
-	song se_unk_13e, MUSIC_PLAYER_SE2, 2
+	song se_spheal_end_whistle, MUSIC_PLAYER_SE2, 2
+	song se_sealeo_hit_thud, MUSIC_PLAYER_SE2, 2
+	song se_sealeo_nose_bounce, MUSIC_PLAYER_SE2, 2
+	song se_spheal_land_under_net, MUSIC_PLAYER_SE2, 2
 	song se_unk_13f, MUSIC_PLAYER_SE2, 2
-	song se_unk_140, MUSIC_PLAYER_SE2, 2
+	song se_spheal_surface_at_ramp, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_pika_no_kickback, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_jirachi_move, MUSIC_PLAYER_SE2, 2
 	song se_jirachi_hit, MUSIC_PLAYER_SE2, 2
-	song se_unk_146, MUSIC_PLAYER_SE2, 2
-	song se_unk_147, MUSIC_PLAYER_SE2, 2
-	song se_unk_148, MUSIC_PLAYER_SE2, 2
-	song se_unk_149, MUSIC_PLAYER_SE2, 2
+	song se_totodile_lowers_rope, MUSIC_PLAYER_SE2, 2
+	song se_totodile_slides_down, MUSIC_PLAYER_SE2, 2
+	song se_totodile_places_egg, MUSIC_PLAYER_SE2, 2
+	song se_totodile_climbs_rope, MUSIC_PLAYER_SE2, 2
+	song se_highest_score_earned, MUSIC_PLAYER_SE2, 2
 	song se_high_score_earned, MUSIC_PLAYER_SE2, 2
-	song se_unk_14b, MUSIC_PLAYER_SE2, 2
 	song se_whiscash_earthquake, MUSIC_PLAYER_SE2, 2

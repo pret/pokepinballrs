@@ -15,9 +15,9 @@ extern const s16 gSphealWhiscashAnimFrameset[][4];
 extern struct SongHeader se_spheal_hit;
 extern struct SongHeader se_spheal_net_swoosh;
 extern struct SongHeader se_spheal_crowd_cheer;
-extern struct SongHeader se_unk_13b;
-extern struct SongHeader se_unk_13c;
-extern struct SongHeader se_unk_13d;
+extern struct SongHeader se_spheal_end_whistle;
+extern struct SongHeader se_sealeo_hit_thud;
+extern struct SongHeader se_sealeo_nose_bounce;
 
 extern const s8 gSphealScoreDigitSpriteIndices[];
 extern const u16 gSphealWaterBackgroundTilemap[];
@@ -174,7 +174,7 @@ void SphealBoardProcess_3B_43228(void)
             if (gCurrentPinballGame->stageTimer == 0)
             {
                 m4aMPlayAllStop();
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_13b);
+                MPlayStart(&gMPlayInfo_SE1, &se_spheal_end_whistle);
                 gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
                 gCurrentPinballGame->ballRespawnState = 2;
                 gCurrentPinballGame->ballRespawnTimer = 0;
@@ -297,7 +297,7 @@ void UpdateSealeoEntityLogic(void)
         {
             if (gCurrentPinballGame->sealeoStunnedTimer[i] == 23)
             {
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_13c);
+                MPlayStart(&gMPlayInfo_SE1, &se_sealeo_hit_thud);
                 gCurrentPinballGame->scoreAddedInFrame = 5000;
                 PlayRumble(8);
             }
@@ -628,7 +628,7 @@ void UpdateSphealEntityLogic(void)
                     }
 
                     if (gCurrentPinballGame->sphealFramesetIndex[i] == 10)
-                        m4aSongNumStart(SE_UNKNOWN_0x140);
+                        m4aSongNumStart(SE_SPHEAL_SURFACE_AT_RAMP);
 
                 }
                 gCurrentPinballGame->sphealEntityCollisionType[i] = SPHEAL_COLLISION_TYPE_ON_RAMP;
@@ -794,7 +794,7 @@ void UpdateSphealEntityLogic(void)
                         {
                             gCurrentPinballGame->sphealFramesetIndex[i] = 21;
                             if (gCurrentPinballGame->sphealAnimTimer[i] == 1)
-                                m4aSongNumStart(SE_UNKNOWN_0x13E);
+                                m4aSongNumStart(SE_SPHEAL_LAND_UNDER_NET);
 
                             gCurrentPinballGame->sphealEntityCollisionType[i] = SPHEAL_COLLISION_TYPE_WALK_DOWN;
                         }
@@ -1268,7 +1268,7 @@ void UpdateSealeoKnockdownPhysics(void)
                     if (gCurrentPinballGame->sphealPositionQ8[i].y >= 0x6600)
                     {
                         gCurrentPinballGame->knockdownBounceCount[i]++;
-                        MPlayStart(&gMPlayInfo_SE1, &se_unk_13d);
+                        MPlayStart(&gMPlayInfo_SE1, &se_sealeo_nose_bounce);
                         if (gCurrentPinballGame->knockdownBounceCount[i] < 3)
                         {
                             gCurrentPinballGame->sphealPositionQ8[i].y = 0x6600;
@@ -1311,7 +1311,7 @@ void UpdateSealeoKnockdownPhysics(void)
                 if (gCurrentPinballGame->ball->positionQ8.y >= 0x6500)
                 {
                     gCurrentPinballGame->knockdownBounceCount[i]++;
-                    MPlayStart(&gMPlayInfo_SE1, &se_unk_13d);
+                    MPlayStart(&gMPlayInfo_SE1, &se_sealeo_nose_bounce);
                     PlayRumble(7);
                     if (gCurrentPinballGame->knockdownBounceCount[i] < 3)
                     {

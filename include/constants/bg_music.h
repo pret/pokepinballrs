@@ -266,23 +266,23 @@
 #define SE_SPHEAL_NET_SWOOSH        0x138 // *SE164 *Snare brush*
 #define SE_SPHEAL_CROWD_CHEER       0x139 // *SE165 *Crowd cheer*
 #define SE_EMPTY_0x13A              0x13A // No Sound
-#define SE_UNKNOWN_0x13B            0x13B // *SE166 *Traffic whistle two blast*
-#define SE_UNKNOWN_0x13C            0x13C // *SE167 Hit Sealeo in bonus game *Thud*
-#define SE_UNKNOWN_0x13D            0x13D // *SE168 Sealeo nose bounce in bonus game (Same as 169)
-#define SE_UNKNOWN_0x13E            0x13E // SE169 Sealeo nose bounce in bonus game (Same as 168)
+#define SE_SPHEAL_END_WHISTLE       0x13B // *SE166 *Traffic whistle two blast*
+#define SE_SEALEO_HIT_THUD          0x13C // *SE167 Hit Sealeo in bonus game *Thud*
+#define SE_SEALEO_NOSE_BOUNCE       0x13D // *SE168 Sealeo nose bounce in bonus game (Same as 169)
+#define SE_SPHEAL_LAND_UNDER_NET    0x13E // SE169 Sealeo nose bounce in bonus game (Same as 168)
 #define SE_UNKNOWN_0x13F            0x13F // *coin*
-#define SE_UNKNOWN_0x140            0x140 // SE170 Spheal emerges from water
+#define SE_SPHEAL_SURFACE_AT_RAMP   0x140 // SE170 Spheal emerges from water
 #define SE_EMPTY_0x141              0x141 // No Sound
 #define SE_PIKA_NO_KICKBACK         0x142 // *SE184 Pika!
 #define SE_EMPTY_0x143              0x143 // No Sound
 #define SE_JIRACHI_MOVE             0x144 // SE171 *Chime*
 #define SE_JIRACHI_HIT              0x145 // SE172 *Rising success whistle*
-#define SE_UNKNOWN_0x146            0x146 // SE173 Peliper flies after grabbing ball
-#define SE_UNKNOWN_0x147            0x147 // SE174 Peliper drops ball (Same as SE39)
-#define SE_UNKNOWN_0x148            0x148 // SE175 *Latch*
-#define SE_UNKNOWN_0x149            0x149 // SE176 *Double Step*
-#define SE_HIGH_SCORE_EARNED        0x14A // SE178 High Score Earned
-#define SE_UNKNOWN_0x14B            0x14B // SE179 Duplicate of 36
+#define SE_TOTODILE_LOWERS_ROPE     0x146 // SE173 Totodile egg delivery, lowers rope
+#define SE_TOTODILE_SLIDES_DOWN     0x147 // SE174 Totodile egg delivery, slides down rope (Same as SE39)
+#define SE_TOTODILE_PLACES_EGG      0x148 // SE175 Totodile egg delivery, places egg
+#define SE_TOTODILE_CLIMBS_ROPE     0x149 // SE176 Totodile egg delivery, climbs rope
+#define SE_HIGHEST_SCORE_EARNED     0x14A // SE178 High Score Earned (#1)
+#define SE_HIGH_SCORE_EARNED        0x14B // SE179 High Score Earned (#2 -#8) Duplicate of 36 
 #define SE_WHISCASH_EARTHQUAKE      0x14C // SE177 *rumble*
 
 #endif // GUARD_CONSTANTS_BG_MUSIC_H

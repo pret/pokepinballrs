@@ -883,13 +883,13 @@ void AnimateTotodileEggDelivery(void)
         }
 
         if (gCurrentPinballGame->totodileDeliveryFrame == 1)
-            m4aSongNumStart(SE_UNKNOWN_0x146);
+            m4aSongNumStart(SE_TOTODILE_LOWERS_ROPE);
 
         if (gCurrentPinballGame->totodileDeliveryFrame == 7)
-            m4aSongNumStart(SE_UNKNOWN_0x147);
+            m4aSongNumStart(SE_TOTODILE_SLIDES_DOWN);
 
         if (gCurrentPinballGame->totodileDeliveryFrame == 13)
-            m4aSongNumStart(SE_UNKNOWN_0x148);
+            m4aSongNumStart(SE_TOTODILE_PLACES_EGG);
 
         if (gCurrentPinballGame->totodileDeliveryFrame == 39)
         {
@@ -903,7 +903,7 @@ void AnimateTotodileEggDelivery(void)
     }
 
     if (gCurrentPinballGame->totodileDeliveryFrame >= 14 && gCurrentPinballGame->totodileDeliveryFrame < 38 && gCurrentPinballGame->globalAnimFrameCounter % 7 == 0)
-        m4aSongNumStart(SE_UNKNOWN_0x149);
+        m4aSongNumStart(SE_TOTODILE_CLIMBS_ROPE);
 
     group->baseX = gCurrentPinballGame->eggDeliveryX / 20 - gCurrentPinballGame->cameraXOffset;
     group->baseY = gCurrentPinballGame->eggDeliveryY / 20 - gCurrentPinballGame->cameraYOffset;

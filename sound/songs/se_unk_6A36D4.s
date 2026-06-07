@@ -1,7 +1,7 @@
 	.include "sound/MPlayDef.s"
 
 @ This is an orphaned sound effect track fragment. No song header references this
-@ data, but it's identical to the end of se_unk_14b_0 and se_unk_14b_1. It's
+@ data, but it's identical to the end of se_high_score_earned_0 and se_high_score_earned_1. It's
 @ puzzling as to why this fragment appears after the agb_sram.c .rodata section, separated
 @ from the main sound_data .rodata.
 
@@ -16,7 +16,7 @@ broken_se_6A36D4:  @ 0x086A36D4
 	.byte	W24
 	.byte	FINE
 
-	@ --- complete track, identical to se_unk_14b_1 ---
+	@ --- complete track, identical to se_high_score_earned_1 ---
 	.byte	KEYSH , 0
 	.byte		VOICE , 46
 	.byte		XCMD  , xIECV , 8

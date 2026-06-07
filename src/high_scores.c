@@ -276,7 +276,7 @@ void HighScore_FlashNewEntry(void)
     {
         if(gHighScoreScreenState.highScoreIndex == 0)
         {
-            m4aSongNumStart(SE_HIGH_SCORE_EARNED);
+            m4aSongNumStart(SE_HIGHEST_SCORE_EARNED);
             gHighScoreScreenState.flashDuration = 0xA0;
         }
         else if(gHighScoreScreenState.highScoreIndex == -1)
@@ -288,7 +288,7 @@ void HighScore_FlashNewEntry(void)
         }
         else
         {
-            m4aSongNumStart(SE_UNKNOWN_0x14B);
+            m4aSongNumStart(SE_HIGH_SCORE_EARNED);
             gHighScoreScreenState.flashDuration = 0x5A;
         }
     }
