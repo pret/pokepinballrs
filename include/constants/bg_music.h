@@ -247,24 +247,24 @@
 #define SE_EMPTY_0x125              0x125 // No Sound
 #define SE_RAYQUAZA_HIT             0x126 // SE151 Rayquaza Hit (Same as 31, 114, 129, 139)
 #define SE_RAYQUAZA_WIND            0x127 // SE152 *Wind noise*
-#define SE_UNKNOWN_0x128            0x128 // SE153 *Short stable electric tone* (SE19 has long form)
+#define SE_RAYQUAZA_LIGHTNING_CHARGE 0x128 // SE153 *Short stable electric tone* (SE19 has long form)
 #define SE_RAYQUAZA_FLYBY           0x129 // SE154 Rayquaza flyby
-#define SE_UNKNOWN_0x12A            0x12A // SE155 Escape hit from ball trapped by lightning
-#define SE_UNKNOWN_0x12B            0x12B // SE156 Ball Launched by Rayquaza Tornado
-#define SE_UNKNOWN_0x12C            0x12C // SE157 Ball Lands after launch
-#define SE_UNKNOWN_0x12D            0x12D // SE158 *Wall crashes after flyby?*
+#define SE_RAYQUAZA_LIGHTNING_TRAP  0x12A // SE155 Initial hit and Escape hit from ball trapped by lightning
+#define SE_RAYQUAZA_WHIRLWIND_BALL_LAUNCH 0x12B // SE156 Ball Launched by Rayquaza Tornado
+#define SE_RAYQUAZA_WHIRLWIND_BALL_LAND 0x12C // SE157 Ball Lands after launch
+#define SE_RAYQUAZA_SONIC_BOOM      0x12D // SE158 *Wall crashes after flyby?*
 #define SE_RAYQUAZA_STAGE_WIND      0x12E // SE159 Stage wind for Rayquaza bonus stage.
 #define SE_EMPTY_0x12F              0x12F // No Sound
 #define SE_EMPTY_0x130              0x130 // No Sound
 #define SE_EMPTY_0x131              0x131 // No Sound
 #define SE_EMPTY_0x132              0x132 // No Sound
 #define SE_EMPTY_0x133              0x133 // No Sound
-#define SE_UNKNOWN_0x134            0x134 // SE160 *splash?*
-#define SE_UNKNOWN_0x135            0x135 // SE161 *deeper splash*
-#define SE_UNKNOWN_0x136            0x136 // SE162 *water engulf*
-#define SE_UNKNOWN_0x137            0x137 // *SE163 *Pokemon leaves ball/escape?* Same as 38
-#define SE_UNKNOWN_0x138            0x138 // *SE164 *Snare brush*
-#define SE_UNKNOWN_0x139            0x139 // *SE165 *Crowd cheer*
+#define SE_SPHEAL_SURFACING         0x134 // SE160 *splash?*
+#define SE_SPHEAL_SUBMERGING        0x135 // SE161 *deeper splash*
+#define SE_SPHEAL_SUBMERGE_AFTER_SCORING 0x136 // SE162 *water engulf*
+#define SE_SPHEAL_HIT               0x137 // *SE163 *Pokemon leaves ball/escape?* Same as 38
+#define SE_SPHEAL_NET_SWOOSH        0x138 // *SE164 *Snare brush*
+#define SE_SPHEAL_CROWD_CHEER       0x139 // *SE165 *Crowd cheer*
 #define SE_EMPTY_0x13A              0x13A // No Sound
 #define SE_UNKNOWN_0x13B            0x13B // *SE166 *Traffic whistle two blast*
 #define SE_UNKNOWN_0x13C            0x13C // *SE167 Hit Sealeo in bonus game *Thud*

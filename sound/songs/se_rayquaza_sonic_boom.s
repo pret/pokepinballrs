@@ -1,25 +1,25 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_12d_grp, gUnknown_08531D4C
-	.equ	se_unk_12d_pri, 5
-	.equ	se_unk_12d_rev, reverb_set+50
-	.equ	se_unk_12d_mvl, 127
-	.equ	se_unk_12d_key, 0
-	.equ	se_unk_12d_tbs, 1
-	.equ	se_unk_12d_exg, 0
-	.equ	se_unk_12d_cmp, 1
+	.equ	se_rayquaza_sonic_boom_grp, gUnknown_08531D4C
+	.equ	se_rayquaza_sonic_boom_pri, 5
+	.equ	se_rayquaza_sonic_boom_rev, reverb_set+50
+	.equ	se_rayquaza_sonic_boom_mvl, 127
+	.equ	se_rayquaza_sonic_boom_key, 0
+	.equ	se_rayquaza_sonic_boom_tbs, 1
+	.equ	se_rayquaza_sonic_boom_exg, 0
+	.equ	se_rayquaza_sonic_boom_cmp, 1
 
 	.section .rodata
-	.global	se_unk_12d
+	.global	se_rayquaza_sonic_boom
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_12d_0:  @ 0x086A2AC8
-	.byte	KEYSH , se_unk_12d_key+0
-	.byte	TEMPO , 150*se_unk_12d_tbs/2
+se_rayquaza_sonic_boom_0:  @ 0x086A2AC8
+	.byte	KEYSH , se_rayquaza_sonic_boom_key+0
+	.byte	TEMPO , 150*se_rayquaza_sonic_boom_tbs/2
 	.byte		VOICE , 41
-	.byte		VOL   , 125*se_unk_12d_mvl/mxv
+	.byte		VOL   , 125*se_rayquaza_sonic_boom_mvl/mxv
 	.byte		BENDR , 12
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v+0
@@ -82,20 +82,20 @@ se_unk_12d_0:  @ 0x086A2AC8
 
 @*********************** Track 02 ***********************@
 
-se_unk_12d_1:  @ 0x086A2B27
-	.byte	KEYSH , se_unk_12d_key+0
+se_rayquaza_sonic_boom_1:  @ 0x086A2B27
+	.byte	KEYSH , se_rayquaza_sonic_boom_key+0
 	.byte		VOICE , 4
-	.byte		VOL   , 125*se_unk_12d_mvl/mxv
+	.byte		VOL   , 125*se_rayquaza_sonic_boom_mvl/mxv
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v+1
 	.byte		N02   , Cn3 , v052
 	.byte	W01
-	.byte		VOL   , 74*se_unk_12d_mvl/mxv
+	.byte		VOL   , 74*se_rayquaza_sonic_boom_mvl/mxv
 	.byte	W06
-	.byte		        125*se_unk_12d_mvl/mxv
+	.byte		        125*se_rayquaza_sonic_boom_mvl/mxv
 	.byte		N02
 	.byte	W01
-	.byte		VOL   , 74*se_unk_12d_mvl/mxv
+	.byte		VOL   , 74*se_rayquaza_sonic_boom_mvl/mxv
 	.byte	W16
 	.byte	W24
 	.byte	W24
@@ -105,14 +105,14 @@ se_unk_12d_1:  @ 0x086A2B27
 
 	.align	2
 
-se_unk_12d:  @ 0x086A2B44
+se_rayquaza_sonic_boom:  @ 0x086A2B44
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_12d_pri	@ Priority
-	.byte	se_unk_12d_rev	@ Reverb
+	.byte	se_rayquaza_sonic_boom_pri	@ Priority
+	.byte	se_rayquaza_sonic_boom_rev	@ Reverb
 
-	.word	se_unk_12d_grp
+	.word	se_rayquaza_sonic_boom_grp
 
-	.word	se_unk_12d_0
-	.word	se_unk_12d_1
+	.word	se_rayquaza_sonic_boom_0
+	.word	se_rayquaza_sonic_boom_1
 @ 0x086A2B54

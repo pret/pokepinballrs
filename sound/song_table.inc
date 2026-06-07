@@ -303,24 +303,24 @@ gSongTable:: @ 0x08534E04
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_rayquaza_hit, MUSIC_PLAYER_SE2, 2
 	song se_rayquaza_wind, MUSIC_PLAYER_SE2, 2
-	song se_unk_128, MUSIC_PLAYER_SE2, 2
+	song se_rayquaza_lightning_charge, MUSIC_PLAYER_SE2, 2
 	song se_rayquaza_flyby, MUSIC_PLAYER_SE2, 2
-	song se_unk_12a, MUSIC_PLAYER_SE2, 2
-	song se_unk_12b, MUSIC_PLAYER_SE2, 2
-	song se_unk_12c, MUSIC_PLAYER_SE2, 2
-	song se_unk_12d, MUSIC_PLAYER_SE2, 2
+	song se_rayquaza_lightning_trap, MUSIC_PLAYER_SE2, 2
+	song se_rayquaza_whirlwind_ball_launch, MUSIC_PLAYER_SE2, 2
+	song se_rayquaza_whirlwind_ball_land, MUSIC_PLAYER_SE2, 2
+	song se_rayquaza_sonic_boom, MUSIC_PLAYER_SE2, 2
 	song se_rayquaza_stage_wind, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_134, MUSIC_PLAYER_SE2, 2
-	song se_unk_135, MUSIC_PLAYER_SE2, 2
-	song se_unk_136, MUSIC_PLAYER_SE2, 2
-	song se_unk_137, MUSIC_PLAYER_SE2, 2
-	song se_unk_138, MUSIC_PLAYER_SE2, 2
-	song se_unk_139, MUSIC_PLAYER_SE2, 2
+	song se_spheal_surfacing, MUSIC_PLAYER_SE2, 2
+	song se_spheal_submerging, MUSIC_PLAYER_SE2, 2
+	song se_spheal_submerging_after_scoring, MUSIC_PLAYER_SE2, 2
+	song se_spheal_hit, MUSIC_PLAYER_SE2, 2
+	song se_spheal_net_swoosh, MUSIC_PLAYER_SE2, 2
+	song se_spheal_crowd_cheer, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_unk_13b, MUSIC_PLAYER_SE2, 2
 	song se_unk_13c, MUSIC_PLAYER_SE2, 2

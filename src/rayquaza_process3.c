@@ -1002,22 +1002,22 @@ void UpdateRayquazaMinionsAndEffects(void)
         break;
     case RAYQUAZA_LIGHTNING_STATE_CHARGING:
         if (gCurrentPinballGame->lightningAttackAnimFrame == 0)
-            m4aSongNumStart(SE_UNKNOWN_0x128);
+            m4aSongNumStart(SE_RAYQUAZA_LIGHTNING_CHARGE);
 
         if (gCurrentPinballGame->lightningAttackAnimFrame == 8)
-            m4aSongNumStop(SE_UNKNOWN_0x128);
+            m4aSongNumStop(SE_RAYQUAZA_LIGHTNING_CHARGE);
 
         if (gCurrentPinballGame->lightningAttackAnimFrame == 24)
-            m4aSongNumStart(SE_UNKNOWN_0x128);
+            m4aSongNumStart(SE_RAYQUAZA_LIGHTNING_CHARGE);
 
         if (gCurrentPinballGame->lightningAttackAnimFrame == 36)
-            m4aSongNumStop(SE_UNKNOWN_0x128);
+            m4aSongNumStop(SE_RAYQUAZA_LIGHTNING_CHARGE);
 
         if (gCurrentPinballGame->lightningAttackAnimFrame == 50)
-            m4aSongNumStart(SE_UNKNOWN_0x128);
+            m4aSongNumStart(SE_RAYQUAZA_LIGHTNING_CHARGE);
 
         if (gCurrentPinballGame->lightningAttackAnimFrame == 56)
-            m4aSongNumStop(SE_UNKNOWN_0x128);
+            m4aSongNumStop(SE_RAYQUAZA_LIGHTNING_CHARGE);
 
         if (gCurrentPinballGame->lightningAttackAnimFrame < 14)
             var0 = gCurrentPinballGame->lightningAttackAnimFrame / 2;
@@ -1103,7 +1103,7 @@ void UpdateRayquazaMinionsAndEffects(void)
                 {
                     gMain.spriteGroups[36].active = TRUE;
                     gCurrentPinballGame->ballGrabTimer = 600;
-                    m4aSongNumStart(SE_UNKNOWN_0x12A);
+                    m4aSongNumStart(SE_RAYQUAZA_LIGHTNING_TRAP);
                     PlayRumble(9);
                 }
             }
@@ -1292,7 +1292,7 @@ void UpdateRayquazaMinionsAndEffects(void)
                     gCurrentPinballGame->whirlwindHitIndex = i + 1;
                     gCurrentPinballGame->whirlwindHitPosition.x = gCurrentPinballGame->vortexScreenPosition[i].x;
                     gCurrentPinballGame->whirlwindHitPosition.y = gCurrentPinballGame->vortexScreenPosition[i].y;
-                    m4aSongNumStart(SE_UNKNOWN_0x12B);
+                    m4aSongNumStart(SE_RAYQUAZA_WHIRLWIND_BALL_LAUNCH);
                     PlayRumble(13);
                 }
             }
@@ -1356,7 +1356,7 @@ void UpdateRayquazaMinionsAndEffects(void)
             if (gCurrentPinballGame->vortexAnimTimer[i] < 130)
             {
                 if (gCurrentPinballGame->vortexAnimTimer[i] == 10)
-                    m4aSongNumStart(SE_UNKNOWN_0x12C);
+                    m4aSongNumStart(SE_RAYQUAZA_WHIRLWIND_BALL_LAND);
 
                 gCurrentPinballGame->ballWhirlwindFallAcceleration--;
                 gCurrentPinballGame->ballWhirlwindLiftY += gCurrentPinballGame->ballWhirlwindFallAcceleration;
@@ -1483,7 +1483,7 @@ void UpdateLightningGrabEntity(void)
                     gCurrentPinballGame->ballGrabTimer = 5;
 
                 gCurrentPinballGame->ballGrabShakeTimer = 7;
-                m4aSongNumStart(SE_UNKNOWN_0x12A);
+                m4aSongNumStart(SE_RAYQUAZA_LIGHTNING_TRAP);
             }
         }
 
@@ -1759,7 +1759,7 @@ void RenderWindCloudSprites(void)
             gCurrentPinballGame->vortexOrbitCenter[0].y = gRayquazaTornadoSpawnPos[rand].y;
             gCurrentPinballGame->vortexScreenPosition[0].x = gCurrentPinballGame->vortexOrbitCenter[0].x + (Cos(var0) * 4) / 2000;
             gCurrentPinballGame->vortexScreenPosition[0].y = gCurrentPinballGame->vortexOrbitCenter[0].y + (Sin(var0) * 4) / 2000;
-            m4aSongNumStart(SE_UNKNOWN_0x12D);
+            m4aSongNumStart(SE_RAYQUAZA_SONIC_BOOM);
         }
     }
 
@@ -1776,7 +1776,7 @@ void RenderWindCloudSprites(void)
             gCurrentPinballGame->vortexOrbitCenter[1].y = gRayquazaTornadoSpawnPos[rand].y;
             gCurrentPinballGame->vortexScreenPosition[1].x = gCurrentPinballGame->vortexOrbitCenter[1].x + (Cos(var0) * 4) / 2000;
             gCurrentPinballGame->vortexScreenPosition[1].y = gCurrentPinballGame->vortexOrbitCenter[1].y + (Sin(var0) * 4) / 2000;
-            m4aSongNumStart(SE_UNKNOWN_0x12D);
+            m4aSongNumStart(SE_RAYQUAZA_SONIC_BOOM);
         }
     }
 

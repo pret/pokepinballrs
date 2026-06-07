@@ -12,9 +12,9 @@ struct SphealFlightPath
 extern const struct SphealFlightPath gSphealFlightPathData[];
 
 extern const s16 gSphealWhiscashAnimFrameset[][4];
-extern struct SongHeader se_unk_137;
-extern struct SongHeader se_unk_138;
-extern struct SongHeader se_unk_139;
+extern struct SongHeader se_spheal_hit;
+extern struct SongHeader se_spheal_net_swoosh;
+extern struct SongHeader se_spheal_crowd_cheer;
 extern struct SongHeader se_unk_13b;
 extern struct SongHeader se_unk_13c;
 extern struct SongHeader se_unk_13d;
@@ -515,7 +515,7 @@ void UpdateSphealEntityLogic(void)
                     }
 
                     if (gCurrentPinballGame->sphealFramesetIndex[i] == 1)
-                        m4aSongNumStart(SE_UNKNOWN_0x134);
+                        m4aSongNumStart(SE_SPHEAL_SURFACING);
                 }
 
                 gCurrentPinballGame->sphealEscapeTimer[i] = 0;
@@ -553,7 +553,7 @@ void UpdateSphealEntityLogic(void)
                 break;
             case SPHEAL_ENTITY_STATE_HIT:
                 // Note: A hit while 'walking down' won't come here.
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_137);
+                MPlayStart(&gMPlayInfo_SE1, &se_spheal_hit);
                 if (gCurrentPinballGame->sphealEntityCollisionType[i] == SPHEAL_COLLISION_TYPE_SWIMMING)
                 {
                     gCurrentPinballGame->sphealAnimTimer[i] = 0;
@@ -605,7 +605,7 @@ void UpdateSphealEntityLogic(void)
                     }
 
                     if (gCurrentPinballGame->sphealFramesetIndex[i] == 7)
-                        m4aSongNumStart(SE_UNKNOWN_0x135);
+                        m4aSongNumStart(SE_SPHEAL_SUBMERGING);
                 }
 
                 gCurrentPinballGame->sphealEntityCollisionType[i] = SPHEAL_COLLISION_TYPE_INACTIVE;
@@ -702,7 +702,7 @@ void UpdateSphealEntityLogic(void)
                     }
 
                     if (gCurrentPinballGame->sphealFramesetIndex[i] == 17)
-                        m4aSongNumStart(SE_UNKNOWN_0x135);
+                        m4aSongNumStart(SE_SPHEAL_SUBMERGING);
                 }
                 break;
             case SPHEAL_ENTITY_STATE_HIT_UP_RAMP: {
@@ -833,7 +833,7 @@ void UpdateSphealEntityLogic(void)
                                 gCurrentPinballGame->sphealFramesetIndex[i] = 25;
 
                             if (var20 == 1)
-                                m4aSongNumStart(SE_UNKNOWN_0x136);
+                                m4aSongNumStart(SE_SPHEAL_SUBMERGE_AFTER_SCORING);
 
                             gCurrentPinballGame->sphealEntityCollisionType[i] = SPHEAL_COLLISION_TYPE_INACTIVE;
                         }
@@ -981,11 +981,11 @@ void UpdateSphealScoreAndDelivery(void)
     if (gCurrentPinballGame->boardState < SPHEAL_BOARD_STATE_ENDING && gMain.modeChangeFlags == MODE_CHANGE_NONE && gCurrentPinballGame->scoreCountdownTimer)
     {
         if (gCurrentPinballGame->scoreCountdownTimer == 21)
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_138);
+            MPlayStart(&gMPlayInfo_SE1, &se_spheal_net_swoosh);
 
         gCurrentPinballGame->scoreCountdownTimer--;
         if (gCurrentPinballGame->scoreCountdownTimer == 0)
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_139);
+            MPlayStart(&gMPlayInfo_SE1, &se_spheal_crowd_cheer);
     }
 
     if (gCurrentPinballGame->ballDeliveryActive)
