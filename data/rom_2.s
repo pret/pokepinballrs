@@ -3864,10 +3864,63 @@ gCaptureShakeOffsets:: @ 0x086ACFF4
     .byte 0, 1, 2, 3, 1, 2, 4, 5, 1, 1, 6, 7
 
 gShopItemData:: @ 0x086AD000
-	.incbin "baserom.gba", 0x6AD000, 0x70
+    @ 47 sets of data for roulette window display / shop data
+    @ (See prize_definitions.h for index position meaning)
+    @ slot 46 is confirm bonus game; slot 47 is confirm travel
 
-gPortraitIdleCycleData:: @ 0x086AD070
-	.incbin "baserom.gba", 0x6AD070, 0x110
+    @ Lit tile Ix, Unlit TileIx, paletteIx, shop price
+	.2byte 1, 0, 0, 10         @ 30 Sec saver
+    .2byte 3, 2, 1, 20         @ 60 Sec saver
+    .2byte 5, 4, 2, 30         @ 90 Sec saver
+    .2byte 7, 6, 3, 50         @ Pichu Saver
+    .2byte 0x15, 0x14, 0xa, 99 @ Extra ball
+    .2byte 0x9, 0x8, 0x4, 0    @ Small Point Bonus
+    .2byte 0xb, 0xa, 0x5, 0    @ Big Point Bonus
+    .2byte 0x17, 0x16, 0xb, 0  @ Random Bonus Multiplier
+    .2byte 0x19, 0x18, 0xc, 0  @ Start Catch Mode
+    .2byte 0x1b, 0x1a, 0xd, 0  @ Start Evo Mode
+
+    .2byte 0xd, 0xc, 0x6, 40   @ Ball Upgrade to Great
+    .2byte 0xf, 0xe, 0x7, 40   @ Ball Upgrade to Ultra
+    .2byte 0x11, 0x10, 0x8, 40 @ Ball Upgrade to Master
+    .2byte 0x13, 0x12, 0x9, 40 @ Ball Upgrade MAX
+	.2byte 0x1d, 0x1c, 0xe, 0  @ Start Slots Card
+    .2byte 0x1f, 0x1e, 0xf, 0  @ Goto Next Card
+    .2byte 0x39, 0x38, 0x1c, 0 @ Travel Ramp Indicator Card
+    .2byte 0x33, 0x32, 0x19, 0 @ 10 Coins
+    .2byte 0x35, 0x34, 0x1a, 0 @ 30 Coins
+    .2byte 0x37, 0x36, 0x1b, 0 @ 50 Coins
+
+    .2byte 0x31, 0x30, 0x18, 40 @ 30 Sec extra bonus stage time
+    .2byte 0x2b, 0x2a, 0x15, 0  @ Jirachi catch Mode
+    .2byte 0x2d, 0x2c, 0x16, 60 @ Wiscash Spheal delivery (ruby board)
+    .2byte 0x2f, 0x2e, 0x17, 60 @ Pelipper Spheal delivery (sapphire board)
+    .2byte 0x41, 0x40, 0x20, 0  @ 1M Points
+    .2byte 0x43, 0x42, 0x21, 0  @ 2M Points
+    .2byte 0x45, 0x44, 0x22, 0  @ 3M Points
+    .2byte 0x47, 0x46, 0x23, 0  @ 4M Points
+    .2byte 0x49, 0x48, 0x24, 0  @ 5M Points
+    .2byte 0x4b, 0x4a, 0x25, 0  @ 6M Points
+
+    .2byte 0x4d, 0x4c, 0x26, 0  @ 7M Points
+    .2byte 0x4f, 0x4e, 0x27, 0  @ 8M Points
+    .2byte 0x51, 0x50, 0x28, 0  @ 9M Points
+    .2byte 0x3b, 0x3a, 0x1d, 0  @ 100 Points
+    .2byte 0x3d, 0x3c, 0x1e, 0  @ 500 Points
+    .2byte 0x3f, 0x3e, 0x1f, 0  @ 900 Points
+    .2byte 0x53, 0x52, 0x29, 0  @ Bonus Mult +1
+    .2byte 0x55, 0x54, 0x2a, 0  @ Bonus Mult +2
+    .2byte 0x57, 0x56, 0x2b, 0  @ Bonus Mult +3
+    .2byte 0x59, 0x58, 0x2c, 0  @ Bonus Mult +4
+
+    .2byte 0x5b, 0x5a, 0x2d, 0  @ Bonus Mult +5
+    .2byte 0x23, 0x22, 0x11, 0  @ Duskull Bonus
+    .2byte 0x21, 0x20, 0x10, 0  @ Kecleon Bonus
+    .2byte 0x27, 0x26, 0x13, 0  @ Kyogre Bonus
+    .2byte 0x25, 0x24, 0x12, 0  @ Groudon Bonus
+    .2byte 0x29, 0x28, 0x14, 0  @ Rayquaza Bonus
+    .2byte 0x5d, 0x5c, 0x2e, 0  @ Confirm bonus game start
+    .2byte 0x5f, 0x5e, 0x2f, 0  @ Confirm travel move
 
 .include "data/roulette_wheel_contents.inc"
 
