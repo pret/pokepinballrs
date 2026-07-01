@@ -768,7 +768,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
         *arg2 = 0xD000;
         *arg1 = 1;
         gCurrentPinballGame->scoreAddedInFrame = 5000;
-        m4aSongNumStart(SE_UNKNOWN_0xB7);
+        m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
         PlayRumble(7);
         return;
     case 13:
@@ -788,7 +788,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
         *arg2 = 0xCC00;
         *arg1 = 1;
 
-        m4aSongNumStart(SE_UNKNOWN_0xB7);
+        m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
         gCurrentPinballGame->scoreAddedInFrame = 5000;
         PlayRumble(7);
         return;
@@ -806,7 +806,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
                     *arg1 = 1;
                     gCurrentPinballGame->eggCaveState++;
 
-                    m4aSongNumStart(SE_UNKNOWN_0xB7);
+                    m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
                     gCurrentPinballGame->scoreAddedInFrame = 5000;
                     PlayRumble(7);
                     return;
@@ -818,7 +818,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
                     *arg2 = 0xC800;
                     *arg1 = 1;
 
-                    m4aSongNumStart(SE_UNKNOWN_0xB7);
+                    m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
                     gCurrentPinballGame->eggCaveReEntryFlag = 1;
                     PlayRumble(7);
                     return;
@@ -834,7 +834,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
             *arg2 = 0xC800;
             *arg1 = 1;
 
-            m4aSongNumStart(SE_UNKNOWN_0xB7);
+            m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
             gCurrentPinballGame->scoreAddedInFrame = 5000;
             PlayRumble(7);
         }

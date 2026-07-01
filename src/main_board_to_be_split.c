@@ -951,7 +951,7 @@ void AnimateAerodactylEggDelivery(void)
     if (gCurrentPinballGame->eggDropTimer < 130)
     {
         if (gCurrentPinballGame->eggDropTimer % 36U == 0)
-            m4aSongNumStart(SE_UNKNOWN_0xB8);
+            m4aSongNumStart(SE_AERODACTYL_EGG_FLIGHT);
 
         gCurrentPinballGame->eggDropTimer++;
         gCurrentPinballGame->eggDeliveryX += gCurrentPinballGame->eggDeliveryVelX;
@@ -1491,7 +1491,7 @@ void UpdateHatchCave(void)
                     gCurrentPinballGame->ball->spinSpeed = 0;
                     gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
                     gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
-                    m4aSongNumStart(SE_UNKNOWN_0xB9);
+                    m4aSongNumStart(SE_CYNDAQUIL_BALL_EJECT_AFTER_EGG_ARRIVAL);
                     gCurrentPinballGame->boardEntityActive = 0;
                 }
 

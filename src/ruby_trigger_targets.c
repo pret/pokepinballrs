@@ -419,7 +419,7 @@ void UpdateRubySideBumperAnimation(void)
         gCurrentPinballGame->sideBumperBounceCount[1] = 0;
         gCurrentPinballGame->sideBumperHitFlag = 0;
         PlayRumble(7);
-        m4aSongNumStart(SE_UNKNOWN_0xB7);
+        m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
         gCurrentPinballGame->scoreAddedInFrame = 3000;
         gCurrentPinballGame->sideBumperAnimPhase[0] = 0;
         gCurrentPinballGame->sideBumperAnimPhase[1] = 0;

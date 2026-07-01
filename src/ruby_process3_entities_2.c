@@ -201,7 +201,7 @@ void AnimateRubyShopDoor(void)
                 gCurrentPinballGame->bannerGfxIndex = 0;
                 gCurrentPinballGame->bannerActive = 1;
                 gCurrentPinballGame->bannerPreserveBallState = 0;
-                m4aSongNumStart(SE_UNKNOWN_0xBD);
+                m4aSongNumStart(SE_RUBY_MART_GATE_OPEN);
             }
 
             gCurrentPinballGame->shopDoorAnimDelay--;

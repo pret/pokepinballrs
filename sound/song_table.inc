@@ -185,23 +185,23 @@ gSongTable:: @ 0x08534E04
 	song se_pika_charge_high_do, MUSIC_PLAYER_SE2, 2
 	song se_evo_cutscene_mon_portrait_change, MUSIC_PLAYER_SE2, 2
 	song se_pikachu_kickback, MUSIC_PLAYER_SE2, 2
-	song se_unk_b2, MUSIC_PLAYER_SE2, 2
+	song se_pichu_kickback_enabled, MUSIC_PLAYER_SE2, 2
 	song se_pichu_kickback, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xb4, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song se_ruby_bumper_hit, MUSIC_PLAYER_SE2, 2
-	song se_unk_b7, MUSIC_PLAYER_SE2, 2
-	song se_unk_b8, MUSIC_PLAYER_SE2, 2
-	song se_unk_b9, MUSIC_PLAYER_SE2, 2
+	song se_cyndaquil_egg_guard_hit, MUSIC_PLAYER_SE2, 2
+	song se_aerodactyl_egg_flight, MUSIC_PLAYER_SE2, 2
+	song se_cyndaquil_ball_eject_after_egg_arrival, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xba, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xbb, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xbc, MUSIC_PLAYER_SE2, 2
-	song se_unk_bd, MUSIC_PLAYER_SE2, 2
+	song se_ruby_mart_gate_open, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xbe, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xbf, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xc0, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xc1, MUSIC_PLAYER_SE2, 2
-	song se_unk_c2, MUSIC_PLAYER_SE2, 2
+	song se_sharpedo_ball_eject, MUSIC_PLAYER_SE2, 2
 	song se_unk_c3, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xc4, MUSIC_PLAYER_SE2, 2
 	song se_unk_c5, MUSIC_PLAYER_SE2, 2

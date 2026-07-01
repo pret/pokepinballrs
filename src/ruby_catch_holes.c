@@ -196,7 +196,7 @@ void AnimateSharpedoCatchSequence(void)
             gCurrentPinballGame->catchHoleAnimFrame = 18;
             if (gCurrentPinballGame->modeAnimTimer == 18)
             {
-                m4aSongNumStart(SE_UNKNOWN_0xC2);
+                m4aSongNumStart(SE_SHARPEDO_BALL_EJECT);
                 PlayRumble(7);
             }
         }
@@ -244,7 +244,7 @@ void InitRubyEggHatchMode(void)
     if (gCurrentPinballGame->eggCaveState == 3)
     {
         gCurrentPinballGame->eggCaveState = 4;
-        m4aSongNumStart(SE_UNKNOWN_0xB7);
+        m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
         PlayRumble(7);
         gCurrentPinballGame->modeAnimTimer = 500;
     }

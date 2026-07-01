@@ -236,7 +236,7 @@ void GivePrize(void)
         if (gCurrentPinballGame->prizeId == PRIZE_PICHU_SAVER)
         {
             if (gCurrentPinballGame->outcomeFrameCounter == 120)
-                m4aSongNumStart(SE_UNKNOWN_0xB2);
+                m4aSongNumStart(SE_PICHU_KICKBACK_ENABLED);
         }
 
         gCurrentPinballGame->outcomeFrameCounter++;

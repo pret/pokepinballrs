@@ -129,23 +129,23 @@
 #define SE_PIKA_CHARGE_HIGH_DO      0xAF // SE64 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_EVO_CUTSCENE_MON_PORTRAIT_CHANGE 0xB0 // SE65 *extended flight takeoff*
 #define SE_PIKACHU_KICKBACK         0xB1 // SE181 Pi~Ka CHU!
-#define SE_UNKNOWN_0xB2             0xB2 // SE182 Pika - pika - pi-ka
+#define SE_PICHU_KICKBACK_ENABLED   0xB2 // SE182 Pika - pika - pi-ka
 #define SE_PICHU_KICKBACK           0xB3 // SE183 Pi~ Chu!
 #define SE_UNUSED_0xB4              0xB4 // ?? Duplicate of SE49; Unused
 #define SE_EMPTY_0xB5               0xB5 // No Sound
 #define SE_RUBY_BUMPER_HIT          0xB6 // SE66 *Puddle slap* (Hit lotad/chinchou/whiscash)
-#define SE_UNKNOWN_0xB7             0xB7 // SE67 *Spring Gate Bounce*
-#define SE_UNKNOWN_0xB8             0xB8 // SE68 *Slap*
-#define SE_UNKNOWN_0xB9             0xB9 // SE69 *Fall into water*
+#define SE_CYNDAQUIL_EGG_GUARD_HIT  0xB7 // SE67 *Spring Gate Bounce*
+#define SE_AERODACTYL_EGG_FLIGHT    0xB8 // SE68 *Slap*
+#define SE_CYNDAQUIL_BALL_EJECT_AFTER_EGG_ARRIVAL 0xB9 // SE69 *Fall into water*
 #define SE_UNUSED_0xBA              0xBA // *Ground thud*
 #define SE_UNUSED_0xBB              0xBB // *Landing*
 #define SE_UNUSED_0xBC              0xBC // *Dumpster lid*
-#define SE_UNKNOWN_0xBD             0xBD // SE 70 Ruby board Pokemart gate open
+#define SE_RUBY_MART_GATE_OPEN      0xBD // SE 70 Ruby board Pokemart gate open
 #define SE_UNUSED_0xBE              0xBE // *5 note rise*
 #define SE_UNUSED_0xBF              0xBF // *5 note fall*
 #define SE_UNUSED_0xC0              0xC0 // *Duplicate of SE66*
 #define SE_UNUSED_0xC1              0xC1 // *Duplicate of SE88*
-#define SE_UNKNOWN_0xC2             0xC2 // SE71 Ruby board Sharpedo spit ball
+#define SE_SHARPEDO_BALL_EJECT      0xC2 // SE71 Ruby board Sharpedo spit ball
 #define SE_UNKNOWN_0xC3             0xC3 // SE72 Duplicate of SE70?
 #define SE_UNUSED_0xC4              0xC4 // *Explosive at water surface*
 #define SE_UNKNOWN_0xC5             0xC5 // SE73 *Jump off tin clatter*
