@@ -8,7 +8,7 @@ extern const u16 gRubyAltEntity0CollisionMap[];
 extern const u16 gRubyAltEntity1CollisionMap[];
 extern const u16 gWhiscashCollisionMap[];
 
-extern struct SongHeader se_unk_99;
+extern struct SongHeader se_evo_get_arrow_earned;
 
 s16 CollisionCheck_Ruby(struct Vector16 *arg0, u16* arg1) {
     struct Vector16 vec1;
@@ -416,7 +416,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
 
                     gCurrentPinballGame->evoArrowProgress++;
 
-                    m4aSongNumStart(SE_UNKNOWN_0x99);
+                    m4aSongNumStart(SE_EVO_GET_ARROW_EARNED);
                 }
 
                 gCurrentPinballGame->travelRolloverTriggerHitZone = TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_LEFT;
@@ -537,7 +537,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
 
                     gCurrentPinballGame->catchArrowProgress++;
 
-                    MPlayStart(&gMPlayInfo_SE1, &se_unk_99);
+                    MPlayStart(&gMPlayInfo_SE1, &se_evo_get_arrow_earned);
 
                     if (gCurrentPinballGame->catchArrowProgress > 1)
                         gCurrentPinballGame->catchProgressFlashing = 1;

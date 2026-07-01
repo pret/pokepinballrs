@@ -6,7 +6,7 @@
 #include "constants/board/bonus_board.h"
 
 extern struct SongHeader se_roulette_tick;
-extern struct SongHeader se_unk_9a;
+extern struct SongHeader se_mon_catch_ball_woosh;
 extern struct SongHeader se_ball_upgrade;
 
 extern u16 gRouletteWheelContents[][7];
@@ -583,7 +583,7 @@ void RunMonCaptureSequence(void)
         gCurrentPinballGame->ball->positionQ8.y += gCurrentPinballGame->ball->velocity.y;
 
         if (gCurrentPinballGame->captureSequenceFrame == 0)
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_9a);
+            MPlayStart(&gMPlayInfo_SE1, &se_mon_catch_ball_woosh);
 
         break;
 
@@ -779,7 +779,7 @@ void RunMonCaptureSequence(void)
 
     case 16:
         if (gCurrentPinballGame->captureSequenceFrame == 0)
-            m4aSongNumStart(0x9B);
+            m4aSongNumStart(SE_MON_CATCH_ENERGY_BEAM);
 
         DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], 0x05000220, 0x20);
         gCurrentPinballGame->ball->spinAngle = 0x7000;
@@ -895,7 +895,7 @@ void RunMonCaptureSequence(void)
             }
 
             if (gCurrentPinballGame->captureSequenceFrame == 2)
-                m4aSongNumStart(0x9C);
+                m4aSongNumStart(SE_MON_CATCH_BALL_CLOSE);
         }
         break;
 
@@ -1023,10 +1023,10 @@ void RunMonCaptureSequence(void)
             if (gCurrentPinballGame->ball->positionQ8.y >= 314 << 8)
             {
                 if (gCurrentPinballGame->ball->velocity.y > 49)
-                    m4aSongNumStart(0x9D);
+                    m4aSongNumStart(SE_MON_CATCH_BALL_HIT_GROUND);
 
                 if (gCurrentPinballGame->ball->velocity.y <= -50)
-                    m4aSongNumStart(0x9D);
+                    m4aSongNumStart(SE_MON_CATCH_BALL_HIT_GROUND);
 
                 gCurrentPinballGame->ball->positionQ8.y = 314 << 8;
                 gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * -45) / 100;
@@ -1059,7 +1059,7 @@ void RunMonCaptureSequence(void)
 
             if (gCurrentPinballGame->ball->positionQ8.y >= (gCurrentPinballGame->catchTargetY + 50) << 8)
             {
-                m4aSongNumStart(0x9D);
+                m4aSongNumStart(SE_MON_CATCH_BALL_HIT_GROUND);
                 gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->catchTargetY + 50) << 8;
                 gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * -45) / 100;
                 gCurrentPinballGame->ball->spinSpeed = (gCurrentPinballGame->ball->spinSpeed * 7) / 10;
@@ -1094,7 +1094,7 @@ void RunMonCaptureSequence(void)
                     PlayRumble(6);
 
                 if (temp_r0 == 184)
-                    m4aSongNumStart(158);
+                    m4aSongNumStart(SE_MON_CATCH_BALL_SHAKE);
 
                 gCurrentPinballGame->ball->positionQ8.x -= 96;
                 gCurrentPinballGame->ball->spinAngle -= 0x400;
@@ -1110,7 +1110,7 @@ void RunMonCaptureSequence(void)
                     PlayRumble(6);
 
                 if (temp_r0 == 168)
-                    m4aSongNumStart(0x9E);
+                    m4aSongNumStart(SE_MON_CATCH_BALL_SHAKE);
 
                 gCurrentPinballGame->ball->positionQ8.x -= 96;
                 gCurrentPinballGame->ball->spinAngle -= 0x400;
@@ -1128,7 +1128,7 @@ void RunMonCaptureSequence(void)
                         PlayRumble(6);
 
                     if (temp_r0 == 116)
-                        m4aSongNumStart(0x9E);
+                        m4aSongNumStart(SE_MON_CATCH_BALL_SHAKE);
 
                     gCurrentPinballGame->ball->positionQ8.x -= 96;
                     gCurrentPinballGame->ball->spinAngle -= 0x400;
@@ -1144,7 +1144,7 @@ void RunMonCaptureSequence(void)
                         PlayRumble(6);
 
                     if (temp_r0 == 100)
-                        m4aSongNumStart(0x9E);
+                        m4aSongNumStart(SE_MON_CATCH_BALL_SHAKE);
 
                     gCurrentPinballGame->ball->positionQ8.x -= 96;
                     gCurrentPinballGame->ball->spinAngle -= 0x400;
@@ -1159,7 +1159,7 @@ void RunMonCaptureSequence(void)
 
         if (temp_r0 == 0)
         {
-            m4aSongNumStart(0x11);
+            m4aSongNumStart(MUS_SUCCESS);
             InitEvolutionSuccessDisplay();
         }
 

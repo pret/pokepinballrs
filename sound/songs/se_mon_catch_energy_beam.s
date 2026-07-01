@@ -1,27 +1,27 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unk_9b_grp, gUnknown_08531D4C
-	.equ	se_unk_9b_pri, 5
-	.equ	se_unk_9b_rev, reverb_set+50
-	.equ	se_unk_9b_mvl, 127
-	.equ	se_unk_9b_key, 0
-	.equ	se_unk_9b_tbs, 1
-	.equ	se_unk_9b_exg, 0
-	.equ	se_unk_9b_cmp, 1
+	.equ	se_mon_catch_energy_beam_grp, gUnknown_08531D4C
+	.equ	se_mon_catch_energy_beam_pri, 5
+	.equ	se_mon_catch_energy_beam_rev, reverb_set+50
+	.equ	se_mon_catch_energy_beam_mvl, 127
+	.equ	se_mon_catch_energy_beam_key, 0
+	.equ	se_mon_catch_energy_beam_tbs, 1
+	.equ	se_mon_catch_energy_beam_exg, 0
+	.equ	se_mon_catch_energy_beam_cmp, 1
 
 	.section .rodata
-	.global	se_unk_9b
+	.global	se_mon_catch_energy_beam
 	.align	2
 
 @*********************** Track 01 ***********************@
 
-se_unk_9b_0:  @ 0x0869FCF0
-	.byte	KEYSH , se_unk_9b_key+0
-	.byte	TEMPO , 220*se_unk_9b_tbs/2
+se_mon_catch_energy_beam_0:  @ 0x0869FCF0
+	.byte	KEYSH , se_mon_catch_energy_beam_key+0
+	.byte	TEMPO , 220*se_mon_catch_energy_beam_tbs/2
 	.byte		VOICE , 18
 	.byte		BENDR , 12
 	.byte		PAN   , c_v+0
-	.byte		VOL   , 110*se_unk_9b_mvl/mxv
+	.byte		VOL   , 110*se_mon_catch_energy_beam_mvl/mxv
 	.byte		BEND  , c_v+0
 	.byte		N09   , An3 , v127
 	.byte	W03
@@ -65,28 +65,28 @@ se_unk_9b_0:  @ 0x0869FCF0
 	.byte		PAN   , c_v+0
 	.byte		BEND  , c_v-22
 	.byte	W06
-	.byte		VOL   , 103*se_unk_9b_mvl/mxv
+	.byte		VOL   , 103*se_mon_catch_energy_beam_mvl/mxv
 	.byte		PAN   , c_v+10
 	.byte	W03
 	.byte		BEND  , c_v-32
 	.byte	W03
 	.byte		PAN   , c_v+0
 	.byte	W03
-	.byte		VOL   , 95*se_unk_9b_mvl/mxv
+	.byte		VOL   , 95*se_mon_catch_energy_beam_mvl/mxv
 	.byte		BEND  , c_v-38
 	.byte	W03
 	.byte		PAN   , c_v-9
 	.byte	W05
 	.byte		BEND  , c_v-45
 	.byte	W01
-	.byte		VOL   , 66*se_unk_9b_mvl/mxv
+	.byte		VOL   , 66*se_mon_catch_energy_beam_mvl/mxv
 	.byte		PAN   , c_v+0
 	.byte	W05
 	.byte		        c_v+10
 	.byte	W01
 	.byte		BEND  , c_v-52
 	.byte	W03
-	.byte		VOL   , 21*se_unk_9b_mvl/mxv
+	.byte		VOL   , 21*se_mon_catch_energy_beam_mvl/mxv
 	.byte	W02
 	.byte		PAN   , c_v+0
 	.byte	W04
@@ -94,10 +94,10 @@ se_unk_9b_0:  @ 0x0869FCF0
 
 @*********************** Track 02 ***********************@
 
-se_unk_9b_1:  @ 0x0869FD67
-	.byte	KEYSH , se_unk_9b_key+0
+se_mon_catch_energy_beam_1:  @ 0x0869FD67
+	.byte	KEYSH , se_mon_catch_energy_beam_key+0
 	.byte		VOICE , 4
-	.byte		VOL   , 110*se_unk_9b_mvl/mxv
+	.byte		VOL   , 110*se_mon_catch_energy_beam_mvl/mxv
 	.byte		N06   , Cn3 , v060
 	.byte	W09
 	.byte		N15
@@ -111,14 +111,14 @@ se_unk_9b_1:  @ 0x0869FD67
 
 	.align	2
 
-se_unk_9b:  @ 0x0869FD78
+se_mon_catch_energy_beam:  @ 0x0869FD78
 	.byte	2	@ NumTrks
 	.byte	0	@ NumBlks
-	.byte	se_unk_9b_pri	@ Priority
-	.byte	se_unk_9b_rev	@ Reverb
+	.byte	se_mon_catch_energy_beam_pri	@ Priority
+	.byte	se_mon_catch_energy_beam_rev	@ Reverb
 
-	.word	se_unk_9b_grp
+	.word	se_mon_catch_energy_beam_grp
 
-	.word	se_unk_9b_0
-	.word	se_unk_9b_1
+	.word	se_mon_catch_energy_beam_0
+	.word	se_mon_catch_energy_beam_1
 @ 0x0869FD88

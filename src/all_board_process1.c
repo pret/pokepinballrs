@@ -43,13 +43,13 @@ void AllBoardProcess_1B_47160(void)
         if (JOY_NEW(DPAD_UP))
         {
             gCurrentPinballGame->pauseMenuCursorIndex ^= 1;
-            m4aSongNumStart(SE_UNKNOWN_0xA3);
+            m4aSongNumStart(SE_PAUSE_CURSOR_MOVE);
         }
 
         if (JOY_NEW(DPAD_DOWN))
         {
             gCurrentPinballGame->pauseMenuCursorIndex ^= 1;
-            m4aSongNumStart(SE_UNKNOWN_0xA3);
+            m4aSongNumStart(SE_PAUSE_CURSOR_MOVE);
         }
 
         if (JOY_NEW(A_BUTTON) && !JOY_HELD(B_BUTTON | SELECT_BUTTON | START_BUTTON))

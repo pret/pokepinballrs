@@ -30,7 +30,7 @@ void PauseGame(void)
     }
 
     m4aMPlayAllStop();
-    m4aSongNumStart(SE_UNKNOWN_0xA5);
+    m4aSongNumStart(SE_PAUSING);
     if (gMain.selectedField < MAIN_FIELD_COUNT)
     {
         gCurrentPinballGame->hudSpriteBaseY = gCurrentPinballGame->cameraYViewport;
@@ -90,7 +90,7 @@ void UnpauseGame(void)
     if (gCurrentPinballGame->savedBgmSongHeader)
         m4aMPlayContinue(&gMPlayInfo_BGM);
 
-    m4aSongNumStart(SE_UNKNOWN_0xA6);
+    m4aSongNumStart(SE_UNPAUSING);
     SetRumblePaused(0);
 }
 

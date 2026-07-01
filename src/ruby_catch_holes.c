@@ -196,7 +196,7 @@ void AnimateSharpedoCatchSequence(void)
             gCurrentPinballGame->catchHoleAnimFrame = 18;
             if (gCurrentPinballGame->modeAnimTimer == 18)
             {
-                m4aSongNumStart(194);
+                m4aSongNumStart(SE_UNKNOWN_0xC2);
                 PlayRumble(7);
             }
         }

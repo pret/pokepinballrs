@@ -233,7 +233,7 @@ void SphealBoardProcess_3B_43228(void)
         if (gCurrentPinballGame->stageTimer < 540)
         {
             if (gCurrentPinballGame->stageTimer == 4)
-                m4aSongNumStart(SE_UNKNOWN_0xA4);
+                m4aSongNumStart(SE_BONUS_PANEL_SLIDE);
 
             gCurrentPinballGame->stageTimer++;
         }
@@ -251,7 +251,7 @@ void SphealBoardProcess_3B_43228(void)
         {
             gCurrentPinballGame->stageTimer++;
             if (gCurrentPinballGame->stageTimer == 2)
-                m4aSongNumStart(SE_UNKNOWN_0xA4);
+                m4aSongNumStart(SE_BONUS_PANEL_SLIDE);
         }
         else
         {

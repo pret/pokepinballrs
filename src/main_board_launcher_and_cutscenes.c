@@ -392,7 +392,7 @@ void RunEvolutionCutscene(void)
             }
 
             if (var0 == 10)
-                m4aSongNumStart(SE_UNKNOWN_0xB0);
+                m4aSongNumStart(SE_EVO_CUTSCENE_MON_PORTRAIT_CHANGE);
         }
 
         var0 = gCurrentPinballGame->stageTimer - 300;

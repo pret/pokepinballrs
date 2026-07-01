@@ -160,21 +160,21 @@ gSongTable:: @ 0x08534E04
 	song se_saver_plunger_drop, MUSIC_PLAYER_SE2, 2
 	song se_travel_painter_flight, MUSIC_PLAYER_SE2, 2
 	song se_travel_painter_paints, MUSIC_PLAYER_SE2, 2
-	song se_unk_99, MUSIC_PLAYER_SE2, 2
-	song se_unk_9a, MUSIC_PLAYER_SE2, 2
-	song se_unk_9b, MUSIC_PLAYER_SE2, 2
-	song se_unk_9c, MUSIC_PLAYER_SE2, 2
-	song se_unk_9d, MUSIC_PLAYER_SE2, 2
-	song se_unk_9e, MUSIC_PLAYER_SE2, 2
+	song se_evo_get_arrow_earned, MUSIC_PLAYER_SE2, 2
+	song se_mon_catch_ball_woosh, MUSIC_PLAYER_SE2, 2
+	song se_mon_catch_energy_beam, MUSIC_PLAYER_SE2, 2
+	song se_mon_catch_ball_close, MUSIC_PLAYER_SE2, 2
+	song se_mon_catch_ball_hit_ground, MUSIC_PLAYER_SE2, 2
+	song se_mon_catch_ball_shake, MUSIC_PLAYER_SE2, 2
 	song se_warp, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xa0, MUSIC_PLAYER_SE2, 2
-	song se_unk_a1, MUSIC_PLAYER_SE2, 2
-	song se_unk_a2, MUSIC_PLAYER_SE2, 2
-	song se_unk_a3, MUSIC_PLAYER_SE2, 2
-	song se_unk_a4, MUSIC_PLAYER_SE2, 2
-	song se_unk_a5, MUSIC_PLAYER_SE2, 2
-	song se_unk_a6, MUSIC_PLAYER_SE2, 2
-	song se_unk_a7, MUSIC_PLAYER_SE2, 2
+	song se_ball_summary_text_progress, MUSIC_PLAYER_SE2, 2
+	song se_ball_summary_page_swipe, MUSIC_PLAYER_SE2, 2
+	song se_pause_cursor_move, MUSIC_PLAYER_SE2, 2
+	song se_bonus_panel_slide, MUSIC_PLAYER_SE2, 2
+	song se_pausing, MUSIC_PLAYER_SE2, 2
+	song se_unpausing, MUSIC_PLAYER_SE2, 2
+	song se_catch_mon_entity_appears, MUSIC_PLAYER_SE2, 2
 	song se_pika_charge_do, MUSIC_PLAYER_SE2, 2
 	song se_pika_charge_re, MUSIC_PLAYER_SE2, 2
 	song se_pika_charge_mi, MUSIC_PLAYER_SE2, 2
@@ -183,7 +183,7 @@ gSongTable:: @ 0x08534E04
 	song se_pika_charge_la, MUSIC_PLAYER_SE2, 2
 	song se_pika_charge_ti, MUSIC_PLAYER_SE2, 2
 	song se_pika_charge_high_do, MUSIC_PLAYER_SE2, 2
-	song se_unk_b0, MUSIC_PLAYER_SE2, 2
+	song se_evo_cutscene_mon_portrait_change, MUSIC_PLAYER_SE2, 2
 	song se_pikachu_kickback, MUSIC_PLAYER_SE2, 2
 	song se_unk_b2, MUSIC_PLAYER_SE2, 2
 	song se_pichu_kickback, MUSIC_PLAYER_SE2, 2

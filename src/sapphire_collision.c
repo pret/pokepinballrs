@@ -377,7 +377,7 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
                             gCurrentPinballGame->scoreAddedInFrame = 10000;
                         
                         gCurrentPinballGame->evoArrowProgress++;
-                        m4aSongNumStart(SE_UNKNOWN_0x99);
+                        m4aSongNumStart(SE_EVO_GET_ARROW_EARNED);
                     }
 
                     gCurrentPinballGame->travelRolloverTriggerHitZone = TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_LEFT;
@@ -447,7 +447,7 @@ void ProcessSapphireCollisionEvent(u8 arg0, u16* arg1, u16* arg2)
                         gCurrentPinballGame->catchArrowProgress++;
 
                         if (gCurrentPinballGame->chargeFillValue == 13)
-                            m4aSongNumStart(SE_UNKNOWN_0x99);
+                            m4aSongNumStart(SE_EVO_GET_ARROW_EARNED);
 
                         if (gCurrentPinballGame->catchArrowProgress > 1)
                             gCurrentPinballGame->catchProgressFlashing = 1;

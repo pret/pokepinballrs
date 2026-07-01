@@ -219,7 +219,7 @@ struct PinballGame
     /*0x0F8*/ s16 bannerSlideVelocity;
     /*0x0FA*/ s8 bannerActive;
     /*0x0FB*/ s8 bannerPreserveBallState;
-    /*0x0FC*/ s16 bonusSummarySlideY;
+    /*0x0FC*/ s16 bonusSummarySlideY; // Slide in position for the bonus summary panel
     /*0x0FE*/ s16 ballSaverSlideY;
     /*0x100*/ s32 ballSaverPosX;
     /*0x104*/ s32 ballSaverPosY;

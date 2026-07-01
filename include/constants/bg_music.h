@@ -104,21 +104,21 @@
 #define SE_SAVER_PLUNGER_DROP       0x96 // SE40 Launcher catches ball
 #define SE_TRAVEL_PAINTER_FLIGHT    0x97 // SE41 Volbeat/Illumise flight
 #define SE_TRAVEL_PAINTER_PAINTS    0x98 // SE42 Volbeat/Illumise painting new travel board
-#define SE_UNKNOWN_0x99             0x99 // *SE43 Evo Arrow earned & (sapphire)pika charge already full - Duplicate of SE26S
-#define SE_UNKNOWN_0x9A             0x9A // *SE44 Pokemon being absorbed into ball (when catching)
-#define SE_UNKNOWN_0x9B             0x9B // SE45 *gusty wind landing*
-#define SE_UNKNOWN_0x9C             0x9C // SE46 Pokemon entered Pokeball (when catching)
-#define SE_UNKNOWN_0x9D             0x9D // SE47 Pokeball hit ground; High pitched related to 22
-#define SE_UNKNOWN_0x9E             0x9E // SE48 Pokeball shake, During catch confirmation
+#define SE_EVO_GET_ARROW_EARNED     0x99 // *SE43 Evo/Get Arrow earned - Duplicate of SE26S
+#define SE_MON_CATCH_BALL_WOOSH     0x9A // *SE44 Pokemon being absorbed into ball (when catching)
+#define SE_MON_CATCH_ENERGY_BEAM    0x9B // SE45 *gusty wind landing*
+#define SE_MON_CATCH_BALL_CLOSE     0x9C // SE46 Pokemon entered Pokeball (when catching)
+#define SE_MON_CATCH_BALL_HIT_GROUND 0x9D // SE47 Pokeball hit ground; High pitched related to 22
+#define SE_MON_CATCH_BALL_SHAKE     0x9E // SE48 Pokeball shake, During catch confirmation
 #define SE_WARP                     0x9F // SE49 *Up warp?*
 #define SE_UNUSED_0xA0              0xA0 // ?? *Downward complement to SE49* ??
-#define SE_UNKNOWN_0xA1             0xA1 // SE50 *hit clack*
-#define SE_UNKNOWN_0xA2             0xA2 // SE51 *Brush*
-#define SE_UNKNOWN_0xA3             0xA3 // SE52 Duplicate of SE3; Coins collected?
-#define SE_UNKNOWN_0xA4             0xA4 // SE53 Duplicate of SE41
-#define SE_UNKNOWN_0xA5             0xA5 // SE54 Duplicate of SE01; Menu Selection
-#define SE_UNKNOWN_0xA6             0xA6 // SE55 Duplicate of SE02; Menu Cancel
-#define SE_UNKNOWN_0xA7             0xA7 // SE56 *Pokeball Escape? *
+#define SE_BALL_SUMMARY_TEXT_PROGRESS 0xA1 // SE50 *hit clack*
+#define SE_BALL_SUMMARY_PAGE_SWIPE  0xA2 // SE51 *Brush*
+#define SE_PAUSE_CURSOR_MOVE        0xA3 // SE52 Duplicate of SE3; Coins collected?
+#define SE_BONUS_PANEL_SLIDE        0xA4 // SE53 Duplicate of SE41
+#define SE_PAUSING                  0xA5 // SE54 Duplicate of SE01; Menu Selection
+#define SE_UNPAUSING                0xA6 // SE55 Duplicate of SE02; Menu Cancel
+#define SE_CATCH_MON_ENTITY_APPEARS 0xA7 // SE56 *Pokeball Escape? *
 #define SE_PIKA_CHARGE_DO           0xA8 // SE57 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_PIKA_CHARGE_RE           0xA9 // SE58 Re (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_PIKA_CHARGE_MI           0xAA // SE59 Mi (Title pokemon pinball logo tones / ramp spin pikachu charger)
@@ -127,7 +127,7 @@
 #define SE_PIKA_CHARGE_LA           0xAD // SE62 La (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_PIKA_CHARGE_TI           0xAE // SE63 Ti (Title pokemon pinball logo tones / ramp spin pikachu charger)
 #define SE_PIKA_CHARGE_HIGH_DO      0xAF // SE64 Do (Title pokemon pinball logo tones / ramp spin pikachu charger)
-#define SE_UNKNOWN_0xB0             0xB0 // SE65 *extended flight takeoff*
+#define SE_EVO_CUTSCENE_MON_PORTRAIT_CHANGE 0xB0 // SE65 *extended flight takeoff*
 #define SE_PIKACHU_KICKBACK         0xB1 // SE181 Pi~Ka CHU!
 #define SE_UNKNOWN_0xB2             0xB2 // SE182 Pika - pika - pi-ka
 #define SE_PICHU_KICKBACK           0xB3 // SE183 Pi~ Chu!

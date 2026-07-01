@@ -4859,10 +4859,14 @@ gScrollTileUpdateTable:: @ 0x086B0010
 	.incbin "baserom.gba", 0x6B0010, 0x118
 
 gBonusSummaryTextTemplates:: @ 0x086B0128
-	.ascii "POK^MON_CAUGHT______BONUS_______________"
-
-gUnknown_086B0150:: @ 0x086B0150
-	.ascii "SUBTOTAL____________POK^MON_EVOLVED_____BONUS_______________SUBTOTAL____________TRAVELED_AREA_______BONUS_______________SUBTOTAL____________SLOT_PLAYED_________BONUS_______________SUBTOTAL____________PIKA_SAVER__________BONUS_______________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________MULTIPLIER__________TOTAL_______________"
+    @ 7 Sets of 3 sets of 20 characters each
+	.ascii "POK^MON_CAUGHT______", "BONUS_______________", "SUBTOTAL____________"
+	.ascii "POK^MON_EVOLVED_____", "BONUS_______________", "SUBTOTAL____________"
+    .ascii "TRAVELED_AREA_______", "BONUS_______________", "SUBTOTAL____________"
+    .ascii "SLOT_PLAYED_________", "BONUS_______________", "SUBTOTAL____________"
+    .ascii "PIKA_SAVER__________", "BONUS_______________", "SUBTOTAL____________"
+    .ascii "SUBTOTAL____________", "SUBTOTAL____________", "SUBTOTAL____________"
+    .ascii "SUBTOTAL____________", "MULTIPLIER__________", "TOTAL_______________"
 
 gMainFieldSpriteGroups:: @ 0x086B02CC
 	.incbin "baserom.gba", 0x6B02CC, 0x1E0

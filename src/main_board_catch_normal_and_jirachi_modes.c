@@ -238,7 +238,7 @@ void UpdateCatchEmMode(void)
             gCurrentPinballGame->activePortraitType = 10;
             DmaCopy16(3, gCatchMonAppearFx_Gfx, (void *)0x06015800, 0x1400);
             DmaCopy16(3, gCatchMonAppearFx_Pal, (void *)0x050003C0, 0x20);
-            m4aSongNumStart(SE_UNKNOWN_0xA7);
+            m4aSongNumStart(SE_CATCH_MON_ENTITY_APPEARS);
             gCurrentPinballGame->boardSubState++;
             gCurrentPinballGame->stageTimer = 0;
         }
