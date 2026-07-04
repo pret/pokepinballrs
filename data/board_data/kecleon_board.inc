@@ -5,13 +5,13 @@ gKecleonBoardBG1Tilemap:: @ 0x0830CDD4
 	.incbin "baserom.gba", 0x30CDD4, 0x800
 
 gKecleonBoardCollisionTileDataAllLayers:: @ 0x0830D5D4
-    .incbin "baserom.gba", 0x30D5D4, 0x2000
+.incbin "data/board_data/collision/kecleon/board_tiledata.bin"
 
 gKecleonBoardCollisionAngleDataAllLayers:: @ 0x0830F5D4
-    .incbin "baserom.gba", 0x30F5D4, 0x10280
+.incbin "data/board_data/collision/kecleon/board_angledata.bin"
 
 gKecleonBoardCollisionTypeDataAllLayers:: @ 0x0831F854
-    .incbin "baserom.gba", 0x31F854, 0x8140
+.incbin "data/board_data/collision/kecleon/board_typedata.bin"
 
 gKecleonBerryOverlayTilemap:: @ 0x08327994
 	.incbin "baserom.gba", 0x327994, 0x800
@@ -31,8 +31,8 @@ gKecleonBoardBG0Tilemap:: @ 0x08329994
 gKecleonBoardCompressedBGTiles:: @ 0x0832A194
 	.incbin "baserom.gba", 0x32A194, 0x3470
 
-gKecleonTongueCollisionMap:: @ 0x0832D604
-	.incbin "baserom.gba", 0x32D604, 0x2C00
+gKecleonUprightCollisionMap:: @ 0x0832D604
+.incbin "data/board_data/collision/kecleon/kecleon_entity_upright_collision_64x88.bin"
 
-gKecleonBodyCollisionMap:: @ 0x08330204
-	.incbin "baserom.gba", 0x330204, 0x2C00
+gKecleonKnockedDownCollisionMap:: @ 0x08330204
+.incbin "data/board_data/collision/kecleon/kecleon_entity_knocked_down_collision_88x64.bin"

@@ -124,7 +124,7 @@ void RayquazaBoardProcess_3A_3E79C(void)
     gCurrentPinballGame->windEntityPosition.y = 0;
     gCurrentPinballGame->windCloudPosition.x = 0;
     gCurrentPinballGame->windCloudPosition.y = 0;
-    gCurrentPinballGame->flippersDisabled = 1;
+    gCurrentPinballGame->flippersDisabled = TRUE;
     UpdateRayquazaIntroSequence();
     DmaCopy16(3, gRayquazaSkyBackgroundGfx, (void *)0x06015800, 0x2800);
     DmaCopy16(3, gRayquazaSpriteSheet, (void *)0x06011620, 0x860);
@@ -2098,9 +2098,9 @@ void UpdateRayquazaIntroSequence(void)
     }
 
     if (gCurrentPinballGame->cameraYAdjust >= -0x20)
-        gCurrentPinballGame->flippersDisabled = 0;
+        gCurrentPinballGame->flippersDisabled = FALSE;
     else
-        gCurrentPinballGame->flippersDisabled = 1;
+        gCurrentPinballGame->flippersDisabled = TRUE;
 
     gMain.bgOffsets[2].yOffset += gCurrentPinballGame->bgScrollSpeed;
     gMain.bgOffsets[1].yOffset += gCurrentPinballGame->bgScrollSpeed;

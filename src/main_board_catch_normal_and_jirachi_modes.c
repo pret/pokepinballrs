@@ -329,7 +329,7 @@ void InitJirachiBonus(void)
     gCurrentPinballGame->jirachiTagTimer[2] = 20;
     gCurrentPinballGame->jirachiTagTimer[3] = 30;
     gCurrentPinballGame->saverTimeRemaining = 3240;
-    gCurrentPinballGame->allHolesLit = 0;
+    gCurrentPinballGame->allHolesLit = FALSE;
     gCurrentPinballGame->holeIndicators[0] = 0;
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];

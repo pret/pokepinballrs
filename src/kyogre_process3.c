@@ -103,7 +103,7 @@ void KyogreBoardProcess_3A_383E4(void)
         gCurrentPinballGame->shockwaveQuadrantOffset[i].y = 0;
     }
 
-    gCurrentPinballGame->flippersDisabled = 1;
+    gCurrentPinballGame->flippersDisabled = TRUE;
     UpdateKyogreEntityLogic();
     RenderKyogreSprites();
     UpdateKyogreFieldEntities();
@@ -136,7 +136,7 @@ void KyogreBoardProcess_3B_3869C(void)
             DmaCopy16(3, &gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][0], (void *)0x05000000, 0x60);
             DmaCopy16(3, &gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][0x80], (void *)0x05000080, 0x80);
             if (gCurrentPinballGame->cameraYAdjust >= -32)
-                gCurrentPinballGame->flippersDisabled = 0;
+                gCurrentPinballGame->flippersDisabled = FALSE;
         } else
         {
             gCurrentPinballGame->cameraYAdjust = 0;

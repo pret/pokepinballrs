@@ -145,7 +145,7 @@ void RestoreGameState(u16 arg0)
     {
         DmaCopy16(3, gBoardConfig.pinballGame, gCurrentPinballGame, sizeof(*gCurrentPinballGame));
         gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
-        gCurrentPinballGame->secondaryBall = &gCurrentPinballGame->ballStates[0];
+        gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[0];
         var2 = gMain.idleDemoVariant;
         if ((var2 & 0x3) == 1)
         {

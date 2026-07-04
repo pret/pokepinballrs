@@ -263,10 +263,10 @@ void TransitionFromBonusToMainBoard(void)
     gCurrentPinballGame->eventTimer = 0;
     gCurrentPinballGame->boardModeType = 0;
     if (gCurrentPinballGame->numCompletedBonusStages > 4)
-        gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD] = 1;
+        gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD] = TRUE;
 
     gMain.subState = 0;
-    gCurrentPinballGame->prevBoardState = 3;
+    gCurrentPinballGame->prevBoardState = MAIN_BOARD_STATE_BOSS_HOLE_ACTIVE;
     gCurrentPinballGame->boardState = MAIN_BOARD_STATE_DEFAULT;
     gCurrentPinballGame->boardTransitionPhase = BOARD_STATE_DISPATCHER_STATE_INIT;
     gCurrentPinballGame->boardEntityActive = 0;

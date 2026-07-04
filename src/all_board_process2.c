@@ -116,10 +116,10 @@ void MainBoardProcess_2B_4D960(void)
     }
 
     if (gCurrentPinballGame->ballFrozenState == 0)
-        var0 = (gCurrentPinballGame->secondaryBall->velocity.y * 40) + 0x1000;
+        var0 = (gCurrentPinballGame->cameraBall->velocity.y * 40) + 0x1000;
 
     gCurrentPinballGame->cameraLookAhead += (var0 - gCurrentPinballGame->cameraLookAhead) / 10;
-    var1 = gCurrentPinballGame->secondaryBall->positionQ8.y + gCurrentPinballGame->cameraLookAhead;
+    var1 = gCurrentPinballGame->cameraBall->positionQ8.y + gCurrentPinballGame->cameraLookAhead;
     if (var1 > gBoardConfig.fieldLayout.cameraScrollMaxY << 8)
         var1 = gBoardConfig.fieldLayout.cameraScrollMaxY << 8;
     else if (var1 < gBoardConfig.fieldLayout.cameraScrollMinY << 8)
@@ -144,7 +144,7 @@ void MainBoardProcess_2B_4D960(void)
     {
         gCurrentPinballGame->cameraYQ8 = var4;
         gCurrentPinballGame->cameraBaseY = var4 / 0x100;
-        if (gCurrentPinballGame->secondaryBall->positionQ0.x >= 230)
+        if (gCurrentPinballGame->cameraBall->positionQ0.x >= 230)
             gCurrentPinballGame->cameraBaseX++;
         else
             gCurrentPinballGame->cameraBaseX--;
@@ -205,10 +205,10 @@ void BonusBoardProcess_2B_4DBFC(void)
     }
 
     if (gCurrentPinballGame->ballFrozenState == 0)
-        var0 = gCurrentPinballGame->secondaryBall->velocity.y * 40 + 0x1000;
+        var0 = gCurrentPinballGame->cameraBall->velocity.y * 40 + 0x1000;
 
     gCurrentPinballGame->cameraLookAhead += (var0 - gCurrentPinballGame->cameraLookAhead) / 10;
-    var1 = gCurrentPinballGame->secondaryBall->positionQ8.y + gCurrentPinballGame->cameraLookAhead;
+    var1 = gCurrentPinballGame->cameraBall->positionQ8.y + gCurrentPinballGame->cameraLookAhead;
     if (var1 > gBoardConfig.fieldLayout.cameraScrollMaxY << 8)
         var1 = gBoardConfig.fieldLayout.cameraScrollMaxY << 8;
     else if (var1 < gBoardConfig.fieldLayout.cameraScrollMinY << 8)
@@ -469,7 +469,8 @@ void ProcessMainBoardBallDrainAndLaunch(void)
                 m4aMPlayAllStop();
                 m4aSongNumStart(MUS_END_OF_BALL);
                 ResetBoardStateOnDeath();
-                if (gCurrentPinballGame->outLanePikaPosition == 2 && gMain.eReaderBonuses[EREADER_DX_MODE_CARD] == 0)
+                if (gCurrentPinballGame->outLanePikaPosition == 2
+                    && !gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
                 {
                     gCurrentPinballGame->pichuWalkMode = 2;
                     gCurrentPinballGame->pichuEntranceTimer = 800;
@@ -479,7 +480,7 @@ void ProcessMainBoardBallDrainAndLaunch(void)
         }
     }
 
-    gCurrentPinballGame->ballInLaunchChute = 0;
+    gCurrentPinballGame->ballInLaunchChute = FALSE;
 }
 
 void ProcessBonusBoardBallDrain(void)
@@ -535,7 +536,7 @@ void ResetBoardStateOnDeath(void)
     if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_EVO_MODE)
         gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_END_EVO_PHASE;
 
-    gCurrentPinballGame->allHolesLit = 0;
+    gCurrentPinballGame->allHolesLit = FALSE;
     gCurrentPinballGame->holeIndicators[0] = 0;
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];

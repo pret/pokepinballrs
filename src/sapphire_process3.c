@@ -222,7 +222,7 @@ void UpdateSapphireEvolutionShopSequence(void)
             {
                 gCurrentPinballGame->sapphireBumperAnimKeyframe[i] = 10;
                 gCurrentPinballGame->sapphireBumperAnimSubTimer[i] = 0;
-                gCurrentPinballGame->sapphireBumperState[i] = 4;
+                gCurrentPinballGame->sapphireMartGateBumperState[i] = 4;
             }
         }
     }

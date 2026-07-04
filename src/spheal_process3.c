@@ -117,7 +117,7 @@ void SphealBoardProcess_3A_42E48(void)
         gCurrentPinballGame->sphealPositionQ8[i].y = 0;
     }
 
-    gCurrentPinballGame->flippersDisabled = 0;
+    gCurrentPinballGame->flippersDisabled = FALSE;
     UpdateSphealEntityLogic();
     UpdateSealeoEntityLogic();
     UpdateSphealScoreAndDelivery();

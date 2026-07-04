@@ -7,43 +7,43 @@ gSapphireBoardBG0Tilemap:: @ 0x0826EE10
 	.incbin "baserom.gba", 0x26EE10, 0x1000
 
 gSapphireBoardCollisionTileDataLayer0:: @ 0x0826FE10
-    .incbin "baserom.gba", 0x26FE10, 0x2000
+.incbin "data/board_data/collision/sapphire/boardtop_tiledata.bin"
 
 gSapphireBoardCollisionAngleDataLayer0:: @ 0x08271E10
-    .incbin "baserom.gba", 0x271E10, 0x14C00
+.incbin "data/board_data/collision/sapphire/boardtop_angledata.bin"
 
 gSapphireBoardCollisionTypeDataLayer0:: @ 0x08286A10
-    .incbin "baserom.gba", 0x286A10, 0xA600
+.incbin "data/board_data/collision/sapphire/boardtop_typedata.bin"
 
 gSapphireBoardCollisionTileDataLayer1:: @ 0x08291010
-    .incbin "baserom.gba", 0x291010, 0x2000
+.incbin "data/board_data/collision/sapphire/boardbottom_tiledata.bin"
 
 gSapphireBoardCollisionAngleDataLayer1:: @ 0x08293010
-    .incbin "baserom.gba", 0x293010, 0x12480
+.incbin "data/board_data/collision/sapphire/boardbottom_angledata.bin"
 
 gSapphireBoardCollisionTypeDataLayer1:: @ 0x082A5490
-    .incbin "baserom.gba", 0x2A5490, 0x9240
+.incbin "data/board_data/collision/sapphire/boardbottom_typedata.bin"
 
 gSapphireBoardBG1Tilemap:: @ 0x082AE6D0
 	.incbin "baserom.gba", 0x2AE6D0, 0x1000
 
 gSapphireBoardCollisionTileDataLayer2:: @ 0x082AF6D0
-    .incbin "baserom.gba", 0x2AF6D0, 0x2000
+.incbin "data/board_data/collision/sapphire/topramp_tiledata.bin"
 
 gSapphireBoardCollisionAngleDataLayer2:: @ 0x082B16D0
-    .incbin "baserom.gba", 0x2B16D0, 0xD100
+.incbin "data/board_data/collision/sapphire/topramp_angledata.bin"
 
 gSapphireBoardCollisionTypeDataLayer2:: @ 0x082BE7D0
-    .incbin "baserom.gba", 0x2BE7D0, 0x6880
+.incbin "data/board_data/collision/sapphire/topramp_typedata.bin"
 
 gSapphireBoardCollisionTileDataLayer3:: @ 0x082C5050
-    .incbin "baserom.gba", 0x2C5050, 0x2000
+.incbin "data/board_data/collision/sapphire/hatchexitramp_tiledata.bin"
 
 gSapphireBoardCollisionAngleDataLayer3:: @ 0x082C7050
-    .incbin "baserom.gba", 0x2C7050, 0x8300
+.incbin "data/board_data/collision/sapphire/hatchexitramp_angledata.bin"
 
 gSapphireBoardCollisionTypeDataLayer3:: @ 0x082CF350
-    .incbin "baserom.gba", 0x2CF350, 0x4180
+.incbin "data/board_data/collision/sapphire/hatchexitramp_typedata.bin"
 
 gSapphireBoardCompressedTiles1:: @ 0x082D34D0
 	.incbin "baserom.gba", 0x2D34D0, 0x1D6C

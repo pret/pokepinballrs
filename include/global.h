@@ -82,6 +82,13 @@
 #define MODE_CHANGE_BONUS_BANNER  0x80 //2^7
 #define MODE_CHANGE_EXPIRED_BONUS_BANNER 0xC0 // 2^6 + 2^7
 
+#define SIDE_IX_LEFT 0
+#define SIDE_IX_RIGHT 1
+#define SIDE_COUNT 2
+
+#define SIDE_COLLISION_NONE 0
+#define SIDE_COLLISION_LEFT 1
+#define SIDE_COLLISION_RIGHT 2
 
 struct BgOffsets
 {
@@ -96,7 +103,7 @@ struct BallState
     /*0x01*/ s8 oamPriority;
     /*0x02*/ u8 filler2[0x2];
     /*0x04*/ u16 spinAcceleration;
-    /*0x06*/ s16 spinSpeed;
+    /*0x06*/ s16 spinSpeed; //positive = clockwise, negative = counterclockwise
     /*0x08*/ s16 prevSpinSpeed;
     /*0x0A*/ u16 spinAngle;
     /*0x0C*/ u16 prevSpinAngle;
@@ -314,7 +321,7 @@ struct PinballGame
     /*0x1DE*/ u16 kickbackAnimProgress;
     /*0x1E0*/ u16 kickbackAnimDuration;
     /*0x1E2*/ s8 outLanePikaPosition; //Pikachu coverage. 0= left lane, 1=right lane, 2 = both
-    /*0x1E3*/ s8 kickbackOccupied[2];
+    /*0x1E3*/ s8 kickbackOccupied[SIDE_COUNT];
     /*0x1E5*/ s8 pikachuSpinFrame;
     /*0x1E6*/ s8 pikachuSpinPrevFrame;
     /*0x1E7*/ u8 filler1E7[0x1];
@@ -418,12 +425,12 @@ struct PinballGame
     /*0x2DB*/ u8 filler2DB[0x3];
     /*0x2DE*/ u16 eggCaveLiftTimer;
     /*0x2E0*/ u16 eggCaveExitDelayTimer;
-    /*0x2E2*/ s8 sideBumperHitFlag;
-    /*0x2E3*/ s8 sideBumperBounceCount[2];
-    /*0x2E5*/ s8 sideBumperAnimPhase[2];
+    /*0x2E2*/ s8 linooneSideBumperHitFlag;
+    /*0x2E3*/ s8 linooneSideBumperExtensionsPending[SIDE_COUNT];
+    /*0x2E5*/ s8 linooneSideBumperAnimPhase[SIDE_COUNT];
     /*0x2E7*/ u8 filler2E7[0x1];
-    /*0x2E8*/ u16 sideBumperAnimTimer[2];
-    /*0x2EC*/ s16 sideBumperShakeOffset[2];
+    /*0x2E8*/ u16 linooneSideBumperAnimTimer[SIDE_COUNT];
+    /*0x2EC*/ s16 linooneSideBumperExtensionOffset[SIDE_COUNT];
     /*0x2F0*/ u8 shopDoorTargetFrame;
     /*0x2F1*/ u8 shopDoorCurrentFrame;
     /*0x2F2*/ u16 shopDoorAnimDelay;
@@ -472,12 +479,12 @@ struct PinballGame
     /*0x33C*/ u16 seedotYOffset[3];
     /*0x342*/ s8 hatchMachineActive; // Turns off while launching, Reenabled when ball touches ramp
     /*0x343*/ s8 sapphirerubyEggDeliveryState;
-    /*0x344*/ s8 hatchMachineNewHit;
+    /*0x344*/ s8 hatchMachineProgressTickSignaled;
     /*0x345*/ s8 sapphireHatchMachineFrameIx;
     /*0x346*/ s8 sapphireHatchMachineState; // 0-6
     /*0x347*/ u8 filler347[0x1];
     /*0x348*/ u16 holeAnimFrameCounter;
-    /*0x34A*/ s8 targetBumperHitCounter;
+    /*0x34A*/ s8 hatchMachineTriggerCounter;
     /*0x34B*/ s8 targetBumperAnimTimers[10];
     /*0x355*/ s8 splashEffectFrameIndex[4];
     /*0x359*/ s8 splashEffectPositionIndex[4];
@@ -486,7 +493,7 @@ struct PinballGame
     /*0x366*/ s8 shopShockWallAnimState;
     /*0x367*/ s8 eggHatchShockWallOverride;
     /*0x368*/ u16 shopBumperHitTimer;
-    /*0x36A*/ s8 sapphireBumperState[2];
+    /*0x36A*/ s8 sapphireMartGateBumperState[2];
     /*0x36C*/ s8 sapphireBumperAnimKeyframe[2];
     /*0x36E*/ u16 sapphireBumperAnimSubTimer[2];
     /*0x372*/ u16 sapphireBumperHitFxTimer[2];
@@ -869,10 +876,10 @@ struct PinballGame
     /*0x1322*/s16 savedModeChangeDelayTimer;
     /*0x1324*/s16 savedShopPanelActive;
     /*0x1326*/s16 savedShopPanelSlideOffset;
-    /*0x1328*/u16 ballLaunchTimer; // Countdown to activate secondaryBall (multiball)
+    /*0x1328*/u16 altBallCameraTimer; // Countdown to return to following ball position
     /*0x132A*/u8 filler132A[0x2];
     /*0x132C*/struct BallState *ball;
-    /*0x1330*/struct BallState *secondaryBall;
+    /*0x1330*/struct BallState *cameraBall;
     /*0x1334*/struct BallState ballStates[2];
     /*0x13BC*/struct FlipperState flipper[2];
     /*0x13D4*/u16 nameRevealDelaysRow2[10];
@@ -954,8 +961,8 @@ extern struct PinballGame gIdleBoardGameState3;
 extern struct PinballGame gIdleBoardGameState1;
 extern s32 gBonusStageObjPal[64];
 extern s32 gDusclopsAnimPalettes[0x3E0];
-extern u16 gKecleonTongueCollisionMap[0x1600];
-extern u16 gKecleonBodyCollisionMap[0x1600];
+extern u16 gKecleonUprightCollisionMap[0x1600];
+extern u16 gKecleonKnockedDownCollisionMap[0x1600];
 extern u16 gKyogreForm1CollisionMap[];
 extern u16 gKyogreForm2CollisionMap[];
 extern u16 gKyogreForm3CollisionMap[];
@@ -971,8 +978,8 @@ extern struct SongHeader se_catch_evo_banner;
 extern struct SongHeader se_dusclops_appear;
 extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
 extern const s16 gBounceBackForceMagnitudes[9];
-typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);
-extern Unk86ACE0C BoardCollisionFuncts_086ACE0C[8];
+typedef s16 (*BoardCollisionFunc)(struct Vector16*, u16*);
+extern BoardCollisionFunc BoardCollisionFuncts_086ACE0C[8];
 extern struct Vector16 gWallEscapeOffsets[4];
 extern struct FlipperLineSegment gFlipperLineGeometry[13];
 extern u16 gFlipperBaseXPositions[2];

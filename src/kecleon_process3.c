@@ -106,7 +106,7 @@ void KecleonBoardProcess_3A_35860(void)
     for (i = 0; i < 7; i++)
         gCurrentPinballGame->kecleonWaterMotionTimer[i] = 0;
 
-    gCurrentPinballGame->flippersDisabled = 0;
+    gCurrentPinballGame->flippersDisabled = FALSE;
     gCurrentPinballGame->kecleonCollisionPos.y = gCurrentPinballGame->bossPositionY / 10 + 58;
     SortKecleonSpritesByY();
     gCurrentPinballGame->boardEntityCollisionMode = KECLEON_COLLISION_MODE_STANDING;

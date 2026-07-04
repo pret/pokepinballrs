@@ -210,21 +210,23 @@ void UpdateShopEntryAnimation(s16 arg0)
         {
             if (JOY_NEW(A_BUTTON) && gCurrentPinballGame->prizeSelected == 0)
             {
-                s16 var_r3;
-                const u16 *arr = gShopItemData[gCurrentPinballGame->shopSelectedItemId];
+                s16 price;
+                const u16 *itemData = gShopItemData[gCurrentPinballGame->shopSelectedItemId];
 
-                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 3 && gCurrentPinballGame->outLanePikaPosition == 2)
-                    var_r3 = 999;
-                else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 4 && gCurrentPinballGame->shopBonusStageAlreadyBought)
-                    var_r3 = 999;
+                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 3
+                    && gCurrentPinballGame->outLanePikaPosition == 2)
+                    price = 999;
+                else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 4
+                    && gCurrentPinballGame->shopBonusStageAlreadyBought)
+                    price = 999;
                 else
-                    var_r3 = arr[3];
+                    price = itemData[3];
 
-                if (gCurrentPinballGame->coins >= var_r3)
+                if (gCurrentPinballGame->coins >= price)
                 {
                     gCurrentPinballGame->prizeSelected = 1;
                     gCurrentPinballGame->prizeId = gCurrentPinballGame->shopSelectedItemId;
-                    gCurrentPinballGame->coins -= var_r3;
+                    gCurrentPinballGame->coins -= price;
 
                     m4aMPlayAllStop();
                     m4aSongNumStart(SE_EVO_SELECTION_CONFIRM);

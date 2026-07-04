@@ -8,13 +8,13 @@ gDusclopsBoardBG0Tilemap:: @ 0x082EE4C0
 	.incbin "baserom.gba", 0x2EE4C0, 0x800
 
 gDusclopsBoardCollisionTileDataAllLayers:: @ 0x082EECC0
-    .incbin "baserom.gba", 0x2EECC0, 0x2000
+.incbin "data/board_data/collision/dusclops/board_tiledata.bin"
 
 gDusclopsBoardCollisionAngleDataAllLayers:: @ 0x082F0CC0
-    .incbin "baserom.gba", 0x2F0CC0, 0xB180
+.incbin "data/board_data/collision/dusclops/board_angledata.bin"
 
 gDusclopsBoardCollisionTypeDataAllLayers:: @ 0x082FBE40
-    .incbin "baserom.gba", 0x2FBE40, 0x58C0
+.incbin "data/board_data/collision/dusclops/board_typedata.bin"
 
 gDusclopsBoardBG1Tilemap:: @ 0x08301700
 	.incbin "baserom.gba", 0x301700, 0x800
@@ -29,4 +29,4 @@ gDusclopsBoardCompressedBGTiles:: @ 0x08303928
 	.incbin "baserom.gba", 0x303928, 0x38AC
 
 gDusclopsBodyCollisionMap:: @ 0x083071D4
-	.incbin "baserom.gba", 0x3071D4, 0x5A00
+.incbin "data/board_data/collision/dusclops/dusclops_entity_collision_96x120.bin"
