@@ -72,7 +72,7 @@ void InitSharpedoCatchMode(void)
     gCurrentPinballGame->cameraScrollTarget = 0;
     gCurrentPinballGame->modeAnimTimer = 113;
 
-    m4aSongNumStart(SE_UNKNOWN_0xCE);
+    m4aSongNumStart(SE_SHARPEDO_BITE);
     gCurrentPinballGame->scoreAddedInFrame = 50000;
 
     PlayRumble(8);
@@ -394,7 +394,7 @@ void AnimateRubyEvolutionShopSequence(void)
     gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
     gCurrentPinballGame->shopDoorTargetFrame = 0x13;
 
-    m4aSongNumStart(SE_UNKNOWN_0xC3);
+    m4aSongNumStart(SE_SHOP_EJECT);
 
     if (gCurrentPinballGame->evoArrowProgress > 2 && gCurrentPinballGame->evolvablePartySize > 0)
     {

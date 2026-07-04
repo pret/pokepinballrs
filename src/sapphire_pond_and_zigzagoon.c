@@ -19,7 +19,7 @@ extern const u16 gSapphireBoardZigzagoonSpritesheetOam[42][3][3];
 extern const u16 gZigzagoonFxSpritesheetOam[14][7][3];
 extern const u8 gZigzagoonShockWallIndicator_Gfx[][0x200];
 
-extern struct SongHeader se_unk_e3;
+extern struct SongHeader se_pelipper_wing_flap;
 
 void DecrementPelipperTimer(void)
 {
@@ -78,7 +78,7 @@ void UpdatePelipperPondEntity(void)
                 gCurrentPinballGame->ball->velocity.x = 0;
                 gCurrentPinballGame->ball->velocity.y = 0;
                 gCurrentPinballGame->ball->spinSpeed = 0;
-                m4aSongNumStart(SE_UNKNOWN_0xE2);
+                m4aSongNumStart(SE_PELIPPER_BALL_GRAB);
                 PlayRumble(7);
                 gCurrentPinballGame->scoreAddedInFrame = 100000;
             }
@@ -125,13 +125,13 @@ void UpdatePelipperPondEntity(void)
             }
 
             if (gCurrentPinballGame->pelipperSwallowAnimIndex == 1)
-                m4aSongNumStart(SE_UNKNOWN_0xE3);
+                m4aSongNumStart(SE_PELIPPER_WING_FLAP);
         }
 
         sp0 = gPelipperSwallowAnimData[gCurrentPinballGame->pelipperSwallowAnimIndex][0];
         var_sl = gPelipperSwallowAnimData[gCurrentPinballGame->pelipperSwallowAnimIndex][1];
         if (gCurrentPinballGame->pelipperSfxTimer++ % 35 == 34)
-            m4aSongNumStart(SE_UNKNOWN_0xE3);
+            m4aSongNumStart(SE_PELIPPER_WING_FLAP);
         break;
     case 5:
         if (gCurrentPinballGame->pelipperFrameTimer == 0)
@@ -171,7 +171,7 @@ void UpdatePelipperPondEntity(void)
         }
 
         if (gCurrentPinballGame->pelipperSfxTimer++ % 35 == 34)
-            m4aSongNumStart(SE_UNKNOWN_0xE3);
+            m4aSongNumStart(SE_PELIPPER_WING_FLAP);
         break;
     case 6:
         gCurrentPinballGame->startButtonDisabled = 1;
@@ -210,7 +210,7 @@ void UpdatePelipperPondEntity(void)
         var_sl = (gCurrentPinballGame->pelipperFrameTimer % 24) / 6 + 13;
         gCurrentPinballGame->pelipperYBobOffset = (Sin(gCurrentPinballGame->pelipperFrameTimer * 0x400) * 240) / 20000;
         if (gCurrentPinballGame->pelipperFrameTimer == 0)
-            m4aSongNumStart(SE_UNKNOWN_0xE4);
+            m4aSongNumStart(SE_PELIPPER_SWOOSH);
 
         if (gCurrentPinballGame->pelipperFrameTimer < 40)
         {
@@ -223,7 +223,7 @@ void UpdatePelipperPondEntity(void)
             gCurrentPinballGame->pelipperState = 9;
             gCurrentPinballGame->pelipperPosX = 1200;
             gCurrentPinballGame->pelipperPosY = -1000;
-            m4aSongNumStart(SE_UNKNOWN_0xE3);
+            m4aSongNumStart(SE_PELIPPER_WING_FLAP);
             gCurrentPinballGame->pelipperSfxTimer = 0;
         }
 
@@ -264,7 +264,7 @@ void UpdatePelipperPondEntity(void)
                     gCurrentPinballGame->ball->velocity.y = 256;
                     gCurrentPinballGame->ball->oamPriority = 3;
                     gCurrentPinballGame->boardLayerDepth = 0;
-                    m4aSongNumStart(SE_UNKNOWN_0xE5);
+                    m4aSongNumStart(SE_PELIPPER_BALL_DROP_LANDS);
                     PlayRumble(7);
                 }
 
@@ -293,11 +293,11 @@ void UpdatePelipperPondEntity(void)
         {
             gCurrentPinballGame->pelipperFrameTimer = 0;
             gCurrentPinballGame->pelipperState = 10;
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_e3);
+            MPlayStart(&gMPlayInfo_SE1, &se_pelipper_wing_flap);
         }
 
         if (gCurrentPinballGame->pelipperSfxTimer++ % 35 == 34)
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_e3);
+            MPlayStart(&gMPlayInfo_SE1, &se_pelipper_wing_flap);
 
         gCurrentPinballGame->pelipperFrameTimer++;
         break;
@@ -409,7 +409,7 @@ void UpdateZigzagoonEntity(void)
         gMain.spriteGroups[27].active = TRUE;
         gCurrentPinballGame->activePortraitType = 22;
         DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, (void *)0x06015800, 0xC00);
-        m4aSongNumStart(SE_UNKNOWN_0xEC);
+        m4aSongNumStart(SE_ZIGZAGOON_ROULETTE_STOP);
         gCurrentPinballGame->scoreAddedInFrame = 5000;
         break;
     case 3:

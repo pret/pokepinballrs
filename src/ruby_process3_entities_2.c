@@ -55,7 +55,7 @@ void UpdateNuzleafEntity(void)
         gCurrentPinballGame->nuzleafAnimState = 2;
         var1 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
         var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
-        m4aSongNumStart(SE_UNKNOWN_0xCF);
+        m4aSongNumStart(SE_NUZLEAF_HIT);
         PlayRumble(7);
         gCurrentPinballGame->scoreAddedInFrame = 50000;
         break;
@@ -84,7 +84,7 @@ void UpdateNuzleafEntity(void)
         gCurrentPinballGame->nuzleafAnimState = 4;
         var1 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
         var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
-        m4aSongNumStart(SE_UNKNOWN_0xCF);
+        m4aSongNumStart(SE_NUZLEAF_HIT);
         PlayRumble(7);
         gCurrentPinballGame->scoreAddedInFrame = 100000;
         break;
@@ -100,12 +100,12 @@ void UpdateNuzleafEntity(void)
             if (gCurrentPinballGame->nuzleafFrameIndex == 18)
             {
                 gCurrentPinballGame->nuzleafAnimState = 5;
-                m4aSongNumStart(SE_UNKNOWN_0xD1);
+                m4aSongNumStart(SE_NUZLEAF_FORMS_BRIDGE);
             }
         }
 
         if (gCurrentPinballGame->nuzleafFrameTimer == 6)
-            m4aSongNumStart(SE_UNKNOWN_0xD0);
+            m4aSongNumStart(SE_NUZLEAF_TEETERING);
 
         var1 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
         var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];

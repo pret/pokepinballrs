@@ -5,8 +5,8 @@
 #define MUS_EMPTY_0x02              0x02  // No sound
 #define MUS_TABLE_SELECT            0x03  // BGM 2
 #define MUS_EMPTY_0x04              0x04  // No sound
-#define MUS_UNKNOWN_0x5             0x05  // BGM 3
-#define MUS_UNKNOWN_0x6             0x06
+#define MUS_EREADER                 0x05  // BGM 3
+#define MUS_UNKNOWN_0x6             0x06  // Unused Credits theme? (starts like a subdued pokedex theme)
 #define MUS_OPENING                 0x08  // BGM 4
 #define MUS_HIGH_SCORE              0x09  // BGM 5
 #define MUS_EMPTY_0x0A              0x0A  // No sound
@@ -19,7 +19,7 @@
 #define MUS_SUCCESS                 0x11  // BGM 13
 #define MUS_SUCCESS2                0x12  // Copy of MUS_SUCCESS?
 #define MUS_END_OF_BALL2            0x13  // Copy of MUS_END_OF_BALL?
-#define MUS_UNKNOWN_0x14            0x14  // BGM 14 RS: Item Obtained
+#define MUS_PRIZE_AWARDED           0x14  // BGM 14 Purchase/roulette prize; RS: Item Obtained
 #define MUS_EGG_MODE                0x15  // BGM 15 RS: Encounter! (Twins)
 #define MUS_EGG_MODE_START          0x16  // BGM 16 RS: Trick House
 #define MUS_TRAVEL_MODE             0x17  // BGM 17
@@ -50,7 +50,7 @@
 
 #define MUS_FIELD_RUBY2             0x5B  // BGM 23  Ruby Field background music after beating (not catching) Rayquaza
 #define MUS_FIELD_SAPPHIRE2         0x5C  // BGM 26 Sapphire Field background music after beating (not catching) Rayquaza
-#define MUS_UNKNOWN_0x5D            0x5D  //
+#define MUS_UNKNOWN_0x5D            0x5D  // Unused bonus/boss fight? (Deoxys?)
 
 #define SE_MENU_SELECT              0x65 // SE 1 Menu Selection; RS: PokéNav turn on
 #define SE_MENU_CANCEL              0x66 // SE 2 Menu Cancel; RS: PokéNav turn off
@@ -146,48 +146,48 @@
 #define SE_UNUSED_0xC0              0xC0 // *Duplicate of SE66*
 #define SE_UNUSED_0xC1              0xC1 // *Duplicate of SE88*
 #define SE_SHARPEDO_BALL_EJECT      0xC2 // SE71 Ruby board Sharpedo spit ball
-#define SE_UNKNOWN_0xC3             0xC3 // SE72 Duplicate of SE70?
+#define SE_SHOP_EJECT               0xC3 // SE72 Duplicate of SE70?
 #define SE_UNUSED_0xC4              0xC4 // *Explosive at water surface*
-#define SE_UNKNOWN_0xC5             0xC5 // SE73 *Jump off tin clatter*
-#define SE_UNKNOWN_0xC6             0xC6 // SE74 Chikorita leaf blades
-#define SE_UNKNOWN_0xC7             0xC7 // SE75 Zigzagoon emerge
+#define SE_MAKUHITA_PUNCH           0xC5 // SE73 *Jump off tin clatter*
+#define SE_CHIKORITA_LEAF_BLADE     0xC6 // SE74 Chikorita leaf blades
+#define SE_ZIGZAGOON_EMERGE         0xC7 // SE75 Zigzagoon emerge
 #define SE_RUBY_BUMPER_EMERGES      0xC8 // SE76 Ruby Pond Contents change; Duplicate of 66
 #define SE_RUBY_BUMPER_LEAVES       0xC9 // SE77 Ruby Pond Chinchou leave
-#define SE_UNKNOWN_0xCA             0xCA // SE78 *flipper 2?*
+#define SE_RUBY_MART_SIGN_CHANGED   0xCA // SE78 *flipper 2?*
 #define SE_UNUSED_0xCB              0xCB // Duplicate of SE70/SE72; Unused
-#define SE_UNKNOWN_0xCC             0xCC // SE79 *tong vwii vwii vwii*
-#define SE_UNKNOWN_0xCD             0xCD // SE80 *Metal coin gate*
-#define SE_UNKNOWN_0xCE             0xCE // SE81 *Springy landing thud*
-#define SE_UNKNOWN_0xCF             0xCF // SE82 Duplicate of SE66
-#define SE_UNKNOWN_0xD0             0xD0 // SE83 *Chirp*
-#define SE_UNKNOWN_0xD1             0xD1 // SE84 *Flat board hit ground*
-#define SE_UNKNOWN_0xD2             0xD2 // SE85 Shroomish hit; Duplicate of SE66
+#define SE_SPOINK_LAUNCHER_CHARGED  0xCC // SE79 *tong vwii vwii vwii*
+#define SE_SPOINK_LAUNCHER_FIRED    0xCD // SE80 *Metal coin gate*
+#define SE_SHARPEDO_BITE            0xCE // SE81 *Springy landing thud*
+#define SE_NUZLEAF_HIT              0xCF // SE82 Duplicate of SE66
+#define SE_NUZLEAF_TEETERING        0xD0 // SE83 *Chirp*
+#define SE_NUZLEAF_FORMS_BRIDGE     0xD1 // SE84 *Flat board hit ground*
+#define SE_GULPIN_LANDS_OR_LEAVES   0xD2 // SE85 Shroomish hit; Duplicate of SE66
 #define SE_WHISCASH_EMERGE_SPLASH   0xD3 // SE86 *Wave shot*
 #define SE_WHISCASH_LEAVE_BURBLE    0xD4 // SE87 *Swamp frog bubbling*
 #define SE_WHISCASH_CATCH_BALL      0xD5 // SE88 *Smaller puddle slap* // Also used for *something* in the sapphire board
 #define SE_WHISCASH_SPIT_BALL       0xD6 // SE89 *Juicy slash* // Also used for *something* in the sapphire board
 #define SE_WHISCASH_SPLASHDOWN      0xD7 // SE90 *Explosive splash* (mostly buried under earthquake)
-#define SE_UNKNOWN_0xD8             0xD8 // SE91 *Ti-ring* RS: Exp. Bar filled up
+#define SE_RAMP_PRIZE_COLLECTED     0xD8 // SE91 *Ti-ring* RS: Exp. Bar filled up
 #define SE_EMPTY_0xD9               0xD9 // No Sound
 #define SE_EMPTY_0xDA               0xDA // No Sound
 #define SE_EMPTY_0xDB               0xDB // No Sound
-#define SE_UNKNOWN_0xDC             0xDC // SE92 Sapphire Hatch Machine Spinner
-#define SE_UNKNOWN_0xDD             0xDD // SE93 Sapphire Hatched Pokemon Lands
-#define SE_UNKNOWN_0xDE             0xDE // SE94 Sapphire Hatch machine Power up stage?
-#define SE_UNKNOWN_0xDF             0xDF // SE95 Sapphire board Hatch machine
-#define SE_UNKNOWN_0xE0             0xE0 // SE96 Sapphire Lower Hatched Pokemon
-#define SE_UNKNOWN_0xE1             0xE1 // SE97 *Close tailgate*
-#define SE_UNKNOWN_0xE2             0xE2 // *SE98 *Water 3*
-#define SE_UNKNOWN_0xE3             0xE3 // SE99 Duplicate of SE68
-#define SE_UNKNOWN_0xE4             0xE4 // SE100 *Bird Cry*
-#define SE_UNKNOWN_0xE5             0xE5 // SE101 Duplicate of SE70
-#define SE_UNKNOWN_0xE6             0xE6 // SE102 *Footstep on wood floor*
-#define SE_UNKNOWN_0xE7             0xE7 // SE103 *Sh-ting*
-#define SE_UNKNOWN_0xE8             0xE8 // SE104 Sapphire electric gate *short stable electric buzz Higher pictched than SE 153*
-#define SE_UNKNOWN_0xE9             0xE9 // SE105 Seedot drops into basket
-#define SE_UNKNOWN_0xEA             0xEA // SE106 Seedot lands in basket
-#define SE_UNKNOWN_0xEB             0xEB // SE107 *Rubber Mallet Thwack*
-#define SE_UNKNOWN_0xEC             0xEC // SE108 Duplicate of SE80
+#define SE_HATCH_MACHINE_SPINNER_TRIGGER 0xDC // SE92 Sapphire Hatch Machine Spinner
+#define SE_MON_LANDS_ON_HATCH_MACHINE_TOP 0xDD // SE93 Sapphire Hatched Pokemon Lands
+#define SE_HATCH_MACHINE_STAGE_ADVANCE 0xDE // SE94 Sapphire Hatch machine Power up stage?
+#define SE_HATCH_MACHINE_EGG_HATCH  0xDF // SE95 Sapphire board Hatch machine
+#define SE_HATCH_MACHINE_ELEVATOR   0xE0 // SE96 Sapphire Lower Hatched Pokemon
+#define SE_HATCH_MACHINE_ELEVATOR_TOP 0xE1 // SE97 *Close tailgate*
+#define SE_PELIPPER_BALL_GRAB       0xE2 // *SE98 *Water 3*
+#define SE_PELIPPER_WING_FLAP       0xE3 // SE99 Duplicate of SE68
+#define SE_PELIPPER_SWOOSH          0xE4 // SE100 *Bird Cry*
+#define SE_PELIPPER_BALL_DROP_LANDS 0xE5 // SE101 Duplicate of SE70
+#define SE_SAPPHIRE_MART_GATE_TRIGGER 0xE6 // SE102 *Footstep on wood floor*
+#define SE_SAPPHIRE_MART_GATE_REPLACED 0xE7 // SE103 *Sh-ting*
+#define SE_SAPPHIRE_MART_GATE_HIT   0xE8 // SE104 Sapphire electric gate *short stable electric buzz Higher pictched than SE 153*
+#define SE_SEEDOT_FALLING           0xE9 // SE105 Seedot drops into basket
+#define SE_SEEDOT_LANDS             0xEA // SE106 Seedot lands in basket
+#define SE_SEEDOT_LEAVES            0xEB // SE107 *Rubber Mallet Thwack*
+#define SE_ZIGZAGOON_ROULETTE_STOP             0xEC // SE108 Duplicate of SE80
 #define SE_EMPTY_0xED               0xED // No Sound
 #define SE_EMPTY_0xEE               0xEE // No Sound
 #define SE_EMPTY_0xEF               0xEF // No Sound

@@ -52,7 +52,7 @@ void UpdateSapphireBumperLogic(void)
                 gCurrentPinballGame->sapphireBumperAnimSubTimer[i] = 0;
                 if (gCurrentPinballGame->sapphireBumperAnimKeyframe[i] == 5)
                 {
-                    m4aSongNumStart(SE_UNKNOWN_0xE6);
+                    m4aSongNumStart(SE_SAPPHIRE_MART_GATE_TRIGGER);
                     gCurrentPinballGame->scoreAddedInFrame = 2000;
                 }
             }
@@ -83,7 +83,7 @@ void UpdateSapphireBumperLogic(void)
                 gCurrentPinballGame->sapphireBumperAnimKeyframe[i]++;
                 gCurrentPinballGame->sapphireBumperAnimSubTimer[i] = 0;
                 if (gCurrentPinballGame->sapphireBumperAnimKeyframe[i] == 8)
-                    m4aSongNumStart(SE_UNKNOWN_0xE7);
+                    m4aSongNumStart(SE_SAPPHIRE_MART_GATE_REPLACED);
 
                 if (gCurrentPinballGame->sapphireBumperAnimKeyframe[i] > 8)
                 {
@@ -163,7 +163,7 @@ void UpdateSapphireBumperLogic(void)
     {
         if (gCurrentPinballGame->shopBumperHitTimer == 17)
         {
-            m4aSongNumStart(SE_UNKNOWN_0xE8);
+            m4aSongNumStart(SE_SAPPHIRE_MART_GATE_HIT);
             gCurrentPinballGame->scoreAddedInFrame = 10;
             PlayRumble(13);
         }

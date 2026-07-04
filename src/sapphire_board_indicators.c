@@ -629,7 +629,7 @@ void AnimateHatchMachineSpinner(void)
             if (gCurrentPinballGame->targetBumperAnimTimers[i] > 0)
             {
                 if (gCurrentPinballGame->targetBumperAnimTimers[i] == 10)
-                    m4aSongNumStart(SE_UNKNOWN_0xDC);
+                    m4aSongNumStart(SE_HATCH_MACHINE_SPINNER_TRIGGER);
 
                 gCurrentPinballGame->targetBumperAnimTimers[i]--;
                 srcIndex = 1;

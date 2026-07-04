@@ -220,7 +220,7 @@ void UpdateSpoinkAnimation(void)
             }
 
             if (gCurrentPinballGame->spoinkAnimFrameTimer == 0)
-                m4aSongNumStart(SE_UNKNOWN_0xCC);
+                m4aSongNumStart(SE_SPOINK_LAUNCHER_CHARGED);
 
             gCurrentPinballGame->spoinkAnimFrameTimer++;
         }

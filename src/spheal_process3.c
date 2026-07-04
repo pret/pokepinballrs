@@ -1114,7 +1114,7 @@ void SphealBoard_PelipperDeliversBall(void)
         gCurrentPinballGame->deliveryAnimFrameIndex = (gCurrentPinballGame->pelipperFrameTimer % 24) / 6 + 13;
         gCurrentPinballGame->pelipperYBobOffset = (Sin(gCurrentPinballGame->pelipperFrameTimer * 0x400) * 240) / 20000;
         if (gCurrentPinballGame->pelipperFrameTimer == 0)
-            m4aSongNumStart(SE_UNKNOWN_0xE4);
+            m4aSongNumStart(SE_PELIPPER_SWOOSH);
 
         if (gCurrentPinballGame->pelipperFrameTimer < 40)
         {
@@ -1165,7 +1165,7 @@ void SphealBoard_PelipperDeliversBall(void)
                     gCurrentPinballGame->ball->oamPriority = 3;
                     gCurrentPinballGame->boardLayerDepth = 0;
                     gCurrentPinballGame->ballDeliveryActive = 0;
-                    m4aSongNumStart(SE_UNKNOWN_0xE5);
+                    m4aSongNumStart(SE_PELIPPER_BALL_DROP_LANDS);
                     PlayRumble(7);
                 }
 

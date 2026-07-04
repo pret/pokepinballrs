@@ -12,7 +12,7 @@ gSongTable:: @ 0x08534E04
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_table_select, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song mus_unk_5, MUSIC_PLAYER_BGM, 0
+	song mus_ereader, MUSIC_PLAYER_BGM, 0
 	song mus_unk_6, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_opening, MUSIC_PLAYER_BGM, 0
@@ -27,7 +27,7 @@ gSongTable:: @ 0x08534E04
 	song mus_success, MUSIC_PLAYER_BGM, 0
 	song mus_success2, MUSIC_PLAYER_BGM, 0
 	song mus_end_of_ball2, MUSIC_PLAYER_BGM, 0
-	song mus_unk_14, MUSIC_PLAYER_BGM, 0
+	song mus_prize_awarded, MUSIC_PLAYER_BGM, 0
 	song mus_egg_mode, MUSIC_PLAYER_BGM, 0
 	song mus_egg_mode_start, MUSIC_PLAYER_BGM, 0
 	song mus_travel_mode, MUSIC_PLAYER_BGM, 0
@@ -202,48 +202,48 @@ gSongTable:: @ 0x08534E04
 	song se_unused_0xc0, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xc1, MUSIC_PLAYER_SE2, 2
 	song se_sharpedo_ball_eject, MUSIC_PLAYER_SE2, 2
-	song se_unk_c3, MUSIC_PLAYER_SE2, 2
+	song se_shop_eject, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xc4, MUSIC_PLAYER_SE2, 2
-	song se_unk_c5, MUSIC_PLAYER_SE2, 2
-	song se_unk_c6, MUSIC_PLAYER_SE2, 2
-	song se_unk_c7, MUSIC_PLAYER_SE2, 2
+	song se_makuhita_punch, MUSIC_PLAYER_SE2, 2
+	song se_chikorita_leaf_blade, MUSIC_PLAYER_SE2, 2
+	song se_zigzagoon_emerge, MUSIC_PLAYER_SE2, 2
 	song se_ruby_bumper_emerges, MUSIC_PLAYER_SE2, 2
 	song se_ruby_bumper_leaves, MUSIC_PLAYER_SE2, 2
-	song se_unk_ca, MUSIC_PLAYER_SE2, 2
+	song se_ruby_mart_sign_changed, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xcb, MUSIC_PLAYER_SE2, 2
-	song se_unk_cc, MUSIC_PLAYER_SE2, 2
-	song se_unk_cd, MUSIC_PLAYER_SE2, 2
-	song se_unk_ce, MUSIC_PLAYER_SE2, 2
-	song se_unk_cf, MUSIC_PLAYER_SE2, 2
-	song se_unk_d0, MUSIC_PLAYER_SE2, 2
-	song se_unk_d1, MUSIC_PLAYER_SE2, 2
-	song se_unk_d2, MUSIC_PLAYER_SE2, 2
+	song se_spoink_launcher_charged, MUSIC_PLAYER_SE2, 2
+	song se_spoink_launcher_fired, MUSIC_PLAYER_SE2, 2
+	song se_sharpedo_bite, MUSIC_PLAYER_SE2, 2
+	song se_nuzleaf_hit, MUSIC_PLAYER_SE2, 2
+	song se_nuzleaf_teetering, MUSIC_PLAYER_SE2, 2
+	song se_nuzleaf_forms_bridge, MUSIC_PLAYER_SE2, 2
+	song se_gulpin_lands_or_leaves, MUSIC_PLAYER_SE2, 2
 	song se_whiscash_emerge_splash, MUSIC_PLAYER_SE2, 2
 	song se_whiscash_leave_burble, MUSIC_PLAYER_SE2, 2
 	song se_whiscash_catch_ball, MUSIC_PLAYER_SE2, 2
 	song se_whiscash_spit_ball, MUSIC_PLAYER_SE2, 2
 	song se_whiscash_splashdown, MUSIC_PLAYER_SE2, 2
-	song se_unk_d8, MUSIC_PLAYER_SE2, 2
+	song se_ramp_prize_collected, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_unk_dc, MUSIC_PLAYER_SE2, 2
-	song se_unk_dd, MUSIC_PLAYER_SE2, 2
-	song se_unk_de, MUSIC_PLAYER_SE2, 2
-	song se_unk_df, MUSIC_PLAYER_SE2, 2
-	song se_unk_e0, MUSIC_PLAYER_SE2, 2
-	song se_unk_e1, MUSIC_PLAYER_SE2, 2
-	song se_unk_e2, MUSIC_PLAYER_SE2, 2
-	song se_unk_e3, MUSIC_PLAYER_SE2, 2
-	song se_unk_e4, MUSIC_PLAYER_SE2, 2
-	song se_unk_e5, MUSIC_PLAYER_SE2, 2
-	song se_unk_e6, MUSIC_PLAYER_SE2, 2
-	song se_unk_e7, MUSIC_PLAYER_SE2, 2
-	song se_unk_e8, MUSIC_PLAYER_SE2, 2
-	song se_unk_e9, MUSIC_PLAYER_SE2, 2
-	song se_unk_ea, MUSIC_PLAYER_SE2, 2
-	song se_unk_eb, MUSIC_PLAYER_SE2, 2
-	song se_unk_ec, MUSIC_PLAYER_SE2, 2
+	song se_hatch_machine_spinner_trigger, MUSIC_PLAYER_SE2, 2
+	song se_mon_lands_on_hatch_machine_top, MUSIC_PLAYER_SE2, 2
+	song se_hatch_machine_stage_advance, MUSIC_PLAYER_SE2, 2
+	song se_hatch_machine_egg_hatch, MUSIC_PLAYER_SE2, 2
+	song se_hatch_machine_elevator, MUSIC_PLAYER_SE2, 2
+	song se_hatch_machine_elevator_top, MUSIC_PLAYER_SE2, 2
+	song se_pelipper_ball_grab, MUSIC_PLAYER_SE2, 2
+	song se_pelipper_wing_flap, MUSIC_PLAYER_SE2, 2
+	song se_pelipper_swoosh, MUSIC_PLAYER_SE2, 2
+	song se_pelipper_ball_drop_lands, MUSIC_PLAYER_SE2, 2
+	song se_sapphire_mart_gate_trigger, MUSIC_PLAYER_SE2, 2
+	song se_sapphire_mart_gate_replaced, MUSIC_PLAYER_SE2, 2
+	song se_sapphire_mart_gate_hit, MUSIC_PLAYER_SE2, 2
+	song se_seedot_falling, MUSIC_PLAYER_SE2, 2
+	song se_seedot_lands, MUSIC_PLAYER_SE2, 2
+	song se_seedot_leaves, MUSIC_PLAYER_SE2, 2
+	song se_zigzagoon_roulette_stop, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song mus_dummy, MUSIC_PLAYER_BGM, 0

@@ -238,10 +238,10 @@ void UpdateSapphireSeedotCollection(void)
             if (gCurrentPinballGame->seedotAnimTimer[i] < 33)
             {
                 if (gCurrentPinballGame->seedotAnimTimer[i] == 0)
-                    m4aSongNumStart(SE_UNKNOWN_0xE9);
+                    m4aSongNumStart(SE_SEEDOT_FALLING);
 
                 if (gCurrentPinballGame->seedotAnimTimer[i] == 26)
-                    m4aSongNumStart(SE_UNKNOWN_0xEA);
+                    m4aSongNumStart(SE_SEEDOT_LANDS);
 
                 gCurrentPinballGame->seedotAnimTimer[i]++;
                 if (gCurrentPinballGame->seedotAnimTimer[i] < 21)
@@ -285,7 +285,7 @@ void UpdateSapphireSeedotCollection(void)
             else if (var0 < 38)
             {
                 if (var0 == 32 && (gMain.modeChangeFlags & MODE_CHANGE_END_OF_GAME) == 0)
-                    m4aSongNumStart(SE_UNKNOWN_0xEB);
+                    m4aSongNumStart(SE_SEEDOT_LEAVES);
 
                 gCurrentPinballGame->seedotSpriteFrame[i] = 6;
                 gCurrentPinballGame->seedotOamFramesetIndex[i] = 3;
@@ -580,7 +580,7 @@ void UpdateSapphireEggMachine(void)
                 {
                     gCurrentPinballGame->sapphireHatchMachineFrameIx++;
                     gCurrentPinballGame->scoreAddedInFrame = 20000;
-                    m4aSongNumStart(SE_UNKNOWN_0xDE);
+                    m4aSongNumStart(SE_HATCH_MACHINE_STAGE_ADVANCE);
                 }
                 else
                 {
@@ -597,7 +597,7 @@ void UpdateSapphireEggMachine(void)
                     gCurrentPinballGame->holeAnimFrameCounter = 0;
                     m4aMPlayStop(&gMPlayInfo_BGM);
                     gCurrentPinballGame->scoreAddedInFrame = 200000;
-                    m4aSongNumStart(SE_UNKNOWN_0xDF);
+                    m4aSongNumStart(SE_HATCH_MACHINE_EGG_HATCH);
                 }
             }
             else
@@ -606,7 +606,7 @@ void UpdateSapphireEggMachine(void)
                 {
                     gCurrentPinballGame->sapphireHatchMachineFrameIx++;
                     gCurrentPinballGame->scoreAddedInFrame = 20000;
-                    m4aSongNumStart(SE_UNKNOWN_0xDE);
+                    m4aSongNumStart(SE_HATCH_MACHINE_STAGE_ADVANCE);
                 }
             }
 
@@ -653,7 +653,7 @@ void UpdateSapphireEggMachine(void)
                 gCurrentPinballGame->sapphireHatchMachineState = 4;
 
             if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 6)
-                m4aSongNumStart(SE_UNKNOWN_0xE0);
+                m4aSongNumStart(SE_HATCH_MACHINE_ELEVATOR);
 
             index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
             DmaCopy16(3, &gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
@@ -685,7 +685,7 @@ void UpdateSapphireEggMachine(void)
             gCurrentPinballGame->sapphireHatchMachineState = 5;
             gCurrentPinballGame->holeAnimFrameCounter = 0;
             gCurrentPinballGame->sapphireHatchMachineFrameIx = 10;
-            m4aSongNumStart(SE_UNKNOWN_0xE0);
+            m4aSongNumStart(SE_HATCH_MACHINE_ELEVATOR);
             gCurrentPinballGame->eggAnimationPhase = 1;
             gCurrentPinballGame->portraitOffsetX = 2080;
             gCurrentPinballGame->portraitOffsetY = 960;
@@ -710,7 +710,7 @@ void UpdateSapphireEggMachine(void)
         }
 
         if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 14 && gCurrentPinballGame->holeAnimFrameCounter == 10)
-            m4aSongNumStart(SE_UNKNOWN_0xE1);
+            m4aSongNumStart(SE_HATCH_MACHINE_ELEVATOR_TOP);
 
         if (gCurrentPinballGame->portraitOffsetY > 700)
             gCurrentPinballGame->portraitOffsetY -= 5;

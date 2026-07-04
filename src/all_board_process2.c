@@ -435,7 +435,7 @@ void ProcessMainBoardBallDrainAndLaunch(void)
             PlayRumble(7);
             gCurrentPinballGame->ball->velocity.y = -590;
             gCurrentPinballGame->ball->velocity.x = 0;
-            m4aSongNumStart(SE_UNKNOWN_0xCD);
+            m4aSongNumStart(SE_SPOINK_LAUNCHER_FIRED);
         }
 
         gCurrentPinballGame->launcherCharging = 0;

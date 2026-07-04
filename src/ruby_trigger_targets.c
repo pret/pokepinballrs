@@ -78,7 +78,7 @@ void UpdateChikoritaAttackAnimation(void)
         if (gCurrentPinballGame->chikoritaProjectileTimer < 120)
         {
             if (gCurrentPinballGame->chikoritaProjectileTimer % 8 == 0)
-                m4aSongNumStart(SE_UNKNOWN_0xC6);
+                m4aSongNumStart(SE_CHIKORITA_LEAF_BLADE);
 
             index = (gCurrentPinballGame->chikoritaProjectileTimer % 16) / 4;
             DmaCopy16(3, gChikoritaProjectileTiles[index], (void *)0x06014200, 0x80);
@@ -94,7 +94,7 @@ void UpdateChikoritaAttackAnimation(void)
             if (gCurrentPinballGame->chikoritaProjectileTimer == 27)
             {
                 gMain.spriteGroups[14].active = TRUE;
-                m4aSongNumStart(SE_UNKNOWN_0xC7);
+                m4aSongNumStart(SE_ZIGZAGOON_EMERGE);
                 if (gCurrentPinballGame->sideBumperBounceCount[1] > 0)
                 {
                     gCurrentPinballGame->sideBumperBounceCount[1]++;
@@ -109,7 +109,7 @@ void UpdateChikoritaAttackAnimation(void)
             if (gCurrentPinballGame->chikoritaProjectileTimer == 100)
             {
                 gMain.spriteGroups[14].active = TRUE;
-                m4aSongNumStart(SE_UNKNOWN_0xC7);
+                m4aSongNumStart(SE_ZIGZAGOON_EMERGE);
                 if (gCurrentPinballGame->sideBumperBounceCount[0] > 0)
                 {
                     gCurrentPinballGame->sideBumperBounceCount[0]++;
@@ -231,7 +231,7 @@ void UpdateGulpinBossState(void)
                 }
 
                 if (gCurrentPinballGame->gulpinAnimFrameIndex == 60 || gCurrentPinballGame->gulpinAnimFrameIndex == 69 || gCurrentPinballGame->gulpinAnimFrameIndex == 78)
-                    m4aSongNumStart(SE_UNKNOWN_0xD2);
+                    m4aSongNumStart(SE_GULPIN_LANDS_OR_LEAVES);
             }
         }
     }
@@ -250,7 +250,7 @@ void UpdateGulpinBossState(void)
                 }
 
                 if (gCurrentPinballGame->gulpinAnimFrameIndex == 6)
-                    m4aSongNumStart(SE_UNKNOWN_0xD2);
+                    m4aSongNumStart(SE_GULPIN_LANDS_OR_LEAVES);
             }
             else if (gCurrentPinballGame->seedotCount == 2)
             {
@@ -261,7 +261,7 @@ void UpdateGulpinBossState(void)
                 }
 
                 if (gCurrentPinballGame->gulpinAnimFrameIndex == 20)
-                    m4aSongNumStart(SE_UNKNOWN_0xD2);
+                    m4aSongNumStart(SE_GULPIN_LANDS_OR_LEAVES);
             }
             else if (gCurrentPinballGame->seedotCount == 3)
             {
@@ -273,7 +273,7 @@ void UpdateGulpinBossState(void)
                 }
 
                 if (gCurrentPinballGame->gulpinAnimFrameIndex == 32)
-                    m4aSongNumStart(SE_UNKNOWN_0xD2);
+                    m4aSongNumStart(SE_GULPIN_LANDS_OR_LEAVES);
             }
         }
         else

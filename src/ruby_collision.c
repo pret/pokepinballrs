@@ -703,7 +703,7 @@ void ProcessRubyCollisionEvent(s32 arg0, s16* arg1, u16* arg2)
                 gCurrentPinballGame->ballPowerUpOverride = 1;
                 gCurrentPinballGame->ballPowerUpAnimActive = 1;
                 gCurrentPinballGame->ballShadowTimer = 60;
-                m4aSongNumStart(SE_UNKNOWN_0xD8);
+                m4aSongNumStart(SE_RAMP_PRIZE_COLLECTED);
             }
 
             gCurrentPinballGame->rampPrizeType = 0;

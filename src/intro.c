@@ -331,7 +331,7 @@ void IntroScene1_ResetAfterZoom(void)
         gIntroSpriteEntities[0].posX = 0x78;
         gIntroSpriteEntities[0].posY = 0x58;
         gIntroSpriteEntities[0].visible = 1;
-        m4aSongNumStart(SE_UNKNOWN_0xD8);
+        m4aSongNumStart(SE_RAMP_PRIZE_COLLECTED);
         gIntroSceneIndex++;
     }
 }

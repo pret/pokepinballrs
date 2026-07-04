@@ -94,7 +94,7 @@ void LoadEReaderGraphics(void)
     DmaCopy16(3, gTempGfxBuffer, (void *)VRAM + 0x4000, 0x3000);
 
     UpdateEReaderSprites();
-    m4aSongNumStart(MUS_UNKNOWN_0x5);
+    m4aSongNumStart(MUS_EREADER);
     EnableVBlankInterrupts();
     FadeInScreen();
     gMain.subState = EREADER_STATE_1;
@@ -360,7 +360,7 @@ void Ereader_State6_343C(void)
     DmaCopy16(3, gTempGfxBuffer, (void *)VRAM + 0x4000, 0x3000);
 
     UpdateEReaderSprites();
-    m4aSongNumStart(MUS_UNKNOWN_0x5);
+    m4aSongNumStart(MUS_EREADER);
     EnableVBlankInterrupts();
     FadeInScreen();
     gMain.subState = EREADER_STATE_7;

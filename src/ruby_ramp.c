@@ -121,7 +121,7 @@ void UpdateRubyRampPrizeGate(void)
         {
             if (gCurrentPinballGame->rampPrizeVisibilityTimer <= 0)
             {
-                m4aSongNumStart(SE_UNKNOWN_0xC5);
+                m4aSongNumStart(SE_MAKUHITA_PUNCH);
                 gCurrentPinballGame->scoreAddedInFrame = 10000;
                 gCurrentPinballGame->ball->velocity.x = -600;
                 gCurrentPinballGame->ball->velocity.y = -300;

@@ -529,7 +529,7 @@ void UpdateEvolutionShopSprite(void)
         }
         else if (gCurrentPinballGame->shopAnimTimer == 37)
         {
-            m4aSongNumStart(SE_UNKNOWN_0xCA);
+            m4aSongNumStart(SE_RUBY_MART_SIGN_CHANGED);
         }
 
         if (gCurrentPinballGame->shopAnimTimer % 6 == 0)
@@ -1729,7 +1729,7 @@ void UpdateEggMode(void)
             if (gCurrentPinballGame->waypointSubTimer == 0)
             {
                 gCurrentPinballGame->sapphireHatchMachineState = 3;
-                m4aSongNumStart(SE_UNKNOWN_0xDD);
+                m4aSongNumStart(SE_MON_LANDS_ON_HATCH_MACHINE_TOP);
             }
             var0 = 0;
         }

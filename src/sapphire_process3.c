@@ -245,7 +245,7 @@ void UpdateSapphireEvolutionShopSequence(void)
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
         gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
 
-        m4aSongNumStart(SE_UNKNOWN_0xC3);
+        m4aSongNumStart(SE_SHOP_EJECT);
 
         if (gCurrentPinballGame->evoArrowProgress > 2 && gCurrentPinballGame->evolvablePartySize > 0) {
             RequestBoardStateTransition(MAIN_BOARD_STATE_EVO_MODE);
