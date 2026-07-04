@@ -14,7 +14,7 @@ void RequestBoardStateTransition(u8 boardState)
     gCurrentPinballGame->boardTransitionPhase = BOARD_STATE_DISPATCHER_STATE_CHANGING;
     gCurrentPinballGame->nextBoardState = boardState;
     if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE)
-        gMain.fieldSpriteGroups[13]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
 }
 
 void BoardStateDispatcher(void)

@@ -4,7 +4,7 @@
 #include "functions_main_boards.h"
 
 extern void UpdateNuzleafEntity(void);
-extern void DrawRubyNuzleafPlatformSprite(void);
+extern void DrawRubyRampPrize(void);
 extern void RubyPondTriBumperHandleHitAndDraw(void);
 extern void DrawWhiscash(void);
 extern void AnimateSharpedoEntity(void);
@@ -12,7 +12,7 @@ extern void UpdateChikoritaAttackAnimation(void);
 extern void AnimateChikoritaSprite(void);
 extern void UpdateGulpinBossState(void);
 
-extern void UpdateRubyRampPrizeGate(void);
+extern void UpdateMakuhitaEntity(void);
 extern void DrawRubySideBumperSprites(void);
 extern void UpdateRubySideBumperAnimation(void);
 extern void UpdateRubyBoardEntityRendering(void);

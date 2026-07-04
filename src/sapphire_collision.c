@@ -162,7 +162,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
     s16 modRes;
     s16 index;
     u16 angle;
-    int squaredMagnitude;
+    int squaredSpeed;
 
     switch (triggerType)
     {
@@ -312,14 +312,14 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     // Intended to adjust the angle for the left ramp, but may also (Possible bug)
                     // affect this trigger type when used in the lower board, when firing out of
                     // the left pika kickback, or trying to hop out from the lower outlane.
-                    angle = 0xDA00;
-                    squaredMagnitude =
-                        gCurrentPinballGame->ball->velocity.x * gCurrentPinballGame->ball->velocity.x +
-                        gCurrentPinballGame->ball->velocity.y * gCurrentPinballGame->ball->velocity.y;
+					angle = 0xDA00;
+                	squaredSpeed =
+                    	gCurrentPinballGame->ball->velocity.x * gCurrentPinballGame->ball->velocity.x +
+                    	gCurrentPinballGame->ball->velocity.y * gCurrentPinballGame->ball->velocity.y;
 
-                    squaredMagnitude = Sqrt(squaredMagnitude * 4) / 2;
-                    gCurrentPinballGame->ball->velocity.x = squaredMagnitude * Cos(angle) / 20000;
-                    gCurrentPinballGame->ball->velocity.y = -squaredMagnitude * Sin(angle) / 20000;
+                	squaredSpeed = Sqrt(squaredSpeed * 4) / 2;
+                	gCurrentPinballGame->ball->velocity.x = squaredSpeed * Cos(angle) / 20000;
+                	gCurrentPinballGame->ball->velocity.y = -squaredSpeed * Sin(angle) / 20000;
                 }
             }
             else
@@ -580,11 +580,11 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
             if (gCurrentPinballGame->pikaKickbackTimer == 0)
             {
                 if (gCurrentPinballGame->ball->positionQ0.x <= 120)
-                    gCurrentPinballGame->outLaneSide = 1;
+                    gCurrentPinballGame->outLaneSide = OUTLANE_LEFT;
                 else
-                    gCurrentPinballGame->outLaneSide = 2;
+                    gCurrentPinballGame->outLaneSide = OUTLANE_RIGHT;
 
-                if (gCurrentPinballGame->outLanePikaPosition < 2)
+                if (gCurrentPinballGame->outLanePikaPosition < PIKA_BOTH_SIDES)
                 {
                     if (gCurrentPinballGame->outLanePikaPosition == gCurrentPinballGame->outLaneSide - 1)
                         gCurrentPinballGame->pikaKickbackTimer = 120;
@@ -632,7 +632,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     gCurrentPinballGame->cameraBall = gCurrentPinballGame->ballStates;
 
                 modRes = (gCurrentPinballGame->hatchMachineTriggerCounter - 1) % 4;
-                gMain.spriteGroups[47 + modRes].active = TRUE;
+                gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LIGHT_SPARK_FX_BASE + modRes].active = TRUE;
                 gCurrentPinballGame->splashEffectFrameIndex[modRes] = 0;
                 gCurrentPinballGame->splashEffectFrameTimer[modRes] = 0;
                 gCurrentPinballGame->splashEffectPositionIndex[modRes] = gCurrentPinballGame->hatchMachineTriggerCounter - 1;
@@ -657,7 +657,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 gCurrentPinballGame->hatchMachineTriggerCounter++;
 
                 modRes = (gCurrentPinballGame->hatchMachineTriggerCounter -1) % 4;
-                gMain.spriteGroups[47 + modRes].active = TRUE;
+                gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LIGHT_SPARK_FX_BASE + modRes].active = TRUE;
                 gCurrentPinballGame->splashEffectFrameIndex[modRes] = 0;
                 gCurrentPinballGame->splashEffectFrameTimer[modRes] = 0;
                 gCurrentPinballGame->splashEffectPositionIndex[modRes] = gCurrentPinballGame->hatchMachineTriggerCounter - 1;

@@ -52,7 +52,7 @@ void UpdateSapphireEggHatchAnimation(void)
     var3 = 0;
     var1 = 0;
     var2 = 0;
-    group = &gMain.spriteGroups[52];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG];
     sp0 = 0;
     switch (gCurrentPinballGame->eggAnimationPhase)
     {
@@ -167,7 +167,7 @@ void UpdateSapphireEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
 
-    group = &gMain.spriteGroups[51];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LOWER_SEGMENT];
     if (group->active)
     {
         group->baseX = 192 - gCurrentPinballGame->cameraXOffset;
@@ -203,7 +203,7 @@ void UpdateSapphireSeedotCollection(void)
                     gCurrentPinballGame->seedotCount++;
                     gCurrentPinballGame->seedotDecayTimer = 1800;
                     if (gCurrentPinballGame->seedotCount == 3)
-                        gCurrentPinballGame->seedotModeStartDelay = 1;
+                        gCurrentPinballGame->travelModeStartDelay = 1;
                 }
             }
             else
@@ -314,17 +314,17 @@ void UpdateSapphireSeedotCollection(void)
         gCurrentPinballGame->basketBounceTimer--;
     }
 
-    if (gCurrentPinballGame->seedotModeStartDelay)
+    if (gCurrentPinballGame->travelModeStartDelay)
     {
-        gCurrentPinballGame->seedotModeStartDelay--;
-        if (gCurrentPinballGame->seedotModeStartDelay == 0)
+        gCurrentPinballGame->travelModeStartDelay--;
+        if (gCurrentPinballGame->travelModeStartDelay == 0)
         {
             if (gCurrentPinballGame->activePortraitType)
-                gCurrentPinballGame->seedotModeStartDelay = 1;
+                gCurrentPinballGame->travelModeStartDelay = 1;
             else
                 gCurrentPinballGame->activePortraitType = 4;
 
-            if (gCurrentPinballGame->seedotModeStartDelay == 0)
+            if (gCurrentPinballGame->travelModeStartDelay == 0)
             {
                 gMain.modeChangeFlags |= MODE_CHANGE_BANNER;
                 gCurrentPinballGame->bannerDelayTimer = 70;
@@ -332,9 +332,9 @@ void UpdateSapphireSeedotCollection(void)
                 gCurrentPinballGame->cameraYScrollTarget = 0;
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 0;
-                gCurrentPinballGame->bannerGfxIndex = 4;
-                gCurrentPinballGame->bannerActive = 1;
-                gCurrentPinballGame->bannerPreserveBallState = 0;
+                gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_TRAVEL;
+                gCurrentPinballGame->bannerActive = TRUE;
+                gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                 gCurrentPinballGame->bannerDisplayDuration = 120;
                 gCurrentPinballGame->bannerSlidePosition = 0;
                 gCurrentPinballGame->bannerSlideTimer = 50;
@@ -392,7 +392,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
     s16 index;
     int var0;
 
-    group = &gMain.spriteGroups[64];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_BASKET_BACK];
     if (!group->active)
         return;
 
@@ -408,7 +408,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[68];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_BASKET_FRONT];
     group->baseX = 10 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 298 - gCurrentPinballGame->cameraYOffset;
     oamSimple = &group->oam[0];
@@ -417,7 +417,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
 
     for (j = 0; j < 3; j++)
     {
-        group = &gMain.spriteGroups[65 + j];
+        group = &gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_ENTITY_BASE + j];
 
         var0 = gSeedotBaseXPositions[j] - j;
         group->baseX = var0 - gCurrentPinballGame->cameraXOffset;
@@ -545,7 +545,7 @@ void DrawSapphireShopSignSprite(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[69];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_MART_SIGN];
     if (group->active)
     {
         group->baseX = 16 - gCurrentPinballGame->cameraXOffset;
@@ -590,9 +590,9 @@ void UpdateSapphireEggMachine(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 0;
-                    gCurrentPinballGame->bannerActive = 1;
-                    gCurrentPinballGame->bannerPreserveBallState = 0;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
+                    gCurrentPinballGame->bannerActive = TRUE;
+                    gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                     gCurrentPinballGame->sapphireHatchMachineState = 1;
                     gCurrentPinballGame->holeAnimFrameCounter = 0;
                     m4aMPlayStop(&gMPlayInfo_BGM);
@@ -679,9 +679,9 @@ void UpdateSapphireEggMachine(void)
             gCurrentPinballGame->cameraYScrollTarget = 0;
             gCurrentPinballGame->cameraYAdjust = 0;
             gCurrentPinballGame->cameraYScrollSpeed = 0;
-            gCurrentPinballGame->bannerGfxIndex = 0;
-            gCurrentPinballGame->bannerActive = 1;
-            gCurrentPinballGame->bannerPreserveBallState = 0;
+            gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
+            gCurrentPinballGame->bannerActive = TRUE;
+            gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
             gCurrentPinballGame->sapphireHatchMachineState = 5;
             gCurrentPinballGame->holeAnimFrameCounter = 0;
             gCurrentPinballGame->sapphireHatchMachineFrameIx = 10;
@@ -727,7 +727,7 @@ void UpdateSapphireEggMachine(void)
 
     for (i = 0; i < 4; i++)
     {
-        group = &gMain.spriteGroups[47 + i];
+        group = &gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LIGHT_SPARK_FX_BASE + i];
         if (group->active)
         {
             if (gSplashEffectFrameDurations[gCurrentPinballGame->splashEffectFrameIndex[i]][0] > gCurrentPinballGame->splashEffectFrameTimer[i])

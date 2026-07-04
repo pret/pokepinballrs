@@ -342,7 +342,8 @@ void RestoreFieldSpecificGraphics(void)
     switch (gCurrentPinballGame->activePortraitType - 1)
     {
     case 0:
-        if (gCurrentPinballGame->outLanePikaPosition == 2 && gCurrentPinballGame->outLaneSide == 2)
+        if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES
+            && gCurrentPinballGame->outLaneSide == OUTLANE_RIGHT)
         {
             DmaCopy16(3, gPikaSaverFullCoverageGfx, (void *)0x6015800, 0x2400);
         }
@@ -478,7 +479,7 @@ void RestoreMainFieldDynamicGraphics(void)
     LoadCatchSpriteGraphics();
     LoadMonFieldSpriteGraphics();
 
-    for (i = 0; i <= 1; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         var0 = gCurrentPinballGame->flipper[i].position / 2;
         DmaCopy16(3, gFlipperTileGraphics[var0], ((i * 0x200) + 0x06010000), 0x200);
@@ -502,7 +503,7 @@ void RestoreMainFieldDynamicGraphics(void)
         switch (gCurrentPinballGame->portraitRenderMode[i])
         {
         case 0:
-            DmaCopy16(3, gPortraitGenericGraphics[gCurrentPinballGame->portraitGfxIndex[i]], 0x06010CA0 + (i * 0x300), 0x300);
+            DmaCopy16(3, gLocationPortraitGfx[gCurrentPinballGame->portraitGfxIndex[i]], 0x06010CA0 + (i * 0x300), 0x300);
             gCurrentPinballGame->ball += 0; //TODO: Dumb match is still a match...
             break;
         case 9:

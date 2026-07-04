@@ -184,7 +184,7 @@ void ProcessKyogreCollisionEvent(u8 triggerType, u16 *hasCollisionImpact, u16 *c
             break;
         case 4:
             gCurrentPinballGame->bossEntityState = KYOGRE_ENTITY_STATE_SHOCKWAVE;
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;;
             break;
         case 5:
         case 6:

@@ -85,10 +85,10 @@ void UpdateShopEntryAnimation(s16 arg0)
             LoadPortraitGraphics(PORTRAIT_STATE_SHOP_SELECTOR, PORTRAIT_MAIN_SLOT);
             RenderEvolutionUI(1);
 
-            gMain.fieldSpriteGroups[7]->active = TRUE;
-            gMain.fieldSpriteGroups[8]->active = TRUE;
-            gMain.fieldSpriteGroups[6]->active = TRUE;
-            gMain.fieldSpriteGroups[9]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
 
             DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT + 0x1C0, 0x20);
             DmaCopy16(3, gShopModeBG_Gfx, BG_VRAM + 0x2000, 0xC40);
@@ -100,7 +100,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
             m4aSongNumStart(SE_SHOP_LIST_REVEAL);
 
-            if (gCurrentPinballGame->outLanePikaPosition == 2)
+            if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)
                 gCurrentPinballGame->shopPikaSaverMaxed = 1;
             else
                 gCurrentPinballGame->shopPikaSaverMaxed = 0;
@@ -213,11 +213,11 @@ void UpdateShopEntryAnimation(s16 arg0)
                 s16 price;
                 const u16 *itemData = gShopItemData[gCurrentPinballGame->shopSelectedItemId];
 
-                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 3
-                    && gCurrentPinballGame->outLanePikaPosition == 2)
+                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_PICHU_SAVER
+                    && gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)
                     price = 999;
-                else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 4
-                    && gCurrentPinballGame->shopBonusStageAlreadyBought)
+                else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL
+                    && gCurrentPinballGame->shopExtraBallPreviouslyPurchased)
                     price = 999;
                 else
                     price = itemData[3];
@@ -254,8 +254,8 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->catchModeEventTimer = 30;
                 gCurrentPinballGame->shopAnimSlideTimer = 30;
 
-                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 4)
-                    gCurrentPinballGame->shopBonusStageAlreadyBought = 1;
+                if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL)
+                    gCurrentPinballGame->shopExtraBallPreviouslyPurchased = 1;
             }
         }
 
@@ -343,10 +343,10 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->creatureOamPriority = 3;
                 gCurrentPinballGame->prizeSelected = 0;
 
-                gMain.fieldSpriteGroups[7]->active = FALSE;
-                gMain.fieldSpriteGroups[8]->active = FALSE;
-                gMain.fieldSpriteGroups[6]->active = FALSE;
-                gMain.fieldSpriteGroups[9]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = FALSE;
 
                 gCurrentPinballGame->activePortraitType = 0;
             }
@@ -368,9 +368,9 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->cameraYScrollTarget = 0;
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 0;
-                gCurrentPinballGame->bannerGfxIndex = 3;
-                gCurrentPinballGame->bannerActive = 1;
-                gCurrentPinballGame->bannerPreserveBallState = 0;
+                gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_EVOLUTION;
+                gCurrentPinballGame->bannerActive = TRUE;
+                gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                 gCurrentPinballGame->bannerDisplayDuration = 80;
                 gCurrentPinballGame->bannerSlidePosition = 0xF63C; //-2500
                 gCurrentPinballGame->bannerSlideTimer = 50;
@@ -423,9 +423,9 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                 RenderEvolutionUI(var_r7);
 
-                gMain.fieldSpriteGroups[8]->active = TRUE;
-                gMain.fieldSpriteGroups[9]->active = TRUE;
-                gMain.fieldSpriteGroups[6]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
 
                 DmaCopy16(3, &gShopEvoUI_Pals, PLTT + 0x3C0, 0x20);
 
@@ -755,9 +755,9 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
                 gCurrentPinballGame->creatureOamPriority = 3;
 
-                gMain.fieldSpriteGroups[8]->active = FALSE;
-                gMain.fieldSpriteGroups[6]->active = FALSE;
-                gMain.fieldSpriteGroups[9]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = FALSE;
 
                 gCurrentPinballGame->evoBlinkTimer = 0;
                 gCurrentPinballGame->catchLights[0] = 4;
@@ -777,10 +777,10 @@ void UpdateShopEntryAnimation(s16 arg0)
 void InitCenterTrapMode(void)
 {
     gCurrentPinballGame->modeAnimTimer = 0x96;
-    gMain.fieldSpriteGroups[13]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     gCurrentPinballGame->bonusTrapEnabled = 0;
     gCurrentPinballGame->scoreAddedInFrame = 10000;
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+    gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
     PlayRumble(8);
 }
 
@@ -791,8 +791,8 @@ void AnimateCenterTrapSequence(void)
         gCurrentPinballGame->modeAnimTimer--;
         if (gCurrentPinballGame->modeAnimTimer > 148)
         {
-            gCurrentPinballGame->ball->ballHidden = 1;
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ball->ballHidden = TRUE;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->ball->velocity.y = 0;
             gCurrentPinballGame->ball->positionQ0.x = 119;
@@ -804,17 +804,17 @@ void AnimateCenterTrapSequence(void)
         }
         else if (gCurrentPinballGame->modeAnimTimer == 148)
         {
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             gCurrentPinballGame->trapAnimState = 0;
         }
         else if (gCurrentPinballGame->modeAnimTimer > 36)
         {
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             gCurrentPinballGame->trapAnimState = 0;
         }
         else if (gCurrentPinballGame->modeAnimTimer > 24)
         {
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             gCurrentPinballGame->trapAnimState = 1;
         }
         else if (gCurrentPinballGame->modeAnimTimer == 24)
@@ -823,11 +823,11 @@ void AnimateCenterTrapSequence(void)
             gCurrentPinballGame->trapAnimState = 2;
             gCurrentPinballGame->ball->velocity.x = 73;
             gCurrentPinballGame->ball->velocity.y = 236;
-            gCurrentPinballGame->ball->ballHidden = 0;
-            gCurrentPinballGame->ballFrozenState = 0;
-            gCurrentPinballGame->boardEntityActive = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
+            gCurrentPinballGame->cameraLocked = FALSE;
             gCurrentPinballGame->ball->scale = 0x88;
-            gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+            gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         }
         else if (gCurrentPinballGame->modeAnimTimer > 12)
         {
@@ -858,12 +858,12 @@ void AnimateCenterTrapSequence(void)
 
 void TransitionToBonusField(void)
 {
-    gMain.fieldSpriteGroups[13]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     SaveGameStateSnapshot(0);
     gCurrentPinballGame->ball->velocity.x = 0;
     gCurrentPinballGame->ball->velocity.y = 0;
-    gCurrentPinballGame->ball->ballHidden = 0;
-    gCurrentPinballGame->ballFrozenState = 0;
+    gCurrentPinballGame->ball->ballHidden = FALSE;
+    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
     gCurrentPinballGame->ball->scale = 0x100;
     gCurrentPinballGame->trapAnimState = 0;
     gCurrentPinballGame->ballCatchState = NOT_TRAPPED;

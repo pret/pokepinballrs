@@ -21,10 +21,10 @@
 #define    PRIZE_BALL_UPGRADE_C 12
 #define    PRIZE_BALL_UPGRADE_TO_MASTER 13
 
-//Note Prize 14-16 unused
-#define    PRIZE_14 14
-#define    PRIZE_15 15
-#define    PRIZE_16 16
+//Note Prize 14-16 unused in shop/roulette; Ix referenced from 'gShopItemData' array.
+#define    START_SLOT_CARD 14 // 'Start Slot' graphic
+#define    GOTO_NEXT_CARD 15 // Goto next graphic (up arrow)
+#define    TRAVEL_RAMP_INDICATOR_CARD 16 // Travel ramp indicator graphic
 
 #define    PRIZE_10_COINS 17
 #define    PRIZE_30_COINS 18
@@ -61,5 +61,9 @@
 #define    PRIZE_START_BONUS_MODE_KYOGRE 43
 #define    PRIZE_START_BONUS_MODE_GROUDON 44
 #define    PRIZE_START_BONUS_MODE_RAYQUAZA 45
+
+// Confirmation panels not used for prize wheel; Ix referenced from 'gShopItemData' array.
+#define    CONFIRM_BONUS_GAME_START 46
+#define    CONFIRM_TRAVEL_MOVE 47
 
 #endif // PRIZE_DEFINITIONS_H

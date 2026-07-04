@@ -33,7 +33,7 @@ extern const u16 gShopOamAttributes[18][3];
 extern const u16 gShopNumberOamFramesets[4][15];
 extern const s16 gArrowBounceOffsets[];
 extern const s16 gTimerIndicatorFrames[];
-extern const u8 gShopDigitTilesGfx[][0x300];
+extern const u8 gShopPortraitOverlayGfx[][0x300];
 extern const u8 gDecimalDigitTilesGfx[][0x40];
 extern const s16 gEvoShopAnimFrames[][7];
 extern const u8 gRubyBoardShop_Gfx[][0x500];
@@ -155,7 +155,7 @@ void UpdateCatchTrigger(void)
         break;
     case BONUS_HOLE_SUBSTATE_START_CLOSING:
         AnimateBonusTrapSprite();
-        gMain.fieldSpriteGroups[13]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
         gCurrentPinballGame->boardSubState++;
         break;
     case BONUS_HOLE_SUBSTATE_BOARD_STATE_CLEANUP:
@@ -359,7 +359,7 @@ void UpdateBonusStageSelect(void)
         break;
     case BOSS_HOLE_SUBSTATE_CANCEL_BONUS:
         AnimateBonusTrapSprite();
-        gMain.fieldSpriteGroups[13]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
         gCurrentPinballGame->boardSubState++;
         gCurrentPinballGame->stageTimer = 0;
         break;
@@ -376,7 +376,7 @@ void UpdateBonusStageSelect(void)
 void ShowBonusTrapSprite(void)
 {
     DmaCopy16(3, gMainStageBonusTrap_Gfx[0], (void *)0x060113C0, 0x300);
-    gMain.fieldSpriteGroups[13]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = TRUE;
     gCurrentPinballGame->bonusTrapEnabled = 1;
 }
 
@@ -386,7 +386,7 @@ void AnimateBonusTrapSprite(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = gMain.fieldSpriteGroups[13];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX];
     gCurrentPinballGame->bonusTrapAnimFrame = (gCurrentPinballGame->globalAnimFrameCounter % 35) / 7;
     if (group->active)
     {
@@ -425,7 +425,7 @@ void ProcessChargeIndicator(void)
     s16 chargeLevelIx;
     s16 sp0[3];
 
-    group = gMain.fieldSpriteGroups[17];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CHARGE_INDICATOR_DEVICE];
     memset(sp0, 0, sizeof(sp0));
     if (gCurrentPinballGame->chargeFillValue != gCurrentPinballGame->prevChargeFillValue)
     {
@@ -491,14 +491,14 @@ void ProcessChargeIndicator(void)
     }
 }
 
-void UpdateEvolutionShopSprite(void)
+void UpdateRubyEvolutionShopSprite(void)
 {
     s16 i;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[78];
+    group = &gMain.spriteGroups[SG_RUBY_SHOP_SIGN_CHANGE];
     if (gCurrentPinballGame->shopTransitionActive == 0)
     {
         if (gCurrentPinballGame->evoArrowProgress > 2)
@@ -554,7 +554,7 @@ void UpdateEvolutionShopSprite(void)
         {
             LoadShopItemGraphics(gCurrentPinballGame->evolutionShopActive);
             gCurrentPinballGame->shopTransitionActive = 0;
-            gMain.spriteGroups[78].active = FALSE;
+            gMain.spriteGroups[SG_RUBY_SHOP_SIGN_CHANGE].active = FALSE;
         }
     }
 }
@@ -571,7 +571,7 @@ void RenderEvolutionUI(s16 arg0)
     s16 sp0[2];
     s16 sp4[2];
 
-    group = gMain.fieldSpriteGroups[7];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS];
     var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
     if (arg0)
     {
@@ -593,7 +593,7 @@ void RenderEvolutionUI(s16 arg0)
         }
     }
 
-    group = gMain.fieldSpriteGroups[8];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL];
     index = gCurrentPinballGame->evolutionShopActive != 0 ? 1 : 0;
     if (group->active)
     {
@@ -612,7 +612,7 @@ void RenderEvolutionUI(s16 arg0)
         }
     }
 
-    group = gMain.fieldSpriteGroups[6];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS];
     if (group->active)
     {
         if (gMain.shopPanelSlideOffset < 20)
@@ -690,7 +690,7 @@ void RenderEvolutionUI(s16 arg0)
         }
     }
 
-    group = gMain.fieldSpriteGroups[9];
+    group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY];
     if (group->active)
     {
         group->baseX = 48;
@@ -699,14 +699,15 @@ void RenderEvolutionUI(s16 arg0)
         else
             group->baseY = 88;
 
-        if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 4)
+        if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL)
         {
-            if (gCurrentPinballGame->shopBonusStageAlreadyBought && gCurrentPinballGame->shopAnimSlideTimer / 5 == 0)
+            if (gCurrentPinballGame->shopExtraBallPreviouslyPurchased
+                && gCurrentPinballGame->shopAnimSlideTimer / 5 == 0)
                 index = 4;
             else
                 index = gTimerIndicatorFrames[gCurrentPinballGame->shopAnimSlideTimer / 5];
         }
-        else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == 3)
+        else if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_PICHU_SAVER)
         {
             if (gCurrentPinballGame->shopPikaSaverMaxed && gCurrentPinballGame->shopAnimSlideTimer / 5 == 0)
                 index = 4;
@@ -718,7 +719,8 @@ void RenderEvolutionUI(s16 arg0)
             index = gTimerIndicatorFrames[gCurrentPinballGame->shopAnimSlideTimer / 5];
         }
 
-        DmaCopy16(3, gShopDigitTilesGfx[index], (void *)0x06016220, 0x300);
+        // Used for change selection sheen, sold out banner/greying
+        DmaCopy16(3, gShopPortraitOverlayGfx[index], (void *)0x06016220, 0x300);
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -739,7 +741,7 @@ void AnimateCoinReward(void)
     int var1;
     s16 var2;
 
-    group = gMain.fieldSpriteGroups[39];
+    group = gMain.fieldSpriteGroups[FIELD_SG_COIN_COLLECTED];
     if (gCurrentPinballGame->coinRewardTimer < ((gCurrentPinballGame->coinRewardAmount - 1) * 9) + 19)
     {
         if (gCurrentPinballGame->coinRewardTimer == 0)
@@ -758,7 +760,8 @@ void AnimateCoinReward(void)
         else
         {
             if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE
-                && (gCurrentPinballGame->newButtonActions[1] || JOY_NEW(A_BUTTON)))
+                && (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER]
+                    || JOY_NEW(A_BUTTON)))
                 gCurrentPinballGame->coinRewardFastPayout = 1;
 
             if (gCurrentPinballGame->coinsAwarded < gCurrentPinballGame->coinRewardAmount)
@@ -832,7 +835,7 @@ void AnimateCoinReward(void)
         gCurrentPinballGame->coinRewardTimer++;
         if (gCurrentPinballGame->coinRewardTimer == ((gCurrentPinballGame->coinRewardAmount - 1) * 9) + 19)
         {
-            gMain.fieldSpriteGroups[39]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_COIN_COLLECTED]->active = FALSE;
             gCurrentPinballGame->coinRewardAmount = 0;
             if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE)
                 gCurrentPinballGame->outcomeFrameCounter = 170;
@@ -846,7 +849,7 @@ void InitTotodileEggDelivery(void)
     gCurrentPinballGame->eggDeliveryY = 2080;
     gCurrentPinballGame->totodileDeliveryFrame = 0;
     gCurrentPinballGame->totodileDeliveryTimer = 0;
-    gMain.spriteGroups[82].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_TOTODILE_EGG_DELIVERY].active = TRUE;
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->portraitOffsetX = 240;
     gCurrentPinballGame->portraitOffsetY = 160;
@@ -865,7 +868,7 @@ void AnimateTotodileEggDelivery(void)
     s16 var0;
 
     var0 = 0;
-    group = &gMain.spriteGroups[82];
+    group = &gMain.spriteGroups[SG_RUBY_TOTODILE_EGG_DELIVERY];
     if (gPikaSaverFrameData[gCurrentPinballGame->totodileDeliveryFrame][1] > gCurrentPinballGame->totodileDeliveryTimer)
     {
         gCurrentPinballGame->totodileDeliveryTimer++;
@@ -929,7 +932,7 @@ void InitAerodactylEggDelivery(void)
     gCurrentPinballGame->eggDeliveryY = -40;
     gCurrentPinballGame->eggDeliveryVelX = -36;
     gCurrentPinballGame->eggDeliveryVelY = 60;
-    gMain.spriteGroups[12].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_AERODACTLY_EGG_DELIVERY].active = TRUE;
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->portraitOffsetX = gCurrentPinballGame->eggDeliveryX / 20 - gFlyingCreatureCameraOffsets[0].x;
     gCurrentPinballGame->portraitOffsetY = gCurrentPinballGame->eggDeliveryY / 20 - gFlyingCreatureCameraOffsets[0].y;
@@ -947,7 +950,7 @@ void AnimateAerodactylEggDelivery(void)
     s16 var0;
 
     var0 = (gCurrentPinballGame->eggDropTimer % 56) / 8;
-    group = &gMain.spriteGroups[12];
+    group = &gMain.spriteGroups[SG_RUBY_AERODACTLY_EGG_DELIVERY];
     if (gCurrentPinballGame->eggDropTimer < 130)
     {
         if (gCurrentPinballGame->eggDropTimer % 36U == 0)
@@ -1006,7 +1009,7 @@ void LoadPokemonNameGraphics(void)
     gCurrentPinballGame->nameSpacingOffset = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_EVO_PREVIEW, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->activePortraitType = 14;
-    gMain.fieldSpriteGroups[4]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
@@ -1028,7 +1031,7 @@ void UpdatePokemonNamePosition(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = gMain.fieldSpriteGroups[4];
+    group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
     for (i = 0; i < 10; i++)
     {
         group->baseX = i * 8 + (gCurrentPinballGame->nameSpacingOffset + 152) + gCurrentPinballGame->shopUISlideOffset;
@@ -1041,7 +1044,7 @@ void UpdatePokemonNamePosition(void)
 
 void HidePokemonNameDisplay(void)
 {
-    gMain.fieldSpriteGroups[4]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = FALSE;
     gCurrentPinballGame->activePortraitType = 0;
 }
 
@@ -1057,7 +1060,7 @@ void InitEvolutionSuccessDisplay(void)
     gCurrentPinballGame->nameRevealAnimFrame = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_POKEMON_DISPLAY, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->activePortraitType = 13;
-    gMain.fieldSpriteGroups[4]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
@@ -1072,7 +1075,7 @@ void InitEvolutionSuccessDisplay(void)
         }
     }
 
-    gMain.fieldSpriteGroups[5]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
         if (gCaughtTextChars[i] == 0x20)
@@ -1099,7 +1102,7 @@ void InitEvolutionSuccessDisplay(void)
     }
 }
 
-void AnimateEvolutionSuccessScreen(void)
+void AnimateWasCaughtBanner(void)
 {
     s16 i, j, k;
     struct SpriteGroup *group;
@@ -1110,7 +1113,7 @@ void AnimateEvolutionSuccessScreen(void)
     if (gCurrentPinballGame->nameRevealAnimFrame == 0)
     {
         gCurrentPinballGame->nameRevealAnimFrame++;
-        group = gMain.fieldSpriteGroups[4];
+        group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
         group->baseX = 0;
         group->baseY = 180;
         for (i = 0; i < 10; i++)
@@ -1120,7 +1123,7 @@ void AnimateEvolutionSuccessScreen(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = gMain.fieldSpriteGroups[5];
+        group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
         group->baseX = 0;
         group->baseY = 180;
         for (i = 0; i < 10; i++)
@@ -1136,7 +1139,7 @@ void AnimateEvolutionSuccessScreen(void)
         if (gCurrentPinballGame->nameRevealAnimFrame < 156)
         {
 
-            group = gMain.fieldSpriteGroups[4];
+            group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
             for (i = 0; i < 10; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelays[i])
@@ -1158,7 +1161,7 @@ void AnimateEvolutionSuccessScreen(void)
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
 
-            group = gMain.fieldSpriteGroups[5];
+            group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
             for (i = 0; i < 10; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelaysRow2[i])
@@ -1197,7 +1200,7 @@ void AnimateEvolutionSuccessScreen(void)
         }
         else
         {
-            group = gMain.fieldSpriteGroups[4];
+            group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
             for (i = 0; i < 10; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelays[i])
@@ -1213,7 +1216,7 @@ void AnimateEvolutionSuccessScreen(void)
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
 
-            group = gMain.fieldSpriteGroups[5];
+            group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
             for (i = 0; i < 10; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelaysRow2[i])
@@ -1232,7 +1235,7 @@ void AnimateEvolutionSuccessScreen(void)
     }
     else
     {
-        group = gMain.fieldSpriteGroups[4];
+        group = gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT];
         if (group->active)
         {
             group->baseX = 0;
@@ -1245,7 +1248,7 @@ void AnimateEvolutionSuccessScreen(void)
             }
         }
 
-        group = gMain.fieldSpriteGroups[5];
+        group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
         if (group->active)
         {
             group->baseX = 0;
@@ -1258,8 +1261,8 @@ void AnimateEvolutionSuccessScreen(void)
             }
         }
 
-        gMain.fieldSpriteGroups[4]->active = FALSE;
-        gMain.fieldSpriteGroups[5]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT]->active = FALSE;
         gCurrentPinballGame->activePortraitType = 0;
     }
 }
@@ -1292,7 +1295,7 @@ void UpdateRubyEggHatchAnimation(void)
     var0 = 0;
     var1 = 0;
     var2 = 0;
-    group = &gMain.spriteGroups[48];
+    group = &gMain.spriteGroups[SG_RUBY_HATCH_EGG];
     var3 = 0;
     switch (gCurrentPinballGame->eggAnimationPhase)
     {
@@ -1412,12 +1415,12 @@ void UpdateRubyEggHatchAnimation(void)
         gOamBuffer[oamSimple->oamId].y += group->baseY;
     }
 
-    group = &gMain.spriteGroups[52];
+    group = &gMain.spriteGroups[SG_RUBY_HATCH_CAVE];
     group->baseX = gCurrentPinballGame->eggBasePosX;
     group->baseY = gCurrentPinballGame->eggBasePosY;
     for (i = 0; i < 4; i++)
     {
-        oamSimple = &gMain.spriteGroups[52].oam[i];
+        oamSimple = &gMain.spriteGroups[SG_RUBY_HATCH_CAVE].oam[i];
         gOamBuffer[oamSimple->oamId].priority = priority;
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -1433,7 +1436,7 @@ void UpdateHatchCave(void)
     s16 var0;
 
     priority = 1;
-    group = &gMain.spriteGroups[51];
+    group = &gMain.spriteGroups[SG_RUBY_CYNDAQUIL];
     var0 = gMain.systemFrameCount % 36;
     gCurrentPinballGame->cyndaquilFrame = 0;
     gCurrentPinballGame->cyndaquilCollisionEnabled = 1;
@@ -1464,9 +1467,9 @@ void UpdateHatchCave(void)
                 gCurrentPinballGame->cameraYScrollTarget = 72;
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 2;
-                gCurrentPinballGame->bannerGfxIndex = 0;
-                gCurrentPinballGame->bannerActive = 1;
-                gCurrentPinballGame->bannerPreserveBallState = 0;
+                gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
+                gCurrentPinballGame->bannerActive = TRUE;
+                gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                 gCurrentPinballGame->eggCaveLiftTimer = 48;
             }
 
@@ -1482,7 +1485,7 @@ void UpdateHatchCave(void)
             {
                 if (gCurrentPinballGame->eggCaveExitDelayTimer == 30)
                 {
-                    gCurrentPinballGame->ballFrozenState = 0;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                     gCurrentPinballGame->collisionCooldownTimer = 60;
                     gCurrentPinballGame->ball->velocity.x = 20;
                     gCurrentPinballGame->ball->velocity.y = 200;
@@ -1492,7 +1495,7 @@ void UpdateHatchCave(void)
                     gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
                     gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
                     m4aSongNumStart(SE_CYNDAQUIL_BALL_EJECT_AFTER_EGG_ARRIVAL);
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                 }
 
                 if (gCurrentPinballGame->eggCaveExitDelayTimer)
@@ -1515,7 +1518,7 @@ void UpdateHatchCave(void)
                 gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
                 gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
                 gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
-                gCurrentPinballGame->boardEntityActive = 1;
+                gCurrentPinballGame->cameraLocked = TRUE;
             }
         }
 
@@ -1629,15 +1632,15 @@ void UpdateEggMode(void)
     u16 angle;
     u16 angle2;
     int xx, yy;
-    int squaredMagnitude;
+    int squaredDistance;
 
-    group = gMain.fieldSpriteGroups[41];
+    group = gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY];
     priority = 1;
     switch (gCurrentPinballGame->boardSubState)
     {
     case EGG_HATCH_SUBSTATE_INIT:
         gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
-        gMain.fieldSpriteGroups[41]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = TRUE;
         gCurrentPinballGame->boardSubState++;
         break;
     case EGG_HATCH_SUBSTATE_SETUP_WANDERING:
@@ -1748,7 +1751,7 @@ void UpdateEggMode(void)
             tempVec.y = gSapphireEggWaypoints[gCurrentPinballGame->creatureWaypointIndex].y - 160 - gCurrentPinballGame->walkMonYPos;
             xx = tempVec.x * tempVec.x;
             yy = tempVec.y * tempVec.y;
-            squaredMagnitude = xx + yy;
+            squaredDistance = xx + yy;
             angle = ArcTan2(tempVec.x,-tempVec.y);
             if (gCurrentPinballGame->waypointSubTimer < 324)
                 priority = 2;
@@ -1770,7 +1773,7 @@ void UpdateEggMode(void)
 
             gCurrentPinballGame->walkMonXPos += tempVec2.x;
             gCurrentPinballGame->walkMonYPos += tempVec2.y;
-            if (squaredMagnitude < 2500)
+            if (squaredDistance < 2500)
             {
                 if (gCurrentPinballGame->creatureWaypointIndex < 6)
                 {
@@ -1818,7 +1821,7 @@ void UpdateEggMode(void)
         tempVec.y = gEggWalkPathWaypoints[gMain.selectedField][gCurrentPinballGame->creatureWaypointIndex].y - 160 - gCurrentPinballGame->walkMonYPos;
         xx = tempVec.x * tempVec.x;
         yy = tempVec.y * tempVec.y;
-        squaredMagnitude = xx + yy;
+        squaredDistance = xx + yy;
         angle = ArcTan2(tempVec.x, -tempVec.y);
         tempVec2.x = (Cos(angle) * 7) / 20000;
         tempVec2.y = -(Sin(angle) * 7) / 20000;
@@ -1842,7 +1845,7 @@ void UpdateEggMode(void)
             gCurrentPinballGame->walkMonYPos += tempVec2.y;
         }
 
-        if (squaredMagnitude < 2500)
+        if (squaredDistance < 2500)
         {
             if (gCurrentPinballGame->creatureWaypointIndex < 28)
             {
@@ -1900,8 +1903,8 @@ void UpdateEggMode(void)
             tempVec.y = gCurrentPinballGame->ball->positionQ0.y - (gCurrentPinballGame->walkMonYPos / 10 + 14);
             xx = tempVec.x * tempVec.x;
             yy = tempVec.y * tempVec.y;
-            squaredMagnitude = xx + yy;
-            if (squaredMagnitude < 82)
+            squaredDistance = xx + yy;
+            if (squaredDistance < 82)
             {
                 gCurrentPinballGame->creatureHitCount++;
                 gCurrentPinballGame->creatureHitCooldown = 4;
@@ -1976,7 +1979,7 @@ void UpdateEggMode(void)
 
             DmaCopy16(3, gCatchAnimTileBuffer, (void *)0x060112A0, 0x120);
             if (gCurrentPinballGame->captureSequenceTimer == 23)
-                gMain.fieldSpriteGroups[41]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
         }
         break;
     case EGG_HATCH_SUBSTATE_CLEANUP_MON_SPRITES:
@@ -1991,7 +1994,7 @@ void UpdateEggMode(void)
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
         }
-        gMain.fieldSpriteGroups[41]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
         gCurrentPinballGame->boardSubState++;
         break;
     case EGG_HATCH_SUBSTATE_BOARD_STATE_CLEANUP:

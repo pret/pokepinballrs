@@ -121,7 +121,7 @@ void CheckSphealEntityCollision(struct Vector16 *ballPosition, u16 *collisionAng
             if (lowerReadFromRom == 0)
                 continue;
 
-            if (gCurrentPinballGame->ballRespawnState != 0)
+            if (gCurrentPinballGame->ballRespawnState)
                 continue;
 
             *collisionAngle = upperReadFromRom;

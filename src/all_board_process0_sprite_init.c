@@ -10,22 +10,22 @@ void RubyBoardProcess_0A_50848(void)
     for (i = 0; i < 84; i++)
         gMain.spriteGroups[i].active = FALSE;
 
-    gMain.spriteGroups[64].active = TRUE;
-    group = &gMain.spriteGroups[48]; // fake match?
-    gMain.spriteGroups[70].active = TRUE;
-    gMain.spriteGroups[0].active = TRUE;
-    gMain.spriteGroups[1].active = TRUE;
-    gMain.spriteGroups[2].active = TRUE;
-    gMain.spriteGroups[28].active = TRUE;
-    gMain.spriteGroups[81].active = TRUE;
-    gMain.spriteGroups[65].active = TRUE;
-    gMain.spriteGroups[71].active = TRUE;
-    gMain.spriteGroups[66].active = TRUE;
-    gMain.spriteGroups[51].active = TRUE;
-    gMain.spriteGroups[61].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_PIKA_CHARGING_SPINNER].active = TRUE;
+    group = &gMain.spriteGroups[SG_RUBY_HATCH_EGG]; // fake match?
+    gMain.spriteGroups[SG_RUBY_BALL].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_PANEL].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_TOP_BORDER].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_CHARGE_INDICATOR_DEVICE].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_BOARD_RIGHT_EDGE].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_MART_DOOR].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_NUZLEAF].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_RAMP_PRIZE].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_CYNDAQUIL].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_SHARPEDO].active = TRUE;
     group->active = TRUE;
-    gMain.spriteGroups[52].active = TRUE;
-    gMain.spriteGroups[62].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_HATCH_CAVE].active = TRUE;
+    gMain.spriteGroups[SG_RUBY_BUMPERS].active = TRUE;
     LoadSpriteSets(
         gFieldSpriteSets[gMain.selectedField].spriteSets,
         gFieldSpriteSets[gMain.selectedField].numSpriteSets,
@@ -36,60 +36,60 @@ void RubyBoardProcess_0B_50918(void)
 {
     s16 i;
 
-    gMain.spriteGroups[10].active = FALSE;
-    gMain.spriteGroups[11].active = FALSE;
-    gMain.spriteGroups[48].active = FALSE;
-    gMain.spriteGroups[71].active = FALSE;
+    gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = FALSE;
+    gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = FALSE;
+    gMain.spriteGroups[SG_RUBY_HATCH_EGG].active = FALSE;
+    gMain.spriteGroups[SG_RUBY_NUZLEAF].active = FALSE;
     for (i = 51; i < 67; i++)
         gMain.spriteGroups[i].active = FALSE;
 
     gCurrentPinballGame->randomSpriteVariantSeed = gMain.systemFrameCount % 25;
     if (gCurrentPinballGame->cameraYViewport < 110)
     {
-        gMain.spriteGroups[65].active = TRUE;
-        gMain.spriteGroups[71].active = TRUE;
-        gMain.spriteGroups[66].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_MART_DOOR].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_NUZLEAF].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_RAMP_PRIZE].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport < 168)
     {
-        gMain.spriteGroups[48].active = TRUE;
-        gMain.spriteGroups[52].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_HATCH_EGG].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_HATCH_CAVE].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport < 220)
     {
-        gMain.spriteGroups[51].active = TRUE;
-        gMain.spriteGroups[61].active = TRUE;
-        gMain.spriteGroups[64].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_CYNDAQUIL].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_SHARPEDO].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_PIKA_CHARGING_SPINNER].active = TRUE;
         if (gCurrentPinballGame->shouldProcessWhiscash)
-            gMain.spriteGroups[63].active = TRUE;
+            gMain.spriteGroups[SG_RUBY_WHISCASH].active = TRUE;
         else
-            gMain.spriteGroups[62].active = TRUE;
+            gMain.spriteGroups[SG_RUBY_BUMPERS].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport > 63)
     {
-        gMain.spriteGroups[53].active = TRUE;
-        gMain.spriteGroups[57].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_CHIKORITA].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_GULPIN_STACK].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport > 115)
-        gMain.spriteGroups[58].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_MAKUHITA].active = TRUE;
 
     if (gCurrentPinballGame->cameraYViewport > 130)
     {
-        gMain.spriteGroups[59].active = TRUE;
-        gMain.spriteGroups[60].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_LINOONE_LEFT].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_LINOONE_RIGHT].active = TRUE;
     }
 
     if (gCurrentPinballGame->cameraYViewport > 216)
     {
-        gMain.spriteGroups[56].active = TRUE;
-        gMain.spriteGroups[54].active = TRUE;
-        gMain.spriteGroups[55].active = TRUE;
-        gMain.spriteGroups[10].active = TRUE;
-        gMain.spriteGroups[11].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_SPOINK_LAUNCHER].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_PIKACHU_KICKBACK_ENTITY].active = TRUE;
+        gMain.spriteGroups[SG_RUBY_PICHU_KICKBACK_ENTITY].active = TRUE;
+        gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = TRUE;
+        gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = TRUE;
     }
 
     LoadSpriteSets(
@@ -105,17 +105,17 @@ void SapphireBoardProcess_0A_50AD4(void)
     for (i = 0; i < 87; i++)
         gMain.spriteGroups[i].active = FALSE;
 
-    gMain.spriteGroups[72].active = TRUE;
-    gMain.spriteGroups[63].active = TRUE;
-    gMain.spriteGroups[60].active = TRUE;
-    gMain.spriteGroups[69].active = TRUE;
-    gMain.spriteGroups[52].active = TRUE;
-    gMain.spriteGroups[74].active = TRUE;
-    gMain.spriteGroups[0].active = TRUE;
-    gMain.spriteGroups[1].active = TRUE;
-    gMain.spriteGroups[2].active = TRUE;
-    gMain.spriteGroups[25].active = TRUE;
-    gMain.spriteGroups[85].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_PIKA_CHARGING_SPINNER].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_SHROOMISH_BUMPERS].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_PELIPPER].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_MART_SIGN].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_BALL].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_PANEL].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_TOP_BORDER].active = TRUE;
+    gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_CHARGE_INDICATOR_DEVICE].active = TRUE;
+    gMain.spriteGroups[SG_SAPPHIRE_BOARD_RIGHT_EDGE].active = TRUE;
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
                    gMain.spriteGroups);
@@ -128,59 +128,59 @@ void SapphireBoardProcess_0B_50B80(void)
     for (i = 55; i < 71; i++)
         gMain.spriteGroups[i].active = FALSE;
 
-    gMain.spriteGroups[52].active = FALSE;
-    gMain.spriteGroups[72].active = FALSE;
-    gMain.spriteGroups[26].active = FALSE;
-    gMain.spriteGroups[51].active = FALSE;
-    gMain.spriteGroups[76].active = FALSE;
-    gMain.spriteGroups[75].active = FALSE;
-    gMain.spriteGroups[10].active = FALSE;
-    gMain.spriteGroups[11].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_PIKA_CHARGING_SPINNER].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LOWER_SEGMENT].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_MART_ELECTRICAL_GATE_FX].active = FALSE;
+    gMain.spriteGroups[SG_SAPPHIRE_WAILMER].active = FALSE;
+    gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = FALSE;
+    gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = FALSE;
     gCurrentPinballGame->randomSpriteVariantSeed = gMain.systemFrameCount % 25;
     if (gCurrentPinballGame->cameraYViewport < 90)
     {
-        gMain.spriteGroups[52].active = TRUE;
-        gMain.spriteGroups[51].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_HATCH_EGG].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LOWER_SEGMENT].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport < 220)
     {
-        gMain.spriteGroups[72].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_PIKA_CHARGING_SPINNER].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport < 150)
     {
-        gMain.spriteGroups[60].active = TRUE;
-        gMain.spriteGroups[69].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_PELIPPER].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_MART_SIGN].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport < 196)
     {
-        gMain.spriteGroups[63].active = TRUE;
-        gMain.spriteGroups[75].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SHROOMISH_BUMPERS].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_WAILMER].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport < 202)
     {
-        gMain.spriteGroups[61].active = TRUE;
-        gMain.spriteGroups[58].active = TRUE;
-        gMain.spriteGroups[62].active = TRUE;
-        gMain.spriteGroups[59].active = TRUE;
-        gMain.spriteGroups[76].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_MINUN].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_MINUN_ELECTRICITY_FX].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_PLUSLE].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_PLUSLE_ELECTRICITY_FX].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_MART_ELECTRICAL_GATE_FX].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport > 118)
     {
-        gMain.spriteGroups[70].active = TRUE;
-        gMain.spriteGroups[26].active = TRUE;
-        gMain.spriteGroups[64].active = TRUE;
-        gMain.spriteGroups[68].active = TRUE;
-        gMain.spriteGroups[65].active = TRUE;
-        gMain.spriteGroups[66].active = TRUE;
-        gMain.spriteGroups[67].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON_SPEECH_BUBBLE].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_BASKET_BACK].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_BASKET_FRONT].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_ENTITY_0].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_ENTITY_1].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SEEDOT_ENTITY_2].active = TRUE;
     }
     if (gCurrentPinballGame->cameraYViewport > 216)
     {
-        gMain.spriteGroups[57].active = TRUE;
-        gMain.spriteGroups[55].active = TRUE;
-        gMain.spriteGroups[56].active = TRUE;
-        gMain.spriteGroups[10].active = TRUE;
-        gMain.spriteGroups[11].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_SPOINK_LAUNCHER].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_PIKACHU_KICKBACK_ENTITY].active = TRUE;
+        gMain.spriteGroups[SG_SAPPHIRE_PICHU_KICKBACK_ENTITY].active = TRUE;
+        gMain.spriteGroups[SG_MAIN_BOARD_LEFT_FLIPPER].active = TRUE;
+        gMain.spriteGroups[SG_MAIN_BOARD_RIGHT_FLIPPER].active = TRUE;
     }
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets, gFieldSpriteSets[gMain.selectedField].numSpriteSets, gMain.spriteGroups);
@@ -198,7 +198,7 @@ void DusclopsBoardProcess_0A_50D48(void)
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
@@ -224,31 +224,31 @@ void KecleonBoardProcess_0A_50DE0(void)
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[23].active = TRUE;
-    gMain.spriteGroups[9].active = TRUE;
-    gMain.spriteGroups[24].active = TRUE;
-    gMain.spriteGroups[16].active = TRUE;
-    gMain.spriteGroups[17].active = TRUE;
-    gMain.spriteGroups[7].active = TRUE;
-    gMain.spriteGroups[10].active = TRUE;
-    gMain.spriteGroups[11].active = TRUE;
-    gMain.spriteGroups[12].active = TRUE;
-    gMain.spriteGroups[13].active = TRUE;
-    gMain.spriteGroups[14].active = TRUE;
-    gMain.spriteGroups[15].active = TRUE;
-    gMain.spriteGroups[18].active = TRUE;
-    gMain.spriteGroups[19].active = TRUE;
-    gMain.spriteGroups[20].active = TRUE;
-    gMain.spriteGroups[21].active = TRUE;
-    gMain.spriteGroups[25].active = TRUE;
-    gMain.spriteGroups[26].active = TRUE;
-    gMain.spriteGroups[27].active = TRUE;
-    gMain.spriteGroups[28].active = TRUE;
-    gMain.spriteGroups[31].active = TRUE;
-    gMain.spriteGroups[32].active = TRUE;
-    gMain.spriteGroups[29].active = TRUE;
-    gMain.spriteGroups[30].active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +13].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DUST_FX].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_SCOPE_ITEM].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +6].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +7].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_TREE_LEAVES].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +0].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +1].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +2].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +3].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +4].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +5].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +8].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +9].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +10].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_DRAW_ORDER_SPRITES_BASE +11].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_FLOWER_BY_TREE].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_FLOWER_PAIR_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_FLOWER_PAIR_BOTTOM_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_FLOWER_TRIPLE_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_REFLECTION_HEAD].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_REFLECTION_BALL].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_BALL_RIPPLE_FX].active = TRUE;
+    gMain.spriteGroups[SG_KECLEON_STEP_RIPPLE_FX].active = TRUE;
 
     LoadSpriteSets(
         gFieldSpriteSets[gMain.selectedField].spriteSets,
@@ -272,15 +272,15 @@ void KyogreBoardProcess_0A_50F04()
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[11].active = TRUE;
-    gMain.spriteGroups[12].active = TRUE;
-    gMain.spriteGroups[13].active = TRUE;
-    gMain.spriteGroups[14].active = TRUE;
-    gMain.spriteGroups[21].active = TRUE;
-    gMain.spriteGroups[22].active = TRUE;
-    gMain.spriteGroups[23].active = TRUE;
-    gMain.spriteGroups[15].active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_CRYSTAL_TOP_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_CRYSTAL_TOP_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_CRYSTAL_BOTTOM_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_CRYSTAL_BOTTOM_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_ENTITY].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_WHIRLPOOL_0].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_WHIRLPOOL_1].active = TRUE;
+    gMain.spriteGroups[SG_KYOGRE_INTRO_CRYSTAL_GROUND].active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
@@ -307,12 +307,12 @@ void GroudonBoardProcess_0A_50FD4(void)
         }
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[11].active = TRUE;
-    gMain.spriteGroups[12].active = TRUE;
-    gMain.spriteGroups[13].active = TRUE;
-    gMain.spriteGroups[14].active = TRUE;
-    gMain.spriteGroups[29].active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_CRYSTAL_TOP_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_CRYSTAL_BOTTOM_RIGHT].active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_CRYSTAL_TOP_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_CRYSTAL_BOTTOM_LEFT].active = TRUE;
+    gMain.spriteGroups[SG_GROUDON_ENTITY].active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
@@ -338,12 +338,12 @@ void RayquazaBoardProcess_0A_51090(void)
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[42].active = TRUE;
-    gMain.spriteGroups[11].active = TRUE;
-    gMain.spriteGroups[12].active = TRUE;
-    gMain.spriteGroups[13].active = TRUE;
-    gMain.spriteGroups[21].active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_ENTITY_BACKGROUND_FLY_UP].active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_INTRO_CLOUD_0].active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_INTRO_CLOUD_1].active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_INTRO_CLOUD_2].active = TRUE;
+    gMain.spriteGroups[SG_RAYQUAZA_ENTITY_ROAR_HEAD_EXTENSION].active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,
@@ -369,14 +369,14 @@ void SphealBoardProcess_0A_51150(void)
             gMain.spriteGroups[i].active = FALSE;
     }
 
-    gMain.fieldSpriteGroups[0]->active = TRUE;
-    gMain.spriteGroups[18].active = TRUE;
-    gMain.spriteGroups[21].active = TRUE;
-    gMain.spriteGroups[22].active = TRUE;
-    gMain.spriteGroups[14].active = TRUE;
-    gMain.spriteGroups[15].active = TRUE;
-    gMain.spriteGroups[16].active = TRUE;
-    gMain.spriteGroups[17].active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_NET].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_LEFT_SEALEO_ENTITY].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_RIGHT_SEALEO_ENTITY].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_ENTITY_0].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_ENTITY_1].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_ENTITY_REFLECTION_0].active = TRUE;
+    gMain.spriteGroups[SG_SPHEAL_ENTITY_REFLECTION_1].active = TRUE;
 
     LoadSpriteSets(gFieldSpriteSets[gMain.selectedField].spriteSets,
                    gFieldSpriteSets[gMain.selectedField].numSpriteSets,

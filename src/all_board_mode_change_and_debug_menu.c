@@ -127,7 +127,7 @@ void GameOverAnimation(void)
     struct OamDataSimple *oamSimple;
     u16 var0;
 
-    group = gMain.fieldSpriteGroups[42];
+    group = gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT];
     if (group->active)
     {
         group->baseX = 63;
@@ -155,7 +155,7 @@ void GameOverAnimation(void)
     if (gMain.animationTimer == 3600)
     {
         DmaCopy16(3, gMainBoardGameOverText_Gfx, (void *)0x06015800, 0x400);
-        gMain.fieldSpriteGroups[42]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT]->active = TRUE;
         for (i = 0; i < 8; i++)
         {
             gGameOverLetterYOffsets[i] = 0xE0C0;
@@ -201,10 +201,10 @@ void EndOfBallSequence(void)
         if (gMain.animationTimer == 199)
         {
             gCurrentPinballGame->bonusSummarySlideY = 128;
-            gMain.spriteGroups[9].active = TRUE;
-            gMain.spriteGroups[6].active = TRUE;
-            gMain.spriteGroups[7].active = TRUE;
-            gMain.spriteGroups[8].active = TRUE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_BANNER].active = TRUE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_0].active = TRUE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_1].active = TRUE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_2].active = TRUE;
             DmaCopy16(3, gMainBoardEndOfBall_Gfx, (void *)0x6015800, 0x2800);
             if (gMain.selectedField == FIELD_RUBY)
             {
@@ -222,10 +222,10 @@ void EndOfBallSequence(void)
         }
         else if (gMain.animationTimer == 1)
         {
-            gMain.spriteGroups[9].active = FALSE;
-            gMain.spriteGroups[6].active = FALSE;
-            gMain.spriteGroups[7].active = FALSE;
-            gMain.spriteGroups[8].active = FALSE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_BANNER].active = FALSE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_0].active = FALSE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_1].active = FALSE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_2].active = FALSE;
         }
     }
     else
@@ -289,7 +289,7 @@ void BallSaverAnimation(void)
 
     if (gMain.animationTimer)
     {
-        group = &gMain.spriteGroups[5];
+        group = &gMain.spriteGroups[SG_BALL_SAVE_BANNER];
         if (group->active)
         {
             group->baseX = 88;
@@ -304,7 +304,7 @@ void BallSaverAnimation(void)
             }
         }
 
-        group = &gMain.spriteGroups[4];
+        group = &gMain.spriteGroups[SG_BALL_SAVE_LATI];
         if (group->active)
         {
             group->baseX = 24 + gCurrentPinballGame->ballSaverPosX / 100;
@@ -317,7 +317,7 @@ void BallSaverAnimation(void)
             gOamBuffer[oamSimple->oamId].matrixNum = 4;
         }
 
-        group = &gMain.spriteGroups[3];
+        group = &gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM];
         if (group->active)
         {
             group->baseX = 56 + gCurrentPinballGame->ballSaverPosX / 100;
@@ -354,7 +354,7 @@ void BallSaverAnimation(void)
         {
             mat4Scale = 0x100;
             if (gMain.animationTimer < 30)
-                gMain.spriteGroups[4].active = FALSE;
+                gMain.spriteGroups[SG_BALL_SAVE_LATI].active = FALSE;
         }
 
         if (gMain.animationTimer < 31)
@@ -366,7 +366,7 @@ void BallSaverAnimation(void)
             else
             {
                 mat3Scale = 8;
-                gMain.spriteGroups[5].active = FALSE;
+                gMain.spriteGroups[SG_BALL_SAVE_BANNER].active = FALSE;
             }
         }
         else
@@ -400,10 +400,10 @@ void BallSaverAnimation(void)
                 gCurrentPinballGame->ballSaverBallVelY += 6;
                 gCurrentPinballGame->ballSaverBallPosX += gCurrentPinballGame->ballSaverBallVelX;
                 gCurrentPinballGame->ballSaverBallPosY += gCurrentPinballGame->ballSaverBallVelY;
-                gMain.spriteGroups[3].active = FALSE;
+                gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM].active = FALSE;
                 if (gMain.animationTimer == 32)
                 {
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                     m4aSongNumStart(SE_SAVER_PLUNGER_DROP);
                     PlayRumble(6);
                 }
@@ -450,9 +450,9 @@ void BallSaverAnimation(void)
             gCurrentPinballGame->ballSaverVelX = 0;
             gCurrentPinballGame->ballSaverVelY = 0;
             gCurrentPinballGame->ballSaverSlideY = 100;
-            gMain.spriteGroups[5].active = TRUE;
-            gMain.spriteGroups[4].active = TRUE;
-            gMain.spriteGroups[3].active = TRUE;
+            gMain.spriteGroups[SG_BALL_SAVE_BANNER].active = TRUE;
+            gMain.spriteGroups[SG_BALL_SAVE_LATI].active = TRUE;
+            gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM].active = TRUE;
             if (gMain.selectedField == FIELD_RUBY)
             {
                 DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
@@ -466,16 +466,16 @@ void BallSaverAnimation(void)
                 DmaCopy16(3, gBonusStagePal_Dark, (void *)0x050003C0, 0x20);
             }
 
-            gCurrentPinballGame->ballFrozenState = 2;
-            gCurrentPinballGame->boardEntityActive = 1;
-            gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_FROZEN;
+            gCurrentPinballGame->cameraLocked = TRUE;
+            gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
             gCurrentPinballGame->startButtonDisabled = 1;
             m4aSongNumStart(SE_BALL_SAVED);
         }
         else if (gMain.animationTimer == 0)
         {
-            gMain.spriteGroups[5].active = FALSE;
-            gMain.spriteGroups[4].active = FALSE;
+            gMain.spriteGroups[SG_BALL_SAVE_BANNER].active = FALSE;
+            gMain.spriteGroups[SG_BALL_SAVE_LATI].active = FALSE;
         }
     }
     else
@@ -483,7 +483,7 @@ void BallSaverAnimation(void)
         gMain.modeChangeFlags &= ~MODE_CHANGE_BALL_SAVER;
         gCurrentPinballGame->collisionCooldownTimer = 60;
         InitBallState(0);
-        gCurrentPinballGame->ballFrozenState = 0;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
         SetBoardCollisionConfig(0);
         gCurrentPinballGame->boardCollisionConfigChanged = FALSE;
         if (gMain.selectedField == FIELD_RUBY)
@@ -491,7 +491,7 @@ void BallSaverAnimation(void)
         else
             gCurrentPinballGame->ball->oamPriority = 1;
 
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         gCurrentPinballGame->activePortraitType = 0;
         gCurrentPinballGame->startButtonDisabled = 0;
     }
@@ -1050,7 +1050,7 @@ void EndOfBallBonusSummary(void)
     if (gCurrentPinballGame->bonusSummaryTimer)
         gCurrentPinballGame->bonusSummaryTimer--;
 
-    group = &gMain.spriteGroups[9];
+    group = &gMain.spriteGroups[SG_END_OF_BALL_BONUS_BANNER];
     if (group->active)
     {
         group->baseX = 120;
@@ -1064,7 +1064,7 @@ void EndOfBallBonusSummary(void)
 
         for (i = 0; i < 3; i++)
         {
-            group = &gMain.spriteGroups[6 + i];
+            group = &gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_BASE + i];
             group->baseX = 104;
             group->baseY = 64 + i * 16 + gCurrentPinballGame->bonusSummarySlideY + subtotalSlideYPos;
             for (j = 0; j < 5; j++)

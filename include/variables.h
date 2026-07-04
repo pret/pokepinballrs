@@ -156,7 +156,7 @@ extern const s8 gScorePaletteResetOffsets[3]; //Same as above
 extern const s16 gTitleMenuStateTable[11];
 extern const s8 gTitlePressStartAnimDurations[4];
 extern const s8 gTitleMenuSlideInAnimData[6][2];
-extern const s8 gTitleMenuSlideOutAnimData[9][2];
+extern const s8 gTitleMenuSlideOutAnimSpriteGroupData[9][2];
 extern const u16 gTitleNoSaveMenuActions[4];
 extern const u16 gTitleSavedMenuActions[];
 extern const struct SpriteSet *const gTitlePressStartSpriteSets[];
@@ -283,7 +283,7 @@ extern s16 gPokedexInfoWindowSlideStep;
 extern s8 gPokedexButtonPromptFrame;
 extern s8 gPokedexShowButtonPrompt;
 extern s16 gPokedexSpriteCategory;
-extern s8 gPokedexShowLinkCableIcon;
+extern s8 gPokedexShowCompletionBadge;
 extern s16 gPokedexLinkStateTimer;
 extern s8 gPokedexShowPopupWindow;
 
@@ -321,7 +321,7 @@ extern s16 gTitleRevealJingle[][10][2];
 extern u8 gLinkExchangeStep;
 
 extern const struct PokemonSpecies gSpeciesInfo[];
-extern const struct SpriteSet * const gCatchHatchSpriteSets[13];
+extern const struct SpriteSet * const gEReaderSpriteSets[13];
 extern u8 (*gMonHatchSpriteGroupGfx[])[0x10E0];
 extern u8 (*gMonHatchSpriteGroupPals[])[0x20];
 
@@ -354,8 +354,6 @@ extern s16 gIntroScene1_TileOffsets[0x8];
 extern s16 gIntroBGParams[];
 extern s32 gIntroPalFadeLevel;
 extern const struct SpriteSet *const gIntroScene1_SpriteSets[];
-extern struct SpriteGroup gMain_spriteGroups_40[];
-extern struct SpriteGroup gMain_spriteGroups_48;
 extern struct Vector16 gIntroScene1_ScaleOffsets[0x4];
 extern s32 gIntroScaleY;
 

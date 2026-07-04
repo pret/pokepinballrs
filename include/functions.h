@@ -324,7 +324,7 @@ extern void IntroScene2_InitVars(void);
 
 // asm/options.s
 
-//extern ? Options_Main();
+extern void Options_Main();
 //extern ? Options_LoadGraphics();
 extern void Options_InitStates(void);
 //extern ? Options_HandleInput();
@@ -407,6 +407,7 @@ extern void ProcessRayquazaCollisionEvent(u8, u16*, u16*);
 extern s16 CollisionCheck_Spheal(struct Vector16*, u16*);
 extern void CheckSphealEntityCollision(struct Vector16*, u16*, u8*);
 extern void ProcessSphealCollisionEvent(u8, u16*, u16*);
+extern void PinballGameMain();
 extern void IdlePinballGameMain();
 extern void PinballGameIdle0_19048(void);//gMain.subState = 0
 extern void PinballGameIdle1_19190(void);//gMain.subState = 1
@@ -471,7 +472,7 @@ extern void FullCatchStateCleanup(void);
 extern void ShowBonusTrapSprite(void);
 extern void AnimateBonusTrapSprite(void);
 extern void ProcessChargeIndicator();
-//extern ? UpdateEvolutionShopSprite();
+//extern ? UpdateRubyEvolutionShopSprite();
 extern void RenderEvolutionUI(s16);
 extern void AnimateCoinReward();
 extern void InitTotodileEggDelivery();
@@ -482,7 +483,7 @@ extern void LoadPokemonNameGraphics();
 extern void UpdatePokemonNamePosition();
 extern void HidePokemonNameDisplay();
 extern void InitEvolutionSuccessDisplay(void);
-extern void AnimateEvolutionSuccessScreen(void);
+extern void AnimateWasCaughtBanner(void);
 extern void InitRubyEggHatchAnimation(void);
 //extern ? UpdateRubyEggHatchAnimation();
 //extern ? UpdateHatchCave();
@@ -525,8 +526,8 @@ extern void InitRouletteWheel(void);
 extern void RunRouletteWheel(void);
 extern void GivePrize();
 //extern ? sub_2C518();
-//extern ? UpdateRubyRampPrizeGate();
-//extern ? DrawRubyNuzleafPlatformSprite();
+//extern ? UpdateMakuhitaEntity();
+//extern ? DrawRubyRampPrize();
 extern void AnimateOneUpSprite();
 extern void AnimateBannerSlide(void);
 extern void UpdateSpoinkAnimation();
@@ -578,7 +579,7 @@ extern void DuskullPhase_ProcessGraphics();
 extern void DusclopsPhase_ProcessEntityLogicAndGraphics();
 extern void FadeToMainBoard();
 extern void ProcessBonusBannerAndScoring();
-extern void RenderBonusStageOverlaySprites();
+extern void HideDusclopsSprites();
 extern void TransitionFromBonusToMainBoard(void);
 //extern ? KecleonBoardProcess_3A_35860();
 //extern ? KecleonBoardProcess_3B_35AA4();

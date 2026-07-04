@@ -18,7 +18,7 @@ void DetermineFlipperBallSide(struct Vector16 arg0)
     struct FlipperLineSegment *line;
     struct Vector16 point1, point2;
 
-    line = &gFlipperLineGeometry[gCurrentPinballGame->flipper[0].position];
+    line = &gFlipperLineGeometry[gCurrentPinballGame->flipper[SIDE_IX_LEFT].position];
     point1.x = line->x1 + 0x53;
     point1.y = line->y1 + gBoardConfig.fieldLayout.flipperBaseY;
 
@@ -28,9 +28,9 @@ void DetermineFlipperBallSide(struct Vector16 arg0)
     check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
 
     if (check >= 0)
-        gCurrentPinballGame->flipper[0].ballSide = 1;
+        gCurrentPinballGame->flipper[SIDE_IX_LEFT].ballSide = 1;
     else
-        gCurrentPinballGame->flipper[0].ballSide = -1;
+        gCurrentPinballGame->flipper[SIDE_IX_LEFT].ballSide = -1;
 
     line = &gFlipperLineGeometry[gCurrentPinballGame->flipper[1].position];
 
@@ -43,9 +43,9 @@ void DetermineFlipperBallSide(struct Vector16 arg0)
     check = (point2.y - point1.y) * (arg0.x - point1.x) * 30 / (point2.x - point1.x) + (point1.y - arg0.y) * 30;
 
     if (check >= 0)
-        gCurrentPinballGame->flipper[1].ballSide = 1;
+        gCurrentPinballGame->flipper[SIDE_IX_RIGHT].ballSide = 1;
     else
-        gCurrentPinballGame->flipper[1].ballSide = -1;
+        gCurrentPinballGame->flipper[SIDE_IX_RIGHT].ballSide = -1;
 }
 
 void MainBoardProcess_4B_19490(void)
@@ -55,7 +55,7 @@ void MainBoardProcess_4B_19490(void)
     if ((gMain.modeChangeFlags & MODE_CHANGE_BANNER) == 0)
         UpdateMainBoardFlipperPhysics();
 
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         struct SpriteGroup *spriteGroup;
 
@@ -64,7 +64,7 @@ void MainBoardProcess_4B_19490(void)
         else if (gCurrentPinballGame->flipper[i].position < 0)
             gCurrentPinballGame->flipper[i].position = 0;
 
-        spriteGroup = &gMain.spriteGroups[10 + i];
+        spriteGroup = &gMain.spriteGroups[SG_MAIN_BOARD_FLIPPER_BASE + i];
         if (spriteGroup->active)
         {
             s8 flipperTileIndex;
@@ -89,7 +89,7 @@ void UpdateMainBoardFlipperPhysics(void)
 
     DetermineFlipperBallSide(gCurrentPinballGame->ball->positionQ0);
 
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         s16 dir;
         struct FlipperState *flipper;
@@ -152,7 +152,7 @@ void UpdateMainBoardFlipperPhysics(void)
         }
         flipper->movementDirection = flipper->movementDirection * dir;
         if (flipper->movementDirection <= 0)
-            flipper->bounceApplied = 0;
+            flipper->bounceApplied = FALSE;
         flipper->movementDirection = dir;
     }
 }
@@ -167,7 +167,7 @@ void BonusBoardProcess_4B_19734(void)
         UpdateBonusBoardFlipperPhysics();
         gMain.modeChangeFlags = gMain.modeChangeFlags;
     }
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         struct SpriteGroup *spriteGroup;
 
@@ -176,7 +176,7 @@ void BonusBoardProcess_4B_19734(void)
         else if (gCurrentPinballGame->flipper[i].position < 0)
             gCurrentPinballGame->flipper[i].position = 0;
 
-        spriteGroup = &gMain.spriteGroups[3 + i];
+        spriteGroup = &gMain.spriteGroups[SG_BONUS_BOARD_FLIPPER_BASE + i];
         if (spriteGroup->active)
         {
             s8 flipperTileIndex;
@@ -205,7 +205,7 @@ void UpdateBonusBoardFlipperPhysics(void)
 
     DetermineFlipperBallSide(gCurrentPinballGame->ball->positionQ0);
 
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         s16 dir;
         struct FlipperState *flipper;
@@ -270,7 +270,7 @@ void UpdateBonusBoardFlipperPhysics(void)
         }
         flipper->movementDirection = flipper->movementDirection * dir;
         if (flipper->movementDirection <= 0)
-            flipper->bounceApplied = 0;
+            flipper->bounceApplied = FALSE;
         flipper->movementDirection = dir;
     }
 }

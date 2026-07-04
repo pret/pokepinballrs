@@ -982,10 +982,10 @@ gSapphirePainterPalette:: @ 0x081BFCE4
 gRubyBoardPalette:: @ 0x081BFEE4
 	.incbin "baserom.gba", 0x1BFEE4, 0x180
 
-gDefaultBallPalette:: @ 0x081C0064
+gDefaultTimerPalette:: @ 0x081C0064
 	.incbin "baserom.gba", 0x1C0064, 0x80
 
-gPortraitGenericPalettes:: @ 0x081C00E4
+gLocationPalettes:: @ 0x081C00E4
 	.incbin "baserom.gba", 0x1C00E4, 0x200
 
 gPortraitAnimPalettes:: @ 0x081C02E4
@@ -1319,13 +1319,13 @@ gSapphireBumperLeft_Gfx:: @ 0x0847A40C
 gSapphireBumperLeftHit_Gfx:: @ 0x0847D10C
 	.incbin "baserom.gba", 0x47D10C, 0xE00
 
-gRubyRampGateTileGfx:: @ 0x0847DF0C
+gRubyMakuhitaGfx:: @ 0x0847DF0C
 	.incbin "baserom.gba", 0x47DF0C, 0x1E00
 
 gSideBumperGfx:: @ 0x0847FD0C
 	.incbin "baserom.gba", 0x47FD0C, 0x200
 
-gShopDigitTilesGfx:: @ 0x0847FF0C
+gShopPortraitOverlayGfx:: @ 0x0847FF0C
 	.incbin "baserom.gba", 0x47FF0C, 0xF00
 
 gDecimalDigitTilesGfx:: @ 0x08480E0C
@@ -1340,7 +1340,7 @@ gRubyTravelVolbeat_Gfx:: @ 0x08483D8C
 gSapphireTravelIllumise_Gfx:: @ 0x08488A0C
 	.incbin "baserom.gba", 0x488A0C, 0x4C80
 
-gPortraitGenericGraphics:: @ 0x0848D68C
+gLocationPortraitGfx:: @ 0x0848D68C
 	.incbin "baserom.gba", 0x48D68C, 0x2700
 
 gCaptureModeTilesGfx:: @ 0x0848FD8C
@@ -1376,10 +1376,10 @@ gRayquazaSpriteSheet:: @ 0x084AA18C
 gRayquazaBodyVariantTiles:: @ 0x084AA9EC
 	.incbin "baserom.gba", 0x4AA9EC, 0x5000
 
-gSphealScoreCounterDigitSprites:: @ 0x084AF9EC
+gSphealNetGfx:: @ 0x084AF9EC
 	.incbin "baserom.gba", 0x4AF9EC, 0x600
 
-gSphealExtendedScoreSprites:: @ 0x084AFFEC
+gSphealNetFrontGfx:: @ 0x084AFFEC
 	.incbin "baserom.gba", 0x4AFFEC, 0x480
 
 gSphealFlyingEnemyVariantSprites:: @ 0x084B046C

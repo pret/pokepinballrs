@@ -219,7 +219,7 @@ void DrawSapphireBumperSprites(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[61];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_MINUN];
     if (!group->active)
         return;
 
@@ -234,7 +234,7 @@ void DrawSapphireBumperSprites(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[58];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_MINUN_ELECTRICITY_FX];
     group->baseX = 68 - gCurrentPinballGame->cameraXOffset;
     if (gCurrentPinballGame->sapphireBumperHitFxTimer[0] < 14)
     {
@@ -251,7 +251,7 @@ void DrawSapphireBumperSprites(void)
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
 
-    group = &gMain.spriteGroups[62];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_PLUSLE];
     group->baseX = 36 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 163 - gCurrentPinballGame->cameraYOffset;
     index = gSapphireBumperAnimFrames[gCurrentPinballGame->sapphireBumperAnimKeyframe[1]][0];
@@ -263,7 +263,7 @@ void DrawSapphireBumperSprites(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[59];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_PLUSLE_ELECTRICITY_FX];
     group->baseX = 36 - gCurrentPinballGame->cameraXOffset;
     if (gCurrentPinballGame->sapphireBumperHitFxTimer[1] < 14)
     {
@@ -280,7 +280,7 @@ void DrawSapphireBumperSprites(void)
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
 
-    group = &gMain.spriteGroups[76];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_MART_ELECTRICAL_GATE_FX];
     group->baseX = 61 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 186 - gCurrentPinballGame->cameraYOffset;
     if (gCurrentPinballGame->eggHatchShockWallOverride)
@@ -331,7 +331,7 @@ void HandleRubyBumperHit(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[63];
+    group = &gMain.spriteGroups[SG_RUBY_WHISCASH];
     if (gCurrentPinballGame->bumperHitCountdown > 0)
     {
         if (gCurrentPinballGame->bumperHitCountdown == 2)
@@ -361,9 +361,9 @@ void HandleRubyBumperHit(void)
                             gCurrentPinballGame->cameraYScrollTarget = 0xEC;
                             gCurrentPinballGame->cameraYAdjust = 0;
                             gCurrentPinballGame->cameraYScrollSpeed = 4;
-                            gCurrentPinballGame->bannerGfxIndex = 7;
-                            gCurrentPinballGame->bannerActive = 1;
-                            gCurrentPinballGame->bannerPreserveBallState = 0;
+                            gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_SHROOMISH_CATCH_BURST;
+                            gCurrentPinballGame->bannerActive = TRUE;
+                            gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                             gCurrentPinballGame->bannerDisplayDuration = 80;
                             gCurrentPinballGame->bannerSlidePosition = -2500;
                             gCurrentPinballGame->bannerSlideTimer = 50;

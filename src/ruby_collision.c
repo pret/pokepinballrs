@@ -97,7 +97,7 @@ s16 CollisionCheck_Ruby(struct Vector16 *ballPosition, u16* collisionAngle) {
             break;
         case 5:
             gCurrentPinballGame->whiscashState = WHISCASH_STATE_ABSORB_ZONE_HIT;
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
             boardTriggerType = 0;
             break;
     }
@@ -742,11 +742,11 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                 return;
 
             if (gCurrentPinballGame->ball->positionQ0.x <= 120)
-                gCurrentPinballGame->outLaneSide = SIDE_COLLISION_LEFT;
+                gCurrentPinballGame->outLaneSide = OUTLANE_LEFT;
             else
-                gCurrentPinballGame->outLaneSide = SIDE_COLLISION_RIGHT;
+                gCurrentPinballGame->outLaneSide = OUTLANE_RIGHT;
 
-            if (gCurrentPinballGame->outLanePikaPosition < SIDE_COUNT)
+            if (gCurrentPinballGame->outLanePikaPosition < PIKA_BOTH_SIDES)
             {
                 if (gCurrentPinballGame->outLanePikaPosition != gCurrentPinballGame->outLaneSide - 1)
                     return;

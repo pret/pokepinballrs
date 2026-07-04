@@ -27,7 +27,7 @@ void UpdateChikoritaAttackAnimation(void)
     s16 var0;
 
     index = 0;
-    group = &gMain.spriteGroups[14];
+    group = &gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE_COLLISION_FX];
     if (gCurrentPinballGame->chikoritaProjectileTimer < 60)
     {
         if (gCurrentPinballGame->chikoritaProjectileTimer >= 27 && gCurrentPinballGame->chikoritaProjectileTimer < 47)
@@ -72,7 +72,7 @@ void UpdateChikoritaAttackAnimation(void)
         }
     }
 
-    group = &gMain.spriteGroups[13];
+    group = &gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE];
     if (group->active)
     {
         if (gCurrentPinballGame->chikoritaProjectileTimer < 120)
@@ -93,7 +93,7 @@ void UpdateChikoritaAttackAnimation(void)
             gCurrentPinballGame->chikoritaProjectileTimer++;
             if (gCurrentPinballGame->chikoritaProjectileTimer == 27)
             {
-                gMain.spriteGroups[14].active = TRUE;
+                gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE_COLLISION_FX].active = TRUE;
                 m4aSongNumStart(SE_ZIGZAGOON_EMERGE);
                 if (gCurrentPinballGame->linooneSideBumperExtensionsPending[SIDE_IX_RIGHT] > 0)
                 {
@@ -108,7 +108,7 @@ void UpdateChikoritaAttackAnimation(void)
 
             if (gCurrentPinballGame->chikoritaProjectileTimer == 100)
             {
-                gMain.spriteGroups[14].active = TRUE;
+                gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE_COLLISION_FX].active = TRUE;
                 m4aSongNumStart(SE_ZIGZAGOON_EMERGE);
                 if (gCurrentPinballGame->linooneSideBumperExtensionsPending[SIDE_IX_LEFT] > 0)
                 {
@@ -149,7 +149,7 @@ void AnimateChikoritaSprite(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[53];
+    group = &gMain.spriteGroups[SG_RUBY_CHIKORITA];
     if (gCurrentPinballGame->chikoritaFlashActive)
     {
         index = gChikoritaFlashFrameIndices[gCurrentPinballGame->chikoritaFlashTimer / 5];
@@ -160,7 +160,7 @@ void AnimateChikoritaSprite(void)
             gCurrentPinballGame->chikoritaProjectileY = 0;
             gCurrentPinballGame->chikoritaProjectileVelX = 100;
             gCurrentPinballGame->chikoritaProjectileUnused = 0;
-            gMain.spriteGroups[13].active = TRUE;
+            gMain.spriteGroups[SG_RUBY_CHIKORITA_PROJECTILE].active = TRUE;
         }
 
         if (gCurrentPinballGame->chikoritaFlashTimer < 54)
@@ -200,7 +200,7 @@ void UpdateGulpinBossState(void)
     s16 index;
 
     var0 = gGulpinAnimData[gCurrentPinballGame->gulpinAnimFrameIndex];
-    group = &gMain.spriteGroups[57];
+    group = &gMain.spriteGroups[SG_RUBY_GULPIN_STACK];
     group->baseX = 9 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 288 - gCurrentPinballGame->cameraYOffset;
     if (gCurrentPinballGame->gulpinCurrentLevel > gCurrentPinballGame->seedotCount)
@@ -384,7 +384,7 @@ void UpdateRubySideBumperAnimation(void)
                         {
                             gCurrentPinballGame->gulpinAnimFrameIndex = 24;
                             gCurrentPinballGame->gulpinAnimFrameTimer = 0;
-                            gCurrentPinballGame->seedotModeStartDelay = 1;
+                            gCurrentPinballGame->travelModeStartDelay = 1;
                         }
                     }
                 }
@@ -409,10 +409,10 @@ void UpdateRubySideBumperAnimation(void)
         }
         else
         {
-            if (gCurrentPinballGame->rampGateState == 0)
-                gCurrentPinballGame->rampGateState = 1;
+            if (gCurrentPinballGame->makuhitaPunchState == 0)
+                gCurrentPinballGame->makuhitaPunchState = 1;
             else
-                gCurrentPinballGame->rampGateState = 0;
+                gCurrentPinballGame->makuhitaPunchState = 0;
         }
 
         gCurrentPinballGame->linooneSideBumperExtensionsPending[SIDE_IX_LEFT] = 0;
@@ -441,7 +441,7 @@ void DrawRubySideBumperSprites(void)
     {
         index = gSideBumperGfxFrameIndices[gCurrentPinballGame->linooneSideBumperAnimPhase[i]][0];
         DmaCopy16(3, gSideBumperGfx[index], (void *)0x06012A20 + i * 0x100, 0x100);
-        group = &gMain.spriteGroups[59 + i];
+        group = &gMain.spriteGroups[SG_RUBY_LINOONE_LEFT + i];
         if (group->active)
         {
             int var0 = i * 120 - (gCurrentPinballGame->cameraXOffset - 48);
@@ -456,17 +456,17 @@ void DrawRubySideBumperSprites(void)
         }
     }
 
-    if (gCurrentPinballGame->seedotModeStartDelay)
+    if (gCurrentPinballGame->travelModeStartDelay)
     {
-        gCurrentPinballGame->seedotModeStartDelay--;
-        if (gCurrentPinballGame->seedotModeStartDelay == 0)
+        gCurrentPinballGame->travelModeStartDelay--;
+        if (gCurrentPinballGame->travelModeStartDelay == 0)
         {
             if (gCurrentPinballGame->activePortraitType)
-                gCurrentPinballGame->seedotModeStartDelay = 1;
+                gCurrentPinballGame->travelModeStartDelay = 1;
             else
                 gCurrentPinballGame->activePortraitType = 4;
 
-            if (gCurrentPinballGame->seedotModeStartDelay == 0)
+            if (gCurrentPinballGame->travelModeStartDelay == 0)
             {
                 gMain.modeChangeFlags |= MODE_CHANGE_BANNER;
                 gCurrentPinballGame->bannerDelayTimer = 70;
@@ -474,9 +474,9 @@ void DrawRubySideBumperSprites(void)
                 gCurrentPinballGame->cameraYScrollTarget = 0;
                 gCurrentPinballGame->cameraYAdjust = 0;
                 gCurrentPinballGame->cameraYScrollSpeed = 0;
-                gCurrentPinballGame->bannerGfxIndex = 4;
-                gCurrentPinballGame->bannerActive = 1;
-                gCurrentPinballGame->bannerPreserveBallState = 0;
+                gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_TRAVEL;
+                gCurrentPinballGame->bannerActive = TRUE;
+                gCurrentPinballGame->holdCameraLockAfterBanner = FALSE;
                 gCurrentPinballGame->bannerDisplayDuration = 120;
                 gCurrentPinballGame->bannerSlidePosition = 0;
                 gCurrentPinballGame->bannerSlideTimer = 50;

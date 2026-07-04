@@ -24,9 +24,9 @@ void InitBoardIntroMode(void)
     gCurrentPinballGame->areaVisitCount = 0;
     gCurrentPinballGame->areaRouletteSlotIndex = (Random() + gMain.systemFrameCount) % 6;
     gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
-    gCurrentPinballGame->roulettePortraitIndexes[1] = gAreaPortraitIndexes[gCurrentPinballGame->area];
+    gCurrentPinballGame->areaRoulettePortraitIndex[1] = gAreaPortraitIndexes[gCurrentPinballGame->area];
     gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][(gCurrentPinballGame->areaRouletteSlotIndex + 1) % 6];
-    gCurrentPinballGame->roulettePortraitIndexes[0] = gAreaPortraitIndexes[gCurrentPinballGame->area];
+    gCurrentPinballGame->areaRoulettePortraitIndex[0] = gAreaPortraitIndexes[gCurrentPinballGame->area];
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_MAIN_SLOT);
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_ALT_SLOT);
     for (i = 0; i < 6; i++)
@@ -54,11 +54,11 @@ void UpdateBoardIntroMode(void)
         gCurrentPinballGame->rouletteSubOffset = 0;
         gCurrentPinballGame->cameraScrollTarget = 0;
         gCurrentPinballGame->cameraScrollEnabled = 1;
-        gMain.fieldSpriteGroups[20]->active = TRUE;
-        gMain.fieldSpriteGroups[21]->active = TRUE;
-        gMain.fieldSpriteGroups[23]->active = TRUE;
-        gMain.fieldSpriteGroups[22]->active = TRUE;
-        gMain.fieldSpriteGroups[19]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_PORTRAIT]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_PORTRAIT_BORDERS]->active = TRUE;
         gCurrentPinballGame->rouletteFrameIndex = 30;
         gCurrentPinballGame->rouletteRotationPeriod = 30;
         gCurrentPinballGame->rouletteSpinSpeed = 0;
@@ -125,7 +125,7 @@ void UpdateBoardIntroMode(void)
         else if (gCurrentPinballGame->boardSubState == BOARD_INTRO_SUBSTATE_WAIT_FOR_LAUNCH)
         {
             gCurrentPinballGame->rouletteFrameIndex++;
-            if (gCurrentPinballGame->newButtonActions[1]
+            if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER]
                 && gCurrentPinballGame->boardSubState == BOARD_INTRO_SUBSTATE_WAIT_FOR_LAUNCH)
             {
                 if (gCurrentPinballGame->rouletteSpinSpeed == 0)
@@ -137,7 +137,7 @@ void UpdateBoardIntroMode(void)
 
                     gCurrentPinballGame->rouletteInitialSpeed = gCurrentPinballGame->rouletteSpinSpeed;
                     gCurrentPinballGame->spoinkEntityState = 1;
-                    gCurrentPinballGame->launcherCharging = 1;
+                    gCurrentPinballGame->launcherCharging = TRUE;
                     gCurrentPinballGame->saverTimeRemaining = 3600;
                     gCurrentPinballGame->rubyPondState = RUBY_POND_STATE_CHINCHOU_COUNTERCLOCKWISE;
                 }
@@ -181,10 +181,10 @@ void UpdateBoardIntroMode(void)
             {
                 gCurrentPinballGame->stageTimer = 0;
                 gCurrentPinballGame->boardSubState++;
-                gMain.fieldSpriteGroups[23]->active = FALSE;
-                gMain.fieldSpriteGroups[20]->active = FALSE;
-                gMain.fieldSpriteGroups[21]->active = FALSE;
-                gMain.fieldSpriteGroups[34]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_INITIAL_LOCATION_SELECTED_FX]->active = TRUE;
                 m4aSongNumStart(SE_AREA_ROULETTE_SELECTED);
             }
         }
@@ -192,7 +192,7 @@ void UpdateBoardIntroMode(void)
         gCurrentPinballGame->rouletteSubOffset = (gCurrentPinballGame->rouletteFrameIndex * 32) / gCurrentPinballGame->rouletteRotationPeriod;
         if (gCurrentPinballGame->rouletteFrameIndex == 0)
         {
-            gCurrentPinballGame->roulettePortraitIndexes[0] = gCurrentPinballGame->roulettePortraitIndexes[1];
+            gCurrentPinballGame->areaRoulettePortraitIndex[0] = gCurrentPinballGame->areaRoulettePortraitIndex[1];
             LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_MAIN_SLOT);
         }
 
@@ -212,7 +212,7 @@ void UpdateBoardIntroMode(void)
             }
 
             gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
-            gCurrentPinballGame->roulettePortraitIndexes[1] = gAreaPortraitIndexes[gCurrentPinballGame->area];
+            gCurrentPinballGame->areaRoulettePortraitIndex[1] = gAreaPortraitIndexes[gCurrentPinballGame->area];
             LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_ALT_SLOT);
             m4aSongNumStart(SE_ROULETTE_TICK);
         }
@@ -235,7 +235,7 @@ void UpdateBoardIntroMode(void)
             else
                 var0 = ((gCurrentPinballGame->stageTimer - 8) / 3) + 2;
 
-            group = gMain.fieldSpriteGroups[34];
+            group = gMain.fieldSpriteGroups[FIELD_SG_INITIAL_LOCATION_SELECTED_FX];
             if (group->active)
             {
                 group->baseX = 96u - gCurrentPinballGame->cameraXOffset;
@@ -257,7 +257,7 @@ void UpdateBoardIntroMode(void)
             }
 
             if (gCurrentPinballGame->stageTimer == 28) {
-                gMain.fieldSpriteGroups[34]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_INITIAL_LOCATION_SELECTED_FX]->active = FALSE;
                 gCurrentPinballGame->activePortraitType = 0;
             }
         }
