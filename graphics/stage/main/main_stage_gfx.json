@@ -160,6 +160,10 @@
       "mwidth":2 
     },
     {
+      "gfx_filename": "ball_open_to_catch",
+      "oamshape": "ball_open_to_catch.json"
+	},
+	{
       "gfx_filename": "catch_mode_banner",
       "oam": true,
       "mheight": 9,

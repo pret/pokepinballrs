@@ -9,7 +9,7 @@
 extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gGroudonLavaPaletteCycleData[];
 extern const u8 gGroudonBoardBackgroundGfx[];
-extern const s8 gGroudonBoulderSpriteFrames[][0x300];
+extern const s8 gGroudonBoardBoulders_Gfx[][0x300];
 extern struct SongHeader se_groudon_hit;
 extern struct SongHeader se_groudon_lands;
 extern struct SongHeader se_groudon_spits_fire;
@@ -1345,7 +1345,7 @@ void UpdateGroudonFieldEntities(void)
             }
 
             var0 = gCurrentPinballGame->boulderSpriteFrame[i];
-            DmaCopy16(3, gGroudonBoulderSpriteFrames[var0], (void *)0x06010FA0 + i * 0x300, 0x300);
+            DmaCopy16(3, gGroudonBoardBoulders_Gfx[var0], (void *)0x06010FA0 + i * 0x300, 0x300);
 
             group->baseX = (gCurrentPinballGame->boulderGroundPosition[i].x / 10) + i - gCurrentPinballGame->cameraXOffset;
             group->baseY = (gCurrentPinballGame->boulderFallHeight[i] / 10) + (gCurrentPinballGame->boulderGroundPosition[i].y / 10) - gCurrentPinballGame->cameraYOffset;

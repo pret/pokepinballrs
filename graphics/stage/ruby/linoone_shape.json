@@ -1,0 +1,27 @@
+{
+  "kind": "oam-shape",
+  "version":1,
+  "pngsize": "3x3",
+  "pieces": [
+    {
+      "_comment":"Body",
+      "pos":"0,0",
+      "size": "2x2",
+    },
+    {
+      "_comment":"nose",
+      "pos":"2,0",
+      "size": "1x2"
+    },
+    {
+      "_comment":"arm",
+      "pos":"0,2",
+      "size": "2x1"
+    },
+    {
+      "pos":"2,2",
+      "size": "1x1",
+      "spacer":true
+    }
+  ]
+}

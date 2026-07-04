@@ -1,0 +1,42 @@
+{
+  "kind": "oam-shape",
+  "version":1,
+  "pngsize": "5x6",
+  "pieces": [
+    {
+      "pos":"0,0",
+      "size": "1x2",
+      "spacer":true
+    },
+    {
+      "_comment":"Fin",
+      "pos":"1,0",
+      "size": "1x2"
+    },
+    {
+      "pos":"2,0",
+      "size": "3x2",
+      "spacer":true
+    },
+    {
+      "_comment":"body",
+      "pos":"0,2",
+      "size": "4x4"
+    },
+    {
+      "pos":"4,2",
+      "size": "1x1",
+      "spacer":true
+    },
+    {
+      "_comment":"flipper",
+      "pos":"4,3",
+      "size": "1x1"
+    },
+    {
+      "pos":"4,4",
+      "size": "1x2",
+      "spacer":true
+    }
+  ]
+}

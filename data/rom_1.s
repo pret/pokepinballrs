@@ -751,7 +751,7 @@ gBallFlashPalette:: @ 0x08137F14
 	.incbin "baserom.gba", 0x137F14, 0x100
 
 gCaptureBallTilesGfx:: @ 0x08138014
-	.incbin "graphics/stage/main/capture_ball_variants.4bpp"
+	.incbin "graphics/stage/main/ball_open_to_catch.4bpp"
 	.space 0x20
 
 gDusclopsBonusClear_Gfx:: @ 0x08138834
@@ -1361,8 +1361,8 @@ gKyogreBodySprites_After15:: @ 0x0849B8CC
 gGroudonBoardBackgroundGfx:: @ 0x0849F1CC
 	.incbin "baserom.gba", 0x49F1CC, 0x2020
 
-gGroudonBoulderSpriteFrames:: @ 0x084A11EC
-	.incbin "baserom.gba", 0x4A11EC, 0x5D00
+gGroudonBoardBoulders_Gfx:: @ 0x084A11EC
+	.incbin "graphics/stage/groudon/boulders.4bpp";
 
 gRayquazaMinionOrbFrames:: @ 0x084A6EEC
 	.incbin "baserom.gba", 0x4A6EEC, 0x1680
