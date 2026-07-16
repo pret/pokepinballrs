@@ -116,72 +116,78 @@ gIntroStateFuncs:: @ 0x080792CC
 	.4byte Intro_State4_93D0
 
 gIntroSceneFuncs:: @ 0x080792E0
-	.4byte IntroScene1_LoadGraphics
-	.4byte IntroScene1_AnimateTitleReveal
-	.4byte IntroScene1_ZoomOutTitle
-	.4byte IntroScene1_ResetAfterZoom
-	.4byte IntroScene1_AnimateSecondReveal
-	.4byte IntroScene1_FadeInOverlay
-	.4byte IntroScene1_ScrollAndFade
-	.4byte IntroScene1_ParallaxScroll
+	.4byte IntroScene1_00_LoadTitleLettersAndTorchicScene
+	.4byte IntroScene1TitleText_01_TitleLetterBounceReveal
+	.4byte IntroScene1TitleText_02_TitleRecedeToBackground
+	.4byte IntroScene1TitleText_03_1PxText
+	.4byte IntroScene1Torchic_04_LargeSparkle
+	.4byte IntroScene1Torchic_05_SpeedLineFadeIn
+	.4byte IntroScene1Torchic_06_BrightenPokeballFlyTowardsScreen
+	.4byte IntroScene1Torchic_07_TorchicRiseAndBGSplit
 	.4byte nullsub_4
-	.4byte IntroScene1_FinalScroll
-	.4byte nullsub_5
+	.4byte IntroScene1Torchic_09_OrangeTextScrolls
+
+	.4byte nullsub_5 @ 10
 	.4byte nullsub_17
-	.4byte IntroScene1_BeginFadeOut
-	.4byte IntroScene1_ClearGraphics
-	.4byte IntroScene2_LoadGraphics
+	.4byte IntroScene1Torchic_12_FlashWhite
+	.4byte IntroScene1Torchic_13_ResetTilemap
+	.4byte IntroScene2Pikas_14_LoadPinkYellowBackground
 	.4byte nullsub_6
-	.4byte IntroScene2_ScrollBGs
+	.4byte IntroScene2Pikas_16_PikaPairRising
 	.4byte nullsub_7
-	.4byte IntroScene2_FinalScrollAndFade
-	.4byte IntroScene2_ClearGraphics
-	.4byte IntroScene3_LoadGraphics
-	.4byte IntroScene3_ScrollIn
-	.4byte IntroScene3_AnimateAndSwapBG
+	.4byte IntroScene2Pikas_18_FlashWhite
+	.4byte IntroScene2Pikas_19_ResetTilemap
+
+	.4byte IntroScene3Treecko_20_LoadTreeckoFlipperBall @ 20
+	.4byte IntroScene3Treecko_21_MoveTreeckoFlipperBallAndSplit
+	.4byte IntroScene3Treecko_22_FlipperHitTextScroll
 	.4byte nullsub_8
-	.4byte IntroScene3_BeginFadeOut
-	.4byte IntroScene3_ClearGraphics
-	.4byte IntroScene4_LoadGraphics
+	.4byte IntroScene3Treecko_24_FlashWhite
+	.4byte IntroScene3Treecko_25_ResetTilemap
+	.4byte IntroScene4PlussleMinun_26_LoadTealWhiteBackground
 	.4byte nullsub_9
-	.4byte IntroScene4_ScrollBGs
+	.4byte IntroScene4PlussleMinun_28_PlusleMinunTextScroll
 	.4byte nullsub_10
-	.4byte IntroScene4_FinalScrollAndFade
-	.4byte IntroScene4_ClearGraphics
-	.4byte IntroScene5_LoadGraphics
-	.4byte IntroScene5_ScrollIn
-	.4byte IntroScene5_AnimateEntities
+
+	.4byte IntroScene4PlussleMinun_30_FlashWhite @ 30
+	.4byte IntroScene4PlussleMinun_31_ResetTilemap
+	.4byte IntroScene5Mudkip_32_LoadMudkipBallScene
+	.4byte IntroScene5Mudkip_33_MoveMudkipBallSplit
+	.4byte IntroScene5Mudkip_34_MoveMudkipBallTextScroll
 	.4byte nullsub_11
-	.4byte IntroScene5_FadeOutAndClearOAM
-	.4byte IntroScene5_ClearGraphics
-	.4byte IntroScene6_LoadGraphics
-	.4byte IntroScene6_AnimateStarsScrollIn
-	.4byte IntroScene6_ContinueBounce
-	.4byte IntroScene6_FadeOutAndClearOAM
-	.4byte IntroScene6_AdvanceIndex
-	.4byte IntroScene7_LoadGraphics
-	.4byte IntroScene7_ScrollWaves1
-	.4byte IntroScene7_ScrollWaves2
-	.4byte IntroScene7_ScrollWaves3
-	.4byte IntroScene7_WailmerAndAllWaves
-	.4byte IntroScene7_WailmerShakeAndShrink
-	.4byte IntroScene7_BeginFadeOut
-	.4byte IntroScene7_ClearGraphics
-	.4byte IntroScene8a_LoadGraphics
-	.4byte IntroScene8a_WaitForExplosion
-	.4byte IntroScene8a_ExplodeAndLaunch
-	.4byte IntroScene8a_DriftAndFade
+	.4byte IntroScene5Mudkip_36_FlashWhite
+	.4byte IntroScene5Mudkip_37_ResetTilemap
+	.4byte IntroScene6Chinchou_38_LoadChinchou
+	.4byte IntroScene6Chinchou_39_MoveChinchouBallAndStars
+
+	.4byte IntroScene6Chinchou_40_MoveChinchouAndStars @ 40
+	.4byte IntroScene6Chinchou_41_FlashWhiteClearSprites
+	.4byte IntroScene6Chinchou_42_FrameAdvance
+	.4byte IntroScene7Parade_43_LoadPinkYellowBackground
+	.4byte IntroScene7Parade_44_MoveMakuhita
+	.4byte IntroScene7Parade_45_MoveMakuhitaAndSpoink
+	.4byte IntroScene7Parade_46_MoveMakuhitaPelipperAndSpoink
+	.4byte IntroScene7Parade_47_MoveMakuhitaPelipperWailmerAndSpoink
+	.4byte IntroScene7Parade_48_MoveWailmerShake
+	.4byte IntroScene7Parade_49_FlashWhite
+
+	.4byte IntroScene7Parade_50_ResetTilemap @ 50
+	.4byte IntroScene8WailmerLaunch_51_LoadWailmerBlastBackground
+	.4byte IntroScene8WailmerLaunch_52_BallAppearTimer
+	.4byte IntroScene8WailmerLaunch_53_MoveBallStarsAndWailmer
+	.4byte IntroScene8WailmerLaunch_54_MoveStarsAndWailmer
 	.4byte nullsub_12
 	.4byte nullsub_13
-	.4byte IntroScene8a_FadeOutAndClearOAM
-	.4byte IntroScene8a_ClearAndResetOAM
-	.4byte IntroScene8b_LoadGraphics
-	.4byte IntroScene8b_BallFlyIn
-	.4byte IntroScene8b_ScrollClouds
-	.4byte IntroScene8b_CloudSpriteAndWhiteFlash
+	.4byte IntroScene8WailmerLaunch_57_FlashWhiteClearSprites
+	.4byte IntroScene8WailmerLaunch_58_ResetTilemap
+	.4byte IntroScene9BallFlight_59_LoadSkySpeedOrbs
+
+	.4byte IntroScene9BallFlight_60_MoveBallAndSky @ 60
+	.4byte IntroScene9BallFlight_61_MoveSky
+	.4byte IntroScene9BallFlight_62_MoveBallSkyFadeWhite
 	.4byte nullsub_14
-	.4byte IntroScene8b_FadeOutMusic
-	.4byte IntroScene8b_EndIntro
+	.4byte IntroSceneX_64_HoldWhitescreen
+	.4byte IntroSceneX_64_EndIntro
 
 gHighScoresStateFuncs:: @ 0x080793E8
 	.4byte LoadHighScoreGraphics
@@ -405,39 +411,39 @@ gEReaderText_Gfx:: @ 0x080ACC60
 	.incbin "graphics/ereader/text.4bpp"
 	.space 0x240
 
-gIntroScene1Sprites_Pals:: @ 0x080B3AA0
+gIntroScene1TorchicSprites_Pals:: @ 0x080B3AA0
 	.incbin "graphics/intro/scene_1_sprites.gbapal"
 
-gIntroScene1_BG3Tilemap:: @ 0x080B3CA0
+gIntroScene1Torchic_BG3Tilemap:: @ 0x080B3CA0
 	.incbin "baserom.gba", 0xB3CA0, 0x800
 
-gIntroScene1Text_Gfx:: @ 0x080B44A0
+gIntroScene1TorchicText_Gfx:: @ 0x080B44A0
 	.incbin "graphics/intro/scene_1_text.4bpp"
 	.space 0x20
 
-gIntroScene1_BG0Tilemap:: @ 0x080B9CC0
+gIntroScene1Torchic_BG0Tilemap:: @ 0x080B9CC0
 	.incbin "baserom.gba", 0xB9CC0, 0x1800
 
-gIntroScene1_BG2Tilemap:: @ 0x080BB4C0
+gIntroScene1Torchic_BG2Tilemap:: @ 0x080BB4C0
 	.incbin "baserom.gba", 0xBB4C0, 0x1000
 
-gIntroScene1_BG1Tilemap:: @ 0x080BC4C0
+gIntroScene1Torchic_BG1Tilemap:: @ 0x080BC4C0
 	.incbin "baserom.gba", 0xBC4C0, 0x1000
 
-gIntroScene1Ball_Gfx:: @ 0x080BD4C0
+gIntroScene1TorchicBall_Gfx:: @ 0x080BD4C0
 	.incbin "graphics/intro/scene_1_ball.4bpp"
 	.space 0x20
 
-gIntroScene1Sprites_Gfx:: @ 0x080C3CE0
+gIntroScene1TorchicSprites_Gfx:: @ 0x080C3CE0
 	.incbin "graphics/intro/scene_1_sprites.4bpp"
 
-gIntroScene2_Pal:: @ 0x080CBCE0
+gIntroScene2Pikas_Pal:: @ 0x080CBCE0
 	.incbin "baserom.gba", 0xCBCE0, 0x200
 
-gIntroScene2_BG3Tilemap:: @ 0x080CBEE0
+gIntroScene2Pikas_BG3Tilemap:: @ 0x080CBEE0
 	.incbin "baserom.gba", 0xCBEE0, 0x800
 
-gIntroScene2Sprites_Gfx:: @ 0x080CC6E0
+gIntroScene2PikasSprites_Gfx:: @ 0x080CC6E0
 	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
 	@ with mostly blank secondary rows (reusing tiles)
 	@ (shown in pink with yellow text)
@@ -445,111 +451,111 @@ gIntroScene2Sprites_Gfx:: @ 0x080CC6E0
 	.incbin "graphics/intro/scene_2_sprites.4bpp"
 	.space 0x20
 
-gIntroScene2_BG0Tiles:: @ 0x080D0700
+gIntroScene2Pikas_BG0Tiles:: @ 0x080D0700
 	.incbin "baserom.gba", 0xD0700, 0x2000
 
-gIntroScene2_BG1Tiles:: @ 0x080D2700
+gIntroScene2Pikas_BG1Tiles:: @ 0x080D2700
 	.incbin "baserom.gba", 0xD2700, 0x2000
 
-gIntroScene3_Pal:: @ 0x080D4700
+gIntroScene3Treecko_Pal:: @ 0x080D4700
 	.incbin "baserom.gba", 0xD4700, 0x200
 
-gIntroScene3_BG2Tilemap:: @ 0x080D4900
+gIntroScene3Treecko_BG2Tilemap:: @ 0x080D4900
 	.incbin "baserom.gba", 0xD4900, 0x1000
 
-gIntroScene3_BG3Tilemap:: @ 0x080D5900
+gIntroScene3Treecko_BG3Tilemap:: @ 0x080D5900
 	.incbin "baserom.gba", 0xD5900, 0x800
 
-gIntroScene3Sprites_Gfx:: @ 0x080D6100
+gIntroScene3TreeckoSprites_Gfx:: @ 0x080D6100
 	@ intro pane with treeko, pinball, flipper
 	.incbin "graphics/intro/scene_3_sprites.4bpp"
 	.space 0x20
 
-gIntroScene3_BG1Tilemap:: @ 0x080DCD20
+gIntroScene3Treecko_BG1Tilemap:: @ 0x080DCD20
 	.incbin "baserom.gba", 0xDCD20, 0x800
 
-gIntroScene3_BG1TilemapA:: @ 0x080DD520
+gIntroScene3Treecko_BG1TilemapA:: @ 0x080DD520
 	.incbin "baserom.gba", 0xDD520, 0x800
 
-gIntroScene3_BG1TilemapB:: @ 0x080DDD20
+gIntroScene3Treecko_BG1TilemapB:: @ 0x080DDD20
 	.incbin "baserom.gba", 0xDDD20, 0x800
 
-gIntroScene3_BG0Tilemap:: @ 0x080DE520
+gIntroScene3Treecko_BG0Tilemap:: @ 0x080DE520
 	.incbin "baserom.gba", 0xDE520, 0x1000
 
-gIntroScene3Treecko_Gfx:: @ 0x080DF520
+gIntroScene3TreeckoTreecko_Gfx:: @ 0x080DF520
 	.incbin "graphics/intro/treecko.4bpp"
 	.space 0x20
 
-gIntroScene4_Pal:: @ 0x080E1540
+gIntroScene4PlussleMinun_Pal:: @ 0x080E1540
 	.incbin "baserom.gba", 0xE1540, 0x200
 
-gIntroScene4_BG3Tilemap:: @ 0x080E1740
+gIntroScene4PlussleMinun_BG3Tilemap:: @ 0x080E1740
 	.incbin "baserom.gba", 0xE1740, 0x800
 
-gIntroScene4Sprites_Gfx:: @ 0x080E1F40
+gIntroScene4PlussleMinunSprites_Gfx:: @ 0x080E1F40
 	.incbin "graphics/intro/scene_4_sprites.4bpp"
 
-gIntroScene4_BG0Tiles:: @ 0x080E5F60
+gIntroScene4PlussleMinun_BG0Tiles:: @ 0x080E5F60
 	.incbin "baserom.gba", 0xE5F60, 0x2000
 
-gIntroScene4_BG1Tiles:: @ 0x080E7F60
+gIntroScene4PlussleMinun_BG1Tiles:: @ 0x080E7F60
 	.incbin "baserom.gba", 0xE7F60, 0x2000
 
-gIntroScene5_Pal:: @ 0x080E9F60
+gIntroScene5Mudkip_Pal:: @ 0x080E9F60
 	.incbin "baserom.gba", 0xE9F60, 0x200
 
-gIntroScene5_BG2Tilemap:: @ 0x080EA160
+gIntroScene5Mudkip_BG2Tilemap:: @ 0x080EA160
 	.incbin "baserom.gba", 0xEA160, 0x1000
 
-gIntroScene5_BG1Tiles:: @ 0x080EB160
+gIntroScene5Mudkip_BG1Tiles:: @ 0x080EB160
 	.incbin "baserom.gba", 0xEB160, 0x1000
 
-gIntroScene5_BG3Tilemap:: @ 0x080EC160
+gIntroScene5Mudkip_BG3Tilemap:: @ 0x080EC160
 	.incbin "baserom.gba", 0xEC160, 0x800
 
-gIntroScene5Text_Gfx:: @ 0x080EC960
+gIntroScene5MudkipText_Gfx:: @ 0x080EC960
 	.incbin "graphics/intro/scene_5_text.4bpp"
 	.space 0x20
 
-gIntroScene5_BG0Tiles:: @ 0x080F1980
+gIntroScene5Mudkip_BG0Tiles:: @ 0x080F1980
 	.incbin "baserom.gba", 0xF1980, 0x800
 
-gIntroScene5Sprites_Gfx:: @ 0x080F2180
+gIntroScene5MudkipSprites_Gfx:: @ 0x080F2180
 	.incbin "graphics/intro/scene_5_sprites.4bpp"
 	.space 0x20
 	.incbin "baserom.gba", 0xF51A0, 0x1000
 
-gIntroScene6_Pal:: @ 0x080F61A0
+gIntroScene6Chinchou_Pal:: @ 0x080F61A0
 	.incbin "baserom.gba", 0xF61A0, 0x200
 
-gIntroScene6_BG3Tilemap:: @ 0x080F63A0
+gIntroScene6Chinchou_BG3Tilemap:: @ 0x080F63A0
 	.incbin "baserom.gba", 0xF63A0, 0x800
 
-gIntroScene6Sprites_Gfx:: @ 0x080F6BA0
+gIntroScene6ChinchouSprites_Gfx:: @ 0x080F6BA0
 	.incbin "graphics/intro/scene_6_sprites.4bpp"
 	.space 0x20
 
-gIntroScene6_BG2Tilemap:: @ 0x080FCFC0
+gIntroScene6Chinchou_BG2Tilemap:: @ 0x080FCFC0
 	.incbin "baserom.gba", 0xFCFC0, 0x800
 
-gIntroScene6_BG0Tilemap:: @ 0x080FD7C0
+gIntroScene6Chinchou_BG0Tilemap:: @ 0x080FD7C0
 	.incbin "baserom.gba", 0xFD7C0, 0x800
 
-gIntroScene6_BG1Tiles:: @ 0x080FDFC0
+gIntroScene6Chinchou_BG1Tiles:: @ 0x080FDFC0
 	.incbin "baserom.gba", 0xFDFC0, 0x2000
 
-gIntroScene6Stars_Gfx:: @ 0x080FFFC0
+gIntroScene6ChinchouStars_Gfx:: @ 0x080FFFC0
 	.incbin "graphics/intro/scene_6_stars.4bpp"
 	.space 0x20
 
-gIntroScene7_Pal:: @ 0x08100FE0
+gIntroScene7Parade_Pal:: @ 0x08100FE0
 	.incbin "baserom.gba", 0x100FE0, 0x200
 
-gIntroScene7_BG3Tilemap:: @ 0x081011E0
+gIntroScene7Parade_BG3Tilemap:: @ 0x081011E0
 	.incbin "baserom.gba", 0x1011E0, 0x800
 
-gIntroScene7Sprites_Gfx:: @ 0x081019E0
+gIntroScene7ParadeSprites_Gfx:: @ 0x081019E0
 	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
 	@ with mostly blank secondary rows (reusing tiles)
 	@ (shown in pink with yellow text)
@@ -558,44 +564,44 @@ gIntroScene7Sprites_Gfx:: @ 0x081019E0
 	.incbin "graphics/intro/scene_7_sprites.4bpp"
 	.space 0x20
 
-gIntroScene7_BG2Tiles:: @ 0x08106A00
+gIntroScene7Parade_BG2Tiles:: @ 0x08106A00
 	.incbin "baserom.gba", 0x106A00, 0x2000
 
-gIntroScene7_BG0Tiles:: @ 0x08108A00
+gIntroScene7Parade_BG0Tiles:: @ 0x08108A00
 	.incbin "baserom.gba", 0x108A00, 0x2000
 
-gIntroScene7_BG1Tiles:: @ 0x0810AA00
+gIntroScene7Parade_BG1Tiles:: @ 0x0810AA00
 	.incbin "baserom.gba", 0x10AA00, 0x2000
 
-gIntroScene7Wailmer_Gfx:: @ 0x0810CA00
+gIntroScene7ParadeWailmer_Gfx:: @ 0x0810CA00
 	.incbin "graphics/intro/scene_7_wailmer.4bpp"
 	.space 0x20
 
-gIntroScene8a_Pal:: @ 0x0810EA20
+gIntroScene8WailmerLaunch_Pal:: @ 0x0810EA20
 	.incbin "baserom.gba", 0x10EA20, 0x200
 
-gIntroScene8a_BG2Tilemap:: @ 0x0810EC20
+gIntroScene8WailmerLaunch_BG2Tilemap:: @ 0x0810EC20
 	.incbin "baserom.gba", 0x10EC20, 0x800
 
-gIntroScene7Explosion_Gfx:: @ 0x0810F420
+gIntroScene7ParadeExplosion_Gfx:: @ 0x0810F420
 	.incbin "graphics/intro/scene_7_explosion.4bpp"
 	.space 0x20
 
-gIntroScene7WailmerLaunch_Gfx:: @ 0x08112840
+gIntroScene7ParadeWailmerLaunch_Gfx:: @ 0x08112840
 	.incbin "graphics/intro/scene_7_wailmer_launch.4bpp"
 	.space 0x20
 
-gIntroScene8b_Pal:: @ 0x08115860
+gIntroScene9BallFlight_Pal:: @ 0x08115860
 	.incbin "baserom.gba", 0x115860, 0x200
 
-gIntroScene8b_BG3Tilemap:: @ 0x08115A60
+gIntroScene9BallFlight_BG3Tilemap:: @ 0x08115A60
 	.incbin "baserom.gba", 0x115A60, 0x800
 
-gIntroScene8Clouds_Gfx:: @ 0x08116260
+gIntroScene9BallFlightClouds_Gfx:: @ 0x08116260
 	.incbin "graphics/intro/scene_8_clouds.4bpp"
 	.space 0x20
 
-gIntroScene8Ball_Gfx:: @ 0x08118680
+gIntroScene9BallFlightall_Gfx:: @ 0x08118680
 	.incbin "graphics/intro/scene_8_ball.4bpp"
 
 	.incbin "graphics/intro/wailmer_swallow.4bpp"

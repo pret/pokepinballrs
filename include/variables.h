@@ -129,8 +129,8 @@ extern const u8 gGbPlayerTilemap[];
 extern StateFunc gTitlescreenStateFuncs[];
 //extern ? gIntroCopyright_Gfx;
 //extern ? gIntroCopyright_Pal;
-//extern ? gIntroScene1Sprites_Pals;
-//extern ? gIntroScene1Sprites_Gfx;
+//extern ? gIntroScene1TorchicSprites_Pals;
+//extern ? gIntroScene1TorchicSprites_Gfx;
 extern const u8 gGBAButtonIcons_Pals[];
 extern const u8 gOptionsSprites_Gfx[];
 extern const IntrFunc gIntrTableTemplate[14];
@@ -349,74 +349,74 @@ struct HighScoreNamePosition
 };
 extern const struct HighScoreNamePosition gHighScoreNamePositions[][8];
 
-extern struct Vector16 gIntroScene1_BGAnimTiming[0x8];
-extern s16 gIntroScene1_TileOffsets[0x8];
+extern struct Vector16 gIntroScene1Torchic_BGAnimTiming[0x8];
+extern s16 gIntroScene1Torchic_TileOffsets[0x8];
 extern s16 gIntroBGParams[];
 extern s32 gIntroPalFadeLevel;
-extern const struct SpriteSet *const gIntroScene1_SpriteSets[];
-extern struct Vector16 gIntroScene1_ScaleOffsets[0x4];
+extern const struct SpriteSet *const gIntroScene1Torchic_SpriteSets[];
+extern struct Vector16 gIntroScene1Torchic_ScaleOffsets[0x4];
 extern s32 gIntroScaleY;
 
-extern const struct SpriteSet *const gIntroScene3_SpriteSets[];
-extern const struct SpriteSet *const gIntroScene5_SpriteSets[];
-extern u8 gIntroScene4_Pal[];
-extern u8 gIntroScene4_BG3Tilemap[];
-extern u8 gIntroScene4Sprites_Gfx[];
-extern u8 gIntroScene4_BG0Tiles[];
-extern u8 gIntroScene4_BG1Tiles[];
+extern const struct SpriteSet *const gIntroScene3Treecko_SpriteSets[];
+extern const struct SpriteSet *const gIntroScene5Mudkip_SpriteSets[];
+extern u8 gIntroScene4PlussleMinun_Pal[];
+extern u8 gIntroScene4PlussleMinun_BG3Tilemap[];
+extern u8 gIntroScene4PlussleMinunSprites_Gfx[];
+extern u8 gIntroScene4PlussleMinun_BG0Tiles[];
+extern u8 gIntroScene4PlussleMinun_BG1Tiles[];
 
 extern u16 gTextTilemapBuffer[];
 
-extern u8 gIntroScene5_Pal[];
-extern u8 gIntroScene5_BG2Tilemap[];
-extern u8 gIntroScene5_BG1Tiles[];
-extern u8 gIntroScene5_BG3Tilemap[];
-extern u8 gIntroScene5Text_Gfx[];
-extern u8 gIntroScene5_BG0Tiles[];
-extern u8 gIntroScene5Sprites_Gfx[];
-extern s16 gIntroScene5_TileOffsets[];
+extern u8 gIntroScene5Mudkip_Pal[];
+extern u8 gIntroScene5Mudkip_BG2Tilemap[];
+extern u8 gIntroScene5Mudkip_BG1Tiles[];
+extern u8 gIntroScene5Mudkip_BG3Tilemap[];
+extern u8 gIntroScene5MudkipText_Gfx[];
+extern u8 gIntroScene5Mudkip_BG0Tiles[];
+extern u8 gIntroScene5MudkipSprites_Gfx[];
+extern s16 gIntroScene5Mudkip_TileOffsets[];
 
-extern s8 gIntroScene6VelocityIndex;
-extern s8 gIntroScene6EntitySpawnIndex;
+extern s8 gIntroScene6ChinchouVelocityIndex;
+extern s8 gIntroScene6ChinchouEntitySpawnIndex;
 
-extern u8 gIntroScene6_Pal[];
-extern u8 gIntroScene6_BG3Tilemap[];
-extern u8 gIntroScene6Sprites_Gfx[];
-extern u8 gIntroScene6_BG2Tilemap[];
-extern u8 gIntroScene6_BG0Tilemap[];
-extern u8 gIntroScene6_BG1Tiles[];
-extern u8 gIntroScene6Stars_Gfx[];
+extern u8 gIntroScene6Chinchou_Pal[];
+extern u8 gIntroScene6Chinchou_BG3Tilemap[];
+extern u8 gIntroScene6ChinchouSprites_Gfx[];
+extern u8 gIntroScene6Chinchou_BG2Tilemap[];
+extern u8 gIntroScene6Chinchou_BG0Tilemap[];
+extern u8 gIntroScene6Chinchou_BG1Tiles[];
+extern u8 gIntroScene6ChinchouStars_Gfx[];
 
-extern u8 gIntroScene6_BounceFlags[];
-extern const struct SpriteSet *const gIntroScene6_SpriteSets[];
+extern u8 gIntroScene6Chinchou_BounceFlags[];
+extern const struct SpriteSet *const gIntroScene6Chinchou_SpriteSets[];
 
 extern s16 gIntroWailmerScaleX;
 extern s16 gIntroWailmerScaleY;
-extern const struct SpriteSet *const gIntroScene7_SpriteSets[];
+extern const struct SpriteSet *const gIntroScene7Parade_SpriteSets[];
 extern const struct SpriteSetTableEntry gFieldSpriteSets[];
-extern u8 gIntroScene7_Pal[];
-extern u8 gIntroScene7_BG3Tilemap[];
-extern u8 gIntroScene7Sprites_Gfx[];
-extern u8 gIntroScene7_BG2Tiles[];
-extern u8 gIntroScene7_BG0Tiles[];
-extern u8 gIntroScene7_BG1Tiles[];
-extern u8 gIntroScene7Wailmer_Gfx[];
+extern u8 gIntroScene7Parade_Pal[];
+extern u8 gIntroScene7Parade_BG3Tilemap[];
+extern u8 gIntroScene7ParadeSprites_Gfx[];
+extern u8 gIntroScene7Parade_BG2Tiles[];
+extern u8 gIntroScene7Parade_BG0Tiles[];
+extern u8 gIntroScene7Parade_BG1Tiles[];
+extern u8 gIntroScene7ParadeWailmer_Gfx[];
 
 extern s8 gLinkExchangeSendPhase;
 
-extern u8 gIntroScene8a_Pal[];
-extern u8 gIntroScene8a_BG2Tilemap[];
-extern u8 gIntroScene7Explosion_Gfx[];
-extern u8 gIntroScene7WailmerLaunch_Gfx[];
+extern u8 gIntroScene8WailmerLaunch_Pal[];
+extern u8 gIntroScene8WailmerLaunch_BG2Tilemap[];
+extern u8 gIntroScene7ParadeExplosion_Gfx[];
+extern u8 gIntroScene7ParadeWailmerLaunch_Gfx[];
 
-extern s8 gIntroScene8b_BallDecelTable[];
+extern s8 gIntroScene9BallFlight_BallDecelTable[];
 extern s8 gIntroObjWhiteFlash;
 extern s8 gIntroBGWhiteFlash;
 
-extern u8 gIntroScene8b_Pal[];
-extern u8 gIntroScene8b_BG3Tilemap[];
-extern u8 gIntroScene8Clouds_Gfx[];
-extern u8 gIntroScene8Ball_Gfx[];
+extern u8 gIntroScene9BallFlight_Pal[];
+extern u8 gIntroScene9BallFlight_BG3Tilemap[];
+extern u8 gIntroScene9BallFlightClouds_Gfx[];
+extern u8 gIntroScene9BallFlightall_Gfx[];
 
 extern u16 gCommonAndEggWeights[];
 extern u16 gMain_saveData_pokedexFlags_90[10];

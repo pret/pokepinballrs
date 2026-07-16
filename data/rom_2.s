@@ -1744,7 +1744,7 @@ gUnknown_086A7658:: @ 0x086A7658
     packed_sprite_oam x=0x30, y=-0x28, spriteSize=SPRITE_SIZE_16x16, tileNum=0x396, priority=0x0, paletteNum=0x0
 .2byte 0,0
 
-gIntroScene1_SpriteSets:: @ 0x086A769C
+gIntroScene1Torchic_SpriteSets:: @ 0x086A769C
 	.4byte gUnknown_086A7570
     .4byte gUnknown_086A75C2
     .4byte gUnknown_086A7636
@@ -1755,6 +1755,7 @@ gIntroScene1_SpriteSets:: @ 0x086A769C
     .4byte gUnknown_086A6B4E
     .4byte gUnknown_086A6B60
     .4byte gUnknown_086A6B72
+
     .4byte gUnknown_086A6B8C
     .4byte gUnknown_086A6BA6
     .4byte gUnknown_086A6BC0
@@ -1765,6 +1766,7 @@ gIntroScene1_SpriteSets:: @ 0x086A769C
     .4byte gUnknown_086A6C92
     .4byte gUnknown_086A6CC4
     .4byte gUnknown_086A6CF6
+
     .4byte gUnknown_086A6D30
     .4byte gUnknown_086A6D6A
     .4byte gUnknown_086A6DAC
@@ -1775,6 +1777,7 @@ gIntroScene1_SpriteSets:: @ 0x086A769C
     .4byte gUnknown_086A6F3E
     .4byte gUnknown_086A6FA0
     .4byte gUnknown_086A7002
+
     .4byte gUnknown_086A706C
     .4byte gUnknown_086A70D6
     .4byte gUnknown_086A7148
@@ -1785,6 +1788,7 @@ gIntroScene1_SpriteSets:: @ 0x086A769C
     .4byte gUnknown_086A7382
     .4byte gUnknown_086A73F4
     .4byte gUnknown_086A7466
+
     .4byte gUnknown_086A74D8
     .4byte gUnknown_086A74FA
     .4byte gUnknown_086A7504
@@ -1793,12 +1797,12 @@ gIntroScene1_SpriteSets:: @ 0x086A769C
     .4byte gUnknown_086A7522
     .4byte gUnknown_086A752C
     .4byte gUnknown_086A754E
-    .4byte gUnknown_086A7658
+    .4byte gUnknown_086A7658 @ 48
 
 gUnknown_086A7760:: @ 0x086A7760
 	.incbin "baserom.gba", 0x6A7760, 0x8
 
-gIntroScene1_BGAnimTiming:: @ 0x086A7768
+gIntroScene1Torchic_BGAnimTiming:: @ 0x086A7768
     .2byte 0x1, 0x14
     .2byte 0x2, 0x20
     .2byte 0x3, 0x28
@@ -1808,10 +1812,10 @@ gIntroScene1_BGAnimTiming:: @ 0x086A7768
     .2byte 0x7, 0x37
     .2byte 0x8, 0x39
 
-gIntroScene1_TileOffsets:: @ 0x086A7788
+gIntroScene1Torchic_TileOffsets:: @ 0x086A7788
     .2byte 0x80, 0x100, 0x180, 0x1000, 0x1080, 0x1100, 0x1180, 0x2000
 
-gIntroScene1_ScaleOffsets:: @ 0x086A7798
+gIntroScene1Torchic_ScaleOffsets:: @ 0x086A7798
     .2byte -64, -16
     .2byte -32, -16
     .2byte 0, -16
@@ -1932,7 +1936,7 @@ gUnknown_086A7938:: @ 0x086A7938
     packed_sprite_oam x=0x40, y=0x40, spriteSize=SPRITE_SIZE_32x64, tileNum=0x14, priority=0x0, paletteNum=0x6
 .2byte 0,0
 
-gIntroScene3_SpriteSets:: @ 0x086A795C
+gIntroScene3Treecko_SpriteSets:: @ 0x086A795C
     .4byte gUnknown_086A7938
     .space 0x4
 
@@ -1978,13 +1982,13 @@ gUnknown_086A79A8:: @ 0x086A79A8
 .2byte 0,0
 
 
-gIntroScene5_SpriteSets:: @ 0x086A79EC
+gIntroScene5Mudkip_SpriteSets:: @ 0x086A79EC
     .4byte gUnknown_086A7986
     .4byte gUnknown_086A7964
     .4byte gUnknown_086A79A8
     .4byte 0
 
-gIntroScene5_BGAnimTiming:: @ 0x086A79FC
+gIntroScene5Mudkip_BGAnimTiming:: @ 0x086A79FC
     .2byte 1, 3
     .2byte 2, 6
     .2byte 3, 9
@@ -1994,7 +1998,7 @@ gIntroScene5_BGAnimTiming:: @ 0x086A79FC
     .2byte 7, 20
     .2byte 0, 0
 
-gIntroScene5_TileOffsets:: @ 0x086A7A1C
+gIntroScene5Mudkip_TileOffsets:: @ 0x086A7A1C
     .2byte 0x1100, 0x1080, 0x1000, 0x0180, 0x100, 0x80, 0, 0
 
 gUnknown_086A7A2C:: @ 0x086A7A2C
@@ -2031,7 +2035,7 @@ gUnknown_086A7A6E:: @ 0x086A7A6E
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,  tileNum=0x14, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gIntroScene6_SpriteSets:: @ 0x086A7A78
+gIntroScene6Chinchou_SpriteSets:: @ 0x086A7A78
 	.4byte gUnknown_086A7A48
     .4byte gUnknown_086A7A6E
     .4byte gUnknown_086A7A48
@@ -2051,13 +2055,13 @@ gIntroScene6_SpriteSets:: @ 0x086A7A78
     .4byte gUnknown_086A7A2C
     .4byte gUnknown_086A7A52
 
-gIntroScene6_ScrollVelocity:: @ 0x086A7AC0
+gIntroScene6Chinchou_ScrollVelocity:: @ 0x086A7AC0
 	.incbin "baserom.gba", 0x6A7AC0, 0x24
 
-gIntroScene6_BounceFlags:: @ 0x086A7AE4
+gIntroScene6Chinchou_BounceFlags:: @ 0x086A7AE4
 	.incbin "baserom.gba", 0x6A7AE4, 0x50
 
-gIntroScene6_EntityMovement:: @ 0x086A7B34
+gIntroScene6Chinchou_EntityMovement:: @ 0x086A7B34
 	.incbin "baserom.gba", 0x6A7B34, 0x1C
 
 gUnknown_086A7B50:: @ 0x086A7B50
@@ -2071,11 +2075,11 @@ gUnknown_086A7B50:: @ 0x086A7B50
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x18, priority=0x0, paletteNum=0x1
 .2byte 0,0
 
-gIntroScene7_SpriteSets:: @ 0x086A7B74
+gIntroScene7Parade_SpriteSets:: @ 0x086A7B74
 	.4byte gUnknown_086A7B50
     .4byte 0
 
-gIntroScene7_WailmerQuadOffsets:: @ 0x086A7B7C
+gIntroScene7Parade_WailmerQuadOffsets:: @ 0x086A7B7C
     .2byte -64, -64
     .2byte   0, -64
     .2byte -64,   0
@@ -2105,7 +2109,7 @@ gUnknown_086A7BF8:: @ 0x086A7BF8
 gUnknown_086A7C1A:: @ 0x086A7C1A
 	.incbin "baserom.gba", 0x6A7C1A, 0xA
 
-gIntroScene8a_SpriteSets:: @ 0x086A7C24
+gIntroScene8WailmerLaunch_SpriteSets:: @ 0x086A7C24
     .4byte gUnknown_086A7C1A
     .4byte gUnknown_086A7BF8
     .4byte gUnknown_086A7BB8
@@ -2124,7 +2128,7 @@ gIntroScene8a_SpriteSets:: @ 0x086A7C24
     .4byte gUnknown_086A7BC2
     .4byte gUnknown_086A7B8C
 
-gIntroScene8a_DebrisMovement:: @ 0x086A7C68
+gIntroScene8WailmerLaunch_DebrisMovement:: @ 0x086A7C68
 	.byte 0x05, 0x02, 0x03, 0x01, 0x06, 0x01
 	.align 2,0
 	.byte 0x05, 0xFE, 0x03, 0xFF, 0x19, 0x02
@@ -2171,7 +2175,7 @@ gUnknown_086A7CF2:: @ 0x086A7CF2
 gUnknown_086A7CFC:: @ 0x086A7CFC
 	.incbin "baserom.gba", 0x6A7CFC, 0x24
 
-gIntroScene8b_SpriteSets:: @ 0x086A7D20
+gIntroScene9BallFlight_SpriteSets:: @ 0x086A7D20
     .4byte gUnknown_086A7CFC
     .4byte gUnknown_086A7C98
     .4byte gUnknown_086A7CA2
@@ -2184,7 +2188,7 @@ gIntroScene8b_SpriteSets:: @ 0x086A7D20
     .4byte gUnknown_086A7CE8
     .4byte gUnknown_086A7CF2
 
-gIntroScene8b_BallDecelTable:: @ 0x086A7D4C
+gIntroScene9BallFlight_BallDecelTable:: @ 0x086A7D4C
 	.incbin "baserom.gba", 0x6A7D4C, 0x5C
 
 gNameEntryCursorSpriteSets:: @ 0x086A7DA8
