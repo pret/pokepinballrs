@@ -50,7 +50,9 @@ extern u8 gIntroScene1TorchicBall_Gfx[];
 extern s16 gIntroScene1Torchic_TileOffsets[0x8];
 
 extern u16 gIntroTileBuffer[];
-extern s16 gIntroBGParams[];
+
+extern struct UnkStruct_0202ADA0 gIntroBGParams[6];
+
 extern s16 gIntroFrameCounter;
 extern u8 gIntroBlendSrc;
 extern u8 gIntroBlendDst;
@@ -233,14 +235,14 @@ void IntroScene1_00_LoadTitleLettersAndTorchicScene(void)
     DmaCopy16(3, gIntroScene1TorchicSprites_Gfx, BG_CHAR_ADDR(4), 0x8000);
     DmaCopy16(3, gIntroScene1TorchicSprites_Pals, 0x05000200, BG_PLTT_SIZE);
     IntroScene1Torchic_InitVars();
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[18];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[19];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[6];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[7];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[13];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[3].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[2].posY;
     EnableVBlankInterrupts();
     FadeInWithCustomPalettes((void*)BG_PLTT, gIntroScene1TorchicSprites_Pals, NULL);
     DmaCopy16(3, gIntroScene1TorchicSprites_Pals, 0x05000200, BG_PLTT_SIZE);
@@ -264,18 +266,18 @@ void IntroScene1Torchic_InitVars(void)
     gIntroSpriteEntities[4].posX = 0x80;
     gIntroSpriteEntities[4].posY = 0x80;
     gIntroSpriteEntities[4].visible = 1;
-    gIntroBGParams[0] = 0xffa8;
-    gIntroBGParams[1] = 0xffca;
-    gIntroBGParams[4] = 0;
-    gIntroBGParams[5] = 0;
-    gIntroBGParams[6] = 0x100;
-    gIntroBGParams[7] = 0;
-    gIntroBGParams[10] = 0;
-    gIntroBGParams[18] = 0xfb;
-    gIntroBGParams[19] = 0;
-    gIntroBGParams[22] = 0;
-    gIntroBGParams[12] = 0;
-    gIntroBGParams[13] = 0;
+    gIntroBGParams[0].posX = 0xffa8;
+    gIntroBGParams[0].posY = 0xffca;
+    gIntroBGParams[0].animFrame = 0;
+    gIntroBGParams[0].frameTimer = 0;
+    gIntroBGParams[1].posX = 0x100;
+    gIntroBGParams[1].posY = 0;
+    gIntroBGParams[1].animFrame = 0;
+    gIntroBGParams[3].posX = 0xfb;
+    gIntroBGParams[3].posY = 0;
+    gIntroBGParams[3].animFrame = 0;
+    gIntroBGParams[2].posX = 0;
+    gIntroBGParams[2].posY = 0;
     gIntroSpriteEntities[0].posX = 0x78;
     gIntroSpriteEntities[0].posY = 0x50;
     gIntroSpriteEntities[0].animFrame = 0;
@@ -414,22 +416,22 @@ void IntroScene1Torchic_06_BrightenPokeballFlyTowardsScreen(void)
     if (gIntroFrameCounter % 3 == 0)
         gIntroSpriteEntities[1].animFrame = 1 - gIntroSpriteEntities[1].animFrame;
 
-    gIntroBGParams[0]--;
+    gIntroBGParams[0].posX--;
 
     if (gIntroFrameCounter % 2 == 0)
-        gIntroBGParams[1]--;
+        gIntroBGParams[0].posY--;
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[1];
-    if (++gIntroBGParams[5] > gIntroScene1Torchic_BGAnimTiming[gIntroBGParams[4]].y)
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    if (++gIntroBGParams[0].frameTimer > gIntroScene1Torchic_BGAnimTiming[gIntroBGParams[0].animFrame].y)
     {
-        CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[4]]], (void *)0x60036E0, 8, 8);
-        if (++gIntroBGParams[4] > 3)
+        CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *)0x60036E0, 8, 8);
+        if (++gIntroBGParams[0].animFrame > 3)
         {
             gIntroSpriteEntities[3].visible = 1;
             gIntroSpriteEntities[2].visible = 1;
             gIntroSpriteEntities[1].visible = 0;
-            gIntroBGParams[10] = 0;
+            gIntroBGParams[1].animFrame = 0;
             gIntroSceneIndex++;
         }
     }
@@ -442,9 +444,9 @@ void IntroScene1Torchic_07_TorchicRiseAndBGSplit(void)
     gIntroSpriteEntities[3].posX -= 0xE;
     gIntroSpriteEntities[3].posY -= 0xD;
 
-    gIntroBGParams[0x12] -= 0x10;
-    gIntroBGParams[0x13]++;
-    gIntroBGParams[0x6]  -= 0x10;
+    gIntroBGParams[3].posX -= 0x10;
+    gIntroBGParams[3].posY++;
+    gIntroBGParams[1].posX  -= 0x10;
 
     gIntroSpriteEntities[2].posX -= 0xE;
     gIntroSpriteEntities[2].posY -= 0xD;
@@ -453,34 +455,34 @@ void IntroScene1Torchic_07_TorchicRiseAndBGSplit(void)
 
     if (gIntroFrameCounter % 2 == 0)
     {
-        gIntroBGParams[0x0]--;
-        gIntroBGParams[0x1]--;
+        gIntroBGParams[0].posX--;
+        gIntroBGParams[0].posY--;
     }
 
-    if (++gIntroBGParams[5] > gIntroScene1Torchic_BGAnimTiming[gIntroBGParams[4]].y)
+    if (++gIntroBGParams[0].frameTimer > gIntroScene1Torchic_BGAnimTiming[gIntroBGParams[0].animFrame].y)
     {
-        if (gIntroBGParams[4] < 7)
-            CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0x4]]], (void *)0x60036e0, 8, 8);
+        if (gIntroBGParams[0].animFrame < 7)
+            CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *)0x60036e0, 8, 8);
         else
-            CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0x4]]], (void *)0x60032c0, 10, 10);
+            CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *)0x60032c0, 10, 10);
 
-        gIntroBGParams[0x4]++;
+        gIntroBGParams[0].animFrame++;
     }
 
-    gIntroBGParams[0xA]++;
-    if (gIntroBGParams[0xA] > 9)
+    gIntroBGParams[1].animFrame++;
+    if (gIntroBGParams[1].animFrame > 9)
     {
-        gIntroBGParams[0xA] = 0;
+        gIntroBGParams[1].animFrame = 0;
         gIntroSceneIndex += 2;
     }
 
     IntroScene1Torchic_RenderAllSprites();
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x13];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0x7];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[3].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[1].posY;
 }
 
 void nullsub_4(void)
@@ -489,7 +491,7 @@ void nullsub_4(void)
 
 void IntroScene1Torchic_09_OrangeTextScrolls(void)
 {
-    gIntroBGParams[0xC]++;
+    gIntroBGParams[2].posX++;
 
     if (gIntroFrameCounter % 2 == 0)
     {
@@ -501,8 +503,8 @@ void IntroScene1Torchic_09_OrangeTextScrolls(void)
 
     IntroScene1Torchic_RenderAllSprites();
 
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0xD];
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[2].posY;
     gIntroSpriteEntities[3].frameTimer++;
 
     if (gIntroSpriteEntities[3].frameTimer > 0x14)
@@ -697,12 +699,12 @@ void IntroScene2Pikas_14_LoadPinkYellowBackground(void)
     DmaCopy16(3, gIntroScene2PikasSprites_Gfx, (void*) 0x06000000, 0x3C00);
     DmaCopy16(3, gIntroScene2Pikas_Pal, (void*) PLTT, 0x80);
     IntroScene2Pikas_InitVars();
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0xD];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[2].posY;
     EnableVBlankInterrupts();
     FlashWhiteTransitionIn();
     gIntroSceneIndex += 2;
@@ -710,17 +712,17 @@ void IntroScene2Pikas_14_LoadPinkYellowBackground(void)
 
 void IntroScene2Pikas_InitVars(void)
 {
-    gIntroBGParams[0x0] = 0x1C;
-    gIntroBGParams[0x1] = 0xFF2C;
-    gIntroBGParams[0x2] = 0;
-    gIntroBGParams[0x3] = 0xE;
-    gIntroBGParams[0x6] = 0xFF5C;
-    gIntroBGParams[0x7] = 0xFF08;
-    gIntroBGParams[0x8] = 0;
-    gIntroBGParams[0x9] = 0x10;
-    gIntroBGParams[0xC] = 0;
-    gIntroBGParams[0xD] = 0;
-    gIntroBGParams[0x10] = 0;
+    gIntroBGParams[0].posX = 0x1C;
+    gIntroBGParams[0].posY = 0xFF2C;
+    gIntroBGParams[0].velX = 0;
+    gIntroBGParams[0].velY = 0xE;
+    gIntroBGParams[1].posX = 0xFF5C;
+    gIntroBGParams[1].posY = 0xFF08;
+    gIntroBGParams[1].velX = 0;
+    gIntroBGParams[1].velY = 0x10;
+    gIntroBGParams[2].posX = 0;
+    gIntroBGParams[2].posY = 0;
+    gIntroBGParams[2].animFrame = 0;
     gIntroFrameCounter = 0;
     gIntroAnimStep = 0;
 }
@@ -731,31 +733,31 @@ void nullsub_6(void)
 
 void IntroScene2Pikas_16_PikaPairRising(void)
 {
-    gIntroBGParams[0x1] += gIntroBGParams[0x3];
-    gIntroBGParams[0x7] += gIntroBGParams[0x9];
-    gIntroBGParams[0xC]--;
-    gIntroBGParams[0xD]--;
-    gIntroBGParams[0x0]--;
-    gIntroBGParams[0x6]++;
+    gIntroBGParams[0].posY += gIntroBGParams[0].velY;
+    gIntroBGParams[1].posY += gIntroBGParams[1].velY;
+    gIntroBGParams[2].posX--;
+    gIntroBGParams[2].posY--;
+    gIntroBGParams[0].posX--;
+    gIntroBGParams[1].posX++;
 
     if (gIntroFrameCounter % 2 == 0)
     {
-        gIntroBGParams[0x3]--;
-        gIntroBGParams[0x9]--;
+        gIntroBGParams[0].velY--;
+        gIntroBGParams[1].velY--;
     }
 
     // TODO same as IntroScene2Pikas_14_LoadPinkYellowBackground - possible inline function?
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0xD];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[2].posY;
 
-    gIntroBGParams[0x10]++;
-    if (gIntroBGParams[0x10] > 0x27)
+    gIntroBGParams[2].animFrame++;
+    if (gIntroBGParams[2].animFrame > 0x27)
     {
-        gIntroBGParams[0x10] = 0;
+        gIntroBGParams[2].animFrame = 0;
         gIntroSceneIndex += 2;
     }
 }
@@ -766,27 +768,27 @@ void nullsub_7(void)
 
 void IntroScene2Pikas_18_FlashWhite(void)
 {
-    gIntroBGParams[0x1]++;
-    gIntroBGParams[0x7]++;
-    gIntroBGParams[0xC]--;
-    gIntroBGParams[0xD]--;
-    gIntroBGParams[0x0]--;
-    gIntroBGParams[0x6]++;
+    gIntroBGParams[0].posY++;
+    gIntroBGParams[1].posY++;
+    gIntroBGParams[2].posX--;
+    gIntroBGParams[2].posY--;
+    gIntroBGParams[0].posX--;
+    gIntroBGParams[1].posX++;
 
     // TODO same as IntroScene2Pikas_16_PikaPairRising - possible inline function?
     if (gIntroFrameCounter % 2 == 0)
     {
-        gIntroBGParams[0x3]--;
-        gIntroBGParams[0x9]--;
+        gIntroBGParams[0].velY--;
+        gIntroBGParams[1].velY--;
     }
 
     // TODO same as IntroScene2Pikas_14_LoadPinkYellowBackground - possible inline function?
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0xD];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[2].posY;
 
     FlashWhiteTransitionOut();
     DisableDisplayInterrupts();
@@ -826,14 +828,14 @@ void IntroScene3Treecko_20_LoadTreeckoFlipperBall(void)
     IntroScene3Treecko_InitVars();
     IntroScene3Treecko_RenderPokeball();
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
     EnableVBlankInterrupts();
     FlashWhiteTransitionIn();
@@ -842,19 +844,19 @@ void IntroScene3Treecko_20_LoadTreeckoFlipperBall(void)
 
 void IntroScene3Treecko_InitVars(void)
 {
-    gIntroBGParams[0x0] = 0x2C;
-    gIntroBGParams[0x1] = 0xFF8E;
+    gIntroBGParams[0].posX = 0x2C;
+    gIntroBGParams[0].posY = 0xFF8E;
 
     gIntroSpriteEntities[0].posX = 0xFFD4;
     gIntroSpriteEntities[0].posY = 0x72;
 
-    gIntroBGParams[0x6] = 0xFFCE;
-    gIntroBGParams[0x7] = 0x1E;
-    gIntroBGParams[0xC] = 0;
-    gIntroBGParams[0xD] = 0;
-    gIntroBGParams[0x10] = 0;
-    gIntroBGParams[0x12] = 0;
-    gIntroBGParams[0x13] = 0;
+    gIntroBGParams[1].posX = 0xFFCE;
+    gIntroBGParams[1].posY = 0x1E;
+    gIntroBGParams[2].posX = 0;
+    gIntroBGParams[2].posY = 0;
+    gIntroBGParams[2].animFrame = 0;
+    gIntroBGParams[3].posX = 0;
+    gIntroBGParams[3].posY = 0;
 
     gIntroFrameCounter = 0;
     gIntroAnimStep = 0;
@@ -862,40 +864,40 @@ void IntroScene3Treecko_InitVars(void)
 
 void IntroScene3Treecko_21_MoveTreeckoFlipperBallAndSplit(void)
 {
-    gIntroBGParams[0x0] -= 0x11;
-    gIntroBGParams[0x1] += 0xA;
+    gIntroBGParams[0].posX -= 0x11;
+    gIntroBGParams[0].posY += 0xA;
 
     gIntroSpriteEntities[0].posX += 0x11;
     gIntroSpriteEntities[0].posY -= 0xA;
 
-    gIntroBGParams[0xC] += 0x10;
-    gIntroBGParams[0x6] += 0x4;
-    gIntroBGParams[0x7] -= 0x8;
-    gIntroBGParams[0x10]++;
+    gIntroBGParams[2].posX += 0x10;
+    gIntroBGParams[1].posX += 0x4;
+    gIntroBGParams[1].posY -= 0x8;
+    gIntroBGParams[2].animFrame++;
 
-    if (gIntroBGParams[0x10] > 9)
+    if (gIntroBGParams[2].animFrame > 9)
     {
-        gIntroBGParams[0x10] = 0;
+        gIntroBGParams[2].animFrame = 0;
         gIntroSceneIndex++;
     }
 
     IntroScene3Treecko_RenderPokeball();
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
 }
 
 void IntroScene3Treecko_22_FlipperHitTextScroll(void)
 {
-    gIntroBGParams[0x12]--;
+    gIntroBGParams[3].posX--;
 
     if (gIntroFrameCounter % 2 == 0)
     {
-        gIntroBGParams[0x0]--;
-        gIntroBGParams[0x1]++;
+        gIntroBGParams[0].posX--;
+        gIntroBGParams[0].posY++;
         gIntroSpriteEntities[0].posX += 2;
         gIntroSpriteEntities[0].posY -= 2;
     }
@@ -906,33 +908,33 @@ void IntroScene3Treecko_22_FlipperHitTextScroll(void)
         DmaCopy16(3, (void *) gIntroPalSwapBuffer, 0x05000040, 0x20);
     }
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
     IntroScene3Treecko_RenderPokeball();
 
-    if (gIntroBGParams[0x10] == 2)
+    if (gIntroBGParams[2].animFrame == 2)
     {
         DmaCopy16(3, gBG0TilemapBuffer, (void*) 0x0600E000, 0x800);
-        gIntroBGParams[0x6] = 0;
-        gIntroBGParams[0x7] = 0;
-        gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-        gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
+        gIntroBGParams[1].posX = 0;
+        gIntroBGParams[1].posY = 0;
+        gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+        gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
     }
-    else if (gIntroBGParams[0x10] == 4)
+    else if (gIntroBGParams[2].animFrame == 4)
     {
         DmaCopy16(3, gIntroScene3Treecko_AltBG1TilemapBuffer, (void*) 0x0600E000, 0x800);
-        gIntroBGParams[0x6] = 0;
-        gIntroBGParams[0x7] = 0;
-        gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-        gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
+        gIntroBGParams[1].posX = 0;
+        gIntroBGParams[1].posY = 0;
+        gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+        gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
     }
 
-    gIntroBGParams[0x10]++;
-    if (gIntroBGParams[0x10] > 0x1D)
+    gIntroBGParams[2].animFrame++;
+    if (gIntroBGParams[2].animFrame > 0x1D)
     {
-        gIntroBGParams[0x10] = 0;
+        gIntroBGParams[2].animFrame = 0;
         gIntroSceneIndex += 2;
     }
 }
@@ -1004,12 +1006,12 @@ void IntroScene4PlussleMinun_26_LoadTealWhiteBackground(void)
     gMain.dispcntBackup = REG_DISPCNT;
 
     IntroScene4PlussleMinun_InitVars();
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0xD];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[2].posY;
 
     EnableVBlankInterrupts();
     FlashWhiteTransitionIn();
@@ -1018,17 +1020,17 @@ void IntroScene4PlussleMinun_26_LoadTealWhiteBackground(void)
 
 void IntroScene4PlussleMinun_InitVars(void)
 {
-    gIntroBGParams[0x0] = 0x1C;
-    gIntroBGParams[0x1] = 0xFF20;
-    gIntroBGParams[0x2] = 0;
-    gIntroBGParams[0x3] = 0xF;
-    gIntroBGParams[0x6] = 0xFF64;
-    gIntroBGParams[0x7] = 0xE0;
-    gIntroBGParams[0x8] = 0;
-    gIntroBGParams[0x9] = 0xFFF1;
-    gIntroBGParams[0xC] = 0;
-    gIntroBGParams[0xD] = 0;
-    gIntroBGParams[0x10] = 0;
+    gIntroBGParams[0].posX = 0x1C;
+    gIntroBGParams[0].posY = 0xFF20;
+    gIntroBGParams[0].velX = 0;
+    gIntroBGParams[0].velY = 0xF;
+    gIntroBGParams[1].posX = 0xFF64;
+    gIntroBGParams[1].posY = 0xE0;
+    gIntroBGParams[1].velX = 0;
+    gIntroBGParams[1].velY = 0xFFF1;
+    gIntroBGParams[2].posX = 0;
+    gIntroBGParams[2].posY = 0;
+    gIntroBGParams[2].animFrame = 0;
 
     gIntroFrameCounter = 0;
     gIntroAnimStep = 0;
@@ -1040,28 +1042,28 @@ void nullsub_9(void)
 
 void IntroScene4PlussleMinun_28_PlusleMinunTextScroll(void)
 {
-    gIntroBGParams[0x1] += gIntroBGParams[0x3];
-    gIntroBGParams[0x7] += gIntroBGParams[0x9];
-    gIntroBGParams[0xC]--;
-    gIntroBGParams[0x0]--;
-    gIntroBGParams[0x6]++;
+    gIntroBGParams[0].posY += gIntroBGParams[0].velY;
+    gIntroBGParams[1].posY += gIntroBGParams[1].velY;
+    gIntroBGParams[2].posX--;
+    gIntroBGParams[0].posX--;
+    gIntroBGParams[1].posX++;
 
     if (gIntroFrameCounter % 2 == 0)
     {
-        gIntroBGParams[0x3]--;
-        gIntroBGParams[0x9]++;
+        gIntroBGParams[0].velY--;
+        gIntroBGParams[1].velY++;
     }
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0xC];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
 
-    gIntroBGParams[0x10]++;
-    if (0x27 < gIntroBGParams[0x10])
+    gIntroBGParams[2].animFrame++;
+    if (0x27 < gIntroBGParams[2].animFrame)
     {
-        gIntroBGParams[0x10] = 0;
+        gIntroBGParams[2].animFrame = 0;
         gIntroSceneIndex += 2;
     }
 }
@@ -1073,23 +1075,23 @@ void nullsub_10(void)
 void IntroScene4PlussleMinun_30_FlashWhite(void)
 {
     // TODO Near duplicate of IntroScene4PlussleMinun_28_PlusleMinunTextScroll
-    gIntroBGParams[0x1] += gIntroBGParams[0x3];
-    gIntroBGParams[0x7] += gIntroBGParams[0x9];
-    gIntroBGParams[0xC]--;
-    gIntroBGParams[0x0]--;
-    gIntroBGParams[0x6]++;
+    gIntroBGParams[0].posY += gIntroBGParams[0].velY;
+    gIntroBGParams[1].posY += gIntroBGParams[1].velY;
+    gIntroBGParams[2].posX--;
+    gIntroBGParams[0].posX--;
+    gIntroBGParams[1].posX++;
 
     if (gIntroFrameCounter % 2 == 0)
     {
-        gIntroBGParams[0x3]--;
-        gIntroBGParams[0x9]++;
+        gIntroBGParams[0].velY--;
+        gIntroBGParams[1].velY++;
     }
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0xC];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
 
     FlashWhiteTransitionOut();
     DisableDisplayInterrupts();
@@ -1129,14 +1131,14 @@ void IntroScene5Mudkip_32_LoadMudkipBallScene(void)
     IntroScene5Mudkip_InitVars();
     IntroScene5Mudkip_RenderAllSprites();
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
     EnableVBlankInterrupts();
     FlashWhiteTransitionIn();
@@ -1152,22 +1154,22 @@ void IntroScene5Mudkip_InitVars(void)
     gIntroSpriteEntities[2].posX = 0x80;
     gIntroSpriteEntities[2].posY = 0x88;
 
-    gIntroBGParams[0x0] = 0xFF58;
-    gIntroBGParams[0x1] = 0xFF98;
-    gIntroBGParams[0x4] = 0;
-    gIntroBGParams[0x5] = 0;
-    gIntroBGParams[0x2] = 0;
+    gIntroBGParams[0].posX = 0xFF58;
+    gIntroBGParams[0].posY = 0xFF98;
+    gIntroBGParams[0].animFrame = 0;
+    gIntroBGParams[0].frameTimer = 0;
+    gIntroBGParams[0].velX = 0;
 
     CopyBgTilesRect(&gTextTilemapBuffer, (void *) 0x6002ee0, 8, 8);
 
-    gIntroBGParams[0x6] = 0xA5;
-    gIntroBGParams[0x7] = 0;
-    gIntroBGParams[0xA] = 0;
-    gIntroBGParams[0xC] = 0xA0;
-    gIntroBGParams[0xD] = 0;
-    gIntroBGParams[0x10] = 0;
-    gIntroBGParams[0x12] = 0;
-    gIntroBGParams[0x13] = 0;
+    gIntroBGParams[1].posX = 0xA5;
+    gIntroBGParams[1].posY = 0;
+    gIntroBGParams[1].animFrame = 0;
+    gIntroBGParams[2].posX = 0xA0;
+    gIntroBGParams[2].posY = 0;
+    gIntroBGParams[2].animFrame = 0;
+    gIntroBGParams[3].posX = 0;
+    gIntroBGParams[3].posY = 0;
 
     gIntroFrameCounter = 0;
     gIntroAnimStep = 0;
@@ -1182,48 +1184,48 @@ void IntroScene5Mudkip_33_MoveMudkipBallSplit(void)
     gIntroSpriteEntities[2].posX += 0x5;
     gIntroSpriteEntities[2].posY -= 0x3;
 
-    gIntroBGParams[0x6] -= 0x10;
-    gIntroBGParams[0x7]++;
-    gIntroBGParams[0xC] -= 0x10;
-    gIntroBGParams[0x0] += gIntroBGParams[0x2];
-    gIntroBGParams[0x1] += 0x9;
-    gIntroBGParams[0x2]++;
-    gIntroBGParams[0x5]++;
+    gIntroBGParams[1].posX -= 0x10;
+    gIntroBGParams[1].posY++;
+    gIntroBGParams[2].posX -= 0x10;
+    gIntroBGParams[0].posX += gIntroBGParams[0].velX;
+    gIntroBGParams[0].posY += 0x9;
+    gIntroBGParams[0].velX++;
+    gIntroBGParams[0].frameTimer++;
 
-    if (gIntroBGParams[0x5] > gIntroScene5Mudkip_BGAnimTiming[gIntroBGParams[4]].y)
+    if (gIntroBGParams[0].frameTimer > gIntroScene5Mudkip_BGAnimTiming[gIntroBGParams[0].animFrame].y)
     {
-        gIntroBGParams[4]++;
-        CopyBgTilesRect(&gTempGfxBuffer[gIntroScene5Mudkip_TileOffsets[gIntroBGParams[4]]], (void *) 0x6002EE0, 8, 8);
+        gIntroBGParams[0].animFrame++;
+        CopyBgTilesRect(&gTempGfxBuffer[gIntroScene5Mudkip_TileOffsets[gIntroBGParams[0].animFrame]], (void *) 0x6002EE0, 8, 8);
     }
 
     IntroScene5Mudkip_RenderAllSprites();
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
 
-    if (++gIntroBGParams[0x10] > 9)
+    if (++gIntroBGParams[2].animFrame > 9)
     {
-        gIntroBGParams[0x10] = 0;
+        gIntroBGParams[2].animFrame = 0;
         gIntroSceneIndex++;
     }
 }
 
 void IntroScene5Mudkip_34_MoveMudkipBallTextScroll(void)
 {
-    if (++gIntroBGParams[0x5] > gIntroScene5Mudkip_BGAnimTiming[gIntroBGParams[0x4]].y)
+    if (++gIntroBGParams[0].frameTimer > gIntroScene5Mudkip_BGAnimTiming[gIntroBGParams[0].animFrame].y)
     {
-        if (gIntroBGParams[0x04] < 7)
+        if (gIntroBGParams[0].animFrame < 7)
         {
-            gIntroBGParams[0x4]++;
-            CopyBgTilesRect(&gTempGfxBuffer[gIntroScene5Mudkip_TileOffsets[gIntroBGParams[0x4]]], (void *) 0x6002EE0, 8, 8);
+            gIntroBGParams[0].animFrame++;
+            CopyBgTilesRect(&gTempGfxBuffer[gIntroScene5Mudkip_TileOffsets[gIntroBGParams[0].animFrame]], (void *) 0x6002EE0, 8, 8);
         }
     }
 
     IntroScene5Mudkip_RenderAllSprites();
-    gIntroBGParams[0x12]++;
+    gIntroBGParams[3].posX++;
     if (gIntroFrameCounter % 2 == 0)
     {
         gIntroSpriteEntities[1].posX--;
@@ -1232,18 +1234,18 @@ void IntroScene5Mudkip_34_MoveMudkipBallTextScroll(void)
         gIntroSpriteEntities[0].posY += 2;
     }
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
-    if (++gIntroBGParams[0x16] > 29)
+    if (++gIntroBGParams[3].animFrame > 29)
     {
-        gIntroBGParams[0x16] = 0;
+        gIntroBGParams[3].animFrame = 0;
         gIntroSceneIndex += 2;
     }
 }
@@ -1359,14 +1361,14 @@ void IntroScene6Chinchou_38_LoadChinchou(void)
 
     IntroScene6Chinchou_InitVars();
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
     EnableVBlankInterrupts();
     FlashWhiteTransitionIn();
@@ -1377,19 +1379,19 @@ void IntroScene6Chinchou_InitVars(void)
 {
     int i;
 
-    gIntroBGParams[0x6] = 0x1E;
-    gIntroBGParams[0x7] = 0xFF6A;
-    gIntroBGParams[0xA] = 0x1;
-    gIntroBGParams[0x0] = 0xFFFE;
-    gIntroBGParams[0x1] = 0xFFFB;
-    gIntroBGParams[0x2] = 0x0;
-    gIntroBGParams[0x3] = 0x8;
-    gIntroBGParams[0xC] = 0xFF90;
-    gIntroBGParams[0xD] = 0xFFD4;
-    gIntroBGParams[0xE] = 0x8;
-    gIntroBGParams[0xF] = 0x0;
-    gIntroBGParams[0x12] = 0x0;
-    gIntroBGParams[0x13] = 0x0;
+    gIntroBGParams[1].posX = 0x1E;
+    gIntroBGParams[1].posY = 0xFF6A;
+    gIntroBGParams[1].animFrame = 0x1;
+    gIntroBGParams[0].posX = 0xFFFE;
+    gIntroBGParams[0].posY = 0xFFFB;
+    gIntroBGParams[0].velX = 0x0;
+    gIntroBGParams[0].velY = 0x8;
+    gIntroBGParams[2].posX = 0xFF90;
+    gIntroBGParams[2].posY = 0xFFD4;
+    gIntroBGParams[2].velX = 0x8;
+    gIntroBGParams[2].velY = 0x0;
+    gIntroBGParams[3].posX = 0x0;
+    gIntroBGParams[3].posY = 0x0;
 
     gIntroSpriteEntities[0].posX = 0x32;
     gIntroSpriteEntities[0].posY = 0x3C;
@@ -1419,31 +1421,31 @@ void IntroScene6Chinchou_InitVars(void)
 
 void IntroScene6Chinchou_39_MoveChinchouBallAndStars(void)
 {
-    gIntroBGParams[0x6] += gIntroScene6Chinchou_ScrollVelocity[gIntroScene6ChinchouVelocityIndex].velocityX;
-    gIntroBGParams[0x7] += gIntroScene6Chinchou_ScrollVelocity[gIntroScene6ChinchouVelocityIndex].velocityY;
+    gIntroBGParams[1].posX += gIntroScene6Chinchou_ScrollVelocity[gIntroScene6ChinchouVelocityIndex].velocityX;
+    gIntroBGParams[1].posY += gIntroScene6Chinchou_ScrollVelocity[gIntroScene6ChinchouVelocityIndex].velocityY;
 
     if (gIntroScene6Chinchou_BounceFlags[gIntroFrameCounter] & 0x10)
     {
-        gIntroBGParams[0x1] += gIntroBGParams[0x3];
-        gIntroBGParams[0x3] -= 2;
-        if (gIntroBGParams[0x3] <= -0xA)
-            gIntroBGParams[0x3] = 0x8;
+        gIntroBGParams[0].posY += gIntroBGParams[0].velY;
+        gIntroBGParams[0].velY -= 2;
+        if (gIntroBGParams[0].velY <= -0xA)
+            gIntroBGParams[0].velY = 0x8;
     }
 
     if (gIntroScene6Chinchou_BounceFlags[gIntroFrameCounter] & 0x1)
     {
-        gIntroBGParams[0xC] += gIntroBGParams[0xE];
-        gIntroBGParams[0xE] -= 2;
-        if (gIntroBGParams[0xE] <= -10)
-            gIntroBGParams[0xE] = 8;
+        gIntroBGParams[2].posX += gIntroBGParams[2].velX;
+        gIntroBGParams[2].velX -= 2;
+        if (gIntroBGParams[2].velX <= -10)
+            gIntroBGParams[2].velX = 8;
     }
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
 
     if (gIntroFrameCounter == gIntroScene6Chinchou_EntityMovement[gIntroScene6ChinchouEntitySpawnIndex].frameDuration)
     {
@@ -1464,26 +1466,26 @@ void IntroScene6Chinchou_40_MoveChinchouAndStars(void)
 {
     if (gIntroScene6Chinchou_BounceFlags[gIntroFrameCounter] & 0x10)
     {
-        gIntroBGParams[0x1] += gIntroBGParams[0x3];
-        gIntroBGParams[0x3] -= 2;
-        if (gIntroBGParams[0x3] <= -10)
-            gIntroBGParams[0x3] = 8;
+        gIntroBGParams[0].posY += gIntroBGParams[0].velY;
+        gIntroBGParams[0].velY -= 2;
+        if (gIntroBGParams[0].velY <= -10)
+            gIntroBGParams[0].velY = 8;
     }
 
     if (gIntroScene6Chinchou_BounceFlags[gIntroFrameCounter] & 0x1)
     {
-        gIntroBGParams[0xC] += gIntroBGParams[0xE];
-        gIntroBGParams[0xE] -= 2;
-        if (gIntroBGParams[0xE] <= -10)
-            gIntroBGParams[0xE] = 8;
+        gIntroBGParams[2].posX += gIntroBGParams[2].velX;
+        gIntroBGParams[2].velX -= 2;
+        if (gIntroBGParams[2].velX <= -10)
+            gIntroBGParams[2].velX = 8;
     }
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
 
     IntroScene6Chinchou_RenderStarSprites();
     if (++gIntroAnimStep > 16)
@@ -1591,14 +1593,14 @@ void IntroScene7Parade_43_LoadPinkYellowBackground(void)
     gMain.dispcntBackup = REG_DISPCNT;
     IntroScene7Parade_InitVars();
 
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
     EnableVBlankInterrupts();
     FlashWhiteTransitionIn();
@@ -1607,17 +1609,17 @@ void IntroScene7Parade_43_LoadPinkYellowBackground(void)
 
 void IntroScene7Parade_InitVars(void)
 {
-    gIntroBGParams[0x0] = 0xFEFC;
-    gIntroBGParams[0x1] = 0x46;
-    gIntroBGParams[0x3] = 0;
-    gIntroBGParams[0x6] = 0xFEE8;
-    gIntroBGParams[0x7] = 0x5A;
-    gIntroBGParams[0x9] = 0;
-    gIntroBGParams[0xC] = 0xFF10;
-    gIntroBGParams[0xD] = 0xFFCE;
-    gIntroBGParams[0xF] = 0xFFFD;
-    gIntroBGParams[0x12] = 0;
-    gIntroBGParams[0x13] = 0;
+    gIntroBGParams[0].posX = 0xFEFC;
+    gIntroBGParams[0].posY = 0x46;
+    gIntroBGParams[0].velY = 0;
+    gIntroBGParams[1].posX = 0xFEE8;
+    gIntroBGParams[1].posY = 0x5A;
+    gIntroBGParams[1].velY = 0;
+    gIntroBGParams[2].posX = 0xFF10;
+    gIntroBGParams[2].posY = 0xFFCE;
+    gIntroBGParams[2].velY = 0xFFFD;
+    gIntroBGParams[3].posX = 0;
+    gIntroBGParams[3].posY = 0;
 
     gIntroSpriteEntities[0].posX = 0x128;
     gIntroSpriteEntities[0].posY = 0x2C;
@@ -1632,21 +1634,21 @@ void IntroScene7Parade_InitVars(void)
 
 void IntroScene7Parade_44_MoveMakuhita(void)
 {
-    gIntroBGParams[0xC] += 2;
-    gIntroBGParams[0xD] -= gIntroBGParams[0xF];
+    gIntroBGParams[2].posX += 2;
+    gIntroBGParams[2].posY -= gIntroBGParams[2].velY;
     if (gIntroFrameCounter % 3 == 0)
     {
-        if (++gIntroBGParams[0xF] > 4)
-            gIntroBGParams[0xF] = -3;
+        if (++gIntroBGParams[2].velY > 4)
+            gIntroBGParams[2].velY = -3;
     }
 
-    gIntroBGParams[0x12]--;
-    gIntroBGParams[0x13]--;
+    gIntroBGParams[3].posX--;
+    gIntroBGParams[3].posY--;
 
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
     if (gIntroFrameCounter > 32)
         gIntroSceneIndex++;
@@ -1654,32 +1656,32 @@ void IntroScene7Parade_44_MoveMakuhita(void)
 
 void IntroScene7Parade_45_MoveMakuhitaAndSpoink(void)
 {
-    gIntroBGParams[0xC] += 2;
-    gIntroBGParams[0xD] -= gIntroBGParams[0xF];
+    gIntroBGParams[2].posX += 2;
+    gIntroBGParams[2].posY -= gIntroBGParams[2].velY;
     if (gIntroFrameCounter % 3 == 0)
     {
-        if (++gIntroBGParams[0xF] > 4)
-            gIntroBGParams[0xF] = -3;
+        if (++gIntroBGParams[2].velY > 4)
+            gIntroBGParams[2].velY = -3;
     }
 
-    gIntroBGParams[0x6] += 3;
-    gIntroBGParams[0x7] -= gIntroBGParams[0x9];
+    gIntroBGParams[1].posX += 3;
+    gIntroBGParams[1].posY -= gIntroBGParams[1].velY;
     if (gIntroFrameCounter % 5 == 0)
     {
-        if (++gIntroBGParams[0x9] > 7)
-            gIntroBGParams[0x9] = -6;
+        if (++gIntroBGParams[1].velY > 7)
+            gIntroBGParams[1].velY = -6;
     }
 
-    gIntroBGParams[0x12]--;
-    gIntroBGParams[0x13]--;
+    gIntroBGParams[3].posX--;
+    gIntroBGParams[3].posY--;
 
     // TODO rearrangement like this suggests one inline function per pair of statements, but see IntroScene1_00_LoadTitleLettersAndTorchicScene
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
     if (gIntroFrameCounter > 80)
         gIntroSceneIndex++;
@@ -1687,41 +1689,41 @@ void IntroScene7Parade_45_MoveMakuhitaAndSpoink(void)
 
 void IntroScene7Parade_46_MoveMakuhitaPelipperAndSpoink(void)
 {
-    gIntroBGParams[0xC] += 2;
-    gIntroBGParams[0xD] -= gIntroBGParams[0xF];
+    gIntroBGParams[2].posX += 2;
+    gIntroBGParams[2].posY -= gIntroBGParams[2].velY;
     if (gIntroFrameCounter % 3 == 0)
     {
-        if (++gIntroBGParams[0xF] > 4)
-            gIntroBGParams[0xF] = -3;
+        if (++gIntroBGParams[2].velY > 4)
+            gIntroBGParams[2].velY = -3;
     }
 
-    gIntroBGParams[0x6] += 3;
-    gIntroBGParams[0x7] -= gIntroBGParams[0x9];
+    gIntroBGParams[1].posX += 3;
+    gIntroBGParams[1].posY -= gIntroBGParams[1].velY;
     if (gIntroFrameCounter % 5 == 0)
     {
-        if (++gIntroBGParams[0x9] > 7)
-            gIntroBGParams[0x9] = -6;
+        if (++gIntroBGParams[1].velY > 7)
+            gIntroBGParams[1].velY = -6;
     }
 
-    gIntroBGParams[0x0] += 4;
-    gIntroBGParams[0x1] -= gIntroBGParams[0x3];
+    gIntroBGParams[0].posX += 4;
+    gIntroBGParams[0].posY -= gIntroBGParams[0].velY;
     if (gIntroFrameCounter % 4 == 0)
     {
-        if (++gIntroBGParams[0x3] > 7)
-            gIntroBGParams[0x3] = -3;
+        if (++gIntroBGParams[0].velY > 7)
+            gIntroBGParams[0].velY = -3;
     }
 
-    gIntroBGParams[0x12]--;
-    gIntroBGParams[0x13]--;
+    gIntroBGParams[3].posX--;
+    gIntroBGParams[3].posY--;
 
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
     if (gIntroFrameCounter > 100)
         gIntroSceneIndex++;
@@ -1729,28 +1731,28 @@ void IntroScene7Parade_46_MoveMakuhitaPelipperAndSpoink(void)
 
 void IntroScene7Parade_47_MoveMakuhitaPelipperWailmerAndSpoink(void)
 {
-    gIntroBGParams[0xC] += 2;
-    gIntroBGParams[0xD] -= gIntroBGParams[0xF];
+    gIntroBGParams[2].posX += 2;
+    gIntroBGParams[2].posY -= gIntroBGParams[2].velY;
     if (gIntroFrameCounter % 3 == 0)
     {
-        if (++gIntroBGParams[0xF] > 4)
-            gIntroBGParams[0xF] = -3;
+        if (++gIntroBGParams[2].velY > 4)
+            gIntroBGParams[2].velY = -3;
     }
 
-    gIntroBGParams[0x6] += 3;
-    gIntroBGParams[0x7] -= gIntroBGParams[0x9];
+    gIntroBGParams[1].posX += 3;
+    gIntroBGParams[1].posY -= gIntroBGParams[1].velY;
     if (gIntroFrameCounter % 5 == 0)
     {
-        if (++gIntroBGParams[0x9] > 7)
-            gIntroBGParams[0x9] = -6;
+        if (++gIntroBGParams[1].velY > 7)
+            gIntroBGParams[1].velY = -6;
     }
 
-    gIntroBGParams[0x0] += 4;
-    gIntroBGParams[0x1] -= gIntroBGParams[0x3];
+    gIntroBGParams[0].posX += 4;
+    gIntroBGParams[0].posY -= gIntroBGParams[0].velY;
     if (gIntroFrameCounter % 4 == 0)
     {
-        if (++gIntroBGParams[0x3] > 7)
-            gIntroBGParams[0x3] = -3;
+        if (++gIntroBGParams[0].velY > 7)
+            gIntroBGParams[0].velY = -3;
     }
 
     gIntroSpriteEntities[0].posX -= 2;
@@ -1761,17 +1763,17 @@ void IntroScene7Parade_47_MoveMakuhitaPelipperWailmerAndSpoink(void)
             gIntroSpriteEntities[0].velY = -4;
     }
 
-    gIntroBGParams[0x12]--;
-    gIntroBGParams[0x13]--;
+    gIntroBGParams[3].posX--;
+    gIntroBGParams[3].posY--;
 
-    gMain.bgOffsets[2].xOffset = gIntroBGParams[0xC];
-    gMain.bgOffsets[2].yOffset = gIntroBGParams[0xD];
-    gMain.bgOffsets[1].xOffset = gIntroBGParams[0x6];
-    gMain.bgOffsets[1].yOffset = gIntroBGParams[0x7];
-    gMain.bgOffsets[0].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[0].yOffset = gIntroBGParams[0x1];
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[2].xOffset = gIntroBGParams[2].posX;
+    gMain.bgOffsets[2].yOffset = gIntroBGParams[2].posY;
+    gMain.bgOffsets[1].xOffset = gIntroBGParams[1].posX;
+    gMain.bgOffsets[1].yOffset = gIntroBGParams[1].posY;
+    gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
     IntroScene7Parade_RenderWailmer();
     if (gIntroFrameCounter > 192)
@@ -1782,8 +1784,8 @@ void IntroScene7Parade_48_MoveWailmerShake(void)
 {
     int remainder;
 
-    gIntroBGParams[0x12]--;
-    gIntroBGParams[0x13]--;
+    gIntroBGParams[3].posX--;
+    gIntroBGParams[3].posY--;
 
     remainder = gIntroFrameCounter % 6;
     if (remainder == 0)
@@ -1797,8 +1799,8 @@ void IntroScene7Parade_48_MoveWailmerShake(void)
         gIntroWailmerScaleY--;
     }
 
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x12];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x13];
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[3].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[3].posY;
 
     IntroScene7Parade_RenderWailmer();
     if (gIntroFrameCounter > 222)
@@ -2153,8 +2155,8 @@ void IntroScene9BallFlight_59_LoadSkySpeedOrbs(void)
 
     gMain.dispcntBackup = REG_DISPCNT;
     IntroScene9BallFlight_InitVars();
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x0];
-    gMain.bgOffsets[3].yOffset = gIntroBGParams[0x1];
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[0].posX;
+    gMain.bgOffsets[3].yOffset = gIntroBGParams[0].posY;
     EnableVBlankInterrupts();
     FlashWhiteTransitionIn();
     gIntroSceneIndex++;
@@ -2162,8 +2164,8 @@ void IntroScene9BallFlight_59_LoadSkySpeedOrbs(void)
 
 void IntroScene9BallFlight_InitVars(void)
 {
-    gIntroBGParams[0x0] = 0;
-    gIntroBGParams[0x1] = 0;
+    gIntroBGParams[0].posX = 0;
+    gIntroBGParams[0].posY = 0;
 
     gIntroSpriteEntities[0].posX = 0xF0;
     gIntroSpriteEntities[0].posY = 0x1E;
@@ -2186,7 +2188,7 @@ void IntroScene9BallFlight_InitVars(void)
 
 void IntroScene9BallFlight_60_MoveBallAndSky(void)
 {
-    gIntroBGParams[0x0] -= 0x24;
+    gIntroBGParams[0].posX -= 0x24;
     gIntroSpriteEntities[0].posX -= gIntroScene9BallFlight_BallDecelTable[gIntroAnimStep];
     gIntroAnimStep++;
 
@@ -2196,7 +2198,7 @@ void IntroScene9BallFlight_60_MoveBallAndSky(void)
             gIntroSpriteEntities[0].animFrame = 1;
     }
 
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x0];
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[0].posX;
     IntroScene9BallFlight_RenderBallAndCloud();
 
     if (gIntroFrameCounter > 40)
@@ -2217,8 +2219,8 @@ void IntroScene9BallFlight_60_MoveBallAndSky(void)
 
 void IntroScene9BallFlight_61_MoveSky(void)
 {
-    gIntroBGParams[0] -= 0x24;
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0];
+    gIntroBGParams[0].posX -= 0x24;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[0].posX;
     if (gIntroFrameCounter > 120)
         gIntroSceneIndex++;
 }
@@ -2247,8 +2249,8 @@ void IntroScene9BallFlight_62_MoveBallSkyFadeWhite(void)
         BrightenPalette(gIntroScene9BallFlight_Pal, (void *) PLTT, 0x40, gIntroBGWhiteFlash);
     }
 
-    gIntroBGParams[0x0] -= 0x24;
-    gMain.bgOffsets[3].xOffset = gIntroBGParams[0x0];
+    gIntroBGParams[0].posX -= 0x24;
+    gMain.bgOffsets[3].xOffset = gIntroBGParams[0].posX;
     IntroScene9BallFlight_RenderBallAndCloud();
 
     if (gIntroFrameCounter > 152)

@@ -351,7 +351,16 @@ extern const struct HighScoreNamePosition gHighScoreNamePositions[][8];
 
 extern struct Vector16 gIntroScene1Torchic_BGAnimTiming[0x8];
 extern s16 gIntroScene1Torchic_TileOffsets[0x8];
-extern s16 gIntroBGParams[];
+
+struct UnkStruct_0202ADA0{
+    s16 posX;
+    s16 posY;
+    s16 velX;
+    s16 velY;
+    s16 animFrame;
+    s16 frameTimer;
+};
+extern struct UnkStruct_0202ADA0 gIntroBGParams[6];
 extern s32 gIntroPalFadeLevel;
 extern const struct SpriteSet *const gIntroScene1Torchic_SpriteSets[];
 extern struct Vector16 gIntroScene1Torchic_ScaleOffsets[0x4];
