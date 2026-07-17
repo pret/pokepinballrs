@@ -2042,11 +2042,13 @@ gIntroScene6Chinchou_SpriteSets:: @ 0x086A7A78
     .4byte gUnknown_086A7A6E
     .4byte gUnknown_086A7A48
     .4byte gUnknown_086A7A6E
+
     .4byte gUnknown_086A7A3E
     .4byte gUnknown_086A7A64
     .4byte gUnknown_086A7A3E
     .4byte gUnknown_086A7A64
     .4byte gUnknown_086A7A3E
+
     .4byte gUnknown_086A7A64
     .4byte gUnknown_086A7A2C
     .4byte gUnknown_086A7A52
@@ -4431,51 +4433,51 @@ gKecleonPlantAnimIndices:: @ 0x086AEA68
 
 gKecleonSpriteYSortData:: @ 0x086AEA70
     @ 14 sets: {Pointer, 2 u8 vals, 0x2 spacer}
-    .4byte gUnknown_086BA394
+    .4byte gKecleonBushBottomRightBottomSpriteSet
     .byte 131,0
     .space 0x2
 
-    .4byte gUnknown_086BA382
+    .4byte gKecleonBushBottomRightMiddleSpriteSet
     .byte 124,1
     .space 0x2
 
-    .4byte gUnknown_086BA35E
+    .4byte gKecleonBushBottomLeftBottomSpriteSet
     .byte 123,2
     .space 0x2
 
-    .4byte gUnknown_086BA370
+    .4byte gKecleonBushBottomRightTopSpriteSet
     .byte 116,3
     .space 0x2
 
-    .4byte gUnknown_086BA34C
+    .4byte gKecleonBushBottomLeftMiddleSpriteSet
     .byte 115,4
     .space 0x2
 
-    .4byte gUnknown_086BA33A
+    .4byte gKecleonBushBottomLeftTopSpriteSet
     .byte 112,5
     .space 0x2
 
-    .4byte gUnknown_086BA29C
+    .4byte gKecleonSignSpriteSet
     .byte 109,6
     .space 0x2
 
-    .4byte gUnknown_086BA2BE
+    .4byte gKecleonRockSpriteSet
     .byte 76,7
     .space 0x2
 
-    .4byte gUnknown_086BA328
+    .4byte gKecleonBushTopRightBottomSpriteSet
     .byte 40,8
     .space 0x2
 
-    .4byte gUnknown_086BA304
+    .4byte gKecleonBushTopLeftBottomSpriteSet
     .byte 40,9
     .space 0x2
 
-    .4byte gUnknown_086BA316
+    .4byte gKecleonBushTopRightTopSpriteSet
     .byte 30,10
     .space 0x2
 
-    .4byte gUnknown_086BA2F2
+    .4byte gKecleonBushTopLeftTopSpriteSet
     .byte 30,11
     .space 0x2
 
@@ -4483,7 +4485,7 @@ gKecleonSpriteYSortData:: @ 0x086AEA70
     .byte 0,12
     .space 0x2
 
-    .4byte gUnknown_086BA276
+    .4byte gKecleonEntitySpriteSet
     .byte 0,13
     .space 0x2
 
@@ -12298,7 +12300,7 @@ gDusclopsBoardPhasingFxSpriteSet:: @ 0x086BA264
     packed_sprite_oam x=0x0, y=0x40, objMode=ST_OAM_OBJ_BLEND, mosaic=0x1, spriteSize=SPRITE_SIZE_64x32, tileNum=0x115, priority=0x3, paletteNum=0x0
 .2byte 0
 
-gUnknown_086BA276:: @ 0x086BA276
+gKecleonEntitySpriteSet:: @ 0x086BA276
 .2byte 2
     packed_sprite_oam x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
 .2byte 0
@@ -12315,7 +12317,7 @@ gKecleonScopeItemSpriteSet:: @ 0x086BA292
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x65, priority=0x2, paletteNum=0xc
 .2byte 0
 
-gUnknown_086BA29C:: @ 0x086BA29C
+gKecleonSignSpriteSet:: @ 0x086BA29C
 .2byte 4
     packed_sprite_oam x=-0x48, y=-0x2E, spriteSize=SPRITE_SIZE_16x16, tileNum=0x69, priority=0x2, paletteNum=0x7
 .2byte 0
@@ -12326,7 +12328,7 @@ gUnknown_086BA29C:: @ 0x086BA29C
     packed_sprite_oam x=-0x38, y=-0x1E, spriteSize=SPRITE_SIZE_8x8, tileNum=0x71, priority=0x2, paletteNum=0x7
 .2byte 0
 
-gUnknown_086BA2BE:: @ 0x086BA2BE
+gKecleonRockSpriteSet:: @ 0x086BA2BE
 .2byte 1
     packed_sprite_oam x=0x30, y=-0x48, spriteSize=SPRITE_SIZE_32x32, tileNum=0x72, priority=0x2, paletteNum=0x6
 .2byte 0
@@ -12344,70 +12346,70 @@ gKecleonTreeLeavesSpriteSet:: @ 0x086BA2C8
     packed_sprite_oam x=0x0, y=-0x60, spriteSize=SPRITE_SIZE_32x8, tileNum=0xce, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA2F2:: @ 0x086BA2F2
+gKecleonBushTopLeftTopSpriteSet:: @ 0x086BA2F2
 .2byte 2
     packed_sprite_oam x=-0x58, y=-0x70, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
     packed_sprite_oam x=-0x58, y=-0x60, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA304:: @ 0x086BA304
+gKecleonBushTopLeftBottomSpriteSet:: @ 0x086BA304
 .2byte 2
     packed_sprite_oam x=-0x68, y=-0x68, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
     packed_sprite_oam x=-0x68, y=-0x58, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA316:: @ 0x086BA316
+gKecleonBushTopRightTopSpriteSet:: @ 0x086BA316
 .2byte 2
     packed_sprite_oam x=0x38, y=-0x70, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
     packed_sprite_oam x=0x38, y=-0x60, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA328:: @ 0x086BA328
+gKecleonBushTopRightBottomSpriteSet:: @ 0x086BA328
 .2byte 2
     packed_sprite_oam x=0x48, y=-0x68, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
     packed_sprite_oam x=0x48, y=-0x58, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA33A:: @ 0x086BA33A
+gKecleonBushBottomLeftTopSpriteSet:: @ 0x086BA33A
 .2byte 2
     packed_sprite_oam x=-0x68, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
     packed_sprite_oam x=-0x68, y=-0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA34C:: @ 0x086BA34C
+gKecleonBushBottomLeftMiddleSpriteSet:: @ 0x086BA34C
 .2byte 2
     packed_sprite_oam x=-0x48, y=-0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
     packed_sprite_oam x=-0x48, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA35E:: @ 0x086BA35E
+gKecleonBushBottomLeftBottomSpriteSet:: @ 0x086BA35E
 .2byte 2
     packed_sprite_oam x=-0x58, y=-0x18, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
     packed_sprite_oam x=-0x58, y=-0x8, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA370:: @ 0x086BA370
+gKecleonBushBottomRightTopSpriteSet:: @ 0x086BA370
 .2byte 2
     packed_sprite_oam x=0x40, y=-0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
     packed_sprite_oam x=0x40, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA382:: @ 0x086BA382
+gKecleonBushBottomRightMiddleSpriteSet:: @ 0x086BA382
 .2byte 2
     packed_sprite_oam x=0x38, y=-0x18, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
     packed_sprite_oam x=0x38, y=-0x8, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 .2byte 0
 
-gUnknown_086BA394:: @ 0x086BA394
+gKecleonBushBottomRightBottomSpriteSet:: @ 0x086BA394 --Grass Bush bottom right
 .2byte 2
     packed_sprite_oam x=0x30, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
 .2byte 0
@@ -13637,20 +13639,20 @@ gKecleonBoardSpriteSets:: @ 0x086BB420
     .4byte gKecleonTreeLeavesSpriteSet
     .4byte gBonusBoardBallRespawnFxSpriteSet
     .4byte gKecleonDustFxSpriteSet
-    .4byte gUnknown_086BA394
-    .4byte gUnknown_086BA382
-    .4byte gUnknown_086BA35E
-    .4byte gUnknown_086BA370
-    .4byte gUnknown_086BA34C
-    .4byte gUnknown_086BA33A
-    .4byte gUnknown_086BA29C
-    .4byte gUnknown_086BA2BE
-    .4byte gUnknown_086BA328
-    .4byte gUnknown_086BA304
-    .4byte gUnknown_086BA316
-    .4byte gUnknown_086BA2F2
+    .4byte gKecleonBushBottomRightBottomSpriteSet
+    .4byte gKecleonBushBottomRightMiddleSpriteSet
+    .4byte gKecleonBushBottomLeftBottomSpriteSet
+    .4byte gKecleonBushBottomRightTopSpriteSet
+    .4byte gKecleonBushBottomLeftMiddleSpriteSet
+    .4byte gKecleonBushBottomLeftTopSpriteSet
+    .4byte gKecleonSignSpriteSet
+    .4byte gKecleonRockSpriteSet
+    .4byte gKecleonBushTopRightBottomSpriteSet
+    .4byte gKecleonBushTopLeftBottomSpriteSet
+    .4byte gKecleonBushTopRightTopSpriteSet
+    .4byte gKecleonBushTopLeftTopSpriteSet
     .4byte gBonusBoardBallSpriteSet
-    .4byte gUnknown_086BA276
+    .4byte gKecleonEntitySpriteSet
     .4byte gKecleonScopeItemSpriteSet
     .4byte gKecleonFlowerByTreeSpriteSet
     .4byte gKecleonFlowerPairLeftSpriteSet

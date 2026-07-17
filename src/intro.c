@@ -51,7 +51,7 @@ extern s16 gIntroScene1Torchic_TileOffsets[0x8];
 
 extern u16 gIntroTileBuffer[];
 
-extern struct UnkStruct_0202ADA0 gIntroBGParams[6];
+extern struct UnkStruct_0202ADA0 gIntroBGParams[4];
 
 extern s16 gIntroFrameCounter;
 extern u8 gIntroBlendSrc;
@@ -226,9 +226,10 @@ void IntroScene1_00_LoadTitleLettersAndTorchicScene(void)
     REG_DISPCNT |= (DISPCNT_BG3_ON);
 
     DmaCopy16(3, gIntroScene1Torchic_BG0Tilemap, 0x0600d000, BG_SCREEN_SIZE);
-    DmaCopy16(3, gIntroScene1Torchic_BG1Tilemap, 0x0600d800, 0x1000);
-    DmaCopy16(3, gIntroScene1Torchic_BG2Tilemap, 0x0600e800 , 0x1000);
+    DmaCopy16(3, gIntroScene1Torchic_BG1Tilemap, 0x0600d800, 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene1Torchic_BG2Tilemap, 0x0600e800 , 2*BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene1Torchic_BG3Tilemap, 0x0600f800 , BG_SCREEN_SIZE);
+
     DmaCopy16(3, gIntroScene1TorchicText_Gfx, BG_CHAR_ADDR(0), 0x5800);
     DmaCopy16(3, gIntroScene1TorchicBall_Gfx, gIntroTileBuffer, 0x6800);
     DarkenPalette(gIntroScene1TorchicSprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, 0x20);

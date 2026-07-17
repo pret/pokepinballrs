@@ -360,7 +360,7 @@ struct UnkStruct_0202ADA0{
     s16 animFrame;
     s16 frameTimer;
 };
-extern struct UnkStruct_0202ADA0 gIntroBGParams[6];
+extern struct UnkStruct_0202ADA0 gIntroBGParams[4];
 extern s32 gIntroPalFadeLevel;
 extern const struct SpriteSet *const gIntroScene1Torchic_SpriteSets[];
 extern struct Vector16 gIntroScene1Torchic_ScaleOffsets[0x4];
@@ -429,7 +429,7 @@ extern u8 gIntroScene9BallFlightall_Gfx[];
 
 extern u16 gCommonAndEggWeights[];
 extern u16 gMain_saveData_pokedexFlags_90[10];
-extern u16 Sio32ConnectionData[4]; 
+extern u16 Sio32ConnectionData[4];
 extern u32 gSio32SendData;
 
 /*
