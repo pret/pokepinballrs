@@ -1925,7 +1925,7 @@ gTitleRevealJingle:: @ 0x086A77A8
     .2byte 0,0,0,0,0,0,0,0,0,0
     .2byte 0,0,0,0,0,0,0,0,0,0
 
-gUnknown_086A7938:: @ 0x086A7938
+gIntroTreeckoShadowSpriteSet:: @ 0x086A7938
 .2byte 4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, priority=0x0, paletteNum=0x6
 .2byte 0
@@ -1937,10 +1937,10 @@ gUnknown_086A7938:: @ 0x086A7938
 .2byte 0,0
 
 gIntroScene3Treecko_SpriteSets:: @ 0x086A795C
-    .4byte gUnknown_086A7938
+    .4byte gIntroTreeckoShadowSpriteSet
     .space 0x4
 
-gUnknown_086A7964:: @ 0x086A7964
+gIntroMudkipShadowSpriteSet:: @ 0x086A7964
 .2byte 4
     packed_sprite_oam x=0x0, y=0x18, spriteSize=SPRITE_SIZE_32x64, tileNum=0x0, priority=0x0, paletteNum=0x8
 .2byte 0
@@ -1951,7 +1951,7 @@ gUnknown_086A7964:: @ 0x086A7964
     packed_sprite_oam x=0x0, y=0x58, spriteSize=SPRITE_SIZE_32x8, tileNum=0x14, priority=0x0, paletteNum=0x8
 .2byte 0
 
-gUnknown_086A7986:: @ 0x086A7986
+gIntroMudkipSpriteSet:: @ 0x086A7986
 .2byte 4
     packed_sprite_oam x=0x0, y=0x18, spriteSize=SPRITE_SIZE_32x64, tileNum=0x0, priority=0x0, paletteNum=0x1
 .2byte 0
@@ -1962,7 +1962,7 @@ gUnknown_086A7986:: @ 0x086A7986
     packed_sprite_oam x=0x0, y=0x58, spriteSize=SPRITE_SIZE_32x8, tileNum=0x14, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086A79A8:: @ 0x086A79A8
+gIntroMudkipSceneExplosionSpriteSet:: @ 0x086A79A8
 .2byte 8
     packed_sprite_oam x=-0x58, y=-0x68, spriteSize=SPRITE_SIZE_64x64, tileNum=0x18, priority=0x0, paletteNum=0x0
 .2byte 0
@@ -1983,9 +1983,9 @@ gUnknown_086A79A8:: @ 0x086A79A8
 
 
 gIntroScene5Mudkip_SpriteSets:: @ 0x086A79EC
-    .4byte gUnknown_086A7986
-    .4byte gUnknown_086A7964
-    .4byte gUnknown_086A79A8
+    .4byte gIntroMudkipSpriteSet
+    .4byte gIntroMudkipShadowSpriteSet
+    .4byte gIntroMudkipSceneExplosionSpriteSet
     .4byte 0
 
 gIntroScene5Mudkip_BGAnimTiming:: @ 0x086A79FC
@@ -2001,61 +2001,61 @@ gIntroScene5Mudkip_BGAnimTiming:: @ 0x086A79FC
 gIntroScene5Mudkip_TileOffsets:: @ 0x086A7A1C
     .2byte 0x1100, 0x1080, 0x1000, 0x0180, 0x100, 0x80, 0, 0
 
-gUnknown_086A7A2C:: @ 0x086A7A2C
+gIntroChinchouStarLargeSpriteSet:: @ 0x086A7A2C
 .2byte 2
     packed_sprite_oam x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x32, tileNum=0x0, priority=0x0, paletteNum=0x1
 .2byte 0
     packed_sprite_oam x=-0x20, y=0x0, spriteSize=SPRITE_SIZE_64x32, tileNum=0x8, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086A7A3E:: @ 0x086A7A3E
+gIntroChinchouStarMediumSpriteSet:: @ 0x086A7A3E
 .2byte 1
     packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x10, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086A7A48:: @ 0x086A7A48
+gIntroChinchouStarSmallSpriteSet:: @ 0x086A7A48
 .2byte 1
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086A7A52:: @ 0x086A7A52
+gIntroChinchouStarFlippedLargeSpriteSet:: @ 0x086A7A52
 .2byte 2
     packed_sprite_oam x=-0x20, y=0x0, spriteSize=SPRITE_SIZE_64x32, vFlip=0x1,  tileNum=0x0, priority=0x0, paletteNum=0x1
 .2byte 0
     packed_sprite_oam x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x32, vFlip=0x1,  tileNum=0x8, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086A7A64:: @ 0x086A7A64
+gIntroChinchouStarFlippedMediumSpriteSet:: @ 0x086A7A64
 .2byte 1
     packed_sprite_oam x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,  tileNum=0x10, priority=0x0, paletteNum=0x1
 .2byte 0
 
-gUnknown_086A7A6E:: @ 0x086A7A6E
+gIntroChinchouStarFlippedSmallSpriteSet:: @ 0x086A7A6E
 .2byte 1
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,  tileNum=0x14, priority=0x0, paletteNum=0x1
 .2byte 0
 
 gIntroScene6Chinchou_SpriteSets:: @ 0x086A7A78
-	.4byte gUnknown_086A7A48
-    .4byte gUnknown_086A7A6E
-    .4byte gUnknown_086A7A48
-    .4byte gUnknown_086A7A6E
-    .4byte gUnknown_086A7A48
-    .4byte gUnknown_086A7A6E
+	.4byte gIntroChinchouStarSmallSpriteSet
+    .4byte gIntroChinchouStarFlippedSmallSpriteSet
+    .4byte gIntroChinchouStarSmallSpriteSet
+    .4byte gIntroChinchouStarFlippedSmallSpriteSet
+    .4byte gIntroChinchouStarSmallSpriteSet
+    .4byte gIntroChinchouStarFlippedSmallSpriteSet
 
-    .4byte gUnknown_086A7A3E
-    .4byte gUnknown_086A7A64
-    .4byte gUnknown_086A7A3E
-    .4byte gUnknown_086A7A64
-    .4byte gUnknown_086A7A3E
+    .4byte gIntroChinchouStarMediumSpriteSet
+    .4byte gIntroChinchouStarFlippedMediumSpriteSet
+    .4byte gIntroChinchouStarMediumSpriteSet
+    .4byte gIntroChinchouStarFlippedMediumSpriteSet
+    .4byte gIntroChinchouStarMediumSpriteSet
+    .4byte gIntroChinchouStarFlippedMediumSpriteSet
 
-    .4byte gUnknown_086A7A64
-    .4byte gUnknown_086A7A2C
-    .4byte gUnknown_086A7A52
-    .4byte gUnknown_086A7A2C
-    .4byte gUnknown_086A7A52
-    .4byte gUnknown_086A7A2C
-    .4byte gUnknown_086A7A52
+    .4byte gIntroChinchouStarLargeSpriteSet
+    .4byte gIntroChinchouStarFlippedLargeSpriteSet
+    .4byte gIntroChinchouStarLargeSpriteSet
+    .4byte gIntroChinchouStarFlippedLargeSpriteSet
+    .4byte gIntroChinchouStarLargeSpriteSet
+    .4byte gIntroChinchouStarFlippedLargeSpriteSet
 
 gIntroScene6Chinchou_ScrollVelocity:: @ 0x086A7AC0
 	.incbin "baserom.gba", 0x6A7AC0, 0x24
@@ -2066,7 +2066,7 @@ gIntroScene6Chinchou_BounceFlags:: @ 0x086A7AE4
 gIntroScene6Chinchou_EntityMovement:: @ 0x086A7B34
 	.incbin "baserom.gba", 0x6A7B34, 0x1C
 
-gUnknown_086A7B50:: @ 0x086A7B50
+gIntroParadeWailmerSpriteSet:: @ 0x086A7B50
 .2byte 4
     packed_sprite_oam x=-0x40, y=-0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, priority=0x0, paletteNum=0x1
 .2byte 0
@@ -2078,7 +2078,7 @@ gUnknown_086A7B50:: @ 0x086A7B50
 .2byte 0,0
 
 gIntroScene7Parade_SpriteSets:: @ 0x086A7B74
-	.4byte gUnknown_086A7B50
+	.4byte gIntroParadeWailmerSpriteSet
     .4byte 0
 
 gIntroScene7Parade_WailmerQuadOffsets:: @ 0x086A7B7C
@@ -2088,28 +2088,61 @@ gIntroScene7Parade_WailmerQuadOffsets:: @ 0x086A7B7C
     .2byte 0, 0
 
 gUnknown_086A7B8C:: @ 0x086A7B8C
-	.incbin "baserom.gba", 0x6A7B8C, 0x22
+.2byte 4
+    packed_sprite_oam x=-0x18, y=-0x18, spriteSize=SPRITE_SIZE_32x32, tileNum=0x98, paletteNum=0x9
+.2byte 0
+    packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x9C, paletteNum=0x9
+.2byte 0
+    packed_sprite_oam x=-0x18, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x118, paletteNum=0x9
+.2byte 0
+    packed_sprite_oam x=0x8, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x11C, paletteNum=0x9
+.2byte 0
 
 gUnknown_086A7BAE:: @ 0x086A7BAE
-	.incbin "baserom.gba", 0x6A7BAE, 0xA
+.2byte 1
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1C, paletteNum=0x9
 
 gUnknown_086A7BB8:: @ 0x086A7BB8
-	.incbin "baserom.gba", 0x6A7BB8, 0xA
+.2byte 1
+    packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x39, paletteNum=0x9
+.2byte 0
 
 gUnknown_086A7BC2:: @ 0x086A7BC2
-	.incbin "baserom.gba", 0x6A7BC2, 0x22
+.2byte 4
+    packed_sprite_oam x=-0x18, y=-0x8, vFlip=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x98, paletteNum=0x9
+.2byte 0
+    packed_sprite_oam x=0x8, y=-0x8, vFlip=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x9C, paletteNum=0x9
+.2byte 0
+    packed_sprite_oam x=-0x18, y=-0x18, vFlip=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x118, paletteNum=0x9
+.2byte 0
+    packed_sprite_oam x=0x8, y=-0x18, vFlip=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x11C, paletteNum=0x9
+.2byte 0
 
 gUnknown_086A7BE4:: @ 0x086A7BE4
-	.incbin "baserom.gba", 0x6A7BE4, 0xA
+.2byte 1
+    packed_sprite_oam x=-0x10, y=-0x10, vFlip=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1C, paletteNum=0x9
+.2byte 0
 
 gUnknown_086A7BEE:: @ 0x086A7BEE
-	.incbin "baserom.gba", 0x6A7BEE, 0xA
+.2byte 1
+    packed_sprite_oam x=-0x8, y=-0x8, vFlip=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x39, paletteNum=0x9
+.2byte 0
 
 gUnknown_086A7BF8:: @ 0x086A7BF8
-	.incbin "baserom.gba", 0x6A7BF8, 0x22
+.2byte 4
+    packed_sprite_oam x=-0x40, y=-0x30, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x1
+.2byte 0
+    packed_sprite_oam x=0x0, y=-0x30, spriteSize=SPRITE_SIZE_64x64, tileNum=0x8, paletteNum=0x1
+.2byte 0
+    packed_sprite_oam x=-0x40, y=0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x100, paletteNum=0x1
+.2byte 0
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x108, paletteNum=0x1
+.2byte 0
 
 gUnknown_086A7C1A:: @ 0x086A7C1A
-	.incbin "baserom.gba", 0x6A7C1A, 0xA
+.2byte 1
+    packed_sprite_oam x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x10, paletteNum=0x8
+.2byte 0
 
 gIntroScene8WailmerLaunch_SpriteSets:: @ 0x086A7C24
     .4byte gUnknown_086A7C1A

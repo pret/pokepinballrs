@@ -1,0 +1,182 @@
+#!/usr/bin/env python3
+import struct
+import sys
+from typing import Dict, Iterator, Tuple
+
+ENTRY_SIZE = 6
+ARRAY_PACK_1_ENTRY_SIZE = 8
+
+SPRITE_SIZES = {
+    (0, 0): "SPRITE_SIZE_8x8",
+    (0, 1): "SPRITE_SIZE_16x16",
+    (0, 2): "SPRITE_SIZE_32x32",
+    (0, 3): "SPRITE_SIZE_64x64",
+    (1, 0): "SPRITE_SIZE_16x8",
+    (1, 1): "SPRITE_SIZE_32x8",
+    (1, 2): "SPRITE_SIZE_32x16",
+    (1, 3): "SPRITE_SIZE_64x32",
+    (2, 0): "SPRITE_SIZE_8x16",
+    (2, 1): "SPRITE_SIZE_8x32",
+    (2, 2): "SPRITE_SIZE_16x32",
+    (2, 3): "SPRITE_SIZE_32x64",
+}
+
+DEFAULTED_FIELDS = (
+    "affineMode",
+    "objMode",
+    "mosaic",
+    "bpp",
+    "matrixNum",
+    "hFlip",
+    "vFlip",
+    "priority",
+)
+
+
+def signed(value: int, bits: int) -> int:
+    sign_bit = 1 << (bits - 1)
+    mask = (1 << bits) - 1
+    value &= mask
+    return value - (1 << bits) if value & sign_bit else value
+
+
+def parse_oam_entry(data: bytes) -> Dict[str, int]:
+    if len(data) != ENTRY_SIZE:
+        raise ValueError(f"OAM entry must be {ENTRY_SIZE} bytes, got {len(data)}")
+
+    word, half = struct.unpack("<IH", data)
+    return {
+        "y": signed((word >> 0) & 0xFF, 8),
+        "affineMode": (word >> 8) & 0x3,
+        "objMode": (word >> 10) & 0x3,
+        "mosaic": (word >> 12) & 0x1,
+        "bpp": (word >> 13) & 0x1,
+        "shape": (word >> 14) & 0x3,
+        "x": signed((word >> 16) & 0x1FF, 9),
+        "matrixNum": (word >> 25) & 0x7,
+        "hFlip": (word >> 28) & 0x1,
+        "vFlip": (word >> 29) & 0x1,
+        "size": (word >> 30) & 0x3,
+        "tileNum": (half >> 0) & 0x3FF,
+        "priority": (half >> 10) & 0x3,
+        "paletteNum": (half >> 12) & 0xF,
+    }
+
+
+def hex_or_signed(value: int) -> str:
+    return f"-0x{-value:X}" if value < 0 else f"0x{value:X}"
+
+
+def format_oam_entry(entry: Dict[str, int], packVariant: str) -> str:
+    parts = [
+        f"x={hex_or_signed(entry['x'])}",
+        f"y={hex_or_signed(entry['y'])}",
+    ]
+
+    for field in DEFAULTED_FIELDS:
+        if entry[field] != 0:
+            parts.append(f"{field}=0x{entry[field]:X}")
+
+    sprite_size = SPRITE_SIZES.get((entry["shape"], entry["size"]))
+    if sprite_size is not None:
+        parts.append(f"spriteSize={sprite_size}")
+    else:
+        # Shape 3 is prohibited/reserved on GBA OAM, so retain the raw fields
+        # rather than inventing a SpriteSize constant.
+        parts.append(f"shape=0x{entry['shape']:X}")
+        parts.append(f"size=0x{entry['size']:X}")
+
+    parts.append(f"tileNum=0x{entry['tileNum']:X}")
+    parts.append(f"paletteNum=0x{entry['paletteNum']:X}")
+
+    return f"    {packVariant} " + ", ".join(parts)
+
+
+def iter_array_pack_0(data: bytes) -> Iterator[Tuple[int, bytes]]:
+    if len(data) % ENTRY_SIZE != 0:
+        raise ValueError(
+            f"array_pack 0 length must be a multiple of {ENTRY_SIZE}; got {len(data)}"
+        )
+    for pos in range(0, len(data), ENTRY_SIZE):
+        yield pos, data[pos : pos + ENTRY_SIZE]
+
+
+def dump_array_pack_0(data: bytes) -> None:
+    for _, raw_entry in iter_array_pack_0(data):
+        print(format_oam_entry(parse_oam_entry(raw_entry), "packed_sprite_oam"))
+
+
+def dump_array_pack_1(data: bytes) -> None:
+    pos = 0
+    cluster_index = 0
+
+    while pos < len(data):
+        cluster_index += 1
+        if pos + 2 > len(data):
+            raise ValueError(
+                f"cluster {cluster_index} at relative offset 0x{pos:X} has a truncated count"
+            )
+
+        count = struct.unpack_from("<H", data, pos)[0]
+        print(f"    .2byte {count}")
+        pos += 2
+
+        cluster_bytes = count * ARRAY_PACK_1_ENTRY_SIZE
+        if pos + cluster_bytes > len(data):
+            available = len(data) - pos
+            raise ValueError(
+                f"cluster {cluster_index} declares {count} entries "
+                f"({cluster_bytes} bytes), but only {available} bytes remain"
+            )
+
+        for _ in range(count):
+            raw_entry = data[pos : pos + ENTRY_SIZE]
+            print(format_oam_entry(parse_oam_entry(raw_entry), "packed_sprite_oaml"))
+            pos += ARRAY_PACK_1_ENTRY_SIZE  # skip the trailing two packed bytes
+        print("")
+
+
+def main() -> int:
+    if len(sys.argv) != 5:
+        print(f"Usage: {sys.argv[0]} <file> <offset> <length> <array_pack>")
+        return 1
+
+    filename = sys.argv[1]
+    try:
+        offset = int(sys.argv[2], 0)
+        length = int(sys.argv[3], 0)
+    except ValueError as exc:
+        print(f"Error: offset and length must be integers: {exc}", file=sys.stderr)
+        return 1
+
+    array_pack = sys.argv[4]
+    if array_pack not in {"0", "1"}:
+        print("Error: array_pack must be 0 or 1", file=sys.stderr)
+        return 1
+    if offset < 0 or length < 0:
+        print("Error: offset and length must be non-negative", file=sys.stderr)
+        return 1
+
+    try:
+        with open(filename, "rb") as source:
+            source.seek(offset)
+            data = source.read(length)
+
+        if len(data) != length:
+            raise ValueError(
+                f"requested {length} bytes at offset 0x{offset:X}, but read {len(data)}"
+            )
+
+        if array_pack == "0":
+            dump_array_pack_0(data)
+        else:
+            dump_array_pack_1(data)
+    except (OSError, ValueError, struct.error) as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return 1
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
