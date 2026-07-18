@@ -12708,7 +12708,29 @@ gGroudonFirePillarSpriteSet:: @ 0x086BA68C
     packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x11d, priority=0x1, paletteNum=0x5
 
 gGroudonEntitySpriteSet:: @ 0x086BA6CA
-	.incbin "baserom.gba", 0x6BA6Ca, 0x92
+.2byte 19 @ Only 17 items make sense... item 18 has abnormal format, 19 runs into the next addressed memory block (actually used that way)
+    packed_sprite_oaml x=0x1, y=0x11, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1D1, paletteNum=0xF
+    packed_sprite_oaml x=0x1, y=0x19, priority=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1D3, paletteNum=0xF
+    packed_sprite_oaml x=0x17, y=0x11, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1D1, paletteNum=0xF
+    packed_sprite_oaml x=0x17, y=0x19, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1D3, paletteNum=0xF
+    packed_sprite_oaml x=-0x3, y=0x21, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1B9, paletteNum=0xF
+    packed_sprite_oaml x=-0x3, y=0x29, priority=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1BB, paletteNum=0xF
+    packed_sprite_oaml x=0x1B, y=0x21, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1B9, paletteNum=0xF
+    packed_sprite_oaml x=0x1B, y=0x29, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1BB, paletteNum=0xF
+    packed_sprite_oaml x=0xC, y=-0x3, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19D, paletteNum=0xF
+    packed_sprite_oaml x=0x4, y=0x5, priority=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19F, paletteNum=0xF
+    packed_sprite_oaml x=0xC, y=0x15, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1A7, paletteNum=0xF
+    packed_sprite_oaml x=0x4, y=0xB, priority=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1A9, paletteNum=0xF
+    packed_sprite_oaml x=0x4, y=0x2B, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1B1, paletteNum=0xF
+    packed_sprite_oaml x=0x14, y=0xB, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1A9, paletteNum=0xF
+    packed_sprite_oaml x=0x14, y=0x2B, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1B1, paletteNum=0xF
+    packed_sprite_oaml x=0x0, y=0x0, priority=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19C, paletteNum=0x4
+    packed_sprite_oaml x=-0x64, y=0x0, matrixNum=0x2, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
+@ List ends early. See note above.
+
+.incbin "baserom.gba", 0x6BA754, 0x8
+
+@	.incbin "baserom.gba", 0x6BA6Ca, 0x92
 
 gRaquazaFlyingSparkleSpriteSet:: @ 0x086BA75C
 .2byte 1
@@ -13494,31 +13516,130 @@ gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup13_Gfx
 
 gOptionsSoundDigitSpriteSet:: @ 0x086BB770
-    .incbin "baserom.gba", 0x6BB770, 0x64
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x17, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1A, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1B, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1C, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1D, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1E, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1F, paletteNum=0x0
 
 gOptionsHandCursorSpriteSet:: @ 0x086BB7D4
-    .incbin "baserom.gba", 0x6BB7D4, 0x14
+.2byte 1
+    packed_sprite_oaml x=0x1, y=-0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=-0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1, paletteNum=0x0
+
 
 gOptionsSettingSelectionArrowSpriteSet:: @ 0x086BB7E8
-    .incbin "baserom.gba", 0x6BB7E8, 0x6E
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x3, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x6, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x8, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0xA, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0xE, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x12, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x13, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x15, paletteNum=0x0
+
 
 gOptionsButtonEditPressButtonTextSpriteSet:: @ 0x086BB856
-    .incbin "baserom.gba", 0x6BB856, 0x12
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x23, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x27, paletteNum=0x0
 
 gOptionsGbaButtonIconSpriteSet:: @ 0x086BB868
-    .incbin "baserom.gba", 0x6BB868, 0xA
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x0, paletteNum=0x0
 
 gOptionsSoundSelectionArrow0SpriteSet:: @ 0x086BB872
-    .incbin "baserom.gba", 0x6BB872, 0x12
+.2byte 2
+    packed_sprite_oaml x=-0x8, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x29, paletteNum=0x0
+    packed_sprite_oaml x=0x16, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x29, paletteNum=0x0
 
 gOptionsSoundSelectionArrow1SpriteSet:: @ 0x086BB884
-    .incbin "baserom.gba", 0x6BB884, 0x1C
+.2byte 2
+    packed_sprite_oaml x=-0x7, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x29, paletteNum=0x0
+    packed_sprite_oaml x=0x15, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x29, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2A, paletteNum=0x0
 
 gOptionsTorchicEntitySpriteSet:: @ 0x086BB8A0
-    .incbin "baserom.gba", 0x6BB8A0, 0x5A
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x40, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xC0, paletteNum=0x2
+
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x44, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xC4, paletteNum=0x2
+
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xC8, paletteNum=0x2
+
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x4C, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xCC, paletteNum=0x2
+
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x50, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xD0, paletteNum=0x2
 
 gOptionsTorchicNoteBubbleSpriteSet:: @ 0x086BB8FA
-    .incbin "baserom.gba", 0x6BB8FA, 0x16
+.2byte 1
+    packed_sprite_oaml x=-0x1, y=-0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x54, paletteNum=0x1
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x94, paletteNum=0x1
+
+.2byte 0
 
 gButtonInfoTable:: @ 0x086BB910
 	.2byte A_BUTTON, 0x4, 0x0, 0x8
