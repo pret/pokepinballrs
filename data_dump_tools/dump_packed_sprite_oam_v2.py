@@ -21,6 +21,24 @@ SPRITE_SIZES = {
     (2, 3): "SPRITE_SIZE_32x64",
 }
 
+AFFINE_MODES = {
+    0: "ST_OAM_AFFINE_OFF",
+    1: "ST_OAM_AFFINE_NORMAL",
+    2: "ST_OAM_AFFINE_ERASE",
+    3: "ST_OAM_AFFINE_DOUBLE",
+}
+
+OBJ_MODES = {
+    0: "ST_OAM_OBJ_NORMAL",
+    1: "ST_OAM_OBJ_BLEND",
+    2: "ST_OAM_OBJ_WINDOW",
+}
+
+FIELD_CONSTANTS = {
+    "affineMode": AFFINE_MODES,
+    "objMode": OBJ_MODES,
+}
+
 DEFAULTED_FIELDS = (
     "affineMode",
     "objMode",
@@ -74,8 +92,19 @@ def format_oam_entry(entry: Dict[str, int], packVariant: str) -> str:
     ]
 
     for field in DEFAULTED_FIELDS:
-        if entry[field] != 0:
-            parts.append(f"{field}=0x{entry[field]:X}")
+        value = entry[field]
+
+        if value == 0:
+            continue
+
+        constants = FIELD_CONSTANTS.get(field)
+        formatted_value = (
+            constants.get(value, f"0x{value:X}")
+            if constants is not None
+            else f"0x{value:X}"
+        )
+
+        parts.append(f"{field}={formatted_value}")
 
     sprite_size = SPRITE_SIZES.get((entry["shape"], entry["size"]))
     if sprite_size is not None:
@@ -118,7 +147,7 @@ def dump_array_pack_1(data: bytes) -> None:
             )
 
         count = struct.unpack_from("<H", data, pos)[0]
-        print(f"    .2byte {count}")
+        print(f".2byte {count}")
         pos += 2
 
         cluster_bytes = count * ARRAY_PACK_1_ENTRY_SIZE
@@ -131,8 +160,16 @@ def dump_array_pack_1(data: bytes) -> None:
 
         for _ in range(count):
             raw_entry = data[pos : pos + ENTRY_SIZE]
-            print(format_oam_entry(parse_oam_entry(raw_entry), "packed_sprite_oaml"))
-            pos += ARRAY_PACK_1_ENTRY_SIZE  # skip the trailing two packed bytes
+            trailing_value = struct.unpack_from("<H", data, pos + ENTRY_SIZE)[0]
+            entry = parse_oam_entry(raw_entry)
+
+            if trailing_value == 0:
+                print(format_oam_entry(entry, "packed_sprite_oaml"))
+            else:
+                print(format_oam_entry(entry, "packed_sprite_oaml") + f", unkFlag=0x{trailing_value:X}")
+                # print(f"    .2byte 0x{trailing_value:X}")
+
+            pos += ARRAY_PACK_1_ENTRY_SIZE
         print("")
 
 

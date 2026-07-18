@@ -15,9 +15,9 @@
     .endm
 
 @ Variant of packed_sprite_oam that includes extra padding (l for "List")
-    .macro packed_sprite_oaml x, y, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=-1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=-1, tileNum, priority=0x0, paletteNum, spriteSize=
+    .macro packed_sprite_oaml x, y, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=-1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=-1, tileNum, priority=0x0, paletteNum, spriteSize=, unkFlag=0x0
         packed_sprite_oam x=\x, y=\y, affineMode=\affineMode, objMode=\objMode, mosaic=\mosaic, bpp=\bpp, shape=\shape, matrixNum=\matrixNum, hFlip=\hFlip, vFlip=\vFlip, size=\size, tileNum=\tileNum, priority=\priority, paletteNum=\paletteNum, spriteSize=\spriteSize
-        .2byte 0
+        .2byte \unkFlag
     .endm
 
 
