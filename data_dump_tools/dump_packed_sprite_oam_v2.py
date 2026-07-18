@@ -5,6 +5,7 @@ from typing import Dict, Iterator, Tuple
 
 ENTRY_SIZE = 6
 ARRAY_PACK_1_ENTRY_SIZE = 8
+ARRAY_PACK_2_ENTRY_SIZE = ENTRY_SIZE
 
 SPRITE_SIZES = {
     (0, 0): "SPRITE_SIZE_8x8",
@@ -136,6 +137,10 @@ def dump_array_pack_0(data: bytes) -> None:
 
 
 def dump_array_pack_1(data: bytes) -> None:
+    dump_counted_array(data, ARRAY_PACK_1_ENTRY_SIZE, "packed_sprite_oaml")
+
+
+def dump_counted_array(data: bytes, entry_size: int, pack_variant: str) -> None:
     pos = 0
     cluster_index = 0
 
@@ -150,7 +155,7 @@ def dump_array_pack_1(data: bytes) -> None:
         print(f".2byte {count}")
         pos += 2
 
-        cluster_bytes = count * ARRAY_PACK_1_ENTRY_SIZE
+        cluster_bytes = count * entry_size
         if pos + cluster_bytes > len(data):
             available = len(data) - pos
             raise ValueError(
@@ -160,54 +165,73 @@ def dump_array_pack_1(data: bytes) -> None:
 
         for _ in range(count):
             raw_entry = data[pos : pos + ENTRY_SIZE]
-            trailing_value = struct.unpack_from("<H", data, pos + ENTRY_SIZE)[0]
-            entry = parse_oam_entry(raw_entry)
+            line = format_oam_entry(parse_oam_entry(raw_entry), pack_variant)
 
-            if trailing_value == 0:
-                print(format_oam_entry(entry, "packed_sprite_oaml"))
-            else:
-                print(format_oam_entry(entry, "packed_sprite_oaml") + f", unkFlag=0x{trailing_value:X}")
-                # print(f"    .2byte 0x{trailing_value:X}")
+            if entry_size > ENTRY_SIZE:
+                trailing_value = struct.unpack_from("<H", data, pos + ENTRY_SIZE)[0]
+                if trailing_value != 0:
+                    line += f", unkFlag=0x{trailing_value:X}"
 
-            pos += ARRAY_PACK_1_ENTRY_SIZE
+            print(line)
+            pos += entry_size
+
         print("")
 
 
+def dump_array_pack_2(data: bytes) -> None:
+    dump_counted_array(data, ARRAY_PACK_2_ENTRY_SIZE, "packed_sprite_oam")
+
+
 def main() -> int:
-    if len(sys.argv) != 5:
-        print(f"Usage: {sys.argv[0]} <file> <offset> <length> <array_pack>")
+    if len(sys.argv) not in {4, 5}:
+        print(
+            f"Usage: {sys.argv[0]} <file> <offset> [length] <array_pack>"
+        )
         return 1
 
     filename = sys.argv[1]
     try:
         offset = int(sys.argv[2], 0)
-        length = int(sys.argv[3], 0)
+        if len(sys.argv) == 5:
+            length = int(sys.argv[3], 0)
+            array_pack = sys.argv[4]
+        else:
+            length = None
+            array_pack = sys.argv[3]
     except ValueError as exc:
         print(f"Error: offset and length must be integers: {exc}", file=sys.stderr)
         return 1
 
-    array_pack = sys.argv[4]
-    if array_pack not in {"0", "1"}:
-        print("Error: array_pack must be 0 or 1", file=sys.stderr)
+    if array_pack not in {"0", "1", "2"}:
+        print("Error: array_pack must be 0, 1, or 2", file=sys.stderr)
         return 1
-    if offset < 0 or length < 0:
+    if offset < 0 or (length is not None and length < 0):
         print("Error: offset and length must be non-negative", file=sys.stderr)
         return 1
 
     try:
         with open(filename, "rb") as source:
-            source.seek(offset)
-            data = source.read(length)
+            source.seek(0, 2)
+            file_size = source.tell()
+            if offset > file_size:
+                raise ValueError(
+                    f"offset 0x{offset:X} is beyond end of file (0x{file_size:X})"
+                )
 
-        if len(data) != length:
+            source.seek(offset)
+            data = source.read() if length is None else source.read(length)
+
+        if length is not None and len(data) != length:
             raise ValueError(
                 f"requested {length} bytes at offset 0x{offset:X}, but read {len(data)}"
             )
 
         if array_pack == "0":
             dump_array_pack_0(data)
-        else:
+        elif array_pack == "1":
             dump_array_pack_1(data)
+        else:
+            dump_array_pack_2(data)
     except (OSError, ValueError, struct.error) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
