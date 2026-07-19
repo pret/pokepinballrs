@@ -12,7 +12,7 @@ extern const u8 gSapphireTravelPaint_Gfx[];
 extern const u8 gSapphirePainterPalette[];
 extern const s16 gTravelEventAnimData[][3];
 extern const s16 gAreaPortraitIndexes[];
-extern const s16 gAreaRouletteTable[][7];
+extern const s16 gAreaRouletteTable[][AREA_TABLE_SLOT_COUNT];
 extern u16 gTravelEventSpritesheetOam[][18];
 extern const s16 gCatchTile_RevealFinalTimings[];
 extern const u16 gCatchTile_BurstRevealOamFramesets1[22][12];

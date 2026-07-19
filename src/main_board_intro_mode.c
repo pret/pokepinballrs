@@ -4,7 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 
-extern const s16 gAreaRouletteTable[][7];
+extern const s16 gAreaRouletteTable[][AREA_TABLE_SLOT_COUNT];
 extern const s16 gAreaPortraitIndexes[];
 extern const u16 gAreaRouletteOamFramesets[18][27];
 extern const u8 gTravelPortraitPalette[];
@@ -22,10 +22,10 @@ void InitBoardIntroMode(void)
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->creatureOamPriority = 3;
     gCurrentPinballGame->areaVisitCount = 0;
-    gCurrentPinballGame->areaRouletteSlotIndex = (Random() + gMain.systemFrameCount) % 6;
+    gCurrentPinballGame->areaRouletteSlotIndex = (Random() + gMain.systemFrameCount) % AREA_ROULETTE_SLOT_COUNT;
     gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];
     gCurrentPinballGame->areaRoulettePortraitIndex[1] = gAreaPortraitIndexes[gCurrentPinballGame->area];
-    gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][(gCurrentPinballGame->areaRouletteSlotIndex + 1) % 6];
+    gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][(gCurrentPinballGame->areaRouletteSlotIndex + 1) % AREA_ROULETTE_SLOT_COUNT];
     gCurrentPinballGame->areaRoulettePortraitIndex[0] = gAreaPortraitIndexes[gCurrentPinballGame->area];
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_MAIN_SLOT);
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_ALT_SLOT);
@@ -152,7 +152,7 @@ void UpdateBoardIntroMode(void)
                     if (gCurrentPinballGame->rouletteSpinSpeed < 24)
                     {
                         gCurrentPinballGame->rouletteSpinSpeed = 24;
-                        if (gCurrentPinballGame->areaRouletteSlotIndex == 6)
+                        if (gCurrentPinballGame->areaRouletteSlotIndex == AREA_BONUS_RUIN_SLOT_IX)
                             gCurrentPinballGame->rouletteSpinSpeed = 0;
                     }
                 }
@@ -200,15 +200,15 @@ void UpdateBoardIntroMode(void)
         {
             if (gMain.eReaderBonuses[EREADER_RUIN_AREA_CARD])
             {
-                gCurrentPinballGame->areaRouletteSlotIndex = (gCurrentPinballGame->areaRouletteSlotIndex + 1) % 7;
+                gCurrentPinballGame->areaRouletteSlotIndex = (gCurrentPinballGame->areaRouletteSlotIndex + 1) % AREA_TABLE_SLOT_COUNT;
                 gCurrentPinballGame->areaRouletteNextSlot = 0;
                 gCurrentPinballGame->areaRouletteFarSlot = 1;
             }
             else
             {
-                gCurrentPinballGame->areaRouletteSlotIndex = (gCurrentPinballGame->areaRouletteSlotIndex + 1) % 6;
-                gCurrentPinballGame->areaRouletteNextSlot = (gCurrentPinballGame->areaRouletteSlotIndex + 1) % 6;
-                gCurrentPinballGame->areaRouletteFarSlot = (gCurrentPinballGame->areaRouletteSlotIndex + 2) % 6;
+                gCurrentPinballGame->areaRouletteSlotIndex = (gCurrentPinballGame->areaRouletteSlotIndex + 1) % AREA_ROULETTE_SLOT_COUNT;
+                gCurrentPinballGame->areaRouletteNextSlot = (gCurrentPinballGame->areaRouletteSlotIndex + 1) % AREA_ROULETTE_SLOT_COUNT;
+                gCurrentPinballGame->areaRouletteFarSlot = (gCurrentPinballGame->areaRouletteSlotIndex + 2) % AREA_ROULETTE_SLOT_COUNT;
             }
 
             gCurrentPinballGame->area = gAreaRouletteTable[gMain.selectedField][gCurrentPinballGame->areaRouletteSlotIndex];

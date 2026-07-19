@@ -4442,7 +4442,22 @@ gCapturePalette:: @ 0x086ACF80
 	.incbin "baserom.gba", 0x6ACF80, 0x20
 
 gEvoItemPositions:: @ 0x086ACFA0
-	.incbin "baserom.gba", 0x6ACFA0, 0x40
+    .2byte 52, 151
+    .2byte 86, 83
+    .2byte 89, 202
+    .2byte 132, 186
+    .2byte 113, 248
+    .2byte 184, 220
+    .2byte 14, 140
+    .2byte 185, 161
+    .2byte 93, 83
+    .2byte 113, 248
+    .2byte 142, 186
+    .2byte 167, 202
+    .2byte 66, 197
+    .2byte 109, 146
+    .2byte 48, 58
+    .2byte 200, 192
 
 gCaughtTextChars:: @ 0x086ACFE0
 	.2byte 'W','A','S',' ','C','A','U','G','H','T';

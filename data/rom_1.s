@@ -994,7 +994,9 @@ gDefaultTimerPalette:: @ 0x081C0064
 	.incbin "baserom.gba", 0x1C0064, 0x80
 
 gLocationPalettes:: @ 0x081C00E4
-	.incbin "baserom.gba", 0x1C00E4, 0x200
+	.incbin "graphics/area_portraits/ruby_forest.gbapal"
+	.incbin "baserom.gba", 0x1C0104, 0x1E0
+	@.incbin "baserom.gba", 0x1C00E4, 0x200
 
 gPortraitAnimPalettes:: @ 0x081C02E4
 	.incbin "baserom.gba", 0x1C02E4, 0x600
@@ -1349,7 +1351,9 @@ gSapphireTravelIllumise_Gfx:: @ 0x08488A0C
 	.incbin "baserom.gba", 0x488A0C, 0x4C80
 
 gLocationPortraitGfx:: @ 0x0848D68C
-	.incbin "baserom.gba", 0x48D68C, 0x2700
+	.incbin "graphics/area_portraits/ruby_forest.4bpp"
+	.incbin "baserom.gba", 0x48D98C, 0x2400
+	@.incbin "baserom.gba", 0x48D68C, 0x2700
 
 gCaptureModeTilesGfx:: @ 0x0848FD8C
 	.incbin "baserom.gba", 0x48FD8C, 0xCC0

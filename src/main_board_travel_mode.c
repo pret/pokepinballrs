@@ -4,6 +4,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 
+#define AREAS_NEEDED_BEFORE_RUINS_APPEARS 5
+
 extern const u8 gDefaultTimerPalette[];
 
 void CleanupTravelModeState(void)
@@ -145,7 +147,7 @@ void UpdateTravelMode(void)
                 gCurrentPinballGame->modeAnimTimer = 144;
                 m4aMPlayAllStop();
                 LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_MAIN_SLOT);
-                if (gCurrentPinballGame->areaVisitCount < 5)
+                if (gCurrentPinballGame->areaVisitCount < AREAS_NEEDED_BEFORE_RUINS_APPEARS)
                 {
                     var0 = gCurrentPinballGame->areaRouletteFarSlot;
                     if (gCurrentPinballGame->travelRolloverTriggerHitZone == TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_LEFT)
@@ -153,13 +155,13 @@ void UpdateTravelMode(void)
                     else
                         gCurrentPinballGame->areaRouletteSlotIndex = gCurrentPinballGame->areaRouletteFarSlot;
 
-                    gCurrentPinballGame->areaRouletteNextSlot = (var0 + 1) % 6;
-                    gCurrentPinballGame->areaRouletteFarSlot = (var0 + 2) % 6;
+                    gCurrentPinballGame->areaRouletteNextSlot = (var0 + 1) % AREA_ROULETTE_SLOT_COUNT;
+                    gCurrentPinballGame->areaRouletteFarSlot = (var0 + 2) % AREA_ROULETTE_SLOT_COUNT;
                     gCurrentPinballGame->areaVisitCount++;
                 }
                 else
                 {
-                    gCurrentPinballGame->areaRouletteSlotIndex = 6;
+                    gCurrentPinballGame->areaRouletteSlotIndex = AREA_BONUS_RUIN_SLOT_IX;
                     gCurrentPinballGame->areaVisitCount = 0;
                 }
             }
