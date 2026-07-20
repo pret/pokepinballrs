@@ -753,7 +753,11 @@ gPinballGameStateFuncs:: @ 0x08137E04
 	.4byte PinballGame_State3_4B20C @ called once after game over?
 
 gBallPalettes:: @ 0x08137E14
-	.incbin "baserom.gba", 0x137E14, 0x100
+	.incbin "graphics/stage/main/pokeball_regular.gbapal"
+	.incbin "graphics/stage/main/pokeball_great.gbapal"
+	.incbin "graphics/stage/main/pokeball_ultra.gbapal"
+	.incbin "graphics/stage/main/pokeball_master.gbapal"
+	.incbin "baserom.gba", 0x137E94, 0x80
 
 gBallFlashPalette:: @ 0x08137F14
 	.incbin "baserom.gba", 0x137F14, 0x100
@@ -821,7 +825,18 @@ gEvoExAppear_Gfx:: @ 0x0815A8A4
 	.incbin "graphics/board_pickups/evo_item_ex.4bpp";
 
 gEvoItemPalettes:: @ 0x0815C4C4
-	.incbin "baserom.gba", 0x15C4C4, 0x200
+	.incbin "graphics/board_pickups/icon1_xp.gbapal";
+	.incbin "graphics/board_pickups/icon2_leaf.gbapal";
+	.incbin "graphics/board_pickups/icon3_fire.gbapal";
+	.incbin "graphics/board_pickups/icon4_link.gbapal";
+	.incbin "graphics/board_pickups/icon5_moon.gbapal";
+	.incbin "graphics/board_pickups/icon6_water.gbapal";
+	.incbin "graphics/board_pickups/icon7_bolt.gbapal";
+	.incbin "graphics/board_pickups/icon8_sun.gbapal";
+	.incbin "graphics/board_pickups/icon9_heart.gbapal";
+	.incbin "graphics/board_pickups/icon10_pokeblock.gbapal";
+	.incbin "baserom.gba", 0x15C604, 0xC0
+	@.incbin "baserom.gba", 0x15C4C4, 0x200
 
 gEvoLeafAppear_Gfx:: @ 0x0815C6C4
 	.incbin "graphics/board_pickups/evo_item_leaf.4bpp";
@@ -1286,25 +1301,25 @@ gRubyFlashingTiles_Secondary:: @ 0x083C806C
 .include "data/graphics/mon_hatch_sprites.inc"
 
 gPickupIcon1_Gfx:: @ 0x083EB84C
-	.incbin "graphics/board_pickups/icon1.4bpp"
+	.incbin "graphics/board_pickups/icon1_xp.4bpp"
 gPickupIcon2_Gfx:: @ 0x083ED64C
-	.incbin "graphics/board_pickups/icon2.4bpp"
+	.incbin "graphics/board_pickups/icon2_leaf.4bpp"
 gPickupIcon3_Gfx:: @ 0x083EF44C
-	.incbin "graphics/board_pickups/icon3.4bpp"
+	.incbin "graphics/board_pickups/icon3_fire.4bpp"
 gPickupIcon9_Gfx:: @ 0x083F124C
-	.incbin "graphics/board_pickups/icon9.4bpp"
+	.incbin "graphics/board_pickups/icon9_heart.4bpp"
 gPickupIcon4_Gfx:: @ 0x083F304C
-	.incbin "graphics/board_pickups/icon4.4bpp"
+	.incbin "graphics/board_pickups/icon4_link.4bpp"
 gPickupIcon5_Gfx:: @ 0x083F4E4C
-	.incbin "graphics/board_pickups/icon5.4bpp"
+	.incbin "graphics/board_pickups/icon5_moon.4bpp"
 gPickupIcon6_Gfx:: @ 0x083F6C4C
-	.incbin "graphics/board_pickups/icon6.4bpp"
+	.incbin "graphics/board_pickups/icon6_water.4bpp"
 gPickupIcon10_Gfx:: @ 0x083F8A4C
-	.incbin "graphics/board_pickups/icon10.4bpp"
+	.incbin "graphics/board_pickups/icon10_pokeblock.4bpp"
 gPickupIcon8_Gfx:: @ 0x083FA84C
-	.incbin "graphics/board_pickups/icon8.4bpp"
+	.incbin "graphics/board_pickups/icon8_sun.4bpp"
 gPickupIcon7_Gfx:: @ 0x083FC64C
-	.incbin "graphics/board_pickups/icon7.4bpp"
+	.incbin "graphics/board_pickups/icon7_bolt.4bpp"
 
 gFlipperTileGraphics:: @ 0x083FE44C
 	.incbin "baserom.gba", 0x3FE44C, 0xC00
