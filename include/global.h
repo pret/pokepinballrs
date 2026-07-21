@@ -948,7 +948,7 @@ struct BoardConfig
     /*0x0C*/ struct PinballGame *pinballGame;
     /*0x10*/ struct ReplayInputFrame *replayInputData;
     /*0x14*/ struct FieldBoardLayout fieldLayout;
-    /*0x68*/ const u16 *flipperCollisionData;
+    /*0x68*/ const u16 (*flipperCollisionData)[96*96]; //pointer to an Array of 96x96 px data
 };
 
 struct FlipperLineSegment

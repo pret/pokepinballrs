@@ -4359,7 +4359,19 @@ gFlipperCollisionAngles:: @ 0x086ACD84
 	.incbin "baserom.gba", 0x6ACD84, 0x34
 
 gFlipperCollisionFrameMapping:: @ 0x086ACDB8
-	.incbin "baserom.gba", 0x6ACDB8, 0x3C
+    @ 12 sets of 5 bytes
+    .byte  0,  0,  0,  0,  0
+    .byte  0,  1,  2,  3,  4
+    .byte  2,  3,  4,  5,  6
+    .byte  4,  5,  6,  7,  8
+    .byte  6,  7,  8,  9, 10
+    .byte  8,  9, 10, 10, 10
+    .byte 10, 10, 10, 10, 10
+    .byte  2,  2,  1,  1,  0
+    .byte  4,  4,  3,  3,  2
+    .byte  6,  6,  5,  5,  4
+    .byte  8,  8,  7,  7,  6
+    .byte 10, 10,  9,  9,  8
 
 gBounceBackForceMagnitudes:: @ 0x086ACDF4
 	.2byte 0x0000, 0x00F0, 0x008C, 0x00C8

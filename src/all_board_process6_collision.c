@@ -901,7 +901,7 @@ void ProcessBonusTrapPhysics(void)
  * collisionAngle: output value, representing the resulting angle from any collision result.
  * flipperIx: 0=Left, 1=Right
  */
-u16 LookupFlipperCollisionMap(struct Vector16 flipperBallRelativePosition, s16 gravityStrength, u16 *collisionAngle, s16 flipperIx) {
+u16 LookupFlipperCollisionMap(struct Vector16 relPos, s16 gravityStrength, u16 *collisionAngle, s16 flipperIx) {
     struct FlipperState* flipper;
     u16 hasCollisionImpact;
     int new_var;
@@ -909,17 +909,17 @@ u16 LookupFlipperCollisionMap(struct Vector16 flipperBallRelativePosition, s16 g
 
     hasCollisionImpact = FALSE;
 
-    ix = (flipperBallRelativePosition.y * 96) + flipperBallRelativePosition.x;
+    ix = (relPos.y * 96) + relPos.x;
     flipper = &gCurrentPinballGame->flipper[flipperIx];
 
     flipper->collisionMapFrame = gFlipperCollisionFrameMapping[flipper->collisionFrameIndex][gravityStrength];
 
-    if (COLLISION_TYPE_MASK & (&gBoardConfig.flipperCollisionData[flipper->collisionMapFrame * 0x2400])[ix])
+    if (COLLISION_TYPE_MASK & gBoardConfig.flipperCollisionData[flipper->collisionMapFrame][ix])
     {
-        *collisionAngle = COLLISION_ANGLE_MASK & (&gBoardConfig.flipperCollisionData[flipper->collisionMapFrame * 0x2400])[ix];
+        *collisionAngle = COLLISION_ANGLE_MASK & gBoardConfig.flipperCollisionData[flipper->collisionMapFrame][ix];
         if (flipperIx == SIDE_IX_RIGHT)
         {
-            new_var = 0x8000;
+            new_var = ANGLE_180;
             *collisionAngle = new_var - (*collisionAngle);
         }
         hasCollisionImpact = TRUE;
