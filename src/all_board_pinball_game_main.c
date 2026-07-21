@@ -266,7 +266,7 @@ void InitPinballGameState(void)
     gMain.animationTimer = 0;
     gMain.modeChangeDelayTimer = 0;
     gMain.vCount = 144;
-    gMain.shopPanelActive = 0;
+    gMain.shopPanelActive = FALSE;
     gMain.shopPanelSlideOffset = 0;
     gMain.blendEnabled = FALSE;
     gMain.blendControl = 0;
@@ -376,7 +376,7 @@ void SetBallPositionForBonusReturn(void)
 
     gCurrentPinballGame->cameraScrollOffset = 0;
     gCurrentPinballGame->cameraScrollTarget = 0;
-    gCurrentPinballGame->cameraScrollEnabled = 0;
+    gCurrentPinballGame->cameraScrollEnabled = FALSE;
     gCurrentPinballGame->cameraYQ8 = gCurrentPinballGame->cameraBaseY << 8;
     gCurrentPinballGame->cameraXOffset = gCurrentPinballGame->cameraBaseX;
     gCurrentPinballGame->cameraYOffset = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->cameraScrollOffset;

@@ -101,7 +101,7 @@ void UpdateRubyBoardEntityLogic(void)
     }
 }
 
-//Duplicate of HandleSapphireFlipperButtonInput, with "gCurrentPinballGame->makuhitaPunchTriggeredFlag = 1;" added in the final if statement
+//Duplicate of HandleSapphireFlipperButtonInput, with "gCurrentPinballGame->makuhitaPunchTriggeredFlag = TRUE;" added in the final if statement
 void HandleRubyFlipperButtonInput(void)
 {
     int tmp;
@@ -149,6 +149,6 @@ void HandleRubyFlipperButtonInput(void)
         gCurrentPinballGame->ballPowerUpLight[1] = gCurrentPinballGame->ballPowerUpLight[0];
         gCurrentPinballGame->ballPowerUpLight[0] = tmp;
 
-        gCurrentPinballGame->makuhitaPunchTriggeredFlag = 1;
+        gCurrentPinballGame->makuhitaPunchTriggeredFlag = TRUE;
     }
 }

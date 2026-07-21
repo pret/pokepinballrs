@@ -14,7 +14,7 @@ s16 CollisionCheck_Rayquaza(struct Vector16 *ballPosition, u16 *collisionAngle)
     u32 boardTriggerType;
     u32 collisionType;
 
-    hasCollisionImpact = 0;
+    hasCollisionImpact = FALSE;
     gCurrentPinballGame->ball->spinAcceleration = SPIN_BOOST_NONE;
 
     if (ballPosition->y < 0x200)
@@ -81,14 +81,14 @@ s16 CollisionCheck_Rayquaza(struct Vector16 *ballPosition, u16 *collisionAngle)
                     }
                 }
             }
-            hasCollisionImpact = 1;
+            hasCollisionImpact = TRUE;
             break;
         case 2:
         case 3:
             gCurrentPinballGame->collisionSurfaceType = collisionType - 1;
             gCurrentPinballGame->collisionResponseType = 2;
             *collisionAngle = boardCollisionAngle & COLLISION_ANGLE_MASK;
-            hasCollisionImpact = 1;
+            hasCollisionImpact = TRUE;
             break;
         case 5:
             boardTriggerType = 4;

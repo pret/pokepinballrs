@@ -221,7 +221,7 @@ void UpdateSapphireSeedotCollection(void)
             }
         }
 
-        gCurrentPinballGame->seedotCollisionTrigger = 0;
+        gCurrentPinballGame->seedotCollisionTrigger = FALSE;
         gCurrentPinballGame->scoreAddedInFrame = 3000;
     }
 
@@ -361,7 +361,7 @@ void UpdateSapphireSeedotCollection(void)
         }
         else
         {
-            gCurrentPinballGame->seedotExitSequenceActive = 0;
+            gCurrentPinballGame->seedotExitSequenceActive = FALSE;
             gCurrentPinballGame->seedotExitSequenceTimer = 0;
         }
     }
@@ -445,9 +445,9 @@ void DrawSapphireSeedotAndBasketSprites(void)
 
 void UpdateSapphireShopSignAnimation(void)
 {
-    if (gCurrentPinballGame->shopTransitionActive == 0)
+    if (!gCurrentPinballGame->shopTransitionActive)
     {
-        if (gCurrentPinballGame->evolutionShopActive == 1)
+        if (gCurrentPinballGame->evolutionShopActive == TRUE)
         {
             if (gCurrentPinballGame->shopAnimTimer < 96)
             {
@@ -486,21 +486,22 @@ void UpdateSapphireShopSignAnimation(void)
 
         if (gCurrentPinballGame->evoArrowProgress > 2)
         {
-            if (gCurrentPinballGame->evolvablePartySize > 0 && gCurrentPinballGame->evolutionShopActive == 0)
+            if (gCurrentPinballGame->evolvablePartySize > 0
+                && !gCurrentPinballGame->evolutionShopActive)
             {
-                gCurrentPinballGame->shopTransitionActive = 1;
+                gCurrentPinballGame->shopTransitionActive = TRUE;
                 gCurrentPinballGame->shopAnimTimer = 0;
-                gCurrentPinballGame->evolutionShopActive = 1;
+                gCurrentPinballGame->evolutionShopActive = TRUE;
             }
         }
         else
         {
             if (gCurrentPinballGame->boardState != MAIN_BOARD_STATE_EVO_MODE
-                && gCurrentPinballGame->evolutionShopActive == 1)
+                && gCurrentPinballGame->evolutionShopActive == TRUE)
             {
-                gCurrentPinballGame->shopTransitionActive = 1;
+                gCurrentPinballGame->shopTransitionActive = TRUE;
                 gCurrentPinballGame->shopAnimTimer = 0;
-                gCurrentPinballGame->evolutionShopActive = 0;
+                gCurrentPinballGame->evolutionShopActive = FALSE;
             }
         }
     }
@@ -513,7 +514,7 @@ void UpdateSapphireShopSignAnimation(void)
         }
         else
         {
-            if (gCurrentPinballGame->evolutionShopActive == 1)
+            if (gCurrentPinballGame->evolutionShopActive == TRUE)
             {
                 if (gCurrentPinballGame->shopAnimTimer < 15)
                     gCurrentPinballGame->shopSignPaletteIndex = 0;
@@ -532,7 +533,7 @@ void UpdateSapphireShopSignAnimation(void)
         gCurrentPinballGame->shopAnimTimer++;
         if (gCurrentPinballGame->shopAnimTimer == 42)
         {
-            gCurrentPinballGame->shopTransitionActive = 0;
+            gCurrentPinballGame->shopTransitionActive = FALSE;
             gCurrentPinballGame->shopAnimTimer = 0;
         }
     }
@@ -632,7 +633,7 @@ void UpdateSapphireEggMachine(void)
         if (gCurrentPinballGame->holeAnimFrameCounter == 60)
         {
             m4aSongNumStart(MUS_EGG_MODE_START);
-            gCurrentPinballGame->catchArrowPaletteActive = 0;
+            gCurrentPinballGame->catchArrowPaletteActive = FALSE;
             gCurrentPinballGame->eggAnimationPhase = 5;
             gCurrentPinballGame->eggAnimFrameIndex = 12;
             gCurrentPinballGame->eggFrameTimer = 0;

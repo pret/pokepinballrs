@@ -31,7 +31,7 @@ void CleanupEvolutionModeState(void)
 
     gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     gCurrentPinballGame->trapAnimState = 0;
-    gCurrentPinballGame->bonusTrapEnabled = 0;
+    gCurrentPinballGame->bonusTrapEnabled = FALSE;
     ResetEventState();
 }
 
@@ -67,7 +67,7 @@ void InitEvolutionMode(void)
 
     DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
     gCurrentPinballGame->evoArrowProgress = 0;
-    gCurrentPinballGame->shopArrowActive = 0;
+    gCurrentPinballGame->shopArrowActive = FALSE;
     gCurrentPinballGame->catchModeEventTimer = 0;
     gCurrentPinballGame->evoItemSlotIndex = 0;
     gCurrentPinballGame->evoItemsCaught = 0;
@@ -247,7 +247,7 @@ void UpdateEvolutionMode(void)
 
                 if (gCurrentPinballGame->stageTimer < 30)
                 {
-                    gMain.scoreOverlayActive = 1;
+                    gMain.scoreOverlayActive = TRUE;
                     var0 = gCurrentPinballGame->stageTimer;
                     gCurrentPinballGame->cutsceneTilemapColumn = gCurrentPinballGame->stageTimer;
                     for (i = 0; i <= var0; i++)
@@ -271,7 +271,7 @@ void UpdateEvolutionMode(void)
                     DmaCopy16(3, gBG0TilemapBuffer, (void *)0x06002000, 0x800);
                     if (gCurrentPinballGame->stageTimer == 269)
                     {
-                        gMain.scoreOverlayActive = 0;
+                        gMain.scoreOverlayActive = FALSE;
                         gMain.blendControl = 0;
                         gMain.blendBrightness = 0;
                         gMain.blendAlpha = 0;
@@ -336,9 +336,9 @@ void UpdateEvolutionMode(void)
         gCurrentPinballGame->activePortraitType = 0;
         AnimateBonusTrapSprite();
         gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
-        gCurrentPinballGame->shopTransitionActive = 1;
+        gCurrentPinballGame->shopTransitionActive = TRUE;
         gCurrentPinballGame->shopAnimTimer = 0;
-        gCurrentPinballGame->evolutionShopActive = 0;
+        gCurrentPinballGame->evolutionShopActive = FALSE;
         gCurrentPinballGame->boardSubState++;
         if (gCurrentPinballGame->allHolesLit)
             gCurrentPinballGame->allHolesLitDelayTimer = 120;

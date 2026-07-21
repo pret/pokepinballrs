@@ -283,9 +283,9 @@ void ComputeFlipperBounce(struct Vector16* ballPosition, struct Vector16* arg1, 
         if ((sp12 *= gCurrentPinballGame->flipper[flipperIx].ballSide) > 0)
         {
             if (gCurrentPinballGame->flipper[flipperIx].collisionFrameIndex < 7)
-                r4 = gFlipperCollisionAngles[gCurrentPinballGame->flipper[flipperIx].collisionMapFrame - 1][0] +  0x4000;
+                r4 = gFlipperCollisionAngles[gCurrentPinballGame->flipper[flipperIx].collisionMapFrame - 1][0] +  ANGLE_90;
             else
-                r4 = gFlipperCollisionAngles[gCurrentPinballGame->flipper[flipperIx].collisionMapFrame + 1][1] + -0x4000; // This changes compilation, apparently
+                r4 = gFlipperCollisionAngles[gCurrentPinballGame->flipper[flipperIx].collisionMapFrame + 1][1] + -ANGLE_90; // This changes compilation, apparently
         }
         else
         {
@@ -675,7 +675,7 @@ u16 PixelWalkCollisionDetection(struct Vector16* ballPosition, struct Vector16 a
             gCurrentPinballGame->collisionResponseType = 0;
 
             if (CheckFlipperCollision(ballPosition, &collisionAngle) != 0
-                || (gCurrentPinballGame->catchMonCollisionEnabled != 0
+                || (gCurrentPinballGame->catchMonCollisionEnabled
                     && CheckCatchTargetCollision(ballPosition, &collisionAngle) != 0))
                 break;
         }
@@ -750,7 +750,7 @@ u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
     u16 res;
     u16 var0;
 
-    res = 0;
+    res = FALSE;
     if (gCurrentPinballGame->captureState != MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE)
     {
         vec1.x = arg0->x / 2 - gCurrentPinballGame->jirachiCenterX;
@@ -795,7 +795,7 @@ u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
                         gCurrentPinballGame->creatureHitCooldown = 4;
                     }
 
-                    res = 1;
+                    res = TRUE;
                     m4aSongNumStart(SE_JIRACHI_HIT);
                     PlayRumble(7);
                 }
@@ -821,7 +821,7 @@ u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
                         gCurrentPinballGame->creatureHitCooldown = 4;
                     }
 
-                    res = 1;
+                    res = TRUE;
                     m4aSongNumStart(SE_POKEMON_CATCH_HIT);
                     PlayRumble(7);
                 }

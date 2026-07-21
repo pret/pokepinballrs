@@ -127,7 +127,7 @@ void SaveGameStateSnapshot(s16 arg0)
 
 void SaveGameToSram(void)
 {
-    gCurrentPinballGame->saveDataValid = 1;
+    gCurrentPinballGame->saveDataValid = TRUE;
     WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(*gCurrentPinballGame));
 }
 
@@ -291,7 +291,7 @@ void RestoreGameState(u16 arg0)
 
     if (arg0 == 1)
     {
-        gCurrentPinballGame->saveDataValid = 0;
+        gCurrentPinballGame->saveDataValid = FALSE;
         WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(gCurrentPinballGame->saveDataValid));
     }
 }
@@ -438,7 +438,7 @@ void RestoreFieldSpecificGraphics(void)
         break;
     case 17:
         DmaCopy16(3, gPokemonNameDisplayGfx, (void *)0x6015C00, 0x940);
-        if (gCurrentPinballGame->evolutionShopActive == 0)
+        if (!gCurrentPinballGame->evolutionShopActive)
         {
             var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
             var2 = var1[3] / 10;

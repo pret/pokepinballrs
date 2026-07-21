@@ -28,7 +28,7 @@ void AllBoardProcess_2A_4D6C4(void)
     {
         gCurrentPinballGame->cameraScrollOffset = var1 - 244;
         gCurrentPinballGame->cameraScrollTarget = 0;
-        gCurrentPinballGame->cameraScrollEnabled = 0;
+        gCurrentPinballGame->cameraScrollEnabled = FALSE;
         gCurrentPinballGame->cameraBaseX = gBoardConfig.fieldLayout.cameraStartX;
         gCurrentPinballGame->cameraBaseY = gBoardConfig.fieldLayout.cameraStartY;
         gCurrentPinballGame->cameraYQ8 = gBoardConfig.fieldLayout.cameraStartY << 8;
@@ -59,7 +59,7 @@ void AllBoardProcess_2A_4D6C4(void)
     {
         gCurrentPinballGame->cameraScrollOffset = 0;
         gCurrentPinballGame->cameraScrollTarget = 0;
-        gCurrentPinballGame->cameraScrollEnabled = 0;
+        gCurrentPinballGame->cameraScrollEnabled = FALSE;
         if (gMain.selectedField <= FIELD_KECLEON)
             gCurrentPinballGame->cameraYAdjust = -24;
         else if (gMain.selectedField == FIELD_RAYQUAZA)
@@ -111,7 +111,7 @@ void MainBoardProcess_2B_4D960(void)
         }
         else
         {
-            gCurrentPinballGame->cameraScrollEnabled = 0;
+            gCurrentPinballGame->cameraScrollEnabled = FALSE;
         }
     }
 
@@ -200,7 +200,7 @@ void BonusBoardProcess_2B_4DBFC(void)
         }
         else
         {
-            gCurrentPinballGame->cameraScrollEnabled = 0;
+            gCurrentPinballGame->cameraScrollEnabled = FALSE;
         }
     }
 
@@ -539,7 +539,7 @@ void ResetBoardStateOnDeath(void)
         gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_END_EVO_PHASE;
 
     gCurrentPinballGame->allHolesLit = FALSE;
-    gCurrentPinballGame->holeIndicators[0] = 0;
+    gCurrentPinballGame->holeIndicators[0] = FALSE;
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
@@ -561,7 +561,7 @@ void ResetBoardStateOnDeath(void)
         gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
     }
 
-    gCurrentPinballGame->ballPowerUpLight[0] = 0;
+    gCurrentPinballGame->ballPowerUpLight[0] = FALSE;
     gCurrentPinballGame->ballPowerUpLight[1] = gCurrentPinballGame->ballPowerUpLight[0];
     gCurrentPinballGame->ballPowerUpLight[2] = gCurrentPinballGame->ballPowerUpLight[0];
     gCurrentPinballGame->bumperHitsSinceReset = 0;

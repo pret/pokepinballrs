@@ -256,17 +256,17 @@ void IntroScene1Torchic_InitVars(void)
     gIntroSpriteEntities[1].posX = 0x78;
     gIntroSpriteEntities[1].posY = 0x50;
     gIntroSpriteEntities[1].animFrame = 0;
-    gIntroSpriteEntities[1].visible = 1;
+    gIntroSpriteEntities[1].visible = TRUE;
     gIntroSpriteEntities[3].posX = 0x9c;
     gIntroSpriteEntities[3].posY = 0x92;
-    gIntroSpriteEntities[3].visible = 0;
+    gIntroSpriteEntities[3].visible = FALSE;
     gIntroSpriteEntities[3].frameTimer = 0;
     gIntroSpriteEntities[2].posX = 0x9d;
     gIntroSpriteEntities[2].posY = 0x93;
-    gIntroSpriteEntities[2].visible = 0;
+    gIntroSpriteEntities[2].visible = FALSE;
     gIntroSpriteEntities[4].posX = 0x80;
     gIntroSpriteEntities[4].posY = 0x80;
-    gIntroSpriteEntities[4].visible = 1;
+    gIntroSpriteEntities[4].visible = TRUE;
     gIntroBGParams[0].posX = 0xffa8;
     gIntroBGParams[0].posY = 0xffca;
     gIntroBGParams[0].animFrame = 0;
@@ -283,7 +283,7 @@ void IntroScene1Torchic_InitVars(void)
     gIntroSpriteEntities[0].posY = 0x50;
     gIntroSpriteEntities[0].animFrame = 0;
     gIntroSpriteEntities[0].frameTimer = 0;
-    gIntroSpriteEntities[0].visible = 1;
+    gIntroSpriteEntities[0].visible = TRUE;
     gIntroBlendSrc = 0;
     gIntroBlendDst = 0x10;
     gIntroOverlayFadeStep = 0;
@@ -346,7 +346,7 @@ void IntroScene1TitleText_03_1PxText(void)
         gIntroSpriteEntities[0].frameTimer = 0;
         gIntroSpriteEntities[0].posX = 0x78;
         gIntroSpriteEntities[0].posY = 0x58;
-        gIntroSpriteEntities[0].visible = 1;
+        gIntroSpriteEntities[0].visible = TRUE;
         m4aSongNumStart(SE_RAMP_PRIZE_COLLECTED);
         gIntroSceneIndex++;
     }
@@ -358,7 +358,7 @@ void IntroScene1Torchic_04_LargeSparkle(void)
     {
         if (++gIntroSpriteEntities[0].frameTimer > 1)
         {
-            gIntroSpriteEntities[0].visible = 0;
+            gIntroSpriteEntities[0].visible = FALSE;
             DarkenPalette(&gIntroScene1TorchicSprites_Pals[0x1C0], (void*)BG_PLTT + 0xE0, 0x20, 0);
             m4aSongNumStart(MUS_OPENING);
             gIntroSceneIndex++;
@@ -429,9 +429,9 @@ void IntroScene1Torchic_06_BrightenPokeballFlyTowardsScreen(void)
         CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *)0x60036E0, 8, 8);
         if (++gIntroBGParams[0].animFrame > 3)
         {
-            gIntroSpriteEntities[3].visible = 1;
-            gIntroSpriteEntities[2].visible = 1;
-            gIntroSpriteEntities[1].visible = 0;
+            gIntroSpriteEntities[3].visible = TRUE;
+            gIntroSpriteEntities[2].visible = TRUE;
+            gIntroSpriteEntities[1].visible = FALSE;
             gIntroBGParams[1].animFrame = 0;
             gIntroSceneIndex++;
         }
@@ -580,7 +580,7 @@ void IntroScene1Torchic_RenderScaledTitle(void)
             gOamBuffer[puVar2->oamId].x = gIntroScene1Torchic_ScaleOffsets[i].x * gIntroScaleX / 0x100 + puVar4->baseX;
             gOamBuffer[puVar2->oamId].y = gIntroScene1Torchic_ScaleOffsets[i].y * gIntroScaleY / 0x100 + puVar4->baseY;
 
-            gOamBuffer[puVar2->oamId].affineMode = 1;
+            gOamBuffer[puVar2->oamId].affineMode = ST_OAM_AFFINE_NORMAL;
             gOamBuffer[puVar2->oamId].matrixNum = 0;
         }
     }
@@ -624,7 +624,7 @@ void IntroScene1Torchic_RenderAllSprites(void)
             i++)
         {
             puVar5 = &puVar1->oam[i];
-            gOamBuffer[puVar5->oamId].objMode = 1;
+            gOamBuffer[puVar5->oamId].objMode = ST_OAM_OBJ_BLEND;
             gOamBuffer[puVar5->oamId].x = puVar1->oam[i].xOffset + puVar1->baseX;
             gOamBuffer[puVar5->oamId].y = puVar1->oam[i].yOffset + puVar1->baseY;
         }
@@ -637,7 +637,7 @@ void IntroScene1Torchic_RenderAllSprites(void)
         for (i = 0; i < 4; i++)
         {
             puVar5 = &mainSg3->oam[i];
-            gOamBuffer[puVar5->oamId].objMode = 1;
+            gOamBuffer[puVar5->oamId].objMode = ST_OAM_OBJ_BLEND;
             gOamBuffer[puVar5->oamId].priority = 1;
             gOamBuffer[puVar5->oamId].x = mainSg3->oam[i].xOffset + mainSg3->baseX;
             gOamBuffer[puVar5->oamId].y = mainSg3->oam[i].yOffset + mainSg3->baseY;
@@ -651,7 +651,7 @@ void IntroScene1Torchic_RenderAllSprites(void)
         for (i = 0; i < 4; i++)
         {
             puVar5 = &mainSg2->oam[i];
-            gOamBuffer[puVar5->oamId].objMode = 0;
+            gOamBuffer[puVar5->oamId].objMode = ST_OAM_OBJ_NORMAL;
             gOamBuffer[puVar5->oamId].priority = 1;
             gOamBuffer[puVar5->oamId].x = mainSg2->oam[i].xOffset + mainSg2->baseX;
             gOamBuffer[puVar5->oamId].y = mainSg2->oam[i].yOffset + mainSg2->baseY;
@@ -1294,7 +1294,7 @@ void IntroScene5Mudkip_RenderAllSprites(void)
         for (i = 0; i < 4; i++)
         {
             oamData = &mainSg1->oam[i];
-            gOamBuffer[oamData->oamId].objMode = 1;
+            gOamBuffer[oamData->oamId].objMode = ST_OAM_OBJ_BLEND;
             gOamBuffer[oamData->oamId].priority = 1;
             gOamBuffer[oamData->oamId].x = mainSg1->oam[i].xOffset + mainSg1->baseX;
             gOamBuffer[oamData->oamId].y = mainSg1->oam[i].yOffset + mainSg1->baseY;
@@ -1308,7 +1308,7 @@ void IntroScene5Mudkip_RenderAllSprites(void)
         for (i = 0; i < 4; i++)
         {
             oamData = &mainSg0->oam[i];
-            gOamBuffer[oamData->oamId].objMode = 0;
+            gOamBuffer[oamData->oamId].objMode = ST_OAM_OBJ_NORMAL;
             gOamBuffer[oamData->oamId].priority = 1;
             gOamBuffer[oamData->oamId].x = mainSg0->oam[i].xOffset + mainSg0->baseX;
             gOamBuffer[oamData->oamId].y = mainSg0->oam[i].yOffset + mainSg0->baseY;
@@ -1411,7 +1411,7 @@ void IntroScene6Chinchou_InitVars(void)
     {
         gIntroSpriteEntities[i].animFrame = 0;
         gIntroSpriteEntities[i].frameTimer = 0;
-        gIntroSpriteEntities[i].visible = 0;
+        gIntroSpriteEntities[i].visible = FALSE;
     }
 
     gIntroScene6ChinchouVelocityIndex = 0;
@@ -1450,7 +1450,7 @@ void IntroScene6Chinchou_39_MoveChinchouBallAndStars(void)
 
     if (gIntroFrameCounter == gIntroScene6Chinchou_EntityMovement[gIntroScene6ChinchouEntitySpawnIndex].frameDuration)
     {
-        gIntroSpriteEntities[gIntroScene6ChinchouEntitySpawnIndex].visible = 1;
+        gIntroSpriteEntities[gIntroScene6ChinchouEntitySpawnIndex].visible = TRUE;
         gIntroScene6ChinchouEntitySpawnIndex++;
     }
 
@@ -1554,7 +1554,7 @@ void IntroScene6Chinchou_RenderStarSprites(void)
         }
 
         if (gIntroFrameCounter == gIntroScene6Chinchou_EntityMovement[i].spawnFrame)
-            gIntroSpriteEntities[i].visible = 0;
+            gIntroSpriteEntities[i].visible = FALSE;
     }
 
     spriteGroups[0]->active = FALSE;
@@ -1835,7 +1835,7 @@ void IntroScene7Parade_RenderWailmer(void)
             gOamBuffer[oamData->oamId].priority = 1;
             gOamBuffer[oamData->oamId].x = gIntroScene7Parade_WailmerQuadOffsets[i].x * gIntroWailmerScaleX / 0x100 + spriteGroup->baseX;
             gOamBuffer[oamData->oamId].y = gIntroScene7Parade_WailmerQuadOffsets[i].y * gIntroWailmerScaleY / 0x100 + spriteGroup->baseY;
-            gOamBuffer[oamData->oamId].affineMode = 1;
+            gOamBuffer[oamData->oamId].affineMode = ST_OAM_AFFINE_NORMAL;
             gOamBuffer[oamData->oamId].matrixNum = 0;
         }
     }
@@ -1879,38 +1879,38 @@ void IntroScene8WailmerLaunch_InitVars(void)
 
     gIntroSpriteEntities[0].posX = 0x78;
     gIntroSpriteEntities[0].posY = 0x50;
-    gIntroSpriteEntities[0].visible = 0;
+    gIntroSpriteEntities[0].visible = FALSE;
 
     gIntroSpriteEntities[2].posX = 0x80;
     gIntroSpriteEntities[2].posY = 0x58;
     gIntroSpriteEntities[2].animFrame = 0;
     gIntroSpriteEntities[2].frameTimer = 0;
-    gIntroSpriteEntities[2].visible = 0;
+    gIntroSpriteEntities[2].visible = FALSE;
 
     gIntroSpriteEntities[3].posX = 0x80;
     gIntroSpriteEntities[3].posY = 0x48;
     gIntroSpriteEntities[3].animFrame = 0;
     gIntroSpriteEntities[3].frameTimer = 0;
-    gIntroSpriteEntities[3].visible = 0;
+    gIntroSpriteEntities[3].visible = FALSE;
 
     gIntroSpriteEntities[4].posX = 0x70;
     gIntroSpriteEntities[4].posY = 0x58;
     gIntroSpriteEntities[4].animFrame = 0;
     gIntroSpriteEntities[4].frameTimer = 0;
-    gIntroSpriteEntities[4].visible = 0;
+    gIntroSpriteEntities[4].visible = FALSE;
 
     gIntroSpriteEntities[5].posX = 0x78;
     gIntroSpriteEntities[5].posY = 0x58;
     gIntroSpriteEntities[5].animFrame = 0;
     gIntroSpriteEntities[5].frameTimer = 0;
-    gIntroSpriteEntities[5].visible = 0;
+    gIntroSpriteEntities[5].visible = FALSE;
 
     // TODO FIXME overlapping symbols (gAutoDisplayTitlescreenMenu)
     gIntroSpriteEntities[6].posX = 0x70;
     gIntroSpriteEntities[6].posY = 0x48;
     gIntroSpriteEntities[6].animFrame = 0;
     gIntroSpriteEntities[6].frameTimer = 0;
-    gIntroSpriteEntities[6].visible = 0;
+    gIntroSpriteEntities[6].visible = FALSE;
 
     gIntroFrameCounter = 0;
     gIntroAnimStep = 0;
@@ -1922,12 +1922,12 @@ void IntroScene8WailmerLaunch_52_BallAppearTimer(void)
 
     if (gIntroFrameCounter > 1)
     {
-        gIntroSpriteEntities[0].visible = 1;
-        gIntroSpriteEntities[2].visible = 1;
-        gIntroSpriteEntities[3].visible = 1;
-        gIntroSpriteEntities[4].visible = 1;
-        gIntroSpriteEntities[5].visible = 1;
-        gIntroSpriteEntities[6].visible = 1; // TODO FIXME overlapping symbols (gAutoDisplayTitlescreenMenu)
+        gIntroSpriteEntities[0].visible = TRUE;
+        gIntroSpriteEntities[2].visible = TRUE;
+        gIntroSpriteEntities[3].visible = TRUE;
+        gIntroSpriteEntities[4].visible = TRUE;
+        gIntroSpriteEntities[5].visible = TRUE;
+        gIntroSpriteEntities[6].visible = TRUE; // TODO FIXME overlapping symbols (gAutoDisplayTitlescreenMenu)
         gIntroSceneIndex++;
     }
 }
@@ -2123,15 +2123,15 @@ void IntroScene8WailmerLaunch_58_ResetTilemap(void)
     for (i = 0; i < 20; i++)
     {
         gOamBuffer[i].y = -12;
-        gOamBuffer[i].affineMode = 0;
-        gOamBuffer[i].objMode = 0;
+        gOamBuffer[i].affineMode = ST_OAM_AFFINE_OFF;
+        gOamBuffer[i].objMode = ST_OAM_OBJ_NORMAL;
         gOamBuffer[i].mosaic = 0;
         gOamBuffer[i].bpp = 0x0;
         gOamBuffer[i].shape = 0;
         gOamBuffer[i].x = -12;
         gOamBuffer[i].matrixNum = 0;
-        gOamBuffer[i].hFlip = 0;
-        gOamBuffer[i].vFlip = 0;
+        gOamBuffer[i].hFlip = FALSE;
+        gOamBuffer[i].vFlip = FALSE;
         gOamBuffer[i].size = 0;
         gOamBuffer[i].tileNum = 0;
         gOamBuffer[i].priority = 0;
@@ -2172,12 +2172,12 @@ void IntroScene9BallFlight_InitVars(void)
     gIntroSpriteEntities[0].posY = 0x1E;
     gIntroSpriteEntities[0].velX = 0xE;
     gIntroSpriteEntities[0].animFrame = 0x1;
-    gIntroSpriteEntities[0].visible = 0x1;
+    gIntroSpriteEntities[0].visible = TRUE;
 
     gIntroSpriteEntities[1].posX = 0x108;
     gIntroSpriteEntities[1].posY = 0x50;
     gIntroSpriteEntities[1].velX = 0x6;
-    gIntroSpriteEntities[1].visible = 0;
+    gIntroSpriteEntities[1].visible = FALSE;
 
     gIntroFrameCounter = 0;
     gIntroAnimStep = 0;
@@ -2212,8 +2212,8 @@ void IntroScene9BallFlight_60_MoveBallAndSky(void)
 
     if (gIntroFrameCounter > 90)
     {
-        gIntroSpriteEntities[0].visible = 0;
-        gIntroSpriteEntities[1].visible = 1;
+        gIntroSpriteEntities[0].visible = FALSE;
+        gIntroSpriteEntities[1].visible = TRUE;
         gIntroSceneIndex++;
     }
 }
@@ -2306,7 +2306,7 @@ void IntroScene9BallFlight_RenderBallAndCloud(void)
         oamData = &spriteGroup0->oam[0];
         gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup0->baseX;
         gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup0->baseY;
-        gOamBuffer[oamData->oamId].affineMode = 3;
+        gOamBuffer[oamData->oamId].affineMode = ST_OAM_AFFINE_DOUBLE;
         gOamBuffer[oamData->oamId].matrixNum = 0;
     }
 

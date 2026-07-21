@@ -159,12 +159,12 @@ void Options_InitStates(void)
         gOptionsData.rumbleEnabled = FALSE;
         gMain_saveData.rumbleEnabled = FALSE;
     }
-    gOptionsData.torchicHeadShakeAnimActive = 0;
+    gOptionsData.torchicHeadShakeAnimActive = FALSE;
     gOptionsData.torchicAnimTimer = 0;
     gOptionsData.torchicAnimFrame = 0;
     gOptionsData.torchicAnimTileId = 0;
     gOptionsData.noteSizeBlinkState = 0;
-    gOptionsData.soundTestActive = 0;
+    gOptionsData.soundTestActive = FALSE;
 }
 
 void Options_HandleInput(void)
@@ -227,26 +227,26 @@ void Options_HandleInput(void)
                 m4aSongNumStart(SE_MENU_SELECT);
                 gOptionsData.stateMain = OPTIONS_STATE_BGM_SELECT,
                 gOptionsData.scollWaitFrames = 0;
-                gOptionsData.soundTestActive = 1;
-                if (gOptionsData.torchicHeadShakeAnimActive == 1)
+                gOptionsData.soundTestActive = TRUE;
+                if (gOptionsData.torchicHeadShakeAnimActive == TRUE)
                 {
                     gOptionsData.torchicAnimTimer = 0;
                     gOptionsData.torchicAnimTileId = 0;
                     gOptionsData.torchicAnimFrame = 0;
-                    gOptionsData.torchicHeadShakeAnimActive = 0;
+                    gOptionsData.torchicHeadShakeAnimActive = FALSE;
                 }
                 break;
             case CURSOR_POS_SE:
                 m4aSongNumStart(SE_MENU_SELECT);
                 gOptionsData.stateMain = OPTIONS_STATE_SE_MENU_MOVE_0x67,
                 gOptionsData.scollWaitFrames = 0;
-                gOptionsData.soundTestActive = 1;
-                if (gOptionsData.torchicHeadShakeAnimActive == 1)
+                gOptionsData.soundTestActive = TRUE;
+                if (gOptionsData.torchicHeadShakeAnimActive == TRUE)
                 {
                     gOptionsData.torchicAnimTimer = 0;
                     gOptionsData.torchicAnimTileId = 0;
                     gOptionsData.torchicAnimFrame = 0;
-                    gOptionsData.torchicHeadShakeAnimActive = 0;
+                    gOptionsData.torchicHeadShakeAnimActive = FALSE;
                 }
                 break;
             case CURSOR_POS_BUTTON_CONFIG_TYPE_A:
@@ -269,8 +269,8 @@ void Options_HandleInput(void)
                 {
                     m4aSongNumStart(SE_MENU_SELECT);
                     gOptionsData.torchicAnimTileId = 0;
-                    if (gOptionsData.torchicHeadShakeAnimActive == 1)
-                        gOptionsData.torchicHeadShakeAnimActive = 0;
+                    if (gOptionsData.torchicHeadShakeAnimActive == TRUE)
+                        gOptionsData.torchicHeadShakeAnimActive = FALSE;
                     gOptionsData.torchicAnimTimer = 0;
                     gOptionsData.torchicAnimFrame = 0;
                     gOptionsData.rumbleEnabled = FALSE;
@@ -281,8 +281,8 @@ void Options_HandleInput(void)
                 {
                     m4aSongNumStart(SE_MENU_SELECT);
                     PlayRumble(11);
-                    if (gOptionsData.torchicHeadShakeAnimActive == 0)
-                        gOptionsData.torchicHeadShakeAnimActive = 1;
+                    if (!gOptionsData.torchicHeadShakeAnimActive)
+                        gOptionsData.torchicHeadShakeAnimActive = TRUE;
 
                     gOptionsData.torchicAnimTimer = 0;
                     gOptionsData.torchicAnimFrame = 0;
@@ -343,7 +343,7 @@ void Options_HandleInput(void)
             m4aMPlayAllStop();
             m4aSongNumStart(SE_MENU_CANCEL);
             gOptionsData.soundTestBlinkToggle = 0;
-            gOptionsData.soundTestActive = 0;
+            gOptionsData.soundTestActive = FALSE;
             gOptionsData.stateMain = OPTIONS_STATE_MAIN;
         }
         if (!(gMain.systemFrameCount & 7))
@@ -394,7 +394,7 @@ void Options_HandleInput(void)
             m4aMPlayAllStop();
             m4aSongNumStart(SE_MENU_CANCEL);
             gOptionsData.soundTestBlinkToggle = 0;
-            gOptionsData.soundTestActive = 0;
+            gOptionsData.soundTestActive = FALSE;
             gOptionsData.stateMain = OPTIONS_STATE_MAIN;
         }
         if (!(gMain.systemFrameCount & 7))
@@ -470,7 +470,7 @@ void Options_HandleInput(void)
         }
         break;
     }
-    if (gOptionsData.torchicHeadShakeAnimActive == 1)
+    if (gOptionsData.torchicHeadShakeAnimActive == TRUE)
     {
         if (++gOptionsData.torchicAnimTimer > gButtonAnimData[gOptionsData.torchicAnimFrame].frameDuration)
         {
@@ -480,7 +480,7 @@ void Options_HandleInput(void)
             {
                 gOptionsData.torchicAnimFrame = 0;
                 gOptionsData.torchicAnimTileId = 0;
-                gOptionsData.torchicHeadShakeAnimActive = 0;
+                gOptionsData.torchicHeadShakeAnimActive = FALSE;
             }
             gOptionsData.torchicAnimTileId = gButtonAnimData[gOptionsData.torchicAnimFrame].tileId;
         }

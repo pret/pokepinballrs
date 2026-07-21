@@ -351,9 +351,9 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                 // Chikorita Firing button
                 gCurrentPinballGame->scoreAddedInFrame = 1000;
 
-                if (gCurrentPinballGame->chikoritaFlashActive == 0)
+                if (!gCurrentPinballGame->chikoritaFlashActive)
                 {
-                    gCurrentPinballGame->chikoritaFlashActive = 1;
+                    gCurrentPinballGame->chikoritaFlashActive = TRUE;
                     gCurrentPinballGame->chikoritaFlashTimer = 0;
                 }
             }
@@ -364,7 +364,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         break;
     case RUBY_TRIGGER_BALL_LAUNCH_POSITION:
         gCurrentPinballGame->ballInLaunchChute = TRUE;
-        gCurrentPinballGame->ballTouchingSpoink = 1;
+        gCurrentPinballGame->ballTouchingSpoink = TRUE;
         gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_LAUNCH_CHUTE;
         return;
     case RUBY_TRIGGER_CLOSE_LAUNCH_LANE:
@@ -471,19 +471,19 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         else if (gCurrentPinballGame->ball->positionQ0.x <= 126)
         {
             // Left Ball Upgrade rollover
-            if (gCurrentPinballGame->ballPowerUpLight[0] == 0)
+            if (!gCurrentPinballGame->ballPowerUpLight[0])
                 gCurrentPinballGame->scoreAddedInFrame = 1000;
 
-            gCurrentPinballGame->ballPowerUpLight[0] = 1;
+            gCurrentPinballGame->ballPowerUpLight[0] = TRUE;
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_LEFT_BALL_UPGRADE_LANE;
 
-            if (gCurrentPinballGame->ballPowerUpAnimActive == 0)
+            if (!gCurrentPinballGame->ballPowerUpAnimActive)
             {
                 if (!(gCurrentPinballGame->ballPowerUpLight[1] &
                       gCurrentPinballGame->ballPowerUpLight[2]))
                     return;
 
-                gCurrentPinballGame->ballPowerUpAnimActive = 1;
+                gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
                 gCurrentPinballGame->ballShadowTimer = 60;
                 gCurrentPinballGame->scoreAddedInFrame = 4000;
                 return;
@@ -493,20 +493,20 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         else if (gCurrentPinballGame->ball->positionQ0.x <= 148)
         {
             // Middle Ball Upgrade rollover
-            if (gCurrentPinballGame->ballPowerUpLight[1] == 0)
+            if (!gCurrentPinballGame->ballPowerUpLight[1])
                 gCurrentPinballGame->scoreAddedInFrame = 1000;
 
-            gCurrentPinballGame->ballPowerUpLight[1] = 1;
+            gCurrentPinballGame->ballPowerUpLight[1] = TRUE;
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_CENTER_BALL_UPGRADE_LANE;
 
-            if (gCurrentPinballGame->ballPowerUpAnimActive != 0)
+            if (gCurrentPinballGame->ballPowerUpAnimActive)
                 return;
 
             if (!(gCurrentPinballGame->ballPowerUpLight[0] &
                     gCurrentPinballGame->ballPowerUpLight[2]))
                 return;
 
-            gCurrentPinballGame->ballPowerUpAnimActive = 1;
+            gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
             gCurrentPinballGame->ballShadowTimer = 60;
             gCurrentPinballGame->scoreAddedInFrame = 4000;
             return;
@@ -514,20 +514,20 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         else if (gCurrentPinballGame->ball->positionQ0.x <= 172)
         {
             // Right Ball Upgrade rollover
-            if (gCurrentPinballGame->ballPowerUpLight[2] == 0)
+            if (!gCurrentPinballGame->ballPowerUpLight[2])
                 gCurrentPinballGame->scoreAddedInFrame = 1000;
 
-            gCurrentPinballGame->ballPowerUpLight[2] = 1;
+            gCurrentPinballGame->ballPowerUpLight[2] = TRUE;
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_RIGHT_BALL_UPGRADE_LANE;
 
-            if (gCurrentPinballGame->ballPowerUpAnimActive != 0)
+            if (gCurrentPinballGame->ballPowerUpAnimActive)
                 return;
 
             if (!(gCurrentPinballGame->ballPowerUpLight[0] &
                     gCurrentPinballGame->ballPowerUpLight[1]))
                 return;
 
-            gCurrentPinballGame->ballPowerUpAnimActive = 1;
+            gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
             gCurrentPinballGame->ballShadowTimer = 60;
             gCurrentPinballGame->scoreAddedInFrame = 4000;
             return;
@@ -552,7 +552,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                     MPlayStart(&gMPlayInfo_SE1, &se_evo_get_arrow_earned);
 
                     if (gCurrentPinballGame->catchArrowProgress > 1)
-                        gCurrentPinballGame->catchProgressFlashing = 1;
+                        gCurrentPinballGame->catchProgressFlashing = TRUE;
                 }
 
                 gCurrentPinballGame->travelRolloverTriggerHitZone = TRAVEL_ROLLOVER_TRIGGER_HIT_ZONE_RIGHT;
@@ -588,11 +588,11 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             // H rollover trigger
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_H_OUTLANE;
 
-            if (gCurrentPinballGame->holeIndicators[0] != 0)
+            if (gCurrentPinballGame->holeIndicators[0])
                 return;
 
             gCurrentPinballGame->scoreAddedInFrame = 1000;
-            gCurrentPinballGame->holeIndicators[0] = 1;
+            gCurrentPinballGame->holeIndicators[0] = TRUE;
 
             if (gCurrentPinballGame->allHolesLit)
                 return;
@@ -612,11 +612,11 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             // O rollover trigger
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_O_INLANE;
 
-            if (gCurrentPinballGame->holeIndicators[1] != 0)
+            if (gCurrentPinballGame->holeIndicators[1])
                 return;
 
             gCurrentPinballGame->scoreAddedInFrame = 1000;
-            gCurrentPinballGame->holeIndicators[1] = 1;
+            gCurrentPinballGame->holeIndicators[1] = TRUE;
 
             if (gCurrentPinballGame->allHolesLit)
                 return;
@@ -636,11 +636,11 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             // L rollover trigger
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_L_INLANE;
 
-            if (gCurrentPinballGame->holeIndicators[2] != 0)
+            if (gCurrentPinballGame->holeIndicators[2])
                 return;
 
             gCurrentPinballGame->scoreAddedInFrame = 1000;
-            gCurrentPinballGame->holeIndicators[2] = 1;
+            gCurrentPinballGame->holeIndicators[2] = TRUE;
 
             if (gCurrentPinballGame->allHolesLit)
                 return;
@@ -660,11 +660,11 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             // E rollover trigger
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_E_OUTLANE;
 
-            if (gCurrentPinballGame->holeIndicators[3] != 0)
+            if (gCurrentPinballGame->holeIndicators[3])
                 return;
 
             gCurrentPinballGame->scoreAddedInFrame = 1000;
-            gCurrentPinballGame->holeIndicators[3] = 1;
+            gCurrentPinballGame->holeIndicators[3] = TRUE;
 
             if (gCurrentPinballGame->allHolesLit)
                 return;
@@ -724,8 +724,8 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                     gCurrentPinballGame->oneUpAnimTimer = 90;
                 else
                 {
-                    gCurrentPinballGame->ballPowerUpOverride = 1;
-                    gCurrentPinballGame->ballPowerUpAnimActive = 1;
+                    gCurrentPinballGame->ballPowerUpOverride = TRUE;
+                    gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
                     gCurrentPinballGame->ballShadowTimer = 60;
                     m4aSongNumStart(SE_RAMP_PRIZE_COLLECTED);
                 }
@@ -774,7 +774,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         }
         break;
     case RUBY_TRIGGER_CYNDAQUIL_LOW_POSITION:
-        if (gCurrentPinballGame->cyndaquilCollisionEnabled == 0)
+        if (!gCurrentPinballGame->cyndaquilCollisionEnabled)
             return;
 
         if (gCurrentPinballGame->collisionCooldownTimer != 0)
@@ -785,7 +785,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
 
         gCurrentPinballGame->eggCaveState++;
 
-        gCurrentPinballGame->cyndaquilCollisionEnabled = 0;
+        gCurrentPinballGame->cyndaquilCollisionEnabled = FALSE;
         gCurrentPinballGame->collisionSurfaceType = 0;
         gCurrentPinballGame->collisionResponseType = 2;
 
@@ -796,7 +796,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         PlayRumble(7);
         return;
     case RUBY_TRIGGER_CYNDAQUIL_MID_POSITION:
-        if (gCurrentPinballGame->cyndaquilCollisionEnabled == 0)
+        if (!gCurrentPinballGame->cyndaquilCollisionEnabled)
             return;
 
         if (gCurrentPinballGame->collisionCooldownTimer != 0)
@@ -806,7 +806,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             return;
 
         gCurrentPinballGame->eggCaveState++;
-        gCurrentPinballGame->cyndaquilCollisionEnabled = 0;
+        gCurrentPinballGame->cyndaquilCollisionEnabled = FALSE;
         gCurrentPinballGame->collisionSurfaceType = 0;
         gCurrentPinballGame->collisionResponseType = 2;
         *collisionAngle = 0xCC00;
@@ -843,16 +843,16 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                     *hasCollisionImpact = TRUE;
 
                     m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
-                    gCurrentPinballGame->eggCaveReEntryFlag = 1;
+                    gCurrentPinballGame->eggCaveReEntryFlag = TRUE;
                     PlayRumble(7);
                     return;
                 }
             }
         }
-        else if (gCurrentPinballGame->cyndaquilCollisionEnabled != 0 && gCurrentPinballGame->eggCaveState == 2)
+        else if (gCurrentPinballGame->cyndaquilCollisionEnabled && gCurrentPinballGame->eggCaveState == 2)
         {
             gCurrentPinballGame->eggCaveState++;
-            gCurrentPinballGame->cyndaquilCollisionEnabled = 0;
+            gCurrentPinballGame->cyndaquilCollisionEnabled = FALSE;
             gCurrentPinballGame->collisionSurfaceType = 0;
             gCurrentPinballGame->collisionResponseType = 2;
             *collisionAngle = 0xC800;

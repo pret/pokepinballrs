@@ -2,6 +2,7 @@
 #define GUARD_CONSTANTS_MAIN_BOARD_H
 
 #include "center_screen_states.h"
+#include "../anglemath.h"
 
 enum MainBoardTrapHoles{
     NOT_TRAPPED = 0,

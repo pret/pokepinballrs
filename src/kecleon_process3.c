@@ -67,7 +67,7 @@ void KecleonBoardProcess_3A_35860(void)
     gCurrentPinballGame->ballRespawnTimer = 0;
     gCurrentPinballGame->ball->ballHidden = TRUE;
     gCurrentPinballGame->returnToMainBoardFlag = FALSE;
-    gCurrentPinballGame->kecleonTargetVisible = 1;
+    gCurrentPinballGame->kecleonTargetVisible = TRUE;
     gCurrentPinballGame->bossEntityState = KECLEON_ENTITY_STATE_SPAWN;
     gCurrentPinballGame->bossPositionX = 750;
     gCurrentPinballGame->bossPositionY = 360;
@@ -82,12 +82,12 @@ void KecleonBoardProcess_3A_35860(void)
     gCurrentPinballGame->kecleonTargetState = 0;
     gCurrentPinballGame->kecleonTargetFrameIndex = 0;
     gCurrentPinballGame->kecleonFallDirection = 0;
-    gCurrentPinballGame->kecleonCollisionEnabled = 0;
+    gCurrentPinballGame->kecleonCollisionEnabled = FALSE;
     gCurrentPinballGame->kecleonCamoStrength = 0;
     gCurrentPinballGame->kecleonDustGfxFrame = 0;
     gCurrentPinballGame->kecleonBoardHitState = 0;
     gCurrentPinballGame->kecleonHitFrameIndex = 0;
-    gCurrentPinballGame->kecleonTargetActive = 0;
+    gCurrentPinballGame->kecleonTargetActive = FALSE;
     gCurrentPinballGame->kecleonAnimTimer = 0;
     gCurrentPinballGame->kecleonCollisionX = 0;
     gCurrentPinballGame->kecleonCollisionY = 0;
@@ -221,7 +221,7 @@ void KecleonBoardProcess_3B_35AA4(void)
         m4aSongNumStart(MUS_END_OF_BALL3);
         gCurrentPinballGame->kecleonBoardHitState = 0;
         gCurrentPinballGame->kecleonAnimTimer = 0;
-        gCurrentPinballGame->kecleonTargetActive = 0;
+        gCurrentPinballGame->kecleonTargetActive = FALSE;
         gMain.modeChangeFlags |= MODE_CHANGE_EXPIRED_BONUS;
     }
 
@@ -333,7 +333,7 @@ void UpdateKecleonEntityLogic(void)
         deltaVec.x = gCurrentPinballGame->bossTargetXPosition - gCurrentPinballGame->bossPositionX;
         deltaVec.y = gCurrentPinballGame->bossTargetYPosition - gCurrentPinballGame->bossPositionY;
         angle = ArcTan2(deltaVec.x, -deltaVec.y);
-        gCurrentPinballGame->kecleonFramesetBase = gKecleonVisibleWalkDirectionMap[angle / 0x2000];
+        gCurrentPinballGame->kecleonFramesetBase = gKecleonVisibleWalkDirectionMap[angle / ANGLE_45];
         gCurrentPinballGame->bossFramesetIndex = gCurrentPinballGame->kecleonFramesetBase;
         gCurrentPinballGame->bossFrameTimer = 0;
         gCurrentPinballGame->bossEntityState = KECLEON_ENTITY_STATE_WALK_TO_TARGET;
@@ -399,7 +399,7 @@ void UpdateKecleonEntityLogic(void)
             deltaVec.x = gCurrentPinballGame->bossTargetXPosition - gCurrentPinballGame->bossPositionX;
             deltaVec.y = gCurrentPinballGame->bossTargetYPosition - gCurrentPinballGame->bossPositionY;
             angle = ArcTan2(deltaVec.x, -deltaVec.y);
-            gCurrentPinballGame->kecleonFramesetBase = gKecleonInvisibleDashDirectionMap[angle / 0x2000];
+            gCurrentPinballGame->kecleonFramesetBase = gKecleonInvisibleDashDirectionMap[angle / ANGLE_45];
             gCurrentPinballGame->bossFramesetIndex = gCurrentPinballGame->kecleonFramesetBase;
             gCurrentPinballGame->bossEntityState = KECLEON_ENTITY_STATE_RUN_TO_TARGET;
         }
@@ -645,7 +645,7 @@ void UpdateKecleonEntityLogic(void)
                     gCurrentPinballGame->bossEntityState = KECLEON_ENTITY_STATE_RISE_FROM_DOWN;
                     gCurrentPinballGame->kecleonBoardHitState = 0;
                     gCurrentPinballGame->kecleonAnimTimer = 0;
-                    gCurrentPinballGame->kecleonTargetActive = 0;
+                    gCurrentPinballGame->kecleonTargetActive = FALSE;
                     gCurrentPinballGame->boardEntityCollisionMode = KECLEON_COLLISION_MODE_NONE;
                 }
             }
@@ -820,11 +820,11 @@ void RenderKecleonSprites(void)
     gCurrentPinballGame->kecleonCollisionPos.x = (gCurrentPinballGame->bossPositionX / 10) + 120;
     gCurrentPinballGame->kecleonCollisionPos.y = (gCurrentPinballGame->bossPositionY / 10) + 58;
     if (gCurrentPinballGame->kecleonFrameTimer > 7)
-        gCurrentPinballGame->kecleonTargetVisible = 1;
+        gCurrentPinballGame->kecleonTargetVisible = TRUE;
     else if (gCurrentPinballGame->kecleonCamoStrength > 15)
-        gCurrentPinballGame->kecleonTargetVisible = 0;
+        gCurrentPinballGame->kecleonTargetVisible = FALSE;
     else
-        gCurrentPinballGame->kecleonTargetVisible = 1;
+        gCurrentPinballGame->kecleonTargetVisible = TRUE;
 
     for (i = 0; i < 2; i++)
     {
@@ -918,9 +918,9 @@ void RenderKecleonSprites(void)
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + spriteGroup->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + spriteGroup->baseY;
     if (gCurrentPinballGame->kecleonFallDirection == 0)
-        gOamBuffer[oamSimple->oamId].hFlip = 0;
+        gOamBuffer[oamSimple->oamId].hFlip = FALSE;
     else
-        gOamBuffer[oamSimple->oamId].hFlip = 1;
+        gOamBuffer[oamSimple->oamId].hFlip = TRUE;
 }
 
 
@@ -975,7 +975,7 @@ void UpdateKecleonScopeItem(void)
             if (squaredDistance <= 120)
             {
                 gCurrentPinballGame->kecleonBoardHitState = 0;
-                gCurrentPinballGame->kecleonTargetActive = 1;
+                gCurrentPinballGame->kecleonTargetActive = TRUE;
                 gCurrentPinballGame->kecleonAnimTimer = 0;
                 gCurrentPinballGame->scoreAddedInFrame = 10000;
                 m4aSongNumStart(SE_KECLEON_SCOPE_ACTIVATED);
@@ -1021,7 +1021,7 @@ void UpdateKecleonScopeVision(void)
         else
         {
             gCurrentPinballGame->kecleonAnimTimer = 0;
-            gCurrentPinballGame->kecleonTargetActive = 0;
+            gCurrentPinballGame->kecleonTargetActive = FALSE;
         }
     }
 

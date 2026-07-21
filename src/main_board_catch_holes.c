@@ -6,7 +6,7 @@
 
 void UpdateShopEntryAnimation(s16 arg0)
 {
-    int var_r7 = 0;
+    int showSelectionUI = FALSE;
 
     if (gMain.modeChangeFlags == MODE_CHANGE_NONE && gCurrentPinballGame->shopEntryTimer != 0)
         gCurrentPinballGame->shopEntryTimer--;
@@ -17,7 +17,7 @@ void UpdateShopEntryAnimation(s16 arg0)
         {
             m4aMPlayAllStop();
             gCurrentPinballGame->outcomeFrameCounter = 0;
-            gCurrentPinballGame->prizeSelected = 0;
+            gCurrentPinballGame->prizeSelected = FALSE;
             gCurrentPinballGame->shopOutcomeRepeatCount = 0;
             gCurrentPinballGame->catchModeEventTimer = 0;
             gMain.blendControl = 206;
@@ -96,14 +96,14 @@ void UpdateShopEntryAnimation(s16 arg0)
             gMain.bgOffsets[0].yOffset = 80;
             gMain.shopPanelSlideOffset = 0;
             gCurrentPinballGame->shopAnimSlideTimer = 15;
-            gMain.shopPanelActive = 1;
+            gMain.shopPanelActive = TRUE;
 
             m4aSongNumStart(SE_SHOP_LIST_REVEAL);
 
             if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)
-                gCurrentPinballGame->shopPikaSaverMaxed = 1;
+                gCurrentPinballGame->shopPikaSaverMaxed = TRUE;
             else
-                gCurrentPinballGame->shopPikaSaverMaxed = 0;
+                gCurrentPinballGame->shopPikaSaverMaxed = FALSE;
         }
 
         if (gCurrentPinballGame->shopEntryTimer <= 144)
@@ -111,7 +111,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gCurrentPinballGame->rouletteSubOffset = 0;
             gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_SHOP;
             gCurrentPinballGame->creatureOamPriority = 0;
-            var_r7 = 0;
+            showSelectionUI = FALSE;
 
             if (gCurrentPinballGame->shopAnimSlideTimer > 0)
             {
@@ -139,7 +139,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                             gCurrentPinballGame->shopSelectedItemId = gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor];
 
                         LoadPortraitGraphics(PORTRAIT_STATE_SHOP_SELECTOR, PORTRAIT_MAIN_SLOT);
-                        var_r7 = 1;
+                        showSelectionUI = TRUE;
                     }
                 }
                 else
@@ -147,7 +147,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             }
             else
             {
-                if (JOY_NEW(DPAD_LEFT) && gCurrentPinballGame->prizeSelected == 0)
+                if (JOY_NEW(DPAD_LEFT) && !gCurrentPinballGame->prizeSelected)
                 {
                     m4aSongNumStart(SE_EVO_SELECTION_MOVE);
 
@@ -162,7 +162,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                 if (JOY_NEW(DPAD_RIGHT))
                 {
-                    if (gCurrentPinballGame->prizeSelected == 0)
+                    if (!gCurrentPinballGame->prizeSelected)
                     {
                         m4aSongNumStart(SE_EVO_SELECTION_MOVE);
 
@@ -177,7 +177,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 }
             }
 
-            RenderEvolutionUI(var_r7);
+            RenderEvolutionUI(showSelectionUI);
 
             if (gCurrentPinballGame->shopSlideDirection != 0)
             {
@@ -198,7 +198,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             {
                 if (gMain.shopPanelSlideOffset > 0 && --gMain.shopPanelSlideOffset == 0)
                 {
-                    gMain.shopPanelActive = 0;
+                    gMain.shopPanelActive = FALSE;
                     gMain.vCount = 144;
                 }
             }
@@ -208,7 +208,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
         if (gCurrentPinballGame->shopAnimSlideTimer <= 0 && gMain.shopPanelSlideOffset > 19)
         {
-            if (JOY_NEW(A_BUTTON) && gCurrentPinballGame->prizeSelected == 0)
+            if (JOY_NEW(A_BUTTON) && !gCurrentPinballGame->prizeSelected)
             {
                 s16 price;
                 const u16 *itemData = gShopItemData[gCurrentPinballGame->shopSelectedItemId];
@@ -224,7 +224,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                 if (gCurrentPinballGame->coins >= price)
                 {
-                    gCurrentPinballGame->prizeSelected = 1;
+                    gCurrentPinballGame->prizeSelected = TRUE;
                     gCurrentPinballGame->prizeId = gCurrentPinballGame->shopSelectedItemId;
                     gCurrentPinballGame->coins -= price;
 
@@ -237,7 +237,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 else
                     m4aSongNumStart(SE_FAILURE);
             }
-            else if (JOY_NEW(B_BUTTON) && gCurrentPinballGame->prizeSelected == 0)
+            else if (JOY_NEW(B_BUTTON) && !gCurrentPinballGame->prizeSelected)
             {
                 gCurrentPinballGame->catchModeEventTimer = 30;
                 gCurrentPinballGame->shopAnimSlideTimer = 30;
@@ -245,7 +245,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             }
         }
 
-        if (gCurrentPinballGame->prizeSelected != 0)
+        if (gCurrentPinballGame->prizeSelected)
         {
             GivePrize();
 
@@ -255,7 +255,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->shopAnimSlideTimer = 30;
 
                 if (gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor] == PRIZE_EXTRA_BALL)
-                    gCurrentPinballGame->shopExtraBallPreviouslyPurchased = 1;
+                    gCurrentPinballGame->shopExtraBallPreviouslyPurchased = TRUE;
             }
         }
 
@@ -341,7 +341,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                 gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
                 gCurrentPinballGame->creatureOamPriority = 3;
-                gCurrentPinballGame->prizeSelected = 0;
+                gCurrentPinballGame->prizeSelected = FALSE;
 
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS]->active = FALSE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = FALSE;
@@ -384,7 +384,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->evolvingPartyIndex = 0;
                 gCurrentPinballGame->shopItemCursor = 0;
                 gCurrentPinballGame->evoChainPosition = 0;
-                gCurrentPinballGame->evoNameSlideOnly = 0;
+                gCurrentPinballGame->evoNameSlideOnly = FALSE;
                 gCurrentPinballGame->evoFormAlternateTimer = 0;
             }
 
@@ -421,7 +421,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 else
                     m4aSongNumStart(MUS_EVO_MODE2);
 
-                RenderEvolutionUI(var_r7);
+                RenderEvolutionUI(showSelectionUI);
 
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = TRUE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
@@ -432,7 +432,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gMain.bgOffsets[0].yOffset = 80;
                 gMain.shopPanelSlideOffset = 0;
                 gCurrentPinballGame->shopAnimSlideTimer = 15;
-                gMain.shopPanelActive = 1;
+                gMain.shopPanelActive = TRUE;
 
                 DmaCopy16(3, &gEvoModeBG_Gfx, VRAM + 0x2000, 0xC40);
             }
@@ -447,7 +447,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 {
                     gCurrentPinballGame->shopAnimSlideTimer--;
 
-                    if (gCurrentPinballGame->evoNameSlideOnly != 0)
+                    if (gCurrentPinballGame->evoNameSlideOnly)
                     {
                         if (gCurrentPinballGame->shopAnimSlideTimer == 15)
                             LoadPokemonNameGraphics();
@@ -485,7 +485,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                             gCurrentPinballGame->shopSlideDirection = 1;
                             gCurrentPinballGame->shopAnimSlideTimer = 30;
                             gCurrentPinballGame->evoChainPosition = 0;
-                            gCurrentPinballGame->evoNameSlideOnly = 0;
+                            gCurrentPinballGame->evoNameSlideOnly = FALSE;
                             gCurrentPinballGame->evoChainMaxStage = 0;
                             stage1Evo = gSpeciesInfo[gCurrentPinballGame->currentSpecies].evolutionTarget;
 
@@ -514,7 +514,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                             gCurrentPinballGame->shopSlideDirection = 0;
                             gCurrentPinballGame->shopAnimSlideTimer = 30;
                             gCurrentPinballGame->evoChainPosition = 0;
-                            gCurrentPinballGame->evoNameSlideOnly = 0;
+                            gCurrentPinballGame->evoNameSlideOnly = FALSE;
                             gCurrentPinballGame->evoChainMaxStage = 0;
                             stage1Evo = gSpeciesInfo[gCurrentPinballGame->currentSpecies].evolutionTarget;
 
@@ -540,7 +540,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                                 m4aSongNumStart(SE_EVO_SELECTION_MOVE);
                                 gCurrentPinballGame->evoTargetSpecies = evoTarget;
                                 gCurrentPinballGame->shopAnimSlideTimer = 30;
-                                gCurrentPinballGame->evoNameSlideOnly = 1;
+                                gCurrentPinballGame->evoNameSlideOnly = TRUE;
                                 gCurrentPinballGame->evoChainPosition++;
                             }
                         }
@@ -553,7 +553,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                                 m4aSongNumStart(SE_EVO_SELECTION_MOVE);
                                 gCurrentPinballGame->evoTargetSpecies = evoTarget;
                                 gCurrentPinballGame->shopAnimSlideTimer = 30;
-                                gCurrentPinballGame->evoNameSlideOnly = 1;
+                                gCurrentPinballGame->evoNameSlideOnly = TRUE;
                                 gCurrentPinballGame->evoChainPosition++;
                             }
                         }
@@ -571,7 +571,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                                 m4aSongNumStart(SE_EVO_SELECTION_MOVE);
                                 gCurrentPinballGame->evoTargetSpecies = evoTarget;
                                 gCurrentPinballGame->shopAnimSlideTimer = 30;
-                                gCurrentPinballGame->evoNameSlideOnly = 1;
+                                gCurrentPinballGame->evoNameSlideOnly = TRUE;
                                 gCurrentPinballGame->evoChainPosition--;
                             }
                         }
@@ -584,7 +584,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                                 m4aSongNumStart(SE_EVO_SELECTION_MOVE);
                                 gCurrentPinballGame->evoTargetSpecies = evoTarget;
                                 gCurrentPinballGame->shopAnimSlideTimer = 30;
-                                gCurrentPinballGame->evoNameSlideOnly = 1;
+                                gCurrentPinballGame->evoNameSlideOnly = TRUE;
                                 gCurrentPinballGame->evoChainPosition--;
                             }
                         }
@@ -674,7 +674,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 {
                     if (gMain.shopPanelSlideOffset > 0 && --gMain.shopPanelSlideOffset == 0)
                     {
-                        gMain.shopPanelActive = 0;
+                        gMain.shopPanelActive = FALSE;
                         gMain.vCount = 144;
                     }
                 }
@@ -687,7 +687,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             if (gCurrentPinballGame->shopAnimSlideTimer <= 0 && gMain.shopPanelSlideOffset > 19 && JOY_NEW(A_BUTTON) == A_BUTTON)
             {
                 gCurrentPinballGame->catchModeEventTimer = 30;
-                gCurrentPinballGame->evoNameSlideOnly = 0;
+                gCurrentPinballGame->evoNameSlideOnly = FALSE;
                 gCurrentPinballGame->shopAnimSlideTimer = 30;
                 m4aSongNumStart(SE_EVO_SELECTION_CONFIRM);
             }
@@ -778,7 +778,7 @@ void InitCenterTrapMode(void)
 {
     gCurrentPinballGame->modeAnimTimer = 0x96;
     gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
-    gCurrentPinballGame->bonusTrapEnabled = 0;
+    gCurrentPinballGame->bonusTrapEnabled = FALSE;
     gCurrentPinballGame->scoreAddedInFrame = 10000;
     gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
     PlayRumble(8);

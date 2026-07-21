@@ -101,7 +101,7 @@ void RevealCatchTilesSequential(void)
                 {
                     gCurrentPinballGame->catchTilesBoardAcknowledged = 0;
                     gCurrentPinballGame->catchSequentialTilesRevealed = 0;
-                    gCurrentPinballGame->catchTilesBumperAcknowledged = 0;
+                    gCurrentPinballGame->catchTilesBumperAcknowledgedCount = 0;
                     for (i = 0; i < 6; i++)
                         gCurrentPinballGame->catchTileShufflePool[i] = i;
 
@@ -348,7 +348,7 @@ void RevealCatchTilesBurst(void)
                 gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = FALSE;
                 gCurrentPinballGame->catchTilesBoardAcknowledged = 0;
                 gCurrentPinballGame->catchSequentialTilesRevealed = 0;
-                gCurrentPinballGame->catchTilesBumperAcknowledged = 0;
+                gCurrentPinballGame->catchTilesBumperAcknowledgedCount = 0;
                 gMain.blendControl = 0xCE;
                 gMain.blendBrightness = 0;
                 gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = FALSE;

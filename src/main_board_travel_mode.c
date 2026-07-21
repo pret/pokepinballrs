@@ -19,13 +19,13 @@ void CleanupTravelModeState(void)
         gCurrentPinballGame->gulpinAnimFrameTimer = 0;
     }
 
-    gCurrentPinballGame->seedotExitSequenceActive = 1;
+    gCurrentPinballGame->seedotExitSequenceActive = TRUE;
     gCurrentPinballGame->seedotExitSequenceTimer = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
     gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     gCurrentPinballGame->trapAnimState = 0;
-    gCurrentPinballGame->bonusTrapEnabled = 0;
+    gCurrentPinballGame->bonusTrapEnabled = FALSE;
     gCurrentPinballGame->prevTravelArrowTiles[0] = gCurrentPinballGame->travelArrowTiles[0] = 0;
     gCurrentPinballGame->prevTravelArrowTiles[1] = gCurrentPinballGame->travelArrowTiles[1] = 0;
     gCurrentPinballGame->prevTravelArrowTiles[2] = gCurrentPinballGame->travelArrowTiles[2] = 0;
@@ -79,7 +79,7 @@ void UpdateTravelMode(void)
                 m4aSongNumStart(MUS_TRAVEL_MODE);
 
             gCurrentPinballGame->seedotCount = 0;
-            gCurrentPinballGame->seedotExitSequenceActive = 1;
+            gCurrentPinballGame->seedotExitSequenceActive = TRUE;
             gCurrentPinballGame->seedotExitSequenceTimer = 0;
         }
 

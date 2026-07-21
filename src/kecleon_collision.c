@@ -295,7 +295,7 @@ void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *kecleonPos
     s32 boardLayer;
     u32 some_enum;
 
-    gCurrentPinballGame->kecleonCollisionEnabled = 1;
+    gCurrentPinballGame->kecleonCollisionEnabled = TRUE;
     vec1.x = kecleonPosition->x / 8;
     vec1.y = kecleonPosition->y / 8;
     vec2.x = kecleonPosition->x % 8;
@@ -366,7 +366,7 @@ void ProcessKecleonSkulkingDisturbanceCollisionEvent(struct Vector16 *kecleonPos
             }
             break;
         case KECLEON_TRIGGER_WATER:
-            gCurrentPinballGame->kecleonCollisionEnabled = 0;
+            gCurrentPinballGame->kecleonCollisionEnabled = FALSE;
             if (gCurrentPinballGame->kecleonWaterCollisionTimer == 0)
             {
                 if (gCurrentPinballGame->kecleonCollisionPos.x != gCurrentPinballGame->kecleonWaterTileCollisionPosition[0].x || gCurrentPinballGame->kecleonCollisionPos.y != gCurrentPinballGame->kecleonWaterTileCollisionPosition[0].y)

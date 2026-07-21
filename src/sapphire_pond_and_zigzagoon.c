@@ -372,7 +372,7 @@ void UpdateZigzagoonEntity(void)
     case 0:
         gCurrentPinballGame->zigzagoonGfxFrame = (gCurrentPinballGame->globalAnimFrameCounter % 50) / 25 + 2;
         gCurrentPinballGame->zigzagoonOamFrame = gCurrentPinballGame->zigzagoonGfxFrame + 1;
-        gCurrentPinballGame->zigzagoonShockWallActive = 0;
+        gCurrentPinballGame->zigzagoonShockWallActive = FALSE;
         break;
     case 1:
         var0 = gCurrentPinballGame->globalAnimFrameCounter % 33;
@@ -398,10 +398,10 @@ void UpdateZigzagoonEntity(void)
         }
 
         if (gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE)
-            gCurrentPinballGame->zigzagoonShockWallActive = 0;
+            gCurrentPinballGame->zigzagoonShockWallActive = FALSE;
         break;
     case 2:
-        gCurrentPinballGame->zigzagoonShockWallActive = 0;
+        gCurrentPinballGame->zigzagoonShockWallActive = FALSE;
         gCurrentPinballGame->zigzagoonAnimKeyframeIndex = 0;
         gCurrentPinballGame->sapphireBumperAnimFrame = 0;
         gCurrentPinballGame->zigzagoonState = 3;

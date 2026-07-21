@@ -29,7 +29,7 @@ void RubyBoardProcess_3A_19A20(void)
     AnimateSharpedoEntity();
 
     gCurrentPinballGame->pikachuSpinFrame = 0;
-    gCurrentPinballGame->pikachuSpinPrevFrame = 1;
+    gCurrentPinballGame->pikachuSpinPrevFrame = TRUE;
     UpdatePikachuChargeCounter();
     ProcessChargeIndicator();
     DrawPikachuSpinner();

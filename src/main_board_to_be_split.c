@@ -58,7 +58,7 @@ void ResetCatchState(s16 resetHoleIndicators)
     }
 
     gCurrentPinballGame->trapAnimState = 0;
-    gCurrentPinballGame->bonusTrapEnabled = 0;
+    gCurrentPinballGame->bonusTrapEnabled = FALSE;
     if (gCurrentPinballGame->boardTransitionPhase != BOARD_STATE_DISPATCHER_STATE_CHANGING
         || gCurrentPinballGame->nextBoardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE)
     {
@@ -78,7 +78,7 @@ void InitCatchTrigger(void)
 {
     gCurrentPinballGame->boardSubState = BONUS_HOLE_SUBSTATE_OPEN_TRAP_DOOR;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->prizeSelected = 0;
+    gCurrentPinballGame->prizeSelected = FALSE;
 }
 
 void UpdateCatchTrigger(void)
@@ -113,7 +113,7 @@ void UpdateCatchTrigger(void)
         break;
     case BONUS_HOLE_SUBSTATE_START_ROULETTE:
         gCurrentPinballGame->allHolesLit = FALSE;
-        gCurrentPinballGame->holeIndicators[0] = 0;
+        gCurrentPinballGame->holeIndicators[0] = FALSE;
         gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
@@ -174,7 +174,7 @@ void UpdateCatchTrigger(void)
 void FullCatchStateCleanup(void)
 {
     gCurrentPinballGame->trapAnimState = 0;
-    gCurrentPinballGame->bonusTrapEnabled = 0;
+    gCurrentPinballGame->bonusTrapEnabled = FALSE;
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
     gCurrentPinballGame->evoItemCount = 0;
@@ -377,7 +377,7 @@ void ShowBonusTrapSprite(void)
 {
     DmaCopy16(3, gMainStageBonusTrap_Gfx[0], (void *)0x060113C0, 0x300);
     gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = TRUE;
-    gCurrentPinballGame->bonusTrapEnabled = 1;
+    gCurrentPinballGame->bonusTrapEnabled = TRUE;
 }
 
 void AnimateBonusTrapSprite(void)
@@ -499,24 +499,25 @@ void UpdateRubyEvolutionShopSprite(void)
     s16 index;
 
     group = &gMain.spriteGroups[SG_RUBY_SHOP_SIGN_CHANGE];
-    if (gCurrentPinballGame->shopTransitionActive == 0)
+    if (!gCurrentPinballGame->shopTransitionActive)
     {
         if (gCurrentPinballGame->evoArrowProgress > 2)
         {
-            if (gCurrentPinballGame->evolvablePartySize > 0 && gCurrentPinballGame->evolutionShopActive == 0)
+            if (gCurrentPinballGame->evolvablePartySize > 0 
+                && !gCurrentPinballGame->evolutionShopActive)
             {
-                gCurrentPinballGame->shopTransitionActive = 1;
+                gCurrentPinballGame->shopTransitionActive = TRUE;
                 gCurrentPinballGame->shopAnimTimer = 0;
-                gCurrentPinballGame->evolutionShopActive = 1;
+                gCurrentPinballGame->evolutionShopActive = TRUE;
             }
         }
         else if (gCurrentPinballGame->boardState != MAIN_BOARD_STATE_EVO_MODE
-            && gCurrentPinballGame->evolutionShopActive == 1
+            && gCurrentPinballGame->evolutionShopActive == TRUE
             && gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE)
         {
-            gCurrentPinballGame->shopTransitionActive = 1;
+            gCurrentPinballGame->shopTransitionActive = TRUE;
             gCurrentPinballGame->shopAnimTimer = 0;
-            gCurrentPinballGame->evolutionShopActive = 0;
+            gCurrentPinballGame->evolutionShopActive = FALSE;
         }
     }
     else
@@ -553,7 +554,7 @@ void UpdateRubyEvolutionShopSprite(void)
         if (gCurrentPinballGame->shopAnimTimer > 40)
         {
             LoadShopItemGraphics(gCurrentPinballGame->evolutionShopActive);
-            gCurrentPinballGame->shopTransitionActive = 0;
+            gCurrentPinballGame->shopTransitionActive = FALSE;
             gMain.spriteGroups[SG_RUBY_SHOP_SIGN_CHANGE].active = FALSE;
         }
     }
@@ -594,7 +595,7 @@ void RenderEvolutionUI(s16 arg0)
     }
 
     group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL];
-    index = gCurrentPinballGame->evolutionShopActive != 0 ? 1 : 0;
+    index = gCurrentPinballGame->evolutionShopActive ? 1 : 0;
     if (group->active)
     {
         group->baseX = (gCurrentPinballGame->shopUISlideOffset + 136);
@@ -624,7 +625,7 @@ void RenderEvolutionUI(s16 arg0)
         sp0[1] = gArrowBounceOffsets[(gMain.systemFrameCount % 30) / 5];
         sp4[0] = sp0[0];
         sp4[1] = sp0[1];
-        if (gCurrentPinballGame->evolutionShopActive == 0)
+        if (!gCurrentPinballGame->evolutionShopActive)
         {
             for (i = 0; i < 4; i++)
             {
@@ -655,7 +656,7 @@ void RenderEvolutionUI(s16 arg0)
             }
         }
 
-        if (gCurrentPinballGame->evolutionShopActive == 0)
+        if (!gCurrentPinballGame->evolutionShopActive)
             group->baseY = 180;
         else if (gMain.shopPanelSlideOffset < 20)
             group->baseY = 180;
@@ -755,14 +756,14 @@ void AnimateCoinReward(void)
                 gCurrentPinballGame->coinSpritePos[i].y = 180;
             }
 
-            gCurrentPinballGame->coinRewardFastPayout = 0;
+            gCurrentPinballGame->coinRewardFastPayout = FALSE;
         }
         else
         {
             if (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE
                 && (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER]
                     || JOY_NEW(A_BUTTON)))
-                gCurrentPinballGame->coinRewardFastPayout = 1;
+                gCurrentPinballGame->coinRewardFastPayout = TRUE;
 
             if (gCurrentPinballGame->coinsAwarded < gCurrentPinballGame->coinRewardAmount)
             {
@@ -1274,7 +1275,7 @@ void InitRubyEggHatchAnimation(void)
     gCurrentPinballGame->eggAnimFrameIndex = 0;
     gCurrentPinballGame->eggFrameTimer = 0;
     gCurrentPinballGame->eggCaveState = 0;
-    gCurrentPinballGame->eggCaveReEntryFlag = 0;
+    gCurrentPinballGame->eggCaveReEntryFlag = FALSE;
 }
 
 void UpdateRubyEggHatchAnimation(void)
@@ -1439,7 +1440,7 @@ void UpdateHatchCave(void)
     group = &gMain.spriteGroups[SG_RUBY_CYNDAQUIL];
     var0 = gMain.systemFrameCount % 36;
     gCurrentPinballGame->cyndaquilFrame = 0;
-    gCurrentPinballGame->cyndaquilCollisionEnabled = 1;
+    gCurrentPinballGame->cyndaquilCollisionEnabled = TRUE;
     if (gCurrentPinballGame->eggCaveState < 3)
     {
         gCurrentPinballGame->cyndaquilFrame = gCyndaquilFrameIndices[var0 / 6];
@@ -1475,7 +1476,7 @@ void UpdateHatchCave(void)
 
             if (gCurrentPinballGame->eggCaveReEntryFlag)
             {
-                gCurrentPinballGame->eggCaveReEntryFlag = 0;
+                gCurrentPinballGame->eggCaveReEntryFlag = FALSE;
                 gCurrentPinballGame->eggCaveLiftTimer = 48;
             }
         }
@@ -1529,13 +1530,13 @@ void UpdateHatchCave(void)
         if (gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE)
         {
             if (gCurrentPinballGame->eggCaveState == 3 && gCurrentPinballGame->rubyEggDeliveryState != 2)
-                gCurrentPinballGame->catchArrowPaletteActive = 1;
+                gCurrentPinballGame->catchArrowPaletteActive = TRUE;
             else
-                gCurrentPinballGame->catchArrowPaletteActive = 0;
+                gCurrentPinballGame->catchArrowPaletteActive = FALSE;
         }
         else
         {
-            gCurrentPinballGame->catchArrowPaletteActive = 0;
+            gCurrentPinballGame->catchArrowPaletteActive = FALSE;
         }
 
         if (gCurrentPinballGame->eggCaveLiftTimer)
@@ -1548,7 +1549,7 @@ void UpdateHatchCave(void)
     {
         if (gCurrentPinballGame->eggAnimationPhase == 3)
         {
-            gCurrentPinballGame->catchArrowPaletteActive = 0;
+            gCurrentPinballGame->catchArrowPaletteActive = FALSE;
             gCurrentPinballGame->eggAnimationPhase = 4;
             gCurrentPinballGame->eggAnimFrameIndex = 8;
             gCurrentPinballGame->eggFrameTimer = 0;
@@ -1766,7 +1767,7 @@ void UpdateEggMode(void)
             }
             else
             {
-                var0 = gAngleToDirectionTable[angle / 0x2000] + (gMain.systemFrameCount % 24) / 8;
+                var0 = gAngleToDirectionTable[angle / ANGLE_45] + (gMain.systemFrameCount % 24) / 8;
                 tempVec2.x = (Cos(angle) * 7) / 20000;
                 tempVec2.y = -(Sin(angle) * 7) / 20000;
             }
@@ -1834,11 +1835,11 @@ void UpdateEggMode(void)
         {
             if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].specialEggFlag)
             {
-                var0 = gAngleToDirectionTable[angle / 0x2000] + (gMain.systemFrameCount % 24) / 8;
+                var0 = gAngleToDirectionTable[angle / ANGLE_45] + (gMain.systemFrameCount % 24) / 8;
             }
             else
             {
-                var0 = gAngleToDirectionTable[angle / 0x2000] + (gMain.systemFrameCount % 32) / 8 - ((gMain.systemFrameCount % 32) / 24) * 2;
+                var0 = gAngleToDirectionTable[angle / ANGLE_45] + (gMain.systemFrameCount % 32) / 8 - ((gMain.systemFrameCount % 32) / 24) * 2;
             }
 
             gCurrentPinballGame->walkMonXPos += tempVec2.x;
@@ -1870,7 +1871,7 @@ void UpdateEggMode(void)
         else if (gCurrentPinballGame->creatureWaypointIndex > 27)
         {
             priority = 3;
-            gCurrentPinballGame->eggHatchShockWallOverride = 1;
+            gCurrentPinballGame->eggHatchShockWallOverride = TRUE;
         }
         else
         {
@@ -2000,7 +2001,7 @@ void UpdateEggMode(void)
     case EGG_HATCH_SUBSTATE_BOARD_STATE_CLEANUP:
         CleanupEggModeState();
         gCurrentPinballGame->boardSubState++;
-        gCurrentPinballGame->eggHatchShockWallOverride = 0;
+        gCurrentPinballGame->eggHatchShockWallOverride = FALSE;
         break;
     case EGG_HATCH_SUBSTATE_PREPARE_NEXT_BOARD_MODE:
         if (gCurrentPinballGame->stageTimer)

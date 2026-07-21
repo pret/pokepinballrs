@@ -158,7 +158,7 @@ void AnimatePauseMenuOverlay(void)
     {
         gMain.blendControl = 0xCF;
         gMain.blendBrightness = 0xA;
-        gMain.scoreOverlayActive = 0;
+        gMain.scoreOverlayActive = FALSE;
         gMain.vCount = 144;
     }
 

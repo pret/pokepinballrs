@@ -13,7 +13,7 @@ void SapphireBoardProcess_3A_326F4(void)
 {
     gCurrentPinballGame->catchModeArrows = 2;
     gCurrentPinballGame->pikachuSpinFrame = 0;
-    gCurrentPinballGame->pikachuSpinPrevFrame = 1;
+    gCurrentPinballGame->pikachuSpinPrevFrame = TRUE;
 
     UpdatePikachuChargeCounter();
     ProcessChargeIndicator();
@@ -69,16 +69,16 @@ void UpdateSapphireBoardEntityRendering(void)
         if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 3 &&
             gCurrentPinballGame->sapphireHatchMachineState == 0)
         {
-            gCurrentPinballGame->catchArrowPaletteActive = 1;
+            gCurrentPinballGame->catchArrowPaletteActive = TRUE;
         }
         else
         {
-            gCurrentPinballGame->catchArrowPaletteActive = 0;
+            gCurrentPinballGame->catchArrowPaletteActive = FALSE;
         }
     }
     else
     {
-        gCurrentPinballGame->catchArrowPaletteActive = 0;
+        gCurrentPinballGame->catchArrowPaletteActive = FALSE;
     }
 
     if (gCurrentPinballGame->cameraYViewport < 0x96)
@@ -262,7 +262,7 @@ void InitSapphireWailmerCatch(void)
     gCurrentPinballGame->catchHoleAnimFrame = 2;
     gCurrentPinballGame->cameraScrollOffset = 0;
     gCurrentPinballGame->cameraScrollTarget = 30;
-    gCurrentPinballGame->cameraScrollEnabled = 0;
+    gCurrentPinballGame->cameraScrollEnabled = FALSE;
     gCurrentPinballGame->scoreAddedInFrame = 50000;
 
     m4aSongNumStart(SE_WHISCASH_CATCH_BALL);
@@ -359,7 +359,7 @@ void UpdateSapphireWailmerCatchSequence(void)
         gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         m4aSongNumStart(SE_WHISCASH_SPIT_BALL);
         gCurrentPinballGame->cameraScrollTarget = 0;
-        gCurrentPinballGame->cameraScrollEnabled = 1;
+        gCurrentPinballGame->cameraScrollEnabled = TRUE;
         gCurrentPinballGame->cameraLocked = FALSE;
     }
 }

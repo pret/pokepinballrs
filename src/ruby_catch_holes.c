@@ -68,7 +68,7 @@ void InitSharpedoCatchMode(void)
     }
 
     gCurrentPinballGame->cameraScrollOffset = 0;
-    gCurrentPinballGame->cameraScrollEnabled = 0;
+    gCurrentPinballGame->cameraScrollEnabled = FALSE;
     gCurrentPinballGame->cameraScrollTarget = 0;
     gCurrentPinballGame->modeAnimTimer = 113;
 
@@ -186,7 +186,7 @@ void AnimateSharpedoCatchSequence(void)
         {
             gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
             gCurrentPinballGame->cameraScrollTarget = 0;
-            gCurrentPinballGame->cameraScrollEnabled = 1;
+            gCurrentPinballGame->cameraScrollEnabled = TRUE;
             gCurrentPinballGame->cameraLocked = FALSE;
             gCurrentPinballGame->ball->spinSpeed = 0;
             gCurrentPinballGame->ball->velocity.x = 0xFF56;

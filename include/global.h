@@ -755,7 +755,7 @@ struct PinballGame
     /*0x61E*/ u16 kickbackLaunchTimer;
     /*0x620*/ struct Vector16 kickbackBallHoverPos;
     /*0x624*/ s8 bumperHitCountdown; // 2 when Hit, one frame of ignored collision, then ready to hit again
-    /*0x625*/ s8 catchTilesBumperAcknowledged;
+    /*0x625*/ s8 catchTilesBumperAcknowledgedCount;
     /*0x626*/ s8 evoItemAnimFrame;
     /*0x627*/ u8 filler627[0x1];
     /*0x628*/ u16 evoItemAnimFrameTimer;

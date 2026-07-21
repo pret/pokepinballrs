@@ -219,7 +219,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
             gCurrentPinballGame->stageTimer = 0;
             gCurrentPinballGame->boardState = LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED;
             gCurrentPinballGame->numCompletedBonusStages++;
-            gCurrentPinballGame->shopExtraBallPreviouslyPurchased = 0;
+            gCurrentPinballGame->shopExtraBallPreviouslyPurchased = FALSE;
         }
         break;
     case LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED:
@@ -1327,8 +1327,8 @@ void UpdateRayquazaMinionsAndEffects(void)
             if (var4 < 10)
                 var4 = 10;
 
-            gCurrentPinballGame->trapAngleQ16 -= ((0x2000 - (var4 * 0x2000) / 30) * 2) / 5;
-            gCurrentPinballGame->ball->spinAngle -= 0x2000;
+            gCurrentPinballGame->trapAngleQ16 -= ((ANGLE_45 - (var4 * ANGLE_45) / 30) * 2) / 5;
+            gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
             var5 = (gCurrentPinballGame->trapSpinRadius * var4) / 30;
             tempVector2.x = gCurrentPinballGame->vortexScreenPosition[i].x / 10 + 16;
             tempVector2.y = gCurrentPinballGame->vortexScreenPosition[i].y / 10 + 32;

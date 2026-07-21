@@ -187,7 +187,7 @@ void RenderBannerSlideAnimation(void)
                             {
 
                                 if ((gCurrentPinballGame->ballCatchState == TRAP_EVO_SHOP_HOLE
-                                        && gCurrentPinballGame->evolutionShopActive == 1) ||
+                                        && gCurrentPinballGame->evolutionShopActive == TRUE) ||
                                     (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE
                                         && gCurrentPinballGame->prizeId == PRIZE_START_EVO_MODE))
                                 {
@@ -216,7 +216,7 @@ void RenderBannerSlideAnimation(void)
                             if (gCurrentPinballGame->bannerSlideTimer <= 0x27)
                             {
                                 if ((gCurrentPinballGame->ballCatchState == TRAP_EVO_SHOP_HOLE
-                                        && gCurrentPinballGame->evolutionShopActive == 1) ||
+                                        && gCurrentPinballGame->evolutionShopActive == TRUE) ||
                                     (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE
                                         && gCurrentPinballGame->prizeId == PRIZE_START_EVO_MODE))
                                 {
@@ -259,7 +259,7 @@ void RenderBannerSlideAnimation(void)
                 gCurrentPinballGame->bannerSlideVelocity -= 0xA;
                 if (gCurrentPinballGame->bannerSlideTimer > 0x18 &&
                     (gCurrentPinballGame->ballCatchState != TRAP_EVO_SHOP_HOLE
-                        || gCurrentPinballGame->evolutionShopActive != 1)
+                        || gCurrentPinballGame->evolutionShopActive != TRUE)
                     && (gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE
                         || gCurrentPinballGame->prizeId != PRIZE_START_EVO_MODE))
                 {
@@ -290,7 +290,7 @@ void RenderBannerSlideAnimation(void)
                     gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                     gCurrentPinballGame->activePortraitType = 0;
                     if ((gCurrentPinballGame->ballCatchState != TRAP_EVO_SHOP_HOLE
-                            || gCurrentPinballGame->evolutionShopActive != 1)
+                            || gCurrentPinballGame->evolutionShopActive != TRUE)
                         && (gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE
                             || gCurrentPinballGame->prizeId != PRIZE_START_EVO_MODE))
                     {

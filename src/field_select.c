@@ -348,7 +348,7 @@ static void RenderFieldSelectSprites(void)
     spriteSet = gFieldSelectSpriteSets[gFieldSelectData.rubyFieldSpriteGroup];
     for (i = 0; i < spriteSet->count; i++)
     {
-        gOamBuffer[sp0->oam[i].oamId].objMode = 1;
+        gOamBuffer[sp0->oam[i].oamId].objMode = ST_OAM_OBJ_BLEND;
         gOamBuffer[sp0->oam[i].oamId].x = sp0->oam[i].xOffset + sp0->baseX;
         gOamBuffer[sp0->oam[i].oamId].y = sp0->oam[i].yOffset + sp0->baseY;
     }
@@ -358,7 +358,7 @@ static void RenderFieldSelectSprites(void)
     spriteSet = gFieldSelectSpriteSets[gFieldSelectData.sapphireFieldSpriteGroup];
     for (i = 0; i < spriteSet->count; i++)
     {
-        gOamBuffer[r10->oam[i].oamId].objMode = 1;
+        gOamBuffer[r10->oam[i].oamId].objMode = ST_OAM_OBJ_BLEND;
         gOamBuffer[r10->oam[i].oamId].x = r10->oam[i].xOffset + r10->baseX;
         gOamBuffer[r10->oam[i].oamId].y = r10->oam[i].yOffset + r10->baseY;
     }
@@ -369,7 +369,7 @@ static void RenderFieldSelectSprites(void)
         r8->baseY = gFieldSelectBallSpeedPositions[gFieldSelectData.selectedField].y;
         for (i = 0; i < 5; i++)
         {
-            gOamBuffer[r8->oam[i].oamId].objMode = 0;
+            gOamBuffer[r8->oam[i].oamId].objMode = ST_OAM_OBJ_NORMAL;
             gOamBuffer[r8->oam[i].oamId].x = r8->oam[i].xOffset + r8->baseX;
             gOamBuffer[r8->oam[i].oamId].y = r8->oam[i].yOffset + r8->baseY;
         }

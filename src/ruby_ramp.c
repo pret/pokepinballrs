@@ -22,7 +22,7 @@ void UpdateMakuhitaEntity(void)
     case 0:
         index = (gCurrentPinballGame->makuhitaAnimCounter % 36) / 18;
         gCurrentPinballGame->makuhitaAnimCounter++;
-        gCurrentPinballGame->makuhitaPunchTriggeredFlag = 0;
+        gCurrentPinballGame->makuhitaPunchTriggeredFlag = FALSE;
         break;
     case 1:
         index = (gCurrentPinballGame->makuhitaAnimCounter % 36) / 18 + 2;
@@ -32,7 +32,7 @@ void UpdateMakuhitaEntity(void)
             gCurrentPinballGame->makuhitaPunchState = 2;
             gCurrentPinballGame->makuhitaAnimCounter = 0;
         }
-        gCurrentPinballGame->makuhitaPunchTriggeredFlag = 0;
+        gCurrentPinballGame->makuhitaPunchTriggeredFlag = FALSE;
         break;
     case 2:
         index = (gCurrentPinballGame->makuhitaAnimCounter % 9) / 3 + 4;
@@ -56,7 +56,7 @@ void UpdateMakuhitaEntity(void)
         {
             gCurrentPinballGame->makuhitaPunchState = 4;
             gCurrentPinballGame->makuhitaAnimCounter = 0;
-            gCurrentPinballGame->makuhitaPunchTriggeredFlag = 0;
+            gCurrentPinballGame->makuhitaPunchTriggeredFlag = FALSE;
         }
         break;
     case 4:
@@ -81,7 +81,7 @@ void UpdateMakuhitaEntity(void)
         {
             gCurrentPinballGame->makuhitaPunchState = 2;
             gCurrentPinballGame->makuhitaAnimCounter = 0;
-            gCurrentPinballGame->makuhitaPunchTriggeredFlag = 0;
+            gCurrentPinballGame->makuhitaPunchTriggeredFlag = FALSE;
         }
         break;
     }

@@ -53,7 +53,7 @@ void UpdateBoardIntroMode(void)
         gCurrentPinballGame->boardSubState++;
         gCurrentPinballGame->rouletteSubOffset = 0;
         gCurrentPinballGame->cameraScrollTarget = 0;
-        gCurrentPinballGame->cameraScrollEnabled = 1;
+        gCurrentPinballGame->cameraScrollEnabled = TRUE;
         gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT0_TRIM]->active = TRUE;
         gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM]->active = TRUE;
         gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1]->active = TRUE;
@@ -278,15 +278,15 @@ void UpdateBoardArrowAnimState(void)
     gCurrentPinballGame->coinRewardLevel = gBoardArrowAnimFrames[index];
     if (index == 7 || index == 9)
     {
-        gCurrentPinballGame->catchArrowPaletteActive = 1;
-        gCurrentPinballGame->shopArrowActive = 1;
-        gCurrentPinballGame->evoArrowPaletteActive = 1;
+        gCurrentPinballGame->catchArrowPaletteActive = TRUE;
+        gCurrentPinballGame->shopArrowActive = TRUE;
+        gCurrentPinballGame->evoArrowPaletteActive = TRUE;
     }
     else
     {
-        gCurrentPinballGame->catchArrowPaletteActive = 0;
-        gCurrentPinballGame->shopArrowActive = 0;
-        gCurrentPinballGame->evoArrowPaletteActive = 0;
+        gCurrentPinballGame->catchArrowPaletteActive = FALSE;
+        gCurrentPinballGame->shopArrowActive = FALSE;
+        gCurrentPinballGame->evoArrowPaletteActive = FALSE;
     }
 }
 
@@ -294,19 +294,19 @@ void SetBoardArrowState(s16 arg0)
 {
     if (arg0)
     {
-        gCurrentPinballGame->shopArrowActive = 1;
-        gCurrentPinballGame->catchArrowPaletteActive = 1;
-        gCurrentPinballGame->catchProgressFlashing = 1;
+        gCurrentPinballGame->shopArrowActive = TRUE;
+        gCurrentPinballGame->catchArrowPaletteActive = TRUE;
+        gCurrentPinballGame->catchProgressFlashing = TRUE;
         gCurrentPinballGame->evoArrowProgress = 3;
         gCurrentPinballGame->coinRewardLevel = 3;
         gCurrentPinballGame->catchArrowProgress = 3;
-        gCurrentPinballGame->evoArrowPaletteActive = 1;
+        gCurrentPinballGame->evoArrowPaletteActive = TRUE;
     }
     else
     {
-        gCurrentPinballGame->evoArrowPaletteActive = 0;
-        gCurrentPinballGame->shopArrowActive = 0;
-        gCurrentPinballGame->catchArrowPaletteActive = 0;
+        gCurrentPinballGame->evoArrowPaletteActive = FALSE;
+        gCurrentPinballGame->shopArrowActive = FALSE;
+        gCurrentPinballGame->catchArrowPaletteActive = FALSE;
         gCurrentPinballGame->evoArrowProgress = 0;
         gCurrentPinballGame->coinRewardLevel = 0;
         gCurrentPinballGame->catchArrowProgress = 2;

@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 #include "constants/board/bonus_board.h"
+#include "constants/anglemath.h"
 
 extern struct SongHeader se_roulette_tick;
 extern struct SongHeader se_mon_catch_ball_woosh;
@@ -33,7 +34,7 @@ void InitRouletteWheel(void)
     gMain.fieldSpriteGroups[FIELD_SG_PORTRAIT1_TRIM]->active = TRUE;
     gMain.blendControl = 0x1C10;
     gMain.blendAlpha = BLDALPHA_BLEND(0, 16);
-    gCurrentPinballGame->rouletteStopRequested = 0;
+    gCurrentPinballGame->rouletteStopRequested = FALSE;
     gCurrentPinballGame->rouletteRotationPeriod = 8;
     gCurrentPinballGame->rouletteSpinSpeed = 0;
     gCurrentPinballGame->rouletteSubOffset = 0;
@@ -130,7 +131,7 @@ void RunRouletteWheel(void)
 {
     if (gMain.selectedField == FIELD_SAPPHIRE)
     {
-        if (gCurrentPinballGame->rouletteStopRequested == 0)
+        if (!gCurrentPinballGame->rouletteStopRequested)
         {
             if (    (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER]
                     || JOY_NEW(A_BUTTON))
@@ -140,14 +141,14 @@ void RunRouletteWheel(void)
                 if (gCurrentPinballGame->rouletteSubOffset < 17)
                     gCurrentPinballGame->modeOutcomeValues[1] = gCurrentPinballGame->modeOutcomeValues[0];
 
-                gCurrentPinballGame->rouletteStopRequested = 1;
+                gCurrentPinballGame->rouletteStopRequested = TRUE;
                 gCurrentPinballGame->rouletteRotationPeriod = 40;
                 gCurrentPinballGame->rouletteFrameIndex = 39;
             }
         }
     }
 
-    if (gCurrentPinballGame->rouletteStopRequested == 0)
+    if (!gCurrentPinballGame->rouletteStopRequested)
     {
         gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_ROULETTE;
         gCurrentPinballGame->rouletteFrameIndex++;
@@ -156,7 +157,7 @@ void RunRouletteWheel(void)
             gCurrentPinballGame->rouletteSpinSpeed--;
             if (gCurrentPinballGame->rouletteSpinSpeed == 0)
             {
-                gCurrentPinballGame->rouletteStopRequested = 1;
+                gCurrentPinballGame->rouletteStopRequested = TRUE;
             }
             else
             {
@@ -176,7 +177,7 @@ void RunRouletteWheel(void)
                 if (gCurrentPinballGame->zigzagoonState == 1)
                 {
                     gCurrentPinballGame->rouletteSpinSpeed = 320;
-                    gCurrentPinballGame->zigzagoonShockWallActive = 1;
+                    gCurrentPinballGame->zigzagoonShockWallActive = TRUE;
                 }
             }
 
@@ -200,7 +201,7 @@ void RunRouletteWheel(void)
             gCurrentPinballGame->rouletteSubOffset = 0;
             gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
             m4aMPlayStop(&gMPlayInfo_BGM);
-            gCurrentPinballGame->prizeSelected = 1;
+            gCurrentPinballGame->prizeSelected = TRUE;
             gCurrentPinballGame->outcomeFrameCounter = 0;
         }
     }
@@ -367,7 +368,7 @@ void GivePrize(void)
             if (gCurrentPinballGame->outcomeFrameCounter == 150)
             {
                 gCurrentPinballGame->outcomeFrameCounter = 149;
-                gCurrentPinballGame->evolutionShopActive = 1;
+                gCurrentPinballGame->evolutionShopActive = TRUE;
                 UpdateShopEntryAnimation(1);
                 gCurrentPinballGame->sapphireMartGateBumperState[0] = 3;
                 gCurrentPinballGame->sapphireMartGateBumperState[1] = 3;
@@ -376,7 +377,7 @@ void GivePrize(void)
             if (gCurrentPinballGame->outcomeFrameCounter == 170)
             {
                 gCurrentPinballGame->shopDoorTargetFrame = 0;
-                gCurrentPinballGame->evolutionShopActive = 0;
+                gCurrentPinballGame->evolutionShopActive = FALSE;
                 RequestBoardStateTransition(MAIN_BOARD_STATE_EVO_MODE);
             }
         }
@@ -565,7 +566,7 @@ void RunMonCaptureSequence(void)
         if (gCurrentPinballGame->captureSequenceFrame == 1)
         {
             m4aMPlayStop(&gMPlayInfo_BGM);
-            gCurrentPinballGame->ballTrailEnabled = 1;
+            gCurrentPinballGame->ballTrailEnabled = TRUE;
         }
 
         break;
@@ -742,8 +743,8 @@ void RunMonCaptureSequence(void)
         break;
     case 12:
         temp_r0 = 99 - gCurrentPinballGame->captureSequenceFrame;
-        gCurrentPinballGame->trapAngleQ16 -= (temp_r0 * 0x2000) / 100 - 0x2000;
-        gCurrentPinballGame->ball->spinAngle -= 0x2000;
+        gCurrentPinballGame->trapAngleQ16 -= (temp_r0 * ANGLE_45) / 100 - ANGLE_45;
+        gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
 
         temp_r0 -= 20;
 
@@ -765,19 +766,19 @@ void RunMonCaptureSequence(void)
 
     case 13:
         gCurrentPinballGame->ball->spinSpeed = 0;
-        gCurrentPinballGame->ballTrailEnabled = 0;
-        gCurrentPinballGame->ball->spinAngle -= 0x2000;
+        gCurrentPinballGame->ballTrailEnabled = FALSE;
+        gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
         break;
 
     case 14:
         DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], 0x05000220, 0x20);
-        gCurrentPinballGame->ball->spinAngle -= 0x2000;
+        gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
         break;
 
     case 15:
         //TODO: fakematch; unused i. Here for the +4 to parse correctly;
         DmaCopy16(3, gBallPalettes[i= gCurrentPinballGame->ballUpgradeType + 4], 0x05000220, 0x20);
-        gCurrentPinballGame->ball->spinAngle -= 0x2000;
+        gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
         break;
 
     case 16:
@@ -875,7 +876,7 @@ void RunMonCaptureSequence(void)
                     && gCurrentPinballGame->boardSubState == CATCH_EM_SUBSTATE_CATCH_HIT_PHASE)
                 {
                     CleanupCatchMonBoardSprite();
-                    gCurrentPinballGame->catchMonCollisionEnabled = 0;
+                    gCurrentPinballGame->catchMonCollisionEnabled = FALSE;
                     m4aMPlayAllStop();
                 }
 
@@ -883,7 +884,7 @@ void RunMonCaptureSequence(void)
                     && gCurrentPinballGame->boardSubState == JIRACHI_CATCH_SUBSTATE_CATCH_HIT_PHASE)
                 {
                     CleanupJirachiSprites();
-                    gCurrentPinballGame->catchMonCollisionEnabled = 0;
+                    gCurrentPinballGame->catchMonCollisionEnabled = FALSE;
                     m4aMPlayAllStop();
                 }
             }
@@ -1183,7 +1184,7 @@ void RunMonCaptureSequence(void)
 
         if (gCurrentPinballGame->captureSequenceFrame <= 29)
         {
-            gMain.scoreOverlayActive = 1;
+            gMain.scoreOverlayActive = TRUE;
             temp_r0 = gCurrentPinballGame->captureSequenceFrame;
             gCurrentPinballGame->cutsceneTilemapColumn = temp_r0;
 
@@ -1214,7 +1215,7 @@ void RunMonCaptureSequence(void)
 
             if (gCurrentPinballGame->captureSequenceFrame == 269)
             {
-                gMain.scoreOverlayActive = 0;
+                gMain.scoreOverlayActive = FALSE;
 
                 if (gMain.selectedField < MAIN_FIELD_COUNT)
                 {

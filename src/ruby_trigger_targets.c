@@ -166,7 +166,7 @@ void AnimateChikoritaSprite(void)
         if (gCurrentPinballGame->chikoritaFlashTimer < 54)
             gCurrentPinballGame->chikoritaFlashTimer++;
         else
-            gCurrentPinballGame->chikoritaFlashActive = 0;
+            gCurrentPinballGame->chikoritaFlashActive = FALSE;
 
         DmaCopy16(3, gRubyFlashingDecorationTiles[index], (void *)0x06012720, 0x300);
     }
@@ -225,7 +225,7 @@ void UpdateGulpinBossState(void)
                 if (gCurrentPinballGame->gulpinAnimFrameIndex == 84)
                 {
                     gCurrentPinballGame->gulpinAnimFrameIndex = 0;
-                    gCurrentPinballGame->seedotExitSequenceActive = 0;
+                    gCurrentPinballGame->seedotExitSequenceActive = FALSE;
                     gCurrentPinballGame->seedotExitSequenceTimer = 0;
                     gCurrentPinballGame->gulpinCurrentLevel = 0;
                 }

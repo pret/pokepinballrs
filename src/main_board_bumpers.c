@@ -342,16 +342,16 @@ void HandleRubyBumperHit(void)
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_CATCH_EM_MODE
                 && gCurrentPinballGame->boardSubState == CATCH_EM_SUBSTATE_AWAITING_BUMPER_HITS)
             {
-                if (gCurrentPinballGame->catchTilesBumperAcknowledged < 6)
+                if (gCurrentPinballGame->catchTilesBumperAcknowledgedCount < 6)
                 {
-                    if (gCurrentPinballGame->catchTilesBumperAcknowledged == 0)
-                        gCurrentPinballGame->catchTilesBumperAcknowledged = 1;
-                    else if (gCurrentPinballGame->catchTilesBumperAcknowledged == 1)
-                        gCurrentPinballGame->catchTilesBumperAcknowledged = 3;
+                    if (gCurrentPinballGame->catchTilesBumperAcknowledgedCount == 0)
+                        gCurrentPinballGame->catchTilesBumperAcknowledgedCount = 1;
+                    else if (gCurrentPinballGame->catchTilesBumperAcknowledgedCount == 1)
+                        gCurrentPinballGame->catchTilesBumperAcknowledgedCount = 3;
                     else
-                        gCurrentPinballGame->catchTilesBumperAcknowledged = 6;
+                        gCurrentPinballGame->catchTilesBumperAcknowledgedCount = 6;
 
-                    if (gCurrentPinballGame->catchTilesBumperAcknowledged == 6)
+                    if (gCurrentPinballGame->catchTilesBumperAcknowledgedCount == 6)
                     {
                         if (gCurrentPinballGame->catchTilesBoardAcknowledged == 0)
                         {

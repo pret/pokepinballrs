@@ -73,7 +73,7 @@ void KyogreBoardProcess_3A_383E4(void)
     gCurrentPinballGame->dusclopsWalkFootIndex = 0;
     gCurrentPinballGame->bossFramesetIndex = 0;
     gCurrentPinballGame->bossFrameTimer = 0;
-    gCurrentPinballGame->shockwaveAlreadyHit = 0;
+    gCurrentPinballGame->shockwaveAlreadyHit = FALSE;
     gCurrentPinballGame->freezeTrapPhase = KYOGRE_FREEZE_PHASE_ENCLOSE_BALL;
     gCurrentPinballGame->freezeTrapAnimEndFrame = 0;
     gCurrentPinballGame->freezeTrapNextPhase = KYOGRE_FREEZE_PHASE_ENCLOSE_BALL;
@@ -409,7 +409,7 @@ void UpdateKyogreEntityLogic(void)
                     {
                         gCurrentPinballGame->bossFramesetIndex = 34;
                         gCurrentPinballGame->bossEntityState = gCurrentPinballGame->bossNextAttackState;
-                        gCurrentPinballGame->shockwaveAlreadyHit = 0;
+                        gCurrentPinballGame->shockwaveAlreadyHit = FALSE;
                         gCurrentPinballGame->bossMovementPhase = 0;
                     }
                 }
@@ -477,7 +477,7 @@ void UpdateKyogreEntityLogic(void)
                 gCurrentPinballGame->bossMovementPhase = 0;
             }
 
-            if (gCurrentPinballGame->shockwaveAlreadyHit == 0 && gCurrentPinballGame->bossFramesetIndex == 42)
+            if (!gCurrentPinballGame->shockwaveAlreadyHit && gCurrentPinballGame->bossFramesetIndex == 42)
             {
                 gMain.spriteGroups[SG_KYOGRE_SHOCKWAVE].active = TRUE;
                 gCurrentPinballGame->shockwaveAnimTimer = 0;
@@ -487,7 +487,7 @@ void UpdateKyogreEntityLogic(void)
 
         // if boss is hit in the first several frames in this state, cancel the shockwave/freeze.
         if (gCurrentPinballGame->bossHitFlashTimer > 6)
-            gCurrentPinballGame->shockwaveAlreadyHit = 1;
+            gCurrentPinballGame->shockwaveAlreadyHit = TRUE;
         break;
     case KYOGRE_ENTITY_STATE_SUFFICIENT_HITS:
         gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
@@ -1114,8 +1114,8 @@ void UpdateKyogreFieldEntities(void)
                 if (var4 < 10)
                     var4 = 10;
 
-                gCurrentPinballGame->trapAngleQ16 -= ((0x2000 - (var4 * 0x2000) / 30) * 2) / 5;
-                gCurrentPinballGame->ball->spinAngle -= 0x2000;
+                gCurrentPinballGame->trapAngleQ16 -= ((ANGLE_45 - (var4 * ANGLE_45) / 30) * 2) / 5;
+                gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
                 var5 = (gCurrentPinballGame->trapSpinRadius * var4) / 30;
                 tempVector2.x = gCurrentPinballGame->vortexScreenPosition[i].x / 10 + 120;
                 tempVector2.y = gCurrentPinballGame->vortexScreenPosition[i].y / 10 + 144;
@@ -1140,8 +1140,8 @@ void UpdateKyogreFieldEntities(void)
             case KYOGRE_WHIRLPOOL_PHASE_SHRINKING_CAUGHT_BALL:
                 index = 5 - gCurrentPinballGame->vortexAnimTimer[i] / 8;
                 var4 = 47 - gCurrentPinballGame->vortexAnimTimer[i];
-                gCurrentPinballGame->trapAngleQ16 -= ((0x2000 - (var4 * 0x1000) / 47) * 2) / 5;
-                gCurrentPinballGame->ball->spinAngle -= 0x2000;
+                gCurrentPinballGame->trapAngleQ16 -= ((ANGLE_45 - (var4 * 0x1000) / 47) * 2) / 5;
+                gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
                 var5 = (gCurrentPinballGame->trapSpinRadius * var4) / 47;
                 tempVector2.x = gCurrentPinballGame->vortexScreenPosition[i].x / 10 + 120;
                 tempVector2.y = gCurrentPinballGame->vortexScreenPosition[i].y / 10 + 144;

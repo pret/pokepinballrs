@@ -79,7 +79,7 @@ void LoadTitlescreenGraphics(void)
     autoDisplayMenu = gAutoDisplayTitlescreenMenu;
     if (autoDisplayMenu == TRUE)
     {
-        gTitleReturnedFromMenu = 0;
+        gTitleReturnedFromMenu = FALSE;
         gTitlescreen.pressStartAndFlippersVisible = FALSE;
         gTitlescreen.menuVisible = autoDisplayMenu;
         gMain.subState = SUBSTATE_3;
@@ -111,8 +111,8 @@ void InitTitlescreenStates(void)
     gTitlescreen.titleScreenLeftFlipperSpriteGroup = SG_TITLE_SCREEN_LEFT_FLIPPER_BASE;
     gTitlescreen.titleScreenRightFlipperSpriteGroup = SG_TITLE_SCREEN_RIGHT_FLIPPER_BASE;
     gTitlescreen.menuVisible = FALSE;
-    gTitlescreen.leftFlipperCursorVisible = 0;
-    gTitlescreen.rightFlipperCursorVisible = 0;
+    gTitlescreen.leftFlipperCursorVisible = FALSE;
+    gTitlescreen.rightFlipperCursorVisible = FALSE;
     gHighScoreEntrySource = 1;
     gEraseSaveDataAccessStep = 0;
     gEraseSaveDataAccessCounter = 0;
@@ -139,13 +139,13 @@ void InitTitlescreenStates(void)
 
     gTitlescreen.idleFramesCounter = 0;
     gTitlescreen.idleFadeoutCounter = 1;
-    gTitleTransitionActive = 0;
+    gTitleTransitionActive = FALSE;
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
-        gTitleRestartDebounce = 1;
+        gTitleRestartDebounce = TRUE;
     else
-        gTitleRestartDebounce = 0;
+        gTitleRestartDebounce = FALSE;
 
-    gTitleReturnedFromMenu = 0;
+    gTitleReturnedFromMenu = FALSE;
 }
 
 void TitleScreen1_WaitForStartButton(void)
@@ -154,14 +154,14 @@ void TitleScreen1_WaitForStartButton(void)
     {
         if (!gTitleRestartDebounce)
         {
-            gTitleTransitionActive = 1;
+            gTitleTransitionActive = TRUE;
             gTitlescreen.menuAction = 9;
             gMain.subState = SUBSTATE_11;
         }
     }
     else
     {
-        gTitleRestartDebounce = 0;
+        gTitleRestartDebounce = FALSE;
     }
 
     if (!gTitleTransitionActive)
@@ -213,7 +213,7 @@ void TitleScreen2_AnimOpenMenu(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -228,7 +228,7 @@ void TitleScreen2_AnimOpenMenu(void)
             if (++gTitlescreen.animPhase > 5)
             {
                 gTitlescreen.animPhase = 0;
-                gTitleReturnedFromMenu = 0;
+                gTitleReturnedFromMenu = FALSE;
                 gTitlescreen.pressStartAndFlippersVisible = FALSE;
                 gTitlescreen.menuVisible = TRUE;
                 gMain.subState = SUBSTATE_3;
@@ -243,7 +243,7 @@ void TitleScreen9_DeleteSaveConfirmation(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
     }
@@ -274,7 +274,7 @@ void TitleScreen3_8010E00(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -292,8 +292,8 @@ void TitleScreen3_8010E00(void)
             if (++gTitlescreen.animPhase > 11)
             {
                 gTitlescreen.animPhase = 0;
-                gTitlescreen.leftFlipperCursorVisible = 1;
-                gTitlescreen.rightFlipperCursorVisible = 1;
+                gTitlescreen.leftFlipperCursorVisible = TRUE;
+                gTitlescreen.rightFlipperCursorVisible = TRUE;
                 gMain.subState = SUBSTATE_MENU_INPUT_NO_SAVED_GAME;
             }
         }
@@ -310,8 +310,8 @@ void TitleScreen3_8010E00(void)
             if (++gTitlescreen.animPhase > 11)
             {
                 gTitlescreen.animPhase = 0;
-                gTitlescreen.leftFlipperCursorVisible = 1;
-                gTitlescreen.rightFlipperCursorVisible = 1;
+                gTitlescreen.leftFlipperCursorVisible = TRUE;
+                gTitlescreen.rightFlipperCursorVisible = TRUE;
                 gMain.subState = SUBSTATE_MENU_INPUT_SAVED_GAME;
             }
         }
@@ -324,7 +324,7 @@ void TitleScreen4_MenuInputNoSavedGame(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
     }
@@ -367,8 +367,8 @@ void TitleScreen4_MenuInputNoSavedGame(void)
             m4aSongNumStart(SE_MENU_CANCEL);
             gTitlescreen.animTimer = 0;
             gTitlescreen.animPhase = 12;
-            gTitlescreen.leftFlipperCursorVisible = 0;
-            gTitlescreen.rightFlipperCursorVisible = 0;
+            gTitlescreen.leftFlipperCursorVisible = FALSE;
+            gTitlescreen.rightFlipperCursorVisible = FALSE;
             gMain.subState = SUBSTATE_ANIM_CLOSE_MENU;
         }
 
@@ -382,7 +382,7 @@ void TitleScreen7_8011020(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -423,7 +423,7 @@ void TitleScreen5_MenuInputSavedGame(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
     }
@@ -466,8 +466,8 @@ void TitleScreen5_MenuInputSavedGame(void)
             m4aSongNumStart(SE_MENU_CANCEL);
             gTitlescreen.animTimer = 0;
             gTitlescreen.animPhase = 12;
-            gTitlescreen.leftFlipperCursorVisible = 0;
-            gTitlescreen.rightFlipperCursorVisible = 0;
+            gTitlescreen.leftFlipperCursorVisible = FALSE;
+            gTitlescreen.rightFlipperCursorVisible = FALSE;
             gMain.subState = SUBSTATE_ANIM_CLOSE_MENU;
         }
 
@@ -481,7 +481,7 @@ void TitleScreen8_8011228(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -528,7 +528,7 @@ void TitleScreen6_AnimCloseMenu(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -546,7 +546,7 @@ void TitleScreen6_AnimCloseMenu(void)
             {
                 gTitlescreen.animPhase = 0;
                 gTitlescreen.menuCursorIndex = 0;
-                gTitleReturnedFromMenu = 1;
+                gTitleReturnedFromMenu = TRUE;
                 gTitlescreen.pressStartAndFlippersVisible = TRUE;
                 gTitlescreen.menuVisible = FALSE;
                 gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
@@ -567,7 +567,7 @@ void TitleScreen6_AnimCloseMenu(void)
             {
                 gTitlescreen.animPhase = 0;
                 gTitlescreen.menuCursorIndex = 1;
-                gTitleReturnedFromMenu = 1;
+                gTitleReturnedFromMenu = TRUE;
                 gTitlescreen.pressStartAndFlippersVisible = TRUE;
                 gTitlescreen.menuVisible = FALSE;
                 gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
@@ -753,9 +753,9 @@ void RenderTitleMenuNoSavedGame(void)
         {
             struct OamDataSimple *r4 = &menuPanel_SG->oam[sp0];
             if (r12[sp0 + 1].count == 1)  // dunno. wtf?
-                gOamBuffer[r4->oamId].objMode = 1;
+                gOamBuffer[r4->oamId].objMode = ST_OAM_OBJ_BLEND;
             else
-                gOamBuffer[r4->oamId].objMode = 0;
+                gOamBuffer[r4->oamId].objMode = ST_OAM_OBJ_NORMAL;
             gOamBuffer[r4->oamId].x = r4->xOffset + menuPanel_SG->baseX;
             gOamBuffer[r4->oamId].y = r4->yOffset + menuPanel_SG->baseY;
         }
@@ -824,9 +824,9 @@ void RenderTitleMenuSavedGame(void)
         {
             struct OamDataSimple *r4 = &menuPanel_SG->oam[sp0];
             if (r12[sp0 + 1].count == 1)  // dunno. wtf?
-                gOamBuffer[r4->oamId].objMode = 1;
+                gOamBuffer[r4->oamId].objMode = ST_OAM_OBJ_BLEND;
             else
-                gOamBuffer[r4->oamId].objMode = 0;
+                gOamBuffer[r4->oamId].objMode = ST_OAM_OBJ_NORMAL;
             gOamBuffer[r4->oamId].x = r4->xOffset + menuPanel_SG->baseX;
             gOamBuffer[r4->oamId].y = r4->yOffset + menuPanel_SG->baseY;
         }

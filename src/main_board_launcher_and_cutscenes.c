@@ -203,7 +203,7 @@ void UpdateSpoinkAnimation(void)
         else
             gCurrentPinballGame->spoinkPullbackYDistance = 0;
 
-        gCurrentPinballGame->ballTouchingSpoink = 0;
+        gCurrentPinballGame->ballTouchingSpoink = FALSE;
         break;
     case 1:
         if (gCurrentPinballGame->spoinkAnimFrameTimer < 5)
