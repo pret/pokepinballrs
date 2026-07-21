@@ -17,7 +17,7 @@ void PinballGameIdle0_19048(void)
     s8 demoFieldVariant;
 
     gMain.idleFrameCounter = 0;
-    gMain.continueFromSave = 1;
+    gMain.continueFromSave = TRUE;
     gReplayFrameCounter = 0;
 
     for (i = 0; i < NUM_EREADER_CARDS; i++)
@@ -105,9 +105,9 @@ void PinballGameIdle1_19190(void)
                 ClampPortraitSpritesToOffscreen();
                 RestoreBoardObjPalettes(0);
             }
-            else if (gMain.selectedField == FIELD_KECLEON)
+            else if (gMain.selectedField == FIELD_KECLEON) // bug? other references are Dusclops
             {
-                RenderBonusStageOverlaySprites();
+                HideDusclopsSprites();
             }
 
             if ((gMain.modeChangeFlags & MODE_CHANGE_PAUSE) != 0)
@@ -130,7 +130,7 @@ void PinballGameIdle3_19288(void)
 {
     s16 i;
 
-    gMain.blendEnabled = 0;
+    gMain.blendEnabled = FALSE;
     gMain_saveData.rumbleEnabled = gBoardConfig.rumbleEnabled;
     for (i = 0; i < NUM_EREADER_CARDS; i++)
         gMain.eReaderBonuses[i] = gBoardConfig.eReaderBonuses[i];

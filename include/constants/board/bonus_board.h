@@ -1,0 +1,24 @@
+#ifndef GUARD_CONSTANTS_BONUS_BOARD_H
+#define GUARD_CONSTANTS_BONUS_BOARD_H
+#include "constants/anglemath.h"
+
+enum BonusBoardSubstates{
+    BONUS_BOARD_SUBSTATE_ACTIVE = 0,
+    BONUS_BOARD_SUBSTATE_FADETRANSITION = 1,
+    BONUS_BOARD_SUBSTATE_TRANSFER_TO_MAIN_BOARD = 2,
+};
+
+// Note: all 3 legendary bosses have the same states.
+// However, the main reason for joining them here is the use of the
+// `boardState = LEGENDARY_BOARD_STATE_CATCH_BANNER` at the end of the MonCatch sequence.
+enum LegendaryBoardState{
+    LEGENDARY_BOARD_STATE_INTRO = 0,
+    LEGENDARY_BOARD_STATE_BATTLE_PHASE = 1,
+    LEGENDARY_BOARD_STATE_SUCCESS_BANNER = 2,
+    LEGENDARY_BOARD_STATE_SUCCESS_SCORING = 3,
+    LEGENDARY_BOARD_STATE_CATCH_BANNER = 4,
+    LEGENDARY_BOARD_STATE_CATCH_SCORING = 5,
+    LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED = 6,
+};
+
+#endif // GUARD_CONSTANTS_BONUS_BOARD_H

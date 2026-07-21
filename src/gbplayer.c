@@ -89,7 +89,7 @@ void InitGameBoyPlayer(void)
     REG_DISPCNT = DISPCNT_OBJ_ON | DISPCNT_BG0_ON;
     gRumbleCommand = 0;
     gRumbleMotorMode = 0;
-    gSio32SerialEnabled = 0;
+    gSio32SerialEnabled = FALSE;
     gSio32ReconnectTimer = 0;
     gGameBoyPlayerEnabled = CheckGameBoyPlayer();
     REG_IE &= ~INTR_FLAG_VBLANK;
@@ -108,7 +108,7 @@ void EnableGbPlayerRumble(void)
     {
         gIntrTable[0] = Sio32IDIntr;
         gIntrTable[1] = Sio32TimeoutIntr;
-        gSio32SerialEnabled = 1;
+        gSio32SerialEnabled = TRUE;
         InitSio32Hardware();
     }
 
@@ -123,14 +123,15 @@ void DisableGbPlayerRumble(void)
     // TODO This probably wasn't the original code, but it matches.
     int *var0 = &gSio32SerialEnabled;
     int val = 0;
-    gRumbleCommand = val;
-    gRumbleMotorMode = val;
+    gRumbleCommand = 0;
+    gRumbleMotorMode = 0;
+    gSio32SerialEnabled = FALSE;
     *var0 = val;
-    gSio32ReconnectTimer = val;
+    gSio32ReconnectTimer = 0;
     gRumblePatternPosition = -1;
-    gRumbleLoopCounter = val;
-    gRumbleFrameCounter = val;
-    gRumblePatternIndex = val;
+    gRumbleLoopCounter = 0;
+    gRumbleFrameCounter = 0;
+    gRumblePatternIndex = 0;
     gRumbleSpeedMode = 2;
 }
 
@@ -360,7 +361,7 @@ void Sio32IDIntr(void)
                 gSio32CommState = 2;
             }
 
-            if (gSio32SerialEnabled == 0)
+            if (!gSio32SerialEnabled)
             {
                 gSio32CommState = 4;
             }
@@ -382,7 +383,7 @@ void Sio32IDIntr(void)
                 gSio32CommState = 3;
             }
 
-            if (gSio32SerialEnabled == 0)
+            if (!gSio32SerialEnabled)
             {
                 gSio32CommState = 4;
             }
@@ -400,7 +401,7 @@ void Sio32IDIntr(void)
                 gSio32CommState = 0;
             }
 
-            if (gSio32SerialEnabled == 0)
+            if (!gSio32SerialEnabled)
             {
                 gSio32CommState = 4;
             }

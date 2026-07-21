@@ -7,6 +7,8 @@
 #include "gba/oam_types.h"
 	.include "asm/macros.inc"
 
+.align 2
+
 gIntrTableTemplate:: @ 0x086A4AA0
 	.4byte SerialIntr
 	.4byte Timer3Intr
@@ -37,67 +39,67 @@ gMainFuncs:: @ 0x086A4AD8
 	.4byte FieldSelectMain
 	.4byte BonusFieldSelectMain
 
-gUnknown_086A4B08:: @ 0x086A4B08
+gRumblePattern0:: @ 0x086A4B08
 	.4byte 2, 1, -1
 
-gUnknown_086A4B14:: @ 0x086A4B14
+gRumblePattern1:: @ 0x086A4B14
 	.4byte 2, 0, -1
 
-gUnknown_086A4B20:: @ 0x086A4B20
+gRumblePattern2:: @ 0x086A4B20
 	.4byte 2, 2, 1, -1
 
-gUnknown_086A4B30:: @ 0x086A4B30
+gRumblePattern3:: @ 0x086A4B30
 	.4byte 2, 2, 0, -1
 
-gUnknown_086A4B40:: @ 0x086A4B40
+gRumblePattern4:: @ 0x086A4B40
 	.4byte 2, 1, -21, 2, -1
 
-gUnknown_086A4B54:: @ 0x086A4B54
+gRumblePattern5:: @ 0x086A4B54
 	.4byte 2, 2, 1, 0, -11, 4, -1
 
-gUnknown_086A4B70:: @ 0x086A4B70
+gRumblePattern6:: @ 0x086A4B70
 	.4byte 2, 2, 1, -1
 
-gUnknown_086A4B80:: @ 0x086A4B80
+gRumblePattern7:: @ 0x086A4B80
 	.4byte 2, 2, 2, 1, -1
 
-gUnknown_086A4B94:: @ 0x086A4B94
+gRumblePattern8:: @ 0x086A4B94
 	.4byte 2, 2, 2, 2, 1, -1
 
-gUnknown_086A4BAC:: @ 0x086A4BAC
+gRumblePattern9:: @ 0x086A4BAC
 	.4byte 2, 2, 2, 2, 2, 1, -1
 
-gUnknown_086A4BC8:: @ 0x086A4BC8
+gRumblePattern10:: @ 0x086A4BC8
 	.4byte 1, 1, 2, 2, 2, 2, 1, -1
 
-gUnknown_086A4BE8:: @ 0x086A4BE8
+gRumblePattern11:: @ 0x086A4BE8
 	.4byte 2, 2, -10, 2, -1
 
-gUnknown_086A4BFC:: @ 0x086A4BFC
+gRumblePattern12:: @ 0x086A4BFC
 	.4byte 2, 2, 1, 1, -3, 4, -1
 
-gUnknown_086A4C18:: @ 0x086A4C18
+gRumblePattern13:: @ 0x086A4C18
 	.4byte 2, 2, -5, 2, -1
 
-gUnknown_086A4C2C:: @ 0x086A4C2C
+gRumblePattern14:: @ 0x086A4C2C
 	.4byte 2, 2, 1, -11, 3, -1
 
 gRumblePatterns:: @ 0x086A4C44
-	.4byte gUnknown_086A4B08
-	.4byte gUnknown_086A4B14
-	.4byte gUnknown_086A4B20
-	.4byte gUnknown_086A4B30
-	.4byte gUnknown_086A4B40
-	.4byte gUnknown_086A4B54
-	.4byte gUnknown_086A4B70
-	.4byte gUnknown_086A4B80
-	.4byte gUnknown_086A4B94
-	.4byte gUnknown_086A4BAC
-	.4byte gUnknown_086A4BC8
-	.4byte gUnknown_086A4BE8
-	.4byte gUnknown_086A4BFC
-	.4byte gUnknown_086A4C18
-	.4byte gUnknown_086A4C2C
+	.4byte gRumblePattern0
+	.4byte gRumblePattern1
+	.4byte gRumblePattern2
+	.4byte gRumblePattern3
+	.4byte gRumblePattern4
+	.4byte gRumblePattern5
+	.4byte gRumblePattern6
+	.4byte gRumblePattern7
+	.4byte gRumblePattern8
+	.4byte gRumblePattern9
+	.4byte gRumblePattern10
+	.4byte gRumblePattern11
+	.4byte gRumblePattern12
+	.4byte gRumblePattern13
+	.4byte gRumblePattern14
 
 	.align 2, 0
 gBonusFieldSelectSpriteSets:: @ 0x086A4C80
@@ -113,10 +115,10 @@ gBonusFieldSelectSpriteSets:: @ 0x086A4C80
 	.4byte gUnknown_086A69F6
 	.4byte gUnknown_086A6A08
 	.4byte gUnknown_086A6A1A
-	.4byte gUnknown_086A6A2C
-	.4byte gUnknown_086A6A56
-	.4byte gUnknown_086A6A80
-	.4byte gUnknown_086A6AAA
+	.4byte gFieldSelectBallSpeedNormal0SpriteSet
+	.4byte gFieldSelectBallSpeedNormal1SpriteSet
+	.4byte gFieldSelectBallSpeedSlow0SpriteSet
+	.4byte gFieldSelectBallSpeedSlow1SpriteSet
 
 gBonusFieldStageIconPositions:: @ 0x086A4CC0
 	.2byte 0x20, 0x20
@@ -146,11 +148,11 @@ gBonusFieldMenuSelectionToField:: @ 0x086A4CF0
 gEReaderTextGlyphTable:: @ 0x086A4CF8
 	.incbin "baserom.gba", 0x6A4CF8, 0x7E0
 
-gCatchHatchSpriteSets:: @ 0x086A54D8
-	.4byte gUnknown_086A5710
-    .4byte gUnknown_086A573A
-    .4byte gUnknown_086A574C
-    .4byte gUnknown_086A575E
+gEReaderSpriteSets:: @ 0x086A54D8
+	.4byte gPokedexStartTransmissionPopupSpriteSet
+    .4byte gPokedexTransmittingPopupSpriteSet
+    .4byte gPokedexTransmissionErrorPopupSpriteSet
+    .4byte gPokedexTransferCompletePopupSpriteSet
     .4byte gUnknown_086A5988
     .4byte gUnknown_086A59CA
     .4byte gUnknown_086A5A14
@@ -176,355 +178,416 @@ gEReaderTextHasNextPage:: @ 0x086A5528
 gEReaderCardStartPages:: @ 0x086A5536
     .byte 0x02, 0x04, 0x06, 0x09, 0x0B, 0x00
 
-gUnknown_086A553C:: @ 0x086A553C
-    .incbin "baserom.gba", 0x6A553C, 0x14
-gUnknown_086A5550:: @ 0x086A5550
-    .incbin "baserom.gba", 0x6A5550, 0x1A
-gUnknown_086A556A:: @ 0x086A556A
-    .incbin "baserom.gba", 0x6A556A, 0x1A
-gUnknown_086A5584:: @ 0x086A5584
-    .incbin "baserom.gba", 0x6A5584, 0x1A
-gUnknown_086A559E:: @ 0x086A559E
-    .incbin "baserom.gba", 0x6A559E, 0x1A
-gUnknown_086A55B8:: @ 0x086A55B8
-    .incbin "baserom.gba", 0x6A55B8, 0x1A
-gUnknown_086A55D2:: @ 0x086A55D2
-    .incbin "baserom.gba", 0x6A55D2, 0x1A
-gUnknown_086A55EC:: @ 0x086A55EC
-    .incbin "baserom.gba", 0x6A55EC, 0x1A
-gUnknown_086A5606:: @ 0x086A5606
-    .incbin "baserom.gba", 0x6A5606, 0x1A
-gUnknown_086A5620:: @ 0x086A5620
-    .incbin "baserom.gba", 0x6A5620, 0x1A
-gUnknown_086A563A:: @ 0x086A563A
-    .incbin "baserom.gba", 0x6A563A, 0x1A
-gUnknown_086A5654:: @ 0x086A5654
-    .incbin "baserom.gba", 0x6A5654, 0x1A
-gUnknown_086A566E:: @ 0x086A566E
-    .incbin "baserom.gba", 0x6A566E, 0x32
-gUnknown_086A56A0:: @ 0x086A56A0
-    .incbin "baserom.gba", 0x6A56A0, 0x66
-gUnknown_086A5706:: @ 0x086A5706
-    .incbin "baserom.gba", 0x6A5706, 0xA
+gPokedexCursorHandSpriteSet:: @ 0x086A553C
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
 
-gUnknown_086A5710:: @ 0x086A5710
-.2byte 5
-    packed_sprite_oam x=-0x34, y=-0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x60, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x34, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x80, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0xC, y=-0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xa0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2C, y=-0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xc0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2C, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xc4, priority=0x0, paletteNum=0x0
-.2byte 0
+.2byte 1
+    packed_sprite_oaml x=0x1, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
 
-gUnknown_086A573A:: @ 0x086A573A
-.2byte 2
-    packed_sprite_oam x=-0x28, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc8, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x18, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xe8, priority=0x0, paletteNum=0x0
-.2byte 0
 
-gUnknown_086A574C:: @ 0x086A574C
-.2byte 2
-    packed_sprite_oam x=-0x30, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xf0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x110, priority=0x0, paletteNum=0x0
-.2byte 0
-
-gUnknown_086A575E:: @ 0x086A575E
+gPokedexPressSelectText0SpriteSet:: @ 0x086A5550
 .2byte 3
-    packed_sprite_oam x=-0x38, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x120, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x140, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x28, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x150, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
-gUnknown_086A5778:: @ 0x086A5778
+gPokedexPressSelectText1SpriteSet:: @ 0x086A556A
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x12, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+
+gPokedexPressSelectText2SpriteSet:: @ 0x086A5584
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1A, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+
+gPokedexPressSelectText3SpriteSet:: @ 0x086A559E
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x22, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+
+gPokedexPressSelectText4SpriteSet:: @ 0x086A55B8
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2A, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+
+gPokedexPressSelectText5SpriteSet:: @ 0x086A55D2
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x32, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+
+gPokedexPressSelectText6SpriteSet:: @ 0x086A55EC
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x3A, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+
+gPokedexPressSelectText7SpriteSet:: @ 0x086A5606
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x42, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4A, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+
+gPokedexPressSelectText8SpriteSet:: @ 0x086A5620
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4E, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+
+gPokedexPressSelectText9SpriteSet:: @ 0x086A563A
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x52, paletteNum=0x0
+
+gPokedexPressSelectText10SpriteSet:: @ 0x086A5654
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x56, paletteNum=0x0
+
+gPokedexMonPortraitSpriteSet:: @ 0x086A566E
+.2byte 6
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1A0, paletteNum=0x1
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1A4, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1A8, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1AC, paletteNum=0x1
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1B0, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1B4, paletteNum=0x1
+
+gPokedexCatchSpriteSpriteSet:: @ 0x086A56A0
+.2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1C0, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1D0, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1D8, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1E0, paletteNum=0x2
+
+.2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1E4, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1F4, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1FC, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x204, paletteNum=0x2
+
+.2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x208, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x218, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x220, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x228, paletteNum=0x2
+
+gPokedexScrollIndicatorSpriteSet:: @ 0x086A5706
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x238, paletteNum=0x0
+
+gPokedexStartTransmissionPopupSpriteSet:: @ 0x086A5710
+.2byte 5
+    packed_sprite_oaml x=-0x34, y=-0x1E, spriteSize=SPRITE_SIZE_64x32, tileNum=0x60, paletteNum=0x0
+    packed_sprite_oaml x=-0x34, y=0x2, spriteSize=SPRITE_SIZE_64x32, tileNum=0x80, paletteNum=0x0
+    packed_sprite_oaml x=0xC, y=-0x1E, spriteSize=SPRITE_SIZE_32x64, tileNum=0xa0, paletteNum=0x0
+    packed_sprite_oaml x=0x2C, y=-0x1E, spriteSize=SPRITE_SIZE_8x32, tileNum=0xc0, paletteNum=0x0
+    packed_sprite_oaml x=0x2C, y=0x2, spriteSize=SPRITE_SIZE_8x32, tileNum=0xc4, paletteNum=0x0
+
+gPokedexTransmittingPopupSpriteSet:: @ 0x086A573A
 .2byte 2
-    packed_sprite_oam x=-0x2C, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x158, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x14, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x178, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x28, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0xc8, paletteNum=0x0
+    packed_sprite_oaml x=0x18, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0xe8, paletteNum=0x0
 
-gUnknown_086A578A:: @ 0x086A578A
-.incbin "baserom.gba", 0x6A578A, 0x1FE
+gPokedexTransmissionErrorPopupSpriteSet:: @ 0x086A574C
+.2byte 2
+    packed_sprite_oaml x=-0x30, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0xf0, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0x110, paletteNum=0x0
+
+gPokedexTransferCompletePopupSpriteSet:: @ 0x086A575E
+.2byte 3
+    packed_sprite_oaml x=-0x38, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x120, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x150, paletteNum=0x0
+
+gPokedexDeleteConfirmationPopupSpriteSet:: @ 0x086A5778
+.2byte 2
+    packed_sprite_oaml x=-0x2C, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x158, paletteNum=0x0
+    packed_sprite_oaml x=0x14, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x178, paletteNum=0x0
+
+gPokedexHatchSpriteSpriteSet:: @ 0x086A578A
+.2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x240, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x244, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x246, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x248, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x249, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x24D, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x24F, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x251, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x252, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x256, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x258, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x25A, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x25B, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x25F, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x261, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x263, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x264, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x268, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x26A, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x26C, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x26D, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x271, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x273, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x275, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x276, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x27A, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x27C, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x27E, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x27F, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x283, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x285, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x287, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x288, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x28C, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x28E, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x290, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x291, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x295, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x297, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x299, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x29A, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x29E, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2A0, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2A2, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2A3, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2A7, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2A9, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2AB, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2AC, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2B0, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2B2, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2B4, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2B5, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2B9, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2BB, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2BD, paletteNum=0x3
+
+    .2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2BE, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C2, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2C4, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2C6, paletteNum=0x3
 
 gUnknown_086A5988:: @ 0x086A5988
 .2byte 8
-   packed_sprite_oam x=-0x60, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x60, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x310, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x31c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x322, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30c, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31c, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
 
 gUnknown_086A59CA:: @ 0x086A59CA
 .2byte 9
-    packed_sprite_oam x=-0x61, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x61, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x41, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x41, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x310, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x38, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x318, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x31c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x322, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=-0x61, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oaml x=-0x61, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oaml x=-0x41, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30c, paletteNum=0x4
+    packed_sprite_oaml x=-0x41, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oaml x=-0x38, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31c, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
 
 gUnknown_086A5A14:: @ 0x086A5A14
 .2byte 11
-    packed_sprite_oam x=-0x60, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x60, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x310, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x314, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x318, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x31c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x322, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x20, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30c, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oaml x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31c, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oaml x=-0x20, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
 
 gUnknown_086A5A6E:: @ 0x086A5A6E
 .2byte 15
-    packed_sprite_oam x=-0x60, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x60, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x310, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x314, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x318, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x31c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x322, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x28, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x28, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x336, priority=0x0, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30c, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x8, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31c, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oaml x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x336, paletteNum=0x5
 
 gUnknown_086A5AE8:: @ 0x086A5AE8
 .2byte 15
-   packed_sprite_oam x=-0x60, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x60, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x310, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x7, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x314, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x11, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x318, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x31, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x31c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x31, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x41, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x322, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x41, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x17, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x9, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x27, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x29, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x338, priority=0x0, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30c, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x7, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oaml x=0x11, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oaml x=0x31, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31c, paletteNum=0x4
+    packed_sprite_oaml x=0x31, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oaml x=0x41, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oaml x=0x41, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oaml x=-0x17, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=0x9, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x27, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=0x29, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x338, paletteNum=0x5
 
 gUnknown_086A5B62:: @ 0x086A5B62
 .2byte 15
-    packed_sprite_oam x=-0x60, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x60, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x310, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x314, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x318, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x31c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x322, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x28, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x28, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x33a, priority=0x0, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30c, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x8, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31c, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oaml x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x33a, paletteNum=0x5
+
 gUnknown_086A5BDC:: @ 0x086A5BDC
 .2byte 14
-    packed_sprite_oam x=-0x60, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x60, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x310, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x314, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x318, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x31c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x322, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x28, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30c, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x8, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31c, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oaml x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
 
 gUnknown_086A5C4E:: @ 0x086A5C4E
 .2byte 14
-   packed_sprite_oam x=-0x60, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x60, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30c, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x310, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x314, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x318, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x30, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x31c, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x322, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x28, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x5
+    packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x5
+    packed_sprite_oaml x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30c, paletteNum=0x5
+    packed_sprite_oaml x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x5
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
+    packed_sprite_oaml x=-0x8, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x5
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x5
+    packed_sprite_oaml x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31c, paletteNum=0x5
+    packed_sprite_oaml x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x5
+    packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x5
+    packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x5
+    packed_sprite_oaml x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
+    packed_sprite_oaml x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
+    packed_sprite_oaml x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
 
 gUnknown_086A5CC0:: @ 0x086A5CC0
 .2byte 14
-    packed_sprite_oam x=-0x60, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x60, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x310, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x318, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x31c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x322, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x28, y=0x14, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x312, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x33c, priority=0x0, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30c, paletteNum=0x4
+    packed_sprite_oaml x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31c, paletteNum=0x4
+    packed_sprite_oaml x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oaml x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oaml x=-0x8, y=0xE, spriteSize=SPRITE_SIZE_16x16, tileNum=0x33c, paletteNum=0x4
 
-gUnknown_086A5D32:: @ 0x086A5D32
-    .incbin "baserom.gba", 0x6A5D32, 0x32
-gUnknown_086A5D64:: @ 0x086A5D64
-    .incbin "baserom.gba", 0x6A5D64, 0x1A
-gUnknown_086A5D7E:: @ 0x086A5D7E
-    .incbin "baserom.gba", 0x6A5D7E, 0x1A
-gUnknown_086A5D98:: @ 0x086A5D98
-    .incbin "baserom.gba", 0x6A5D98, 0x1A
-gUnknown_086A5DB2:: @ 0x086A5DB2
-    .incbin "baserom.gba", 0x6A5DB2, 0xA
-gUnknown_086A5DBC:: @ 0x086A5DBC
-    .incbin "baserom.gba", 0x6A5DBC, 0xA
-gUnknown_086A5DC6:: @ 0x086A5DC6
-    .incbin "baserom.gba", 0x6A5DC6, 0xA
-gUnknown_086A5DD0:: @ 0x086A5DD0
-    .incbin "baserom.gba", 0x6A5DD0, 0xA
+gPokedexPressStart0SpriteSet:: @ 0x086A5D32
+.2byte 6
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x340, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x342, paletteNum=0x0
+    packed_sprite_oaml x=0x18, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x349, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34B, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x346, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x348, paletteNum=0x0
+
+gPokedexPressStart1SpriteSet:: @ 0x086A5D64
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x340, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x344, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x348, paletteNum=0x0
+
+gPokedexCompletionBadgeSpriteSet:: @ 0x086A5D7E
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x22C, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x234, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x239, paletteNum=0x0
+
+gPokedexPressSelectText11SpriteSet:: @ 0x086A5D98
+.2byte 3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x5A, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x5E, paletteNum=0x0
+
+gPokedexTextPageChangeArrowDown0SpriteSet:: @ 0x086A5DB2
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34D, paletteNum=0x7
+
+gPokedexTextPageChangeArrowDown1SpriteSet:: @ 0x086A5DBC
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34C, paletteNum=0x7
+
+gPokedexTextPageChangeArrowUp0SpriteSet:: @ 0x086A5DC6
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34E, paletteNum=0x7
+
+gPokedexTextPageChangeArrowUp1SpriteSet:: @ 0x086A5DD0
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34F, paletteNum=0x7
 
 gPokedexAnimBaseTileNums:: @ 0x086A5DDA
 	.incbin "baserom.gba", 0x6A5DDA, 0x18
@@ -542,35 +605,35 @@ gPokedexAnimFrameDurations:: @ 0x086A6014
 	.incbin "baserom.gba", 0x6A6014, 0x134
 
 gPokedexSpriteSets:: @ 0x086A6148
-    .4byte gUnknown_086A553C
-    .4byte gUnknown_086A5706
-    .4byte gUnknown_086A566E
-    .4byte gUnknown_086A56A0
-    .4byte gUnknown_086A578A
-    .4byte gUnknown_086A5550
-    .4byte gUnknown_086A556A
-    .4byte gUnknown_086A5584
-    .4byte gUnknown_086A559E
-    .4byte gUnknown_086A55B8
-    .4byte gUnknown_086A55D2
-    .4byte gUnknown_086A55EC
-    .4byte gUnknown_086A5606
-    .4byte gUnknown_086A5620
-    .4byte gUnknown_086A563A
-    .4byte gUnknown_086A5654
-    .4byte gUnknown_086A5D98
-    .4byte gUnknown_086A5710
-    .4byte gUnknown_086A573A
-    .4byte gUnknown_086A574C
-    .4byte gUnknown_086A575E
-    .4byte gUnknown_086A5778
-    .4byte gUnknown_086A5D32
-    .4byte gUnknown_086A5D64
-    .4byte gUnknown_086A5D7E
-    .4byte gUnknown_086A5DB2
-    .4byte gUnknown_086A5DBC
-    .4byte gUnknown_086A5DC6
-    .4byte gUnknown_086A5DD0
+    .4byte gPokedexCursorHandSpriteSet
+    .4byte gPokedexScrollIndicatorSpriteSet
+    .4byte gPokedexMonPortraitSpriteSet
+    .4byte gPokedexCatchSpriteSpriteSet
+    .4byte gPokedexHatchSpriteSpriteSet
+    .4byte gPokedexPressSelectText0SpriteSet
+    .4byte gPokedexPressSelectText1SpriteSet
+    .4byte gPokedexPressSelectText2SpriteSet
+    .4byte gPokedexPressSelectText3SpriteSet
+    .4byte gPokedexPressSelectText4SpriteSet
+    .4byte gPokedexPressSelectText5SpriteSet
+    .4byte gPokedexPressSelectText6SpriteSet
+    .4byte gPokedexPressSelectText7SpriteSet
+    .4byte gPokedexPressSelectText8SpriteSet
+    .4byte gPokedexPressSelectText9SpriteSet
+    .4byte gPokedexPressSelectText10SpriteSet
+    .4byte gPokedexPressSelectText11SpriteSet
+    .4byte gPokedexStartTransmissionPopupSpriteSet
+    .4byte gPokedexTransmittingPopupSpriteSet
+    .4byte gPokedexTransmissionErrorPopupSpriteSet
+    .4byte gPokedexTransferCompletePopupSpriteSet
+    .4byte gPokedexDeleteConfirmationPopupSpriteSet
+    .4byte gPokedexPressStart0SpriteSet
+    .4byte gPokedexPressStart1SpriteSet
+    .4byte gPokedexCompletionBadgeSpriteSet
+    .4byte gPokedexTextPageChangeArrowDown0SpriteSet
+    .4byte gPokedexTextPageChangeArrowDown1SpriteSet
+    .4byte gPokedexTextPageChangeArrowUp0SpriteSet
+    .4byte gPokedexTextPageChangeArrowUp1SpriteSet
 
 gDexAnimationIx:: @ 0x086A61BC
     @ marks which anim to show with the 'select' button in pokedex
@@ -652,238 +715,157 @@ gPokedexListNameVramOffsets:: @ 0x086A64F0
 gUnknown_086A64FA:: @ 0x086A64FA
 	.incbin "baserom.gba", 0x6A64FA, 0x336
 
-gUnknown_086A6830:: @ 0x086A6830
+gFieldSelectFullHighlightSpriteSet:: @ 0x086A6830
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x9, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x9, paletteNum=0x0
 
-gUnknown_086A683A:: @ 0x086A683A
+gFieldSelectFullShadowSpriteSet:: @ 0x086A683A
 .2byte 9
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x48, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4f, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x30, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4f, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x50, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4f, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x50, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x48, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x50, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x48, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x48, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x4f, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x4f, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x4f, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, paletteNum=0x0
 
-gUnknown_086A6884:: @ 0x086A6884
+gFieldSelectDim3SpriteSet:: @ 0x086A6884
 .2byte 13
-     packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4f, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x30, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4f, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x50, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4f, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x50, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x48, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x50, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x48, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x30, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x9c, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x30, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xce, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x30, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x4e, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x48, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x48, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x4f, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x4f, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x4f, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x9c, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, tileNum=0xce, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, tileNum=0x4e, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, paletteNum=0x0
 
-gUnknown_086A68EE:: @ 0x086A68EE
+gFieldSelectDim2SpriteSet:: @ 0x086A68EE
 .2byte 11
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4f, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x30, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4f, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x50, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4f, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x40, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x48, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x4c, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x60, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x48, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x60, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x4c, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x4f, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x30, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x4f, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x4f, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x40, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x48, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4c, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x60, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x48, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x60, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4c, paletteNum=0x0
 
-gUnknown_086A6948:: @ 0x086A6948
+gFieldSelectDim1SpriteSet:: @ 0x086A6948
 .2byte 6
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x94, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x50, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x14, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1c, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x50, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1d, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x114, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x40, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x32, tileNum=0x94, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x32, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1c, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x50, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1d, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x114, paletteNum=0x0
 
-
-gUnknown_086A697A:: @ 0x086A697A
+gFieldSelectRubyBoardNameHighlightSpriteSet:: @ 0x086A697A
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x140, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x144, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x144, paletteNum=0x0
 
-gUnknown_086A698C:: @ 0x086A698C
+gFieldSelectSapphireBoardNameHighlightSpriteSet:: @ 0x086A698C
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x148, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x14c, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x14c, paletteNum=0x0
 
 gUnknown_086A699E:: @ 0x086A699E
-	.2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x49, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x4d, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xc9, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x20, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xcd, priority=0x0, paletteNum=0x0
-.2byte 0
+.2byte 4
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, tileNum=0x4d, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0xc9, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x8, tileNum=0xcd, paletteNum=0x0
 
 gUnknown_086A69C0:: @ 0x086A69C0
-	.2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x180, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x184, priority=0x0, paletteNum=0x0
-.2byte 0
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x184, paletteNum=0x0
 
 gUnknown_086A69D2:: @ 0x086A69D2
-	.2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x188, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x18c, priority=0x0, paletteNum=0x0
-.2byte 0
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x188, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x18c, paletteNum=0x0
 
 gUnknown_086A69E4:: @ 0x086A69E4
-	.2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x190, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x194, priority=0x0, paletteNum=0x0
-.2byte 0
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x190, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x194, paletteNum=0x0
 
 gUnknown_086A69F6:: @ 0x086A69F6
-	.2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x198, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x19c, priority=0x0, paletteNum=0x0
-.2byte 0
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x198, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19c, paletteNum=0x0
 
 gUnknown_086A6A08:: @ 0x086A6A08
-	.2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1c0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1c4, priority=0x0, paletteNum=0x0
-.2byte 0
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c0, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, paletteNum=0x0
 
 gUnknown_086A6A1A:: @ 0x086A6A1A
-	.2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1c8, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1cc, priority=0x0, paletteNum=0x0
-.2byte 0
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c8, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1cc, paletteNum=0x0
 
-gUnknown_086A6A2C:: @ 0x086A6A2C
-	.2byte 5
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x150, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x154, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x158, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x0, paletteNum=0x1
-.2byte 0
+gFieldSelectBallSpeedNormal0SpriteSet:: @ 0x086A6A2C
+.2byte 5
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x150, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x154, paletteNum=0x1
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x158, paletteNum=0x1
+    packed_sprite_oaml x=0x8, y=0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11f, paletteNum=0x1
+    packed_sprite_oaml x=0x30, y=0x10, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x11f, paletteNum=0x1
 
-gUnknown_086A6A56:: @ 0x086A6A56
-	.2byte 5
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x150, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x154, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x158, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x7, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x31, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x0, paletteNum=0x1
-.2byte 0
+gFieldSelectBallSpeedNormal1SpriteSet:: @ 0x086A6A56
+.2byte 5
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x150, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x154, paletteNum=0x1
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x158, paletteNum=0x1
+    packed_sprite_oaml x=0x7, y=0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11f, paletteNum=0x1
+    packed_sprite_oaml x=0x31, y=0x10, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x11f, paletteNum=0x1
 
-gUnknown_086A6A80:: @ 0x086A6A80
-	.2byte 5
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x150, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x154, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x15c, priority=0x0, paletteNum=0x1
-.2byte 0
+gFieldSelectBallSpeedSlow0SpriteSet:: @ 0x086A6A80
+.2byte 5
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x150, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x154, paletteNum=0x1
+    packed_sprite_oaml x=0x8, y=0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11f, paletteNum=0x1
+    packed_sprite_oaml x=0x30, y=0x10, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x11f, paletteNum=0x1
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15c, paletteNum=0x1
 
-gUnknown_086A6AAA:: @ 0x086A6AAA
-	.2byte 5
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x150, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x154, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x7, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x31, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x15c, priority=0x0, paletteNum=0x1
-.2byte 0
+gFieldSelectBallSpeedSlow1SpriteSet:: @ 0x086A6AAA
+.2byte 5
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x150, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x154, paletteNum=0x1
+    packed_sprite_oaml x=0x7, y=0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11f, paletteNum=0x1
+    packed_sprite_oaml x=0x31, y=0x10, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x11f, paletteNum=0x1
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15c, paletteNum=0x1
 
 gFieldSelectSpriteSets:: @ 0x086A6AD4
-	.4byte gUnknown_086A697A
-    .4byte gUnknown_086A698C
-    .4byte gUnknown_086A6830
-    .4byte gUnknown_086A683A
-    .4byte gUnknown_086A6948
-    .4byte gUnknown_086A68EE
-    .4byte gUnknown_086A6884
-    .4byte gUnknown_086A683A
-    .4byte gUnknown_086A6884
-    .4byte gUnknown_086A68EE
-    .4byte gUnknown_086A6948
-    .4byte gUnknown_086A6830
-    .4byte gUnknown_086A6A2C
-    .4byte gUnknown_086A6A56
-    .4byte gUnknown_086A6A80
-    .4byte gUnknown_086A6AAA
+	.4byte gFieldSelectRubyBoardNameHighlightSpriteSet
+    .4byte gFieldSelectSapphireBoardNameHighlightSpriteSet
+    .4byte gFieldSelectFullHighlightSpriteSet
+    .4byte gFieldSelectFullShadowSpriteSet
+    .4byte gFieldSelectDim1SpriteSet
+    .4byte gFieldSelectDim2SpriteSet
+    .4byte gFieldSelectDim3SpriteSet
+    .4byte gFieldSelectFullShadowSpriteSet
+    .4byte gFieldSelectDim3SpriteSet
+    .4byte gFieldSelectDim2SpriteSet
+    .4byte gFieldSelectDim1SpriteSet
+    .4byte gFieldSelectFullHighlightSpriteSet
+    .4byte gFieldSelectBallSpeedNormal0SpriteSet
+    .4byte gFieldSelectBallSpeedNormal1SpriteSet
+    .4byte gFieldSelectBallSpeedSlow0SpriteSet
+    .4byte gFieldSelectBallSpeedSlow1SpriteSet
 
 gFieldTransitionAnimData:: @ 0x086A6B14
     .2byte 2, 4, 5, 6, 7
@@ -893,909 +875,566 @@ gFieldSelectBallSpeedPositions:: @ 0x086A6B28
     .2byte 36, 72
     .2byte 140, 72
 
-gUnknown_086A6B30:: @ 0x086A6B30
+gIntroTitleTextAnimFrame0SpriteSet:: @ 0x086A6B30
 .2byte 1
-    packed_sprite_oam x=-0x40, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x40, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x40, paletteNum=0xb
 
-gUnknown_086A6B3A:: @ 0x086A6B3A
+gIntroTitleTextAnimFrame1SpriteSet:: @ 0x086A6B3A
 .2byte 1
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
 
-gUnknown_086A6B44:: @ 0x086A6B44
+gIntroTitleTextAnimFrame2SpriteSet:: @ 0x086A6B44
 .2byte 1
-    packed_sprite_oam x=-0x40, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-gUnknown_086A6B4E:: @ 0x086A6B4E
+    packed_sprite_oaml x=-0x40, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+
+gIntroTitleTextAnimFrame3SpriteSet:: @ 0x086A6B4E
 .2byte 2
-    packed_sprite_oam x=-0x40, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x41, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x41, paletteNum=0xb
 
-gUnknown_086A6B60:: @ 0x086A6B60
+gIntroTitleTextAnimFrame4SpriteSet:: @ 0x086A6B60
 .2byte 2
-    packed_sprite_oam x=-0x40, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
-gUnknown_086A6B72:: @ 0x086A6B72
-.2byte 3
-    packed_sprite_oam x=-0x40, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x40, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
-gUnknown_086A6B8C:: @ 0x086A6B8C
-.2byte 3
-    packed_sprite_oam x=-0x40, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
-gUnknown_086A6BA6:: @ 0x086A6BA6
-.2byte 3
-    packed_sprite_oam x=-0x40, y=-0xF, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
 
-gUnknown_086A6BC0:: @ 0x086A6BC0
+gIntroTitleTextAnimFrame5SpriteSet:: @ 0x086A6B72
 .2byte 3
-    packed_sprite_oam x=-0x40, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x40, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x40, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
 
-gUnknown_086A6BDA:: @ 0x086A6BDA
+gIntroTitleTextAnimFrame6SpriteSet:: @ 0x086A6B8C
+.2byte 3
+    packed_sprite_oaml x=-0x40, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
+
+gIntroTitleTextAnimFrame7SpriteSet:: @ 0x086A6BA6
+.2byte 3
+    packed_sprite_oaml x=-0x40, y=-0xF, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
+
+gIntroTitleTextAnimFrame8SpriteSet:: @ 0x086A6BC0
+.2byte 3
+    packed_sprite_oaml x=-0x40, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x40, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
+
+gIntroTitleTextAnimFrame9SpriteSet:: @ 0x086A6BDA
 .2byte 4
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x41, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x43, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x41, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x43, paletteNum=0xb
 
-gUnknown_086A6BFC:: @ 0x086A6BFC
+gIntroTitleTextAnimFrame10SpriteSet:: @ 0x086A6BFC
 .2byte 6
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x46, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x42, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x46, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x42, paletteNum=0xb
 
-gUnknown_086A6C2E:: @ 0x086A6C2E
+gIntroTitleTextAnimFrame11SpriteSet:: @ 0x086A6C2E
 .2byte 6
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xe, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0xb, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xe, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
 
-gUnknown_086A6C60:: @ 0x086A6C60
+gIntroTitleTextAnimFrame12SpriteSet:: @ 0x086A6C60
 .2byte 6
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0xF, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xe, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xd, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0xF, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0xe, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0xd, paletteNum=0xb
 
-gUnknown_086A6C92:: @ 0x086A6C92
+gIntroTitleTextAnimFrame13SpriteSet:: @ 0x086A6C92
 .2byte 6
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x40, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xe, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xd, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x40, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xe, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xd, paletteNum=0xb
 
-gUnknown_086A6CC4:: @ 0x086A6CC4
+gIntroTitleTextAnimFrame14SpriteSet:: @ 0x086A6CC4
 .2byte 6
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xe, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xd, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0xe, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0xd, paletteNum=0xb
 
-gUnknown_086A6CF6:: @ 0x086A6CF6
+gIntroTitleTextAnimFrame15SpriteSet:: @ 0x086A6CF6
 .2byte 7
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x43, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xd, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x47, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x43, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xd, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x47, paletteNum=0xb
 
-gUnknown_086A6D30:: @ 0x086A6D30
+gIntroTitleTextAnimFrame16SpriteSet:: @ 0x086A6D30
 .2byte 7
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xd, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0xd, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
 
-gUnknown_086A6D6A:: @ 0x086A6D6A
+gIntroTitleTextAnimFrame17SpriteSet:: @ 0x086A6D6A
 .2byte 8
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x46, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x42, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x12, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x41, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x46, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x42, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0x12, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x41, paletteNum=0xb
 
-gUnknown_086A6DAC:: @ 0x086A6DAC
+gIntroTitleTextAnimFrame18SpriteSet:: @ 0x086A6DAC
 .2byte 9
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x12, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x48, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x12, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x48, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
 
-gUnknown_086A6DF6:: @ 0x086A6DF6
+gIntroTitleTextAnimFrame19SpriteSet:: @ 0x086A6DF6
 .2byte 9
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x12, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x12, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
 
-gUnknown_086A6E40:: @ 0x086A6E40
+gIntroTitleTextAnimFrame20SpriteSet:: @ 0x086A6E40
 .2byte 10
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x12, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x44, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x13, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x12, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x8, spriteSize=SPRITE_SIZE_16x8, tileNum=0x44, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0x13, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
 
-gUnknown_086A6E92:: @ 0x086A6E92
+gIntroTitleTextAnimFrame21SpriteSet:: @ 0x086A6E92
 .2byte 10
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x12, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x24, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x13, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0x12, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x8, spriteSize=SPRITE_SIZE_16x8, tileNum=0x24, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x13, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
 
-gUnknown_086A6EE4:: @ 0x086A6EE4
+gIntroTitleTextAnimFrame22SpriteSet:: @ 0x086A6EE4
 .2byte 11
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x47, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xf, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x13, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x4a, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x47, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0xf, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x13, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4a, paletteNum=0xb
 
-gUnknown_086A6F3E:: @ 0x086A6F3E
+gIntroTitleTextAnimFrame23SpriteSet:: @ 0x086A6F3E
 .2byte 12
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xf, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x13, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x49, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x1A, spriteSize=SPRITE_SIZE_16x16, tileNum=0xf, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x13, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x49, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
 
-gUnknown_086A6FA0:: @ 0x086A6FA0
+gIntroTitleTextAnimFrame24SpriteSet:: @ 0x086A6FA0
 .2byte 12
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xf, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x13, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x41, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x9, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x1B, spriteSize=SPRITE_SIZE_16x16, tileNum=0xf, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0x13, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x41, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x9, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
 
-gUnknown_086A7002:: @ 0x086A7002
+gIntroTitleTextAnimFrame25SpriteSet:: @ 0x086A7002
 .2byte 13
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xf, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x48, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x14, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x4a, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x1A, spriteSize=SPRITE_SIZE_16x16, tileNum=0xf, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x48, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0x14, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4a, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
 
-gUnknown_086A706C:: @ 0x086A706C
+gIntroTitleTextAnimFrame26SpriteSet:: @ 0x086A706C
 .2byte 13
-   packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xf, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x14, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x12, spriteSize=SPRITE_SIZE_16x16, tileNum=0xf, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x14, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
 
-gUnknown_086A70D6:: @ 0x086A70D6
+gIntroTitleTextAnimFrame27SpriteSet:: @ 0x086A70D6
 .2byte 14
-   packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x44, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x14, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x46, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x7, spriteSize=SPRITE_SIZE_16x8, tileNum=0x44, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x14, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
+    packed_sprite_oaml x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x46, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
 
-gUnknown_086A7148:: @ 0x086A7148
+gIntroTitleTextAnimFrame28SpriteSet:: @ 0x086A7148
 .2byte 14
-   packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x14, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x14, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
+    packed_sprite_oaml x=-0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
 
-gUnknown_086A71BA:: @ 0x086A71BA
+gIntroTitleTextAnimFrame29SpriteSet:: @ 0x086A71BA
 .2byte 14
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x14, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x4a, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0x14, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
+    packed_sprite_oaml x=-0x8, y=-0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4a, paletteNum=0xb
 
-gUnknown_086A722C:: @ 0x086A722C
+gIntroTitleTextAnimFrame30SpriteSet:: @ 0x086A722C
 .2byte 14
-   packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x49, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x49, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
+    packed_sprite_oaml x=-0x8, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
 
-gUnknown_086A729E:: @ 0x086A729E
+gIntroTitleTextAnimFrame31SpriteSet:: @ 0x086A729E
 .2byte 14
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x9, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x15, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x9, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0x15, paletteNum=0xb
+    packed_sprite_oaml x=-0x8, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
 
-gUnknown_086A7310:: @ 0x086A7310
+gIntroTitleTextAnimFrame32SpriteSet:: @ 0x086A7310
 .2byte 14
-   packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x9, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x4a, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
-gUnknown_086A7382:: @ 0x086A7382
-.2byte 14
-   packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x9, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x9, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4a, paletteNum=0xb
+    packed_sprite_oaml x=-0x8, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
 
-gUnknown_086A73F4:: @ 0x086A73F4
+gIntroTitleTextAnimFrame33SpriteSet:: @ 0x086A7382
 .2byte 14
-    packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x9, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x46, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x9, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
+    packed_sprite_oaml x=-0x8, y=-0x12, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
 
-gUnknown_086A7466:: @ 0x086A7466
+gIntroTitleTextAnimFrame34SpriteSet:: @ 0x086A73F4
 .2byte 14
-   packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x26, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x7, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x12, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x29, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x9, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xa, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x9, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
+    packed_sprite_oaml x=-0x8, y=-0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x46, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
 
-gUnknown_086A74D8:: @ 0x086A74D8
+gIntroTitleTextAnimFrame35SpriteSet:: @ 0x086A7466
+.2byte 14
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x0, paletteNum=0xb
+    packed_sprite_oaml x=-0x38, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=-0x26, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3, paletteNum=0xb
+    packed_sprite_oaml x=-0x2E, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x7, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x8, paletteNum=0xb
+    packed_sprite_oaml x=-0x12, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x29, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x9, paletteNum=0xb
+    packed_sprite_oaml x=0x30, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
+    packed_sprite_oaml x=-0x8, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6, paletteNum=0xb
+    packed_sprite_oaml x=0x35, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0xa, paletteNum=0xb
+
+gIntroTitleTextAnimFrame36SpriteSet:: @ 0x086A74D8
 .2byte 4
-   packed_sprite_oam x=-0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x60, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x64, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xa0, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xa4, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x60, paletteNum=0xb
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x64, paletteNum=0xb
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0xa0, paletteNum=0xb
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0xa4, paletteNum=0xb
 
-gUnknown_086A74FA:: @ 0x086A74FA
+gIntroTitleTextAnimFrame37SpriteSet:: @ 0x086A74FA
 .2byte 1
-    packed_sprite_oam x=-0x8, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xca, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0xca, paletteNum=0xc
 
-gUnknown_086A7504:: @ 0x086A7504
+gIntroTitleTextAnimFrame38SpriteSet:: @ 0x086A7504
 .2byte 1
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x98, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x98, paletteNum=0xc
 
-gUnknown_086A750E:: @ 0x086A750E
+gIntroTitleTextAnimFrame39SpriteSet:: @ 0x086A750E
 .2byte 1
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1c, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1c, paletteNum=0xc
 
-gUnknown_086A7518:: @ 0x086A7518
+gIntroTitleTextAnimFrame40SpriteSet:: @ 0x086A7518
 .2byte 1
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x18, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x18, paletteNum=0xc
 
-gUnknown_086A7522:: @ 0x086A7522
+gIntroTitleTextAnimFrame41SpriteSet:: @ 0x086A7522
 .2byte 1
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x9c, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x9c, paletteNum=0xc
 
-gUnknown_086A752C:: @ 0x086A752C
+gIntroTitleTextAnimFrame42SpriteSet:: @ 0x086A752C
 .2byte 4
-    packed_sprite_oam x=-0x18, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x4c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x50, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xcc, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xd0, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x18, y=-0x18, spriteSize=SPRITE_SIZE_32x32, tileNum=0x4c, paletteNum=0xc
+    packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x50, paletteNum=0xc
+    packed_sprite_oaml x=-0x18, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0xcc, paletteNum=0xc
+    packed_sprite_oaml x=0x8, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0xd0, paletteNum=0xc
 
-gUnknown_086A754E:: @ 0x086A754E
+gIntroTitleTextAnimFrame43SpriteSet:: @ 0x086A754E
 .2byte 4
-    packed_sprite_oam x=-0x18, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x52, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x56, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xd6, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x18, y=-0x18, spriteSize=SPRITE_SIZE_32x32, tileNum=0x52, paletteNum=0xc
+    packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x56, paletteNum=0xc
+    packed_sprite_oaml x=-0x18, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, paletteNum=0xc
+    packed_sprite_oaml x=0x8, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0xd6, paletteNum=0xc
 
-gUnknown_086A7570:: @ 0x086A7570
+gIntroTorchicSpeedLinesSpriteSet:: @ 0x086A7570
 .2byte 10
-    packed_sprite_oam x=-0x78, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x100, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x21e, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x78, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x110, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x26, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x20c, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x38, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x118, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x28, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x21c, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x214, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x38, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x108, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x14, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x210, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x78, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x200, priority=0x0, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=-0x78, y=-0x50, spriteSize=SPRITE_SIZE_64x64, tileNum=0x100, paletteNum=0x7
+    packed_sprite_oaml x=-0x38, y=-0x50, spriteSize=SPRITE_SIZE_16x32, tileNum=0x21e, paletteNum=0x7
+    packed_sprite_oaml x=-0x78, y=0x10, spriteSize=SPRITE_SIZE_64x64, tileNum=0x110, paletteNum=0x7
+    packed_sprite_oaml x=-0x26, y=0x30, spriteSize=SPRITE_SIZE_32x32, tileNum=0x20c, paletteNum=0x7
+    packed_sprite_oaml x=0x38, y=0x10, spriteSize=SPRITE_SIZE_64x64, tileNum=0x118, paletteNum=0x7
+    packed_sprite_oaml x=0x28, y=0x30, spriteSize=SPRITE_SIZE_16x32, tileNum=0x21c, paletteNum=0x7
+    packed_sprite_oaml x=0x38, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x214, paletteNum=0x7
+    packed_sprite_oaml x=0x38, y=-0x50, spriteSize=SPRITE_SIZE_64x64, tileNum=0x108, paletteNum=0x7
+    packed_sprite_oaml x=-0x14, y=-0x50, spriteSize=SPRITE_SIZE_32x32, tileNum=0x210, paletteNum=0x7
+    packed_sprite_oaml x=-0x78, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x200, paletteNum=0x7
 
-gUnknown_086A75C2:: @ 0x086A75C2
+gIntroTorchicSpeedLinesHFlipSpriteSet:: @ 0x086A75C2
 .2byte 10
-    packed_sprite_oam x=0x38, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x3, tileNum=0x100, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x28, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x21e, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x38, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x3, tileNum=0x110, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x6, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x20c, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x78, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x3, tileNum=0x118, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x38, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x21c, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x78, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x3, tileNum=0x214, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x78, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x3, tileNum=0x108, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0xC, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x210, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x38, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x3, tileNum=0x200, priority=0x0, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=0x38, y=-0x50, spriteSize=SPRITE_SIZE_64x64, hFlip=0x1,  tileNum=0x100, paletteNum=0x7
+    packed_sprite_oaml x=0x28, y=-0x50, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x21e, paletteNum=0x7
+    packed_sprite_oaml x=0x38, y=0x10, spriteSize=SPRITE_SIZE_64x64, hFlip=0x1,  tileNum=0x110, paletteNum=0x7
+    packed_sprite_oaml x=0x6, y=0x30, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x20c, paletteNum=0x7
+    packed_sprite_oaml x=-0x78, y=0x10, spriteSize=SPRITE_SIZE_64x64, hFlip=0x1,  tileNum=0x118, paletteNum=0x7
+    packed_sprite_oaml x=-0x38, y=0x30, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x21c, paletteNum=0x7
+    packed_sprite_oaml x=-0x78, y=-0x10, spriteSize=SPRITE_SIZE_64x32, hFlip=0x1,  tileNum=0x214, paletteNum=0x7
+    packed_sprite_oaml x=-0x78, y=-0x50, spriteSize=SPRITE_SIZE_64x64, hFlip=0x1,  tileNum=0x108, paletteNum=0x7
+    packed_sprite_oaml x=-0xC, y=-0x50, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x210, paletteNum=0x7
+    packed_sprite_oaml x=0x38, y=-0x10, spriteSize=SPRITE_SIZE_64x32, hFlip=0x1,  tileNum=0x200, paletteNum=0x7
 
-gUnknown_086A7614:: @ 0x086A7614
+gIntroTorchicShadowSpriteSet:: @ 0x086A7614
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x280, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x288, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x290, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x58, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x294, priority=0x0, paletteNum=0x8
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x280, paletteNum=0x8
+    packed_sprite_oaml x=0x0, y=0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0x288, paletteNum=0x8
+    packed_sprite_oaml x=0x40, y=0x18, spriteSize=SPRITE_SIZE_32x64, tileNum=0x290, paletteNum=0x8
+    packed_sprite_oaml x=0x40, y=0x58, spriteSize=SPRITE_SIZE_32x16, tileNum=0x294, paletteNum=0x8
 
-gUnknown_086A7636:: @ 0x086A7636
+gIntroTorchicSpriteSet:: @ 0x086A7636
 .2byte 4
-   packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x280, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x288, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x290, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x58, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x294, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x280, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0x288, paletteNum=0x1
+    packed_sprite_oaml x=0x40, y=0x18, spriteSize=SPRITE_SIZE_32x64, tileNum=0x290, paletteNum=0x1
+    packed_sprite_oaml x=0x40, y=0x58, spriteSize=SPRITE_SIZE_32x16, tileNum=0x294, paletteNum=0x1
 
-gUnknown_086A7658:: @ 0x086A7658
+gIntroTorchicExplosionSpriteSet:: @ 0x086A7658
 .2byte 8
-    packed_sprite_oam x=-0x58, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x298, priority=0x0, paletteNum=0x0
+    packed_sprite_oaml x=-0x58, y=-0x68, spriteSize=SPRITE_SIZE_64x64, tileNum=0x298, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x68, spriteSize=SPRITE_SIZE_64x32, tileNum=0x380, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x48, spriteSize=SPRITE_SIZE_64x32, tileNum=0x388, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x50, spriteSize=SPRITE_SIZE_16x32, tileNum=0x390, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x392, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x3d2, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0x3d6, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=-0x28, spriteSize=SPRITE_SIZE_16x16, tileNum=0x396, paletteNum=0x0
 .2byte 0
-    packed_sprite_oam x=-0x18, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x380, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x18, y=-0x48, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x388, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x28, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x390, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x10, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x392, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x3d2, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x28, y=-0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3d6, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x396, priority=0x0, paletteNum=0x0
-.2byte 0,0
 
-gIntroScene1_SpriteSets:: @ 0x086A769C
-	.4byte gUnknown_086A7570
-    .4byte gUnknown_086A75C2
-    .4byte gUnknown_086A7636
-    .4byte gUnknown_086A7614
-    .4byte gUnknown_086A6B30
-    .4byte gUnknown_086A6B3A
-    .4byte gUnknown_086A6B44
-    .4byte gUnknown_086A6B4E
-    .4byte gUnknown_086A6B60
-    .4byte gUnknown_086A6B72
-    .4byte gUnknown_086A6B8C
-    .4byte gUnknown_086A6BA6
-    .4byte gUnknown_086A6BC0
-    .4byte gUnknown_086A6BDA
-    .4byte gUnknown_086A6BFC
-    .4byte gUnknown_086A6C2E
-    .4byte gUnknown_086A6C60
-    .4byte gUnknown_086A6C92
-    .4byte gUnknown_086A6CC4
-    .4byte gUnknown_086A6CF6
-    .4byte gUnknown_086A6D30
-    .4byte gUnknown_086A6D6A
-    .4byte gUnknown_086A6DAC
-    .4byte gUnknown_086A6DF6
-    .4byte gUnknown_086A6E40
-    .4byte gUnknown_086A6E92
-    .4byte gUnknown_086A6EE4
-    .4byte gUnknown_086A6F3E
-    .4byte gUnknown_086A6FA0
-    .4byte gUnknown_086A7002
-    .4byte gUnknown_086A706C
-    .4byte gUnknown_086A70D6
-    .4byte gUnknown_086A7148
-    .4byte gUnknown_086A71BA
-    .4byte gUnknown_086A722C
-    .4byte gUnknown_086A729E
-    .4byte gUnknown_086A7310
-    .4byte gUnknown_086A7382
-    .4byte gUnknown_086A73F4
-    .4byte gUnknown_086A7466
-    .4byte gUnknown_086A74D8
-    .4byte gUnknown_086A74FA
-    .4byte gUnknown_086A7504
-    .4byte gUnknown_086A750E
-    .4byte gUnknown_086A7518
-    .4byte gUnknown_086A7522
-    .4byte gUnknown_086A752C
-    .4byte gUnknown_086A754E
-    .4byte gUnknown_086A7658
+gIntroScene1Torchic_SpriteSets:: @ 0x086A769C
+	.4byte gIntroTorchicSpeedLinesSpriteSet
+    .4byte gIntroTorchicSpeedLinesHFlipSpriteSet
+    .4byte gIntroTorchicSpriteSet
+    .4byte gIntroTorchicShadowSpriteSet
+    .4byte gIntroTitleTextAnimFrame0SpriteSet
+    .4byte gIntroTitleTextAnimFrame1SpriteSet
+    .4byte gIntroTitleTextAnimFrame2SpriteSet
+    .4byte gIntroTitleTextAnimFrame3SpriteSet
+    .4byte gIntroTitleTextAnimFrame4SpriteSet
+    .4byte gIntroTitleTextAnimFrame5SpriteSet
+
+    .4byte gIntroTitleTextAnimFrame6SpriteSet
+    .4byte gIntroTitleTextAnimFrame7SpriteSet
+    .4byte gIntroTitleTextAnimFrame8SpriteSet
+    .4byte gIntroTitleTextAnimFrame9SpriteSet
+    .4byte gIntroTitleTextAnimFrame10SpriteSet
+    .4byte gIntroTitleTextAnimFrame11SpriteSet
+    .4byte gIntroTitleTextAnimFrame12SpriteSet
+    .4byte gIntroTitleTextAnimFrame13SpriteSet
+    .4byte gIntroTitleTextAnimFrame14SpriteSet
+    .4byte gIntroTitleTextAnimFrame15SpriteSet
+
+    .4byte gIntroTitleTextAnimFrame16SpriteSet
+    .4byte gIntroTitleTextAnimFrame17SpriteSet
+    .4byte gIntroTitleTextAnimFrame18SpriteSet
+    .4byte gIntroTitleTextAnimFrame19SpriteSet
+    .4byte gIntroTitleTextAnimFrame20SpriteSet
+    .4byte gIntroTitleTextAnimFrame21SpriteSet
+    .4byte gIntroTitleTextAnimFrame22SpriteSet
+    .4byte gIntroTitleTextAnimFrame23SpriteSet
+    .4byte gIntroTitleTextAnimFrame24SpriteSet
+    .4byte gIntroTitleTextAnimFrame25SpriteSet
+
+    .4byte gIntroTitleTextAnimFrame26SpriteSet
+    .4byte gIntroTitleTextAnimFrame27SpriteSet
+    .4byte gIntroTitleTextAnimFrame28SpriteSet
+    .4byte gIntroTitleTextAnimFrame29SpriteSet
+    .4byte gIntroTitleTextAnimFrame30SpriteSet
+    .4byte gIntroTitleTextAnimFrame31SpriteSet
+    .4byte gIntroTitleTextAnimFrame32SpriteSet
+    .4byte gIntroTitleTextAnimFrame33SpriteSet
+    .4byte gIntroTitleTextAnimFrame34SpriteSet
+    .4byte gIntroTitleTextAnimFrame35SpriteSet
+
+    .4byte gIntroTitleTextAnimFrame36SpriteSet
+    .4byte gIntroTitleTextAnimFrame37SpriteSet @ Black tile
+    .4byte gIntroTitleTextAnimFrame38SpriteSet @ Large spark
+    .4byte gIntroTitleTextAnimFrame39SpriteSet
+    .4byte gIntroTitleTextAnimFrame40SpriteSet
+    .4byte gIntroTitleTextAnimFrame41SpriteSet
+    .4byte gIntroTitleTextAnimFrame42SpriteSet
+    .4byte gIntroTitleTextAnimFrame43SpriteSet
+    .4byte gIntroTorchicExplosionSpriteSet @ 48
 
 gUnknown_086A7760:: @ 0x086A7760
 	.incbin "baserom.gba", 0x6A7760, 0x8
 
-gIntroScene1_BGAnimTiming:: @ 0x086A7768
+gIntroScene1Torchic_BGAnimTiming:: @ 0x086A7768
     .2byte 0x1, 0x14
     .2byte 0x2, 0x20
     .2byte 0x3, 0x28
@@ -1805,10 +1444,10 @@ gIntroScene1_BGAnimTiming:: @ 0x086A7768
     .2byte 0x7, 0x37
     .2byte 0x8, 0x39
 
-gIntroScene1_TileOffsets:: @ 0x086A7788
+gIntroScene1Torchic_TileOffsets:: @ 0x086A7788
     .2byte 0x80, 0x100, 0x180, 0x1000, 0x1080, 0x1100, 0x1180, 0x2000
 
-gIntroScene1_ScaleOffsets:: @ 0x086A7798
+gIntroScene1Torchic_ScaleOffsets:: @ 0x086A7798
     .2byte -64, -16
     .2byte -32, -16
     .2byte 0, -16
@@ -1918,70 +1557,51 @@ gTitleRevealJingle:: @ 0x086A77A8
     .2byte 0,0,0,0,0,0,0,0,0,0
     .2byte 0,0,0,0,0,0,0,0,0,0
 
-gUnknown_086A7938:: @ 0x086A7938
+gIntroTreeckoShadowSpriteSet:: @ 0x086A7938
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x0, priority=0x0, paletteNum=0x6
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x6
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x6
+    packed_sprite_oaml x=0x0, y=0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc, paletteNum=0x6
+    packed_sprite_oaml x=0x40, y=0x40, spriteSize=SPRITE_SIZE_32x64, tileNum=0x14, paletteNum=0x6
 .2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x8, priority=0x0, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc, priority=0x0, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x14, priority=0x0, paletteNum=0x6
-.2byte 0,0
 
-gIntroScene3_SpriteSets:: @ 0x086A795C
-    .4byte gUnknown_086A7938
+gIntroScene3Treecko_SpriteSets:: @ 0x086A795C
+    .4byte gIntroTreeckoShadowSpriteSet
     .space 0x4
 
-gUnknown_086A7964:: @ 0x086A7964
+gIntroMudkipShadowSpriteSet:: @ 0x086A7964
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x0, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x4, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x58, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x14, priority=0x0, paletteNum=0x8
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x18, spriteSize=SPRITE_SIZE_32x64, tileNum=0x0, paletteNum=0x8
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x4, paletteNum=0x8
+    packed_sprite_oaml x=0x20, y=0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc, paletteNum=0x8
+    packed_sprite_oaml x=0x0, y=0x58, spriteSize=SPRITE_SIZE_32x8, tileNum=0x14, paletteNum=0x8
 
-gUnknown_086A7986:: @ 0x086A7986
+gIntroMudkipSpriteSet:: @ 0x086A7986
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x0, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x4, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x58, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x14, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x18, spriteSize=SPRITE_SIZE_32x64, tileNum=0x0, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x4, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x58, spriteSize=SPRITE_SIZE_32x8, tileNum=0x14, paletteNum=0x1
 
-gUnknown_086A79A8:: @ 0x086A79A8
+gIntroMudkipSceneExplosionSpriteSet:: @ 0x086A79A8
 .2byte 8
-    packed_sprite_oam x=-0x58, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x18, priority=0x0, paletteNum=0x0
+    packed_sprite_oaml x=-0x58, y=-0x68, spriteSize=SPRITE_SIZE_64x64, tileNum=0x18, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x68, spriteSize=SPRITE_SIZE_64x32, tileNum=0x100, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x48, spriteSize=SPRITE_SIZE_64x32, tileNum=0x108, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x50, spriteSize=SPRITE_SIZE_16x32, tileNum=0x110, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x112, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x152, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0x156, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=-0x28, spriteSize=SPRITE_SIZE_16x16, tileNum=0x116, paletteNum=0x0
 .2byte 0
-    packed_sprite_oam x=-0x18, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x100, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x18, y=-0x48, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x108, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x28, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x110, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x10, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x112, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x152, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x28, y=-0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x156, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x116, priority=0x0, paletteNum=0x0
-.2byte 0,0
 
-
-gIntroScene5_SpriteSets:: @ 0x086A79EC
-    .4byte gUnknown_086A7986
-    .4byte gUnknown_086A7964
-    .4byte gUnknown_086A79A8
+gIntroScene5Mudkip_SpriteSets:: @ 0x086A79EC
+    .4byte gIntroMudkipSpriteSet
+    .4byte gIntroMudkipShadowSpriteSet
+    .4byte gIntroMudkipSceneExplosionSpriteSet
     .4byte 0
 
-gIntroScene5_BGAnimTiming:: @ 0x086A79FC
+gIntroScene5Mudkip_BGAnimTiming:: @ 0x086A79FC
     .2byte 1, 3
     .2byte 2, 6
     .2byte 3, 9
@@ -1991,137 +1611,148 @@ gIntroScene5_BGAnimTiming:: @ 0x086A79FC
     .2byte 7, 20
     .2byte 0, 0
 
-gIntroScene5_TileOffsets:: @ 0x086A7A1C
+gIntroScene5Mudkip_TileOffsets:: @ 0x086A7A1C
     .2byte 0x1100, 0x1080, 0x1000, 0x0180, 0x100, 0x80, 0, 0
 
-gUnknown_086A7A2C:: @ 0x086A7A2C
+gIntroChinchouStarLargeSpriteSet:: @ 0x086A7A2C
 .2byte 2
-    packed_sprite_oam x=-0x20, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x0, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x8, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x32, tileNum=0x0, paletteNum=0x1
+    packed_sprite_oaml x=-0x20, y=0x0, spriteSize=SPRITE_SIZE_64x32, tileNum=0x8, paletteNum=0x1
 
-gUnknown_086A7A3E:: @ 0x086A7A3E
+gIntroChinchouStarMediumSpriteSet:: @ 0x086A7A3E
 .2byte 1
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x10, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x10, paletteNum=0x1
 
-gUnknown_086A7A48:: @ 0x086A7A48
+gIntroChinchouStarSmallSpriteSet:: @ 0x086A7A48
 .2byte 1
-    packed_sprite_oam x=-0x8, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x14, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, paletteNum=0x1
 
-gUnknown_086A7A52:: @ 0x086A7A52
+gIntroChinchouStarFlippedLargeSpriteSet:: @ 0x086A7A52
 .2byte 2
-    packed_sprite_oam x=-0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x3, tileNum=0x0, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x3, tileNum=0x8, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=-0x20, y=0x0, spriteSize=SPRITE_SIZE_64x32, vFlip=0x1,  tileNum=0x0, paletteNum=0x1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x32, vFlip=0x1,  tileNum=0x8, paletteNum=0x1
 
-gUnknown_086A7A64:: @ 0x086A7A64
+gIntroChinchouStarFlippedMediumSpriteSet:: @ 0x086A7A64
 .2byte 1
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x2, tileNum=0x10, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,  tileNum=0x10, paletteNum=0x1
 
-gUnknown_086A7A6E:: @ 0x086A7A6E
+gIntroChinchouStarFlippedSmallSpriteSet:: @ 0x086A7A6E
 .2byte 1
-    packed_sprite_oam x=-0x8, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0x14, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,  tileNum=0x14, paletteNum=0x1
 
-gIntroScene6_SpriteSets:: @ 0x086A7A78
-	.4byte gUnknown_086A7A48
-    .4byte gUnknown_086A7A6E
-    .4byte gUnknown_086A7A48
-    .4byte gUnknown_086A7A6E
-    .4byte gUnknown_086A7A48
-    .4byte gUnknown_086A7A6E
-    .4byte gUnknown_086A7A3E
-    .4byte gUnknown_086A7A64
-    .4byte gUnknown_086A7A3E
-    .4byte gUnknown_086A7A64
-    .4byte gUnknown_086A7A3E
-    .4byte gUnknown_086A7A64
-    .4byte gUnknown_086A7A2C
-    .4byte gUnknown_086A7A52
-    .4byte gUnknown_086A7A2C
-    .4byte gUnknown_086A7A52
-    .4byte gUnknown_086A7A2C
-    .4byte gUnknown_086A7A52
+gIntroScene6Chinchou_SpriteSets:: @ 0x086A7A78
+	.4byte gIntroChinchouStarSmallSpriteSet
+    .4byte gIntroChinchouStarFlippedSmallSpriteSet
+    .4byte gIntroChinchouStarSmallSpriteSet
+    .4byte gIntroChinchouStarFlippedSmallSpriteSet
+    .4byte gIntroChinchouStarSmallSpriteSet
+    .4byte gIntroChinchouStarFlippedSmallSpriteSet
 
-gIntroScene6_ScrollVelocity:: @ 0x086A7AC0
+    .4byte gIntroChinchouStarMediumSpriteSet
+    .4byte gIntroChinchouStarFlippedMediumSpriteSet
+    .4byte gIntroChinchouStarMediumSpriteSet
+    .4byte gIntroChinchouStarFlippedMediumSpriteSet
+    .4byte gIntroChinchouStarMediumSpriteSet
+    .4byte gIntroChinchouStarFlippedMediumSpriteSet
+
+    .4byte gIntroChinchouStarLargeSpriteSet
+    .4byte gIntroChinchouStarFlippedLargeSpriteSet
+    .4byte gIntroChinchouStarLargeSpriteSet
+    .4byte gIntroChinchouStarFlippedLargeSpriteSet
+    .4byte gIntroChinchouStarLargeSpriteSet
+    .4byte gIntroChinchouStarFlippedLargeSpriteSet
+
+gIntroScene6Chinchou_ScrollVelocity:: @ 0x086A7AC0
 	.incbin "baserom.gba", 0x6A7AC0, 0x24
 
-gIntroScene6_BounceFlags:: @ 0x086A7AE4
+gIntroScene6Chinchou_BounceFlags:: @ 0x086A7AE4
 	.incbin "baserom.gba", 0x6A7AE4, 0x50
 
-gIntroScene6_EntityMovement:: @ 0x086A7B34
+gIntroScene6Chinchou_EntityMovement:: @ 0x086A7B34
 	.incbin "baserom.gba", 0x6A7B34, 0x1C
 
-gUnknown_086A7B50:: @ 0x086A7B50
+gIntroParadeWailmerSpriteSet:: @ 0x086A7B50
 .2byte 4
-    packed_sprite_oam x=-0x40, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x0, priority=0x0, paletteNum=0x1
+    packed_sprite_oaml x=-0x40, y=-0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=-0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0x8, paletteNum=0x1
+    packed_sprite_oaml x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x10, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x18, paletteNum=0x1
 .2byte 0
-    packed_sprite_oam x=0x0, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x8, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x10, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x18, priority=0x0, paletteNum=0x1
-.2byte 0,0
 
-gIntroScene7_SpriteSets:: @ 0x086A7B74
-	.4byte gUnknown_086A7B50
+gIntroScene7Parade_SpriteSets:: @ 0x086A7B74
+	.4byte gIntroParadeWailmerSpriteSet
     .4byte 0
 
-gIntroScene7_WailmerQuadOffsets:: @ 0x086A7B7C
+gIntroScene7Parade_WailmerQuadOffsets:: @ 0x086A7B7C
     .2byte -64, -64
     .2byte   0, -64
     .2byte -64,   0
     .2byte 0, 0
 
-gUnknown_086A7B8C:: @ 0x086A7B8C
-	.incbin "baserom.gba", 0x6A7B8C, 0x22
+gIntroWailmerStarLarrgeSpriteSet:: @ 0x086A7B8C
+.2byte 4
+    packed_sprite_oaml x=-0x18, y=-0x18, spriteSize=SPRITE_SIZE_32x32, tileNum=0x98, paletteNum=0x9
+    packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x9C, paletteNum=0x9
+    packed_sprite_oaml x=-0x18, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x118, paletteNum=0x9
+    packed_sprite_oaml x=0x8, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x11C, paletteNum=0x9
 
-gUnknown_086A7BAE:: @ 0x086A7BAE
-	.incbin "baserom.gba", 0x6A7BAE, 0xA
+gIntroWailmerStarMediumSpriteSet:: @ 0x086A7BAE
+.2byte 1
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1C, paletteNum=0x9
 
-gUnknown_086A7BB8:: @ 0x086A7BB8
-	.incbin "baserom.gba", 0x6A7BB8, 0xA
+gIntroWailmerStarSmallSpriteSet:: @ 0x086A7BB8
+.2byte 1
+    packed_sprite_oaml x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x39, paletteNum=0x9
 
-gUnknown_086A7BC2:: @ 0x086A7BC2
-	.incbin "baserom.gba", 0x6A7BC2, 0x22
+gIntroWailmerStarLarrgeFlippedSpriteSet:: @ 0x086A7BC2
+.2byte 4
+    packed_sprite_oaml x=-0x18, y=-0x8, vFlip=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x98, paletteNum=0x9
+    packed_sprite_oaml x=0x8, y=-0x8, vFlip=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x9C, paletteNum=0x9
+    packed_sprite_oaml x=-0x18, y=-0x18, vFlip=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x118, paletteNum=0x9
+    packed_sprite_oaml x=0x8, y=-0x18, vFlip=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x11C, paletteNum=0x9
 
-gUnknown_086A7BE4:: @ 0x086A7BE4
-	.incbin "baserom.gba", 0x6A7BE4, 0xA
+gIntroWailmerStarMediumFlippedSpriteSet:: @ 0x086A7BE4
+.2byte 1
+    packed_sprite_oaml x=-0x10, y=-0x10, vFlip=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1C, paletteNum=0x9
 
-gUnknown_086A7BEE:: @ 0x086A7BEE
-	.incbin "baserom.gba", 0x6A7BEE, 0xA
+gIntroWailmerStarSmallFlippedSpriteSet:: @ 0x086A7BEE
+.2byte 1
+    packed_sprite_oaml x=-0x8, y=-0x8, vFlip=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x39, paletteNum=0x9
 
-gUnknown_086A7BF8:: @ 0x086A7BF8
-	.incbin "baserom.gba", 0x6A7BF8, 0x22
+gIntroWailmerSpriteSet:: @ 0x086A7BF8
+.2byte 4
+    packed_sprite_oaml x=-0x40, y=-0x30, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=-0x30, spriteSize=SPRITE_SIZE_64x64, tileNum=0x8, paletteNum=0x1
+    packed_sprite_oaml x=-0x40, y=0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x100, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x108, paletteNum=0x1
 
-gUnknown_086A7C1A:: @ 0x086A7C1A
-	.incbin "baserom.gba", 0x6A7C1A, 0xA
+gIntroWailmerBallSpriteSet:: @ 0x086A7C1A
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x10, paletteNum=0x8
 
-gIntroScene8a_SpriteSets:: @ 0x086A7C24
-    .4byte gUnknown_086A7C1A
-    .4byte gUnknown_086A7BF8
-    .4byte gUnknown_086A7BB8
-    .4byte gUnknown_086A7BEE
-    .4byte gUnknown_086A7BB8
-    .4byte gUnknown_086A7BEE
-    .4byte gUnknown_086A7BB8
-    .4byte gUnknown_086A7BAE
-    .4byte gUnknown_086A7BE4
-    .4byte gUnknown_086A7BAE
-    .4byte gUnknown_086A7BE4
-    .4byte gUnknown_086A7BAE
-    .4byte gUnknown_086A7B8C
-    .4byte gUnknown_086A7BC2
-    .4byte gUnknown_086A7B8C
-    .4byte gUnknown_086A7BC2
-    .4byte gUnknown_086A7B8C
+gIntroScene8WailmerLaunch_SpriteSets:: @ 0x086A7C24
+    .4byte gIntroWailmerBallSpriteSet
+    .4byte gIntroWailmerSpriteSet
 
-gIntroScene8a_DebrisMovement:: @ 0x086A7C68
+    .4byte gIntroWailmerStarSmallSpriteSet
+    .4byte gIntroWailmerStarSmallFlippedSpriteSet
+    .4byte gIntroWailmerStarSmallSpriteSet
+    .4byte gIntroWailmerStarSmallFlippedSpriteSet
+    .4byte gIntroWailmerStarSmallSpriteSet
+
+    .4byte gIntroWailmerStarMediumSpriteSet
+    .4byte gIntroWailmerStarMediumFlippedSpriteSet
+    .4byte gIntroWailmerStarMediumSpriteSet
+    .4byte gIntroWailmerStarMediumFlippedSpriteSet
+    .4byte gIntroWailmerStarMediumSpriteSet
+
+    .4byte gIntroWailmerStarLarrgeSpriteSet
+    .4byte gIntroWailmerStarLarrgeFlippedSpriteSet
+    .4byte gIntroWailmerStarLarrgeSpriteSet
+    .4byte gIntroWailmerStarLarrgeFlippedSpriteSet
+    .4byte gIntroWailmerStarLarrgeSpriteSet
+
+gIntroScene8WailmerLaunch_DebrisMovement:: @ 0x086A7C68
 	.byte 0x05, 0x02, 0x03, 0x01, 0x06, 0x01
 	.align 2,0
 	.byte 0x05, 0xFE, 0x03, 0xFF, 0x19, 0x02
@@ -2135,226 +1766,193 @@ gIntroScene8a_DebrisMovement:: @ 0x086A7C68
 	.byte 0, 0, 0, 0, 0, 0
 	.align 2, 0
 
-gUnknown_086A7C98:: @ 0x086A7C98
-	.incbin "baserom.gba", 0x6A7C98, 0xA
+gIntro9BallCardSpinAnim0SpriteSet:: @ 0x086A7C98
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0
 
-gUnknown_086A7CA2:: @ 0x086A7CA2
-	.incbin "baserom.gba", 0x6A7CA2, 0xA
+gIntro9BallCardSpinAnim1SpriteSet:: @ 0x086A7CA2
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x8, paletteNum=0x0
 
-gUnknown_086A7CAC:: @ 0x086A7CAC
-	.incbin "baserom.gba", 0x6A7CAC, 0xA
+gIntro9BallCardSpinAnim2SpriteSet:: @ 0x086A7CAC
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x10, paletteNum=0x0
 
-gUnknown_086A7CB6:: @ 0x086A7CB6
-	.incbin "baserom.gba", 0x6A7CB6, 0xA
+gIntro9BallCardSpinAnim3SpriteSet:: @ 0x086A7CB6
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x18, paletteNum=0x0
 
-gUnknown_086A7CC0:: @ 0x086A7CC0
-	.incbin "baserom.gba", 0x6A7CC0, 0xA
+gIntro9BallCardSpinAnim4SpriteSet:: @ 0x086A7CC0
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x100, paletteNum=0x0
 
-gUnknown_086A7CCA:: @ 0x086A7CCA
-	.incbin "baserom.gba", 0x6A7CCA, 0xA
+gIntro9BallCardSpinAnim5SpriteSet:: @ 0x086A7CCA
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x108, paletteNum=0x0
 
-gUnknown_086A7CD4:: @ 0x086A7CD4
-	.incbin "baserom.gba", 0x6A7CD4, 0xA
+gIntro9BallCardSpinAnim6SpriteSet:: @ 0x086A7CD4
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x110, paletteNum=0x0
 
-gUnknown_086A7CDE:: @ 0x086A7CDE
-	.incbin "baserom.gba", 0x6A7CDE, 0xA
+gIntro9BallCardSpinAnim7SpriteSet:: @ 0x086A7CDE
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x118, paletteNum=0x0
 
-gUnknown_086A7CE8:: @ 0x086A7CE8
-	.incbin "baserom.gba", 0x6A7CE8, 0xA
+gIntro9BallCardSpinAnim8SpriteSet:: @ 0x086A7CE8
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x200, paletteNum=0x0
 
-gUnknown_086A7CF2:: @ 0x086A7CF2
-	.incbin "baserom.gba", 0x6A7CF2, 0xA
+gIntro9BallCardSpinAnim9SpriteSet:: @ 0x086A7CF2
+.2byte 1
+    packed_sprite_oaml x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x208, paletteNum=0x0
 
-gUnknown_086A7CFC:: @ 0x086A7CFC
-	.incbin "baserom.gba", 0x6A7CFC, 0x24
+gIntro9LargeBallSpriteSet:: @ 0x086A7CFC
+.2byte 4
+    packed_sprite_oaml x=-0x30, y=-0x30, spriteSize=SPRITE_SIZE_64x64, tileNum=0x214, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x314, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x31C, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x30, spriteSize=SPRITE_SIZE_32x64, tileNum=0x21C, paletteNum=0x0
 
-gIntroScene8b_SpriteSets:: @ 0x086A7D20
-    .4byte gUnknown_086A7CFC
-    .4byte gUnknown_086A7C98
-    .4byte gUnknown_086A7CA2
-    .4byte gUnknown_086A7CAC
-    .4byte gUnknown_086A7CB6
-    .4byte gUnknown_086A7CC0
-    .4byte gUnknown_086A7CCA
-    .4byte gUnknown_086A7CD4
-    .4byte gUnknown_086A7CDE
-    .4byte gUnknown_086A7CE8
-    .4byte gUnknown_086A7CF2
+.2byte 0
 
-gIntroScene8b_BallDecelTable:: @ 0x086A7D4C
+gIntroScene9BallFlight_SpriteSets:: @ 0x086A7D20
+    .4byte gIntro9LargeBallSpriteSet
+    .4byte gIntro9BallCardSpinAnim0SpriteSet
+    .4byte gIntro9BallCardSpinAnim1SpriteSet
+    .4byte gIntro9BallCardSpinAnim2SpriteSet
+    .4byte gIntro9BallCardSpinAnim3SpriteSet
+    .4byte gIntro9BallCardSpinAnim4SpriteSet
+    .4byte gIntro9BallCardSpinAnim5SpriteSet
+    .4byte gIntro9BallCardSpinAnim6SpriteSet
+    .4byte gIntro9BallCardSpinAnim7SpriteSet
+    .4byte gIntro9BallCardSpinAnim8SpriteSet
+    .4byte gIntro9BallCardSpinAnim9SpriteSet
+
+gIntroScene9BallFlight_BallDecelTable:: @ 0x086A7D4C
 	.incbin "baserom.gba", 0x6A7D4C, 0x5C
 
 gNameEntryCursorSpriteSets:: @ 0x086A7DA8
-	.4byte gUnknown_086A7DE8
-    .4byte gUnknown_086A7DFA
+	.4byte gHighScoreNameEntryCursor0SpriteSet
+    .4byte gHighScoreNameEntryCursor1SpriteSet
 
 gHighScoreScreenSpriteSets:: @ 0x086A7DB0
-	.4byte gUnknown_086A7E0C
-    .4byte gUnknown_086A7E20
-    .4byte gUnknown_086A7E34
-    .4byte gUnknown_086A7E5E
-    .4byte gUnknown_086A7E70
-    .4byte gUnknown_086A7E82
-    .4byte gUnknown_086A7E9C
-    .4byte gUnknown_086A7EAE
-    .4byte gUnknown_086A7EC8
-
+	.4byte gHighScorePageRightArrowSpriteSet
+    .4byte gHighScorePageLeftArrowSpriteSet
+    .4byte gHighScoreStartTransmissionPopupSpriteSet
+    .4byte gHighScoreTransmittingPopupSpriteSet
+    .4byte gHighScoreTransmissionErrorPopupSpriteSet
+    .4byte gHighScoreTransmissionCompletePopupSpriteSet
+    .4byte gHighScoreDeleteConfirmationPopupSpriteSet
+    .4byte gHighScorePressStart0SpriteSet
+    .4byte gHighScorePressStart1SpriteSet
 
 gCompletionBannerSpriteSets:: @ 0x086A7DD4
-	.4byte gUnknown_086A7EFA
-    .4byte gUnknown_086A7F1C
-    .4byte gUnknown_086A7F3E
-    .4byte gUnknown_086A7F60
-    .4byte gUnknown_086A7F82
+	.4byte gHighScoreDexCompletionBanner0SpriteSet
+    .4byte gHighScoreDexCompletionBanner1SpriteSet
+    .4byte gHighScoreDexCompletionBanner2SpriteSet
+    .4byte gHighScoreDexCompletionBanner3SpriteSet
+    .4byte gHighScoreDexCompletionBanner4SpriteSet
 
-gUnknown_086A7DE8:: @ 0x086A7DE8
+gHighScoreNameEntryCursor0SpriteSet:: @ 0x086A7DE8
 .2byte 2
-    packed_sprite_oam x=0x0, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x7, spriteSize=SPRITE_SIZE_8x8, vFlip=0x1,  tileNum=0x1, paletteNum=0x0
 
-gUnknown_086A7DFA:: @ 0x086A7DFA
+gHighScoreNameEntryCursor1SpriteSet:: @ 0x086A7DFA
 .2byte 2
-    packed_sprite_oam x=0x0, y=-0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0x1, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x8, spriteSize=SPRITE_SIZE_8x8, vFlip=0x1,  tileNum=0x1, paletteNum=0x0
 
-gUnknown_086A7E0C:: @ 0x086A7E0C
+gHighScorePageRightArrowSpriteSet:: @ 0x086A7E0C
 .2byte 1
-    packed_sprite_oam x=-0x1, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0x0
-.2byte 0
-
-.incbin "baserom.gba", 0x6A7E16, 0xA
-
-gUnknown_086A7E20:: @ 0x086A7E20
+    packed_sprite_oaml x=-0x1, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2, paletteNum=0x0
 .2byte 1
-    packed_sprite_oam x=0x1, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x2, priority=0x0, paletteNum=0x0
-.2byte 0
-.incbin "baserom.gba", 0x6A7E2A, 0xA
+    packed_sprite_oaml x=0x0, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x4, paletteNum=0x0
 
-gUnknown_086A7E34:: @ 0x086A7E34
+gHighScorePageLeftArrowSpriteSet:: @ 0x086A7E20
+.2byte 1
+    packed_sprite_oaml x=0x1, y=0x4, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2, paletteNum=0x0
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x4, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x4, paletteNum=0x0
+
+gHighScoreStartTransmissionPopupSpriteSet:: @ 0x086A7E34
 .2byte 5
-    packed_sprite_oam x=0xC, y=-0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x120, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2C, y=-0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x124, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2C, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1a4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x34, y=-0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xb0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x34, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xb8, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0xC, y=-0x1E, spriteSize=SPRITE_SIZE_32x64, tileNum=0x120, paletteNum=0x0
+    packed_sprite_oaml x=0x2C, y=-0x1E, spriteSize=SPRITE_SIZE_16x32, tileNum=0x124, paletteNum=0x0
+    packed_sprite_oaml x=0x2C, y=0x2, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1a4, paletteNum=0x0
+    packed_sprite_oaml x=-0x34, y=-0x1E, spriteSize=SPRITE_SIZE_64x32, tileNum=0xb0, paletteNum=0x0
+    packed_sprite_oaml x=-0x34, y=0x2, spriteSize=SPRITE_SIZE_64x32, tileNum=0xb8, paletteNum=0x0
 
-gUnknown_086A7E5E:: @ 0x086A7E5E
+gHighScoreTransmittingPopupSpriteSet:: @ 0x086A7E5E
 .2byte 2
-    packed_sprite_oam x=-0x28, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x20, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x18, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x28, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x28, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x20, paletteNum=0x0
+    packed_sprite_oaml x=0x18, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x28, paletteNum=0x0
 
-gUnknown_086A7E70:: @ 0x086A7E70
+gHighScoreTransmissionErrorPopupSpriteSet:: @ 0x086A7E70
 .2byte 2
-    packed_sprite_oam x=-0x30, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2a, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x32, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x30, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2a, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0x32, paletteNum=0x0
 
-gUnknown_086A7E82:: @ 0x086A7E82
+gHighScoreTransmissionCompletePopupSpriteSet:: @ 0x086A7E82
 .2byte 3
-    packed_sprite_oam x=-0x38, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x36, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xa0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x28, y=-0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x3e, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x38, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x36, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0xa0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x3e, paletteNum=0x0
 
-gUnknown_086A7E9C:: @ 0x086A7E9C
+gHighScoreDeleteConfirmationPopupSpriteSet:: @ 0x086A7E9C
 .2byte 2
-    packed_sprite_oam x=-0x2C, y=-0x13, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xa4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x14, y=-0x13, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xac, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x2C, y=-0x13, spriteSize=SPRITE_SIZE_64x32, tileNum=0xa4, paletteNum=0x0
+    packed_sprite_oaml x=0x14, y=-0x13, spriteSize=SPRITE_SIZE_32x32, tileNum=0xac, paletteNum=0x0
 
-gUnknown_086A7EAE:: @ 0x086A7EAE
+gHighScorePressStart0SpriteSet:: @ 0x086A7EAE
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x6, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xa, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xe, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x6, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0xa, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0xe, paletteNum=0x0
 
-gUnknown_086A7EC8:: @ 0x086A7EC8
+gHighScorePressStart1SpriteSet:: @ 0x086A7EC8
 .2byte 6
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x8, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xe, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x18, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xf, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x28, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x6, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0xc, paletteNum=0x0
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0xe, paletteNum=0x0
+    packed_sprite_oaml x=0x18, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0xf, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x11, paletteNum=0x0
 
-gUnknown_086A7EFA:: @ 0x086A7EFA
+gHighScoreDexCompletionBanner0SpriteSet:: @ 0x086A7EFA
 .2byte 4
-    packed_sprite_oam x=-0x4A, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x136, priority=0x0, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x2B, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1b6, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x126, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x12e, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oaml x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1b6, paletteNum=0x1
+    packed_sprite_oaml x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12e, paletteNum=0x0
 
-gUnknown_086A7F1C:: @ 0x086A7F1C
+gHighScoreDexCompletionBanner1SpriteSet:: @ 0x086A7F1C
 .2byte 4
-    packed_sprite_oam x=-0x4A, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x136, priority=0x0, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x2B, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1b6, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x126, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x12e, priority=0x0, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oaml x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1b6, paletteNum=0x1
+    packed_sprite_oaml x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x4
+    packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12e, paletteNum=0x4
 
-gUnknown_086A7F3E:: @ 0x086A7F3E
+gHighScoreDexCompletionBanner2SpriteSet:: @ 0x086A7F3E
 .2byte 4
-    packed_sprite_oam x=-0x4A, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x136, priority=0x0, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x2B, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1b6, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x126, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x12e, priority=0x0, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oaml x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1b6, paletteNum=0x1
+    packed_sprite_oaml x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x5
+    packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12e, paletteNum=0x5
 
-gUnknown_086A7F60:: @ 0x086A7F60
+gHighScoreDexCompletionBanner3SpriteSet:: @ 0x086A7F60
 .2byte 4
-    packed_sprite_oam x=-0x4A, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x136, priority=0x0, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x2B, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1b6, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x126, priority=0x0, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x12e, priority=0x0, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oaml x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1b6, paletteNum=0x1
+    packed_sprite_oaml x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x6
+    packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12e, paletteNum=0x6
 
-gUnknown_086A7F82:: @ 0x086A7F82
+gHighScoreDexCompletionBanner4SpriteSet:: @ 0x086A7F82
 .2byte 4
-    packed_sprite_oam x=-0x4A, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x136, priority=0x0, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x2B, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1b6, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x126, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x12e, priority=0x0, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oaml x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1b6, paletteNum=0x1
+    packed_sprite_oaml x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x7
+    packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12e, paletteNum=0x7
 
 gScorePaletteAnimOffsets:: @ 0x086A7FA4
 	.byte 0x0B, 0x0B, 0xEA;
@@ -2367,176 +1965,815 @@ gScorePaletteResetOffsets:: @ 0x086A7FA8
 gHighScoreCharToTileMap:: @ 0x086A7FAC
 	.incbin "baserom.gba", 0x6A7FAC, 0x54
 
-gUnknown_086A8000:: @ 0x086A8000
-    .2byte 0x5
-    packed_sprite_oam x=-0x3A, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x14e, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x2A, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x14e, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x160, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x164, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x168, priority=0x0, paletteNum=0x0
-.2byte 0
-
-gUnknown_086A802A:: @ 0x086A802A
-    .2byte 0x5
-    packed_sprite_oam x=-0x3A, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x14c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x2A, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x14c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x160, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x164, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x168, priority=0x0, paletteNum=0x0
-.2byte 0
-
-gUnknown_086A8054:: @ 0x086A8054
+gTitleFlippersAndStartAnim0SpriteSet:: @ 0x086A8000
 .2byte 0x5
-    packed_sprite_oam x=-0x3A, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x16c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x2A, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x16c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x180, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x184, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x188, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14e, paletteNum=0x4
+    packed_sprite_oaml x=0x2A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x14e, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x160, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x164, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x168, paletteNum=0x0
 
-gUnknown_086A807E:: @ 0x086A807E
+gTitleFlippersAndStartAnim1SpriteSet:: @ 0x086A802A
 .2byte 0x5
-    packed_sprite_oam x=-0x3A, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x14c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x2A, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x14c, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x180, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x184, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x188, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14c, paletteNum=0x4
+    packed_sprite_oaml x=0x2A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x14c, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x160, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x164, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x168, paletteNum=0x0
 
+gTitleFlippersAndStartAnim2SpriteSet:: @ 0x086A8054
+.2byte 0x5
+    packed_sprite_oaml x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x16c, paletteNum=0x4
+    packed_sprite_oaml x=0x2A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x16c, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A80A8:: @ 0x086A80A8
-	.incbin "baserom.gba", 0x6A80A8, 0x7A
+gTitleFlippersAndStartAnim3SpriteSet:: @ 0x086A807E
+.2byte 0x5
+    packed_sprite_oaml x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14c, paletteNum=0x4
+    packed_sprite_oaml x=0x2A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x14c, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8122:: @ 0x086A8122
-	.incbin "baserom.gba", 0x6A8122, 0x92
+gTitleMenuNoSavePanelAnim0SpriteSet:: @ 0x086A80A8
+.2byte 15
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x32, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x32, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x32, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x32, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x120, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=-0x32, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x124, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x32, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x128, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x4, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A81B4:: @ 0x086A81B4
-	.incbin "baserom.gba", 0x6A81B4, 0x8A
+gTitleMenuNoSavePanelAnim1SpriteSet:: @ 0x086A8122
+.2byte 18
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x1A, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x1A, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x1A, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x2A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1EB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x2A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1E0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x32, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1EB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x32, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x32, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=-0x1A, spriteSize=SPRITE_SIZE_32x16, tileNum=0x120, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=-0x1A, spriteSize=SPRITE_SIZE_32x16, tileNum=0x124, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x1A, spriteSize=SPRITE_SIZE_32x16, tileNum=0x128, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A823E:: @ 0x086A823E
-	.incbin "baserom.gba", 0x6A823E, 0xCA
+gTitleMenuNoSavePanelAnim2SpriteSet:: @ 0x086A81B4
+.2byte 17
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0xA, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1EB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x1A, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1E0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x32, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1EB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x32, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x32, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=-0x1A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x32, tileNum=0xE0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x1A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0xE8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8308:: @ 0x086A8308
-	.incbin "baserom.gba", 0x6A8308, 0xDA
+gTitleMenuNoSavePanelAnim3SpriteSet:: @ 0x086A823E
+.2byte 25
+    packed_sprite_oaml x=-0x18, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x170, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x2F, spriteSize=SPRITE_SIZE_16x16, tileNum=0x174, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x39, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x39, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A83E2:: @ 0x086A83E2
-	.incbin "baserom.gba", 0x6A83E2, 0xEA
+gTitleMenuNoSavePanelAnim4SpriteSet:: @ 0x086A8308
+.2byte 27
+    packed_sprite_oaml x=-0x18, y=-0x22, spriteSize=SPRITE_SIZE_32x16, tileNum=0x170, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x22, spriteSize=SPRITE_SIZE_16x16, tileNum=0x174, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1AF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1B3, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x39, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x39, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A84CC:: @ 0x086A84CC
-	.incbin "baserom.gba", 0x6A84CC, 0xFA
+gTitleMenuNoSavePanelAnim5SpriteSet:: @ 0x086A83E2
+.2byte 29
+    packed_sprite_oaml x=-0x18, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x170, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x13, spriteSize=SPRITE_SIZE_16x16, tileNum=0x174, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1EF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1F3, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0xF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x13, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x39, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x39, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A85C6:: @ 0x086A85C6
-	.incbin "baserom.gba", 0x6A85C6, 0x102
+gTitleMenuNoSavePanelAnim6SpriteSet:: @ 0x086A84CC
+.2byte 31
+    packed_sprite_oaml x=-0x18, y=-0x6, spriteSize=SPRITE_SIZE_32x16, tileNum=0x170, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x6, spriteSize=SPRITE_SIZE_16x16, tileNum=0x174, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x230, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x13, spriteSize=SPRITE_SIZE_16x16, tileNum=0x234, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x53, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x159, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x2F, spriteSize=SPRITE_SIZE_16x16, tileNum=0x15D, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A86C8:: @ 0x086A86C8
-	.incbin "baserom.gba", 0x6A86C8, 0xF2
+gTitleMenuNoSavePanelAnim7SpriteSet:: @ 0x086A85C6
+.2byte 32
+    packed_sprite_oaml x=-0x20, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x8F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x93, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x198, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x21, spriteSize=SPRITE_SIZE_16x16, tileNum=0x19C, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x21, spriteSize=SPRITE_SIZE_8x16, tileNum=0x19E, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0xF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x13, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x26F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x273, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x39, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A87BA:: @ 0x086A87BA
-	.incbin "baserom.gba", 0x6A87BA, 0xFA
+gTitleMenuNoSavePanelAnim8SpriteSet:: @ 0x086A86C8
+.2byte 30
+    packed_sprite_oaml x=-0x20, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x53, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0xD0, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0xD4, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1DA, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0xF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x13, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A88B4:: @ 0x086A88B4
-	.incbin "baserom.gba", 0x6A88B4, 0xFA
+gTitleMenuNoSavePanelAnim9SpriteSet:: @ 0x086A87BA
+.2byte 31
+    packed_sprite_oaml x=-0x20, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x8F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x93, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x53, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0xF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x13, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0x219, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0x21D, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A89AE:: @ 0x086A89AE
-	.incbin "baserom.gba", 0x6A89AE, 0x112
+gTitleMenuNoSavePanelAnim10SpriteSet:: @ 0x086A88B4
+.2byte 31
+    packed_sprite_oaml x=-0x20, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x8F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x93, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0xD0, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0xD4, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x53, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0xF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x13, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8AC0:: @ 0x086A8AC0
-	.incbin "baserom.gba", 0x6A8AC0, 0xA
+gTitleMenuNoSavePanelAnim11SpriteSet:: @ 0x086A89AE
+.2byte 34
+    packed_sprite_oaml x=0x8, y=-0x2F, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x8F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x93, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x5, spriteSize=SPRITE_SIZE_32x16, tileNum=0xD0, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x5, spriteSize=SPRITE_SIZE_16x16, tileNum=0xD4, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x110, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x114, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x53, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3A, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x4, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x14, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0xF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x2F, spriteSize=SPRITE_SIZE_32x16, tileNum=0x13, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8ACA:: @ 0x086A8ACA
-	.incbin "baserom.gba", 0x6A8ACA, 0xA
+gTitleMenuNoSaveLeftCursorFlipperAnim0SpriteSet:: @ 0x086A8AC0
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x16C, paletteNum=0x4
 
-gUnknown_086A8AD4:: @ 0x086A8AD4
-	.incbin "baserom.gba", 0x6A8AD4, 0xA
+gTitleMenuNoSaveLeftCursorFlipperAnim1SpriteSet:: @ 0x086A8ACA
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14C, paletteNum=0x4
 
-gUnknown_086A8ADE:: @ 0x086A8ADE
-	.incbin "baserom.gba", 0x6A8ADE, 0xA
+gTitleMenuNoSaveLeftCursorFlipperAnim2SpriteSet:: @ 0x086A8AD4
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14E, paletteNum=0x4
 
-gUnknown_086A8AE8:: @ 0x086A8AE8
-	.incbin "baserom.gba", 0x6A8AE8, 0xA
+gTitleMenuNoSaveRightCursorFlipperAnim0SpriteSet:: @ 0x086A8ADE
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x16C, paletteNum=0x4
 
-gUnknown_086A8AF2:: @ 0x086A8AF2
-    .incbin "baserom.gba", 0x6A8AF2, 0xA
+gTitleMenuNoSaveRightCursorFlipperAnim1SpriteSet:: @ 0x086A8AE8
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14C, paletteNum=0x4
 
-gUnknown_086A8AFC:: @ 0x086A8AFC
+gTitleMenuNoSaveRightCursorFlipperAnim2SpriteSet:: @ 0x086A8AF2
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14E, paletteNum=0x4
+
+gTitleDeleteSaveConfirmationPopupSpriteSet:: @ 0x086A8AFC
 .2byte 0x2
-    packed_sprite_oam x=-0x30, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x298, priority=0x0, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x300, priority=0x0, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=-0x30, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x298, paletteNum=0x2
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x300, paletteNum=0x2
 
 .incbin "baserom.gba", 0x6A8B0E, 0xA8
 
-gUnknown_086A8BB6:: @ 0x086A8BB6
-    .incbin "baserom.gba", 0x6A8BB6, 0x7A
+gTitleMenuSavePanelAnim0SpriteSet:: @ 0x086A8BB6
+.2byte 15
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x120, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=-0x33, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x124, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x33, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x128, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x4, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8C30:: @ 0x086A8C30
-    .incbin "baserom.gba", 0x6A8C30, 0x92
+gTitleMenuSavePanelAnim1SpriteSet:: @ 0x086A8C30
+.2byte 18
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x1B, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x1B, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x1B, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x2B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1EB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x2B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1E0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1EB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x32, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=-0x1B, spriteSize=SPRITE_SIZE_32x16, tileNum=0x120, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=-0x1B, spriteSize=SPRITE_SIZE_32x16, tileNum=0x124, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x1B, spriteSize=SPRITE_SIZE_32x16, tileNum=0x128, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8CC2:: @ 0x086A8CC2
-    .incbin "baserom.gba", 0x6A8CC2, 0x8A
+gTitleMenuSavePanelAnim2SpriteSet:: @ 0x086A8CC2
+.2byte 17
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0xB, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2C8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1EB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x1B, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1E0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1EB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x32, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=-0x1B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x32, tileNum=0xE0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x1B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0xE8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8D4C:: @ 0x086A8D4C
-    .incbin "baserom.gba", 0x6A8D4C, 0xCA
+gTitleMenuSavePanelAnim3SpriteSet:: @ 0x086A8D4C
+.2byte 25
+    packed_sprite_oaml x=-0x18, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x170, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x33, spriteSize=SPRITE_SIZE_16x16, tileNum=0x174, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x2F, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8E16:: @ 0x086A8E16
-    .incbin "baserom.gba", 0x6A8E16, 0xDA
+gTitleMenuSavePanelAnim4SpriteSet:: @ 0x086A8E16
+.2byte 27
+    packed_sprite_oaml x=-0x18, y=-0x24, spriteSize=SPRITE_SIZE_32x16, tileNum=0x170, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x174, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1AF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1B3, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8EF0:: @ 0x086A8EF0
-    .incbin "baserom.gba", 0x6A8EF0, 0xEA
+gTitleMenuSavePanelAnim5SpriteSet:: @ 0x086A8EF0
+.2byte 29
+    packed_sprite_oaml x=-0x18, y=-0x17, spriteSize=SPRITE_SIZE_32x16, tileNum=0x170, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x17, spriteSize=SPRITE_SIZE_16x16, tileNum=0x174, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x33, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x25, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1EF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x25, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1F3, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A8FDA:: @ 0x086A8FDA
-    .incbin "baserom.gba", 0x6A8FDA, 0xFA
+gTitleMenuSavePanelAnim6SpriteSet:: @ 0x086A8FDA
+.2byte 31
+    packed_sprite_oaml x=-0x18, y=-0x26, spriteSize=SPRITE_SIZE_32x16, tileNum=0x50, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x54, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x9, spriteSize=SPRITE_SIZE_32x16, tileNum=0x170, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x9, spriteSize=SPRITE_SIZE_16x16, tileNum=0x174, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x22F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x233, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x159, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x33, spriteSize=SPRITE_SIZE_16x16, tileNum=0x15D, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x2F, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A90D4:: @ 0x086A90D4
-    .incbin "baserom.gba", 0x6A90D4, 0x10A
+gTitleMenuSavePanelAnim7SpriteSet:: @ 0x086A90D4
+.2byte 33
+    packed_sprite_oaml x=-0x18, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x33, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x8F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x93, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x170, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x174, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x270, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x274, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x26, spriteSize=SPRITE_SIZE_32x16, tileNum=0x199, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x19D, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A91DE:: @ 0x086A91DE
-    .incbin "baserom.gba", 0x6A91DE, 0x10A
+gTitleMenuSavePanelAnim8SpriteSet:: @ 0x086A91DE
+.2byte 33
+    packed_sprite_oaml x=-0x18, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x33, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x26, spriteSize=SPRITE_SIZE_32x16, tileNum=0x50, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x54, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0xD0, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0xD4, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1D8, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1DC, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2AF, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2B3, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x2F, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A92E8:: @ 0x086A92E8
-    .incbin "baserom.gba", 0x6A92E8, 0x102
+gTitleMenuSavePanelAnim9SpriteSet:: @ 0x086A92E8
+.2byte 32
+    packed_sprite_oaml x=-0x18, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x33, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x26, spriteSize=SPRITE_SIZE_32x16, tileNum=0x50, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x54, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x8F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x93, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x21A, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x110, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x114, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3A, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A93EA:: @ 0x086A93EA
-    .incbin "baserom.gba", 0x6A93EA, 0x10A
+gTitleMenuSavePanelAnim10SpriteSet:: @ 0x086A93EA
+.2byte 33
+    packed_sprite_oaml x=-0x18, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x33, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x26, spriteSize=SPRITE_SIZE_32x16, tileNum=0x50, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x54, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x8F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x93, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0xD0, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0xD4, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x259, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x25D, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x2F, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A94F4:: @ 0x086A94F4
-    .incbin "baserom.gba", 0x6A94F4, 0x10A
+gTitleMenuSavePanelAnim11SpriteSet:: @ 0x086A94F4
+.2byte 33
+    packed_sprite_oaml x=-0x18, y=-0x33, spriteSize=SPRITE_SIZE_32x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x33, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x26, spriteSize=SPRITE_SIZE_32x16, tileNum=0x50, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0x26, spriteSize=SPRITE_SIZE_16x16, tileNum=0x54, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x8F, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x19, spriteSize=SPRITE_SIZE_32x16, tileNum=0x93, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0xD0, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=-0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0xD4, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=-0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1A8, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x240, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C0, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x110, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x114, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=-0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x24B, paletteNum=0x0
+    packed_sprite_oaml x=0x28, y=0xD, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2CB, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E0, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2E8, paletteNum=0x0
+    packed_sprite_oaml x=-0x2F, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=-0x3B, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x100, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x104, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=0x10, y=0x5, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x16, tileNum=0x108, paletteNum=0x0, unkFlag=0x1
+    packed_sprite_oaml x=-0x30, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x144, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x15, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x148, paletteNum=0x0
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
-gUnknown_086A95FE:: @ 0x086A95FE
-    .incbin "baserom.gba", 0x6A95FE, 0xA
+gTitleMenuSaveLeftCursorFlipperAnim0SpriteSet:: @ 0x086A95FE
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x16C, paletteNum=0x4
 
-gUnknown_086A9608:: @ 0x086A9608
-    .incbin "baserom.gba", 0x6A9608, 0xA
+gTitleMenuSaveLeftCursorFlipperAnim1SpriteSet:: @ 0x086A9608
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14C, paletteNum=0x4
 
-gUnknown_086A9612:: @ 0x086A9612
-    .incbin "baserom.gba", 0x6A9612, 0xA
+gTitleMenuSaveLeftCursorFlipperAnim2SpriteSet:: @ 0x086A9612
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14E, paletteNum=0x4
 
-gUnknown_086A961C:: @ 0x086A961C
-    .incbin "baserom.gba", 0x6A961C, 0xA
+gTitleMenuSaveRightCursorFlipperAnim0SpriteSet:: @ 0x086A961C
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x16C, paletteNum=0x4
 
-gUnknown_086A9626:: @ 0x086A9626
-    .incbin "baserom.gba", 0x6A9626, 0xA
+gTitleMenuSaveRightCursorFlipperAnim1SpriteSet:: @ 0x086A9626
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14C, paletteNum=0x4
 
-gUnknown_086A9630:: @ 0x086A9630
-    .incbin "baserom.gba", 0x6A9630, 0x1C
+gTitleMenuSaveRightCursorFlipperAnim2SpriteSet:: @ 0x086A9630
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14E, paletteNum=0x4
 
+@ DeleteSaveConfirmationPopup duplicate
+.2byte 2
+    packed_sprite_oaml x=-0x30, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x298, paletteNum=0x2
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x300, paletteNum=0x2
 
 gTitleMenuStateTable:: @ 0x086A964C
 	.2byte 0x0002
@@ -2562,7 +2799,7 @@ gTitleMenuSlideInAnimData:: @ 0x086A9666
 	.byte 0x01, 0x05
 	.byte 0x03, 0x05
 
-gTitleMenuSlideOutAnimData:: @ 0x086A9672
+gTitleMenuSlideOutAnimSpriteGroupData:: @ 0x086A9672
 	.byte 0x00, 0x10
 	.byte 0x01, 0x04
 	.byte 0x02, 0x10
@@ -2621,61 +2858,62 @@ gTitleSavedMenuActions:: @ 0x086A96D4
     .2byte 0x0500, 0x0302, 0x0000
 
 gTitlePressStartSpriteSets:: @ 0x086A96E4
-	.4byte gUnknown_086A8000
-	.4byte gUnknown_086A802A
-	.4byte gUnknown_086A8054
-	.4byte gUnknown_086A807E
-	.4byte gUnknown_086A8AFC
+	.4byte gTitleFlippersAndStartAnim0SpriteSet
+	.4byte gTitleFlippersAndStartAnim1SpriteSet
+	.4byte gTitleFlippersAndStartAnim2SpriteSet
+	.4byte gTitleFlippersAndStartAnim3SpriteSet
+	.4byte gTitleDeleteSaveConfirmationPopupSpriteSet
 
 gTitleNoSaveDefaultSprites:: @ 0x086A96F8
-	.4byte gUnknown_086A8AC0
-	.4byte gUnknown_086A8ACA
-	.4byte gUnknown_086A8AD4
-	.4byte gUnknown_086A8ADE
-	.4byte gUnknown_086A8AE8
-	.4byte gUnknown_086A8AF2
-	.4byte gUnknown_086A80A8
+	.4byte gTitleMenuNoSaveLeftCursorFlipperAnim0SpriteSet
+	.4byte gTitleMenuNoSaveLeftCursorFlipperAnim1SpriteSet
+	.4byte gTitleMenuNoSaveLeftCursorFlipperAnim2SpriteSet
+	.4byte gTitleMenuNoSaveRightCursorFlipperAnim0SpriteSet
+	.4byte gTitleMenuNoSaveRightCursorFlipperAnim1SpriteSet
+	.4byte gTitleMenuNoSaveRightCursorFlipperAnim2SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim0SpriteSet
 
 gTitleNoSaveAnimSprites:: @ 0x086A9714
-	.4byte gUnknown_086A80A8
-	.4byte gUnknown_086A8122
-	.4byte gUnknown_086A81B4
-	.4byte gUnknown_086A823E
-	.4byte gUnknown_086A8308
-	.4byte gUnknown_086A83E2
-	.4byte gUnknown_086A84CC
-	.4byte gUnknown_086A85C6
-	.4byte gUnknown_086A86C8
-	.4byte gUnknown_086A87BA
-	.4byte gUnknown_086A88B4
-	.4byte gUnknown_086A89AE
+@ Animates the window for the menu panel, from thin to full size, with options
+	.4byte gTitleMenuNoSavePanelAnim0SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim1SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim2SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim3SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim4SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim5SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim6SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim7SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim8SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim9SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim10SpriteSet
+	.4byte gTitleMenuNoSavePanelAnim11SpriteSet
 	.4byte 0x00000000
 
 gTitleMenuRetractDurations:: @ 0x086A9748
 	.byte 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0
 
 gTitleSavedDefaultSprites:: @ 0x086A975C
-	.4byte gUnknown_086A95FE
-	.4byte gUnknown_086A9608
-	.4byte gUnknown_086A9612
-	.4byte gUnknown_086A961C
-	.4byte gUnknown_086A9626
-	.4byte gUnknown_086A9630
-	.4byte gUnknown_086A8BB6
+	.4byte gTitleMenuSaveLeftCursorFlipperAnim0SpriteSet
+	.4byte gTitleMenuSaveLeftCursorFlipperAnim1SpriteSet
+	.4byte gTitleMenuSaveLeftCursorFlipperAnim2SpriteSet
+	.4byte gTitleMenuSaveRightCursorFlipperAnim0SpriteSet
+	.4byte gTitleMenuSaveRightCursorFlipperAnim1SpriteSet
+	.4byte gTitleMenuSaveRightCursorFlipperAnim2SpriteSet
+	.4byte gTitleMenuSavePanelAnim0SpriteSet
 
 gTitleSavedAnimSprites:: @ 0x086A9778
-	.4byte gUnknown_086A8BB6
-	.4byte gUnknown_086A8C30
-	.4byte gUnknown_086A8CC2
-	.4byte gUnknown_086A8D4C
-	.4byte gUnknown_086A8E16
-	.4byte gUnknown_086A8EF0
-	.4byte gUnknown_086A8FDA
-	.4byte gUnknown_086A90D4
-	.4byte gUnknown_086A91DE
-	.4byte gUnknown_086A92E8
-	.4byte gUnknown_086A93EA
-	.4byte gUnknown_086A94F4
+	.4byte gTitleMenuSavePanelAnim0SpriteSet
+	.4byte gTitleMenuSavePanelAnim1SpriteSet
+	.4byte gTitleMenuSavePanelAnim2SpriteSet
+	.4byte gTitleMenuSavePanelAnim3SpriteSet
+	.4byte gTitleMenuSavePanelAnim4SpriteSet
+	.4byte gTitleMenuSavePanelAnim5SpriteSet
+	.4byte gTitleMenuSavePanelAnim6SpriteSet
+	.4byte gTitleMenuSavePanelAnim7SpriteSet
+	.4byte gTitleMenuSavePanelAnim8SpriteSet
+	.4byte gTitleMenuSavePanelAnim9SpriteSet
+	.4byte gTitleMenuSavePanelAnim10SpriteSet
+	.4byte gTitleMenuSavePanelAnim11SpriteSet
 	.4byte 0x00000000
 
 gEReaderAccessButtonSequence:: @ 0x086A97AC
@@ -2748,169 +2986,463 @@ gUnknown_086A97BC:: @ 0x086A97BC
     .4byte gUnknown_086A9F22
 
 gUnknown_086A9898:: @ 0x086A9898
-    .incbin "baserom.gba", 0x6A9898, 0x8
+.2byte 1
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
 
 gUnknown_086A98A0:: @ 0x086A98A0
-    .incbin "baserom.gba", 0x6A98A0, 0x8
+.2byte 1
+    packed_sprite_oam x=0x1, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
 
 gUnknown_086A98A8:: @ 0x086A98A8
-    .incbin "baserom.gba", 0x6A98A8, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
 gUnknown_086A98BC:: @ 0x086A98BC
-    .incbin "baserom.gba", 0x6A98BC, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x12, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
 gUnknown_086A98D0:: @ 0x086A98D0
-    .incbin "baserom.gba", 0x6A98D0, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1A, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
 gUnknown_086A98E4:: @ 0x086A98E4
-    .incbin "baserom.gba", 0x6A98E4, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x22, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
 gUnknown_086A98F8:: @ 0x086A98F8
-    .incbin "baserom.gba", 0x6A98F8, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2A, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
 gUnknown_086A990C:: @ 0x086A990C
-    .incbin "baserom.gba", 0x6A990C, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x32, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
 gUnknown_086A9920:: @ 0x086A9920
-    .incbin "baserom.gba", 0x6A9920, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x3A, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
 gUnknown_086A9934:: @ 0x086A9934
-    .incbin "baserom.gba", 0x6A9934, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x42, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4A, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
 gUnknown_086A9948:: @ 0x086A9948
-    .incbin "baserom.gba", 0x6A9948, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4E, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
 
 gUnknown_086A995C:: @ 0x086A995C
-    .incbin "baserom.gba", 0x6A995C, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x52, paletteNum=0x0
 
 gUnknown_086A9970:: @ 0x086A9970
-    .incbin "baserom.gba", 0x6A9970, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x56, paletteNum=0x0
 
 gUnknown_086A9984:: @ 0x086A9984
-    .incbin "baserom.gba", 0x6A9984, 0x26
+.2byte 6
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1A0, paletteNum=0x1
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1A4, paletteNum=0x1
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1A8, paletteNum=0x1
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1AC, paletteNum=0x1
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1B0, paletteNum=0x1
+    packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1B4, paletteNum=0x1
 
 gUnknown_086A99AA:: @ 0x086A99AA
-    .incbin "baserom.gba", 0x6A99AA, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1C0, paletteNum=0x2
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1D0, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1D8, paletteNum=0x2
+    packed_sprite_oam x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1E0, paletteNum=0x2
 
 gUnknown_086A99C4:: @ 0x086A99C4
-    .incbin "baserom.gba", 0x6A99C4, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1E4, paletteNum=0x2
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1F4, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1FC, paletteNum=0x2
+    packed_sprite_oam x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x204, paletteNum=0x2
 
 gUnknown_086A99DE:: @ 0x086A99DE
-    .incbin "baserom.gba", 0x6A99DE, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x208, paletteNum=0x2
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x218, paletteNum=0x2
+    packed_sprite_oam x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x220, paletteNum=0x2
+    packed_sprite_oam x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x228, paletteNum=0x2
 
 gUnknown_086A99F8:: @ 0x086A99F8
-    .incbin "baserom.gba", 0x6A99F8, 0x8
+.2byte 1
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x238, paletteNum=0x0
 
 gUnknown_086A9A00:: @ 0x086A9A00
-    .incbin "baserom.gba", 0x6A9A00, 0x20
+.2byte 5
+    packed_sprite_oam x=-0x34, y=-0x1E, spriteSize=SPRITE_SIZE_64x32, tileNum=0x60, paletteNum=0x0
+    packed_sprite_oam x=-0x34, y=0x2, spriteSize=SPRITE_SIZE_64x32, tileNum=0x80, paletteNum=0x0
+    packed_sprite_oam x=0xC, y=-0x1E, spriteSize=SPRITE_SIZE_32x64, tileNum=0xA0, paletteNum=0x0
+    packed_sprite_oam x=0x2C, y=-0x1E, spriteSize=SPRITE_SIZE_8x32, tileNum=0xC0, paletteNum=0x0
+    packed_sprite_oam x=0x2C, y=0x2, spriteSize=SPRITE_SIZE_8x32, tileNum=0xC4, paletteNum=0x0
 
 gUnknown_086A9A20:: @ 0x086A9A20
-    .incbin "baserom.gba", 0x6A9A20, 0xE
+.2byte 2
+    packed_sprite_oam x=-0x28, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0xC8, paletteNum=0x0
+    packed_sprite_oam x=0x18, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0xE8, paletteNum=0x0
 
 gUnknown_086A9A2E:: @ 0x086A9A2E
-    .incbin "baserom.gba", 0x6A9A2E, 0xE
+.2byte 2
+    packed_sprite_oam x=-0x30, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0xF0, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0x110, paletteNum=0x0
 
 gUnknown_086A9A3C:: @ 0x086A9A3C
-    .incbin "baserom.gba", 0x6A9A3C, 0x14
+.2byte 3
+    packed_sprite_oam x=-0x38, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x120, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0x140, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x150, paletteNum=0x0
 
 gUnknown_086A9A50:: @ 0x086A9A50
-    .incbin "baserom.gba", 0x6A9A50, 0xE
+.2byte 2
+    packed_sprite_oam x=-0x2C, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x158, paletteNum=0x0
+    packed_sprite_oam x=0x14, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x178, paletteNum=0x0
 
 gUnknown_086A9A5E:: @ 0x086A9A5E
-    .incbin "baserom.gba", 0x6A9A5E, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x240, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x244, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x246, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x248, paletteNum=0x3
 
 gUnknown_086A9A78:: @ 0x086A9A78
-    .incbin "baserom.gba", 0x6A9A78, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x249, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x24D, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x24F, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x251, paletteNum=0x3
 
 gUnknown_086A9A92:: @ 0x086A9A92
-    .incbin "baserom.gba", 0x6A9A92, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x252, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x256, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x258, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x25A, paletteNum=0x3
 
 gUnknown_086A9AAC:: @ 0x086A9AAC
-    .incbin "baserom.gba", 0x6A9AAC, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x25B, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x25F, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x261, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x263, paletteNum=0x3
 
 gUnknown_086A9AC6:: @ 0x086A9AC6
-    .incbin "baserom.gba", 0x6A9AC6, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x264, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x268, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x26A, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x26C, paletteNum=0x3
 
 gUnknown_086A9AE0:: @ 0x086A9AE0
-    .incbin "baserom.gba", 0x6A9AE0, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x26D, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x271, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x273, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x275, paletteNum=0x3
 
 gUnknown_086A9AFA:: @ 0x086A9AFA
-    .incbin "baserom.gba", 0x6A9AFA, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x276, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x27A, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x27C, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x27E, paletteNum=0x3
 
 gUnknown_086A9B14:: @ 0x086A9B14
-    .incbin "baserom.gba", 0x6A9B14, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x27F, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x283, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x285, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x287, paletteNum=0x3
 
 gUnknown_086A9B2E:: @ 0x086A9B2E
-    .incbin "baserom.gba", 0x6A9B2E, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x288, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x28C, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x28E, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x290, paletteNum=0x3
 
 gUnknown_086A9B48:: @ 0x086A9B48
-    .incbin "baserom.gba", 0x6A9B48, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x291, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x295, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x297, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x299, paletteNum=0x3
 
 gUnknown_086A9B62:: @ 0x086A9B62
-    .incbin "baserom.gba", 0x6A9B62, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x29A, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x29E, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2A0, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2A2, paletteNum=0x3
 
 gUnknown_086A9B7C:: @ 0x086A9B7C
-    .incbin "baserom.gba", 0x6A9B7C, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2A3, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2A7, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2A9, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2AB, paletteNum=0x3
 
 gUnknown_086A9B96:: @ 0x086A9B96
-    .incbin "baserom.gba", 0x6A9B96, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2AC, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2B0, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2B2, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2B4, paletteNum=0x3
 
 gUnknown_086A9BB0:: @ 0x086A9BB0
-    .incbin "baserom.gba", 0x6A9BB0, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2B5, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2B9, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2BB, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2BD, paletteNum=0x3
 
 gUnknown_086A9BCA:: @ 0x086A9BCA
-    .incbin "baserom.gba", 0x6A9BCA, 0x1A
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2BE, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2C2, paletteNum=0x3
+    packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2C4, paletteNum=0x3
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2C6, paletteNum=0x3
 
 gUnknown_086A9BE4:: @ 0x086A9BE4
-    .incbin "baserom.gba", 0x6A9BE4, 0x32
+.2byte 8
+    packed_sprite_oam x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oam x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30C, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31C, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
 
 gUnknown_086A9C16:: @ 0x086A9C16
-    .incbin "baserom.gba", 0x6A9C16, 0x38
+.2byte 9
+    packed_sprite_oam x=-0x61, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oam x=-0x61, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oam x=-0x41, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30C, paletteNum=0x4
+    packed_sprite_oam x=-0x41, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oam x=-0x38, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31C, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
 
 gUnknown_086A9C4E:: @ 0x086A9C4E
-    .incbin "baserom.gba", 0x6A9C4E, 0x44
+.2byte 11
+    packed_sprite_oam x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oam x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30C, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oam x=-0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31C, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oam x=-0x20, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
 
 gUnknown_086A9C92:: @ 0x086A9C92
-    .incbin "baserom.gba", 0x6A9C92, 0x5C
+.2byte 15
+    packed_sprite_oam x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oam x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30C, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oam x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x8, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oam x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31C, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x336, paletteNum=0x5
 
 gUnknown_086A9CEE:: @ 0x086A9CEE
-    .incbin "baserom.gba", 0x6A9CEE, 0x5C
+.2byte 15
+    packed_sprite_oam x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oam x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30C, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oam x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x7, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oam x=0x11, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oam x=0x31, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31C, paletteNum=0x4
+    packed_sprite_oam x=0x31, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oam x=0x41, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oam x=0x41, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oam x=-0x17, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=0x9, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x27, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=0x29, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x338, paletteNum=0x5
 
 gUnknown_086A9D4A:: @ 0x086A9D4A
-    .incbin "baserom.gba", 0x6A9D4A, 0x5C
+.2byte 15
+    packed_sprite_oam x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oam x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30C, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oam x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x8, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oam x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31C, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x33A, paletteNum=0x5
 
 gUnknown_086A9DA6:: @ 0x086A9DA6
-    .incbin "baserom.gba", 0x6A9DA6, 0x56
+.2byte 14
+    packed_sprite_oam x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oam x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30C, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oam x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x8, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x4
+    packed_sprite_oam x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31C, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
 
 gUnknown_086A9DFC:: @ 0x086A9DFC
-    .incbin "baserom.gba", 0x6A9DFC, 0x56
+.2byte 14
+    packed_sprite_oam x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x5
+    packed_sprite_oam x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x5
+    packed_sprite_oam x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30C, paletteNum=0x5
+    packed_sprite_oam x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x5
+    packed_sprite_oam x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
+    packed_sprite_oam x=-0x8, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x314, paletteNum=0x5
+    packed_sprite_oam x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x5
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31C, paletteNum=0x5
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x5
+    packed_sprite_oam x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x5
+    packed_sprite_oam x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x5
+    packed_sprite_oam x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
+    packed_sprite_oam x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
+    packed_sprite_oam x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
 
 gUnknown_086A9E52:: @ 0x086A9E52
-    .incbin "baserom.gba", 0x6A9E52, 0x56
+.2byte 14
+    packed_sprite_oam x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
+    packed_sprite_oam x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x30C, paletteNum=0x4
+    packed_sprite_oam x=-0x40, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x310, paletteNum=0x4
+    packed_sprite_oam x=-0x30, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=0x10, y=0x14, spriteSize=SPRITE_SIZE_32x8, tileNum=0x318, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0xC, spriteSize=SPRITE_SIZE_16x16, tileNum=0x31C, paletteNum=0x4
+    packed_sprite_oam x=0x30, y=0x1C, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
+    packed_sprite_oam x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
+    packed_sprite_oam x=-0x18, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
+    packed_sprite_oam x=-0x8, y=0xE, spriteSize=SPRITE_SIZE_16x16, tileNum=0x33C, paletteNum=0x4
 
 gUnknown_086A9EA8:: @ 0x086A9EA8
-    .incbin "baserom.gba", 0x6A9EA8, 0x26
+.2byte 6
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x340, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x342, paletteNum=0x0
+    packed_sprite_oam x=0x18, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x349, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34B, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x346, paletteNum=0x0
+    packed_sprite_oam x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x348, paletteNum=0x0
 
 gUnknown_086A9ECE:: @ 0x086A9ECE
-    .incbin "baserom.gba", 0x6A9ECE, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x340, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x344, paletteNum=0x0
+    packed_sprite_oam x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x348, paletteNum=0x0
 
 gUnknown_086A9EE2:: @ 0x086A9EE2
-    .incbin "baserom.gba", 0x6A9EE2, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x22C, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x234, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x239, paletteNum=0x0
 
 gUnknown_086A9EF6:: @ 0x086A9EF6
-    .incbin "baserom.gba", 0x6A9EF6, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x5A, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x5E, paletteNum=0x0
 
 gUnknown_086A9F0A:: @ 0x086A9F0A
-    .incbin "baserom.gba", 0x6A9F0A, 0x8
+.2byte 1
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34D, paletteNum=0x7
 
 gUnknown_086A9F12:: @ 0x086A9F12
-    .incbin "baserom.gba", 0x6A9F12, 0x8
+.2byte 1
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34C, paletteNum=0x7
 
 gUnknown_086A9F1A:: @ 0x086A9F1A
-    .incbin "baserom.gba", 0x6A9F1A, 0x8
+.2byte 1
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34E, paletteNum=0x7
 
 gUnknown_086A9F22:: @ 0x086A9F22
-    .incbin "baserom.gba", 0x6A9F22, 0x106
+.2byte 1
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x34F, paletteNum=0x7
+
+.2byte 2
+    packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0xB, y=0xC, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+
+.2byte 8
+    packed_sprite_oam x=0x8, y=0x3, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x5, y=0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=0x6, spriteSize=SPRITE_SIZE_8x8, tileNum=0x7, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0xA, paletteNum=0x0
+    packed_sprite_oam x=0xB, y=0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=0xC, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0xD, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9, paletteNum=0x0
+
+.2byte 14
+    packed_sprite_oam x=0xF, y=0xE, spriteSize=SPRITE_SIZE_8x8, tileNum=0xE, paletteNum=0x0
+    packed_sprite_oam x=0xE, y=0xE, spriteSize=SPRITE_SIZE_8x8, tileNum=0xF, paletteNum=0x0
+    packed_sprite_oam x=0xE, y=0xE, spriteSize=SPRITE_SIZE_8x8, tileNum=0xE, paletteNum=0x0
+    packed_sprite_oam x=0xE, y=0xF, spriteSize=SPRITE_SIZE_8x8, tileNum=0xE, paletteNum=0x0
+    packed_sprite_oam x=0xF, y=0xE, spriteSize=SPRITE_SIZE_8x8, tileNum=0xE, paletteNum=0x0
+    packed_sprite_oam x=0xE, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x11, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x13, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x14, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x15, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x12, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x16, spriteSize=SPRITE_SIZE_8x8, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oam x=0x9, y=0x17, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18, paletteNum=0x0
+    packed_sprite_oam x=0x19, y=0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9, paletteNum=0x0
+
+    .incbin "baserom.gba", 0x6A9FC0, 0x68
 
 gUnknown_086AA028:: @ 0x086AA028
     .4byte gUnknown_086AA070
@@ -2933,58 +3465,115 @@ gUnknown_086AA028:: @ 0x086AA028
     .4byte gUnknown_086AA1AC
 
 gUnknown_086AA070:: @ 0x086AA070
-    .incbin "baserom.gba", 0x6AA070, 0xE
+.2byte 2
+    packed_sprite_oam x=0x0, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x0, y=0x7, vFlip=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
 
 gUnknown_086AA07E:: @ 0x086AA07E
-    .incbin "baserom.gba", 0x6AA07E, 0xE
+.2byte 2
+    packed_sprite_oam x=0x0, y=-0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x0, y=0x8, vFlip=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
 
 gUnknown_086AA08C:: @ 0x086AA08C
-    .incbin "baserom.gba", 0x6AA08C, 0x8
+.2byte 1
+    packed_sprite_oam x=-0x1, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2, paletteNum=0x0
 
 gUnknown_086AA094:: @ 0x086AA094
-    .incbin "baserom.gba", 0x6AA094, 0x8
+.2byte 1
+    packed_sprite_oam x=0x0, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x4, paletteNum=0x0
 
 gUnknown_086AA09C:: @ 0x086AA09C
-    .incbin "baserom.gba", 0x6AA09C, 0x8
+.2byte 1
+    packed_sprite_oam x=0x1, y=0x4, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2, paletteNum=0x0
 
 gUnknown_086AA0A4:: @ 0x086AA0A4
-    .incbin "baserom.gba", 0x6AA0A4, 0x8
+.2byte 1
+    packed_sprite_oam x=0x0, y=0x4, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x4, paletteNum=0x0
 
 gUnknown_086AA0AC:: @ 0x086AA0AC
-    .incbin "baserom.gba", 0x6AA0AC, 0x20
+.2byte 5
+    packed_sprite_oam x=0xC, y=-0x1E, spriteSize=SPRITE_SIZE_32x64, tileNum=0x120, paletteNum=0x0
+    packed_sprite_oam x=0x2C, y=-0x1E, spriteSize=SPRITE_SIZE_16x32, tileNum=0x124, paletteNum=0x0
+    packed_sprite_oam x=0x2C, y=0x2, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1A4, paletteNum=0x0
+    packed_sprite_oam x=-0x34, y=-0x1E, spriteSize=SPRITE_SIZE_64x32, tileNum=0xB0, paletteNum=0x0
+    packed_sprite_oam x=-0x34, y=0x2, spriteSize=SPRITE_SIZE_64x32, tileNum=0xB8, paletteNum=0x0
 
 gUnknown_086AA0CC:: @ 0x086AA0CC
-    .incbin "baserom.gba", 0x6AA0CC, 0xE
+.2byte 2
+    packed_sprite_oam x=-0x28, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x20, paletteNum=0x0
+    packed_sprite_oam x=0x18, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x28, paletteNum=0x0
 
 gUnknown_086AA0DA:: @ 0x086AA0DA
-    .incbin "baserom.gba", 0x6AA0DA, 0xE
+.2byte 2
+    packed_sprite_oam x=-0x30, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2A, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0x32, paletteNum=0x0
 
 gUnknown_086AA0E8:: @ 0x086AA0E8
-    .incbin "baserom.gba", 0x6AA0E8, 0x14
+.2byte 3
+    packed_sprite_oam x=-0x38, y=-0xB, spriteSize=SPRITE_SIZE_64x32, tileNum=0x36, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=-0xB, spriteSize=SPRITE_SIZE_32x32, tileNum=0xA0, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=-0xB, spriteSize=SPRITE_SIZE_16x32, tileNum=0x3E, paletteNum=0x0
 
 gUnknown_086AA0FC:: @ 0x086AA0FC
-    .incbin "baserom.gba", 0x6AA0FC, 0xE
+.2byte 2
+    packed_sprite_oam x=-0x2C, y=-0x13, spriteSize=SPRITE_SIZE_64x32, tileNum=0xA4, paletteNum=0x0
+    packed_sprite_oam x=0x14, y=-0x13, spriteSize=SPRITE_SIZE_32x32, tileNum=0xAC, paletteNum=0x0
 
 gUnknown_086AA10A:: @ 0x086AA10A
-    .incbin "baserom.gba", 0x6AA10A, 0x14
+.2byte 3
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x6, paletteNum=0x0
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0xA, paletteNum=0x0
+    packed_sprite_oam x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0xE, paletteNum=0x0
 
 gUnknown_086AA11E:: @ 0x086AA11E
-    .incbin "baserom.gba", 0x6AA11E, 0x26
+.2byte 6
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x6, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0x40, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0xE, paletteNum=0x0
+    packed_sprite_oam x=0x18, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0xF, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x11, paletteNum=0x0
 
 gUnknown_086AA144:: @ 0x086AA144
-    .incbin "baserom.gba", 0x6AA144, 0x1A
+.2byte 4
+    packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oam x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1B6, paletteNum=0x1
+    packed_sprite_oam x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12E, paletteNum=0x0
 
 gUnknown_086AA15E:: @ 0x086AA15E
-    .incbin "baserom.gba", 0x6AA15E, 0x1A
+.2byte 4
+    packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oam x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1B6, paletteNum=0x1
+    packed_sprite_oam x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x4
+    packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12E, paletteNum=0x4
 
 gUnknown_086AA178:: @ 0x086AA178
-    .incbin "baserom.gba", 0x6AA178, 0x1A
+.2byte 4
+    packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oam x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1B6, paletteNum=0x1
+    packed_sprite_oam x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x5
+    packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12E, paletteNum=0x5
 
 gUnknown_086AA192:: @ 0x086AA192
-    .incbin "baserom.gba", 0x6AA192, 0x1A
+.2byte 4
+    packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oam x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1B6, paletteNum=0x1
+    packed_sprite_oam x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x6
+    packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12E, paletteNum=0x6
 
 gUnknown_086AA1AC:: @ 0x086AA1AC
-    .incbin "baserom.gba", 0x6AA1AC, 0x60
+.2byte 4
+    packed_sprite_oam x=-0x4A, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x136, paletteNum=0x2
+    packed_sprite_oam x=0x2B, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1B6, paletteNum=0x1
+    packed_sprite_oam x=-0x38, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x126, paletteNum=0x7
+    packed_sprite_oam x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_64x64, tileNum=0x12E, paletteNum=0x7
+
+.2byte 2
+    packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0xC, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+
+.incbin "baserom.gba", 0x6AA1D4, 0x38
 
 gUnknown_086AA20C:: @ 0x086AA20C
     .4byte gUnknown_086AA254
@@ -3770,7 +4359,19 @@ gFlipperCollisionAngles:: @ 0x086ACD84
 	.incbin "baserom.gba", 0x6ACD84, 0x34
 
 gFlipperCollisionFrameMapping:: @ 0x086ACDB8
-	.incbin "baserom.gba", 0x6ACDB8, 0x3C
+    @ 12 sets of 5 bytes
+    .byte  0,  0,  0,  0,  0
+    .byte  0,  1,  2,  3,  4
+    .byte  2,  3,  4,  5,  6
+    .byte  4,  5,  6,  7,  8
+    .byte  6,  7,  8,  9, 10
+    .byte  8,  9, 10, 10, 10
+    .byte 10, 10, 10, 10, 10
+    .byte  2,  2,  1,  1,  0
+    .byte  4,  4,  3,  3,  2
+    .byte  6,  6,  5,  5,  4
+    .byte  8,  8,  7,  7,  6
+    .byte 10, 10,  9,  9,  8
 
 gBounceBackForceMagnitudes:: @ 0x086ACDF4
 	.2byte 0x0000, 0x00F0, 0x008C, 0x00C8
@@ -3819,23 +4420,23 @@ gFlipperBaseXPositions:: @ 0x086ACEF4
 
 gModeBannerTilemaps:: @ 0x086ACEF8
 	.4byte 0x000000
-	.4byte gUnknown_0851514C
-	.4byte gUnknown_085223AC
+	.4byte gRubyChinchouCatchBurstBanner_Gfx
+	.4byte gMainCatchModeBanner_Gfx
 	.4byte gMainBoardEvoBanner_Gfx
 	.4byte gMainBoardTravel_Gfx
 	.4byte gMainBoardJirachiBanner_Gfx
-	.4byte gUnknown_0851976C
-	.4byte gUnknown_0851DB8C
+	.4byte gRubyLotadCatchBurstBanner_Gfx
+	.4byte gSapphireShroomishCatchBurstBanner_Gfx
 
 gModeBannerPalettes:: @ 0x086ACF18
     .4byte 0x000000
-    .4byte gUnknown_0851956C
-    .4byte gUnknown_085267CC
-    .4byte gUnknown_085221AC
-    .4byte gUnknown_08526BCC
-    .4byte gUnknown_085269CC
-    .4byte gUnknown_0851958C
-    .4byte gUnknown_085195AC
+    .4byte gRubyChinchouCatchBurstBanner_Pal
+    .4byte gMainCatchModeBanner_Pal
+    .4byte gMainBoardEvoBanner_Pal
+    .4byte gMainBoardTravel_Pal
+    .4byte gMainBoardJirachiBanner_Pal
+    .4byte gRubyLotadCatchBurstBanner_Pal
+    .4byte gSapphireShroomishCatchBurstBanner_Pal
 
 gCaptureSequenceTimings:: @ 0x086ACF38
     @frame timer, 34 frame states.
@@ -3853,7 +4454,22 @@ gCapturePalette:: @ 0x086ACF80
 	.incbin "baserom.gba", 0x6ACF80, 0x20
 
 gEvoItemPositions:: @ 0x086ACFA0
-	.incbin "baserom.gba", 0x6ACFA0, 0x40
+    .2byte 52, 151
+    .2byte 86, 83
+    .2byte 89, 202
+    .2byte 132, 186
+    .2byte 113, 248
+    .2byte 184, 220
+    .2byte 14, 140
+    .2byte 185, 161
+    .2byte 93, 83
+    .2byte 113, 248
+    .2byte 142, 186
+    .2byte 167, 202
+    .2byte 66, 197
+    .2byte 109, 146
+    .2byte 48, 58
+    .2byte 200, 192
 
 gCaughtTextChars:: @ 0x086ACFE0
 	.2byte 'W','A','S',' ','C','A','U','G','H','T';
@@ -3862,13 +4478,65 @@ gCaptureShakeOffsets:: @ 0x086ACFF4
     .byte 0, 1, 2, 3, 1, 2, 4, 5, 1, 1, 6, 7
 
 gShopItemData:: @ 0x086AD000
-	.incbin "baserom.gba", 0x6AD000, 0x70
+    @ 47 sets of data for roulette window display / shop data
+    @ (See prize_definitions.h for index position meaning)
+    @ slot 46 is confirm bonus game; slot 47 is confirm travel
 
-gPortraitIdleCycleData:: @ 0x086AD070
-	.incbin "baserom.gba", 0x6AD070, 0x110
+    @ Lit tile Ix, Unlit TileIx, paletteIx, shop price
+	.2byte 1, 0, 0, 10         @ 30 Sec saver
+    .2byte 3, 2, 1, 20         @ 60 Sec saver
+    .2byte 5, 4, 2, 30         @ 90 Sec saver
+    .2byte 7, 6, 3, 50         @ Pichu Saver
+    .2byte 0x15, 0x14, 0xa, 99 @ Extra ball
+    .2byte 0x9, 0x8, 0x4, 0    @ Small Point Bonus
+    .2byte 0xb, 0xa, 0x5, 0    @ Big Point Bonus
+    .2byte 0x17, 0x16, 0xb, 0  @ Random Bonus Multiplier
+    .2byte 0x19, 0x18, 0xc, 0  @ Start Catch Mode
+    .2byte 0x1b, 0x1a, 0xd, 0  @ Start Evo Mode
 
-gRouletteWheelContents:: @ 0x086AD180
-	.incbin "baserom.gba", 0x6AD180, 0x15E
+    .2byte 0xd, 0xc, 0x6, 40   @ Ball Upgrade to Great
+    .2byte 0xf, 0xe, 0x7, 40   @ Ball Upgrade to Ultra
+    .2byte 0x11, 0x10, 0x8, 40 @ Ball Upgrade to Master
+    .2byte 0x13, 0x12, 0x9, 40 @ Ball Upgrade MAX
+	.2byte 0x1d, 0x1c, 0xe, 0  @ Start Slots Card
+    .2byte 0x1f, 0x1e, 0xf, 0  @ Goto Next Card
+    .2byte 0x39, 0x38, 0x1c, 0 @ Travel Ramp Indicator Card
+    .2byte 0x33, 0x32, 0x19, 0 @ 10 Coins
+    .2byte 0x35, 0x34, 0x1a, 0 @ 30 Coins
+    .2byte 0x37, 0x36, 0x1b, 0 @ 50 Coins
+
+    .2byte 0x31, 0x30, 0x18, 40 @ 30 Sec extra bonus stage time
+    .2byte 0x2b, 0x2a, 0x15, 0  @ Jirachi catch Mode
+    .2byte 0x2d, 0x2c, 0x16, 60 @ Wiscash Spheal delivery (ruby board)
+    .2byte 0x2f, 0x2e, 0x17, 60 @ Pelipper Spheal delivery (sapphire board)
+    .2byte 0x41, 0x40, 0x20, 0  @ 1M Points
+    .2byte 0x43, 0x42, 0x21, 0  @ 2M Points
+    .2byte 0x45, 0x44, 0x22, 0  @ 3M Points
+    .2byte 0x47, 0x46, 0x23, 0  @ 4M Points
+    .2byte 0x49, 0x48, 0x24, 0  @ 5M Points
+    .2byte 0x4b, 0x4a, 0x25, 0  @ 6M Points
+
+    .2byte 0x4d, 0x4c, 0x26, 0  @ 7M Points
+    .2byte 0x4f, 0x4e, 0x27, 0  @ 8M Points
+    .2byte 0x51, 0x50, 0x28, 0  @ 9M Points
+    .2byte 0x3b, 0x3a, 0x1d, 0  @ 100 Points
+    .2byte 0x3d, 0x3c, 0x1e, 0  @ 500 Points
+    .2byte 0x3f, 0x3e, 0x1f, 0  @ 900 Points
+    .2byte 0x53, 0x52, 0x29, 0  @ Bonus Mult +1
+    .2byte 0x55, 0x54, 0x2a, 0  @ Bonus Mult +2
+    .2byte 0x57, 0x56, 0x2b, 0  @ Bonus Mult +3
+    .2byte 0x59, 0x58, 0x2c, 0  @ Bonus Mult +4
+
+    .2byte 0x5b, 0x5a, 0x2d, 0  @ Bonus Mult +5
+    .2byte 0x23, 0x22, 0x11, 0  @ Duskull Bonus
+    .2byte 0x21, 0x20, 0x10, 0  @ Kecleon Bonus
+    .2byte 0x27, 0x26, 0x13, 0  @ Kyogre Bonus
+    .2byte 0x25, 0x24, 0x12, 0  @ Groudon Bonus
+    .2byte 0x29, 0x28, 0x14, 0  @ Rayquaza Bonus
+    .2byte 0x5d, 0x5c, 0x2e, 0  @ Confirm bonus game start
+    .2byte 0x5f, 0x5e, 0x2f, 0  @ Confirm travel move
+
+.include "data/roulette_wheel_contents.inc"
 
 gShopCursorToItemMap:: @ 0x086AD2DE
 	.2byte 0x0000, 0x0001, 0x0002, 0x000A, 0x0014;
@@ -3877,7 +4545,7 @@ gShopCursorToItemMap:: @ 0x086AD2DE
 gEggAnimationFrameData:: @ 0x086AD2EE
 	.incbin "baserom.gba", 0x6AD2EE, 0x110
 
-gHatchSequentialTileFramesetData:: @ 0x086AD3FE
+gCatchTile_SequentialFramesetData:: @ 0x086AD3FE
     @ OamIx, timeTillChange
     .2byte 0, 3
     .2byte 1, 1
@@ -3895,7 +4563,7 @@ gHatchSequentialTileFramesetData:: @ 0x086AD3FE
     @ 8 bytes unidentified data
     .byte 0, 0, 0, 0x70, 0, 0, 0xff, 0x7f
 
-gHatchSequentialFrameData:: @ 0x086AD436
+gCatchMonRevealFrameData:: @ 0x086AD436
 	.2byte 0x0000, 0x0005
 	.2byte 0x0001, 0x0003
 	.2byte 0x0002, 0x0004
@@ -3937,7 +4605,7 @@ gEvoItemTilesGfxPtrs:: @ 0x086AD49C
 
 
 gBoardStateInitFuncs:: @ 0x086AD4C4
-    .4byte InitAreaRoulette
+    .4byte InitBoardIntroMode
     .4byte InitFieldIdle
     .4byte InitCatchTrigger
     .4byte InitBonusStageSelect
@@ -3948,7 +4616,7 @@ gBoardStateInitFuncs:: @ 0x086AD4C4
     .4byte InitJirachiBonus
 
 gBoardStateUpdateFuncs:: @ 0x086AD4E8
-    .4byte UpdateAreaRoulette
+    .4byte UpdateBoardIntroMode
     .4byte UpdateFieldIdle
     .4byte UpdateCatchTrigger
     .4byte UpdateBonusStageSelect
@@ -4131,11 +4799,19 @@ gCatchOverlayAnimData:: @ 0x086ADEE0
 gPikaSaverAnimFrameTable:: @ 0x086ADF48
 	.incbin "baserom.gba", 0x6ADF48, 0x42
 
-gCatchHoleXPositions:: @ 0x086ADF8A
-	.incbin "baserom.gba", 0x6ADF8A, 0x6
+gOutlaneCenterXPositions:: @ 0x086ADF8A
+    .2byte 33,206
+    .align 2,0
 
 gPikaSaverWaypoints:: @ 0x086ADF90
-	.incbin "baserom.gba", 0x6ADF90, 0x38
+    @vector32 positions
+    .4byte 1320, 4480 @ Start Walk In
+    .4byte 1350, 4260
+    .4byte 2040, 3860
+    .4byte 2100, 3960 @ Home in Chute
+    .4byte 1930, 3860 @ Start Walk Out
+    .4byte 1340, 4260
+    .4byte 1320, 4480
 
 gArrowBounceOffsets:: @ 0x086ADFC8
 	.incbin "baserom.gba", 0x6ADFC8, 0xC
@@ -4155,10 +4831,10 @@ gCyndaquilCavePositions:: @ 0x086AE0A4
 gCyndaquilFrameIndices:: @ 0x086AE0B4
 	.incbin "baserom.gba", 0x6AE0B4, 0xC
 
-gHatchRevealSparkleTimings:: @ 0x086AE0C0
+gCatchTile_RevealSparkleTimings:: @ 0x086AE0C0
 	.incbin "baserom.gba", 0x6AE0C0, 0x10
 
-gHatchRevealFinalTimings:: @ 0x086AE0D0
+gCatchTile_RevealFinalTimings:: @ 0x086AE0D0
 	.incbin "baserom.gba", 0x6AE0D0, 0x16
 
 gEvoItemAppearFrameThresholds:: @ 0x086AE0E6
@@ -4173,7 +4849,7 @@ gJirachiStarFrameIndices:: @ 0x086AE154
 gHatchPieceAnimIndices:: @ 0x086AE1A4
 	.incbin "baserom.gba", 0x6AE1A4, 0x90
 
-gHatchRevealPieceIndices:: @ 0x086AE234
+gCatchTile_RevealPieceIndices:: @ 0x086AE234
     .2byte 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0
     .2byte 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1
     .2byte 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0
@@ -4198,7 +4874,7 @@ gHatchPieceMatrixNums:: @ 0x086AE318
 gOneUpSpritePalette:: @ 0x086AE324
 	.incbin "baserom.gba", 0x6AE324, 0x20
 
-gSapphirePondAnimFramesets:: @ 0x086AE344
+gSpoinkAnimFrameset:: @ 0x086AE344
 	.incbin "baserom.gba", 0x6AE344, 0x50
 
 gTravelEventAnimData:: @ 0x086AE394
@@ -4352,19 +5028,82 @@ gKecleonScopeFallTargets:: @ 0x086AEA3C
 	.incbin "baserom.gba", 0x6AEA3C, 0x14
 
 gKecleonOverlayTilemapPointers:: @ 0x086AEA50
-	.incbin "baserom.gba", 0x6AEA50, 0x10
+    .4byte gKecleonBerryOverlayTilemap
+    .4byte gKecleonOverlayTilemap1
+    .4byte gKecleonOverlayTilemap2
+    .4byte gKecleonOverlayTilemap3
 
 gKecleonOverlayTileAnimIndices:: @ 0x086AEA60
-	.incbin "baserom.gba", 0x6AEA60, 0x8
+	.byte 0,0,1,0,2,0,1,0
 
-gKecleonBerryFlashAnimIndices:: @ 0x086AEA68
-	.incbin "baserom.gba", 0x6AEA68, 0x8
+gKecleonPlantAnimIndices:: @ 0x086AEA68
+	.byte 0,0,1,0,0,0,2,0
 
 gKecleonSpriteYSortData:: @ 0x086AEA70
-	.incbin "baserom.gba", 0x6AEA70, 0x70
+    @ 14 sets: {Pointer, 2 u8 vals, 0x2 spacer}
+    .4byte gKecleonBushBottomRightBottomSpriteSet
+    .byte 131,0
+    .space 0x2
 
-gKyogreOceanPaletteProgression:: @ 0x086AEAE0
-	.incbin "baserom.gba", 0x6AEAE0, 0x18
+    .4byte gKecleonBushBottomRightMiddleSpriteSet
+    .byte 124,1
+    .space 0x2
+
+    .4byte gKecleonBushBottomLeftBottomSpriteSet
+    .byte 123,2
+    .space 0x2
+
+    .4byte gKecleonBushBottomRightTopSpriteSet
+    .byte 116,3
+    .space 0x2
+
+    .4byte gKecleonBushBottomLeftMiddleSpriteSet
+    .byte 115,4
+    .space 0x2
+
+    .4byte gKecleonBushBottomLeftTopSpriteSet
+    .byte 112,5
+    .space 0x2
+
+    .4byte gKecleonSignSpriteSet
+    .byte 109,6
+    .space 0x2
+
+    .4byte gKecleonRockSpriteSet
+    .byte 76,7
+    .space 0x2
+
+    .4byte gKecleonBushTopRightBottomSpriteSet
+    .byte 40,8
+    .space 0x2
+
+    .4byte gKecleonBushTopLeftBottomSpriteSet
+    .byte 40,9
+    .space 0x2
+
+    .4byte gKecleonBushTopRightTopSpriteSet
+    .byte 30,10
+    .space 0x2
+
+    .4byte gKecleonBushTopLeftTopSpriteSet
+    .byte 30,11
+    .space 0x2
+
+    .4byte gBonusBoardBallSpriteSet
+    .byte 0,12
+    .space 0x2
+
+    .4byte gKecleonEntitySpriteSet
+    .byte 0,13
+    .space 0x2
+
+gKyogreFadeInPaletteProgression:: @ 0x086AEAE0
+    .4byte gKyogreFadeInPaletteStep0
+    .4byte gKyogreFadeInPaletteStep1
+    .4byte gKyogreFadeInPaletteStep2
+    .4byte gKyogreFadeInPaletteStep3
+    .4byte gKyogreFadeInPaletteStep4
+    .4byte gKyogreBoardPalette
 
 gKyogreAnimFramesetTable:: @ 0x086AEAF8
 	.incbin "baserom.gba", 0x6AEAF8, 0x2AC
@@ -4381,7 +5120,7 @@ gKyogreWhirlpoolTargetPositions:: @ 0x086AEDE8
 gShockwaveSplashDistanceThresholds:: @ 0x086AEE20
 	.incbin "baserom.gba", 0x6AEE20, 0x3E
 
-gKyogreWhirlpoolTrapAnimFrameset:: @ 0x086AEE5E
+gKyogrefreezeTrapAnimFrameset:: @ 0x086AEE5E
 	.incbin "baserom.gba", 0x6AEE5E, 0x78
 
 gWaterTilePaletteCycle:: @ 0x086AEED6
@@ -4435,47 +5174,422 @@ gGroudonBgSpriteBaseTileNums:: @ 0x086AF3C6
 gRayquazaAnimFramesetTable:: @ 0x086AF3CC
 	.incbin "baserom.gba", 0x6AF3CC, 0x378
 
-gRayquazaMinionOrbitWaypoints:: @ 0x086AF744
+gRayquazaTornadoSpawnPos:: @ 0x086AF744
 	.incbin "baserom.gba", 0x6AF744, 0x40
 
 gRayquazaCloudScrollPositions:: @ 0x086AF784
-	.incbin "baserom.gba", 0x6AF784, 0x33C
+	.incbin "baserom.gba", 0x6AF784, 0xC
+
+gSphealFlightPath0:: @ 0x086AF790
+    @vector 16 points
+    .2byte 0x00B5, 0x009E
+    .2byte 0x00B7, 0x009B
+    .2byte 0x00B9, 0x0097
+    .2byte 0x00BB, 0x0094
+    .2byte 0x00BD, 0x0090
+    .2byte 0x00C0, 0x008C
+    .2byte 0x00C2, 0x0089
+    .2byte 0x00C4, 0x0085
+    .2byte 0x00C7, 0x0082
+    .2byte 0x00C9, 0x007E
+    .2byte 0x00CB, 0x007B
+    .2byte 0x00CE, 0x0077
+    .2byte 0x00D0, 0x0074
+    .2byte 0x00D2, 0x0071
+    .2byte 0x00D4, 0x006D
+    .2byte 0x00D4, 0x0069
+    .2byte 0x00D4, 0x0066
+    .2byte 0x00D4, 0x0062
+    .2byte 0x00D4, 0x005F
+    .2byte 0x00D4, 0x005C
+    .2byte 0x00D4, 0x0058
+    .2byte 0x00D5, 0x0055
+    .2byte 0x00D5, 0x0052
+    .2byte 0x00D5, 0x004E
+    .2byte 0x00D5, 0x004B
+    .2byte 0x00D4, 0x0049
+    .2byte 0x00D2, 0x0047
+    .2byte 0x00D1, 0x0045
+    .2byte 0x00CF, 0x0043
+    .2byte 0x00CE, 0x0041
+    .2byte 0x00CB, 0x0040
+    .2byte 0x00C9, 0x003F
+    .2byte 0x00C7, 0x003F
+    .2byte 0x00C5, 0x003E
+    .2byte 0x00C2, 0x003D
+    .2byte 0x00C0, 0x003C
+    .2byte 0x00BE, 0x003D
+    .2byte 0x00BC, 0x003D
+    .2byte 0x00BA, 0x003D
+    .2byte 0x00B8, 0x003D
+    .2byte 0x00B6, 0x003E
+    .2byte 0x00B5, 0x003F
+    .2byte 0x00B3, 0x0040
+    .2byte 0x00B1, 0x0041
+    .2byte 0x00B0, 0x0042
+    .2byte 0x00AE, 0x0044
+    .2byte 0x00AD, 0x0045
+    .2byte 0x00AB, 0x0046
+    .2byte 0x00AA, 0x0048
+    .2byte 0x00A9, 0x004A
+    .2byte 0x00A8, 0x004C
+
+gSphealFlightPath1:: @ 0x086AF85C
+    @vector 16 points
+    .2byte 0x00B4, 0x009F
+    .2byte 0x00B6, 0x009B
+    .2byte 0x00B9, 0x0098
+    .2byte 0x00BB, 0x0094
+    .2byte 0x00BD, 0x0090
+    .2byte 0x00BF, 0x008D
+    .2byte 0x00C2, 0x0089
+    .2byte 0x00C4, 0x0086
+    .2byte 0x00C6, 0x0082
+    .2byte 0x00C9, 0x007F
+    .2byte 0x00CB, 0x007B
+    .2byte 0x00CD, 0x0078
+    .2byte 0x00D0, 0x0074
+    .2byte 0x00D2, 0x0071
+    .2byte 0x00D3, 0x006D
+    .2byte 0x00D3, 0x006A
+    .2byte 0x00D3, 0x0066
+    .2byte 0x00D3, 0x0063
+    .2byte 0x00D4, 0x005F
+    .2byte 0x00D4, 0x005C
+    .2byte 0x00D4, 0x0059
+    .2byte 0x00D5, 0x0056
+    .2byte 0x00D5, 0x0053
+    .2byte 0x00D6, 0x0050
+    .2byte 0x00D6, 0x004D
+    .2byte 0x00D5, 0x004B
+    .2byte 0x00D3, 0x0049
+    .2byte 0x00D2, 0x0047
+    .2byte 0x00D0, 0x0045
+    .2byte 0x00CF, 0x0043
+    .2byte 0x00CD, 0x0041
+    .2byte 0x00CB, 0x0040
+    .2byte 0x00C9, 0x0040
+    .2byte 0x00C7, 0x003F
+    .2byte 0x00C5, 0x003E
+    .2byte 0x00C3, 0x003D
+    .2byte 0x00C1, 0x003D
+    .2byte 0x00BF, 0x003D
+    .2byte 0x00BD, 0x003D
+    .2byte 0x00BB, 0x003D
+    .2byte 0x00B9, 0x003D
+    .2byte 0x00B7, 0x003D
+    .2byte 0x00B6, 0x003E
+    .2byte 0x00B5, 0x003F
+    .2byte 0x00B3, 0x0040
+    .2byte 0x00B2, 0x0041
+    .2byte 0x00B0, 0x0042
+    .2byte 0x00AF, 0x0044
+    .2byte 0x00AD, 0x0045
+    .2byte 0x00AC, 0x0046
+    .2byte 0x00AA, 0x0048
+    .2byte 0x00A9, 0x004A
+    .2byte 0x00A8, 0x004B
+
+gSphealFlightPath2:: @ 0x086AF930
+    @vector 16 points
+    .2byte 0x003B, 0x009E
+    .2byte 0x0039, 0x009B
+    .2byte 0x0037, 0x0097
+    .2byte 0x0034, 0x0093
+    .2byte 0x0032, 0x0090
+    .2byte 0x0030, 0x008C
+    .2byte 0x002E, 0x0089
+    .2byte 0x002B, 0x0085
+    .2byte 0x0029, 0x0082
+    .2byte 0x0027, 0x007E
+    .2byte 0x0024, 0x007B
+    .2byte 0x0022, 0x0077
+    .2byte 0x0020, 0x0074
+    .2byte 0x001D, 0x0070
+    .2byte 0x001B, 0x006D
+    .2byte 0x001A, 0x0069
+    .2byte 0x0019, 0x0066
+    .2byte 0x0019, 0x0062
+    .2byte 0x0018, 0x005F
+    .2byte 0x0017, 0x005B
+    .2byte 0x0017, 0x0058
+    .2byte 0x0016, 0x0054
+    .2byte 0x0018, 0x0052
+    .2byte 0x0018, 0x004F
+    .2byte 0x0019, 0x004C
+    .2byte 0x001A, 0x0049
+    .2byte 0x001B, 0x0047
+    .2byte 0x001D, 0x0045
+    .2byte 0x001F, 0x0043
+    .2byte 0x0021, 0x0041
+    .2byte 0x0024, 0x0040
+    .2byte 0x0026, 0x003F
+    .2byte 0x0028, 0x003E
+    .2byte 0x002A, 0x003D
+    .2byte 0x002D, 0x003D
+    .2byte 0x002F, 0x003D
+    .2byte 0x0032, 0x003D
+    .2byte 0x0034, 0x003D
+    .2byte 0x0036, 0x003D
+    .2byte 0x0038, 0x003E
+    .2byte 0x003A, 0x003F
+    .2byte 0x003C, 0x0040
+    .2byte 0x003E, 0x0041
+    .2byte 0x0040, 0x0042
+    .2byte 0x0041, 0x0044
+    .2byte 0x0042, 0x0045
+    .2byte 0x0043, 0x0047
+    .2byte 0x0044, 0x0049
+    .2byte 0x0045, 0x004B
+
+gSphealFlightPath3:: @ 0x086AF9F4
+    @vector 16 points
+    .2byte 0x003D, 0x00A0
+    .2byte 0x003A, 0x009C
+    .2byte 0x0038, 0x0099
+    .2byte 0x0036, 0x0095
+    .2byte 0x0034, 0x0091
+    .2byte 0x0031, 0x008E
+    .2byte 0x002F, 0x008A
+    .2byte 0x002D, 0x0087
+    .2byte 0x002A, 0x0083
+    .2byte 0x0028, 0x0080
+    .2byte 0x0026, 0x007C
+    .2byte 0x0023, 0x0079
+    .2byte 0x0021, 0x0075
+    .2byte 0x001F, 0x0072
+    .2byte 0x001C, 0x006F
+    .2byte 0x001A, 0x006C
+    .2byte 0x001A, 0x0068
+    .2byte 0x0019, 0x0064
+    .2byte 0x0018, 0x0061
+    .2byte 0x0018, 0x005D
+    .2byte 0x0017, 0x005A
+    .2byte 0x0016, 0x0056
+    .2byte 0x0017, 0x0054
+    .2byte 0x0018, 0x0051
+    .2byte 0x0018, 0x004E
+    .2byte 0x0019, 0x004C
+    .2byte 0x001A, 0x004A
+    .2byte 0x001C, 0x0047
+    .2byte 0x001D, 0x0045
+    .2byte 0x001F, 0x0043
+    .2byte 0x0021, 0x0042
+    .2byte 0x0023, 0x0040
+    .2byte 0x0026, 0x003F
+    .2byte 0x0028, 0x003E
+    .2byte 0x002A, 0x003D
+    .2byte 0x002D, 0x003D
+    .2byte 0x002F, 0x003D
+    .2byte 0x0031, 0x003D
+    .2byte 0x0033, 0x003D
+    .2byte 0x0035, 0x003D
+    .2byte 0x0037, 0x003D
+    .2byte 0x0039, 0x003E
+    .2byte 0x003B, 0x003F
+    .2byte 0x003D, 0x0040
+    .2byte 0x003F, 0x0041
+    .2byte 0x0040, 0x0042
+    .2byte 0x0042, 0x0044
+    .2byte 0x0043, 0x0046
+    .2byte 0x0044, 0x0048
+    .2byte 0x0045, 0x0049
+    .2byte 0x0046, 0x004B
 
 gSphealFlightPathData:: @ 0x086AFAC0
-	.incbin "baserom.gba", 0x6AFAC0, 0x20
+    @ 4 sets {pointer, s16, space}
+	.4byte gSphealFlightPath0
+    .2byte 51
+    .space 0x2
 
-gSphealFramesetToSpriteMap:: @ 0x086AFAE0
-	.incbin "baserom.gba", 0x6AFAE0, 0x2
+    .4byte gSphealFlightPath1
+    .2byte 53
+    .space 0x2
 
-gSphealAnimTimingTable:: @ 0x086AFAE2
-	.incbin "baserom.gba", 0x6AFAE2, 0x4A
+    .4byte gSphealFlightPath2
+    .2byte 49
+    .space 0x2
 
-gSphealFlyingEnemyFramesetTable:: @ 0x086AFB2C
+    .4byte gSphealFlightPath3
+    .2byte 51
+    .space 0x2
+
+gSealeoFramesetData:: @ 0x086AFAE0
+	.incbin "baserom.gba", 0x6AFAE0, 0x4C
+
+gSphealFramesetData:: @ 0x086AFB2C
 	.incbin "baserom.gba", 0x6AFB2C, 0xEA
 
 gSphealWhiscashAnimFrameset:: @ 0x086AFC16
 	.incbin "baserom.gba", 0x6AFC16, 0x9A
 
 gBoardCollisionDataSets:: @ 0x086AFCB0
-	.incbin "baserom.gba", 0x6AFCB0, 0xC0
+    @ Note: Only the layer 0 (1st column) from this data is referenced in code.
+    @ Also, only the ruby board has any actual differences when on the second set here.
+    @ Otherwise, all entries match what is listed in gFieldBoardConfigs
+    @ 2 sets each for Ruby/Sapphire board.
+
+    @ TileData, ???, ???, ???
+    @ AngleData, ???, ???, ???
+    @ TypeData, ???, ???, ???
+
+    @ Ruby default
+    .4byte gRubyBoardCollisionTileDataLayer0, gRubyBoardCollisionTileDataLayer1, gRubyBoardCollisionTileDataLayer2, 0
+    .4byte gRubyBoardCollisionAngleDataLayer0, gRubyBoardCollisionAngleDataLayer1, gRubyBoardCollisionAngleDataLayer2, 0
+    .4byte gRubyBoardCollisionTypeDataLayer0, gRubyBoardCollisionTypeDataLayer1, gRubyBoardCollisionTypeDataLayer2, 0
+
+    @ Ruby alternate
+    .4byte gRubyBoardCollisionTileDataLayer0Alt, gRubyBoardCollisionTileDataLayer1, gRubyBoardCollisionTileDataLayer2, 0
+    .4byte gRubyBoardCollisionAngleDataLayer0Alt, gRubyBoardCollisionAngleDataLayer1, gRubyBoardCollisionAngleDataLayer2, 0
+    .4byte gRubyBoardCollisionTypeDataLayer0Alt, gRubyBoardCollisionTypeDataLayer1, gRubyBoardCollisionTypeDataLayer2, 0
+
+    @ Sapphire default
+    .4byte gSapphireBoardCollisionTileDataLayer0, gSapphireBoardCollisionTileDataLayer1, gSapphireBoardCollisionTileDataLayer2, gSapphireBoardCollisionTileDataLayer3
+    .4byte gSapphireBoardCollisionAngleDataLayer0, gSapphireBoardCollisionAngleDataLayer1, gSapphireBoardCollisionAngleDataLayer2, gSapphireBoardCollisionAngleDataLayer3
+    .4byte gSapphireBoardCollisionTypeDataLayer0, gSapphireBoardCollisionTypeDataLayer1, gSapphireBoardCollisionTypeDataLayer2, gSapphireBoardCollisionTypeDataLayer3
+
+    @ Sapphire alternate (same as default)
+    .4byte gSapphireBoardCollisionTileDataLayer0, gSapphireBoardCollisionTileDataLayer1, gSapphireBoardCollisionTileDataLayer2, gSapphireBoardCollisionTileDataLayer3
+    .4byte gSapphireBoardCollisionAngleDataLayer0, gSapphireBoardCollisionAngleDataLayer1, gSapphireBoardCollisionAngleDataLayer2, gSapphireBoardCollisionAngleDataLayer3
+    .4byte gSapphireBoardCollisionTypeDataLayer0, gSapphireBoardCollisionTypeDataLayer1, gSapphireBoardCollisionTypeDataLayer2, gSapphireBoardCollisionTypeDataLayer3
 
 gFieldBoardConfigs:: @ 0x086AFD70
-	.incbin "baserom.gba", 0x6AFD70, 0x2A0
+    @ 8 boards of type FieldBoardLayout
+	@ each board has 12 u/s16, then 3 pointers, then 3 sets of 4 pointers
+
+    @ Ruby board 0x086AFD70
+    .2byte 0x0010, 0x010C, 0x0164, 0x0064, 0x0180, 0x0078
+    .2byte 0x0178, 0x004B, 0x0075, 0x00F2, 0x0171, 0x01C0
+
+    .4byte gRubyBoardPaletteSet0, gRubyBoardPaletteSet1, gRubyBoardPaletteSet2
+    .4byte gRubyBoardCollisionTileDataLayer0, gRubyBoardCollisionTileDataLayer1, gRubyBoardCollisionTileDataLayer2, 0
+    .4byte gRubyBoardCollisionAngleDataLayer0, gRubyBoardCollisionAngleDataLayer1, gRubyBoardCollisionAngleDataLayer2, 0
+    .4byte gRubyBoardCollisionTypeDataLayer0, gRubyBoardCollisionTypeDataLayer1, gRubyBoardCollisionTypeDataLayer2, 0
+
+    @ Sapphire board 0x086AFDC4
+    .2byte 0x0010, 0x010C, 0x0164, 0x004C, 0x0180, 0x0078
+    .2byte 0x0178, 0x004B, 0x0075, 0x00F2, 0x0171, 0x01C0
+    .4byte gSapphireBoardPaletteSet0, gSapphireBoardPaletteSet1, gSapphireBoardPaletteSet2
+    .4byte gSapphireBoardCollisionTileDataLayer0, gSapphireBoardCollisionTileDataLayer1, gSapphireBoardCollisionTileDataLayer2, gSapphireBoardCollisionTileDataLayer3
+    .4byte gSapphireBoardCollisionAngleDataLayer0, gSapphireBoardCollisionAngleDataLayer1, gSapphireBoardCollisionAngleDataLayer2, gSapphireBoardCollisionAngleDataLayer3
+    .4byte gSapphireBoardCollisionTypeDataLayer0, gSapphireBoardCollisionTypeDataLayer1, gSapphireBoardCollisionTypeDataLayer2, gSapphireBoardCollisionTypeDataLayer3
+
+    @ Dusclops board 0x086AFE18
+    .2byte 0x0000, 0x0018, 0x006C, 0x0051, 0x0098, 0x0000
+    .2byte 0x0090, 0x004B, 0x0075, 0x00A0, 0x0088, 0x00CA
+    .4byte gDusclopsBoardPaletteSet0, gDusclopsBoardPaletteSet1, gDusclopsBoardPaletteSet2
+    .4byte gDusclopsBoardCollisionTileDataAllLayers, gDusclopsBoardCollisionTileDataAllLayers, gDusclopsBoardCollisionTileDataAllLayers, gDusclopsBoardCollisionTileDataAllLayers
+    .4byte gDusclopsBoardCollisionAngleDataAllLayers, gDusclopsBoardCollisionAngleDataAllLayers, gDusclopsBoardCollisionAngleDataAllLayers, gDusclopsBoardCollisionAngleDataAllLayers
+    .4byte gDusclopsBoardCollisionTypeDataAllLayers, gDusclopsBoardCollisionTypeDataAllLayers, gDusclopsBoardCollisionTypeDataAllLayers, gDusclopsBoardCollisionTypeDataAllLayers
+
+    @ Kecleon board 0x086AFE6C
+    .2byte 0x0000, 0x0018, 0x006C, 0x0051, 0x0098, 0x0000
+    .2byte 0x0090, 0x004B, 0x0075, 0x00A0, 0x0088, 0x00CA
+    .4byte gKecleonBoardPaletteSet0, gKecleonBoardPaletteSet1, gKecleonBoardPaletteSet2
+    .4byte gKecleonBoardCollisionTileDataAllLayers, gKecleonBoardCollisionTileDataAllLayers, gKecleonBoardCollisionTileDataAllLayers, gKecleonBoardCollisionTileDataAllLayers
+    .4byte gKecleonBoardCollisionAngleDataAllLayers, gKecleonBoardCollisionAngleDataAllLayers, gKecleonBoardCollisionAngleDataAllLayers, gKecleonBoardCollisionAngleDataAllLayers
+    .4byte gKecleonBoardCollisionTypeDataAllLayers, gKecleonBoardCollisionTypeDataAllLayers, gKecleonBoardCollisionTypeDataAllLayers, gKecleonBoardCollisionTypeDataAllLayers
+
+    @ Kyogre board 0x086AFEC0
+    .2byte 0x0000, 0x0058, 0x00AC, 0x0091, 0x00D8, 0x0000
+    .2byte 0x00D0, 0x004B, 0x0075, 0x00A0, 0x00C8, 0x010A
+    .4byte gKyogreBoardPaletteSet0, gKyogreBoardPaletteSet1, gKyogreBoardPaletteSet2
+    .4byte gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers
+    .4byte gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers
+    .4byte gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers
+
+    @ Groudon board 0x086AFF14
+    .2byte 0x0000, 0x0058, 0x00AC, 0x0091, 0x00D8, 0x0000
+    .2byte 0x00D0, 0x004B, 0x0075, 0x00A0, 0x00C8, 0x010A
+    .4byte gGroudonBoardPaletteSet0, gGroudonBoardPaletteSet1, gGroudonBoardPaletteSet2
+    .4byte gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers, gKyrGrouBoardCollisionTileDataAllLayers
+    .4byte gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers, gKyrGrouBoardCollisionAngleDataAllLayers
+    .4byte gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers, gKyrGrouBoardCollisionTypeDataAllLayers
+
+    @ Rayquaza board 0x086AFF68
+    .2byte 0x0000, 0x0058, 0x00AC, 0x0091, 0x00D8, 0x0000
+    .2byte 0x00D0, 0x004B, 0x0075, 0x00A0, 0x00C8, 0x010A
+    .4byte gRayquazaBoardPaletteSet0, gRayquazaBoardPaletteSet1, gRayquazaBoardPaletteSet2
+    .4byte gRayquazaBoardCollisionTileDataAllLayers, gRayquazaBoardCollisionTileDataAllLayers, gRayquazaBoardCollisionTileDataAllLayers, gRayquazaBoardCollisionTileDataAllLayers
+    .4byte gRayquazaBoardCollisionAngleDataAllLayers, gRayquazaBoardCollisionAngleDataAllLayers, gRayquazaBoardCollisionAngleDataAllLayers, gRayquazaBoardCollisionAngleDataAllLayers
+    .4byte gRayquazaBoardCollisionTypeDataAllLayers, gRayquazaBoardCollisionTypeDataAllLayers, gRayquazaBoardCollisionTypeDataAllLayers, gRayquazaBoardCollisionTypeDataAllLayers
+
+    @ Spheal board 0x086AFFBC
+    .2byte 0x0000, 0x0058, 0x00AC, 0x0081, 0x00D8, 0x0000
+    .2byte 0x00D0, 0x004B, 0x0075, 0x00A0, 0x00C8, 0x010A
+    .4byte gSphealBoardPaletteSet0, gSphealBoardPaletteSet1, gSphealBoardPaletteSet2
+    .4byte gSphealBoardCollisionTileDataAllLayers, gSphealBoardCollisionTileDataAllLayers, gSphealBoardCollisionTileDataAllLayers, gSphealBoardCollisionTileDataAllLayers
+    .4byte gSphealBoardCollisionAngleDataAllLayers, gSphealBoardCollisionAngleDataAllLayers, gSphealBoardCollisionAngleDataAllLayers, gSphealBoardCollisionAngleDataAllLayers
+    .4byte gSphealBoardCollisionTypeDataAllLayers, gSphealBoardCollisionTypeDataAllLayers, gSphealBoardCollisionTypeDataAllLayers, gSphealBoardCollisionTypeDataAllLayers
 
 gScrollTileUpdateTable:: @ 0x086B0010
 	.incbin "baserom.gba", 0x6B0010, 0x118
 
 gBonusSummaryTextTemplates:: @ 0x086B0128
-	.ascii "POK^MON_CAUGHT______BONUS_______________"
-
-gUnknown_086B0150:: @ 0x086B0150
-	.ascii "SUBTOTAL____________POK^MON_EVOLVED_____BONUS_______________SUBTOTAL____________TRAVELED_AREA_______BONUS_______________SUBTOTAL____________SLOT_PLAYED_________BONUS_______________SUBTOTAL____________PIKA_SAVER__________BONUS_______________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________SUBTOTAL____________MULTIPLIER__________TOTAL_______________"
+    @ 7 Sets of 3 sets of 20 characters each
+	.ascii "POK^MON_CAUGHT______", "BONUS_______________", "SUBTOTAL____________"
+	.ascii "POK^MON_EVOLVED_____", "BONUS_______________", "SUBTOTAL____________"
+    .ascii "TRAVELED_AREA_______", "BONUS_______________", "SUBTOTAL____________"
+    .ascii "SLOT_PLAYED_________", "BONUS_______________", "SUBTOTAL____________"
+    .ascii "PIKA_SAVER__________", "BONUS_______________", "SUBTOTAL____________"
+    .ascii "SUBTOTAL____________", "SUBTOTAL____________", "SUBTOTAL____________"
+    .ascii "SUBTOTAL____________", "MULTIPLIER__________", "TOTAL_______________"
 
 gMainFieldSpriteGroups:: @ 0x086B02CC
-	.incbin "baserom.gba", 0x6B02CC, 0x1E0
+    @ ruby
+    spriteGroupAddrs 70, 41, 42, 50, 15, 16, 17, 18, 19, 20
+    spriteGroupAddrs 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+    spriteGroupAddrs 31, 32, 33, 34, 35, 36, 37, 38, 39, 54
+    spriteGroupAddrs 55, 64, 67, 43, 72, 73, 74, 75, 76, 77
+    spriteGroupAddrs 79, 49, 80, 69, 56, 44, 45, 46, 47, 40
+    spriteGroupAddrs 83
+    .4byte 0,0,0,0,0,0,0,0,0
+
+    @ sapphire
+    spriteGroupAddrs 74, 40, 41, 54, 12, 13, 14, 15, 16, 17
+    spriteGroupAddrs 18, 19, 20, 21, 22, 23, 24, 25, 28, 29
+    spriteGroupAddrs 30, 31, 32, 33, 34, 35, 36, 37, 38, 55
+    spriteGroupAddrs 56, 72, 71, 42, 77, 78, 79, 80, 81, 82
+    spriteGroupAddrs 83, 53, 84, 73, 57, 43, 44, 45, 46, 39
+    spriteGroupAddrs 86
+    .4byte 0,0,0,0,0,0,0,0,0
 
 gBonusFieldSpriteGroups:: @ 0x086B04AC
-	.incbin "baserom.gba", 0x6B04AC, 0x2D0
+    @ dusclops
+    spriteGroupAddrs 11, 10
+    .4byte 0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ kecleon
+    spriteGroupAddrs 22, 8
+    .4byte 0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ kyogre
+    spriteGroupAddrs 18, 17, 0, 25, 7, 8, 19, 20
+    .4byte 0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ groudon
+    spriteGroupAddrs 26, 25, 0, 31, 7, 8, 27, 28
+    .4byte 0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ rayquaza
+    spriteGroupAddrs 38, 37, 0, 44, 7, 8, 39, 40
+    .4byte 0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+
+    @ spheal
+    spriteGroupAddrs 13, 12
+	.4byte 0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
+    .4byte 0,0,0,0,0,0,0,0,0,0
 
 BoardProcPairs_086B077C:: @ 0x086B077C
 	.4byte AllBoardProcess_1A_47100, AllBoardProcess_1B_47160
@@ -4511,7 +5625,7 @@ gFieldInitFuncs:: @ 0x086B085C
 	.4byte MainGameFrameUpdate
 	.4byte BonusFieldFrameUpdate
 
-gUnknown_086B0864:: @ 0x086B0664
+gUnknown_086B0864:: @ 0x086B0864
 	.incbin "baserom.gba", 0x6B0864, 0x20
 
 gTimerWarningPalette_Fast:: @ 0x086B0884
@@ -4527,130 +5641,457 @@ gRubySlingshotAnimIndices:: @ 0x086B08CA
 	.incbin "baserom.gba", 0x6B08CA, 0xA
 
 gRubySlingshotTilePointers:: @ 0x086B08D4
-	.incbin "baserom.gba", 0x6B08D4, 0x78
+    @ Arranged into 2(sides) sets of 3 sets of 5.
+    @ Third set of 5 is the destination address.
+	.4byte gRuby_LSlingshot_Off_R0, gRuby_LSlingshot_Off_R1, gRuby_LSlingshot_Off_R2, gRuby_LSlingshot_Off_R3, gRuby_LSlingshot_Off_R4
+    .4byte gRuby_LSlingshot_On_R0,  gRuby_LSlingshot_On_R1,  gRuby_LSlingshot_On_R2,  gRuby_LSlingshot_On_R3,  gRuby_LSlingshot_On_R4
+    .4byte 0x0600DA00, 0x0600DA20, 0x0600DA60, 0x0600DAC0, 0x0600DB20
+
+    .4byte gRuby_RSlingshot_Off_R0, gRuby_RSlingshot_Off_R1, gRuby_RSlingshot_Off_R2, gRuby_RSlingshot_Off_R3, gRuby_RSlingshot_Off_R4
+    .4byte gRuby_RSlingshot_On_R0, gRuby_RSlingshot_On_R1, gRuby_RSlingshot_On_R2, gRuby_RSlingshot_On_R3, gRuby_RSlingshot_On_R4
+    .4byte 0x0600DB60, 0x0600DB80, 0x0600DBC0, 0x0600DC20, 0x0600DC80
 
 gShopItemTilePointers:: @ 0x086B094C
-	.incbin "baserom.gba", 0x6B094C, 0x24
+    @ Arranged into 3 sets of 3.
+    @ Third set is the destination address.
+	.4byte gStoreSignText_08262BB0, gStoreSignText_08262FB0, gStoreSignText_08263430
+    .4byte gStoreSignText_08262C70, gStoreSignText_08263070, gStoreSignText_082634F0
+    .4byte 0x0600D860, 0x0600D920, 0x0600D9E0
 
 gRubyProgressDigitTilePointers:: @ 0x086B0970
-	.incbin "baserom.gba", 0x6B0970, 0x58
+    @ 11 sets of 2.
+    @ Eleventh has the destination address.
+    .4byte gRubyBonusMultDigit_08262790, gRubyBonusMultDigit_082628D0
+    .4byte gRubyBonusMultDigit_082627B0, gRubyBonusMultDigit_082628F0
+    .4byte gRubyBonusMultDigit_082627D0, gRubyBonusMultDigit_08262910
+    .4byte gRubyBonusMultDigit_082627F0, gRubyBonusMultDigit_08262930
+    .4byte gRubyBonusMultDigit_08262810, gRubyBonusMultDigit_08262950
+    .4byte gRubyBonusMultDigit_08262830, gRubyBonusMultDigit_08262970
+    .4byte gRubyBonusMultDigit_08262850, gRubyBonusMultDigit_08262990
+    .4byte gRubyBonusMultDigit_08262870, gRubyBonusMultDigit_082629B0
+    .4byte gRubyBonusMultDigit_08262890, gRubyBonusMultDigit_082629D0
+    .4byte gRubyBonusMultDigit_082628B0, gRubyBonusMultDigit_082629F0
+    .4byte 0x0600D820, 0x0600D840
 
 gRubyTrapIndicatorTilePointers:: @ 0x086B09C8
-	.incbin "baserom.gba", 0x6B09C8, 0x20
+    @ 4 sets of 2
+    @ fourth set has destination address
+    .4byte gRubyTrapTile_0825FF30, gRubyTrapTile_08260330
+    .4byte gRubyTrapTile_0825FF70, gRubyTrapTile_08260370
+    .4byte gRubyTrapTile_0825FFB0, gRubyTrapTile_082603B0
+    .4byte 0x060081C0, 0x060085C0
 
 gRubyCatchLightTilePointers:: @ 0x086B09E8
-	.incbin "baserom.gba", 0x6B09E8, 0xA8
+    @ 3 sets of 7 sets of 2
+    @ seventh set has destination address
+    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
+    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
+    .4byte gRubyCatchLight_0825FFF0, gRubyCatchLight_082603F0
+    .4byte gRubyCatchLight_08260030, gRubyCatchLight_08260430
+    .4byte gRubyCatchLight_08260170, gRubyCatchLight_08260570
+    .4byte gRubyCatchLight_082601B0, gRubyCatchLight_082605B0
+    .4byte 0x0600A180, 0x0600A580
 
-gRubyModeTimerTilePointers:: @ 0x086B0A90
-	.incbin "baserom.gba", 0x6B0A90, 0x30
+    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
+    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
+    .4byte gRubyCatchLight_08260070, gRubyCatchLight_08260470
+    .4byte gRubyCatchLight_082600B0, gRubyCatchLight_082604B0
+    .4byte gRubyCatchLight_082601F0, gRubyCatchLight_082605F0
+    .4byte gRubyCatchLight_08260230, gRubyCatchLight_08260630
+    .4byte 0x0600A1C0, 0x0600A5C0
 
-gRubyCatchArrowTilePointers:: @ 0x086B0AC0
-	.incbin "baserom.gba", 0x6B0AC0, 0x30
+    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
+    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
+    .4byte gRubyCatchLight_082600F0, gRubyCatchLight_082604F0
+    .4byte gRubyCatchLight_08260130, gRubyCatchLight_08260530
+    .4byte gRubyCatchLight_08260270, gRubyCatchLight_08260670
+    .4byte gRubyCatchLight_082602B0, gRubyCatchLight_082606B0
+    .4byte 0x0600A200, 0x0600A600
 
-gRubyEvoArrowTilePointers:: @ 0x086B0AF0
-	.incbin "baserom.gba", 0x6B0AF0, 0x30
+gRubySaverTilePointers:: @ 0x086B0A90
+    @ 3 sets of 4
+    @ third set has destination address
+    .4byte gRubySaverRow0Tile_Off, gRubySaverRow1Tile_Off, gRubySaverRow2Tile_Off, gRubySaverRow3Tile_Off
+    .4byte gRubySaverRow0Tile_On, gRubySaverRow1Tile_On, gRubySaverRow2Tile_On, gRubySaverRow3Tile_On
+    .4byte 0x0600AD80, 0x0600B180, 0x0600B5A0, 0x0600BA00
 
-gRubyRouletteSlotTilePointers:: @ 0x086B0B20
-	.incbin "baserom.gba", 0x6B0B20, 0x50
+gRubyHatchArrowTilePointer:: @ 0x086B0AC0
+    @ 3 sets of 4
+    @ third set has destination address
+    .4byte gRubyHatchArrowRow0Tile_Off, gRubyHatchArrowRow1Tile_Off, gRubyHatchArrowRow2Tile_Off, gRubyHatchArrowRow3Tile_Off
+    .4byte gRubyHatchArrowRow0Tile_On, gRubyHatchArrowRow1Tile_On, gRubyHatchArrowRow2Tile_On, gRubyHatchArrowRow3Tile_On
+    .4byte 0x0600B960, 0x0600BD60, 0x0600C160, 0x0600C560
+
+gRubyBumperArrowTilePointer:: @ 0x086B0AF0
+    @ 3 sets of 4
+    @ third set has destination address
+    .4byte gRubyBumperArrowRow0Tile_Off, gRubyBumperArrowRow1Tile_Off, gRubyBumperArrowRow2Tile_Off, gRubyBumperArrowRow3Tile_Off
+    .4byte gRubyBumperArrowRow0Tile_On, gRubyBumperArrowRow1Tile_On, gRubyBumperArrowRow2Tile_On, gRubyBumperArrowRow3Tile_On
+    .4byte 0x0600B620, 0x0600B9E0, 0x0600BDE0, 0x0600C1E0
+
+gRubyShopRampArrowTilePointsers:: @ 0x086B0B20
+    @ 5 sets of 4
+    @ Mart mode is set one and two
+    @ Evo mode is set sets three and four:
+    @ fifth set has the destination address
+    .4byte gRubyMartArrow_R0_Off, gRubyMartArrow_R1_Off, gRubyMartArrow_R2_Off, gRubyMartArrow_R3_Off
+    .4byte gRubyMartArrow_R0_On,  gRubyMartArrow_R1_On,  gRubyMartArrow_R2_On,  gRubyMartArrow_R3_On
+    .4byte gRubyEvoArrow_R0_Off,  gRubyEvoArrow_R1_Off,  gRubyEvoArrow_R2_Off,  gRubyEvoArrow_R3_Off
+    .4byte gRubyEvoArrow_R0_On,   gRubyEvoArrow_R1_On,   gRubyEvoArrow_R2_On,   gRubyEvoArrow_R3_On
+    .4byte 0x0600C620, 0x0600CA20, 0x0600CE20, 0x0600D220
 
 gRubyBallPowerUpLightTilePointers:: @ 0x086B0B70
-	.incbin "baserom.gba", 0x6B0B70, 0x24
+    @ 3 sets of 3
+    @ third value has the destination address
+    .4byte gRubyBallPowerUpLight0off, gRubyBallPowerUpLight0on, 0x060085C0
+    .4byte gRubyBallPowerUpLight1off, gRubyBallPowerUpLight1on, 0x06008600
+    .4byte gRubyBallPowerUpLight2off, gRubyBallPowerUpLight2on, 0x06008660
 
-gRubyCatchProgressArrowTilePointers:: @ 0x086B0B94
-	.incbin "baserom.gba", 0x6B0B94, 0x30
+gRubyCatchArrowTilePointer:: @ 0x086B0B94
+    @ 3 sets of 4
+    @ third set has the destination address
+	.4byte gRubyCatchArrowRow0Tile_Off, gRubyCatchArrowRow1Tile_Off, gRubyCatchArrowRow2Tile_Off, gRubyCatchArrowRow3Tile_Off
+    .4byte gRubyCatchArrowRow0Tile_On, gRubyCatchArrowRow1Tile_On, gRubyCatchArrowRow2Tile_On, gRubyCatchArrowRow3Tile_On
+    .4byte 0x0600D2A0, 0x0600D660, 0x06008260, 0x06008660
 
 gRubyHoleIndicatorTilePointers:: @ 0x086B0BC4
-	.incbin "baserom.gba", 0x6B0BC4, 0x40
+    @ 4 sets of 4
+    @ third value has the destination; fouth value blank.
+    .4byte gRubyHoleLightH_Off, gRubyHoleLightH_On, 0x0600A460, 0
+    .4byte gRubyHoleLightO_Off, gRubyHoleLightO_On, 0x0600A4C0, 0
+    .4byte gRubyHoleLightL_Off, gRubyHoleLightL_On, 0x0600A6C0, 0
+    .4byte gRubyHoleLightE_Off, gRubyHoleLightE_On, 0x0600A720, 0
 
-gSapphireEvoArrowTilePtrs:: @ 0x086B0C04
-	.incbin "baserom.gba", 0x6B0C04, 0xB4
+gRubyEvoArrowTilePtrs:: @ 0x086B0C04
+    @ 3 sets of 5 sets of 3
+    @ fifth set has the destination address
+	.4byte gRubyEvo_EArrow_Top0, gRubyEvo_EArrow_Mid0, gRubyEvo_EArrow_Bot0
+    .4byte gRubyEvo_EArrow_Top0, gRubyEvo_EArrow_Mid0, gRubyEvo_EArrow_Bot0
+    .4byte gRubyEvo_EArrow_Top1, gRubyEvo_EArrow_Mid1, gRubyEvo_EArrow_Bot1
+    .4byte gRubyEvo_EArrow_Top2, gRubyEvo_EArrow_Mid2, gRubyEvo_EArrow_Bot2
+    .4byte 0x0600D080, 0x0600D480, 0x06008080
 
-gSapphireCoinRewardTilePtrs:: @ 0x086B0CB8
-	.incbin "baserom.gba", 0x6B0CB8, 0xB4
+    .4byte gRubyEvo_VArrow_Top0, gRubyEvo_VArrow_Mid0, gRubyEvo_VArrow_Bot0
+    .4byte gRubyEvo_VArrow_Top1, gRubyEvo_VArrow_Mid1, gRubyEvo_VArrow_Bot1
+    .4byte gRubyEvo_VArrow_Top2, gRubyEvo_VArrow_Mid2, gRubyEvo_VArrow_Bot2
+    .4byte gRubyEvo_VArrow_Top3, gRubyEvo_VArrow_Mid3, gRubyEvo_VArrow_Bot3
+    .4byte 0x060080A0, 0x060084A0, 0x060088A0
 
-gSapphireCatchArrowTilePtrs:: @ 0x086B0D6C
-	.incbin "baserom.gba", 0x6B0D6C, 0xB4
+    .4byte gRubyEvo_OArrow_Top0, gRubyEvo_OArrow_Mid0, gRubyEvo_OArrow_Bot0
+    .4byte gRubyEvo_OArrow_Top0, gRubyEvo_OArrow_Mid0, gRubyEvo_OArrow_Bot0
+    .4byte gRubyEvo_OArrow_Top1, gRubyEvo_OArrow_Mid1, gRubyEvo_OArrow_Bot1
+    .4byte gRubyEvo_OArrow_Top2, gRubyEvo_OArrow_Mid2, gRubyEvo_OArrow_Bot2
+    .4byte 0x060088C0, 0x06008CC0, 0x060090C0
+
+gRubyCoinRewardTilePtrs:: @ 0x086B0CB8
+    @ 3 sets of 5 sets of 3
+    @ fifth set has the destination address
+    .4byte gRubyCoinArrow_0825DF10, gRubyCoinArrow_0825E310, gRubyCoinArrow_0825E710
+    .4byte gRubyCoinArrow_0825DF10, gRubyCoinArrow_0825E310, gRubyCoinArrow_0825E710
+    .4byte gRubyCoinArrow_0825DF70, gRubyCoinArrow_0825E370, gRubyCoinArrow_0825E770
+    .4byte gRubyCoinArrow_0825DFD0, gRubyCoinArrow_0825E3D0, gRubyCoinArrow_0825E7D0
+    .4byte 0x0600B4E0, 0x0600B8E0, 0x0600BCE0
+
+    .4byte gRubyCoinArrow_0825E030, gRubyCoinArrow_0825E430, gRubyCoinArrow_0825E830
+    .4byte gRubyCoinArrow_0825E090, gRubyCoinArrow_0825E490, gRubyCoinArrow_0825E890
+    .4byte gRubyCoinArrow_0825E0F0, gRubyCoinArrow_0825E4F0, gRubyCoinArrow_0825E8F0
+    .4byte gRubyCoinArrow_0825E150, gRubyCoinArrow_0825E550, gRubyCoinArrow_0825E950
+    .4byte 0x0600BCE0, 0x0600C0E0, 0x0600C4E0
+
+    .4byte gRubyCoinArrow_0825E1B0, gRubyCoinArrow_0825E5B0, gRubyCoinArrow_0825E9B0
+    .4byte gRubyCoinArrow_0825E1B0, gRubyCoinArrow_0825E5B0, gRubyCoinArrow_0825E9B0
+    .4byte gRubyCoinArrow_0825E210, gRubyCoinArrow_0825E610, gRubyCoinArrow_0825EA10
+    .4byte gRubyCoinArrow_0825E270, gRubyCoinArrow_0825E670, gRubyCoinArrow_0825EA70
+    .4byte 0x0600C500, 0x0600C900, 0x0600CD00
+
+gRubyGetArrowTilePtrs:: @ 0x086B0D6C
+    @ 3 sets of 5 sets of 3
+    @ fifth set has the destination address
+    .4byte gRubyGetArrow_0825EB10, gRubyGetArrow_0825EF10, gRubyGetArrow_0825F310
+    .4byte gRubyGetArrow_0825EB10, gRubyGetArrow_0825EF10, gRubyGetArrow_0825F310
+    .4byte gRubyGetArrow_0825EB70, gRubyGetArrow_0825EF70, gRubyGetArrow_0825F370
+    .4byte gRubyGetArrow_0825EBD0, gRubyGetArrow_0825EFD0, gRubyGetArrow_0825F3D0
+    .4byte 0x0600D2E0, 0x0600D6E0, 0x060082E0
+
+    .4byte gRubyGetArrow_0825EC50, gRubyGetArrow_0825F050, gRubyGetArrow_0825F430
+    .4byte gRubyGetArrow_0825ECB0, gRubyGetArrow_0825F0B0, gRubyGetArrow_0825F490
+    .4byte gRubyGetArrow_0825ED10, gRubyGetArrow_0825F110, gRubyGetArrow_0825F4F0
+    .4byte gRubyGetArrow_0825ED70, gRubyGetArrow_0825F170, gRubyGetArrow_0825F550
+    .4byte 0x060082E0, 0x060086E0, 0x06008AC0
+
+    .4byte gRubyGetArrow_0825EDD0, gRubyGetArrow_0825F1B0, gRubyGetArrow_0825F5B0
+    .4byte gRubyGetArrow_0825EDD0, gRubyGetArrow_0825F1B0, gRubyGetArrow_0825F5B0
+    .4byte gRubyGetArrow_0825EE30, gRubyGetArrow_0825F210, gRubyGetArrow_0825F610
+    .4byte gRubyGetArrow_0825EE90, gRubyGetArrow_0825F270, gRubyGetArrow_0825F670
+    .4byte 0x06008AC0, 0x06008EA0, 0x060092A0
 
 gBallShadowTileIndices:: @ 0x086B0E20
-	.incbin "baserom.gba", 0x6B0E20, 0x40
+    @ 31 values (ix 0 - 30) used, then padding
+	.2byte 0,0,0,0,1,1,1,1,2,2
+    .2byte 2,2,3,3,3,3,4,4,4,4
+    .2byte 4,5,5,5,5,5,5,5,5,5
+    .2byte 5
+    .align 2, 0
 
 gSlingshotHitFrameIndices:: @ 0x086B0E60
-	.incbin "baserom.gba", 0x6B0E60, 0xC
+    .2byte 0,1,1,1,1,0
 
-gBumperHitCounterTilePtrs:: @ 0x086B0E6C
-	.incbin "baserom.gba", 0x6B0E6C, 0x30
+gSapphirePSquareIndicator:: @ 0x086B0E6C
+    @ 6 sets of 2
+    @ sixth set has destination address
+    .4byte gSapphirePIndicator_082DEEE0, gSapphirePIndicator_082DF2E0
+    .4byte gSapphirePIndicator_082DEF20, gSapphirePIndicator_082DF320
+    .4byte gSapphirePIndicator_082DEF60, gSapphirePIndicator_082DF360
+    .4byte gSapphirePIndicator_082DEFA0, gSapphirePIndicator_082DF3A0
+    .4byte gSapphirePIndicator_082DEFE0, gSapphirePIndicator_082DF3E0
+    .4byte 0x0600A640, 0x0600AA40
 
 gSapphireProgressDigitTilePtrs:: @ 0x086B0E9C
-	.incbin "baserom.gba", 0x6B0E9C, 0xB0
+	@ 11 sets of 4
+    @ eleventh set has destination address
+    .4byte gSapphireBonusArrow_00_Top, gSapphireBonusArrow_00_Bot, gSapphireBonusArrow_0_Top, gSapphireBonusArrow_0_Bot
+    .4byte gSapphireBonusArrow_10_Top, gSapphireBonusArrow_10_Bot, gSapphireBonusArrow_1_Top, gSapphireBonusArrow_1_Bot
+    .4byte gSapphireBonusArrow_20_Top, gSapphireBonusArrow_20_Bot, gSapphireBonusArrow_2_Top, gSapphireBonusArrow_2_Bot
+    .4byte gSapphireBonusArrow_30_Top, gSapphireBonusArrow_30_Bot, gSapphireBonusArrow_3_Top, gSapphireBonusArrow_3_Bot
+    .4byte gSapphireBonusArrow_40_Top, gSapphireBonusArrow_40_Bot, gSapphireBonusArrow_4_Top, gSapphireBonusArrow_4_Bot
+    .4byte gSapphireBonusArrow_50_Top, gSapphireBonusArrow_50_Bot, gSapphireBonusArrow_5_Top, gSapphireBonusArrow_5_Bot
+    .4byte gSapphireBonusArrow_60_Top, gSapphireBonusArrow_60_Bot, gSapphireBonusArrow_6_Top, gSapphireBonusArrow_6_Bot
+    .4byte gSapphireBonusArrow_70_Top, gSapphireBonusArrow_70_Bot, gSapphireBonusArrow_7_Top, gSapphireBonusArrow_7_Bot
+    .4byte gSapphireBonusArrow_80_Top, gSapphireBonusArrow_80_Bot, gSapphireBonusArrow_8_Top, gSapphireBonusArrow_8_Bot
+    .4byte gSapphireBonusArrow_90_Top, gSapphireBonusArrow_90_Bot, gSapphireBonusArrow_9_Top, gSapphireBonusArrow_9_Bot
+    .4byte 0x0600B220, 0x0600B620, 0x0600B240, 0x0600B640
 
 gRotatingBackgroundTilePtrs:: @ 0x086B0F4C
-	.incbin "baserom.gba", 0x6B0F4C, 0x50
+    @ 5 sets of 4
+    @ fifth set has destination address
+    .4byte gWailmerWater_082E3EC0, gWailmerWater_082E42C0, gWailmerWater_082E46C0, gWailmerWater_082E4AC0
+    .4byte gWailmerWater_082E3F40, gWailmerWater_082E4340, gWailmerWater_082E4740, gWailmerWater_082E4B40
+    .4byte gWailmerWater_082E3FC0, gWailmerWater_082E43C0, gWailmerWater_082E47C0, gWailmerWater_082E4BC0
+    .4byte gWailmerWater_082E3F40, gWailmerWater_082E4340, gWailmerWater_082E4740, gWailmerWater_082E4B40
+    .4byte 0x0600AEA0, 0x0600B2A0, 0x0600B6A0, 0x0600BAA0
 
-gBonusModeIndicatorTilePtrs:: @ 0x086B0F9C
-	.incbin "baserom.gba", 0x6B0F9C, 0x10
+gHatchMachineDrawSegment:: @ 0x086B0F9C
+    @ 10 sets of 3 sets of 2
+    @ third set has destination address
+    .4byte gHatchMachine_082DE1E0, gHatchMachine_082DE5E0
+    .4byte gHatchMachine_082DE620, gHatchMachine_082DEA20
+    .4byte 0x0600DD40, 0x0600DD80
 
-gUnknown_086B0FAC:: @ 0x086B0FAC
-	.incbin "baserom.gba", 0x6B0FAC, 0xE0
+    .4byte gHatchMachine_082DE660, gHatchMachine_082DEA60
+    .4byte gHatchMachine_082DE6A0, gHatchMachine_082DEAA0
+    .4byte 0x0600DDC0, 0x0600DE00
+
+    .4byte gHatchMachine_082DE6E0, gHatchMachine_082DEAE0
+    .4byte gHatchMachine_082DE720, gHatchMachine_082DEB20
+    .4byte 0x0600D9C0, 0x0600DAC0
+
+    .4byte gHatchMachine_082DEB60, gHatchMachine_082DEB60
+    .4byte gHatchMachine_082DEBA0, gHatchMachine_082DEBA0
+    .4byte 0x0600DE40, 0x0600DE40
+
+    .4byte gHatchMachine_082DE7E0, gHatchMachine_082DEBE0
+    .4byte gHatchMachine_082DE820, gHatchMachine_082DEC20
+    .4byte 0x0600D900, 0x0600DA00
+
+    .4byte gHatchMachine_082DE860, gHatchMachine_082DEC60
+    .4byte gHatchMachine_082DE8A0, gHatchMachine_082DECA0
+    .4byte 0x0600DE80, 0x0600DEC0
+
+    .4byte gHatchMachine_082DE8E0, gHatchMachine_082DECE0
+    .4byte gHatchMachine_082DE920, gHatchMachine_082DED20
+    .4byte 0x0600DF00, 0x0600DF40
+
+    .4byte gHatchMachine_082DE960, gHatchMachine_082DED60
+    .4byte gHatchMachine_082DE9A0, gHatchMachine_082DEDA0
+    .4byte 0x0600DF80, 0x0600DFC0
+
+    .4byte gHatchMachine_082DE9E0, gHatchMachine_082DEDE0
+    .4byte gHatchMachine_082DEE20, gHatchMachine_082DF220
+    .4byte 0x0600E000, 0x0600E040
+
+    .4byte gHatchMachine_082DEE60, gHatchMachine_082DF260
+    .4byte gHatchMachine_082DEEA0, gHatchMachine_082DF2A0
+    .4byte 0x0600E080, 0x0600E0C0
 
 gSapphireSlingshotTilePtrs:: @ 0x086B108C
-	.incbin "baserom.gba", 0x6B108C, 0x78
+    @ 2 sets (sides) of 3 sets of 5
+    @ third set has destination address
+    .4byte gSapphireSlingshot_082E2AA0, gSapphireSlingshot_082E2EA0, gSapphireSlingshot_082E32A0, gSapphireSlingshot_082E36A0, gSapphireSlingshot_082E3AC0
+    .4byte gSapphireSlingshot_082E2B00, gSapphireSlingshot_082E2F00, gSapphireSlingshot_082E3300, gSapphireSlingshot_082E3700, gSapphireSlingshot_082E3B20
+    .4byte 0x0600E100, 0x0600E120, 0x0600E160, 0x0600E1C0, 0x0600E220
+
+    .4byte gSapphireSlingshot_082E2BA0, gSapphireSlingshot_082E2F80, gSapphireSlingshot_082E3360, gSapphireSlingshot_082E3760, gSapphireSlingshot_082E3B60
+    .4byte gSapphireSlingshot_082E2C00, gSapphireSlingshot_082E2FE0, gSapphireSlingshot_082E33C0, gSapphireSlingshot_082E37C0, gSapphireSlingshot_082E3BC0
+    .4byte 0x0600E260, 0x0600E280, 0x0600E2C0, 0x0600E320, 0x0600E380
 
 gSapphireTrapIndicatorTilePtrs:: @ 0x086B1104
-	.incbin "baserom.gba", 0x6B1104, 0x20
+    @ 4 sets of 2
+    @ fourth set has destination address
+    .4byte gSapphireCenterTrap_082DDE20, gSapphireCenterTrap_082DE220
+    .4byte gSapphireCenterTrap_082DDE60, gSapphireCenterTrap_082DE260
+    .4byte gSapphireCenterTrap_082DDEA0, gSapphireCenterTrap_082DE2A0
+    .4byte 0x060081C0, 0x060085C0
 
 gSapphireCatchLightTilePtrs:: @ 0x086B1124
-	.incbin "baserom.gba", 0x6B1124, 0xA8
+    @ 3 sets of 7 sets of 2
+    @ seventh set has destination address
+    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
+    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
+    .4byte gSapphireCatchLight_082DDEE0, gSapphireCatchLight_082DE2E0
+    .4byte gSapphireCatchLight_082DDF20, gSapphireCatchLight_082DE320
+    .4byte gSapphireCatchLight_082DE060, gSapphireCatchLight_082DE460
+    .4byte gSapphireCatchLight_082DE0A0, gSapphireCatchLight_082DE4A0
+    .4byte 0x0600A180, 0x0600A580
 
-gSapphireModeTimerDisplayTilePtrs:: @ 0x086B11CC
-	.incbin "baserom.gba", 0x6B11CC, 0x30
+    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
+    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
+    .4byte gSapphireCatchLight_082DDF60, gSapphireCatchLight_082DE360
+    .4byte gSapphireCatchLight_082DDFA0, gSapphireCatchLight_082DE3A0
+    .4byte gSapphireCatchLight_082DE0E0, gSapphireCatchLight_082DE4E0
+    .4byte gSapphireCatchLight_082DE120, gSapphireCatchLight_082DE520
+    .4byte 0x0600A1C0, 0x0600A5C0
 
-gSapphireCatchArrowPaletteTilePtrs:: @ 0x086B11FC
-	.incbin "baserom.gba", 0x6B11FC, 0x30
+    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
+    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
+    .4byte gSapphireCatchLight_082DDFE0, gSapphireCatchLight_082DE3E0
+    .4byte gSapphireCatchLight_082DE020, gSapphireCatchLight_082DE420
+    .4byte gSapphireCatchLight_082DE160, gSapphireCatchLight_082DE560
+    .4byte gSapphireCatchLight_082DE1A0, gSapphireCatchLight_082DE5A0
+    .4byte 0x0600A200, 0x0600A600
 
-gSapphireEvoArrowPaletteTilePtrs:: @ 0x086B122C
-	.incbin "baserom.gba", 0x6B122C, 0x30
+gSapphireSaverDisplayTilePtrs:: @ 0x086B11CC
+    @ 3 sets of 4
+    @ third set has destination address
+    .4byte gSapphireSaver_082DF660, gSapphireSaver_082DFA60, gSapphireSaver_082DFE80, gSapphireSaver_082E02E0
+    .4byte gSapphireSaver_082DF760, gSapphireSaver_082DFB60, gSapphireSaver_082DFF80, gSapphireSaver_082E03E0
+    .4byte 0x0600AD80, 0x0600B180, 0x0600B5A0, 0x0600BA00
 
-gSapphireRouletteSlotTilePtrs:: @ 0x086B125C
-	.incbin "baserom.gba", 0x6B125C, 0x50
+gSapphireHatchArrowTilePtrs:: @ 0x086B11FC
+    @ 3 sets of 4
+    @ third set has destination address
+    .4byte gSapphireHatchArrow_082E06A0, gSapphireHatchArrow_082E0A60, gSapphireHatchArrow_082E0E60, gSapphireHatchArrow_082E1260
+    .4byte gSapphireHatchArrow_082E0720, gSapphireHatchArrow_082E0AE0, gSapphireHatchArrow_082E0EE0, gSapphireHatchArrow_082E12E0
+    .4byte 0x0600CEA0, 0x0600D260, 0x0600D660, 0x06008260
+
+gSapphireBumperArrowTilePtrs:: @ 0x086B122C
+    @ 3 sets of 4
+    @ third set has destination address
+    @ note: first row data has blank tiles, and not actually referenced.
+    .4byte gSapphireBumperArrow_082E0860, gSapphireBumperArrow_082E0C60, gSapphireBumperArrow_082E1060, gSapphireBumperArrow_082E1460
+    .4byte gSapphireBumperArrow_082E08E0, gSapphireBumperArrow_082E0CE0, gSapphireBumperArrow_082E10E0, gSapphireBumperArrow_082E14E0
+    .4byte 0x0600A9A0, 0x0600ADA0, 0x0600B1A0, 0x0600B5A0
+
+gSapphireShopArrowTilePtrs:: @ 0x086B125C
+    @ 5 sets of 4
+    @ fifth set has destination address
+    .4byte gSapphireMartArrow_082E1680, gSapphireMartArrow_082E1A80, gSapphireMartArrow_082E1E80, gSapphireMartArrow_082E2280
+    .4byte gSapphireMartArrow_082E1700, gSapphireMartArrow_082E1B00, gSapphireMartArrow_082E1F00, gSapphireMartArrow_082E2300
+    .4byte gSapphireEvoArrow_082E1780, gSapphireEvoArrow_082E1B80, gSapphireEvoArrow_082E1F80, gSapphireEvoArrow_082E2380
+    .4byte gSapphireEvoArrow_082E1800, gSapphireEvoArrow_082E1C00, gSapphireEvoArrow_082E2000, gSapphireEvoArrow_082E2400
+    .4byte 0x0600BD20, 0x0600C120, 0x0600C520, 0x0600C920
 
 gSapphireBallPowerUpLightTilePtrs:: @ 0x086B12AC
-	.incbin "baserom.gba", 0x6B12AC, 0x24
+    @ 3 sets of 3
+    @ third value has destination address
+    .4byte gSapphireBallPowerUpLight0off, gSapphireBallPowerUpLight0on, 0x06008540
+    .4byte gSapphireBallPowerUpLight1off, gSapphireBallPowerUpLight1on, 0x060085A0
+    .4byte gSapphireBallPowerUpLight2off, gSapphireBallPowerUpLight2on, 0x060085E0
 
-gSapphireCatchFlashTilePtrs:: @ 0x086B12D0
-	.incbin "baserom.gba", 0x6B12D0, 0x30
+gSapphireCatchArrowTilePtrs:: @ 0x086B12D0
+    @ 3 sets of 4
+    @ third set has destination address
+    .4byte gSapphireCatchArrow_082E0780, gSapphireCatchArrow_082E0B60, gSapphireCatchArrow_082E0F60, gSapphireCatchArrow_082E1360
+    .4byte gSapphireCatchArrow_082E0800, gSapphireCatchArrow_082E0BE0, gSapphireCatchArrow_082E0FE0, gSapphireCatchArrow_082E13E0
+    .4byte 0x0600C260, 0x0600C640, 0x0600CA40, 0x0600CE40
 
 gSapphireHoleIndicatorTilePtrs:: @ 0x086B1300
-	.incbin "baserom.gba", 0x6B1300, 0x40
+    @ 4 sets of 4
+    @ third value has the destination; fouth value blank.
+	.4byte gSapphireHoleLightH_Off, gSapphireHoleLightH_On, 0x0600A460, 0
+    .4byte gSapphireHoleLightO_Off, gSapphireHoleLightO_On, 0x0600A4C0, 0
+    .4byte gSapphireHoleLightL_Off, gSapphireHoleLightL_On, 0x0600A6C0, 0
+    .4byte gSapphireHoleLightE_Off, gSapphireHoleLightE_On, 0x0600A720, 0
 
-gSapphireEvoArrowBonusTilePtrs:: @ 0x086B1340
-	.incbin "baserom.gba", 0x6B1340, 0xB4
+gSapphireEvoArrowTilePtrs:: @ 0x086B1340
+    @ 3 sets of 5 sets of 3
+    @ fifth set has destination address
+    .4byte gSapphireEvo_EArrow_Top0, gSapphireEvo_EArrow_Mid0, gSapphireEvo_EArrow_Bot0
+    .4byte gSapphireEvo_EArrow_Top0, gSapphireEvo_EArrow_Mid0, gSapphireEvo_EArrow_Bot0
+    .4byte gSapphireEvo_EArrow_Top1, gSapphireEvo_EArrow_Mid1, gSapphireEvo_EArrow_Bot1
+    .4byte gSapphireEvo_EArrow_Top2, gSapphireEvo_EArrow_Mid2, gSapphireEvo_EArrow_Bot2
+    .4byte 0x0600D080, 0x0600D480, 0x06008080
 
-gSapphireCoinRewardAltTilePtrs:: @ 0x086B13F4
-	.incbin "baserom.gba", 0x6B13F4, 0x78
+    .4byte gSapphireEvo_VArrow_Top0, gSapphireEvo_VArrow_Mid0, gSapphireEvo_VArrow_Bot0
+    .4byte gSapphireEvo_VArrow_Top1, gSapphireEvo_VArrow_Mid1, gSapphireEvo_VArrow_Bot1
+    .4byte gSapphireEvo_VArrow_Top2, gSapphireEvo_VArrow_Mid2, gSapphireEvo_VArrow_Bot2
+    .4byte gSapphireEvo_VArrow_Top3, gSapphireEvo_VArrow_Mid3, gSapphireEvo_VArrow_Bot3
+    .4byte 0x060080A0, 0x060084A0, 0x060088A0
 
-gUnknown_086B146C:: @ 0x086B146C
-	.incbin "baserom.gba", 0x6B146C, 0x3C
+    .4byte gSapphireEvo_OArrow_Top0, gSapphireEvo_OArrow_Mid0, gSapphireEvo_OArrow_Bot0
+    .4byte gSapphireEvo_OArrow_Top0, gSapphireEvo_OArrow_Mid0, gSapphireEvo_OArrow_Bot0
+    .4byte gSapphireEvo_OArrow_Top1, gSapphireEvo_OArrow_Mid1, gSapphireEvo_OArrow_Bot1
+    .4byte gSapphireEvo_OArrow_Top2, gSapphireEvo_OArrow_Mid2, gSapphireEvo_OArrow_Bot2
+    .4byte 0x060088C0, 0x06008CC0, 0x060090E0
 
-gSapphireCatchArrowBonusTilePtrs:: @ 0x086B14A8
-	.incbin "baserom.gba", 0x6B14A8, 0xB4
+gSapphireCoinRewardTilePtrs:: @ 0x086B13F4
+    @ 3 sets of 5 sets of 3
+    @ fourth set has destination address; fifth has spacers
+    .4byte gSapphireCoinArrow_082DB5E0, gSapphireCoinArrow_082DB9E0, gSapphireCoinArrow_082DBDE0
+    .4byte gSapphireCoinArrow_082DB640, gSapphireCoinArrow_082DBA40, gSapphireCoinArrow_082DBE40
+    .4byte gSapphireCoinArrow_082DB6A0, gSapphireCoinArrow_082DBAA0, gSapphireCoinArrow_082DBEA0
+    .4byte 0x0600C4A0, 0x0600C8A0, 0x0600CCA0
+    .4byte 0,0,0
+
+    .4byte gSapphireCoinArrow_082DB720, gSapphireCoinArrow_082DBB20, gSapphireCoinArrow_082DBF20
+    .4byte gSapphireCoinArrow_082DB780, gSapphireCoinArrow_082DBB80, gSapphireCoinArrow_082DBF80
+    .4byte gSapphireCoinArrow_082DB7E0, gSapphireCoinArrow_082DBBE0, gSapphireCoinArrow_082DBFE0
+    .4byte 0x0600CCE0, 0x0600D0E0, 0x0600D4C0
+    .4byte 0,0,0
+
+    .4byte gSapphireCoinArrow_082DB820, gSapphireCoinArrow_082DBC20, gSapphireCoinArrow_082DC020
+    .4byte gSapphireCoinArrow_082DB880, gSapphireCoinArrow_082DBC80, gSapphireCoinArrow_082DC080
+    .4byte gSapphireCoinArrow_082DB8E0, gSapphireCoinArrow_082DBCE0, gSapphireCoinArrow_082DC0E0
+    .4byte 0x0600D0E0, 0x0600D4E0, 0x060080E0
+    .4byte 0,0,0
+
+gSapphireGetArrowTilePtrs:: @ 0x086B14A8
+	@ 3 sets of 5 sets of 3
+    @ fifth set has destination address
+    .4byte gSapphireGetArrow_082DC1E0, gSapphireGetArrow_082DC5E0, gSapphireGetArrow_082DC9E0
+    .4byte gSapphireGetArrow_082DC1E0, gSapphireGetArrow_082DC5E0, gSapphireGetArrow_082DC9E0
+    .4byte gSapphireGetArrow_082DC240, gSapphireGetArrow_082DC640, gSapphireGetArrow_082DCA40
+    .4byte gSapphireGetArrow_082DC2A0, gSapphireGetArrow_082DC6A0, gSapphireGetArrow_082DCAA0
+    .4byte 0x0600D2E0, 0x0600D6E0, 0x060082E0
+
+    .4byte gSapphireGetArrow_082DC320, gSapphireGetArrow_082DC720, gSapphireGetArrow_082DCB00
+    .4byte gSapphireGetArrow_082DC380, gSapphireGetArrow_082DC780, gSapphireGetArrow_082DCB60
+    .4byte gSapphireGetArrow_082DC3E0, gSapphireGetArrow_082DC7E0, gSapphireGetArrow_082DCBC0
+    .4byte gSapphireGetArrow_082DC440, gSapphireGetArrow_082DC840, gSapphireGetArrow_082DCC20
+    .4byte 0x060082E0, 0x060086E0, 0x06008AC0
+
+    .4byte gSapphireGetArrow_082DC4A0, gSapphireGetArrow_082DC880, gSapphireGetArrow_082DCC80
+    .4byte gSapphireGetArrow_082DC4A0, gSapphireGetArrow_082DC880, gSapphireGetArrow_082DCC80
+    .4byte gSapphireGetArrow_082DC500, gSapphireGetArrow_082DC8E0, gSapphireGetArrow_082DCCE0
+    .4byte gSapphireGetArrow_082DC560, gSapphireGetArrow_082DC940, gSapphireGetArrow_082DCD40
+    .4byte 0x06008AC0, 0x06008EA0, 0x060092A0
 
 gFieldSpriteSets:: @ 0x086B155C
-    .4byte gUnknown_086B2390
-    .2byte 0x54, 0
-    .4byte gUnknown_086B24E0
-    .2byte 0x57, 0
-    .4byte gUnknown_086BB3E4
-    .2byte 0xF, 0
-    .4byte gKecleonDefaultSpriteSets
-    .2byte 0x21, 0
-    .4byte gUnknown_086BB4A4
-    .2byte 0x1B, 0
-    .4byte gUnknown_086BB510
-    .2byte 0x20, 0
-    .4byte gUnknown_086BB590
-    .2byte 0x2E, 0
-    .4byte gUnknown_086BB648
-    .2byte 0x17, 0
+    .4byte gRubyBoardSpriteSets
+    .2byte 84, 0
+    .4byte gSapphireBoardSpriteSets
+    .2byte 87, 0
+    .4byte gDusclopsBoardSpriteSets
+    .2byte 15, 0
+    .4byte gKecleonBoardSpriteSets
+    .2byte 33, 0
+    .4byte gKyogreBoardSpriteSets
+    .2byte 27, 0
+    .4byte gGroudonBoardSpriteSets
+    .2byte 32, 0
+    .4byte gRayquazaBoardSpriteSets
+    .2byte 46, 0
+    .4byte gSphealBoardSpriteSets
+    .2byte 23, 0
 
 gMonHatchSpriteGroupPals:: @ 0x086B159C
 	.4byte gMonHatchSpriteGroup0_Pals
@@ -4661,1315 +6102,926 @@ gMonHatchSpriteGroupPals:: @ 0x086B159C
 	.4byte gMonHatchSpriteGroup5_Pals
 
 gMonIconPalettes:: @ 0x086B15B4
-	.incbin "baserom.gba", 0x6B15B4, 0x44
+    .4byte gMonCatchSpriteGroup0_Pal
+    .4byte gMonCatchSpriteGroup1_Pal
+    .4byte gMonCatchSpriteGroup2_Pal
+    .4byte gMonCatchSpriteGroup3_Pal
+    .4byte gMonCatchSpriteGroup4_Pal
+    .4byte gMonCatchSpriteGroup5_Pal
+    .4byte gMonCatchSpriteGroup6_Pal
+    .4byte gMonCatchSpriteGroup7_Pal
+    .4byte gMonCatchSpriteGroup8_Pal
+    .4byte gMonCatchSpriteGroup9_Pal
+    .4byte gMonCatchSpriteGroup10_Pal
+    .4byte gMonCatchSpriteGroup11_Pal
+    .4byte gMonCatchSpriteGroup12_Pal
+    .4byte gMonCatchSpriteGroup13_Pal
+    .4byte gMonCatchSpriteGroup14_Pal
+    .4byte gMonCatchSpriteGroup15_Pal
+    .4byte gMonCatchSpriteGroup16_Pal
 
-gUnknown_086B15F8:: @ 0x086B15F8
+gMainLeftFlipperSpriteSet:: @ 0x086B15F8
 .2byte 1
-    packed_sprite_oam x=-0x1, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x0, priority=0x2, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x0, priority=0x2, paletteNum=0x0
 
-gUnknown_086B1602:: @ 0x086B1602
+gMainRightFlipperSpriteSet:: @ 0x086B1602
 .2byte 1
-    packed_sprite_oam x=0x1, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x10, priority=0x2, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x10, priority=0x2, paletteNum=0x0
 
-gUnknown_086B160C:: @ 0x086B160C
+gMainBoardBallSpriteSet:: @ 0x086B160C
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x20, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, paletteNum=0x1
 
-gUnknown_086B1616:: @ 0x086B1616
+gPikachuKickbackSpriteSet:: @ 0x086B1616
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x24, priority=0x2, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2c, priority=0x2, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x24, priority=0x2, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2c, priority=0x2, paletteNum=0x3
 
-gUnknown_086B1628:: @ 0x086B1628
+gPichuKickbackSpriteSet:: @ 0x086B1628
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x30, priority=0x2, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x38, priority=0x2, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x30, priority=0x2, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x38, priority=0x2, paletteNum=0x3
 
-gUnknown_086B163A:: @ 0x086B163A
+gPikaChargingSpinnerSpriteSet:: @ 0x086B163A
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3c, priority=0x3, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x40, priority=0x3, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x42, priority=0x3, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x44, priority=0x3, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x3c, priority=0x3, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_8x16, tileNum=0x40, priority=0x3, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, mosaic=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x42, priority=0x3, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x10, mosaic=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x44, priority=0x3, paletteNum=0x3
 
-gUnknown_086B165C:: @ 0x086B165C
+gChargeIndicatorDeviceSpriteSet:: @ 0x086B165C
 .2byte 3
-    packed_sprite_oam x=0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x45, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=-0x18, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x4d, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x55, priority=0x0, paletteNum=0x9
-.2byte 0
+    packed_sprite_oaml x=0x8, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x45, paletteNum=0x9
+    packed_sprite_oaml x=-0x18, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x4d, paletteNum=0x9
+    packed_sprite_oaml x=-0x8, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x55, paletteNum=0x9
 
-gUnknown_086B1676:: @ 0x086B1676
+gPortraitBordersSpriteSet:: @ 0x086B1676
 .2byte 6
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x5d, priority=0x3, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x5d, priority=0x3, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0x5d, priority=0x3, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x1, size=0x1, tileNum=0x5d, priority=0x3, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x38, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x61, priority=0x3, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x61, priority=0x3, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x5d, priority=0x3, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x5d, priority=0x3, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x28, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,  tileNum=0x5d, priority=0x3, paletteNum=0x1
+    packed_sprite_oaml x=0x20, y=0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1, vFlip=0x1,  tileNum=0x5d, priority=0x3, paletteNum=0x1
+    packed_sprite_oaml x=0x38, y=0x8, spriteSize=SPRITE_SIZE_8x32, tileNum=0x61, priority=0x3, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x8, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,  tileNum=0x61, priority=0x3, paletteNum=0x1
 
-gUnknown_086B16A8:: @ 0x086B16A8
+gPortraitSpriteSet:: @ 0x086B16A8
 .2byte 6
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x65, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x69, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x6d, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x71, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x75, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x79, priority=0x3, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x65, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x69, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x6d, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x71, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x75, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x79, priority=0x3, paletteNum=0x0
 
-gUnknown_086B16DA:: @ 0x086B16DA
+gPortrait1SpriteSet:: @ 0x086B16DA
 .2byte 6
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x7d, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x81, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x85, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x89, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x8d, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x91, priority=0x3, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x7d, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x81, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x85, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x89, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x8d, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x91, priority=0x3, paletteNum=0x0
 
-gUnknown_086B170C:: @ 0x086B170C
+gPortraitTrimSpriteSet:: @ 0x086B170C
 .2byte 6
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x7d, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x81, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x85, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x89, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x8d, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x91, priority=0x3, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x7d, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x81, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x85, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x89, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x8d, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x91, priority=0x3, paletteNum=0x0
 
-gUnknown_086B173E:: @ 0x086B173E
+gCatchMonEntitySpriteSet:: @ 0x086B173E
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x65, priority=0x1, paletteNum=0xd
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x75, priority=0x1, paletteNum=0xd
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x7d, priority=0x1, paletteNum=0xd
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x85, priority=0x1, paletteNum=0xd
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x65, priority=0x1, paletteNum=0xd
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x75, priority=0x1, paletteNum=0xd
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xd
+    packed_sprite_oaml x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x85, priority=0x1, paletteNum=0xd
 
-gUnknown_086B1760:: @ 0x086B1760
+gHatchMonEntitySpriteSet:: @ 0x086B1760
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x95, priority=0x1, paletteNum=0xd
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x99, priority=0x1, paletteNum=0xd
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x9b, priority=0x1, paletteNum=0xd
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x9d, priority=0x1, paletteNum=0xd
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x95, priority=0x1, paletteNum=0xd
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x99, priority=0x1, paletteNum=0xd
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x9b, priority=0x1, paletteNum=0xd
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9d, priority=0x1, paletteNum=0xd
 
-gUnknown_086B1782:: @ 0x086B1782
+gCenterHoleGravityFxSpriteSet:: @ 0x086B1782
 .2byte 4
-    packed_sprite_oam x=-0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x1, size=0x2, tileNum=0x9e, priority=0x3, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x1, size=0x2, tileNum=0xae, priority=0x3, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x18, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x9e, priority=0x3, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xae, priority=0x3, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=-0x8, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1,  tileNum=0x9e, priority=0x3, paletteNum=0x1
+    packed_sprite_oaml x=-0x18, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, vFlip=0x1,  tileNum=0xae, priority=0x3, paletteNum=0x1
+    packed_sprite_oaml x=-0x18, y=-0x20, spriteSize=SPRITE_SIZE_32x32, tileNum=0x9e, priority=0x3, paletteNum=0x1
+    packed_sprite_oaml x=0x8, y=-0x20, spriteSize=SPRITE_SIZE_16x32, tileNum=0xae, priority=0x3, paletteNum=0x1
 
-gUnknown_086B17A4:: @ 0x086B17A4
+gEvoItemSpriteSet:: @ 0x086B17A4
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xb6, priority=0x1, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xb6, priority=0x1, paletteNum=0xf
 
-gUnknown_086B17AE:: @ 0x086B17AE
+gMainBoardPausePanelSpriteSet:: @ 0x086B17AE
 .2byte 11
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc6, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc7, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc8, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc9, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xca, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xcb, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xcc, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xcd, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xce, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xcf, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xd0, priority=0x0, paletteNum=0x9
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xc6, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xc7, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xc8, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xc9, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xca, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xcb, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xcc, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xcd, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xce, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xcf, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xd0, paletteNum=0x9
 
-gUnknown_086B1808:: @ 0x086B1808
+gMainBoardPauseTopBorderSpriteSet:: @ 0x086B1808
 .2byte 2
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xd1, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xd1, priority=0x0, paletteNum=0x9
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0xd1, paletteNum=0x9
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0xd1, paletteNum=0x9
 
-gUnknown_086B181A:: @ 0x086B181A
+gMainBoardPauseBottomBorderSpriteSet:: @ 0x086B181A
 .2byte 3
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0xd5, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0xd9, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0xd5, priority=0x0, paletteNum=0x9
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,  tileNum=0xd5, paletteNum=0x9
+    packed_sprite_oaml x=0x40, y=-0x10, spriteSize=SPRITE_SIZE_16x8, vFlip=0x1,  tileNum=0xd9, paletteNum=0x9
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,  tileNum=0xd5, paletteNum=0x9
 
-gUnknown_086B1834:: @ 0x086B1834
+gCoinsCollectedSpriteSet:: @ 0x086B1834
 .2byte 2
-    packed_sprite_oam x=-0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xdb, priority=0x0, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xdb, priority=0x0, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xdb, paletteNum=0x3
+    packed_sprite_oaml x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xdb, paletteNum=0x3
 
-gUnknown_086B1846:: @ 0x086B1846
+gMainBoardHatchEggSprite:: @ 0x086B1846
 .2byte 2
-    packed_sprite_oam x=-0x10, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xe7, priority=0x1, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x10, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xe7, priority=0x1, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x32, tileNum=0xe7, priority=0x1, paletteNum=0xb
+    packed_sprite_oaml x=-0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x32, tileNum=0xe7, priority=0x1, paletteNum=0xb
 
-gUnknown_086B1858:: @ 0x086B1858
+gBallUpgradeFxSpriteSet:: @ 0x086B1858
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xf7, priority=0x3, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xf7, priority=0x3, paletteNum=0x1
 
-gUnknown_086B1862:: @ 0x086B1862
+gSpoinkLauncherSpriteSet:: @ 0x086B1862
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x107, priority=0x1, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x10f, priority=0x1, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x4, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x113, priority=0x1, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x107, priority=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x10f, priority=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x4, y=0x20, spriteSize=SPRITE_SIZE_16x8, tileNum=0x113, priority=0x1, paletteNum=0xb
 
-gUnknown_086B187C:: @ 0x086B187C
+gRubyHatchCaveSpriteSet:: @ 0x086B187C
 .2byte 4
-    packed_sprite_oam x=-0x18, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x115, priority=0x1, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x125, priority=0x1, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x12d, priority=0x1, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x135, priority=0x1, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=-0x18, y=-0x20, spriteSize=SPRITE_SIZE_32x32, tileNum=0x115, priority=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=-0x20, spriteSize=SPRITE_SIZE_16x32, tileNum=0x125, priority=0x1, paletteNum=0xb
+    packed_sprite_oaml x=-0x18, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x12d, priority=0x1, paletteNum=0xb
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x135, priority=0x1, paletteNum=0xb
 
-gUnknown_086B189E:: @ 0x086B189E
+gRubyChikoritaSpriteSet:: @ 0x086B189E
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x139, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x149, priority=0x1, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x139, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x149, priority=0x1, paletteNum=0x3
 
-gUnknown_086B18B0:: @ 0x086B18B0
+gRubyLinooneLeftSpriteSet:: @ 0x086B18B0
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x151, priority=0x2, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x155, priority=0x2, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x157, priority=0x2, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x151, priority=0x2, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x155, priority=0x2, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x157, priority=0x2, paletteNum=0x4
 
-gUnknown_086B18CA:: @ 0x086B18CA
+gRubyLinooneRightSpriteSet:: @ 0x086B18CA
 .2byte 3
-    packed_sprite_oam x=0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x159, priority=0x2, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x15d, priority=0x2, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x15f, priority=0x2, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x159, priority=0x2, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x15d, priority=0x2, paletteNum=0x4
+    packed_sprite_oaml x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x15f, priority=0x2, paletteNum=0x4
 
-gUnknown_086B18E4:: @ 0x086B18E4
+gRubySharpedoSpriteSet:: @ 0x086B18E4
 .2byte 3
-    packed_sprite_oam x=0xA, y=-0x1, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x161, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x0, y=0xF, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x163, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x17, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x173, priority=0x1, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0xA, y=-0x1, spriteSize=SPRITE_SIZE_8x16, tileNum=0x161, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=0x0, y=0xF, spriteSize=SPRITE_SIZE_32x32, tileNum=0x163, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=0x20, y=0x17, spriteSize=SPRITE_SIZE_8x8, tileNum=0x173, priority=0x1, paletteNum=0x6
 
-gUnknown_086B18FE:: @ 0x086B18FE
+gRubyBumpersSpriteSet:: @ 0x086B18FE
 .2byte 6
-   packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x174, priority=0x2, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0xF, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x174, priority=0x2, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x17c, priority=0x2, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0xF, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x17c, priority=0x2, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x184, priority=0x2, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0xF, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x184, priority=0x2, paletteNum=0x9
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x174, priority=0x2, paletteNum=0x9
+    packed_sprite_oaml x=0xF, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x174, priority=0x2, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x17c, priority=0x2, paletteNum=0x9
+    packed_sprite_oaml x=0xF, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x17c, priority=0x2, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x184, priority=0x2, paletteNum=0x9
+    packed_sprite_oaml x=0xF, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x184, priority=0x2, paletteNum=0x9
 
-gUnknown_086B1930:: @ 0x086B1930
+gRubyMartDoorSpriteSet:: @ 0x086B1930
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x18c, priority=0x1, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x194, priority=0x1, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x18c, priority=0x1, paletteNum=0x5
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x194, priority=0x1, paletteNum=0x5
 
-gUnknown_086B1942:: @ 0x086B1942
+gRubyCyndaquilSpriteSet:: @ 0x086B1942
 .2byte 2
-    packed_sprite_oam x=-0x11, y=-0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x198, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=-0x11, y=0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1a8, priority=0x1, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=-0x11, y=-0xE, spriteSize=SPRITE_SIZE_32x32, tileNum=0x198, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=-0x11, y=0x12, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1a8, priority=0x1, paletteNum=0x3
 
-gUnknown_086B1954:: @ 0x086B1954
+gRubyMakuhitaSpriteSet:: @ 0x086B1954
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1ac, priority=0x1, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1bc, priority=0x1, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1c0, priority=0x1, paletteNum=0x8
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1ac, priority=0x1, paletteNum=0x8
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1bc, priority=0x1, paletteNum=0x8
+    packed_sprite_oaml x=0x8, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1c0, priority=0x1, paletteNum=0x8
 
-gUnknown_086B196E:: @ 0x086B196E
+gRubyGulpinStackSpriteSet:: @ 0x086B196E
 .2byte 6
-    packed_sprite_oam x=-0x20, y=-0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1c4, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x20, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1cc, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x17, y=-0x13, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1d0, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x17, y=-0x3, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1d8, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0xF, y=-0x13, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1dc, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0xF, y=-0x3, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=-0x20, y=-0xE, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=-0x20, y=0x2, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1cc, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=-0x17, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d0, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=-0x17, y=-0x3, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d8, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=-0xF, y=-0x13, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1dc, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=-0xF, y=-0x3, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1e4, priority=0x1, paletteNum=0x7
 
-gUnknown_086B19A0:: @ 0x086B19A0
+gRubyShopSignChangeSpriteSet:: @ 0x086B19A0
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x1e8, priority=0x0, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x208, priority=0x0, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x20c, priority=0x0, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x32, tileNum=0x1e8, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x208, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x20c, paletteNum=0x2
 
-gUnknown_086B19BA:: @ 0x086B19BA
+gRubyChikoritaProjectileSpriteSet:: @ 0x086B19BA
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x210, priority=0x0, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x210, paletteNum=0x3
 
-gUnknown_086B19C4:: @ 0x086B19C4
+gRubyChikoritaProjectileCollisionFxSpriteSet:: @ 0x086B19C4
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x214, priority=0x0, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x1, size=0x2, tileNum=0x214, priority=0x0, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x214, paletteNum=0x3
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, vFlip=0x1,  tileNum=0x214, paletteNum=0x3
 
-gUnknown_086B19D6:: @ 0x086B19D6
+gRubyNuzleafSpriteSet:: @ 0x086B19D6
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x21c, priority=0x2, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x22c, priority=0x2, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x21c, priority=0x2, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x22c, priority=0x2, paletteNum=0x4
 
-gUnknown_086B19E8:: @ 0x086B19E8
+gRubyBoardRightEdgeSpriteSet:: @ 0x086B19E8
 .2byte 5
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x230, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x230, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x230, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x230, priority=0x0, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x230, priority=0x0, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x230, paletteNum=0x7
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x230, paletteNum=0x7
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x230, paletteNum=0x7
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x230, paletteNum=0x7
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x230, paletteNum=0x7
 
-gUnknown_086B1A12:: @ 0x086B1A12
+gRubyWhiscashSpriteSet:: @ 0x086B1A12
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x234, priority=0x1, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x244, priority=0x1, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x24c, priority=0x1, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x254, priority=0x1, paletteNum=0x9
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x234, priority=0x1, paletteNum=0x9
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x244, priority=0x1, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x24c, priority=0x1, paletteNum=0x9
+    packed_sprite_oaml x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x254, priority=0x1, paletteNum=0x9
 
-gUnknown_086B1A34:: @ 0x086B1A34
+gRubyRampPrizeSpriteSet:: @ 0x086B1A34
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x258, priority=0x1, paletteNum=0xa
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x258, priority=0x1, paletteNum=0xa
 
-gUnknown_086B1A3E:: @ 0x086B1A3E
+gRubyMakuhitaPunchFxSpriteSet:: @ 0x086B1A3E
 .2byte 1
-   packed_sprite_oam x=-0x11, y=-0xF, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x25c, priority=0x0, paletteNum=0x3
-.2byte 0
+   packed_sprite_oaml x=-0x11, y=-0xF, spriteSize=SPRITE_SIZE_32x32, tileNum=0x25c, paletteNum=0x3
 
-gUnknown_086B1A48:: @ 0x086B1A48
+gJirachiStarTrailFx0SpriteSet:: @ 0x086B1A48
 .2byte 3
-    packed_sprite_oam x=0x8, y=0x19, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x294, priority=0x1, paletteNum=0xd
-    packed_sprite_oam x=0x18, y=0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x293, priority=0x1, paletteNum=0xd
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x291, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x8, y=0x19, spriteSize=SPRITE_SIZE_8x8, tileNum=0x294, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x18, y=0x1E, spriteSize=SPRITE_SIZE_8x8, tileNum=0x293, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x20, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x291, priority=0x1, paletteNum=0xd
 
-gUnknown_086B1A5C:: @ 0x086B1A5C
+gJirachiStarTrailFx1SpriteSet:: @ 0x086B1A5C
 .2byte 3
-    packed_sprite_oam x=0x8, y=0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x293, priority=0x1, paletteNum=0xd
-    packed_sprite_oam x=0x18, y=0x21, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x294, priority=0x1, paletteNum=0xd
-    packed_sprite_oam x=0x20, y=0x13, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x292, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x8, y=0x1C, spriteSize=SPRITE_SIZE_8x8, tileNum=0x293, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x18, y=0x21, spriteSize=SPRITE_SIZE_8x8, tileNum=0x294, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x20, y=0x13, spriteSize=SPRITE_SIZE_8x8, tileNum=0x292, priority=0x1, paletteNum=0xd
 
-gUnknown_086B1A70:: @ 0x086B1A70
+gJirachiStarTrailFx2SpriteSet:: @ 0x086B1A70
 .2byte 3
-    packed_sprite_oam x=0x8, y=0x1F, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x292, priority=0x1, paletteNum=0xd
-    packed_sprite_oam x=0x18, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x293, priority=0x1, paletteNum=0xd
-    packed_sprite_oam x=0x20, y=0x16, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x293, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x8, y=0x1F, spriteSize=SPRITE_SIZE_8x8, tileNum=0x292, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x18, y=0x24, spriteSize=SPRITE_SIZE_8x8, tileNum=0x293, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x20, y=0x16, spriteSize=SPRITE_SIZE_8x8, tileNum=0x293, priority=0x1, paletteNum=0xd
 
-gUnknown_086B1A84:: @ 0x086B1A84
+gJirachiStarTrailFx3SpriteSet:: @ 0x086B1A84
 .2byte 3
-    packed_sprite_oam x=0x8, y=0x22, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x291, priority=0x1, paletteNum=0xd
-    packed_sprite_oam x=0x18, y=0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x292, priority=0x1, paletteNum=0xd
-    packed_sprite_oam x=0x20, y=0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x294, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x8, y=0x22, spriteSize=SPRITE_SIZE_8x8, tileNum=0x291, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x18, y=0x27, spriteSize=SPRITE_SIZE_8x8, tileNum=0x292, priority=0x1, paletteNum=0xd
+    packed_sprite_oam x=0x20, y=0x1A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x294, priority=0x1, paletteNum=0xd
 
-gUnknown_086B1A98:: @ 0x086B1A98
+gTreecko1UpDeliverySpriteSet:: @ 0x086B1A98
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x295, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x2, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2a5, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2a9, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x295, paletteNum=0xc
+    packed_sprite_oaml x=0x2, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2a5, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2a9, paletteNum=0xc
 
-gUnknown_086B1AB2:: @ 0x086B1AB2
+gSapphirePelipperSpriteSet:: @ 0x086B1AB2
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x115, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x125, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x12d, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x135, priority=0x1, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x115, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x20, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x125, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x12d, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x20, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x135, priority=0x1, paletteNum=0x4
 
 
-gUnknown_086B1AD4:: @ 0x086B1AD4
+gSapphireWailmerSpriteSet:: @ 0x086B1AD4
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x139, priority=0x3, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x149, priority=0x3, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x139, priority=0x3, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x149, priority=0x3, paletteNum=0x2
 
-gUnknown_086B1AE6:: @ 0x086B1AE6
+gSapphireZigzagoonSpriteSet:: @ 0x086B1AE6
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x151, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x161, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x169, priority=0x1, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x151, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=0x20, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x161, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=0x0, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_32x8, tileNum=0x169, priority=0x1, paletteNum=0x6
 
-
-gUnknown_086B1B00:: @ 0x086B1B00
+gSapphireMinunSpriteSet:: @ 0x086B1B00
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x16d, priority=0x1, paletteNum=0xa
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x17d, priority=0x1, paletteNum=0xa
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x16d, priority=0x1, paletteNum=0xa
+    packed_sprite_oaml x=0x0, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x17d, priority=0x1, paletteNum=0xa
 
-gUnknown_086B1B12:: @ 0x086B1B12
+gSapphirePlusleSpriteSet:: @ 0x086B1B12
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x185, priority=0x1, paletteNum=0xa
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x195, priority=0x1, paletteNum=0xa
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x185, priority=0x1, paletteNum=0xa
+    packed_sprite_oaml x=0x0, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x195, priority=0x1, paletteNum=0xa
 
-
-gUnknown_086B1B24:: @ 0x086B1B24
+gSapphireShroomishBumpersSpriteSet:: @ 0x086B1B24
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x19d, priority=0x2, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1ad, priority=0x2, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x1, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1bd, priority=0x2, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x19d, priority=0x2, paletteNum=0x5
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1ad, priority=0x2, paletteNum=0x5
+    packed_sprite_oaml x=0x0, y=-0x1, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x1bd, priority=0x2, paletteNum=0x5
 
-gUnknown_086B1B3E:: @ 0x086B1B3E
+gSapphireSeedotBasketBackSpriteSet:: @ 0x086B1B3E
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1cd, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1d5, priority=0x1, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1cd, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x1d5, priority=0x1, paletteNum=0x7
 
-gUnknown_086B1B50:: @ 0x086B1B50
+gSapphireSeedotBasketFrontSpriteSet:: @ 0x086B1B50
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1d9, priority=0x2, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1d9, priority=0x2, paletteNum=0x7
 
-gUnknown_086B1B5A:: @ 0x086B1B5A
+gSapphireSeedotEntity0SpriteSet:: @ 0x086B1B5A
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1e1, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1e9, priority=0x1, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1e1, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1e9, priority=0x1, paletteNum=0x7
 
-gUnknown_086B1B6C:: @ 0x086B1B6C
+gSapphireSeedotEntity1SpriteSet:: @ 0x086B1B6C
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1ed, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1f5, priority=0x1, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1ed, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1f5, priority=0x1, paletteNum=0x7
 
-gUnknown_086B1B7E:: @ 0x086B1B7E
+gSapphireSeedotEntity2SpriteSet:: @ 0x086B1B7E
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1f9, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x201, priority=0x1, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1f9, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x201, priority=0x1, paletteNum=0x7
 
-gUnknown_086B1B90:: @ 0x086B1B90
+gSapphireHatchMachineLightSparkFx0SpriteSet:: @ 0x086B1B90
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x205, priority=0x1, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x209, priority=0x1, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x20b, priority=0x1, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x205, priority=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x209, priority=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x20b, priority=0x1, paletteNum=0x0
 
-gUnknown_086B1BAA:: @ 0x086B1BAA
+gSapphireHatchMachineLightSparkFx1SpriteSet:: @ 0x086B1BAA
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x20d, priority=0x1, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x211, priority=0x1, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x213, priority=0x1, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20d, priority=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x211, priority=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x213, priority=0x1, paletteNum=0x0
 
-gUnknown_086B1BC4:: @ 0x086B1BC4
+gSapphireHatchMachineLightSparkFx2SpriteSet:: @ 0x086B1BC4
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x215, priority=0x1, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x219, priority=0x1, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x21b, priority=0x1, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x215, priority=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x219, priority=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x21b, priority=0x1, paletteNum=0x0
 
-gUnknown_086B1BDE:: @ 0x086B1BDE
+gSapphireHatchMachineLightSparkFx3SpriteSet:: @ 0x086B1BDE
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x21d, priority=0x1, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x221, priority=0x1, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x223, priority=0x1, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x21d, priority=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x221, priority=0x1, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x223, priority=0x1, paletteNum=0x0
 
-gUnknown_086B1BF8:: @ 0x086B1BF8
+gSapphireHatchMachineLowerSegmentSpriteSet:: @ 0x086B1BF8
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x225, priority=0x0, paletteNum=0xb
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x225, paletteNum=0xb
 
-gUnknown_086B1C02:: @ 0x086B1C02
+gSapphireMartElectricalGateFxSpriteSet:: @ 0x086B1C02
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x235, priority=0x3, paletteNum=0xa
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x235, priority=0x3, paletteNum=0xa
 
-gUnknown_086B1C0C:: @ 0x086B1C0C
+gSapphireMinunElectricityFxSpriteSet:: @ 0x086B1C0C
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x239, priority=0x1, paletteNum=0xa
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x239, priority=0x1, paletteNum=0xa
 
-gUnknown_086B1C16:: @ 0x086B1C16
+gSapphirePlusleElectricityFxSpriteSet:: @ 0x086B1C16
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x249, priority=0x1, paletteNum=0xa
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_32x32, tileNum=0x249, priority=0x1, paletteNum=0xa
 
-gUnknown_086B1C20:: @ 0x086B1C20
+gSapphireMartSignSpriteSet:: @ 0x086B1C20
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x259, priority=0x1, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x1, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x279, priority=0x1, paletteNum=0x8
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_64x32, tileNum=0x259, priority=0x1, paletteNum=0x8
+    packed_sprite_oaml x=0x0, y=0x20, mosaic=0x1, spriteSize=SPRITE_SIZE_32x8, tileNum=0x279, priority=0x1, paletteNum=0x8
 
-gUnknown_086B1C32:: @ 0x086B1C32
+gSapphireZigzagoonSpeechBubbleSpriteSet:: @ 0x086B1C32
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x27d, priority=0x1, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x27d, priority=0x1, paletteNum=0x3
 
-gUnknown_086B1C3C:: @ 0x086B1C3C
+gSapphireBoardRightEdgeSpriteSet:: @ 0x086B1C3C
 .2byte 5
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x28d, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x28d, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x28d, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x28d, priority=0x0, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x28d, priority=0x0, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x28d, paletteNum=0x5
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x28d, paletteNum=0x5
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x28d, paletteNum=0x5
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x28d, paletteNum=0x5
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x28d, paletteNum=0x5
 
-gUnknown_086B1C66:: @ 0x086B1C66
+gEvoItemSpawnFxSpriteSet:: @ 0x086B1C66
 .2byte 5
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2c0, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x1, size=0x2, tileNum=0x2c0, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2c0, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x1, size=0x2, tileNum=0x2c0, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2c0, priority=0x0, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2c0, paletteNum=0xf
+    packed_sprite_oaml x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, vFlip=0x1,  tileNum=0x2c0, paletteNum=0xf
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2c0, paletteNum=0xf
+    packed_sprite_oaml x=-0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, vFlip=0x1,  tileNum=0x2c0, paletteNum=0xf
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2c0, paletteNum=0xf
 
-gUnknown_086B1C90:: @ 0x086B1C90
+gInitialLocationSelectedFxSpriteSet:: @ 0x086B1C90
 .2byte 9
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0xe
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0xe
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0xe
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0xe
 
 gUnknown_086B1CDA:: @ 0x086B1CDA
 .2byte 6
-    packed_sprite_oam x=-0x8, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x371, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x2, tileNum=0x371, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x1A, y=-0x19, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x379, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x1B, y=0xB, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x2, tileNum=0x379, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0xC, y=-0x1C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x379, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x7, y=0x5, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x1, size=0x2, tileNum=0x379, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x371, paletteNum=0xe
+    packed_sprite_oaml x=-0x8, y=0x8, spriteSize=SPRITE_SIZE_32x16, vFlip=0x1,  tileNum=0x371, paletteNum=0xe
+    packed_sprite_oaml x=-0x1A, y=-0x19, spriteSize=SPRITE_SIZE_32x32, tileNum=0x379, paletteNum=0xe
+    packed_sprite_oaml x=-0x1B, y=0xB, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,  tileNum=0x379, paletteNum=0xe
+    packed_sprite_oaml x=0xC, y=-0x1C, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x379, paletteNum=0xe
+    packed_sprite_oaml x=0x7, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1,  tileNum=0x379, paletteNum=0xe
 
-gUnknown_086B1D0C:: @ 0x086B1D0C
+gMainTileBreakSpriteSet:: @ 0x086B1D0C
 .2byte 6
-    packed_sprite_oam x=-0x4, y=-0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x4, y=-0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x4, y=-0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x4, y=-0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x4, y=-0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x4, y=-0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x324, paletteNum=0xe
+    packed_sprite_oaml x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x324, paletteNum=0xe
+    packed_sprite_oaml x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x324, paletteNum=0xe
+    packed_sprite_oaml x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x324, paletteNum=0xe
+    packed_sprite_oaml x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x324, paletteNum=0xe
+    packed_sprite_oaml x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x324, paletteNum=0xe
 
-gUnknown_086B1D3E:: @ 0x086B1D3E
+gCatchBurstLightningStrikeSpriteSet:: @ 0x086B1D3E
 .2byte 6
-    packed_sprite_oam x=0x0, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2c8, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2d0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2e0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2e8, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x48, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f4, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x20, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f0, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2c8, paletteNum=0xe
+    packed_sprite_oaml x=-0x10, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2d0, paletteNum=0xe
+    packed_sprite_oaml x=-0x18, y=0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2e0, paletteNum=0xe
+    packed_sprite_oaml x=-0x18, y=0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2e8, paletteNum=0xe
+    packed_sprite_oaml x=-0x18, y=0x48, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2f4, paletteNum=0xe
+    packed_sprite_oaml x=-0x20, y=0x30, spriteSize=SPRITE_SIZE_8x32, tileNum=0x2f0, paletteNum=0xe
 
-gUnknown_086B1D70:: @ 0x086B1D70
+gCatchBurstTileFlashFxSpriteSet:: @ 0x086B1D70
 .2byte 6
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x0, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
 
-gUnknown_086B1DA2:: @ 0x086B1DA2
+gCatchBurstPanelElectrifyFxSpriteSet:: @ 0x086B1DA2
 .2byte 4
-    packed_sprite_oam x=0x9, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x34, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x44, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x30, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x22, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x46, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x9, y=-0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x34, paletteNum=0x0
+    packed_sprite_oaml x=0x8, y=0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0x44, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=-0x8, spriteSize=SPRITE_SIZE_8x32, tileNum=0x30, paletteNum=0x0
+    packed_sprite_oaml x=0x22, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x46, paletteNum=0x0
 
-gUnknown_086B1DC4:: @ 0x086B1DC4
+gMonCatchBallAbsorbPokemonFxSpriteSet:: @ 0x086B1DC4
 .2byte 16
-    packed_sprite_oam x=0xA, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x396, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0xA, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x39e, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x5, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x1, size=0x2, tileNum=0x396, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x3, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x1, size=0x0, tileNum=0x39e, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x6, y=0x26, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x362, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x2, y=0x16, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x372, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x12, y=0x36, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x37f, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0xA, y=0x26, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x380, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0xA, y=0x16, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x388, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x2, y=0x46, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x38a, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0xA, y=0x46, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x38e, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x2, y=0x6, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x38f, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0xA, y=0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x391, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=-0x1, y=-0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x33b, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x7, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x341, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0xF, y=-0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x33f, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0xA, y=0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x396, paletteNum=0x1
+    packed_sprite_oaml x=0xA, y=0x38, spriteSize=SPRITE_SIZE_8x8, tileNum=0x39e, paletteNum=0x1
+    packed_sprite_oaml x=-0x5, y=0x20, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, vFlip=0x1,  tileNum=0x396, paletteNum=0x1
+    packed_sprite_oaml x=0x3, y=0x18, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, vFlip=0x1,  tileNum=0x39e, paletteNum=0x1
+    packed_sprite_oaml x=0x6, y=0x26, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x362, paletteNum=0x1
+    packed_sprite_oaml x=-0x2, y=0x16, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x372, paletteNum=0x1
+    packed_sprite_oaml x=-0x12, y=0x36, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x37f, paletteNum=0x1
+    packed_sprite_oaml x=-0xA, y=0x26, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x380, paletteNum=0x1
+    packed_sprite_oaml x=-0xA, y=0x16, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x388, paletteNum=0x1
+    packed_sprite_oaml x=-0x2, y=0x46, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x38a, paletteNum=0x1
+    packed_sprite_oaml x=-0xA, y=0x46, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x38e, paletteNum=0x1
+    packed_sprite_oaml x=-0x2, y=0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x38f, paletteNum=0x1
+    packed_sprite_oaml x=-0xA, y=0xE, spriteSize=SPRITE_SIZE_32x8, tileNum=0x391, paletteNum=0x1
+    packed_sprite_oaml x=-0x1, y=-0x4, spriteSize=SPRITE_SIZE_16x16, tileNum=0x33b, paletteNum=0x1
+    packed_sprite_oaml x=0x7, y=0xC, spriteSize=SPRITE_SIZE_16x8, tileNum=0x341, paletteNum=0x1
+    packed_sprite_oaml x=0xF, y=-0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x33f, paletteNum=0x1
 
-gUnknown_086B1E46:: @ 0x086B1E46
+gMonCatchBallTrailSpriteSet:: @ 0x086B1E46
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x20, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, paletteNum=0x1
 
-gUnknown_086B1E50:: @ 0x086B1E50
+gMainModeStartBannerSpriteSet:: @ 0x086B1E50
 .2byte 15
-    packed_sprite_oam x=-0x7F, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x3F, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x1, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x340, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x41, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x380, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x61, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x3a0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x61, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x3a8, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x7F, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3b0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x5F, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3b4, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x3F, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3b8, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x1F, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3bc, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x1, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3c0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x21, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3c4, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x41, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3c8, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x61, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3cc, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x61, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3cc, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x7F, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, paletteNum=0xe
+    packed_sprite_oaml x=-0x3F, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x300, paletteNum=0xe
+    packed_sprite_oaml x=0x1, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x340, paletteNum=0xe
+    packed_sprite_oaml x=0x41, y=0x0, spriteSize=SPRITE_SIZE_32x64, tileNum=0x380, paletteNum=0xe
+    packed_sprite_oaml x=0x61, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x3a0, paletteNum=0xe
+    packed_sprite_oaml x=0x61, y=0x20, spriteSize=SPRITE_SIZE_16x32, tileNum=0x3a8, paletteNum=0xe
+    packed_sprite_oaml x=-0x7F, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b0, paletteNum=0xe
+    packed_sprite_oaml x=-0x5F, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b4, paletteNum=0xe
+    packed_sprite_oaml x=-0x3F, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b8, paletteNum=0xe
+    packed_sprite_oaml x=-0x1F, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3bc, paletteNum=0xe
+    packed_sprite_oaml x=0x1, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3c0, paletteNum=0xe
+    packed_sprite_oaml x=0x21, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3c4, paletteNum=0xe
+    packed_sprite_oaml x=0x41, y=0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3c8, paletteNum=0xe
+    packed_sprite_oaml x=0x61, y=0x40, spriteSize=SPRITE_SIZE_16x8, tileNum=0x3cc, paletteNum=0xe
+    packed_sprite_oaml x=0x61, y=0x40, spriteSize=SPRITE_SIZE_16x8, tileNum=0x3cc, paletteNum=0xe
 
-gUnknown_086B1ECA:: @ 0x086B1ECA
+gMainTravelBanner_SignpostSpriteSet:: @ 0x086B1ECA
 .2byte 7
-    packed_sprite_oam x=0x18, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x3b5, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x18, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x3c5, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x3d5, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3dd, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x38, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x3e1, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x48, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3e9, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3ed, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x18, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x3b5, paletteNum=0xe
+    packed_sprite_oaml x=0x18, y=0x20, spriteSize=SPRITE_SIZE_32x32, tileNum=0x3c5, paletteNum=0xe
+    packed_sprite_oaml x=0x0, y=0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x3d5, paletteNum=0xe
+    packed_sprite_oaml x=0x10, y=0x18, spriteSize=SPRITE_SIZE_8x32, tileNum=0x3dd, paletteNum=0xe
+    packed_sprite_oaml x=0x38, y=0x20, spriteSize=SPRITE_SIZE_16x32, tileNum=0x3e1, paletteNum=0xe
+    packed_sprite_oaml x=0x48, y=0x20, spriteSize=SPRITE_SIZE_8x32, tileNum=0x3e9, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x40, spriteSize=SPRITE_SIZE_16x8, tileNum=0x3ed, paletteNum=0xe
 
-gUnknown_086B1F04:: @ 0x086B1F04
+gPikaKickbackLaunchFxSpriteSet:: @ 0x086B1F04
 .2byte 4
-    packed_sprite_oam x=0x3, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x304, priority=0x2, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=-0x5, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x306, priority=0x2, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2c0, priority=0x2, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c8, priority=0x2, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x3, y=-0x8, spriteSize=SPRITE_SIZE_16x8, tileNum=0x304, priority=0x2, paletteNum=0x3
+    packed_sprite_oaml x=-0x5, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x306, priority=0x2, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2c0, priority=0x2, paletteNum=0x3
+    packed_sprite_oaml x=0x8, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2c8, priority=0x2, paletteNum=0x3
 
-gUnknown_086B1F26:: @ 0x086B1F26
+gLegendaryCatchNameBannerSpriteSet:: @ 0x086B1F26
 .2byte 10
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c0, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c2, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c4, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c6, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c8, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ca, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2cc, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ce, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d2, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2c0, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2c2, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2c4, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2c6, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2c8, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ca, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2cc, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ce, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d2, paletteNum=0x1
 
-gUnknown_086B1F78:: @ 0x086B1F78
+gLegendaryCatchWasCaughtTextSpriteSet:: @ 0x086B1F78
 .2byte 10
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d4, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d6, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d8, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2da, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2dc, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2de, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e0, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e2, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e4, priority=0x0, paletteNum=0x1
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e6, priority=0x0, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d4, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d6, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d8, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2da, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2dc, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2de, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2e0, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2e2, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2e4, paletteNum=0x1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2e6, paletteNum=0x1
 
-
-gUnknown_086B1FCA:: @ 0x086B1FCA
+gRubyAerodactylEggDeliverySpriteSet:: @ 0x086B1FCA
 .2byte 5
-    packed_sprite_oam x=0x23, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2d2, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x3, y=0xA, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2c0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x33, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2da, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x3, y=0x2A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x3, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2de, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x23, y=0x2, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2d2, paletteNum=0xe
+    packed_sprite_oaml x=0x3, y=0xA, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2c0, paletteNum=0xe
+    packed_sprite_oaml x=0x33, y=0x2, spriteSize=SPRITE_SIZE_8x32, tileNum=0x2da, paletteNum=0xe
+    packed_sprite_oaml x=0x3, y=0x2A, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2d0, paletteNum=0xe
+    packed_sprite_oaml x=0x3, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2de, paletteNum=0xe
 
-gUnknown_086B1FF4:: @ 0x086B1FF4
+gMainShopArrowsSpriteSet:: @ 0x086B1FF4
 .2byte 6
-  packed_sprite_oam x=-0x9, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x9, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e2, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x31, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x2e0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x31, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x2e2, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2e3, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2e7, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x9, y=0x8, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2e0, paletteNum=0xe
+    packed_sprite_oaml x=-0x9, y=0x18, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2e2, paletteNum=0xe
+    packed_sprite_oaml x=0x31, y=0x8, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x2e0, paletteNum=0xe
+    packed_sprite_oaml x=0x31, y=0x18, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x2e2, paletteNum=0xe
+    packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2e3, paletteNum=0xe
+    packed_sprite_oaml x=0x10, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2e7, paletteNum=0xe
 
-gUnknown_086B2026:: @ 0x086B2026
+gMainShopPriceSpriteSet:: @ 0x086B2026
 .2byte 4
-    packed_sprite_oam x=0x15, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ed, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ef, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2f1, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x1E, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2f3, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x15, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ed, paletteNum=0xe
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ef, paletteNum=0xe
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2f1, paletteNum=0xe
+    packed_sprite_oaml x=0x1E, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2f3, paletteNum=0xe
 
-gUnknown_086B2048:: @ 0x086B2048
+gMainShopConfirmationPanelSpriteSet:: @ 0x086B2048
 .2byte 5
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f5, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2f9, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x28, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2f9, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x48, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2f9, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x68, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x309, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x32, tileNum=0x2f5, paletteNum=0xe
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2f9, paletteNum=0xe
+    packed_sprite_oaml x=0x28, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2f9, paletteNum=0xe
+    packed_sprite_oaml x=0x48, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2f9, paletteNum=0xe
+    packed_sprite_oaml x=0x68, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x309, paletteNum=0xe
 
-gUnknown_086B2072:: @ 0x086B2072
+gMainShopPortraitOverlaySpriteSet:: @ 0x086B2072
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x311, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x321, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x311, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x321, paletteNum=0xe
 
-gUnknown_086B2084:: @ 0x086B2084
+gMainBallSaveBannerSpriteSet:: @ 0x086B2084
 .2byte 2
-    packed_sprite_oam x=-0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x300, priority=0x1, paletteNum=0xe
 
-gUnknown_086B2096:: @ 0x086B2096
+gMainBallSaveLatiSpriteSet:: @ 0x086B2096
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x340, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x340, priority=0x1, paletteNum=0xe
 
-gUnknown_086B20A0:: @ 0x086B20A0
+gMainBallSaveLatiArmSpriteSet:: @ 0x086B20A0
 .2byte 2
-    packed_sprite_oam x=0x10, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x380, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x384, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x10, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x380, paletteNum=0xe
+    packed_sprite_oaml x=0x10, y=0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0x384, paletteNum=0xe
 
-gUnknown_086B20B2:: @ 0x086B20B2
+gMainEndOfBallBonusBannerSpriteSet:: @ 0x086B20B2
 .2byte 14
-   packed_sprite_oam x=-0x68, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x68, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x300, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x58, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x304, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x38, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x30c, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x314, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x31c, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x28, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x324, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x48, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x32c, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x58, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x300, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x28, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x330, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x28, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x370, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x370, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x390, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x398, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x68, y=0x10, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x68, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x300, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x58, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x304, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x38, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x30c, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x18, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x314, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x31c, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x28, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x324, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x48, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x32c, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x58, y=0x0, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x300, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x28, y=0x10, spriteSize=SPRITE_SIZE_64x64, tileNum=0x330, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x28, y=0x10, spriteSize=SPRITE_SIZE_32x64, tileNum=0x370, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x8, y=0x10, spriteSize=SPRITE_SIZE_32x64, tileNum=0x370, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x8, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x390, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x8, y=0x30, spriteSize=SPRITE_SIZE_16x32, tileNum=0x398, priority=0x1, paletteNum=0xe
 
-
-gUnknown_086B2124:: @ 0x086B2124
+gMainEndOfBallBonusTextLine0SpriteSet:: @ 0x086B2124
 .2byte 5
-    packed_sprite_oam x=-0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3a0, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3a4, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3a8, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3ac, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3b0, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3a0, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3a4, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3a8, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3ac, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b0, priority=0x1, paletteNum=0xe
 
-gUnknown_086B214E:: @ 0x086B214E
+gMainEndOfBallBonusTextLine1SpriteSet:: @ 0x086B214E
 .2byte 5
-    packed_sprite_oam x=-0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3b6, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3ba, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3be, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3c2, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3c6, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3b6, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3ba, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3be, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3c2, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3c6, priority=0x1, paletteNum=0xe
 
-gUnknown_086B2178:: @ 0x086B2178
+gMainEndOfBallBonusTextLine2SpriteSet:: @ 0x086B2178
 .2byte 5
-    packed_sprite_oam x=-0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3cc, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3d0, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3d4, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3d8, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3dc, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3cc, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=-0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3d0, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3d4, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3d8, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x3dc, priority=0x1, paletteNum=0xe
 
-gUnknown_086B21A2:: @ 0x086B21A2
+gGameOverTextSpriteSet:: @ 0x086B21A2
 .2byte 8
-    packed_sprite_oam x=-0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2c0, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2c4, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x18, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2c8, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x28, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2cc, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2d0, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x50, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2d4, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x60, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2d8, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x70, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2dc, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c4, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x18, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x28, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x40, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d0, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x50, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d4, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x60, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d8, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x70, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2dc, priority=0x1, paletteNum=0xe
 
-gUnknown_086B21E4:: @ 0x086B21E4
+gEvolutionBannerTextLargeBottomSpriteSet:: @ 0x086B21E4
 .2byte 4
-    packed_sprite_oam x=0x18, y=0x21, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x58, y=0x21, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2e0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x80, y=0x21, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x40, y=0x21, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2e0, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x18, y=0x21, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2c0, paletteNum=0xe
+    packed_sprite_oaml x=0x58, y=0x21, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2e0, paletteNum=0xe
+    packed_sprite_oaml x=-0x80, y=0x21, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2c0, paletteNum=0xe
+    packed_sprite_oaml x=-0x40, y=0x21, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2e0, paletteNum=0xe
 
-gUnknown_086B2206:: @ 0x086B2206
+gEvolutionBannerTextLargeTopSpriteSet:: @ 0x086B2206
 .2byte 4
-    packed_sprite_oam x=0x18, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x58, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2e0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x80, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x40, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2e0, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x18, y=-0x28, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2c0, paletteNum=0xe
+    packed_sprite_oaml x=0x58, y=-0x28, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2e0, paletteNum=0xe
+    packed_sprite_oaml x=-0x80, y=-0x28, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2c0, paletteNum=0xe
+    packed_sprite_oaml x=-0x40, y=-0x28, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2e0, paletteNum=0xe
 
-gUnknown_086B2228:: @ 0x086B2228
+gEvolutionBannerTextMediumLowerSpriteSet:: @ 0x086B2228
 .2byte 4
-    packed_sprite_oam x=-0x80, y=0x16, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x1C, y=0x16, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x32, y=0x16, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x6A, y=0x16, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x80, y=0x16, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, paletteNum=0xe
+    packed_sprite_oaml x=0x1C, y=0x16, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, paletteNum=0xe
+    packed_sprite_oaml x=-0x32, y=0x16, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, paletteNum=0xe
+    packed_sprite_oaml x=0x6A, y=0x16, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, paletteNum=0xe
 
-gUnknown_086B224A:: @ 0x086B224A
+gEvolutionBannerTextMediumUpperSpriteSet:: @ 0x086B224A
 .2byte 4
-    packed_sprite_oam x=-0x32, y=-0xD, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x80, y=-0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x6A, y=-0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x1C, y=-0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x32, y=-0xD, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, paletteNum=0xe
+    packed_sprite_oaml x=-0x80, y=-0xE, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, paletteNum=0xe
+    packed_sprite_oaml x=0x6A, y=-0xE, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, paletteNum=0xe
+    packed_sprite_oaml x=0x1C, y=-0xE, spriteSize=SPRITE_SIZE_64x32, tileNum=0x300, paletteNum=0xe
 
-gUnknown_086B226C:: @ 0x086B226C
+gEvolutionBannerTextSmallMiddleSpriteSet:: @ 0x086B226C
 .2byte 8
-    packed_sprite_oam x=-0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x320, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x20, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x80, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x320, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x60, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x320, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x60, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x320, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x324, priority=0x0, paletteNum=0xe
-.2byte 0
-
+    packed_sprite_oaml x=-0x40, y=0x4, spriteSize=SPRITE_SIZE_32x8, tileNum=0x320, paletteNum=0xe
+    packed_sprite_oaml x=-0x20, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x324, paletteNum=0xe
+    packed_sprite_oaml x=-0x80, y=0x4, spriteSize=SPRITE_SIZE_32x8, tileNum=0x320, paletteNum=0xe
+    packed_sprite_oaml x=-0x60, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x324, paletteNum=0xe
+    packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x8, tileNum=0x320, paletteNum=0xe
+    packed_sprite_oaml x=0x60, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x324, paletteNum=0xe
+    packed_sprite_oaml x=0x0, y=0x4, spriteSize=SPRITE_SIZE_32x8, tileNum=0x320, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x4, spriteSize=SPRITE_SIZE_16x8, tileNum=0x324, paletteNum=0xe
 
 gUnknown_086B22AE:: @ 0x086B22AE
 .2byte 4
-    packed_sprite_oam x=-0x8, y=-0x20, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x326, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x346, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x18, y=-0x20, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x3, tileNum=0x326, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x38, y=-0x10, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x346, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x8, y=-0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, tileNum=0x326, paletteNum=0xe
+    packed_sprite_oaml x=-0x10, y=-0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x346, paletteNum=0xe
+    packed_sprite_oaml x=0x18, y=-0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x64, hFlip=0x1,  tileNum=0x326, paletteNum=0xe
+    packed_sprite_oaml x=0x38, y=-0x10, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,  tileNum=0x346, paletteNum=0xe
 
-gUnknown_086B22D0:: @ 0x086B22D0
+gEvolutionBannerLightningSpriteSet:: @ 0x086B22D0
 .2byte 4
-    packed_sprite_oam x=-0x38, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x38e, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x50, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x37e, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x39e, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3a6, priority=0x0, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=-0x38, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x38e, paletteNum=0xe
+    packed_sprite_oaml x=0x50, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x37e, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=-0x8, spriteSize=SPRITE_SIZE_16x32, tileNum=0x39e, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x3a6, paletteNum=0xe
 
-gUnknown_086B22F2:: @ 0x086B22F2
+gTravelPainterSpriteSet:: @ 0x086B22F2
 .2byte 6
-    packed_sprite_oam x=0x0, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2c0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2d0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2d8, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2e0, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2e4, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x18, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x304, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2c0, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=-0x8, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2d0, paletteNum=0xe
+    packed_sprite_oaml x=0x0, y=0x18, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2d8, paletteNum=0xe
+    packed_sprite_oaml x=0x20, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2e0, paletteNum=0xe
+    packed_sprite_oaml x=-0x8, y=0x0, spriteSize=SPRITE_SIZE_64x32, tileNum=0x2e4, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x18, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x304, priority=0x1, paletteNum=0xe
 
-gUnknown_086B2324:: @ 0x086B2324
+gSapphireZigzagoonTrailFxSpriteSet:: @ 0x086B2324
 .2byte 7
-    packed_sprite_oam x=-0x47, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2c0, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x27, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x33, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2d2, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x13, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e2, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x1E, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2e4, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x2, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2f4, priority=0x1, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x52, y=0x2C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f6, priority=0x1, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=-0x47, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2c0, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=-0x27, y=0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=-0x33, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2d2, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=-0x13, y=0x8, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2e2, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=-0x1E, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2e4, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=0x2, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2f4, priority=0x1, paletteNum=0x6
+    packed_sprite_oaml x=-0x52, y=0x2C, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2f6, priority=0x1, paletteNum=0x6
 
-gUnknown_086B235E:: @ 0x086B235E
+gRubyTotodileEggDeliverySpriteSet:: @ 0x086B235E
 .2byte 6
-    packed_sprite_oam x=0xC, y=-0x33, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2f8, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x4, y=-0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x308, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0x4, y=-0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x30c, priority=0x0, paletteNum=0xb
-.2byte 0
-    packed_sprite_oam x=0xC, y=-0x22, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2dc, priority=0x0, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0xC, y=-0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e0, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0xC, y=0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e2, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0xC, y=-0x33, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2f8, paletteNum=0xe
+    packed_sprite_oaml x=0x4, y=-0x2B, spriteSize=SPRITE_SIZE_16x16, tileNum=0x308, paletteNum=0xb
+    packed_sprite_oaml x=0x4, y=-0x1B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x30c, paletteNum=0xb
+    packed_sprite_oaml x=0xC, y=-0x22, spriteSize=SPRITE_SIZE_8x32, tileNum=0x2dc, paletteNum=0xe
+    packed_sprite_oaml x=0xC, y=-0x2, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2e0, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0xC, y=0xE, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2e2, priority=0x1, paletteNum=0xe
+
+gRubyBoardSpriteSets:: @ 0x086B2390
+.4byte gMainBoardPausePanelSpriteSet
+.4byte gMainBoardPauseTopBorderSpriteSet
+.4byte gMainBoardPauseBottomBorderSpriteSet
+.4byte gMainBallSaveLatiArmSpriteSet
+.4byte gMainBallSaveLatiSpriteSet
+.4byte gMainBallSaveBannerSpriteSet
+.4byte gMainEndOfBallBonusTextLine0SpriteSet
+.4byte gMainEndOfBallBonusTextLine1SpriteSet
+.4byte gMainEndOfBallBonusTextLine2SpriteSet
+.4byte gMainEndOfBallBonusBannerSpriteSet
+.4byte gMainLeftFlipperSpriteSet    @ 10
+.4byte gMainRightFlipperSpriteSet
+.4byte gRubyAerodactylEggDeliverySpriteSet
+.4byte gRubyChikoritaProjectileSpriteSet
+.4byte gRubyChikoritaProjectileCollisionFxSpriteSet
+.4byte gLegendaryCatchNameBannerSpriteSet
+.4byte gLegendaryCatchWasCaughtTextSpriteSet
+.4byte gMainShopArrowsSpriteSet
+.4byte gMainShopPriceSpriteSet
+.4byte gMainShopConfirmationPanelSpriteSet
+.4byte gMainShopPortraitOverlaySpriteSet    @ 20
+.4byte gMainTravelBanner_SignpostSpriteSet
+.4byte gMainModeStartBannerSpriteSet
+.4byte gMainTileBreakSpriteSet
+.4byte gCenterHoleGravityFxSpriteSet
+.4byte gUnknown_086B22AE @ Unused?
+.4byte gEvolutionBannerLightningSpriteSet
+.4byte gTravelPainterSpriteSet
+.4byte gChargeIndicatorDeviceSpriteSet
+.4byte gUnknown_086B1CDA @ Catch tile related, can't narrow further
+.4byte gPortraitBordersSpriteSet    @ 30
+.4byte gPortraitTrimSpriteSet
+.4byte gPortraitTrimSpriteSet
+.4byte gPortraitSpriteSet
+.4byte gPortrait1SpriteSet
+.4byte gEvolutionBannerTextLargeBottomSpriteSet
+.4byte gEvolutionBannerTextLargeTopSpriteSet
+.4byte gEvolutionBannerTextMediumLowerSpriteSet
+.4byte gEvolutionBannerTextMediumUpperSpriteSet
+.4byte gEvolutionBannerTextSmallMiddleSpriteSet
+.4byte gMainBoardBallSpriteSet    @ 40
+.4byte gMonCatchBallTrailSpriteSet
+.4byte gMonCatchBallTrailSpriteSet
+.4byte gCatchMonEntitySpriteSet
+.4byte gJirachiStarTrailFx0SpriteSet
+.4byte gJirachiStarTrailFx1SpriteSet
+.4byte gJirachiStarTrailFx2SpriteSet
+.4byte gJirachiStarTrailFx3SpriteSet
+.4byte gMainBoardHatchEggSprite
+.4byte gHatchMonEntitySpriteSet
+.4byte gMonCatchBallAbsorbPokemonFxSpriteSet    @ 50
+.4byte gRubyCyndaquilSpriteSet
+.4byte gRubyHatchCaveSpriteSet
+.4byte gRubyChikoritaSpriteSet
+.4byte gPikachuKickbackSpriteSet
+.4byte gPichuKickbackSpriteSet
+.4byte gSpoinkLauncherSpriteSet
+.4byte gRubyGulpinStackSpriteSet
+.4byte gRubyMakuhitaSpriteSet
+.4byte gRubyLinooneLeftSpriteSet
+.4byte gRubyLinooneRightSpriteSet    @ 60
+.4byte gRubySharpedoSpriteSet
+.4byte gRubyBumpersSpriteSet
+.4byte gRubyWhiscashSpriteSet
+.4byte gPikaChargingSpinnerSpriteSet
+.4byte gRubyMartDoorSpriteSet
+.4byte gRubyRampPrizeSpriteSet
+.4byte gEvoItemSpriteSet
+.4byte gRubyMakuhitaPunchFxSpriteSet
+.4byte gBallUpgradeFxSpriteSet
+.4byte gMainBoardBallSpriteSet    @ 70
+.4byte gRubyNuzleafSpriteSet
+.4byte gInitialLocationSelectedFxSpriteSet
+.4byte gCatchBurstLightningStrikeSpriteSet
+.4byte gCatchBurstTileFlashFxSpriteSet
+.4byte gCatchBurstPanelElectrifyFxSpriteSet
+.4byte gPikaKickbackLaunchFxSpriteSet
+.4byte gCoinsCollectedSpriteSet
+.4byte gRubyShopSignChangeSpriteSet
+.4byte gEvoItemSpawnFxSpriteSet
+.4byte gGameOverTextSpriteSet    @ 80
+.4byte gRubyBoardRightEdgeSpriteSet
+.4byte gRubyTotodileEggDeliverySpriteSet
+.4byte gTreecko1UpDeliverySpriteSet
+
+gSapphireBoardSpriteSets:: @ 0x086B24E0
+.4byte gMainBoardPausePanelSpriteSet
+.4byte gMainBoardPauseTopBorderSpriteSet
+.4byte gMainBoardPauseBottomBorderSpriteSet
+.4byte gMainBallSaveLatiArmSpriteSet
+.4byte gMainBallSaveLatiSpriteSet
+.4byte gMainBallSaveBannerSpriteSet
+.4byte gMainEndOfBallBonusTextLine0SpriteSet
+.4byte gMainEndOfBallBonusTextLine1SpriteSet
+.4byte gMainEndOfBallBonusTextLine2SpriteSet
+.4byte gMainEndOfBallBonusBannerSpriteSet
+.4byte gMainLeftFlipperSpriteSet    @ 10
+.4byte gMainRightFlipperSpriteSet
+.4byte gLegendaryCatchNameBannerSpriteSet
+.4byte gLegendaryCatchWasCaughtTextSpriteSet
+.4byte gMainShopArrowsSpriteSet
+.4byte gMainShopPriceSpriteSet
+.4byte gMainShopConfirmationPanelSpriteSet
+.4byte gMainShopPortraitOverlaySpriteSet
+.4byte gMainTravelBanner_SignpostSpriteSet
+.4byte gMainModeStartBannerSpriteSet
+.4byte gMainTileBreakSpriteSet    @ 20
+.4byte gCenterHoleGravityFxSpriteSet
+.4byte gUnknown_086B22AE @ Unused?
+.4byte gEvolutionBannerLightningSpriteSet
+.4byte gTravelPainterSpriteSet
+.4byte gChargeIndicatorDeviceSpriteSet
+.4byte gSapphireZigzagoonSpriteSet
+.4byte gSapphireZigzagoonTrailFxSpriteSet
+.4byte gUnknown_086B1CDA @ Catch tile related, can't narrow further
+.4byte gPortraitBordersSpriteSet
+.4byte gPortraitTrimSpriteSet    @ 30
+.4byte gPortraitTrimSpriteSet
+.4byte gPortraitSpriteSet
+.4byte gPortrait1SpriteSet
+.4byte gEvolutionBannerTextLargeBottomSpriteSet
+.4byte gEvolutionBannerTextLargeTopSpriteSet
+.4byte gEvolutionBannerTextMediumLowerSpriteSet
+.4byte gEvolutionBannerTextMediumUpperSpriteSet
+.4byte gEvolutionBannerTextSmallMiddleSpriteSet
+.4byte gMonCatchBallTrailSpriteSet
+.4byte gMonCatchBallTrailSpriteSet    @40
+.4byte gMainBoardBallSpriteSet
+.4byte gCatchMonEntitySpriteSet
+.4byte gJirachiStarTrailFx0SpriteSet
+.4byte gJirachiStarTrailFx1SpriteSet
+.4byte gJirachiStarTrailFx2SpriteSet
+.4byte gJirachiStarTrailFx3SpriteSet
+.4byte gSapphireHatchMachineLightSparkFx0SpriteSet
+.4byte gSapphireHatchMachineLightSparkFx1SpriteSet
+.4byte gSapphireHatchMachineLightSparkFx2SpriteSet
+.4byte gSapphireHatchMachineLightSparkFx3SpriteSet    @ 50
+.4byte gSapphireHatchMachineLowerSegmentSpriteSet
+.4byte gMainBoardHatchEggSprite
+.4byte gHatchMonEntitySpriteSet
+.4byte gMonCatchBallAbsorbPokemonFxSpriteSet
+.4byte gPikachuKickbackSpriteSet
+.4byte gPichuKickbackSpriteSet
+.4byte gSpoinkLauncherSpriteSet
+.4byte gSapphireMinunElectricityFxSpriteSet
+.4byte gSapphirePlusleElectricityFxSpriteSet
+.4byte gSapphirePelipperSpriteSet    @ 60
+.4byte gSapphireMinunSpriteSet
+.4byte gSapphirePlusleSpriteSet
+.4byte gSapphireShroomishBumpersSpriteSet
+.4byte gSapphireSeedotBasketBackSpriteSet
+.4byte gSapphireSeedotEntity0SpriteSet
+.4byte gSapphireSeedotEntity1SpriteSet
+.4byte gSapphireSeedotEntity2SpriteSet
+.4byte gSapphireSeedotBasketFrontSpriteSet
+.4byte gSapphireMartSignSpriteSet
+.4byte gSapphireZigzagoonSpeechBubbleSpriteSet    @ 70
+.4byte gEvoItemSpriteSet
+.4byte gPikaChargingSpinnerSpriteSet
+.4byte gBallUpgradeFxSpriteSet
+.4byte gMainBoardBallSpriteSet
+.4byte gSapphireWailmerSpriteSet
+.4byte gSapphireMartElectricalGateFxSpriteSet
+.4byte gInitialLocationSelectedFxSpriteSet
+.4byte gCatchBurstLightningStrikeSpriteSet
+.4byte gCatchBurstTileFlashFxSpriteSet
+.4byte gCatchBurstPanelElectrifyFxSpriteSet    @ 80
+.4byte gPikaKickbackLaunchFxSpriteSet
+.4byte gCoinsCollectedSpriteSet
+.4byte gEvoItemSpawnFxSpriteSet
+.4byte gGameOverTextSpriteSet
+.4byte gSapphireBoardRightEdgeSpriteSet
+.4byte gTreecko1UpDeliverySpriteSet
 
 
-gUnknown_086B2390:: @ 0x086B2390
-.4byte gUnknown_086B17AE
-.4byte gUnknown_086B1808
-.4byte gUnknown_086B181A
-.4byte gUnknown_086B20A0
-.4byte gUnknown_086B2096
-.4byte gUnknown_086B2084
-.4byte gUnknown_086B2124
-.4byte gUnknown_086B214E
-.4byte gUnknown_086B2178
-.4byte gUnknown_086B20B2
-.4byte gUnknown_086B15F8
-.4byte gUnknown_086B1602
-.4byte gUnknown_086B1FCA
-.4byte gUnknown_086B19BA
-.4byte gUnknown_086B19C4
-.4byte gUnknown_086B1F26
-.4byte gUnknown_086B1F78
-.4byte gUnknown_086B1FF4
-.4byte gUnknown_086B2026
-.4byte gUnknown_086B2048
-.4byte gUnknown_086B2072
-.4byte gUnknown_086B1ECA
-.4byte gUnknown_086B1E50
-.4byte gUnknown_086B1D0C
-.4byte gUnknown_086B1782
-.4byte gUnknown_086B22AE
-.4byte gUnknown_086B22D0
-.4byte gUnknown_086B22F2
-.4byte gUnknown_086B165C
-.4byte gUnknown_086B1CDA
-.4byte gUnknown_086B1676
-.4byte gUnknown_086B170C
-.4byte gUnknown_086B170C
-.4byte gUnknown_086B16A8
-.4byte gUnknown_086B16DA
-.4byte gUnknown_086B21E4
-.4byte gUnknown_086B2206
-.4byte gUnknown_086B2228
-.4byte gUnknown_086B224A
-.4byte gUnknown_086B226C
-.4byte gUnknown_086B160C
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B173E
-.4byte gUnknown_086B1A48
-.4byte gUnknown_086B1A5C
-.4byte gUnknown_086B1A70
-.4byte gUnknown_086B1A84
-.4byte gUnknown_086B1846
-.4byte gUnknown_086B1760
-.4byte gUnknown_086B1DC4
-.4byte gUnknown_086B1942
-.4byte gUnknown_086B187C
-.4byte gUnknown_086B189E
-.4byte gUnknown_086B1616
-.4byte gUnknown_086B1628
-.4byte gUnknown_086B1862
-.4byte gUnknown_086B196E
-.4byte gUnknown_086B1954
-.4byte gUnknown_086B18B0
-.4byte gUnknown_086B18CA
-.4byte gUnknown_086B18E4
-.4byte gUnknown_086B18FE
-.4byte gUnknown_086B1A12
-.4byte gUnknown_086B163A
-.4byte gUnknown_086B1930
-.4byte gUnknown_086B1A34
-.4byte gUnknown_086B17A4
-.4byte gUnknown_086B1A3E
-.4byte gUnknown_086B1858
-.4byte gUnknown_086B160C
-.4byte gUnknown_086B19D6
-.4byte gUnknown_086B1C90
-.4byte gUnknown_086B1D3E
-.4byte gUnknown_086B1D70
-.4byte gUnknown_086B1DA2
-.4byte gUnknown_086B1F04
-.4byte gUnknown_086B1834
-.4byte gUnknown_086B19A0
-.4byte gUnknown_086B1C66
-.4byte gUnknown_086B21A2
-.4byte gUnknown_086B19E8
-.4byte gUnknown_086B235E
-.4byte gUnknown_086B1A98
-gUnknown_086B24E0:: @ 0x086B24E0
-.4byte gUnknown_086B17AE
-.4byte gUnknown_086B1808
-.4byte gUnknown_086B181A
-.4byte gUnknown_086B20A0
-.4byte gUnknown_086B2096
-.4byte gUnknown_086B2084
-.4byte gUnknown_086B2124
-.4byte gUnknown_086B214E
-.4byte gUnknown_086B2178
-.4byte gUnknown_086B20B2
-.4byte gUnknown_086B15F8
-.4byte gUnknown_086B1602
-.4byte gUnknown_086B1F26
-.4byte gUnknown_086B1F78
-.4byte gUnknown_086B1FF4
-.4byte gUnknown_086B2026
-.4byte gUnknown_086B2048
-.4byte gUnknown_086B2072
-.4byte gUnknown_086B1ECA
-.4byte gUnknown_086B1E50
-.4byte gUnknown_086B1D0C
-.4byte gUnknown_086B1782
-.4byte gUnknown_086B22AE
-.4byte gUnknown_086B22D0
-.4byte gUnknown_086B22F2
-.4byte gUnknown_086B165C
-.4byte gUnknown_086B1AE6
-.4byte gUnknown_086B2324
-.4byte gUnknown_086B1CDA
-.4byte gUnknown_086B1676
-.4byte gUnknown_086B170C
-.4byte gUnknown_086B170C
-.4byte gUnknown_086B16A8
-.4byte gUnknown_086B16DA
-.4byte gUnknown_086B21E4
-.4byte gUnknown_086B2206
-.4byte gUnknown_086B2228
-.4byte gUnknown_086B224A
-.4byte gUnknown_086B226C
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B160C
-.4byte gUnknown_086B173E
-.4byte gUnknown_086B1A48
-.4byte gUnknown_086B1A5C
-.4byte gUnknown_086B1A70
-.4byte gUnknown_086B1A84
-.4byte gUnknown_086B1B90
-.4byte gUnknown_086B1BAA
-.4byte gUnknown_086B1BC4
-.4byte gUnknown_086B1BDE
-.4byte gUnknown_086B1BF8
-.4byte gUnknown_086B1846
-.4byte gUnknown_086B1760
-.4byte gUnknown_086B1DC4
-.4byte gUnknown_086B1616
-.4byte gUnknown_086B1628
-.4byte gUnknown_086B1862
-.4byte gUnknown_086B1C0C
-.4byte gUnknown_086B1C16
-.4byte gUnknown_086B1AB2
-.4byte gUnknown_086B1B00
-.4byte gUnknown_086B1B12
-.4byte gUnknown_086B1B24
-.4byte gUnknown_086B1B3E
-.4byte gUnknown_086B1B5A
-.4byte gUnknown_086B1B6C
-.4byte gUnknown_086B1B7E
-.4byte gUnknown_086B1B50
-.4byte gUnknown_086B1C20
-.4byte gUnknown_086B1C32
-.4byte gUnknown_086B17A4
-.4byte gUnknown_086B163A
-.4byte gUnknown_086B1858
-.4byte gUnknown_086B160C
-.4byte gUnknown_086B1AD4
-.4byte gUnknown_086B1C02
-.4byte gUnknown_086B1C90
-.4byte gUnknown_086B1D3E
-.4byte gUnknown_086B1D70
-.4byte gUnknown_086B1DA2
-.4byte gUnknown_086B1F04
-.4byte gUnknown_086B1834
-.4byte gUnknown_086B1C66
-.4byte gUnknown_086B21A2
-.4byte gUnknown_086B1C3C
-.4byte gUnknown_086B1A98
-
-
-gSapphireFloatOamFramesets:: @ 0x086B263C
+gJirachiFloatOamFramesets:: @ 0x086B263C
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x291, priority=0x1, paletteNum=0xd
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x291, priority=0x1, paletteNum=0xd
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x291, priority=0x1, paletteNum=0xd
@@ -7737,13 +8789,13 @@ gHatchCaveOamFramesets:: @ 0x086B4D4E
     packed_sprite_oam x=0x2, y=-0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xef, priority=0x1, paletteNum=0xb
 
 
-gHatchParticleOamAttributes:: @ 0x086B4E3E
+gCatchTileParticleOamAttributes:: @ 0x086B4E3E
 	.incbin "baserom.gba", 0x6B4E3E, 0x4
 
 gUnknown_086B4E42:: @ 0x086B4E42
 	.incbin "baserom.gba", 0x6B4E42, 0x20
 
-gHatchSequentialOamFramesets:: @ 0x086B4E62
+gCatchTile_BurstRevealOamFramesets1:: @ 0x086B4E62
     packed_sprite_oam x=0x18, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
     packed_sprite_oam x=0x28, y=0x8, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2c0, paletteNum=0xe
     packed_sprite_oam x=0x18, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
@@ -7790,7 +8842,7 @@ gHatchSequentialOamFramesets:: @ 0x086B4E62
     packed_sprite_oam x=-0xE, y=-0x8, spriteSize=SPRITE_SIZE_16x32, tileNum=0x356, paletteNum=0xe
 
 
-gHatchFullRevealOamFramesets:: @ 0x086B4F6A
+gCatchTile_BurstRevealOamFramesets0:: @ 0x086B4F6A
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c4, paletteNum=0xe
     packed_sprite_oam x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, paletteNum=0xe
     packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, paletteNum=0xe
@@ -7847,7 +8899,7 @@ gHatchFullRevealOamFramesets:: @ 0x086B4F6A
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, paletteNum=0xe
 
 
-gHatchRevealOamFramesets:: @ 0x086B50AE
+gCatchTile_RevealOamFramesets:: @ 0x086B50AE
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2c0, paletteNum=0xe
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2c0, paletteNum=0xe
     packed_sprite_oam x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2c0, paletteNum=0xe
@@ -7988,7 +9040,7 @@ gHatchAnimOamAttributes:: @ 0x086B53B4
 gUnknown_086B53B8:: @ 0x086B53B8
 	.incbin "baserom.gba", 0x6B53B8, 0x2C
 
-gHatchSequentialTileBreakSpritesheetOam:: @ 0x086B53E4
+gCatchTile_SequentialBreakSpritesheetOam:: @ 0x086B53E4
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2c0, paletteNum=0xe
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2d0, paletteNum=0xe
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2c0, paletteNum=0xe
@@ -8075,7 +9127,7 @@ gHatchSequentialTileBreakSpritesheetOam:: @ 0x086B53E4
     packed_sprite_oam x=0x8, y=0x5, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, vFlip=0x1, tileNum=0x3a1, paletteNum=0xe
 
 
-gSapphireHatchOamFramesets:: @ 0x086B55DC
+gCatchMonRevealOamFramesets:: @ 0x086B55DC
     packed_sprite_oam x=0x10, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, paletteNum=0xe
     packed_sprite_oam x=0x10, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, paletteNum=0xe
     packed_sprite_oam x=0x10, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, paletteNum=0xe
@@ -8426,7 +9478,7 @@ gRayquazaWhirlwindGrabOamData:: @ 0x086B5D56
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
 
 
-gRayquazaSwoopAttackOamData:: @ 0x086B5DCE
+gRayquazaLightningStrikeOamData:: @ 0x086B5DCE
     packed_sprite_oam x=-0x18, y=-0x60, spriteSize=SPRITE_SIZE_16x32, tileNum=0x208, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=-0x8, y=-0x50, spriteSize=SPRITE_SIZE_8x16, tileNum=0x210, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=-0x10, y=-0x40, spriteSize=SPRITE_SIZE_16x32, tileNum=0x212, priority=0x1, paletteNum=0xc
@@ -8471,7 +9523,7 @@ gRayquazaSwoopAttackOamData:: @ 0x086B5DCE
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
 
 
-gRayquazaNeckSegmentOamData:: @ 0x086B5ECA
+gRayquazaLightningWarningStrikeOamData:: @ 0x086B5ECA
     packed_sprite_oam x=-0x3, y=-0x3D, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1da, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=-0x2, y=-0x1D, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1de, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x5, y=-0xD, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1e0, priority=0x1, paletteNum=0xc
@@ -8552,7 +9604,7 @@ gRayquazaNeckSegmentOamData:: @ 0x086B5ECA
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18c, priority=0x1, paletteNum=0xc
 
 
-gRayquazaHeadOamData:: @ 0x086B609E
+gRayquazaLightningChargeRingOamData:: @ 0x086B609E
     packed_sprite_oam x=0x0, y=0x2B, spriteSize=SPRITE_SIZE_32x16, tileNum=0x18a, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x20, y=0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x192, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x20, y=0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x192, priority=0x1, paletteNum=0xc
@@ -10665,7 +11717,7 @@ gGroudonFirePillarOamData:: @ 0x086B8AE0
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19c, priority=0x1, paletteNum=0x4
 
-gKyogreWhirlpoolTrapOamData:: @ 0x086B91AC
+gKyogrefreezeTrapOamData:: @ 0x086B91AC
     packed_sprite_oam x=-0x10, y=-0x9, spriteSize=SPRITE_SIZE_32x32, tileNum=0x127, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=0x10, y=-0x9, spriteSize=SPRITE_SIZE_16x32, tileNum=0x137, priority=0x1, paletteNum=0xc
     packed_sprite_oam x=-0x10, y=0x17, spriteSize=SPRITE_SIZE_32x8, tileNum=0x13f, priority=0x1, paletteNum=0xc
@@ -11351,1602 +12403,1083 @@ gDuskullSpritesheetOam:: @ 0x086BA0A0
     packed_sprite_oam x=-0x8, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x1, paletteNum=0x2
     packed_sprite_oam x=0x18, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x59, priority=0x1, paletteNum=0x2
 
-gUnknown_086BA16C:: @ 0x086BA16C
+gBonusBoardLeftFlipperSpriteSet:: @ 0x086BA16C
 .2byte 1
-    packed_sprite_oam x=-0x1, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x0, priority=0x1, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x0, priority=0x1, paletteNum=0x0
 
-gUnknown_086BA176:: @ 0x086BA176
+gBonusBoardRightFlipperSpriteSet:: @ 0x086BA176
 .2byte 1
-    packed_sprite_oam x=0x1, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x10, priority=0x1, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x1, y=0x0, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x10, priority=0x1, paletteNum=0x0
 
-gUnknown_086BA180:: @ 0x086BA180
+gBonusBoardBallSpriteSet:: @ 0x086BA180
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x20, priority=0x1, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, priority=0x1, paletteNum=0x1
 
-gUnknown_086BA18A:: @ 0x086BA18A
+gBonusBoardPausePanelSpriteSet:: @ 0x086BA18A
 .2byte 11
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x24, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x25, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x26, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x27, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x28, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x29, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2a, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2b, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e, priority=0x0, paletteNum=0x9
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x24, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x25, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x26, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x27, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x28, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x29, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2a, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2b, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2c, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2d, paletteNum=0x9
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2e, paletteNum=0x9
 
-gUnknown_086BA1E4:: @ 0x086BA1E4
+gBonusBoardPauseTopBorderSpriteSet:: @ 0x086BA1E4
 .2byte 2
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f, priority=0x0, paletteNum=0x9
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2f, paletteNum=0x9
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2f, paletteNum=0x9
 
-gUnknown_086BA1F6:: @ 0x086BA1F6
+gBonusBoardPauseBottomBorderSpriteSet:: @ 0x086BA1F6
 .2byte 3
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0x33, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0x37, priority=0x0, paletteNum=0x9
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0x33, priority=0x0, paletteNum=0x9
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,  tileNum=0x33, paletteNum=0x9
+    packed_sprite_oaml x=0x40, y=-0x10, spriteSize=SPRITE_SIZE_16x8, vFlip=0x1,  tileNum=0x37, paletteNum=0x9
+    packed_sprite_oaml x=0x20, y=-0x10, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,  tileNum=0x33, paletteNum=0x9
 
-gUnknown_086BA210:: @ 0x086BA210
+gBonusBoardBallRespawnFxSpriteSet:: @ 0x086BA210
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x39, priority=0x1, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x39, priority=0x1, paletteNum=0x1
 
-gUnknown_086BA21A:: @ 0x086BA21A
+gDusclopsBoardDuskullEntity0SpriteSet:: @ 0x086BA21A
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x49, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x59, priority=0x1, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x59, priority=0x1, paletteNum=0x2
 
-gUnknown_086BA22C:: @ 0x086BA22C
+gDusclopsBoardDuskullEntity1SpriteSet:: @ 0x086BA22C
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x5d, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x6d, priority=0x1, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x5d, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x6d, priority=0x1, paletteNum=0x2
 
-gUnknown_086BA23E:: @ 0x086BA23E
+gDusclopsBoardDuskullEntity2SpriteSet:: @ 0x086BA23E
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x71, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x81, priority=0x1, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x71, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_8x32, tileNum=0x81, priority=0x1, paletteNum=0x2
 
-gUnknown_086BA250:: @ 0x086BA250
+gDusclopsBoardDusclopsEntitySpriteSet:: @ 0x086BA250
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x85, priority=0x3, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x85, priority=0x3, paletteNum=0x3
 
-gUnknown_086BA25A:: @ 0x086BA25A
+gDusclopsBoardBallCaptureVortexFxSpriteSet:: @ 0x086BA25A
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xc5, priority=0x3, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xc5, priority=0x3, paletteNum=0x3
 
-gUnknown_086BA264:: @ 0x086BA264
+gDusclopsBoardPhasingFxSpriteSet:: @ 0x086BA264
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x1, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xd5, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x40, affineMode=0x0, objMode=0x1, mosaic=0x1, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x115, priority=0x3, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, mosaic=0x1, spriteSize=SPRITE_SIZE_64x64, tileNum=0xd5, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x40, objMode=ST_OAM_OBJ_BLEND, mosaic=0x1, spriteSize=SPRITE_SIZE_64x32, tileNum=0x115, priority=0x3, paletteNum=0x0
 
-gUnknown_086BA276:: @ 0x086BA276
+gKecleonEntitySpriteSet:: @ 0x086BA276
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x49, priority=0x2, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x59, priority=0x2, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x2, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0x59, priority=0x2, paletteNum=0x2
 
-gUnknown_086BA288:: @ 0x086BA288
+gKecleonDustFxSpriteSet:: @ 0x086BA288
 .2byte 1
-  packed_sprite_oam x=0x0, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x5d, priority=0x2, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x18, spriteSize=SPRITE_SIZE_32x16, tileNum=0x5d, priority=0x2, paletteNum=0x3
 
-gUnknown_086BA292:: @ 0x086BA292
+gKecleonScopeItemSpriteSet:: @ 0x086BA292
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x65, priority=0x2, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x65, priority=0x2, paletteNum=0xc
 
-gUnknown_086BA29C:: @ 0x086BA29C
+gKecleonSignSpriteSet:: @ 0x086BA29C
 .2byte 4
-    packed_sprite_oam x=-0x48, y=-0x2E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x69, priority=0x2, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x2E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6d, priority=0x2, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x48, y=-0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x6f, priority=0x2, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x71, priority=0x2, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=-0x48, y=-0x2E, spriteSize=SPRITE_SIZE_16x16, tileNum=0x69, priority=0x2, paletteNum=0x7
+    packed_sprite_oaml x=-0x38, y=-0x2E, spriteSize=SPRITE_SIZE_8x16, tileNum=0x6d, priority=0x2, paletteNum=0x7
+    packed_sprite_oaml x=-0x48, y=-0x1E, spriteSize=SPRITE_SIZE_16x8, tileNum=0x6f, priority=0x2, paletteNum=0x7
+    packed_sprite_oaml x=-0x38, y=-0x1E, spriteSize=SPRITE_SIZE_8x8, tileNum=0x71, priority=0x2, paletteNum=0x7
 
-gUnknown_086BA2BE:: @ 0x086BA2BE
+gKecleonRockSpriteSet:: @ 0x086BA2BE
 .2byte 1
-    packed_sprite_oam x=0x30, y=-0x48, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x72, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0x30, y=-0x48, spriteSize=SPRITE_SIZE_32x32, tileNum=0x72, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA2C8:: @ 0x086BA2C8
+gKecleonTreeLeavesSpriteSet:: @ 0x086BA2C8
 .2byte 5
-    packed_sprite_oam x=-0x48, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x82, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xa2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x38, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xc2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xca, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xce, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=-0x48, y=-0x80, spriteSize=SPRITE_SIZE_64x32, tileNum=0x82, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=-0x8, y=-0x80, spriteSize=SPRITE_SIZE_64x32, tileNum=0xa2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=0x38, y=-0x80, spriteSize=SPRITE_SIZE_16x32, tileNum=0xc2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=-0x20, y=-0x60, spriteSize=SPRITE_SIZE_32x8, tileNum=0xca, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=0x0, y=-0x60, spriteSize=SPRITE_SIZE_32x8, tileNum=0xce, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA2F2:: @ 0x086BA2F2
+gKecleonBushTopLeftTopSpriteSet:: @ 0x086BA2F2
 .2byte 2
-    packed_sprite_oam x=-0x58, y=-0x70, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x58, y=-0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=-0x58, y=-0x70, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=-0x58, y=-0x60, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA304:: @ 0x086BA304
+gKecleonBushTopLeftBottomSpriteSet:: @ 0x086BA304
 .2byte 2
-    packed_sprite_oam x=-0x68, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x68, y=-0x58, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=-0x68, y=-0x68, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=-0x68, y=-0x58, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA316:: @ 0x086BA316
+gKecleonBushTopRightTopSpriteSet:: @ 0x086BA316
 .2byte 2
-    packed_sprite_oam x=0x38, y=-0x70, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x38, y=-0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0x38, y=-0x70, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=0x38, y=-0x60, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA328:: @ 0x086BA328
+gKecleonBushTopRightBottomSpriteSet:: @ 0x086BA328
 .2byte 2
-    packed_sprite_oam x=0x48, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x48, y=-0x58, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0x48, y=-0x68, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=0x48, y=-0x58, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA33A:: @ 0x086BA33A
+gKecleonBushBottomLeftTopSpriteSet:: @ 0x086BA33A
 .2byte 2
-    packed_sprite_oam x=-0x68, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x68, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=-0x68, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=-0x68, y=-0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA34C:: @ 0x086BA34C
+gKecleonBushBottomLeftMiddleSpriteSet:: @ 0x086BA34C
 .2byte 2
-    packed_sprite_oam x=-0x48, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x48, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=-0x48, y=-0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=-0x48, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA35E:: @ 0x086BA35E
+gKecleonBushBottomLeftBottomSpriteSet:: @ 0x086BA35E
 .2byte 2
-    packed_sprite_oam x=-0x58, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x58, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=-0x58, y=-0x18, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=-0x58, y=-0x8, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA370:: @ 0x086BA370
+gKecleonBushBottomRightTopSpriteSet:: @ 0x086BA370
 .2byte 2
-    packed_sprite_oam x=0x40, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x40, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0x40, y=-0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=0x40, y=-0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA382:: @ 0x086BA382
+gKecleonBushBottomRightMiddleSpriteSet:: @ 0x086BA382
 .2byte 2
-    packed_sprite_oam x=0x38, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x38, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0x38, y=-0x18, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=0x38, y=-0x8, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA394:: @ 0x086BA394
+gKecleonBushBottomRightBottomSpriteSet:: @ 0x086BA394 --Grass Bush bottom right
 .2byte 2
-    packed_sprite_oam x=0x30, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd2, priority=0x2, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xda, priority=0x2, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0x30, y=-0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0xd2, priority=0x2, paletteNum=0x6
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0xda, priority=0x2, paletteNum=0x6
 
-gUnknown_086BA3A6:: @ 0x086BA3A6
+gKecleonFlowerByTreeSpriteSet:: @ 0x086BA3A6
 .2byte 3
-    packed_sprite_oam x=-0x30, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xf6, priority=0x2, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x30, y=-0x58, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xfa, priority=0x2, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xfc, priority=0x2, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x30, y=-0x68, spriteSize=SPRITE_SIZE_16x16, tileNum=0xf6, priority=0x2, paletteNum=0x5
+    packed_sprite_oaml x=-0x30, y=-0x58, spriteSize=SPRITE_SIZE_16x8, tileNum=0xfa, priority=0x2, paletteNum=0x5
+    packed_sprite_oaml x=-0x20, y=-0x60, spriteSize=SPRITE_SIZE_8x16, tileNum=0xfc, priority=0x2, paletteNum=0x5
 
-gUnknown_086BA3C0:: @ 0x086BA3C0
+gKecleonFlowerPairLeftSpriteSet:: @ 0x086BA3C0
 .2byte 2
-    packed_sprite_oam x=-0x60, y=-0x48, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x10e, priority=0x2, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x60, y=-0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x116, priority=0x2, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x60, y=-0x48, spriteSize=SPRITE_SIZE_32x16, tileNum=0x10e, priority=0x2, paletteNum=0x5
+    packed_sprite_oaml x=-0x60, y=-0x38, spriteSize=SPRITE_SIZE_32x8, tileNum=0x116, priority=0x2, paletteNum=0x5
 
-gUnknown_086BA3D2:: @ 0x086BA3D2
+gKecleonFlowerPairBottomRightSpriteSet:: @ 0x086BA3D2
 .2byte 2
-    packed_sprite_oam x=0x10, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x11a, priority=0x2, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x122, priority=0x2, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=0x10, y=0x8, spriteSize=SPRITE_SIZE_32x16, tileNum=0x11a, priority=0x2, paletteNum=0x5
+    packed_sprite_oaml x=0x10, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x122, priority=0x2, paletteNum=0x5
 
-gUnknown_086BA3E4:: @ 0x086BA3E4
+gKecleonFlowerTrippleRightSpriteSet:: @ 0x086BA3E4
 .2byte 2
-    packed_sprite_oam x=0x48, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x132, priority=0x2, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x58, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x13a, priority=0x2, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=0x48, y=-0x50, spriteSize=SPRITE_SIZE_16x32, tileNum=0x132, priority=0x2, paletteNum=0x5
+    packed_sprite_oaml x=0x58, y=-0x50, spriteSize=SPRITE_SIZE_8x32, tileNum=0x13a, priority=0x2, paletteNum=0x5
 
-gUnknown_086BA3F6:: @ 0x086BA3F6
+gKecleonReflectionHeadSpriteSet:: @ 0x086BA3F6
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x8, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x2, tileNum=0x49, priority=0x3, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0x59, priority=0x3, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x8, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,  tileNum=0x49, priority=0x3, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,  tileNum=0x59, priority=0x3, paletteNum=0x4
 
-gUnknown_086BA408:: @ 0x086BA408
+gKecleonReflectionBallSpriteSet:: @ 0x086BA408
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0x20, priority=0x3, paletteNum=0x1
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,  tileNum=0x20, priority=0x3, paletteNum=0x1
 
-gUnknown_086BA412:: @ 0x086BA412
+gKecleonBallRippleFxSpriteSet:: @ 0x086BA412
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x16e, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x16f, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x170, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x170, priority=0x3, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16e, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16f, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x170, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x170, priority=0x3, paletteNum=0x0
 
-
-gUnknown_086BA434:: @ 0x086BA434
+gKecleonStepRippleFxSpriteSet:: @ 0x086BA434
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x16e, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x16f, priority=0x3, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x170, priority=0x3, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16e, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16f, priority=0x3, paletteNum=0x0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x170, priority=0x3, paletteNum=0x0
 
-gUnknown_086BA44E:: @ 0x086BA44E
+gKyogreEntitySpriteSet:: @ 0x086BA44E
 .2byte 10
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x7d, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x85, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x95, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x9d, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x7d, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x85, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x95, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x9d, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x32, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x0, y=0x30, spriteSize=SPRITE_SIZE_32x16, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x20, y=0x30, spriteSize=SPRITE_SIZE_16x16, tileNum=0xa5, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x7d, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x40, y=0x10, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1, tileNum=0x85, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x30, y=0x10, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, tileNum=0x95, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x40, y=0x30, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1, tileNum=0x9d, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x30, y=0x30, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1, tileNum=0xa5, priority=0x1, paletteNum=0xf
 
-gUnknown_086BA4A0:: @ 0x086BA4A0
+gKyogreWhirlpool0SpriteSet:: @ 0x086BA4A0
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xa9, priority=0x3, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xa9, priority=0x3, paletteNum=0x6
 
-gUnknown_086BA4AA:: @ 0x086BA4AA
+gKyogreWhirlpool1SpriteSet:: @ 0x086BA4AA
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xb9, priority=0x3, paletteNum=0x6
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xb9, priority=0x3, paletteNum=0x6
 
-gUnknown_086BA4B4:: @ 0x086BA4B4
+gKyogreShockwaveSpriteSet:: @ 0x086BA4B4
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x3, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc9, priority=0x2, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x3, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc9, priority=0x2, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x3, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc9, priority=0x2, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x3, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc9, priority=0x2, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc9, priority=0x2, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc9, priority=0x2, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc9, priority=0x2, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc9, priority=0x2, paletteNum=0xc
 
-gUnknown_086BA4D6:: @ 0x086BA4D6
+gKyogreCrystalTopRightSpriteSet:: @ 0x086BA4D6
 .2byte 3
-    packed_sprite_oam x=0x5E, y=-0x47, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x109, priority=0x1, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x66, y=-0x47, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x10b, priority=0x1, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x66, y=-0x37, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x10f, priority=0x1, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=0x5E, y=-0x47, spriteSize=SPRITE_SIZE_8x16, tileNum=0x109, priority=0x1, paletteNum=0x5
+    packed_sprite_oaml x=0x66, y=-0x47, spriteSize=SPRITE_SIZE_16x16, tileNum=0x10b, priority=0x1, paletteNum=0x5
+    packed_sprite_oaml x=0x66, y=-0x37, spriteSize=SPRITE_SIZE_16x8, tileNum=0x10f, priority=0x1, paletteNum=0x5
 
-gUnknown_086BA4F0:: @ 0x086BA4F0
+gKyogreCrystalTopLeftSpriteSet:: @ 0x086BA4F0
 .2byte 3
-    packed_sprite_oam x=-0x80, y=-0x37, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x111, priority=0x1, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x78, y=-0x37, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x113, priority=0x1, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x78, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x117, priority=0x1, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x80, y=-0x37, spriteSize=SPRITE_SIZE_8x16, tileNum=0x111, priority=0x1, paletteNum=0x5
+    packed_sprite_oaml x=-0x78, y=-0x37, spriteSize=SPRITE_SIZE_16x16, tileNum=0x113, priority=0x1, paletteNum=0x5
+    packed_sprite_oaml x=-0x78, y=-0x27, spriteSize=SPRITE_SIZE_16x8, tileNum=0x117, priority=0x1, paletteNum=0x5
 
-gUnknown_086BA50A:: @ 0x086BA50A
+gKyogreCrystalBottomRightSpriteSet:: @ 0x086BA50A
 .2byte 3
-    packed_sprite_oam x=0x66, y=0x31, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x119, priority=0x1, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x6E, y=0x31, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x11b, priority=0x1, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=0x6E, y=0x41, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x1, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=0x66, y=0x31, spriteSize=SPRITE_SIZE_8x16, tileNum=0x119, priority=0x1, paletteNum=0x5
+    packed_sprite_oaml x=0x6E, y=0x31, spriteSize=SPRITE_SIZE_16x16, tileNum=0x11b, priority=0x1, paletteNum=0x5
+    packed_sprite_oaml x=0x6E, y=0x41, spriteSize=SPRITE_SIZE_16x8, tileNum=0x11f, priority=0x1, paletteNum=0x5
 
-gUnknown_086BA524:: @ 0x086BA524
+gKyogreCrystalBottomLeftSpriteSet:: @ 0x086BA524
 .2byte 3
-    packed_sprite_oam x=-0x72, y=0x51, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x119, priority=0x1, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x6A, y=0x51, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x11b, priority=0x1, paletteNum=0x5
-.2byte 0
-    packed_sprite_oam x=-0x6A, y=0x61, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x11f, priority=0x1, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x72, y=0x51, spriteSize=SPRITE_SIZE_8x16, tileNum=0x119, priority=0x1, paletteNum=0x5
+    packed_sprite_oaml x=-0x6A, y=0x51, spriteSize=SPRITE_SIZE_16x16, tileNum=0x11b, priority=0x1, paletteNum=0x5
+    packed_sprite_oaml x=-0x6A, y=0x61, spriteSize=SPRITE_SIZE_16x8, tileNum=0x11f, priority=0x1, paletteNum=0x5
 
-gUnknown_086BA53E:: @ 0x086BA53E
+gKyogreSurfacingFxSpriteSet:: @ 0x086BA53E
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x121, priority=0x1, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x125, priority=0x1, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x121, priority=0x1, paletteNum=0xf
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x125, priority=0x1, paletteNum=0xf
 
-gUnknown_086BA550:: @ 0x086BA550
+gKyogreFreezeTrapSpriteSet:: @ 0x086BA550
 .2byte 4
-    packed_sprite_oam x=-0x10, y=-0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x127, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x137, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x17, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x13f, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x17, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x143, priority=0x1, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x9, spriteSize=SPRITE_SIZE_32x32, tileNum=0x127, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x10, y=-0x9, spriteSize=SPRITE_SIZE_16x32, tileNum=0x137, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=-0x10, y=0x17, spriteSize=SPRITE_SIZE_32x8, tileNum=0x13f, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x10, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x143, priority=0x1, paletteNum=0xc
 
-gUnknown_086BA572:: @ 0x086BA572
+gKyogreIntroCrystalGroundSpriteSet:: @ 0x086BA572
 .2byte 8
-    packed_sprite_oam x=-0x80, y=-0x34, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x145, priority=0x1, paletteNum=0xa
-.2byte 0
-    packed_sprite_oam x=-0x80, y=-0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x14d, priority=0x1, paletteNum=0xa
-.2byte 0
-    packed_sprite_oam x=0x5C, y=-0x44, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x151, priority=0x1, paletteNum=0xa
-.2byte 0
-    packed_sprite_oam x=0x5C, y=-0x34, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x159, priority=0x1, paletteNum=0xa
-.2byte 0
-    packed_sprite_oam x=-0x72, y=0x54, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x15d, priority=0x1, paletteNum=0xa
-.2byte 0
-    packed_sprite_oam x=-0x72, y=0x64, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x165, priority=0x1, paletteNum=0xa
-.2byte 0
-    packed_sprite_oam x=0x64, y=0x34, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x169, priority=0x1, paletteNum=0xa
-.2byte 0
-    packed_sprite_oam x=0x64, y=0x44, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x171, priority=0x1, paletteNum=0xa
-.2byte 0
+    packed_sprite_oaml x=-0x80, y=-0x34, spriteSize=SPRITE_SIZE_32x16, tileNum=0x145, priority=0x1, paletteNum=0xa
+    packed_sprite_oaml x=-0x80, y=-0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x14d, priority=0x1, paletteNum=0xa
+    packed_sprite_oaml x=0x5C, y=-0x44, spriteSize=SPRITE_SIZE_32x16, tileNum=0x151, priority=0x1, paletteNum=0xa
+    packed_sprite_oaml x=0x5C, y=-0x34, spriteSize=SPRITE_SIZE_32x8, tileNum=0x159, priority=0x1, paletteNum=0xa
+    packed_sprite_oaml x=-0x72, y=0x54, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15d, priority=0x1, paletteNum=0xa
+    packed_sprite_oaml x=-0x72, y=0x64, spriteSize=SPRITE_SIZE_32x8, tileNum=0x165, priority=0x1, paletteNum=0xa
+    packed_sprite_oaml x=0x64, y=0x34, spriteSize=SPRITE_SIZE_32x16, tileNum=0x169, priority=0x1, paletteNum=0xa
+    packed_sprite_oaml x=0x64, y=0x44, spriteSize=SPRITE_SIZE_32x8, tileNum=0x171, priority=0x1, paletteNum=0xa
 
-gUnknown_086BA5B4:: @ 0x086BA5B4
+gGroudonBoulder0SpriteSet:: @ 0x086BA5B4
 .2byte 3
-    packed_sprite_oam x=0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x7d, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x81, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x85, priority=0x1, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x7d, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x8, spriteSize=SPRITE_SIZE_8x32, tileNum=0x81, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x8, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x85, priority=0x1, paletteNum=0x4
 
-gUnknown_086BA5CE:: @ 0x086BA5CE
+gGroudonBoulder1SpriteSet:: @ 0x086BA5CE
 .2byte 3
-    packed_sprite_oam x=0x8, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x95, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x99, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x9d, priority=0x1, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x95, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x8, spriteSize=SPRITE_SIZE_8x32, tileNum=0x99, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x8, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x9d, priority=0x1, paletteNum=0x4
 
-gUnknown_086BA5E8:: @ 0x086BA5E8
+gGroudonBoulder2SpriteSet:: @ 0x086BA5E8
 .2byte 3
-    packed_sprite_oam x=0x8, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xad, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xb1, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xb5, priority=0x1, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x8, y=0x8, spriteSize=SPRITE_SIZE_32x8, tileNum=0xad, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x8, spriteSize=SPRITE_SIZE_8x32, tileNum=0xb1, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x8, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0xb5, priority=0x1, paletteNum=0x4
 
-gUnknown_086BA602:: @ 0x086BA602
+gGroudonShockwaveSpriteSet:: @ 0x086BA602
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x3, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc5, priority=0x2, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x3, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc5, priority=0x2, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x3, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc5, priority=0x2, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x3, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xc5, priority=0x2, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc5, priority=0x2, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc5, priority=0x2, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc5, priority=0x2, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x0, affineMode=ST_OAM_AFFINE_DOUBLE, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x64, tileNum=0xc5, priority=0x2, paletteNum=0xc
 
-gUnknown_086BA624:: @ 0x086BA624
+gGroudonCrystalTopRightSpriteSet:: @ 0x086BA624
 .2byte 3
-    packed_sprite_oam x=0x5E, y=-0x47, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x105, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x66, y=-0x37, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x107, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x66, y=-0x47, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x109, priority=0x1, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x5E, y=-0x47, spriteSize=SPRITE_SIZE_8x16, tileNum=0x105, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=0x66, y=-0x37, spriteSize=SPRITE_SIZE_16x8, tileNum=0x107, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=0x66, y=-0x47, spriteSize=SPRITE_SIZE_16x16, tileNum=0x109, priority=0x1, paletteNum=0x3
 
-gUnknown_086BA63E:: @ 0x086BA63E
+gGroudonCrystalBottomRightSpriteSet:: @ 0x086BA63E
 .2byte 3
-    packed_sprite_oam x=0x66, y=0x31, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc5, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x6E, y=0x41, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc7, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x6E, y=0x31, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xc9, priority=0x1, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x66, y=0x31, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc5, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=0x6E, y=0x41, spriteSize=SPRITE_SIZE_16x8, tileNum=0xc7, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=0x6E, y=0x31, spriteSize=SPRITE_SIZE_16x16, tileNum=0xc9, priority=0x1, paletteNum=0x3
 
-gUnknown_086BA658:: @ 0x086BA658
+gGroudonCrystalTopLeftSpriteSet:: @ 0x086BA658
 .2byte 3
-    packed_sprite_oam x=0x7E, y=-0x37, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc5, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=-0x78, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc7, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=-0x78, y=-0x37, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xc9, priority=0x1, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x7E, y=-0x37, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc5, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=-0x78, y=-0x27, spriteSize=SPRITE_SIZE_16x8, tileNum=0xc7, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=-0x78, y=-0x37, spriteSize=SPRITE_SIZE_16x16, tileNum=0xc9, priority=0x1, paletteNum=0x3
 
-gUnknown_086BA672:: @ 0x086BA672
+gGroudonCrystalBottomLeftSpriteSet:: @ 0x086BA672
 .2byte 3
-    packed_sprite_oam x=-0x72, y=0x51, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc5, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=-0x6A, y=0x61, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xc7, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=-0x6A, y=0x51, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xc9, priority=0x1, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=-0x72, y=0x51, spriteSize=SPRITE_SIZE_8x16, tileNum=0xc5, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=-0x6A, y=0x61, spriteSize=SPRITE_SIZE_16x8, tileNum=0xc7, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=-0x6A, y=0x51, spriteSize=SPRITE_SIZE_16x16, tileNum=0xc9, priority=0x1, paletteNum=0x3
 
-gUnknown_086BA68C:: @ 0x086BA68C
+gGroudonFirePillarSpriteSet:: @ 0x086BA68C
 .2byte 10
-    packed_sprite_oam x=0x5, y=0x5, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x199, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=-0x11, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x199, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=-0xD, y=0x3D, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x199, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x2A, y=0x3C, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x199, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x29, y=0x2A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x196, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x24, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x196, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=-0xE, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x199, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0xE, y=0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x196, priority=0x1, paletteNum=0x4
-    packed_sprite_oam x=0x0, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x17d, priority=0x1, paletteNum=0x5
-    packed_sprite_oam x=0x0, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x11d, priority=0x1, paletteNum=0x5
+    packed_sprite_oam x=0x5, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x199, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=-0x11, y=0x30, spriteSize=SPRITE_SIZE_8x8, tileNum=0x199, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=-0xD, y=0x3D, spriteSize=SPRITE_SIZE_8x8, tileNum=0x199, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x2A, y=0x3C, spriteSize=SPRITE_SIZE_8x8, tileNum=0x199, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x29, y=0x2A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x196, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x24, y=0x18, spriteSize=SPRITE_SIZE_8x8, tileNum=0x196, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=-0xE, y=0x18, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, tileNum=0x199, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0xE, y=0x1A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x196, priority=0x1, paletteNum=0x4
+    packed_sprite_oam x=0x0, y=0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x17d, priority=0x1, paletteNum=0x5
+    packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x11d, priority=0x1, paletteNum=0x5
 
-gUnknown_086BA6CA:: @ 0x086BA6CA
-	.incbin "baserom.gba", 0x6BA6Ca, 0x92
+gGroudonEntitySpriteSet:: @ 0x086BA6CA
+.2byte 19 @ Only 17 items make sense... item 18 has abnormal format, 19 runs into the next addressed memory block (actually used that way)
+    packed_sprite_oaml x=0x1, y=0x11, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1D1, paletteNum=0xF
+    packed_sprite_oaml x=0x1, y=0x19, priority=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1D3, paletteNum=0xF
+    packed_sprite_oaml x=0x17, y=0x11, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1D1, paletteNum=0xF
+    packed_sprite_oaml x=0x17, y=0x19, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1D3, paletteNum=0xF
+    packed_sprite_oaml x=-0x3, y=0x21, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1B9, paletteNum=0xF
+    packed_sprite_oaml x=-0x3, y=0x29, priority=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1BB, paletteNum=0xF
+    packed_sprite_oaml x=0x1B, y=0x21, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1B9, paletteNum=0xF
+    packed_sprite_oaml x=0x1B, y=0x29, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1BB, paletteNum=0xF
+    packed_sprite_oaml x=0xC, y=-0x3, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x19D, paletteNum=0xF
+    packed_sprite_oaml x=0x4, y=0x5, priority=0x1, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19F, paletteNum=0xF
+    packed_sprite_oaml x=0xC, y=0x15, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1A7, paletteNum=0xF
+    packed_sprite_oaml x=0x4, y=0xB, priority=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1A9, paletteNum=0xF
+    packed_sprite_oaml x=0x4, y=0x2B, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1B1, paletteNum=0xF
+    packed_sprite_oaml x=0x14, y=0xB, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1A9, paletteNum=0xF
+    packed_sprite_oaml x=0x14, y=0x2B, hFlip=0x1, priority=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1B1, paletteNum=0xF
+    packed_sprite_oaml x=0x0, y=0x0, priority=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19C, paletteNum=0x4
+    packed_sprite_oaml x=-0x64, y=0x0, matrixNum=0x2, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
+@ List ends early. See note above.
 
-gUnknown_086BA75C:: @ 0x086BA75C
+.incbin "baserom.gba", 0x6BA754, 0x8
+
+@	.incbin "baserom.gba", 0x6BA6Ca, 0x92
+
+gRaquazaFlyingSparkleSpriteSet:: @ 0x086BA75C
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x7d, priority=0x3, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x7d, priority=0x3, paletteNum=0xc
 
-gUnknown_086BA766:: @ 0x086BA766
+gRaquazaEntityFlyingUpSpriteSet:: @ 0x086BA766
 .2byte 14
-    packed_sprite_oam x=0x4, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xb1, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x48, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xb3, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xc3, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xc7, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0xC, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xd1, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xcf, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x4, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xd3, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xdb, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x4, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xdd, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xdf, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0xC, y=0x43, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xe7, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x2, y=0x58, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xe9, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xf1, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0xC, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xf3, priority=0x3, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=0x4, y=-0x50, spriteSize=SPRITE_SIZE_16x8, tileNum=0xb1, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x8, y=-0x48, spriteSize=SPRITE_SIZE_32x32, tileNum=0xb3, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x8, y=-0x28, spriteSize=SPRITE_SIZE_32x8, tileNum=0xc3, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=-0x20, spriteSize=SPRITE_SIZE_16x32, tileNum=0xc7, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0xC, y=-0x8, spriteSize=SPRITE_SIZE_8x16, tileNum=0xd1, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0xcf, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0x4, y=0x8, spriteSize=SPRITE_SIZE_16x32, tileNum=0xd3, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0xdb, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0x4, y=0x28, spriteSize=SPRITE_SIZE_16x8, tileNum=0xdd, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=0x30, spriteSize=SPRITE_SIZE_16x32, tileNum=0xdf, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0xC, y=0x43, spriteSize=SPRITE_SIZE_8x16, tileNum=0xe7, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0x2, y=0x58, spriteSize=SPRITE_SIZE_16x32, tileNum=0xe9, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=0x50, spriteSize=SPRITE_SIZE_16x8, tileNum=0xf1, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0xC, y=0x30, spriteSize=SPRITE_SIZE_8x8, tileNum=0xf3, priority=0x3, paletteNum=0xf
 
-gUnknown_086BA7D8:: @ 0x086BA7D8
+gRaquazaEntityFlyingDownSpriteSet:: @ 0x086BA7D8
 .2byte 14
-    packed_sprite_oam x=0x4, y=0x70, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0xb1, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x2, tileNum=0xb3, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0x48, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x1, tileNum=0xc3, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x2, tileNum=0xc7, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0xC, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0xd1, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0xcf, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x4, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x2, tileNum=0xd3, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0xdb, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x4, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0xdd, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x2, tileNum=0xdf, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0xC, y=-0x2B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0xe7, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x2, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x2, tileNum=0xe9, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x4, y=-0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0xf1, priority=0x3, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0xC, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x1, size=0x0, tileNum=0xf3, priority=0x3, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=0x4, y=0x70, spriteSize=SPRITE_SIZE_16x8, vFlip=0x1,  tileNum=0xb1, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x8, y=0x50, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1,  tileNum=0xb3, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x8, y=0x48, spriteSize=SPRITE_SIZE_32x8, vFlip=0x1,  tileNum=0xc3, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=0x28, spriteSize=SPRITE_SIZE_16x32, vFlip=0x1,  tileNum=0xc7, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0xC, y=0x20, spriteSize=SPRITE_SIZE_8x16, vFlip=0x1,  tileNum=0xd1, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=0x20, spriteSize=SPRITE_SIZE_16x8, vFlip=0x1,  tileNum=0xcf, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0x4, y=0x0, spriteSize=SPRITE_SIZE_16x32, vFlip=0x1,  tileNum=0xd3, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=-0x8, spriteSize=SPRITE_SIZE_8x16, vFlip=0x1,  tileNum=0xdb, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0x4, y=-0x8, spriteSize=SPRITE_SIZE_16x8, vFlip=0x1,  tileNum=0xdd, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=-0x28, spriteSize=SPRITE_SIZE_16x32, vFlip=0x1,  tileNum=0xdf, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0xC, y=-0x2B, spriteSize=SPRITE_SIZE_8x16, vFlip=0x1,  tileNum=0xe7, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0x2, y=-0x50, spriteSize=SPRITE_SIZE_16x32, vFlip=0x1,  tileNum=0xe9, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=-0x4, y=-0x30, spriteSize=SPRITE_SIZE_16x8, vFlip=0x1,  tileNum=0xf1, priority=0x3, paletteNum=0xf
+    packed_sprite_oaml x=0xC, y=-0x10, spriteSize=SPRITE_SIZE_8x8, vFlip=0x1,  tileNum=0xf3, priority=0x3, paletteNum=0xf
 
-gUnknown_086BA84A:: @ 0x086BA84A
+gRaquazaEntityShadowFxSpriteSet:: @ 0x086BA84A
 .2byte 1
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x1, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x91, priority=0x2, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_64x32, tileNum=0x91, priority=0x2, paletteNum=0xf
 
-gUnknown_086BA854:: @ 0x086BA854
+gRaquazaEntityBouncingSpriteSet:: @ 0x086BA854
 .2byte 1
-    packed_sprite_oam x=0x0, y=-0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0xb1, priority=0x1, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x2, spriteSize=SPRITE_SIZE_64x64, tileNum=0xb1, priority=0x1, paletteNum=0xf
 
-gUnknown_086BA85E:: @ 0x086BA85E
+gRaquazaTornadoSpriteSet:: @ 0x086BA85E
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0xf5, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x105, priority=0x1, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xf5, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x105, priority=0x1, paletteNum=0xc
 
-gUnknown_086BA870:: @ 0x086BA870
+gRaquazaEntityRoarHeadExtensionSpriteSet:: @ 0x086BA870
 .2byte 2
-    packed_sprite_oam x=0x11, y=-0x21, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x109, priority=0x1, paletteNum=0xe
-.2byte 0
-    packed_sprite_oam x=0x11, y=-0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x111, priority=0x1, paletteNum=0xe
-.2byte 0
+    packed_sprite_oaml x=0x11, y=-0x21, spriteSize=SPRITE_SIZE_32x16, tileNum=0x109, priority=0x1, paletteNum=0xe
+    packed_sprite_oaml x=0x11, y=-0x11, spriteSize=SPRITE_SIZE_32x8, tileNum=0x111, priority=0x1, paletteNum=0xe
 
-gUnknown_086BA882:: @ 0x086BA882
+gRaquazaWhirlwindBallLaunchSpriteSet:: @ 0x086BA882
 .2byte 5
-    packed_sprite_oam x=0x0, y=-0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x139, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x149, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x151, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x159, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x15d, priority=0x1, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x0, y=-0x30, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x139, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=-0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x149, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x151, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x8, spriteSize=SPRITE_SIZE_32x8, tileNum=0x159, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15d, priority=0x1, paletteNum=0xc
 
-gUnknown_086BA8AC:: @ 0x086BA8AC
+gRaquazaLightningBallGrabSpriteSet:: @ 0x086BA8AC
 .2byte 2
-    packed_sprite_oam x=-0x2, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x254, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0xE, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x256, priority=0x1, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x2, y=0x8, spriteSize=SPRITE_SIZE_16x8, tileNum=0x254, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0xE, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x256, priority=0x1, paletteNum=0xc
 
-gUnknown_086BA8BE:: @ 0x086BA8BE
+gRaquazaLightningChargeRingSpriteSet:: @ 0x086BA8BE
 .2byte 3
-    packed_sprite_oam x=0x0, y=0x2E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x19a, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x29, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x19e, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x31, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1a2, priority=0x1, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x2E, spriteSize=SPRITE_SIZE_32x8, tileNum=0x19a, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x20, y=0x29, spriteSize=SPRITE_SIZE_32x8, tileNum=0x19e, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x20, y=0x31, spriteSize=SPRITE_SIZE_16x8, tileNum=0x1a2, priority=0x1, paletteNum=0xc
 
-gUnknown_086BA8D8:: @ 0x086BA8D8
+gRaquazaLightningWarningStrikeSpriteSet:: @ 0x086BA8D8
 .2byte 6
-    packed_sprite_oam x=-0x3, y=-0x3D, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1da, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x2, y=-0x1D, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1de, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x5, y=-0xD, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1e0, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x5, y=0x13, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1e4, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x5, y=0x33, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x1ea, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0xD, y=0x33, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x1ec, priority=0x1, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x3, y=-0x3D, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1da, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=-0x2, y=-0x1D, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1de, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x5, y=-0xD, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1e0, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x5, y=0x13, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1e4, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x5, y=0x33, spriteSize=SPRITE_SIZE_8x16, tileNum=0x1ea, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0xD, y=0x33, spriteSize=SPRITE_SIZE_8x32, tileNum=0x1ec, priority=0x1, paletteNum=0xc
 
-gUnknown_086BA90A:: @ 0x086BA90A
+gRaquazaLightningStrikeSpriteSet:: @ 0x086BA90A
 .2byte 7
-    packed_sprite_oam x=-0x8, y=-0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1f6, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x8, y=-0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x1fe, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x206, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x208, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x210, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x212, priority=0x1, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x48, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x21a, priority=0x1, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x8, y=-0x38, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1f6, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=-0x8, y=-0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x1fe, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x8, y=-0x8, spriteSize=SPRITE_SIZE_8x16, tileNum=0x206, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=-0x8, y=0x8, spriteSize=SPRITE_SIZE_16x32, tileNum=0x208, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x8, y=0x18, spriteSize=SPRITE_SIZE_8x16, tileNum=0x210, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x28, spriteSize=SPRITE_SIZE_16x32, tileNum=0x212, priority=0x1, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x48, spriteSize=SPRITE_SIZE_32x32, tileNum=0x21a, priority=0x1, paletteNum=0xc
 
-gUnknown_086BA944:: @ 0x086BA944
+gSphealNetBackSpriteSet:: @ 0x086BA944
 .2byte 1
-   packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x49, priority=0x1, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, priority=0x1, paletteNum=0x3
 
-gUnknown_086BA94E:: @ 0x086BA94E
+gSphealNetFrontSpriteSet:: @ 0x086BA94E
 .2byte 2
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x59, priority=0x1, paletteNum=0x3
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x61, priority=0x1, paletteNum=0x3
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x59, priority=0x1, paletteNum=0x3
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x61, priority=0x1, paletteNum=0x3
 
-gUnknown_086BA960:: @ 0x086BA960
+gSphealLeftSealeoEntitySpriteSet:: @ 0x086BA960
 .2byte 1
-  packed_sprite_oam x=-0x5F, y=0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x3, tileNum=0xa5, priority=0x2, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=-0x5F, y=0x9, spriteSize=SPRITE_SIZE_64x64, hFlip=0x1,  tileNum=0xa5, priority=0x2, paletteNum=0x5
 
-gUnknown_086BA96A:: @ 0x086BA96A
+gSphealRightSealeoEntitySpriteSet:: @ 0x086BA96A
 .2byte 1
-    packed_sprite_oam x=0x1F, y=0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x65, priority=0x2, paletteNum=0x5
-.2byte 0
+    packed_sprite_oaml x=0x1F, y=0x9, spriteSize=SPRITE_SIZE_64x64, tileNum=0x65, priority=0x2, paletteNum=0x5
 
-gUnknown_086BA974:: @ 0x086BA974
+gSphealEntity0SpriteSet:: @ 0x086BA974
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xe5, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xe9, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xeb, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xed, priority=0x1, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xe5, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0xe9, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0xeb, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xed, priority=0x1, paletteNum=0x4
 
-gUnknown_086BA996:: @ 0x086BA996
+gSphealEntity1SpriteSet:: @ 0x086BA996
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xee, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xf2, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xf4, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xf6, priority=0x1, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xee, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0xf2, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0xf4, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xf6, priority=0x1, paletteNum=0x4
 
-gUnknown_086BA9B8:: @ 0x086BA9B8
+gSphealEntity0ReflectionSpriteSet:: @ 0x086BA9B8
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0xf7, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xfb, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xfd, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0xff, priority=0x1, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0xf7, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0xfb, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0xfd, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0xff, priority=0x1, paletteNum=0x4
 
-gUnknown_086BA9DA:: @ 0x086BA9DA
+gSphealEntity1ReflectionSpriteSet:: @ 0x086BA9DA
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x100, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x104, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x106, priority=0x1, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x108, priority=0x1, paletteNum=0x4
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x100, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x104, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x106, priority=0x1, paletteNum=0x4
+    packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x108, priority=0x1, paletteNum=0x4
 
-gUnknown_086BA9FC:: @ 0x086BA9FC
+gSphealWhiscashEntitySpriteSet:: @ 0x086BA9FC
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x109, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x119, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x121, priority=0x1, paletteNum=0x7
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x129, priority=0x1, paletteNum=0x7
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x109, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x119, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x121, priority=0x1, paletteNum=0x7
+    packed_sprite_oaml x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x129, priority=0x1, paletteNum=0x7
 
 
-gUnknown_086BAA1E:: @ 0x086BAA1E
+gSphealPelipperEntitySpriteSet:: @ 0x086BAA1E
 .2byte 4
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x12d, priority=0x1, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x13d, priority=0x1, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x145, priority=0x1, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x14d, priority=0x1, paletteNum=0x8
-.2byte 0
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x12d, priority=0x1, paletteNum=0x8
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x32, tileNum=0x13d, priority=0x1, paletteNum=0x8
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x145, priority=0x1, paletteNum=0x8
+    packed_sprite_oaml x=0x20, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14d, priority=0x1, paletteNum=0x8
 
-gUnknown_086BAA40:: @ 0x086BAA40
+gBonusBoardScoreBannerGraphicSpriteSet:: @ 0x086BAA40
 .2byte 3
-    packed_sprite_oam x=-0x50, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x30, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x340, priority=0x0, paletteNum=0x8
-.2byte 0
+    packed_sprite_oaml x=-0x50, y=-0x10, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, paletteNum=0x8
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_64x64, tileNum=0x300, paletteNum=0x8
+    packed_sprite_oaml x=0x30, y=-0x10, spriteSize=SPRITE_SIZE_32x64, tileNum=0x340, paletteNum=0x8
 
-gUnknown_086BAA5A:: @ 0x086BAA5A
+gBonusBoardEndScoreSpriteSet:: @ 0x086BAA5A
 .2byte 18
-    packed_sprite_oam x=-0x25, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x38c, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=-0x1C, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x38e, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=-0x13, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x390, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=-0xA, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x392, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=-0x1, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x394, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x8, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x396, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x11, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x398, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x1A, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x39a, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x2A, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x39c, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=-0x3A, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x360, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=-0x1A, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x368, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x6, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x370, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x26, y=0x24, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x378, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=-0x3A, y=0x34, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x37c, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=-0x1A, y=0x34, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x380, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x6, y=0x34, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x384, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x26, y=0x34, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x388, priority=0x0, paletteNum=0x8
-.2byte 0
-    packed_sprite_oam x=0x36, y=0x29, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x38a, priority=0x0, paletteNum=0x8
-.2byte 0
+    packed_sprite_oaml x=-0x25, y=0x28, spriteSize=SPRITE_SIZE_8x16, tileNum=0x38c, paletteNum=0x8
+    packed_sprite_oaml x=-0x1C, y=0x28, spriteSize=SPRITE_SIZE_8x16, tileNum=0x38e, paletteNum=0x8
+    packed_sprite_oaml x=-0x13, y=0x28, spriteSize=SPRITE_SIZE_8x16, tileNum=0x390, paletteNum=0x8
+    packed_sprite_oaml x=-0xA, y=0x28, spriteSize=SPRITE_SIZE_8x16, tileNum=0x392, paletteNum=0x8
+    packed_sprite_oaml x=-0x1, y=0x28, spriteSize=SPRITE_SIZE_8x16, tileNum=0x394, paletteNum=0x8
+    packed_sprite_oaml x=0x8, y=0x28, spriteSize=SPRITE_SIZE_8x16, tileNum=0x396, paletteNum=0x8
+    packed_sprite_oaml x=0x11, y=0x28, spriteSize=SPRITE_SIZE_8x16, tileNum=0x398, paletteNum=0x8
+    packed_sprite_oaml x=0x1A, y=0x28, spriteSize=SPRITE_SIZE_8x16, tileNum=0x39a, paletteNum=0x8
+    packed_sprite_oaml x=0x2A, y=0x28, spriteSize=SPRITE_SIZE_8x16, tileNum=0x39c, paletteNum=0x8
+    packed_sprite_oaml x=-0x3A, y=0x24, spriteSize=SPRITE_SIZE_32x16, tileNum=0x360, paletteNum=0x8
+    packed_sprite_oaml x=-0x1A, y=0x24, spriteSize=SPRITE_SIZE_32x16, tileNum=0x368, paletteNum=0x8
+    packed_sprite_oaml x=0x6, y=0x24, spriteSize=SPRITE_SIZE_32x16, tileNum=0x370, paletteNum=0x8
+    packed_sprite_oaml x=0x26, y=0x24, spriteSize=SPRITE_SIZE_16x16, tileNum=0x378, paletteNum=0x8
+    packed_sprite_oaml x=-0x3A, y=0x34, spriteSize=SPRITE_SIZE_32x8, tileNum=0x37c, paletteNum=0x8
+    packed_sprite_oaml x=-0x1A, y=0x34, spriteSize=SPRITE_SIZE_32x8, tileNum=0x380, paletteNum=0x8
+    packed_sprite_oaml x=0x6, y=0x34, spriteSize=SPRITE_SIZE_32x8, tileNum=0x384, paletteNum=0x8
+    packed_sprite_oaml x=0x26, y=0x34, spriteSize=SPRITE_SIZE_16x8, tileNum=0x388, paletteNum=0x8
+    packed_sprite_oaml x=0x36, y=0x29, spriteSize=SPRITE_SIZE_8x16, tileNum=0x38a, paletteNum=0x8
 
-gUnknown_086BAAEC:: @ 0x086BAAEC
+gGroudonFireballLaunchFxSpriteSet:: @ 0x086BAAEC
 .2byte 6
-    packed_sprite_oam x=-0xA, y=0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2c6, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0xA, y=0x22, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ca, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x2, y=0x2A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2cc, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x12, y=0x1B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x2c6, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x2A, y=0x22, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x2ca, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x1A, y=0x2A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x2cc, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0xA, y=0x1B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2c6, paletteNum=0xc
+    packed_sprite_oaml x=-0xA, y=0x22, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ca, paletteNum=0xc
+    packed_sprite_oaml x=-0x2, y=0x2A, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0xc
+    packed_sprite_oaml x=0x12, y=0x1B, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x2c6, paletteNum=0xc
+    packed_sprite_oaml x=0x2A, y=0x22, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x2ca, paletteNum=0xc
+    packed_sprite_oaml x=0x1A, y=0x2A, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x2cc, paletteNum=0xc
 
-gUnknown_086BAB1E:: @ 0x086BAB1E
+gGroudonFireballSpriteSet:: @ 0x086BAB1E
 .2byte 4
-    packed_sprite_oam x=-0x10, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x324, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x32c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x324, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x8, y=-0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x32c, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x10, y=-0x7, spriteSize=SPRITE_SIZE_16x32, tileNum=0x324, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=-0x7, spriteSize=SPRITE_SIZE_8x32, tileNum=0x32c, paletteNum=0xc
+    packed_sprite_oaml x=0x10, y=-0x7, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x324, paletteNum=0xc
+    packed_sprite_oaml x=0x8, y=-0x7, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,  tileNum=0x32c, paletteNum=0xc
 
-gUnknown_086BAB40:: @ 0x086BAB40
+gGroudonFireballCaughtBallSpriteSet:: @ 0x086BAB40
 .2byte 2
-    packed_sprite_oam x=-0x7, y=-0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x364, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x7, y=0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x36c, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x7, y=-0x2, spriteSize=SPRITE_SIZE_32x16, tileNum=0x364, paletteNum=0xc
+    packed_sprite_oaml x=-0x7, y=0xE, spriteSize=SPRITE_SIZE_32x8, tileNum=0x36c, paletteNum=0xc
 
-gUnknown_086BAB52:: @ 0x086BAB52
+gRaquazaIntroCloud0SpriteSet:: @ 0x086BAB52
 .2byte 4
-    packed_sprite_oam x=-0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x2c0, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x300, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x340, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x50, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x348, priority=0x1, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2c0, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x300, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x40, y=0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x340, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x50, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x348, priority=0x1, paletteNum=0x2
 
-gUnknown_086BAB74:: @ 0x086BAB74
+gRaquazaIntroCloud1SpriteSet:: @ 0x086BAB74
 .2byte 6
-    packed_sprite_oam x=-0x20, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x34a, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x35a, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x37a, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x382, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x38a, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x38e, priority=0x1, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=-0x20, y=0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x34a, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x32, tileNum=0x35a, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x37a, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0x382, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x40, y=0x28, spriteSize=SPRITE_SIZE_32x8, tileNum=0x38a, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x40, y=0x8, spriteSize=SPRITE_SIZE_64x32, tileNum=0x38e, priority=0x1, paletteNum=0x2
 
-gUnknown_086BABA6:: @ 0x086BABA6
+gRaquazaIntroCloud2SpriteSet:: @ 0x086BABA6
 .2byte 5
-    packed_sprite_oam x=-0x40, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x3, tileNum=0x3ae, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x3ce, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x3de, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x30, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3e2, priority=0x1, paletteNum=0x2
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x3e4, priority=0x1, paletteNum=0x2
-.2byte 0
+    packed_sprite_oaml x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_64x32, tileNum=0x3ae, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x3ce, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x3de, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x30, y=0x0, spriteSize=SPRITE_SIZE_8x16, tileNum=0x3e2, priority=0x1, paletteNum=0x2
+    packed_sprite_oaml x=0x20, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x3e4, priority=0x1, paletteNum=0x2
 
-gUnknown_086BABD0:: @ 0x086BABD0
+gRaquazaEntityFlybyRightSpriteSet:: @ 0x086BABD0
 .2byte 18
-    packed_sprite_oam x=-0x79, y=0xA, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2c0, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x69, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2c4, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x59, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c8, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x51, y=-0x6, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2ca, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x32, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2da, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x22, y=-0x6, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2de, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x16, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2e6, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0xA, y=-0x5, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2ee, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x1A, y=-0x5, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f6, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x21, y=0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2fa, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x39, y=0x17, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x302, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x41, y=-0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x306, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x39, y=-0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x30e, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x50, y=-0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x51, y=-0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x310, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x71, y=0x6, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x322, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x71, y=0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x324, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x16, y=0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x325, priority=0x0, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=-0x79, y=0xA, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, paletteNum=0xf
+    packed_sprite_oaml x=-0x69, y=0x2, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c4, paletteNum=0xf
+    packed_sprite_oaml x=-0x59, y=0x2, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2c8, paletteNum=0xf
+    packed_sprite_oaml x=-0x51, y=-0x6, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2ca, paletteNum=0xf
+    packed_sprite_oaml x=-0x32, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2da, paletteNum=0xf
+    packed_sprite_oaml x=-0x22, y=-0x6, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2de, paletteNum=0xf
+    packed_sprite_oaml x=-0x16, y=0x2, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2e6, paletteNum=0xf
+    packed_sprite_oaml x=0xA, y=-0x5, spriteSize=SPRITE_SIZE_16x32, tileNum=0x2ee, paletteNum=0xf
+    packed_sprite_oaml x=0x1A, y=-0x5, spriteSize=SPRITE_SIZE_8x32, tileNum=0x2f6, paletteNum=0xf
+    packed_sprite_oaml x=0x21, y=0x7, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2fa, paletteNum=0xf
+    packed_sprite_oaml x=0x39, y=0x17, spriteSize=SPRITE_SIZE_32x8, tileNum=0x302, paletteNum=0xf
+    packed_sprite_oaml x=0x41, y=-0x9, spriteSize=SPRITE_SIZE_16x32, tileNum=0x306, paletteNum=0xf
+    packed_sprite_oaml x=0x39, y=-0x9, spriteSize=SPRITE_SIZE_8x16, tileNum=0x30e, paletteNum=0xf
+    packed_sprite_oaml x=0x50, y=-0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x320, paletteNum=0xf
+    packed_sprite_oaml x=0x51, y=-0x9, spriteSize=SPRITE_SIZE_32x32, tileNum=0x310, paletteNum=0xf
+    packed_sprite_oaml x=0x71, y=0x6, spriteSize=SPRITE_SIZE_8x16, tileNum=0x322, paletteNum=0xf
+    packed_sprite_oaml x=-0x71, y=0x1A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x324, paletteNum=0xf
+    packed_sprite_oaml x=-0x16, y=0x12, spriteSize=SPRITE_SIZE_8x8, tileNum=0x325, paletteNum=0xf
 
-gUnknown_086BAC62:: @ 0x086BAC62
+gRaquazaEntityFlybyLeftSpriteSet:: @ 0x086BAC62
 .2byte 18
-    packed_sprite_oam x=0x69, y=0xA, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x2c0, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x59, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x2c4, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x51, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x2c8, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x31, y=-0x6, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x2ca, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x22, y=0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x2da, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x12, y=-0x6, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x2de, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0xA, y=0x2, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x2e6, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x1A, y=-0x5, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x2ee, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x22, y=-0x5, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x2f6, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x41, y=0x7, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x2fa, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x59, y=0x17, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x302, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x51, y=-0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x306, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x41, y=-0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x30e, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x60, y=-0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x320, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x71, y=-0x9, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x310, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=-0x79, y=0x6, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x322, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0x69, y=0x1A, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x324, priority=0x0, paletteNum=0xf
-.2byte 0
-    packed_sprite_oam x=0xE, y=0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x325, priority=0x0, paletteNum=0xf
-.2byte 0
+    packed_sprite_oaml x=0x69, y=0xA, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x2c0, paletteNum=0xf
+    packed_sprite_oaml x=0x59, y=0x2, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x2c4, paletteNum=0xf
+    packed_sprite_oaml x=0x51, y=0x2, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x2c8, paletteNum=0xf
+    packed_sprite_oaml x=0x31, y=-0x6, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x2ca, paletteNum=0xf
+    packed_sprite_oaml x=0x22, y=0x8, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x2da, paletteNum=0xf
+    packed_sprite_oaml x=0x12, y=-0x6, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x2de, paletteNum=0xf
+    packed_sprite_oaml x=-0xA, y=0x2, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x2e6, paletteNum=0xf
+    packed_sprite_oaml x=-0x1A, y=-0x5, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x2ee, paletteNum=0xf
+    packed_sprite_oaml x=-0x22, y=-0x5, spriteSize=SPRITE_SIZE_8x32, hFlip=0x1,  tileNum=0x2f6, paletteNum=0xf
+    packed_sprite_oaml x=-0x41, y=0x7, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x2fa, paletteNum=0xf
+    packed_sprite_oaml x=-0x59, y=0x17, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x302, paletteNum=0xf
+    packed_sprite_oaml x=-0x51, y=-0x9, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x306, paletteNum=0xf
+    packed_sprite_oaml x=-0x41, y=-0x9, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x30e, paletteNum=0xf
+    packed_sprite_oaml x=-0x60, y=-0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x320, paletteNum=0xf
+    packed_sprite_oaml x=-0x71, y=-0x9, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x310, paletteNum=0xf
+    packed_sprite_oaml x=-0x79, y=0x6, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x322, paletteNum=0xf
+    packed_sprite_oaml x=0x69, y=0x1A, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x324, paletteNum=0xf
+    packed_sprite_oaml x=0xE, y=0x12, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x325, paletteNum=0xf
 
-gUnknown_086BACF4:: @ 0x086BACF4
+gRaquazaFlybyRightWindSpeedlines0ASpriteSet:: @ 0x086BACF4
 .2byte 15
-   packed_sprite_oam x=-0x78, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x326, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x58, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x32a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x0, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x336, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x28, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x340, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x348, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x18, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x350, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x38, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x33a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x58, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x33e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x33a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x60, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x33e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x20, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x340, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x348, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x60, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x350, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x18, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x340, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x78, y=-0x68, spriteSize=SPRITE_SIZE_32x8, tileNum=0x326, paletteNum=0xc
+    packed_sprite_oaml x=-0x58, y=-0x68, spriteSize=SPRITE_SIZE_32x16, tileNum=0x32a, paletteNum=0xc
+    packed_sprite_oaml x=-0x38, y=-0x67, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0xc
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x336, paletteNum=0xc
+    packed_sprite_oaml x=-0x28, y=0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x340, paletteNum=0xc
+    packed_sprite_oaml x=-0x8, y=0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x348, paletteNum=0xc
+    packed_sprite_oaml x=0x18, y=0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x350, paletteNum=0xc
+    packed_sprite_oaml x=0x38, y=-0x80, spriteSize=SPRITE_SIZE_32x8, tileNum=0x33a, paletteNum=0xc
+    packed_sprite_oaml x=0x58, y=-0x80, spriteSize=SPRITE_SIZE_16x8, tileNum=0x33e, paletteNum=0xc
+    packed_sprite_oaml x=0x40, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x33a, paletteNum=0xc
+    packed_sprite_oaml x=0x60, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x33e, paletteNum=0xc
+    packed_sprite_oaml x=0x20, y=0x60, spriteSize=SPRITE_SIZE_32x16, tileNum=0x340, paletteNum=0xc
+    packed_sprite_oaml x=0x40, y=0x60, spriteSize=SPRITE_SIZE_32x16, tileNum=0x348, paletteNum=0xc
+    packed_sprite_oaml x=0x60, y=0x60, spriteSize=SPRITE_SIZE_32x16, tileNum=0x350, paletteNum=0xc
+    packed_sprite_oaml x=0x18, y=-0x50, spriteSize=SPRITE_SIZE_32x16, tileNum=0x340, paletteNum=0xc
 
-gUnknown_086BAD6E:: @ 0x086BAD6E
+gRaquazaFlybyRightWindSpeedlines0BSpriteSet:: @ 0x086BAD6E
 .2byte 14
-    packed_sprite_oam x=0x38, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x348, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x58, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x350, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x70, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x326, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x50, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x32a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x38, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x33a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x18, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x33e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x18, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x326, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x38, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x32a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x58, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x68, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x33a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x48, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x33e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x78, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x336, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x60, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x336, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x38, y=-0x50, spriteSize=SPRITE_SIZE_32x16, tileNum=0x348, paletteNum=0xc
+    packed_sprite_oaml x=0x58, y=-0x50, spriteSize=SPRITE_SIZE_32x16, tileNum=0x350, paletteNum=0xc
+    packed_sprite_oaml x=-0x70, y=0x10, spriteSize=SPRITE_SIZE_32x8, tileNum=0x326, paletteNum=0xc
+    packed_sprite_oaml x=-0x50, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x32a, paletteNum=0xc
+    packed_sprite_oaml x=-0x30, y=0x11, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0xc
+    packed_sprite_oaml x=-0x38, y=-0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x33a, paletteNum=0xc
+    packed_sprite_oaml x=-0x18, y=-0x40, spriteSize=SPRITE_SIZE_16x8, tileNum=0x33e, paletteNum=0xc
+    packed_sprite_oaml x=0x18, y=-0x28, spriteSize=SPRITE_SIZE_32x8, tileNum=0x326, paletteNum=0xc
+    packed_sprite_oaml x=0x38, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x32a, paletteNum=0xc
+    packed_sprite_oaml x=0x58, y=-0x27, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0xc
+    packed_sprite_oaml x=-0x68, y=0x60, spriteSize=SPRITE_SIZE_32x8, tileNum=0x33a, paletteNum=0xc
+    packed_sprite_oaml x=-0x48, y=0x60, spriteSize=SPRITE_SIZE_16x8, tileNum=0x33e, paletteNum=0xc
+    packed_sprite_oaml x=-0x78, y=0x30, spriteSize=SPRITE_SIZE_32x8, tileNum=0x336, paletteNum=0xc
+    packed_sprite_oaml x=-0x60, y=-0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x336, paletteNum=0xc
 
-gUnknown_086BADE0:: @ 0x086BADE0
+gRaquazaFlybyRightWindSpeedlines1ASpriteSet:: @ 0x086BADE0
 .2byte 15
-   packed_sprite_oam x=-0x65, y=0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x358, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x45, y=0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x35c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x25, y=0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x360, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x24, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x358, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x44, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x35c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x64, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x360, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x6C, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x358, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x4C, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x35c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x2C, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x360, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x5F, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x362, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x76, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x362, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x4D, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x366, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x5B, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x366, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x2B, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x366, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x19, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x36a, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x65, y=0x11, spriteSize=SPRITE_SIZE_32x8, tileNum=0x358, paletteNum=0xc
+    packed_sprite_oaml x=-0x45, y=0x11, spriteSize=SPRITE_SIZE_32x8, tileNum=0x35c, paletteNum=0xc
+    packed_sprite_oaml x=-0x25, y=0x11, spriteSize=SPRITE_SIZE_16x8, tileNum=0x360, paletteNum=0xc
+    packed_sprite_oaml x=0x24, y=-0x27, spriteSize=SPRITE_SIZE_32x8, tileNum=0x358, paletteNum=0xc
+    packed_sprite_oaml x=0x44, y=-0x27, spriteSize=SPRITE_SIZE_32x8, tileNum=0x35c, paletteNum=0xc
+    packed_sprite_oaml x=0x64, y=-0x27, spriteSize=SPRITE_SIZE_16x8, tileNum=0x360, paletteNum=0xc
+    packed_sprite_oaml x=-0x6C, y=-0x67, spriteSize=SPRITE_SIZE_32x8, tileNum=0x358, paletteNum=0xc
+    packed_sprite_oaml x=-0x4C, y=-0x67, spriteSize=SPRITE_SIZE_32x8, tileNum=0x35c, paletteNum=0xc
+    packed_sprite_oaml x=-0x2C, y=-0x67, spriteSize=SPRITE_SIZE_16x8, tileNum=0x360, paletteNum=0xc
+    packed_sprite_oaml x=-0x5F, y=-0x20, spriteSize=SPRITE_SIZE_32x8, tileNum=0x362, paletteNum=0xc
+    packed_sprite_oaml x=-0x76, y=0x30, spriteSize=SPRITE_SIZE_32x8, tileNum=0x362, paletteNum=0xc
+    packed_sprite_oaml x=0x4D, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x366, paletteNum=0xc
+    packed_sprite_oaml x=-0x5B, y=0x60, spriteSize=SPRITE_SIZE_32x8, tileNum=0x366, paletteNum=0xc
+    packed_sprite_oaml x=-0x2B, y=-0x40, spriteSize=SPRITE_SIZE_32x8, tileNum=0x366, paletteNum=0xc
+    packed_sprite_oaml x=-0x19, y=0x38, spriteSize=SPRITE_SIZE_32x16, tileNum=0x36a, paletteNum=0xc
 
-gUnknown_086BAE5A:: @ 0x086BAE5A
+gRaquazaFlybyRightWindSpeedlines1BSpriteSet:: @ 0x086BAE5A
 .2byte 9
-    packed_sprite_oam x=0x7, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x372, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x17, y=0x3B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x376, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x2F, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x36a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x4F, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x372, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x5F, y=0x63, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x376, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x26, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x36a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x46, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x372, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x56, y=-0x4D, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x376, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x45, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x366, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x7, y=0x38, spriteSize=SPRITE_SIZE_16x16, tileNum=0x372, paletteNum=0xc
+    packed_sprite_oaml x=0x17, y=0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x376, paletteNum=0xc
+    packed_sprite_oaml x=0x2F, y=0x60, spriteSize=SPRITE_SIZE_32x16, tileNum=0x36a, paletteNum=0xc
+    packed_sprite_oaml x=0x4F, y=0x60, spriteSize=SPRITE_SIZE_16x16, tileNum=0x372, paletteNum=0xc
+    packed_sprite_oaml x=0x5F, y=0x63, spriteSize=SPRITE_SIZE_32x8, tileNum=0x376, paletteNum=0xc
+    packed_sprite_oaml x=0x26, y=-0x50, spriteSize=SPRITE_SIZE_32x16, tileNum=0x36a, paletteNum=0xc
+    packed_sprite_oaml x=0x46, y=-0x50, spriteSize=SPRITE_SIZE_16x16, tileNum=0x372, paletteNum=0xc
+    packed_sprite_oaml x=0x56, y=-0x4D, spriteSize=SPRITE_SIZE_32x8, tileNum=0x376, paletteNum=0xc
+    packed_sprite_oaml x=0x45, y=-0x80, spriteSize=SPRITE_SIZE_32x8, tileNum=0x366, paletteNum=0xc
 
-gUnknown_086BAEA4:: @ 0x086BAEA4
+gRaquazaFlybyRightWindSpeedlines2ASpriteSet:: @ 0x086BAEA4
 .2byte 15
-   packed_sprite_oam x=-0x52, y=0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x37a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x32, y=0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x37e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x22, y=0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x380, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x31, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x37a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x51, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x37e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x61, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x380, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x5E, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x37a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x3E, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x37e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x380, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x58, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x382, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x48, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x384, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x6D, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x382, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x5D, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x384, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x33, y=-0x4D, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x388, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x53, y=-0x4D, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x38c, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x52, y=0x12, spriteSize=SPRITE_SIZE_32x8, tileNum=0x37a, paletteNum=0xc
+    packed_sprite_oaml x=-0x32, y=0x12, spriteSize=SPRITE_SIZE_16x8, tileNum=0x37e, paletteNum=0xc
+    packed_sprite_oaml x=-0x22, y=0x12, spriteSize=SPRITE_SIZE_16x8, tileNum=0x380, paletteNum=0xc
+    packed_sprite_oaml x=0x31, y=-0x27, spriteSize=SPRITE_SIZE_32x8, tileNum=0x37a, paletteNum=0xc
+    packed_sprite_oaml x=0x51, y=-0x27, spriteSize=SPRITE_SIZE_16x8, tileNum=0x37e, paletteNum=0xc
+    packed_sprite_oaml x=0x61, y=-0x27, spriteSize=SPRITE_SIZE_16x8, tileNum=0x380, paletteNum=0xc
+    packed_sprite_oaml x=-0x5E, y=-0x67, spriteSize=SPRITE_SIZE_32x8, tileNum=0x37a, paletteNum=0xc
+    packed_sprite_oaml x=-0x3E, y=-0x67, spriteSize=SPRITE_SIZE_16x8, tileNum=0x37e, paletteNum=0xc
+    packed_sprite_oaml x=-0x2E, y=-0x67, spriteSize=SPRITE_SIZE_16x8, tileNum=0x380, paletteNum=0xc
+    packed_sprite_oaml x=-0x58, y=-0x20, spriteSize=SPRITE_SIZE_16x8, tileNum=0x382, paletteNum=0xc
+    packed_sprite_oaml x=-0x48, y=-0x20, spriteSize=SPRITE_SIZE_8x8, tileNum=0x384, paletteNum=0xc
+    packed_sprite_oaml x=-0x6D, y=0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0x382, paletteNum=0xc
+    packed_sprite_oaml x=-0x5D, y=0x30, spriteSize=SPRITE_SIZE_8x8, tileNum=0x384, paletteNum=0xc
+    packed_sprite_oaml x=0x33, y=-0x4D, spriteSize=SPRITE_SIZE_32x8, tileNum=0x388, paletteNum=0xc
+    packed_sprite_oaml x=0x53, y=-0x4D, spriteSize=SPRITE_SIZE_32x8, tileNum=0x38c, paletteNum=0xc
 
-gUnknown_086BAF1E:: @ 0x086BAF1E
+gRaquazaFlybyRightWindSpeedlines2BSpriteSet:: @ 0x086BAF1E
 .2byte 12
-    packed_sprite_oam x=-0xD, y=0x3B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x388, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x13, y=0x3B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x38c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x3C, y=0x63, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x388, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x5C, y=0x63, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x38c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x24, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x385, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x14, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x387, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x54, y=0x17, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x385, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x64, y=0x17, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x387, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x55, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x385, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x45, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x387, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x4B, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x385, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x5B, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x387, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0xD, y=0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x388, paletteNum=0xc
+    packed_sprite_oaml x=0x13, y=0x3B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x38c, paletteNum=0xc
+    packed_sprite_oaml x=0x3C, y=0x63, spriteSize=SPRITE_SIZE_32x8, tileNum=0x388, paletteNum=0xc
+    packed_sprite_oaml x=0x5C, y=0x63, spriteSize=SPRITE_SIZE_32x8, tileNum=0x38c, paletteNum=0xc
+    packed_sprite_oaml x=-0x24, y=-0x40, spriteSize=SPRITE_SIZE_16x8, tileNum=0x385, paletteNum=0xc
+    packed_sprite_oaml x=-0x14, y=-0x40, spriteSize=SPRITE_SIZE_8x8, tileNum=0x387, paletteNum=0xc
+    packed_sprite_oaml x=0x54, y=0x17, spriteSize=SPRITE_SIZE_16x8, tileNum=0x385, paletteNum=0xc
+    packed_sprite_oaml x=0x64, y=0x17, spriteSize=SPRITE_SIZE_8x8, tileNum=0x387, paletteNum=0xc
+    packed_sprite_oaml x=-0x55, y=0x60, spriteSize=SPRITE_SIZE_16x8, tileNum=0x385, paletteNum=0xc
+    packed_sprite_oaml x=-0x45, y=0x60, spriteSize=SPRITE_SIZE_8x8, tileNum=0x387, paletteNum=0xc
+    packed_sprite_oaml x=0x4B, y=-0x80, spriteSize=SPRITE_SIZE_16x8, tileNum=0x385, paletteNum=0xc
+    packed_sprite_oaml x=0x5B, y=-0x80, spriteSize=SPRITE_SIZE_8x8, tileNum=0x387, paletteNum=0xc
 
-gUnknown_086BAF80:: @ 0x086BAF80
+gRaquazaFlybyLeftWindSpeedlines0ASpriteSet:: @ 0x086BAF80
 .2byte 15
-    packed_sprite_oam x=0x60, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x326, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x40, y=-0x68, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x32a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x0, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x336, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x10, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x340, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x348, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x30, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x350, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x50, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x33a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x60, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x33e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x58, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x33a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x68, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x33e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x38, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x340, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x58, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x348, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x78, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x350, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x30, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x340, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x60, y=-0x68, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x326, paletteNum=0xc
+    packed_sprite_oaml x=0x40, y=-0x68, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x32a, paletteNum=0xc
+    packed_sprite_oaml x=0x20, y=-0x67, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x332, paletteNum=0xc
+    packed_sprite_oaml x=-0x18, y=0x0, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x336, paletteNum=0xc
+    packed_sprite_oaml x=0x10, y=0x38, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x340, paletteNum=0xc
+    packed_sprite_oaml x=-0x10, y=0x38, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x348, paletteNum=0xc
+    packed_sprite_oaml x=-0x30, y=0x38, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x350, paletteNum=0xc
+    packed_sprite_oaml x=-0x50, y=-0x80, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x33a, paletteNum=0xc
+    packed_sprite_oaml x=-0x60, y=-0x80, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x33e, paletteNum=0xc
+    packed_sprite_oaml x=-0x58, y=0x18, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x33a, paletteNum=0xc
+    packed_sprite_oaml x=-0x68, y=0x18, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x33e, paletteNum=0xc
+    packed_sprite_oaml x=-0x38, y=0x60, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x340, paletteNum=0xc
+    packed_sprite_oaml x=-0x58, y=0x60, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x348, paletteNum=0xc
+    packed_sprite_oaml x=-0x78, y=0x60, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x350, paletteNum=0xc
+    packed_sprite_oaml x=-0x30, y=-0x50, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x340, paletteNum=0xc
 
-gUnknown_086BAFFA:: @ 0x086BAFFA
+gRaquazaFlybyLeftWindSpeedlines0BSpriteSet:: @ 0x086BAFFA
 .2byte 14
-   packed_sprite_oam x=-0x50, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x348, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x70, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x350, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x58, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x326, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x38, y=0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x32a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x18, y=0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x20, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x33a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x10, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x33e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x30, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x326, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x50, y=-0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x32a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x70, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x332, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x50, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x33a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x40, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x33e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x60, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x336, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x48, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x336, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x50, y=-0x50, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x348, paletteNum=0xc
+    packed_sprite_oaml x=-0x70, y=-0x50, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x350, paletteNum=0xc
+    packed_sprite_oaml x=0x58, y=0x10, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x326, paletteNum=0xc
+    packed_sprite_oaml x=0x38, y=0x10, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x32a, paletteNum=0xc
+    packed_sprite_oaml x=0x18, y=0x11, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x332, paletteNum=0xc
+    packed_sprite_oaml x=0x20, y=-0x40, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x33a, paletteNum=0xc
+    packed_sprite_oaml x=0x10, y=-0x40, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x33e, paletteNum=0xc
+    packed_sprite_oaml x=-0x30, y=-0x28, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x326, paletteNum=0xc
+    packed_sprite_oaml x=-0x50, y=-0x28, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x32a, paletteNum=0xc
+    packed_sprite_oaml x=-0x70, y=-0x27, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x332, paletteNum=0xc
+    packed_sprite_oaml x=0x50, y=0x60, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x33a, paletteNum=0xc
+    packed_sprite_oaml x=0x40, y=0x60, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x33e, paletteNum=0xc
+    packed_sprite_oaml x=0x60, y=0x30, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x336, paletteNum=0xc
+    packed_sprite_oaml x=0x48, y=-0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x336, paletteNum=0xc
 
-gUnknown_086BB06C:: @ 0x086BB06C
+gRaquazaFlybyLeftWindSpeedlines1ASpriteSet:: @ 0x086BB06C
 .2byte 15
-    packed_sprite_oam x=0x4E, y=0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x358, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x2E, y=0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x35c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x1E, y=0x11, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x360, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x3B, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x358, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x5B, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x35c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x6B, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x360, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x55, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x358, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x35, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x35c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x25, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x360, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x48, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x362, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x5F, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x362, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x64, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x366, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x44, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x366, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x14, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x366, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x2, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x36a, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x4E, y=0x11, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x358, paletteNum=0xc
+    packed_sprite_oaml x=0x2E, y=0x11, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x35c, paletteNum=0xc
+    packed_sprite_oaml x=0x1E, y=0x11, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x360, paletteNum=0xc
+    packed_sprite_oaml x=-0x3B, y=-0x27, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x358, paletteNum=0xc
+    packed_sprite_oaml x=-0x5B, y=-0x27, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x35c, paletteNum=0xc
+    packed_sprite_oaml x=-0x6B, y=-0x27, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x360, paletteNum=0xc
+    packed_sprite_oaml x=0x55, y=-0x67, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x358, paletteNum=0xc
+    packed_sprite_oaml x=0x35, y=-0x67, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x35c, paletteNum=0xc
+    packed_sprite_oaml x=0x25, y=-0x67, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x360, paletteNum=0xc
+    packed_sprite_oaml x=0x48, y=-0x20, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x362, paletteNum=0xc
+    packed_sprite_oaml x=0x5F, y=0x30, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x362, paletteNum=0xc
+    packed_sprite_oaml x=-0x64, y=0x18, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x366, paletteNum=0xc
+    packed_sprite_oaml x=0x44, y=0x60, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x366, paletteNum=0xc
+    packed_sprite_oaml x=0x14, y=-0x40, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x366, paletteNum=0xc
+    packed_sprite_oaml x=0x2, y=0x38, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x36a, paletteNum=0xc
 
-gUnknown_086BB0E6:: @ 0x086BB0E6
+gRaquazaFlybyLeftWindSpeedlines1BSpriteSet:: @ 0x086BB0E6
 .2byte 9
-    packed_sprite_oam x=-0xE, y=0x38, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x372, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x2E, y=0x3B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x376, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x46, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x36a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x56, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x372, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x76, y=0x63, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x376, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x3D, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x2, tileNum=0x36a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x4D, y=-0x50, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x372, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x6D, y=-0x4D, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x376, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x5B, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x366, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0xE, y=0x38, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x372, paletteNum=0xc
+    packed_sprite_oaml x=-0x2E, y=0x3B, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x376, paletteNum=0xc
+    packed_sprite_oaml x=-0x46, y=0x60, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x36a, paletteNum=0xc
+    packed_sprite_oaml x=-0x56, y=0x60, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x372, paletteNum=0xc
+    packed_sprite_oaml x=-0x76, y=0x63, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x376, paletteNum=0xc
+    packed_sprite_oaml x=-0x3D, y=-0x50, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x36a, paletteNum=0xc
+    packed_sprite_oaml x=-0x4D, y=-0x50, spriteSize=SPRITE_SIZE_16x16, hFlip=0x1,  tileNum=0x372, paletteNum=0xc
+    packed_sprite_oaml x=-0x6D, y=-0x4D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x376, paletteNum=0xc
+    packed_sprite_oaml x=-0x5B, y=-0x80, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x366, paletteNum=0xc
 
-gUnknown_086BB130:: @ 0x086BB130
+gRaquazaFlybyLeftWindSpeedlines2ASpriteSet:: @ 0x086BB130
 .2byte 15
-    packed_sprite_oam x=0x41, y=0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x37a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x31, y=0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x37e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x21, y=0x12, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x380, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x42, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x37a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x52, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x37e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x62, y=-0x27, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x380, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x4D, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x37a, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x3D, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x37e, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x2D, y=-0x67, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x380, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x57, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x382, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x4F, y=-0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x384, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x6C, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x382, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x64, y=0x30, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x384, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x44, y=-0x4D, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x388, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x64, y=-0x4D, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x38c, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=0x41, y=0x12, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x37a, paletteNum=0xc
+    packed_sprite_oaml x=0x31, y=0x12, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x37e, paletteNum=0xc
+    packed_sprite_oaml x=0x21, y=0x12, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x380, paletteNum=0xc
+    packed_sprite_oaml x=-0x42, y=-0x27, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x37a, paletteNum=0xc
+    packed_sprite_oaml x=-0x52, y=-0x27, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x37e, paletteNum=0xc
+    packed_sprite_oaml x=-0x62, y=-0x27, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x380, paletteNum=0xc
+    packed_sprite_oaml x=0x4D, y=-0x67, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x37a, paletteNum=0xc
+    packed_sprite_oaml x=0x3D, y=-0x67, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x37e, paletteNum=0xc
+    packed_sprite_oaml x=0x2D, y=-0x67, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x380, paletteNum=0xc
+    packed_sprite_oaml x=0x57, y=-0x20, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x382, paletteNum=0xc
+    packed_sprite_oaml x=0x4F, y=-0x20, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x384, paletteNum=0xc
+    packed_sprite_oaml x=0x6C, y=0x30, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x382, paletteNum=0xc
+    packed_sprite_oaml x=0x64, y=0x30, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x384, paletteNum=0xc
+    packed_sprite_oaml x=-0x44, y=-0x4D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x388, paletteNum=0xc
+    packed_sprite_oaml x=-0x64, y=-0x4D, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x38c, paletteNum=0xc
 
-
-gUnknown_086BB1AA:: @ 0x086BB1AA
+gRaquazaFlybyLeftWindSpeedlines2BSpriteSet:: @ 0x086BB1AA
 .2byte 12
-    packed_sprite_oam x=-0x4, y=0x3B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x388, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x24, y=0x3B, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x38c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x4D, y=0x63, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x388, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x6D, y=0x63, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x1, tileNum=0x38c, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x23, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x385, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x1B, y=-0x40, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x387, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x55, y=0x17, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x385, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x5D, y=0x17, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x387, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x54, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x385, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=0x4C, y=0x60, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x387, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x4C, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x385, priority=0x0, paletteNum=0xc
-.2byte 0
-    packed_sprite_oam x=-0x54, y=-0x80, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x1, vFlip=0x0, size=0x0, tileNum=0x387, priority=0x0, paletteNum=0xc
-.2byte 0
+    packed_sprite_oaml x=-0x4, y=0x3B, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x388, paletteNum=0xc
+    packed_sprite_oaml x=-0x24, y=0x3B, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x38c, paletteNum=0xc
+    packed_sprite_oaml x=-0x4D, y=0x63, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x388, paletteNum=0xc
+    packed_sprite_oaml x=-0x6D, y=0x63, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x38c, paletteNum=0xc
+    packed_sprite_oaml x=0x23, y=-0x40, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x385, paletteNum=0xc
+    packed_sprite_oaml x=0x1B, y=-0x40, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x387, paletteNum=0xc
+    packed_sprite_oaml x=-0x55, y=0x17, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x385, paletteNum=0xc
+    packed_sprite_oaml x=-0x5D, y=0x17, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x387, paletteNum=0xc
+    packed_sprite_oaml x=0x54, y=0x60, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x385, paletteNum=0xc
+    packed_sprite_oaml x=0x4C, y=0x60, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x387, paletteNum=0xc
+    packed_sprite_oaml x=-0x4C, y=-0x80, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1,  tileNum=0x385, paletteNum=0xc
+    packed_sprite_oaml x=-0x54, y=-0x80, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x387, paletteNum=0xc
 
-
-gUnknown_086BB20C:: @ 0x086BB20C
+gSphealEndScorePanelSpriteSet:: @ 0x086BB20C
 .2byte 22
-   packed_sprite_oam x=-0x5E, y=-0x16, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2c0, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x5E, y=-0x6, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c4, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x4E, y=-0xE, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2c6, priority=0x0, paletteNum=0x4
-.2byte 0
-    packed_sprite_oam x=-0x5A, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2c8, priority=0x0, paletteNum=0x6
-.2byte 0
-    packed_sprite_oam x=-0x68, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f1, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x48, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f1, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x28, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f1, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x8, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f1, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x18, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f1, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x38, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2f1, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x58, y=0x18, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2f5, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x4A, y=0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x1, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x2, tileNum=0x2e5, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x2A, y=0x1E, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ed, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x46, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2cc, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x46, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2cc, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x10, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ef, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x18, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ef, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x20, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ef, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x10, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ef, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x18, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ef, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x20, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2ef, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x46, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x1, tileNum=0x2cc, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x5E, y=-0x16, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c0, paletteNum=0x4
+    packed_sprite_oaml x=-0x5E, y=-0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2c4, paletteNum=0x4
+    packed_sprite_oaml x=-0x4E, y=-0xE, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2c6, paletteNum=0x4
+    packed_sprite_oaml x=-0x5A, y=0x4, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0x6
+    packed_sprite_oaml x=-0x68, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2f1, paletteNum=0x0
+    packed_sprite_oaml x=-0x48, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2f1, paletteNum=0x0
+    packed_sprite_oaml x=-0x28, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2f1, paletteNum=0x0
+    packed_sprite_oaml x=-0x8, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2f1, paletteNum=0x0
+    packed_sprite_oaml x=0x18, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2f1, paletteNum=0x0
+    packed_sprite_oaml x=0x38, y=0x18, spriteSize=SPRITE_SIZE_32x8, tileNum=0x2f1, paletteNum=0x0
+    packed_sprite_oaml x=0x58, y=0x18, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2f5, paletteNum=0x0
+    packed_sprite_oaml x=-0x4A, y=0x1E, spriteSize=SPRITE_SIZE_32x16, tileNum=0x2e5, paletteNum=0x0
+    packed_sprite_oaml x=-0x2A, y=0x1E, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ed, paletteNum=0x0
+    packed_sprite_oaml x=-0x46, y=-0x10, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0x0
+    packed_sprite_oaml x=-0x46, y=0x4, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ef, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ef, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ef, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ef, paletteNum=0x0
+    packed_sprite_oaml x=-0x18, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ef, paletteNum=0x0
+    packed_sprite_oaml x=-0x20, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2ef, paletteNum=0x0
+    packed_sprite_oaml x=0x46, y=0x20, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2cc, paletteNum=0x0
 
-gUnknown_086BB2BE:: @ 0x086BB2BE
+gSphealEndScoreSphealsSunkSpriteSet:: @ 0x086BB2BE
 .2byte 12
-    packed_sprite_oam x=-0x6, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0xA, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0xF, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x17, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x1F, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x27, y=-0x8, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2C, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x34, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x3C, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x32, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x2A, y=-0x10, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x6, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x2, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0xA, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2e4, paletteNum=0x0
+    packed_sprite_oaml x=0xF, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x17, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x1F, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x27, y=-0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2e4, paletteNum=0x0
+    packed_sprite_oaml x=0x2C, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x34, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x3C, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=-0x32, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=-0x2A, y=-0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
 
-gUnknown_086BB320:: @ 0x086BB320
+gSphealEndScoreBallsSunkSpriteSet:: @ 0x086BB320
 .2byte 12
-    packed_sprite_oam x=-0x6, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0xA, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0xF, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x17, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x1F, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x27, y=0xC, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2C, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x34, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x3C, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x32, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x2A, y=0x4, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0x6, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x2, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0xA, y=0xC, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2e4, paletteNum=0x0
+    packed_sprite_oaml x=0xF, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x17, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x1F, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x27, y=0xC, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2e4, paletteNum=0x0
+    packed_sprite_oaml x=0x2C, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x34, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x3C, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=-0x32, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=-0x2A, y=0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
 
-gUnknown_086BB382:: @ 0x086BB382
+gSphealEndScoreTotalSpriteSet:: @ 0x086BB382
 .2byte 12
-    packed_sprite_oam x=-0xE, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=-0x6, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0xA, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0xF, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x17, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x1F, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x27, y=0x28, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x0, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2e4, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x2C, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x34, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x3C, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d0, priority=0x0, paletteNum=0x0
-.2byte 0
-    packed_sprite_oam x=0x56, y=0x20, affineMode=0x0, objMode=0x0, mosaic=0x0, bpp=0x0, shape=0x2, matrixNum=0x0, hFlip=0x0, vFlip=0x0, size=0x0, tileNum=0x2d2, priority=0x0, paletteNum=0x0
-.2byte 0
+    packed_sprite_oaml x=-0xE, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=-0x6, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x2, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0xA, y=0x28, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2e4, paletteNum=0x0
+    packed_sprite_oaml x=0xF, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x17, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x1F, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x27, y=0x28, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2e4, paletteNum=0x0
+    packed_sprite_oaml x=0x2C, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x34, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x3C, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d0, paletteNum=0x0
+    packed_sprite_oaml x=0x56, y=0x20, spriteSize=SPRITE_SIZE_8x16, tileNum=0x2d2, paletteNum=0x0
 
-gUnknown_086BB3E4:: @ 0x086BB3E4
-    .4byte gUnknown_086BA18A
-    .4byte gUnknown_086BA1E4
-    .4byte gUnknown_086BA1F6
-    .4byte gUnknown_086BA16C
-    .4byte gUnknown_086BA176
-    .4byte gUnknown_086BAA5A
-    .4byte gUnknown_086BAA40
-    .4byte gUnknown_086BA21A
-    .4byte gUnknown_086BA22C
-    .4byte gUnknown_086BA23E
-    .4byte gUnknown_086BA210
-    .4byte gUnknown_086BA180
-    .4byte gUnknown_086BA264
-    .4byte gUnknown_086BA25A
-    .4byte gUnknown_086BA250
+gDusclopsBoardSpriteSets:: @ 0x086BB3E4
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gDusclopsBoardDuskullEntity0SpriteSet
+    .4byte gDusclopsBoardDuskullEntity1SpriteSet
+    .4byte gDusclopsBoardDuskullEntity2SpriteSet
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gDusclopsBoardPhasingFxSpriteSet
+    .4byte gDusclopsBoardBallCaptureVortexFxSpriteSet
+    .4byte gDusclopsBoardDusclopsEntitySpriteSet
 
-gKecleonDefaultSpriteSets:: @ 0x086BB420
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086BA2C8
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA288
-.4byte gUnknown_086BA394
-.4byte gUnknown_086BA382
-.4byte gUnknown_086BA35E
-.4byte gUnknown_086BA370
-.4byte gUnknown_086BA34C
-.4byte gUnknown_086BA33A
-.4byte gUnknown_086BA29C
-.4byte gUnknown_086BA2BE
-.4byte gUnknown_086BA328
-.4byte gUnknown_086BA304
-.4byte gUnknown_086BA316
-.4byte gUnknown_086BA2F2
-.4byte gUnknown_086BA180
-.4byte gUnknown_086BA276
-.4byte gUnknown_086BA292
-.4byte gUnknown_086BA3A6
-.4byte gUnknown_086BA3C0
-.4byte gUnknown_086BA3D2
-.4byte gUnknown_086BA3E4
-.4byte gUnknown_086BA412
-.4byte gUnknown_086BA434
-.4byte gUnknown_086BA3F6
-.4byte gUnknown_086BA408
-gUnknown_086BB4A4:: @ 0x086BB4A4
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086B1F26
-.4byte gUnknown_086B1F78
-.4byte gUnknown_086B1676
-.4byte gUnknown_086B16A8
-.4byte gUnknown_086BA4D6
-.4byte gUnknown_086BA4F0
-.4byte gUnknown_086BA50A
-.4byte gUnknown_086BA524
-.4byte gUnknown_086BA572
-.4byte gUnknown_086BA550
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA180
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086BA44E
-.4byte gUnknown_086BA4A0
-.4byte gUnknown_086BA4AA
-.4byte gUnknown_086BA4B4
-.4byte gUnknown_086B1DC4
-.4byte gUnknown_086BA53E
-gUnknown_086BB510:: @ 0x086BB510
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086B1F26
-.4byte gUnknown_086B1F78
-.4byte gUnknown_086B1676
-.4byte gUnknown_086B16A8
-.4byte gUnknown_086BA624
-.4byte gUnknown_086BA63E
-.4byte gUnknown_086BA658
-.4byte gUnknown_086BA672
-.4byte gUnknown_086BA5B4
-.4byte gUnknown_086BA5CE
-.4byte gUnknown_086BA5E8
-.4byte gUnknown_086BA68C
-.4byte gUnknown_086BA68C
-.4byte gUnknown_086BA68C
-.4byte gUnknown_086BA68C
-.4byte gUnknown_086BAB1E
-.4byte gUnknown_086BAAEC
-.4byte gUnknown_086BAB40
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA180
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086BA6CA
-.4byte gUnknown_086BA602
-.4byte gUnknown_086B1DC4
-gUnknown_086BB590:: @ 0x086BB590
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086B1F26
-.4byte gUnknown_086B1F78
-.4byte gUnknown_086B1676
-.4byte gUnknown_086B16A8
-.4byte gUnknown_086BAB52
-.4byte gUnknown_086BAB74
-.4byte gUnknown_086BABA6
-.4byte gUnknown_086BA75C
-.4byte gUnknown_086BA85E
-.4byte gUnknown_086BA85E
-.4byte gUnknown_086BA8BE
-.4byte gUnknown_086BA8D8
-.4byte gUnknown_086BA90A
-.4byte gUnknown_086BA882
-.4byte gUnknown_086BA870
-.4byte gUnknown_086BABD0
-.4byte gUnknown_086BAC62
-.4byte gUnknown_086BACF4
-.4byte gUnknown_086BAD6E
-.4byte gUnknown_086BADE0
-.4byte gUnknown_086BAE5A
-.4byte gUnknown_086BAEA4
-.4byte gUnknown_086BAF1E
-.4byte gUnknown_086BAF80
-.4byte gUnknown_086BAFFA
-.4byte gUnknown_086BB06C
-.4byte gUnknown_086BB0E6
-.4byte gUnknown_086BB130
-.4byte gUnknown_086BB1AA
-.4byte gUnknown_086BA8AC
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA180
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086B1E46
-.4byte gUnknown_086BA854
-.4byte gUnknown_086BA766
-.4byte gUnknown_086BA7D8
-.4byte gUnknown_086B1DC4
-.4byte gUnknown_086BA84A
+gKecleonBoardSpriteSets:: @ 0x086BB420
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gKecleonTreeLeavesSpriteSet
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gKecleonDustFxSpriteSet
+    .4byte gKecleonBushBottomRightBottomSpriteSet
+    .4byte gKecleonBushBottomRightMiddleSpriteSet
+    .4byte gKecleonBushBottomLeftBottomSpriteSet
+    .4byte gKecleonBushBottomRightTopSpriteSet
+    .4byte gKecleonBushBottomLeftMiddleSpriteSet
+    .4byte gKecleonBushBottomLeftTopSpriteSet
+    .4byte gKecleonSignSpriteSet
+    .4byte gKecleonRockSpriteSet
+    .4byte gKecleonBushTopRightBottomSpriteSet
+    .4byte gKecleonBushTopLeftBottomSpriteSet
+    .4byte gKecleonBushTopRightTopSpriteSet
+    .4byte gKecleonBushTopLeftTopSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gKecleonEntitySpriteSet
+    .4byte gKecleonScopeItemSpriteSet
+    .4byte gKecleonFlowerByTreeSpriteSet
+    .4byte gKecleonFlowerPairLeftSpriteSet
+    .4byte gKecleonFlowerPairBottomRightSpriteSet
+    .4byte gKecleonFlowerTrippleRightSpriteSet
+    .4byte gKecleonBallRippleFxSpriteSet
+    .4byte gKecleonStepRippleFxSpriteSet
+    .4byte gKecleonReflectionHeadSpriteSet
+    .4byte gKecleonReflectionBallSpriteSet
 
+gKyogreBoardSpriteSets:: @ 0x086BB4A4
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gLegendaryCatchNameBannerSpriteSet
+    .4byte gLegendaryCatchWasCaughtTextSpriteSet
+    .4byte gPortraitBordersSpriteSet
+    .4byte gPortraitSpriteSet
+    .4byte gKyogreCrystalTopRightSpriteSet
+    .4byte gKyogreCrystalTopLeftSpriteSet
+    .4byte gKyogreCrystalBottomRightSpriteSet
+    .4byte gKyogreCrystalBottomLeftSpriteSet
+    .4byte gKyogreIntroCrystalGroundSpriteSet
+    .4byte gKyogreFreezeTrapSpriteSet
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gMonCatchBallTrailSpriteSet
+    .4byte gMonCatchBallTrailSpriteSet
+    .4byte gKyogreEntitySpriteSet
+    .4byte gKyogreWhirlpool0SpriteSet
+    .4byte gKyogreWhirlpool1SpriteSet
+    .4byte gKyogreShockwaveSpriteSet
+    .4byte gMonCatchBallAbsorbPokemonFxSpriteSet
+    .4byte gKyogreSurfacingFxSpriteSet
 
+gGroudonBoardSpriteSets:: @ 0x086BB510
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gLegendaryCatchNameBannerSpriteSet
+    .4byte gLegendaryCatchWasCaughtTextSpriteSet
+    .4byte gPortraitBordersSpriteSet
+    .4byte gPortraitSpriteSet
+    .4byte gGroudonCrystalTopRightSpriteSet
+    .4byte gGroudonCrystalBottomRightSpriteSet
+    .4byte gGroudonCrystalTopLeftSpriteSet
+    .4byte gGroudonCrystalBottomLeftSpriteSet
+    .4byte gGroudonBoulder0SpriteSet
+    .4byte gGroudonBoulder1SpriteSet
+    .4byte gGroudonBoulder2SpriteSet
+    .4byte gGroudonFirePillarSpriteSet
+    .4byte gGroudonFirePillarSpriteSet
+    .4byte gGroudonFirePillarSpriteSet
+    .4byte gGroudonFirePillarSpriteSet
+    .4byte gGroudonFireballSpriteSet
+    .4byte gGroudonFireballLaunchFxSpriteSet
+    .4byte gGroudonFireballCaughtBallSpriteSet
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gMonCatchBallTrailSpriteSet
+    .4byte gMonCatchBallTrailSpriteSet
+    .4byte gGroudonEntitySpriteSet
+    .4byte gGroudonShockwaveSpriteSet
+    .4byte gMonCatchBallAbsorbPokemonFxSpriteSet
 
-gUnknown_086BB648:: @ 0x086BB648
-.4byte gUnknown_086BA18A
-.4byte gUnknown_086BA1E4
-.4byte gUnknown_086BA1F6
-.4byte gUnknown_086BA16C
-.4byte gUnknown_086BA176
-.4byte gUnknown_086BAA5A
-.4byte gUnknown_086BAA40
-.4byte gUnknown_086BB20C
-.4byte gUnknown_086BB2BE
-.4byte gUnknown_086BB320
-.4byte gUnknown_086BB382
-.4byte gUnknown_086BA94E
-.4byte gUnknown_086BA210
-.4byte gUnknown_086BA180
-.4byte gUnknown_086BA974
-.4byte gUnknown_086BA996
-.4byte gUnknown_086BA9B8
-.4byte gUnknown_086BA9DA
-.4byte gUnknown_086BA944
-.4byte gUnknown_086BA9FC
-.4byte gUnknown_086BAA1E
-.4byte gUnknown_086BA960
-.4byte gUnknown_086BA96A
+gRayquazaBoardSpriteSets:: @ 0x086BB590
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gLegendaryCatchNameBannerSpriteSet
+    .4byte gLegendaryCatchWasCaughtTextSpriteSet
+    .4byte gPortraitBordersSpriteSet
+    .4byte gPortraitSpriteSet
+    .4byte gRaquazaIntroCloud0SpriteSet
+    .4byte gRaquazaIntroCloud1SpriteSet
+    .4byte gRaquazaIntroCloud2SpriteSet
+    .4byte gRaquazaFlyingSparkleSpriteSet
+    .4byte gRaquazaTornadoSpriteSet
+    .4byte gRaquazaTornadoSpriteSet
+    .4byte gRaquazaLightningChargeRingSpriteSet
+    .4byte gRaquazaLightningWarningStrikeSpriteSet
+    .4byte gRaquazaLightningStrikeSpriteSet
+    .4byte gRaquazaWhirlwindBallLaunchSpriteSet
+    .4byte gRaquazaEntityRoarHeadExtensionSpriteSet
+    .4byte gRaquazaEntityFlybyRightSpriteSet
+    .4byte gRaquazaEntityFlybyLeftSpriteSet
+    .4byte gRaquazaFlybyRightWindSpeedlines0ASpriteSet
+    .4byte gRaquazaFlybyRightWindSpeedlines0BSpriteSet
+    .4byte gRaquazaFlybyRightWindSpeedlines1ASpriteSet
+    .4byte gRaquazaFlybyRightWindSpeedlines1BSpriteSet
+    .4byte gRaquazaFlybyRightWindSpeedlines2ASpriteSet
+    .4byte gRaquazaFlybyRightWindSpeedlines2BSpriteSet
+    .4byte gRaquazaFlybyLeftWindSpeedlines0ASpriteSet
+    .4byte gRaquazaFlybyLeftWindSpeedlines0BSpriteSet
+    .4byte gRaquazaFlybyLeftWindSpeedlines1ASpriteSet
+    .4byte gRaquazaFlybyLeftWindSpeedlines1BSpriteSet
+    .4byte gRaquazaFlybyLeftWindSpeedlines2ASpriteSet
+    .4byte gRaquazaFlybyLeftWindSpeedlines2BSpriteSet
+    .4byte gRaquazaLightningBallGrabSpriteSet
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gMonCatchBallTrailSpriteSet
+    .4byte gMonCatchBallTrailSpriteSet
+    .4byte gRaquazaEntityBouncingSpriteSet
+    .4byte gRaquazaEntityFlyingUpSpriteSet
+    .4byte gRaquazaEntityFlyingDownSpriteSet
+    .4byte gMonCatchBallAbsorbPokemonFxSpriteSet
+    .4byte gRaquazaEntityShadowFxSpriteSet
+
+gSphealBoardSpriteSets:: @ 0x086BB648
+    .4byte gBonusBoardPausePanelSpriteSet
+    .4byte gBonusBoardPauseTopBorderSpriteSet
+    .4byte gBonusBoardPauseBottomBorderSpriteSet
+    .4byte gBonusBoardLeftFlipperSpriteSet
+    .4byte gBonusBoardRightFlipperSpriteSet
+    .4byte gBonusBoardEndScoreSpriteSet
+    .4byte gBonusBoardScoreBannerGraphicSpriteSet
+    .4byte gSphealEndScorePanelSpriteSet
+    .4byte gSphealEndScoreSphealsSunkSpriteSet
+    .4byte gSphealEndScoreBallsSunkSpriteSet
+    .4byte gSphealEndScoreTotalSpriteSet
+    .4byte gSphealNetFrontSpriteSet
+    .4byte gBonusBoardBallRespawnFxSpriteSet
+    .4byte gBonusBoardBallSpriteSet
+    .4byte gSphealEntity0SpriteSet
+    .4byte gSphealEntity1SpriteSet
+    .4byte gSphealEntity0ReflectionSpriteSet
+    .4byte gSphealEntity1ReflectionSpriteSet
+    .4byte gSphealNetBackSpriteSet
+    .4byte gSphealWhiscashEntitySpriteSet
+    .4byte gSphealPelipperEntitySpriteSet
+    .4byte gSphealLeftSealeoEntitySpriteSet
+    .4byte gSphealRightSealeoEntitySpriteSet
 
 
 
@@ -12975,7 +13508,23 @@ gMonHatchSpriteGroupGfx:: @ 0x086BB6DC
 	.4byte gMonHatchSpriteGroup5_Gfx
 
 gCatchSpriteGfxPtrs:: @ 0x086BB6F4
-	.incbin "baserom.gba", 0x6BB6F4, 0x44
+    .4byte gMonCatchSpriteGroup0_Gfx
+    .4byte gMonCatchSpriteGroup1_Gfx
+    .4byte gMonCatchSpriteGroup2_Gfx
+    .4byte gMonCatchSpriteGroup3_Gfx
+    .4byte gMonCatchSpriteGroup4_Gfx
+    .4byte gMonCatchSpriteGroup5_Gfx
+    .4byte gMonCatchSpriteGroup6_Gfx
+    .4byte gMonCatchSpriteGroup7_Gfx
+    .4byte gMonCatchSpriteGroup8_Gfx
+    .4byte gMonCatchSpriteGroup9_Gfx
+    .4byte gMonCatchSpriteGroup10_Gfx
+    .4byte gMonCatchSpriteGroup11_Gfx
+    .4byte gMonCatchSpriteGroup12_Gfx
+    .4byte gMonCatchSpriteGroup13_Gfx
+    .4byte gMonCatchSpriteGroup14_Gfx
+    .4byte gMonCatchSpriteGroup15_Gfx
+    .4byte gMonCatchSpriteGroup16_Gfx
 
 gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup0_Gfx
@@ -12993,7 +13542,131 @@ gMonPortraitGroupGfx:: @ 0x086BB738
 	.4byte gMonPortraitsGroup12_Gfx
 	.4byte gMonPortraitsGroup13_Gfx
 
-.incbin "baserom.gba", 0x6BB770, 0x1A0 @ 0x6BB910 - 0x6BB770
+gOptionsSoundDigitSpriteSet:: @ 0x086BB770
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x16, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x17, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x19, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1A, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1B, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1C, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1D, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1E, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1F, paletteNum=0x0
+
+gOptionsHandCursorSpriteSet:: @ 0x086BB7D4
+.2byte 1
+    packed_sprite_oaml x=0x1, y=-0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=-0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x1, paletteNum=0x0
+
+
+gOptionsSettingSelectionArrowSpriteSet:: @ 0x086BB7E8
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x3, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x6, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x10, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x8, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0xA, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x8, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0xE, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x12, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x13, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x15, paletteNum=0x0
+
+
+gOptionsButtonEditPressButtonTextSpriteSet:: @ 0x086BB856
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x8, tileNum=0x23, paletteNum=0x0
+    packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_16x8, tileNum=0x27, paletteNum=0x0
+
+gOptionsGbaButtonIconSpriteSet:: @ 0x086BB868
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x0, paletteNum=0x0
+
+gOptionsSoundSelectionArrow0SpriteSet:: @ 0x086BB872
+.2byte 2
+    packed_sprite_oaml x=-0x8, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x29, paletteNum=0x0
+    packed_sprite_oaml x=0x16, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x29, paletteNum=0x0
+
+gOptionsSoundSelectionArrow1SpriteSet:: @ 0x086BB884
+.2byte 2
+    packed_sprite_oaml x=-0x7, y=0x0, hFlip=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x29, paletteNum=0x0
+    packed_sprite_oaml x=0x15, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x29, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oaml x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2A, paletteNum=0x0
+
+gOptionsTorchicEntitySpriteSet:: @ 0x086BB8A0
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x40, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xC0, paletteNum=0x2
+
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x44, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xC4, paletteNum=0x2
+
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x48, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xC8, paletteNum=0x2
+
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x4C, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xCC, paletteNum=0x2
+
+.2byte 2
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x50, paletteNum=0x2
+    packed_sprite_oaml x=0x0, y=0x20, spriteSize=SPRITE_SIZE_32x16, tileNum=0xD0, paletteNum=0x2
+
+gOptionsTorchicNoteBubbleSpriteSet:: @ 0x086BB8FA
+.2byte 1
+    packed_sprite_oaml x=-0x1, y=-0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x54, paletteNum=0x1
+
+.2byte 1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x94, paletteNum=0x1
+
+.2byte 0
 
 gButtonInfoTable:: @ 0x086BB910
 	.2byte A_BUTTON, 0x4, 0x0, 0x8
@@ -13018,12 +13691,185 @@ gButtonAnimData:: @ 0x086BB9B4
 	.incbin "baserom.gba", 0x6BB9B4, 0x38
 
 gOptionsSpriteSets:: @ 0x086BB9EC
-	.incbin "baserom.gba", 0x6BB9EC, 0x80
+    .4byte gOptionsHandCursorSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundDigitSpriteSet
+    .4byte gOptionsSoundSelectionArrow0SpriteSet @ Paired with one in slot 27
+    .4byte gOptionsSettingSelectionArrowSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsGbaButtonIconSpriteSet
+    .4byte gOptionsSoundSelectionArrow1SpriteSet @ Paired with one in slot 7
+    .4byte gOptionsButtonEditPressButtonTextSpriteSet
+    .4byte gOptionsSettingSelectionArrowSpriteSet
+    .4byte gOptionsTorchicEntitySpriteSet
+    .4byte gOptionsTorchicNoteBubbleSpriteSet
 
 gSaveFileSignature:: @ 0x086BBA6C
 	.ascii "POKEPINAGB"
+    .space 0x2
 
-	.incbin "baserom.gba", 0x6BBA76, 0x564 @ 0x6BBA6C + 0xA, 0x6BBFD0 - 0x6BBA6C
+    .4byte gUnknown_086BBB04
+    .4byte gUnknown_086BBB0C
+    .4byte gUnknown_086BBB14
+    .4byte gUnknown_086BBB1C
+    .4byte gUnknown_086BBB24
+    .4byte gUnknown_086BBB2C
+    .4byte gUnknown_086BBB34
+    .4byte gUnknown_086BBB3C
+    .4byte gUnknown_086BBB44
+    .4byte gUnknown_086BBB4C
+    .4byte gUnknown_086BBB54
+    .4byte gUnknown_086BBB5C
+    .4byte gUnknown_086BBB64
+    .4byte gUnknown_086BBB6C
+    .4byte gUnknown_086BBB74
+    .4byte gUnknown_086BBB7C
+    .4byte gUnknown_086BBB84
+    .4byte gUnknown_086BBB8C
+    .4byte gUnknown_086BBB94
+    .4byte gUnknown_086BBB9C
+    .4byte gUnknown_086BBBA4
+    .4byte gUnknown_086BBBAC
+    .4byte gUnknown_086BBBB4
+    .4byte gUnknown_086BBBBC
+    .4byte gUnknown_086BBBCA
+    .4byte gUnknown_086BBBD2
+    .4byte gUnknown_086BBBE0
+    .4byte gUnknown_086BBBEE
+    .4byte gUnknown_086BBBF6
+    .4byte gUnknown_086BBC04
+    .4byte gUnknown_086BBC12
+    .4byte gUnknown_086BBC20
+    .4byte gUnknown_086BBC2E
+    .4byte gUnknown_086BBC3C
+    .4byte gUnknown_086BBC44
+
+gUnknown_086BBB04:: @ 0x086BBB04
+    .incbin "baserom.gba", 0x6BBB04, 0x8
+
+gUnknown_086BBB0C:: @ 0x086BBB0C
+    .incbin "baserom.gba", 0x6BBB0C, 0x8
+
+gUnknown_086BBB14:: @ 0x086BBB14
+    .incbin "baserom.gba", 0x6BBB14, 0x8
+
+gUnknown_086BBB1C:: @ 0x086BBB1C
+    .incbin "baserom.gba", 0x6BBB1C, 0x8
+
+gUnknown_086BBB24:: @ 0x086BBB24
+    .incbin "baserom.gba", 0x6BBB24, 0x8
+
+gUnknown_086BBB2C:: @ 0x086BBB2C
+    .incbin "baserom.gba", 0x6BBB2C, 0x8
+
+gUnknown_086BBB34:: @ 0x086BBB34
+    .incbin "baserom.gba", 0x6BBB34, 0x8
+
+gUnknown_086BBB3C:: @ 0x086BBB3C
+    .incbin "baserom.gba", 0x6BBB3C, 0x8
+
+gUnknown_086BBB44:: @ 0x086BBB44
+    .incbin "baserom.gba", 0x6BBB44, 0x8
+
+gUnknown_086BBB4C:: @ 0x086BBB4C
+    .incbin "baserom.gba", 0x6BBB4C, 0x8
+
+gUnknown_086BBB54:: @ 0x086BBB54
+    .incbin "baserom.gba", 0x6BBB54, 0x8
+
+gUnknown_086BBB5C:: @ 0x086BBB5C
+    .incbin "baserom.gba", 0x6BBB5C, 0x8
+
+gUnknown_086BBB64:: @ 0x086BBB64
+    .incbin "baserom.gba", 0x6BBB64, 0x8
+
+gUnknown_086BBB6C:: @ 0x086BBB6C
+    .incbin "baserom.gba", 0x6BBB6C, 0x8
+
+gUnknown_086BBB74:: @ 0x086BBB74
+    .incbin "baserom.gba", 0x6BBB74, 0x8
+
+gUnknown_086BBB7C:: @ 0x086BBB7C
+    .incbin "baserom.gba", 0x6BBB7C, 0x8
+
+gUnknown_086BBB84:: @ 0x086BBB84
+    .incbin "baserom.gba", 0x6BBB84, 0x8
+
+gUnknown_086BBB8C:: @ 0x086BBB8C
+    .incbin "baserom.gba", 0x6BBB8C, 0x8
+
+gUnknown_086BBB94:: @ 0x086BBB94
+    .incbin "baserom.gba", 0x6BBB94, 0x8
+
+gUnknown_086BBB9C:: @ 0x086BBB9C
+    .incbin "baserom.gba", 0x6BBB9C, 0x8
+
+gUnknown_086BBBA4:: @ 0x086BBBA4
+    .incbin "baserom.gba", 0x6BBBA4, 0x8
+
+gUnknown_086BBBAC:: @ 0x086BBBAC
+    .incbin "baserom.gba", 0x6BBBAC, 0x8
+
+gUnknown_086BBBB4:: @ 0x086BBBB4
+    .incbin "baserom.gba", 0x6BBBB4, 0x8
+
+gUnknown_086BBBBC:: @ 0x086BBBBC
+    .incbin "baserom.gba", 0x6BBBBC, 0xE
+
+gUnknown_086BBBCA:: @ 0x086BBBCA
+    .incbin "baserom.gba", 0x6BBBCA, 0x8
+
+gUnknown_086BBBD2:: @ 0x086BBBD2
+    .incbin "baserom.gba", 0x6BBBD2, 0xE
+
+gUnknown_086BBBE0:: @ 0x086BBBE0
+    .incbin "baserom.gba", 0x6BBBE0, 0xE
+
+gUnknown_086BBBEE:: @ 0x086BBBEE
+    .incbin "baserom.gba", 0x6BBBEE, 0x8
+
+gUnknown_086BBBF6:: @ 0x086BBBF6
+    .incbin "baserom.gba", 0x6BBBF6, 0xE
+
+gUnknown_086BBC04:: @ 0x086BBC04
+    .incbin "baserom.gba", 0x6BBC04, 0xE
+
+gUnknown_086BBC12:: @ 0x086BBC12
+    .incbin "baserom.gba", 0x6BBC12, 0xE
+
+gUnknown_086BBC20:: @ 0x086BBC20
+    .incbin "baserom.gba", 0x6BBC20, 0xE
+
+gUnknown_086BBC2E:: @ 0x086BBC2E
+    .incbin "baserom.gba", 0x6BBC2E, 0xE
+
+gUnknown_086BBC3C:: @ 0x086BBC3C
+    .incbin "baserom.gba", 0x6BBC3C, 0x8
+
+gUnknown_086BBC44:: @ 0x086BBC44
+    .incbin "baserom.gba", 0x6BBC44, 0x38C @ 0x6BBFD0 - 0x6BBC44
+
+.align 2
 
 @ rom end 0x6BBFD0
 

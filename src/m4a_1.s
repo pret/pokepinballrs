@@ -679,7 +679,7 @@ sub_522D0:
 	add r2, r2, r1
 	add r2, r2, 0x10
 	ldr r5, =gDpcmSampleBuffer
-	ldr r6, =0x852D918 @ gDeltaEncodingTable
+	ldr r6, =gDeltaEncodingTable
 	mov r7, 0x40
 	ldrb lr, [r2], 1
 	strb lr, [r5], 1
@@ -814,7 +814,7 @@ chk_adr_r2_done:
 	bx lr
 
 	.align 2, 0
-lt_MPlayJumpTableTemplate: .word 0x852D888 @ gMPlayJumpTableTemplate
+lt_MPlayJumpTableTemplate: .word gMPlayJumpTableTemplate
 
 	thumb_func_start ld_r3_tp_adr_i
 ld_r3_tp_adr_i:

@@ -22,7 +22,7 @@ enum BonusFieldSelection
     FIELD_SELECT_RAYQUAZA,
 };
 
-EWRAM_DATA s8 gBallSpeedSubmenuVisible = 0;
+EWRAM_DATA s8 gBallSpeedSubmenuVisible = FALSE;
 EWRAM_DATA u8 gSelectedBallSpeed = 0;
 EWRAM_DATA s16 gBallSpeedDisplayToggle = 0;
 EWRAM_DATA s8 gSelectedBonusField = 0;
@@ -92,7 +92,7 @@ void InitBonusFieldSelectState(void)
     gBonusFieldLoadingCounter = 0;
     gBonusFieldHighlightPalette = 0;
     gBallSpeedDisplayToggle = 0;
-    gBallSpeedSubmenuVisible = 0;
+    gBallSpeedSubmenuVisible = FALSE;
     gBonusFieldSelectNextMainState = STATE_INTRO;
     gSelectedBallSpeed = gMain_saveData.ballSpeed;
 }
@@ -107,7 +107,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             if (gSelectedBonusField != FIELD_SELECT_DUSCLOPS && gSelectedBonusField != FIELD_SELECT_GROUDON)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x6D);
+                m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                 gSelectedBonusField--;
             }
         }
@@ -115,7 +115,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             if (gSelectedBonusField != FIELD_SELECT_SPHEAL && gSelectedBonusField != FIELD_SELECT_RAYQUAZA)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x6D);
+                m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                 gSelectedBonusField++;
             }
         }
@@ -123,7 +123,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             if (gSelectedBonusField > FIELD_SELECT_SPHEAL)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x6D);
+                m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                 gSelectedBonusField -= 3;
             }
         }
@@ -131,7 +131,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             if (gSelectedBonusField < FIELD_SELECT_GROUDON)
             {
-                m4aSongNumStart(SE_UNKNOWN_0x6D);
+                m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                 gSelectedBonusField += 3;
             }
         }
@@ -139,7 +139,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             m4aSongNumStart(SE_MENU_SELECT);
             gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_BALL_SPEED;
-            gBallSpeedSubmenuVisible = 1;
+            gBallSpeedSubmenuVisible = TRUE;
             gBonusFieldSelectTimer = 0;
         }
         if (JOY_NEW(B_BUTTON))
@@ -167,7 +167,7 @@ void BonusFieldSelect_State1_2768(void)
         if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_MENU_CANCEL);
-            gBallSpeedSubmenuVisible = 0;
+            gBallSpeedSubmenuVisible = FALSE;
             gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
         }
         gBonusFieldSelectTimer++;
@@ -186,9 +186,9 @@ void BonusFieldSelect_State1_2768(void)
             gBonusFieldLoadingCounter++;
             if (gBonusFieldLoadingCounter > 5)
             {
-                gMain.continueFromSave = 0;
+                gMain.continueFromSave = FALSE;
                 gMain.tempField = gMain.selectedField = gBonusFieldMenuSelectionToField[gSelectedBonusField];
-                gMain.isBonusField = 1;
+                gMain.isBonusField = TRUE;
                 gBonusFieldSelectNextMainState = STATE_GAME_MAIN;
                 gMain.subState++;
             }
@@ -223,19 +223,19 @@ void RenderBonusFieldSelectSprites(void)
     {
         sgptrs[i] = &gMain.spriteGroups[i];
     }
-    r10 = &gMain.spriteGroups[6 + gSelectedBonusField];
-    r8 = &gMain.spriteGroups[12 + gSelectedBallSpeed * 2 + gBallSpeedDisplayToggle];
+    r10 = &gMain.spriteGroups[SG_6 + gSelectedBonusField];
+    r8 = &gMain.spriteGroups[SG_12 + gSelectedBallSpeed * 2 + gBallSpeedDisplayToggle];
     for (j = 0; j < 6; j++)
     {
-        sgptrs[j]->available = TRUE;
+        sgptrs[j]->active = TRUE;
     }
-    sgptrs[gSelectedBonusField]->available = FALSE;
-    r10->available = TRUE;
-    r8->available = gBallSpeedSubmenuVisible;
-    LoadSpriteSets(gBonusFieldSelectSpriteSets, 16, gMain_spriteGroups);
+    sgptrs[gSelectedBonusField]->active = FALSE;
+    r10->active = TRUE;
+    r8->active = gBallSpeedSubmenuVisible;
+    LoadSpriteSets(gBonusFieldSelectSpriteSets, 16, gMain.spriteGroups);
     for (i = 0; i < 6; i++)
     {
-        if (sgptrs[i]->available == 1)
+        if (sgptrs[i]->active == TRUE)
         {
             sgptrs[i]->baseX = gBonusFieldStageIconPositions[i].x;
             sgptrs[i]->baseY = gBonusFieldStageIconPositions[i].y;
@@ -258,7 +258,7 @@ void RenderBonusFieldSelectSprites(void)
         gOamBuffer[simple->oamId].x = simple->xOffset + r10->baseX;
         gOamBuffer[simple->oamId].y = simple->yOffset + r10->baseY;
     }
-    if (r8->available == 1)
+    if (r8->active == TRUE)
     {
         r8->baseX = gBonusFieldSpeedIndicatorPositions[gSelectedBonusField].x;
         r8->baseY = gBonusFieldSpeedIndicatorPositions[gSelectedBonusField].y;
@@ -272,8 +272,8 @@ void RenderBonusFieldSelectSprites(void)
     }
     for (j = 0; j < 6; j++)
     {
-        sgptrs[j]->available = FALSE;
+        sgptrs[j]->active = FALSE;
     }
-    r10->available = FALSE;
-    r8->available = FALSE;
+    r10->active = FALSE;
+    r8->active = FALSE;
 }

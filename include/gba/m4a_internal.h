@@ -226,8 +226,8 @@ struct PokemonCrySong
     u8 tieCmd; // 0x29
     u8 tieKeyValue; // 0x2A
     u8 tieVelocityValue; // 0x2B
-    u8 unkCmd0C[2]; // 0x2C
-    u16 unkCmd0CParam; // 0x2E
+    u8 xwaitCmd[2]; // 0x2C 
+    u16 length; // 0x2E
     u8 end[2]; // 0x30
 };
 
@@ -369,7 +369,7 @@ extern const u8 gNoiseTable[];
 
 extern const struct PokemonCrySong gPokemonCrySongTemplate;
 
-extern const struct ToneData voicegroup000;
+extern const struct ToneData voicegroup_base_gUnknown_0852DBAC;
 
 extern char gNumMusicPlayers[];
 extern char gMaxLines[];

@@ -26,7 +26,7 @@ struct OamDataSimple
 
 struct SpriteGroup
 {
-    /*0x00*/ u16 available;
+    /*0x00*/ bool16 active;
     /*0x02*/ s16 baseX;
     /*0x04*/ s16 baseY;
     /*0x08*/ struct OamDataSimple oam[MAX_SPRITES_IN_GROUP];

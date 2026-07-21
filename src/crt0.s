@@ -20,7 +20,7 @@ Init: @ 80000C0
 	ldr r1, =INTR_VECTOR
 	adr r0, IntrMain
 	str r0, [r1]
-	ldr r1, =0x800095C + 1
+	ldr r1, =AgbMain + 1
 	mov lr, pc
 	bx r1
 	b Init

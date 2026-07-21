@@ -30,55 +30,75 @@ SECTIONS
     {
         src/crt0.o(.text);
         src/util.o(.text);
-        src/rom_850.o(.text);
         src/main.o(.text);
         src/gbplayer.o(.text);
         src/link.o(.text);
-        src/rom_2414.o(.text);
         src/bonus_field_select.o(.text);
         src/ereader.o(.text);
         src/pokedex.o(.text);
         src/field_select.o(.text);
         src/intro.o(.text);
         src/high_scores.o(.text);
-        src/rom_1068C.o(.text);
+        src/display.o(.text);
         src/titlescreen.o(.text);
-        src/board_process5.o(.text);
-        src/board_process7.o(.text);
-        src/board_process6.o(.text);
-        src/collision_checks.o(.text);
+        src/all_board_process5.o(.text);
+        src/all_board_process7.o(.text);
+        src/all_board_process6_collision.o(.text);
+        src/ruby_collision.o(.text);
+        src/sapphire_collision.o(.text);
+        src/dusclops_collision.o(.text);
+        src/kecleon_collision.o(.text);
+        src/kyogre_collision.o(.text);
+        src/groudon_collision.o(.text);
+        src/rayquaza_collision.o(.text);
+        src/spheal_collision.o(.text);
         src/game_idle.o(.text);
-        src/board_process4.o(.text);
-        src/board_process3_ruby.o(.text);
-        src/rom_1A0F4.o(.text);
-        src/rom_1A98C.o(.text);
-        src/rom_201B8.o(.text);
-        src/rom_27E08.o(.text);
-        src/rom_27F94.o(.text);
-        src/rom_2C538.o(.text);
-        src/rom_2E67C.o(.text);
-        src/rom_30480.o(.text);
-        src/rom_31BE8.o(.text);
-        src/rom_31CF8.o(.text);
-        src/catch_hatch_picker.o(.text);
-        src/board_process3_sapphire.o(.text);
-        src/board_process3_dusclops.o(.text);
-        src/rom_356A0.o(.text);
-        src/board_process3_kecleon.o(.text);
-        src/board_process3_kyogre.o(.text);
-        src/board_process3_groudon.o(.text);
-        src/board_process3_rayquaza.o(.text);
-        src/board_process3_spheal.o(.text);
-        src/rom_467F4.o(.text);
-        src/board_process1.o(.text);
-        src/debug_menu.o(.text);
-        src/pause_game.o(.text);
-        src/pinball_game_main.o(.text);
-        src/board_process8.o(.text);
-        src/board_process2.o(.text);
-        src/rom_4F258.o(.text);
-        src/rom_50AD4.o(.text);
-        src/board_process0.o(.text);
+        src/all_board_process4.o(.text);
+        src/ruby_process3.o(.text);
+        src/all_board_state_transitions_and_idle.o(.text);
+        src/ruby_process3_entities.o(.text);
+        src/all_board_banners.o(.text);
+        src/ruby_catch_holes.o(.text);
+        src/main_board_catch_holes.o(.text);
+        src/all_board_portrait_display.o(.text);
+        src/ruby_process3_entities_2.o(.text);
+        src/main_board_charge_spinner.o(.text);
+        src/ruby_trigger_targets.o(.text);
+        src/main_board_pichu_entity.o(.text);
+        src/main_board_to_be_split.o(.text);
+        src/main_board_catch_tile_logic.o(.text);
+        src/main_board_intro_mode.o(.text);
+        src/main_board_travel_mode.o(.text);
+        src/main_board_evolution_mode.o(.text);
+        src/main_board_catch_normal_and_jirachi_modes.o(.text);
+        src/main_board_catch_tile_particles.o(.text);
+        src/main_board_center_capture_hole.o(.text);
+        src/ruby_ramp.o(.text);
+        src/main_board_launcher_and_cutscenes.o(.text);
+        src/sapphire_pond_and_zigzagoon.o(.text);
+        src/main_board_bumpers.o(.text);
+        src/sapphire_seedot_egg_shop.o(.text);
+        src/main_board_edge.o(.text);
+        src/main_board_catch_hatch_picker.o(.text);
+        src/sapphire_process3.o(.text);
+        src/dusclops_process3.o(.text);
+        src/bonus_complete_scoring_transition.o(.text);
+        src/kecleon_process3.o(.text);
+        src/kyogre_process3.o(.text);
+        src/groudon_process3.o(.text);
+        src/rayquaza_process3.o(.text);
+        src/spheal_process3.o(.text);
+        src/all_board_setup.o(.text);
+        src/all_board_process1.o(.text);
+        src/all_board_mode_change_and_debug_menu.o(.text);
+        src/all_board_pause_game.o(.text);
+        src/all_board_pinball_game_main.o(.text);
+        src/save_and_restore_game.o(.text);
+        src/all_board_process8.o(.text);
+        src/all_board_process2.o(.text);
+        src/ruby_board_indicators.o(.text);
+        src/sapphire_board_indicators.o(.text);
+        src/all_board_process0_sprite_init.o(.text);
         src/options.o(.text);
         src/pokemon_cry.o(.text);
         src/save.o(.text);
@@ -99,10 +119,13 @@ SECTIONS
 
     .rodata :
     {
-        data/rom_1.o(.rodata)
-        data/sound_data.o(.rodata)
-        src/data.o(.rodata)
-        data/rom_2.o(.rodata)
+        . = ALIGN(4); data/rom_1.o(.rodata)
+        . = ALIGN(4); src/m4a_tables.o(.rodata);
+        . = ALIGN(4); data/sound_data.o(.rodata)
+        . = ALIGN(4); src/agb_sram.o(.rodata);
+        . = ALIGN(4); data/sound_data_2.o(.rodata)
+        . = ALIGN(4); src/data.o(.rodata)
+        . = ALIGN(4); data/rom_2.o(.rodata)
     }=0xFF
 
     /* Debug sections - address 0 so they don't affect ROM layout */

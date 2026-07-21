@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entity Collision Map Viewer/Editor</title>
+  <style>
+    :root {
+      --bg: #12141a;
+      --panel: #1d2028;
+      --panel2: #272b35;
+      --text: #eef1f7;
+      --muted: #9da6b8;
+      --accent: #77a7ff;
+      --danger: #ff7b7b;
+      --grid: #3b4252;
+      --cell: #202532;
+      --selected: #ffd166;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #2f3542;
+      background: #171a21;
+    }
+
+    h1 { margin: 0 0 6px; font-size: 20px; }
+    .subtle { color: var(--muted); font-size: 13px; }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(560px, 1fr) 420px;
+      gap: 14px;
+      padding: 14px;
+    }
+
+    section, .panel {
+      background: var(--panel);
+      border: 1px solid #2d3340;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    input[type="file"], input[type="number"], input[type="text"], select, button, textarea {
+      font: inherit;
+    }
+
+    input[type="number"], input[type="text"], select {
+      width: 100%;
+      color: var(--text);
+      background: #11151e;
+      border: 1px solid #3b4252;
+      border-radius: 8px;
+      padding: 6px 8px;
+    }
+
+    button {
+      color: var(--text);
+      background: var(--panel2);
+      border: 1px solid #41495a;
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    button:hover { border-color: var(--accent); }
+    button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .toolbar label { display: inline-flex; align-items: center; gap: 6px; }
+    .toolbar input[type="number"] { width: 82px; }
+    .toolbar select { width: auto; }
+
+    .file-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0;
+    }
+
+    .board-wrap {
+      overflow: auto;
+      max-height: calc(100vh - 250px);
+      border: 1px solid #343a46;
+      border-radius: 10px;
+      background: #0e1118;
+      padding: 10px;
+    }
+
+    canvas {
+      display: block;
+      image-rendering: pixelated;
+      background: #11151e;
+      cursor: crosshair;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 13px;
+      min-height: 20px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+    }
+
+    .warning { color: var(--danger); }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin: 10px 0 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .meta div {
+      background: #151922;
+      border: 1px solid #2d3340;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .editor-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .editor-title h2 { font-size: 16px; margin: 0; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 6px 0 10px;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin: 6px 0 10px;
+    }
+
+    .legend, .type-key {
+      display: flex;
+      gap: 8px 14px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .type-key {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .swatch {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      vertical-align: -2px;
+      margin-right: 4px;
+      border: 1px solid #777;
+    }
+
+    .cell-preview {
+      min-height: 44px;
+      border: 1px solid #3b4252;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 1px 2px black;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-help {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Entity Collision Map Viewer/Editor</h1>
+  <div class="subtle">Loads one u16 little-endian collision map. Upper 12 bits are angle data; lower nibble is collision type.</div>
+</header>
+
+<main>
+  <section>
+    <div class="toolbar">
+      <button id="saveBtn" disabled>Save edited map</button>
+      <label class="subtle">Preset
+        <select id="presetSelect">
+          <option value="filename" selected>From filename _WxH</option>
+          <option value="custom">Custom / manual</option>
+        </select>
+      </label>
+      <label class="subtle">W <input id="widthInput" type="number" value="96" min="1" max="512"></label>
+      <label class="subtle">H <input id="heightInput" type="number" value="88" min="1" max="512"></label>
+      <label class="subtle">Zoom <input id="zoomInput" type="number" value="8" min="2" max="32"></label>
+      <label class="subtle">Color by
+        <select id="colorMode">
+          <option value="type">Type nibble</option>
+          <option value="angle" selected>Angle</option>
+          <option value="combined">Angle + type</option>
+          <option value="solid">Nonzero mask</option>
+        </select>
+      </label>
+      <label class="subtle"><input id="showGrid" type="checkbox"> grid</label>
+    </div>
+
+    <div class="file-row">
+      <label>Collision map</label>
+      <input id="fileInput" type="file" accept=".bin,.4bpp,*/*">
+    </div>
+
+    <div class="status" id="status">Load a u16 little-endian entity collision .bin file. Include size in the filename like Name_96x120.bin, or enter width/height manually.</div>
+
+    <div class="board-wrap" id="boardWrap" tabindex="0">
+      <canvas id="mapCanvas" width="768" height="704"></canvas>
+    </div>
+
+    <div class="legend">
+      <span><span class="swatch" style="background:#ffd166"></span>selected cell</span>
+      <span><span class="swatch" style="background:#11151e"></span>empty / type 0</span>
+      <span>Arrow keys move the selected cell. Click any cell to inspect/edit it.</span>
+    </div>
+  </section>
+
+  <aside class="panel">
+    <div class="editor-title">
+      <h2>Selected map cell</h2>
+      <span class="subtle" id="selectedLabel">none</span>
+    </div>
+
+    <div class="meta">
+      <div>X/Y<br><strong id="xyLabel">—</strong></div>
+      <div>Index<br><strong id="indexLabel">—</strong></div>
+      <div>Byte offset<br><strong id="offsetLabel">—</strong></div>
+      <div>Raw u16<br><strong id="rawLabel">—</strong></div>
+      <div>Angle bits<br><strong id="angleLabel">—</strong></div>
+      <div>Type nibble<br><strong id="typeLabel">—</strong></div>
+    </div>
+
+    <div class="cell-preview" id="cellPreview">—</div>
+
+    <div class="editor-title">
+      <h2>Edit value</h2>
+      <span class="subtle">u16 = angle &amp; FFF0 + type &amp; F</span>
+    </div>
+
+    <label class="subtle">Raw u16 hex</label>
+    <div class="two-col">
+      <input id="rawInput" type="text" disabled placeholder="0000">
+      <button id="applyRawBtn" disabled>Apply raw</button>
+    </div>
+
+    <label class="subtle">Angle/type hex</label>
+    <div class="three-col">
+      <input id="angleInput" type="text" disabled placeholder="0000">
+      <input id="typeInput" type="text" disabled placeholder="0">
+      <button id="applyPartsBtn" disabled>Apply parts</button>
+    </div>
+
+    <div class="nav-help">Angle input is automatically masked to FFF0. Type input accepts 0–F.</div>
+
+    <div class="editor-title">
+      <h2>Collision type key</h2>
+      <span class="subtle">lower nibble</span>
+    </div>
+    <div id="typeKey" class="type-key"></div>
+
+    <div class="editor-title">
+      <h2>Notes</h2>
+    </div>
+    <div class="subtle">
+      This page uses the masking pattern used for moving entities:
+      <br><code>angle = value &amp; 0xFFF0</code>
+      <br><code>type = value &amp; 0x000F</code>
+      <br><br>
+      The file size must equal <code>width × height × 2</code> bytes for normal editing. Filename dimensions are read from a pattern like <code>NAME_96x120.bin</code>. If dimensions do not match the file, the page still loads but warns and only renders cells that exist in the file.
+    </div>
+  </aside>
+</main>
+
+<script>
+  const ANGLE_MASK = 0xFFF0;
+  const TYPE_MASK = 0x000F;
+
+  const state = {
+    data: null,
+    fileName: "",
+    selectedX: 0,
+    selectedY: 0,
+    dirty: false
+  };
+
+  const $ = id => document.getElementById(id);
+  const canvas = $("mapCanvas");
+  const boardWrap = $("boardWrap");
+  const ctx = canvas.getContext("2d");
+
+  const typeHues = {
+    0x0: 220,
+    0x1: 24,
+    0x2: 92,
+    0x3: 0,
+    0x4: 210,
+    0x5: 48,
+    0x6: 160,
+    0x7: 280,
+    0x8: 330,
+    0x9: 188,
+    0xA: 120,
+    0xB: 300,
+    0xC: 16,
+    0xD: 250,
+    0xE: 62,
+    0xF: 350
+  };
+
+  function toHex(value, width) {
+    return (Number(value) >>> 0).toString(16).toUpperCase().padStart(width, "0");
+  }
+
+  function parseHexish(text, maxValue) {
+    const s = String(text).trim().replace(/^0x/i, "");
+    if (!/^[0-9a-fA-F]+$/.test(s)) throw new Error(`Invalid hex value: ${text}`);
+    const value = parseInt(s, 16);
+    if (value < 0 || value > maxValue) throw new Error(`Hex value ${text} exceeds 0x${toHex(maxValue, maxValue > 0xF ? 4 : 1)}.`);
+    return value;
+  }
+
+  function readU16LE(buffer) {
+    const view = new DataView(buffer);
+    const out = new Uint16Array(Math.floor(buffer.byteLength / 2));
+    for (let i = 0; i < out.length; i++) out[i] = view.getUint16(i * 2, true);
+    return out;
+  }
+
+  function writeU16LE(array) {
+    const buffer = new ArrayBuffer(array.length * 2);
+    const view = new DataView(buffer);
+    for (let i = 0; i < array.length; i++) view.setUint16(i * 2, array[i] & 0xFFFF, true);
+    return new Blob([buffer], { type: "application/octet-stream" });
+  }
+
+  function saveBlob(blob, name) {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  function width() { return Math.max(1, Number($("widthInput").value) || 1); }
+  function height() { return Math.max(1, Number($("heightInput").value) || 1); }
+  function selectedIndex() { return state.selectedY * width() + state.selectedX; }
+  function getValueAt(index) { return state.data && index >= 0 && index < state.data.length ? state.data[index] : 0; }
+
+  function typeColor(type, angle = 0) {
+    if ((type & TYPE_MASK) === 0) return angle ? "hsl(220,32%,24%)" : "#11151e";
+    const t = type & TYPE_MASK;
+    const hue = typeHues[t] ?? ((t * 31) % 360);
+    const sat = t === 3 ? 76 : 68;
+    const light = t === 1 ? 46 : t === 4 ? 50 : t === 3 ? 52 : 44;
+    return `hsl(${hue},${sat}%,${light}%)`;
+  }
+
+  function angleColor(angle, type) {
+    if (!angle && !type) return "#11151e";
+    const hue = Math.floor(((angle & ANGLE_MASK) / ANGLE_MASK) * 280 + 30) % 360;
+    return `hsl(${hue},60%,${type ? 42 : 28}%)`;
+  }
+
+  function combinedColor(value) {
+    const angle = value & ANGLE_MASK;
+    const type = value & TYPE_MASK;
+    if (!angle && !type) return "#11151e";
+    const hue = type ? (typeHues[type] ?? type * 24) : Math.floor((angle / ANGLE_MASK) * 360);
+    const light = type ? Math.max(34, Math.min(62, 32 + ((angle >>> 4) % 8) * 4)) : 24;
+    const sat = type ? 72 : 35;
+    return `hsl(${hue},${sat}%,${light}%)`;
+  }
+
+  function colorForValue(value) {
+    const mode = $("colorMode").value;
+    const angle = value & ANGLE_MASK;
+    const type = value & TYPE_MASK;
+    if (mode === "type") return typeColor(type, angle);
+    if (mode === "angle") return angleColor(angle, type);
+    if (mode === "combined") return combinedColor(value);
+    if (mode === "solid") return value ? (type ? typeColor(type, angle) : "hsl(220,32%,24%)") : "#11151e";
+    return typeColor(type, angle);
+  }
+
+  function dimensionsFromFileName(fileName) {
+    // Matches names like BossCollision_96x120.bin
+    const match = String(fileName).match(/(?:^|[_\-.])(\d{1,4})x(\d{1,4})(?=[_\-.]|$)/i);
+    if (!match) return null;
+    const w = Number(match[1]);
+    const h = Number(match[2]);
+    if (!Number.isInteger(w) || !Number.isInteger(h) || w <= 0 || h <= 0) return null;
+    return { w, h };
+  }
+
+  function applyPresetFromFile(fileName, u16Length) {
+    if ($("presetSelect").value !== "filename") return;
+    const dims = dimensionsFromFileName(fileName);
+    if (!dims) return;
+    $("widthInput").value = String(dims.w);
+    $("heightInput").value = String(dims.h);
+  }
+
+  async function loadFile(file) {
+    const buffer = await file.arrayBuffer();
+    if (buffer.byteLength % 2) throw new Error("Collision map must have even byte length for u16 little-endian data.");
+    state.data = readU16LE(buffer);
+    state.fileName = file.name;
+    state.dirty = false;
+    applyPresetFromFile(file.name, state.data.length);
+    clampSelection();
+    validateAndRefresh();
+  }
+
+  function clampSelection() {
+    state.selectedX = Math.max(0, Math.min(width() - 1, state.selectedX));
+    state.selectedY = Math.max(0, Math.min(height() - 1, state.selectedY));
+  }
+
+  function validateAndRefresh() {
+    const messages = [];
+    let warning = false;
+
+    if (!state.data) {
+      messages.push("Load a u16 little-endian entity collision .bin file. Include size in the filename like Name_96x120.bin, or enter width/height manually.");
+    } else {
+      const expected = width() * height();
+      messages.push(`Loaded ${state.fileName}: ${state.data.length} u16 cells / ${state.data.length * 2} bytes.`);
+      const filenameDims = dimensionsFromFileName(state.fileName);
+      if ($("presetSelect").value === "filename" && !filenameDims) {
+        messages.push("Warning: no _WxH size pattern found in filename; using the current manual width/height values.");
+      }
+      messages.push(`Current dimensions: 0x${toHex(width(), 2)} × 0x${toHex(height(), 2)} = ${expected} cells.`);
+      if (expected !== state.data.length) {
+        warning = true;
+        messages.push(`Warning: dimensions expect ${expected} cells, but file contains ${state.data.length}. Rendering available cells only.`);
+      }
+      if (state.dirty) messages.push("Unsaved changes present.");
+    }
+
+    $("status").textContent = messages.join("\n");
+    $("status").className = warning ? "status warning" : "status";
+
+    const enabled = !!state.data;
+    for (const id of ["saveBtn", "rawInput", "angleInput", "typeInput", "applyRawBtn", "applyPartsBtn"]) {
+      $(id).disabled = !enabled;
+    }
+
+    renderMap();
+    renderSelected();
+  }
+
+  function renderMap() {
+    try {
+      clampSelection();
+      const z = Math.max(2, Math.min(32, Number($("zoomInput").value) || 8));
+      const w = width();
+      const h = height();
+      canvas.width = w * z;
+      canvas.height = h * z;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#11151e";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      if (state.data) {
+        for (let y = 0; y < h; y++) {
+          for (let x = 0; x < w; x++) {
+            const index = y * w + x;
+            if (index >= state.data.length) continue;
+            ctx.fillStyle = colorForValue(state.data[index] ?? 0);
+            ctx.fillRect(x * z, y * z, z, z);
+          }
+        }
+      }
+
+      if ($("showGrid").checked && z >= 6) {
+        ctx.strokeStyle = "rgba(255,255,255,0.10)";
+        ctx.lineWidth = 1;
+        for (let x = 0; x <= w; x++) {
+          ctx.beginPath(); ctx.moveTo(x * z + 0.5, 0); ctx.lineTo(x * z + 0.5, canvas.height); ctx.stroke();
+        }
+        for (let y = 0; y <= h; y++) {
+          ctx.beginPath(); ctx.moveTo(0, y * z + 0.5); ctx.lineTo(canvas.width, y * z + 0.5); ctx.stroke();
+        }
+      }
+
+      ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--selected");
+      ctx.lineWidth = Math.max(2, Math.floor(z / 3));
+      ctx.strokeRect(state.selectedX * z + 0.5, state.selectedY * z + 0.5, z - 1, z - 1);
+    } catch (err) {
+      $("status").textContent = `Render error: ${err.message}`;
+      $("status").className = "status warning";
+    }
+  }
+
+  function renderSelected() {
+    const hasData = !!state.data;
+    const index = selectedIndex();
+    const value = hasData ? getValueAt(index) : 0;
+    const angle = value & ANGLE_MASK;
+    const type = value & TYPE_MASK;
+
+    $("selectedLabel").textContent = hasData ? `${state.selectedX}, ${state.selectedY}` : "none";
+    $("xyLabel").textContent = hasData ? `${state.selectedX}, ${state.selectedY}` : "—";
+    $("indexLabel").textContent = hasData ? `0x${toHex(index, 4)} / ${index}` : "—";
+    $("offsetLabel").textContent = hasData ? `0x${toHex(index * 2, 6)}` : "—";
+    $("rawLabel").textContent = hasData ? `0x${toHex(value, 4)}` : "—";
+    $("angleLabel").textContent = hasData ? `0x${toHex(angle, 4)}` : "—";
+    $("typeLabel").textContent = hasData ? `0x${toHex(type, 1)}` : "—";
+    $("rawInput").value = hasData ? toHex(value, 4) : "";
+    $("angleInput").value = hasData ? toHex(angle, 4) : "";
+    $("typeInput").value = hasData ? toHex(type, 1) : "";
+
+    const preview = $("cellPreview");
+    preview.textContent = hasData ? `ANGLE ${toHex(angle, 4)} / TYPE ${toHex(type, 1)}` : "—";
+    preview.style.background = hasData ? colorForValue(value) : "#11151e";
+  }
+
+  function setSelectedValue(value) {
+    const index = selectedIndex();
+    if (!state.data || index < 0 || index >= state.data.length) throw new Error("Selected cell is outside the loaded file.");
+    state.data[index] = value & 0xFFFF;
+    state.dirty = true;
+    validateAndRefresh();
+  }
+
+  function buildTypeKey() {
+    const key = $("typeKey");
+    key.innerHTML = "";
+    for (let t = 0; t <= 0xF; t++) {
+      const item = document.createElement("span");
+      const swatch = document.createElement("span");
+      swatch.className = "swatch";
+      swatch.style.background = typeColor(t, 0);
+      item.appendChild(swatch);
+      item.append(`0x${toHex(t, 1)}`);
+      if (t === 0) item.append(" empty");
+      key.appendChild(item);
+    }
+  }
+
+  canvas.addEventListener("click", ev => {
+    if (!state.data) return;
+    boardWrap.focus();
+    const rect = canvas.getBoundingClientRect();
+    const z = canvas.width / width();
+    const localX = Math.max(0, Math.min(canvas.width - 1, ev.clientX - rect.left));
+    const localY = Math.max(0, Math.min(canvas.height - 1, ev.clientY - rect.top));
+    state.selectedX = Math.max(0, Math.min(width() - 1, Math.floor(localX / z)));
+    state.selectedY = Math.max(0, Math.min(height() - 1, Math.floor(localY / z)));
+    renderMap();
+    renderSelected();
+  });
+
+  boardWrap.addEventListener("keydown", ev => {
+    if (!state.data) return;
+    const dx = ev.key === "ArrowLeft" ? -1 : ev.key === "ArrowRight" ? 1 : 0;
+    const dy = ev.key === "ArrowUp" ? -1 : ev.key === "ArrowDown" ? 1 : 0;
+    if (!dx && !dy) return;
+    ev.preventDefault();
+    state.selectedX = Math.max(0, Math.min(width() - 1, state.selectedX + dx));
+    state.selectedY = Math.max(0, Math.min(height() - 1, state.selectedY + dy));
+    renderMap();
+    renderSelected();
+  });
+
+  $("fileInput").addEventListener("change", e => {
+    if (e.target.files.length) loadFile(e.target.files[0]).catch(err => alert(err.message));
+  });
+
+  $("presetSelect").addEventListener("change", () => {
+    if (state.fileName) applyPresetFromFile(state.fileName, state.data ? state.data.length : 0);
+    validateAndRefresh();
+  });
+
+  for (const id of ["widthInput", "heightInput", "zoomInput", "colorMode", "showGrid"]) {
+    $(id).addEventListener("change", validateAndRefresh);
+  }
+
+  $("applyRawBtn").addEventListener("click", () => {
+    try {
+      setSelectedValue(parseHexish($("rawInput").value, 0xFFFF));
+    } catch (err) {
+      alert(err.message);
+      renderSelected();
+    }
+  });
+
+  $("applyPartsBtn").addEventListener("click", () => {
+    try {
+      const angle = parseHexish($("angleInput").value, 0xFFFF) & ANGLE_MASK;
+      const type = parseHexish($("typeInput").value, 0xF) & TYPE_MASK;
+      setSelectedValue(angle | type);
+    } catch (err) {
+      alert(err.message);
+      renderSelected();
+    }
+  });
+
+  $("saveBtn").addEventListener("click", () => {
+    if (!state.data) return;
+    const name = state.fileName ? state.fileName.replace(/(\.[^.]+)?$/, "_edited$1") : "entity_collision_edited.bin";
+    saveBlob(writeU16LE(state.data), name);
+    state.dirty = false;
+    validateAndRefresh();
+    $("status").textContent = `Saved ${name}.`;
+  });
+
+  window.addEventListener("error", ev => {
+    $("status").textContent = `Script error: ${ev.message}`;
+    $("status").className = "status warning";
+  });
+
+  buildTypeKey();
+  validateAndRefresh();
+</script>
+</body>
+</html>

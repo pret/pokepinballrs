@@ -255,6 +255,43 @@
       "mheight":4,
       "mwidth":2,
       "width":6
+    },
+    {
+      "gfx_filename": "travel_paint",
+      "segments": [
+        {
+          "segfile": "travel_paint_space",
+          "width": 4
+        },
+        {
+          "segfile": "travel_paint_brush1",
+          "width": 8
+        },
+        {
+          "segfile": "travel_paint_brush1_tail",
+          "width": 4
+        },
+        {
+          "segfile": "travel_paint_brush2",
+          "width": 4
+        },
+        {
+          "segfile": "travel_paint_brush3",
+          "width": 8
+        },
+        {
+          "segfile": "travel_paint_brush4",
+          "oam": true,
+          "mheight": 4,
+          "mwidth": 5
+        }
+      ]
+    },
+    {
+      "gfx_filename": "shroomish_catch_burst_banner",
+      "oam": true,
+      "mheight": 9,
+      "mwidth": 30
     }
   ]
 }

@@ -339,9 +339,9 @@ gMergedSapphireScoreIndex: @ 0x0201B170
 	.space 0x4
 gEReaderTransitionStep: @ 0x0201B174
 	.space 0x4
-gShowDialogFlag: @ 0x0201B178
+gHighScoreShowPopupFlag: @ 0x0201B178
 	.space 0x8
-gIntroScene3_AltBG1TilemapBuffer: @ 0x0201B180
+gIntroScene3Treecko_AltBG1TilemapBuffer: @ 0x0201B180
 	.space 0x1000
 gPokedexLinkSendCounter: @ 0x0201C180
 	.space 0x4
@@ -393,7 +393,7 @@ gEReaderTextAnimDelay: @ 0x0202A580
 	.space 0x8
 gPokedexShowAnimSprite: @ 0x0202A588
 	.space 0x4
-gEReaderStatusSpriteIndex: @ 0x0202A58C
+gEReaderStatusAnimSpriteGroup: @ 0x0202A58C
 	.space 0x4
 gPokedexInfoWindowBackupTiles: @ 0x0202A590
 	.space 0x800
@@ -431,13 +431,13 @@ gIntroPalSwapBuffer: @ 0x0202BE70
 	.space 0x40
 gCompletionBannerDone: @ 0x0202BEB0
 	.space 0x4
-gIntroScene6EntitySpawnIndex: @ 0x0202BEB4
+gIntroScene6ChinchouEntitySpawnIndex: @ 0x0202BEB4
 	.space 0x4
 gPokedexNumSeen: @ 0x0202BEB8
 	.space 0x4
-gDialogType: @ 0x0202BEBC
+gHighScorePopupType: @ 0x0202BEBC
 	.space 0x4
-gEReaderHeaderSpriteIndex: @ 0x0202BEC0
+gEReaderHeaderAnimSpriteGroup: @ 0x0202BEC0
 	.space 0x4
 gPokedexShowPopupWindow: @ 0x0202BEC4
 	.space 0x4
@@ -485,13 +485,13 @@ gLink: @ 0x0202BF20
 	.space 0x624
 gPokedexClientHandshakeState: @ 0x0202C544
 	.space 0x4
-gIntroScene6VelocityIndex: @ 0x0202C548
+gIntroScene6ChinchouVelocityIndex: @ 0x0202C548
 	.space 0x4
 gLinkExchangeTimeout: @ 0x0202C54C
 	.space 0x4
 gRemoteTopScores: @ 0x0202C550
 	.space 0x30
-gCompletionBannerFrame: @ 0x0202C580
+gCompletionBannerSpriteGroup: @ 0x0202C580
 	.space 0x4
 gEReaderStatusSpriteVisible: @ 0x0202C584
 	.space 0x4
@@ -499,7 +499,7 @@ gHighScoreEntrySource: @ 0x202C588
 	.space 0x4
 gPokedexScrollWaitFrames: @ 0x0202C58C
 	.space 0x4
-gPokedexShowLinkCableIcon: @ 0x0202C590
+gPokedexShowCompletionBadge: @ 0x0202C590
 	.space 0x4
 gIntroOverlayFadeStep: @ 0x0202C594
 	.space 0x4
@@ -573,7 +573,7 @@ gReplayFrameCounter: @ 0x02031510
 	.space 0x10
 gBoardConfig: @ 0x2031520
 	.space 0x70
-gKecleonSpriteOrderMap: @ 0x02031590
+gKecleonSpriteGroupOrderMap: @ 0x02031590
 	.space 0x40
 gCatchSpritePaletteBuffer: @ 0x020315D0
 	.space 0x520

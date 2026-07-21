@@ -15,7 +15,7 @@
 
 @*********************** Track 01 ***********************@
 
-mus_slots_prize_0:  @ 0x0868C748
+mus_slots_PRIZE_30_SEC_BALL_SAVER:  @ 0x0868C748
 	.byte	KEYSH , mus_slots_prize_key+0
 	.byte	TEMPO , 122*mus_slots_prize_tbs/2
 	.byte		VOICE , 70
@@ -345,7 +345,7 @@ mus_slots_prize:  @ 0x0868C958
 
 	.word	mus_slots_prize_grp
 
-	.word	mus_slots_prize_0
+	.word	mus_slots_PRIZE_30_SEC_BALL_SAVER
 	.word	mus_slots_prize_1
 	.word	mus_slots_prize_2
 	.word	mus_slots_prize_3

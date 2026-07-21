@@ -1715,7 +1715,7 @@ void SetPokemonCryPitch(s16 val)
 
 void SetPokemonCryLength(u16 val)
 {
-    gPokemonCrySong.unkCmd0CParam = val;
+    gPokemonCrySong.length = val;
 }
 
 void SetPokemonCryRelease(u8 val)
