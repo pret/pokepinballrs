@@ -174,7 +174,7 @@ void UpdatePelipperPondEntity(void)
             m4aSongNumStart(SE_PELIPPER_WING_FLAP);
         break;
     case 6:
-        gCurrentPinballGame->startButtonDisabled = 1;
+        gCurrentPinballGame->startButtonDisabled = TRUE;
         var_sl = gPelipperFlyAnimTable[0][0];
         if (gCurrentPinballGame->pelipperFrameTimer == 65)
         {

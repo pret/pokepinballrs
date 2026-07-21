@@ -62,11 +62,11 @@ void KecleonBoardProcess_3A_35860(void)
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 120 * 60; // 120 seconds
     gCurrentPinballGame->timerBonus = 0;
-    gCurrentPinballGame->ballGrabbed = 0;
+    gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
     gCurrentPinballGame->ball->ballHidden = TRUE;
-    gCurrentPinballGame->returnToMainBoardFlag = 0;
+    gCurrentPinballGame->returnToMainBoardFlag = FALSE;
     gCurrentPinballGame->kecleonTargetVisible = 1;
     gCurrentPinballGame->bossEntityState = KECLEON_ENTITY_STATE_SPAWN;
     gCurrentPinballGame->bossPositionX = 750;
@@ -135,14 +135,14 @@ void KecleonBoardProcess_3B_35AA4(void)
             gCurrentPinballGame->stageTimer = 0;
         }
 
-        if (gCurrentPinballGame->returnToMainBoardFlag == 0)
+        if (!gCurrentPinballGame->returnToMainBoardFlag)
         {
             gMain.blendControl = 0x1C10;
             gMain.blendAlpha = BLDALPHA_BLEND(16, 0);
         }
         break;
     case KECLEON_BOARD_STATE_BATTLE_PHASE:
-        if (gCurrentPinballGame->returnToMainBoardFlag == 0)
+        if (!gCurrentPinballGame->returnToMainBoardFlag)
         {
             if (gCurrentPinballGame->kecleonFrameTimer == 0)
             {
@@ -205,7 +205,7 @@ void KecleonBoardProcess_3B_35AA4(void)
         break;
     case KECLEON_BOARD_STATE_SCORE_COUNTING_FINISHED:
         ProcessBonusBannerAndScoring();
-        gCurrentPinballGame->returnToMainBoardFlag = 1;
+        gCurrentPinballGame->returnToMainBoardFlag = TRUE;
         break;
     }
 

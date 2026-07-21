@@ -16,7 +16,7 @@ extern const u8 gRayquazaBonusClear_Gfx[];
 
 void FadeToMainBoard(void)
 {
-    gCurrentPinballGame->startButtonDisabled = 1;
+    gCurrentPinballGame->startButtonDisabled = TRUE;
     switch (gCurrentPinballGame->boardSubState)
     {
     case BONUS_BOARD_SUBSTATE_ACTIVE:
@@ -256,7 +256,7 @@ void TransitionFromBonusToMainBoard(void)
     temp = gMain.tempField;
     gMain.tempField = gMain.selectedField;
     gMain.selectedField = temp;
-    gMain.isBonusField = 0;
+    gMain.isBonusField = FALSE;
     gMain.modeChangeFlags = MODE_CHANGE_NONE;
     gCurrentPinballGame->eventTimer = 0;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;

@@ -50,9 +50,9 @@ void RayquazaBoardProcess_3A_3E79C(void)
     gCurrentPinballGame->boardEntityCollisionMode = 1;
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
     gCurrentPinballGame->bossLightFadeInCounter = 0;
-    gCurrentPinballGame->ballGrabbed = 0;
+    gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->bonusModeHitCount = 0;
-    gCurrentPinballGame->returnToMainBoardFlag = 0;
+    gCurrentPinballGame->returnToMainBoardFlag = FALSE;
     gCurrentPinballGame->legendaryFlashState = 0;
     gCurrentPinballGame->ballWhirlwindFallAcceleration = 0;
     gCurrentPinballGame->ballWhirlwindLiftY = 0;
@@ -224,7 +224,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         break;
     case LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED:
         ProcessBonusBannerAndScoring();
-        gCurrentPinballGame->returnToMainBoardFlag = 1;
+        gCurrentPinballGame->returnToMainBoardFlag = TRUE;
         gCurrentPinballGame->cameraLocked = TRUE;
         break;
     }
@@ -1274,7 +1274,7 @@ void UpdateRayquazaMinionsAndEffects(void)
                 xx = tempVector.x * tempVector.x;
                 yy = tempVector.y * tempVector.y;
                 squaredDistance = xx + yy;
-                if (gCurrentPinballGame->ballGrabbed == 0
+                if (!gCurrentPinballGame->ballGrabbed
                     && !gCurrentPinballGame->ballRespawnState
                     && gCurrentPinballGame->bonusModeHitCount < gCurrentPinballGame->legendaryHitsRequired
                     && gCurrentPinballGame->bossHitFlashTimer == 0 && squaredDistance < 300)
@@ -1517,11 +1517,11 @@ void UpdateLightningGrabEntity(void)
     {
         gMain.spriteGroups[SG_RAYQUAZA_LIGHTNING_BALL_GRAB_FX].active = FALSE;
         gCurrentPinballGame->ballGrabFlashTimer = 0;
-        gCurrentPinballGame->ballGrabbed = 0;
+        gCurrentPinballGame->ballGrabbed = FALSE;
     }
     else
     {
-        gCurrentPinballGame->ballGrabbed = 1;
+        gCurrentPinballGame->ballGrabbed = TRUE;
         gCurrentPinballGame->ball->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
         gCurrentPinballGame->ball->spinSpeed = 0;

@@ -125,7 +125,7 @@ void InitTitlescreenStates(void)
             gTitleSavedMenuSpriteSets[i] = gTitleSavedDefaultSprites[i];
 
         gTitlescreen.menuCursorIndex = 1;
-        gTitlescreen.hasSavedGame = 1;
+        gTitlescreen.hasSavedGame = TRUE;
     }
     else
     {
@@ -133,8 +133,8 @@ void InitTitlescreenStates(void)
             gTitleNoSaveMenuSpriteSets[i] = gTitleNoSaveDefaultSprites[i];
 
         gTitlescreen.menuCursorIndex = 0;
-        gTitlescreen.hasSavedGame = 0;
-        gMain.continueFromSave = 0;
+        gTitlescreen.hasSavedGame = FALSE;
+        gMain.continueFromSave = FALSE;
     }
 
     gTitlescreen.idleFramesCounter = 0;
@@ -408,7 +408,7 @@ void TitleScreen7_8011020(void)
 
         if (gTitlescreen.animTimer > 20)
         {
-            gMain.continueFromSave = 0;
+            gMain.continueFromSave = FALSE;
             gTitlescreen.menuAction = gTitleNoSaveMenuActions[gTitlescreen.menuCursorIndex];
             gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
         }
@@ -510,9 +510,9 @@ void TitleScreen8_8011228(void)
         if (gTitlescreen.animTimer > 20)
         {
             if (gTitlescreen.menuCursorIndex == 1)
-                gMain.continueFromSave = 1;
+                gMain.continueFromSave = TRUE;
             else
-                gMain.continueFromSave = 0;
+                gMain.continueFromSave = FALSE;
 
             gTitlescreen.menuAction = gTitleSavedMenuActions[gTitlescreen.menuCursorIndex];
             gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;

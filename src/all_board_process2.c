@@ -384,7 +384,7 @@ void ProcessTiltInput(void)
     if (gCurrentPinballGame->tiltXOffset == 0 && gCurrentPinballGame->tiltYOffset == 0)
     {
         gCurrentPinballGame->tiltLockoutTimer = 0;
-        gCurrentPinballGame->tiltLockoutActive = 0;
+        gCurrentPinballGame->lastTiltDirection = 0;
     }
 
     if (gCurrentPinballGame->tiltXOffset > 0)
@@ -498,7 +498,7 @@ void ProcessBonusBoardBallDrain(void)
         gCurrentPinballGame->ball->velocity.y = 0;
         if (gMain.modeChangeFlags & MODE_CHANGE_EXPIRED_BONUS)
         {
-            gCurrentPinballGame->returnToMainBoardFlag = 1;
+            gCurrentPinballGame->returnToMainBoardFlag = TRUE;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
             gCurrentPinballGame->ball->positionQ0.y = gBoardConfig.fieldLayout.ballDrainY - 10;
         }

@@ -51,14 +51,14 @@ void SphealBoardProcess_3A_42E48(void)
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnTimer = 0;
-    gCurrentPinballGame->ballGrabbed = 0;
+    gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
     gCurrentPinballGame->ball->ballHidden = TRUE;
     gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
     gCurrentPinballGame->ball->velocity.x = 0;
     gCurrentPinballGame->ball->velocity.y = 0;
     gCurrentPinballGame->ball->spinSpeed = 0;
-    gCurrentPinballGame->returnToMainBoardFlag = 0;
+    gCurrentPinballGame->returnToMainBoardFlag = FALSE;
     gCurrentPinballGame->resultsAnimTimer = 0;
     gCurrentPinballGame->scoreCountdownTimer = 0;
     gCurrentPinballGame->totalBonusScore = 0;
@@ -261,7 +261,7 @@ void SphealBoardProcess_3B_43228(void)
         break;
     case SPHEAL_BOARD_STATE_PREPARE_RETURN:
         UpdateSphealResultsScreen();
-        gCurrentPinballGame->returnToMainBoardFlag = 1;
+        gCurrentPinballGame->returnToMainBoardFlag = TRUE;
         gCurrentPinballGame->cameraLocked = TRUE;
         break;
     }

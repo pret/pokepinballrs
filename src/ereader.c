@@ -103,7 +103,7 @@ void LoadEReaderGraphics(void)
 void InitEReaderTextState(void)
 {
     gEReaderStatusAnimSpriteGroup = SG_0;
-    gEReaderStatusSpriteVisible = 0;
+    gEReaderStatusSpriteVisible = FALSE;
     gEReaderHeaderAnimSpriteGroup = SG_4;
     gEReaderTransitionStep = 0;
     gEReaderTransitionTimer = 0;
@@ -171,7 +171,7 @@ void Ereader_State2_2FC0(void)
             InitLinkHardware();
             InitEReaderLinkBuffers();
             gLinkExchangeStep = 0;
-            gEReaderStatusSpriteVisible = 1;
+            gEReaderStatusSpriteVisible = TRUE;
             m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
             gMain.subState = EREADER_STATE_3;
         }

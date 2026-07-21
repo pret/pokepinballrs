@@ -119,7 +119,7 @@ void CheckRubyBoardCollision(struct Vector16* ballPosition, u16* collisionAngle,
     lowerNibble = 0;
     ix = 0;
 
-    if (gCurrentPinballGame->ballInLowerHalf == 0)
+    if ( !gCurrentPinballGame->ballInLowerHalf )
     {
         if (gCurrentPinballGame->boardLayerDepth != 0)
             return;
@@ -368,7 +368,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_LAUNCH_CHUTE;
         return;
     case RUBY_TRIGGER_CLOSE_LAUNCH_LANE:
-        if (gCurrentPinballGame->ballInLowerHalf == 0)
+        if ( !gCurrentPinballGame->ballInLowerHalf )
         {
             // Change upper board collision to use the 'closed launch ramp' alternate
             SetBoardCollisionConfig(1);
@@ -681,7 +681,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         }
     case RUBY_TRIGGER_CONDITIONAL_ACTIVATION:
         // Shop door, ramp prize, pika kickback
-        if (gCurrentPinballGame->ballInLowerHalf == 0)
+        if ( !gCurrentPinballGame->ballInLowerHalf )
         {
             if (gCurrentPinballGame->ball->positionQ0.x > 170)
             {

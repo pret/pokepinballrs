@@ -54,12 +54,12 @@ void KyogreBoardProcess_3A_383E4(void)
 
     gCurrentPinballGame->bossRoarTimer = 0;
     gCurrentPinballGame->legendaryFlashState = 0;
-    gCurrentPinballGame->ballGrabbed = 0;
+    gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->bossLightFadeInCounter = 0;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
     gCurrentPinballGame->ball->ballHidden = TRUE;
-    gCurrentPinballGame->returnToMainBoardFlag = 0;
+    gCurrentPinballGame->returnToMainBoardFlag = FALSE;
     gCurrentPinballGame->bannerSlideYOffset = 0;
     gCurrentPinballGame->bossAttackTimer = 0;
     gCurrentPinballGame->bonusModeHitCount = 0;
@@ -226,7 +226,7 @@ void KyogreBoardProcess_3B_3869C(void)
         break;
     case LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED:
         ProcessBonusBannerAndScoring();
-        gCurrentPinballGame->returnToMainBoardFlag = 1;
+        gCurrentPinballGame->returnToMainBoardFlag = TRUE;
         gCurrentPinballGame->cameraLocked = TRUE;
     }
 
@@ -996,14 +996,14 @@ void UpdateKyogreFieldEntities(void)
 
         if (gCurrentPinballGame->freezeTrapAnimFrame < 18)
         {
-            gCurrentPinballGame->ballGrabbed = 1;
+            gCurrentPinballGame->ballGrabbed = TRUE;
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->ball->velocity.y = 0;
             gCurrentPinballGame->ball->spinSpeed = 0;
         }
         else
         {
-            gCurrentPinballGame->ballGrabbed = 0;
+            gCurrentPinballGame->ballGrabbed = FALSE;
         }
 
         group->baseX = gCurrentPinballGame->ball->screenPosition.x;
@@ -1070,10 +1070,10 @@ void UpdateKyogreFieldEntities(void)
                     xx = tempVector.x * tempVector.x;
                     yy = tempVector.y * tempVector.y;
                     squaredDistance = xx + yy;
-                    if (gCurrentPinballGame->ballGrabbed == 0
+                    if (!gCurrentPinballGame->ballGrabbed
                         && !gCurrentPinballGame->ballRespawnState
                         && gCurrentPinballGame->bonusModeHitCount < gCurrentPinballGame->legendaryHitsRequired
-                        &&gCurrentPinballGame->bossHitFlashTimer == 0
+                        && gCurrentPinballGame->bossHitFlashTimer == 0
                         && squaredDistance < 400)
                     {
                         m4aSongNumStart(SE_KYOGRE_WHIRLPOOL_GRABS_BALL);

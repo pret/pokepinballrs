@@ -108,7 +108,7 @@ void ResetDisplayState(void)
     gMain.vCount = 144;
     gMain.shopPanelActive = 0;
     gMain.shopPanelSlideOffset = 0;
-    gMain.blendEnabled = 0;
+    gMain.blendEnabled = FALSE;
     gMain.blendControl = 0;
     gMain.blendAlpha = 0;
     gMain.blendBrightness = 0;

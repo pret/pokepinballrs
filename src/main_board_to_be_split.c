@@ -337,7 +337,7 @@ void UpdateBonusStageSelect(void)
 
         if (gCurrentPinballGame->stageTimer)
         {
-            gCurrentPinballGame->startButtonDisabled = 1;
+            gCurrentPinballGame->startButtonDisabled = TRUE;
             gCurrentPinballGame->stageTimer--;
             gMain.blendBrightness = 16 - gCurrentPinballGame->stageTimer / 4;
             if (gCurrentPinballGame->stageTimer == 0)

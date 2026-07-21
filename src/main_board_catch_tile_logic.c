@@ -247,7 +247,7 @@ void RevealCatchTilesBurst(void)
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_TILE_FLASH_FX]->active = TRUE;
         gCurrentPinballGame->hatchRevealPhase++;
         gCurrentPinballGame->revealAnimFrameCounter = 0;
-        gCurrentPinballGame->startButtonDisabled = 1;
+        gCurrentPinballGame->startButtonDisabled = TRUE;
         break;
     case 4:
         var0 = gCurrentPinballGame->revealAnimFrameCounter / 2;
@@ -331,7 +331,7 @@ void RevealCatchTilesBurst(void)
         DmaCopy16(3, gCatchTile_BurstStage4_Pal, (void *)0x050003C0, 0x20);
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = TRUE;
         gCurrentPinballGame->hatchRevealPhase++;
-        gCurrentPinballGame->startButtonDisabled = 0;
+        gCurrentPinballGame->startButtonDisabled = FALSE;
         break;
     case 8:
         if (gCatchTile_RevealFinalTimings[gCurrentPinballGame->revealFramesetIndex] > gCurrentPinballGame->revealAnimFrameCounter)

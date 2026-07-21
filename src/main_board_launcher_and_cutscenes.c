@@ -398,7 +398,7 @@ void RunEvolutionCutscene(void)
         var0 = gCurrentPinballGame->stageTimer - 300;
         if (var0 >= 0 && var0 <= 16)
         {
-            gCurrentPinballGame->startButtonDisabled = 1;
+            gCurrentPinballGame->startButtonDisabled = TRUE;
             var0 = gCurrentPinballGame->stageTimer - 300;
             gMain.blendControl = 0x9F;
             gMain.blendBrightness = var0;
@@ -659,7 +659,7 @@ void RunEvolutionCutscene(void)
         }
         else
         {
-            gCurrentPinballGame->startButtonDisabled = 0;
+            gCurrentPinballGame->startButtonDisabled = FALSE;
             if (gCatchTile_RevealFinalTimings[gCurrentPinballGame->revealFramesetIndex] > gCurrentPinballGame->revealAnimFrameCounter)
             {
                 gCurrentPinballGame->revealAnimFrameCounter++;

@@ -377,7 +377,7 @@ void RubyPond_EntityLogic(void)
                 gCurrentPinballGame->ball->ballHidden = TRUE;
             break;
         case WHISCASH_STATE_TO_SPHEAL_BOARD:
-            gCurrentPinballGame->startButtonDisabled = 1;
+            gCurrentPinballGame->startButtonDisabled = TRUE;
             if (gCurrentPinballGame->whiscashStateTimer == 65)
             {
                 m4aSongNumStart(SE_WARP);

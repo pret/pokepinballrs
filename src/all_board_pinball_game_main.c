@@ -147,8 +147,8 @@ void PinballGame_State0_49ED4(void)
 
     EnableVBlankInterrupts();
     FadeInScreen();
-    gCurrentPinballGame->startButtonDisabled = 0;
-    gMain.blendEnabled = 1;
+    gCurrentPinballGame->startButtonDisabled = FALSE;
+    gMain.blendEnabled = TRUE;
 
     switch (var0)
     {
@@ -268,7 +268,7 @@ void InitPinballGameState(void)
     gMain.vCount = 144;
     gMain.shopPanelActive = 0;
     gMain.shopPanelSlideOffset = 0;
-    gMain.blendEnabled = 0;
+    gMain.blendEnabled = FALSE;
     gMain.blendControl = 0;
     gMain.blendAlpha = 0;
     gMain.blendBrightness = 0;
@@ -806,7 +806,7 @@ void IdleBonusFieldFrameUpdate(void)
 
 void PinballGame_State3_4B20C(void)
 {
-    gMain.blendEnabled = 0;
+    gMain.blendEnabled = FALSE;
     FadeOutScreen();
     m4aMPlayAllStop();
     DisableVBlankInterrupts();

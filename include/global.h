@@ -167,7 +167,7 @@ struct PinballGame
     /*0x01B*/ u8 unk1B;
     /*0x01C*/ bool8 scoreCounterAnimationEnabled;
     /*0x01D*/ u8 fadeSubState;
-    /*0x01E*/ u8 gravityStrengthIndex;
+    /*0x01E*/ u8 gravityStrengthIndex; // Range: 0-3
     /*0x01F*/ u8 ballPhysicsState;
     /*0x020*/ u8 ballInLaunchChute;
     /*0x021*/ u8 launcherCharging;
@@ -262,7 +262,7 @@ struct PinballGame
     /*0x124*/ s8 tiltInputCounterX;
     /*0x125*/ s8 tiltInputCounterY;
     /*0x126*/ s8 tiltLockoutTimer;
-    /*0x127*/ s8 tiltLockoutActive;
+    /*0x127*/ s8 lastTiltDirection;
     /*0x128*/ u8 boardShakeIntensity;
     /*0x129*/ s8 boardShakeDirection;
     /*0x12A*/ u8 boardShakeTimer;

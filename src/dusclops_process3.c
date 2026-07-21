@@ -27,11 +27,11 @@ void DuskullBonus_Setup(void)
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_DUSKULL_TIME;
     gCurrentPinballGame->timerBonus = 0;
-    gCurrentPinballGame->ballGrabbed = 0;
+    gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ball->ballHidden = TRUE;
     gCurrentPinballGame->bonusModeHitCount = 0;
-    gCurrentPinballGame->returnToMainBoardFlag = 0;
+    gCurrentPinballGame->returnToMainBoardFlag = FALSE;
     gCurrentPinballGame->boardEntityCollisionMode = DUSCLOPS_ENTITY_COLLISION_MODE_NONE;
     gCurrentPinballGame->ballRespawnTimer = 0;
     gCurrentPinballGame->bannerSlideYOffset = 0;
@@ -178,7 +178,7 @@ void DusclopsBoardProcess_3B_33130(void)
             break;
         case DUSCLOPS_BOARD_STATE_SCORE_COUNTING_FINISHED:
             ProcessBonusBannerAndScoring();
-            gCurrentPinballGame->returnToMainBoardFlag = 1;
+            gCurrentPinballGame->returnToMainBoardFlag = TRUE;
             break;
     }
 
@@ -1038,7 +1038,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
     spriteGroup = &gMain.spriteGroups[SG_DUSCLOPS_PHASING_FX];
     if (spriteGroup->active)
     {
-        if (gCurrentPinballGame->returnToMainBoardFlag == 0)
+        if (!gCurrentPinballGame->returnToMainBoardFlag)
         {
             u32 offY = 92;
 

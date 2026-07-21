@@ -23,14 +23,15 @@ void ClearBG0Tilemap(void)
 
 void AllBoardProcess_1B_47160(void)
 {
-    if (JOY_NEW(START_BUTTON) && gMain.mainState != STATE_GAME_IDLE && gCurrentPinballGame->startButtonDisabled == 0)
+    if (JOY_NEW(START_BUTTON) && gMain.mainState != STATE_GAME_IDLE
+        && !gCurrentPinballGame->startButtonDisabled)
     {
         if (gMain.modeChangeFlags & MODE_CHANGE_PAUSE)
         {
             gMain.modeChangeFlags &= ~MODE_CHANGE_PAUSE;
             UnpauseGame();
         }
-        else if ((gMain.modeChangeFlags & MODE_CHANGE_END_OF_GAME) == 0)
+        else if (!(gMain.modeChangeFlags & MODE_CHANGE_END_OF_GAME))
         {
             gMain.modeChangeFlags |= MODE_CHANGE_PAUSE;
             PauseGame();

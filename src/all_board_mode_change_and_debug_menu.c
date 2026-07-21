@@ -218,7 +218,7 @@ void EndOfBallSequence(void)
             m4aSongNumStart(SE_BONUS_PANEL_SLIDE);
             for (i = 0; i < 3; i++)
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[i][j] = 0;
+                    gCurrentPinballGame->bonusTextRevealMask[i][j] = FALSE;
         }
         else if (gMain.animationTimer == 1)
         {
@@ -469,7 +469,7 @@ void BallSaverAnimation(void)
             gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_FROZEN;
             gCurrentPinballGame->cameraLocked = TRUE;
             gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
-            gCurrentPinballGame->startButtonDisabled = 1;
+            gCurrentPinballGame->startButtonDisabled = TRUE;
             m4aSongNumStart(SE_BALL_SAVED);
         }
         else if (gMain.animationTimer == 0)
@@ -493,7 +493,7 @@ void BallSaverAnimation(void)
 
         gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         gCurrentPinballGame->activePortraitType = 0;
-        gCurrentPinballGame->startButtonDisabled = 0;
+        gCurrentPinballGame->startButtonDisabled = FALSE;
     }
 }
 
@@ -626,11 +626,11 @@ void EndOfBallBonusSummary(void)
                 gMain.animationTimer = 150;
 
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[0][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[0][j] = TRUE;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[1][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[1][j] = TRUE;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[2][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[2][j] = TRUE;
 
                 for (i = 0; i < 3; i++)
                     for (j = 0; j < 20; j++)
@@ -686,11 +686,14 @@ void EndOfBallBonusSummary(void)
                     j = ((textRevealTimer - i * 24) % 40) / 2;
                     if (gCurrentPinballGame->bonusSummaryPhase == 0 || i != 2)
                     {
-                        if (gCurrentPinballGame->bonusTextRevealMask[i][j] == 0 && gCurrentPinballGame->bonusTextContent[i][j] != 95)
+                        if (!gCurrentPinballGame->bonusTextRevealMask[i][j]
+                            && gCurrentPinballGame->bonusTextContent[i][j] != 95)
+                        {
                             playTextProgressSound = TRUE;
+                        }
                     }
 
-                    gCurrentPinballGame->bonusTextRevealMask[i][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[i][j] = TRUE;
                 }
             }
             else if (textRevealTimer >= 148)
@@ -703,7 +706,7 @@ void EndOfBallBonusSummary(void)
                 for (i = 0; i <= lineRevealSegment; i++)
                 {
                     j = ((textRevealTimer - i * 24) % 40) / 2;
-                    gCurrentPinballGame->bonusTextRevealMask[i][j] = 0;
+                    gCurrentPinballGame->bonusTextRevealMask[i][j] = FALSE;
                 }
             }
 
@@ -730,11 +733,11 @@ void EndOfBallBonusSummary(void)
                 gCurrentPinballGame->bonusSummaryTimer = 212;
                 gCurrentPinballGame->bonusSummaryPhase++;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[0][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[0][j] = TRUE;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[1][j] = 0;
+                    gCurrentPinballGame->bonusTextRevealMask[1][j] = FALSE;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[2][j] = 0;
+                    gCurrentPinballGame->bonusTextRevealMask[2][j] = FALSE;
 
                 for (i = 0; i < 3; i++)
                     for (j = 0; j < 20; j++)
@@ -754,11 +757,14 @@ void EndOfBallBonusSummary(void)
                     j = ((textRevealTimer - i * 24) % 40) / 2;
                     if (i != 0)
                     {
-                        if (gCurrentPinballGame->bonusTextRevealMask[i][j] == 0 && gCurrentPinballGame->bonusTextContent[i][j] != 95)
+                        if (!gCurrentPinballGame->bonusTextRevealMask[i][j]
+                            && gCurrentPinballGame->bonusTextContent[i][j] != 95)
+                        {
                             playTextProgressSound = TRUE;
+                        }
                     }
 
-                    gCurrentPinballGame->bonusTextRevealMask[i][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[i][j] = TRUE;
                 }
             }
         }

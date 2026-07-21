@@ -608,7 +608,7 @@ void RunMonCaptureSequence(void)
 
             DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x140, 0x05000340, 0x60);
             gCurrentPinballGame->activePaletteIndex = 1;
-            gCurrentPinballGame->paletteSwapActive = 1;
+            gCurrentPinballGame->paletteSwapActive = TRUE;
         }
         break;
 
@@ -628,7 +628,7 @@ void RunMonCaptureSequence(void)
 
             DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2] + 0x140, 0x05000340, 0x60);
             gCurrentPinballGame->activePaletteIndex = 2;
-            gCurrentPinballGame->paletteSwapActive = 1;
+            gCurrentPinballGame->paletteSwapActive = TRUE;
         }
 
         DmaCopy16(3, &gBallFlashPalette, 0x05000220, 0x20);
@@ -990,7 +990,7 @@ void RunMonCaptureSequence(void)
 
                     DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x140, 0x05000340, 0x60);
                     gCurrentPinballGame->activePaletteIndex = 1;
-                    gCurrentPinballGame->paletteSwapActive = 1;
+                    gCurrentPinballGame->paletteSwapActive = TRUE;
                 }
             }
             else
@@ -1011,7 +1011,7 @@ void RunMonCaptureSequence(void)
                     DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x140, 0x05000340, 0x60);
 
                     gCurrentPinballGame->activePaletteIndex = 0;
-                    gCurrentPinballGame->paletteSwapActive = 1;
+                    gCurrentPinballGame->paletteSwapActive = TRUE;
                 }
             }
         }

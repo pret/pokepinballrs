@@ -76,19 +76,19 @@ static void InitFieldSelectData(void)
 {
     gFieldSelectData.rubyFieldSpriteGroup = SG_FIELD_SELECT_RUBY_FULL_HIGHLIGHT;
     gFieldSelectData.sapphireFieldSpriteGroup = SG_FIELD_SELECT_SAPPHIRE_FULL_SHADOW;
-    gFieldSelectData.rubyHighlightVisible = 0;
-    gFieldSelectData.sapphireHighlightVisible = 1;
+    gFieldSelectData.rubyHighlightVisible = FALSE;
+    gFieldSelectData.sapphireHighlightVisible = TRUE;
     gFieldSelectData.selectedField = FIELD_RUBY;
     gFieldSelectData.state = FIELD_SELECT_STATE_CHOOSE_FIELD;
     gFieldSelectData.transitionFrame = 0;
     gFieldSelectData.speedBlinkTimer = 0;
     gFieldSelectData.nextMainState = STATE_INTRO;
     gFieldSelectData.speedBlinkToggle = 0;
-    gFieldSelectData.ballSpeedVisible = 0;
+    gFieldSelectData.ballSpeedVisible = FALSE;
 
     gFieldSelectData.ballSpeed = gMain_saveData.ballSpeed;
     gMain.selectedField = FIELD_RUBY;
-    gFieldSelectSoftReset = 0;
+    gFieldSelectSoftReset = FALSE;
 }
 
 #define RESTART_GAME_BUTTONS (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)
@@ -98,11 +98,12 @@ void FieldSelect_State1_8C7C(void)
     RenderFieldSelectSprites();
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gFieldSelectSoftReset = 1;
+        gFieldSelectSoftReset = TRUE;
         gFieldSelectData.nextMainState = STATE_INTRO;
         gMain.subState++;
     }
-    if (gFieldSelectSoftReset == 0)
+
+    if (!gFieldSelectSoftReset)
     {
         switch (gFieldSelectData.state)
         {
@@ -113,8 +114,8 @@ void FieldSelect_State1_8C7C(void)
                 {
                     m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                     gFieldSelectData.selectedField = FIELD_RUBY;
-                    gFieldSelectData.rubyHighlightVisible = 0;
-                    gFieldSelectData.sapphireHighlightVisible = 1;
+                    gFieldSelectData.rubyHighlightVisible = FALSE;
+                    gFieldSelectData.sapphireHighlightVisible = TRUE;
                     gFieldSelectData.state = FIELD_SELECT_STATE_1;
                 }
             }
@@ -124,8 +125,8 @@ void FieldSelect_State1_8C7C(void)
                 {
                     m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                     gFieldSelectData.selectedField = FIELD_SAPPHIRE;
-                    gFieldSelectData.rubyHighlightVisible = 1;
-                    gFieldSelectData.sapphireHighlightVisible = 0;
+                    gFieldSelectData.rubyHighlightVisible = TRUE;
+                    gFieldSelectData.sapphireHighlightVisible = FALSE;
                     gFieldSelectData.state = FIELD_SELECT_STATE_1;
                 }
             }
@@ -133,20 +134,20 @@ void FieldSelect_State1_8C7C(void)
             {
                 m4aSongNumStart(SE_MENU_SELECT);
                 gFieldSelectData.state = FIELD_SELECT_STATE_BALL_SPEED;
-                gFieldSelectData.ballSpeedVisible = 1;
+                gFieldSelectData.ballSpeedVisible = TRUE;
                 gFieldSelectData.speedBlinkTimer = 0;
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
                 {
-                    gFieldSelectData.rubyHighlightVisible = 0;
-                    gFieldSelectData.sapphireHighlightVisible = 1;
+                    gFieldSelectData.rubyHighlightVisible = FALSE;
+                    gFieldSelectData.sapphireHighlightVisible = TRUE;
                     gFieldSelectData.rubyFieldSpriteGroup = SG_FIELD_SELECT_RUBY_FULL_HIGHLIGHT;
                     gFieldSelectData.sapphireFieldSpriteGroup = SG_FIELD_SELECT_SAPPHIRE_FULL_SHADOW;
                     gFieldSelectData.transitionFrame = 0;
                 }
                 else
                 {
-                    gFieldSelectData.rubyHighlightVisible = 1;
-                    gFieldSelectData.sapphireHighlightVisible = 0;
+                    gFieldSelectData.rubyHighlightVisible = TRUE;
+                    gFieldSelectData.sapphireHighlightVisible = FALSE;
                     gFieldSelectData.rubyFieldSpriteGroup = SG_FIELD_SELECT_RUBY_FULL_SHADOW;
                     gFieldSelectData.sapphireFieldSpriteGroup = SG_FIELD_SELECT_SAPPHIRE_FULL_HIGHLIGHT;
                     gFieldSelectData.transitionFrame = 0;
@@ -159,25 +160,25 @@ void FieldSelect_State1_8C7C(void)
                 gFieldSelectData.nextMainState = STATE_TITLE;
                 if (gFieldSelectData.selectedField == FIELD_RUBY)
                 {
-                    gFieldSelectData.rubyHighlightVisible = 0;
-                    gFieldSelectData.sapphireHighlightVisible = 1;
+                    gFieldSelectData.rubyHighlightVisible = FALSE;
+                    gFieldSelectData.sapphireHighlightVisible = TRUE;
                     gFieldSelectData.rubyFieldSpriteGroup = SG_FIELD_SELECT_RUBY_FULL_HIGHLIGHT;
                     gFieldSelectData.sapphireFieldSpriteGroup = SG_FIELD_SELECT_SAPPHIRE_FULL_SHADOW;
                     gFieldSelectData.transitionFrame = 0;
                 }
                 else
                 {
-                    gFieldSelectData.rubyHighlightVisible = 1;
-                    gFieldSelectData.sapphireHighlightVisible = 0;
+                    gFieldSelectData.rubyHighlightVisible = TRUE;
+                    gFieldSelectData.sapphireHighlightVisible = FALSE;
                     gFieldSelectData.rubyFieldSpriteGroup = SG_FIELD_SELECT_RUBY_FULL_SHADOW;
                     gFieldSelectData.sapphireFieldSpriteGroup = SG_FIELD_SELECT_SAPPHIRE_FULL_HIGHLIGHT;
                     gFieldSelectData.transitionFrame = 0;
                 }
             }
             if (gMain.selectedField < MAIN_FIELD_COUNT)
-                gMain.isBonusField = 0;
+                gMain.isBonusField = FALSE;
             else
-                gMain.isBonusField = 1;
+                gMain.isBonusField = TRUE;
             break;
         case FIELD_SELECT_STATE_BALL_SPEED:
             if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
@@ -197,7 +198,7 @@ void FieldSelect_State1_8C7C(void)
             if (JOY_NEW(B_BUTTON))
             {
                 m4aSongNumStart(SE_MENU_CANCEL);
-                gFieldSelectData.ballSpeedVisible = 0;
+                gFieldSelectData.ballSpeedVisible = FALSE;
                 gFieldSelectData.state = FIELD_SELECT_STATE_CHOOSE_FIELD;
             }
             gFieldSelectData.speedBlinkTimer++;
@@ -236,8 +237,8 @@ void FieldSelect_State1_8C7C(void)
                 {
                     m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                     gFieldSelectData.selectedField = FIELD_RUBY;
-                    gFieldSelectData.rubyHighlightVisible = 0;
-                    gFieldSelectData.sapphireHighlightVisible = 1;
+                    gFieldSelectData.rubyHighlightVisible = FALSE;
+                    gFieldSelectData.sapphireHighlightVisible = TRUE;
                     gFieldSelectData.rubyFieldSpriteGroup = SG_FIELD_SELECT_RUBY_FULL_HIGHLIGHT;
                     gFieldSelectData.sapphireFieldSpriteGroup = SG_FIELD_SELECT_SAPPHIRE_FULL_SHADOW;
                     gFieldSelectData.transitionFrame = 0;
@@ -250,8 +251,8 @@ void FieldSelect_State1_8C7C(void)
                 {
                     m4aSongNumStart(SE_DEX_INFO_FIELD_SELECT_MOVE);
                     gFieldSelectData.selectedField = FIELD_SAPPHIRE;
-                    gFieldSelectData.rubyHighlightVisible = 1;
-                    gFieldSelectData.sapphireHighlightVisible = 0;
+                    gFieldSelectData.rubyHighlightVisible = TRUE;
+                    gFieldSelectData.sapphireHighlightVisible = FALSE;
                     gFieldSelectData.rubyFieldSpriteGroup = SG_FIELD_SELECT_RUBY_FULL_SHADOW;
                     gFieldSelectData.sapphireFieldSpriteGroup = SG_FIELD_SELECT_SAPPHIRE_FULL_HIGHLIGHT;
                     gFieldSelectData.transitionFrame = 0;
@@ -320,7 +321,7 @@ static void RenderFieldSelectSprites(void)
 
     LoadSpriteSets(gFieldSelectSpriteSets, 16, r6);
 
-    if (gFieldSelectData.rubyHighlightVisible == 1)
+    if (gFieldSelectData.rubyHighlightVisible == TRUE)
     {
         r6->baseX = 0x25;
         r6->baseY = 0x18;
@@ -331,7 +332,7 @@ static void RenderFieldSelectSprites(void)
         }
     }
 
-    if (gFieldSelectData.sapphireHighlightVisible == 1)
+    if (gFieldSelectData.sapphireHighlightVisible == TRUE)
     {
         r9->baseX = 0x8D;
         r9->baseY = 0x18;

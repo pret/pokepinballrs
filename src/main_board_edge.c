@@ -48,7 +48,7 @@ void DrawBoardEdgeBanner(void)
  */
 void RestoreBoardObjPalettes(s16 arg0)
 {
-    if (gCurrentPinballGame->paletteSwapActive == 1)
+    if (gCurrentPinballGame->paletteSwapActive == TRUE)
     {
         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[arg0], (void*)OBJ_PLTT, 0x20);
     }

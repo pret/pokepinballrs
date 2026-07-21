@@ -189,7 +189,7 @@ void RestoreGameState(u16 arg0)
         for (i = 0; i < NUM_EREADER_CARDS; i++)
             gMain.eReaderBonuses[i] = gCurrentPinballGame->eReaderBonuses[i];
 
-        gCurrentPinballGame->startButtonDisabled = 1;
+        gCurrentPinballGame->startButtonDisabled = TRUE;
         if (arg0 == 1 && gMain.selectedField < MAIN_FIELD_COUNT)
         {
             gCurrentPinballGame->cameraYViewport = gCurrentPinballGame->cameraBaseY +
@@ -204,7 +204,7 @@ void RestoreGameState(u16 arg0)
     }
 
     gCurrentPinballGame->fadeSubState = 0;
-    gMain.continueFromSave = 0;
+    gMain.continueFromSave = FALSE;
     loadFieldBoardGraphics();
     if (gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->boardCollisionConfigChanged)
         SetBoardCollisionConfig(1);

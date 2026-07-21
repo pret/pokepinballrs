@@ -14,7 +14,7 @@ extern const u8 gBallPalettes[][0x20];
 void AllBoardProcess_5A_11B9C(void)
 {
     s16 i;
-    if (gMain.isBonusField == 0)
+    if ( !gMain.isBonusField )
     {
         gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
         InitBallState(0);
@@ -49,7 +49,7 @@ void InitBallState(s16 arg0)
         ball->oamPriority = 1;
 
     ball->spinSpeed = 0;
-    gCurrentPinballGame->ballInLowerHalf = 1;
+    gCurrentPinballGame->ballInLowerHalf = TRUE;
 }
 
 extern const u16 gGravityDeltas_Strong[4];

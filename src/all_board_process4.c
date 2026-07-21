@@ -124,11 +124,11 @@ void UpdateMainBoardFlipperPhysics(void)
             {
                 dir = 1;
             }
-            else if (gCurrentPinballGame->flipperLaunchPending != 0)
+            else if (gCurrentPinballGame->flipperLaunchPending)
             {
                 gCurrentPinballGame->ballStates[0].velocity.x = gCurrentPinballGame->flipperLaunchVelocity.x;
                 gCurrentPinballGame->ballStates[0].velocity.y = gCurrentPinballGame->flipperLaunchVelocity.y;
-                gCurrentPinballGame->flipperLaunchPending = 0;
+                gCurrentPinballGame->flipperLaunchPending = FALSE;
                 PlayRumble(7);
             }
             flipper->collisionFrameIndex = flipper->position / 2 + 1;
@@ -141,11 +141,11 @@ void UpdateMainBoardFlipperPhysics(void)
                 flipper->collisionFrameIndex = flipper->position / 2 + 6;
                 dir = -1;
             }
-            else if (gCurrentPinballGame->flipperLaunchPending != 0)
+            else if (gCurrentPinballGame->flipperLaunchPending)
             {
                 gCurrentPinballGame->ballStates[0].velocity.x = gCurrentPinballGame->flipperLaunchVelocity.x;
                 gCurrentPinballGame->ballStates[0].velocity.y = gCurrentPinballGame->flipperLaunchVelocity.y;
-                gCurrentPinballGame->flipperLaunchPending = 0;
+                gCurrentPinballGame->flipperLaunchPending = FALSE;
                 PlayRumble(7);
             }
             flipper->position -= 2;
@@ -242,11 +242,11 @@ void UpdateBonusBoardFlipperPhysics(void)
             {
                 dir = 1;
             }
-            else if (gCurrentPinballGame->flipperLaunchPending != 0)
+            else if (gCurrentPinballGame->flipperLaunchPending)
             {
                 gCurrentPinballGame->ballStates[0].velocity.x = gCurrentPinballGame->flipperLaunchVelocity.x;
                 gCurrentPinballGame->ballStates[0].velocity.y = gCurrentPinballGame->flipperLaunchVelocity.y;
-                gCurrentPinballGame->flipperLaunchPending = 0;
+                gCurrentPinballGame->flipperLaunchPending = FALSE;
                 PlayRumble(7);
             }
             flipper->collisionFrameIndex = flipper->position / 2 + 1;
@@ -259,11 +259,11 @@ void UpdateBonusBoardFlipperPhysics(void)
                 flipper->collisionFrameIndex = flipper->position / 2 + 6;
                 dir = -1;
             }
-            else if (gCurrentPinballGame->flipperLaunchPending != 0)
+            else if (gCurrentPinballGame->flipperLaunchPending)
             {
                 gCurrentPinballGame->ballStates[0].velocity.x = gCurrentPinballGame->flipperLaunchVelocity.x;
                 gCurrentPinballGame->ballStates[0].velocity.y = gCurrentPinballGame->flipperLaunchVelocity.y;
-                gCurrentPinballGame->flipperLaunchPending = 0;
+                gCurrentPinballGame->flipperLaunchPending = FALSE;
                 PlayRumble(7);
             }
             flipper->position -= 2;

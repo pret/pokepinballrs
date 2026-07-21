@@ -102,7 +102,7 @@ void CheckSapphireBumperCollision(struct Vector16 *ballPosition, s16 *collisionA
     u8 lowerNibble = 0;
     s32 ix = 0;
 
-    if (gCurrentPinballGame->ballInLowerHalf == 0)
+    if ( !gCurrentPinballGame->ballInLowerHalf )
     {
         if (gCurrentPinballGame->boardLayerDepth != 0)
             return;

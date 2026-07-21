@@ -191,11 +191,11 @@ void RenderBannerSlideAnimation(void)
                                     (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE
                                         && gCurrentPinballGame->prizeId == PRIZE_START_EVO_MODE))
                                 {
-                                    gCurrentPinballGame->paletteSwapActive = 0;
+                                    gCurrentPinballGame->paletteSwapActive = FALSE;
                                 }
                                 else
                                 {
-                                    gCurrentPinballGame->paletteSwapActive = 1;
+                                    gCurrentPinballGame->paletteSwapActive = TRUE;
                                     DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2], (void *)(OBJ_PLTT), 0x20);
                                 }
                                 if (gMain.selectedField == FIELD_SAPPHIRE)
@@ -220,11 +220,11 @@ void RenderBannerSlideAnimation(void)
                                     (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE
                                         && gCurrentPinballGame->prizeId == PRIZE_START_EVO_MODE))
                                 {
-                                    gCurrentPinballGame->paletteSwapActive = 0;
+                                    gCurrentPinballGame->paletteSwapActive = FALSE;
                                 }
                                 else
                                 {
-                                    gCurrentPinballGame->paletteSwapActive = 1;
+                                    gCurrentPinballGame->paletteSwapActive = TRUE;
                                     DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1], (void *)(OBJ_PLTT), 0x20);
                                 }
                                 if (gMain.selectedField == FIELD_SAPPHIRE)
@@ -277,7 +277,7 @@ void RenderBannerSlideAnimation(void)
                         }
                         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
                         gCurrentPinballGame->activePaletteIndex = 1;
-                        gCurrentPinballGame->paletteSwapActive = 1;
+                        gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
                     if (gCurrentPinballGame->bannerSlideTimer == 0x1D)
                     {
@@ -306,7 +306,7 @@ void RenderBannerSlideAnimation(void)
                         }
                         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
                         gCurrentPinballGame->activePaletteIndex = 0;
-                        gCurrentPinballGame->paletteSwapActive = 1;
+                        gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
                 }
 

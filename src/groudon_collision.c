@@ -151,7 +151,7 @@ void CheckGroudonEntityCollision(struct Vector16 *ballPosition, u16 *collisionAn
 
         *collisionAngle = maskedResult;
         *collisionType = 6;
-        gCurrentPinballGame->boulderHitFlag[i] = 1;
+        gCurrentPinballGame->boulderHitFlag[i] = TRUE;
     }
 
     for (i = 0; i < 4; i++)

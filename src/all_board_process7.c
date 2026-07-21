@@ -43,11 +43,11 @@ void MainBoardProcess_7B_12524(void)
 
     if (currentBallState->positionQ0.y >= 244)
     {
-        gCurrentPinballGame->ballInLowerHalf = 1;
+        gCurrentPinballGame->ballInLowerHalf = TRUE;
         gCurrentPinballGame->pondEntitySpriteFlag = 0;
     }
     else
-        gCurrentPinballGame->ballInLowerHalf = 0;
+        gCurrentPinballGame->ballInLowerHalf = FALSE;
 
     currentBallState->positionQ0.x = currentBallState->positionQ1.x / 2;
     currentBallState->positionQ0.y = currentBallState->positionQ1.y / 2;

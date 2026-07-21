@@ -52,11 +52,11 @@ void GroudonBoardProcess_3A_3B120(void)
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
     gCurrentPinballGame->ball->ballHidden = TRUE;
-    gCurrentPinballGame->returnToMainBoardFlag = 0;
+    gCurrentPinballGame->returnToMainBoardFlag = FALSE;
     gCurrentPinballGame->boardEntityCollisionMode = GROUDON_COLLISION_MODE_ACTIVE;
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
     gCurrentPinballGame->bossLightFadeInCounter = 0;
-    gCurrentPinballGame->ballGrabbed = 0;
+    gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->bonusModeHitCount = 0;
     gCurrentPinballGame->legendaryFlashState = 0;
     gCurrentPinballGame->bossAttackTimer = 0;
@@ -116,7 +116,7 @@ void GroudonBoardProcess_3A_3B120(void)
         gCurrentPinballGame->boulderPositionIndex[i] = 0;
         gCurrentPinballGame->boulderState[i] = GROUDON_BOULDER_STATE_SPAWN;
         gCurrentPinballGame->boulderSpriteFrame[i] = 0;
-        gCurrentPinballGame->boulderHitFlag[i] = 0;
+        gCurrentPinballGame->boulderHitFlag[i] = FALSE;
         gCurrentPinballGame->boulderAnimTimer[i] = 0;
         gCurrentPinballGame->boulderFallVelocity[i] = 0;
         gCurrentPinballGame->boulderFallHeight[i] = 0;
@@ -246,7 +246,7 @@ void GroudonBoardProcess_3B_3B49C(void)
         break;
     case LEGENDARY_BOARD_STATE_SCORE_COUNTING_FINISHED:
         ProcessBonusBannerAndScoring();
-        gCurrentPinballGame->returnToMainBoardFlag = 1;
+        gCurrentPinballGame->returnToMainBoardFlag = TRUE;
         gCurrentPinballGame->cameraLocked = TRUE;
         break;
     }
@@ -1061,11 +1061,11 @@ void UpdateGroudonFieldEntities(void)
         {
             gMain.spriteGroups[SG_GROUDON_FIREBALL_CAUGHT_BALL].active = FALSE;
             gCurrentPinballGame->ballGrabFlashTimer = 0;
-            gCurrentPinballGame->ballGrabbed = 0;
+            gCurrentPinballGame->ballGrabbed = FALSE;
         }
         else
         {
-            gCurrentPinballGame->ballGrabbed = 1;
+            gCurrentPinballGame->ballGrabbed = TRUE;
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->ball->velocity.y = 0;
             gCurrentPinballGame->ball->spinSpeed = 0;
@@ -1199,7 +1199,7 @@ void UpdateGroudonFieldEntities(void)
                 gCurrentPinballGame->boulderState[i] = GROUDON_BOULDER_STATE_DROP;
                 gCurrentPinballGame->boulderCollisionPos[i].x = 0;
                 gCurrentPinballGame->boulderCollisionPos[i].y = 0;
-                gCurrentPinballGame->boulderHitFlag[i] = 0;
+                gCurrentPinballGame->boulderHitFlag[i] = FALSE;
                 break;
             case GROUDON_BOULDER_STATE_DROP:
                 if (gCurrentPinballGame->boulderFallHeight[i] < 0) {
@@ -1263,7 +1263,7 @@ void UpdateGroudonFieldEntities(void)
                         gCurrentPinballGame->boulderAnimTimer[i] = 0;
                         gCurrentPinballGame->boulderSpriteFrame[i] = gGroudonBoulderBaseSpriteIndices[i] + 5;
                         gCurrentPinballGame->boulderState[i] = GROUDON_BOULDER_STATE_HIT_ONCE;
-                        gCurrentPinballGame->boulderHitFlag[i] = 0;
+                        gCurrentPinballGame->boulderHitFlag[i] = FALSE;
                     }
 
                     gCurrentPinballGame->boulderAnimTimer[i]++;
@@ -1293,7 +1293,7 @@ void UpdateGroudonFieldEntities(void)
                         gCurrentPinballGame->boulderAnimTimer[i] = 0;
                         gCurrentPinballGame->boulderSpriteFrame[i] = gGroudonBoulderBaseSpriteIndices[i] + 8;
                         gCurrentPinballGame->boulderState[i] = GROUDON_BOULDER_STATE_HIT_TWICE;
-                        gCurrentPinballGame->boulderHitFlag[i] = 0;
+                        gCurrentPinballGame->boulderHitFlag[i] = FALSE;
                     }
 
                     gCurrentPinballGame->boulderAnimTimer[i]++;
@@ -1331,7 +1331,7 @@ void UpdateGroudonFieldEntities(void)
                         gCurrentPinballGame->boulderAnimTimer[i] = 0;
                         gCurrentPinballGame->boulderSpriteFrame[i] = 12;
                         gCurrentPinballGame->boulderState[i] = GROUDON_BOULDER_STATE_CLEANUP;
-                        gCurrentPinballGame->boulderHitFlag[i] = 0;
+                        gCurrentPinballGame->boulderHitFlag[i] = FALSE;
                     }
 
                     gCurrentPinballGame->boulderAnimTimer[i]++;
@@ -1356,13 +1356,13 @@ void UpdateGroudonFieldEntities(void)
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
 
-            if (gCurrentPinballGame->boulderState[i] > GROUDON_BOULDER_STATE_DROP 
+            if (gCurrentPinballGame->boulderState[i] > GROUDON_BOULDER_STATE_DROP
                 && gCurrentPinballGame->boulderState[i] < GROUDON_BOULDER_STATE_CLEANUP)
             {
                 if (gGroudonBoulderPositionTable[gCurrentPinballGame->boulderPositionIndex[i]][2] == gCurrentPinballGame->shockwaveAnimTimer)
                 {
                     gCurrentPinballGame->boulderState[i] = GROUDON_BOULDER_STATE_HIT_TWICE;
-                    gCurrentPinballGame->boulderHitFlag[i] = 1;
+                    gCurrentPinballGame->boulderHitFlag[i] = TRUE;
                     gCurrentPinballGame->boulderAnimTimer[i] = 0;
                 }
             }
