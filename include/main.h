@@ -6,6 +6,8 @@
 #include "constants/high_scores.h"
 #include "constants/pinball_inputs.h"
 #include "constants/species.h"
+#include "constants/sprite_groups.h"
+#include "functions.h"
 
 struct HighScoreEntry
 {
@@ -81,6 +83,19 @@ struct Main
     /*0x3C*/ volatile u16 blendBrightness;
              // may be a sub-struct. possibly for saved game?
     /*0x40*/ int hasSavedGame;
+
+    /***
+     * Allows for 'board' level indirect sprite group references, so that multiple boards
+     * use a shared 'logical' reference for a sprite group, separate from the actual group
+     * being used for the specific board.
+     *
+     * EG: all fieldSpriteGroup[board][0] are a reference to the ball sprite group, but the
+     * actual sprite groups used for the ball (by field) are groups 70/74/11/22/18/26/38/13.
+     *
+     * Non boss bonuses use 2 entries (ball/respawn graphics)
+     * Boss bonus boards use those 2, plus an additional 5 for the 'capture' cutscene.
+     * Main boards have several, for shared features on the 2 main boards.
+     ***/
     /*0x44*/ struct SpriteGroup **fieldSpriteGroups;
     /*0x48*/ int rngValue;
     /*0x4C*/ u32 systemFrameCount;
@@ -97,7 +112,7 @@ struct Main
      * An action can be triggered by pressing 2 buttons simultaneously
      *   Each data element holds a mask for the button it looks for.
      ***/
-    /*0x60*/ u16 buttonConfigs[5][2]; 
+    /*0x60*/ u16 buttonConfigs[NUM_PINBALL_INPUTS][2]; 
 
     // This field must be accessed using the following macro to produce matching code.
 #define gMain_saveData (*(struct SaveData *)(&gMain.saveData))
@@ -123,7 +138,6 @@ struct Main
 };
 
 extern struct Main gMain;
-extern struct SpriteGroup gMain_spriteGroups[];
 extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
 extern IntrFunc *gVBlankIntrFuncPtr;
@@ -164,6 +178,5 @@ void EnableVBlankInterrupts(void);
 void DisableVBlankInterrupts(void);
 void MainLoopIter(void);
 void DefaultMainCallback(void);
-
 
 #endif // GUARD_MAIN_H

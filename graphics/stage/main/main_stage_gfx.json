@@ -160,6 +160,27 @@
       "mwidth":2 
     },
     {
+      "gfx_filename": "ball_open_to_catch",
+      "segments": [
+        {
+          "segfile": "ball_open_to_catch_pokeball",
+          "oamshape": "ball_open_to_catch.json"
+        },
+        {
+          "segfile": "ball_open_to_catch_greatball",
+          "oamshape": "ball_open_to_catch.json"
+        },
+        {
+          "segfile": "ball_open_to_catch_ultraball",
+          "oamshape": "ball_open_to_catch.json"
+        },
+        {
+          "segfile": "ball_open_to_catch_masterball",
+          "oamshape": "ball_open_to_catch.json"
+        }
+      ]
+    },
+    {
       "gfx_filename": "catch_mode_banner",
       "oam": true,
       "mheight": 9,

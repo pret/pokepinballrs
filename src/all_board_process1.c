@@ -23,14 +23,15 @@ void ClearBG0Tilemap(void)
 
 void AllBoardProcess_1B_47160(void)
 {
-    if (JOY_NEW(START_BUTTON) && gMain.mainState != STATE_GAME_IDLE && gCurrentPinballGame->startButtonDisabled == 0)
+    if (JOY_NEW(START_BUTTON) && gMain.mainState != STATE_GAME_IDLE
+        && !gCurrentPinballGame->startButtonDisabled)
     {
         if (gMain.modeChangeFlags & MODE_CHANGE_PAUSE)
         {
             gMain.modeChangeFlags &= ~MODE_CHANGE_PAUSE;
             UnpauseGame();
         }
-        else if ((gMain.modeChangeFlags & MODE_CHANGE_END_OF_GAME) == 0)
+        else if (!(gMain.modeChangeFlags & MODE_CHANGE_END_OF_GAME))
         {
             gMain.modeChangeFlags |= MODE_CHANGE_PAUSE;
             PauseGame();
@@ -43,13 +44,13 @@ void AllBoardProcess_1B_47160(void)
         if (JOY_NEW(DPAD_UP))
         {
             gCurrentPinballGame->pauseMenuCursorIndex ^= 1;
-            m4aSongNumStart(SE_UNKNOWN_0xA3);
+            m4aSongNumStart(SE_PAUSE_CURSOR_MOVE);
         }
 
         if (JOY_NEW(DPAD_DOWN))
         {
             gCurrentPinballGame->pauseMenuCursorIndex ^= 1;
-            m4aSongNumStart(SE_UNKNOWN_0xA3);
+            m4aSongNumStart(SE_PAUSE_CURSOR_MOVE);
         }
 
         if (JOY_NEW(A_BUTTON) && !JOY_HELD(B_BUTTON | SELECT_BUTTON | START_BUTTON))

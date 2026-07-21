@@ -22,7 +22,7 @@ enum BonusFieldSelection
     FIELD_SELECT_RAYQUAZA,
 };
 
-EWRAM_DATA s8 gBallSpeedSubmenuVisible = 0;
+EWRAM_DATA s8 gBallSpeedSubmenuVisible = FALSE;
 EWRAM_DATA u8 gSelectedBallSpeed = 0;
 EWRAM_DATA s16 gBallSpeedDisplayToggle = 0;
 EWRAM_DATA s8 gSelectedBonusField = 0;
@@ -92,7 +92,7 @@ void InitBonusFieldSelectState(void)
     gBonusFieldLoadingCounter = 0;
     gBonusFieldHighlightPalette = 0;
     gBallSpeedDisplayToggle = 0;
-    gBallSpeedSubmenuVisible = 0;
+    gBallSpeedSubmenuVisible = FALSE;
     gBonusFieldSelectNextMainState = STATE_INTRO;
     gSelectedBallSpeed = gMain_saveData.ballSpeed;
 }
@@ -139,7 +139,7 @@ void BonusFieldSelect_State1_2768(void)
         {
             m4aSongNumStart(SE_MENU_SELECT);
             gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_BALL_SPEED;
-            gBallSpeedSubmenuVisible = 1;
+            gBallSpeedSubmenuVisible = TRUE;
             gBonusFieldSelectTimer = 0;
         }
         if (JOY_NEW(B_BUTTON))
@@ -167,7 +167,7 @@ void BonusFieldSelect_State1_2768(void)
         if (JOY_NEW(B_BUTTON))
         {
             m4aSongNumStart(SE_MENU_CANCEL);
-            gBallSpeedSubmenuVisible = 0;
+            gBallSpeedSubmenuVisible = FALSE;
             gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
         }
         gBonusFieldSelectTimer++;
@@ -186,9 +186,9 @@ void BonusFieldSelect_State1_2768(void)
             gBonusFieldLoadingCounter++;
             if (gBonusFieldLoadingCounter > 5)
             {
-                gMain.continueFromSave = 0;
+                gMain.continueFromSave = FALSE;
                 gMain.tempField = gMain.selectedField = gBonusFieldMenuSelectionToField[gSelectedBonusField];
-                gMain.isBonusField = 1;
+                gMain.isBonusField = TRUE;
                 gBonusFieldSelectNextMainState = STATE_GAME_MAIN;
                 gMain.subState++;
             }
@@ -223,8 +223,8 @@ void RenderBonusFieldSelectSprites(void)
     {
         sgptrs[i] = &gMain.spriteGroups[i];
     }
-    r10 = &gMain.spriteGroups[6 + gSelectedBonusField];
-    r8 = &gMain.spriteGroups[12 + gSelectedBallSpeed * 2 + gBallSpeedDisplayToggle];
+    r10 = &gMain.spriteGroups[SG_6 + gSelectedBonusField];
+    r8 = &gMain.spriteGroups[SG_12 + gSelectedBallSpeed * 2 + gBallSpeedDisplayToggle];
     for (j = 0; j < 6; j++)
     {
         sgptrs[j]->active = TRUE;
@@ -232,7 +232,7 @@ void RenderBonusFieldSelectSprites(void)
     sgptrs[gSelectedBonusField]->active = FALSE;
     r10->active = TRUE;
     r8->active = gBallSpeedSubmenuVisible;
-    LoadSpriteSets(gBonusFieldSelectSpriteSets, 16, gMain_spriteGroups);
+    LoadSpriteSets(gBonusFieldSelectSpriteSets, 16, gMain.spriteGroups);
     for (i = 0; i < 6; i++)
     {
         if (sgptrs[i]->active == TRUE)

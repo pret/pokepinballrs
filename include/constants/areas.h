@@ -17,4 +17,11 @@
 #define AREA_RUIN_SAPPHIRE     13
 #define AREA_COUNT              14
 
+// number of slots used by the area roulette wheel at ball launch
+#define AREA_ROULETTE_SLOT_COUNT       6
+#define AREA_BONUS_RUIN_SLOT_IX        (AREA_ROULETTE_SLOT_COUNT + 0)
+
+// Number of total location slots, including any bonuses
+#define AREA_TABLE_SLOT_COUNT          (AREA_ROULETTE_SLOT_COUNT + 1)
+
 #endif // GUARD_CONSTANTS_AREAS_H

@@ -29,7 +29,7 @@ void RubyBoardProcess_3A_19A20(void)
     AnimateSharpedoEntity();
 
     gCurrentPinballGame->pikachuSpinFrame = 0;
-    gCurrentPinballGame->pikachuSpinPrevFrame = 1;
+    gCurrentPinballGame->pikachuSpinPrevFrame = TRUE;
     UpdatePikachuChargeCounter();
     ProcessChargeIndicator();
     DrawPikachuSpinner();
@@ -37,10 +37,10 @@ void RubyBoardProcess_3A_19A20(void)
     gCurrentPinballGame->chargeIndicatorScaleX = 256;
     gCurrentPinballGame->chargeIndicatorScaleY = 256;
     gCurrentPinballGame->rampPrizeType = 2;
-    DrawRubyNuzleafPlatformSprite();
+    DrawRubyRampPrize();
 
-    gCurrentPinballGame->sideBumperShakeOffset[0] = 3;
-    gCurrentPinballGame->sideBumperShakeOffset[1] = 3;
+    gCurrentPinballGame->linooneSideBumperExtensionOffset[SIDE_IX_LEFT] = 3;
+    gCurrentPinballGame->linooneSideBumperExtensionOffset[SIDE_IX_RIGHT] = 3;
     DrawBoardEdgeBanner();
 }
 

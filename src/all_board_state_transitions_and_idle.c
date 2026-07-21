@@ -9,12 +9,12 @@ extern const void (*gBoardStateUpdateFuncs[])(void);
 
 extern void HandleBoardStateTransitionTeardown(void);
 
-void RequestBoardStateTransition(u8 arg0)
+void RequestBoardStateTransition(u8 boardState)
 {
     gCurrentPinballGame->boardTransitionPhase = BOARD_STATE_DISPATCHER_STATE_CHANGING;
-    gCurrentPinballGame->nextBoardState = arg0;
+    gCurrentPinballGame->nextBoardState = boardState;
     if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE)
-        gMain.fieldSpriteGroups[13]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
 }
 
 void BoardStateDispatcher(void)
@@ -82,7 +82,7 @@ void InitFieldIdle(void)
 
 void UpdateFieldIdle(void)
 {
-    if (gCurrentPinballGame->allHolesLit != 0)
+    if (gCurrentPinballGame->allHolesLit)
     {
         if (gCurrentPinballGame->allHolesLitDelayTimer != 0)
         {

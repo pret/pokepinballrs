@@ -2,6 +2,7 @@
 #define GUARD_CONSTANTS_MAIN_BOARD_H
 
 #include "center_screen_states.h"
+#include "../anglemath.h"
 
 enum MainBoardTrapHoles{
     NOT_TRAPPED = 0,
@@ -135,6 +136,28 @@ enum BoardStateDispatchStates{
     BOARD_STATE_DISPATCHER_STATE_INIT = 0,
     BOARD_STATE_DISPATCHER_STATE_RUNNING = 1,
     BOARD_STATE_DISPATCHER_STATE_CHANGING = 2,
+};
+
+enum BannerGfxModes{
+    BANNER_MODE_NONE = 0,
+    BANNER_MODE_CHINCHOU_CATCH_BURST = 1,
+    BANNER_MODE_CATCH_EM = 2,
+    BANNER_MODE_EVOLUTION = 3,
+    BANNER_MODE_TRAVEL = 4,
+    BANNER_MODE_JIRACHI = 5,
+    BANNER_MODE_LOTAD_CATCH_BURST = 6,
+    BANNER_MODE_SHROOMISH_CATCH_BURST = 7,
+};
+
+enum OutlaneSide{
+    OUTLANE_LEFT = 1,
+    OUTLANE_RIGHT = 2
+};
+
+enum PikaCoverage {
+    PIKA_LEFT_SIDE = 0,
+    PIKA_RIGHT_SIDE = 1,
+    PIKA_BOTH_SIDES = 2
 };
 
 #endif // GUARD_CONSTANTS_MAIN_BOARD_H

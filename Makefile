@@ -72,7 +72,7 @@ FIX       := tools/gbafix/gbafix$(EXE)
 SHA1 := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
 
 TOOLS_DIR = tools
-TOOLDIRS = $(filter-out $(TOOLS_DIR)/agbcc $(TOOLS_DIR)/m2ctx.py $(TOOLS_DIR)/scripts,$(wildcard $(TOOLS_DIR)/*))
+TOOLDIRS = $(filter-out $(TOOLS_DIR)/agbcc $(TOOLS_DIR)/m2ctx.py $(TOOLS_DIR)/scripts $(TOOLS_DIR)/collision_viewer,$(wildcard $(TOOLS_DIR)/*))
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
 

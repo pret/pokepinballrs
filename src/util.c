@@ -106,13 +106,13 @@ void ResetDisplayState(void)
     gMain.animationTimer = 0;
     gMain.modeChangeDelayTimer = 0;
     gMain.vCount = 144;
-    gMain.shopPanelActive = 0;
+    gMain.shopPanelActive = FALSE;
     gMain.shopPanelSlideOffset = 0;
-    gMain.blendEnabled = 0;
+    gMain.blendEnabled = FALSE;
     gMain.blendControl = 0;
     gMain.blendAlpha = 0;
     gMain.blendBrightness = 0;
-    gMain.scoreOverlayActive = 0;
+    gMain.scoreOverlayActive = FALSE;
 }
 
 void ClearGraphicsMemory(void)
@@ -166,15 +166,15 @@ void ClearSprites(void)
     for (i = 0; i < 128; i++)
     {
         gOamBuffer[i].y = 244;
-        gOamBuffer[i].affineMode = 0;
-        gOamBuffer[i].objMode = 0;
+        gOamBuffer[i].affineMode = ST_OAM_AFFINE_OFF;
+        gOamBuffer[i].objMode = ST_OAM_OBJ_NORMAL;
         gOamBuffer[i].mosaic = 0;
         gOamBuffer[i].bpp = 0;
         gOamBuffer[i].shape = 0;
         gOamBuffer[i].x = 500;
         gOamBuffer[i].matrixNum = 0;
-        gOamBuffer[i].hFlip = 0;
-        gOamBuffer[i].vFlip = 0;
+        gOamBuffer[i].hFlip = FALSE;
+        gOamBuffer[i].vFlip = FALSE;
         gOamBuffer[i].size = 0;
         gOamBuffer[i].tileNum = 0;
         gOamBuffer[i].priority = 0;

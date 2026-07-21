@@ -13,9 +13,9 @@ void DrawBoardEdgeBanner(void)
     struct SpriteGroup *group;
 
     if (gMain.selectedField == FIELD_RUBY)
-        group = &gMain.spriteGroups[81];
+        group = &gMain.spriteGroups[SG_RUBY_BOARD_RIGHT_EDGE];
     else
-        group = &gMain.spriteGroups[85];
+        group = &gMain.spriteGroups[SG_SAPPHIRE_BOARD_RIGHT_EDGE];
 
     if (group->active)
     {
@@ -48,7 +48,7 @@ void DrawBoardEdgeBanner(void)
  */
 void RestoreBoardObjPalettes(s16 arg0)
 {
-    if (gCurrentPinballGame->paletteSwapActive == 1)
+    if (gCurrentPinballGame->paletteSwapActive == TRUE)
     {
         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[arg0], (void*)OBJ_PLTT, 0x20);
     }

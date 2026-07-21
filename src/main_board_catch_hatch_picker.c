@@ -257,7 +257,7 @@ void PickSpeciesForCatchEmMode(void)
 
     if (gMain.eReaderBonuses[EREADER_SPECIAL_GUESTS_CARD])
     {
-        gMain.eReaderBonuses[EREADER_SPECIAL_GUESTS_CARD] = 0;
+        gMain.eReaderBonuses[EREADER_SPECIAL_GUESTS_CARD] = FALSE;
         rand = GetTimeAdjustedRandom();
         rand %= NUM_BONUS_SPECIES;
         for (i = 0; i < NUM_BONUS_SPECIES; i++)

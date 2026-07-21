@@ -208,7 +208,7 @@ void AnimateSapphireHoleIndicators(void)
         }
         else
         {
-            gCurrentPinballGame->holeIndicators[0] = 1;
+            gCurrentPinballGame->holeIndicators[0] = TRUE;
             gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
             gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
             gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
@@ -230,18 +230,18 @@ void DrawSapphireModeTimerDisplay(void)
 
     if (gCurrentPinballGame->saverTimeRemaining > 300)
     {
-        gCurrentPinballGame->saverLit = 1;
+        gCurrentPinballGame->saverLit = TRUE;
     }
     else if (gCurrentPinballGame->saverTimeRemaining)
     {
         if (gCurrentPinballGame->ballCatchState)
-            gCurrentPinballGame->saverLit = 1;
+            gCurrentPinballGame->saverLit = TRUE;
         else
-            gCurrentPinballGame->saverLit = (gMain.fieldFrameCount & 0xF) / 8;
+            gCurrentPinballGame->saverLit = (gMain.fieldFrameCount % 16) / 8;
     }
     else
     {
-        gCurrentPinballGame->saverLit = 0;
+        gCurrentPinballGame->saverLit = FALSE;
     }
 
     src = gSapphireSaverDisplayTilePtrs[gCurrentPinballGame->saverLit];
@@ -530,10 +530,10 @@ void AnimateSapphireHatchArrowFlash(void)
     const u8 **dest;
 
     index = 0;
-    gCurrentPinballGame->catchProgressFlashing = 0;
+    gCurrentPinballGame->catchProgressFlashing = FALSE;
     if (gCurrentPinballGame->catchArrowProgress > 1
         && gCurrentPinballGame->boardState <= MAIN_BOARD_STATE_BONUS_HOLE_ACTIVE)
-        gCurrentPinballGame->catchProgressFlashing = 1;
+        gCurrentPinballGame->catchProgressFlashing = TRUE;
 
     if (gCurrentPinballGame->catchProgressFlashing > 0)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
@@ -570,9 +570,9 @@ void AnimateSapphireShopArrow(void)
 
     index = 0;
     if (gCurrentPinballGame->shopShockWallAnimState == 3)
-        gCurrentPinballGame->shopArrowActive = 1;
+        gCurrentPinballGame->shopArrowActive = TRUE;
     else if (gCurrentPinballGame->boardState != MAIN_BOARD_STATE_BOARD_INTRO)
-        gCurrentPinballGame->shopArrowActive = 0;
+        gCurrentPinballGame->shopArrowActive = FALSE;
 
     if (gCurrentPinballGame->shopArrowActive > 0)
         index = gCurrentPinballGame->evolutionShopActive * 2 + 1 - gCurrentPinballGame->hudBlinkPhase;
@@ -629,7 +629,7 @@ void AnimateHatchMachineSpinner(void)
             if (gCurrentPinballGame->targetBumperAnimTimers[i] > 0)
             {
                 if (gCurrentPinballGame->targetBumperAnimTimers[i] == 10)
-                    m4aSongNumStart(SE_UNKNOWN_0xDC);
+                    m4aSongNumStart(SE_HATCH_MACHINE_SPINNER_TRIGGER);
 
                 gCurrentPinballGame->targetBumperAnimTimers[i]--;
                 srcIndex = 1;

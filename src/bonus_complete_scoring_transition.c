@@ -9,9 +9,6 @@
 #include "constants/board/kyogre_states.h"
 #include "constants/board/rayquaza_states.h"
 
-extern struct SpriteGroup gMain_spriteGroups_12;
-extern struct SpriteGroup gMain_spriteGroups_14;
-
 extern const u8 gKecleonBonusClear_Gfx[];
 extern const u8 gKyogreBonusClear_Gfx[];
 extern const u8 gGroudonBonusClear_Gfx[];
@@ -19,7 +16,7 @@ extern const u8 gRayquazaBonusClear_Gfx[];
 
 void FadeToMainBoard(void)
 {
-    gCurrentPinballGame->startButtonDisabled = 1;
+    gCurrentPinballGame->startButtonDisabled = TRUE;
     switch (gCurrentPinballGame->boardSubState)
     {
     case BONUS_BOARD_SUBSTATE_ACTIVE:
@@ -45,8 +42,8 @@ void FadeToMainBoard(void)
         {
             gCurrentPinballGame->stageTimer = 0;
             gCurrentPinballGame->boardSubState = DEFAULT_MODE_SUBSTATE_INIT;
-            gMain.spriteGroups[6].active = FALSE;
-            gMain.spriteGroups[5].active = FALSE;
+            gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = FALSE;
+            gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = FALSE;
             if (gMain.tempField != gMain.selectedField)
             {
                 TransitionFromBonusToMainBoard();
@@ -73,7 +70,7 @@ void ProcessBonusBannerAndScoring(void)
 
     var0 = 8;
     var1 = 0;
-    group = &gMain.spriteGroups[6];
+    group = &gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER];
     if (gCurrentPinballGame->bannerSlideYOffset > 0)
     {
         gCurrentPinballGame->bannerSlideYOffset -= 6;
@@ -125,7 +122,7 @@ void ProcessBonusBannerAndScoring(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        group = &gMain.spriteGroups[5];
+        group = &gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE];
         group->baseX = 120;
         group->baseY = gCurrentPinballGame->bannerSlideYOffset + 50;
         for (i = 0; i < 18; i++)
@@ -190,18 +187,18 @@ void ProcessBonusBannerAndScoring(void)
     }
 }
 
-void RenderBonusStageOverlaySprites(void)
+void HideDusclopsSprites(void)
 {
     s16 i;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = &gMain_spriteGroups_14;
+    group = &gMain.spriteGroups[SG_DUSCLOPS_ENTITY];
     switch (gCurrentPinballGame->bossEntityState)
     {
-    case 0:
-    case 1:
-    case 8:
+    case DUSCLOPS_ENTITY_STATE_INIT:
+    case DUSCLOPS_ENTITY_STATE_INTRO_APPEARANCE:
+    case DUSCLOPS_ENTITY_STATE_VANISH:
         if (!group->active)
             break;
 
@@ -209,10 +206,10 @@ void RenderBonusStageOverlaySprites(void)
         group->baseY = 160;
 
         oamSimple = &group->oam[0];
-        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + 240;
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         break;
-    case 2:
+    case DUSCLOPS_ENTITY_STATE_GUARD_READY:
         if (gCurrentPinballGame->bossAnimLoopCount <= 0)
             break;
 
@@ -223,23 +220,24 @@ void RenderBonusStageOverlaySprites(void)
         group->baseY = 160;
 
         oamSimple = &group->oam[0];
-        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + 240;
+        gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         break;
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-    case 7:
+    case DUSCLOPS_ENTITY_STATE_WALKING:
+    case DUSCLOPS_ENTITY_STATE_HIT:
+    case DUSCLOPS_ENTITY_STATE_HIT_STUN:
+    case DUSCLOPS_ENTITY_STATE_HIT_ABSORB_ZONE:
+    case DUSCLOPS_ENTITY_STATE_ABSORBED_BALL:
         break;
     }
 
-    group = &gMain_spriteGroups_12;
+    group = &gMain.spriteGroups[SG_DUSCLOPS_PHASING_FX];
     if (!group->active)
         return;
 
     group->baseX = 240;
     group->baseY = 160;
+
     for (i = 0; i < 2; i++)
     {
         oamSimple = &group->oam[i];
@@ -258,18 +256,18 @@ void TransitionFromBonusToMainBoard(void)
     temp = gMain.tempField;
     gMain.tempField = gMain.selectedField;
     gMain.selectedField = temp;
-    gMain.isBonusField = 0;
+    gMain.isBonusField = FALSE;
     gMain.modeChangeFlags = MODE_CHANGE_NONE;
     gCurrentPinballGame->eventTimer = 0;
-    gCurrentPinballGame->boardModeType = 0;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
     if (gCurrentPinballGame->numCompletedBonusStages > 4)
-        gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD] = 1;
+        gMain.eReaderBonuses[EREADER_ENCOUNTER_RATE_UP_CARD] = TRUE;
 
     gMain.subState = 0;
-    gCurrentPinballGame->prevBoardState = 3;
+    gCurrentPinballGame->prevBoardState = MAIN_BOARD_STATE_BOSS_HOLE_ACTIVE;
     gCurrentPinballGame->boardState = MAIN_BOARD_STATE_DEFAULT;
     gCurrentPinballGame->boardTransitionPhase = BOARD_STATE_DISPATCHER_STATE_INIT;
-    gCurrentPinballGame->boardEntityActive = 0;
+    gCurrentPinballGame->cameraLocked = FALSE;
     gCurrentPinballGame->cameraYAdjust = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION,
         PORTRAIT_MAIN_SLOT);

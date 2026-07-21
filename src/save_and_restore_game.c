@@ -127,7 +127,7 @@ void SaveGameStateSnapshot(s16 arg0)
 
 void SaveGameToSram(void)
 {
-    gCurrentPinballGame->saveDataValid = 1;
+    gCurrentPinballGame->saveDataValid = TRUE;
     WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(*gCurrentPinballGame));
 }
 
@@ -145,7 +145,7 @@ void RestoreGameState(u16 arg0)
     {
         DmaCopy16(3, gBoardConfig.pinballGame, gCurrentPinballGame, sizeof(*gCurrentPinballGame));
         gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
-        gCurrentPinballGame->secondaryBall = &gCurrentPinballGame->ballStates[0];
+        gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[0];
         var2 = gMain.idleDemoVariant;
         if ((var2 & 0x3) == 1)
         {
@@ -189,7 +189,7 @@ void RestoreGameState(u16 arg0)
         for (i = 0; i < NUM_EREADER_CARDS; i++)
             gMain.eReaderBonuses[i] = gCurrentPinballGame->eReaderBonuses[i];
 
-        gCurrentPinballGame->startButtonDisabled = 1;
+        gCurrentPinballGame->startButtonDisabled = TRUE;
         if (arg0 == 1 && gMain.selectedField < MAIN_FIELD_COUNT)
         {
             gCurrentPinballGame->cameraYViewport = gCurrentPinballGame->cameraBaseY +
@@ -204,7 +204,7 @@ void RestoreGameState(u16 arg0)
     }
 
     gCurrentPinballGame->fadeSubState = 0;
-    gMain.continueFromSave = 0;
+    gMain.continueFromSave = FALSE;
     loadFieldBoardGraphics();
     if (gMain.selectedField == FIELD_RUBY && gCurrentPinballGame->boardCollisionConfigChanged)
         SetBoardCollisionConfig(1);
@@ -291,7 +291,7 @@ void RestoreGameState(u16 arg0)
 
     if (arg0 == 1)
     {
-        gCurrentPinballGame->saveDataValid = 0;
+        gCurrentPinballGame->saveDataValid = FALSE;
         WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(gCurrentPinballGame->saveDataValid));
     }
 }
@@ -342,7 +342,8 @@ void RestoreFieldSpecificGraphics(void)
     switch (gCurrentPinballGame->activePortraitType - 1)
     {
     case 0:
-        if (gCurrentPinballGame->outLanePikaPosition == 2 && gCurrentPinballGame->outLaneSide == 2)
+        if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES
+            && gCurrentPinballGame->outLaneSide == OUTLANE_RIGHT)
         {
             DmaCopy16(3, gPikaSaverFullCoverageGfx, (void *)0x6015800, 0x2400);
         }
@@ -437,7 +438,7 @@ void RestoreFieldSpecificGraphics(void)
         break;
     case 17:
         DmaCopy16(3, gPokemonNameDisplayGfx, (void *)0x6015C00, 0x940);
-        if (gCurrentPinballGame->evolutionShopActive == 0)
+        if (!gCurrentPinballGame->evolutionShopActive)
         {
             var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
             var2 = var1[3] / 10;
@@ -478,7 +479,7 @@ void RestoreMainFieldDynamicGraphics(void)
     LoadCatchSpriteGraphics();
     LoadMonFieldSpriteGraphics();
 
-    for (i = 0; i <= 1; i++)
+    for (i = 0; i < SIDE_COUNT; i++)
     {
         var0 = gCurrentPinballGame->flipper[i].position / 2;
         DmaCopy16(3, gFlipperTileGraphics[var0], ((i * 0x200) + 0x06010000), 0x200);
@@ -502,7 +503,7 @@ void RestoreMainFieldDynamicGraphics(void)
         switch (gCurrentPinballGame->portraitRenderMode[i])
         {
         case 0:
-            DmaCopy16(3, gPortraitGenericGraphics[gCurrentPinballGame->portraitGfxIndex[i]], 0x06010CA0 + (i * 0x300), 0x300);
+            DmaCopy16(3, gLocationPortraitGfx[gCurrentPinballGame->portraitGfxIndex[i]], 0x06010CA0 + (i * 0x300), 0x300);
             gCurrentPinballGame->ball += 0; //TODO: Dumb match is still a match...
             break;
         case 9:

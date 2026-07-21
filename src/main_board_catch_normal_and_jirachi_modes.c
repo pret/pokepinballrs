@@ -12,7 +12,7 @@ extern u8 gCatchSpritePalettes[];
 
 extern const u8 gCatchMonAppearFx_Gfx[];
 extern const u8 gCatchMonAppearFx_Pal[];
-extern const u8 gDefaultBallPalette[];
+extern const u8 gDefaultTimerPalette[];
 extern const u8 gJirachiFx_Gfx[][0x480];
 extern const u8 gCapturePalette[];
 extern const s16 gCatchMonRevealFrameData[8][2];
@@ -40,9 +40,9 @@ void CleanupCatchEmState(void)
 
     gCurrentPinballGame->creatureHitCount = 0;
     gCurrentPinballGame->captureFlashTimer = 0;
-    gMain.fieldSpriteGroups[18]->active = FALSE;
-    gMain.fieldSpriteGroups[12]->active = FALSE;
-    gCurrentPinballGame->catchMonCollisionEnabled = 0;
+    gMain.fieldSpriteGroups[FIELD_SG_18]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_MAIN_TILE_BREAK]->active = FALSE;
+    gCurrentPinballGame->catchMonCollisionEnabled = FALSE;
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION,
         PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
@@ -65,19 +65,19 @@ void InitCatchEmMode(void)
 
     gCurrentPinballGame->boardSubState = CATCH_EM_SUBSTATE_BUILD_WEIGHTS;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->boardModeType = 1;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_CATCH_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->creatureHitCount = 0;
     gCurrentPinballGame->creatureHitCooldown = 0;
     gCurrentPinballGame->captureFlashTimer = 0;
     gCurrentPinballGame->catchTilesBoardAcknowledged = 0;
-    gCurrentPinballGame->hatchSequentialTilesRevealed = 0;
-    gCurrentPinballGame->catchTilesBumperAcknowledged = 0;
+    gCurrentPinballGame->catchSequentialTilesRevealed = 0;
+    gCurrentPinballGame->catchTilesBumperAcknowledgedCount = 0;
     gCurrentPinballGame->catchTileRevealFrameAnimTimer = 0;
     gCurrentPinballGame->catchRevealFrameId = 0;
     gCurrentPinballGame->catchArrowProgress = 0;
-    gCurrentPinballGame->catchProgressFlashing = 0;
+    gCurrentPinballGame->catchProgressFlashing = FALSE;
 
     if (gCurrentPinballGame->catchEmModeStartCount == 0)
     {
@@ -89,17 +89,17 @@ void InitCatchEmMode(void)
     }
     gCurrentPinballGame->catchEmModeStartCount++;
 
-    DmaCopy16(3, gDefaultBallPalette, (void *)PLTT + 0x180, 0x20);
+    DmaCopy16(3, gDefaultTimerPalette, (void *)PLTT + 0x180, 0x20);
 
     for (i = 0; i < 6; i++)
     {
         gCurrentPinballGame->catchTileShufflePool[i] = i;
     }
 
-    gCurrentPinballGame->hatchGridCellIndex = gMain.systemFrameCount % 6;
+    gCurrentPinballGame->catchGridCellIndex = gMain.systemFrameCount % 6;
     gCurrentPinballGame->catchTilesRemaining = 5;
 
-    for (j = gCurrentPinballGame->hatchGridCellIndex; j < gCurrentPinballGame->catchTilesRemaining; j++)
+    for (j = gCurrentPinballGame->catchGridCellIndex; j < gCurrentPinballGame->catchTilesRemaining; j++)
     {
         gCurrentPinballGame->catchTileShufflePool[j] = gCurrentPinballGame->catchTileShufflePool[j+1];
     }
@@ -109,7 +109,8 @@ void UpdateCatchEmMode(void)
 {
     s16 i;
 
-    if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2
+    if (gCurrentPinballGame->eventTimerType
+        && gCurrentPinballGame->eventTimer < 2
         && gCurrentPinballGame->boardSubState < CATCH_EM_SUBSTATE_END_CATCH_HIT_PHASE)
     {
         m4aMPlayAllStop();
@@ -162,9 +163,9 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 2;
-                    gCurrentPinballGame->bannerActive = 1;
-                    gCurrentPinballGame->bannerPreserveBallState = 1;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_CATCH_EM;
+                    gCurrentPinballGame->bannerActive = TRUE;
+                    gCurrentPinballGame->holdCameraLockAfterBanner = TRUE;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
@@ -179,7 +180,7 @@ void UpdateCatchEmMode(void)
                 }
                 else if (gCurrentPinballGame->modeAnimTimer < 17)
                 {
-                    gCurrentPinballGame->boardModeType = 2;
+                    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
                     gCurrentPinballGame->boardSubState++;
                 }
             }
@@ -197,9 +198,9 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 2;
-                    gCurrentPinballGame->bannerActive = 1;
-                    gCurrentPinballGame->bannerPreserveBallState = 1;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_CATCH_EM;
+                    gCurrentPinballGame->bannerActive = TRUE;
+                    gCurrentPinballGame->holdCameraLockAfterBanner = TRUE;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
@@ -214,7 +215,7 @@ void UpdateCatchEmMode(void)
                 }
                 else if (gCurrentPinballGame->modeAnimTimer == 0)
                 {
-                    gCurrentPinballGame->boardModeType = 2;
+                    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
                     gCurrentPinballGame->boardSubState++;
                 }
             }
@@ -223,12 +224,12 @@ void UpdateCatchEmMode(void)
         CheckCatchTileRevealState();
         return;
     case CATCH_EM_SUBSTATE_AWAITING_BUMPER_HITS:
-        gCurrentPinballGame->evoArrowPaletteActive = 1;
+        gCurrentPinballGame->evoArrowPaletteActive = TRUE;
         CheckCatchTileRevealState();
         gCurrentPinballGame->stageTimer = 0;
         return;
     case CATCH_EM_SUBSTATE_LOAD_MON_SPRITE:
-        gCurrentPinballGame->evoArrowPaletteActive = 0;
+        gCurrentPinballGame->evoArrowPaletteActive = FALSE;
         if (gCurrentPinballGame->stageTimer == 0)
         {
             gCurrentPinballGame->stageTimer++;
@@ -238,7 +239,7 @@ void UpdateCatchEmMode(void)
             gCurrentPinballGame->activePortraitType = 10;
             DmaCopy16(3, gCatchMonAppearFx_Gfx, (void *)0x06015800, 0x1400);
             DmaCopy16(3, gCatchMonAppearFx_Pal, (void *)0x050003C0, 0x20);
-            m4aSongNumStart(SE_UNKNOWN_0xA7);
+            m4aSongNumStart(SE_CATCH_MON_ENTITY_APPEARS);
             gCurrentPinballGame->boardSubState++;
             gCurrentPinballGame->stageTimer = 0;
         }
@@ -257,7 +258,7 @@ void UpdateCatchEmMode(void)
         gCurrentPinballGame->catchLights[1] = 2;
         gCurrentPinballGame->catchLights[2] = 2;
         DrawCatchMonBoardSprite();
-        gCurrentPinballGame->catchMonCollisionEnabled = 1;
+        gCurrentPinballGame->catchMonCollisionEnabled = TRUE;
         gCurrentPinballGame->boardSubState++;
         gCurrentPinballGame->bgmFadeTimer = 140;
         PlayCry_Normal(gSpeciesInfo[gCurrentPinballGame->currentSpecies].speciesIdRS, 0);
@@ -283,7 +284,7 @@ void UpdateCatchEmMode(void)
         gCurrentPinballGame->boardSubState++;
         break;
     case CATCH_EM_SUBSTATE_PREPARE_NEXT_BOARD_MODE:
-        gCurrentPinballGame->evoArrowPaletteActive = 0;
+        gCurrentPinballGame->evoArrowPaletteActive = FALSE;
         if (gCurrentPinballGame->stageTimer)
         {
             gCurrentPinballGame->stageTimer--;
@@ -306,7 +307,7 @@ void InitJirachiBonus(void)
 {
     gCurrentPinballGame->boardSubState = JIRACHI_CATCH_SUBSTATE_LOAD_MON_SPRITE;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->boardModeType = 1;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 1800;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->creatureHitCount = 0;
@@ -323,18 +324,18 @@ void InitJirachiBonus(void)
     gCurrentPinballGame->jirachiCenterX = 0;
     gCurrentPinballGame->jirachiCenterY = 0;
     gCurrentPinballGame->catchArrowProgress = 0;
-    gCurrentPinballGame->catchProgressFlashing = 0;
+    gCurrentPinballGame->catchProgressFlashing = FALSE;
     gCurrentPinballGame->jirachiTagTimer[0] = 0;
     gCurrentPinballGame->jirachiTagTimer[1] = 10;
     gCurrentPinballGame->jirachiTagTimer[2] = 20;
     gCurrentPinballGame->jirachiTagTimer[3] = 30;
     gCurrentPinballGame->saverTimeRemaining = 3240;
-    gCurrentPinballGame->allHolesLit = 0;
-    gCurrentPinballGame->holeIndicators[0] = 0;
+    gCurrentPinballGame->allHolesLit = FALSE;
+    gCurrentPinballGame->holeIndicators[0] = FALSE;
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
-    DmaCopy16(3, gDefaultBallPalette, (void *)0x05000180, 0x20);
+    DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
 }
 
 void UpdateJirachiBonus(void)
@@ -343,7 +344,7 @@ void UpdateJirachiBonus(void)
     struct Vector32 deltaVec;
     u16 angle;
     int xx, yy;
-    int deltaMagSquared;
+    int squaredDistance;
     u16 var0;
 
     switch (gCurrentPinballGame->boardSubState)
@@ -370,9 +371,9 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 5;
-                    gCurrentPinballGame->bannerActive = 1;
-                    gCurrentPinballGame->bannerPreserveBallState = 1;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_JIRACHI;
+                    gCurrentPinballGame->bannerActive = TRUE;
+                    gCurrentPinballGame->holdCameraLockAfterBanner = TRUE;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
@@ -404,9 +405,9 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->cameraYScrollTarget = 0;
                     gCurrentPinballGame->cameraYAdjust = 0;
                     gCurrentPinballGame->cameraYScrollSpeed = 0;
-                    gCurrentPinballGame->bannerGfxIndex = 5;
-                    gCurrentPinballGame->bannerActive = 1;
-                    gCurrentPinballGame->bannerPreserveBallState = 1;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_JIRACHI;
+                    gCurrentPinballGame->bannerActive = TRUE;
+                    gCurrentPinballGame->holdCameraLockAfterBanner = TRUE;
                     gCurrentPinballGame->bannerDisplayDuration = 80;
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
@@ -440,8 +441,8 @@ void UpdateJirachiBonus(void)
         gCurrentPinballGame->catchLights[0] = 2;
         gCurrentPinballGame->catchLights[1] = 2;
         gCurrentPinballGame->catchLights[2] = 2;
-        gCurrentPinballGame->catchMonCollisionEnabled = 1;
-        gMain.fieldSpriteGroups[33]->active = TRUE;
+        gCurrentPinballGame->catchMonCollisionEnabled = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = TRUE;
         DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
         gCurrentPinballGame->modeAnimTimer = 40;
         gCurrentPinballGame->jirachiLogicX = 900;
@@ -467,9 +468,9 @@ void UpdateJirachiBonus(void)
             deltaVec.y = gCurrentPinballGame->jirachiTargetY - gCurrentPinballGame->jirachiLogicY;
             xx = deltaVec.x * deltaVec.x;
             yy = deltaVec.y * deltaVec.y;
-            deltaMagSquared = xx + yy;
+            squaredDistance = xx + yy;
             angle = ArcTan2(deltaVec.x, -deltaVec.y);
-            if (deltaMagSquared < 2500)
+            if (squaredDistance < 2500)
             {
                 tempVec.x = 0;
                 tempVec.y = 0;
@@ -507,7 +508,7 @@ void UpdateJirachiBonus(void)
         {
             gCurrentPinballGame->modeAnimTimer = 40;
             if (gCurrentPinballGame->stageTimer == 499)
-                gCurrentPinballGame->boardModeType = 2;
+                gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
         }
 
         gCurrentPinballGame->stageTimer++;
@@ -515,14 +516,15 @@ void UpdateJirachiBonus(void)
         if (gCurrentPinballGame->creatureHitCooldown)
             gCurrentPinballGame->creatureHitCooldown--;
 
-        if (gCurrentPinballGame->boardModeType && gCurrentPinballGame->eventTimer < 2 
+        if (gCurrentPinballGame->eventTimerType
+            && gCurrentPinballGame->eventTimer < 2
             && gCurrentPinballGame->boardSubState < JIRACHI_CATCH_SUBSTATE_BOARD_STATE_CLEANUP)
         {
             m4aMPlayAllStop();
             m4aSongNumStart(MUS_END_OF_BALL2);
             gCurrentPinballGame->boardSubState = JIRACHI_CATCH_SUBSTATE_ESCAPING;
             gCurrentPinballGame->stageTimer = 150;
-            gCurrentPinballGame->catchMonCollisionEnabled = 0;
+            gCurrentPinballGame->catchMonCollisionEnabled = FALSE;
             MPlayStart(&gMPlayInfo_SE1, &se_evo_item_appear);
         }
         return;
@@ -545,7 +547,7 @@ void UpdateJirachiBonus(void)
         gCurrentPinballGame->stageTimer = 0;
         return;
     case JIRACHI_CATCH_SUBSTATE_PREPARE_NEXT_BOARD_MODE:
-        gCurrentPinballGame->evoArrowPaletteActive = 0;
+        gCurrentPinballGame->evoArrowPaletteActive = FALSE;
         if (gCurrentPinballGame->stageTimer)
         {
             gCurrentPinballGame->stageTimer--;
@@ -608,7 +610,7 @@ void DrawCatchMonBoardSprite(void)
     s16 index;
 
     index = (gMain.fieldFrameCount % 50) / 25;
-    group = gMain.fieldSpriteGroups[33];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY];
     if (!group->active)
         return;
 
@@ -658,7 +660,7 @@ void CleanupCatchMonBoardSprite(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = gMain.fieldSpriteGroups[33];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY];
     if (group->active)
     {
         for (i = 0; i < 4; i++)
@@ -669,7 +671,7 @@ void CleanupCatchMonBoardSprite(void)
         }
     }
 
-    gMain.fieldSpriteGroups[33]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = FALSE;
 }
 
 void DrawJirachiSprites(void)
@@ -684,7 +686,7 @@ void DrawJirachiSprites(void)
     s16 var1;
 
     index = (gMain.fieldFrameCount % 50) / 25;
-    group = gMain.fieldSpriteGroups[33];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY];
     if (group->active)
     {
         gCurrentPinballGame->jirachiCenterX = gCurrentPinballGame->jirachiDisplayX / 10 + 96;
@@ -751,7 +753,7 @@ void DrawJirachiSprites(void)
     for (j = 0; j < 4; j++)
     {
 
-        group = gMain.fieldSpriteGroups[45 + j];
+        group = gMain.fieldSpriteGroups[FIELD_SG_JIRACHI_STAR_TRAIL_FX_BASE + j];
         if (group->active)
         {
             group->baseX = gCurrentPinballGame->jirachiStarTagPos[j].x - gCurrentPinballGame->cameraXOffset;
@@ -784,7 +786,7 @@ void DrawJirachiSprites(void)
                 gCurrentPinballGame->jirachiTagTimer[j] = 40;
                 gCurrentPinballGame->jirachiStarTagPos[j].x = gCurrentPinballGame->jirachiCenterX;
                 gCurrentPinballGame->jirachiStarTagPos[j].y = gCurrentPinballGame->jirachiCenterY + 16;
-                gMain.fieldSpriteGroups[45 + j]->active = TRUE;
+                gMain.fieldSpriteGroups[FIELD_SG_JIRACHI_STAR_TRAIL_FX_BASE + j]->active = TRUE;
             }
         }
 
@@ -792,7 +794,7 @@ void DrawJirachiSprites(void)
         {
             gCurrentPinballGame->jirachiTagTimer[j]--;
             if (gCurrentPinballGame->jirachiTagTimer[j] == 0)
-                gMain.fieldSpriteGroups[45 + j]->active = FALSE;
+                gMain.fieldSpriteGroups[FIELD_SG_JIRACHI_STAR_TRAIL_FX_BASE + j]->active = FALSE;
         }
     }
 }
@@ -803,7 +805,7 @@ void CleanupJirachiSprites(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = gMain.fieldSpriteGroups[33];
+    group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY];
     if (group->active)
     {
         for (i = 0; i < 4; i++)
@@ -814,9 +816,9 @@ void CleanupJirachiSprites(void)
         }
     }
 
-    gMain.fieldSpriteGroups[33]->active = FALSE;
+    gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = FALSE;
     for (i = 0; i < 4; i++)
-        gMain.fieldSpriteGroups[45 + i]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_JIRACHI_STAR_TRAIL_FX_BASE + i]->active = FALSE;
 }
 
 //draw_catch_tiles
@@ -825,11 +827,11 @@ void CheckCatchTileRevealState(void)
     // Cross vertical threshold, check completion
     if (gCurrentPinballGame->cameraYViewport > 138)
     {
-        if (gCurrentPinballGame->catchTileRevealState == CATCH_TILE_REVEAL_NONE && gCurrentPinballGame->catchTilesBumperAcknowledged > 0)
+        if (gCurrentPinballGame->catchTileRevealState == CATCH_TILE_REVEAL_NONE && gCurrentPinballGame->catchTilesBumperAcknowledgedCount > 0)
         {
             // Reveal all at once, if the bumpers have been hit enough in one trip up to reveal all tiles
             // This will be in 'banner' mode at this point, scrolling down, and records points mid sequence
-            if (gCurrentPinballGame->catchTilesBoardAcknowledged + 6 == gCurrentPinballGame->catchTilesBumperAcknowledged)
+            if (gCurrentPinballGame->catchTilesBoardAcknowledged + 6 == gCurrentPinballGame->catchTilesBumperAcknowledgedCount)
             {
                 gCurrentPinballGame->catchTileRevealState = CATCH_TILE_REVEAL_ALL_AT_ONCE;
                 gCurrentPinballGame->scoreAddedInFrame = 300000;
@@ -840,7 +842,7 @@ void CheckCatchTileRevealState(void)
             }
         }
 
-        gCurrentPinballGame->catchTilesBoardAcknowledged = gCurrentPinballGame->catchTilesBumperAcknowledged;
+        gCurrentPinballGame->catchTilesBoardAcknowledged = gCurrentPinballGame->catchTilesBumperAcknowledgedCount;
     }
 
     if (gCurrentPinballGame->catchTileRevealState == CATCH_TILE_REVEAL_ALL_AT_ONCE)
@@ -869,7 +871,7 @@ void PlayCatchMonAppearsAnimation(void)
     if (gCurrentPinballGame->catchRevealFrameId == 2 && gCurrentPinballGame->catchTileRevealFrameAnimTimer > 3)
     {
         gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BANNER;
-        gMain.fieldSpriteGroups[33]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = TRUE;
     }
 
     if (gCurrentPinballGame->catchRevealFrameId > 2)
@@ -879,7 +881,7 @@ void PlayCatchMonAppearsAnimation(void)
         DrawCatchMonBoardSprite();
     }
 
-    group = gMain.fieldSpriteGroups[18];
+    group = gMain.fieldSpriteGroups[FIELD_SG_18];
     if (group->active)
     {
         group->baseX = 96 - gCurrentPinballGame->cameraXOffset;
@@ -900,11 +902,11 @@ void PlayCatchMonAppearsAnimation(void)
         }
     }
 
-    gMain.fieldSpriteGroups[18]->active = TRUE;
+    gMain.fieldSpriteGroups[FIELD_SG_18]->active = TRUE;
     if (gCurrentPinballGame->catchRevealFrameId > 6)
     {
         gCurrentPinballGame->boardSubState++;
-        gMain.fieldSpriteGroups[18]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_18]->active = FALSE;
         gCurrentPinballGame->activePortraitType = 0;
     }
 }

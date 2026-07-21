@@ -10,11 +10,11 @@ void ProcessBannerCameraTransition(void)
 {
     if ((gMain.modeChangeFlags & MODE_CHANGE_BANNER) != 0)
     {
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
-        if (gCurrentPinballGame->bannerActive != 0)
+        gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
+        if (gCurrentPinballGame->bannerActive)
         {
-            gCurrentPinballGame->ballFrozenState = 2;
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_FROZEN;
+            gCurrentPinballGame->cameraLocked = TRUE;
             if (gCurrentPinballGame->bannerDelayTimer != 0)
             {
                 gCurrentPinballGame->bannerDelayTimer--;
@@ -27,7 +27,7 @@ void ProcessBannerCameraTransition(void)
                 }
                 else
                 {
-                    gCurrentPinballGame->bannerActive = 0;
+                    gCurrentPinballGame->bannerActive = FALSE;
                 }
             }
             else
@@ -46,11 +46,11 @@ void ProcessBannerCameraTransition(void)
                 }
                 else
                 {
-                    gCurrentPinballGame->bannerActive = 0;
+                    gCurrentPinballGame->bannerActive = FALSE;
                 }
             }
 
-            if (gCurrentPinballGame->bannerGfxIndex != 0)
+            if (gCurrentPinballGame->bannerGfxIndex != BANNER_MODE_NONE)
             {
                 RenderBannerSlideAnimation();
             }
@@ -60,13 +60,13 @@ void ProcessBannerCameraTransition(void)
             if (gCurrentPinballGame->cameraYScrollSpeed == 0 || gCurrentPinballGame->cameraYAdjust == 0)
             {
                 gCurrentPinballGame->cameraYAdjust = 0;
-                gCurrentPinballGame->ballFrozenState = 0;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                 gMain.modeChangeFlags &= ~MODE_CHANGE_BANNER;
-                gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+                gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
-                if (gCurrentPinballGame->bannerPreserveBallState == 0)
+                if (!gCurrentPinballGame->holdCameraLockAfterBanner)
                 {
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                 }
             }
 
@@ -79,13 +79,13 @@ void ProcessBannerCameraTransition(void)
                 }
 
                 gCurrentPinballGame->cameraYAdjust = 0;
-                gCurrentPinballGame->ballFrozenState = 0;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                 gMain.modeChangeFlags &= ~MODE_CHANGE_BANNER;
-                gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+                gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
-                if (gCurrentPinballGame->bannerPreserveBallState == 0)
+                if (!gCurrentPinballGame->holdCameraLockAfterBanner)
                 {
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                 }
             }
 
@@ -95,13 +95,13 @@ void ProcessBannerCameraTransition(void)
                 if (gCurrentPinballGame->cameraYAdjust >= 0)
                 {
                     gCurrentPinballGame->cameraYAdjust = 0;
-                    gCurrentPinballGame->ballFrozenState = 0;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                     gMain.modeChangeFlags &= ~MODE_CHANGE_BANNER;
-                    gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+                    gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
-                    if (gCurrentPinballGame->bannerPreserveBallState == 0)
+                    if (!gCurrentPinballGame->holdCameraLockAfterBanner)
                     {
-                        gCurrentPinballGame->boardEntityActive = 0;
+                        gCurrentPinballGame->cameraLocked = FALSE;
                     }
                 }
             }
@@ -112,20 +112,20 @@ void ProcessBannerCameraTransition(void)
 void RenderBannerSlideAnimation(void)
 {
     s16 i;
-    s16 sp00;
+    s16 bannerTypeIx;
     struct SpriteGroup *spriteGroup;
     struct OamDataSimple *simple;
     u32 frameCount;
 
-    sp00 = gCurrentPinballGame->bannerGfxIndex - 1;
-    spriteGroup = gMain.fieldSpriteGroups[11];
+    bannerTypeIx = gCurrentPinballGame->bannerGfxIndex - 1;
+    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER];
     frameCount = ((gMain.systemFrameCount & 7) / 4);
 
     if (spriteGroup->active)
     {
         spriteGroup->baseX = 0;
         spriteGroup->baseY = 200;
-        if (gCurrentPinballGame->bannerGfxIndex == 4)
+        if (gCurrentPinballGame->bannerGfxIndex == BANNER_MODE_TRAVEL)
         {
             if (gCurrentPinballGame->bannerDelayTimer != 0)
             {
@@ -153,8 +153,8 @@ void RenderBannerSlideAnimation(void)
                 {
                     spriteGroup->baseX = -110;
                     spriteGroup->baseY = 44;
-                    gMain.fieldSpriteGroups[11]->active = FALSE; // direct index required here
-                    gCurrentPinballGame->bannerGfxIndex = 0;
+                    gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER]->active = FALSE; // direct index required here
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                     gCurrentPinballGame->activePortraitType = 0;
                 }
             }
@@ -187,15 +187,15 @@ void RenderBannerSlideAnimation(void)
                             {
 
                                 if ((gCurrentPinballGame->ballCatchState == TRAP_EVO_SHOP_HOLE
-                                        && gCurrentPinballGame->evolutionShopActive == 1) ||
+                                        && gCurrentPinballGame->evolutionShopActive == TRUE) ||
                                     (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE
                                         && gCurrentPinballGame->prizeId == PRIZE_START_EVO_MODE))
                                 {
-                                    gCurrentPinballGame->paletteSwapActive = 0;
+                                    gCurrentPinballGame->paletteSwapActive = FALSE;
                                 }
                                 else
                                 {
-                                    gCurrentPinballGame->paletteSwapActive = 1;
+                                    gCurrentPinballGame->paletteSwapActive = TRUE;
                                     DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2], (void *)(OBJ_PLTT), 0x20);
                                 }
                                 if (gMain.selectedField == FIELD_SAPPHIRE)
@@ -216,15 +216,15 @@ void RenderBannerSlideAnimation(void)
                             if (gCurrentPinballGame->bannerSlideTimer <= 0x27)
                             {
                                 if ((gCurrentPinballGame->ballCatchState == TRAP_EVO_SHOP_HOLE
-                                        && gCurrentPinballGame->evolutionShopActive == 1) ||
+                                        && gCurrentPinballGame->evolutionShopActive == TRUE) ||
                                     (gCurrentPinballGame->ballCatchState == TRAP_CENTER_HOLE
                                         && gCurrentPinballGame->prizeId == PRIZE_START_EVO_MODE))
                                 {
-                                    gCurrentPinballGame->paletteSwapActive = 0;
+                                    gCurrentPinballGame->paletteSwapActive = FALSE;
                                 }
                                 else
                                 {
-                                    gCurrentPinballGame->paletteSwapActive = 1;
+                                    gCurrentPinballGame->paletteSwapActive = TRUE;
                                     DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1], (void *)(OBJ_PLTT), 0x20);
                                 }
                                 if (gMain.selectedField == FIELD_SAPPHIRE)
@@ -259,7 +259,7 @@ void RenderBannerSlideAnimation(void)
                 gCurrentPinballGame->bannerSlideVelocity -= 0xA;
                 if (gCurrentPinballGame->bannerSlideTimer > 0x18 &&
                     (gCurrentPinballGame->ballCatchState != TRAP_EVO_SHOP_HOLE
-                        || gCurrentPinballGame->evolutionShopActive != 1)
+                        || gCurrentPinballGame->evolutionShopActive != TRUE)
                     && (gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE
                         || gCurrentPinballGame->prizeId != PRIZE_START_EVO_MODE))
                 {
@@ -277,7 +277,7 @@ void RenderBannerSlideAnimation(void)
                         }
                         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
                         gCurrentPinballGame->activePaletteIndex = 1;
-                        gCurrentPinballGame->paletteSwapActive = 1;
+                        gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
                     if (gCurrentPinballGame->bannerSlideTimer == 0x1D)
                     {
@@ -286,11 +286,11 @@ void RenderBannerSlideAnimation(void)
                 }
                 if (gCurrentPinballGame->bannerSlideTimer == 0x1E)
                 {
-                    gMain.fieldSpriteGroups[11]->active = FALSE;
-                    gCurrentPinballGame->bannerGfxIndex = 0;
+                    gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER]->active = FALSE;
+                    gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
                     gCurrentPinballGame->activePortraitType = 0;
                     if ((gCurrentPinballGame->ballCatchState != TRAP_EVO_SHOP_HOLE
-                            || gCurrentPinballGame->evolutionShopActive != 1)
+                            || gCurrentPinballGame->evolutionShopActive != TRUE)
                         && (gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE
                             || gCurrentPinballGame->prizeId != PRIZE_START_EVO_MODE))
                     {
@@ -306,7 +306,7 @@ void RenderBannerSlideAnimation(void)
                         }
                         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
                         gCurrentPinballGame->activePaletteIndex = 0;
-                        gCurrentPinballGame->paletteSwapActive = 1;
+                        gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
                 }
 
@@ -320,9 +320,9 @@ void RenderBannerSlideAnimation(void)
             u16 *dst;
             simple = &spriteGroup->oam[i];
             dst = (u16 *)&gOamBuffer[simple->oamId];
-            *dst++ = gModeBannerOamAttributes[sp00][i * 3 + 0];
-            *dst++ = gModeBannerOamAttributes[sp00][i * 3 + 1];
-            *dst++ = gModeBannerOamAttributes[sp00][i * 3 + 2];
+            *dst++ = gModeBannerOamAttributes[bannerTypeIx][i * 3 + 0];
+            *dst++ = gModeBannerOamAttributes[bannerTypeIx][i * 3 + 1];
+            *dst++ = gModeBannerOamAttributes[bannerTypeIx][i * 3 + 2];
 
             gOamBuffer[simple->oamId].x = gOamBuffer[simple->oamId].x + spriteGroup->baseX;
             gOamBuffer[simple->oamId].y = gOamBuffer[simple->oamId].y + spriteGroup->baseY;

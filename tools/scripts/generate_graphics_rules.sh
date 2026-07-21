@@ -35,9 +35,10 @@ emit_rules() {
             ((.mheight // $d.mheight // 0) | tostring),
             ((.oam     // $d.oam     // false) | tostring),
             ((.align   // 0) | tostring),
+            ((.oamshape // $d.oamshape // "null") | tostring),
             (if .segments then (.segments | tojson) else "null" end)
         ] | @tsv
-    ' "$json" | while IFS=$'\t' read -r gfx_filename mwidth mheight oam align segments; do
+    ' "$json" | while IFS=$'\t' read -r gfx_filename mwidth mheight oam align oamshape segments; do
         local stem="graphics/${dir#graphics/}/${gfx_filename}"
         local target="${stem}.4bpp"
 
@@ -53,7 +54,7 @@ emit_rules() {
 
             # Emit a $(GFX) call for each segment
             local first=1
-            printf '%s' "$segments" | jq -r '.[] | [.segfile, (.mwidth // 0 | tostring), (.mheight // 0 | tostring), (.oam // false | tostring)] | @tsv' | while IFS=$'\t' read -r segfile seg_mw seg_mh seg_oam; do
+            printf '%s' "$segments" | jq -r '.[] | [.segfile, (.mwidth // 0 | tostring), (.mheight // 0 | tostring), (.oam // false | tostring), (.oamshape // "null" | tostring)] | @tsv' | while IFS=$'\t' read -r segfile seg_mw seg_mh seg_oam seg_oamshape; do
                 local seg_png="${dir}/${segfile}.png"
                 local seg_4bpp="${stem}_${segfile}.4bpp"
                 local flags=""
@@ -65,6 +66,9 @@ emit_rules() {
                 fi
                 if [ "$seg_oam" = "true" ]; then
                     flags="$flags -oam"
+                fi
+                if [ -n "$seg_oamshape" ] && [ "$seg_oamshape" != "null" ]; then
+                    flags="$flags -oamshape $dir/$seg_oamshape"
                 fi
                 printf '\t$(GFX) %s %s%s; \\\n' "$seg_png" "$seg_4bpp" "$flags"
             done
@@ -93,6 +97,9 @@ emit_rules() {
             fi
             if [ "$oam" = "true" ]; then
                 flags="$flags -oam"
+            fi
+            if [ -n "$oamshape" ] && [ "$oamshape" != "null" ]; then
+                flags="$flags -oamshape $dir/$oamshape"
             fi
 
             # Skip if no special flags and no alignment — the generic

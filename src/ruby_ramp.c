@@ -3,93 +3,93 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
-extern const u8 gRubyRampGateTileGfx[][0x300];
+extern const u8 gRubyMakuhitaGfx[][0x300];
 extern const u8 gRubyBoardRampPrize_Gfx[][0x80];
 
 
-void UpdateRubyRampPrizeGate(void)
+void UpdateMakuhitaEntity(void)
 {
     s16 i;
     struct OamDataSimple *oamSimple;
     struct SpriteGroup *group;
     int x, y;
-    int squaredMagnitude;
+    int squaredDistance;
     s16 index;
 
     index = 0;
-    switch (gCurrentPinballGame->rampGateState)
+    switch (gCurrentPinballGame->makuhitaPunchState)
     {
     case 0:
-        index = (gCurrentPinballGame->rampGateAnimCounter % 36) / 18;
-        gCurrentPinballGame->rampGateAnimCounter++;
-        gCurrentPinballGame->rampGateHitFlag = 0;
+        index = (gCurrentPinballGame->makuhitaAnimCounter % 36) / 18;
+        gCurrentPinballGame->makuhitaAnimCounter++;
+        gCurrentPinballGame->makuhitaPunchTriggeredFlag = FALSE;
         break;
     case 1:
-        index = (gCurrentPinballGame->rampGateAnimCounter % 36) / 18 + 2;
-        gCurrentPinballGame->rampGateAnimCounter++;
-        if (gCurrentPinballGame->rampGateHitFlag)
+        index = (gCurrentPinballGame->makuhitaAnimCounter % 36) / 18 + 2;
+        gCurrentPinballGame->makuhitaAnimCounter++;
+        if (gCurrentPinballGame->makuhitaPunchTriggeredFlag)
         {
-            gCurrentPinballGame->rampGateState = 2;
-            gCurrentPinballGame->rampGateAnimCounter = 0;
+            gCurrentPinballGame->makuhitaPunchState = 2;
+            gCurrentPinballGame->makuhitaAnimCounter = 0;
         }
-        gCurrentPinballGame->rampGateHitFlag = 0;
+        gCurrentPinballGame->makuhitaPunchTriggeredFlag = FALSE;
         break;
     case 2:
-        index = (gCurrentPinballGame->rampGateAnimCounter % 9) / 3 + 4;
-        gCurrentPinballGame->rampGateAnimCounter++;
-        if (gCurrentPinballGame->rampGateAnimCounter == 9)
+        index = (gCurrentPinballGame->makuhitaAnimCounter % 9) / 3 + 4;
+        gCurrentPinballGame->makuhitaAnimCounter++;
+        if (gCurrentPinballGame->makuhitaAnimCounter == 9)
         {
-             gCurrentPinballGame->rampGateState = 3;
-            gCurrentPinballGame->rampGateAnimCounter = 0;
+             gCurrentPinballGame->makuhitaPunchState = 3;
+            gCurrentPinballGame->makuhitaAnimCounter = 0;
         }
         break;
     case 3:
-        index = (gCurrentPinballGame->rampGateAnimCounter % 36) / 18 + 2;
-        gCurrentPinballGame->rampGateAnimCounter++;
-        if (gCurrentPinballGame->rampGateAnimCounter > 65)
+        index = (gCurrentPinballGame->makuhitaAnimCounter % 36) / 18 + 2;
+        gCurrentPinballGame->makuhitaAnimCounter++;
+        if (gCurrentPinballGame->makuhitaAnimCounter > 65)
         {
-            gCurrentPinballGame->rampGateState = 1;
-            gCurrentPinballGame->rampGateAnimCounter = 0;
+            gCurrentPinballGame->makuhitaPunchState = 1;
+            gCurrentPinballGame->makuhitaAnimCounter = 0;
         }
 
-        if (gCurrentPinballGame->rampGateAnimCounter > 6 && gCurrentPinballGame->rampGateHitFlag)
+        if (gCurrentPinballGame->makuhitaAnimCounter > 6 && gCurrentPinballGame->makuhitaPunchTriggeredFlag)
         {
-            gCurrentPinballGame->rampGateState = 4;
-            gCurrentPinballGame->rampGateAnimCounter = 0;
-            gCurrentPinballGame->rampGateHitFlag = 0;
+            gCurrentPinballGame->makuhitaPunchState = 4;
+            gCurrentPinballGame->makuhitaAnimCounter = 0;
+            gCurrentPinballGame->makuhitaPunchTriggeredFlag = FALSE;
         }
         break;
     case 4:
-        index = (gCurrentPinballGame->rampGateAnimCounter % 9) / 3 + 7;
-        gCurrentPinballGame->rampGateAnimCounter++;
-        if (gCurrentPinballGame->rampGateAnimCounter == 9)
+        index = (gCurrentPinballGame->makuhitaAnimCounter % 9) / 3 + 7;
+        gCurrentPinballGame->makuhitaAnimCounter++;
+        if (gCurrentPinballGame->makuhitaAnimCounter == 9)
         {
-            gCurrentPinballGame->rampGateState = 5;
-            gCurrentPinballGame->rampGateAnimCounter = 0;
+            gCurrentPinballGame->makuhitaPunchState = 5;
+            gCurrentPinballGame->makuhitaAnimCounter = 0;
         }
         break;
     case 5:
-        index = (gCurrentPinballGame->rampGateAnimCounter % 36) / 18 + 2;
-        gCurrentPinballGame->rampGateAnimCounter++;
-        if (gCurrentPinballGame->rampGateAnimCounter > 65)
+        index = (gCurrentPinballGame->makuhitaAnimCounter % 36) / 18 + 2;
+        gCurrentPinballGame->makuhitaAnimCounter++;
+        if (gCurrentPinballGame->makuhitaAnimCounter > 65)
         {
-            gCurrentPinballGame->rampGateState = 1;
-            gCurrentPinballGame->rampGateAnimCounter = 0;
+            gCurrentPinballGame->makuhitaPunchState = 1;
+            gCurrentPinballGame->makuhitaAnimCounter = 0;
         }
 
-        if (gCurrentPinballGame->rampGateAnimCounter > 6 && gCurrentPinballGame->rampGateHitFlag)
+        if (gCurrentPinballGame->makuhitaAnimCounter > 6 && gCurrentPinballGame->makuhitaPunchTriggeredFlag)
         {
-            gCurrentPinballGame->rampGateState = 2;
-            gCurrentPinballGame->rampGateAnimCounter = 0;
-            gCurrentPinballGame->rampGateHitFlag = 0;
+            gCurrentPinballGame->makuhitaPunchState = 2;
+            gCurrentPinballGame->makuhitaAnimCounter = 0;
+            gCurrentPinballGame->makuhitaPunchTriggeredFlag = FALSE;
         }
         break;
     }
 
-    group = &gMain.spriteGroups[68];
+    group = &gMain.spriteGroups[SG_RUBY_MAKUHITA_PUNCH_CONTACT_FX];
     if (group->active)
     {
-        if (gCurrentPinballGame->rampGateState < 3)
+        if (gCurrentPinballGame->makuhitaPunchState < 3)
         {
             group->baseX = 188 - gCurrentPinballGame->cameraXOffset;
             group->baseY = 281 - gCurrentPinballGame->cameraYOffset;
@@ -100,11 +100,11 @@ void UpdateRubyRampPrizeGate(void)
             group->baseY = 278 - gCurrentPinballGame->cameraYOffset;
         }
 
-        if (gCurrentPinballGame->rampPrizeVisibilityTimer > 0)
+        if (gCurrentPinballGame->makuhitaHitAnimationTimer > 0)
         {
-            gCurrentPinballGame->rampPrizeVisibilityTimer--;
-            if (gCurrentPinballGame->rampPrizeVisibilityTimer == 0)
-                gMain.spriteGroups[68].active = FALSE;
+            gCurrentPinballGame->makuhitaHitAnimationTimer--;
+            if (gCurrentPinballGame->makuhitaHitAnimationTimer == 0)
+                gMain.spriteGroups[SG_RUBY_MAKUHITA_PUNCH_CONTACT_FX].active = FALSE;
         }
 
         oamSimple = &group->oam[0];
@@ -112,33 +112,33 @@ void UpdateRubyRampPrizeGate(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    if (gCurrentPinballGame->rampGateState == 4 || gCurrentPinballGame->rampGateState == 2)
+    if (gCurrentPinballGame->makuhitaPunchState == 4 || gCurrentPinballGame->makuhitaPunchState == 2)
     {
         x = gCurrentPinballGame->ball->positionQ0.x - 190;
         y = gCurrentPinballGame->ball->positionQ0.y - 285;
-        squaredMagnitude = (x * x) + (y * y);
-        if(squaredMagnitude >= 0 && squaredMagnitude <= 140)
+        squaredDistance = (x * x) + (y * y);
+        if(squaredDistance >= 0 && squaredDistance <= 140)
         {
-            if (gCurrentPinballGame->rampPrizeVisibilityTimer <= 0)
+            if (gCurrentPinballGame->makuhitaHitAnimationTimer <= 0)
             {
-                m4aSongNumStart(SE_UNKNOWN_0xC5);
+                m4aSongNumStart(SE_MAKUHITA_PUNCH);
                 gCurrentPinballGame->scoreAddedInFrame = 10000;
                 gCurrentPinballGame->ball->velocity.x = -600;
                 gCurrentPinballGame->ball->velocity.y = -300;
                 gCurrentPinballGame->ball->spinSpeed = 0;
-                gMain.spriteGroups[68].active = TRUE;
-                gCurrentPinballGame->rampPrizeVisibilityTimer = 6;
+                gMain.spriteGroups[SG_RUBY_MAKUHITA_PUNCH_CONTACT_FX].active = TRUE;
+                gCurrentPinballGame->makuhitaHitAnimationTimer = 6;
                 PlayRumble(8);
             }
         }
     }
 
-    group = &gMain.spriteGroups[58];
+    group = &gMain.spriteGroups[SG_RUBY_MAKUHITA];
     if (group->active)
     {
         group->baseX = 184 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 277 - gCurrentPinballGame->cameraYOffset;
-        DmaCopy16(3, gRubyRampGateTileGfx[index], (void*) 0x06013580, 0x300);
+        DmaCopy16(3, gRubyMakuhitaGfx[index], (void*) 0x06013580, 0x300);
         for (i = 0; i < 3;i++)
         {
             oamSimple = &group->oam[i];
@@ -148,13 +148,13 @@ void UpdateRubyRampPrizeGate(void)
     }
 }
 
-void DrawRubyNuzleafPlatformSprite(void)
+void DrawRubyRampPrize(void)
 {
     struct OamDataSimple *oamSimple;
     struct SpriteGroup *group;
     s16 index;
 
-    group = &gMain.spriteGroups[66];
+    group = &gMain.spriteGroups[SG_RUBY_RAMP_PRIZE];
     if (group->active)
     {
         if (gCurrentPinballGame->rampPrizeType)
@@ -163,7 +163,7 @@ void DrawRubyNuzleafPlatformSprite(void)
             group->baseY = 180;
 
         group->baseX = 120 - gCurrentPinballGame->cameraXOffset;
-        if (gCurrentPinballGame->rampPrizeType == 1)
+        if (gCurrentPinballGame->rampPrizeType == 1) //1Up
             index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 8 + 4;
         else
             index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 8;

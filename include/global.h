@@ -9,6 +9,7 @@
 #include "variables.h"
 #include "constants/global.h"
 #include "constants/ereader.h"
+#include "constants/pinball_inputs.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -82,6 +83,29 @@
 #define MODE_CHANGE_BONUS_BANNER  0x80 //2^7
 #define MODE_CHANGE_EXPIRED_BONUS_BANNER 0xC0 // 2^6 + 2^7
 
+#define EVENT_TIMER_MODE_NONE 0
+// Note: Bonus boards start with timer 'paused', and it gets started
+// when the ball spawns. (board process 7)
+#define EVENT_TIMER_MODE_PAUSED 1
+#define EVENT_TIMER_MODE_RUNNING 2
+#define EVENT_TIMER_MODE_COMPLETED 3
+
+#define BALL_SPAWN_STATE_LIVE_BALL 0
+#define BALL_SPAWN_STATE_RESPAWN 1
+#define BALL_SPAWN_STATE_DISABLED 2
+#define BALL_SPAWN_STATE_INITIAL_SPAWN 3
+
+#define BALL_PHYSICS_NORMAL 0
+#define BALL_PHYSICS_MANUAL 1
+#define BALL_PHYSICS_FROZEN 2
+
+#define SIDE_IX_LEFT 0
+#define SIDE_IX_RIGHT 1
+#define SIDE_COUNT 2
+
+#define SIDE_COLLISION_NONE 0
+#define SIDE_COLLISION_LEFT 1
+#define SIDE_COLLISION_RIGHT 2
 
 struct BgOffsets
 {
@@ -96,7 +120,7 @@ struct BallState
     /*0x01*/ s8 oamPriority;
     /*0x02*/ u8 filler2[0x2];
     /*0x04*/ u16 spinAcceleration;
-    /*0x06*/ s16 spinSpeed;
+    /*0x06*/ s16 spinSpeed; //positive = clockwise, negative = counterclockwise
     /*0x08*/ s16 prevSpinSpeed;
     /*0x0A*/ u16 spinAngle;
     /*0x0C*/ u16 prevSpinAngle;
@@ -130,9 +154,9 @@ struct FlipperState
 struct PinballGame
 {
     /*0x000*/ u32 saveDataValid;
-    /*0x004*/ u8 newButtonActions[5]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
-    /*0x009*/ u8 releasedButtonActions[5];
-    /*0x00E*/ u8 heldButtonActions[5];
+    /*0x004*/ u8 newButtonActions[NUM_PINBALL_INPUTS]; // e.g. player pressing the appropriate buttons to trigger the left flipper action, etc.
+    /*0x009*/ u8 releasedButtonActions[NUM_PINBALL_INPUTS];
+    /*0x00E*/ u8 heldButtonActions[NUM_PINBALL_INPUTS];
     /*0x013*/ s8 boardState; // Indexes into gBoardStateInitFuncs/gBoardStateUpdateFuncs dispatch tables (9 states)
     /*0x014*/ s8 nextBoardState; // Target state set by RequestBoardStateTransition
     /*0x015*/ s8 prevBoardState; // Previous state saved during dispatcher teardown
@@ -143,8 +167,8 @@ struct PinballGame
     /*0x01B*/ u8 unk1B;
     /*0x01C*/ bool8 scoreCounterAnimationEnabled;
     /*0x01D*/ u8 fadeSubState;
-    /*0x01E*/ u8 gravityStrengthIndex;
-    /*0x01F*/ u8 ballFrozenState;
+    /*0x01E*/ u8 gravityStrengthIndex; // Range: 0-3
+    /*0x01F*/ u8 ballPhysicsState;
     /*0x020*/ u8 ballInLaunchChute;
     /*0x021*/ u8 launcherCharging;
     /*0x022*/ s8 collisionResponseType;
@@ -218,8 +242,8 @@ struct PinballGame
     /*0x0F6*/ s16 bannerSlidePosition;
     /*0x0F8*/ s16 bannerSlideVelocity;
     /*0x0FA*/ s8 bannerActive;
-    /*0x0FB*/ s8 bannerPreserveBallState;
-    /*0x0FC*/ s16 bonusSummarySlideY;
+    /*0x0FB*/ s8 holdCameraLockAfterBanner;
+    /*0x0FC*/ s16 bonusSummarySlideY; // Slide in position for the bonus summary panel
     /*0x0FE*/ s16 ballSaverSlideY;
     /*0x100*/ s32 ballSaverPosX;
     /*0x104*/ s32 ballSaverPosY;
@@ -238,7 +262,7 @@ struct PinballGame
     /*0x124*/ s8 tiltInputCounterX;
     /*0x125*/ s8 tiltInputCounterY;
     /*0x126*/ s8 tiltLockoutTimer;
-    /*0x127*/ s8 tiltLockoutActive;
+    /*0x127*/ s8 lastTiltDirection;
     /*0x128*/ u8 boardShakeIntensity;
     /*0x129*/ s8 boardShakeDirection;
     /*0x12A*/ u8 boardShakeTimer;
@@ -284,7 +308,7 @@ struct PinballGame
     /*0x1AC*/ s8 shopSignFrame;
     /*0x1AD*/ s8 shopSignPaletteIndex;
     /*0x1AE*/ u8 shopOutcomeRepeatCount;
-    /*0x1AF*/ u8 shopBonusStageAlreadyBought;
+    /*0x1AF*/ u8 shopExtraBallPreviouslyPurchased;
     /*0x1B0*/ s8 evoNameSlideOnly;
     /*0x1B1*/ u8 filler1B1[0x1];
     /*0x1B2*/ u16 evoFormAlternateTimer;
@@ -314,7 +338,7 @@ struct PinballGame
     /*0x1DE*/ u16 kickbackAnimProgress;
     /*0x1E0*/ u16 kickbackAnimDuration;
     /*0x1E2*/ s8 outLanePikaPosition; //Pikachu coverage. 0= left lane, 1=right lane, 2 = both
-    /*0x1E3*/ s8 kickbackOccupied[2];
+    /*0x1E3*/ s8 kickbackOccupied[SIDE_COUNT];
     /*0x1E5*/ s8 pikachuSpinFrame;
     /*0x1E6*/ s8 pikachuSpinPrevFrame;
     /*0x1E7*/ u8 filler1E7[0x1];
@@ -372,13 +396,13 @@ struct PinballGame
     /*0x28A*/ s16 catchTargetY;
     /*0x28C*/ u8 filler28C[0x4];
     /*0x290*/ u32 globalAnimFrameCounter;
-    /*0x294*/ s8 boardModeType;
+    /*0x294*/ s8 eventTimerType;
     /*0x295*/ u8 unk295;
     /*0x296*/ u16 eventTimer; //Timer for events (Only bonus fields or all events?)
     /*0x298*/ u16 cutsceneTilemapColumn;
     /*0x29A*/ u16 catchEmModeStartCount;
     /*0x29C*/ u16 bgmFadeTimer;
-    /*0x29E*/ u8 boardCollisionConfigChanged;
+    /*0x29E*/ u8 boardCollisionConfigChanged; //swapped after launch, preventing ball falling into launch ramp.
     /*0x29F*/ s8 rampPrizeType;
     /*0x2A0*/ u16 rampPrizeRespawnTimer;
     /*0x2A2*/ s8 whiscashState;
@@ -418,12 +442,12 @@ struct PinballGame
     /*0x2DB*/ u8 filler2DB[0x3];
     /*0x2DE*/ u16 eggCaveLiftTimer;
     /*0x2E0*/ u16 eggCaveExitDelayTimer;
-    /*0x2E2*/ s8 sideBumperHitFlag;
-    /*0x2E3*/ s8 sideBumperBounceCount[2];
-    /*0x2E5*/ s8 sideBumperAnimPhase[2];
+    /*0x2E2*/ s8 linooneSideBumperHitFlag;
+    /*0x2E3*/ s8 linooneSideBumperExtensionsPending[SIDE_COUNT];
+    /*0x2E5*/ s8 linooneSideBumperAnimPhase[SIDE_COUNT];
     /*0x2E7*/ u8 filler2E7[0x1];
-    /*0x2E8*/ u16 sideBumperAnimTimer[2];
-    /*0x2EC*/ s16 sideBumperShakeOffset[2];
+    /*0x2E8*/ u16 linooneSideBumperAnimTimer[SIDE_COUNT];
+    /*0x2EC*/ s16 linooneSideBumperExtensionOffset[SIDE_COUNT];
     /*0x2F0*/ u8 shopDoorTargetFrame;
     /*0x2F1*/ u8 shopDoorCurrentFrame;
     /*0x2F2*/ u16 shopDoorAnimDelay;
@@ -437,11 +461,11 @@ struct PinballGame
     /*0x2FC*/ s8 nuzleafGfxTileIndex;
     /*0x2FD*/ s8 nuzleafFrameIndex;
     /*0x2FE*/ u16 nuzleafFrameTimer;
-    /*0x300*/ s8 rampGateState;
-    /*0x301*/ s8 rampGateHitFlag;
-    /*0x302*/ s8 rampPrizeVisibilityTimer;
+    /*0x300*/ s8 makuhitaPunchState;
+    /*0x301*/ s8 makuhitaPunchTriggeredFlag;
+    /*0x302*/ s8 makuhitaHitAnimationTimer;
     /*0x303*/ s8 unk303;
-    /*0x304*/ u16 rampGateAnimCounter;
+    /*0x304*/ u16 makuhitaAnimCounter;
     /*0x306*/ s8 pelipperState;
     /*0x307*/ s8 pelipperSwallowAnimIndex;
     /*0x308*/ u16 bumperHitsSinceReset;
@@ -472,12 +496,12 @@ struct PinballGame
     /*0x33C*/ u16 seedotYOffset[3];
     /*0x342*/ s8 hatchMachineActive; // Turns off while launching, Reenabled when ball touches ramp
     /*0x343*/ s8 sapphirerubyEggDeliveryState;
-    /*0x344*/ s8 hatchMachineNewHit;
+    /*0x344*/ s8 hatchMachineProgressTickSignaled;
     /*0x345*/ s8 sapphireHatchMachineFrameIx;
     /*0x346*/ s8 sapphireHatchMachineState; // 0-6
     /*0x347*/ u8 filler347[0x1];
     /*0x348*/ u16 holeAnimFrameCounter;
-    /*0x34A*/ s8 targetBumperHitCounter;
+    /*0x34A*/ s8 hatchMachineTriggerCounter;
     /*0x34B*/ s8 targetBumperAnimTimers[10];
     /*0x355*/ s8 splashEffectFrameIndex[4];
     /*0x359*/ s8 splashEffectPositionIndex[4];
@@ -486,7 +510,7 @@ struct PinballGame
     /*0x366*/ s8 shopShockWallAnimState;
     /*0x367*/ s8 eggHatchShockWallOverride;
     /*0x368*/ u16 shopBumperHitTimer;
-    /*0x36A*/ s8 sapphireBumperState[2];
+    /*0x36A*/ s8 sapphireMartGateBumperState[2];
     /*0x36C*/ s8 sapphireBumperAnimKeyframe[2];
     /*0x36E*/ u16 sapphireBumperAnimSubTimer[2];
     /*0x372*/ u16 sapphireBumperHitFxTimer[2];
@@ -704,9 +728,9 @@ struct PinballGame
     /*0x5F3*/ s8 bonusTrapEnabled;
     /*0x5F4*/ u16 collisionMapScrollY;
     /*0x5F6*/ s8 ballUpgradeType;
-    /*0x5F7*/ u8 ballUpgradeTimerFrozen;
+    /*0x5F7*/ u8 ballUpgradeTimerPaused;
     /*0x5F8*/ u16 ballUpgradeCounter;
-    /*0x5FA*/ s8 boardEntityActive;
+    /*0x5FA*/ s8 cameraLocked;
     /*0x5FB*/ s8 cameraScrollEnabled;
     /*0x5FC*/ s16 cameraScrollOffset;
     /*0x5FE*/ s16 cameraScrollTarget;
@@ -731,7 +755,7 @@ struct PinballGame
     /*0x61E*/ u16 kickbackLaunchTimer;
     /*0x620*/ struct Vector16 kickbackBallHoverPos;
     /*0x624*/ s8 bumperHitCountdown; // 2 when Hit, one frame of ignored collision, then ready to hit again
-    /*0x625*/ s8 catchTilesBumperAcknowledged;
+    /*0x625*/ s8 catchTilesBumperAcknowledgedCount;
     /*0x626*/ s8 evoItemAnimFrame;
     /*0x627*/ u8 filler627[0x1];
     /*0x628*/ u16 evoItemAnimFrameTimer;
@@ -755,18 +779,18 @@ struct PinballGame
     /*0x6BE*/ s8 seedotExitSequenceActive;
     /*0x6BF*/ u8 filler6BF[0x1];
     /*0x6C0*/ u16 seedotExitSequenceTimer;
-    /*0x6C2*/ u16 seedotModeStartDelay;
+    /*0x6C2*/ u16 travelModeStartDelay;
     /*0x6C4*/ s8 portraitDisplayState;
     /*0x6C5*/ s8 catchTileRevealState;
     /*0x6C6*/ s8 catchTilesBoardAcknowledged;
-    /*0x6C7*/ s8 hatchSequentialTilesRevealed;
-    /*0x6C8*/ s8 hatchGridCellIndex;
+    /*0x6C7*/ s8 catchSequentialTilesRevealed;
+    /*0x6C8*/ s8 catchGridCellIndex;
     /*0x6C9*/ s8 catchTilesRemaining;
     /*0x6CA*/ u16 catchTileRevealFrameAnimTimer;
     /*0x6CC*/ s8 catchRevealFrameId;
     /*0x6CD*/ u8 catchTileShufflePool[6];
     /*0x6D3*/ u8 catchTilePalette[6];
-    /*0x6D9*/ s8 roulettePortraitIndexes[2];
+    /*0x6D9*/ s8 areaRoulettePortraitIndex[2];
     /*0x6DB*/ u8 creatureOamPriority;
     /*0x6DC*/ u8 prizeId; //Used both for roulette and shop purchases
     /*0x6DD*/ s8 prizeSelected;
@@ -869,12 +893,12 @@ struct PinballGame
     /*0x1322*/s16 savedModeChangeDelayTimer;
     /*0x1324*/s16 savedShopPanelActive;
     /*0x1326*/s16 savedShopPanelSlideOffset;
-    /*0x1328*/u16 ballLaunchTimer; // Countdown to activate secondaryBall (multiball)
+    /*0x1328*/u16 altBallCameraTimer; // Countdown to return to following ball position
     /*0x132A*/u8 filler132A[0x2];
     /*0x132C*/struct BallState *ball;
-    /*0x1330*/struct BallState *secondaryBall;
+    /*0x1330*/struct BallState *cameraBall;
     /*0x1334*/struct BallState ballStates[2];
-    /*0x13BC*/struct FlipperState flipper[2];
+    /*0x13BC*/struct FlipperState flipper[SIDE_COUNT];
     /*0x13D4*/u16 nameRevealDelaysRow2[10];
     /*0x13E8*/struct Vector16 nameSlideRow2[10];
 } /* size=0x1410 */;
@@ -924,7 +948,7 @@ struct BoardConfig
     /*0x0C*/ struct PinballGame *pinballGame;
     /*0x10*/ struct ReplayInputFrame *replayInputData;
     /*0x14*/ struct FieldBoardLayout fieldLayout;
-    /*0x68*/ const u16 *flipperCollisionData;
+    /*0x68*/ const u16 (*flipperCollisionData)[96*96]; //pointer to an Array of 96x96 px data
 };
 
 struct FlipperLineSegment
@@ -939,7 +963,7 @@ extern struct PinballGame *gCurrentPinballGame;
 extern const StateFunc gIdlePinballGameStateFuncs[];
 extern u32 gReplayFrameCounter;
 extern struct BoardConfig gBoardConfig;
-extern u8 gKecleonSpriteOrderMap[];
+extern u8 gKecleonSpriteGroupOrderMap[];
 extern u16 gFieldPaletteVariants[][6][16];
 extern u16 gDusclopsBossGuardReadyTileOffsets[]; 
 extern const u8 gBallPalettes[][0x20];
@@ -954,8 +978,8 @@ extern struct PinballGame gIdleBoardGameState3;
 extern struct PinballGame gIdleBoardGameState1;
 extern s32 gBonusStageObjPal[64];
 extern s32 gDusclopsAnimPalettes[0x3E0];
-extern u16 gKecleonTongueCollisionMap[0x1600];
-extern u16 gKecleonBodyCollisionMap[0x1600];
+extern u16 gKecleonUprightCollisionMap[0x1600];
+extern u16 gKecleonKnockedDownCollisionMap[0x1600];
 extern u16 gKyogreForm1CollisionMap[];
 extern u16 gKyogreForm2CollisionMap[];
 extern u16 gKyogreForm3CollisionMap[];
@@ -971,8 +995,8 @@ extern struct SongHeader se_catch_evo_banner;
 extern struct SongHeader se_dusclops_appear;
 extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
 extern const s16 gBounceBackForceMagnitudes[9];
-typedef s16 (*Unk86ACE0C)(struct Vector16*, u16*);
-extern Unk86ACE0C BoardCollisionFuncts_086ACE0C[8];
+typedef s16 (*BoardCollisionFunc)(struct Vector16*, u16*);
+extern BoardCollisionFunc BoardCollisionFuncts_086ACE0C[8];
 extern struct Vector16 gWallEscapeOffsets[4];
 extern struct FlipperLineSegment gFlipperLineGeometry[13];
 extern u16 gFlipperBaseXPositions[2];
@@ -1004,7 +1028,7 @@ extern const u8 gPortraitAnimFrameGraphics[][0x300];
 extern const u8 gBallRotationTileGraphics[][0x80];
 extern const u8 gBallShadowTileGraphics[][0x200];
 extern const u8 gMainStageBonusTrap_Gfx[][0x300];
-extern const u8 gPortraitGenericGraphics[][0x300];
+extern const u8 gLocationPortraitGfx[][0x300];
 extern const u8 gChargeFillIndicator_Gfx[][0x80];
 extern const u8 gPikaSaverTilesGfx[];
 extern const u8 gMainBoardPikaSpinner_Gfx[][0x120];

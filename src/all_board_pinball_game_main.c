@@ -93,7 +93,7 @@ void PinballGame_State0_49ED4(void)
         if (gMain.selectedField == FIELD_RUBY || gMain.selectedField == FIELD_SAPPHIRE)
             ClampPortraitSpritesToOffscreen();
         else if (gMain.selectedField == FIELD_DUSCLOPS)
-            RenderBonusStageOverlaySprites();
+            HideDusclopsSprites();
         else if (gMain.selectedField == FIELD_KYOGRE)
             HideKyogreSplashSprite();
         else if (gMain.selectedField == FIELD_GROUDON)
@@ -147,8 +147,8 @@ void PinballGame_State0_49ED4(void)
 
     EnableVBlankInterrupts();
     FadeInScreen();
-    gCurrentPinballGame->startButtonDisabled = 0;
-    gMain.blendEnabled = 1;
+    gCurrentPinballGame->startButtonDisabled = FALSE;
+    gMain.blendEnabled = TRUE;
 
     switch (var0)
     {
@@ -266,9 +266,9 @@ void InitPinballGameState(void)
     gMain.animationTimer = 0;
     gMain.modeChangeDelayTimer = 0;
     gMain.vCount = 144;
-    gMain.shopPanelActive = 0;
+    gMain.shopPanelActive = FALSE;
     gMain.shopPanelSlideOffset = 0;
-    gMain.blendEnabled = 0;
+    gMain.blendEnabled = FALSE;
     gMain.blendControl = 0;
     gMain.blendAlpha = 0;
     gMain.blendBrightness = 0;
@@ -286,8 +286,8 @@ void InitPinballGameState(void)
             gCurrentPinballGame->chargeIndicatorYOffset = 120;
             gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
             DmaCopy16(3, gDxModePikachuObjTiles, (void *)OBJ_VRAM0 + 0x600, 0x180);
-            gCurrentPinballGame->outLanePikaPosition = 2;
-            gMain.fieldSpriteGroups[41]->active = FALSE;
+            gCurrentPinballGame->outLanePikaPosition = PIKA_BOTH_SIDES;
+            gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
             gCurrentPinballGame->pichuEntranceTimer = 1;
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
             gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
@@ -309,7 +309,7 @@ void InitPinballGameState(void)
     gCurrentPinballGame->scoreAddStepSize = 40000;
     gCurrentPinballGame->fadeSubState = 0;
     gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
-    gCurrentPinballGame->secondaryBall = &gCurrentPinballGame->ballStates[0];
+    gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[0];
     gCurrentPinballGame->activeBallIndex = 0;
 }
 
@@ -326,8 +326,8 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->scale = 0x80;
-        gCurrentPinballGame->ball->ballHidden = 1;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->modeAnimTimer = 120;
         gCurrentPinballGame->ballCatchState = TRAP_CENTER_HOLE;
@@ -348,8 +348,8 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->scale = 0x80;
-        gCurrentPinballGame->ball->ballHidden = 1;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->whiscashState = WHISCASH_STATE_INIT_RETURN_FROM_BONUS;
         gCurrentPinballGame->cameraBaseX = 0;
@@ -364,8 +364,8 @@ void SetBallPositionForBonusReturn(void)
         gCurrentPinballGame->ball->positionQ8.x = gCurrentPinballGame->ball->positionQ0.x << 8;
         gCurrentPinballGame->ball->positionQ8.y = gCurrentPinballGame->ball->positionQ0.y << 8;
         gCurrentPinballGame->ball->scale = 0x80;
-        gCurrentPinballGame->ball->ballHidden = 1;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->trapAnimState = 0;
         gCurrentPinballGame->pelipperFrameTimer = 0;
         gCurrentPinballGame->pelipperState = 7;
@@ -376,7 +376,7 @@ void SetBallPositionForBonusReturn(void)
 
     gCurrentPinballGame->cameraScrollOffset = 0;
     gCurrentPinballGame->cameraScrollTarget = 0;
-    gCurrentPinballGame->cameraScrollEnabled = 0;
+    gCurrentPinballGame->cameraScrollEnabled = FALSE;
     gCurrentPinballGame->cameraYQ8 = gCurrentPinballGame->cameraBaseY << 8;
     gCurrentPinballGame->cameraXOffset = gCurrentPinballGame->cameraBaseX;
     gCurrentPinballGame->cameraYOffset = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->cameraScrollOffset;
@@ -497,7 +497,7 @@ void PinballGame_State1_4AAD8(void)
             }
             else if (gMain.selectedField == FIELD_DUSCLOPS)
             {
-                RenderBonusStageOverlaySprites();
+                HideDusclopsSprites();
             }
             else if (gMain.selectedField == FIELD_KYOGRE)
             {
@@ -550,7 +550,7 @@ void MainGameFrameUpdate(void)
         CurrentBoardProcPairs_020028D8[4].updateFunc();
         if (gMain.modeChangeFlags)
         {
-            if (!gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
             {
                 for (i = 0; i < 4; i++)
                 {
@@ -563,9 +563,9 @@ void MainGameFrameUpdate(void)
         {
             gMain.fieldFrameCount++;
             gCurrentPinballGame->globalAnimFrameCounter++;
-            if (gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
             {
-                if (gCurrentPinballGame->ballFrozenState != 2)
+                if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_FROZEN)
                 {
                     for (i = 0; i < 4; i++)
                     {
@@ -606,7 +606,7 @@ void IdleGameFrameUpdate(void)
         CurrentBoardProcPairs_020028D8[4].updateFunc();
         if (gMain.modeChangeFlags)
         {
-            if (!gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
             {
                 for (i = 0; i < 4; i++)
                 {
@@ -619,9 +619,9 @@ void IdleGameFrameUpdate(void)
         {
             gMain.fieldFrameCount++;
             gCurrentPinballGame->globalAnimFrameCounter++;
-            if (gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
             {
-                if (gCurrentPinballGame->ballFrozenState != 2)
+                if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_FROZEN)
                 {
                     for (i = 0; i < 4; i++)
                     {
@@ -675,7 +675,7 @@ void BonusFieldFrameUpdate(void)
     CurrentBoardProcPairs_020028D8[4].updateFunc();
     if (gMain.modeChangeFlags & ~MODE_CHANGE_EXPIRED_BONUS)
     {
-        if (!gCurrentPinballGame->ballFrozenState)
+        if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
         {
             for (i = 0; i < 4; i++)
             {
@@ -690,9 +690,9 @@ void BonusFieldFrameUpdate(void)
     {
         gMain.fieldFrameCount++;
         gCurrentPinballGame->globalAnimFrameCounter++;
-        if (gCurrentPinballGame->ballFrozenState)
+        if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
         {
-            if (gCurrentPinballGame->ballFrozenState == 2)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_FROZEN)
             {
                 gCurrentPinballGame->activeBallIndex = 0;
                 gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
@@ -739,7 +739,7 @@ void IdleBonusFieldFrameUpdate(void)
         CurrentBoardProcPairs_020028D8[4].updateFunc();
         if (gMain.modeChangeFlags & ~MODE_CHANGE_EXPIRED_BONUS)
         {
-            if (!gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_NORMAL)
             {
                 for (i = 0; i < 4; i++)
                 {
@@ -754,9 +754,9 @@ void IdleBonusFieldFrameUpdate(void)
         {
             gMain.fieldFrameCount++;
             gCurrentPinballGame->globalAnimFrameCounter++;
-            if (gCurrentPinballGame->ballFrozenState)
+            if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
             {
-                if (gCurrentPinballGame->ballFrozenState == 2)
+                if (gCurrentPinballGame->ballPhysicsState == BALL_PHYSICS_FROZEN)
                 {
                     gCurrentPinballGame->activeBallIndex = 0;
                     gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
@@ -806,7 +806,7 @@ void IdleBonusFieldFrameUpdate(void)
 
 void PinballGame_State3_4B20C(void)
 {
-    gMain.blendEnabled = 0;
+    gMain.blendEnabled = FALSE;
     FadeOutScreen();
     m4aMPlayAllStop();
     DisableVBlankInterrupts();
@@ -845,31 +845,31 @@ void UpdateButtonActionsFromJoy(void)
 {
     u16 i;
 
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < NUM_PINBALL_INPUTS; i++)
     {
-        gCurrentPinballGame->newButtonActions[i] = 0;
-        gCurrentPinballGame->releasedButtonActions[i] = 0;
+        gCurrentPinballGame->newButtonActions[i] = FALSE;
+        gCurrentPinballGame->releasedButtonActions[i] = FALSE;
     }
 
     if (gMain.modeChangeFlags)
         return;
 
-    for (i =  0; i < 5; i++)
+    for (i =  0; i < NUM_PINBALL_INPUTS; i++)
     {
         int buttonConfigKeyMask = (gMain.buttonConfigs[i][0] | gMain.buttonConfigs[i][1]) & KEYS_MASK;
         if (buttonConfigKeyMask == JOY_HELD(buttonConfigKeyMask))
         {
-            if (gCurrentPinballGame->heldButtonActions[i] == 0)
-                gCurrentPinballGame->newButtonActions[i] = 1;
+            if (gCurrentPinballGame->heldButtonActions[i] == FALSE)
+                gCurrentPinballGame->newButtonActions[i] = TRUE;
 
-            gCurrentPinballGame->heldButtonActions[i] = 1;
+            gCurrentPinballGame->heldButtonActions[i] = TRUE;
         }
         else
         {
             if (gCurrentPinballGame->heldButtonActions[i])
-                gCurrentPinballGame->releasedButtonActions[i] = 1;
+                gCurrentPinballGame->releasedButtonActions[i] = TRUE;
 
-            gCurrentPinballGame->heldButtonActions[i] = 0;
+            gCurrentPinballGame->heldButtonActions[i] = FALSE;
         }
     }
 }
@@ -878,10 +878,10 @@ void ReplayButtonActionsFromRecording(void)
 {
     u16 i;
 
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < NUM_PINBALL_INPUTS; i++)
     {
-        gCurrentPinballGame->newButtonActions[i] = 0;
-        gCurrentPinballGame->releasedButtonActions[i] = 0;
+        gCurrentPinballGame->newButtonActions[i] = FALSE;
+        gCurrentPinballGame->releasedButtonActions[i] = FALSE;
     }
 
     if (gMain.modeChangeFlags)
@@ -889,7 +889,7 @@ void ReplayButtonActionsFromRecording(void)
 
     if (gReplayFrameCounter < 60 * 60)
     {
-        for (i =  0; i < 5; i++)
+        for (i =  0; i < NUM_PINBALL_INPUTS; i++)
         {
             gCurrentPinballGame->newButtonActions[i] = (gBoardConfig.replayInputData[gReplayFrameCounter].newButtonBits >> i) & 0x1;
             gCurrentPinballGame->releasedButtonActions[i] = (gBoardConfig.replayInputData[gReplayFrameCounter].releasedButtonBits >> i) & 0x1;
@@ -899,6 +899,6 @@ void ReplayButtonActionsFromRecording(void)
         gReplayFrameCounter++;
     }
 
-    if (gCurrentPinballGame->newButtonActions[1])
+    if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
         gMain.newKeys = A_BUTTON;
 }

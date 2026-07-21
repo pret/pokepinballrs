@@ -13,7 +13,7 @@ void SapphireBoardProcess_3A_326F4(void)
 {
     gCurrentPinballGame->catchModeArrows = 2;
     gCurrentPinballGame->pikachuSpinFrame = 0;
-    gCurrentPinballGame->pikachuSpinPrevFrame = 1;
+    gCurrentPinballGame->pikachuSpinPrevFrame = TRUE;
 
     UpdatePikachuChargeCounter();
     ProcessChargeIndicator();
@@ -69,16 +69,16 @@ void UpdateSapphireBoardEntityRendering(void)
         if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 3 &&
             gCurrentPinballGame->sapphireHatchMachineState == 0)
         {
-            gCurrentPinballGame->catchArrowPaletteActive = 1;
+            gCurrentPinballGame->catchArrowPaletteActive = TRUE;
         }
         else
         {
-            gCurrentPinballGame->catchArrowPaletteActive = 0;
+            gCurrentPinballGame->catchArrowPaletteActive = FALSE;
         }
     }
     else
     {
-        gCurrentPinballGame->catchArrowPaletteActive = 0;
+        gCurrentPinballGame->catchArrowPaletteActive = FALSE;
     }
 
     if (gCurrentPinballGame->cameraYViewport < 0x96)
@@ -188,7 +188,7 @@ void InitSapphireEvolutionShopCatch(void)
     gCurrentPinballGame->scoreAddedInFrame = 500000;
     gMain.blendControl = 0xCE;
     gMain.blendBrightness = 0;
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+    gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 }
 
 void UpdateSapphireEvolutionShopSequence(void)
@@ -197,8 +197,8 @@ void UpdateSapphireEvolutionShopSequence(void)
 
     if (gCurrentPinballGame->modeAnimTimer > 0x18)
     {
-        gCurrentPinballGame->ball->ballHidden = 1;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->modeAnimTimer--;
         gCurrentPinballGame->ball->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
@@ -222,7 +222,7 @@ void UpdateSapphireEvolutionShopSequence(void)
             {
                 gCurrentPinballGame->sapphireBumperAnimKeyframe[i] = 10;
                 gCurrentPinballGame->sapphireBumperAnimSubTimer[i] = 0;
-                gCurrentPinballGame->sapphireBumperState[i] = 4;
+                gCurrentPinballGame->sapphireMartGateBumperState[i] = 4;
             }
         }
     }
@@ -232,20 +232,20 @@ void UpdateSapphireEvolutionShopSequence(void)
     }
     else
     {
-        gCurrentPinballGame->ball->ballHidden = 0;
-        gCurrentPinballGame->ballFrozenState = 0;
+        gCurrentPinballGame->ball->ballHidden = FALSE;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
         gCurrentPinballGame->collisionCooldownTimer = 0x3C;
         gCurrentPinballGame->ball->velocity.x = 0x60;
         gCurrentPinballGame->ball->velocity.y = 0xC0;
         gCurrentPinballGame->ball->positionQ0.x = 0x3C;
         gCurrentPinballGame->ball->positionQ0.y = 0xB4;
         gCurrentPinballGame->ball->spinSpeed = 0;
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
         gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
 
-        m4aSongNumStart(SE_UNKNOWN_0xC3);
+        m4aSongNumStart(SE_SHOP_EJECT);
 
         if (gCurrentPinballGame->evoArrowProgress > 2 && gCurrentPinballGame->evolvablePartySize > 0) {
             RequestBoardStateTransition(MAIN_BOARD_STATE_EVO_MODE);
@@ -262,7 +262,7 @@ void InitSapphireWailmerCatch(void)
     gCurrentPinballGame->catchHoleAnimFrame = 2;
     gCurrentPinballGame->cameraScrollOffset = 0;
     gCurrentPinballGame->cameraScrollTarget = 30;
-    gCurrentPinballGame->cameraScrollEnabled = 0;
+    gCurrentPinballGame->cameraScrollEnabled = FALSE;
     gCurrentPinballGame->scoreAddedInFrame = 50000;
 
     m4aSongNumStart(SE_WHISCASH_CATCH_BALL);
@@ -273,15 +273,15 @@ void UpdateSapphireWailmerCatchSequence(void)
 {
     if (gCurrentPinballGame->modeAnimTimer)
     {
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->modeAnimTimer--;
         gCurrentPinballGame->ball->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
         gCurrentPinballGame->ball->spinSpeed = 0;
         if (gCurrentPinballGame->modeAnimTimer > 97)
         {
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->cameraLocked = TRUE;
             gCurrentPinballGame->catchHoleAnimFrame = 2;
             gCurrentPinballGame->ball->positionQ0.x = 0xb5;
             gCurrentPinballGame->ball->positionQ0.y = 0xc3;
@@ -294,7 +294,7 @@ void UpdateSapphireWailmerCatchSequence(void)
         }
         else if (gCurrentPinballGame->modeAnimTimer > 91)
         {
-            gCurrentPinballGame->ball->ballHidden = 1;
+            gCurrentPinballGame->ball->ballHidden = TRUE;
             gCurrentPinballGame->catchHoleAnimFrame = 4;
         }
         else if (gCurrentPinballGame->modeAnimTimer > 83)
@@ -323,7 +323,7 @@ void UpdateSapphireWailmerCatchSequence(void)
         }
         else if (gCurrentPinballGame->modeAnimTimer > 4)
         {
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->catchHoleAnimFrame = 10;
             gCurrentPinballGame->ball->positionQ0.x = 0xb5;
             gCurrentPinballGame->ball->positionQ0.y = 0xc3;
@@ -343,7 +343,7 @@ void UpdateSapphireWailmerCatchSequence(void)
     else
     {
         gCurrentPinballGame->catchHoleAnimFrame = 0;
-        gCurrentPinballGame->ballFrozenState = 0;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
         gCurrentPinballGame->collisionCooldownTimer = 60;
         gCurrentPinballGame->ball->spinSpeed = 0;
         gCurrentPinballGame->ball->velocity.x = -0x66;
@@ -356,11 +356,11 @@ void UpdateSapphireWailmerCatchSequence(void)
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
         gCurrentPinballGame->ball->prevPositionQ1 = gCurrentPinballGame->ball->positionQ1;
         gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         m4aSongNumStart(SE_WHISCASH_SPIT_BALL);
         gCurrentPinballGame->cameraScrollTarget = 0;
-        gCurrentPinballGame->cameraScrollEnabled = 1;
-        gCurrentPinballGame->boardEntityActive = 0;
+        gCurrentPinballGame->cameraScrollEnabled = TRUE;
+        gCurrentPinballGame->cameraLocked = FALSE;
     }
 }
 
@@ -368,12 +368,14 @@ void HandleSapphireFlipperButtonInput(void)
 {
     int tmp;
 
-    if (gCurrentPinballGame->newButtonActions[0])
+    if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_LEFT_FLIPPER])
     {
-        if (gCurrentPinballGame->pikaKickbackTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->pichuEntranceTimer == 0 && gCurrentPinballGame->kickbackFiring == 0)
+        if (gCurrentPinballGame->pikaKickbackTimer == 0
+            && gCurrentPinballGame->outLanePikaPosition != PIKA_BOTH_SIDES
+            && gCurrentPinballGame->pichuEntranceTimer == 0
+            && !gCurrentPinballGame->kickbackFiring)
         {
-            gCurrentPinballGame->outLanePikaPosition = 0;
+            gCurrentPinballGame->outLanePikaPosition = PIKA_LEFT_SIDE;
         }
 
         tmp = gCurrentPinballGame->holeIndicators[0];
@@ -388,12 +390,14 @@ void HandleSapphireFlipperButtonInput(void)
         gCurrentPinballGame->ballPowerUpLight[2] = tmp;
     }
 
-    if (gCurrentPinballGame->newButtonActions[1])
+    if (gCurrentPinballGame->newButtonActions[PINBALL_INPUT_RIGHT_FLIPPER])
     {
-        if (gCurrentPinballGame->pikaKickbackTimer == 0 && gCurrentPinballGame->outLanePikaPosition != 2 &&
-            gCurrentPinballGame->pichuEntranceTimer == 0 && gCurrentPinballGame->kickbackFiring == 0)
+        if (gCurrentPinballGame->pikaKickbackTimer == 0
+            && gCurrentPinballGame->outLanePikaPosition != PIKA_BOTH_SIDES
+            && gCurrentPinballGame->pichuEntranceTimer == 0
+            && !gCurrentPinballGame->kickbackFiring)
         {
-            gCurrentPinballGame->outLanePikaPosition = 1;
+            gCurrentPinballGame->outLanePikaPosition = PIKA_RIGHT_SIDE;
         }
 
         tmp = gCurrentPinballGame->holeIndicators[3];

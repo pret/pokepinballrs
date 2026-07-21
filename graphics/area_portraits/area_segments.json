@@ -1,0 +1,55 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "palette": "",
+    "mwidth": 2,
+    "mheight": 2,
+    "width": 6
+  },
+  "files": [
+    {
+      "gfx_filename": "loc00_ruby_forest",
+      "palette": "loc00_ruby_forest.gbapal"
+    },
+    {
+      "gfx_filename": "loc01_sapphire_forest"
+    },
+    {
+      "gfx_filename": "loc02_ruby_plains"
+    },
+    {
+      "gfx_filename": "loc03_sapphire_plains"
+    },
+    {
+      "gfx_filename": "loc04_ruby_harbor"
+    },
+    {
+      "gfx_filename": "loc05_sapphire_beach"
+    },
+    {
+      "gfx_filename": "loc06_ruby_cave"
+    },
+    {
+      "gfx_filename": "loc07_sapphire_cave"
+    },
+    {
+      "gfx_filename": "loc08_ruby_safari_zone"
+    },
+    {
+      "gfx_filename": "loc09_ruby_volcano"
+    },
+    {
+      "gfx_filename": "loc10_sapphire_lake"
+    },
+    {
+      "gfx_filename": "loc11_sapphire_desert"
+    },
+    {
+      "gfx_filename": "loc12_ruins"
+    }
+  ]
+}

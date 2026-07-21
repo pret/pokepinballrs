@@ -12,17 +12,17 @@ struct SphealFlightPath
 extern const struct SphealFlightPath gSphealFlightPathData[];
 
 extern const s16 gSphealWhiscashAnimFrameset[][4];
-extern struct SongHeader se_unk_137;
-extern struct SongHeader se_unk_138;
-extern struct SongHeader se_unk_139;
-extern struct SongHeader se_unk_13b;
-extern struct SongHeader se_unk_13c;
-extern struct SongHeader se_unk_13d;
+extern struct SongHeader se_spheal_hit;
+extern struct SongHeader se_spheal_net_swoosh;
+extern struct SongHeader se_spheal_crowd_cheer;
+extern struct SongHeader se_spheal_end_whistle;
+extern struct SongHeader se_sealeo_hit_thud;
+extern struct SongHeader se_sealeo_nose_bounce;
 
 extern const s8 gSphealScoreDigitSpriteIndices[];
 extern const u16 gSphealWaterBackgroundTilemap[];
-extern const u8 gSphealScoreCounterDigitSprites[][0x200];
-extern const u8 gSphealExtendedScoreSprites[][0x180];
+extern const u8 gSphealNetGfx[][0x200];
+extern const u8 gSphealNetFrontGfx[][0x180];
 extern const u8 gSphealFlyingEnemyVariantSprites[][0x120];
 extern const u8 gSphealMinionBodySprites[][0x800];
 extern const u8 gSphealResultsScreenGfx[];
@@ -47,18 +47,18 @@ void SphealBoardProcess_3A_42E48(void)
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = SPHEAL_BOARD_STATE_INTRO;
-    gCurrentPinballGame->boardModeType = 1;
+    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnTimer = 0;
-    gCurrentPinballGame->ballGrabbed = 0;
-    gCurrentPinballGame->ballRespawnState = 0;
-    gCurrentPinballGame->ball->ballHidden = 1;
-    gCurrentPinballGame->ballFrozenState = 1;
+    gCurrentPinballGame->ballGrabbed = FALSE;
+    gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
+    gCurrentPinballGame->ball->ballHidden = TRUE;
+    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
     gCurrentPinballGame->ball->velocity.x = 0;
     gCurrentPinballGame->ball->velocity.y = 0;
     gCurrentPinballGame->ball->spinSpeed = 0;
-    gCurrentPinballGame->returnToMainBoardFlag = 0;
+    gCurrentPinballGame->returnToMainBoardFlag = FALSE;
     gCurrentPinballGame->resultsAnimTimer = 0;
     gCurrentPinballGame->scoreCountdownTimer = 0;
     gCurrentPinballGame->totalBonusScore = 0;
@@ -69,7 +69,7 @@ void SphealBoardProcess_3A_42E48(void)
     gCurrentPinballGame->deliveryAnimTimer = 0;
     gCurrentPinballGame->unk594 = 0;
     gCurrentPinballGame->unk596 = 0;
-    gCurrentPinballGame->ballDeliveryActive = 1;
+    gCurrentPinballGame->ballDeliveryActive = TRUE;
 
     // Clear minion info, used for Sealeo. (3rd slot not used on this board)
     for (i = 0; i < 3; i++)
@@ -117,7 +117,7 @@ void SphealBoardProcess_3A_42E48(void)
         gCurrentPinballGame->sphealPositionQ8[i].y = 0;
     }
 
-    gCurrentPinballGame->flippersDisabled = 0;
+    gCurrentPinballGame->flippersDisabled = FALSE;
     UpdateSphealEntityLogic();
     UpdateSealeoEntityLogic();
     UpdateSphealScoreAndDelivery();
@@ -149,14 +149,14 @@ void SphealBoardProcess_3B_43228(void)
     switch (gCurrentPinballGame->boardState)
     {
     case SPHEAL_BOARD_STATE_INTRO:
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+        gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
         if (gCurrentPinballGame->stageTimer < 340)
         {
             if (gCurrentPinballGame->stageTimer < 321)
                 gCurrentPinballGame->cameraYAdjust = (gCurrentPinballGame->stageTimer / 5) + 0xFFC0;
 
             if (gCurrentPinballGame->stageTimer == 325)
-                gCurrentPinballGame->boardModeType = 2;
+                gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
 
             gCurrentPinballGame->stageTimer++;
         }
@@ -170,13 +170,13 @@ void SphealBoardProcess_3B_43228(void)
     case SPHEAL_BOARD_STATE_ACTIVE_PHASE:
         if (gCurrentPinballGame->eventTimer == 0)
         {
-            gCurrentPinballGame->boardModeType = 3;
+            gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_COMPLETED;
             if (gCurrentPinballGame->stageTimer == 0)
             {
                 m4aMPlayAllStop();
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_13b);
+                MPlayStart(&gMPlayInfo_SE1, &se_spheal_end_whistle);
                 gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
-                gCurrentPinballGame->ballRespawnState = 2;
+                gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_DISABLED;
                 gCurrentPinballGame->ballRespawnTimer = 0;
             }
 
@@ -206,13 +206,13 @@ void SphealBoardProcess_3B_43228(void)
         {
             gCurrentPinballGame->boardState = SPHEAL_BOARD_STATE_SCORE_DISPLAY;
             gCurrentPinballGame->stageTimer = 0;
-            gMain.spriteGroups[7].active = TRUE;
-            gMain.spriteGroups[8].active = TRUE;
-            gMain.spriteGroups[9].active = TRUE;
-            gMain.spriteGroups[10].active = TRUE;
+            gMain.spriteGroups[SG_SPHEAL_END_SCORE_PANEL].active = TRUE;
+            gMain.spriteGroups[SG_SPHEAL_END_SCORE_SPHEALS_SUNK].active = TRUE;
+            gMain.spriteGroups[SG_SPHEAL_END_SCORE_BALLS_SUNK].active = TRUE;
+            gMain.spriteGroups[SG_SPHEAL_END_SCORE_TOTAL].active = TRUE;
             DmaCopy16(3, gSphealResultsScreenGfx, (void *)0x06015800, 0x800);
             gCurrentPinballGame->bannerSlideYOffset = -126;
-            gCurrentPinballGame->boardEntityActive = 1;
+            gCurrentPinballGame->cameraLocked = TRUE;
         }
         break;
     case SPHEAL_BOARD_STATE_SCORE_DISPLAY:
@@ -233,7 +233,7 @@ void SphealBoardProcess_3B_43228(void)
         if (gCurrentPinballGame->stageTimer < 540)
         {
             if (gCurrentPinballGame->stageTimer == 4)
-                m4aSongNumStart(SE_UNKNOWN_0xA4);
+                m4aSongNumStart(SE_BONUS_PANEL_SLIDE);
 
             gCurrentPinballGame->stageTimer++;
         }
@@ -243,7 +243,7 @@ void SphealBoardProcess_3B_43228(void)
             gCurrentPinballGame->boardState = SPHEAL_BOARD_STATE_SCORE_DISPLAY_CLEANUP;
         }
 
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     case SPHEAL_BOARD_STATE_SCORE_DISPLAY_CLEANUP:
         UpdateSphealResultsScreen();
@@ -251,7 +251,7 @@ void SphealBoardProcess_3B_43228(void)
         {
             gCurrentPinballGame->stageTimer++;
             if (gCurrentPinballGame->stageTimer == 2)
-                m4aSongNumStart(SE_UNKNOWN_0xA4);
+                m4aSongNumStart(SE_BONUS_PANEL_SLIDE);
         }
         else
         {
@@ -261,8 +261,8 @@ void SphealBoardProcess_3B_43228(void)
         break;
     case SPHEAL_BOARD_STATE_PREPARE_RETURN:
         UpdateSphealResultsScreen();
-        gCurrentPinballGame->returnToMainBoardFlag = 1;
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->returnToMainBoardFlag = TRUE;
+        gCurrentPinballGame->cameraLocked = TRUE;
         break;
     }
 
@@ -272,7 +272,7 @@ void SphealBoardProcess_3B_43228(void)
     AnimateSphealBackground();
     if (gCurrentPinballGame->returnToMainBoardFlag)
     {
-        gCurrentPinballGame->boardEntityActive = 1;
+        gCurrentPinballGame->cameraLocked = TRUE;
         FadeToMainBoard();
     }
 
@@ -297,7 +297,7 @@ void UpdateSealeoEntityLogic(void)
         {
             if (gCurrentPinballGame->sealeoStunnedTimer[i] == 23)
             {
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_13c);
+                MPlayStart(&gMPlayInfo_SE1, &se_sealeo_hit_thud);
                 gCurrentPinballGame->scoreAddedInFrame = 5000;
                 PlayRumble(8);
             }
@@ -374,7 +374,7 @@ void UpdateSealeoEntityLogic(void)
         }
     }
 
-    group = &gMain.spriteGroups[22];
+    group = &gMain.spriteGroups[SG_SPHEAL_RIGHT_SEALEO_ENTITY];
     if (group->active)
     {
         group->baseX = 100 - gCurrentPinballGame->cameraXOffset;
@@ -390,7 +390,7 @@ void UpdateSealeoEntityLogic(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[21];
+    group = &gMain.spriteGroups[SG_SPHEAL_LEFT_SEALEO_ENTITY];
     if (group->active)
     {
         group->baseX = 140 - gCurrentPinballGame->cameraXOffset;
@@ -515,7 +515,7 @@ void UpdateSphealEntityLogic(void)
                     }
 
                     if (gCurrentPinballGame->sphealFramesetIndex[i] == 1)
-                        m4aSongNumStart(SE_UNKNOWN_0x134);
+                        m4aSongNumStart(SE_SPHEAL_SURFACING);
                 }
 
                 gCurrentPinballGame->sphealEscapeTimer[i] = 0;
@@ -553,7 +553,7 @@ void UpdateSphealEntityLogic(void)
                 break;
             case SPHEAL_ENTITY_STATE_HIT:
                 // Note: A hit while 'walking down' won't come here.
-                MPlayStart(&gMPlayInfo_SE1, &se_unk_137);
+                MPlayStart(&gMPlayInfo_SE1, &se_spheal_hit);
                 if (gCurrentPinballGame->sphealEntityCollisionType[i] == SPHEAL_COLLISION_TYPE_SWIMMING)
                 {
                     gCurrentPinballGame->sphealAnimTimer[i] = 0;
@@ -605,7 +605,7 @@ void UpdateSphealEntityLogic(void)
                     }
 
                     if (gCurrentPinballGame->sphealFramesetIndex[i] == 7)
-                        m4aSongNumStart(SE_UNKNOWN_0x135);
+                        m4aSongNumStart(SE_SPHEAL_SUBMERGING);
                 }
 
                 gCurrentPinballGame->sphealEntityCollisionType[i] = SPHEAL_COLLISION_TYPE_INACTIVE;
@@ -628,7 +628,7 @@ void UpdateSphealEntityLogic(void)
                     }
 
                     if (gCurrentPinballGame->sphealFramesetIndex[i] == 10)
-                        m4aSongNumStart(SE_UNKNOWN_0x140);
+                        m4aSongNumStart(SE_SPHEAL_SURFACE_AT_RAMP);
 
                 }
                 gCurrentPinballGame->sphealEntityCollisionType[i] = SPHEAL_COLLISION_TYPE_ON_RAMP;
@@ -702,7 +702,7 @@ void UpdateSphealEntityLogic(void)
                     }
 
                     if (gCurrentPinballGame->sphealFramesetIndex[i] == 17)
-                        m4aSongNumStart(SE_UNKNOWN_0x135);
+                        m4aSongNumStart(SE_SPHEAL_SUBMERGING);
                 }
                 break;
             case SPHEAL_ENTITY_STATE_HIT_UP_RAMP: {
@@ -794,7 +794,7 @@ void UpdateSphealEntityLogic(void)
                         {
                             gCurrentPinballGame->sphealFramesetIndex[i] = 21;
                             if (gCurrentPinballGame->sphealAnimTimer[i] == 1)
-                                m4aSongNumStart(SE_UNKNOWN_0x13E);
+                                m4aSongNumStart(SE_SPHEAL_LAND_UNDER_NET);
 
                             gCurrentPinballGame->sphealEntityCollisionType[i] = SPHEAL_COLLISION_TYPE_WALK_DOWN;
                         }
@@ -833,7 +833,7 @@ void UpdateSphealEntityLogic(void)
                                 gCurrentPinballGame->sphealFramesetIndex[i] = 25;
 
                             if (var20 == 1)
-                                m4aSongNumStart(SE_UNKNOWN_0x136);
+                                m4aSongNumStart(SE_SPHEAL_SUBMERGE_AFTER_SCORING);
 
                             gCurrentPinballGame->sphealEntityCollisionType[i] = SPHEAL_COLLISION_TYPE_INACTIVE;
                         }
@@ -855,7 +855,7 @@ void UpdateSphealEntityLogic(void)
     // Draw Spheals; set collision position.
     for (i = 0; i < 2; i++)
     {
-        group = &gMain.spriteGroups[14 + i];
+        group = &gMain.spriteGroups[SG_SPHEAL_ENTITY_BASE + i];
         if (group->active)
         {
             sphealFrameIx = gCurrentPinballGame->sphealNextFrameIx[i];
@@ -910,7 +910,7 @@ void UpdateSphealEntityLogic(void)
 
             gCurrentPinballGame->sphealHitYPosition[i] = gCurrentPinballGame->sphealPositionQ8[i].y / 256 + gCurrentPinballGame->sphealOamYOffset[i];
 
-            group = &gMain.spriteGroups[16 + i];
+            group = &gMain.spriteGroups[SG_SPHEAL_ENTITY_REFLECTION_BASE + i];
 
             //Note: left/right are separated by 30
             if (sphealFrameIx == 12 || sphealFrameIx == 42)
@@ -947,7 +947,7 @@ void UpdateSphealScoreAndDelivery(void)
     struct OamDataSimple *oamSimple;
 
     var0 = 0;
-    group = &gMain.spriteGroups[18];
+    group = &gMain.spriteGroups[SG_SPHEAL_NET];
     if (group->active)
     {
         group->baseX = 104 - gCurrentPinballGame->cameraXOffset;
@@ -955,18 +955,18 @@ void UpdateSphealScoreAndDelivery(void)
         if (gCurrentPinballGame->scoreCountdownTimer < 22)
             var0 = gSphealScoreDigitSpriteIndices[gCurrentPinballGame->scoreCountdownTimer];
 
-        DmaCopy16(3, gSphealScoreCounterDigitSprites[var0], (void *)0x06010920, 0x200);
+        DmaCopy16(3, gSphealNetGfx[var0], (void *)0x06010920, 0x200);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[11];
+    group = &gMain.spriteGroups[SG_SPHEAL_NET_FRONT];
     if (group->active)
     {
         group->baseX = 104 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 94 - gCurrentPinballGame->cameraYOffset;
-        DmaCopy16(3, gSphealExtendedScoreSprites[var0], (void *)0x06010B20, 0x180);
+        DmaCopy16(3, gSphealNetFrontGfx[var0], (void *)0x06010B20, 0x180);
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -976,16 +976,16 @@ void UpdateSphealScoreAndDelivery(void)
     }
 
     if (gCurrentPinballGame->boardState == SPHEAL_BOARD_STATE_ACTIVE_PHASE)
-        gMain.spriteGroups[11].active = TRUE;
+        gMain.spriteGroups[SG_SPHEAL_NET_FRONT].active = TRUE;
 
     if (gCurrentPinballGame->boardState < SPHEAL_BOARD_STATE_ENDING && gMain.modeChangeFlags == MODE_CHANGE_NONE && gCurrentPinballGame->scoreCountdownTimer)
     {
         if (gCurrentPinballGame->scoreCountdownTimer == 21)
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_138);
+            MPlayStart(&gMPlayInfo_SE1, &se_spheal_net_swoosh);
 
         gCurrentPinballGame->scoreCountdownTimer--;
         if (gCurrentPinballGame->scoreCountdownTimer == 0)
-            MPlayStart(&gMPlayInfo_SE1, &se_unk_139);
+            MPlayStart(&gMPlayInfo_SE1, &se_spheal_crowd_cheer);
     }
 
     if (gCurrentPinballGame->ballDeliveryActive)
@@ -1005,7 +1005,7 @@ void SphealBoard_WhiscashDeliversBall(void)
     const u16 *offsets;
     s16 var0;
 
-    group = &gMain.spriteGroups[19];
+    group = &gMain.spriteGroups[SG_SPHEAL_WHISCASH_ENTITY];
     if (group->active)
     {
         offsets = gSphealWhiscashAnimFrameset[gCurrentPinballGame->deliveryAnimFrameIndex];
@@ -1030,13 +1030,13 @@ void SphealBoard_WhiscashDeliversBall(void)
         gCurrentPinballGame->deliveryAnimTimer = 0;
         gCurrentPinballGame->deliveryAnimFrameIndex++;
         if (gCurrentPinballGame->deliveryAnimFrameIndex == 1)
-            gMain.spriteGroups[19].active = TRUE;
+            gMain.spriteGroups[SG_SPHEAL_WHISCASH_ENTITY].active = TRUE;
 
         if (gCurrentPinballGame->deliveryAnimFrameIndex == 19)
         {
             gCurrentPinballGame->deliveryAnimFrameIndex = 18;
-            gMain.spriteGroups[19].active = FALSE;
-            gCurrentPinballGame->ballDeliveryActive = 0;
+            gMain.spriteGroups[SG_SPHEAL_WHISCASH_ENTITY].active = FALSE;
+            gCurrentPinballGame->ballDeliveryActive = FALSE;
         }
 
         if (gCurrentPinballGame->deliveryAnimFrameIndex == 9)
@@ -1059,7 +1059,7 @@ void SphealBoard_WhiscashDeliversBall(void)
         if (gCurrentPinballGame->deliveryAnimFrameIndex == 8)
         {
             m4aSongNumStart(SE_WHISCASH_SPIT_BALL);
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->ball->spinAngle -= 0x40;
             gCurrentPinballGame->ball->positionQ8.x = 0x8F00;
             gCurrentPinballGame->ball->positionQ8.y = 0xC300;
@@ -1068,7 +1068,7 @@ void SphealBoard_WhiscashDeliversBall(void)
         }
 
         if (gCurrentPinballGame->deliveryAnimFrameIndex == 10)
-            gCurrentPinballGame->ballFrozenState = 0;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
     }
 }
 
@@ -1079,7 +1079,7 @@ void SphealBoard_PelipperDeliversBall(void)
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[20];
+    group = &gMain.spriteGroups[SG_SPHEAL_PELIPPER_ENTITY];
     if (group->active)
     {
         group->baseX = (gCurrentPinballGame->pelipperPosX / 10) - (gCurrentPinballGame->cameraXOffset - 146);
@@ -1105,8 +1105,8 @@ void SphealBoard_PelipperDeliversBall(void)
             gCurrentPinballGame->pelipperFrameTimer = 0;
             gCurrentPinballGame->pelipperState = 8;
             gCurrentPinballGame->deliveryAnimFrameIndex = 13;
-            gMain.spriteGroups[20].active = TRUE;
-            gCurrentPinballGame->boardEntityActive = 1;
+            gMain.spriteGroups[SG_SPHEAL_PELIPPER_ENTITY].active = TRUE;
+            gCurrentPinballGame->cameraLocked = TRUE;
         }
     }
     else
@@ -1114,7 +1114,7 @@ void SphealBoard_PelipperDeliversBall(void)
         gCurrentPinballGame->deliveryAnimFrameIndex = (gCurrentPinballGame->pelipperFrameTimer % 24) / 6 + 13;
         gCurrentPinballGame->pelipperYBobOffset = (Sin(gCurrentPinballGame->pelipperFrameTimer * 0x400) * 240) / 20000;
         if (gCurrentPinballGame->pelipperFrameTimer == 0)
-            m4aSongNumStart(SE_UNKNOWN_0xE4);
+            m4aSongNumStart(SE_PELIPPER_SWOOSH);
 
         if (gCurrentPinballGame->pelipperFrameTimer < 40)
         {
@@ -1123,12 +1123,12 @@ void SphealBoard_PelipperDeliversBall(void)
         }
         else
         {
-            gMain.spriteGroups[20].active = FALSE;
+            gMain.spriteGroups[SG_SPHEAL_PELIPPER_ENTITY].active = FALSE;
         }
 
         if (gCurrentPinballGame->pelipperFrameTimer == 13)
         {
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->pelipperBallDropVelX = -10;
             gCurrentPinballGame->pelipperBallDropVelY = -25;
             gCurrentPinballGame->pelipperBallDropPosX = ((gCurrentPinballGame->pelipperPosX / 10) + 157) * 10;
@@ -1136,7 +1136,7 @@ void SphealBoard_PelipperDeliversBall(void)
             gCurrentPinballGame->ball->oamPriority = 1;
         }
 
-        if (gCurrentPinballGame->ballFrozenState)
+        if (gCurrentPinballGame->ballPhysicsState != BALL_PHYSICS_NORMAL)
         {
             if (gCurrentPinballGame->pelipperFrameTimer < 13)
             {
@@ -1157,15 +1157,15 @@ void SphealBoard_PelipperDeliversBall(void)
                 if (gCurrentPinballGame->ball->positionQ0.y >= 181)
                 {
                     gCurrentPinballGame->ball->positionQ0.y = 181;
-                    gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
-                    gCurrentPinballGame->ballFrozenState = 0;
+                    gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
+                    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                     gCurrentPinballGame->ball->velocity.x = -10;
                     gCurrentPinballGame->ball->velocity.y = 0;
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                     gCurrentPinballGame->ball->oamPriority = 3;
                     gCurrentPinballGame->boardLayerDepth = 0;
-                    gCurrentPinballGame->ballDeliveryActive = 0;
-                    m4aSongNumStart(SE_UNKNOWN_0xE5);
+                    gCurrentPinballGame->ballDeliveryActive = FALSE;
+                    m4aSongNumStart(SE_PELIPPER_BALL_DROP_LANDS);
                     PlayRumble(7);
                 }
 
@@ -1221,7 +1221,7 @@ void UpdateSealeoKnockdownPhysics(void)
             if (i == 2)
             {
                 // Ball
-                gCurrentPinballGame->ballFrozenState = 1;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                 gCurrentPinballGame->ball->velocity.x += 5 - targetSealeoIx * 10;
             }
 
@@ -1268,7 +1268,7 @@ void UpdateSealeoKnockdownPhysics(void)
                     if (gCurrentPinballGame->sphealPositionQ8[i].y >= 0x6600)
                     {
                         gCurrentPinballGame->knockdownBounceCount[i]++;
-                        MPlayStart(&gMPlayInfo_SE1, &se_unk_13d);
+                        MPlayStart(&gMPlayInfo_SE1, &se_sealeo_nose_bounce);
                         if (gCurrentPinballGame->knockdownBounceCount[i] < 3)
                         {
                             gCurrentPinballGame->sphealPositionQ8[i].y = 0x6600;
@@ -1311,7 +1311,7 @@ void UpdateSealeoKnockdownPhysics(void)
                 if (gCurrentPinballGame->ball->positionQ8.y >= 0x6500)
                 {
                     gCurrentPinballGame->knockdownBounceCount[i]++;
-                    MPlayStart(&gMPlayInfo_SE1, &se_unk_13d);
+                    MPlayStart(&gMPlayInfo_SE1, &se_sealeo_nose_bounce);
                     PlayRumble(7);
                     if (gCurrentPinballGame->knockdownBounceCount[i] < 3)
                     {
@@ -1391,7 +1391,7 @@ void UpdateSealeoKnockdownPhysics(void)
                     {
                         gCurrentPinballGame->ball->velocity.y = 0;
                         gCurrentPinballGame->ball->velocity.x = 5 - targetSealeoIx * 10;
-                        gCurrentPinballGame->ballFrozenState = 0;
+                        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                         gCurrentPinballGame->knockdownPhase[i] = SPHEAL_KNOCKDOWN_PHASE_WAITING;
                     }
                 }
@@ -1451,7 +1451,7 @@ void UpdateSealeoKnockdownPhysics(void)
                     {
                         gCurrentPinballGame->ball->velocity.y = 0;
                         gCurrentPinballGame->ball->velocity.x = 5 - targetSealeoIx * 10;
-                        gCurrentPinballGame->ballFrozenState = 0;
+                        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                         gCurrentPinballGame->knockdownPhase[i] = SPHEAL_KNOCKDOWN_PHASE_WAITING;
                     }
                 }
@@ -1551,7 +1551,7 @@ void UpdateSphealResultsScreen(void)
 
     gCurrentPinballGame->resultsAnimTimer++;
 
-    group = &gMain.spriteGroups[7];
+    group = &gMain.spriteGroups[SG_SPHEAL_END_SCORE_PANEL];
     if (!group->active)
         return;
 
@@ -1602,7 +1602,7 @@ void UpdateSphealResultsScreen(void)
     sp18[10] = sp0[0] * 2 + 0x2D0;
     sp18[11] = sp0[1] * 2 + 0x2D0;
 
-    group = &gMain.spriteGroups[8];
+    group = &gMain.spriteGroups[SG_SPHEAL_END_SCORE_SPHEALS_SUNK];
     group->baseX = 120;
     group->baseY = 60 + gCurrentPinballGame->bannerSlideYOffset;
     for (i = 0; i < 12; i++)
@@ -1651,7 +1651,7 @@ void UpdateSphealResultsScreen(void)
     sp18[10] = sp0[0] * 2 + 0x2D0;
     sp18[11] = sp0[1] * 2 + 0x2D0;
 
-    group = &gMain.spriteGroups[9];
+    group = &gMain.spriteGroups[SG_SPHEAL_END_SCORE_BALLS_SUNK];
     group->baseX = 120;
     group->baseY = 60 + gCurrentPinballGame->bannerSlideYOffset;
     for (i = 0; i < 12; i++)
@@ -1699,7 +1699,7 @@ void UpdateSphealResultsScreen(void)
     sp0[0] = value;
     sp18[11] = sp0[0] * 2 + 0x2D0;
 
-    group = &gMain.spriteGroups[10];
+    group = &gMain.spriteGroups[SG_SPHEAL_END_SCORE_TOTAL];
     group->baseX = 120;
     group->baseY = 60 + gCurrentPinballGame->bannerSlideYOffset;
     for (i = 0; i < 12; i++)

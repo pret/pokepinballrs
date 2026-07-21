@@ -79,7 +79,7 @@ void LoadTitlescreenGraphics(void)
     autoDisplayMenu = gAutoDisplayTitlescreenMenu;
     if (autoDisplayMenu == TRUE)
     {
-        gTitleReturnedFromMenu = 0;
+        gTitleReturnedFromMenu = FALSE;
         gTitlescreen.pressStartAndFlippersVisible = FALSE;
         gTitlescreen.menuVisible = autoDisplayMenu;
         gMain.subState = SUBSTATE_3;
@@ -103,16 +103,16 @@ void InitTitlescreenStates(void)
     gTitlescreen.animTimer = 0;
     gTitlescreen.animPhase = 0;
     gTitlescreen.menuAction = 0;
-    gTitlescreen.pressStartAnimFrame = 0;
-    gTitlescreen.deleteSaveGroupId = 4;
+    gTitlescreen.pressStartAnimSpriteGroupId = SG_TITLE_SCREEN_FLIPPER_AND_START_BASE;
+    gTitlescreen.deleteSaveSpriteGroupId = SG_DELETE_SAVE_CONFIRMATION_PANE;
     gTitlescreen.pressStartAndFlippersVisible = TRUE;
     gTitlescreen.deleteSaveWindowVisible = FALSE;
-    gTitlescreen.menuSpriteGroupId = 6;
-    gTitlescreen.cursorSpriteGroupId = 0;
-    gTitlescreen.selectorSpriteGroupId = 3;
+    gTitlescreen.menuSpriteGroupId = SG_MENU_PANEL;
+    gTitlescreen.titleScreenLeftFlipperSpriteGroup = SG_TITLE_SCREEN_LEFT_FLIPPER_BASE;
+    gTitlescreen.titleScreenRightFlipperSpriteGroup = SG_TITLE_SCREEN_RIGHT_FLIPPER_BASE;
     gTitlescreen.menuVisible = FALSE;
-    gTitlescreen.cursorArrowVisible = 0;
-    gTitlescreen.selectorVisible = 0;
+    gTitlescreen.leftFlipperCursorVisible = FALSE;
+    gTitlescreen.rightFlipperCursorVisible = FALSE;
     gHighScoreEntrySource = 1;
     gEraseSaveDataAccessStep = 0;
     gEraseSaveDataAccessCounter = 0;
@@ -125,7 +125,7 @@ void InitTitlescreenStates(void)
             gTitleSavedMenuSpriteSets[i] = gTitleSavedDefaultSprites[i];
 
         gTitlescreen.menuCursorIndex = 1;
-        gTitlescreen.hasSavedGame = 1;
+        gTitlescreen.hasSavedGame = TRUE;
     }
     else
     {
@@ -133,19 +133,19 @@ void InitTitlescreenStates(void)
             gTitleNoSaveMenuSpriteSets[i] = gTitleNoSaveDefaultSprites[i];
 
         gTitlescreen.menuCursorIndex = 0;
-        gTitlescreen.hasSavedGame = 0;
-        gMain.continueFromSave = 0;
+        gTitlescreen.hasSavedGame = FALSE;
+        gMain.continueFromSave = FALSE;
     }
 
     gTitlescreen.idleFramesCounter = 0;
     gTitlescreen.idleFadeoutCounter = 1;
-    gTitleTransitionActive = 0;
+    gTitleTransitionActive = FALSE;
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
-        gTitleRestartDebounce = 1;
+        gTitleRestartDebounce = TRUE;
     else
-        gTitleRestartDebounce = 0;
+        gTitleRestartDebounce = FALSE;
 
-    gTitleReturnedFromMenu = 0;
+    gTitleReturnedFromMenu = FALSE;
 }
 
 void TitleScreen1_WaitForStartButton(void)
@@ -154,24 +154,24 @@ void TitleScreen1_WaitForStartButton(void)
     {
         if (!gTitleRestartDebounce)
         {
-            gTitleTransitionActive = 1;
+            gTitleTransitionActive = TRUE;
             gTitlescreen.menuAction = 9;
             gMain.subState = SUBSTATE_11;
         }
     }
     else
     {
-        gTitleRestartDebounce = 0;
+        gTitleRestartDebounce = FALSE;
     }
 
     if (!gTitleTransitionActive)
     {
         gTitlescreen.animTimer++;
-        if (gTitlescreen.animTimer >= gTitlePressStartAnimDurations[gTitlescreen.pressStartAnimFrame])
+        if (gTitlescreen.animTimer >= gTitlePressStartAnimDurations[gTitlescreen.pressStartAnimSpriteGroupId])
         {
             gTitlescreen.animTimer = 0;
-            if (++gTitlescreen.pressStartAnimFrame > 3)
-                gTitlescreen.pressStartAnimFrame = 0;
+            if (++gTitlescreen.pressStartAnimSpriteGroupId > SG_TITLE_SCREEN_FLIPPER_AND_START_ANIM_MAX)
+                gTitlescreen.pressStartAnimSpriteGroupId = SG_TITLE_SCREEN_FLIPPER_AND_START_BASE;
         }
 
         if (JOY_HELD(KEYS_MASK))
@@ -213,7 +213,7 @@ void TitleScreen2_AnimOpenMenu(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -224,11 +224,11 @@ void TitleScreen2_AnimOpenMenu(void)
         if (gTitlescreen.animTimer >= gTitleMenuSlideInAnimData[gTitlescreen.animPhase][1])
         {
             gTitlescreen.animTimer = 0;
-            gTitlescreen.pressStartAnimFrame = gTitleMenuSlideInAnimData[gTitlescreen.animPhase][0];
+            gTitlescreen.pressStartAnimSpriteGroupId = gTitleMenuSlideInAnimData[gTitlescreen.animPhase][0];
             if (++gTitlescreen.animPhase > 5)
             {
                 gTitlescreen.animPhase = 0;
-                gTitleReturnedFromMenu = 0;
+                gTitleReturnedFromMenu = FALSE;
                 gTitlescreen.pressStartAndFlippersVisible = FALSE;
                 gTitlescreen.menuVisible = TRUE;
                 gMain.subState = SUBSTATE_3;
@@ -243,7 +243,7 @@ void TitleScreen9_DeleteSaveConfirmation(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
     }
@@ -274,7 +274,7 @@ void TitleScreen3_8010E00(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -292,8 +292,8 @@ void TitleScreen3_8010E00(void)
             if (++gTitlescreen.animPhase > 11)
             {
                 gTitlescreen.animPhase = 0;
-                gTitlescreen.cursorArrowVisible = 1;
-                gTitlescreen.selectorVisible = 1;
+                gTitlescreen.leftFlipperCursorVisible = TRUE;
+                gTitlescreen.rightFlipperCursorVisible = TRUE;
                 gMain.subState = SUBSTATE_MENU_INPUT_NO_SAVED_GAME;
             }
         }
@@ -310,8 +310,8 @@ void TitleScreen3_8010E00(void)
             if (++gTitlescreen.animPhase > 11)
             {
                 gTitlescreen.animPhase = 0;
-                gTitlescreen.cursorArrowVisible = 1;
-                gTitlescreen.selectorVisible = 1;
+                gTitlescreen.leftFlipperCursorVisible = TRUE;
+                gTitlescreen.rightFlipperCursorVisible = TRUE;
                 gMain.subState = SUBSTATE_MENU_INPUT_SAVED_GAME;
             }
         }
@@ -324,7 +324,7 @@ void TitleScreen4_MenuInputNoSavedGame(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
     }
@@ -332,14 +332,14 @@ void TitleScreen4_MenuInputNoSavedGame(void)
     if (!gTitleTransitionActive)
     {
         gTitlescreen.animTimer++;
-        if (gTitlescreen.animTimer >= gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][1])
+        if (gTitlescreen.animTimer >= gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][1])
         {
             gTitlescreen.animTimer = 0;
             if (++gTitlescreen.animPhase > 6)
                 gTitlescreen.animPhase = 0;
 
-            gTitlescreen.cursorSpriteGroupId = gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][0];
-            gTitlescreen.selectorSpriteGroupId = gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][0] + 3;
+            gTitlescreen.titleScreenLeftFlipperSpriteGroup = gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][0];
+            gTitlescreen.titleScreenRightFlipperSpriteGroup = gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][0] + 3;
         }
 
         if (JOY_NEW(DPAD_UP))
@@ -367,8 +367,8 @@ void TitleScreen4_MenuInputNoSavedGame(void)
             m4aSongNumStart(SE_MENU_CANCEL);
             gTitlescreen.animTimer = 0;
             gTitlescreen.animPhase = 12;
-            gTitlescreen.cursorArrowVisible = 0;
-            gTitlescreen.selectorVisible = 0;
+            gTitlescreen.leftFlipperCursorVisible = FALSE;
+            gTitlescreen.rightFlipperCursorVisible = FALSE;
             gMain.subState = SUBSTATE_ANIM_CLOSE_MENU;
         }
 
@@ -382,7 +382,7 @@ void TitleScreen7_8011020(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -408,7 +408,7 @@ void TitleScreen7_8011020(void)
 
         if (gTitlescreen.animTimer > 20)
         {
-            gMain.continueFromSave = 0;
+            gMain.continueFromSave = FALSE;
             gTitlescreen.menuAction = gTitleNoSaveMenuActions[gTitlescreen.menuCursorIndex];
             gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
         }
@@ -423,7 +423,7 @@ void TitleScreen5_MenuInputSavedGame(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
     }
@@ -431,14 +431,14 @@ void TitleScreen5_MenuInputSavedGame(void)
     if (!gTitleTransitionActive)
     {
         gTitlescreen.animTimer++;
-        if (gTitlescreen.animTimer >= gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][1])
+        if (gTitlescreen.animTimer >= gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][1])
         {
             gTitlescreen.animTimer = 0;
             if (++gTitlescreen.animPhase > 6)
                 gTitlescreen.animPhase = 0;
 
-            gTitlescreen.cursorSpriteGroupId = gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][0];
-            gTitlescreen.selectorSpriteGroupId = gTitleMenuSlideOutAnimData[gTitlescreen.animPhase][0] + 3;
+            gTitlescreen.titleScreenLeftFlipperSpriteGroup = gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][0];
+            gTitlescreen.titleScreenRightFlipperSpriteGroup = gTitleMenuSlideOutAnimSpriteGroupData[gTitlescreen.animPhase][0] + 3;
         }
 
         if (JOY_NEW(DPAD_UP))
@@ -466,8 +466,8 @@ void TitleScreen5_MenuInputSavedGame(void)
             m4aSongNumStart(SE_MENU_CANCEL);
             gTitlescreen.animTimer = 0;
             gTitlescreen.animPhase = 12;
-            gTitlescreen.cursorArrowVisible = 0;
-            gTitlescreen.selectorVisible = 0;
+            gTitlescreen.leftFlipperCursorVisible = FALSE;
+            gTitlescreen.rightFlipperCursorVisible = FALSE;
             gMain.subState = SUBSTATE_ANIM_CLOSE_MENU;
         }
 
@@ -481,7 +481,7 @@ void TitleScreen8_8011228(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -510,9 +510,9 @@ void TitleScreen8_8011228(void)
         if (gTitlescreen.animTimer > 20)
         {
             if (gTitlescreen.menuCursorIndex == 1)
-                gMain.continueFromSave = 1;
+                gMain.continueFromSave = TRUE;
             else
-                gMain.continueFromSave = 0;
+                gMain.continueFromSave = FALSE;
 
             gTitlescreen.menuAction = gTitleSavedMenuActions[gTitlescreen.menuCursorIndex];
             gMain.subState = SUBSTATE_EXEC_MENU_SELECTION;
@@ -528,7 +528,7 @@ void TitleScreen6_AnimCloseMenu(void)
 {
     if (JOY_HELD(RESTART_GAME_BUTTONS) == RESTART_GAME_BUTTONS)
     {
-        gTitleTransitionActive = 1;
+        gTitleTransitionActive = TRUE;
         gTitlescreen.menuAction = 9;
         gMain.subState = SUBSTATE_11;
     }
@@ -546,7 +546,7 @@ void TitleScreen6_AnimCloseMenu(void)
             {
                 gTitlescreen.animPhase = 0;
                 gTitlescreen.menuCursorIndex = 0;
-                gTitleReturnedFromMenu = 1;
+                gTitleReturnedFromMenu = TRUE;
                 gTitlescreen.pressStartAndFlippersVisible = TRUE;
                 gTitlescreen.menuVisible = FALSE;
                 gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
@@ -567,7 +567,7 @@ void TitleScreen6_AnimCloseMenu(void)
             {
                 gTitlescreen.animPhase = 0;
                 gTitlescreen.menuCursorIndex = 1;
-                gTitleReturnedFromMenu = 1;
+                gTitleReturnedFromMenu = TRUE;
                 gTitlescreen.pressStartAndFlippersVisible = TRUE;
                 gTitlescreen.menuVisible = FALSE;
                 gMain.subState = SUBSTATE_WAIT_FOR_START_BUTTON;
@@ -676,19 +676,19 @@ static void RenderTitlePressStartSprites(void)
 {
     int i;
     const struct SpriteSet *spriteSet;
-    struct SpriteGroup *startAndFlippersGroup = &gMain_spriteGroups[gTitlescreen.pressStartAnimFrame];
-    struct SpriteGroup *deleteMenuGroup = &gMain_spriteGroups[gTitlescreen.deleteSaveGroupId];
+    struct SpriteGroup *startAndFlippersGroup = &gMain.spriteGroups[gTitlescreen.pressStartAnimSpriteGroupId];
+    struct SpriteGroup *deleteMenuGroup = &gMain.spriteGroups[gTitlescreen.deleteSaveSpriteGroupId];
 
     startAndFlippersGroup->active = gTitlescreen.pressStartAndFlippersVisible;
     deleteMenuGroup->active = gTitlescreen.deleteSaveWindowVisible;
 
-    LoadSpriteSets(gTitlePressStartSpriteSets, 5, gMain_spriteGroups);
+    LoadSpriteSets(gTitlePressStartSpriteSets, 5, gMain.spriteGroups);
 
     if (startAndFlippersGroup->active == TRUE)
     {
         startAndFlippersGroup->baseX = 120;
         startAndFlippersGroup->baseY = 102;
-        spriteSet = gTitlePressStartSpriteSets[gTitlescreen.pressStartAnimFrame];
+        spriteSet = gTitlePressStartSpriteSets[gTitlescreen.pressStartAnimSpriteGroupId];
         for (i = 0; i < spriteSet->count; i++)
         {
             gOamBuffer[startAndFlippersGroup->oam[i].oamId].x = startAndFlippersGroup->oam[i].xOffset + startAndFlippersGroup->baseX;
@@ -723,9 +723,9 @@ struct UnknownStruct1
 
 void RenderTitleMenuNoSavedGame(void)
 {
-    struct SpriteGroup *menuSpriteGroup;
-    struct SpriteGroup *r9;
-    struct SpriteGroup *r8;
+    struct SpriteGroup *menuPanel_SG;
+    struct SpriteGroup *leftFlipper_SG;
+    struct SpriteGroup *rightFlipper_SG;
     const struct UnknownStruct1 *r12;
     int sp0;
 
@@ -734,69 +734,69 @@ void RenderTitleMenuNoSavedGame(void)
     REG_BLDCNT = gMain.blendControl;
     REG_BLDALPHA = gMain.blendAlpha;
 
-    menuSpriteGroup = &gMain.spriteGroups[gTitlescreen.menuSpriteGroupId];
-    r9 = &gMain.spriteGroups[gTitlescreen.cursorSpriteGroupId];
-    r8 = &gMain.spriteGroups[gTitlescreen.selectorSpriteGroupId];
+    menuPanel_SG = &gMain.spriteGroups[gTitlescreen.menuSpriteGroupId];
+    leftFlipper_SG = &gMain.spriteGroups[gTitlescreen.titleScreenLeftFlipperSpriteGroup];
+    rightFlipper_SG = &gMain.spriteGroups[gTitlescreen.titleScreenRightFlipperSpriteGroup];
 
-    menuSpriteGroup->active = gTitlescreen.menuVisible;
-    r9->active = gTitlescreen.cursorArrowVisible;
-    r8->active = gTitlescreen.selectorVisible;
+    menuPanel_SG->active = gTitlescreen.menuVisible;
+    leftFlipper_SG->active = gTitlescreen.leftFlipperCursorVisible;
+    rightFlipper_SG->active = gTitlescreen.rightFlipperCursorVisible;
 
     LoadSpriteSets((const struct SpriteSet *const *)gTitleNoSaveMenuSpriteSets, 7, gMain.spriteGroups);
 
-    if (menuSpriteGroup->active == TRUE)
+    if (menuPanel_SG->active == TRUE)
     {
-        menuSpriteGroup->baseX = 0x78;
-        menuSpriteGroup->baseY = 0x66;
+        menuPanel_SG->baseX = 0x78;
+        menuPanel_SG->baseY = 0x66;
         r12 = (const struct UnknownStruct1 *)gTitleNoSaveMenuSpriteSets[6];
         for (sp0 = 0; sp0 < r12->count; sp0++)
         {
-            struct OamDataSimple *r4 = &menuSpriteGroup->oam[sp0];
+            struct OamDataSimple *r4 = &menuPanel_SG->oam[sp0];
             if (r12[sp0 + 1].count == 1)  // dunno. wtf?
-                gOamBuffer[r4->oamId].objMode = 1;
+                gOamBuffer[r4->oamId].objMode = ST_OAM_OBJ_BLEND;
             else
-                gOamBuffer[r4->oamId].objMode = 0;
-            gOamBuffer[r4->oamId].x = r4->xOffset + menuSpriteGroup->baseX;
-            gOamBuffer[r4->oamId].y = r4->yOffset + menuSpriteGroup->baseY;
+                gOamBuffer[r4->oamId].objMode = ST_OAM_OBJ_NORMAL;
+            gOamBuffer[r4->oamId].x = r4->xOffset + menuPanel_SG->baseX;
+            gOamBuffer[r4->oamId].y = r4->yOffset + menuPanel_SG->baseY;
         }
     }
 
-    if (r9->active == TRUE)
+    if (leftFlipper_SG->active == TRUE)
     {
         struct OamDataSimple *r5;
 
-        r9->baseX = gTitleNoSaveArrowPositions[gTitlescreen.menuCursorIndex].x;
-        r9->baseY = gTitleNoSaveArrowPositions[gTitlescreen.menuCursorIndex].y;
+        leftFlipper_SG->baseX = gTitleNoSaveArrowPositions[gTitlescreen.menuCursorIndex].x;
+        leftFlipper_SG->baseY = gTitleNoSaveArrowPositions[gTitlescreen.menuCursorIndex].y;
 
-        r5 = &r9->oam[0];
+        r5 = &leftFlipper_SG->oam[0];
 
-        gOamBuffer[r5->oamId].x = r5->xOffset + r9->baseX;
-        gOamBuffer[r5->oamId].y = r5->yOffset + r9->baseY;
+        gOamBuffer[r5->oamId].x = r5->xOffset + leftFlipper_SG->baseX;
+        gOamBuffer[r5->oamId].y = r5->yOffset + leftFlipper_SG->baseY;
     }
 
-    if (r8->active == TRUE)
+    if (rightFlipper_SG->active == TRUE)
     {
         struct OamDataSimple *r5;
 
-        r8->baseX = gTitleNoSaveSelectorPositions[gTitlescreen.menuCursorIndex].x;
-        r8->baseY = gTitleNoSaveSelectorPositions[gTitlescreen.menuCursorIndex].y;
+        rightFlipper_SG->baseX = gTitleNoSaveSelectorPositions[gTitlescreen.menuCursorIndex].x;
+        rightFlipper_SG->baseY = gTitleNoSaveSelectorPositions[gTitlescreen.menuCursorIndex].y;
 
-        r5 = &r8->oam[0];
+        r5 = &rightFlipper_SG->oam[0];
 
-        gOamBuffer[r5->oamId].x = r5->xOffset + r8->baseX;
-        gOamBuffer[r5->oamId].y = r5->yOffset + r8->baseY;
+        gOamBuffer[r5->oamId].x = r5->xOffset + rightFlipper_SG->baseX;
+        gOamBuffer[r5->oamId].y = r5->yOffset + rightFlipper_SG->baseY;
     }
 
-    menuSpriteGroup->active = FALSE;
-    r9->active = FALSE;
-    r8->active = FALSE;
+    menuPanel_SG->active = FALSE;
+    leftFlipper_SG->active = FALSE;
+    rightFlipper_SG->active = FALSE;
 }
 
 void RenderTitleMenuSavedGame(void)
 {
-    struct SpriteGroup *r10;
-    struct SpriteGroup *r9;
-    struct SpriteGroup *r8;
+    struct SpriteGroup *menuPanel_SG;
+    struct SpriteGroup *leftFlipper_SG;
+    struct SpriteGroup *rightFlipper_SG;
     const struct UnknownStruct1 *r12;
     int sp0;
 
@@ -805,62 +805,62 @@ void RenderTitleMenuSavedGame(void)
     REG_BLDCNT = gMain.blendControl;
     REG_BLDALPHA = gMain.blendAlpha;
 
-    r10 = &gMain.spriteGroups[gTitlescreen.menuSpriteGroupId];
-    r9 = &gMain.spriteGroups[gTitlescreen.cursorSpriteGroupId];
-    r8 = &gMain.spriteGroups[gTitlescreen.selectorSpriteGroupId];
+    menuPanel_SG = &gMain.spriteGroups[gTitlescreen.menuSpriteGroupId];
+    leftFlipper_SG = &gMain.spriteGroups[gTitlescreen.titleScreenLeftFlipperSpriteGroup];
+    rightFlipper_SG = &gMain.spriteGroups[gTitlescreen.titleScreenRightFlipperSpriteGroup];
 
-    r10->active = gTitlescreen.menuVisible;
-    r9->active = gTitlescreen.cursorArrowVisible;
-    r8->active = gTitlescreen.selectorVisible;
+    menuPanel_SG->active = gTitlescreen.menuVisible;
+    leftFlipper_SG->active = gTitlescreen.leftFlipperCursorVisible;
+    rightFlipper_SG->active = gTitlescreen.rightFlipperCursorVisible;
 
     LoadSpriteSets((const struct SpriteSet *const *)gTitleSavedMenuSpriteSets, 7, gMain.spriteGroups);
 
-    if (r10->active == TRUE)
+    if (menuPanel_SG->active == TRUE)
     {
-        r10->baseX = 0x78;
-        r10->baseY = 0x66;
+        menuPanel_SG->baseX = 0x78;
+        menuPanel_SG->baseY = 0x66;
         r12 = (const struct UnknownStruct1 *)gTitleSavedMenuSpriteSets[6];
         for (sp0 = 0; sp0 < r12->count; sp0++)
         {
-            struct OamDataSimple *r4 = &r10->oam[sp0];
+            struct OamDataSimple *r4 = &menuPanel_SG->oam[sp0];
             if (r12[sp0 + 1].count == 1)  // dunno. wtf?
-                gOamBuffer[r4->oamId].objMode = 1;
+                gOamBuffer[r4->oamId].objMode = ST_OAM_OBJ_BLEND;
             else
-                gOamBuffer[r4->oamId].objMode = 0;
-            gOamBuffer[r4->oamId].x = r4->xOffset + r10->baseX;
-            gOamBuffer[r4->oamId].y = r4->yOffset + r10->baseY;
+                gOamBuffer[r4->oamId].objMode = ST_OAM_OBJ_NORMAL;
+            gOamBuffer[r4->oamId].x = r4->xOffset + menuPanel_SG->baseX;
+            gOamBuffer[r4->oamId].y = r4->yOffset + menuPanel_SG->baseY;
         }
     }
 
-    if (r9->active == TRUE)
+    if (leftFlipper_SG->active == TRUE)
     {
         struct OamDataSimple *r5;
 
-        r9->baseX = gTitleSavedArrowPositions[gTitlescreen.menuCursorIndex].x;
-        r9->baseY = gTitleSavedArrowPositions[gTitlescreen.menuCursorIndex].y;
+        leftFlipper_SG->baseX = gTitleSavedArrowPositions[gTitlescreen.menuCursorIndex].x;
+        leftFlipper_SG->baseY = gTitleSavedArrowPositions[gTitlescreen.menuCursorIndex].y;
 
-        r5 = &r9->oam[0];
+        r5 = &leftFlipper_SG->oam[0];
 
-        gOamBuffer[r5->oamId].x = r5->xOffset + r9->baseX;
-        gOamBuffer[r5->oamId].y = r5->yOffset + r9->baseY;
+        gOamBuffer[r5->oamId].x = r5->xOffset + leftFlipper_SG->baseX;
+        gOamBuffer[r5->oamId].y = r5->yOffset + leftFlipper_SG->baseY;
     }
 
-    if (r8->active == TRUE)
+    if (rightFlipper_SG->active == TRUE)
     {
         struct OamDataSimple *r5;
 
-        r8->baseX = gTitleSavedSelectorPositions[gTitlescreen.menuCursorIndex].x;
-        r8->baseY = gTitleSavedSelectorPositions[gTitlescreen.menuCursorIndex].y;
+        rightFlipper_SG->baseX = gTitleSavedSelectorPositions[gTitlescreen.menuCursorIndex].x;
+        rightFlipper_SG->baseY = gTitleSavedSelectorPositions[gTitlescreen.menuCursorIndex].y;
 
-        r5 = &r8->oam[0];
+        r5 = &rightFlipper_SG->oam[0];
 
-        gOamBuffer[r5->oamId].x = r5->xOffset + r8->baseX;
-        gOamBuffer[r5->oamId].y = r5->yOffset + r8->baseY;
+        gOamBuffer[r5->oamId].x = r5->xOffset + rightFlipper_SG->baseX;
+        gOamBuffer[r5->oamId].y = r5->yOffset + rightFlipper_SG->baseY;
     }
 
-    r10->active = FALSE;
-    r9->active = FALSE;
-    r8->active = FALSE;
+    menuPanel_SG->active = FALSE;
+    leftFlipper_SG->active = FALSE;
+    rightFlipper_SG->active = FALSE;
 }
 
 void DeleteSaveFile(void)

@@ -155,7 +155,7 @@ static void InitMainState(void)
     gMain.systemFrameCount = 0;
     gMain.idleDemoVariant = 0;
     gMain.vCount = 144;
-    gMain.scoreOverlayActive = 0;
+    gMain.scoreOverlayActive = FALSE;
     ClearHighScoreNameEntry();
     ResetDisplayState();
 }

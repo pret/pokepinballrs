@@ -68,11 +68,11 @@ void InitSharpedoCatchMode(void)
     }
 
     gCurrentPinballGame->cameraScrollOffset = 0;
-    gCurrentPinballGame->cameraScrollEnabled = 0;
+    gCurrentPinballGame->cameraScrollEnabled = FALSE;
     gCurrentPinballGame->cameraScrollTarget = 0;
     gCurrentPinballGame->modeAnimTimer = 113;
 
-    m4aSongNumStart(SE_UNKNOWN_0xCE);
+    m4aSongNumStart(SE_SHARPEDO_BITE);
     gCurrentPinballGame->scoreAddedInFrame = 50000;
 
     PlayRumble(8);
@@ -95,8 +95,8 @@ void AnimateSharpedoCatchSequence(void)
         gCurrentPinballGame->modeAnimTimer--;
         if (gCurrentPinballGame->modeAnimTimer > 100)
         {
-            gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
-            gCurrentPinballGame->ballFrozenState = 1;
+            gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
 
             gCurrentPinballGame->ball->velocity.x = 0;
             gCurrentPinballGame->ball->velocity.y = 0;
@@ -104,7 +104,7 @@ void AnimateSharpedoCatchSequence(void)
 
             if (gCurrentPinballGame->modeAnimTimer > 108)
             {
-                gCurrentPinballGame->boardEntityActive = 1;
+                gCurrentPinballGame->cameraLocked = TRUE;
 
                 if (gCurrentPinballGame->modeAnimTimer > 110)
                 {
@@ -128,7 +128,7 @@ void AnimateSharpedoCatchSequence(void)
             }
             else
             {
-                gCurrentPinballGame->ball->ballHidden = 1;
+                gCurrentPinballGame->ball->ballHidden = TRUE;
                 gCurrentPinballGame->catchHoleAnimFrame = 8;
             }
         }
@@ -179,15 +179,15 @@ void AnimateSharpedoCatchSequence(void)
         {
             gCurrentPinballGame->ball->positionQ0.x = 193;
             gCurrentPinballGame->ball->positionQ0.y = 226;
-            gCurrentPinballGame->ball->ballHidden = 0;
+            gCurrentPinballGame->ball->ballHidden = FALSE;
             gCurrentPinballGame->catchHoleAnimFrame = 17;
         }
         else if (gCurrentPinballGame->modeAnimTimer > 16)
         {
-            gCurrentPinballGame->ballFrozenState = 0;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
             gCurrentPinballGame->cameraScrollTarget = 0;
-            gCurrentPinballGame->cameraScrollEnabled = 1;
-            gCurrentPinballGame->boardEntityActive = 0;
+            gCurrentPinballGame->cameraScrollEnabled = TRUE;
+            gCurrentPinballGame->cameraLocked = FALSE;
             gCurrentPinballGame->ball->spinSpeed = 0;
             gCurrentPinballGame->ball->velocity.x = 0xFF56;
             gCurrentPinballGame->ball->velocity.y = 220;
@@ -196,7 +196,7 @@ void AnimateSharpedoCatchSequence(void)
             gCurrentPinballGame->catchHoleAnimFrame = 18;
             if (gCurrentPinballGame->modeAnimTimer == 18)
             {
-                m4aSongNumStart(194);
+                m4aSongNumStart(SE_SHARPEDO_BALL_EJECT);
                 PlayRumble(7);
             }
         }
@@ -233,7 +233,7 @@ void AnimateSharpedoCatchSequence(void)
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
         gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         gCurrentPinballGame->catchHoleAnimFrame = 0;
     }
 }
@@ -244,7 +244,7 @@ void InitRubyEggHatchMode(void)
     if (gCurrentPinballGame->eggCaveState == 3)
     {
         gCurrentPinballGame->eggCaveState = 4;
-        m4aSongNumStart(SE_UNKNOWN_0xB7);
+        m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
         PlayRumble(7);
         gCurrentPinballGame->modeAnimTimer = 500;
     }
@@ -257,7 +257,7 @@ void InitRubyEggHatchMode(void)
         gCurrentPinballGame->modeAnimTimer = 120;
     }
 
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+    gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 }
 
 void AnimateRubyEggHatchSequence(void)
@@ -266,8 +266,8 @@ void AnimateRubyEggHatchSequence(void)
 
     if (modeAnimTimer != 0)
     {
-        gCurrentPinballGame->ball->ballHidden = 1;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->modeAnimTimer--;
 
         gCurrentPinballGame->ball->velocity.x = 0;
@@ -307,7 +307,7 @@ void AnimateRubyEggHatchSequence(void)
     }
     else
     {
-        gCurrentPinballGame->ball->ballHidden = 0;
+        gCurrentPinballGame->ball->ballHidden = FALSE;
         gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
 
         gCurrentPinballGame->ball->positionQ0.x = 0x58;
@@ -315,7 +315,7 @@ void AnimateRubyEggHatchSequence(void)
         gCurrentPinballGame->ball->spinSpeed = 0;
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
         gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
 
         if (gCurrentPinballGame->rubyEggDeliveryState == 2)
         {
@@ -325,7 +325,7 @@ void AnimateRubyEggHatchSequence(void)
         }
         else
         {
-            gCurrentPinballGame->ballFrozenState = 0;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
             gCurrentPinballGame->collisionCooldownTimer = 0x3C;
             gCurrentPinballGame->ball->velocity.x = 0x14;
             gCurrentPinballGame->ball->velocity.y = 0xC8;
@@ -342,7 +342,7 @@ void InitRubyEvolutionShopMode(void)
     gCurrentPinballGame->scoreAddedInFrame = 500000;
     gMain.blendControl = 0xCE;
     gMain.blendBrightness = 0;
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
+    gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 }
 
 void AnimateRubyEvolutionShopSequence(void)
@@ -350,8 +350,8 @@ void AnimateRubyEvolutionShopSequence(void)
 
     if (gCurrentPinballGame->modeAnimTimer > 0x18)
     {
-        gCurrentPinballGame->ball->ballHidden = 1;
-        gCurrentPinballGame->ballFrozenState = 1;
+        gCurrentPinballGame->ball->ballHidden = TRUE;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
         gCurrentPinballGame->modeAnimTimer--;
         gCurrentPinballGame->ball->velocity.x = 0;
         gCurrentPinballGame->ball->velocity.y = 0;
@@ -378,8 +378,8 @@ void AnimateRubyEvolutionShopSequence(void)
         return;
     }
 
-    gCurrentPinballGame->ball->ballHidden = 0;
-    gCurrentPinballGame->ballFrozenState = 0;
+    gCurrentPinballGame->ball->ballHidden = FALSE;
+    gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
     gCurrentPinballGame->collisionCooldownTimer = 0x3C;
 
     gCurrentPinballGame->ball->velocity.x = 0x60;
@@ -388,13 +388,13 @@ void AnimateRubyEvolutionShopSequence(void)
     gCurrentPinballGame->ball->positionQ0.y = 0x63;
 
     gCurrentPinballGame->ball->spinSpeed = 0;
-    gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+    gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
     gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
     gCurrentPinballGame->ball->positionQ1.y = gCurrentPinballGame->ball->positionQ0.y * 2;
     gCurrentPinballGame->ballCatchState = NOT_TRAPPED;
     gCurrentPinballGame->shopDoorTargetFrame = 0x13;
 
-    m4aSongNumStart(SE_UNKNOWN_0xC3);
+    m4aSongNumStart(SE_SHOP_EJECT);
 
     if (gCurrentPinballGame->evoArrowProgress > 2 && gCurrentPinballGame->evolvablePartySize > 0)
     {

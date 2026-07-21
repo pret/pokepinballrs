@@ -8,7 +8,7 @@ extern const struct BoardCollisionDataSet gBoardCollisionDataSets[][2];
 extern u8 gBoardBGTileBufferAlt[];
 extern u8 gBoardGfxBuffer[];
 
-extern const u16 gFlipperCollisionData[];
+extern const u16 gFlipperCollisionData[11][0x2400]; // 96 x 96 pixel area
 extern const u8 gRubyBoardBG0Tilemap[];
 extern const u8 gRubyBoardPalette[];
 extern const u8 gRubyBoardBG1Tilemap[];

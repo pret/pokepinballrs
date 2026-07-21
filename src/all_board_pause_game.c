@@ -30,7 +30,7 @@ void PauseGame(void)
     }
 
     m4aMPlayAllStop();
-    m4aSongNumStart(SE_UNKNOWN_0xA5);
+    m4aSongNumStart(SE_PAUSING);
     if (gMain.selectedField < MAIN_FIELD_COUNT)
     {
         gCurrentPinballGame->hudSpriteBaseY = gCurrentPinballGame->cameraYViewport;
@@ -68,7 +68,7 @@ void PauseGame(void)
     if (gMain.selectedField < MAIN_FIELD_COUNT)
         ClampPortraitSpritesToOffscreen();
     else if (gMain.selectedField == FIELD_DUSCLOPS)
-        RenderBonusStageOverlaySprites();
+        HideDusclopsSprites();
     else if (gMain.selectedField == FIELD_KYOGRE)
         HideKyogreSplashSprite();
     else if (gMain.selectedField == FIELD_GROUDON)
@@ -90,7 +90,7 @@ void UnpauseGame(void)
     if (gCurrentPinballGame->savedBgmSongHeader)
         m4aMPlayContinue(&gMPlayInfo_BGM);
 
-    m4aSongNumStart(SE_UNKNOWN_0xA6);
+    m4aSongNumStart(SE_UNPAUSING);
     SetRumblePaused(0);
 }
 
@@ -100,7 +100,7 @@ void PositionPauseMenuSprites(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
 
-    group = &gMain.spriteGroups[0];
+    group = &gMain.spriteGroups[SG_PAUSE_PANEL];
     oamSimple = &group->oam[0];
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset;
@@ -125,7 +125,7 @@ void PositionPauseMenuSprites(void)
         gOamBuffer[oamSimple->oamId].matrixNum = 0;
     }
 
-    group = &gMain.spriteGroups[1];
+    group = &gMain.spriteGroups[SG_PAUSE_TOP_BORDER];
     for (i = 0; i < 2; i++)
     {
         oamSimple = &group->oam[i];
@@ -133,7 +133,7 @@ void PositionPauseMenuSprites(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset;
     }
 
-    group = &gMain.spriteGroups[2];
+    group = &gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER];
     for (i = 0; i < 3; i++)
     {
         oamSimple = &group->oam[i];
@@ -158,7 +158,7 @@ void AnimatePauseMenuOverlay(void)
     {
         gMain.blendControl = 0xCF;
         gMain.blendBrightness = 0xA;
-        gMain.scoreOverlayActive = 0;
+        gMain.scoreOverlayActive = FALSE;
         gMain.vCount = 144;
     }
 
@@ -226,7 +226,7 @@ void AnimatePauseMenuOverlay(void)
         yScale = 256;
     }
 
-    group = &gMain.spriteGroups[0];
+    group = &gMain.spriteGroups[SG_PAUSE_PANEL];
     if (var0 >= 0)
     {
         s16 index;
@@ -275,7 +275,7 @@ void AnimatePauseMenuOverlay(void)
 
     SetMatrixScale(0x100, yScale, 5);
 
-    group = &gMain.spriteGroups[1];
+    group = &gMain.spriteGroups[SG_PAUSE_TOP_BORDER];
     group->baseX = 100 - xOffset;
     group->baseY = 80 + yOffset;
     for (i = 0; i < 2; i++)
@@ -285,7 +285,7 @@ void AnimatePauseMenuOverlay(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    group = &gMain.spriteGroups[2];
+    group = &gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER];
     group->baseX = 68 + xOffset;
     group->baseY = 108 - yOffset;
     for (i = 0; i < 3; i++)

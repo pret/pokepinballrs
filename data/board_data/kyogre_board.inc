@@ -9,13 +9,13 @@ gKyogreWaterBackgroundTilemap:: @ 0x08333004
 	.incbin "baserom.gba", 0x333004, 0x800
 
 gKyrGrouBoardCollisionTileDataAllLayers:: @ 0x08333804
-    .incbin "baserom.gba", 0x333804, 0x2000
+.incbin "data/board_data/collision/kyogre/board_tiledata.bin"
 
 gKyrGrouBoardCollisionAngleDataAllLayers:: @ 0x08335804
-    .incbin "baserom.gba", 0x335804, 0x5580
+.incbin "data/board_data/collision/kyogre/board_angledata.bin"
 
 gKyrGrouBoardCollisionTypeDataAllLayers:: @ 0x0833AD84
-    .incbin "baserom.gba", 0x33AD84, 0x2AC0
+.incbin "data/board_data/collision/kyogre/board_typedata.bin"
 
 gKyogreBoardBG1Tilemap:: @ 0x0833D844
 	.incbin "baserom.gba", 0x33D844, 0x800
@@ -42,13 +42,13 @@ gKyogreFadeInPaletteStep0:: @ 0x08340958
     .incbin "baserom.gba", 0x340958, 0x200
 
 gKyogreForm1CollisionMap:: @ 0x08340B58
-	.incbin "baserom.gba", 0x340B58, 0x8E80
+	.incbin "data/board_data/collision/kyogre/kyogre_entity_form_1_collision_120x152.bin"
 
 gKyogreForm2CollisionMap:: @ 0x083499D8
-	.incbin "baserom.gba", 0x3499D8, 0x4200
+	.incbin "data/board_data/collision/kyogre/kyogre_entity_form_2_collision_96x88.bin"
 
 gKyogreForm3CollisionMap:: @ 0x0834DBD8
-	.incbin "baserom.gba", 0x34DBD8, 0x4E00
+	.incbin "data/board_data/collision/kyogre/kyogre_entity_form_3_collision_96x104.bin"
 
 gKyogreIntroIcePalette:: @ 0x083529D8
 	.incbin "baserom.gba", 0x3529D8, 0x200

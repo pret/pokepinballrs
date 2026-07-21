@@ -5,43 +5,43 @@ gRubyBoardBG0Tilemap:: @ 0x081C08E4
 	.incbin "baserom.gba", 0x1C08E4, 0x1000
 
 gRubyBoardCollisionTileDataLayer0:: @ 0x081C18E4
-    .incbin "baserom.gba", 0x1C18E4, 0x2000
+.incbin "data/board_data/collision/ruby/boardtop_launch_tiledata.bin"
 
 gRubyBoardCollisionAngleDataLayer0:: @ 0x081C38E4
-    .incbin "baserom.gba", 0x1C38E4, 0x18780
+.incbin "data/board_data/collision/ruby/boardtop_launch_angledata.bin"
 
 gRubyBoardCollisionTypeDataLayer0:: @ 0x081DC064
-    .incbin "baserom.gba", 0x1DC064, 0xC3C0
+.incbin "data/board_data/collision/ruby/boardtop_launch_typedata.bin"
 
 gRubyBoardCollisionTileDataLayer0Alt:: @ 0x081E8424
-    .incbin "baserom.gba", 0x1E8424, 0x2000
+.incbin "data/board_data/collision/ruby/boardtop_normal_tiledata.bin"
 
 gRubyBoardCollisionAngleDataLayer0Alt:: @ 0x081EA424
-    .incbin "baserom.gba", 0x1EA424, 0x18380
+.incbin "data/board_data/collision/ruby/boardtop_normal_angledata.bin"
 
 gRubyBoardCollisionTypeDataLayer0Alt:: @ 0x082027A4
-    .incbin "baserom.gba", 0x2027A4, 0xC1C0
+.incbin "data/board_data/collision/ruby/boardtop_normal_typedata.bin"
 
 gRubyBoardCollisionTileDataLayer1:: @ 0x0820E964
-    .incbin "baserom.gba", 0x20E964, 0x2000
+.incbin "data/board_data/collision/ruby/boardbottom_tiledata.bin"
 
 gRubyBoardCollisionAngleDataLayer1:: @ 0x08210964
-    .incbin "baserom.gba", 0x210964, 0x13C80
+.incbin "data/board_data/collision/ruby/boardbottom_angledata.bin"
 
 gRubyBoardCollisionTypeDataLayer1:: @ 0x082245E4
-    .incbin "baserom.gba", 0x2245E4, 0x9E40
+.incbin "data/board_data/collision/ruby/boardbottom_typedata.bin"
 
 gRubyBoardBG1Tilemap:: @ 0x0822E424
 	.incbin "baserom.gba", 0x22E424, 0x1000
 
 gRubyBoardCollisionTileDataLayer2:: @ 0x0822F424
-    .incbin "baserom.gba", 0x22F424, 0x2000
+.incbin "data/board_data/collision/ruby/topramps_tiledata.bin"
 
 gRubyBoardCollisionAngleDataLayer2:: @ 0x08231424
-    .incbin "baserom.gba", 0x231424, 0x11E80
+.incbin "data/board_data/collision/ruby/topramps_angledata.bin"
 
 gRubyBoardCollisionTypeDataLayer2:: @ 0x082432A4
-    .incbin "baserom.gba", 0x2432A4, 0x8F40
+.incbin "data/board_data/collision/ruby/topramps_typedata.bin"
 
 gRubyBoardCompressedTiles1:: @ 0x0824C1E4
 	.incbin "baserom.gba", 0x24C1E4, 0x1B7C
@@ -53,16 +53,16 @@ gRubyBoardCompressedBGTileBuffer:: @ 0x08250934
 	.incbin "baserom.gba", 0x250934, 0x21DC
 
 gSharedBumperCollisionMap:: @ 0x08252B10
-	.incbin "baserom.gba", 0x252B10, 0x2000
+	.incbin "data/board_data/collision/ruby/shared_bumper_entity_collision_64x64.bin"
 
-gRubyAltEntity0CollisionMap:: @ 0x08254B10
-	.incbin "baserom.gba", 0x254B10, 0x2880
+gRubyLinooneLeftCollisionMap:: @ 0x08254B10
+    .incbin "data/board_data/collision/ruby/linoone_left_collision_map_72x72.bin"
 
-gRubyAltEntity1CollisionMap:: @ 0x08257390
-	.incbin "baserom.gba", 0x257390, 0x2880
+gRubyLinooneRightCollisionMap:: @ 0x08257390
+    .incbin "data/board_data/collision/ruby/linoone_right_collision_map_72x72.bin"
 
 gWhiscashCollisionMap:: @ 0x08259C10
-	.incbin "baserom.gba", 0x259C10, 0x3700
+	.incbin "data/board_data/collision/ruby/whiscash_entity_collision_80x88.bin"
 
 
 @ Evo Arrows. Named this way for comprehension in folder.

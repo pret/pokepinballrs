@@ -1,5 +1,6 @@
 #ifndef GUARD_CONSTANTS_BONUS_BOARD_H
 #define GUARD_CONSTANTS_BONUS_BOARD_H
+#include "constants/anglemath.h"
 
 enum BonusBoardSubstates{
     BONUS_BOARD_SUBSTATE_ACTIVE = 0,

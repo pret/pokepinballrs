@@ -1,103 +1,105 @@
 #include "global.h"
 #include "main.h"
 #include "constants/board/rayquaza_states.h"
+#include "constants/collision.h"
 
 //One known callsite is 080145D2 during the rayquaza bonus stage
-s16 CollisionCheck_Rayquaza(struct Vector16 *arg0, u16 *arg1)
+s16 CollisionCheck_Rayquaza(struct Vector16 *ballPosition, u16 *collisionAngle)
 {
     struct Vector16 vec1;
     struct Vector16 vec2;
-    u16 sp00;
-    u8 sp02;
-    u16 return_val;
-    u32 some_enum;
-    u32 switch_enum;
+    u16 boardCollisionAngle;
+    u8 boardCollisionType;
+    u16 hasCollisionImpact;
+    u32 boardTriggerType;
+    u32 collisionType;
 
-    return_val = 0;
-    gCurrentPinballGame->ball->spinAcceleration = 0;
+    hasCollisionImpact = FALSE;
+    gCurrentPinballGame->ball->spinAcceleration = SPIN_BOOST_NONE;
 
-    if (arg0->y < 0x200)
+    if (ballPosition->y < 0x200)
     {
-        s16 r2;
+        s16 collisionTileIndex;
         s32 tileMapPage;
         s32 boardLayer;
-        vec1.x = arg0->x / 8;
-        vec1.y = arg0->y / 8;
-        vec2.x = arg0->x % 8;
-        vec2.y = arg0->y % 8;
+        vec1.x = ballPosition->x / 8;
+        vec1.y = ballPosition->y / 8;
+        vec2.x = ballPosition->x % 8;
+        vec2.y = ballPosition->y % 8;
         tileMapPage = vec1.y / 64;
         boardLayer = gCurrentPinballGame->boardLayerDepth;
         vec1.y %= 64;
-        r2 = gBoardConfig.fieldLayout.collision.tileData[boardLayer + tileMapPage][vec1.y * 64 + vec1.x];
-        sp00 = gBoardConfig.fieldLayout.collision.angleData[boardLayer + tileMapPage][r2 * 64 + vec2.y * 8 + vec2.x];
-        sp02 = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][r2 * 64 + vec2.y * 8 + vec2.x];
+
+        collisionTileIndex = gBoardConfig.fieldLayout.collision.tileData[boardLayer + tileMapPage][vec1.y * 64 + vec1.x];
+        boardCollisionAngle = gBoardConfig.fieldLayout.collision.angleData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
+        boardCollisionType = gBoardConfig.fieldLayout.collision.typeData[boardLayer + tileMapPage][collisionTileIndex * 64 + vec2.y * 8 + vec2.x];
     }
     else
     {
-        sp00 = 0;
-        sp02 = 0;
+        boardCollisionAngle = 0;
+        boardCollisionType = 0;
     }
 
-    CheckRayquazaEntityCollision(arg0, &sp00, &sp02);
-    switch_enum = sp02 & 0xF;
-    some_enum = sp02 >> 4;
+    CheckRayquazaEntityCollision(ballPosition, &boardCollisionAngle, &boardCollisionType);
+    collisionType = boardCollisionType & COLLISION_TYPE_MASK;
+    boardTriggerType = boardCollisionType >> 4;
 
-    switch (switch_enum)
+    switch (collisionType)
     {
-    case 1:
-    case 4:
-    case 6:
-        gCurrentPinballGame->collisionSurfaceType = switch_enum - 1;
-        gCurrentPinballGame->collisionResponseType = 1;
-        *arg1 = sp00;
-        if (*arg1 >= 0x3FF0 && *arg1 <= 0x4010)
-        {
-            if (gCurrentPinballGame->ball->positionQ0.x < (gBoardConfig.fieldLayout.ballSpawnX - 8) || gCurrentPinballGame->ball->positionQ0.y < gBoardConfig.fieldLayout.ballSpawnY - 8)
+        case 1:
+        case 4:
+        case 6:
+            gCurrentPinballGame->collisionSurfaceType = collisionType - 1;
+            gCurrentPinballGame->collisionResponseType = 1;
+            *collisionAngle = boardCollisionAngle;
+            if (*collisionAngle >= ANGLE_UP_RANGE_MIN && *collisionAngle <= ANGLE_UP_RANGE_MAX)
             {
-                if (gCurrentPinballGame->ball->spinSpeed > 0)
+                if (gCurrentPinballGame->ball->positionQ0.x < (gBoardConfig.fieldLayout.ballSpawnX - 8) || gCurrentPinballGame->ball->positionQ0.y < gBoardConfig.fieldLayout.ballSpawnY - 8)
                 {
-                    *arg1 = 0x3E00;
-                }
-                else if (gCurrentPinballGame->ball->spinSpeed != 0)
-                {
-                    *arg1 = 0x4100;
-                }
-                else
-                {
-                    if (gMain.systemFrameCount & 1)
+                    if (gCurrentPinballGame->ball->spinSpeed > 0)
                     {
-                        gCurrentPinballGame->ball->spinAcceleration = 40;
-                        gCurrentPinballGame->ball->spinSpeed = 1;
-                        *arg1 = 0x3E00;
+                        *collisionAngle = ANGLE_UP_RIGHT_BOUNCE;
+                    }
+                    else if (gCurrentPinballGame->ball->spinSpeed != 0)
+                    {
+                        *collisionAngle = ANGLE_UP_LEFT_BOUNCE;
                     }
                     else
                     {
-                        gCurrentPinballGame->ball->spinAcceleration = -40;
-                        gCurrentPinballGame->ball->spinSpeed = -1;
-                        *arg1 = 0x4100;
+                        if (gMain.systemFrameCount & 1)
+                        {
+                            gCurrentPinballGame->ball->spinAcceleration = ANGLE_UP_RIGHT_SPIN_BOOST;
+                            gCurrentPinballGame->ball->spinSpeed = 1;
+                            *collisionAngle = ANGLE_UP_RIGHT_BOUNCE;
+                        }
+                        else
+                        {
+                            gCurrentPinballGame->ball->spinAcceleration = ANGLE_UP_LEFT_SPIN_BOOST;
+                            gCurrentPinballGame->ball->spinSpeed = -1;
+                            *collisionAngle = ANGLE_UP_LEFT_BOUNCE;
+                        }
                     }
                 }
             }
-        }
-        return_val = 1;
-        break;
-    case 2:
-    case 3:
-        gCurrentPinballGame->collisionSurfaceType = switch_enum - 1;
-        gCurrentPinballGame->collisionResponseType = 2;
-        *arg1 = sp00 & 0xFFF0;
-        return_val = 1;
-        break;
-    case 5:
-        some_enum = 4;
-        break;
+            hasCollisionImpact = TRUE;
+            break;
+        case 2:
+        case 3:
+            gCurrentPinballGame->collisionSurfaceType = collisionType - 1;
+            gCurrentPinballGame->collisionResponseType = 2;
+            *collisionAngle = boardCollisionAngle & COLLISION_ANGLE_MASK;
+            hasCollisionImpact = TRUE;
+            break;
+        case 5:
+            boardTriggerType = 4;
+            break;
     }
 
-    ProcessRayquazaCollisionEvent(some_enum, &return_val, arg1);
-    return return_val;
+    ProcessRayquazaCollisionEvent(boardTriggerType, &hasCollisionImpact, collisionAngle);
+    return hasCollisionImpact;
 }
 
-void CheckRayquazaEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
+void CheckRayquazaEntityCollision(struct Vector16 *ballPosition, u16 *collisionAngle, u8 *collisionType)
 {
     s16 deltaX;
     s16 deltaY;
@@ -106,49 +108,49 @@ void CheckRayquazaEntityCollision(struct Vector16 *arg0, u16 *arg1, u8 *arg2)
 
     if (gCurrentPinballGame->boardEntityCollisionMode != 1)
         return;
-    if (*arg2 & 0xF)
+    if (*collisionType & COLLISION_TYPE_MASK)
         return;
 
-    deltaX = arg0->x - gCurrentPinballGame->bossCollisionX;
-    deltaY = arg0->y - gCurrentPinballGame->bossCollisionY;
+    deltaX = ballPosition->x - gCurrentPinballGame->bossCollisionX;
+    deltaY = ballPosition->y - gCurrentPinballGame->bossCollisionY;
 
     if ((deltaX < 0 || deltaX >= 0x80) || (deltaY < 0 || deltaY >= 0x80))
         return;
 
-    maskedResult = gRayquazaBodyCollisionMap[(deltaY * 0x80) + deltaX] & 0xFFF0;
-    lowerNibble = gRayquazaBodyCollisionMap[(deltaY * 0x80) + deltaX] & 0xF;
+    maskedResult = gRayquazaBodyCollisionMap[(deltaY * 0x80) + deltaX] & COLLISION_ANGLE_MASK;
+    lowerNibble = gRayquazaBodyCollisionMap[(deltaY * 0x80) + deltaX] & COLLISION_TYPE_MASK;
 
     if (lowerNibble == 0)
         return;
 
     gCurrentPinballGame->bossHitFlashTimer = 9;
-    *arg1 = maskedResult;
-    *arg2 = lowerNibble;
+    *collisionAngle = maskedResult;
+    *collisionType = lowerNibble;
 }
 
-void ProcessRayquazaCollisionEvent(u8 arg0, u16 *arg1, u16 *arg2)
+void ProcessRayquazaCollisionEvent(u8 triggerType, u16 *hasCollisionImpact, u16 *collisionAngle)
 {
-    switch (arg0)
+    switch (triggerType)
     {
-    case 1:
-    case 2:
-    case 3:
-        break;
-    case 4:
-        gCurrentPinballGame->bossEntityState = RAYQUAZA_ENTITY_STATE_LIGHTNING_ATTACK;
-        gCurrentPinballGame->ballFrozenState = 1;
-        break;
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 10:
-    case 11:
-    case 12:
-    case 13:
-    case 14:
-    case 15:
-        break;
+        case 1:
+        case 2:
+        case 3:
+            break;
+        case 4:
+            gCurrentPinballGame->bossEntityState = RAYQUAZA_ENTITY_STATE_LIGHTNING_ATTACK;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
+            break;
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+            break;
     }
 }

@@ -25,7 +25,7 @@ void MainBoardProcess_7B_12524(void)
 
     currentBallState->prevSpinAngle = currentBallState->spinAngle;
 
-    if (!gCurrentPinballGame->ballUpgradeTimerFrozen && gCurrentPinballGame->ballUpgradeCounter > 0)
+    if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeCounter > 0)
     {
         if (--gCurrentPinballGame->ballUpgradeCounter == 0)
         {
@@ -43,16 +43,16 @@ void MainBoardProcess_7B_12524(void)
 
     if (currentBallState->positionQ0.y >= 244)
     {
-        gCurrentPinballGame->ballInLowerHalf = 1;
+        gCurrentPinballGame->ballInLowerHalf = TRUE;
         gCurrentPinballGame->pondEntitySpriteFlag = 0;
     }
     else
-        gCurrentPinballGame->ballInLowerHalf = 0;
+        gCurrentPinballGame->ballInLowerHalf = FALSE;
 
     currentBallState->positionQ0.x = currentBallState->positionQ1.x / 2;
     currentBallState->positionQ0.y = currentBallState->positionQ1.y / 2;
 
-    spriteGroup = gMain.fieldSpriteGroups[0];
+    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL];
 
     if (spriteGroup->active)
     {
@@ -94,7 +94,7 @@ void MainBoardProcess_7B_12524(void)
             oamData->y = oam->yOffset + spriteGroup->baseY;
     }
 
-    spriteGroup = gMain.fieldSpriteGroups[49];
+    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_OVERRIDE];
 
     if (spriteGroup->active)
     {
@@ -148,7 +148,7 @@ void MainBoardProcess_7B_12524(void)
     {
         for (i = 0; i < 2; i++)
         {
-            spriteGroup = gMain.fieldSpriteGroups[i + 1];
+            spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_BASE + i];
 
             if (spriteGroup->active)
             {
@@ -170,16 +170,16 @@ void MainBoardProcess_7B_12524(void)
             }
         }
 
-        gMain.fieldSpriteGroups[1]->active = TRUE;
-        gMain.fieldSpriteGroups[2]->active = TRUE;
-        gMain.fieldSpriteGroups[49]->active = TRUE;
-        gMain.fieldSpriteGroups[0]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_0]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_1]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_OVERRIDE]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = FALSE;
     }
     else
     {
         for (i = 0; i < 2; i++)
         {
-            spriteGroup = gMain.fieldSpriteGroups[i + 1];
+            spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_BASE + i];
 
             if (spriteGroup->active)
             {
@@ -192,21 +192,21 @@ void MainBoardProcess_7B_12524(void)
             }
         }
 
-        gMain.fieldSpriteGroups[1]->active = FALSE;
-        gMain.fieldSpriteGroups[2]->active = FALSE;
-        gMain.fieldSpriteGroups[49]->active = FALSE;
-        gMain.fieldSpriteGroups[0]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_0]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_TRAIL_1]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_MAIN_BOARD_BALL_OVERRIDE]->active = FALSE;
+        gMain.fieldSpriteGroups[FIELD_SG_BALL]->active = TRUE;
     }
 
-    spriteGroup = gMain.fieldSpriteGroups[43];
+    spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL_UPGRADE_FX];
 
     if (spriteGroup->active)
     {
         s8 newIx;
         if (gCurrentPinballGame->ballShadowTimer < 59)
         {
-            spriteGroup->baseX = gMain.fieldSpriteGroups[0]->baseX - 8;
-            spriteGroup->baseY = gMain.fieldSpriteGroups[0]->baseY - 8;
+            spriteGroup->baseX = gMain.fieldSpriteGroups[FIELD_SG_BALL]->baseX - 8;
+            spriteGroup->baseY = gMain.fieldSpriteGroups[FIELD_SG_BALL]->baseY - 8;
         }
         else
         {
@@ -225,7 +225,7 @@ void MainBoardProcess_7B_12524(void)
         gOamBuffer[oam->oamId].priority = currentBallState->oamPriority;
 
         if (gCurrentPinballGame->ballShadowTimer < 14)
-            gMain.fieldSpriteGroups[43]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_BALL_UPGRADE_FX]->active = FALSE;
     }
 }
 
@@ -239,7 +239,7 @@ void BonusBoardProcess_7B_12BF8()
     struct OamDataSimple *oam;
     struct BallState *primaryBall;
 
-    gCurrentPinballGame->secondaryBall = gCurrentPinballGame->ballStates;
+    gCurrentPinballGame->cameraBall = gCurrentPinballGame->ballStates;
     gCurrentPinballGame->ball = gCurrentPinballGame->ballStates;
 
     primaryBall = &gCurrentPinballGame->ballStates[0];
@@ -248,22 +248,22 @@ void BonusBoardProcess_7B_12BF8()
     {
     case FIELD_KECLEON:
         primaryBall->oamPriority = 2;
-        spriteGroup = &gMain_spriteGroups[gKecleonSpriteOrderMap[22]];
+        spriteGroup = &gMain.spriteGroups[gKecleonSpriteGroupOrderMap[22]];
         break;
     case FIELD_KYOGRE:
     case FIELD_GROUDON:
     case FIELD_SPHEAL:
         primaryBall->oamPriority = 1;
-        spriteGroup = gMain.fieldSpriteGroups[0];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL];
         break;
     case FIELD_RAYQUAZA:
         if (primaryBall->oamPriority > 2)
             primaryBall->oamPriority = 2;
-        spriteGroup = gMain.fieldSpriteGroups[0];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL];
         break;
     default:
         primaryBall->oamPriority = 3;
-        spriteGroup = gMain.fieldSpriteGroups[0];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BALL];
         break;
     }
 
@@ -305,7 +305,7 @@ void BonusBoardProcess_7B_12BF8()
 
     if (gCurrentPinballGame->ballRespawnState)
     {
-        spriteGroup = gMain.fieldSpriteGroups[1];
+        spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_RESPAWN_FX];
         if (spriteGroup->active)
         {
             spriteGroup->baseX = primaryBall->screenPosition.x - 8;
@@ -315,11 +315,12 @@ void BonusBoardProcess_7B_12BF8()
             gOamBuffer[oam->oamId].y = oam->yOffset + spriteGroup->baseY;
         }
 
-        if (gCurrentPinballGame->ballRespawnState == 1 || gCurrentPinballGame->ballRespawnState == 3)
+        if (gCurrentPinballGame->ballRespawnState == BALL_SPAWN_STATE_RESPAWN
+            || gCurrentPinballGame->ballRespawnState == BALL_SPAWN_STATE_INITIAL_SPAWN)
         {
             if (gCurrentPinballGame->ballRespawnTimer == 0)
             {
-                gCurrentPinballGame->ballFrozenState = 1;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                 primaryBall->velocity.x = 0;
                 primaryBall->velocity.y = 0;
                 primaryBall->spinSpeed = 0;
@@ -329,7 +330,7 @@ void BonusBoardProcess_7B_12BF8()
                 spriteGroup->active = TRUE;
 
             if (gCurrentPinballGame->ballRespawnTimer == 154)
-                m4aSongNumStart(SE_UNKNOWN_0xF9);
+                m4aSongNumStart(SE_BONUS_BOARD_BALL_SPAWN);
 
             if (gCurrentPinballGame->ballRespawnTimer > 149)
             {
@@ -348,16 +349,16 @@ void BonusBoardProcess_7B_12BF8()
             }
 
             if (gCurrentPinballGame->ballRespawnTimer == 186)
-                primaryBall->ballHidden = 0;
+                primaryBall->ballHidden = FALSE;
 
             if (gCurrentPinballGame->ballRespawnTimer > 215)
             {
-                if (gCurrentPinballGame->ballRespawnState == 3)
-                    gCurrentPinballGame->boardModeType = 2;
+                if (gCurrentPinballGame->ballRespawnState == BALL_SPAWN_STATE_INITIAL_SPAWN)
+                    gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
 
-                gCurrentPinballGame->ballRespawnState = 0;
+                gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
                 spriteGroup->active = FALSE;
-                gCurrentPinballGame->ballFrozenState = 0;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
                 DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
             }
         }
@@ -365,7 +366,7 @@ void BonusBoardProcess_7B_12BF8()
         {
             if (gCurrentPinballGame->ballRespawnTimer == 0)
             {
-                gCurrentPinballGame->ballFrozenState = 1;
+                gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_MANUAL;
                 primaryBall->velocity.x = 0;
                 primaryBall->velocity.y = 0;
                 primaryBall->spinSpeed = 0;
@@ -385,14 +386,14 @@ void BonusBoardProcess_7B_12BF8()
                 gCurrentPinballGame->ballRespawnTimer++;
 
             if (gCurrentPinballGame->ballRespawnTimer == 23)
-                m4aSongNumStart(SE_UNKNOWN_0xF9);
+                m4aSongNumStart(SE_BONUS_BOARD_BALL_SPAWN);
 
             if (gCurrentPinballGame->ballRespawnTimer == 20)
-                primaryBall->ballHidden = 1;
+                primaryBall->ballHidden = TRUE;
 
             if (gCurrentPinballGame->ballRespawnTimer > 67)
             {
-                gCurrentPinballGame->ballRespawnState = 0;
+                gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
                 spriteGroup->active = FALSE;
                 DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
             }
@@ -400,7 +401,7 @@ void BonusBoardProcess_7B_12BF8()
     }
     else
     {
-        if (gCurrentPinballGame->ballUpgradeTimerFrozen == 0 && gCurrentPinballGame->ballUpgradeCounter != 0)
+        if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeCounter != 0)
         {
             gCurrentPinballGame->ballUpgradeCounter--;
             if (gCurrentPinballGame->ballUpgradeCounter == 0)
@@ -434,7 +435,7 @@ void BonusBoardProcess_7B_12BF8()
 
             for (i = 0; i < 2; i++)
             {
-                spriteGroup = gMain.fieldSpriteGroups[i + 6];
+                spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_BASE + i];
                 if (spriteGroup->active)
                 {
                     oam = &spriteGroup->oam[0];
@@ -467,8 +468,8 @@ void BonusBoardProcess_7B_12BF8()
                     }
                 }
             }
-            gMain.fieldSpriteGroups[6]->active = TRUE;
-            gMain.fieldSpriteGroups[7]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_0]->active = TRUE;
+            gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_1]->active = TRUE;
         }
         else
         {
@@ -485,8 +486,8 @@ void BonusBoardProcess_7B_12BF8()
                     oamData->y = 200;
                 }
             }
-            gMain.fieldSpriteGroups[6]->active = FALSE;
-            gMain.fieldSpriteGroups[7]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_0]->active = FALSE;
+            gMain.fieldSpriteGroups[FIELD_SG_BONUS_BOARD_BALL_TRAIL_1]->active = FALSE;
         }
     }
 }

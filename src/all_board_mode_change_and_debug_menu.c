@@ -127,7 +127,7 @@ void GameOverAnimation(void)
     struct OamDataSimple *oamSimple;
     u16 var0;
 
-    group = gMain.fieldSpriteGroups[42];
+    group = gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT];
     if (group->active)
     {
         group->baseX = 63;
@@ -155,7 +155,7 @@ void GameOverAnimation(void)
     if (gMain.animationTimer == 3600)
     {
         DmaCopy16(3, gMainBoardGameOverText_Gfx, (void *)0x06015800, 0x400);
-        gMain.fieldSpriteGroups[42]->active = TRUE;
+        gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT]->active = TRUE;
         for (i = 0; i < 8; i++)
         {
             gGameOverLetterYOffsets[i] = 0xE0C0;
@@ -185,7 +185,7 @@ void EndOfBallSequence(void)
         if (gMain.animationTimer < 21)
         {
             if (gMain.animationTimer == 20)
-                m4aSongNumStart(SE_UNKNOWN_0xA4);
+                m4aSongNumStart(SE_BONUS_PANEL_SLIDE);
 
             if (gCurrentPinballGame->bonusSummarySlideY < 128)
                 gCurrentPinballGame->bonusSummarySlideY += 8;
@@ -201,10 +201,10 @@ void EndOfBallSequence(void)
         if (gMain.animationTimer == 199)
         {
             gCurrentPinballGame->bonusSummarySlideY = 128;
-            gMain.spriteGroups[9].active = TRUE;
-            gMain.spriteGroups[6].active = TRUE;
-            gMain.spriteGroups[7].active = TRUE;
-            gMain.spriteGroups[8].active = TRUE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_BANNER].active = TRUE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_0].active = TRUE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_1].active = TRUE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_2].active = TRUE;
             DmaCopy16(3, gMainBoardEndOfBall_Gfx, (void *)0x6015800, 0x2800);
             if (gMain.selectedField == FIELD_RUBY)
             {
@@ -215,17 +215,17 @@ void EndOfBallSequence(void)
                 DmaCopy16(3, gBonusClearTextPal_Dark, (void *)0x050003C0, 0x20);
             }
 
-            m4aSongNumStart(SE_UNKNOWN_0xA4);
+            m4aSongNumStart(SE_BONUS_PANEL_SLIDE);
             for (i = 0; i < 3; i++)
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[i][j] = 0;
+                    gCurrentPinballGame->bonusTextRevealMask[i][j] = FALSE;
         }
         else if (gMain.animationTimer == 1)
         {
-            gMain.spriteGroups[9].active = FALSE;
-            gMain.spriteGroups[6].active = FALSE;
-            gMain.spriteGroups[7].active = FALSE;
-            gMain.spriteGroups[8].active = FALSE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_BANNER].active = FALSE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_0].active = FALSE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_1].active = FALSE;
+            gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_2].active = FALSE;
         }
     }
     else
@@ -245,7 +245,7 @@ void EndOfBallSequence(void)
             gCurrentPinballGame->bonusMultiplier = 0;
             InitBallState(0);
             SetBoardCollisionConfig(0);
-            gCurrentPinballGame->boardCollisionConfigChanged = 0;
+            gCurrentPinballGame->boardCollisionConfigChanged = FALSE;
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_BOSS_HOLE_ACTIVE)
             {
                 var0 = gCurrentPinballGame->numCompletedBonusStages % 5;
@@ -289,7 +289,7 @@ void BallSaverAnimation(void)
 
     if (gMain.animationTimer)
     {
-        group = &gMain.spriteGroups[5];
+        group = &gMain.spriteGroups[SG_BALL_SAVE_BANNER];
         if (group->active)
         {
             group->baseX = 88;
@@ -304,7 +304,7 @@ void BallSaverAnimation(void)
             }
         }
 
-        group = &gMain.spriteGroups[4];
+        group = &gMain.spriteGroups[SG_BALL_SAVE_LATI];
         if (group->active)
         {
             group->baseX = 24 + gCurrentPinballGame->ballSaverPosX / 100;
@@ -317,7 +317,7 @@ void BallSaverAnimation(void)
             gOamBuffer[oamSimple->oamId].matrixNum = 4;
         }
 
-        group = &gMain.spriteGroups[3];
+        group = &gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM];
         if (group->active)
         {
             group->baseX = 56 + gCurrentPinballGame->ballSaverPosX / 100;
@@ -354,7 +354,7 @@ void BallSaverAnimation(void)
         {
             mat4Scale = 0x100;
             if (gMain.animationTimer < 30)
-                gMain.spriteGroups[4].active = FALSE;
+                gMain.spriteGroups[SG_BALL_SAVE_LATI].active = FALSE;
         }
 
         if (gMain.animationTimer < 31)
@@ -366,7 +366,7 @@ void BallSaverAnimation(void)
             else
             {
                 mat3Scale = 8;
-                gMain.spriteGroups[5].active = FALSE;
+                gMain.spriteGroups[SG_BALL_SAVE_BANNER].active = FALSE;
             }
         }
         else
@@ -400,10 +400,10 @@ void BallSaverAnimation(void)
                 gCurrentPinballGame->ballSaverBallVelY += 6;
                 gCurrentPinballGame->ballSaverBallPosX += gCurrentPinballGame->ballSaverBallVelX;
                 gCurrentPinballGame->ballSaverBallPosY += gCurrentPinballGame->ballSaverBallVelY;
-                gMain.spriteGroups[3].active = FALSE;
+                gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM].active = FALSE;
                 if (gMain.animationTimer == 32)
                 {
-                    gCurrentPinballGame->boardEntityActive = 0;
+                    gCurrentPinballGame->cameraLocked = FALSE;
                     m4aSongNumStart(SE_SAVER_PLUNGER_DROP);
                     PlayRumble(6);
                 }
@@ -450,9 +450,9 @@ void BallSaverAnimation(void)
             gCurrentPinballGame->ballSaverVelX = 0;
             gCurrentPinballGame->ballSaverVelY = 0;
             gCurrentPinballGame->ballSaverSlideY = 100;
-            gMain.spriteGroups[5].active = TRUE;
-            gMain.spriteGroups[4].active = TRUE;
-            gMain.spriteGroups[3].active = TRUE;
+            gMain.spriteGroups[SG_BALL_SAVE_BANNER].active = TRUE;
+            gMain.spriteGroups[SG_BALL_SAVE_LATI].active = TRUE;
+            gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM].active = TRUE;
             if (gMain.selectedField == FIELD_RUBY)
             {
                 DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
@@ -466,16 +466,16 @@ void BallSaverAnimation(void)
                 DmaCopy16(3, gBonusStagePal_Dark, (void *)0x050003C0, 0x20);
             }
 
-            gCurrentPinballGame->ballFrozenState = 2;
-            gCurrentPinballGame->boardEntityActive = 1;
-            gCurrentPinballGame->ballUpgradeTimerFrozen = 1;
-            gCurrentPinballGame->startButtonDisabled = 1;
+            gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_FROZEN;
+            gCurrentPinballGame->cameraLocked = TRUE;
+            gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
+            gCurrentPinballGame->startButtonDisabled = TRUE;
             m4aSongNumStart(SE_BALL_SAVED);
         }
         else if (gMain.animationTimer == 0)
         {
-            gMain.spriteGroups[5].active = FALSE;
-            gMain.spriteGroups[4].active = FALSE;
+            gMain.spriteGroups[SG_BALL_SAVE_BANNER].active = FALSE;
+            gMain.spriteGroups[SG_BALL_SAVE_LATI].active = FALSE;
         }
     }
     else
@@ -483,17 +483,17 @@ void BallSaverAnimation(void)
         gMain.modeChangeFlags &= ~MODE_CHANGE_BALL_SAVER;
         gCurrentPinballGame->collisionCooldownTimer = 60;
         InitBallState(0);
-        gCurrentPinballGame->ballFrozenState = 0;
+        gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
         SetBoardCollisionConfig(0);
-        gCurrentPinballGame->boardCollisionConfigChanged = 0;
+        gCurrentPinballGame->boardCollisionConfigChanged = FALSE;
         if (gMain.selectedField == FIELD_RUBY)
             gCurrentPinballGame->ball->oamPriority = 3;
         else
             gCurrentPinballGame->ball->oamPriority = 1;
 
-        gCurrentPinballGame->ballUpgradeTimerFrozen = 0;
+        gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
         gCurrentPinballGame->activePortraitType = 0;
-        gCurrentPinballGame->startButtonDisabled = 0;
+        gCurrentPinballGame->startButtonDisabled = FALSE;
     }
 }
 
@@ -564,22 +564,24 @@ void DebugToggleBallSpeed(void)
 void EndOfBallBonusSummary(void)
 {
     int i, j;
-    s16 var0;
-    int var2;
+    s16 textRevealTimer;
+    int lineRevealSegment;
     int value;
-    int var4;
+    int scoreHi; // multiples of 100M
     int multiplier;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
-    s8 sp0[16];
-    s16 sp10;
-    s16 sp14;
-    s16 sp18;
+    s8 scoreDigit[16];
+    s16 subtotalSlideYPos;
+    s16 userScoreDisplayAdvance;
+    s16 playTextProgressSound;
 
-    var0 = 212 - gCurrentPinballGame->bonusSummaryTimer;
-    sp10 = 0;
-    sp14 = 0;
-    sp18 = 0;
+    const int DIGIT_TILE_BASE_IX = 27;
+
+    textRevealTimer = 212 - gCurrentPinballGame->bonusSummaryTimer;
+    subtotalSlideYPos = 0;
+    userScoreDisplayAdvance = FALSE;
+    playTextProgressSound = FALSE;
 
     for (i = 0; i < 3; i++)
     {
@@ -611,7 +613,7 @@ void EndOfBallBonusSummary(void)
             if (gCurrentPinballGame->bonusSummaryComplete == 0)
             {
                 gCurrentPinballGame->bonusSummaryTimer = 100;
-                var0 = 100;
+                textRevealTimer = 100;
                 gCurrentPinballGame->bonusSummaryPhase = 6;
                 gCurrentPinballGame->bonusSubtotal =
                     gCurrentPinballGame->bonusCatchCount * 500000 +
@@ -624,23 +626,23 @@ void EndOfBallBonusSummary(void)
                 gMain.animationTimer = 150;
 
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[0][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[0][j] = TRUE;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[1][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[1][j] = TRUE;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[2][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[2][j] = TRUE;
 
                 for (i = 0; i < 3; i++)
                     for (j = 0; j < 20; j++)
                         gCurrentPinballGame->bonusTextContent[i][j] = gBonusSummaryTextTemplates[gCurrentPinballGame->bonusSummaryPhase][i][j];
 
-                sp14 = 1;
+                userScoreDisplayAdvance = TRUE;
             }
             else
             {
                 gCurrentPinballGame->bonusSummaryTimer = 1;
                 gMain.animationTimer = 51;
-                var0 = 100;
+                textRevealTimer = 100;
                 if (gCurrentPinballGame->bonusTotalScoreLo || gCurrentPinballGame->bonusTotalScoreHi)
                 {
                     gCurrentPinballGame->scoreLo += gCurrentPinballGame->bonusTotalScoreLo;
@@ -673,35 +675,38 @@ void EndOfBallBonusSummary(void)
 
         if (gCurrentPinballGame->bonusSummaryPhase < 5)
         {
-            if (var0 < 89)
+            if (textRevealTimer < 89)
             {
-                var2 = var0 / 24;
-                if (var2 > 2)
-                    var2 = 2;
+                lineRevealSegment = textRevealTimer / 24;
+                if (lineRevealSegment > 2)
+                    lineRevealSegment = 2;
 
-                for (i = 0; i <= var2; i++)
+                for (i = 0; i <= lineRevealSegment; i++)
                 {
-                    j = ((var0 - i * 24) % 40) / 2;
+                    j = ((textRevealTimer - i * 24) % 40) / 2;
                     if (gCurrentPinballGame->bonusSummaryPhase == 0 || i != 2)
                     {
-                        if (gCurrentPinballGame->bonusTextRevealMask[i][j] == 0 && gCurrentPinballGame->bonusTextContent[i][j] != 95)
-                            sp18 = 1;
+                        if (!gCurrentPinballGame->bonusTextRevealMask[i][j]
+                            && gCurrentPinballGame->bonusTextContent[i][j] != 95)
+                        {
+                            playTextProgressSound = TRUE;
+                        }
                     }
 
-                    gCurrentPinballGame->bonusTextRevealMask[i][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[i][j] = TRUE;
                 }
             }
-            else if (var0 >= 148)
+            else if (textRevealTimer >= 148)
             {
-                var0 = var0 - 148;
-                var2 = var0 / 24;
-                if (var2 > 1)
-                    var2 = 1;
+                textRevealTimer = textRevealTimer - 148;
+                lineRevealSegment = textRevealTimer / 24;
+                if (lineRevealSegment > 1)
+                    lineRevealSegment = 1;
 
-                for (i = 0; i <= var2; i++)
+                for (i = 0; i <= lineRevealSegment; i++)
                 {
-                    j = ((var0 - i * 24) % 40) / 2;
-                    gCurrentPinballGame->bonusTextRevealMask[i][j] = 0;
+                    j = ((textRevealTimer - i * 24) % 40) / 2;
+                    gCurrentPinballGame->bonusTextRevealMask[i][j] = FALSE;
                 }
             }
 
@@ -716,23 +721,23 @@ void EndOfBallBonusSummary(void)
         }
         else if (gCurrentPinballGame->bonusSummaryPhase == 5)
         {
-            if (var0 < 17)
+            if (textRevealTimer < 17)
             {
-                sp10 = -var0 * 2;
-                if (var0 == 2)
-                    m4aSongNumStart(SE_UNKNOWN_0xA2);
+                subtotalSlideYPos = -textRevealTimer * 2;
+                if (textRevealTimer == 2)
+                    m4aSongNumStart(SE_BALL_SUMMARY_PAGE_SWIPE);
             }
             else
             {
-                sp10 = 0;
+                subtotalSlideYPos = 0;
                 gCurrentPinballGame->bonusSummaryTimer = 212;
                 gCurrentPinballGame->bonusSummaryPhase++;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[0][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[0][j] = TRUE;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[1][j] = 0;
+                    gCurrentPinballGame->bonusTextRevealMask[1][j] = FALSE;
                 for (j = 0; j < 20; j++)
-                    gCurrentPinballGame->bonusTextRevealMask[2][j] = 0;
+                    gCurrentPinballGame->bonusTextRevealMask[2][j] = FALSE;
 
                 for (i = 0; i < 3; i++)
                     for (j = 0; j < 20; j++)
@@ -741,33 +746,36 @@ void EndOfBallBonusSummary(void)
         }
         else
         {
-            if (var0 < 89)
+            if (textRevealTimer < 89)
             {
-                var2 = var0 / 24;
-                if (var2 > 2)
-                    var2 = 2;
+                lineRevealSegment = textRevealTimer / 24;
+                if (lineRevealSegment > 2)
+                    lineRevealSegment = 2;
 
-                for (i = 0; i <= var2; i++)
+                for (i = 0; i <= lineRevealSegment; i++)
                 {
-                    j = ((var0 - i * 24) % 40) / 2;
+                    j = ((textRevealTimer - i * 24) % 40) / 2;
                     if (i != 0)
                     {
-                        if (gCurrentPinballGame->bonusTextRevealMask[i][j] == 0 && gCurrentPinballGame->bonusTextContent[i][j] != 95)
-                            sp18 = 1;
+                        if (!gCurrentPinballGame->bonusTextRevealMask[i][j]
+                            && gCurrentPinballGame->bonusTextContent[i][j] != 95)
+                        {
+                            playTextProgressSound = TRUE;
+                        }
                     }
 
-                    gCurrentPinballGame->bonusTextRevealMask[i][j] = 1;
+                    gCurrentPinballGame->bonusTextRevealMask[i][j] = TRUE;
                 }
             }
         }
 
-        if (sp18)
-            m4aSongNumStart(SE_UNKNOWN_0xA1);
+        if (playTextProgressSound)
+            m4aSongNumStart(SE_BALL_SUMMARY_TEXT_PROGRESS);
     }
 
     value = 0;
     multiplier = 0;
-    if (gCurrentPinballGame->bonusSummaryTimer == 212 || sp14 != 0)
+    if (gCurrentPinballGame->bonusSummaryTimer == 212 || userScoreDisplayAdvance != FALSE)
     {
         switch (gCurrentPinballGame->bonusSummaryPhase)
         {
@@ -801,107 +809,121 @@ void EndOfBallBonusSummary(void)
 
         if (gCurrentPinballGame->bonusSummaryPhase < 5)
         {
+            // Line 0 score display: category count
             for (i = 0; i < 10; i++)
-                sp0[i] = 0;
-            sp0[2] = value / 100;
-            sp0[1] = (value % 100) / 10;
-            sp0[0] = value % 10;
-            for (i = 2; i > 0 && (sp0[i] <= 0 || sp0[i] == 10); i--) {}
+                scoreDigit[i] = 0;
+            scoreDigit[2] = value / 100;
+            scoreDigit[1] = (value % 100) / 10;
+            scoreDigit[0] = value % 10;
+            // No display for leading 0s
+            for (i = 2; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
-                gCurrentPinballGame->bonusTextContent[0][19 - j] = sp0[j] + 27;
+                gCurrentPinballGame->bonusTextContent[0][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
 
+            // Line 1 score display: category bonus
             for (i = 0; i < 10; i++)
-                sp0[i] = 0;
+                scoreDigit[i] = 0;
             value = value * multiplier;
             gCurrentPinballGame->bonusCategoryScore = value;
-            sp0[7] = value / 10000000;
-            sp0[6] = ((value % 10000000) / 1000000) + 10;
-            sp0[5] = (value % 1000000) / 100000;
-            sp0[4] = (value % 100000) / 10000;
-            sp0[3] = ((value % 10000) / 1000) + 10;
-            sp0[2] = (value % 1000) / 100;
-            sp0[1] = (value % 100) / 10;
-            sp0[0] = value % 10;
-            for (i = 7; i > 0 && (sp0[i] <= 0 || sp0[i] == 10); i--) {}
+            scoreDigit[7] = value / 10000000;
+            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
+            scoreDigit[5] = (value % 1000000) / 100000;
+            scoreDigit[4] = (value % 100000) / 10000;
+            scoreDigit[3] = ((value % 10000) / 1000) + 10;
+            scoreDigit[2] = (value % 1000) / 100;
+            scoreDigit[1] = (value % 100) / 10;
+            scoreDigit[0] = value % 10;
+            // No display for leading 0s
+            for (i = 7; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
-                gCurrentPinballGame->bonusTextContent[1][19 - j] = sp0[j] + 27;
+                gCurrentPinballGame->bonusTextContent[1][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
 
+            // Line 2 score display: subtotal
             for (i = 0; i < 10; i++)
-                sp0[i] = 0;
+                scoreDigit[i] = 0;
             value = gCurrentPinballGame->bonusSubtotal;
-            sp0[8] = value / 100000000;
-            sp0[7] = (value % 100000000) / 10000000;
-            sp0[6] = ((value % 10000000) / 1000000) + 10;
-            sp0[5] = (value % 1000000) / 100000;
-            sp0[4] = (value % 100000) / 10000;
-            sp0[3] = ((value % 10000) / 1000) + 10;
-            sp0[2] = (value % 1000) / 100;
-            sp0[1] = (value % 100) / 10;
-            sp0[0] = value % 10;
-            for (i = 8; i > 0 && (sp0[i] <= 0 || sp0[i] == 10); i--) {}
+            scoreDigit[8] = value / 100000000;
+            scoreDigit[7] = (value % 100000000) / 10000000;
+            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
+            scoreDigit[5] = (value % 1000000) / 100000;
+            scoreDigit[4] = (value % 100000) / 10000;
+            scoreDigit[3] = ((value % 10000) / 1000) + 10;
+            scoreDigit[2] = (value % 1000) / 100;
+            scoreDigit[1] = (value % 100) / 10;
+            scoreDigit[0] = value % 10;
+            // No display for leading 0s
+            for (i = 8; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
-                gCurrentPinballGame->bonusTextContent[2][19 - j] = sp0[j] + 27;
+                gCurrentPinballGame->bonusTextContent[2][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
         }
         else if (gCurrentPinballGame->bonusSummaryPhase == 5)
         {
+            // Subtotal line (moving up to first row)
             for (i = 0; i < 10; i++)
-                sp0[i] = 0;
+                scoreDigit[i] = 0;
             value = gCurrentPinballGame->bonusSubtotal;
-            sp0[8] = value / 100000000;
-            sp0[7] = (value % 100000000) / 10000000;
-            sp0[6] = ((value % 10000000) / 1000000) + 10;
-            sp0[5] = (value % 1000000) / 100000;
-            sp0[4] = (value % 100000) / 10000;
-            sp0[3] = ((value % 10000) / 1000) + 10;
-            sp0[2] = (value % 1000) / 100;
-            sp0[1] = (value % 100) / 10;
-            sp0[0] = value % 10;
-            for (i = 8; i > 0 && (sp0[i] <= 0 || sp0[i] == 10); i--) {}
+            scoreDigit[8] = value / 100000000;
+            scoreDigit[7] = (value % 100000000) / 10000000;
+            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
+            scoreDigit[5] = (value % 1000000) / 100000;
+            scoreDigit[4] = (value % 100000) / 10000;
+            scoreDigit[3] = ((value % 10000) / 1000) + 10;
+            scoreDigit[2] = (value % 1000) / 100;
+            scoreDigit[1] = (value % 100) / 10;
+            scoreDigit[0] = value % 10;
+            // No display for leading 0s
+            for (i = 8; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
-                gCurrentPinballGame->bonusTextContent[2][19 - j] = sp0[j] + 27;
+                gCurrentPinballGame->bonusTextContent[2][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
         }
         else
         {
+            // Line 0 score display: subtotal
             for (i = 0; i < 10; i++)
-                sp0[i] = 0;
+                scoreDigit[i] = 0;
             value = gCurrentPinballGame->bonusSubtotal;
-            sp0[8] = value / 100000000;
-            sp0[7] = (value % 100000000) / 10000000;
-            sp0[6] = ((value % 10000000) / 1000000) + 10;
-            sp0[5] = (value % 1000000) / 100000;
-            sp0[4] = (value % 100000) / 10000;
-            sp0[3] = ((value % 10000) / 1000) + 10;
-            sp0[2] = (value % 1000) / 100;
-            sp0[1] = (value % 100) / 10;
-            sp0[0] = value % 10;
-            for (i = 8; i > 0 && (sp0[i] <= 0 || sp0[i] == 10); i--) {}
+            scoreDigit[8] = value / 100000000;
+            scoreDigit[7] = (value % 100000000) / 10000000;
+            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
+            scoreDigit[5] = (value % 1000000) / 100000;
+            scoreDigit[4] = (value % 100000) / 10000;
+            scoreDigit[3] = ((value % 10000) / 1000) + 10;
+            scoreDigit[2] = (value % 1000) / 100;
+            scoreDigit[1] = (value % 100) / 10;
+            scoreDigit[0] = value % 10;
+            // No display for leading 0s
+            for (i = 8; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
-                gCurrentPinballGame->bonusTextContent[0][19 - j] = sp0[j] + 27;
+                gCurrentPinballGame->bonusTextContent[0][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
 
+            // Line 1 score display: bonus multiplier
             for (i = 0; i < 10; i++)
-                sp0[i] = 0;
+                scoreDigit[i] = 0;
             value = gCurrentPinballGame->bonusMultiplier;
-            sp0[5] = (value % 1000000) / 100000;
-            sp0[4] = (value % 100000) / 10000;
-            sp0[3] = ((value % 10000) / 1000) + 10;
-            sp0[2] = (value % 1000) / 100;
-            sp0[1] = (value % 100) / 10;
-            sp0[0] = value % 10;
-            for (i = 5; i > 0 && (sp0[i] <= 0 || sp0[i] == 10); i--) {}
+            scoreDigit[5] = (value % 1000000) / 100000;
+            scoreDigit[4] = (value % 100000) / 10000;
+            scoreDigit[3] = ((value % 10000) / 1000) + 10;
+            scoreDigit[2] = (value % 1000) / 100;
+            scoreDigit[1] = (value % 100) / 10;
+            scoreDigit[0] = value % 10;
+            // No display for leading 0s
+            for (i = 5; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
-                gCurrentPinballGame->bonusTextContent[1][19 - j] = sp0[j] + 27;
+                gCurrentPinballGame->bonusTextContent[1][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
 
+            // Line 2 score display: Total
             for (i = 0; i < 11; i++)
-                sp0[i] = 0;
+                scoreDigit[i] = 0;
             value = 0;
-            var4 = 0;
+            scoreHi = 0;
             while (gCurrentPinballGame->bonusMultiplier != 0)
             {
+                // Note: tallied in a loop, rather than a base multiplication to prevent integer overflow.
                 value += gCurrentPinballGame->bonusSubtotal;
                 if (value / 200000000 > 0)
                 {
                     value -= 200000000;
-                    var4 += 2;
+                    scoreHi += 2;
                 }
                 gCurrentPinballGame->bonusMultiplier--;
             }
@@ -909,32 +931,37 @@ void EndOfBallBonusSummary(void)
             if (value / 100000000 > 0)
             {
                 value -= 100000000;
-                var4++;
+                scoreHi++;
             }
 
-            gCurrentPinballGame->bonusTotalScoreHi = var4;
+            gCurrentPinballGame->bonusTotalScoreHi = scoreHi;
             gCurrentPinballGame->bonusTotalScoreLo = value;
-            sp0[10] = (var4 % 1000) / 100;
-            sp0[9] = ((var4 % 100) / 10) + 10;
-            sp0[8] = var4 % 10;
-            sp0[7] = (value % 100000000) / 10000000;
-            sp0[6] = ((value % 10000000) / 1000000) + 10;
-            sp0[5] = (value % 1000000) / 100000;
-            sp0[4] = (value % 100000) / 10000;
-            sp0[3] = ((value % 10000) / 1000) + 10;
-            sp0[2] = (value % 1000) / 100;
-            sp0[1] = (value % 100) / 10;
-            sp0[0] = value % 10;
-            for (i = 10; i > 0 && (sp0[i] <= 0 || sp0[i] == 10); i--) {}
+            scoreDigit[10] = (scoreHi % 1000) / 100;
+            scoreDigit[9] = ((scoreHi % 100) / 10) + 10;
+            scoreDigit[8] = scoreHi % 10;
+            scoreDigit[7] = (value % 100000000) / 10000000;
+            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
+            scoreDigit[5] = (value % 1000000) / 100000;
+            scoreDigit[4] = (value % 100000) / 10000;
+            scoreDigit[3] = ((value % 10000) / 1000) + 10;
+            scoreDigit[2] = (value % 1000) / 100;
+            scoreDigit[1] = (value % 100) / 10;
+            scoreDigit[0] = value % 10;
+            // No display for leading 0s
+            for (i = 10; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
-                gCurrentPinballGame->bonusTextContent[2][19 - j] = sp0[j] + 27;
+                gCurrentPinballGame->bonusTextContent[2][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
         }
     }
 
-    if (var0 >= 90 && var0 <= 140)
+    if (textRevealTimer >= 90 && textRevealTimer <= 140)
     {
+        // Tally section score
         if (gCurrentPinballGame->bonusSummaryPhase < 5)
         {
+            // Tally Category score into subtotal
+
+            //While score is still tallying; don't advance the display advance timer.
             if (gCurrentPinballGame->bonusCategoryScore != 0)
                 gCurrentPinballGame->bonusSummaryTimer = 100;
 
@@ -955,22 +982,25 @@ void EndOfBallBonusSummary(void)
             }
 
             value = gCurrentPinballGame->bonusSubtotal;
-            sp0[8] = value / 100000000;
-            sp0[7] = (value % 100000000) / 10000000;
-            sp0[6] = ((value % 10000000) / 1000000) + 10;
-            sp0[5] = (value % 1000000) / 100000;
-            sp0[4] = (value % 100000) / 10000;
-            sp0[3] = ((value % 10000) / 1000) + 10;
-            sp0[2] = (value % 1000) / 100;
-            sp0[1] = (value % 100) / 10;
-            sp0[0] = value % 10;
-            for (i = 8; i > 0 && (sp0[i] <= 0 || sp0[i] == 10); i--) {}
+            scoreDigit[8] = value / 100000000;
+            scoreDigit[7] = (value % 100000000) / 10000000;
+            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
+            scoreDigit[5] = (value % 1000000) / 100000;
+            scoreDigit[4] = (value % 100000) / 10000;
+            scoreDigit[3] = ((value % 10000) / 1000) + 10;
+            scoreDigit[2] = (value % 1000) / 100;
+            scoreDigit[1] = (value % 100) / 10;
+            scoreDigit[0] = value % 10;
+            for (i = 8; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
-                gCurrentPinballGame->bonusTextContent[2][19 - j] = sp0[j] + 27;
+                gCurrentPinballGame->bonusTextContent[2][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
         }
         else if (gCurrentPinballGame->bonusSummaryPhase == 6)
         {
+            // Tally total bonus score into main score
             gCurrentPinballGame->bonusSummaryComplete = 1;
+
+            //While score is still tallying; don't advance the display advance timer.
             if (gCurrentPinballGame->bonusTotalScoreLo || gCurrentPinballGame->bonusTotalScoreHi)
                 gCurrentPinballGame->bonusSummaryTimer = 100;
 
@@ -997,34 +1027,36 @@ void EndOfBallBonusSummary(void)
                 }
             }
 
+            // Display remaining bonus score total (line 2)
             for (i = 0; i < 11; i++)
-                sp0[i] = 0;
+                scoreDigit[i] = 0;
             for (j = 0; j < 20; j++)
                 gCurrentPinballGame->bonusTextContent[2][j] = gBonusSummaryTextTemplates[gCurrentPinballGame->bonusSummaryPhase][2][j];
 
-            var4 = gCurrentPinballGame->bonusTotalScoreHi;
+            scoreHi = gCurrentPinballGame->bonusTotalScoreHi;
             value = gCurrentPinballGame->bonusTotalScoreLo;
-            sp0[10] = (var4 % 1000) / 100;
-            sp0[9] = ((var4 % 100) / 10) + 10;
-            sp0[8] = var4 % 10;
-            sp0[7] = (value % 100000000) / 10000000;
-            sp0[6] = ((value % 10000000) / 1000000) + 10;
-            sp0[5] = (value % 1000000) / 100000;
-            sp0[4] = (value % 100000) / 10000;
-            sp0[3] = ((value % 10000) / 1000) + 10;
-            sp0[2] = (value % 1000) / 100;
-            sp0[1] = (value % 100) / 10;
-            sp0[0] = value % 10;
-            for (i = 10; i > 0 && (sp0[i] <= 0 || sp0[i] == 10); i--) {}
+            scoreDigit[10] = (scoreHi % 1000) / 100;
+            scoreDigit[9] = ((scoreHi % 100) / 10) + 10;
+            scoreDigit[8] = scoreHi % 10;
+            scoreDigit[7] = (value % 100000000) / 10000000;
+            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
+            scoreDigit[5] = (value % 1000000) / 100000;
+            scoreDigit[4] = (value % 100000) / 10000;
+            scoreDigit[3] = ((value % 10000) / 1000) + 10;
+            scoreDigit[2] = (value % 1000) / 100;
+            scoreDigit[1] = (value % 100) / 10;
+            scoreDigit[0] = value % 10;
+            // No display for leading 0s
+            for (i = 10; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
-                gCurrentPinballGame->bonusTextContent[2][19 - j] = sp0[j] + 27;
+                gCurrentPinballGame->bonusTextContent[2][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
         }
     }
 
     if (gCurrentPinballGame->bonusSummaryTimer)
         gCurrentPinballGame->bonusSummaryTimer--;
 
-    group = &gMain.spriteGroups[9];
+    group = &gMain.spriteGroups[SG_END_OF_BALL_BONUS_BANNER];
     if (group->active)
     {
         group->baseX = 120;
@@ -1038,9 +1070,9 @@ void EndOfBallBonusSummary(void)
 
         for (i = 0; i < 3; i++)
         {
-            group = &gMain.spriteGroups[6 + i];
+            group = &gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_BASE + i];
             group->baseX = 104;
-            group->baseY = 64 + i * 16 + gCurrentPinballGame->bonusSummarySlideY + sp10;
+            group->baseY = 64 + i * 16 + gCurrentPinballGame->bonusSummarySlideY + subtotalSlideYPos;
             for (j = 0; j < 5; j++)
             {
                 oamSimple = &group->oam[j];
