@@ -1,10 +1,8 @@
 gDusclopsBoardPalette:: @ 0x082EDEE0
-.incbin "graphics/stage/dusclops/dusclops_board.pal"
-@	.incbin "baserom.gba", 0x2EDEE0, 0x200
+	.incbin "graphics/stage/dusclops/dusclops_board.pal"
 
 gDusclopsAnimPalettes:: @ 0x082EE0E0
 	.incbin "graphics/stage/dusclops/dusclops_anim.pal"
-	@.incbin "baserom.gba", 0x2EE0E0, 0x3E0
 
 gDusclopsBoardBG0Tilemap:: @ 0x082EE4C0
 	.incbin "graphics/stage/dusclops/dusclops_board_bg0_tilemap.bin"
@@ -28,7 +26,7 @@ gBonusFieldCompressedBaseTiles:: @ 0x08302700
 	.incbin "graphics/stage/dusclops/bonus_field_base_tiles.4bpp.lz"
 
 gDusclopsBoardCompressedBGTiles:: @ 0x08303928
-.incbin "graphics/stage/dusclops/dusclops_board_bg_tiles.4bpp.lz"
+	.incbin "graphics/stage/dusclops/dusclops_board_bg_tiles.4bpp.lz"
 
 gDusclopsBodyCollisionMap:: @ 0x083071D4
-.incbin "data/board_data/collision/dusclops/dusclops_entity_collision_96x120.bin"
+	.incbin "data/board_data/collision/dusclops/dusclops_entity_collision_96x120.bin"

@@ -896,7 +896,7 @@ gKyogreBoardPaletteSet1:: @ 0x081B1D84
     .incbin "baserom.gba", 0x1B1D84, 0x200
 
 gGroudonBoardPaletteSet1:: @ 0x081B1F84
-    .incbin "baserom.gba", 0x1B1F84, 0x200
+    .incbin "graphics/stage/groudon/groudon_board_palset_1.pal"
 
 gRayquazaBoardPaletteSet1:: @ 0x081B2184
     .incbin "baserom.gba", 0x1B2184, 0x200
@@ -920,7 +920,7 @@ gKyogreBoardPaletteSet2:: @ 0x081B2D84
     .incbin "baserom.gba", 0x1B2D84, 0x200
 
 gGroudonBoardPaletteSet2:: @ 0x081B2F84
-    .incbin "baserom.gba", 0x1B2F84, 0x200
+    .incbin "graphics/stage/groudon/groudon_board_palset_2.pal"
 
 gRayquazaBoardPaletteSet2:: @ 0x081B3184
     .incbin "baserom.gba", 0x1B3184, 0x200
@@ -947,7 +947,7 @@ gKyogreBoardPaletteSet0:: @ 0x081B3D84
     .incbin "baserom.gba", 0x1B3D84, 0x200
 
 gGroudonBoardPaletteSet0:: @ 0x081B3F84
-    .incbin "baserom.gba", 0x1B3F84, 0x200
+    .incbin "graphics/stage/groudon/groudon_board_palset_0.pal"
 
 gRayquazaBoardPaletteSet0:: @ 0x081B4184
     .incbin "baserom.gba", 0x1B4184, 0x200
