@@ -887,7 +887,7 @@ gSapphireBoardPaletteSet1:: @ 0x081B1784
     .incbin "baserom.gba", 0x1B1784, 0x200
 
 gDusclopsBoardPaletteSet1:: @ 0x081B1984
-    .incbin "baserom.gba", 0x1B1984, 0x200
+    .incbin "graphics/stage/dusclops/dusclops_board_palset_1.pal"
 
 gKecleonBoardPaletteSet1:: @ 0x081B1B84
     .incbin "baserom.gba", 0x1B1B84, 0x200
@@ -911,7 +911,7 @@ gSapphireBoardPaletteSet2:: @ 0x081B2784
     .incbin "baserom.gba", 0x1B2784, 0x200
 
 gDusclopsBoardPaletteSet2:: @ 0x081B2984
-    .incbin "baserom.gba", 0x1B2984, 0x200
+    .incbin "graphics/stage/dusclops/dusclops_board_palset_2.pal"
 
 gKecleonBoardPaletteSet2:: @ 0x081B2B84
     .incbin "baserom.gba", 0x1B2B84, 0x200
@@ -939,7 +939,6 @@ gSapphireBoardPaletteSet0:: @ 0x081B3784
 
 gDusclopsBoardPaletteSet0:: @ 0x081B3984
 	.incbin "graphics/stage/dusclops/dusclops_board_palset_0.pal"
-    @.incbin "baserom.gba", 0x1B3984, 0x200
 
 gKecleonBoardPaletteSet0:: @ 0x081B3B84
     .incbin "baserom.gba", 0x1B3B84, 0x200
