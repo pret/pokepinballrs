@@ -938,7 +938,8 @@ gSapphireBoardPaletteSet0:: @ 0x081B3784
     .incbin "baserom.gba", 0x1B3784, 0x200
 
 gDusclopsBoardPaletteSet0:: @ 0x081B3984
-    .incbin "baserom.gba", 0x1B3984, 0x200
+	.incbin "graphics/stage/dusclops/dusclops_board_palset_0.pal"
+    @.incbin "baserom.gba", 0x1B3984, 0x200
 
 gKecleonBoardPaletteSet0:: @ 0x081B3B84
     .incbin "baserom.gba", 0x1B3B84, 0x200
