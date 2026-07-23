@@ -866,9 +866,11 @@ gEvoBoltAppear_Gfx:: @ 0x0816A7C4
 	.incbin "graphics/board_pickups/evo_item_bolt.4bpp";
 
 gFlipperCollisionData:: @ 0x0816C3E4
-@ Flipper data potentially takes 0x31800 = 11 sets of 96*96 u16 data
-@ if so, this leaves 0x11000 unaccounted for
-	.incbin "baserom.gba", 0x16C3E4, 0x42800
+@ Flipper data has 13 sets of 96*96 u16 data (2 unused at the end)
+	.incbin "data/board_data/collision/flipper_collision_all_96x96.bin"
+
+gUnknown_81A6BE4:: @ 0x081A6BE4
+	.incbin "baserom.gba", 0x1A6BE4, 0x8000
 
 	.include "data/graphics/mon_catch_sprites_pals.inc"
 @	.incbin "baserom.gba", 0x1AEBE4, 0xA80
