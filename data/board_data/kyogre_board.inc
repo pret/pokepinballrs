@@ -6,22 +6,22 @@ gKyogreBoardPalette:: @ 0x08332E04
 	.incbin "baserom.gba", 0x332E04, 0x200
 
 gKyogreWaterBackgroundTilemap:: @ 0x08333004
-	.incbin "baserom.gba", 0x333004, 0x800
+	.incbin "graphics/stage/kyogre/kyogre_board_bg0_tilemap.bin"
 
 gKyrGrouBoardCollisionTileDataAllLayers:: @ 0x08333804
-.incbin "data/board_data/collision/kyogre/board_tiledata.bin"
+	.incbin "data/board_data/collision/kyogre/board_tiledata.bin"
 
 gKyrGrouBoardCollisionAngleDataAllLayers:: @ 0x08335804
-.incbin "data/board_data/collision/kyogre/board_angledata.bin"
+	.incbin "data/board_data/collision/kyogre/board_angledata.bin"
 
 gKyrGrouBoardCollisionTypeDataAllLayers:: @ 0x0833AD84
-.incbin "data/board_data/collision/kyogre/board_typedata.bin"
+	.incbin "data/board_data/collision/kyogre/board_typedata.bin"
 
 gKyogreBoardBG1Tilemap:: @ 0x0833D844
-	.incbin "baserom.gba", 0x33D844, 0x800
+	.incbin "graphics/stage/kyogre/kyogre_board_bg1_tilemap.bin"
 
 gKyogreBoardCompressedBGTiles:: @ 0x0833E044
-	.incbin "baserom.gba", 0x33E044, 0x1F14
+	.incbin "graphics/stage/kyogre/kyogre_board_bg_tiles.4bpp.lz"
 
 gKyogreIntroShorePalette:: @ 0x0833FF58
 	.incbin "baserom.gba", 0x33FF58, 0x200
