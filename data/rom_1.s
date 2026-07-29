@@ -1154,7 +1154,8 @@ gCaptureModePalette:: @ 0x083A808C
 	.incbin "baserom.gba", 0x3A808C, 0x1E0
 
 gBoardHudTilemapB:: @ 0x083A826C
-	.incbin "baserom.gba", 0x3A826C, 0x820
+	.incbin "baserom.gba", 0x3A826C, 0x800
+	.space 0x20
 
 gShopPalette:: @ 0x083A8A8C
 	.incbin "baserom.gba", 0x3A8A8C, 0x20
@@ -1163,7 +1164,8 @@ gTravelPortraitPalette:: @ 0x083A8AAC
 	.incbin "baserom.gba", 0x3A8AAC, 0x20
 
 gBoardHudTilemapA:: @ 0x083A8ACC
-	.incbin "baserom.gba", 0x3A8ACC, 0x420
+	.incbin "baserom.gba", 0x3A8ACC, 0x400
+	.space 0x20
 
 gPortraitAnimFrameGraphics:: @ 0x083A8EEC
 	.incbin "graphics/slot_options/slot_options_1.4bpp"
