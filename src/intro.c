@@ -1856,9 +1856,9 @@ void IntroScene8WailmerLaunch_51_LoadWailmerBlastBackground(void)
     REG_DISPCNT |= (DISPCNT_BG2_ON);
 
     DmaCopy16(3, gIntroScene8WailmerLaunch_BG2Tilemap, 0x06000000, 0x800);
-    DmaCopy16(3, gIntroScene7ParadeExplosion_Gfx, 0x06004000, 0x3400);
+    DmaCopy16(3, gIntroScene8WailmerLaunchExplosion_Gfx, 0x06004000, 0x3400);
     DmaCopy16(3, gIntroScene8WailmerLaunch_Pal, 0x05000000, 0x140);
-    DmaCopy16(3, gIntroScene7ParadeWailmerLaunch_Gfx, 0x06010000, 0x2C00);
+    DmaCopy16(3, gIntroScene8WailmerLaunch_Gfx, 0x06010000, 0x2C00);
     DmaCopy16(3, gIntroScene8WailmerLaunch_Pal, 0x05000200, 0x140);
 
     gMain.dispcntBackup = REG_DISPCNT;

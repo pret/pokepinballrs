@@ -508,23 +508,23 @@ gIntroScene5Mudkip_Pal:: @ 0x080E9F60
 	.incbin "baserom.gba", 0xE9F60, 0x200
 
 gIntroScene5Mudkip_BG2Tilemap:: @ 0x080EA160
-	.incbin "baserom.gba", 0xEA160, 0x1000
+	.incbin "graphics/intro/scene5mudkip/bg2_2sections_tilemap.bin"
 
 gIntroScene5Mudkip_BG1Tiles:: @ 0x080EB160
-	.incbin "baserom.gba", 0xEB160, 0x1000
+	.incbin "graphics/intro/scene5mudkip/bg1_1sections_tilemap.bin"
 
 gIntroScene5Mudkip_BG3Tilemap:: @ 0x080EC160
-	.incbin "baserom.gba", 0xEC160, 0x800
+	.incbin "graphics/intro/scene5mudkip/bg3_text_tilemap.bin"
 
 gIntroScene5MudkipText_Gfx:: @ 0x080EC960
-	.incbin "graphics/intro/scene_5_text.4bpp"
+	.incbin "graphics/intro/scene5mudkip/text_tiles.4bpp"
 	.space 0x20
 
 gIntroScene5Mudkip_BG0Tiles:: @ 0x080F1980
 	.incbin "baserom.gba", 0xF1980, 0x800
 
 gIntroScene5MudkipSprites_Gfx:: @ 0x080F2180
-	.incbin "graphics/intro/scene_5_sprites.4bpp"
+	.incbin "graphics/intro/scene5mudkip/sprites.4bpp"
 	.space 0x20
 	.incbin "baserom.gba", 0xF51A0, 0x1000
 
@@ -532,30 +532,30 @@ gIntroScene6Chinchou_Pal:: @ 0x080F61A0
 	.incbin "baserom.gba", 0xF61A0, 0x200
 
 gIntroScene6Chinchou_BG3Tilemap:: @ 0x080F63A0
-	.incbin "baserom.gba", 0xF63A0, 0x800
+	.incbin "graphics/intro/scene6chinchou/bg3_burst_tilemap.bin"
 
 gIntroScene6ChinchouSprites_Gfx:: @ 0x080F6BA0
-	.incbin "graphics/intro/scene_6_sprites.4bpp"
+	.incbin "graphics/intro/scene6chinchou/tiles.4bpp"
 	.space 0x20
 
 gIntroScene6Chinchou_BG2Tilemap:: @ 0x080FCFC0
-	.incbin "baserom.gba", 0xFCFC0, 0x800
+	.incbin "graphics/intro/scene6chinchou/bg2_chinchou_tilemap.bin"
 
 gIntroScene6Chinchou_BG0Tilemap:: @ 0x080FD7C0
-	.incbin "baserom.gba", 0xFD7C0, 0x800
+	.incbin "graphics/intro/scene6chinchou/bg0_chinchou_tilemap.bin"
 
 gIntroScene6Chinchou_BG1Tiles:: @ 0x080FDFC0
-	.incbin "baserom.gba", 0xFDFC0, 0x2000
+	.incbin "graphics/intro/scene6chinchou/bg1_ball_tilemap.bin"
 
 gIntroScene6ChinchouStars_Gfx:: @ 0x080FFFC0
-	.incbin "graphics/intro/scene_6_stars.4bpp"
+	.incbin "graphics/intro/scene6chinchou/stars.4bpp"
 	.space 0x20
 
 gIntroScene7Parade_Pal:: @ 0x08100FE0
 	.incbin "baserom.gba", 0x100FE0, 0x200
 
 gIntroScene7Parade_BG3Tilemap:: @ 0x081011E0
-	.incbin "baserom.gba", 0x1011E0, 0x800
+	.incbin "graphics/intro/scene7parade/bg3_text_tilemap.bin"
 
 gIntroScene7ParadeSprites_Gfx:: @ 0x081019E0
 	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
@@ -563,48 +563,48 @@ gIntroScene7ParadeSprites_Gfx:: @ 0x081019E0
 	@ (shown in pink with yellow text)
 	@ sheet also includes pelipper, makuhita, spoink
 
-	.incbin "graphics/intro/scene_7_sprites.4bpp"
+	.incbin "graphics/intro/scene7parade/tiles.4bpp"
 	.space 0x20
 
 gIntroScene7Parade_BG2Tiles:: @ 0x08106A00
-	.incbin "baserom.gba", 0x106A00, 0x2000
+	.incbin "graphics/intro/scene7parade/bg2_makuhita_tilemap.bin"
 
 gIntroScene7Parade_BG0Tiles:: @ 0x08108A00
-	.incbin "baserom.gba", 0x108A00, 0x2000
+	.incbin "graphics/intro/scene7parade/bg0_pelipper_tilemap.bin"
 
 gIntroScene7Parade_BG1Tiles:: @ 0x0810AA00
-	.incbin "baserom.gba", 0x10AA00, 0x2000
+	.incbin "graphics/intro/scene7parade/bg1_spoink_tilemap.bin"
 
 gIntroScene7ParadeWailmer_Gfx:: @ 0x0810CA00
-	.incbin "graphics/intro/scene_7_wailmer.4bpp"
+	.incbin "graphics/intro/scene7parade/wailmer.4bpp"
 	.space 0x20
 
 gIntroScene8WailmerLaunch_Pal:: @ 0x0810EA20
 	.incbin "baserom.gba", 0x10EA20, 0x200
 
 gIntroScene8WailmerLaunch_BG2Tilemap:: @ 0x0810EC20
-	.incbin "baserom.gba", 0x10EC20, 0x800
+	.incbin "graphics/intro/scene8wailmerlaunch/bg2_explosion_tilemap.bin"
 
-gIntroScene7ParadeExplosion_Gfx:: @ 0x0810F420
-	.incbin "graphics/intro/scene_7_explosion.4bpp"
+gIntroScene8WailmerLaunchExplosion_Gfx:: @ 0x0810F420
+	.incbin "graphics/intro/scene8wailmerlaunch/explosion_tiles.4bpp"
 	.space 0x20
 
-gIntroScene7ParadeWailmerLaunch_Gfx:: @ 0x08112840
-	.incbin "graphics/intro/scene_7_wailmer_launch.4bpp"
+gIntroScene8WailmerLaunch_Gfx:: @ 0x08112840
+	.incbin "graphics/intro/scene8wailmerlaunch/sprites.4bpp"
 	.space 0x20
 
 gIntroScene9BallFlight_Pal:: @ 0x08115860
 	.incbin "baserom.gba", 0x115860, 0x200
 
 gIntroScene9BallFlight_BG3Tilemap:: @ 0x08115A60
-	.incbin "baserom.gba", 0x115A60, 0x800
+	.incbin "graphics/intro/scene9ballflight/bg3_clouds_tilemap.bin"
 
 gIntroScene9BallFlightClouds_Gfx:: @ 0x08116260
-	.incbin "graphics/intro/scene_8_clouds.4bpp"
+	.incbin "graphics/intro/scene9ballflight/cloud_tiles.4bpp"
 	.space 0x20
 
 gIntroScene9BallFlightall_Gfx:: @ 0x08118680
-	.incbin "graphics/intro/scene_8_ball.4bpp"
+	.incbin "graphics/intro/scene9ballflight/ball.4bpp"
 
 	.incbin "graphics/intro/wailmer_swallow.4bpp"
 
