@@ -333,10 +333,10 @@ gBonusFieldSelectStages_Gfx:: @ 0x0807C4E0
 	.space 0x20
 
 gEReaderText_Tilemap:: @ 0x0807DD00
-	.incbin "baserom.gba", 0x7DD00, 0x2000
+	.incbin "graphics/ereader/ereader_text_tilemap.bin"
 
 gEReaderOverlay_Tilemap:: @ 0x0807FD00
-	.incbin "baserom.gba", 0x7FD00, 0x800
+	.incbin "graphics/ereader/ereader_overlay_tilemap.bin"
 
 gEReaderBackground_Gfx:: @ 0x08080500
 	.incbin "graphics/ereader/background.4bpp"
@@ -379,17 +379,17 @@ gPokedexTextGlyphs_Gfx:: @ 0x08090780
 	.incbin "graphics/pokedex/text_glyphs.4bpp"
 
 gHighScoreScoreTable_Tilemap:: @ 0x080947A0
-	.incbin "baserom.gba", 0x947A0, 0x1000
+	.incbin "graphics/high_score/high_score_table_text_tilemap.bin"
 
 gHighScoreText_Gfx:: @ 0x080957A0
 	.incbin "graphics/high_score/text.4bpp"
 	.space 0x20
 
 gHighScoreBallWatermark_Tilemap:: @ 0x08099FC0
-	.incbin "baserom.gba", 0x99FC0, 0x1000
+	.incbin "graphics/high_score/high_score_ball_watermark_tilemap.bin"
 
 gHighScoreBallWatermark_Gfx:: @ 0x0809AFC0
-	.incbin "graphics/high_score/ball_watermark.4bpp"
+	.incbin "graphics/high_score/ball_watermark_tiles.4bpp"
 	.space 0x20
 
 gHighScoreBG_Pals:: @ 0x0809DBE0
@@ -405,7 +405,7 @@ gHighScoreDialogs_Gfx:: @ 0x0809DFE0
 	.space 0x20
 
 gFieldSelectBG0Tilemap:: @ 0x080A2400
-	.incbin "baserom.gba", 0xA2400, 0x800
+	.incbin "graphics/field_select/field_select_bg_tilemap.bin"
 
 .include "data/graphics/field_select.inc"
 
@@ -417,7 +417,7 @@ gIntroScene1TorchicSprites_Pals:: @ 0x080B3AA0
 	.incbin "graphics/intro/scene_1_sprites.gbapal"
 
 gIntroScene1Torchic_BG3Tilemap:: @ 0x080B3CA0
-	.incbin "baserom.gba", 0xB3CA0, 0x800
+	.incbin "graphics/intro/scene1torchic_bgtext_tilemap.bin"
 
 gIntroScene1TorchicText_Gfx:: @ 0x080B44A0
 	.incbin "graphics/intro/scene_1_text.4bpp"
@@ -427,10 +427,10 @@ gIntroScene1Torchic_BG0Tilemap:: @ 0x080B9CC0
 	.incbin "baserom.gba", 0xB9CC0, 0x1800
 
 gIntroScene1Torchic_BG2Tilemap:: @ 0x080BB4C0
-	.incbin "baserom.gba", 0xBB4C0, 0x1000
+	.incbin "graphics/intro/scene1torchic_bgdividers_tilemap.bin"
 
 gIntroScene1Torchic_BG1Tilemap:: @ 0x080BC4C0
-	.incbin "baserom.gba", 0xBC4C0, 0x1000
+	.incbin "graphics/intro/scene1torchic_bgdividers2_tilemap.bin"
 
 gIntroScene1TorchicBall_Gfx:: @ 0x080BD4C0
 	.incbin "graphics/intro/scene_1_ball.4bpp"
@@ -443,7 +443,7 @@ gIntroScene2Pikas_Pal:: @ 0x080CBCE0
 	.incbin "baserom.gba", 0xCBCE0, 0x200
 
 gIntroScene2Pikas_BG3Tilemap:: @ 0x080CBEE0
-	.incbin "baserom.gba", 0xCBEE0, 0x800
+	.incbin "graphics/intro/scene2pika_bgtext_tilemap.bin"
 
 gIntroScene2PikasSprites_Gfx:: @ 0x080CC6E0
 	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
@@ -454,10 +454,10 @@ gIntroScene2PikasSprites_Gfx:: @ 0x080CC6E0
 	.space 0x20
 
 gIntroScene2Pikas_BG0Tiles:: @ 0x080D0700
-	.incbin "baserom.gba", 0xD0700, 0x2000
+	.incbin "graphics/intro/scene2pika_bgpichu_tilemap.bin"
 
 gIntroScene2Pikas_BG1Tiles:: @ 0x080D2700
-	.incbin "baserom.gba", 0xD2700, 0x2000
+	.incbin "graphics/intro/scene2pika_bgpikachu_tilemap.bin"
 
 gIntroScene3Treecko_Pal:: @ 0x080D4700
 	.incbin "baserom.gba", 0xD4700, 0x200
