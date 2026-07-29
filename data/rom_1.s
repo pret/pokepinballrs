@@ -414,50 +414,50 @@ gEReaderText_Gfx:: @ 0x080ACC60
 	.space 0x240
 
 gIntroScene1TorchicSprites_Pals:: @ 0x080B3AA0
-	.incbin "graphics/intro/scene_1_sprites.gbapal"
+	.incbin "graphics/intro/scene1torchic/sprites.gbapal"
 
 gIntroScene1Torchic_BG3Tilemap:: @ 0x080B3CA0
-	.incbin "graphics/intro/scene1torchic_bgtext_tilemap.bin"
+	.incbin "graphics/intro/scene1torchic/bgtext_tilemap.bin"
 
 gIntroScene1TorchicText_Gfx:: @ 0x080B44A0
-	.incbin "graphics/intro/scene_1_text.4bpp"
+	.incbin "graphics/intro/scene1torchic/text.4bpp"
 	.space 0x20
 
 gIntroScene1Torchic_BG0Tilemap:: @ 0x080B9CC0
 	.incbin "baserom.gba", 0xB9CC0, 0x1800
 
 gIntroScene1Torchic_BG2Tilemap:: @ 0x080BB4C0
-	.incbin "graphics/intro/scene1torchic_bgdividers_tilemap.bin"
+	.incbin "graphics/intro/scene1torchic/bgdividers_tilemap.bin"
 
 gIntroScene1Torchic_BG1Tilemap:: @ 0x080BC4C0
-	.incbin "graphics/intro/scene1torchic_bgdividers2_tilemap.bin"
+	.incbin "graphics/intro/scene1torchic/bgdividers2_tilemap.bin"
 
 gIntroScene1TorchicBall_Gfx:: @ 0x080BD4C0
-	.incbin "graphics/intro/scene_1_ball.4bpp"
+	.incbin "graphics/intro/scene1torchic/ball.4bpp"
 	.space 0x20
 
 gIntroScene1TorchicSprites_Gfx:: @ 0x080C3CE0
-	.incbin "graphics/intro/scene_1_sprites.4bpp"
+	.incbin "graphics/intro/scene1torchic/sprites.4bpp"
 
 gIntroScene2Pikas_Pal:: @ 0x080CBCE0
 	.incbin "baserom.gba", 0xCBCE0, 0x200
 
 gIntroScene2Pikas_BG3Tilemap:: @ 0x080CBEE0
-	.incbin "graphics/intro/scene2pika_bgtext_tilemap.bin"
+	.incbin "graphics/intro/scene2pikas/bgtext_tilemap.bin"
 
 gIntroScene2PikasSprites_Gfx:: @ 0x080CC6E0
 	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
 	@ with mostly blank secondary rows (reusing tiles)
 	@ (shown in pink with yellow text)
 	@ sheet also includes pichu/pikachu
-	.incbin "graphics/intro/scene_2_sprites.4bpp"
+	.incbin "graphics/intro/scene2pikas/sprites.4bpp"
 	.space 0x20
 
 gIntroScene2Pikas_BG0Tiles:: @ 0x080D0700
-	.incbin "graphics/intro/scene2pika_bgpichu_tilemap.bin"
+	.incbin "graphics/intro/scene2pikas/bgpichu_tilemap.bin"
 
 gIntroScene2Pikas_BG1Tiles:: @ 0x080D2700
-	.incbin "graphics/intro/scene2pika_bgpikachu_tilemap.bin"
+	.incbin "graphics/intro/scene2pikas/bgpikachu_tilemap.bin"
 
 gIntroScene3Treecko_Pal:: @ 0x080D4700
 	.incbin "baserom.gba", 0xD4700, 0x200
