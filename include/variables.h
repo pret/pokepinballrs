@@ -418,7 +418,7 @@ extern u8 gIntroScene8WailmerLaunch_BG2Tilemap[];
 extern u8 gIntroScene8WailmerLaunchExplosion_Gfx[];
 extern u8 gIntroScene8WailmerLaunch_Gfx[];
 
-extern s8 gIntroScene9BallFlight_BallDecelTable[];
+extern s8 gIntroScene9BallFlight_BallXFrameAdjustTable[];
 extern s8 gIntroObjWhiteFlash;
 extern s8 gIntroBGWhiteFlash;
 

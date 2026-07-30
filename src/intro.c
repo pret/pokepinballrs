@@ -2190,7 +2190,7 @@ void IntroScene9BallFlight_InitVars(void)
 void IntroScene9BallFlight_60_MoveBallAndSky(void)
 {
     gIntroBGParams[0].posX -= 0x24;
-    gIntroSpriteEntities[0].posX -= gIntroScene9BallFlight_BallDecelTable[gIntroAnimStep];
+    gIntroSpriteEntities[0].posX -= gIntroScene9BallFlight_BallXFrameAdjustTable[gIntroAnimStep];
     gIntroAnimStep++;
 
     if (gIntroFrameCounter % 5 == 0)
