@@ -150,8 +150,8 @@ void AnimatePauseMenuOverlay(void)
     const struct Vector16 *offsets;
     s16 xOffset;
     s16 yOffset;
-    s16 var0;
-    s16 sb;
+    s16 saveLabelYOffset;
+    s16 cancelLabelYOffset;
     s16 yScale = 8;
 
     if (gCurrentPinballGame->pauseAnimTimer == 0)
@@ -166,8 +166,8 @@ void AnimatePauseMenuOverlay(void)
     {
         xOffset = 160 - gCurrentPinballGame->pauseAnimTimer * 10;
         yOffset = 24;
-        var0 = -1;
-        sb = -1;
+        saveLabelYOffset = -1;
+        cancelLabelYOffset = -1;
         yScale = 16;
     }
     else if (gCurrentPinballGame->pauseAnimTimer < 24)
@@ -176,44 +176,44 @@ void AnimatePauseMenuOverlay(void)
         yOffset = 24 - (gCurrentPinballGame->pauseAnimTimer - 15) * 3;
         if (gCurrentPinballGame->pauseAnimTimer < 18)
         {
-            var0 = -1;
-            sb = -1;
+            saveLabelYOffset = -1;
+            cancelLabelYOffset = -1;
             yScale = 8;
         }
         else if (gCurrentPinballGame->pauseAnimTimer == 18)
         {
-            var0 = 9;
-            sb = -10;
+            saveLabelYOffset = 9;
+            cancelLabelYOffset = -10;
             yScale = 16;
         }
         else if (gCurrentPinballGame->pauseAnimTimer == 19)
         {
-            var0 = 9;
-            sb = -9;
+            saveLabelYOffset = 9;
+            cancelLabelYOffset = -9;
             yScale = 128;
         }
         else if (gCurrentPinballGame->pauseAnimTimer == 20)
         {
-            var0 = 7;
-            sb = -8;
+            saveLabelYOffset = 7;
+            cancelLabelYOffset = -8;
             yScale = 160;
         }
         else if (gCurrentPinballGame->pauseAnimTimer == 21)
         {
-            var0 = 6;
-            sb = -7;
+            saveLabelYOffset = 6;
+            cancelLabelYOffset = -7;
             yScale = 192;
         }
         else if (gCurrentPinballGame->pauseAnimTimer == 22)
         {
-            var0 = 4;
-            sb = -5;
+            saveLabelYOffset = 4;
+            cancelLabelYOffset = -5;
             yScale = 224;
         }
         else
         {
-            var0 = 4;
-            sb = -4;
+            saveLabelYOffset = 4;
+            cancelLabelYOffset = -4;
             yScale = 256;
         }
     }
@@ -221,18 +221,18 @@ void AnimatePauseMenuOverlay(void)
     {
         xOffset = 0;
         yOffset = 0;
-        var0 = 4;
-        sb = -4;
+        saveLabelYOffset = 4;
+        cancelLabelYOffset = -4;
         yScale = 256;
     }
 
     group = &gMain.spriteGroups[SG_PAUSE_PANEL];
-    if (var0 >= 0)
+    if (saveLabelYOffset >= 0)
     {
         s16 index;
 
         group->baseX = 100;
-        group->baseY = 80 + var0;
+        group->baseY = 80 + saveLabelYOffset;
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX + gPauseMenuSpriteOffsets[0].x;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY + gPauseMenuSpriteOffsets[0].y + gCurrentPinballGame->pauseMenuCursorIndex * 12;
@@ -251,9 +251,10 @@ void AnimatePauseMenuOverlay(void)
 
         offsets = gPauseMenuSpriteOffsets;
         group->baseX = 100;
-        group->baseY = 80 + var0;
+        group->baseY = 80 + saveLabelYOffset;
         for (i = 1; i < 5; i++)
         {
+            // Characters in the word 'SAVE'
             oamSimple = &group->oam[i];
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX + offsets[i].x;
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY + offsets[i].y;
@@ -262,9 +263,10 @@ void AnimatePauseMenuOverlay(void)
         }
 
         group->baseX = 100;
-        group->baseY = 88 + sb;
+        group->baseY = 88 + cancelLabelYOffset;
         for (i = 5; i < 11; i++)
         {
+            // Characters in the word 'CANCEL'
             oamSimple = &group->oam[i];
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX + offsets[i].x;
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY + offsets[i].y;

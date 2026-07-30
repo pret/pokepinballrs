@@ -37,24 +37,24 @@ void UpdateNuzleafEntity(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
     u16 * dst;
-    s16 var0;
-    s16 var1;
+    s16 nextTileIx;
+    s16 oamIx;
 
     group = &gMain.spriteGroups[SG_RUBY_NUZLEAF];
-    var0 = 0;
-    var1 = 0;
+    nextTileIx = 0;
+    oamIx = 0;
     switch (gCurrentPinballGame->nuzleafAnimState)
     {
     case 0:
-        var0 = (gMain.systemFrameCount % 36) / 18;
-        var1 = var0;
+        nextTileIx = (gMain.systemFrameCount % 36) / 18;
+        oamIx = nextTileIx;
         break;
     case 1:
         gCurrentPinballGame->nuzleafFrameTimer = 0;
         gCurrentPinballGame->nuzleafFrameIndex = 0;
         gCurrentPinballGame->nuzleafAnimState = 2;
-        var1 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
-        var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
+        oamIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
+        nextTileIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
         m4aSongNumStart(SE_NUZLEAF_HIT);
         PlayRumble(7);
         gCurrentPinballGame->scoreAddedInFrame = 50000;
@@ -75,15 +75,15 @@ void UpdateNuzleafEntity(void)
                 gCurrentPinballGame->nuzleafPositionIndex = 1;
             }
         }
-        var1 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
-        var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
+        oamIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
+        nextTileIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
         break;
     case 3:
         gCurrentPinballGame->nuzleafFrameTimer = 0;
         gCurrentPinballGame->nuzleafFrameIndex = 7;
         gCurrentPinballGame->nuzleafAnimState = 4;
-        var1 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
-        var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
+        oamIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
+        nextTileIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
         m4aSongNumStart(SE_NUZLEAF_HIT);
         PlayRumble(7);
         gCurrentPinballGame->scoreAddedInFrame = 100000;
@@ -107,8 +107,8 @@ void UpdateNuzleafEntity(void)
         if (gCurrentPinballGame->nuzleafFrameTimer == 6)
             m4aSongNumStart(SE_NUZLEAF_TEETERING);
 
-        var1 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
-        var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
+        oamIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
+        nextTileIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
         break;
     case 5:
     case 6:
@@ -124,8 +124,8 @@ void UpdateNuzleafEntity(void)
                 gCurrentPinballGame->nuzleafFrameIndex = 18;
         }
 
-        var1 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
-        var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
+        oamIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
+        nextTileIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
         break;
     case 7:
         gCurrentPinballGame->nuzleafHitFlag = 0;
@@ -134,8 +134,8 @@ void UpdateNuzleafEntity(void)
         gCurrentPinballGame->nuzleafFrameIndex = 0;
         gCurrentPinballGame->nuzleafAnimState = 0;
         gCurrentPinballGame->nuzleafFrameIndex = 24;
-        var1 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
-        var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
+        oamIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][0];
+        nextTileIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
         break;
     }
 
@@ -148,16 +148,16 @@ void UpdateNuzleafEntity(void)
         {
             oamSimple = &group->oam[i];
             dst = (u16 *)&gOamBuffer[oamSimple->oamId];
-            *dst++ = gNuzleafOamData[var1][i * 3 + 0];
-            *dst++ = gNuzleafOamData[var1][i * 3 + 1];
-            *dst++ = gNuzleafOamData[var1][i * 3 + 2];
+            *dst++ = gNuzleafOamData[oamIx][i * 3 + 0];
+            *dst++ = gNuzleafOamData[oamIx][i * 3 + 1];
+            *dst++ = gNuzleafOamData[oamIx][i * 3 + 2];
 
             gOamBuffer[oamSimple->oamId].x += group->baseX;
             gOamBuffer[oamSimple->oamId].y += group->baseY;
         }
     }
 
-    gCurrentPinballGame->nuzleafGfxTileIndex = var0;
+    gCurrentPinballGame->nuzleafGfxTileIndex = nextTileIx;
 }
 
 void SelectRubyShopDoorState(void)
@@ -244,20 +244,20 @@ void DrawWhiscash(void)
     s16 i;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
-    s16 var0;
-    const s16 *var1;
+    s16 frameIx;
+    const s16 *frameData;
 
     group = &gMain.spriteGroups[SG_RUBY_WHISCASH];
-    var1 = gWhiscashFramesetData[gCurrentPinballGame->whiscashFrameIx];
+    frameData = gWhiscashFramesetData[gCurrentPinballGame->whiscashFrameIx];
     if (group->active)
     {
-        var0 = var1[0];
+        frameIx = frameData[0];
         DmaCopy16(3, gWhiscashPalettes + gCurrentPinballGame->activePaletteIndex * 0x60, (void *)0x05000320, 0x20);
-        DmaCopy16(3, gWhiscash_Gfx[var0], (void *)0x06014680, 0x460);
+        DmaCopy16(3, gWhiscash_Gfx[frameIx], (void *)0x06014680, 0x460);
         gCurrentPinballGame->rubyBumperCollisionPosition[0].x = -248;
         gCurrentPinballGame->rubyBumperCollisionPosition[0].y = -316;
-        group->baseX = var1[2] + 124u - gCurrentPinballGame->cameraXOffset;
-        group->baseY = var1[3] + 150u - gCurrentPinballGame->cameraYOffset;
+        group->baseX = frameData[2] + 124u - gCurrentPinballGame->cameraXOffset;
+        group->baseY = frameData[3] + 150u - gCurrentPinballGame->cameraYOffset;
         for (i = 0; i < 4; i++)
         {
             oamSimple = &group->oam[i];
@@ -265,7 +265,7 @@ void DrawWhiscash(void)
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
 
-        if (var0 == 4 || var0 == 10)
+        if (frameIx == 4 || frameIx == 10)
             gCurrentPinballGame->whiscashInvulnerable = 0;
         else
             gCurrentPinballGame->whiscashInvulnerable = 1;
@@ -882,7 +882,7 @@ void AnimateSharpedoEntity(void)
     u16 * dst;
     const u16 * src;
     s16 index;
-    s16 var0;
+    s16 oamIx;
 
     index = (gMain.systemFrameCount % 55) / 11;
     group = &gMain.spriteGroups[SG_RUBY_SHARPEDO];
@@ -890,7 +890,7 @@ void AnimateSharpedoEntity(void)
     if (gCurrentPinballGame->catchHoleAnimFrame)
         index = gCurrentPinballGame->catchHoleAnimFrame;
 
-    var0 = gSharpedoAnimFrameData[index][0];
+    oamIx = gSharpedoAnimFrameData[index][0];
     gCurrentPinballGame->catchHoleTileVariant = gSharpedoAnimFrameData[index][1];
     group->baseX = 179 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 174 - gCurrentPinballGame->cameraYOffset;
@@ -898,7 +898,7 @@ void AnimateSharpedoEntity(void)
     {
         oamSimple = &group->oam[i];
         dst = (u16*)&gOamBuffer[oamSimple->oamId];
-        src = gSharpedoSpritesheetOam[var0][i];
+        src = gSharpedoSpritesheetOam[oamIx][i];
         *dst++ = *src++;
         *dst++ = *src++;
         *dst++ = *src++;

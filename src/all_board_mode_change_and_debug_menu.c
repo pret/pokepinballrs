@@ -178,7 +178,6 @@ void GameOverAnimation(void)
 void EndOfBallSequence(void)
 {
     s16 i, j;
-    u8 var0;
 
     if (gMain.animationTimer)
     {
@@ -248,8 +247,7 @@ void EndOfBallSequence(void)
             gCurrentPinballGame->boardCollisionConfigChanged = FALSE;
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_BOSS_HOLE_ACTIVE)
             {
-                var0 = gCurrentPinballGame->numCompletedBonusStages % 5;
-                switch (var0)
+                switch (gCurrentPinballGame->numCompletedBonusStages % 5)
                 {
                 case 0:
                 case 2:

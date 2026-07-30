@@ -828,13 +828,13 @@ void RenderGroudonSprites(void)
     struct OamDataSimple *oamSimple;
     u16 *dst;
     const u16 *src;
-    s16 var0;
+    s16 oamAnimFrameIx;
     int palette;
 
     group = &gMain.spriteGroups[SG_GROUDON_ENTITY];
     if (group->active)
     {
-        var0 = gGroudonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][0];
+        oamAnimFrameIx = gGroudonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][0];
         group->baseX = gCurrentPinballGame->bossPositionX / 10 + 100u - gCurrentPinballGame->cameraXOffset;
         group->baseY = gCurrentPinballGame->bossPositionY / 10 +  84u - gCurrentPinballGame->cameraYOffset;
         gCurrentPinballGame->catchTargetX = gCurrentPinballGame->bossPositionX / 10 + 118;
@@ -864,7 +864,7 @@ void RenderGroudonSprites(void)
             {
                 oamSimple = &group->oam[i];
                 dst = (u16*)&gOamBuffer[oamSimple->oamId];
-                src = gGroudonMainBodyOamData[var0][i];
+                src = gGroudonMainBodyOamData[oamAnimFrameIx][i];
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
@@ -881,7 +881,7 @@ void RenderGroudonSprites(void)
             {
                 oamSimple = &group->oam[i];
                 dst = (u16*)&gOamBuffer[oamSimple->oamId];
-                src = gGroudonMainBodyOamData[var0][i];
+                src = gGroudonMainBodyOamData[oamAnimFrameIx][i];
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
@@ -897,7 +897,7 @@ void RenderGroudonSprites(void)
             {
                 oamSimple = &group->oam[i];
                 dst = (u16*)&gOamBuffer[oamSimple->oamId];
-                src = gGroudonMainBodyOamData[var0][i];
+                src = gGroudonMainBodyOamData[oamAnimFrameIx][i];
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
@@ -919,14 +919,14 @@ void RenderGroudonSprites(void)
                 group->active = FALSE;
         }
 
-        var0 = gCurrentPinballGame->projectileDirection * 2 - (gCurrentPinballGame->projectileAttackAnimTimer / 4 - 1);
+        oamAnimFrameIx = gCurrentPinballGame->projectileDirection * 2 - (gCurrentPinballGame->projectileAttackAnimTimer / 4 - 1);
         group->baseX = gCurrentPinballGame->bossPositionX / 10 + 100u - gCurrentPinballGame->cameraXOffset;
         group->baseY = gCurrentPinballGame->bossPositionY / 10 +  84u - gCurrentPinballGame->cameraYOffset;
         for (i = 0; i < 6; i++)
         {
             oamSimple = &group->oam[i];
             dst = (u16*)&gOamBuffer[oamSimple->oamId];
-            src = gGroudonProjectileAttackOamData[var0][i];
+            src = gGroudonProjectileAttackOamData[oamAnimFrameIx][i];
             *dst++ = *src++;
             *dst++ = *src++;
             *dst++ = *src++;
@@ -959,7 +959,7 @@ void UpdateGroudonFieldEntities(void)
     int xx, yy;
     int squaredDistance;
     struct Vector32 tempVector;
-    s8 var0;
+    s8 frameIx;
 
     varSL = 0;
     group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT];
@@ -1344,8 +1344,8 @@ void UpdateGroudonFieldEntities(void)
                 break;
             }
 
-            var0 = gCurrentPinballGame->boulderSpriteFrame[i];
-            DmaCopy16(3, gGroudonBoardBoulders_Gfx[var0], (void *)0x06010FA0 + i * 0x300, 0x300);
+            frameIx = gCurrentPinballGame->boulderSpriteFrame[i];
+            DmaCopy16(3, gGroudonBoardBoulders_Gfx[frameIx], (void *)0x06010FA0 + i * 0x300, 0x300);
 
             group->baseX = (gCurrentPinballGame->boulderGroundPosition[i].x / 10) + i - gCurrentPinballGame->cameraXOffset;
             group->baseY = (gCurrentPinballGame->boulderFallHeight[i] / 10) + (gCurrentPinballGame->boulderGroundPosition[i].y / 10) - gCurrentPinballGame->cameraYOffset;

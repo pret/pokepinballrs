@@ -4,6 +4,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 
+/// @brief 
+/// @param arg0 0 = shop, 1= evolution selection
 void UpdateShopEntryAnimation(s16 arg0)
 {
     int showSelectionUI = FALSE;

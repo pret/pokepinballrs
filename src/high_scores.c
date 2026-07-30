@@ -605,12 +605,12 @@ void HighScore_LinkExchangeLoop(void)
             ProcessLinkSendData();
             if ((gLinkStatusResult & 0x100) == 0)
             {
-                s16 var0 = HighScore_ProcessLinkExchange();
-                if (var0 == -1)
+                s16 linkErrorFlag = HighScore_ProcessLinkExchange();
+                if (linkErrorFlag == -1)
                 {
                     gMain.subState = HIGH_SCORE_STATE_LINK_SUCCESS;
                 }
-                else if (var0 == 1)
+                else if (linkErrorFlag == 1)
                 {
                     gHighScorePopupType = HIGH_SCORE_POPUP_TRANSMISSION_ERROR;
                     gMain.subState = HIGH_SCORE_STATE_LINK_ERROR;

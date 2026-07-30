@@ -1481,19 +1481,19 @@ gRayquazaBodyVariantTiles:: @ 0x084AA9EC
 	.incbin "baserom.gba", 0x4AA9EC, 0x5000
 
 gSphealNetGfx:: @ 0x084AF9EC
-	.incbin "baserom.gba", 0x4AF9EC, 0x600
+	.incbin "graphics/stage/spheal/spheal_net.4bpp"
 
 gSphealNetFrontGfx:: @ 0x084AFFEC
-	.incbin "baserom.gba", 0x4AFFEC, 0x480
+	.incbin "graphics/stage/spheal/spheal_net_front.4bpp"
 
 gSphealFlyingEnemyVariantSprites:: @ 0x084B046C
-	.incbin "baserom.gba", 0x4B046C, 0x4380
+	.incbin "graphics/stage/spheal/spheal.4bpp"
 
 gSphealMinionBodySprites:: @ 0x084B47EC
-	.incbin "baserom.gba", 0x4B47EC, 0x3000
+	.incbin "graphics/stage/spheal/sealeo.4bpp"
 
 gSphealResultsScreenGfx:: @ 0x084B77EC
-	.incbin "baserom.gba", 0x4B77EC, 0x800
+	.incbin "graphics/stage/spheal/spheal_results.4bpp"
 
 gWhiscash_Gfx:: @ 0x084B7FEC
 	.incbin "graphics/stage/ruby/whiscash.4bpp"

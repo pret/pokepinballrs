@@ -337,14 +337,14 @@ void AnimateWailmerEntity(void)
     u16 *dst;
     const u16 *src;
     s16 index;
-    s16 var0;
+    s16 oamIx;
 
     index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 16;
     group = &gMain.spriteGroups[SG_SAPPHIRE_WAILMER];
     if (gCurrentPinballGame->catchHoleAnimFrame)
         index = gCurrentPinballGame->catchHoleAnimFrame;
 
-    var0 = gWailmerAnimFrameMap[index][0];
+    oamIx = gWailmerAnimFrameMap[index][0];
     index = gWailmerAnimFrameMap[index][1];
     group->baseX = 164 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 166 - gCurrentPinballGame->cameraYOffset;
@@ -353,7 +353,7 @@ void AnimateWailmerEntity(void)
     {
         oamSimple = &group->oam[i];
         dst = (u16*)&gOamBuffer[oamSimple->oamId];
-        src = gWailmerSpritesheetOam[var0][i];
+        src = gWailmerSpritesheetOam[oamIx][i];
         *dst++ = *src++;
         *dst++ = *src++;
         *dst++ = *src++;
