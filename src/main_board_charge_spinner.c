@@ -39,7 +39,7 @@ void UpdatePikachuChargeCounter(void)
             if (gCurrentPinballGame->pikaChargeProgress >= 168)
             {
                 MPlayStart(&gMPlayInfo_SE1, &se_pika_full_charge_1_up);
-                gCurrentPinballGame->scoreAddedInFrame = 3000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_PIKA_FULL_CHARGE;
             }
         }
     }
@@ -61,7 +61,7 @@ void UpdatePikachuChargeCounter(void)
         {
             gCurrentPinballGame->pikaSpinFrameCounter = 0;
             MPlayStart(&gMPlayInfo_SE3, &se_pika_spinner_clack);
-            gCurrentPinballGame->scoreAddedInFrame = SCORE_100;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_PIKA_CHARGE_TICK;
             if (gCurrentPinballGame->chargeFillValue < 12
                 && !gCurrentPinballGame->kickbackFiring)
             {
@@ -93,7 +93,7 @@ void UpdatePikachuChargeCounter(void)
             {
                 gCurrentPinballGame->pikaSpinFrameCounter = 0;
                 MPlayStart(&gMPlayInfo_SE3, &se_pika_spinner_clack);
-                gCurrentPinballGame->scoreAddedInFrame = SCORE_100;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_PIKA_CHARGE_TICK;
                 if (gCurrentPinballGame->chargeFillValue < 12
                     && !gCurrentPinballGame->kickbackFiring)
                 {

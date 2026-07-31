@@ -244,7 +244,7 @@ void UpdateEvolutionMode(void)
 
                     if (gCurrentPinballGame->stageTimer == 180) {
                         gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-                        gCurrentPinballGame->scoreAddedInFrame = 5000000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_EVO_COMPLETED;
                     }
                 }
 
@@ -448,7 +448,7 @@ void UpdateEvolutionItemAnimation(void)
             ((gCurrentPinballGame->boardLayerDepth == 0 && gCurrentPinballGame->evoItemSlotIndex <= 5) || (gCurrentPinballGame->boardLayerDepth == 2 && gCurrentPinballGame->evoItemSlotIndex > 5)) &&
             gCurrentPinballGame->evoItemsCaught < 3)
         {
-            gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_EVO_ITEM_COLLECTED;
             MPlayStart(&gMPlayInfo_SE1, &se_evo_item_collected);
             gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_PREP_SPAWN_EVO_ITEM;
             gCurrentPinballGame->catchLights[gCurrentPinballGame->evoItemsCaught] = 5;

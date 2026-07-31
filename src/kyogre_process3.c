@@ -6,9 +6,9 @@
 #include "constants/board/center_screen_states.h"
 
 #define KYOGRE_MODE_TIME TICKS_FOR_TIME(3,0)
-#define BONUS_KYOGRE_COMPLETE_POINTS (5 * SCORE_10M)
-#define BONUS_KYOGRE_TALLY_STEP_SIZE (4 * SCORE_100K)
-#define BONUS_KYOGRE_SCORE_PER_HIT (5 * SCORE_100K)
+#define BONUS_KYOGRE_COMPLETE_POINTS (50 * SCORE_M)
+#define BONUS_KYOGRE_TALLY_STEP_SIZE (400 * SCORE_K)
+#define BONUS_KYOGRE_SCORE_PER_HIT (500 * SCORE_K)
 
 extern const u8 gKyogreBonusClear_Gfx[];
 extern const u8 gKyogreWaterAnimPaletteFrames[][0x20];

@@ -977,7 +977,7 @@ void AnimateAerodactylEggDelivery(void)
         }
 
         if (gCurrentPinballGame->eggDropTimer == 78)
-            gCurrentPinballGame->scoreAddedInFrame = SCORE_100K;
+            gCurrentPinballGame->scoreAddedInFrame = (100 * SCORE_K);
 
         DmaCopy16(3, gEggFrameTilesGfx[0], (void *)0x06011CE0, 0x200);
     }

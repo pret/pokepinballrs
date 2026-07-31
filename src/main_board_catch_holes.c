@@ -4,8 +4,6 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 
-#define SCORE_CENTER_TRAP_HOLE (SCORE_10K)
-
 /// @brief 
 /// @param arg0 0 = shop, 1= evolution selection
 void UpdateShopEntryAnimation(s16 arg0)

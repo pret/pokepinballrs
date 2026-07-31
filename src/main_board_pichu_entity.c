@@ -89,7 +89,7 @@ void UpdateKickbackLogic(void)
                 }
 
                 gCurrentPinballGame->kickbackBallHoverPos = gCurrentPinballGame->ball->positionQ1;
-                gCurrentPinballGame->scoreAddedInFrame = 30000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_PIKA_KICKBACK_FIRED;
 
                 if (gCurrentPinballGame->bonusPikaSaverCount <= 98)
                     gCurrentPinballGame->bonusPikaSaverCount++;
@@ -191,7 +191,7 @@ void UpdateKickbackLogic(void)
             {
                 gCurrentPinballGame->allHolesLit = TRUE;
                 gCurrentPinballGame->allHolesLitBlinkTimer = 126;
-                gCurrentPinballGame->scoreAddedInFrame = 4000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_ALL_HOLE_LIGHTS_LIT;
             }
 
             PlayRumble(11);

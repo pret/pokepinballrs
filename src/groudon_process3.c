@@ -6,8 +6,6 @@
 #include "constants/board/center_screen_states.h"
 
 #define GROUDON_MODE_TIME TICKS_FOR_TIME(3,0)
-#define BONUS_GROUDON_COMPLETE_POINTS (5 * SCORE_10M)
-#define SCORE_GROUDON_HIT (5 * SCORE_100K)
 
 extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gGroudonLavaPaletteCycleData[];

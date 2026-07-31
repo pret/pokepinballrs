@@ -6,9 +6,6 @@
 #include "constants/board/main_board.h"
 #include "constants/collision.h"
 
-#define SCORE_CATCH_HIT SCORE_10K
-#define SCORE_JIRACHI_CATCH_HIT SCORE_10K
-
 extern u8 gCatchTargetCollisionBitmap[];
 extern u16 gFlipperCollisionAngles[][2];
 extern u16 gFlipperLaunchVelocityParams[][2];

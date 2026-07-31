@@ -5,6 +5,7 @@
 #include "constants/board/main_board.h"
 
 #define BALL_NORMAL_LAUNCH_SAVER_TIME TICKS_FOR_TIME(0,30)
+#define BONUS_SCORE_TALLY_STEP (200 * SCORE_K)
 
 extern s16 gGameOverLetterXOffsets[];
 extern s16 gGameOverLetterAmplitudes[];
@@ -24,8 +25,6 @@ extern const u8 gBonusStagePal_Dark[];
 extern const u8 gBonusClearTextPal_Lit[];
 extern const u8 gBonusClearTextPal_Dark[];
 extern const s8 gBonusSummaryTextTemplates[][3][20];
-
-#define BONUS_SCORE_TALLY_STEP (2 * SCORE_100K)
 
 // Handle debug system flags
 void BonusStage_HandleModeChangeFlags(void)

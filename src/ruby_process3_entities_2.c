@@ -86,7 +86,7 @@ void UpdateNuzleafEntity(void)
         var0 = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
         m4aSongNumStart(SE_NUZLEAF_HIT);
         PlayRumble(7);
-        gCurrentPinballGame->scoreAddedInFrame = SCORE_100K;
+        gCurrentPinballGame->scoreAddedInFrame = (100 * SCORE_K);
         break;
     case 4:
         if (gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][1] > gCurrentPinballGame->nuzleafFrameTimer)

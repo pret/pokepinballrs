@@ -4,10 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/kecleon_states.h"
 
-#define BONUS_KECLEON_COMPLETE_POINTS (3 * SCORE_10M)
 #define KECLEON_MODE_TIME TICKS_FOR_TIME(2,0)
-#define SCORE_KECLEON_HIT_WHILE_DOWN (5 * SCORE_100K)
-#define SCORE_KECLEON_SCOPE_COLLECTED (SCORE_10K)
 
 extern void UpdateKecleonEntityLogic(void);
 extern void RenderKecleonSprites(void);

@@ -360,7 +360,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                         }
                         else
                         {
-                            gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
+                            gCurrentPinballGame->scoreAddedInFrame = (10 * SCORE_K);
                             gCurrentPinballGame->coinRewardAmount = 10;
                         }
 
@@ -388,7 +388,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                             else if (gCurrentPinballGame->evoArrowProgress == 1)
                                 gCurrentPinballGame->scoreAddedInFrame = 5000;
                             else
-                                gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
+                                gCurrentPinballGame->scoreAddedInFrame = (10 * SCORE_K);
 
                             gCurrentPinballGame->evoArrowProgress++;
                             m4aSongNumStart(SE_EVO_GET_ARROW_EARNED);
@@ -460,7 +460,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                             else if (gCurrentPinballGame->catchArrowProgress == 1)
                                 gCurrentPinballGame->scoreAddedInFrame = 5000;
                             else
-                                gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
+                                gCurrentPinballGame->scoreAddedInFrame = (10 * SCORE_K);
 
                             gCurrentPinballGame->catchArrowProgress++;
 
@@ -512,7 +512,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     {
                         gCurrentPinballGame->allHolesLit = TRUE;
                         gCurrentPinballGame->allHolesLitBlinkTimer = 126;
-                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_ALL_HOLE_LIGHTS_LIT;
                     }
                 }
             }
@@ -532,7 +532,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     {
                         gCurrentPinballGame->allHolesLit = TRUE;
                         gCurrentPinballGame->allHolesLitBlinkTimer = 126;
-                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_ALL_HOLE_LIGHTS_LIT;
                     }
                 }
             }
@@ -552,7 +552,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     {
                         gCurrentPinballGame->allHolesLit = TRUE;
                         gCurrentPinballGame->allHolesLitBlinkTimer = 126;
-                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_ALL_HOLE_LIGHTS_LIT;
                     }
                 }
             }
@@ -571,7 +571,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     {
                         gCurrentPinballGame->allHolesLit = TRUE;
                         gCurrentPinballGame->allHolesLitBlinkTimer = 126;
-                        gCurrentPinballGame->scoreAddedInFrame = 4000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_ALL_HOLE_LIGHTS_LIT;
                     }
                 }
             }

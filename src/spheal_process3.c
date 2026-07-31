@@ -5,9 +5,6 @@
 #include "constants/board/spheal_states.h"
 
 #define SPHEAL_MODE_TIME TICKS_FOR_TIME(2,0)
-#define SCORE_PER_BALL_IN_NET (1 * SCORE_M)
-#define SCORE_PER_SPHEAL_IN_NET (5 * SCORE_M)
-
 
 struct SphealFlightPath
 {
@@ -1570,7 +1567,7 @@ void UpdateSphealResultsScreen(void)
     }
 
     value = gCurrentPinballGame->sphealKnockdownDisplayCount[0] * 5000000;
-    sp0[0] = value / SCORE_10M;
+    sp0[0] = LEAD_DIGIT_10M(value);
     sp0[1] = DIGIT_1M(value);
     sp0[2] = 10;
     sp0[3] = DIGIT_100K(value);
@@ -1619,7 +1616,7 @@ void UpdateSphealResultsScreen(void)
     }
 
     value = gCurrentPinballGame->sphealKnockdownDisplayCount[1] * SCORE_M;
-    sp0[0] = value / SCORE_10M;
+    sp0[0] = LEAD_DIGIT_10M(value);
     sp0[1] = DIGIT_1M(value);
     sp0[2] = 10;
     sp0[3] = DIGIT_100K(value);

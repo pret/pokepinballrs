@@ -10,9 +10,6 @@
 #define JIRACHI_MODE_TIME TICKS_FOR_TIME(0,30)
 #define JIRACHI_MODE_SAVER_TIME TICKS_FOR_TIME(0,54)
 
-#define SCORE_CATCH_TILE_BURST (3 * SCORE_100K)
-
-
 extern u8 gCatchSpriteFrameBuffer[];
 
 extern struct BoardConfig gBoardConfig;
