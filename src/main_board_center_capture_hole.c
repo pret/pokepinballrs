@@ -475,13 +475,13 @@ void GivePrize(void)
     case PRIZE_500_POINTS:
         if (gCurrentPinballGame->outcomeFrameCounter == 70) {
             m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
-            gCurrentPinballGame->scoreAddedInFrame = 500;
+            gCurrentPinballGame->scoreAddedInFrame = (5 * SCORE_100);
         }
         break;
     case PRIZE_900_POINTS:
         if (gCurrentPinballGame->outcomeFrameCounter == 70) {
             m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
-            gCurrentPinballGame->scoreAddedInFrame = 900;
+            gCurrentPinballGame->scoreAddedInFrame = (9 * SCORE_100);
         }
         break;
     case PRIZE_BONUS_MULT_PLUS_1:

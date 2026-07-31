@@ -7,6 +7,8 @@
 
 #define DUSKULL_MODE_TIME TICKS_FOR_TIME(2,0)
 #define BONUS_DUSKULL_COMPLETE_POINTS (3 * SCORE_10M)
+#define SCORE_DUSKULL_HIT SCORE_100K
+#define SCORE_DUSCLOPS_HIT (3 * SCORE_100K)
 
 #define DUSKULL_NEEDED_TO_PHASE_TRANSFER 20
 #define DUSKULL_CONCURRENT_MAX 3
@@ -439,7 +441,7 @@ void DuskullPhase_ProcessEntityLogic(void) {
 
             if (gCurrentPinballGame->minionActiveCount > 0)
                 gCurrentPinballGame->minionActiveCount--; //Number of active duskull
-            gCurrentPinballGame->scoreAddedInFrame = SCORE_100K;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_DUSKULL_HIT;
             gCurrentPinballGame->bonusModeHitCount++; // Number hit
             m4aSongNumStart(SE_DUSKULL_DEATH_CRY); //Duskull Death cry
             PlayRumble(7);
@@ -870,7 +872,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
         }
 
         gCurrentPinballGame->bonusModeHitCount++;
-        gCurrentPinballGame->scoreAddedInFrame = 300000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_DUSCLOPS_HIT;
 
         break;
     }

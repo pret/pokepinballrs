@@ -7,6 +7,7 @@
 
 #define GROUDON_MODE_TIME TICKS_FOR_TIME(3,0)
 #define BONUS_GROUDON_COMPLETE_POINTS (5 * SCORE_10M)
+#define SCORE_GROUDON_HIT (5 * SCORE_100K)
 
 extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gGroudonLavaPaletteCycleData[];
@@ -231,7 +232,7 @@ void GroudonBoardProcess_3B_3B49C(void)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
             gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 50000000;
+            gCurrentPinballGame->scoreAddedInFrame = BONUS_GROUDON_COMPLETE_POINTS;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -287,7 +288,7 @@ void UpdateGroudonEntityLogic(void)
         if (gCurrentPinballGame->bossHitFlashTimer == 35)
         {
             MPlayStart(&gMPlayInfo_SE1, &se_groudon_hit);
-            gCurrentPinballGame->scoreAddedInFrame = 500000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_GROUDON_HIT;
             PlayRumble(7);
             gCurrentPinballGame->bonusModeHitCount++;
             if (gCurrentPinballGame->bonusModeHitCount >= gCurrentPinballGame->legendaryHitsRequired)

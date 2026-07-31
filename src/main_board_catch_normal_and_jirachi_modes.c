@@ -10,6 +10,8 @@
 #define JIRACHI_MODE_TIME TICKS_FOR_TIME(0,30)
 #define JIRACHI_MODE_SAVER_TIME TICKS_FOR_TIME(0,54)
 
+#define SCORE_CATCH_TILE_BURST (3 * SCORE_100K)
+
 
 extern u8 gCatchSpriteFrameBuffer[];
 
@@ -839,7 +841,7 @@ void CheckCatchTileRevealState(void)
             if (gCurrentPinballGame->catchTilesBoardAcknowledged + 6 == gCurrentPinballGame->catchTilesBumperAcknowledgedCount)
             {
                 gCurrentPinballGame->catchTileRevealState = CATCH_TILE_REVEAL_ALL_AT_ONCE;
-                gCurrentPinballGame->scoreAddedInFrame = 300000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_CATCH_TILE_BURST;
             }
             else
             {

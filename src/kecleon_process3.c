@@ -6,6 +6,8 @@
 
 #define BONUS_KECLEON_COMPLETE_POINTS (3 * SCORE_10M)
 #define KECLEON_MODE_TIME TICKS_FOR_TIME(2,0)
+#define SCORE_KECLEON_HIT_WHILE_DOWN (5 * SCORE_100K)
+#define SCORE_KECLEON_SCOPE_COLLECTED (SCORE_10K)
 
 extern void UpdateKecleonEntityLogic(void);
 extern void RenderKecleonSprites(void);
@@ -616,7 +618,7 @@ void UpdateKecleonEntityLogic(void)
         gCurrentPinballGame->bossFramesetIndex = gCurrentPinballGame->kecleonFramesetBase + 2;
         gCurrentPinballGame->bossFrameTimer = 0;
         gCurrentPinballGame->kecleonCamoStrength = 0;
-        gCurrentPinballGame->scoreAddedInFrame = 500000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_KECLEON_HIT_WHILE_DOWN;
         gCurrentPinballGame->bonusModeHitCount++;
         MPlayStart(&gMPlayInfo_SE1, &se_kecleon_hit_damaged);
         PlayRumble(7);
@@ -978,7 +980,7 @@ void UpdateKecleonScopeItem(void)
                 gCurrentPinballGame->kecleonBoardHitState = 0;
                 gCurrentPinballGame->kecleonTargetActive = TRUE;
                 gCurrentPinballGame->kecleonAnimTimer = 0;
-                gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_KECLEON_SCOPE_COLLECTED;
                 m4aSongNumStart(SE_KECLEON_SCOPE_ACTIVATED);
             }
 

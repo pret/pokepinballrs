@@ -4,6 +4,10 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 
+#define SCORE_CENTER_TRAP_HOLE (SCORE_10K)
+
+/// @brief 
+/// @param arg0 0 = shop, 1= evolution selection
 void UpdateShopEntryAnimation(s16 arg0)
 {
     int showSelectionUI = FALSE;
@@ -779,7 +783,7 @@ void InitCenterTrapMode(void)
     gCurrentPinballGame->modeAnimTimer = 0x96;
     gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     gCurrentPinballGame->bonusTrapEnabled = FALSE;
-    gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
+    gCurrentPinballGame->scoreAddedInFrame = SCORE_CENTER_TRAP_HOLE;
     gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
     PlayRumble(8);
 }
