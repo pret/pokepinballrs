@@ -577,6 +577,7 @@ void EndOfBallBonusSummary(void)
     s16 playTextProgressSound;
 
     const int DIGIT_TILE_BASE_IX = 27;
+    const u8 DIGIT_TILE_WITH_COMMA_OFFSET = 10;
 
     textRevealTimer = 212 - gCurrentPinballGame->bonusSummaryTimer;
     subtotalSlideYPos = 0;
@@ -812,9 +813,9 @@ void EndOfBallBonusSummary(void)
             // Line 0 score display: category count
             for (i = 0; i < 10; i++)
                 scoreDigit[i] = 0;
-            scoreDigit[2] = value / 100;
-            scoreDigit[1] = (value % 100) / 10;
-            scoreDigit[0] = value % 10;
+            scoreDigit[2] = LEAD_DIGIT_100S(value);
+            scoreDigit[1] = DIGIT_10S(value);
+            scoreDigit[0] = DIGIT_1S(value);
             // No display for leading 0s
             for (i = 2; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
@@ -825,14 +826,14 @@ void EndOfBallBonusSummary(void)
                 scoreDigit[i] = 0;
             value = value * multiplier;
             gCurrentPinballGame->bonusCategoryScore = value;
-            scoreDigit[7] = value / 10000000;
-            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
-            scoreDigit[5] = (value % 1000000) / 100000;
-            scoreDigit[4] = (value % 100000) / 10000;
-            scoreDigit[3] = ((value % 10000) / 1000) + 10;
-            scoreDigit[2] = (value % 1000) / 100;
-            scoreDigit[1] = (value % 100) / 10;
-            scoreDigit[0] = value % 10;
+            scoreDigit[7] = LEAD_DIGIT_10M(value);
+            scoreDigit[6] = DIGIT_1M(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[5] = DIGIT_100K(value);
+            scoreDigit[4] = DIGIT_10K(value);
+            scoreDigit[3] = DIGIT_1K(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[2] = DIGIT_100S(value);
+            scoreDigit[1] = DIGIT_10S(value);
+            scoreDigit[0] = DIGIT_1S(value);
             // No display for leading 0s
             for (i = 7; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
@@ -841,16 +842,17 @@ void EndOfBallBonusSummary(void)
             // Line 2 score display: subtotal
             for (i = 0; i < 10; i++)
                 scoreDigit[i] = 0;
+
             value = gCurrentPinballGame->bonusSubtotal;
-            scoreDigit[8] = value / 100000000;
-            scoreDigit[7] = (value % 100000000) / 10000000;
-            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
-            scoreDigit[5] = (value % 1000000) / 100000;
-            scoreDigit[4] = (value % 100000) / 10000;
-            scoreDigit[3] = ((value % 10000) / 1000) + 10;
-            scoreDigit[2] = (value % 1000) / 100;
-            scoreDigit[1] = (value % 100) / 10;
-            scoreDigit[0] = value % 10;
+            scoreDigit[8] = LEAD_DIGIT_100M(value);
+            scoreDigit[7] = DIGIT_10M(value);
+            scoreDigit[6] = DIGIT_1M(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[5] = DIGIT_100K(value);
+            scoreDigit[4] = DIGIT_10K(value);
+            scoreDigit[3] = DIGIT_1K(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[2] = DIGIT_100S(value);
+            scoreDigit[1] = DIGIT_10S(value);
+            scoreDigit[0] = DIGIT_1S(value);
             // No display for leading 0s
             for (i = 8; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
@@ -862,15 +864,15 @@ void EndOfBallBonusSummary(void)
             for (i = 0; i < 10; i++)
                 scoreDigit[i] = 0;
             value = gCurrentPinballGame->bonusSubtotal;
-            scoreDigit[8] = value / 100000000;
-            scoreDigit[7] = (value % 100000000) / 10000000;
-            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
-            scoreDigit[5] = (value % 1000000) / 100000;
-            scoreDigit[4] = (value % 100000) / 10000;
-            scoreDigit[3] = ((value % 10000) / 1000) + 10;
-            scoreDigit[2] = (value % 1000) / 100;
-            scoreDigit[1] = (value % 100) / 10;
-            scoreDigit[0] = value % 10;
+            scoreDigit[8] = LEAD_DIGIT_100M(value);
+            scoreDigit[7] = DIGIT_10M(value);
+            scoreDigit[6] = DIGIT_1M(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[5] = DIGIT_100K(value);
+            scoreDigit[4] = DIGIT_10K(value);
+            scoreDigit[3] = DIGIT_1K(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[2] = DIGIT_100S(value);
+            scoreDigit[1] = DIGIT_10S(value);
+            scoreDigit[0] = DIGIT_1S(value);
             // No display for leading 0s
             for (i = 8; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
@@ -882,15 +884,15 @@ void EndOfBallBonusSummary(void)
             for (i = 0; i < 10; i++)
                 scoreDigit[i] = 0;
             value = gCurrentPinballGame->bonusSubtotal;
-            scoreDigit[8] = value / 100000000;
-            scoreDigit[7] = (value % 100000000) / 10000000;
-            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
-            scoreDigit[5] = (value % 1000000) / 100000;
-            scoreDigit[4] = (value % 100000) / 10000;
-            scoreDigit[3] = ((value % 10000) / 1000) + 10;
-            scoreDigit[2] = (value % 1000) / 100;
-            scoreDigit[1] = (value % 100) / 10;
-            scoreDigit[0] = value % 10;
+            scoreDigit[8] = LEAD_DIGIT_100M(value);
+            scoreDigit[7] = DIGIT_10M(value);
+            scoreDigit[6] = DIGIT_1M(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[5] = DIGIT_100K(value);
+            scoreDigit[4] = DIGIT_10K(value);
+            scoreDigit[3] = DIGIT_1K(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[2] = DIGIT_100S(value);
+            scoreDigit[1] = DIGIT_10S(value);
+            scoreDigit[0] = DIGIT_1S(value);
             // No display for leading 0s
             for (i = 8; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
@@ -900,12 +902,12 @@ void EndOfBallBonusSummary(void)
             for (i = 0; i < 10; i++)
                 scoreDigit[i] = 0;
             value = gCurrentPinballGame->bonusMultiplier;
-            scoreDigit[5] = (value % 1000000) / 100000;
-            scoreDigit[4] = (value % 100000) / 10000;
-            scoreDigit[3] = ((value % 10000) / 1000) + 10;
-            scoreDigit[2] = (value % 1000) / 100;
-            scoreDigit[1] = (value % 100) / 10;
-            scoreDigit[0] = value % 10;
+            scoreDigit[5] = DIGIT_100K(value);
+            scoreDigit[4] = DIGIT_10K(value);
+            scoreDigit[3] = DIGIT_1K(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[2] = DIGIT_100S(value);
+            scoreDigit[1] = DIGIT_10S(value);
+            scoreDigit[0] = DIGIT_1S(value);
             // No display for leading 0s
             for (i = 5; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
@@ -928,25 +930,25 @@ void EndOfBallBonusSummary(void)
                 gCurrentPinballGame->bonusMultiplier--;
             }
 
-            if (value / 100000000 > 0)
+            if (value / SCORE_HI_STEP > 0)
             {
-                value -= 100000000;
+                value -= SCORE_HI_STEP;
                 scoreHi++;
             }
 
             gCurrentPinballGame->bonusTotalScoreHi = scoreHi;
             gCurrentPinballGame->bonusTotalScoreLo = value;
-            scoreDigit[10] = (scoreHi % 1000) / 100;
-            scoreDigit[9] = ((scoreHi % 100) / 10) + 10;
-            scoreDigit[8] = scoreHi % 10;
-            scoreDigit[7] = (value % 100000000) / 10000000;
-            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
-            scoreDigit[5] = (value % 1000000) / 100000;
-            scoreDigit[4] = (value % 100000) / 10000;
-            scoreDigit[3] = ((value % 10000) / 1000) + 10;
-            scoreDigit[2] = (value % 1000) / 100;
-            scoreDigit[1] = (value % 100) / 10;
-            scoreDigit[0] = value % 10;
+            scoreDigit[10] = DIGIT_100S(scoreHi);
+            scoreDigit[9] = DIGIT_10S(scoreHi) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[8] = DIGIT_1S(scoreHi);
+            scoreDigit[7] = DIGIT_10M(value);
+            scoreDigit[6] = DIGIT_1M(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[5] = DIGIT_100K(value);
+            scoreDigit[4] = DIGIT_10K(value);
+            scoreDigit[3] = DIGIT_1K(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[2] = DIGIT_100S(value);
+            scoreDigit[1] = DIGIT_10S(value);
+            scoreDigit[0] = DIGIT_1S(value);
             // No display for leading 0s
             for (i = 10; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
@@ -982,15 +984,15 @@ void EndOfBallBonusSummary(void)
             }
 
             value = gCurrentPinballGame->bonusSubtotal;
-            scoreDigit[8] = value / 100000000;
-            scoreDigit[7] = (value % 100000000) / 10000000;
-            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
-            scoreDigit[5] = (value % 1000000) / 100000;
-            scoreDigit[4] = (value % 100000) / 10000;
-            scoreDigit[3] = ((value % 10000) / 1000) + 10;
-            scoreDigit[2] = (value % 1000) / 100;
-            scoreDigit[1] = (value % 100) / 10;
-            scoreDigit[0] = value % 10;
+            scoreDigit[8] = LEAD_DIGIT_100M(value);
+            scoreDigit[7] = DIGIT_10M(value);
+            scoreDigit[6] = DIGIT_1M(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[5] = DIGIT_100K(value);
+            scoreDigit[4] = DIGIT_10K(value);
+            scoreDigit[3] = DIGIT_1K(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[2] = DIGIT_100S(value);
+            scoreDigit[1] = DIGIT_10S(value);
+            scoreDigit[0] = DIGIT_1S(value);
             for (i = 8; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)
                 gCurrentPinballGame->bonusTextContent[2][19 - j] = scoreDigit[j] + DIGIT_TILE_BASE_IX;
@@ -1035,17 +1037,17 @@ void EndOfBallBonusSummary(void)
 
             scoreHi = gCurrentPinballGame->bonusTotalScoreHi;
             value = gCurrentPinballGame->bonusTotalScoreLo;
-            scoreDigit[10] = (scoreHi % 1000) / 100;
-            scoreDigit[9] = ((scoreHi % 100) / 10) + 10;
-            scoreDigit[8] = scoreHi % 10;
-            scoreDigit[7] = (value % 100000000) / 10000000;
-            scoreDigit[6] = ((value % 10000000) / 1000000) + 10;
-            scoreDigit[5] = (value % 1000000) / 100000;
-            scoreDigit[4] = (value % 100000) / 10000;
-            scoreDigit[3] = ((value % 10000) / 1000) + 10;
-            scoreDigit[2] = (value % 1000) / 100;
-            scoreDigit[1] = (value % 100) / 10;
-            scoreDigit[0] = value % 10;
+            scoreDigit[10] = DIGIT_100S(scoreHi);
+            scoreDigit[9] = DIGIT_10S(scoreHi) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[8] = DIGIT_1S(scoreHi);
+            scoreDigit[7] = DIGIT_10M(value);
+            scoreDigit[6] = DIGIT_1M(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[5] = DIGIT_100K(value);
+            scoreDigit[4] = DIGIT_10K(value);
+            scoreDigit[3] = DIGIT_1K(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
+            scoreDigit[2] = DIGIT_100S(value);
+            scoreDigit[1] = DIGIT_10S(value);
+            scoreDigit[0] = DIGIT_1S(value);
             // No display for leading 0s
             for (i = 10; i > 0 && (scoreDigit[i] <= 0 || scoreDigit[i] == 10); i--) {}
             for (j = 0; j <= i; j++)

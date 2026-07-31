@@ -360,7 +360,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                         }
                         else
                         {
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
                             gCurrentPinballGame->coinRewardAmount = 10;
                         }
 
@@ -388,7 +388,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                             else if (gCurrentPinballGame->evoArrowProgress == 1)
                                 gCurrentPinballGame->scoreAddedInFrame = 5000;
                             else
-                                gCurrentPinballGame->scoreAddedInFrame = 10000;
+                                gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
 
                             gCurrentPinballGame->evoArrowProgress++;
                             m4aSongNumStart(SE_EVO_GET_ARROW_EARNED);
@@ -403,7 +403,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 {
                     // Left Ball Upgrade rollover
                     if (!gCurrentPinballGame->ballPowerUpLight[0])
-                        gCurrentPinballGame->scoreAddedInFrame = 1000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
 
                     gCurrentPinballGame->ballPowerUpLight[0] = TRUE;
                     gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_LEFT_BALL_UPGRADE_LANE;
@@ -419,7 +419,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 {
                     // Middle Ball Upgrade rollover
                     if (!gCurrentPinballGame->ballPowerUpLight[1])
-                        gCurrentPinballGame->scoreAddedInFrame = 1000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
 
                     gCurrentPinballGame->ballPowerUpLight[1] = TRUE;
                     gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_CENTER_BALL_UPGRADE_LANE;
@@ -435,7 +435,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 {
                     // Right Ball Upgrade rollover
                     if (!gCurrentPinballGame->ballPowerUpLight[2])
-                        gCurrentPinballGame->scoreAddedInFrame = 1000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
 
                     gCurrentPinballGame->ballPowerUpLight[2] = TRUE;
                     gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_RIGHT_BALL_UPGRADE_LANE;
@@ -460,7 +460,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                             else if (gCurrentPinballGame->catchArrowProgress == 1)
                                 gCurrentPinballGame->scoreAddedInFrame = 5000;
                             else
-                                gCurrentPinballGame->scoreAddedInFrame = 10000;
+                                gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
 
                             gCurrentPinballGame->catchArrowProgress++;
 
@@ -503,7 +503,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_H_OUTLANE;
                 if (!gCurrentPinballGame->holeIndicators[0])
                 {
-                    gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
                     gCurrentPinballGame->holeIndicators[0] = TRUE;
                     if (!gCurrentPinballGame->allHolesLit && (
                         gCurrentPinballGame->holeIndicators[1] &
@@ -523,7 +523,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
 
                 if (!gCurrentPinballGame->holeIndicators[1])
                 {
-                    gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
                     gCurrentPinballGame->holeIndicators[1] = TRUE;
                     if (!gCurrentPinballGame->allHolesLit && (
                         gCurrentPinballGame->holeIndicators[0] &
@@ -542,7 +542,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_L_INLANE;
                 if (!gCurrentPinballGame->holeIndicators[2])
                 {
-                    gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
                     gCurrentPinballGame->holeIndicators[2] = TRUE;
 
                     if (!gCurrentPinballGame->allHolesLit && (
@@ -562,7 +562,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                 gCurrentPinballGame->ballCollisionZone = SAPPHIRE_ZONE_E_OUTLANE;
                 if (!gCurrentPinballGame->holeIndicators[3])
                 {
-                    gCurrentPinballGame->scoreAddedInFrame = 1000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
                     gCurrentPinballGame->holeIndicators[3] = TRUE;
                     if (!gCurrentPinballGame->allHolesLit && (
                         gCurrentPinballGame->holeIndicators[0] &

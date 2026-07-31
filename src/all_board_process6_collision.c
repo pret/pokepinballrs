@@ -783,13 +783,13 @@ u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
                             gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE;
                             gCurrentPinballGame->captureSequenceFrame = 0;
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
                         }
                         else
                         {
                             gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_MON_HIT_IN_CATCH_MODE;
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
                         }
 
                         gCurrentPinballGame->creatureHitCooldown = 4;
@@ -809,13 +809,13 @@ u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
                             gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE;
                             gCurrentPinballGame->captureSequenceFrame = 0;
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
                         }
                         else
                         {
                             gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_MON_HIT_IN_CATCH_MODE;
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
                         }
 
                         gCurrentPinballGame->creatureHitCooldown = 4;

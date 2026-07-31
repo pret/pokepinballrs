@@ -133,14 +133,14 @@ void ProcessBonusBannerAndScoring(void)
         }
     }
 
-    sp0[0] = (var1 / 10000000);
-    sp0[1] = (var1 % 10000000) / 1000000;
-    sp0[2] = (var1 % 1000000) / 100000;
-    sp0[3] = (var1 % 100000) / 10000;
-    sp0[4] = (var1 % 10000) / 1000;
-    sp0[5] = (var1 % 1000) / 100;
-    sp0[6] = (var1 % 100) / 10;
-    sp0[7] = (var1 % 10);
+    sp0[0] = LEAD_DIGIT_10M(var1);
+    sp0[1] = DIGIT_1M(var1);
+    sp0[2] = DIGIT_100K(var1);
+    sp0[3] = DIGIT_10K(var1);
+    sp0[4] = DIGIT_1K(var1);
+    sp0[5] = DIGIT_100S(var1);
+    sp0[6] = DIGIT_10S(var1);
+    sp0[7] = DIGIT_1S(var1);;
 
     switch (gMain.selectedField)
     {

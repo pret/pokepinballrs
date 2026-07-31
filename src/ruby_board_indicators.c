@@ -120,8 +120,9 @@ void DrawRubyProgressDigits(void)
     const u8 **src;
     const u8 **dest;
 
-    var0 = gCurrentPinballGame->progressLevel / 10;
-    var1 = gCurrentPinballGame->progressLevel % 10;
+    var0 = LEAD_DIGIT_10S(gCurrentPinballGame->progressLevel);
+    var1 = DIGIT_1S(gCurrentPinballGame->progressLevel);
+
     src = gRubyProgressDigitTilePointers[var0];
     dest = gRubyProgressDigitTilePointers[10];
     DmaCopy16(3, src[0], dest[0], 0x20);

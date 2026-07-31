@@ -4,6 +4,10 @@
 #include "constants/bg_music.h"
 #include "constants/board/spheal_states.h"
 
+#define SCORE_PER_BALL_IN_NET (1 * SCORE_M)
+#define SCORE_PER_SPHEAL_IN_NET (5 * SCORE_M)
+
+
 struct SphealFlightPath
 {
     struct Vector16 *pathWaypoints;
@@ -1565,16 +1569,16 @@ void UpdateSphealResultsScreen(void)
     }
 
     value = gCurrentPinballGame->sphealKnockdownDisplayCount[0] * 5000000;
-    sp0[0] = value / 10000000;
-    sp0[1] = (value % 10000000) / 1000000;
+    sp0[0] = value / SCORE_10M;
+    sp0[1] = DIGIT_1M(value);
     sp0[2] = 10;
-    sp0[3] = (value % 1000000) / 100000;
-    sp0[4] = (value % 100000) / 10000;
-    sp0[5] = (value % 10000) / 1000;
+    sp0[3] = DIGIT_100K(value);
+    sp0[4] = DIGIT_10K(value);
+    sp0[5] = DIGIT_1K(value);
     sp0[6] = 10;
-    sp0[7] = (value % 1000) / 100;
-    sp0[8] = (value % 100) / 10;
-    sp0[9] = value % 10;
+    sp0[7] = DIGIT_100S(value);
+    sp0[8] = DIGIT_10S(value);
+    sp0[9] = DIGIT_1S(value);
     for (i = 0; i < 9; i++)
     {
         if (sp0[i] % 10 == 0)
@@ -1595,8 +1599,8 @@ void UpdateSphealResultsScreen(void)
     sp18[9] = sp0[9] * 2 + 0x2D0;
 
     value = gCurrentPinballGame->sphealKnockdownDisplayCount[0];
-    sp0[0] = value / 10;
-    sp0[1] = value % 10;
+    sp0[0] = LEAD_DIGIT_10S(value);
+    sp0[1] = DIGIT_1S(value);
     if (sp0[0] == 0)
         sp0[0] = 0x14;
     sp18[10] = sp0[0] * 2 + 0x2D0;
@@ -1613,17 +1617,17 @@ void UpdateSphealResultsScreen(void)
         gOamBuffer[oamSimple->oamId].tileNum = sp18[i];
     }
 
-    value = gCurrentPinballGame->sphealKnockdownDisplayCount[1] * 1000000;
-    sp0[0] = value / 10000000;
-    sp0[1] = (value % 10000000) / 1000000;
+    value = gCurrentPinballGame->sphealKnockdownDisplayCount[1] * SCORE_M;
+    sp0[0] = value / SCORE_10M;
+    sp0[1] = DIGIT_1M(value);
     sp0[2] = 10;
-    sp0[3] = (value % 1000000) / 100000;
-    sp0[4] = (value % 100000) / 10000;
-    sp0[5] = (value % 10000) / 1000;
+    sp0[3] = DIGIT_100K(value);
+    sp0[4] = DIGIT_10K(value);
+    sp0[5] = DIGIT_1K(value);
     sp0[6] = 10;
-    sp0[7] = (value % 1000) / 100;
-    sp0[8] = (value % 100) / 10;
-    sp0[9] = value % 10;
+    sp0[7] = DIGIT_100S(value);
+    sp0[8] = DIGIT_10S(value);
+    sp0[9] = DIGIT_1S(value);
     for (i = 0; i < 9; i++)
     {
         if (sp0[i] % 10 == 0)
@@ -1644,8 +1648,8 @@ void UpdateSphealResultsScreen(void)
     sp18[9] = sp0[9] * 2 + 0x2D0;
 
     value = gCurrentPinballGame->sphealKnockdownDisplayCount[1];
-    sp0[0] = value / 10;
-    sp0[1] = value % 10;
+    sp0[0] = LEAD_DIGIT_10S(value);
+    sp0[1] = DIGIT_1S(value);
     if (sp0[0] == 0)
         sp0[0] = 0x14;
     sp18[10] = sp0[0] * 2 + 0x2D0;
@@ -1662,20 +1666,20 @@ void UpdateSphealResultsScreen(void)
         gOamBuffer[oamSimple->oamId].tileNum = sp18[i];
     }
 
-    value = gCurrentPinballGame->sphealKnockdownDisplayCount[0] * 5000000
-          + gCurrentPinballGame->sphealKnockdownDisplayCount[1] * 1000000;
+    value = gCurrentPinballGame->sphealKnockdownDisplayCount[0] * SCORE_PER_SPHEAL_IN_NET
+          + gCurrentPinballGame->sphealKnockdownDisplayCount[1] * SCORE_PER_BALL_IN_NET;
     gCurrentPinballGame->totalBonusScore = value;
-    sp0[0] = value / 100000000;
-    sp0[1] = (value % 100000000) / 10000000;
-    sp0[2] = (value % 10000000) / 1000000;
+    sp0[0] = LEAD_DIGIT_100M(value);
+    sp0[1] = DIGIT_10M(value);
+    sp0[2] = DIGIT_1M(value);
     sp0[3] = 10;
-    sp0[4] = (value % 1000000) / 100000;
-    sp0[5] = (value % 100000) / 10000;
-    sp0[6] = (value % 10000) / 1000;
+    sp0[4] = DIGIT_100K(value);
+    sp0[5] = DIGIT_10K(value);
+    sp0[6] = DIGIT_1K(value);
     sp0[7] = 10;
-    sp0[8] = (value % 1000) / 100;
-    sp0[9] = (value % 100) / 10;
-    sp0[10] = value % 10;
+    sp0[8] = DIGIT_100S(value);
+    sp0[9] = DIGIT_10S(value);
+    sp0[10] = DIGIT_1S(value);
     for (i = 0; i < 10; i++)
     {
         if (sp0[i] % 10 == 0)

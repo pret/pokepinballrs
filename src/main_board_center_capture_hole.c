@@ -462,14 +462,14 @@ void GivePrize(void)
         if (gCurrentPinballGame->outcomeFrameCounter == 70)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->prizeId - 23) * 1000000;
+            gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->prizeId - 23) * SCORE_M;
         }
         break;
     case PRIZE_100_POINTS:
         if (gCurrentPinballGame->outcomeFrameCounter == 70)
         {
             m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
-            gCurrentPinballGame->scoreAddedInFrame = 100;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_100;
         }
         break;
     case PRIZE_500_POINTS:
@@ -744,7 +744,7 @@ void RunMonCaptureSequence(void)
     case 12:
         temp_r0 = 99 - gCurrentPinballGame->captureSequenceFrame;
         gCurrentPinballGame->trapAngleQ16 -= (temp_r0 * ANGLE_45) / 100 - ANGLE_45;
-        gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
+        gCurrentPinballGame->ball->spinAngle -= DEG_TO_BAM(45);
 
         temp_r0 -= 20;
 
@@ -1253,10 +1253,10 @@ void RunMonCaptureSequence(void)
                 case 195:
                 case 196:
                     gCurrentPinballGame->scoreAddStepSize = 140000;
-                    gCurrentPinballGame->scoreAddedInFrame = 10000000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_10M;
                     break;
                 default:
-                    gCurrentPinballGame->scoreAddedInFrame = 1000000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_M;
                     break;
                 }
             }
@@ -1268,7 +1268,7 @@ void RunMonCaptureSequence(void)
                 if (gCurrentPinballGame->currentSpecies == SPECIES_PICHU)
                 {
                     gCurrentPinballGame->scoreAddStepSize = 140000;
-                    gCurrentPinballGame->scoreAddedInFrame = 10000000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_10M;
                 }
                 else
                     gCurrentPinballGame->scoreAddedInFrame = 3000000;
@@ -1286,7 +1286,7 @@ void RunMonCaptureSequence(void)
                 else
                 {
                     gCurrentPinballGame->scoreAddStepSize = 400000;
-                    gCurrentPinballGame->scoreAddedInFrame = 10000000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_10M;
                 }
             }
         }

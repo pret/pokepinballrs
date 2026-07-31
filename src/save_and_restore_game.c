@@ -441,9 +441,9 @@ void RestoreFieldSpecificGraphics(void)
         if (!gCurrentPinballGame->evolutionShopActive)
         {
             var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
-            var2 = var1[3] / 10;
+            var2 = LEAD_DIGIT_10S(var1[3]);
             DmaCopy16(3, gDecimalDigitTilesGfx[var2], (void *)0x6015DA0, 0x40);
-            var3 = var1[3] % 10;
+            var3 = DIGIT_1S(var1[3]);
             DmaCopy16(3, gDecimalDigitTilesGfx[var3], (void *)0x6015E60, 0x40);
         }
         break;

@@ -439,7 +439,7 @@ void DuskullPhase_ProcessEntityLogic(void) {
 
             if (gCurrentPinballGame->minionActiveCount > 0)
                 gCurrentPinballGame->minionActiveCount--; //Number of active duskull
-            gCurrentPinballGame->scoreAddedInFrame = 100000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_100K;
             gCurrentPinballGame->bonusModeHitCount++; // Number hit
             m4aSongNumStart(SE_DUSKULL_DEATH_CRY); //Duskull Death cry
             PlayRumble(7);

@@ -2,6 +2,7 @@
 #include "m4a.h"
 #include "main.h"
 #include "constants/bg_music.h"
+#include "constants/score.h"
 
 extern const u8 gTimerWarningPalette_Fast[];
 extern const u8 gDefaultTimerPalette[];
@@ -28,7 +29,7 @@ void AllBoardProcess_8B_4CEB4(void)
             gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
             gCurrentPinballGame->scoreAdditionAccumulator = 0;
             gCurrentPinballGame->scoreCounterAnimationEnabled = FALSE;
-            gCurrentPinballGame->scoreAddStepSize = 40000;
+            gCurrentPinballGame->scoreAddStepSize = 4 * SCORE_10K;
         }
 
         if (gMain.systemFrameCount % 2 == 0)
@@ -40,7 +41,7 @@ void AllBoardProcess_8B_4CEB4(void)
                     gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
                     gCurrentPinballGame->scoreAdditionAccumulator = 0;
                     gCurrentPinballGame->scoreCounterAnimationEnabled = FALSE;
-                    gCurrentPinballGame->scoreAddStepSize = 40000;
+                    gCurrentPinballGame->scoreAddStepSize = 4 * SCORE_10K;
                 }
                 else
                 {
@@ -57,37 +58,37 @@ void AllBoardProcess_8B_4CEB4(void)
         gCurrentPinballGame->scoreAdditionAccumulator = 0;
     }
 
-    if (gCurrentPinballGame->scoreLo / 100000000 != 0)
+    if (gCurrentPinballGame->scoreLo / SCORE_HI_STEP != 0)
     {
-        if (gCurrentPinballGame->scoreHi < 9999)
+        if (gCurrentPinballGame->scoreHi < SCORE_HIGH_MAX)
         {
             gCurrentPinballGame->scoreHi++;
-            gCurrentPinballGame->scoreLo -= 100000000;
+            gCurrentPinballGame->scoreLo -= SCORE_HI_STEP;
         }
         else
         {
-            gCurrentPinballGame->scoreHi = 9999;
-            gCurrentPinballGame->scoreLo = 99999999;
+            gCurrentPinballGame->scoreHi = SCORE_HIGH_MAX;
+            gCurrentPinballGame->scoreLo = SCORE_LO_MAX;
         }
     }
 
     gCurrentPinballGame->scoreAddedInFrame = 0;
 
     value = gCurrentPinballGame->scoreHi;
-    sp0[0] = (value % 10000) / 1000 + 5;
-    sp0[1] = (value % 1000) / 100 + 5;
-    sp0[2] = (value % 100) / 10 + 19;
-    sp0[3] = value % 10 + 5;
+    sp0[0] = DIGIT_1K(value) + 5;
+    sp0[1] = DIGIT_100S(value) + 5;
+    sp0[2] = DIGIT_10S(value) + 19;
+    sp0[3] = DIGIT_1S(value) + 5;
 
     value = gCurrentPinballGame->scoreLo;
-    sp0[4] = value / 10000000 + 5;
-    sp0[5] = (value % 10000000) / 1000000 + 19;
-    sp0[6] = (value % 1000000) / 100000 + 5;
-    sp0[7] = (value % 100000) / 10000 + 5;
-    sp0[8] = (value % 10000) / 1000 + 19;
-    sp0[9] = (value % 1000) / 100 + 5;
-    sp0[10] = (value % 100) / 10 + 5;
-    sp0[11] = value % 10 + 5;
+    sp0[4] = value / SCORE_10M + 5;
+    sp0[5] = DIGIT_1M(value) + 19;
+    sp0[6] = DIGIT_100K(value) + 5;
+    sp0[7] = DIGIT_10K(value) + 5;
+    sp0[8] = DIGIT_1K(value) + 19;
+    sp0[9] = DIGIT_100S(value) + 5;
+    sp0[10] = DIGIT_10S(value) + 5;
+    sp0[11] = DIGIT_1S(value) + 5;
 
     for (i = 0; i < 5; i++)
     {
@@ -104,9 +105,9 @@ void AllBoardProcess_8B_4CEB4(void)
 
     if (gCurrentPinballGame->caughtMonCount > 999)
         gCurrentPinballGame->caughtMonCount = 999;
-    sp0[2] = gCurrentPinballGame->caughtMonCount / 100;
-    sp0[1] = (gCurrentPinballGame->caughtMonCount % 100) / 10;
-    sp0[0] = gCurrentPinballGame->caughtMonCount % 10;
+    sp0[2] = LEAD_DIGIT_100S(gCurrentPinballGame->caughtMonCount);
+    sp0[1] = DIGIT_10S(gCurrentPinballGame->caughtMonCount);
+    sp0[0] = DIGIT_1S(gCurrentPinballGame->caughtMonCount);
     gBG0TilemapBuffer[0x7D1] = 0xC17E;
     gBG0TilemapBuffer[0x7F1] = 0xC17F;
     gBG0TilemapBuffer[0x7D2] = (sp0[2] + 5) * 2 - 0x3EA0;
@@ -118,8 +119,8 @@ void AllBoardProcess_8B_4CEB4(void)
 
     if (gCurrentPinballGame->coins > 99)
         gCurrentPinballGame->coins = 99;
-    sp0[1] = gCurrentPinballGame->coins / 10;
-    sp0[0] = gCurrentPinballGame->coins % 10;
+    sp0[1] = LEAD_DIGIT_10S(gCurrentPinballGame->coins);
+    sp0[0] = DIGIT_1S(gCurrentPinballGame->coins);
     gBG0TilemapBuffer[0x7D6] = 0xC19C;
     gBG0TilemapBuffer[0x7F6] = 0xC19D;
     gBG0TilemapBuffer[0x7D7] = (sp0[1] + 5) * 2 - 0x3EA0;

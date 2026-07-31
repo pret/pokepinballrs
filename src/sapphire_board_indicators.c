@@ -89,8 +89,8 @@ void DrawSapphireProgressDigits(void)
     const u8 **src;
     const u8 **dest;
 
-    var0 = gCurrentPinballGame->progressLevel / 10;
-    var1 = gCurrentPinballGame->progressLevel % 10;
+    var0 = LEAD_DIGIT_10S(gCurrentPinballGame->progressLevel);
+    var1 = DIGIT_1S(gCurrentPinballGame->progressLevel);
     if (gCurrentPinballGame->hudSpriteBaseY > 36)
     {
         src = gSapphireProgressDigitTilePtrs[var0];

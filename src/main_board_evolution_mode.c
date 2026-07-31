@@ -445,7 +445,7 @@ void UpdateEvolutionItemAnimation(void)
             ((gCurrentPinballGame->boardLayerDepth == 0 && gCurrentPinballGame->evoItemSlotIndex <= 5) || (gCurrentPinballGame->boardLayerDepth == 2 && gCurrentPinballGame->evoItemSlotIndex > 5)) &&
             gCurrentPinballGame->evoItemsCaught < 3)
         {
-            gCurrentPinballGame->scoreAddedInFrame = 10000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
             MPlayStart(&gMPlayInfo_SE1, &se_evo_item_collected);
             gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_PREP_SPAWN_EVO_ITEM;
             gCurrentPinballGame->catchLights[gCurrentPinballGame->evoItemsCaught] = 5;

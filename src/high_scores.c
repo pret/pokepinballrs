@@ -6,6 +6,7 @@
 #include "variables.h"
 #include "constants/bg_music.h"
 #include "constants/fields.h"
+#include "constants/score.h"
 
 extern StateFunc gHighScoresStateFuncs[15];
 extern StateFunc gIdleHighScoresStateFuncs[3];
@@ -1997,46 +1998,36 @@ void FormatScoreDigits(u32 scoreHi, u32 scoreLo)
     }
     else
     {
-        if (scoreHi > 9999999)
+        if (scoreHi > SCORE_HIGH_MAX_DISPLAY)
         {
-            scoreHi = 9999999;
-            scoreLo = 99999999;
+            scoreHi = SCORE_HIGH_MAX_DISPLAY;
+            scoreLo = SCORE_LO_MAX;
         }
-        else if (scoreLo > 99999999)
+        else if (scoreLo > SCORE_LO_MAX)
         {
-            scoreLo = 99999999;
+            scoreLo = SCORE_LO_MAX;
         }
 
         arr = gScoreDigitBuffer;
 
-        var0 = scoreHi / 1000000;
+        var0 = LEAD_DIGIT_1M(scoreHi);
         arr[0] = var0;
-        scoreHi %= 1000000;
-        arr[1] = scoreHi / 100000;
-        scoreHi %= 100000;
-        arr[2] = scoreHi / 10000;
-        scoreHi %= 10000;
-        arr[3] = scoreHi / 1000;
-        scoreHi %= 1000;
-        arr[4] = scoreHi / 100;
-        scoreHi %= 100;
-        arr[5] = scoreHi / 10;
-        arr[6] = scoreHi %= 10;
+        arr[1] = DIGIT_100K_SCALEDOWN(scoreHi);
+        arr[2] = DIGIT_10K_SCALEDOWN(scoreHi);
+        arr[3] = DIGIT_1K_SCALEDOWN(scoreHi);
+        arr[4] = DIGIT_100S_SCALEDOWN(scoreHi);
+        arr[5] = DIGIT_10S_SCALEDOWN(scoreHi);
+        arr[6] = DIGIT_1S(scoreHi);
 
-        arr[7] = scoreLo / 10000000;
-        var1 = scoreLo % 10000000;
-        arr[8] = var1 / 1000000;
-        var1 %= 1000000;
-        arr[9] = var1 / 100000;
-        var1 %= 100000;
-        arr[10] = var1 / 10000;
-        var1 %= 10000;
-        arr[11] = var1 / 1000;
-        var1 %= 1000;
-        arr[12] = var1 / 100;
-        var1 %= 100;
-        arr[13] = var1 / 10;
-        arr[14] = var1 %= 10;
+        var1 = scoreLo;
+        arr[7] = LEAD_DIGIT_10M(var1);
+        arr[8] = DIGIT_1M_SCALEDOWN(var1);
+        arr[9] = DIGIT_100K_SCALEDOWN(var1);
+        arr[10] = DIGIT_10K_SCALEDOWN(var1);
+        arr[11] = DIGIT_1K_SCALEDOWN(var1);
+        arr[12] = DIGIT_100S_SCALEDOWN(var1);
+        arr[13] = DIGIT_10S_SCALEDOWN(var1);
+        arr[14] = DIGIT_1S(var1);
 
         if ((s16)var0 == 0)
         {

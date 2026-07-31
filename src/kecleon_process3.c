@@ -977,7 +977,7 @@ void UpdateKecleonScopeItem(void)
                 gCurrentPinballGame->kecleonBoardHitState = 0;
                 gCurrentPinballGame->kecleonTargetActive = TRUE;
                 gCurrentPinballGame->kecleonAnimTimer = 0;
-                gCurrentPinballGame->scoreAddedInFrame = 10000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
                 m4aSongNumStart(SE_KECLEON_SCOPE_ACTIVATED);
             }
 

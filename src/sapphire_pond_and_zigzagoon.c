@@ -80,7 +80,7 @@ void UpdatePelipperPondEntity(void)
                 gCurrentPinballGame->ball->spinSpeed = 0;
                 m4aSongNumStart(SE_PELIPPER_BALL_GRAB);
                 PlayRumble(7);
-                gCurrentPinballGame->scoreAddedInFrame = 100000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_100K;
             }
 
             gCurrentPinballGame->ball->positionQ0.x = 156;

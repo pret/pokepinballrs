@@ -576,9 +576,9 @@ void RenderEvolutionUI(s16 arg0)
     var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
     if (arg0)
     {
-        index = var1[3] / 10;
+        index = LEAD_DIGIT_10S(var1[3]);
         DmaCopy16(3, gDecimalDigitTilesGfx[index], (void *)0x06015DA0, 0x40);
-        index = var1[3] % 10;
+        index = DIGIT_1S(var1[3]);
         DmaCopy16(3, gDecimalDigitTilesGfx[index], (void *)0x06015E60, 0x40);
     }
 
@@ -781,7 +781,7 @@ void AnimateCoinReward(void)
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
 
-                        gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->coinRewardAmount - gCurrentPinballGame->coinsAwarded) * 100;
+                        gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->coinRewardAmount - gCurrentPinballGame->coinsAwarded) * SCORE_100;
                         gCurrentPinballGame->coinRewardTimer = (gCurrentPinballGame->coinRewardAmount * 9) + 1;
                         gCurrentPinballGame->coinsAwarded = gCurrentPinballGame->coinRewardAmount;
                     }
@@ -797,7 +797,7 @@ void AnimateCoinReward(void)
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
 
-                        gCurrentPinballGame->scoreAddedInFrame = 100;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_100;
                     }
                 }
             }
@@ -975,7 +975,7 @@ void AnimateAerodactylEggDelivery(void)
         }
 
         if (gCurrentPinballGame->eggDropTimer == 78)
-            gCurrentPinballGame->scoreAddedInFrame = 100000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_100K;
 
         DmaCopy16(3, gEggFrameTilesGfx[0], (void *)0x06011CE0, 0x200);
     }

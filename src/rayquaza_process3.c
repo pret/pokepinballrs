@@ -260,7 +260,7 @@ void UpdateRayquazaEntityLogic(void)
         if (gCurrentPinballGame->bossHitFlashTimer == 5)
         {
             m4aSongNumStart(SE_RAYQUAZA_HIT);
-            gCurrentPinballGame->scoreAddedInFrame = 1000000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_M;
             gCurrentPinballGame->bonusModeHitCount++;
             PlayRumble(7);
             if (gCurrentPinballGame->bonusModeHitCount >= gCurrentPinballGame->legendaryHitsRequired 

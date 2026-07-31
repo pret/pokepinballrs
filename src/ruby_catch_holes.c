@@ -240,7 +240,7 @@ void AnimateSharpedoCatchSequence(void)
 
 void InitRubyEggHatchMode(void)
 {
-    gCurrentPinballGame->scoreAddedInFrame = 100000;
+    gCurrentPinballGame->scoreAddedInFrame = SCORE_100K;
     if (gCurrentPinballGame->eggCaveState == 3)
     {
         gCurrentPinballGame->eggCaveState = 4;

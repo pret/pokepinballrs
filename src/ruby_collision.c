@@ -334,7 +334,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             if (gCurrentPinballGame->ball->positionQ0.x > 131)
             {
                 // Bonus Multiplier Addition button
-                gCurrentPinballGame->scoreAddedInFrame = 1000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
 
                 if (gCurrentPinballGame->progressLevel <= 98)
                     gCurrentPinballGame->progressLevel++;
@@ -349,7 +349,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             else
             {
                 // Chikorita Firing button
-                gCurrentPinballGame->scoreAddedInFrame = 1000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
 
                 if (!gCurrentPinballGame->chikoritaFlashActive)
                 {
@@ -422,7 +422,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                     else if (gCurrentPinballGame->evoArrowProgress == 1)
                         gCurrentPinballGame->scoreAddedInFrame = 5000;
                     else
-                        gCurrentPinballGame->scoreAddedInFrame = 10000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
 
                     gCurrentPinballGame->evoArrowProgress++;
 
@@ -455,7 +455,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                     }
                     else
                     {
-                        gCurrentPinballGame->scoreAddedInFrame = 10000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
                         gCurrentPinballGame->coinRewardAmount = 10;
                     }
                     gCurrentPinballGame->coinRewardLevel++;
@@ -472,7 +472,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         {
             // Left Ball Upgrade rollover
             if (!gCurrentPinballGame->ballPowerUpLight[0])
-                gCurrentPinballGame->scoreAddedInFrame = 1000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
 
             gCurrentPinballGame->ballPowerUpLight[0] = TRUE;
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_LEFT_BALL_UPGRADE_LANE;
@@ -494,7 +494,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         {
             // Middle Ball Upgrade rollover
             if (!gCurrentPinballGame->ballPowerUpLight[1])
-                gCurrentPinballGame->scoreAddedInFrame = 1000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
 
             gCurrentPinballGame->ballPowerUpLight[1] = TRUE;
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_CENTER_BALL_UPGRADE_LANE;
@@ -515,7 +515,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
         {
             // Right Ball Upgrade rollover
             if (!gCurrentPinballGame->ballPowerUpLight[2])
-                gCurrentPinballGame->scoreAddedInFrame = 1000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
 
             gCurrentPinballGame->ballPowerUpLight[2] = TRUE;
             gCurrentPinballGame->ballCollisionZone = RUBY_ZONE_RIGHT_BALL_UPGRADE_LANE;
@@ -545,7 +545,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                     else if (gCurrentPinballGame->catchArrowProgress == 1)
                         gCurrentPinballGame->scoreAddedInFrame = 5000;
                     else
-                        gCurrentPinballGame->scoreAddedInFrame = 10000;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_10K;
 
                     gCurrentPinballGame->catchArrowProgress++;
 
@@ -591,7 +591,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             if (gCurrentPinballGame->holeIndicators[0])
                 return;
 
-            gCurrentPinballGame->scoreAddedInFrame = 1000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
             gCurrentPinballGame->holeIndicators[0] = TRUE;
 
             if (gCurrentPinballGame->allHolesLit)
@@ -615,7 +615,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             if (gCurrentPinballGame->holeIndicators[1])
                 return;
 
-            gCurrentPinballGame->scoreAddedInFrame = 1000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
             gCurrentPinballGame->holeIndicators[1] = TRUE;
 
             if (gCurrentPinballGame->allHolesLit)
@@ -639,7 +639,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             if (gCurrentPinballGame->holeIndicators[2])
                 return;
 
-            gCurrentPinballGame->scoreAddedInFrame = 1000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
             gCurrentPinballGame->holeIndicators[2] = TRUE;
 
             if (gCurrentPinballGame->allHolesLit)
@@ -663,7 +663,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
             if (gCurrentPinballGame->holeIndicators[3])
                 return;
 
-            gCurrentPinballGame->scoreAddedInFrame = 1000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_K;
             gCurrentPinballGame->holeIndicators[3] = TRUE;
 
             if (gCurrentPinballGame->allHolesLit)
