@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/spheal_states.h"
 
+#define SPHEAL_MODE_TIME TICKS_FOR_TIME(2,0)
 #define SCORE_PER_BALL_IN_NET (1 * SCORE_M)
 #define SCORE_PER_SPHEAL_IN_NET (5 * SCORE_M)
 
@@ -52,7 +53,7 @@ void SphealBoardProcess_3A_42E48(void)
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = SPHEAL_BOARD_STATE_INTRO;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + SPHEAL_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnTimer = 0;
     gCurrentPinballGame->ballGrabbed = FALSE;

@@ -5,6 +5,8 @@
 #include "constants/board/rayquaza_states.h"
 #include "constants/board/center_screen_states.h"
 
+#define RAYQUAZA_MODE_TIME TICKS_FOR_TIME(3,0)
+
 extern const s16 gLightningGrabAnimFrameIndices[];
 extern const u8 gRayquazaBonusClear_Gfx[];
 extern const u8 gRayquazaSkyBackgroundGfx[];
@@ -41,7 +43,7 @@ void RayquazaBoardProcess_3A_3E79C(void)
         gCurrentPinballGame->legendaryHitsRequired = 15;
 
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + RAYQUAZA_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;

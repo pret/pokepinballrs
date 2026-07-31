@@ -4,6 +4,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
+#define HATCH_MODE_SAVER_TIME TICKS_FOR_TIME(0,30)
+
 extern const s16 gEggHatchAnimData[28][3];
 extern const u8 gCatchSpriteFrameBuffer[][0x120];
 extern const struct Vector32 gSapphireEggWaypoints[];
@@ -1595,7 +1597,7 @@ void InitEggMode(void)
 {
     gCurrentPinballGame->boardSubState = EGG_HATCH_SUBSTATE_INIT;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->saverTimeRemaining = 1800;
+    gCurrentPinballGame->saverTimeRemaining = HATCH_MODE_SAVER_TIME;
     gCurrentPinballGame->creatureHitCount = 0;
     gCurrentPinballGame->walkMonXVelocity = 0;
     gCurrentPinballGame->walkMonYVelocity = 0;

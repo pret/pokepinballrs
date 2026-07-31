@@ -1,6 +1,8 @@
 #ifndef GUARD_SCORE_H
 #define GUARD_SCORE_H
 
+#include "constants/numbers.h"
+
 #define SCORE_10 (TEN)
 #define SCORE_100 (HUNDRED)
 #define SCORE_K (THOUSAND)

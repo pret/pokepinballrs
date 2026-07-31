@@ -4,6 +4,9 @@
 #include "constants/bg_music.h"
 #include "constants/score.h"
 
+#define TIMER_TEXT_YELLOW_UNDER_TIME TICKS_FOR_TIME(0,30)
+#define TIMER_TEXT_RED_UNDER_TIME TICKS_FOR_TIME(0,15)
+
 extern const u8 gTimerWarningPalette_Fast[];
 extern const u8 gDefaultTimerPalette[];
 extern const u8 gTimerWarningPalette_Slow[];
@@ -163,7 +166,7 @@ void AllBoardProcess_8B_4CEB4(void)
 void ProcessEventTimer(void)
 {
     s16 i;
-    s16 sp0[4];
+    s16 timerDisplayChar[4];
     s16 var2;
 
     if (gCurrentPinballGame->eventTimerType == EVENT_TIMER_MODE_NONE)
@@ -176,12 +179,12 @@ void ProcessEventTimer(void)
         && gMain.modeChangeFlags == MODE_CHANGE_NONE)
         gCurrentPinballGame->eventTimer--;
 
-    sp0[0] = gCurrentPinballGame->eventTimer / 3600;
-    var2 = gCurrentPinballGame->eventTimer % 3600;
-    sp0[1] = 10;
-    sp0[2] = var2 / 600;
-    var2 %= 600;
-    sp0[3] = var2 / 60;
+    timerDisplayChar[0] = gCurrentPinballGame->eventTimer / TICKS_FOR_TIME(1,0);
+    var2 = gCurrentPinballGame->eventTimer % TICKS_FOR_TIME(1,0);
+    timerDisplayChar[1] = 10;
+    timerDisplayChar[2] = var2 / TICKS_FOR_TIME(0,10);
+    var2 %= TICKS_FOR_TIME(0,10);
+    timerDisplayChar[3] = var2 / TICKS_FOR_TIME(0,1);
     if (gCurrentPinballGame->eventTimerType == EVENT_TIMER_MODE_COMPLETED)
     {
         for (i = 0; i < 4; i++)
@@ -204,14 +207,14 @@ void ProcessEventTimer(void)
         {
             for (i = 0; i < 4; i++)
             {
-                gBG0TilemapBuffer[i + 0x179] = sp0[i] * 2 - 0x3EC0;
-                gBG0TilemapBuffer[i + 0x199] = sp0[i] * 2 - 0x3EBF;
+                gBG0TilemapBuffer[i + 0x179] = timerDisplayChar[i] * 2 - 0x3EC0;
+                gBG0TilemapBuffer[i + 0x199] = timerDisplayChar[i] * 2 - 0x3EBF;
             }
         }
         DmaCopy16(3, &gBG0TilemapBuffer[0x160], (void *)0x060022C0, 0x80);
     }
 
-    if (gCurrentPinballGame->eventTimer <= 900)
+    if (gCurrentPinballGame->eventTimer <= TIMER_TEXT_RED_UNDER_TIME)
     {
         if (gCurrentPinballGame->eventTimer & 0x8)
         {
@@ -222,10 +225,10 @@ void ProcessEventTimer(void)
             DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
         }
 
-        if (gCurrentPinballGame->eventTimer == 900)
+        if (gCurrentPinballGame->eventTimer == TIMER_TEXT_RED_UNDER_TIME)
             m4aSongNumStart(MUS_HURRY_UP);
     }
-    else if (gCurrentPinballGame->eventTimer <= 1800)
+    else if (gCurrentPinballGame->eventTimer <= TIMER_TEXT_YELLOW_UNDER_TIME)
     {
         if ((gCurrentPinballGame->eventTimer % 22) / 11)
         {

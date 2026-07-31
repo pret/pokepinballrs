@@ -5,6 +5,8 @@
 #include "constants/board/groudon_states.h"
 #include "constants/board/center_screen_states.h"
 
+#define GROUDON_MODE_TIME TICKS_FOR_TIME(3,0)
+#define BONUS_GROUDON_COMPLETE_POINTS (5 * SCORE_10M)
 
 extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gGroudonLavaPaletteCycleData[];
@@ -33,7 +35,6 @@ extern const u16 gGroudonProjectileAttackOamData[12][6][3];
 extern const u16 gGroudonMainBodyOamData[166][19][3];
 extern const u16 gGroudonFirePillarOamData[58][10][3];
 
-
 void GroudonBoardProcess_3A_3B120(void)
 {
     s16 i;
@@ -47,7 +48,7 @@ void GroudonBoardProcess_3A_3B120(void)
         gCurrentPinballGame->legendaryHitsRequired = 15;
 
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + GROUDON_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
@@ -190,7 +191,7 @@ void GroudonBoardProcess_3B_3B49C(void)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
             gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 50000000;
+            gCurrentPinballGame->scoreAddedInFrame = BONUS_GROUDON_COMPLETE_POINTS;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)

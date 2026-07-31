@@ -253,7 +253,7 @@ void GivePrize(void)
     case PRIZE_30_SEC_BALL_SAVER:
     case PRIZE_60_SEC_BALL_SAVER:
     case PRIZE_90_SEC_BALL_SAVER:
-        gCurrentPinballGame->saverTimeRemaining = (gCurrentPinballGame->prizeId + 1) * 1800;
+        gCurrentPinballGame->saverTimeRemaining = (gCurrentPinballGame->prizeId + 1) * TICKS_FOR_TIME(0,30);
         break;
     case PRIZE_PICHU_SAVER:
         if (gCurrentPinballGame->ballCatchState == TRAP_EVO_SHOP_HOLE)

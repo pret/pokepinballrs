@@ -5,6 +5,11 @@
 #include "constants/board/kyogre_states.h"
 #include "constants/board/center_screen_states.h"
 
+#define KYOGRE_MODE_TIME TICKS_FOR_TIME(3,0)
+#define BONUS_KYOGRE_COMPLETE_POINTS (5 * SCORE_10M)
+#define BONUS_KYOGRE_TALLY_STEP_SIZE (4 * SCORE_100K)
+#define BONUS_KYOGRE_SCORE_PER_HIT (5 * SCORE_100K)
+
 extern const u8 gKyogreBonusClear_Gfx[];
 extern const u8 gKyogreWaterAnimPaletteFrames[][0x20];
 extern const u16 gKyogreWaterBackgroundTilemap[];
@@ -45,7 +50,7 @@ void KyogreBoardProcess_3A_383E4(void)
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = LEGENDARY_BOARD_STATE_INTRO;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + KYOGRE_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     if (gCurrentPinballGame->numCompletedBonusStages % 5 == 3)
         gCurrentPinballGame->legendaryHitsRequired = 18;
@@ -169,8 +174,8 @@ void KyogreBoardProcess_3B_3869C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 50000000;
+            gCurrentPinballGame->scoreAddStepSize = BONUS_KYOGRE_TALLY_STEP_SIZE;
+            gCurrentPinballGame->scoreAddedInFrame = BONUS_KYOGRE_COMPLETE_POINTS;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -209,8 +214,8 @@ void KyogreBoardProcess_3B_3869C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 50000000;
+            gCurrentPinballGame->scoreAddStepSize = BONUS_KYOGRE_TALLY_STEP_SIZE;
+            gCurrentPinballGame->scoreAddedInFrame = BONUS_KYOGRE_COMPLETE_POINTS;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -268,7 +273,7 @@ void UpdateKyogreEntityLogic(void)
             {
                 MPlayStart(&gMPlayInfo_SE1, &se_kyogre_hit);
                 PlayRumble(7);
-                gCurrentPinballGame->scoreAddedInFrame = 500000;
+                gCurrentPinballGame->scoreAddedInFrame = BONUS_KYOGRE_SCORE_PER_HIT;
                 gCurrentPinballGame->bonusModeHitCount++;
                 if (gCurrentPinballGame->bonusModeHitCount >= gCurrentPinballGame->legendaryHitsRequired &&
                     gCurrentPinballGame->boardEntityCollisionMode == KYOGRE_COLLISION_MODE_TOP_POSITION)

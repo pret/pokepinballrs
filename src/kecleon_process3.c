@@ -4,7 +4,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/kecleon_states.h"
 
-#define BONUS_KECLEON_COMPLETE_POINTS 30000000
+#define BONUS_KECLEON_COMPLETE_POINTS (3 * SCORE_10M)
+#define KECLEON_MODE_TIME TICKS_FOR_TIME(2,0)
 
 extern void UpdateKecleonEntityLogic(void);
 extern void RenderKecleonSprites(void);
@@ -60,7 +61,7 @@ void KecleonBoardProcess_3A_35860(void)
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = KECLEON_BOARD_STATE_INTRO;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 120 * 60; // 120 seconds
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + KECLEON_MODE_TIME; // 120 seconds
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;

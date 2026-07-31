@@ -4,6 +4,9 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
+#define EVO_MODE_TIME TICKS_FOR_TIME(2,0)
+#define EVO_SAVER_TIME TICKS_FOR_TIME(1,0)
+
 extern struct SongHeader se_evo_item_appear;
 extern struct SongHeader se_evo_item_finish_appear;
 extern struct SongHeader se_evo_item_collected;
@@ -40,9 +43,9 @@ void InitEvolutionMode(void)
     gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_SHUFFLE_EVO_ITEM_PLACEMENTS;
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 7200;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + EVO_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
-    gCurrentPinballGame->saverTimeRemaining = 3600;
+    gCurrentPinballGame->saverTimeRemaining = EVO_SAVER_TIME;
     if (gCurrentPinballGame->currentSpecies == SPECIES_WURMPLE)
     {
         gCurrentPinballGame->evoItemGfxIndex = 0;

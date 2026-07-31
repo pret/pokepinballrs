@@ -5,8 +5,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/dusclops_states.h"
 
-#define BONUS_DUSKULL_TIME 7200 //2 minutes, 60FPS
-#define BONUS_DUSKULL_COMPLETE_POINTS 30000000
+#define DUSKULL_MODE_TIME TICKS_FOR_TIME(2,0)
+#define BONUS_DUSKULL_COMPLETE_POINTS (3 * SCORE_10M)
 
 #define DUSKULL_NEEDED_TO_PHASE_TRANSFER 20
 #define DUSKULL_CONCURRENT_MAX 3
@@ -25,7 +25,7 @@ void DuskullBonus_Setup(void)
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_0_INTRO;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_DUSKULL_TIME;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + DUSKULL_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;

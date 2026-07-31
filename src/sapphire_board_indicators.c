@@ -228,7 +228,7 @@ void DrawSapphireModeTimerDisplay(void)
     const u8 **src;
     const u8 **dest;
 
-    if (gCurrentPinballGame->saverTimeRemaining > 300)
+    if (gCurrentPinballGame->saverTimeRemaining > SAVER_WARNING_FLASH_TIME)
     {
         gCurrentPinballGame->saverLit = TRUE;
     }
