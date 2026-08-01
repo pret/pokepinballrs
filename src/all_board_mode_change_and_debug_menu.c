@@ -240,9 +240,9 @@ void EndOfBallSequence(void)
             gCurrentPinballGame->numLives--;
             gCurrentPinballGame->collisionCooldownTimer = 60;
             gCurrentPinballGame->bonusCatchCount = 0;
-            gCurrentPinballGame->bonusMonCatchCount = 0;
+            gCurrentPinballGame->bonusMonEvoCount = 0;
             gCurrentPinballGame->travelModeCompletionCount = 0;
-            gCurrentPinballGame->catchTriggerCompletionCount = 0;
+            gCurrentPinballGame->slotsPlayedCount = 0;
             gCurrentPinballGame->bonusPikaSaverCount = 0;
             gCurrentPinballGame->bonusMultiplier = 0;
             InitBallState(0);
@@ -619,11 +619,11 @@ void EndOfBallBonusSummary(void)
                 textRevealTimer = 100;
                 gCurrentPinballGame->bonusSummaryPhase = 6;
                 gCurrentPinballGame->bonusSubtotal =
-                    gCurrentPinballGame->bonusCatchCount * 500000 +
-                    gCurrentPinballGame->bonusMonCatchCount * 750000 +
-                    gCurrentPinballGame->travelModeCompletionCount * 500000 +
-                    gCurrentPinballGame->catchTriggerCompletionCount * 100000 +
-                    gCurrentPinballGame->bonusPikaSaverCount * 100000;
+                    gCurrentPinballGame->bonusCatchCount * SCORE_BONUS_PER_CATCH +
+                    gCurrentPinballGame->bonusMonEvoCount * SCORE_BONUS_PER_EVO +
+                    gCurrentPinballGame->travelModeCompletionCount * SCORE_BONUS_PER_TRAVEL +
+                    gCurrentPinballGame->slotsPlayedCount * SCORE_BONUS_PER_SLOTS_PLAYED +
+                    gCurrentPinballGame->bonusPikaSaverCount * SCORE_BONUS_PER_PIKA_SAVER;
 
                 gCurrentPinballGame->bonusCategoryScore = 0;
                 gMain.animationTimer = 150;
@@ -784,23 +784,23 @@ void EndOfBallBonusSummary(void)
         {
         case 0:
             value = gCurrentPinballGame->bonusCatchCount;
-            multiplier = 500000;
+            multiplier = SCORE_BONUS_PER_CATCH;
             break;
         case 1:
-            value = gCurrentPinballGame->bonusMonCatchCount;
-            multiplier = 750000;
+            value = gCurrentPinballGame->bonusMonEvoCount;
+            multiplier = SCORE_BONUS_PER_EVO;
             break;
         case 2:
             value = gCurrentPinballGame->travelModeCompletionCount;
-            multiplier = 500000;
+            multiplier = SCORE_BONUS_PER_TRAVEL;
             break;
         case 3:
-            value = gCurrentPinballGame->catchTriggerCompletionCount;
-            multiplier = 100000;
+            value = gCurrentPinballGame->slotsPlayedCount;
+            multiplier = SCORE_BONUS_PER_SLOTS_PLAYED;
             break;
         case 4:
             value = gCurrentPinballGame->bonusPikaSaverCount;
-            multiplier = 100000;
+            multiplier = SCORE_BONUS_PER_PIKA_SAVER;
             break;
         case 5:
             value = 0;
@@ -924,9 +924,9 @@ void EndOfBallBonusSummary(void)
             {
                 // Note: tallied in a loop, rather than a base multiplication to prevent integer overflow.
                 value += gCurrentPinballGame->bonusSubtotal;
-                if (value / 200000000 > 0)
+                if (value / (2 * SCORE_HI_STEP) > 0)
                 {
-                    value -= 200000000;
+                    value -= (2 * SCORE_HI_STEP);
                     scoreHi += 2;
                 }
                 gCurrentPinballGame->bonusMultiplier--;

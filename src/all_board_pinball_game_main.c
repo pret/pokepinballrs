@@ -290,7 +290,7 @@ void InitPinballGameState(void)
             gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
             gCurrentPinballGame->pichuEntranceTimer = 1;
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
-            gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
+            gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             gCurrentPinballGame->numLives = 9;
             gCurrentPinballGame->coins = 99;
         }
@@ -306,7 +306,7 @@ void InitPinballGameState(void)
     if (gMain.mainState != STATE_GAME_IDLE)
         gCurrentPinballGame->ballSpeed = gMain_saveData.ballSpeed;
 
-    gCurrentPinballGame->scoreAddStepSize = 40000;
+    gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_DEFAULT;
     gCurrentPinballGame->fadeSubState = 0;
     gCurrentPinballGame->ball = &gCurrentPinballGame->ballStates[0];
     gCurrentPinballGame->cameraBall = &gCurrentPinballGame->ballStates[0];

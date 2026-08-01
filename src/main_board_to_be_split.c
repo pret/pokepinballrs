@@ -121,8 +121,8 @@ void UpdateCatchTrigger(void)
         gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->boardSubState++;
         InitRouletteWheel();
-        if (gCurrentPinballGame->catchTriggerCompletionCount < 99)
-            gCurrentPinballGame->catchTriggerCompletionCount++;
+        if (gCurrentPinballGame->slotsPlayedCount < 99)
+            gCurrentPinballGame->slotsPlayedCount++;
         break;
     case BONUS_HOLE_SUBSTATE_RUN_ROULETTE:
         if (gCurrentPinballGame->modeAnimTimer == 148)

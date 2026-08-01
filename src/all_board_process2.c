@@ -512,7 +512,7 @@ void ProcessBonusBoardBallDrain(void)
             if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                 gCurrentPinballGame->ballUpgradeType--;
 
-            gCurrentPinballGame->ballUpgradeCounter = 3600;
+            gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
 
@@ -568,13 +568,13 @@ void ResetBoardStateOnDeath(void)
     if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
         gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
-        gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
+        gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
         DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
     }
     else
     {
         gCurrentPinballGame->ballUpgradeType = 0;
-        gCurrentPinballGame->ballUpgradeCounter = 0;
+        gCurrentPinballGame->ballUpgradeTimer = 0;
     }
 
     gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;

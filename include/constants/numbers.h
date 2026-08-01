@@ -4,7 +4,7 @@
 #define TEN 10
 #define HUNDRED 100
 #define THOUSAND 1000
-#define MILLION (1000 * 1000)
+#define MILLION (THOUSAND * THOUSAND)
 
 #define LEAD_DIGIT_100M(v) (v / (HUNDRED * MILLION))
 #define LEAD_DIGIT_10M(v) (v / (TEN * MILLION))

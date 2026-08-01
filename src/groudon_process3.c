@@ -189,7 +189,7 @@ void GroudonBoardProcess_3B_3B49C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_GROUDON_BONUS_TALLY;
             gCurrentPinballGame->scoreAddedInFrame = SCORE_GROUDON_BONUS_COMPLETE;
         }
 
@@ -229,7 +229,7 @@ void GroudonBoardProcess_3B_3B49C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_GROUDON_BONUS_TALLY;
             gCurrentPinballGame->scoreAddedInFrame = SCORE_GROUDON_BONUS_COMPLETE;
         }
 

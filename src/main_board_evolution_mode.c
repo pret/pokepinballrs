@@ -309,8 +309,8 @@ void UpdateEvolutionMode(void)
             if (gCurrentPinballGame->currentSpecies == SPECIES_NINJASK)
             {
                 gCurrentPinballGame->caughtMonCount++;
-                if (gCurrentPinballGame->bonusMonCatchCount < 99)
-                    gCurrentPinballGame->bonusMonCatchCount++;
+                if (gCurrentPinballGame->bonusMonEvoCount < 99)
+                    gCurrentPinballGame->bonusMonEvoCount++;
 
                 if (gCurrentPinballGame->caughtMonCount == 15)
                     gCurrentPinballGame->oneUpAnimTimer = 92;
@@ -320,8 +320,8 @@ void UpdateEvolutionMode(void)
             if (gCurrentPinballGame->caughtMonCount == 15)
                 gCurrentPinballGame->oneUpAnimTimer = 92;
 
-            if (gCurrentPinballGame->bonusMonCatchCount < 99)
-                gCurrentPinballGame->bonusMonCatchCount++;
+            if (gCurrentPinballGame->bonusMonEvoCount < 99)
+                gCurrentPinballGame->bonusMonEvoCount++;
 
             gCurrentPinballGame->boardSubState++;
             gCurrentPinballGame->stageTimer = 0;

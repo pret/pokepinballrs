@@ -84,28 +84,28 @@ void ProcessBonusBannerAndScoring(void)
         if (gCurrentPinballGame->boardState == DUSCLOPS_BOARD_STATE_SCORE_PHASE
             && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 30000000;
+        var1 = SCORE_DUSCLOPS_BONUS_COMPLETE;
         break;
     case FIELD_KECLEON:
         if (gCurrentPinballGame->boardState == KECLEON_BOARD_STATE_SCORING && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 30000000;
+        var1 = SCORE_KECLEON_BONUS_COMPLETE;
         break;
     case FIELD_KYOGRE:
         if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_SUCCESS_SCORING && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 50000000;
+        var1 = SCORE_KYOGRE_BONUS_COMPLETE;
         break;
     case FIELD_GROUDON:
         if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_SUCCESS_SCORING
             && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 50000000;
+        var1 = SCORE_GROUDON_BONUS_COMPLETE;
         break;
     case FIELD_RAYQUAZA:
         if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_SUCCESS_SCORING && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 99999999;
+        var1 = SCORE_RAYQUAZA_BONUS_COMPLETE;
         break;
     }
 

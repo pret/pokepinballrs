@@ -156,8 +156,8 @@ void DusclopsBoardProcess_3B_33130(void)
             if (gCurrentPinballGame->stageTimer == 180)
             {
                 gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-                gCurrentPinballGame->scoreAddStepSize = 400000;
-                gCurrentPinballGame->scoreAddedInFrame = SCORE_DUSKULL_BONUS_COMPLETE;
+                gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_DUSCLOPS_BONUS_TALLY;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_DUSCLOPS_BONUS_COMPLETE;
             }
             if (gCurrentPinballGame->stageTimer < 240)
             {

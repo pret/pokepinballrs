@@ -32,7 +32,7 @@ void AllBoardProcess_8B_4CEB4(void)
             gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
             gCurrentPinballGame->scoreAdditionAccumulator = 0;
             gCurrentPinballGame->scoreCounterAnimationEnabled = FALSE;
-            gCurrentPinballGame->scoreAddStepSize = 40 * SCORE_K;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_DEFAULT;
         }
 
         if (gMain.systemFrameCount % 2 == 0)
@@ -44,7 +44,7 @@ void AllBoardProcess_8B_4CEB4(void)
                     gCurrentPinballGame->scoreLo += gCurrentPinballGame->scoreAdditionAccumulator;
                     gCurrentPinballGame->scoreAdditionAccumulator = 0;
                     gCurrentPinballGame->scoreCounterAnimationEnabled = FALSE;
-                    gCurrentPinballGame->scoreAddStepSize = 40 * SCORE_K;
+                    gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_DEFAULT;
                 }
                 else
                 {

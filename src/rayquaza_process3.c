@@ -168,7 +168,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_RAYQUAZA_BONUS_TALLY;
             gCurrentPinballGame->scoreAddedInFrame = SCORE_RAYQUAZA_BONUS_COMPLETE;
         }
 
@@ -208,7 +208,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_RAYQUAZA_BONUS_TALLY;
             gCurrentPinballGame->scoreAddedInFrame = SCORE_RAYQUAZA_BONUS_COMPLETE;
         }
 

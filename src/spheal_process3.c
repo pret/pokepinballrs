@@ -1566,7 +1566,7 @@ void UpdateSphealResultsScreen(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
-    value = gCurrentPinballGame->sphealKnockdownDisplayCount[0] * 5000000;
+    value = gCurrentPinballGame->sphealKnockdownDisplayCount[0] * SCORE_PER_SPHEAL_IN_NET;
     sp0[0] = LEAD_DIGIT_10M(value);
     sp0[1] = DIGIT_1M(value);
     sp0[2] = 10;
@@ -1615,7 +1615,7 @@ void UpdateSphealResultsScreen(void)
         gOamBuffer[oamSimple->oamId].tileNum = sp18[i];
     }
 
-    value = gCurrentPinballGame->sphealKnockdownDisplayCount[1] * SCORE_M;
+    value = gCurrentPinballGame->sphealKnockdownDisplayCount[1] * SCORE_PER_BALL_IN_NET;
     sp0[0] = LEAD_DIGIT_10M(value);
     sp0[1] = DIGIT_1M(value);
     sp0[2] = 10;

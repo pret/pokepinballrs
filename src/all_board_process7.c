@@ -25,16 +25,16 @@ void MainBoardProcess_7B_12524(void)
 
     currentBallState->prevSpinAngle = currentBallState->spinAngle;
 
-    if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeCounter > 0)
+    if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeTimer > 0)
     {
-        if (--gCurrentPinballGame->ballUpgradeCounter == 0)
+        if (--gCurrentPinballGame->ballUpgradeTimer == 0)
         {
             if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
             {
                 gCurrentPinballGame->ballUpgradeType--;
 
                 if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
-                    gCurrentPinballGame->ballUpgradeCounter = 3600;
+                    gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             }
 
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
@@ -401,17 +401,17 @@ void BonusBoardProcess_7B_12BF8()
     }
     else
     {
-        if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeCounter != 0)
+        if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeTimer != 0)
         {
-            gCurrentPinballGame->ballUpgradeCounter--;
-            if (gCurrentPinballGame->ballUpgradeCounter == 0)
+            gCurrentPinballGame->ballUpgradeTimer--;
+            if (gCurrentPinballGame->ballUpgradeTimer == 0)
             {
                 if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                 {
                     gCurrentPinballGame->ballUpgradeType--;
                     if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                     {
-                        gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
+                        gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
                     }
                 }
                 DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
