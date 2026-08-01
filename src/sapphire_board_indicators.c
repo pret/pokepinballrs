@@ -117,7 +117,7 @@ void AnimateSapphireSlingshotHit(void)
         if (gCurrentPinballGame->slingshotHitAnimTimer == 3)
         {
             m4aSongNumStart(SE_SLINGSHOT_HIT);
-            gCurrentPinballGame->scoreAddedInFrame = 500;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_SLINGSHOT_HIT;
             PlayRumble(7);
         }
     }

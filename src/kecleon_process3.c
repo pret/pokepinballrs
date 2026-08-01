@@ -183,7 +183,7 @@ void KecleonBoardProcess_3B_35AA4(void)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
             gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = BONUS_KECLEON_COMPLETE_POINTS;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_KECLEON_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)

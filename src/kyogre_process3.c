@@ -6,9 +6,6 @@
 #include "constants/board/center_screen_states.h"
 
 #define KYOGRE_MODE_TIME TICKS_FOR_TIME(3,0)
-#define BONUS_KYOGRE_COMPLETE_POINTS (50 * SCORE_M)
-#define BONUS_KYOGRE_TALLY_STEP_SIZE (400 * SCORE_K)
-#define BONUS_KYOGRE_SCORE_PER_HIT (500 * SCORE_K)
 
 extern const u8 gKyogreBonusClear_Gfx[];
 extern const u8 gKyogreWaterAnimPaletteFrames[][0x20];
@@ -174,8 +171,8 @@ void KyogreBoardProcess_3B_3869C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = BONUS_KYOGRE_TALLY_STEP_SIZE;
-            gCurrentPinballGame->scoreAddedInFrame = BONUS_KYOGRE_COMPLETE_POINTS;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_KYOGRE_BONUS_TALLY;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_KYOGRE_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -214,8 +211,8 @@ void KyogreBoardProcess_3B_3869C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = BONUS_KYOGRE_TALLY_STEP_SIZE;
-            gCurrentPinballGame->scoreAddedInFrame = BONUS_KYOGRE_COMPLETE_POINTS;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_KYOGRE_BONUS_TALLY;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_KYOGRE_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -273,7 +270,7 @@ void UpdateKyogreEntityLogic(void)
             {
                 MPlayStart(&gMPlayInfo_SE1, &se_kyogre_hit);
                 PlayRumble(7);
-                gCurrentPinballGame->scoreAddedInFrame = BONUS_KYOGRE_SCORE_PER_HIT;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_KYOGRE_HIT;
                 gCurrentPinballGame->bonusModeHitCount++;
                 if (gCurrentPinballGame->bonusModeHitCount >= gCurrentPinballGame->legendaryHitsRequired &&
                     gCurrentPinballGame->boardEntityCollisionMode == KYOGRE_COLLISION_MODE_TOP_POSITION)

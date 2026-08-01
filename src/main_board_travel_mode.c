@@ -190,7 +190,7 @@ void UpdateTravelMode(void)
                 if (gCurrentPinballGame->stageTimer == 394)
                 {
                     gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-                    gCurrentPinballGame->scoreAddedInFrame = 500000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_TRAVEL_MODE_COMPLETED;
                 }
             }
             else

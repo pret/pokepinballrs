@@ -169,7 +169,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
             gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 99999999;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_RAYQUAZA_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -209,7 +209,7 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
             gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 99999999;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_RAYQUAZA_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -262,7 +262,7 @@ void UpdateRayquazaEntityLogic(void)
         if (gCurrentPinballGame->bossHitFlashTimer == 5)
         {
             m4aSongNumStart(SE_RAYQUAZA_HIT);
-            gCurrentPinballGame->scoreAddedInFrame = SCORE_M;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_RAYQUAZA_HIT;
             gCurrentPinballGame->bonusModeHitCount++;
             PlayRumble(7);
             if (gCurrentPinballGame->bonusModeHitCount >= gCurrentPinballGame->legendaryHitsRequired 

@@ -157,7 +157,7 @@ void DusclopsBoardProcess_3B_33130(void)
             {
                 gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
                 gCurrentPinballGame->scoreAddStepSize = 400000;
-                gCurrentPinballGame->scoreAddedInFrame = BONUS_DUSKULL_COMPLETE_POINTS;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_DUSKULL_BONUS_COMPLETE;
             }
             if (gCurrentPinballGame->stageTimer < 240)
             {

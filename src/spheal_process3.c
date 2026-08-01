@@ -225,7 +225,7 @@ void SphealBoardProcess_3B_43228(void)
         if (gCurrentPinballGame->stageTimer == 180 && gCurrentPinballGame->totalBonusScore != 0)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_SEAL_RESULTS;
             gCurrentPinballGame->scoreAddedInFrame = gCurrentPinballGame->totalBonusScore;
         }
 
@@ -300,7 +300,7 @@ void UpdateSealeoEntityLogic(void)
             if (gCurrentPinballGame->sealeoStunnedTimer[i] == 23)
             {
                 MPlayStart(&gMPlayInfo_SE1, &se_sealeo_hit_thud);
-                gCurrentPinballGame->scoreAddedInFrame = 5000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_SEALEO_HIT;
                 PlayRumble(8);
             }
 
@@ -577,7 +577,7 @@ void UpdateSphealEntityLogic(void)
 
                 PlayRumble(7);
                 gCurrentPinballGame->sphealEntityCollisionType[i] = SPHEAL_COLLISION_TYPE_INACTIVE;
-                gCurrentPinballGame->scoreAddedInFrame = 3000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_SPHEAL_HIT;
                 break;
             case SPHEAL_ENTITY_STATE_HIT_WHILE_SWIMMING:
                 if (gCurrentPinballGame->sphealAnimTimer[i] < 10)

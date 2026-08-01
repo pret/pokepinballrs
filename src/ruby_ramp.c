@@ -123,7 +123,7 @@ void UpdateMakuhitaEntity(void)
             if (gCurrentPinballGame->makuhitaHitAnimationTimer <= 0)
             {
                 m4aSongNumStart(SE_MAKUHITA_PUNCH);
-                gCurrentPinballGame->scoreAddedInFrame = (10 * SCORE_K);
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_MAKUHITA_HIT_BALL;
                 gCurrentPinballGame->ball->velocity.x = -600;
                 gCurrentPinballGame->ball->velocity.y = -300;
                 gCurrentPinballGame->ball->spinSpeed = 0;

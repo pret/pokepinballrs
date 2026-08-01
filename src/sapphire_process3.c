@@ -185,7 +185,7 @@ void InitSapphireEvolutionShopCatch(void)
 {
     gCurrentPinballGame->modeAnimTimer = 0xB4;
     gCurrentPinballGame->shopEntryTimer = 0xB4;
-    gCurrentPinballGame->scoreAddedInFrame = 500000;
+    gCurrentPinballGame->scoreAddedInFrame = SCORE_SHOP_ENTERED;
     gMain.blendControl = 0xCE;
     gMain.blendBrightness = 0;
     gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
@@ -263,7 +263,7 @@ void InitSapphireWailmerCatch(void)
     gCurrentPinballGame->cameraScrollOffset = 0;
     gCurrentPinballGame->cameraScrollTarget = 30;
     gCurrentPinballGame->cameraScrollEnabled = FALSE;
-    gCurrentPinballGame->scoreAddedInFrame = 50000;
+    gCurrentPinballGame->scoreAddedInFrame = SCORE_WAILMER_BALL_CATCH;
 
     m4aSongNumStart(SE_WHISCASH_CATCH_BALL);
     PlayRumble(8);

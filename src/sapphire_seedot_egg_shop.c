@@ -222,7 +222,7 @@ void UpdateSapphireSeedotCollection(void)
         }
 
         gCurrentPinballGame->seedotCollisionTrigger = FALSE;
-        gCurrentPinballGame->scoreAddedInFrame = 3000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_SEEDOT_BUTTON;
     }
 
     for (i = 0; i < 3; i++)
@@ -580,7 +580,7 @@ void UpdateSapphireEggMachine(void)
                 if (gCurrentPinballGame->sapphireHatchMachineFrameIx < 3)
                 {
                     gCurrentPinballGame->sapphireHatchMachineFrameIx++;
-                    gCurrentPinballGame->scoreAddedInFrame = 20000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_HATCH_MACHINE_STAGE_ADVANCE;
                     m4aSongNumStart(SE_HATCH_MACHINE_STAGE_ADVANCE);
                 }
                 else
@@ -597,7 +597,7 @@ void UpdateSapphireEggMachine(void)
                     gCurrentPinballGame->sapphireHatchMachineState = 1;
                     gCurrentPinballGame->holeAnimFrameCounter = 0;
                     m4aMPlayStop(&gMPlayInfo_BGM);
-                    gCurrentPinballGame->scoreAddedInFrame = 200000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_HATCH_MACHINE_EGG_HATCH;
                     m4aSongNumStart(SE_HATCH_MACHINE_EGG_HATCH);
                 }
             }
@@ -606,7 +606,7 @@ void UpdateSapphireEggMachine(void)
                 if (gCurrentPinballGame->sapphireHatchMachineFrameIx < 3)
                 {
                     gCurrentPinballGame->sapphireHatchMachineFrameIx++;
-                    gCurrentPinballGame->scoreAddedInFrame = 20000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_HATCH_MACHINE_STAGE_ADVANCE;
                     m4aSongNumStart(SE_HATCH_MACHINE_STAGE_ADVANCE);
                 }
             }
