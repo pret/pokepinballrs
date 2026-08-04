@@ -465,8 +465,8 @@ void Options_HandleInput(void)
             {
                 gCustomButtonConfigs[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 0] = gOptionsData.capturedButtonSlots[0];
                 gCustomButtonConfigs[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 1] = gOptionsData.capturedButtonSlots[1];
-                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][0] = gButtonInfoTable[gOptionsData.capturedButtonSlots[0]][0];
-                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][1] = gButtonInfoTable[gOptionsData.capturedButtonSlots[1]][0];
+                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][0] = gButtonInfoTable[gOptionsData.capturedButtonSlots[0]].buttonName;
+                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][1] = gButtonInfoTable[gOptionsData.capturedButtonSlots[1]].buttonName;
                 gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_SELECT,
                 gOptionsData.buttonEditFlags[gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER] = 0;
                 gOptionsData.buttonFlashTimer = 0;
@@ -522,6 +522,7 @@ void Options_State3_51C60(void)
     gAutoDisplayTitlescreenMenu = TRUE;
     SetMainGameState(STATE_TITLE);
 }
+
 
 // Associated with fakematch in UpdateOptionsSpritePositions. Leaving here.
 extern struct SpriteGroup gMain_spriteGroups_10;
@@ -842,76 +843,76 @@ void SetButtonConfigInputs(s8 buttonConfigType)
     switch (buttonConfigType)
     {
     case BUTTON_CONFIG_RESET:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[8][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][0]  = gButtonInfoTable[1][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][1]  = gButtonInfoTable[10][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][0]     = gButtonInfoTable[5][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][1]     = gButtonInfoTable[10][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][0]    = gButtonInfoTable[4][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][1]    = gButtonInfoTable[10][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][0]       = gButtonInfoTable[6][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][1]       = gButtonInfoTable[10][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[8].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][0]  = gButtonInfoTable[1].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][1]  = gButtonInfoTable[10].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][0]     = gButtonInfoTable[5].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][1]     = gButtonInfoTable[10].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][0]    = gButtonInfoTable[4].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][1]    = gButtonInfoTable[10].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][0]       = gButtonInfoTable[6].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][1]       = gButtonInfoTable[10].buttonName;
         for (i = 0; i < 10; i++)
             gCustomButtonConfigTileIds[i] = gDefaultCustomButtonConfigTileIds[i];
         break;
     case BUTTON_CONFIG_TYPE_A:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[8][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[8].buttonName;
         break;
     case BUTTON_CONFIG_TYPE_B:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[1][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[10][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[1].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[10].buttonName;
         break;
     case BUTTON_CONFIG_TYPE_C:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[0][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[0][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[0].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[0].buttonName;
         break;
     case BUTTON_CONFIG_TYPE_D:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[4][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[6][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[10][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[4].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[6].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[10].buttonName;
         break;
     case BUTTON_CONFIG_TYPE_EDIT:
         gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0]
