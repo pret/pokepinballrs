@@ -72,6 +72,11 @@ extern const u8 gOptionsBackground_Gfx[];
 extern const u8 gOptionsText_Tilemap[];
 extern const u8 gOptionsBackground_Tilemap[];
 
+extern u8 gOptionsButtonConfigEditFlags[];
+extern const struct Vector16 gOptionsCursorPositionTable[];
+extern const u16 gOptionsBGMSelectorYPositions[];
+extern const struct SpriteSet *const gOptionsSpriteSets[];
+
 void Options_Main(void)
 {
     gOptionsStateFuncs[gMain.subState]();
@@ -518,24 +523,8 @@ void Options_State3_51C60(void)
     SetMainGameState(STATE_TITLE);
 }
 
-struct ButtonInfoView
-{
-    u16 buttonName;
-    u16 tileNum;
-    u8 shape;
-    u8 size;
-    u8 x;
-    u8 y;
-};
-
-#define BUTTON_INFO_TABLE \
-    ((struct ButtonInfoView *)gButtonInfoTable)
+// Associated with fakematch in UpdateOptionsSpritePositions. Leaving here.
 extern struct SpriteGroup gMain_spriteGroups_10;
-extern struct SpriteGroup gMain_spriteGroups_28;
-extern u8 gOptionsButtonConfigEditFlags[];
-extern struct Vector16 gOptionsCursorPositionTable[];
-extern u16 gOptionsBGMSelectorYPositions[];
-extern const struct SpriteSet *const gOptionsSpriteSets[];
 
 void UpdateOptionsSpritePositions(void)
 {
@@ -571,7 +560,7 @@ void UpdateOptionsSpritePositions(void)
             if ((gOptionsButtonConfigEditFlags[i] == 1)
                 && (gOptionsData.buttonFlashVisible == 1))
             {
-                buttonConfig[i][0] = &gMain_spriteGroups_28;
+                buttonConfig[i][0] = &gMain.spriteGroups[28];
             }
             else
             {
@@ -688,11 +677,11 @@ void UpdateOptionsSpritePositions(void)
             btn1Ix =
                 gCustomButtonConfigs[gOptionsData.buttonConfigType][2 * i];
             gOamBuffer[oam->oamId].tileNum =
-                BUTTON_INFO_TABLE[btn1Ix].tileNum;
+                gButtonInfoTable[btn1Ix].tileNum;
             gOamBuffer[oam->oamId].shape =
-                BUTTON_INFO_TABLE[btn1Ix].shape;
+                gButtonInfoTable[btn1Ix].shape;
             gOamBuffer[oam->oamId].size =
-                BUTTON_INFO_TABLE[btn1Ix].size;
+                gButtonInfoTable[btn1Ix].size;
             gOamBuffer[oam->oamId].x =
                 oam->xOffset + buttonConfig[i][0]->baseX;
             gOamBuffer[oam->oamId].y =
@@ -703,7 +692,7 @@ void UpdateOptionsSpritePositions(void)
             if (btn2Ix != 0xa)
             {
                 buttonConfig[i][1]->baseX =
-                    BUTTON_INFO_TABLE[btn1Ix].x
+                    gButtonInfoTable[btn1Ix].x
                     + buttonConfig[i][0]->baseX;
                 buttonConfig[i][1]->baseY = buttonConfig[i][0]->baseY;
                 oam = &buttonConfig[i][1]->oam[0];
@@ -721,11 +710,11 @@ void UpdateOptionsSpritePositions(void)
                 oam = &buttonConfig[i][2]->oam[0];
 
                 gOamBuffer[oam->oamId].tileNum =
-                    BUTTON_INFO_TABLE[btn2Ix].tileNum;
+                    gButtonInfoTable[btn2Ix].tileNum;
                 gOamBuffer[oam->oamId].shape =
-                    BUTTON_INFO_TABLE[btn2Ix].shape;
+                    gButtonInfoTable[btn2Ix].shape;
                 gOamBuffer[oam->oamId].size =
-                    BUTTON_INFO_TABLE[btn2Ix].size;
+                    gButtonInfoTable[btn2Ix].size;
                 gOamBuffer[oam->oamId].x =
                     oam->xOffset + buttonConfig[i][2]->baseX;
                 gOamBuffer[oam->oamId].y =
