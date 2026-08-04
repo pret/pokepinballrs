@@ -1062,7 +1062,7 @@ void RenderHighScoreSprites(void)
         spriteGroup2->active = 1;
         spriteGroup3->active = gHighScoreShowPopupFlag;
         spriteGroup4->active = gHighScoreScreenState.displayModeVisible;
-        LoadSpriteSets(gHighScoreScreenSpriteSets, 9, gMain.spriteGroups);
+        LoadSpriteSets(spriteSets, 9, gMain.spriteGroups);
         {
             spriteGroup2->baseX = 4;
             spriteGroup2->baseY = 144;
@@ -1070,7 +1070,6 @@ void RenderHighScoreSprites(void)
             asm("" : "=l"(spriteGroup2Alias) : "0"(spriteGroup2Alias));
 
             gOamBuffer[oamData->oamId].tileNum = gHighScoreScreenState.flashElapsedFrames * 2 + 2;
-            asm("" : "=l"(oamData) : "0"(oamData));
             gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup2->baseX;
             gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup2->baseY;
 
@@ -1115,7 +1114,7 @@ void RenderHighScoreSprites(void)
     {
         spriteGroup1->active = 0;
         spriteGroup2->active = 0;
-        LoadSpriteSets(gHighScoreScreenSpriteSets, 9, gMain.spriteGroups);
+        LoadSpriteSets(spriteSets, 9, gMain.spriteGroups);
     }
 
     spriteGroup3->active = 0;
