@@ -56,9 +56,9 @@ struct OptionsData
     bool8 rumbleEnabled;
     s8 torchicAnimTimer;
     s8 torchicAnimFrame;
-    u8 torchicAnimTileId;
+    s8 torchicAnimTileId;
     s8 torchicHeadShakeAnimActive;
-    u8 noteSizeBlinkState;
+    s8 noteSizeBlinkState;
     s8 soundTestActive;
 };
 
@@ -71,6 +71,7 @@ extern const u8 gOptionsText_Gfx[];
 extern const u8 gOptionsBackground_Gfx[];
 extern const u8 gOptionsText_Tilemap[];
 extern const u8 gOptionsBackground_Tilemap[];
+
 
 extern u8 gOptionsButtonConfigEditFlags[];
 extern const struct Vector16 gOptionsCursorPositionTable[];
@@ -552,14 +553,15 @@ void UpdateOptionsSpritePositions(void)
         numberSE[i] = &gMain.spriteGroups[4 + i];
     }
 
+    //TODO: FAKEMATCH
     for (i = 0; i < 6; i++)
     {
         struct SpriteGroup *buttonBase = &gMain_spriteGroups_10;
 
         do
         {
-            if ((gOptionsButtonConfigEditFlags[i] == 1)
-                && (gOptionsData.buttonFlashVisible == 1))
+            if ((gOptionsButtonConfigEditFlags[i] == TRUE)
+                && (gOptionsData.buttonFlashVisible == TRUE))
             {
                 buttonConfig[i][0] = &gMain.spriteGroups[28];
             }
@@ -567,46 +569,42 @@ void UpdateOptionsSpritePositions(void)
             {
                 do
                 {
-                    struct SpriteGroup *normalButton =
-                        buttonBase + (3 * i);
-
-                    buttonConfig[i][0] =
-                        --normalButton;
+                    struct SpriteGroup *normalButton = buttonBase + (3 * i);
+                    buttonConfig[i][0] = --normalButton;
                 } while (0);
             }
         } while (0);
 
-        buttonConfig[i][1] = &gMain_spriteGroups_10 + (3 * i);
-        buttonConfig[i][2] =
-            &gMain_spriteGroups_10 + (3 * i) + 1;
+        buttonConfig[i][1] = buttonBase + (3 * i);
+        buttonConfig[i][2] = buttonBase + (3 * i) + 1;
     }
 
     rumbleArrow = rumbleArrowMain;
-    handPointer->active = 1;
+    handPointer->active = TRUE;
     for (i = 0; i < 3; i++)
-        numberBGM[i]->active = 1;
+        numberBGM[i]->active = TRUE;
 
     for (i = 0; i < 3; i++)
-        numberSE[i]->active = 1;
+        numberSE[i]->active = TRUE;
 
-    soundSelectArrow->active = 1;
-    buttonArrow->active = 1;
+    soundSelectArrow->active = TRUE;
+    buttonArrow->active = TRUE;
     for (i = 0; i < 6; i++)
     {
         for (j = 0; j < 3; j++)
-            buttonConfig[i][j]->active = 1;
+            buttonConfig[i][j]->active = TRUE;
     }
 
-    rumbleArrow->active = 1;
-    torchic->active = 1;
-    noteBalloon->active = (s8)gOptionsData.soundTestActive;
+    rumbleArrow->active = TRUE;
+    torchic->active = TRUE;
+    noteBalloon->active = gOptionsData.soundTestActive;
     LoadSpriteSets(gOptionsSpriteSets, 32, gMain.spriteGroups);
 
     handPointer->baseX =
         gOptionsCursorPositionTable[gOptionsData.cursorPosition].x
         + gOptionsData.cursorBlinkToggle;
-    handPointer->baseY =
-        gOptionsCursorPositionTable[gOptionsData.cursorPosition].y;
+    handPointer->baseY = gOptionsCursorPositionTable[gOptionsData.cursorPosition].y;
+
     oam = &handPointer->oam[0];
     gOamBuffer[oam->oamId].x = oam->xOffset + handPointer->baseX;
     gOamBuffer[oam->oamId].y = oam->yOffset + handPointer->baseY;
@@ -645,25 +643,24 @@ void UpdateOptionsSpritePositions(void)
     }
 
     buttonArrow->baseX = 72;
-    buttonArrow->baseY =
-        gOptionsBGMSelectorYPositions[gOptionsData.buttonConfigType];
+    buttonArrow->baseY = gOptionsBGMSelectorYPositions[gOptionsData.buttonConfigType];
+
     oam = &buttonArrow->oam[0];
     gOamBuffer[oam->oamId].x = oam->xOffset + buttonArrow->baseX;
     gOamBuffer[oam->oamId].y = oam->yOffset + buttonArrow->baseY;
 
     for (i = 0; i < 5; i++)
     {
-        if (gOptionsData.buttonEditFlags[i] == 1)
+        if (gOptionsData.buttonEditFlags[i] == TRUE)
         {
             buttonConfig[i][0]->baseX = 156;
             buttonConfig[i][0]->baseY = 84 + (12 * i);
+
             for (j = 0; j < (gOptionsData.buttonFlashVisible + 1); j++)
             {
                 oam = &buttonConfig[i][0]->oam[j];
-                gOamBuffer[oam->oamId].x =
-                    oam->xOffset + buttonConfig[i][0]->baseX;
-                gOamBuffer[oam->oamId].y =
-                    oam->yOffset + buttonConfig[i][0]->baseY;
+                gOamBuffer[oam->oamId].x = oam->xOffset + buttonConfig[i][0]->baseX;
+                gOamBuffer[oam->oamId].y = oam->yOffset + buttonConfig[i][0]->baseY;
             }
         }
         else
@@ -675,51 +672,35 @@ void UpdateOptionsSpritePositions(void)
             buttonConfig[i][0]->baseY = 84 + (12 * i);
             oam = &buttonConfig[i][0]->oam[0];
 
-            btn1Ix =
-                gCustomButtonConfigs[gOptionsData.buttonConfigType][2 * i];
-            gOamBuffer[oam->oamId].tileNum =
-                gButtonInfoTable[btn1Ix].tileNum;
-            gOamBuffer[oam->oamId].shape =
-                gButtonInfoTable[btn1Ix].shape;
-            gOamBuffer[oam->oamId].size =
-                gButtonInfoTable[btn1Ix].size;
-            gOamBuffer[oam->oamId].x =
-                oam->xOffset + buttonConfig[i][0]->baseX;
-            gOamBuffer[oam->oamId].y =
-                oam->yOffset + buttonConfig[i][0]->baseY;
+            btn1Ix = gCustomButtonConfigs[gOptionsData.buttonConfigType][2 * i];
+            gOamBuffer[oam->oamId].tileNum = gButtonInfoTable[btn1Ix].tileNum;
+            gOamBuffer[oam->oamId].shape = gButtonInfoTable[btn1Ix].shape;
+            gOamBuffer[oam->oamId].size = gButtonInfoTable[btn1Ix].size;
+            gOamBuffer[oam->oamId].x = oam->xOffset + buttonConfig[i][0]->baseX;
+            gOamBuffer[oam->oamId].y = oam->yOffset + buttonConfig[i][0]->baseY;
 
-            btn2Ix =
-                gCustomButtonConfigs[gOptionsData.buttonConfigType][(2 * i) + 1];
+            btn2Ix = gCustomButtonConfigs[gOptionsData.buttonConfigType][(2 * i) + 1];
             if (btn2Ix != 0xa)
             {
-                buttonConfig[i][1]->baseX =
-                    gButtonInfoTable[btn1Ix].x
-                    + buttonConfig[i][0]->baseX;
+                buttonConfig[i][1]->baseX = gButtonInfoTable[btn1Ix].x + buttonConfig[i][0]->baseX;
                 buttonConfig[i][1]->baseY = buttonConfig[i][0]->baseY;
                 oam = &buttonConfig[i][1]->oam[0];
 
                 gOamBuffer[oam->oamId].tileNum = 0x2a;
-                gOamBuffer[oam->oamId].shape = 0;
+                gOamBuffer[oam->oamId].shape = ST_OAM_SQUARE;
                 gOamBuffer[oam->oamId].size = 0;
-                gOamBuffer[oam->oamId].x =
-                    oam->xOffset + buttonConfig[i][1]->baseX;
-                gOamBuffer[oam->oamId].y =
-                    oam->yOffset + buttonConfig[i][1]->baseY;
+                gOamBuffer[oam->oamId].x = oam->xOffset + buttonConfig[i][1]->baseX;
+                gOamBuffer[oam->oamId].y = oam->yOffset + buttonConfig[i][1]->baseY;
 
                 buttonConfig[i][2]->baseX = 8 + buttonConfig[i][1]->baseX;
                 buttonConfig[i][2]->baseY = buttonConfig[i][0]->baseY;
                 oam = &buttonConfig[i][2]->oam[0];
 
-                gOamBuffer[oam->oamId].tileNum =
-                    gButtonInfoTable[btn2Ix].tileNum;
-                gOamBuffer[oam->oamId].shape =
-                    gButtonInfoTable[btn2Ix].shape;
-                gOamBuffer[oam->oamId].size =
-                    gButtonInfoTable[btn2Ix].size;
-                gOamBuffer[oam->oamId].x =
-                    oam->xOffset + buttonConfig[i][2]->baseX;
-                gOamBuffer[oam->oamId].y =
-                    oam->yOffset + buttonConfig[i][2]->baseY;
+                gOamBuffer[oam->oamId].tileNum = gButtonInfoTable[btn2Ix].tileNum;
+                gOamBuffer[oam->oamId].shape = gButtonInfoTable[btn2Ix].shape;
+                gOamBuffer[oam->oamId].size = gButtonInfoTable[btn2Ix].size;
+                gOamBuffer[oam->oamId].x = oam->xOffset + buttonConfig[i][2]->baseX;
+                gOamBuffer[oam->oamId].y = oam->yOffset + buttonConfig[i][2]->baseY;
             }
         }
     }
@@ -736,32 +717,31 @@ void UpdateOptionsSpritePositions(void)
     {
         oam = &torchic->oam[i];
         gOamBuffer[oam->oamId].tileNum =
-            (0x40 + (i * 0x80)) + ((s8)gOptionsData.torchicAnimTileId * 4);
+            (0x40 + (i * 0x80)) + (gOptionsData.torchicAnimTileId * 4);
         gOamBuffer[oam->oamId].x = oam->xOffset + torchic->baseX;
         gOamBuffer[oam->oamId].y = oam->yOffset + torchic->baseY;
     }
 
-    if (noteBalloon->active == 1)
+    if (noteBalloon->active == TRUE)
     {
         noteBalloon->baseX = 176;
         noteBalloon->baseY = 8;
         oam = &noteBalloon->oam[0];
-        gOamBuffer[oam->oamId].tileNum =
-            ((s8)gOptionsData.noteSizeBlinkState * 0x40) + 0x54;
+        gOamBuffer[oam->oamId].tileNum = (gOptionsData.noteSizeBlinkState * 0x40) + 0x54;
         gOamBuffer[oam->oamId].x = oam->xOffset + noteBalloon->baseX;
         gOamBuffer[oam->oamId].y = oam->yOffset + noteBalloon->baseY;
+
         if ((gMain.systemFrameCount % 18) == 0)
         {
-            gOptionsData.noteSizeBlinkState =
-                1 - gOptionsData.noteSizeBlinkState;
+            gOptionsData.noteSizeBlinkState = 1 - gOptionsData.noteSizeBlinkState;
         }
     }
 
-    soundSelectArrow->active = 0;
+    soundSelectArrow->active = FALSE;
     for (i = 0; i < 6; i++)
     {
         for (j = 0; j < 3; j++)
-            buttonConfig[i][j]->active = 0;
+            buttonConfig[i][j]->active = FALSE;
     }
 }
 
