@@ -6,6 +6,7 @@
 #include "variables.h"
 #include "constants/bg_music.h"
 #include "constants/fields.h"
+#include "constants/sprite_groups.h"
 
 extern StateFunc gHighScoresStateFuncs[15];
 extern StateFunc gIdleHighScoresStateFuncs[3];
@@ -971,59 +972,61 @@ void UpdateNameEntryCursor(void)
     spriteGroup->active = FALSE;
 }
 
-// The asm("") statements below are empty optimization barriers -- they emit no
-// instructions, but stop agbcc from coalescing the alias pointers with the
-// pointers they duplicate and from re-folding the OAM pointers back into
-// base+displacement addressing. Both their presence AND their exact placement
-// are required for a byte-identical match; do not move or remove them.
+// The target keeps two redundant pointer copies alive in the entry block --
+// spriteGroup1_ in r4 and spriteGroup2_ in r5 -- which agbcc otherwise deletes
+// in cse1, again in loop and again in combine. Two constructs keep them:
+// the r4 pin on spriteGroup1_, and the empty asm("") barriers below (they emit
+// no instructions and the "r" constraint accepts any register; they only stop
+// the alias pointers being coalesced with the pointers they duplicate, and stop
+// the OAM pointers being re-folded into base+displacement addressing).
+// spriteGroup2_ cannot also be pinned -- the target reuses r5 as a scratch
+// register once the alias dies, and a pin would reserve it for the whole
+// function. Three barriers is the floor; their exact placement is required for
+// a byte-identical match, so do not move or remove them.
 void RenderHighScoreSprites(void)
 {
-    struct SpriteGroup *spriteGroup1Alias;
-    struct SpriteGroup *spriteGroup2Alias;
     int i;
     struct SpriteGroup *spriteGroup1;
-    const struct SpriteSet * const *spriteSets;
+    register struct SpriteGroup *spriteGroup1_ asm("r4");
     struct SpriteGroup *spriteGroup2;
+    struct SpriteGroup *spriteGroup2_;
     struct SpriteGroup *spriteGroup3;
     struct SpriteGroup *spriteGroup4;
-    spriteGroup1 = &gMain.spriteGroups[0];
-    spriteSets = gHighScoreScreenSpriteSets;
-    spriteGroup1Alias = spriteGroup1;
-    asm("" : "=l"(spriteGroup1Alias) : "0"(spriteGroup1Alias));
-    spriteGroup2 = &gMain.spriteGroups[1];
-    spriteGroup2Alias = &gMain.spriteGroups[1];
-    asm("" : "=l"(spriteGroup2Alias) : "0"(spriteGroup2Alias));
-    spriteGroup3 = &gMain.spriteGroups[(s8)gHighScorePopupType + 2];
-    spriteGroup4 = &gMain.spriteGroups[gHighScoreScreenState.pressStartBlinkToggle + 7];
+    struct OamDataSimple *oamData;
+    const struct SpriteSet *spriteSet;
+    const struct SpriteSet * const *spriteSets = gHighScoreScreenSpriteSets;
+    spriteGroup1 = &gMain.spriteGroups[SG_HIGH_SCORE_PAGE_RIGHT_ARROW];
+    spriteGroup1_ = spriteGroup1;
+    spriteGroup2 = &gMain.spriteGroups[SG_HIGH_SCORE_PAGE_LEFT_ARROW];
+    spriteGroup2_ = spriteGroup2;
+    asm("" : "=r"(spriteGroup2_) : "0"(spriteGroup2_));
+    spriteGroup3 = &gMain.spriteGroups[(s8)gHighScorePopupType + SG_HIGH_SCORE_POPUP_LIST_BASE];
+    spriteGroup4 = &gMain.spriteGroups[gHighScoreScreenState.pressStartBlinkToggle + SG_HIGH_SCORE_PRESS_START_0];
 
     if (gScrollXOffset == 0)
     {
-        struct OamDataSimple *oamData;
-        const struct SpriteSet *spriteSet;
-        asm("" : : "l"(spriteGroup1Alias));
-        spriteGroup1->active = 1;
-        spriteGroup2Alias->active = 0;
+        spriteGroup1->active = TRUE;
+        spriteGroup2_->active = FALSE;
         spriteGroup3->active = gHighScoreShowPopupFlag;
         spriteGroup4->active = gHighScoreScreenState.displayModeVisible;
-        asm("" : : "l"(spriteGroup2Alias));
+        asm("" : : "r"(spriteGroup1_), "r"(spriteGroup2_));
 
-        LoadSpriteSets(spriteSets, 9, gMain.spriteGroups);
+        LoadSpriteSets(spriteSets, 9, spriteGroup1);
         {
             spriteGroup1->baseX = 220;
             spriteGroup1->baseY = 144;
-            oamData = &spriteGroup1Alias->oam[0];
-            asm("" : "=l"(oamData) : "0"(oamData));
+            oamData = &spriteGroup1_->oam[0];
             gOamBuffer[oamData->oamId].tileNum = gHighScoreScreenState.flashElapsedFrames * 2 + 2;
             gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup1->baseX;
             gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup1->baseY;
 
         }
 
-        if (spriteGroup4->active == 1)
+        if (spriteGroup4->active == TRUE)
         {
             spriteGroup4->baseX = 84;
             spriteGroup4->baseY = 150;
-            spriteSet = gHighScoreScreenSpriteSets[gHighScoreScreenState.pressStartBlinkToggle + 7];
+            spriteSet = gHighScoreScreenSpriteSets[gHighScoreScreenState.pressStartBlinkToggle + SG_HIGH_SCORE_PRESS_START_0];
             for (i = 0; i < spriteSet->count; i++)
             {
                 oamData = &spriteGroup4->oam[i];
@@ -1031,12 +1034,12 @@ void RenderHighScoreSprites(void)
                 gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup4->baseY;
             }
         }
-        if (spriteGroup3->active == 1)
+        if (spriteGroup3->active == TRUE)
         {
             switch ((s8)gHighScorePopupType)
             {
-            case 0:
-            case 4:
+            case HIGH_SCORE_POPUP_TRANSMISSION_CONNECT_PROMPT:
+            case HIGH_SCORE_POPUP_DELETE_CONFIRMATION_PROMPT:
                 spriteGroup3->baseX = 120;
                 spriteGroup3->baseY = 100;
                 break;
@@ -1045,7 +1048,7 @@ void RenderHighScoreSprites(void)
                 spriteGroup3->baseY = 80;
                 break;
             }
-            spriteSet = gHighScoreScreenSpriteSets[(s8)gHighScorePopupType + 2];
+            spriteSet = gHighScoreScreenSpriteSets[(s8)gHighScorePopupType + SG_HIGH_SCORE_POPUP_LIST_BASE];
             for (i = 0; i < spriteSet->count; i++)
             {
                 oamData = &spriteGroup3->oam[i];
@@ -1056,18 +1059,16 @@ void RenderHighScoreSprites(void)
     }
     else if (gScrollXOffset == 240)
     {
-        struct OamDataSimple *oamData;
-        const struct SpriteSet *spriteSet;
-        spriteGroup1->active = 0;
-        spriteGroup2->active = 1;
+        spriteGroup1->active = FALSE;
+        spriteGroup2->active = TRUE;
         spriteGroup3->active = gHighScoreShowPopupFlag;
         spriteGroup4->active = gHighScoreScreenState.displayModeVisible;
-        LoadSpriteSets(spriteSets, 9, gMain.spriteGroups);
+        LoadSpriteSets(spriteSets, 9, spriteGroup1);
         {
             spriteGroup2->baseX = 4;
             spriteGroup2->baseY = 144;
-            oamData = &spriteGroup2Alias->oam[0];
-            asm("" : "=l"(spriteGroup2Alias) : "0"(spriteGroup2Alias));
+            oamData = &spriteGroup2_->oam[0];
+            asm("" : "=r"(spriteGroup2_) : "0"(spriteGroup2_));
 
             gOamBuffer[oamData->oamId].tileNum = gHighScoreScreenState.flashElapsedFrames * 2 + 2;
             gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup2->baseX;
@@ -1075,11 +1076,11 @@ void RenderHighScoreSprites(void)
 
         }
 
-        if (spriteGroup4->active == 1)
+        if (spriteGroup4->active == TRUE)
         {
             spriteGroup4->baseX = 84;
             spriteGroup4->baseY = 150;
-            spriteSet = gHighScoreScreenSpriteSets[gHighScoreScreenState.pressStartBlinkToggle + 7];
+            spriteSet = gHighScoreScreenSpriteSets[gHighScoreScreenState.pressStartBlinkToggle + SG_HIGH_SCORE_PRESS_START_0];
             for (i = 0; i < spriteSet->count; i++)
             {
                 oamData = &spriteGroup4->oam[i];
@@ -1087,12 +1088,12 @@ void RenderHighScoreSprites(void)
                 gOamBuffer[oamData->oamId].y = oamData->yOffset + spriteGroup4->baseY;
             }
         }
-        if (spriteGroup3->active == 1)
+        if (spriteGroup3->active == TRUE)
         {
             switch ((s8)gHighScorePopupType)
             {
-            case 0:
-            case 4:
+            case HIGH_SCORE_POPUP_TRANSMISSION_CONNECT_PROMPT:
+            case HIGH_SCORE_POPUP_DELETE_CONFIRMATION_PROMPT:
                 spriteGroup3->baseX = 120;
                 spriteGroup3->baseY = 100;
                 break;
@@ -1101,7 +1102,7 @@ void RenderHighScoreSprites(void)
                 spriteGroup3->baseY = 80;
                 break;
             }
-            spriteSet = gHighScoreScreenSpriteSets[(s8)gHighScorePopupType + 2];
+            spriteSet = gHighScoreScreenSpriteSets[(s8)gHighScorePopupType + SG_HIGH_SCORE_POPUP_LIST_BASE];
             for (i = 0; i < spriteSet->count; i++)
             {
                 oamData = &spriteGroup3->oam[i];
@@ -1112,13 +1113,13 @@ void RenderHighScoreSprites(void)
     }
     else
     {
-        spriteGroup1->active = 0;
-        spriteGroup2->active = 0;
-        LoadSpriteSets(spriteSets, 9, gMain.spriteGroups);
+        spriteGroup1->active = FALSE;
+        spriteGroup2->active = FALSE;
+        LoadSpriteSets(spriteSets, 9, spriteGroup1);
     }
 
-    spriteGroup3->active = 0;
-    spriteGroup4->active = 0;
+    spriteGroup3->active = FALSE;
+    spriteGroup4->active = FALSE;
 }
 
 
