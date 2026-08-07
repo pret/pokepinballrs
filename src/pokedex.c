@@ -410,7 +410,6 @@ void Pokedex_InfoWindowSlideIn(void)
 
 void Pokedex_DetailViewInput(void)
 {
-    u16 var0;
 
     if (gPokedexDetailFrameCount < 0x51)
     {
@@ -1818,16 +1817,14 @@ static void PrintSeenOwnedTotals(s16 seen, s16 owned)
     int ownedDigits[DEX_NUM_DIGITS];
 
     temp = seen;
-    seenDigits[0] = temp / 100;
-    temp %= 100;
-    seenDigits[1] = temp / 10;
-    seenDigits[2] = temp % 10;
+    seenDigits[0] = LEAD_DIGIT_100S(temp);
+    seenDigits[1] = DIGIT_10S_SCALEDOWN(temp);
+    seenDigits[2] = DIGIT_1S(temp);
 
     temp = owned;
-    ownedDigits[0] = temp / 100;
-    temp %= 100;
-    ownedDigits[1] = temp / 10;
-    ownedDigits[2] = temp % 10;
+    ownedDigits[0] = LEAD_DIGIT_100S(temp);
+    ownedDigits[1] = DIGIT_10S_SCALEDOWN(temp);
+    ownedDigits[2] = DIGIT_1S(temp);
 
     for (i = 0; i < DEX_NUM_DIGITS; i++)
     {

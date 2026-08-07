@@ -88,7 +88,7 @@ void AnimateRubySlingshotHit(void)
         if (gCurrentPinballGame->slingshotHitAnimTimer == 3)
         {
             m4aSongNumStart(SE_SLINGSHOT_HIT);
-            gCurrentPinballGame->scoreAddedInFrame = 500;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_SLINGSHOT_HIT;
             PlayRumble(7);
         }
     }
@@ -120,8 +120,9 @@ void DrawRubyProgressDigits(void)
     const u8 **src;
     const u8 **dest;
 
-    var0 = gCurrentPinballGame->progressLevel / 10;
-    var1 = gCurrentPinballGame->progressLevel % 10;
+    var0 = LEAD_DIGIT_10S(gCurrentPinballGame->progressLevel);
+    var1 = DIGIT_1S(gCurrentPinballGame->progressLevel);
+
     src = gRubyProgressDigitTilePointers[var0];
     dest = gRubyProgressDigitTilePointers[10];
     DmaCopy16(3, src[0], dest[0], 0x20);
@@ -201,7 +202,7 @@ void DrawRubyModeTimerDisplay(void)
     const u8 **src;
     const u8 **dest;
 
-    if (gCurrentPinballGame->saverTimeRemaining > 300)
+    if (gCurrentPinballGame->saverTimeRemaining > SAVER_WARNING_FLASH_TIME)
     {
         gCurrentPinballGame->saverLit = TRUE;
     }
@@ -375,7 +376,7 @@ void AnimateRubyBallPowerUpSequence(void)
             if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
                 gCurrentPinballGame->ballUpgradeType++;
 
-            gCurrentPinballGame->ballUpgradeCounter = 3600;
+            gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
 

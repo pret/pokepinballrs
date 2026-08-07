@@ -4,7 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/kecleon_states.h"
 
-#define BONUS_KECLEON_COMPLETE_POINTS 30000000
+#define KECLEON_MODE_TIME TICKS_FOR_TIME(2,0)
 
 extern void UpdateKecleonEntityLogic(void);
 extern void RenderKecleonSprites(void);
@@ -60,7 +60,7 @@ void KecleonBoardProcess_3A_35860(void)
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = KECLEON_BOARD_STATE_INTRO;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 120 * 60; // 120 seconds
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + KECLEON_MODE_TIME; // 120 seconds
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
@@ -182,8 +182,8 @@ void KecleonBoardProcess_3B_35AA4(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = BONUS_KECLEON_COMPLETE_POINTS;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_KECLEON_BONUS_TALLY;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_KECLEON_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -615,7 +615,7 @@ void UpdateKecleonEntityLogic(void)
         gCurrentPinballGame->bossFramesetIndex = gCurrentPinballGame->kecleonFramesetBase + 2;
         gCurrentPinballGame->bossFrameTimer = 0;
         gCurrentPinballGame->kecleonCamoStrength = 0;
-        gCurrentPinballGame->scoreAddedInFrame = 500000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_KECLEON_HIT_WHILE_DOWN;
         gCurrentPinballGame->bonusModeHitCount++;
         MPlayStart(&gMPlayInfo_SE1, &se_kecleon_hit_damaged);
         PlayRumble(7);
@@ -977,7 +977,7 @@ void UpdateKecleonScopeItem(void)
                 gCurrentPinballGame->kecleonBoardHitState = 0;
                 gCurrentPinballGame->kecleonTargetActive = TRUE;
                 gCurrentPinballGame->kecleonAnimTimer = 0;
-                gCurrentPinballGame->scoreAddedInFrame = 10000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_KECLEON_SCOPE_COLLECTED;
                 m4aSongNumStart(SE_KECLEON_SCOPE_ACTIVATED);
             }
 

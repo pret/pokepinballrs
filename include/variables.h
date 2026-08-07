@@ -25,10 +25,19 @@ extern struct ToneData gPokemonCryToneBank2[];
 extern struct ToneData gPokemonCryToneBank3[];
 extern u16 gOptionsBGMList[];
 
+
+struct ButtonInfoView
+{
+    u16 buttonName;
+    u16 tileNum;
+    u8 shape;
+    u8 size;
+    u8 x;
+    u8 y;
+};
+
 /*** 
-* button information: input mask, tile, ?, width
-* 
-* First index associations:
+* index button associations:
 *   0 : A button 
 *   1 : B button
 *   2 : Select button
@@ -40,14 +49,8 @@ extern u16 gOptionsBGMList[];
 *   8 : R button
 *   9 : L button
 *   10 : Combiner sprite
-* 
-* Second index:
-*   0 : button input mask
-*   1 : tile number
-*   2 : unknown
-*   3 : px wide
 ***/
-extern u16 gButtonInfoTable[11][4];
+extern struct ButtonInfoView gButtonInfoTable[11];
 extern struct {u8 tileId; s16 frameDuration;} gButtonAnimData[];
 extern u16 gOptionsSEList[];
 extern u8 gCustomButtonConfigs[][10];
@@ -415,10 +418,10 @@ extern s8 gLinkExchangeSendPhase;
 
 extern u8 gIntroScene8WailmerLaunch_Pal[];
 extern u8 gIntroScene8WailmerLaunch_BG2Tilemap[];
-extern u8 gIntroScene7ParadeExplosion_Gfx[];
-extern u8 gIntroScene7ParadeWailmerLaunch_Gfx[];
+extern u8 gIntroScene8WailmerLaunchExplosion_Gfx[];
+extern u8 gIntroScene8WailmerLaunch_Gfx[];
 
-extern s8 gIntroScene9BallFlight_BallDecelTable[];
+extern s8 gIntroScene9BallFlight_BallXFrameAdjustTable[];
 extern s8 gIntroObjWhiteFlash;
 extern s8 gIntroBGWhiteFlash;
 

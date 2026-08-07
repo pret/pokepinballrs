@@ -60,10 +60,10 @@ void RevealCatchTilesSequential(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
     u16 *dst;
-    s16 var0;
+    s16 selectedTileIx;
     int var1;
 
-    var1 = 1;
+    var1 = TRUE;
     gMain.fieldSpriteGroups[FIELD_SG_18]->active = TRUE;
     if (gCurrentPinballGame->catchRevealFrameId > 0)
         UpdateSequentialTileParticles();
@@ -89,7 +89,7 @@ void RevealCatchTilesSequential(void)
             {
                 gCurrentPinballGame->catchSequentialTilesRevealed++;
                 gCurrentPinballGame->catchRevealFrameId = 0;
-                var1 = 0;
+                var1 = FALSE;
                 gCurrentPinballGame->catchTilesRemaining--;
                 if (gCurrentPinballGame->catchSequentialTilesRevealed == gCurrentPinballGame->catchTilesBoardAcknowledged)
                 {
@@ -105,22 +105,22 @@ void RevealCatchTilesSequential(void)
                     for (i = 0; i < 6; i++)
                         gCurrentPinballGame->catchTileShufflePool[i] = i;
 
-                    var0 = gMain.systemFrameCount % 6;
+                    selectedTileIx = gMain.systemFrameCount % 6;
                     gCurrentPinballGame->catchTilesRemaining = 5;
                     gCurrentPinballGame->boardSubState++; //Move to next Catch phase
                     gMain.fieldSpriteGroups[FIELD_SG_18]->active = FALSE;
                 }
                 else if (gCurrentPinballGame->catchTilesRemaining == 0)
                 {
-                    var0 = 0;
+                    selectedTileIx = 0;
                 }
                 else
                 {
-                    var0 = gMain.systemFrameCount % gCurrentPinballGame->catchTilesRemaining;
+                    selectedTileIx = gMain.systemFrameCount % gCurrentPinballGame->catchTilesRemaining;
                 }
 
-                gCurrentPinballGame->catchGridCellIndex = gCurrentPinballGame->catchTileShufflePool[var0];
-                for (i = var0; i < gCurrentPinballGame->catchTilesRemaining; i++)
+                gCurrentPinballGame->catchGridCellIndex = gCurrentPinballGame->catchTileShufflePool[selectedTileIx];
+                for (i = selectedTileIx; i < gCurrentPinballGame->catchTilesRemaining; i++)
                     gCurrentPinballGame->catchTileShufflePool[i] = gCurrentPinballGame->catchTileShufflePool[i + 1];
             }
             else
@@ -132,7 +132,7 @@ void RevealCatchTilesSequential(void)
     }
     else
     {
-        var1 = 0;
+        var1 = FALSE;
     }
 
     if (gCurrentPinballGame->catchRevealFrameId == 1)
@@ -142,7 +142,7 @@ void RevealCatchTilesSequential(void)
     }
 
     if (gCurrentPinballGame->catchRevealFrameId == 12)
-        var1 = 0;
+        var1 = FALSE;
 
     group = gMain.fieldSpriteGroups[FIELD_SG_18];
     if (var1)
@@ -178,7 +178,7 @@ void RevealCatchTilesBurst(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
     u16 *dst;
-    s16 var0;
+    s16 tileFrameIx;
 
     switch (gCurrentPinballGame->hatchRevealPhase)
     {
@@ -221,7 +221,7 @@ void RevealCatchTilesBurst(void)
             }
         }
 
-        var0 = gCurrentPinballGame->revealFramesetIndex;
+        tileFrameIx = gCurrentPinballGame->revealFramesetIndex;
         group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_LIGHTNING_STRIKE];
         group->baseX = 124 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 244 - gCurrentPinballGame->cameraYOffset;
@@ -232,9 +232,9 @@ void RevealCatchTilesBurst(void)
         {
             oamSimple = &group->oam[i];
             dst = (u16 *)&gOamBuffer[oamSimple->oamId];
-            *dst++ = gCatchTile_RevealOamFramesets[var0][i * 3 + 0];
-            *dst++ = gCatchTile_RevealOamFramesets[var0][i * 3 + 1];
-            *dst++ = gCatchTile_RevealOamFramesets[var0][i * 3 + 2];
+            *dst++ = gCatchTile_RevealOamFramesets[tileFrameIx][i * 3 + 0];
+            *dst++ = gCatchTile_RevealOamFramesets[tileFrameIx][i * 3 + 1];
+            *dst++ = gCatchTile_RevealOamFramesets[tileFrameIx][i * 3 + 2];
 
             gOamBuffer[oamSimple->oamId].x += group->baseX;
             gOamBuffer[oamSimple->oamId].y += group->baseY;
@@ -250,7 +250,7 @@ void RevealCatchTilesBurst(void)
         gCurrentPinballGame->startButtonDisabled = TRUE;
         break;
     case 4:
-        var0 = gCurrentPinballGame->revealAnimFrameCounter / 2;
+        tileFrameIx = gCurrentPinballGame->revealAnimFrameCounter / 2;
         if (gCurrentPinballGame->revealAnimFrameCounter < 15)
         {
             gCurrentPinballGame->revealAnimFrameCounter++;
@@ -273,9 +273,9 @@ void RevealCatchTilesBurst(void)
         {
             oamSimple = &group->oam[i];
             dst = (u16 *)&gOamBuffer[oamSimple->oamId];
-            *dst++ = gCatchTile_BurstRevealOamFramesets0[var0][i * 3 + 0];
-            *dst++ = gCatchTile_BurstRevealOamFramesets0[var0][i * 3 + 1];
-            *dst++ = gCatchTile_BurstRevealOamFramesets0[var0][i * 3 + 2];
+            *dst++ = gCatchTile_BurstRevealOamFramesets0[tileFrameIx][i * 3 + 0];
+            *dst++ = gCatchTile_BurstRevealOamFramesets0[tileFrameIx][i * 3 + 1];
+            *dst++ = gCatchTile_BurstRevealOamFramesets0[tileFrameIx][i * 3 + 2];
 
             gOamBuffer[oamSimple->oamId].x += group->baseX;
             gOamBuffer[oamSimple->oamId].y += group->baseY;
@@ -357,7 +357,7 @@ void RevealCatchTilesBurst(void)
             }
         }
 
-        var0 = gCurrentPinballGame->revealFramesetIndex;
+        tileFrameIx = gCurrentPinballGame->revealFramesetIndex;
         group = gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX];
         group->baseX = 96 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 300 - gCurrentPinballGame->cameraYOffset;
@@ -368,9 +368,9 @@ void RevealCatchTilesBurst(void)
         {
             oamSimple = &group->oam[i];
             dst = (u16 *)&gOamBuffer[oamSimple->oamId];
-            *dst++ = gCatchTile_BurstRevealOamFramesets1[var0][i * 3 + 0];
-            *dst++ = gCatchTile_BurstRevealOamFramesets1[var0][i * 3 + 1];
-            *dst++ = gCatchTile_BurstRevealOamFramesets1[var0][i * 3 + 2];
+            *dst++ = gCatchTile_BurstRevealOamFramesets1[tileFrameIx][i * 3 + 0];
+            *dst++ = gCatchTile_BurstRevealOamFramesets1[tileFrameIx][i * 3 + 1];
+            *dst++ = gCatchTile_BurstRevealOamFramesets1[tileFrameIx][i * 3 + 2];
 
             gOamBuffer[oamSimple->oamId].x += group->baseX;
             gOamBuffer[oamSimple->oamId].y += group->baseY;

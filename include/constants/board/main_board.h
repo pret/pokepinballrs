@@ -2,7 +2,10 @@
 #define GUARD_CONSTANTS_MAIN_BOARD_H
 
 #include "center_screen_states.h"
-#include "../anglemath.h"
+#include "constants/anglemath.h"
+#include "constants/score.h"
+
+#define SAVER_WARNING_FLASH_TIME TICKS_FOR_TIME(0,5)
 
 enum MainBoardTrapHoles{
     NOT_TRAPPED = 0,

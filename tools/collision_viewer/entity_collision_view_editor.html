@@ -224,6 +224,7 @@
       </label>
       <label class="subtle">W <input id="widthInput" type="number" value="96" min="1" max="512"></label>
       <label class="subtle">H <input id="heightInput" type="number" value="88" min="1" max="512"></label>
+      <label class="subtle">Element <input id="elementInput" type="number" value="0" min="0" step="1"></label>
       <label class="subtle">Zoom <input id="zoomInput" type="number" value="8" min="2" max="32"></label>
       <label class="subtle">Color by
         <select id="colorMode">
@@ -317,6 +318,8 @@
   const state = {
     data: null,
     fileName: "",
+    selectedElement: 0,
+    elementCount: 0,
     selectedX: 0,
     selectedY: 0,
     dirty: false
@@ -382,9 +385,11 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
 
+  function cellsPerElement() { return width() * height(); }
   function width() { return Math.max(1, Number($("widthInput").value) || 1); }
   function height() { return Math.max(1, Number($("heightInput").value) || 1); }
-  function selectedIndex() { return state.selectedY * width() + state.selectedX; }
+  function selectedLocalIndex() { return state.selectedY * width() + state.selectedX; }
+  function selectedIndex() { return ( state.selectedElement * cellsPerElement() + selectedLocalIndex() ); }
   function getValueAt(index) { return state.data && index >= 0 && index < state.data.length ? state.data[index] : 0; }
 
   function typeColor(type, angle = 0) {
@@ -439,6 +444,18 @@
     if (!dims) return;
     $("widthInput").value = String(dims.w);
     $("heightInput").value = String(dims.h);
+    
+    const cellsPerElement = dims.w * dims.h;
+
+    state.elementCount =
+        cellsPerElement > 0
+            ? Math.floor(u16Length / cellsPerElement)
+            : 0;
+
+    state.selectedElement = Math.max(
+        0,
+        Math.min(state.elementCount - 1, state.selectedElement)
+    );
   }
 
   async function loadFile(file) {
@@ -460,21 +477,44 @@
   function validateAndRefresh() {
     const messages = [];
     let warning = false;
+    
+    const elementInput = $("elementInput");
+    elementInput.disabled = !state.data;
+    elementInput.max = String(Math.max(0, state.elementCount - 1));
+    elementInput.value = String(state.selectedElement);
 
     if (!state.data) {
       messages.push("Load a u16 little-endian entity collision .bin file. Include size in the filename like Name_96x120.bin, or enter width/height manually.");
     } else {
-      const expected = width() * height();
-      messages.push(`Loaded ${state.fileName}: ${state.data.length} u16 cells / ${state.data.length * 2} bytes.`);
-      const filenameDims = dimensionsFromFileName(state.fileName);
-      if ($("presetSelect").value === "filename" && !filenameDims) {
-        messages.push("Warning: no _WxH size pattern found in filename; using the current manual width/height values.");
-      }
-      messages.push(`Current dimensions: 0x${toHex(width(), 2)} × 0x${toHex(height(), 2)} = ${expected} cells.`);
-      if (expected !== state.data.length) {
+      const elementSize = cellsPerElement();
+      const completeElements = Math.floor(state.data.length / elementSize);
+      const remainder = state.data.length % elementSize;
+
+      state.elementCount = completeElements;
+      
+      messages.push(
+        `Loaded ${state.fileName}: ${state.data.length} u16 cells / ` +
+        `${state.data.length * 2} bytes.`
+      );
+
+      messages.push(
+        `Element dimensions: ${width()} × ${height()} = ` +
+        `${elementSize} cells.`
+      );
+
+      messages.push(
+        `Detected ${completeElements} complete element` +
+        `${completeElements === 1 ? "" : "s"}.`
+      );
+      
+      if (remainder !== 0) {
         warning = true;
-        messages.push(`Warning: dimensions expect ${expected} cells, but file contains ${state.data.length}. Rendering available cells only.`);
+        messages.push(
+            `Warning: file contains ${remainder} extra cell` +
+            `${remainder === 1 ? "" : "s"} after the final complete element.`
+        );
       }
+      
       if (state.dirty) messages.push("Unsaved changes present.");
     }
 
@@ -503,9 +543,11 @@
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       if (state.data) {
+        const elementOffset = state.selectedElement * cellsPerElement();
         for (let y = 0; y < h; y++) {
           for (let x = 0; x < w; x++) {
-            const index = y * w + x;
+            const localIndex = y * w + x;
+            const index = elementOffset + localIndex;
             if (index >= state.data.length) continue;
             ctx.fillStyle = colorForValue(state.data[index] ?? 0);
             ctx.fillRect(x * z, y * z, z, z);
@@ -539,10 +581,11 @@
     const value = hasData ? getValueAt(index) : 0;
     const angle = value & ANGLE_MASK;
     const type = value & TYPE_MASK;
+    const localIndex = selectedLocalIndex();
 
     $("selectedLabel").textContent = hasData ? `${state.selectedX}, ${state.selectedY}` : "none";
     $("xyLabel").textContent = hasData ? `${state.selectedX}, ${state.selectedY}` : "—";
-    $("indexLabel").textContent = hasData ? `0x${toHex(index, 4)} / ${index}` : "—";
+    $("indexLabel").textContent = hasData ? `Element ${state.selectedElement}: ${localIndex} / file index ${index}` : "—";
     $("offsetLabel").textContent = hasData ? `0x${toHex(index * 2, 6)}` : "—";
     $("rawLabel").textContent = hasData ? `0x${toHex(value, 4)}` : "—";
     $("angleLabel").textContent = hasData ? `0x${toHex(angle, 4)}` : "—";
@@ -616,6 +659,23 @@
   for (const id of ["widthInput", "heightInput", "zoomInput", "colorMode", "showGrid"]) {
     $(id).addEventListener("change", validateAndRefresh);
   }
+  
+  $("elementInput").addEventListener("change", () => {
+    const maxElement = Math.max(0, state.elementCount - 1);
+
+    state.selectedElement = Math.max(
+        0,
+        Math.min(
+            maxElement,
+            Number($("elementInput").value) || 0
+        )
+    );
+
+    $("elementInput").value =
+        String(state.selectedElement);
+
+    validateAndRefresh();
+  });
 
   $("applyRawBtn").addEventListener("click", () => {
     try {

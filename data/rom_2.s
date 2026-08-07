@@ -1828,8 +1828,18 @@ gIntroScene9BallFlight_SpriteSets:: @ 0x086A7D20
     .4byte gIntro9BallCardSpinAnim8SpriteSet
     .4byte gIntro9BallCardSpinAnim9SpriteSet
 
-gIntroScene9BallFlight_BallDecelTable:: @ 0x086A7D4C
-	.incbin "baserom.gba", 0x6A7D4C, 0x5C
+gIntroScene9BallFlight_BallXFrameAdjustTable:: @ 0x086A7D4C
+	.byte 14, 13, 12, 11, 10, 10,  9,  9,  9,  8
+    .byte  8,  8,  7,  7,  6,  6,  5,  4,  3,  3
+    .byte  3,  3,  2,  2,  2,  2,  2,  2,  1,  1
+    .byte  1,  1,  1,  1,  1,  1,  1,  1,  1,  1
+    .byte -1, -1, -1, -1, -1, -2, -2, -2, -2, -3
+    .byte -3, -4, -4, -5, -5, -6, -6, -6, -6, -6
+    .byte -6, -6, -6, -6, -6, -6, -6, -6, -6, -6
+    .byte -6, -6, -6, -6, -6, -6, -6, -6, -6, -6
+    .byte -6, -6, -6, -6, -6, -6, -6, -6, -6, -6
+
+    .space 0x2
 
 gNameEntryCursorSpriteSets:: @ 0x086A7DA8
 	.4byte gHighScoreNameEntryCursor0SpriteSet
@@ -4627,14 +4637,14 @@ gBoardStateUpdateFuncs:: @ 0x086AD4E8
     .4byte UpdateJirachiBonus
 
 gShopEvoBGAnimFrames:: @ 0x086AD50C
-    .4byte gShopModeBG_Gfx
-    .4byte gUnknown_081B9984
-    .4byte gUnknown_081BA984
-    .4byte gUnknown_081BB984
-    .4byte gEvoModeBG_Gfx
-    .4byte gUnknown_081B5784
-    .4byte gUnknown_081B6784
-    .4byte gUnknown_081B7784
+    .4byte gShopModeBG0_0_Tilemap
+    .4byte gShopModeBG0_1_Tilemap
+    .4byte gShopModeBG0_2_Tilemap
+    .4byte gShopModeBG0_3_Tilemap
+    .4byte gEvoModeBG0_0_Tilemap
+    .4byte gEvoModeBG0_1_Tilemap
+    .4byte gEvoModeBG0_2_Tilemap
+    .4byte gEvoModeBG0_3_Tilemap
 
 gEggHatchAnimData:: @ 0x086AD52C
 	.incbin "baserom.gba", 0x6AD52C, 0x54
@@ -13669,17 +13679,38 @@ gOptionsTorchicNoteBubbleSpriteSet:: @ 0x086BB8FA
 .2byte 0
 
 gButtonInfoTable:: @ 0x086BB910
-	.2byte A_BUTTON, 0x4, 0x0, 0x8
-	.2byte B_BUTTON, 0x5, 0x0, 0x8
-	.2byte SELECT_BUTTON, 0xE, 0x101, 0x20
-	.2byte START_BUTTON, 0xA, 0x101, 0x20
-	.2byte DPAD_RIGHT, 0x13, 0x0, 0x8
-	.2byte DPAD_LEFT, 0x15, 0x0, 0x8
-	.2byte DPAD_UP, 0x12, 0x0, 0x8
-	.2byte DPAD_DOWN, 0x14, 0x0, 0x8
-	.2byte R_BUTTON, 0x8, 0x1, 0x10
-	.2byte L_BUTTON, 0x6, 0x1, 0x10
-	.2byte 0x0, 0x2A, 0x0, 0x08
+	.2byte A_BUTTON, 0x4
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+    .2byte B_BUTTON, 0x5
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte SELECT_BUTTON, 0xE
+    .byte ST_OAM_H_RECTANGLE, 1, 32, 0 @ SPRITE_SIZE_32x8
+
+	.2byte START_BUTTON, 0xA
+    .byte ST_OAM_H_RECTANGLE, 1, 32, 0 @ SPRITE_SIZE_32x8
+
+	.2byte DPAD_RIGHT, 0x13
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte DPAD_LEFT, 0x15
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte DPAD_UP, 0x12
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte DPAD_DOWN, 0x14
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte R_BUTTON, 0x8
+    .byte ST_OAM_H_RECTANGLE, 0, 16, 0 @ SPRITE_SIZE_16x8
+
+    .2byte L_BUTTON, 0x6
+    .byte ST_OAM_H_RECTANGLE, 0, 16, 0 @ SPRITE_SIZE_16x8
+
+	.2byte 0x0, 0x2A
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
 
 gOptionsCursorPositionTable:: @ 0x086BB968
 	.incbin "baserom.gba", 0x6BB968, 0x40

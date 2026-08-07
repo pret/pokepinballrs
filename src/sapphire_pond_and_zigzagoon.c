@@ -80,7 +80,7 @@ void UpdatePelipperPondEntity(void)
                 gCurrentPinballGame->ball->spinSpeed = 0;
                 m4aSongNumStart(SE_PELIPPER_BALL_GRAB);
                 PlayRumble(7);
-                gCurrentPinballGame->scoreAddedInFrame = 100000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_PELLIPER_BALL_GRAB;
             }
 
             gCurrentPinballGame->ball->positionQ0.x = 156;
@@ -337,14 +337,14 @@ void AnimateWailmerEntity(void)
     u16 *dst;
     const u16 *src;
     s16 index;
-    s16 var0;
+    s16 oamIx;
 
     index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 16;
     group = &gMain.spriteGroups[SG_SAPPHIRE_WAILMER];
     if (gCurrentPinballGame->catchHoleAnimFrame)
         index = gCurrentPinballGame->catchHoleAnimFrame;
 
-    var0 = gWailmerAnimFrameMap[index][0];
+    oamIx = gWailmerAnimFrameMap[index][0];
     index = gWailmerAnimFrameMap[index][1];
     group->baseX = 164 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 166 - gCurrentPinballGame->cameraYOffset;
@@ -353,7 +353,7 @@ void AnimateWailmerEntity(void)
     {
         oamSimple = &group->oam[i];
         dst = (u16*)&gOamBuffer[oamSimple->oamId];
-        src = gWailmerSpritesheetOam[var0][i];
+        src = gWailmerSpritesheetOam[oamIx][i];
         *dst++ = *src++;
         *dst++ = *src++;
         *dst++ = *src++;
@@ -410,7 +410,7 @@ void UpdateZigzagoonEntity(void)
         gCurrentPinballGame->activePortraitType = 22;
         DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, (void *)0x06015800, 0xC00);
         m4aSongNumStart(SE_ZIGZAGOON_ROULETTE_STOP);
-        gCurrentPinballGame->scoreAddedInFrame = 5000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_ZIGZAGOON_ROULETTE_STOP;
         break;
     case 3:
         if (gZigzagoonAnimKeyframes[gCurrentPinballGame->zigzagoonAnimKeyframeIndex][1] > gCurrentPinballGame->sapphireBumperAnimFrame)

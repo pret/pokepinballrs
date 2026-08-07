@@ -80,7 +80,6 @@ void RestoreSphealBonusGraphics(void);
 void SaveGameStateSnapshot(s16 arg0)
 {
     s16 i;
-    u16 *var0;
 
     if (gMPlayInfo_BGM.status >= 0)
     {
@@ -394,8 +393,8 @@ void RestoreFieldSpecificGraphics(void)
             }
             else
             {
-                int var0 = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-                DmaCopy16(3, gAlphabetTilesGfx[var0], (void *)0x6015800 + i * 0x40, 0x40);
+                int letterTileIx = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
+                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], (void *)0x6015800 + i * 0x40, 0x40);
             }
         }
         DmaCopy16(3, gPokemonNameDisplayGfx, (void *)0x6015C00, 0x940);
@@ -409,8 +408,8 @@ void RestoreFieldSpecificGraphics(void)
             }
             else
             {
-                int var0 = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-                DmaCopy16(3, gAlphabetTilesGfx[var0], (void *)0x6015800 + i * 0x40, 0x40);
+                int letterTileIx = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
+                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], (void *)0x6015800 + i * 0x40, 0x40);
             }
         }
 
@@ -422,8 +421,8 @@ void RestoreFieldSpecificGraphics(void)
             }
             else
             {
-                int var0 = gCaughtTextChars[i] - 'A';
-                DmaCopy16(3, gAlphabetTilesGfx[var0], (void *)0x6015800 + (i + 10) * 0x40, 0x40);
+                int letterTileIx = gCaughtTextChars[i] - 'A';
+                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], (void *)0x6015800 + (i + 10) * 0x40, 0x40);
             }
         }
         break;
@@ -441,9 +440,9 @@ void RestoreFieldSpecificGraphics(void)
         if (!gCurrentPinballGame->evolutionShopActive)
         {
             var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
-            var2 = var1[3] / 10;
+            var2 = LEAD_DIGIT_10S(var1[3]);
             DmaCopy16(3, gDecimalDigitTilesGfx[var2], (void *)0x6015DA0, 0x40);
-            var3 = var1[3] % 10;
+            var3 = DIGIT_1S(var1[3]);
             DmaCopy16(3, gDecimalDigitTilesGfx[var3], (void *)0x6015E60, 0x40);
         }
         break;
@@ -471,6 +470,7 @@ void RestoreFieldSpecificGraphics(void)
     }
 }
 
+// TODO: fakematch.
 void RestoreMainFieldDynamicGraphics(void)
 {
     s16 i;

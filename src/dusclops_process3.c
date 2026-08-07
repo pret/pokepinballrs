@@ -5,8 +5,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/dusclops_states.h"
 
-#define BONUS_DUSKULL_TIME 7200 //2 minutes, 60FPS
-#define BONUS_DUSKULL_COMPLETE_POINTS 30000000
+#define DUSKULL_MODE_TIME TICKS_FOR_TIME(2,0)
+
 
 #define DUSKULL_NEEDED_TO_PHASE_TRANSFER 20
 #define DUSKULL_CONCURRENT_MAX 3
@@ -25,7 +25,7 @@ void DuskullBonus_Setup(void)
     gCurrentPinballGame->boardSubState = BONUS_BOARD_SUBSTATE_ACTIVE;
     gCurrentPinballGame->boardState = DUSCLOPS_BOARD_STATE_0_INTRO;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_DUSKULL_TIME;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + DUSKULL_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballGrabbed = FALSE;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
@@ -156,8 +156,8 @@ void DusclopsBoardProcess_3B_33130(void)
             if (gCurrentPinballGame->stageTimer == 180)
             {
                 gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-                gCurrentPinballGame->scoreAddStepSize = 400000;
-                gCurrentPinballGame->scoreAddedInFrame = BONUS_DUSKULL_COMPLETE_POINTS;
+                gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_DUSCLOPS_BONUS_TALLY;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_DUSCLOPS_BONUS_COMPLETE;
             }
             if (gCurrentPinballGame->stageTimer < 240)
             {
@@ -439,7 +439,7 @@ void DuskullPhase_ProcessEntityLogic(void) {
 
             if (gCurrentPinballGame->minionActiveCount > 0)
                 gCurrentPinballGame->minionActiveCount--; //Number of active duskull
-            gCurrentPinballGame->scoreAddedInFrame = 100000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_DUSKULL_HIT;
             gCurrentPinballGame->bonusModeHitCount++; // Number hit
             m4aSongNumStart(SE_DUSKULL_DEATH_CRY); //Duskull Death cry
             PlayRumble(7);
@@ -870,7 +870,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
         }
 
         gCurrentPinballGame->bonusModeHitCount++;
-        gCurrentPinballGame->scoreAddedInFrame = 300000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_DUSCLOPS_HIT;
 
         break;
     }

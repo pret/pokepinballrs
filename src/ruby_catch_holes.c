@@ -73,7 +73,7 @@ void InitSharpedoCatchMode(void)
     gCurrentPinballGame->modeAnimTimer = 113;
 
     m4aSongNumStart(SE_SHARPEDO_BITE);
-    gCurrentPinballGame->scoreAddedInFrame = 50000;
+    gCurrentPinballGame->scoreAddedInFrame = SCORE_SHARPEDO_BALL_CATCH;
 
     PlayRumble(8);
 }
@@ -240,7 +240,7 @@ void AnimateSharpedoCatchSequence(void)
 
 void InitRubyEggHatchMode(void)
 {
-    gCurrentPinballGame->scoreAddedInFrame = 100000;
+    gCurrentPinballGame->scoreAddedInFrame = SCORE_HATCH_CAVE_CATCH;
     if (gCurrentPinballGame->eggCaveState == 3)
     {
         gCurrentPinballGame->eggCaveState = 4;
@@ -339,7 +339,7 @@ void InitRubyEvolutionShopMode(void)
     gCurrentPinballGame->shopUISlideOffset = 0;
     gCurrentPinballGame->modeAnimTimer = 0xB4;
     gCurrentPinballGame->shopEntryTimer = 0xB4;
-    gCurrentPinballGame->scoreAddedInFrame = 500000;
+    gCurrentPinballGame->scoreAddedInFrame = SCORE_SHOP_ENTERED;
     gMain.blendControl = 0xCE;
     gMain.blendBrightness = 0;
     gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
