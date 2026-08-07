@@ -1108,10 +1108,14 @@ gPortraitAnimPalettes:: @ 0x081C02E4
 
 .include "data/board_data/spheal_board.inc"
 
-@ 36 frames of 0xC0 (4x2 tiles), drawn as a single SPRITE_SIZE_32x16 by
-@ gPikaKickbackLaunchFxSpriteSet. Note this is NOT the 4x3 shape the pika
-@ saver banks at 0x084C07EC use, which stack a 32x16 over a 32x8.
-@ Only 0x2400 is copied to OBJ VRAM; the trailing 0x20 is a blank tile.
+@ Not a uniform frame bank: this is a packed atlas of variable-sized
+@ sprites. The whole 0x2400 is uploaded to OBJ VRAM in one go, and
+@ UpdateKickbackLogic then writes raw OAM entries straight out of
+@ gCatchOverlayOamData (data/rom_2.s), so every animation frame picks its
+@ own sizes and tile numbers. Those entries give 27 sprites packed back
+@ to back with no alignment, in sizes from 8x8 to 32x32; the last 13
+@ tiles are never referenced. pika_saver_coverage_shape.json describes
+@ that packing for gbagfx. The trailing 0x20 is a blank tile.
 gPikaSaverFullCoverageGfx:: @ 0x08395A4C
 	.incbin "graphics/stage/main/pika_saver_full_coverage.4bpp"
 	.space 0x20

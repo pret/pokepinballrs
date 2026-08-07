@@ -216,17 +216,11 @@
     },
     {
       "gfx_filename": "pika_saver_full_coverage",
-      "oam": true,
-      "mheight": 2,
-      "mwidth": 4,
-      "width": 24
+      "oamshape": "pika_saver_coverage_shape.json"
     },
     {
       "gfx_filename": "pika_saver_partial_coverage",
-      "oam": true,
-      "mheight": 2,
-      "mwidth": 4,
-      "width": 24
+      "oamshape": "pika_saver_coverage_shape.json"
     }
   ]
 }

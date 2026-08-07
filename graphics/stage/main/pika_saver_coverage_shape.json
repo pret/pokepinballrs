@@ -1,0 +1,368 @@
+{
+  "kind": "oam-shape",
+  "version": 1,
+  "tilecount": 288,
+  "pngsize": "16x21",
+  "pieces": [
+    {
+      "pos": "0,0",
+      "size": "4x2"
+    },
+    {
+      "pos": "4,0",
+      "size": "2x1"
+    },
+    {
+      "pos": "8,0",
+      "size": "2x1"
+    },
+    {
+      "pos": "12,0",
+      "size": "4x4"
+    },
+    {
+      "pos": "4,1",
+      "size": "1x4"
+    },
+    {
+      "pos": "8,1",
+      "size": "4x1"
+    },
+    {
+      "pos": "0,2",
+      "size": "4x2"
+    },
+    {
+      "pos": "8,2",
+      "size": "4x2"
+    },
+    {
+      "pos": "0,4",
+      "size": "4x2"
+    },
+    {
+      "pos": "8,4",
+      "size": "4x2"
+    },
+    {
+      "pos": "12,4",
+      "size": "2x1"
+    },
+    {
+      "pos": "4,5",
+      "size": "4x2"
+    },
+    {
+      "pos": "12,5",
+      "size": "4x2"
+    },
+    {
+      "pos": "0,6",
+      "size": "1x1"
+    },
+    {
+      "pos": "8,6",
+      "size": "4x4"
+    },
+    {
+      "pos": "0,7",
+      "size": "4x2"
+    },
+    {
+      "pos": "4,7",
+      "size": "1x4"
+    },
+    {
+      "pos": "12,7",
+      "size": "4x4"
+    },
+    {
+      "pos": "0,9",
+      "size": "4x4"
+    },
+    {
+      "pos": "8,10",
+      "size": "4x4"
+    },
+    {
+      "pos": "4,11",
+      "size": "4x4"
+    },
+    {
+      "pos": "12,11",
+      "size": "4x4"
+    },
+    {
+      "pos": "0,13",
+      "size": "4x4"
+    },
+    {
+      "pos": "8,14",
+      "size": "4x4"
+    },
+    {
+      "pos": "4,15",
+      "size": "4x4"
+    },
+    {
+      "pos": "12,15",
+      "size": "4x4"
+    },
+    {
+      "pos": "0,17",
+      "size": "4x4"
+    },
+    {
+      "pos": "8,18",
+      "size": "4x2"
+    },
+    {
+      "pos": "4,19",
+      "size": "4x1"
+    },
+    {
+      "pos": "12,19",
+      "size": "1x1"
+    },
+    {
+      "pos": "6,0",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,0",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "10,0",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "11,0",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,1",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "6,1",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,1",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,2",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "6,2",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,2",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,3",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "6,3",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,3",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,4",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "6,4",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,4",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "14,4",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "15,4",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "1,6",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "2,6",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "3,6",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,7",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "6,7",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,7",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,8",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "6,8",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,8",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,9",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "6,9",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,9",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,10",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "6,10",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,10",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "13,19",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "14,19",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "15,19",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "4,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "6,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "7,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "8,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "9,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "10,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "11,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "12,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "13,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "14,20",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "15,20",
+      "size": "1x1",
+      "spacer": true
+    }
+  ]
+}
