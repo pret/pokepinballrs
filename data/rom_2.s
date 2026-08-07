@@ -4627,14 +4627,14 @@ gBoardStateUpdateFuncs:: @ 0x086AD4E8
     .4byte UpdateJirachiBonus
 
 gShopEvoBGAnimFrames:: @ 0x086AD50C
-    .4byte gShopModeBG_Gfx
-    .4byte gUnknown_081B9984
-    .4byte gUnknown_081BA984
-    .4byte gUnknown_081BB984
-    .4byte gEvoModeBG_Gfx
-    .4byte gUnknown_081B5784
-    .4byte gUnknown_081B6784
-    .4byte gUnknown_081B7784
+    .4byte gShopModeBG0_0_Tilemap
+    .4byte gShopModeBG0_1_Tilemap
+    .4byte gShopModeBG0_2_Tilemap
+    .4byte gShopModeBG0_3_Tilemap
+    .4byte gEvoModeBG0_0_Tilemap
+    .4byte gEvoModeBG0_1_Tilemap
+    .4byte gEvoModeBG0_2_Tilemap
+    .4byte gEvoModeBG0_3_Tilemap
 
 gEggHatchAnimData:: @ 0x086AD52C
 	.incbin "baserom.gba", 0x6AD52C, 0x54

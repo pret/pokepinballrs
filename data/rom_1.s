@@ -967,16 +967,17 @@ gShopNameDisplay_Pals:: @ 0x081B45A4
 @ rather than tile graphics for the same reason. Each frame is a full
 @ 32x64 map (0x1000 bytes) copied to VRAM + 0x2000; only the first 49
 @ rows (0xC40) are copied, and the rest is 0x01FF filler in all 4 frames.
-gEvoModeBG_Gfx:: @ 0x081B4784
+@ Uses tiles found in lower part of gSapphireBoardCompressedTiles1 and gRubyBoardCompressedTiles1 
+gEvoModeBG0_0_Tilemap:: @ 0x081B4784
 	.incbin "graphics/stage/main/evo_mode_bg0_frame0_tilemap.bin"
 
-gUnknown_081B5784:: @ 0x081B5784
+gEvoModeBG0_1_Tilemap:: @ 0x081B5784
 	.incbin "graphics/stage/main/evo_mode_bg0_frame1_tilemap.bin"
 
-gUnknown_081B6784:: @ 0x081B6784
+gEvoModeBG0_2_Tilemap:: @ 0x081B6784
 	.incbin "graphics/stage/main/evo_mode_bg0_frame2_tilemap.bin"
 
-gUnknown_081B7784:: @ 0x081B7784
+gEvoModeBG0_3_Tilemap:: @ 0x081B7784
 	.incbin "graphics/stage/main/evo_mode_bg0_frame3_tilemap.bin"
 
 gShopEvoUI_Pals:: @ 0x081B8784
@@ -988,16 +989,17 @@ gShopEvoUI_Pals:: @ 0x081B8784
 @ BGCNT_SCREENBASE(4), so each frame is a full 32x64 map (0x1000 bytes)
 @ copied to BG_VRAM + 0x2000. Only the first 49 rows (0xC40) are copied;
 @ the remaining rows are 0x01FF filler and are identical in all 4 frames.
-gShopModeBG_Gfx:: @ 0x081B8984
+@ Uses tiles found in  lower part of gSapphireBoardCompressedTiles1 and gRubyBoardCompressedTiles1
+gShopModeBG0_0_Tilemap:: @ 0x081B8984
 	.incbin "graphics/stage/main/shop_mode_bg0_frame0_tilemap.bin"
 
-gUnknown_081B9984:: @ 0x081B9984
+gShopModeBG0_1_Tilemap:: @ 0x081B9984
 	.incbin "graphics/stage/main/shop_mode_bg0_frame1_tilemap.bin"
 
-gUnknown_081BA984:: @ 0x081BA984
+gShopModeBG0_2_Tilemap:: @ 0x081BA984
 	.incbin "graphics/stage/main/shop_mode_bg0_frame2_tilemap.bin"
 
-gUnknown_081BB984:: @ 0x081BB984
+gShopModeBG0_3_Tilemap:: @ 0x081BB984
 	.incbin "graphics/stage/main/shop_mode_bg0_frame3_tilemap.bin"
 
 @ 9 palettes of 16 colors, one per shop sign color cycle step
