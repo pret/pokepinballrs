@@ -5,6 +5,8 @@
 #include "constants/board/ruby_states.h"
 
 #define AREAS_NEEDED_BEFORE_RUINS_APPEARS 5
+#define TRAVEL_MODE_TIME TICKS_FOR_TIME(1,0)
+#define TRAVEL_MODE_SAVER_TIME TICKS_FOR_TIME(0,30)
 
 extern const u8 gDefaultTimerPalette[];
 
@@ -37,9 +39,9 @@ void InitTravelMode(void)
     gCurrentPinballGame->boardSubState = TRAVEL_SUBSTATE_INIT;
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_RUNNING;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 3600;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + TRAVEL_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
-    gCurrentPinballGame->saverTimeRemaining = 1800;
+    gCurrentPinballGame->saverTimeRemaining = TRAVEL_MODE_SAVER_TIME;
     DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
 }
 
@@ -188,7 +190,7 @@ void UpdateTravelMode(void)
                 if (gCurrentPinballGame->stageTimer == 394)
                 {
                     gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-                    gCurrentPinballGame->scoreAddedInFrame = 500000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_TRAVEL_MODE_COMPLETED;
                 }
             }
             else

@@ -781,7 +781,7 @@ void InitCenterTrapMode(void)
     gCurrentPinballGame->modeAnimTimer = 0x96;
     gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
     gCurrentPinballGame->bonusTrapEnabled = FALSE;
-    gCurrentPinballGame->scoreAddedInFrame = 10000;
+    gCurrentPinballGame->scoreAddedInFrame = SCORE_CENTER_TRAP_HOLE;
     gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
     PlayRumble(8);
 }

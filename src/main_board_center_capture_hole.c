@@ -253,7 +253,7 @@ void GivePrize(void)
     case PRIZE_30_SEC_BALL_SAVER:
     case PRIZE_60_SEC_BALL_SAVER:
     case PRIZE_90_SEC_BALL_SAVER:
-        gCurrentPinballGame->saverTimeRemaining = (gCurrentPinballGame->prizeId + 1) * 1800;
+        gCurrentPinballGame->saverTimeRemaining = (gCurrentPinballGame->prizeId + 1) * TICKS_FOR_TIME(0,30);
         break;
     case PRIZE_PICHU_SAVER:
         if (gCurrentPinballGame->ballCatchState == TRAP_EVO_SHOP_HOLE)
@@ -392,7 +392,7 @@ void GivePrize(void)
             if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
                 gCurrentPinballGame->ballUpgradeType++;
 
-            gCurrentPinballGame->ballUpgradeCounter = 3600;
+            gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
@@ -401,7 +401,7 @@ void GivePrize(void)
         if (gCurrentPinballGame->outcomeFrameCounter == 130)
         {
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
-            gCurrentPinballGame->ballUpgradeCounter = 3600;
+            gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
@@ -462,26 +462,26 @@ void GivePrize(void)
         if (gCurrentPinballGame->outcomeFrameCounter == 70)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->prizeId - 23) * 1000000;
+            gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->prizeId - 23) * SCORE_M;
         }
         break;
     case PRIZE_100_POINTS:
         if (gCurrentPinballGame->outcomeFrameCounter == 70)
         {
             m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
-            gCurrentPinballGame->scoreAddedInFrame = 100;
+            gCurrentPinballGame->scoreAddedInFrame = (1 * SCORE_100);
         }
         break;
     case PRIZE_500_POINTS:
         if (gCurrentPinballGame->outcomeFrameCounter == 70) {
             m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
-            gCurrentPinballGame->scoreAddedInFrame = 500;
+            gCurrentPinballGame->scoreAddedInFrame = (5 * SCORE_100);
         }
         break;
     case PRIZE_900_POINTS:
         if (gCurrentPinballGame->outcomeFrameCounter == 70) {
             m4aSongNumStart(SE_BONUS_SCORE_TALLIED);
-            gCurrentPinballGame->scoreAddedInFrame = 900;
+            gCurrentPinballGame->scoreAddedInFrame = (9 * SCORE_100);
         }
         break;
     case PRIZE_BONUS_MULT_PLUS_1:
@@ -744,7 +744,7 @@ void RunMonCaptureSequence(void)
     case 12:
         temp_r0 = 99 - gCurrentPinballGame->captureSequenceFrame;
         gCurrentPinballGame->trapAngleQ16 -= (temp_r0 * ANGLE_45) / 100 - ANGLE_45;
-        gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
+        gCurrentPinballGame->ball->spinAngle -= DEG_TO_BAM(45);
 
         temp_r0 -= 20;
 
@@ -1238,25 +1238,26 @@ void RunMonCaptureSequence(void)
 
                 switch (gCurrentPinballGame->currentSpecies)
                 {
-                case 59:
-                case 114:
-                case 132:
-                case 134:
-                case 139:
-                case 141:
-                case 144:
-                case 151:
-                case 160:
-                    gCurrentPinballGame->scoreAddStepSize = 80000;
-                    gCurrentPinballGame->scoreAddedInFrame = 5000000;
+                    //Rare catches
+                case SPECIES_NOSEPASS:
+                case SPECIES_SKARMORY:
+                case SPECIES_LILEEP:
+                case SPECIES_ANORITH:
+                case SPECIES_FEEBAS:
+                case SPECIES_CASTFORM:
+                case SPECIES_KECLEON:
+                case SPECIES_ABSOL:
+                case SPECIES_WOBBUFFET:
+                    gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_RARE_CATCH;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_RARE_CATCH;
                     break;
-                case 195:
-                case 196:
-                    gCurrentPinballGame->scoreAddStepSize = 140000;
-                    gCurrentPinballGame->scoreAddedInFrame = 10000000;
+                case SPECIES_LATIAS:
+                case SPECIES_LATIOS:
+                    gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_LATI_CATCH;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_LATI_CATCH;
                     break;
                 default:
-                    gCurrentPinballGame->scoreAddedInFrame = 1000000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_NORMAL_CATCH;
                     break;
                 }
             }
@@ -1267,11 +1268,11 @@ void RunMonCaptureSequence(void)
             
                 if (gCurrentPinballGame->currentSpecies == SPECIES_PICHU)
                 {
-                    gCurrentPinballGame->scoreAddStepSize = 140000;
-                    gCurrentPinballGame->scoreAddedInFrame = 10000000;
+                    gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_PICHU_HATCH;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_PICHU_HATCH;
                 }
                 else
-                    gCurrentPinballGame->scoreAddedInFrame = 3000000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_NORMAL_HATCH;
             }
 
             if (gMain.selectedField > MAIN_FIELD_COUNT)
@@ -1280,13 +1281,13 @@ void RunMonCaptureSequence(void)
                 
                 if (gMain.selectedField == FIELD_RAYQUAZA)
                 {
-                    gCurrentPinballGame->scoreAddStepSize = 400000;
-                    gCurrentPinballGame->scoreAddedInFrame = 30000000;
+                    gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_LEGENDARY_CATCH;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_RAYQUAZA_CATCH;
                 }
                 else
                 {
-                    gCurrentPinballGame->scoreAddStepSize = 400000;
-                    gCurrentPinballGame->scoreAddedInFrame = 10000000;
+                    gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_LEGENDARY_CATCH;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_KYRGRO_CATCH;
                 }
             }
         }

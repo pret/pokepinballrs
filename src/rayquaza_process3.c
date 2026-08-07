@@ -5,6 +5,8 @@
 #include "constants/board/rayquaza_states.h"
 #include "constants/board/center_screen_states.h"
 
+#define RAYQUAZA_MODE_TIME TICKS_FOR_TIME(3,0)
+
 extern const s16 gLightningGrabAnimFrameIndices[];
 extern const u8 gRayquazaBonusClear_Gfx[];
 extern const u8 gRayquazaSkyBackgroundGfx[];
@@ -41,7 +43,7 @@ void RayquazaBoardProcess_3A_3E79C(void)
         gCurrentPinballGame->legendaryHitsRequired = 15;
 
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + RAYQUAZA_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
@@ -166,8 +168,8 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 99999999;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_RAYQUAZA_BONUS_TALLY;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_RAYQUAZA_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -206,8 +208,8 @@ void RayquazaBoardProcess_3B_3EB2C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 99999999;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_RAYQUAZA_BONUS_TALLY;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_RAYQUAZA_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -260,7 +262,7 @@ void UpdateRayquazaEntityLogic(void)
         if (gCurrentPinballGame->bossHitFlashTimer == 5)
         {
             m4aSongNumStart(SE_RAYQUAZA_HIT);
-            gCurrentPinballGame->scoreAddedInFrame = 1000000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_RAYQUAZA_HIT;
             gCurrentPinballGame->bonusModeHitCount++;
             PlayRumble(7);
             if (gCurrentPinballGame->bonusModeHitCount >= gCurrentPinballGame->legendaryHitsRequired 

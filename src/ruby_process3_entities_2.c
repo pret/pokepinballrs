@@ -57,7 +57,7 @@ void UpdateNuzleafEntity(void)
         nextTileIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
         m4aSongNumStart(SE_NUZLEAF_HIT);
         PlayRumble(7);
-        gCurrentPinballGame->scoreAddedInFrame = 50000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_NUZLEAF_LOWER_HIT;
         break;
     case 2:
         if (gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][1] > gCurrentPinballGame->nuzleafFrameTimer)
@@ -86,7 +86,7 @@ void UpdateNuzleafEntity(void)
         nextTileIx = gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][2];
         m4aSongNumStart(SE_NUZLEAF_HIT);
         PlayRumble(7);
-        gCurrentPinballGame->scoreAddedInFrame = 100000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_NUZLEAF_UPPER_HIT;
         break;
     case 4:
         if (gNuzleafAnimFrameData[gCurrentPinballGame->nuzleafFrameIndex][1] > gCurrentPinballGame->nuzleafFrameTimer)
@@ -331,7 +331,7 @@ void RubyPond_EntityLogic(void)
             gCurrentPinballGame->whiscashStateTimer = 0;
             gCurrentPinballGame->whiscashState = WHISCASH_STATE_ABSORBING;
             gCurrentPinballGame->ball->oamPriority = 0;
-            gCurrentPinballGame->scoreAddedInFrame = 5000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_WHISCASH_ABSORBS_BALL;
             m4aSongNumStart(SE_WHISCASH_CATCH_BALL);
             PlayRumble(7);
             break;
@@ -458,7 +458,7 @@ void RubyPond_EntityLogic(void)
             gCurrentPinballGame->whiscashFrameIx = WHISCASH_FRAME_HIT;
             gCurrentPinballGame->whiscashStateTimer = 0;
             gCurrentPinballGame->whiscashState = WHISCASH_STATE_ANGRY;
-            gCurrentPinballGame->scoreAddedInFrame = 10;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_WHISCASH_HIT;
             m4aSongNumStart(SE_RUBY_BUMPER_HIT);
             PlayRumble(7);
             if (gCurrentPinballGame->saverTimeRemaining)
@@ -728,7 +728,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
     {
         if (gCurrentPinballGame->bumperHitCountdown == 2)
         {
-            gCurrentPinballGame->scoreAddedInFrame = 500;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_BUMPER_HIT;
             m4aSongNumStart(SE_RUBY_BUMPER_HIT);
             PlayRumble(7);
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_CATCH_EM_MODE

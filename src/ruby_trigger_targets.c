@@ -420,7 +420,7 @@ void UpdateRubySideBumperAnimation(void)
         gCurrentPinballGame->linooneSideBumperHitFlag = SIDE_COLLISION_NONE;
         PlayRumble(7);
         m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
-        gCurrentPinballGame->scoreAddedInFrame = 3000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_LINOONE_BUMPER_HIT;
         gCurrentPinballGame->linooneSideBumperAnimPhase[SIDE_IX_LEFT] = 0;
         gCurrentPinballGame->linooneSideBumperAnimPhase[SIDE_IX_RIGHT] = 0;
         gCurrentPinballGame->linooneSideBumperAnimTimer[SIDE_IX_LEFT] = 0;

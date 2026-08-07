@@ -335,10 +335,10 @@ void Options_HandleInput(void)
             gOptionsData.selectedBGM = 0;
 
         r4 = gOptionsData.selectedBGM + 1;
-        gOptionsData.digitsBGM[0] = r4 / 100;
+        gOptionsData.digitsBGM[0] = LEAD_DIGIT_100S(r4);
         r4 %= 100;
-        gOptionsData.digitsBGM[1] = r4 / 10;
-        gOptionsData.digitsBGM[2] = r4 % 10;
+        gOptionsData.digitsBGM[1] = LEAD_DIGIT_10S(r4);
+        gOptionsData.digitsBGM[2] = DIGIT_1S(r4);
         if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();
@@ -386,10 +386,10 @@ void Options_HandleInput(void)
             gOptionsData.selectedSE = 0;
 
         r4 = gOptionsData.selectedSE + 1;
-        gOptionsData.digitsSE[0] = r4 / 100;
+        gOptionsData.digitsSE[0] = LEAD_DIGIT_100S(r4);
         r4 %= 100;
-        gOptionsData.digitsSE[1] = r4 / 10;
-        gOptionsData.digitsSE[2] = r4 % 10;
+        gOptionsData.digitsSE[1] = LEAD_DIGIT_10S(r4);
+        gOptionsData.digitsSE[2] = DIGIT_1S(r4);
         if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();

@@ -4,6 +4,12 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
+#define CATCH_MODE_TIME TICKS_FOR_TIME(2,0)
+#define CATCH_MODE_FIRST_SAVER_TIME TICKS_FOR_TIME(1,40)
+#define CATCH_MODE_NORMAL_SAVER_TIME TICKS_FOR_TIME(1,10)
+#define JIRACHI_MODE_TIME TICKS_FOR_TIME(0,30)
+#define JIRACHI_MODE_SAVER_TIME TICKS_FOR_TIME(0,54)
+
 extern u8 gCatchSpriteFrameBuffer[];
 
 extern struct BoardConfig gBoardConfig;
@@ -31,8 +37,6 @@ enum catchTileRevealStates {
     CATCH_TILE_REVEAL_ONE_AT_A_TIME = 1,
     CATCH_TILE_REVEAL_ALL_AT_ONCE = 2
 };
-
-#define BONUS_CATCH_TIME 7200 //2 minutes, 60FPS
 
 void CleanupCatchEmState(void)
 {
@@ -66,7 +70,7 @@ void InitCatchEmMode(void)
     gCurrentPinballGame->boardSubState = CATCH_EM_SUBSTATE_BUILD_WEIGHTS;
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + BONUS_CATCH_TIME;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + CATCH_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->creatureHitCount = 0;
     gCurrentPinballGame->creatureHitCooldown = 0;
@@ -81,11 +85,11 @@ void InitCatchEmMode(void)
 
     if (gCurrentPinballGame->catchEmModeStartCount == 0)
     {
-        gCurrentPinballGame->saverTimeRemaining = 6000;
+        gCurrentPinballGame->saverTimeRemaining = CATCH_MODE_FIRST_SAVER_TIME;
     }
     else
     {
-        gCurrentPinballGame->saverTimeRemaining = 4200;
+        gCurrentPinballGame->saverTimeRemaining = CATCH_MODE_NORMAL_SAVER_TIME;
     }
     gCurrentPinballGame->catchEmModeStartCount++;
 
@@ -308,7 +312,7 @@ void InitJirachiBonus(void)
     gCurrentPinballGame->boardSubState = JIRACHI_CATCH_SUBSTATE_LOAD_MON_SPRITE;
     gCurrentPinballGame->stageTimer = 0;
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_PAUSED;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 1800;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + JIRACHI_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->creatureHitCount = 0;
     gCurrentPinballGame->creatureHitCooldown = 0;
@@ -329,7 +333,7 @@ void InitJirachiBonus(void)
     gCurrentPinballGame->jirachiTagTimer[1] = 10;
     gCurrentPinballGame->jirachiTagTimer[2] = 20;
     gCurrentPinballGame->jirachiTagTimer[3] = 30;
-    gCurrentPinballGame->saverTimeRemaining = 3240;
+    gCurrentPinballGame->saverTimeRemaining = JIRACHI_MODE_SAVER_TIME;
     gCurrentPinballGame->allHolesLit = FALSE;
     gCurrentPinballGame->holeIndicators[0] = FALSE;
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
@@ -834,7 +838,7 @@ void CheckCatchTileRevealState(void)
             if (gCurrentPinballGame->catchTilesBoardAcknowledged + 6 == gCurrentPinballGame->catchTilesBumperAcknowledgedCount)
             {
                 gCurrentPinballGame->catchTileRevealState = CATCH_TILE_REVEAL_ALL_AT_ONCE;
-                gCurrentPinballGame->scoreAddedInFrame = 300000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_CATCH_TILE_BURST;
             }
             else
             {

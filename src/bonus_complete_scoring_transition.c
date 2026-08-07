@@ -84,28 +84,28 @@ void ProcessBonusBannerAndScoring(void)
         if (gCurrentPinballGame->boardState == DUSCLOPS_BOARD_STATE_SCORE_PHASE
             && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 30000000;
+        var1 = SCORE_DUSCLOPS_BONUS_COMPLETE;
         break;
     case FIELD_KECLEON:
         if (gCurrentPinballGame->boardState == KECLEON_BOARD_STATE_SCORING && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 30000000;
+        var1 = SCORE_KECLEON_BONUS_COMPLETE;
         break;
     case FIELD_KYOGRE:
         if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_SUCCESS_SCORING && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 50000000;
+        var1 = SCORE_KYOGRE_BONUS_COMPLETE;
         break;
     case FIELD_GROUDON:
         if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_SUCCESS_SCORING
             && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 50000000;
+        var1 = SCORE_GROUDON_BONUS_COMPLETE;
         break;
     case FIELD_RAYQUAZA:
         if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_SUCCESS_SCORING && gCurrentPinballGame->stageTimer < 180)
             var0 = (gCurrentPinballGame->stageTimer % 24) / 12 + 8;
-        var1 = 99999999;
+        var1 = SCORE_RAYQUAZA_BONUS_COMPLETE;
         break;
     }
 
@@ -133,14 +133,14 @@ void ProcessBonusBannerAndScoring(void)
         }
     }
 
-    sp0[0] = (var1 / 10000000);
-    sp0[1] = (var1 % 10000000) / 1000000;
-    sp0[2] = (var1 % 1000000) / 100000;
-    sp0[3] = (var1 % 100000) / 10000;
-    sp0[4] = (var1 % 10000) / 1000;
-    sp0[5] = (var1 % 1000) / 100;
-    sp0[6] = (var1 % 100) / 10;
-    sp0[7] = (var1 % 10);
+    sp0[0] = LEAD_DIGIT_10M(var1);
+    sp0[1] = DIGIT_1M(var1);
+    sp0[2] = DIGIT_100K(var1);
+    sp0[3] = DIGIT_10K(var1);
+    sp0[4] = DIGIT_1K(var1);
+    sp0[5] = DIGIT_100S(var1);
+    sp0[6] = DIGIT_10S(var1);
+    sp0[7] = DIGIT_1S(var1);;
 
     switch (gMain.selectedField)
     {

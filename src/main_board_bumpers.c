@@ -54,7 +54,7 @@ void UpdateSapphireBumperLogic(void)
                 if (gCurrentPinballGame->sapphireBumperAnimKeyframe[i] == 5)
                 {
                     m4aSongNumStart(SE_SAPPHIRE_MART_GATE_TRIGGER);
-                    gCurrentPinballGame->scoreAddedInFrame = 2000;
+                    gCurrentPinballGame->scoreAddedInFrame = SCORE_SAPPHIRE_SHOP_GATE_TRIGGER_ACTIVATED;
                 }
             }
 
@@ -165,7 +165,7 @@ void UpdateSapphireBumperLogic(void)
         if (gCurrentPinballGame->shopBumperHitTimer == 17)
         {
             m4aSongNumStart(SE_SAPPHIRE_MART_GATE_HIT);
-            gCurrentPinballGame->scoreAddedInFrame = 10;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_SAPPHIRE_SHOP_GATE_HIT;
             PlayRumble(13);
         }
 
@@ -336,7 +336,7 @@ void HandleRubyBumperHit(void)
     {
         if (gCurrentPinballGame->bumperHitCountdown == 2)
         {
-            gCurrentPinballGame->scoreAddedInFrame = 500;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_BUMPER_HIT;
             m4aSongNumStart(SE_RUBY_BUMPER_HIT);
             PlayRumble(7);
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_CATCH_EM_MODE
@@ -379,7 +379,7 @@ void HandleRubyBumperHit(void)
             gCurrentPinballGame->pondEntitySpriteFlag++;
             gCurrentPinballGame->bumperHitsSinceReset++;
             if (gCurrentPinballGame->bumperHitsSinceReset == 100)
-                gCurrentPinballGame->scoreAddedInFrame = 50000;
+                gCurrentPinballGame->scoreAddedInFrame = SCORE_BUMPER_BONUS_HIT;
         }
 
         gCurrentPinballGame->bumperHitCountdown--;
