@@ -959,7 +959,8 @@ gEvoNameDisplay_Pals:: @ 0x081B4584
 	.incbin "baserom.gba", 0x1B4584, 0x20
 
 gShopNameDisplay_Pals:: @ 0x081B45A4
-	.incbin "baserom.gba", 0x1B45A4, 0x1E0
+	.incbin "graphics/stage/main/shop_name_display.gbapal"
+	.space 0x1C0
 
 gEvoModeBG_Gfx:: @ 0x081B4784
 	.incbin "baserom.gba", 0x1B4784, 0x1000
@@ -974,22 +975,29 @@ gUnknown_081B7784:: @ 0x081B7784
 	.incbin "baserom.gba", 0x1B7784, 0x1000
 
 gShopEvoUI_Pals:: @ 0x081B8784
-	.incbin "baserom.gba", 0x1B8784, 0x200
+	.incbin "graphics/stage/main/shop_evo_ui.gbapal"
 
+@ 4 animation frames of the shop mode background, cycled through by
+@ gShopEvoBGAnimFrames (data/rom_2.s). Despite the _Gfx name these are
+@ BG0 tilemaps, not tile graphics: BG0 is BGCNT_TXT256x512 with
+@ BGCNT_SCREENBASE(4), so each frame is a full 32x64 map (0x1000 bytes)
+@ copied to BG_VRAM + 0x2000. Only the first 49 rows (0xC40) are copied;
+@ the remaining rows are 0x01FF filler and are identical in all 4 frames.
 gShopModeBG_Gfx:: @ 0x081B8984
-	.incbin "baserom.gba", 0x1B8984, 0x1000
+	.incbin "graphics/stage/main/shop_mode_bg0_frame0_tilemap.bin"
 
 gUnknown_081B9984:: @ 0x081B9984
-	.incbin "baserom.gba", 0x1B9984, 0x1000
+	.incbin "graphics/stage/main/shop_mode_bg0_frame1_tilemap.bin"
 
 gUnknown_081BA984:: @ 0x081BA984
-	.incbin "baserom.gba", 0x1BA984, 0x1000
+	.incbin "graphics/stage/main/shop_mode_bg0_frame2_tilemap.bin"
 
 gUnknown_081BB984:: @ 0x081BB984
-	.incbin "baserom.gba", 0x1BB984, 0x1000
+	.incbin "graphics/stage/main/shop_mode_bg0_frame3_tilemap.bin"
 
+@ 9 palettes of 16 colors, one per shop sign color cycle step
 gSapphireShopSignPalettes:: @ 0x081BC984
-	.incbin "baserom.gba", 0x1BC984, 0x120
+	.incbin "graphics/stage/sapphire/shop_sign.gbapal"
 
 gRubyTravelPaint_Gfx:: @ 0x081BCAA4
 	.incbin "graphics/stage/ruby/travel_paint.4bpp"
@@ -1155,7 +1163,7 @@ gBoardHudTilemapB:: @ 0x083A826C
 	.incbin "baserom.gba", 0x3A826C, 0x820
 
 gShopPalette:: @ 0x083A8A8C
-	.incbin "baserom.gba", 0x3A8A8C, 0x20
+	.incbin "graphics/stage/main/shop.gbapal"
 
 gTravelPortraitPalette:: @ 0x083A8AAC
 	.incbin "baserom.gba", 0x3A8AAC, 0x20
@@ -1413,14 +1421,20 @@ gRubyMakuhitaGfx:: @ 0x0847DF0C
 gSideBumperGfx:: @ 0x0847FD0C
 	.incbin "baserom.gba", 0x47FD0C, 0x200
 
+@ 5 overlays of 0x300 each, drawn as 2 sprites (32x32 + 16x32) by
+@ gMainShopPortraitOverlaySpriteSet, so each frame is 6x4 tiles.
+@ Frames 0-3 are the selection sheen; frame 4 is the "SOLD OUT" banner.
 gShopPortraitOverlayGfx:: @ 0x0847FF0C
-	.incbin "baserom.gba", 0x47FF0C, 0xF00
+	.incbin "graphics/stage/main/shop_portrait_overlay.4bpp"
 
 gDecimalDigitTilesGfx:: @ 0x08480E0C
 	.incbin "baserom.gba", 0x480E0C, 0x280
 
+@ 10 sign frames of 0x480 each, drawn as 2 sprites (64x32 face at (0,0)
+@ plus a 32x8 post at (0,32)) by gSapphireMartSignSpriteSet. That is not a
+@ rectangle, so shop_sign_shape.json describes the slicing for gbagfx.
 gSapphireShopSignTileGfx:: @ 0x0848108C
-	.incbin "baserom.gba", 0x48108C, 0x2D00
+	.incbin "graphics/stage/sapphire/shop_sign_tiles.4bpp"
 
 gRubyTravelVolbeat_Gfx:: @ 0x08483D8C
 	.incbin "baserom.gba", 0x483D8C, 0x4C80

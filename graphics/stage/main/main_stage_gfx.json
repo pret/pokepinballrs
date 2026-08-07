@@ -185,6 +185,13 @@
       "oam": true,
       "mheight": 9,
       "mwidth": 30
+    },
+    {
+      "gfx_filename": "shop_portrait_overlay",
+      "oam": true,
+      "mheight": 4,
+      "mwidth": 6,
+      "width": 6
     }
   ]
 }
