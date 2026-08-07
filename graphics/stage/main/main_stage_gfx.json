@@ -192,6 +192,41 @@
       "mheight": 4,
       "mwidth": 6,
       "width": 6
+    },
+    {
+      "gfx_filename": "pika_saver_tiles",
+      "oam": true,
+      "mheight": 3,
+      "mwidth": 4,
+      "width": 4
+    },
+    {
+      "gfx_filename": "dx_mode_pikachu_obj_tiles",
+      "oam": true,
+      "mheight": 3,
+      "mwidth": 4,
+      "width": 4
+    },
+    {
+      "gfx_filename": "pikachu_saver_tiles",
+      "oam": true,
+      "mheight": 3,
+      "mwidth": 4,
+      "width": 4
+    },
+    {
+      "gfx_filename": "pika_saver_full_coverage",
+      "oam": true,
+      "mheight": 3,
+      "mwidth": 4,
+      "width": 4
+    },
+    {
+      "gfx_filename": "pika_saver_partial_coverage",
+      "oam": true,
+      "mheight": 3,
+      "mwidth": 4,
+      "width": 4
     }
   ]
 }

@@ -1108,11 +1108,17 @@ gPortraitAnimPalettes:: @ 0x081C02E4
 
 .include "data/board_data/spheal_board.inc"
 
+@ 24 frames of 0x180 (4x3 tiles), the same sprite shape as the pika saver
+@ banks at 0x084C07EC: SPRITE_SIZE_32x16 over SPRITE_SIZE_32x8, per
+@ gPikachuKickbackSpriteSet. Only 0x2400 is copied to OBJ VRAM; the
+@ trailing 0x20 is a blank tile.
 gPikaSaverFullCoverageGfx:: @ 0x08395A4C
-	.incbin "baserom.gba", 0x395A4C, 0x2420
+	.incbin "graphics/stage/main/pika_saver_full_coverage.4bpp"
+	.space 0x20
 
 gPikaSaverPartialCoverageGfx:: @ 0x08397E6C
-	.incbin "baserom.gba", 0x397E6C, 0x2420
+	.incbin "graphics/stage/main/pika_saver_partial_coverage.4bpp"
+	.space 0x20
 
 gCatchTargetCollisionBitmap:: @ 0x0839A28C
 	.incbin "baserom.gba", 0x39A28C, 0x900
@@ -1520,14 +1526,19 @@ gPelipper_Gfx:: @ 0x084BB16C
 gChargeFillIndicator_Gfx:: @ 0x084C00EC
 	.incbin "graphics/stage/main/charge_fill_indicator.4bpp"
 
+@ These three are one contiguous bank of 15 frames of 0x180 (4x3 tiles),
+@ indexed as gPikaSaverTilesGfx + pikaSaverTileIndex * 0x180, which runs
+@ up to index 9 and so reads past gPikaSaverTilesGfx into the two symbols
+@ that follow. Each frame is drawn as SPRITE_SIZE_32x16 over
+@ SPRITE_SIZE_32x8 (gPikachuKickbackSpriteSet / gPichuKickbackSpriteSet).
 gPikaSaverTilesGfx:: @ 0x084C07EC
-	.incbin "baserom.gba", 0x4C07EC, 0x480
+	.incbin "graphics/stage/main/pika_saver_tiles.4bpp"
 
 gDxModePikachuObjTiles:: @ 0x084C0C6C
-	.incbin "baserom.gba", 0x4C0C6C, 0x900
+	.incbin "graphics/stage/main/dx_mode_pikachu_obj_tiles.4bpp"
 
 gPikachuSaverTilesGfx:: @ 0x084C156C
-	.incbin "baserom.gba", 0x4C156C, 0x900
+	.incbin "graphics/stage/main/pikachu_saver_tiles.4bpp"
 
 gSapphireBumperRight_Gfx:: @ 0x084C1E6C
 	.incbin "baserom.gba", 0x4C1E6C, 0x2D00
