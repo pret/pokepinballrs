@@ -14,42 +14,58 @@
       "mwidth":3,
       "mheight":4,
       "width":3,
-      "oam":true
+      "oam":true,
+      "palette": "ruby_board_palset_0.gbapal",
+      "palbank": 5
     },
     {
       "gfx_filename": "sharpedo",
-      "oamshape": "sharpedo_shape.json"
+      "oamshape": "sharpedo_shape.json",
+      "palette": "ruby_board_palset_0.gbapal",
+      "palbank": 6
     },
     {
       "gfx_filename": "shop",
-      "mwidth":8
+      "mwidth":8,
+      "palette": "../main/shop.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "hatch_cave",
       "mwidth":6,
       "mheight":6,
-      "oam":true
+      "oam":true,
+      "palette": "../main/bonus_stage_obj.gbapal",
+      "palbank": 2
     },
     {
       "gfx_filename": "ramp_prize",
       "mheight":2,
       "mwidth":2,
-      "width":8
+      "width":8,
+      "palette": "../main/bonus_stage_obj.gbapal",
+      "palbank": 1
     },
     {
       "gfx_filename": "gulpin",
       "mwidth":4,
-      "oam":true
+      "oam":true,
+      "palette": "ruby_board_palset_0.gbapal",
+      "palbank": 7
     },
     {
       "gfx_filename": "cyndaquil",
       "mwidth":4,
-      "oam":true
+      "oam":true,
+      "palette": "ruby_board_palset_0.gbapal",
+      "palbank": 3
     },
     {
       "gfx_filename": "nuzleaf",
       "mwidth":4,
-      "oam":true
+      "oam":true,
+      "palette": "ruby_board_palset_0.gbapal",
+      "palbank": 4
     },
     {
       "gfx_filename": "intro_sprite",
@@ -358,7 +374,9 @@
       "gfx_filename":"whiscash",
       "oam":true,
       "mheight": 6,
-      "mwidth": 6
+      "mwidth": 6,
+      "palette":"../main/bonus_stage_obj.gbapal",
+      "palbank":0
     },
     {
       "gfx_filename": "travel_paint",
@@ -389,7 +407,9 @@
           "mheight": 4,
           "mwidth": 5
         }
-      ]
+      ],
+      "palette": "painter.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "chinchou_catch_burst_banner",

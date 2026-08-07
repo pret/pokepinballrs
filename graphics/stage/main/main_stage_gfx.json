@@ -10,20 +10,26 @@
     {
       "gfx_filename": "gunk_084F61EC",
       "mwidth":8,
-      "align":1
+      "align":1,
+      "palette": "bonus_stage_obj.gbapal",
+      "palbank": 5
     },
     {
       "gfx_filename": "gunk_0844AA0C",
       "mwidth":6,
       "mheight": 6,
-      "oam":true
+      "oam":true,
+      "palette": "../main/bonus_stage_obj.gbapal",
+      "palbank": 4
     },
     {
       "gfx_filename": "pika_spinner",
       "mwidth":3,
       "mheight":3,
       "width":12,
-      "oam":true  
+      "oam":true,
+      "palette": "../ruby/ruby_board_palset_0.gbapal",
+      "palbank": 3
     },
     {
       "gfx_filename": "jirachi_banner",
@@ -70,19 +76,27 @@
       "gfx_filename": "game_over_text",
       "mheight": 2,
       "mwidth": 2,
-      "width":16
+      "width":16,
+      "palette": "bonus_clear_text_lit.gbapal",
+      "palbank": 0
     },
     {
-      "gfx_filename": "pause_menu_text"
+      "gfx_filename": "pause_menu_text",
+      "palette": "bonus_stage_obj.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "latios",
       "mheight":8,
-      "mwidth":8
+      "mwidth":8,
+      "palette": "bonus_stage_lit.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "latios_arm",
-      "width":2
+      "width":2,
+      "palette": "bonus_stage_lit.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "ball_save",
@@ -103,7 +117,9 @@
             "width":2,
             "height":3
         }
-      ]
+      ],
+      "palette": "bonus_stage_lit.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "end_of_ball",
@@ -135,13 +151,17 @@
             "mheight":2,
             "oam":true
         }
-      ]
+      ],
+      "palette": "bonus_clear_text_lit.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "bonus_trap",
       "mwidth":6,
       "mheight":4,
-      "oam":true
+      "oam":true,
+      "palette": "../ruby/ruby_board_palset_0.gbapal",
+      "palbank": 1
     },
     {
       "gfx_filename": "pokeball_regular",
@@ -221,6 +241,21 @@
     {
       "gfx_filename": "pika_saver_partial_coverage",
       "oamshape": "pika_saver_coverage_shape.json"
+    },
+    {
+      "gfx_filename": "area_roulette_selected_fx",
+      "palette": "travel_portrait.gbapal",
+      "palbank": 0
+    },
+    {
+      "gfx_filename": "charge_fill_indicator",
+      "palette": "bonus_stage_obj.gbapal",
+      "palbank": 0
+    },
+    {
+      "gfx_filename": "egg",
+      "palette": "bonus_stage_obj.gbapal",
+      "palbank": 2
     }
   ]
 }

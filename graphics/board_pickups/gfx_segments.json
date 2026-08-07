@@ -87,7 +87,9 @@
           "segfile": "evo_item_ex_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon1_xp.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "evo_item_leaf",
@@ -167,7 +169,9 @@
           "segfile": "evo_item_leaf_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon2_leaf.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "evo_item_fire",
@@ -247,7 +251,9 @@
           "segfile": "evo_item_fire_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon3_fire.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "evo_item_heart",
@@ -327,7 +333,9 @@
           "segfile": "evo_item_heart_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon9_heart.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "evo_item_link",
@@ -407,7 +415,9 @@
           "segfile": "evo_item_link_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon4_link.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "evo_item_moon",
@@ -487,7 +497,9 @@
           "segfile": "evo_item_moon_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon5_moon.gbapal",
+      "palbank": 0
     },
         {
       "gfx_filename": "evo_item_water",
@@ -567,7 +579,9 @@
           "segfile": "evo_item_water_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon6_water.gbapal",
+      "palbank": 0
     },
         {
       "gfx_filename": "evo_item_box",
@@ -647,7 +661,9 @@
           "segfile": "evo_item_box_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon10_pokeblock.gbapal",
+      "palbank": 0
     },
         {
       "gfx_filename": "evo_item_sun",
@@ -727,7 +743,9 @@
           "segfile": "evo_item_sun_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon8_sun.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "evo_item_bolt",
@@ -807,7 +825,9 @@
           "segfile": "evo_item_bolt_collected_fade",
           "width": 2
         }
-      ]
+      ],
+      "palette": "icon7_bolt.gbapal",
+      "palbank": 0
     }
   ]
 }

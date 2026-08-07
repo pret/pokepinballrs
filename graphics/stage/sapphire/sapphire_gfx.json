@@ -14,34 +14,46 @@
       "mwidth":3,
       "mheight":4,
       "width":12,
-      "oam":true  
+      "oam":true,
+      "palette": "sapphire_board_palset_0.gbapal",
+      "palbank": 7
     },
     {
       "gfx_filename": "shop_shock_wall",
       "mwidth":2,
       "mheight":2,
-      "width":10     
+      "width":10,
+      "palette": "sapphire_board_palset_0.gbapal",
+      "palbank": 10
     },
     {
       "gfx_filename": "zigzagoon",
       "mheight":4,
       "mwidth":7,
-      "oam":true
+      "oam":true,
+      "palette": "sapphire_board_palset_0.gbapal",
+      "palbank": 6
     },
     {
       "gfx_filename": "zigzagoon_fx",
-      "mwidth":4
+      "mwidth":4,
+      "palette": "sapphire_board_palset_0.gbapal",
+      "palbank": 6
     },
     {
       "gfx_filename": "wailmer",
       "mheight":4,
       "mwidth":6,
-      "oam":true
+      "oam":true,
+      "palette": "sapphire_board_palset_0.gbapal",
+      "palbank": 2
     },
     {
       "gfx_filename": "seedot_basket",
       "mwidth":4,
-      "oam":true
+      "oam":true,
+      "palette": "sapphire_board_palset_0.gbapal",
+      "palbank": 7
     },
     {
       "gfx_filename": "intro_sprite",
@@ -332,13 +344,17 @@
       "gfx_filename": "pelipper",
       "oam": true,
       "mheight": 6,
-      "mwidth": 6
+      "mwidth": 6,
+      "palette": "sapphire_board_palset_0.gbapal",
+      "palbank": 4
     },
     {
       "gfx_filename": "charger",
       "mheight":4,
       "mwidth":2,
-      "width":6
+      "width":6,
+      "palette": "sapphire_board_palset_0.gbapal",
+      "palbank": 4
     },
     {
       "gfx_filename": "travel_paint",
@@ -369,7 +385,9 @@
           "mheight": 4,
           "mwidth": 5
         }
-      ]
+      ],
+      "palette": "painter.gbapal",
+      "palbank": 0
     },
     {
       "gfx_filename": "shroomish_catch_burst_banner",

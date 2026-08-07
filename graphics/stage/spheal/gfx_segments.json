@@ -13,7 +13,29 @@
       "gfx_filename": "spheal",
       "oam": true,
       "mheight": 3,
-      "mwidth": 3
+      "mwidth": 3,
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 4
+    },
+    {
+      "gfx_filename": "sealeo",
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 5
+    },
+    {
+      "gfx_filename": "spheal_net",
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 3
+    },
+    {
+      "gfx_filename": "spheal_net_front",
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 3
+    },
+    {
+      "gfx_filename": "spheal_results",
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 8
     }
   ]
 }

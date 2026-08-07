@@ -16,27 +16,35 @@
                 "segfile":"kyogre_bonus_clear_top",
                 "mwidth":20,
                 "mheight":8,
-                "oam":true
-            },
+                "oam":true,
+                "palette":"kyogre_board_palset_0.gbapal",
+                "palbank":8
+              },
             {
                 "segfile":"kyogre_bonus_clear_score_region",
                 "mwidth":14,
                 "mheight":3,
-                "oam":true
-            },
+                "oam":true,
+                "palette":"kyogre_board_palset_0.gbapal",
+                "palbank":8
+              },
             {
                 "segfile":"kyogre_bonus_clear_score_right_cap",
                 "mwidth":1,
                 "mheight":2,
-                "oam":true
-            },
+                "oam":true,
+                "palette":"kyogre_board_palset_0.gbapal",
+                "palbank":8
+              },
             {
                 "segfile":"kyogre_bonus_clear_score_digits",
                 "mwidth":1,
                 "mheight":2,
                 "width":10,
-                "oam":true
-            }
+                "oam":true,
+                "palette":"kyogre_board_palset_0.gbapal",
+                "palbank":8
+              }
         ],
         "align":12
     },

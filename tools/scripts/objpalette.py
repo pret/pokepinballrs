@@ -40,11 +40,30 @@ wins.  Two passes: first the board's own sprite-set table, then, for segments
 no table entry reaches, the `g<Board>*OamData` animation arrays, which the boss
 code indexes frame by frame instead of going through a sprite set.
 
-Whatever is left is a region no OAM entry ever names -- scratch slots the game
-DMAs over before drawing, or sheet padding.  Those are listed in OVERRIDES with
-the reason, since no amount of static analysis will settle them.
+Two kinds of sheet
+------------------
+BOARDS covers the sheets a board loads whole: their segments start at OBJ tile
+0 and each gets its own bank.  SLOTS covers the ones streamed frame by frame
+over a slot inside that sheet while the board runs -- the entities, the shop
+sign, every banner -- which start at the slot's tile instead, and whose frames
+all share the single bank covering the slot.
+
+Whatever is left is a region no OAM entry ever names -- scratch the game DMAs
+over before drawing, or sheet padding -- or a slot whose palette arrives from
+outside the board's set entirely, as most of the tile-704 banners do.  Those
+are listed in OVERRIDES and SLOT_PALETTES with the reason, since no amount of
+static analysis will settle them.
+
+A sheet that the Makefile's plain %.4bpp: %.png rule already handles has no
+config entry to record the answer in; `derive` adds one carrying nothing but
+the palette, which generate_graphics_rules.sh ignores.
 
 Only stdlib is used, so this adds no build dependency.
+
+Not covered: sheets that go to BG VRAM rather than OBJ.  Their bank lives in
+the tilemap entries the code writes, not in any OAM data, so they need a
+different derivation -- graphics/*/text*.png and high_score/ball_watermark_tiles
+are still greyscale for that reason.
 
 Examples
 --------
@@ -55,6 +74,7 @@ Examples
 
 import argparse
 import collections
+import glob
 import json
 import os
 import re
@@ -107,6 +127,148 @@ BOARDS = {
         table='gRayquazaBoardSpriteSets', dir='graphics/stage/rayquaza',
         gfx='rayquaza_stage_gfx.json', prefixes=('gRayquaza', 'gRaquaza'),
         palette=[('rayquaza_board_palset_0.gbapal', 16)]),
+    # The Pokedex is a screen rather than a board, but it works the same way:
+    # one sheet to OBJ_VRAM0, one palette to OBJ_PLTT, one sprite-set table
+    # (pokedex.c:133).
+    'pokedex': dict(
+        table=('gPokedexSpriteSets', 'gEReaderSpriteSets'), dir='graphics/pokedex',
+        gfx='pokedex_gfx.json', prefixes=('gPokedex',),
+        palette=[('sprites.gbapal', 16)]),
+    # Spheal's OBJ sheet is still a baserom incbin, so it has no intro_sprite
+    # segments -- it is here for the sheets streamed into its board.
+    'spheal': dict(
+        table='gSphealBoardSpriteSets', dir='graphics/stage/spheal',
+        gfx='gfx_segments.json', prefixes=('gSpheal',),
+        palette=[('spheal_board_palset_0.gbapal', 16)]),
+}
+
+# Sheets that are not laid into the board sheet but streamed over a slot inside
+# it, frame by frame, while the board runs.  Every frame in such a sheet is
+# drawn through the same OAM entry, so the whole thing takes one palette: the
+# one covering the slot it lands in.
+#
+#   (dir, gfx_filename) -> (board, first tile, tile count, where the copy is)
+#
+# The tiles come straight from the destination in the DmaCopy16 named in the
+# comment: (dest - 0x06010000) / 32, length / 32.
+SLOTS = {
+    ('graphics/stage/ruby', 'cyndaquil'): ('ruby', 408, 20, 'main_board_to_be_split.c'),
+    ('graphics/stage/ruby', 'gulpin'): ('ruby', 452, 12, 'ruby_trigger_targets.c, three slots'),
+    ('graphics/stage/ruby', 'hatch_cave'): ('ruby', 277, 36, 'main_board_to_be_split.c'),
+    ('graphics/stage/ruby', 'nuzleaf'): ('ruby', 540, 19, 'ruby_process3_entities_2.c'),
+    ('graphics/stage/ruby', 'ramp_prize'): ('ruby', 600, 4, 'ruby_ramp.c'),
+    ('graphics/stage/ruby', 'sharpedo'): ('ruby', 353, 19, 'ruby_process3_entities_2.c'),
+    ('graphics/stage/ruby', 'shop'): ('ruby', 488, 40, 'main_board_to_be_split.c'),
+    ('graphics/stage/ruby', 'shop_door'): ('ruby', 396, 12, 'ruby_process3_entities_2.c'),
+    ('graphics/stage/ruby', 'whiscash'): ('ruby', 564, 35, 'ruby_process3_entities_2.c'),
+
+    ('graphics/stage/sapphire', 'pelipper'): ('sapphire', 277, 36, 'sapphire_pond_and_zigzagoon.c'),
+    ('graphics/stage/sapphire', 'charger'): ('sapphire', 277, 36, 'tail of gPelipper_Gfx'),
+    ('graphics/stage/sapphire', 'seedot'): ('sapphire', 481, 11, 'sapphire_seedot_egg_shop.c'),
+    ('graphics/stage/sapphire', 'seedot_basket'): ('sapphire', 461, 20, 'sapphire_seedot_egg_shop.c'),
+    ('graphics/stage/sapphire', 'shop_shock_wall'): ('sapphire', 565, 4, 'main_board_bumpers.c'),
+    ('graphics/stage/sapphire', 'wailmer'): ('sapphire', 313, 24, 'sapphire_pond_and_zigzagoon.c'),
+    ('graphics/stage/sapphire', 'zigzagoon'): ('sapphire', 337, 28, 'sapphire_pond_and_zigzagoon.c'),
+
+    ('graphics/stage/dusclops', 'dusclops'): ('dusclops', 133, 64, 'dusclops_process3.c'),
+    ('graphics/stage/dusclops', 'duskull'): ('dusclops', 73, 20, 'dusclops_process3.c'),
+    ('graphics/stage/dusclops', 'dusclops_appear_fx'): ('dusclops', 213, 96, 'dusclops_process3.c'),
+    ('graphics/stage/dusclops', 'dusclops_ball_grab'): ('dusclops', 197, 16, 'dusclops_process3.c'),
+
+    ('graphics/stage/kecleon', 'kecleon'): ('kecleon', 73, 20, 'kecleon_process3.c'),
+    ('graphics/stage/kecleon', 'kecleon_fx'): ('kecleon', 93, 8, 'kecleon_process3.c'),
+
+    ('graphics/stage/groudon', 'boulders'): ('groudon', 125, 24, 'groudon_process3.c'),
+
+    ('graphics/stage/spheal', 'spheal'): ('spheal', 229, 9, 'spheal_process3.c'),
+    ('graphics/stage/spheal', 'sealeo'): ('spheal', 165, 48, 'spheal_process3.c'),
+    ('graphics/stage/spheal', 'spheal_net'): ('spheal', 73, 16, 'spheal_process3.c'),
+    ('graphics/stage/spheal', 'spheal_net_front'): ('spheal', 89, 12, 'spheal_process3.c'),
+
+    # Shared between both main fields; ruby is the one shown.  Ruby and
+    # sapphire agree on OBJ banks 0, 1 and 3 and differ everywhere else, so a
+    # sheet landing outside those banks is ruby's colours by choice.
+    ('graphics/stage/main', 'bonus_trap'): ('ruby', 158, 24, 'main_board_to_be_split.c'),
+    ('graphics/stage/main', 'charge_fill_indicator'): ('ruby', 87, 4, 'main_board_to_be_split.c'),
+    ('graphics/stage/main', 'egg'): ('ruby', 231, 16, 'main_board_to_be_split.c'),
+    ('graphics/stage/main', 'pause_menu_text'): ('ruby', 198, 1, 'all_board_pause_game.c'),
+    ('graphics/stage/main', 'pika_spinner'): ('ruby', 60, 9, 'main_board_charge_spinner.c'),
+    ('graphics/stage/main', 'gunk_0844AA0C'): ('ruby', 101, 36, 'gJirachiFx_Gfx, main_board_catch_normal_and_jirachi_modes.c'),
+    ('graphics/stage/main', 'latios'): ('ruby', 832, 64, 'all_board_mode_change_and_debug_menu.c'),
+    ('graphics/stage/main', 'latios_arm'): ('ruby', 896, 6, 'all_board_mode_change_and_debug_menu.c'),
+    ('graphics/stage/main', 'gunk_084F61EC'): ('ruby', 736, 74, 'gPokemonNameDisplayGfx, main_board_catch_holes.c'),
+
+    ('graphics/stage/misc', 'gunk_0845690C'): ('ruby', 413, 16, 'gPondBumper_Gfx, main_board_bumpers.c'),
+    ('graphics/stage', 'gunk_084ED6CC'): ('sapphire', 637, 16, 'gZigzagoonShockWallIndicator_Gfx, sapphire_pond_and_zigzagoon.c'),
+
+    # Tile 704 (0x06015800) is the shared overlay slot every mode borrows for
+    # its banner.  These sheets are segmented, so their segments run from 704
+    # rather than from tile 0.
+    ('graphics/stage/ruby', 'travel_paint'): ('ruby', 704, 192, 'main_board_launcher_and_cutscenes.c'),
+    ('graphics/stage/sapphire', 'travel_paint'): ('sapphire', 704, 192, 'main_board_launcher_and_cutscenes.c'),
+    ('graphics/stage/main', 'ball_save'): ('ruby', 704, 288, 'all_board_mode_change_and_debug_menu.c'),
+    ('graphics/stage/main', 'end_of_ball'): ('ruby', 704, 320, 'all_board_mode_change_and_debug_menu.c'),
+    ('graphics/stage/main', 'game_over_text'): ('ruby', 704, 32, 'all_board_mode_change_and_debug_menu.c'),
+    ('graphics/stage/main', 'area_roulette_selected_fx'): ('ruby', 704, 20, 'main_board_intro_mode.c'),
+    ('graphics/stage/sapphire', 'zigzagoon_fx'): ('sapphire', 704, 96, 'sapphire_pond_and_zigzagoon.c'),
+    ('graphics/stage/spheal', 'spheal_results'): ('spheal', 704, 64, 'spheal_process3.c'),
+    ('graphics/stage/dusclops', 'dusclops_bonus_clear'): ('dusclops', 704, 256, 'dusclops_process3.c'),
+    ('graphics/stage/groudon', 'groudon_bonus_clear'): ('groudon', 704, 256, 'groudon_process3.c'),
+    ('graphics/stage/kecleon', 'kecleon_bonus_clear'): ('kecleon', 704, 256, 'kecleon_process3.c'),
+    ('graphics/stage/kyogre', 'kyogre_bonus_clear'): ('kyogre', 704, 256, 'kyogre_process3.c'),
+    ('graphics/stage/rayquaza', 'rayquaza_bonus_clear'): ('rayquaza', 704, 256, 'rayquaza_process3.c'),
+}
+
+# Slots whose palette the vote cannot reach, with the copy that settles it.
+SLOT_PALETTES = {
+    # The 1UP banner and the life-count digit beside it are the sheets that
+    # stream over tiles 0x295 and 0x2a9, drawn through gOneUpSpritePalette.
+    ('graphics/stage/misc', 'gunk_08455E8C'): ('../main/one_up_sprite.gbapal', 0,
+                                               'gOneUpBannerSprite_Gfx, bank 12'),
+    ('graphics/stage/misc', 'gunk_0845648C'): ('../main/one_up_sprite.gbapal', 0,
+                                               'gLifeCountDigit_Gfx, bank 12'),
+    # The evolution pickup icons: gEvoItemPalettes runs parallel to
+    # gEvoItemAppear_GfxList, so each sheet takes the icon palette of its name.
+    ('graphics/board_pickups', 'evo_item_ex'): ('icon1_xp.gbapal', 0, 'gEvoItemPalettes[0]'),
+    ('graphics/board_pickups', 'evo_item_leaf'): ('icon2_leaf.gbapal', 0, 'gEvoItemPalettes[1]'),
+    ('graphics/board_pickups', 'evo_item_fire'): ('icon3_fire.gbapal', 0, 'gEvoItemPalettes[2]'),
+    ('graphics/board_pickups', 'evo_item_link'): ('icon4_link.gbapal', 0, 'gEvoItemPalettes[3]'),
+    ('graphics/board_pickups', 'evo_item_moon'): ('icon5_moon.gbapal', 0, 'gEvoItemPalettes[4]'),
+    ('graphics/board_pickups', 'evo_item_water'): ('icon6_water.gbapal', 0, 'gEvoItemPalettes[5]'),
+    ('graphics/board_pickups', 'evo_item_bolt'): ('icon7_bolt.gbapal', 0, 'gEvoItemPalettes[6]'),
+    ('graphics/board_pickups', 'evo_item_sun'): ('icon8_sun.gbapal', 0, 'gEvoItemPalettes[7]'),
+    ('graphics/board_pickups', 'evo_item_heart'): ('icon9_heart.gbapal', 0, 'gEvoItemPalettes[8]'),
+    ('graphics/board_pickups', 'evo_item_box'): ('icon10_pokeblock.gbapal', 0, 'gEvoItemPalettes[9]'),
+
+    # Tile 704 and OBJ bank 14 are the overlay pair: every mode that wants a
+    # banner streams its sheet over one and its palette over the other, so
+    # whichever sprite set the vote happens to find there says nothing.  The
+    # palette is the one loaded beside the sheet's own copy.
+    ('graphics/stage/ruby', 'travel_paint'):
+        ('painter.gbapal', 0, 'gRubyPainterPalette, bank 14'),
+    ('graphics/stage/sapphire', 'travel_paint'):
+        ('painter.gbapal', 0, 'gSapphirePainterPalette, bank 14'),
+    ('graphics/stage/main', 'ball_save'):
+        ('bonus_stage_lit.gbapal', 0, 'gBonusStagePal_Lit, bank 14'),
+    ('graphics/stage/main', 'latios'):
+        ('bonus_stage_lit.gbapal', 0, 'gBonusStagePal_Lit, bank 14'),
+    ('graphics/stage/main', 'latios_arm'):
+        ('bonus_stage_lit.gbapal', 0, 'gBonusStagePal_Lit, bank 14'),
+    ('graphics/stage/main', 'end_of_ball'):
+        ('bonus_clear_text_lit.gbapal', 0, 'gBonusClearTextPal_Lit, bank 14'),
+    ('graphics/stage/main', 'game_over_text'):
+        ('bonus_clear_text_lit.gbapal', 0, 'bank 14, as the end-of-ball banner left it'),
+    ('graphics/stage/main', 'area_roulette_selected_fx'):
+        ('travel_portrait.gbapal', 0, 'gTravelPortraitPalette, bank 14'),
+
+    # Two more slots the vote cannot call.
+    ('graphics/stage/ruby', 'shop'):
+        ('../main/shop.gbapal', 0, 'gShopPalette, as for the sign in the sheet'),
+    ('graphics/stage/kecleon', 'kecleon'):
+        ('kecleon_board_palset_0.gbapal', 2, 'board copy, not the reflection'),
+    ('graphics/stage/main', 'gunk_0844AA0C'):
+        ('../main/bonus_stage_obj.gbapal', 4,
+         'gJirachiFx_Gfx lands in portrait slot 0, ruby OBJ bank 13'),
 }
 
 # (board, gfx_filename, segfile) -> (bank, why).  Only for segments no OAM entry
@@ -201,6 +363,18 @@ OVERRIDES = {
     # rather than under sapphire's four resting colours.
     ('sapphire', 'intro_sprite', 'intro_sprite_glint_set'):
         (('../main/bonus_stage_obj.gbapal', 4), 'ruby draws this art with OBJ bank 13'),
+
+    # Padding between the Pokedex sheet's segments, and two pieces the screen
+    # builds its OAM for at run time.  The silhouette shown for an unseen mon
+    # sits in the portrait slot, which pokedex.c fills from
+    # gMonPortraitGroupPals into OBJ bank 1.
+    ('pokedex', 'sprites', 'sprites_spaceA'): (0, 'padding'),
+    ('pokedex', 'sprites', 'sprites_spaceB'): (0, 'padding'),
+    ('pokedex', 'sprites', 'sprites_spaceC'): (0, 'padding'),
+    ('pokedex', 'sprites', 'sprites_spaceD'): (0, 'padding'),
+    ('pokedex', 'sprites', 'sprites_spaceE'): (0, 'padding'),
+    ('pokedex', 'sprites', 'sprites_not_seen_pic'): (1, 'portrait slot, pokedex.c'),
+    ('pokedex', 'sprites', 'sprites_dex_entry_continue'): (0, 'matches the press-start prompt'),
 
     # gKyogreIntroCrystalGroundSpriteSet names bank 10, which kyogre leaves at
     # zero during play -- the board intro loads it before the sprite appears.
@@ -424,15 +598,15 @@ def gfx_files(board):
     return path, json.load(open(path))
 
 
-def patch_segment(text, segfile, palette, bank):
-    """Add palette/palbank to one segment object, leaving the rest of the file
-    byte for byte alone.  json.dump would reflow all of it -- and normalise the
-    CRLF several of these configs use -- which buries the change in a whole-file
-    diff."""
+def patch_object(text, field, value, palette, bank):
+    """Add palette/palbank to the one object whose `field` holds `value`,
+    leaving the rest of the file byte for byte alone.  json.dump would reflow
+    all of it -- and normalise the CRLF several of these configs use -- which
+    buries the change in a whole-file diff."""
     newline = '\r\n' if '\r\n' in text else '\n'
-    marker = re.search(r'"segfile"\s*:\s*"%s"' % re.escape(segfile), text)
+    marker = re.search(r'"%s"\s*:\s*"%s"' % (field, re.escape(value)), text)
     if not marker:
-        raise KeyError('no segment %r in the config' % segfile)
+        raise KeyError('no %s %r in the config' % (field, value))
     start = text.rfind('{', 0, marker.start())
     depth = 0
     for end in range(start, len(text)):
@@ -441,24 +615,23 @@ def patch_segment(text, segfile, palette, bank):
             break
     body = text[start:end]
     body = re.sub(r',\s*"pal(?:ette|bank)"\s*:\s*[^,}\r\n]+', '', body)
-    indent = re.search(r'\n([ \t]*)"segfile"', body)
+    indent = re.search(r'\n([ \t]*)"%s"' % field, body)
     pad = indent.group(1) if indent else '      '
-    gap = ' ' if re.search(r'"segfile":\s', body) else ''
+    gap = ' ' if re.search(r'"%s":\s' % field, body) else ''
     added = ',{nl}{pad}"palette":{gap}{palette},{nl}{pad}"palbank":{gap}{bank}{nl}{close}'.format(
         nl=newline, pad=pad, gap=gap, palette=json.dumps(palette), bank=bank,
         close=pad[:-2])
     return text[:start] + body.rstrip() + added + text[end:]
 
 
-def segment_ranges(board, entry):
+def segment_ranges(directory, entry, base=0):
     """-> [(segfile, first_tile, tile_count)] for one gfx.json file entry.
 
     Tile counts come from the built per-segment .4bpp when it is there: -oam and
     -oamshape segments are not width*height/64 tiles, and using the PNG size for
     those drifts every later offset (13 tiles over, on ruby's sheet)."""
-    directory = BOARDS[board]['dir']
     ranges = []
-    offset = 0
+    offset = base
     for segment in entry.get('segments', []):
         segfile = segment['segfile']
         built = os.path.join(directory, '%s_%s.4bpp' % (entry['gfx_filename'], segfile))
@@ -470,6 +643,16 @@ def segment_ranges(board, entry):
         ranges.append((segfile, offset, count))
         offset += count
     return ranges
+
+
+def board_labels(board, tables):
+    """Sprite-set labels a board or screen draws with.  The Pokedex sheet is
+    also what the e-reader screen puts in OBJ VRAM, so some of its segments are
+    only ever named by that screen's table."""
+    names = BOARDS[board]['table']
+    if isinstance(names, str):
+        names = (names,)
+    return [label for name in names for label in tables.get(name, [])]
 
 
 def flat_banks(board):
@@ -488,9 +671,9 @@ def flat_banks(board):
     return flat
 
 
-def derive_banks(board, entry, oam, tables):
+def derive_banks(board, directory, entry, oam, tables, base=0):
     """-> [(segfile, first_tile, count, bank, source)], bank None when unknown."""
-    ranges = segment_ranges(board, entry)
+    ranges = segment_ranges(directory, entry, base)
     bounds = [(start, start + count, name) for name, start, count in ranges]
 
     def owning_segment(tile):
@@ -513,7 +696,7 @@ def derive_banks(board, entry, oam, tables):
         return tiles, votes
 
     flat = flat_banks(board)
-    table = tables.get(BOARDS[board]['table'], [])
+    table = board_labels(board, tables)
     animation = [label for label in oam
                  if label.startswith(BOARDS[board]['prefixes'])]
 
@@ -543,90 +726,238 @@ def derive_banks(board, entry, oam, tables):
 
 # ------------------------------------------------------------------- commands
 
+def derive_slot(board, first, count, oam, tables):
+    """-> (bank, source) for a streamed sheet occupying [first, first + count).
+
+    Entries wholly inside the slot answer it directly.  Where there are none the
+    slot is a piece of a larger sprite -- the charge indicator streams four
+    tiles into the middle of an eight-tile one -- so an entry that covers the
+    whole slot answers instead."""
+    flat = flat_banks(board)
+    slot = set(range(first, first + count))
+    for inside in (True, False):
+        tiles = collections.defaultdict(set)
+        owners = collections.defaultdict(set)
+        for label in board_labels(board, tables):
+            for tile, bank, span in oam.get(label, ()):
+                covered = set(range(tile, tile + span))
+                if bank in flat:
+                    continue
+                if covered <= slot if inside else slot <= covered:
+                    tiles[bank] |= covered & slot
+                    owners[bank].add(label)
+        if not tiles:
+            continue
+        best = max(len(v) for v in tiles.values())
+        winners = [b for b, v in tiles.items() if len(v) == best]
+        if len(winners) > 1:
+            return None, 'slot is drawn through banks %s' % sorted(winners)
+        return winners[0], 'slot %s %d/%d tiles %s' % (
+            'holds' if inside else 'inside', best, count, sorted(owners[winners[0]])[0])
+    return None, 'no OAM entry lies inside or over the slot'
+
+
+def configs():
+    """Every gfx config this tool has something to say about, dir -> path."""
+    paths = {}
+    for board in BOARDS:
+        paths[BOARDS[board]['dir']] = os.path.join(BOARDS[board]['dir'],
+                                                   BOARDS[board]['gfx'])
+    for directory, _ in list(SLOTS) + list(SLOT_PALETTES):
+        if directory in paths:
+            continue
+        for candidate in sorted(glob.glob(os.path.join(directory, '*.json'))):
+            try:
+                config = json.load(open(candidate))
+            except ValueError:
+                continue        # oamshape files sit alongside and are gbagfx's
+            if config.get('kind') == 'gfx-config':
+                paths[directory] = candidate
+                break
+    return paths
+
+
+def append_object(text, gfx_filename, palette, bank):
+    """Add a files entry that carries nothing but the palette.
+
+    Sheets built by the Makefile's plain %.4bpp: %.png rule need no config
+    entry, so several streamed ones have none.  An entry with no mwidth,
+    mheight, oam or align makes generate_graphics_rules.sh emit nothing, so
+    this records the palette without touching the build."""
+    newline = '\r\n' if '\r\n' in text else '\n'
+    files = re.search(r'"files"\s*:\s*\[', text)
+    if not files:
+        raise KeyError('no files array in the config')
+    depth = 0
+    for end in range(files.end() - 1, len(text)):
+        depth += {'[': 1, ']': -1}.get(text[end], 0)
+        if depth == 0:
+            break
+    last = text.rfind('}', 0, end)
+    sample = re.search(r'\n([ \t]*)"gfx_filename"', text)
+    pad = sample.group(1) if sample else '    '
+    gap = ' ' if re.search(r'"gfx_filename":\s', text) else ''
+    entry = ('{nl}{outer}{{{nl}{pad}"gfx_filename":{gap}{name},{nl}'
+             '{pad}"palette":{gap}{palette},{nl}{pad}"palbank":{gap}{bank}{nl}{outer}}}').format(
+        nl=newline, outer=pad[:-2], pad=pad, gap=gap,
+        name=json.dumps(gfx_filename), palette=json.dumps(palette), bank=bank)
+    return text[:last + 1] + ',' + entry + text[last + 1:]
+
+
+def relative(where, board, directory):
+    """Rewrite a board-relative palette path to be relative to `directory`.
+
+    A config can sit somewhere other than the board whose palette its sheets
+    are drawn with -- graphics/stage/gfx.json holds a sapphire sheet -- and the
+    path in the config has to resolve from beside the config."""
+    if where is None:
+        return None
+    palette, index = where
+    if directory == BOARDS[board]['dir']:
+        return palette, index
+    full = os.path.normpath(os.path.join(BOARDS[board]['dir'], palette))
+    return os.path.relpath(full, directory), index
+
+
+def wants(args, directory, gfx_filename):
+    return ((not args.dirs or directory in args.dirs)
+            and (not args.name or gfx_filename == args.name))
+
+
 def cmd_derive(args):
     oam, tables = read_oam_data(args.rom_source)
     unresolved = 0
-    for board in args.boards:
-        path, config = gfx_files(board)
-        slots = obj_palette(board)
+    for directory, path in sorted(configs().items()):
+        config = json.load(open(path))
         text = open(path, newline='').read()
         changed = False
-        print('== %s (%s)' % (board, path))
+        header = False
         for entry in config['files']:
-            if args.name and entry['gfx_filename'] != args.name:
+            name = entry['gfx_filename']
+            if not wants(args, directory, name):
                 continue
-            if not entry.get('segments'):
+            rows = []
+            if (directory, name) in SLOT_PALETTES:
+                # A whole-sheet answer, so it also settles every segment of a
+                # segmented sheet -- the segments share one slot and one palette.
+                palette, index, why = SLOT_PALETTES[(directory, name)]
+                rows.append(('gfx_filename', name, -1, 0, '--', (palette, index), why))
+            elif entry.get('segments'):
+                if (directory, name) in SLOTS:
+                    board, base = SLOTS[(directory, name)][:2]
+                else:
+                    board = next((b for b in BOARDS if BOARDS[b]['dir'] == directory), None)
+                    base = 0
+                if board is None:
+                    continue
+                banks = obj_palette(board)
+                for seg, start, count, bank, source in derive_banks(board, directory, entry, oam, tables, base):
+                    where = banks[bank] if isinstance(bank, int) else bank
+                    rows.append(('segfile', seg, start, count, bank,
+                                 relative(where, board, directory), source))
+            elif (directory, name) in SLOTS:
+                board, first, count, note = SLOTS[(directory, name)]
+                bank, source = derive_slot(board, first, count, oam, tables)
+                where = relative(obj_palette(board)[bank], board, directory) \
+                    if bank is not None else None
+                rows.append(('gfx_filename', name, first, count, bank, where,
+                             '%s; %s' % (source, note)))
+            for field, key, start, count, bank, where, source in rows:
+                if not header:
+                    print('== %s' % path)
+                    header = True
+                if where is None:
+                    unresolved += 1
+                    print('   ??  %-38s t%-4d n%-3d  %s' % (key, start, count, source))
+                    continue
+                palette, index = where
+                print('   %-4s%-38s t%-4d n%-3d  %-34s %s#%d'
+                      % (bank if isinstance(bank, int) else '--',
+                         key, start, count, source[:34], palette, index))
+                target = entry if field == 'gfx_filename' else \
+                    next(s for s in entry['segments'] if s['segfile'] == key)
+                if (target.get('palette'), target.get('palbank')) != (palette, index):
+                    text = patch_object(text, field, key, palette, index)
+                    changed = True
+        for key in sorted(set(SLOTS) | set(SLOT_PALETTES)):
+            if key[0] != directory or not wants(args, *key):
                 continue
-            for name, start, count, bank, source in derive_banks(board, entry, oam, tables):
+            if any(f['gfx_filename'] == key[1] for f in config['files']):
+                continue
+            if key in SLOT_PALETTES:
+                palette, index, source = SLOT_PALETTES[key]
+            else:
+                board, first, count, note = SLOTS[key]
+                bank, source = derive_slot(board, first, count, oam, tables)
                 if bank is None:
                     unresolved += 1
-                    print('   ??  %-38s t%-4d n%-3d  %s' % (name, start, count, source))
+                    print('   ??  %-38s t%-4d n%-3d  %s' % (key[1], first, count, source))
                     continue
-                palette, index = slots[bank] if isinstance(bank, int) else bank
-                print('   %-4s%-38s t%-4d n%-3d  %-16s %s#%d'
-                      % (bank if isinstance(bank, int) else '--',
-                         name, start, count, source, palette, index))
-                for segment in entry['segments']:
-                    if segment['segfile'] == name and \
-                            (segment.get('palette'), segment.get('palbank')) != (palette, index):
-                        text = patch_segment(text, name, palette, index)
-                        changed = True
+                palette, index = relative(obj_palette(board)[bank], board, directory)
+            if not header:
+                print('== %s' % path)
+                header = True
+            print('   new %-38s %-34s %s#%d' % (key[1], source[:34], palette, index))
+            text = append_object(text, key[1], palette, index)
+            changed = True
         if changed and args.write:
             open(path, 'w', newline='').write(text)
             print('   written')
     if unresolved:
-        print('\n%d segment(s) unresolved -- add them to OVERRIDES' % unresolved)
+        print('\n%d sheet(s) unresolved -- add them to OVERRIDES or SLOT_PALETTES'
+              % unresolved)
     return 1 if unresolved else 0
 
 
-def cmd_apply(args):
-    for board in args.boards:
-        directory = BOARDS[board]['dir']
-        _, config = gfx_files(board)
-        for entry in config['files']:
-            if args.name and entry['gfx_filename'] != args.name:
+def coloured_targets(args):
+    """-> [(png, palette path, bank)] for everything a config gives a palette.
+
+    The evolution pickups share one appear-and-sparkle animation between nine
+    sheets that each colour it differently, and a PNG can only carry one
+    palette, so a segment reached more than once keeps the first sheet's."""
+    out = []
+    seen = set()
+    for directory, path in sorted(configs().items()):
+        for entry in json.load(open(path))['files']:
+            name = entry['gfx_filename']
+            if not wants(args, directory, name):
                 continue
-            for segment in entry.get('segments', []):
-                if 'palette' not in segment:
+            holders = [(name, entry)] + [(s['segfile'], s) for s in entry.get('segments', [])]
+            for stem, holder in holders:
+                palette = holder.get('palette') or entry.get('palette')
+                if not palette:
                     continue
-                png = os.path.join(directory, segment['segfile'] + '.png')
-                bank = segment.get('palbank', 0)
-                colours = read_gbapal(os.path.join(directory, segment['palette']))
-                colours = colours[bank * 16:bank * 16 + 16]
-                width, height, rows, greyscale = png_read_indices(png)
-                if png_palette(png) == colours:
-                    continue
-                if args.dry_run:
-                    print('would recolour %s' % png)
-                    continue
-                if greyscale:
-                    rows = [[15 - value for value in row] for row in rows]
-                png_write_indexed(png, width, height, rows, colours)
-                print('recoloured %s' % png)
+                bank = holder.get('palbank', entry.get('palbank', 0))
+                png = os.path.join(directory, stem + '.png')
+                if os.path.exists(png) and png not in seen:
+                    seen.add(png)
+                    out.append((png, os.path.join(directory, palette), bank))
+    return out
+
+
+def cmd_apply(args):
+    for png, palette, bank in coloured_targets(args):
+        colours = read_gbapal(palette)[bank * 16:bank * 16 + 16]
+        if png_palette(png) == colours:
+            continue
+        if args.dry_run:
+            print('would recolour %s' % png)
+            continue
+        width, height, rows, greyscale = png_read_indices(png)
+        if greyscale:
+            rows = [[15 - value for value in row] for row in rows]
+        png_write_indexed(png, width, height, rows, colours)
+        print('recoloured %s' % png)
     return 0
 
 
 def cmd_check(args):
     bad = 0
-    for board in args.boards:
-        directory = BOARDS[board]['dir']
-        _, config = gfx_files(board)
-        for entry in config['files']:
-            if args.name and entry['gfx_filename'] != args.name:
-                continue
-            for segment in entry.get('segments', []):
-                png = os.path.join(directory, segment['segfile'] + '.png')
-                if 'palette' not in segment:
-                    if png_palette(png) is None:
-                        print('no palette recorded and none in the PNG: %s' % png)
-                        bad += 1
-                    continue
-                bank = segment.get('palbank', 0)
-                colours = read_gbapal(os.path.join(directory, segment['palette']))
-                if png_palette(png) != colours[bank * 16:bank * 16 + 16]:
-                    print('palette does not match %s#%d: %s'
-                          % (segment['palette'], bank, png))
-                    bad += 1
+    for png, palette, bank in coloured_targets(args):
+        if png_palette(png) != read_gbapal(palette)[bank * 16:bank * 16 + 16]:
+            print('palette does not match %s#%d: %s'
+                  % (os.path.basename(palette), bank, png))
+            bad += 1
     print('%d mismatch(es)' % bad)
     return 1 if bad else 0
 
@@ -635,30 +966,30 @@ def main():
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--board', default='all',
-                        help='board name, or "all" (default)')
-    parser.add_argument('--name', default='intro_sprite',
-                        help='gfx_filename to work on, or "" for every segmented '
-                             'sheet in the config (default: intro_sprite)')
+                        help='board name, or "all" (default) for every config '
+                             'this tool knows about, boards and shared sheets alike')
+    parser.add_argument('--name', default='',
+                        help='a single gfx_filename to work on (default: all of them)')
     sub = parser.add_subparsers(dest='command', required=True)
 
-    p = sub.add_parser('derive', help='work out each segment\'s palette bank')
+    p = sub.add_parser('derive', help='work out each sheet\'s palette bank')
     p.add_argument('--rom-source', default=ROM_SOURCE)
     p.add_argument('--write', action='store_true',
-                   help='record the result in the gfx.json')
+                   help='record the result in the gfx config')
     p.set_defaults(func=cmd_derive)
 
-    p = sub.add_parser('apply', help='recolour segment PNGs from the gfx.json')
+    p = sub.add_parser('apply', help='recolour PNGs from the gfx configs')
     p.add_argument('--dry-run', action='store_true')
     p.set_defaults(func=cmd_apply)
 
-    p = sub.add_parser('check', help='verify PNG palettes against the gfx.json')
+    p = sub.add_parser('check', help='verify PNG palettes against the gfx configs')
     p.set_defaults(func=cmd_check)
 
     args = parser.parse_args()
     if args.board == 'all':
-        args.boards = list(BOARDS)
+        args.dirs = None
     elif args.board in BOARDS:
-        args.boards = [args.board]
+        args.dirs = {BOARDS[args.board]['dir']}
     else:
         parser.error('unknown board %r; expected one of %s, or "all"'
                      % (args.board, ', '.join(BOARDS)))
