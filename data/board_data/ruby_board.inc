@@ -532,76 +532,85 @@ gRubySaverRow3Tile_On:: @ 0x082614F0
     .incbin "baserom.gba", 0x2614F0, 0x280
 
 gRubyHatchArrowRow0Tile_Off:: @ 0x08261770
-    .incbin "baserom.gba", 0x261770, 0x80
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_off_row0.4bpp"
 
 gRubyHatchArrowRow0Tile_On:: @ 0x082617F0
-    .incbin "baserom.gba", 0x2617F0, 0xC0
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_on_row0.4bpp"
+    .incbin "baserom.gba", 0x261870, 0x40
 
 gRubyCatchArrowRow0Tile_Off:: @ 0x082618B0
-    .incbin "baserom.gba", 0x2618B0, 0x80
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_off_row0.4bpp"
+    .incbin "baserom.gba", 0x2618f0, 0x40
 
 gRubyCatchArrowRow0Tile_On:: @ 0x08261930
-    .incbin "baserom.gba", 0x261930, 0x80
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_on_row0.4bpp"
+    .incbin "baserom.gba", 0x261970, 0x40
 
 gRubyBumperArrowRow0Tile_Off:: @ 0x082619B0
-    .incbin "baserom.gba", 0x2619B0, 0x80
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row0.4bpp"
+    .incbin "baserom.gba", 0x2619f0, 0x40
 
 gRubyBumperArrowRow0Tile_On:: @ 0x08261A30
-    .incbin "baserom.gba", 0x261A30, 0x140
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row0.4bpp"
+    .space 0x100
 
 gRubyHatchArrowRow1Tile_Off:: @ 0x08261B70
-    .incbin "baserom.gba", 0x261B70, 0x80
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_off_row1.4bpp"
 
 gRubyHatchArrowRow1Tile_On:: @ 0x08261BF0
-    .incbin "baserom.gba", 0x261BF0, 0x80
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_on_row1.4bpp"
 
 gRubyCatchArrowRow1Tile_Off:: @ 0x08261C70
-    .incbin "baserom.gba", 0x261C70, 0x80
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_off_row1.4bpp"
 
 gRubyCatchArrowRow1Tile_On:: @ 0x08261CF0
-    .incbin "baserom.gba", 0x261CF0, 0x80
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_on_row1.4bpp"
 
 gRubyBumperArrowRow1Tile_Off:: @ 0x08261D70
-    .incbin "baserom.gba", 0x261D70, 0x80
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row1.4bpp"
 
 gRubyBumperArrowRow1Tile_On:: @ 0x08261DF0
-    .incbin "baserom.gba", 0x261DF0, 0x180
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row1.4bpp"
+    .space 0x100
 
 gRubyHatchArrowRow2Tile_Off:: @ 0x08261F70
-    .incbin "baserom.gba", 0x261F70, 0x80
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_off_row2.4bpp"
 
 gRubyHatchArrowRow2Tile_On:: @ 0x08261FF0
-    .incbin "baserom.gba", 0x261FF0, 0x80
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_on_row2.4bpp"
 
 gRubyCatchArrowRow2Tile_Off:: @ 0x08262070
-    .incbin "baserom.gba", 0x262070, 0x80
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_off_row2.4bpp"
 
 gRubyCatchArrowRow2Tile_On:: @ 0x082620F0
-    .incbin "baserom.gba", 0x2620F0, 0x80
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_on_row2.4bpp"
 
 gRubyBumperArrowRow2Tile_Off:: @ 0x08262170
-    .incbin "baserom.gba", 0x262170, 0x80
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row2.4bpp"
 
 gRubyBumperArrowRow2Tile_On:: @ 0x082621F0
-    .incbin "baserom.gba", 0x2621F0, 0x180
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row2.4bpp"
+    .space 0x100
 
 gRubyHatchArrowRow3Tile_Off:: @ 0x08262370
-    .incbin "baserom.gba", 0x262370, 0x80
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_off_row3.4bpp"
 
 gRubyHatchArrowRow3Tile_On:: @ 0x082623F0
-    .incbin "baserom.gba", 0x2623F0, 0x80
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_on_row3.4bpp"
 
 gRubyCatchArrowRow3Tile_Off:: @ 0x08262470
-    .incbin "baserom.gba", 0x262470, 0x80
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_off_row3.4bpp"
 
 gRubyCatchArrowRow3Tile_On:: @ 0x082624F0
-    .incbin "baserom.gba", 0x2624F0, 0x80
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_on_row3.4bpp"
 
 gRubyBumperArrowRow3Tile_Off:: @ 0x08262570
-    .incbin "baserom.gba", 0x262570, 0x80
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row3.4bpp"
+    .incbin "baserom.gba", 0x2625d0, 0x20
 
 gRubyBumperArrowRow3Tile_On:: @ 0x082625F0
-    .incbin "baserom.gba", 0x2625F0, 0x1A0
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row3.4bpp"
+    .incbin "baserom.gba", 0x262650, 0x140
 
 
 @ Sign for bonus multiplier left/right digits
@@ -698,55 +707,59 @@ gStoreSignText_082634F0:: @ 0x082634F0
 @ arrow for ramp leading to shop: mart/evo
 
 gRubyEvoArrow_R0_Off:: @ 0x082637D0
-    .incbin "baserom.gba", 0x2637D0, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_off_row0.4bpp"
 
 gRubyEvoArrow_R0_On:: @ 0x08263870
-    .incbin "baserom.gba", 0x263870, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_on_row0.4bpp"
 
 gRubyMartArrow_R0_Off:: @ 0x08263910
-    .incbin "baserom.gba", 0x263910, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_off_row0.4bpp"
 
 gRubyMartArrow_R0_On:: @ 0x082639B0
-    .incbin "baserom.gba", 0x2639B0, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_on_row0.4bpp"
 	.space 0x180
 
 gRubyEvoArrow_R1_Off:: @ 0x08263BD0
-    .incbin "baserom.gba", 0x263BD0, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_off_row1.4bpp"
 
 gRubyEvoArrow_R1_On:: @ 0x08263C70
-    .incbin "baserom.gba", 0x263C70, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_on_row1.4bpp"
 
 gRubyMartArrow_R1_Off:: @ 0x08263D10
-    .incbin "baserom.gba", 0x263D10, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_off_row1.4bpp"
 
 gRubyMartArrow_R1_On:: @ 0x08263DB0
-    .incbin "baserom.gba", 0x263DB0, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_on_row1.4bpp"
 	.space 0x180
 
 gRubyEvoArrow_R2_Off:: @ 0x08263FD0
-    .incbin "baserom.gba", 0x263FD0, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_off_row2.4bpp"
 
 gRubyEvoArrow_R2_On:: @ 0x08264070
-    .incbin "baserom.gba", 0x264070, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_on_row2.4bpp"
 
 gRubyMartArrow_R2_Off:: @ 0x08264110
-    .incbin "baserom.gba", 0x264110, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_off_row2.4bpp"
 
 gRubyMartArrow_R2_On:: @ 0x082641B0
-    .incbin "baserom.gba", 0x2641B0, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_on_row2.4bpp"
 	.space 0x180
 
 gRubyEvoArrow_R3_Off:: @ 0x082643D0
-    .incbin "baserom.gba", 0x2643D0, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_off_row3.4bpp"
+    .incbin "baserom.gba", 0x264430, 0x40
 
 gRubyEvoArrow_R3_On:: @ 0x08264470
-    .incbin "baserom.gba", 0x264470, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_on_row3.4bpp"
+    .incbin "baserom.gba", 0x2644d0, 0x40
 
 gRubyMartArrow_R3_Off:: @ 0x08264510
-    .incbin "baserom.gba", 0x264510, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_off_row3.4bpp"
+    .incbin "baserom.gba", 0x264570, 0x40
 
 gRubyMartArrow_R3_On:: @ 0x082645B0
-    .incbin "baserom.gba", 0x2645B0, 0xA0
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_on_row3.4bpp"
+    .incbin "baserom.gba", 0x264610, 0x40
 	.space 0x1A0
 
 
