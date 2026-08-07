@@ -956,23 +956,28 @@ gSphealBoardPaletteSet0:: @ 0x081B4384
     .incbin "baserom.gba", 0x1B4384, 0x200
 
 gEvoNameDisplay_Pals:: @ 0x081B4584
-	.incbin "baserom.gba", 0x1B4584, 0x20
+	.incbin "graphics/stage/main/evo_name_display.gbapal"
 
 gShopNameDisplay_Pals:: @ 0x081B45A4
 	.incbin "graphics/stage/main/shop_name_display.gbapal"
 	.space 0x1C0
 
+@ Evolution mode counterpart of the shop mode background below: 4 frames
+@ cycled through by gShopEvoBGAnimFrames (data/rom_2.s), and BG0 tilemaps
+@ rather than tile graphics for the same reason. Each frame is a full
+@ 32x64 map (0x1000 bytes) copied to VRAM + 0x2000; only the first 49
+@ rows (0xC40) are copied, and the rest is 0x01FF filler in all 4 frames.
 gEvoModeBG_Gfx:: @ 0x081B4784
-	.incbin "baserom.gba", 0x1B4784, 0x1000
+	.incbin "graphics/stage/main/evo_mode_bg0_frame0_tilemap.bin"
 
 gUnknown_081B5784:: @ 0x081B5784
-	.incbin "baserom.gba", 0x1B5784, 0x1000
+	.incbin "graphics/stage/main/evo_mode_bg0_frame1_tilemap.bin"
 
 gUnknown_081B6784:: @ 0x081B6784
-	.incbin "baserom.gba", 0x1B6784, 0x1000
+	.incbin "graphics/stage/main/evo_mode_bg0_frame2_tilemap.bin"
 
 gUnknown_081B7784:: @ 0x081B7784
-	.incbin "baserom.gba", 0x1B7784, 0x1000
+	.incbin "graphics/stage/main/evo_mode_bg0_frame3_tilemap.bin"
 
 gShopEvoUI_Pals:: @ 0x081B8784
 	.incbin "graphics/stage/main/shop_evo_ui.gbapal"
