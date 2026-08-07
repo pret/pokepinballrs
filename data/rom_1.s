@@ -1108,10 +1108,10 @@ gPortraitAnimPalettes:: @ 0x081C02E4
 
 .include "data/board_data/spheal_board.inc"
 
-@ 24 frames of 0x180 (4x3 tiles), the same sprite shape as the pika saver
-@ banks at 0x084C07EC: SPRITE_SIZE_32x16 over SPRITE_SIZE_32x8, per
-@ gPikachuKickbackSpriteSet. Only 0x2400 is copied to OBJ VRAM; the
-@ trailing 0x20 is a blank tile.
+@ 36 frames of 0xC0 (4x2 tiles), drawn as a single SPRITE_SIZE_32x16 by
+@ gPikaKickbackLaunchFxSpriteSet. Note this is NOT the 4x3 shape the pika
+@ saver banks at 0x084C07EC use, which stack a 32x16 over a 32x8.
+@ Only 0x2400 is copied to OBJ VRAM; the trailing 0x20 is a blank tile.
 gPikaSaverFullCoverageGfx:: @ 0x08395A4C
 	.incbin "graphics/stage/main/pika_saver_full_coverage.4bpp"
 	.space 0x20
