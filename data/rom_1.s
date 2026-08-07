@@ -343,7 +343,7 @@ gEReaderBackground_Gfx:: @ 0x08080500
 	.space 0x20
 
 gEReaderBackground_Pals:: @ 0x08081D20
-	.incbin "baserom.gba", 0x81D20, 0x200
+	.incbin "graphics/ereader/background.gbapal"
 
 gPokedexBg1_Tilemap:: @ 0x08081F20
 	.incbin "graphics/pokedex/bg1_tilemap.bin"
@@ -958,40 +958,55 @@ gSphealBoardPaletteSet0:: @ 0x081B4384
     .incbin "baserom.gba", 0x1B4384, 0x200
 
 gEvoNameDisplay_Pals:: @ 0x081B4584
-	.incbin "baserom.gba", 0x1B4584, 0x20
+	.incbin "graphics/stage/main/evo_name_display.gbapal"
 
 gShopNameDisplay_Pals:: @ 0x081B45A4
-	.incbin "baserom.gba", 0x1B45A4, 0x1E0
+	.incbin "graphics/stage/main/shop_name_display.gbapal"
+	.space 0x1C0
 
-gEvoModeBG_Gfx:: @ 0x081B4784
-	.incbin "baserom.gba", 0x1B4784, 0x1000
+@ Evolution mode counterpart of the shop mode background below: 4 frames
+@ cycled through by gShopEvoBGAnimFrames (data/rom_2.s), and BG0 tilemaps
+@ rather than tile graphics for the same reason. Each frame is a full
+@ 32x64 map (0x1000 bytes) copied to VRAM + 0x2000; only the first 49
+@ rows (0xC40) are copied, and the rest is 0x01FF filler in all 4 frames.
+@ Uses tiles found in lower part of gSapphireBoardCompressedTiles1 and gRubyBoardCompressedTiles1 
+gEvoModeBG0_0_Tilemap:: @ 0x081B4784
+	.incbin "graphics/stage/main/evo_mode_bg0_frame0_tilemap.bin"
 
-gUnknown_081B5784:: @ 0x081B5784
-	.incbin "baserom.gba", 0x1B5784, 0x1000
+gEvoModeBG0_1_Tilemap:: @ 0x081B5784
+	.incbin "graphics/stage/main/evo_mode_bg0_frame1_tilemap.bin"
 
-gUnknown_081B6784:: @ 0x081B6784
-	.incbin "baserom.gba", 0x1B6784, 0x1000
+gEvoModeBG0_2_Tilemap:: @ 0x081B6784
+	.incbin "graphics/stage/main/evo_mode_bg0_frame2_tilemap.bin"
 
-gUnknown_081B7784:: @ 0x081B7784
-	.incbin "baserom.gba", 0x1B7784, 0x1000
+gEvoModeBG0_3_Tilemap:: @ 0x081B7784
+	.incbin "graphics/stage/main/evo_mode_bg0_frame3_tilemap.bin"
 
 gShopEvoUI_Pals:: @ 0x081B8784
-	.incbin "baserom.gba", 0x1B8784, 0x200
+	.incbin "graphics/stage/main/shop_evo_ui.gbapal"
 
-gShopModeBG_Gfx:: @ 0x081B8984
-	.incbin "baserom.gba", 0x1B8984, 0x1000
+@ 4 animation frames of the shop mode background, cycled through by
+@ gShopEvoBGAnimFrames (data/rom_2.s). Despite the _Gfx name these are
+@ BG0 tilemaps, not tile graphics: BG0 is BGCNT_TXT256x512 with
+@ BGCNT_SCREENBASE(4), so each frame is a full 32x64 map (0x1000 bytes)
+@ copied to BG_VRAM + 0x2000. Only the first 49 rows (0xC40) are copied;
+@ the remaining rows are 0x01FF filler and are identical in all 4 frames.
+@ Uses tiles found in  lower part of gSapphireBoardCompressedTiles1 and gRubyBoardCompressedTiles1
+gShopModeBG0_0_Tilemap:: @ 0x081B8984
+	.incbin "graphics/stage/main/shop_mode_bg0_frame0_tilemap.bin"
 
-gUnknown_081B9984:: @ 0x081B9984
-	.incbin "baserom.gba", 0x1B9984, 0x1000
+gShopModeBG0_1_Tilemap:: @ 0x081B9984
+	.incbin "graphics/stage/main/shop_mode_bg0_frame1_tilemap.bin"
 
-gUnknown_081BA984:: @ 0x081BA984
-	.incbin "baserom.gba", 0x1BA984, 0x1000
+gShopModeBG0_2_Tilemap:: @ 0x081BA984
+	.incbin "graphics/stage/main/shop_mode_bg0_frame2_tilemap.bin"
 
-gUnknown_081BB984:: @ 0x081BB984
-	.incbin "baserom.gba", 0x1BB984, 0x1000
+gShopModeBG0_3_Tilemap:: @ 0x081BB984
+	.incbin "graphics/stage/main/shop_mode_bg0_frame3_tilemap.bin"
 
+@ 9 palettes of 16 colors, one per shop sign color cycle step
 gSapphireShopSignPalettes:: @ 0x081BC984
-	.incbin "baserom.gba", 0x1BC984, 0x120
+	.incbin "graphics/stage/sapphire/shop_sign.gbapal"
 
 gRubyTravelPaint_Gfx:: @ 0x081BCAA4
 	.incbin "graphics/stage/ruby/travel_paint.4bpp"
@@ -1097,11 +1112,21 @@ gPortraitAnimPalettes:: @ 0x081C02E4
 
 .include "data/board_data/spheal_board.inc"
 
+@ Not a uniform frame bank: this is a packed atlas of variable-sized
+@ sprites. The whole 0x2400 is uploaded to OBJ VRAM in one go, and
+@ UpdateKickbackLogic then writes raw OAM entries straight out of
+@ gCatchOverlayOamData (data/rom_2.s), so every animation frame picks its
+@ own sizes and tile numbers. Those entries give 27 sprites packed back
+@ to back with no alignment, in sizes from 8x8 to 32x32; the last 13
+@ tiles are never referenced. pika_saver_coverage_shape.json describes
+@ that packing for gbagfx. The trailing 0x20 is a blank tile.
 gPikaSaverFullCoverageGfx:: @ 0x08395A4C
-	.incbin "baserom.gba", 0x395A4C, 0x2420
+	.incbin "graphics/stage/main/pika_saver_full_coverage.4bpp"
+	.space 0x20
 
 gPikaSaverPartialCoverageGfx:: @ 0x08397E6C
-	.incbin "baserom.gba", 0x397E6C, 0x2420
+	.incbin "graphics/stage/main/pika_saver_partial_coverage.4bpp"
+	.space 0x20
 
 gCatchTargetCollisionBitmap:: @ 0x0839A28C
 	.incbin "baserom.gba", 0x39A28C, 0x900
@@ -1158,7 +1183,7 @@ gBoardHudTilemapB:: @ 0x083A826C
 	.space 0x20
 
 gShopPalette:: @ 0x083A8A8C
-	.incbin "baserom.gba", 0x3A8A8C, 0x20
+	.incbin "graphics/stage/main/shop.gbapal"
 
 gTravelPortraitPalette:: @ 0x083A8AAC
 	.incbin "baserom.gba", 0x3A8AAC, 0x20
@@ -1417,14 +1442,20 @@ gRubyMakuhitaGfx:: @ 0x0847DF0C
 gSideBumperGfx:: @ 0x0847FD0C
 	.incbin "baserom.gba", 0x47FD0C, 0x200
 
+@ 5 overlays of 0x300 each, drawn as 2 sprites (32x32 + 16x32) by
+@ gMainShopPortraitOverlaySpriteSet, so each frame is 6x4 tiles.
+@ Frames 0-3 are the selection sheen; frame 4 is the "SOLD OUT" banner.
 gShopPortraitOverlayGfx:: @ 0x0847FF0C
-	.incbin "baserom.gba", 0x47FF0C, 0xF00
+	.incbin "graphics/stage/main/shop_portrait_overlay.4bpp"
 
 gDecimalDigitTilesGfx:: @ 0x08480E0C
 	.incbin "baserom.gba", 0x480E0C, 0x280
 
+@ 10 sign frames of 0x480 each, drawn as 2 sprites (64x32 face at (0,0)
+@ plus a 32x8 post at (0,32)) by gSapphireMartSignSpriteSet. That is not a
+@ rectangle, so shop_sign_shape.json describes the slicing for gbagfx.
 gSapphireShopSignTileGfx:: @ 0x0848108C
-	.incbin "baserom.gba", 0x48108C, 0x2D00
+	.incbin "graphics/stage/sapphire/shop_sign_tiles.4bpp"
 
 gRubyTravelVolbeat_Gfx:: @ 0x08483D8C
 	.incbin "baserom.gba", 0x483D8C, 0x4C80
@@ -1505,14 +1536,19 @@ gPelipper_Gfx:: @ 0x084BB16C
 gChargeFillIndicator_Gfx:: @ 0x084C00EC
 	.incbin "graphics/stage/main/charge_fill_indicator.4bpp"
 
+@ These three are one contiguous bank of 15 frames of 0x180 (4x3 tiles),
+@ indexed as gPikaSaverTilesGfx + pikaSaverTileIndex * 0x180, which runs
+@ up to index 9 and so reads past gPikaSaverTilesGfx into the two symbols
+@ that follow. Each frame is drawn as SPRITE_SIZE_32x16 over
+@ SPRITE_SIZE_32x8 (gPikachuKickbackSpriteSet / gPichuKickbackSpriteSet).
 gPikaSaverTilesGfx:: @ 0x084C07EC
-	.incbin "baserom.gba", 0x4C07EC, 0x480
+	.incbin "graphics/stage/main/pika_saver_tiles.4bpp"
 
 gDxModePikachuObjTiles:: @ 0x084C0C6C
-	.incbin "baserom.gba", 0x4C0C6C, 0x900
+	.incbin "graphics/stage/main/dx_mode_pikachu_obj_tiles.4bpp"
 
 gPikachuSaverTilesGfx:: @ 0x084C156C
-	.incbin "baserom.gba", 0x4C156C, 0x900
+	.incbin "graphics/stage/main/pikachu_saver_tiles.4bpp"
 
 gSapphireBumperRight_Gfx:: @ 0x084C1E6C
 	.incbin "baserom.gba", 0x4C1E6C, 0x2D00
@@ -1618,13 +1654,13 @@ gRubyChinchouCatchBurstBanner_Gfx:: @ 0x0851514C
 	.space 0xA0
 
 gRubyChinchouCatchBurstBanner_Pal:: @ 0x0851956C
-    .incbin "baserom.gba", 0x51956C, 0x20
+	.incbin "graphics/stage/ruby/chinchou_catch_burst_banner.gbapal"
 
 gRubyLotadCatchBurstBanner_Pal:: @ 0x0851958C
-    .incbin "baserom.gba", 0x51958C, 0x20
+	.incbin "graphics/stage/ruby/lotad_catch_burst_banner.gbapal"
 
 gSapphireShroomishCatchBurstBanner_Pal:: @ 0x085195AC
-    .incbin "baserom.gba", 0x5195AC, 0x1C0
+	.incbin "graphics/stage/sapphire/shroomish_catch_burst_banner.gbapal"
 
 gRubyLotadCatchBurstBanner_Gfx:: @ 0x0851976C
 	.incbin "graphics/stage/ruby/lotad_catch_burst_banner.4bpp"
@@ -1641,20 +1677,20 @@ gBonusClearTextPal_Dark:: @ 0x08521FCC
 	.incbin "baserom.gba", 0x521FCC, 0x1E0
 
 gMainBoardEvoBanner_Pal:: @ 0x085221AC
-    .incbin "baserom.gba", 0x5221AC, 0x200
+    .incbin "graphics/stage/main/evo_banner.gbapal"
 
 gMainCatchModeBanner_Gfx:: @ 0x085223AC
 	.incbin "graphics/stage/main/catch_mode_banner.4bpp"
 	.space 0xA0
 
 gMainCatchModeBanner_Pal:: @ 0x085267CC
-    .incbin "baserom.gba", 0x5267CC, 0x200
+    .incbin "graphics/stage/main/catch_mode_banner.gbapal"
 
 gMainBoardJirachiBanner_Pal:: @ 0x085269CC
-    .incbin "baserom.gba", 0x5269CC, 0x200
+    .incbin "graphics/stage/main/jirachi_banner.gbapal"
 
 gMainBoardTravel_Pal:: @ 0x08526BCC
-    .incbin "baserom.gba", 0x526BCC, 0x200
+    .incbin "graphics/stage/main/travel.gbapal"
 
 gSapphireBoardZigzagoonFx_Gfx:: @ 0x08526DCC
 	.incbin "graphics/stage/sapphire/zigzagoon_fx.4bpp";

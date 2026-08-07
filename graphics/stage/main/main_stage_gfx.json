@@ -185,6 +185,42 @@
       "oam": true,
       "mheight": 9,
       "mwidth": 30
+    },
+    {
+      "gfx_filename": "shop_portrait_overlay",
+      "oam": true,
+      "mheight": 4,
+      "mwidth": 6,
+      "width": 6
+    },
+    {
+      "gfx_filename": "pika_saver_tiles",
+      "oam": true,
+      "mheight": 3,
+      "mwidth": 4,
+      "width": 4
+    },
+    {
+      "gfx_filename": "dx_mode_pikachu_obj_tiles",
+      "oam": true,
+      "mheight": 3,
+      "mwidth": 4,
+      "width": 4
+    },
+    {
+      "gfx_filename": "pikachu_saver_tiles",
+      "oam": true,
+      "mheight": 3,
+      "mwidth": 4,
+      "width": 4
+    },
+    {
+      "gfx_filename": "pika_saver_full_coverage",
+      "oamshape": "pika_saver_coverage_shape.json"
+    },
+    {
+      "gfx_filename": "pika_saver_partial_coverage",
+      "oamshape": "pika_saver_coverage_shape.json"
     }
   ]
 }

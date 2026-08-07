@@ -292,6 +292,10 @@
       "oam": true,
       "mheight": 9,
       "mwidth": 30
+    },
+    {
+      "gfx_filename": "shop_sign_tiles",
+      "oamshape": "shop_sign_shape.json"
     }
   ]
 }

@@ -93,7 +93,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
 
             DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT + 0x1C0, 0x20);
-            DmaCopy16(3, gShopModeBG_Gfx, BG_VRAM + 0x2000, 0xC40);
+            DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_VRAM + 0x2000, 0xC40);
 
             gMain.bgOffsets[0].yOffset = 80;
             gMain.shopPanelSlideOffset = 0;
@@ -436,7 +436,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->shopAnimSlideTimer = 15;
                 gMain.shopPanelActive = TRUE;
 
-                DmaCopy16(3, &gEvoModeBG_Gfx, VRAM + 0x2000, 0xC40);
+                DmaCopy16(3, &gEvoModeBG0_0_Tilemap, VRAM + 0x2000, 0xC40);
             }
 
             if (gCurrentPinballGame->shopEntryTimer <= 144)

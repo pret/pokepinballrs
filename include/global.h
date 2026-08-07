@@ -1008,10 +1008,10 @@ extern u16 gModeBannerOamAttributes[14][45];
 extern const u8 gPokemonNameDisplayGfx[]; 
 extern u8 gShopNameDisplay_Pals[]; 
 extern const u16 gShopCursorToItemMap[];
-extern u8 gShopModeBG_Gfx[];
+extern u8 gShopModeBG0_0_Tilemap[];
 extern u8 gShopEvoUI_Pals[];
 extern u8 gEvoNameDisplay_Pals[];
-extern u8 gEvoModeBG_Gfx[];
+extern u8 gEvoModeBG0_0_Tilemap[];
 extern const u16 gShopItemData[][4];
 extern u32 gShopEvoBGAnimFrames[];
 
