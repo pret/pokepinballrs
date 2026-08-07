@@ -20,7 +20,6 @@ extern const s16 gRouletteOutcomeFrameOffsets[];
 void LoadPortraitGraphics(s16 displayMode, s16 picIx)
 {
     s16 i;
-    s16 var0;
     s16 sp0[16];
     s16 rgb[3];
     u16 index;

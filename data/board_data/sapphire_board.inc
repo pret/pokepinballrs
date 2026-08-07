@@ -4,7 +4,7 @@ gSapphireBoardPalette:: @ 0x0826EC10
 	.incbin "baserom.gba", 0x26EC10, 0x200
 
 gSapphireBoardBG0Tilemap:: @ 0x0826EE10
-	.incbin "baserom.gba", 0x26EE10, 0x1000
+	.incbin "graphics/stage/sapphire/sapphire_board_bg0_tilemap.bin"
 
 gSapphireBoardCollisionTileDataLayer0:: @ 0x0826FE10
 .incbin "data/board_data/collision/sapphire/boardtop_tiledata.bin"
@@ -25,7 +25,7 @@ gSapphireBoardCollisionTypeDataLayer1:: @ 0x082A5490
 .incbin "data/board_data/collision/sapphire/boardbottom_typedata.bin"
 
 gSapphireBoardBG1Tilemap:: @ 0x082AE6D0
-	.incbin "baserom.gba", 0x2AE6D0, 0x1000
+	.incbin "graphics/stage/sapphire/sapphire_board_bgramp_tilemap.bin"
 
 gSapphireBoardCollisionTileDataLayer2:: @ 0x082AF6D0
 .incbin "data/board_data/collision/sapphire/topramp_tiledata.bin"
@@ -46,13 +46,13 @@ gSapphireBoardCollisionTypeDataLayer3:: @ 0x082CF350
 .incbin "data/board_data/collision/sapphire/hatchexitramp_typedata.bin"
 
 gSapphireBoardCompressedTiles1:: @ 0x082D34D0
-	.incbin "baserom.gba", 0x2D34D0, 0x1D6C
+	.incbin "graphics/stage/sapphire/sapphire_board_bgramp_tiles.4bpp.lz"
 
 gSapphireBoardCompressedTiles2:: @ 0x082D523C
-	.incbin "baserom.gba", 0x2D523C, 0x375C
+	.incbin "graphics/stage/sapphire/sapphire_board_bgtop_tiles.4bpp.lz"
 
 gSapphireBoardCompressedBGTileBuffer:: @ 0x082D8998
-	.incbin "baserom.gba", 0x2D8998, 0x2048
+	.incbin "graphics/stage/sapphire/sapphire_board_bgbottom_tiles.4bpp.lz"
 
 
 

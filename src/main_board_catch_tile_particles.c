@@ -33,7 +33,7 @@ void UpdateSequentialTileParticles(void)
     struct OamDataSimple *oamSimple;
     u16 *dst;
     const u16 *src;
-    s16 var0;
+    s16 frameIx;
     struct Vector16 tempVector;
 
     group = gMain.fieldSpriteGroups[FIELD_SG_MAIN_TILE_BREAK];
@@ -41,7 +41,7 @@ void UpdateSequentialTileParticles(void)
     {
         for (i = 0; i < 6; i++)
         {
-            var0 = gHatchPieceAnimIndices[i][gCurrentPinballGame->particleAnimTimer / 4];
+            frameIx = gHatchPieceAnimIndices[i][gCurrentPinballGame->particleAnimTimer / 4];
             gCurrentPinballGame->tileParticleVel[i].y += gCurrentPinballGame->tileParticleGravity[i];
             if (gCurrentPinballGame->tileParticlePos[i].y < 14000)
             {
@@ -56,9 +56,9 @@ void UpdateSequentialTileParticles(void)
 
             oamSimple = &group->oam[i];
             dst = (u16*)&gOamBuffer[oamSimple->oamId];
-            *dst++ = gHatchAnimOamAttributes[var0][0];
-            *dst++ = gHatchAnimOamAttributes[var0][1];
-            *dst++ = gHatchAnimOamAttributes[var0][2];
+            *dst++ = gHatchAnimOamAttributes[frameIx][0];
+            *dst++ = gHatchAnimOamAttributes[frameIx][1];
+            *dst++ = gHatchAnimOamAttributes[frameIx][2];
 
             gOamBuffer[oamSimple->oamId].x += tempVector.x;
             gOamBuffer[oamSimple->oamId].y += tempVector.y;
@@ -79,7 +79,6 @@ void UpdateSequentialTileParticles(void)
 void InitBurstTileParticles(void)
 {
     s16 i;
-    const struct Vector16 *var0;
 
     for (i = 0; i < 6; i++)
     {

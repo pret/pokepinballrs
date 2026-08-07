@@ -410,7 +410,6 @@ void Pokedex_InfoWindowSlideIn(void)
 
 void Pokedex_DetailViewInput(void)
 {
-    u16 var0;
 
     if (gPokedexDetailFrameCount < 0x51)
     {

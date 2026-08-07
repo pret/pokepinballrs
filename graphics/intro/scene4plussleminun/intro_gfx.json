@@ -10,17 +10,17 @@
   },
   "files": [
     {
-      "gfx_filename": "scene_4_sprites",
+      "gfx_filename": "tiles",
       "segments":[
         {
-            "segfile": "scene_4_sprites_text",
+            "segfile": "text_tiles",
             "width":20
         },
         {
-            "segfile": "scene_4_sprites_space"
+            "segfile": "space_tiles"
         },
         {
-            "segfile": "scene_4_sprites_mons",
+            "segfile": "mon_tiles",
             "width":24
         }
       ],

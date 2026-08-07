@@ -1828,8 +1828,18 @@ gIntroScene9BallFlight_SpriteSets:: @ 0x086A7D20
     .4byte gIntro9BallCardSpinAnim8SpriteSet
     .4byte gIntro9BallCardSpinAnim9SpriteSet
 
-gIntroScene9BallFlight_BallDecelTable:: @ 0x086A7D4C
-	.incbin "baserom.gba", 0x6A7D4C, 0x5C
+gIntroScene9BallFlight_BallXFrameAdjustTable:: @ 0x086A7D4C
+	.byte 14, 13, 12, 11, 10, 10,  9,  9,  9,  8
+    .byte  8,  8,  7,  7,  6,  6,  5,  4,  3,  3
+    .byte  3,  3,  2,  2,  2,  2,  2,  2,  1,  1
+    .byte  1,  1,  1,  1,  1,  1,  1,  1,  1,  1
+    .byte -1, -1, -1, -1, -1, -2, -2, -2, -2, -3
+    .byte -3, -4, -4, -5, -5, -6, -6, -6, -6, -6
+    .byte -6, -6, -6, -6, -6, -6, -6, -6, -6, -6
+    .byte -6, -6, -6, -6, -6, -6, -6, -6, -6, -6
+    .byte -6, -6, -6, -6, -6, -6, -6, -6, -6, -6
+
+    .space 0x2
 
 gNameEntryCursorSpriteSets:: @ 0x086A7DA8
 	.4byte gHighScoreNameEntryCursor0SpriteSet
