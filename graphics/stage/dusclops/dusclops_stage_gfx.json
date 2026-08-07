@@ -52,45 +52,63 @@
         {
           "segfile": "dusclops_flipper",
           "mwidth": 4,
-          "oam": true
+          "oam": true,
+          "palette": "dusclops_board_palset_0.gbapal",
+          "palbank": 0
         },
         {
           "segfile": "dusclops_ball",
           "mwidth": 2,
-          "oam": true
+          "oam": true,
+          "palette": "dusclops_board_palset_0.gbapal",
+          "palbank": 1
         },
         {
-          "segfile": "dusclops_ball_2"
+          "segfile": "dusclops_ball_2",
+          "palette": "dusclops_board_palset_0.gbapal",
+          "palbank": 9
         },
         {
           "segfile": "dusclops_save_cancel",
           "mwidth": 10,
-          "oam": true
+          "oam": true,
+          "palette": "dusclops_board_palset_0.gbapal",
+          "palbank": 9
         },
         {
           "segfile": "dusclops_fx",
           "mwidth": 4,
-          "oam": true
+          "oam": true,
+          "palette": "dusclops_board_palset_0.gbapal",
+          "palbank": 1
         },
         {
           "segfile": "dusclops_duskull",
           "mwidth": 4,
-          "oam": true
+          "oam": true,
+          "palette": "dusclops_board_palset_0.gbapal",
+          "palbank": 2
         },
         {
           "segfile": "dusclops_dusclops",
           "mwidth": 8,
-          "oam": true
+          "oam": true,
+          "palette": "dusclops_board_palset_0.gbapal",
+          "palbank": 3
         },
         {
           "segfile": "dusclops_swirl",
           "mwidth": 4,
-          "oam": true
+          "oam": true,
+          "palette": "dusclops_board_palset_0.gbapal",
+          "palbank": 3
         },
         {
           "segfile": "dusclops_bg_fx",
           "mwidth": 4,
-          "oam": true
+          "oam": true,
+          "palette": "dusclops_board_palset_0.gbapal",
+          "palbank": 0
         }
       ]
     }

@@ -113,3 +113,60 @@ Per-field BG configuration (screen base / char base / size):
 | GROUDON  | 4/1 32x64  | --         | 1/2 32x32  | 0/2 32x32  |
 | RAYQUAZA | 4/1 32x64  | 6/2 32x64  | 2/2 32x64  | 0/2 32x64  |
 | SPHEAL   | 4/1 32x64  | 2/2 32x64  | 1/2 32x32  | 0/2 32x32  |
+
+## OBJ tiles and the OBJ palette
+
+`loadFieldBoardGraphics` ends every field with one 0x8000 DMA of the board's
+`intro_sprite` sheet to 0x06010000, so OAM tile number 0 is tile 0 of that
+sheet and the tile ranges quoted in the sprite-set data index it directly.
+The sheets are shorter than the 1024 tiles the region holds; the tail is left
+over from whatever ran before.
+
+Much of the region is scratch, streamed over frame by frame from a table of
+interchangeable art. The art checked in at those offsets is only what the sheet
+happens to ship with, and its palette arrives with the replacement tiles rather
+than sitting in the board's own set:
+
+| tiles | written by | palette |
+|-------|------------|---------|
+| 0x65  | `all_board_portrait_display.c` (portrait slot 0) | into the bank `gPortraitPaletteSlots[0]` names, 13 |
+| 0x7d  | `all_board_portrait_display.c` (portrait slot 1) | `gLocationPalettes[n]`, into bank 12 |
+| 0x95  | `main_board_pichu_entity.c`, `gMonHatchSpriteGroup5_Gfx` | mon hatch group palette |
+| 0xb6  | `main_board_evolution_mode.c`, `gEvoItemTilesGfxPtrs[n]` | `gEvoItemPalettes[n]`, into bank 15 |
+| 0x107 | `main_board_launcher_and_cutscenes.c`, `gSpoinkEntity_Gfx` | bank 11, see below |
+| 0x115 | `main_board_to_be_split.c`, `gRubyBoardHatchCave_Gfx` | bank 11, see below |
+| 0x1e8 | `UpdateRubyEvolutionShopSprite`, `gRubyBoardShop_Gfx` | `gShopPalette`, into bank 2 |
+| 0x295 | `DrawOneUpBannerSprite`, `gOneUpBannerSprite_Gfx` | `gOneUpSpritePalette`, into bank 12 |
+
+Which entry of each table the sheet ships is recoverable by searching the ROM
+for the segment's own tiles: tile 0x7d is `gLocationPortraitGfx[0]` and tile
+0x95 is `wurmple_hatch` frame 0, both byte-identical, and tile 0xb6 is
+`gPickupIcon1_Gfx`. Tile 0x65 is a Geodude portrait close to but not identical
+to the extracted one.
+
+OBJ bank 11 is never its resting ROM value on the main fields: `UpdateSpoinkAnimation`
+runs every frame and rewrites it from `gFieldPaletteVariants[field][set * 2 + (camera is low)]`,
+six banks per field -- three brightness sets crossed with which half of the
+board is on screen. Set 0 is what plays, so the upper half of the board is
+variant 0 (ruby) / 6 (sapphire) and the lower half 1 / 7. Spoink is the plunger
+at the bottom; the egg, hatch cave and hatch machine sit at the top. Ruby's
+resting value for the bank happens to equal its own upper-half variant.
+
+The OBJ palette itself is one 512-byte DMA:
+
+    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0], (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+
+`objPaletteSets[1]` and `[2]` are the same palette at two dimmer levels, used
+by the banner fades in `all_board_banners.c`; set 0 is the one on screen during
+play. Every board's set 0 is a full 512 bytes except ruby's, which is 0x120 --
+the DMA runs on past it into `gBonusStageObjPal`, so ruby's OBJ banks 0-8 come
+from `ruby_board_palset_0.gbapal` and banks 9-15 from
+`graphics/stage/main/bonus_stage_obj.gbapal`. The bonus boards copy that same
+label's first bank to 0x05000320, which is OBJ bank 9 there too.
+
+Sapphire leaves banks 12-15 at zero and loads them when the sprites that use
+them appear; ruby, by the overlap above, keeps a usable copy in ROM.
+
+`tools/scripts/objpalette.py` derives which bank each segment of a sheet is
+drawn with from the OAM data in `data/rom_2.s`, records it in the gfx config as
+`"palette"`/`"palbank"`, and recolours the segment PNGs to match.
