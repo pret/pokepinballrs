@@ -343,7 +343,7 @@ gEReaderBackground_Gfx:: @ 0x08080500
 	.space 0x20
 
 gEReaderBackground_Pals:: @ 0x08081D20
-	.incbin "baserom.gba", 0x81D20, 0x200
+	.incbin "graphics/ereader/background.gbapal"
 
 gPokedexBg1_Tilemap:: @ 0x08081F20
 	.incbin "graphics/pokedex/bg1_tilemap.bin"
@@ -1644,13 +1644,13 @@ gRubyChinchouCatchBurstBanner_Gfx:: @ 0x0851514C
 	.space 0xA0
 
 gRubyChinchouCatchBurstBanner_Pal:: @ 0x0851956C
-    .incbin "baserom.gba", 0x51956C, 0x20
+	.incbin "graphics/stage/ruby/chinchou_catch_burst_banner.gbapal"
 
 gRubyLotadCatchBurstBanner_Pal:: @ 0x0851958C
-    .incbin "baserom.gba", 0x51958C, 0x20
+	.incbin "graphics/stage/ruby/lotad_catch_burst_banner.gbapal"
 
 gSapphireShroomishCatchBurstBanner_Pal:: @ 0x085195AC
-    .incbin "baserom.gba", 0x5195AC, 0x1C0
+	.incbin "graphics/stage/sapphire/shroomish_catch_burst_banner.gbapal"
 
 gRubyLotadCatchBurstBanner_Gfx:: @ 0x0851976C
 	.incbin "graphics/stage/ruby/lotad_catch_burst_banner.4bpp"
@@ -1667,20 +1667,20 @@ gBonusClearTextPal_Dark:: @ 0x08521FCC
 	.incbin "baserom.gba", 0x521FCC, 0x1E0
 
 gMainBoardEvoBanner_Pal:: @ 0x085221AC
-    .incbin "baserom.gba", 0x5221AC, 0x200
+    .incbin "graphics/stage/main/evo_banner.gbapal"
 
 gMainCatchModeBanner_Gfx:: @ 0x085223AC
 	.incbin "graphics/stage/main/catch_mode_banner.4bpp"
 	.space 0xA0
 
 gMainCatchModeBanner_Pal:: @ 0x085267CC
-    .incbin "baserom.gba", 0x5267CC, 0x200
+    .incbin "graphics/stage/main/catch_mode_banner.gbapal"
 
 gMainBoardJirachiBanner_Pal:: @ 0x085269CC
-    .incbin "baserom.gba", 0x5269CC, 0x200
+    .incbin "graphics/stage/main/jirachi_banner.gbapal"
 
 gMainBoardTravel_Pal:: @ 0x08526BCC
-    .incbin "baserom.gba", 0x526BCC, 0x200
+    .incbin "graphics/stage/main/travel.gbapal"
 
 gSapphireBoardZigzagoonFx_Gfx:: @ 0x08526DCC
 	.incbin "graphics/stage/sapphire/zigzagoon_fx.4bpp";
