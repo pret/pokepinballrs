@@ -13669,17 +13669,38 @@ gOptionsTorchicNoteBubbleSpriteSet:: @ 0x086BB8FA
 .2byte 0
 
 gButtonInfoTable:: @ 0x086BB910
-	.2byte A_BUTTON, 0x4, 0x0, 0x8
-	.2byte B_BUTTON, 0x5, 0x0, 0x8
-	.2byte SELECT_BUTTON, 0xE, 0x101, 0x20
-	.2byte START_BUTTON, 0xA, 0x101, 0x20
-	.2byte DPAD_RIGHT, 0x13, 0x0, 0x8
-	.2byte DPAD_LEFT, 0x15, 0x0, 0x8
-	.2byte DPAD_UP, 0x12, 0x0, 0x8
-	.2byte DPAD_DOWN, 0x14, 0x0, 0x8
-	.2byte R_BUTTON, 0x8, 0x1, 0x10
-	.2byte L_BUTTON, 0x6, 0x1, 0x10
-	.2byte 0x0, 0x2A, 0x0, 0x08
+	.2byte A_BUTTON, 0x4
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+    .2byte B_BUTTON, 0x5
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte SELECT_BUTTON, 0xE
+    .byte ST_OAM_H_RECTANGLE, 1, 32, 0 @ SPRITE_SIZE_32x8
+
+	.2byte START_BUTTON, 0xA
+    .byte ST_OAM_H_RECTANGLE, 1, 32, 0 @ SPRITE_SIZE_32x8
+
+	.2byte DPAD_RIGHT, 0x13
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte DPAD_LEFT, 0x15
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte DPAD_UP, 0x12
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte DPAD_DOWN, 0x14
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
+
+	.2byte R_BUTTON, 0x8
+    .byte ST_OAM_H_RECTANGLE, 0, 16, 0 @ SPRITE_SIZE_16x8
+
+    .2byte L_BUTTON, 0x6
+    .byte ST_OAM_H_RECTANGLE, 0, 16, 0 @ SPRITE_SIZE_16x8
+
+	.2byte 0x0, 0x2A
+    .byte ST_OAM_SQUARE, 0, 8, 0       @ SPRITE_SIZE_8x8
 
 gOptionsCursorPositionTable:: @ 0x086BB968
 	.incbin "baserom.gba", 0x6BB968, 0x40
