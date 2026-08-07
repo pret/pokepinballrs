@@ -244,94 +244,110 @@ gSapphireCoinArrow_082DC0E0:: @ 0x082DC0E0
 @ Get Arrows
 
 gSapphireGetArrow_082DC1E0:: @ 0x082DC1E0
-    .incbin "baserom.gba", 0x2DC1E0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_0_0.4bpp"
 
 gSapphireGetArrow_082DC240:: @ 0x082DC240
-    .incbin "baserom.gba", 0x2DC240, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_2_0.4bpp"
 
 gSapphireGetArrow_082DC2A0:: @ 0x082DC2A0
-    .incbin "baserom.gba", 0x2DC2A0, 0x80
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_3_0.4bpp"
+    .space 0x20
 
 gSapphireGetArrow_082DC320:: @ 0x082DC320
-    .incbin "baserom.gba", 0x2DC320, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_0_0.4bpp"
+    .space 0x20
 
 gSapphireGetArrow_082DC380:: @ 0x082DC380
-    .incbin "baserom.gba", 0x2DC380, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_1_0.4bpp"
+    .space 0x20
 
 gSapphireGetArrow_082DC3E0:: @ 0x082DC3E0
-    .incbin "baserom.gba", 0x2DC3E0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_2_0.4bpp"
+    .space 0x20
 
 gSapphireGetArrow_082DC440:: @ 0x082DC440
-    .incbin "baserom.gba", 0x2DC440, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_3_0.4bpp"
+    .incbin "baserom.gba", 0x2dc480, 0x20
 
 gSapphireGetArrow_082DC4A0:: @ 0x082DC4A0
-    .incbin "baserom.gba", 0x2DC4A0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_0_0.4bpp"
+    .incbin "baserom.gba", 0x2dc4e0, 0x20
 
 gSapphireGetArrow_082DC500:: @ 0x082DC500
-    .incbin "baserom.gba", 0x2DC500, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_0.4bpp"
+    .incbin "baserom.gba", 0x2dc540, 0x20
 
 gSapphireGetArrow_082DC560:: @ 0x082DC560
-    .incbin "baserom.gba", 0x2DC560, 0x80
+    .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_0.4bpp"
+    .space 0x40
 
 gSapphireGetArrow_082DC5E0:: @ 0x082DC5E0
-    .incbin "baserom.gba", 0x2DC5E0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_0_1.4bpp"
 
 gSapphireGetArrow_082DC640:: @ 0x082DC640
-    .incbin "baserom.gba", 0x2DC640, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_2_1.4bpp"
 
 gSapphireGetArrow_082DC6A0:: @ 0x082DC6A0
-    .incbin "baserom.gba", 0x2DC6A0, 0x80
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_3_1.4bpp"
+    .incbin "baserom.gba", 0x2dc700, 0x20
 
 gSapphireGetArrow_082DC720:: @ 0x082DC720
-    .incbin "baserom.gba", 0x2DC720, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_0_1.4bpp"
+    .incbin "baserom.gba", 0x2dc760, 0x20
 
 gSapphireGetArrow_082DC780:: @ 0x082DC780
-    .incbin "baserom.gba", 0x2DC780, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_1_1.4bpp"
+    .incbin "baserom.gba", 0x2dc7c0, 0x20
 
 gSapphireGetArrow_082DC7E0:: @ 0x082DC7E0
-    .incbin "baserom.gba", 0x2DC7E0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_2_1.4bpp"
+    .incbin "baserom.gba", 0x2dc820, 0x20
 
 gSapphireGetArrow_082DC840:: @ 0x082DC840
-    .incbin "baserom.gba", 0x2DC840, 0x40
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_3_1.4bpp"
 
 gSapphireGetArrow_082DC880:: @ 0x082DC880
-    .incbin "baserom.gba", 0x2DC880, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_0_1.4bpp"
 
 gSapphireGetArrow_082DC8E0:: @ 0x082DC8E0
-    .incbin "baserom.gba", 0x2DC8E0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_1.4bpp"
 
 gSapphireGetArrow_082DC940:: @ 0x082DC940
-    .incbin "baserom.gba", 0x2DC940, 0xA0
+    .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_1.4bpp"
+    .space 0x40
 
 gSapphireGetArrow_082DC9E0:: @ 0x082DC9E0
-    .incbin "baserom.gba", 0x2DC9E0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_0_2.4bpp"
 
 gSapphireGetArrow_082DCA40:: @ 0x082DCA40
-    .incbin "baserom.gba", 0x2DCA40, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_2_2.4bpp"
 
 gSapphireGetArrow_082DCAA0:: @ 0x082DCAA0
-    .incbin "baserom.gba", 0x2DCAA0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_3_2.4bpp"
 
 gSapphireGetArrow_082DCB00:: @ 0x082DCB00
-    .incbin "baserom.gba", 0x2DCB00, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_0_2.4bpp"
 
 gSapphireGetArrow_082DCB60:: @ 0x082DCB60
-    .incbin "baserom.gba", 0x2DCB60, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_1_2.4bpp"
 
 gSapphireGetArrow_082DCBC0:: @ 0x082DCBC0
-    .incbin "baserom.gba", 0x2DCBC0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_2_2.4bpp"
 
 gSapphireGetArrow_082DCC20:: @ 0x082DCC20
-    .incbin "baserom.gba", 0x2DCC20, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_3_2.4bpp"
 
 gSapphireGetArrow_082DCC80:: @ 0x082DCC80
-    .incbin "baserom.gba", 0x2DCC80, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_0_2.4bpp"
+    .space 0x20
 
 gSapphireGetArrow_082DCCE0:: @ 0x082DCCE0
-    .incbin "baserom.gba", 0x2DCCE0, 0x60
+    .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_2.4bpp"
+    .space 0x20
 
 gSapphireGetArrow_082DCD40:: @ 0x082DCD40
-    .incbin "baserom.gba", 0x2DCD40, 0xC0
+    .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_2.4bpp"
+    .space 0x80
 
 
 @ Arrow for bonus multiplier left/right top/bottom digits

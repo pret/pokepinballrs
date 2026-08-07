@@ -260,94 +260,108 @@ gRubyCoinArrow_0825EA70:: @ 0x0825EA70
 @ Get Arrows
 
 gRubyGetArrow_0825EB10:: @ 0x0825EB10
-    .incbin "baserom.gba", 0x25EB10, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_0.4bpp"
 
 gRubyGetArrow_0825EB70:: @ 0x0825EB70
-    .incbin "baserom.gba", 0x25EB70, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_2_0.4bpp"
 
 gRubyGetArrow_0825EBD0:: @ 0x0825EBD0
-    .incbin "baserom.gba", 0x25EBD0, 0x80
+    .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_3_0.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825EC50:: @ 0x0825EC50
-    .incbin "baserom.gba", 0x25EC50, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_0_0.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825ECB0:: @ 0x0825ECB0
-    .incbin "baserom.gba", 0x25ECB0, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_1_0.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825ED10:: @ 0x0825ED10
-    .incbin "baserom.gba", 0x25ED10, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_2_0.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825ED70:: @ 0x0825ED70
-    .incbin "baserom.gba", 0x25ED70, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_3_0.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825EDD0:: @ 0x0825EDD0
-    .incbin "baserom.gba", 0x25EDD0, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_0_0.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825EE30:: @ 0x0825EE30
-    .incbin "baserom.gba", 0x25EE30, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_0.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825EE90:: @ 0x0825EE90
-    .incbin "baserom.gba", 0x25EE90, 0x80
+    .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_0.4bpp"
+    .space 0x40
 
 gRubyGetArrow_0825EF10:: @ 0x0825EF10
-    .incbin "baserom.gba", 0x25EF10, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_1.4bpp"
 
 gRubyGetArrow_0825EF70:: @ 0x0825EF70
-    .incbin "baserom.gba", 0x25EF70, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_2_1.4bpp"
 
 gRubyGetArrow_0825EFD0:: @ 0x0825EFD0
-    .incbin "baserom.gba", 0x25EFD0, 0x80
+    .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_3_1.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825F050:: @ 0x0825F050
-    .incbin "baserom.gba", 0x25F050, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_0_1.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825F0B0:: @ 0x0825F0B0
-    .incbin "baserom.gba", 0x25F0B0, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_1_1.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825F110:: @ 0x0825F110
-    .incbin "baserom.gba", 0x25F110, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_2_1.4bpp"
+    .space 0x20
 
 gRubyGetArrow_0825F170:: @ 0x0825F170
-    .incbin "baserom.gba", 0x25F170, 0x40
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_3_1.4bpp"
 
 gRubyGetArrow_0825F1B0:: @ 0x0825F1B0
-    .incbin "baserom.gba", 0x25F1B0, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_0_1.4bpp"
 
 gRubyGetArrow_0825F210:: @ 0x0825F210
-    .incbin "baserom.gba", 0x25F210, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_1.4bpp"
 
 gRubyGetArrow_0825F270:: @ 0x0825F270
-    .incbin "baserom.gba", 0x25F270, 0xA0
+    .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_1.4bpp"
+    .space 0x40
 
 gRubyGetArrow_0825F310:: @ 0x0825F310
-    .incbin "baserom.gba", 0x25F310, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_2.4bpp"
 
 gRubyGetArrow_0825F370:: @ 0x0825F370
-    .incbin "baserom.gba", 0x25F370, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_2_2.4bpp"
 
 gRubyGetArrow_0825F3D0:: @ 0x0825F3D0
-    .incbin "baserom.gba", 0x25F3D0, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_3_2.4bpp"
 
 gRubyGetArrow_0825F430:: @ 0x0825F430
-    .incbin "baserom.gba", 0x25F430, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_0_2.4bpp"
 
 gRubyGetArrow_0825F490:: @ 0x0825F490
-    .incbin "baserom.gba", 0x25F490, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_1_2.4bpp"
 
 gRubyGetArrow_0825F4F0:: @ 0x0825F4F0
-    .incbin "baserom.gba", 0x25F4F0, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_2_2.4bpp"
 
 gRubyGetArrow_0825F550:: @ 0x0825F550
-    .incbin "baserom.gba", 0x25F550, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_3_2.4bpp"
 
 gRubyGetArrow_0825F5B0:: @ 0x0825F5B0
-    .incbin "baserom.gba", 0x25F5B0, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_0_2.4bpp"
 
 gRubyGetArrow_0825F610:: @ 0x0825F610
-    .incbin "baserom.gba", 0x25F610, 0x60
+    .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_2.4bpp"
 
 gRubyGetArrow_0825F670:: @ 0x0825F670
-    .incbin "baserom.gba", 0x25F670, 0xC0
+    .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_2.4bpp"
+    .incbin "baserom.gba", 0x25f6d0, 0x60
 
 
 @ Ball power up lights
