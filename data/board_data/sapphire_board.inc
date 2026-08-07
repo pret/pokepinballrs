@@ -160,85 +160,102 @@ gSapphireEvo_OArrow_Bot2:: @ 0x082DB560
 
 
 gSapphireCoinArrow_082DB5E0:: @ 0x082DB5E0
-    .incbin "baserom.gba", 0x2DB5E0, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p0.4bpp"
+    .space 0x20
 
 gSapphireCoinArrow_082DB640:: @ 0x082DB640
-    .incbin "baserom.gba", 0x2DB640, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p0.4bpp"
+    .space 0x20
 
 gSapphireCoinArrow_082DB6A0:: @ 0x082DB6A0
-    .incbin "baserom.gba", 0x2DB6A0, 0x80
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
+    .incbin "baserom.gba", 0x2db6e0, 0x40
 
 gSapphireCoinArrow_082DB720:: @ 0x082DB720
-    .incbin "baserom.gba", 0x2DB720, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
+    .incbin "baserom.gba", 0x2db760, 0x20
 
 gSapphireCoinArrow_082DB780:: @ 0x082DB780
-    .incbin "baserom.gba", 0x2DB780, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
+    .incbin "baserom.gba", 0x2db7c0, 0x20
 
 gSapphireCoinArrow_082DB7E0:: @ 0x082DB7E0
-    .incbin "baserom.gba", 0x2DB7E0, 0x40
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
 
 gSapphireCoinArrow_082DB820:: @ 0x082DB820
-    .incbin "baserom.gba", 0x2DB820, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
+    .incbin "baserom.gba", 0x2db860, 0x20
 
 gSapphireCoinArrow_082DB880:: @ 0x082DB880
-    .incbin "baserom.gba", 0x2DB880, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p0.4bpp"
+    .incbin "baserom.gba", 0x2db8c0, 0x20
 
 gSapphireCoinArrow_082DB8E0:: @ 0x082DB8E0
-    .incbin "baserom.gba", 0x2DB8E0, 0x100
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
+    .incbin "baserom.gba", 0x2db920, 0xc0
 
 gSapphireCoinArrow_082DB9E0:: @ 0x082DB9E0
-    .incbin "baserom.gba", 0x2DB9E0, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
 
 gSapphireCoinArrow_082DBA40:: @ 0x082DBA40
-    .incbin "baserom.gba", 0x2DBA40, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p1.4bpp"
 
 gSapphireCoinArrow_082DBAA0:: @ 0x082DBAA0
-    .incbin "baserom.gba", 0x2DBAA0, 0x80
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
+    .incbin "baserom.gba", 0x2dbb00, 0x20
 
 gSapphireCoinArrow_082DBB20:: @ 0x082DBB20
-    .incbin "baserom.gba", 0x2DBB20, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
+    .incbin "baserom.gba", 0x2dbb60, 0x20
 
 gSapphireCoinArrow_082DBB80:: @ 0x082DBB80
-    .incbin "baserom.gba", 0x2DBB80, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
+    .incbin "baserom.gba", 0x2dbbc0, 0x20
 
 gSapphireCoinArrow_082DBBE0:: @ 0x082DBBE0
-    .incbin "baserom.gba", 0x2DBBE0, 0x40
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
 
 gSapphireCoinArrow_082DBC20:: @ 0x082DBC20
-    .incbin "baserom.gba", 0x2DBC20, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
+    .incbin "baserom.gba", 0x2dbc60, 0x20
 
 gSapphireCoinArrow_082DBC80:: @ 0x082DBC80
-    .incbin "baserom.gba", 0x2DBC80, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1.4bpp"
+    .incbin "baserom.gba", 0x2dbcc0, 0x20
 
 gSapphireCoinArrow_082DBCE0:: @ 0x082DBCE0
-    .incbin "baserom.gba", 0x2DBCE0, 0x100
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
+    .incbin "baserom.gba", 0x2dbd20, 0xc0
 
 gSapphireCoinArrow_082DBDE0:: @ 0x082DBDE0
-    .incbin "baserom.gba", 0x2DBDE0, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
 
 gSapphireCoinArrow_082DBE40:: @ 0x082DBE40
-    .incbin "baserom.gba", 0x2DBE40, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p2.4bpp"
 
 gSapphireCoinArrow_082DBEA0:: @ 0x082DBEA0
-    .incbin "baserom.gba", 0x2DBEA0, 0x80
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p2.4bpp"
 
 gSapphireCoinArrow_082DBF20:: @ 0x082DBF20
-    .incbin "baserom.gba", 0x2DBF20, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p2.4bpp"
 
 gSapphireCoinArrow_082DBF80:: @ 0x082DBF80
-    .incbin "baserom.gba", 0x2DBF80, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p2.4bpp"
 
 gSapphireCoinArrow_082DBFE0:: @ 0x082DBFE0
-    .incbin "baserom.gba", 0x2DBFE0, 0x40
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p2.4bpp"
 
 gSapphireCoinArrow_082DC020:: @ 0x082DC020
-    .incbin "baserom.gba", 0x2DC020, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
+    .incbin "baserom.gba", 0x2dc060, 0x20
 
 gSapphireCoinArrow_082DC080:: @ 0x082DC080
-    .incbin "baserom.gba", 0x2DC080, 0x60
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2.4bpp"
+    .incbin "baserom.gba", 0x2dc0c0, 0x20
 
 gSapphireCoinArrow_082DC0E0:: @ 0x082DC0E0
-    .incbin "baserom.gba", 0x2DC0E0, 0x100
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
+    .incbin "baserom.gba", 0x2dc120, 0xc0
 
 
 @ Get Arrows

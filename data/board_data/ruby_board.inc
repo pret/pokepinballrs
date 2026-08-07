@@ -167,94 +167,97 @@ gRubyEvo_OArrow_Bot2:: @ 0x0825DE70
 gRubyCoinArrow_0825DF10:: @ 0x0825DF10
 	@.incbin "graphics/stage/ruby/ruby_coin_arrows.4bpp"
 
-    .incbin "baserom.gba", 0x25DF10, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p0.4bpp"
 
 gRubyCoinArrow_0825DF70:: @ 0x0825DF70
-    .incbin "baserom.gba", 0x25DF70, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
 
 gRubyCoinArrow_0825DFD0:: @ 0x0825DFD0
-    .incbin "baserom.gba", 0x25DFD0, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p0.4bpp"
 
 gRubyCoinArrow_0825E030:: @ 0x0825E030
-    .incbin "baserom.gba", 0x25E030, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
 
 gRubyCoinArrow_0825E090:: @ 0x0825E090
-    .incbin "baserom.gba", 0x25E090, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
 
 gRubyCoinArrow_0825E0F0:: @ 0x0825E0F0
-    .incbin "baserom.gba", 0x25E0F0, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
 
 gRubyCoinArrow_0825E150:: @ 0x0825E150
-    .incbin "baserom.gba", 0x25E150, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p0.4bpp"
 
 gRubyCoinArrow_0825E1B0:: @ 0x0825E1B0
-    .incbin "baserom.gba", 0x25E1B0, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
 
 gRubyCoinArrow_0825E210:: @ 0x0825E210
-    .incbin "baserom.gba", 0x25E210, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
 
 gRubyCoinArrow_0825E270:: @ 0x0825E270
-    .incbin "baserom.gba", 0x25E270, 0xA0
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p0.4bpp"
+    .space 0x40
 
 gRubyCoinArrow_0825E310:: @ 0x0825E310
-    .incbin "baserom.gba", 0x25E310, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
 
 gRubyCoinArrow_0825E370:: @ 0x0825E370
-    .incbin "baserom.gba", 0x25E370, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
 
 gRubyCoinArrow_0825E3D0:: @ 0x0825E3D0
-    .incbin "baserom.gba", 0x25E3D0, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p1.4bpp"
 
 gRubyCoinArrow_0825E430:: @ 0x0825E430
-    .incbin "baserom.gba", 0x25E430, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
 
 gRubyCoinArrow_0825E490:: @ 0x0825E490
-    .incbin "baserom.gba", 0x25E490, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
 
 gRubyCoinArrow_0825E4F0:: @ 0x0825E4F0
-    .incbin "baserom.gba", 0x25E4F0, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
 
 gRubyCoinArrow_0825E550:: @ 0x0825E550
-    .incbin "baserom.gba", 0x25E550, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p1.4bpp"
 
 gRubyCoinArrow_0825E5B0:: @ 0x0825E5B0
-    .incbin "baserom.gba", 0x25E5B0, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
 
 gRubyCoinArrow_0825E610:: @ 0x0825E610
-    .incbin "baserom.gba", 0x25E610, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
 
 gRubyCoinArrow_0825E670:: @ 0x0825E670
-    .incbin "baserom.gba", 0x25E670, 0xA0
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p1.4bpp"
+    .space 0x40
 
 gRubyCoinArrow_0825E710:: @ 0x0825E710
-    .incbin "baserom.gba", 0x25E710, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
 
 gRubyCoinArrow_0825E770:: @ 0x0825E770
-    .incbin "baserom.gba", 0x25E770, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p2.4bpp"
 
 gRubyCoinArrow_0825E7D0:: @ 0x0825E7D0
-    .incbin "baserom.gba", 0x25E7D0, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p2.4bpp"
 
 gRubyCoinArrow_0825E830:: @ 0x0825E830
-    .incbin "baserom.gba", 0x25E830, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p2.4bpp"
 
 gRubyCoinArrow_0825E890:: @ 0x0825E890
-    .incbin "baserom.gba", 0x25E890, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p2.4bpp"
 
 gRubyCoinArrow_0825E8F0:: @ 0x0825E8F0
-    .incbin "baserom.gba", 0x25E8F0, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p2.4bpp"
 
 gRubyCoinArrow_0825E950:: @ 0x0825E950
-    .incbin "baserom.gba", 0x25E950, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p2.4bpp"
 
 gRubyCoinArrow_0825E9B0:: @ 0x0825E9B0
-    .incbin "baserom.gba", 0x25E9B0, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
 
 gRubyCoinArrow_0825EA10:: @ 0x0825EA10
-    .incbin "baserom.gba", 0x25EA10, 0x60
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
 
 gRubyCoinArrow_0825EA70:: @ 0x0825EA70
-    .incbin "baserom.gba", 0x25EA70, 0xA0
+    .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p2.4bpp"
+    .space 0x40
 
 
 @ Get Arrows
