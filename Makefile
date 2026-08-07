@@ -86,8 +86,34 @@ endif
 
 # Clear the default suffixes
 .SUFFIXES:
-# Don't delete intermediate files
-.SECONDARY:
+
+# Don't delete generated art and audio between builds. These are intermediates:
+# nothing names them as a target, they are only pulled in as scaninc-discovered
+# prerequisites of the object rules, so make would remove them after each build.
+#
+# This list is deliberately scoped rather than a bare `.SECONDARY:`. A bare one
+# marks *every* target secondary, including $(OBJS), and make does not rebuild a
+# missing secondary file when whatever depends on it still looks up to date --
+# so deleting an object and re-running `make compare` relinked a stale ELF and
+# printed OK without rebuilding anything. Objects must stay non-secondary for a
+# missing .o to force a rebuild.
+#
+# .PRECIOUS with patterns would be terser but it defeats .DELETE_ON_ERROR, which
+# would leave a half-written .4bpp in place after a failed conversion and
+# silently produce a wrong ROM.
+GFX_PNG_SRCS := $(shell find graphics -type f -name '*.png')
+GFX_PAL_SRCS := $(shell find graphics -type f -name '*.pal')
+SND_WAV_SRCS := $(shell find sound -type f -name '*.wav')
+
+SECONDARY_ASSETS := $(GFX_PNG_SRCS:.png=.4bpp) $(GFX_PNG_SRCS:.png=.8bpp) \
+                    $(GFX_PNG_SRCS:.png=.1bpp) $(GFX_PNG_SRCS:.png=.gbapal) \
+                    $(GFX_PAL_SRCS:.pal=.gbapal)
+SECONDARY_ASSETS += $(addsuffix .lz,$(SECONDARY_ASSETS)) \
+                    $(addsuffix .rl,$(SECONDARY_ASSETS)) \
+                    $(SND_WAV_SRCS:.wav=.bin)
+
+.SECONDARY: $(SECONDARY_ASSETS)
+
 # Delete files that weren't built properly
 .DELETE_ON_ERROR:
 

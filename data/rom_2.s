@@ -4461,7 +4461,7 @@ gCaptureSequenceTimings:: @ 0x086ACF38
     .space 0x4
 
 gCapturePalette:: @ 0x086ACF80
-	.incbin "baserom.gba", 0x6ACF80, 0x20
+	.incbin "graphics/stage/main/capture.gbapal"
 
 gEvoItemPositions:: @ 0x086ACFA0
     .2byte 52, 151
@@ -4882,7 +4882,7 @@ gHatchPieceMatrixNums:: @ 0x086AE318
 	.2byte 0x0002, 0x0003, 0x0002, 0x0004, 0x0005, 0x0003
 
 gOneUpSpritePalette:: @ 0x086AE324
-	.incbin "baserom.gba", 0x6AE324, 0x20
+	.incbin "graphics/stage/main/one_up_sprite.gbapal"
 
 gSpoinkAnimFrameset:: @ 0x086AE344
 	.incbin "baserom.gba", 0x6AE344, 0x50
@@ -5639,10 +5639,10 @@ gUnknown_086B0864:: @ 0x086B0864
 	.incbin "baserom.gba", 0x6B0864, 0x20
 
 gTimerWarningPalette_Fast:: @ 0x086B0884
-	.incbin "baserom.gba", 0x6B0884, 0x20
+	.incbin "graphics/stage/main/timer_warning_fast.gbapal"
 
 gTimerWarningPalette_Slow:: @ 0x086B08A4
-	.incbin "baserom.gba", 0x6B08A4, 0x20
+	.incbin "graphics/stage/main/timer_warning_slow.gbapal"
 
 gCoinRewardLevelTimerThresholds:: @ 0x086B08C4
 	.incbin "baserom.gba", 0x6B08C4, 0x6

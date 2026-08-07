@@ -1,6 +1,6 @@
 
 gRayquazaBoardPalette:: @ 0x08363EC8
-	.incbin "baserom.gba", 0x363EC8, 0x200
+	.incbin "graphics/stage/rayquaza/rayquaza_board.gbapal"
 
 gRayquazaBoardBG0Tilemap:: @ 0x083640C8
 	.incbin "graphics/stage/rayquaza/rayquaza_board_bg0_tilemap.bin"

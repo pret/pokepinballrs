@@ -1,0 +1,34 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 32,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "sprites",
+      "segments": [
+        {
+          "segfile": "sprites_title_text",
+          "width": 32
+        },
+        {
+          "segfile": "sprites_speed_lines",
+          "width": 32
+        },
+        {
+          "segfile": "sprites_torchic",
+          "width": 32
+        },
+        {
+          "segfile": "sprites_explosion",
+          "width": 32
+        }
+      ]
+    }
+  ]
+}
