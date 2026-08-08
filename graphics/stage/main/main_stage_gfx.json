@@ -386,6 +386,62 @@
           "palbank": 1
         }
       ]
+    },
+    {
+      "gfx_filename": "catch_tile_burst_stage4",
+      "segments": [
+        {
+          "segfile": "catch_tile_burst_stage4_frame_0",
+          "oamshape": "burst_stage4_frame_a_shape.json",
+          "width": 4
+        },
+        {
+          "segfile": "catch_tile_burst_stage4_frame_1",
+          "oamshape": "burst_stage4_frame_a_shape.json",
+          "width": 4
+        },
+        {
+          "segfile": "catch_tile_burst_stage4_frame_2",
+          "oamshape": "burst_stage4_frame_2_shape.json",
+          "width": 6
+        },
+        {
+          "segfile": "catch_tile_burst_stage4_frame_3",
+          "width": 2
+        },
+        {
+          "segfile": "catch_tile_burst_stage4_frame_4",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 4,
+          "width": 6
+        },
+        {
+          "segfile": "catch_tile_burst_stage4_frame_5",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 4,
+          "width": 6
+        },
+        {
+          "segfile": "catch_tile_burst_stage4_frame_6",
+          "width": 4
+        },
+        {
+          "segfile": "catch_tile_burst_stage4_frame_7",
+          "width": 4
+        },
+        {
+          "segfile": "catch_tile_burst_stage4_frame_8",
+          "width": 2
+        },
+        {
+          "segfile": "catch_tile_burst_stage4_unused_tail",
+          "width": 2
+        }
+      ],
+      "palette": "catch_tile_burst_stage4.gbapal",
+      "palbank": 0
     }
   ]
 }

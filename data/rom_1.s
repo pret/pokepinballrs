@@ -1196,8 +1196,15 @@ gCatchTile_BurstStage3_Gfx:: @ 0x083A340C
 gCatchTile_BurstStage3_Pal:: @ 0x083A542C
 	.incbin "graphics/stage/main/catch_tile_burst_stage3.gbapal"
 
+@ 9 frames of the catch tile burst, streamed over the tile-704 overlay slot and
+@ drawn by gCatchTile_BurstRevealOamFramesets1. Unlike the burst start sheet the
+@ frames tile cleanly: every group is contiguous and none of them overlap.
+@ Frames 0, 1 and 2 have all their pieces on multiples of 8 so they take
+@ oam-shapes; 4 and 5 are plain 6x4 blocks; the rest put a piece at an odd offset
+@ (frame 3 at x=9, frame 6 at y=-5) and stay strips. t158..191 are unreferenced.
 gCatchTile_BurstStage4_Gfx:: @ 0x083A562C
-	.incbin "baserom.gba", 0x3A562C, 0x1820
+	.incbin "graphics/stage/main/catch_tile_burst_stage4.4bpp"
+	.space 0x20
 
 gCatchTile_BurstStage4_Pal:: @ 0x083A6E4C
 	.incbin "graphics/stage/main/catch_tile_burst_stage4.gbapal"
