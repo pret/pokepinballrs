@@ -1358,8 +1358,14 @@ gBallRotationTileGraphics:: @ 0x083BB16C
 	.incbin "graphics/stage/main/pokeball_ultra.4bpp"
 	.incbin "graphics/stage/main/pokeball_master.4bpp"
 
+@ Not a shadow: the group all_board_process7.c streams these into is
+@ FIELD_SG_BALL_UPGRADE_FX and gBallUpgradeFxSpriteSet draws them, a single 32x32
+@ over tile 247 in palette bank 1 -- the ball's own bank, which is why the frames
+@ come out as the upgrade sparkle rather than anything dark. 6 frames of 0x200,
+@ 4 tiles wide, no OAM packing. gBallShadowTileIndices and ballShadowTimer in
+@ ruby_board_indicators.c pick the frame and carry the same wrong name.
 gBallShadowTileGraphics:: @ 0x083BD36C
-	.incbin "baserom.gba", 0x3BD36C, 0xC00
+	.incbin "graphics/stage/main/ball_upgrade_fx_frames.4bpp"
 
 @ The two ball spawn glows, streamed a frame at a time over tile 57 by
 @ all_board_process7.c -- the gBonusBoardBallRespawnFxSpriteSet slot, one 32x32

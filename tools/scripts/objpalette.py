@@ -220,6 +220,9 @@ SLOTS = {
     ('graphics/stage/main', 'capture_mode'): ('ruby', 704, 102, 'main_board_to_be_split.c'),
     ('graphics/stage/main', 'spoink_launcher'): ('ruby', 263, 14, 'main_board_launcher_and_cutscenes.c'),
     ('graphics/stage/main', 'flipper_frames'): ('ruby', 0, 16, 'all_board_process4.c'),
+    # Labelled gBallShadowTileGraphics, but the group is FIELD_SG_BALL_UPGRADE_FX
+    # and gBallUpgradeFxSpriteSet is what draws it.
+    ('graphics/stage/main', 'ball_upgrade_fx_frames'): ('ruby', 247, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'ball_spawn_glow_type1'): ('ruby', 57, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'ball_spawn_glow_type2'): ('ruby', 57, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'end_of_ball'): ('ruby', 704, 320, 'all_board_mode_change_and_debug_menu.c'),

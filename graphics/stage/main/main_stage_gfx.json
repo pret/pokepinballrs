@@ -570,6 +570,12 @@
       "width": 4,
       "palette": "../ruby/ruby_board_palset_0.gbapal",
       "palbank": 0
+    },
+    {
+      "gfx_filename": "ball_upgrade_fx_frames",
+      "width": 4,
+      "palette": "../ruby/ruby_board_palset_0.gbapal",
+      "palbank": 1
     }
   ]
 }
