@@ -1371,8 +1371,16 @@ gBallSpawnGlowTiles_Type2:: @ 0x083BDF6C
 gBallSpawnGlowTiles_Type1:: @ 0x083BF16C
 	.incbin "graphics/stage/main/ball_spawn_glow_type1.4bpp"
 
+@ 7 frames of the launcher Spoink, 0x1C0 each, streamed over tile 263 by
+@ main_board_launcher_and_cutscenes.c. gSpoinkLauncherSpriteSet draws a 16x32
+@ and an 8x32 beside it, then a 16x8 below -- 14 tiles. The body pair sits on
+@ the tile grid but the lower strip is offset 4px, half a tile, so the shape
+@ places it at the nearest column. That is the one approximation in the layout;
+@ everything else is exact and the sheet still rebuilds byte for byte. Ruby's
+@ intro sheet splits the same sprite at that seam instead, as spoink and
+@ spoink_tail, which is not an option here with 7 frames to interleave.
 gSpoinkEntity_Gfx:: @ 0x083C076C
-	.incbin "baserom.gba", 0x3C076C, 0xC40
+	.incbin "graphics/stage/main/spoink_launcher.4bpp"
 
 gKyogreSplashSpriteFrames:: @ 0x083C13AC
 	.incbin "baserom.gba", 0x3C13AC, 0x6C0

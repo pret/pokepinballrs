@@ -557,6 +557,13 @@
           "palbank": 5
         }
       ]
+    },
+    {
+      "gfx_filename": "spoink_launcher",
+      "oamshape": "spoink_launcher_shape.json",
+      "width": 21,
+      "palette": "bonus_stage_obj.gbapal",
+      "palbank": 2
     }
   ]
 }
