@@ -295,6 +295,15 @@
           "palbank": 12
         }
       ]
+    },
+    {
+      "gfx_filename": "tornado_frames",
+      "oam": true,
+      "mwidth": 4,
+      "mheight": 5,
+      "width": 4,
+      "palette": "rayquaza_board_palset_0.gbapal",
+      "palbank": 12
     }
   ]
 }

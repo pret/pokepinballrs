@@ -1590,8 +1590,11 @@ gGroudonBoardBackgroundGfx:: @ 0x0849F1CC
 gGroudonBoardBoulders_Gfx:: @ 0x084A11EC
 	.incbin "graphics/stage/groudon/boulders.4bpp";
 
+@ Not orbs: 9 frames of the tornado, 0x280 each, streamed over tile 245 by
+@ rayquaza_process3.c and drawn through gRaquazaTornadoSpriteSet in palette
+@ bank 12. Each frame is a 32x32 over a 32x8, so it tiles into a clean 4x5 block.
 gRayquazaMinionOrbFrames:: @ 0x084A6EEC
-	.incbin "baserom.gba", 0x4A6EEC, 0x1680
+	.incbin "graphics/stage/rayquaza/tornado_frames.4bpp"
 
 @ The wind attack, streamed whole over the tile-704 overlay slot by
 @ rayquaza_process3.c when the entity enters its flyby. t0..101 is the flyby

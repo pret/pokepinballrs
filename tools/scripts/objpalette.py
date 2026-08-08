@@ -224,6 +224,9 @@ SLOTS = {
     # 306 tiles, though the copy asks for 320 and runs into the label below it.
     ('graphics/stage/rayquaza', 'sky_background'): ('rayquaza', 704, 306, 'rayquaza_process3.c'),
     ('graphics/stage/rayquaza', 'wind_board'): ('rayquaza', 704, 224, 'rayquaza_process3.c'),
+    # Labelled gRayquazaMinionOrbFrames; gRaquazaTornadoSpriteSet is what reads
+    # the slot, and the art is a tornado.
+    ('graphics/stage/rayquaza', 'tornado_frames'): ('rayquaza', 245, 20, 'rayquaza_process3.c'),
     ('graphics/stage/dusclops', 'dusclops_bonus_clear'): ('dusclops', 704, 256, 'dusclops_process3.c'),
     ('graphics/stage/groudon', 'groudon_bonus_clear'): ('groudon', 704, 256, 'groudon_process3.c'),
     ('graphics/stage/kecleon', 'kecleon_bonus_clear'): ('kecleon', 704, 256, 'kecleon_process3.c'),
