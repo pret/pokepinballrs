@@ -1243,8 +1243,12 @@ gEggModePalette:: @ 0x083A806C
 gCaptureModePalette:: @ 0x083A808C
 	.incbin "graphics/stage/main/capture_mode.gbapal"
 
+@ BG map entries rather than tiles, so these go in as .bin like the other
+@ tilemaps. all_board_setup.c copies A to 0x06006800 and B to 0x06006C00 on every
+@ board, so the two sit end to end and make one 48-row strip: A is the top 16
+@ rows, B the 32 below it.
 gBoardHudTilemapB:: @ 0x083A826C
-	.incbin "baserom.gba", 0x3A826C, 0x800
+	.incbin "graphics/stage/main/board_hud_b_tilemap.bin"
 	.space 0x20
 
 gShopPalette:: @ 0x083A8A8C
@@ -1254,7 +1258,7 @@ gTravelPortraitPalette:: @ 0x083A8AAC
 	.incbin "graphics/stage/main/travel_portrait.gbapal"
 
 gBoardHudTilemapA:: @ 0x083A8ACC
-	.incbin "baserom.gba", 0x3A8ACC, 0x400
+	.incbin "graphics/stage/main/board_hud_a_tilemap.bin"
 	.space 0x20
 
 gPortraitAnimFrameGraphics:: @ 0x083A8EEC
