@@ -442,6 +442,24 @@
       "width": 4,
       "palette": "ruby_board_palset_0.gbapal",
       "palbank": 3
+    },
+    {
+      "gfx_filename": "chikorita_projectile",
+      "width": 2,
+      "palette": "ruby_board_palset_0.gbapal",
+      "palbank": 3
+    },
+    {
+      "gfx_filename": "chikorita_projectile_fx",
+      "width": 2,
+      "palette": "ruby_board_palset_0.gbapal",
+      "palbank": 3
+    },
+    {
+      "gfx_filename": "linoone_side_bumper",
+      "width": 2,
+      "palette": "ruby_board_palset_0.gbapal",
+      "palbank": 4
     }
   ]
 }

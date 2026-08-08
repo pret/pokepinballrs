@@ -213,6 +213,12 @@
       "width": 4,
       "palette": "kyogre_board_palset_0.gbapal",
       "palbank": 6
+    },
+    {
+      "gfx_filename": "surfacing_fx_frames",
+      "width": 2,
+      "palette": "kyogre_board_palset_0.gbapal",
+      "palbank": 15
     }
   ]
 }

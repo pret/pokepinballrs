@@ -304,6 +304,13 @@
       "width": 4,
       "palette": "rayquaza_board_palset_0.gbapal",
       "palbank": 12
+    },
+    {
+      "gfx_filename": "entity_flying",
+      "oamshape": "entity_flying_shape.json",
+      "width": 4,
+      "palette": "rayquaza_board_palset_0.gbapal",
+      "palbank": 15
     }
   ]
 }

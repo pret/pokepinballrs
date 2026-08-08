@@ -220,6 +220,13 @@ SLOTS = {
     ('graphics/stage/main', 'capture_mode'): ('ruby', 704, 102, 'main_board_to_be_split.c'),
     ('graphics/stage/main', 'spoink_launcher'): ('ruby', 263, 14, 'main_board_launcher_and_cutscenes.c'),
     ('graphics/stage/main', 'flipper_frames'): ('ruby', 0, 16, 'all_board_process4.c'),
+    ('graphics/stage/main', 'decimal_digits'): ('ruby', 749, 2, 'all_board_banners.c'),
+    ('graphics/stage/ruby', 'chikorita_projectile'): ('ruby', 528, 4, 'ruby_trigger_targets.c'),
+    ('graphics/stage/ruby', 'chikorita_projectile_fx'): ('ruby', 532, 8, 'ruby_trigger_targets.c'),
+    ('graphics/stage/ruby', 'linoone_side_bumper'): ('ruby', 337, 8, 'ruby_trigger_targets.c'),
+    ('graphics/stage/kyogre', 'surfacing_fx_frames'): ('kyogre', 289, 6, 'kyogre_process3.c'),
+    ('graphics/stage/rayquaza', 'entity_flying'): ('rayquaza', 177, 67, 'rayquaza_process3.c'),
+    ('graphics/stage/sapphire', 'hatch_machine_spark_fx'): ('sapphire', 517, 8, 'sapphire_seedot_egg_shop.c'),
     # Labelled gBallShadowTileGraphics, but the group is FIELD_SG_BALL_UPGRADE_FX
     # and gBallUpgradeFxSpriteSet is what draws it.
     ('graphics/stage/main', 'ball_upgrade_fx_frames'): ('ruby', 247, 16, 'all_board_process7.c'),

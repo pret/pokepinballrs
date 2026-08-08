@@ -646,6 +646,15 @@
       ],
       "palette": "catch_tile_burst_start.gbapal",
       "palbank": 0
+    },
+    {
+      "gfx_filename": "decimal_digits",
+      "oam": true,
+      "mwidth": 1,
+      "mheight": 2,
+      "width": 10,
+      "palette": "bonus_stage_obj.gbapal",
+      "palbank": 5
     }
   ]
 }
