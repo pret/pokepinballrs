@@ -1155,8 +1155,12 @@ gPikaSaverPartialCoverageGfx:: @ 0x08397E6C
 	.incbin "graphics/stage/main/pika_saver_partial_coverage.4bpp"
 	.space 0x20
 
+@ Not graphics: a 48x48 collision map, one byte per position, indexed
+@ [y * 48 + x] by CheckCatchTargetCollision (all_board_process6_collision.c)
+@ against the ball's offset from the Jirachi centre. Bit 7 is the solid flag and
+@ the low seven bits are the surface angle the collision answers with.
 gCatchTargetCollisionBitmap:: @ 0x0839A28C
-	.incbin "baserom.gba", 0x39A28C, 0x900
+	.incbin "data/board_data/collision/catch_target_collision_48x48.bin"
 
 .include "data/graphics/mon_portraits_pals.inc"
 
