@@ -527,7 +527,12 @@ gIntroScene5Mudkip_BG0Tiles:: @ 0x080F1980
 gIntroScene5MudkipSprites_Gfx:: @ 0x080F2180
 	.incbin "graphics/intro/scene5mudkip/sprites.4bpp"
 	.space 0x20
-	.incbin "baserom.gba", 0xF51A0, 0x1000
+	@ Not sprite tiles: 2048 BG map entries, two screenblocks, all palette 1.
+	@ The first is a field of tile 0x13F with about 130 tiles of content laid into
+	@ it, the second is that same tile all the way through. Nothing reaches it --
+	@ IntroScene5Mudkip_32_LoadMudkipBallScene copies only 0x3000 from this label,
+	@ and no pointer anywhere lands on 0x080F51A0 -- so it is left over.
+	.incbin "graphics/intro/scene5mudkip/unused_bg_tilemap.bin"
 
 gIntroScene6Chinchou_Pal:: @ 0x080F61A0
 	.incbin "graphics/intro/scene6chinchou/scene.gbapal"
