@@ -334,6 +334,12 @@
       "gfx_filename": "egg",
       "palette": "bonus_stage_obj.gbapal",
       "palbank": 2
+    },
+    {
+      "gfx_filename": "hole_indicator",
+      "oamshape": "hatch_mach_hole_shape.json",
+      "width": 32,
+      "palette": "hole_indicator.gbapal"
     }
   ]
 }

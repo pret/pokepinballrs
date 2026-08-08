@@ -76,7 +76,6 @@ extern const u16 gPokedexCatchAnimTileOffsets[][20];
 extern const s16 gPokedexCatchAnimIndices[];
 extern const u16 gPokedexHatchAnimTileOffsets[][51];
 extern const s16 gPokedexAnimFrameDurations[][51];
-extern const u16 gPokedexAnimTileDeltas[][4];
 extern s16 gPokedexListNameVramOffsets[];
 
 enum PokedexPopupType {
@@ -1290,7 +1289,7 @@ static void RenderLinkGraphics(void)
         {
             groupOam = &group4->oam[i];
             gOamBuffer[groupOam->oamId].tileNum = gPokedexAnimBaseTileNums[1][i] +
-                                                  gPokedexAnimTileDeltas[1][gPokedexSpriteAnimFrame];
+                                                  gPokedexCatchAnimTileOffsets[1][gPokedexSpriteAnimFrame];
             gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group4->baseX;
             gOamBuffer[groupOam->oamId].y = groupOam->yOffset + group4->baseY;
         }

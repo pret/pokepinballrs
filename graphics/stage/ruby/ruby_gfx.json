@@ -422,6 +422,11 @@
       "oam": true,
       "mheight": 9,
       "mwidth": 30
+    },
+    {
+      "gfx_filename": "travel_volbeat",
+      "oamshape": "../main/travel_painter_shape.json",
+      "width": 102
     }
   ]
 }

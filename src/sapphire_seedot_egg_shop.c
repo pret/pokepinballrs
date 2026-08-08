@@ -19,7 +19,6 @@ extern const u8 gHoleIndicatorTileGfx[][0x440];
 
 extern const u8 gSplashEffectTileGfx[][0x100];
 extern struct Vector16 gSplashEffectPositions[];
-extern const s16 gSplashEffectFrameDurations[][2];
 extern const s16 gSplashEffectTileIndices[][2];
 extern const u8 gSapphireShopSignPalettes[][0x20];
 extern const u8 gSapphireShopSignTileGfx[][0x480];
@@ -731,7 +730,7 @@ void UpdateSapphireEggMachine(void)
         group = &gMain.spriteGroups[SG_SAPPHIRE_HATCH_MACHINE_LIGHT_SPARK_FX_BASE + i];
         if (group->active)
         {
-            if (gSplashEffectFrameDurations[gCurrentPinballGame->splashEffectFrameIndex[i]][0] > gCurrentPinballGame->splashEffectFrameTimer[i])
+            if (gSplashEffectTileIndices[gCurrentPinballGame->splashEffectFrameIndex[i]][1] > gCurrentPinballGame->splashEffectFrameTimer[i])
             {
                 gCurrentPinballGame->splashEffectFrameTimer[i]++;
             }

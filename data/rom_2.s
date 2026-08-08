@@ -150,91 +150,64 @@ gEReaderTextGlyphTable:: @ 0x086A4CF8
 @ Entry = (byte offset of the glyph within gEReaderText_Gfx) | (advance width in px).
 @ A glyph is 1 tile wide and 2 tall; 0x0000 is a blank cell.
 @ DrawEReaderTextPage masks the width off with & 0xFFF0 and nothing ever reads it:
-@ i=2; apostrophe, comma, full stop and l=4; word-final n=5; everything else 6.
+@ Glyph spacing mostly matches the char spacing in the dex, but there's a few characters
+@ that are increased to 6 px for the char. n has some using 5px, some using 6???
 
-	@ "Transmit data with the"
-	.2byte 0x3046, 0x3346, 0x3126, 0x32c6, 0x3366, 0x32a6, 0x3222, 0x3386, 0x0000, 0x3186, 0x3126, 0x3386, 0x3126, 0x0000, 0x33e6, 0x3222, 0x3386, 0x3206, 0x0000, 0x3386, 0x3206, 0x31a6, 0x0000, 0x0000
-	@ "e-Reader!"
-	.2byte 0x31a6, 0x2826, 0x3006, 0x31a6, 0x3126, 0x3186, 0x31a6, 0x3346, 0x3946, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Transmit data with the"
+	.ereaderText "e-Reader!"
+    .ereaderText ""
 
-	@ "Press the A Button"
-	.2byte 0x2bc6, 0x3346, 0x31a6, 0x3366, 0x3366, 0x0000, 0x3386, 0x3206, 0x31a6, 0x0000, 0x29e6, 0x0000, 0x2a06, 0x33a6, 0x3386, 0x3386, 0x32e6, 0x32c6, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	@ "when you're ready."
-	.2byte 0x33e6, 0x3206, 0x31a6, 0x32c6, 0x0000, 0x3826, 0x32e6, 0x33a6, 0x3b06, 0x3346, 0x31a6, 0x0000, 0x3346, 0x31a6, 0x3126, 0x3186, 0x3826, 0x39e4, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Press the A Button"
+	.ereaderText "when you#re ready."
+	.ereaderText ""
 
-	@ "Transmission successful."
-	.2byte 0x3046, 0x3346, 0x3126, 0x32c6, 0x3366, 0x32a6, 0x3222, 0x3366, 0x3366, 0x3222, 0x32e6, 0x32c6, 0x0000, 0x3366, 0x33a6, 0x3166, 0x3166, 0x31a6, 0x3366, 0x3366, 0x31c6, 0x33a6, 0x3284, 0x39e4
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	@ "When you activate"
-	.2byte 0x30a6, 0x3206, 0x31a6, 0x32c6, 0x0000, 0x3826, 0x32e6, 0x33a6, 0x0000, 0x3126, 0x3166, 0x3386, 0x3222, 0x33c6, 0x3126, 0x3386, 0x31a6, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Transmission successful."
+	.ereaderText ""
+    .ereaderText "When you activate"
 
-	@ "CATCH 'EM MODE, there is"
-	.2byte 0x2a26, 0x29e6, 0x3046, 0x2a26, 0x2ac6, 0x0000, 0x3ac4, 0x2a66, 0x2b66, 0x0000, 0x2b66, 0x2ba6, 0x2a46, 0x2a66, 0x39c4, 0x0000, 0x3386, 0x3206, 0x31a6, 0x3346, 0x31a6, 0x0000, 0x3222, 0x3366
-	@ "a special appearance of"
-	.2byte 0x3126, 0x0000, 0x3366, 0x3306, 0x31a6, 0x3166, 0x3222, 0x3126, 0x3284, 0x0000, 0x3126, 0x3306, 0x3306, 0x31a6, 0x3126, 0x3346, 0x3126, 0x32c6, 0x3166, 0x31a6, 0x0000, 0x32e6, 0x31c6, 0x0000
-	@ "rare Pokémon."
-	.2byte 0x3346, 0x3126, 0x3346, 0x31a6, 0x0000, 0x2bc6, 0x32e6, 0x3266, 0x3aa6, 0x32a6, 0x32e6, 0x32c6, 0x39e4, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "CATCH `EM MODE, there is"
+	.ereaderText "a special appearance of"
+	.ereaderText "rare Pokémon."
 
-	@ "Transmission successful."
-	.2byte 0x3046, 0x3346, 0x3126, 0x32c6, 0x3366, 0x32a6, 0x3222, 0x3366, 0x3366, 0x3222, 0x32e6, 0x32c6, 0x0000, 0x3366, 0x33a6, 0x3166, 0x3166, 0x31a6, 0x3366, 0x3366, 0x31c6, 0x33a6, 0x3284, 0x39e4
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Transmission successful."
+	.ereaderText ""
+    .ereaderText ""
 
-	@ "The Pokémon which rarely"
-	.2byte 0x3046, 0x3206, 0x31a6, 0x0000, 0x2bc6, 0x32e6, 0x3266, 0x3aa6, 0x32a6, 0x32e6, 0x32c6, 0x0000, 0x33e6, 0x3206, 0x3222, 0x3166, 0x3206, 0x0000, 0x3346, 0x3126, 0x3346, 0x31a6, 0x3284, 0x3826
-	@ "appear are now easier to"
-	.2byte 0x3126, 0x3306, 0x3306, 0x31a6, 0x3126, 0x3346, 0x0000, 0x3126, 0x3346, 0x31a6, 0x0000, 0x32c6, 0x32e6, 0x33e6, 0x0000, 0x31a6, 0x3126, 0x3366, 0x3222, 0x31a6, 0x3346, 0x0000, 0x3386, 0x32e6
-	@ "find in CATCH 'EM MODE."
-	.2byte 0x31c6, 0x3222, 0x32c6, 0x3186, 0x0000, 0x3222, 0x32c5, 0x0000, 0x2a26, 0x29e6, 0x3046, 0x2a26, 0x2ac6, 0x0000, 0x3ac4, 0x2a66, 0x2b66, 0x0000, 0x2b66, 0x2ba6, 0x2a46, 0x2a66, 0x39e4, 0x0000
+	.ereaderText "The Pokémon which rarely"
+	.ereaderText "appear are now easier to"
+	.ereaderText "find iņ CATCH `EM MODE."
 
-	@ "Transmission successful."
-	.2byte 0x3046, 0x3346, 0x3126, 0x32c6, 0x3366, 0x32a6, 0x3222, 0x3366, 0x3366, 0x3222, 0x32e6, 0x32c6, 0x0000, 0x3366, 0x33a6, 0x3166, 0x3166, 0x31a6, 0x3366, 0x3366, 0x31c6, 0x33a6, 0x3284, 0x39e4
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Transmission successful."
+	.ereaderText ""
+    .ereaderText ""
 
-	@ "Start with nine Balls."
-	.2byte 0x3026, 0x3386, 0x3126, 0x3346, 0x3386, 0x0000, 0x33e6, 0x3222, 0x3386, 0x3206, 0x0000, 0x32c6, 0x3222, 0x32c6, 0x31a6, 0x0000, 0x2a06, 0x3126, 0x3284, 0x3284, 0x3366, 0x39e4, 0x0000, 0x0000
-	@ "Start with Master Ball."
-	.2byte 0x3026, 0x3386, 0x3126, 0x3346, 0x3386, 0x0000, 0x33e6, 0x3222, 0x3386, 0x3206, 0x0000, 0x2b66, 0x3126, 0x3366, 0x3386, 0x31a6, 0x3346, 0x0000, 0x2a06, 0x3126, 0x3284, 0x3284, 0x39e4, 0x0000
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Start with nine Balls."
+	.ereaderText "Start with Master Ball."
+	.ereaderText ""
 
-	@ "Start with 99 Coins."
-	.2byte 0x3026, 0x3386, 0x3126, 0x3346, 0x3386, 0x0000, 0x33e6, 0x3222, 0x3386, 0x3206, 0x0000, 0x29a6, 0x29a6, 0x0000, 0x2a26, 0x32e6, 0x3222, 0x32c6, 0x3366, 0x39e4, 0x0000, 0x0000, 0x0000, 0x0000
-	@ "Pichu Saver stays on."
-	.2byte 0x2bc6, 0x3222, 0x3166, 0x3206, 0x33a6, 0x0000, 0x3026, 0x3126, 0x33c6, 0x31a6, 0x3346, 0x0000, 0x3366, 0x3386, 0x3126, 0x3826, 0x3366, 0x0000, 0x32e6, 0x32c5, 0x39e4, 0x0000, 0x0000, 0x0000
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Start with 99 Coins."
+	.ereaderText "Pichu Saver stays oņ."
+	.ereaderText ""
 
-	@ "Transmission successful."
-	.2byte 0x3046, 0x3346, 0x3126, 0x32c6, 0x3366, 0x32a6, 0x3222, 0x3366, 0x3366, 0x3222, 0x32e6, 0x32c6, 0x0000, 0x3366, 0x33a6, 0x3166, 0x3166, 0x31a6, 0x3366, 0x3366, 0x31c6, 0x33a6, 0x3284, 0x39e4
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Transmission successful."
+	.ereaderText ""
+    .ereaderText ""
 
-	@ "Start in the Ruin Area."
-	.2byte 0x3026, 0x3386, 0x3126, 0x3346, 0x3386, 0x0000, 0x3222, 0x32c5, 0x0000, 0x3386, 0x3206, 0x31a6, 0x0000, 0x3006, 0x33a6, 0x3222, 0x32c6, 0x0000, 0x29e6, 0x3346, 0x31a6, 0x3126, 0x39e4, 0x0000
-	@ "First bonus stage will"
-	.2byte 0x2a86, 0x3222, 0x3346, 0x3366, 0x3386, 0x0000, 0x3146, 0x32e6, 0x32c6, 0x33a6, 0x3366, 0x0000, 0x3366, 0x3386, 0x3126, 0x31e6, 0x31a6, 0x0000, 0x33e6, 0x3222, 0x3284, 0x3284, 0x0000, 0x0000
-	@ "be the RAYQUAZA stage."
-	.2byte 0x3146, 0x31a6, 0x0000, 0x3386, 0x3206, 0x31a6, 0x0000, 0x3006, 0x29e6, 0x30e6, 0x2be6, 0x3066, 0x29e6, 0x3106, 0x29e6, 0x0000, 0x3366, 0x3386, 0x3126, 0x31e6, 0x31a6, 0x39e4, 0x0000, 0x0000
+	.ereaderText "Start iņ the Ruin Area."
+	.ereaderText "First bonus stage will"
+	.ereaderText "be the RAYQUAZA stage."
 
-	@ "Transmission successful."
-	.2byte 0x3046, 0x3346, 0x3126, 0x32c6, 0x3366, 0x32a6, 0x3222, 0x3366, 0x3366, 0x3222, 0x32e6, 0x32c6, 0x0000, 0x3366, 0x33a6, 0x3166, 0x3166, 0x31a6, 0x3366, 0x3366, 0x31c6, 0x33a6, 0x3284, 0x39e4
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Transmission successful."
+	.ereaderText ""
+    .ereaderText ""
 
-	@ "You can select the"
-	.2byte 0x30e6, 0x32e6, 0x33a6, 0x0000, 0x3166, 0x3126, 0x32c6, 0x0000, 0x3366, 0x31a6, 0x3284, 0x31a6, 0x3166, 0x3386, 0x0000, 0x3386, 0x3206, 0x31a6, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	@ "bonus stage."
-	.2byte 0x3146, 0x32e6, 0x32c6, 0x33a6, 0x3366, 0x0000, 0x3366, 0x3386, 0x3126, 0x31e6, 0x31a6, 0x39e4, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-	.2byte 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "You can select the"
+	.ereaderText "bonus stage."
+	.ereaderText ""
 
-	@ "Transmission failure."
-	.2byte 0x3046, 0x3346, 0x3126, 0x32c6, 0x3366, 0x32a6, 0x3222, 0x3366, 0x3366, 0x3222, 0x32e6, 0x32c6, 0x0000, 0x31c6, 0x3126, 0x3222, 0x3284, 0x33a6, 0x3346, 0x31a6, 0x39e4, 0x0000, 0x0000, 0x0000
-	@ "Check the connection"
-	.2byte 0x2a26, 0x3206, 0x31a6, 0x3166, 0x3266, 0x0000, 0x3386, 0x3206, 0x31a6, 0x0000, 0x3166, 0x32e6, 0x32c6, 0x32c6, 0x31a6, 0x3166, 0x3386, 0x3222, 0x32e6, 0x32c6, 0x0000, 0x0000, 0x0000, 0x0000
-	@ "and try once again."
-	.2byte 0x3126, 0x32c6, 0x3186, 0x0000, 0x3386, 0x3346, 0x3826, 0x0000, 0x32e6, 0x32c6, 0x3166, 0x31a6, 0x0000, 0x3126, 0x31e6, 0x3126, 0x3222, 0x32c6, 0x39e4, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+	.ereaderText "Transmission failure."
+	.ereaderText "Check the connection"
+	.ereaderText "and try once again."
 
 gEReaderSpriteSets:: @ 0x086A54D8
 	.4byte gPokedexStartTransmissionPopupSpriteSet
@@ -683,37 +656,13 @@ gPokedexAnimBaseTileNums:: @ 0x086A5DDA
 	.2byte 576, 580, 582, 584
 
 gPokedexCatchAnimTileOffsets:: @ 0x086A5DF2
-@ Declared [][20] but this run is 16 entries, not a whole number of
-@ rows, so it is listed flat.
-	.2byte  0, 36,  0, 36,  0, 36,  0, 36, 72,  0,  0,  0,  0,  0,  0,  0
-
-gPokedexAnimTileDeltas:: @ 0x086A5E12
-	.2byte   0,   0,   0,   0
-	.2byte   0,   9,  18,  27
-	.2byte  36,  45,  54,  63
-	.2byte  72,  81,  90,  99
-	.2byte 108, 117,   0, 126
-	.2byte   0,   0,   0,   0
-	.2byte   0,   9,  18,  27
-	.2byte  36,  27,  45,  54
-	.2byte  63,  54,  72,  81
-	.2byte  90,  81,  99, 108
-	.2byte 117, 108,   0, 126
-	.2byte   8,   8,   8,   8
-	.2byte   8,   8,   8,   8
-	.2byte   8,   8,   8,   0
-	.2byte   0,   0,   0,   0
-	.2byte   0,   0,   0,   0
-	.2byte   9,   9,   9,   9
-	.2byte   9,   9,   9,   9
-	.2byte   9,   9,   9,   9
-	.2byte   9,   9,   9,  30
-	.2byte   0,   0,   0,   0
-	.2byte   9,   9,   9,   9
-	.2byte   9,   9,   9,   9
-	.2byte   9,   9,   9,   9
-	.2byte   9,   9,   9,   9
-	.2byte   9,   9,   9,  30
+@ Declared [][20]
+	.2byte   0,  36,   0,  36,   0,  36,   0,  36,  72,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0
+	.2byte   0,   9,  18,  27,  36,  45,  54,  63,  72,  81,  90,  99, 108, 117,   0, 126,   0,   0,   0,   0
+	.2byte   0,   9,  18,  27,  36,  27,  45,  54,  63,  54,  72,  81,  90,  81,  99, 108, 117, 108,   0, 126
+	.2byte   8,   8,   8,   8,   8,   8,   8,   8,   8,   8,   8,   0,   0,   0,   0,   0,   0,   0,   0,   0
+	.2byte   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,  30,   0,   0,   0,   0
+	.2byte   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,  30
 
 gPokedexHatchAnimTileOffsets:: @ 0x086A5EE2
 	.2byte   0,  36,   0,  36,   0,  36,   0,  36,  72,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0
@@ -721,18 +670,17 @@ gPokedexHatchAnimTileOffsets:: @ 0x086A5EE2
 	.2byte  18,  27,  36,  27,  18,  27,  36,  27,  18,  27,  36,  27,  45,  54,  63,  54,  45,  54,  63,  54,  45,  54,  63,  54,  72,  81,  90,  81,  72,  81,  90,  81,  72,  81,  90,  81,  99, 108, 117, 108,  99, 108, 117, 108,  99, 108, 117, 108, 126,   0,   0
 
 gPokedexAnimFrameDurations:: @ 0x086A6014
-@ Declared [][51] but this run is 154 entries, not a whole number of
-@ rows, so it is listed flat.
-	.2byte  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  0,  0,  0,  0,  0
-	.2byte  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0
-	.2byte  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0
-	.2byte  0,  0,  0,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9
-	.2byte  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9
-	.2byte  9,  9,  9,  9,  9,  9,  9, 40,  0,  0,  0,  0,  0,  0,  0,  0
-	.2byte  0,  0,  0,  0,  0,  0,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9
-	.2byte  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9
-	.2byte  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9
-	.2byte  9,  9,  9,  9,  9,  9, 40,  0,  0,  0
+@ Declared [][51] : 3 sets, and a spacer
+	.2byte  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0
+    .2byte  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0
+
+    .2byte  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9
+    .2byte  9,  9,  9,  9,  9,  9,  9,  9,  9,  9, 40,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0
+
+    .2byte  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9
+	.2byte  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9, 40,  0,  0
+
+    .align 2
 
 gPokedexSpriteSets:: @ 0x086A6148
     .4byte gPokedexCursorHandSpriteSet
@@ -6703,13 +6651,18 @@ gGulpinAnimData:: @ 0x086ADA6E
 	.2byte 72,  4, 1, 5, 0
 
 gSideBumperGfxFrameIndices:: @ 0x086ADEB0
-	.2byte 0x00
-
-gSideBumperAnimDurations:: @ 0x086ADEB2
-@ Declared [][2] but this run is 23 entries, not a whole number of
-@ rows, so it is listed flat.
-	.2byte 200,   0,  28,   0,  44,   1,  10,   0,  10,   1,  10,   0,  40,   1,  10,   0
-	.2byte  10,   1,  10,   0,  10,   0,  28
+	.2byte 0, 200
+    .2byte 0,  28
+    .2byte 0,  44
+    .2byte 1,  10
+    .2byte 0,  10
+    .2byte 1,  10
+    .2byte 0,  40
+    .2byte 1,  10
+    .2byte 0,  10
+    .2byte 1,  10
+    .2byte 0,  10
+    .2byte 0,  28
 
 gCatchOverlayAnimData:: @ 0x086ADEE0
 	.2byte  0, 10
@@ -6765,14 +6718,18 @@ gTimerIndicatorFrames:: @ 0x086ADFD4
 	.2byte 0, 0, 3, 2, 1, 0, 0
 
 gPikaSaverFrameData:: @ 0x086ADFE2
-@ Declared [][2] but this run is 83 entries, not a whole number of
-@ rows, so it is listed flat.
-	.2byte  0,  3,  1,  3,  2,  3,  3,  3,  4,  7,  5,  7,  3, 49,  6,  5
-	.2byte  7,  4,  8,  3,  9,  2, 10,  4, 11, 19, 12,  3, 13,  3, 14,  3
-	.2byte 15,  3, 16,  3, 17,  3, 18,  3, 19,  3, 20,  3, 21,  3, 22,  3
-	.2byte 23,  3, 24,  3, 25,  3, 26,  3, 27,  3, 28,  3, 29,  3, 30,  3
-	.2byte 32,  9, 33,  4, 34,  3, 35,  1, 36,  1, 37,  1, 38,  1, 39,  1
-	.2byte 40,  7,  0
+@ Declared [][2] but listed here in sets of 10.
+	.2byte  0,  3,  1,  3,  2,  3,  3,  3,  4,  7
+    .2byte  5,  7,  3, 49,  6,  5,  7,  4,  8,  3
+    .2byte  9,  2, 10,  4, 11, 19, 12,  3, 13,  3
+    .2byte 14,  3, 15,  3, 16,  3, 17,  3, 18,  3
+    .2byte 19,  3, 20,  3, 21,  3, 22,  3, 23,  3
+    .2byte 24,  3, 25,  3, 26,  3, 27,  3, 28,  3
+    .2byte 29,  3, 30,  3, 32,  9, 33,  4, 34,  3
+    .2byte 35,  1, 36,  1, 37,  1, 38,  1, 39,  1
+	.2byte 40,  7
+
+    .align 2
 
 gFlyingCreatureCameraOffsets:: @ 0x086AE088
 	.2byte 42, 92
@@ -6993,12 +6950,12 @@ gSplashEffectPositions:: @ 0x086AE554
 	.2byte 159, 10
 
 gSplashEffectTileIndices:: @ 0x086AE588
-.2byte 0
-
-gSplashEffectFrameDurations:: @ 0x086AE58A
-@ Declared [][2] but this run is 11 entries, not a whole number of
-@ rows, so it is listed flat.
-	.2byte 1, 1, 1, 2, 2, 3, 0, 1, 1, 0, 0
+    .2byte 0, 1
+	.2byte 1, 1
+	.2byte 2, 2
+	.2byte 3, 0
+	.2byte 1, 1
+	.2byte 0, 0
 
 gHoleAnimKeyframeData:: @ 0x086AE5A0
 	.2byte 0x0006, 0x0001;
@@ -7501,19 +7458,19 @@ gScreenShakeOscillationValues:: @ 0x086AEF28
 	.2byte  1,  2,  0, -1, -2,  0,  2,  1,  0, -2, -1,  0
 
 gGroudonFootstepShakePatterns:: @ 0x086AEF40
-	.2byte     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0
-	.2byte     2,     0, 65534,     2,     0, 65534,     2,     0, 65534,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0
-	.2byte     3,     0, 65533,     3,     0, 65533,     3,     0, 65533,     2,     0, 65534,     2,     0, 65534,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     0,     0,     0,     0,     0,     0,     0
-	.2byte     4,     0, 65532,     4,     0, 65532,     3,     0, 65533,     2,     0, 65534,     2,     0, 65534,     2,     0, 65534,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     0
-	.2byte     6,     0, 65530,     5,     0, 65531,     4,     0, 65532,     3,     0, 65533,     2,     0, 65534,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     0,     0,     0,     0,     0,     0,     0
-	.2byte     3,     0, 65533,     3,     0, 65533,     2,     0, 65534,     2,     0, 65534,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     0,     0,     0,     0,     0,     0,     0
+	.2byte  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0
+	.2byte  2,  0, -2,  2,  0, -2,  2,  0, -2,  1,  0, -1,  1,  0, -1,  1,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0
+	.2byte  3,  0, -3,  3,  0, -3,  3,  0, -3,  2,  0, -2,  2,  0, -2,  1,  0, -1,  1,  0, -1,  1,  0, -1,  0,  0,  0,  0,  0,  0,  0
+	.2byte  4,  0, -4,  4,  0, -4,  3,  0, -3,  2,  0, -2,  2,  0, -2,  2,  0, -2,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  0
+	.2byte  6,  0, -6,  5,  0, -5,  4,  0, -4,  3,  0, -3,  2,  0, -2,  1,  0, -1,  1,  0, -1,  1,  0, -1,  0,  0,  0,  0,  0,  0,  0
+	.2byte  3,  0, -3,  3,  0, -3,  2,  0, -2,  2,  0, -2,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  0,  0,  0,  0,  0,  0,  0
 
 gGroudonCryShakePattern:: @ 0x086AF0B4
-	.2byte     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1
-	.2byte     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0
-	.2byte 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535
-	.2byte     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1,     0, 65535,     1
-	.2byte     0, 65535,     1,     0, 65535,     0
+	.2byte  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1
+	.2byte  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0
+	.2byte -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1
+	.2byte  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1,  0, -1,  1
+	.2byte  0, -1,  1,  0, -1,  0
 
 gGroudonAnimFramesetTable:: @ 0x086AF140
 @ 99 framesets of 2 u16: OAM animation frame index and how many game frames to
@@ -8155,13 +8112,28 @@ gSphealFramesetData:: @ 0x086AFB2C
 	.2byte  0,  3, 21
 
 gSphealWhiscashAnimFrameset:: @ 0x086AFC16
-@ Declared [][4] but this run is 77 entries, not a whole number of
-@ rows, so it is listed flat.
-	.2byte  10, 260,   0,   0,   4,   8,   0,   0,   3,   8,   0,   0,   2,   8,   0,   0
-	.2byte   0,  21,   0,   0,   1,  21,   0,   0,   5,   2,   0,   0,   6,   6,   0,   0
-	.2byte   7,   6,   0,   0,   7,   6,   1,  -1,   7,  14,   2,  -2,   7,   6,   1,  -1
-	.2byte   7,   6,   0,   0,   0,   9,   0,   0,   1,   9,   0,   0,   2,   8,   0,   0
-	.2byte   3,   8,   0,   0,   4,   8,   0,   0,  10,   3,   0,   0,   0
+@ Declared [][4]
+	.2byte  10, 260,   0,   0
+    .2byte   4,   8,   0,   0
+    .2byte   3,   8,   0,   0
+    .2byte   2,   8,   0,   0
+	.2byte   0,  21,   0,   0
+    .2byte   1,  21,   0,   0
+    .2byte   5,   2,   0,   0
+    .2byte   6,   6,   0,   0
+	.2byte   7,   6,   0,   0
+    .2byte   7,   6,   1,  -1
+    .2byte   7,  14,   2,  -2
+    .2byte   7,   6,   1,  -1
+	.2byte   7,   6,   0,   0
+    .2byte   0,   9,   0,   0
+    .2byte   1,   9,   0,   0
+    .2byte   2,   8,   0,   0
+	.2byte   3,   8,   0,   0
+    .2byte   4,   8,   0,   0
+    .2byte  10,   3,   0,   0
+
+    .align 2
 
 gBoardCollisionDataSets:: @ 0x086AFCB0
     @ Note: Only the layer 0 (1st column) from this data is referenced in code.
@@ -11564,12 +11536,12 @@ gHatchCaveOamFramesets:: @ 0x086B4D4E
 
 
 gCatchTileParticleOamAttributes:: @ 0x086B4E3E
-@ Declared [][3] but this run is 2 entries, not a whole number of
-@ rows, so it is listed flat.
-	.2byte     0, 49152
-
-gUnknown_086B4E42:: @ 0x086B4E42
-	.incbin "baserom.gba", 0x6B4E42, 0x20
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x2C0, paletteNum=0xE
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x300, paletteNum=0xE
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x340, paletteNum=0xE
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x380, paletteNum=0xE
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x340, paletteNum=0xE
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x300, paletteNum=0xE
 
 gCatchTile_BurstRevealOamFramesets1:: @ 0x086B4E62
     packed_sprite_oam x=0x18, y=0x18, spriteSize=SPRITE_SIZE_16x16, tileNum=0x2c8, paletteNum=0xe
@@ -11811,12 +11783,14 @@ gAreaRouletteOamFramesets:: @ 0x086B51CE
 
 
 gHatchAnimOamAttributes:: @ 0x086B53B4
-@ Declared [][3] but this run is 2 entries, not a whole number of
-@ rows, so it is listed flat.
-	.2byte 33020, 33276
-
-gUnknown_086B53B8:: @ 0x086B53B8
-	.incbin "baserom.gba", 0x6B53B8, 0x2C
+    packed_sprite_oam x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x304, paletteNum=0xE
+    packed_sprite_oam x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x30C, paletteNum=0xE
+    packed_sprite_oam x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x314, paletteNum=0xE
+    packed_sprite_oam x=-0x4, y=-0x4, spriteSize=SPRITE_SIZE_16x32, tileNum=0x31C, paletteNum=0xE
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x324, paletteNum=0xE
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x325, paletteNum=0xE
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x326, paletteNum=0xE
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x3C0, paletteNum=0xE
 
 gCatchTile_SequentialBreakSpritesheetOam:: @ 0x086B53E4
     packed_sprite_oam x=-0x8, y=-0x8, spriteSize=SPRITE_SIZE_32x32, tileNum=0x2c0, paletteNum=0xe

@@ -398,6 +398,21 @@
     {
       "gfx_filename": "shop_sign_tiles",
       "oamshape": "shop_sign_shape.json"
+    },
+    {
+      "gfx_filename": "travel_illumise",
+      "oamshape": "../main/travel_painter_shape.json",
+      "width": 102
+    },
+    {
+      "gfx_filename": "bumper_minun",
+      "oamshape": "bumper_shape.json",
+      "width": 60
+    },
+    {
+      "gfx_filename": "bumper_plusle",
+      "oamshape": "bumper_shape.json",
+      "width": 60
     }
   ]
 }
