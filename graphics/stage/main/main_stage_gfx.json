@@ -588,6 +588,15 @@
       "width": 2,
       "palette": "lotad_bumper.gbapal",
       "palbank": 0
+    },
+    {
+      "gfx_filename": "catch_tile_burst_stage2",
+      "oam": true,
+      "mwidth": 2,
+      "mheight": 2,
+      "width": 8,
+      "palette": "catch_tile_burst_stage2.gbapal",
+      "palbank": 0
     }
   ]
 }

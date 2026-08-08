@@ -1195,8 +1195,15 @@ gCatchTile_BurstStart_Gfx:: @ 0x083A07CC
 gCatchTile_BurstStart_Pal:: @ 0x083A27EC
 	.incbin "graphics/stage/main/catch_tile_burst_start.gbapal"
 
+@ 16 sprites of 16x16, a uniform 2x2 grid with nothing irregular in it.
+@ gCatchTile_BurstRevealOamFramesets0 draws six of them at a time into a 3x2
+@ block of cells, so the sheet is a bank of quarters the framesets pick from
+@ rather than a run of whole frames. Only t0..35 are ever named; t36..63 are
+@ unreferenced but still inside the copy. Palette from gCatchTile_BurstStage2_Pal
+@ into OBJ bank 14, in the copy right after.
 gCatchTile_BurstStage2_Gfx:: @ 0x083A29EC
-	.incbin "baserom.gba", 0x3A29EC, 0x820
+	.incbin "graphics/stage/main/catch_tile_burst_stage2.4bpp"
+	.space 0x20
 
 gCatchTile_BurstStage2_Pal:: @ 0x083A320C
 	.incbin "graphics/stage/main/catch_tile_burst_stage2.gbapal"

@@ -273,6 +273,8 @@ SLOT_PALETTES = {
                                               'tail of the egg mode sheet, past the copy'),
     ('graphics/stage/main', 'catch_mon_appear_fx'): ('catch_mon_appear_fx.gbapal', 0,
                                                     'gCatchMonAppearFx_Pal, DMAd to OBJ bank 14 beside the sheet'),
+    ('graphics/stage/main', 'catch_tile_burst_stage2'): ('catch_tile_burst_stage2.gbapal', 0,
+                                                        'gCatchTile_BurstStage2_Pal, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'catch_tile_burst_stage3'): ('catch_tile_burst_stage3.gbapal', 0,
                                                         'gCatchTile_BurstStage3_Pal, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'catch_tile_burst_stage4'): ('catch_tile_burst_stage4.gbapal', 0,
