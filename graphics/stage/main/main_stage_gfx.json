@@ -483,29 +483,29 @@
       "palbank": 0
     },
     {
-      "gfx_filename": "egg_mode",
+      "gfx_filename": "aerodactyl_flight",
       "segments": [
         {
-          "segfile": "egg_mode_frame_0",
-          "oamshape": "egg_mode_frame0_shape.json",
+          "segfile": "aerodactyl_flight_frame_0",
+          "oamshape": "aerodactyl_flight_frame0_shape.json",
           "width": 7
         },
         {
-          "segfile": "egg_mode_frame_1",
+          "segfile": "aerodactyl_flight_frame_1",
           "width": 9
         },
         {
-          "segfile": "egg_mode_frame_2",
+          "segfile": "aerodactyl_flight_frame_2",
           "width": 6
         }
       ],
-      "palette": "egg_mode.gbapal",
+      "palette": "aerodactyl_flight.gbapal",
       "palbank": 0
     },
     {
-      "gfx_filename": "egg_mode_cap",
+      "gfx_filename": "aerodactyl_flight_cap",
       "width": 1,
-      "palette": "egg_mode.gbapal",
+      "palette": "aerodactyl_flight.gbapal",
       "palbank": 0
     },
     {

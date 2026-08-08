@@ -206,7 +206,7 @@ struct PinballGame
     /*0x068*/ s16 cameraYViewport;
     /*0x06A*/ s16 hudSpriteBaseY;
     /*0x06C*/ u16 timerBonus; //Additional time to be added to next timed event (Only for bonus fields or all timers?)
-    /*0x06E*/ s8 ballShadowTileIndex;
+    /*0x06E*/ s8 ballUpgradeFxTileIndex;
     /*0x06F*/ s8 activePaletteIndex;
     /*0x070*/ s8 paletteSwapActive;
     /*0x071*/ s8 ballTrailEnabled;
@@ -823,7 +823,7 @@ struct PinballGame
     /*0x717*/ u8 slingshotSideIndex;
     /*0x718*/ s8 ballPowerUpLight[3];
     /*0x71B*/ s8 ballPowerUpAnimActive;
-    /*0x71C*/ u8 ballShadowTimer;
+    /*0x71C*/ u8 gBallUpgradeFxTimer;
     /*0x71D*/ s8 catchLights[3];
     /*0x720*/ u8 evoBlinkTimer;
     /*0x721*/ s8 evoCatchLightSlot1;
@@ -1027,7 +1027,7 @@ extern const u8 gPikaSaverFullCoverageGfx[];
 extern const u8 gPikaSaverPartialCoverageGfx[];
 extern const u8 gPortraitAnimFrameGraphics[][0x300];
 extern const u8 gBallRotationTileGraphics[][0x80];
-extern const u8 gBallShadowTileGraphics[][0x200];
+extern const u8 gBallUpgradeFx_Gfx[][0x200];
 extern const u8 gMainStageBonusTrap_Gfx[][0x300];
 extern const u8 gLocationPortraitGfx[][0x300];
 extern const u8 gChargeFillIndicator_Gfx[][0x80];

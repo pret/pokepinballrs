@@ -25,8 +25,8 @@ extern const u8 gAlphabetTilesGfx[][0x40];
 extern const s16 gCaughtTextChars[];
 extern const struct Vector16 gFlyingCreatureCameraOffsets[];
 extern const u16 gEggFloatOamFramesets[14][15];
-extern const u8 gEggModeTilesGfx[];
-extern const u8 gEggModePalette[];
+extern const u8 gAerodactlyFlight_Gfx[];
+extern const u8 gAerodactlyFlight_Pal[];
 extern const u16 gPikaSaverFrameData[][2];
 extern const u16 gPokemonFloatOamFramesets[82][6][3];
 extern const u8 gCaptureModePalette[];
@@ -940,8 +940,8 @@ void InitAerodactylEggDelivery(void)
     gCurrentPinballGame->portraitOffsetX = gCurrentPinballGame->eggDeliveryX / 20 - gFlyingCreatureCameraOffsets[0].x;
     gCurrentPinballGame->portraitOffsetY = gCurrentPinballGame->eggDeliveryY / 20 - gFlyingCreatureCameraOffsets[0].y;
     gCurrentPinballGame->activePortraitType = 2;
-    DmaCopy16(3, gEggModePalette, (void *)0x050003C0, 0x20);
-    DmaCopy16(3, gEggModeTilesGfx, (void *)0x06015800, 0x1000);
+    DmaCopy16(3, gAerodactlyFlight_Pal, (void *)0x050003C0, 0x20);
+    DmaCopy16(3, gAerodactlyFlight_Gfx, (void *)0x06015800, 0x1000);
 }
 
 void AnimateAerodactylEggDelivery(void)
