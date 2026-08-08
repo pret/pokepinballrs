@@ -1340,11 +1340,15 @@ gBallRotationTileGraphics:: @ 0x083BB16C
 gBallShadowTileGraphics:: @ 0x083BD36C
 	.incbin "baserom.gba", 0x3BD36C, 0xC00
 
+@ The two ball spawn glows, streamed a frame at a time over tile 57 by
+@ all_board_process7.c -- the gBonusBoardBallRespawnFxSpriteSet slot, one 32x32
+@ in palette bank 1, so both sheets are 4 tiles wide with no OAM packing.
+@ Type 2 is 9 frames of 0x200, type 1 is 11.
 gBallSpawnGlowTiles_Type2:: @ 0x083BDF6C
-	.incbin "baserom.gba", 0x3BDF6C, 0x1200
+	.incbin "graphics/stage/main/ball_spawn_glow_type2.4bpp"
 
 gBallSpawnGlowTiles_Type1:: @ 0x083BF16C
-	.incbin "baserom.gba", 0x3BF16C, 0x1600
+	.incbin "graphics/stage/main/ball_spawn_glow_type1.4bpp"
 
 gSpoinkEntity_Gfx:: @ 0x083C076C
 	.incbin "baserom.gba", 0x3C076C, 0xC40

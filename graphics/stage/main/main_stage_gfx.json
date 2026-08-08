@@ -442,6 +442,18 @@
       ],
       "palette": "catch_tile_burst_stage4.gbapal",
       "palbank": 0
+    },
+    {
+      "gfx_filename": "ball_spawn_glow_type1",
+      "width": 4,
+      "palette": "../ruby/ruby_board_palset_0.gbapal",
+      "palbank": 1
+    },
+    {
+      "gfx_filename": "ball_spawn_glow_type2",
+      "width": 4,
+      "palette": "../ruby/ruby_board_palset_0.gbapal",
+      "palbank": 1
     }
   ]
 }

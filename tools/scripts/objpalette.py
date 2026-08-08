@@ -216,6 +216,8 @@ SLOTS = {
     ('graphics/stage/sapphire', 'travel_paint'): ('sapphire', 704, 192, 'main_board_launcher_and_cutscenes.c'),
     ('graphics/stage/main', 'ball_save'): ('ruby', 704, 288, 'all_board_mode_change_and_debug_menu.c'),
     ('graphics/stage/main', 'capture_screen'): ('ruby', 704, 225, 'main_board_center_capture_hole.c'),
+    ('graphics/stage/main', 'ball_spawn_glow_type1'): ('ruby', 57, 16, 'all_board_process7.c'),
+    ('graphics/stage/main', 'ball_spawn_glow_type2'): ('ruby', 57, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'end_of_ball'): ('ruby', 704, 320, 'all_board_mode_change_and_debug_menu.c'),
     ('graphics/stage/main', 'game_over_text'): ('ruby', 704, 32, 'all_board_mode_change_and_debug_menu.c'),
     ('graphics/stage/main', 'area_roulette_selected_fx'): ('ruby', 704, 20, 'main_board_intro_mode.c'),
@@ -248,6 +250,16 @@ SLOT_PALETTES = {
                                                         'gCatchTile_BurstStage3_Pal, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'catch_tile_burst_stage4'): ('catch_tile_burst_stage4.gbapal', 0,
                                                         'gCatchTile_BurstStage4_Pal, DMAd to OBJ bank 14 beside the sheet'),
+    # Tile 57 is one of the lowest slots and half the game's screens put
+    # something there, so the vote lands on whichever set happens to cover most
+    # of it -- gPikaChargingSpinnerSpriteSet, with 9 of 16 tiles.  The set that
+    # actually reads this slot is gBonusBoardBallRespawnFxSpriteSet: one 32x32
+    # over the whole 16, drawn in bank 1, which is where the board keeps
+    # gBallPalettes.
+    ('graphics/stage/main', 'ball_spawn_glow_type1'): ('../ruby/ruby_board_palset_0.gbapal', 1,
+                                                       'gBonusBoardBallRespawnFxSpriteSet, bank 1'),
+    ('graphics/stage/main', 'ball_spawn_glow_type2'): ('../ruby/ruby_board_palset_0.gbapal', 1,
+                                                       'gBonusBoardBallRespawnFxSpriteSet, bank 1'),
     # Same pairing for the evolution banner: gBoardActionObjPal goes to OBJ bank
     # 14 in the copy right after the sheet's own
     # (main_board_launcher_and_cutscenes.c), and every gEvolutionBanner* entry
