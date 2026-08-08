@@ -340,6 +340,11 @@
       "oamshape": "hatch_mach_hole_shape.json",
       "width": 32,
       "palette": "hole_indicator.gbapal"
+    },
+    {
+      "gfx_filename": "catch_tile_burst_stage3",
+      "palette": "catch_tile_burst_stage3.gbapal",
+      "palbank": 0
     }
   ]
 }

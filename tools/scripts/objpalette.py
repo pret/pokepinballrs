@@ -231,6 +231,10 @@ SLOT_PALETTES = {
     # names bank 14, so the whole sheet takes that one palette.
     ('graphics/stage/main', 'catch_tile_reveal'): ('catch_tile_reveal.gbapal', 0,
                                                    'gCatchTile_RevealPalette, DMAd to OBJ bank 14 beside the sheet'),
+    # Same pairing again for the burst stages, each with its own palette label
+    # sitting beside its sheet in rom_1.s.
+    ('graphics/stage/main', 'catch_tile_burst_stage3'): ('catch_tile_burst_stage3.gbapal', 0,
+                                                        'gCatchTile_BurstStage3_Pal, DMAd to OBJ bank 14 beside the sheet'),
     # Same pairing for the evolution banner: gBoardActionObjPal goes to OBJ bank
     # 14 in the copy right after the sheet's own
     # (main_board_launcher_and_cutscenes.c), and every gEvolutionBanner* entry

@@ -1177,8 +1177,13 @@ gCatchTile_BurstStage2_Gfx:: @ 0x083A29EC
 gCatchTile_BurstStage2_Pal:: @ 0x083A320C
 	.incbin "graphics/stage/main/catch_tile_burst_stage2.gbapal"
 
+@ 4 frames of the catch tile collapsing, streamed over the tile-704 overlay slot
+@ by the burst particles (main_board_catch_tile_particles.c). Each frame is a
+@ single 64x64 sprite from gCatchTileParticleOamAttributes, palette bank 14, so
+@ the sheet is 8 tiles wide with no OAM packing. The trailing 0x20 is blank.
 gCatchTile_BurstStage3_Gfx:: @ 0x083A340C
-	.incbin "baserom.gba", 0x3A340C, 0x2020
+	.incbin "graphics/stage/main/catch_tile_burst_stage3.4bpp"
+	.space 0x20
 
 gCatchTile_BurstStage3_Pal:: @ 0x083A542C
 	.incbin "graphics/stage/main/catch_tile_burst_stage3.gbapal"
