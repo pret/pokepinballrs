@@ -10,6 +10,35 @@
   },
   "files": [
     {
+      "gfx_filename": "sky_background",
+      "segments":[
+        {
+            "segfile": "sky_background_cloud_0",
+            "oamshape": "cloud_0_shape.json",
+            "palette": "rayquaza_board_palset_0.gbapal",
+            "palbank": 2
+          },
+        {
+            "segfile": "sky_background_cloud_1",
+            "oamshape": "cloud_1_shape.json",
+            "palette": "rayquaza_board_palset_0.gbapal",
+            "palbank": 2
+          },
+        {
+            "segfile": "sky_background_cloud_2",
+            "oamshape": "cloud_2_shape.json",
+            "palette": "rayquaza_board_palset_0.gbapal",
+            "palbank": 2
+          },
+        {
+            "segfile": "sky_background_orb",
+            "width": 2,
+            "palette": "rayquaza_board_palset_0.gbapal",
+            "palbank": 2
+          }
+      ]
+    },
+    {
         "gfx_filename": "rayquaza_bonus_clear",
         "segments":[
             {

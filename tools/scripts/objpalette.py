@@ -134,8 +134,6 @@ BOARDS = {
         table=('gPokedexSpriteSets', 'gEReaderSpriteSets'), dir='graphics/pokedex',
         gfx='pokedex_gfx.json', prefixes=('gPokedex',),
         palette=[('sprites.gbapal', 16)]),
-    # Spheal's OBJ sheet is still a baserom incbin, so it has no intro_sprite
-    # segments -- it is here for the sheets streamed into its board.
     'spheal': dict(
         table='gSphealBoardSpriteSets', dir='graphics/stage/spheal',
         gfx='gfx_segments.json', prefixes=('gSpheal',),
@@ -212,6 +210,8 @@ SLOTS = {
     ('graphics/stage/main', 'area_roulette_selected_fx'): ('ruby', 704, 20, 'main_board_intro_mode.c'),
     ('graphics/stage/sapphire', 'zigzagoon_fx'): ('sapphire', 704, 96, 'sapphire_pond_and_zigzagoon.c'),
     ('graphics/stage/spheal', 'spheal_results'): ('spheal', 704, 64, 'spheal_process3.c'),
+    # 306 tiles, though the copy asks for 320 and runs into the label below it.
+    ('graphics/stage/rayquaza', 'sky_background'): ('rayquaza', 704, 306, 'rayquaza_process3.c'),
     ('graphics/stage/dusclops', 'dusclops_bonus_clear'): ('dusclops', 704, 256, 'dusclops_process3.c'),
     ('graphics/stage/groudon', 'groudon_bonus_clear'): ('groudon', 704, 256, 'groudon_process3.c'),
     ('graphics/stage/kecleon', 'kecleon_bonus_clear'): ('kecleon', 704, 256, 'kecleon_process3.c'),
@@ -221,6 +221,19 @@ SLOTS = {
 
 # Slots whose palette the vote cannot reach, with the copy that settles it.
 SLOT_PALETTES = {
+    # The catch-tile break sheet and its palette are DMA'd together
+    # (main_board_catch_tile_logic.c): the sheet over the tile-704 overlay slot,
+    # gCatchTile_RevealPalette into OBJ bank 14.  Every OAM entry that draws it
+    # names bank 14, so the whole sheet takes that one palette.
+    ('graphics/stage/main', 'catch_tile_reveal'): ('catch_tile_reveal.gbapal', 0,
+                                                   'gCatchTile_RevealPalette, DMAd to OBJ bank 14 beside the sheet'),
+    # Same pairing for the evolution banner: gBoardActionObjPal goes to OBJ bank
+    # 14 in the copy right after the sheet's own
+    # (main_board_launcher_and_cutscenes.c), and every gEvolutionBanner* entry
+    # that draws it names bank 14.
+    ('graphics/stage/main', 'board_action'): ('board_action_obj.gbapal', 0,
+                                              'gBoardActionObjPal, DMAd to OBJ bank 14 beside the sheet'),
+
     # The 1UP banner and the life-count digit beside it are the sheets that
     # stream over tiles 0x295 and 0x2a9, drawn through gOneUpSpritePalette.
     ('graphics/stage/misc', 'gunk_08455E8C'): ('../main/one_up_sprite.gbapal', 0,
@@ -298,6 +311,18 @@ OVERRIDES = {
 
     ('groudon', 'intro_sprite', 'intro_sprite_groudon_step'): (15, 'unreferenced, matches the body'),
     ('rayquaza', 'intro_sprite', 'intro_sprite_blank_spacer'): (12, 'blank padding tile'),
+    ('rayquaza', 'sky_background', 'sky_background_orb'): (2, 'unreferenced, matches the clouds'),
+
+    # Tiles 0..72 of every bonus board's sheet are one shared block, byte for
+    # byte; the pause panel and its borders sit at t36..56 and are drawn through
+    # gBonusBoardPausePanelSpriteSet in bank 9.  Spheal is the one board that
+    # leaves bank 9 at zero, so the vote reports it flat.  The main field is
+    # where these tiles are actually lit, and there banks 9..15 come from
+    # bonus_stage_obj rather than the board's own set.
+    ('spheal', 'intro_sprite', 'intro_sprite_pause_cursor'):
+        (('../main/bonus_stage_obj.gbapal', 0), 'shared pause block, OBJ bank 9 on the main field'),
+    ('spheal', 'intro_sprite', 'intro_sprite_pause_text'):
+        (('../main/bonus_stage_obj.gbapal', 0), 'shared pause block, OBJ bank 9 on the main field'),
 
     # Rayquaza's head, and the only sprite set reaching it is the roar
     # extension, which draws it through bank 14 -- dark red, the roaring frame.

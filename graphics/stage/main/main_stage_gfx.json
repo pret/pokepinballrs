@@ -8,6 +8,84 @@
   },
   "files": [
     {
+      "gfx_filename": "board_action",
+      "segments":[
+        {
+            "segfile": "board_action_text_large",
+            "width": 8
+        },
+        {
+            "segfile": "board_action_text_medium",
+            "width": 8
+        },
+        {
+            "segfile": "board_action_text_small",
+            "width": 6
+        },
+        {
+            "segfile": "board_action_bolts",
+            "width": 2
+        },
+        {
+            "segfile": "board_action_sparkle",
+            "width": 2
+        }
+      ],
+      "palette": "board_action_obj.gbapal",
+      "palbank": 0
+    },
+    {
+      "gfx_filename": "catch_tile_reveal",
+      "segments":[
+        {
+            "segfile": "catch_tile_reveal_shards_0",
+            "width": 4
+        },
+        {
+            "segfile": "catch_tile_reveal_shards_1",
+            "width": 2
+        },
+        {
+            "segfile": "catch_tile_reveal_specks_0",
+            "width": 1
+        },
+        {
+            "segfile": "catch_tile_reveal_shards_2",
+            "width": 2
+        },
+        {
+            "segfile": "catch_tile_reveal_specks_1",
+            "width": 1
+        },
+        {
+            "segfile": "catch_tile_reveal_shards_3",
+            "width": 2
+        },
+        {
+            "segfile": "catch_tile_reveal_wave_0",
+            "width": 4
+        },
+        {
+            "segfile": "catch_tile_reveal_debris",
+            "width": 5
+        },
+        {
+            "segfile": "catch_tile_reveal_wave_1",
+            "width": 4
+        },
+        {
+            "segfile": "catch_tile_reveal_wave_1_cap",
+            "width": 1
+        },
+        {
+            "segfile": "catch_tile_reveal_dome",
+            "width": 4
+        }
+      ],
+      "palette": "catch_tile_reveal.gbapal",
+      "palbank": 0
+    },
+    {
       "gfx_filename": "gunk_084F61EC",
       "mwidth":8,
       "align":1,

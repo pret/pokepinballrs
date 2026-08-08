@@ -820,8 +820,13 @@ gIdleBoardGameState3:: @ 0x08155A3C
 gIdleBoardGameState1:: @ 0x08156E60
 	.incbin "data/idle_board/game_state_1.bin"
 
+@ The evolution banner: three sizes of EVOLUTION text plus the lightning that
+@ strikes it, streamed over the tile-704 overlay slot with gBoardActionObjPal
+@ into OBJ bank 14 beside it (main_board_launcher_and_cutscenes.c). t102..173 is
+@ bolt art no bank-14 OAM entry reaches; the last 31 tiles are blank padding.
 gBoardActionTilesGfx:: @ 0x08158284
-	.incbin "baserom.gba", 0x158284, 0x2420
+	.incbin "graphics/stage/main/board_action.4bpp"
+	.space 0x3E0
 
 gBoardActionObjPal:: @ 0x0815A6A4
 	.incbin "graphics/stage/main/board_action_obj.gbapal"
@@ -1148,8 +1153,14 @@ gCatchMonAppearFx_Gfx:: @ 0x0839C78C
 gCatchMonAppearFx_Pal:: @ 0x0839DBAC
 	.incbin "graphics/stage/main/catch_mon_appear_fx.gbapal"
 
+@ The sequential catch-tile break: 13 frames drawn as 6 sprites each by
+@ gCatchTile_SequentialBreakSpritesheetOam, streamed over the tile-704 overlay
+@ slot with gCatchTile_RevealPalette in OBJ bank 14. The segments follow that
+@ table's piece boundaries; t68..102 is debris no OAM entry in the tree reaches,
+@ and the sheet's last 80 tiles are blank padding.
 gCatchTile_RevealTilesGfx:: @ 0x0839DDAC
-	.incbin "baserom.gba", 0x39DDAC, 0x2820
+	.incbin "graphics/stage/main/catch_tile_reveal.4bpp"
+	.space 0xA00
 
 gCatchTile_RevealPalette:: @ 0x083A05CC
 	.incbin "graphics/stage/main/catch_tile_reveal.gbapal"
@@ -1333,8 +1344,12 @@ gChikoritaProjectileTiles:: @ 0x083C542C
 gChikoritaExplosionTiles:: @ 0x083C562C
 	.incbin "baserom.gba", 0x3C562C, 0x400
 
+@ The three storm clouds of the Rayquaza intro, drawn by gRaquazaIntroCloud0/1/2
+@ SpriteSet over the tile-704 overlay slot in OBJ bank 2. The copy in
+@ rayquaza_process3.c asks for 0x2800 but the sheet is only 0x2640, so the last
+@ 14 tiles it lands in VRAM come from gRubyFlashingTiles_Secondary below.
 gRayquazaSkyBackgroundGfx:: @ 0x083C5A2C
-	.incbin "baserom.gba", 0x3C5A2C, 0x2640
+	.incbin "graphics/stage/rayquaza/sky_background.4bpp"
 
 gRubyFlashingTiles_Secondary:: @ 0x083C806C
 	.incbin "baserom.gba", 0x3C806C, 0xB00
@@ -1437,7 +1452,7 @@ gRayquazaIntroSprite_Gfx:: @ 0x08472A6C
 	.incbin "graphics/stage/rayquaza/intro_sprite.4bpp"
 
 gSphealIntroSprites_Gfx:: @ 0x084779EC
-	.incbin "baserom.gba", 0x4779EC, 0x2A20
+	.incbin "graphics/stage/spheal/intro_sprite.4bpp"
 
 gSapphireBumperLeft_Gfx:: @ 0x0847A40C
 @ 15 frames of the Sapphire Minun bumper, stride 0x300. The sprite is
