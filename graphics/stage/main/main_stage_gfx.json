@@ -454,6 +454,33 @@
       "width": 4,
       "palette": "../ruby/ruby_board_palset_0.gbapal",
       "palbank": 1
+    },
+    {
+      "gfx_filename": "catch_mon_appear_fx",
+      "segments": [
+        {
+          "segfile": "catch_mon_appear_fx_spark",
+          "width": 2
+        },
+        {
+          "segfile": "catch_mon_appear_fx_puff_first",
+          "oamshape": "catch_mon_appear_fx_first_shape.json",
+          "width": 5
+        },
+        {
+          "segfile": "catch_mon_appear_fx_puff_frames",
+          "oam": true,
+          "mwidth": 5,
+          "mheight": 5,
+          "width": 5
+        },
+        {
+          "segfile": "catch_mon_appear_fx_unused_tail",
+          "width": 7
+        }
+      ],
+      "palette": "catch_mon_appear_fx.gbapal",
+      "palbank": 0
     }
   ]
 }

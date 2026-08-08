@@ -1155,8 +1155,15 @@ gCatchTargetCollisionBitmap:: @ 0x0839A28C
 
 .include "data/graphics/mon_portraits_pals.inc"
 
+@ The puff the caught mon appears out of, over the tile-704 overlay slot, with
+@ gCatchMonAppearFx_Pal going to OBJ bank 14 in the copy right below.
+@ gCatchMonRevealOamFramesets draws it: a 16x16 spark, then six puff frames of a
+@ 32x32 with a 32x8 under it and an 8x32 beside it. Five of those frames add an
+@ 8x8 corner and fill a 5x5 block exactly; the first is missing that corner, so
+@ it takes a shape with one spacer. t153..159 are unreferenced.
 gCatchMonAppearFx_Gfx:: @ 0x0839C78C
-	.incbin "baserom.gba", 0x39C78C, 0x1420
+	.incbin "graphics/stage/main/catch_mon_appear_fx.4bpp"
+	.space 0x20
 
 gCatchMonAppearFx_Pal:: @ 0x0839DBAC
 	.incbin "graphics/stage/main/catch_mon_appear_fx.gbapal"

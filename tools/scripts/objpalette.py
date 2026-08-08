@@ -246,6 +246,8 @@ SLOT_PALETTES = {
                                                    'gCatchTile_RevealPalette, DMAd to OBJ bank 14 beside the sheet'),
     # Same pairing again for the burst stages, each with its own palette label
     # sitting beside its sheet in rom_1.s.
+    ('graphics/stage/main', 'catch_mon_appear_fx'): ('catch_mon_appear_fx.gbapal', 0,
+                                                    'gCatchMonAppearFx_Pal, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'catch_tile_burst_stage3'): ('catch_tile_burst_stage3.gbapal', 0,
                                                         'gCatchTile_BurstStage3_Pal, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'catch_tile_burst_stage4'): ('catch_tile_burst_stage4.gbapal', 0,
