@@ -792,29 +792,33 @@ gCaptureScreenTilesGfx:: @ 0x081428D4
 
 .include "data/graphics/mon_hatch_sprites_pals.inc"
 
+@ Attract-mode demos. Each Config is 4800 struct ReplayInputFrame (3 bytes of
+@ button bits per game frame); each GameState is one struct PinballGame snapshot
+@ the demo starts from. game_idle.c pairs Config<N> with GameState<N>.
+@ Note the labels run 0, 2, 3, 1 in ROM order.
 gIdleBoardConfig0:: @ 0x081450F4
-	.incbin "baserom.gba", 0x1450F4, 0x3840
+	.incbin "data/idle_board/replay_input_0.bin"
 
 gIdleBoardConfig2:: @ 0x08148934
-	.incbin "baserom.gba", 0x148934, 0x3840
+	.incbin "data/idle_board/replay_input_2.bin"
 
 gIdleBoardConfig3:: @ 0x0814C174
-	.incbin "baserom.gba", 0x14C174, 0x3840
+	.incbin "data/idle_board/replay_input_3.bin"
 
 gIdleBoardConfig1:: @ 0x0814F9B4
-	.incbin "baserom.gba", 0x14F9B4, 0x3840
+	.incbin "data/idle_board/replay_input_1.bin"
 
 gIdleBoardGameState0:: @ 0x081531F4
-	.incbin "baserom.gba", 0x1531F4, 0x1424
+	.incbin "data/idle_board/game_state_0.bin"
 
 gIdleBoardGameState2:: @ 0x08154618
-	.incbin "baserom.gba", 0x154618, 0x1424
+	.incbin "data/idle_board/game_state_2.bin"
 
 gIdleBoardGameState3:: @ 0x08155A3C
-	.incbin "baserom.gba", 0x155A3C, 0x1424
+	.incbin "data/idle_board/game_state_3.bin"
 
 gIdleBoardGameState1:: @ 0x08156E60
-	.incbin "baserom.gba", 0x156E60, 0x1424
+	.incbin "data/idle_board/game_state_1.bin"
 
 gBoardActionTilesGfx:: @ 0x08158284
 	.incbin "baserom.gba", 0x158284, 0x2420
@@ -870,8 +874,12 @@ gFlipperCollisionData:: @ 0x0816C3E4
 @ Flipper data has 13 sets of 96*96 u16 data (2 unused at the end)
 	.incbin "data/board_data/collision/flipper_collision_all_96x96.bin"
 
-gUnknown_81A6BE4:: @ 0x081A6BE4
-	.incbin "baserom.gba", 0x1A6BE4, 0x8000
+gDebugAsciiFont:: @ 0x081A6BE4
+@ 8x8 font, one tile per character, ASCII 0x20-0x5F in order. Slot 0x5C draws a
+@ yen sign instead of a backslash, the usual Japanese font convention. Only
+@ colour indices 1 and 2 are used. Nothing in the ROM references it.
+	.incbin "graphics/debug_ascii_font.4bpp"
+	.space 0x7800   @ 960 unused tiles, all zero
 
 	.include "data/graphics/mon_catch_sprites_pals.inc"
 @	.incbin "baserom.gba", 0x1AEBE4, 0xA80
@@ -1432,10 +1440,16 @@ gSphealIntroSprites_Gfx:: @ 0x084779EC
 	.incbin "baserom.gba", 0x4779EC, 0x2A20
 
 gSapphireBumperLeft_Gfx:: @ 0x0847A40C
-	.incbin "baserom.gba", 0x47A40C, 0x2D00
+@ 15 frames of the Sapphire Minun bumper, stride 0x300. The sprite is
+@ a 32x32 over a 32x16 (24 tiles, gSapphireMinunSpriteSet, palette bank 10 from the OBJ
+@ palette sets); only 0x280 of each frame is DMAd, the rest is padding.
+	.incbin "graphics/stage/sapphire/bumper_minun.4bpp"
 
 gSapphireBumperLeftHit_Gfx:: @ 0x0847D10C
-	.incbin "baserom.gba", 0x47D10C, 0xE00
+@ 7 frames of the Sapphire Minun hit bumper, stride 0x200. The sprite is
+@ one 32x32 (16 tiles, gSapphireMinunElectricityFxSpriteSet, palette bank 10 from the OBJ
+@ palette sets); only 0x180 of each frame is DMAd, the rest is padding.
+	.incbin "graphics/stage/sapphire/bumper_minun_fx.4bpp"
 
 gRubyMakuhitaGfx:: @ 0x0847DF0C
 	.incbin "baserom.gba", 0x47DF0C, 0x1E00
@@ -1459,10 +1473,20 @@ gSapphireShopSignTileGfx:: @ 0x0848108C
 	.incbin "graphics/stage/sapphire/shop_sign_tiles.4bpp"
 
 gRubyTravelVolbeat_Gfx:: @ 0x08483D8C
-	.incbin "baserom.gba", 0x483D8C, 0x4C80
+@ 17 frames of Volbeat for the travel cutscene, 0x480 each. A frame is the
+@ first 4 pieces of gTravelPainterSpriteSet (32x32, 16x32, 32x16, 16x16 =
+@ 36 tiles) DMAd over tile 0x2c0; the last 2 pieces stay from the paint
+@ sheet loaded just before. Palette is bank 14, the first 16 colours of
+@ the painter palette.
+	.incbin "graphics/stage/ruby/travel_volbeat.4bpp"
 
 gSapphireTravelIllumise_Gfx:: @ 0x08488A0C
-	.incbin "baserom.gba", 0x488A0C, 0x4C80
+@ 17 frames of Illumise for the travel cutscene, 0x480 each. A frame is the
+@ first 4 pieces of gTravelPainterSpriteSet (32x32, 16x32, 32x16, 16x16 =
+@ 36 tiles) DMAd over tile 0x2c0; the last 2 pieces stay from the paint
+@ sheet loaded just before. Palette is bank 14, the first 16 colours of
+@ the painter palette.
+	.incbin "graphics/stage/sapphire/travel_illumise.4bpp"
 
 gLocationPortraitGfx:: @ 0x0848D68C
 	.incbin "graphics/area_portraits/loc00_ruby_forest.4bpp"
@@ -1483,16 +1507,28 @@ gCaptureModeTilesGfx:: @ 0x0848FD8C
 	.incbin "baserom.gba", 0x48FD8C, 0xCC0
 
 gHoleIndicatorTileGfx:: @ 0x08490A4C
-	.incbin "baserom.gba", 0x490A4C, 0x4400
+@ 16 frames of 34 BG tiles (0x440 each), one per row of the sheet. Each frame
+@ is DMAd to 0x0600D900, i.e. char base 2 tile 712, inside the static board
+@ overlay. The 34 tiles are not one shape: the tilemap scatters them over
+@ several hole positions at rows 8-10 and 42-46, in palette banks 2 and 6.
+@ Sheet is coloured with Ruby bank 2; Sapphire reuses the same tiles.
+	.incbin "graphics/stage/main/hole_indicator.4bpp"
 
 gDusclopsBoardDusclopsAppearFx_Gfx:: @ 0x08494E4C
 	.incbin "graphics/stage/dusclops/dusclops_appear_fx.4bpp";
 
 gKyogreBodySprites_First15:: @ 0x0849664C
-	.incbin "baserom.gba", 0x49664C, 0x5280
+@ 15 animation frames of 44 OBJ tiles (0x580 each), one per row of the sheet.
+@ kyogre_process3.c picks the frame with bossVulnerable and DMAs it to tile 0x7d.
+@ gKyogreEntitySpriteSet draws it as 5 pieces plus 5 hFlipped mirrors, palette 15.
+@ Boards use 1D OBJ mapping, so a row is the pieces back to back, not the shape.
+	.incbin "graphics/stage/kyogre/body_first15.4bpp"
 
 gKyogreBodySprites_After15:: @ 0x0849B8CC
-	.incbin "baserom.gba", 0x49B8CC, 0x3900
+@ The frames used when bossVulnerable is 15 or more: 12 frames of 38 tiles
+@ (0x4C0 each), one per row. Max bossVulnerable is 26, and 26 - 15 = 11, the
+@ last of these 12.
+	.incbin "graphics/stage/kyogre/body_after15.4bpp"
 
 gGroudonBoardBackgroundGfx:: @ 0x0849F1CC
 	.incbin "baserom.gba", 0x49F1CC, 0x2020
@@ -1510,7 +1546,12 @@ gRayquazaSpriteSheet:: @ 0x084AA18C
 	.incbin "baserom.gba", 0x4AA18C, 0x860
 
 gRayquazaBodyVariantTiles:: @ 0x084AA9EC
-	.incbin "baserom.gba", 0x4AA9EC, 0x5000
+@ 10 variants of the coiled body, 0x800 each. Every variant is one 64x64 sprite
+@ (gRaquazaEntityBouncingSpriteSet, tile 0xb1, palette 15), so at 8 tiles wide
+@ each occupies 8 rows and reads as the sprite itself under 1D OBJ mapping.
+@ Colours come from the OBJ palette sets (fieldLayout.objPaletteSets), not the
+@ board BG palette -- bank 15 there is all black. Palsets 1 and 2 are dimmed.
+	.incbin "graphics/stage/rayquaza/body_variants.4bpp"
 
 gSphealNetGfx:: @ 0x084AF9EC
 	.incbin "graphics/stage/spheal/spheal_net.4bpp"
@@ -1552,10 +1593,16 @@ gPikachuSaverTilesGfx:: @ 0x084C156C
 	.incbin "graphics/stage/main/pikachu_saver_tiles.4bpp"
 
 gSapphireBumperRight_Gfx:: @ 0x084C1E6C
-	.incbin "baserom.gba", 0x4C1E6C, 0x2D00
+@ 15 frames of the Sapphire Plusle bumper, stride 0x300. The sprite is
+@ a 32x32 over a 32x16 (24 tiles, gSapphirePlusleSpriteSet, palette bank 10 from the OBJ
+@ palette sets); only 0x280 of each frame is DMAd, the rest is padding.
+	.incbin "graphics/stage/sapphire/bumper_plusle.4bpp"
 
 gSapphireBumperRightHit_Gfx:: @ 0x084C4B6C
-	.incbin "baserom.gba", 0x4C4B6C, 0xE00
+@ 7 frames of the Sapphire Plusle hit bumper, stride 0x200. The sprite is
+@ one 32x32 (16 tiles, gSapphirePlusleElectricityFxSpriteSet, palette bank 10 from the OBJ
+@ palette sets); only 0x180 of each frame is DMAd, the rest is padding.
+	.incbin "graphics/stage/sapphire/bumper_plusle_fx.4bpp"
 
 .include "data/graphics/mon_portraits.inc"
 
