@@ -217,6 +217,7 @@ SLOTS = {
     ('graphics/stage/main', 'ball_save'): ('ruby', 704, 288, 'all_board_mode_change_and_debug_menu.c'),
     ('graphics/stage/main', 'capture_screen'): ('ruby', 704, 225, 'main_board_center_capture_hole.c'),
     ('graphics/stage/main', 'alphabet'): ('ruby', 704, 2, 'main_board_to_be_split.c'),
+    ('graphics/stage/main', 'capture_mode'): ('ruby', 704, 102, 'main_board_to_be_split.c'),
     ('graphics/stage/main', 'ball_spawn_glow_type1'): ('ruby', 57, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'ball_spawn_glow_type2'): ('ruby', 57, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'end_of_ball'): ('ruby', 704, 320, 'all_board_mode_change_and_debug_menu.c'),
@@ -361,6 +362,9 @@ OVERRIDES = {
     # its absorb fx: gMonCatchBallAbsorbPokemonFxSpriteSet names bank 1
     # throughout, and gCaptureBallTilesGfx streams the ball itself into t102..105
     # and t123..126, drawn with gBallPalettes in bank 1.
+    ('ruby', 'capture_mode', 'capture_mode_cap'):
+        (14, 'past the end of the copy, matches the sheet around it'),
+
     ('ruby', 'capture_screen', 'capture_screen_capture_ball_slot_0'):
         (1, 'gCaptureBallTilesGfx slot, drawn with gBallPalettes'),
     ('ruby', 'capture_screen', 'capture_screen_unreferenced_gap'):

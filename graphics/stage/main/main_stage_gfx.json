@@ -516,6 +516,47 @@
       "width": 26,
       "palette": "../ruby/ruby_board_palset_0.gbapal",
       "palbank": 1
+    },
+    {
+      "gfx_filename": "capture_mode",
+      "segments": [
+        {
+          "segfile": "capture_mode_egg_delivery_a",
+          "width": 7,
+          "palette": "bonus_stage_obj.gbapal",
+          "palbank": 5
+        },
+        {
+          "segfile": "capture_mode_unreferenced_a",
+          "width": 7,
+          "palette": "bonus_stage_obj.gbapal",
+          "palbank": 5
+        },
+        {
+          "segfile": "capture_mode_totodile_body",
+          "width": 4,
+          "palette": "bonus_stage_obj.gbapal",
+          "palbank": 5
+        },
+        {
+          "segfile": "capture_mode_totodile_egg",
+          "width": 2,
+          "palette": "bonus_stage_obj.gbapal",
+          "palbank": 2
+        },
+        {
+          "segfile": "capture_mode_unreferenced_b",
+          "width": 23,
+          "palette": "bonus_stage_obj.gbapal",
+          "palbank": 5
+        },
+        {
+          "segfile": "capture_mode_cap",
+          "width": 1,
+          "palette": "bonus_stage_obj.gbapal",
+          "palbank": 5
+        }
+      ]
     }
   ]
 }

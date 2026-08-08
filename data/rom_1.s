@@ -1581,8 +1581,16 @@ gLocationPortraitGfx:: @ 0x0848D68C
 	.incbin "graphics/area_portraits/loc11_sapphire_desert.4bpp"
 	.incbin "graphics/area_portraits/loc12_ruins.4bpp"
 
+@ The two egg deliveries, over the tile-704 overlay slot, with gCaptureModePalette
+@ going to OBJ bank 14 in the copy above (main_board_to_be_split.c).
+@ gRubyAerodactylEggDeliverySpriteSet holds t0..30 and gRubyTotodileEggDelivery-
+@ SpriteSet t28..34 and t56..77, so the two overlap at t28..30 and no cut
+@ separates them -- t0..34 is one segment. The Totodile egg at t72..77 draws in
+@ bank 11 while everything around it is bank 14, so it is split out to keep the
+@ colours honest. t35..55 and t78..100 are unreferenced, and t101 is past the
+@ copy: a solid colour-1 tile.
 gCaptureModeTilesGfx:: @ 0x0848FD8C
-	.incbin "baserom.gba", 0x48FD8C, 0xCC0
+	.incbin "graphics/stage/main/capture_mode.4bpp"
 
 gHoleIndicatorTileGfx:: @ 0x08490A4C
 @ 16 frames of 34 BG tiles (0x440 each), one per row of the sheet. Each frame
