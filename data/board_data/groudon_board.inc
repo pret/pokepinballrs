@@ -2,7 +2,7 @@
 @ that is in the kyogre_board.inc file at 0x08333804, 0x08335804, 0x0833AD84
 
 gGroudonLavaPaletteCycleData:: @ 0x08352BD8
-	.incbin "graphics/stage/groudon/groudon_lava.pal"
+	.incbin "graphics/stage/groudon/groudon_lava.gbapal"
 
 gGroudonBoardBG0Tilemap:: @ 0x08352DD8
 	.incbin "graphics/stage/groudon/groudon_board_bg0_tilemap.bin"

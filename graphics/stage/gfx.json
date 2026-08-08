@@ -13,7 +13,9 @@
       "gfx_filename": "gunk_084ED6CC",
       "mwidth":4,
       "mheight":4,
-      "width":4
+      "width":4,
+      "palette": "sapphire/sapphire_board_palset_0.gbapal",
+      "palbank": 3
     },
     {
       "gfx_filename": "gunk_084FF90C",

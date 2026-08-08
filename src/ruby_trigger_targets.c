@@ -5,8 +5,7 @@
 #include "constants/board/ruby_states.h"
 
 extern const u8 gSideBumperGfx[][0x100];
-extern const s16 gSideBumperGfxFrameIndices[][2];
-extern const u16 gSideBumperAnimDurations[][2];
+extern const u16 gSideBumperGfxFrameIndices[][2];
 
 extern const s16 gGulpinAnimData[][5];
 extern const u16 gGulpinOamData[146][18];
@@ -334,7 +333,7 @@ void UpdateRubySideBumperAnimation(void)
     {
         if (gCurrentPinballGame->linooneSideBumperExtensionsPending[i] > 0)
         {
-            if (gSideBumperAnimDurations[gCurrentPinballGame->linooneSideBumperAnimPhase[i]][0] > gCurrentPinballGame->linooneSideBumperAnimTimer[i])
+            if (gSideBumperGfxFrameIndices[gCurrentPinballGame->linooneSideBumperAnimPhase[i]][1] > gCurrentPinballGame->linooneSideBumperAnimTimer[i])
             {
                 gCurrentPinballGame->linooneSideBumperAnimTimer[i]++;
             }

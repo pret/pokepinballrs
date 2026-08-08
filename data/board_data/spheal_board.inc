@@ -1,6 +1,6 @@
 
 gSphealBoardPalette:: @ 0x0837A2E8
-	.incbin "baserom.gba", 0x37A2E8, 0x200
+	.incbin "graphics/stage/spheal/spheal_board.gbapal"
 
 gSphealWaterBackgroundTilemap:: @ 0x0837A4E8
 	.incbin "graphics/stage/spheal/spheal_board_bgwater_tilemap.bin"

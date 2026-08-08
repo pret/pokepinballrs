@@ -42,3 +42,6 @@ graphics_rules_generated.mk
 
 # clangd
 .cache/
+
+# python
+__pycache__/

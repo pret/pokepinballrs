@@ -846,7 +846,9 @@ gRuby_RSlingshot_On_R4:: @ 0x08265910
 
 
 gRubyBoardBGTiles:: @ 0x08265C10
-	.incbin "baserom.gba", 0x265C10, 0x8000
+	@ loaded to charblock 2; tiles 0-703 are blank because all_board_setup.c
+	@ later overwrites that region with the decompressed bgtop tiles
+	.incbin "graphics/stage/ruby/ruby_board_bg_tiles.4bpp"
 
 gRubyBoardBGTilemap:: @ 0x0826DC10
-	.incbin "baserom.gba", 0x26DC10, 0x1000
+	.incbin "graphics/stage/ruby/ruby_board_bg_tilemap.bin"

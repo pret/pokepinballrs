@@ -1,7 +1,7 @@
 @ Note: ruby_board.inc file has a shared 'bumper collision map' at 0x08252B10
 
 gSapphireBoardPalette:: @ 0x0826EC10
-	.incbin "baserom.gba", 0x26EC10, 0x200
+	.incbin "graphics/stage/sapphire/sapphire_board.gbapal"
 
 gSapphireBoardBG0Tilemap:: @ 0x0826EE10
 	.incbin "graphics/stage/sapphire/sapphire_board_bg0_tilemap.bin"
@@ -1082,7 +1082,8 @@ gWailmerWater_082E4BC0:: @ 0x082E4BC0
     .incbin "baserom.gba", 0x2E4BC0, 0x320
 
 gSapphireBoardBGTiles:: @ 0x082E4EE0
-	.incbin "baserom.gba", 0x2E4EE0, 0x8000
+	@ loaded to charblock 2; tiles 0-703 are overwritten by the scroll ring
+	.incbin "graphics/stage/sapphire/sapphire_board_bg_tiles.4bpp"
 
 gSapphireBoardBGTilemap:: @ 0x082ECEE0
-	.incbin "baserom.gba", 0x2ECEE0, 0x1000
+	.incbin "graphics/stage/sapphire/sapphire_board_bg_tilemap.bin"
