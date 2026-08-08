@@ -1574,8 +1574,17 @@ gGroudonBoardBoulders_Gfx:: @ 0x084A11EC
 gRayquazaMinionOrbFrames:: @ 0x084A6EEC
 	.incbin "baserom.gba", 0x4A6EEC, 0x1680
 
+@ The wind attack, streamed whole over the tile-704 overlay slot by
+@ rayquaza_process3.c when the entity enters its flyby. t0..101 is the flyby
+@ Rayquaza itself (gRaquazaEntityFlybyLeft/RightSpriteSet, palette bank 15),
+@ t102..207 the three speedline tiers (gRaquazaFlyby*WindSpeedlines0/1/2A/B,
+@ bank 12), t208..223 unreferenced. The entity is 18 pieces at offsets that are
+@ not multiples of 8 and would overlap if rounded to a tile grid, so no oam-shape
+@ can reassemble it -- the segments are plain strips whose widths merely divide
+@ their tile counts.
 gRayquazaWindBoardGfx:: @ 0x084A856C
-	.incbin "baserom.gba", 0x4A856C, 0x1C20
+	.incbin "graphics/stage/rayquaza/wind_board.4bpp"
+	.space 0x20
 
 gRayquazaSpriteSheet:: @ 0x084AA18C
 	.incbin "baserom.gba", 0x4AA18C, 0x860

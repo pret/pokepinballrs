@@ -11,71 +11,71 @@
   "files": [
     {
       "gfx_filename": "sky_background",
-      "segments":[
+      "segments": [
         {
-            "segfile": "sky_background_cloud_0",
-            "oamshape": "cloud_0_shape.json",
-            "palette": "rayquaza_board_palset_0.gbapal",
-            "palbank": 2
-          },
+          "segfile": "sky_background_cloud_0",
+          "oamshape": "cloud_0_shape.json",
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 2
+        },
         {
-            "segfile": "sky_background_cloud_1",
-            "oamshape": "cloud_1_shape.json",
-            "palette": "rayquaza_board_palset_0.gbapal",
-            "palbank": 2
-          },
+          "segfile": "sky_background_cloud_1",
+          "oamshape": "cloud_1_shape.json",
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 2
+        },
         {
-            "segfile": "sky_background_cloud_2",
-            "oamshape": "cloud_2_shape.json",
-            "palette": "rayquaza_board_palset_0.gbapal",
-            "palbank": 2
-          },
+          "segfile": "sky_background_cloud_2",
+          "oamshape": "cloud_2_shape.json",
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 2
+        },
         {
-            "segfile": "sky_background_orb",
-            "width": 2,
-            "palette": "rayquaza_board_palset_0.gbapal",
-            "palbank": 2
-          }
+          "segfile": "sky_background_orb",
+          "width": 2,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 2
+        }
       ]
     },
     {
-        "gfx_filename": "rayquaza_bonus_clear",
-        "segments":[
-            {
-                "segfile":"rayquaza_bonus_clear_top",
-                "mwidth":20,
-                "mheight":8,
-                "oam":true,
-                "palette":"rayquaza_board_palset_0.gbapal",
-                "palbank":8
-              },
-            {
-                "segfile":"rayquaza_bonus_clear_score_region",
-                "mwidth":14,
-                "mheight":3,
-                "oam":true,
-                "palette":"rayquaza_board_palset_0.gbapal",
-                "palbank":8
-              },
-            {
-                "segfile":"rayquaza_bonus_clear_score_right_cap",
-                "mwidth":1,
-                "mheight":2,
-                "oam":true,
-                "palette":"rayquaza_board_palset_0.gbapal",
-                "palbank":8
-              },
-            {
-                "segfile":"rayquaza_bonus_clear_score_digits",
-                "mwidth":1,
-                "mheight":2,
-                "width":10,
-                "oam":true,
-                "palette":"rayquaza_board_palset_0.gbapal",
-                "palbank":2
-              }
-        ],
-        "align":12
+      "gfx_filename": "rayquaza_bonus_clear",
+      "segments": [
+        {
+          "segfile": "rayquaza_bonus_clear_top",
+          "mwidth": 20,
+          "mheight": 8,
+          "oam": true,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 8
+        },
+        {
+          "segfile": "rayquaza_bonus_clear_score_region",
+          "mwidth": 14,
+          "mheight": 3,
+          "oam": true,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 8
+        },
+        {
+          "segfile": "rayquaza_bonus_clear_score_right_cap",
+          "mwidth": 1,
+          "mheight": 2,
+          "oam": true,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 8
+        },
+        {
+          "segfile": "rayquaza_bonus_clear_score_digits",
+          "mwidth": 1,
+          "mheight": 2,
+          "width": 10,
+          "oam": true,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 2
+        }
+      ],
+      "align": 12
     },
     {
       "gfx_filename": "intro_sprite",
@@ -255,6 +255,41 @@
         },
         {
           "segfile": "intro_sprite_bolt_8",
+          "width": 4,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 12
+        }
+      ]
+    },
+    {
+      "gfx_filename": "wind_board",
+      "segments": [
+        {
+          "segfile": "wind_board_flyby_entity",
+          "width": 6,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 15
+        },
+        {
+          "segfile": "wind_board_wind_speedlines_0",
+          "width": 10,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "wind_board_wind_speedlines_1",
+          "width": 2,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "wind_board_wind_speedlines_2",
+          "width": 2,
+          "palette": "rayquaza_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "wind_board_unused_tail",
           "width": 4,
           "palette": "rayquaza_board_palset_0.gbapal",
           "palbank": 12

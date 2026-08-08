@@ -218,6 +218,7 @@ SLOTS = {
     ('graphics/stage/spheal', 'spheal_results'): ('spheal', 704, 64, 'spheal_process3.c'),
     # 306 tiles, though the copy asks for 320 and runs into the label below it.
     ('graphics/stage/rayquaza', 'sky_background'): ('rayquaza', 704, 306, 'rayquaza_process3.c'),
+    ('graphics/stage/rayquaza', 'wind_board'): ('rayquaza', 704, 224, 'rayquaza_process3.c'),
     ('graphics/stage/dusclops', 'dusclops_bonus_clear'): ('dusclops', 704, 256, 'dusclops_process3.c'),
     ('graphics/stage/groudon', 'groudon_bonus_clear'): ('groudon', 704, 256, 'groudon_process3.c'),
     ('graphics/stage/kecleon', 'kecleon_bonus_clear'): ('kecleon', 704, 256, 'kecleon_process3.c'),
@@ -333,6 +334,9 @@ OVERRIDES = {
     ('groudon', 'board_fx', 'board_fx_ball_grab_frames'): (12, 'foreign set in the 704 slot outvoted bank 12'),
     ('rayquaza', 'intro_sprite', 'intro_sprite_blank_spacer'): (12, 'blank padding tile'),
     ('rayquaza', 'sky_background', 'sky_background_orb'): (2, 'unreferenced, matches the clouds'),
+    # No gRaquaza* entry reaches the wind sheet's tail; the bank 8 the vote finds
+    # there belongs to another mode's sheet in the same 704 slot.
+    ('rayquaza', 'wind_board', 'wind_board_unused_tail'): (12, 'unreferenced, matches the speedlines'),
 
     # Tiles 0..72 of every bonus board's sheet are one shared block, byte for
     # byte; the pause panel and its borders sit at t36..56 and are drawn through
