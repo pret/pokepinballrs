@@ -1216,8 +1216,17 @@ gCatchTile_BurstStage4_Gfx:: @ 0x083A562C
 gCatchTile_BurstStage4_Pal:: @ 0x083A6E4C
 	.incbin "graphics/stage/main/catch_tile_burst_stage4.gbapal"
 
+@ Egg mode, over the tile-704 overlay slot, with gEggModePalette going to OBJ
+@ bank 14 in the copy above. gEggFloatOamFramesets draws three frames, each a
+@ 32x32 with a 16x8 under it and a 16x32 and 8x32 beside it. Only the first has
+@ every piece on one sub-tile phase, so it takes a shape; the other two put one
+@ piece a single pixel off and stay strips.
+@ t88..127 are blank but still inside the copy, so they are .space rather than a
+@ sheet of empty tiles. t128 is past the copy and is not blank.
 gEggModeTilesGfx:: @ 0x083A704C
-	.incbin "baserom.gba", 0x3A704C, 0x1020
+	.incbin "graphics/stage/main/egg_mode.4bpp"
+	.space 0x500
+	.incbin "graphics/stage/main/egg_mode_cap.4bpp"
 
 gEggModePalette:: @ 0x083A806C
 	.incbin "graphics/stage/main/egg_mode.gbapal"

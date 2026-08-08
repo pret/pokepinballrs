@@ -246,6 +246,10 @@ SLOT_PALETTES = {
                                                    'gCatchTile_RevealPalette, DMAd to OBJ bank 14 beside the sheet'),
     # Same pairing again for the burst stages, each with its own palette label
     # sitting beside its sheet in rom_1.s.
+    ('graphics/stage/main', 'egg_mode'): ('egg_mode.gbapal', 0,
+                                          'gEggModePalette, DMAd to OBJ bank 14 beside the sheet'),
+    ('graphics/stage/main', 'egg_mode_cap'): ('egg_mode.gbapal', 0,
+                                              'tail of the egg mode sheet, past the copy'),
     ('graphics/stage/main', 'catch_mon_appear_fx'): ('catch_mon_appear_fx.gbapal', 0,
                                                     'gCatchMonAppearFx_Pal, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'catch_tile_burst_stage3'): ('catch_tile_burst_stage3.gbapal', 0,
