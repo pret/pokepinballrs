@@ -1189,8 +1189,18 @@ gCatchTile_RevealTilesGfx:: @ 0x0839DDAC
 gCatchTile_RevealPalette:: @ 0x083A05CC
 	.incbin "graphics/stage/main/catch_tile_reveal.gbapal"
 
+@ 8 frames of the lightning strike, drawn by gCatchTile_RevealOamFramesets over
+@ the tile-704 overlay slot, with gCatchTile_BurstStart_Pal to OBJ bank 14 in the
+@ copy beside it. Six of the frames have their pieces on one sub-tile phase and
+@ consume the slice in order, so they get shapes; frame 4 has a piece 4px off and
+@ takes an approximate one.
+@ Frame 6 is the exception and stays a strip: its first two pieces both claim
+@ t207 -- a 16x16 at t204 and a 16x32 at t207 -- so the frame's tiles are not a
+@ single run and no shape can lay them out without reading one of them twice.
+@ t219 is unused, and t240..255 are unreferenced.
 gCatchTile_BurstStart_Gfx:: @ 0x083A07CC
-	.incbin "baserom.gba", 0x3A07CC, 0x2020
+	.incbin "graphics/stage/main/catch_tile_burst_start.4bpp"
+	.space 0x20
 
 gCatchTile_BurstStart_Pal:: @ 0x083A27EC
 	.incbin "graphics/stage/main/catch_tile_burst_start.gbapal"

@@ -1,0 +1,47 @@
+{
+  "kind": "oam-shape",
+  "version": 1,
+  "pngsize": "3x12",
+  "pieces": [
+    {
+      "pos": "0,0",
+      "size": "2x4"
+    },
+    {
+      "pos": "0,4",
+      "size": "2x4"
+    },
+    {
+      "pos": "2,3",
+      "size": "1x4"
+    },
+    {
+      "pos": "0,8",
+      "size": "2x4"
+    },
+    {
+      "pos": "2,8",
+      "size": "1x4"
+    },
+    {
+      "pos": "2,0",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "2,1",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "2,2",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "2,7",
+      "size": "1x1",
+      "spacer": true
+    }
+  ]
+}
