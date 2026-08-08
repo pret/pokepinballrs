@@ -154,6 +154,10 @@ SLOTS = {
     ('graphics/stage/ruby', 'gulpin'): ('ruby', 452, 12, 'ruby_trigger_targets.c, three slots'),
     ('graphics/stage/ruby', 'hatch_cave'): ('ruby', 277, 36, 'main_board_to_be_split.c'),
     ('graphics/stage/ruby', 'nuzleaf'): ('ruby', 540, 19, 'ruby_process3_entities_2.c'),
+    # Labelled gRubyFlashingDecorationTiles, but ruby_trigger_targets.c streams it
+    # into the Chikorita slot and gRubyChikoritaSpriteSet is what draws it.
+    ('graphics/stage/ruby', 'chikorita_frames'): ('ruby', 313, 24, 'ruby_trigger_targets.c'),
+    ('graphics/stage/ruby', 'makuhita'): ('ruby', 428, 24, 'ruby_ramp.c'),
     ('graphics/stage/ruby', 'ramp_prize'): ('ruby', 600, 4, 'ruby_ramp.c'),
     ('graphics/stage/ruby', 'sharpedo'): ('ruby', 353, 19, 'ruby_process3_entities_2.c'),
     ('graphics/stage/ruby', 'shop'): ('ruby', 488, 40, 'main_board_to_be_split.c'),
@@ -177,6 +181,12 @@ SLOTS = {
     ('graphics/stage/kecleon', 'kecleon_fx'): ('kecleon', 93, 8, 'kecleon_process3.c'),
 
     ('graphics/stage/groudon', 'boulders'): ('groudon', 125, 24, 'groudon_process3.c'),
+    ('graphics/stage/groudon', 'board_fx'): ('groudon', 704, 256, 'groudon_process3.c'),
+
+    # Labelled gKyogreWhirlpoolSpriteFrames, but the only code that reads it is
+    # the freeze trap (gKyogrefreezeTrapAnimFrameset, gKyogreFreezeTrapSpriteSet).
+    ('graphics/stage/kyogre', 'freeze_trap_frames'): ('kyogre', 295, 30, 'kyogre_process3.c'),
+    ('graphics/stage/kyogre', 'whirlpool_minion_frames'): ('kyogre', 169, 16, 'kyogre_process3.c'),
 
     ('graphics/stage/spheal', 'spheal'): ('spheal', 229, 9, 'spheal_process3.c'),
     ('graphics/stage/spheal', 'sealeo'): ('spheal', 165, 48, 'spheal_process3.c'),
@@ -205,6 +215,23 @@ SLOTS = {
     ('graphics/stage/ruby', 'travel_paint'): ('ruby', 704, 192, 'main_board_launcher_and_cutscenes.c'),
     ('graphics/stage/sapphire', 'travel_paint'): ('sapphire', 704, 192, 'main_board_launcher_and_cutscenes.c'),
     ('graphics/stage/main', 'ball_save'): ('ruby', 704, 288, 'all_board_mode_change_and_debug_menu.c'),
+    ('graphics/stage/main', 'capture_screen'): ('ruby', 704, 225, 'main_board_center_capture_hole.c'),
+    ('graphics/stage/main', 'alphabet'): ('ruby', 704, 2, 'main_board_to_be_split.c'),
+    ('graphics/stage/main', 'capture_mode'): ('ruby', 704, 102, 'main_board_to_be_split.c'),
+    ('graphics/stage/main', 'spoink_launcher'): ('ruby', 263, 14, 'main_board_launcher_and_cutscenes.c'),
+    ('graphics/stage/main', 'flipper_frames'): ('ruby', 0, 16, 'all_board_process4.c'),
+    ('graphics/stage/main', 'decimal_digits'): ('ruby', 749, 2, 'all_board_banners.c'),
+    ('graphics/stage/ruby', 'chikorita_projectile'): ('ruby', 528, 4, 'ruby_trigger_targets.c'),
+    ('graphics/stage/ruby', 'chikorita_projectile_fx'): ('ruby', 532, 8, 'ruby_trigger_targets.c'),
+    ('graphics/stage/ruby', 'linoone_side_bumper'): ('ruby', 337, 8, 'ruby_trigger_targets.c'),
+    ('graphics/stage/kyogre', 'surfacing_fx_frames'): ('kyogre', 289, 6, 'kyogre_process3.c'),
+    ('graphics/stage/rayquaza', 'entity_flying'): ('rayquaza', 177, 67, 'rayquaza_process3.c'),
+    ('graphics/stage/sapphire', 'hatch_machine_spark_fx'): ('sapphire', 517, 8, 'sapphire_seedot_egg_shop.c'),
+    # Labelled gBallShadowTileGraphics, but the group is FIELD_SG_BALL_UPGRADE_FX
+    # and gBallUpgradeFxSpriteSet is what draws it.
+    ('graphics/stage/main', 'ball_upgrade_fx_frames'): ('ruby', 247, 16, 'all_board_process7.c'),
+    ('graphics/stage/main', 'ball_spawn_glow_type1'): ('ruby', 57, 16, 'all_board_process7.c'),
+    ('graphics/stage/main', 'ball_spawn_glow_type2'): ('ruby', 57, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'end_of_ball'): ('ruby', 704, 320, 'all_board_mode_change_and_debug_menu.c'),
     ('graphics/stage/main', 'game_over_text'): ('ruby', 704, 32, 'all_board_mode_change_and_debug_menu.c'),
     ('graphics/stage/main', 'area_roulette_selected_fx'): ('ruby', 704, 20, 'main_board_intro_mode.c'),
@@ -212,6 +239,10 @@ SLOTS = {
     ('graphics/stage/spheal', 'spheal_results'): ('spheal', 704, 64, 'spheal_process3.c'),
     # 306 tiles, though the copy asks for 320 and runs into the label below it.
     ('graphics/stage/rayquaza', 'sky_background'): ('rayquaza', 704, 306, 'rayquaza_process3.c'),
+    ('graphics/stage/rayquaza', 'wind_board'): ('rayquaza', 704, 224, 'rayquaza_process3.c'),
+    # Labelled gRayquazaMinionOrbFrames; gRaquazaTornadoSpriteSet is what reads
+    # the slot, and the art is a tornado.
+    ('graphics/stage/rayquaza', 'tornado_frames'): ('rayquaza', 245, 20, 'rayquaza_process3.c'),
     ('graphics/stage/dusclops', 'dusclops_bonus_clear'): ('dusclops', 704, 256, 'dusclops_process3.c'),
     ('graphics/stage/groudon', 'groudon_bonus_clear'): ('groudon', 704, 256, 'groudon_process3.c'),
     ('graphics/stage/kecleon', 'kecleon_bonus_clear'): ('kecleon', 704, 256, 'kecleon_process3.c'),
@@ -227,6 +258,46 @@ SLOT_PALETTES = {
     # names bank 14, so the whole sheet takes that one palette.
     ('graphics/stage/main', 'catch_tile_reveal'): ('catch_tile_reveal.gbapal', 0,
                                                    'gCatchTile_RevealPalette, DMAd to OBJ bank 14 beside the sheet'),
+    # Same pairing again for the burst stages, each with its own palette label
+    # sitting beside its sheet in rom_1.s.
+    # OBJ bank 11 on the main field is not the board's own set: field_variants
+    # supplies it, three brightness sets crossed with the half of the board on
+    # screen.  Spoink is the plunger at the bottom, so it takes the lower-half
+    # variant -- greys with a pink crest -- not bank 11's resting value, which is
+    # the yellow-green set and is what the vote sees.  Ruby's intro sheet already
+    # carries the same binding for its own copy of this sprite.
+    ('graphics/stage/main', 'spoink_launcher'): ('field_variants.gbapal', 1,
+                                                 'bank 11, lower half of the board'),
+    # The two pond bumpers, streamed into the same three slots and each loading
+    # its own palette into OBJ bank 9 in the copy right after the tiles.
+    ('graphics/stage/main', 'chinchou_bumper'): ('chinchou_bumper.gbapal', 0,
+                                                 'gChinchouBumperPalettes, DMAd to OBJ bank 9 beside the sheet'),
+    ('graphics/stage/main', 'lotad_bumper'): ('lotad_bumper.gbapal', 0,
+                                              'gLotadBumperPalettes, DMAd to OBJ bank 9 beside the sheet'),
+    ('graphics/stage/main', 'egg_mode'): ('egg_mode.gbapal', 0,
+                                          'gEggModePalette, DMAd to OBJ bank 14 beside the sheet'),
+    ('graphics/stage/main', 'egg_mode_cap'): ('egg_mode.gbapal', 0,
+                                              'tail of the egg mode sheet, past the copy'),
+    ('graphics/stage/main', 'catch_mon_appear_fx'): ('catch_mon_appear_fx.gbapal', 0,
+                                                    'gCatchMonAppearFx_Pal, DMAd to OBJ bank 14 beside the sheet'),
+    ('graphics/stage/main', 'catch_tile_burst_start'): ('catch_tile_burst_start.gbapal', 0,
+                                                       'gCatchTile_BurstStart_Pal, DMAd to OBJ bank 14 beside the sheet'),
+    ('graphics/stage/main', 'catch_tile_burst_stage2'): ('catch_tile_burst_stage2.gbapal', 0,
+                                                        'gCatchTile_BurstStage2_Pal, DMAd to OBJ bank 14 beside the sheet'),
+    ('graphics/stage/main', 'catch_tile_burst_stage3'): ('catch_tile_burst_stage3.gbapal', 0,
+                                                        'gCatchTile_BurstStage3_Pal, DMAd to OBJ bank 14 beside the sheet'),
+    ('graphics/stage/main', 'catch_tile_burst_stage4'): ('catch_tile_burst_stage4.gbapal', 0,
+                                                        'gCatchTile_BurstStage4_Pal, DMAd to OBJ bank 14 beside the sheet'),
+    # Tile 57 is one of the lowest slots and half the game's screens put
+    # something there, so the vote lands on whichever set happens to cover most
+    # of it -- gPikaChargingSpinnerSpriteSet, with 9 of 16 tiles.  The set that
+    # actually reads this slot is gBonusBoardBallRespawnFxSpriteSet: one 32x32
+    # over the whole 16, drawn in bank 1, which is where the board keeps
+    # gBallPalettes.
+    ('graphics/stage/main', 'ball_spawn_glow_type1'): ('../ruby/ruby_board_palset_0.gbapal', 1,
+                                                       'gBonusBoardBallRespawnFxSpriteSet, bank 1'),
+    ('graphics/stage/main', 'ball_spawn_glow_type2'): ('../ruby/ruby_board_palset_0.gbapal', 1,
+                                                       'gBonusBoardBallRespawnFxSpriteSet, bank 1'),
     # Same pairing for the evolution banner: gBoardActionObjPal goes to OBJ bank
     # 14 in the copy right after the sheet's own
     # (main_board_launcher_and_cutscenes.c), and every gEvolutionBanner* entry
@@ -310,8 +381,39 @@ OVERRIDES = {
     ('rayquaza', 'intro_sprite', 'intro_sprite_balls'): (1, 'unreferenced, matches ball'),
 
     ('groudon', 'intro_sprite', 'intro_sprite_groudon_step'): (15, 'unreferenced, matches the body'),
+
+    # board_fx sits in the tile-704 overlay slot, which the board's sprite-set
+    # table shares with sheets from other modes, so the vote reaches entries that
+    # do not draw this art.  Every gGroudon* entry landing in 704..959 names bank
+    # 12 and nothing else, so that is the sheet's palette throughout; these are
+    # the segments where a foreign set outvoted it.
+    # The capture cutscene shares the 704 slot with the banner sheets, which
+    # outvote it below the float-up fx.  Everything from t123 on is the ball and
+    # its absorb fx: gMonCatchBallAbsorbPokemonFxSpriteSet names bank 1
+    # throughout, and gCaptureBallTilesGfx streams the ball itself into t102..105
+    # and t123..126, drawn with gBallPalettes in bank 1.
+    ('ruby', 'capture_mode', 'capture_mode_cap'):
+        (14, 'past the end of the copy, matches the sheet around it'),
+
+    ('ruby', 'capture_screen', 'capture_screen_capture_ball_slot_0'):
+        (1, 'gCaptureBallTilesGfx slot, drawn with gBallPalettes'),
+    ('ruby', 'capture_screen', 'capture_screen_unreferenced_gap'):
+        (1, 'unreferenced, sits between the two ball slots'),
+    ('ruby', 'capture_screen', 'capture_screen_absorb_fx'):
+        (1, 'gMonCatchBallAbsorbPokemonFxSpriteSet; a banner sheet outvoted it'),
+    ('ruby', 'capture_screen', 'capture_screen_unused_tail'):
+        (1, 'past the end of the copy, matches the absorb fx'),
+
+    ('groudon', 'board_fx', 'board_fx_projectile_spawn'): (12, 'foreign set in the 704 slot outvoted bank 12'),
+    ('groudon', 'board_fx', 'board_fx_projectile_impact'): (12, 'foreign set in the 704 slot outvoted bank 12'),
+    ('groudon', 'board_fx', 'board_fx_projectile_debris'): (12, 'foreign set in the 704 slot outvoted bank 12'),
+    ('groudon', 'board_fx', 'board_fx_projectile_split'): (12, 'foreign set in the 704 slot outvoted bank 12'),
+    ('groudon', 'board_fx', 'board_fx_ball_grab_frames'): (12, 'foreign set in the 704 slot outvoted bank 12'),
     ('rayquaza', 'intro_sprite', 'intro_sprite_blank_spacer'): (12, 'blank padding tile'),
     ('rayquaza', 'sky_background', 'sky_background_orb'): (2, 'unreferenced, matches the clouds'),
+    # No gRaquaza* entry reaches the wind sheet's tail; the bank 8 the vote finds
+    # there belongs to another mode's sheet in the same 704 slot.
+    ('rayquaza', 'wind_board', 'wind_board_unused_tail'): (12, 'unreferenced, matches the speedlines'),
 
     # Tiles 0..72 of every bonus board's sheet are one shared block, byte for
     # byte; the pause panel and its borders sit at t36..56 and are drawn through
