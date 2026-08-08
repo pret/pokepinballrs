@@ -564,6 +564,12 @@
       "width": 21,
       "palette": "field_variants.gbapal",
       "palbank": 1
+    },
+    {
+      "gfx_filename": "flipper_frames",
+      "width": 4,
+      "palette": "../ruby/ruby_board_palset_0.gbapal",
+      "palbank": 0
     }
   ]
 }

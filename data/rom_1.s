@@ -1439,8 +1439,13 @@ gPickupIcon8_Gfx:: @ 0x083FA84C
 gPickupIcon7_Gfx:: @ 0x083FC64C
 	.incbin "graphics/board_pickups/icon7_bolt.4bpp"
 
+@ 6 flipper angles of 0x200, copied into tile 0 for the left flipper and tile 16
+@ for the right (all_board_process4.c). Each is a single 32x32 from
+@ gBonusBoardLeft/RightFlipperSpriteSet in palette bank 0, so the sheet is 4
+@ tiles wide with no OAM packing. These are the same two slots the shared
+@ bonus-board block occupies at t0..31 on every board's intro sheet.
 gFlipperTileGraphics:: @ 0x083FE44C
-	.incbin "baserom.gba", 0x3FE44C, 0xC00
+	.incbin "graphics/stage/main/flipper_frames.4bpp"
 
 @ 52 letters of 0x40 -- A-Z then a-z -- each an 8x16 pair of tiles. The name
 @ display copies one letter at a time into tile 704 + 2i (main_board_to_be_split.c)

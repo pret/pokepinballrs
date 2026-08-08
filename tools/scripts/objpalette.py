@@ -219,6 +219,7 @@ SLOTS = {
     ('graphics/stage/main', 'alphabet'): ('ruby', 704, 2, 'main_board_to_be_split.c'),
     ('graphics/stage/main', 'capture_mode'): ('ruby', 704, 102, 'main_board_to_be_split.c'),
     ('graphics/stage/main', 'spoink_launcher'): ('ruby', 263, 14, 'main_board_launcher_and_cutscenes.c'),
+    ('graphics/stage/main', 'flipper_frames'): ('ruby', 0, 16, 'all_board_process4.c'),
     ('graphics/stage/main', 'ball_spawn_glow_type1'): ('ruby', 57, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'ball_spawn_glow_type2'): ('ruby', 57, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'end_of_ball'): ('ruby', 704, 320, 'all_board_mode_change_and_debug_menu.c'),
