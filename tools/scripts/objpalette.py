@@ -154,6 +154,7 @@ SLOTS = {
     ('graphics/stage/ruby', 'gulpin'): ('ruby', 452, 12, 'ruby_trigger_targets.c, three slots'),
     ('graphics/stage/ruby', 'hatch_cave'): ('ruby', 277, 36, 'main_board_to_be_split.c'),
     ('graphics/stage/ruby', 'nuzleaf'): ('ruby', 540, 19, 'ruby_process3_entities_2.c'),
+    ('graphics/stage/ruby', 'makuhita'): ('ruby', 428, 24, 'ruby_ramp.c'),
     ('graphics/stage/ruby', 'ramp_prize'): ('ruby', 600, 4, 'ruby_ramp.c'),
     ('graphics/stage/ruby', 'sharpedo'): ('ruby', 353, 19, 'ruby_process3_entities_2.c'),
     ('graphics/stage/ruby', 'shop'): ('ruby', 488, 40, 'main_board_to_be_split.c'),

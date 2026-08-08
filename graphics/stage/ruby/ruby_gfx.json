@@ -427,6 +427,13 @@
       "gfx_filename": "travel_volbeat",
       "oamshape": "../main/travel_painter_shape.json",
       "width": 102
+    },
+    {
+      "gfx_filename": "makuhita",
+      "oamshape": "makuhita_shape.json",
+      "width": 50,
+      "palette": "ruby_board_palset_0.gbapal",
+      "palbank": 8
     }
   ]
 }

@@ -1476,8 +1476,12 @@ gSapphireBumperLeftHit_Gfx:: @ 0x0847D10C
 @ palette sets); only 0x180 of each frame is DMAd, the rest is padding.
 	.incbin "graphics/stage/sapphire/bumper_minun_fx.4bpp"
 
+@ 10 frames of the ramp Makuhita, 0x300 each, streamed over tile 428 by
+@ ruby_ramp.c. gRubyMakuhitaSpriteSet draws each frame as a 32x32 with an 8x32
+@ beside it and a 32x8 under it, offset 8px right -- a 5x5 block with the
+@ bottom-left tile unused, so it needs an oam-shape rather than -mwidth.
 gRubyMakuhitaGfx:: @ 0x0847DF0C
-	.incbin "baserom.gba", 0x47DF0C, 0x1E00
+	.incbin "graphics/stage/ruby/makuhita.4bpp"
 
 gSideBumperGfx:: @ 0x0847FD0C
 	.incbin "baserom.gba", 0x47FD0C, 0x200
