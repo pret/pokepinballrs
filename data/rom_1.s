@@ -1360,8 +1360,12 @@ gKyogreSplashSpriteFrames:: @ 0x083C13AC
 gKyogreWhirlpoolSpriteFrames:: @ 0x083C1A6C
 	.incbin "graphics/stage/kyogre/freeze_trap_frames.4bpp"
 
+@ Not decorations: these are the ruby board's Chikorita, 8 frames of 0x300
+@ streamed over tile 313 by ruby_trigger_targets.c and drawn through
+@ gRubyChikoritaSpriteSet in palette bank 3. Each frame is a 32x32 over a 32x16,
+@ so it tiles into a clean 4x6 block with nothing left over.
 gRubyFlashingDecorationTiles:: @ 0x083C3C2C
-	.incbin "baserom.gba", 0x3C3C2C, 0x1800
+	.incbin "graphics/stage/ruby/chikorita_frames.4bpp"
 
 gChikoritaProjectileTiles:: @ 0x083C542C
 	.incbin "baserom.gba", 0x3C542C, 0x200
