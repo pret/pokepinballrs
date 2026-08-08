@@ -1434,8 +1434,13 @@ gPickupIcon7_Gfx:: @ 0x083FC64C
 gFlipperTileGraphics:: @ 0x083FE44C
 	.incbin "baserom.gba", 0x3FE44C, 0xC00
 
+@ 52 letters of 0x40 -- A-Z then a-z -- each an 8x16 pair of tiles. The name
+@ display copies one letter at a time into tile 704 + 2i (main_board_to_be_split.c)
+@ and gLegendaryCatchNameBannerSpriteSet draws the ten slots in palette bank 1.
+@ Laid out 26 across so the two cases read as two rows. gSpaceTileGfx below is
+@ the blank the same loop uses for a space.
 gAlphabetTilesGfx:: @ 0x083FF04C
-	.incbin "baserom.gba", 0x3FF04C, 0xD00
+	.incbin "graphics/stage/main/alphabet.4bpp"
 
 gSpaceTileGfx:: @ 0x083FFD4C
 	.space 0x40

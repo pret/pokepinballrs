@@ -507,6 +507,15 @@
       "width": 1,
       "palette": "egg_mode.gbapal",
       "palbank": 0
+    },
+    {
+      "gfx_filename": "alphabet",
+      "oam": true,
+      "mwidth": 1,
+      "mheight": 2,
+      "width": 26,
+      "palette": "../ruby/ruby_board_palset_0.gbapal",
+      "palbank": 1
     }
   ]
 }
