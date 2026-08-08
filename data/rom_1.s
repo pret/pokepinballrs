@@ -1559,8 +1559,14 @@ gKyogreBodySprites_After15:: @ 0x0849B8CC
 @ last of these 12.
 	.incbin "graphics/stage/kyogre/body_after15.4bpp"
 
+@ Not a background despite the label: this is the Groudon board's OBJ effect
+@ art, streamed whole over the tile-704 overlay slot by groudon_process3.c.
+@ Three animations share it -- gGroudonProjectileAttackOamData at t0..51,
+@ gGroudonProjectileOamData at t52..163 and gGroudonBallGrabOamData at
+@ t164..255 -- all in palette bank 12. t50..51 and t240..254 are unreferenced.
 gGroudonBoardBackgroundGfx:: @ 0x0849F1CC
-	.incbin "baserom.gba", 0x49F1CC, 0x2020
+	.incbin "graphics/stage/groudon/board_fx.4bpp"
+	.space 0x20
 
 gGroudonBoardBoulders_Gfx:: @ 0x084A11EC
 	.incbin "graphics/stage/groudon/boulders.4bpp";

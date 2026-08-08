@@ -178,6 +178,7 @@ SLOTS = {
     ('graphics/stage/kecleon', 'kecleon_fx'): ('kecleon', 93, 8, 'kecleon_process3.c'),
 
     ('graphics/stage/groudon', 'boulders'): ('groudon', 125, 24, 'groudon_process3.c'),
+    ('graphics/stage/groudon', 'board_fx'): ('groudon', 704, 256, 'groudon_process3.c'),
 
     # Labelled gKyogreWhirlpoolSpriteFrames, but the only code that reads it is
     # the freeze trap (gKyogrefreezeTrapAnimFrameset, gKyogreFreezeTrapSpriteSet).
@@ -319,6 +320,17 @@ OVERRIDES = {
     ('rayquaza', 'intro_sprite', 'intro_sprite_balls'): (1, 'unreferenced, matches ball'),
 
     ('groudon', 'intro_sprite', 'intro_sprite_groudon_step'): (15, 'unreferenced, matches the body'),
+
+    # board_fx sits in the tile-704 overlay slot, which the board's sprite-set
+    # table shares with sheets from other modes, so the vote reaches entries that
+    # do not draw this art.  Every gGroudon* entry landing in 704..959 names bank
+    # 12 and nothing else, so that is the sheet's palette throughout; these are
+    # the segments where a foreign set outvoted it.
+    ('groudon', 'board_fx', 'board_fx_projectile_spawn'): (12, 'foreign set in the 704 slot outvoted bank 12'),
+    ('groudon', 'board_fx', 'board_fx_projectile_impact'): (12, 'foreign set in the 704 slot outvoted bank 12'),
+    ('groudon', 'board_fx', 'board_fx_projectile_debris'): (12, 'foreign set in the 704 slot outvoted bank 12'),
+    ('groudon', 'board_fx', 'board_fx_projectile_split'): (12, 'foreign set in the 704 slot outvoted bank 12'),
+    ('groudon', 'board_fx', 'board_fx_ball_grab_frames'): (12, 'foreign set in the 704 slot outvoted bank 12'),
     ('rayquaza', 'intro_sprite', 'intro_sprite_blank_spacer'): (12, 'blank padding tile'),
     ('rayquaza', 'sky_background', 'sky_background_orb'): (2, 'unreferenced, matches the clouds'),
 
