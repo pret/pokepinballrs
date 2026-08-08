@@ -186,6 +186,7 @@ SLOTS = {
     # Labelled gKyogreWhirlpoolSpriteFrames, but the only code that reads it is
     # the freeze trap (gKyogrefreezeTrapAnimFrameset, gKyogreFreezeTrapSpriteSet).
     ('graphics/stage/kyogre', 'freeze_trap_frames'): ('kyogre', 295, 30, 'kyogre_process3.c'),
+    ('graphics/stage/kyogre', 'whirlpool_minion_frames'): ('kyogre', 169, 16, 'kyogre_process3.c'),
 
     ('graphics/stage/spheal', 'spheal'): ('spheal', 229, 9, 'spheal_process3.c'),
     ('graphics/stage/spheal', 'sealeo'): ('spheal', 165, 48, 'spheal_process3.c'),

@@ -1713,8 +1713,12 @@ gRubyBoardRampPrize_Gfx:: @ 0x084FEF0C
 gDusclopsBoardDusclopsBallGrabSwirl_Gfx:: @ 0x084FF30C
 	.incbin "graphics/stage/dusclops/dusclops_ball_grab.4bpp";
 
+@ 11 frames of the vortex minion, 0x200 each, streamed into whichever of the two
+@ 16-tile slots at t169 and t185 the entity holds (kyogre_process3.c). Each frame
+@ is a single 32x32, so the sheet is 4 tiles wide with no OAM packing. The 8
+@ tiles after the eleventh frame are past the end of the animation.
 gKyogreWhirlpoolMinionSprites:: @ 0x084FF90C
-	.incbin "baserom.gba", 0x4FF90C, 0x1700
+	.incbin "graphics/stage/kyogre/whirlpool_minion_frames.4bpp"
 
 gMainBoardBallSave_Gfx:: @ 0x0850100C
 	.incbin "graphics/stage/main/ball_save.4bpp";
