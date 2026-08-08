@@ -1332,8 +1332,13 @@ gSpoinkEntity_Gfx:: @ 0x083C076C
 gKyogreSplashSpriteFrames:: @ 0x083C13AC
 	.incbin "baserom.gba", 0x3C13AC, 0x6C0
 
+@ 9 frames of the freeze trap, 0x3C0 each, streamed over tile 295 by
+@ KyogreProcess3 (kyogre_process3.c). Each frame is 4 OAM pieces -- a 32x32
+@ over a 16x32 with a 32x8 and a 16x8 beneath, gKyogreFreezeTrapSpriteSet,
+@ palette bank 12 -- so a frame tiles into a 6x5 block. Frame 0 is the same
+@ 30 tiles the intro sheet already carries as iceberg + ice_bits.
 gKyogreWhirlpoolSpriteFrames:: @ 0x083C1A6C
-	.incbin "baserom.gba", 0x3C1A6C, 0x21C0
+	.incbin "graphics/stage/kyogre/freeze_trap_frames.4bpp"
 
 gRubyFlashingDecorationTiles:: @ 0x083C3C2C
 	.incbin "baserom.gba", 0x3C3C2C, 0x1800

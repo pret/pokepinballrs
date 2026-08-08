@@ -178,6 +178,10 @@ SLOTS = {
 
     ('graphics/stage/groudon', 'boulders'): ('groudon', 125, 24, 'groudon_process3.c'),
 
+    # Labelled gKyogreWhirlpoolSpriteFrames, but the only code that reads it is
+    # the freeze trap (gKyogrefreezeTrapAnimFrameset, gKyogreFreezeTrapSpriteSet).
+    ('graphics/stage/kyogre', 'freeze_trap_frames'): ('kyogre', 295, 30, 'kyogre_process3.c'),
+
     ('graphics/stage/spheal', 'spheal'): ('spheal', 229, 9, 'spheal_process3.c'),
     ('graphics/stage/spheal', 'sealeo'): ('spheal', 165, 48, 'spheal_process3.c'),
     ('graphics/stage/spheal', 'spheal_net'): ('spheal', 73, 16, 'spheal_process3.c'),

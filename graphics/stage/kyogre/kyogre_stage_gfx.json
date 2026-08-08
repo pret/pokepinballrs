@@ -198,6 +198,15 @@
           "palbank": 12
         }
       ]
+    },
+    {
+      "gfx_filename": "freeze_trap_frames",
+      "oam": true,
+      "mwidth": 6,
+      "mheight": 5,
+      "width": 6,
+      "palette": "kyogre_board_palset_0.gbapal",
+      "palbank": 12
     }
   ]
 }
