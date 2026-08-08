@@ -576,6 +576,18 @@
       "width": 4,
       "palette": "../ruby/ruby_board_palset_0.gbapal",
       "palbank": 1
+    },
+    {
+      "gfx_filename": "chinchou_bumper",
+      "width": 2,
+      "palette": "chinchou_bumper.gbapal",
+      "palbank": 0
+    },
+    {
+      "gfx_filename": "lotad_bumper",
+      "width": 2,
+      "palette": "lotad_bumper.gbapal",
+      "palbank": 0
     }
   ]
 }

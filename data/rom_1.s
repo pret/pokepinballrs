@@ -1419,8 +1419,14 @@ gChikoritaExplosionTiles:: @ 0x083C562C
 gRayquazaSkyBackgroundGfx:: @ 0x083C5A2C
 	.incbin "graphics/stage/rayquaza/sky_background.4bpp"
 
+@ Not flashing tiles: this is the Chinchou pond bumper, the else branch of the
+@ pond bumper draw in ruby_process3_entities_2.c. 11 frames of 0x100, streamed
+@ into tile 372 + 8i for the three bumpers, each a single 16x32 from
+@ gRubyBumpersSpriteSet drawn twice side by side. Palette bank 9, loaded from
+@ gChinchouBumperPalettes in the copy right after. The Lotad bumper below is the
+@ if branch of the same loop and matches it frame for frame.
 gRubyFlashingTiles_Secondary:: @ 0x083C806C
-	.incbin "baserom.gba", 0x3C806C, 0xB00
+	.incbin "graphics/stage/main/chinchou_bumper.4bpp"
 
 .include "data/graphics/mon_hatch_sprites.inc"
 
@@ -1476,7 +1482,7 @@ gMainStageBonusTrap_Gfx:: @ 0x0844838C
 	.incbin "graphics/stage/main/bonus_trap.4bpp"
 
 gLotadBumperTiles:: @ 0x0844928C
-	.incbin "baserom.gba", 0x44928C, 0xB00
+	.incbin "graphics/stage/main/lotad_bumper.4bpp"
 
 gRubyStageCyndaquil_Gfx:: @ 0x08449D8C
 	.incbin "graphics/stage/ruby/cyndaquil.4bpp"

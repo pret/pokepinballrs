@@ -261,6 +261,12 @@ SLOT_PALETTES = {
     # carries the same binding for its own copy of this sprite.
     ('graphics/stage/main', 'spoink_launcher'): ('field_variants.gbapal', 1,
                                                  'bank 11, lower half of the board'),
+    # The two pond bumpers, streamed into the same three slots and each loading
+    # its own palette into OBJ bank 9 in the copy right after the tiles.
+    ('graphics/stage/main', 'chinchou_bumper'): ('chinchou_bumper.gbapal', 0,
+                                                 'gChinchouBumperPalettes, DMAd to OBJ bank 9 beside the sheet'),
+    ('graphics/stage/main', 'lotad_bumper'): ('lotad_bumper.gbapal', 0,
+                                              'gLotadBumperPalettes, DMAd to OBJ bank 9 beside the sheet'),
     ('graphics/stage/main', 'egg_mode'): ('egg_mode.gbapal', 0,
                                           'gEggModePalette, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'egg_mode_cap'): ('egg_mode.gbapal', 0,
