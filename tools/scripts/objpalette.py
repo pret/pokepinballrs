@@ -249,6 +249,14 @@ SLOT_PALETTES = {
                                                    'gCatchTile_RevealPalette, DMAd to OBJ bank 14 beside the sheet'),
     # Same pairing again for the burst stages, each with its own palette label
     # sitting beside its sheet in rom_1.s.
+    # OBJ bank 11 on the main field is not the board's own set: field_variants
+    # supplies it, three brightness sets crossed with the half of the board on
+    # screen.  Spoink is the plunger at the bottom, so it takes the lower-half
+    # variant -- greys with a pink crest -- not bank 11's resting value, which is
+    # the yellow-green set and is what the vote sees.  Ruby's intro sheet already
+    # carries the same binding for its own copy of this sprite.
+    ('graphics/stage/main', 'spoink_launcher'): ('field_variants.gbapal', 1,
+                                                 'bank 11, lower half of the board'),
     ('graphics/stage/main', 'egg_mode'): ('egg_mode.gbapal', 0,
                                           'gEggModePalette, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'egg_mode_cap'): ('egg_mode.gbapal', 0,
