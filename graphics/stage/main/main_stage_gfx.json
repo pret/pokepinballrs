@@ -9,26 +9,26 @@
   "files": [
     {
       "gfx_filename": "board_action",
-      "segments":[
+      "segments": [
         {
-            "segfile": "board_action_text_large",
-            "width": 8
+          "segfile": "board_action_text_large",
+          "width": 8
         },
         {
-            "segfile": "board_action_text_medium",
-            "width": 8
+          "segfile": "board_action_text_medium",
+          "width": 8
         },
         {
-            "segfile": "board_action_text_small",
-            "width": 6
+          "segfile": "board_action_text_small",
+          "width": 6
         },
         {
-            "segfile": "board_action_bolts",
-            "width": 2
+          "segfile": "board_action_bolts",
+          "width": 2
         },
         {
-            "segfile": "board_action_sparkle",
-            "width": 2
+          "segfile": "board_action_sparkle",
+          "width": 2
         }
       ],
       "palette": "board_action_obj.gbapal",
@@ -36,50 +36,50 @@
     },
     {
       "gfx_filename": "catch_tile_reveal",
-      "segments":[
+      "segments": [
         {
-            "segfile": "catch_tile_reveal_shards_0",
-            "width": 4
+          "segfile": "catch_tile_reveal_shards_0",
+          "width": 4
         },
         {
-            "segfile": "catch_tile_reveal_shards_1",
-            "width": 2
+          "segfile": "catch_tile_reveal_shards_1",
+          "width": 2
         },
         {
-            "segfile": "catch_tile_reveal_specks_0",
-            "width": 1
+          "segfile": "catch_tile_reveal_specks_0",
+          "width": 1
         },
         {
-            "segfile": "catch_tile_reveal_shards_2",
-            "width": 2
+          "segfile": "catch_tile_reveal_shards_2",
+          "width": 2
         },
         {
-            "segfile": "catch_tile_reveal_specks_1",
-            "width": 1
+          "segfile": "catch_tile_reveal_specks_1",
+          "width": 1
         },
         {
-            "segfile": "catch_tile_reveal_shards_3",
-            "width": 2
+          "segfile": "catch_tile_reveal_shards_3",
+          "width": 2
         },
         {
-            "segfile": "catch_tile_reveal_wave_0",
-            "width": 4
+          "segfile": "catch_tile_reveal_wave_0",
+          "width": 4
         },
         {
-            "segfile": "catch_tile_reveal_debris",
-            "width": 5
+          "segfile": "catch_tile_reveal_debris",
+          "width": 5
         },
         {
-            "segfile": "catch_tile_reveal_wave_1",
-            "width": 4
+          "segfile": "catch_tile_reveal_wave_1",
+          "width": 4
         },
         {
-            "segfile": "catch_tile_reveal_wave_1_cap",
-            "width": 1
+          "segfile": "catch_tile_reveal_wave_1_cap",
+          "width": 1
         },
         {
-            "segfile": "catch_tile_reveal_dome",
-            "width": 4
+          "segfile": "catch_tile_reveal_dome",
+          "width": 4
         }
       ],
       "palette": "catch_tile_reveal.gbapal",
@@ -87,74 +87,74 @@
     },
     {
       "gfx_filename": "gunk_084F61EC",
-      "mwidth":8,
-      "align":1,
+      "mwidth": 8,
+      "align": 1,
       "palette": "bonus_stage_obj.gbapal",
       "palbank": 5
     },
     {
       "gfx_filename": "gunk_0844AA0C",
-      "mwidth":6,
+      "mwidth": 6,
       "mheight": 6,
-      "oam":true,
+      "oam": true,
       "palette": "../main/bonus_stage_obj.gbapal",
       "palbank": 4
     },
     {
       "gfx_filename": "pika_spinner",
-      "mwidth":3,
-      "mheight":3,
-      "width":12,
-      "oam":true,
+      "mwidth": 3,
+      "mheight": 3,
+      "width": 12,
+      "oam": true,
       "palette": "../ruby/ruby_board_palset_0.gbapal",
       "palbank": 3
     },
     {
       "gfx_filename": "jirachi_banner",
-      "mwidth":30,
-      "mheight":9,
-      "oam":true
+      "mwidth": 30,
+      "mheight": 9,
+      "oam": true
     },
     {
       "gfx_filename": "travel",
-      "segments":[
+      "segments": [
         {
           "segfile": "travel_banner",
-          "mwidth":30,
-          "mheight":8,
-          "oam":true
+          "mwidth": 30,
+          "mheight": 8,
+          "oam": true
         },
         {
           "segfile": "travel_bottom_border",
-          "width":5
+          "width": 5
         },
         {
           "segfile": "travel_pole",
-          "width":4
+          "width": 4
         },
         {
           "segfile": "travel_arrows",
-          "mwidth":3,
-          "mheight":4,
-          "oam":true
+          "mwidth": 3,
+          "mheight": 4,
+          "oam": true
         },
         {
           "segfile": "travel_pole_base",
-          "width":2
+          "width": 2
         }
       ]
     },
     {
       "gfx_filename": "evo_banner",
-      "mheight":9,
-      "mwidth":30,
-      "oam":true
+      "mheight": 9,
+      "mwidth": 30,
+      "oam": true
     },
     {
       "gfx_filename": "game_over_text",
       "mheight": 2,
       "mwidth": 2,
-      "width":16,
+      "width": 16,
       "palette": "bonus_clear_text_lit.gbapal",
       "palbank": 0
     },
@@ -165,14 +165,14 @@
     },
     {
       "gfx_filename": "latios",
-      "mheight":8,
-      "mwidth":8,
+      "mheight": 8,
+      "mwidth": 8,
       "palette": "bonus_stage_lit.gbapal",
       "palbank": 0
     },
     {
       "gfx_filename": "latios_arm",
-      "width":2,
+      "width": 2,
       "palette": "bonus_stage_lit.gbapal",
       "palbank": 0
     },
@@ -180,20 +180,20 @@
       "gfx_filename": "ball_save",
       "segments": [
         {
-            "segfile":"ball_save_banner",
-            "mwidth":16,
-            "mheight":8,
-            "oam":true
+          "segfile": "ball_save_banner",
+          "mwidth": 16,
+          "mheight": 8,
+          "oam": true
         },
         {
-            "segfile":"ball_save_latias",
-            "width":8,
-            "height":8
+          "segfile": "ball_save_latias",
+          "width": 8,
+          "height": 8
         },
         {
-            "segfile":"ball_save_latias_arm",
-            "width":2,
-            "height":3
+          "segfile": "ball_save_latias_arm",
+          "width": 2,
+          "height": 3
         }
       ],
       "palette": "bonus_stage_lit.gbapal",
@@ -203,31 +203,31 @@
       "gfx_filename": "end_of_ball",
       "segments": [
         {
-            "segfile":"end_of_ball_left",
-            "mwidth":8,
-            "mheight":8
+          "segfile": "end_of_ball_left",
+          "mwidth": 8,
+          "mheight": 8
         },
         {
-            "segfile":"end_of_ball_top_corner",
-            "mwidth":2,
-            "mheight":2
+          "segfile": "end_of_ball_top_corner",
+          "mwidth": 2,
+          "mheight": 2
         },
         {
-            "segfile":"end_of_ball_banner",
-            "mwidth":22,
-            "mheight":2,
-            "oam":true
+          "segfile": "end_of_ball_banner",
+          "mwidth": 22,
+          "mheight": 2,
+          "oam": true
         },
         {
-            "segfile":"end_of_ball_right",
-            "mwidth":8,
-            "mheight":8
+          "segfile": "end_of_ball_right",
+          "mwidth": 8,
+          "mheight": 8
         },
         {
-            "segfile":"end_of_ball_space",
-            "mwidth":24,
-            "mheight":2,
-            "oam":true
+          "segfile": "end_of_ball_space",
+          "mwidth": 24,
+          "mheight": 2,
+          "oam": true
         }
       ],
       "palette": "bonus_clear_text_lit.gbapal",
@@ -235,27 +235,27 @@
     },
     {
       "gfx_filename": "bonus_trap",
-      "mwidth":6,
-      "mheight":4,
-      "oam":true,
+      "mwidth": 6,
+      "mheight": 4,
+      "oam": true,
       "palette": "../ruby/ruby_board_palset_0.gbapal",
       "palbank": 1
     },
     {
       "gfx_filename": "pokeball_regular",
-      "mwidth":2 
+      "mwidth": 2
     },
     {
       "gfx_filename": "pokeball_great",
-      "mwidth":2 
+      "mwidth": 2
     },
     {
       "gfx_filename": "pokeball_ultra",
-      "mwidth":2 
+      "mwidth": 2
     },
     {
       "gfx_filename": "pokeball_master",
-      "mwidth":2 
+      "mwidth": 2
     },
     {
       "gfx_filename": "ball_open_to_catch",
@@ -345,6 +345,47 @@
       "gfx_filename": "catch_tile_burst_stage3",
       "palette": "catch_tile_burst_stage3.gbapal",
       "palbank": 0
+    },
+    {
+      "gfx_filename": "capture_screen",
+      "segments": [
+        {
+          "segfile": "capture_screen_float_mon",
+          "width": 6,
+          "palette": "bonus_stage_obj.gbapal",
+          "palbank": 5
+        },
+        {
+          "segfile": "capture_screen_capture_ball_slot_0",
+          "width": 4,
+          "palette": "../ruby/ruby_board_palset_0.gbapal",
+          "palbank": 1
+        },
+        {
+          "segfile": "capture_screen_unreferenced_gap",
+          "width": 17,
+          "palette": "../ruby/ruby_board_palset_0.gbapal",
+          "palbank": 1
+        },
+        {
+          "segfile": "capture_screen_capture_ball_slot_1",
+          "width": 4,
+          "palette": "../ruby/ruby_board_palset_0.gbapal",
+          "palbank": 1
+        },
+        {
+          "segfile": "capture_screen_absorb_fx",
+          "width": 4,
+          "palette": "../ruby/ruby_board_palset_0.gbapal",
+          "palbank": 1
+        },
+        {
+          "segfile": "capture_screen_unused_tail",
+          "width": 2,
+          "palette": "../ruby/ruby_board_palset_0.gbapal",
+          "palbank": 1
+        }
+      ]
     }
   ]
 }

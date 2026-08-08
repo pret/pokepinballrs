@@ -787,8 +787,16 @@ gRayquazaBonusClear_Gfx:: @ 0x081408B4
 	.incbin "graphics/stage/rayquaza/rayquaza_bonus_clear.4bpp"
 	.space 0x20
 
+@ The capture cutscene, streamed over the tile-704 overlay slot from three
+@ places (main_board_center_capture_hole.c, main_board_to_be_split.c and
+@ save_and_restore_game.c). t0..101 is the float-up fx drawn by
+@ gPokemonFloatOamFramesets, t127..222 the ball absorb fx from
+@ gMonCatchBallAbsorbPokemonFxSpriteSet. t102..105 and t123..126 are sub-slots
+@ the ball graphic streams into, from gCaptureBallTilesGfx.
+@ Unlike the other sheets here the copy is 0x20 short of the label, and that
+@ last tile is not blank, so it stays in the sheet rather than becoming .space.
 gCaptureScreenTilesGfx:: @ 0x081428D4
-	.incbin "baserom.gba", 0x1428D4, 0x1C20
+	.incbin "graphics/stage/main/capture_screen.4bpp"
 
 .include "data/graphics/mon_hatch_sprites_pals.inc"
 

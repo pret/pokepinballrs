@@ -211,6 +211,7 @@ SLOTS = {
     ('graphics/stage/ruby', 'travel_paint'): ('ruby', 704, 192, 'main_board_launcher_and_cutscenes.c'),
     ('graphics/stage/sapphire', 'travel_paint'): ('sapphire', 704, 192, 'main_board_launcher_and_cutscenes.c'),
     ('graphics/stage/main', 'ball_save'): ('ruby', 704, 288, 'all_board_mode_change_and_debug_menu.c'),
+    ('graphics/stage/main', 'capture_screen'): ('ruby', 704, 225, 'main_board_center_capture_hole.c'),
     ('graphics/stage/main', 'end_of_ball'): ('ruby', 704, 320, 'all_board_mode_change_and_debug_menu.c'),
     ('graphics/stage/main', 'game_over_text'): ('ruby', 704, 32, 'all_board_mode_change_and_debug_menu.c'),
     ('graphics/stage/main', 'area_roulette_selected_fx'): ('ruby', 704, 20, 'main_board_intro_mode.c'),
@@ -327,6 +328,20 @@ OVERRIDES = {
     # do not draw this art.  Every gGroudon* entry landing in 704..959 names bank
     # 12 and nothing else, so that is the sheet's palette throughout; these are
     # the segments where a foreign set outvoted it.
+    # The capture cutscene shares the 704 slot with the banner sheets, which
+    # outvote it below the float-up fx.  Everything from t123 on is the ball and
+    # its absorb fx: gMonCatchBallAbsorbPokemonFxSpriteSet names bank 1
+    # throughout, and gCaptureBallTilesGfx streams the ball itself into t102..105
+    # and t123..126, drawn with gBallPalettes in bank 1.
+    ('ruby', 'capture_screen', 'capture_screen_capture_ball_slot_0'):
+        (1, 'gCaptureBallTilesGfx slot, drawn with gBallPalettes'),
+    ('ruby', 'capture_screen', 'capture_screen_unreferenced_gap'):
+        (1, 'unreferenced, sits between the two ball slots'),
+    ('ruby', 'capture_screen', 'capture_screen_absorb_fx'):
+        (1, 'gMonCatchBallAbsorbPokemonFxSpriteSet; a banner sheet outvoted it'),
+    ('ruby', 'capture_screen', 'capture_screen_unused_tail'):
+        (1, 'past the end of the copy, matches the absorb fx'),
+
     ('groudon', 'board_fx', 'board_fx_projectile_spawn'): (12, 'foreign set in the 704 slot outvoted bank 12'),
     ('groudon', 'board_fx', 'board_fx_projectile_impact'): (12, 'foreign set in the 704 slot outvoted bank 12'),
     ('groudon', 'board_fx', 'board_fx_projectile_debris'): (12, 'foreign set in the 704 slot outvoted bank 12'),
