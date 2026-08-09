@@ -484,7 +484,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                     return;
 
                 gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
-                gCurrentPinballGame->ballShadowTimer = 60;
+                gCurrentPinballGame->gBallUpgradeFxTimer = 60;
                 gCurrentPinballGame->scoreAddedInFrame = SCORE_BALL_UPGRADE_ALL_LIT;
                 return;
             }
@@ -507,7 +507,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                 return;
 
             gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
-            gCurrentPinballGame->ballShadowTimer = 60;
+            gCurrentPinballGame->gBallUpgradeFxTimer = 60;
             gCurrentPinballGame->scoreAddedInFrame = SCORE_BALL_UPGRADE_ALL_LIT;
             return;
         }
@@ -528,7 +528,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                 return;
 
             gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
-            gCurrentPinballGame->ballShadowTimer = 60;
+            gCurrentPinballGame->gBallUpgradeFxTimer = 60;
             gCurrentPinballGame->scoreAddedInFrame = SCORE_BALL_UPGRADE_ALL_LIT;
             return;
         }
@@ -726,7 +726,7 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                 {
                     gCurrentPinballGame->ballPowerUpOverride = TRUE;
                     gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
-                    gCurrentPinballGame->ballShadowTimer = 60;
+                    gCurrentPinballGame->gBallUpgradeFxTimer = 60;
                     m4aSongNumStart(SE_RAMP_PRIZE_COLLECTED);
                 }
 

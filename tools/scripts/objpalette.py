@@ -154,7 +154,7 @@ SLOTS = {
     ('graphics/stage/ruby', 'gulpin'): ('ruby', 452, 12, 'ruby_trigger_targets.c, three slots'),
     ('graphics/stage/ruby', 'hatch_cave'): ('ruby', 277, 36, 'main_board_to_be_split.c'),
     ('graphics/stage/ruby', 'nuzleaf'): ('ruby', 540, 19, 'ruby_process3_entities_2.c'),
-    # Labelled gRubyFlashingDecorationTiles, but ruby_trigger_targets.c streams it
+    # Labelled gRubyChikoritaEntity, but ruby_trigger_targets.c streams it
     # into the Chikorita slot and gRubyChikoritaSpriteSet is what draws it.
     ('graphics/stage/ruby', 'chikorita_frames'): ('ruby', 313, 24, 'ruby_trigger_targets.c'),
     ('graphics/stage/ruby', 'makuhita'): ('ruby', 428, 24, 'ruby_ramp.c'),
@@ -227,7 +227,7 @@ SLOTS = {
     ('graphics/stage/kyogre', 'surfacing_fx_frames'): ('kyogre', 289, 6, 'kyogre_process3.c'),
     ('graphics/stage/rayquaza', 'entity_flying'): ('rayquaza', 177, 67, 'rayquaza_process3.c'),
     ('graphics/stage/sapphire', 'hatch_machine_spark_fx'): ('sapphire', 517, 8, 'sapphire_seedot_egg_shop.c'),
-    # Labelled gBallShadowTileGraphics, but the group is FIELD_SG_BALL_UPGRADE_FX
+    # Labelled gBallUpgradeFx_Gfx, but the group is FIELD_SG_BALL_UPGRADE_FX
     # and gBallUpgradeFxSpriteSet is what draws it.
     ('graphics/stage/main', 'ball_upgrade_fx_frames'): ('ruby', 247, 16, 'all_board_process7.c'),
     ('graphics/stage/main', 'ball_spawn_glow_type1'): ('ruby', 57, 16, 'all_board_process7.c'),
@@ -240,7 +240,7 @@ SLOTS = {
     # 306 tiles, though the copy asks for 320 and runs into the label below it.
     ('graphics/stage/rayquaza', 'sky_background'): ('rayquaza', 704, 306, 'rayquaza_process3.c'),
     ('graphics/stage/rayquaza', 'wind_board'): ('rayquaza', 704, 224, 'rayquaza_process3.c'),
-    # Labelled gRayquazaMinionOrbFrames; gRaquazaTornadoSpriteSet is what reads
+    # Labelled gRayquazaTornadoGfx; gRaquazaTornadoSpriteSet is what reads
     # the slot, and the art is a tornado.
     ('graphics/stage/rayquaza', 'tornado_frames'): ('rayquaza', 245, 20, 'rayquaza_process3.c'),
     ('graphics/stage/dusclops', 'dusclops_bonus_clear'): ('dusclops', 704, 256, 'dusclops_process3.c'),
@@ -275,7 +275,7 @@ SLOT_PALETTES = {
     ('graphics/stage/main', 'lotad_bumper'): ('lotad_bumper.gbapal', 0,
                                               'gLotadBumperPalettes, DMAd to OBJ bank 9 beside the sheet'),
     ('graphics/stage/main', 'egg_mode'): ('egg_mode.gbapal', 0,
-                                          'gEggModePalette, DMAd to OBJ bank 14 beside the sheet'),
+                                          'gAerodactlyFlight_Pal, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'egg_mode_cap'): ('egg_mode.gbapal', 0,
                                               'tail of the egg mode sheet, past the copy'),
     ('graphics/stage/main', 'catch_mon_appear_fx'): ('catch_mon_appear_fx.gbapal', 0,

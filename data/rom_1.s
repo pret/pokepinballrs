@@ -1450,7 +1450,7 @@ gPikaSaverPartialCoverageGfx:: @ 0x08397E6C
 @ against the ball's offset from the Jirachi centre. Bit 7 is the solid flag and
 @ the low seven bits are the surface angle the collision answers with.
 gCatchTargetCollisionBitmap:: @ 0x0839A28C
-	.incbin "data/board_data/collision/catch_target_collision_48x48.bin"
+	.incbin "data/board_data/collision/catch_target_collision_48x48_typeless.bin"
 
 .include "data/graphics/mon_portraits_pals.inc"
 
@@ -1532,20 +1532,20 @@ gCatchTile_BurstStage4_Gfx:: @ 0x083A562C
 gCatchTile_BurstStage4_Pal:: @ 0x083A6E4C
 	.incbin "graphics/stage/main/catch_tile_burst_stage4.gbapal"
 
-@ Egg mode, over the tile-704 overlay slot, with gEggModePalette going to OBJ
+@ Egg mode, over the tile-704 overlay slot, with gAerodactlyFlight_Pal going to OBJ
 @ bank 14 in the copy above. gEggFloatOamFramesets draws three frames, each a
 @ 32x32 with a 16x8 under it and a 16x32 and 8x32 beside it. Only the first has
 @ every piece on one sub-tile phase, so it takes a shape; the other two put one
 @ piece a single pixel off and stay strips.
 @ t88..127 are blank but still inside the copy, so they are .space rather than a
 @ sheet of empty tiles. t128 is past the copy and is not blank.
-gEggModeTilesGfx:: @ 0x083A704C
-	.incbin "graphics/stage/main/egg_mode.4bpp"
+gAerodactlyFlight_Gfx:: @ 0x083A704C
+	.incbin "graphics/stage/main/aerodactyl_flight.4bpp"
 	.space 0x500
-	.incbin "graphics/stage/main/egg_mode_cap.4bpp"
+	.incbin "graphics/stage/main/aerodactyl_flight_cap.4bpp"
 
-gEggModePalette:: @ 0x083A806C
-	.incbin "graphics/stage/main/egg_mode.gbapal"
+gAerodactlyFlight_Pal:: @ 0x083A806C
+	.incbin "graphics/stage/main/aerodactyl_flight.gbapal"
 
 gCaptureModePalette:: @ 0x083A808C
 	.incbin "graphics/stage/main/capture_mode.gbapal"
@@ -1677,9 +1677,9 @@ gBallRotationTileGraphics:: @ 0x083BB16C
 @ FIELD_SG_BALL_UPGRADE_FX and gBallUpgradeFxSpriteSet draws them, a single 32x32
 @ over tile 247 in palette bank 1 -- the ball's own bank, which is why the frames
 @ come out as the upgrade sparkle rather than anything dark. 6 frames of 0x200,
-@ 4 tiles wide, no OAM packing. gBallShadowTileIndices and ballShadowTimer in
+@ 4 tiles wide, no OAM packing. gBallUpgradeFx_TileIndicies and gBallUpgradeFxTimer in
 @ ruby_board_indicators.c pick the frame and carry the same wrong name.
-gBallShadowTileGraphics:: @ 0x083BD36C
+gBallUpgradeFx_Gfx:: @ 0x083BD36C
 	.incbin "graphics/stage/main/ball_upgrade_fx_frames.4bpp"
 
 @ The two ball spawn glows, streamed a frame at a time over tile 57 by
@@ -1719,7 +1719,7 @@ gKyogreWhirlpoolSpriteFrames:: @ 0x083C1A6C
 @ streamed over tile 313 by ruby_trigger_targets.c and drawn through
 @ gRubyChikoritaSpriteSet in palette bank 3. Each frame is a 32x32 over a 32x16,
 @ so it tiles into a clean 4x6 block with nothing left over.
-gRubyFlashingDecorationTiles:: @ 0x083C3C2C
+gRubyChikoritaEntity:: @ 0x083C3C2C
 	.incbin "graphics/stage/ruby/chikorita_frames.4bpp"
 
 @ 4 frames of 0x80 over tile 528, one 16x16 each from
@@ -1735,7 +1735,7 @@ gChikoritaExplosionTiles:: @ 0x083C562C
 @ The three storm clouds of the Rayquaza intro, drawn by gRaquazaIntroCloud0/1/2
 @ SpriteSet over the tile-704 overlay slot in OBJ bank 2. The copy in
 @ rayquaza_process3.c asks for 0x2800 but the sheet is only 0x2640, so the last
-@ 14 tiles it lands in VRAM come from gRubyFlashingTiles_Secondary below.
+@ 14 tiles it lands in VRAM come from gChinchouBumper_Gfx below.
 gRayquazaSkyBackgroundGfx:: @ 0x083C5A2C
 	.incbin "graphics/stage/rayquaza/sky_background.4bpp"
 
@@ -1745,7 +1745,7 @@ gRayquazaSkyBackgroundGfx:: @ 0x083C5A2C
 @ gRubyBumpersSpriteSet drawn twice side by side. Palette bank 9, loaded from
 @ gChinchouBumperPalettes in the copy right after. The Lotad bumper below is the
 @ if branch of the same loop and matches it frame for frame.
-gRubyFlashingTiles_Secondary:: @ 0x083C806C
+gChinchouBumper_Gfx:: @ 0x083C806C
 	.incbin "graphics/stage/main/chinchou_bumper.4bpp"
 
 .include "data/graphics/mon_hatch_sprites.inc"
@@ -1801,7 +1801,7 @@ gRubyStageGulpin_Gfx:: @ 0x08447A8C
 gMainStageBonusTrap_Gfx:: @ 0x0844838C
 	.incbin "graphics/stage/main/bonus_trap.4bpp"
 
-gLotadBumperTiles:: @ 0x0844928C
+gLotadBumper_Gfx:: @ 0x0844928C
 	.incbin "graphics/stage/main/lotad_bumper.4bpp"
 
 gRubyStageCyndaquil_Gfx:: @ 0x08449D8C
@@ -1972,7 +1972,7 @@ gKyogreBodySprites_After15:: @ 0x0849B8CC
 @ Three animations share it -- gGroudonProjectileAttackOamData at t0..51,
 @ gGroudonProjectileOamData at t52..163 and gGroudonBallGrabOamData at
 @ t164..255 -- all in palette bank 12. t50..51 and t240..254 are unreferenced.
-gGroudonBoardBackgroundGfx:: @ 0x0849F1CC
+gGroudonAttackFx_Gfx:: @ 0x0849F1CC
 	.incbin "graphics/stage/groudon/board_fx.4bpp"
 	.space 0x20
 
@@ -1982,7 +1982,7 @@ gGroudonBoardBoulders_Gfx:: @ 0x084A11EC
 @ Not orbs: 9 frames of the tornado, 0x280 each, streamed over tile 245 by
 @ rayquaza_process3.c and drawn through gRaquazaTornadoSpriteSet in palette
 @ bank 12. Each frame is a 32x32 over a 32x8, so it tiles into a clean 4x5 block.
-gRayquazaMinionOrbFrames:: @ 0x084A6EEC
+gRayquazaTornadoGfx:: @ 0x084A6EEC
 	.incbin "graphics/stage/rayquaza/tornado_frames.4bpp"
 
 @ The wind attack, streamed whole over the tile-704 overlay slot by

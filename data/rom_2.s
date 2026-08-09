@@ -8571,7 +8571,7 @@ gRubyGetArrowTilePtrs:: @ 0x086B0D6C
     .4byte gRubyGetArrow_0825EE90, gRubyGetArrow_0825F270, gRubyGetArrow_0825F670
     .4byte 0x06008AC0, 0x06008EA0, 0x060092A0
 
-gBallShadowTileIndices:: @ 0x086B0E20
+gBallUpgradeFx_TileIndicies:: @ 0x086B0E20
     @ 31 values (ix 0 - 30) used, then padding
 	.2byte 0,0,0,0,1,1,1,1,2,2
     .2byte 2,2,3,3,3,3,4,4,4,4
