@@ -411,7 +411,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     if (!gCurrentPinballGame->ballPowerUpAnimActive && (gCurrentPinballGame->ballPowerUpLight[1] & gCurrentPinballGame->ballPowerUpLight[2]))
                     {
                         gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
-                        gCurrentPinballGame->ballShadowTimer = 60;
+                        gCurrentPinballGame->gBallUpgradeFxTimer = 60;
                         gCurrentPinballGame->scoreAddedInFrame = SCORE_BALL_UPGRADE_ALL_LIT;
                     }
                 }
@@ -427,7 +427,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     if (!gCurrentPinballGame->ballPowerUpAnimActive && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[2]))
                     {
                         gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
-                        gCurrentPinballGame->ballShadowTimer = 60;
+                        gCurrentPinballGame->gBallUpgradeFxTimer = 60;
                         gCurrentPinballGame->scoreAddedInFrame = SCORE_BALL_UPGRADE_ALL_LIT;
                     }
                 }
@@ -443,7 +443,7 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     if (!gCurrentPinballGame->ballPowerUpAnimActive && (gCurrentPinballGame->ballPowerUpLight[0] & gCurrentPinballGame->ballPowerUpLight[1]))
                     {
                         gCurrentPinballGame->ballPowerUpAnimActive = TRUE;
-                        gCurrentPinballGame->ballShadowTimer = 60;
+                        gCurrentPinballGame->gBallUpgradeFxTimer = 60;
                         gCurrentPinballGame->scoreAddedInFrame = SCORE_BALL_UPGRADE_ALL_LIT;
                     }
                 }

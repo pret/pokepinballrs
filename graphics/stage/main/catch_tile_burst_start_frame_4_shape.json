@@ -1,0 +1,77 @@
+{
+  "kind": "oam-shape",
+  "version": 1,
+  "pngsize": "4x12",
+  "pieces": [
+    {
+      "pos": "2,0",
+      "size": "2x4"
+    },
+    {
+      "pos": "2,4",
+      "size": "2x2"
+    },
+    {
+      "pos": "1,6",
+      "size": "2x4"
+    },
+    {
+      "pos": "3,6",
+      "size": "1x4"
+    },
+    {
+      "pos": "0,10",
+      "size": "4x2"
+    },
+    {
+      "pos": "0,0",
+      "size": "2x1",
+      "spacer": true
+    },
+    {
+      "pos": "0,1",
+      "size": "2x1",
+      "spacer": true
+    },
+    {
+      "pos": "0,2",
+      "size": "2x1",
+      "spacer": true
+    },
+    {
+      "pos": "0,3",
+      "size": "2x1",
+      "spacer": true
+    },
+    {
+      "pos": "0,4",
+      "size": "2x1",
+      "spacer": true
+    },
+    {
+      "pos": "0,5",
+      "size": "2x1",
+      "spacer": true
+    },
+    {
+      "pos": "0,6",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "0,7",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "0,8",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "0,9",
+      "size": "1x1",
+      "spacer": true
+    }
+  ]
+}

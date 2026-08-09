@@ -1,5 +1,5 @@
 gKecleonBoardPalette:: @ 0x0830CBD4
-	.incbin "baserom.gba", 0x30CBD4, 0x200
+	.incbin "graphics/stage/kecleon/kecleon_board.gbapal"
 
 gKecleonBoardBG1Tilemap:: @ 0x0830CDD4
 	.incbin "graphics/stage/kecleon/kecleon_board_bg1_tilemap.bin"

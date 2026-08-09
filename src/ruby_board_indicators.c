@@ -5,7 +5,7 @@
 #include "constants/board/ruby_states.h"
 
 extern const u8 *gRubyBallPowerUpLightTilePointers[][3];
-extern const u16 gBallShadowTileIndices[];
+extern const u16 gBallUpgradeFx_TileIndicies[];
 extern const u8 *gRubyCatchArrowTilePointer[][4];
 extern const u8 *gRubyShopRampArrowTilePointsers[][4];
 extern const u8 *gRubyBumperArrowTilePointer[][4];
@@ -362,7 +362,7 @@ void AnimateRubyBallPowerUpSequence(void)
     if (!gCurrentPinballGame->ballPowerUpAnimActive)
         return;
 
-    if (gCurrentPinballGame->ballShadowTimer)
+    if (gCurrentPinballGame->gBallUpgradeFxTimer)
     {
         if (!gCurrentPinballGame->ballPowerUpOverride)
         {
@@ -371,7 +371,7 @@ void AnimateRubyBallPowerUpSequence(void)
             gCurrentPinballGame->ballPowerUpLight[2] = gCurrentPinballGame->ballPowerUpLight[0];
         }
 
-        if (gCurrentPinballGame->ballShadowTimer == 28)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer == 28)
         {
             if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
                 gCurrentPinballGame->ballUpgradeType++;
@@ -380,14 +380,14 @@ void AnimateRubyBallPowerUpSequence(void)
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
 
-        if (gCurrentPinballGame->ballShadowTimer == 40)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer == 40)
         MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
 
-        if (gCurrentPinballGame->ballShadowTimer == 60)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer == 60)
             gMain.fieldSpriteGroups[FIELD_SG_BALL_UPGRADE_FX]->active = TRUE;
 
-        gCurrentPinballGame->ballShadowTileIndex = gBallShadowTileIndices[30 - gCurrentPinballGame->ballShadowTimer / 2];
-        gCurrentPinballGame->ballShadowTimer--;
+        gCurrentPinballGame->ballUpgradeFxTileIndex = gBallUpgradeFx_TileIndicies[30 - gCurrentPinballGame->gBallUpgradeFxTimer / 2];
+        gCurrentPinballGame->gBallUpgradeFxTimer--;
     }
     else
     {

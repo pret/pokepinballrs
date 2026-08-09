@@ -9,7 +9,7 @@
 
 extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gGroudonLavaPaletteCycleData[];
-extern const u8 gGroudonBoardBackgroundGfx[];
+extern const u8 gGroudonAttackFx_Gfx[];
 extern const s8 gGroudonBoardBoulders_Gfx[][0x300];
 extern struct SongHeader se_groudon_hit;
 extern struct SongHeader se_groudon_lands;
@@ -18,8 +18,8 @@ extern struct SongHeader se_groudon_fire_ring;
 extern struct SongHeader se_groudon_fire_grab;
 extern const s16 gShockwaveSplashDistanceThresholds[];
 extern const s16 gScreenShakeOscillationValues[];
-extern const u16 gGroudonFootstepShakePatterns[][31];
-extern const u16 gGroudonCryShakePattern[];
+extern const s16 gGroudonFootstepShakePatterns[][31];
+extern const s16 gGroudonCryShakePattern[];
 extern const u16 gGroudonAnimFramesetTable[][2];
 extern const struct Vector16 gGroudonFirePillarBasePositions[];
 extern const u16 gGroudonFirePillarAnimFrameset[][2];
@@ -130,7 +130,7 @@ void GroudonBoardProcess_3A_3B120(void)
     UpdateGroudonFieldEntities();
     UpdateGroudonEntityLogic();
     RenderGroudonSprites();
-    DmaCopy16(3, gGroudonBoardBackgroundGfx, (void *)0x06015800, 0x2000);
+    DmaCopy16(3, gGroudonAttackFx_Gfx, (void *)0x06015800, 0x2000);
     AnimateGroudonBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_GROUDON);
     DmaCopy16(3, gBonusStageObjPal, (void *)0x05000320, 0x20);

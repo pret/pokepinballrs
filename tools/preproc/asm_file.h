@@ -34,6 +34,7 @@ enum class Directive
     DexName,
     DexCategory,
     DexText,
+    EreaderText,
     Unknown
 };
 
@@ -49,7 +50,7 @@ public:
     std::string ReadPath();
     int ReadString(unsigned char* s);
     int ReadBraille(unsigned char* s);
-    int ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft);
+    int ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft, bool fixedWidthEncoding);
     bool IsAtEnd();
     void OutputLine();
     void OutputLocation();

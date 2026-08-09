@@ -12,7 +12,7 @@ extern const u8 gMainBoardBallSave_Gfx[];
 extern const u8 gMainBoardEndOfBall_Gfx[];
 extern const u8 gBoardActionTilesGfx[];
 
-extern const u8 gEggModeTilesGfx[];
+extern const u8 gAerodactlyFlight_Gfx[];
 extern const u8 gAreaRouletteSelectedFx_Gfx[];
 
 extern const u8 gCaptureModeTilesGfx[];
@@ -31,9 +31,9 @@ extern const u16 gShopCursorToItemMap[];
 extern const u8 gRubyTravelPaint_Gfx[];
 extern const u8 gRubyPainterPalette[];
 extern const u8 gRubyBoardHatchCave_Gfx[][0x480];
-extern const u8 gRubyFlashingDecorationTiles[][0x300];
+extern const u8 gRubyChikoritaEntity[][0x300];
 extern const u8 gRubyBoardSharpedo_Gfx[][0x260];
-extern const u8 gRubyFlashingTiles_Secondary[][0x100];
+extern const u8 gChinchouBumper_Gfx[][0x100];
 extern const u8 gRubyBoardShopDoor_Gfx[][0x180];
 extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
 extern const u8 gRubyBoardShop_Gfx[][0x500];
@@ -54,7 +54,7 @@ extern const s16 gHoleAnimKeyframeData[][2];
 
 extern const u8 gKecleonBonusClear_Gfx[0x2000];
 extern const u8 gKyogreBonusClear_Gfx[0x2000];
-extern const u8 gGroudonBoardBackgroundGfx[0x2000];
+extern const u8 gGroudonAttackFx_Gfx[0x2000];
 extern const u8 gGroudonBonusClear_Gfx[0x2000];
 extern const u8 gRayquazaSkyBackgroundGfx[0x2800];
 extern const u8 gRayquazaWindBoardGfx[0x1C00];
@@ -352,7 +352,7 @@ void RestoreFieldSpecificGraphics(void)
         }
         break;
     case 1:
-        DmaCopy16(3, gEggModeTilesGfx, (void *)0x6015800, 0x1000);
+        DmaCopy16(3, gAerodactlyFlight_Gfx, (void *)0x6015800, 0x1000);
         break;
     case 2:
         DmaCopy16(3, gCaptureModeTilesGfx, (void *)0x6015800, 0xCA0);
@@ -608,7 +608,7 @@ void RestoreMainFieldDynamicGraphics(void)
     DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->bonusTrapAnimFrame], 0x060113C0, 0x300);
     DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] +  var0 * 0x200, 0x060116C0, 0x200);
     DmaCopy16(3, gEggFrameTilesGfx[(s16)gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3]], 0x06011CE0, 0x200);
-    DmaCopy16(3, gBallShadowTileGraphics[gCurrentPinballGame->ballShadowTileIndex], 0x06011EE0, 0x200);
+    DmaCopy16(3, gBallUpgradeFx_Gfx[gCurrentPinballGame->ballUpgradeFxTileIndex], 0x06011EE0, 0x200);
     return;
 }
 
@@ -620,10 +620,10 @@ void RestoreRubyBoardTileGraphics(void)
     var0 = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][2];
     DmaCopy16(3, gRubyBoardHatchCave_Gfx[var0], (void *)0x60122A0, 0x480);
     var0 = (gMain.systemFrameCount % 50) / 25;
-    DmaCopy16(3, gRubyFlashingDecorationTiles[var0], (void *)0x6012720, 0x300);
+    DmaCopy16(3, gRubyChikoritaEntity[var0], (void *)0x6012720, 0x300);
     DmaCopy16(3, gRubyBoardSharpedo_Gfx[gCurrentPinballGame->catchHoleTileVariant], (void *)0x6012C20, 0x260);
     for (i = 0; i < 2; i++)
-        DmaCopy16(3, gRubyFlashingTiles_Secondary[var0], (void *)0x6010000 + (0x174 + i * 8) * 0x20, 0x100);
+        DmaCopy16(3, gChinchouBumper_Gfx[var0], (void *)0x6010000 + (0x174 + i * 8) * 0x20, 0x100);
 
     var0 = gCurrentPinballGame->shopDoorCurrentFrame & 0xF;
     DmaCopy16(3, gRubyBoardShopDoor_Gfx[var0], (void *)0x6013180, 0x180);
@@ -688,7 +688,7 @@ void RestoreGroudonBonusGraphics(void)
 {
     if (gCurrentPinballGame->boardState <= LEGENDARY_BOARD_STATE_BATTLE_PHASE)
     {
-        DmaCopy16(3, gGroudonBoardBackgroundGfx, (void *)0x6015800, 0x2000);
+        DmaCopy16(3, gGroudonAttackFx_Gfx, (void *)0x6015800, 0x2000);
     }
     else
     {

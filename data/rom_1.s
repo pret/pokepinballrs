@@ -352,8 +352,11 @@ gPokedexBgText_Gfx:: @ 0x08082720
 	.incbin "graphics/pokedex/bg_text.4bpp"
 	.space 0x20
 
+@ BG map entries, not tiles: 1024 of them, the bulk tile 31 with a run of
+@ sequential indices laid into it. pokedex.c copies only the first 0x1C0 to
+@ 0x06000280 when it opens a dex entry.
 gPokedexInfoWindowTiles:: @ 0x08086B40
-	.incbin "baserom.gba", 0x86B40, 0x800
+	.incbin "graphics/pokedex/info_window_tilemap.bin"
 
 gPokedexBg2_Tilemap:: @ 0x08087340
 	.incbin "graphics/pokedex/bg2_tilemap.bin"
@@ -393,10 +396,10 @@ gHighScoreBallWatermark_Gfx:: @ 0x0809AFC0
 	.space 0x20
 
 gHighScoreBG_Pals:: @ 0x0809DBE0
-	.incbin "baserom.gba", 0x9DBE0, 0x200
+	.incbin "graphics/high_score/bg.gbapal"
 
 gHighScoreSprite_Pals:: @ 0x0809DDE0
-	.incbin "baserom.gba", 0x9DDE0, 0x200
+	.incbin "graphics/high_score/sprites.gbapal"
 
 gHighScoreDialogs_Gfx:: @ 0x0809DFE0
 	@ sheet includes transmission windows, and the
@@ -440,7 +443,7 @@ gIntroScene1TorchicSprites_Gfx:: @ 0x080C3CE0
 	.incbin "graphics/intro/scene1torchic/sprites.4bpp"
 
 gIntroScene2Pikas_Pal:: @ 0x080CBCE0
-	.incbin "baserom.gba", 0xCBCE0, 0x200
+	.incbin "graphics/intro/scene2pikas/scene.gbapal"
 
 gIntroScene2Pikas_BG3Tilemap:: @ 0x080CBEE0
 	.incbin "graphics/intro/scene2pikas/bg3_text_tilemap.bin"
@@ -460,7 +463,7 @@ gIntroScene2Pikas_BG1Tiles:: @ 0x080D2700
 	.incbin "graphics/intro/scene2pikas/bg1_pikachu_tilemap.bin"
 
 gIntroScene3Treecko_Pal:: @ 0x080D4700
-	.incbin "baserom.gba", 0xD4700, 0x200
+	.incbin "graphics/intro/scene3treecko/scene.gbapal"
 
 gIntroScene3Treecko_BG2Tilemap:: @ 0x080D4900
 	.incbin "graphics/intro/scene3treecko/bg2_tilemap.bin"
@@ -490,7 +493,7 @@ gIntroScene3TreeckoTreecko_Gfx:: @ 0x080DF520
 	.space 0x20
 
 gIntroScene4PlussleMinun_Pal:: @ 0x080E1540
-	.incbin "baserom.gba", 0xE1540, 0x200
+	.incbin "graphics/intro/scene4plussleminun/scene.gbapal"
 
 gIntroScene4PlussleMinun_BG3Tilemap:: @ 0x080E1740
 	.incbin "graphics/intro/scene4plussleminun/bg3_text_tilemap.bin"
@@ -505,7 +508,7 @@ gIntroScene4PlussleMinun_BG1Tiles:: @ 0x080E7F60
 	.incbin "graphics/intro/scene4plussleminun/bg1_plussle_tilemap.bin"
 
 gIntroScene5Mudkip_Pal:: @ 0x080E9F60
-	.incbin "baserom.gba", 0xE9F60, 0x200
+	.incbin "graphics/intro/scene5mudkip/scene.gbapal"
 
 gIntroScene5Mudkip_BG2Tilemap:: @ 0x080EA160
 	.incbin "graphics/intro/scene5mudkip/bg2_2sections_tilemap.bin"
@@ -521,15 +524,21 @@ gIntroScene5MudkipText_Gfx:: @ 0x080EC960
 	.space 0x20
 
 gIntroScene5Mudkip_BG0Tiles:: @ 0x080F1980
-	.incbin "baserom.gba", 0xF1980, 0x800
+	@ despite the label this is a tilemap: intro.c copies it to 0x6006000, a screenblock
+	.incbin "graphics/intro/scene5mudkip/bg0_tilemap.bin"
 
 gIntroScene5MudkipSprites_Gfx:: @ 0x080F2180
 	.incbin "graphics/intro/scene5mudkip/sprites.4bpp"
 	.space 0x20
-	.incbin "baserom.gba", 0xF51A0, 0x1000
+	@ Not sprite tiles: 2048 BG map entries, two screenblocks, all palette 1.
+	@ The first is a field of tile 0x13F with about 130 tiles of content laid into
+	@ it, the second is that same tile all the way through. Nothing reaches it --
+	@ IntroScene5Mudkip_32_LoadMudkipBallScene copies only 0x3000 from this label,
+	@ and no pointer anywhere lands on 0x080F51A0 -- so it is left over.
+	.incbin "graphics/intro/scene5mudkip/unused_bg_tilemap.bin"
 
 gIntroScene6Chinchou_Pal:: @ 0x080F61A0
-	.incbin "baserom.gba", 0xF61A0, 0x200
+	.incbin "graphics/intro/scene6chinchou/scene.gbapal"
 
 gIntroScene6Chinchou_BG3Tilemap:: @ 0x080F63A0
 	.incbin "graphics/intro/scene6chinchou/bg3_burst_tilemap.bin"
@@ -552,7 +561,7 @@ gIntroScene6ChinchouStars_Gfx:: @ 0x080FFFC0
 	.space 0x20
 
 gIntroScene7Parade_Pal:: @ 0x08100FE0
-	.incbin "baserom.gba", 0x100FE0, 0x200
+	.incbin "graphics/intro/scene7parade/scene.gbapal"
 
 gIntroScene7Parade_BG3Tilemap:: @ 0x081011E0
 	.incbin "graphics/intro/scene7parade/bg3_text_tilemap.bin"
@@ -580,7 +589,7 @@ gIntroScene7ParadeWailmer_Gfx:: @ 0x0810CA00
 	.space 0x20
 
 gIntroScene8WailmerLaunch_Pal:: @ 0x0810EA20
-	.incbin "baserom.gba", 0x10EA20, 0x200
+	.incbin "graphics/intro/scene8wailmerlaunch/scene.gbapal"
 
 gIntroScene8WailmerLaunch_BG2Tilemap:: @ 0x0810EC20
 	.incbin "graphics/intro/scene8wailmerlaunch/bg2_explosion_tilemap.bin"
@@ -594,7 +603,7 @@ gIntroScene8WailmerLaunch_Gfx:: @ 0x08112840
 	.space 0x20
 
 gIntroScene9BallFlight_Pal:: @ 0x08115860
-	.incbin "baserom.gba", 0x115860, 0x200
+	.incbin "graphics/intro/scene9ballflight/scene.gbapal"
 
 gIntroScene9BallFlight_BG3Tilemap:: @ 0x08115A60
 	.incbin "graphics/intro/scene9ballflight/bg3_clouds_tilemap.bin"
@@ -608,7 +617,7 @@ gIntroScene9BallFlightall_Gfx:: @ 0x08118680
 
 	.incbin "graphics/intro/wailmer_swallow.4bpp"
 
-	.incbin "baserom.gba", 0x120A80, 0x240
+	.incbin "graphics/intro/scene9ballflight/ball_tail.4bpp"
 
 .include "data/graphics/titlescreen.inc"
 
@@ -642,13 +651,13 @@ gLotadBobOffsets:: @ 0x0813798C
 	.2byte 0, 10, 20, 30, 20, 10
 
 gChinchouBumperPalettes:: @ 0x08137998
-	.incbin "baserom.gba", 0x137998, 0x20
+	.incbin "graphics/stage/main/chinchou_bumper.gbapal"
 
 gLotadBumperPalettes:: @ 0x081379B8
-	.incbin "baserom.gba", 0x1379B8, 0x20
+	.incbin "graphics/stage/main/lotad_bumper.gbapal"
 
 gWhiscashPalettes:: @ 0x081379D8
-	.incbin "baserom.gba", 0x1379D8, 0xE0
+	.incbin "graphics/stage/main/whiscash.gbapal"
 
 gBoardArrowAnimFrames:: @ 0x08137AB8
 	.2byte 0,1,2,3,2,1,0,3,0,3
@@ -662,7 +671,7 @@ gBoardArrowAnimFrames:: @ 0x08137AB8
 	.2byte 1,1,1,1,1,1
 
 gFieldPaletteVariants:: @ 0x08137B3C
-	.incbin "baserom.gba", 0x137B3C, 0x180
+	.incbin "graphics/stage/main/field_variants.gbapal"
 
 gPelipperFlyAnimTable:: @ 0x08137CBC
 	@ frameId, yOffset
@@ -757,10 +766,13 @@ gBallPalettes:: @ 0x08137E14
 	.incbin "graphics/stage/main/pokeball_great.gbapal"
 	.incbin "graphics/stage/main/pokeball_ultra.gbapal"
 	.incbin "graphics/stage/main/pokeball_master.gbapal"
-	.incbin "baserom.gba", 0x137E94, 0x80
+	@ Four more past the four gBallPalettes is indexed with by ballUpgradeType.
+	@ These have no art to carry them, and a bare .gbapal is a build product that
+	@ make clean removes, so they take the .bin suffix gb_player.gbapal.bin uses.
+	.incbin "graphics/stage/main/pokeball_unused.gbapal.bin"
 
 gBallFlashPalette:: @ 0x08137F14
-	.incbin "baserom.gba", 0x137F14, 0x100
+	.incbin "graphics/stage/main/ball_flash.gbapal"
 
 gCaptureBallTilesGfx:: @ 0x08138014
 	.incbin "graphics/stage/main/ball_open_to_catch.4bpp"
@@ -786,40 +798,60 @@ gRayquazaBonusClear_Gfx:: @ 0x081408B4
 	.incbin "graphics/stage/rayquaza/rayquaza_bonus_clear.4bpp"
 	.space 0x20
 
+@ The capture cutscene, streamed over the tile-704 overlay slot from three
+@ places (main_board_center_capture_hole.c, main_board_to_be_split.c and
+@ save_and_restore_game.c). t0..101 is the float-up fx drawn by
+@ gPokemonFloatOamFramesets; t106..122 and t127..222 are the ball absorb fx,
+@ the first frame reaching out for the ball and then the rest, drawn by
+@ gMonCatchBallAbsorbPokemonFxSpriteSet. t102..105 and t123..126 are sub-slots
+@ the ball graphic streams into, from gCaptureBallTilesGfx -- one per absorb
+@ frame, 21 tiles apart, which is the same stride that separates the sprite
+@ set's ball-adjacent entries (t123/t127/t129) from t102/t106/t108.
+@ Unlike the other sheets here the copy is 0x20 short of the label, and that
+@ last tile is not blank, so it stays in the sheet rather than becoming .space.
 gCaptureScreenTilesGfx:: @ 0x081428D4
-	.incbin "baserom.gba", 0x1428D4, 0x1C20
+	.incbin "graphics/stage/main/capture_screen.4bpp"
 
 .include "data/graphics/mon_hatch_sprites_pals.inc"
 
+@ Attract-mode demos. Each Config is 4800 struct ReplayInputFrame (3 bytes of
+@ button bits per game frame); each GameState is one struct PinballGame snapshot
+@ the demo starts from. game_idle.c pairs Config<N> with GameState<N>.
+@ Note the labels run 0, 2, 3, 1 in ROM order.
 gIdleBoardConfig0:: @ 0x081450F4
-	.incbin "baserom.gba", 0x1450F4, 0x3840
+	.incbin "data/idle_board/replay_input_0.bin"
 
 gIdleBoardConfig2:: @ 0x08148934
-	.incbin "baserom.gba", 0x148934, 0x3840
+	.incbin "data/idle_board/replay_input_2.bin"
 
 gIdleBoardConfig3:: @ 0x0814C174
-	.incbin "baserom.gba", 0x14C174, 0x3840
+	.incbin "data/idle_board/replay_input_3.bin"
 
 gIdleBoardConfig1:: @ 0x0814F9B4
-	.incbin "baserom.gba", 0x14F9B4, 0x3840
+	.incbin "data/idle_board/replay_input_1.bin"
 
 gIdleBoardGameState0:: @ 0x081531F4
-	.incbin "baserom.gba", 0x1531F4, 0x1424
+	.incbin "data/idle_board/game_state_0.bin"
 
 gIdleBoardGameState2:: @ 0x08154618
-	.incbin "baserom.gba", 0x154618, 0x1424
+	.incbin "data/idle_board/game_state_2.bin"
 
 gIdleBoardGameState3:: @ 0x08155A3C
-	.incbin "baserom.gba", 0x155A3C, 0x1424
+	.incbin "data/idle_board/game_state_3.bin"
 
 gIdleBoardGameState1:: @ 0x08156E60
-	.incbin "baserom.gba", 0x156E60, 0x1424
+	.incbin "data/idle_board/game_state_1.bin"
 
+@ The evolution banner: three sizes of EVOLUTION text plus the lightning that
+@ strikes it, streamed over the tile-704 overlay slot with gBoardActionObjPal
+@ into OBJ bank 14 beside it (main_board_launcher_and_cutscenes.c). t102..173 is
+@ bolt art no bank-14 OAM entry reaches; the last 31 tiles are blank padding.
 gBoardActionTilesGfx:: @ 0x08158284
-	.incbin "baserom.gba", 0x158284, 0x2420
+	.incbin "graphics/stage/main/board_action.4bpp"
+	.space 0x3E0
 
 gBoardActionObjPal:: @ 0x0815A6A4
-	.incbin "baserom.gba", 0x15A6A4, 0x200
+	.incbin "graphics/stage/main/board_action_obj.gbapal"
 
 gEvoExAppear_Gfx:: @ 0x0815A8A4
 	.incbin "graphics/board_pickups/evo_item_ex.4bpp";
@@ -835,7 +867,8 @@ gEvoItemPalettes:: @ 0x0815C4C4
 	.incbin "graphics/board_pickups/icon8_sun.gbapal";
 	.incbin "graphics/board_pickups/icon9_heart.gbapal";
 	.incbin "graphics/board_pickups/icon10_pokeblock.gbapal";
-	.incbin "baserom.gba", 0x15C604, 0xC0
+	@ Six more past the ten icons, all the same near-flat grey.
+	.incbin "graphics/board_pickups/evo_item_unused.gbapal.bin"
 	@.incbin "baserom.gba", 0x15C4C4, 0x200
 
 gEvoLeafAppear_Gfx:: @ 0x0815C6C4
@@ -869,93 +902,380 @@ gFlipperCollisionData:: @ 0x0816C3E4
 @ Flipper data has 13 sets of 96*96 u16 data (2 unused at the end)
 	.incbin "data/board_data/collision/flipper_collision_all_96x96.bin"
 
-gUnknown_81A6BE4:: @ 0x081A6BE4
-	.incbin "baserom.gba", 0x1A6BE4, 0x8000
+gDebugAsciiFont:: @ 0x081A6BE4
+@ 8x8 font, one tile per character, ASCII 0x20-0x5F in order. Slot 0x5C draws a
+@ yen sign instead of a backslash, the usual Japanese font convention. Only
+@ colour indices 1 and 2 are used. Nothing in the ROM references it.
+	.incbin "graphics/debug_ascii_font.4bpp"
+	.space 0x7800   @ 960 unused tiles, all zero
 
 	.include "data/graphics/mon_catch_sprites_pals.inc"
 @	.incbin "baserom.gba", 0x1AEBE4, 0xA80
-	.incbin "baserom.gba", 0x1B0C64, 0x180
+	.incbin "graphics/debug_ascii_font_extra.4bpp"
 
 gKyogreWaterAnimPaletteFrames:: @ 0x081B0DE4
-	.incbin "baserom.gba", 0x1B0DE4, 0x200
+	.incbin "graphics/stage/kyogre/water_anim_frames.gbapal"
 
+@ 40 framesets of 6 OAM entries, three halfwords each, indexed [frame][i*3+n]
+@ by the capture animation. Listed as raw attributes rather than
+@ packed_sprite_oam macros because nothing has confirmed the field split for
+@ this table yet.
 gPokeballCaptureOamFrames:: @ 0x081B0FE4
-	.incbin "baserom.gba", 0x1B0FE4, 0x5A0
+	@ frame 0
+	.2byte 0x0000, 0x4000, 0x12C0
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x0000, 0x4000, 0x12C0
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	@ frame 1
+	.2byte 0x0000, 0x4000, 0x12C0
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x0000, 0x4000, 0x12C0
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	@ frame 2
+	.2byte 0x0000, 0x4000, 0x12C0
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x40F0, 0x81F0, 0x12CC
+	.2byte 0x4000, 0x41F0, 0x12D4
+	@ frame 3
+	.2byte 0x00F0, 0x4010, 0x12D8
+	.2byte 0x4000, 0x0010, 0x12DC
+	.2byte 0x400F, 0xB1FF, 0x12CC
+	.2byte 0x4007, 0x71FF, 0x12D4
+	.2byte 0x000F, 0x71EF, 0x12D8
+	.2byte 0x4007, 0x31EF, 0x12DC
+	@ frame 4
+	.2byte 0x40F0, 0x81F0, 0x12CC
+	.2byte 0x4000, 0x41F0, 0x12D4
+	.2byte 0x00F0, 0x4010, 0x12D8
+	.2byte 0x4000, 0x0010, 0x12DC
+	.2byte 0x400F, 0xB1FF, 0x12CC
+	.2byte 0x4007, 0x71FF, 0x12D4
+	@ frame 5
+	.2byte 0x000F, 0x71EF, 0x12D8
+	.2byte 0x4007, 0x31EF, 0x12DC
+	.2byte 0x40F0, 0x81F0, 0x12DE
+	.2byte 0x00F0, 0x4010, 0x12E6
+	.2byte 0x4000, 0x41F0, 0x12EA
+	.2byte 0x4000, 0x0010, 0x12EE
+	@ frame 6
+	.2byte 0x400F, 0xB1FF, 0x12DE
+	.2byte 0x000F, 0x71EF, 0x12E6
+	.2byte 0x4007, 0x71FF, 0x12EA
+	.2byte 0x4007, 0x31EF, 0x12EE
+	.2byte 0x40F0, 0x81F0, 0x12DE
+	.2byte 0x00F0, 0x4010, 0x12E6
+	@ frame 7
+	.2byte 0x4000, 0x41F0, 0x12EA
+	.2byte 0x4000, 0x0010, 0x12EE
+	.2byte 0x400F, 0xB1FF, 0x12DE
+	.2byte 0x000F, 0x71EF, 0x12E6
+	.2byte 0x4007, 0x71FF, 0x12EA
+	.2byte 0x4007, 0x31EF, 0x12EE
+	@ frame 8
+	.2byte 0x40F0, 0x81F0, 0x12F0
+	.2byte 0x00F0, 0x4010, 0x12F8
+	.2byte 0x4000, 0x41F0, 0x12FC
+	.2byte 0x4000, 0x0010, 0x1300
+	.2byte 0x400F, 0xB1FF, 0x12F0
+	.2byte 0x000F, 0x71EF, 0x12F8
+	@ frame 9
+	.2byte 0x4007, 0x71FF, 0x12FC
+	.2byte 0x4007, 0x31EF, 0x1300
+	.2byte 0x40F0, 0x81F0, 0x12F0
+	.2byte 0x00F0, 0x4010, 0x12F8
+	.2byte 0x4000, 0x41F0, 0x12FC
+	.2byte 0x4000, 0x0010, 0x1300
+	@ frame 10
+	.2byte 0x400F, 0xB1FF, 0x12F0
+	.2byte 0x000F, 0x71EF, 0x12F8
+	.2byte 0x4007, 0x71FF, 0x12FC
+	.2byte 0x4007, 0x31EF, 0x1300
+	.2byte 0x40F0, 0x81F5, 0x1302
+	.2byte 0x4000, 0x41F5, 0x130A
+	@ frame 11
+	.2byte 0x80F8, 0x0015, 0x130E
+	.2byte 0x400F, 0xB1FA, 0x1302
+	.2byte 0x4007, 0x71FA, 0x130A
+	.2byte 0x8007, 0x31F2, 0x130E
+	.2byte 0x40F0, 0x81F5, 0x1302
+	.2byte 0x4000, 0x41F5, 0x130A
+	@ frame 12
+	.2byte 0x80F8, 0x0015, 0x130E
+	.2byte 0x400F, 0xB1FA, 0x1302
+	.2byte 0x4007, 0x71FA, 0x130A
+	.2byte 0x8007, 0x31F2, 0x130E
+	.2byte 0x8007, 0x31F2, 0x130E
+	.2byte 0x8007, 0x31F2, 0x130E
+	@ frame 13
+	.2byte 0x8007, 0x31F2, 0x130E
+	.2byte 0x8007, 0x31F2, 0x130E
+	.2byte 0x40F8, 0x81F6, 0x1310
+	.2byte 0x80F8, 0x0016, 0x1318
+	.2byte 0x4007, 0xB1F9, 0x1310
+	.2byte 0x8007, 0x31F1, 0x1318
+	@ frame 14
+	.2byte 0x40F8, 0x81F6, 0x1310
+	.2byte 0x80F8, 0x0016, 0x1318
+	.2byte 0x4007, 0xB1F9, 0x1310
+	.2byte 0x8007, 0x31F1, 0x1318
+	.2byte 0x40F8, 0x81F6, 0x1310
+	.2byte 0x80F8, 0x0016, 0x1318
+	@ frame 15
+	.2byte 0x4007, 0xB1F9, 0x1310
+	.2byte 0x8007, 0x31F1, 0x1318
+	.2byte 0x40F8, 0x81F6, 0x1310
+	.2byte 0x80F8, 0x0016, 0x1318
+	.2byte 0x4007, 0xB1F9, 0x1310
+	.2byte 0x8007, 0x31F1, 0x1318
+	@ frame 16
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	@ frame 17
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	@ frame 18
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x40F8, 0x81F8, 0x12C4
+	.2byte 0x4007, 0xB1F7, 0x12C4
+	.2byte 0x00FE, 0x4000, 0x1726
+	.2byte 0x80FE, 0x0010, 0x172A
+	@ frame 19
+	.2byte 0x400E, 0x0000, 0x172C
+	.2byte 0x8009, 0x81EE, 0x172E
+	.2byte 0x8009, 0x01FE, 0x1736
+	.2byte 0x8021, 0x01FD, 0x1738
+	.2byte 0x0029, 0x01F5, 0x173A
+	.2byte 0x00FE, 0x4000, 0x1726
+	@ frame 20
+	.2byte 0x80FE, 0x0010, 0x172A
+	.2byte 0x400E, 0x0000, 0x172C
+	.2byte 0x8009, 0x81EE, 0x172E
+	.2byte 0x8009, 0x01FE, 0x1736
+	.2byte 0x8021, 0x01FD, 0x1738
+	.2byte 0x0029, 0x01F5, 0x173A
+	@ frame 21
+	.2byte 0x0029, 0x01F5, 0x173A
+	.2byte 0x0029, 0x01F5, 0x173A
+	.2byte 0x00FC, 0x41FF, 0x173B
+	.2byte 0x80FC, 0x000F, 0x173F
+	.2byte 0x400C, 0x0007, 0x1741
+	.2byte 0x801A, 0x81F3, 0x1743
+	@ frame 22
+	.2byte 0x800A, 0x01FB, 0x174B
+	.2byte 0x001E, 0x8003, 0x174D
+	.2byte 0x403E, 0x000F, 0x175D
+	.2byte 0x8006, 0x0003, 0x175F
+	.2byte 0x0016, 0x0003, 0x1761
+	.2byte 0x00FC, 0x41FF, 0x173B
+	@ frame 23
+	.2byte 0x80FC, 0x000F, 0x173F
+	.2byte 0x400C, 0x0007, 0x1741
+	.2byte 0x801A, 0x81F3, 0x1743
+	.2byte 0x800A, 0x01FB, 0x174B
+	.2byte 0x001E, 0x8003, 0x174D
+	.2byte 0x403E, 0x000F, 0x175D
+	@ frame 24
+	.2byte 0x00FC, 0x41FF, 0x173B
+	.2byte 0x80FC, 0x000F, 0x173F
+	.2byte 0x400C, 0x0007, 0x1741
+	.2byte 0x0027, 0x81EF, 0x1762
+	.2byte 0x4017, 0x81F7, 0x1772
+	.2byte 0x000F, 0x0007, 0x177A
+	@ frame 25
+	.2byte 0x0007, 0x41F8, 0x177B
+	.2byte 0x0037, 0x001F, 0x177F
+	.2byte 0x8027, 0x800F, 0x1780
+	.2byte 0x8017, 0x0017, 0x1788
+	.2byte 0x4047, 0x41F7, 0x178A
+	.2byte 0x0047, 0x0017, 0x178E
+	@ frame 26
+	.2byte 0x0047, 0x0017, 0x178E
+	.2byte 0x0047, 0x0017, 0x178E
+	.2byte 0x0047, 0x0017, 0x178E
+	.2byte 0x0047, 0x0017, 0x178E
+	.2byte 0x0026, 0x9006, 0x1762
+	.2byte 0x4016, 0x91FE, 0x1772
+	@ frame 27
+	.2byte 0x0036, 0x11EE, 0x177F
+	.2byte 0x8026, 0x91F6, 0x1780
+	.2byte 0x8016, 0x11F6, 0x1788
+	.2byte 0x4046, 0x51FE, 0x178A
+	.2byte 0x0046, 0x11F6, 0x178E
+	.2byte 0x4006, 0x01FE, 0x178F
+	@ frame 28
+	.2byte 0x400E, 0x41F6, 0x1791
+	.2byte 0x00FC, 0x41FF, 0x173B
+	.2byte 0x400C, 0x0007, 0x1741
+	.2byte 0x80FC, 0x000F, 0x173F
+	.2byte 0x80FC, 0x000F, 0x173F
+	.2byte 0x80FC, 0x000F, 0x173F
+	@ frame 29
+	.2byte 0x80FC, 0x000F, 0x173F
+	.2byte 0x80FC, 0x000F, 0x173F
+	.2byte 0x8018, 0x800A, 0x1796
+	.2byte 0x0038, 0x000A, 0x179E
+	.2byte 0x8020, 0xB1FB, 0x1796
+	.2byte 0x0018, 0x3003, 0x179E
+	@ frame 30
+	.2byte 0x0026, 0x9006, 0x1762
+	.2byte 0x4016, 0x91FE, 0x1772
+	.2byte 0x0036, 0x11EE, 0x177F
+	.2byte 0x8026, 0x91F6, 0x1780
+	.2byte 0x8016, 0x11F6, 0x1788
+	.2byte 0x4046, 0x51FE, 0x178A
+	@ frame 31
+	.2byte 0x0046, 0x11F6, 0x178E
+	.2byte 0x4006, 0x01FE, 0x178F
+	.2byte 0x400E, 0x41F6, 0x1791
+	.2byte 0x00FC, 0x41FF, 0x173B
+	.2byte 0x400C, 0x0007, 0x1741
+	.2byte 0x80FC, 0x000F, 0x173F
+	@ frame 32
+	.2byte 0x00FC, 0x41FF, 0x173B
+	.2byte 0x80FC, 0x000F, 0x173F
+	.2byte 0x400C, 0x0007, 0x1741
+	.2byte 0x8021, 0xA003, 0x1796
+	.2byte 0x0019, 0x2003, 0x179E
+	.2byte 0x0027, 0x81EF, 0x1762
+	@ frame 33
+	.2byte 0x4017, 0x81F7, 0x1772
+	.2byte 0x000F, 0x0007, 0x177A
+	.2byte 0x0007, 0x41F8, 0x177B
+	.2byte 0x0037, 0x001F, 0x177F
+	.2byte 0x8027, 0x800F, 0x1780
+	.2byte 0x8017, 0x0017, 0x1788
+	@ frame 34
+	.2byte 0x4047, 0x41F7, 0x178A
+	.2byte 0x0047, 0x0017, 0x178E
+	.2byte 0x0047, 0x0017, 0x178E
+	.2byte 0x0047, 0x0017, 0x178E
+	.2byte 0x4006, 0x01FE, 0x178F
+	.2byte 0x400E, 0x41F6, 0x1791
+	@ frame 35
+	.2byte 0x00FC, 0x41FF, 0x173B
+	.2byte 0x400C, 0x0007, 0x1741
+	.2byte 0x80FC, 0x000F, 0x173F
+	.2byte 0x4026, 0x0005, 0x175D
+	.2byte 0x4016, 0x0001, 0x1756
+	.2byte 0x0016, 0x0011, 0x1758
+	@ frame 36
+	.2byte 0x401E, 0x0001, 0x175A
+	.2byte 0x001E, 0x0011, 0x175C
+	.2byte 0x001E, 0x0011, 0x175C
+	.2byte 0x001E, 0x0011, 0x175C
+	.2byte 0x001E, 0x0011, 0x175C
+	.2byte 0x001E, 0x0011, 0x175C
+	@ frame 37
+	.2byte 0x001E, 0x0011, 0x175C
+	.2byte 0x001E, 0x0011, 0x175C
+	.2byte 0x00FB, 0x4002, 0x1726
+	.2byte 0x80FB, 0x0012, 0x172A
+	.2byte 0x400B, 0x0002, 0x172C
+	.2byte 0x00FB, 0x4002, 0x1726
+	@ frame 38
+	.2byte 0x80FB, 0x0012, 0x172A
+	.2byte 0x400B, 0x0002, 0x172C
+	.2byte 0x00FB, 0x4002, 0x1726
+	.2byte 0x80FB, 0x0012, 0x172A
+	.2byte 0x400B, 0x0002, 0x172C
+	.2byte 0x00FB, 0x4002, 0x1726
+	@ frame 39
+	.2byte 0x80FB, 0x0012, 0x172A
+	.2byte 0x400B, 0x0002, 0x172C
+	.2byte 0x00FB, 0x4002, 0x1726
+	.2byte 0x80FB, 0x0012, 0x172A
+	.2byte 0x400B, 0x0002, 0x172C
+	.2byte 0x400B, 0x0002, 0x172C
 
 gRubyBoardPaletteSet1:: @ 0x081B1584
-    .incbin "baserom.gba", 0x1B1584, 0x200
+    .incbin "graphics/stage/ruby/ruby_board_palset_1.gbapal"
 
 gSapphireBoardPaletteSet1:: @ 0x081B1784
-    .incbin "baserom.gba", 0x1B1784, 0x200
+    .incbin "graphics/stage/sapphire/sapphire_board_palset_1.gbapal"
 
 gDusclopsBoardPaletteSet1:: @ 0x081B1984
-    .incbin "graphics/stage/dusclops/dusclops_board_palset_1.pal"
+    .incbin "graphics/stage/dusclops/dusclops_board_palset_1.gbapal"
 
 gKecleonBoardPaletteSet1:: @ 0x081B1B84
-    .incbin "baserom.gba", 0x1B1B84, 0x200
+    .incbin "graphics/stage/kecleon/kecleon_board_palset_1.gbapal"
 
 gKyogreBoardPaletteSet1:: @ 0x081B1D84
-    .incbin "baserom.gba", 0x1B1D84, 0x200
+    .incbin "graphics/stage/kyogre/kyogre_board_palset_1.gbapal"
 
 gGroudonBoardPaletteSet1:: @ 0x081B1F84
-    .incbin "graphics/stage/groudon/groudon_board_palset_1.pal"
+    .incbin "graphics/stage/groudon/groudon_board_palset_1.gbapal"
 
 gRayquazaBoardPaletteSet1:: @ 0x081B2184
-    .incbin "baserom.gba", 0x1B2184, 0x200
+    .incbin "graphics/stage/rayquaza/rayquaza_board_palset_1.gbapal"
 
 gSphealBoardPaletteSet1:: @ 0x081B2384
-    .incbin "baserom.gba", 0x1B2384, 0x200
+    .incbin "graphics/stage/spheal/spheal_board_palset_1.gbapal"
 
 gRubyBoardPaletteSet2:: @ 0x081B2584
-    .incbin "baserom.gba", 0x1B2584, 0x200
+    .incbin "graphics/stage/ruby/ruby_board_palset_2.gbapal"
 
 gSapphireBoardPaletteSet2:: @ 0x081B2784
-    .incbin "baserom.gba", 0x1B2784, 0x200
+    .incbin "graphics/stage/sapphire/sapphire_board_palset_2.gbapal"
 
 gDusclopsBoardPaletteSet2:: @ 0x081B2984
-    .incbin "graphics/stage/dusclops/dusclops_board_palset_2.pal"
+    .incbin "graphics/stage/dusclops/dusclops_board_palset_2.gbapal"
 
 gKecleonBoardPaletteSet2:: @ 0x081B2B84
-    .incbin "baserom.gba", 0x1B2B84, 0x200
+    .incbin "graphics/stage/kecleon/kecleon_board_palset_2.gbapal"
 
 gKyogreBoardPaletteSet2:: @ 0x081B2D84
-    .incbin "baserom.gba", 0x1B2D84, 0x200
+    .incbin "graphics/stage/kyogre/kyogre_board_palset_2.gbapal"
 
 gGroudonBoardPaletteSet2:: @ 0x081B2F84
-    .incbin "graphics/stage/groudon/groudon_board_palset_2.pal"
+    .incbin "graphics/stage/groudon/groudon_board_palset_2.gbapal"
 
 gRayquazaBoardPaletteSet2:: @ 0x081B3184
-    .incbin "baserom.gba", 0x1B3184, 0x200
+    .incbin "graphics/stage/rayquaza/rayquaza_board_palset_2.gbapal"
 
 gSphealBoardPaletteSet2:: @ 0x081B3384
-    .incbin "baserom.gba", 0x1B3384, 0x200
+    .incbin "graphics/stage/spheal/spheal_board_palset_2.gbapal"
 
 gRubyBoardPaletteSet0:: @ 0x081B3584
-    .incbin "baserom.gba", 0x1B3584, 0x120
+    .incbin "graphics/stage/ruby/ruby_board_palset_0.gbapal"
 
 gBonusStageObjPal:: @ 0x081B36A4
-	.incbin "baserom.gba", 0x1B36A4, 0xE0
+	.incbin "graphics/stage/main/bonus_stage_obj.gbapal"
 
 gSapphireBoardPaletteSet0:: @ 0x081B3784
-    .incbin "baserom.gba", 0x1B3784, 0x200
+    .incbin "graphics/stage/sapphire/sapphire_board_palset_0.gbapal"
 
 gDusclopsBoardPaletteSet0:: @ 0x081B3984
-	.incbin "graphics/stage/dusclops/dusclops_board_palset_0.pal"
+	.incbin "graphics/stage/dusclops/dusclops_board_palset_0.gbapal"
 
 gKecleonBoardPaletteSet0:: @ 0x081B3B84
-    .incbin "baserom.gba", 0x1B3B84, 0x200
+    .incbin "graphics/stage/kecleon/kecleon_board_palset_0.gbapal"
 
 gKyogreBoardPaletteSet0:: @ 0x081B3D84
-    .incbin "baserom.gba", 0x1B3D84, 0x200
+    .incbin "graphics/stage/kyogre/kyogre_board_palset_0.gbapal"
 
 gGroudonBoardPaletteSet0:: @ 0x081B3F84
-    .incbin "graphics/stage/groudon/groudon_board_palset_0.pal"
+    .incbin "graphics/stage/groudon/groudon_board_palset_0.gbapal"
 
 gRayquazaBoardPaletteSet0:: @ 0x081B4184
-    .incbin "baserom.gba", 0x1B4184, 0x200
+    .incbin "graphics/stage/rayquaza/rayquaza_board_palset_0.gbapal"
 
 gSphealBoardPaletteSet0:: @ 0x081B4384
-    .incbin "baserom.gba", 0x1B4384, 0x200
+    .incbin "graphics/stage/spheal/spheal_board_palset_0.gbapal"
 
 gEvoNameDisplay_Pals:: @ 0x081B4584
 	.incbin "graphics/stage/main/evo_name_display.gbapal"
@@ -1013,20 +1333,20 @@ gRubyTravelPaint_Gfx:: @ 0x081BCAA4
 	.space 0x120
 
 gRubyPainterPalette:: @ 0x081BE2C4
-	.incbin "baserom.gba", 0x1BE2C4, 0x200
+	.incbin "graphics/stage/ruby/painter.gbapal"
 
 gSapphireTravelPaint_Gfx:: @ 0x081BE4C4
 	.incbin "graphics/stage/sapphire/travel_paint.4bpp"
 	.space 0x120
 
 gSapphirePainterPalette:: @ 0x081BFCE4
-	.incbin "baserom.gba", 0x1BFCE4, 0x200
+	.incbin "graphics/stage/sapphire/painter.gbapal"
 
 gRubyBoardPalette:: @ 0x081BFEE4
-	.incbin "baserom.gba", 0x1BFEE4, 0x180
+	.incbin "graphics/stage/ruby/ruby_board.gbapal"
 
 gDefaultTimerPalette:: @ 0x081C0064
-	.incbin "baserom.gba", 0x1C0064, 0x80
+	.incbin "graphics/stage/main/default_timer.gbapal"
 
 gLocationPalettes:: @ 0x081C00E4
 	.incbin "graphics/area_portraits/loc00_ruby_forest.gbapal"
@@ -1043,8 +1363,8 @@ gLocationPalettes:: @ 0x081C00E4
 	.incbin "graphics/area_portraits/loc11_sapphire_desert.gbapal"
 	.incbin "graphics/area_portraits/loc12_ruins.gbapal"
 
-	@ 3 unused palettes
-	.incbin "baserom.gba", 0x1C0284, 0x60
+	@ 3 unused palettes: one real, two all zero
+	.incbin "graphics/area_portraits/loc_unused.gbapal.bin"
 
 gPortraitAnimPalettes:: @ 0x081C02E4
 	.incbin "graphics/slot_options/slot_options_1.gbapal"
@@ -1128,68 +1448,127 @@ gPikaSaverPartialCoverageGfx:: @ 0x08397E6C
 	.incbin "graphics/stage/main/pika_saver_partial_coverage.4bpp"
 	.space 0x20
 
+@ Not graphics: a 48x48 collision map, one byte per position, indexed
+@ [y * 48 + x] by CheckCatchTargetCollision (all_board_process6_collision.c)
+@ against the ball's offset from the Jirachi centre. Bit 7 is the solid flag and
+@ the low seven bits are the surface angle the collision answers with.
 gCatchTargetCollisionBitmap:: @ 0x0839A28C
-	.incbin "baserom.gba", 0x39A28C, 0x900
+	.incbin "data/board_data/collision/catch_target_collision_48x48_typeless.bin"
 
 .include "data/graphics/mon_portraits_pals.inc"
 
+@ The puff the caught mon appears out of, over the tile-704 overlay slot, with
+@ gCatchMonAppearFx_Pal going to OBJ bank 14 in the copy right below.
+@ gCatchMonRevealOamFramesets draws it: a 16x16 spark, then six puff frames of a
+@ 32x32 with a 32x8 under it and an 8x32 beside it. Five of those frames add an
+@ 8x8 corner and fill a 5x5 block exactly; the first is missing that corner, so
+@ it takes a shape with one spacer. t153..159 are unreferenced.
 gCatchMonAppearFx_Gfx:: @ 0x0839C78C
-	.incbin "baserom.gba", 0x39C78C, 0x1420
+	.incbin "graphics/stage/main/catch_mon_appear_fx.4bpp"
+	.space 0x20
 
 gCatchMonAppearFx_Pal:: @ 0x0839DBAC
-	.incbin "baserom.gba", 0x39DBAC, 0x200
+	.incbin "graphics/stage/main/catch_mon_appear_fx.gbapal"
 
+@ The sequential catch-tile break: 13 frames drawn as 6 sprites each by
+@ gCatchTile_SequentialBreakSpritesheetOam, streamed over the tile-704 overlay
+@ slot with gCatchTile_RevealPalette in OBJ bank 14. The segments follow that
+@ table's piece boundaries; t68..102 is debris no OAM entry in the tree reaches,
+@ and the sheet's last 80 tiles are blank padding.
 gCatchTile_RevealTilesGfx:: @ 0x0839DDAC
-	.incbin "baserom.gba", 0x39DDAC, 0x2820
+	.incbin "graphics/stage/main/catch_tile_reveal.4bpp"
+	.space 0xA00
 
 gCatchTile_RevealPalette:: @ 0x083A05CC
-	.incbin "baserom.gba", 0x3A05CC, 0x200
+	.incbin "graphics/stage/main/catch_tile_reveal.gbapal"
 
+@ 8 frames of the lightning strike, drawn by gCatchTile_RevealOamFramesets over
+@ the tile-704 overlay slot, with gCatchTile_BurstStart_Pal to OBJ bank 14 in the
+@ copy beside it. Six of the frames have their pieces on one sub-tile phase and
+@ consume the slice in order, so they get shapes; frame 4 has a piece 4px off and
+@ takes an approximate one.
+@ Frame 6 is the exception and stays a strip: its first two pieces both claim
+@ t207 -- a 16x16 at t204 and a 16x32 at t207 -- so the frame's tiles are not a
+@ single run and no shape can lay them out without reading one of them twice.
+@ t219 is unused, and t240..255 are unreferenced.
 gCatchTile_BurstStart_Gfx:: @ 0x083A07CC
-	.incbin "baserom.gba", 0x3A07CC, 0x2020
+	.incbin "graphics/stage/main/catch_tile_burst_start.4bpp"
+	.space 0x20
 
 gCatchTile_BurstStart_Pal:: @ 0x083A27EC
-	.incbin "baserom.gba", 0x3A27EC, 0x200
+	.incbin "graphics/stage/main/catch_tile_burst_start.gbapal"
 
+@ 16 sprites of 16x16, a uniform 2x2 grid with nothing irregular in it.
+@ gCatchTile_BurstRevealOamFramesets0 draws six of them at a time into a 3x2
+@ block of cells, so the sheet is a bank of quarters the framesets pick from
+@ rather than a run of whole frames. Only t0..35 are ever named; t36..63 are
+@ unreferenced but still inside the copy. Palette from gCatchTile_BurstStage2_Pal
+@ into OBJ bank 14, in the copy right after.
 gCatchTile_BurstStage2_Gfx:: @ 0x083A29EC
-	.incbin "baserom.gba", 0x3A29EC, 0x820
+	.incbin "graphics/stage/main/catch_tile_burst_stage2.4bpp"
+	.space 0x20
 
 gCatchTile_BurstStage2_Pal:: @ 0x083A320C
-	.incbin "baserom.gba", 0x3A320C, 0x200
+	.incbin "graphics/stage/main/catch_tile_burst_stage2.gbapal"
 
+@ 4 frames of the catch tile collapsing, streamed over the tile-704 overlay slot
+@ by the burst particles (main_board_catch_tile_particles.c). Each frame is a
+@ single 64x64 sprite from gCatchTileParticleOamAttributes, palette bank 14, so
+@ the sheet is 8 tiles wide with no OAM packing. The trailing 0x20 is blank.
 gCatchTile_BurstStage3_Gfx:: @ 0x083A340C
-	.incbin "baserom.gba", 0x3A340C, 0x2020
+	.incbin "graphics/stage/main/catch_tile_burst_stage3.4bpp"
+	.space 0x20
 
 gCatchTile_BurstStage3_Pal:: @ 0x083A542C
-	.incbin "baserom.gba", 0x3A542C, 0x200
+	.incbin "graphics/stage/main/catch_tile_burst_stage3.gbapal"
 
+@ 9 frames of the catch tile burst, streamed over the tile-704 overlay slot and
+@ drawn by gCatchTile_BurstRevealOamFramesets1. Unlike the burst start sheet the
+@ frames tile cleanly: every group is contiguous and none of them overlap.
+@ Frames 0, 1 and 2 have all their pieces on multiples of 8 so they take
+@ oam-shapes; 4 and 5 are plain 6x4 blocks; the rest put a piece at an odd offset
+@ (frame 3 at x=9, frame 6 at y=-5) and stay strips. t158..191 are unreferenced.
 gCatchTile_BurstStage4_Gfx:: @ 0x083A562C
-	.incbin "baserom.gba", 0x3A562C, 0x1820
+	.incbin "graphics/stage/main/catch_tile_burst_stage4.4bpp"
+	.space 0x20
 
 gCatchTile_BurstStage4_Pal:: @ 0x083A6E4C
-	.incbin "baserom.gba", 0x3A6E4C, 0x200
+	.incbin "graphics/stage/main/catch_tile_burst_stage4.gbapal"
 
-gEggModeTilesGfx:: @ 0x083A704C
-	.incbin "baserom.gba", 0x3A704C, 0x1020
+@ Egg mode, over the tile-704 overlay slot, with gAerodactlyFlight_Pal going to OBJ
+@ bank 14 in the copy above. gEggFloatOamFramesets draws three frames, each a
+@ 32x32 with a 16x8 under it and a 16x32 and 8x32 beside it. Only the first has
+@ every piece on one sub-tile phase, so it takes a shape; the other two put one
+@ piece a single pixel off and stay strips.
+@ t88..127 are blank but still inside the copy, so they are .space rather than a
+@ sheet of empty tiles. t128 is past the copy and is not blank.
+gAerodactlyFlight_Gfx:: @ 0x083A704C
+	.incbin "graphics/stage/main/aerodactyl_flight.4bpp"
+	.space 0x500
+	.incbin "graphics/stage/main/aerodactyl_flight_cap.4bpp"
 
-gEggModePalette:: @ 0x083A806C
-	.incbin "baserom.gba", 0x3A806C, 0x20
+gAerodactlyFlight_Pal:: @ 0x083A806C
+	.incbin "graphics/stage/main/aerodactyl_flight.gbapal"
 
 gCaptureModePalette:: @ 0x083A808C
-	.incbin "baserom.gba", 0x3A808C, 0x1E0
+	.incbin "graphics/stage/main/capture_mode.gbapal"
 
+@ BG map entries rather than tiles, so these go in as .bin like the other
+@ tilemaps. all_board_setup.c copies A to 0x06006800 and B to 0x06006C00 on every
+@ board, so the two sit end to end and make one 48-row strip: A is the top 16
+@ rows, B the 32 below it.
 gBoardHudTilemapB:: @ 0x083A826C
-	.incbin "baserom.gba", 0x3A826C, 0x800
+	.incbin "graphics/stage/main/board_hud_b_tilemap.bin"
 	.space 0x20
 
 gShopPalette:: @ 0x083A8A8C
 	.incbin "graphics/stage/main/shop.gbapal"
 
 gTravelPortraitPalette:: @ 0x083A8AAC
-	.incbin "baserom.gba", 0x3A8AAC, 0x20
+	.incbin "graphics/stage/main/travel_portrait.gbapal"
 
 gBoardHudTilemapA:: @ 0x083A8ACC
-	.incbin "baserom.gba", 0x3A8ACC, 0x400
+	.incbin "graphics/stage/main/board_hud_a_tilemap.bin"
 	.space 0x20
 
 gPortraitAnimFrameGraphics:: @ 0x083A8EEC
@@ -1297,38 +1676,80 @@ gBallRotationTileGraphics:: @ 0x083BB16C
 	.incbin "graphics/stage/main/pokeball_ultra.4bpp"
 	.incbin "graphics/stage/main/pokeball_master.4bpp"
 
-gBallShadowTileGraphics:: @ 0x083BD36C
-	.incbin "baserom.gba", 0x3BD36C, 0xC00
+@ Not a shadow: the group all_board_process7.c streams these into is
+@ FIELD_SG_BALL_UPGRADE_FX and gBallUpgradeFxSpriteSet draws them, a single 32x32
+@ over tile 247 in palette bank 1 -- the ball's own bank, which is why the frames
+@ come out as the upgrade sparkle rather than anything dark. 6 frames of 0x200,
+@ 4 tiles wide, no OAM packing. gBallUpgradeFx_TileIndicies and gBallUpgradeFxTimer in
+@ ruby_board_indicators.c pick the frame and carry the same wrong name.
+gBallUpgradeFx_Gfx:: @ 0x083BD36C
+	.incbin "graphics/stage/main/ball_upgrade_fx_frames.4bpp"
 
+@ The two ball spawn glows, streamed a frame at a time over tile 57 by
+@ all_board_process7.c -- the gBonusBoardBallRespawnFxSpriteSet slot, one 32x32
+@ in palette bank 1, so both sheets are 4 tiles wide with no OAM packing.
+@ Type 2 is 9 frames of 0x200, type 1 is 11.
 gBallSpawnGlowTiles_Type2:: @ 0x083BDF6C
-	.incbin "baserom.gba", 0x3BDF6C, 0x1200
+	.incbin "graphics/stage/main/ball_spawn_glow_type2.4bpp"
 
 gBallSpawnGlowTiles_Type1:: @ 0x083BF16C
-	.incbin "baserom.gba", 0x3BF16C, 0x1600
+	.incbin "graphics/stage/main/ball_spawn_glow_type1.4bpp"
 
+@ 7 frames of the launcher Spoink, 0x1C0 each, streamed over tile 263 by
+@ main_board_launcher_and_cutscenes.c. gSpoinkLauncherSpriteSet draws a 16x32
+@ and an 8x32 beside it, then a 16x8 below -- 14 tiles. The body pair sits on
+@ the tile grid but the lower strip is offset 4px, half a tile, so the shape
+@ places it at the nearest column. That is the one approximation in the layout;
+@ everything else is exact and the sheet still rebuilds byte for byte. Ruby's
+@ intro sheet splits the same sprite at that seam instead, as spoink and
+@ spoink_tail, which is not an option here with 7 frames to interleave.
 gSpoinkEntity_Gfx:: @ 0x083C076C
-	.incbin "baserom.gba", 0x3C076C, 0xC40
+	.incbin "graphics/stage/main/spoink_launcher.4bpp"
 
+@ 9 frames of 0xC0 over tile 289, the surfacing splash. 6 tiles a frame, 2 wide.
 gKyogreSplashSpriteFrames:: @ 0x083C13AC
-	.incbin "baserom.gba", 0x3C13AC, 0x6C0
+	.incbin "graphics/stage/kyogre/surfacing_fx_frames.4bpp"
 
+@ 9 frames of the freeze trap, 0x3C0 each, streamed over tile 295 by
+@ KyogreProcess3 (kyogre_process3.c). Each frame is 4 OAM pieces -- a 32x32
+@ over a 16x32 with a 32x8 and a 16x8 beneath, gKyogreFreezeTrapSpriteSet,
+@ palette bank 12 -- so a frame tiles into a 6x5 block. Frame 0 is the same
+@ 30 tiles the intro sheet already carries as iceberg + ice_bits.
 gKyogreWhirlpoolSpriteFrames:: @ 0x083C1A6C
-	.incbin "baserom.gba", 0x3C1A6C, 0x21C0
+	.incbin "graphics/stage/kyogre/freeze_trap_frames.4bpp"
 
-gRubyFlashingDecorationTiles:: @ 0x083C3C2C
-	.incbin "baserom.gba", 0x3C3C2C, 0x1800
+@ Not decorations: these are the ruby board's Chikorita, 8 frames of 0x300
+@ streamed over tile 313 by ruby_trigger_targets.c and drawn through
+@ gRubyChikoritaSpriteSet in palette bank 3. Each frame is a 32x32 over a 32x16,
+@ so it tiles into a clean 4x6 block with nothing left over.
+gRubyChikoritaEntity:: @ 0x083C3C2C
+	.incbin "graphics/stage/ruby/chikorita_frames.4bpp"
 
+@ 4 frames of 0x80 over tile 528, one 16x16 each from
+@ gRubyChikoritaProjectileSpriteSet in palette bank 3.
 gChikoritaProjectileTiles:: @ 0x083C542C
-	.incbin "baserom.gba", 0x3C542C, 0x200
+	.incbin "graphics/stage/ruby/chikorita_projectile.4bpp"
 
+@ 4 frames of 0x100 over tile 532, drawn as a 16x32 pair by
+@ gRubyChikoritaProjectileCollisionFxSpriteSet in palette bank 3.
 gChikoritaExplosionTiles:: @ 0x083C562C
-	.incbin "baserom.gba", 0x3C562C, 0x400
+	.incbin "graphics/stage/ruby/chikorita_projectile_fx.4bpp"
 
+@ The three storm clouds of the Rayquaza intro, drawn by gRaquazaIntroCloud0/1/2
+@ SpriteSet over the tile-704 overlay slot in OBJ bank 2. The copy in
+@ rayquaza_process3.c asks for 0x2800 but the sheet is only 0x2640, so the last
+@ 14 tiles it lands in VRAM come from gChinchouBumper_Gfx below.
 gRayquazaSkyBackgroundGfx:: @ 0x083C5A2C
-	.incbin "baserom.gba", 0x3C5A2C, 0x2640
+	.incbin "graphics/stage/rayquaza/sky_background.4bpp"
 
-gRubyFlashingTiles_Secondary:: @ 0x083C806C
-	.incbin "baserom.gba", 0x3C806C, 0xB00
+@ Not flashing tiles: this is the Chinchou pond bumper, the else branch of the
+@ pond bumper draw in ruby_process3_entities_2.c. 11 frames of 0x100, streamed
+@ into tile 372 + 8i for the three bumpers, each a single 16x32 from
+@ gRubyBumpersSpriteSet drawn twice side by side. Palette bank 9, loaded from
+@ gChinchouBumperPalettes in the copy right after. The Lotad bumper below is the
+@ if branch of the same loop and matches it frame for frame.
+gChinchouBumper_Gfx:: @ 0x083C806C
+	.incbin "graphics/stage/main/chinchou_bumper.4bpp"
 
 .include "data/graphics/mon_hatch_sprites.inc"
 
@@ -1353,11 +1774,21 @@ gPickupIcon8_Gfx:: @ 0x083FA84C
 gPickupIcon7_Gfx:: @ 0x083FC64C
 	.incbin "graphics/board_pickups/icon7_bolt.4bpp"
 
+@ 6 flipper angles of 0x200, copied into tile 0 for the left flipper and tile 16
+@ for the right (all_board_process4.c). Each is a single 32x32 from
+@ gBonusBoardLeft/RightFlipperSpriteSet in palette bank 0, so the sheet is 4
+@ tiles wide with no OAM packing. These are the same two slots the shared
+@ bonus-board block occupies at t0..31 on every board's intro sheet.
 gFlipperTileGraphics:: @ 0x083FE44C
-	.incbin "baserom.gba", 0x3FE44C, 0xC00
+	.incbin "graphics/stage/main/flipper_frames.4bpp"
 
+@ 52 letters of 0x40 -- A-Z then a-z -- each an 8x16 pair of tiles. The name
+@ display copies one letter at a time into tile 704 + 2i (main_board_to_be_split.c)
+@ and gLegendaryCatchNameBannerSpriteSet draws the ten slots in palette bank 1.
+@ Laid out 26 across so the two cases read as two rows. gSpaceTileGfx below is
+@ the blank the same loop uses for a space.
 gAlphabetTilesGfx:: @ 0x083FF04C
-	.incbin "baserom.gba", 0x3FF04C, 0xD00
+	.incbin "graphics/stage/main/alphabet.4bpp"
 
 gSpaceTileGfx:: @ 0x083FFD4C
 	.space 0x40
@@ -1373,8 +1804,8 @@ gRubyStageGulpin_Gfx:: @ 0x08447A8C
 gMainStageBonusTrap_Gfx:: @ 0x0844838C
 	.incbin "graphics/stage/main/bonus_trap.4bpp"
 
-gLotadBumperTiles:: @ 0x0844928C
-	.incbin "baserom.gba", 0x44928C, 0xB00
+gLotadBumper_Gfx:: @ 0x0844928C
+	.incbin "graphics/stage/main/lotad_bumper.4bpp"
 
 gRubyStageCyndaquil_Gfx:: @ 0x08449D8C
 	.incbin "graphics/stage/ruby/cyndaquil.4bpp"
@@ -1403,8 +1834,10 @@ gPondBumper_Gfx:: @ 0x0845690C
 gRubyStageNuzleaf_Gfx:: @ 0x0845710C
 	.incbin "graphics/stage/ruby/nuzleaf.4bpp"
 
+@ 4 chunks of 0x100 streamed over tile 517 and the three slots after it, the
+@ hatch machine's light spark (gSapphireHatchMachineLightSparkFx0SpriteSet).
 gSplashEffectTileGfx:: @ 0x0845A08C
-	.incbin "baserom.gba", 0x45A08C, 0x400
+	.incbin "graphics/stage/sapphire/hatch_machine_spark_fx.4bpp"
 
 gRubyIntroSprites_Gfx:: @ 0x0845A48C
 	.incbin "graphics/stage/ruby/intro_sprite.4bpp"
@@ -1428,19 +1861,31 @@ gRayquazaIntroSprite_Gfx:: @ 0x08472A6C
 	.incbin "graphics/stage/rayquaza/intro_sprite.4bpp"
 
 gSphealIntroSprites_Gfx:: @ 0x084779EC
-	.incbin "baserom.gba", 0x4779EC, 0x2A20
+	.incbin "graphics/stage/spheal/intro_sprite.4bpp"
 
 gSapphireBumperLeft_Gfx:: @ 0x0847A40C
-	.incbin "baserom.gba", 0x47A40C, 0x2D00
+@ 15 frames of the Sapphire Minun bumper, stride 0x300. The sprite is
+@ a 32x32 over a 32x16 (24 tiles, gSapphireMinunSpriteSet, palette bank 10 from the OBJ
+@ palette sets); only 0x280 of each frame is DMAd, the rest is padding.
+	.incbin "graphics/stage/sapphire/bumper_minun.4bpp"
 
 gSapphireBumperLeftHit_Gfx:: @ 0x0847D10C
-	.incbin "baserom.gba", 0x47D10C, 0xE00
+@ 7 frames of the Sapphire Minun hit bumper, stride 0x200. The sprite is
+@ one 32x32 (16 tiles, gSapphireMinunElectricityFxSpriteSet, palette bank 10 from the OBJ
+@ palette sets); only 0x180 of each frame is DMAd, the rest is padding.
+	.incbin "graphics/stage/sapphire/bumper_minun_fx.4bpp"
 
+@ 10 frames of the ramp Makuhita, 0x300 each, streamed over tile 428 by
+@ ruby_ramp.c. gRubyMakuhitaSpriteSet draws each frame as a 32x32 with an 8x32
+@ beside it and a 32x8 under it, offset 8px right -- a 5x5 block with the
+@ bottom-left tile unused, so it needs an oam-shape rather than -mwidth.
 gRubyMakuhitaGfx:: @ 0x0847DF0C
-	.incbin "baserom.gba", 0x47DF0C, 0x1E00
+	.incbin "graphics/stage/ruby/makuhita.4bpp"
 
+@ 2 frames of 0x100 streamed over tile 337 for each of the Linoone side
+@ bumpers (ruby_trigger_targets.c), gRubyLinooneLeftSpriteSet, palette bank 4.
 gSideBumperGfx:: @ 0x0847FD0C
-	.incbin "baserom.gba", 0x47FD0C, 0x200
+	.incbin "graphics/stage/ruby/linoone_side_bumper.4bpp"
 
 @ 5 overlays of 0x300 each, drawn as 2 sprites (32x32 + 16x32) by
 @ gMainShopPortraitOverlaySpriteSet, so each frame is 6x4 tiles.
@@ -1448,8 +1893,10 @@ gSideBumperGfx:: @ 0x0847FD0C
 gShopPortraitOverlayGfx:: @ 0x0847FF0C
 	.incbin "graphics/stage/main/shop_portrait_overlay.4bpp"
 
+@ 0 through 9, one 8x16 digit per 0x40, copied a digit at a time into the score
+@ slots at tile 749 onwards. Laid out 10 across so the sheet reads as the digits.
 gDecimalDigitTilesGfx:: @ 0x08480E0C
-	.incbin "baserom.gba", 0x480E0C, 0x280
+	.incbin "graphics/stage/main/decimal_digits.4bpp"
 
 @ 10 sign frames of 0x480 each, drawn as 2 sprites (64x32 face at (0,0)
 @ plus a 32x8 post at (0,32)) by gSapphireMartSignSpriteSet. That is not a
@@ -1458,10 +1905,20 @@ gSapphireShopSignTileGfx:: @ 0x0848108C
 	.incbin "graphics/stage/sapphire/shop_sign_tiles.4bpp"
 
 gRubyTravelVolbeat_Gfx:: @ 0x08483D8C
-	.incbin "baserom.gba", 0x483D8C, 0x4C80
+@ 17 frames of Volbeat for the travel cutscene, 0x480 each. A frame is the
+@ first 4 pieces of gTravelPainterSpriteSet (32x32, 16x32, 32x16, 16x16 =
+@ 36 tiles) DMAd over tile 0x2c0; the last 2 pieces stay from the paint
+@ sheet loaded just before. Palette is bank 14, the first 16 colours of
+@ the painter palette.
+	.incbin "graphics/stage/ruby/travel_volbeat.4bpp"
 
 gSapphireTravelIllumise_Gfx:: @ 0x08488A0C
-	.incbin "baserom.gba", 0x488A0C, 0x4C80
+@ 17 frames of Illumise for the travel cutscene, 0x480 each. A frame is the
+@ first 4 pieces of gTravelPainterSpriteSet (32x32, 16x32, 32x16, 16x16 =
+@ 36 tiles) DMAd over tile 0x2c0; the last 2 pieces stay from the paint
+@ sheet loaded just before. Palette is bank 14, the first 16 colours of
+@ the painter palette.
+	.incbin "graphics/stage/sapphire/travel_illumise.4bpp"
 
 gLocationPortraitGfx:: @ 0x0848D68C
 	.incbin "graphics/area_portraits/loc00_ruby_forest.4bpp"
@@ -1478,38 +1935,85 @@ gLocationPortraitGfx:: @ 0x0848D68C
 	.incbin "graphics/area_portraits/loc11_sapphire_desert.4bpp"
 	.incbin "graphics/area_portraits/loc12_ruins.4bpp"
 
+@ The two egg deliveries, over the tile-704 overlay slot, with gCaptureModePalette
+@ going to OBJ bank 14 in the copy above (main_board_to_be_split.c).
+@ gRubyAerodactylEggDeliverySpriteSet holds t0..30 and gRubyTotodileEggDelivery-
+@ SpriteSet t28..34 and t56..77, so the two overlap at t28..30 and no cut
+@ separates them -- t0..34 is one segment. The Totodile egg at t72..77 draws in
+@ bank 11 while everything around it is bank 14, so it is split out to keep the
+@ colours honest. t35..55 and t78..100 are unreferenced, and t101 is past the
+@ copy: a solid colour-1 tile.
 gCaptureModeTilesGfx:: @ 0x0848FD8C
-	.incbin "baserom.gba", 0x48FD8C, 0xCC0
+	.incbin "graphics/stage/main/capture_mode.4bpp"
 
 gHoleIndicatorTileGfx:: @ 0x08490A4C
-	.incbin "baserom.gba", 0x490A4C, 0x4400
+@ 16 frames of 34 BG tiles (0x440 each), one per row of the sheet. Each frame
+@ is DMAd to 0x0600D900, i.e. char base 2 tile 712, inside the static board
+@ overlay. The 34 tiles are not one shape: the tilemap scatters them over
+@ several hole positions at rows 8-10 and 42-46, in palette banks 2 and 6.
+@ Sheet is coloured with Ruby bank 2; Sapphire reuses the same tiles.
+	.incbin "graphics/stage/main/hole_indicator.4bpp"
 
 gDusclopsBoardDusclopsAppearFx_Gfx:: @ 0x08494E4C
 	.incbin "graphics/stage/dusclops/dusclops_appear_fx.4bpp";
 
 gKyogreBodySprites_First15:: @ 0x0849664C
-	.incbin "baserom.gba", 0x49664C, 0x5280
+@ 15 animation frames of 44 OBJ tiles (0x580 each), one per row of the sheet.
+@ kyogre_process3.c picks the frame with bossVulnerable and DMAs it to tile 0x7d.
+@ gKyogreEntitySpriteSet draws it as 5 pieces plus 5 hFlipped mirrors, palette 15.
+@ Boards use 1D OBJ mapping, so a row is the pieces back to back, not the shape.
+	.incbin "graphics/stage/kyogre/body_first15.4bpp"
 
 gKyogreBodySprites_After15:: @ 0x0849B8CC
-	.incbin "baserom.gba", 0x49B8CC, 0x3900
+@ The frames used when bossVulnerable is 15 or more: 12 frames of 38 tiles
+@ (0x4C0 each), one per row. Max bossVulnerable is 26, and 26 - 15 = 11, the
+@ last of these 12.
+	.incbin "graphics/stage/kyogre/body_after15.4bpp"
 
-gGroudonBoardBackgroundGfx:: @ 0x0849F1CC
-	.incbin "baserom.gba", 0x49F1CC, 0x2020
+@ Not a background despite the label: this is the Groudon board's OBJ effect
+@ art, streamed whole over the tile-704 overlay slot by groudon_process3.c.
+@ Three animations share it -- gGroudonProjectileAttackOamData at t0..51,
+@ gGroudonProjectileOamData at t52..163 and gGroudonBallGrabOamData at
+@ t164..255 -- all in palette bank 12. t50..51 and t240..254 are unreferenced.
+gGroudonAttackFx_Gfx:: @ 0x0849F1CC
+	.incbin "graphics/stage/groudon/board_fx.4bpp"
+	.space 0x20
 
 gGroudonBoardBoulders_Gfx:: @ 0x084A11EC
 	.incbin "graphics/stage/groudon/boulders.4bpp";
 
-gRayquazaMinionOrbFrames:: @ 0x084A6EEC
-	.incbin "baserom.gba", 0x4A6EEC, 0x1680
+@ Not orbs: 9 frames of the tornado, 0x280 each, streamed over tile 245 by
+@ rayquaza_process3.c and drawn through gRaquazaTornadoSpriteSet in palette
+@ bank 12. Each frame is a 32x32 over a 32x8, so it tiles into a clean 4x5 block.
+gRayquazaTornadoGfx:: @ 0x084A6EEC
+	.incbin "graphics/stage/rayquaza/tornado_frames.4bpp"
 
+@ The wind attack, streamed whole over the tile-704 overlay slot by
+@ rayquaza_process3.c when the entity enters its flyby. t0..101 is the flyby
+@ Rayquaza itself (gRaquazaEntityFlybyLeft/RightSpriteSet, palette bank 15),
+@ t102..207 the three speedline tiers (gRaquazaFlyby*WindSpeedlines0/1/2A/B,
+@ bank 12), t208..223 unreferenced. The entity is 18 pieces at offsets that are
+@ not multiples of 8 and would overlap if rounded to a tile grid, so no oam-shape
+@ can reassemble it -- the segments are plain strips whose widths merely divide
+@ their tile counts.
 gRayquazaWindBoardGfx:: @ 0x084A856C
-	.incbin "baserom.gba", 0x4A856C, 0x1C20
+	.incbin "graphics/stage/rayquaza/wind_board.4bpp"
+	.space 0x20
 
+@ The flying Rayquaza, one 67-tile sprite of 14 pieces
+@ (gRaquazaEntityFlyingUp/DownSpriteSet, palette bank 15) copied whole to tile
+@ 177. The pieces run the tile slice in order but sit on three different sub-tile
+@ phases, so the shape places the odd ones at their nearest column.
 gRayquazaSpriteSheet:: @ 0x084AA18C
-	.incbin "baserom.gba", 0x4AA18C, 0x860
+	.incbin "graphics/stage/rayquaza/entity_flying.4bpp"
 
 gRayquazaBodyVariantTiles:: @ 0x084AA9EC
-	.incbin "baserom.gba", 0x4AA9EC, 0x5000
+@ 10 variants of the coiled body, 0x800 each. Every variant is one 64x64 sprite
+@ (gRaquazaEntityBouncingSpriteSet, tile 0xb1, palette 15), so at 8 tiles wide
+@ each occupies 8 rows and reads as the sprite itself under 1D OBJ mapping.
+@ Colours come from the OBJ palette sets (fieldLayout.objPaletteSets), not the
+@ board BG palette -- bank 15 there is all black. Palsets 1 and 2 are dimmed.
+	.incbin "graphics/stage/rayquaza/body_variants.4bpp"
 
 gSphealNetGfx:: @ 0x084AF9EC
 	.incbin "graphics/stage/spheal/spheal_net.4bpp"
@@ -1551,14 +2055,25 @@ gPikachuSaverTilesGfx:: @ 0x084C156C
 	.incbin "graphics/stage/main/pikachu_saver_tiles.4bpp"
 
 gSapphireBumperRight_Gfx:: @ 0x084C1E6C
-	.incbin "baserom.gba", 0x4C1E6C, 0x2D00
+@ 15 frames of the Sapphire Plusle bumper, stride 0x300. The sprite is
+@ a 32x32 over a 32x16 (24 tiles, gSapphirePlusleSpriteSet, palette bank 10 from the OBJ
+@ palette sets); only 0x280 of each frame is DMAd, the rest is padding.
+	.incbin "graphics/stage/sapphire/bumper_plusle.4bpp"
 
 gSapphireBumperRightHit_Gfx:: @ 0x084C4B6C
-	.incbin "baserom.gba", 0x4C4B6C, 0xE00
+@ 7 frames of the Sapphire Plusle hit bumper, stride 0x200. The sprite is
+@ one 32x32 (16 tiles, gSapphirePlusleElectricityFxSpriteSet, palette bank 10 from the OBJ
+@ palette sets); only 0x180 of each frame is DMAd, the rest is padding.
+	.incbin "graphics/stage/sapphire/bumper_plusle_fx.4bpp"
 
 .include "data/graphics/mon_portraits.inc"
 
-.incbin "baserom.gba", 0x4ECF6C, 0x160 @ 0x4ED0CC - 0x4ECF6C
+@ A narrow "compressed" digit font: 11 tiles stacked one tile wide, holding
+@ 0 through 9 plus a trailing glyph. Unrelated to the Plusle hit bumper it was
+@ previously filed under; no pointer in the ROM targets this address, so it is
+@ reached by offset from whatever indexes the font.
+gCompressedNumbers_Gfx:: @ 0x084ECF6C
+	.incbin "graphics/stage/sapphire/compressed_numbers.4bpp"
 
 gRubyBoardShopDoor_Gfx:: @ 0x084ED0CC
 	.incbin "graphics/stage/ruby/shop_door.4bpp";
@@ -1602,8 +2117,12 @@ gRubyBoardRampPrize_Gfx:: @ 0x084FEF0C
 gDusclopsBoardDusclopsBallGrabSwirl_Gfx:: @ 0x084FF30C
 	.incbin "graphics/stage/dusclops/dusclops_ball_grab.4bpp";
 
+@ 11 frames of the vortex minion, 0x200 each, streamed into whichever of the two
+@ 16-tile slots at t169 and t185 the entity holds (kyogre_process3.c). Each frame
+@ is a single 32x32, so the sheet is 4 tiles wide with no OAM packing. The 8
+@ tiles after the eleventh frame are past the end of the animation.
 gKyogreWhirlpoolMinionSprites:: @ 0x084FF90C
-	.incbin "baserom.gba", 0x4FF90C, 0x1700
+	.incbin "graphics/stage/kyogre/whirlpool_minion_frames.4bpp"
 
 gMainBoardBallSave_Gfx:: @ 0x0850100C
 	.incbin "graphics/stage/main/ball_save.4bpp";
@@ -1644,10 +2163,10 @@ gSapphireBoardZigzagoon_Gfx:: @ 0x08512C4C
 	.incbin "graphics/stage/sapphire/zigzagoon.4bpp";
 
 gBonusStagePal_Lit:: @ 0x08514F4C
-	.incbin "baserom.gba", 0x514F4C, 0x20
+	.incbin "graphics/stage/main/bonus_stage_lit.gbapal"
 
 gBonusStagePal_Dark:: @ 0x08514F6C
-	.incbin "baserom.gba", 0x514F6C, 0x1E0
+	.incbin "graphics/stage/main/bonus_stage_dark.gbapal"
 
 gRubyChinchouCatchBurstBanner_Gfx:: @ 0x0851514C
 	.incbin "graphics/stage/ruby/chinchou_catch_burst_banner.4bpp"
@@ -1671,10 +2190,10 @@ gSapphireShroomishCatchBurstBanner_Gfx:: @ 0x0851DB8C
 	.space 0xA0
 
 gBonusClearTextPal_Lit:: @ 0x08521FAC
-	.incbin "baserom.gba", 0x521FAC, 0x20
+	.incbin "graphics/stage/main/bonus_clear_text_lit.gbapal"
 
 gBonusClearTextPal_Dark:: @ 0x08521FCC
-	.incbin "baserom.gba", 0x521FCC, 0x1E0
+	.incbin "graphics/stage/main/bonus_clear_text_dark.gbapal"
 
 gMainBoardEvoBanner_Pal:: @ 0x085221AC
     .incbin "graphics/stage/main/evo_banner.gbapal"
@@ -1695,8 +2214,12 @@ gMainBoardTravel_Pal:: @ 0x08526BCC
 gSapphireBoardZigzagoonFx_Gfx:: @ 0x08526DCC
 	.incbin "graphics/stage/sapphire/zigzagoon_fx.4bpp";
 
-	.incbin "baserom.gba", 0x5279CC, 0x356
-
+@ Unreferenced 854-byte blob, most likely a leftover tilemap: mostly ascending
+@ tile ids with runs of repeats. Both ends are pinned by real references (the
+@ 0xC00 copies of the gfx above, and the pointer to gOptionsBGMList below), and
+@ no pointer anywhere in the ROM lands inside it.
+gUnknown_085279CC:: @ 0x085279CC
+	.incbin "graphics/stage/unknown_085279CC.bin"
 
 gOptionsBGMList:: @ 0x08527D22
 	.2byte MUS_TITLE, MUS_TABLE_SELECT, MUS_EREADER, MUS_OPENING, MUS_HIGH_SCORE
@@ -1758,7 +2281,9 @@ gDefaultButtonConfigs:: @ 0x08527ED6
 	.byte 0x09, 0x0A, 0x08, 0x0A, 0x05, 0x0A, 0x04, 0x0A, 0x06, 0x0A;
 
 gDefaultCustomButtonConfigTileIds:: @ 0x08527EFE
-	.incbin "baserom.gba", 0x527EFE, 0xA
+	@ Copied into gCustomButtonConfigTileIds by the options screen; pairs of
+	@ (tile id, 10) for the five configurable buttons.
+	.byte 1, 10, 0, 10, 5, 10, 4, 10, 6, 10
 
 gOptionsStateFuncs:: @ 0x08527F08
 	.4byte Options_LoadGraphics

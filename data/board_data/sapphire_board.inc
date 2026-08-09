@@ -1,7 +1,7 @@
 @ Note: ruby_board.inc file has a shared 'bumper collision map' at 0x08252B10
 
 gSapphireBoardPalette:: @ 0x0826EC10
-	.incbin "baserom.gba", 0x26EC10, 0x200
+	.incbin "graphics/stage/sapphire/sapphire_board.gbapal"
 
 gSapphireBoardBG0Tilemap:: @ 0x0826EE10
 	.incbin "graphics/stage/sapphire/sapphire_board_bg0_tilemap.bin"
@@ -495,49 +495,49 @@ gSapphireBonusArrow_9_Bot:: @ 0x082DD460
 @ Ball power up lights
 
 gSapphireBallPowerUpLight0off:: @ 0x082DD620
-    .incbin "baserom.gba", 0x2DD620, 0x40
+    .incbin "graphics/stage/sapphire/ball_power_up_lights/sapphire_ball_power_up_light_0_off.4bpp"
 
 gSapphireBallPowerUpLight0on:: @ 0x082DD660
-    .incbin "baserom.gba", 0x2DD660, 0x40
+    .incbin "graphics/stage/sapphire/ball_power_up_lights/sapphire_ball_power_up_light_0_on.4bpp"
 
 gSapphireBallPowerUpLight1off:: @ 0x082DD6A0
-    .incbin "baserom.gba", 0x2DD6A0, 0x40
+    .incbin "graphics/stage/sapphire/ball_power_up_lights/sapphire_ball_power_up_light_1_off.4bpp"
 
 gSapphireBallPowerUpLight1on:: @ 0x082DD6E0
-    .incbin "baserom.gba", 0x2DD6E0, 0x40
+    .incbin "graphics/stage/sapphire/ball_power_up_lights/sapphire_ball_power_up_light_1_on.4bpp"
 
 gSapphireBallPowerUpLight2off:: @ 0x082DD720
-    .incbin "baserom.gba", 0x2DD720, 0x40
+    .incbin "graphics/stage/sapphire/ball_power_up_lights/sapphire_ball_power_up_light_2_off.4bpp"
 
 gSapphireBallPowerUpLight2on:: @ 0x082DD760
-    .incbin "baserom.gba", 0x2DD760, 0x40
+    .incbin "graphics/stage/sapphire/ball_power_up_lights/sapphire_ball_power_up_light_2_on.4bpp"
 
 
 @ 'H' 'o' 'l' 'e' Lights
 
 gSapphireHoleLightH_Off:: @ 0x082DD7A0
-    .incbin "baserom.gba", 0x2DD7A0, 0x40
+    .incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_h_off.4bpp"
 
 gSapphireHoleLightH_On:: @ 0x082DD7E0
-    .incbin "baserom.gba", 0x2DD7E0, 0x40
+    .incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_h_on.4bpp"
 
 gSapphireHoleLightO_Off:: @ 0x082DD820
-    .incbin "baserom.gba", 0x2DD820, 0x40
+    .incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_o_off.4bpp"
 
 gSapphireHoleLightO_On:: @ 0x082DD860
-    .incbin "baserom.gba", 0x2DD860, 0x40
+    .incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_o_on.4bpp"
 
 gSapphireHoleLightL_Off:: @ 0x082DD8A0
-    .incbin "baserom.gba", 0x2DD8A0, 0x40
+    .incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_l_off.4bpp"
 
 gSapphireHoleLightL_On:: @ 0x082DD8E0
-    .incbin "baserom.gba", 0x2DD8E0, 0x40
+    .incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_l_on.4bpp"
 
 gSapphireHoleLightE_Off:: @ 0x082DD920
-    .incbin "baserom.gba", 0x2DD920, 0x40
+    .incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_e_off.4bpp"
 
 gSapphireHoleLightE_On:: @ 0x082DD960
-    .incbin "baserom.gba", 0x2DD960, 0x40
+    .incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_e_on.4bpp"
 
 
 
@@ -1082,7 +1082,8 @@ gWailmerWater_082E4BC0:: @ 0x082E4BC0
     .incbin "baserom.gba", 0x2E4BC0, 0x320
 
 gSapphireBoardBGTiles:: @ 0x082E4EE0
-	.incbin "baserom.gba", 0x2E4EE0, 0x8000
+	@ loaded to charblock 2; tiles 0-703 are overwritten by the scroll ring
+	.incbin "graphics/stage/sapphire/sapphire_board_bg_tiles.4bpp"
 
 gSapphireBoardBGTilemap:: @ 0x082ECEE0
-	.incbin "baserom.gba", 0x2ECEE0, 0x1000
+	.incbin "graphics/stage/sapphire/sapphire_board_bg_tilemap.bin"
