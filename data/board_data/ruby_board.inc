@@ -431,14 +431,14 @@ gRubyCatchLightState0Bot:: @ 0x0825FEB0
 gRubyCatchLightState1Bot:: @ 0x0825FEF0
     .incbin "graphics/stage/ruby/catch_lights/catch_light_state1_bot.4bpp"
 
-gRubyTrapTile_0825FF30:: @ 0x0825FF30
-    .incbin "baserom.gba", 0x25FF30, 0x40
+gRubyTrapIndicatorState0Top:: @ 0x0825FF30
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state0_top.4bpp"
 
-gRubyTrapTile_0825FF70:: @ 0x0825FF70
-    .incbin "baserom.gba", 0x25FF70, 0x40
+gRubyTrapIndicatorState1Top:: @ 0x0825FF70
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state1_top.4bpp"
 
-gRubyTrapTile_0825FFB0:: @ 0x0825FFB0
-    .incbin "baserom.gba", 0x25FFB0, 0x40
+gRubyTrapIndicatorState2Top:: @ 0x0825FFB0
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state2_top.4bpp"
 
 gRubyCatchLightSlot0State2Top:: @ 0x0825FFF0
     .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_top.4bpp"
@@ -477,14 +477,14 @@ gRubyCatchLightSlot2State5Top:: @ 0x082602B0
     .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top.4bpp"
 	.space 0x40
 
-gRubyTrapTile_08260330:: @ 0x08260330
-    .incbin "baserom.gba", 0x260330, 0x40
+gRubyTrapIndicatorState0Bot:: @ 0x08260330
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state0_bot.4bpp"
 
-gRubyTrapTile_08260370:: @ 0x08260370
-    .incbin "baserom.gba", 0x260370, 0x40
+gRubyTrapIndicatorState1Bot:: @ 0x08260370
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state1_bot.4bpp"
 
-gRubyTrapTile_082603B0:: @ 0x082603B0
-    .incbin "baserom.gba", 0x2603B0, 0x40
+gRubyTrapIndicatorState2Bot:: @ 0x082603B0
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state2_bot.4bpp"
 
 gRubyCatchLightSlot0State2Bot:: @ 0x082603F0
     .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_bot.4bpp"

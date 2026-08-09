@@ -8422,9 +8422,9 @@ gRubyProgressDigitTilePointers:: @ 0x086B0970
 gRubyTrapIndicatorTilePointers:: @ 0x086B09C8
     @ 4 sets of 2
     @ fourth set has destination address
-    .4byte gRubyTrapTile_0825FF30, gRubyTrapTile_08260330
-    .4byte gRubyTrapTile_0825FF70, gRubyTrapTile_08260370
-    .4byte gRubyTrapTile_0825FFB0, gRubyTrapTile_082603B0
+    .4byte gRubyTrapIndicatorState0Top, gRubyTrapIndicatorState0Bot
+    .4byte gRubyTrapIndicatorState1Top, gRubyTrapIndicatorState1Bot
+    .4byte gRubyTrapIndicatorState2Top, gRubyTrapIndicatorState2Bot
     .4byte 0x060081C0, 0x060085C0
 
 gRubyCatchLightTilePointers:: @ 0x086B09E8
@@ -8585,11 +8585,11 @@ gSlingshotHitFrameIndices:: @ 0x086B0E60
 gSapphirePSquareIndicator:: @ 0x086B0E6C
     @ 6 sets of 2
     @ sixth set has destination address
-    .4byte gSapphirePIndicator_082DEEE0, gSapphirePIndicator_082DF2E0
-    .4byte gSapphirePIndicator_082DEF20, gSapphirePIndicator_082DF320
-    .4byte gSapphirePIndicator_082DEF60, gSapphirePIndicator_082DF360
-    .4byte gSapphirePIndicator_082DEFA0, gSapphirePIndicator_082DF3A0
-    .4byte gSapphirePIndicator_082DEFE0, gSapphirePIndicator_082DF3E0
+    .4byte gSapphirePSquareFrame0Top, gSapphirePSquareFrame0Bot
+    .4byte gSapphirePSquareFrame1Top, gSapphirePSquareFrame1Bot
+    .4byte gSapphirePSquareFrame2Top, gSapphirePSquareFrame2Bot
+    .4byte gSapphirePSquareFrame3Top, gSapphirePSquareFrame3Bot
+    .4byte gSapphirePSquareFrame4Top, gSapphirePSquareFrame4Bot
     .4byte 0x0600A640, 0x0600AA40
 
 gSapphireProgressDigitTilePtrs:: @ 0x086B0E9C
@@ -8673,9 +8673,9 @@ gSapphireSlingshotTilePtrs:: @ 0x086B108C
 gSapphireTrapIndicatorTilePtrs:: @ 0x086B1104
     @ 4 sets of 2
     @ fourth set has destination address
-    .4byte gSapphireCenterTrap_082DDE20, gSapphireCenterTrap_082DE220
-    .4byte gSapphireCenterTrap_082DDE60, gSapphireCenterTrap_082DE260
-    .4byte gSapphireCenterTrap_082DDEA0, gSapphireCenterTrap_082DE2A0
+    .4byte gSapphireTrapIndicatorState0Top, gSapphireTrapIndicatorState0Bot
+    .4byte gSapphireTrapIndicatorState1Top, gSapphireTrapIndicatorState1Bot
+    .4byte gSapphireTrapIndicatorState2Top, gSapphireTrapIndicatorState2Bot
     .4byte 0x060081C0, 0x060085C0
 
 gSapphireCatchLightTilePtrs:: @ 0x086B1124

@@ -559,14 +559,14 @@ gSapphireCatchLightState0Bot:: @ 0x082DDDA0
 gSapphireCatchLightState1Bot:: @ 0x082DDDE0
     .incbin "graphics/stage/sapphire/catch_lights/catch_light_state1_bot.4bpp"
 
-gSapphireCenterTrap_082DDE20:: @ 0x082DDE20
-    .incbin "baserom.gba", 0x2DDE20, 0x40
+gSapphireTrapIndicatorState0Top:: @ 0x082DDE20
+    .incbin "graphics/stage/sapphire/trap_indicator/trap_state0_top.4bpp"
 
-gSapphireCenterTrap_082DDE60:: @ 0x082DDE60
-    .incbin "baserom.gba", 0x2DDE60, 0x40
+gSapphireTrapIndicatorState1Top:: @ 0x082DDE60
+    .incbin "graphics/stage/sapphire/trap_indicator/trap_state1_top.4bpp"
 
-gSapphireCenterTrap_082DDEA0:: @ 0x082DDEA0
-    .incbin "baserom.gba", 0x2DDEA0, 0x40
+gSapphireTrapIndicatorState2Top:: @ 0x082DDEA0
+    .incbin "graphics/stage/sapphire/trap_indicator/trap_state2_top.4bpp"
 
 gSapphireCatchLightSlot0State2Top:: @ 0x082DDEE0
     .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_top.4bpp"
@@ -607,14 +607,14 @@ gSapphireCatchLightSlot2State5Top:: @ 0x082DE1A0
 gHatchMachineSeg0IdleA:: @ 0x082DE1E0
     .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a.4bpp"
 
-gSapphireCenterTrap_082DE220:: @ 0x082DE220
-    .incbin "baserom.gba", 0x2DE220, 0x40
+gSapphireTrapIndicatorState0Bot:: @ 0x082DE220
+    .incbin "graphics/stage/sapphire/trap_indicator/trap_state0_bot.4bpp"
 
-gSapphireCenterTrap_082DE260:: @ 0x082DE260
-    .incbin "baserom.gba", 0x2DE260, 0x40
+gSapphireTrapIndicatorState1Bot:: @ 0x082DE260
+    .incbin "graphics/stage/sapphire/trap_indicator/trap_state1_bot.4bpp"
 
-gSapphireCenterTrap_082DE2A0:: @ 0x082DE2A0
-    .incbin "baserom.gba", 0x2DE2A0, 0x40
+gSapphireTrapIndicatorState2Bot:: @ 0x082DE2A0
+    .incbin "graphics/stage/sapphire/trap_indicator/trap_state2_bot.4bpp"
 
 gSapphireCatchLightSlot0State2Bot:: @ 0x082DE2E0
     .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_bot.4bpp"
@@ -760,20 +760,20 @@ gHatchMachineSeg9HitA:: @ 0x082DEEA0
 
 
 
-gSapphirePIndicator_082DEEE0:: @ 0x082DEEE0
-    .incbin "baserom.gba", 0x2DEEE0, 0x40
+gSapphirePSquareFrame0Top:: @ 0x082DEEE0
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame0_top.4bpp"
 
-gSapphirePIndicator_082DEF20:: @ 0x082DEF20
-    .incbin "baserom.gba", 0x2DEF20, 0x40
+gSapphirePSquareFrame1Top:: @ 0x082DEF20
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame1_top.4bpp"
 
-gSapphirePIndicator_082DEF60:: @ 0x082DEF60
-    .incbin "baserom.gba", 0x2DEF60, 0x40
+gSapphirePSquareFrame2Top:: @ 0x082DEF60
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame2_top.4bpp"
 
-gSapphirePIndicator_082DEFA0:: @ 0x082DEFA0
-    .incbin "baserom.gba", 0x2DEFA0, 0x40
+gSapphirePSquareFrame3Top:: @ 0x082DEFA0
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame3_top.4bpp"
 
-gSapphirePIndicator_082DEFE0:: @ 0x082DEFE0
-    .incbin "baserom.gba", 0x2DEFE0, 0x40
+gSapphirePSquareFrame4Top:: @ 0x082DEFE0
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame4_top.4bpp"
     .space 0x200
 
 gHatchMachineSeg8HitB:: @ 0x082DF220
@@ -787,20 +787,20 @@ gHatchMachineSeg9HitB:: @ 0x082DF2A0
 
 
 
-gSapphirePIndicator_082DF2E0:: @ 0x082DF2E0
-    .incbin "baserom.gba", 0x2DF2E0, 0x40
+gSapphirePSquareFrame0Bot:: @ 0x082DF2E0
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame0_bot.4bpp"
 
-gSapphirePIndicator_082DF320:: @ 0x082DF320
-    .incbin "baserom.gba", 0x2DF320, 0x40
+gSapphirePSquareFrame1Bot:: @ 0x082DF320
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame1_bot.4bpp"
 
-gSapphirePIndicator_082DF360:: @ 0x082DF360
-    .incbin "baserom.gba", 0x2DF360, 0x40
+gSapphirePSquareFrame2Bot:: @ 0x082DF360
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame2_bot.4bpp"
 
-gSapphirePIndicator_082DF3A0:: @ 0x082DF3A0
-    .incbin "baserom.gba", 0x2DF3A0, 0x40
+gSapphirePSquareFrame3Bot:: @ 0x082DF3A0
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame3_bot.4bpp"
 
-gSapphirePIndicator_082DF3E0:: @ 0x082DF3E0
-    .incbin "baserom.gba", 0x2DF3E0, 0x40
+gSapphirePSquareFrame4Bot:: @ 0x082DF3E0
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot.4bpp"
 	.space 0x220
 
 
