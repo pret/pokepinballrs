@@ -1,0 +1,150 @@
+{
+  "kind": "gfx-config",
+  "version": 1,
+  "defaults": {
+    "mwidth": 0,
+    "mheight": 0,
+    "oam": false,
+    "width": 16,
+    "palette": ""
+  },
+  "files": [
+    {
+      "gfx_filename": "intro_sprite",
+      "segments": [
+        {
+            "segfile": "intro_sprite_flipper",
+            "width": 4,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 0
+          },
+        {
+            "segfile": "intro_sprite_ball",
+            "width": 2,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 1
+          },
+        {
+            "segfile": "intro_sprite_pause_cursor",
+            "width": 1,
+            "palette": "../main/bonus_stage_obj.gbapal",
+            "palbank": 0
+          },
+        {
+            "segfile": "intro_sprite_pause_text",
+            "width": 10,
+            "palette": "../main/bonus_stage_obj.gbapal",
+            "palbank": 0
+          },
+        {
+            "segfile": "intro_sprite_swirl",
+            "width": 4,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 1
+          },
+        {
+            "segfile": "intro_sprite_net_back",
+            "width": 4,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 3
+          },
+        {
+            "segfile": "intro_sprite_net_front",
+            "oam": true,
+            "mwidth": 4,
+            "mheight": 3,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 3
+          },
+        {
+            "segfile": "intro_sprite_sealeo_right",
+            "width": 8,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 5
+          },
+        {
+            "segfile": "intro_sprite_sealeo_left",
+            "width": 8,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 5
+          },
+        {
+            "segfile": "intro_sprite_entity_0",
+            "oam": true,
+            "mwidth": 3,
+            "mheight": 3,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 4
+          },
+        {
+            "segfile": "intro_sprite_entity_1",
+            "oam": true,
+            "mwidth": 3,
+            "mheight": 3,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 4
+          },
+        {
+            "segfile": "intro_sprite_entity_0_reflection",
+            "oam": true,
+            "mwidth": 3,
+            "mheight": 3,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 4
+          },
+        {
+            "segfile": "intro_sprite_entity_1_reflection",
+            "oam": true,
+            "mwidth": 3,
+            "mheight": 3,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 4
+          },
+        {
+            "segfile": "intro_sprite_whiscash",
+            "oam": true,
+            "mwidth": 6,
+            "mheight": 6,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 7
+          },
+        {
+            "segfile": "intro_sprite_pelipper",
+            "oam": true,
+            "mwidth": 6,
+            "mheight": 6,
+            "palette": "spheal_board_palset_0.gbapal",
+            "palbank": 8
+          }
+      ]
+    },
+    {
+      "gfx_filename": "spheal",
+      "oam": true,
+      "mheight": 3,
+      "mwidth": 3,
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 4
+    },
+    {
+      "gfx_filename": "sealeo",
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 5
+    },
+    {
+      "gfx_filename": "spheal_net",
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 3
+    },
+    {
+      "gfx_filename": "spheal_net_front",
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 3
+    },
+    {
+      "gfx_filename": "spheal_results",
+      "palette": "spheal_board_palset_0.gbapal",
+      "palbank": 8
+    }
+  ]
+}

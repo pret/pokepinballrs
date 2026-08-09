@@ -10,6 +10,7 @@
 #include "constants/global.h"
 #include "constants/ereader.h"
 #include "constants/pinball_inputs.h"
+#include "constants/numbers.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -205,7 +206,7 @@ struct PinballGame
     /*0x068*/ s16 cameraYViewport;
     /*0x06A*/ s16 hudSpriteBaseY;
     /*0x06C*/ u16 timerBonus; //Additional time to be added to next timed event (Only for bonus fields or all timers?)
-    /*0x06E*/ s8 ballShadowTileIndex;
+    /*0x06E*/ s8 ballUpgradeFxTileIndex;
     /*0x06F*/ s8 activePaletteIndex;
     /*0x070*/ s8 paletteSwapActive;
     /*0x071*/ s8 ballTrailEnabled;
@@ -729,7 +730,7 @@ struct PinballGame
     /*0x5F4*/ u16 collisionMapScrollY;
     /*0x5F6*/ s8 ballUpgradeType;
     /*0x5F7*/ u8 ballUpgradeTimerPaused;
-    /*0x5F8*/ u16 ballUpgradeCounter;
+    /*0x5F8*/ u16 ballUpgradeTimer;
     /*0x5FA*/ s8 cameraLocked;
     /*0x5FB*/ s8 cameraScrollEnabled;
     /*0x5FC*/ s16 cameraScrollOffset;
@@ -760,9 +761,9 @@ struct PinballGame
     /*0x627*/ u8 filler627[0x1];
     /*0x628*/ u16 evoItemAnimFrameTimer;
     /*0x62A*/ u8 bonusCatchCount;
-    /*0x62B*/ u8 bonusMonCatchCount;
+    /*0x62B*/ u8 bonusMonEvoCount;
     /*0x62C*/ u8 travelModeCompletionCount;
-    /*0x62D*/ u8 catchTriggerCompletionCount;
+    /*0x62D*/ u8 slotsPlayedCount;
     /*0x62E*/ u8 bonusPikaSaverCount;
     /*0x62F*/ u8 bonusMultiplier;
     /*0x630*/ u32 bonusSubtotal;
@@ -822,7 +823,7 @@ struct PinballGame
     /*0x717*/ u8 slingshotSideIndex;
     /*0x718*/ s8 ballPowerUpLight[3];
     /*0x71B*/ s8 ballPowerUpAnimActive;
-    /*0x71C*/ u8 ballShadowTimer;
+    /*0x71C*/ u8 gBallUpgradeFxTimer;
     /*0x71D*/ s8 catchLights[3];
     /*0x720*/ u8 evoBlinkTimer;
     /*0x721*/ s8 evoCatchLightSlot1;
@@ -1007,10 +1008,10 @@ extern u16 gModeBannerOamAttributes[14][45];
 extern const u8 gPokemonNameDisplayGfx[]; 
 extern u8 gShopNameDisplay_Pals[]; 
 extern const u16 gShopCursorToItemMap[];
-extern u8 gShopModeBG_Gfx[];
+extern u8 gShopModeBG0_0_Tilemap[];
 extern u8 gShopEvoUI_Pals[];
 extern u8 gEvoNameDisplay_Pals[];
-extern u8 gEvoModeBG_Gfx[];
+extern u8 gEvoModeBG0_0_Tilemap[];
 extern const u16 gShopItemData[][4];
 extern u32 gShopEvoBGAnimFrames[];
 
@@ -1026,7 +1027,7 @@ extern const u8 gPikaSaverFullCoverageGfx[];
 extern const u8 gPikaSaverPartialCoverageGfx[];
 extern const u8 gPortraitAnimFrameGraphics[][0x300];
 extern const u8 gBallRotationTileGraphics[][0x80];
-extern const u8 gBallShadowTileGraphics[][0x200];
+extern const u8 gBallUpgradeFx_Gfx[][0x200];
 extern const u8 gMainStageBonusTrap_Gfx[][0x300];
 extern const u8 gLocationPortraitGfx[][0x300];
 extern const u8 gChargeFillIndicator_Gfx[][0x80];

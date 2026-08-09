@@ -4,6 +4,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 
+#define BALL_FIRST_LAUNCH_SAVER_TIME TICKS_FOR_TIME(1,0)
+
 extern const s16 gAreaRouletteTable[][AREA_TABLE_SLOT_COUNT];
 extern const s16 gAreaPortraitIndexes[];
 extern const u16 gAreaRouletteOamFramesets[18][27];
@@ -138,7 +140,7 @@ void UpdateBoardIntroMode(void)
                     gCurrentPinballGame->rouletteInitialSpeed = gCurrentPinballGame->rouletteSpinSpeed;
                     gCurrentPinballGame->spoinkEntityState = 1;
                     gCurrentPinballGame->launcherCharging = TRUE;
-                    gCurrentPinballGame->saverTimeRemaining = 3600;
+                    gCurrentPinballGame->saverTimeRemaining = BALL_FIRST_LAUNCH_SAVER_TIME;
                     gCurrentPinballGame->rubyPondState = RUBY_POND_STATE_CHINCHOU_COUNTERCLOCKWISE;
                 }
             }

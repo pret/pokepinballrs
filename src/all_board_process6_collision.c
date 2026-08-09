@@ -743,7 +743,7 @@ u16 CheckFlipperCollision(struct Vector16* ballPosition, u16* collisionAngle)
     return hasCollisionImpact;
 }
 
-u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
+u16 CheckCatchTargetCollision(struct Vector16 *ballPosition, u16 *collisionAngle)
 {
     struct Vector16 vec1;
     u16 x, y;
@@ -753,8 +753,8 @@ u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
     res = FALSE;
     if (gCurrentPinballGame->captureState != MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE)
     {
-        vec1.x = arg0->x / 2 - gCurrentPinballGame->jirachiCenterX;
-        vec1.y = arg0->y / 2 - gCurrentPinballGame->jirachiCenterY;
+        vec1.x = ballPosition->x / 2 - gCurrentPinballGame->jirachiCenterX;
+        vec1.y = ballPosition->y / 2 - gCurrentPinballGame->jirachiCenterY;
         if ((vec1.y >= 0 && vec1.y < 48) && (vec1.x >= 0 && vec1.x < 48))
         {
             s32 ix = vec1.y * 48 + vec1.x;
@@ -764,7 +764,7 @@ u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
                 gCurrentPinballGame->collisionResponseType = 2;
                 gCurrentPinballGame->collisionSurfaceType = 3;
                 //Todo: fakematch; used to swap register order
-                *arg1 = (var0 & 0x7F & var0) * 512;
+                *collisionAngle = (var0 & 0x7F & var0) * 512;
                 gCurrentPinballGame->captureSequenceFrame = 20;
 
                 if (gCurrentPinballGame->captureFlashTimer)
@@ -783,13 +783,13 @@ u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
                             gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE;
                             gCurrentPinballGame->captureSequenceFrame = 0;
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = SCORE_JIRACHI_CATCH_HIT;
                         }
                         else
                         {
                             gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_MON_HIT_IN_CATCH_MODE;
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = SCORE_JIRACHI_CATCH_HIT;
                         }
 
                         gCurrentPinballGame->creatureHitCooldown = 4;
@@ -809,13 +809,13 @@ u16 CheckCatchTargetCollision(struct Vector16 *arg0, u16 *arg1)
                             gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE;
                             gCurrentPinballGame->captureSequenceFrame = 0;
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = SCORE_CATCH_HIT;
                         }
                         else
                         {
                             gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_MON_HIT_IN_CATCH_MODE;
-                            gCurrentPinballGame->scoreAddedInFrame = 10000;
+                            gCurrentPinballGame->scoreAddedInFrame = SCORE_CATCH_HIT;
                         }
 
                         gCurrentPinballGame->creatureHitCooldown = 4;

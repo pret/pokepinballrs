@@ -10,215 +10,386 @@
   },
   "files": [
     {
-        "gfx_filename": "groudon_bonus_clear",
-        "segments":[
-            {
-                "segfile":"groudon_bonus_clear_top",
-                "mwidth":20,
-                "mheight":8,
-                "oam":true
-            },
-            {
-                "segfile":"groudon_bonus_clear_score_region",
-                "mwidth":14,
-                "mheight":3,
-                "oam":true
-            },
-            {
-                "segfile":"groudon_bonus_clear_score_right_cap",
-                "mwidth":1,
-                "mheight":2,
-                "oam":true
-            },
-            {
-                "segfile":"groudon_bonus_clear_score_digits",
-                "mwidth":1,
-                "mheight":2,
-                "width":10,
-                "oam":true
-            }
-        ],
-        "align":12
+      "gfx_filename": "groudon_bonus_clear",
+      "segments": [
+        {
+          "segfile": "groudon_bonus_clear_top",
+          "mwidth": 20,
+          "mheight": 8,
+          "oam": true,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 8
+        },
+        {
+          "segfile": "groudon_bonus_clear_score_region",
+          "mwidth": 14,
+          "mheight": 3,
+          "oam": true,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 8
+        },
+        {
+          "segfile": "groudon_bonus_clear_score_right_cap",
+          "mwidth": 1,
+          "mheight": 2,
+          "oam": true,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 8
+        },
+        {
+          "segfile": "groudon_bonus_clear_score_digits",
+          "mwidth": 1,
+          "mheight": 2,
+          "width": 10,
+          "oam": true,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 8
+        }
+      ],
+      "align": 12
     },
     {
       "gfx_filename": "intro_sprite",
       "segments": [
         {
           "segfile": "intro_sprite_flipper",
-          "width": 4
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 0
         },
         {
           "segfile": "intro_sprite_ball",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 1
         },
         {
           "segfile": "intro_sprite_pause_cursor",
-          "width": 1
+          "width": 1,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 9
         },
         {
           "segfile": "intro_sprite_pause_text",
-          "width": 10
+          "width": 10,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 9
         },
         {
           "segfile": "intro_sprite_swirl",
-          "width": 4
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 1
         },
         {
           "segfile": "intro_sprite_balls",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 1
         },
         {
           "segfile": "intro_sprite_catch_window_h",
-          "width": 4
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 1
         },
         {
           "segfile": "intro_sprite_catch_window_v",
-          "width": 1
+          "width": 1,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 1
         },
         {
           "segfile": "intro_sprite_catch_mon",
           "oam": true,
           "mwidth": 2,
           "mheight": 2,
-          "width": 6
+          "width": 6,
+          "palette": "../../mon_portraits/geodude_portrait.gbapal",
+          "palbank": 0
         },
         {
           "segfile": "intro_sprite_boulders",
-          "oamshape": "boulder_shape.json"
+          "oamshape": "boulder_shape.json",
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 4
         },
         {
           "segfile": "intro_sprite_quarter_circle",
-          "width": 8
+          "width": 8,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
         },
         {
           "segfile": "intro_sprite_crystals",
-          "oamshape": "crystal_shape.json"
+          "oamshape": "crystal_shape.json",
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 3
         },
         {
           "segfile": "intro_sprite_flame_pillars",
-          "width": 4
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 5
         },
         {
           "segfile": "intro_sprite_flame_base",
-          "width": 4
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 5
         },
         {
           "segfile": "intro_sprite_rock_bits",
-          "width": 4
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 4
         },
         {
           "segfile": "intro_sprite_head_1",
-          "oamshape": "groudon_head_shape.json"
+          "oamshape": "groudon_head_shape.json",
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_body",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_arm",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_leg",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_head_2",
-          "oamshape": "groudon_head_shape.json"
+          "oamshape": "groudon_head_shape.json",
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_leg_2",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_arm_2",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_leg_3",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_leg_4",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_step",
-          "width": 4
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_arm_3",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_arm_4",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_step_2",
-          "width": 4
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_arm_5",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_face_turn",
-          "oamshape": "groudon_head_shape.json"
+          "oamshape": "groudon_head_shape.json",
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 6
         },
         {
           "segfile": "intro_sprite_rock_bits_2",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_fireball",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
         },
         {
           "segfile": "intro_sprite_face_yell",
-          "oamshape": "groudon_head_shape.json"
+          "oamshape": "groudon_head_shape.json",
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_arms",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 6
         },
         {
           "segfile": "intro_sprite_groudon_arm_6",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 10
         },
         {
           "segfile": "intro_sprite_groudon_shoulder",
-          "width": 1
+          "width": 1,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_bits",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_half_face",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_left_edge",
-          "width": 1
+          "width": 1,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_left_body",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_groudon_full_half",
-          "width": 2
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         },
         {
           "segfile": "intro_sprite_rock_bits_3",
-          "width": 7
+          "width": 7,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 15
         }
       ]
     },
     {
       "gfx_filename": "boulders",
-      "oamshape": "boulder_shape.json"
+      "oamshape": "boulder_shape.json",
+      "palette": "groudon_board_palset_0.gbapal",
+      "palbank": 4
+    },
+    {
+      "gfx_filename": "board_fx",
+      "segments": [
+        {
+          "segfile": "board_fx_projectile_spawn",
+          "oam": true,
+          "mwidth": 3,
+          "mheight": 2,
+          "width": 3,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "board_fx_fireball_launch_fx",
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "board_fx_projectile_impact",
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "board_fx_projectile_debris",
+          "width": 2,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "board_fx_projectile_flight",
+          "oam": true,
+          "mwidth": 3,
+          "mheight": 4,
+          "width": 3,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "board_fx_projectile_split",
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "board_fx_projectile_large",
+          "oam": true,
+          "mwidth": 6,
+          "mheight": 4,
+          "width": 6,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "board_fx_ball_grab_hold",
+          "oam": true,
+          "mwidth": 4,
+          "mheight": 3,
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "board_fx_ball_grab_frames",
+          "width": 4,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        },
+        {
+          "segfile": "board_fx_unused_tail",
+          "width": 16,
+          "palette": "groudon_board_palset_0.gbapal",
+          "palbank": 12
+        }
+      ]
     }
   ]
 }

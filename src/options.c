@@ -56,9 +56,9 @@ struct OptionsData
     bool8 rumbleEnabled;
     s8 torchicAnimTimer;
     s8 torchicAnimFrame;
-    u8 torchicAnimTileId;
+    s8 torchicAnimTileId;
     s8 torchicHeadShakeAnimActive;
-    u8 noteSizeBlinkState;
+    s8 noteSizeBlinkState;
     s8 soundTestActive;
 };
 
@@ -71,6 +71,12 @@ extern const u8 gOptionsText_Gfx[];
 extern const u8 gOptionsBackground_Gfx[];
 extern const u8 gOptionsText_Tilemap[];
 extern const u8 gOptionsBackground_Tilemap[];
+
+
+extern u8 gOptionsButtonConfigEditFlags[];
+extern const struct Vector16 gOptionsCursorPositionTable[];
+extern const u16 gOptionsBGMSelectorYPositions[];
+extern const struct SpriteSet *const gOptionsSpriteSets[];
 
 void Options_Main(void)
 {
@@ -329,10 +335,10 @@ void Options_HandleInput(void)
             gOptionsData.selectedBGM = 0;
 
         r4 = gOptionsData.selectedBGM + 1;
-        gOptionsData.digitsBGM[0] = r4 / 100;
+        gOptionsData.digitsBGM[0] = LEAD_DIGIT_100S(r4);
         r4 %= 100;
-        gOptionsData.digitsBGM[1] = r4 / 10;
-        gOptionsData.digitsBGM[2] = r4 % 10;
+        gOptionsData.digitsBGM[1] = LEAD_DIGIT_10S(r4);
+        gOptionsData.digitsBGM[2] = DIGIT_1S(r4);
         if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();
@@ -380,10 +386,10 @@ void Options_HandleInput(void)
             gOptionsData.selectedSE = 0;
 
         r4 = gOptionsData.selectedSE + 1;
-        gOptionsData.digitsSE[0] = r4 / 100;
+        gOptionsData.digitsSE[0] = LEAD_DIGIT_100S(r4);
         r4 %= 100;
-        gOptionsData.digitsSE[1] = r4 / 10;
-        gOptionsData.digitsSE[2] = r4 % 10;
+        gOptionsData.digitsSE[1] = LEAD_DIGIT_10S(r4);
+        gOptionsData.digitsSE[2] = DIGIT_1S(r4);
         if (JOY_NEW(A_BUTTON))
         {
             m4aMPlayAllStop();
@@ -460,8 +466,8 @@ void Options_HandleInput(void)
             {
                 gCustomButtonConfigs[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 0] = gOptionsData.capturedButtonSlots[0];
                 gCustomButtonConfigs[4][(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER) * 2 + 1] = gOptionsData.capturedButtonSlots[1];
-                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][0] = gButtonInfoTable[gOptionsData.capturedButtonSlots[0]][0];
-                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][1] = gButtonInfoTable[gOptionsData.capturedButtonSlots[1]][0];
+                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][0] = gButtonInfoTable[gOptionsData.capturedButtonSlots[0]].buttonName;
+                gMain_saveData.customButtonConfig[(gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER)][1] = gButtonInfoTable[gOptionsData.capturedButtonSlots[1]].buttonName;
                 gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_SELECT,
                 gOptionsData.buttonEditFlags[gOptionsData.cursorPosition - CURSOR_POS_LEFT_FLIPPER] = 0;
                 gOptionsData.buttonFlashTimer = 0;
@@ -518,1040 +524,225 @@ void Options_State3_51C60(void)
     SetMainGameState(STATE_TITLE);
 }
 
-// TODO
-NAKED
-//sub_51C9C
+
+// Associated with fakematch in UpdateOptionsSpritePositions. Leaving here.
+extern struct SpriteGroup gMain_spriteGroups_10;
+
 void UpdateOptionsSpritePositions(void)
 {
-    asm_unified("\n\
-    push {r4, r5, r6, r7, lr}\n\
-    mov r7, sl\n\
-    mov r6, sb\n\
-    mov r5, r8\n\
-    push {r5, r6, r7}\n\
-    sub sp, #0x8c\n\
-    ldr r0, _08051D38 @ =gMain_spriteGroups\n\
-    mov r8, r0\n\
-    ldr r2, _08051D3C @ =gOptionsData\n\
-    movs r3, #4\n\
-    ldrsh r1, [r2, r3]\n\
-    movs r0, #0xe6\n\
-    lsls r0, r0, #4\n\
-    muls r1, r0, r1\n\
-    movs r0, #0xa1\n\
-    lsls r0, r0, #3\n\
-    add r0, r8\n\
-    adds r1, r1, r0\n\
-    str r1, [sp, #0x60]\n\
-    add r4, sp, #0xc\n\
-    mov sl, r4\n\
-    mov r6, sp\n\
-    adds r6, #0x18\n\
-    str r6, [sp, #0x6c]\n\
-    mov r7, sp\n\
-    adds r7, #0x1c\n\
-    str r7, [sp, #0x74]\n\
-    mov r0, sp\n\
-    adds r0, #0x20\n\
-    str r0, [sp, #0x7c]\n\
-    movs r0, #0xb8\n\
-    lsls r0, r0, #2\n\
-    add r0, r8\n\
-    mov r3, sl\n\
-    mov r1, r8\n\
-    adds r1, #0xb8\n\
-    mov r2, sp\n\
-    movs r4, #2\n\
-    mov ip, r4\n\
-_08051CEA:\n\
-    stm r2!, {r1}\n\
-    stm r3!, {r0}\n\
-    adds r0, #0xb8\n\
-    adds r1, #0xb8\n\
-    movs r6, #1\n\
-    rsbs r6, r6, #0\n\
-    add ip, r6\n\
-    mov r7, ip\n\
-    cmp r7, #0\n\
-    bge _08051CEA\n\
-    movs r0, #0\n\
-    mov ip, r0\n\
-    movs r1, #8\n\
-    add r1, r8\n\
-    mov sb, r1\n\
-    ldr r2, _08051D40 @ =gMain_spriteGroups_8\n\
-    adds r2, #8\n\
-    str r2, [sp, #0x70]\n\
-    ldr r0, _08051D44 @ =gMain_spriteGroups_10\n\
-    adds r4, r0, #0\n\
-    adds r4, #0xb8\n\
-    adds r5, r0, #0\n\
-    movs r3, #0\n\
-    ldr r1, [sp, #0x6c]\n\
-    adds r2, r5, #0\n\
-    subs r2, #0xb8\n\
-_08051D1E:\n\
-    ldr r0, _08051D48 @ =gOptionsButtonConfigEditFlags\n\
-    add r0, ip\n\
-    ldrb r0, [r0]\n\
-    cmp r0, #1\n\
-    bne _08051D50\n\
-    ldr r6, _08051D3C @ =gOptionsData\n\
-    movs r7, #6\n\
-    ldrsh r0, [r6, r7]\n\
-    cmp r0, #1\n\
-    bne _08051D50\n\
-    ldr r0, _08051D4C @ =gMain_spriteGroups_28\n\
-    str r0, [r1]\n\
-    b _08051D52\n\
-    .align 2, 0\n\
-_08051D38: .4byte gMain_spriteGroups\n\
-_08051D3C: .4byte gOptionsData\n\
-_08051D40: .4byte gMain_spriteGroups_8\n\
-_08051D44: .4byte gMain_spriteGroups_10\n\
-_08051D48: .4byte gOptionsButtonConfigEditFlags\n\
-_08051D4C: .4byte gMain_spriteGroups_28\n\
-_08051D50:\n\
-    str r2, [r1]\n\
-_08051D52:\n\
-    ldr r6, [sp, #0x74]\n\
-    adds r0, r6, r3\n\
-    str r5, [r0]\n\
-    ldr r7, [sp, #0x7c]\n\
-    adds r0, r7, r3\n\
-    str r4, [r0]\n\
-    movs r0, #0x8a\n\
-    lsls r0, r0, #2\n\
-    adds r4, r4, r0\n\
-    adds r5, r5, r0\n\
-    adds r2, r2, r0\n\
-    adds r3, #0xc\n\
-    adds r1, #0xc\n\
-    movs r6, #1\n\
-    add ip, r6\n\
-    mov r7, ip\n\
-    cmp r7, #5\n\
-    ble _08051D1E\n\
-    ldr r0, _08051F64 @ =gMain_spriteGroups_29\n\
-    str r0, [sp, #0x64]\n\
-    movs r0, #1\n\
-    mov r1, r8\n\
-    strh r0, [r1]\n\
-    movs r2, #1\n\
-    mov r1, sp\n\
-    movs r3, #2\n\
-    mov ip, r3\n\
-_08051D88:\n\
-    ldm r1!, {r0}\n\
-    strh r2, [r0]\n\
-    movs r4, #1\n\
-    rsbs r4, r4, #0\n\
-    add ip, r4\n\
-    mov r6, ip\n\
-    cmp r6, #0\n\
-    bge _08051D88\n\
-    ldr r7, [sp, #0x64]\n\
-    adds r7, #8\n\
-    str r7, [sp, #0x78]\n\
-    movs r2, #1\n\
-    mov r1, sl\n\
-    movs r0, #2\n\
-    mov ip, r0\n\
-_08051DA6:\n\
-    ldm r1!, {r0}\n\
-    strh r2, [r0]\n\
-    movs r3, #1\n\
-    rsbs r3, r3, #0\n\
-    add ip, r3\n\
-    mov r4, ip\n\
-    cmp r4, #0\n\
-    bge _08051DA6\n\
-    movs r0, #1\n\
-    ldr r6, [sp, #0x60]\n\
-    strh r0, [r6]\n\
-    ldr r7, _08051F68 @ =gMain_spriteGroups_8\n\
-    strh r0, [r7]\n\
-    movs r0, #0\n\
-    mov ip, r0\n\
-    ldr r6, [sp, #0x6c]\n\
-    movs r3, #1\n\
-    movs r2, #0\n\
-_08051DCA:\n\
-    adds r1, r2, r6\n\
-    movs r5, #2\n\
-_08051DCE:\n\
-    ldm r1!, {r0}\n\
-    strh r3, [r0]\n\
-    subs r5, #1\n\
-    cmp r5, #0\n\
-    bge _08051DCE\n\
-    adds r2, #0xc\n\
-    movs r1, #1\n\
-    add ip, r1\n\
-    mov r4, ip\n\
-    cmp r4, #5\n\
-    ble _08051DCA\n\
-    movs r0, #1\n\
-    ldr r6, [sp, #0x64]\n\
-    strh r0, [r6]\n\
-    ldr r7, _08051F6C @ =gMain_spriteGroups_30\n\
-    strh r0, [r7]\n\
-    ldr r5, _08051F70 @ =gOptionsData\n\
-    adds r0, r5, #0\n\
-    adds r0, #0x30\n\
-    ldrb r0, [r0]\n\
-    lsls r0, r0, #0x18\n\
-    asrs r0, r0, #0x18\n\
-    ldr r1, _08051F74 @ =gMain_spriteGroups_31\n\
-    strh r0, [r1]\n\
-    ldr r0, _08051F78 @ =gOptionsSpriteSets\n\
-    movs r1, #0x20\n\
-    ldr r2, _08051F7C @ =gMain_spriteGroups\n\
-    bl LoadSpriteSets\n\
-    ldr r2, _08051F80 @ =gOptionsCursorPositionTable\n\
-    movs r3, #0xa\n\
-    ldrsh r1, [r5, r3]\n\
-    lsls r1, r1, #2\n\
-    adds r1, r1, r2\n\
-    ldrh r0, [r5, #2]\n\
-    ldrh r1, [r1]\n\
-    adds r0, r0, r1\n\
-    mov r4, r8\n\
-    strh r0, [r4, #2]\n\
-    movs r6, #0xa\n\
-    ldrsh r0, [r5, r6]\n\
-    lsls r0, r0, #2\n\
-    adds r0, r0, r2\n\
-    ldrh r0, [r0, #2]\n\
-    strh r0, [r4, #4]\n\
-    mov r7, sb\n\
-    ldr r4, _08051F84 @ =gOamBuffer\n\
-    mov r0, r8\n\
-    ldrh r2, [r0, #8]\n\
-    lsls r2, r2, #3\n\
-    adds r2, r2, r4\n\
-    movs r3, #2\n\
-    ldrsh r1, [r7, r3]\n\
-    movs r6, #2\n\
-    ldrsh r0, [r0, r6]\n\
-    adds r1, r1, r0\n\
-    ldr r3, _08051F88 @ =0x000001FF\n\
-    adds r0, r3, #0\n\
-    ands r1, r0\n\
-    ldrh r3, [r2, #2]\n\
-    ldr r6, _08051F8C @ =0xFFFFFE00\n\
-    adds r0, r6, #0\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #2]\n\
-    mov r0, r8\n\
-    ldrh r1, [r0, #8]\n\
-    lsls r1, r1, #3\n\
-    adds r1, r1, r4\n\
-    ldrb r0, [r0, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    movs r1, #0\n\
-    mov ip, r1\n\
-    mov r8, r4\n\
-    mov r5, sp\n\
-    movs r2, #0x48\n\
-    mov sb, r2\n\
-_08051E6C:\n\
-    ldr r0, [r5]\n\
-    mov r3, sb\n\
-    strh r3, [r0, #2]\n\
-    ldr r1, [r5]\n\
-    movs r0, #0x20\n\
-    strh r0, [r1, #4]\n\
-    ldr r4, [r5]\n\
-    adds r7, r4, #0\n\
-    adds r7, #8\n\
-    ldrh r2, [r4, #8]\n\
-    lsls r2, r2, #3\n\
-    add r2, r8\n\
-    ldr r0, _08051F90 @ =gOptionsBGMDigitTileIds\n\
-    add r0, ip\n\
-    ldrb r1, [r0]\n\
-    adds r1, #0x16\n\
-    ldrh r3, [r2, #4]\n\
-    ldr r0, _08051F94 @ =0xFFFFFC00\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #4]\n\
-    ldrh r3, [r4, #8]\n\
-    lsls r3, r3, #3\n\
-    add r3, r8\n\
-    movs r0, #2\n\
-    ldrsh r1, [r7, r0]\n\
-    ldr r0, [r5]\n\
-    movs r2, #2\n\
-    ldrsh r0, [r0, r2]\n\
-    adds r1, r1, r0\n\
-    ldr r2, _08051F88 @ =0x000001FF\n\
-    adds r0, r2, #0\n\
-    ands r1, r0\n\
-    ldrh r2, [r3, #2]\n\
-    adds r0, r6, #0\n\
-    ands r0, r2\n\
-    orrs r0, r1\n\
-    strh r0, [r3, #2]\n\
-    ldrh r1, [r4, #8]\n\
-    lsls r1, r1, #3\n\
-    add r1, r8\n\
-    ldm r5!, {r0}\n\
-    ldrb r0, [r0, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    movs r3, #7\n\
-    add sb, r3\n\
-    movs r4, #1\n\
-    add ip, r4\n\
-    mov r7, ip\n\
-    cmp r7, #2\n\
-    ble _08051E6C\n\
-    movs r0, #0\n\
-    mov ip, r0\n\
-    ldr r1, _08051F84 @ =gOamBuffer\n\
-    mov r8, r1\n\
-    movs r6, #0x48\n\
-    mov r5, sl\n\
-_08051EE2:\n\
-    ldr r0, [r5]\n\
-    strh r6, [r0, #2]\n\
-    ldr r0, [r5]\n\
-    movs r2, #0x2c\n\
-    mov sb, r2\n\
-    mov r3, sb\n\
-    strh r3, [r0, #4]\n\
-    ldr r4, [r5]\n\
-    adds r7, r4, #0\n\
-    adds r7, #8\n\
-    ldrh r2, [r4, #8]\n\
-    lsls r2, r2, #3\n\
-    add r2, r8\n\
-    ldr r0, _08051F98 @ =gOptionsSEDigitTileIds\n\
-    add r0, ip\n\
-    ldrb r1, [r0]\n\
-    adds r1, #0x16\n\
-    ldrh r3, [r2, #4]\n\
-    ldr r0, _08051F94 @ =0xFFFFFC00\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #4]\n\
-    ldrh r3, [r4, #8]\n\
-    lsls r3, r3, #3\n\
-    add r3, r8\n\
-    movs r0, #2\n\
-    ldrsh r1, [r7, r0]\n\
-    ldr r0, [r5]\n\
-    movs r2, #2\n\
-    ldrsh r0, [r0, r2]\n\
-    adds r1, r1, r0\n\
-    ldr r2, _08051F88 @ =0x000001FF\n\
-    adds r0, r2, #0\n\
-    ands r1, r0\n\
-    ldrh r2, [r3, #2]\n\
-    ldr r0, _08051F8C @ =0xFFFFFE00\n\
-    ands r0, r2\n\
-    orrs r0, r1\n\
-    strh r0, [r3, #2]\n\
-    ldrh r1, [r4, #8]\n\
-    lsls r1, r1, #3\n\
-    add r1, r8\n\
-    ldm r5!, {r0}\n\
-    ldrb r0, [r0, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    adds r6, #7\n\
-    movs r3, #1\n\
-    add ip, r3\n\
-    mov r4, ip\n\
-    cmp r4, #2\n\
-    ble _08051EE2\n\
-    movs r0, #0x48\n\
-    ldr r6, [sp, #0x60]\n\
-    strh r0, [r6, #2]\n\
-    ldr r7, _08051F70 @ =gOptionsData\n\
-    movs r1, #0xa\n\
-    ldrsh r0, [r7, r1]\n\
-    cmp r0, #0\n\
-    bne _08051F9C\n\
-    movs r0, #0x20\n\
-    strh r0, [r6, #4]\n\
-    b _08051FA6\n\
-    .align 2, 0\n\
-_08051F64: .4byte gMain_spriteGroups_29\n\
-_08051F68: .4byte gMain_spriteGroups_8\n\
-_08051F6C: .4byte gMain_spriteGroups_30\n\
-_08051F70: .4byte gOptionsData\n\
-_08051F74: .4byte gMain_spriteGroups_31\n\
-_08051F78: .4byte gOptionsSpriteSets\n\
-_08051F7C: .4byte gMain_spriteGroups\n\
-_08051F80: .4byte gOptionsCursorPositionTable\n\
-_08051F84: .4byte gOamBuffer\n\
-_08051F88: .4byte 0x000001FF\n\
-_08051F8C: .4byte 0xFFFFFE00\n\
-_08051F90: .4byte gOptionsBGMDigitTileIds\n\
-_08051F94: .4byte 0xFFFFFC00\n\
-_08051F98: .4byte gOptionsSEDigitTileIds\n\
-_08051F9C:\n\
-    cmp r0, #1\n\
-    bne _08051FA6\n\
-    mov r3, sb\n\
-    ldr r2, [sp, #0x60]\n\
-    strh r3, [r2, #4]\n\
-_08051FA6:\n\
-    ldr r5, _080520D0 @ =gOamBuffer\n\
-    ldr r7, _080520D4 @ =0xFFFFFE00\n\
-    ldr r4, [sp, #0x60]\n\
-    adds r4, #8\n\
-    movs r6, #1\n\
-    mov ip, r6\n\
-_08051FB2:\n\
-    ldrh r3, [r4]\n\
-    lsls r3, r3, #3\n\
-    adds r3, r3, r5\n\
-    movs r0, #2\n\
-    ldrsh r1, [r4, r0]\n\
-    ldr r2, [sp, #0x60]\n\
-    movs r6, #2\n\
-    ldrsh r0, [r2, r6]\n\
-    adds r1, r1, r0\n\
-    ldr r0, _080520D8 @ =0x000001FF\n\
-    adds r6, r0, #0\n\
-    ands r1, r6\n\
-    ldrh r2, [r3, #2]\n\
-    adds r0, r7, #0\n\
-    ands r0, r2\n\
-    orrs r0, r1\n\
-    strh r0, [r3, #2]\n\
-    ldrh r1, [r4]\n\
-    lsls r1, r1, #3\n\
-    adds r1, r1, r5\n\
-    ldr r2, [sp, #0x60]\n\
-    ldrb r0, [r2, #4]\n\
-    ldrb r3, [r4, #4]\n\
-    adds r0, r0, r3\n\
-    strb r0, [r1]\n\
-    adds r4, #8\n\
-    movs r0, #1\n\
-    rsbs r0, r0, #0\n\
-    add ip, r0\n\
-    mov r1, ip\n\
-    cmp r1, #0\n\
-    bge _08051FB2\n\
-    movs r0, #0x48\n\
-    ldr r2, _080520DC @ =gMain_spriteGroups_8\n\
-    strh r0, [r2, #2]\n\
-    ldr r3, _080520E0 @ =gOptionsData\n\
-    movs r4, #0xc\n\
-    ldrsh r0, [r3, r4]\n\
-    lsls r0, r0, #1\n\
-    ldr r7, _080520E4 @ =gOptionsBGMSelectorYPositions\n\
-    adds r0, r0, r7\n\
-    ldrh r0, [r0]\n\
-    strh r0, [r2, #4]\n\
-    ldr r7, [sp, #0x70]\n\
-    ldrh r2, [r2, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r0, _080520D0 @ =gOamBuffer\n\
-    adds r2, r2, r0\n\
-    movs r3, #2\n\
-    ldrsh r1, [r7, r3]\n\
-    adds r1, #0x48\n\
-    ands r1, r6\n\
-    ldrh r3, [r2, #2]\n\
-    ldr r0, _080520D4 @ =0xFFFFFE00\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #2]\n\
-    ldr r4, _080520DC @ =gMain_spriteGroups_8\n\
-    ldrh r1, [r4, #8]\n\
-    lsls r1, r1, #3\n\
-    ldr r6, _080520D0 @ =gOamBuffer\n\
-    adds r1, r1, r6\n\
-    ldrb r0, [r4, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    movs r7, #0\n\
-    mov ip, r7\n\
-    ldr r0, _080520E0 @ =gOptionsData\n\
-    str r0, [sp, #0x68]\n\
-    movs r1, #0x54\n\
-    str r1, [sp, #0x80]\n\
-    movs r2, #0\n\
-    str r2, [sp, #0x84]\n\
-    movs r3, #0\n\
-    str r3, [sp, #0x88]\n\
-    ldr r4, [sp, #0x6c]\n\
-    mov r8, r4\n\
-_0805204E:\n\
-    ldr r0, [sp, #0x68]\n\
-    adds r0, #0x1a\n\
-    add r0, ip\n\
-    ldrb r0, [r0]\n\
-    cmp r0, #1\n\
-    bne _080520E8\n\
-    mov r6, r8\n\
-    ldr r1, [r6]\n\
-    movs r0, #0x9c\n\
-    strh r0, [r1, #2]\n\
-    ldr r0, [r6]\n\
-    add r7, sp, #0x80\n\
-    ldrh r7, [r7]\n\
-    strh r7, [r0, #4]\n\
-    movs r5, #0\n\
-    ldr r1, [sp, #0x68]\n\
-    movs r2, #6\n\
-    ldrsh r0, [r1, r2]\n\
-    adds r0, #1\n\
-    cmp r5, r0\n\
-    blt _0805207A\n\
-    b _080522E2\n\
-_0805207A:\n\
-    ldr r3, [sp, #0x6c]\n\
-    ldr r6, [sp, #0x84]\n\
-    adds r4, r3, r6\n\
-    ldr r7, _080520D0 @ =gOamBuffer\n\
-    mov sb, r7\n\
-    movs r6, #8\n\
-    ldr r0, _080520D4 @ =0xFFFFFE00\n\
-    mov sl, r0\n\
-_0805208A:\n\
-    ldr r0, [r4]\n\
-    adds r7, r0, r6\n\
-    ldrh r2, [r7]\n\
-    lsls r2, r2, #3\n\
-    add r2, sb\n\
-    movs r3, #2\n\
-    ldrsh r1, [r7, r3]\n\
-    movs r3, #2\n\
-    ldrsh r0, [r0, r3]\n\
-    adds r1, r1, r0\n\
-    ldr r3, _080520D8 @ =0x000001FF\n\
-    adds r0, r3, #0\n\
-    ands r1, r0\n\
-    ldrh r3, [r2, #2]\n\
-    mov r0, sl\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #2]\n\
-    ldrh r1, [r7]\n\
-    lsls r1, r1, #3\n\
-    add r1, sb\n\
-    ldr r0, [r4]\n\
-    ldrb r0, [r0, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    adds r6, #8\n\
-    adds r5, #1\n\
-    ldr r7, [sp, #0x68]\n\
-    movs r1, #6\n\
-    ldrsh r0, [r7, r1]\n\
-    adds r0, #1\n\
-    cmp r5, r0\n\
-    blt _0805208A\n\
-    b _080522E2\n\
-    .align 2, 0\n\
-_080520D0: .4byte gOamBuffer\n\
-_080520D4: .4byte 0xFFFFFE00\n\
-_080520D8: .4byte 0x000001FF\n\
-_080520DC: .4byte gMain_spriteGroups_8\n\
-_080520E0: .4byte gOptionsData\n\
-_080520E4: .4byte gOptionsBGMSelectorYPositions\n\
-_080520E8:\n\
-    mov r2, r8\n\
-    ldr r1, [r2]\n\
-    movs r0, #0x9c\n\
-    strh r0, [r1, #2]\n\
-    ldr r0, [r2]\n\
-    add r3, sp, #0x80\n\
-    ldrh r3, [r3]\n\
-    strh r3, [r0, #4]\n\
-    ldr r4, [r2]\n\
-    adds r7, r4, #0\n\
-    adds r7, #8\n\
-    ldr r6, [sp, #0x68]\n\
-    movs r0, #0xc\n\
-    ldrsh r1, [r6, r0]\n\
-    lsls r0, r1, #2\n\
-    adds r0, r0, r1\n\
-    lsls r0, r0, #1\n\
-    ldr r1, [sp, #0x88]\n\
-    adds r0, r1, r0\n\
-    ldr r2, _08052490 @ =gCustomButtonConfigs\n\
-    adds r0, r0, r2\n\
-    ldrb r0, [r0]\n\
-    ldrh r2, [r4, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r3, _08052494 @ =gOamBuffer\n\
-    adds r2, r2, r3\n\
-    lsls r0, r0, #3\n\
-    ldr r1, _08052498 @ =gButtonInfoTable\n\
-    adds r6, r0, r1\n\
-    ldrh r0, [r6, #2]\n\
-    ldr r1, _0805249C @ =0x000003FF\n\
-    ands r1, r0\n\
-    ldrh r3, [r2, #4]\n\
-    ldr r0, _080524A0 @ =0xFFFFFC00\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #4]\n\
-    ldrh r1, [r4, #8]\n\
-    lsls r1, r1, #3\n\
-    ldr r2, _08052494 @ =gOamBuffer\n\
-    adds r1, r1, r2\n\
-    ldrb r2, [r6, #4]\n\
-    lsls r2, r2, #6\n\
-    ldrb r3, [r1, #1]\n\
-    movs r0, #0x3f\n\
-    mov sl, r0\n\
-    ands r0, r3\n\
-    orrs r0, r2\n\
-    strb r0, [r1, #1]\n\
-    ldrh r2, [r4, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r1, _08052494 @ =gOamBuffer\n\
-    adds r2, r2, r1\n\
-    ldrb r1, [r6, #5]\n\
-    lsls r1, r1, #6\n\
-    ldrb r3, [r2, #3]\n\
-    mov r0, sl\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strb r0, [r2, #3]\n\
-    ldrh r2, [r4, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r3, _08052494 @ =gOamBuffer\n\
-    adds r2, r2, r3\n\
-    movs r0, #2\n\
-    ldrsh r1, [r7, r0]\n\
-    mov r3, r8\n\
-    ldr r0, [r3]\n\
-    movs r3, #2\n\
-    ldrsh r0, [r0, r3]\n\
-    adds r1, r1, r0\n\
-    ldr r0, _080524A4 @ =0x000001FF\n\
-    ands r1, r0\n\
-    ldrh r3, [r2, #2]\n\
-    ldr r0, _080524A8 @ =0xFFFFFE00\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #2]\n\
-    ldrh r1, [r4, #8]\n\
-    lsls r1, r1, #3\n\
-    ldr r2, _08052494 @ =gOamBuffer\n\
-    adds r1, r1, r2\n\
-    mov r3, r8\n\
-    ldr r0, [r3]\n\
-    ldrb r0, [r0, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    ldr r4, [sp, #0x68]\n\
-    movs r7, #0xc\n\
-    ldrsh r1, [r4, r7]\n\
-    lsls r0, r1, #2\n\
-    adds r0, r0, r1\n\
-    lsls r0, r0, #1\n\
-    adds r0, #1\n\
-    ldr r1, [sp, #0x88]\n\
-    adds r0, r1, r0\n\
-    ldr r2, _08052490 @ =gCustomButtonConfigs\n\
-    adds r0, r0, r2\n\
-    ldrb r0, [r0]\n\
-    mov sb, r0\n\
-    cmp r0, #0xa\n\
-    bne _080521B8\n\
-    b _080522E2\n\
-_080521B8:\n\
-    ldr r3, [sp, #0x74]\n\
-    ldr r4, [sp, #0x84]\n\
-    adds r5, r3, r4\n\
-    ldr r1, [r5]\n\
-    mov r7, r8\n\
-    ldr r0, [r7]\n\
-    ldrh r0, [r0, #2]\n\
-    ldrb r6, [r6, #6]\n\
-    adds r0, r0, r6\n\
-    strh r0, [r1, #2]\n\
-    ldr r1, [r5]\n\
-    ldr r0, [r7]\n\
-    ldrh r0, [r0, #4]\n\
-    strh r0, [r1, #4]\n\
-    ldr r4, [r5]\n\
-    adds r7, r4, #0\n\
-    adds r7, #8\n\
-    ldrh r2, [r4, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r0, _08052494 @ =gOamBuffer\n\
-    adds r2, r2, r0\n\
-    ldrh r1, [r2, #4]\n\
-    ldr r0, _080524A0 @ =0xFFFFFC00\n\
-    ands r0, r1\n\
-    movs r1, #0x2a\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #4]\n\
-    ldrh r1, [r4, #8]\n\
-    lsls r1, r1, #3\n\
-    ldr r2, _08052494 @ =gOamBuffer\n\
-    adds r1, r1, r2\n\
-    ldrb r2, [r1, #1]\n\
-    mov r0, sl\n\
-    ands r0, r2\n\
-    strb r0, [r1, #1]\n\
-    ldrh r1, [r4, #8]\n\
-    lsls r1, r1, #3\n\
-    ldr r3, _08052494 @ =gOamBuffer\n\
-    adds r1, r1, r3\n\
-    ldrb r2, [r1, #3]\n\
-    mov r0, sl\n\
-    ands r0, r2\n\
-    strb r0, [r1, #3]\n\
-    ldrh r3, [r4, #8]\n\
-    lsls r3, r3, #3\n\
-    ldr r6, _08052494 @ =gOamBuffer\n\
-    adds r3, r3, r6\n\
-    movs r0, #2\n\
-    ldrsh r1, [r7, r0]\n\
-    ldr r0, [r5]\n\
-    movs r2, #2\n\
-    ldrsh r0, [r0, r2]\n\
-    adds r1, r1, r0\n\
-    ldr r6, _080524A4 @ =0x000001FF\n\
-    ands r1, r6\n\
-    ldrh r2, [r3, #2]\n\
-    ldr r0, _080524A8 @ =0xFFFFFE00\n\
-    ands r0, r2\n\
-    orrs r0, r1\n\
-    strh r0, [r3, #2]\n\
-    ldrh r1, [r4, #8]\n\
-    lsls r1, r1, #3\n\
-    ldr r0, _08052494 @ =gOamBuffer\n\
-    adds r1, r1, r0\n\
-    ldr r0, [r5]\n\
-    ldrb r0, [r0, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    ldr r1, [sp, #0x7c]\n\
-    ldr r2, [sp, #0x84]\n\
-    adds r6, r1, r2\n\
-    ldr r1, [r6]\n\
-    ldr r0, [r5]\n\
-    ldrh r0, [r0, #2]\n\
-    adds r0, #8\n\
-    strh r0, [r1, #2]\n\
-    ldr r1, [r6]\n\
-    mov r3, r8\n\
-    ldr r0, [r3]\n\
-    ldrh r0, [r0, #4]\n\
-    strh r0, [r1, #4]\n\
-    ldr r5, [r6]\n\
-    adds r7, r5, #0\n\
-    adds r7, #8\n\
-    ldrh r3, [r5, #8]\n\
-    lsls r3, r3, #3\n\
-    ldr r4, _08052494 @ =gOamBuffer\n\
-    adds r3, r3, r4\n\
-    mov r0, sb\n\
-    lsls r4, r0, #3\n\
-    ldr r1, _08052498 @ =gButtonInfoTable\n\
-    adds r4, r4, r1\n\
-    ldrh r0, [r4, #2]\n\
-    ldr r1, _0805249C @ =0x000003FF\n\
-    ands r1, r0\n\
-    ldrh r2, [r3, #4]\n\
-    ldr r0, _080524A0 @ =0xFFFFFC00\n\
-    ands r0, r2\n\
-    orrs r0, r1\n\
-    strh r0, [r3, #4]\n\
-    ldrh r2, [r5, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r3, _08052494 @ =gOamBuffer\n\
-    adds r2, r2, r3\n\
-    ldrb r1, [r4, #4]\n\
-    lsls r1, r1, #6\n\
-    ldrb r3, [r2, #1]\n\
-    mov r0, sl\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strb r0, [r2, #1]\n\
-    ldrh r2, [r5, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r0, _08052494 @ =gOamBuffer\n\
-    adds r2, r2, r0\n\
-    ldrb r1, [r4, #5]\n\
-    lsls r1, r1, #6\n\
-    ldrb r3, [r2, #3]\n\
-    mov r0, sl\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strb r0, [r2, #3]\n\
-    ldrh r3, [r5, #8]\n\
-    lsls r3, r3, #3\n\
-    ldr r1, _08052494 @ =gOamBuffer\n\
-    adds r3, r3, r1\n\
-    movs r2, #2\n\
-    ldrsh r1, [r7, r2]\n\
-    ldr r0, [r6]\n\
-    movs r4, #2\n\
-    ldrsh r0, [r0, r4]\n\
-    adds r1, r1, r0\n\
-    ldr r0, _080524A4 @ =0x000001FF\n\
-    ands r1, r0\n\
-    ldrh r2, [r3, #2]\n\
-    ldr r0, _080524A8 @ =0xFFFFFE00\n\
-    ands r0, r2\n\
-    orrs r0, r1\n\
-    strh r0, [r3, #2]\n\
-    ldrh r1, [r5, #8]\n\
-    lsls r1, r1, #3\n\
-    ldr r2, _08052494 @ =gOamBuffer\n\
-    adds r1, r1, r2\n\
-    ldr r0, [r6]\n\
-    ldrb r0, [r0, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-_080522E2:\n\
-    ldr r3, [sp, #0x80]\n\
-    adds r3, #0xc\n\
-    str r3, [sp, #0x80]\n\
-    ldr r4, [sp, #0x84]\n\
-    adds r4, #0xc\n\
-    str r4, [sp, #0x84]\n\
-    ldr r6, [sp, #0x88]\n\
-    adds r6, #2\n\
-    str r6, [sp, #0x88]\n\
-    movs r7, #0xc\n\
-    add r8, r7\n\
-    movs r0, #1\n\
-    add ip, r0\n\
-    mov r1, ip\n\
-    cmp r1, #4\n\
-    bgt _08052304\n\
-    b _0805204E\n\
-_08052304:\n\
-    movs r5, #8\n\
-    movs r0, #0xaa\n\
-    ldr r2, [sp, #0x64]\n\
-    strh r0, [r2, #2]\n\
-    ldr r0, _080524AC @ =gOptionsData\n\
-    adds r0, #0x2a\n\
-    ldrb r0, [r0]\n\
-    lsls r1, r0, #1\n\
-    adds r1, r1, r0\n\
-    lsls r1, r1, #2\n\
-    movs r0, #0x2c\n\
-    subs r0, r0, r1\n\
-    strh r0, [r2, #4]\n\
-    ldr r7, [sp, #0x78]\n\
-    ldrh r2, [r2, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r3, _08052494 @ =gOamBuffer\n\
-    adds r2, r2, r3\n\
-    movs r4, #2\n\
-    ldrsh r1, [r7, r4]\n\
-    adds r1, #0xaa\n\
-    ldr r6, _080524A4 @ =0x000001FF\n\
-    adds r0, r6, #0\n\
-    ands r1, r0\n\
-    ldrh r3, [r2, #2]\n\
-    ldr r4, _080524A8 @ =0xFFFFFE00\n\
-    adds r0, r4, #0\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #2]\n\
-    ldr r0, [sp, #0x64]\n\
-    ldrh r1, [r0, #8]\n\
-    lsls r1, r1, #3\n\
-    ldr r2, _08052494 @ =gOamBuffer\n\
-    adds r1, r1, r2\n\
-    ldrb r0, [r0, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    movs r0, #0xc0\n\
-    ldr r3, _080524B0 @ =gMain_spriteGroups_30\n\
-    strh r0, [r3, #2]\n\
-    strh r5, [r3, #4]\n\
-    ldr r6, _080524AC @ =gOptionsData\n\
-    adds r6, #0x2d\n\
-    mov sl, r6\n\
-    adds r5, r3, #0\n\
-    adds r5, #8\n\
-    movs r6, #0x40\n\
-    mov sb, r4\n\
-    movs r7, #1\n\
-    mov ip, r7\n\
-_0805236C:\n\
-    ldrh r3, [r5]\n\
-    lsls r3, r3, #3\n\
-    ldr r0, _08052494 @ =gOamBuffer\n\
-    adds r3, r3, r0\n\
-    mov r2, sl\n\
-    movs r1, #0\n\
-    ldrsb r1, [r2, r1]\n\
-    lsls r1, r1, #2\n\
-    adds r1, r6, r1\n\
-    ldr r7, _0805249C @ =0x000003FF\n\
-    adds r4, r7, #0\n\
-    ands r1, r4\n\
-    ldrh r2, [r3, #4]\n\
-    ldr r0, _080524A0 @ =0xFFFFFC00\n\
-    ands r0, r2\n\
-    orrs r0, r1\n\
-    strh r0, [r3, #4]\n\
-    ldrh r3, [r5]\n\
-    lsls r3, r3, #3\n\
-    ldr r0, _08052494 @ =gOamBuffer\n\
-    adds r3, r3, r0\n\
-    movs r2, #2\n\
-    ldrsh r1, [r5, r2]\n\
-    ldr r7, _080524B0 @ =gMain_spriteGroups_30\n\
-    movs r2, #2\n\
-    ldrsh r0, [r7, r2]\n\
-    adds r1, r1, r0\n\
-    ldr r7, _080524A4 @ =0x000001FF\n\
-    mov r8, r7\n\
-    mov r0, r8\n\
-    ands r1, r0\n\
-    ldrh r2, [r3, #2]\n\
-    mov r0, sb\n\
-    ands r0, r2\n\
-    orrs r0, r1\n\
-    strh r0, [r3, #2]\n\
-    ldrh r1, [r5]\n\
-    lsls r1, r1, #3\n\
-    ldr r2, _08052494 @ =gOamBuffer\n\
-    adds r1, r1, r2\n\
-    ldr r3, _080524B0 @ =gMain_spriteGroups_30\n\
-    ldrb r0, [r3, #4]\n\
-    ldrb r7, [r5, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    adds r5, #8\n\
-    adds r6, #0x80\n\
-    movs r0, #1\n\
-    rsbs r0, r0, #0\n\
-    add ip, r0\n\
-    mov r1, ip\n\
-    cmp r1, #0\n\
-    bge _0805236C\n\
-    ldr r2, _080524B4 @ =gMain_spriteGroups_31\n\
-    ldrh r0, [r2]\n\
-    cmp r0, #1\n\
-    bne _08052454\n\
-    movs r0, #0xb0\n\
-    strh r0, [r2, #2]\n\
-    movs r0, #8\n\
-    strh r0, [r2, #4]\n\
-    adds r7, r2, #0\n\
-    adds r7, #8\n\
-    ldrh r2, [r2, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r3, _08052494 @ =gOamBuffer\n\
-    adds r2, r2, r3\n\
-    ldr r5, _080524AC @ =gOptionsData\n\
-    adds r5, #0x2f\n\
-    movs r1, #0\n\
-    ldrsb r1, [r5, r1]\n\
-    lsls r1, r1, #6\n\
-    adds r1, #0x54\n\
-    ands r1, r4\n\
-    ldrh r3, [r2, #4]\n\
-    ldr r0, _080524A0 @ =0xFFFFFC00\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #4]\n\
-    ldr r4, _080524B4 @ =gMain_spriteGroups_31\n\
-    ldrh r2, [r4, #8]\n\
-    lsls r2, r2, #3\n\
-    ldr r6, _08052494 @ =gOamBuffer\n\
-    adds r2, r2, r6\n\
-    movs r0, #2\n\
-    ldrsh r1, [r7, r0]\n\
-    movs r3, #2\n\
-    ldrsh r0, [r4, r3]\n\
-    adds r1, r1, r0\n\
-    mov r4, r8\n\
-    ands r1, r4\n\
-    ldrh r3, [r2, #2]\n\
-    ldr r0, _080524A8 @ =0xFFFFFE00\n\
-    ands r0, r3\n\
-    orrs r0, r1\n\
-    strh r0, [r2, #2]\n\
-    ldr r6, _080524B4 @ =gMain_spriteGroups_31\n\
-    ldrh r1, [r6, #8]\n\
-    lsls r1, r1, #3\n\
-    ldr r0, _08052494 @ =gOamBuffer\n\
-    adds r1, r1, r0\n\
-    ldrb r0, [r6, #4]\n\
-    ldrb r7, [r7, #4]\n\
-    adds r0, r0, r7\n\
-    strb r0, [r1]\n\
-    ldr r0, _080524B8 @ =gMain\n\
-    ldr r0, [r0, #0x4c]\n\
-    movs r1, #0x12\n\
-    bl __umodsi3\n\
-    cmp r0, #0\n\
-    bne _08052454\n\
-    ldrb r1, [r5]\n\
-    movs r0, #1\n\
-    subs r0, r0, r1\n\
-    strb r0, [r5]\n\
-_08052454:\n\
-    movs r0, #0\n\
-    ldr r1, [sp, #0x60]\n\
-    strh r0, [r1]\n\
-    mov ip, r0\n\
-    ldr r4, [sp, #0x6c]\n\
-    movs r3, #0\n\
-_08052460:\n\
-    mov r2, ip\n\
-    adds r2, #1\n\
-    mov r6, ip\n\
-    lsls r0, r6, #1\n\
-    add r0, ip\n\
-    lsls r0, r0, #2\n\
-    adds r1, r0, r4\n\
-    movs r5, #2\n\
-_08052470:\n\
-    ldm r1!, {r0}\n\
-    strh r3, [r0]\n\
-    subs r5, #1\n\
-    cmp r5, #0\n\
-    bge _08052470\n\
-    mov ip, r2\n\
-    cmp r2, #5\n\
-    ble _08052460\n\
-    add sp, #0x8c\n\
-    pop {r3, r4, r5}\n\
-    mov r8, r3\n\
-    mov sb, r4\n\
-    mov sl, r5\n\
-    pop {r4, r5, r6, r7}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .align 2, 0\n\
-_08052490: .4byte gCustomButtonConfigs\n\
-_08052494: .4byte gOamBuffer\n\
-_08052498: .4byte gButtonInfoTable\n\
-_0805249C: .4byte 0x000003FF\n\
-_080524A0: .4byte 0xFFFFFC00\n\
-_080524A4: .4byte 0x000001FF\n\
-_080524A8: .4byte 0xFFFFFE00\n\
-_080524AC: .4byte gOptionsData\n\
-_080524B0: .4byte gMain_spriteGroups_30\n\
-_080524B4: .4byte gMain_spriteGroups_31\n\
-_080524B8: .4byte gMain");
+    struct SpriteGroup *numberBGM[3];
+    struct SpriteGroup *numberSE[3];
+    struct SpriteGroup *buttonConfig[6][3];
+    struct SpriteGroup *handPointer = &gMain.spriteGroups[0];
+    struct SpriteGroup *torchic = &gMain.spriteGroups[30];
+    struct SpriteGroup *noteBalloon = &gMain.spriteGroups[31];
+    struct SpriteGroup *buttonArrow = &gMain.spriteGroups[8];
+    struct SpriteGroup *soundSelectArrow;
+    struct SpriteGroup *rumbleArrowMain = &gMain.spriteGroups[29];
+    struct SpriteGroup *rumbleArrow;
+    struct OamDataSimple *oam;
+    int i = 0;
+    int j = 0;
+
+    soundSelectArrow =
+        &gMain.spriteGroups[(20 * gOptionsData.soundTestBlinkToggle) + 7];
+
+    for (i = 0; i < 3; i++)
+    {
+        numberBGM[i] = &gMain.spriteGroups[1 + i];
+        numberSE[i] = &gMain.spriteGroups[4 + i];
+    }
+
+    //TODO: FAKEMATCH
+    for (i = 0; i < 6; i++)
+    {
+        struct SpriteGroup *buttonBase = &gMain_spriteGroups_10;
+
+        do
+        {
+            if ((gOptionsButtonConfigEditFlags[i] == TRUE)
+                && (gOptionsData.buttonFlashVisible == TRUE))
+            {
+                buttonConfig[i][0] = &gMain.spriteGroups[28];
+            }
+            else
+            {
+                do
+                {
+                    struct SpriteGroup *normalButton = buttonBase + (3 * i);
+                    buttonConfig[i][0] = --normalButton;
+                } while (0);
+            }
+        } while (0);
+
+        buttonConfig[i][1] = buttonBase + (3 * i);
+        buttonConfig[i][2] = buttonBase + (3 * i) + 1;
+    }
+
+    rumbleArrow = rumbleArrowMain;
+    handPointer->active = TRUE;
+    for (i = 0; i < 3; i++)
+        numberBGM[i]->active = TRUE;
+
+    for (i = 0; i < 3; i++)
+        numberSE[i]->active = TRUE;
+
+    soundSelectArrow->active = TRUE;
+    buttonArrow->active = TRUE;
+    for (i = 0; i < 6; i++)
+    {
+        for (j = 0; j < 3; j++)
+            buttonConfig[i][j]->active = TRUE;
+    }
+
+    rumbleArrow->active = TRUE;
+    torchic->active = TRUE;
+    noteBalloon->active = gOptionsData.soundTestActive;
+    LoadSpriteSets(gOptionsSpriteSets, 32, gMain.spriteGroups);
+
+    handPointer->baseX =
+        gOptionsCursorPositionTable[gOptionsData.cursorPosition].x
+        + gOptionsData.cursorBlinkToggle;
+    handPointer->baseY = gOptionsCursorPositionTable[gOptionsData.cursorPosition].y;
+
+    oam = &handPointer->oam[0];
+    gOamBuffer[oam->oamId].x = oam->xOffset + handPointer->baseX;
+    gOamBuffer[oam->oamId].y = oam->yOffset + handPointer->baseY;
+
+    for (i = 0; i < 3; i++)
+    {
+        numberBGM[i]->baseX = 72 + (i * 7);
+        numberBGM[i]->baseY = 32;
+        oam = &numberBGM[i]->oam[0];
+        gOamBuffer[oam->oamId].tileNum = gOptionsData.digitsBGM[i] + 0x16;
+        gOamBuffer[oam->oamId].x = oam->xOffset + numberBGM[i]->baseX;
+        gOamBuffer[oam->oamId].y = oam->yOffset + numberBGM[i]->baseY;
+    }
+
+    for (i = 0; i < 3; i++)
+    {
+        numberSE[i]->baseX = 72 + (i * 7);
+        numberSE[i]->baseY = 44;
+        oam = &numberSE[i]->oam[0];
+        gOamBuffer[oam->oamId].tileNum = gOptionsData.digitsSE[i] + 0x16;
+        gOamBuffer[oam->oamId].x = oam->xOffset + numberSE[i]->baseX;
+        gOamBuffer[oam->oamId].y = oam->yOffset + numberSE[i]->baseY;
+    }
+
+    soundSelectArrow->baseX = 72;
+    if (gOptionsData.cursorPosition == 0)
+        soundSelectArrow->baseY = 32;
+    else if (gOptionsData.cursorPosition == 1)
+        soundSelectArrow->baseY = 44;
+
+    for (i = 0; i < 2; i++)
+    {
+        oam = &soundSelectArrow->oam[i];
+        gOamBuffer[oam->oamId].x = oam->xOffset + soundSelectArrow->baseX;
+        gOamBuffer[oam->oamId].y = oam->yOffset + soundSelectArrow->baseY;
+    }
+
+    buttonArrow->baseX = 72;
+    buttonArrow->baseY = gOptionsBGMSelectorYPositions[gOptionsData.buttonConfigType];
+
+    oam = &buttonArrow->oam[0];
+    gOamBuffer[oam->oamId].x = oam->xOffset + buttonArrow->baseX;
+    gOamBuffer[oam->oamId].y = oam->yOffset + buttonArrow->baseY;
+
+    for (i = 0; i < 5; i++)
+    {
+        if (gOptionsData.buttonEditFlags[i] == TRUE)
+        {
+            buttonConfig[i][0]->baseX = 156;
+            buttonConfig[i][0]->baseY = 84 + (12 * i);
+
+            for (j = 0; j < (gOptionsData.buttonFlashVisible + 1); j++)
+            {
+                oam = &buttonConfig[i][0]->oam[j];
+                gOamBuffer[oam->oamId].x = oam->xOffset + buttonConfig[i][0]->baseX;
+                gOamBuffer[oam->oamId].y = oam->yOffset + buttonConfig[i][0]->baseY;
+            }
+        }
+        else
+        {
+            u8 btn1Ix = 0;
+            u8 btn2Ix = 0;
+
+            buttonConfig[i][0]->baseX = 156;
+            buttonConfig[i][0]->baseY = 84 + (12 * i);
+            oam = &buttonConfig[i][0]->oam[0];
+
+            btn1Ix = gCustomButtonConfigs[gOptionsData.buttonConfigType][2 * i];
+            gOamBuffer[oam->oamId].tileNum = gButtonInfoTable[btn1Ix].tileNum;
+            gOamBuffer[oam->oamId].shape = gButtonInfoTable[btn1Ix].shape;
+            gOamBuffer[oam->oamId].size = gButtonInfoTable[btn1Ix].size;
+            gOamBuffer[oam->oamId].x = oam->xOffset + buttonConfig[i][0]->baseX;
+            gOamBuffer[oam->oamId].y = oam->yOffset + buttonConfig[i][0]->baseY;
+
+            btn2Ix = gCustomButtonConfigs[gOptionsData.buttonConfigType][(2 * i) + 1];
+            if (btn2Ix != 0xa)
+            {
+                buttonConfig[i][1]->baseX = gButtonInfoTable[btn1Ix].x + buttonConfig[i][0]->baseX;
+                buttonConfig[i][1]->baseY = buttonConfig[i][0]->baseY;
+                oam = &buttonConfig[i][1]->oam[0];
+
+                gOamBuffer[oam->oamId].tileNum = 0x2a;
+                gOamBuffer[oam->oamId].shape = ST_OAM_SQUARE;
+                gOamBuffer[oam->oamId].size = 0;
+                gOamBuffer[oam->oamId].x = oam->xOffset + buttonConfig[i][1]->baseX;
+                gOamBuffer[oam->oamId].y = oam->yOffset + buttonConfig[i][1]->baseY;
+
+                buttonConfig[i][2]->baseX = 8 + buttonConfig[i][1]->baseX;
+                buttonConfig[i][2]->baseY = buttonConfig[i][0]->baseY;
+                oam = &buttonConfig[i][2]->oam[0];
+
+                gOamBuffer[oam->oamId].tileNum = gButtonInfoTable[btn2Ix].tileNum;
+                gOamBuffer[oam->oamId].shape = gButtonInfoTable[btn2Ix].shape;
+                gOamBuffer[oam->oamId].size = gButtonInfoTable[btn2Ix].size;
+                gOamBuffer[oam->oamId].x = oam->xOffset + buttonConfig[i][2]->baseX;
+                gOamBuffer[oam->oamId].y = oam->yOffset + buttonConfig[i][2]->baseY;
+            }
+        }
+    }
+
+    rumbleArrow->baseX = 170;
+    rumbleArrow->baseY = 44 - (gOptionsData.rumbleEnabled * 12);
+    oam = &rumbleArrow->oam[0];
+    gOamBuffer[oam->oamId].x = oam->xOffset + rumbleArrow->baseX;
+    gOamBuffer[oam->oamId].y = oam->yOffset + rumbleArrow->baseY;
+
+    torchic->baseX = 192;
+    torchic->baseY = 8;
+    for (i = 0; i < 2; i++)
+    {
+        oam = &torchic->oam[i];
+        gOamBuffer[oam->oamId].tileNum =
+            (0x40 + (i * 0x80)) + (gOptionsData.torchicAnimTileId * 4);
+        gOamBuffer[oam->oamId].x = oam->xOffset + torchic->baseX;
+        gOamBuffer[oam->oamId].y = oam->yOffset + torchic->baseY;
+    }
+
+    if (noteBalloon->active == TRUE)
+    {
+        noteBalloon->baseX = 176;
+        noteBalloon->baseY = 8;
+        oam = &noteBalloon->oam[0];
+        gOamBuffer[oam->oamId].tileNum = (gOptionsData.noteSizeBlinkState * 0x40) + 0x54;
+        gOamBuffer[oam->oamId].x = oam->xOffset + noteBalloon->baseX;
+        gOamBuffer[oam->oamId].y = oam->yOffset + noteBalloon->baseY;
+
+        if ((gMain.systemFrameCount % 18) == 0)
+        {
+            gOptionsData.noteSizeBlinkState = 1 - gOptionsData.noteSizeBlinkState;
+        }
+    }
+
+    soundSelectArrow->active = FALSE;
+    for (i = 0; i < 6; i++)
+    {
+        for (j = 0; j < 3; j++)
+            buttonConfig[i][j]->active = FALSE;
+    }
 }
 
 void CaptureButtonConfigInput(void)
@@ -1632,76 +823,76 @@ void SetButtonConfigInputs(s8 buttonConfigType)
     switch (buttonConfigType)
     {
     case BUTTON_CONFIG_RESET:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[8][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][0]  = gButtonInfoTable[1][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][1]  = gButtonInfoTable[10][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][0]     = gButtonInfoTable[5][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][1]     = gButtonInfoTable[10][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][0]    = gButtonInfoTable[4][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][1]    = gButtonInfoTable[10][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][0]       = gButtonInfoTable[6][0];
-        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][1]       = gButtonInfoTable[10][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[8].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][0]  = gButtonInfoTable[1].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_LEFT_FLIPPER][1]  = gButtonInfoTable[10].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][0]     = gButtonInfoTable[5].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_LEFT][1]     = gButtonInfoTable[10].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][0]    = gButtonInfoTable[4].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_RIGHT][1]    = gButtonInfoTable[10].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][0]       = gButtonInfoTable[6].buttonName;
+        gMain_saveData.customButtonConfig[PINBALL_INPUT_TILT_UP][1]       = gButtonInfoTable[10].buttonName;
         for (i = 0; i < 10; i++)
             gCustomButtonConfigTileIds[i] = gDefaultCustomButtonConfigTileIds[i];
         break;
     case BUTTON_CONFIG_TYPE_A:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[8][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[8].buttonName;
         break;
     case BUTTON_CONFIG_TYPE_B:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[1][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[10][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[0].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[1].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[10].buttonName;
         break;
     case BUTTON_CONFIG_TYPE_C:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[0][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[0][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[0].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[0].buttonName;
         break;
     case BUTTON_CONFIG_TYPE_D:
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[9][0];
-        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[8][0];
-        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[5][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[4][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[6][0];
-        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[10][0];
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0] = gButtonInfoTable[9].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][0] = gButtonInfoTable[8].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_RIGHT_FLIPPER][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][0] = gButtonInfoTable[5].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_LEFT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][0] = gButtonInfoTable[4].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_RIGHT][1] = gButtonInfoTable[10].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][0] = gButtonInfoTable[6].buttonName;
+        gMain.buttonConfigs[PINBALL_INPUT_TILT_UP][1] = gButtonInfoTable[10].buttonName;
         break;
     case BUTTON_CONFIG_TYPE_EDIT:
         gMain.buttonConfigs[PINBALL_INPUT_LEFT_FLIPPER][0]

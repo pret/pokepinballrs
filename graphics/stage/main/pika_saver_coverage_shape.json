@@ -1,0 +1,192 @@
+{
+  "kind": "oam-shape",
+  "version": 1,
+  "tilecount": 288,
+  "pngsize": "21x15",
+  "pieces": [
+
+    {
+      "pos": "1,0",
+      "size": "4x2"
+    },
+    {
+      "pos": "2,2",
+      "size": "2x1"
+    },
+    {
+      "pos": "2,3",
+      "size": "2x1"
+    },
+    {
+      "pos": "0,4",
+      "size": "4x4"
+    },
+    {
+      "pos": "4,4",
+      "size": "1x4"
+    },
+    {
+      "pos": "0,8",
+      "size": "4x1"
+    },
+    {
+      "pos": "5,0",
+      "size": "4x2"
+    },
+    {
+      "pos": "9,0",
+      "size": "4x2"
+    },
+    {
+      "pos": "13,0",
+      "size": "4x2"
+    },
+    {
+      "pos": "17,0",
+      "size": "4x2"
+    },
+
+
+    {
+      "pos": "6,2",
+      "size": "2x1"
+    },
+    {
+      "pos": "5,3",
+      "size": "4x2"
+    },
+    {
+      "pos": "5,5",
+      "size": "4x2"
+    },
+    {
+      "pos": "7,7",
+      "size": "1x1"
+    },
+
+    {
+      "pos": "4,8",
+      "size": "4x4"
+    },
+    {
+      "pos": "4,12",
+      "size": "4x2"
+    },
+    {
+      "pos": "8,9",
+      "size": "1x4"
+    },
+
+
+    {
+      "pos": "9,2",
+      "size": "4x4"
+    },
+    {
+      "pos": "9,6",
+      "size": "4x4"
+    },
+    {
+      "pos": "9,10",
+      "size": "4x4"
+    },
+
+    {
+      "pos": "13,2",
+      "size": "4x4"
+    },
+    {
+      "pos": "13,6",
+      "size": "4x4"
+    },
+    {
+      "pos": "13,10",
+      "size": "4x4"
+    },
+
+    {
+      "pos": "17,2",
+      "size": "4x4"
+    },
+    {
+      "pos": "17,6",
+      "size": "4x4"
+    },
+    {
+      "pos": "17,10",
+      "size": "4x4"
+    },
+
+    {
+      "pos": "0,9",
+      "size": "4x4"
+    },
+    {
+      "pos": "0,13",
+      "size": "4x2"
+    },
+    {
+      "pos": "4,14",
+      "size": "4x1"
+    },
+    {
+      "pos": "8,14",
+      "size": "1x1"
+    },
+    {
+      "pos": "0,0",
+      "size": "1x2",
+      "spacer": true
+    },
+    {
+      "pos": "0,2",
+      "size": "2x2",
+      "spacer": true
+    },
+    {
+      "pos": "4,2",
+      "size": "2x1",
+      "spacer": true
+    },
+    {
+      "pos": "8,2",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "4,3",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "5,7",
+      "size": "2x1",
+      "spacer": true
+    },
+    {
+      "pos": "8,7",
+      "size": "1x2",
+      "spacer": true
+    },
+    {
+      "pos": "8,13",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "9,14",
+      "size": "4x1",
+      "spacer": true
+    },
+    {
+      "pos": "13,14",
+      "size": "4x1",
+      "spacer": true
+    },
+    {
+      "pos": "17,14",
+      "size": "4x1",
+      "spacer": true
+    }
+  ]
+}

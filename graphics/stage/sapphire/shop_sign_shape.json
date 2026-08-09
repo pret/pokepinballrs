@@ -1,0 +1,22 @@
+{
+  "kind": "oam-shape",
+  "version":1,
+  "pngsize": "8x5",
+  "pieces": [
+    {
+      "_comment":"sign face, SPRITE_SIZE_64x32 at (0,0)",
+      "pos":"0,0",
+      "size": "8x4"
+    },
+    {
+      "_comment":"post, SPRITE_SIZE_32x8 at (0,32)",
+      "pos":"0,4",
+      "size": "4x1"
+    },
+    {
+      "pos":"4,4",
+      "size": "4x1",
+      "spacer":true
+    }
+  ]
+}

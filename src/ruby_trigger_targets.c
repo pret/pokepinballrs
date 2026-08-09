@@ -5,8 +5,7 @@
 #include "constants/board/ruby_states.h"
 
 extern const u8 gSideBumperGfx[][0x100];
-extern const s16 gSideBumperGfxFrameIndices[][2];
-extern const u16 gSideBumperAnimDurations[][2];
+extern const u16 gSideBumperGfxFrameIndices[][2];
 
 extern const s16 gGulpinAnimData[][5];
 extern const u16 gGulpinOamData[146][18];
@@ -15,7 +14,7 @@ extern const u8 gRubyStageGulpin_Gfx[][0x180];
 extern const s16 gChikoritaFlashFrameIndices[];
 extern const u8 gChikoritaExplosionTiles[][0x100];
 extern const u8 gChikoritaProjectileTiles[][0x80];
-extern const u8 gRubyFlashingDecorationTiles[][0x300];
+extern const u8 gRubyChikoritaEntity[][0x300];
 
 //ruby
 void UpdateChikoritaAttackAnimation(void)
@@ -168,14 +167,14 @@ void AnimateChikoritaSprite(void)
         else
             gCurrentPinballGame->chikoritaFlashActive = FALSE;
 
-        DmaCopy16(3, gRubyFlashingDecorationTiles[index], (void *)0x06012720, 0x300);
+        DmaCopy16(3, gRubyChikoritaEntity[index], (void *)0x06012720, 0x300);
     }
     else
     {
         index = (gMain.systemFrameCount % 50) / 25;
         if (gCurrentPinballGame->randomSpriteVariantSeed == 1)
         {
-            DmaCopy16(3, gRubyFlashingDecorationTiles[index], (void *)0x06012720, 0x300);
+            DmaCopy16(3, gRubyChikoritaEntity[index], (void *)0x06012720, 0x300);
         }
     }
 
@@ -334,7 +333,7 @@ void UpdateRubySideBumperAnimation(void)
     {
         if (gCurrentPinballGame->linooneSideBumperExtensionsPending[i] > 0)
         {
-            if (gSideBumperAnimDurations[gCurrentPinballGame->linooneSideBumperAnimPhase[i]][0] > gCurrentPinballGame->linooneSideBumperAnimTimer[i])
+            if (gSideBumperGfxFrameIndices[gCurrentPinballGame->linooneSideBumperAnimPhase[i]][1] > gCurrentPinballGame->linooneSideBumperAnimTimer[i])
             {
                 gCurrentPinballGame->linooneSideBumperAnimTimer[i]++;
             }
@@ -420,7 +419,7 @@ void UpdateRubySideBumperAnimation(void)
         gCurrentPinballGame->linooneSideBumperHitFlag = SIDE_COLLISION_NONE;
         PlayRumble(7);
         m4aSongNumStart(SE_CYNDAQUIL_EGG_GUARD_HIT);
-        gCurrentPinballGame->scoreAddedInFrame = 3000;
+        gCurrentPinballGame->scoreAddedInFrame = SCORE_LINOONE_BUMPER_HIT;
         gCurrentPinballGame->linooneSideBumperAnimPhase[SIDE_IX_LEFT] = 0;
         gCurrentPinballGame->linooneSideBumperAnimPhase[SIDE_IX_RIGHT] = 0;
         gCurrentPinballGame->linooneSideBumperAnimTimer[SIDE_IX_LEFT] = 0;

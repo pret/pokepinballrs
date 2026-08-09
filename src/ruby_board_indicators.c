@@ -5,7 +5,7 @@
 #include "constants/board/ruby_states.h"
 
 extern const u8 *gRubyBallPowerUpLightTilePointers[][3];
-extern const u16 gBallShadowTileIndices[];
+extern const u16 gBallUpgradeFx_TileIndicies[];
 extern const u8 *gRubyCatchArrowTilePointer[][4];
 extern const u8 *gRubyShopRampArrowTilePointsers[][4];
 extern const u8 *gRubyBumperArrowTilePointer[][4];
@@ -88,7 +88,7 @@ void AnimateRubySlingshotHit(void)
         if (gCurrentPinballGame->slingshotHitAnimTimer == 3)
         {
             m4aSongNumStart(SE_SLINGSHOT_HIT);
-            gCurrentPinballGame->scoreAddedInFrame = 500;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_SLINGSHOT_HIT;
             PlayRumble(7);
         }
     }
@@ -120,8 +120,9 @@ void DrawRubyProgressDigits(void)
     const u8 **src;
     const u8 **dest;
 
-    var0 = gCurrentPinballGame->progressLevel / 10;
-    var1 = gCurrentPinballGame->progressLevel % 10;
+    var0 = LEAD_DIGIT_10S(gCurrentPinballGame->progressLevel);
+    var1 = DIGIT_1S(gCurrentPinballGame->progressLevel);
+
     src = gRubyProgressDigitTilePointers[var0];
     dest = gRubyProgressDigitTilePointers[10];
     DmaCopy16(3, src[0], dest[0], 0x20);
@@ -201,7 +202,7 @@ void DrawRubyModeTimerDisplay(void)
     const u8 **src;
     const u8 **dest;
 
-    if (gCurrentPinballGame->saverTimeRemaining > 300)
+    if (gCurrentPinballGame->saverTimeRemaining > SAVER_WARNING_FLASH_TIME)
     {
         gCurrentPinballGame->saverLit = TRUE;
     }
@@ -361,7 +362,7 @@ void AnimateRubyBallPowerUpSequence(void)
     if (!gCurrentPinballGame->ballPowerUpAnimActive)
         return;
 
-    if (gCurrentPinballGame->ballShadowTimer)
+    if (gCurrentPinballGame->gBallUpgradeFxTimer)
     {
         if (!gCurrentPinballGame->ballPowerUpOverride)
         {
@@ -370,23 +371,23 @@ void AnimateRubyBallPowerUpSequence(void)
             gCurrentPinballGame->ballPowerUpLight[2] = gCurrentPinballGame->ballPowerUpLight[0];
         }
 
-        if (gCurrentPinballGame->ballShadowTimer == 28)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer == 28)
         {
             if (gCurrentPinballGame->ballUpgradeType < BALL_UPGRADE_TYPE_MASTER_BALL)
                 gCurrentPinballGame->ballUpgradeType++;
 
-            gCurrentPinballGame->ballUpgradeCounter = 3600;
+            gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
 
-        if (gCurrentPinballGame->ballShadowTimer == 40)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer == 40)
         MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
 
-        if (gCurrentPinballGame->ballShadowTimer == 60)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer == 60)
             gMain.fieldSpriteGroups[FIELD_SG_BALL_UPGRADE_FX]->active = TRUE;
 
-        gCurrentPinballGame->ballShadowTileIndex = gBallShadowTileIndices[30 - gCurrentPinballGame->ballShadowTimer / 2];
-        gCurrentPinballGame->ballShadowTimer--;
+        gCurrentPinballGame->ballUpgradeFxTileIndex = gBallUpgradeFx_TileIndicies[30 - gCurrentPinballGame->gBallUpgradeFxTimer / 2];
+        gCurrentPinballGame->gBallUpgradeFxTimer--;
     }
     else
     {

@@ -25,16 +25,16 @@ void MainBoardProcess_7B_12524(void)
 
     currentBallState->prevSpinAngle = currentBallState->spinAngle;
 
-    if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeCounter > 0)
+    if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeTimer > 0)
     {
-        if (--gCurrentPinballGame->ballUpgradeCounter == 0)
+        if (--gCurrentPinballGame->ballUpgradeTimer == 0)
         {
             if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
             {
                 gCurrentPinballGame->ballUpgradeType--;
 
                 if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
-                    gCurrentPinballGame->ballUpgradeCounter = 3600;
+                    gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             }
 
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
@@ -203,7 +203,7 @@ void MainBoardProcess_7B_12524(void)
     if (spriteGroup->active)
     {
         s8 newIx;
-        if (gCurrentPinballGame->ballShadowTimer < 59)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer < 59)
         {
             spriteGroup->baseX = gMain.fieldSpriteGroups[FIELD_SG_BALL]->baseX - 8;
             spriteGroup->baseY = gMain.fieldSpriteGroups[FIELD_SG_BALL]->baseY - 8;
@@ -214,8 +214,8 @@ void MainBoardProcess_7B_12524(void)
             spriteGroup->baseY = 180;
         }
 
-        newIx = gCurrentPinballGame->ballShadowTileIndex;
-        DmaCopy16(3, gBallShadowTileGraphics[newIx], (void *)0x6011EE0, 0x200);
+        newIx = gCurrentPinballGame->ballUpgradeFxTileIndex;
+        DmaCopy16(3, gBallUpgradeFx_Gfx[newIx], (void *)0x6011EE0, 0x200);
 
         oam = &spriteGroup->oam[0];
 
@@ -224,7 +224,7 @@ void MainBoardProcess_7B_12524(void)
 
         gOamBuffer[oam->oamId].priority = currentBallState->oamPriority;
 
-        if (gCurrentPinballGame->ballShadowTimer < 14)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer < 14)
             gMain.fieldSpriteGroups[FIELD_SG_BALL_UPGRADE_FX]->active = FALSE;
     }
 }
@@ -401,17 +401,17 @@ void BonusBoardProcess_7B_12BF8()
     }
     else
     {
-        if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeCounter != 0)
+        if (!gCurrentPinballGame->ballUpgradeTimerPaused && gCurrentPinballGame->ballUpgradeTimer != 0)
         {
-            gCurrentPinballGame->ballUpgradeCounter--;
-            if (gCurrentPinballGame->ballUpgradeCounter == 0)
+            gCurrentPinballGame->ballUpgradeTimer--;
+            if (gCurrentPinballGame->ballUpgradeTimer == 0)
             {
                 if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                 {
                     gCurrentPinballGame->ballUpgradeType--;
                     if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                     {
-                        gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
+                        gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
                     }
                 }
                 DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);

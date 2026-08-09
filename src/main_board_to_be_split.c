@@ -4,6 +4,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
+#define HATCH_MODE_SAVER_TIME TICKS_FOR_TIME(0,30)
+
 extern const s16 gEggHatchAnimData[28][3];
 extern const u8 gCatchSpriteFrameBuffer[][0x120];
 extern const struct Vector32 gSapphireEggWaypoints[];
@@ -23,8 +25,8 @@ extern const u8 gAlphabetTilesGfx[][0x40];
 extern const s16 gCaughtTextChars[];
 extern const struct Vector16 gFlyingCreatureCameraOffsets[];
 extern const u16 gEggFloatOamFramesets[14][15];
-extern const u8 gEggModeTilesGfx[];
-extern const u8 gEggModePalette[];
+extern const u8 gAerodactlyFlight_Gfx[];
+extern const u8 gAerodactlyFlight_Pal[];
 extern const u16 gPikaSaverFrameData[][2];
 extern const u16 gPokemonFloatOamFramesets[82][6][3];
 extern const u8 gCaptureModePalette[];
@@ -119,8 +121,8 @@ void UpdateCatchTrigger(void)
         gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
         gCurrentPinballGame->boardSubState++;
         InitRouletteWheel();
-        if (gCurrentPinballGame->catchTriggerCompletionCount < 99)
-            gCurrentPinballGame->catchTriggerCompletionCount++;
+        if (gCurrentPinballGame->slotsPlayedCount < 99)
+            gCurrentPinballGame->slotsPlayedCount++;
         break;
     case BONUS_HOLE_SUBSTATE_RUN_ROULETTE:
         if (gCurrentPinballGame->modeAnimTimer == 148)
@@ -576,9 +578,9 @@ void RenderEvolutionUI(s16 arg0)
     var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
     if (arg0)
     {
-        index = var1[3] / 10;
+        index = LEAD_DIGIT_10S(var1[3]);
         DmaCopy16(3, gDecimalDigitTilesGfx[index], (void *)0x06015DA0, 0x40);
-        index = var1[3] % 10;
+        index = DIGIT_1S(var1[3]);
         DmaCopy16(3, gDecimalDigitTilesGfx[index], (void *)0x06015E60, 0x40);
     }
 
@@ -781,7 +783,7 @@ void AnimateCoinReward(void)
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
 
-                        gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->coinRewardAmount - gCurrentPinballGame->coinsAwarded) * 100;
+                        gCurrentPinballGame->scoreAddedInFrame = (gCurrentPinballGame->coinRewardAmount - gCurrentPinballGame->coinsAwarded) * SCORE_COIN_COLLECTED;
                         gCurrentPinballGame->coinRewardTimer = (gCurrentPinballGame->coinRewardAmount * 9) + 1;
                         gCurrentPinballGame->coinsAwarded = gCurrentPinballGame->coinRewardAmount;
                     }
@@ -797,7 +799,7 @@ void AnimateCoinReward(void)
                         if (gCurrentPinballGame->coins > 99)
                             gCurrentPinballGame->coins = 99;
 
-                        gCurrentPinballGame->scoreAddedInFrame = 100;
+                        gCurrentPinballGame->scoreAddedInFrame = SCORE_COIN_COLLECTED;
                     }
                 }
             }
@@ -903,7 +905,7 @@ void AnimateTotodileEggDelivery(void)
         }
 
         if (gCurrentPinballGame->totodileDeliveryFrame == 14)
-            gCurrentPinballGame->scoreAddedInFrame = 2000000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_TOTODILE_EGG_DELIVERY;
     }
 
     if (gCurrentPinballGame->totodileDeliveryFrame >= 14 && gCurrentPinballGame->totodileDeliveryFrame < 38 && gCurrentPinballGame->globalAnimFrameCounter % 7 == 0)
@@ -938,8 +940,8 @@ void InitAerodactylEggDelivery(void)
     gCurrentPinballGame->portraitOffsetX = gCurrentPinballGame->eggDeliveryX / 20 - gFlyingCreatureCameraOffsets[0].x;
     gCurrentPinballGame->portraitOffsetY = gCurrentPinballGame->eggDeliveryY / 20 - gFlyingCreatureCameraOffsets[0].y;
     gCurrentPinballGame->activePortraitType = 2;
-    DmaCopy16(3, gEggModePalette, (void *)0x050003C0, 0x20);
-    DmaCopy16(3, gEggModeTilesGfx, (void *)0x06015800, 0x1000);
+    DmaCopy16(3, gAerodactlyFlight_Pal, (void *)0x050003C0, 0x20);
+    DmaCopy16(3, gAerodactlyFlight_Gfx, (void *)0x06015800, 0x1000);
 }
 
 void AnimateAerodactylEggDelivery(void)
@@ -975,7 +977,7 @@ void AnimateAerodactylEggDelivery(void)
         }
 
         if (gCurrentPinballGame->eggDropTimer == 78)
-            gCurrentPinballGame->scoreAddedInFrame = 100000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_AERODACTYL_EGG_DELIVERY;
 
         DmaCopy16(3, gEggFrameTilesGfx[0], (void *)0x06011CE0, 0x200);
     }
@@ -1595,7 +1597,7 @@ void InitEggMode(void)
 {
     gCurrentPinballGame->boardSubState = EGG_HATCH_SUBSTATE_INIT;
     gCurrentPinballGame->stageTimer = 0;
-    gCurrentPinballGame->saverTimeRemaining = 1800;
+    gCurrentPinballGame->saverTimeRemaining = HATCH_MODE_SAVER_TIME;
     gCurrentPinballGame->creatureHitCount = 0;
     gCurrentPinballGame->walkMonXVelocity = 0;
     gCurrentPinballGame->walkMonYVelocity = 0;

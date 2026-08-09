@@ -6,27 +6,27 @@
 
 void AllBoardProcess_2A_4D6C4(void)
 {
-    s16 var0;
-    s16 var1;
+    s16 cameraBoardXOffset;
+    s16 cameraBoardScrollOffset;
 
-    var0 = 0;
+    cameraBoardXOffset = 0;
     if (gMain.selectedField == FIELD_RUBY)
     {
-        var1 = 0;
+        cameraBoardScrollOffset = 0;
     }
     else if (gMain.selectedField == FIELD_SAPPHIRE)
     {
-        var1 = -24;
+        cameraBoardScrollOffset = -24;
     }
     else
     {
-        var1 = 0;
-        var0 = 8;
+        cameraBoardScrollOffset = 0;
+        cameraBoardXOffset = 8;
     }
 
     if (gMain.selectedField < MAIN_FIELD_COUNT)
     {
-        gCurrentPinballGame->cameraScrollOffset = var1 - 244;
+        gCurrentPinballGame->cameraScrollOffset = cameraBoardScrollOffset - 244;
         gCurrentPinballGame->cameraScrollTarget = 0;
         gCurrentPinballGame->cameraScrollEnabled = FALSE;
         gCurrentPinballGame->cameraBaseX = gBoardConfig.fieldLayout.cameraStartX;
@@ -34,11 +34,11 @@ void AllBoardProcess_2A_4D6C4(void)
         gCurrentPinballGame->cameraYQ8 = gBoardConfig.fieldLayout.cameraStartY << 8;
         gCurrentPinballGame->cameraXOffset = gCurrentPinballGame->cameraBaseX;
         gCurrentPinballGame->cameraYOffset = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->cameraScrollOffset;
-        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->cameraBaseX + var0;
+        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->cameraBaseX + cameraBoardXOffset;
         gMain.bgOffsets[2].yOffset = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->cameraScrollOffset;
-        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->cameraBaseX + var0;
+        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->cameraBaseX + cameraBoardXOffset;
         gMain.bgOffsets[3].yOffset = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->cameraScrollOffset;
-        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->cameraBaseX + var0;
+        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->cameraBaseX + cameraBoardXOffset;
         gMain.bgOffsets[1].yOffset = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->cameraScrollOffset;
         if (gMain.selectedField == FIELD_RUBY)
         {
@@ -72,11 +72,11 @@ void AllBoardProcess_2A_4D6C4(void)
         gCurrentPinballGame->cameraYQ8 = gBoardConfig.fieldLayout.cameraStartY << 8;
         gCurrentPinballGame->cameraXOffset = gCurrentPinballGame->cameraBaseX;
         gCurrentPinballGame->cameraYOffset = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->cameraScrollOffset;
-        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->cameraBaseX + var0;
+        gMain.bgOffsets[2].xOffset = gCurrentPinballGame->cameraBaseX + cameraBoardXOffset;
         gMain.bgOffsets[2].yOffset = gCurrentPinballGame->cameraBaseY;
-        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->cameraBaseX + var0;
+        gMain.bgOffsets[3].xOffset = gCurrentPinballGame->cameraBaseX + cameraBoardXOffset;
         gMain.bgOffsets[3].yOffset = gCurrentPinballGame->cameraBaseY;
-        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->cameraBaseX + var0;
+        gMain.bgOffsets[1].xOffset = gCurrentPinballGame->cameraBaseX + cameraBoardXOffset;
         gMain.bgOffsets[1].yOffset = gCurrentPinballGame->cameraBaseY / 2;
         if (gMain.selectedField == FIELD_KECLEON)
             gMain.bgOffsets[3].xOffset = gMain.bgOffsets[2].xOffset + (gCurrentPinballGame->globalAnimFrameCounter & 0x7FF) / 8;
@@ -512,7 +512,7 @@ void ProcessBonusBoardBallDrain(void)
             if (gCurrentPinballGame->ballUpgradeType > BALL_UPGRADE_TYPE_POKE_BALL)
                 gCurrentPinballGame->ballUpgradeType--;
 
-            gCurrentPinballGame->ballUpgradeCounter = 3600;
+            gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
         }
 
@@ -568,13 +568,13 @@ void ResetBoardStateOnDeath(void)
     if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
     {
         gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
-        gCurrentPinballGame->ballUpgradeCounter = 60 * 60;
+        gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
         DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
     }
     else
     {
         gCurrentPinballGame->ballUpgradeType = 0;
-        gCurrentPinballGame->ballUpgradeCounter = 0;
+        gCurrentPinballGame->ballUpgradeTimer = 0;
     }
 
     gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;

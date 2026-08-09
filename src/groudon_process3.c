@@ -5,10 +5,11 @@
 #include "constants/board/groudon_states.h"
 #include "constants/board/center_screen_states.h"
 
+#define GROUDON_MODE_TIME TICKS_FOR_TIME(3,0)
 
 extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gGroudonLavaPaletteCycleData[];
-extern const u8 gGroudonBoardBackgroundGfx[];
+extern const u8 gGroudonAttackFx_Gfx[];
 extern const s8 gGroudonBoardBoulders_Gfx[][0x300];
 extern struct SongHeader se_groudon_hit;
 extern struct SongHeader se_groudon_lands;
@@ -17,8 +18,8 @@ extern struct SongHeader se_groudon_fire_ring;
 extern struct SongHeader se_groudon_fire_grab;
 extern const s16 gShockwaveSplashDistanceThresholds[];
 extern const s16 gScreenShakeOscillationValues[];
-extern const u16 gGroudonFootstepShakePatterns[][31];
-extern const u16 gGroudonCryShakePattern[];
+extern const s16 gGroudonFootstepShakePatterns[][31];
+extern const s16 gGroudonCryShakePattern[];
 extern const u16 gGroudonAnimFramesetTable[][2];
 extern const struct Vector16 gGroudonFirePillarBasePositions[];
 extern const u16 gGroudonFirePillarAnimFrameset[][2];
@@ -33,7 +34,6 @@ extern const u16 gGroudonProjectileAttackOamData[12][6][3];
 extern const u16 gGroudonMainBodyOamData[166][19][3];
 extern const u16 gGroudonFirePillarOamData[58][10][3];
 
-
 void GroudonBoardProcess_3A_3B120(void)
 {
     s16 i;
@@ -47,7 +47,7 @@ void GroudonBoardProcess_3A_3B120(void)
         gCurrentPinballGame->legendaryHitsRequired = 15;
 
     gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
-    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + 10800;
+    gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + GROUDON_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_INITIAL_SPAWN;
     gCurrentPinballGame->ballRespawnTimer = 0;
@@ -130,7 +130,7 @@ void GroudonBoardProcess_3A_3B120(void)
     UpdateGroudonFieldEntities();
     UpdateGroudonEntityLogic();
     RenderGroudonSprites();
-    DmaCopy16(3, gGroudonBoardBackgroundGfx, (void *)0x06015800, 0x2000);
+    DmaCopy16(3, gGroudonAttackFx_Gfx, (void *)0x06015800, 0x2000);
     AnimateGroudonBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_GROUDON);
     DmaCopy16(3, gBonusStageObjPal, (void *)0x05000320, 0x20);
@@ -189,8 +189,8 @@ void GroudonBoardProcess_3B_3B49C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 50000000;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_GROUDON_BONUS_TALLY;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_GROUDON_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -229,8 +229,8 @@ void GroudonBoardProcess_3B_3B49C(void)
         if (gCurrentPinballGame->stageTimer == 180)
         {
             gCurrentPinballGame->scoreCounterAnimationEnabled = TRUE;
-            gCurrentPinballGame->scoreAddStepSize = 400000;
-            gCurrentPinballGame->scoreAddedInFrame = 50000000;
+            gCurrentPinballGame->scoreAddStepSize = SCORE_STEP_GROUDON_BONUS_TALLY;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_GROUDON_BONUS_COMPLETE;
         }
 
         if (gCurrentPinballGame->stageTimer < 240)
@@ -286,7 +286,7 @@ void UpdateGroudonEntityLogic(void)
         if (gCurrentPinballGame->bossHitFlashTimer == 35)
         {
             MPlayStart(&gMPlayInfo_SE1, &se_groudon_hit);
-            gCurrentPinballGame->scoreAddedInFrame = 500000;
+            gCurrentPinballGame->scoreAddedInFrame = SCORE_GROUDON_HIT;
             PlayRumble(7);
             gCurrentPinballGame->bonusModeHitCount++;
             if (gCurrentPinballGame->bonusModeHitCount >= gCurrentPinballGame->legendaryHitsRequired)
@@ -828,13 +828,13 @@ void RenderGroudonSprites(void)
     struct OamDataSimple *oamSimple;
     u16 *dst;
     const u16 *src;
-    s16 var0;
+    s16 oamAnimFrameIx;
     int palette;
 
     group = &gMain.spriteGroups[SG_GROUDON_ENTITY];
     if (group->active)
     {
-        var0 = gGroudonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][0];
+        oamAnimFrameIx = gGroudonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][0];
         group->baseX = gCurrentPinballGame->bossPositionX / 10 + 100u - gCurrentPinballGame->cameraXOffset;
         group->baseY = gCurrentPinballGame->bossPositionY / 10 +  84u - gCurrentPinballGame->cameraYOffset;
         gCurrentPinballGame->catchTargetX = gCurrentPinballGame->bossPositionX / 10 + 118;
@@ -864,7 +864,7 @@ void RenderGroudonSprites(void)
             {
                 oamSimple = &group->oam[i];
                 dst = (u16*)&gOamBuffer[oamSimple->oamId];
-                src = gGroudonMainBodyOamData[var0][i];
+                src = gGroudonMainBodyOamData[oamAnimFrameIx][i];
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
@@ -881,7 +881,7 @@ void RenderGroudonSprites(void)
             {
                 oamSimple = &group->oam[i];
                 dst = (u16*)&gOamBuffer[oamSimple->oamId];
-                src = gGroudonMainBodyOamData[var0][i];
+                src = gGroudonMainBodyOamData[oamAnimFrameIx][i];
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
@@ -897,7 +897,7 @@ void RenderGroudonSprites(void)
             {
                 oamSimple = &group->oam[i];
                 dst = (u16*)&gOamBuffer[oamSimple->oamId];
-                src = gGroudonMainBodyOamData[var0][i];
+                src = gGroudonMainBodyOamData[oamAnimFrameIx][i];
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
@@ -919,14 +919,14 @@ void RenderGroudonSprites(void)
                 group->active = FALSE;
         }
 
-        var0 = gCurrentPinballGame->projectileDirection * 2 - (gCurrentPinballGame->projectileAttackAnimTimer / 4 - 1);
+        oamAnimFrameIx = gCurrentPinballGame->projectileDirection * 2 - (gCurrentPinballGame->projectileAttackAnimTimer / 4 - 1);
         group->baseX = gCurrentPinballGame->bossPositionX / 10 + 100u - gCurrentPinballGame->cameraXOffset;
         group->baseY = gCurrentPinballGame->bossPositionY / 10 +  84u - gCurrentPinballGame->cameraYOffset;
         for (i = 0; i < 6; i++)
         {
             oamSimple = &group->oam[i];
             dst = (u16*)&gOamBuffer[oamSimple->oamId];
-            src = gGroudonProjectileAttackOamData[var0][i];
+            src = gGroudonProjectileAttackOamData[oamAnimFrameIx][i];
             *dst++ = *src++;
             *dst++ = *src++;
             *dst++ = *src++;
@@ -959,7 +959,7 @@ void UpdateGroudonFieldEntities(void)
     int xx, yy;
     int squaredDistance;
     struct Vector32 tempVector;
-    s8 var0;
+    s8 frameIx;
 
     varSL = 0;
     group = &gMain.spriteGroups[SG_LEGENDARY_CATCH_PORTRAIT];
@@ -1344,8 +1344,8 @@ void UpdateGroudonFieldEntities(void)
                 break;
             }
 
-            var0 = gCurrentPinballGame->boulderSpriteFrame[i];
-            DmaCopy16(3, gGroudonBoardBoulders_Gfx[var0], (void *)0x06010FA0 + i * 0x300, 0x300);
+            frameIx = gCurrentPinballGame->boulderSpriteFrame[i];
+            DmaCopy16(3, gGroudonBoardBoulders_Gfx[frameIx], (void *)0x06010FA0 + i * 0x300, 0x300);
 
             group->baseX = (gCurrentPinballGame->boulderGroundPosition[i].x / 10) + i - gCurrentPinballGame->cameraXOffset;
             group->baseY = (gCurrentPinballGame->boulderFallHeight[i] / 10) + (gCurrentPinballGame->boulderGroundPosition[i].y / 10) - gCurrentPinballGame->cameraYOffset;

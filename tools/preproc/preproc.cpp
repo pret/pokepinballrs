@@ -102,19 +102,25 @@ void PreprocAsmFile(std::string filename)
         }
         case Directive::DexName:{
             unsigned short s[POKEMON_NAME_LENGTH];
-            int length = stack.top().ReadDexString(s, POKEMON_NAME_LENGTH, false);
+            int length = stack.top().ReadDexString(s, POKEMON_NAME_LENGTH, false, false);
             PrintAsmHalfwords(s, length);
             break;
         }
         case Directive::DexCategory:{
             unsigned short s[POKEMON_CATEGORY_NAME_LENGTH];
-            int length = stack.top().ReadDexString(s, POKEMON_CATEGORY_NAME_LENGTH, true);
+            int length = stack.top().ReadDexString(s, POKEMON_CATEGORY_NAME_LENGTH, true, false);
             PrintAsmHalfwords(s, length);
             break;
         }
         case Directive::DexText:{
             unsigned short s[POKEMON_DEX_LINE_LENGTH];
-            int length = stack.top().ReadDexString(s, POKEMON_DEX_LINE_LENGTH, false);
+            int length = stack.top().ReadDexString(s, POKEMON_DEX_LINE_LENGTH, false, false);
+            PrintAsmHalfwords(s, length);
+            break;
+        }
+        case Directive::EreaderText:{
+            unsigned short s[EREADER_LINE_LENGTH];
+            int length = stack.top().ReadDexString(s, EREADER_LINE_LENGTH, false, true);
             PrintAsmHalfwords(s, length);
             break;
         }
