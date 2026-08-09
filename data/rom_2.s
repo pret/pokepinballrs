@@ -8610,53 +8610,53 @@ gSapphireProgressDigitTilePtrs:: @ 0x086B0E9C
 gRotatingBackgroundTilePtrs:: @ 0x086B0F4C
     @ 5 sets of 4
     @ fifth set has destination address
-    .4byte gWailmerWater_082E3EC0, gWailmerWater_082E42C0, gWailmerWater_082E46C0, gWailmerWater_082E4AC0
-    .4byte gWailmerWater_082E3F40, gWailmerWater_082E4340, gWailmerWater_082E4740, gWailmerWater_082E4B40
-    .4byte gWailmerWater_082E3FC0, gWailmerWater_082E43C0, gWailmerWater_082E47C0, gWailmerWater_082E4BC0
-    .4byte gWailmerWater_082E3F40, gWailmerWater_082E4340, gWailmerWater_082E4740, gWailmerWater_082E4B40
+    .4byte gWailmerWaterFrame0Row0, gWailmerWaterFrame0Row1, gWailmerWaterFrame0Row2, gWailmerWaterFrame0Row3
+    .4byte gWailmerWaterFrame1Row0, gWailmerWaterFrame1Row1, gWailmerWaterFrame1Row2, gWailmerWaterFrame1Row3
+    .4byte gWailmerWaterFrame2Row0, gWailmerWaterFrame2Row1, gWailmerWaterFrame2Row2, gWailmerWaterFrame2Row3
+    .4byte gWailmerWaterFrame1Row0, gWailmerWaterFrame1Row1, gWailmerWaterFrame1Row2, gWailmerWaterFrame1Row3
     .4byte 0x0600AEA0, 0x0600B2A0, 0x0600B6A0, 0x0600BAA0
 
 gHatchMachineDrawSegment:: @ 0x086B0F9C
     @ 10 sets of 3 sets of 2
     @ third set has destination address
-    .4byte gHatchMachine_082DE1E0, gHatchMachine_082DE5E0
-    .4byte gHatchMachine_082DE620, gHatchMachine_082DEA20
+    .4byte gHatchMachineSeg0IdleA, gHatchMachineSeg0IdleB
+    .4byte gHatchMachineSeg0HitA, gHatchMachineSeg0HitB
     .4byte 0x0600DD40, 0x0600DD80
 
-    .4byte gHatchMachine_082DE660, gHatchMachine_082DEA60
-    .4byte gHatchMachine_082DE6A0, gHatchMachine_082DEAA0
+    .4byte gHatchMachineSeg1IdleA, gHatchMachineSeg1IdleB
+    .4byte gHatchMachineSeg1HitA, gHatchMachineSeg1HitB
     .4byte 0x0600DDC0, 0x0600DE00
 
-    .4byte gHatchMachine_082DE6E0, gHatchMachine_082DEAE0
-    .4byte gHatchMachine_082DE720, gHatchMachine_082DEB20
+    .4byte gHatchMachineSeg2IdleA, gHatchMachineSeg2IdleB
+    .4byte gHatchMachineSeg2HitA, gHatchMachineSeg2HitB
     .4byte 0x0600D9C0, 0x0600DAC0
 
-    .4byte gHatchMachine_082DEB60, gHatchMachine_082DEB60
-    .4byte gHatchMachine_082DEBA0, gHatchMachine_082DEBA0
+    .4byte gHatchMachineSeg3Idle, gHatchMachineSeg3Idle
+    .4byte gHatchMachineSeg3Hit, gHatchMachineSeg3Hit
     .4byte 0x0600DE40, 0x0600DE40
 
-    .4byte gHatchMachine_082DE7E0, gHatchMachine_082DEBE0
-    .4byte gHatchMachine_082DE820, gHatchMachine_082DEC20
+    .4byte gHatchMachineSeg4IdleA, gHatchMachineSeg4IdleB
+    .4byte gHatchMachineSeg4HitA, gHatchMachineSeg4HitB
     .4byte 0x0600D900, 0x0600DA00
 
-    .4byte gHatchMachine_082DE860, gHatchMachine_082DEC60
-    .4byte gHatchMachine_082DE8A0, gHatchMachine_082DECA0
+    .4byte gHatchMachineSeg5IdleA, gHatchMachineSeg5IdleB
+    .4byte gHatchMachineSeg5HitA, gHatchMachineSeg5HitB
     .4byte 0x0600DE80, 0x0600DEC0
 
-    .4byte gHatchMachine_082DE8E0, gHatchMachine_082DECE0
-    .4byte gHatchMachine_082DE920, gHatchMachine_082DED20
+    .4byte gHatchMachineSeg6IdleA, gHatchMachineSeg6IdleB
+    .4byte gHatchMachineSeg6HitA, gHatchMachineSeg6HitB
     .4byte 0x0600DF00, 0x0600DF40
 
-    .4byte gHatchMachine_082DE960, gHatchMachine_082DED60
-    .4byte gHatchMachine_082DE9A0, gHatchMachine_082DEDA0
+    .4byte gHatchMachineSeg7IdleA, gHatchMachineSeg7IdleB
+    .4byte gHatchMachineSeg7HitA, gHatchMachineSeg7HitB
     .4byte 0x0600DF80, 0x0600DFC0
 
-    .4byte gHatchMachine_082DE9E0, gHatchMachine_082DEDE0
-    .4byte gHatchMachine_082DEE20, gHatchMachine_082DF220
+    .4byte gHatchMachineSeg8IdleA, gHatchMachineSeg8IdleB
+    .4byte gHatchMachineSeg8HitA, gHatchMachineSeg8HitB
     .4byte 0x0600E000, 0x0600E040
 
-    .4byte gHatchMachine_082DEE60, gHatchMachine_082DF260
-    .4byte gHatchMachine_082DEEA0, gHatchMachine_082DF2A0
+    .4byte gHatchMachineSeg9IdleA, gHatchMachineSeg9IdleB
+    .4byte gHatchMachineSeg9HitA, gHatchMachineSeg9HitB
     .4byte 0x0600E080, 0x0600E0C0
 
 gSapphireSlingshotTilePtrs:: @ 0x086B108C

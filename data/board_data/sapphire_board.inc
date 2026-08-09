@@ -604,8 +604,8 @@ gSapphireCatchLight_082DE160:: @ 0x082DE160
 gSapphireCatchLight_082DE1A0:: @ 0x082DE1A0
     .incbin "baserom.gba", 0x2DE1A0, 0x40
 
-gHatchMachine_082DE1E0:: @ 0x082DE1E0
-    .incbin "baserom.gba", 0x2DE1E0, 0x40
+gHatchMachineSeg0IdleA:: @ 0x082DE1E0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a.4bpp"
 
 gSapphireCenterTrap_082DE220:: @ 0x082DE220
     .incbin "baserom.gba", 0x2DE220, 0x40
@@ -655,108 +655,108 @@ gSapphireCatchLight_082DE5A0:: @ 0x082DE5A0
 
 
 
-gHatchMachine_082DE5E0:: @ 0x082DE5E0
-    .incbin "baserom.gba", 0x2DE5E0, 0x40
+gHatchMachineSeg0IdleB:: @ 0x082DE5E0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_b.4bpp"
 
-gHatchMachine_082DE620:: @ 0x082DE620
-    .incbin "baserom.gba", 0x2DE620, 0x40
+gHatchMachineSeg0HitA:: @ 0x082DE620
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_a.4bpp"
 
-gHatchMachine_082DE660:: @ 0x082DE660
-    .incbin "baserom.gba", 0x2DE660, 0x40
+gHatchMachineSeg1IdleA:: @ 0x082DE660
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_a.4bpp"
 
-gHatchMachine_082DE6A0:: @ 0x082DE6A0
-    .incbin "baserom.gba", 0x2DE6A0, 0x40
+gHatchMachineSeg1HitA:: @ 0x082DE6A0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_a.4bpp"
 
-gHatchMachine_082DE6E0:: @ 0x082DE6E0
-    .incbin "baserom.gba", 0x2DE6E0, 0x40
+gHatchMachineSeg2IdleA:: @ 0x082DE6E0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_a.4bpp"
 
-gHatchMachine_082DE720:: @ 0x082DE720
-    .incbin "baserom.gba", 0x2DE720, 0x40
+gHatchMachineSeg2HitA:: @ 0x082DE720
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_a.4bpp"
     .space 0x80
 
-gHatchMachine_082DE7E0:: @ 0x082DE7E0
-    .incbin "baserom.gba", 0x2DE7E0, 0x40
+gHatchMachineSeg4IdleA:: @ 0x082DE7E0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_a.4bpp"
 
-gHatchMachine_082DE820:: @ 0x082DE820
-    .incbin "baserom.gba", 0x2DE820, 0x40
+gHatchMachineSeg4HitA:: @ 0x082DE820
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_a.4bpp"
 
-gHatchMachine_082DE860:: @ 0x082DE860
-    .incbin "baserom.gba", 0x2DE860, 0x40
+gHatchMachineSeg5IdleA:: @ 0x082DE860
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_a.4bpp"
 
-gHatchMachine_082DE8A0:: @ 0x082DE8A0
-    .incbin "baserom.gba", 0x2DE8A0, 0x40
+gHatchMachineSeg5HitA:: @ 0x082DE8A0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_a.4bpp"
 
-gHatchMachine_082DE8E0:: @ 0x082DE8E0
-    .incbin "baserom.gba", 0x2DE8E0, 0x40
+gHatchMachineSeg6IdleA:: @ 0x082DE8E0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_a.4bpp"
 
-gHatchMachine_082DE920:: @ 0x082DE920
-    .incbin "baserom.gba", 0x2DE920, 0x40
+gHatchMachineSeg6HitA:: @ 0x082DE920
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_a.4bpp"
 
-gHatchMachine_082DE960:: @ 0x082DE960
-    .incbin "baserom.gba", 0x2DE960, 0x40
+gHatchMachineSeg7IdleA:: @ 0x082DE960
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_a.4bpp"
 
-gHatchMachine_082DE9A0:: @ 0x082DE9A0
-    .incbin "baserom.gba", 0x2DE9A0, 0x40
+gHatchMachineSeg7HitA:: @ 0x082DE9A0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_a.4bpp"
 
-gHatchMachine_082DE9E0:: @ 0x082DE9E0
-    .incbin "baserom.gba", 0x2DE9E0, 0x40
+gHatchMachineSeg8IdleA:: @ 0x082DE9E0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_a.4bpp"
 
-gHatchMachine_082DEA20:: @ 0x082DEA20
-    .incbin "baserom.gba", 0x2DEA20, 0x40
+gHatchMachineSeg0HitB:: @ 0x082DEA20
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_b.4bpp"
 
-gHatchMachine_082DEA60:: @ 0x082DEA60
-    .incbin "baserom.gba", 0x2DEA60, 0x40
+gHatchMachineSeg1IdleB:: @ 0x082DEA60
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_b.4bpp"
 
-gHatchMachine_082DEAA0:: @ 0x082DEAA0
-    .incbin "baserom.gba", 0x2DEAA0, 0x40
+gHatchMachineSeg1HitB:: @ 0x082DEAA0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_b.4bpp"
 
-gHatchMachine_082DEAE0:: @ 0x082DEAE0
-    .incbin "baserom.gba", 0x2DEAE0, 0x40
+gHatchMachineSeg2IdleB:: @ 0x082DEAE0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_b.4bpp"
 
-gHatchMachine_082DEB20:: @ 0x082DEB20
-    .incbin "baserom.gba", 0x2DEB20, 0x40
+gHatchMachineSeg2HitB:: @ 0x082DEB20
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_b.4bpp"
 
-gHatchMachine_082DEB60:: @ 0x082DEB60
-    .incbin "baserom.gba", 0x2DEB60, 0x40
+gHatchMachineSeg3Idle:: @ 0x082DEB60
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_idle.4bpp"
 
-gHatchMachine_082DEBA0:: @ 0x082DEBA0
-    .incbin "baserom.gba", 0x2DEBA0, 0x40
+gHatchMachineSeg3Hit:: @ 0x082DEBA0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_hit.4bpp"
 
-gHatchMachine_082DEBE0:: @ 0x082DEBE0
-    .incbin "baserom.gba", 0x2DEBE0, 0x40
+gHatchMachineSeg4IdleB:: @ 0x082DEBE0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_b.4bpp"
 
-gHatchMachine_082DEC20:: @ 0x082DEC20
-    .incbin "baserom.gba", 0x2DEC20, 0x40
+gHatchMachineSeg4HitB:: @ 0x082DEC20
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_b.4bpp"
 
-gHatchMachine_082DEC60:: @ 0x082DEC60
-    .incbin "baserom.gba", 0x2DEC60, 0x40
+gHatchMachineSeg5IdleB:: @ 0x082DEC60
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_b.4bpp"
 
-gHatchMachine_082DECA0:: @ 0x082DECA0
-    .incbin "baserom.gba", 0x2DECA0, 0x40
+gHatchMachineSeg5HitB:: @ 0x082DECA0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_b.4bpp"
 
-gHatchMachine_082DECE0:: @ 0x082DECE0
-    .incbin "baserom.gba", 0x2DECE0, 0x40
+gHatchMachineSeg6IdleB:: @ 0x082DECE0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_b.4bpp"
 
-gHatchMachine_082DED20:: @ 0x082DED20
-    .incbin "baserom.gba", 0x2DED20, 0x40
+gHatchMachineSeg6HitB:: @ 0x082DED20
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_b.4bpp"
 
-gHatchMachine_082DED60:: @ 0x082DED60
-    .incbin "baserom.gba", 0x2DED60, 0x40
+gHatchMachineSeg7IdleB:: @ 0x082DED60
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_b.4bpp"
 
-gHatchMachine_082DEDA0:: @ 0x082DEDA0
-    .incbin "baserom.gba", 0x2DEDA0, 0x40
+gHatchMachineSeg7HitB:: @ 0x082DEDA0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_b.4bpp"
 
-gHatchMachine_082DEDE0:: @ 0x082DEDE0
-    .incbin "baserom.gba", 0x2DEDE0, 0x40
+gHatchMachineSeg8IdleB:: @ 0x082DEDE0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_b.4bpp"
 
-gHatchMachine_082DEE20:: @ 0x082DEE20
-    .incbin "baserom.gba", 0x2DEE20, 0x40
+gHatchMachineSeg8HitA:: @ 0x082DEE20
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_a.4bpp"
 
-gHatchMachine_082DEE60:: @ 0x082DEE60
-    .incbin "baserom.gba", 0x2DEE60, 0x40
+gHatchMachineSeg9IdleA:: @ 0x082DEE60
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_a.4bpp"
 
-gHatchMachine_082DEEA0:: @ 0x082DEEA0
-    .incbin "baserom.gba", 0x2DEEA0, 0x40
+gHatchMachineSeg9HitA:: @ 0x082DEEA0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_a.4bpp"
 
 
 
@@ -776,14 +776,14 @@ gSapphirePIndicator_082DEFE0:: @ 0x082DEFE0
     .incbin "baserom.gba", 0x2DEFE0, 0x40
     .space 0x200
 
-gHatchMachine_082DF220:: @ 0x082DF220
-    .incbin "baserom.gba", 0x2DF220, 0x40
+gHatchMachineSeg8HitB:: @ 0x082DF220
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_b.4bpp"
 
-gHatchMachine_082DF260:: @ 0x082DF260
-    .incbin "baserom.gba", 0x2DF260, 0x40
+gHatchMachineSeg9IdleB:: @ 0x082DF260
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_b.4bpp"
 
-gHatchMachine_082DF2A0:: @ 0x082DF2A0
-    .incbin "baserom.gba", 0x2DF2A0, 0x40
+gHatchMachineSeg9HitB:: @ 0x082DF2A0
+    .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_b.4bpp"
 
 
 
@@ -1066,41 +1066,51 @@ gSapphire_RSlingshot_On_R4:: @ 0x082E3BC0
 	.space 0x2C0
 
 
-gWailmerWater_082E3EC0:: @ 0x082E3EC0
-    .incbin "baserom.gba", 0x2E3EC0, 0x80
+gWailmerWaterFrame0Row0:: @ 0x082E3EC0
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame0_row0.4bpp"
+	.space 0x40
 
-gWailmerWater_082E3F40:: @ 0x082E3F40
-    .incbin "baserom.gba", 0x2E3F40, 0x80
+gWailmerWaterFrame1Row0:: @ 0x082E3F40
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame1_row0.4bpp"
+	.space 0x40
 
-gWailmerWater_082E3FC0:: @ 0x082E3FC0
-    .incbin "baserom.gba", 0x2E3FC0, 0x300
+gWailmerWaterFrame2Row0:: @ 0x082E3FC0
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame2_row0.4bpp"
+	.space 0x2C0
 
-gWailmerWater_082E42C0:: @ 0x082E42C0
-    .incbin "baserom.gba", 0x2E42C0, 0x80
+gWailmerWaterFrame0Row1:: @ 0x082E42C0
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame0_row1.4bpp"
 
-gWailmerWater_082E4340:: @ 0x082E4340
-    .incbin "baserom.gba", 0x2E4340, 0x80
+gWailmerWaterFrame1Row1:: @ 0x082E4340
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame1_row1.4bpp"
 
-gWailmerWater_082E43C0:: @ 0x082E43C0
-    .incbin "baserom.gba", 0x2E43C0, 0x300
+gWailmerWaterFrame2Row1:: @ 0x082E43C0
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame2_row1.4bpp"
+	.space 0x280
 
-gWailmerWater_082E46C0:: @ 0x082E46C0
-    .incbin "baserom.gba", 0x2E46C0, 0x80
+gWailmerWaterFrame0Row2:: @ 0x082E46C0
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame0_row2.4bpp"
+	.space 0x20
 
-gWailmerWater_082E4740:: @ 0x082E4740
-    .incbin "baserom.gba", 0x2E4740, 0x80
+gWailmerWaterFrame1Row2:: @ 0x082E4740
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame1_row2.4bpp"
+	.space 0x20
 
-gWailmerWater_082E47C0:: @ 0x082E47C0
-    .incbin "baserom.gba", 0x2E47C0, 0x300
+gWailmerWaterFrame2Row2:: @ 0x082E47C0
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame2_row2.4bpp"
+	.space 0x2A0
 
-gWailmerWater_082E4AC0:: @ 0x082E4AC0
-    .incbin "baserom.gba", 0x2E4AC0, 0x80
+gWailmerWaterFrame0Row3:: @ 0x082E4AC0
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame0_row3.4bpp"
+	.space 0x20
 
-gWailmerWater_082E4B40:: @ 0x082E4B40
-    .incbin "baserom.gba", 0x2E4B40, 0x80
+gWailmerWaterFrame1Row3:: @ 0x082E4B40
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame1_row3.4bpp"
+	.space 0x20
 
-gWailmerWater_082E4BC0:: @ 0x082E4BC0
-    .incbin "baserom.gba", 0x2E4BC0, 0x320
+gWailmerWaterFrame2Row3:: @ 0x082E4BC0
+    .incbin "graphics/stage/sapphire/wailmer_water/water_frame2_row3.4bpp"
+	.space 0x2C0
 
 gSapphireBoardBGTiles:: @ 0x082E4EE0
 	@ loaded to charblock 2; tiles 0-703 are overwritten by the scroll ring
