@@ -546,18 +546,18 @@ gSapphireHoleLightE_On:: @ 0x082DD960
 
 
 
-gSapphireCatchLight_082DD9A0:: @ 0x082DD9A0
-    .incbin "baserom.gba", 0x2DD9A0, 0x40
+gSapphireCatchLightState0Top:: @ 0x082DD9A0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_state0_top.4bpp"
 
-gSapphireCatchLight_082DD9E0:: @ 0x082DD9E0
-    .incbin "baserom.gba", 0x2DD9E0, 0x40
+gSapphireCatchLightState1Top:: @ 0x082DD9E0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_state1_top.4bpp"
 	.space 0x380
 
-gSapphireCatchLight_082DDDA0:: @ 0x082DDDA0
-    .incbin "baserom.gba", 0x2DDDA0, 0x40
+gSapphireCatchLightState0Bot:: @ 0x082DDDA0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_state0_bot.4bpp"
 
-gSapphireCatchLight_082DDDE0:: @ 0x082DDDE0
-    .incbin "baserom.gba", 0x2DDDE0, 0x40
+gSapphireCatchLightState1Bot:: @ 0x082DDDE0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_state1_bot.4bpp"
 
 gSapphireCenterTrap_082DDE20:: @ 0x082DDE20
     .incbin "baserom.gba", 0x2DDE20, 0x40
@@ -568,41 +568,41 @@ gSapphireCenterTrap_082DDE60:: @ 0x082DDE60
 gSapphireCenterTrap_082DDEA0:: @ 0x082DDEA0
     .incbin "baserom.gba", 0x2DDEA0, 0x40
 
-gSapphireCatchLight_082DDEE0:: @ 0x082DDEE0
-    .incbin "baserom.gba", 0x2DDEE0, 0x40
+gSapphireCatchLightSlot0State2Top:: @ 0x082DDEE0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_top.4bpp"
 
-gSapphireCatchLight_082DDF20:: @ 0x082DDF20
-    .incbin "baserom.gba", 0x2DDF20, 0x40
+gSapphireCatchLightSlot0State3Top:: @ 0x082DDF20
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state3_top.4bpp"
 
-gSapphireCatchLight_082DDF60:: @ 0x082DDF60
-    .incbin "baserom.gba", 0x2DDF60, 0x40
+gSapphireCatchLightSlot1State2Top:: @ 0x082DDF60
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot1_state2_top.4bpp"
 
-gSapphireCatchLight_082DDFA0:: @ 0x082DDFA0
-    .incbin "baserom.gba", 0x2DDFA0, 0x40
+gSapphireCatchLightSlot1State3Top:: @ 0x082DDFA0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot1_state3_top.4bpp"
 
-gSapphireCatchLight_082DDFE0:: @ 0x082DDFE0
-    .incbin "baserom.gba", 0x2DDFE0, 0x40
+gSapphireCatchLightSlot2State2Top:: @ 0x082DDFE0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state2_top.4bpp"
 
-gSapphireCatchLight_082DE020:: @ 0x082DE020
-    .incbin "baserom.gba", 0x2DE020, 0x40
+gSapphireCatchLightSlot2State3Top:: @ 0x082DE020
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state3_top.4bpp"
 
-gSapphireCatchLight_082DE060:: @ 0x082DE060
-    .incbin "baserom.gba", 0x2DE060, 0x40
+gSapphireCatchLightSlot0State4Top:: @ 0x082DE060
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state4_top.4bpp"
 
-gSapphireCatchLight_082DE0A0:: @ 0x082DE0A0
-    .incbin "baserom.gba", 0x2DE0A0, 0x40
+gSapphireCatchLightSlot0State5Top:: @ 0x082DE0A0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state5_top.4bpp"
 
-gSapphireCatchLight_082DE0E0:: @ 0x082DE0E0
-    .incbin "baserom.gba", 0x2DE0E0, 0x40
+gSapphireCatchLightSlot1State4Top:: @ 0x082DE0E0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot1_state4_top.4bpp"
 
-gSapphireCatchLight_082DE120:: @ 0x082DE120
-    .incbin "baserom.gba", 0x2DE120, 0x40
+gSapphireCatchLightSlot1State5Top:: @ 0x082DE120
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot1_state5_top.4bpp"
 
-gSapphireCatchLight_082DE160:: @ 0x082DE160
-    .incbin "baserom.gba", 0x2DE160, 0x40
+gSapphireCatchLightSlot2State4Top:: @ 0x082DE160
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_top.4bpp"
 
-gSapphireCatchLight_082DE1A0:: @ 0x082DE1A0
-    .incbin "baserom.gba", 0x2DE1A0, 0x40
+gSapphireCatchLightSlot2State5Top:: @ 0x082DE1A0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_top.4bpp"
 
 gHatchMachineSeg0IdleA:: @ 0x082DE1E0
     .incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a.4bpp"
@@ -616,41 +616,41 @@ gSapphireCenterTrap_082DE260:: @ 0x082DE260
 gSapphireCenterTrap_082DE2A0:: @ 0x082DE2A0
     .incbin "baserom.gba", 0x2DE2A0, 0x40
 
-gSapphireCatchLight_082DE2E0:: @ 0x082DE2E0
-    .incbin "baserom.gba", 0x2DE2E0, 0x40
+gSapphireCatchLightSlot0State2Bot:: @ 0x082DE2E0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_bot.4bpp"
 
-gSapphireCatchLight_082DE320:: @ 0x082DE320
-    .incbin "baserom.gba", 0x2DE320, 0x40
+gSapphireCatchLightSlot0State3Bot:: @ 0x082DE320
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state3_bot.4bpp"
 
-gSapphireCatchLight_082DE360:: @ 0x082DE360
-    .incbin "baserom.gba", 0x2DE360, 0x40
+gSapphireCatchLightSlot1State2Bot:: @ 0x082DE360
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot1_state2_bot.4bpp"
 
-gSapphireCatchLight_082DE3A0:: @ 0x082DE3A0
-    .incbin "baserom.gba", 0x2DE3A0, 0x40
+gSapphireCatchLightSlot1State3Bot:: @ 0x082DE3A0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot1_state3_bot.4bpp"
 
-gSapphireCatchLight_082DE3E0:: @ 0x082DE3E0
-    .incbin "baserom.gba", 0x2DE3E0, 0x40
+gSapphireCatchLightSlot2State2Bot:: @ 0x082DE3E0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state2_bot.4bpp"
 
-gSapphireCatchLight_082DE420:: @ 0x082DE420
-    .incbin "baserom.gba", 0x2DE420, 0x40
+gSapphireCatchLightSlot2State3Bot:: @ 0x082DE420
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state3_bot.4bpp"
 
-gSapphireCatchLight_082DE460:: @ 0x082DE460
-    .incbin "baserom.gba", 0x2DE460, 0x40
+gSapphireCatchLightSlot0State4Bot:: @ 0x082DE460
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state4_bot.4bpp"
 
-gSapphireCatchLight_082DE4A0:: @ 0x082DE4A0
-    .incbin "baserom.gba", 0x2DE4A0, 0x40
+gSapphireCatchLightSlot0State5Bot:: @ 0x082DE4A0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state5_bot.4bpp"
 
-gSapphireCatchLight_082DE4E0:: @ 0x082DE4E0
-    .incbin "baserom.gba", 0x2DE4E0, 0x40
+gSapphireCatchLightSlot1State4Bot:: @ 0x082DE4E0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot1_state4_bot.4bpp"
 
-gSapphireCatchLight_082DE520:: @ 0x082DE520
-    .incbin "baserom.gba", 0x2DE520, 0x40
+gSapphireCatchLightSlot1State5Bot:: @ 0x082DE520
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot1_state5_bot.4bpp"
 
-gSapphireCatchLight_082DE560:: @ 0x082DE560
-    .incbin "baserom.gba", 0x2DE560, 0x40
+gSapphireCatchLightSlot2State4Bot:: @ 0x082DE560
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_bot.4bpp"
 
-gSapphireCatchLight_082DE5A0:: @ 0x082DE5A0
-    .incbin "baserom.gba", 0x2DE5A0, 0x40
+gSapphireCatchLightSlot2State5Bot:: @ 0x082DE5A0
+    .incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot.4bpp"
 
 
 

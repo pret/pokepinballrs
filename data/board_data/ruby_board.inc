@@ -418,18 +418,18 @@ gRubyHoleLightE_On:: @ 0x0825FA70
 
 @ Catch light arrows : 3 balls / CATCH! / EVO
 
-gRubyCatchLight_0825FAB0:: @ 0x0825FAB0
-    .incbin "baserom.gba", 0x25FAB0, 0x40
+gRubyCatchLightState0Top:: @ 0x0825FAB0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_state0_top.4bpp"
 
-gRubyCatchLight_0825FAF0:: @ 0x0825FAF0
-    .incbin "baserom.gba", 0x25FAF0, 0x40
+gRubyCatchLightState1Top:: @ 0x0825FAF0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_state1_top.4bpp"
     .space 0x380
 
-gRubyCatchLight_0825FEB0:: @ 0x0825FEB0
-    .incbin "baserom.gba", 0x25FEB0, 0x40
+gRubyCatchLightState0Bot:: @ 0x0825FEB0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_state0_bot.4bpp"
 
-gRubyCatchLight_0825FEF0:: @ 0x0825FEF0
-    .incbin "baserom.gba", 0x25FEF0, 0x40
+gRubyCatchLightState1Bot:: @ 0x0825FEF0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_state1_bot.4bpp"
 
 gRubyTrapTile_0825FF30:: @ 0x0825FF30
     .incbin "baserom.gba", 0x25FF30, 0x40
@@ -440,41 +440,42 @@ gRubyTrapTile_0825FF70:: @ 0x0825FF70
 gRubyTrapTile_0825FFB0:: @ 0x0825FFB0
     .incbin "baserom.gba", 0x25FFB0, 0x40
 
-gRubyCatchLight_0825FFF0:: @ 0x0825FFF0
-    .incbin "baserom.gba", 0x25FFF0, 0x40
+gRubyCatchLightSlot0State2Top:: @ 0x0825FFF0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_top.4bpp"
 
-gRubyCatchLight_08260030:: @ 0x08260030
-    .incbin "baserom.gba", 0x260030, 0x40
+gRubyCatchLightSlot0State3Top:: @ 0x08260030
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state3_top.4bpp"
 
-gRubyCatchLight_08260070:: @ 0x08260070
-    .incbin "baserom.gba", 0x260070, 0x40
+gRubyCatchLightSlot1State2Top:: @ 0x08260070
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state2_top.4bpp"
 
-gRubyCatchLight_082600B0:: @ 0x082600B0
-    .incbin "baserom.gba", 0x2600B0, 0x40
+gRubyCatchLightSlot1State3Top:: @ 0x082600B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state3_top.4bpp"
 
-gRubyCatchLight_082600F0:: @ 0x082600F0
-    .incbin "baserom.gba", 0x2600F0, 0x40
+gRubyCatchLightSlot2State2Top:: @ 0x082600F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state2_top.4bpp"
 
-gRubyCatchLight_08260130:: @ 0x08260130
-    .incbin "baserom.gba", 0x260130, 0x40
+gRubyCatchLightSlot2State3Top:: @ 0x08260130
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state3_top.4bpp"
 
-gRubyCatchLight_08260170:: @ 0x08260170
-    .incbin "baserom.gba", 0x260170, 0x40
+gRubyCatchLightSlot0State4Top:: @ 0x08260170
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state4_top.4bpp"
 
-gRubyCatchLight_082601B0:: @ 0x082601B0
-    .incbin "baserom.gba", 0x2601B0, 0x40
+gRubyCatchLightSlot0State5Top:: @ 0x082601B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state5_top.4bpp"
 
-gRubyCatchLight_082601F0:: @ 0x082601F0
-    .incbin "baserom.gba", 0x2601F0, 0x40
+gRubyCatchLightSlot1State4Top:: @ 0x082601F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state4_top.4bpp"
 
-gRubyCatchLight_08260230:: @ 0x08260230
-    .incbin "baserom.gba", 0x260230, 0x40
+gRubyCatchLightSlot1State5Top:: @ 0x08260230
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state5_top.4bpp"
 
-gRubyCatchLight_08260270:: @ 0x08260270
-    .incbin "baserom.gba", 0x260270, 0x40
+gRubyCatchLightSlot2State4Top:: @ 0x08260270
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top.4bpp"
 
-gRubyCatchLight_082602B0:: @ 0x082602B0
-    .incbin "baserom.gba", 0x2602B0, 0x80
+gRubyCatchLightSlot2State5Top:: @ 0x082602B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top.4bpp"
+	.space 0x40
 
 gRubyTrapTile_08260330:: @ 0x08260330
     .incbin "baserom.gba", 0x260330, 0x40
@@ -485,41 +486,42 @@ gRubyTrapTile_08260370:: @ 0x08260370
 gRubyTrapTile_082603B0:: @ 0x082603B0
     .incbin "baserom.gba", 0x2603B0, 0x40
 
-gRubyCatchLight_082603F0:: @ 0x082603F0
-    .incbin "baserom.gba", 0x2603F0, 0x40
+gRubyCatchLightSlot0State2Bot:: @ 0x082603F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_bot.4bpp"
 
-gRubyCatchLight_08260430:: @ 0x08260430
-    .incbin "baserom.gba", 0x260430, 0x40
+gRubyCatchLightSlot0State3Bot:: @ 0x08260430
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state3_bot.4bpp"
 
-gRubyCatchLight_08260470:: @ 0x08260470
-    .incbin "baserom.gba", 0x260470, 0x40
+gRubyCatchLightSlot1State2Bot:: @ 0x08260470
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state2_bot.4bpp"
 
-gRubyCatchLight_082604B0:: @ 0x082604B0
-    .incbin "baserom.gba", 0x2604B0, 0x40
+gRubyCatchLightSlot1State3Bot:: @ 0x082604B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state3_bot.4bpp"
 
-gRubyCatchLight_082604F0:: @ 0x082604F0
-    .incbin "baserom.gba", 0x2604F0, 0x40
+gRubyCatchLightSlot2State2Bot:: @ 0x082604F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state2_bot.4bpp"
 
-gRubyCatchLight_08260530:: @ 0x08260530
-    .incbin "baserom.gba", 0x260530, 0x40
+gRubyCatchLightSlot2State3Bot:: @ 0x08260530
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state3_bot.4bpp"
 
-gRubyCatchLight_08260570:: @ 0x08260570
-    .incbin "baserom.gba", 0x260570, 0x40
+gRubyCatchLightSlot0State4Bot:: @ 0x08260570
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state4_bot.4bpp"
 
-gRubyCatchLight_082605B0:: @ 0x082605B0
-    .incbin "baserom.gba", 0x2605B0, 0x40
+gRubyCatchLightSlot0State5Bot:: @ 0x082605B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state5_bot.4bpp"
 
-gRubyCatchLight_082605F0:: @ 0x082605F0
-    .incbin "baserom.gba", 0x2605F0, 0x40
+gRubyCatchLightSlot1State4Bot:: @ 0x082605F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state4_bot.4bpp"
 
-gRubyCatchLight_08260630:: @ 0x08260630
-    .incbin "baserom.gba", 0x260630, 0x40
+gRubyCatchLightSlot1State5Bot:: @ 0x08260630
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state5_bot.4bpp"
 
-gRubyCatchLight_08260670:: @ 0x08260670
-    .incbin "baserom.gba", 0x260670, 0x40
+gRubyCatchLightSlot2State4Bot:: @ 0x08260670
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_bot.4bpp"
 
-gRubyCatchLight_082606B0:: @ 0x082606B0
-    .incbin "baserom.gba", 0x2606B0, 0xC0
+gRubyCatchLightSlot2State5Bot:: @ 0x082606B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot.4bpp"
+    .incbin "baserom.gba", 0x2606F0, 0x80
 
 
 @ Ruby Saver indicator

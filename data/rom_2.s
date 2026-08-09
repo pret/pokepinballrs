@@ -8430,28 +8430,28 @@ gRubyTrapIndicatorTilePointers:: @ 0x086B09C8
 gRubyCatchLightTilePointers:: @ 0x086B09E8
     @ 3 sets of 7 sets of 2
     @ seventh set has destination address
-    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
-    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
-    .4byte gRubyCatchLight_0825FFF0, gRubyCatchLight_082603F0
-    .4byte gRubyCatchLight_08260030, gRubyCatchLight_08260430
-    .4byte gRubyCatchLight_08260170, gRubyCatchLight_08260570
-    .4byte gRubyCatchLight_082601B0, gRubyCatchLight_082605B0
+    .4byte gRubyCatchLightState0Top, gRubyCatchLightState0Bot
+    .4byte gRubyCatchLightState1Top, gRubyCatchLightState1Bot
+    .4byte gRubyCatchLightSlot0State2Top, gRubyCatchLightSlot0State2Bot
+    .4byte gRubyCatchLightSlot0State3Top, gRubyCatchLightSlot0State3Bot
+    .4byte gRubyCatchLightSlot0State4Top, gRubyCatchLightSlot0State4Bot
+    .4byte gRubyCatchLightSlot0State5Top, gRubyCatchLightSlot0State5Bot
     .4byte 0x0600A180, 0x0600A580
 
-    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
-    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
-    .4byte gRubyCatchLight_08260070, gRubyCatchLight_08260470
-    .4byte gRubyCatchLight_082600B0, gRubyCatchLight_082604B0
-    .4byte gRubyCatchLight_082601F0, gRubyCatchLight_082605F0
-    .4byte gRubyCatchLight_08260230, gRubyCatchLight_08260630
+    .4byte gRubyCatchLightState0Top, gRubyCatchLightState0Bot
+    .4byte gRubyCatchLightState1Top, gRubyCatchLightState1Bot
+    .4byte gRubyCatchLightSlot1State2Top, gRubyCatchLightSlot1State2Bot
+    .4byte gRubyCatchLightSlot1State3Top, gRubyCatchLightSlot1State3Bot
+    .4byte gRubyCatchLightSlot1State4Top, gRubyCatchLightSlot1State4Bot
+    .4byte gRubyCatchLightSlot1State5Top, gRubyCatchLightSlot1State5Bot
     .4byte 0x0600A1C0, 0x0600A5C0
 
-    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
-    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
-    .4byte gRubyCatchLight_082600F0, gRubyCatchLight_082604F0
-    .4byte gRubyCatchLight_08260130, gRubyCatchLight_08260530
-    .4byte gRubyCatchLight_08260270, gRubyCatchLight_08260670
-    .4byte gRubyCatchLight_082602B0, gRubyCatchLight_082606B0
+    .4byte gRubyCatchLightState0Top, gRubyCatchLightState0Bot
+    .4byte gRubyCatchLightState1Top, gRubyCatchLightState1Bot
+    .4byte gRubyCatchLightSlot2State2Top, gRubyCatchLightSlot2State2Bot
+    .4byte gRubyCatchLightSlot2State3Top, gRubyCatchLightSlot2State3Bot
+    .4byte gRubyCatchLightSlot2State4Top, gRubyCatchLightSlot2State4Bot
+    .4byte gRubyCatchLightSlot2State5Top, gRubyCatchLightSlot2State5Bot
     .4byte 0x0600A200, 0x0600A600
 
 gRubySaverTilePointers:: @ 0x086B0A90
@@ -8681,28 +8681,28 @@ gSapphireTrapIndicatorTilePtrs:: @ 0x086B1104
 gSapphireCatchLightTilePtrs:: @ 0x086B1124
     @ 3 sets of 7 sets of 2
     @ seventh set has destination address
-    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
-    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
-    .4byte gSapphireCatchLight_082DDEE0, gSapphireCatchLight_082DE2E0
-    .4byte gSapphireCatchLight_082DDF20, gSapphireCatchLight_082DE320
-    .4byte gSapphireCatchLight_082DE060, gSapphireCatchLight_082DE460
-    .4byte gSapphireCatchLight_082DE0A0, gSapphireCatchLight_082DE4A0
+    .4byte gSapphireCatchLightState0Top, gSapphireCatchLightState0Bot
+    .4byte gSapphireCatchLightState1Top, gSapphireCatchLightState1Bot
+    .4byte gSapphireCatchLightSlot0State2Top, gSapphireCatchLightSlot0State2Bot
+    .4byte gSapphireCatchLightSlot0State3Top, gSapphireCatchLightSlot0State3Bot
+    .4byte gSapphireCatchLightSlot0State4Top, gSapphireCatchLightSlot0State4Bot
+    .4byte gSapphireCatchLightSlot0State5Top, gSapphireCatchLightSlot0State5Bot
     .4byte 0x0600A180, 0x0600A580
 
-    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
-    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
-    .4byte gSapphireCatchLight_082DDF60, gSapphireCatchLight_082DE360
-    .4byte gSapphireCatchLight_082DDFA0, gSapphireCatchLight_082DE3A0
-    .4byte gSapphireCatchLight_082DE0E0, gSapphireCatchLight_082DE4E0
-    .4byte gSapphireCatchLight_082DE120, gSapphireCatchLight_082DE520
+    .4byte gSapphireCatchLightState0Top, gSapphireCatchLightState0Bot
+    .4byte gSapphireCatchLightState1Top, gSapphireCatchLightState1Bot
+    .4byte gSapphireCatchLightSlot1State2Top, gSapphireCatchLightSlot1State2Bot
+    .4byte gSapphireCatchLightSlot1State3Top, gSapphireCatchLightSlot1State3Bot
+    .4byte gSapphireCatchLightSlot1State4Top, gSapphireCatchLightSlot1State4Bot
+    .4byte gSapphireCatchLightSlot1State5Top, gSapphireCatchLightSlot1State5Bot
     .4byte 0x0600A1C0, 0x0600A5C0
 
-    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
-    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
-    .4byte gSapphireCatchLight_082DDFE0, gSapphireCatchLight_082DE3E0
-    .4byte gSapphireCatchLight_082DE020, gSapphireCatchLight_082DE420
-    .4byte gSapphireCatchLight_082DE160, gSapphireCatchLight_082DE560
-    .4byte gSapphireCatchLight_082DE1A0, gSapphireCatchLight_082DE5A0
+    .4byte gSapphireCatchLightState0Top, gSapphireCatchLightState0Bot
+    .4byte gSapphireCatchLightState1Top, gSapphireCatchLightState1Bot
+    .4byte gSapphireCatchLightSlot2State2Top, gSapphireCatchLightSlot2State2Bot
+    .4byte gSapphireCatchLightSlot2State3Top, gSapphireCatchLightSlot2State3Bot
+    .4byte gSapphireCatchLightSlot2State4Top, gSapphireCatchLightSlot2State4Bot
+    .4byte gSapphireCatchLightSlot2State5Top, gSapphireCatchLightSlot2State5Bot
     .4byte 0x0600A200, 0x0600A600
 
 gSapphireSaverDisplayTilePtrs:: @ 0x086B11CC
