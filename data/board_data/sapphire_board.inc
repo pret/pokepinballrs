@@ -811,29 +811,37 @@ gSapphirePIndicator_082DF3E0:: @ 0x082DF3E0
 @ Leaving as is, without carving out the 'space' and separate carved zones for the junk data.
 
 	.incbin "baserom.gba", 0x2DF640, 0x20
-gSapphireSaver_082DF660:: @ 0x082DF660
-    .incbin "baserom.gba", 0x2DF660, 0x100
+gSapphireSaverRow0Tile_Off:: @ 0x082DF660
+    .incbin "graphics/stage/sapphire/saver/saver_off_row0.4bpp"
+    .incbin "baserom.gba", 0x2DF740, 0x20
 
-gSapphireSaver_082DF760:: @ 0x082DF760
-    .incbin "baserom.gba", 0x2DF760, 0x300
+gSapphireSaverRow0Tile_On:: @ 0x082DF760
+    .incbin "graphics/stage/sapphire/saver/saver_on_row0.4bpp"
+    .incbin "baserom.gba", 0x2DF840, 0x220
 
-gSapphireSaver_082DFA60:: @ 0x082DFA60
-    .incbin "baserom.gba", 0x2DFA60, 0x100
+gSapphireSaverRow1Tile_Off:: @ 0x082DFA60
+    .incbin "graphics/stage/sapphire/saver/saver_off_row1.4bpp"
+    .incbin "baserom.gba", 0x2DFB40, 0x20
 
-gSapphireSaver_082DFB60:: @ 0x082DFB60
-    .incbin "baserom.gba", 0x2DFB60, 0x320
+gSapphireSaverRow1Tile_On:: @ 0x082DFB60
+    .incbin "graphics/stage/sapphire/saver/saver_on_row1.4bpp"
+    .incbin "baserom.gba", 0x2DFC40, 0x240
 
-gSapphireSaver_082DFE80:: @ 0x082DFE80
-    .incbin "baserom.gba", 0x2DFE80, 0x100
+gSapphireSaverRow2Tile_Off:: @ 0x082DFE80
+    .incbin "graphics/stage/sapphire/saver/saver_off_row2.4bpp"
+    .incbin "baserom.gba", 0x2DFF40, 0x40
 
-gSapphireSaver_082DFF80:: @ 0x082DFF80
-    .incbin "baserom.gba", 0x2DFF80, 0x360
+gSapphireSaverRow2Tile_On:: @ 0x082DFF80
+    .incbin "graphics/stage/sapphire/saver/saver_on_row2.4bpp"
+    .incbin "baserom.gba", 0x2E0040, 0x2A0
 
-gSapphireSaver_082E02E0:: @ 0x082E02E0
-    .incbin "baserom.gba", 0x2E02E0, 0x100
+gSapphireSaverRow3Tile_Off:: @ 0x082E02E0
+    .incbin "graphics/stage/sapphire/saver/saver_off_row3.4bpp"
+    .incbin "baserom.gba", 0x2E0320, 0xC0
 
-gSapphireSaver_082E03E0:: @ 0x082E03E0
-    .incbin "baserom.gba", 0x2E03E0, 0x2C0
+gSapphireSaverRow3Tile_On:: @ 0x082E03E0
+    .incbin "graphics/stage/sapphire/saver/saver_on_row3.4bpp"
+    .incbin "baserom.gba", 0x2E0420, 0x280
 
 
 @ Hatch arrow, Catch arrow, Bumper arrow
@@ -984,65 +992,78 @@ gSapphireEvoArrow_082E2400:: @ 0x082E2400
 
 @ Slingshot wedge lights
 
-gSapphireSlingshot_082E2AA0:: @ 0x082E2AA0
-    .incbin "baserom.gba", 0x2E2AA0, 0x60
+gSapphire_LSlingshot_Off_R0:: @ 0x082E2AA0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_off_row0.4bpp"
+	.space 0x40
 
-gSapphireSlingshot_082E2B00:: @ 0x082E2B00
-    .incbin "baserom.gba", 0x2E2B00, 0xA0
+gSapphire_LSlingshot_On_R0:: @ 0x082E2B00
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_on_row0.4bpp"
+	.space 0x80
 
-gSapphireSlingshot_082E2BA0:: @ 0x082E2BA0
-    .incbin "baserom.gba", 0x2E2BA0, 0x60
+gSapphire_RSlingshot_Off_R0:: @ 0x082E2BA0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_off_row0.4bpp"
+	.space 0x40
 
-gSapphireSlingshot_082E2C00:: @ 0x082E2C00
-    .incbin "baserom.gba", 0x2E2C00, 0x2A0
+gSapphire_RSlingshot_On_R0:: @ 0x082E2C00
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_on_row0.4bpp"
+	.space 0x280
 
-gSapphireSlingshot_082E2EA0:: @ 0x082E2EA0
-    .incbin "baserom.gba", 0x2E2EA0, 0x60
+gSapphire_LSlingshot_Off_R1:: @ 0x082E2EA0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_off_row1.4bpp"
+	.space 0x20
 
-gSapphireSlingshot_082E2F00:: @ 0x082E2F00
-    .incbin "baserom.gba", 0x2E2F00, 0x80
+gSapphire_LSlingshot_On_R1:: @ 0x082E2F00
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_on_row1.4bpp"
+	.space 0x40
 
-gSapphireSlingshot_082E2F80:: @ 0x082E2F80
-    .incbin "baserom.gba", 0x2E2F80, 0x60
+gSapphire_RSlingshot_Off_R1:: @ 0x082E2F80
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_off_row1.4bpp"
+	.space 0x20
 
-gSapphireSlingshot_082E2FE0:: @ 0x082E2FE0
-    .incbin "baserom.gba", 0x2E2FE0, 0x2C0
+gSapphire_RSlingshot_On_R1:: @ 0x082E2FE0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_on_row1.4bpp"
+	.space 0x280
 
-gSapphireSlingshot_082E32A0:: @ 0x082E32A0
-    .incbin "baserom.gba", 0x2E32A0, 0x60
+gSapphire_LSlingshot_Off_R2:: @ 0x082E32A0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_off_row2.4bpp"
 
-gSapphireSlingshot_082E3300:: @ 0x082E3300
-    .incbin "baserom.gba", 0x2E3300, 0x60
+gSapphire_LSlingshot_On_R2:: @ 0x082E3300
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_on_row2.4bpp"
 
-gSapphireSlingshot_082E3360:: @ 0x082E3360
-    .incbin "baserom.gba", 0x2E3360, 0x60
+gSapphire_RSlingshot_Off_R2:: @ 0x082E3360
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_off_row2.4bpp"
 
-gSapphireSlingshot_082E33C0:: @ 0x082E33C0
-    .incbin "baserom.gba", 0x2E33C0, 0x2E0
+gSapphire_RSlingshot_On_R2:: @ 0x082E33C0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_on_row2.4bpp"
+	.space 0x280
 
-gSapphireSlingshot_082E36A0:: @ 0x082E36A0
-    .incbin "baserom.gba", 0x2E36A0, 0x60
+gSapphire_LSlingshot_Off_R3:: @ 0x082E36A0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_off_row3.4bpp"
 
-gSapphireSlingshot_082E3700:: @ 0x082E3700
-    .incbin "baserom.gba", 0x2E3700, 0x60
+gSapphire_LSlingshot_On_R3:: @ 0x082E3700
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_on_row3.4bpp"
 
-gSapphireSlingshot_082E3760:: @ 0x082E3760
-    .incbin "baserom.gba", 0x2E3760, 0x60
+gSapphire_RSlingshot_Off_R3:: @ 0x082E3760
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_off_row3.4bpp"
 
-gSapphireSlingshot_082E37C0:: @ 0x082E37C0
-    .incbin "baserom.gba", 0x2E37C0, 0x300
+gSapphire_RSlingshot_On_R3:: @ 0x082E37C0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_on_row3.4bpp"
+	.space 0x2A0
 
-gSapphireSlingshot_082E3AC0:: @ 0x082E3AC0
-    .incbin "baserom.gba", 0x2E3AC0, 0x60
+gSapphire_LSlingshot_Off_R4:: @ 0x082E3AC0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_off_row4.4bpp"
+	.space 0x20
 
-gSapphireSlingshot_082E3B20:: @ 0x082E3B20
-    .incbin "baserom.gba", 0x2E3B20, 0x40
+gSapphire_LSlingshot_On_R4:: @ 0x082E3B20
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_left_on_row4.4bpp"
 
-gSapphireSlingshot_082E3B60:: @ 0x082E3B60
-    .incbin "baserom.gba", 0x2E3B60, 0x60
+gSapphire_RSlingshot_Off_R4:: @ 0x082E3B60
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_off_row4.4bpp"
+	.space 0x20
 
-gSapphireSlingshot_082E3BC0:: @ 0x082E3BC0
-    .incbin "baserom.gba", 0x2E3BC0, 0x300
+gSapphire_RSlingshot_On_R4:: @ 0x082E3BC0
+    .incbin "graphics/stage/sapphire/slingshot/slingshot_right_on_row4.4bpp"
+	.space 0x2C0
 
 
 gWailmerWater_082E3EC0:: @ 0x082E3EC0

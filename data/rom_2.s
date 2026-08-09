@@ -8662,12 +8662,12 @@ gHatchMachineDrawSegment:: @ 0x086B0F9C
 gSapphireSlingshotTilePtrs:: @ 0x086B108C
     @ 2 sets (sides) of 3 sets of 5
     @ third set has destination address
-    .4byte gSapphireSlingshot_082E2AA0, gSapphireSlingshot_082E2EA0, gSapphireSlingshot_082E32A0, gSapphireSlingshot_082E36A0, gSapphireSlingshot_082E3AC0
-    .4byte gSapphireSlingshot_082E2B00, gSapphireSlingshot_082E2F00, gSapphireSlingshot_082E3300, gSapphireSlingshot_082E3700, gSapphireSlingshot_082E3B20
+    .4byte gSapphire_LSlingshot_Off_R0, gSapphire_LSlingshot_Off_R1, gSapphire_LSlingshot_Off_R2, gSapphire_LSlingshot_Off_R3, gSapphire_LSlingshot_Off_R4
+    .4byte gSapphire_LSlingshot_On_R0, gSapphire_LSlingshot_On_R1, gSapphire_LSlingshot_On_R2, gSapphire_LSlingshot_On_R3, gSapphire_LSlingshot_On_R4
     .4byte 0x0600E100, 0x0600E120, 0x0600E160, 0x0600E1C0, 0x0600E220
 
-    .4byte gSapphireSlingshot_082E2BA0, gSapphireSlingshot_082E2F80, gSapphireSlingshot_082E3360, gSapphireSlingshot_082E3760, gSapphireSlingshot_082E3B60
-    .4byte gSapphireSlingshot_082E2C00, gSapphireSlingshot_082E2FE0, gSapphireSlingshot_082E33C0, gSapphireSlingshot_082E37C0, gSapphireSlingshot_082E3BC0
+    .4byte gSapphire_RSlingshot_Off_R0, gSapphire_RSlingshot_Off_R1, gSapphire_RSlingshot_Off_R2, gSapphire_RSlingshot_Off_R3, gSapphire_RSlingshot_Off_R4
+    .4byte gSapphire_RSlingshot_On_R0, gSapphire_RSlingshot_On_R1, gSapphire_RSlingshot_On_R2, gSapphire_RSlingshot_On_R3, gSapphire_RSlingshot_On_R4
     .4byte 0x0600E260, 0x0600E280, 0x0600E2C0, 0x0600E320, 0x0600E380
 
 gSapphireTrapIndicatorTilePtrs:: @ 0x086B1104
@@ -8708,8 +8708,8 @@ gSapphireCatchLightTilePtrs:: @ 0x086B1124
 gSapphireSaverDisplayTilePtrs:: @ 0x086B11CC
     @ 3 sets of 4
     @ third set has destination address
-    .4byte gSapphireSaver_082DF660, gSapphireSaver_082DFA60, gSapphireSaver_082DFE80, gSapphireSaver_082E02E0
-    .4byte gSapphireSaver_082DF760, gSapphireSaver_082DFB60, gSapphireSaver_082DFF80, gSapphireSaver_082E03E0
+    .4byte gSapphireSaverRow0Tile_Off, gSapphireSaverRow1Tile_Off, gSapphireSaverRow2Tile_Off, gSapphireSaverRow3Tile_Off
+    .4byte gSapphireSaverRow0Tile_On, gSapphireSaverRow1Tile_On, gSapphireSaverRow2Tile_On, gSapphireSaverRow3Tile_On
     .4byte 0x0600AD80, 0x0600B180, 0x0600B5A0, 0x0600BA00
 
 gSapphireHatchArrowTilePtrs:: @ 0x086B11FC
