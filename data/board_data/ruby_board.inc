@@ -642,65 +642,65 @@ gRubyBumperArrowRow3Tile_On:: @ 0x082625F0
 
 @ Sign for bonus multiplier left/right digits
 
-gRubyBonusMultDigit_08262790:: @ 0x08262790
-    .incbin "baserom.gba", 0x262790, 0x20
+gRubyProgressDigit0_Tens:: @ 0x08262790
+    .incbin "graphics/stage/ruby/progress_digits/digit0_tens.4bpp"
 
-gRubyBonusMultDigit_082627B0:: @ 0x082627B0
-    .incbin "baserom.gba", 0x2627B0, 0x20
+gRubyProgressDigit1_Tens:: @ 0x082627B0
+    .incbin "graphics/stage/ruby/progress_digits/digit1_tens.4bpp"
 
-gRubyBonusMultDigit_082627D0:: @ 0x082627D0
-    .incbin "baserom.gba", 0x2627D0, 0x20
+gRubyProgressDigit2_Tens:: @ 0x082627D0
+    .incbin "graphics/stage/ruby/progress_digits/digit2_tens.4bpp"
 
-gRubyBonusMultDigit_082627F0:: @ 0x082627F0
-    .incbin "baserom.gba", 0x2627F0, 0x20
+gRubyProgressDigit3_Tens:: @ 0x082627F0
+    .incbin "graphics/stage/ruby/progress_digits/digit3_tens.4bpp"
 
-gRubyBonusMultDigit_08262810:: @ 0x08262810
-    .incbin "baserom.gba", 0x262810, 0x20
+gRubyProgressDigit4_Tens:: @ 0x08262810
+    .incbin "graphics/stage/ruby/progress_digits/digit4_tens.4bpp"
 
-gRubyBonusMultDigit_08262830:: @ 0x08262830
-    .incbin "baserom.gba", 0x262830, 0x20
+gRubyProgressDigit5_Tens:: @ 0x08262830
+    .incbin "graphics/stage/ruby/progress_digits/digit5_tens.4bpp"
 
-gRubyBonusMultDigit_08262850:: @ 0x08262850
-    .incbin "baserom.gba", 0x262850, 0x20
+gRubyProgressDigit6_Tens:: @ 0x08262850
+    .incbin "graphics/stage/ruby/progress_digits/digit6_tens.4bpp"
 
-gRubyBonusMultDigit_08262870:: @ 0x08262870
-    .incbin "baserom.gba", 0x262870, 0x20
+gRubyProgressDigit7_Tens:: @ 0x08262870
+    .incbin "graphics/stage/ruby/progress_digits/digit7_tens.4bpp"
 
-gRubyBonusMultDigit_08262890:: @ 0x08262890
-    .incbin "baserom.gba", 0x262890, 0x20
+gRubyProgressDigit8_Tens:: @ 0x08262890
+    .incbin "graphics/stage/ruby/progress_digits/digit8_tens.4bpp"
 
-gRubyBonusMultDigit_082628B0:: @ 0x082628B0
-    .incbin "baserom.gba", 0x2628B0, 0x20
+gRubyProgressDigit9_Tens:: @ 0x082628B0
+    .incbin "graphics/stage/ruby/progress_digits/digit9_tens.4bpp"
 
-gRubyBonusMultDigit_082628D0:: @ 0x082628D0
-    .incbin "baserom.gba", 0x2628D0, 0x20
+gRubyProgressDigit0_Ones:: @ 0x082628D0
+    .incbin "graphics/stage/ruby/progress_digits/digit0_ones.4bpp"
 
-gRubyBonusMultDigit_082628F0:: @ 0x082628F0
-    .incbin "baserom.gba", 0x2628F0, 0x20
+gRubyProgressDigit1_Ones:: @ 0x082628F0
+    .incbin "graphics/stage/ruby/progress_digits/digit1_ones.4bpp"
 
-gRubyBonusMultDigit_08262910:: @ 0x08262910
-    .incbin "baserom.gba", 0x262910, 0x20
+gRubyProgressDigit2_Ones:: @ 0x08262910
+    .incbin "graphics/stage/ruby/progress_digits/digit2_ones.4bpp"
 
-gRubyBonusMultDigit_08262930:: @ 0x08262930
-    .incbin "baserom.gba", 0x262930, 0x20
+gRubyProgressDigit3_Ones:: @ 0x08262930
+    .incbin "graphics/stage/ruby/progress_digits/digit3_ones.4bpp"
 
-gRubyBonusMultDigit_08262950:: @ 0x08262950
-    .incbin "baserom.gba", 0x262950, 0x20
+gRubyProgressDigit4_Ones:: @ 0x08262950
+    .incbin "graphics/stage/ruby/progress_digits/digit4_ones.4bpp"
 
-gRubyBonusMultDigit_08262970:: @ 0x08262970
-    .incbin "baserom.gba", 0x262970, 0x20
+gRubyProgressDigit5_Ones:: @ 0x08262970
+    .incbin "graphics/stage/ruby/progress_digits/digit5_ones.4bpp"
 
-gRubyBonusMultDigit_08262990:: @ 0x08262990
-    .incbin "baserom.gba", 0x262990, 0x20
+gRubyProgressDigit6_Ones:: @ 0x08262990
+    .incbin "graphics/stage/ruby/progress_digits/digit6_ones.4bpp"
 
-gRubyBonusMultDigit_082629B0:: @ 0x082629B0
-    .incbin "baserom.gba", 0x2629B0, 0x20
+gRubyProgressDigit7_Ones:: @ 0x082629B0
+    .incbin "graphics/stage/ruby/progress_digits/digit7_ones.4bpp"
 
-gRubyBonusMultDigit_082629D0:: @ 0x082629D0
-    .incbin "baserom.gba", 0x2629D0, 0x20
+gRubyProgressDigit8_Ones:: @ 0x082629D0
+    .incbin "graphics/stage/ruby/progress_digits/digit8_ones.4bpp"
 
-gRubyBonusMultDigit_082629F0:: @ 0x082629F0
-    .incbin "baserom.gba", 0x2629F0, 0x20
+gRubyProgressDigit9_Ones:: @ 0x082629F0
+    .incbin "graphics/stage/ruby/progress_digits/digit9_ones.4bpp"
 
 .space 0x1A0
 

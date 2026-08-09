@@ -8407,16 +8407,16 @@ gShopItemTilePointers:: @ 0x086B094C
 gRubyProgressDigitTilePointers:: @ 0x086B0970
     @ 11 sets of 2.
     @ Eleventh has the destination address.
-    .4byte gRubyBonusMultDigit_08262790, gRubyBonusMultDigit_082628D0
-    .4byte gRubyBonusMultDigit_082627B0, gRubyBonusMultDigit_082628F0
-    .4byte gRubyBonusMultDigit_082627D0, gRubyBonusMultDigit_08262910
-    .4byte gRubyBonusMultDigit_082627F0, gRubyBonusMultDigit_08262930
-    .4byte gRubyBonusMultDigit_08262810, gRubyBonusMultDigit_08262950
-    .4byte gRubyBonusMultDigit_08262830, gRubyBonusMultDigit_08262970
-    .4byte gRubyBonusMultDigit_08262850, gRubyBonusMultDigit_08262990
-    .4byte gRubyBonusMultDigit_08262870, gRubyBonusMultDigit_082629B0
-    .4byte gRubyBonusMultDigit_08262890, gRubyBonusMultDigit_082629D0
-    .4byte gRubyBonusMultDigit_082628B0, gRubyBonusMultDigit_082629F0
+    .4byte gRubyProgressDigit0_Tens, gRubyProgressDigit0_Ones
+    .4byte gRubyProgressDigit1_Tens, gRubyProgressDigit1_Ones
+    .4byte gRubyProgressDigit2_Tens, gRubyProgressDigit2_Ones
+    .4byte gRubyProgressDigit3_Tens, gRubyProgressDigit3_Ones
+    .4byte gRubyProgressDigit4_Tens, gRubyProgressDigit4_Ones
+    .4byte gRubyProgressDigit5_Tens, gRubyProgressDigit5_Ones
+    .4byte gRubyProgressDigit6_Tens, gRubyProgressDigit6_Ones
+    .4byte gRubyProgressDigit7_Tens, gRubyProgressDigit7_Ones
+    .4byte gRubyProgressDigit8_Tens, gRubyProgressDigit8_Ones
+    .4byte gRubyProgressDigit9_Tens, gRubyProgressDigit9_Ones
     .4byte 0x0600D820, 0x0600D840
 
 gRubyTrapIndicatorTilePointers:: @ 0x086B09C8
@@ -8595,16 +8595,16 @@ gSapphirePSquareIndicator:: @ 0x086B0E6C
 gSapphireProgressDigitTilePtrs:: @ 0x086B0E9C
 	@ 11 sets of 4
     @ eleventh set has destination address
-    .4byte gSapphireBonusArrow_00_Top, gSapphireBonusArrow_00_Bot, gSapphireBonusArrow_0_Top, gSapphireBonusArrow_0_Bot
-    .4byte gSapphireBonusArrow_10_Top, gSapphireBonusArrow_10_Bot, gSapphireBonusArrow_1_Top, gSapphireBonusArrow_1_Bot
-    .4byte gSapphireBonusArrow_20_Top, gSapphireBonusArrow_20_Bot, gSapphireBonusArrow_2_Top, gSapphireBonusArrow_2_Bot
-    .4byte gSapphireBonusArrow_30_Top, gSapphireBonusArrow_30_Bot, gSapphireBonusArrow_3_Top, gSapphireBonusArrow_3_Bot
-    .4byte gSapphireBonusArrow_40_Top, gSapphireBonusArrow_40_Bot, gSapphireBonusArrow_4_Top, gSapphireBonusArrow_4_Bot
-    .4byte gSapphireBonusArrow_50_Top, gSapphireBonusArrow_50_Bot, gSapphireBonusArrow_5_Top, gSapphireBonusArrow_5_Bot
-    .4byte gSapphireBonusArrow_60_Top, gSapphireBonusArrow_60_Bot, gSapphireBonusArrow_6_Top, gSapphireBonusArrow_6_Bot
-    .4byte gSapphireBonusArrow_70_Top, gSapphireBonusArrow_70_Bot, gSapphireBonusArrow_7_Top, gSapphireBonusArrow_7_Bot
-    .4byte gSapphireBonusArrow_80_Top, gSapphireBonusArrow_80_Bot, gSapphireBonusArrow_8_Top, gSapphireBonusArrow_8_Bot
-    .4byte gSapphireBonusArrow_90_Top, gSapphireBonusArrow_90_Bot, gSapphireBonusArrow_9_Top, gSapphireBonusArrow_9_Bot
+    .4byte gSapphireProgressDigit0_TensTop, gSapphireProgressDigit0_TensBot, gSapphireProgressDigit0_OnesTop, gSapphireProgressDigit0_OnesBot
+    .4byte gSapphireProgressDigit1_TensTop, gSapphireProgressDigit1_TensBot, gSapphireProgressDigit1_OnesTop, gSapphireProgressDigit1_OnesBot
+    .4byte gSapphireProgressDigit2_TensTop, gSapphireProgressDigit2_TensBot, gSapphireProgressDigit2_OnesTop, gSapphireProgressDigit2_OnesBot
+    .4byte gSapphireProgressDigit3_TensTop, gSapphireProgressDigit3_TensBot, gSapphireProgressDigit3_OnesTop, gSapphireProgressDigit3_OnesBot
+    .4byte gSapphireProgressDigit4_TensTop, gSapphireProgressDigit4_TensBot, gSapphireProgressDigit4_OnesTop, gSapphireProgressDigit4_OnesBot
+    .4byte gSapphireProgressDigit5_TensTop, gSapphireProgressDigit5_TensBot, gSapphireProgressDigit5_OnesTop, gSapphireProgressDigit5_OnesBot
+    .4byte gSapphireProgressDigit6_TensTop, gSapphireProgressDigit6_TensBot, gSapphireProgressDigit6_OnesTop, gSapphireProgressDigit6_OnesBot
+    .4byte gSapphireProgressDigit7_TensTop, gSapphireProgressDigit7_TensBot, gSapphireProgressDigit7_OnesTop, gSapphireProgressDigit7_OnesBot
+    .4byte gSapphireProgressDigit8_TensTop, gSapphireProgressDigit8_TensBot, gSapphireProgressDigit8_OnesTop, gSapphireProgressDigit8_OnesBot
+    .4byte gSapphireProgressDigit9_TensTop, gSapphireProgressDigit9_TensBot, gSapphireProgressDigit9_OnesTop, gSapphireProgressDigit9_OnesBot
     .4byte 0x0600B220, 0x0600B620, 0x0600B240, 0x0600B640
 
 gRotatingBackgroundTilePtrs:: @ 0x086B0F4C

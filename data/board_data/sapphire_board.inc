@@ -369,126 +369,126 @@ gSapphireGetArrow_082DCD40:: @ 0x082DCD40
 
 @ Arrow for bonus multiplier left/right top/bottom digits
 
-gSapphireBonusArrow_00_Top:: @ 0x082DCE00
-    .incbin "baserom.gba", 0x2DCE00, 0x20
+gSapphireProgressDigit0_TensTop:: @ 0x082DCE00
+    .incbin "graphics/stage/sapphire/progress_digits/digit0_tens_top.4bpp"
 
-gSapphireBonusArrow_10_Top:: @ 0x082DCE20
-    .incbin "baserom.gba", 0x2DCE20, 0x20
+gSapphireProgressDigit1_TensTop:: @ 0x082DCE20
+    .incbin "graphics/stage/sapphire/progress_digits/digit1_tens_top.4bpp"
 
-gSapphireBonusArrow_20_Top:: @ 0x082DCE40
-    .incbin "baserom.gba", 0x2DCE40, 0x20
+gSapphireProgressDigit2_TensTop:: @ 0x082DCE40
+    .incbin "graphics/stage/sapphire/progress_digits/digit2_tens_top.4bpp"
 
-gSapphireBonusArrow_30_Top:: @ 0x082DCE60
-    .incbin "baserom.gba", 0x2DCE60, 0x20
+gSapphireProgressDigit3_TensTop:: @ 0x082DCE60
+    .incbin "graphics/stage/sapphire/progress_digits/digit3_tens_top.4bpp"
 
-gSapphireBonusArrow_40_Top:: @ 0x082DCE80
-    .incbin "baserom.gba", 0x2DCE80, 0x20
+gSapphireProgressDigit4_TensTop:: @ 0x082DCE80
+    .incbin "graphics/stage/sapphire/progress_digits/digit4_tens_top.4bpp"
 
-gSapphireBonusArrow_50_Top:: @ 0x082DCEA0
-    .incbin "baserom.gba", 0x2DCEA0, 0x20
+gSapphireProgressDigit5_TensTop:: @ 0x082DCEA0
+    .incbin "graphics/stage/sapphire/progress_digits/digit5_tens_top.4bpp"
 
-gSapphireBonusArrow_60_Top:: @ 0x082DCEC0
-    .incbin "baserom.gba", 0x2DCEC0, 0x20
+gSapphireProgressDigit6_TensTop:: @ 0x082DCEC0
+    .incbin "graphics/stage/sapphire/progress_digits/digit6_tens_top.4bpp"
 
-gSapphireBonusArrow_70_Top:: @ 0x082DCEE0
-    .incbin "baserom.gba", 0x2DCEE0, 0x20
+gSapphireProgressDigit7_TensTop:: @ 0x082DCEE0
+    .incbin "graphics/stage/sapphire/progress_digits/digit7_tens_top.4bpp"
 
-gSapphireBonusArrow_80_Top:: @ 0x082DCF00
-    .incbin "baserom.gba", 0x2DCF00, 0x20
+gSapphireProgressDigit8_TensTop:: @ 0x082DCF00
+    .incbin "graphics/stage/sapphire/progress_digits/digit8_tens_top.4bpp"
 
-gSapphireBonusArrow_90_Top:: @ 0x082DCF20
-    .incbin "baserom.gba", 0x2DCF20, 0x20
+gSapphireProgressDigit9_TensTop:: @ 0x082DCF20
+    .incbin "graphics/stage/sapphire/progress_digits/digit9_tens_top.4bpp"
 
-gSapphireBonusArrow_0_Top:: @ 0x082DCF40
-    .incbin "baserom.gba", 0x2DCF40, 0x20
+gSapphireProgressDigit0_OnesTop:: @ 0x082DCF40
+    .incbin "graphics/stage/sapphire/progress_digits/digit0_ones_top.4bpp"
 
-gSapphireBonusArrow_1_Top:: @ 0x082DCF60
-    .incbin "baserom.gba", 0x2DCF60, 0x20
+gSapphireProgressDigit1_OnesTop:: @ 0x082DCF60
+    .incbin "graphics/stage/sapphire/progress_digits/digit1_ones_top.4bpp"
 
-gSapphireBonusArrow_2_Top:: @ 0x082DCF80
-    .incbin "baserom.gba", 0x2DCF80, 0x20
+gSapphireProgressDigit2_OnesTop:: @ 0x082DCF80
+    .incbin "graphics/stage/sapphire/progress_digits/digit2_ones_top.4bpp"
 
-gSapphireBonusArrow_3_Top:: @ 0x082DCFA0
-    .incbin "baserom.gba", 0x2DCFA0, 0x20
+gSapphireProgressDigit3_OnesTop:: @ 0x082DCFA0
+    .incbin "graphics/stage/sapphire/progress_digits/digit3_ones_top.4bpp"
 
-gSapphireBonusArrow_4_Top:: @ 0x082DCFC0
-    .incbin "baserom.gba", 0x2DCFC0, 0x20
+gSapphireProgressDigit4_OnesTop:: @ 0x082DCFC0
+    .incbin "graphics/stage/sapphire/progress_digits/digit4_ones_top.4bpp"
 
-gSapphireBonusArrow_5_Top:: @ 0x082DCFE0
-    .incbin "baserom.gba", 0x2DCFE0, 0x20
+gSapphireProgressDigit5_OnesTop:: @ 0x082DCFE0
+    .incbin "graphics/stage/sapphire/progress_digits/digit5_ones_top.4bpp"
 
-gSapphireBonusArrow_6_Top:: @ 0x082DD000
-    .incbin "baserom.gba", 0x2DD000, 0x20
+gSapphireProgressDigit6_OnesTop:: @ 0x082DD000
+    .incbin "graphics/stage/sapphire/progress_digits/digit6_ones_top.4bpp"
 
-gSapphireBonusArrow_7_Top:: @ 0x082DD020
-    .incbin "baserom.gba", 0x2DD020, 0x20
+gSapphireProgressDigit7_OnesTop:: @ 0x082DD020
+    .incbin "graphics/stage/sapphire/progress_digits/digit7_ones_top.4bpp"
 
-gSapphireBonusArrow_8_Top:: @ 0x082DD040
-    .incbin "baserom.gba", 0x2DD040, 0x20
+gSapphireProgressDigit8_OnesTop:: @ 0x082DD040
+    .incbin "graphics/stage/sapphire/progress_digits/digit8_ones_top.4bpp"
 
-gSapphireBonusArrow_9_Top:: @ 0x082DD060
-    .incbin "baserom.gba", 0x2DD060, 0x20
+gSapphireProgressDigit9_OnesTop:: @ 0x082DD060
+    .incbin "graphics/stage/sapphire/progress_digits/digit9_ones_top.4bpp"
     .space 0x180
 
-gSapphireBonusArrow_00_Bot:: @ 0x082DD200
-    .incbin "baserom.gba", 0x2DD200, 0x20
+gSapphireProgressDigit0_TensBot:: @ 0x082DD200
+    .incbin "graphics/stage/sapphire/progress_digits/digit0_tens_bot.4bpp"
 
-gSapphireBonusArrow_10_Bot:: @ 0x082DD220
-    .incbin "baserom.gba", 0x2DD220, 0x20
+gSapphireProgressDigit1_TensBot:: @ 0x082DD220
+    .incbin "graphics/stage/sapphire/progress_digits/digit1_tens_bot.4bpp"
 
-gSapphireBonusArrow_20_Bot:: @ 0x082DD240
-    .incbin "baserom.gba", 0x2DD240, 0x20
+gSapphireProgressDigit2_TensBot:: @ 0x082DD240
+    .incbin "graphics/stage/sapphire/progress_digits/digit2_tens_bot.4bpp"
 
-gSapphireBonusArrow_30_Bot:: @ 0x082DD260
-    .incbin "baserom.gba", 0x2DD260, 0x20
+gSapphireProgressDigit3_TensBot:: @ 0x082DD260
+    .incbin "graphics/stage/sapphire/progress_digits/digit3_tens_bot.4bpp"
 
-gSapphireBonusArrow_40_Bot:: @ 0x082DD280
-    .incbin "baserom.gba", 0x2DD280, 0x20
+gSapphireProgressDigit4_TensBot:: @ 0x082DD280
+    .incbin "graphics/stage/sapphire/progress_digits/digit4_tens_bot.4bpp"
 
-gSapphireBonusArrow_50_Bot:: @ 0x082DD2A0
-    .incbin "baserom.gba", 0x2DD2A0, 0x20
+gSapphireProgressDigit5_TensBot:: @ 0x082DD2A0
+    .incbin "graphics/stage/sapphire/progress_digits/digit5_tens_bot.4bpp"
 
-gSapphireBonusArrow_60_Bot:: @ 0x082DD2C0
-    .incbin "baserom.gba", 0x2DD2C0, 0x20
+gSapphireProgressDigit6_TensBot:: @ 0x082DD2C0
+    .incbin "graphics/stage/sapphire/progress_digits/digit6_tens_bot.4bpp"
 
-gSapphireBonusArrow_70_Bot:: @ 0x082DD2E0
-    .incbin "baserom.gba", 0x2DD2E0, 0x20
+gSapphireProgressDigit7_TensBot:: @ 0x082DD2E0
+    .incbin "graphics/stage/sapphire/progress_digits/digit7_tens_bot.4bpp"
 
-gSapphireBonusArrow_80_Bot:: @ 0x082DD300
-    .incbin "baserom.gba", 0x2DD300, 0x20
+gSapphireProgressDigit8_TensBot:: @ 0x082DD300
+    .incbin "graphics/stage/sapphire/progress_digits/digit8_tens_bot.4bpp"
 
-gSapphireBonusArrow_90_Bot:: @ 0x082DD320
-    .incbin "baserom.gba", 0x2DD320, 0x20
+gSapphireProgressDigit9_TensBot:: @ 0x082DD320
+    .incbin "graphics/stage/sapphire/progress_digits/digit9_tens_bot.4bpp"
 
-gSapphireBonusArrow_0_Bot:: @ 0x082DD340
-    .incbin "baserom.gba", 0x2DD340, 0x20
+gSapphireProgressDigit0_OnesBot:: @ 0x082DD340
+    .incbin "graphics/stage/sapphire/progress_digits/digit0_ones_bot.4bpp"
 
-gSapphireBonusArrow_1_Bot:: @ 0x082DD360
-    .incbin "baserom.gba", 0x2DD360, 0x20
+gSapphireProgressDigit1_OnesBot:: @ 0x082DD360
+    .incbin "graphics/stage/sapphire/progress_digits/digit1_ones_bot.4bpp"
 
-gSapphireBonusArrow_2_Bot:: @ 0x082DD380
-    .incbin "baserom.gba", 0x2DD380, 0x20
+gSapphireProgressDigit2_OnesBot:: @ 0x082DD380
+    .incbin "graphics/stage/sapphire/progress_digits/digit2_ones_bot.4bpp"
 
-gSapphireBonusArrow_3_Bot:: @ 0x082DD3A0
-    .incbin "baserom.gba", 0x2DD3A0, 0x20
+gSapphireProgressDigit3_OnesBot:: @ 0x082DD3A0
+    .incbin "graphics/stage/sapphire/progress_digits/digit3_ones_bot.4bpp"
 
-gSapphireBonusArrow_4_Bot:: @ 0x082DD3C0
-    .incbin "baserom.gba", 0x2DD3C0, 0x20
+gSapphireProgressDigit4_OnesBot:: @ 0x082DD3C0
+    .incbin "graphics/stage/sapphire/progress_digits/digit4_ones_bot.4bpp"
 
-gSapphireBonusArrow_5_Bot:: @ 0x082DD3E0
-    .incbin "baserom.gba", 0x2DD3E0, 0x20
+gSapphireProgressDigit5_OnesBot:: @ 0x082DD3E0
+    .incbin "graphics/stage/sapphire/progress_digits/digit5_ones_bot.4bpp"
 
-gSapphireBonusArrow_6_Bot:: @ 0x082DD400
-    .incbin "baserom.gba", 0x2DD400, 0x20
+gSapphireProgressDigit6_OnesBot:: @ 0x082DD400
+    .incbin "graphics/stage/sapphire/progress_digits/digit6_ones_bot.4bpp"
 
-gSapphireBonusArrow_7_Bot:: @ 0x082DD420
-    .incbin "baserom.gba", 0x2DD420, 0x20
+gSapphireProgressDigit7_OnesBot:: @ 0x082DD420
+    .incbin "graphics/stage/sapphire/progress_digits/digit7_ones_bot.4bpp"
 
-gSapphireBonusArrow_8_Bot:: @ 0x082DD440
-    .incbin "baserom.gba", 0x2DD440, 0x20
+gSapphireProgressDigit8_OnesBot:: @ 0x082DD440
+    .incbin "graphics/stage/sapphire/progress_digits/digit8_ones_bot.4bpp"
 
-gSapphireBonusArrow_9_Bot:: @ 0x082DD460
-    .incbin "baserom.gba", 0x2DD460, 0x20
+gSapphireProgressDigit9_OnesBot:: @ 0x082DD460
+    .incbin "graphics/stage/sapphire/progress_digits/digit9_ones_bot.4bpp"
     .space 0x1A0
 
 
