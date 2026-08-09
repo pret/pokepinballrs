@@ -1,0 +1,25 @@
+{
+  "kind": "oam-shape",
+  "version": 1,
+  "pngsize": "3x4",
+  "pieces": [
+    {
+      "pos": "0,0",
+      "size": "2x4"
+    },
+    {
+      "pos": "2,1",
+      "size": "1x2"
+    },
+    {
+      "pos": "2,0",
+      "size": "1x1",
+      "spacer": true
+    },
+    {
+      "pos": "2,3",
+      "size": "1x1",
+      "spacer": true
+    }
+  ]
+}

@@ -14,7 +14,7 @@ extern const u8 gRubyStageGulpin_Gfx[][0x180];
 extern const s16 gChikoritaFlashFrameIndices[];
 extern const u8 gChikoritaExplosionTiles[][0x100];
 extern const u8 gChikoritaProjectileTiles[][0x80];
-extern const u8 gRubyFlashingDecorationTiles[][0x300];
+extern const u8 gRubyChikoritaEntity[][0x300];
 
 //ruby
 void UpdateChikoritaAttackAnimation(void)
@@ -167,14 +167,14 @@ void AnimateChikoritaSprite(void)
         else
             gCurrentPinballGame->chikoritaFlashActive = FALSE;
 
-        DmaCopy16(3, gRubyFlashingDecorationTiles[index], (void *)0x06012720, 0x300);
+        DmaCopy16(3, gRubyChikoritaEntity[index], (void *)0x06012720, 0x300);
     }
     else
     {
         index = (gMain.systemFrameCount % 50) / 25;
         if (gCurrentPinballGame->randomSpriteVariantSeed == 1)
         {
-            DmaCopy16(3, gRubyFlashingDecorationTiles[index], (void *)0x06012720, 0x300);
+            DmaCopy16(3, gRubyChikoritaEntity[index], (void *)0x06012720, 0x300);
         }
     }
 

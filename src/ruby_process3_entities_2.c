@@ -9,12 +9,12 @@ extern struct SongHeader se_whiscash_splashdown;
 extern const u8 gRubyBoardSharpedo_Gfx[][0x260];
 extern const s16 gSharpedoAnimFrameData[][2];
 extern const u16 gSharpedoSpritesheetOam[42][3][3];
-extern const u8 gRubyFlashingTiles_Secondary[][0x100];
+extern const u8 gChinchouBumper_Gfx[][0x100];
 extern const u8 gChinchouBumperPalettes[];
 extern const struct Vector16 gChinchouWaypointPositions[];
 
 extern const s16 gPondBumperTransitionFrames[];
-extern const u8 gLotadBumperTiles[][0x100];
+extern const u8 gLotadBumper_Gfx[][0x100];
 extern const u8 gLotadBumperPalettes[];
 extern const s16 gLotadBobOffsets[];
 extern const s16 gWhiscashFramesetData[][4];
@@ -820,7 +820,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
                 var0 = (gCurrentPinballGame->globalAnimFrameCounter % 50) / 25;
             }
 
-            DmaCopy16(3, gLotadBumperTiles[var0], (void *)0x06012E80 + i * 0x100, 0x100);
+            DmaCopy16(3, gLotadBumper_Gfx[var0], (void *)0x06012E80 + i * 0x100, 0x100);
         }
 
         DmaCopy16(3, gLotadBumperPalettes + gCurrentPinballGame->activePaletteIndex * 0x60, (void *)0x05000320, 0x20);
@@ -848,7 +848,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
                 var0 = (gCurrentPinballGame->globalAnimFrameCounter % 50) / 25;
             }
 
-            DmaCopy16(3, gRubyFlashingTiles_Secondary[var0], (void *)0x06012E80 + i * 0x100, 0x100);
+            DmaCopy16(3, gChinchouBumper_Gfx[var0], (void *)0x06012E80 + i * 0x100, 0x100);
         }
 
         DmaCopy16(3, gChinchouBumperPalettes + gCurrentPinballGame->activePaletteIndex * 0x60, (void *)0x05000320, 0x20);
