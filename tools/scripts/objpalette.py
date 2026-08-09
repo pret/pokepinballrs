@@ -397,8 +397,8 @@ OVERRIDES = {
 
     ('ruby', 'capture_screen', 'capture_screen_capture_ball_slot_0'):
         (1, 'gCaptureBallTilesGfx slot, drawn with gBallPalettes'),
-    ('ruby', 'capture_screen', 'capture_screen_unreferenced_gap'):
-        (1, 'unreferenced, sits between the two ball slots'),
+    ('ruby', 'capture_screen', 'capture_screen_absorb_fx_frame_0'):
+        (1, 'first absorb fx frame, pairs with ball slot 0'),
     ('ruby', 'capture_screen', 'capture_screen_absorb_fx'):
         (1, 'gMonCatchBallAbsorbPokemonFxSpriteSet; a banner sheet outvoted it'),
     ('ruby', 'capture_screen', 'capture_screen_unused_tail'):

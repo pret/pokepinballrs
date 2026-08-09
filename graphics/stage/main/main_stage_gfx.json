@@ -362,7 +362,7 @@
           "palbank": 1
         },
         {
-          "segfile": "capture_screen_unreferenced_gap",
+          "segfile": "capture_screen_absorb_fx_frame_0",
           "width": 17,
           "palette": "../ruby/ruby_board_palset_0.gbapal",
           "palbank": 1
