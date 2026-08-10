@@ -169,15 +169,15 @@ gSapphireCoinArrow_082DB640:: @ 0x082DB640
 
 gSapphireCoinArrow_082DB6A0:: @ 0x082DB6A0
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
-    .incbin "baserom.gba", 0x2db6e0, 0x40
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0_filler.4bpp"
 
 gSapphireCoinArrow_082DB720:: @ 0x082DB720
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
-    .incbin "baserom.gba", 0x2db760, 0x20
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0_filler.4bpp"
 
 gSapphireCoinArrow_082DB780:: @ 0x082DB780
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
-    .incbin "baserom.gba", 0x2db7c0, 0x20
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0_filler.4bpp"
 
 gSapphireCoinArrow_082DB7E0:: @ 0x082DB7E0
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
@@ -203,30 +203,30 @@ gSapphireCoinArrow_082DBA40:: @ 0x082DBA40
 
 gSapphireCoinArrow_082DBAA0:: @ 0x082DBAA0
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
-    .incbin "baserom.gba", 0x2dbb00, 0x20
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1_filler.4bpp"
 
 gSapphireCoinArrow_082DBB20:: @ 0x082DBB20
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
-    .incbin "baserom.gba", 0x2dbb60, 0x20
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1_filler.4bpp"
 
 gSapphireCoinArrow_082DBB80:: @ 0x082DBB80
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
-    .incbin "baserom.gba", 0x2dbbc0, 0x20
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1_filler.4bpp"
 
 gSapphireCoinArrow_082DBBE0:: @ 0x082DBBE0
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
 
 gSapphireCoinArrow_082DBC20:: @ 0x082DBC20
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
-    .incbin "baserom.gba", 0x2dbc60, 0x20
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1_filler.4bpp"
 
 gSapphireCoinArrow_082DBC80:: @ 0x082DBC80
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1.4bpp"
-    .incbin "baserom.gba", 0x2dbcc0, 0x20
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1_filler.4bpp"
 
 gSapphireCoinArrow_082DBCE0:: @ 0x082DBCE0
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
-    .incbin "baserom.gba", 0x2dbd20, 0xc0
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1_filler.4bpp"
 
 gSapphireCoinArrow_082DBDE0:: @ 0x082DBDE0
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
@@ -248,15 +248,15 @@ gSapphireCoinArrow_082DBFE0:: @ 0x082DBFE0
 
 gSapphireCoinArrow_082DC020:: @ 0x082DC020
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
-    .incbin "baserom.gba", 0x2dc060, 0x20
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2_filler.4bpp"
 
 gSapphireCoinArrow_082DC080:: @ 0x082DC080
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2.4bpp"
-    .incbin "baserom.gba", 0x2dc0c0, 0x20
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2_filler.4bpp"
 
 gSapphireCoinArrow_082DC0E0:: @ 0x082DC0E0
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
-    .incbin "baserom.gba", 0x2dc120, 0xc0
+    .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2_filler.4bpp"
 
 
 @ Get Arrows
@@ -307,19 +307,19 @@ gSapphireGetArrow_082DC640:: @ 0x082DC640
 
 gSapphireGetArrow_082DC6A0:: @ 0x082DC6A0
     .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_3_1.4bpp"
-    .incbin "baserom.gba", 0x2dc700, 0x20
+    .incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_3_1_filler.4bpp"
 
 gSapphireGetArrow_082DC720:: @ 0x082DC720
     .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_0_1.4bpp"
-    .incbin "baserom.gba", 0x2dc760, 0x20
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_0_1_filler.4bpp"
 
 gSapphireGetArrow_082DC780:: @ 0x082DC780
     .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_1_1.4bpp"
-    .incbin "baserom.gba", 0x2dc7c0, 0x20
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_1_1_filler.4bpp"
 
 gSapphireGetArrow_082DC7E0:: @ 0x082DC7E0
     .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_2_1.4bpp"
-    .incbin "baserom.gba", 0x2dc820, 0x20
+    .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_2_1_filler.4bpp"
 
 gSapphireGetArrow_082DC840:: @ 0x082DC840
     .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_3_1.4bpp"
@@ -811,26 +811,26 @@ gSapphirePSquareFrame4Bot:: @ 0x082DF3E0
 @ Data in memory has those as rectangles, and a different offset.
 @ Leaving as is, without carving out the 'space' and separate carved zones for the junk data.
 
-	.incbin "baserom.gba", 0x2DF640, 0x20
+    .incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_filler.4bpp"
 gSapphireSaverRow0Tile_Off:: @ 0x082DF660
     .incbin "graphics/stage/sapphire/saver/saver_off_row0.4bpp"
-    .incbin "baserom.gba", 0x2DF740, 0x20
+    .incbin "graphics/stage/sapphire/saver/saver_off_row0_filler.4bpp"
 
 gSapphireSaverRow0Tile_On:: @ 0x082DF760
     .incbin "graphics/stage/sapphire/saver/saver_on_row0.4bpp"
-    .incbin "baserom.gba", 0x2DF840, 0x220
+    .incbin "graphics/stage/sapphire/saver/saver_on_row0_filler.4bpp"
 
 gSapphireSaverRow1Tile_Off:: @ 0x082DFA60
     .incbin "graphics/stage/sapphire/saver/saver_off_row1.4bpp"
-    .incbin "baserom.gba", 0x2DFB40, 0x20
+    .incbin "graphics/stage/sapphire/saver/saver_off_row1_filler.4bpp"
 
 gSapphireSaverRow1Tile_On:: @ 0x082DFB60
     .incbin "graphics/stage/sapphire/saver/saver_on_row1.4bpp"
-    .incbin "baserom.gba", 0x2DFC40, 0x240
+    .incbin "graphics/stage/sapphire/saver/saver_on_row1_filler.4bpp"
 
 gSapphireSaverRow2Tile_Off:: @ 0x082DFE80
     .incbin "graphics/stage/sapphire/saver/saver_off_row2.4bpp"
-    .incbin "baserom.gba", 0x2DFF40, 0x40
+    .incbin "graphics/stage/sapphire/saver/saver_off_row2_filler.4bpp"
 
 gSapphireSaverRow2Tile_On:: @ 0x082DFF80
     .incbin "graphics/stage/sapphire/saver/saver_on_row2.4bpp"
@@ -977,19 +977,19 @@ gSapphireEvoArrow_082E2000:: @ 0x082E2000
 
 gSapphireMartArrow_082E2280:: @ 0x082E2280
     .incbin "graphics/stage/sapphire/mart_arrow/mart_arrow_mart_off_row3.4bpp"
-    .incbin "baserom.gba", 0x2e22e0, 0x20
+    .incbin "graphics/stage/sapphire/mart_arrow/mart_arrow_mart_off_row3_filler.4bpp"
 
 gSapphireMartArrow_082E2300:: @ 0x082E2300
     .incbin "graphics/stage/sapphire/mart_arrow/mart_arrow_mart_on_row3.4bpp"
-    .incbin "baserom.gba", 0x2e2360, 0x20
+    .incbin "graphics/stage/sapphire/mart_arrow/mart_arrow_mart_on_row3_filler.4bpp"
 
 gSapphireEvoArrow_082E2380:: @ 0x082E2380
     .incbin "graphics/stage/sapphire/mart_arrow/mart_arrow_evo_off_row3.4bpp"
-    .incbin "baserom.gba", 0x2e23e0, 0x20
+    .incbin "graphics/stage/sapphire/mart_arrow/mart_arrow_evo_off_row3_filler.4bpp"
 
 gSapphireEvoArrow_082E2400:: @ 0x082E2400
     .incbin "graphics/stage/sapphire/mart_arrow/mart_arrow_evo_on_row3.4bpp"
-    .incbin "baserom.gba", 0x2e2460, 0x20
+    .incbin "graphics/stage/sapphire/mart_arrow/mart_arrow_evo_on_row3_filler.4bpp"
 	.space 0x620
 
 

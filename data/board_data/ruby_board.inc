@@ -522,30 +522,30 @@ gRubyCatchLightSlot2State4Bot:: @ 0x08260670
 
 gRubyCatchLightSlot2State5Bot:: @ 0x082606B0
     .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot.4bpp"
-    .incbin "baserom.gba", 0x2606F0, 0x80
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler.4bpp"
 
 
 @ Ruby Saver indicator
 
 gRubySaverRow0Tile_Off:: @ 0x08260770
     .incbin "graphics/stage/ruby/saver/saver_off_row0.4bpp"
-    .incbin "baserom.gba", 0x260830, 0x40
+    .incbin "graphics/stage/ruby/saver/saver_off_row0_filler.4bpp"
 
 gRubySaverRow0Tile_On:: @ 0x08260870
     .incbin "graphics/stage/ruby/saver/saver_on_row0.4bpp"
-    .incbin "baserom.gba", 0x260930, 0x240
+    .incbin "graphics/stage/ruby/saver/saver_on_row0_filler.4bpp"
 
 gRubySaverRow1Tile_Off:: @ 0x08260B70
     .incbin "graphics/stage/ruby/saver/saver_off_row1.4bpp"
-    .incbin "baserom.gba", 0x260C30, 0x40
+    .incbin "graphics/stage/ruby/saver/saver_off_row1_filler.4bpp"
 
 gRubySaverRow1Tile_On:: @ 0x08260C70
     .incbin "graphics/stage/ruby/saver/saver_on_row1.4bpp"
-    .incbin "baserom.gba", 0x260D30, 0x260
+    .incbin "graphics/stage/ruby/saver/saver_on_row1_filler.4bpp"
 
 gRubySaverRow2Tile_Off:: @ 0x08260F90
     .incbin "graphics/stage/ruby/saver/saver_off_row2.4bpp"
-    .incbin "baserom.gba", 0x261030, 0x60
+    .incbin "graphics/stage/ruby/saver/saver_off_row2_filler.4bpp"
 
 gRubySaverRow2Tile_On:: @ 0x08261090
     .incbin "graphics/stage/ruby/saver/saver_on_row2.4bpp"
@@ -567,19 +567,19 @@ gRubyHatchArrowRow0Tile_Off:: @ 0x08261770
 
 gRubyHatchArrowRow0Tile_On:: @ 0x082617F0
     .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_on_row0.4bpp"
-    .incbin "baserom.gba", 0x261870, 0x40
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_on_row0_filler.4bpp"
 
 gRubyCatchArrowRow0Tile_Off:: @ 0x082618B0
     .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_off_row0.4bpp"
-    .incbin "baserom.gba", 0x2618f0, 0x40
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_off_row0_filler.4bpp"
 
 gRubyCatchArrowRow0Tile_On:: @ 0x08261930
     .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_on_row0.4bpp"
-    .incbin "baserom.gba", 0x261970, 0x40
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_on_row0_filler.4bpp"
 
 gRubyBumperArrowRow0Tile_Off:: @ 0x082619B0
     .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row0.4bpp"
-    .incbin "baserom.gba", 0x2619f0, 0x40
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row0_filler.4bpp"
 
 gRubyBumperArrowRow0Tile_On:: @ 0x08261A30
     .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row0.4bpp"
@@ -637,11 +637,11 @@ gRubyCatchArrowRow3Tile_On:: @ 0x082624F0
 
 gRubyBumperArrowRow3Tile_Off:: @ 0x08262570
     .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row3.4bpp"
-    .incbin "baserom.gba", 0x2625d0, 0x20
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row3_filler.4bpp"
 
 gRubyBumperArrowRow3Tile_On:: @ 0x082625F0
     .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row3.4bpp"
-    .incbin "baserom.gba", 0x262650, 0x140
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row3_filler.4bpp"
 
 
 @ Sign for bonus multiplier left/right digits
@@ -778,19 +778,19 @@ gRubyMartArrow_R2_On:: @ 0x082641B0
 
 gRubyEvoArrow_R3_Off:: @ 0x082643D0
     .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_off_row3.4bpp"
-    .incbin "baserom.gba", 0x264430, 0x40
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_off_row3_filler.4bpp"
 
 gRubyEvoArrow_R3_On:: @ 0x08264470
     .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_on_row3.4bpp"
-    .incbin "baserom.gba", 0x2644d0, 0x40
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_on_row3_filler.4bpp"
 
 gRubyMartArrow_R3_Off:: @ 0x08264510
     .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_off_row3.4bpp"
-    .incbin "baserom.gba", 0x264570, 0x40
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_off_row3_filler.4bpp"
 
 gRubyMartArrow_R3_On:: @ 0x082645B0
     .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_on_row3.4bpp"
-    .incbin "baserom.gba", 0x264610, 0x40
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_on_row3_filler.4bpp"
 	.space 0x1A0
 
 
