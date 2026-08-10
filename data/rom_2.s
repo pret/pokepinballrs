@@ -4370,7 +4370,7 @@ gUnknown_086AACDE:: @ 0x086AACDE
 .2byte 1
     packed_sprite_oam x=-0x10, y=0xf0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x18, paletteNum=0x1
 
-gUnknown_086AACE6:: @ 0x086AACEC
+gUnknown_086AACE6:: @ 0x086AACE6
 .2byte 1
     packed_sprite_oam x=-0x10, y=0xf0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x9c, paletteNum=0x1
 
@@ -8496,8 +8496,11 @@ gFieldInitFuncs:: @ 0x086B085C
 	.4byte MainGameFrameUpdate
 	.4byte BonusFieldFrameUpdate
 
-gUnknown_086B0864:: @ 0x086B0864
-    .incbin "graphics/stage/main/timer_warning_0.gbapal.bin"
+@ The white member of the timer warning set: identical to _Fast and _Slow except for
+@ colour 3, which is white where they are red and yellow. Nothing in the ROM points at
+@ it - the code alternates _Fast and _Slow against gDefaultTimerPalette instead.
+gTimerWarningPalette_White:: @ 0x086B0864
+    .incbin "graphics/stage/main/timer_warning_white.gbapal.bin"
 
 gTimerWarningPalette_Fast:: @ 0x086B0884
 	.incbin "graphics/stage/main/timer_warning_fast.gbapal"
