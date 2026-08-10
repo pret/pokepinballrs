@@ -364,7 +364,8 @@ gRubyGetArrow_0825F610:: @ 0x0825F610
 
 gRubyGetArrow_0825F670:: @ 0x0825F670
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_2.4bpp"
-    .incbin "baserom.gba", 0x25f6d0, 0x60
+	.space 0x40
+	.fill 0x20, 1, 0x22
 
 
 @ Ball power up lights
@@ -548,15 +549,18 @@ gRubySaverRow2Tile_Off:: @ 0x08260F90
 
 gRubySaverRow2Tile_On:: @ 0x08261090
     .incbin "graphics/stage/ruby/saver/saver_on_row2.4bpp"
-    .incbin "baserom.gba", 0x261130, 0x2C0
+	.fill 0x20, 1, 0x11
+	.space 0x200
+	.fill 0xA0, 1, 0x11
 
 gRubySaverRow3Tile_Off:: @ 0x082613F0
     .incbin "graphics/stage/ruby/saver/saver_off_row3.4bpp"
-    .incbin "baserom.gba", 0x261430, 0xC0
+	.fill 0xC0, 1, 0x11
 
 gRubySaverRow3Tile_On:: @ 0x082614F0
     .incbin "graphics/stage/ruby/saver/saver_on_row3.4bpp"
-    .incbin "baserom.gba", 0x261530, 0x240
+	.fill 0x20, 1, 0x11
+	.space 0x220
 
 gRubyHatchArrowRow0Tile_Off:: @ 0x08261770
     .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_off_row0.4bpp"
@@ -707,26 +711,26 @@ gRubyProgressDigit9_Ones:: @ 0x082629F0
 
 @ Text for sign over Ruby shop entrance
 
-gStoreSignText_08262BB0:: @ 0x08262BB0
-    .incbin "baserom.gba", 0x262BB0, 0xC0
+gRubyShopSignMartPiece0:: @ 0x08262BB0
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0.4bpp"
 
-gStoreSignText_08262C70:: @ 0x08262C70
-    .incbin "baserom.gba", 0x262C70, 0xC0
+gRubyShopSignCenterPiece0:: @ 0x08262C70
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece0.4bpp"
 	.space 0x280
 
-gStoreSignText_08262FB0:: @ 0x08262FB0
-    .incbin "baserom.gba", 0x262FB0, 0xC0
+gRubyShopSignMartPiece1:: @ 0x08262FB0
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1.4bpp"
 
-gStoreSignText_08263070:: @ 0x08263070
-    .incbin "baserom.gba", 0x263070, 0xC0
+gRubyShopSignCenterPiece1:: @ 0x08263070
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece1.4bpp"
 	.space 0x300
 
-gStoreSignText_08263430:: @ 0x08263430
-    .incbin "baserom.gba", 0x263430, 0x20
+gRubyShopSignMartPiece2:: @ 0x08263430
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece2.4bpp"
 	.space 0xA0
 
-gStoreSignText_082634F0:: @ 0x082634F0
-    .incbin "baserom.gba", 0x2634F0, 0x20
+gRubyShopSignCenterPiece2:: @ 0x082634F0
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece2.4bpp"
 	.space 0x2C0
 
 

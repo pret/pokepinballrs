@@ -8400,8 +8400,8 @@ gRubySlingshotTilePointers:: @ 0x086B08D4
 gShopItemTilePointers:: @ 0x086B094C
     @ Arranged into 3 sets of 3.
     @ Third set is the destination address.
-	.4byte gStoreSignText_08262BB0, gStoreSignText_08262FB0, gStoreSignText_08263430
-    .4byte gStoreSignText_08262C70, gStoreSignText_08263070, gStoreSignText_082634F0
+	.4byte gRubyShopSignMartPiece0, gRubyShopSignMartPiece1, gRubyShopSignMartPiece2
+    .4byte gRubyShopSignCenterPiece0, gRubyShopSignCenterPiece1, gRubyShopSignCenterPiece2
     .4byte 0x0600D860, 0x0600D920, 0x0600D9E0
 
 gRubyProgressDigitTilePointers:: @ 0x086B0970

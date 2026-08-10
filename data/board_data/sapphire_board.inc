@@ -184,15 +184,16 @@ gSapphireCoinArrow_082DB7E0:: @ 0x082DB7E0
 
 gSapphireCoinArrow_082DB820:: @ 0x082DB820
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
-    .incbin "baserom.gba", 0x2db860, 0x20
+	.fill 0x20, 1, 0xDD
 
 gSapphireCoinArrow_082DB880:: @ 0x082DB880
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p0.4bpp"
-    .incbin "baserom.gba", 0x2db8c0, 0x20
+	.fill 0x20, 1, 0xDD
 
 gSapphireCoinArrow_082DB8E0:: @ 0x082DB8E0
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
-    .incbin "baserom.gba", 0x2db920, 0xc0
+	.fill 0x20, 1, 0xDD
+	.space 0xA0
 
 gSapphireCoinArrow_082DB9E0:: @ 0x082DB9E0
     .incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
@@ -284,15 +285,15 @@ gSapphireGetArrow_082DC3E0:: @ 0x082DC3E0
 
 gSapphireGetArrow_082DC440:: @ 0x082DC440
     .incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_3_0.4bpp"
-    .incbin "baserom.gba", 0x2dc480, 0x20
+	.fill 0x20, 1, 0xDD
 
 gSapphireGetArrow_082DC4A0:: @ 0x082DC4A0
     .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_0_0.4bpp"
-    .incbin "baserom.gba", 0x2dc4e0, 0x20
+	.fill 0x20, 1, 0xDD
 
 gSapphireGetArrow_082DC500:: @ 0x082DC500
     .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_0.4bpp"
-    .incbin "baserom.gba", 0x2dc540, 0x20
+	.fill 0x20, 1, 0xDD
 
 gSapphireGetArrow_082DC560:: @ 0x082DC560
     .incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_0.4bpp"
@@ -833,15 +834,17 @@ gSapphireSaverRow2Tile_Off:: @ 0x082DFE80
 
 gSapphireSaverRow2Tile_On:: @ 0x082DFF80
     .incbin "graphics/stage/sapphire/saver/saver_on_row2.4bpp"
-    .incbin "baserom.gba", 0x2E0040, 0x2A0
+	.space 0x200
+	.fill 0xA0, 1, 0xCC
 
 gSapphireSaverRow3Tile_Off:: @ 0x082E02E0
     .incbin "graphics/stage/sapphire/saver/saver_off_row3.4bpp"
-    .incbin "baserom.gba", 0x2E0320, 0xC0
+	.fill 0xC0, 1, 0xCC
 
 gSapphireSaverRow3Tile_On:: @ 0x082E03E0
     .incbin "graphics/stage/sapphire/saver/saver_on_row3.4bpp"
-    .incbin "baserom.gba", 0x2E0420, 0x280
+	.fill 0x20, 1, 0xCC
+	.space 0x260
 
 
 @ Hatch arrow, Catch arrow, Bumper arrow
@@ -853,11 +856,11 @@ gSapphireHatchArrow_082E06A0:: @ 0x082E06A0
 
 gSapphireHatchArrow_082E0720:: @ 0x082E0720
     .incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0.4bpp"
-    .incbin "baserom.gba", 0x2e0760, 0x20
+	.fill 0x20, 1, 0xDD
 
 gSapphireCatchArrow_082E0780:: @ 0x082E0780
     .incbin "graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0.4bpp"
-    .incbin "baserom.gba", 0x2e07e0, 0x20
+	.fill 0x20, 1, 0xDD
 
 gSapphireCatchArrow_082E0800:: @ 0x082E0800
     .incbin "graphics/stage/sapphire/catch_arrow/catch_arrow_on_row0.4bpp"
