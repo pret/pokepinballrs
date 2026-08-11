@@ -352,8 +352,16 @@ gPokedexBgText_Gfx:: @ 0x08082720
 	.incbin "graphics/pokedex/bg_text.4bpp"
 	.space 0x20
 
+@ 32x32 u16 tilemap (0x800 bytes) for the pokedex info window that slides
+@ in over the dex entry view. Copied to BG1's screenblock 0 tilemap at
+@ row 10 (VRAM 0x6000280) by Pokedex_InfoWindowSlideIn (src/pokedex.c).
+@ Only the first 7 rows (2*0xE0 bytes) are DMA'd; rows 0-5 hold the
+@ window content and the rest is 0x001F filler (tile 31, blank).
+@ The window is a 26x6 chunk of tile indices 224..409, i.e. sheet rows
+@ 7..12, cols 0..25 of the 32 wide gPokedexBgText_Gfx tileset
+@ (graphics/pokedex/bg_text.png), with palette bank 1 (0x1000 attr bit).
 gPokedexInfoWindowTiles:: @ 0x08086B40
-	.incbin "baserom.gba", 0x86B40, 0x800
+	.incbin "graphics/pokedex/info_window_tilemap.bin"
 
 gPokedexBg2_Tilemap:: @ 0x08087340
 	.incbin "graphics/pokedex/bg2_tilemap.bin"
@@ -1198,8 +1206,14 @@ gEggModePalette:: @ 0x083A806C
 gCaptureModePalette:: @ 0x083A808C
 	.incbin "graphics/stage/main/capture_mode.gbapal"
 
+@ Despite the _Tilemap name these are NOT tilemaps: they are 4bpp tile
+@ GRAPHICS for the board HUD (score frame etc.), 64 tiles here (0x800
+@ bytes). loadFieldBoardGraphics (src/all_board_setup.c) DMA's them to
+@ charblock 1 tile 352..415 (VRAM 0x06006C00) on every board transition,
+@ and they are referenced from the BG0 tilemap buffer with palette bank
+@ 12 (e.g. 0xC17E = tile 382 in all_board_process8.c).
 gBoardHudTilemapB:: @ 0x083A826C
-	.incbin "baserom.gba", 0x3A826C, 0x800
+	.incbin "graphics/stage/main/board_hud_tiles_b.4bpp"
 	.space 0x20
 
 gShopPalette:: @ 0x083A8A8C
@@ -1208,8 +1222,13 @@ gShopPalette:: @ 0x083A8A8C
 gTravelPortraitPalette:: @ 0x083A8AAC
 	.incbin "graphics/stage/main/travel_portrait.gbapal"
 
+@ Same as gBoardHudTilemapB: 4bpp tile GRAPHICS (not a tilemap), 32 tiles
+@ here (0x400 bytes). DMA'd to charblock 1 tile 320..351 (VRAM
+@ 0x06006800) by loadFieldBoardGraphics; referenced from the BG0 tilemap
+@ buffer with palette bank 12 (e.g. 0xC156 = tile 342 in
+@ all_board_pinball_game_main.c).
 gBoardHudTilemapA:: @ 0x083A8ACC
-	.incbin "baserom.gba", 0x3A8ACC, 0x400
+	.incbin "graphics/stage/main/board_hud_tiles_a.4bpp"
 	.space 0x20
 
 gPortraitAnimFrameGraphics:: @ 0x083A8EEC
