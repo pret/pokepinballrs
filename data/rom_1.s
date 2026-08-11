@@ -911,7 +911,6 @@ gDebugAsciiFont:: @ 0x081A6BE4
 
 	.include "data/graphics/mon_catch_sprites_pals.inc"
 @	.incbin "baserom.gba", 0x1AEBE4, 0xA80
-	.incbin "graphics/debug_ascii_font_extra.4bpp"
 
 gKyogreWaterAnimPaletteFrames:: @ 0x081B0DE4
 	.incbin "graphics/stage/kyogre/water_anim_frames.gbapal"
