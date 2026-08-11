@@ -76,7 +76,7 @@ void DuskullBonus_Setup(void)
 
     m4aSongNumStart(MUS_BONUS_FIELD_DUSKULL);
 
-    DmaCopy16(3, (void *)gBonusStageObjPal, (void *)0x05000320, 32);
+    DmaCopy16(3, (void *)gBonusStageObjPal, OBJ_PLTT_SLOT(9), PLTT_SLOT_SIZE);
 }
 
 void DusclopsBoardProcess_3B_33130(void)

@@ -111,9 +111,9 @@ void KyogreBoardProcess_3A_383E4(void)
     UpdateKyogreFieldEntities();
     AnimateKyogreBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_KYOGRE);
-    DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
+    DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), 0x20);
     DmaCopy16(3, &gKyogreFadeInPaletteProgression[0][0], (void *)0x05000000, 0x100);
-    DmaCopy16(3, gBonusStageObjPal, (void *)0x05000320, 0x20);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), 0x20);
 }
 
 void KyogreBoardProcess_3B_3869C(void)
@@ -885,7 +885,7 @@ void UpdateKyogreFieldEntities(void)
             if (gCurrentPinballGame->freezeTrapAnimFrame == 2)
             {
                 int a; // force addition of 8 instead of offsetting the global constant
-                DmaCopy16(3, &gBallPalettes[a = gCurrentPinballGame->ballUpgradeType + 8], (void *)0x05000220, 0x20);
+                DmaCopy16(3, &gBallPalettes[a = gCurrentPinballGame->ballUpgradeType + 8], OBJ_PLTT_SLOT(1), 0x20);
             }
             break;
         case KYOGRE_FREEZE_PHASE_CRACKING_HIT_SETUP:
@@ -990,7 +990,7 @@ void UpdateKyogreFieldEntities(void)
 
                 if (gCurrentPinballGame->freezeTrapAnimFrame == 15)
                 {
-                    DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
+                    DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), 0x20);
                     m4aSongNumStart(SE_KYOGRE_FREEZE_ESCAPED);
                 }
             }
@@ -1342,8 +1342,8 @@ void AnimateKyogreBackground(void)
         && gCurrentPinballGame->stageTimer < 600)
     {
         index = gKyogreIntroPaletteCycleIndices[(gCurrentPinballGame->stageTimer % 240) / 24];
-        DmaCopy16(3, gKyogreIntroIcePalette[index], (void *)0x05000340, 0x20);
-        DmaCopy16(3, gKyogreIntroShorePalette[index], (void *)0x050002A0, 0x20);
+        DmaCopy16(3, gKyogreIntroIcePalette[index], OBJ_PLTT_SLOT(10), 0x20);
+        DmaCopy16(3, gKyogreIntroShorePalette[index], OBJ_PLTT_SLOT(5), 0x20);
         var0 = 2;
         index = 0;
         gCurrentPinballGame->kyogreBgAnimTimer = index;

@@ -377,7 +377,7 @@ void AnimateRubyBallPowerUpSequence(void)
                 gCurrentPinballGame->ballUpgradeType++;
 
             gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
-            DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
+            DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), 0x20);
         }
 
         if (gCurrentPinballGame->gBallUpgradeFxTimer == 40)

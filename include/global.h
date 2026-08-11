@@ -935,7 +935,7 @@ struct FieldBoardLayout
     /*0x26*/ s16 ballSpawnX;
     /*0x28*/ s16 ballSpawnY;
     /*0x2A*/ s16 ballDrainY;
-    /*0x2C*/ u8 *objPaletteSets[3];
+    /*0x2C*/ Palette *objPaletteSets[3];
     /*0x38*/ struct BoardCollisionDataSet collision;
 };
 
@@ -967,7 +967,7 @@ extern struct BoardConfig gBoardConfig;
 extern u8 gKecleonSpriteGroupOrderMap[];
 extern u16 gFieldPaletteVariants[][6][16];
 extern u16 gDusclopsBossGuardReadyTileOffsets[]; 
-extern const u8 gBallPalettes[][0x20];
+extern const Palette gBallPalettes[];
 extern const u8 gDusclopsBonusClear_Gfx[];
 extern struct ReplayInputFrame gIdleBoardConfig0;
 extern struct ReplayInputFrame gIdleBoardConfig2;

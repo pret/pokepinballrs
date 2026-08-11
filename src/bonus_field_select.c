@@ -42,7 +42,7 @@ extern const u8 gBonusFieldMenuSelectionToField[];
 extern const u8 gBonusFieldSelectBg0_Tilemap[];
 extern const u8 gBonusFieldSelectBg1_Tilemap[];
 extern const u8 gBonusFieldSelectBg2_Tilemap[];
-extern const u16 gBonusFieldSelectStages_Pals[];
+extern const Palette gBonusFieldSelectStages_Pals[];
 extern const u8 gBonusFieldSelectStages_Gfx[];
 
 void InitBonusFieldSelectState(void);
@@ -67,13 +67,13 @@ void LoadBonusFieldSelectGraphics(void)
 
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gBonusFieldSelectStages_Pals, (void *)PLTT, 0x200);
+    DmaCopy16(3, gBonusFieldSelectStages_Pals, BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gFieldSelectWindow_Gfx, (void *)(VRAM + 0x4000), 0x4000);
     DmaCopy16(3, gBonusFieldSelectStages_Gfx, (void *)(VRAM + 0x8000), 0x1800);
     DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, (void *)VRAM, 0x800);
     DmaCopy16(3, gBonusFieldSelectBg1_Tilemap, (void *)(VRAM + 0x800), 0x800);
     DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, (void *)(VRAM + 0x1000), 0x800);
-    DmaCopy16(3, gFieldSelectSpritePals, (void *)(PLTT + 0x200), 0x60);
+    DmaCopy16(3, gFieldSelectSpritePals, OBJ_PLTT_SLOT(0), 3*PLTT_SLOT_SIZE);
     DmaCopy16(3, gFieldSelectSpriteGfx, (void *)(VRAM + 0x10000), 0x4020);
 
     EnableVBlankInterrupts();

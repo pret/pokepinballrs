@@ -186,11 +186,11 @@ void UpdateSpoinkAnimation(void)
 {
     if (gCurrentPinballGame->cameraYViewport < 170)
     {
-        DmaCopy16(3, gFieldPaletteVariants[gMain.selectedField][gCurrentPinballGame->activePaletteIndex * 2], (void *)OBJ_PLTT + 0x160, 0x20);
+        DmaCopy16(3, gFieldPaletteVariants[gMain.selectedField][gCurrentPinballGame->activePaletteIndex * 2], (void *)OBJ_PLTT_SLOT(11), 0x20);
     }
     else
     {
-        DmaCopy16(3, gFieldPaletteVariants[gMain.selectedField][gCurrentPinballGame->activePaletteIndex * 2 + 1], (void *)OBJ_PLTT + 0x160, 0x20);
+        DmaCopy16(3, gFieldPaletteVariants[gMain.selectedField][gCurrentPinballGame->activePaletteIndex * 2 + 1], (void *)OBJ_PLTT_SLOT(11), 0x20);
     }
 
     switch (gCurrentPinballGame->spoinkEntityState)

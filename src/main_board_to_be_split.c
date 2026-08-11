@@ -528,7 +528,7 @@ void UpdateRubyEvolutionShopSprite(void)
         if (gCurrentPinballGame->shopAnimTimer == 0)
         {
             group->active = TRUE;
-            DmaCopy16(3, gShopPalette, (void *)0x05000240, 0x20);
+            DmaCopy16(3, gShopPalette, OBJ_PLTT_SLOT(2), 0x20);
         }
         else if (gCurrentPinballGame->shopAnimTimer == 37)
         {

@@ -37,7 +37,7 @@ void MainBoardProcess_7B_12524(void)
                     gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             }
 
-            DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
         }
     }
 

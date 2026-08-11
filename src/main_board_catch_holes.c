@@ -44,12 +44,12 @@ void UpdateShopEntryAnimation(s16 arg0)
                 {
                     if (gMain.selectedField == FIELD_SAPPHIRE)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, OBJ_PLTT + 0x40, 0xC0);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                     }
                     else
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
 
-                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
 
                     gCurrentPinballGame->activePaletteIndex = 1;
                     gCurrentPinballGame->paletteSwapActive = FALSE;
@@ -63,12 +63,12 @@ void UpdateShopEntryAnimation(s16 arg0)
                 {
                     if (gMain.selectedField == FIELD_SAPPHIRE)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2] + 0x40, OBJ_PLTT + 0x40, 0xC0);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                     }
                     else
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
 
-                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
 
                     gCurrentPinballGame->activePaletteIndex = 2;
                     gCurrentPinballGame->paletteSwapActive = FALSE;
@@ -276,16 +276,16 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                     if (gCurrentPinballGame->catchModeEventTimer <= 3)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1], OBJ_PLTT, 0x20);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
 
                         if (gMain.selectedField == FIELD_SAPPHIRE)
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, OBJ_PLTT + 0x40, 0xC0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                         }
                         else
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
 
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
 
                         gCurrentPinballGame->activePaletteIndex = 1;
                         gCurrentPinballGame->paletteSwapActive = TRUE;
@@ -297,16 +297,16 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                     if (gCurrentPinballGame->catchModeEventTimer == 0)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0], OBJ_PLTT, 0x20);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
 
                         if (gMain.selectedField == FIELD_SAPPHIRE)
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x40, OBJ_PLTT + 0x40, 0xC0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                         }
                         else
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
 
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
 
                         gCurrentPinballGame->activePaletteIndex = 0;
                         gCurrentPinballGame->paletteSwapActive = TRUE;
@@ -710,16 +710,16 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                     if (gCurrentPinballGame->catchModeEventTimer <= 3)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1], OBJ_PLTT, 0x20);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
 
                         if (gMain.selectedField == FIELD_SAPPHIRE)
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, OBJ_PLTT + 0x40, 0xC0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                         }
                         else
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
 
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
                         gCurrentPinballGame->activePaletteIndex = 1;
                         gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
@@ -731,16 +731,16 @@ void UpdateShopEntryAnimation(s16 arg0)
                     if (gCurrentPinballGame->catchModeEventTimer != 0)
                         return;
 
-                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0], OBJ_PLTT, 0x20);
+                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
 
                     if (gMain.selectedField == FIELD_SAPPHIRE)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x40, OBJ_PLTT + 0x40, 0xC0);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                     }
                     else
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
 
-                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
 
                     gCurrentPinballGame->activePaletteIndex = 0;
                     gCurrentPinballGame->paletteSwapActive = TRUE;

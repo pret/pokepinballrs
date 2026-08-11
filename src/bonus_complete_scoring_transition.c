@@ -109,7 +109,7 @@ void ProcessBonusBannerAndScoring(void)
         break;
     }
 
-    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + var0 * 0x20, (void *)0x05000300, 0x20);
+    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][var0], OBJ_PLTT_SLOT(8), PLTT_SLOT_SIZE);
 
     if (group->active)
     {

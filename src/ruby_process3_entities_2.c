@@ -252,7 +252,7 @@ void DrawWhiscash(void)
     if (group->active)
     {
         frameIx = frameData[0];
-        DmaCopy16(3, gWhiscashPalettes + gCurrentPinballGame->activePaletteIndex * 0x60, (void *)0x05000320, 0x20);
+        DmaCopy16(3, gWhiscashPalettes + gCurrentPinballGame->activePaletteIndex * 0x60, OBJ_PLTT_SLOT(9), 0x20);
         DmaCopy16(3, gWhiscash_Gfx[frameIx], (void *)0x06014680, 0x460);
         gCurrentPinballGame->rubyBumperCollisionPosition[0].x = -248;
         gCurrentPinballGame->rubyBumperCollisionPosition[0].y = -316;
@@ -823,7 +823,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
             DmaCopy16(3, gLotadBumper_Gfx[var0], (void *)0x06012E80 + i * 0x100, 0x100);
         }
 
-        DmaCopy16(3, gLotadBumperPalettes + gCurrentPinballGame->activePaletteIndex * 0x60, (void *)0x05000320, 0x20);
+        DmaCopy16(3, gLotadBumperPalettes + gCurrentPinballGame->activePaletteIndex * 0x60, OBJ_PLTT_SLOT(9), 0x20);
     }
     else // chinchou
     {
@@ -851,7 +851,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
             DmaCopy16(3, gChinchouBumper_Gfx[var0], (void *)0x06012E80 + i * 0x100, 0x100);
         }
 
-        DmaCopy16(3, gChinchouBumperPalettes + gCurrentPinballGame->activePaletteIndex * 0x60, (void *)0x05000320, 0x20);
+        DmaCopy16(3, gChinchouBumperPalettes + gCurrentPinballGame->activePaletteIndex * 0x60, OBJ_PLTT_SLOT(9), 0x20);
     }
 
     // Draw Bumpers: Lotad/chinchou

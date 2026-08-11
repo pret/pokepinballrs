@@ -264,8 +264,8 @@ extern u16 gPokedexBgText_Gfx[];
 extern u16 gPokedexBg2_Tilemap[];
 extern u16 gPokedexBg_Gfx[];
 extern u16 gPokedexBg3_Tilemap[];
-extern u8 gPokedexBackground_Pals[];
-extern u8 gPokedexSprites_Pals[];
+extern const Palette gPokedexBackground_Pals[];
+extern const Palette gPokedexSprites_Pals[];
 extern u8 gPokedexSprites_Gfx[];
 
 extern s16 gPokedexAnimatedIconFrame;

@@ -551,7 +551,7 @@ void DrawSapphireShopSignSprite(void)
         group->baseX = 16 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 115 - gCurrentPinballGame->cameraYOffset;
         index = gCurrentPinballGame->shopSignPaletteIndex + gCurrentPinballGame->activePaletteIndex * 3;
-        DmaCopy16(3, gSapphireShopSignPalettes[index], (void *)0x05000300, 0x20);
+        DmaCopy16(3, gSapphireShopSignPalettes[index], OBJ_PLTT_SLOT(8), PLTT_SLOT_SIZE);
         DmaCopy16(3, gSapphireShopSignTileGfx[gCurrentPinballGame->shopSignFrame], (void *) 0x06014B20, 0x480);
         for (i = 0; i < 2; i++)
         {

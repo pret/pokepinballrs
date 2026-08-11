@@ -133,7 +133,7 @@ void GroudonBoardProcess_3A_3B120(void)
     DmaCopy16(3, gGroudonAttackFx_Gfx, (void *)0x06015800, 0x2000);
     AnimateGroudonBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_GROUDON);
-    DmaCopy16(3, gBonusStageObjPal, (void *)0x05000320, 0x20);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), 0x20);
 }
 
 void GroudonBoardProcess_3B_3B49C(void)

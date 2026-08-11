@@ -135,7 +135,7 @@ void RenderBannerSlideAnimation(void)
             else
             {
                 gCurrentPinballGame->activePortraitType = 4;
-                DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], (void *)(VRAM + 0x15800), 0x25E0);
+                DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], (void *)OBJ_TILE_ADDR(TILE_INDEX(0, 22, 32)), 0x25E0);
                 AnimateBannerSlide();
                 if (gCurrentPinballGame->bannerDisplayDuration > 0)
                 {
@@ -163,7 +163,7 @@ void RenderBannerSlideAnimation(void)
         {
             gCurrentPinballGame->activePortraitType = 4;
             // i = framecount ???
-            DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), (void *)(VRAM + 0x15800), 0x21C0);
+            DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), (void *)OBJ_TILE_ADDR(TILE_INDEX(0, 22, 32)), 0x21C0);
             if (gCurrentPinballGame->bannerDisplayDuration > 0)
             {
                 gCurrentPinballGame->bannerDisplayDuration--;
@@ -196,17 +196,17 @@ void RenderBannerSlideAnimation(void)
                                 else
                                 {
                                     gCurrentPinballGame->paletteSwapActive = TRUE;
-                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2], (void *)(OBJ_PLTT), 0x20);
+                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
                                 }
                                 if (gMain.selectedField == FIELD_SAPPHIRE)
                                 {
-                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xC0);
+                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                                 }
                                 else
                                 {
-                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
                                 }
-                                DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                                DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
                                 gCurrentPinballGame->activePaletteIndex = 2;
                             }
                         }
@@ -225,17 +225,17 @@ void RenderBannerSlideAnimation(void)
                                 else
                                 {
                                     gCurrentPinballGame->paletteSwapActive = TRUE;
-                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1], (void *)(OBJ_PLTT), 0x20);
+                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
                                 }
                                 if (gMain.selectedField == FIELD_SAPPHIRE)
                                 {
-                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xC0);
+                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                                 }
                                 else
                                 {
-                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
                                 }
-                                DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                                DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
                                 gCurrentPinballGame->activePaletteIndex = 1;
                             }
                         }
@@ -266,16 +266,16 @@ void RenderBannerSlideAnimation(void)
                     gMain.blendBrightness = 4;
                     if (gCurrentPinballGame->bannerSlideTimer > 0x19)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1], (void *)(OBJ_PLTT), 0x20);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
                         if (gMain.selectedField == FIELD_SAPPHIRE)
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xC0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                         }
                         else
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
                         }
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
                         gCurrentPinballGame->activePaletteIndex = 1;
                         gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
@@ -295,16 +295,16 @@ void RenderBannerSlideAnimation(void)
                             || gCurrentPinballGame->prizeId != PRIZE_START_EVO_MODE))
                     {
                         gMain.blendBrightness = 0;
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0], (void *)(OBJ_PLTT), 0x20);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
                         if (gMain.selectedField == FIELD_SAPPHIRE)
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xC0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
                         }
                         else
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x40, (void *)(OBJ_PLTT + 0x40), 0xE0);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
                         }
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0] + 0x140, (void *)(OBJ_PLTT + 0x140), 0x60);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
                         gCurrentPinballGame->activePaletteIndex = 0;
                         gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
