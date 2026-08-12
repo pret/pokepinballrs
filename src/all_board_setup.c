@@ -55,8 +55,8 @@ extern const u8 gSphealBoardPalette[];
 extern const u16 gSphealWaterBackgroundTilemap[];
 extern const u8 gSphealBoardBG1Tilemap[];
 extern const u8 gSphealBoardCompressedBGTiles[];
-extern const u8 gBoardHudTilemapB[];
-extern const u8 gBoardHudTilemapA[];
+extern const u8 gBoardHudTiles_B[];
+extern const u8 gBoardHudTiles_A[];
 
 extern const u8 gRubyIntroSprites_Gfx[];
 extern const u8 gSapphireIntroSprites_Gfx[];
@@ -89,8 +89,8 @@ void loadFieldBoardGraphics(void)
         DmaCopy16(3, &gBoardGfxBuffer[0x3000], (void *)0x06008000, 0x3400);
         DmaCopy16(3, gRubyBoardBG0Tilemap, (void *)BG_VRAM, 0x1000);
         DmaCopy16(3, gRubyBoardBG1Tilemap, (void *)0x06001000, 0x1000);
-        DmaCopy16(3, gBoardHudTilemapA, (void *)0x06006800, 0x400);
-        DmaCopy16(3, gBoardHudTilemapB, (void *)0x06006C00, 0x800);
+        DmaCopy16(3, gBoardHudTiles_A, (void *)0x06006800, 0x400);
+        DmaCopy16(3, gBoardHudTiles_B, (void *)0x06006C00, 0x800);
         DmaCopy16(3, gRubyIntroSprites_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_SAPPHIRE:
@@ -105,8 +105,8 @@ void loadFieldBoardGraphics(void)
         DmaCopy16(3, &gBoardGfxBuffer[0x3000], (void *)0x06008000, 0x2800);
         DmaCopy16(3, gSapphireBoardBG0Tilemap, (void *)BG_VRAM, 0x1000);
         DmaCopy16(3, gSapphireBoardBG1Tilemap, (void *)0x06001000, 0x1000);
-        DmaCopy16(3, gBoardHudTilemapA, (void *)0x06006800, 0x400);
-        DmaCopy16(3, gBoardHudTilemapB, (void *)0x06006C00, 0x800);
+        DmaCopy16(3, gBoardHudTiles_A, (void *)0x06006800, 0x400);
+        DmaCopy16(3, gBoardHudTiles_B, (void *)0x06006C00, 0x800);
         DmaCopy16(3, gSapphireIntroSprites_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_DUSCLOPS:
@@ -118,8 +118,8 @@ void loadFieldBoardGraphics(void)
         DmaCopy16(3, gDusclopsBoardBG0Tilemap, (void *)0x06000000, 0x800);
         DmaCopy16(3, gDusclopsBoardBG1Tilemap, (void *)0x06000800, 0x800);
         DmaCopy16(3, gDusclopsBoardBG2Tilemap, (void *)0x06001000, 0x800);
-        DmaCopy16(3, gBoardHudTilemapA, (void *)0x06006800, 0x400);
-        DmaCopy16(3, gBoardHudTilemapB, (void *)0x06006C00, 0x800);
+        DmaCopy16(3, gBoardHudTiles_A, (void *)0x06006800, 0x400);
+        DmaCopy16(3, gBoardHudTiles_B, (void *)0x06006C00, 0x800);
         DmaCopy16(3, gDusclopsIntroSprite_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_KECLEON:
@@ -131,8 +131,8 @@ void loadFieldBoardGraphics(void)
         DmaCopy16(3, gKecleonBoardBG0Tilemap, (void *)0x06000000, 0x800);
         DmaCopy16(3, gKecleonBoardBG1Tilemap, (void *)0x06000800, 0x800);
         DmaCopy16(3, gKecleonBerryOverlayTilemap, (void *)0x06001000, 0x800);
-        DmaCopy16(3, gBoardHudTilemapA, (void *)0x06006800, 0x400);
-        DmaCopy16(3, gBoardHudTilemapB, (void *)0x06006C00, 0x800);
+        DmaCopy16(3, gBoardHudTiles_A, (void *)0x06006800, 0x400);
+        DmaCopy16(3, gBoardHudTiles_B, (void *)0x06006C00, 0x800);
         DmaCopy16(3, gKecleonIntroSprite_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_KYOGRE:
@@ -143,8 +143,8 @@ void loadFieldBoardGraphics(void)
         DmaCopy16(3, gBoardGfxBuffer, (void *)0x06008000, 0x8000);
         DmaCopy16(3, gKyogreWaterBackgroundTilemap, (void *)0x06000000, 0x800);
         DmaCopy16(3, gKyogreBoardBG1Tilemap, (void *)0x06000800, 0x800);
-        DmaCopy16(3, gBoardHudTilemapA, (void *)0x06006800, 0x400);
-        DmaCopy16(3, gBoardHudTilemapB, (void *)0x06006C00, 0x800);
+        DmaCopy16(3, gBoardHudTiles_A, (void *)0x06006800, 0x400);
+        DmaCopy16(3, gBoardHudTiles_B, (void *)0x06006C00, 0x800);
         DmaCopy16(3, gKyogreIntroSprite_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_GROUDON:
@@ -155,8 +155,8 @@ void loadFieldBoardGraphics(void)
         DmaCopy16(3, gBoardGfxBuffer, (void *)0x06008000, 0x8000);
         DmaCopy16(3, gGroudonBoardBG0Tilemap, (void *)0x06000000, 0x800);
         DmaCopy16(3, gGroudonBoardBG1Tilemap, (void *)0x06000800, 0x800);
-        DmaCopy16(3, gBoardHudTilemapA, (void *)0x06006800, 0x400);
-        DmaCopy16(3, gBoardHudTilemapB, (void *)0x06006C00, 0x800);
+        DmaCopy16(3, gBoardHudTiles_A, (void *)0x06006800, 0x400);
+        DmaCopy16(3, gBoardHudTiles_B, (void *)0x06006C00, 0x800);
         DmaCopy16(3, gGroudonIntroSprite_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_RAYQUAZA:
@@ -168,8 +168,8 @@ void loadFieldBoardGraphics(void)
         DmaCopy16(3, gRayquazaBoardBG0Tilemap, (void *)0x06000000, 0x1000);
         DmaCopy16(3, gRayquazaBoardBG1Tilemap, (void *)0x06001000, 0x1000);
         DmaCopy16(3, gRayquazaBoardBGScrollTilemap, (void *)0x06003000, 0x1000);
-        DmaCopy16(3, gBoardHudTilemapA, (void *)0x06006800, 0x400);
-        DmaCopy16(3, gBoardHudTilemapB, (void *)0x06006C00, 0x800);
+        DmaCopy16(3, gBoardHudTiles_A, (void *)0x06006800, 0x400);
+        DmaCopy16(3, gBoardHudTiles_B, (void *)0x06006C00, 0x800);
         DmaCopy16(3, gRayquazaIntroSprite_Gfx, (void *)0x06010000, 0x8000);
         break;
 	case FIELD_SPHEAL:
@@ -180,8 +180,8 @@ void loadFieldBoardGraphics(void)
         DmaCopy16(3, gBoardGfxBuffer, (void *)0x06008000, 0x8000);
         DmaCopy16(3, gSphealWaterBackgroundTilemap, (void *)0x06000000, 0x800);
         DmaCopy16(3, gSphealBoardBG1Tilemap, (void *)0x06000800, 0x800);
-        DmaCopy16(3, gBoardHudTilemapA, (void *)0x06006800, 0x400);
-        DmaCopy16(3, gBoardHudTilemapB, (void *)0x06006C00, 0x800);
+        DmaCopy16(3, gBoardHudTiles_A, (void *)0x06006800, 0x400);
+        DmaCopy16(3, gBoardHudTiles_B, (void *)0x06006C00, 0x800);
         DmaCopy16(3, gSphealIntroSprites_Gfx, (void *)0x06010000, 0x8000);
         break;
     }

@@ -360,7 +360,11 @@ gPokedexBgText_Gfx:: @ 0x08082720
 @ The window is a 26x6 chunk of tile indices 224..409, i.e. sheet rows
 @ 7..12, cols 0..25 of the 32 wide gPokedexBgText_Gfx tileset
 @ (graphics/pokedex/bg_text.png), with palette bank 1 (0x1000 attr bit).
-gPokedexInfoWindowTiles:: @ 0x08086B40
+@
+@ Note: this area of the raw bg_text.png starts blank. The text from the dex
+@ entry is drawn to it, in memory, (PrintDexDescription function) before
+@ this tilemap definition draws that text to screen from the background tiles.
+gPokedexInfoWindowTilemap:: @ 0x08086B40
 	.incbin "graphics/pokedex/info_window_tilemap.bin"
 
 gPokedexBg2_Tilemap:: @ 0x08087340
@@ -1557,13 +1561,12 @@ gAerodactlyFlight_Pal:: @ 0x083A806C
 gCaptureModePalette:: @ 0x083A808C
 	.incbin "graphics/stage/main/capture_mode.gbapal"
 
-@ Despite the _Tilemap name these are NOT tilemaps: they are 4bpp tile
 @ GRAPHICS for the board HUD (score frame etc.), 64 tiles here (0x800
 @ bytes). loadFieldBoardGraphics (src/all_board_setup.c) DMA's them to
 @ charblock 1 tile 352..415 (VRAM 0x06006C00) on every board transition,
 @ and they are referenced from the BG0 tilemap buffer with palette bank
 @ 12 (e.g. 0xC17E = tile 382 in all_board_process8.c).
-gBoardHudTilemapB:: @ 0x083A826C
+gBoardHudTiles_B:: @ 0x083A826C
 	.incbin "graphics/stage/main/board_hud_tiles_b.4bpp"
 	.space 0x20
 
@@ -1573,12 +1576,12 @@ gShopPalette:: @ 0x083A8A8C
 gTravelPortraitPalette:: @ 0x083A8AAC
 	.incbin "graphics/stage/main/travel_portrait.gbapal"
 
-@ Same as gBoardHudTilemapB: 4bpp tile GRAPHICS (not a tilemap), 32 tiles
+@ Same as gBoardHudTiles_B: 4bpp tile GRAPHICS, 32 tiles
 @ here (0x400 bytes). DMA'd to charblock 1 tile 320..351 (VRAM
 @ 0x06006800) by loadFieldBoardGraphics; referenced from the BG0 tilemap
 @ buffer with palette bank 12 (e.g. 0xC156 = tile 342 in
 @ all_board_pinball_game_main.c).
-gBoardHudTilemapA:: @ 0x083A8ACC
+gBoardHudTiles_A:: @ 0x083A8ACC
 	.incbin "graphics/stage/main/board_hud_tiles_a.4bpp"
 	.space 0x20
 
