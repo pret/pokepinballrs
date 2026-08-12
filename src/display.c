@@ -162,7 +162,7 @@ void InterpolatePaletteStep(u16 arg0)
     }
 }
 
-void DarkenPalette(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
+void DarkenPalette(const Palette * pal, u8 * dest, u16 arg2, u16 arg3)
 {
     u16 i;
     u16 b[2];

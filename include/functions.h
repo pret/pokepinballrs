@@ -169,7 +169,7 @@ extern void FadeOutToWhite(void (*func)(void));
 extern void FadeInWithCustomPalettes(u8 *, u8 *, void (*func)(void));
 extern void FadeOutToBlack(void (*func)(void));
 extern void InterpolatePaletteStep(u16);
-extern void DarkenPalette(u8 *, u8 *, u16, u16); // Very much subject to change
+extern void DarkenPalette(const Palette *, u8 *, u16, u16); // Very much subject to change
 extern void BrightenPalette(u8 *, u8 *, u16, u16);
 extern void FlashWhiteTransitionIn(void);
 extern void FlashWhiteTransitionOut(void);

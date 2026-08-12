@@ -326,7 +326,7 @@ extern u8 gLinkExchangeStep;
 extern const struct PokemonSpecies gSpeciesInfo[];
 extern const struct SpriteSet * const gEReaderSpriteSets[13];
 extern u8 (*gMonHatchSpriteGroupGfx[])[0x10E0];
-extern u8 (*gMonHatchSpriteGroupPals[])[0x20];
+extern const Palette *gMonHatchSpriteGroupPals[];
 
 extern u32 gLinkStatusResult;
 extern s16 gLinkSendBuffer[];

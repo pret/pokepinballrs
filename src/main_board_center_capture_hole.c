@@ -23,7 +23,7 @@ extern const u8 gBallFlashPalette;
 extern u8 gCatchSequencePalA;
 extern u8 gCatchSequencePalB;
 extern u8 gCatchSequencePalC;
-extern u8 gCatchSpritePalettes[];
+extern Palette gCatchSpritePalettes[];
 
 void InitRouletteWheel(void)
 {
@@ -732,7 +732,7 @@ void RunMonCaptureSequence(void)
             || (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_JIRACHI_CATCH_MODE
                  && gCurrentPinballGame->boardSubState == JIRACHI_CATCH_SUBSTATE_CATCH_HIT_PHASE))
         {
-            DmaCopy16(3, &gCatchSpritePalettes, 0x050003A0, 0x20);
+            DmaCopy16(3, gCatchSpritePalettes, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         }
 
         for (i = 0; i < 4; i++)

@@ -1020,7 +1020,7 @@ extern const u16 gDusclopsBodyCollisionMap[];
 
 
 extern u8 *gMonPortraitGroupGfx[];
-extern u8 *gMonPortraitGroupPals[];
+extern const Palette *gMonPortraitGroupPals[];
 extern u8 gCatchSpriteGfxBuffer[];
 extern u8 gCatchSpriteFlashGfx[];
 extern const u8 gPikaSaverFullCoverageGfx[];
