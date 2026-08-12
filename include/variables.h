@@ -317,7 +317,7 @@ extern u16 gDexInfoWindowMiddleRowTiles[];
 extern u16 gDexInfoWindowBottomRowTiles[];
 extern u16 gDexInfoWindowEmptyRowTiles[];
 extern u16 gPokedexInfoWindowBackupTiles[];
-extern u16 gPokedexInfoWindowTiles[];
+extern u16 gPokedexInfoWindowTilemap[];
 extern u16 gRayquazaBodyCollisionMap[0x4000];
 extern s16 gDexAnimationIx[];
 extern s16 gTitleRevealJingle[][10][2];
