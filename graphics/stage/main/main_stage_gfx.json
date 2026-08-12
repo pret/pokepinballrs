@@ -655,6 +655,62 @@
       "width": 10,
       "palette": "bonus_stage_obj.gbapal",
       "palbank": 5
+    },
+    {
+      "gfx_filename": "board_hud_tiles_a",
+      "segments": [
+        {
+          "segfile": "board_hud_tiles_a_numbers",
+          "oam": true,
+          "mheight": 2,
+          "mwidth": 1,
+          "width": 11
+        },
+        {
+          "segfile": "board_hud_tiles_a_press_start",
+          "width": 10
+        }
+      ]
+    },
+    {
+      "gfx_filename": "board_hud_tiles_b",
+      "segments": [
+        {
+          "segfile": "board_hud_tiles_b_score",
+          "oam": true,
+          "mwidth": 1,
+          "mheight": 2,
+          "width": 5
+        },
+        {
+          "segfile": "board_hud_tiles_b_numbers",
+          "oam": true,
+          "mwidth": 1,
+          "mheight": 2,
+          "width": 10
+        },
+        {
+          "segfile": "board_hud_tiles_b_glyphs",
+          "oam": true,
+          "mwidth": 1,
+          "mheight": 2,
+          "width": 4
+        },
+        {
+          "segfile": "board_hud_tiles_b_number_with_separator",
+          "oam": true,
+          "mwidth": 1,
+          "mheight": 2,
+          "width": 10
+        },
+        {
+          "segfile": "board_hud_tiles_b_glyph_2",
+          "oam": true,
+          "mwidth": 1,
+          "mheight": 2,
+          "width": 3
+        }
+      ]
     }
   ]
 }
