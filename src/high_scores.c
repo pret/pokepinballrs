@@ -11,7 +11,7 @@
 
 extern StateFunc gHighScoresStateFuncs[15];
 extern StateFunc gIdleHighScoresStateFuncs[3];
-extern u8 gHighScoreBG_Pals[];
+extern const Palette gHighScoreBG_Pals[];
 extern u8 gHighScoreBallWatermark_Tilemap[];
 extern u8 gHighScoreText_Gfx[];
 extern s16 gHighScoreEntrySource;
@@ -32,6 +32,15 @@ extern s16 gScrollDirection;
 extern s16 gScrollXOffset;
 extern s8 gResetComboTimer;
 extern s8 gResetComboCount;
+
+extern struct HighScoreEntry gWorkingHighScores[MAIN_FIELD_COUNT][NUM_HIGH_SCORES];
+extern struct HighScoreEntry gRemoteTopScores[2];
+extern u8 gHighScoreBallWatermark_Gfx[];
+extern u8 gHighScoreScoreTable_Tilemap[];
+extern const Palette gHighScoreSprite_Pals[];
+extern u8 gHighScoreDialogs_Gfx[];
+extern u32 gHighScoreNameRowTilemapOffsets[8];
+extern const struct HighScoreEntry gDefaultHighScores[2][8];
 
 struct HighScoreScreenState
 {
@@ -55,6 +64,7 @@ struct HighScoreScreenState
     s8 pressStartBlinkToggle; // press start blink toggle
     s8 displayModeVisible;
 };
+struct HighScoreScreenState gHighScoreScreenState;
 
 enum HighScoreStates{
     HIGH_SCORE_STATE_INIT = 0,
@@ -80,16 +90,6 @@ enum IdleHighScoreStates{
     IDLE_HIGH_SCORE_STATE_EXIT = 2
 };
 
-struct HighScoreScreenState gHighScoreScreenState;
-
-extern struct HighScoreEntry gWorkingHighScores[MAIN_FIELD_COUNT][NUM_HIGH_SCORES];
-extern struct HighScoreEntry gRemoteTopScores[2];
-extern u8 gHighScoreBallWatermark_Gfx[];
-extern u8 gHighScoreScoreTable_Tilemap[];
-extern u8 gHighScoreSprite_Pals[];
-extern u8 gHighScoreDialogs_Gfx[];
-extern u32 gHighScoreNameRowTilemapOffsets[8];
-extern const struct HighScoreEntry gDefaultHighScores[2][8];
 
 enum HighScorePopupType {
     HIGH_SCORE_POPUP_DEFAULT = 0,
@@ -120,12 +120,12 @@ void LoadHighScoreGraphics(void)
   REG_DISPCNT |= DISPCNT_BG3_ON;
   gMain.dispcntBackup = REG_DISPCNT;
 
-  DmaCopy16(3, gHighScoreBG_Pals, (void*) PLTT, 0x200);
+  DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE);
   DmaCopy16(3, gHighScoreText_Gfx, (void*) BG_VRAM + 0x4000, 0x4800);
   DmaCopy16(3, gHighScoreBallWatermark_Gfx, (void *)BG_VRAM + 0xC000, 0x2C00);
   DmaCopy16(3, gHighScoreScoreTable_Tilemap, gBG0TilemapBuffer, 0x1000);
   DmaCopy16(3, gHighScoreBallWatermark_Tilemap, (void *)BG_SCREEN_ADDR(2), 0x1000);
-  DmaCopy16(3, gHighScoreSprite_Pals, (void *)OBJ_PLTT, 0x100);
+  DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(0), 8*PLTT_SLOT_SIZE);
   DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
   InitHighScoreData();
   DrawAllHighScoreText();
@@ -748,12 +748,12 @@ void IdleHighScore_LoadGraphics(void)
     REG_BG3CNT = 0x420F;
     REG_DISPCNT |= DISPCNT_BG3_ON;
     gMain.dispcntBackup = REG_DISPCNT;
-    DmaCopy16(3, gHighScoreBG_Pals, (void*) PLTT, 0x200);
+    DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gHighScoreText_Gfx, (void*) BG_VRAM + 0x4000, 0x4800);
     DmaCopy16(3, gHighScoreBallWatermark_Gfx, (void *)BG_VRAM + 0xC000, 0x2C00);
     DmaCopy16(3, gHighScoreScoreTable_Tilemap, gBG0TilemapBuffer, 0x1000);
     DmaCopy16(3, gHighScoreBallWatermark_Tilemap, (void *)BG_SCREEN_ADDR(2), 0x1000);
-    DmaCopy16(3, gHighScoreSprite_Pals, (void *)OBJ_PLTT, 0x20);
+    DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
     DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
     InitIdleHighScoreData();
     DrawAllHighScoreText();
@@ -866,12 +866,12 @@ void HighScore_ReloadAfterLink(void)
     REG_BG3CNT = 0x420f;
     REG_DISPCNT |= DISPCNT_BG3_ON;
     gMain.dispcntBackup = REG_DISPCNT;
-    DmaCopy16(3, gHighScoreBG_Pals, (void*) PLTT, 0x200);
+    DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gHighScoreText_Gfx, (void*) BG_VRAM + 0x4000, 0x4800);
     DmaCopy16(3, gHighScoreBallWatermark_Gfx, (void *)BG_VRAM + 0xC000, 0x2C00);
     DmaCopy16(3, gHighScoreScoreTable_Tilemap, gBG0TilemapBuffer, 0x1000);
     DmaCopy16(3, gHighScoreBallWatermark_Tilemap, (void *)BG_SCREEN_ADDR(2), 0x1000);
-    DmaCopy16(3, gHighScoreSprite_Pals, (void *)OBJ_PLTT, 0x20);
+    DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
     DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
     InitIdleHighScoreData();
     DrawAllHighScoreText();

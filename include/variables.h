@@ -134,7 +134,7 @@ extern StateFunc gTitlescreenStateFuncs[];
 //extern ? gIntroCopyright_Pal;
 //extern ? gIntroScene1TorchicSprites_Pals;
 //extern ? gIntroScene1TorchicSprites_Gfx;
-extern const u8 gGBAButtonIcons_Pals[];
+extern const Palette gGBAButtonIcons_Pals[];
 extern const u8 gOptionsSprites_Gfx[];
 extern const IntrFunc gIntrTableTemplate[14];
 //extern ? gRumblePattern0;

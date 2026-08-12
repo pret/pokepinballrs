@@ -31,7 +31,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gCurrentPinballGame->activePortraitType = 18;
 
             DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
-            DmaCopy16(3, &gShopNameDisplay_Pals, BG_PLTT + 0x180, 0x20);
+            DmaCopy16(3, gShopNameDisplay_Pals, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
         }
 
         if (gCurrentPinballGame->shopEntryTimer >= 145 && gCurrentPinballGame->shopEntryTimer < 150)
@@ -92,7 +92,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
 
-            DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT + 0x1C0, 0x20);
+            DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_VRAM + 0x2000, 0xC40);
 
             gMain.bgOffsets[0].yOffset = 80;
@@ -395,7 +395,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->activePortraitType = 18;
 
                 DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
-                DmaCopy16(3, &gEvoNameDisplay_Pals, PLTT + 0x180, 0x20);
+                DmaCopy16(3, gEvoNameDisplay_Pals, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
             }
 
             if (gCurrentPinballGame->shopEntryTimer == 145)
@@ -429,7 +429,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
 
-                DmaCopy16(3, &gShopEvoUI_Pals, PLTT + 0x3C0, 0x20);
+                DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
 
                 gMain.bgOffsets[0].yOffset = 80;
                 gMain.shopPanelSlideOffset = 0;

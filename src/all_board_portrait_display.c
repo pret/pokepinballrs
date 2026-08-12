@@ -60,9 +60,9 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         DmaCopy16(
             3,
             gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[picIx] / 15] + (gCurrentPinballGame->portraitGfxIndex[picIx] % 15) * 0x20,
-            (void *)0x050003A0 ,
-            0x20);
-        DmaCopy16(3, gMonPortraitGroupPals[0] + 15 * 0x20, (void *)0x050003E0, 0x20);
+            OBJ_PLTT_SLOT(13),
+            PLTT_SLOT_SIZE);
+        DmaCopy16(3, gMonPortraitGroupPals[0] + 15 * 0x20, OBJ_PLTT_SLOT(15), PLTT_SLOT_SIZE);
         break;
     case PORTRAIT_STATE_EVO_PREVIEW:
         if (gCurrentPinballGame->evoChainPosition > 0)
@@ -73,13 +73,13 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
                 DmaCopy16(
                     3,
                     gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[picIx] / 15] + (gCurrentPinballGame->portraitGfxIndex[picIx] % 15) * 0x20,
-                    (void *)0x050003A0,
-                    0x20);
+                    OBJ_PLTT_SLOT(13),
+                    PLTT_SLOT_SIZE);
             }
             else if (gMain_saveData.pokedexFlags[gCurrentPinballGame->evoTargetSpecies] < SPECIES_CAUGHT)
             {
                 gCurrentPinballGame->portraitGfxIndex[picIx] = gCurrentPinballGame->evoTargetSpecies;
-                DmaCopy16(3, gMonPortraitGroupPals[0] + 15 * 0x20, (void *)0x050003A0, 0x20);
+                DmaCopy16(3, gMonPortraitGroupPals[0] + 15 * 0x20, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
             }
             else
             {
@@ -87,8 +87,8 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
                 DmaCopy16(
                     3,
                     gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[picIx] / 15] + (gCurrentPinballGame->portraitGfxIndex[picIx] % 15) * 0x20,
-                    (void *)0x050003A0,
-                    0x20);
+                    OBJ_PLTT_SLOT(13),
+                    PLTT_SLOT_SIZE);
             }
         }
         else
@@ -97,8 +97,8 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
             DmaCopy16(
                 3,
                 gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[picIx] / 15] + (gCurrentPinballGame->portraitGfxIndex[picIx] % 15) * 0x20,
-                (void *)0x050003A0,
-                0x20);
+                OBJ_PLTT_SLOT(13),
+                PLTT_SLOT_SIZE);
         }
 
         DmaCopy16(

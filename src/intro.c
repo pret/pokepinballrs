@@ -39,7 +39,7 @@ extern u8 gIntroCopyright_Tilemap[];
 extern u8 gIntroCopyright_Gfx[];
 extern u8 gIntroCopyright_Pal[];
 extern u8 gIntroScene1TorchicSprites_Gfx[];
-extern u8 gIntroScene1TorchicSprites_Pals[];
+extern Palette gIntroScene1TorchicSprites_Pals[];
 
 extern u8 gIntroScene1Torchic_BG0Tilemap[];
 extern u8 gIntroScene1Torchic_BG1Tilemap[];
@@ -232,9 +232,9 @@ void IntroScene1_00_LoadTitleLettersAndTorchicScene(void)
 
     DmaCopy16(3, gIntroScene1TorchicText_Gfx, BG_CHAR_ADDR(0), 0x5800);
     DmaCopy16(3, gIntroScene1TorchicBall_Gfx, gIntroTileBuffer, 0x6800);
-    DarkenPalette(gIntroScene1TorchicSprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, 0x20);
+    DarkenPalette((u8 * )gIntroScene1TorchicSprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, 0x20);
     DmaCopy16(3, gIntroScene1TorchicSprites_Gfx, BG_CHAR_ADDR(4), 0x8000);
-    DmaCopy16(3, gIntroScene1TorchicSprites_Pals, 0x05000200, BG_PLTT_SIZE);
+    DmaCopy16(3, gIntroScene1TorchicSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
     IntroScene1Torchic_InitVars();
     gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
     gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
@@ -245,9 +245,9 @@ void IntroScene1_00_LoadTitleLettersAndTorchicScene(void)
     gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
     gMain.bgOffsets[3].yOffset = gIntroBGParams[2].posY;
     EnableVBlankInterrupts();
-    FadeInWithCustomPalettes((void*)BG_PLTT, gIntroScene1TorchicSprites_Pals, NULL);
-    DmaCopy16(3, gIntroScene1TorchicSprites_Pals, 0x05000200, BG_PLTT_SIZE);
-    DmaCopy16(3, 0, 0x05000200, 0x20);
+    FadeInWithCustomPalettes((void*)BG_PLTT, (u8 * )gIntroScene1TorchicSprites_Pals, NULL);
+    DmaCopy16(3, gIntroScene1TorchicSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
+    DmaCopy16(3, 0, OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
     gIntroSceneIndex++;
 }
 
@@ -359,7 +359,7 @@ void IntroScene1Torchic_04_LargeSparkle(void)
         if (++gIntroSpriteEntities[0].frameTimer > 1)
         {
             gIntroSpriteEntities[0].visible = FALSE;
-            DarkenPalette(&gIntroScene1TorchicSprites_Pals[0x1C0], (void*)BG_PLTT + 0xE0, 0x20, 0);
+            DarkenPalette((u8 * )gIntroScene1TorchicSprites_Pals[14], (void*)BG_PLTT_SLOT(7), 0x20, 0);
             m4aSongNumStart(MUS_OPENING);
             gIntroSceneIndex++;
         }
@@ -410,8 +410,8 @@ void IntroScene1Torchic_06_BrightenPokeballFlyTowardsScreen(void)
         {
             gIntroPalFadeLevel = 0;
         }
-        DarkenPalette(gIntroScene1TorchicSprites_Pals, (void*)BG_PLTT, 0x200, gIntroPalFadeLevel);
-        DarkenPalette(gIntroScene1TorchicSprites_Pals, (void*)OBJ_PLTT, 0x20, gIntroPalFadeLevel);
+        DarkenPalette((u8 * )gIntroScene1TorchicSprites_Pals, (void*)BG_PLTT, 0x200, gIntroPalFadeLevel);
+        DarkenPalette((u8 * )gIntroScene1TorchicSprites_Pals, (void*)OBJ_PLTT, 0x20, gIntroPalFadeLevel);
     }
 
     if (gIntroFrameCounter % 3 == 0)
