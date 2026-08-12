@@ -9,7 +9,7 @@
 
 extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gGroudonLavaPaletteCycleData[];
-extern const u8 gGroudonBoardBackgroundGfx[];
+extern const u8 gGroudonAttackFx_Gfx[];
 extern const s8 gGroudonBoardBoulders_Gfx[][0x300];
 extern struct SongHeader se_groudon_hit;
 extern struct SongHeader se_groudon_lands;
@@ -130,7 +130,7 @@ void GroudonBoardProcess_3A_3B120(void)
     UpdateGroudonFieldEntities();
     UpdateGroudonEntityLogic();
     RenderGroudonSprites();
-    DmaCopy16(3, gGroudonBoardBackgroundGfx, (void *)0x06015800, 0x2000);
+    DmaCopy16(3, gGroudonAttackFx_Gfx, (void *)0x06015800, 0x2000);
     AnimateGroudonBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_GROUDON);
     DmaCopy16(3, gBonusStageObjPal, (void *)0x05000320, 0x20);

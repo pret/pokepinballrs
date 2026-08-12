@@ -1,4 +1,4 @@
-﻿    .section .rodata
+    .section .rodata
 #include "constants/areas.h"
 #include "constants/fields.h"
 #include "constants/species.h"
@@ -1540,7 +1540,7 @@ gIntroScene1Torchic_SpriteSets:: @ 0x086A769C
     .4byte gIntroTorchicExplosionSpriteSet @ 48
 
 gUnknown_086A7760:: @ 0x086A7760
-	.incbin "baserom.gba", 0x6A7760, 0x8
+    .2byte 0x506, 0x304, 0x0, 0x0
 
 gIntroScene1Torchic_BGAnimTiming:: @ 0x086A7768
     .2byte 0x1, 0x14
@@ -2520,7 +2520,34 @@ gTitleDeleteSaveConfirmationPopupSpriteSet:: @ 0x086A8AFC
     packed_sprite_oaml x=-0x30, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x298, paletteNum=0x2
     packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x300, paletteNum=0x2
 
-.incbin "baserom.gba", 0x6A8B0E, 0xA8
+gUnusedSpriteSets_6A8B0E:: @0x086A8B0E
+.2byte 5
+    packed_sprite_oaml x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14E, paletteNum=0x4
+    packed_sprite_oaml x=0x2A, y=0x2B, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14E, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x160, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x164, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x168, paletteNum=0x0
+
+.2byte 5
+    packed_sprite_oaml x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14C, paletteNum=0x4
+    packed_sprite_oaml x=0x2A, y=0x2B, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14C, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x160, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x164, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x168, paletteNum=0x0
+
+.2byte 5
+    packed_sprite_oaml x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x16C, paletteNum=0x4
+    packed_sprite_oaml x=0x2A, y=0x2B, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x16C, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
+
+.2byte 5
+    packed_sprite_oaml x=-0x3A, y=0x2B, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14C, paletteNum=0x4
+    packed_sprite_oaml x=0x2A, y=0x2B, hFlip=0x1, spriteSize=SPRITE_SIZE_16x8, tileNum=0x14C, paletteNum=0x4
+    packed_sprite_oaml x=-0x30, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x180, paletteNum=0x0
+    packed_sprite_oaml x=-0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x184, paletteNum=0x0
+    packed_sprite_oaml x=0x10, y=0x2B, spriteSize=SPRITE_SIZE_32x8, tileNum=0x188, paletteNum=0x0
 
 gTitleMenuSavePanelAnim0SpriteSet:: @ 0x086A8BB6
 .2byte 15
@@ -3580,7 +3607,25 @@ gUnknown_086A9F22:: @ 0x086A9F22
     packed_sprite_oam x=0x9, y=0x17, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18, paletteNum=0x0
     packed_sprite_oam x=0x19, y=0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9, paletteNum=0x0
 
-    .incbin "baserom.gba", 0x6A9FC0, 0x68
+gUnusedSpriteSets_6A9FC0:: @ 0x86A9FC0
+    packed_sprite_oam x=0x9, y=0x1A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1B, paletteNum=0x0
+    packed_sprite_oam x=0x1C, y=0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9, paletteNum=0x0
+    packed_sprite_oam x=0x9, y=0x1D, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1E, paletteNum=0x0
+    packed_sprite_oam x=0x1F, y=0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9, paletteNum=0x0
+    packed_sprite_oam x=0x9, y=0x20, spriteSize=SPRITE_SIZE_8x8, tileNum=0x21, paletteNum=0x0
+    packed_sprite_oam x=0x22, y=0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9, paletteNum=0x0
+    packed_sprite_oam x=0x9, y=0x23, spriteSize=SPRITE_SIZE_8x8, tileNum=0x24, paletteNum=0x0
+    packed_sprite_oam x=0x17, y=0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9, paletteNum=0x0
+    packed_sprite_oam x=0xF, y=0x25, spriteSize=SPRITE_SIZE_8x8, tileNum=0x7, paletteNum=0x0
+    packed_sprite_oam x=0x3C, y=0x26, spriteSize=SPRITE_SIZE_8x8, tileNum=0x27, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x29, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2A, paletteNum=0x0
+    packed_sprite_oam x=0x2B, y=0x4, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x3C, y=0x2C, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x2C, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2D, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2C, paletteNum=0x0
+    packed_sprite_oam x=0x2E, y=0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9, paletteNum=0x0
+    .align 2
 
 gUnknown_086AA028:: @ 0x086AA028
     .4byte gUnknown_086AA070
@@ -3711,7 +3756,18 @@ gUnknown_086AA1AC:: @ 0x086AA1AC
     packed_sprite_oam x=0xC, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
     packed_sprite_oam x=0x2, y=0xC, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
 
-.incbin "baserom.gba", 0x6AA1D4, 0x38
+gUnusedSpriteSets_6AA1D4:: @ 0x086AA1D4
+    packed_sprite_oam x=0x3, y=0xC, spriteSize=SPRITE_SIZE_8x8, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0xC, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x6, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x9, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0xA, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0xC, y=0xB, spriteSize=SPRITE_SIZE_8x8, tileNum=0xC, paletteNum=0x0
+
+    .2byte 0xC
 
 gUnknown_086AA20C:: @ 0x086AA20C
     .4byte gUnknown_086AA254
@@ -3860,7 +3916,33 @@ gUnknown_086AA418:: @ 0x086AA418
     packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15c, paletteNum=0x1
 
 gUnknown_086AA438:: @ 0x086AA438
-    .incbin "baserom.gba", 0x6AA438, 0x70
+.2byte 5
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x150, paletteNum=0x1
+    packed_sprite_oam x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x154, paletteNum=0x1
+    packed_sprite_oam x=0x7, y=0x10, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11F, paletteNum=0x1
+    packed_sprite_oam x=0x31, y=0x10, hFlip=0x1, spriteSize=SPRITE_SIZE_8x16, tileNum=0x11F, paletteNum=0x1
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_32x16, tileNum=0x15C, paletteNum=0x1
+
+.2byte 1
+    packed_sprite_oam x=0x1, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+
+.2byte 1
+    packed_sprite_oam x=0x2, y=0x14, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+
+.2byte 3
+    packed_sprite_oam x=0x4, y=0x3, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x32, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x0, paletteNum=0x0
+
+@gUnusedSpriteSets_6AA47C @ 0x86AA47C
+    packed_sprite_oam x=0x2, y=0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x6, paletteNum=0x0
+    packed_sprite_oam x=0x0, y=0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oam x=0x7, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0xE, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0xF, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x11, paletteNum=0x0
+    .2byte 0x4
 
 gUnknown_086AA4A8:: @ 0x086AA4A8
     .4byte gUnknown_086AA55C
@@ -4340,7 +4422,7 @@ gUnknown_086AACDE:: @ 0x086AACDE
 .2byte 1
     packed_sprite_oam x=-0x10, y=0xf0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x18, paletteNum=0x1
 
-gUnknown_086AACE6:: @ 0x086AACEC
+gUnknown_086AACE6:: @ 0x086AACE6
 .2byte 1
     packed_sprite_oam x=-0x10, y=0xf0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x9c, paletteNum=0x1
 
@@ -4359,7 +4441,37 @@ gUnknown_086AAD08:: @ 0x086AAD08
     packed_sprite_oam x=0x8, y=0x8, spriteSize=SPRITE_SIZE_16x16, tileNum=0xd6, paletteNum=0x1
 
 gUnknown_086AAD22:: @ 0x086AAD22
-    .incbin "baserom.gba", 0x6AAD22, 0xBA
+    packed_sprite_oam x=0x25, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x3, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x6, paletteNum=0x0
+    packed_sprite_oam x=0x7, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x9, paletteNum=0x0
+    packed_sprite_oam x=0xA, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0xB, spriteSize=SPRITE_SIZE_8x8, tileNum=0xC, paletteNum=0x0
+    packed_sprite_oam x=0xD, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0xE, spriteSize=SPRITE_SIZE_8x8, tileNum=0xF, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x11, spriteSize=SPRITE_SIZE_8x8, tileNum=0x12, paletteNum=0x0
+    packed_sprite_oam x=0x13, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x14, spriteSize=SPRITE_SIZE_8x8, tileNum=0x15, paletteNum=0x0
+    packed_sprite_oam x=0x16, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x17, spriteSize=SPRITE_SIZE_8x8, tileNum=0x18, paletteNum=0x0
+    packed_sprite_oam x=0x19, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x1A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1B, paletteNum=0x0
+    packed_sprite_oam x=0x1C, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x1D, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1E, paletteNum=0x0
+    packed_sprite_oam x=0x1F, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x20, spriteSize=SPRITE_SIZE_8x8, tileNum=0x21, paletteNum=0x0
+    packed_sprite_oam x=0x22, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x23, spriteSize=SPRITE_SIZE_8x8, tileNum=0x24, paletteNum=0x0
+    packed_sprite_oam x=0x8, y=0x1C, spriteSize=SPRITE_SIZE_8x8, tileNum=0x25, paletteNum=0x0
+    packed_sprite_oam x=0x26, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x27, spriteSize=SPRITE_SIZE_8x8, tileNum=0x28, paletteNum=0x0
+    packed_sprite_oam x=0x29, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x2A, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2B, paletteNum=0x0
+    packed_sprite_oam x=0x2C, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
 
 gUnknown_086AADDC:: @ 0x086AADDC
     .4byte gUnknown_086AAEA0
@@ -4902,13 +5014,60 @@ gUnknown_086AB6FC:: @ 0x086AB6FC
     packed_sprite_oam x=0x40, y=0x58, spriteSize=SPRITE_SIZE_32x16, tileNum=0x294, paletteNum=0x1
 
 gUnknown_086AB716:: @ 0x086AB716
-    .incbin "baserom.gba", 0x6AB716, 0xEA
+.2byte 8
+    packed_sprite_oam x=-0x58, y=-0x68, spriteSize=SPRITE_SIZE_64x64, tileNum=0x298, paletteNum=0x0
+    packed_sprite_oam x=-0x18, y=-0x68, spriteSize=SPRITE_SIZE_64x32, tileNum=0x380, paletteNum=0x0
+    packed_sprite_oam x=-0x18, y=-0x48, spriteSize=SPRITE_SIZE_64x32, tileNum=0x388, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=-0x50, spriteSize=SPRITE_SIZE_16x32, tileNum=0x390, paletteNum=0x0
+    packed_sprite_oam x=-0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x392, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x3D2, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=-0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0x3D6, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=-0x28, spriteSize=SPRITE_SIZE_16x16, tileNum=0x396, paletteNum=0x0
+
+gUnusedSpriteSets_6AB748:: @ 86AB748
+    packed_sprite_oam x=0x0, y=0x25, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x3, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x4, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+    packed_sprite_oam x=0x6, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oam x=0x9, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0xA, spriteSize=SPRITE_SIZE_8x8, tileNum=0xB, paletteNum=0x0
+    packed_sprite_oam x=0xC, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0xD, spriteSize=SPRITE_SIZE_8x8, tileNum=0xE, paletteNum=0x0
+    packed_sprite_oam x=0xF, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x11, paletteNum=0x0
+    packed_sprite_oam x=0x12, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x13, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oam x=0x15, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x16, spriteSize=SPRITE_SIZE_8x8, tileNum=0x17, paletteNum=0x0
+    packed_sprite_oam x=0x18, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x19, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1A, paletteNum=0x0
+    packed_sprite_oam x=0x1B, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x1C, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1D, paletteNum=0x0
+    packed_sprite_oam x=0x1E, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x1F, spriteSize=SPRITE_SIZE_8x8, tileNum=0x20, paletteNum=0x0
+    packed_sprite_oam x=0x21, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x22, spriteSize=SPRITE_SIZE_8x8, tileNum=0x23, paletteNum=0x0
+    packed_sprite_oam x=0x24, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1C, paletteNum=0x0
+    packed_sprite_oam x=0x25, y=0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x26, spriteSize=SPRITE_SIZE_8x8, tileNum=0x27, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x29, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2A, paletteNum=0x0
+    packed_sprite_oam x=0x2B, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    .2byte 0x2C, 0x14
 
 gUnknown_086AB800:: @ 0x086AB800
     .4byte gUnknown_086AB804
 
 gUnknown_086AB804:: @ 0x086AB804
-    .incbin "baserom.gba", 0x6AB804, 0x20
+.2byte 4
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x6
+    packed_sprite_oam x=0x40, y=0x0, spriteSize=SPRITE_SIZE_32x64, tileNum=0x8, paletteNum=0x6
+    packed_sprite_oam x=0x0, y=0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0xC, paletteNum=0x6
+    packed_sprite_oam x=0x40, y=0x40, spriteSize=SPRITE_SIZE_32x64, tileNum=0x14, paletteNum=0x6
+
+    .2byte 0x1, 0x0, 0x4
 
 gUnknown_086AB824:: @ 0x086AB824
     .4byte gUnknown_086AB830
@@ -4930,7 +5089,17 @@ gUnknown_086AB84A:: @ 0x086AB84A
     packed_sprite_oam x=0x0, y=0x58, spriteSize=SPRITE_SIZE_32x8, tileNum=0x14, paletteNum=0x1
 
 gUnknown_086AB864:: @ 0x086AB864
-    .incbin "baserom.gba", 0x6AB864, 0x3C
+.2byte 8
+    packed_sprite_oam x=-0x58, y=-0x68, spriteSize=SPRITE_SIZE_64x64, tileNum=0x18, paletteNum=0x0
+    packed_sprite_oam x=-0x18, y=-0x68, spriteSize=SPRITE_SIZE_64x32, tileNum=0x100, paletteNum=0x0
+    packed_sprite_oam x=-0x18, y=-0x48, spriteSize=SPRITE_SIZE_64x32, tileNum=0x108, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=-0x50, spriteSize=SPRITE_SIZE_16x32, tileNum=0x110, paletteNum=0x0
+    packed_sprite_oam x=-0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x112, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=-0x28, spriteSize=SPRITE_SIZE_32x16, tileNum=0x152, paletteNum=0x0
+    packed_sprite_oam x=0x28, y=-0x30, spriteSize=SPRITE_SIZE_16x8, tileNum=0x156, paletteNum=0x0
+    packed_sprite_oam x=0x30, y=-0x28, spriteSize=SPRITE_SIZE_16x16, tileNum=0x116, paletteNum=0x0
+
+    .2byte 0x0, 0x1, 0x0, 0x4, 0x0
 
 gUnknown_086AB8A0:: @ 0x086AB8A0
     .4byte gUnknown_086AB8B8
@@ -4963,13 +5132,23 @@ gUnknown_086AB8E4:: @ 0x086AB8E4
     packed_sprite_oam x=-0x10, y=0xf0, spriteSize=SPRITE_SIZE_32x32, vFlip=0x1, tileNum=0x10, paletteNum=0x1
 
 gUnknown_086AB8EC:: @ 0x086AB8EC
-    .incbin "baserom.gba", 0x6AB8EC, 0x24
+.2byte 1
+    packed_sprite_oam x=-0x8, y=-0x8, vFlip=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x14, paletteNum=0x1
+
+    .2byte 0x3, 0x2, 0x4, 0x1, 0x4, 0x0, 0x4, 0x3
+    .2byte 0x5, 0x4, 0x4, 0x4, 0x3, 0x4
 
 gUnknown_086AB910:: @ 0x086AB910
     .4byte gUnknown_086AB914
 
 gUnknown_086AB914:: @ 0x086AB914
-    .incbin "baserom.gba", 0x6AB914, 0x20
+.2byte 4
+    packed_sprite_oam x=-0x40, y=-0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0x0, paletteNum=0x1
+    packed_sprite_oam x=0x0, y=-0x40, spriteSize=SPRITE_SIZE_64x64, tileNum=0x8, paletteNum=0x1
+    packed_sprite_oam x=-0x40, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x10, paletteNum=0x1
+    packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x18, paletteNum=0x1
+
+    .2byte 0x1, 0x0, 0x4
 
 gUnknown_086AB934:: @ 0x086AB934
     .4byte gUnknown_086AB954
@@ -5019,7 +5198,11 @@ gUnknown_086AB9A8:: @ 0x086AB9A8
     packed_sprite_oam x=0x0, y=0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x108, paletteNum=0x1
 
 gUnknown_086AB9C2:: @ 0x086AB9C2
-    .incbin "baserom.gba", 0x6AB9C2, 0x26
+.2byte 1
+    packed_sprite_oam x=-0x20, y=-0x20, spriteSize=SPRITE_SIZE_64x64, tileNum=0x10, paletteNum=0x8
+
+    .2byte 0x3, 0x2, 0x4, 0x1, 0x4, 0x0, 0x4, 0x3
+    .2byte 0x5, 0x4, 0x4, 0x4, 0x3, 0x4, 0x0
 
 gUnknown_086AB9E8:: @ 0x086AB9E8
     .4byte gUnknown_086ABA14
@@ -5075,7 +5258,15 @@ gUnknown_086ABA5C:: @ 0x086ABA5C
     packed_sprite_oam x=-0x20, y=0xe0, spriteSize=SPRITE_SIZE_64x64, tileNum=0x208, paletteNum=0x0
 
 gUnknown_086ABA64:: @ 0x086ABA64
-    .incbin "baserom.gba", 0x6ABA64, 0x48
+.2byte 4
+    packed_sprite_oam x=-0x30, y=-0x30, spriteSize=SPRITE_SIZE_64x64, tileNum=0x214, paletteNum=0x0
+    packed_sprite_oam x=-0x30, y=0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x314, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x31C, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=-0x30, spriteSize=SPRITE_SIZE_32x64, tileNum=0x21C, paletteNum=0x0
+
+    .2byte 0xA, 0x0, 0x3, 0x1, 0x3, 0x2, 0x3, 0x3
+    .2byte 0x3, 0x4, 0x3, 0x5, 0x3, 0x6, 0x3, 0x7
+    .2byte 0x3, 0x8, 0x3, 0x9, 0x3, 0x0, 0x0
 
 gUnknown_086ABAAC:: @ 0x086ABAAC
     .4byte gUnknown_086ABB08
@@ -5515,7 +5706,32 @@ gUnknown_086AC348:: @ 0x086AC348
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x14e, paletteNum=0x4
 
 gUnknown_086AC350:: @ 0x086AC350
-    .incbin "baserom.gba", 0x6AC350, 0x88
+.2byte 2
+    packed_sprite_oam x=-0x30, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x298, paletteNum=0x2
+    packed_sprite_oam x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x300, paletteNum=0x2
+
+gUnusedSpriteSets_6AC35E:: @ 086AC35E
+    packed_sprite_oam x=0x0, y=0x1E, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oam x=0x5, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x3, y=0x14, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+    packed_sprite_oam x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oam x=0x5, y=0x3, spriteSize=SPRITE_SIZE_8x8, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x14, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+    packed_sprite_oam x=0x14, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x3, paletteNum=0x0
+    packed_sprite_oam x=0x0, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oam x=0x5, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x3, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x3, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x3, y=0x4, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x4, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+    packed_sprite_oam x=0x6, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oam x=0x9, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0xA, spriteSize=SPRITE_SIZE_8x8, tileNum=0xB, paletteNum=0x0
+    packed_sprite_oam x=0xC, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0xD, spriteSize=SPRITE_SIZE_8x8, tileNum=0xE, paletteNum=0x0
+    .2byte 0x28
 
 gUnknown_086AC3D8:: @ 0x086AC3D8
     .4byte gUnknown_086AC434
@@ -5961,7 +6177,38 @@ gUnknown_086ACC98:: @ 0x086ACC98
     packed_sprite_oam x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x8, hFlip=0x1, tileNum=0x14e, paletteNum=0x4
 
 gUnknown_086ACCA0:: @ 0x086ACCA0
-    .incbin "baserom.gba", 0x6ACCA0, 0xB0
+.2byte 2
+    packed_sprite_oam x=-0x30, y=-0x10, spriteSize=SPRITE_SIZE_64x32, tileNum=0x298, paletteNum=0x2
+    packed_sprite_oam x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x300, paletteNum=0x2
+
+gUnusedSpriteSets_6accae:: @ 0x086accae
+    packed_sprite_oam x=0x0, y=0x1F, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oam x=0x5, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2, paletteNum=0x0
+    packed_sprite_oam x=0x3, y=0x14, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+    packed_sprite_oam x=0x14, y=0x0, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x2, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oam x=0x5, y=0x3, spriteSize=SPRITE_SIZE_8x8, tileNum=0x0, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x14, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+    packed_sprite_oam x=0x14, y=0x2, spriteSize=SPRITE_SIZE_8x8, tileNum=0x3, paletteNum=0x0
+    packed_sprite_oam x=0x0, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x14, paletteNum=0x0
+    packed_sprite_oam x=0x5, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x3, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x5, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x3, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x3, y=0x4, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x4, spriteSize=SPRITE_SIZE_8x8, tileNum=0x5, paletteNum=0x0
+    packed_sprite_oam x=0x6, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0x7, spriteSize=SPRITE_SIZE_8x8, tileNum=0x8, paletteNum=0x0
+    packed_sprite_oam x=0x9, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0xA, spriteSize=SPRITE_SIZE_8x8, tileNum=0xB, paletteNum=0x0
+    packed_sprite_oam x=0xC, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x1, paletteNum=0x0
+    packed_sprite_oam x=0x1, y=0xD, spriteSize=SPRITE_SIZE_8x8, tileNum=0xE, paletteNum=0x0
+    packed_sprite_oam x=0xF, y=0x1, spriteSize=SPRITE_SIZE_8x8, tileNum=0x28, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=0x8, spriteSize=SPRITE_SIZE_8x8, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x11, spriteSize=SPRITE_SIZE_8x8, tileNum=0x12, paletteNum=0x0
+    packed_sprite_oam x=0x11, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x4, paletteNum=0x0
+    packed_sprite_oam x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x11, paletteNum=0x0
+    packed_sprite_oam x=0x12, y=0x4, spriteSize=SPRITE_SIZE_8x8, tileNum=0x10, paletteNum=0x0
+    packed_sprite_oam x=0x4, y=0x11, spriteSize=SPRITE_SIZE_8x8, tileNum=0x0, paletteNum=0x0
 
 gWallCollisionPositionCorrection:: @ 0x086ACD50
 	.byte 1, 0; .2byte 65280
@@ -8371,8 +8618,11 @@ gFieldInitFuncs:: @ 0x086B085C
 	.4byte MainGameFrameUpdate
 	.4byte BonusFieldFrameUpdate
 
-gUnknown_086B0864:: @ 0x086B0864
-	.incbin "baserom.gba", 0x6B0864, 0x20
+@ The white member of the timer warning set: identical to _Fast and _Slow except for
+@ colour 3, which is white where they are red and yellow. Nothing in the ROM points at
+@ it - the code alternates _Fast and _Slow against gDefaultTimerPalette instead.
+gTimerWarningPalette_White:: @ 0x086B0864
+    .incbin "graphics/stage/main/timer_warning_white.gbapal.bin"
 
 gTimerWarningPalette_Fast:: @ 0x086B0884
 	.incbin "graphics/stage/main/timer_warning_fast.gbapal"
@@ -8400,58 +8650,58 @@ gRubySlingshotTilePointers:: @ 0x086B08D4
 gShopItemTilePointers:: @ 0x086B094C
     @ Arranged into 3 sets of 3.
     @ Third set is the destination address.
-	.4byte gStoreSignText_08262BB0, gStoreSignText_08262FB0, gStoreSignText_08263430
-    .4byte gStoreSignText_08262C70, gStoreSignText_08263070, gStoreSignText_082634F0
+	.4byte gRubyShopSignMartPiece0, gRubyShopSignMartPiece1, gRubyShopSignMartPiece2
+    .4byte gRubyShopSignCenterPiece0, gRubyShopSignCenterPiece1, gRubyShopSignCenterPiece2
     .4byte 0x0600D860, 0x0600D920, 0x0600D9E0
 
 gRubyProgressDigitTilePointers:: @ 0x086B0970
     @ 11 sets of 2.
     @ Eleventh has the destination address.
-    .4byte gRubyBonusMultDigit_08262790, gRubyBonusMultDigit_082628D0
-    .4byte gRubyBonusMultDigit_082627B0, gRubyBonusMultDigit_082628F0
-    .4byte gRubyBonusMultDigit_082627D0, gRubyBonusMultDigit_08262910
-    .4byte gRubyBonusMultDigit_082627F0, gRubyBonusMultDigit_08262930
-    .4byte gRubyBonusMultDigit_08262810, gRubyBonusMultDigit_08262950
-    .4byte gRubyBonusMultDigit_08262830, gRubyBonusMultDigit_08262970
-    .4byte gRubyBonusMultDigit_08262850, gRubyBonusMultDigit_08262990
-    .4byte gRubyBonusMultDigit_08262870, gRubyBonusMultDigit_082629B0
-    .4byte gRubyBonusMultDigit_08262890, gRubyBonusMultDigit_082629D0
-    .4byte gRubyBonusMultDigit_082628B0, gRubyBonusMultDigit_082629F0
+    .4byte gRubyProgressDigit0_Tens, gRubyProgressDigit0_Ones
+    .4byte gRubyProgressDigit1_Tens, gRubyProgressDigit1_Ones
+    .4byte gRubyProgressDigit2_Tens, gRubyProgressDigit2_Ones
+    .4byte gRubyProgressDigit3_Tens, gRubyProgressDigit3_Ones
+    .4byte gRubyProgressDigit4_Tens, gRubyProgressDigit4_Ones
+    .4byte gRubyProgressDigit5_Tens, gRubyProgressDigit5_Ones
+    .4byte gRubyProgressDigit6_Tens, gRubyProgressDigit6_Ones
+    .4byte gRubyProgressDigit7_Tens, gRubyProgressDigit7_Ones
+    .4byte gRubyProgressDigit8_Tens, gRubyProgressDigit8_Ones
+    .4byte gRubyProgressDigit9_Tens, gRubyProgressDigit9_Ones
     .4byte 0x0600D820, 0x0600D840
 
 gRubyTrapIndicatorTilePointers:: @ 0x086B09C8
     @ 4 sets of 2
     @ fourth set has destination address
-    .4byte gRubyTrapTile_0825FF30, gRubyTrapTile_08260330
-    .4byte gRubyTrapTile_0825FF70, gRubyTrapTile_08260370
-    .4byte gRubyTrapTile_0825FFB0, gRubyTrapTile_082603B0
+    .4byte gRubyTrapIndicatorState0Top, gRubyTrapIndicatorState0Bot
+    .4byte gRubyTrapIndicatorState1Top, gRubyTrapIndicatorState1Bot
+    .4byte gRubyTrapIndicatorState2Top, gRubyTrapIndicatorState2Bot
     .4byte 0x060081C0, 0x060085C0
 
 gRubyCatchLightTilePointers:: @ 0x086B09E8
     @ 3 sets of 7 sets of 2
     @ seventh set has destination address
-    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
-    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
-    .4byte gRubyCatchLight_0825FFF0, gRubyCatchLight_082603F0
-    .4byte gRubyCatchLight_08260030, gRubyCatchLight_08260430
-    .4byte gRubyCatchLight_08260170, gRubyCatchLight_08260570
-    .4byte gRubyCatchLight_082601B0, gRubyCatchLight_082605B0
+    .4byte gRubyCatchLightState0Top, gRubyCatchLightState0Bot
+    .4byte gRubyCatchLightState1Top, gRubyCatchLightState1Bot
+    .4byte gRubyCatchLightSlot0State2Top, gRubyCatchLightSlot0State2Bot
+    .4byte gRubyCatchLightSlot0State3Top, gRubyCatchLightSlot0State3Bot
+    .4byte gRubyCatchLightSlot0State4Top, gRubyCatchLightSlot0State4Bot
+    .4byte gRubyCatchLightSlot0State5Top, gRubyCatchLightSlot0State5Bot
     .4byte 0x0600A180, 0x0600A580
 
-    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
-    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
-    .4byte gRubyCatchLight_08260070, gRubyCatchLight_08260470
-    .4byte gRubyCatchLight_082600B0, gRubyCatchLight_082604B0
-    .4byte gRubyCatchLight_082601F0, gRubyCatchLight_082605F0
-    .4byte gRubyCatchLight_08260230, gRubyCatchLight_08260630
+    .4byte gRubyCatchLightState0Top, gRubyCatchLightState0Bot
+    .4byte gRubyCatchLightState1Top, gRubyCatchLightState1Bot
+    .4byte gRubyCatchLightSlot1State2Top, gRubyCatchLightSlot1State2Bot
+    .4byte gRubyCatchLightSlot1State3Top, gRubyCatchLightSlot1State3Bot
+    .4byte gRubyCatchLightSlot1State4Top, gRubyCatchLightSlot1State4Bot
+    .4byte gRubyCatchLightSlot1State5Top, gRubyCatchLightSlot1State5Bot
     .4byte 0x0600A1C0, 0x0600A5C0
 
-    .4byte gRubyCatchLight_0825FAB0, gRubyCatchLight_0825FEB0
-    .4byte gRubyCatchLight_0825FAF0, gRubyCatchLight_0825FEF0
-    .4byte gRubyCatchLight_082600F0, gRubyCatchLight_082604F0
-    .4byte gRubyCatchLight_08260130, gRubyCatchLight_08260530
-    .4byte gRubyCatchLight_08260270, gRubyCatchLight_08260670
-    .4byte gRubyCatchLight_082602B0, gRubyCatchLight_082606B0
+    .4byte gRubyCatchLightState0Top, gRubyCatchLightState0Bot
+    .4byte gRubyCatchLightState1Top, gRubyCatchLightState1Bot
+    .4byte gRubyCatchLightSlot2State2Top, gRubyCatchLightSlot2State2Bot
+    .4byte gRubyCatchLightSlot2State3Top, gRubyCatchLightSlot2State3Bot
+    .4byte gRubyCatchLightSlot2State4Top, gRubyCatchLightSlot2State4Bot
+    .4byte gRubyCatchLightSlot2State5Top, gRubyCatchLightSlot2State5Bot
     .4byte 0x0600A200, 0x0600A600
 
 gRubySaverTilePointers:: @ 0x086B0A90
@@ -8571,7 +8821,7 @@ gRubyGetArrowTilePtrs:: @ 0x086B0D6C
     .4byte gRubyGetArrow_0825EE90, gRubyGetArrow_0825F270, gRubyGetArrow_0825F670
     .4byte 0x06008AC0, 0x06008EA0, 0x060092A0
 
-gBallShadowTileIndices:: @ 0x086B0E20
+gBallUpgradeFx_TileIndicies:: @ 0x086B0E20
     @ 31 values (ix 0 - 30) used, then padding
 	.2byte 0,0,0,0,1,1,1,1,2,2
     .2byte 2,2,3,3,3,3,4,4,4,4
@@ -8585,131 +8835,131 @@ gSlingshotHitFrameIndices:: @ 0x086B0E60
 gSapphirePSquareIndicator:: @ 0x086B0E6C
     @ 6 sets of 2
     @ sixth set has destination address
-    .4byte gSapphirePIndicator_082DEEE0, gSapphirePIndicator_082DF2E0
-    .4byte gSapphirePIndicator_082DEF20, gSapphirePIndicator_082DF320
-    .4byte gSapphirePIndicator_082DEF60, gSapphirePIndicator_082DF360
-    .4byte gSapphirePIndicator_082DEFA0, gSapphirePIndicator_082DF3A0
-    .4byte gSapphirePIndicator_082DEFE0, gSapphirePIndicator_082DF3E0
+    .4byte gSapphirePSquareFrame0Top, gSapphirePSquareFrame0Bot
+    .4byte gSapphirePSquareFrame1Top, gSapphirePSquareFrame1Bot
+    .4byte gSapphirePSquareFrame2Top, gSapphirePSquareFrame2Bot
+    .4byte gSapphirePSquareFrame3Top, gSapphirePSquareFrame3Bot
+    .4byte gSapphirePSquareFrame4Top, gSapphirePSquareFrame4Bot
     .4byte 0x0600A640, 0x0600AA40
 
 gSapphireProgressDigitTilePtrs:: @ 0x086B0E9C
 	@ 11 sets of 4
     @ eleventh set has destination address
-    .4byte gSapphireBonusArrow_00_Top, gSapphireBonusArrow_00_Bot, gSapphireBonusArrow_0_Top, gSapphireBonusArrow_0_Bot
-    .4byte gSapphireBonusArrow_10_Top, gSapphireBonusArrow_10_Bot, gSapphireBonusArrow_1_Top, gSapphireBonusArrow_1_Bot
-    .4byte gSapphireBonusArrow_20_Top, gSapphireBonusArrow_20_Bot, gSapphireBonusArrow_2_Top, gSapphireBonusArrow_2_Bot
-    .4byte gSapphireBonusArrow_30_Top, gSapphireBonusArrow_30_Bot, gSapphireBonusArrow_3_Top, gSapphireBonusArrow_3_Bot
-    .4byte gSapphireBonusArrow_40_Top, gSapphireBonusArrow_40_Bot, gSapphireBonusArrow_4_Top, gSapphireBonusArrow_4_Bot
-    .4byte gSapphireBonusArrow_50_Top, gSapphireBonusArrow_50_Bot, gSapphireBonusArrow_5_Top, gSapphireBonusArrow_5_Bot
-    .4byte gSapphireBonusArrow_60_Top, gSapphireBonusArrow_60_Bot, gSapphireBonusArrow_6_Top, gSapphireBonusArrow_6_Bot
-    .4byte gSapphireBonusArrow_70_Top, gSapphireBonusArrow_70_Bot, gSapphireBonusArrow_7_Top, gSapphireBonusArrow_7_Bot
-    .4byte gSapphireBonusArrow_80_Top, gSapphireBonusArrow_80_Bot, gSapphireBonusArrow_8_Top, gSapphireBonusArrow_8_Bot
-    .4byte gSapphireBonusArrow_90_Top, gSapphireBonusArrow_90_Bot, gSapphireBonusArrow_9_Top, gSapphireBonusArrow_9_Bot
+    .4byte gSapphireProgressDigit0_TensTop, gSapphireProgressDigit0_TensBot, gSapphireProgressDigit0_OnesTop, gSapphireProgressDigit0_OnesBot
+    .4byte gSapphireProgressDigit1_TensTop, gSapphireProgressDigit1_TensBot, gSapphireProgressDigit1_OnesTop, gSapphireProgressDigit1_OnesBot
+    .4byte gSapphireProgressDigit2_TensTop, gSapphireProgressDigit2_TensBot, gSapphireProgressDigit2_OnesTop, gSapphireProgressDigit2_OnesBot
+    .4byte gSapphireProgressDigit3_TensTop, gSapphireProgressDigit3_TensBot, gSapphireProgressDigit3_OnesTop, gSapphireProgressDigit3_OnesBot
+    .4byte gSapphireProgressDigit4_TensTop, gSapphireProgressDigit4_TensBot, gSapphireProgressDigit4_OnesTop, gSapphireProgressDigit4_OnesBot
+    .4byte gSapphireProgressDigit5_TensTop, gSapphireProgressDigit5_TensBot, gSapphireProgressDigit5_OnesTop, gSapphireProgressDigit5_OnesBot
+    .4byte gSapphireProgressDigit6_TensTop, gSapphireProgressDigit6_TensBot, gSapphireProgressDigit6_OnesTop, gSapphireProgressDigit6_OnesBot
+    .4byte gSapphireProgressDigit7_TensTop, gSapphireProgressDigit7_TensBot, gSapphireProgressDigit7_OnesTop, gSapphireProgressDigit7_OnesBot
+    .4byte gSapphireProgressDigit8_TensTop, gSapphireProgressDigit8_TensBot, gSapphireProgressDigit8_OnesTop, gSapphireProgressDigit8_OnesBot
+    .4byte gSapphireProgressDigit9_TensTop, gSapphireProgressDigit9_TensBot, gSapphireProgressDigit9_OnesTop, gSapphireProgressDigit9_OnesBot
     .4byte 0x0600B220, 0x0600B620, 0x0600B240, 0x0600B640
 
 gRotatingBackgroundTilePtrs:: @ 0x086B0F4C
     @ 5 sets of 4
     @ fifth set has destination address
-    .4byte gWailmerWater_082E3EC0, gWailmerWater_082E42C0, gWailmerWater_082E46C0, gWailmerWater_082E4AC0
-    .4byte gWailmerWater_082E3F40, gWailmerWater_082E4340, gWailmerWater_082E4740, gWailmerWater_082E4B40
-    .4byte gWailmerWater_082E3FC0, gWailmerWater_082E43C0, gWailmerWater_082E47C0, gWailmerWater_082E4BC0
-    .4byte gWailmerWater_082E3F40, gWailmerWater_082E4340, gWailmerWater_082E4740, gWailmerWater_082E4B40
+    .4byte gWailmerWaterFrame0Row0, gWailmerWaterFrame0Row1, gWailmerWaterFrame0Row2, gWailmerWaterFrame0Row3
+    .4byte gWailmerWaterFrame1Row0, gWailmerWaterFrame1Row1, gWailmerWaterFrame1Row2, gWailmerWaterFrame1Row3
+    .4byte gWailmerWaterFrame2Row0, gWailmerWaterFrame2Row1, gWailmerWaterFrame2Row2, gWailmerWaterFrame2Row3
+    .4byte gWailmerWaterFrame1Row0, gWailmerWaterFrame1Row1, gWailmerWaterFrame1Row2, gWailmerWaterFrame1Row3
     .4byte 0x0600AEA0, 0x0600B2A0, 0x0600B6A0, 0x0600BAA0
 
 gHatchMachineDrawSegment:: @ 0x086B0F9C
     @ 10 sets of 3 sets of 2
     @ third set has destination address
-    .4byte gHatchMachine_082DE1E0, gHatchMachine_082DE5E0
-    .4byte gHatchMachine_082DE620, gHatchMachine_082DEA20
+    .4byte gHatchMachineSeg0IdleA, gHatchMachineSeg0IdleB
+    .4byte gHatchMachineSeg0HitA, gHatchMachineSeg0HitB
     .4byte 0x0600DD40, 0x0600DD80
 
-    .4byte gHatchMachine_082DE660, gHatchMachine_082DEA60
-    .4byte gHatchMachine_082DE6A0, gHatchMachine_082DEAA0
+    .4byte gHatchMachineSeg1IdleA, gHatchMachineSeg1IdleB
+    .4byte gHatchMachineSeg1HitA, gHatchMachineSeg1HitB
     .4byte 0x0600DDC0, 0x0600DE00
 
-    .4byte gHatchMachine_082DE6E0, gHatchMachine_082DEAE0
-    .4byte gHatchMachine_082DE720, gHatchMachine_082DEB20
+    .4byte gHatchMachineSeg2IdleA, gHatchMachineSeg2IdleB
+    .4byte gHatchMachineSeg2HitA, gHatchMachineSeg2HitB
     .4byte 0x0600D9C0, 0x0600DAC0
 
-    .4byte gHatchMachine_082DEB60, gHatchMachine_082DEB60
-    .4byte gHatchMachine_082DEBA0, gHatchMachine_082DEBA0
+    .4byte gHatchMachineSeg3Idle, gHatchMachineSeg3Idle
+    .4byte gHatchMachineSeg3Hit, gHatchMachineSeg3Hit
     .4byte 0x0600DE40, 0x0600DE40
 
-    .4byte gHatchMachine_082DE7E0, gHatchMachine_082DEBE0
-    .4byte gHatchMachine_082DE820, gHatchMachine_082DEC20
+    .4byte gHatchMachineSeg4IdleA, gHatchMachineSeg4IdleB
+    .4byte gHatchMachineSeg4HitA, gHatchMachineSeg4HitB
     .4byte 0x0600D900, 0x0600DA00
 
-    .4byte gHatchMachine_082DE860, gHatchMachine_082DEC60
-    .4byte gHatchMachine_082DE8A0, gHatchMachine_082DECA0
+    .4byte gHatchMachineSeg5IdleA, gHatchMachineSeg5IdleB
+    .4byte gHatchMachineSeg5HitA, gHatchMachineSeg5HitB
     .4byte 0x0600DE80, 0x0600DEC0
 
-    .4byte gHatchMachine_082DE8E0, gHatchMachine_082DECE0
-    .4byte gHatchMachine_082DE920, gHatchMachine_082DED20
+    .4byte gHatchMachineSeg6IdleA, gHatchMachineSeg6IdleB
+    .4byte gHatchMachineSeg6HitA, gHatchMachineSeg6HitB
     .4byte 0x0600DF00, 0x0600DF40
 
-    .4byte gHatchMachine_082DE960, gHatchMachine_082DED60
-    .4byte gHatchMachine_082DE9A0, gHatchMachine_082DEDA0
+    .4byte gHatchMachineSeg7IdleA, gHatchMachineSeg7IdleB
+    .4byte gHatchMachineSeg7HitA, gHatchMachineSeg7HitB
     .4byte 0x0600DF80, 0x0600DFC0
 
-    .4byte gHatchMachine_082DE9E0, gHatchMachine_082DEDE0
-    .4byte gHatchMachine_082DEE20, gHatchMachine_082DF220
+    .4byte gHatchMachineSeg8IdleA, gHatchMachineSeg8IdleB
+    .4byte gHatchMachineSeg8HitA, gHatchMachineSeg8HitB
     .4byte 0x0600E000, 0x0600E040
 
-    .4byte gHatchMachine_082DEE60, gHatchMachine_082DF260
-    .4byte gHatchMachine_082DEEA0, gHatchMachine_082DF2A0
+    .4byte gHatchMachineSeg9IdleA, gHatchMachineSeg9IdleB
+    .4byte gHatchMachineSeg9HitA, gHatchMachineSeg9HitB
     .4byte 0x0600E080, 0x0600E0C0
 
 gSapphireSlingshotTilePtrs:: @ 0x086B108C
     @ 2 sets (sides) of 3 sets of 5
     @ third set has destination address
-    .4byte gSapphireSlingshot_082E2AA0, gSapphireSlingshot_082E2EA0, gSapphireSlingshot_082E32A0, gSapphireSlingshot_082E36A0, gSapphireSlingshot_082E3AC0
-    .4byte gSapphireSlingshot_082E2B00, gSapphireSlingshot_082E2F00, gSapphireSlingshot_082E3300, gSapphireSlingshot_082E3700, gSapphireSlingshot_082E3B20
+    .4byte gSapphire_LSlingshot_Off_R0, gSapphire_LSlingshot_Off_R1, gSapphire_LSlingshot_Off_R2, gSapphire_LSlingshot_Off_R3, gSapphire_LSlingshot_Off_R4
+    .4byte gSapphire_LSlingshot_On_R0, gSapphire_LSlingshot_On_R1, gSapphire_LSlingshot_On_R2, gSapphire_LSlingshot_On_R3, gSapphire_LSlingshot_On_R4
     .4byte 0x0600E100, 0x0600E120, 0x0600E160, 0x0600E1C0, 0x0600E220
 
-    .4byte gSapphireSlingshot_082E2BA0, gSapphireSlingshot_082E2F80, gSapphireSlingshot_082E3360, gSapphireSlingshot_082E3760, gSapphireSlingshot_082E3B60
-    .4byte gSapphireSlingshot_082E2C00, gSapphireSlingshot_082E2FE0, gSapphireSlingshot_082E33C0, gSapphireSlingshot_082E37C0, gSapphireSlingshot_082E3BC0
+    .4byte gSapphire_RSlingshot_Off_R0, gSapphire_RSlingshot_Off_R1, gSapphire_RSlingshot_Off_R2, gSapphire_RSlingshot_Off_R3, gSapphire_RSlingshot_Off_R4
+    .4byte gSapphire_RSlingshot_On_R0, gSapphire_RSlingshot_On_R1, gSapphire_RSlingshot_On_R2, gSapphire_RSlingshot_On_R3, gSapphire_RSlingshot_On_R4
     .4byte 0x0600E260, 0x0600E280, 0x0600E2C0, 0x0600E320, 0x0600E380
 
 gSapphireTrapIndicatorTilePtrs:: @ 0x086B1104
     @ 4 sets of 2
     @ fourth set has destination address
-    .4byte gSapphireCenterTrap_082DDE20, gSapphireCenterTrap_082DE220
-    .4byte gSapphireCenterTrap_082DDE60, gSapphireCenterTrap_082DE260
-    .4byte gSapphireCenterTrap_082DDEA0, gSapphireCenterTrap_082DE2A0
+    .4byte gSapphireTrapIndicatorState0Top, gSapphireTrapIndicatorState0Bot
+    .4byte gSapphireTrapIndicatorState1Top, gSapphireTrapIndicatorState1Bot
+    .4byte gSapphireTrapIndicatorState2Top, gSapphireTrapIndicatorState2Bot
     .4byte 0x060081C0, 0x060085C0
 
 gSapphireCatchLightTilePtrs:: @ 0x086B1124
     @ 3 sets of 7 sets of 2
     @ seventh set has destination address
-    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
-    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
-    .4byte gSapphireCatchLight_082DDEE0, gSapphireCatchLight_082DE2E0
-    .4byte gSapphireCatchLight_082DDF20, gSapphireCatchLight_082DE320
-    .4byte gSapphireCatchLight_082DE060, gSapphireCatchLight_082DE460
-    .4byte gSapphireCatchLight_082DE0A0, gSapphireCatchLight_082DE4A0
+    .4byte gSapphireCatchLightState0Top, gSapphireCatchLightState0Bot
+    .4byte gSapphireCatchLightState1Top, gSapphireCatchLightState1Bot
+    .4byte gSapphireCatchLightSlot0State2Top, gSapphireCatchLightSlot0State2Bot
+    .4byte gSapphireCatchLightSlot0State3Top, gSapphireCatchLightSlot0State3Bot
+    .4byte gSapphireCatchLightSlot0State4Top, gSapphireCatchLightSlot0State4Bot
+    .4byte gSapphireCatchLightSlot0State5Top, gSapphireCatchLightSlot0State5Bot
     .4byte 0x0600A180, 0x0600A580
 
-    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
-    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
-    .4byte gSapphireCatchLight_082DDF60, gSapphireCatchLight_082DE360
-    .4byte gSapphireCatchLight_082DDFA0, gSapphireCatchLight_082DE3A0
-    .4byte gSapphireCatchLight_082DE0E0, gSapphireCatchLight_082DE4E0
-    .4byte gSapphireCatchLight_082DE120, gSapphireCatchLight_082DE520
+    .4byte gSapphireCatchLightState0Top, gSapphireCatchLightState0Bot
+    .4byte gSapphireCatchLightState1Top, gSapphireCatchLightState1Bot
+    .4byte gSapphireCatchLightSlot1State2Top, gSapphireCatchLightSlot1State2Bot
+    .4byte gSapphireCatchLightSlot1State3Top, gSapphireCatchLightSlot1State3Bot
+    .4byte gSapphireCatchLightSlot1State4Top, gSapphireCatchLightSlot1State4Bot
+    .4byte gSapphireCatchLightSlot1State5Top, gSapphireCatchLightSlot1State5Bot
     .4byte 0x0600A1C0, 0x0600A5C0
 
-    .4byte gSapphireCatchLight_082DD9A0, gSapphireCatchLight_082DDDA0
-    .4byte gSapphireCatchLight_082DD9E0, gSapphireCatchLight_082DDDE0
-    .4byte gSapphireCatchLight_082DDFE0, gSapphireCatchLight_082DE3E0
-    .4byte gSapphireCatchLight_082DE020, gSapphireCatchLight_082DE420
-    .4byte gSapphireCatchLight_082DE160, gSapphireCatchLight_082DE560
-    .4byte gSapphireCatchLight_082DE1A0, gSapphireCatchLight_082DE5A0
+    .4byte gSapphireCatchLightState0Top, gSapphireCatchLightState0Bot
+    .4byte gSapphireCatchLightState1Top, gSapphireCatchLightState1Bot
+    .4byte gSapphireCatchLightSlot2State2Top, gSapphireCatchLightSlot2State2Bot
+    .4byte gSapphireCatchLightSlot2State3Top, gSapphireCatchLightSlot2State3Bot
+    .4byte gSapphireCatchLightSlot2State4Top, gSapphireCatchLightSlot2State4Bot
+    .4byte gSapphireCatchLightSlot2State5Top, gSapphireCatchLightSlot2State5Bot
     .4byte 0x0600A200, 0x0600A600
 
 gSapphireSaverDisplayTilePtrs:: @ 0x086B11CC
     @ 3 sets of 4
     @ third set has destination address
-    .4byte gSapphireSaver_082DF660, gSapphireSaver_082DFA60, gSapphireSaver_082DFE80, gSapphireSaver_082E02E0
-    .4byte gSapphireSaver_082DF760, gSapphireSaver_082DFB60, gSapphireSaver_082DFF80, gSapphireSaver_082E03E0
+    .4byte gSapphireSaverRow0Tile_Off, gSapphireSaverRow1Tile_Off, gSapphireSaverRow2Tile_Off, gSapphireSaverRow3Tile_Off
+    .4byte gSapphireSaverRow0Tile_On, gSapphireSaverRow1Tile_On, gSapphireSaverRow2Tile_On, gSapphireSaverRow3Tile_On
     .4byte 0x0600AD80, 0x0600B180, 0x0600B5A0, 0x0600BA00
 
 gSapphireHatchArrowTilePtrs:: @ 0x086B11FC
@@ -15507,7 +15757,7 @@ gGroudonEntitySpriteSet:: @ 0x086BA6CA
     packed_sprite_oaml x=-0x64, y=0x0, matrixNum=0x2, spriteSize=SPRITE_SIZE_16x16, tileNum=0x0, paletteNum=0x0
 @ List ends early. See note above.
 
-.incbin "baserom.gba", 0x6BA754, 0x8
+    .2byte 0x459C, 0x0, 0x0, 0x459C
 
 @	.incbin "baserom.gba", 0x6BA6Ca, 0x92
 
@@ -16783,7 +17033,7 @@ gUnusedRomTail:: @ 0x086BBD28
 @ 4-byte-aligned word for a pointer into this range. It holds stale pointer
 @ tables (some targeting addresses past the 0x6BBFD0 rom end) and a second copy
 @ of the POKEPINAGB save signature that lives for real at gSaveFileSignature.
-	.incbin "baserom.gba", 0x6BBD28, 0x2A8 @ 0x6BBFD0 - 0x6BBD28
+    .incbin "data/unused_rom_tail.bin"
 
 .align 2
 

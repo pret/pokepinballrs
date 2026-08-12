@@ -5,345 +5,1017 @@
     "mwidth": 6,
     "mheight": 6,
     "oam": true,
-    "width": 18,
+    "width": 6,
     "palette": ""
   },
   "files": [
     {
-      "gfx_filename": "catch_mon_01_treecko",
-      "palette": "catch_mon_01_treecko.gbapal"
+      "gfx_filename": "catch_mon_01_treecko_0",
+      "palette": "catch_mon_01_treecko_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_02_torchic",
-      "palette": "catch_mon_02_torchic.gbapal"
+      "gfx_filename": "catch_mon_01_treecko_1",
+      "palette": "catch_mon_01_treecko_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_03_mudkip",
-      "palette": "catch_mon_03_mudkip.gbapal"
+      "gfx_filename": "catch_mon_01_treecko_2",
+      "palette": "catch_mon_01_treecko_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_04_poochyena",
-      "palette": "catch_mon_04_poochyena.gbapal"
+      "gfx_filename": "catch_mon_02_torchic_0",
+      "palette": "catch_mon_02_torchic_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_05_zigzagoon",
-      "palette": "catch_mon_05_zigzagoon.gbapal"
+      "gfx_filename": "catch_mon_02_torchic_1",
+      "palette": "catch_mon_02_torchic_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_06_silcoon",
-      "palette": "catch_mon_06_silcoon.gbapal"
+      "gfx_filename": "catch_mon_02_torchic_2",
+      "palette": "catch_mon_02_torchic_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_07_cascoon",
-      "palette": "catch_mon_07_cascoon.gbapal"
+      "gfx_filename": "catch_mon_03_mudkip_0",
+      "palette": "catch_mon_03_mudkip_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_08_lombre",
-      "palette": "catch_mon_08_lombre.gbapal"
+      "gfx_filename": "catch_mon_03_mudkip_1",
+      "palette": "catch_mon_03_mudkip_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_09_nuzleaf",
-      "palette": "catch_mon_09_nuzleaf.gbapal"
+      "gfx_filename": "catch_mon_03_mudkip_2",
+      "palette": "catch_mon_03_mudkip_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_10_tailow",
-      "palette": "catch_mon_10_tailow.gbapal"
+      "gfx_filename": "catch_mon_04_poochyena_0",
+      "palette": "catch_mon_04_poochyena_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_11_wingull",
-      "palette": "catch_mon_11_wingull.gbapal"
+      "gfx_filename": "catch_mon_04_poochyena_1",
+      "palette": "catch_mon_04_poochyena_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_12_slakoth",
-      "palette": "catch_mon_12_slakoth.gbapal"
+      "gfx_filename": "catch_mon_04_poochyena_2",
+      "palette": "catch_mon_04_poochyena_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_13_abra",
-      "palette": "catch_mon_13_abra.gbapal"
+      "gfx_filename": "catch_mon_05_zigzagoon_0",
+      "palette": "catch_mon_05_zigzagoon_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_14_nincada",
-      "palette": "catch_mon_14_nincada.gbapal"
+      "gfx_filename": "catch_mon_05_zigzagoon_1",
+      "palette": "catch_mon_05_zigzagoon_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_15_loudred",
-      "palette": "catch_mon_15_loudred.gbapal"
+      "gfx_filename": "catch_mon_05_zigzagoon_2",
+      "palette": "catch_mon_05_zigzagoon_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_16_makuhita",
-      "palette": "catch_mon_16_makuhita.gbapal"
+      "gfx_filename": "catch_mon_06_silcoon_0",
+      "palette": "catch_mon_06_silcoon_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_17_goldeen",
-      "palette": "catch_mon_17_goldeen.gbapal"
+      "gfx_filename": "catch_mon_06_silcoon_1",
+      "palette": "catch_mon_06_silcoon_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_18_magikarp",
-      "palette": "catch_mon_18_magikarp.gbapal"
+      "gfx_filename": "catch_mon_06_silcoon_2",
+      "palette": "catch_mon_06_silcoon_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_19_marill",
-      "palette": "catch_mon_19_marill.gbapal"
+      "gfx_filename": "catch_mon_07_cascoon_0",
+      "palette": "catch_mon_07_cascoon_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_20_geodude",
-      "palette": "catch_mon_20_geodude.gbapal"
+      "gfx_filename": "catch_mon_07_cascoon_1",
+      "palette": "catch_mon_07_cascoon_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_21_nosepass",
-      "palette": "catch_mon_21_nosepass.gbapal"
+      "gfx_filename": "catch_mon_07_cascoon_2",
+      "palette": "catch_mon_07_cascoon_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_22_tentacool",
-      "palette": "catch_mon_22_tentacool.gbapal"
+      "gfx_filename": "catch_mon_08_lombre_0",
+      "palette": "catch_mon_08_lombre_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_23_sableye",
-      "palette": "catch_mon_23_sableye.gbapal"
+      "gfx_filename": "catch_mon_08_lombre_1",
+      "palette": "catch_mon_08_lombre_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_24_mawile",
-      "palette": "catch_mon_24_mawile.gbapal"
+      "gfx_filename": "catch_mon_08_lombre_2",
+      "palette": "catch_mon_08_lombre_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_25_machop",
-      "palette": "catch_mon_25_machop.gbapal"
+      "gfx_filename": "catch_mon_09_nuzleaf_0",
+      "palette": "catch_mon_09_nuzleaf_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_26_meditite",
-      "palette": "catch_mon_26_meditite.gbapal"
+      "gfx_filename": "catch_mon_09_nuzleaf_1",
+      "palette": "catch_mon_09_nuzleaf_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_27_electrike",
-      "palette": "catch_mon_27_electrike.gbapal"
+      "gfx_filename": "catch_mon_09_nuzleaf_2",
+      "palette": "catch_mon_09_nuzleaf_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_28_magnemite",
-      "palette": "catch_mon_28_magnemite.gbapal"
+      "gfx_filename": "catch_mon_10_tailow_0",
+      "palette": "catch_mon_10_tailow_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_29_voltorb",
-      "palette": "catch_mon_29_voltorb.gbapal"
+      "gfx_filename": "catch_mon_10_tailow_1",
+      "palette": "catch_mon_10_tailow_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_30_volbeat",
-      "palette": "catch_mon_30_volbeat.gbapal"
+      "gfx_filename": "catch_mon_10_tailow_2",
+      "palette": "catch_mon_10_tailow_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_31_illumise",
-      "palette": "catch_mon_31_illumise.gbapal"
+      "gfx_filename": "catch_mon_11_wingull_0",
+      "palette": "catch_mon_11_wingull_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_32_doduo",
-      "palette": "catch_mon_32_doduo.gbapal"
+      "gfx_filename": "catch_mon_11_wingull_1",
+      "palette": "catch_mon_11_wingull_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_33_roselia",
-      "palette": "catch_mon_33_roselia.gbapal"
+      "gfx_filename": "catch_mon_11_wingull_2",
+      "palette": "catch_mon_11_wingull_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_34_carvanha",
-      "palette": "catch_mon_34_carvanha.gbapal"
+      "gfx_filename": "catch_mon_12_slakoth_0",
+      "palette": "catch_mon_12_slakoth_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_35_wailmer",
-      "palette": "catch_mon_35_wailmer.gbapal"
+      "gfx_filename": "catch_mon_12_slakoth_1",
+      "palette": "catch_mon_12_slakoth_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_36_numel",
-      "palette": "catch_mon_36_numel.gbapal"
+      "gfx_filename": "catch_mon_12_slakoth_2",
+      "palette": "catch_mon_12_slakoth_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_37_slugma",
-      "palette": "catch_mon_37_slugma.gbapal"
+      "gfx_filename": "catch_mon_13_abra_0",
+      "palette": "catch_mon_13_abra_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_38_torkoal",
-      "palette": "catch_mon_38_torkoal.gbapal"
+      "gfx_filename": "catch_mon_13_abra_1",
+      "palette": "catch_mon_13_abra_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_39_grimer",
-      "palette": "catch_mon_39_grimer.gbapal"
+      "gfx_filename": "catch_mon_13_abra_2",
+      "palette": "catch_mon_13_abra_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_40_koffing",
-      "palette": "catch_mon_40_koffing.gbapal"
+      "gfx_filename": "catch_mon_14_nincada_0",
+      "palette": "catch_mon_14_nincada_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_41_skarmory",
-      "palette": "catch_mon_41_skarmory.gbapal"
+      "gfx_filename": "catch_mon_14_nincada_1",
+      "palette": "catch_mon_14_nincada_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_42_vibrava",
-      "palette": "catch_mon_42_vibrava.gbapal"
+      "gfx_filename": "catch_mon_14_nincada_2",
+      "palette": "catch_mon_14_nincada_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_43_cacnea",
-      "palette": "catch_mon_43_cacnea.gbapal"
+      "gfx_filename": "catch_mon_15_loudred_0",
+      "palette": "catch_mon_15_loudred_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_44_swablu",
-      "palette": "catch_mon_44_swablu.gbapal"
+      "gfx_filename": "catch_mon_15_loudred_1",
+      "palette": "catch_mon_15_loudred_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_45_zangoose",
-      "palette": "catch_mon_45_zangoose.gbapal"
+      "gfx_filename": "catch_mon_15_loudred_2",
+      "palette": "catch_mon_15_loudred_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_46_seviper",
-      "palette": "catch_mon_46_seviper.gbapal"
+      "gfx_filename": "catch_mon_16_makuhita_0",
+      "palette": "catch_mon_16_makuhita_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_47_lunatone",
-      "palette": "catch_mon_47_lunatone.gbapal"
+      "gfx_filename": "catch_mon_16_makuhita_1",
+      "palette": "catch_mon_16_makuhita_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_48_solrock",
-      "palette": "catch_mon_48_solrock.gbapal"
+      "gfx_filename": "catch_mon_16_makuhita_2",
+      "palette": "catch_mon_16_makuhita_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_49_barboach",
-      "palette": "catch_mon_49_barboach.gbapal"
+      "gfx_filename": "catch_mon_17_goldeen_0",
+      "palette": "catch_mon_17_goldeen_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_50_corphish",
-      "palette": "catch_mon_50_corphish.gbapal"
+      "gfx_filename": "catch_mon_17_goldeen_1",
+      "palette": "catch_mon_17_goldeen_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_51_baltoy",
-      "palette": "catch_mon_51_baltoy.gbapal"
+      "gfx_filename": "catch_mon_17_goldeen_2",
+      "palette": "catch_mon_17_goldeen_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_52_lileep",
-      "palette": "catch_mon_52_lileep.gbapal"
+      "gfx_filename": "catch_mon_18_magikarp_0",
+      "palette": "catch_mon_18_magikarp_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_53_anorith",
-      "palette": "catch_mon_53_anorith.gbapal"
+      "gfx_filename": "catch_mon_18_magikarp_1",
+      "palette": "catch_mon_18_magikarp_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_54_jigglypuff",
-      "palette": "catch_mon_54_jigglypuff.gbapal"
+      "gfx_filename": "catch_mon_18_magikarp_2",
+      "palette": "catch_mon_18_magikarp_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_55_febas",
-      "palette": "catch_mon_55_febas.gbapal"
+      "gfx_filename": "catch_mon_19_marill_0",
+      "palette": "catch_mon_19_marill_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_56_castform",
-      "palette": "catch_mon_56_castform.gbapal"
+      "gfx_filename": "catch_mon_19_marill_1",
+      "palette": "catch_mon_19_marill_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_57_staryu",
-      "palette": "catch_mon_57_staryu.gbapal"
+      "gfx_filename": "catch_mon_19_marill_2",
+      "palette": "catch_mon_19_marill_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_58_kecleon",
-      "palette": "catch_mon_58_kecleon.gbapal"
+      "gfx_filename": "catch_mon_20_geodude_0",
+      "palette": "catch_mon_20_geodude_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_59_duskull",
-      "palette": "catch_mon_59_duskull.gbapal"
+      "gfx_filename": "catch_mon_20_geodude_1",
+      "palette": "catch_mon_20_geodude_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_60_tropius",
-      "palette": "catch_mon_60_tropius.gbapal"
+      "gfx_filename": "catch_mon_20_geodude_2",
+      "palette": "catch_mon_20_geodude_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_61_absol",
-      "palette": "catch_mon_61_absol.gbapal"
+      "gfx_filename": "catch_mon_21_nosepass_0",
+      "palette": "catch_mon_21_nosepass_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_62_vulpix",
-      "palette": "catch_mon_62_vulpix.gbapal"
+      "gfx_filename": "catch_mon_21_nosepass_1",
+      "palette": "catch_mon_21_nosepass_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_63_pikachu",
-      "palette": "catch_mon_63_pikachu.gbapal"
+      "gfx_filename": "catch_mon_21_nosepass_2",
+      "palette": "catch_mon_21_nosepass_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_64_psyduck",
-      "palette": "catch_mon_64_psyduck.gbapal"
+      "gfx_filename": "catch_mon_22_tentacool_0",
+      "palette": "catch_mon_22_tentacool_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_65_wobbuffet",
-      "palette": "catch_mon_65_wobbuffet.gbapal"
+      "gfx_filename": "catch_mon_22_tentacool_1",
+      "palette": "catch_mon_22_tentacool_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_66_girafarig",
-      "palette": "catch_mon_66_girafarig.gbapal"
+      "gfx_filename": "catch_mon_22_tentacool_2",
+      "palette": "catch_mon_22_tentacool_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_67_pinsir",
-      "palette": "catch_mon_67_pinsir.gbapal"
+      "gfx_filename": "catch_mon_23_sableye_0",
+      "palette": "catch_mon_23_sableye_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_68_heracross",
-      "palette": "catch_mon_68_heracross.gbapal"
+      "gfx_filename": "catch_mon_23_sableye_1",
+      "palette": "catch_mon_23_sableye_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_69_rhyhorn",
-      "palette": "catch_mon_69_rhyhorn.gbapal"
+      "gfx_filename": "catch_mon_23_sableye_2",
+      "palette": "catch_mon_23_sableye_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_70_clamperl",
-      "palette": "catch_mon_70_clamperl.gbapal"
+      "gfx_filename": "catch_mon_24_mawile_0",
+      "palette": "catch_mon_24_mawile_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_71_relicanth",
-      "palette": "catch_mon_71_relicanth.gbapal"
+      "gfx_filename": "catch_mon_24_mawile_1",
+      "palette": "catch_mon_24_mawile_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_72_luvdisc",
-      "palette": "catch_mon_72_luvdisc.gbapal"
+      "gfx_filename": "catch_mon_24_mawile_2",
+      "palette": "catch_mon_24_mawile_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_73_shelgon",
-      "palette": "catch_mon_73_shelgon.gbapal"
+      "gfx_filename": "catch_mon_25_machop_0",
+      "palette": "catch_mon_25_machop_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_74_beldum",
-      "palette": "catch_mon_74_beldum.gbapal"
+      "gfx_filename": "catch_mon_25_machop_1",
+      "palette": "catch_mon_25_machop_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_75_regirock",
-      "palette": "catch_mon_75_regirock.gbapal"
+      "gfx_filename": "catch_mon_25_machop_2",
+      "palette": "catch_mon_25_machop_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_76_regice",
-      "palette": "catch_mon_76_regice.gbapal"
+      "gfx_filename": "catch_mon_26_meditite_0",
+      "palette": "catch_mon_26_meditite_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_77_registeel",
-      "palette": "catch_mon_77_registeel.gbapal"
+      "gfx_filename": "catch_mon_26_meditite_1",
+      "palette": "catch_mon_26_meditite_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_78_latias",
-      "palette": "catch_mon_78_latias.gbapal"
+      "gfx_filename": "catch_mon_26_meditite_2",
+      "palette": "catch_mon_26_meditite_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_79_latios",
-      "palette": "catch_mon_79_latios.gbapal"
+      "gfx_filename": "catch_mon_27_electrike_0",
+      "palette": "catch_mon_27_electrike_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_80_jirachi",
-      "palette": "catch_mon_80_jirachi.gbapal"
+      "gfx_filename": "catch_mon_27_electrike_1",
+      "palette": "catch_mon_27_electrike_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_81_chikorita",
-      "palette": "catch_mon_81_chikorita.gbapal"
+      "gfx_filename": "catch_mon_27_electrike_2",
+      "palette": "catch_mon_27_electrike_2.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_82_cyndaquil",
-      "palette": "catch_mon_82_cyndaquil.gbapal"
+      "gfx_filename": "catch_mon_28_magnemite_0",
+      "palette": "catch_mon_28_magnemite_0.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_83_totodile",
-      "palette": "catch_mon_83_totodile.gbapal"
+      "gfx_filename": "catch_mon_28_magnemite_1",
+      "palette": "catch_mon_28_magnemite_1.gbapal"
     },
     {
-      "gfx_filename": "catch_mon_84_aerodactyl",
-      "palette": "catch_mon_84_aerodactyl.gbapal"
+      "gfx_filename": "catch_mon_28_magnemite_2",
+      "palette": "catch_mon_28_magnemite_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_29_voltorb_0",
+      "palette": "catch_mon_29_voltorb_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_29_voltorb_1",
+      "palette": "catch_mon_29_voltorb_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_29_voltorb_2",
+      "palette": "catch_mon_29_voltorb_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_30_volbeat_0",
+      "palette": "catch_mon_30_volbeat_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_30_volbeat_1",
+      "palette": "catch_mon_30_volbeat_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_30_volbeat_2",
+      "palette": "catch_mon_30_volbeat_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_31_illumise_0",
+      "palette": "catch_mon_31_illumise_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_31_illumise_1",
+      "palette": "catch_mon_31_illumise_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_31_illumise_2",
+      "palette": "catch_mon_31_illumise_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_32_doduo_0",
+      "palette": "catch_mon_32_doduo_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_32_doduo_1",
+      "palette": "catch_mon_32_doduo_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_32_doduo_2",
+      "palette": "catch_mon_32_doduo_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_33_roselia_0",
+      "palette": "catch_mon_33_roselia_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_33_roselia_1",
+      "palette": "catch_mon_33_roselia_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_33_roselia_2",
+      "palette": "catch_mon_33_roselia_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_34_carvanha_0",
+      "palette": "catch_mon_34_carvanha_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_34_carvanha_1",
+      "palette": "catch_mon_34_carvanha_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_34_carvanha_2",
+      "palette": "catch_mon_34_carvanha_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_35_wailmer_0",
+      "palette": "catch_mon_35_wailmer_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_35_wailmer_1",
+      "palette": "catch_mon_35_wailmer_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_35_wailmer_2",
+      "palette": "catch_mon_35_wailmer_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_36_numel_0",
+      "palette": "catch_mon_36_numel_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_36_numel_1",
+      "palette": "catch_mon_36_numel_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_36_numel_2",
+      "palette": "catch_mon_36_numel_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_37_slugma_0",
+      "palette": "catch_mon_37_slugma_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_37_slugma_1",
+      "palette": "catch_mon_37_slugma_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_37_slugma_2",
+      "palette": "catch_mon_37_slugma_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_38_torkoal_0",
+      "palette": "catch_mon_38_torkoal_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_38_torkoal_1",
+      "palette": "catch_mon_38_torkoal_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_38_torkoal_2",
+      "palette": "catch_mon_38_torkoal_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_39_grimer_0",
+      "palette": "catch_mon_39_grimer_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_39_grimer_1",
+      "palette": "catch_mon_39_grimer_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_39_grimer_2",
+      "palette": "catch_mon_39_grimer_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_40_koffing_0",
+      "palette": "catch_mon_40_koffing_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_40_koffing_1",
+      "palette": "catch_mon_40_koffing_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_40_koffing_2",
+      "palette": "catch_mon_40_koffing_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_41_skarmory_0",
+      "palette": "catch_mon_41_skarmory_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_41_skarmory_1",
+      "palette": "catch_mon_41_skarmory_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_41_skarmory_2",
+      "palette": "catch_mon_41_skarmory_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_42_vibrava_0",
+      "palette": "catch_mon_42_vibrava_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_42_vibrava_1",
+      "palette": "catch_mon_42_vibrava_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_42_vibrava_2",
+      "palette": "catch_mon_42_vibrava_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_43_cacnea_0",
+      "palette": "catch_mon_43_cacnea_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_43_cacnea_1",
+      "palette": "catch_mon_43_cacnea_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_43_cacnea_2",
+      "palette": "catch_mon_43_cacnea_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_44_swablu_0",
+      "palette": "catch_mon_44_swablu_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_44_swablu_1",
+      "palette": "catch_mon_44_swablu_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_44_swablu_2",
+      "palette": "catch_mon_44_swablu_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_45_zangoose_0",
+      "palette": "catch_mon_45_zangoose_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_45_zangoose_1",
+      "palette": "catch_mon_45_zangoose_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_45_zangoose_2",
+      "palette": "catch_mon_45_zangoose_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_46_seviper_0",
+      "palette": "catch_mon_46_seviper_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_46_seviper_1",
+      "palette": "catch_mon_46_seviper_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_46_seviper_2",
+      "palette": "catch_mon_46_seviper_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_47_lunatone_0",
+      "palette": "catch_mon_47_lunatone_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_47_lunatone_1",
+      "palette": "catch_mon_47_lunatone_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_47_lunatone_2",
+      "palette": "catch_mon_47_lunatone_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_48_solrock_0",
+      "palette": "catch_mon_48_solrock_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_48_solrock_1",
+      "palette": "catch_mon_48_solrock_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_48_solrock_2",
+      "palette": "catch_mon_48_solrock_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_49_barboach_0",
+      "palette": "catch_mon_49_barboach_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_49_barboach_1",
+      "palette": "catch_mon_49_barboach_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_49_barboach_2",
+      "palette": "catch_mon_49_barboach_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_50_corphish_0",
+      "palette": "catch_mon_50_corphish_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_50_corphish_1",
+      "palette": "catch_mon_50_corphish_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_50_corphish_2",
+      "palette": "catch_mon_50_corphish_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_51_baltoy_0",
+      "palette": "catch_mon_51_baltoy_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_51_baltoy_1",
+      "palette": "catch_mon_51_baltoy_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_51_baltoy_2",
+      "palette": "catch_mon_51_baltoy_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_52_lileep_0",
+      "palette": "catch_mon_52_lileep_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_52_lileep_1",
+      "palette": "catch_mon_52_lileep_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_52_lileep_2",
+      "palette": "catch_mon_52_lileep_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_53_anorith_0",
+      "palette": "catch_mon_53_anorith_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_53_anorith_1",
+      "palette": "catch_mon_53_anorith_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_53_anorith_2",
+      "palette": "catch_mon_53_anorith_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_54_jigglypuff_0",
+      "palette": "catch_mon_54_jigglypuff_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_54_jigglypuff_1",
+      "palette": "catch_mon_54_jigglypuff_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_54_jigglypuff_2",
+      "palette": "catch_mon_54_jigglypuff_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_55_febas_0",
+      "palette": "catch_mon_55_febas_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_55_febas_1",
+      "palette": "catch_mon_55_febas_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_55_febas_2",
+      "palette": "catch_mon_55_febas_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_56_castform_0",
+      "palette": "catch_mon_56_castform_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_56_castform_1",
+      "palette": "catch_mon_56_castform_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_56_castform_2",
+      "palette": "catch_mon_56_castform_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_57_staryu_0",
+      "palette": "catch_mon_57_staryu_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_57_staryu_1",
+      "palette": "catch_mon_57_staryu_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_57_staryu_2",
+      "palette": "catch_mon_57_staryu_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_58_kecleon_0",
+      "palette": "catch_mon_58_kecleon_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_58_kecleon_1",
+      "palette": "catch_mon_58_kecleon_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_58_kecleon_2",
+      "palette": "catch_mon_58_kecleon_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_59_duskull_0",
+      "palette": "catch_mon_59_duskull_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_59_duskull_1",
+      "palette": "catch_mon_59_duskull_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_59_duskull_2",
+      "palette": "catch_mon_59_duskull_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_60_tropius_0",
+      "palette": "catch_mon_60_tropius_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_60_tropius_1",
+      "palette": "catch_mon_60_tropius_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_60_tropius_2",
+      "palette": "catch_mon_60_tropius_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_61_absol_0",
+      "palette": "catch_mon_61_absol_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_61_absol_1",
+      "palette": "catch_mon_61_absol_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_61_absol_2",
+      "palette": "catch_mon_61_absol_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_62_vulpix_0",
+      "palette": "catch_mon_62_vulpix_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_62_vulpix_1",
+      "palette": "catch_mon_62_vulpix_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_62_vulpix_2",
+      "palette": "catch_mon_62_vulpix_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_63_pikachu_0",
+      "palette": "catch_mon_63_pikachu_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_63_pikachu_1",
+      "palette": "catch_mon_63_pikachu_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_63_pikachu_2",
+      "palette": "catch_mon_63_pikachu_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_64_psyduck_0",
+      "palette": "catch_mon_64_psyduck_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_64_psyduck_1",
+      "palette": "catch_mon_64_psyduck_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_64_psyduck_2",
+      "palette": "catch_mon_64_psyduck_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_65_wobbuffet_0",
+      "palette": "catch_mon_65_wobbuffet_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_65_wobbuffet_1",
+      "palette": "catch_mon_65_wobbuffet_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_65_wobbuffet_2",
+      "palette": "catch_mon_65_wobbuffet_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_66_girafarig_0",
+      "palette": "catch_mon_66_girafarig_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_66_girafarig_1",
+      "palette": "catch_mon_66_girafarig_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_66_girafarig_2",
+      "palette": "catch_mon_66_girafarig_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_67_pinsir_0",
+      "palette": "catch_mon_67_pinsir_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_67_pinsir_1",
+      "palette": "catch_mon_67_pinsir_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_67_pinsir_2",
+      "palette": "catch_mon_67_pinsir_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_68_heracross_0",
+      "palette": "catch_mon_68_heracross_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_68_heracross_1",
+      "palette": "catch_mon_68_heracross_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_68_heracross_2",
+      "palette": "catch_mon_68_heracross_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_69_rhyhorn_0",
+      "palette": "catch_mon_69_rhyhorn_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_69_rhyhorn_1",
+      "palette": "catch_mon_69_rhyhorn_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_69_rhyhorn_2",
+      "palette": "catch_mon_69_rhyhorn_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_70_clamperl_0",
+      "palette": "catch_mon_70_clamperl_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_70_clamperl_1",
+      "palette": "catch_mon_70_clamperl_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_70_clamperl_2",
+      "palette": "catch_mon_70_clamperl_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_71_relicanth_0",
+      "palette": "catch_mon_71_relicanth_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_71_relicanth_1",
+      "palette": "catch_mon_71_relicanth_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_71_relicanth_2",
+      "palette": "catch_mon_71_relicanth_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_72_luvdisc_0",
+      "palette": "catch_mon_72_luvdisc_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_72_luvdisc_1",
+      "palette": "catch_mon_72_luvdisc_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_72_luvdisc_2",
+      "palette": "catch_mon_72_luvdisc_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_73_shelgon_0",
+      "palette": "catch_mon_73_shelgon_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_73_shelgon_1",
+      "palette": "catch_mon_73_shelgon_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_73_shelgon_2",
+      "palette": "catch_mon_73_shelgon_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_74_beldum_0",
+      "palette": "catch_mon_74_beldum_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_74_beldum_1",
+      "palette": "catch_mon_74_beldum_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_74_beldum_2",
+      "palette": "catch_mon_74_beldum_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_75_regirock_0",
+      "palette": "catch_mon_75_regirock_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_75_regirock_1",
+      "palette": "catch_mon_75_regirock_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_75_regirock_2",
+      "palette": "catch_mon_75_regirock_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_76_regice_0",
+      "palette": "catch_mon_76_regice_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_76_regice_1",
+      "palette": "catch_mon_76_regice_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_76_regice_2",
+      "palette": "catch_mon_76_regice_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_77_registeel_0",
+      "palette": "catch_mon_77_registeel_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_77_registeel_1",
+      "palette": "catch_mon_77_registeel_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_77_registeel_2",
+      "palette": "catch_mon_77_registeel_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_78_latias_0",
+      "palette": "catch_mon_78_latias_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_78_latias_1",
+      "palette": "catch_mon_78_latias_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_78_latias_2",
+      "palette": "catch_mon_78_latias_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_79_latios_0",
+      "palette": "catch_mon_79_latios_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_79_latios_1",
+      "palette": "catch_mon_79_latios_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_79_latios_2",
+      "palette": "catch_mon_79_latios_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_80_jirachi_0",
+      "palette": "catch_mon_80_jirachi_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_80_jirachi_1",
+      "palette": "catch_mon_80_jirachi_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_80_jirachi_2",
+      "palette": "catch_mon_80_jirachi_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_81_chikorita_0",
+      "palette": "catch_mon_81_chikorita_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_81_chikorita_1",
+      "palette": "catch_mon_81_chikorita_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_81_chikorita_2",
+      "palette": "catch_mon_81_chikorita_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_82_cyndaquil_0",
+      "palette": "catch_mon_82_cyndaquil_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_82_cyndaquil_1",
+      "palette": "catch_mon_82_cyndaquil_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_82_cyndaquil_2",
+      "palette": "catch_mon_82_cyndaquil_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_83_totodile_0",
+      "palette": "catch_mon_83_totodile_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_83_totodile_1",
+      "palette": "catch_mon_83_totodile_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_83_totodile_2",
+      "palette": "catch_mon_83_totodile_2.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_84_aerodactyl_0",
+      "palette": "catch_mon_84_aerodactyl_0.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_84_aerodactyl_1",
+      "palette": "catch_mon_84_aerodactyl_1.gbapal"
+    },
+    {
+      "gfx_filename": "catch_mon_84_aerodactyl_2",
+      "palette": "catch_mon_84_aerodactyl_2.gbapal"
     }
   ]
 }

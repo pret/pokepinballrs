@@ -364,7 +364,8 @@ gRubyGetArrow_0825F610:: @ 0x0825F610
 
 gRubyGetArrow_0825F670:: @ 0x0825F670
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_2.4bpp"
-    .incbin "baserom.gba", 0x25f6d0, 0x60
+	.space 0x40
+	.fill 0x20, 1, 0x22
 
 
 @ Ball power up lights
@@ -418,154 +419,167 @@ gRubyHoleLightE_On:: @ 0x0825FA70
 
 @ Catch light arrows : 3 balls / CATCH! / EVO
 
-gRubyCatchLight_0825FAB0:: @ 0x0825FAB0
-    .incbin "baserom.gba", 0x25FAB0, 0x40
+gRubyCatchLightState0Top:: @ 0x0825FAB0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_state0_top.4bpp"
 
-gRubyCatchLight_0825FAF0:: @ 0x0825FAF0
-    .incbin "baserom.gba", 0x25FAF0, 0x40
+gRubyCatchLightState1Top:: @ 0x0825FAF0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_state1_top.4bpp"
     .space 0x380
 
-gRubyCatchLight_0825FEB0:: @ 0x0825FEB0
-    .incbin "baserom.gba", 0x25FEB0, 0x40
+gRubyCatchLightState0Bot:: @ 0x0825FEB0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_state0_bot.4bpp"
 
-gRubyCatchLight_0825FEF0:: @ 0x0825FEF0
-    .incbin "baserom.gba", 0x25FEF0, 0x40
+gRubyCatchLightState1Bot:: @ 0x0825FEF0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_state1_bot.4bpp"
 
-gRubyTrapTile_0825FF30:: @ 0x0825FF30
-    .incbin "baserom.gba", 0x25FF30, 0x40
+gRubyTrapIndicatorState0Top:: @ 0x0825FF30
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state0_top.4bpp"
 
-gRubyTrapTile_0825FF70:: @ 0x0825FF70
-    .incbin "baserom.gba", 0x25FF70, 0x40
+gRubyTrapIndicatorState1Top:: @ 0x0825FF70
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state1_top.4bpp"
 
-gRubyTrapTile_0825FFB0:: @ 0x0825FFB0
-    .incbin "baserom.gba", 0x25FFB0, 0x40
+gRubyTrapIndicatorState2Top:: @ 0x0825FFB0
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state2_top.4bpp"
 
-gRubyCatchLight_0825FFF0:: @ 0x0825FFF0
-    .incbin "baserom.gba", 0x25FFF0, 0x40
+gRubyCatchLightSlot0State2Top:: @ 0x0825FFF0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_top.4bpp"
 
-gRubyCatchLight_08260030:: @ 0x08260030
-    .incbin "baserom.gba", 0x260030, 0x40
+gRubyCatchLightSlot0State3Top:: @ 0x08260030
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state3_top.4bpp"
 
-gRubyCatchLight_08260070:: @ 0x08260070
-    .incbin "baserom.gba", 0x260070, 0x40
+gRubyCatchLightSlot1State2Top:: @ 0x08260070
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state2_top.4bpp"
 
-gRubyCatchLight_082600B0:: @ 0x082600B0
-    .incbin "baserom.gba", 0x2600B0, 0x40
+gRubyCatchLightSlot1State3Top:: @ 0x082600B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state3_top.4bpp"
 
-gRubyCatchLight_082600F0:: @ 0x082600F0
-    .incbin "baserom.gba", 0x2600F0, 0x40
+gRubyCatchLightSlot2State2Top:: @ 0x082600F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state2_top.4bpp"
 
-gRubyCatchLight_08260130:: @ 0x08260130
-    .incbin "baserom.gba", 0x260130, 0x40
+gRubyCatchLightSlot2State3Top:: @ 0x08260130
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state3_top.4bpp"
 
-gRubyCatchLight_08260170:: @ 0x08260170
-    .incbin "baserom.gba", 0x260170, 0x40
+gRubyCatchLightSlot0State4Top:: @ 0x08260170
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state4_top.4bpp"
 
-gRubyCatchLight_082601B0:: @ 0x082601B0
-    .incbin "baserom.gba", 0x2601B0, 0x40
+gRubyCatchLightSlot0State5Top:: @ 0x082601B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state5_top.4bpp"
 
-gRubyCatchLight_082601F0:: @ 0x082601F0
-    .incbin "baserom.gba", 0x2601F0, 0x40
+gRubyCatchLightSlot1State4Top:: @ 0x082601F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state4_top.4bpp"
 
-gRubyCatchLight_08260230:: @ 0x08260230
-    .incbin "baserom.gba", 0x260230, 0x40
+gRubyCatchLightSlot1State5Top:: @ 0x08260230
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state5_top.4bpp"
 
-gRubyCatchLight_08260270:: @ 0x08260270
-    .incbin "baserom.gba", 0x260270, 0x40
+gRubyCatchLightSlot2State4Top:: @ 0x08260270
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top.4bpp"
 
-gRubyCatchLight_082602B0:: @ 0x082602B0
-    .incbin "baserom.gba", 0x2602B0, 0x80
+gRubyCatchLightSlot2State5Top:: @ 0x082602B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top.4bpp"
+	.space 0x40
 
-gRubyTrapTile_08260330:: @ 0x08260330
-    .incbin "baserom.gba", 0x260330, 0x40
+gRubyTrapIndicatorState0Bot:: @ 0x08260330
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state0_bot.4bpp"
 
-gRubyTrapTile_08260370:: @ 0x08260370
-    .incbin "baserom.gba", 0x260370, 0x40
+gRubyTrapIndicatorState1Bot:: @ 0x08260370
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state1_bot.4bpp"
 
-gRubyTrapTile_082603B0:: @ 0x082603B0
-    .incbin "baserom.gba", 0x2603B0, 0x40
+gRubyTrapIndicatorState2Bot:: @ 0x082603B0
+    .incbin "graphics/stage/ruby/trap_indicator/trap_state2_bot.4bpp"
 
-gRubyCatchLight_082603F0:: @ 0x082603F0
-    .incbin "baserom.gba", 0x2603F0, 0x40
+gRubyCatchLightSlot0State2Bot:: @ 0x082603F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_bot.4bpp"
 
-gRubyCatchLight_08260430:: @ 0x08260430
-    .incbin "baserom.gba", 0x260430, 0x40
+gRubyCatchLightSlot0State3Bot:: @ 0x08260430
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state3_bot.4bpp"
 
-gRubyCatchLight_08260470:: @ 0x08260470
-    .incbin "baserom.gba", 0x260470, 0x40
+gRubyCatchLightSlot1State2Bot:: @ 0x08260470
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state2_bot.4bpp"
 
-gRubyCatchLight_082604B0:: @ 0x082604B0
-    .incbin "baserom.gba", 0x2604B0, 0x40
+gRubyCatchLightSlot1State3Bot:: @ 0x082604B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state3_bot.4bpp"
 
-gRubyCatchLight_082604F0:: @ 0x082604F0
-    .incbin "baserom.gba", 0x2604F0, 0x40
+gRubyCatchLightSlot2State2Bot:: @ 0x082604F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state2_bot.4bpp"
 
-gRubyCatchLight_08260530:: @ 0x08260530
-    .incbin "baserom.gba", 0x260530, 0x40
+gRubyCatchLightSlot2State3Bot:: @ 0x08260530
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state3_bot.4bpp"
 
-gRubyCatchLight_08260570:: @ 0x08260570
-    .incbin "baserom.gba", 0x260570, 0x40
+gRubyCatchLightSlot0State4Bot:: @ 0x08260570
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state4_bot.4bpp"
 
-gRubyCatchLight_082605B0:: @ 0x082605B0
-    .incbin "baserom.gba", 0x2605B0, 0x40
+gRubyCatchLightSlot0State5Bot:: @ 0x082605B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state5_bot.4bpp"
 
-gRubyCatchLight_082605F0:: @ 0x082605F0
-    .incbin "baserom.gba", 0x2605F0, 0x40
+gRubyCatchLightSlot1State4Bot:: @ 0x082605F0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state4_bot.4bpp"
 
-gRubyCatchLight_08260630:: @ 0x08260630
-    .incbin "baserom.gba", 0x260630, 0x40
+gRubyCatchLightSlot1State5Bot:: @ 0x08260630
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot1_state5_bot.4bpp"
 
-gRubyCatchLight_08260670:: @ 0x08260670
-    .incbin "baserom.gba", 0x260670, 0x40
+gRubyCatchLightSlot2State4Bot:: @ 0x08260670
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_bot.4bpp"
 
-gRubyCatchLight_082606B0:: @ 0x082606B0
-    .incbin "baserom.gba", 0x2606B0, 0xC0
+gRubyCatchLightSlot2State5Bot:: @ 0x082606B0
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot.4bpp"
+    .incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler.4bpp"
 
 
 @ Ruby Saver indicator
 
 gRubySaverRow0Tile_Off:: @ 0x08260770
-    .incbin "baserom.gba", 0x260770, 0x100
+    .incbin "graphics/stage/ruby/saver/saver_off_row0.4bpp"
+    .incbin "graphics/stage/ruby/saver/saver_off_row0_filler.4bpp"
 
 gRubySaverRow0Tile_On:: @ 0x08260870
-    .incbin "baserom.gba", 0x260870, 0x300
+    .incbin "graphics/stage/ruby/saver/saver_on_row0.4bpp"
+    .incbin "graphics/stage/ruby/saver/saver_on_row0_filler.4bpp"
 
 gRubySaverRow1Tile_Off:: @ 0x08260B70
-    .incbin "baserom.gba", 0x260B70, 0x100
+    .incbin "graphics/stage/ruby/saver/saver_off_row1.4bpp"
+    .incbin "graphics/stage/ruby/saver/saver_off_row1_filler.4bpp"
 
 gRubySaverRow1Tile_On:: @ 0x08260C70
-    .incbin "baserom.gba", 0x260C70, 0x320
+    .incbin "graphics/stage/ruby/saver/saver_on_row1.4bpp"
+    .incbin "graphics/stage/ruby/saver/saver_on_row1_filler.4bpp"
 
 gRubySaverRow2Tile_Off:: @ 0x08260F90
-    .incbin "baserom.gba", 0x260F90, 0x100
+    .incbin "graphics/stage/ruby/saver/saver_off_row2.4bpp"
+    .incbin "graphics/stage/ruby/saver/saver_off_row2_filler.4bpp"
 
 gRubySaverRow2Tile_On:: @ 0x08261090
-    .incbin "baserom.gba", 0x261090, 0x360
+    .incbin "graphics/stage/ruby/saver/saver_on_row2.4bpp"
+	.fill 0x20, 1, 0x11
+	.space 0x200
+	.fill 0xA0, 1, 0x11
 
 gRubySaverRow3Tile_Off:: @ 0x082613F0
-    .incbin "baserom.gba", 0x2613F0, 0x100
+    .incbin "graphics/stage/ruby/saver/saver_off_row3.4bpp"
+	.fill 0xC0, 1, 0x11
 
 gRubySaverRow3Tile_On:: @ 0x082614F0
-    .incbin "baserom.gba", 0x2614F0, 0x280
+    .incbin "graphics/stage/ruby/saver/saver_on_row3.4bpp"
+	.fill 0x20, 1, 0x11
+	.space 0x220
 
 gRubyHatchArrowRow0Tile_Off:: @ 0x08261770
     .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_off_row0.4bpp"
 
 gRubyHatchArrowRow0Tile_On:: @ 0x082617F0
     .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_on_row0.4bpp"
-    .incbin "baserom.gba", 0x261870, 0x40
+    .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_on_row0_filler.4bpp"
 
 gRubyCatchArrowRow0Tile_Off:: @ 0x082618B0
     .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_off_row0.4bpp"
-    .incbin "baserom.gba", 0x2618f0, 0x40
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_off_row0_filler.4bpp"
 
 gRubyCatchArrowRow0Tile_On:: @ 0x08261930
     .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_on_row0.4bpp"
-    .incbin "baserom.gba", 0x261970, 0x40
+    .incbin "graphics/stage/ruby/catch_arrow/catch_arrow_on_row0_filler.4bpp"
 
 gRubyBumperArrowRow0Tile_Off:: @ 0x082619B0
     .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row0.4bpp"
-    .incbin "baserom.gba", 0x2619f0, 0x40
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row0_filler.4bpp"
 
 gRubyBumperArrowRow0Tile_On:: @ 0x08261A30
     .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row0.4bpp"
@@ -623,100 +637,100 @@ gRubyCatchArrowRow3Tile_On:: @ 0x082624F0
 
 gRubyBumperArrowRow3Tile_Off:: @ 0x08262570
     .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row3.4bpp"
-    .incbin "baserom.gba", 0x2625d0, 0x20
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_off_row3_filler.4bpp"
 
 gRubyBumperArrowRow3Tile_On:: @ 0x082625F0
     .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row3.4bpp"
-    .incbin "baserom.gba", 0x262650, 0x140
+    .incbin "graphics/stage/ruby/bumper_arrow/bumper_arrow_on_row3_filler.4bpp"
 
 
 @ Sign for bonus multiplier left/right digits
 
-gRubyBonusMultDigit_08262790:: @ 0x08262790
-    .incbin "baserom.gba", 0x262790, 0x20
+gRubyProgressDigit0_Tens:: @ 0x08262790
+    .incbin "graphics/stage/ruby/progress_digits/digit0_tens.4bpp"
 
-gRubyBonusMultDigit_082627B0:: @ 0x082627B0
-    .incbin "baserom.gba", 0x2627B0, 0x20
+gRubyProgressDigit1_Tens:: @ 0x082627B0
+    .incbin "graphics/stage/ruby/progress_digits/digit1_tens.4bpp"
 
-gRubyBonusMultDigit_082627D0:: @ 0x082627D0
-    .incbin "baserom.gba", 0x2627D0, 0x20
+gRubyProgressDigit2_Tens:: @ 0x082627D0
+    .incbin "graphics/stage/ruby/progress_digits/digit2_tens.4bpp"
 
-gRubyBonusMultDigit_082627F0:: @ 0x082627F0
-    .incbin "baserom.gba", 0x2627F0, 0x20
+gRubyProgressDigit3_Tens:: @ 0x082627F0
+    .incbin "graphics/stage/ruby/progress_digits/digit3_tens.4bpp"
 
-gRubyBonusMultDigit_08262810:: @ 0x08262810
-    .incbin "baserom.gba", 0x262810, 0x20
+gRubyProgressDigit4_Tens:: @ 0x08262810
+    .incbin "graphics/stage/ruby/progress_digits/digit4_tens.4bpp"
 
-gRubyBonusMultDigit_08262830:: @ 0x08262830
-    .incbin "baserom.gba", 0x262830, 0x20
+gRubyProgressDigit5_Tens:: @ 0x08262830
+    .incbin "graphics/stage/ruby/progress_digits/digit5_tens.4bpp"
 
-gRubyBonusMultDigit_08262850:: @ 0x08262850
-    .incbin "baserom.gba", 0x262850, 0x20
+gRubyProgressDigit6_Tens:: @ 0x08262850
+    .incbin "graphics/stage/ruby/progress_digits/digit6_tens.4bpp"
 
-gRubyBonusMultDigit_08262870:: @ 0x08262870
-    .incbin "baserom.gba", 0x262870, 0x20
+gRubyProgressDigit7_Tens:: @ 0x08262870
+    .incbin "graphics/stage/ruby/progress_digits/digit7_tens.4bpp"
 
-gRubyBonusMultDigit_08262890:: @ 0x08262890
-    .incbin "baserom.gba", 0x262890, 0x20
+gRubyProgressDigit8_Tens:: @ 0x08262890
+    .incbin "graphics/stage/ruby/progress_digits/digit8_tens.4bpp"
 
-gRubyBonusMultDigit_082628B0:: @ 0x082628B0
-    .incbin "baserom.gba", 0x2628B0, 0x20
+gRubyProgressDigit9_Tens:: @ 0x082628B0
+    .incbin "graphics/stage/ruby/progress_digits/digit9_tens.4bpp"
 
-gRubyBonusMultDigit_082628D0:: @ 0x082628D0
-    .incbin "baserom.gba", 0x2628D0, 0x20
+gRubyProgressDigit0_Ones:: @ 0x082628D0
+    .incbin "graphics/stage/ruby/progress_digits/digit0_ones.4bpp"
 
-gRubyBonusMultDigit_082628F0:: @ 0x082628F0
-    .incbin "baserom.gba", 0x2628F0, 0x20
+gRubyProgressDigit1_Ones:: @ 0x082628F0
+    .incbin "graphics/stage/ruby/progress_digits/digit1_ones.4bpp"
 
-gRubyBonusMultDigit_08262910:: @ 0x08262910
-    .incbin "baserom.gba", 0x262910, 0x20
+gRubyProgressDigit2_Ones:: @ 0x08262910
+    .incbin "graphics/stage/ruby/progress_digits/digit2_ones.4bpp"
 
-gRubyBonusMultDigit_08262930:: @ 0x08262930
-    .incbin "baserom.gba", 0x262930, 0x20
+gRubyProgressDigit3_Ones:: @ 0x08262930
+    .incbin "graphics/stage/ruby/progress_digits/digit3_ones.4bpp"
 
-gRubyBonusMultDigit_08262950:: @ 0x08262950
-    .incbin "baserom.gba", 0x262950, 0x20
+gRubyProgressDigit4_Ones:: @ 0x08262950
+    .incbin "graphics/stage/ruby/progress_digits/digit4_ones.4bpp"
 
-gRubyBonusMultDigit_08262970:: @ 0x08262970
-    .incbin "baserom.gba", 0x262970, 0x20
+gRubyProgressDigit5_Ones:: @ 0x08262970
+    .incbin "graphics/stage/ruby/progress_digits/digit5_ones.4bpp"
 
-gRubyBonusMultDigit_08262990:: @ 0x08262990
-    .incbin "baserom.gba", 0x262990, 0x20
+gRubyProgressDigit6_Ones:: @ 0x08262990
+    .incbin "graphics/stage/ruby/progress_digits/digit6_ones.4bpp"
 
-gRubyBonusMultDigit_082629B0:: @ 0x082629B0
-    .incbin "baserom.gba", 0x2629B0, 0x20
+gRubyProgressDigit7_Ones:: @ 0x082629B0
+    .incbin "graphics/stage/ruby/progress_digits/digit7_ones.4bpp"
 
-gRubyBonusMultDigit_082629D0:: @ 0x082629D0
-    .incbin "baserom.gba", 0x2629D0, 0x20
+gRubyProgressDigit8_Ones:: @ 0x082629D0
+    .incbin "graphics/stage/ruby/progress_digits/digit8_ones.4bpp"
 
-gRubyBonusMultDigit_082629F0:: @ 0x082629F0
-    .incbin "baserom.gba", 0x2629F0, 0x20
+gRubyProgressDigit9_Ones:: @ 0x082629F0
+    .incbin "graphics/stage/ruby/progress_digits/digit9_ones.4bpp"
 
 .space 0x1A0
 
 
 @ Text for sign over Ruby shop entrance
 
-gStoreSignText_08262BB0:: @ 0x08262BB0
-    .incbin "baserom.gba", 0x262BB0, 0xC0
+gRubyShopSignMartPiece0:: @ 0x08262BB0
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0.4bpp"
 
-gStoreSignText_08262C70:: @ 0x08262C70
-    .incbin "baserom.gba", 0x262C70, 0xC0
+gRubyShopSignCenterPiece0:: @ 0x08262C70
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece0.4bpp"
 	.space 0x280
 
-gStoreSignText_08262FB0:: @ 0x08262FB0
-    .incbin "baserom.gba", 0x262FB0, 0xC0
+gRubyShopSignMartPiece1:: @ 0x08262FB0
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1.4bpp"
 
-gStoreSignText_08263070:: @ 0x08263070
-    .incbin "baserom.gba", 0x263070, 0xC0
+gRubyShopSignCenterPiece1:: @ 0x08263070
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece1.4bpp"
 	.space 0x300
 
-gStoreSignText_08263430:: @ 0x08263430
-    .incbin "baserom.gba", 0x263430, 0x20
+gRubyShopSignMartPiece2:: @ 0x08263430
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece2.4bpp"
 	.space 0xA0
 
-gStoreSignText_082634F0:: @ 0x082634F0
-    .incbin "baserom.gba", 0x2634F0, 0x20
+gRubyShopSignCenterPiece2:: @ 0x082634F0
+    .incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece2.4bpp"
 	.space 0x2C0
 
 
@@ -764,19 +778,19 @@ gRubyMartArrow_R2_On:: @ 0x082641B0
 
 gRubyEvoArrow_R3_Off:: @ 0x082643D0
     .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_off_row3.4bpp"
-    .incbin "baserom.gba", 0x264430, 0x40
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_off_row3_filler.4bpp"
 
 gRubyEvoArrow_R3_On:: @ 0x08264470
     .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_on_row3.4bpp"
-    .incbin "baserom.gba", 0x2644d0, 0x40
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_on_row3_filler.4bpp"
 
 gRubyMartArrow_R3_Off:: @ 0x08264510
     .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_off_row3.4bpp"
-    .incbin "baserom.gba", 0x264570, 0x40
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_off_row3_filler.4bpp"
 
 gRubyMartArrow_R3_On:: @ 0x082645B0
     .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_on_row3.4bpp"
-    .incbin "baserom.gba", 0x264610, 0x40
+    .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_mart_on_row3_filler.4bpp"
 	.space 0x1A0
 
 
@@ -784,64 +798,77 @@ gRubyMartArrow_R3_On:: @ 0x082645B0
 @ Slingshot wedge lights
 
 gRuby_LSlingshot_Off_R0:: @ 0x082647F0
-    .incbin "baserom.gba", 0x2647F0, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_off_row0.4bpp"
+	.space 0x40
 
 gRuby_LSlingshot_On_R0:: @ 0x08264850
-    .incbin "baserom.gba", 0x264850, 0xA0
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_on_row0.4bpp"
+	.space 0x80
 
 gRuby_RSlingshot_Off_R0:: @ 0x082648F0
-    .incbin "baserom.gba", 0x2648F0, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_off_row0.4bpp"
+	.space 0x40
 
 gRuby_RSlingshot_On_R0:: @ 0x08264950
-    .incbin "baserom.gba", 0x264950, 0x2A0
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_on_row0.4bpp"
+	.space 0x280
 
 gRuby_LSlingshot_Off_R1:: @ 0x08264BF0
-    .incbin "baserom.gba", 0x264BF0, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_off_row1.4bpp"
+	.space 0x20
 
 gRuby_LSlingshot_On_R1:: @ 0x08264C50
-    .incbin "baserom.gba", 0x264C50, 0x80
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_on_row1.4bpp"
+	.space 0x40
 
 gRuby_RSlingshot_Off_R1:: @ 0x08264CD0
-    .incbin "baserom.gba", 0x264CD0, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_off_row1.4bpp"
+	.space 0x20
 
 gRuby_RSlingshot_On_R1:: @ 0x08264D30
-    .incbin "baserom.gba", 0x264D30, 0x2C0
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_on_row1.4bpp"
+	.space 0x280
 
 gRuby_LSlingshot_Off_R2:: @ 0x08264FF0
-    .incbin "baserom.gba", 0x264FF0, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_off_row2.4bpp"
 
 gRuby_LSlingshot_On_R2:: @ 0x08265050
-    .incbin "baserom.gba", 0x265050, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_on_row2.4bpp"
 
 gRuby_RSlingshot_Off_R2:: @ 0x082650B0
-    .incbin "baserom.gba", 0x2650B0, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_off_row2.4bpp"
 
 gRuby_RSlingshot_On_R2:: @ 0x08265110
-    .incbin "baserom.gba", 0x265110, 0x2E0
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_on_row2.4bpp"
+	.space 0x280
 
 gRuby_LSlingshot_Off_R3:: @ 0x082653F0
-    .incbin "baserom.gba", 0x2653F0, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_off_row3.4bpp"
 
 gRuby_LSlingshot_On_R3:: @ 0x08265450
-    .incbin "baserom.gba", 0x265450, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_on_row3.4bpp"
 
 gRuby_RSlingshot_Off_R3:: @ 0x082654B0
-    .incbin "baserom.gba", 0x2654B0, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_off_row3.4bpp"
 
 gRuby_RSlingshot_On_R3:: @ 0x08265510
-    .incbin "baserom.gba", 0x265510, 0x300
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_on_row3.4bpp"
+	.space 0x2A0
 
 gRuby_LSlingshot_Off_R4:: @ 0x08265810
-    .incbin "baserom.gba", 0x265810, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_off_row4.4bpp"
+	.space 0x20
 
 gRuby_LSlingshot_On_R4:: @ 0x08265870
-    .incbin "baserom.gba", 0x265870, 0x40
+    .incbin "graphics/stage/ruby/slingshot/slingshot_left_on_row4.4bpp"
 
 gRuby_RSlingshot_Off_R4:: @ 0x082658B0
-    .incbin "baserom.gba", 0x2658B0, 0x60
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_off_row4.4bpp"
+	.space 0x20
 
 gRuby_RSlingshot_On_R4:: @ 0x08265910
-    .incbin "baserom.gba", 0x265910, 0x300
+    .incbin "graphics/stage/ruby/slingshot/slingshot_right_on_row4.4bpp"
+	.space 0x2C0
 
 
 

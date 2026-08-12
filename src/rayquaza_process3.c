@@ -10,7 +10,7 @@
 extern const s16 gLightningGrabAnimFrameIndices[];
 extern const u8 gRayquazaBonusClear_Gfx[];
 extern const u8 gRayquazaSkyBackgroundGfx[];
-extern const u8 gRayquazaMinionOrbFrames[][0x280];
+extern const u8 gRayquazaTornadoGfx[][0x280];
 extern const u8 gRayquazaWindBoardGfx[];
 extern const u8 gRayquazaSpriteSheet[];
 extern const u8 gRayquazaBodyVariantTiles[][0x800];
@@ -1397,7 +1397,7 @@ void UpdateRayquazaMinionsAndEffects(void)
 
         if (group->active)
         {
-            DmaCopy16(3, gRayquazaMinionOrbFrames[sp0], (void *)0x06011EA0, 0x280);
+            DmaCopy16(3, gRayquazaTornadoGfx[sp0], (void *)0x06011EA0, 0x280);
             group->baseX = gCurrentPinballGame->vortexScreenPosition[i].x / 10 - gCurrentPinballGame->cameraXOffset;
             group->baseY = gCurrentPinballGame->vortexScreenPosition[i].y / 10 - gCurrentPinballGame->cameraYOffset;
             for (j = 0; j < 2; j++)

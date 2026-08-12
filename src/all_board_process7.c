@@ -203,7 +203,7 @@ void MainBoardProcess_7B_12524(void)
     if (spriteGroup->active)
     {
         s8 newIx;
-        if (gCurrentPinballGame->ballShadowTimer < 59)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer < 59)
         {
             spriteGroup->baseX = gMain.fieldSpriteGroups[FIELD_SG_BALL]->baseX - 8;
             spriteGroup->baseY = gMain.fieldSpriteGroups[FIELD_SG_BALL]->baseY - 8;
@@ -214,8 +214,8 @@ void MainBoardProcess_7B_12524(void)
             spriteGroup->baseY = 180;
         }
 
-        newIx = gCurrentPinballGame->ballShadowTileIndex;
-        DmaCopy16(3, gBallShadowTileGraphics[newIx], (void *)0x6011EE0, 0x200);
+        newIx = gCurrentPinballGame->ballUpgradeFxTileIndex;
+        DmaCopy16(3, gBallUpgradeFx_Gfx[newIx], (void *)0x6011EE0, 0x200);
 
         oam = &spriteGroup->oam[0];
 
@@ -224,7 +224,7 @@ void MainBoardProcess_7B_12524(void)
 
         gOamBuffer[oam->oamId].priority = currentBallState->oamPriority;
 
-        if (gCurrentPinballGame->ballShadowTimer < 14)
+        if (gCurrentPinballGame->gBallUpgradeFxTimer < 14)
             gMain.fieldSpriteGroups[FIELD_SG_BALL_UPGRADE_FX]->active = FALSE;
     }
 }
