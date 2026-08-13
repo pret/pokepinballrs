@@ -6,7 +6,7 @@
 Start: @ 8000000
 	b Init
 
-.incbin "baserom.gba", 0x4, 0xBC
+	.include "asm/rom_header.inc"
 
 	.arm
 	.align 2
