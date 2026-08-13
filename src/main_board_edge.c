@@ -67,10 +67,10 @@ void RestoreBoardObjPalettes(s16 arg0)
     // related to Y position of camera on the field
     if (gCurrentPinballGame->cameraYViewport < 170)
     {
-        DmaCopy16(3, gFieldPaletteVariants[gMain.selectedField][arg0 * 2], OBJ_PLTT_SLOT(11), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gFieldVariant_Pals[gMain.selectedField][arg0 * 2], OBJ_PLTT_SLOT(11), PLTT_SLOT_SIZE);
     }
     else
     {
-        DmaCopy16(3, gFieldPaletteVariants[gMain.selectedField][arg0 * 2 + 1], OBJ_PLTT_SLOT(11), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gFieldVariant_Pals[gMain.selectedField][arg0 * 2 + 1], OBJ_PLTT_SLOT(11), PLTT_SLOT_SIZE);
     }
 }

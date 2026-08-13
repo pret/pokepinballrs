@@ -8620,14 +8620,14 @@ gFieldInitFuncs:: @ 0x086B085C
 
 @ The white member of the timer warning set: identical to _Fast and _Slow except for
 @ colour 3, which is white where they are red and yellow. Nothing in the ROM points at
-@ it - the code alternates _Fast and _Slow against gDefaultTimerPalette instead.
-gTimerWarningPalette_White:: @ 0x086B0864
+@ it - the code alternates _Fast and _Slow against gTimer_Default_Pal instead.
+gTimer_WarningWhite_Pal:: @ 0x086B0864
     .incbin "graphics/stage/main/timer_warning_white.gbapal.bin"
 
-gTimerWarningPalette_Fast:: @ 0x086B0884
+gTimer_Warning_Pal:: @ 0x086B0884
 	.incbin "graphics/stage/main/timer_warning_fast.gbapal"
 
-gTimerWarningPalette_Slow:: @ 0x086B08A4
+gTimer_Slow_Pal:: @ 0x086B08A4
 	.incbin "graphics/stage/main/timer_warning_slow.gbapal"
 
 gCoinRewardLevelTimerThresholds:: @ 0x086B08C4

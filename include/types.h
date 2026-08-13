@@ -71,8 +71,6 @@ struct VectorU32
     u32 y;
 };
 
-typedef u16 Palette[16];
-
 struct PokemonSpecies {
     /*0x00*/ u16 speciesIdRS; // Refers to the generation three internal index number; e.g. Treecko is 0x115 (decimal 227).
     /*0x02*/ u8 nameJapanese[5];

@@ -20,7 +20,7 @@ extern const u8 gHoleIndicatorTileGfx[][0x440];
 extern const u8 gSplashEffectTileGfx[][0x100];
 extern struct Vector16 gSplashEffectPositions[];
 extern const s16 gSplashEffectTileIndices[][2];
-extern const u8 gSapphireShopSignPalettes[][0x20];
+extern const Palette gSapphireShopSign_Pals[];
 extern const u8 gSapphireShopSignTileGfx[][0x480];
 
 
@@ -551,7 +551,7 @@ void DrawSapphireShopSignSprite(void)
         group->baseX = 16 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 115 - gCurrentPinballGame->cameraYOffset;
         index = gCurrentPinballGame->shopSignPaletteIndex + gCurrentPinballGame->activePaletteIndex * 3;
-        DmaCopy16(3, gSapphireShopSignPalettes[index], OBJ_PLTT_SLOT(8), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gSapphireShopSign_Pals[index], OBJ_PLTT_SLOT(8), PLTT_SLOT_SIZE);
         DmaCopy16(3, gSapphireShopSignTileGfx[gCurrentPinballGame->shopSignFrame], (void *) 0x06014B20, 0x480);
         for (i = 0; i < 2; i++)
         {

@@ -8,7 +8,7 @@
 #define TRAVEL_MODE_TIME TICKS_FOR_TIME(1,0)
 #define TRAVEL_MODE_SAVER_TIME TICKS_FOR_TIME(0,30)
 
-extern const u8 gDefaultTimerPalette[];
+extern const Palette gTimer_Default_Pal[];
 
 void CleanupTravelModeState(void)
 {
@@ -42,7 +42,7 @@ void InitTravelMode(void)
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + TRAVEL_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->saverTimeRemaining = TRAVEL_MODE_SAVER_TIME;
-    DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
+    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
 }
 
 void UpdateTravelMode(void)

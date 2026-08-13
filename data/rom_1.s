@@ -659,13 +659,13 @@ gPondBumperTransitionFrames:: @ 0x08137968
 gLotadBobOffsets:: @ 0x0813798C
 	.2byte 0, 10, 20, 30, 20, 10
 
-gChinchouBumperPalettes:: @ 0x08137998
+gChinchouBumper_Pals:: @ 0x08137998
 	.incbin "graphics/stage/main/chinchou_bumper.gbapal"
 
-gLotadBumperPalettes:: @ 0x081379B8
+gLotadBumper_Pals:: @ 0x081379B8
 	.incbin "graphics/stage/main/lotad_bumper.gbapal"
 
-gWhiscashPalettes:: @ 0x081379D8
+gWhiscash_Pals:: @ 0x081379D8
 	.incbin "graphics/stage/main/whiscash.gbapal"
 
 gBoardArrowAnimFrames:: @ 0x08137AB8
@@ -679,7 +679,7 @@ gBoardArrowAnimFrames:: @ 0x08137AB8
 	.2byte 0,1,1,1,0,1,1,1,0,1
 	.2byte 1,1,1,1,1,1
 
-gFieldPaletteVariants:: @ 0x08137B3C
+gFieldVariant_Pals:: @ 0x08137B3C
 	.incbin "graphics/stage/main/field_variants.gbapal"
 
 gPelipperFlyAnimTable:: @ 0x08137CBC
@@ -770,17 +770,17 @@ gPinballGameStateFuncs:: @ 0x08137E04
 	.4byte PinballGame_State2_4ABC8 @ called once on game over (losing all balls)
 	.4byte PinballGame_State3_4B20C @ called once after game over?
 
-gBallPalettes:: @ 0x08137E14
+gBall_Pals:: @ 0x08137E14
 	.incbin "graphics/stage/main/pokeball_regular.gbapal"
 	.incbin "graphics/stage/main/pokeball_great.gbapal"
 	.incbin "graphics/stage/main/pokeball_ultra.gbapal"
 	.incbin "graphics/stage/main/pokeball_master.gbapal"
-	@ Four more past the four gBallPalettes is indexed with by ballUpgradeType.
+	@ Four more past the four gBall_Pals is indexed with by ballUpgradeType.
 	@ These have no art to carry them, and a bare .gbapal is a build product that
 	@ make clean removes, so they take the .bin suffix gb_player.gbapal.bin uses.
 	.incbin "graphics/stage/main/pokeball_unused.gbapal.bin"
 
-gBallFlashPalette:: @ 0x08137F14
+gBallFlash_Pals:: @ 0x08137F14
 	.incbin "graphics/stage/main/ball_flash.gbapal"
 
 gCaptureBallTilesGfx:: @ 0x08138014
@@ -852,20 +852,20 @@ gIdleBoardGameState1:: @ 0x08156E60
 	.incbin "data/idle_board/game_state_1.bin"
 
 @ The evolution banner: three sizes of EVOLUTION text plus the lightning that
-@ strikes it, streamed over the tile-704 overlay slot with gBoardActionObjPal
+@ strikes it, streamed over the tile-704 overlay slot with gBoardActionObj_Pals
 @ into OBJ bank 14 beside it (main_board_launcher_and_cutscenes.c). t102..173 is
 @ bolt art no bank-14 OAM entry reaches; the last 31 tiles are blank padding.
 gBoardActionTilesGfx:: @ 0x08158284
 	.incbin "graphics/stage/main/board_action.4bpp"
 	.space 0x3E0
 
-gBoardActionObjPal:: @ 0x0815A6A4
+gBoardActionObj_Pals:: @ 0x0815A6A4
 	.incbin "graphics/stage/main/board_action_obj.gbapal"
 
 gEvoExAppear_Gfx:: @ 0x0815A8A4
 	.incbin "graphics/board_pickups/evo_item_ex.4bpp";
 
-gEvoItemPalettes:: @ 0x0815C4C4
+gEvoItem_Pals:: @ 0x0815C4C4
 	.incbin "graphics/board_pickups/icon1_xp.gbapal";
 	.incbin "graphics/board_pickups/icon2_leaf.gbapal";
 	.incbin "graphics/board_pickups/icon3_fire.gbapal";
@@ -921,7 +921,7 @@ gDebugAsciiFont:: @ 0x081A6BE4
 	.include "data/graphics/mon_catch_sprites_pals.inc"
 @	.incbin "baserom.gba", 0x1AEBE4, 0xA80
 
-gKyogreWaterAnimPaletteFrames:: @ 0x081B0DE4
+gKyogreWaterAnimFrame_Pals:: @ 0x081B0DE4
 	.incbin "graphics/stage/kyogre/water_anim_frames.gbapal"
 
 @ 40 framesets of 6 OAM entries, three halfwords each, indexed [frame][i*3+n]
@@ -1333,27 +1333,27 @@ gShopModeBG0_3_Tilemap:: @ 0x081BB984
 	.incbin "graphics/stage/main/shop_mode_bg0_frame3_tilemap.bin"
 
 @ 9 palettes of 16 colors, one per shop sign color cycle step
-gSapphireShopSignPalettes:: @ 0x081BC984
+gSapphireShopSign_Pals:: @ 0x081BC984
 	.incbin "graphics/stage/sapphire/shop_sign.gbapal"
 
 gRubyTravelPaint_Gfx:: @ 0x081BCAA4
 	.incbin "graphics/stage/ruby/travel_paint.4bpp"
 	.space 0x120
 
-gRubyPainterPalette:: @ 0x081BE2C4
+gRubyPainter_Pals:: @ 0x081BE2C4
 	.incbin "graphics/stage/ruby/painter.gbapal"
 
 gSapphireTravelPaint_Gfx:: @ 0x081BE4C4
 	.incbin "graphics/stage/sapphire/travel_paint.4bpp"
 	.space 0x120
 
-gSapphirePainterPalette:: @ 0x081BFCE4
+gSapphirePainter_Pals:: @ 0x081BFCE4
 	.incbin "graphics/stage/sapphire/painter.gbapal"
 
-gRubyBoardPalette:: @ 0x081BFEE4
+gRubyBoard_Pals:: @ 0x081BFEE4
 	.incbin "graphics/stage/ruby/ruby_board.gbapal"
 
-gDefaultTimerPalette:: @ 0x081C0064
+gTimer_Default_Pal:: @ 0x081C0064
 	.incbin "graphics/stage/main/default_timer.gbapal"
 
 gLocationPalettes:: @ 0x081C00E4
@@ -1760,7 +1760,7 @@ gRayquazaSkyBackgroundGfx:: @ 0x083C5A2C
 @ pond bumper draw in ruby_process3_entities_2.c. 11 frames of 0x100, streamed
 @ into tile 372 + 8i for the three bumpers, each a single 16x32 from
 @ gRubyBumpersSpriteSet drawn twice side by side. Palette bank 9, loaded from
-@ gChinchouBumperPalettes in the copy right after. The Lotad bumper below is the
+@ gChinchouBumper_Pals in the copy right after. The Lotad bumper below is the
 @ if branch of the same loop and matches it frame for frame.
 gChinchouBumper_Gfx:: @ 0x083C806C
 	.incbin "graphics/stage/main/chinchou_bumper.4bpp"

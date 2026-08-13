@@ -68,13 +68,13 @@ void LoadBonusFieldSelectGraphics(void)
     gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gBonusFieldSelectStages_Pals, BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gFieldSelectWindow_Gfx, (void *)(VRAM + 0x4000), 0x4000);
-    DmaCopy16(3, gBonusFieldSelectStages_Gfx, (void *)(VRAM + 0x8000), 0x1800);
-    DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, (void *)VRAM, 0x800);
-    DmaCopy16(3, gBonusFieldSelectBg1_Tilemap, (void *)(VRAM + 0x800), 0x800);
-    DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, (void *)(VRAM + 0x1000), 0x800);
+    DmaCopy16(3, gFieldSelectWindow_Gfx, BG_CHAR_ADDR(1), BG_CHAR_SIZE);
+    DmaCopy16(3, gBonusFieldSelectStages_Gfx, BG_CHAR_ADDR(2), 3*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, BG_CHAR_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBonusFieldSelectBg1_Tilemap, BG_CHAR_SCREEN_ADDR(0,1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, BG_CHAR_SCREEN_ADDR(0,2), BG_SCREEN_SIZE);
     DmaCopy16(3, gFieldSelectSpritePals, OBJ_PLTT_SLOT(0), 3*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gFieldSelectSpriteGfx, (void *)(VRAM + 0x10000), 0x4020);
+    DmaCopy16(3, gFieldSelectSpriteGfx, OBJ_VRAM0, 0x4020);
 
     EnableVBlankInterrupts();
     InitBonusFieldSelectState();

@@ -271,9 +271,9 @@ SLOT_PALETTES = {
     # The two pond bumpers, streamed into the same three slots and each loading
     # its own palette into OBJ bank 9 in the copy right after the tiles.
     ('graphics/stage/main', 'chinchou_bumper'): ('chinchou_bumper.gbapal', 0,
-                                                 'gChinchouBumperPalettes, DMAd to OBJ bank 9 beside the sheet'),
+                                                 'gChinchouBumper_Pals, DMAd to OBJ bank 9 beside the sheet'),
     ('graphics/stage/main', 'lotad_bumper'): ('lotad_bumper.gbapal', 0,
-                                              'gLotadBumperPalettes, DMAd to OBJ bank 9 beside the sheet'),
+                                              'gLotadBumper_Pals, DMAd to OBJ bank 9 beside the sheet'),
     ('graphics/stage/main', 'egg_mode'): ('egg_mode.gbapal', 0,
                                           'gAerodactlyFlight_Pal, DMAd to OBJ bank 14 beside the sheet'),
     ('graphics/stage/main', 'egg_mode_cap'): ('egg_mode.gbapal', 0,
@@ -293,17 +293,17 @@ SLOT_PALETTES = {
     # of it -- gPikaChargingSpinnerSpriteSet, with 9 of 16 tiles.  The set that
     # actually reads this slot is gBonusBoardBallRespawnFxSpriteSet: one 32x32
     # over the whole 16, drawn in bank 1, which is where the board keeps
-    # gBallPalettes.
+    # gBall_Pals.
     ('graphics/stage/main', 'ball_spawn_glow_type1'): ('../ruby/ruby_board_palset_0.gbapal', 1,
                                                        'gBonusBoardBallRespawnFxSpriteSet, bank 1'),
     ('graphics/stage/main', 'ball_spawn_glow_type2'): ('../ruby/ruby_board_palset_0.gbapal', 1,
                                                        'gBonusBoardBallRespawnFxSpriteSet, bank 1'),
-    # Same pairing for the evolution banner: gBoardActionObjPal goes to OBJ bank
+    # Same pairing for the evolution banner: gBoardActionObj_Pals goes to OBJ bank
     # 14 in the copy right after the sheet's own
     # (main_board_launcher_and_cutscenes.c), and every gEvolutionBanner* entry
     # that draws it names bank 14.
     ('graphics/stage/main', 'board_action'): ('board_action_obj.gbapal', 0,
-                                              'gBoardActionObjPal, DMAd to OBJ bank 14 beside the sheet'),
+                                              'gBoardActionObj_Pals, DMAd to OBJ bank 14 beside the sheet'),
 
     # The 1UP banner and the life-count digit beside it are the sheets that
     # stream over tiles 0x295 and 0x2a9, drawn through gOneUpSpritePalette.
@@ -311,27 +311,27 @@ SLOT_PALETTES = {
                                                'gOneUpBannerSprite_Gfx, bank 12'),
     ('graphics/stage/misc', 'gunk_0845648C'): ('../main/one_up_sprite.gbapal', 0,
                                                'gLifeCountDigit_Gfx, bank 12'),
-    # The evolution pickup icons: gEvoItemPalettes runs parallel to
+    # The evolution pickup icons: gEvoItem_Pals runs parallel to
     # gEvoItemAppear_GfxList, so each sheet takes the icon palette of its name.
-    ('graphics/board_pickups', 'evo_item_ex'): ('icon1_xp.gbapal', 0, 'gEvoItemPalettes[0]'),
-    ('graphics/board_pickups', 'evo_item_leaf'): ('icon2_leaf.gbapal', 0, 'gEvoItemPalettes[1]'),
-    ('graphics/board_pickups', 'evo_item_fire'): ('icon3_fire.gbapal', 0, 'gEvoItemPalettes[2]'),
-    ('graphics/board_pickups', 'evo_item_link'): ('icon4_link.gbapal', 0, 'gEvoItemPalettes[3]'),
-    ('graphics/board_pickups', 'evo_item_moon'): ('icon5_moon.gbapal', 0, 'gEvoItemPalettes[4]'),
-    ('graphics/board_pickups', 'evo_item_water'): ('icon6_water.gbapal', 0, 'gEvoItemPalettes[5]'),
-    ('graphics/board_pickups', 'evo_item_bolt'): ('icon7_bolt.gbapal', 0, 'gEvoItemPalettes[6]'),
-    ('graphics/board_pickups', 'evo_item_sun'): ('icon8_sun.gbapal', 0, 'gEvoItemPalettes[7]'),
-    ('graphics/board_pickups', 'evo_item_heart'): ('icon9_heart.gbapal', 0, 'gEvoItemPalettes[8]'),
-    ('graphics/board_pickups', 'evo_item_box'): ('icon10_pokeblock.gbapal', 0, 'gEvoItemPalettes[9]'),
+    ('graphics/board_pickups', 'evo_item_ex'): ('icon1_xp.gbapal', 0, 'gEvoItem_Pals[0]'),
+    ('graphics/board_pickups', 'evo_item_leaf'): ('icon2_leaf.gbapal', 0, 'gEvoItem_Pals[1]'),
+    ('graphics/board_pickups', 'evo_item_fire'): ('icon3_fire.gbapal', 0, 'gEvoItem_Pals[2]'),
+    ('graphics/board_pickups', 'evo_item_link'): ('icon4_link.gbapal', 0, 'gEvoItem_Pals[3]'),
+    ('graphics/board_pickups', 'evo_item_moon'): ('icon5_moon.gbapal', 0, 'gEvoItem_Pals[4]'),
+    ('graphics/board_pickups', 'evo_item_water'): ('icon6_water.gbapal', 0, 'gEvoItem_Pals[5]'),
+    ('graphics/board_pickups', 'evo_item_bolt'): ('icon7_bolt.gbapal', 0, 'gEvoItem_Pals[6]'),
+    ('graphics/board_pickups', 'evo_item_sun'): ('icon8_sun.gbapal', 0, 'gEvoItem_Pals[7]'),
+    ('graphics/board_pickups', 'evo_item_heart'): ('icon9_heart.gbapal', 0, 'gEvoItem_Pals[8]'),
+    ('graphics/board_pickups', 'evo_item_box'): ('icon10_pokeblock.gbapal', 0, 'gEvoItem_Pals[9]'),
 
     # Tile 704 and OBJ bank 14 are the overlay pair: every mode that wants a
     # banner streams its sheet over one and its palette over the other, so
     # whichever sprite set the vote happens to find there says nothing.  The
     # palette is the one loaded beside the sheet's own copy.
     ('graphics/stage/ruby', 'travel_paint'):
-        ('painter.gbapal', 0, 'gRubyPainterPalette, bank 14'),
+        ('painter.gbapal', 0, 'gRubyPainter_Pals, bank 14'),
     ('graphics/stage/sapphire', 'travel_paint'):
-        ('painter.gbapal', 0, 'gSapphirePainterPalette, bank 14'),
+        ('painter.gbapal', 0, 'gSapphirePainter_Pals, bank 14'),
     ('graphics/stage/main', 'ball_save'):
         ('bonus_stage_lit.gbapal', 0, 'gBonusStagePal_Lit, bank 14'),
     ('graphics/stage/main', 'latios'):
@@ -391,12 +391,12 @@ OVERRIDES = {
     # outvote it below the float-up fx.  Everything from t123 on is the ball and
     # its absorb fx: gMonCatchBallAbsorbPokemonFxSpriteSet names bank 1
     # throughout, and gCaptureBallTilesGfx streams the ball itself into t102..105
-    # and t123..126, drawn with gBallPalettes in bank 1.
+    # and t123..126, drawn with gBall_Pals in bank 1.
     ('ruby', 'capture_mode', 'capture_mode_cap'):
         (14, 'past the end of the copy, matches the sheet around it'),
 
     ('ruby', 'capture_screen', 'capture_screen_capture_ball_slot_0'):
-        (1, 'gCaptureBallTilesGfx slot, drawn with gBallPalettes'),
+        (1, 'gCaptureBallTilesGfx slot, drawn with gBall_Pals'),
     ('ruby', 'capture_screen', 'capture_screen_absorb_fx_frame_0'):
         (1, 'first absorb fx frame, pairs with ball slot 0'),
     ('ruby', 'capture_screen', 'capture_screen_absorb_fx'):
@@ -461,7 +461,7 @@ OVERRIDES = {
 
     # OBJ bank 11 on the main fields never holds its resting ROM value either.
     # UpdateSpoinkAnimation runs every frame on both boards and rewrites it from
-    # gFieldPaletteVariants[field][set * 2 + (camera is low)] -- six banks per
+    # gFieldVariant_Pals[field][set * 2 + (camera is low)] -- six banks per
     # field, three brightness sets crossed with the half of the board on screen.
     # Set 0 is the one on screen during play, so the upper half is variant 0
     # (ruby) / 6 (sapphire) and the lower half 1 / 7.  Spoink is the plunger at
@@ -517,7 +517,7 @@ OVERRIDES = {
 # found by searching the ROM for the segment's own tiles -- so each takes the
 # palette that same art already carries where it is extracted properly:
 #
-#   evo_pickup  gEvoItemTilesGfxPtrs[n] -> 0x060116C0, palette gEvoItemPalettes[n]
+#   evo_pickup  gEvoItemTilesGfxPtrs[n] -> 0x060116C0, palette gEvoItem_Pals[n]
 #               (main_board_evolution_mode.c).  Ships gPickupIcon1_Gfx.
 #   location    gLocationPortraitGfx[n] -> 0x06010FA0, palette gLocationPalettes[n]
 #               (all_board_portrait_display.c).  Ships entry 0.

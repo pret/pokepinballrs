@@ -18,7 +18,7 @@ extern Palette gCatchSpritePalettes[];
 
 extern const u8 gCatchMonAppearFx_Gfx[];
 extern const u8 gCatchMonAppearFx_Pal[];
-extern const u8 gDefaultTimerPalette[];
+extern const Palette gTimer_Default_Pal;
 extern const u8 gJirachiFx_Gfx[][0x480];
 extern const u8 gCapturePalette[];
 extern const s16 gCatchMonRevealFrameData[8][2];
@@ -93,7 +93,7 @@ void InitCatchEmMode(void)
     }
     gCurrentPinballGame->catchEmModeStartCount++;
 
-    DmaCopy16(3, gDefaultTimerPalette, (void *)PLTT + 0x180, 0x20);
+    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
 
     for (i = 0; i < 6; i++)
     {
@@ -339,7 +339,7 @@ void InitJirachiBonus(void)
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
-    DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
+    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
 }
 
 void UpdateJirachiBonus(void)
