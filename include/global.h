@@ -1002,7 +1002,7 @@ extern struct Vector16 gWallEscapeOffsets[4];
 extern struct FlipperLineSegment gFlipperLineGeometry[13];
 extern u16 gFlipperBaseXPositions[2];
 extern const u8 *const gModeBannerTilemaps[];
-extern const u8 *const gModeBannerPalettes[];
+extern const Palette *const gModeBanner_Pals[];
 extern s16 DuclopsFramesetData[][2];
 extern u16 gModeBannerOamAttributes[14][45];
 extern const u8 gPokemonNameDisplayGfx[];

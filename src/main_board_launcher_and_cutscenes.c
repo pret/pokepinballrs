@@ -20,12 +20,12 @@ extern const u8 gBoardActionTilesGfx[];
 extern const Palette gBoardActionObj_Pals[];
 extern const u16 gEvolutionSparkleSpritesheetOam[20][12];
 extern const u8 gCatchTile_BurstStage4_Gfx[];
-extern const u8 gCatchTile_BurstStage4_Pal[];
+extern const Palette gCatchTile_BurstStage4_Pal;
 extern const s16 gSpoinkAnimFrameset[][2];
 extern const u8 gSpoinkEntity_Gfx[][0x1C0];
 extern const u8 gOneUpBannerSprite_Gfx[][0x200];
 extern const u8 gLifeCountDigit_Gfx[][0x40];
-extern const u8 gOneUpSpritePalette[];
+extern const Palette gOneUpSprite_Pal;
 
 extern struct SongHeader se_kecleon_side_look;
 extern struct SongHeader se_pika_full_charge_1_up;
@@ -133,7 +133,7 @@ void AnimateOneUpSprite(void)
         if (gCurrentPinballGame->oneUpAnimTimer == 90)
         {
             group->active = TRUE;
-            DmaCopy16(3, gOneUpSpritePalette, (void *)0x05000380, 0x20);
+            DmaCopy16(3, gOneUpSprite_Pal, OBJ_PLTT_SLOT(12), PLTT_SLOT_SIZE);
         }
 
         if (gCurrentPinballGame->oneUpAnimTimer == 85)
@@ -630,7 +630,7 @@ void RunEvolutionCutscene(void)
             LoadPortraitGraphics(PORTRAIT_STATE_POKEMON_DISPLAY, PORTRAIT_MAIN_SLOT);
             gCurrentPinballGame->activePortraitType = 17;
             DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x06015800, 0x1800);
-            DmaCopy16(3, gCatchTile_BurstStage4_Pal, (void *)0x050003C0, 0x20);
+            DmaCopy16(3, gCatchTile_BurstStage4_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             gCurrentPinballGame->creatureOamPriority = 3;
         }
     }

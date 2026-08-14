@@ -6324,7 +6324,7 @@ gModeBannerTilemaps:: @ 0x086ACEF8
 	.4byte gRubyLotadCatchBurstBanner_Gfx
 	.4byte gSapphireShroomishCatchBurstBanner_Gfx
 
-gModeBannerPalettes:: @ 0x086ACF18
+gModeBanner_Pals:: @ 0x086ACF18
     .4byte 0x000000
     .4byte gRubyChinchouCatchBurstBanner_Pal
     .4byte gMainCatchModeBanner_Pal
@@ -6346,7 +6346,7 @@ gCaptureSequenceTimings:: @ 0x086ACF38
 
     .space 0x4
 
-gCapturePalette:: @ 0x086ACF80
+gCaptureHit_Pal:: @ 0x086ACF80
 	.incbin "graphics/stage/main/capture.gbapal"
 
 gEvoItemPositions:: @ 0x086ACFA0
@@ -7056,7 +7056,7 @@ gHatchPieceAffineModes:: @ 0x086AE30C
 gHatchPieceMatrixNums:: @ 0x086AE318
 	.2byte 0x0002, 0x0003, 0x0002, 0x0004, 0x0005, 0x0003
 
-gOneUpSpritePalette:: @ 0x086AE324
+gOneUpSprite_Pal:: @ 0x086AE324
 	.incbin "graphics/stage/main/one_up_sprite.gbapal"
 
 gSpoinkAnimFrameset:: @ 0x086AE344

@@ -379,7 +379,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->bannerSlideVelocity = 0;
 
                 DmaCopy16(3, gModeBannerTilemaps[3], OBJ_VRAM1 + 0x1800, 0x2400);
-                DmaCopy16(3, gModeBannerPalettes[3], OBJ_PLTT + 0x1C0, 0x20);
+                DmaCopy16(3, gModeBanner_Pals[3], OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
 
                 gMain.blendControl = 206;
                 gCurrentPinballGame->shopEntryTimer = 148;

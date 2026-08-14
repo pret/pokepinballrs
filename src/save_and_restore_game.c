@@ -15,7 +15,7 @@ extern const u8 gBoardActionTilesGfx[];
 extern const u8 gAerodactlyFlight_Gfx[];
 extern const u8 gAreaRouletteSelectedFx_Gfx[];
 
-extern const u8 gCaptureModeTilesGfx[];
+extern const u8 gTotodileEggDelivery_Gfx[];
 extern const u8 gCaptureScreenTilesGfx[];
 
 extern const u8 gCatchTile_RevealTilesGfx[];
@@ -49,7 +49,7 @@ extern const u8 gDecimalDigitTilesGfx[][0x40];
 extern const u8 gPokemonNameDisplayGfx[];
 extern const s16 gCaughtTextChars[];
 
-extern const u8 gHoleIndicatorTileGfx[][0x440];
+extern const u8 gHatchMachineElevator_Gfx[][0x440];
 extern const s16 gHoleAnimKeyframeData[][2];
 
 extern const u8 gKecleonBonusClear_Gfx[0x2000];
@@ -355,7 +355,7 @@ void RestoreFieldSpecificGraphics(void)
         DmaCopy16(3, gAerodactlyFlight_Gfx, (void *)0x6015800, 0x1000);
         break;
     case 2:
-        DmaCopy16(3, gCaptureModeTilesGfx, (void *)0x6015800, 0xCA0);
+        DmaCopy16(3, gTotodileEggDelivery_Gfx, (void *)0x6015800, 0xCA0);
         break;
     case 3:
         DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], (void *)0x6015800, 0x25E0);
@@ -647,16 +647,16 @@ void RestoreSapphireBoardTileGraphics(void)
     case 1:
     case 2:
         index = gCurrentPinballGame->sapphireHatchMachineFrameIx;
-        DmaCopy16(3, gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
+        DmaCopy16(3, gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
         break;
     case 3:
     case 4:
         index = 15;
-        DmaCopy16(3, gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
+        DmaCopy16(3, gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
         break;
     case 5:
         index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
-        DmaCopy16(3, gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
+        DmaCopy16(3, gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
         break;
     case 6:
         break;

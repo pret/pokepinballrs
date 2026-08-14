@@ -1356,7 +1356,7 @@ gRubyBoard_Pals:: @ 0x081BFEE4
 gTimer_Default_Pal:: @ 0x081C0064
 	.incbin "graphics/stage/main/default_timer.gbapal"
 
-gLocationPalettes:: @ 0x081C00E4
+gLocation_Pals:: @ 0x081C00E4
 	.incbin "graphics/area_portraits/loc00_ruby_forest.gbapal"
 	.incbin "graphics/area_portraits/loc01_sapphire_forest.gbapal"
 	.incbin "graphics/area_portraits/loc02_ruby_plains.gbapal"
@@ -1374,7 +1374,7 @@ gLocationPalettes:: @ 0x081C00E4
 	@ 3 unused palettes: one real, two all zero
 	.incbin "graphics/area_portraits/loc_unused.gbapal.bin"
 
-gPortraitAnimPalettes:: @ 0x081C02E4
+gPortraitAnim_Pals:: @ 0x081C02E4
 	.incbin "graphics/slot_options/slot_options_1.gbapal"
 	.incbin "graphics/slot_options/slot_options_3.gbapal"
 	.incbin "graphics/slot_options/slot_options_5.gbapal"
@@ -1480,14 +1480,14 @@ gCatchMonAppearFx_Pal:: @ 0x0839DBAC
 
 @ The sequential catch-tile break: 13 frames drawn as 6 sprites each by
 @ gCatchTile_SequentialBreakSpritesheetOam, streamed over the tile-704 overlay
-@ slot with gCatchTile_RevealPalette in OBJ bank 14. The segments follow that
+@ slot with gCatchTile_Reveal_Pal in OBJ bank 14. The segments follow that
 @ table's piece boundaries; t68..102 is debris no OAM entry in the tree reaches,
 @ and the sheet's last 80 tiles are blank padding.
 gCatchTile_RevealTilesGfx:: @ 0x0839DDAC
 	.incbin "graphics/stage/main/catch_tile_reveal.4bpp"
 	.space 0xA00
 
-gCatchTile_RevealPalette:: @ 0x083A05CC
+gCatchTile_Reveal_Pal:: @ 0x083A05CC
 	.incbin "graphics/stage/main/catch_tile_reveal.gbapal"
 
 @ 8 frames of the lightning strike, drawn by gCatchTile_RevealOamFramesets over
@@ -1551,15 +1551,15 @@ gCatchTile_BurstStage4_Pal:: @ 0x083A6E4C
 @ t88..127 are blank but still inside the copy, so they are .space rather than a
 @ sheet of empty tiles. t128 is past the copy and is not blank.
 gAerodactlyFlight_Gfx:: @ 0x083A704C
-	.incbin "graphics/stage/main/aerodactyl_flight.4bpp"
+	.incbin "graphics/stage/ruby/aerodactyl_flight.4bpp"
 	.space 0x500
-	.incbin "graphics/stage/main/aerodactyl_flight_cap.4bpp"
+	.incbin "graphics/stage/ruby/aerodactyl_flight_cap.4bpp"
 
 gAerodactlyFlight_Pal:: @ 0x083A806C
-	.incbin "graphics/stage/main/aerodactyl_flight.gbapal"
+	.incbin "graphics/stage/ruby/aerodactyl_flight.gbapal"
 
-gCaptureModePalette:: @ 0x083A808C
-	.incbin "graphics/stage/main/capture_mode.gbapal"
+gTotodile_Pal:: @ 0x083A808C
+	.incbin "graphics/stage/ruby/totodile.gbapal"
 
 @ GRAPHICS for the board HUD (score frame etc.), 64 tiles here (0x800
 @ bytes). loadFieldBoardGraphics (src/all_board_setup.c) DMA's them to
@@ -1570,10 +1570,10 @@ gBoardHudTiles_B:: @ 0x083A826C
 	.incbin "graphics/stage/main/board_hud_tiles_b.4bpp"
 	.space 0x20
 
-gShopPalette:: @ 0x083A8A8C
-	.incbin "graphics/stage/main/shop.gbapal"
+gRubyShopSign_Pal:: @ 0x083A8A8C
+	.incbin "graphics/stage/ruby/shopsign.gbapal"
 
-gTravelPortraitPalette:: @ 0x083A8AAC
+gTravelPortrait_Pal:: @ 0x083A8AAC
 	.incbin "graphics/stage/main/travel_portrait.gbapal"
 
 @ Same as gBoardHudTiles_B: 4bpp tile GRAPHICS, 32 tiles
@@ -1690,12 +1690,6 @@ gBallRotationTileGraphics:: @ 0x083BB16C
 	.incbin "graphics/stage/main/pokeball_ultra.4bpp"
 	.incbin "graphics/stage/main/pokeball_master.4bpp"
 
-@ Not a shadow: the group all_board_process7.c streams these into is
-@ FIELD_SG_BALL_UPGRADE_FX and gBallUpgradeFxSpriteSet draws them, a single 32x32
-@ over tile 247 in palette bank 1 -- the ball's own bank, which is why the frames
-@ come out as the upgrade sparkle rather than anything dark. 6 frames of 0x200,
-@ 4 tiles wide, no OAM packing. gBallUpgradeFx_TileIndicies and gBallUpgradeFxTimer in
-@ ruby_board_indicators.c pick the frame and carry the same wrong name.
 gBallUpgradeFx_Gfx:: @ 0x083BD36C
 	.incbin "graphics/stage/main/ball_upgrade_fx_frames.4bpp"
 
@@ -1949,7 +1943,7 @@ gLocationPortraitGfx:: @ 0x0848D68C
 	.incbin "graphics/area_portraits/loc11_sapphire_desert.4bpp"
 	.incbin "graphics/area_portraits/loc12_ruins.4bpp"
 
-@ The two egg deliveries, over the tile-704 overlay slot, with gCaptureModePalette
+@ The two egg deliveries, over the tile-704 overlay slot, with gTotodile_Pal
 @ going to OBJ bank 14 in the copy above (main_board_to_be_split.c).
 @ gRubyAerodactylEggDeliverySpriteSet holds t0..30 and gRubyTotodileEggDelivery-
 @ SpriteSet t28..34 and t56..77, so the two overlap at t28..30 and no cut
@@ -1957,16 +1951,16 @@ gLocationPortraitGfx:: @ 0x0848D68C
 @ bank 11 while everything around it is bank 14, so it is split out to keep the
 @ colours honest. t35..55 and t78..100 are unreferenced, and t101 is past the
 @ copy: a solid colour-1 tile.
-gCaptureModeTilesGfx:: @ 0x0848FD8C
-	.incbin "graphics/stage/main/capture_mode.4bpp"
+gTotodileEggDelivery_Gfx:: @ 0x0848FD8C
+	.incbin "graphics/stage/ruby/totodile.4bpp"
 
-gHoleIndicatorTileGfx:: @ 0x08490A4C
+gHatchMachineElevator_Gfx:: @ 0x08490A4C
 @ 16 frames of 34 BG tiles (0x440 each), one per row of the sheet. Each frame
 @ is DMAd to 0x0600D900, i.e. char base 2 tile 712, inside the static board
 @ overlay. The 34 tiles are not one shape: the tilemap scatters them over
 @ several hole positions at rows 8-10 and 42-46, in palette banks 2 and 6.
 @ Sheet is coloured with Ruby bank 2; Sapphire reuses the same tiles.
-	.incbin "graphics/stage/main/hole_indicator.4bpp"
+	.incbin "graphics/stage/sapphire/hatch_machine_elevator.4bpp"
 
 gDusclopsBoardDusclopsAppearFx_Gfx:: @ 0x08494E4C
 	.incbin "graphics/stage/dusclops/dusclops_appear_fx.4bpp";
@@ -2176,11 +2170,11 @@ gDusclopsBoardDuskull_Gfx:: @ 0x08510E4C
 gSapphireBoardZigzagoon_Gfx:: @ 0x08512C4C
 	.incbin "graphics/stage/sapphire/zigzagoon.4bpp";
 
-gBonusStagePal_Lit:: @ 0x08514F4C
-	.incbin "graphics/stage/main/bonus_stage_lit.gbapal"
+gBallSaver_Ruby_Pal:: @ 0x08514F4C
+	.incbin "graphics/stage/ruby/ball_saver.gbapal"
 
-gBonusStagePal_Dark:: @ 0x08514F6C
-	.incbin "graphics/stage/main/bonus_stage_dark.gbapal"
+gBallSaver_Sapphire_Pal:: @ 0x08514F6C
+	.incbin "graphics/stage/sapphire/ball_saver.gbapal"
 
 gRubyChinchouCatchBurstBanner_Gfx:: @ 0x0851514C
 	.incbin "graphics/stage/ruby/chinchou_catch_burst_banner.4bpp"
@@ -2203,11 +2197,11 @@ gSapphireShroomishCatchBurstBanner_Gfx:: @ 0x0851DB8C
 	.incbin "graphics/stage/sapphire/shroomish_catch_burst_banner.4bpp"
 	.space 0xA0
 
-gBonusClearTextPal_Lit:: @ 0x08521FAC
-	.incbin "graphics/stage/main/bonus_clear_text_lit.gbapal"
+gEndOfBallBonus_Ruby_Pal:: @ 0x08521FAC
+	.incbin "graphics/stage/ruby/end_of_ball_bonus.gbapal"
 
-gBonusClearTextPal_Dark:: @ 0x08521FCC
-	.incbin "graphics/stage/main/bonus_clear_text_dark.gbapal"
+gEndOfBallBonus_Sapphire_Pal:: @ 0x08521FCC
+	.incbin "graphics/stage/sapphire/end_of_ball_bonus.gbapal"
 
 gMainBoardEvoBanner_Pal:: @ 0x085221AC
     .incbin "graphics/stage/main/evo_banner.gbapal"

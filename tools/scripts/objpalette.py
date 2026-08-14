@@ -254,10 +254,10 @@ SLOTS = {
 SLOT_PALETTES = {
     # The catch-tile break sheet and its palette are DMA'd together
     # (main_board_catch_tile_logic.c): the sheet over the tile-704 overlay slot,
-    # gCatchTile_RevealPalette into OBJ bank 14.  Every OAM entry that draws it
+    # gCatchTile_Reveal_Pal into OBJ bank 14.  Every OAM entry that draws it
     # names bank 14, so the whole sheet takes that one palette.
     ('graphics/stage/main', 'catch_tile_reveal'): ('catch_tile_reveal.gbapal', 0,
-                                                   'gCatchTile_RevealPalette, DMAd to OBJ bank 14 beside the sheet'),
+                                                   'gCatchTile_Reveal_Pal, DMAd to OBJ bank 14 beside the sheet'),
     # Same pairing again for the burst stages, each with its own palette label
     # sitting beside its sheet in rom_1.s.
     # OBJ bank 11 on the main field is not the board's own set: field_variants
@@ -306,7 +306,7 @@ SLOT_PALETTES = {
                                               'gBoardActionObj_Pals, DMAd to OBJ bank 14 beside the sheet'),
 
     # The 1UP banner and the life-count digit beside it are the sheets that
-    # stream over tiles 0x295 and 0x2a9, drawn through gOneUpSpritePalette.
+    # stream over tiles 0x295 and 0x2a9, drawn through gOneUpSprite_Pal.
     ('graphics/stage/misc', 'gunk_08455E8C'): ('../main/one_up_sprite.gbapal', 0,
                                                'gOneUpBannerSprite_Gfx, bank 12'),
     ('graphics/stage/misc', 'gunk_0845648C'): ('../main/one_up_sprite.gbapal', 0,
@@ -333,21 +333,21 @@ SLOT_PALETTES = {
     ('graphics/stage/sapphire', 'travel_paint'):
         ('painter.gbapal', 0, 'gSapphirePainter_Pals, bank 14'),
     ('graphics/stage/main', 'ball_save'):
-        ('bonus_stage_lit.gbapal', 0, 'gBonusStagePal_Lit, bank 14'),
+        ('bonus_stage_lit.gbapal', 0, 'gBallSaver_Ruby_Pal, bank 14'),
     ('graphics/stage/main', 'latios'):
-        ('bonus_stage_lit.gbapal', 0, 'gBonusStagePal_Lit, bank 14'),
+        ('bonus_stage_lit.gbapal', 0, 'gBallSaver_Ruby_Pal, bank 14'),
     ('graphics/stage/main', 'latios_arm'):
-        ('bonus_stage_lit.gbapal', 0, 'gBonusStagePal_Lit, bank 14'),
+        ('bonus_stage_lit.gbapal', 0, 'gBallSaver_Ruby_Pal, bank 14'),
     ('graphics/stage/main', 'end_of_ball'):
-        ('bonus_clear_text_lit.gbapal', 0, 'gBonusClearTextPal_Lit, bank 14'),
+        ('bonus_clear_text_lit.gbapal', 0, 'gEndOfBallBonus_Ruby_Pal, bank 14'),
     ('graphics/stage/main', 'game_over_text'):
         ('bonus_clear_text_lit.gbapal', 0, 'bank 14, as the end-of-ball banner left it'),
     ('graphics/stage/main', 'area_roulette_selected_fx'):
-        ('travel_portrait.gbapal', 0, 'gTravelPortraitPalette, bank 14'),
+        ('travel_portrait.gbapal', 0, 'gTravelPortrait_Pal, bank 14'),
 
     # Two more slots the vote cannot call.
     ('graphics/stage/ruby', 'shop'):
-        ('../main/shop.gbapal', 0, 'gShopPalette, as for the sign in the sheet'),
+        ('../main/shop.gbapal', 0, 'gRubyShopSign_Pal, as for the sign in the sheet'),
     ('graphics/stage/kecleon', 'kecleon'):
         ('kecleon_board_palset_0.gbapal', 2, 'board copy, not the reflection'),
     ('graphics/stage/main', 'gunk_0844AA0C'):
@@ -434,30 +434,30 @@ OVERRIDES = {
 
     # The shop sign is a scratch region too: UpdateRubyEvolutionShopSprite
     # (main_board_to_be_split.c) streams gRubyBoardShop_Gfx frames into
-    # 0x06013D00 -- tile 488, exactly this segment -- and loads gShopPalette
+    # 0x06013D00 -- tile 488, exactly this segment -- and loads gRubyShopSign_Pal
     # into bank 2 for the duration.  Bank 2's resting value is ruby's white
     # flash palette, which is why the tables point at it.
     ('ruby', 'intro_sprite', 'intro_sprite_shop_roof'):
-        (('../main/shop.gbapal', 0), 'gShopPalette, loaded into bank 2 while the sign animates'),
+        (('../main/shop.gbapal', 0), 'gRubyShopSign_Pal, loaded into bank 2 while the sign animates'),
 
     # OBJ bank 12 on the main fields is the 1UP palette: DrawOneUpBannerSprite
     # (main_board_launcher_and_cutscenes.c) streams gOneUpBannerSprite_Gfx over
-    # tile 0x295 -- the treeko segment -- and puts gOneUpSpritePalette in bank
+    # tile 0x295 -- the treeko segment -- and puts gOneUpSprite_Pal in bank
     # 12 to draw it.  gTreecko1UpDeliverySpriteSet's other two spans are ball_2
     # and shape, so all three belong to the same sprite.  Ruby's resting value
     # for bank 12 is the tail of gBonusStageObjPal, which is never on screen.
     ('ruby', 'intro_sprite', 'intro_sprite_treeko'):
-        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSpritePalette, loaded into bank 12'),
+        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSprite_Pal, loaded into bank 12'),
     ('ruby', 'intro_sprite', 'intro_sprite_ball_2'):
-        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSpritePalette, loaded into bank 12'),
+        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSprite_Pal, loaded into bank 12'),
     ('ruby', 'intro_sprite', 'intro_sprite_shape'):
-        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSpritePalette, loaded into bank 12'),
+        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSprite_Pal, loaded into bank 12'),
     ('sapphire', 'intro_sprite', 'intro_sprite_treeko'):
-        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSpritePalette, loaded into bank 12'),
+        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSprite_Pal, loaded into bank 12'),
     ('sapphire', 'intro_sprite', 'intro_sprite_ball_2'):
-        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSpritePalette, loaded into bank 12'),
+        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSprite_Pal, loaded into bank 12'),
     ('sapphire', 'intro_sprite', 'intro_sprite_shape'):
-        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSpritePalette, loaded into bank 12'),
+        (('../main/one_up_sprite.gbapal', 0), 'gOneUpSprite_Pal, loaded into bank 12'),
 
     # OBJ bank 11 on the main fields never holds its resting ROM value either.
     # UpdateSpoinkAnimation runs every frame on both boards and rewrites it from
@@ -519,7 +519,7 @@ OVERRIDES = {
 #
 #   evo_pickup  gEvoItemTilesGfxPtrs[n] -> 0x060116C0, palette gEvoItem_Pals[n]
 #               (main_board_evolution_mode.c).  Ships gPickupIcon1_Gfx.
-#   location    gLocationPortraitGfx[n] -> 0x06010FA0, palette gLocationPalettes[n]
+#   location    gLocationPortraitGfx[n] -> 0x06010FA0, palette gLocation_Pals[n]
 #               (all_board_portrait_display.c).  Ships entry 0.
 #   catch_mon   the other portrait slot, at 0x06010CA0, palette loaded into the
 #               bank gPortraitPaletteSlots names.  Ships a Geodude portrait --

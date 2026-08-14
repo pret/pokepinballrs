@@ -3,10 +3,11 @@
 #include "constants/board/center_screen_states.h"
 #include "constants/board/main_board.h"
 
-extern const u16 gLocationPalettes[];
-extern const u16 gPortraitPaletteSlots[2];
-extern const u16 gPortraitAnimPalettes[];
+//Should be of type Palette; causes match errors with the fakematch
+extern const u16 gLocation_Pals[];
+extern const u16 gPortraitAnim_Pals[];
 
+extern const u16 gPortraitPaletteSlots[2];
 extern const s16 gRouletteOutcomeFrameOffsets[];
 
 /*
@@ -34,21 +35,21 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         gCurrentPinballGame->portraitGfxIndex[picIx] = gCurrentPinballGame->areaRoulettePortraitIndex[picIx];
         DmaCopy16(3, gLocationPortraitGfx[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
         index = gCurrentPinballGame->areaRoulettePortraitIndex[picIx] * 0x10;
-        DmaCopy16(3, &gLocationPalettes[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
+        DmaCopy16(3, &gLocation_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     case PORTRAIT_STATE_SLOT_START_CARD:
         ptr = gShopItemData[START_SLOT_CARD];
         gCurrentPinballGame->portraitGfxIndex[picIx] = ptr[(gCurrentPinballGame->portraitCycleFrame % 48) / 24];
         index = ptr[2] * 0x10;
         DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
-        DmaCopy16(3, &gPortraitAnimPalettes[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
+        DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     case PORTRAIT_STATE_ROULETTE_WHEEL:
         ptr = gShopItemData[gCurrentPinballGame->modeOutcomeValues[picIx]];
         gCurrentPinballGame->portraitGfxIndex[picIx] = ptr[0];
         index = ptr[2] * 0x10;
         DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
-        DmaCopy16(3, &gPortraitAnimPalettes[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
+        DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     case PORTRAIT_STATE_POKEMON_DISPLAY:
         gCurrentPinballGame->portraitGfxIndex[picIx] = gCurrentPinballGame->currentSpecies;
@@ -123,7 +124,7 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
             DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
             index = gShopItemData[TRAVEL_RAMP_INDICATOR_CARD][2] * 16;
         }
-        DmaCopy16(3, &gPortraitAnimPalettes[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
+        DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     case PORTRAIT_STATE_SHOP_SELECTOR:
         ptr = gShopItemData[gCurrentPinballGame->shopSelectedItemId];
@@ -139,7 +140,7 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
                     && gCurrentPinballGame->shopExtraBallPreviouslyPurchased)
             ))
         {
-            DmaCopy16(3, &gPortraitAnimPalettes[index], tempPal, PLTT_SLOT_SIZE);
+            DmaCopy16(3, &gPortraitAnim_Pals[index], tempPal, PLTT_SLOT_SIZE);
             for (i = 0; i < 16; i++)
             {
                 rgb[0] = ((tempPal[i] & 0x1F) * 2) / 3;
@@ -152,7 +153,7 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         }
         else
         {
-            DmaCopy16(3, &gPortraitAnimPalettes[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
+            DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         }
         break;
     case PORTRAIT_STATE_CONFIRMATION_PROMPT:
@@ -161,7 +162,7 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         gCurrentPinballGame->portraitGfxIndex[picIx] = *(ptr2 += (gCurrentPinballGame->portraitCycleFrame % 48) / 24);
         index = ptr[2] * 16;
         DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
-        DmaCopy16(3, &gPortraitAnimPalettes[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
+        DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     case PORTRAIT_STATE_ROULETTE_OUTCOME:
         // TODO: fake match
@@ -169,7 +170,7 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         gCurrentPinballGame->portraitGfxIndex[picIx] = *(ptr2 += gRouletteOutcomeFrameOffsets[gCurrentPinballGame->outcomeFrameCounter / 12]);
         index = ptr[2] * 16;
         DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]], (void *)0x06010CA0 + picIx * 0x300, 0x300);
-        DmaCopy16(3, &gPortraitAnimPalettes[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
+        DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     }
 
