@@ -35,8 +35,6 @@ To set up the repository:
 	cd ../pokepinballrs
 	make tools
 
-Place a copy of the original ROM in the `pokepinballrs` directory, and name it `baserom.gba`. This is necessary because this is an incomplete disassembly.
-
 To build **pokepinballrs.gba** and confirm it matches the official ROM image:
 
 	make compare

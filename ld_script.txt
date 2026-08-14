@@ -28,6 +28,7 @@ SECTIONS
     . = 0x08000000;
     .text :
     {
+        src/rom_header.o(.text);
         src/crt0.o(.text);
         src/util.o(.text);
         src/main.o(.text);

@@ -1,15 +1,11 @@
 	.include "constants/gba_constants.inc"
 
 	.syntax unified
-	.arm
-
-Start: @ 8000000
-	b Init
-
-.incbin "baserom.gba", 0x4, 0xBC
 
 	.arm
 	.align 2
+
+	.global Init
 Init: @ 80000C0
 	mov r0, #0x12
 	msr cpsr_cf, r0
