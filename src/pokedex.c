@@ -58,7 +58,7 @@ void PrintDexNumbersFromListPosition(s16);
 static void PrintCaughtBallFromListPosition(s16);
 void LoadMonPortrait(s16);
 
-extern u8 *gMonIconPalettes[];
+extern Palette *gMonIconPalettes[];
 extern u8 *gCatchSpriteGfxPtrs[];
 
 extern u16 gPokedexLinkSendCounter;
@@ -125,11 +125,11 @@ void LoadPokedexGraphics(void)
 
     DmaCopy16(3, gPokedexBgText_Gfx, (void *)BG_CHAR_ADDR(1), 0x4400);
     DmaCopy16(3, gPokedexBg_Gfx, (void *)BG_CHAR_ADDR(3), 0x1400);
-    DmaCopy16(3, gPokedexBackground_Pals, (void *)BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, gPokedexBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gPokedexBg1_Tilemap, gBG0TilemapBuffer, BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexBg2_Tilemap, gPokedexVramBuffer, BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexBg3_Tilemap, (void *)BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexSprites_Pals, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+    DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, gPokedexSprites_Gfx, (void *)OBJ_VRAM0, 0x6C20);
 
     InitPokedexState();
@@ -1923,20 +1923,20 @@ void LoadMonPortrait(s16 species)
     {
         case SPECIES_UNSEEN:
             CopyBgTilesRect(gPokedexSprites_Gfx + 0x5C00, (void *)0x06013400, 24, 1);
-            DmaCopy16(3, gPokedexSprites_Pals, (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             break;
         case SPECIES_SEEN:
             CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
-            DmaCopy16(3, gMonPortraitGroupPals[0] + 0x1E0, (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, gMonPortraitGroupPals[0][15], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             break;
         case SPECIES_SHARED:
         case SPECIES_SHARED_AND_SEEN:
             CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
-            DarkenPalette(gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20, 0xE);
+            DarkenPalette(&gMonPortraitGroupPals[var1][var2], (void*)OBJ_PLTT_SLOT(1), 0x20, 0xE);
             break;
         case SPECIES_CAUGHT:
             CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
-            DmaCopy16(3, gMonPortraitGroupPals[var1] + var2 * 0x20, (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, gMonPortraitGroupPals[var1][var2], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             break;
     }
 }
@@ -1968,7 +1968,7 @@ void PrintDexDescription(s16 species, u32 page)
         var0 = 0;
     }
 
-    DmaCopy16(3, gTempGfxBuffer, (void *)VRAM + 0x5C00, 0x1800);
+    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_SCREEN_ADDR(1,3) + 0x400 , 3*BG_SCREEN_SIZE);
 }
 
 void BlitGlyphToTileBuffer(s32 arg0, s32 arg1, s32 arg2) {
@@ -2403,7 +2403,7 @@ void LoadMonAnimationSprite(s16 species)
         remainder = var0 % 5;
 
         CopyBgTilesRect(gCatchSpriteGfxPtrs[quotient] + remainder * 0xD80, (void *)(OBJ_VRAM0 + 0x3800), 108, 1);
-        DmaCopy16(3, gMonIconPalettes[quotient] + remainder * 0x20, (void *)OBJ_PLTT + 0x40, 0x20);
+        DmaCopy16(3, gMonIconPalettes[quotient][remainder], OBJ_PLTT_SLOT(2), PLTT_SLOT_SIZE);
     }
     else
     {
@@ -2412,7 +2412,7 @@ void LoadMonAnimationSprite(s16 species)
         remainder = (var0 - 100) % 6;
 
         CopyBgTilesRect(gMonHatchSpriteGroupGfx[quotient][remainder], (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
-        DmaCopy16(3, gMonHatchSpriteGroupPals[quotient][remainder], (void *)OBJ_PLTT + 0x60, 0x20);
+        DmaCopy16(3, gMonHatchSpriteGroupPals[quotient][remainder], OBJ_PLTT_SLOT(3), PLTT_SLOT_SIZE);
     }
 }
 

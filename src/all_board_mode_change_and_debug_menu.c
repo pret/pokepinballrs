@@ -20,10 +20,10 @@ extern const u8 gMainBoardBallSaveLatiosArm_Gfx[];
 extern const u8 gMainBoardEndOfBall_Gfx[];
 extern const u8 gBonusSummaryCharTiles[][0x20];
 extern const u8 gMainBoardGameOverText_Gfx[];
-extern const u8 gBonusStagePal_Lit[];
-extern const u8 gBonusStagePal_Dark[];
-extern const u8 gBonusClearTextPal_Lit[];
-extern const u8 gBonusClearTextPal_Dark[];
+extern const Palette gBallSaver_Ruby_Pal;
+extern const Palette gBallSaver_Sapphire_Pal;
+extern const Palette gEndOfBallBonus_Ruby_Pal;
+extern const Palette gEndOfBallBonus_Sapphire_Pal;
 extern const s8 gBonusSummaryTextTemplates[][3][20];
 
 // Handle debug system flags
@@ -209,11 +209,11 @@ void EndOfBallSequence(void)
             DmaCopy16(3, gMainBoardEndOfBall_Gfx, (void *)0x6015800, 0x2800);
             if (gMain.selectedField == FIELD_RUBY)
             {
-                DmaCopy16(3, gBonusClearTextPal_Lit, (void *)0x050003C0, 0x20);
+                DmaCopy16(3, gEndOfBallBonus_Ruby_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             }
             else
             {
-                DmaCopy16(3, gBonusClearTextPal_Dark, (void *)0x050003C0, 0x20);
+                DmaCopy16(3, gEndOfBallBonus_Sapphire_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             }
 
             m4aSongNumStart(SE_BONUS_PANEL_SLIDE);
@@ -458,12 +458,12 @@ void BallSaverAnimation(void)
                 DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
                 DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, (void *)0x06016800, 0x800);
                 DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, (void *)0x06017000, 0xC0);
-                DmaCopy16(3, gBonusStagePal_Lit, (void *)0x050003C0, 0x20);
+                DmaCopy16(3, gBallSaver_Ruby_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             }
             else
             {
                 DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
-                DmaCopy16(3, gBonusStagePal_Dark, (void *)0x050003C0, 0x20);
+                DmaCopy16(3, gBallSaver_Sapphire_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             }
 
             gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_FROZEN;
@@ -503,7 +503,7 @@ void ClearDebugTextDisplay(void)
     for (i = 0x340; i < 0x380; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gBG0TilemapBuffer, (void *)0x6002000, 0x800);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
 }
 
 void DebugMoveBallPosition(void)

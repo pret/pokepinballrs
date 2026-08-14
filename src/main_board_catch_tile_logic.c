@@ -7,20 +7,20 @@ extern const s16 gCatchTile_SequentialFramesetData[][2];
 extern const u16 gCatchTile_SequentialBreakSpritesheetOam[28][18];
 extern const s16 gCatchTile_RevealSparkleTimings[];
 extern const u16 gCatchTile_RevealOamFramesets[16][18];
-extern const u8 gCatchTile_RevealPalette[];
-extern const u16 gCatchTile_BurstRevealOamFramesets0[18][18];
 extern const u8 gCatchTile_RevealTilesGfx[];
-extern const s16 gCatchTile_RevealFinalTimings[];
-extern const u8 gCatchTile_BurstStage4_Gfx[];
-extern const u8 gCatchTile_BurstStage4_Pal[];
+extern const Palette gCatchTile_Reveal_Pal;
+extern const u16 gCatchTile_BurstRevealOamFramesets0[18][18];
 extern const u16 gCatchTile_BurstRevealOamFramesets1[22][12];
+extern const s16 gCatchTile_RevealFinalTimings[];
 
 extern const u8 gCatchTile_BurstStart_Gfx[];
-extern const u8 gCatchTile_BurstStart_Pal[];
+extern const Palette gCatchTile_BurstStart_Pal;
 extern const u8 gCatchTile_BurstStage2_Gfx[];
-extern const u8 gCatchTile_BurstStage2_Pal[];
+extern const Palette gCatchTile_BurstStage2_Pal;
 extern const u8 gCatchTile_BurstStage3_Gfx[];
-extern const u8 gCatchTile_BurstStage3_Pal[];
+extern const Palette gCatchTile_BurstStage3_Pal;
+extern const u8 gCatchTile_BurstStage4_Gfx[];
+extern const Palette gCatchTile_BurstStage4_Pal;
 
 
 void DisableCatchTileDisplay(void)
@@ -73,7 +73,7 @@ void RevealCatchTilesSequential(void)
         if (gCurrentPinballGame->catchRevealFrameId == 0 && gCurrentPinballGame->catchTileRevealFrameAnimTimer == 0)
         {
             gCurrentPinballGame->activePortraitType = 11;
-            DmaCopy16(3, gCatchTile_RevealPalette, (void *)0x050003C0, 0x20);
+            DmaCopy16(3, gCatchTile_Reveal_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             DmaCopy16(3, gCatchTile_RevealTilesGfx, (void *)0x06015800, 0x2800);
         }
 
@@ -197,7 +197,7 @@ void RevealCatchTilesBurst(void)
     case 1:
         gCurrentPinballGame->activePortraitType = 5;
         DmaCopy16(3, gCatchTile_BurstStart_Gfx, (void *)0x06015800, 0x2000);
-        DmaCopy16(3, gCatchTile_BurstStart_Pal, (void *)0x050003C0, 0x20);
+        DmaCopy16(3, gCatchTile_BurstStart_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_LIGHTNING_STRIKE]->active = TRUE;
         m4aSongNumStart(SE_CATCH_ALL_REVEAL_LIGHTNING);
         gCurrentPinballGame->hatchRevealPhase++;
@@ -243,7 +243,7 @@ void RevealCatchTilesBurst(void)
     case 3:
         gCurrentPinballGame->activePortraitType = 6;
         DmaCopy16(3, gCatchTile_BurstStage2_Gfx, (void *)0x06015800, 0x800);
-        DmaCopy16(3, gCatchTile_BurstStage2_Pal, (void *)0x050003C0, 0x20);
+        DmaCopy16(3, gCatchTile_BurstStage2_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_TILE_FLASH_FX]->active = TRUE;
         gCurrentPinballGame->hatchRevealPhase++;
         gCurrentPinballGame->revealAnimFrameCounter = 0;
@@ -284,7 +284,7 @@ void RevealCatchTilesBurst(void)
     case 5:
         gCurrentPinballGame->activePortraitType = 7;
         DmaCopy16(3, gCatchTile_BurstStage3_Gfx, (void *)0x06015800, 0x2000);
-        DmaCopy16(3, gCatchTile_BurstStage3_Pal, (void *)0x050003C0, 0x20);
+        DmaCopy16(3, gCatchTile_BurstStage3_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
         gCurrentPinballGame->hatchRevealPhase++;
         InitBurstTileParticles();
         m4aSongNumStart(SE_CATCH_ALL_REVEAL_SHATTER);
@@ -328,7 +328,7 @@ void RevealCatchTilesBurst(void)
     case 7:
         gCurrentPinballGame->activePortraitType = 8;
         DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x06015800, 0x1800);
-        DmaCopy16(3, gCatchTile_BurstStage4_Pal, (void *)0x050003C0, 0x20);
+        DmaCopy16(3, gCatchTile_BurstStage4_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = TRUE;
         gCurrentPinballGame->hatchRevealPhase++;
         gCurrentPinballGame->startButtonDisabled = FALSE;

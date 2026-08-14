@@ -162,7 +162,7 @@ void InterpolatePaletteStep(u16 arg0)
     }
 }
 
-void DarkenPalette(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
+void DarkenPalette(const Palette * pal, u8 * dest, u16 arg2, u16 arg3)
 {
     u16 i;
     u16 b[2];
@@ -201,7 +201,7 @@ void DarkenPalette(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
     DmaCopy16(3, gPaletteFadeBuffers[2], dest, arg2);
 }
 
-void BrightenPalette(u8 * pal, u8 * dest, u16 arg2, u16 arg3)
+void BrightenPalette(const Palette * pal, u8 * dest, u16 arg2, u16 arg3)
 {
     u16 i;
     u16 b[2];

@@ -56,14 +56,14 @@ void LoadFieldSelectGraphics(void)
 
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gFieldSelectBGPals,             (void *)(PLTT),           0x200);
-    DmaCopy16(3, gFieldSelectWindow_Gfx,         (void *)(VRAM + 0x4000),  0x1400);
-    DmaCopy16(3, gFieldSelectMiniFields_Gfx,     (void *)(VRAM + 0x8000),  0x3800);
-    DmaCopy16(3, gFieldSelectBG0Tilemap,              (void *)(VRAM),           0x800);
-    DmaCopy16(3, gFieldSelectFrameShadowTilemap, (void *)(VRAM + 0x800),   0x800);
-    DmaCopy16(3, gFieldSelectWindowTilemap,      (void *)(VRAM + 0x1000),  0x800);
-    DmaCopy16(3, gFieldSelectSpritePals,         (void *)(PLTT + 0x200),   0x200);
-    DmaCopy16(3, gFieldSelectSpriteGfx,          (void *)(VRAM + 0x10000), 0x4020);
+    DmaCopy16(3, gFieldSelectBGPals,             BG_PLTT,           BG_PLTT_SIZE);
+    DmaCopy16(3, gFieldSelectWindow_Gfx,         BG_CHAR_ADDR(1),   0x1400);
+    DmaCopy16(3, gFieldSelectMiniFields_Gfx,     BG_CHAR_ADDR(2),   7*BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectBG0Tilemap,         BG_VRAM,           BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectFrameShadowTilemap, BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectWindowTilemap,      BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectSpritePals,         OBJ_PLTT,          OBJ_PLTT_SIZE);
+    DmaCopy16(3, gFieldSelectSpriteGfx,          OBJ_VRAM0,         0x4020);
 
     EnableVBlankInterrupts();
     InitFieldSelectData();

@@ -37,9 +37,9 @@ extern StateFunc gIntroStateFuncs[15];
 extern u8 gIntroCopyright_Tilemap[];
 
 extern u8 gIntroCopyright_Gfx[];
-extern u8 gIntroCopyright_Pal[];
+extern const Palette gIntroCopyright_Pal[];
 extern u8 gIntroScene1TorchicSprites_Gfx[];
-extern u8 gIntroScene1TorchicSprites_Pals[];
+extern const Palette gIntroScene1TorchicSprites_Pals[];
 
 extern u8 gIntroScene1Torchic_BG0Tilemap[];
 extern u8 gIntroScene1Torchic_BG1Tilemap[];
@@ -67,13 +67,13 @@ extern u8 gIntroPalSwapBuffer[];
 
 extern u8 gIntroScene2Pikas_BG3Tilemap[];
 extern u8 gIntroScene2PikasSprites_Gfx[];
-extern u8 gIntroScene2Pikas_Pal[];
+extern const Palette gIntroScene2Pikas_Pal[];
 extern u8 gIntroScene2Pikas_BG0Tiles[];
 extern u8 gIntroScene2Pikas_BG1Tiles[];
 
 extern u8 gIntroScene3Treecko_AltBG1TilemapBuffer[];
 
-extern u8 gIntroScene3Treecko_Pal[];
+extern const Palette gIntroScene3Treecko_Pal[];
 extern u8 gIntroScene3Treecko_BG0Tilemap[];
 extern u8 gIntroScene3Treecko_BG1Tilemap[];
 extern u8 gIntroScene3Treecko_BG2Tilemap[];
@@ -234,7 +234,7 @@ void IntroScene1_00_LoadTitleLettersAndTorchicScene(void)
     DmaCopy16(3, gIntroScene1TorchicBall_Gfx, gIntroTileBuffer, 0x6800);
     DarkenPalette(gIntroScene1TorchicSprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, 0x20);
     DmaCopy16(3, gIntroScene1TorchicSprites_Gfx, BG_CHAR_ADDR(4), 0x8000);
-    DmaCopy16(3, gIntroScene1TorchicSprites_Pals, 0x05000200, BG_PLTT_SIZE);
+    DmaCopy16(3, gIntroScene1TorchicSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
     IntroScene1Torchic_InitVars();
     gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
     gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
@@ -245,9 +245,9 @@ void IntroScene1_00_LoadTitleLettersAndTorchicScene(void)
     gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
     gMain.bgOffsets[3].yOffset = gIntroBGParams[2].posY;
     EnableVBlankInterrupts();
-    FadeInWithCustomPalettes((void*)BG_PLTT, gIntroScene1TorchicSprites_Pals, NULL);
-    DmaCopy16(3, gIntroScene1TorchicSprites_Pals, 0x05000200, BG_PLTT_SIZE);
-    DmaCopy16(3, 0, 0x05000200, 0x20);
+    FadeInWithCustomPalettes((void*)BG_PLTT, (u8 * )gIntroScene1TorchicSprites_Pals, NULL);
+    DmaCopy16(3, gIntroScene1TorchicSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
+    DmaCopy16(3, 0, OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
     gIntroSceneIndex++;
 }
 
@@ -359,7 +359,7 @@ void IntroScene1Torchic_04_LargeSparkle(void)
         if (++gIntroSpriteEntities[0].frameTimer > 1)
         {
             gIntroSpriteEntities[0].visible = FALSE;
-            DarkenPalette(&gIntroScene1TorchicSprites_Pals[0x1C0], (void*)BG_PLTT + 0xE0, 0x20, 0);
+            DarkenPalette(&gIntroScene1TorchicSprites_Pals[14], (void*)BG_PLTT_SLOT(7), 0x20, 0);
             m4aSongNumStart(MUS_OPENING);
             gIntroSceneIndex++;
         }
@@ -698,7 +698,7 @@ void IntroScene2Pikas_14_LoadPinkYellowBackground(void)
     DmaCopy16(3, gIntroScene2Pikas_BG1Tiles, (void*) 0x0600D000, 0x2000);
     DmaCopy16(3, gIntroScene2Pikas_BG3Tilemap, (void*) 0x0600F000, 0x800);
     DmaCopy16(3, gIntroScene2PikasSprites_Gfx, (void*) 0x06000000, 0x3C00);
-    DmaCopy16(3, gIntroScene2Pikas_Pal, (void*) PLTT, 0x80);
+    DmaCopy16(3, gIntroScene2Pikas_Pal, BG_PLTT_SLOT(0), 4*PLTT_SLOT_SIZE);
     IntroScene2Pikas_InitVars();
     gMain.bgOffsets[0].xOffset = gIntroBGParams[0].posX;
     gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
@@ -822,9 +822,9 @@ void IntroScene3Treecko_20_LoadTreeckoFlipperBall(void)
     DmaCopy16(3, gIntroScene3Treecko_BG1TilemapA, gBG0TilemapBuffer, 0x800);
     DmaCopy16(3, gIntroScene3Treecko_BG1TilemapB, gIntroScene3Treecko_AltBG1TilemapBuffer, 0x800);
     DmaCopy16(3, gIntroScene3TreeckoSprites_Gfx, (void*) 0x06000000, 0x6C00);
-    DmaCopy16(3, gIntroScene3Treecko_Pal, (void*) PLTT, 0xE0);
+    DmaCopy16(3, gIntroScene3Treecko_Pal, BG_PLTT_SLOT(0), 7*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene3TreeckoTreecko_Gfx, (void*) 0x06010000, 0x2000);
-    DmaCopy16(3, gIntroScene3Treecko_Pal, (void*) OBJ_PLTT, 0xE0);
+    DmaCopy16(3, gIntroScene3Treecko_Pal, OBJ_PLTT_SLOT(0), 7*PLTT_SLOT_SIZE);
 
     IntroScene3Treecko_InitVars();
     IntroScene3Treecko_RenderPokeball();
@@ -999,11 +999,11 @@ void IntroScene4PlussleMinun_26_LoadTealWhiteBackground(void)
     REG_BG3CNT = 0x1E03;
     REG_DISPCNT |= 0x800;
 
-    DmaCopy16(3, gIntroScene4PlussleMinun_BG0Tiles, (void *) 0x6006000, 0x2000);
-    DmaCopy16(3, gIntroScene4PlussleMinun_BG1Tiles, (void *) 0x600D000, 0x2000);
-    DmaCopy16(3, gIntroScene4PlussleMinun_BG3Tilemap, (void *) 0x600F000, 0x800);
-    DmaCopy16(3, gIntroScene4PlussleMinunSprites_Gfx, (void *) 0x6000000, 0x4000);
-    DmaCopy16(3, gIntroScene4PlussleMinun_Pal, PLTT, 0x60);
+    DmaCopy16(3, gIntroScene4PlussleMinun_BG0Tiles, BG_CHAR_SCREEN_ADDR(1,4), 4*BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene4PlussleMinun_BG1Tiles, BG_CHAR_SCREEN_ADDR(3,2), 4*BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene4PlussleMinun_BG3Tilemap, BG_CHAR_SCREEN_ADDR(3,6), BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene4PlussleMinunSprites_Gfx, BG_CHAR_ADDR(0), BG_CHAR_SIZE);
+    DmaCopy16(3, gIntroScene4PlussleMinun_Pal, BG_PLTT_SLOT(0), 3*PLTT_SLOT_SIZE);
     gMain.dispcntBackup = REG_DISPCNT;
 
     IntroScene4PlussleMinun_InitVars();
@@ -1119,15 +1119,15 @@ void IntroScene5Mudkip_32_LoadMudkipBallScene(void)
     REG_BG3CNT = 0x1E03;
     REG_DISPCNT |= 0x800;
 
-    DmaCopy16(3, gIntroScene5Mudkip_BG0Tiles, (void *) 0x6006000, 0x800);
-    DmaCopy16(3, gIntroScene5Mudkip_BG1Tiles, (void *) 0x6007000, 0x1000);
-    DmaCopy16(3, gIntroScene5Mudkip_BG2Tilemap, (void *) 0x600E000, 0x1000);
-    DmaCopy16(3, gIntroScene5Mudkip_BG3Tilemap, (void *) 0x600F000, 0x800);
-    DmaCopy16(3, gIntroScene5MudkipText_Gfx, (void *) 0x6000000, 0x2800);
-    DmaCopy16(3, gIntroScene1TorchicBall_Gfx, gTempGfxBuffer, 0x4000);
-    DmaCopy16(3, gIntroScene5Mudkip_Pal, (void *) 0x5000000, 0x180);
-    DmaCopy16(3, gIntroScene5MudkipSprites_Gfx, (void *) 0x6010000, 0x3000);
-    DmaCopy16(3, gIntroScene5Mudkip_Pal, OBJ_PLTT, 0x180);
+    DmaCopy16(3, gIntroScene5Mudkip_BG0Tiles, BG_CHAR_SCREEN_ADDR(1,4), BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene5Mudkip_BG1Tiles, BG_CHAR_SCREEN_ADDR(1,6), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene5Mudkip_BG2Tilemap, BG_CHAR_SCREEN_ADDR(3,4), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene5Mudkip_BG3Tilemap, BG_CHAR_SCREEN_ADDR(3,6), BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene5MudkipText_Gfx, BG_CHAR_ADDR(0), 5*BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene1TorchicBall_Gfx, gTempGfxBuffer, BG_CHAR_SIZE);
+    DmaCopy16(3, gIntroScene5Mudkip_Pal, BG_PLTT_SLOT(0), 12*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gIntroScene5MudkipSprites_Gfx, OBJ_VRAM0, 6*BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene5Mudkip_Pal, OBJ_PLTT_SLOT(0), 12*PLTT_SLOT_SIZE);
 
     IntroScene5Mudkip_InitVars();
     IntroScene5Mudkip_RenderAllSprites();
@@ -1356,9 +1356,9 @@ void IntroScene6Chinchou_38_LoadChinchou(void)
     DmaCopy16(3, gIntroScene6Chinchou_BG2Tilemap, 0x0600F000, 0x800);
     DmaCopy16(3, gIntroScene6Chinchou_BG3Tilemap, 0x0600F800, 0x800);
     DmaCopy16(3, gIntroScene6ChinchouSprites_Gfx, 0x06000000, 0x6400);
-    DmaCopy16(3, gIntroScene6Chinchou_Pal, 0x05000000, 0x80);
+    DmaCopy16(3, gIntroScene6Chinchou_Pal, BG_PLTT_SLOT(0), 4*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene6ChinchouStars_Gfx, 0x06010000, 0x1000);
-    DmaCopy16(3, gIntroScene6Chinchou_Pal, 0x05000200, 0x80);
+    DmaCopy16(3, gIntroScene6Chinchou_Pal, OBJ_PLTT_SLOT(0), 4*PLTT_SLOT_SIZE);
 
     IntroScene6Chinchou_InitVars();
 
@@ -1587,9 +1587,9 @@ void IntroScene7Parade_43_LoadPinkYellowBackground(void)
     DmaCopy16(3, gIntroScene7Parade_BG2Tiles, 0x0600E000, 0x2000);
     DmaCopy16(3, gIntroScene7Parade_BG3Tilemap, 0x06007800, 0x800);
     DmaCopy16(3, gIntroScene7ParadeSprites_Gfx, 0x06000000, 0x5000);
-    DmaCopy16(3, gIntroScene7Parade_Pal, 0x05000000, 0x160);
+    DmaCopy16(3, gIntroScene7Parade_Pal, BG_PLTT_SLOT(0), 11*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene7ParadeWailmer_Gfx, 0x06010000, 0x2000);
-    DmaCopy16(3, gIntroScene7Parade_Pal, 0x05000200, 0x160);
+    DmaCopy16(3, gIntroScene7Parade_Pal, OBJ_PLTT_SLOT(0), 11*PLTT_SLOT_SIZE);
 
     gMain.dispcntBackup = REG_DISPCNT;
     IntroScene7Parade_InitVars();
@@ -1857,9 +1857,9 @@ void IntroScene8WailmerLaunch_51_LoadWailmerBlastBackground(void)
 
     DmaCopy16(3, gIntroScene8WailmerLaunch_BG2Tilemap, 0x06000000, 0x800);
     DmaCopy16(3, gIntroScene8WailmerLaunchExplosion_Gfx, 0x06004000, 0x3400);
-    DmaCopy16(3, gIntroScene8WailmerLaunch_Pal, 0x05000000, 0x140);
+    DmaCopy16(3, gIntroScene8WailmerLaunch_Pal, BG_PLTT_SLOT(0), 10*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene8WailmerLaunch_Gfx, 0x06010000, 0x2C00);
-    DmaCopy16(3, gIntroScene8WailmerLaunch_Pal, 0x05000200, 0x140);
+    DmaCopy16(3, gIntroScene8WailmerLaunch_Pal, OBJ_PLTT_SLOT(0), 10*PLTT_SLOT_SIZE);
 
     gMain.dispcntBackup = REG_DISPCNT;
     IntroScene8WailmerLaunch_InitVars();
@@ -2150,9 +2150,9 @@ void IntroScene9BallFlight_59_LoadSkySpeedOrbs(void)
 
     DmaCopy16(3, gIntroScene9BallFlight_BG3Tilemap, 0x06000000, 0x800);
     DmaCopy16(3, gIntroScene9BallFlightClouds_Gfx, 0x06004000, 0x2400);
-    DmaCopy16(3, gIntroScene9BallFlight_Pal, 0x05000000, 0x40);
+    DmaCopy16(3, gIntroScene9BallFlight_Pal, BG_PLTT_SLOT(0), 2*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene9BallFlightall_Gfx, 0x06010000, 0x7000);
-    DmaCopy16(3, gIntroScene9BallFlight_Pal, 0x05000200, 0x40);
+    DmaCopy16(3, gIntroScene9BallFlight_Pal, OBJ_PLTT_SLOT(0), 2*PLTT_SLOT_SIZE);
 
     gMain.dispcntBackup = REG_DISPCNT;
     IntroScene9BallFlight_InitVars();
@@ -2240,14 +2240,14 @@ void IntroScene9BallFlight_62_MoveBallSkyFadeWhite(void)
             gIntroObjWhiteFlash = 32;
     }
 
-    BrightenPalette(gIntroScene9BallFlight_Pal, (void *) OBJ_PLTT, 0x20, gIntroObjWhiteFlash);
+    BrightenPalette(gIntroScene9BallFlight_Pal, (u8 *)OBJ_PLTT_SLOT(0), 0x20, gIntroObjWhiteFlash);
     if (gIntroFrameCounter > 136)
     {
         gIntroBGWhiteFlash += 2;
         if (gIntroBGWhiteFlash > 32)
             gIntroBGWhiteFlash = 0x20;
 
-        BrightenPalette(gIntroScene9BallFlight_Pal, (void *) PLTT, 0x40, gIntroBGWhiteFlash);
+        BrightenPalette(gIntroScene9BallFlight_Pal, (u8 *)BG_PLTT_SLOT(0), 0x40, gIntroBGWhiteFlash);
     }
 
     gIntroBGParams[0].posX -= 0x24;

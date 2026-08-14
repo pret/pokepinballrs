@@ -8,10 +8,10 @@
 #define KYOGRE_MODE_TIME TICKS_FOR_TIME(3,0)
 
 extern const u8 gKyogreBonusClear_Gfx[];
-extern const u8 gKyogreWaterAnimPaletteFrames[][0x20];
+extern const Palette gKyogreWaterAnimFrame_Pals[];
 extern const u16 gKyogreWaterBackgroundTilemap[];
-extern const u8 gKyogreIntroShorePalette[][0x20];
-extern const u8 gKyogreIntroIcePalette[][0x20];
+extern const Palette gKyogreIntroShorePalette[];
+extern const Palette gKyogreIntroIcePalette[];
 extern const u8 gKyogreSplashSpriteFrames[][0xC0];
 extern const u8 gKyogreWhirlpoolSpriteFrames[][0x3C0];
 extern const u8 gKyogreBodySprites_First15[][0x580];
@@ -111,9 +111,9 @@ void KyogreBoardProcess_3A_383E4(void)
     UpdateKyogreFieldEntities();
     AnimateKyogreBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_KYOGRE);
-    DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
+    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
     DmaCopy16(3, &gKyogreFadeInPaletteProgression[0][0], (void *)0x05000000, 0x100);
-    DmaCopy16(3, gBonusStageObjPal, (void *)0x05000320, 0x20);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), 0x20);
 }
 
 void KyogreBoardProcess_3B_3869C(void)
@@ -294,7 +294,7 @@ void UpdateKyogreEntityLogic(void)
         break;
     case KYOGRE_ENTITY_STATE_ENTRY:
         index = gKyogreRisingPaletteCycleIndices[(gCurrentPinballGame->kyogreWaveTimer % 280) / 14];
-        DmaCopy16(3, gKyogreWaterAnimPaletteFrames[index], (void *)0x050003E0, 0x20);
+        DmaCopy16(3, gKyogreWaterAnimFrame_Pals[index], OBJ_PLTT_SLOT(15), PLTT_SLOT_SIZE);
         gCurrentPinballGame->kyogreWaveTimer++;
         if (gKyogreAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][1] > gCurrentPinballGame->bossFrameTimer)
         {
@@ -311,7 +311,7 @@ void UpdateKyogreEntityLogic(void)
                 gCurrentPinballGame->bossNextAttackState = KYOGRE_ENTITY_STATE_SHOCKWAVE;
                 gCurrentPinballGame->bossMovementPhase = 0;
                 gCurrentPinballGame->bossRoarTimer = 60;
-                DmaCopy16(3, &gKyogreWaterAnimPaletteFrames[5], (void *)0x050003E0, 0x20);
+                DmaCopy16(3, &gKyogreWaterAnimFrame_Pals[5], (void *)0x050003E0, 0x20);
             }
 
             if (gCurrentPinballGame->bossFramesetIndex == 32)
@@ -885,7 +885,7 @@ void UpdateKyogreFieldEntities(void)
             if (gCurrentPinballGame->freezeTrapAnimFrame == 2)
             {
                 int a; // force addition of 8 instead of offsetting the global constant
-                DmaCopy16(3, &gBallPalettes[a = gCurrentPinballGame->ballUpgradeType + 8], (void *)0x05000220, 0x20);
+                DmaCopy16(3, gBall_Pals[a = gCurrentPinballGame->ballUpgradeType + 8], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             }
             break;
         case KYOGRE_FREEZE_PHASE_CRACKING_HIT_SETUP:
@@ -990,7 +990,7 @@ void UpdateKyogreFieldEntities(void)
 
                 if (gCurrentPinballGame->freezeTrapAnimFrame == 15)
                 {
-                    DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)0x05000220, 0x20);
+                    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), 0x20);
                     m4aSongNumStart(SE_KYOGRE_FREEZE_ESCAPED);
                 }
             }
@@ -1342,8 +1342,8 @@ void AnimateKyogreBackground(void)
         && gCurrentPinballGame->stageTimer < 600)
     {
         index = gKyogreIntroPaletteCycleIndices[(gCurrentPinballGame->stageTimer % 240) / 24];
-        DmaCopy16(3, gKyogreIntroIcePalette[index], (void *)0x05000340, 0x20);
-        DmaCopy16(3, gKyogreIntroShorePalette[index], (void *)0x050002A0, 0x20);
+        DmaCopy16(3, gKyogreIntroIcePalette[index], OBJ_PLTT_SLOT(10), 0x20);
+        DmaCopy16(3, gKyogreIntroShorePalette[index], OBJ_PLTT_SLOT(5), 0x20);
         var0 = 2;
         index = 0;
         gCurrentPinballGame->kyogreBgAnimTimer = index;

@@ -7,9 +7,9 @@
 extern const u8 gRubyTravelVolbeat_Gfx[][0x480];
 extern const u8 gSapphireTravelIllumise_Gfx[][0x480];
 extern const u8 gRubyTravelPaint_Gfx[];
-extern const u8 gRubyPainterPalette[];
+extern const Palette gRubyPainter_Pals;
 extern const u8 gSapphireTravelPaint_Gfx[];
-extern const u8 gSapphirePainterPalette[];
+extern const Palette gSapphirePainter_Pals;
 extern const s16 gTravelEventAnimData[][3];
 extern const s16 gAreaPortraitIndexes[];
 extern const s16 gAreaRouletteTable[][AREA_TABLE_SLOT_COUNT];
@@ -17,15 +17,15 @@ extern u16 gTravelEventSpritesheetOam[][18];
 extern const s16 gCatchTile_RevealFinalTimings[];
 extern const u16 gCatchTile_BurstRevealOamFramesets1[22][12];
 extern const u8 gBoardActionTilesGfx[];
-extern const u8 gBoardActionObjPal[];
+extern const Palette gBoardActionObj_Pals[];
 extern const u16 gEvolutionSparkleSpritesheetOam[20][12];
 extern const u8 gCatchTile_BurstStage4_Gfx[];
-extern const u8 gCatchTile_BurstStage4_Pal[];
+extern const Palette gCatchTile_BurstStage4_Pal;
 extern const s16 gSpoinkAnimFrameset[][2];
 extern const u8 gSpoinkEntity_Gfx[][0x1C0];
 extern const u8 gOneUpBannerSprite_Gfx[][0x200];
 extern const u8 gLifeCountDigit_Gfx[][0x40];
-extern const u8 gOneUpSpritePalette[];
+extern const Palette gOneUpSprite_Pal;
 
 extern struct SongHeader se_kecleon_side_look;
 extern struct SongHeader se_pika_full_charge_1_up;
@@ -133,7 +133,7 @@ void AnimateOneUpSprite(void)
         if (gCurrentPinballGame->oneUpAnimTimer == 90)
         {
             group->active = TRUE;
-            DmaCopy16(3, gOneUpSpritePalette, (void *)0x05000380, 0x20);
+            DmaCopy16(3, gOneUpSprite_Pal, OBJ_PLTT_SLOT(12), PLTT_SLOT_SIZE);
         }
 
         if (gCurrentPinballGame->oneUpAnimTimer == 85)
@@ -186,11 +186,11 @@ void UpdateSpoinkAnimation(void)
 {
     if (gCurrentPinballGame->cameraYViewport < 170)
     {
-        DmaCopy16(3, gFieldPaletteVariants[gMain.selectedField][gCurrentPinballGame->activePaletteIndex * 2], (void *)OBJ_PLTT + 0x160, 0x20);
+        DmaCopy16(3, gFieldVariant_Pals[gMain.selectedField][gCurrentPinballGame->activePaletteIndex * 2], OBJ_PLTT_SLOT(11), PLTT_SLOT_SIZE);
     }
     else
     {
-        DmaCopy16(3, gFieldPaletteVariants[gMain.selectedField][gCurrentPinballGame->activePaletteIndex * 2 + 1], (void *)OBJ_PLTT + 0x160, 0x20);
+        DmaCopy16(3, gFieldVariant_Pals[gMain.selectedField][gCurrentPinballGame->activePaletteIndex * 2 + 1], OBJ_PLTT_SLOT(11), PLTT_SLOT_SIZE);
     }
 
     switch (gCurrentPinballGame->spoinkEntityState)
@@ -322,7 +322,7 @@ void RunEvolutionCutscene(void)
         {
             gCurrentPinballGame->activePortraitType = 16;
             DmaCopy16(3, gBoardActionTilesGfx, (void *)0x06015800, 0x2400);
-            DmaCopy16(3, gBoardActionObjPal, (void *)0x050003C0, 0x20);
+            DmaCopy16(3, gBoardActionObj_Pals, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_LARGE_BOTTOM]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_LARGE_TOP]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_MEDIUM_LOWER]->active = TRUE;
@@ -630,7 +630,7 @@ void RunEvolutionCutscene(void)
             LoadPortraitGraphics(PORTRAIT_STATE_POKEMON_DISPLAY, PORTRAIT_MAIN_SLOT);
             gCurrentPinballGame->activePortraitType = 17;
             DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x06015800, 0x1800);
-            DmaCopy16(3, gCatchTile_BurstStage4_Pal, (void *)0x050003C0, 0x20);
+            DmaCopy16(3, gCatchTile_BurstStage4_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             gCurrentPinballGame->creatureOamPriority = 3;
         }
     }
@@ -719,13 +719,13 @@ void RunTravelEventCutscene(void)
         if (gMain.selectedField == FIELD_RUBY)
         {
             DmaCopy16(3, gRubyTravelPaint_Gfx, (void *)0x06015800, 0x1800);
-            DmaCopy16(3, gRubyPainterPalette, (void *)0x050003C0, 0x20);
+            DmaCopy16(3, gRubyPainter_Pals, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             DmaCopy16(3, gRubyTravelVolbeat_Gfx, (void *)0x06015800, 0x480);
         }
         else
         {
             DmaCopy16(3, gSapphireTravelPaint_Gfx, (void *)0x06015800, 0x1800);
-            DmaCopy16(3, gSapphirePainterPalette, (void *)0x050003C0, 0x20);
+            DmaCopy16(3, gSapphirePainter_Pals, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             DmaCopy16(3, gSapphireTravelIllumise_Gfx, (void *)0x06015800, 0x480);
         }
     }

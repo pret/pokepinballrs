@@ -113,7 +113,7 @@ void KecleonBoardProcess_3A_35860(void)
     UpdateKecleonScopeItem();
     UpdateKecleonScopeVision();
     RenderKecleonBoardElements();
-    DmaCopy16(3, gBonusStageObjPal, (void *)0x05000320, 0x20);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), 0x20);
 }
 
 void KecleonBoardProcess_3B_35AA4(void)

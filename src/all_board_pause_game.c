@@ -45,7 +45,7 @@ void PauseGame(void)
     gCurrentPinballGame->pauseBlendBrightness = gMain.blendBrightness;
     gCurrentPinballGame->pauseScoreOverlayActive = gMain.scoreOverlayActive;
     gCurrentPinballGame->pauseVCount = gMain.vCount;
-    DmaCopy16(3, (void *)OBJ_PLTT, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT_SIZE);
+    DmaCopy16(3, OBJ_PLTT, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT_SIZE);
     for (i = 0; i < 16; i++)
     {
         for (j = 0; j < 16; j++)
@@ -64,7 +64,7 @@ void PauseGame(void)
         }
     }
 
-    DmaCopy16(3, objPalettes, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+    DmaCopy16(3, objPalettes, OBJ_PLTT, OBJ_PLTT_SIZE);
     if (gMain.selectedField < MAIN_FIELD_COUNT)
         ClampPortraitSpritesToOffscreen();
     else if (gMain.selectedField == FIELD_DUSCLOPS)
@@ -86,7 +86,7 @@ void UnpauseGame(void)
     gMain.blendBrightness = gCurrentPinballGame->pauseBlendBrightness;
     gMain.scoreOverlayActive = gCurrentPinballGame->pauseScoreOverlayActive;
     gMain.vCount = gCurrentPinballGame->pauseVCount;
-    DmaCopy16(3, gCurrentPinballGame->pauseObjPalette, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+    DmaCopy16(3, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT, OBJ_PLTT_SIZE);
     if (gCurrentPinballGame->savedBgmSongHeader)
         m4aMPlayContinue(&gMPlayInfo_BGM);
 

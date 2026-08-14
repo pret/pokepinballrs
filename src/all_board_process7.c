@@ -37,7 +37,7 @@ void MainBoardProcess_7B_12524(void)
                     gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             }
 
-            DmaCopy16(3, gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)OBJ_PLTT + 0x20, 0x20);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
         }
     }
 
@@ -268,7 +268,7 @@ void BonusBoardProcess_7B_12BF8()
     }
 
     r5 = gCurrentPinballGame->ball->spinAngle >> 12;
-    DmaCopy16(3, &gBallRotationTileGraphics[r5 + gCurrentPinballGame->ballUpgradeType * 17], (void *)VRAM + 0x10400, 0x80);
+    DmaCopy16(3, &gBallRotationTileGraphics[r5 + gCurrentPinballGame->ballUpgradeType * 17], (void *)OBJ_VRAM0 + 0x400, 0x80);
 
     primaryBall->positionQ0.x = primaryBall->positionQ1.x / 2;
     primaryBall->positionQ0.y = primaryBall->positionQ1.y / 2;
@@ -335,7 +335,7 @@ void BonusBoardProcess_7B_12BF8()
             if (gCurrentPinballGame->ballRespawnTimer > 149)
             {
                 r5 = ((gCurrentPinballGame->ballRespawnTimer - 150) % 66) / 6;
-                DmaCopy16(3, &gBallSpawnGlowTiles_Type1[r5], (void *)VRAM + 0x10720, 0x200);
+                DmaCopy16(3, &gBallSpawnGlowTiles_Type1[r5], (void *)OBJ_VRAM0 + 0x720, 0x200);
                 primaryBall->spinSpeed -= 40;
             }
 
@@ -344,7 +344,7 @@ void BonusBoardProcess_7B_12BF8()
                 gCurrentPinballGame->ballRespawnTimer++;
                 if (r5 >= 7 && r5 <= 10)
                 {
-                    DmaCopy16(3, &gBallPalettes[(s16) (gCurrentPinballGame->ballUpgradeType + 4)], (void *)PLTT + 0x220, 0x20);
+                    DmaCopy16(3, gBall_Pals[(s16) (gCurrentPinballGame->ballUpgradeType + 4)], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
                 }
             }
 
@@ -359,7 +359,7 @@ void BonusBoardProcess_7B_12BF8()
                 gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
                 spriteGroup->active = FALSE;
                 gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
-                DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
+                DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             }
         }
         else
@@ -378,7 +378,7 @@ void BonusBoardProcess_7B_12BF8()
             if (gCurrentPinballGame->ballRespawnTimer > 4)
             {
                 r5 = ((gCurrentPinballGame->ballRespawnTimer - 5) % 63 / 7);
-                DmaCopy16(3, &gBallSpawnGlowTiles_Type2[r5], (void *)VRAM + 0x10720, 0x200);
+                DmaCopy16(3, &gBallSpawnGlowTiles_Type2[r5], (void *)OBJ_VRAM0 + 0x720, 0x200);
                 primaryBall->spinSpeed -= 20;
             }
 
@@ -395,7 +395,7 @@ void BonusBoardProcess_7B_12BF8()
             {
                 gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
                 spriteGroup->active = FALSE;
-                DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
+                DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             }
         }
     }
@@ -414,7 +414,7 @@ void BonusBoardProcess_7B_12BF8()
                         gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
                     }
                 }
-                DmaCopy16(3, &gBallPalettes[gCurrentPinballGame->ballUpgradeType], (void *)PLTT + 0x220, 0x20);
+                DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             }
         }
     }

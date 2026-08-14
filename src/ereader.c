@@ -37,10 +37,9 @@ extern s8 gEReaderTextLengths[10];
 extern s8 gEReaderTextHasNextPage[10];
 extern u8 gEReaderCardStartPages[NUM_EREADER_CARDS + 1];
 extern u8 gPokedexSprites_Gfx[];
-extern u8 gEReaderBackground_Pals[];
+extern const Palette gEReaderBackground_Pals[];
 extern u8 gEReaderText_Tilemap[];
 // extern u8 gUnknown_0807D000[]; // dead declaration, never referenced
-extern u8 gPokedexSprites_Pals[];
 extern u16 gTempGfxBuffer[];
 extern u8 gEReaderBackground_Gfx[];
 extern u8 gEReaderOverlay_Tilemap[];
@@ -76,13 +75,13 @@ void LoadEReaderGraphics(void)
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gEReaderBackground_Pals,   (void*) PLTT,              0x40);
-    DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
-    DmaCopy16(3, gEReaderBackground_Gfx,   gTempGfxBuffer,         0x3000);
-    DmaCopy16(3, gEReaderText_Tilemap,   (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
-    DmaCopy16(3, gEReaderOverlay_Tilemap,   (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexSprites_Pals,   (void *)OBJ_PLTT,          0xC0);
-    DmaCopy16(3, gPokedexSprites_Gfx,   (void *)OBJ_VRAM0,         0x6C20);
+    DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(0), 2*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(2), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gEReaderBackground_Gfx,   gTempGfxBuffer,         6*BG_SCREEN_SIZE);
+    DmaCopy16(3, gEReaderText_Tilemap,    BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gEReaderOverlay_Tilemap, BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexSprites_Pals,  OBJ_PLTT_SLOT(0), 6*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gPokedexSprites_Gfx,   OBJ_VRAM0,         0x6C20);
 
     InitEReaderTextState();
     gEReaderTextCharIndex = 0;
@@ -91,7 +90,7 @@ void LoadEReaderGraphics(void)
     gEReaderTextPageIndex = 0;
     ClearEReaderTextRows();
 
-    DmaCopy16(3, gTempGfxBuffer, (void *)VRAM + 0x4000, 0x3000);
+    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
 
     UpdateEReaderSprites();
     m4aSongNumStart(MUS_EREADER);
@@ -158,7 +157,7 @@ void Ereader_State1_2E40(void)
         gMain.subState = EREADER_STATE_8;
     }
     UpdateEReaderSprites();
-    DmaCopy16(3, gTempGfxBuffer, (void*) VRAM + 0x4000, 0x3000);
+    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
 }
 
 void Ereader_State2_2FC0(void)
@@ -296,7 +295,7 @@ void Ereader_State4_3208(void)
         }
     }
     UpdateEReaderSprites();
-    DmaCopy16(3, gTempGfxBuffer, (void*) VRAM + 0x4000, 0x3000);
+    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
 }
 
 void Ereader_State5_33A0(void)
@@ -342,13 +341,13 @@ void Ereader_State6_343C(void)
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gEReaderBackground_Pals,   (void*) PLTT,              0x40);
-    DmaCopy16(3, gPokedexBackground_Pals + 0x80,   (void*) PLTT + 0x40,       0x20);
-    DmaCopy16(3, gEReaderBackground_Gfx,   gTempGfxBuffer,         0x3000);
-    DmaCopy16(3, gEReaderText_Tilemap,   (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
-    DmaCopy16(3, gEReaderOverlay_Tilemap,   (void *)BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexSprites_Pals,   (void *)OBJ_PLTT,          0xC0);
-    DmaCopy16(3, gPokedexSprites_Gfx,   (void *)OBJ_VRAM0,         0x6C20);
+    DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(0),   2*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(2),   PLTT_SLOT_SIZE);
+    DmaCopy16(3, gEReaderBackground_Gfx,     gTempGfxBuffer,    6*BG_SCREEN_SIZE);
+    DmaCopy16(3, gEReaderText_Tilemap,       BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gEReaderOverlay_Tilemap,    BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexSprites_Pals,       OBJ_PLTT_SLOT(0),  6*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gPokedexSprites_Gfx,        OBJ_VRAM0,         0x6C20);
 
     InitEReaderTextState();
     gEReaderTextCharIndex = 0;
@@ -357,7 +356,7 @@ void Ereader_State6_343C(void)
     gEReaderTextPageIndex = gEReaderCardStartPages[gEReaderCardIndex];
     ClearEReaderTextRows();
 
-    DmaCopy16(3, gTempGfxBuffer, (void *)VRAM + 0x4000, 0x3000);
+    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
 
     UpdateEReaderSprites();
     m4aSongNumStart(MUS_EREADER);
@@ -412,7 +411,7 @@ void Ereader_State7_33C8(void)
         }
     }
     UpdateEReaderSprites();
-    DmaCopy16(3, gTempGfxBuffer, (void*) VRAM + 0x4000, 0x3000);
+    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
 }
 
 void Ereader_State8_374C(void)

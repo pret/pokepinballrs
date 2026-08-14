@@ -420,6 +420,12 @@
       "palbank": 0
     },
     {
+      "gfx_filename": "hatch_machine_elevator",
+      "oamshape": "hatch_mach_hole_shape.json",
+      "width": 32,
+      "palette": "hatch_machine_elevator.gbapal"
+    },
+    {
       "gfx_filename": "bumper_plusle_fx_tail",
       "width": 1
     }

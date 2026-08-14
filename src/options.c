@@ -66,7 +66,7 @@ extern struct OptionsData gOptionsData;
 extern s16 gMain_saveData_customButtonConfig[][2];
 extern u8 gCustomButtonConfigTileIds[];
 
-extern const u16 gOptionsBackground_Pals[];
+extern const Palette gOptionsBackground_Pals[];
 extern const u8 gOptionsText_Gfx[];
 extern const u8 gOptionsBackground_Gfx[];
 extern const u8 gOptionsText_Tilemap[];
@@ -95,11 +95,11 @@ void Options_LoadGraphics(void)
 
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gOptionsBackground_Pals, (void *)PLTT, 0x200);
-    DmaCopy16(3, gOptionsText_Gfx, (void *)(VRAM + 0x4000), 0x1800);
-    DmaCopy16(3, gOptionsBackground_Gfx, (void *)(VRAM + 0x8000), 0xC00);
-    DmaCopy16(3, gOptionsText_Tilemap, gBG0TilemapBuffer, 0x800);
-    DmaCopy16(3, gBG0TilemapBuffer, (void *)VRAM, 0x800);
+    DmaCopy16(3, gOptionsBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, gOptionsText_Gfx,        BG_CHAR_ADDR(1), 0x1800);
+    DmaCopy16(3, gOptionsBackground_Gfx,  BG_CHAR_ADDR(2), 0xC00);
+    DmaCopy16(3, gOptionsText_Tilemap,    gBG0TilemapBuffer, BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer,       BG_CHAR_ADDR(0), BG_SCREEN_SIZE);
 
     if (gGameBoyPlayerEnabled != TRUE)
     {
@@ -107,10 +107,10 @@ void Options_LoadGraphics(void)
         SetStringPalette(18, 5, 3, 2, 2);
     }
 
-    DmaCopy16(3, gBG0TilemapBuffer, (void *)VRAM, 0x800);
-    DmaCopy16(3, gOptionsBackground_Tilemap, (void *)(VRAM + 0x800), 0x800);
-    DmaCopy16(3, gGBAButtonIcons_Pals, (void *)(PLTT + 0x200), 0x60);
-    DmaCopy16(3, gOptionsSprites_Gfx, (void *)(VRAM + 0x10000), 0x2020);
+    DmaCopy16(3, gBG0TilemapBuffer,          BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gOptionsBackground_Tilemap, BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gGBAButtonIcons_Pals,       OBJ_PLTT_SLOT(0), 3*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gOptionsSprites_Gfx,        OBJ_VRAM0, 0x2020);
     Options_InitStates();
     UpdateOptionsSpritePositions();
     m4aMPlayAllStop();

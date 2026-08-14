@@ -460,6 +460,61 @@
       "width": 2,
       "palette": "ruby_board_palset_0.gbapal",
       "palbank": 4
+    },
+    {
+      "gfx_filename": "aerodactyl_flight",
+      "segments": [
+        {
+          "segfile": "aerodactyl_flight_frame_0",
+          "oamshape": "aerodactyl_flight_frame0_shape.json",
+          "width": 7
+        },
+        {
+          "segfile": "aerodactyl_flight_frame_1",
+          "width": 9
+        },
+        {
+          "segfile": "aerodactyl_flight_frame_2",
+          "width": 6
+        }
+      ],
+      "palette": "aerodactyl_flight.gbapal",
+      "palbank": 0
+    },
+    {
+      "gfx_filename": "aerodactyl_flight_cap",
+      "width": 1,
+      "palette": "aerodactyl_flight.gbapal",
+      "palbank": 0
+    },
+    {
+      "gfx_filename": "totodile",
+      "segments": [
+        {
+          "segfile": "totodile_ropes",
+          "width": 4
+        },
+        {
+          "segfile": "totodile_mon0",
+          "width": 4
+        },
+        {
+          "segfile": "totodile_egg0",
+          "width": 2
+        },
+        {
+          "segfile": "totodile_mon1",
+          "width": 4
+        },
+        {
+          "segfile": "totodile_egg1",
+          "width": 2
+        },
+        {
+          "segfile": "totodile_spacer",
+          "width": 2
+        }
+      ]
     }
   ]
 }

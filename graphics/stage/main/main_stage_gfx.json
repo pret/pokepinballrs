@@ -336,12 +336,6 @@
       "palbank": 2
     },
     {
-      "gfx_filename": "hole_indicator",
-      "oamshape": "hatch_mach_hole_shape.json",
-      "width": 32,
-      "palette": "hole_indicator.gbapal"
-    },
-    {
       "gfx_filename": "catch_tile_burst_stage3",
       "palette": "catch_tile_burst_stage3.gbapal",
       "palbank": 0
@@ -483,32 +477,6 @@
       "palbank": 0
     },
     {
-      "gfx_filename": "aerodactyl_flight",
-      "segments": [
-        {
-          "segfile": "aerodactyl_flight_frame_0",
-          "oamshape": "aerodactyl_flight_frame0_shape.json",
-          "width": 7
-        },
-        {
-          "segfile": "aerodactyl_flight_frame_1",
-          "width": 9
-        },
-        {
-          "segfile": "aerodactyl_flight_frame_2",
-          "width": 6
-        }
-      ],
-      "palette": "aerodactyl_flight.gbapal",
-      "palbank": 0
-    },
-    {
-      "gfx_filename": "aerodactyl_flight_cap",
-      "width": 1,
-      "palette": "aerodactyl_flight.gbapal",
-      "palbank": 0
-    },
-    {
       "gfx_filename": "alphabet",
       "oam": true,
       "mwidth": 1,
@@ -516,47 +484,6 @@
       "width": 26,
       "palette": "../ruby/ruby_board_palset_0.gbapal",
       "palbank": 1
-    },
-    {
-      "gfx_filename": "capture_mode",
-      "segments": [
-        {
-          "segfile": "capture_mode_egg_delivery_a",
-          "width": 7,
-          "palette": "bonus_stage_obj.gbapal",
-          "palbank": 5
-        },
-        {
-          "segfile": "capture_mode_unreferenced_a",
-          "width": 7,
-          "palette": "bonus_stage_obj.gbapal",
-          "palbank": 5
-        },
-        {
-          "segfile": "capture_mode_totodile_body",
-          "width": 4,
-          "palette": "bonus_stage_obj.gbapal",
-          "palbank": 5
-        },
-        {
-          "segfile": "capture_mode_totodile_egg",
-          "width": 2,
-          "palette": "bonus_stage_obj.gbapal",
-          "palbank": 2
-        },
-        {
-          "segfile": "capture_mode_unreferenced_b",
-          "width": 23,
-          "palette": "bonus_stage_obj.gbapal",
-          "palbank": 5
-        },
-        {
-          "segfile": "capture_mode_cap",
-          "width": 1,
-          "palette": "bonus_stage_obj.gbapal",
-          "palbank": 5
-        }
-      ]
     },
     {
       "gfx_filename": "spoink_launcher",

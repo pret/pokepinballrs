@@ -7,9 +7,9 @@
 #define TIMER_TEXT_YELLOW_UNDER_TIME TICKS_FOR_TIME(0,30)
 #define TIMER_TEXT_RED_UNDER_TIME TICKS_FOR_TIME(0,15)
 
-extern const u8 gTimerWarningPalette_Fast[];
-extern const u8 gDefaultTimerPalette[];
-extern const u8 gTimerWarningPalette_Slow[];
+extern const Palette gTimer_Warning_Pal;
+extern const Palette gTimer_Default_Pal;
+extern const Palette gTimer_Slow_Pal;
 
 void AllBoardProcess_8A_4CEA8(void)
 {
@@ -218,11 +218,11 @@ void ProcessEventTimer(void)
     {
         if (gCurrentPinballGame->eventTimer & 0x8)
         {
-            DmaCopy16(3, gTimerWarningPalette_Fast, (void *)0x05000180, 0x20);
+            DmaCopy16(3, gTimer_Warning_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
         }
         else
         {
-            DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
+            DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
         }
 
         if (gCurrentPinballGame->eventTimer == TIMER_TEXT_RED_UNDER_TIME)
@@ -232,11 +232,11 @@ void ProcessEventTimer(void)
     {
         if ((gCurrentPinballGame->eventTimer % 22) / 11)
         {
-            DmaCopy16(3, gTimerWarningPalette_Slow, (void *)0x05000180, 0x20);
+            DmaCopy16(3, gTimer_Slow_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
         }
         else
         {
-            DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
+            DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
         }
     }
 }

@@ -10,7 +10,7 @@ extern u8 gBoardGfxBuffer[];
 
 extern const u16 gFlipperCollisionData[11][0x2400]; // 96 x 96 pixel area
 extern const u8 gRubyBoardBG0Tilemap[];
-extern const u8 gRubyBoardPalette[];
+extern const Palette gRubyBoard_Pals[];
 extern const u8 gRubyBoardBG1Tilemap[];
 extern const u8 gRubyBoardCompressedTiles1[];
 extern const u8 gRubyBoardCompressedTiles2[];
@@ -78,7 +78,7 @@ void loadFieldBoardGraphics(void)
     switch (gMain.selectedField)
     {
 	case FIELD_RUBY:
-        DmaCopy16(3, gRubyBoardPalette, (void *)BG_PLTT, BG_PLTT_SIZE);
+        DmaCopy16(3, gRubyBoard_Pals, BG_PLTT, BG_PLTT_SIZE);
         DmaCopy16(3, gRubyBoardBGTiles, (void *)0x06008000, 0x8000);
         DmaCopy16(3, gRubyBoardBGTilemap, (void *)0x06003000, 0x1000);
         LZ77UnCompWram(gRubyBoardCompressedTiles1, gBoardGfxBuffer);

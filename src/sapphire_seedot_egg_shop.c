@@ -15,12 +15,12 @@ extern const u16 gShopSignIntroFrames[][4];
 extern const u16 gShopSignLoopFrames[][5];
 
 extern const s16 gHoleAnimKeyframeData[][2];
-extern const u8 gHoleIndicatorTileGfx[][0x440];
+extern const u8 gHatchMachineElevator_Gfx[][0x440];
 
 extern const u8 gSplashEffectTileGfx[][0x100];
 extern struct Vector16 gSplashEffectPositions[];
 extern const s16 gSplashEffectTileIndices[][2];
-extern const u8 gSapphireShopSignPalettes[][0x20];
+extern const Palette gSapphireShopSign_Pals[];
 extern const u8 gSapphireShopSignTileGfx[][0x480];
 
 
@@ -339,7 +339,7 @@ void UpdateSapphireSeedotCollection(void)
                 gCurrentPinballGame->bannerSlideTimer = 50;
                 gCurrentPinballGame->bannerSlideVelocity = 0;
                 DmaCopy16(3, gModeBannerTilemaps[4], (void *)0x06015800, 0x2400);
-                DmaCopy16(3, gModeBannerPalettes[4], (void *)0x050003C0, 0x20);
+                DmaCopy16(3, gModeBanner_Pals[4], OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
                 gMain.blendControl = 0xCE;
             }
         }
@@ -551,7 +551,7 @@ void DrawSapphireShopSignSprite(void)
         group->baseX = 16 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 115 - gCurrentPinballGame->cameraYOffset;
         index = gCurrentPinballGame->shopSignPaletteIndex + gCurrentPinballGame->activePaletteIndex * 3;
-        DmaCopy16(3, gSapphireShopSignPalettes[index], (void *)0x05000300, 0x20);
+        DmaCopy16(3, gSapphireShopSign_Pals[index], OBJ_PLTT_SLOT(8), PLTT_SLOT_SIZE);
         DmaCopy16(3, gSapphireShopSignTileGfx[gCurrentPinballGame->shopSignFrame], (void *) 0x06014B20, 0x480);
         for (i = 0; i < 2; i++)
         {
@@ -611,7 +611,7 @@ void UpdateSapphireEggMachine(void)
             }
 
             index = gCurrentPinballGame->sapphireHatchMachineFrameIx;
-            DmaCopy16(3, &gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
             gCurrentPinballGame->hatchMachineProgressTickSignaled = FALSE;
         }
         break;
@@ -619,12 +619,12 @@ void UpdateSapphireEggMachine(void)
         if (gCurrentPinballGame->holeAnimFrameCounter < 270)
         {
             index = (gCurrentPinballGame->holeAnimFrameCounter % 60) / 30 + 4;
-            DmaCopy16(3, &gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
         }
         else
         {
             index = 0;
-            DmaCopy16(3, &gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
             gCurrentPinballGame->sapphireHatchMachineState = 2;
             gCurrentPinballGame->sapphireHatchMachineFrameIx = 0;
         }
@@ -656,7 +656,7 @@ void UpdateSapphireEggMachine(void)
                 m4aSongNumStart(SE_HATCH_MACHINE_ELEVATOR);
 
             index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
-            DmaCopy16(3, &gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
         }
 
         if (gCurrentPinballGame->sapphireHatchMachineFrameIx < 6)
@@ -706,7 +706,7 @@ void UpdateSapphireEggMachine(void)
                 gCurrentPinballGame->sapphireHatchMachineState = 6;
 
             index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
-            DmaCopy16(3, gHoleIndicatorTileGfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
         }
 
         if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 14 && gCurrentPinballGame->holeAnimFrameCounter == 10)

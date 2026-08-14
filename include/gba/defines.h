@@ -34,10 +34,15 @@
 
 #define BG_VRAM           VRAM
 #define BG_VRAM_SIZE      0x10000
+
+// Naming note (historical naming due to using a technique originally for text)
+// "Character" Data: The raw pixel maps of your 8 × 8 tiles.
+// "Character" Block: The container in VRAM holding a set of these tiles.
 #define BG_CHAR_SIZE      0x4000
-#define BG_SCREEN_SIZE    0x800
+#define BG_SCREEN_SIZE    0x800  // Char block is 8 screens
 #define BG_CHAR_ADDR(n)   (BG_VRAM + (BG_CHAR_SIZE * (n)))
 #define BG_SCREEN_ADDR(n) (BG_VRAM + (BG_SCREEN_SIZE * (n)))
+#define BG_CHAR_SCREEN_ADDR(m,n) (BG_VRAM + (BG_CHAR_SIZE * (m))+ (BG_SCREEN_SIZE * (n)))
 
 #define BG_TILE_H_FLIP(n) (0x400 + (n))
 #define BG_TILE_V_FLIP(n) (0x800 + (n))
@@ -67,5 +72,29 @@
 #define TOTAL_OBJ_TILE_COUNT 1024
 
 #define WIN_RANGE(a, b) (((a) << 8) | (b))
+
+
+
+#define PLTT_SLOT_SIZE 0x20
+
+#define BG_PLTT_SLOT(n)  (BG_PLTT  + (n) * PLTT_SLOT_SIZE)
+#define OBJ_PLTT_SLOT(n) (OBJ_PLTT + (n) * PLTT_SLOT_SIZE)
+
+#define TILES_SIZE_4BPP(n) ((n) * TILE_SIZE_4BPP)
+#define TILES_SIZE_8BPP(n) ((n) * TILE_SIZE_8BPP)
+
+#define BG_TILE_ADDR(n)  (BG_VRAM  + TILE_OFFSET_4BPP(n))
+#define OBJ_TILE_ADDR(n) (OBJ_VRAM0 + TILE_OFFSET_4BPP(n))
+
+#define TILE_WIDTH  8
+#define TILE_HEIGHT 8
+
+#define TILE_INDEX(x, y, width) \
+    ((y) * (width) + (x))
+
+#define BG_SCREENBLOCK_WIDTH  32
+#define BG_SCREENBLOCK_HEIGHT 32
+#define BG_SCREENBLOCK_ENTRIES \
+    (BG_SCREENBLOCK_WIDTH * BG_SCREENBLOCK_HEIGHT)
 
 #endif // GUARD_GBA_DEFINES

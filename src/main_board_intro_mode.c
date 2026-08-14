@@ -9,7 +9,7 @@
 extern const s16 gAreaRouletteTable[][AREA_TABLE_SLOT_COUNT];
 extern const s16 gAreaPortraitIndexes[];
 extern const u16 gAreaRouletteOamFramesets[18][27];
-extern const u8 gTravelPortraitPalette[];
+extern const Palette gTravelPortrait_Pal;
 
 extern const u8 gAreaRouletteSelectedFx_Gfx[];
 extern const s16 gPondBumperRetractFrames[];
@@ -34,7 +34,7 @@ void InitBoardIntroMode(void)
     for (i = 0; i < 6; i++)
         gCurrentPinballGame->catchTilePalette[i] = 13;
 
-    DmaCopy16(3, gTravelPortraitPalette, (void *)0x050003C0, 0x20);
+    DmaCopy16(3, gTravelPortrait_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
     DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, (void *)0x06015800, 0x280);
     gCurrentPinballGame->activePortraitType = 12;
 }

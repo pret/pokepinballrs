@@ -9,7 +9,6 @@ extern void MainBoardProcess_7B_12524(void);
 extern void BonusBoardProcess_7B_12BF8(void);
 extern void RunMonCaptureSequence(void);
 
-extern const u8 gBallPalettes[][0x20];
 
 void AllBoardProcess_5A_11B9C(void)
 {

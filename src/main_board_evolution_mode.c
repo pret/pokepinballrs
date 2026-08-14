@@ -11,9 +11,9 @@ extern struct SongHeader se_evo_item_appear;
 extern struct SongHeader se_evo_item_finish_appear;
 extern struct SongHeader se_evo_item_collected;
 
-extern const u8 gDefaultTimerPalette[];
+extern const Palette gTimer_Default_Pal;
 extern const u8 *gEvoItemAppear_GfxList[];
-extern const u8 gEvoItemPalettes[][0x20];
+extern const Palette gEvoItem_Pals[];
 extern const s16 gEvoItemAppearFrameThresholds[];
 extern const u16 gEvoItemAnimOamFramesets[58][15];
 extern const struct Vector16 gEvoItemPositions[][8];
@@ -68,7 +68,7 @@ void InitEvolutionMode(void)
             gCurrentPinballGame->evoItemGfxIndex = 0;
     }
 
-    DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
+    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
     gCurrentPinballGame->evoArrowProgress = 0;
     gCurrentPinballGame->shopArrowActive = FALSE;
     gCurrentPinballGame->catchModeEventTimer = 0;
@@ -389,7 +389,7 @@ void UpdateEvolutionItemAnimation(void)
         {
             gCurrentPinballGame->activePortraitType = 15;
             DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], (void *)0x06015800, 0x1C00);
-            DmaCopy16(3, &gEvoItemPalettes[gCurrentPinballGame->evoItemGfxIndex], (void *)0x050003E0, 0x20);
+            DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(15), PLTT_SLOT_SIZE);
             gCurrentPinballGame->evoItemAnimFrame = 0;
             gCurrentPinballGame->evoItemAnimFrameTimer = 0;
         }

@@ -14,18 +14,18 @@ extern u8 gCatchSpriteFrameBuffer[];
 
 extern struct BoardConfig gBoardConfig;
 extern u8 gCatchSpritePaletteBuffer[];
-extern u8 gCatchSpritePalettes[];
+extern Palette gCatchSpritePalettes[];
 
 extern const u8 gCatchMonAppearFx_Gfx[];
-extern const u8 gCatchMonAppearFx_Pal[];
-extern const u8 gDefaultTimerPalette[];
+extern const Palette gCatchMonAppearFx_Pal;
+extern const Palette gTimer_Default_Pal;
 extern const u8 gJirachiFx_Gfx[][0x480];
-extern const u8 gCapturePalette[];
+extern const Palette gCaptureHit_Pal;
 extern const s16 gCatchMonRevealFrameData[8][2];
 extern const struct Vector16 gJirachiWaypoints[];
 extern const u16 gJirachiStarFrameIndices[][10];
 
-extern const u8 (*gMonIconPalettes[])[0x20];
+extern const Palette *gMonIconPalettes[];
 extern const u16 gJirachiFloatOamFramesets[68][3][3];
 extern const u16 gCatchMonRevealOamFramesets[14][18];
 extern const u8 (*gCatchSpriteGfxPtrs[])[0x480];
@@ -93,7 +93,7 @@ void InitCatchEmMode(void)
     }
     gCurrentPinballGame->catchEmModeStartCount++;
 
-    DmaCopy16(3, gDefaultTimerPalette, (void *)PLTT + 0x180, 0x20);
+    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
 
     for (i = 0; i < 6; i++)
     {
@@ -175,7 +175,7 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->bannerSlideTimer = 50;
                     gCurrentPinballGame->bannerSlideVelocity = 0;
                     DmaCopy16(3, gModeBannerTilemaps[2], (void *)0x06015800, 0x2400);
-                    DmaCopy16(3, gModeBannerPalettes[2], (void *)0x050003C0, 0x20);
+                    DmaCopy16(3, gModeBanner_Pals[2], OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
                     gMain.blendControl = 0xCE;
                 }
                 else if (gCurrentPinballGame->modeAnimTimer == 73)
@@ -210,7 +210,7 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->bannerSlideTimer = 50;
                     gCurrentPinballGame->bannerSlideVelocity = 0;
                     DmaCopy16(3, gModeBannerTilemaps[2], (void *)0x06015800, 0x2400);
-                    DmaCopy16(3, gModeBannerPalettes[2], (void *)0x050003C0, 0x20);
+                    DmaCopy16(3, gModeBanner_Pals[2], OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
                     gMain.blendControl = 0xCE;
                 }
                 else if (gCurrentPinballGame->modeAnimTimer == 47)
@@ -242,7 +242,7 @@ void UpdateCatchEmMode(void)
         {
             gCurrentPinballGame->activePortraitType = 10;
             DmaCopy16(3, gCatchMonAppearFx_Gfx, (void *)0x06015800, 0x1400);
-            DmaCopy16(3, gCatchMonAppearFx_Pal, (void *)0x050003C0, 0x20);
+            DmaCopy16(3, gCatchMonAppearFx_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
             m4aSongNumStart(SE_CATCH_MON_ENTITY_APPEARS);
             gCurrentPinballGame->boardSubState++;
             gCurrentPinballGame->stageTimer = 0;
@@ -253,8 +253,8 @@ void UpdateCatchEmMode(void)
         return;
     case CATCH_EM_SUBSTATE_SETUP_CATCH_HIT_COUNT:
         ResetCatchFrameState();
-        DmaCopy16(3, gCapturePalette, (void *)0x050003E0, 0x20);
-        DmaCopy16(3, gCatchSpritePalettes, (void *)0x050003A0, 0x20);
+        DmaCopy16(3, gCaptureHit_Pal, OBJ_PLTT_SLOT(15), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gCatchSpritePalettes, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         gCurrentPinballGame->catchTargetX = 118;
         gCurrentPinballGame->catchTargetY = 264;
         gCurrentPinballGame->evoBlinkTimer = 0;
@@ -339,7 +339,7 @@ void InitJirachiBonus(void)
     gCurrentPinballGame->holeIndicators[1] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[2] = gCurrentPinballGame->holeIndicators[0];
     gCurrentPinballGame->holeIndicators[3] = gCurrentPinballGame->holeIndicators[0];
-    DmaCopy16(3, gDefaultTimerPalette, (void *)0x05000180, 0x20);
+    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
 }
 
 void UpdateJirachiBonus(void)
@@ -383,7 +383,7 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->bannerSlideTimer = 50;
                     gCurrentPinballGame->bannerSlideVelocity = 0;
                     DmaCopy16(3, gModeBannerTilemaps[5], (void *)0x06015800, 0x2400);
-                    DmaCopy16(3, gModeBannerPalettes[5], (void *)0x050003C0, 0x20);
+                    DmaCopy16(3, gModeBanner_Pals[5], OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
                     gMain.blendControl = 0xCE;
                 }
                 else if (gCurrentPinballGame->modeAnimTimer == 73)
@@ -417,7 +417,7 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->bannerSlideTimer = 50;
                     gCurrentPinballGame->bannerSlideVelocity = 0;
                     DmaCopy16(3, gModeBannerTilemaps[5], (void *)0x06015800, 0x2400);
-                    DmaCopy16(3, gModeBannerPalettes[5], (void *)0x050003C0, 0x20);
+                    DmaCopy16(3, gModeBanner_Pals[5], OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
                     gMain.blendControl = 0xCE;
                     return;
                 }
@@ -439,8 +439,8 @@ void UpdateJirachiBonus(void)
         }
         break;
     case JIRACHI_CATCH_SUBSTATE_SETUP_CATCH_HIT_COUNT:
-        DmaCopy16(3, gCapturePalette, (void *)0x050003E0, 0x20);
-        DmaCopy16(3, gCatchSpritePalettes, (void *)0x050003A0, 0x20);
+        DmaCopy16(3, gCaptureHit_Pal, OBJ_PLTT_SLOT(15), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gCatchSpritePalettes, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         gCurrentPinballGame->evoBlinkTimer = 0;
         gCurrentPinballGame->catchLights[0] = 2;
         gCurrentPinballGame->catchLights[1] = 2;
@@ -573,34 +573,34 @@ void LoadCatchSpriteGraphics(void)
 {
     s16 i;
     s16 catchIndex;
-    const u8 *sp0[3];
-    const u8 *spC[3];
+    const u8 *gfx[3];
+    const u16 *pal[3];
 
     catchIndex = gSpeciesInfo[gCurrentPinballGame->currentSpecies].catchIndex;
     for (i = 0; i < 3; i++)
     {
-        sp0[i] = gCatchSpriteGfxPtrs[catchIndex / 5][(i + (catchIndex % 5) * 3)];
-        spC[i] = gMonIconPalettes[catchIndex / 5][i * 5 + catchIndex % 5];
+        gfx[i] = gCatchSpriteGfxPtrs[catchIndex / 5][(i + (catchIndex % 5) * 3)];
+        pal[i] = gMonIconPalettes[catchIndex / 5][i * 5 + catchIndex % 5];
     }
 
     for (i = 0; i < 3; i++)
     {
-        DmaCopy16(3, sp0[i], &gCatchSpriteGfxBuffer[i * 0x480], 0x480);
-        DmaCopy16(3, spC[i], &gCatchSpritePalettes[i * 0x20], 0x20);
+        DmaCopy16(3, gfx[i], &gCatchSpriteGfxBuffer[i * 0x480], 0x480);
+        DmaCopy16(3, pal[i], gCatchSpritePalettes[i], PLTT_SLOT_SIZE);
     }
 
-    DmaCopy16(3, gMonIconPalettes[0][15], &gCatchSpritePalettes[0x60], 0x20);
+    DmaCopy16(3, gMonIconPalettes[0][15], gCatchSpritePalettes[3], PLTT_SLOT_SIZE);
 }
 
 void LoadMonFieldSpriteGraphics(void)
 {
     s16 eggIndex;
     const u8 *src0;
-    const u8 *src1;
+    const Palette *src1;
 
     eggIndex= gSpeciesInfo[gCurrentPinballGame->currentSpecies].eggIndex;
     src0 = gMonHatchSpriteGroupGfx[eggIndex / 6][eggIndex % 6];
-    src1 = gMonHatchSpriteGroupPals[eggIndex / 6][eggIndex % 6];
+    src1 = &gMonHatchSpriteGroupPals[eggIndex / 6][eggIndex % 6];
     DmaCopy16(3, src0, gCatchSpriteFrameBuffer, 0x10E0);
     DmaCopy16(3, src1, gCatchSpritePaletteBuffer, 0x20);
 }
@@ -880,7 +880,7 @@ void PlayCatchMonAppearsAnimation(void)
 
     if (gCurrentPinballGame->catchRevealFrameId > 2)
     {
-        DmaCopy16(3, gCatchSpritePalettes, (void *)0x050003A0, 0x20);
+        DmaCopy16(3, gCatchSpritePalettes, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
         DrawCatchMonBoardSprite();
     }
