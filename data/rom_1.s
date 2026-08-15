@@ -46,19 +46,19 @@ Sio32ConnectionData:: @ 0x0805C748
 
 gBonusFieldSelectStateFuncs:: @ 0x0805C750
 	.4byte LoadBonusFieldSelectGraphics
-	.4byte BonusFieldSelect_State1_2768
-	.4byte BonusFieldSelect_State2_2990
+	.4byte BonusFieldSelect_Menu
+	.4byte BonusFieldSelect_FadeToSelection
 
 gEReaderStateFuncs:: @ 0x0805C75C
 	.4byte LoadEReaderGraphics
-	.4byte Ereader_State1_2E40
-	.4byte Ereader_State2_2FC0
-	.4byte Ereader_State3_304C
-	.4byte Ereader_State4_3208
-	.4byte Ereader_State5_33A0
-	.4byte Ereader_State6_343C
-	.4byte Ereader_State7_33C8
-	.4byte Ereader_State8_374C
+	.4byte Ereader_ShowInstructions
+	.4byte Ereader_AnimateLinkCable
+	.4byte Ereader_Communicating
+	.4byte Ereader_ShowLinkTimeout
+	.4byte Ereader_CloseSuccessfulTransmission
+	.4byte Ereader_ShowSuccessPopup
+	.4byte Ereader_ShowPrizeText
+	.4byte Ereader_FadeScreenToMenu
 
 gDexInfoWindowMiddleRowTiles:: @ 0x0805C780
 	.2byte 0x00, 0x9A, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
@@ -293,18 +293,18 @@ gHighScoreNameRowTilemapOffsets:: @ 0x08079870
 	.4byte 0x02, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x11
 
 gTitlescreenStateFuncs:: @ 0x08079890
-	.4byte LoadTitlescreenGraphics           @ SUBSTATE_LOAD_GRAPHICS
-	.4byte TitleScreen1_WaitForStartButton   @ SUBSTATE_WAIT_FOR_START_BUTTON
-	.4byte TitleScreen2_AnimOpenMenu              @ SUBSTATE_2
-	.4byte TitleScreen3_8010E00              @ SUBSTATE_3
-	.4byte TitleScreen4_MenuInputNoSavedGame @ SUBSTATE_MENU_INPUT_NO_SAVED_GAME
-	.4byte TitleScreen5_MenuInputSavedGame   @ SUBSTATE_MENU_INPUT_SAVED_GAME
-	.4byte TitleScreen6_AnimCloseMenu        @ SUBSTATE_ANIM_CLOSE_MENU
-	.4byte TitleScreen7_8011020              @ SUBSTATE_7
-	.4byte TitleScreen8_8011228              @ SUBSTATE_8
+	.4byte LoadTitlescreenGraphics                @ SUBSTATE_LOAD_GRAPHICS
+	.4byte TitleScreen1_WaitForStartButton        @ SUBSTATE_WAIT_FOR_START_BUTTON
+	.4byte TitleScreen2_AnimatePressStartSelected @ SUBSTATE_ANIM_PRESS_START_SELECTED
+	.4byte TitleScreen3_AnimateMenuSlideIn        @ SUBSTATE_ANIM_MENU_SLIDE_IN
+	.4byte TitleScreen4_MenuInputNoSavedGame      @ SUBSTATE_MENU_INPUT_NO_SAVED_GAME
+	.4byte TitleScreen5_MenuInputSavedGame        @ SUBSTATE_MENU_INPUT_SAVED_GAME
+	.4byte TitleScreen6_AnimCloseMenu             @ SUBSTATE_ANIM_CLOSE_MENU
+	.4byte TitleScreen7_ProcessMenuItemSelected_NoSavedGame @ SUBSTATE_MENU_ITEM_SELECTED_NO_SAVED_GAME
+	.4byte TitleScreen8_ProcessMenuItemSelected_SavedGame   @ SUBSTATE_MENU_ITEM_SELECTED_SAVED_GAME
 	.4byte TitleScreen9_DeleteSaveConfirmation              @ SUBSTATE_DELETE_SAVE_GAME_CONFIRMATION
-	.4byte TitleScreen10_ExecMenuSelection   @ SUBSTATE_EXEC_MENU_SELECTION
-	.4byte TitleScreen11_80114B4             @ SUBSTATE_11
+	.4byte TitleScreen10_ExecMenuSelection        @ SUBSTATE_EXEC_MENU_SELECTION
+	.4byte TitleScreen11_FadeToAction             @ SUBSTATE_FADE_TO_MENU_ACTION
 
 gIntroCopyright_Tilemap:: @ 0x080798C0
 	.incbin "graphics/intro/copyright_tilemap.bin"

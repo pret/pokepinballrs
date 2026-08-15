@@ -5,6 +5,7 @@
 #include "constants/bg_music.h"
 #include "gba/io_reg.h"
 #include "gba/oam_types.h"
+#include "constants/global.h"
 	.include "asm/macros.inc"
 
 .align 2
@@ -103,18 +104,18 @@ gRumblePatterns:: @ 0x086A4C44
 
 	.align 2, 0
 gBonusFieldSelectSpriteSets:: @ 0x086A4C80
-	.4byte gUnknown_086A699E
-	.4byte gUnknown_086A699E
-	.4byte gUnknown_086A699E
-	.4byte gUnknown_086A699E
-	.4byte gUnknown_086A699E
-	.4byte gUnknown_086A699E
-	.4byte gUnknown_086A69C0
-	.4byte gUnknown_086A69D2
-	.4byte gUnknown_086A69E4
-	.4byte gUnknown_086A69F6
-	.4byte gUnknown_086A6A08
-	.4byte gUnknown_086A6A1A
+	.4byte gBonusFieldSelectBackgroundDimSpriteSet
+	.4byte gBonusFieldSelectBackgroundDimSpriteSet
+	.4byte gBonusFieldSelectBackgroundDimSpriteSet
+	.4byte gBonusFieldSelectBackgroundDimSpriteSet
+	.4byte gBonusFieldSelectBackgroundDimSpriteSet
+	.4byte gBonusFieldSelectBackgroundDimSpriteSet
+	.4byte gBonusFieldSelectDusclopsNameSpriteSet
+	.4byte gBonusFieldSelectKecleonNameSpriteSet
+	.4byte gBonusFieldSelectSphealNameSpriteSet
+	.4byte gBonusFieldSelectGroudonNameSpriteSet
+	.4byte gBonusFieldSelectKyogreNameSpriteSet
+	.4byte gBonusFieldSelectRayquazaNameSpriteSet
 	.4byte gFieldSelectBallSpeedNormal0SpriteSet
 	.4byte gFieldSelectBallSpeedNormal1SpriteSet
 	.4byte gFieldSelectBallSpeedSlow0SpriteSet
@@ -214,15 +215,15 @@ gEReaderSpriteSets:: @ 0x086A54D8
     .4byte gPokedexTransmittingPopupSpriteSet
     .4byte gPokedexTransmissionErrorPopupSpriteSet
     .4byte gPokedexTransferCompletePopupSpriteSet
-    .4byte gUnknown_086A5988
-    .4byte gUnknown_086A59CA
-    .4byte gUnknown_086A5A14
-    .4byte gUnknown_086A5A6E
-    .4byte gUnknown_086A5AE8
-    .4byte gUnknown_086A5B62
-    .4byte gUnknown_086A5BDC
-    .4byte gUnknown_086A5C4E
-    .4byte gUnknown_086A5CC0
+    .4byte gEreaderNotConnectedSpriteSet
+    .4byte gEreaderLinkConnectingAnim1SpriteSet
+    .4byte gEreaderLinkConnectingAnim2SpriteSet
+    .4byte gEreaderLinkConnectingAnim3SpriteSet @ Visibly Connected
+    .4byte gEreaderLinkConnectingAnim4SpriteSet @ Connected Fx
+    .4byte gEreaderLinkConnectingAnim5SpriteSet @ Connected Sparkle fading
+    .4byte gEreaderLinkConnectingAnim6ConnectedSpriteSet
+    .4byte gEreaderLinkConnectionScreenLitSpriteSet
+    .4byte gEreaderLinkConnectionFailedSpriteSet
 
 gEReaderTransitionStepDurations:: @ 0x086A550C
 	.2byte 0x0002, 0x0002, 0x0002, 0x0002, 0x0004;
@@ -465,7 +466,7 @@ gPokedexHatchSpriteSpriteSet:: @ 0x086A578A
     packed_sprite_oaml x=0x0, y=0x10, spriteSize=SPRITE_SIZE_16x8, tileNum=0x2C4, paletteNum=0x3
     packed_sprite_oaml x=0x10, y=0x10, spriteSize=SPRITE_SIZE_8x8, tileNum=0x2C6, paletteNum=0x3
 
-gUnknown_086A5988:: @ 0x086A5988
+gEreaderNotConnectedSpriteSet:: @ 0x086A5988
 .2byte 8
     packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
     packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
@@ -476,7 +477,7 @@ gUnknown_086A5988:: @ 0x086A5988
     packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
     packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
 
-gUnknown_086A59CA:: @ 0x086A59CA
+gEreaderLinkConnectingAnim1SpriteSet:: @ 0x086A59CA
 .2byte 9
     packed_sprite_oaml x=-0x61, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
     packed_sprite_oaml x=-0x61, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
@@ -488,7 +489,7 @@ gUnknown_086A59CA:: @ 0x086A59CA
     packed_sprite_oaml x=0x40, y=0x4, spriteSize=SPRITE_SIZE_32x32, tileNum=0x322, paletteNum=0x4
     packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
 
-gUnknown_086A5A14:: @ 0x086A5A14
+gEreaderLinkConnectingAnim2SpriteSet:: @ 0x086A5A14
 .2byte 11
     packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
     packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
@@ -502,7 +503,7 @@ gUnknown_086A5A14:: @ 0x086A5A14
     packed_sprite_oaml x=0x40, y=0x24, spriteSize=SPRITE_SIZE_32x8, tileNum=0x332, paletteNum=0x4
     packed_sprite_oaml x=-0x20, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
 
-gUnknown_086A5A6E:: @ 0x086A5A6E
+gEreaderLinkConnectingAnim3SpriteSet:: @ 0x086A5A6E
 .2byte 15
     packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
     packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
@@ -520,7 +521,7 @@ gUnknown_086A5A6E:: @ 0x086A5A6E
     packed_sprite_oaml x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
     packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x336, paletteNum=0x5
 
-gUnknown_086A5AE8:: @ 0x086A5AE8
+gEreaderLinkConnectingAnim4SpriteSet:: @ 0x086A5AE8
 .2byte 15
     packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
     packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
@@ -538,7 +539,7 @@ gUnknown_086A5AE8:: @ 0x086A5AE8
     packed_sprite_oaml x=-0x27, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
     packed_sprite_oaml x=0x29, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x338, paletteNum=0x5
 
-gUnknown_086A5B62:: @ 0x086A5B62
+gEreaderLinkConnectingAnim5SpriteSet:: @ 0x086A5B62
 .2byte 15
     packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
     packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
@@ -556,7 +557,7 @@ gUnknown_086A5B62:: @ 0x086A5B62
     packed_sprite_oaml x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
     packed_sprite_oaml x=0x28, y=0xC, spriteSize=SPRITE_SIZE_8x16, tileNum=0x33a, paletteNum=0x5
 
-gUnknown_086A5BDC:: @ 0x086A5BDC
+gEreaderLinkConnectingAnim6ConnectedSpriteSet:: @ 0x086A5BDC
 .2byte 14
     packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
     packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
@@ -573,7 +574,7 @@ gUnknown_086A5BDC:: @ 0x086A5BDC
     packed_sprite_oaml x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
     packed_sprite_oaml x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x4
 
-gUnknown_086A5C4E:: @ 0x086A5C4E
+gEreaderLinkConnectionScreenLitSpriteSet:: @ 0x086A5C4E
 .2byte 14
     packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x5
     packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x5
@@ -590,7 +591,7 @@ gUnknown_086A5C4E:: @ 0x086A5C4E
     packed_sprite_oaml x=0x8, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
     packed_sprite_oaml x=-0x28, y=0x14, spriteSize=SPRITE_SIZE_16x8, tileNum=0x312, paletteNum=0x5
 
-gUnknown_086A5CC0:: @ 0x086A5CC0
+gEreaderLinkConnectionFailedSpriteSet:: @ 0x086A5CC0
 .2byte 14
     packed_sprite_oaml x=-0x60, y=0xC, spriteSize=SPRITE_SIZE_32x16, tileNum=0x300, paletteNum=0x4
     packed_sprite_oaml x=-0x60, y=0x1C, spriteSize=SPRITE_SIZE_32x8, tileNum=0x308, paletteNum=0x4
@@ -888,39 +889,39 @@ gFieldSelectSapphireBoardNameHighlightSpriteSet:: @ 0x086A698C
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x148, paletteNum=0x0
     packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x14c, paletteNum=0x0
 
-gUnknown_086A699E:: @ 0x086A699E
+gBonusFieldSelectBackgroundDimSpriteSet:: @ 0x086A699E
 .2byte 4
     packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x32, tileNum=0x49, paletteNum=0x0
     packed_sprite_oaml x=0x20, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x32, tileNum=0x4d, paletteNum=0x0
     packed_sprite_oaml x=0x0, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_32x8, tileNum=0xc9, paletteNum=0x0
     packed_sprite_oaml x=0x20, y=0x20, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x8, tileNum=0xcd, paletteNum=0x0
 
-gUnknown_086A69C0:: @ 0x086A69C0
+gBonusFieldSelectDusclopsNameSpriteSet:: @ 0x086A69C0
 .2byte 2
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x180, paletteNum=0x0
     packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x184, paletteNum=0x0
 
-gUnknown_086A69D2:: @ 0x086A69D2
+gBonusFieldSelectKecleonNameSpriteSet:: @ 0x086A69D2
 .2byte 2
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x188, paletteNum=0x0
     packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x18c, paletteNum=0x0
 
-gUnknown_086A69E4:: @ 0x086A69E4
+gBonusFieldSelectSphealNameSpriteSet:: @ 0x086A69E4
 .2byte 2
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x190, paletteNum=0x0
     packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x194, paletteNum=0x0
 
-gUnknown_086A69F6:: @ 0x086A69F6
+gBonusFieldSelectGroudonNameSpriteSet:: @ 0x086A69F6
 .2byte 2
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x198, paletteNum=0x0
     packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x19c, paletteNum=0x0
 
-gUnknown_086A6A08:: @ 0x086A6A08
+gBonusFieldSelectKyogreNameSpriteSet:: @ 0x086A6A08
 .2byte 2
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c0, paletteNum=0x0
     packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c4, paletteNum=0x0
 
-gUnknown_086A6A1A:: @ 0x086A6A1A
+gBonusFieldSelectRayquazaNameSpriteSet:: @ 0x086A6A1A
 .2byte 2
     packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1c8, paletteNum=0x0
     packed_sprite_oaml x=0x20, y=0x0, spriteSize=SPRITE_SIZE_32x16, tileNum=0x1cc, paletteNum=0x0
@@ -2941,17 +2942,17 @@ gTitleMenuSaveRightCursorFlipperAnim2SpriteSet:: @ 0x086A9630
     packed_sprite_oaml x=0x10, y=-0x10, spriteSize=SPRITE_SIZE_32x32, tileNum=0x300, paletteNum=0x2
 
 gTitleMenuStateTable:: @ 0x086A964C
-	.2byte 0x0002
-	.2byte 0x000A
-	.2byte 0x0005
-	.2byte 0x0004
-	.2byte 0x0008
-	.2byte 0x0007
-	.2byte 0x0001
-	.2byte 0x0003
-	.2byte 0x0009
-	.2byte 0x0000
-	.2byte 0x000B
+	.2byte STATE_GAME_MAIN
+	.2byte STATE_FIELD_SELECT
+	.2byte STATE_POKEDEX
+	.2byte STATE_OPTIONS
+	.2byte STATE_SCORES_MAIN
+	.2byte STATE_EREADER
+	.2byte STATE_TITLE
+	.2byte STATE_GAME_IDLE
+	.2byte STATE_SCORES_IDLE
+	.2byte STATE_INTRO
+	.2byte STATE_BONUS_FIELD_SELECT
 
 gTitlePressStartAnimDurations:: @ 0x086A9662
 	.byte 0x14, 0x05, 0x14, 0x05
@@ -2990,10 +2991,10 @@ gTitleNoSaveSelectorPositions:: @ 0x086A9694
 	.2byte 0x008E, 0x0066;
 
 gTitleNoSaveMenuActions:: @ 0x086A96A4
-	.2byte 0x0001
-	.2byte 0x0002
-	.2byte 0x0003
-	.2byte 0x0004
+	.2byte MENU_ACTION_TYPE_FIELD_SELECT
+	.2byte MENU_ACTION_TYPE_POKEDEX
+	.2byte MENU_ACTION_TYPE_OPTIONS
+	.2byte MENU_ACTION_TYPE_SCORES
 
 gTitleSavedArrowPositions:: @ 0x086A96AC
 	@Vector16 pairs
@@ -3012,11 +3013,11 @@ gTitleSavedSelectorPositions:: @ 0x086A96C0
 	.2byte 0x008E, 0x006B;
 
 gTitleSavedMenuActions:: @ 0x086A96D4
-	.2byte 0x0001
-	.2byte 0x0000
-	.2byte 0x0002
-	.2byte 0x0003
-	.2byte 0x0004
+	.2byte MENU_ACTION_TYPE_FIELD_SELECT
+	.2byte MENU_ACTION_TYPE_CONTINUE_GAME
+	.2byte MENU_ACTION_TYPE_POKEDEX
+	.2byte MENU_ACTION_TYPE_OPTIONS
+	.2byte MENU_ACTION_TYPE_SCORES
 
 @ .incbin "baserom.gba", 0x6A96DE, 0x6 @ 0x6A96E4 - 0x6A96DE
 @ Can't find code pointing to this... possibly part of the last array when testing?
@@ -3082,13 +3083,13 @@ gTitleSavedAnimSprites:: @ 0x086A9778
 	.4byte 0x00000000
 
 gEReaderAccessButtonSequence:: @ 0x086A97AC
-	.2byte 0x0200
-	.2byte 0x0100
-	.2byte 0x0200
-	.2byte 0x0100
-	.2byte 0x0200
-	.2byte 0x0100
-	.2byte 0xFFFF
+	.2byte L_BUTTON
+	.2byte R_BUTTON
+	.2byte L_BUTTON
+	.2byte R_BUTTON
+	.2byte L_BUTTON
+	.2byte R_BUTTON
+	.2byte -1
 
 	.align 2, 0
 

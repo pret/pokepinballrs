@@ -46,15 +46,15 @@ extern u8 gEReaderOverlay_Tilemap[];
 extern s16 gEReaderTransitionStepDurations[];
 
 enum EReaderState{
-    EREADER_STATE_0_LOAD_GRAPHICS = 0,
-    EREADER_STATE_1 = 1,
-    EREADER_STATE_2 = 2,
-    EREADER_STATE_3 = 3,
-    EREADER_STATE_4 = 4,
-    EREADER_STATE_5 = 5,
-    EREADER_STATE_6 = 6,
-    EREADER_STATE_7 = 7,
-    EREADER_STATE_8 = 8,
+    EREADER_STATE_LOAD_GRAPHICS = 0,
+    EREADER_STATE_SHOW_INSTRUCTIONS = 1,
+    EREADER_STATE_ANIMATE_LINK_CABLE = 2,
+    EREADER_STATE_COMMUNICATION = 3,
+    EREADER_STATE_LINK_TIMEOUT = 4,
+    EREADER_STATE_LINK_SUCCESS_CLOSING = 5,
+    EREADER_STATE_SUCCESS_POPUP = 6,
+    EREADER_STATE_PRIZE_TEXT = 7,
+    EREADER_STATE_RETURN_TO_MENU = 8,
 };
 
 void EReaderMain(void)
@@ -96,14 +96,14 @@ void LoadEReaderGraphics(void)
     m4aSongNumStart(MUS_EREADER);
     EnableVBlankInterrupts();
     FadeInScreen();
-    gMain.subState = EREADER_STATE_1;
+    gMain.subState = EREADER_STATE_SHOW_INSTRUCTIONS;
 }
 
 void InitEReaderTextState(void)
 {
-    gEReaderStatusAnimSpriteGroup = SG_0;
+    gEReaderStatusAnimSpriteGroup = SG_EREADER_START_TRANSMISSION_POPUP;
     gEReaderStatusSpriteVisible = FALSE;
-    gEReaderHeaderAnimSpriteGroup = SG_4;
+    gEReaderHeaderAnimSpriteGroup = SG_EREADER_GBA_LINK_BASE;
     gEReaderTransitionStep = 0;
     gEReaderTransitionTimer = 0;
     gEReaderGeneralTimer = 0;
@@ -112,7 +112,7 @@ void InitEReaderTextState(void)
     gEReaderUnused2 = 0;
 }
 
-void Ereader_State1_2E40(void)
+void Ereader_ShowInstructions(void)
 {
     if (gEReaderTextCharIndex <= gEReaderTextLengths[gEReaderTextPageIndex]) {
         gEReaderTextAnimDelay++;
@@ -141,7 +141,7 @@ void Ereader_State1_2E40(void)
             gEReaderTextCharIndex = gEReaderTextLengths[gEReaderTextPageIndex] + 1;
         }
         else if (gEReaderTextHasNextPage[gEReaderTextPageIndex] == 0) {
-            gMain.subState = EREADER_STATE_2;
+            gMain.subState = EREADER_STATE_ANIMATE_LINK_CABLE;
         }
         else {
             ClearEReaderTextRows();
@@ -154,13 +154,13 @@ void Ereader_State1_2E40(void)
     else if (JOY_NEW(B_BUTTON)) {
         m4aSongNumStart(SE_MENU_CANCEL);
         gEReaderExitTargetState = STATE_TITLE;
-        gMain.subState = EREADER_STATE_8;
+        gMain.subState = EREADER_STATE_RETURN_TO_MENU;
     }
     UpdateEReaderSprites();
     DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
 }
 
-void Ereader_State2_2FC0(void)
+void Ereader_AnimateLinkCable(void)
 {
     gEReaderTransitionTimer++;
     if (gEReaderTransitionTimer > gEReaderTransitionStepDurations[gEReaderTransitionStep]) {
@@ -172,15 +172,15 @@ void Ereader_State2_2FC0(void)
             gLinkExchangeStep = 0;
             gEReaderStatusSpriteVisible = TRUE;
             m4aSongNumStart(SE_TRIGGER_BUTTON_HIT);
-            gMain.subState = EREADER_STATE_3;
+            gMain.subState = EREADER_STATE_COMMUNICATION;
         }
     }
-    gEReaderStatusAnimSpriteGroup = SG_0;
-    gEReaderHeaderAnimSpriteGroup = SG_4 + gEReaderTransitionStep;
+    gEReaderStatusAnimSpriteGroup = SG_EREADER_START_TRANSMISSION_POPUP;
+    gEReaderHeaderAnimSpriteGroup = SG_EREADER_GBA_LINK_BASE + gEReaderTransitionStep;
     UpdateEReaderSpritesViaOam();
 }
 
-void Ereader_State3_304C(void)
+void Ereader_Communicating(void)
 {
     s32 index;
     u16 temp;
@@ -209,21 +209,21 @@ void Ereader_State3_304C(void)
                 }
                 gMain.eReaderBonuses[gEReaderCardIndex] = TRUE;
                 gEReaderGeneralTimer = 0;
-                gMain.subState = EREADER_STATE_5;
+                gMain.subState = EREADER_STATE_LINK_SUCCESS_CLOSING;
             }
             else {
                 gEReaderGeneralTimer = 0;
-                gEReaderStatusAnimSpriteGroup = SG_2;
-                gEReaderHeaderAnimSpriteGroup = SG_10;
+                gEReaderStatusAnimSpriteGroup = SG_EREADER_TRANSMIT_ERROR;
+                gEReaderHeaderAnimSpriteGroup = SG_EREADER_GBA_LINK_CONNECTED;
                 gEReaderTextCharIndex = 0;
                 gEReaderTextBlinkToggle = 0;
                 gEReaderTextPageIndex = 13;
                 ClearEReaderTextRows();
-                gMain.subState = EREADER_STATE_4;
+                gMain.subState = EREADER_STATE_LINK_TIMEOUT;
                 m4aSongNumStart(SE_FAILURE);
             }
         }
-        if (gEReaderStatusAnimSpriteGroup == SG_1) {
+        if (gEReaderStatusAnimSpriteGroup == SG_EREADER_TRANSMITTING) {
             gEReaderGeneralTimer++;
             temp = gEReaderGeneralTimer; // TODO: FAKEMATCH
             if ((gEReaderGeneralTimer & 7) == 0) {
@@ -232,20 +232,20 @@ void Ereader_State3_304C(void)
             if (((gLinkStatusResult & 0x7f0000) != 0) &&
                 (gLinkTimeoutCounter++, 0xb4 < gLinkTimeoutCounter)) {
                 gEReaderGeneralTimer = 0;
-                gEReaderStatusAnimSpriteGroup = SG_2;
-                gEReaderHeaderAnimSpriteGroup = SG_10;
+                gEReaderStatusAnimSpriteGroup = SG_EREADER_TRANSMIT_ERROR;
+                gEReaderHeaderAnimSpriteGroup = SG_EREADER_GBA_LINK_CONNECTED;
                 gEReaderTextCharIndex = 0;
                 gEReaderTextBlinkToggle = 0;
                 gEReaderTextPageIndex = 13;
                 ClearEReaderTextRows();
-                gMain.subState = EREADER_STATE_4;
+                gMain.subState = EREADER_STATE_LINK_TIMEOUT;
                 m4aSongNumStart(SE_FAILURE);
             }
         }
     }
 }
 
-void Ereader_State4_3208(void)
+void Ereader_ShowLinkTimeout(void)
 {
     gEReaderGeneralTimer++;
     if (8 < gEReaderGeneralTimer) {
@@ -298,7 +298,7 @@ void Ereader_State4_3208(void)
     DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
 }
 
-void Ereader_State5_33A0(void)
+void Ereader_CloseSuccessfulTransmission(void)
 {
     u16 temp;
     UpdateEReaderSpritesViaOam();
@@ -310,7 +310,7 @@ void Ereader_State5_33A0(void)
             DisableSerial();
             break;
         case 0x96:
-            gEReaderStatusAnimSpriteGroup = SG_3;
+            gEReaderStatusAnimSpriteGroup = SG_EREADER_TRANSMISSION_COMPLETE;
             m4aSongNumStart(SE_MENU_SELECT);
             break;
         case 0x10e:
@@ -318,17 +318,17 @@ void Ereader_State5_33A0(void)
             FadeOutScreen();
             m4aMPlayAllStop();
             DisableVBlankInterrupts();
-            gMain.subState = EREADER_STATE_6;
+            gMain.subState = EREADER_STATE_SUCCESS_POPUP;
             break;
     }
 
-    if ((gEReaderStatusAnimSpriteGroup == SG_1) && ((temp = gEReaderGeneralTimer, gEReaderGeneralTimer & 7) == 0)) {
+    if ((gEReaderStatusAnimSpriteGroup == SG_EREADER_TRANSMITTING) && ((temp = gEReaderGeneralTimer, gEReaderGeneralTimer & 7) == 0)) {
         gEReaderHeaderAnimSpriteGroup = SG_21 - gEReaderHeaderAnimSpriteGroup;
     }
     gEReaderGeneralTimer++;
 }
 
-void Ereader_State6_343C(void)
+void Ereader_ShowSuccessPopup(void)
 {
     ResetDisplayState();
     REG_DISPCNT = DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP | DISPCNT_FORCED_BLANK;
@@ -362,10 +362,10 @@ void Ereader_State6_343C(void)
     m4aSongNumStart(MUS_EREADER);
     EnableVBlankInterrupts();
     FadeInScreen();
-    gMain.subState = EREADER_STATE_7;
+    gMain.subState = EREADER_STATE_PRIZE_TEXT;
 }
 
-void Ereader_State7_33C8(void)
+void Ereader_ShowPrizeText(void)
 {
     if (gEReaderTextCharIndex <= gEReaderTextLengths[gEReaderTextPageIndex]) {
         gEReaderTextAnimDelay++;
@@ -400,7 +400,7 @@ void Ereader_State7_33C8(void)
             else {
                 gEReaderExitTargetState = STATE_TITLE;
             }
-            gMain.subState = EREADER_STATE_8;
+            gMain.subState = EREADER_STATE_RETURN_TO_MENU;
         }
         else {
             ClearEReaderTextRows();
@@ -414,7 +414,7 @@ void Ereader_State7_33C8(void)
     DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
 }
 
-void Ereader_State8_374C(void)
+void Ereader_FadeScreenToMenu(void)
 {
     FadeOutScreen();
     m4aMPlayAllStop();
@@ -513,7 +513,7 @@ void UpdateEReaderSprites(void)
 
     if (puVar9->active == TRUE)
     {
-        if (gEReaderStatusAnimSpriteGroup == SG_0)
+        if (gEReaderStatusAnimSpriteGroup == SG_EREADER_START_TRANSMISSION_POPUP)
         {
             puVar9->baseX = 0x78;
             puVar9->baseY = 100;
@@ -564,7 +564,7 @@ void UpdateEReaderSpritesViaOam(void) {
 
     if (puVar9->active == TRUE)
     {
-        if (gEReaderStatusAnimSpriteGroup == SG_0)
+        if (gEReaderStatusAnimSpriteGroup == SG_EREADER_START_TRANSMISSION_POPUP)
         {
             puVar9->baseX = 0x78;
             puVar9->baseY = 100;
@@ -661,7 +661,7 @@ s16 ProcessEReaderLinkReceive(void)
         {
             gEReaderLinkHandshakeStarted = -1;
             gEReaderLinkAckSent = -1;
-            gEReaderStatusAnimSpriteGroup = SG_1;
+            gEReaderStatusAnimSpriteGroup = SG_EREADER_TRANSMITTING;
         }
     }
 
