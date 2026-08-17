@@ -7,10 +7,15 @@
 #include "variables.h"
 #include "constants/bg_music.h"
 #include "constants/characters.h"
+#include "constants/global.h"
 
 #define DEX_NUM_DIGITS      3
 #define SCROLL_WAIT_FRAMES  9
 #define ENTRIES_SHOWN_COUNT 5
+
+#define DEX_TEXT_PAGES 2
+#define DEX_TEXT_ROWS 3
+#define DEX_TEXT_CHARS_PER_PAGE (DEX_TEXT_ROWS * POKEMON_DEX_LINE_LENGTH)
 
 enum PokedexStates
 {
@@ -1950,12 +1955,14 @@ void PrintDexDescription(s16 species, u32 page)
 
     var0 = 0;
     DmaFill16(3, 0, gTempGfxBuffer, 0x1800);
-    for (i = 0; i < 3; i++)
+
+    //2 pages, 3 rows, 42 chars
+    for (i = 0; i < DEX_TEXT_ROWS; i++)
     {
-        for (j = 0; j < 42; j++)
+        for (j = 0; j < POKEMON_DEX_LINE_LENGTH; j++)
         {
-            var1 = gPokedexEntries[species].description[page * 126 + i * 42 + j] & ~0xF;
-            var2 = gPokedexEntries[species].description[page * 126 + i * 42 + j] & 0xF;
+            var1 = gPokedexEntries[species].description[page * DEX_TEXT_CHARS_PER_PAGE + i * POKEMON_DEX_LINE_LENGTH + j] & ~0xF;
+            var2 = gPokedexEntries[species].description[page * DEX_TEXT_CHARS_PER_PAGE + i * POKEMON_DEX_LINE_LENGTH + j] & 0xF;
             if (var2 == 0)
                 var2 = 4;
 

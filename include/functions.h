@@ -54,16 +54,16 @@ void TitlescreenMain(void);
 void LoadTitlescreenGraphics(void);
 void InitTitlescreenStates(void);
 void TitleScreen1_WaitForStartButton(void);
-void TitleScreen2_AnimOpenMenu(void);
+void TitleScreen2_AnimatePressStartSelected(void);
 void TitleScreen9_DeleteSaveConfirmation(void);
-void TitleScreen3_8010E00(void);
+void TitleScreen3_AnimateMenuSlideIn(void);
 void TitleScreen4_MenuInputNoSavedGame(void);
-void TitleScreen7_8011020(void);
+void TitleScreen7_ProcessMenuItemSelected_NoSavedGame(void);
 void TitleScreen5_MenuInputSavedGame(void);
-void TitleScreen8_8011228(void);
+void TitleScreen8_ProcessMenuItemSelected_SavedGame(void);
 void TitleScreen6_AnimCloseMenu(void);
 void TitleScreen10_ExecMenuSelection(void);
-void TitleScreen11_80114B4(void);
+void TitleScreen11_FadeToAction(void);
 
 // src/util.c
 
@@ -84,8 +84,8 @@ void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum);
 extern void BonusFieldSelectMain(void);
 extern void LoadBonusFieldSelectGraphics(void);
 extern void InitBonusFieldSelectState(void);
-extern void BonusFieldSelect_State1_2768(void);
-extern void BonusFieldSelect_State2_2990(void);
+extern void BonusFieldSelect_Menu(void);
+extern void BonusFieldSelect_FadeToSelection(void);
 extern void RenderBonusFieldSelectSprites(void);
 
 // src/ereader.c
@@ -93,14 +93,14 @@ extern void RenderBonusFieldSelectSprites(void);
 extern void EReaderMain(void);
 extern void LoadEReaderGraphics(void);
 extern void InitEReaderTextState(void);
-extern void Ereader_State1_2E40(void);
-extern void Ereader_State2_2FC0(void);
-extern void Ereader_State3_304C(void);
-extern void Ereader_State4_3208(void);
-extern void Ereader_State5_33A0(void);
-extern void Ereader_State6_343C(void);
-extern void Ereader_State7_33C8(void);
-extern void Ereader_State8_374C(void);
+extern void Ereader_ShowInstructions(void);
+extern void Ereader_AnimateLinkCable(void);
+extern void Ereader_Communicating(void);
+extern void Ereader_ShowLinkTimeout(void);
+extern void Ereader_CloseSuccessfulTransmission(void);
+extern void Ereader_ShowSuccessPopup(void);
+extern void Ereader_ShowPrizeText(void);
+extern void Ereader_FadeScreenToMenu(void);
 extern void ClearEReaderTextRows(void);
 extern void DrawEReaderTextPage(s8);
 extern void DrawEReaderTextCharacter(s8, s8);

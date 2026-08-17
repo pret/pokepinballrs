@@ -7,12 +7,24 @@
 #define STATE_GAME_IDLE             3
 #define STATE_OPTIONS               4
 #define STATE_POKEDEX               5
-#define STATE_SAVE_ERASE              6
+#define STATE_SAVE_ERASE            6
 #define STATE_EREADER               7
 #define STATE_SCORES_MAIN           8
 #define STATE_SCORES_IDLE           9
 #define STATE_FIELD_SELECT          10
 #define STATE_BONUS_FIELD_SELECT    11
+
+#define MENU_ACTION_TYPE_CONTINUE_GAME 0
+#define MENU_ACTION_TYPE_FIELD_SELECT  1
+#define MENU_ACTION_TYPE_POKEDEX       2
+#define MENU_ACTION_TYPE_OPTIONS       3
+#define MENU_ACTION_TYPE_SCORES        4
+#define MENU_ACTION_TYPE_EREADER       5
+#define MENU_ACTION_TYPE_TITLE         6
+#define MENU_ACTION_TYPE_GAME_IDLE     7
+#define MENU_ACTION_TYPE_SCORES_IDLE   8
+#define MENU_ACTION_TYPE_INTRO         9
+#define MENU_ACTION_TYPE_BONUS_SELECT  10
 
 #define POKEMON_NAME_LENGTH 10
 #define POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH 9
