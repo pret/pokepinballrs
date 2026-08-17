@@ -19,9 +19,6 @@ extern const s8 gCaptureShakeOffsets[];
 extern const u16 gPokeballCaptureOamFrames[][0x30];
 extern const u8 gCaptureBallTilesGfx[];
 
-extern Palette gCatchSequencePalA;
-extern Palette gCatchSequencePalB;
-extern Palette gCatchSequencePalC;
 extern Palette gCatchSpritePalettes[];
 
 void InitRouletteWheel(void)

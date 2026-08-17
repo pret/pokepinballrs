@@ -552,13 +552,7 @@ gKecleonSpriteSets: @ 0x0202D880
 gGameOverLetterXOffsets: @ 0x020306C0
 	.space 0x10
 gCatchSpritePalettes: @ 0x020306D0
-	.space 0x20
-gCatchSequencePalA: @ 0x020306F0
-	.space 0x20
-gCatchSequencePalB: @ 0x02030710
-	.space 0x20
-gCatchSequencePalC: @ 0x02030730
-	.space 0x20
+	.space 0x80
 gGameOverLetterAmplitudes: @ 0x02030750
 	.space 0x10
 gCatchSpriteGfxBuffer: @ 0x02030760
