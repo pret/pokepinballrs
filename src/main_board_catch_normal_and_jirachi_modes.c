@@ -627,14 +627,11 @@ void DrawCatchMonBoardSprite(void)
         if (gCurrentPinballGame->captureFlashTimer == 20 || gCurrentPinballGame->captureFlashTimer == 200)
         {
             DmaCopy16(3, gCatchSpriteFlashGfx, (void *)0x06010CA0, 0x480);
-            
-            //DmaCopy16(3, gCatchSpritePalettes[2], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         }
 
         if (gCurrentPinballGame->captureFlashTimer == 24)
         {
             DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
-            //DmaCopy16(3, gCatchSpritePalettes[1], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         }
 
         gCurrentPinballGame->captureFlashTimer--;;
@@ -642,7 +639,6 @@ void DrawCatchMonBoardSprite(void)
     else if (gCurrentPinballGame->randomSpriteVariantSeed == 5)
     {
         DmaCopy16(3, &gCatchSpriteGfxBuffer[index * 0x480], (void *)0x06010CA0, 0x480);
-        //DmaCopy16(3, gCatchSpritePalettes[0], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
     }
 
     if (gCurrentPinballGame->captureSequenceTimer < 13)
