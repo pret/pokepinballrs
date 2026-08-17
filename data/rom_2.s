@@ -9098,7 +9098,7 @@ gMonHatchSpriteGroupPals:: @ 0x086B159C
 	.4byte gMonHatchSpriteGroup4_Pals
 	.4byte gMonHatchSpriteGroup5_Pals
 
-gMonIconPalettes:: @ 0x086B15B4
+gCatchMonPaletteGroups:: @ 0x086B15B4
     .4byte gMonCatchSpriteGroup0_Pal
     .4byte gMonCatchSpriteGroup1_Pal
     .4byte gMonCatchSpriteGroup2_Pal

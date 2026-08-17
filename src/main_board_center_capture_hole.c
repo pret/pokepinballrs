@@ -18,7 +18,6 @@ extern const u8 gCaptureScreenTilesGfx[];
 extern const s8 gCaptureShakeOffsets[];
 extern const u16 gPokeballCaptureOamFrames[][0x30];
 extern const u8 gCaptureBallTilesGfx[];
-extern const Palette gBallFlash_Pals;
 
 extern Palette gCatchSequencePalA;
 extern Palette gCatchSequencePalB;
@@ -632,7 +631,7 @@ void RunMonCaptureSequence(void)
             gCurrentPinballGame->paletteSwapActive = TRUE;
         }
 
-        DmaCopy16(3, gBallFlash_Pals, OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gBall_Pals[8], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
         break;
 
     case 4:
@@ -654,10 +653,10 @@ void RunMonCaptureSequence(void)
                         && gCurrentPinballGame->boardSubState == JIRACHI_CATCH_SUBSTATE_CATCH_HIT_PHASE)
                 ))
             {
-                DmaCopy16(3, &gCatchSequencePalB, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gCatchSpritePalettes[2], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
             }
 
-            DmaCopy16(3, gBallFlash_Pals, OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[8], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             gMain.blendBrightness = 6;
         }
         else
@@ -732,7 +731,7 @@ void RunMonCaptureSequence(void)
             || (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_JIRACHI_CATCH_MODE
                  && gCurrentPinballGame->boardSubState == JIRACHI_CATCH_SUBSTATE_CATCH_HIT_PHASE))
         {
-            DmaCopy16(3, gCatchSpritePalettes, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gCatchSpritePalettes[0], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         }
 
         for (i = 0; i < 4; i++)
@@ -852,7 +851,7 @@ void RunMonCaptureSequence(void)
                  && gCurrentPinballGame->boardSubState == CATCH_EM_SUBSTATE_CATCH_HIT_PHASE)
                 || (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_JIRACHI_CATCH_MODE
                     && gCurrentPinballGame->boardSubState == JIRACHI_CATCH_SUBSTATE_CATCH_HIT_PHASE))
-                DmaCopy16(3, &gCatchSequencePalA, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gCatchSpritePalettes[1], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         }
         else if (gCurrentPinballGame->captureSequenceTimer == 19 || gCurrentPinballGame->captureSequenceTimer == 22)
         {
@@ -863,7 +862,7 @@ void RunMonCaptureSequence(void)
                     && gCurrentPinballGame->boardSubState == CATCH_EM_SUBSTATE_CATCH_HIT_PHASE)
                 || (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_JIRACHI_CATCH_MODE
                     && gCurrentPinballGame->boardSubState == JIRACHI_CATCH_SUBSTATE_CATCH_HIT_PHASE))
-                DmaCopy16(3, &gCatchSequencePalC, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gCatchSpritePalettes[3], OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         }
 
         if (gCurrentPinballGame->captureSequenceTimer == 23)

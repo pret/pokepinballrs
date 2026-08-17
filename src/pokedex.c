@@ -63,7 +63,7 @@ void PrintDexNumbersFromListPosition(s16);
 static void PrintCaughtBallFromListPosition(s16);
 void LoadMonPortrait(s16);
 
-extern Palette *gMonIconPalettes[];
+extern Palette *gCatchMonPaletteGroups[];
 extern u8 *gCatchSpriteGfxPtrs[];
 
 extern u16 gPokedexLinkSendCounter;
@@ -2410,7 +2410,7 @@ void LoadMonAnimationSprite(s16 species)
         remainder = var0 % 5;
 
         CopyBgTilesRect(gCatchSpriteGfxPtrs[quotient] + remainder * 0xD80, (void *)(OBJ_VRAM0 + 0x3800), 108, 1);
-        DmaCopy16(3, gMonIconPalettes[quotient][remainder], OBJ_PLTT_SLOT(2), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gCatchMonPaletteGroups[quotient][remainder], OBJ_PLTT_SLOT(2), PLTT_SLOT_SIZE);
     }
     else
     {

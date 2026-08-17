@@ -486,7 +486,7 @@ void RestoreMainFieldDynamicGraphics(void)
     }
 
     var0 = gCurrentPinballGame->ball->spinAngle / 0x1000;
-    DmaCopy16(3, gBallRotationTileGraphics[var0], 0x06010400, 0x80);
+    DmaCopy16(3, gBallRotationTileGraphics[var0], (void *)OBJ_VRAM0 + 0x400, 0x80);
 
     for (i = 0; i <= 1; i++)
     {

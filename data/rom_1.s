@@ -775,13 +775,15 @@ gBall_Pals:: @ 0x08137E14
 	.incbin "graphics/stage/main/pokeball_great.gbapal"
 	.incbin "graphics/stage/main/pokeball_ultra.gbapal"
 	.incbin "graphics/stage/main/pokeball_master.gbapal"
-	@ Four more past the four gBall_Pals is indexed with by ballUpgradeType.
-	@ These have no art to carry them, and a bare .gbapal is a build product that
-	@ make clean removes, so they take the .bin suffix gb_player.gbapal.bin uses.
-	.incbin "graphics/stage/main/pokeball_unused.gbapal.bin"
-
-gBallFlash_Pals:: @ 0x08137F14
-	.incbin "graphics/stage/main/ball_flash.gbapal"
+	.incbin "graphics/stage/main/pokeball_regular_flash.gbapal"
+	.incbin "graphics/stage/main/pokeball_great_flash.gbapal"
+	.incbin "graphics/stage/main/pokeball_ultra_flash.gbapal"
+	.incbin "graphics/stage/main/pokeball_master_flash.gbapal"
+	.incbin "graphics/stage/main/ball_full_white.gbapal"
+	.incbin "graphics/stage/main/pokeball_regular_frozen.gbapal"
+	.incbin "graphics/stage/main/pokeball_great_frozen.gbapal"
+	.incbin "graphics/stage/main/pokeball_ultra_frozen.gbapal"
+	.incbin "graphics/stage/main/pokeball_master_frozen.gbapal"
 
 gCaptureBallTilesGfx:: @ 0x08138014
 	.incbin "graphics/stage/main/ball_open_to_catch.4bpp"
