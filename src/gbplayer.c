@@ -94,7 +94,7 @@ void InitGameBoyPlayer(void)
     gGameBoyPlayerEnabled = CheckGameBoyPlayer();
     REG_IE &= ~INTR_FLAG_VBLANK;
     REG_DISPSTAT &= ~DISPSTAT_VBLANK_INTR;
-    REG_DISPCNT = 0;
+    REG_DISPCNT = DISPCNT_MODE_0;
     gRumblePatternPosition = -1;
     gRumbleLoopCounter = 0;
     gRumbleFrameCounter = 0;
