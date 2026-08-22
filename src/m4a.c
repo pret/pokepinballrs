@@ -669,28 +669,18 @@ void FadeOutBody(struct MusicPlayerInfo *mplayInfo)
 {
     s32 i;
     struct MusicPlayerTrack *track;
-    u16 fadeOI = mplayInfo->fadeOI;
-    register u32 temp asm("r3");
-    register u16 mask asm("r2");
+    u16 fadeOV;
 
-    if (fadeOI == 0)
+    if (mplayInfo->fadeOI == 0)
+        return;
+    if (--mplayInfo->fadeOC != 0)
         return;
 
-    mplayInfo->fadeOC--;
-
-    temp = 0xFFFF;
-    mask = temp;
-
-    if (mplayInfo->fadeOC != 0)
-        return;
-
-    mplayInfo->fadeOC = fadeOI;
+    mplayInfo->fadeOC = mplayInfo->fadeOI;
 
     if (mplayInfo->fadeOV & FADE_IN)
     {
-        mplayInfo->fadeOV += (4 << FADE_VOL_SHIFT);
-
-        if ((u16)(mplayInfo->fadeOV & mask) >= (64 << FADE_VOL_SHIFT))
+        if ((u16)(mplayInfo->fadeOV += (4 << FADE_VOL_SHIFT)) >= (64 << FADE_VOL_SHIFT))
         {
             mplayInfo->fadeOV = (64 << FADE_VOL_SHIFT);
             mplayInfo->fadeOI = 0;
@@ -698,16 +688,13 @@ void FadeOutBody(struct MusicPlayerInfo *mplayInfo)
     }
     else
     {
-        mplayInfo->fadeOV -= (4 << FADE_VOL_SHIFT);
-
-        if ((s16)(mplayInfo->fadeOV & mask) <= 0)
+        if ((s16)(mplayInfo->fadeOV -= (4 << FADE_VOL_SHIFT)) <= 0)
         {
             i = mplayInfo->trackCount;
             track = mplayInfo->tracks;
 
             while (i > 0)
             {
-                register u32 fadeOV asm("r7");
                 u32 val;
 
                 TrackStop(mplayInfo, track);
@@ -740,7 +727,9 @@ void FadeOutBody(struct MusicPlayerInfo *mplayInfo)
     {
         if (track->flags & MPT_FLG_EXIST)
         {
-            track->volX = (mplayInfo->fadeOV >> FADE_VOL_SHIFT);
+            fadeOV = mplayInfo->fadeOV;
+
+            track->volX = (fadeOV >> FADE_VOL_SHIFT);
             track->flags |= MPT_FLG_VOLCHG;
         }
 
@@ -894,16 +883,13 @@ void CgbModVol(struct CgbChannel *chan)
     if ((soundInfo->mode & 1) || !CgbPan(chan))
     {
         chan->pan = 0xFF;
-        chan->eg = (u32)(chan->rightVolume + chan->leftVolume) >> 4;
+        chan->eg = (u32)(chan->leftVolume + chan->rightVolume);
+        chan->eg /= 16;
     }
     else
     {
-        // Force chan->rightVolume and chan->leftVolume to be read from memory again,
-        // even though there is no reason to do so.
-        // The command line option "-fno-gcse" achieves the same result as this.
-        asm("" : : : "memory");
-
-        chan->eg = (u32)(chan->rightVolume + chan->leftVolume) >> 4;
+        chan->eg = (u32)(chan->leftVolume + chan->rightVolume);
+        chan->eg /= 16;
         if (chan->eg > 15)
             chan->eg = 15;
     }
