@@ -183,7 +183,6 @@ void Ereader_AnimateLinkCable(void)
 void Ereader_Communicating(void)
 {
     s32 index;
-    u16 temp;
 
     UpdateEReaderSpritesViaOam();
     if (JOY_NEW(B_BUTTON)) {
@@ -225,8 +224,7 @@ void Ereader_Communicating(void)
         }
         if (gEReaderStatusAnimSpriteGroup == SG_EREADER_TRANSMITTING) {
             gEReaderGeneralTimer++;
-            temp = gEReaderGeneralTimer; // TODO: FAKEMATCH
-            if ((gEReaderGeneralTimer & 7) == 0) {
+            if (gEReaderGeneralTimer % 8 == 0) {
                 gEReaderHeaderAnimSpriteGroup = SG_21 - gEReaderHeaderAnimSpriteGroup;
             }
             if (((gLinkStatusResult & 0x7f0000) != 0) &&
