@@ -588,8 +588,7 @@ void RunMonCaptureSequence(void)
         break;
 
     case 2:
-        //TODO: fakematch; unused i. Here for the +4 to parse correctly;
-        DmaCopy16(3, gBall_Pals[i=gCurrentPinballGame->ballUpgradeType + 4], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gBall_Pals[(s16)(gCurrentPinballGame->ballUpgradeType + 4)], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
         gMain.blendBrightness = 4;
 
         if (gCurrentPinballGame->captureSequenceFrame > 1)
@@ -658,8 +657,7 @@ void RunMonCaptureSequence(void)
         }
         else
         {
-            //TODO: fakematch; unused i. Here for the +4 to parse correctly;
-            DmaCopy16(3, gBall_Pals[i=gCurrentPinballGame->ballUpgradeType + 4], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[(s16)(gCurrentPinballGame->ballUpgradeType + 4)], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
             gMain.blendBrightness = 7;
         }
 
@@ -707,8 +705,7 @@ void RunMonCaptureSequence(void)
             gMain.fieldSpriteGroups[FIELD_SG_CAPTURE_MON_BALL_FX]->active = FALSE;
         break;
     case 11:
-        //TODO: fakematch; unused i. Here for the +4 to parse correctly;
-        DmaCopy16(3, gBall_Pals[i=gCurrentPinballGame->ballUpgradeType + 4], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gBall_Pals[(s16)(gCurrentPinballGame->ballUpgradeType + 4)], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
 
         tempVector.x = (gCurrentPinballGame->catchTargetX << 8) - gCurrentPinballGame->ball->positionQ8.x;
         tempVector.y = (gCurrentPinballGame->catchTargetY << 8) - gCurrentPinballGame->ball->positionQ8.y;
@@ -772,8 +769,7 @@ void RunMonCaptureSequence(void)
         break;
 
     case 15:
-        //TODO: fakematch; unused i. Here for the +4 to parse correctly;
-        DmaCopy16(3, gBall_Pals[i= gCurrentPinballGame->ballUpgradeType + 4], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gBall_Pals[(s16)(gCurrentPinballGame->ballUpgradeType + 4)], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
         gCurrentPinballGame->ball->spinAngle -= ANGLE_45;
         break;
 
