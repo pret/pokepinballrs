@@ -276,19 +276,20 @@ static int IntPow(int arg0, int arg1)
 
 void SetMatrixScale(s16 xScale, s16 yScale, s16 matrixNum)
 {
-    vu16 a2, b2, c2, d2;
-    u16 a = 0x10000 / xScale;
-    u32 d = 0x10000 / yScale;
-    a2 = a;
-    b2 = 0;
-    c2 = 0;
-    a = d; // TODO fake match, but best fakematch out of 150,000 permutations
-    d2 = a;
+    vu16 pa, pb, pc, pd;
+    u16 xScaleInv = 0x10000 / xScale;
+    u32 yScaleInv = 0x10000 / yScale;
 
-    gOamBuffer[matrixNum * 4 ].affineParam = a2;
-    gOamBuffer[matrixNum * 4 + 1].affineParam = b2;
-    gOamBuffer[matrixNum * 4 + 2].affineParam = c2;
-    gOamBuffer[matrixNum * 4 + 3].affineParam = a; // TODO fake match as above
+    pa = xScaleInv;
+    pb = 0;
+    pc = 0;
+    yScaleInv = (u16)yScaleInv;
+    pd = yScaleInv;
+
+    gOamBuffer[matrixNum * 4 + 0].affineParam = pa;
+    gOamBuffer[matrixNum * 4 + 1].affineParam = pb;
+    gOamBuffer[matrixNum * 4 + 2].affineParam = pc;
+    gOamBuffer[matrixNum * 4 + 3].affineParam = yScaleInv;
 }
 
 
