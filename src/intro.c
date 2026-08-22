@@ -595,7 +595,6 @@ void IntroScene1Torchic_RenderAllSprites(void)
     struct SpriteGroup *mainSg2;
     struct SpriteGroup *otherSg;
     int i;
-    const u16 *p; // TODO Fakematch
 
     gMain.blendControl = 0xF10;
     gMain.blendAlpha = gIntroBlendSrc | (gIntroBlendDst << 8);
@@ -615,13 +614,13 @@ void IntroScene1Torchic_RenderAllSprites(void)
 
     if (puVar1->active == TRUE)
     {
+        const struct SpriteSet *introScene1;
         puVar1->baseX = gIntroSpriteEntities[1].posX;
         puVar1->baseY = gIntroSpriteEntities[1].posY;
-        p = &gIntroScene1Torchic_SpriteSets[gIntroSpriteEntities[1].animFrame]->count;
 
-        for (i = 0;
-            i < *p;
-            i++)
+        introScene1 = gIntroScene1Torchic_SpriteSets[gIntroSpriteEntities[1].animFrame];
+
+        for (i = 0; i < introScene1->count; i++)
         {
             puVar5 = &puVar1->oam[i];
             gOamBuffer[puVar5->oamId].objMode = ST_OAM_OBJ_BLEND;

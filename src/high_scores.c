@@ -235,7 +235,7 @@ void InitHighScoreData(void)
 
 void HighScore_ShowCompletionBanner(void)
 {
-    u16 temp;
+    s16 temp;
     switch(gCompletionBannerPhase)
     {
         case 0:
@@ -248,9 +248,7 @@ void HighScore_ShowCompletionBanner(void)
         case 1:
             gCompletionBannerY--;
 
-            // TODO: FAKEMATCH - Seth
-            temp = gHighScoreScreenState.flashDuration;
-            if((gHighScoreScreenState.flashDuration & 3) == 0)
+            if(gHighScoreScreenState.flashDuration % 4 == 0)
             {
                 gCompletionBannerSpriteGroup++;
                 if(gCompletionBannerSpriteGroup > SG_HIGH_SCORE_COMPLETION_BANNER_LOOP_END)
