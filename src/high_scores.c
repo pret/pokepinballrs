@@ -235,7 +235,6 @@ void InitHighScoreData(void)
 
 void HighScore_ShowCompletionBanner(void)
 {
-    s16 temp;
     switch(gCompletionBannerPhase)
     {
         case 0:
