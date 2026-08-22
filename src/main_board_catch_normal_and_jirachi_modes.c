@@ -25,7 +25,7 @@ extern const s16 gCatchMonRevealFrameData[8][2];
 extern const struct Vector16 gJirachiWaypoints[];
 extern const u16 gJirachiStarFrameIndices[][10];
 
-extern const Palette *gMonIconPalettes[];
+extern const Palette *gCatchMonPaletteGroups[];
 extern const u16 gJirachiFloatOamFramesets[68][3][3];
 extern const u16 gCatchMonRevealOamFramesets[14][18];
 extern const u8 (*gCatchSpriteGfxPtrs[])[0x480];
@@ -580,7 +580,7 @@ void LoadCatchSpriteGraphics(void)
     for (i = 0; i < 3; i++)
     {
         gfx[i] = gCatchSpriteGfxPtrs[catchIndex / 5][(i + (catchIndex % 5) * 3)];
-        pal[i] = gMonIconPalettes[catchIndex / 5][i * 5 + catchIndex % 5];
+        pal[i] = gCatchMonPaletteGroups[catchIndex / 5][i * 5 + catchIndex % 5];
     }
 
     for (i = 0; i < 3; i++)
@@ -589,7 +589,7 @@ void LoadCatchSpriteGraphics(void)
         DmaCopy16(3, pal[i], gCatchSpritePalettes[i], PLTT_SLOT_SIZE);
     }
 
-    DmaCopy16(3, gMonIconPalettes[0][15], gCatchSpritePalettes[3], PLTT_SLOT_SIZE);
+    DmaCopy16(3, gCatchMonPaletteGroups[0][15], gCatchSpritePalettes[3], PLTT_SLOT_SIZE);
 }
 
 void LoadMonFieldSpriteGraphics(void)

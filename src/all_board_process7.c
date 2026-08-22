@@ -78,7 +78,7 @@ void MainBoardProcess_7B_12524(void)
             oamData->priority = currentBallState->oamPriority;
 
         r8 = r8; // this fools the compiler into thinking r8 holds something that could need sign extending/truncation
-        DmaCopy16(3, gBallRotationTileGraphics[r8 + gCurrentPinballGame->ballUpgradeType * 17], (void *)0x6010400, 0x80);
+        DmaCopy16(3, gBallRotationTileGraphics[r8 + gCurrentPinballGame->ballUpgradeType * 17], (void *)OBJ_VRAM0 + 0x400, 0x80);
 
         if (spriteGroup->baseY > 200)
             spriteGroup->baseY = 200;
@@ -119,7 +119,7 @@ void MainBoardProcess_7B_12524(void)
         else
             oamData->priority = currentBallState->oamPriority;
 
-        DmaCopy16(3, gBallRotationTileGraphics[r8 + gCurrentPinballGame->ballUpgradeType * 17], (void *)0x6010400, 0x80);
+        DmaCopy16(3, gBallRotationTileGraphics[r8 + gCurrentPinballGame->ballUpgradeType * 17], (void *)OBJ_VRAM0 + 0x400, 0x80);
 
         if (spriteGroup->baseY > 200)
             spriteGroup->baseY = 200;

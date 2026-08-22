@@ -886,6 +886,7 @@ void UpdateKyogreFieldEntities(void)
             {
                 int a; // force addition of 8 instead of offsetting the global constant
                 DmaCopy16(3, gBall_Pals[a = gCurrentPinballGame->ballUpgradeType + 8], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+
             }
             break;
         case KYOGRE_FREEZE_PHASE_CRACKING_HIT_SETUP:
