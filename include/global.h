@@ -978,7 +978,7 @@ extern struct PinballGame gIdleBoardGameState2;
 extern struct PinballGame gIdleBoardGameState3;
 extern struct PinballGame gIdleBoardGameState1;
 extern s32 gBonusStageObjPal[64];
-extern s32 gDusclopsAnimPalettes[0x3E0];
+extern s32 gDusclopsAnimPalettes[];
 extern u16 gKecleonUprightCollisionMap[0x1600];
 extern u16 gKecleonKnockedDownCollisionMap[0x1600];
 extern u16 gKyogreForm1CollisionMap[];
