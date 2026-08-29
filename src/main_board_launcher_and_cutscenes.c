@@ -371,9 +371,9 @@ void RunEvolutionCutscene(void)
             {
                 for (i = 0; i < 16; i++)
                 {
-                    gPaletteFadeRGBCache[i][0] = gCurrentPinballGame->pauseObjPalette[13][i] & 0x1F;
-                    gPaletteFadeRGBCache[i][1] = (gCurrentPinballGame->pauseObjPalette[13][i] & 0x3E0) >> 5;
-                    gPaletteFadeRGBCache[i][2] = (gCurrentPinballGame->pauseObjPalette[13][i] & 0x7C00) >> 10;
+                    gPaletteFadeRGBCache[i][0] = RGB5_GET_R(gCurrentPinballGame->pauseObjPalette[13][i]);
+                    gPaletteFadeRGBCache[i][1] = RGB5_GET_G(gCurrentPinballGame->pauseObjPalette[13][i]);
+                    gPaletteFadeRGBCache[i][2] = RGB5_GET_B(gCurrentPinballGame->pauseObjPalette[13][i]);
                 }
             }
             else
@@ -385,7 +385,7 @@ void RunEvolutionCutscene(void)
                     sp210[0] = gPaletteFadeRGBCache[i][0] + ((0x1F - gPaletteFadeRGBCache[i][0]) * var0) / 30;
                     sp210[1] = gPaletteFadeRGBCache[i][1] + ((0x1F - gPaletteFadeRGBCache[i][1]) * var0) / 30;
                     sp210[2] = gPaletteFadeRGBCache[i][2] + ((0x1F - gPaletteFadeRGBCache[i][2]) * var0) / 30;
-                    destColor[i] = sp210[0] | (sp210[1] << 5) | (sp210[2] << 0xA);
+                    destColor[i] = RGB5_R(sp210[0]) | RGB5_G(sp210[1]) | RGB5_B(sp210[2]);
                 }
 
                 DmaCopy16(3, destColor, (void *)0x050003A0, 0x20);

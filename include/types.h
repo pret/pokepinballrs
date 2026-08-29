@@ -83,4 +83,13 @@ struct PokemonSpecies {
     /*0x15*/ u8 evolutionTarget; // Uses the standard index numbers; e.g. Treecko is 0x00 (SPECIES_TREECKO)
 };
 
+
+#define RGB5_GET_R(color) ((color) & 0x1F)
+#define RGB5_GET_G(color) (((color) & 0x3E0) >> 5)
+#define RGB5_GET_B(color) (((color) & 0x7C00) >> 10)
+
+#define RGB5_R(r) ((r))
+#define RGB5_G(g) ((g) << 5)
+#define RGB5_B(b) ((b) << 10)
+
 #endif  // GUARD_TYPES_H
