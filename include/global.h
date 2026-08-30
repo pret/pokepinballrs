@@ -64,8 +64,9 @@
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) >= (b) ? (a) : (b))
 
-// TODO: define RGB(r, g, b) macro
-#define RGB_WHITE 0x7FFF
+#define RGB5(r,g,b) (r | g << 5 | b << 10)
+#define RGB_WHITE RGB5(31,31,31)
+#define RGB_BLACK RGB5(0,0,0)
 
 // Macros for checking the joypad
 #define TEST_BUTTON(field, button) ((field) & (button))
@@ -887,7 +888,7 @@ struct PinballGame
     /*0x1114*/volatile u16 savedBlendBrightness;
     /*0x1116*/u16 savedScoreOverlayActive;
     /*0x1118*/u16 savedVCount;
-    /*0x111A*/u16 pauseObjPalette[OBJ_PLTT_SIZE / 0x20][0x10];
+    /*0x111A*/Palette pauseObjPalette[PALETTES_PER_BANK];
     /*0x131A*/u8 filler131A[0x2];
     /*0x131C*/u32 pauseAnimTimer; //Time since paused
     /*0x1320*/s16 savedAnimationTimer;
@@ -977,8 +978,9 @@ extern struct PinballGame gIdleBoardGameState0;
 extern struct PinballGame gIdleBoardGameState2;
 extern struct PinballGame gIdleBoardGameState3;
 extern struct PinballGame gIdleBoardGameState1;
-extern s32 gBonusStageObjPal[64];
-extern s32 gDusclopsAnimPalettes[];
+extern const Palette gBonusStageObjPal[];
+extern const Palette gDusclopsAnimPalettes[];
+extern const u8 gGroudonLavaPaletteCycleData[];
 extern u16 gKecleonUprightCollisionMap[0x1600];
 extern u16 gKecleonKnockedDownCollisionMap[0x1600];
 extern u16 gKyogreForm1CollisionMap[];

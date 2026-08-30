@@ -259,7 +259,7 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) * 0x20) + i] = 0xC100;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, (void *)0x06002000, 0x800);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
                 }
 
                 if (gCurrentPinballGame->stageTimer >= 240 && gCurrentPinballGame->stageTimer < 270)
@@ -271,7 +271,7 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) << 5) + i] = 0x1FF;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, (void *)0x06002000, 0x800);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
                     if (gCurrentPinballGame->stageTimer == 269)
                     {
                         gMain.scoreOverlayActive = FALSE;

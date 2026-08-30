@@ -117,7 +117,7 @@ void DebugMenu_RenderAndHandleInput(void)
     for (i = 0x340; i < 0x380; i++)
         gBG0TilemapBuffer[i] += 0xC100;
 
-    DmaCopy16(3, gBG0TilemapBuffer, (void *)0x06002000, 0x800);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
     if (JOY_HELD(A_BUTTON))
         ClearDebugTextDisplay();
 }

@@ -1713,7 +1713,7 @@ void UpdateEggMode(void)
         group->baseX = gCurrentPinballGame->walkMonXPos / 10 - gCurrentPinballGame->cameraXOffset;
         group->baseY = gCurrentPinballGame->walkMonYPos / 10 - gCurrentPinballGame->cameraYOffset;
         DmaCopy16(3, gCatchSpriteFrameBuffer[var0], (void *)0x060112A0, 0x120);
-        DmaCopy16(3, gCatchSpritePaletteBuffer, (void *)0x050003A0, 0x20);
+        DmaCopy16(3, gCatchSpritePaletteBuffer, OBJ_PLTT_SLOT(13), PLTT_SLOT_SIZE);
         for (i = 0; i < 4; i++)
         {
             oamSimple = &group->oam[i];

@@ -390,7 +390,7 @@ void GivePrize(void)
 
             gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), 0x20);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
         }
         break;
     case PRIZE_BALL_UPGRADE_TO_MASTER:
@@ -399,7 +399,7 @@ void GivePrize(void)
             gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
             gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             MPlayStart(&gMPlayInfo_SE1, &se_ball_upgrade);
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), 0x20);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
         }
         break;
     case PRIZE_10_COINS:
@@ -1188,7 +1188,7 @@ void RunMonCaptureSequence(void)
                 }
             }
 
-            DmaCopy16(3, &gBG0TilemapBuffer, 0x06002000, 0x800);
+            DmaCopy16(3, &gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
         }
 
         if (gCurrentPinballGame->captureSequenceFrame >= 240 && gCurrentPinballGame->captureSequenceFrame <= 269)
@@ -1203,7 +1203,7 @@ void RunMonCaptureSequence(void)
                 }
             }
 
-            DmaCopy16(3, &gBG0TilemapBuffer, 0x06002000, 0x800);
+            DmaCopy16(3, &gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
 
             if (gCurrentPinballGame->captureSequenceFrame == 269)
             {

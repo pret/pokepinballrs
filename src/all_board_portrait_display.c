@@ -141,13 +141,13 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
             ))
         {
             DmaCopy16(3, &gPortraitAnim_Pals[index], tempPal, PLTT_SLOT_SIZE);
-            for (i = 0; i < 16; i++)
+            for (i = 0; i < COLORS_PER_PALETTE; i++)
             {
                 rgb[0] = RGB5_GET_R(tempPal[i]) * 2 / 3;
                 rgb[1] = RGB5_GET_G(tempPal[i]) * 2 / 3;
                 rgb[2] = RGB5_GET_B(tempPal[i]) * 2 / 3;
 
-                tempPal[i] = RGB5_R(rgb[0]) | RGB5_G(rgb[1]) | RGB5_B(rgb[2]);
+                tempPal[i] = RGB5(rgb[0],rgb[1],rgb[2]);
             }
 
             DmaCopy16(3, tempPal, OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);

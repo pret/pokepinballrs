@@ -113,7 +113,7 @@ void KecleonBoardProcess_3A_35860(void)
     UpdateKecleonScopeItem();
     UpdateKecleonScopeVision();
     RenderKecleonBoardElements();
-    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), 0x20);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), PLTT_SLOT_SIZE);
 }
 
 void KecleonBoardProcess_3B_35AA4(void)
@@ -1090,7 +1090,7 @@ void UpdateKecleonScopeVision(void)
         }
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], (void *)0x06001000, 0x500);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_CHAR_SCREEN_ADDR(0,2), 0x500);
 }
 
 void RenderKecleonBoardElements(void)

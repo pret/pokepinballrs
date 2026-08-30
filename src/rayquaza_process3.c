@@ -132,7 +132,7 @@ void RayquazaBoardProcess_3A_3E79C(void)
     DmaCopy16(3, gRayquazaSpriteSheet, (void *)0x06011620, 0x860);
     UpdateRayquazaEntityLogic();
     RenderRayquazaSprites();
-    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), 0x20);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), PLTT_SLOT_SIZE);
 }
 
 void RayquazaBoardProcess_3B_3EB2C(void)

@@ -8585,7 +8585,7 @@ gBonusFieldSpriteGroups:: @ 0x086B04AC
     .4byte 0,0,0,0,0,0,0,0,0,0
     .4byte 0,0,0,0,0,0,0,0,0,0
 
-BoardProcPairs_086B077C:: @ 0x086B077C
+gBoardProcPairs_086B077C:: @ 0x086B077C
 	.4byte AllBoardProcess_1A_47100, AllBoardProcess_1B_47160
 	.4byte AllBoardProcess_2A_4D6C4, MainBoardProcess_2B_4D960
 	.4byte AllBoardProcess_2A_4D6C4, BonusBoardProcess_2B_4DBFC

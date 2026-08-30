@@ -135,7 +135,7 @@ void RenderBannerSlideAnimation(void)
             else
             {
                 gCurrentPinballGame->activePortraitType = 4;
-                DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], (void *)OBJ_TILE_ADDR(TILE_INDEX(0, 22, 32)), 0x25E0);
+                DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(0, 22, 32)), 0x25E0);
                 AnimateBannerSlide();
                 if (gCurrentPinballGame->bannerDisplayDuration > 0)
                 {
@@ -163,7 +163,7 @@ void RenderBannerSlideAnimation(void)
         {
             gCurrentPinballGame->activePortraitType = 4;
             // i = framecount ???
-            DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), (void *)OBJ_TILE_ADDR(TILE_INDEX(0, 22, 32)), 0x21C0);
+            DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_TILE_ADDR(TILE_INDEX(0, 22, 32)), 0x21C0);
             if (gCurrentPinballGame->bannerDisplayDuration > 0)
             {
                 gCurrentPinballGame->bannerDisplayDuration--;

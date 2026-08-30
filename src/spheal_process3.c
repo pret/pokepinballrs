@@ -128,13 +128,13 @@ void SphealBoardProcess_3A_42E48(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[0x400 + i] = 0x200;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], (void *)0x06001000, 0x1000);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_CHAR_SCREEN_ADDR(0,2), 2*BG_SCREEN_SIZE);
 
     gMain.blendControl = 0x1C42;
     gMain.blendAlpha = 0xC04;
     for (i = 0; i < 0x140; i++)
     {
-        u16 var0 = i - ((i / 0x20) * 0x20) - 2;
+        u16 var0 = i % 32 - 2;
         if (var0 < 28)
            gBG0TilemapBuffer[0x800 + i] = 0x9000;
     }
@@ -143,7 +143,7 @@ void SphealBoardProcess_3A_42E48(void)
     DmaCopy16(3, &gBG0TilemapBuffer[0x800], (void *)0x06001140, 0x280);
     DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
     m4aSongNumStart(MUS_BONUS_FIELD_SPHEAL);
-    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), 0x20);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), PLTT_SLOT_SIZE);
 }
 
 void SphealBoardProcess_3B_43228(void)
@@ -1472,7 +1472,7 @@ void AnimateSphealBackground(void)
     for (i = 0x100; i < 0x400; i++)
         gBG0TilemapBuffer[0x800 + i] = gSphealWaterBackgroundTilemap[i] + var0 * 4;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], (void *)0x06000000, 0x800);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_CHAR_SCREEN_ADDR(0,0), BG_SCREEN_SIZE);
 }
 
 void UpdateSphealResultsScreen(void)

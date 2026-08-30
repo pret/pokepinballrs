@@ -232,7 +232,7 @@ void IntroScene1_00_LoadTitleLettersAndTorchicScene(void)
 
     DmaCopy16(3, gIntroScene1TorchicText_Gfx, BG_CHAR_ADDR(0), 0x5800);
     DmaCopy16(3, gIntroScene1TorchicBall_Gfx, gIntroTileBuffer, 0x6800);
-    DarkenPalette(gIntroScene1TorchicSprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, 0x20);
+    DarkenPalette(gIntroScene1TorchicSprites_Pals, (void*)BG_PLTT, BG_PLTT_SIZE, PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene1TorchicSprites_Gfx, BG_CHAR_ADDR(4), 0x8000);
     DmaCopy16(3, gIntroScene1TorchicSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
     IntroScene1Torchic_InitVars();
@@ -245,7 +245,7 @@ void IntroScene1_00_LoadTitleLettersAndTorchicScene(void)
     gMain.bgOffsets[3].xOffset = gIntroBGParams[2].posX;
     gMain.bgOffsets[3].yOffset = gIntroBGParams[2].posY;
     EnableVBlankInterrupts();
-    FadeInWithCustomPalettes((void*)BG_PLTT, (u8 * )gIntroScene1TorchicSprites_Pals, NULL);
+    FadeInWithCustomPalettes((void*)BG_PLTT, gIntroScene1TorchicSprites_Pals, NULL);
     DmaCopy16(3, gIntroScene1TorchicSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, 0, OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
     gIntroSceneIndex++;
@@ -359,7 +359,7 @@ void IntroScene1Torchic_04_LargeSparkle(void)
         if (++gIntroSpriteEntities[0].frameTimer > 1)
         {
             gIntroSpriteEntities[0].visible = FALSE;
-            DarkenPalette(&gIntroScene1TorchicSprites_Pals[14], (void*)BG_PLTT_SLOT(7), 0x20, 0);
+            DarkenPalette(&gIntroScene1TorchicSprites_Pals[14], BG_PLTT_SLOT(7), 0x20, 0);
             m4aSongNumStart(MUS_OPENING);
             gIntroSceneIndex++;
         }
@@ -2236,14 +2236,14 @@ void IntroScene9BallFlight_62_MoveBallSkyFadeWhite(void)
             gIntroObjWhiteFlash = 32;
     }
 
-    BrightenPalette(gIntroScene9BallFlight_Pal, (u8 *)OBJ_PLTT_SLOT(0), 0x20, gIntroObjWhiteFlash);
+    BrightenPalette(gIntroScene9BallFlight_Pal, OBJ_PLTT_SLOT(0), 0x20, gIntroObjWhiteFlash);
     if (gIntroFrameCounter > 136)
     {
         gIntroBGWhiteFlash += 2;
         if (gIntroBGWhiteFlash > 32)
             gIntroBGWhiteFlash = 0x20;
 
-        BrightenPalette(gIntroScene9BallFlight_Pal, (u8 *)BG_PLTT_SLOT(0), 0x40, gIntroBGWhiteFlash);
+        BrightenPalette(gIntroScene9BallFlight_Pal, BG_PLTT_SLOT(0), 0x40, gIntroBGWhiteFlash);
     }
 
     gIntroBGParams[0].posX -= 0x24;

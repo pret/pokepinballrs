@@ -54,22 +54,22 @@ void LoadTitlescreenGraphics(void)
     REG_DISPCNT |= DISPCNT_BG1_ON;
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gTitlescreenBg_Gfx, (void *)BG_CHAR_ADDR(1), 0xA000);
-    DmaCopy16(3, gTitlescreenBg_Pals, (void *)BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gTitlescreenBgTilemap, (void *)BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gTitlescreenBg_Gfx, BG_CHAR_ADDR(1), 0xA000);
+    DmaCopy16(3, gTitlescreenBg_Pals, BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, gTitlescreenBgTilemap, BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
 
     SaveFile_ReadSavedGamePresent();
     if (gMain.hasSavedGame == TRUE)
     {
-        DmaCopy16(3, gTitlescreenSprites_Pals, (void *)OBJ_PLTT, 0xA0);
-        DmaCopy16(3, gTitlescreenSpritesSavedGame_Gfx, (void *)BG_CHAR_ADDR(4), 0x7000);
+        DmaCopy16(3, gTitlescreenSprites_Pals, OBJ_PLTT, 5*PLTT_SLOT_SIZE);
+        DmaCopy16(3, gTitlescreenSpritesSavedGame_Gfx, BG_CHAR_ADDR(4), 0x7000);
         DmaCopy16(3, gGBAButtonIcons_Pals, OBJ_PLTT_SLOT(5), 2*PLTT_SLOT_SIZE);
         DmaCopy16(3, gOptionsSprites_Gfx, (void *)OBJ_VRAM0 + 0x7000, 0x400);
     }
     else
     {
-        DmaCopy16(3, gTitlescreenSprites_Pals, (void *)OBJ_PLTT, 0xA0);
-        DmaCopy16(3, gTitlescreenSpritesNoSavedGame_Gfx, (void *)BG_CHAR_ADDR(4), 0x7000);
+        DmaCopy16(3, gTitlescreenSprites_Pals, OBJ_PLTT, 5*PLTT_SLOT_SIZE);
+        DmaCopy16(3, gTitlescreenSpritesNoSavedGame_Gfx, BG_CHAR_ADDR(4), 0x7000);
         DmaCopy16(3, gGBAButtonIcons_Pals, OBJ_PLTT_SLOT(5), 2*PLTT_SLOT_SIZE);
         DmaCopy16(3, gOptionsSprites_Gfx, (void *)OBJ_VRAM0 + 0x7000, 0x400);
     }

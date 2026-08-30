@@ -23,7 +23,7 @@ extern struct SongHeader se_kyogre_dive;
 extern struct SongHeader se_kyogre_spawn_whirlpool;
 extern struct SongHeader se_kyogre_freeze_ring;
 extern struct SongHeader se_kyogre_departs;
-extern const u8 *gKyogreFadeInPaletteProgression[];
+extern const Palette *gKyogreFadeInPaletteProgression[];
 extern const u16 gKyogreAnimFramesetTable[][3];
 extern const s16 gKyogreRisingPaletteCycleIndices[];
 extern const s16 gKyogreSplashAnimIndices[];
@@ -112,8 +112,8 @@ void KyogreBoardProcess_3A_383E4(void)
     AnimateKyogreBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_KYOGRE);
     DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
-    DmaCopy16(3, &gKyogreFadeInPaletteProgression[0][0], (void *)0x05000000, 0x100);
-    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), 0x20);
+    DmaCopy16(3, gKyogreFadeInPaletteProgression[0][0], BG_PLTT, 8*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), PLTT_SLOT_SIZE);
 }
 
 void KyogreBoardProcess_3B_3869C(void)
@@ -135,8 +135,8 @@ void KyogreBoardProcess_3B_3869C(void)
                 gCurrentPinballGame->bossLightFadeInCounter = 5;
 
             gCurrentPinballGame->stageTimer++;
-            DmaCopy16(3, &gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][0], (void *)0x05000000, 0x60);
-            DmaCopy16(3, &gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][0x80], (void *)0x05000080, 0x80);
+            DmaCopy16(3, gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][0], PLTT, 3*PLTT_SLOT_SIZE);
+            DmaCopy16(3, gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][4], BG_PLTT_SLOT(4), 4*PLTT_SLOT_SIZE);
             if (gCurrentPinballGame->cameraYAdjust >= -32)
                 gCurrentPinballGame->flippersDisabled = FALSE;
         } else
@@ -311,7 +311,7 @@ void UpdateKyogreEntityLogic(void)
                 gCurrentPinballGame->bossNextAttackState = KYOGRE_ENTITY_STATE_SHOCKWAVE;
                 gCurrentPinballGame->bossMovementPhase = 0;
                 gCurrentPinballGame->bossRoarTimer = 60;
-                DmaCopy16(3, &gKyogreWaterAnimFrame_Pals[5], (void *)0x050003E0, 0x20);
+                DmaCopy16(3, &gKyogreWaterAnimFrame_Pals[5], BG_PLTT_SLOT(31), PLTT_SLOT_SIZE);
             }
 
             if (gCurrentPinballGame->bossFramesetIndex == 32)
@@ -1359,9 +1359,9 @@ void AnimateKyogreBackground(void)
     for (i = 0; i < 0x400; i++)
         gBG0TilemapBuffer[0x800 + i] = gKyogreWaterBackgroundTilemap[i] + index * 4;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], (void *)0x06000000, 0x800);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     index = gKyogreWaterPaletteSegmentCycle[(gMain.systemFrameCount % 96) / 24];
-    DmaCopy16(3, &gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][index * 0x20], (void *)0x05000060, 0x20);
+    DmaCopy16(3, gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][index], BG_PLTT_SLOT(3), PLTT_SLOT_SIZE);
 
     for (j = 0; j < 4; j++)
     {
