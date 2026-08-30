@@ -50,6 +50,7 @@ void PauseGame(void)
     {
         for (j = 0; j < COLORS_PER_PALETTE; j++)
         {
+            //Palette 9, color 12 is used for the white text in the pause screen
             if (i != 9 || j != 12)
             {
                 rgb[0] = (RGB5_GET_R(gCurrentPinballGame->pauseObjPalette[i][j]) * 2) / 5;

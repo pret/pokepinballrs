@@ -1816,7 +1816,7 @@ gIntroScene7Parade_WailmerQuadOffsets:: @ 0x086A7B7C
     .2byte -64,   0
     .2byte 0, 0
 
-gIntroWailmerStarLarrgeSpriteSet:: @ 0x086A7B8C
+gIntroWailmerStarLargeSpriteSet:: @ 0x086A7B8C
 .2byte 4
     packed_sprite_oaml x=-0x18, y=-0x18, spriteSize=SPRITE_SIZE_32x32, tileNum=0x98, paletteNum=0x9
     packed_sprite_oaml x=0x8, y=-0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x9C, paletteNum=0x9
@@ -1873,11 +1873,11 @@ gIntroScene8WailmerLaunch_SpriteSets:: @ 0x086A7C24
     .4byte gIntroWailmerStarMediumFlippedSpriteSet
     .4byte gIntroWailmerStarMediumSpriteSet
 
-    .4byte gIntroWailmerStarLarrgeSpriteSet
+    .4byte gIntroWailmerStarLargeSpriteSet
     .4byte gIntroWailmerStarLarrgeFlippedSpriteSet
-    .4byte gIntroWailmerStarLarrgeSpriteSet
+    .4byte gIntroWailmerStarLargeSpriteSet
     .4byte gIntroWailmerStarLarrgeFlippedSpriteSet
-    .4byte gIntroWailmerStarLarrgeSpriteSet
+    .4byte gIntroWailmerStarLargeSpriteSet
 
 gIntroScene8WailmerLaunch_DebrisMovement:: @ 0x086A7C68
 	.byte 0x05, 0x02, 0x03, 0x01, 0x06, 0x01

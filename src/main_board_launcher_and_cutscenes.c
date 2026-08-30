@@ -674,7 +674,7 @@ void RunEvolutionCutscene(void)
                     gCurrentPinballGame->revealFramesetIndex = 10;
                     gCurrentPinballGame->stageTimer = 0;
                     gCurrentPinballGame->boardSubState++;
-                    DmaCopy16(3, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT, 12*PLTT_SLOT_SIZE);
+                    DmaCopy16(3, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT_SLOT(0), 12*PLTT_SLOT_SIZE);
                     gCurrentPinballGame->activePortraitType = 0;
                 }
             }
