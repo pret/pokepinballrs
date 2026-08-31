@@ -2112,79 +2112,79 @@ gPokemonCryToneBank2:: @ 0x08533960
 	voice_directsound_compressed gDirectSound_Cry315_Gulpin
 	voice_directsound_compressed gDirectSound_Cry316_Swalot
 	voice_directsound_compressed gDirectSound_Cry317_Numel
-	voice_directsound_compressed gDirectSound_086364D0
-	voice_directsound_compressed gDirectSound_08637BF0
-	voice_directsound_compressed gDirectSound_0863852C
-	voice_directsound_compressed gDirectSound_08639628
-	voice_directsound_compressed gDirectSound_0863A22C
-	voice_directsound_compressed gDirectSound_0863BAE4
-	voice_directsound_compressed gDirectSound_0863C224
-	voice_directsound_compressed gDirectSound_0863CEC4
-	voice_directsound_compressed gDirectSound_0863D8E8
-	voice_directsound_compressed gDirectSound_0863E6EC
-	voice_directsound_compressed gDirectSound_086400F4
-	voice_directsound_compressed gDirectSound_086409E4
-	voice_directsound_compressed gDirectSound_08642094
-	voice_directsound_compressed gDirectSound_08642D18
-	voice_directsound_compressed gDirectSound_08644078
-	voice_directsound_compressed gDirectSound_08645874
-	voice_directsound_compressed gDirectSound_086468A0
-	voice_directsound_compressed gDirectSound_08647074
-	voice_directsound_compressed gDirectSound_086497B8
-	voice_directsound_compressed gDirectSound_0864A234
-	voice_directsound_compressed gDirectSound_0864AA54
-	voice_directsound_compressed gDirectSound_0864BAD8
-	voice_directsound_compressed gDirectSound_0864C08C
-	voice_directsound_compressed gDirectSound_0864CC64
-	voice_directsound_compressed gDirectSound_0864F0B0
-	voice_directsound_compressed gDirectSound_08650300
-	voice_directsound_compressed gDirectSound_086512E8
-	voice_directsound_compressed gDirectSound_08652954
-	voice_directsound_compressed gDirectSound_086532FC
-	voice_directsound_compressed gDirectSound_0865502C
-	voice_directsound_compressed gDirectSound_08655BE4
-	voice_directsound_compressed gDirectSound_086572B8
-	voice_directsound_compressed gDirectSound_08657C58
-	voice_directsound_compressed gDirectSound_08658F2C
-	voice_directsound_compressed gDirectSound_0865B6A4
-	voice_directsound_compressed gDirectSound_0865BE78
-	voice_directsound_compressed gDirectSound_0865D280
-	voice_directsound_compressed gDirectSound_0865F25C
-	voice_directsound_compressed gDirectSound_0866125C
-	voice_directsound_compressed gDirectSound_08662960
-	voice_directsound_compressed gDirectSound_086635F8
-	voice_directsound_compressed gDirectSound_08664180
-	voice_directsound_compressed gDirectSound_08665298
-	voice_directsound_compressed gDirectSound_08665BE0
-	voice_directsound_compressed gDirectSound_08666F6C
-	voice_directsound_compressed gDirectSound_08667D24
-	voice_directsound_compressed gDirectSound_086688C8
-	voice_directsound_compressed gDirectSound_08669448
-	voice_directsound_compressed gDirectSound_08669D74
-	voice_directsound_compressed gDirectSound_0866B24C
-	voice_directsound_compressed gDirectSound_0866CBF0
-	voice_directsound_compressed gDirectSound_0866E020
-	voice_directsound_compressed gDirectSound_0866E4FC
-	voice_directsound_compressed gDirectSound_08670A08
-	voice_directsound_compressed gDirectSound_08672DC0
-	voice_directsound_compressed gDirectSound_08674AEC
-	voice_directsound_compressed gDirectSound_08676408
-	voice_directsound_compressed gDirectSound_086770C8
-	voice_directsound_compressed gDirectSound_086779A0
-	voice_directsound_compressed gDirectSound_0867983C
-	voice_directsound_compressed gDirectSound_0867B900
-	voice_directsound_compressed gDirectSound_0867D560
-	voice_directsound_compressed gDirectSound_0867E0F0
-	voice_directsound_compressed gDirectSound_0867FD38
-	voice_directsound_compressed gDirectSound_08680A60
-	voice_directsound_compressed gDirectSound_08683470
-	voice_directsound_compressed gDirectSound_08683C94
+	voice_directsound_compressed gDirectSound_Cry318_Camerupt
+	voice_directsound_compressed gDirectSound_Cry319_Barboach
+	voice_directsound_compressed gDirectSound_Cry320_Whiscash
+	voice_directsound_compressed gDirectSound_Cry321_Corphish
+	voice_directsound_compressed gDirectSound_Cry322_Crawdaunt
+	voice_directsound_compressed gDirectSound_Cry323_Spoink
+	voice_directsound_compressed gDirectSound_Cry324_Grumpig
+	voice_directsound_compressed gDirectSound_Cry325_Trapinch
+	voice_directsound_compressed gDirectSound_Cry326_Vibrava
+	voice_directsound_compressed gDirectSound_Cry327_Flygon
+	voice_directsound_compressed gDirectSound_Cry328_Cacnea
+	voice_directsound_compressed gDirectSound_Cry329_Cacturne
+	voice_directsound_compressed gDirectSound_Cry330_Baltoy
+	voice_directsound_compressed gDirectSound_Cry331_Claydol
+	voice_directsound_compressed gDirectSound_Cry332_Lunatone
+	voice_directsound_compressed gDirectSound_Cry333_Solrock
+	voice_directsound_compressed gDirectSound_Cry334_Feebas
+	voice_directsound_compressed gDirectSound_Cry335_Milotic
+	voice_directsound_compressed gDirectSound_Cry336_Absol
+	voice_directsound_compressed gDirectSound_Cry337_Meditite
+	voice_directsound_compressed gDirectSound_Cry338_Medicham
+	voice_directsound_compressed gDirectSound_Cry339_Spheal
+	voice_directsound_compressed gDirectSound_Cry340_Sealeo
+	voice_directsound_compressed gDirectSound_Cry341_Walrein
+	voice_directsound_compressed gDirectSound_Cry342_Clamperl
+	voice_directsound_compressed gDirectSound_Cry343_Huntail
+	voice_directsound_compressed gDirectSound_Cry344_Gorebyss
+	voice_directsound_compressed gDirectSound_Cry345_Lileep
+	voice_directsound_compressed gDirectSound_Cry346_Cradily
+	voice_directsound_compressed gDirectSound_Cry347_Anorith
+	voice_directsound_compressed gDirectSound_Cry348_Armaldo
+	voice_directsound_compressed gDirectSound_Cry349_Beldum
+	voice_directsound_compressed gDirectSound_Cry350_Metang
+	voice_directsound_compressed gDirectSound_Cry351_Metagross
+	voice_directsound_compressed gDirectSound_Cry352_Bagon
+	voice_directsound_compressed gDirectSound_Cry353_Shelgon
+	voice_directsound_compressed gDirectSound_Cry354_Regirock
+	voice_directsound_compressed gDirectSound_Cry355_Regice
+	voice_directsound_compressed gDirectSound_Cry356_Registeel
+	voice_directsound_compressed gDirectSound_Cry357_Castform
+	voice_directsound_compressed gDirectSound_Cry358_Volbeat
+	voice_directsound_compressed gDirectSound_Cry359_Illumise
+	voice_directsound_compressed gDirectSound_Cry360_Poochyena
+	voice_directsound_compressed gDirectSound_Cry361_Mightyena
+	voice_directsound_compressed gDirectSound_Cry362_Dusclops
+	voice_directsound_compressed gDirectSound_Cry363_Sableye
+	voice_directsound_compressed gDirectSound_Cry364_Mawile
+	voice_directsound_compressed gDirectSound_Cry365_Aron
+	voice_directsound_compressed gDirectSound_Cry366_Lairon
+	voice_directsound_compressed gDirectSound_Cry367_Aggron
+	voice_directsound_compressed gDirectSound_Cry368_Relicanth
+	voice_directsound_compressed gDirectSound_Cry369_Luvdisc
+	voice_directsound_compressed gDirectSound_Cry370_Groudon
+	voice_directsound_compressed gDirectSound_Cry371_Kyogre
+	voice_directsound_compressed gDirectSound_Cry372_Rayquaza
+	voice_directsound_compressed gDirectSound_Cry373_Salamence
+	voice_directsound_compressed gDirectSound_Cry374_Breloom
+	voice_directsound_compressed gDirectSound_Cry375_Shroomish
+	voice_directsound_compressed gDirectSound_Cry376_Linoone
+	voice_directsound_compressed gDirectSound_Cry377_Tropius
+	voice_directsound_compressed gDirectSound_Cry378_Wailmer
+	voice_directsound_compressed gDirectSound_Cry379_Zigzagoon
+	voice_directsound_compressed gDirectSound_Cry380_Exploud
+	voice_directsound_compressed gDirectSound_Cry381_Loured
+	voice_directsound_compressed gDirectSound_Cry382_Wailord
+	voice_directsound_compressed gDirectSound_Cry383_Whismur
+	voice_directsound_compressed gDirectSound_Cry384_Snorunt
 
 gPokemonCryToneBank3:: @ 0x08533F60
-	voice_directsound_compressed gDirectSound_08684D9C
-	voice_directsound_compressed gDirectSound_08686394
-	voice_directsound_compressed gDirectSound_08687118
-	voice_directsound_compressed gDirectSound_086885EC
+	voice_directsound_compressed gDirectSound_Cry385_Latios
+	voice_directsound_compressed gDirectSound_Cry386_Jirachi
+	voice_directsound_compressed gDirectSound_Cry387_Deoxys
+	voice_directsound_compressed gDirectSound_Cry388_Chimecho
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -2374,77 +2374,77 @@ gPokemonCryToneBank3:: @ 0x08533F60
 	voice_directsound_compressed_reverse gDirectSound_Cry315_Gulpin
 	voice_directsound_compressed_reverse gDirectSound_Cry316_Swalot
 	voice_directsound_compressed_reverse gDirectSound_Cry317_Numel
-	voice_directsound_compressed_reverse gDirectSound_086364D0
-	voice_directsound_compressed_reverse gDirectSound_08637BF0
-	voice_directsound_compressed_reverse gDirectSound_0863852C
-	voice_directsound_compressed_reverse gDirectSound_08639628
-	voice_directsound_compressed_reverse gDirectSound_0863A22C
-	voice_directsound_compressed_reverse gDirectSound_0863BAE4
-	voice_directsound_compressed_reverse gDirectSound_0863C224
-	voice_directsound_compressed_reverse gDirectSound_0863CEC4
-	voice_directsound_compressed_reverse gDirectSound_0863D8E8
-	voice_directsound_compressed_reverse gDirectSound_0863E6EC
-	voice_directsound_compressed_reverse gDirectSound_086400F4
-	voice_directsound_compressed_reverse gDirectSound_086409E4
-	voice_directsound_compressed_reverse gDirectSound_08642094
-	voice_directsound_compressed_reverse gDirectSound_08642D18
-	voice_directsound_compressed_reverse gDirectSound_08644078
-	voice_directsound_compressed_reverse gDirectSound_08645874
-	voice_directsound_compressed_reverse gDirectSound_086468A0
-	voice_directsound_compressed_reverse gDirectSound_08647074
-	voice_directsound_compressed_reverse gDirectSound_086497B8
-	voice_directsound_compressed_reverse gDirectSound_0864A234
-	voice_directsound_compressed_reverse gDirectSound_0864AA54
-	voice_directsound_compressed_reverse gDirectSound_0864BAD8
-	voice_directsound_compressed_reverse gDirectSound_0864C08C
-	voice_directsound_compressed_reverse gDirectSound_0864CC64
-	voice_directsound_compressed_reverse gDirectSound_0864F0B0
-	voice_directsound_compressed_reverse gDirectSound_08650300
-	voice_directsound_compressed_reverse gDirectSound_086512E8
-	voice_directsound_compressed_reverse gDirectSound_08652954
-	voice_directsound_compressed_reverse gDirectSound_086532FC
-	voice_directsound_compressed_reverse gDirectSound_0865502C
-	voice_directsound_compressed_reverse gDirectSound_08655BE4
-	voice_directsound_compressed_reverse gDirectSound_086572B8
-	voice_directsound_compressed_reverse gDirectSound_08657C58
-	voice_directsound_compressed_reverse gDirectSound_08658F2C
-	voice_directsound_compressed_reverse gDirectSound_0865B6A4
-	voice_directsound_compressed_reverse gDirectSound_0865BE78
-	voice_directsound_compressed_reverse gDirectSound_0865D280
-	voice_directsound_compressed_reverse gDirectSound_0865F25C
-	voice_directsound_compressed_reverse gDirectSound_0866125C
-	voice_directsound_compressed_reverse gDirectSound_08662960
-	voice_directsound_compressed_reverse gDirectSound_086635F8
-	voice_directsound_compressed_reverse gDirectSound_08664180
-	voice_directsound_compressed_reverse gDirectSound_08665298
-	voice_directsound_compressed_reverse gDirectSound_08665BE0
-	voice_directsound_compressed_reverse gDirectSound_08666F6C
-	voice_directsound_compressed_reverse gDirectSound_08667D24
-	voice_directsound_compressed_reverse gDirectSound_086688C8
-	voice_directsound_compressed_reverse gDirectSound_08669448
-	voice_directsound_compressed_reverse gDirectSound_08669D74
-	voice_directsound_compressed_reverse gDirectSound_0866B24C
-	voice_directsound_compressed_reverse gDirectSound_0866CBF0
-	voice_directsound_compressed_reverse gDirectSound_0866E020
-	voice_directsound_compressed_reverse gDirectSound_0866E4FC
-	voice_directsound_compressed_reverse gDirectSound_08670A08
-	voice_directsound_compressed_reverse gDirectSound_08672DC0
-	voice_directsound_compressed_reverse gDirectSound_08674AEC
-	voice_directsound_compressed_reverse gDirectSound_08676408
-	voice_directsound_compressed_reverse gDirectSound_086770C8
-	voice_directsound_compressed_reverse gDirectSound_086779A0
-	voice_directsound_compressed_reverse gDirectSound_0867983C
-	voice_directsound_compressed_reverse gDirectSound_0867B900
-	voice_directsound_compressed_reverse gDirectSound_0867D560
-	voice_directsound_compressed_reverse gDirectSound_0867E0F0
-	voice_directsound_compressed_reverse gDirectSound_0867FD38
-	voice_directsound_compressed_reverse gDirectSound_08680A60
-	voice_directsound_compressed_reverse gDirectSound_08683470
-	voice_directsound_compressed_reverse gDirectSound_08683C94
-	voice_directsound_compressed_reverse gDirectSound_08684D9C
-	voice_directsound_compressed_reverse gDirectSound_08686394
-	voice_directsound_compressed_reverse gDirectSound_08687118
-	voice_directsound_compressed_reverse gDirectSound_086885EC
+	voice_directsound_compressed_reverse gDirectSound_Cry318_Camerupt
+	voice_directsound_compressed_reverse gDirectSound_Cry319_Barboach
+	voice_directsound_compressed_reverse gDirectSound_Cry320_Whiscash
+	voice_directsound_compressed_reverse gDirectSound_Cry321_Corphish
+	voice_directsound_compressed_reverse gDirectSound_Cry322_Crawdaunt
+	voice_directsound_compressed_reverse gDirectSound_Cry323_Spoink
+	voice_directsound_compressed_reverse gDirectSound_Cry324_Grumpig
+	voice_directsound_compressed_reverse gDirectSound_Cry325_Trapinch
+	voice_directsound_compressed_reverse gDirectSound_Cry326_Vibrava
+	voice_directsound_compressed_reverse gDirectSound_Cry327_Flygon
+	voice_directsound_compressed_reverse gDirectSound_Cry328_Cacnea
+	voice_directsound_compressed_reverse gDirectSound_Cry329_Cacturne
+	voice_directsound_compressed_reverse gDirectSound_Cry330_Baltoy
+	voice_directsound_compressed_reverse gDirectSound_Cry331_Claydol
+	voice_directsound_compressed_reverse gDirectSound_Cry332_Lunatone
+	voice_directsound_compressed_reverse gDirectSound_Cry333_Solrock
+	voice_directsound_compressed_reverse gDirectSound_Cry334_Feebas
+	voice_directsound_compressed_reverse gDirectSound_Cry335_Milotic
+	voice_directsound_compressed_reverse gDirectSound_Cry336_Absol
+	voice_directsound_compressed_reverse gDirectSound_Cry337_Meditite
+	voice_directsound_compressed_reverse gDirectSound_Cry338_Medicham
+	voice_directsound_compressed_reverse gDirectSound_Cry339_Spheal
+	voice_directsound_compressed_reverse gDirectSound_Cry340_Sealeo
+	voice_directsound_compressed_reverse gDirectSound_Cry341_Walrein
+	voice_directsound_compressed_reverse gDirectSound_Cry342_Clamperl
+	voice_directsound_compressed_reverse gDirectSound_Cry343_Huntail
+	voice_directsound_compressed_reverse gDirectSound_Cry344_Gorebyss
+	voice_directsound_compressed_reverse gDirectSound_Cry345_Lileep
+	voice_directsound_compressed_reverse gDirectSound_Cry346_Cradily
+	voice_directsound_compressed_reverse gDirectSound_Cry347_Anorith
+	voice_directsound_compressed_reverse gDirectSound_Cry348_Armaldo
+	voice_directsound_compressed_reverse gDirectSound_Cry349_Beldum
+	voice_directsound_compressed_reverse gDirectSound_Cry350_Metang
+	voice_directsound_compressed_reverse gDirectSound_Cry351_Metagross
+	voice_directsound_compressed_reverse gDirectSound_Cry352_Bagon
+	voice_directsound_compressed_reverse gDirectSound_Cry353_Shelgon
+	voice_directsound_compressed_reverse gDirectSound_Cry354_Regirock
+	voice_directsound_compressed_reverse gDirectSound_Cry355_Regice
+	voice_directsound_compressed_reverse gDirectSound_Cry356_Registeel
+	voice_directsound_compressed_reverse gDirectSound_Cry357_Castform
+	voice_directsound_compressed_reverse gDirectSound_Cry358_Volbeat
+	voice_directsound_compressed_reverse gDirectSound_Cry359_Illumise
+	voice_directsound_compressed_reverse gDirectSound_Cry360_Poochyena
+	voice_directsound_compressed_reverse gDirectSound_Cry361_Mightyena
+	voice_directsound_compressed_reverse gDirectSound_Cry362_Dusclops
+	voice_directsound_compressed_reverse gDirectSound_Cry363_Sableye
+	voice_directsound_compressed_reverse gDirectSound_Cry364_Mawile
+	voice_directsound_compressed_reverse gDirectSound_Cry365_Aron
+	voice_directsound_compressed_reverse gDirectSound_Cry366_Lairon
+	voice_directsound_compressed_reverse gDirectSound_Cry367_Aggron
+	voice_directsound_compressed_reverse gDirectSound_Cry368_Relicanth
+	voice_directsound_compressed_reverse gDirectSound_Cry369_Luvdisc
+	voice_directsound_compressed_reverse gDirectSound_Cry370_Groudon
+	voice_directsound_compressed_reverse gDirectSound_Cry371_Kyogre
+	voice_directsound_compressed_reverse gDirectSound_Cry372_Rayquaza
+	voice_directsound_compressed_reverse gDirectSound_Cry373_Salamence
+	voice_directsound_compressed_reverse gDirectSound_Cry374_Breloom
+	voice_directsound_compressed_reverse gDirectSound_Cry375_Shroomish
+	voice_directsound_compressed_reverse gDirectSound_Cry376_Linoone
+	voice_directsound_compressed_reverse gDirectSound_Cry377_Tropius
+	voice_directsound_compressed_reverse gDirectSound_Cry378_Wailmer
+	voice_directsound_compressed_reverse gDirectSound_Cry379_Zigzagoon
+	voice_directsound_compressed_reverse gDirectSound_Cry380_Exploud
+	voice_directsound_compressed_reverse gDirectSound_Cry381_Loured
+	voice_directsound_compressed_reverse gDirectSound_Cry382_Wailord
+	voice_directsound_compressed_reverse gDirectSound_Cry383_Whismur
+	voice_directsound_compressed_reverse gDirectSound_Cry384_Snorunt
+	voice_directsound_compressed_reverse gDirectSound_Cry385_Latios
+	voice_directsound_compressed_reverse gDirectSound_Cry386_Jirachi
+	voice_directsound_compressed_reverse gDirectSound_Cry387_Deoxys
+	voice_directsound_compressed_reverse gDirectSound_Cry388_Chimecho
 
 @ Due to the way mks4agb (Nintendo's tool) works, key split table labels can
 @ appear before the actual start of the key split table data. If you look at
@@ -3443,288 +3443,288 @@ gDirectSound_Cry317_Numel:: @ 0x08635B84
 	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry317_Numel.bin"
 
 	.align 2
-gDirectSound_086364D0:: @ 0x086364D0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086364D0.bin"
+gDirectSound_Cry318_Camerupt:: @ 0x086364D0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry318_Camerupt.bin"
 
 	.align 2
-gDirectSound_08637BF0:: @ 0x08637BF0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08637BF0.bin"
+gDirectSound_Cry319_Barboach:: @ 0x08637BF0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry319_Barboach.bin"
 
 	.align 2
-gDirectSound_0863852C:: @ 0x0863852C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863852C.bin"
+gDirectSound_Cry320_Whiscash:: @ 0x0863852C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry320_Whiscash.bin"
 
 	.align 2
-gDirectSound_08639628:: @ 0x08639628
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08639628.bin"
+gDirectSound_Cry321_Corphish:: @ 0x08639628
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry321_Corphish.bin"
 
 	.align 2
-gDirectSound_0863A22C:: @ 0x0863A22C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863A22C.bin"
+gDirectSound_Cry322_Crawdaunt:: @ 0x0863A22C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry322_Crawdaunt.bin"
 
 	.align 2
-gDirectSound_0863BAE4:: @ 0x0863BAE4
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863BAE4.bin"
+gDirectSound_Cry323_Spoink:: @ 0x0863BAE4
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry323_Spoink.bin"
 
 	.align 2
-gDirectSound_0863C224:: @ 0x0863C224
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863C224.bin"
+gDirectSound_Cry324_Grumpig:: @ 0x0863C224
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry324_Grumpig.bin"
 
 	.align 2
-gDirectSound_0863CEC4:: @ 0x0863CEC4
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863CEC4.bin"
+gDirectSound_Cry325_Trapinch:: @ 0x0863CEC4
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry325_Trapinch.bin"
 
 	.align 2
-gDirectSound_0863D8E8:: @ 0x0863D8E8
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863D8E8.bin"
+gDirectSound_Cry326_Vibrava:: @ 0x0863D8E8
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry326_Vibrava.bin"
 
 	.align 2
-gDirectSound_0863E6EC:: @ 0x0863E6EC
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0863E6EC.bin"
+gDirectSound_Cry327_Flygon:: @ 0x0863E6EC
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry327_Flygon.bin"
 
 	.align 2
-gDirectSound_086400F4:: @ 0x086400F4
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086400F4.bin"
+gDirectSound_Cry328_Cacnea:: @ 0x086400F4
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry328_Cacnea.bin"
 
 	.align 2
-gDirectSound_086409E4:: @ 0x086409E4
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086409E4.bin"
+gDirectSound_Cry329_Cacturne:: @ 0x086409E4
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry329_Cacturne.bin"
 
 	.align 2
-gDirectSound_08642094:: @ 0x08642094
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08642094.bin"
+gDirectSound_Cry330_Baltoy:: @ 0x08642094
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry330_Baltoy.bin"
 
 	.align 2
-gDirectSound_08642D18:: @ 0x08642D18
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08642D18.bin"
+gDirectSound_Cry331_Claydol:: @ 0x08642D18
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry331_Claydol.bin"
 
 	.align 2
-gDirectSound_08644078:: @ 0x08644078
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08644078.bin"
+gDirectSound_Cry332_Lunatone:: @ 0x08644078
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry332_Lunatone.bin"
 
 	.align 2
-gDirectSound_08645874:: @ 0x08645874
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08645874.bin"
+gDirectSound_Cry333_Solrock:: @ 0x08645874
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry333_Solrock.bin"
 
 	.align 2
-gDirectSound_086468A0:: @ 0x086468A0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086468A0.bin"
+gDirectSound_Cry334_Feebas:: @ 0x086468A0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry334_Feebas.bin"
 
 	.align 2
-gDirectSound_08647074:: @ 0x08647074
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08647074.bin"
+gDirectSound_Cry335_Milotic:: @ 0x08647074
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry335_Milotic.bin"
 
 	.align 2
-gDirectSound_086497B8:: @ 0x086497B8
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086497B8.bin"
+gDirectSound_Cry336_Absol:: @ 0x086497B8
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry336_Absol.bin"
 
 	.align 2
-gDirectSound_0864A234:: @ 0x0864A234
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864A234.bin"
+gDirectSound_Cry337_Meditite:: @ 0x0864A234
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry337_Meditite.bin"
 
 	.align 2
-gDirectSound_0864AA54:: @ 0x0864AA54
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864AA54.bin"
+gDirectSound_Cry338_Medicham:: @ 0x0864AA54
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry338_Medicham.bin"
 
 	.align 2
-gDirectSound_0864BAD8:: @ 0x0864BAD8
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864BAD8.bin"
+gDirectSound_Cry339_Spheal:: @ 0x0864BAD8
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry339_Spheal.bin"
 
 	.align 2
-gDirectSound_0864C08C:: @ 0x0864C08C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864C08C.bin"
+gDirectSound_Cry340_Sealeo:: @ 0x0864C08C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry340_Sealeo.bin"
 
 	.align 2
-gDirectSound_0864CC64:: @ 0x0864CC64
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864CC64.bin"
+gDirectSound_Cry341_Walrein:: @ 0x0864CC64
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry341_Walrein.bin"
 
 	.align 2
-gDirectSound_0864F0B0:: @ 0x0864F0B0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0864F0B0.bin"
+gDirectSound_Cry342_Clamperl:: @ 0x0864F0B0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry342_Clamperl.bin"
 
 	.align 2
-gDirectSound_08650300:: @ 0x08650300
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08650300.bin"
+gDirectSound_Cry343_Huntail:: @ 0x08650300
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry343_Huntail.bin"
 
 	.align 2
-gDirectSound_086512E8:: @ 0x086512E8
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086512E8.bin"
+gDirectSound_Cry344_Gorebyss:: @ 0x086512E8
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry344_Gorebyss.bin"
 
 	.align 2
-gDirectSound_08652954:: @ 0x08652954
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08652954.bin"
+gDirectSound_Cry345_Lileep:: @ 0x08652954
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry345_Lileep.bin"
 
 	.align 2
-gDirectSound_086532FC:: @ 0x086532FC
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086532FC.bin"
+gDirectSound_Cry346_Cradily:: @ 0x086532FC
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry346_Cradily.bin"
 
 	.align 2
-gDirectSound_0865502C:: @ 0x0865502C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865502C.bin"
+gDirectSound_Cry347_Anorith:: @ 0x0865502C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry347_Anorith.bin"
 
 	.align 2
-gDirectSound_08655BE4:: @ 0x08655BE4
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08655BE4.bin"
+gDirectSound_Cry348_Armaldo:: @ 0x08655BE4
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry348_Armaldo.bin"
 
 	.align 2
-gDirectSound_086572B8:: @ 0x086572B8
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086572B8.bin"
+gDirectSound_Cry349_Beldum:: @ 0x086572B8
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry349_Beldum.bin"
 
 	.align 2
-gDirectSound_08657C58:: @ 0x08657C58
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08657C58.bin"
+gDirectSound_Cry350_Metang:: @ 0x08657C58
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry350_Metang.bin"
 
 	.align 2
-gDirectSound_08658F2C:: @ 0x08658F2C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08658F2C.bin"
+gDirectSound_Cry351_Metagross:: @ 0x08658F2C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry351_Metagross.bin"
 
 	.align 2
-gDirectSound_0865B6A4:: @ 0x0865B6A4
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865B6A4.bin"
+gDirectSound_Cry352_Bagon:: @ 0x0865B6A4
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry352_Bagon.bin"
 
 	.align 2
-gDirectSound_0865BE78:: @ 0x0865BE78
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865BE78.bin"
+gDirectSound_Cry353_Shelgon:: @ 0x0865BE78
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry353_Shelgon.bin"
 
 	.align 2
-gDirectSound_0865D280:: @ 0x0865D280
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865D280.bin"
+gDirectSound_Cry354_Regirock:: @ 0x0865D280
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry354_Regirock.bin"
 
 	.align 2
-gDirectSound_0865F25C:: @ 0x0865F25C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0865F25C.bin"
+gDirectSound_Cry355_Regice:: @ 0x0865F25C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry355_Regice.bin"
 
 	.align 2
-gDirectSound_0866125C:: @ 0x0866125C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866125C.bin"
+gDirectSound_Cry356_Registeel:: @ 0x0866125C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry356_Registeel.bin"
 
 	.align 2
-gDirectSound_08662960:: @ 0x08662960
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08662960.bin"
+gDirectSound_Cry357_Castform:: @ 0x08662960
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry357_Castform.bin"
 
 	.align 2
-gDirectSound_086635F8:: @ 0x086635F8
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086635F8.bin"
+gDirectSound_Cry358_Volbeat:: @ 0x086635F8
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry358_Volbeat.bin"
 
 	.align 2
-gDirectSound_08664180:: @ 0x08664180
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08664180.bin"
+gDirectSound_Cry359_Illumise:: @ 0x08664180
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry359_Illumise.bin"
 
 	.align 2
-gDirectSound_08665298:: @ 0x08665298
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08665298.bin"
+gDirectSound_Cry360_Poochyena:: @ 0x08665298
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry360_Poochyena.bin"
 
 	.align 2
-gDirectSound_08665BE0:: @ 0x08665BE0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08665BE0.bin"
+gDirectSound_Cry361_Mightyena:: @ 0x08665BE0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry361_Mightyena.bin"
 
 	.align 2
-gDirectSound_08666F6C:: @ 0x08666F6C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08666F6C.bin"
+gDirectSound_Cry362_Dusclops:: @ 0x08666F6C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry362_Dusclops.bin"
 
 	.align 2
-gDirectSound_08667D24:: @ 0x08667D24
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08667D24.bin"
+gDirectSound_Cry363_Sableye:: @ 0x08667D24
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry363_Sableye.bin"
 
 	.align 2
-gDirectSound_086688C8:: @ 0x086688C8
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086688C8.bin"
+gDirectSound_Cry364_Mawile:: @ 0x086688C8
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry364_Mawile.bin"
 
 	.align 2
-gDirectSound_08669448:: @ 0x08669448
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08669448.bin"
+gDirectSound_Cry365_Aron:: @ 0x08669448
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry365_Aron.bin"
 
 	.align 2
-gDirectSound_08669D74:: @ 0x08669D74
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08669D74.bin"
+gDirectSound_Cry366_Lairon:: @ 0x08669D74
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry366_Lairon.bin"
 
 	.align 2
-gDirectSound_0866B24C:: @ 0x0866B24C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866B24C.bin"
+gDirectSound_Cry367_Aggron:: @ 0x0866B24C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry367_Aggron.bin"
 
 	.align 2
-gDirectSound_0866CBF0:: @ 0x0866CBF0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866CBF0.bin"
+gDirectSound_Cry368_Relicanth:: @ 0x0866CBF0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry368_Relicanth.bin"
 
 	.align 2
-gDirectSound_0866E020:: @ 0x0866E020
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866E020.bin"
+gDirectSound_Cry369_Luvdisc:: @ 0x0866E020
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry369_Luvdisc.bin"
 
 	.align 2
-gDirectSound_0866E4FC:: @ 0x0866E4FC
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0866E4FC.bin"
+gDirectSound_Cry370_Groudon:: @ 0x0866E4FC
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry370_Groudon.bin"
 
 	.align 2
-gDirectSound_08670A08:: @ 0x08670A08
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08670A08.bin"
+gDirectSound_Cry371_Kyogre:: @ 0x08670A08
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry371_Kyogre.bin"
 
 	.align 2
-gDirectSound_08672DC0:: @ 0x08672DC0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08672DC0.bin"
+gDirectSound_Cry372_Rayquaza:: @ 0x08672DC0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry372_Rayquaza.bin"
 
 	.align 2
-gDirectSound_08674AEC:: @ 0x08674AEC
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08674AEC.bin"
+gDirectSound_Cry373_Salamence:: @ 0x08674AEC
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry373_Salamence.bin"
 
 	.align 2
-gDirectSound_08676408:: @ 0x08676408
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08676408.bin"
+gDirectSound_Cry374_Breloom:: @ 0x08676408
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry374_Breloom.bin"
 
 	.align 2
-gDirectSound_086770C8:: @ 0x086770C8
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086770C8.bin"
+gDirectSound_Cry375_Shroomish:: @ 0x086770C8
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry375_Shroomish.bin"
 
 	.align 2
-gDirectSound_086779A0:: @ 0x086779A0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086779A0.bin"
+gDirectSound_Cry376_Linoone:: @ 0x086779A0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry376_Linoone.bin"
 
 	.align 2
-gDirectSound_0867983C:: @ 0x0867983C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867983C.bin"
+gDirectSound_Cry377_Tropius:: @ 0x0867983C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry377_Tropius.bin"
 
 	.align 2
-gDirectSound_0867B900:: @ 0x0867B900
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867B900.bin"
+gDirectSound_Cry378_Wailmer:: @ 0x0867B900
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry378_Wailmer.bin"
 
 	.align 2
-gDirectSound_0867D560:: @ 0x0867D560
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867D560.bin"
+gDirectSound_Cry379_Zigzagoon:: @ 0x0867D560
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry379_Zigzagoon.bin"
 
 	.align 2
-gDirectSound_0867E0F0:: @ 0x0867E0F0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867E0F0.bin"
+gDirectSound_Cry380_Exploud:: @ 0x0867E0F0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry380_Exploud.bin"
 
 	.align 2
-gDirectSound_0867FD38:: @ 0x0867FD38
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0867FD38.bin"
+gDirectSound_Cry381_Loured:: @ 0x0867FD38
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry381_Loured.bin"
 
 	.align 2
-gDirectSound_08680A60:: @ 0x08680A60
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08680A60.bin"
+gDirectSound_Cry382_Wailord:: @ 0x08680A60
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry382_Wailord.bin"
 
 	.align 2
-gDirectSound_08683470:: @ 0x08683470
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08683470.bin"
+gDirectSound_Cry383_Whismur:: @ 0x08683470
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry383_Whismur.bin"
 
 	.align 2
-gDirectSound_08683C94:: @ 0x08683C94
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08683C94.bin"
+gDirectSound_Cry384_Snorunt:: @ 0x08683C94
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry384_Snorunt.bin"
 
 	.align 2
-gDirectSound_08684D9C:: @ 0x08684D9C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08684D9C.bin"
+gDirectSound_Cry385_Latios:: @ 0x08684D9C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry385_Latios.bin"
 
 	.align 2
-gDirectSound_08686394:: @ 0x08686394
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08686394.bin"
+gDirectSound_Cry386_Jirachi:: @ 0x08686394
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry386_Jirachi.bin"
 
 	.align 2
-gDirectSound_08687118:: @ 0x08687118
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08687118.bin"
+gDirectSound_Cry387_Deoxys:: @ 0x08687118
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry387_Deoxys.bin"
 
 	.align 2
-gDirectSound_086885EC:: @ 0x086885EC
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_086885EC.bin"
+gDirectSound_Cry388_Chimecho:: @ 0x086885EC
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry388_Chimecho.bin"
 
 .include "sound/songs/mus_title.s"
 .include "sound/songs/mus_table_select.s"
