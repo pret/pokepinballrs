@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_dusclops_ball_launch_grp, gUnknown_08531D4C
+	.equ	se_dusclops_ball_launch_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_dusclops_ball_launch_pri, 5
 	.equ	se_dusclops_ball_launch_rev, reverb_set+50
 	.equ	se_dusclops_ball_launch_mvl, 127

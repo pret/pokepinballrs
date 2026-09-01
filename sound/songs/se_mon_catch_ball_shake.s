@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_mon_catch_ball_shake_grp, gUnknown_0853174C
+	.equ	se_mon_catch_ball_shake_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_mon_catch_ball_shake_pri, 5
 	.equ	se_mon_catch_ball_shake_rev, reverb_set+50
 	.equ	se_mon_catch_ball_shake_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_tilt_triggered_grp, gUnknown_08531D4C
+	.equ	se_tilt_triggered_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_tilt_triggered_pri, 5
 	.equ	se_tilt_triggered_rev, reverb_set+50
 	.equ	se_tilt_triggered_mvl, 127

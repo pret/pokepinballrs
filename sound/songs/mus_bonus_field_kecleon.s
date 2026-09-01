@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_bonus_field_kecleon_grp, gUnknown_08532808
+	.equ	mus_bonus_field_kecleon_grp, gVoiceGroup_Inst_08532808
 	.equ	mus_bonus_field_kecleon_pri, 0
 	.equ	mus_bonus_field_kecleon_rev, reverb_set+50
 	.equ	mus_bonus_field_kecleon_mvl, 127

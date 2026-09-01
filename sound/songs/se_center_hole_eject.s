@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_center_hole_eject_grp, gUnknown_08531D4C
+	.equ	se_center_hole_eject_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_center_hole_eject_pri, 5
 	.equ	se_center_hole_eject_rev, reverb_set+50
 	.equ	se_center_hole_eject_mvl, 127

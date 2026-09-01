@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_zigzagoon_emerge_grp, gUnknown_08531D4C
+	.equ	se_zigzagoon_emerge_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_zigzagoon_emerge_pri, 5
 	.equ	se_zigzagoon_emerge_rev, reverb_set+50
 	.equ	se_zigzagoon_emerge_mvl, 127

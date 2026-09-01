@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_sharpedo_ball_eject_grp, gUnknown_08532310
+	.equ	se_sharpedo_ball_eject_grp, gVoiceGroup_SFX_08532310
 	.equ	se_sharpedo_ball_eject_pri, 5
 	.equ	se_sharpedo_ball_eject_rev, reverb_set+50
 	.equ	se_sharpedo_ball_eject_mvl, 127

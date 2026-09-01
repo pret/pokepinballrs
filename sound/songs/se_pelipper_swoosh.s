@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_pelipper_swoosh_grp, gUnknown_08531D4C
+	.equ	se_pelipper_swoosh_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_pelipper_swoosh_pri, 5
 	.equ	se_pelipper_swoosh_rev, reverb_set+50
 	.equ	se_pelipper_swoosh_mvl, 127

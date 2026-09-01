@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_area_roulette_selected_grp, gUnknown_0853174C
+	.equ	se_area_roulette_selected_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_area_roulette_selected_pri, 5
 	.equ	se_area_roulette_selected_rev, reverb_set+50
 	.equ	se_area_roulette_selected_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_groudon_ball_hit_fire_grp, gUnknown_0853174C
+	.equ	se_groudon_ball_hit_fire_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_groudon_ball_hit_fire_pri, 5
 	.equ	se_groudon_ball_hit_fire_rev, reverb_set+50
 	.equ	se_groudon_ball_hit_fire_mvl, 127

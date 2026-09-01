@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_rayquaza_flyby_grp, gUnknown_08531D4C
+	.equ	se_rayquaza_flyby_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_rayquaza_flyby_pri, 5
 	.equ	se_rayquaza_flyby_rev, reverb_set+50
 	.equ	se_rayquaza_flyby_mvl, 127

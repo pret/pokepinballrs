@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_catch_all_reveal_lightning_grp, gUnknown_08531D4C
+	.equ	se_catch_all_reveal_lightning_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_catch_all_reveal_lightning_pri, 5
 	.equ	se_catch_all_reveal_lightning_rev, reverb_set+50
 	.equ	se_catch_all_reveal_lightning_mvl, 127

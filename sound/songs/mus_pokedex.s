@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_pokedex_grp, gUnknown_0852EF5C
+	.equ	mus_pokedex_grp, gVoiceGroup_Pokedex_0852EF5C
 	.equ	mus_pokedex_pri, 0
 	.equ	mus_pokedex_rev, reverb_set+50
 	.equ	mus_pokedex_mvl, 127

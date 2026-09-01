@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_mon_catch_energy_beam_grp, gUnknown_08531D4C
+	.equ	se_mon_catch_energy_beam_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_mon_catch_energy_beam_pri, 5
 	.equ	se_mon_catch_energy_beam_rev, reverb_set+50
 	.equ	se_mon_catch_energy_beam_mvl, 127

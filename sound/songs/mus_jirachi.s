@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_jirachi_grp, gUnknown_0852FB5C
+	.equ	mus_jirachi_grp, gVoiceGroup_Jirachi_0852FB5C
 	.equ	mus_jirachi_pri, 0
 	.equ	mus_jirachi_rev, reverb_set+50
 	.equ	mus_jirachi_mvl, 127

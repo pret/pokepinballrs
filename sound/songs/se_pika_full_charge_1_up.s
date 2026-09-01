@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_pika_full_charge_1_up_grp, gUnknown_08532310
+	.equ	se_pika_full_charge_1_up_grp, gVoiceGroup_SFX_08532310
 	.equ	se_pika_full_charge_1_up_pri, 5
 	.equ	se_pika_full_charge_1_up_rev, reverb_set+50
 	.equ	se_pika_full_charge_1_up_mvl, 127

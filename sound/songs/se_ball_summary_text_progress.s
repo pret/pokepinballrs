@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_ball_summary_text_progress_grp, gUnknown_08532310
+	.equ	se_ball_summary_text_progress_grp, gVoiceGroup_SFX_08532310
 	.equ	se_ball_summary_text_progress_pri, 5
 	.equ	se_ball_summary_text_progress_rev, reverb_set+50
 	.equ	se_ball_summary_text_progress_mvl, 127

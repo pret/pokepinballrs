@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_travel_mode_start_grp, gUnknown_0852DDE0
+	.equ	mus_travel_mode_start_grp, gVoiceGroup_Inst_0852DDE0
 	.equ	mus_travel_mode_start_pri, 0
 	.equ	mus_travel_mode_start_rev, reverb_set+50
 	.equ	mus_travel_mode_start_mvl, 127

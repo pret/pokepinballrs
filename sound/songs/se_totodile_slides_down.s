@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_totodile_slides_down_grp, gUnknown_08531D4C
+	.equ	se_totodile_slides_down_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_totodile_slides_down_pri, 5
 	.equ	se_totodile_slides_down_rev, reverb_set+50
 	.equ	se_totodile_slides_down_mvl, 127

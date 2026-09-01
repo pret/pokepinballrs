@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_rayquaza_sonic_boom_grp, gUnknown_08531D4C
+	.equ	se_rayquaza_sonic_boom_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_rayquaza_sonic_boom_pri, 5
 	.equ	se_rayquaza_sonic_boom_rev, reverb_set+50
 	.equ	se_rayquaza_sonic_boom_mvl, 127

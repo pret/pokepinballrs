@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_pelipper_ball_grab_grp, gUnknown_08531D4C
+	.equ	se_pelipper_ball_grab_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_pelipper_ball_grab_pri, 5
 	.equ	se_pelipper_ball_grab_rev, reverb_set+50
 	.equ	se_pelipper_ball_grab_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_sealeo_hit_thud_grp, gUnknown_0853174C
+	.equ	se_sealeo_hit_thud_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_sealeo_hit_thud_pri, 5
 	.equ	se_sealeo_hit_thud_rev, reverb_set+50
 	.equ	se_sealeo_hit_thud_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_menu_popup_close_grp, gUnknown_08532310
+	.equ	se_menu_popup_close_grp, gVoiceGroup_SFX_08532310
 	.equ	se_menu_popup_close_pri, 5
 	.equ	se_menu_popup_close_rev, reverb_set+50
 	.equ	se_menu_popup_close_mvl, 127

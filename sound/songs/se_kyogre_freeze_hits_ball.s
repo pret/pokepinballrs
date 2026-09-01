@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kyogre_freeze_hits_ball_grp, gUnknown_08531D4C
+	.equ	se_kyogre_freeze_hits_ball_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_kyogre_freeze_hits_ball_pri, 5
 	.equ	se_kyogre_freeze_hits_ball_rev, reverb_set+50
 	.equ	se_kyogre_freeze_hits_ball_mvl, 127

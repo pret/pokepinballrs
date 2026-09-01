@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_hatch_machine_elevator_top_grp, gUnknown_08531D4C
+	.equ	se_hatch_machine_elevator_top_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_hatch_machine_elevator_top_pri, 5
 	.equ	se_hatch_machine_elevator_top_rev, reverb_set+50
 	.equ	se_hatch_machine_elevator_top_mvl, 127

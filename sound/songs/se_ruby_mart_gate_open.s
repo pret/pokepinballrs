@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_ruby_mart_gate_open_grp, gUnknown_08531D4C
+	.equ	se_ruby_mart_gate_open_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_ruby_mart_gate_open_pri, 5
 	.equ	se_ruby_mart_gate_open_rev, reverb_set+50
 	.equ	se_ruby_mart_gate_open_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_hatch_flourish_grp, gUnknown_0852DDE0
+	.equ	se_hatch_flourish_grp, gVoiceGroup_Inst_0852DDE0
 	.equ	se_hatch_flourish_pri, 5
 	.equ	se_hatch_flourish_rev, reverb_set+50
 	.equ	se_hatch_flourish_mvl, 127

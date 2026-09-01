@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_spheal_land_under_net_grp, gUnknown_08531D4C
+	.equ	se_spheal_land_under_net_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_spheal_land_under_net_pri, 5
 	.equ	se_spheal_land_under_net_rev, reverb_set+50
 	.equ	se_spheal_land_under_net_mvl, 127

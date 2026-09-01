@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_dusclops_depart_incomplete_grp, gUnknown_08531D4C
+	.equ	se_dusclops_depart_incomplete_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_dusclops_depart_incomplete_pri, 5
 	.equ	se_dusclops_depart_incomplete_rev, reverb_set+50
 	.equ	se_dusclops_depart_incomplete_mvl, 127

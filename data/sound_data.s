@@ -65,7 +65,7 @@ gUnknown_0852DDB0:: @ 0x0852DDB0
 	voice_directsound 60, 0, gDirectSound_0853F888, 255, 250, 0, 250
 	voice_directsound 60, 0, gDirectSound_08540DE4, 255, 247, 0, 247
 
-gUnknown_0852DDE0:: @ 0x0852DDE0
+gVoiceGroup_Inst_0852DDE0:: @ 0x0852DDE0
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_keysplit gUnknown_0852DD08, keysplit_gUnknown_08534BC0
 	voice_directsound 60, 0, gDirectSound_085715B0, 255, 178, 180, 165
@@ -198,7 +198,7 @@ gUnknown_0852DDE0:: @ 0x0852DDE0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound_no_resample 72, 62, gDirectSound_0853CD00, 255, 0, 255, 0
 
-gUnknown_0852E404:: @ 0x0852E404
+gVoiceGroup_Evolution_0852E404:: @ 0x0852E404
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -314,7 +314,7 @@ gUnknown_0852E404:: @ 0x0852E404
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound_no_resample 72, 74, gDirectSound_0853CD00, 255, 0, 255, 0
 
-gUnknown_0852E95C:: @ 0x0852E95C
+gVoiceGroup_HurryUp_0852E95C:: @ 0x0852E95C
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -444,7 +444,7 @@ gUnknown_0852E95C:: @ 0x0852E95C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 0
 
-gUnknown_0852EF5C:: @ 0x0852EF5C
+gVoiceGroup_Pokedex_0852EF5C:: @ 0x0852EF5C
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_keysplit gUnknown_0852DD08, keysplit_gUnknown_08534BC0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -574,7 +574,7 @@ gUnknown_0852EF5C:: @ 0x0852EF5C
 	voice_noise_alt 60, 0, 0, 0, 1, 7, 1
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 0
 
-gUnknown_0852F55C:: @ 0x0852F55C
+gVoiceGroup_Title_0852F55C:: @ 0x0852F55C
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_keysplit gUnknown_0852DD08, keysplit_gUnknown_08534BC0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -704,7 +704,7 @@ gUnknown_0852F55C:: @ 0x0852F55C
 	voice_noise_alt 60, 0, 0, 0, 2, 4, 0
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 0
 
-gUnknown_0852FB5C:: @ 0x0852FB5C
+gVoiceGroup_Jirachi_0852FB5C:: @ 0x0852FB5C
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -834,7 +834,7 @@ gUnknown_0852FB5C:: @ 0x0852FB5C
 	voice_noise_alt 60, 0, 0, 0, 1, 7, 1
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 0
 
-gUnknown_0853015C:: @ 0x0853015C
+gVoiceGroup_EggModeStart_0853015C:: @ 0x0853015C
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -964,7 +964,7 @@ gUnknown_0853015C:: @ 0x0853015C
 	voice_noise_alt 60, 0, 0, 0, 1, 7, 1
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 0
 
-gUnknown_0853075C:: @ 0x0853075C
+gVoiceGroup_EggMode_0853075C:: @ 0x0853075C
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1094,7 +1094,7 @@ gUnknown_0853075C:: @ 0x0853075C
 	voice_noise_alt 60, 0, 0, 0, 1, 7, 1
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 0
 
-gUnknown_08530D5C:: @ 0x08530D5C
+gVoiceGroup_EvoMode_08530D5C:: @ 0x08530D5C
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1224,7 +1224,7 @@ gUnknown_08530D5C:: @ 0x08530D5C
 	voice_noise_alt 60, 0, 0, 0, 1, 7, 1
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 0
 
-gUnknown_0853135C:: @ 0x0853135C
+gVoiceGroup_UnkMus_0853135C:: @ 0x0853135C
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1310,7 +1310,7 @@ gUnknown_0853135C:: @ 0x0853135C
 	voice_square_1 60, 0, 0, 3, 0, 1, 7, 1
 	voice_square_1 60, 0, 0, 3, 0, 0, 7, 1
 
-gUnknown_0853174C:: @ 0x0853174C
+gVoiceGroup_SFX_0853174C:: @ 0x0853174C
 	voice_directsound 60, 0, gDirectSound_0855F22C, 255, 249, 103, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1440,7 +1440,7 @@ gUnknown_0853174C:: @ 0x0853174C
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 0
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 1
 
-gUnknown_08531D4C:: @ 0x08531D4C
+gVoiceGroup_SFX_08531D4C:: @ 0x08531D4C
 	voice_directsound_no_resample 60, 0, gDirectSound_08562D1C, 255, 249, 0, 165
 	voice_directsound_alt 60, 0, gDirectSound_08562D1C, 255, 0, 255, 165
 	voice_directsound 60, 0, gDirectSound_0855F22C, 255, 0, 255, 165
@@ -1565,7 +1565,7 @@ gUnknown_08531D4C:: @ 0x08531D4C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound 60, 0, gDirectSound_08583F1C, 255, 0, 255, 165
 
-gUnknown_08532310:: @ 0x08532310
+gVoiceGroup_SFX_08532310:: @ 0x08532310
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_noise_alt 60, 0, 0, 0, 0, 15, 0
 	voice_noise_alt 60, 0, 0, 0, 3, 0, 0
@@ -1596,7 +1596,7 @@ gUnknown_08532310:: @ 0x08532310
 	voice_square_1_alt 60, 0, 0, 1, 1, 0, 15, 0
 	voice_square_1_alt 60, 0, 103, 0, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_08584B2C, 255, 0, 255, 0
+	voice_directsound 60, 0, gDirectSound_08584B2C, 255, 0, 255, 0 @ 30
 	voice_directsound 60, 0, gDirectSound_08588238, 255, 0, 255, 0
 	voice_directsound 60, 0, gDirectSound_08588C10, 255, 0, 255, 0
 	voice_directsound 60, 0, gDirectSound_0856BF48, 64, 0, 255, 0
@@ -1667,13 +1667,13 @@ gUnknown_08532310:: @ 0x08532310
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_compressed gDirectSound_0858E078
-	voice_directsound_compressed gDirectSound_pika_08595C7C
-	voice_directsound_compressed gDirectSound_08597170
+	voice_directsound_compressed gDirectSound_se_pikachu_kickback @ 101
+	voice_directsound_compressed gDirectSound_se_pika_no_kickback
+	voice_directsound_compressed gDirectSound_se_pichu_kickback_enabled
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_compressed gDirectSound_0859BD58
+	voice_directsound_compressed gDirectSound_se_pichu_kickback
 
-gUnknown_08532808:: @ 0x08532808
+gVoiceGroup_Inst_08532808:: @ 0x08532808
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_keysplit gUnknown_0852DD08, keysplit_gUnknown_08534BC0
 	voice_keysplit gUnknown_0852DDB0, keysplit_gUnknown_08534BC0
@@ -2786,20 +2786,20 @@ gDirectSound_0858AA14:: @ 0x0858AA14
 	.incbin "sound/direct_sound_samples/gDirectSound_0858AA14.bin"
 
 	.align 2
-gDirectSound_0858E078:: @ 0x0858E078
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0858E078.bin"
+gDirectSound_se_pikachu_kickback:: @ 0x0858E078
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_se_pikachu_kickback.bin"
 
 	.align 2
-gDirectSound_pika_08595C7C:: @ 0x08595C7C
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_pika_08595C7C.bin"
+gDirectSound_se_pika_no_kickback:: @ 0x08595C7C
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_se_pika_no_kickback.bin"
 
 	.align 2
-gDirectSound_08597170:: @ 0x08597170
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_08597170.bin"
+gDirectSound_se_pichu_kickback_enabled:: @ 0x08597170
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_se_pichu_kickback_enabled.bin"
 
 	.align 2
-gDirectSound_0859BD58:: @ 0x0859BD58
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0859BD58.bin"
+gDirectSound_se_pichu_kickback:: @ 0x0859BD58
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_se_pichu_kickback.bin"
 
 	.align 2
 gDirectSound_085A37F4:: @ 0x085A37F4

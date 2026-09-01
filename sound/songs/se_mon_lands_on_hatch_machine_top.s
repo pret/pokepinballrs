@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_mon_lands_on_hatch_machine_top_grp, gUnknown_08532310
+	.equ	se_mon_lands_on_hatch_machine_top_grp, gVoiceGroup_SFX_08532310
 	.equ	se_mon_lands_on_hatch_machine_top_pri, 5
 	.equ	se_mon_lands_on_hatch_machine_top_rev, reverb_set+50
 	.equ	se_mon_lands_on_hatch_machine_top_mvl, 127

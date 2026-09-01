@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_mon_catch_ball_close_grp, gUnknown_08531D4C
+	.equ	se_mon_catch_ball_close_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_mon_catch_ball_close_pri, 5
 	.equ	se_mon_catch_ball_close_rev, reverb_set+50
 	.equ	se_mon_catch_ball_close_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_evo_cutscene_mon_portrait_change_grp, gUnknown_0853174C
+	.equ	se_evo_cutscene_mon_portrait_change_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_evo_cutscene_mon_portrait_change_pri, 5
 	.equ	se_evo_cutscene_mon_portrait_change_rev, reverb_set+50
 	.equ	se_evo_cutscene_mon_portrait_change_mvl, 127

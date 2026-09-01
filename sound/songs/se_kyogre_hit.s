@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kyogre_hit_grp, gUnknown_0853174C
+	.equ	se_kyogre_hit_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_kyogre_hit_pri, 5
 	.equ	se_kyogre_hit_rev, reverb_set+50
 	.equ	se_kyogre_hit_mvl, 127
