@@ -2060,10 +2060,10 @@ gPokemonCryToneBank2:: @ 0x08533960
 	voice_directsound_compressed gDirectSound_Cry263_Azurill
 	voice_directsound_compressed gDirectSound_Cry264_Swablu
 	voice_directsound_compressed gDirectSound_Cry265_Altaria
-	voice_directsound_compressed gDirectSound_0860A4A0
+	voice_directsound_compressed gDirectSound_Cry266_Unused
 	voice_directsound_compressed gDirectSound_Cry267_Taillow
 	voice_directsound_compressed gDirectSound_Cry268_Swellow
-	voice_directsound_compressed gDirectSound_0860BCF8
+	voice_directsound_compressed gDirectSound_Cry269_Unused
 	voice_directsound_compressed gDirectSound_Cry270_Spinda
 	voice_directsound_compressed gDirectSound_Cry271_Torchic
 	voice_directsound_compressed gDirectSound_Cry272_Combusken
@@ -2322,10 +2322,10 @@ gPokemonCryToneBank3:: @ 0x08533F60
 	voice_directsound_compressed_reverse gDirectSound_Cry263_Azurill
 	voice_directsound_compressed_reverse gDirectSound_Cry264_Swablu
 	voice_directsound_compressed_reverse gDirectSound_Cry265_Altaria
-	voice_directsound_compressed_reverse gDirectSound_0860A4A0
+	voice_directsound_compressed_reverse gDirectSound_Cry266_Unused
 	voice_directsound_compressed_reverse gDirectSound_Cry267_Taillow
 	voice_directsound_compressed_reverse gDirectSound_Cry268_Swellow
-	voice_directsound_compressed_reverse gDirectSound_0860BCF8
+	voice_directsound_compressed_reverse gDirectSound_Cry269_Unused
 	voice_directsound_compressed_reverse gDirectSound_Cry270_Spinda
 	voice_directsound_compressed_reverse gDirectSound_Cry271_Torchic
 	voice_directsound_compressed_reverse gDirectSound_Cry272_Combusken
@@ -3235,8 +3235,8 @@ gDirectSound_Cry265_Altaria:: @ 0x08609984
 	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry265_Altaria.bin"
 
 	.align 2
-gDirectSound_0860A4A0:: @ 0x0860A4A0
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860A4A0.bin"
+gDirectSound_Cry266_Unused:: @ 0x0860A4A0
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry266_Unused.bin"
 
 	.align 2
 gDirectSound_Cry267_Taillow:: @ 0x0860ADF4
@@ -3247,8 +3247,8 @@ gDirectSound_Cry268_Swellow:: @ 0x0860B3F4
 	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry268_Swellow.bin"
 
 	.align 2
-gDirectSound_0860BCF8:: @ 0x0860BCF8
-	.incbin "sound/direct_sound_samples/cries/gDirectSound_0860BCF8.bin"
+gDirectSound_Cry269_Unused:: @ 0x0860BCF8
+	.incbin "sound/direct_sound_samples/cries/gDirectSound_Cry269_Unused.bin"
 
 	.align 2
 gDirectSound_Cry270_Spinda:: @ 0x0860CEA8
