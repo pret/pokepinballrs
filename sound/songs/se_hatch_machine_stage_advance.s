@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_hatch_machine_stage_advance_grp, gUnknown_0853174C
+	.equ	se_hatch_machine_stage_advance_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_hatch_machine_stage_advance_pri, 5
 	.equ	se_hatch_machine_stage_advance_rev, reverb_set+50
 	.equ	se_hatch_machine_stage_advance_mvl, 127

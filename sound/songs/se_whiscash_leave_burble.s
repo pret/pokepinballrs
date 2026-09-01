@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_whiscash_leave_burble_grp, gUnknown_08531D4C
+	.equ	se_whiscash_leave_burble_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_whiscash_leave_burble_pri, 5
 	.equ	se_whiscash_leave_burble_rev, reverb_set+50
 	.equ	se_whiscash_leave_burble_mvl, 127

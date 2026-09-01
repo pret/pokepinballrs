@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_catch_mon_entity_appears_grp, gUnknown_0853174C
+	.equ	se_catch_mon_entity_appears_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_catch_mon_entity_appears_pri, 5
 	.equ	se_catch_mon_entity_appears_rev, reverb_set+50
 	.equ	se_catch_mon_entity_appears_mvl, 127

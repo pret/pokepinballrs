@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_rayquaza_hit_grp, gUnknown_0853174C
+	.equ	se_rayquaza_hit_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_rayquaza_hit_pri, 5
 	.equ	se_rayquaza_hit_rev, reverb_set+50
 	.equ	se_rayquaza_hit_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_duskull_death_cry_grp, gUnknown_08531D4C
+	.equ	se_duskull_death_cry_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_duskull_death_cry_pri, 5
 	.equ	se_duskull_death_cry_rev, reverb_set+50
 	.equ	se_duskull_death_cry_mvl, 127

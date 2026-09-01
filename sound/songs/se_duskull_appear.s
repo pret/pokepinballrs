@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_duskull_appear_grp, gUnknown_08531D4C
+	.equ	se_duskull_appear_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_duskull_appear_pri, 5
 	.equ	se_duskull_appear_rev, reverb_set+50
 	.equ	se_duskull_appear_mvl, 127

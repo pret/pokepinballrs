@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_pichu_kickback_enabled_grp, gUnknown_08532310
+	.equ	se_pichu_kickback_enabled_grp, gVoiceGroup_SFX_08532310
 	.equ	se_pichu_kickback_enabled_pri, 5
 	.equ	se_pichu_kickback_enabled_rev, reverb_set+50
 	.equ	se_pichu_kickback_enabled_mvl, 127

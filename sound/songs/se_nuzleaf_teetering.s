@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_nuzleaf_teetering_grp, gUnknown_08531D4C
+	.equ	se_nuzleaf_teetering_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_nuzleaf_teetering_pri, 5
 	.equ	se_nuzleaf_teetering_rev, reverb_set+50
 	.equ	se_nuzleaf_teetering_mvl, 127

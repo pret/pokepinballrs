@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_ruby_mart_sign_changed_grp, gUnknown_08532310
+	.equ	se_ruby_mart_sign_changed_grp, gVoiceGroup_SFX_08532310
 	.equ	se_ruby_mart_sign_changed_pri, 5
 	.equ	se_ruby_mart_sign_changed_rev, reverb_set+50
 	.equ	se_ruby_mart_sign_changed_mvl, 127

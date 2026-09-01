@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_whiscash_splashdown_grp, gUnknown_08531D4C
+	.equ	se_whiscash_splashdown_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_whiscash_splashdown_pri, 5
 	.equ	se_whiscash_splashdown_rev, reverb_set+50
 	.equ	se_whiscash_splashdown_mvl, 127

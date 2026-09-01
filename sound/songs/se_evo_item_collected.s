@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_evo_item_collected_grp, gUnknown_08531D4C
+	.equ	se_evo_item_collected_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_evo_item_collected_pri, 5
 	.equ	se_evo_item_collected_rev, reverb_set+50
 	.equ	se_evo_item_collected_mvl, 127

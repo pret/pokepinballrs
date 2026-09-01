@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_title_grp, gUnknown_0852F55C
+	.equ	mus_title_grp, gVoiceGroup_Title_0852F55C
 	.equ	mus_title_pri, 0
 	.equ	mus_title_rev, reverb_set+50
 	.equ	mus_title_mvl, 127

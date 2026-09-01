@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_spheal_crowd_cheer_grp, gUnknown_08531D4C
+	.equ	se_spheal_crowd_cheer_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_spheal_crowd_cheer_pri, 5
 	.equ	se_spheal_crowd_cheer_rev, reverb_set+50
 	.equ	se_spheal_crowd_cheer_mvl, 127

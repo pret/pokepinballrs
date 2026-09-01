@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_groudon_fire_ring_grp, gUnknown_0853174C
+	.equ	se_groudon_fire_ring_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_groudon_fire_ring_pri, 5
 	.equ	se_groudon_fire_ring_rev, reverb_set+50
 	.equ	se_groudon_fire_ring_mvl, 127

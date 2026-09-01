@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_spoink_launcher_fired_grp, gUnknown_08531D4C
+	.equ	se_spoink_launcher_fired_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_spoink_launcher_fired_pri, 5
 	.equ	se_spoink_launcher_fired_rev, reverb_set+50
 	.equ	se_spoink_launcher_fired_mvl, 127

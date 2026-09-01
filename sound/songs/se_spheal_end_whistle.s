@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_spheal_end_whistle_grp, gUnknown_08532808
+	.equ	se_spheal_end_whistle_grp, gVoiceGroup_Inst_08532808
 	.equ	se_spheal_end_whistle_pri, 5
 	.equ	se_spheal_end_whistle_rev, reverb_set+50
 	.equ	se_spheal_end_whistle_mvl, 127

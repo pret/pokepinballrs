@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_catch_tile_reveal_grp, gUnknown_0853174C
+	.equ	se_catch_tile_reveal_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_catch_tile_reveal_pri, 5
 	.equ	se_catch_tile_reveal_rev, reverb_set+50
 	.equ	se_catch_tile_reveal_mvl, 127

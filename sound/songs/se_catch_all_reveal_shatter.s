@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_catch_all_reveal_shatter_grp, gUnknown_08531D4C
+	.equ	se_catch_all_reveal_shatter_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_catch_all_reveal_shatter_pri, 5
 	.equ	se_catch_all_reveal_shatter_rev, reverb_set+50
 	.equ	se_catch_all_reveal_shatter_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_roulette_tick_grp, gUnknown_08531D4C
+	.equ	se_roulette_tick_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_roulette_tick_pri, 5
 	.equ	se_roulette_tick_rev, reverb_set+50
 	.equ	se_roulette_tick_mvl, 127

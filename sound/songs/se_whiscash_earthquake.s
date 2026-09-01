@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_whiscash_earthquake_grp, gUnknown_08531D4C
+	.equ	se_whiscash_earthquake_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_whiscash_earthquake_pri, 5
 	.equ	se_whiscash_earthquake_rev, reverb_set+50
 	.equ	se_whiscash_earthquake_mvl, 127

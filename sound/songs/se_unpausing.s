@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unpausing_grp, gUnknown_0853174C
+	.equ	se_unpausing_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_unpausing_pri, 5
 	.equ	se_unpausing_rev, reverb_set+50
 	.equ	se_unpausing_mvl, 127

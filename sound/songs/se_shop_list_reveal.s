@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_shop_list_reveal_grp, gUnknown_08531D4C
+	.equ	se_shop_list_reveal_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_shop_list_reveal_pri, 5
 	.equ	se_shop_list_reveal_rev, reverb_set+50
 	.equ	se_shop_list_reveal_mvl, 127

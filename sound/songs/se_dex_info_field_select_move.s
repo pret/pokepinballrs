@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_dex_info_field_select_move_grp, gUnknown_08532310
+	.equ	se_dex_info_field_select_move_grp, gVoiceGroup_SFX_08532310
 	.equ	se_dex_info_field_select_move_pri, 5
 	.equ	se_dex_info_field_select_move_rev, reverb_set+50
 	.equ	se_dex_info_field_select_move_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kecleon_seeing_stars_grp, gUnknown_08531D4C
+	.equ	se_kecleon_seeing_stars_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_kecleon_seeing_stars_pri, 5
 	.equ	se_kecleon_seeing_stars_rev, reverb_set+50
 	.equ	se_kecleon_seeing_stars_mvl, 127

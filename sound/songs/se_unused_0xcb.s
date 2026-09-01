@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_unused_0xcb_grp, gUnknown_08531D4C
+	.equ	se_unused_0xcb_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_unused_0xcb_pri, 5
 	.equ	se_unused_0xcb_rev, reverb_set+50
 	.equ	se_unused_0xcb_mvl, 127

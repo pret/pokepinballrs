@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_bonus_field_duskull_grp, gUnknown_08532808
+	.equ	mus_bonus_field_duskull_grp, gVoiceGroup_Inst_08532808
 	.equ	mus_bonus_field_duskull_pri, 0
 	.equ	mus_bonus_field_duskull_rev, reverb_set+50
 	.equ	mus_bonus_field_duskull_mvl, 127

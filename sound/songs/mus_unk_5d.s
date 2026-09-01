@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_unk_5d_grp, gUnknown_08532808
+	.equ	mus_unk_5d_grp, gVoiceGroup_Inst_08532808
 	.equ	mus_unk_5d_pri, 0
 	.equ	mus_unk_5d_rev, reverb_set+50
 	.equ	mus_unk_5d_mvl, 127

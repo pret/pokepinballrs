@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_seedot_falling_grp, gUnknown_08531D4C
+	.equ	se_seedot_falling_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_seedot_falling_pri, 5
 	.equ	se_seedot_falling_rev, reverb_set+50
 	.equ	se_seedot_falling_mvl, 127

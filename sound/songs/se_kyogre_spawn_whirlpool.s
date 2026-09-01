@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kyogre_spawn_whirlpool_grp, gUnknown_08532310
+	.equ	se_kyogre_spawn_whirlpool_grp, gVoiceGroup_SFX_08532310
 	.equ	se_kyogre_spawn_whirlpool_pri, 5
 	.equ	se_kyogre_spawn_whirlpool_rev, reverb_set+50
 	.equ	se_kyogre_spawn_whirlpool_mvl, 127

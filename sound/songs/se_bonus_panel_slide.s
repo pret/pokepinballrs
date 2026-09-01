@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_bonus_panel_slide_grp, gUnknown_08531D4C
+	.equ	se_bonus_panel_slide_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_bonus_panel_slide_pri, 5
 	.equ	se_bonus_panel_slide_rev, reverb_set+50
 	.equ	se_bonus_panel_slide_mvl, 127

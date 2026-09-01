@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_chikorita_leaf_blade_grp, gUnknown_08532310
+	.equ	se_chikorita_leaf_blade_grp, gVoiceGroup_SFX_08532310
 	.equ	se_chikorita_leaf_blade_pri, 5
 	.equ	se_chikorita_leaf_blade_rev, reverb_set+50
 	.equ	se_chikorita_leaf_blade_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_field_ruby_grp, gUnknown_08532808
+	.equ	mus_field_ruby_grp, gVoiceGroup_Inst_08532808
 	.equ	mus_field_ruby_pri, 0
 	.equ	mus_field_ruby_rev, reverb_set+50
 	.equ	mus_field_ruby_mvl, 127

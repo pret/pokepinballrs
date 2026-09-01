@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_hatch_machine_spinner_trigger_grp, gUnknown_08531D4C
+	.equ	se_hatch_machine_spinner_trigger_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_hatch_machine_spinner_trigger_pri, 5
 	.equ	se_hatch_machine_spinner_trigger_rev, reverb_set+50
 	.equ	se_hatch_machine_spinner_trigger_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_hurry_up_grp, gUnknown_0852E95C
+	.equ	mus_hurry_up_grp, gVoiceGroup_HurryUp_0852E95C
 	.equ	mus_hurry_up_pri, 0
 	.equ	mus_hurry_up_rev, reverb_set+50
 	.equ	mus_hurry_up_mvl, 127

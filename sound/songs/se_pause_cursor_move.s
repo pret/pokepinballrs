@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_pause_cursor_move_grp, gUnknown_0853174C
+	.equ	se_pause_cursor_move_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_pause_cursor_move_pri, 5
 	.equ	se_pause_cursor_move_rev, reverb_set+50
 	.equ	se_pause_cursor_move_mvl, 127

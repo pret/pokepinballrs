@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_flipper_pressed_grp, gUnknown_08532310
+	.equ	se_flipper_pressed_grp, gVoiceGroup_SFX_08532310
 	.equ	se_flipper_pressed_pri, 5
 	.equ	se_flipper_pressed_rev, reverb_set+50
 	.equ	se_flipper_pressed_mvl, 127

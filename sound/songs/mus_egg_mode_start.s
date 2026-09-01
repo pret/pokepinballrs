@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_egg_mode_start_grp, gUnknown_0853015C
+	.equ	mus_egg_mode_start_grp, gVoiceGroup_EggModeStart_0853015C
 	.equ	mus_egg_mode_start_pri, 0
 	.equ	mus_egg_mode_start_rev, reverb_set+50
 	.equ	mus_egg_mode_start_mvl, 127

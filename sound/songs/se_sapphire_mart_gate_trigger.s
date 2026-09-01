@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_sapphire_mart_gate_trigger_grp, gUnknown_08531D4C
+	.equ	se_sapphire_mart_gate_trigger_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_sapphire_mart_gate_trigger_pri, 5
 	.equ	se_sapphire_mart_gate_trigger_rev, reverb_set+50
 	.equ	se_sapphire_mart_gate_trigger_mvl, 127

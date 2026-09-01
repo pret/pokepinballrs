@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_spheal_submerging_after_scoring_grp, gUnknown_08532310
+	.equ	se_spheal_submerging_after_scoring_grp, gVoiceGroup_SFX_08532310
 	.equ	se_spheal_submerging_after_scoring_pri, 5
 	.equ	se_spheal_submerging_after_scoring_rev, reverb_set+50
 	.equ	se_spheal_submerging_after_scoring_mvl, 127

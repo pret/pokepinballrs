@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_failure_grp, gUnknown_0853174C
+	.equ	se_failure_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_failure_pri, 5
 	.equ	se_failure_rev, reverb_set+50
 	.equ	se_failure_mvl, 127

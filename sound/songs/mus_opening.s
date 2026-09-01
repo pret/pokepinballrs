@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_opening_grp, gUnknown_08532808
+	.equ	mus_opening_grp, gVoiceGroup_Inst_08532808
 	.equ	mus_opening_pri, 0
 	.equ	mus_opening_rev, reverb_set+50
 	.equ	mus_opening_mvl, 127

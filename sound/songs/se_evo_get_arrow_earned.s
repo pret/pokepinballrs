@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_evo_get_arrow_earned_grp, gUnknown_0853174C
+	.equ	se_evo_get_arrow_earned_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_evo_get_arrow_earned_pri, 5
 	.equ	se_evo_get_arrow_earned_rev, reverb_set+50
 	.equ	se_evo_get_arrow_earned_mvl, 127

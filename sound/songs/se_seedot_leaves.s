@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_seedot_leaves_grp, gUnknown_08531D4C
+	.equ	se_seedot_leaves_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_seedot_leaves_pri, 5
 	.equ	se_seedot_leaves_rev, reverb_set+50
 	.equ	se_seedot_leaves_mvl, 127

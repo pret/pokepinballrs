@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_catch_em_mode_grp, gUnknown_08532808
+	.equ	mus_catch_em_mode_grp, gVoiceGroup_Inst_08532808
 	.equ	mus_catch_em_mode_pri, 0
 	.equ	mus_catch_em_mode_rev, reverb_set+50
 	.equ	mus_catch_em_mode_mvl, 127
