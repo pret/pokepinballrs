@@ -208,7 +208,7 @@ struct PinballGame
     /*0x06A*/ s16 hudSpriteBaseY;
     /*0x06C*/ u16 timerBonus; //Additional time to be added to next timed event (Only for bonus fields or all timers?)
     /*0x06E*/ s8 ballUpgradeFxTileIndex;
-    /*0x06F*/ s8 activePaletteIndex;
+    /*0x06F*/ s8 paletteDimmingIx; // 0= normal, 1=dimming, 2=dim. Used with banner/focus moments.
     /*0x070*/ s8 paletteSwapActive;
     /*0x071*/ s8 ballTrailEnabled;
     /*0x072*/ s8 jirachiActivationFlags;
@@ -936,7 +936,19 @@ struct FieldBoardLayout
     /*0x26*/ s16 ballSpawnX;
     /*0x28*/ s16 ballSpawnY;
     /*0x2A*/ s16 ballDrainY;
-    /*0x2C*/ Palette *objPaletteSets[3];
+
+    /* 3 full sets of 16 palettes, referenced in smaller banks
+        Set 0 : Normal light
+        Set 1 : Dimming light
+        Set 2 : Dim Light
+
+        Bank 0 : single slot.
+        Bank 2 : 6 (Sapphire) or 7(Ruby) slots.
+        Bank 10 : 3 slots.
+
+        This avoids slot 1 (ball) and the sapphire shop sign (constantly changing palette)
+    */
+    /*0x2C*/ Palette *objPaletteSets[3]; 
     /*0x38*/ struct BoardCollisionDataSet collision;
 };
 

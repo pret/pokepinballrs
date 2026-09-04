@@ -983,7 +983,7 @@ void UpdateGroudonFieldEntities(void)
         for (j = 0; j < 6; j++)
         {
             oamSimple = &group->oam[j];
-            gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_13;
+            gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_MON_PORTRAIT;
             gOamBuffer[oamSimple->oamId].priority = gCurrentPinballGame->creatureOamPriority;
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;

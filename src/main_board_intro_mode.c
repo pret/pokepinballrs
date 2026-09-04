@@ -32,9 +32,9 @@ void InitBoardIntroMode(void)
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_MAIN_SLOT);
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_ALT_SLOT);
     for (i = 0; i < 6; i++)
-        gCurrentPinballGame->catchTilePalette[i] = PAL_IX_13;
+        gCurrentPinballGame->catchTilePalette[i] = PAL_IX_LOCATION_PORTRAIT;
 
-    DmaCopy16(3, gTravelPortrait_Pal, OBJ_PLTT_SLOT(PAL_IX_14), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gTravelPortrait_Pal, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
     DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, (void *)0x06015800, 0x280);
     gCurrentPinballGame->activePortraitType = 12;
 }

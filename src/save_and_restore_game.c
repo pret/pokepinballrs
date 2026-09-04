@@ -254,7 +254,7 @@ void RestoreGameState(u16 arg0)
 
     DmaCopy16(3, gCurrentPinballGame->savedObjPalette[gMain.isBonusField], OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, gCurrentPinballGame->savedBgPalette[gMain.isBonusField], BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_1), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
     RestoreFieldSpecificGraphics();
     switch (gMain.selectedField)
     {
@@ -456,12 +456,12 @@ void RestoreFieldSpecificGraphics(void)
         if (gMain.selectedField == FIELD_RUBY)
         {
             DmaCopy16(3, gRubyTravelPaint_Gfx, (void *)0x6015800, 0x1800);
-            DmaCopy16(3, gRubyPainter_Pals, OBJ_PLTT_SLOT(PAL_IX_14), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gRubyPainter_Pals, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
         }
         else
         {
             DmaCopy16(3, gSapphireTravelPaint_Gfx, (void *)0x6015800, 0x1800);
-            DmaCopy16(3, gSapphirePainter_Pals, OBJ_PLTT_SLOT(PAL_IX_14), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gSapphirePainter_Pals, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
         }
         break;
     case 21:
@@ -512,23 +512,23 @@ void RestoreMainFieldDynamicGraphics(void)
                 if (gMain_saveData.pokedexFlags[gCurrentPinballGame->evoTargetSpecies] == 0)
                 {
                     gCurrentPinballGame->portraitGfxIndex[i] = 205;
-                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[i] / 15][gCurrentPinballGame->portraitGfxIndex[i] % 15], OBJ_PLTT_SLOT(PAL_IX_13), PLTT_SLOT_SIZE);
+                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[i] / 15][gCurrentPinballGame->portraitGfxIndex[i] % 15], OBJ_PLTT_SLOT(PAL_IX_MON_PORTRAIT), PLTT_SLOT_SIZE);
                 }
                 else if (gMain_saveData.pokedexFlags[gCurrentPinballGame->evoTargetSpecies] <= 3)
                 {
                     gCurrentPinballGame->portraitGfxIndex[i] = gCurrentPinballGame->evoTargetSpecies;
-                    DmaCopy16(3, gMonPortraitGroupPals[0][15], OBJ_PLTT_SLOT(PAL_IX_13), PLTT_SLOT_SIZE);
+                    DmaCopy16(3, gMonPortraitGroupPals[0][15], OBJ_PLTT_SLOT(PAL_IX_MON_PORTRAIT), PLTT_SLOT_SIZE);
                 }
                 else
                 {
                     gCurrentPinballGame->portraitGfxIndex[i] = gCurrentPinballGame->evoTargetSpecies;
-                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[i] / 15][gCurrentPinballGame->portraitGfxIndex[i] % 15], OBJ_PLTT_SLOT(PAL_IX_13), PLTT_SLOT_SIZE);
+                    DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[i] / 15][gCurrentPinballGame->portraitGfxIndex[i] % 15], OBJ_PLTT_SLOT(PAL_IX_MON_PORTRAIT), PLTT_SLOT_SIZE);
                 }
             }
             else
             {
                 gCurrentPinballGame->portraitGfxIndex[i] = gCurrentPinballGame->currentSpecies;
-                DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[i] / 15][gCurrentPinballGame->portraitGfxIndex[i] % 15], OBJ_PLTT_SLOT(PAL_IX_13), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[i] / 15][gCurrentPinballGame->portraitGfxIndex[i] % 15], OBJ_PLTT_SLOT(PAL_IX_LOCATION_PORTRAIT), PLTT_SLOT_SIZE);
             }
         case 3:
             DmaCopy16(3, gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[i] / 15] + (gCurrentPinballGame->portraitGfxIndex[i] % 15) * 0x300, 0x06010CA0 + (i * 0x18), 0x300);

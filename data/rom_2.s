@@ -9128,7 +9128,7 @@ gMainRightFlipperSpriteSet:: @ 0x086B1602
 
 gMainBoardBallSpriteSet:: @ 0x086B160C
 .2byte 1
-    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, paletteNum=PAL_IX_1
+    packed_sprite_oaml x=0x0, y=0x0, mosaic=0x1, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, paletteNum=PAL_IX_BALL
 
 gPikachuKickbackSpriteSet:: @ 0x086B1616
 .2byte 2
@@ -9251,7 +9251,7 @@ gMainBoardHatchEggSprite:: @ 0x086B1846
 
 gBallUpgradeFxSpriteSet:: @ 0x086B1858
 .2byte 1
-    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xf7, priority=0x3, paletteNum=PAL_IX_1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0xf7, priority=0x3, paletteNum=PAL_IX_BALL
 
 gSpoinkLauncherSpriteSet:: @ 0x086B1862
 .2byte 3
@@ -9577,26 +9577,26 @@ gCatchBurstPanelElectrifyFxSpriteSet:: @ 0x086B1DA2
 
 gMonCatchBallAbsorbPokemonFxSpriteSet:: @ 0x086B1DC4
 .2byte 16
-    packed_sprite_oaml x=0xA, y=0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x396, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=0xA, y=0x38, spriteSize=SPRITE_SIZE_8x8, tileNum=0x39e, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0x5, y=0x20, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, vFlip=0x1,  tileNum=0x396, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=0x3, y=0x18, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, vFlip=0x1,  tileNum=0x39e, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=0x6, y=0x26, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x362, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0x2, y=0x16, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x372, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0x12, y=0x36, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x37f, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0xA, y=0x26, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x380, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0xA, y=0x16, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x388, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0x2, y=0x46, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x38a, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0xA, y=0x46, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x38e, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0x2, y=0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x38f, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0xA, y=0xE, spriteSize=SPRITE_SIZE_32x8, tileNum=0x391, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=-0x1, y=-0x4, spriteSize=SPRITE_SIZE_16x16, tileNum=0x33b, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=0x7, y=0xC, spriteSize=SPRITE_SIZE_16x8, tileNum=0x341, paletteNum=PAL_IX_1
-    packed_sprite_oaml x=0xF, y=-0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x33f, paletteNum=PAL_IX_1
+    packed_sprite_oaml x=0xA, y=0x18, spriteSize=SPRITE_SIZE_16x32, tileNum=0x396, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=0xA, y=0x38, spriteSize=SPRITE_SIZE_8x8, tileNum=0x39e, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0x5, y=0x20, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1, vFlip=0x1,  tileNum=0x396, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=0x3, y=0x18, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1, vFlip=0x1,  tileNum=0x39e, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=0x6, y=0x26, spriteSize=SPRITE_SIZE_32x32, hFlip=0x1,  tileNum=0x362, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0x2, y=0x16, spriteSize=SPRITE_SIZE_32x16, hFlip=0x1,  tileNum=0x372, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0x12, y=0x36, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x37f, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0xA, y=0x26, spriteSize=SPRITE_SIZE_16x32, hFlip=0x1,  tileNum=0x380, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0xA, y=0x16, spriteSize=SPRITE_SIZE_8x16, hFlip=0x1,  tileNum=0x388, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0x2, y=0x46, spriteSize=SPRITE_SIZE_32x8, hFlip=0x1,  tileNum=0x38a, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0xA, y=0x46, spriteSize=SPRITE_SIZE_8x8, hFlip=0x1,  tileNum=0x38e, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0x2, y=0x6, spriteSize=SPRITE_SIZE_16x8, tileNum=0x38f, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0xA, y=0xE, spriteSize=SPRITE_SIZE_32x8, tileNum=0x391, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=-0x1, y=-0x4, spriteSize=SPRITE_SIZE_16x16, tileNum=0x33b, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=0x7, y=0xC, spriteSize=SPRITE_SIZE_16x8, tileNum=0x341, paletteNum=PAL_IX_BALL
+    packed_sprite_oaml x=0xF, y=-0x4, spriteSize=SPRITE_SIZE_8x16, tileNum=0x33f, paletteNum=PAL_IX_BALL
 
 gMonCatchBallTrailSpriteSet:: @ 0x086B1E46
 .2byte 1
-    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, paletteNum=PAL_IX_1
+    packed_sprite_oaml x=0x0, y=0x0, objMode=ST_OAM_OBJ_BLEND, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, paletteNum=PAL_IX_BALL
 
 gMainModeStartBannerSpriteSet:: @ 0x086B1E50
 .2byte 15
@@ -15417,7 +15417,7 @@ gBonusBoardRightFlipperSpriteSet:: @ 0x086BA176
 
 gBonusBoardBallSpriteSet:: @ 0x086BA180
 .2byte 1
-    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, priority=0x1, paletteNum=PAL_IX_1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, tileNum=0x20, priority=0x1, paletteNum=PAL_IX_BALL
 
 gBonusBoardPausePanelSpriteSet:: @ 0x086BA18A
 .2byte 11
@@ -15446,7 +15446,7 @@ gBonusBoardPauseBottomBorderSpriteSet:: @ 0x086BA1F6
 
 gBonusBoardBallRespawnFxSpriteSet:: @ 0x086BA210
 .2byte 1
-    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x39, priority=0x1, paletteNum=PAL_IX_1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_32x32, tileNum=0x39, priority=0x1, paletteNum=PAL_IX_BALL
 
 gDusclopsBoardDuskullEntity0SpriteSet:: @ 0x086BA21A
 .2byte 2
@@ -15586,7 +15586,7 @@ gKecleonReflectionHeadSpriteSet:: @ 0x086BA3F6
 
 gKecleonReflectionBallSpriteSet:: @ 0x086BA408
 .2byte 1
-    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,  tileNum=0x20, priority=0x3, paletteNum=PAL_IX_1
+    packed_sprite_oaml x=0x0, y=0x0, spriteSize=SPRITE_SIZE_16x16, vFlip=0x1,  tileNum=0x20, priority=0x3, paletteNum=PAL_IX_BALL
 
 gKecleonBallRippleFxSpriteSet:: @ 0x086BA412
 .2byte 4

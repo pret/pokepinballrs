@@ -339,7 +339,7 @@ void UpdateSapphireSeedotCollection(void)
                 gCurrentPinballGame->bannerSlideTimer = 50;
                 gCurrentPinballGame->bannerSlideVelocity = 0;
                 DmaCopy16(3, gModeBannerTilemaps[4], (void *)0x06015800, 0x2400);
-                DmaCopy16(3, gModeBanner_Pals[4], OBJ_PLTT_SLOT(PAL_IX_14), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gModeBanner_Pals[4], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
                 gMain.blendControl = 0xCE;
             }
         }
@@ -550,8 +550,8 @@ void DrawSapphireShopSignSprite(void)
     {
         group->baseX = 16 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 115 - gCurrentPinballGame->cameraYOffset;
-        index = gCurrentPinballGame->shopSignPaletteIndex + gCurrentPinballGame->activePaletteIndex * 3;
-        DmaCopy16(3, gSapphireShopSign_Pals[index], OBJ_PLTT_SLOT(PAL_IX_8), PLTT_SLOT_SIZE);
+        index = gCurrentPinballGame->shopSignPaletteIndex + gCurrentPinballGame->paletteDimmingIx * 3;
+        DmaCopy16(3, gSapphireShopSign_Pals[index], OBJ_PLTT_SLOT(PAL_IX_SAPPHIRE_MART_SIGN), PLTT_SLOT_SIZE);
         DmaCopy16(3, gSapphireShopSignTileGfx[gCurrentPinballGame->shopSignFrame], (void *) 0x06014B20, 0x480);
         for (i = 0; i < 2; i++)
         {

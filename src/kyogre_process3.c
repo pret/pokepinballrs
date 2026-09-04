@@ -111,7 +111,7 @@ void KyogreBoardProcess_3A_383E4(void)
     UpdateKyogreFieldEntities();
     AnimateKyogreBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_KYOGRE);
-    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_1), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
     DmaCopy16(3, gKyogreFadeInPaletteProgression[0][0], BG_PLTT, 8*PLTT_SLOT_SIZE);
     DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
 }
@@ -840,7 +840,7 @@ void UpdateKyogreFieldEntities(void)
         for (i = 0; i < 6; i++)
         {
             oamSimple = &group->oam[i];
-            gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_13;
+            gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_MON_PORTRAIT;
             gOamBuffer[oamSimple->oamId].priority = gCurrentPinballGame->creatureOamPriority;
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -885,7 +885,7 @@ void UpdateKyogreFieldEntities(void)
             if (gCurrentPinballGame->freezeTrapAnimFrame == 2)
             {
                 int a; // force addition of 8 instead of offsetting the global constant
-                DmaCopy16(3, gBall_Pals[a = gCurrentPinballGame->ballUpgradeType + 8], OBJ_PLTT_SLOT(PAL_IX_1), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gBall_Pals[a = gCurrentPinballGame->ballUpgradeType + 8], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
 
             }
             break;
@@ -991,7 +991,7 @@ void UpdateKyogreFieldEntities(void)
 
                 if (gCurrentPinballGame->freezeTrapAnimFrame == 15)
                 {
-                    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_1), 0x20);
+                    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
                     m4aSongNumStart(SE_KYOGRE_FREEZE_ESCAPED);
                 }
             }

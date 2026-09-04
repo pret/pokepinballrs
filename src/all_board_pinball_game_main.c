@@ -71,9 +71,13 @@ void PinballGame_State0_49ED4(void)
         SetupDisplayRegistersForField();
         InitPinballGameState();
         loadFieldBoardGraphics();
-        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3,
+            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_0],
+            OBJ_PLTT,
+            OBJ_PLTT_SIZE);
+
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
 
         ConfigureBoardProcessesForField();
         for (i = 0; i < 9; i++)
@@ -103,9 +107,13 @@ void PinballGame_State0_49ED4(void)
         SetupDisplayRegistersForField();
         InitPinballGameState();
         loadFieldBoardGraphics();
-        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3,
+            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_0],
+            OBJ_PLTT,
+            OBJ_PLTT_SIZE);
+
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
 
         ConfigureBoardProcessesForField();
         for (i = 0; i < 9; i++)
@@ -129,7 +137,10 @@ void PinballGame_State0_49ED4(void)
         SetupDisplayRegistersForField();
         InitPinballGameState();
         loadFieldBoardGraphics();
-        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3,
+            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_0],
+            OBJ_PLTT,
+            OBJ_PLTT_SIZE);
         ConfigureBoardProcessesForField();
         for (i = 0; i < 9; i++)
             CurrentBoardProcPairs_020028D8[i].initFunc();
@@ -156,7 +167,7 @@ void PinballGame_State0_49ED4(void)
         if (gMain.mainState != STATE_GAME_IDLE && gCurrentPinballGame->savedBgmSongHeader && gMPlayInfo_BGM.status < 0)
             MPlayStart(&gMPlayInfo_BGM, gCurrentPinballGame->savedBgmSongHeader);
         if (gMain.selectedField < MAIN_FIELD_COUNT)
-            RestoreBoardObjPalettes(gCurrentPinballGame->activePaletteIndex);
+            RestoreBoardObjPalettes(gCurrentPinballGame->paletteDimmingIx);
         break;
     case 1:
     case 2:
