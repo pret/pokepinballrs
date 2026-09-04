@@ -203,6 +203,11 @@ s16 Cos(u16 arg0)
     return Sin(arg0 + 0x4000);
 }
 
+// sin table produces values from 0 - 20000
+//#define TRIG_SCALE 20000
+
+
+
 static void ReadKeys(void)
 {
     u16 keyInput = ~REG_KEYINPUT;
@@ -291,7 +296,7 @@ void DefaultMainCallback(void)
     if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
     {
         VBlankIntrWait();
-        DmaCopy32(3, gOamBuffer, (void *)OAM, OAM_SIZE);
+        DmaCopy32(3, gOamBuffer, OAM, OAM_SIZE);
         REG_DISPCNT = gMain.dispcntBackup;
         REG_BG0HOFS = gMain.bgOffsets[0].xOffset;
         REG_BG0VOFS = gMain.bgOffsets[0].yOffset;

@@ -63,8 +63,8 @@ extern const u16 gGravityDeltas_Light[4];
     maxSpeed = (max_speed);                              \
     if (squaredSpeed > maxSpeed * maxSpeed)              \
     {                                                    \
-        velocity.x =  (maxSpeed * Cos((angle))) / 20000; \
-        velocity.y = (-maxSpeed * Sin((angle))) / 20000; \
+        velocity.x = MulCos(maxSpeed,angle); \
+        velocity.y = MulSin(-maxSpeed,angle); \
     }                                                    \
     else                                                 \
     {                                                    \
