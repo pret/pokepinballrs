@@ -5,6 +5,8 @@
 #include "constants/board/main_board.h"
 #include "constants/board/bonus_board.h"
 #include "constants/anglemath.h"
+#include "inline_load_lighting_pal.h"
+
 
 extern struct SongHeader se_roulette_tick;
 extern struct SongHeader se_mon_catch_ball_woosh;
@@ -598,24 +600,8 @@ void RunMonCaptureSequence(void)
                 OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
                 PLTT_SLOT_SIZE);
 
-            if (gMain.selectedField == FIELD_SAPPHIRE)
-            {
-                DmaCopy16(3,
-                    gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_2],
-                    OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_2),
-                    LIGHTING_BASE_2_SAPPHIRE_COUNT * PLTT_SLOT_SIZE);
-            }
-            else
-                DmaCopy16(3,
-                    gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_2],
-                    OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_2),
-                    LIGHTING_BASE_2_RUBY_COUNT * PLTT_SLOT_SIZE);
+            LoadObjLightingPalette(LIGHTING_PAL_IX_DIMMING);
 
-            DmaCopy16(3,
-                gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_10],
-                OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_10),
-                LIGHTING_BASE_10_COUNT * PLTT_SLOT_SIZE);
-            gCurrentPinballGame->paletteDimmingIx = LIGHTING_PAL_IX_DIMMING;
             gCurrentPinballGame->paletteSwapActive = TRUE;
         }
         break;
@@ -630,24 +616,8 @@ void RunMonCaptureSequence(void)
                 OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
                 PLTT_SLOT_SIZE);
 
-            if (gMain.selectedField == FIELD_SAPPHIRE)
-            {
-                DmaCopy16(3,
-                    gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIM][PAL_IX_DIMMING_BASE_2],
-                    OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_2),
-                    LIGHTING_BASE_2_SAPPHIRE_COUNT * PLTT_SLOT_SIZE);
-            }
-            else
-                DmaCopy16(3,
-                    gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIM][PAL_IX_DIMMING_BASE_2],
-                    OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_2),
-                    LIGHTING_BASE_2_RUBY_COUNT * PLTT_SLOT_SIZE);
+            LoadObjLightingPalette(LIGHTING_PAL_IX_DIM);
 
-            DmaCopy16(3,
-                gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIM][PAL_IX_DIMMING_BASE_10],
-                OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_10),
-                LIGHTING_BASE_10_COUNT * PLTT_SLOT_SIZE);
-            gCurrentPinballGame->paletteDimmingIx = LIGHTING_PAL_IX_DIM;
             gCurrentPinballGame->paletteSwapActive = TRUE;
         }
 
@@ -1001,24 +971,7 @@ void RunMonCaptureSequence(void)
                         OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
                         PLTT_SLOT_SIZE);
 
-                    if (gMain.selectedField == FIELD_SAPPHIRE)
-                    {
-                        DmaCopy16(3,
-                            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_2],
-                            OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_2),
-                            LIGHTING_BASE_2_SAPPHIRE_COUNT * PLTT_SLOT_SIZE);
-                    }
-                    else
-                        DmaCopy16(3,
-                            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_2],
-                            OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_2),
-                            LIGHTING_BASE_2_RUBY_COUNT * PLTT_SLOT_SIZE);
-
-                    DmaCopy16(3,
-                        gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_10],
-                        OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_10),
-                        LIGHTING_BASE_10_COUNT * PLTT_SLOT_SIZE);
-                    gCurrentPinballGame->paletteDimmingIx = LIGHTING_PAL_IX_DIMMING;
+                    LoadObjLightingPalette(LIGHTING_PAL_IX_DIMMING);
                     gCurrentPinballGame->paletteSwapActive = TRUE;
                 }
             }
@@ -1033,25 +986,7 @@ void RunMonCaptureSequence(void)
                         OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
                         PLTT_SLOT_SIZE);
 
-                    if (gMain.selectedField == FIELD_SAPPHIRE)
-                    {
-                        DmaCopy16(3,
-                            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_2],
-                            OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_2),
-                            LIGHTING_BASE_2_SAPPHIRE_COUNT * PLTT_SLOT_SIZE);
-                    }
-                    else
-                        DmaCopy16(3,
-                            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_2],
-                            OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_2),
-                            LIGHTING_BASE_2_RUBY_COUNT * PLTT_SLOT_SIZE);
-
-                    DmaCopy16(3,
-                        gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_10],
-                        OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_10),
-                        LIGHTING_BASE_10_COUNT * PLTT_SLOT_SIZE);
-
-                    gCurrentPinballGame->paletteDimmingIx = LIGHTING_PAL_IX_NORMAL;
+                    LoadObjLightingPalette(LIGHTING_PAL_IX_NORMAL);
                     gCurrentPinballGame->paletteSwapActive = TRUE;
                 }
             }
