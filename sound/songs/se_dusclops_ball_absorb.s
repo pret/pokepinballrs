@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_dusclops_ball_absorb_grp, gUnknown_08531D4C
+	.equ	se_dusclops_ball_absorb_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_dusclops_ball_absorb_pri, 5
 	.equ	se_dusclops_ball_absorb_rev, reverb_set+50
 	.equ	se_dusclops_ball_absorb_mvl, 127

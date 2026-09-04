@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_spheal_surface_at_ramp_grp, gUnknown_08531D4C
+	.equ	se_spheal_surface_at_ramp_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_spheal_surface_at_ramp_pri, 5
 	.equ	se_spheal_surface_at_ramp_rev, reverb_set+50
 	.equ	se_spheal_surface_at_ramp_mvl, 127

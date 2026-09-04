@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_totodile_climbs_rope_grp, gUnknown_0853174C
+	.equ	se_totodile_climbs_rope_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_totodile_climbs_rope_pri, 5
 	.equ	se_totodile_climbs_rope_rev, reverb_set+50
 	.equ	se_totodile_climbs_rope_mvl, 127

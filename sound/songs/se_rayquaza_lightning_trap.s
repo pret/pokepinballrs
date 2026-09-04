@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_rayquaza_lightning_trap_grp, gUnknown_08531D4C
+	.equ	se_rayquaza_lightning_trap_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_rayquaza_lightning_trap_pri, 5
 	.equ	se_rayquaza_lightning_trap_rev, reverb_set+50
 	.equ	se_rayquaza_lightning_trap_mvl, 127

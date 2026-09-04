@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_ramp_prize_collected_grp, gUnknown_08531D4C
+	.equ	se_ramp_prize_collected_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_ramp_prize_collected_pri, 5
 	.equ	se_ramp_prize_collected_rev, reverb_set+50
 	.equ	se_ramp_prize_collected_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_score_entry_letter_change_grp, gUnknown_0853174C
+	.equ	se_score_entry_letter_change_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_score_entry_letter_change_pri, 5
 	.equ	se_score_entry_letter_change_rev, reverb_set+50
 	.equ	se_score_entry_letter_change_mvl, 127

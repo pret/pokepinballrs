@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_rayquaza_whirlwind_ball_land_grp, gUnknown_08531D4C
+	.equ	se_rayquaza_whirlwind_ball_land_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_rayquaza_whirlwind_ball_land_pri, 5
 	.equ	se_rayquaza_whirlwind_ball_land_rev, reverb_set+50
 	.equ	se_rayquaza_whirlwind_ball_land_mvl, 127

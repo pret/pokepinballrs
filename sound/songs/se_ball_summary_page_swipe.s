@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_ball_summary_page_swipe_grp, gUnknown_08531D4C
+	.equ	se_ball_summary_page_swipe_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_ball_summary_page_swipe_pri, 5
 	.equ	se_ball_summary_page_swipe_rev, reverb_set+50
 	.equ	se_ball_summary_page_swipe_mvl, 127

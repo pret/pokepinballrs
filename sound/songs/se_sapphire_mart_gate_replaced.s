@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_sapphire_mart_gate_replaced_grp, gUnknown_08531D4C
+	.equ	se_sapphire_mart_gate_replaced_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_sapphire_mart_gate_replaced_pri, 5
 	.equ	se_sapphire_mart_gate_replaced_rev, reverb_set+50
 	.equ	se_sapphire_mart_gate_replaced_mvl, 127

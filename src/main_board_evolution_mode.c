@@ -68,7 +68,7 @@ void InitEvolutionMode(void)
             gCurrentPinballGame->evoItemGfxIndex = 0;
     }
 
-    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(PAL_IX_12), PLTT_SLOT_SIZE);
     gCurrentPinballGame->evoArrowProgress = 0;
     gCurrentPinballGame->shopArrowActive = FALSE;
     gCurrentPinballGame->catchModeEventTimer = 0;
@@ -389,7 +389,7 @@ void UpdateEvolutionItemAnimation(void)
         {
             gCurrentPinballGame->activePortraitType = 15;
             DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], (void *)0x06015800, 0x1C00);
-            DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(15), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(PAL_IX_15), PLTT_SLOT_SIZE);
             gCurrentPinballGame->evoItemAnimFrame = 0;
             gCurrentPinballGame->evoItemAnimFrameTimer = 0;
         }

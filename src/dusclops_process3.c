@@ -76,7 +76,7 @@ void DuskullBonus_Setup(void)
 
     m4aSongNumStart(MUS_BONUS_FIELD_DUSKULL);
 
-    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
 }
 
 void DusclopsBoardProcess_3B_33130(void)
@@ -1023,12 +1023,12 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
         if (tileOffset == DUSCLOPS_TILE_OFFSET_HIT)
         {
             if (gCurrentPinballGame->bossFrameTimer <= 5)
-                gOamBuffer[oamSimple->oamId].paletteNum = 4;
+                gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_4;
             else
-                gOamBuffer[oamSimple->oamId].paletteNum = 3;
+                gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_3;
         }
         else
-            gOamBuffer[oamSimple->oamId].paletteNum = 3;
+            gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_3;
 
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + spriteGroup->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + spriteGroup->baseY;

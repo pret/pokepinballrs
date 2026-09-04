@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_unk_18_grp, gUnknown_0853135C
+	.equ	mus_unk_18_grp, gVoiceGroup_UnkMus_0853135C
 	.equ	mus_unk_18_pri, 0
 	.equ	mus_unk_18_rev, reverb_set+50
 	.equ	mus_unk_18_mvl, 127

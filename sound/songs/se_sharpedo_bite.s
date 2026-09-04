@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_sharpedo_bite_grp, gUnknown_08531D4C
+	.equ	se_sharpedo_bite_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_sharpedo_bite_pri, 5
 	.equ	se_sharpedo_bite_rev, reverb_set+50
 	.equ	se_sharpedo_bite_mvl, 127

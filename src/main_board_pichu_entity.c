@@ -388,7 +388,7 @@ void PichuArrivalSequence(void)
             {
                 oamSimple = &group->oam[i];
                 gOamBuffer[oamSimple->oamId].priority = 1;
-                gOamBuffer[oamSimple->oamId].paletteNum = 3;
+                gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_3;
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_ball_saved_grp, gUnknown_0853174C
+	.equ	se_ball_saved_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_ball_saved_pri, 5
 	.equ	se_ball_saved_rev, reverb_set+50
 	.equ	se_ball_saved_mvl, 127

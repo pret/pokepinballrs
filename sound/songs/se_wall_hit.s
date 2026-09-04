@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_wall_hit_grp, gUnknown_08532310
+	.equ	se_wall_hit_grp, gVoiceGroup_SFX_08532310
 	.equ	se_wall_hit_pri, 5
 	.equ	se_wall_hit_rev, reverb_set+50
 	.equ	se_wall_hit_mvl, 127

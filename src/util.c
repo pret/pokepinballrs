@@ -178,7 +178,7 @@ void ClearSprites(void)
         gOamBuffer[i].size = 0;
         gOamBuffer[i].tileNum = 0;
         gOamBuffer[i].priority = 0;
-        gOamBuffer[i].paletteNum = 0;
+        gOamBuffer[i].paletteNum = PAL_IX_0;
         gOamBuffer[i].affineParam = 0;
     }
 }

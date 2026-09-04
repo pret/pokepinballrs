@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_groudon_intro_leap_grp, gUnknown_08531D4C
+	.equ	se_groudon_intro_leap_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_groudon_intro_leap_pri, 5
 	.equ	se_groudon_intro_leap_rev, reverb_set+50
 	.equ	se_groudon_intro_leap_mvl, 127

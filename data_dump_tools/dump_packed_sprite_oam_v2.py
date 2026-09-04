@@ -117,7 +117,7 @@ def format_oam_entry(entry: Dict[str, int], packVariant: str) -> str:
         parts.append(f"size=0x{entry['size']:X}")
 
     parts.append(f"tileNum=0x{entry['tileNum']:X}")
-    parts.append(f"paletteNum=0x{entry['paletteNum']:X}")
+    parts.append(f"paletteNum=PAL_IX_{entry['paletteNum']:X}")
 
     return f"    {packVariant} " + ", ".join(parts)
 

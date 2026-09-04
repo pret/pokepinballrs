@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_whiscash_emerge_splash_grp, gUnknown_08531D4C
+	.equ	se_whiscash_emerge_splash_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_whiscash_emerge_splash_pri, 5
 	.equ	se_whiscash_emerge_splash_rev, reverb_set+50
 	.equ	se_whiscash_emerge_splash_mvl, 127

@@ -132,7 +132,7 @@ void RayquazaBoardProcess_3A_3E79C(void)
     DmaCopy16(3, gRayquazaSpriteSheet, (void *)0x06011620, 0x860);
     UpdateRayquazaEntityLogic();
     RenderRayquazaSprites();
-    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
 }
 
 void RayquazaBoardProcess_3B_3EB2C(void)
@@ -705,7 +705,7 @@ void UpdateRayquazaEntityLogic(void)
 void RenderRayquazaSprites(void)
 {
     s16 i;
-    s16 sp0;
+    s16 palFlashIx;
     s16 varSL;
     s32 temp;
     struct SpriteGroup *group;
@@ -717,7 +717,7 @@ void RenderRayquazaSprites(void)
     s8 y;
 
     varSL = 0;
-    sp0 = 0;
+    palFlashIx = PAL_IX_0;
     group = &gMain.spriteGroups[SG_RAYQUAZA_ENTITY_BACKGROUND_FLY_DOWN];
     if (group->active)
     {
@@ -796,28 +796,28 @@ void RenderRayquazaSprites(void)
             var1 = gRayquazaAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][0];
             if (gCurrentPinballGame->legendaryFlashState > 9)
             {
-                sp0 = 11;
+                palFlashIx = PAL_IX_11;
                 oamSimple = &group->oam[0];
                 gOamBuffer[oamSimple->oamId].x = 240;
                 gOamBuffer[oamSimple->oamId].y = 180;
-                gOamBuffer[oamSimple->oamId].paletteNum = sp0;
+                gOamBuffer[oamSimple->oamId].paletteNum = palFlashIx;
             }
             else
             {
                 if (gCurrentPinballGame->legendaryFlashState == 1)
                 {
                     varSL = 2;
-                    sp0 = 14;
+                    palFlashIx = PAL_IX_14;
                 }
                 else if (gCurrentPinballGame->legendaryFlashState == 3)
                 {
                     varSL = 2;
-                    sp0 = 11;
+                    palFlashIx = PAL_IX_11;
                 }
                 else
                 {
                     varSL = gCurrentPinballGame->bossVulnerable;
-                    sp0 = 15;
+                    palFlashIx = PAL_IX_15;
                 }
 
                 if (gCurrentPinballGame->captureSequenceTimer == 21)
@@ -838,9 +838,9 @@ void RenderRayquazaSprites(void)
                 gOamBuffer[oamSimple->oamId].x += group->baseX;
                 gOamBuffer[oamSimple->oamId].y += group->baseY;
                 if (gCurrentPinballGame->legendaryFlashState < 2)
-                    gOamBuffer[oamSimple->oamId].paletteNum = sp0;
+                    gOamBuffer[oamSimple->oamId].paletteNum = palFlashIx;
                 else
-                    sp0 = gOamBuffer[oamSimple->oamId].paletteNum;
+                    palFlashIx = gOamBuffer[oamSimple->oamId].paletteNum;
             }
 
             gCurrentPinballGame->bossVulnerable = gRayquazaAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][2];
@@ -874,7 +874,7 @@ void RenderRayquazaSprites(void)
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
                 gOamBuffer[oamSimple->oamId].tileNum = varSL * 12 + i * 8 + 0x109;
-                gOamBuffer[oamSimple->oamId].paletteNum = sp0;
+                gOamBuffer[oamSimple->oamId].paletteNum = palFlashIx;
             }
         }
 
@@ -973,7 +973,7 @@ void UpdateRayquazaMinionsAndEffects(void)
         for (j = 0; j < 6; j++)
         {
             oamSimple = &group->oam[j];
-            gOamBuffer[oamSimple->oamId].paletteNum = 13;
+            gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_13;
             gOamBuffer[oamSimple->oamId].priority = gCurrentPinballGame->creatureOamPriority;
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;

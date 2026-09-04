@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kecleon_side_look_grp, gUnknown_08531D4C
+	.equ	se_kecleon_side_look_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_kecleon_side_look_pri, 5
 	.equ	se_kecleon_side_look_rev, reverb_set+50
 	.equ	se_kecleon_side_look_mvl, 127

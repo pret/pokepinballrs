@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_prize_awarded_grp, gUnknown_0852DDE0
+	.equ	mus_prize_awarded_grp, gVoiceGroup_Inst_0852DDE0
 	.equ	mus_prize_awarded_pri, 0
 	.equ	mus_prize_awarded_rev, reverb_set+50
 	.equ	mus_prize_awarded_mvl, 127

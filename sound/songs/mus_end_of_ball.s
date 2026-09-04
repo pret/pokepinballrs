@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_end_of_ball_grp, gUnknown_0852DDE0
+	.equ	mus_end_of_ball_grp, gVoiceGroup_Inst_0852DDE0
 	.equ	mus_end_of_ball_pri, 0
 	.equ	mus_end_of_ball_rev, reverb_set+50
 	.equ	mus_end_of_ball_mvl, 127

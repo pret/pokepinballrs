@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_groudon_fire_grab_resist_grp, gUnknown_08531D4C
+	.equ	se_groudon_fire_grab_resist_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_groudon_fire_grab_resist_pri, 5
 	.equ	se_groudon_fire_grab_resist_rev, reverb_set+50
 	.equ	se_groudon_fire_grab_resist_mvl, 127

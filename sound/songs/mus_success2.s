@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_success2_grp, gUnknown_0852DDE0
+	.equ	mus_success2_grp, gVoiceGroup_Inst_0852DDE0
 	.equ	mus_success2_pri, 0
 	.equ	mus_success2_rev, reverb_set+50
 	.equ	mus_success2_mvl, 127

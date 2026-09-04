@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_evo_mode_grp, gUnknown_08530D5C
+	.equ	mus_evo_mode_grp, gVoiceGroup_EvoMode_08530D5C
 	.equ	mus_evo_mode_pri, 0
 	.equ	mus_evo_mode_rev, reverb_set+50
 	.equ	mus_evo_mode_mvl, 127

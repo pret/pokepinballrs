@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_warp_grp, gUnknown_0853174C
+	.equ	se_warp_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_warp_pri, 5
 	.equ	se_warp_rev, reverb_set+50
 	.equ	se_warp_mvl, 127

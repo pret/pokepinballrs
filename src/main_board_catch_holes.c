@@ -31,7 +31,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gCurrentPinballGame->activePortraitType = 18;
 
             DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
-            DmaCopy16(3, gShopNameDisplay_Pals, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gShopNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_12), PLTT_SLOT_SIZE);
         }
 
         if (gCurrentPinballGame->shopEntryTimer >= 145 && gCurrentPinballGame->shopEntryTimer < 150)
@@ -44,12 +44,12 @@ void UpdateShopEntryAnimation(s16 arg0)
                 {
                     if (gMain.selectedField == FIELD_SAPPHIRE)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(PAL_IX_2), 6*PLTT_SLOT_SIZE);
                     }
                     else
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(PAL_IX_2), 7*PLTT_SLOT_SIZE);
 
-                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
+                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(PAL_IX_10), 3*PLTT_SLOT_SIZE);
 
                     gCurrentPinballGame->activePaletteIndex = 1;
                     gCurrentPinballGame->paletteSwapActive = FALSE;
@@ -63,12 +63,12 @@ void UpdateShopEntryAnimation(s16 arg0)
                 {
                     if (gMain.selectedField == FIELD_SAPPHIRE)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][2], OBJ_PLTT_SLOT(PAL_IX_2), 6*PLTT_SLOT_SIZE);
                     }
                     else
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][2], OBJ_PLTT_SLOT(PAL_IX_2), 7*PLTT_SLOT_SIZE);
 
-                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
+                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[2][10], OBJ_PLTT_SLOT(PAL_IX_10), 3*PLTT_SLOT_SIZE);
 
                     gCurrentPinballGame->activePaletteIndex = 2;
                     gCurrentPinballGame->paletteSwapActive = FALSE;
@@ -92,7 +92,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
 
-            DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(PAL_IX_14), PLTT_SLOT_SIZE);
             DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_CHAR_SCREEN_ADDR(0,4), 0xC40);
 
             gMain.bgOffsets[0].yOffset = 80;
@@ -276,16 +276,16 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                     if (gCurrentPinballGame->catchModeEventTimer <= 3)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][0], OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
 
                         if (gMain.selectedField == FIELD_SAPPHIRE)
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(PAL_IX_2), 6*PLTT_SLOT_SIZE);
                         }
                         else
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(PAL_IX_2), 7*PLTT_SLOT_SIZE);
 
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(PAL_IX_10), 3*PLTT_SLOT_SIZE);
 
                         gCurrentPinballGame->activePaletteIndex = 1;
                         gCurrentPinballGame->paletteSwapActive = TRUE;
@@ -297,16 +297,16 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                     if (gCurrentPinballGame->catchModeEventTimer == 0)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
 
                         if (gMain.selectedField == FIELD_SAPPHIRE)
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(PAL_IX_2), 6*PLTT_SLOT_SIZE);
                         }
                         else
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(PAL_IX_2), 7*PLTT_SLOT_SIZE);
 
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][10], OBJ_PLTT_SLOT(PAL_IX_10), 3*PLTT_SLOT_SIZE);
 
                         gCurrentPinballGame->activePaletteIndex = 0;
                         gCurrentPinballGame->paletteSwapActive = TRUE;
@@ -379,7 +379,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->bannerSlideVelocity = 0;
 
                 DmaCopy16(3, gModeBannerTilemaps[3], OBJ_VRAM1 + 0x1800, 0x2400);
-                DmaCopy16(3, gModeBanner_Pals[3], OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gModeBanner_Pals[3], OBJ_PLTT_SLOT(PAL_IX_14), PLTT_SLOT_SIZE);
 
                 gMain.blendControl = 206;
                 gCurrentPinballGame->shopEntryTimer = 148;
@@ -395,7 +395,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->activePortraitType = 18;
 
                 DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
-                DmaCopy16(3, gEvoNameDisplay_Pals, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gEvoNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_12), PLTT_SLOT_SIZE);
             }
 
             if (gCurrentPinballGame->shopEntryTimer == 145)
@@ -429,7 +429,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = TRUE;
 
-                DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(PAL_IX_14), PLTT_SLOT_SIZE);
 
                 gMain.bgOffsets[0].yOffset = 80;
                 gMain.shopPanelSlideOffset = 0;
@@ -710,16 +710,16 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                     if (gCurrentPinballGame->catchModeEventTimer <= 3)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][0], OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
 
                         if (gMain.selectedField == FIELD_SAPPHIRE)
                         {
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(PAL_IX_2), 6*PLTT_SLOT_SIZE);
                         }
                         else
-                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
+                            DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][2], OBJ_PLTT_SLOT(PAL_IX_2), 7*PLTT_SLOT_SIZE);
 
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[1][10], OBJ_PLTT_SLOT(PAL_IX_10), 3*PLTT_SLOT_SIZE);
                         gCurrentPinballGame->activePaletteIndex = 1;
                         gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
@@ -731,16 +731,16 @@ void UpdateShopEntryAnimation(s16 arg0)
                     if (gCurrentPinballGame->catchModeEventTimer != 0)
                         return;
 
-                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT_SLOT(0), PLTT_SLOT_SIZE);
+                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
 
                     if (gMain.selectedField == FIELD_SAPPHIRE)
                     {
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 6*PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(PAL_IX_2), 6*PLTT_SLOT_SIZE);
                     }
                     else
-                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(2), 7*PLTT_SLOT_SIZE);
+                        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][2], OBJ_PLTT_SLOT(PAL_IX_2), 7*PLTT_SLOT_SIZE);
 
-                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][10], OBJ_PLTT_SLOT(10), 3*PLTT_SLOT_SIZE);
+                    DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][10], OBJ_PLTT_SLOT(PAL_IX_10), 3*PLTT_SLOT_SIZE);
 
                     gCurrentPinballGame->activePaletteIndex = 0;
                     gCurrentPinballGame->paletteSwapActive = TRUE;

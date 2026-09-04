@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kecleon_scope_fall_grp, gUnknown_08531D4C
+	.equ	se_kecleon_scope_fall_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_kecleon_scope_fall_pri, 5
 	.equ	se_kecleon_scope_fall_rev, reverb_set+50
 	.equ	se_kecleon_scope_fall_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_bonus_score_tallied_grp, gUnknown_0853174C
+	.equ	se_bonus_score_tallied_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_bonus_score_tallied_pri, 5
 	.equ	se_bonus_score_tallied_rev, reverb_set+50
 	.equ	se_bonus_score_tallied_mvl, 127

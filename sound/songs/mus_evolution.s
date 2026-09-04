@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_evolution_grp, gUnknown_0852E404
+	.equ	mus_evolution_grp, gVoiceGroup_Evolution_0852E404
 	.equ	mus_evolution_pri, 0
 	.equ	mus_evolution_rev, reverb_set+50
 	.equ	mus_evolution_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_menu_cancel_grp, gUnknown_0853174C
+	.equ	se_menu_cancel_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_menu_cancel_pri, 5
 	.equ	se_menu_cancel_rev, reverb_set+50
 	.equ	se_menu_cancel_mvl, 127

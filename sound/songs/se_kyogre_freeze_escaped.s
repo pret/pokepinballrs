@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kyogre_freeze_escaped_grp, gUnknown_08532310
+	.equ	se_kyogre_freeze_escaped_grp, gVoiceGroup_SFX_08532310
 	.equ	se_kyogre_freeze_escaped_pri, 5
 	.equ	se_kyogre_freeze_escaped_rev, reverb_set+50
 	.equ	se_kyogre_freeze_escaped_mvl, 127

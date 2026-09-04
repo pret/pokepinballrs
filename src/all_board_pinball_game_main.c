@@ -73,7 +73,7 @@ void PinballGame_State0_49ED4(void)
         loadFieldBoardGraphics();
         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_1), PLTT_SLOT_SIZE);
 
         ConfigureBoardProcessesForField();
         for (i = 0; i < 9; i++)
@@ -105,7 +105,7 @@ void PinballGame_State0_49ED4(void)
         loadFieldBoardGraphics();
         DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT, OBJ_PLTT_SIZE);
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_1), PLTT_SLOT_SIZE);
 
         ConfigureBoardProcessesForField();
         for (i = 0; i < 9; i++)

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kyogre_breach_surface_grp, gUnknown_08531D4C
+	.equ	se_kyogre_breach_surface_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_kyogre_breach_surface_pri, 5
 	.equ	se_kyogre_breach_surface_rev, reverb_set+50
 	.equ	se_kyogre_breach_surface_mvl, 127

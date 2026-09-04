@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kecleon_hit_damaged_grp, gUnknown_08531D4C
+	.equ	se_kecleon_hit_damaged_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_kecleon_hit_damaged_pri, 5
 	.equ	se_kecleon_hit_damaged_rev, reverb_set+50
 	.equ	se_kecleon_hit_damaged_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_bonus_field_spheal_grp, gUnknown_08532808
+	.equ	mus_bonus_field_spheal_grp, gVoiceGroup_Inst_08532808
 	.equ	mus_bonus_field_spheal_pri, 0
 	.equ	mus_bonus_field_spheal_rev, reverb_set+50
 	.equ	mus_bonus_field_spheal_mvl, 127

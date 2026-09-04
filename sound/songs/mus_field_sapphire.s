@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_field_sapphire_grp, gUnknown_08532808
+	.equ	mus_field_sapphire_grp, gVoiceGroup_Inst_08532808
 	.equ	mus_field_sapphire_pri, 0
 	.equ	mus_field_sapphire_rev, reverb_set+50
 	.equ	mus_field_sapphire_mvl, 127

@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	mus_high_score_grp, gUnknown_08532808
+	.equ	mus_high_score_grp, gVoiceGroup_Inst_08532808
 	.equ	mus_high_score_pri, 0
 	.equ	mus_high_score_rev, reverb_set+50
 	.equ	mus_high_score_mvl, 127

@@ -481,7 +481,7 @@ void DrawRubySideBumperSprites(void)
                 gCurrentPinballGame->bannerSlideTimer = 50;
                 gCurrentPinballGame->bannerSlideVelocity = 0;
                 DmaCopy16(3, gModeBannerTilemaps[4], (void *)0x06015800, 0x2400);
-                DmaCopy16(3, gModeBanner_Pals[4], OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gModeBanner_Pals[4], OBJ_PLTT_SLOT(PAL_IX_14), PLTT_SLOT_SIZE);
                 gMain.blendControl = 0xCE;
             }
         }

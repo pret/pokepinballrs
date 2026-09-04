@@ -30,7 +30,7 @@ EWRAM_DATA s16 gBonusFieldSelectTimer = 0;
 EWRAM_DATA s16 gBonusFieldLoadingCounter = 0;
 EWRAM_DATA s8 gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
 EWRAM_DATA s8 gBonusFieldSelectNextMainState = STATE_INTRO;
-EWRAM_DATA u8 gBonusFieldHighlightPalette = 0;
+EWRAM_DATA u8 gBonusFieldHighlightPalette = PAL_IX_0;
 
 extern void (*const gBonusFieldSelectStateFuncs[])(void);
 
@@ -73,7 +73,7 @@ void LoadBonusFieldSelectGraphics(void)
     DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, BG_CHAR_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gBonusFieldSelectBg1_Tilemap, BG_CHAR_SCREEN_ADDR(0,1), BG_SCREEN_SIZE);
     DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, BG_CHAR_SCREEN_ADDR(0,2), BG_SCREEN_SIZE);
-    DmaCopy16(3, gFieldSelectSpritePals, OBJ_PLTT_SLOT(0), 3*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gFieldSelectSpritePals, OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
     DmaCopy16(3, gFieldSelectSpriteGfx, OBJ_VRAM0, 0x4020);
 
     EnableVBlankInterrupts();
@@ -90,7 +90,7 @@ void InitBonusFieldSelectState(void)
     gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
     gBonusFieldSelectTimer = 0;
     gBonusFieldLoadingCounter = 0;
-    gBonusFieldHighlightPalette = 0;
+    gBonusFieldHighlightPalette = PAL_IX_0;
     gBallSpeedDisplayToggle = 0;
     gBallSpeedSubmenuVisible = FALSE;
     gBonusFieldSelectNextMainState = STATE_INTRO;
@@ -182,7 +182,7 @@ void BonusFieldSelect_Menu(void)
         if (gBonusFieldSelectTimer > 5)
         {
             gBonusFieldSelectTimer = 0;
-            gBonusFieldHighlightPalette = 2 - gBonusFieldHighlightPalette;
+            gBonusFieldHighlightPalette = PAL_IX_2 - gBonusFieldHighlightPalette;
             gBonusFieldLoadingCounter++;
             if (gBonusFieldLoadingCounter > 5)
             {

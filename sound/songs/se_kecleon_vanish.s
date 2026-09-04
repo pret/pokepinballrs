@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kecleon_vanish_grp, gUnknown_08531D4C
+	.equ	se_kecleon_vanish_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_kecleon_vanish_pri, 5
 	.equ	se_kecleon_vanish_rev, reverb_set+50
 	.equ	se_kecleon_vanish_mvl, 127

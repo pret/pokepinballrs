@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_coin_collected_grp, gUnknown_0853174C
+	.equ	se_coin_collected_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_coin_collected_pri, 5
 	.equ	se_coin_collected_rev, reverb_set+50
 	.equ	se_coin_collected_mvl, 127

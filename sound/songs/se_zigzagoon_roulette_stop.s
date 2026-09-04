@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_zigzagoon_roulette_stop_grp, gUnknown_08531D4C
+	.equ	se_zigzagoon_roulette_stop_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_zigzagoon_roulette_stop_pri, 5
 	.equ	se_zigzagoon_roulette_stop_rev, reverb_set+50
 	.equ	se_zigzagoon_roulette_stop_mvl, 127

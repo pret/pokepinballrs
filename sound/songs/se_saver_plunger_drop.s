@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_saver_plunger_drop_grp, gUnknown_08531D4C
+	.equ	se_saver_plunger_drop_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_saver_plunger_drop_pri, 5
 	.equ	se_saver_plunger_drop_rev, reverb_set+50
 	.equ	se_saver_plunger_drop_mvl, 127

@@ -113,7 +113,7 @@ void KecleonBoardProcess_3A_35860(void)
     UpdateKecleonScopeItem();
     UpdateKecleonScopeVision();
     RenderKecleonBoardElements();
-    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(9), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
 }
 
 void KecleonBoardProcess_3B_35AA4(void)
@@ -841,13 +841,13 @@ void RenderKecleonSprites(void)
             gOamBuffer[oamSimple->oamId].y += spriteGroup->baseY;
             if (gCurrentPinballGame->bossVulnerable == 20) {
                 if(gCurrentPinballGame->bossFrameTimer < 10)
-                    gOamBuffer[oamSimple->oamId].paletteNum = 10;
+                    gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_10;
                 else
-                    gOamBuffer[oamSimple->oamId].paletteNum = 2;
+                    gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_2;
             }
             else
             {
-                gOamBuffer[oamSimple->oamId].paletteNum = 2;
+                gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_2;
             }
         }
         else
@@ -879,13 +879,13 @@ void RenderKecleonSprites(void)
             if (sp0 == 20)
             {
                 if (gCurrentPinballGame->bossFrameTimer < 10)
-                    gOamBuffer[oamSimple->oamId].paletteNum = 11;
+                    gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_11;
                 else
-                    gOamBuffer[oamSimple->oamId].paletteNum = 4;
+                    gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_4;
             }
             else
             {
-                gOamBuffer[oamSimple->oamId].paletteNum = 4;
+                gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_4;
             }
         }
         else

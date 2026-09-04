@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_travel_painter_flight_grp, gUnknown_08531D4C
+	.equ	se_travel_painter_flight_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_travel_painter_flight_pri, 5
 	.equ	se_travel_painter_flight_rev, reverb_set+50
 	.equ	se_travel_painter_flight_mvl, 127

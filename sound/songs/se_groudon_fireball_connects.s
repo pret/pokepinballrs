@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_groudon_fireball_connects_grp, gUnknown_08531D4C
+	.equ	se_groudon_fireball_connects_grp, gVoiceGroup_SFX_08531D4C
 	.equ	se_groudon_fireball_connects_pri, 5
 	.equ	se_groudon_fireball_connects_rev, reverb_set+50
 	.equ	se_groudon_fireball_connects_mvl, 127

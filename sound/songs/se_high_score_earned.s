@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_high_score_earned_grp, gUnknown_0852DDE0
+	.equ	se_high_score_earned_grp, gVoiceGroup_Inst_0852DDE0
 	.equ	se_high_score_earned_pri, 5
 	.equ	se_high_score_earned_rev, reverb_set+50
 	.equ	se_high_score_earned_mvl, 127

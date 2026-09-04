@@ -1,6 +1,6 @@
 	.include "sound/MPlayDef.s"
 
-	.equ	se_kecleon_scope_activated_grp, gUnknown_0853174C
+	.equ	se_kecleon_scope_activated_grp, gVoiceGroup_SFX_0853174C
 	.equ	se_kecleon_scope_activated_pri, 5
 	.equ	se_kecleon_scope_activated_rev, reverb_set+50
 	.equ	se_kecleon_scope_activated_mvl, 127
