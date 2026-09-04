@@ -259,11 +259,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                     if (gCurrentPinballGame->catchModeEventTimer <= 3)
                     {
-                        DmaCopy16(3,
-                            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_0],
-                            OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
-                            PLTT_SLOT_SIZE);
-
+                        LoadObjLightingPalette_0(LIGHTING_PAL_IX_DIMMING);
                         LoadObjLightingPalette(LIGHTING_PAL_IX_DIMMING);
                         gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
@@ -274,11 +270,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                     if (gCurrentPinballGame->catchModeEventTimer == 0)
                     {
-                        DmaCopy16(3,
-                            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_0],
-                            OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
-                            PLTT_SLOT_SIZE);
-
+                        LoadObjLightingPalette_0(LIGHTING_PAL_IX_NORMAL);
                         LoadObjLightingPalette(LIGHTING_PAL_IX_NORMAL);
                         gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
@@ -681,11 +673,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
                     if (gCurrentPinballGame->catchModeEventTimer <= 3)
                     {
-                        DmaCopy16(3,
-                            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_0],
-                            OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
-                            PLTT_SLOT_SIZE);
-
+                        LoadObjLightingPalette_0(LIGHTING_PAL_IX_DIMMING);
                         LoadObjLightingPalette(LIGHTING_PAL_IX_DIMMING);
                         gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
@@ -697,11 +685,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                     if (gCurrentPinballGame->catchModeEventTimer != 0)
                         return;
 
-                    DmaCopy16(3,
-                        gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_0],
-                        OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
-                        PLTT_SLOT_SIZE);
-
+                    LoadObjLightingPalette_0(LIGHTING_PAL_IX_NORMAL);
                     LoadObjLightingPalette(LIGHTING_PAL_IX_NORMAL);
                     gCurrentPinballGame->paletteSwapActive = TRUE;
                 }

@@ -197,10 +197,7 @@ void RenderBannerSlideAnimation(void)
                                 else
                                 {
                                     gCurrentPinballGame->paletteSwapActive = TRUE;
-                                    DmaCopy16(3,
-                                        gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIM][PAL_IX_DIMMING_BASE_0],
-                                        OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
-                                        PLTT_SLOT_SIZE);
+                                    LoadObjLightingPalette_0(LIGHTING_PAL_IX_DIM);
                                 }
 
                                 LoadObjLightingPalette(LIGHTING_PAL_IX_DIM);
@@ -221,10 +218,7 @@ void RenderBannerSlideAnimation(void)
                                 else
                                 {
                                     gCurrentPinballGame->paletteSwapActive = TRUE;
-                                    DmaCopy16(3,
-                                        gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_0],
-                                        OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
-                                        PLTT_SLOT_SIZE);
+                                    LoadObjLightingPalette_0(LIGHTING_PAL_IX_DIMMING);
                                 }
                                 LoadObjLightingPalette(LIGHTING_PAL_IX_DIMMING);
                             }
@@ -256,10 +250,7 @@ void RenderBannerSlideAnimation(void)
                     gMain.blendBrightness = 4;
                     if (gCurrentPinballGame->bannerSlideTimer > 0x19)
                     {
-                        DmaCopy16(3,
-                            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_DIMMING][PAL_IX_DIMMING_BASE_0],
-                            OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
-                            PLTT_SLOT_SIZE);
+                        LoadObjLightingPalette_0(LIGHTING_PAL_IX_DIMMING);
                         LoadObjLightingPalette(LIGHTING_PAL_IX_DIMMING);
 
                         gCurrentPinballGame->paletteSwapActive = TRUE;
@@ -280,10 +271,7 @@ void RenderBannerSlideAnimation(void)
                             || gCurrentPinballGame->prizeId != PRIZE_START_EVO_MODE))
                     {
                         gMain.blendBrightness = 0;
-                        DmaCopy16(3,
-                            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_0],
-                            OBJ_PLTT_SLOT(PAL_IX_DIMMING_BASE_0),
-                            PLTT_SLOT_SIZE);
+                        LoadObjLightingPalette_0(LIGHTING_PAL_IX_NORMAL);
                         LoadObjLightingPalette(LIGHTING_PAL_IX_NORMAL);
                         gCurrentPinballGame->paletteSwapActive = TRUE;
                     }
