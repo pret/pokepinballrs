@@ -428,14 +428,18 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
         curveDirScaledFactor * scaledLateralMag / 0xEB8
         + gCurrentPinballGame->ball->spinAcceleration;
 
+/*
+    tempVec.x = MulCos(forwardMag, arg0) + MulCos(lateralMag, adjustedAngle);
+    tempVec.y = MulSin(-forwardMag, arg0) + MulSin(-lateralMag, adjustedAngle);
+*/
     tempVec.x =  forwardMag * Cos(arg0);
     tempVec.y = -forwardMag * Sin(arg0);
 
     tempVec.x =  lateralMag * Cos(adjustedAngle) + tempVec.x;
     tempVec.y = -lateralMag * Sin(adjustedAngle) + tempVec.y;
 
-    tempVec.x = tempVec.x / 20000;
-    tempVec.y = tempVec.y / 20000;
+    tempVec.x = tempVec.x / TRIG_SCALE;
+    tempVec.y = tempVec.y / TRIG_SCALE;
 
     // With how the curveSign/curveScaleFactor are only used 'multiplied together'
     // with the tempVec calculation, the negations cancel out. - Shouldn't be needed.
@@ -484,7 +488,6 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
 
 void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
 {
-    const u16 VECTORSCALEDOWN = 20000;
     s32 squaredSpeed;
     s16 x, y;
     s16 var0;

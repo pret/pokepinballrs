@@ -41,18 +41,11 @@ s16 Cos(u16 arg0);
    Use the MulNegSinSpecial for those cases */
 #define MulSin(value, angle) (((value) * (Sin(angle))) / TRIG_SCALE)
 
-/* Multiply value by cos(angle).
-   Works in most cases; compiles differently with some values, like -100, where the negative
-   plus optimizer pre-reduction causes it to fall in a different position.
-   Use the MulNegCosSpecial for those cases
-*/
+/* Multiply value by cos(angle).*/
 #define MulCos(value, angle) (((value) * (Cos(angle))) / TRIG_SCALE)
 
 // Multiply value by sin(angle).
 #define MulNegSinSpecial(value, angle) (-((Sin(angle)) * (value)) / TRIG_SCALE)
-
-// Multiply value by cos(angle).
-#define MulNegCosSpecial(value, angle) (-((Cos(angle)) * (value)) / TRIG_SCALE)
 
 void DisableVBlankInterrupts(void);
 void MainLoopIter(void);

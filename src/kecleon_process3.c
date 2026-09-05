@@ -234,7 +234,6 @@ void KecleonBoardProcess_3B_35AA4(void)
 
 void UpdateKecleonEntityLogic(void)
 {
-    const u16 VECTORSCALEDOWN = 20000;
     int deltaX;
     int deltaY;
     struct Vector32 tempVec;
