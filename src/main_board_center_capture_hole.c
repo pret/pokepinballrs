@@ -554,7 +554,7 @@ void RunMonCaptureSequence(void)
         gCurrentPinballGame->ball->positionQ8.x += gCurrentPinballGame->ball->velocity.x;
         gCurrentPinballGame->ball->positionQ8.y += gCurrentPinballGame->ball->velocity.y;
 
-        gCurrentPinballGame->activePortraitType = 9;
+        gCurrentPinballGame->activeFxType = FX_CAPTURE_MON_ABSORB;
         DmaCopy16(3, gCaptureScreenTilesGfx, 0x06015800, 0x1C00);
         DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], 0x060164C0, 0x80);
         DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], 0x06016760, 0x80);
@@ -947,7 +947,7 @@ void RunMonCaptureSequence(void)
 
         gCurrentPinballGame->ball->positionQ8.y += gCurrentPinballGame->ball->velocity.y;
         gCurrentPinballGame->ball->positionQ8.x += gCurrentPinballGame->ball->velocity.x;
-        gCurrentPinballGame->activePortraitType = 0;
+        gCurrentPinballGame->activeFxType = FX_NONE;
 
         break;
 
@@ -1123,7 +1123,7 @@ void RunMonCaptureSequence(void)
         if (temp_r0 == 0)
         {
             m4aSongNumStart(MUS_SUCCESS);
-            InitEvolutionSuccessDisplay();
+            InitWasCaughtBanner();
         }
 
         break;

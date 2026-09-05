@@ -231,7 +231,7 @@ struct PinballGame
     /*0x0CC*/ s16 scrollEffectY;
     /*0x0CE*/ u16 unkCE;
     /*0x0D0*/ struct Vector16 ballTrailPosition[5];
-    /*0x0E4*/ u8 activePortraitType;
+    /*0x0E4*/ u8 activeFxType;
     /*0x0E6*/ s16 cameraYAdjust;
     /*0x0E8*/ s16 cameraYScrollTarget;
     /*0x0EA*/ u16 bannerDelayTimer;
@@ -948,7 +948,7 @@ struct FieldBoardLayout
 
         This avoids slot 1 (ball) and the sapphire shop sign (constantly changing palette)
     */
-    /*0x2C*/ Palette *objPaletteSets[3]; 
+    /*0x2C*/ Palette *objPaletteSets[3];
     /*0x38*/ struct BoardCollisionDataSet collision;
 };
 

@@ -13,8 +13,6 @@ static void RenderTitlePressStartSprites(void);
 // it will transition to a demo gameplay experience.
 #define NUM_IDLE_FRAMES 1800
 
-#define RESTART_GAME_BUTTONS (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)
-
 enum
 {
     SUBSTATE_LOAD_GRAPHICS,

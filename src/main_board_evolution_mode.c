@@ -221,7 +221,7 @@ void UpdateEvolutionMode(void)
             {
                 if (gCurrentPinballGame->stageTimer == 0)
                 {
-                    InitEvolutionSuccessDisplay();
+                    InitWasCaughtBanner();
                     m4aSongNumStart(MUS_SUCCESS2);
                 }
                 else
@@ -336,7 +336,7 @@ void UpdateEvolutionMode(void)
         gMain.fieldSpriteGroups[FIELD_SG_EVO_ITEM]->active = FALSE;
         UpdateEvolutionItemAnimation();
         gMain.fieldSpriteGroups[FIELD_SG_EVO_ITEM_SPAWN_FX]->active = FALSE;
-        gCurrentPinballGame->activePortraitType = 0;
+        gCurrentPinballGame->activeFxType = FX_NONE;
         AnimateBonusTrapSprite();
         gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
         gCurrentPinballGame->shopTransitionActive = TRUE;
@@ -387,7 +387,7 @@ void UpdateEvolutionItemAnimation(void)
         group = gMain.fieldSpriteGroups[FIELD_SG_EVO_ITEM_SPAWN_FX];
         if (gCurrentPinballGame->evoItemAppearTimer == 80)
         {
-            gCurrentPinballGame->activePortraitType = 15;
+            gCurrentPinballGame->activeFxType = FX_EVO_ITEM_SPAWN;
             DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], (void *)0x06015800, 0x1C00);
             DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(PAL_IX_EVO_ITEM), PLTT_SLOT_SIZE);
             gCurrentPinballGame->evoItemAnimFrame = 0;
@@ -412,7 +412,7 @@ void UpdateEvolutionItemAnimation(void)
                 gMain.fieldSpriteGroups[FIELD_SG_EVO_ITEM_SPAWN_FX]->active = FALSE;
                 gMain.fieldSpriteGroups[FIELD_SG_EVO_ITEM]->active = TRUE;
                 MPlayStart(&gMPlayInfo_SE1, &se_evo_item_finish_appear);
-                gCurrentPinballGame->activePortraitType = 0;
+                gCurrentPinballGame->activeFxType = FX_NONE;
             }
         }
 

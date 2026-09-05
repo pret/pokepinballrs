@@ -496,7 +496,7 @@ void PinballGame_State1_4AAD8(void)
         break;
     case 1:
         gFieldInitFuncs[gMain.isBonusField]();
-        if (JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+        if (JOY_HELD(RESTART_GAME_BUTTONS) == (RESTART_GAME_BUTTONS))
             gMain.gameExitState = 1;
 
         if (gMain.gameExitState)

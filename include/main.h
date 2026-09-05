@@ -180,4 +180,6 @@ void DisableVBlankInterrupts(void);
 void MainLoopIter(void);
 void DefaultMainCallback(void);
 
+#define RESTART_GAME_BUTTONS (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)
+
 #endif // GUARD_MAIN_H

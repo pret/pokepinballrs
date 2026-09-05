@@ -36,7 +36,7 @@ void InitBoardIntroMode(void)
 
     DmaCopy16(3, gTravelPortrait_Pal, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
     DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, (void *)0x06015800, 0x280);
-    gCurrentPinballGame->activePortraitType = 12;
+    gCurrentPinballGame->activeFxType = FX_FIRST_AREA_SELECTION;
 }
 
 void UpdateBoardIntroMode(void)
@@ -260,7 +260,7 @@ void UpdateBoardIntroMode(void)
 
             if (gCurrentPinballGame->stageTimer == 28) {
                 gMain.fieldSpriteGroups[FIELD_SG_INITIAL_LOCATION_SELECTED_FX]->active = FALSE;
-                gCurrentPinballGame->activePortraitType = 0;
+                gCurrentPinballGame->activeFxType = FX_NONE;
             }
         }
 

@@ -407,7 +407,7 @@ void UpdateZigzagoonEntity(void)
         gCurrentPinballGame->zigzagoonState = 3;
         gCurrentPinballGame->zigzagoonFxFrame = 0;
         gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON_TRAIL_FX].active = TRUE;
-        gCurrentPinballGame->activePortraitType = 22;
+        gCurrentPinballGame->activeFxType = FX_ZIGZAGOON_ROULETTE_STOP;
         DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, (void *)0x06015800, 0xC00);
         m4aSongNumStart(SE_ZIGZAGOON_ROULETTE_STOP);
         gCurrentPinballGame->scoreAddedInFrame = SCORE_ZIGZAGOON_ROULETTE_STOP;
@@ -436,7 +436,7 @@ void UpdateZigzagoonEntity(void)
             gCurrentPinballGame->zigzagoonFxFrame = 0;
         break;
     case 4:
-        gCurrentPinballGame->activePortraitType = 0;
+        gCurrentPinballGame->activeFxType = FX_NONE;
         gMain.spriteGroups[SG_SAPPHIRE_ZIGZAGOON_TRAIL_FX].active = FALSE;
         gCurrentPinballGame->zigzagoonState = 0;
         break;

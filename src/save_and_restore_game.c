@@ -10,7 +10,7 @@ extern u8 gBoardGfxBuffer[];
 extern u8 gBoardBGTileBufferAlt[];
 extern const u8 gMainBoardBallSave_Gfx[];
 extern const u8 gMainBoardEndOfBall_Gfx[];
-extern const u8 gBoardActionTilesGfx[];
+extern const u8 gEvolutionCutsceneTilesGfx[];
 
 extern const u8 gAerodactlyFlight_Gfx[];
 extern const u8 gAreaRouletteSelectedFx_Gfx[];
@@ -338,9 +338,9 @@ void RestoreFieldSpecificGraphics(void)
         break;
     }
 
-    switch (gCurrentPinballGame->activePortraitType - 1)
+    switch (gCurrentPinballGame->activeFxType)
     {
-    case 0:
+    case FX_PIKA_KICKBACK_FIRING:
         if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES
             && gCurrentPinballGame->outLaneSide == OUTLANE_RIGHT)
         {
@@ -351,40 +351,40 @@ void RestoreFieldSpecificGraphics(void)
             DmaCopy16(3, gPikaSaverPartialCoverageGfx, (void *)0x6015800, 0x2400);
         }
         break;
-    case 1:
+    case FX_AERODACTYL_EGG_DELIVERY:
         DmaCopy16(3, gAerodactlyFlight_Gfx, (void *)0x6015800, 0x1000);
         break;
-    case 2:
+    case FX_TOTODILE_EGG_DELIVERY:
         DmaCopy16(3, gTotodileEggDelivery_Gfx, (void *)0x6015800, 0xCA0);
         break;
-    case 3:
+    case FX_MODE_START_BANNER:
         DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], (void *)0x6015800, 0x25E0);
         break;
-    case 4:
+    case FX_CATCH_TILE_BURST_1:
         DmaCopy16(3, gCatchTile_BurstStart_Gfx, (void *)0x6015800, 0x2000);
         break;
-    case 5:
+    case FX_CATCH_TILE_BURST_2:
         DmaCopy16(3, gCatchTile_BurstStage2_Gfx, (void *)0x6015800, 0x800);
         break;
-    case 6:
+    case FX_CATCH_TILE_BURST_3:
         DmaCopy16(3, gCatchTile_BurstStage3_Gfx, (void *)0x6015800, 0x2000);
         break;
-    case 7:
+    case FX_CATCH_TILE_BURST_4:
         DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x6015800, 0x1800);
         break;
-    case 8:
+    case FX_CAPTURE_MON_ABSORB:
         DmaCopy16(3, gCaptureScreenTilesGfx, (void *)0x6015800, 0x1C00);
         break;
-    case 9:
+    case FX_CATCH_MON_REVEAL_PUFF:
         DmaCopy16(3, gCatchMonAppearFx_Gfx, (void *)0x6015800, 0x1400);
         break;
-    case 10:
+    case FX_SEQUENTIAL_CATCH_TILE:
         DmaCopy16(3, gCatchTile_RevealTilesGfx, (void *)0x6015800, 0x2800);
         break;
-    case 11:
+    case FX_FIRST_AREA_SELECTION:
         DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, (void *)0x6015800, 0x280);
         break;
-    case 13:
+    case FX_MON_SELECTION_NAME:
         for (i = 0; i < 10; i++)
         {
             if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
@@ -399,7 +399,7 @@ void RestoreFieldSpecificGraphics(void)
         }
         DmaCopy16(3, gPokemonNameDisplayGfx, (void *)0x6015C00, 0x940);
         break;
-    case 12:
+    case FX_MON_WAS_CAUGHT_CUTSCENE:
         for (i = 0; i < 10; i++)
         {
             if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
@@ -426,16 +426,16 @@ void RestoreFieldSpecificGraphics(void)
             }
         }
         break;
-    case 14:
+    case FX_EVO_ITEM_SPAWN:
         DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], (void *)0x6015800, 0x1C00);
         break;
-    case 15:
-        DmaCopy16(3, gBoardActionTilesGfx, (void *)0x6015800, 0x2400);
+    case FX_EVOLUTION_CUTSCENE:
+        DmaCopy16(3, gEvolutionCutsceneTilesGfx, (void *)0x6015800, 0x2400);
         break;
-    case 16:
+    case FX_END_OF_EVO_LIGHTNING:
         DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x6015800, 0x1800);
         break;
-    case 17:
+    case FX_SHOP_EVO_SELECTION:
         DmaCopy16(3, gPokemonNameDisplayGfx, (void *)0x6015C00, 0x940);
         if (!gCurrentPinballGame->evolutionShopActive)
         {
@@ -446,13 +446,13 @@ void RestoreFieldSpecificGraphics(void)
             DmaCopy16(3, gDecimalDigitTilesGfx[var3], (void *)0x6015E60, 0x40);
         }
         break;
-    case 18:
+    case FX_BALL_SAVED_CUTSCENE:
         DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x6015800, 0x2400);
         break;
-    case 19:
+    case FX_END_OF_BALL_SUMMARY:
         DmaCopy16(3, gMainBoardEndOfBall_Gfx, (void *)0x6015800, 0x2800);
         break;
-    case 20:
+    case FX_TRAVEL_PAINTER_CUTSCENE:
         if (gMain.selectedField == FIELD_RUBY)
         {
             DmaCopy16(3, gRubyTravelPaint_Gfx, (void *)0x6015800, 0x1800);
@@ -464,7 +464,7 @@ void RestoreFieldSpecificGraphics(void)
             DmaCopy16(3, gSapphirePainter_Pals, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
         }
         break;
-    case 21:
+    case FX_ZIGZAGOON_ROULETTE_STOP:
         DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, (void *)0x6015800, 0xC00);
         break;
     }

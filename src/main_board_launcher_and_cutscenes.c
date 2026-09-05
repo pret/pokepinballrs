@@ -16,7 +16,7 @@ extern const s16 gAreaRouletteTable[][AREA_TABLE_SLOT_COUNT];
 extern u16 gTravelEventSpritesheetOam[][18];
 extern const s16 gCatchTile_RevealFinalTimings[];
 extern const u16 gCatchTile_BurstRevealOamFramesets1[22][12];
-extern const u8 gBoardActionTilesGfx[];
+extern const u8 gEvolutionCutsceneTilesGfx[];
 extern const Palette gBoardActionObj_Pals[];
 extern const u16 gEvolutionSparkleSpritesheetOam[20][12];
 extern const u8 gCatchTile_BurstStage4_Gfx[];
@@ -320,8 +320,8 @@ void RunEvolutionCutscene(void)
 
         if (gCurrentPinballGame->stageTimer == 10)
         {
-            gCurrentPinballGame->activePortraitType = 16;
-            DmaCopy16(3, gBoardActionTilesGfx, (void *)0x06015800, 0x2400);
+            gCurrentPinballGame->activeFxType = FX_EVOLUTION_CUTSCENE;
+            DmaCopy16(3, gEvolutionCutsceneTilesGfx, (void *)0x06015800, 0x2400);
             DmaCopy16(3, gBoardActionObj_Pals, OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_LARGE_BOTTOM]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_LARGE_TOP]->active = TRUE;
@@ -628,7 +628,7 @@ void RunEvolutionCutscene(void)
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_LIGHTNING]->active = FALSE;
             gCurrentPinballGame->currentSpecies = gCurrentPinballGame->postEvoSpecies;
             LoadPortraitGraphics(PORTRAIT_STATE_POKEMON_DISPLAY, PORTRAIT_MAIN_SLOT);
-            gCurrentPinballGame->activePortraitType = 17;
+            gCurrentPinballGame->activeFxType = FX_END_OF_EVO_LIGHTNING;
             DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x06015800, 0x1800);
             DmaCopy16(3, gCatchTile_BurstStage4_Pal, OBJ_PLTT_SLOT(PAL_IX_CATCH_TILE_FX), PLTT_SLOT_SIZE);
             gCurrentPinballGame->creatureOamPriority = 3;
@@ -675,7 +675,7 @@ void RunEvolutionCutscene(void)
                     gCurrentPinballGame->stageTimer = 0;
                     gCurrentPinballGame->boardSubState++;
                     DmaCopy16(3, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT_SLOT(PAL_IX_0), 12*PLTT_SLOT_SIZE);
-                    gCurrentPinballGame->activePortraitType = 0;
+                    gCurrentPinballGame->activeFxType = FX_NONE;
                 }
             }
 
@@ -715,7 +715,7 @@ void RunTravelEventCutscene(void)
         gMain.fieldSpriteGroups[FIELD_SG_TRAVEL_PAINTER]->active = TRUE;
         gCurrentPinballGame->travelPainterPosX = 1400;
         gCurrentPinballGame->travelPainterPosY = -600;
-        gCurrentPinballGame->activePortraitType = 21;
+        gCurrentPinballGame->activeFxType = FX_TRAVEL_PAINTER_CUTSCENE;
         if (gMain.selectedField == FIELD_RUBY)
         {
             DmaCopy16(3, gRubyTravelPaint_Gfx, (void *)0x06015800, 0x1800);
@@ -857,7 +857,7 @@ void RunTravelEventCutscene(void)
     if (gCurrentPinballGame->stageTimer == 489)
     {
         gMain.fieldSpriteGroups[FIELD_SG_TRAVEL_PAINTER]->active = FALSE;
-        gCurrentPinballGame->activePortraitType = 0;
+        gCurrentPinballGame->activeFxType = FX_NONE;
     }
 }
 
