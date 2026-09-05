@@ -14,7 +14,7 @@ extern const u8 gPauseMenuText_Gfx[][0x20];
 void PauseGame(void)
 {
     s16 i, j;
-    u16 objPalettes[OBJ_PLTT_SIZE / 0x20][0x10];
+    Palette objPalettes[PALETTES_PER_BANK];
     u8 rgb[3];
 
     gCurrentPinballGame->pauseMenuCursorIndex = 1;
@@ -46,20 +46,21 @@ void PauseGame(void)
     gCurrentPinballGame->pauseScoreOverlayActive = gMain.scoreOverlayActive;
     gCurrentPinballGame->pauseVCount = gMain.vCount;
     DmaCopy16(3, OBJ_PLTT, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT_SIZE);
-    for (i = 0; i < 16; i++)
+    for (i = 0; i < PALETTES_PER_BANK; i++)
     {
-        for (j = 0; j < 16; j++)
+        for (j = 0; j < COLORS_PER_PALETTE; j++)
         {
+            //Palette 9, color 12 is used for the white text in the pause screen
             if (i != 9 || j != 12)
             {
-                rgb[0] = (((gCurrentPinballGame->pauseObjPalette[i][j] & 0x001F) >>  0) * 2) / 5;
-                rgb[1] = (((gCurrentPinballGame->pauseObjPalette[i][j] & 0x03E0) >>  5) * 2) / 5;
-                rgb[2] = (((gCurrentPinballGame->pauseObjPalette[i][j] & 0x7C00) >> 10) * 2) / 5;
-                objPalettes[i][j] = rgb[0] | (rgb[1] << 5) | (rgb[2] << 10);
+                rgb[0] = (RGB5_GET_R(gCurrentPinballGame->pauseObjPalette[i][j]) * 2) / 5;
+                rgb[1] = (RGB5_GET_G(gCurrentPinballGame->pauseObjPalette[i][j]) * 2) / 5;
+                rgb[2] = (RGB5_GET_B(gCurrentPinballGame->pauseObjPalette[i][j]) * 2) / 5;
+                objPalettes[i][j] = RGB5(rgb[0],rgb[1],rgb[2]);
             }
             else
             {
-                objPalettes[i][j] = 0x7FFF;
+                objPalettes[i][j] = RGB_WHITE;
             }
         }
     }

@@ -166,7 +166,7 @@ extern void ResetScoreTilemapPalette(u32, u32, s16);
 extern s8 CheckAllPokemonCaught(void);
 extern void FadeInFromWhite(void (*func)(void));
 extern void FadeOutToWhite(void (*func)(void));
-extern void FadeInWithCustomPalettes(u8 *, u8 *, void (*func)(void));
+extern void FadeInWithCustomPalettes(u8 *, const Palette *, void (*func)(void));
 extern void FadeOutToBlack(void (*func)(void));
 extern void InterpolatePaletteStep(u16);
 extern void DarkenPalette(const Palette *, u8 *, u16, u16); // Very much subject to change

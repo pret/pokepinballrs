@@ -68,7 +68,7 @@ void InitEvolutionMode(void)
             gCurrentPinballGame->evoItemGfxIndex = 0;
     }
 
-    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(PAL_IX_HUD), PLTT_SLOT_SIZE);
     gCurrentPinballGame->evoArrowProgress = 0;
     gCurrentPinballGame->shopArrowActive = FALSE;
     gCurrentPinballGame->catchModeEventTimer = 0;
@@ -259,7 +259,7 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) * 0x20) + i] = 0xC100;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, (void *)0x06002000, 0x800);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
                 }
 
                 if (gCurrentPinballGame->stageTimer >= 240 && gCurrentPinballGame->stageTimer < 270)
@@ -271,7 +271,7 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) << 5) + i] = 0x1FF;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, (void *)0x06002000, 0x800);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
                     if (gCurrentPinballGame->stageTimer == 269)
                     {
                         gMain.scoreOverlayActive = FALSE;
@@ -389,7 +389,7 @@ void UpdateEvolutionItemAnimation(void)
         {
             gCurrentPinballGame->activePortraitType = 15;
             DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], (void *)0x06015800, 0x1C00);
-            DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(15), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(PAL_IX_EVO_ITEM), PLTT_SLOT_SIZE);
             gCurrentPinballGame->evoItemAnimFrame = 0;
             gCurrentPinballGame->evoItemAnimFrameTimer = 0;
         }

@@ -17,7 +17,7 @@ struct BoardProcessPair
 
 extern struct BoardProcessPair CurrentBoardProcPairs_020028D8[9];
 
-extern const struct BoardProcessPair BoardProcPairs_086B077C[];
+extern const struct BoardProcessPair gBoardProcPairs_086B077C[];
 extern const VoidFunc gFieldInitFuncs[];
 extern struct SpriteGroup *gMainFieldSpriteGroups[][60];
 extern struct SpriteGroup *gBonusFieldSpriteGroups[][30];
@@ -71,9 +71,13 @@ void PinballGame_State0_49ED4(void)
         SetupDisplayRegistersForField();
         InitPinballGameState();
         loadFieldBoardGraphics();
-        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3,
+            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_0],
+            OBJ_PLTT,
+            OBJ_PLTT_SIZE);
+
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
 
         ConfigureBoardProcessesForField();
         for (i = 0; i < 9; i++)
@@ -103,9 +107,13 @@ void PinballGame_State0_49ED4(void)
         SetupDisplayRegistersForField();
         InitPinballGameState();
         loadFieldBoardGraphics();
-        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3,
+            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_0],
+            OBJ_PLTT,
+            OBJ_PLTT_SIZE);
+
         if (gMain.eReaderBonuses[EREADER_DX_MODE_CARD])
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
 
         ConfigureBoardProcessesForField();
         for (i = 0; i < 9; i++)
@@ -129,7 +137,10 @@ void PinballGame_State0_49ED4(void)
         SetupDisplayRegistersForField();
         InitPinballGameState();
         loadFieldBoardGraphics();
-        DmaCopy16(3, gBoardConfig.fieldLayout.objPaletteSets[0][0], OBJ_PLTT, OBJ_PLTT_SIZE);
+        DmaCopy16(3,
+            gBoardConfig.fieldLayout.objPaletteSets[LIGHTING_PAL_IX_NORMAL][PAL_IX_DIMMING_BASE_0],
+            OBJ_PLTT,
+            OBJ_PLTT_SIZE);
         ConfigureBoardProcessesForField();
         for (i = 0; i < 9; i++)
             CurrentBoardProcPairs_020028D8[i].initFunc();
@@ -156,7 +167,7 @@ void PinballGame_State0_49ED4(void)
         if (gMain.mainState != STATE_GAME_IDLE && gCurrentPinballGame->savedBgmSongHeader && gMPlayInfo_BGM.status < 0)
             MPlayStart(&gMPlayInfo_BGM, gCurrentPinballGame->savedBgmSongHeader);
         if (gMain.selectedField < MAIN_FIELD_COUNT)
-            RestoreBoardObjPalettes(gCurrentPinballGame->activePaletteIndex);
+            RestoreBoardObjPalettes(gCurrentPinballGame->paletteDimmingIx);
         break;
     case 1:
     case 2:
@@ -395,81 +406,81 @@ void SetBallPositionForBonusReturn(void)
 
 void ConfigureBoardProcessesForField(void)
 {
-    CurrentBoardProcPairs_020028D8[1] = BoardProcPairs_086B077C[0];
-    CurrentBoardProcPairs_020028D8[8] = BoardProcPairs_086B077C[18];
-    CurrentBoardProcPairs_020028D8[6] = BoardProcPairs_086B077C[15];
+    CurrentBoardProcPairs_020028D8[1] = gBoardProcPairs_086B077C[0];
+    CurrentBoardProcPairs_020028D8[8] = gBoardProcPairs_086B077C[18];
+    CurrentBoardProcPairs_020028D8[6] = gBoardProcPairs_086B077C[15];
     switch (gMain.selectedField)
     {
     case FIELD_RUBY:
-        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[3];
-        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[16];
-        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[19];
-        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[11];
-        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[1];
-        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[13];
+        CurrentBoardProcPairs_020028D8[3] = gBoardProcPairs_086B077C[3];
+        CurrentBoardProcPairs_020028D8[7] = gBoardProcPairs_086B077C[16];
+        CurrentBoardProcPairs_020028D8[0] = gBoardProcPairs_086B077C[19];
+        CurrentBoardProcPairs_020028D8[4] = gBoardProcPairs_086B077C[11];
+        CurrentBoardProcPairs_020028D8[2] = gBoardProcPairs_086B077C[1];
+        CurrentBoardProcPairs_020028D8[5] = gBoardProcPairs_086B077C[13];
         gMain.fieldSpriteGroups = gMainFieldSpriteGroups[gMain.selectedField];
         break;
     case FIELD_SAPPHIRE:
-        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[4];
-        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[16];
-        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[20];
-        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[11];
-        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[1];
-        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[13];
+        CurrentBoardProcPairs_020028D8[3] = gBoardProcPairs_086B077C[4];
+        CurrentBoardProcPairs_020028D8[7] = gBoardProcPairs_086B077C[16];
+        CurrentBoardProcPairs_020028D8[0] = gBoardProcPairs_086B077C[20];
+        CurrentBoardProcPairs_020028D8[4] = gBoardProcPairs_086B077C[11];
+        CurrentBoardProcPairs_020028D8[2] = gBoardProcPairs_086B077C[1];
+        CurrentBoardProcPairs_020028D8[5] = gBoardProcPairs_086B077C[13];
         gMain.fieldSpriteGroups = gMainFieldSpriteGroups[gMain.selectedField];
         break;
     case FIELD_DUSCLOPS:
-        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[5];
-        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
-        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[21];
-        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
-        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
-        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = gBoardProcPairs_086B077C[5];
+        CurrentBoardProcPairs_020028D8[7] = gBoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = gBoardProcPairs_086B077C[21];
+        CurrentBoardProcPairs_020028D8[4] = gBoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = gBoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = gBoardProcPairs_086B077C[14];
         gMain.fieldSpriteGroups = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_BONUS_START];
         break;
     case FIELD_KECLEON:
-        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[6];
-        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
-        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[22];
-        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
-        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
-        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = gBoardProcPairs_086B077C[6];
+        CurrentBoardProcPairs_020028D8[7] = gBoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = gBoardProcPairs_086B077C[22];
+        CurrentBoardProcPairs_020028D8[4] = gBoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = gBoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = gBoardProcPairs_086B077C[14];
         gMain.fieldSpriteGroups = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_BONUS_START];
         break;
     case FIELD_KYOGRE:
-        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[7];
-        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
-        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[23];
-        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
-        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
-        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = gBoardProcPairs_086B077C[7];
+        CurrentBoardProcPairs_020028D8[7] = gBoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = gBoardProcPairs_086B077C[23];
+        CurrentBoardProcPairs_020028D8[4] = gBoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = gBoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = gBoardProcPairs_086B077C[14];
         gMain.fieldSpriteGroups = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_BONUS_START];
         break;
     case FIELD_GROUDON:
-        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[8];
-        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
-        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[24];
-        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
-        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
-        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = gBoardProcPairs_086B077C[8];
+        CurrentBoardProcPairs_020028D8[7] = gBoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = gBoardProcPairs_086B077C[24];
+        CurrentBoardProcPairs_020028D8[4] = gBoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = gBoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = gBoardProcPairs_086B077C[14];
         gMain.fieldSpriteGroups = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_BONUS_START];
         break;
     case FIELD_RAYQUAZA:
-        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[9];
-        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
-        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[25];
-        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
-        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
-        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = gBoardProcPairs_086B077C[9];
+        CurrentBoardProcPairs_020028D8[7] = gBoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = gBoardProcPairs_086B077C[25];
+        CurrentBoardProcPairs_020028D8[4] = gBoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = gBoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = gBoardProcPairs_086B077C[14];
         gMain.fieldSpriteGroups = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_BONUS_START];
         break;
     case FIELD_SPHEAL:
-        CurrentBoardProcPairs_020028D8[3] = BoardProcPairs_086B077C[10];
-        CurrentBoardProcPairs_020028D8[7] = BoardProcPairs_086B077C[17];
-        CurrentBoardProcPairs_020028D8[0] = BoardProcPairs_086B077C[26];
-        CurrentBoardProcPairs_020028D8[4] = BoardProcPairs_086B077C[12];
-        CurrentBoardProcPairs_020028D8[2] = BoardProcPairs_086B077C[2];
-        CurrentBoardProcPairs_020028D8[5] = BoardProcPairs_086B077C[14];
+        CurrentBoardProcPairs_020028D8[3] = gBoardProcPairs_086B077C[10];
+        CurrentBoardProcPairs_020028D8[7] = gBoardProcPairs_086B077C[17];
+        CurrentBoardProcPairs_020028D8[0] = gBoardProcPairs_086B077C[26];
+        CurrentBoardProcPairs_020028D8[4] = gBoardProcPairs_086B077C[12];
+        CurrentBoardProcPairs_020028D8[2] = gBoardProcPairs_086B077C[2];
+        CurrentBoardProcPairs_020028D8[5] = gBoardProcPairs_086B077C[14];
         gMain.fieldSpriteGroups = gBonusFieldSpriteGroups[gMain.selectedField - FIELD_BONUS_START];
         break;
     }
@@ -509,7 +520,7 @@ void PinballGame_State1_4AAD8(void)
             }
 
             if (gMain.modeChangeFlags & MODE_CHANGE_PAUSE)
-                DmaCopy16(3, gCurrentPinballGame->pauseObjPalette, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+                DmaCopy16(3, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT, OBJ_PLTT_SIZE);
 
             gCurrentPinballGame->fadeSubState = 2;
             if (gMain.gameExitState == 2)

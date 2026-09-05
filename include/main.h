@@ -6,6 +6,7 @@
 #include "constants/high_scores.h"
 #include "constants/pinball_inputs.h"
 #include "constants/species.h"
+#include "constants/palette_mappings.h"
 #include "constants/sprite_groups.h"
 #include "functions.h"
 

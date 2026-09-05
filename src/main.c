@@ -291,7 +291,7 @@ void DefaultMainCallback(void)
     if (REG_DISPSTAT & DISPSTAT_VBLANK_INTR)
     {
         VBlankIntrWait();
-        DmaCopy32(3, gOamBuffer, (void *)OAM, OAM_SIZE);
+        DmaCopy32(3, gOamBuffer, OAM, OAM_SIZE);
         REG_DISPCNT = gMain.dispcntBackup;
         REG_BG0HOFS = gMain.bgOffsets[0].xOffset;
         REG_BG0VOFS = gMain.bgOffsets[0].yOffset;

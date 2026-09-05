@@ -513,7 +513,7 @@ void ProcessBonusBoardBallDrain(void)
                 gCurrentPinballGame->ballUpgradeType--;
 
             gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
         }
 
         gCurrentPinballGame->ball->positionQ1.x = gCurrentPinballGame->ball->positionQ0.x * 2;
@@ -569,7 +569,7 @@ void ResetBoardStateOnDeath(void)
     {
         gCurrentPinballGame->ballUpgradeType = BALL_UPGRADE_TYPE_MASTER_BALL;
         gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
-        DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+        DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
     }
     else
     {
@@ -578,7 +578,7 @@ void ResetBoardStateOnDeath(void)
     }
 
     gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
-    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
     gCurrentPinballGame->bonusMultiplier = gCurrentPinballGame->progressLevel;
     gCurrentPinballGame->progressLevel = 1;
     if (gCurrentPinballGame->whiscashFrameIx == WHISCASH_FRAME_GONE_AFTER_HIT)

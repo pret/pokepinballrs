@@ -42,7 +42,7 @@ void InitTravelMode(void)
     gCurrentPinballGame->eventTimer = gCurrentPinballGame->timerBonus + TRAVEL_MODE_TIME;
     gCurrentPinballGame->timerBonus = 0;
     gCurrentPinballGame->saverTimeRemaining = TRAVEL_MODE_SAVER_TIME;
-    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(PAL_IX_HUD), PLTT_SLOT_SIZE);
 }
 
 void UpdateTravelMode(void)

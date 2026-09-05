@@ -218,11 +218,11 @@ void ProcessEventTimer(void)
     {
         if (gCurrentPinballGame->eventTimer & 0x8)
         {
-            DmaCopy16(3, gTimer_Warning_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gTimer_Warning_Pal, BG_PLTT_SLOT(PAL_IX_HUD), PLTT_SLOT_SIZE);
         }
         else
         {
-            DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(PAL_IX_HUD), PLTT_SLOT_SIZE);
         }
 
         if (gCurrentPinballGame->eventTimer == TIMER_TEXT_RED_UNDER_TIME)
@@ -232,11 +232,11 @@ void ProcessEventTimer(void)
     {
         if ((gCurrentPinballGame->eventTimer % 22) / 11)
         {
-            DmaCopy16(3, gTimer_Slow_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gTimer_Slow_Pal, BG_PLTT_SLOT(PAL_IX_HUD), PLTT_SLOT_SIZE);
         }
         else
         {
-            DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(12), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gTimer_Default_Pal, BG_PLTT_SLOT(PAL_IX_HUD), PLTT_SLOT_SIZE);
         }
     }
 }

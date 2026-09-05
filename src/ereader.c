@@ -75,12 +75,12 @@ void LoadEReaderGraphics(void)
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(0), 2*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(2), PLTT_SLOT_SIZE);
+    DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(PAL_IX_0), 2*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(PAL_IX_2), PLTT_SLOT_SIZE);
     DmaCopy16(3, gEReaderBackground_Gfx,   gTempGfxBuffer,         6*BG_SCREEN_SIZE);
     DmaCopy16(3, gEReaderText_Tilemap,    BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gEReaderOverlay_Tilemap, BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexSprites_Pals,  OBJ_PLTT_SLOT(0), 6*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gPokedexSprites_Pals,  OBJ_PLTT_SLOT(PAL_IX_0), 6*PLTT_SLOT_SIZE);
     DmaCopy16(3, gPokedexSprites_Gfx,   OBJ_VRAM0,         0x6C20);
 
     InitEReaderTextState();
@@ -339,12 +339,12 @@ void Ereader_ShowSuccessPopup(void)
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(0),   2*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(2),   PLTT_SLOT_SIZE);
+    DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(PAL_IX_0),   2*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(PAL_IX_2),   PLTT_SLOT_SIZE);
     DmaCopy16(3, gEReaderBackground_Gfx,     gTempGfxBuffer,    6*BG_SCREEN_SIZE);
     DmaCopy16(3, gEReaderText_Tilemap,       BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
     DmaCopy16(3, gEReaderOverlay_Tilemap,    BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexSprites_Pals,       OBJ_PLTT_SLOT(0),  6*PLTT_SLOT_SIZE);
+    DmaCopy16(3, gPokedexSprites_Pals,       OBJ_PLTT_SLOT(PAL_IX_0),  6*PLTT_SLOT_SIZE);
     DmaCopy16(3, gPokedexSprites_Gfx,        OBJ_VRAM0,         0x6C20);
 
     InitEReaderTextState();

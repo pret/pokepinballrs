@@ -11,7 +11,7 @@ extern struct SongHeader se_pikachu_kickback;
 extern s16 gPikaSaverAnimFrameTable[100];
 extern s16 gOutlaneCenterXPositions[3];
 extern u16 gCatchOverlayAnimData[][2];
-extern s16 gCatchOverlayOamData[28][12];
+extern s16 gPikaKickbackFiringAnimOamFramesets[28][12];
 extern const struct Vector32 gPikaSaverWaypoints[];
 extern const u16 gAngleToDirectionTable[];
 extern const u8 gPikachuSaverTilesGfx[];
@@ -279,9 +279,9 @@ void UpdateKickbackLogic(void)
             {
                 oamSimple = &spriteGroup->oam[j];
                 dst = (u16 *)&gOamBuffer[oamSimple->oamId];
-                *dst++ = gCatchOverlayOamData[oamIx][j * 3 + 0];
-                *dst++ = gCatchOverlayOamData[oamIx][j * 3 + 1];
-                *dst++ = gCatchOverlayOamData[oamIx][j * 3 + 2];
+                *dst++ = gPikaKickbackFiringAnimOamFramesets[oamIx][j * 3 + 0];
+                *dst++ = gPikaKickbackFiringAnimOamFramesets[oamIx][j * 3 + 1];
+                *dst++ = gPikaKickbackFiringAnimOamFramesets[oamIx][j * 3 + 2];
 
                 gOamBuffer[oamSimple->oamId].x += spriteGroup->baseX;
                 gOamBuffer[oamSimple->oamId].y += spriteGroup->baseY;
@@ -388,7 +388,7 @@ void PichuArrivalSequence(void)
             {
                 oamSimple = &group->oam[i];
                 gOamBuffer[oamSimple->oamId].priority = 1;
-                gOamBuffer[oamSimple->oamId].paletteNum = 3;
+                gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_3;
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }

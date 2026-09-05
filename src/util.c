@@ -117,9 +117,9 @@ void ResetDisplayState(void)
 
 void ClearGraphicsMemory(void)
 {
-    DmaFill16(3, 0, (void *)VRAM, VRAM_SIZE);
-    DmaFill32(3, 0, (void *)OAM, OAM_SIZE);
-    DmaFill16(3, 0, (void *)PLTT, BG_PLTT_SIZE + OBJ_PLTT_SIZE);
+    DmaFill16(3, 0, VRAM, VRAM_SIZE);
+    DmaFill32(3, 0, OAM, OAM_SIZE);
+    DmaFill16(3, 0, PLTT, BG_PLTT_SIZE + OBJ_PLTT_SIZE);
     REG_BG0HOFS = 0;
     REG_BG0VOFS = 0;
     REG_BG1HOFS = 0;
@@ -178,7 +178,7 @@ void ClearSprites(void)
         gOamBuffer[i].size = 0;
         gOamBuffer[i].tileNum = 0;
         gOamBuffer[i].priority = 0;
-        gOamBuffer[i].paletteNum = 0;
+        gOamBuffer[i].paletteNum = PAL_IX_0;
         gOamBuffer[i].affineParam = 0;
     }
 }

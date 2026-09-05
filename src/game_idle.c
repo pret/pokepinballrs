@@ -112,7 +112,7 @@ void PinballGameIdle1_19190(void)
 
             if ((gMain.modeChangeFlags & MODE_CHANGE_PAUSE) != 0)
             {
-                DmaCopy16(3, gCurrentPinballGame->pauseObjPalette, (void *)OBJ_PLTT, OBJ_PLTT_SIZE);
+                DmaCopy16(3, gCurrentPinballGame->pauseObjPalette, OBJ_PLTT, OBJ_PLTT_SIZE);
             }
 
             gCurrentPinballGame->fadeSubState = 2;

@@ -117,7 +117,7 @@ void DebugMenu_RenderAndHandleInput(void)
     for (i = 0x340; i < 0x380; i++)
         gBG0TilemapBuffer[i] += 0xC100;
 
-    DmaCopy16(3, gBG0TilemapBuffer, (void *)0x06002000, 0x800);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
     if (JOY_HELD(A_BUTTON))
         ClearDebugTextDisplay();
 }
@@ -209,11 +209,11 @@ void EndOfBallSequence(void)
             DmaCopy16(3, gMainBoardEndOfBall_Gfx, (void *)0x6015800, 0x2800);
             if (gMain.selectedField == FIELD_RUBY)
             {
-                DmaCopy16(3, gEndOfBallBonus_Ruby_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gEndOfBallBonus_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
             }
             else
             {
-                DmaCopy16(3, gEndOfBallBonus_Sapphire_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gEndOfBallBonus_Sapphire_Pal, OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
             }
 
             m4aSongNumStart(SE_BONUS_PANEL_SLIDE);
@@ -458,12 +458,12 @@ void BallSaverAnimation(void)
                 DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
                 DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, (void *)0x06016800, 0x800);
                 DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, (void *)0x06017000, 0xC0);
-                DmaCopy16(3, gBallSaver_Ruby_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gBallSaver_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
             }
             else
             {
                 DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
-                DmaCopy16(3, gBallSaver_Sapphire_Pal, OBJ_PLTT_SLOT(14), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gBallSaver_Sapphire_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
             }
 
             gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_FROZEN;

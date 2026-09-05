@@ -37,7 +37,7 @@ void MainBoardProcess_7B_12524(void)
                     gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
             }
 
-            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+            DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
         }
     }
 
@@ -344,7 +344,7 @@ void BonusBoardProcess_7B_12BF8()
                 gCurrentPinballGame->ballRespawnTimer++;
                 if (r5 >= 7 && r5 <= 10)
                 {
-                    DmaCopy16(3, gBall_Pals[(s16) (gCurrentPinballGame->ballUpgradeType + 4)], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+                    DmaCopy16(3, gBall_Pals[(s16) (gCurrentPinballGame->ballUpgradeType + 4)], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
                 }
             }
 
@@ -359,7 +359,7 @@ void BonusBoardProcess_7B_12BF8()
                 gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
                 spriteGroup->active = FALSE;
                 gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_NORMAL;
-                DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             }
         }
         else
@@ -395,7 +395,7 @@ void BonusBoardProcess_7B_12BF8()
             {
                 gCurrentPinballGame->ballRespawnState = BALL_SPAWN_STATE_LIVE_BALL;
                 spriteGroup->active = FALSE;
-                DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             }
         }
     }
@@ -414,7 +414,7 @@ void BonusBoardProcess_7B_12BF8()
                         gCurrentPinballGame->ballUpgradeTimer = TICKS_FOR_TIME(1,0);
                     }
                 }
-                DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(1), PLTT_SLOT_SIZE);
+                DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             }
         }
     }
