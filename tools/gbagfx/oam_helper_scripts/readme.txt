@@ -1,3 +1,13 @@
+'segment_gfx.py'
+* Interactive tool for turning a .4bpp file into PNG and json segments.
+*   (uses the existing split / gbagfx tools)
+* To use:
+* Move this tool to a working folder.
+* Update constants as needed. (default wiring uses python3, and expects to be run in a sibling folder beside the pokepinballrs folder.)
+* Load your .4bpp file to the working folder, run the tool, following prompts.
+* PNGs created by the script will appear in your working folder, (sorting by date modified is recommended) for verification before the naming/json data recording step.
+* When done, move the .png files, and the appropriate segments of the json file to the appropriate folders.
+
 'init_gfx_json.py'
 * For reading a folder and building an initial json file for the .4bpp files in it.
 * This prepopulates a tilecount, which can be useful for ballpark sizing the height/width
@@ -24,3 +34,10 @@
 * Sample from pulling the link_gbasp segment out of sprites.4bpp (tool and byte file in the same folder being run from): 
    split_gfx.py sprites.4bpp link_gbasp 768 18
   *this creates a sprites_link_gbasp.4bpp file.
+
+'split_pal'
+* For splitting a file into a collection of .gbapal files.
+* This creates new files with the name being {filename}_{x}.gbapal 
+* x being 0 to calculated number of palettes.
+* Sanity checks: This only accepts files that are a multiple of 0x20 in size, and only allows for dumping 16 palettes at once. (0x200) 
+* Called with splitpal.py {path to file}
