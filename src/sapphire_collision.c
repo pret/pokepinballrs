@@ -318,8 +318,8 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                     	gCurrentPinballGame->ball->velocity.y * gCurrentPinballGame->ball->velocity.y;
 
                 	squaredSpeed = Sqrt(squaredSpeed * 4) / 2;
-                	gCurrentPinballGame->ball->velocity.x = squaredSpeed * Cos(angle) / 20000;
-                	gCurrentPinballGame->ball->velocity.y = -squaredSpeed * Sin(angle) / 20000;
+                	gCurrentPinballGame->ball->velocity.x = MulCos(squaredSpeed, angle);
+                	gCurrentPinballGame->ball->velocity.y = MulSin(-squaredSpeed, angle);
                 }
             }
             else

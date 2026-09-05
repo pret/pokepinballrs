@@ -948,9 +948,11 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
 
             sl = (gCurrentPinballGame->trapSpinRadius * tr4) / 30;
 
-            gCurrentPinballGame->ball->positionQ8.x = (gCurrentPinballGame->catchTargetX * 256) + ((Cos(gCurrentPinballGame->trapAngleQ16) * sl) / 20000);
+            gCurrentPinballGame->ball->positionQ8.x = (gCurrentPinballGame->catchTargetX * 256)
+                + MulCos(sl, gCurrentPinballGame->trapAngleQ16);
 
-            gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->catchTargetY * 256) - ((Sin(gCurrentPinballGame->trapAngleQ16) * sl) / 20000);
+            gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->catchTargetY * 256)
+                - MulSin(sl, gCurrentPinballGame->trapAngleQ16);
 
             gCurrentPinballGame->ball->velocity.x = (gCurrentPinballGame->ball->velocity.x * 4) / 5;
             gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * 4) / 5;

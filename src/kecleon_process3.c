@@ -346,8 +346,8 @@ void UpdateKecleonEntityLogic(void)
         yy = deltaVec.y * deltaVec.y;
         squaredDistance = xx + yy;
         angle = ArcTan2(deltaVec.x, -deltaVec.y);
-        tempVec.x = 6 * Cos(angle) / VECTORSCALEDOWN;
-        tempVec.y = -6 * Sin(angle) / VECTORSCALEDOWN;
+        tempVec.x = MulCos(6, angle);
+        tempVec.y = MulSin(-6, angle);
         gCurrentPinballGame->bossPositionX += tempVec.x;
         gCurrentPinballGame->bossPositionY += tempVec.y;
         if (squaredDistance < 2500)
@@ -411,8 +411,9 @@ void UpdateKecleonEntityLogic(void)
         yy = deltaVec.y * deltaVec.y;
         squaredDistance = xx + yy;
         angle = ArcTan2(deltaVec.x, -deltaVec.y);
-        tempVec.x = 10 * Cos(angle) / VECTORSCALEDOWN;
-        tempVec.y = -10 * Sin(angle) / VECTORSCALEDOWN;
+        tempVec.x = MulCos(10, angle);
+        tempVec.y = MulSin(-10, angle);
+
         gCurrentPinballGame->bossPositionX += tempVec.x;
         gCurrentPinballGame->bossPositionY += tempVec.y;
         if (squaredDistance < 2500)

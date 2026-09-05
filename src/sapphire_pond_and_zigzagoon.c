@@ -208,7 +208,7 @@ void UpdatePelipperPondEntity(void)
         break;
     case 8:
         var_sl = (gCurrentPinballGame->pelipperFrameTimer % 24) / 6 + 13;
-        gCurrentPinballGame->pelipperYBobOffset = (Sin(gCurrentPinballGame->pelipperFrameTimer * 0x400) * 240) / 20000;
+        gCurrentPinballGame->pelipperYBobOffset = MulSin(240, gCurrentPinballGame->pelipperFrameTimer * 0x400);
         if (gCurrentPinballGame->pelipperFrameTimer == 0)
             m4aSongNumStart(SE_PELIPPER_SWOOSH);
 

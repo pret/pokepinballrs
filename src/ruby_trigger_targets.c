@@ -85,9 +85,10 @@ void UpdateChikoritaAttackAnimation(void)
             gCurrentPinballGame->chikoritaProjectileVelX -= 2;
             gCurrentPinballGame->chikoritaProjectileX += gCurrentPinballGame->chikoritaProjectileVelX;
             if (gCurrentPinballGame->chikoritaProjectileTimer < 30)
-                gCurrentPinballGame->chikoritaProjectileY = gCurrentPinballGame->chikoritaProjectileTimer + (Sin(var0) * 24) / 20000;
+                gCurrentPinballGame->chikoritaProjectileY = gCurrentPinballGame->chikoritaProjectileTimer
+                    + MulSin(24, var0);
             else
-                gCurrentPinballGame->chikoritaProjectileY = 30 + (Sin(var0) * 24) / 20000;
+                gCurrentPinballGame->chikoritaProjectileY = 30 + MulSin(24, var0);
 
             gCurrentPinballGame->chikoritaProjectileTimer++;
             if (gCurrentPinballGame->chikoritaProjectileTimer == 27)

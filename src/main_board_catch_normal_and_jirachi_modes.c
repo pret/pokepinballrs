@@ -497,15 +497,15 @@ void UpdateJirachiBonus(void)
             }
             else
             {
-                tempVec.x = (Cos(angle) *  7) / 20000;
-                tempVec.y = (Sin(angle) * -7) / 20000;
+                tempVec.x = MulCos(7, angle);
+                tempVec.y = MulSin(-7, angle);
             }
 
             gCurrentPinballGame->jirachiLogicX += tempVec.x;
             gCurrentPinballGame->jirachiLogicY += tempVec.y;
             var0 = ((gCurrentPinballGame->stageTimer % 80) << 0x10) / 80;
             gCurrentPinballGame->jirachiDisplayX = gCurrentPinballGame->jirachiLogicX;
-            gCurrentPinballGame->jirachiDisplayY = gCurrentPinballGame->jirachiLogicY + (Sin(var0) * 60) / 20000;
+            gCurrentPinballGame->jirachiDisplayY = gCurrentPinballGame->jirachiLogicY + MulSin(60, var0);
         }
 
         if (gCurrentPinballGame->stageTimer < 500)

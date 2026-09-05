@@ -734,8 +734,8 @@ void RunTravelEventCutscene(void)
         if (gCurrentPinballGame->stageTimer < 60)
         {
             u16 angle = (gCurrentPinballGame->stageTimer * 0x4000) / 60;
-            gCurrentPinballGame->travelPainterPosX = (Cos(angle) * 900) / 20000 + 487;
-            gCurrentPinballGame->travelPainterPosY = (Sin(angle) * 600) / 20000 - 629;
+            gCurrentPinballGame->travelPainterPosX = MulCos(900, angle) + 487;
+            gCurrentPinballGame->travelPainterPosY = MulSin(600, angle) - 629;
             gCurrentPinballGame->travelPainterVelX = -17;
             gCurrentPinballGame->travelPainterVelY = -30;
             index = (gCurrentPinballGame->stageTimer % 4) / 2;

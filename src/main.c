@@ -203,11 +203,6 @@ s16 Cos(u16 arg0)
     return Sin(arg0 + 0x4000);
 }
 
-// sin table produces values from 0 - 20000
-//#define TRIG_SCALE 20000
-
-
-
 static void ReadKeys(void)
 {
     u16 keyInput = ~REG_KEYINPUT;
