@@ -736,10 +736,10 @@ void RunMonCaptureSequence(void)
         {
             s32 var_3 = (gCurrentPinballGame->trapSpinRadius * temp_r0) / 80;
 
-            gCurrentPinballGame->ball->positionQ8.x =
-                (gCurrentPinballGame->catchTargetX << 8) + Cos(gCurrentPinballGame->trapAngleQ16) * var_3 / 20000;
-            gCurrentPinballGame->ball->positionQ8.y =
-                (gCurrentPinballGame->catchTargetY << 8) - Sin(gCurrentPinballGame->trapAngleQ16) * var_3 / 20000;
+            gCurrentPinballGame->ball->positionQ8.x = (gCurrentPinballGame->catchTargetX << 8)
+                + MulCos(var_3, gCurrentPinballGame->trapAngleQ16);
+            gCurrentPinballGame->ball->positionQ8.y = (gCurrentPinballGame->catchTargetY << 8)
+                - MulSin(var_3, gCurrentPinballGame->trapAngleQ16);
         }
         break;
 

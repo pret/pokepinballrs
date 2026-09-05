@@ -1122,8 +1122,12 @@ void UpdateKyogreFieldEntities(void)
                 var5 = (gCurrentPinballGame->trapSpinRadius * var4) / 30;
                 tempVector2.x = gCurrentPinballGame->vortexScreenPosition[i].x / 10 + 120;
                 tempVector2.y = gCurrentPinballGame->vortexScreenPosition[i].y / 10 + 144;
-                gCurrentPinballGame->ball->positionQ8.x = (tempVector2.x << 8) + ((Cos(gCurrentPinballGame->trapAngleQ16) * var5) / 20000);
-                gCurrentPinballGame->ball->positionQ8.y = (tempVector2.y << 8) - ((Sin(gCurrentPinballGame->trapAngleQ16) * var5) / 20000);
+
+                gCurrentPinballGame->ball->positionQ8.x = (tempVector2.x << 8)
+                    + MulCos(var5, gCurrentPinballGame->trapAngleQ16);
+                gCurrentPinballGame->ball->positionQ8.y = (tempVector2.y << 8)
+                    - MulSin(var5, gCurrentPinballGame->trapAngleQ16);
+
                 gCurrentPinballGame->ball->velocity.x = (gCurrentPinballGame->ball->velocity.x * 4) / 5;
                 gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * 4) / 5;
 
@@ -1148,8 +1152,11 @@ void UpdateKyogreFieldEntities(void)
                 var5 = (gCurrentPinballGame->trapSpinRadius * var4) / 47;
                 tempVector2.x = gCurrentPinballGame->vortexScreenPosition[i].x / 10 + 120;
                 tempVector2.y = gCurrentPinballGame->vortexScreenPosition[i].y / 10 + 144;
-                gCurrentPinballGame->ball->positionQ8.x = (tempVector2.x << 8) + ((Cos(gCurrentPinballGame->trapAngleQ16) * var5) / 20000);
-                gCurrentPinballGame->ball->positionQ8.y = (tempVector2.y << 8) - ((Sin(gCurrentPinballGame->trapAngleQ16) * var5) / 20000);
+
+                gCurrentPinballGame->ball->positionQ8.x = (tempVector2.x << 8)
+                    + MulCos(var5, gCurrentPinballGame->trapAngleQ16);
+                gCurrentPinballGame->ball->positionQ8.y = (tempVector2.y << 8)
+                    - MulSin(var5, gCurrentPinballGame->trapAngleQ16);
                 gCurrentPinballGame->ball->velocity.x = (gCurrentPinballGame->ball->velocity.x * 4) / 5;
                 gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * 4) / 5;
 
@@ -1190,8 +1197,8 @@ void UpdateKyogreFieldEntities(void)
                 yy = tempVector.y * tempVector.y;
                 squaredDistance = xx + yy;
                 angle = ArcTan2(tempVector.x, -tempVector.y);
-                tempVector3.x =  (Cos(angle) * 4) / 20000;
-                tempVector3.y = -(Sin(angle) * 4) / 20000;
+                tempVector3.x = MulCos(4, angle);
+                tempVector3.y = MulSin(-4, angle);
                 gCurrentPinballGame->vortexScreenPosition[i].x += tempVector3.x;
                 gCurrentPinballGame->vortexScreenPosition[i].y += tempVector3.y;
                 if (squaredDistance < 2500)

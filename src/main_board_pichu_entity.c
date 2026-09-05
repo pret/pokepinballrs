@@ -159,7 +159,7 @@ void UpdateKickbackLogic(void)
 
             // used for the horizontal 'floaty' movement when electric builds pre-launch.
             gCurrentPinballGame->ball->positionQ1.x =
-                gCurrentPinballGame->kickbackBallHoverPos.x + ((Sin(r5) * 6) / 20000) +
+                gCurrentPinballGame->kickbackBallHoverPos.x + MulSin(6, r5) +
                 ((gOutlaneCenterXPositions[gCurrentPinballGame->outLaneSide - 1] * 2 - gCurrentPinballGame->kickbackBallHoverPos.x) * (gCurrentPinballGame->kickbackAnimDuration - gCurrentPinballGame->kickbackAnimProgress)) / gCurrentPinballGame->kickbackAnimDuration;
 
             tempY = ((gCurrentPinballGame->kickbackAnimDuration - gCurrentPinballGame->kickbackAnimProgress) * 40) / gCurrentPinballGame->kickbackAnimDuration;
@@ -369,8 +369,8 @@ void PichuArrivalSequence(void)
         yy = tempVec.y * tempVec.y;
         squaredDistance = xx + yy;
         angle = ArcTan2(tempVec.x, -tempVec.y);
-        tempVec2.x = (Cos(angle) * 7) / 20000;
-        tempVec2.y = (Sin(angle) * -7) / 20000;
+        tempVec2.x = MulCos(7, angle);
+        tempVec2.y = MulSin(-7, angle);
         index = gAngleToDirectionTable[angle / ANGLE_45] + (gMain.systemFrameCount % 24) / 8;
         gCurrentPinballGame->walkMonXPos += tempVec2.x;
         gCurrentPinballGame->walkMonYPos += tempVec2.y;

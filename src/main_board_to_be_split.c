@@ -1764,14 +1764,14 @@ void UpdateEggMode(void)
             if (gCurrentPinballGame->creatureWaypointIndex < 4)
             {
                 var0 = 0;
-                tempVec2.x = (Cos(angle) * 14) / 20000;
-                tempVec2.y = -(Sin(angle) * 14) / 20000;
+                tempVec2.x = MulCos(14, angle);
+                tempVec2.y = MulSin(-14, angle);
             }
             else
             {
                 var0 = gAngleToDirectionTable[angle / ANGLE_45] + (gMain.systemFrameCount % 24) / 8;
-                tempVec2.x = (Cos(angle) * 7) / 20000;
-                tempVec2.y = -(Sin(angle) * 7) / 20000;
+                tempVec2.x = MulCos(7, angle);
+                tempVec2.y = MulSin(-7, angle);
             }
 
             gCurrentPinballGame->walkMonXPos += tempVec2.x;
@@ -1826,8 +1826,8 @@ void UpdateEggMode(void)
         yy = tempVec.y * tempVec.y;
         squaredDistance = xx + yy;
         angle = ArcTan2(tempVec.x, -tempVec.y);
-        tempVec2.x = (Cos(angle) * 7) / 20000;
-        tempVec2.y = -(Sin(angle) * 7) / 20000;
+        tempVec2.x = MulCos(7, angle);
+        tempVec2.y = MulSin(-7, angle);
         if (gCurrentPinballGame->captureFlashTimer)
         {
             gCurrentPinballGame->captureFlashTimer--;
@@ -1919,13 +1919,13 @@ void UpdateEggMode(void)
                 angle2 = ArcTan2(-gCurrentPinballGame->ball->velocity.x, gCurrentPinballGame->ball->velocity.y);
                 if (gCurrentPinballGame->creatureHitCount > 1)
                 {
-                    gCurrentPinballGame->ball->velocity.x = (Cos(angle2) * 400) / 20000;
-                    gCurrentPinballGame->ball->velocity.y = -(Sin(angle2) * 400) / 20000;
+                    gCurrentPinballGame->ball->velocity.x = MulCos(400, angle2);
+                    gCurrentPinballGame->ball->velocity.y = MulSin(-400, angle2);
                 }
                 else
                 {
-                    gCurrentPinballGame->ball->velocity.x = (Cos(angle2) * 160) / 20000;
-                    gCurrentPinballGame->ball->velocity.y = -(Sin(angle2) * 160) / 20000;
+                    gCurrentPinballGame->ball->velocity.x = MulCos(160, angle2);
+                    gCurrentPinballGame->ball->velocity.y = MulSin(-160, angle2);
                 }
 
                 PlayRumble(7);

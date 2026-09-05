@@ -441,7 +441,7 @@ void UpdateRayquazaEntityLogic(void)
         if (gCurrentPinballGame->bossMovementPhase > 1)
         {
             gCurrentPinballGame->bossSineAngle += 0x80;
-            gCurrentPinballGame->bossPositionX = ((Sin(gCurrentPinballGame->bossSineAngle) * 62) / 20000) * 10;
+            gCurrentPinballGame->bossPositionX = MulSin(62, gCurrentPinballGame->bossSineAngle) * 10;
         }
         break;
     case RAYQUAZA_ENTITY_STATE_LIGHTNING_ATTACK:
@@ -1268,8 +1268,10 @@ void UpdateRayquazaMinionsAndEffects(void)
             {
 
                 s16 angle = (((gMain.systemFrameCount + 120 * i) % 240) << 0x10) / 240;
-                gCurrentPinballGame->vortexScreenPosition[i].x = gCurrentPinballGame->vortexOrbitCenter[i].x + (Cos(angle) * 4) / 2000;
-                gCurrentPinballGame->vortexScreenPosition[i].y = gCurrentPinballGame->vortexOrbitCenter[i].y + (Sin(angle) * 4) / 2000;
+                gCurrentPinballGame->vortexScreenPosition[i].x = gCurrentPinballGame->vortexOrbitCenter[i].x
+                    + MulCos(40, angle);
+                gCurrentPinballGame->vortexScreenPosition[i].y = gCurrentPinballGame->vortexOrbitCenter[i].y
+                    + MulSin(40, angle);
 
                 tempVector.x = gCurrentPinballGame->ball->positionQ0.x - (gCurrentPinballGame->vortexScreenPosition[i].x / 10) - 16;
                 tempVector.y = gCurrentPinballGame->ball->positionQ0.y - (gCurrentPinballGame->vortexScreenPosition[i].y / 10) - 32;;
@@ -1334,8 +1336,10 @@ void UpdateRayquazaMinionsAndEffects(void)
             var5 = (gCurrentPinballGame->trapSpinRadius * var4) / 30;
             tempVector2.x = gCurrentPinballGame->vortexScreenPosition[i].x / 10 + 16;
             tempVector2.y = gCurrentPinballGame->vortexScreenPosition[i].y / 10 + 32;
-            gCurrentPinballGame->ball->positionQ8.x = (tempVector2.x << 8) + ((Cos(gCurrentPinballGame->trapAngleQ16) * var5) / 20000);
-            gCurrentPinballGame->ball->positionQ8.y = (tempVector2.y << 8) - ((Sin(gCurrentPinballGame->trapAngleQ16) * var5) / 20000);
+            gCurrentPinballGame->ball->positionQ8.x = (tempVector2.x << 8)
+                + MulCos(var5, gCurrentPinballGame->trapAngleQ16);
+            gCurrentPinballGame->ball->positionQ8.y = (tempVector2.y << 8)
+                - MulSin(var5, gCurrentPinballGame->trapAngleQ16);
             gCurrentPinballGame->ball->velocity.x = (gCurrentPinballGame->ball->velocity.x * 4) / 5;
             gCurrentPinballGame->ball->velocity.y = (gCurrentPinballGame->ball->velocity.y * 4) / 5;
 
@@ -1765,8 +1769,10 @@ void RenderWindCloudSprites(void)
             var0 = ((gMain.systemFrameCount % 240) << 0x10) / 240;
             gCurrentPinballGame->vortexOrbitCenter[0].x = gRayquazaTornadoSpawnPos[rand].x;
             gCurrentPinballGame->vortexOrbitCenter[0].y = gRayquazaTornadoSpawnPos[rand].y;
-            gCurrentPinballGame->vortexScreenPosition[0].x = gCurrentPinballGame->vortexOrbitCenter[0].x + (Cos(var0) * 4) / 2000;
-            gCurrentPinballGame->vortexScreenPosition[0].y = gCurrentPinballGame->vortexOrbitCenter[0].y + (Sin(var0) * 4) / 2000;
+            gCurrentPinballGame->vortexScreenPosition[0].x = gCurrentPinballGame->vortexOrbitCenter[0].x
+                + MulCos(40, var0);
+            gCurrentPinballGame->vortexScreenPosition[0].y = gCurrentPinballGame->vortexOrbitCenter[0].y
+                + MulSin(40, var0);
             m4aSongNumStart(SE_RAYQUAZA_SONIC_BOOM);
         }
     }
@@ -1782,8 +1788,10 @@ void RenderWindCloudSprites(void)
             var0 = (((gMain.systemFrameCount + 120) % 240) << 0x10) / 240;
             gCurrentPinballGame->vortexOrbitCenter[1].x = gRayquazaTornadoSpawnPos[rand].x;
             gCurrentPinballGame->vortexOrbitCenter[1].y = gRayquazaTornadoSpawnPos[rand].y;
-            gCurrentPinballGame->vortexScreenPosition[1].x = gCurrentPinballGame->vortexOrbitCenter[1].x + (Cos(var0) * 4) / 2000;
-            gCurrentPinballGame->vortexScreenPosition[1].y = gCurrentPinballGame->vortexOrbitCenter[1].y + (Sin(var0) * 4) / 2000;
+            gCurrentPinballGame->vortexScreenPosition[1].x = gCurrentPinballGame->vortexOrbitCenter[1].x
+                + MulCos(40, var0);
+            gCurrentPinballGame->vortexScreenPosition[1].y = gCurrentPinballGame->vortexOrbitCenter[1].y
+                + MulSin(40, var0);
             m4aSongNumStart(SE_RAYQUAZA_SONIC_BOOM);
         }
     }

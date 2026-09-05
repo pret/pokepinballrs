@@ -30,6 +30,23 @@ void Timer3Intr(void);
 void IntrDummy(void);
 s16 Sin(u16 arg0);
 s16 Cos(u16 arg0);
+
+// sin table produces values from 0 - 20000
+#define TRIG_SCALE 20000
+
+/* Multiply value by sin(angle).
+
+   Works in most cases; compiles differently with some values, like -100, where the negative
+   plus optimizer pre-reduction causes it to fall in a different position.
+   Use the MulNegSinSpecial for those cases */
+#define MulSin(value, angle) (((value) * (Sin(angle))) / TRIG_SCALE)
+
+/* Multiply value by cos(angle).*/
+#define MulCos(value, angle) (((value) * (Cos(angle))) / TRIG_SCALE)
+
+// Multiply -value by sin(angle). (used in cases where compile optimization order matters)
+#define MulNegSinSpecial(value, angle) (-((Sin(angle)) * (value)) / TRIG_SCALE)
+
 void DisableVBlankInterrupts(void);
 void MainLoopIter(void);
 void DefaultMainCallback(void);

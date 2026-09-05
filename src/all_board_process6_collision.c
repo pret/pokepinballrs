@@ -215,7 +215,7 @@ void ApplyTiltEffectOnCollision(struct Vector16 *ballPosition, struct Vector16 *
             cos = Cos(angle);
             if (cos < 0)
             {
-                arg1->x = (Cos(angle) * 70) / 20000;
+                arg1->x = MulCos(70, angle);
                 gCurrentPinballGame->tiltLockoutTimer = 1;
             }
         }
@@ -224,7 +224,7 @@ void ApplyTiltEffectOnCollision(struct Vector16 *ballPosition, struct Vector16 *
             cos = Cos(angle);
             if (cos > 0)
             {
-                arg1->x = (Cos(angle) * 70) / 20000;
+                arg1->x = MulCos(70, angle);
                 gCurrentPinballGame->tiltLockoutTimer = 1;
             }
         }
@@ -236,16 +236,16 @@ void ApplyTiltEffectOnCollision(struct Vector16 *ballPosition, struct Vector16 *
         if (gCurrentPinballGame->ball->positionQ0.y > 364)
         {
             if (gCurrentPinballGame->tiltTargetXOffset == 0)
-                arg1->y = -(Sin(angle) * 130) / 20000;
+                arg1->y = MulSin(-130, angle);
             else
-                arg1->y = -(Sin(angle) * 100) / 20000;
+                arg1->y = MulNegSinSpecial(100, angle);
         }
         else
         {
             if (gCurrentPinballGame->tiltTargetXOffset == 0)
-                arg1->y = -(Sin(angle) * 100) / 20000;
+                arg1->y = MulNegSinSpecial(100, angle);
             else
-                arg1->y = -(Sin(angle) * 75) / 20000;
+                arg1->y = MulSin(-75, angle);
 
             if (arg1->y >= 90)
                 gCurrentPinballGame->ball->velocity.x /= 4;
@@ -395,8 +395,8 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
 
     // Project a curved arg2 delta based on half the magnitude
     // Note: the trigonometric functions return s16, typically scaled by 0x1000 or more
-    lateralMag = halfMag * Sin(angleDelta) / 20000;
-    forwardMag = halfMag * Cos(angleDelta) / 20000;
+    lateralMag = MulSin(halfMag, angleDelta);
+    forwardMag = MulCos(halfMag, angleDelta);
 
     // 'wall' sound if collision angle is high enough
     if (Cos(angleDelta)  > 0x1F3F)
@@ -428,14 +428,18 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
         curveDirScaledFactor * scaledLateralMag / 0xEB8
         + gCurrentPinballGame->ball->spinAcceleration;
 
+/*
+    tempVec.x = MulCos(forwardMag, arg0) + MulCos(lateralMag, adjustedAngle);
+    tempVec.y = MulSin(-forwardMag, arg0) + MulSin(-lateralMag, adjustedAngle);
+*/
     tempVec.x =  forwardMag * Cos(arg0);
     tempVec.y = -forwardMag * Sin(arg0);
 
     tempVec.x =  lateralMag * Cos(adjustedAngle) + tempVec.x;
     tempVec.y = -lateralMag * Sin(adjustedAngle) + tempVec.y;
 
-    tempVec.x = tempVec.x / 20000;
-    tempVec.y = tempVec.y / 20000;
+    tempVec.x = tempVec.x / TRIG_SCALE;
+    tempVec.y = tempVec.y / TRIG_SCALE;
 
     // With how the curveSign/curveScaleFactor are only used 'multiplied together'
     // with the tempVec calculation, the negations cancel out. - Shouldn't be needed.
@@ -449,8 +453,8 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
     }
     curveSign = curveDir * curveSign;
 
-    tempVec2.x =  curveSign * curveScaleFactor * Cos(adjustedAngle) / 20000;
-    tempVec2.y = -curveSign * curveScaleFactor * Sin(adjustedAngle) / 20000;
+    tempVec2.x = MulCos(curveSign * curveScaleFactor, adjustedAngle);
+    tempVec2.y = MulSin( -curveSign * curveScaleFactor, adjustedAngle);
 
     vxSquared = tempVec.x * tempVec.x;
     vySquared = tempVec.y * tempVec.y;
@@ -467,13 +471,13 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
         && gCurrentPinballGame->boardLayerDepth > 0
         && gCurrentPinballGame->ball->positionQ0.y < 0xD2)
     {
-        tempVec.x =  halfMag * Cos(finalAngle) / 20000;
-        tempVec.y = -halfMag * Sin(finalAngle) / 20000;
+        tempVec.x = MulCos(halfMag, finalAngle);
+        tempVec.y = MulSin(-halfMag, finalAngle);
     }
     else
     {
-        tempVec.x =  halfMag2 * Cos(finalAngle) / 20000;
-        tempVec.y = -halfMag2 * Sin(finalAngle) / 20000;
+        tempVec.x = MulCos(halfMag2, finalAngle);
+        tempVec.y = MulSin(-halfMag2, finalAngle);
     }
 
     ApplyBounceBackForce(arg0, &tempVec, angleOfFlippedArg1);
@@ -484,7 +488,6 @@ void ComputeWallReflection(u16 arg0, struct Vector16 *arg1, struct Vector16 *arg
 
 void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
 {
-    const u16 VECTORSCALEDOWN = 20000;
     s32 squaredSpeed;
     s16 x, y;
     s16 var0;
@@ -524,13 +527,13 @@ void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
 
             if ( gCurrentPinballGame->ballSpeed > 0)
             {
-                tempVec.x = 230 * Cos(arg0) / VECTORSCALEDOWN;
-                tempVec.y = -230 * Sin(arg0) / VECTORSCALEDOWN;
+                tempVec.x = MulCos(230, arg0);
+                tempVec.y = MulSin(-230, arg0);
             }
             else
             {
-                tempVec.x = 285 * Cos(arg0) / VECTORSCALEDOWN;
-                tempVec.y = -285 * Sin(arg0) / VECTORSCALEDOWN;
+                tempVec.x = MulCos(285, arg0);
+                tempVec.y = MulSin(-285, arg0);
             }
 
             gCurrentPinballGame->slingshotHitAnimTimer = 4;
@@ -549,24 +552,24 @@ void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
 
             if (arg0 > 0xA000 && arg0 < 0xE000)
             {
-                tempVec.x =  60 * Cos(arg0) / VECTORSCALEDOWN;
-                tempVec.y = -60 * Sin(arg0) / VECTORSCALEDOWN;
+                tempVec.x = MulCos(60, arg0);
+                tempVec.y = MulSin(-60, arg0);
             }
             else if (arg0 >= 0x1000 && arg0 <= 0x7000)
             {
-                tempVec.x =  240 * Cos(arg0) / VECTORSCALEDOWN;
-                tempVec.y = -240 * Sin(arg0) / VECTORSCALEDOWN;
+                tempVec.x = MulCos(240, arg0);
+                tempVec.y = MulSin(-240, arg0);
             }
             else
             {
-                tempVec.x =  120 * Cos(arg0) / VECTORSCALEDOWN;
-                tempVec.y = -120 * Sin(arg0) / VECTORSCALEDOWN;
+                tempVec.x = MulCos(120, arg0);
+                tempVec.y = MulSin(-120, arg0);
             }
         }
         else
         {
-            tempVec.x =  gBounceBackForceMagnitudes[gCurrentPinballGame->collisionSurfaceType] * Cos(arg0) / VECTORSCALEDOWN;
-            tempVec.y = -gBounceBackForceMagnitudes[gCurrentPinballGame->collisionSurfaceType] * Sin(arg0) / VECTORSCALEDOWN;
+            tempVec.x = MulCos(gBounceBackForceMagnitudes[gCurrentPinballGame->collisionSurfaceType], arg0);
+            tempVec.y = MulSin(-gBounceBackForceMagnitudes[gCurrentPinballGame->collisionSurfaceType], arg0);
         }
     }
 
@@ -599,8 +602,8 @@ void ApplyBounceBackForce(u16 arg0, struct Vector32 *arg1, u16 arg2)
 
         gCurrentPinballGame->ball->spinSpeed = 0;
         angle = ArcTan2(arg1->x, -arg1->y);
-        arg1->x = squaredSpeed  * Cos(angle) / VECTORSCALEDOWN;
-        arg1->y = -squaredSpeed  * Sin(angle) / VECTORSCALEDOWN;
+        arg1->x = MulCos(squaredSpeed, angle);
+        arg1->y = MulSin(-squaredSpeed, angle);
     }
 }
 
@@ -848,8 +851,8 @@ void ProcessBonusTrapPhysics(void)
     {
         angle = ArcTan2(-vec1.x, vec1.y);
         temp_adjust = 30;
-        vec2.x = (temp_adjust  * Cos(angle)) / 20000;
-        vec2.y = (-temp_adjust * Sin(angle)) / 20000;
+        vec2.x = MulCos(temp_adjust, angle);
+        vec2.y = MulSin(-temp_adjust, angle);
         gCurrentPinballGame->ball->velocity.x = ((vec2.x * 100) + (98 * gCurrentPinballGame->ball->velocity.x)) / 100;
         gCurrentPinballGame->ball->velocity.y = ((vec2.y * 100) + (98 * gCurrentPinballGame->ball->velocity.y)) / 100;
     }
@@ -966,8 +969,8 @@ void ComputeFlipperLaunchVelocity(s32 arg0, s16 flipperIx, struct Vector16* arg2
             angle = (gCurrentPinballGame->ball->velocity.x * -0x600) / 0x80 +
                     (gCurrentPinballGame->ball->prevSpinSpeed * -0x180) / 0x100 +
                     var0;
-            gCurrentPinballGame->flipperLaunchVelocity.x = scale * Cos(angle) / 20000;
-            gCurrentPinballGame->flipperLaunchVelocity.y = -scale * Sin(angle) / 20000;
+            gCurrentPinballGame->flipperLaunchVelocity.x = MulCos(scale, angle);
+            gCurrentPinballGame->flipperLaunchVelocity.y = MulSin(-scale, angle);
         }
 
         gCurrentPinballGame->flipperLaunchPending = TRUE;
@@ -986,14 +989,14 @@ void ComputeFlipperLaunchVelocity(s32 arg0, s16 flipperIx, struct Vector16* arg2
         u16 angle2;
 
         scale = arg0 / 20;
-        vec1.x = scale * Cos(arg3) / 20000;
-        vec1.y = -(scale * Sin(arg3)) / 20000;
+        vec1.x = MulCos(scale, arg3);
+        vec1.y = MulNegSinSpecial(scale, arg3);
 
         arg2->x = vec1.x + arg2->x * 3 / 2;
         arg2->y = vec1.y + arg2->y * 3 / 2;
 
         angle2 = ArcTan2(arg2->x, -arg2->y);
-        arg2->x = scale * Cos(angle2) / 20000;
-        arg2->y = -scale * Sin(angle2) / 20000;
+        arg2->x = MulCos(scale, angle2);
+        arg2->y = MulSin(-scale, angle2);
     }
 }

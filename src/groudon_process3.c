@@ -1111,8 +1111,8 @@ void UpdateGroudonFieldEntities(void)
                     PlayRumble(9);
                 }
 
-                gCurrentPinballGame->projectilePosition.x += (Cos(gCurrentPinballGame->projectileAngle) *  40) / 20000;
-                gCurrentPinballGame->projectilePosition.y += (Sin(gCurrentPinballGame->projectileAngle) * -40) / 20000;
+                gCurrentPinballGame->projectilePosition.x += MulCos(40, gCurrentPinballGame->projectileAngle);
+                gCurrentPinballGame->projectilePosition.y += MulSin(-40, gCurrentPinballGame->projectileAngle);
 
             }
             else
@@ -1655,8 +1655,8 @@ void UpdateGroudonFieldEntities(void)
                 && squaredDistance < gShockwaveSplashDistanceThresholds[gCurrentPinballGame->shockwaveAnimTimer])
             {
                 gCurrentPinballGame->trapAngleQ16 = ArcTan2(-tempVector.x, tempVector.y);
-                gCurrentPinballGame->ball->velocity.x = (Cos(gCurrentPinballGame->trapAngleQ16) * -400) / 20000;
-                gCurrentPinballGame->ball->velocity.y = (Sin(gCurrentPinballGame->trapAngleQ16) *  400) / 20000;
+                gCurrentPinballGame->ball->velocity.x = MulCos(-400, gCurrentPinballGame->trapAngleQ16);
+                gCurrentPinballGame->ball->velocity.y = MulSin(400, gCurrentPinballGame->trapAngleQ16);
                 PlayRumble(9);
             }
         }

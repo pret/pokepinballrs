@@ -334,7 +334,7 @@ void BallSaverAnimation(void)
         if (gMain.animationTimer > 70)
         {
             int var0 = (gMain.animationTimer + 20) % 0x40;
-            gCurrentPinballGame->ballSaverPosY = (Sin(var0 * 0x400) * 500) / 20000;
+            gCurrentPinballGame->ballSaverPosY = MulSin(500, (var0 * 0x400));
             gCurrentPinballGame->ballSaverVelX = 10;
             gCurrentPinballGame->ballSaverVelY = 400;
         }
