@@ -859,7 +859,7 @@ gIdleBoardGameState1:: @ 0x08156E60
 @ strikes it, streamed over the tile-704 overlay slot with gBoardActionObj_Pals
 @ into OBJ bank 14 beside it (main_board_launcher_and_cutscenes.c). t102..173 is
 @ bolt art no bank-14 OAM entry reaches; the last 31 tiles are blank padding.
-gBoardActionTilesGfx:: @ 0x08158284
+gEvolutionCutsceneTilesGfx:: @ 0x08158284
 	.incbin "graphics/stage/main/board_action.4bpp"
 	.space 0x3E0
 

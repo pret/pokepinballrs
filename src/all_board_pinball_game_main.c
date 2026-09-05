@@ -15,6 +15,20 @@ struct BoardProcessPair
     void (*updateFunc)(void);
 };
 
+/* Per frame core processing functions for the current board
+ 0 - Load sprites; manage default sprite group visibility
+ 1 - Pause check/display
+ 2 - Camera, Tilt, Drained Ball
+ 3 - Main board/entity logic
+ 4 - Flippers
+ 5 - Ball Movement (Not if processing a mode change, or 'manual' ball physics active)
+ 6 - Collision logic (Only when ball physics is normal)
+ 7 - Draw ball
+ 8 - Hud update: Timer, lives, score, mon caught.
+
+ Initial load (first frame on board) goes in order.
+ After that, step 0 (sprite loading) moves after step 1 for Bonus Board, and after step 2 for main boards
+ */
 extern struct BoardProcessPair CurrentBoardProcPairs_020028D8[9];
 
 extern const struct BoardProcessPair gBoardProcPairs_086B077C[];
@@ -496,7 +510,7 @@ void PinballGame_State1_4AAD8(void)
         break;
     case 1:
         gFieldInitFuncs[gMain.isBonusField]();
-        if (JOY_HELD(A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON) == (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON))
+        if (JOY_HELD(RESTART_GAME_BUTTONS) == (RESTART_GAME_BUTTONS))
             gMain.gameExitState = 1;
 
         if (gMain.gameExitState)

@@ -135,7 +135,7 @@ void RenderBannerSlideAnimation(void)
             }
             else
             {
-                gCurrentPinballGame->activePortraitType = 4;
+                gCurrentPinballGame->activeFxType = FX_MODE_START_BANNER;
                 DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(0, 22, 32)), 0x25E0);
                 AnimateBannerSlide();
                 if (gCurrentPinballGame->bannerDisplayDuration > 0)
@@ -156,13 +156,13 @@ void RenderBannerSlideAnimation(void)
                     spriteGroup->baseY = 44;
                     gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER]->active = FALSE; // direct index required here
                     gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
-                    gCurrentPinballGame->activePortraitType = 0;
+                    gCurrentPinballGame->activeFxType = FX_NONE;
                 }
             }
         }
         else
         {
-            gCurrentPinballGame->activePortraitType = 4;
+            gCurrentPinballGame->activeFxType = FX_MODE_START_BANNER;
             // i = framecount ???
             DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_TILE_ADDR(TILE_INDEX(0, 22, 32)), 0x21C0);
             if (gCurrentPinballGame->bannerDisplayDuration > 0)
@@ -264,7 +264,7 @@ void RenderBannerSlideAnimation(void)
                 {
                     gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER]->active = FALSE;
                     gCurrentPinballGame->bannerGfxIndex = BANNER_MODE_NONE;
-                    gCurrentPinballGame->activePortraitType = 0;
+                    gCurrentPinballGame->activeFxType = FX_NONE;
                     if ((gCurrentPinballGame->ballCatchState != TRAP_EVO_SHOP_HOLE
                             || gCurrentPinballGame->evolutionShopActive != TRUE)
                         && (gCurrentPinballGame->ballCatchState != TRAP_CENTER_HOLE

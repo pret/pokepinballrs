@@ -240,7 +240,7 @@ void UpdateCatchEmMode(void)
         }
         else
         {
-            gCurrentPinballGame->activePortraitType = 10;
+            gCurrentPinballGame->activeFxType = FX_CATCH_MON_REVEAL_PUFF;
             DmaCopy16(3, gCatchMonAppearFx_Gfx, (void *)0x06015800, 0x1400);
             DmaCopy16(3, gCatchMonAppearFx_Pal, OBJ_PLTT_SLOT(PAL_IX_CATCH_TILE_FX), PLTT_SLOT_SIZE);
             m4aSongNumStart(SE_CATCH_MON_ENTITY_APPEARS);
@@ -911,7 +911,7 @@ void PlayCatchMonAppearsAnimation(void)
     {
         gCurrentPinballGame->boardSubState++;
         gMain.fieldSpriteGroups[FIELD_SG_18]->active = FALSE;
-        gCurrentPinballGame->activePortraitType = 0;
+        gCurrentPinballGame->activeFxType = FX_NONE;
     }
 }
 

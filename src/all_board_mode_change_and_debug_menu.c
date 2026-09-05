@@ -267,7 +267,7 @@ void EndOfBallSequence(void)
                 RequestBoardStateTransition(MAIN_BOARD_STATE_DEFAULT);
             }
 
-            gCurrentPinballGame->activePortraitType = 0;
+            gCurrentPinballGame->activeFxType = FX_NONE;
         }
         else
         {
@@ -492,7 +492,7 @@ void BallSaverAnimation(void)
             gCurrentPinballGame->ball->oamPriority = 1;
 
         gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
-        gCurrentPinballGame->activePortraitType = 0;
+        gCurrentPinballGame->activeFxType = FX_NONE;
         gCurrentPinballGame->startButtonDisabled = FALSE;
     }
 }

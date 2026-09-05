@@ -91,8 +91,6 @@ static void InitFieldSelectData(void)
     gFieldSelectSoftReset = FALSE;
 }
 
-#define RESTART_GAME_BUTTONS (A_BUTTON | B_BUTTON | SELECT_BUTTON | START_BUTTON)
-
 void FieldSelect_State1_8C7C(void)
 {
     RenderFieldSelectSprites();

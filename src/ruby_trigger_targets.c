@@ -460,10 +460,10 @@ void DrawRubySideBumperSprites(void)
         gCurrentPinballGame->travelModeStartDelay--;
         if (gCurrentPinballGame->travelModeStartDelay == 0)
         {
-            if (gCurrentPinballGame->activePortraitType)
+            if (gCurrentPinballGame->activeFxType)
                 gCurrentPinballGame->travelModeStartDelay = 1;
             else
-                gCurrentPinballGame->activePortraitType = 4;
+                gCurrentPinballGame->activeFxType = FX_MODE_START_BANNER;
 
             if (gCurrentPinballGame->travelModeStartDelay == 0)
             {

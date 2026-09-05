@@ -301,7 +301,7 @@ void Ereader_CloseSuccessfulTransmission(void)
     u16 temp;
     UpdateEReaderSpritesViaOam();
 
-    switch(gEReaderGeneralTimer)
+    switch (gEReaderGeneralTimer)
     {
         case 4:
             ResetSerialAndInterrupts();

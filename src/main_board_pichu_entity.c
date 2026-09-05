@@ -134,11 +134,11 @@ void UpdateKickbackLogic(void)
             }
             if (gCurrentPinballGame->kickbackLaunchTimer == 116)
             {
-                if (gCurrentPinballGame->activePortraitType)
+                if (gCurrentPinballGame->activeFxType)
                     gCurrentPinballGame->kickbackLaunchTimer = 120;
                 else
                 {
-                    gCurrentPinballGame->activePortraitType = 1;
+                    gCurrentPinballGame->activeFxType = FX_PIKA_KICKBACK_FIRING;
                     if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)
                     {
                         if (gCurrentPinballGame->outLaneSide == 1)
@@ -154,7 +154,7 @@ void UpdateKickbackLogic(void)
                     }
                 }
             }
-            if (gCurrentPinballGame->kickbackLaunchTimer == 115 && gCurrentPinballGame->activePortraitType == 1)
+            if (gCurrentPinballGame->kickbackLaunchTimer == 115 && gCurrentPinballGame->activeFxType == 1)
                 m4aMPlayVolumeControl(&gMPlayInfo_SE1, 0xFFFF, 0x200);
 
             // used for the horizontal 'floaty' movement when electric builds pre-launch.
@@ -239,7 +239,7 @@ void UpdateKickbackLogic(void)
                     gCurrentPinballGame->kickbackFrameId = 25;
                     gCurrentPinballGame->kickbackFiring = FALSE;
                     gMain.fieldSpriteGroups[FIELD_SG_PIKA_KICKBACK_LAUNCH_FX]->active = FALSE;
-                    gCurrentPinballGame->activePortraitType = 0;
+                    gCurrentPinballGame->activeFxType = FX_NONE;
 
                     outlaneChuteIx = gCurrentPinballGame->outLaneSide - 1;
                     if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)

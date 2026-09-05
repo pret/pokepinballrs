@@ -29,7 +29,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
         if (gCurrentPinballGame->shopEntryTimer == 146)
         {
-            gCurrentPinballGame->activePortraitType = 18;
+            gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
             DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
             DmaCopy16(3, gShopNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
@@ -313,7 +313,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = FALSE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = FALSE;
 
-                gCurrentPinballGame->activePortraitType = 0;
+                gCurrentPinballGame->activeFxType = FX_NONE;
             }
         }
     }
@@ -355,7 +355,7 @@ void UpdateShopEntryAnimation(s16 arg0)
 
             if (gCurrentPinballGame->shopEntryTimer == 146)
             {
-                gCurrentPinballGame->activePortraitType = 18;
+                gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
                 DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
                 DmaCopy16(3, gEvoNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
@@ -711,7 +711,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->catchLights[2] = 4;
 
                 HidePokemonNameDisplay();
-                gCurrentPinballGame->activePortraitType = 0;
+                gCurrentPinballGame->activeFxType = FX_NONE;
             }
         }
         else if (gCurrentPinballGame->shopEntryTimer == 50)

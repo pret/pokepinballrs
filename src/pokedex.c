@@ -689,7 +689,7 @@ void Pokedex_LinkSuccessSequence(void)
     s32 index;
 
     RenderLinkGraphics();
-    switch(gPokedexLinkStateTimer)
+    switch (gPokedexLinkStateTimer)
     {
         case 0x4:
             ResetSerialAndInterrupts();

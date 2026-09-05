@@ -59,10 +59,10 @@ void MainBoardProcess_4B_19490(void)
     {
         struct SpriteGroup *spriteGroup;
 
-        if (gCurrentPinballGame->flipper[i].position > 10)
-            gCurrentPinballGame->flipper[i].position = 10;
-        else if (gCurrentPinballGame->flipper[i].position < 0)
-            gCurrentPinballGame->flipper[i].position = 0;
+        if (gCurrentPinballGame->flipper[i].position > FLIPPER_MAX_POS)
+            gCurrentPinballGame->flipper[i].position = FLIPPER_MAX_POS;
+        else if (gCurrentPinballGame->flipper[i].position < FLIPPER_MIN_POS)
+            gCurrentPinballGame->flipper[i].position = FLIPPER_MIN_POS;
 
         spriteGroup = &gMain.spriteGroups[SG_MAIN_BOARD_FLIPPER_BASE + i];
         if (spriteGroup->active)
@@ -109,20 +109,20 @@ void UpdateMainBoardFlipperPhysics(void)
         }
         else
         {
-            if (flipper->position == 10)
+            if (flipper->position == FLIPPER_MAX_POS)
             {
-                if (flipper->stallTicks > 2)
+                if (flipper->stallTicks > FLIPPER_MAX_RELEASE_STALL_TICKS)
                     flipper->active = gCurrentPinballGame->heldButtonActions[i];
                 flipper->stallTicks++;
             }
         }
 
-        dir = 0;
+        dir = FLIPPER_NOT_MOVING;
         if (flipper->active)
         {
-            if (flipper->position != 10)
+            if (flipper->position != FLIPPER_MAX_POS)
             {
-                dir = 1;
+                dir = FLIPPER_MOVING_UP;
             }
             else if (gCurrentPinballGame->flipperLaunchPending)
             {
@@ -132,14 +132,14 @@ void UpdateMainBoardFlipperPhysics(void)
                 PlayRumble(7);
             }
             flipper->collisionFrameIndex = flipper->position / 2 + 1;
-            flipper->position += 4;
+            flipper->position += FLIPPER_RISE_SPEED;
         }
         else
         {
-            if (flipper->position != 0)
+            if (flipper->position != FLIPPER_MIN_POS)
             {
                 flipper->collisionFrameIndex = flipper->position / 2 + 6;
-                dir = -1;
+                dir = FLIPPER_MOVING_DOWN;
             }
             else if (gCurrentPinballGame->flipperLaunchPending)
             {
@@ -148,10 +148,12 @@ void UpdateMainBoardFlipperPhysics(void)
                 gCurrentPinballGame->flipperLaunchPending = FALSE;
                 PlayRumble(7);
             }
-            flipper->position -= 2;
+            flipper->position -= FLIPPER_FALL_SPEED;
         }
+
+        //No force applied if flipper direction reverses, or stops
         flipper->movementDirection = flipper->movementDirection * dir;
-        if (flipper->movementDirection <= 0)
+        if (flipper->movementDirection < 1)
             flipper->bounceApplied = FALSE;
         flipper->movementDirection = dir;
     }
@@ -171,10 +173,10 @@ void BonusBoardProcess_4B_19734(void)
     {
         struct SpriteGroup *spriteGroup;
 
-        if (gCurrentPinballGame->flipper[i].position > 10)
-            gCurrentPinballGame->flipper[i].position = 10;
-        else if (gCurrentPinballGame->flipper[i].position < 0)
-            gCurrentPinballGame->flipper[i].position = 0;
+        if (gCurrentPinballGame->flipper[i].position > FLIPPER_MAX_POS)
+            gCurrentPinballGame->flipper[i].position = FLIPPER_MAX_POS;
+        else if (gCurrentPinballGame->flipper[i].position < FLIPPER_MIN_POS)
+            gCurrentPinballGame->flipper[i].position = FLIPPER_MIN_POS;
 
         spriteGroup = &gMain.spriteGroups[SG_BONUS_BOARD_FLIPPER_BASE + i];
         if (spriteGroup->active)
@@ -227,20 +229,20 @@ void UpdateBonusBoardFlipperPhysics(void)
         }
         else
         {
-            if (flipper->position == 10)
+            if (flipper->position == FLIPPER_MAX_POS)
             {
-                if (flipper->stallTicks > 2)
+                if (flipper->stallTicks > FLIPPER_MAX_RELEASE_STALL_TICKS)
                     flipper->active = FALSE;
                 flipper->stallTicks++;
             }
         }
 
-        dir = 0;
+        dir = FLIPPER_NOT_MOVING;
         if (flipper->active)
         {
-            if (flipper->position != 10)
+            if (flipper->position != FLIPPER_MAX_POS)
             {
-                dir = 1;
+                dir = FLIPPER_MOVING_UP;
             }
             else if (gCurrentPinballGame->flipperLaunchPending)
             {
@@ -250,14 +252,14 @@ void UpdateBonusBoardFlipperPhysics(void)
                 PlayRumble(7);
             }
             flipper->collisionFrameIndex = flipper->position / 2 + 1;
-            flipper->position += 4;
+            flipper->position += FLIPPER_RISE_SPEED;
         }
         else
         {
-            if (flipper->position != 0)
+            if (flipper->position != FLIPPER_MIN_POS)
             {
                 flipper->collisionFrameIndex = flipper->position / 2 + 6;
-                dir = -1;
+                dir = FLIPPER_MOVING_DOWN;
             }
             else if (gCurrentPinballGame->flipperLaunchPending)
             {
@@ -266,10 +268,12 @@ void UpdateBonusBoardFlipperPhysics(void)
                 gCurrentPinballGame->flipperLaunchPending = FALSE;
                 PlayRumble(7);
             }
-            flipper->position -= 2;
+            flipper->position -= FLIPPER_FALL_SPEED;
         }
+
+        //No force applied if flipper direction reverses, or stops
         flipper->movementDirection = flipper->movementDirection * dir;
-        if (flipper->movementDirection <= 0)
+        if (flipper->movementDirection < 1)
             flipper->bounceApplied = FALSE;
         flipper->movementDirection = dir;
     }

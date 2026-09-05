@@ -856,7 +856,7 @@ void InitTotodileEggDelivery(void)
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->portraitOffsetX = 240;
     gCurrentPinballGame->portraitOffsetY = 160;
-    gCurrentPinballGame->activePortraitType = 3;
+    gCurrentPinballGame->activeFxType = FX_TOTODILE_EGG_DELIVERY;
     DmaCopy16(3, gTotodile_Pal, OBJ_PLTT_SLOT(PAL_IX_RUBY_EGG_DELIVERER), PLTT_SLOT_SIZE);
     DmaCopy16(3, gTotodileEggDelivery_Gfx, (void *)0x06015800, 0xCA0);
 }
@@ -885,7 +885,7 @@ void AnimateTotodileEggDelivery(void)
             gCurrentPinballGame->totodileDeliveryFrame = 40;
             group->active = FALSE;
             gCurrentPinballGame->rubyEggDeliveryState = 2;
-            gCurrentPinballGame->activePortraitType = 0;
+            gCurrentPinballGame->activeFxType = FX_NONE;
         }
 
         if (gCurrentPinballGame->totodileDeliveryFrame == 1)
@@ -939,7 +939,7 @@ void InitAerodactylEggDelivery(void)
     gCurrentPinballGame->eggAnimationPhase = 1;
     gCurrentPinballGame->portraitOffsetX = gCurrentPinballGame->eggDeliveryX / 20 - gFlyingCreatureCameraOffsets[0].x;
     gCurrentPinballGame->portraitOffsetY = gCurrentPinballGame->eggDeliveryY / 20 - gFlyingCreatureCameraOffsets[0].y;
-    gCurrentPinballGame->activePortraitType = 2;
+    gCurrentPinballGame->activeFxType = FX_AERODACTYL_EGG_DELIVERY;
     DmaCopy16(3, gAerodactlyFlight_Pal, OBJ_PLTT_SLOT(PAL_IX_RUBY_EGG_DELIVERER), PLTT_SLOT_SIZE);
     DmaCopy16(3, gAerodactlyFlight_Gfx, (void *)0x06015800, 0x1000);
 }
@@ -986,7 +986,7 @@ void AnimateAerodactylEggDelivery(void)
         group->active = FALSE;
         do {} while (0); // needed to match, there was probably some dead code
         gCurrentPinballGame->rubyEggDeliveryState = 2;
-        gCurrentPinballGame->activePortraitType = 0;
+        gCurrentPinballGame->activeFxType = FX_NONE;
     }
 
     group->baseX = gCurrentPinballGame->eggDeliveryX / 20 - gCurrentPinballGame->cameraXOffset;
@@ -1011,18 +1011,18 @@ void LoadPokemonNameGraphics(void)
 
     gCurrentPinballGame->nameSpacingOffset = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_EVO_PREVIEW, PORTRAIT_MAIN_SLOT);
-    gCurrentPinballGame->activePortraitType = 14;
+    gCurrentPinballGame->activeFxType = FX_MON_SELECTION_NAME;
     gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
-        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
+        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
         {
             DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + i * 0x40, 0x40);
             gCurrentPinballGame->nameSpacingOffset += 4;
         }
         else
         {
-            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 0x41;
+            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
             DmaCopy16(3, gAlphabetTilesGfx[index], (void *)0x06015800 + i * 0x40, 0x40);
         }
     }
@@ -1048,10 +1048,10 @@ void UpdatePokemonNamePosition(void)
 void HidePokemonNameDisplay(void)
 {
     gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = FALSE;
-    gCurrentPinballGame->activePortraitType = 0;
+    gCurrentPinballGame->activeFxType = FX_NONE;
 }
 
-void InitEvolutionSuccessDisplay(void)
+void InitWasCaughtBanner(void)
 {
     s16 i;
     u8 letter;
@@ -1062,18 +1062,18 @@ void InitEvolutionSuccessDisplay(void)
     gCurrentPinballGame->creatureOamPriority = 0;
     gCurrentPinballGame->nameRevealAnimFrame = 0;
     LoadPortraitGraphics(PORTRAIT_STATE_POKEMON_DISPLAY, PORTRAIT_MAIN_SLOT);
-    gCurrentPinballGame->activePortraitType = 13;
+    gCurrentPinballGame->activeFxType = FX_MON_WAS_CAUGHT_CUTSCENE;
     gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
-        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
+        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
         {
             DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + i * 0x40, 0x40);
             gCurrentPinballGame->nameSpacingOffset += 4;
         }
         else
         {
-            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 0x41;
+            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
             DmaCopy16(3, gAlphabetTilesGfx[index], (void *)0x06015800 + i * 0x40, 0x40);
         }
     }
@@ -1081,13 +1081,13 @@ void InitEvolutionSuccessDisplay(void)
     gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
-        if (gCaughtTextChars[i] == 0x20)
+        if (gCaughtTextChars[i] == ' ')
         {
             DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + (i + 10) * 0x40, 0x40);
         }
         else
         {
-            index = gCaughtTextChars[i] - 0x41;
+            index = gCaughtTextChars[i] - 'A';
             DmaCopy16(3, gAlphabetTilesGfx[index], (void *)0x06015800 + (i + 10) * 0x40, 0x40);
         }
     }
@@ -1266,7 +1266,7 @@ void AnimateWasCaughtBanner(void)
 
         gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = FALSE;
         gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT]->active = FALSE;
-        gCurrentPinballGame->activePortraitType = 0;
+        gCurrentPinballGame->activeFxType = FX_NONE;
     }
 }
 
@@ -1933,7 +1933,7 @@ void UpdateEggMode(void)
         }
         break;
     case EGG_HATCH_SUBSTATE_SETUP_CATCH_ANIMATION:
-        gCurrentPinballGame->activePortraitType = 9;
+        gCurrentPinballGame->activeFxType = FX_CAPTURE_MON_ABSORB;
         DmaCopy16(3, gCaptureHit_Pal, OBJ_PLTT_SLOT(PAL_IX_MON_SHADOW_PORTRAIT), PLTT_SLOT_SIZE);
         DmaCopy16(3, gCaptureScreenTilesGfx, (void *)0x06015800, 0x1C00);
         DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType * 0x200], (void *)0x060164C0, 0x80);

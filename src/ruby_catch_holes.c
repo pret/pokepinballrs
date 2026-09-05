@@ -285,7 +285,7 @@ void AnimateRubyEggHatchSequence(void)
 
         if (gCurrentPinballGame->modeAnimTimer == 0xC8)
         {
-            if (gCurrentPinballGame->activePortraitType != 0)
+            if (gCurrentPinballGame->activeFxType != 0)
                 gCurrentPinballGame->modeAnimTimer++;
             else
             {
