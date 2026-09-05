@@ -24,14 +24,14 @@ extern const u8 gSpaceTileGfx[0x40];
 extern const u8 gAlphabetTilesGfx[][0x40];
 extern const s16 gCaughtTextChars[];
 extern const struct Vector16 gFlyingCreatureCameraOffsets[];
-extern const u16 gEggFloatOamFramesets[14][15];
+extern const u16 gAerodactylEggDeliveryCutsceneFramesets[14][15];
 extern const u8 gAerodactlyFlight_Gfx[];
 extern const Palette gAerodactlyFlight_Pal;
 extern const u16 gPikaSaverFrameData[][2];
-extern const u16 gPokemonFloatOamFramesets[82][6][3];
+extern const u16 gTotodileEggDeliveryCutsceneFramesets[82][6][3];
 extern const Palette gTotodile_Pal;
 extern const u8 gTotodileEggDelivery_Gfx[];
-extern const u16 gShopOamAttributes[18][3];
+extern const u16 gCoinRewardAnimOamFramesets[18][3];
 extern const u16 gShopNumberOamFramesets[4][15];
 extern const s16 gArrowBounceOffsets[];
 extern const s16 gTimerIndicatorFrames[];
@@ -815,7 +815,7 @@ void AnimateCoinReward(void)
 
                 oamSimple = &group->oam[i];
                 dst = (u16*)&gOamBuffer[oamSimple->oamId];
-                src = gShopOamAttributes[var0];
+                src = gCoinRewardAnimOamFramesets[var0];
                 *dst++ = *src++;
                 *dst++ = *src++;
                 *dst++ = *src++;
@@ -918,7 +918,7 @@ void AnimateTotodileEggDelivery(void)
     {
         oamSimple = &group->oam[i];
         dst = (u16*)&gOamBuffer[oamSimple->oamId];
-        src = gPokemonFloatOamFramesets[var0][i];
+        src = gTotodileEggDeliveryCutsceneFramesets[var0][i];
         *dst++ = *src++;
         *dst++ = *src++;
         *dst++ = *src++;
@@ -995,9 +995,9 @@ void AnimateAerodactylEggDelivery(void)
     {
         oamSimple = &group->oam[i];
         dst = (u16 *)&gOamBuffer[oamSimple->oamId];
-        *dst++ = gEggFloatOamFramesets[var0][i * 3 + 0];
-        *dst++ = gEggFloatOamFramesets[var0][i * 3 + 1];
-        *dst++ = gEggFloatOamFramesets[var0][i * 3 + 2];
+        *dst++ = gAerodactylEggDeliveryCutsceneFramesets[var0][i * 3 + 0];
+        *dst++ = gAerodactylEggDeliveryCutsceneFramesets[var0][i * 3 + 1];
+        *dst++ = gAerodactylEggDeliveryCutsceneFramesets[var0][i * 3 + 2];
 
         gOamBuffer[oamSimple->oamId].x += group->baseX;
         gOamBuffer[oamSimple->oamId].y += group->baseY;

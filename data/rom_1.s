@@ -814,7 +814,7 @@ gRayquazaBonusClear_Gfx:: @ 0x081408B4
 @ The capture cutscene, streamed over the tile-704 overlay slot from three
 @ places (main_board_center_capture_hole.c, main_board_to_be_split.c and
 @ save_and_restore_game.c). t0..101 is the float-up fx drawn by
-@ gPokemonFloatOamFramesets; t106..122 and t127..222 are the ball absorb fx,
+@ gTotodileEggDeliveryCutsceneFramesets; t106..122 and t127..222 are the ball absorb fx,
 @ the first frame reaching out for the ball and then the rest, drawn by
 @ gMonCatchBallAbsorbPokemonFxSpriteSet. t102..105 and t123..126 are sub-slots
 @ the ball graphic streams into, from gCaptureBallTilesGfx -- one per absorb
@@ -1447,7 +1447,7 @@ gPortraitAnim_Pals:: @ 0x081C02E4
 @ Not a uniform frame bank: this is a packed atlas of variable-sized
 @ sprites. The whole 0x2400 is uploaded to OBJ VRAM in one go, and
 @ UpdateKickbackLogic then writes raw OAM entries straight out of
-@ gCatchOverlayOamData (data/rom_2.s), so every animation frame picks its
+@ gPikaKickbackFiringAnimOamFramesets (data/rom_2.s), so every animation frame picks its
 @ own sizes and tile numbers. Those entries give 27 sprites packed back
 @ to back with no alignment, in sizes from 8x8 to 32x32; the last 13
 @ tiles are never referenced. pika_saver_coverage_shape.json describes
@@ -1548,7 +1548,7 @@ gCatchTile_BurstStage4_Pal:: @ 0x083A6E4C
 	.incbin "graphics/stage/main/catch_tile_burst_stage4.gbapal"
 
 @ Egg mode, over the tile-704 overlay slot, with gAerodactlyFlight_Pal going to OBJ
-@ bank 14 in the copy above. gEggFloatOamFramesets draws three frames, each a
+@ bank 14 in the copy above. gAerodactylEggDeliveryCutsceneFramesets draws three frames, each a
 @ 32x32 with a 16x8 under it and a 16x32 and 8x32 beside it. Only the first has
 @ every piece on one sub-tile phase, so it takes a shape; the other two put one
 @ piece a single pixel off and stay strips.
