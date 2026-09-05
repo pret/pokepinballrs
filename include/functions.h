@@ -44,7 +44,7 @@ s16 Cos(u16 arg0);
 /* Multiply value by cos(angle).*/
 #define MulCos(value, angle) (((value) * (Cos(angle))) / TRIG_SCALE)
 
-// Multiply value by sin(angle).
+// Multiply -value by sin(angle). (used in cases where compile optimization order matters)
 #define MulNegSinSpecial(value, angle) (-((Sin(angle)) * (value)) / TRIG_SCALE)
 
 void DisableVBlankInterrupts(void);
