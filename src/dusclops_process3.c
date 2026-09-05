@@ -281,7 +281,7 @@ void DuskullPhase_ProcessEntityLogic(void) {
 
     for (i = 0; i < DUSKULL_CONCURRENT_MAX; i++)
     {
-        switch(gCurrentPinballGame->minionState[i])
+        switch (gCurrentPinballGame->minionState[i])
         {
         case DUSKULL_ENTITY_STATE_SPAWN:
             if (gCurrentPinballGame->bonusModeHitCount <= DUSKULL_ALLOWED_TO_SPAWN && 
@@ -639,7 +639,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
 
     tileOffset = 0;
     spriteGroup = &gMain.spriteGroups[SG_DUSCLOPS_ENTITY];
-    switch(gCurrentPinballGame->bossEntityState)
+    switch (gCurrentPinballGame->bossEntityState)
     {
     case DUSCLOPS_ENTITY_STATE_INIT:
     {

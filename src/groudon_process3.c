@@ -1380,7 +1380,7 @@ void UpdateGroudonFieldEntities(void)
         group = &gMain.spriteGroups[SG_GROUDON_FILE_PILLAR_BASE + i];
         if (group->active)
         {
-            switch(gCurrentPinballGame->firePillarState[i])
+            switch (gCurrentPinballGame->firePillarState[i])
             {
             case GROUDON_FIRE_PILLAR_STATE_SPAWN:
                 gCurrentPinballGame->firePillarAnimStartFrame[i] = 0;

@@ -1015,14 +1015,14 @@ void LoadPokemonNameGraphics(void)
     gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
-        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
+        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
         {
             DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + i * 0x40, 0x40);
             gCurrentPinballGame->nameSpacingOffset += 4;
         }
         else
         {
-            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 0x41;
+            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
             DmaCopy16(3, gAlphabetTilesGfx[index], (void *)0x06015800 + i * 0x40, 0x40);
         }
     }
@@ -1066,14 +1066,14 @@ void InitWasCaughtBanner(void)
     gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
-        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == 0x20)
+        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
         {
             DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + i * 0x40, 0x40);
             gCurrentPinballGame->nameSpacingOffset += 4;
         }
         else
         {
-            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 0x41;
+            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
             DmaCopy16(3, gAlphabetTilesGfx[index], (void *)0x06015800 + i * 0x40, 0x40);
         }
     }
@@ -1081,13 +1081,13 @@ void InitWasCaughtBanner(void)
     gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT]->active = TRUE;
     for (i = 0; i < 10; i++)
     {
-        if (gCaughtTextChars[i] == 0x20)
+        if (gCaughtTextChars[i] == ' ')
         {
             DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + (i + 10) * 0x40, 0x40);
         }
         else
         {
-            index = gCaughtTextChars[i] - 0x41;
+            index = gCaughtTextChars[i] - 'A';
             DmaCopy16(3, gAlphabetTilesGfx[index], (void *)0x06015800 + (i + 10) * 0x40, 0x40);
         }
     }

@@ -144,14 +144,24 @@ struct FlipperState
     /*0x00*/ s8 position;
     /*0x01*/ s8 prevPosition;
     /*0x02*/ s8 collisionFrameIndex;
-    /*0x03*/ s8 movementDirection;
+    /*0x03*/ s8 movementDirection; //-1 (down) / 0 (still) / 1 (up)
     /*0x04*/ s8 bounceApplied;
     /*0x05*/ s8 collisionMapFrame;
-    /*0x06*/ s8 active;
+    /*0x06*/ s8 active; // Indicates flipper 'powered'
     /*0x07*/ u8 stallTicks;
     /*0x08*/ s8 ballSide;
     /*0x09*/ u8 filler9[0x3];
 };
+
+#define FLIPPER_MOVING_UP 1
+#define FLIPPER_NOT_MOVING 0
+#define FLIPPER_MOVING_DOWN -1
+
+#define FLIPPER_MAX_POS 10
+#define FLIPPER_MIN_POS 0
+#define FLIPPER_RISE_SPEED 4
+#define FLIPPER_FALL_SPEED 2
+#define FLIPPER_MAX_RELEASE_STALL_TICKS 2
 
 struct PinballGame
 {

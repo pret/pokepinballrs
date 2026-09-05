@@ -235,7 +235,7 @@ void InitHighScoreData(void)
 
 void HighScore_ShowCompletionBanner(void)
 {
-    switch(gCompletionBannerPhase)
+    switch (gCompletionBannerPhase)
     {
         case 0:
             if(gHighScoreScreenState.flashDuration == 3)
@@ -1015,7 +1015,7 @@ void RenderHighScoreSprites(void)
         }
         if (popupSG->active == TRUE)
         {
-            switch(gHighScorePopupType)
+            switch (gHighScorePopupType)
             {
             case HIGH_SCORE_POPUP_TRANSMISSION_CONNECT_PROMPT:
             case HIGH_SCORE_POPUP_DELETE_CONFIRMATION_PROMPT:
