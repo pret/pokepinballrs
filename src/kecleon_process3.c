@@ -169,7 +169,7 @@ void UpdateFrameProcess3_BoardLogic_KecleonBoard(void)
             gCurrentPinballGame->stageTimer = 0;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-            DmaCopy16(3, gKecleonBonusClear_Gfx, (void *)0x6015800, 0x2000);
+            DmaCopy16(3, gKecleonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
             gCurrentPinballGame->bannerSlideYOffset = 0x88;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         }
@@ -791,7 +791,7 @@ void RenderKecleonSprites(void)
 
     sp0 = gCurrentPinballGame->bossVulnerable;
     gCurrentPinballGame->bossVulnerable = gKecleonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][2];
-    DmaCopy16(3, gKecleonStageKecleon_Gfx[sp0], (void *)0x6010920, 0x280);
+    DmaCopy16(3, gKecleonStageKecleon_Gfx[sp0], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 9)), 0x280);
     sp4 = gKecleonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][0];
     spriteGroup->baseX = gCurrentPinballGame->bossPositionX / 10 + baseX - gCurrentPinballGame->cameraXOffset;
     spriteGroup->baseY = gCurrentPinballGame->bossPositionY / 10 + baseY - gCurrentPinballGame->cameraYOffset;
@@ -901,7 +901,7 @@ void RenderKecleonSprites(void)
     var0 = gCurrentPinballGame->kecleonCollisionEnabled * 3;
     var1 = gCurrentPinballGame->kecleonDustGfxFrame / 8 - 2;
 
-    DmaCopy16(3, gKecleonStageKecleonFx_Gfx[var0 - var1], (void *)0x6010BA0, 0x100);
+    DmaCopy16(3, gKecleonStageKecleonFx_Gfx[var0 - var1], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 29)), 0x100);
     if (gCurrentPinballGame->kecleonDustGfxFrame > 0)
     {
         gCurrentPinballGame->kecleonDustGfxFrame--;

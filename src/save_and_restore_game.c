@@ -132,7 +132,7 @@ void SaveGameToSram(void)
     WriteAndVerifySramFast((const u8 *)gCurrentPinballGame, (void *)SRAM + 0x544, sizeof(*gCurrentPinballGame));
 }
 
-/// @brief 
+/// @brief
 /// @param arg0 1 = restore game SRAM, 2 = load demo, 0 = ?
 void RestoreGameState(u16 arg0)
 {
@@ -347,57 +347,57 @@ void RestoreFieldSpecificGraphics(void)
         if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES
             && gCurrentPinballGame->outLaneSide == OUTLANE_RIGHT)
         {
-            DmaCopy16(3, gPikaSaverFullCoverageGfx, (void *)0x6015800, 0x2400);
+            DmaCopy16(3, gPikaSaverFullCoverageGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
         }
         else
         {
-            DmaCopy16(3, gPikaSaverPartialCoverageGfx, (void *)0x6015800, 0x2400);
+            DmaCopy16(3, gPikaSaverPartialCoverageGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
         }
         break;
     case FX_AERODACTYL_EGG_DELIVERY:
-        DmaCopy16(3, gAerodactlyFlight_Gfx, (void *)0x6015800, 0x1000);
+        DmaCopy16(3, gAerodactlyFlight_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1000);
         break;
     case FX_TOTODILE_EGG_DELIVERY:
-        DmaCopy16(3, gTotodileEggDelivery_Gfx, (void *)0x6015800, 0xCA0);
+        DmaCopy16(3, gTotodileEggDelivery_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0xCA0);
         break;
     case FX_MODE_START_BANNER:
-        DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], (void *)0x6015800, 0x25E0);
+        DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x25E0);
         break;
     case FX_CATCH_TILE_BURST_1:
-        DmaCopy16(3, gCatchTile_BurstStart_Gfx, (void *)0x6015800, 0x2000);
+        DmaCopy16(3, gCatchTile_BurstStart_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
         break;
     case FX_CATCH_TILE_BURST_2:
-        DmaCopy16(3, gCatchTile_BurstStage2_Gfx, (void *)0x6015800, 0x800);
+        DmaCopy16(3, gCatchTile_BurstStage2_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x800);
         break;
     case FX_CATCH_TILE_BURST_3:
-        DmaCopy16(3, gCatchTile_BurstStage3_Gfx, (void *)0x6015800, 0x2000);
+        DmaCopy16(3, gCatchTile_BurstStage3_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
         break;
     case FX_CATCH_TILE_BURST_4:
-        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x6015800, 0x1800);
+        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
         break;
     case FX_CAPTURE_MON_ABSORB:
-        DmaCopy16(3, gCaptureScreenTilesGfx, (void *)0x6015800, 0x1C00);
+        DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
         break;
     case FX_CATCH_MON_REVEAL_PUFF:
-        DmaCopy16(3, gCatchMonAppearFx_Gfx, (void *)0x6015800, 0x1400);
+        DmaCopy16(3, gCatchMonAppearFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1400);
         break;
     case FX_SEQUENTIAL_CATCH_TILE:
-        DmaCopy16(3, gCatchTile_RevealTilesGfx, (void *)0x6015800, 0x2800);
+        DmaCopy16(3, gCatchTile_RevealTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
         break;
     case FX_FIRST_AREA_SELECTION:
-        DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, (void *)0x6015800, 0x280);
+        DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x280);
         break;
     case FX_MON_SELECTION_NAME:
         for (i = 0; i < 10; i++)
         {
             if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
             {
-                DmaCopy16(3, gSpaceTileGfx, (void *)0x6015800 + i * 0x40, 0x40);
+                DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
             }
             else
             {
                 int letterTileIx = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], (void *)0x6015800 + i * 0x40, 0x40);
+                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
             }
         }
         DmaCopy16(3, gPokemonNameDisplayGfx, (void *)0x6015C00, 0x940);
@@ -407,12 +407,12 @@ void RestoreFieldSpecificGraphics(void)
         {
             if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
             {
-                DmaCopy16(3, gSpaceTileGfx, (void *)0x6015800 + i * 0x40, 0x40);
+                DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
             }
             else
             {
                 int letterTileIx = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], (void *)0x6015800 + i * 0x40, 0x40);
+                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
             }
         }
 
@@ -420,55 +420,55 @@ void RestoreFieldSpecificGraphics(void)
         {
             if (gCaughtTextChars[i] == ' ')
             {
-                DmaCopy16(3, gSpaceTileGfx, (void *)0x6015800 + (i + 10) * 0x40, 0x40);
+                DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + (i + 10) * 0x40, 0x40);
             }
             else
             {
                 int letterTileIx = gCaughtTextChars[i] - 'A';
-                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], (void *)0x6015800 + (i + 10) * 0x40, 0x40);
+                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + (i + 10) * 0x40, 0x40);
             }
         }
         break;
     case FX_EVO_ITEM_SPAWN:
-        DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], (void *)0x6015800, 0x1C00);
+        DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
         break;
     case FX_EVOLUTION_CUTSCENE:
-        DmaCopy16(3, gEvolutionCutsceneTilesGfx, (void *)0x6015800, 0x2400);
+        DmaCopy16(3, gEvolutionCutsceneTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
         break;
     case FX_END_OF_EVO_LIGHTNING:
-        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x6015800, 0x1800);
+        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
         break;
     case FX_SHOP_EVO_SELECTION:
-        DmaCopy16(3, gPokemonNameDisplayGfx, (void *)0x6015C00, 0x940);
+        DmaCopy16(3, gPokemonNameDisplayGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x940);
         if (!gCurrentPinballGame->evolutionShopActive)
         {
             var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
             var2 = LEAD_DIGIT_10S(var1[3]);
-            DmaCopy16(3, gDecimalDigitTilesGfx[var2], (void *)0x6015DA0, 0x40);
+            DmaCopy16(3, gDecimalDigitTilesGfx[var2], OBJ_TILE_ADDR(TILE_INDEX(1, 7, 13)), 0x40);
             var3 = DIGIT_1S(var1[3]);
-            DmaCopy16(3, gDecimalDigitTilesGfx[var3], (void *)0x6015E60, 0x40);
+            DmaCopy16(3, gDecimalDigitTilesGfx[var3], OBJ_TILE_ADDR(TILE_INDEX(1, 7, 19)), 0x40);
         }
         break;
     case FX_BALL_SAVED_CUTSCENE:
-        DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x6015800, 0x2400);
+        DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
         break;
     case FX_END_OF_BALL_SUMMARY:
-        DmaCopy16(3, gMainBoardEndOfBall_Gfx, (void *)0x6015800, 0x2800);
+        DmaCopy16(3, gMainBoardEndOfBall_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
         break;
     case FX_TRAVEL_PAINTER_CUTSCENE:
         if (gMain.selectedField == FIELD_RUBY)
         {
-            DmaCopy16(3, gRubyTravelPaint_Gfx, (void *)0x6015800, 0x1800);
+            DmaCopy16(3, gRubyTravelPaint_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
             DmaCopy16(3, gRubyPainter_Pals, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
         }
         else
         {
-            DmaCopy16(3, gSapphireTravelPaint_Gfx, (void *)0x6015800, 0x1800);
+            DmaCopy16(3, gSapphireTravelPaint_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
             DmaCopy16(3, gSapphirePainter_Pals, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
         }
         break;
     case FX_ZIGZAGOON_ROULETTE_STOP:
-        DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, (void *)0x6015800, 0xC00);
+        DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0xC00);
         break;
     }
 }
@@ -489,7 +489,7 @@ void RestoreMainFieldDynamicGraphics(void)
     }
 
     var0 = gCurrentPinballGame->ball->spinAngle / 0x1000;
-    DmaCopy16(3, gBallRotationTileGraphics[var0], (void *)OBJ_VRAM0 + 0x400, 0x80);
+    DmaCopy16(3, gBallRotationTileGraphics[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 0)), 0x80);
 
     for (i = 0; i <= 1; i++)
     {
@@ -621,23 +621,23 @@ void RestoreRubyBoardTileGraphics(void)
     s16 var0;
 
     var0 = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][2];
-    DmaCopy16(3, gRubyBoardHatchCave_Gfx[var0], (void *)0x60122A0, 0x480);
+    DmaCopy16(3, gRubyBoardHatchCave_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 8, 21)), 0x480);
     var0 = (gMain.systemFrameCount % 50) / 25;
-    DmaCopy16(3, gRubyChikoritaEntity[var0], (void *)0x6012720, 0x300);
+    DmaCopy16(3, gRubyChikoritaEntity[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 9, 25)), 0x300);
     DmaCopy16(3, gRubyBoardSharpedo_Gfx[gCurrentPinballGame->catchHoleTileVariant], (void *)0x6012C20, 0x260);
     for (i = 0; i < 2; i++)
         DmaCopy16(3, gChinchouBumper_Gfx[var0], (void *)0x6010000 + (0x174 + i * 8) * 0x20, 0x100);
 
     var0 = gCurrentPinballGame->shopDoorCurrentFrame & 0xF;
-    DmaCopy16(3, gRubyBoardShopDoor_Gfx[var0], (void *)0x6013180, 0x180);
+    DmaCopy16(3, gRubyBoardShopDoor_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 12)), 0x180);
     if (gCurrentPinballGame->cyndaquilPosition < CYNDAQUIL_POSITION_CAVE_ENTRANCE)
         gCurrentPinballGame->cyndaquilFrame = 0;
     else
         gCurrentPinballGame->cyndaquilFrame = 1;
 
-    DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], (void *)0x6013300, 0x280);
+    DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 24)), 0x280);
     var0 = gEvoShopAnimFrames[gCurrentPinballGame->evolutionShopActive][(gCurrentPinballGame->shopAnimTimer % 42) / 6];
-    DmaCopy16(3, gRubyBoardShop_Gfx[var0], (void *)0x6013D00, 0x500);
+    DmaCopy16(3, gRubyBoardShop_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 15, 8)), 0x500);
 }
 
 void RestoreSapphireBoardTileGraphics(void)
@@ -650,16 +650,16 @@ void RestoreSapphireBoardTileGraphics(void)
     case HATCH_MACHINE_STATE_ACTIVATED_LIGHT_CROSS:
     case HATCH_MACHINE_STATE_MON_HATCHED:
         index = gCurrentPinballGame->sapphireHatchMachineFrameIx;
-        DmaCopy16(3, gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
+        DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
         break;
     case HATCH_MACHINE_STATE_ELEVATOR_DECENDS:
     case HATCH_MACHINE_STATE_EMPTY:
         index = 15;
-        DmaCopy16(3, gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
+        DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
         break;
     case HATCH_MACHINE_STATE_EGG_RISING:
         index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
-        DmaCopy16(3, gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
+        DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
         break;
     case HATCH_MACHINE_STATE_RESET:
         break;
@@ -668,17 +668,17 @@ void RestoreSapphireBoardTileGraphics(void)
 
 void RestoreDusclopsBonusGraphics(void)
 {
-    DmaCopy16(3, gDusclopsBonusClear_Gfx, (void *)0x6015800, 0x2000);
+    DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
 }
 
 void RestoreKecleonBonusGraphics(void)
 {
-    DmaCopy16(3, gKecleonBonusClear_Gfx, (void *)0x6015800, 0x2000);
+    DmaCopy16(3, gKecleonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
 }
 
 void RestoreKyogreBonusGraphics(void)
 {
-    DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x6015800, 0x2000);
+    DmaCopy16(3, gKyogreBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
     DmaCopy16(
         3,
         gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[0] / 15] + (gCurrentPinballGame->portraitGfxIndex[0] % 15) * 0x300,
@@ -691,11 +691,11 @@ void RestoreGroudonBonusGraphics(void)
 {
     if (gCurrentPinballGame->boardState <= LEGENDARY_BOARD_STATE_BATTLE_PHASE)
     {
-        DmaCopy16(3, gGroudonAttackFx_Gfx, (void *)0x6015800, 0x2000);
+        DmaCopy16(3, gGroudonAttackFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
     }
     else
     {
-        DmaCopy16(3, gGroudonBonusClear_Gfx, (void *)0x6015800, 0x2000);
+        DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
     }
 
     DmaCopy16(
@@ -712,27 +712,27 @@ void RestoreRayquazaBonusGraphics(void)
 
     if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_INTRO)
     {
-        DmaCopy16(3, gRayquazaSkyBackgroundGfx, (void *)0x6015800, 0x2800);
+        DmaCopy16(3, gRayquazaSkyBackgroundGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
     }
     else if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_BATTLE_PHASE)
     {
-        DmaCopy16(3, gRayquazaFlyby_Gfx, (void *)0x6015800, 0x1C00);
+        DmaCopy16(3, gRayquazaFlyby_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
     }
     else
     {
-        DmaCopy16(3, gRayquazaBonusClear_Gfx, (void *)0x6015800, 0x2000);
+        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
     }
 
     var0 = gCurrentPinballGame->bossEntityState - 2;
     if (var0 > 9) // bossEntityState > RAYQUAZA_ENTITY_STATE_DEPARTS
     {
-        DmaCopy16(3, gRayquazaSpriteSheet, (void *)0x6011620, 0x860);
+        DmaCopy16(3, gRayquazaSpriteSheet, OBJ_TILE_ADDR(TILE_INDEX(0, 5, 17)), 0x860);
     }
 
     DmaCopy16(
         3,
         gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[0] / 15] + (gCurrentPinballGame->portraitGfxIndex[0] % 15) * 0x300,
-        (void *)0x6010CA0,
+        OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)),
         0x300
     );
 }
@@ -763,11 +763,11 @@ void RestoreSphealBonusGraphics(void)
 
     gMain.bgOffsets[1].xOffset = 8;
     gMain.bgOffsets[1].yOffset = 126;
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], (void *)0x6001140, 0x280);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0, 4, 10)), 0x280);
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gSphealResultsScreenGfx, (void *)0x6015800, 0x800);
+    DmaCopy16(3, gSphealResultsScreenGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x800);
 }
 
 void nullsub_18(void)

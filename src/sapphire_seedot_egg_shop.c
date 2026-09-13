@@ -613,7 +613,7 @@ void UpdateSapphireHatchMachine(void)
             }
 
             index = gCurrentPinballGame->sapphireHatchMachineFrameIx;
-            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
             gCurrentPinballGame->hatchMachineProgressTickSignaled = FALSE;
         }
         break;
@@ -621,12 +621,12 @@ void UpdateSapphireHatchMachine(void)
         if (gCurrentPinballGame->holeAnimFrameCounter < 270)
         {
             index = (gCurrentPinballGame->holeAnimFrameCounter % 60) / 30 + 4;
-            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
         }
         else
         {
             index = 0;
-            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
             gCurrentPinballGame->sapphireHatchMachineState = HATCH_MACHINE_STATE_MON_HATCHED;
             gCurrentPinballGame->sapphireHatchMachineFrameIx = 0;
         }
@@ -658,7 +658,7 @@ void UpdateSapphireHatchMachine(void)
                 m4aSongNumStart(SE_HATCH_MACHINE_ELEVATOR);
 
             index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
-            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, &gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
         }
 
         if (gCurrentPinballGame->sapphireHatchMachineFrameIx < 6)
@@ -708,7 +708,7 @@ void UpdateSapphireHatchMachine(void)
                 gCurrentPinballGame->sapphireHatchMachineState = HATCH_MACHINE_STATE_RESET;
 
             index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
-            DmaCopy16(3, gHatchMachineElevator_Gfx[index], (void *)0x600D900, 0x440);
+            DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
         }
 
         if (gCurrentPinballGame->sapphireHatchMachineFrameIx == 14 && gCurrentPinballGame->holeAnimFrameCounter == 10)

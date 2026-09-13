@@ -31,7 +31,7 @@ void UpdateShopEntryAnimation(s16 arg0)
         {
             gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
-            DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
+            DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x940);
             DmaCopy16(3, gShopNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
         }
 
@@ -341,7 +341,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->bannerSlideTimer = 50;
                 gCurrentPinballGame->bannerSlideVelocity = 0;
 
-                DmaCopy16(3, gModeBannerTilemaps[3], OBJ_VRAM1 + 0x1800, 0x2400);
+                DmaCopy16(3, gModeBannerTilemaps[3], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                 DmaCopy16(3, gModeBanner_Pals[3], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
 
                 gMain.blendControl = 206;
@@ -357,7 +357,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             {
                 gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
-                DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
+                DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x940);
                 DmaCopy16(3, gEvoNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
             }
 
