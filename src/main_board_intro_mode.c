@@ -36,7 +36,7 @@ void InitBoardIntroMode(void)
         gCurrentPinballGame->catchTilePalette[i] = PAL_IX_LOCATION_PORTRAIT;
 
     DmaCopy16(3, gTravelPortrait_Pal, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
-    DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, (void *)0x06015800, 0x280);
+    DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x280);
     gCurrentPinballGame->activeFxType = FX_FIRST_AREA_SELECTION;
 }
 

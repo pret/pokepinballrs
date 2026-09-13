@@ -274,7 +274,7 @@ void GivePrize(void)
                 gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
                 gCurrentPinballGame->chargeIndicatorYOffset = 120;
                 gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
-                DmaCopy16(3, gPikachuSaverTilesGfx, (void *)0x06010600, 0x180);
+                DmaCopy16(3, gPikachuSaverTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 1, 16)), 0x180);
                 gCurrentPinballGame->outLanePikaPosition = PIKA_BOTH_SIDES;
                 gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
                 gCurrentPinballGame->pichuEntranceTimer = 1;
@@ -555,9 +555,9 @@ void RunMonCaptureSequence(void)
         gCurrentPinballGame->ball->positionQ8.y += gCurrentPinballGame->ball->velocity.y;
 
         gCurrentPinballGame->activeFxType = FX_CAPTURE_MON_ABSORB;
-        DmaCopy16(3, gCaptureScreenTilesGfx, 0x06015800, 0x1C00);
-        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], 0x060164C0, 0x80);
-        DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], 0x06016760, 0x80);
+        DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
+        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], OBJ_TILE_ADDR(TILE_INDEX(1, 9, 6)), 0x80);
+        DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], OBJ_TILE_ADDR(TILE_INDEX(1, 9, 27)), 0x80);
 
         gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 

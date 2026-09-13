@@ -174,7 +174,7 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
                     gCurrentPinballGame->bannerSlideVelocity = 0;
-                    DmaCopy16(3, gModeBannerTilemaps[2], (void *)0x06015800, 0x2400);
+                    DmaCopy16(3, gModeBannerTilemaps[2], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                     DmaCopy16(3, gModeBanner_Pals[2], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
                     gMain.blendControl = 0xCE;
                 }
@@ -209,7 +209,7 @@ void UpdateCatchEmMode(void)
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
                     gCurrentPinballGame->bannerSlideVelocity = 0;
-                    DmaCopy16(3, gModeBannerTilemaps[2], (void *)0x06015800, 0x2400);
+                    DmaCopy16(3, gModeBannerTilemaps[2], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                     DmaCopy16(3, gModeBanner_Pals[2], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
                     gMain.blendControl = 0xCE;
                 }
@@ -241,7 +241,7 @@ void UpdateCatchEmMode(void)
         else
         {
             gCurrentPinballGame->activeFxType = FX_CATCH_MON_REVEAL_PUFF;
-            DmaCopy16(3, gCatchMonAppearFx_Gfx, (void *)0x06015800, 0x1400);
+            DmaCopy16(3, gCatchMonAppearFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1400);
             DmaCopy16(3, gCatchMonAppearFx_Pal, OBJ_PLTT_SLOT(PAL_IX_CATCH_TILE_FX), PLTT_SLOT_SIZE);
             m4aSongNumStart(SE_CATCH_MON_ENTITY_APPEARS);
             gCurrentPinballGame->boardSubState++;
@@ -382,7 +382,7 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
                     gCurrentPinballGame->bannerSlideVelocity = 0;
-                    DmaCopy16(3, gModeBannerTilemaps[5], (void *)0x06015800, 0x2400);
+                    DmaCopy16(3, gModeBannerTilemaps[5], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                     DmaCopy16(3, gModeBanner_Pals[5], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
                     gMain.blendControl = 0xCE;
                 }
@@ -416,7 +416,7 @@ void UpdateJirachiBonus(void)
                     gCurrentPinballGame->bannerSlidePosition = -2500;
                     gCurrentPinballGame->bannerSlideTimer = 50;
                     gCurrentPinballGame->bannerSlideVelocity = 0;
-                    DmaCopy16(3, gModeBannerTilemaps[5], (void *)0x06015800, 0x2400);
+                    DmaCopy16(3, gModeBannerTilemaps[5], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                     DmaCopy16(3, gModeBanner_Pals[5], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
                     gMain.blendControl = 0xCE;
                     return;
@@ -447,7 +447,7 @@ void UpdateJirachiBonus(void)
         gCurrentPinballGame->modeProgressLights[MODE_LAMP_RIGHT] = MODE_PROGRESS_LAMP_CATCH_UNLIT;
         gCurrentPinballGame->catchMonCollisionEnabled = TRUE;
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_MON_ENTITY]->active = TRUE;
-        DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
+        DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
         gCurrentPinballGame->modeAnimTimer = 40;
         gCurrentPinballGame->jirachiLogicX = 900;
         gCurrentPinballGame->jirachiLogicY = -1400;
@@ -626,19 +626,19 @@ void DrawCatchMonBoardSprite(void)
     {
         if (gCurrentPinballGame->captureFlashTimer == 20 || gCurrentPinballGame->captureFlashTimer == 200)
         {
-            DmaCopy16(3, gCatchSpriteFlashGfx, (void *)0x06010CA0, 0x480);
+            DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
         }
 
         if (gCurrentPinballGame->captureFlashTimer == 24)
         {
-            DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
+            DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
         }
 
         gCurrentPinballGame->captureFlashTimer--;;
     }
     else if (gCurrentPinballGame->randomSpriteVariantSeed == 5)
     {
-        DmaCopy16(3, &gCatchSpriteGfxBuffer[index * 0x480], (void *)0x06010CA0, 0x480);
+        DmaCopy16(3, &gCatchSpriteGfxBuffer[index * 0x480], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
     }
 
     if (gCurrentPinballGame->captureSequenceTimer < 13)
@@ -702,7 +702,7 @@ void DrawJirachiSprites(void)
             if (gCurrentPinballGame->stageTimer >= 90)
             {
                 index = (150 - gCurrentPinballGame->stageTimer) / 4;
-                DmaCopy16(3, &gJirachiFx_Gfx[index], (void *)0x06010CA0, 0x480);
+                DmaCopy16(3, &gJirachiFx_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
             }
             else
             {
@@ -713,19 +713,19 @@ void DrawJirachiSprites(void)
         {
             if (gCurrentPinballGame->captureFlashTimer == 20 || gCurrentPinballGame->captureFlashTimer == 200)
             {
-                DmaCopy16(3, gCatchSpriteFlashGfx, (void *)0x06010CA0, 0x480);
+                DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
             }
 
             if (gCurrentPinballGame->captureFlashTimer == 24)
             {
-                DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
+                DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
             }
 
             gCurrentPinballGame->captureFlashTimer--;
         }
         else if (gCurrentPinballGame->randomSpriteVariantSeed == 5)
         {
-            DmaCopy16(3, &gCatchSpriteGfxBuffer[index * 0x480], (void *)0x06010CA0, 0x480);
+            DmaCopy16(3, &gCatchSpriteGfxBuffer[index * 0x480], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
         }
 
         if (gCurrentPinballGame->captureState != MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE)
@@ -881,7 +881,7 @@ void PlayCatchMonAppearsAnimation(void)
     if (gCurrentPinballGame->catchRevealFrameId > 2)
     {
         DmaCopy16(3, gCatchSpritePalettes, OBJ_PLTT_SLOT(PAL_IX_CATCH_MON), PLTT_SLOT_SIZE);
-        DmaCopy16(3, gCatchSpriteGfxBuffer, (void *)0x06010CA0, 0x480);
+        DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
         DrawCatchMonBoardSprite();
     }
 

@@ -388,7 +388,7 @@ void UpdateEvolutionItemAnimation(void)
         if (gCurrentPinballGame->evoItemAppearTimer == 80)
         {
             gCurrentPinballGame->activeFxType = FX_EVO_ITEM_SPAWN;
-            DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], (void *)0x06015800, 0x1C00);
+            DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
             DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(PAL_IX_EVO_ITEM), PLTT_SLOT_SIZE);
             gCurrentPinballGame->evoItemAnimFrame = 0;
             gCurrentPinballGame->evoItemAnimFrameTimer = 0;
@@ -471,7 +471,7 @@ void UpdateEvolutionItemAnimation(void)
         if (index > 14)
             index = 14;
 
-        DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] + index * 0x200, (void *)0x060116C0, 0x200);
+        DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] + index * 0x200, OBJ_TILE_ADDR(TILE_INDEX(0, 5, 22)), 0x200);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;

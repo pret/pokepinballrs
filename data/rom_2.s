@@ -6788,9 +6788,6 @@ gChikoritaFlashFrameIndices:: @ 0x086ADA58
 	.2byte 1, 1, 1, 1, 2, 3, 4, 5, 6, 7, 0
 
 gGulpinAnimData:: @ 0x086ADA6E
-@ 109 frames of 5 s16: index into gGulpinOamData, how many game frames to hold
-@ it, then three gRubyStageGulpin_Gfx indices -- one per segment of the Gulpin
-@ stack, DMA'd to 0x06013B80, 0x06013A00 and 0x06013880.
 	.2byte  0,  4, 0, 1, 0
 	.2byte  1,  4, 0, 1, 0
 	.2byte  2,  4, 0, 1, 0

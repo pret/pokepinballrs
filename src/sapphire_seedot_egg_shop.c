@@ -85,7 +85,7 @@ void UpdateSapphireEggHatchAnimation(void)
     if (gCurrentPinballGame->prevEggAnimFrame != gCurrentPinballGame->eggAnimFrameIndex)
     {
         index = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3];
-        DmaCopy16(3, &gEggFrameTilesGfx[index], (void *)0x06011CE0, 0x200);
+        DmaCopy16(3, &gEggFrameTilesGfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 7)), 0x200);
         gCurrentPinballGame->prevEggAnimFrame = gCurrentPinballGame->eggAnimFrameIndex;
     }
 
@@ -340,7 +340,7 @@ void UpdateSapphireSeedotCollection(void)
                 gCurrentPinballGame->bannerSlidePosition = 0;
                 gCurrentPinballGame->bannerSlideTimer = 50;
                 gCurrentPinballGame->bannerSlideVelocity = 0;
-                DmaCopy16(3, gModeBannerTilemaps[4], (void *)0x06015800, 0x2400);
+                DmaCopy16(3, gModeBannerTilemaps[4], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                 DmaCopy16(3, gModeBanner_Pals[4], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
                 gMain.blendControl = 0xCE;
             }
@@ -400,7 +400,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
     group->baseX = 10 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 298 - gCurrentPinballGame->cameraYOffset;
     index = gCurrentPinballGame->basketBounceFrame;
-    DmaCopy16(3, gSapphireStageBasket_Gfx[index], (void *)0x060139A0, 0x280);
+    DmaCopy16(3, gSapphireStageBasket_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 14, 13)), 0x280);
 
     for (i = 0; i < 2; i++)
     {
@@ -427,7 +427,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
         else
             group->baseY = 200;
 
-        DmaCopy16(3, gSapphireBoardSeedot_Gfx[gCurrentPinballGame->seedotSpriteFrame[j]], (void *)0x06013C20 + j * 0x180, 0x160);
+        DmaCopy16(3, gSapphireBoardSeedot_Gfx[gCurrentPinballGame->seedotSpriteFrame[j]], OBJ_TILE_ADDR(TILE_INDEX(0, 15, 1)) + j * 0x180, 0x160);
         index = gCurrentPinballGame->seedotOamFramesetIndex[j];
         for (i = 0; i < 2; i++)
         {
@@ -554,7 +554,7 @@ void DrawSapphireShopSignSprite(void)
         group->baseY = 115 - gCurrentPinballGame->cameraYOffset;
         index = gCurrentPinballGame->shopSignPaletteIndex + gCurrentPinballGame->paletteDimmingIx * 3;
         DmaCopy16(3, gSapphireShopSign_Pals[index], OBJ_PLTT_SLOT(PAL_IX_SAPPHIRE_MART_SIGN), PLTT_SLOT_SIZE);
-        DmaCopy16(3, gSapphireShopSignTileGfx[gCurrentPinballGame->shopSignFrame], (void *) 0x06014B20, 0x480);
+        DmaCopy16(3, gSapphireShopSignTileGfx[gCurrentPinballGame->shopSignFrame], OBJ_TILE_ADDR(TILE_INDEX(1, 2, 25)), 0x480);
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -748,7 +748,7 @@ void UpdateSapphireHatchMachine(void)
             }
 
             index = gSplashEffectTileIndices[gCurrentPinballGame->splashEffectFrameIndex[i]][0];
-            DmaCopy16(3, &gHatchMachineSparkleFx_Gfx[index], (void *)0x060140a0 + i * 0x100, 0x100);
+            DmaCopy16(3, &gHatchMachineSparkleFx_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 0, 5)) + i * 0x100, 0x100);
             group->baseX = gSplashEffectPositions[gCurrentPinballGame->splashEffectPositionIndex[i]].x - gCurrentPinballGame->cameraXOffset;
             group->baseY = gSplashEffectPositions[gCurrentPinballGame->splashEffectPositionIndex[i]].y - gCurrentPinballGame->cameraYOffset;
             for (j = 0; j < 3; j++)

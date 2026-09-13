@@ -139,7 +139,7 @@ void UpdateMakuhitaEntity(void)
     {
         group->baseX = 184 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 277 - gCurrentPinballGame->cameraYOffset;
-        DmaCopy16(3, gRubyMakuhitaGfx[index], (void*) 0x06013580, 0x300);
+        DmaCopy16(3, gRubyMakuhitaGfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 13, 12)), 0x300);
         for (i = 0; i < 3;i++)
         {
             oamSimple = &group->oam[i];
@@ -169,7 +169,7 @@ void DrawRubyRampPrize(void)
         else
             index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 8;
 
-        DmaCopy16(3, gRubyBoardRampPrize_Gfx[index], (void *) 0x06014B00, 0x80);
+        DmaCopy16(3, gRubyBoardRampPrize_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 2, 24)), 0x80);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x =  oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y =  oamSimple->yOffset + group->baseY;

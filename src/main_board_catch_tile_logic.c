@@ -75,7 +75,7 @@ void RevealCatchTilesSequential(void)
         {
             gCurrentPinballGame->activeFxType = FX_SEQUENTIAL_CATCH_TILE;
             DmaCopy16(3, gCatchTile_Reveal_Pal, OBJ_PLTT_SLOT(PAL_IX_CATCH_TILE_FX), PLTT_SLOT_SIZE);
-            DmaCopy16(3, gCatchTile_RevealTilesGfx, (void *)0x06015800, 0x2800);
+            DmaCopy16(3, gCatchTile_RevealTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
         }
 
         if (gCatchTile_SequentialFramesetData[gCurrentPinballGame->catchRevealFrameId][1] > gCurrentPinballGame->catchTileRevealFrameAnimTimer)
@@ -197,7 +197,7 @@ void RevealCatchTilesBurst(void)
         break;
     case CATCH_TILE_BURST_PHASE_LOAD_LIGHTNING_GFX:
         gCurrentPinballGame->activeFxType = FX_CATCH_TILE_BURST_1;
-        DmaCopy16(3, gCatchTile_BurstStart_Gfx, (void *)0x06015800, 0x2000);
+        DmaCopy16(3, gCatchTile_BurstStart_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
         DmaCopy16(3, gCatchTile_BurstStart_Pal, OBJ_PLTT_SLOT(PAL_IX_CATCH_TILE_FX), PLTT_SLOT_SIZE);
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_LIGHTNING_STRIKE]->active = TRUE;
         m4aSongNumStart(SE_CATCH_ALL_REVEAL_LIGHTNING);
@@ -243,7 +243,7 @@ void RevealCatchTilesBurst(void)
         break;
     case CATCH_TILE_BURST_PHASE_LOAD_TILE_GFX:
         gCurrentPinballGame->activeFxType = FX_CATCH_TILE_BURST_2;
-        DmaCopy16(3, gCatchTile_BurstStage2_Gfx, (void *)0x06015800, 0x800);
+        DmaCopy16(3, gCatchTile_BurstStage2_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x800);
         DmaCopy16(3, gCatchTile_BurstStage2_Pal, OBJ_PLTT_SLOT(PAL_IX_CATCH_TILE_FX), PLTT_SLOT_SIZE);
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_TILE_FLASH_FX]->active = TRUE;
         gCurrentPinballGame->catchTilesBurstPhase++;
@@ -284,7 +284,7 @@ void RevealCatchTilesBurst(void)
         break;
     case CATCH_TILE_BURST_PHASE_LOAD_TILE_SHARD_GFX:
         gCurrentPinballGame->activeFxType = FX_CATCH_TILE_BURST_3;
-        DmaCopy16(3, gCatchTile_BurstStage3_Gfx, (void *)0x06015800, 0x2000);
+        DmaCopy16(3, gCatchTile_BurstStage3_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
         DmaCopy16(3, gCatchTile_BurstStage3_Pal, OBJ_PLTT_SLOT(PAL_IX_CATCH_TILE_FX), PLTT_SLOT_SIZE);
         gCurrentPinballGame->catchTilesBurstPhase++;
         InitBurstTileParticles();
@@ -328,7 +328,7 @@ void RevealCatchTilesBurst(void)
         break;
     case CATCH_TILE_BURST_PHASE_LOAD_ELECTRIC_GFX:
         gCurrentPinballGame->activeFxType = FX_CATCH_TILE_BURST_4;
-        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x06015800, 0x1800);
+        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
         DmaCopy16(3, gCatchTile_BurstStage4_Pal, OBJ_PLTT_SLOT(PAL_IX_CATCH_TILE_FX), PLTT_SLOT_SIZE);
         gMain.fieldSpriteGroups[FIELD_SG_CATCH_BURST_PANEL_ELECTRIFY_FX]->active = TRUE;
         gCurrentPinballGame->catchTilesBurstPhase++;

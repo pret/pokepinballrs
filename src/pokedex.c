@@ -1927,20 +1927,20 @@ void LoadMonPortrait(s16 species)
     switch (state)
     {
         case SPECIES_DEX_UNSEEN:
-            CopyBgTilesRect(gPokedexSprites_Gfx + 0x5C00, (void *)0x06013400, 24, 1);
+            CopyBgTilesRect(gPokedexSprites_Gfx + 0x5C00, (void*)OBJ_TILE_ADDR(TILE_INDEX(0, 13, 0)), 24, 1);
             DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             break;
         case SPECIES_DEX_SEEN:
-            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
+            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void*)OBJ_TILE_ADDR(TILE_INDEX(0, 13, 0)), 24, 1);
             DmaCopy16(3, gMonPortraitGroupPals[0][15], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             break;
         case SPECIES_DEX_SHARED:
         case SPECIES_DEX_SHARED_AND_SEEN:
-            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
+            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void*)OBJ_TILE_ADDR(TILE_INDEX(0, 13, 0)), 24, 1);
             DarkenPalette(&gMonPortraitGroupPals[var1][var2], (void*)OBJ_PLTT_SLOT(PAL_IX_BALL), 0x20, 0xE);
             break;
         case SPECIES_DEX_CAUGHT:
-            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void *)0x06013400, 24, 1);
+            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void*)OBJ_TILE_ADDR(TILE_INDEX(0, 13, 0)), 24, 1);
             DmaCopy16(3, gMonPortraitGroupPals[var1][var2], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             break;
     }

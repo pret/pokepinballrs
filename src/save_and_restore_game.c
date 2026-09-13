@@ -485,7 +485,7 @@ void RestoreMainFieldDynamicGraphics(void)
     for (i = 0; i < SIDE_COUNT; i++)
     {
         var0 = gCurrentPinballGame->flipper[i].position / 2;
-        DmaCopy16(3, gFlipper_Gfx[var0], ((i * 0x200) + 0x06010000), 0x200);
+        DmaCopy16(3, gFlipper_Gfx[var0], ((i * 0x200) + OBJ_VRAM0), 0x200);
     }
 
     var0 = gCurrentPinballGame->ball->spinAngle / 0x1000;
@@ -493,20 +493,20 @@ void RestoreMainFieldDynamicGraphics(void)
 
     for (i = 0; i <= 1; i++)
     {
-        DmaCopy16(3, gPikaSaverTilesGfx + ((var0 =gCurrentPinballGame->pikaSaverTileIndex[i]) * 0x180), 0x06010480 + (i * 0x180), 0x180);
+        DmaCopy16(3, gPikaSaverTilesGfx + ((var0 =gCurrentPinballGame->pikaSaverTileIndex[i]) * 0x180), OBJ_TILE_ADDR(TILE_INDEX(0, 1, 4)) + (i * 0x180), 0x180);
     }
 
     var0 = gCurrentPinballGame->pikachuSpinFrame;
-    DmaCopy16(3, gMainBoardPikaSpinner_Gfx[var0 = gCurrentPinballGame->pikachuSpinFrame], 0x06010780, 0x120);
+    DmaCopy16(3, gMainBoardPikaSpinner_Gfx[var0 = gCurrentPinballGame->pikachuSpinFrame], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 28)), 0x120);
     var0 = gCurrentPinballGame->chargeFillValue;
-    DmaCopy16(3, gChargeFillIndicator_Gfx[var0], 0x06010AE0, 0x80);
+    DmaCopy16(3, gChargeFillIndicator_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 23)), 0x80);
 
     for (i = 0; i <= 1; i++)
     {
         switch (gCurrentPinballGame->portraitRenderMode[i])
         {
         case PORTRAIT_STATE_CURRENT_LOCATION:
-            DmaCopy16(3, gLocationPortraitGfx[gCurrentPinballGame->portraitGfxIndex[i]], 0x06010CA0 + (i * 0x300), 0x300);
+            DmaCopy16(3, gLocationPortraitGfx[gCurrentPinballGame->portraitGfxIndex[i]], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)) + (i * 0x300), 0x300);
             gCurrentPinballGame->ball += 0; //TODO: Dumb match is still a match...
             break;
         case PORTRAIT_STATE_EVO_PREVIEW:
@@ -534,7 +534,7 @@ void RestoreMainFieldDynamicGraphics(void)
                 DmaCopy16(3, gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[i] / 15][gCurrentPinballGame->portraitGfxIndex[i] % 15], OBJ_PLTT_SLOT(PAL_IX_LOCATION_PORTRAIT), PLTT_SLOT_SIZE);
             }
         case PORTRAIT_STATE_POKEMON_DISPLAY:
-            DmaCopy16(3, gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[i] / 15] + (gCurrentPinballGame->portraitGfxIndex[i] % 15) * 0x300, 0x06010CA0 + (i * 0x18), 0x300);
+            DmaCopy16(3, gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[i] / 15] + (gCurrentPinballGame->portraitGfxIndex[i] % 15) * 0x300, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)) + (i * 0x18), 0x300);
             break;
         case PORTRAIT_STATE_SLOT_START_CARD:
         case PORTRAIT_STATE_ROULETTE_WHEEL:
@@ -542,7 +542,7 @@ void RestoreMainFieldDynamicGraphics(void)
         case PORTRAIT_STATE_SHOP_SELECTOR:
         case PORTRAIT_STATE_CONFIRMATION_PROMPT:
         case PORTRAIT_STATE_ROULETTE_OUTCOME:
-            DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[i]], 0x06010CA0 + (i * 0x300), 0x300);
+            DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[i]], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)) + (i * 0x300), 0x300);
             break;
         }
     }
@@ -555,11 +555,11 @@ void RestoreMainFieldDynamicGraphics(void)
         case CATCH_EM_SUBSTATE_SETUP_CATCH_HIT_COUNT:
             if ((u32) gCurrentPinballGame->captureFlashTimer > 4)
             {
-                DmaCopy16(3, gCatchSpriteFlashGfx, 0x06010CA0, 0x480);
+                DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
             }
             else
             {
-                DmaCopy16(3, gCatchSpriteGfxBuffer, 0x06010CA0, 0x480);
+                DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
             }
             break;
         case CATCH_EM_SUBSTATE_CATCH_HIT_PHASE:
@@ -567,11 +567,11 @@ void RestoreMainFieldDynamicGraphics(void)
             {
                 if (gCurrentPinballGame->captureFlashTimer > 4)
                 {
-                    DmaCopy16(3, gCatchSpriteFlashGfx, 0x06010CA0, 0x480);
+                    DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
                 }
                 else
                 {
-                    DmaCopy16(3, gCatchSpriteGfxBuffer, 0x06010CA0, 0x480);
+                    DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
                 }
             }
             break;
@@ -585,11 +585,11 @@ void RestoreMainFieldDynamicGraphics(void)
         case JIRACHI_CATCH_SUBSTATE_SETUP_CATCH_HIT_COUNT:
             if (gCurrentPinballGame->captureFlashTimer > 4U)
             {
-                DmaCopy16(3, gCatchSpriteFlashGfx, 0x06010CA0, 0x480);
+                DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
             }
             else
             {
-                DmaCopy16(3, gCatchSpriteGfxBuffer, 0x06010CA0, 0x480);
+                DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
             }
             break;
         case JIRACHI_CATCH_SUBSTATE_CATCH_HIT_PHASE:
@@ -597,21 +597,21 @@ void RestoreMainFieldDynamicGraphics(void)
             {
                 if (gCurrentPinballGame->captureFlashTimer > 4U)
                 {
-                    DmaCopy16(3, gCatchSpriteFlashGfx, 0x06010CA0, 0x480);
+                    DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
                 }
                 else
                 {
-                    DmaCopy16(3, gCatchSpriteGfxBuffer, 0x06010CA0, 0x480);
+                    DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
                 }
             }
             break;
         }
     }
 
-    DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->bonusTrapAnimFrame], 0x060113C0, 0x300);
-    DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] +  var0 * 0x200, 0x060116C0, 0x200);
-    DmaCopy16(3, gEggFrameTilesGfx[(s16)gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3]], 0x06011CE0, 0x200);
-    DmaCopy16(3, gBallUpgradeFx_Gfx[gCurrentPinballGame->ballUpgradeFxTileIndex], 0x06011EE0, 0x200);
+    DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->bonusTrapAnimFrame], OBJ_TILE_ADDR(TILE_INDEX(0, 4, 30)), 0x300);
+    DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] +  var0 * 0x200, OBJ_TILE_ADDR(TILE_INDEX(0, 5, 22)), 0x200);
+    DmaCopy16(3, gEggFrameTilesGfx[(s16)gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3]], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 7)), 0x200);
+    DmaCopy16(3, gBallUpgradeFx_Gfx[gCurrentPinballGame->ballUpgradeFxTileIndex], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 23)), 0x200);
     return;
 }
 

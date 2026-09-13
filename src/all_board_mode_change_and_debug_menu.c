@@ -156,7 +156,7 @@ void GameOverAnimation(void)
 
     if (gMain.animationTimer == 3600)
     {
-        DmaCopy16(3, gMainBoardGameOverText_Gfx, (void *)0x06015800, 0x400);
+        DmaCopy16(3, gMainBoardGameOverText_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x400);
         gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT]->active = TRUE;
         for (i = 0; i < 8; i++)
         {
@@ -455,14 +455,14 @@ void BallSaverAnimation(void)
             gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM].active = TRUE;
             if (gMain.selectedField == FIELD_RUBY)
             {
-                DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
-                DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, (void *)0x06016800, 0x800);
-                DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, (void *)0x06017000, 0xC0);
+                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
+                DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x800);
+                DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 12, 0)), 0xC0);
                 DmaCopy16(3, gBallSaver_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
             }
             else
             {
-                DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
+                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                 DmaCopy16(3, gBallSaver_Sapphire_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
             }
 
@@ -598,11 +598,11 @@ void EndOfBallBonusSummary(void)
 
             if (gCurrentPinballGame->bonusTextRevealMask[i][j])
             {
-                DmaCopy16(3, gBonusSummaryCharTiles[var1], (void *)0x06016000 + (j + i * 22 + 0xA0) * 0x20, 0x20);
+                DmaCopy16(3, gBonusSummaryCharTiles[var1], OBJ_TILE_ADDR(TILE_INDEX(1, 8, 0)) + (j + i * 22 + 0xA0) * 0x20, 0x20);
             }
             else
             {
-                DmaCopy16(3, gBonusSummaryCharTiles[48], (void *)0x06016000 + (j + i * 22 + 0xA0) * 0x20, 0x20);
+                DmaCopy16(3, gBonusSummaryCharTiles[48], OBJ_TILE_ADDR(TILE_INDEX(1, 8, 0)) + (j + i * 22 + 0xA0) * 0x20, 0x20);
             }
         }
     }

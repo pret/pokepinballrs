@@ -244,11 +244,11 @@ void AnimatePauseMenuOverlay(void)
         index = gPauseMenuTextAnimFrames[(gMain.systemFrameCount % 65) / 5];
         if (gMain.selectedField < MAIN_FIELD_COUNT)
         {
-            DmaCopy16(3, gPauseMenuText_Gfx[index], (void *)0x060118C0, 0x20);
+            DmaCopy16(3, gPauseMenuText_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 6, 6)), 0x20);
         }
         else
         {
-            DmaCopy16(3, gPauseMenuText_Gfx[index], (void *)0x06010480, 0x20);
+            DmaCopy16(3, gPauseMenuText_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 4)), 0x20);
         }
 
         offsets = gPauseMenuSpriteOffsets;
