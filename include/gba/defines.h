@@ -34,7 +34,7 @@
 #define BG_SCREEN_SIZE    0x800  // Char block is 8 screens
 #define BG_CHAR_ADDR(n)   (BG_VRAM + (BG_CHAR_SIZE * (n)))
 #define BG_SCREEN_ADDR(n) (BG_VRAM + (BG_SCREEN_SIZE * (n)))
-#define BG_CHAR_SCREEN_ADDR(m,n) (BG_VRAM + (BG_CHAR_SIZE * (m))+ (BG_SCREEN_SIZE * (n)))
+#define BG_CHAR_SCREEN_ADDR(m,n) (BG_VRAM + (BG_CHAR_SIZE * (m)) + (BG_SCREEN_SIZE * (n)))
 
 #define BG_TILE_H_FLIP(n) (0x400 + (n))
 #define BG_TILE_V_FLIP(n) (0x800 + (n))
@@ -100,7 +100,8 @@ BG layer 3 in other spots, possibly with the wrong palette. (Outside the area th
 Board wrapping starts with the top of the board offset a few rows, as part of the scroll wrapping strategy.
 */
 
-
+// Note: this is mostly normalized, based on manual calculations from the top
+// loadFieldBoardGraphics suggests that the top of sapphire might be 1 line earlier, ruby 2 lines later
 #define BOARD_ROW_OFFSET 11
 #define BOARD_ROW_COUNT 22
 

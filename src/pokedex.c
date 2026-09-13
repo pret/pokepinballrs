@@ -1759,14 +1759,14 @@ static void PrintSelectedMonDexNum(s16 species)
             var0 += var2;
         }
 
-        CopyBgTilesRect(gTempGfxBuffer, (void *)0x06004C00, 8, 2);
+        CopyBgTilesRect(gTempGfxBuffer, (void *)BG_TILE_ADDR(TILE_INDEX(1, 3, 0)), 8, 2);
         DmaFill16(3, 0, gTempGfxBuffer, 0x800);
         var0 = 0;
     }
     else
     {
         for (i = 0; i < 10; i++)
-            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004C00 + i * 0x20, 1, 2);
+            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)BG_TILE_ADDR(TILE_INDEX(1, 3, i)), 1, 2);
     }
 
     if (gPokedexFlags[species] == SPECIES_DEX_SEEN || gPokedexFlags[species] > SPECIES_DEX_SHARED)
@@ -1784,13 +1784,13 @@ static void PrintSelectedMonDexNum(s16 species)
             var0 += var2;
         }
 
-        CopyBgTilesRect(gTempGfxBuffer, (void *)0x06004D00, 9, 2);
+        CopyBgTilesRect(gTempGfxBuffer, (void *)BG_TILE_ADDR(TILE_INDEX(1, 3, 8)), 9, 2);
         DmaFill16(3, 0, gTempGfxBuffer, 0x800);
     }
     else
     {
         for (i = 0; i < 9; i++)
-            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)0x06004D00 + i * 0x20, 1, 2);
+            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)BG_TILE_ADDR(TILE_INDEX(1, 3, 8 + i)), 1, 2);
     }
 
     if (gPokedexFlags[species] == SPECIES_DEX_CAUGHT)

@@ -141,7 +141,7 @@ void InitFrameProcess3_BoardLogic_SphealBoard(void)
     }
 
     gMain.bgOffsets[1].yOffset = 126;
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], (void *)0x06001140, 0x280);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0, 4, 10)), 0x280);
     DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
     m4aSongNumStart(MUS_BONUS_FIELD_SPHEAL);
     DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
