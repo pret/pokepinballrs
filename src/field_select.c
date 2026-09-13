@@ -57,11 +57,11 @@ void LoadFieldSelectGraphics(void)
     gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gFieldSelectBGPals,             BG_PLTT,           BG_PLTT_SIZE);
-    DmaCopy16(3, gFieldSelectWindow_Gfx,         BG_CHAR_ADDR(1),   0x1400);
-    DmaCopy16(3, gFieldSelectMiniFields_Gfx,     BG_CHAR_ADDR(2),   7*BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectWindow_Gfx,         BG_TILE_ADDR(TILE_INDEX(1,0,0)),   0x1400);
+    DmaCopy16(3, gFieldSelectMiniFields_Gfx,     BG_TILE_ADDR(TILE_INDEX(2,0,0)),   7*BG_SCREEN_SIZE);
     DmaCopy16(3, gFieldSelectBG0Tilemap,         BG_VRAM,           BG_SCREEN_SIZE);
-    DmaCopy16(3, gFieldSelectFrameShadowTilemap, BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
-    DmaCopy16(3, gFieldSelectWindowTilemap,      BG_SCREEN_ADDR(2), BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectFrameShadowTilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectWindowTilemap,      BG_TILE_ADDR(TILE_INDEX(0,4,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gFieldSelectSpritePals,         OBJ_PLTT,          OBJ_PLTT_SIZE);
     DmaCopy16(3, gFieldSelectSpriteGfx,          OBJ_VRAM0,         0x4020);
 

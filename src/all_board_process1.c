@@ -17,7 +17,7 @@ void ClearBG0Tilemap(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), 2* BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 2* BG_SCREEN_SIZE);
 }
 
 

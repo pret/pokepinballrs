@@ -78,32 +78,32 @@ void loadFieldBoardGraphics(void)
     {
 	case FIELD_RUBY:
         DmaCopy16(3, gRubyBoard_Pals, BG_PLTT, BG_PLTT_SIZE);
-        DmaCopy16(3, gRubyBoardBGTiles, BG_CHAR_SCREEN_ADDR(2,0), 2*BG_CHAR_SIZE);
-        DmaCopy16(3, gRubyBoardBGTilemap, BG_CHAR_SCREEN_ADDR(0,6), 2*BG_SCREEN_SIZE);
+        DmaCopy16(3, gRubyBoardBGTiles, BG_TILE_ADDR(TILE_INDEX(2,0,0)), 2*BG_CHAR_SIZE);
+        DmaCopy16(3, gRubyBoardBGTilemap, BG_TILE_ADDR(TILE_INDEX(0,12,0)), 2*BG_SCREEN_SIZE);
         LZ77UnCompWram(gRubyBoardCompressedTiles1, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(1,0), BG_CHAR_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE);
         LZ77UnCompWram(gRubyBoardCompressedTiles2, gBoardGfxBuffer);
         LZ77UnCompWram(gRubyBoardCompressedBGTileBuffer, gBoardBGTileBufferAlt);
         DmaCopy16(3, &gBoardGfxBuffer[0xC00], BG_ADDR_FOR_BOARD_WRAP(2, 0), 0x2400);
-        DmaCopy16(3, &gBoardGfxBuffer[0x3000], BG_CHAR_SCREEN_ADDR(2,0), 0x3400);
-        DmaCopy16(3, gRubyBoardBG0Tilemap, BG_CHAR_SCREEN_ADDR(0,0), 2*BG_SCREEN_SIZE);
-        DmaCopy16(3, gRubyBoardBG1Tilemap, BG_CHAR_SCREEN_ADDR(0,2), 2*BG_SCREEN_SIZE);
+        DmaCopy16(3, &gBoardGfxBuffer[0x3000], BG_TILE_ADDR(TILE_INDEX(2,0,0)), 0x3400);
+        DmaCopy16(3, gRubyBoardBG0Tilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
+        DmaCopy16(3, gRubyBoardBG1Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
         DmaCopy16(3, gBoardHudTiles_A, BG_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x400);
         DmaCopy16(3, gBoardHudTiles_B, BG_TILE_ADDR(TILE_INDEX(1, 11, 0)), 0x800);
         DmaCopy16(3, gRubyIntroSprites_Gfx, OBJ_VRAM0, 0x8000);
         break;
 	case FIELD_SAPPHIRE:
         DmaCopy16(3, gSapphireBoardPalette, BG_PLTT, BG_PLTT_SIZE);
-        DmaCopy16(3, gSapphireBoardBGTiles, BG_CHAR_SCREEN_ADDR(2,0), 2*BG_CHAR_SIZE);
-        DmaCopy16(3, gSapphireBoardBGTilemap, BG_CHAR_SCREEN_ADDR(0,6), 2*BG_SCREEN_SIZE);
+        DmaCopy16(3, gSapphireBoardBGTiles, BG_TILE_ADDR(TILE_INDEX(2,0,0)), 2*BG_CHAR_SIZE);
+        DmaCopy16(3, gSapphireBoardBGTilemap, BG_TILE_ADDR(TILE_INDEX(0,12,0)), 2*BG_SCREEN_SIZE);
         LZ77UnCompWram(gSapphireBoardCompressedTiles1, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(1,0), BG_CHAR_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE);
         LZ77UnCompWram(gSapphireBoardCompressedTiles2, gBoardGfxBuffer);
         LZ77UnCompWram(gSapphireBoardCompressedBGTileBuffer, gBoardBGTileBufferAlt);
         DmaCopy16(3, gBoardGfxBuffer, BG_ADDR_FOR_BOARD_WRAP(-1, 0), 0x3000);
-        DmaCopy16(3, &gBoardGfxBuffer[0x3000], BG_CHAR_SCREEN_ADDR(2,0), 0x2800);
-        DmaCopy16(3, gSapphireBoardBG0Tilemap, BG_CHAR_SCREEN_ADDR(0,0), 2*BG_SCREEN_SIZE);
-        DmaCopy16(3, gSapphireBoardBG1Tilemap, BG_CHAR_SCREEN_ADDR(0,2), 2*BG_SCREEN_SIZE);
+        DmaCopy16(3, &gBoardGfxBuffer[0x3000], BG_TILE_ADDR(TILE_INDEX(2,0,0)), 0x2800);
+        DmaCopy16(3, gSapphireBoardBG0Tilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
+        DmaCopy16(3, gSapphireBoardBG1Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
         DmaCopy16(3, gBoardHudTiles_A, BG_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x400);
         DmaCopy16(3, gBoardHudTiles_B, BG_TILE_ADDR(TILE_INDEX(1, 11, 0)), 0x800);
         DmaCopy16(3, gSapphireIntroSprites_Gfx, OBJ_VRAM0, 0x8000);
@@ -111,12 +111,12 @@ void loadFieldBoardGraphics(void)
 	case FIELD_DUSCLOPS:
         DmaCopy16(3, gDusclopsBoardPalette, BG_PLTT, BG_PLTT_SIZE);
         LZ77UnCompWram(gBonusFieldCompressedBaseTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(1,0), BG_CHAR_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE);
         LZ77UnCompWram(gDusclopsBoardCompressedBGTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(2,0), 2*BG_CHAR_SIZE);
-        DmaCopy16(3, gDusclopsBoardBG0Tilemap, BG_CHAR_SCREEN_ADDR(0,0), BG_SCREEN_SIZE);
-        DmaCopy16(3, gDusclopsBoardBG1Tilemap, BG_CHAR_SCREEN_ADDR(0,1), BG_SCREEN_SIZE);
-        DmaCopy16(3, gDusclopsBoardBG2Tilemap, BG_CHAR_SCREEN_ADDR(0,2), BG_SCREEN_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(2,0,0)), 2*BG_CHAR_SIZE);
+        DmaCopy16(3, gDusclopsBoardBG0Tilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+        DmaCopy16(3, gDusclopsBoardBG1Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
+        DmaCopy16(3, gDusclopsBoardBG2Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), BG_SCREEN_SIZE);
         DmaCopy16(3, gBoardHudTiles_A, BG_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x400);
         DmaCopy16(3, gBoardHudTiles_B, BG_TILE_ADDR(TILE_INDEX(1, 11, 0)), 0x800);
         DmaCopy16(3, gDusclopsIntroSprite_Gfx, OBJ_VRAM0, 0x8000);
@@ -124,12 +124,12 @@ void loadFieldBoardGraphics(void)
 	case FIELD_KECLEON:
         DmaCopy16(3, gKecleonBoardPalette, BG_PLTT, BG_PLTT_SIZE);
         LZ77UnCompWram(gBonusFieldCompressedBaseTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(1,0), BG_CHAR_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE);
         LZ77UnCompWram(gKecleonBoardCompressedBGTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(2,0), 2*BG_CHAR_SIZE);
-        DmaCopy16(3, gKecleonBoardBG0Tilemap, BG_CHAR_SCREEN_ADDR(0,0), BG_SCREEN_SIZE);
-        DmaCopy16(3, gKecleonBoardBG1Tilemap, BG_CHAR_SCREEN_ADDR(0,1), BG_SCREEN_SIZE);
-        DmaCopy16(3, gKecleonBerryOverlayTilemap, BG_CHAR_SCREEN_ADDR(0,2), BG_SCREEN_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(2,0,0)), 2*BG_CHAR_SIZE);
+        DmaCopy16(3, gKecleonBoardBG0Tilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+        DmaCopy16(3, gKecleonBoardBG1Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
+        DmaCopy16(3, gKecleonBerryOverlayTilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), BG_SCREEN_SIZE);
         DmaCopy16(3, gBoardHudTiles_A, BG_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x400);
         DmaCopy16(3, gBoardHudTiles_B, BG_TILE_ADDR(TILE_INDEX(1, 11, 0)), 0x800);
         DmaCopy16(3, gKecleonIntroSprite_Gfx, OBJ_VRAM0, 0x8000);
@@ -137,11 +137,11 @@ void loadFieldBoardGraphics(void)
 	case FIELD_KYOGRE:
         DmaCopy16(3, gKyogreBoardPalette, BG_PLTT, BG_PLTT_SIZE);
         LZ77UnCompWram(gBonusFieldCompressedBaseTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(1,0), BG_CHAR_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE);
         LZ77UnCompWram(gKyogreBoardCompressedBGTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(2,0), 2*BG_CHAR_SIZE);
-        DmaCopy16(3, gKyogreWaterBackgroundTilemap, BG_CHAR_SCREEN_ADDR(0,0), BG_SCREEN_SIZE);
-        DmaCopy16(3, gKyogreBoardBG1Tilemap, BG_CHAR_SCREEN_ADDR(0,1), BG_SCREEN_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(2,0,0)), 2*BG_CHAR_SIZE);
+        DmaCopy16(3, gKyogreWaterBackgroundTilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+        DmaCopy16(3, gKyogreBoardBG1Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
         DmaCopy16(3, gBoardHudTiles_A, BG_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x400);
         DmaCopy16(3, gBoardHudTiles_B, BG_TILE_ADDR(TILE_INDEX(1, 11, 0)), 0x800);
         DmaCopy16(3, gKyogreIntroSprite_Gfx, OBJ_VRAM0, 0x8000);
@@ -149,11 +149,11 @@ void loadFieldBoardGraphics(void)
 	case FIELD_GROUDON:
         DmaCopy16(3, gGroudonLavaPaletteCycleData, BG_PLTT, BG_PLTT_SIZE);
         LZ77UnCompWram(gBonusFieldCompressedBaseTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(1,0), BG_CHAR_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE);
         LZ77UnCompWram(gGroudonBoardCompressedBGTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(2,0), 2*BG_CHAR_SIZE);
-        DmaCopy16(3, gGroudonBoardBG0Tilemap, BG_CHAR_SCREEN_ADDR(0,0), BG_SCREEN_SIZE);
-        DmaCopy16(3, gGroudonBoardBG1Tilemap, BG_CHAR_SCREEN_ADDR(0,1), BG_SCREEN_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(2,0,0)), 2*BG_CHAR_SIZE);
+        DmaCopy16(3, gGroudonBoardBG0Tilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+        DmaCopy16(3, gGroudonBoardBG1Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
         DmaCopy16(3, gBoardHudTiles_A, BG_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x400);
         DmaCopy16(3, gBoardHudTiles_B, BG_TILE_ADDR(TILE_INDEX(1, 11, 0)), 0x800);
         DmaCopy16(3, gGroudonIntroSprite_Gfx, OBJ_VRAM0, 0x8000);
@@ -161,12 +161,12 @@ void loadFieldBoardGraphics(void)
 	case FIELD_RAYQUAZA:
         DmaCopy16(3, gRayquazaBoardPalette, BG_PLTT, BG_PLTT_SIZE);
         LZ77UnCompWram(gBonusFieldCompressedBaseTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(1,0), BG_CHAR_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE);
         LZ77UnCompWram(gRayquazaBoardCompressedBGTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(2,0), 2*BG_CHAR_SIZE);
-        DmaCopy16(3, gRayquazaBoardBG0Tilemap, BG_CHAR_SCREEN_ADDR(0,0), 2*BG_SCREEN_SIZE);
-        DmaCopy16(3, gRayquazaBoardBG1Tilemap, BG_CHAR_SCREEN_ADDR(0,2), 2*BG_SCREEN_SIZE);
-        DmaCopy16(3, gRayquazaBoardBGScrollTilemap, BG_CHAR_SCREEN_ADDR(0,6), 2*BG_SCREEN_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(2,0,0)), 2*BG_CHAR_SIZE);
+        DmaCopy16(3, gRayquazaBoardBG0Tilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
+        DmaCopy16(3, gRayquazaBoardBG1Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
+        DmaCopy16(3, gRayquazaBoardBGScrollTilemap, BG_TILE_ADDR(TILE_INDEX(0,12,0)), 2*BG_SCREEN_SIZE);
         DmaCopy16(3, gBoardHudTiles_A, BG_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x400);
         DmaCopy16(3, gBoardHudTiles_B, BG_TILE_ADDR(TILE_INDEX(1, 11, 0)), 0x800);
         DmaCopy16(3, gRayquazaIntroSprite_Gfx, OBJ_VRAM0, 0x8000);
@@ -174,11 +174,11 @@ void loadFieldBoardGraphics(void)
 	case FIELD_SPHEAL:
         DmaCopy16(3, gSphealBoardPalette, BG_PLTT, BG_PLTT_SIZE);
         LZ77UnCompWram(gBonusFieldCompressedBaseTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(1,0), BG_CHAR_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE);
         LZ77UnCompWram(gSphealBoardCompressedBGTiles, gBoardGfxBuffer);
-        DmaCopy16(3, gBoardGfxBuffer, BG_CHAR_SCREEN_ADDR(2,0), 2*BG_CHAR_SIZE);
-        DmaCopy16(3, gSphealWaterBackgroundTilemap, BG_CHAR_SCREEN_ADDR(0,0), BG_SCREEN_SIZE);
-        DmaCopy16(3, gSphealBoardBG1Tilemap, BG_CHAR_SCREEN_ADDR(0,1), BG_SCREEN_SIZE);
+        DmaCopy16(3, gBoardGfxBuffer, BG_TILE_ADDR(TILE_INDEX(2,0,0)), 2*BG_CHAR_SIZE);
+        DmaCopy16(3, gSphealWaterBackgroundTilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+        DmaCopy16(3, gSphealBoardBG1Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
         DmaCopy16(3, gBoardHudTiles_A, BG_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x400);
         DmaCopy16(3, gBoardHudTiles_B, BG_TILE_ADDR(TILE_INDEX(1, 11, 0)), 0x800);
         DmaCopy16(3, gSphealIntroSprites_Gfx, OBJ_VRAM0, 0x8000);
@@ -209,22 +209,22 @@ void UpdateScrollingBackgroundTiles(void)
     {
         if (r3[0] > 31)
         {
-            DmaCopy16(3, &gBoardBGTileBufferAlt[(r3[0] - 32) * 0x400], BG_CHAR_SCREEN_ADDR(2,0) + r3[1] * 0x400, 0x400);
+            DmaCopy16(3, &gBoardBGTileBufferAlt[(r3[0] - 32) * 0x400], BG_TILE_ADDR(TILE_INDEX(2,0,0)) + r3[1] * 0x400, 0x400);
         }
         else
         {
-            DmaCopy16(3, &gBoardGfxBuffer[r3[0] * 0x400], BG_CHAR_SCREEN_ADDR(2,0) + r3[1] * 0x400, 0x400);
+            DmaCopy16(3, &gBoardGfxBuffer[r3[0] * 0x400], BG_TILE_ADDR(TILE_INDEX(2,0,0)) + r3[1] * 0x400, 0x400);
         }
     }
     else
     {
         if (r3[2] > 31)
         {
-            DmaCopy16(3, &gBoardBGTileBufferAlt[(r3[2] - 32) * 0x400], BG_CHAR_SCREEN_ADDR(2,0) + r3[3] * 0x400, 0x400);
+            DmaCopy16(3, &gBoardBGTileBufferAlt[(r3[2] - 32) * 0x400], BG_TILE_ADDR(TILE_INDEX(2,0,0)) + r3[3] * 0x400, 0x400);
         }
         else
         {
-            DmaCopy16(3, &gBoardGfxBuffer[r3[2] * 0x400], BG_CHAR_SCREEN_ADDR(2,0) + r3[3] * 0x400, 0x400);
+            DmaCopy16(3, &gBoardGfxBuffer[r3[2] * 0x400], BG_TILE_ADDR(TILE_INDEX(2,0,0)) + r3[3] * 0x400, 0x400);
         }
     }
 

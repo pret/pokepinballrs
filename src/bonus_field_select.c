@@ -68,11 +68,11 @@ void LoadBonusFieldSelectGraphics(void)
     gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gBonusFieldSelectStages_Pals, BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gFieldSelectWindow_Gfx, BG_CHAR_ADDR(1), BG_CHAR_SIZE);
-    DmaCopy16(3, gBonusFieldSelectStages_Gfx, BG_CHAR_ADDR(2), 3*BG_SCREEN_SIZE);
-    DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, BG_CHAR_ADDR(0), BG_SCREEN_SIZE);
-    DmaCopy16(3, gBonusFieldSelectBg1_Tilemap, BG_CHAR_SCREEN_ADDR(0,1), BG_SCREEN_SIZE);
-    DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, BG_CHAR_SCREEN_ADDR(0,2), BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectWindow_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE);
+    DmaCopy16(3, gBonusFieldSelectStages_Gfx, BG_TILE_ADDR(TILE_INDEX(2,0,0)), 3*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBonusFieldSelectBg1_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gFieldSelectSpritePals, OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
     DmaCopy16(3, gFieldSelectSpriteGfx, OBJ_VRAM0, 0x4020);
 

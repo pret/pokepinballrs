@@ -121,15 +121,15 @@ void LoadHighScoreGraphics(void)
   gMain.dispcntBackup = REG_DISPCNT;
 
   DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE);
-  DmaCopy16(3, gHighScoreText_Gfx, BG_CHAR_ADDR(1), 0x4800);
-  DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_CHAR_ADDR(3), 0x2C00);
+  DmaCopy16(3, gHighScoreText_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0x4800);
+  DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_TILE_ADDR(TILE_INDEX(3,0,0)), 0x2C00);
   DmaCopy16(3, gHighScoreScoreTable_Tilemap, gBG0TilemapBuffer, 2*BG_SCREEN_SIZE);
-  DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_SCREEN_ADDR(2), 2*BG_SCREEN_SIZE);
+  DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
   DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), 8*PLTT_SLOT_SIZE);
   DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
   InitHighScoreData();
   DrawAllHighScoreText();
-  DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_ADDR(0), 2*BG_SCREEN_SIZE);
+  DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
   if(gHighScoreEntrySource == 0)
       m4aSongNumStart(MUS_HIGH_SCORE);
 
@@ -349,7 +349,7 @@ void HighScore_FlashNewEntry(void)
         gMain.subState = HIGH_SCORE_STATE_NAME_ENTRY;
     }
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_ADDR(0), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
 }
 
 void HighScore_BrowseScores(void)
@@ -568,7 +568,7 @@ void HighScore_NameEntry(void)
         }
     }
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_ADDR(0), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
     if (gHighScoreScreenState.inputRepeatDelay > 0)
         gHighScoreScreenState.inputRepeatDelay--;
 }
@@ -746,15 +746,15 @@ void IdleHighScore_LoadGraphics(void)
     REG_DISPCNT |= DISPCNT_BG3_ON;
     gMain.dispcntBackup = REG_DISPCNT;
     DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gHighScoreText_Gfx, BG_CHAR_ADDR(1), 0x4800);
-    DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_CHAR_ADDR(3), 0x2C00);
+    DmaCopy16(3, gHighScoreText_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0x4800);
+    DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_TILE_ADDR(TILE_INDEX(3,0,0)), 0x2C00);
     DmaCopy16(3, gHighScoreScoreTable_Tilemap, gBG0TilemapBuffer, 2*BG_SCREEN_SIZE);
-    DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_SCREEN_ADDR(2), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
     DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
     DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
     InitIdleHighScoreData();
     DrawAllHighScoreText();
-    DmaCopy16(3, gBG0TilemapBuffer,BG_CHAR_ADDR(0), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer,BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
     m4aSongNumStart(MUS_HIGH_SCORE);
     EnableVBlankInterrupts();
     FadeInScreen();
@@ -836,7 +836,7 @@ void IdleHighScore_AutoScroll(void)
     }
 
     gHighScoreScreenState.displayTimer++;
-    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_ADDR(0), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
 
     if (JOY_NEW(START_BUTTON | A_BUTTON | B_BUTTON))
     {
@@ -864,15 +864,15 @@ void HighScore_ReloadAfterLink(void)
     REG_DISPCNT |= DISPCNT_BG3_ON;
     gMain.dispcntBackup = REG_DISPCNT;
     DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gHighScoreText_Gfx, BG_CHAR_ADDR(1), BG_CHAR_SIZE + BG_SCREEN_SIZE);
-    DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_CHAR_ADDR(3), 0x2C00);
+    DmaCopy16(3, gHighScoreText_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), BG_CHAR_SIZE + BG_SCREEN_SIZE);
+    DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_TILE_ADDR(TILE_INDEX(3,0,0)), 0x2C00);
     DmaCopy16(3, gHighScoreScoreTable_Tilemap, gBG0TilemapBuffer, 2*BG_SCREEN_SIZE);
-    DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_SCREEN_ADDR(2), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
     DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
     DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
     InitIdleHighScoreData();
     DrawAllHighScoreText();
-    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_ADDR(0), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
     m4aSongNumStart(MUS_HIGH_SCORE);
     EnableVBlankInterrupts();
     FadeInScreen();
@@ -934,7 +934,7 @@ void HighScore_ShowMergedScores(void)
     }
 
     gHighScoreScreenState.displayTimer++;
-    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_ADDR(0), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
 
     if (JOY_NEW(START_BUTTON | A_BUTTON | B_BUTTON))
     {

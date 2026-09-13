@@ -1090,7 +1090,7 @@ void UpdateKecleonScopeVision(void)
         }
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_CHAR_SCREEN_ADDR(0,2), 0x500);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_TILE_ADDR(TILE_INDEX(0,4,0)), 0x500);
 }
 
 void RenderKecleonBoardElements(void)

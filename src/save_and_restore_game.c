@@ -219,12 +219,12 @@ void RestoreGameState(u16 arg0)
             var1 = (i + 10 + gCurrentPinballGame->ballLaunchSpeed) % 22;
             if (var0 < 32)
             {
-                DmaCopy16(3, &gBoardGfxBuffer[var0 * 0x400], (void *)BG_CHAR_ADDR(2) + var1 * 0x400, 0x400);
+                DmaCopy16(3, &gBoardGfxBuffer[var0 * 0x400], (void *)BG_TILE_ADDR(TILE_INDEX(2,0,0)) + var1 * 0x400, 0x400);
             }
             else
             {
                 var0 -= 32;
-                DmaCopy16(3, &gBoardBGTileBufferAlt[var0 * 0x400], (void *)BG_CHAR_ADDR(2) + var1 * 0x400, 0x400);
+                DmaCopy16(3, &gBoardBGTileBufferAlt[var0 * 0x400], (void *)BG_TILE_ADDR(TILE_INDEX(2,0,0)) + var1 * 0x400, 0x400);
             }
         }
     }
@@ -232,7 +232,7 @@ void RestoreGameState(u16 arg0)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 2*BG_SCREEN_SIZE);
     if (gMain.scoreOverlayActive)
     {
         if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_EVO_MODE)
@@ -252,7 +252,7 @@ void RestoreGameState(u16 arg0)
             }
         }
 
-        DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+        DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
     }
 
     DmaCopy16(3, gCurrentPinballGame->savedObjPalette[gMain.isBonusField], OBJ_PLTT, OBJ_PLTT_SIZE);
@@ -746,7 +746,7 @@ void RestoreSphealBonusGraphics(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[0x400 + i] = 0x200;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_CHAR_SCREEN_ADDR(0,2), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
     gMain.blendControl = 0x1C42;
     gMain.blendAlpha = 0xC04;
     for (i = 0; i < 0x140; i++)

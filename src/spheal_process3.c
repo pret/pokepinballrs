@@ -129,7 +129,7 @@ void InitFrameProcess3_BoardLogic_SphealBoard(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[0x400 + i] = 0x200;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_CHAR_SCREEN_ADDR(0,2), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
 
     gMain.blendControl = 0x1C42;
     gMain.blendAlpha = 0xC04;
@@ -1473,7 +1473,7 @@ void AnimateSphealBackground(void)
     for (i = 0x100; i < 0x400; i++)
         gBG0TilemapBuffer[0x800 + i] = gSphealWaterBackgroundTilemap[i] + var0 * 4;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_CHAR_SCREEN_ADDR(0,0), BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
 }
 
 

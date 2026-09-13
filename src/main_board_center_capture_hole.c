@@ -1155,7 +1155,7 @@ void RunMonCaptureSequence(void)
                 }
             }
 
-            DmaCopy16(3, &gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+            DmaCopy16(3, &gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
         }
 
         if (gCurrentPinballGame->captureSequenceFrame >= 240 && gCurrentPinballGame->captureSequenceFrame <= 269)
@@ -1170,7 +1170,7 @@ void RunMonCaptureSequence(void)
                 }
             }
 
-            DmaCopy16(3, &gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+            DmaCopy16(3, &gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
 
             if (gCurrentPinballGame->captureSequenceFrame == 269)
             {
