@@ -274,7 +274,7 @@ void Pokedex_HandleListInput(void)
             if (gPokedexFlags[gPokedexSelectedMon] >= 2)
             {
                 gPokedexShowButtonPrompt = FALSE;
-                DmaCopy16(3, 0x6000280, gPokedexInfoWindowBackupTiles, 0x200);
+                DmaCopy16(3, BG_TILE_ADDR(TILE_INDEX(0, 0, 20)), gPokedexInfoWindowBackupTiles, 0x200);
                 gMain.subState = POKEDEX_STATE_3;
             }
             else
@@ -330,7 +330,7 @@ void Pokedex_HandleListInput(void)
             if (gPokedexFlags[gPokedexSelectedMon] >= SPECIES_DEX_SHARED)
             {
                 gPokedexShowButtonPrompt = FALSE;
-                DmaCopy16(3, 0x6000280, gPokedexInfoWindowBackupTiles, 0x200);
+                DmaCopy16(3, BG_TILE_ADDR(TILE_INDEX(0, 0, 20)), gPokedexInfoWindowBackupTiles, 0x200);
                 gMain.subState = POKEDEX_STATE_3;
             }
             else
@@ -572,7 +572,7 @@ void Pokedex_InfoWindowSlideOut(void)
         gPokedexShowButtonPrompt = TRUE;
 
         DmaFill16(3, 0, gTempGfxBuffer, 0x1800);
-        DmaFill16(3, 0, (void *)0x6005C00, 0x1800);
+        DmaFill16(3, 0, BG_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x1800);
         gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
     }
 }
