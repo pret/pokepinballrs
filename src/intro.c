@@ -820,7 +820,7 @@ void IntroScene3Treecko_20_LoadTreeckoFlipperBall(void)
     DmaCopy16(3, gIntroScene3Treecko_BG1TilemapB, gIntroScene3Treecko_AltBG1TilemapBuffer, BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene3TreeckoSprites_Gfx, BG_VRAM, 0x6C00);
     DmaCopy16(3, gIntroScene3Treecko_Pal, BG_PLTT_SLOT(PAL_IX_0), 7*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gIntroScene3TreeckoTreecko_Gfx, OBJ_VRAM0, 0x2000);
+    DmaCopy16(3, gIntroScene3TreeckoTreecko_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x2000);
     DmaCopy16(3, gIntroScene3Treecko_Pal, OBJ_PLTT_SLOT(PAL_IX_0), 7*PLTT_SLOT_SIZE);
 
     IntroScene3Treecko_InitVars();
@@ -1122,7 +1122,7 @@ void IntroScene5Mudkip_32_LoadMudkipBallScene(void)
     DmaCopy16(3, gIntroScene5MudkipText_Gfx, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 5*BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene1TorchicBall_Gfx, gTempGfxBuffer, BG_CHAR_SIZE);
     DmaCopy16(3, gIntroScene5Mudkip_Pal, BG_PLTT_SLOT(PAL_IX_0), 12*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gIntroScene5MudkipSprites_Gfx, OBJ_VRAM0, 6*BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene5MudkipSprites_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 6*BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene5Mudkip_Pal, OBJ_PLTT_SLOT(PAL_IX_0), 12*PLTT_SLOT_SIZE);
 
     IntroScene5Mudkip_InitVars();
@@ -1256,7 +1256,7 @@ void IntroScene5Mudkip_36_FlashWhite(void)
     FlashWhiteTransitionOut();
     ClearSprites();
     DmaFill32(3, 0, OAM, 0x400);
-    DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
+    DmaFill16(3, 0, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x5000);
     DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
@@ -1353,7 +1353,7 @@ void IntroScene6Chinchou_38_LoadChinchou(void)
     DmaCopy16(3, gIntroScene6Chinchou_BG3Tilemap, BG_TILE_ADDR(TILE_INDEX(3,14,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene6ChinchouSprites_Gfx, BG_VRAM, 0x6400);
     DmaCopy16(3, gIntroScene6Chinchou_Pal, BG_PLTT_SLOT(PAL_IX_0), 4*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gIntroScene6ChinchouStars_Gfx, OBJ_VRAM0, 0x1000);
+    DmaCopy16(3, gIntroScene6ChinchouStars_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x1000);
     DmaCopy16(3, gIntroScene6Chinchou_Pal, OBJ_PLTT_SLOT(PAL_IX_0), 4*PLTT_SLOT_SIZE);
 
     IntroScene6Chinchou_InitVars();
@@ -1496,7 +1496,7 @@ void IntroScene6Chinchou_41_FlashWhiteClearSprites(void)
 {
     ClearSprites();
     DmaFill32(3, 0, OAM, 0x400);
-    DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
+    DmaFill16(3, 0, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x5000);
     FlashWhiteTransitionOut();
     DisableDisplayInterrupts();
     gIntroSceneIndex++;
@@ -1584,7 +1584,7 @@ void IntroScene7Parade_43_LoadPinkYellowBackground(void)
     DmaCopy16(3, gIntroScene7Parade_BG3Tilemap, BG_TILE_ADDR(TILE_INDEX(1,14,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene7ParadeSprites_Gfx, BG_VRAM, 0x5000);
     DmaCopy16(3, gIntroScene7Parade_Pal, BG_PLTT_SLOT(PAL_IX_0), 11*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gIntroScene7ParadeWailmer_Gfx, OBJ_VRAM0, 0x2000);
+    DmaCopy16(3, gIntroScene7ParadeWailmer_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x2000);
     DmaCopy16(3, gIntroScene7Parade_Pal, OBJ_PLTT_SLOT(PAL_IX_0), 11*PLTT_SLOT_SIZE);
 
     gMain.dispcntBackup = REG_DISPCNT;
@@ -1854,7 +1854,7 @@ void IntroScene8WailmerLaunch_51_LoadWailmerBlastBackground(void)
     DmaCopy16(3, gIntroScene8WailmerLaunch_BG2Tilemap, BG_VRAM, BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene8WailmerLaunchExplosion_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0x3400);
     DmaCopy16(3, gIntroScene8WailmerLaunch_Pal, BG_PLTT_SLOT(PAL_IX_0), 10*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gIntroScene8WailmerLaunch_Gfx, OBJ_VRAM0, 0x2C00);
+    DmaCopy16(3, gIntroScene8WailmerLaunch_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x2C00);
     DmaCopy16(3, gIntroScene8WailmerLaunch_Pal, OBJ_PLTT_SLOT(PAL_IX_0), 10*PLTT_SLOT_SIZE);
 
     gMain.dispcntBackup = REG_DISPCNT;
@@ -1979,7 +1979,7 @@ void IntroScene8WailmerLaunch_57_FlashWhiteClearSprites(void)
     FlashWhiteTransitionOut();
     ClearSprites();
     DmaFill32(3, 0, OAM, 0x400);
-    DmaFill16(3, 0, OBJ_VRAM0, 0x5000);
+    DmaFill16(3, 0, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x5000);
     DisableDisplayInterrupts();
     gIntroSceneIndex++;
 }
@@ -2147,7 +2147,7 @@ void IntroScene9BallFlight_59_LoadSkySpeedOrbs(void)
     DmaCopy16(3, gIntroScene9BallFlight_BG3Tilemap, BG_VRAM, BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene9BallFlightClouds_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0x2400);
     DmaCopy16(3, gIntroScene9BallFlight_Pal, BG_PLTT_SLOT(PAL_IX_0), 2*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gIntroScene9BallFlightall_Gfx, OBJ_VRAM0, 0x7000);
+    DmaCopy16(3, gIntroScene9BallFlightall_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x7000);
     DmaCopy16(3, gIntroScene9BallFlight_Pal, OBJ_PLTT_SLOT(PAL_IX_0), 2*PLTT_SLOT_SIZE);
 
     gMain.dispcntBackup = REG_DISPCNT;

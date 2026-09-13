@@ -143,7 +143,7 @@ void UpdateFrameProcess3_BoardLogic_DusclopsBoard(void)
                 gCurrentPinballGame->stageTimer = 0;
                 gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
                 gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-                DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 8192);
+                DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
                 gCurrentPinballGame->bannerSlideYOffset = 136;
             }
             break;
@@ -566,7 +566,7 @@ void DuskullPhase_ProcessGraphics() {
     for (i = 0; i < DUSKULL_CONCURRENT_MAX; i++)
     {
         s16 spriteVariant = gCurrentPinballGame->minionSpriteVariant[i];
-        DmaCopy16(3, gDusclopsBoardDuskull_Gfx + spriteVariant * 0x280, OBJ_TILE_ADDR(TILE_INDEX(0, 2, 9)) + i * 0x280, 0x280);
+        DmaCopy16(3, gDusclopsBoardDuskull_Gfx + spriteVariant * 0x280, OBJ_TILE_ADDR(TILE_INDEX(0, 2, 9 + 20 * i)), 0x280);
         oamIx = gCurrentPinballGame->minionOamIx[i];
         spriteGroup = &gMain.spriteGroups[SG_DUSKULL_ENTITY_BASE + i];
 

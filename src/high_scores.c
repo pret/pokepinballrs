@@ -126,7 +126,7 @@ void LoadHighScoreGraphics(void)
   DmaCopy16(3, gHighScoreScoreTable_Tilemap, gBG0TilemapBuffer, 2*BG_SCREEN_SIZE);
   DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
   DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), 8*PLTT_SLOT_SIZE);
-  DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
+  DmaCopy16(3, gHighScoreDialogs_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x4420);
   InitHighScoreData();
   DrawAllHighScoreText();
   DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
@@ -751,7 +751,7 @@ void IdleHighScore_LoadGraphics(void)
     DmaCopy16(3, gHighScoreScoreTable_Tilemap, gBG0TilemapBuffer, 2*BG_SCREEN_SIZE);
     DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
     DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
-    DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
+    DmaCopy16(3, gHighScoreDialogs_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x4420);
     InitIdleHighScoreData();
     DrawAllHighScoreText();
     DmaCopy16(3, gBG0TilemapBuffer,BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);
@@ -869,7 +869,7 @@ void HighScore_ReloadAfterLink(void)
     DmaCopy16(3, gHighScoreScoreTable_Tilemap, gBG0TilemapBuffer, 2*BG_SCREEN_SIZE);
     DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
     DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
-    DmaCopy16(3, gHighScoreDialogs_Gfx, (void *)OBJ_VRAM0, 0x4420);
+    DmaCopy16(3, gHighScoreDialogs_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x4420);
     InitIdleHighScoreData();
     DrawAllHighScoreText();
     DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 2*BG_SCREEN_SIZE);

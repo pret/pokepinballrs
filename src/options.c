@@ -110,7 +110,7 @@ void Options_LoadGraphics(void)
     DmaCopy16(3, gBG0TilemapBuffer,          BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gOptionsBackground_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gGBAButtonIcons_Pals,       OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gOptionsSprites_Gfx,        OBJ_VRAM0, 0x2020);
+    DmaCopy16(3, gOptionsSprites_Gfx,        OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x2020);
     Options_InitStates();
     UpdateOptionsSpritePositions();
     m4aMPlayAllStop();

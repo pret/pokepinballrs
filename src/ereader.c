@@ -81,7 +81,7 @@ void LoadEReaderGraphics(void)
     DmaCopy16(3, gEReaderText_Tilemap,    BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gEReaderOverlay_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,  OBJ_PLTT_SLOT(PAL_IX_0), 6*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gPokedexSprites_Gfx,   OBJ_VRAM0,         0x6C20);
+    DmaCopy16(3, gPokedexSprites_Gfx,   OBJ_TILE_ADDR(TILE_INDEX(0,0,0)),         0x6C20);
 
     InitEReaderTextState();
     gEReaderTextCharIndex = 0;
@@ -345,7 +345,7 @@ void Ereader_ShowSuccessPopup(void)
     DmaCopy16(3, gEReaderText_Tilemap,       BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gEReaderOverlay_Tilemap,    BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,       OBJ_PLTT_SLOT(PAL_IX_0),  6*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gPokedexSprites_Gfx,        OBJ_VRAM0,         0x6C20);
+    DmaCopy16(3, gPokedexSprites_Gfx,        OBJ_TILE_ADDR(TILE_INDEX(0,0,0)),         0x6C20);
 
     InitEReaderTextState();
     gEReaderTextCharIndex = 0;

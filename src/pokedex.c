@@ -135,7 +135,7 @@ void LoadPokedexGraphics(void)
     DmaCopy16(3, gPokedexBg2_Tilemap, gPokedexVramBuffer, BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexBg3_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
-    DmaCopy16(3, gPokedexSprites_Gfx, OBJ_VRAM0, 0x6C20);
+    DmaCopy16(3, gPokedexSprites_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x6C20);
 
     InitPokedexState();
     PrintSeenOwnedTotals(gPokedexNumSeen, gPokedexNumOwned);
@@ -2409,7 +2409,7 @@ void LoadMonAnimationSprite(s16 species)
         quotient = var0 / 5;
         remainder = var0 % 5;
 
-        CopyBgTilesRect(gCatchSpriteGfxPtrs[quotient] + remainder * 0xD80, (void *)(OBJ_VRAM0 + 0x3800), 108, 1);
+        CopyBgTilesRect(gCatchSpriteGfxPtrs[quotient] + remainder * 0xD80, (void*) OBJ_TILE_ADDR(TILE_INDEX(0, 14, 0)), 108, 1);
         DmaCopy16(3, gCatchMonPaletteGroups[quotient][remainder], OBJ_PLTT_SLOT(PAL_IX_2), PLTT_SLOT_SIZE);
     }
     else
@@ -2418,7 +2418,7 @@ void LoadMonAnimationSprite(s16 species)
         quotient = (var0 - 100) / 6;
         remainder = (var0 - 100) % 6;
 
-        CopyBgTilesRect(gMonHatchSpriteGroupGfx[quotient][remainder], (void *)(OBJ_VRAM0 + 0x4800), 135, 1);
+        CopyBgTilesRect(gMonHatchSpriteGroupGfx[quotient][remainder], (void *) OBJ_TILE_ADDR(TILE_INDEX(1, 2, 0)), 135, 1);
         DmaCopy16(3, gMonHatchSpriteGroupPals[quotient][remainder], OBJ_PLTT_SLOT(PAL_IX_3), PLTT_SLOT_SIZE);
     }
 }

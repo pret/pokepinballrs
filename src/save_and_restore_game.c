@@ -485,7 +485,7 @@ void RestoreMainFieldDynamicGraphics(void)
     for (i = 0; i < SIDE_COUNT; i++)
     {
         var0 = gCurrentPinballGame->flipper[i].position / 2;
-        DmaCopy16(3, gFlipper_Gfx[var0], ((i * 0x200) + OBJ_VRAM0), 0x200);
+        DmaCopy16(3, gFlipper_Gfx[var0], ((i * 0x200) + OBJ_TILE_ADDR(TILE_INDEX(0, 0, 0))), 0x200);
     }
 
     var0 = gCurrentPinballGame->ball->spinAngle / 0x1000;

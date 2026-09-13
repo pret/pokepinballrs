@@ -62,14 +62,14 @@ void LoadTitlescreenGraphics(void)
         DmaCopy16(3, gTitlescreenSprites_Pals, OBJ_PLTT_SLOT(PAL_IX_0), 5*PLTT_SLOT_SIZE);
         DmaCopy16(3, gTitlescreenSpritesSavedGame_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x7000);
         DmaCopy16(3, gGBAButtonIcons_Pals, OBJ_PLTT_SLOT(PAL_IX_5), 2*PLTT_SLOT_SIZE);
-        DmaCopy16(3, gOptionsSprites_Gfx, (void *)OBJ_VRAM0 + 0x7000, 0x400);
+        DmaCopy16(3, gOptionsSprites_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 12, 0)), 0x400);
     }
     else
     {
         DmaCopy16(3, gTitlescreenSprites_Pals, OBJ_PLTT_SLOT(PAL_IX_0), 5*PLTT_SLOT_SIZE);
         DmaCopy16(3, gTitlescreenSpritesNoSavedGame_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x7000);
         DmaCopy16(3, gGBAButtonIcons_Pals, OBJ_PLTT_SLOT(PAL_IX_5), 2*PLTT_SLOT_SIZE);
-        DmaCopy16(3, gOptionsSprites_Gfx, (void *)OBJ_VRAM0 + 0x7000, 0x400);
+        DmaCopy16(3, gOptionsSprites_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 12, 0)), 0x400);
     }
 
     InitTitlescreenStates();
@@ -394,13 +394,13 @@ void TitleScreen7_ProcessMenuItemSelected_NoSavedGame(void)
             if (!gTitlescreen.animPhase)
             {
                 gTitlescreen.animPhase = 1;
-                CopyBgTilesRect((void *)(OBJ_VRAM0 + 0x1E0 + gTitlescreen.menuCursorIndex * 0x800), gTempGfxBuffer, 8, 2);
-                CopyBgTilesRect((void *)(OBJ_VRAM0 + 0x61E0), (void *)(OBJ_VRAM0 + 0x1E0 + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
+                CopyBgTilesRect((void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), gTempGfxBuffer, 8, 2);
+                CopyBgTilesRect((void *)OBJ_TILE_ADDR(TILE_INDEX(1, 8, 15)), (void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
             }
             else
             {
                 gTitlescreen.animPhase = 0;
-                CopyBgTilesRect(gTempGfxBuffer, (void *)(OBJ_VRAM0 + 0x1E0 + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
+                CopyBgTilesRect(gTempGfxBuffer, (void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
             }
         }
 
@@ -495,13 +495,13 @@ void TitleScreen8_ProcessMenuItemSelected_SavedGame(void)
             if (!gTitlescreen.animPhase)
             {
                 gTitlescreen.animPhase = 1;
-                CopyBgTilesRect((void *)(OBJ_VRAM0 + 0x1E0 + gTitlescreen.menuCursorIndex * 0x800), gTempGfxBuffer, 8, 2);
-                CopyBgTilesRect((void *)(OBJ_VRAM0 + 0x61E0), (void *)(OBJ_VRAM0 + 0x1E0 + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
+                CopyBgTilesRect((void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), gTempGfxBuffer, 8, 2);
+                CopyBgTilesRect((void *)OBJ_TILE_ADDR(TILE_INDEX(1, 8, 15)), (void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
             }
             else
             {
                 gTitlescreen.animPhase = 0;
-                CopyBgTilesRect(gTempGfxBuffer, (void *)(OBJ_VRAM0 + 0x1E0 + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
+                CopyBgTilesRect(gTempGfxBuffer, (void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
             }
         }
 
