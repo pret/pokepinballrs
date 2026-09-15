@@ -427,7 +427,7 @@ void DrawSapphireSeedotAndBasketSprites(void)
         else
             group->baseY = 200;
 
-        DmaCopy16(3, gSapphireBoardSeedot_Gfx[gCurrentPinballGame->seedotSpriteFrame[j]], OBJ_TILE_ADDR(TILE_INDEX(0, 15, 1)) + j * 0x180, 0x160);
+        DmaCopy16(3, gSapphireBoardSeedot_Gfx[gCurrentPinballGame->seedotSpriteFrame[j]], OBJ_TILE_ADDR(TILE_INDEX(0, 15, 1 + 12 * j)), 0x160);
         index = gCurrentPinballGame->seedotOamFramesetIndex[j];
         for (i = 0; i < 2; i++)
         {
@@ -748,7 +748,7 @@ void UpdateSapphireHatchMachine(void)
             }
 
             index = gSplashEffectTileIndices[gCurrentPinballGame->splashEffectFrameIndex[i]][0];
-            DmaCopy16(3, &gHatchMachineSparkleFx_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 0, 5)) + i * 0x100, 0x100);
+            DmaCopy16(3, &gHatchMachineSparkleFx_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 0, 5 + 8 * i)), 0x100);
             group->baseX = gSplashEffectPositions[gCurrentPinballGame->splashEffectPositionIndex[i]].x - gCurrentPinballGame->cameraXOffset;
             group->baseY = gSplashEffectPositions[gCurrentPinballGame->splashEffectPositionIndex[i]].y - gCurrentPinballGame->cameraYOffset;
             for (j = 0; j < 3; j++)

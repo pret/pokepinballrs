@@ -820,7 +820,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
                 var0 = (gCurrentPinballGame->globalAnimFrameCounter % 50) / 25;
             }
 
-            DmaCopy16(3, gLotadBumper_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 11, 20)) + i * 0x100, 0x100);
+            DmaCopy16(3, gLotadBumper_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 11, 20 + 8 * i)), 0x100);
         }
 
         DmaCopy16(3, gLotadBumper_Pals[3*gCurrentPinballGame->paletteDimmingIx], OBJ_PLTT_SLOT(PAL_IX_RUBY_BUMPERS), PLTT_SLOT_SIZE);
@@ -848,7 +848,7 @@ void RubyPondTriBumperHandleHitAndDraw(void)
                 var0 = (gCurrentPinballGame->globalAnimFrameCounter % 50) / 25;
             }
 
-            DmaCopy16(3, gChinchouBumper_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 11, 20)) + i * 0x100, 0x100);
+            DmaCopy16(3, gChinchouBumper_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 11, 20 + 8 * i)), 0x100);
         }
 
         DmaCopy16(3, gChinchouBumper_Pals[3*gCurrentPinballGame->paletteDimmingIx], OBJ_PLTT_SLOT(PAL_IX_RUBY_BUMPERS), PLTT_SLOT_SIZE);

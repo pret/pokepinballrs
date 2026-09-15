@@ -870,7 +870,7 @@ void UpdateSphealEntityLogic(void)
             group->baseX = (gCurrentPinballGame->sphealPositionQ8[i].x / 256) - (gCurrentPinballGame->cameraXOffset + 12);
             group->baseY = (gCurrentPinballGame->sphealPositionQ8[i].y / 256) - (gCurrentPinballGame->cameraYOffset + 14);
 
-            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 5)) + i * 0x120, 0x120);
+            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 5 + 9 * i)), 0x120);
             for (j = 0; j < SPHEAL_SPRITE_SEGMENTS; j++)
             {
                 oamSimple = &group->oam[j];
@@ -931,7 +931,7 @@ void UpdateSphealEntityLogic(void)
             group->baseX = (gCurrentPinballGame->sphealPositionQ8[i].x / 256) - (gCurrentPinballGame->cameraXOffset + 12);
             group->baseY = (gCurrentPinballGame->sphealPositionQ8[i].y / 256) - (gCurrentPinballGame->cameraYOffset + 14);
 
-            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 23)) + i * 0x120, 0x120);
+            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 23 + 9 * i)), 0x120);
             for (j = 0; j < SPHEAL_SPRITE_SEGMENTS; j++)
             {
                 oamSimple = &group->oam[j];

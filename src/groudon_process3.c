@@ -1344,7 +1344,7 @@ void UpdateGroudonFieldEntities(void)
             }
 
             frameIx = gCurrentPinballGame->boulderSpriteFrame[i];
-            DmaCopy16(3, gGroudonBoardBoulders_Gfx[frameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 29)) + i * 0x300, 0x300);
+            DmaCopy16(3, gGroudonBoardBoulders_Gfx[frameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 29 + i * 24)) , 0x300);
 
             group->baseX = (gCurrentPinballGame->boulderGroundPosition[i].x / 10) + i - gCurrentPinballGame->cameraXOffset;
             group->baseY = (gCurrentPinballGame->boulderFallHeight[i] / 10) + (gCurrentPinballGame->boulderGroundPosition[i].y / 10) - gCurrentPinballGame->cameraYOffset;

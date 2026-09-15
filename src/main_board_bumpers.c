@@ -403,7 +403,7 @@ void HandleRubyBumperHit(void)
                 index = ((gCurrentPinballGame->globalAnimFrameCounter + (i * 10)) % 30) / 15;
             }
 
-            DmaCopy16(3, &gPondBumper_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 29)) + i * 0x200, 0x200);
+            DmaCopy16(3, &gPondBumper_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 29 + i * 16)), 0x200);
 
             group->baseX = gCurrentPinballGame->rubyBumperLogicPosition[i].x / 10 - gCurrentPinballGame->cameraXOffset - 8;
             group->baseY = gCurrentPinballGame->rubyBumperLogicPosition[i].y / 10 - gCurrentPinballGame->cameraYOffset - 10;

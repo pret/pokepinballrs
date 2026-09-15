@@ -1085,6 +1085,7 @@ void InitWasCaughtBanner(void)
     {
         if (gCaughtTextChars[i] == ' ')
         {
+            //TILE_INDEX(1, 6, 20 + 2 * i)
             DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + (i + 10) * 0x40, 0x40);
         }
         else

@@ -440,7 +440,7 @@ void DrawRubySideBumperSprites(void)
     for (i = 0; i < SIDE_COUNT; i++)
     {
         index = gLinooneBumperGfxFrameIndices[gCurrentPinballGame->linooneSideBumperAnimPhase[i]][0];
-        DmaCopy16(3, gLinooneBumperGfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 10, 17)) + i * 0x100, 0x100);
+        DmaCopy16(3, gLinooneBumperGfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 10, 17 + 8 * i)), 0x100);
         group = &gMain.spriteGroups[SG_RUBY_LINOONE_LEFT + i];
         if (group->active)
         {

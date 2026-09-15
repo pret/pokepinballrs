@@ -1975,7 +1975,7 @@ void PrintDexDescription(s16 species, u32 page)
         var0 = 0;
     }
 
-    DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,6,0)) + 0x400 , 3*BG_SCREEN_SIZE);
+    DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,7,0)), 3*BG_SCREEN_SIZE);
 }
 
 void BlitGlyphToTileBuffer(s32 arg0, s32 arg1, s32 arg2) {

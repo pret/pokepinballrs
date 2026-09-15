@@ -1210,7 +1210,7 @@ void UpdateKyogreFieldEntities(void)
             }
         }
 
-        DmaCopy16(3, gKyogreWhirlpoolTrap_Gfx[index], (OBJ_TILE_ADDR(TILE_INDEX(0, 5, 9)) + i * 0x200), 0x200);
+        DmaCopy16(3, gKyogreWhirlpoolTrap_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 5, 9 + i * 16)), 0x200);
         if (group->active)
         {
             if (gCurrentPinballGame->vortexEntityState[i] > KYOGRE_WHIRLPOOL_PHASE_INIT)
