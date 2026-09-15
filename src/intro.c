@@ -818,7 +818,7 @@ void IntroScene3Treecko_20_LoadTreeckoFlipperBall(void)
     DmaCopy16(3, gIntroScene3Treecko_BG3Tilemap, BG_TILE_ADDR(TILE_INDEX(3,14,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene3Treecko_BG1TilemapA, gBG0TilemapBuffer, BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene3Treecko_BG1TilemapB, gIntroScene3Treecko_AltBG1TilemapBuffer, BG_SCREEN_SIZE);
-    DmaCopy16(3, gIntroScene3TreeckoSprites_Gfx, BG_VRAM, 0x6C00);
+    DmaCopy16(3, gIntroScene3TreeckoSprites_Gfx, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 0x6C00);
     DmaCopy16(3, gIntroScene3Treecko_Pal, BG_PLTT_SLOT(PAL_IX_0), 7*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene3TreeckoTreecko_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x2000);
     DmaCopy16(3, gIntroScene3Treecko_Pal, OBJ_PLTT_SLOT(PAL_IX_0), 7*PLTT_SLOT_SIZE);
@@ -1351,7 +1351,7 @@ void IntroScene6Chinchou_38_LoadChinchou(void)
     DmaCopy16(3, gIntroScene6Chinchou_BG1Tiles, BG_TILE_ADDR(TILE_INDEX(3,4,0)), 4*BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene6Chinchou_BG2Tilemap, BG_TILE_ADDR(TILE_INDEX(3,12,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene6Chinchou_BG3Tilemap, BG_TILE_ADDR(TILE_INDEX(3,14,0)), BG_SCREEN_SIZE);
-    DmaCopy16(3, gIntroScene6ChinchouSprites_Gfx, BG_VRAM, 0x6400);
+    DmaCopy16(3, gIntroScene6ChinchouSprites_Gfx, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 0x6400);
     DmaCopy16(3, gIntroScene6Chinchou_Pal, BG_PLTT_SLOT(PAL_IX_0), 4*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene6ChinchouStars_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x1000);
     DmaCopy16(3, gIntroScene6Chinchou_Pal, OBJ_PLTT_SLOT(PAL_IX_0), 4*PLTT_SLOT_SIZE);
@@ -1582,7 +1582,7 @@ void IntroScene7Parade_43_LoadPinkYellowBackground(void)
     DmaCopy16(3, gIntroScene7Parade_BG1Tiles, BG_TILE_ADDR(TILE_INDEX(3,0,0)), 4*BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene7Parade_BG2Tiles, BG_TILE_ADDR(TILE_INDEX(3,8,0)), 4*BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene7Parade_BG3Tilemap, BG_TILE_ADDR(TILE_INDEX(1,14,0)), BG_SCREEN_SIZE);
-    DmaCopy16(3, gIntroScene7ParadeSprites_Gfx, BG_VRAM, 0x5000);
+    DmaCopy16(3, gIntroScene7ParadeSprites_Gfx, BG_TILE_ADDR(TILE_INDEX(0,0,0)), 0x5000);
     DmaCopy16(3, gIntroScene7Parade_Pal, BG_PLTT_SLOT(PAL_IX_0), 11*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene7ParadeWailmer_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x2000);
     DmaCopy16(3, gIntroScene7Parade_Pal, OBJ_PLTT_SLOT(PAL_IX_0), 11*PLTT_SLOT_SIZE);
@@ -1851,7 +1851,7 @@ void IntroScene8WailmerLaunch_51_LoadWailmerBlastBackground(void)
     REG_BG2CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(0) | BGCNT_PRIORITY(3) | BGCNT_CHARBASE(1);
     REG_DISPCNT |= DISPCNT_BG2_ON;
 
-    DmaCopy16(3, gIntroScene8WailmerLaunch_BG2Tilemap, BG_VRAM, BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene8WailmerLaunch_BG2Tilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene8WailmerLaunchExplosion_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0x3400);
     DmaCopy16(3, gIntroScene8WailmerLaunch_Pal, BG_PLTT_SLOT(PAL_IX_0), 10*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene8WailmerLaunch_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x2C00);
@@ -2144,7 +2144,7 @@ void IntroScene9BallFlight_59_LoadSkySpeedOrbs(void)
     REG_BG3CNT = BGCNT_TXT256x256 | BGCNT_SCREENBASE(0) | BGCNT_PRIORITY(3) | BGCNT_CHARBASE(1);
     REG_DISPCNT |= DISPCNT_BG3_ON;
 
-    DmaCopy16(3, gIntroScene9BallFlight_BG3Tilemap, BG_VRAM, BG_SCREEN_SIZE);
+    DmaCopy16(3, gIntroScene9BallFlight_BG3Tilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gIntroScene9BallFlightClouds_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0x2400);
     DmaCopy16(3, gIntroScene9BallFlight_Pal, BG_PLTT_SLOT(PAL_IX_0), 2*PLTT_SLOT_SIZE);
     DmaCopy16(3, gIntroScene9BallFlightall_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x7000);
