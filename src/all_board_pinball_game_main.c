@@ -318,7 +318,7 @@ void InitPinballGameState(void)
             gCurrentPinballGame->chargeIndicatorXOffset = 0;
             gCurrentPinballGame->chargeIndicatorYOffset = 120;
             gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
-            DmaCopy16(3, gDxModePikachuObjTiles, (void *)OBJ_VRAM0 + 0x600, 0x180);
+            DmaCopy16(3, gDxModePikachuObjTiles, OBJ_TILE_ADDR(TILE_INDEX(0, 1, 16)), 0x180);
             gCurrentPinballGame->outLanePikaPosition = PIKA_BOTH_SIDES;
             gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
             gCurrentPinballGame->pichuEntranceTimer = 1;
@@ -690,7 +690,7 @@ void IdleGameFrameUpdate(void)
             gBG0TilemapBuffer[0x34A + i] = 0x1FF;
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x340], (void *)0x6002680, 0x40);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x340], BG_TILE_ADDR(TILE_INDEX(0, 9, 20)), 0x40);
 }
 
 void BonusFieldFrameUpdate(void)
@@ -834,7 +834,7 @@ void IdleBonusFieldFrameUpdate(void)
             gBG0TilemapBuffer[0x32B + i] = 0x1FF;
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x320], (void *)0x6002640, 0x40);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x320], BG_TILE_ADDR(TILE_INDEX(0, 9, 18)), 0x40);
 }
 
 void PinballGame_State3_4B20C(void)

@@ -117,7 +117,7 @@ void DebugMenu_RenderAndHandleInput(void)
     for (i = 0x340; i < 0x380; i++)
         gBG0TilemapBuffer[i] += 0xC100;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
     if (JOY_HELD(A_BUTTON))
         ClearDebugTextDisplay();
 }
@@ -156,7 +156,7 @@ void GameOverAnimation(void)
 
     if (gMain.animationTimer == 3600)
     {
-        DmaCopy16(3, gMainBoardGameOverText_Gfx, (void *)0x06015800, 0x400);
+        DmaCopy16(3, gMainBoardGameOverText_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x400);
         gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT]->active = TRUE;
         for (i = 0; i < 8; i++)
         {
@@ -206,7 +206,7 @@ void EndOfBallSequence(void)
             gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_0].active = TRUE;
             gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_1].active = TRUE;
             gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_2].active = TRUE;
-            DmaCopy16(3, gMainBoardEndOfBall_Gfx, (void *)0x6015800, 0x2800);
+            DmaCopy16(3, gMainBoardEndOfBall_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
             if (gMain.selectedField == FIELD_RUBY)
             {
                 DmaCopy16(3, gEndOfBallBonus_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
@@ -243,7 +243,7 @@ void EndOfBallSequence(void)
             gCurrentPinballGame->travelModeCompletionCount = 0;
             gCurrentPinballGame->slotsPlayedCount = 0;
             gCurrentPinballGame->bonusPikaSaverCount = 0;
-            gCurrentPinballGame->bonusMultiplier = 0;
+            gCurrentPinballGame->endOfBallBonusMultiplier = 0;
             InitBallState(0);
             SetBoardCollisionConfig(0);
             gCurrentPinballGame->boardCollisionConfigChanged = FALSE;
@@ -455,14 +455,14 @@ void BallSaverAnimation(void)
             gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM].active = TRUE;
             if (gMain.selectedField == FIELD_RUBY)
             {
-                DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
-                DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, (void *)0x06016800, 0x800);
-                DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, (void *)0x06017000, 0xC0);
+                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
+                DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x800);
+                DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 12, 0)), 0xC0);
                 DmaCopy16(3, gBallSaver_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
             }
             else
             {
-                DmaCopy16(3, gMainBoardBallSave_Gfx, (void *)0x06015800, 0x2400);
+                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                 DmaCopy16(3, gBallSaver_Sapphire_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
             }
 
@@ -503,7 +503,7 @@ void ClearDebugTextDisplay(void)
     for (i = 0x340; i < 0x380; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
 }
 
 void DebugMoveBallPosition(void)
@@ -588,6 +588,7 @@ void EndOfBallBonusSummary(void)
     {
         for (j = 0; j < EOB_SUMMARY_CHARS_PER_LINE; j++)
         {
+            s16 charix;
             s16 var1 = gCurrentPinballGame->bonusTextContent[i][j];
             if (var1 == 95)
                 var1 = 48;
@@ -598,11 +599,13 @@ void EndOfBallBonusSummary(void)
 
             if (gCurrentPinballGame->bonusTextRevealMask[i][j])
             {
-                DmaCopy16(3, gBonusSummaryCharTiles[var1], (void *)0x06016000 + (j + i * 22 + 0xA0) * 0x20, 0x20);
+                //OBJ_TILE_ADDR(TILE_INDEX(1, 13, 22 * i + j))
+                DmaCopy16(3, gBonusSummaryCharTiles[var1], OBJ_TILE_ADDR(TILE_INDEX(1, 8, 0)) + (j + i * 22 + 160) * 0x20, 0x20);
             }
             else
             {
-                DmaCopy16(3, gBonusSummaryCharTiles[48], (void *)0x06016000 + (j + i * 22 + 0xA0) * 0x20, 0x20);
+                //OBJ_TILE_ADDR(TILE_INDEX(1, 13, 22 * i + j))
+                DmaCopy16(3, gBonusSummaryCharTiles[48], OBJ_TILE_ADDR(TILE_INDEX(1, 8, 0)) + (j + i * 22 + 160) * 0x20, 0x20);
             }
         }
     }
@@ -901,7 +904,7 @@ void EndOfBallBonusSummary(void)
             // Line 1 score display: bonus multiplier
             for (i = 0; i < 10; i++)
                 scoreDigit[i] = 0;
-            value = gCurrentPinballGame->bonusMultiplier;
+            value = gCurrentPinballGame->endOfBallBonusMultiplier;
             scoreDigit[5] = DIGIT_100K(value);
             scoreDigit[4] = DIGIT_10K(value);
             scoreDigit[3] = DIGIT_1K(value) + DIGIT_TILE_WITH_COMMA_OFFSET;
@@ -918,7 +921,7 @@ void EndOfBallBonusSummary(void)
                 scoreDigit[i] = 0;
             value = 0;
             scoreHi = 0;
-            while (gCurrentPinballGame->bonusMultiplier != 0)
+            while (gCurrentPinballGame->endOfBallBonusMultiplier != 0)
             {
                 // Note: tallied in a loop, rather than a base multiplication to prevent integer overflow.
                 value += gCurrentPinballGame->bonusSubtotal;
@@ -927,7 +930,7 @@ void EndOfBallBonusSummary(void)
                     value -= (2 * SCORE_HI_STEP);
                     scoreHi += 2;
                 }
-                gCurrentPinballGame->bonusMultiplier--;
+                gCurrentPinballGame->endOfBallBonusMultiplier--;
             }
 
             if (value / SCORE_HI_STEP > 0)

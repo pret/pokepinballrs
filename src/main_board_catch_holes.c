@@ -31,7 +31,7 @@ void UpdateShopEntryAnimation(s16 arg0)
         {
             gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
-            DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
+            DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x940);
             DmaCopy16(3, gShopNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
         }
 
@@ -76,7 +76,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
 
             DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(PAL_IX_SHOP_UI), PLTT_SLOT_SIZE);
-            DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_CHAR_SCREEN_ADDR(0,4), 0xC40);
+            DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
 
             gMain.bgOffsets[0].yOffset = 80;
             gMain.shopPanelSlideOffset = 0;
@@ -176,7 +176,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             else
                 gCurrentPinballGame->shopBgAnimFrame = 0;
 
-            DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2], BG_CHAR_SCREEN_ADDR(0,4), 0xC40);
+            DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2], BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
             gMain.bgOffsets[0].yOffset = 80 - (4 * gMain.shopPanelSlideOffset);
 
             if (gCurrentPinballGame->catchModeEventTimer != 0)
@@ -341,7 +341,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->bannerSlideTimer = 50;
                 gCurrentPinballGame->bannerSlideVelocity = 0;
 
-                DmaCopy16(3, gModeBannerTilemaps[3], OBJ_VRAM1 + 0x1800, 0x2400);
+                DmaCopy16(3, gModeBannerTilemaps[3], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                 DmaCopy16(3, gModeBanner_Pals[3], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
 
                 gMain.blendControl = 206;
@@ -357,7 +357,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             {
                 gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
-                DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_VRAM1 + 0x1C00, 0x940);
+                DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x940);
                 DmaCopy16(3, gEvoNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
             }
 
@@ -399,7 +399,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->shopAnimSlideTimer = 15;
                 gMain.shopPanelActive = TRUE;
 
-                DmaCopy16(3, &gEvoModeBG0_0_Tilemap, BG_CHAR_SCREEN_ADDR(0,4), 0xC40);
+                DmaCopy16(3, &gEvoModeBG0_0_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
             }
 
             if (gCurrentPinballGame->shopEntryTimer <= 144)
@@ -632,7 +632,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                         gCurrentPinballGame->shopBgAnimFrame = 0;
                 }
 
-                DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_CHAR_SCREEN_ADDR(0,4), 0xC40);
+                DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
                 gMain.bgOffsets[0].yOffset = 80 - (gMain.shopPanelSlideOffset * 4);
 
                 if (gCurrentPinballGame->catchModeEventTimer != 0)
@@ -705,10 +705,10 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_ARROWS]->active = FALSE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = FALSE;
 
-                gCurrentPinballGame->evoBlinkTimer = 0;
-                gCurrentPinballGame->catchLights[0] = 4;
-                gCurrentPinballGame->catchLights[1] = 4;
-                gCurrentPinballGame->catchLights[2] = 4;
+                gCurrentPinballGame->modeProgressBlinkTimer = 0;
+                gCurrentPinballGame->modeProgressLights[MODE_LAMP_LEFT] = MODE_PROGRESS_LAMP_EVO_UNLIT;
+                gCurrentPinballGame->modeProgressLights[MODE_LAMP_CENTER] = MODE_PROGRESS_LAMP_EVO_UNLIT;
+                gCurrentPinballGame->modeProgressLights[MODE_LAMP_RIGHT] = MODE_PROGRESS_LAMP_EVO_UNLIT;
 
                 HidePokemonNameDisplay();
                 gCurrentPinballGame->activeFxType = FX_NONE;
@@ -816,11 +816,11 @@ void TransitionToBonusField(void)
 
     if (gCurrentPinballGame->bonusReturnState == BONUS_RETURN_LOCATION_CENTER_KICKOUT)
     {
-        gCurrentPinballGame->evoItemCount = 0;
-        gCurrentPinballGame->evoBlinkTimer = 0;
-        gCurrentPinballGame->catchLights[0] = 0;
-        gCurrentPinballGame->catchLights[1] = 0;
-        gCurrentPinballGame->catchLights[2] = 0;
+        gCurrentPinballGame->monProgressTowardsBonusCount = 0;
+        gCurrentPinballGame->modeProgressBlinkTimer = 0;
+        gCurrentPinballGame->modeProgressLights[MODE_LAMP_LEFT] = MODE_PROGRESS_LAMP_BALL_UNLIT;
+        gCurrentPinballGame->modeProgressLights[MODE_LAMP_CENTER] = MODE_PROGRESS_LAMP_BALL_UNLIT;
+        gCurrentPinballGame->modeProgressLights[MODE_LAMP_RIGHT] = MODE_PROGRESS_LAMP_BALL_UNLIT;
     }
     m4aMPlayAllStop();
     DisableVBlankInterrupts();

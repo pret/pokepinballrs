@@ -120,8 +120,8 @@ void DrawRubyProgressDigits(void)
     const u8 **src;
     const u8 **dest;
 
-    var0 = LEAD_DIGIT_10S(gCurrentPinballGame->progressLevel);
-    var1 = DIGIT_1S(gCurrentPinballGame->progressLevel);
+    var0 = LEAD_DIGIT_10S(gCurrentPinballGame->bonusMultTracker);
+    var1 = DIGIT_1S(gCurrentPinballGame->bonusMultTracker);
 
     src = gRubyProgressDigitTilePointers[var0];
     dest = gRubyProgressDigitTilePointers[10];
@@ -142,22 +142,23 @@ void AnimateRubyTrapIndicator(void)
     DmaCopy16(3, src[1], dest[1], 0x40);
 }
 
+//This is the section that sits under the picture, showing mons till next bonus, "Catch!", and "EVO"
 void AnimateRubyCatchLightBlink(void)
 {
     s16 i;
     const u8 **src;
     const u8 **dest;
 
-    if (gCurrentPinballGame->evoBlinkTimer)
+    if (gCurrentPinballGame->modeProgressBlinkTimer)
     {
-        gCurrentPinballGame->catchLights[gCurrentPinballGame->evoCatchLightSlot1] = 1 - (gCurrentPinballGame->evoBlinkTimer % 36) / 18;
-        gCurrentPinballGame->catchLights[gCurrentPinballGame->evoCatchLightSlot2] = gCurrentPinballGame->catchLights[gCurrentPinballGame->evoCatchLightSlot1];
-        gCurrentPinballGame->evoBlinkTimer--;
+        gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoCatchLightSlot1] = MODE_PROGRESS_LAMP_BALL_LIT - (gCurrentPinballGame->modeProgressBlinkTimer % 36) / 18;
+        gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoCatchLightSlot2] = gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoCatchLightSlot1];
+        gCurrentPinballGame->modeProgressBlinkTimer--;
     }
 
     for (i = 0; i < 3; i++)
     {
-        src = gRubyCatchLightTilePointers[i][gCurrentPinballGame->catchLights[i]];
+        src = gRubyCatchLightTilePointers[i][gCurrentPinballGame->modeProgressLights[i]];
         dest = gRubyCatchLightTilePointers[i][6];
         DmaCopy16(3, src[0], dest[0], 0x40);
         DmaCopy16(3, src[1], dest[1], 0x40);

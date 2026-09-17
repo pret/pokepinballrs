@@ -139,7 +139,7 @@ void DrawPikachuSpinner(void)
     if (gCurrentPinballGame->pikachuSpinFrame != gCurrentPinballGame->pikachuSpinPrevFrame)
     {
         gCurrentPinballGame->pikachuSpinPrevFrame = gCurrentPinballGame->pikachuSpinFrame;
-        DmaCopy16(3, gMainBoardPikaSpinner_Gfx[index], (void *)0x06010780, 0x120);
+        DmaCopy16(3, gMainBoardPikaSpinner_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 28)), 0x120);
     }
 
     for (i = 0; i < 4; i++)

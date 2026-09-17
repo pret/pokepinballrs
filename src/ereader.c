@@ -78,10 +78,10 @@ void LoadEReaderGraphics(void)
     DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(PAL_IX_0), 2*PLTT_SLOT_SIZE);
     DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(PAL_IX_2), PLTT_SLOT_SIZE);
     DmaCopy16(3, gEReaderBackground_Gfx,   gTempGfxBuffer,         6*BG_SCREEN_SIZE);
-    DmaCopy16(3, gEReaderText_Tilemap,    BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
-    DmaCopy16(3, gEReaderOverlay_Tilemap, BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gEReaderText_Tilemap,    BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gEReaderOverlay_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,  OBJ_PLTT_SLOT(PAL_IX_0), 6*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gPokedexSprites_Gfx,   OBJ_VRAM0,         0x6C20);
+    DmaCopy16(3, gPokedexSprites_Gfx,   OBJ_TILE_ADDR(TILE_INDEX(0,0,0)),         0x6C20);
 
     InitEReaderTextState();
     gEReaderTextCharIndex = 0;
@@ -90,7 +90,7 @@ void LoadEReaderGraphics(void)
     gEReaderTextPageIndex = 0;
     ClearEReaderTextRows();
 
-    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
+    DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 6*BG_SCREEN_SIZE);
 
     UpdateEReaderSprites();
     m4aSongNumStart(MUS_EREADER);
@@ -157,7 +157,7 @@ void Ereader_ShowInstructions(void)
         gMain.subState = EREADER_STATE_RETURN_TO_MENU;
     }
     UpdateEReaderSprites();
-    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
+    DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 6*BG_SCREEN_SIZE);
 }
 
 void Ereader_AnimateLinkCable(void)
@@ -293,7 +293,7 @@ void Ereader_ShowLinkTimeout(void)
         }
     }
     UpdateEReaderSprites();
-    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
+    DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 6*BG_SCREEN_SIZE);
 }
 
 void Ereader_CloseSuccessfulTransmission(void)
@@ -342,10 +342,10 @@ void Ereader_ShowSuccessPopup(void)
     DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(PAL_IX_0),   2*PLTT_SLOT_SIZE);
     DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(PAL_IX_2),   PLTT_SLOT_SIZE);
     DmaCopy16(3, gEReaderBackground_Gfx,     gTempGfxBuffer,    6*BG_SCREEN_SIZE);
-    DmaCopy16(3, gEReaderText_Tilemap,       BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
-    DmaCopy16(3, gEReaderOverlay_Tilemap,    BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gEReaderText_Tilemap,       BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gEReaderOverlay_Tilemap,    BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,       OBJ_PLTT_SLOT(PAL_IX_0),  6*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gPokedexSprites_Gfx,        OBJ_VRAM0,         0x6C20);
+    DmaCopy16(3, gPokedexSprites_Gfx,        OBJ_TILE_ADDR(TILE_INDEX(0,0,0)),         0x6C20);
 
     InitEReaderTextState();
     gEReaderTextCharIndex = 0;
@@ -354,7 +354,7 @@ void Ereader_ShowSuccessPopup(void)
     gEReaderTextPageIndex = gEReaderCardStartPages[gEReaderCardIndex];
     ClearEReaderTextRows();
 
-    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
+    DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 6*BG_SCREEN_SIZE);
 
     UpdateEReaderSprites();
     m4aSongNumStart(MUS_EREADER);
@@ -409,7 +409,7 @@ void Ereader_ShowPrizeText(void)
         }
     }
     UpdateEReaderSprites();
-    DmaCopy16(3, gTempGfxBuffer, BG_CHAR_ADDR(1), 6*BG_SCREEN_SIZE);
+    DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 6*BG_SCREEN_SIZE);
 }
 
 void Ereader_FadeScreenToMenu(void)

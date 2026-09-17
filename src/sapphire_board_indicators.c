@@ -89,8 +89,8 @@ void DrawSapphireProgressDigits(void)
     const u8 **src;
     const u8 **dest;
 
-    var0 = LEAD_DIGIT_10S(gCurrentPinballGame->progressLevel);
-    var1 = DIGIT_1S(gCurrentPinballGame->progressLevel);
+    var0 = LEAD_DIGIT_10S(gCurrentPinballGame->bonusMultTracker);
+    var1 = DIGIT_1S(gCurrentPinballGame->bonusMultTracker);
     if (gCurrentPinballGame->hudSpriteBaseY > 36)
     {
         src = gSapphireProgressDigitTilePtrs[var0];
@@ -174,16 +174,16 @@ void AnimateSapphireCatchLightBlink(void)
     const u8 **src;
     const u8 **dest;
 
-    if (gCurrentPinballGame->evoBlinkTimer)
+    if (gCurrentPinballGame->modeProgressBlinkTimer)
     {
-        gCurrentPinballGame->catchLights[gCurrentPinballGame->evoCatchLightSlot1] = 1 - (gCurrentPinballGame->evoBlinkTimer % 36) / 18;
-        gCurrentPinballGame->catchLights[gCurrentPinballGame->evoCatchLightSlot2] = gCurrentPinballGame->catchLights[gCurrentPinballGame->evoCatchLightSlot1];
-        gCurrentPinballGame->evoBlinkTimer--;
+        gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoCatchLightSlot1] = MODE_PROGRESS_LAMP_BALL_LIT - (gCurrentPinballGame->modeProgressBlinkTimer % 36) / 18;
+        gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoCatchLightSlot2] = gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoCatchLightSlot1];
+        gCurrentPinballGame->modeProgressBlinkTimer--;
     }
 
     for (i = 0; i < 3; i++)
     {
-        src = gSapphireCatchLightTilePtrs[i][gCurrentPinballGame->catchLights[i]];
+        src = gSapphireCatchLightTilePtrs[i][gCurrentPinballGame->modeProgressLights[i]];
         dest = gSapphireCatchLightTilePtrs[i][6];
         DmaCopy16(3, src[0], dest[0], 0x40);
         DmaCopy16(3, src[1], dest[1], 0x40);

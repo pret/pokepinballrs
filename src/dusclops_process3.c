@@ -143,7 +143,7 @@ void UpdateFrameProcess3_BoardLogic_DusclopsBoard(void)
                 gCurrentPinballGame->stageTimer = 0;
                 gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
                 gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-                DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_VRAM1+0x1800, 8192);
+                DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
                 gCurrentPinballGame->bannerSlideYOffset = 136;
             }
             break;
@@ -566,7 +566,7 @@ void DuskullPhase_ProcessGraphics() {
     for (i = 0; i < DUSKULL_CONCURRENT_MAX; i++)
     {
         s16 spriteVariant = gCurrentPinballGame->minionSpriteVariant[i];
-        DmaCopy16(3, gDusclopsBoardDuskull_Gfx + spriteVariant * 0x280, OBJ_VRAM0 + 0x920 + i * 0x280, 0x280);
+        DmaCopy16(3, gDusclopsBoardDuskull_Gfx + spriteVariant * 0x280, OBJ_TILE_ADDR(TILE_INDEX(0, 2, 9 + 20 * i)), 0x280);
         oamIx = gCurrentPinballGame->minionOamIx[i];
         spriteGroup = &gMain.spriteGroups[SG_DUSKULL_ENTITY_BASE + i];
 
@@ -1008,7 +1008,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
         break;
     } //End switch
 
-    DmaCopy16(3 , gDusclopsBoardDusclops_Gfx + tileOffset * 1024, (void *)OBJ_VRAM0+0x10a0, BG_SCREEN_SIZE);
+    DmaCopy16(3 , gDusclopsBoardDusclops_Gfx + tileOffset * 1024, OBJ_TILE_ADDR(TILE_INDEX(0, 4, 5)), BG_SCREEN_SIZE);
 
     gCurrentPinballGame->bossCollisionX = ((gCurrentPinballGame->bossPositionX / 10) * 2) + 16;
     gCurrentPinballGame->bossCollisionY = ((gCurrentPinballGame->bossPositionY / 10) * 2) + 16;
@@ -1058,7 +1058,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
             s16 i;
             u8 r1;
             r1 = gMain.systemFrameCount % 4;
-            DmaCopy16(3 , gDusclopsBoardDusclopsAppearFx_Gfx + r1 / 2 * 0x600, (void *)OBJ_VRAM0 + 0x1aa0, 0xc00);
+            DmaCopy16(3 , gDusclopsBoardDusclopsAppearFx_Gfx + r1 / 2 * 0x600, OBJ_TILE_ADDR(TILE_INDEX(0, 6, 21)), 0xc00);
 
             for (i = 0; i < 2; i++)
             {
@@ -1090,7 +1090,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
             else
                 tileOffset = 2;
 
-            DmaCopy16(3 , gDusclopsBoardDusclopsBallGrabSwirl_Gfx + tileOffset * 0x200,(void *)OBJ_VRAM0+0x18a0, 0x200);
+            DmaCopy16(3 , gDusclopsBoardDusclopsBallGrabSwirl_Gfx + tileOffset * 0x200,OBJ_TILE_ADDR(TILE_INDEX(0, 6, 5)), 0x200);
         }
         else
         {

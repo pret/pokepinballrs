@@ -32,7 +32,7 @@ void UpdateChikoritaAttackAnimation(void)
         if (gCurrentPinballGame->chikoritaProjectileTimer >= 27 && gCurrentPinballGame->chikoritaProjectileTimer < 47)
         {
             index = (gCurrentPinballGame->chikoritaProjectileTimer - 27) / 5;
-            DmaCopy16(3, gChikoritaExplosionTiles[index], (void *)0x06014280, 0x100);
+            DmaCopy16(3, gChikoritaExplosionTiles[index], OBJ_TILE_ADDR(TILE_INDEX(1, 0, 20)), 0x100);
             group->baseX = 176 - gCurrentPinballGame->cameraXOffset;
         }
         else
@@ -46,7 +46,7 @@ void UpdateChikoritaAttackAnimation(void)
         if (gCurrentPinballGame->chikoritaProjectileTimer >= 100 && gCurrentPinballGame->chikoritaProjectileTimer < 120)
         {
             index = (gCurrentPinballGame->chikoritaProjectileTimer - 100) / 5;
-            DmaCopy16(3, gChikoritaExplosionTiles[index], (void *)0x06014280, 0x100);
+            DmaCopy16(3, gChikoritaExplosionTiles[index], OBJ_TILE_ADDR(TILE_INDEX(1, 0, 20)), 0x100);
             group->baseX = 32 - gCurrentPinballGame->cameraXOffset;
         }
         else
@@ -80,7 +80,7 @@ void UpdateChikoritaAttackAnimation(void)
                 m4aSongNumStart(SE_CHIKORITA_LEAF_BLADE);
 
             index = (gCurrentPinballGame->chikoritaProjectileTimer % 16) / 4;
-            DmaCopy16(3, gChikoritaProjectileTiles[index], (void *)0x06014200, 0x80);
+            DmaCopy16(3, gChikoritaProjectileTiles[index], OBJ_TILE_ADDR(TILE_INDEX(1, 0, 16)), 0x80);
             var0 = (gCurrentPinballGame->chikoritaProjectileTimer << 0x10) / 90;
             gCurrentPinballGame->chikoritaProjectileVelX -= 2;
             gCurrentPinballGame->chikoritaProjectileX += gCurrentPinballGame->chikoritaProjectileVelX;
@@ -168,14 +168,14 @@ void AnimateChikoritaSprite(void)
         else
             gCurrentPinballGame->chikoritaFlashActive = FALSE;
 
-        DmaCopy16(3, gRubyChikoritaEntity[index], (void *)0x06012720, 0x300);
+        DmaCopy16(3, gRubyChikoritaEntity[index], OBJ_TILE_ADDR(TILE_INDEX(0, 9, 25)), 0x300);
     }
     else
     {
         index = (gMain.systemFrameCount % 50) / 25;
         if (gCurrentPinballGame->randomSpriteVariantSeed == 1)
         {
-            DmaCopy16(3, gRubyChikoritaEntity[index], (void *)0x06012720, 0x300);
+            DmaCopy16(3, gRubyChikoritaEntity[index], OBJ_TILE_ADDR(TILE_INDEX(0, 9, 25)), 0x300);
         }
     }
 
@@ -310,9 +310,9 @@ void UpdateGulpinBossState(void)
     }
 
     index = gulpinFramesetData[0];
-    DmaCopy16(3, gRubyStageGulpin_Gfx[gulpinFramesetData[2]], (void *)0x06013B80, 0x180);
-    DmaCopy16(3, gRubyStageGulpin_Gfx[gulpinFramesetData[3]], (void *)0x06013A00, 0x180);
-    DmaCopy16(3, gRubyStageGulpin_Gfx[gulpinFramesetData[4]], (void *)0x06013880, 0x180);
+    DmaCopy16(3, gRubyStageGulpin_Gfx[gulpinFramesetData[2]], OBJ_TILE_ADDR(TILE_INDEX(0, 14, 28)), 0x180);
+    DmaCopy16(3, gRubyStageGulpin_Gfx[gulpinFramesetData[3]], OBJ_TILE_ADDR(TILE_INDEX(0, 14, 16)), 0x180);
+    DmaCopy16(3, gRubyStageGulpin_Gfx[gulpinFramesetData[4]], OBJ_TILE_ADDR(TILE_INDEX(0, 14, 4)), 0x180);
     for (i = 0; i < 6; i++)
     {
         oamSimple = &group->oam[i];
@@ -440,7 +440,7 @@ void DrawRubySideBumperSprites(void)
     for (i = 0; i < SIDE_COUNT; i++)
     {
         index = gLinooneBumperGfxFrameIndices[gCurrentPinballGame->linooneSideBumperAnimPhase[i]][0];
-        DmaCopy16(3, gLinooneBumperGfx[index], (void *)0x06012A20 + i * 0x100, 0x100);
+        DmaCopy16(3, gLinooneBumperGfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 10, 17 + 8 * i)), 0x100);
         group = &gMain.spriteGroups[SG_RUBY_LINOONE_LEFT + i];
         if (group->active)
         {
@@ -481,7 +481,7 @@ void DrawRubySideBumperSprites(void)
                 gCurrentPinballGame->bannerSlidePosition = 0;
                 gCurrentPinballGame->bannerSlideTimer = 50;
                 gCurrentPinballGame->bannerSlideVelocity = 0;
-                DmaCopy16(3, gModeBannerTilemaps[4], (void *)0x06015800, 0x2400);
+                DmaCopy16(3, gModeBannerTilemaps[4], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                 DmaCopy16(3, gModeBanner_Pals[4], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
                 gMain.blendControl = 0xCE;
             }

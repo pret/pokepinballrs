@@ -336,8 +336,8 @@ void ProcessRubyCollisionEvent(u8 triggerType, s16* hasCollisionImpact, u16* col
                 // Bonus Multiplier Addition button
                 gCurrentPinballGame->scoreAddedInFrame = SCORE_RUBY_BONUS_MULTIPLIER_BUTTON;
 
-                if (gCurrentPinballGame->progressLevel <= 98)
-                    gCurrentPinballGame->progressLevel++;
+                if (gCurrentPinballGame->bonusMultTracker <= 98)
+                    gCurrentPinballGame->bonusMultTracker++;
             }
             else if (gCurrentPinballGame->ball->positionQ0.x > 91)
             {

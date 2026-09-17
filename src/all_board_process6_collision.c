@@ -787,14 +787,14 @@ u16 CheckCatchTargetCollision(struct Vector16 *ballPosition, u16 *collisionAngle
                         gCurrentPinballGame->creatureHitCount++;
                         if (gCurrentPinballGame->creatureHitCount == 3)
                         {
-                            gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
+                            gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->creatureHitCount - 1] = MODE_PROGRESS_LAMP_CATCH_LIT;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE;
                             gCurrentPinballGame->captureSequenceFrame = 0;
                             gCurrentPinballGame->scoreAddedInFrame = SCORE_JIRACHI_CATCH_HIT;
                         }
                         else
                         {
-                            gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
+                            gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->creatureHitCount - 1] = MODE_PROGRESS_LAMP_CATCH_LIT;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_MON_HIT_IN_CATCH_MODE;
                             gCurrentPinballGame->scoreAddedInFrame = SCORE_JIRACHI_CATCH_HIT;
                         }
@@ -813,14 +813,14 @@ u16 CheckCatchTargetCollision(struct Vector16 *ballPosition, u16 *collisionAngle
                         gCurrentPinballGame->creatureHitCount++;
                         if (gCurrentPinballGame->creatureHitCount == 3)
                         {
-                            gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
+                            gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->creatureHitCount - 1] = MODE_PROGRESS_LAMP_CATCH_LIT;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE;
                             gCurrentPinballGame->captureSequenceFrame = 0;
                             gCurrentPinballGame->scoreAddedInFrame = SCORE_CATCH_HIT;
                         }
                         else
                         {
-                            gCurrentPinballGame->catchLights[gCurrentPinballGame->creatureHitCount - 1] = 3;
+                            gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->creatureHitCount - 1] = MODE_PROGRESS_LAMP_CATCH_LIT;
                             gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_MON_HIT_IN_CATCH_MODE;
                             gCurrentPinballGame->scoreAddedInFrame = SCORE_CATCH_HIT;
                         }

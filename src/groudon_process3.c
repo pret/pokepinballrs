@@ -129,7 +129,7 @@ void InitFrameProcess3_BoardLogic_GroudonBoard(void)
     UpdateGroudonFieldEntities();
     UpdateGroudonEntityLogic();
     RenderGroudonSprites();
-    DmaCopy16(3, gGroudonAttackFx_Gfx, (void *)0x06015800, 0x2000);
+    DmaCopy16(3, gGroudonAttackFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
     AnimateGroudonBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_GROUDON);
     DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
@@ -174,7 +174,7 @@ void UpdateFrameProcess3_BoardLogic_GroudonBoard(void)
             gCurrentPinballGame->stageTimer = 0;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-            DmaCopy16(3, gGroudonBonusClear_Gfx, (void *)0x06015800, 0x2000);
+            DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
             gCurrentPinballGame->bannerSlideYOffset = 136;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
             gCurrentPinballGame->cameraLocked = TRUE;
@@ -216,7 +216,7 @@ void UpdateFrameProcess3_BoardLogic_GroudonBoard(void)
         gCurrentPinballGame->stageTimer = 140;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-        DmaCopy16(3, gGroudonBonusClear_Gfx, (void *)0x06015800, 0x2000);
+        DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
         gCurrentPinballGame->bannerSlideYOffset = 136;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         break;
@@ -1344,7 +1344,7 @@ void UpdateGroudonFieldEntities(void)
             }
 
             frameIx = gCurrentPinballGame->boulderSpriteFrame[i];
-            DmaCopy16(3, gGroudonBoardBoulders_Gfx[frameIx], (void *)0x06010FA0 + i * 0x300, 0x300);
+            DmaCopy16(3, gGroudonBoardBoulders_Gfx[frameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 29 + i * 24)) , 0x300);
 
             group->baseX = (gCurrentPinballGame->boulderGroundPosition[i].x / 10) + i - gCurrentPinballGame->cameraXOffset;
             group->baseY = (gCurrentPinballGame->boulderFallHeight[i] / 10) + (gCurrentPinballGame->boulderGroundPosition[i].y / 10) - gCurrentPinballGame->cameraYOffset;

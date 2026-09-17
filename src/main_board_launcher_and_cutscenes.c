@@ -73,7 +73,7 @@ void AnimateOneUpSprite(void)
                 index = 0;
             }
 
-            DmaCopy16(3, gOneUpBannerSprite_Gfx[index], (void *)0x060152A0, 0x200);
+            DmaCopy16(3, gOneUpBannerSprite_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 4, 21)), 0x200);
         }
         else
         {
@@ -115,7 +115,7 @@ void AnimateOneUpSprite(void)
         if (gCurrentPinballGame->oneUpAnimTimer < 58)
         {
             index = gCurrentPinballGame->numLives - 1 + (((gCurrentPinballGame->oneUpAnimTimer % 16) / 8) * 9);
-            DmaCopy16(3, gLifeCountDigit_Gfx[index], (void *)0x06015520, 0x40);
+            DmaCopy16(3, gLifeCountDigit_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 5, 9)), 0x40);
             oamSimple = &group->oam[2];
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + 216;
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset - 112;
@@ -284,7 +284,7 @@ void DrawSpoinkSprite(void)
         else
             index = gSpoinkAnimFrameset[gCurrentPinballGame->spoinkAnimFrameIx][0];
 
-        DmaCopy16(3, gSpoinkEntity_Gfx[index], (void *)0x060120E0, 0x1C0);
+        DmaCopy16(3, gSpoinkEntity_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 8, 7)), 0x1C0);
         group->baseX = 231 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 376 - gCurrentPinballGame->cameraYOffset;
         for (i = 0; i < 3; i++)
@@ -321,7 +321,7 @@ void RunEvolutionCutscene(void)
         if (gCurrentPinballGame->stageTimer == 10)
         {
             gCurrentPinballGame->activeFxType = FX_EVOLUTION_CUTSCENE;
-            DmaCopy16(3, gEvolutionCutsceneTilesGfx, (void *)0x06015800, 0x2400);
+            DmaCopy16(3, gEvolutionCutsceneTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
             DmaCopy16(3, gBoardActionObj_Pals, OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_LARGE_BOTTOM]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_LARGE_TOP]->active = TRUE;
@@ -345,7 +345,7 @@ void RunEvolutionCutscene(void)
                         gBG0TilemapBuffer[(i + 15) * 0x20 + j] = 0xC100;
                 }
 
-                DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+                DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
                 if (var0 == 30)
                     m4aSongNumStart(MUS_EVOLUTION);
 
@@ -360,7 +360,7 @@ void RunEvolutionCutscene(void)
                         gBG0TilemapBuffer[(i + 15) * 32 + j] = 0xC100;
                 }
 
-                DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+                DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
             }
         }
 
@@ -613,7 +613,7 @@ void RunEvolutionCutscene(void)
             for (i = 0x1E0; i < 0x340; i++)
                 gBG0TilemapBuffer[i] = 0x1FF;
 
-            DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+            DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
             if (gMain.selectedField == FIELD_SAPPHIRE)
                 gCurrentPinballGame->sapphireBumperTimer = 0;
         }
@@ -629,7 +629,7 @@ void RunEvolutionCutscene(void)
             gCurrentPinballGame->currentSpecies = gCurrentPinballGame->postEvoSpecies;
             LoadPortraitGraphics(PORTRAIT_STATE_POKEMON_DISPLAY, PORTRAIT_MAIN_SLOT);
             gCurrentPinballGame->activeFxType = FX_END_OF_EVO_LIGHTNING;
-            DmaCopy16(3, gCatchTile_BurstStage4_Gfx, (void *)0x06015800, 0x1800);
+            DmaCopy16(3, gCatchTile_BurstStage4_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
             DmaCopy16(3, gCatchTile_BurstStage4_Pal, OBJ_PLTT_SLOT(PAL_IX_CATCH_TILE_FX), PLTT_SLOT_SIZE);
             gCurrentPinballGame->creatureOamPriority = 3;
         }
@@ -718,15 +718,15 @@ void RunTravelEventCutscene(void)
         gCurrentPinballGame->activeFxType = FX_TRAVEL_PAINTER_CUTSCENE;
         if (gMain.selectedField == FIELD_RUBY)
         {
-            DmaCopy16(3, gRubyTravelPaint_Gfx, (void *)0x06015800, 0x1800);
+            DmaCopy16(3, gRubyTravelPaint_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
             DmaCopy16(3, gRubyPainter_Pals, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
-            DmaCopy16(3, gRubyTravelVolbeat_Gfx, (void *)0x06015800, 0x480);
+            DmaCopy16(3, gRubyTravelVolbeat_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x480);
         }
         else
         {
-            DmaCopy16(3, gSapphireTravelPaint_Gfx, (void *)0x06015800, 0x1800);
+            DmaCopy16(3, gSapphireTravelPaint_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
             DmaCopy16(3, gSapphirePainter_Pals, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
-            DmaCopy16(3, gSapphireTravelIllumise_Gfx, (void *)0x06015800, 0x480);
+            DmaCopy16(3, gSapphireTravelIllumise_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x480);
         }
     }
     else
@@ -830,11 +830,11 @@ void RunTravelEventCutscene(void)
 
         if (gMain.selectedField == FIELD_RUBY)
         {
-            DmaCopy16(3, gRubyTravelVolbeat_Gfx[index], (void *) 0x06015800, 0x480);
+            DmaCopy16(3, gRubyTravelVolbeat_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x480);
         }
         else
         {
-            DmaCopy16(3, gSapphireTravelIllumise_Gfx[index], (void *) 0x06015800, 0x480);
+            DmaCopy16(3, gSapphireTravelIllumise_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x480);
         }
 
         index = gTravelEventAnimData[gCurrentPinballGame->travelAnimKeyframeIndex][0];

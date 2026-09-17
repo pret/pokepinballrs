@@ -96,10 +96,10 @@ void Options_LoadGraphics(void)
     gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gOptionsBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gOptionsText_Gfx,        BG_CHAR_ADDR(1), 0x1800);
-    DmaCopy16(3, gOptionsBackground_Gfx,  BG_CHAR_ADDR(2), 0xC00);
+    DmaCopy16(3, gOptionsText_Gfx,        BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0x1800);
+    DmaCopy16(3, gOptionsBackground_Gfx,  BG_TILE_ADDR(TILE_INDEX(2,0,0)), 0xC00);
     DmaCopy16(3, gOptionsText_Tilemap,    gBG0TilemapBuffer, BG_SCREEN_SIZE);
-    DmaCopy16(3, gBG0TilemapBuffer,       BG_CHAR_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer,       BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
 
     if (gGameBoyPlayerEnabled != TRUE)
     {
@@ -107,10 +107,10 @@ void Options_LoadGraphics(void)
         SetStringPalette(18, 5, 3, 2, 2);
     }
 
-    DmaCopy16(3, gBG0TilemapBuffer,          BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
-    DmaCopy16(3, gOptionsBackground_Tilemap, BG_SCREEN_ADDR(1), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer,          BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gOptionsBackground_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gGBAButtonIcons_Pals,       OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gOptionsSprites_Gfx,        OBJ_VRAM0, 0x2020);
+    DmaCopy16(3, gOptionsSprites_Gfx,        OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x2020);
     Options_InitStates();
     UpdateOptionsSpritePositions();
     m4aMPlayAllStop();

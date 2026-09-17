@@ -267,8 +267,8 @@ void ProcessSapphireCollisionEvent(u8 triggerType, u16* hasCollisionImpact, u16*
                         gCurrentPinballGame->pelipperFrameTimer = 1800;
                         gCurrentPinballGame->pelipperState = PELIPPER_STATE_WATCHING_RAMP;
 
-                        if (gCurrentPinballGame->progressLevel < 99)
-                            gCurrentPinballGame->progressLevel++;
+                        if (gCurrentPinballGame->bonusMultTracker < 99)
+                            gCurrentPinballGame->bonusMultTracker++;
 
                         gCurrentPinballGame->scoreAddedInFrame = SCORE_SAPPHIRE_BONUS_MULTIPLIER_BUTTON;
                     }

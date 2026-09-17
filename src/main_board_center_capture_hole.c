@@ -274,7 +274,7 @@ void GivePrize(void)
                 gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
                 gCurrentPinballGame->chargeIndicatorYOffset = 120;
                 gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
-                DmaCopy16(3, gPikachuSaverTilesGfx, (void *)0x06010600, 0x180);
+                DmaCopy16(3, gPikachuSaverTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 1, 16)), 0x180);
                 gCurrentPinballGame->outLanePikaPosition = PIKA_BOTH_SIDES;
                 gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
                 gCurrentPinballGame->pichuEntranceTimer = 1;
@@ -489,9 +489,9 @@ void GivePrize(void)
     case PRIZE_BONUS_MULT_PLUS_5:
         if (gCurrentPinballGame->outcomeFrameCounter == 70)
         {
-            gCurrentPinballGame->progressLevel += gCurrentPinballGame->prizeId - 35;
-            if (gCurrentPinballGame->progressLevel > 99)
-                gCurrentPinballGame->progressLevel = 99;
+            gCurrentPinballGame->bonusMultTracker += gCurrentPinballGame->prizeId - 35;
+            if (gCurrentPinballGame->bonusMultTracker > 99)
+                gCurrentPinballGame->bonusMultTracker = 99;
         }
         break;
     case PRIZE_START_BONUS_MODE_DUSKULL:
@@ -555,9 +555,9 @@ void RunMonCaptureSequence(void)
         gCurrentPinballGame->ball->positionQ8.y += gCurrentPinballGame->ball->velocity.y;
 
         gCurrentPinballGame->activeFxType = FX_CAPTURE_MON_ABSORB;
-        DmaCopy16(3, gCaptureScreenTilesGfx, 0x06015800, 0x1C00);
-        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], 0x060164C0, 0x80);
-        DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], 0x06016760, 0x80);
+        DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
+        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], OBJ_TILE_ADDR(TILE_INDEX(1, 9, 6)), 0x80);
+        DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], OBJ_TILE_ADDR(TILE_INDEX(1, 9, 27)), 0x80);
 
         gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 
@@ -572,10 +572,10 @@ void RunMonCaptureSequence(void)
     case 1:
         if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_CATCH_EM_MODE)
         {
-            gCurrentPinballGame->evoBlinkTimer = 0;
-            gCurrentPinballGame->catchLights[0] = 2;
-            gCurrentPinballGame->catchLights[1] = 2;
-            gCurrentPinballGame->catchLights[2] = 2;
+            gCurrentPinballGame->modeProgressBlinkTimer = 0;
+            gCurrentPinballGame->modeProgressLights[MODE_LAMP_LEFT] = MODE_PROGRESS_LAMP_CATCH_UNLIT;
+            gCurrentPinballGame->modeProgressLights[MODE_LAMP_CENTER] = MODE_PROGRESS_LAMP_CATCH_UNLIT;
+            gCurrentPinballGame->modeProgressLights[MODE_LAMP_RIGHT] = MODE_PROGRESS_LAMP_CATCH_UNLIT;
         }
 
         gCurrentPinballGame->ball->oamPriority = 0;
@@ -1155,7 +1155,7 @@ void RunMonCaptureSequence(void)
                 }
             }
 
-            DmaCopy16(3, &gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+            DmaCopy16(3, &gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
         }
 
         if (gCurrentPinballGame->captureSequenceFrame >= 240 && gCurrentPinballGame->captureSequenceFrame <= 269)
@@ -1170,7 +1170,7 @@ void RunMonCaptureSequence(void)
                 }
             }
 
-            DmaCopy16(3, &gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+            DmaCopy16(3, &gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
 
             if (gCurrentPinballGame->captureSequenceFrame == 269)
             {
@@ -1268,19 +1268,19 @@ void RunMonCaptureSequence(void)
 
             for (i = 0; i <= 2; i++)
             {
-                if (i < gCurrentPinballGame->evoItemCount)
-                    gCurrentPinballGame->catchLights[i] = 1;
+                if (i < gCurrentPinballGame->monProgressTowardsBonusCount)
+                    gCurrentPinballGame->modeProgressLights[i] = MODE_PROGRESS_LAMP_BALL_LIT;
                 else
-                    gCurrentPinballGame->catchLights[i] = 0;
+                    gCurrentPinballGame->modeProgressLights[i] = MODE_PROGRESS_LAMP_BALL_UNLIT;
             }
 
-            if (gCurrentPinballGame->evoItemCount <= 2)
+            if (gCurrentPinballGame->monProgressTowardsBonusCount <= 2)
             {
-                gCurrentPinballGame->evoCatchLightSlot1 = gCurrentPinballGame->evoItemCount;
-                gCurrentPinballGame->evoCatchLightSlot2 = gCurrentPinballGame->evoItemCount;
-                gCurrentPinballGame->catchLights[gCurrentPinballGame->evoCatchLightSlot1] = 1;
-                gCurrentPinballGame->evoBlinkTimer = 120;
-                gCurrentPinballGame->evoItemCount++;
+                gCurrentPinballGame->evoCatchLightSlot1 = gCurrentPinballGame->monProgressTowardsBonusCount;
+                gCurrentPinballGame->evoCatchLightSlot2 = gCurrentPinballGame->monProgressTowardsBonusCount;
+                gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoCatchLightSlot1] = MODE_PROGRESS_LAMP_BALL_LIT;
+                gCurrentPinballGame->modeProgressBlinkTimer = 120;
+                gCurrentPinballGame->monProgressTowardsBonusCount++;
             }
 
             gCurrentPinballGame->caughtMonCount++;

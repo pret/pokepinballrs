@@ -181,11 +181,11 @@ void FullCatchStateCleanup(void)
     gCurrentPinballGame->bonusTrapEnabled = FALSE;
     LoadPortraitGraphics(PORTRAIT_STATE_CURRENT_LOCATION, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
-    gCurrentPinballGame->evoItemCount = 0;
-    gCurrentPinballGame->evoBlinkTimer = 0;
-    gCurrentPinballGame->catchLights[0] = 0;
-    gCurrentPinballGame->catchLights[1] = 0;
-    gCurrentPinballGame->catchLights[2] = 0;
+    gCurrentPinballGame->monProgressTowardsBonusCount = 0;
+    gCurrentPinballGame->modeProgressBlinkTimer = 0;
+    gCurrentPinballGame->modeProgressLights[MODE_LAMP_LEFT] = MODE_PROGRESS_LAMP_BALL_UNLIT;
+    gCurrentPinballGame->modeProgressLights[MODE_LAMP_CENTER] = MODE_PROGRESS_LAMP_BALL_UNLIT;
+    gCurrentPinballGame->modeProgressLights[MODE_LAMP_RIGHT] = MODE_PROGRESS_LAMP_BALL_UNLIT;
 }
 
 void InitBonusStageSelect(void)
@@ -379,7 +379,7 @@ void UpdateBonusStageSelect(void)
 
 void ShowBonusTrapSprite(void)
 {
-    DmaCopy16(3, gMainStageBonusTrap_Gfx[0], (void *)0x060113C0, 0x300);
+    DmaCopy16(3, gMainStageBonusTrap_Gfx[0], OBJ_TILE_ADDR(TILE_INDEX(0, 4, 30)), 0x300);
     gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = TRUE;
     gCurrentPinballGame->bonusTrapEnabled = TRUE;
 }
@@ -407,7 +407,7 @@ void AnimateBonusTrapSprite(void)
         {
             if (gCurrentPinballGame->bonusTrapAnimFrame != gCurrentPinballGame->prevBonusTrapFrame)
             {
-                DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->bonusTrapAnimFrame], (void *)0x060113C0, 0x300);
+                DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->bonusTrapAnimFrame], OBJ_TILE_ADDR(TILE_INDEX(0, 4, 30)), 0x300);
                 gCurrentPinballGame->prevBonusTrapFrame = gCurrentPinballGame->bonusTrapAnimFrame;
             }
         }
@@ -462,11 +462,11 @@ void ProcessChargeIndicator(void)
                 gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
             }
 
-            DmaCopy16(3, gChargeFillIndicator_Gfx[chargeLevelIx], (void *)0x06010AE0, 0x80);
+            DmaCopy16(3, gChargeFillIndicator_Gfx[chargeLevelIx], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 23)), 0x80);
         }
         else
         {
-            DmaCopy16(3, gChargeFillIndicator_Gfx[gCurrentPinballGame->chargeFillValue], (void *)0x06010AE0, 0x80);
+            DmaCopy16(3, gChargeFillIndicator_Gfx[gCurrentPinballGame->chargeFillValue], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 23)), 0x80);
             gCurrentPinballGame->prevChargeFillValue = gCurrentPinballGame->chargeFillValue;
         }
     }
@@ -539,7 +539,7 @@ void UpdateRubyEvolutionShopSprite(void)
 
         if (gCurrentPinballGame->shopAnimTimer % 6 == 0)
         {
-            DmaCopy16(3, gRubyBoardShop_Gfx[index], (void *)0x06013D00, 0x500);
+            DmaCopy16(3, gRubyBoardShop_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 15, 8)), 0x500);
         }
 
         group->baseX = 181 - gCurrentPinballGame->cameraXOffset;
@@ -581,9 +581,9 @@ void RenderEvolutionUI(s16 arg0)
     if (arg0)
     {
         index = LEAD_DIGIT_10S(var1[3]);
-        DmaCopy16(3, gDecimalDigitTilesGfx[index], (void *)0x06015DA0, 0x40);
+        DmaCopy16(3, gDecimalDigitTilesGfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 7, 13)), 0x40);
         index = DIGIT_1S(var1[3]);
-        DmaCopy16(3, gDecimalDigitTilesGfx[index], (void *)0x06015E60, 0x40);
+        DmaCopy16(3, gDecimalDigitTilesGfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 7, 19)), 0x40);
     }
 
     if (group->active)
@@ -725,7 +725,7 @@ void RenderEvolutionUI(s16 arg0)
         }
 
         // Used for change selection sheen, sold out banner/greying
-        DmaCopy16(3, gShopPortraitOverlayGfx[index], (void *)0x06016220, 0x300);
+        DmaCopy16(3, gShopPortraitOverlayGfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 8, 17)), 0x300);
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -860,7 +860,7 @@ void InitTotodileEggDelivery(void)
     gCurrentPinballGame->portraitOffsetY = 160;
     gCurrentPinballGame->activeFxType = FX_TOTODILE_EGG_DELIVERY;
     DmaCopy16(3, gTotodile_Pal, OBJ_PLTT_SLOT(PAL_IX_RUBY_EGG_DELIVERER), PLTT_SLOT_SIZE);
-    DmaCopy16(3, gTotodileEggDelivery_Gfx, (void *)0x06015800, 0xCA0);
+    DmaCopy16(3, gTotodileEggDelivery_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0xCA0);
 }
 
 void AnimateTotodileEggDelivery(void)
@@ -903,7 +903,7 @@ void AnimateTotodileEggDelivery(void)
         {
             gCurrentPinballGame->portraitOffsetX = 0;
             gCurrentPinballGame->portraitOffsetY = 0;
-            DmaCopy16(3, gEggFrameTilesGfx[0], (void *)0x06011CE0, 0x200);
+            DmaCopy16(3, gEggFrameTilesGfx[0], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 7)), 0x200);
         }
 
         if (gCurrentPinballGame->totodileDeliveryFrame == 14)
@@ -943,7 +943,7 @@ void InitAerodactylEggDelivery(void)
     gCurrentPinballGame->portraitOffsetY = gCurrentPinballGame->eggDeliveryY / 20 - gFlyingCreatureCameraOffsets[0].y;
     gCurrentPinballGame->activeFxType = FX_AERODACTYL_EGG_DELIVERY;
     DmaCopy16(3, gAerodactlyFlight_Pal, OBJ_PLTT_SLOT(PAL_IX_RUBY_EGG_DELIVERER), PLTT_SLOT_SIZE);
-    DmaCopy16(3, gAerodactlyFlight_Gfx, (void *)0x06015800, 0x1000);
+    DmaCopy16(3, gAerodactlyFlight_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1000);
 }
 
 void AnimateAerodactylEggDelivery(void)
@@ -981,7 +981,7 @@ void AnimateAerodactylEggDelivery(void)
         if (gCurrentPinballGame->eggDropTimer == 78)
             gCurrentPinballGame->scoreAddedInFrame = SCORE_AERODACTYL_EGG_DELIVERY;
 
-        DmaCopy16(3, gEggFrameTilesGfx[0], (void *)0x06011CE0, 0x200);
+        DmaCopy16(3, gEggFrameTilesGfx[0], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 7)), 0x200);
     }
     else
     {
@@ -1019,13 +1019,13 @@ void LoadPokemonNameGraphics(void)
     {
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
         {
-            DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + i * 0x40, 0x40);
+            DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
             gCurrentPinballGame->nameSpacingOffset += 4;
         }
         else
         {
             index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-            DmaCopy16(3, gAlphabetTilesGfx[index], (void *)0x06015800 + i * 0x40, 0x40);
+            DmaCopy16(3, gAlphabetTilesGfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
         }
     }
 }
@@ -1070,13 +1070,13 @@ void InitWasCaughtBanner(void)
     {
         if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
         {
-            DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + i * 0x40, 0x40);
+            DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
             gCurrentPinballGame->nameSpacingOffset += 4;
         }
         else
         {
             index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-            DmaCopy16(3, gAlphabetTilesGfx[index], (void *)0x06015800 + i * 0x40, 0x40);
+            DmaCopy16(3, gAlphabetTilesGfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
         }
     }
 
@@ -1085,12 +1085,13 @@ void InitWasCaughtBanner(void)
     {
         if (gCaughtTextChars[i] == ' ')
         {
-            DmaCopy16(3, gSpaceTileGfx, (void *)0x06015800 + (i + 10) * 0x40, 0x40);
+            //TILE_INDEX(1, 6, 20 + 2 * i)
+            DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + (i + 10) * 0x40, 0x40);
         }
         else
         {
             index = gCaughtTextChars[i] - 'A';
-            DmaCopy16(3, gAlphabetTilesGfx[index], (void *)0x06015800 + (i + 10) * 0x40, 0x40);
+            DmaCopy16(3, gAlphabetTilesGfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + (i + 10) * 0x40, 0x40);
         }
     }
 
@@ -1332,9 +1333,9 @@ void UpdateRubyEggHatchAnimation(void)
     if (gCurrentPinballGame->prevEggAnimFrame != gCurrentPinballGame->eggAnimFrameIndex)
     {
         index = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][2];
-        DmaCopy16(3, gRubyBoardHatchCave_Gfx[index], (void *)0x060122A0, 0x480);
+        DmaCopy16(3, gRubyBoardHatchCave_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 8, 21)), 0x480);
         index = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3];
-        DmaCopy16(3, gEggFrameTilesGfx[index], (void *)0x06011CE0, 0x200);
+        DmaCopy16(3, gEggFrameTilesGfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 7)), 0x200);
         gCurrentPinballGame->prevEggAnimFrame = gCurrentPinballGame->eggAnimFrameIndex;
     }
 
@@ -1454,7 +1455,7 @@ void UpdateHatchCave(void)
         group->baseY = gCurrentPinballGame->cyndaquilCaveSpriteY - gCurrentPinballGame->cameraYOffset;
         if (var0 % 6 == 0)
         {
-            DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], (void *)0x06013300, 0x280);
+            DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 24)), 0x280);
         }
     }
     else if (gCurrentPinballGame->cyndaquilPosition == CYNDAQUIL_POSITION_CAVE_ENTRANCE)
@@ -1465,7 +1466,7 @@ void UpdateHatchCave(void)
             {
                 gCurrentPinballGame->eggAnimationPhase = EGG_ANIM_PHASE_CYNDAQUIL_ENTERS_BALL_JUMP;
                 gCurrentPinballGame->cyndaquilFrame = 1;
-                DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], (void *)0x06013300, 0x280);
+                DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 24)), 0x280);
                 gMain.modeChangeFlags |= MODE_CHANGE_BANNER;
                 gCurrentPinballGame->bannerDelayTimer = 0;
                 gCurrentPinballGame->bannerDisplayTimer = 60;
@@ -1588,10 +1589,10 @@ void CleanupEggModeState(void)
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
     for (i = 0; i < 3; i++)
     {
-        if (i < gCurrentPinballGame->evoItemCount)
-            gCurrentPinballGame->catchLights[i] = 1;
+        if (i < gCurrentPinballGame->monProgressTowardsBonusCount)
+            gCurrentPinballGame->modeProgressLights[i] = MODE_PROGRESS_LAMP_BALL_LIT;
         else
-            gCurrentPinballGame->catchLights[i] = 0;
+            gCurrentPinballGame->modeProgressLights[i] = MODE_PROGRESS_LAMP_BALL_UNLIT;
     }
 }
 
@@ -1714,7 +1715,7 @@ void UpdateEggMode(void)
 
         group->baseX = gCurrentPinballGame->walkMonXPos / 10 - gCurrentPinballGame->cameraXOffset;
         group->baseY = gCurrentPinballGame->walkMonYPos / 10 - gCurrentPinballGame->cameraYOffset;
-        DmaCopy16(3, gCatchSpriteFrameBuffer[var0], (void *)0x060112A0, 0x120);
+        DmaCopy16(3, gCatchSpriteFrameBuffer[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 4, 21)), 0x120);
         DmaCopy16(3, gCatchSpritePaletteBuffer, OBJ_PLTT_SLOT(PAL_IX_CATCH_MON), PLTT_SLOT_SIZE);
         for (i = 0; i < 4; i++)
         {
@@ -1804,7 +1805,7 @@ void UpdateEggMode(void)
             }
         }
 
-        DmaCopy16(3, gCatchSpriteFrameBuffer[var0], (void *)0x060112A0, 0x120);
+        DmaCopy16(3, gCatchSpriteFrameBuffer[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 4, 21)), 0x120);
         gCurrentPinballGame->waypointSubTimer++;
         group->baseX = gCurrentPinballGame->walkMonXPos / 10 - gCurrentPinballGame->cameraXOffset;
         group->baseY = gCurrentPinballGame->walkMonYPos / 10 - gCurrentPinballGame->cameraYOffset;
@@ -1889,7 +1890,7 @@ void UpdateEggMode(void)
         else if (group->baseY < -30)
             group->baseY = -30;
 
-        DmaCopy16(3, gCatchSpriteFrameBuffer[var0], (void *)0x060112A0, 0x120);
+        DmaCopy16(3, gCatchSpriteFrameBuffer[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 4, 21)), 0x120);
         for (i = 0; i < 4; i++)
         {
             oamSimple = &group->oam[i];
@@ -1937,9 +1938,9 @@ void UpdateEggMode(void)
     case EGG_HATCH_SUBSTATE_SETUP_CATCH_ANIMATION:
         gCurrentPinballGame->activeFxType = FX_CAPTURE_MON_ABSORB;
         DmaCopy16(3, gCaptureHit_Pal, OBJ_PLTT_SLOT(PAL_IX_MON_SHADOW_PORTRAIT), PLTT_SLOT_SIZE);
-        DmaCopy16(3, gCaptureScreenTilesGfx, (void *)0x06015800, 0x1C00);
-        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType * 0x200], (void *)0x060164C0, 0x80);
-        DmaCopy16(3, &gCaptureBallTilesGfx[(gCurrentPinballGame->ballUpgradeType * 8 + 4) * 0x40], (void *)0x06016760, 0x80);
+        DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
+        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType * 0x200], OBJ_TILE_ADDR(TILE_INDEX(1, 9, 6)), 0x80);
+        DmaCopy16(3, &gCaptureBallTilesGfx[(gCurrentPinballGame->ballUpgradeType * 8 + 4) * 0x40], OBJ_TILE_ADDR(TILE_INDEX(1, 9, 27)), 0x80);
         gCurrentPinballGame->captureSequenceFrame = 0;
         gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE;
         gCurrentPinballGame->catchTargetX = gCurrentPinballGame->walkMonXPos / 10 + 8;
@@ -1953,7 +1954,7 @@ void UpdateEggMode(void)
         if (group->baseY > 180)
             group->baseY = 180;
 
-        DmaCopy16(3, gCatchAnimTileBuffer, (void *)0x060112A0, 0x120);
+        DmaCopy16(3, gCatchAnimTileBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 4, 21)), 0x120);
         for (i = 0; i < 4; i++)
         {
             oamSimple = &group->oam[i];
@@ -1982,7 +1983,7 @@ void UpdateEggMode(void)
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
 
-            DmaCopy16(3, gCatchAnimTileBuffer, (void *)0x060112A0, 0x120);
+            DmaCopy16(3, gCatchAnimTileBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 4, 21)), 0x120);
             if (gCurrentPinballGame->captureSequenceTimer == 23)
                 gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
         }
@@ -2014,7 +2015,7 @@ void UpdateEggMode(void)
         }
         else
         {
-            if (gCurrentPinballGame->catchLights[2] == 1)
+            if (gCurrentPinballGame->modeProgressLights[MODE_LAMP_RIGHT] == MODE_PROGRESS_LAMP_BALL_LIT)
                 RequestBoardStateTransition(MAIN_BOARD_STATE_BOSS_HOLE_ACTIVE);
             else
                 RequestBoardStateTransition(MAIN_BOARD_STATE_DEFAULT);

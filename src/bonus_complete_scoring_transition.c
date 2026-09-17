@@ -150,42 +150,47 @@ void ProcessBonusBannerAndScoring(void)
     case FIELD_DUSCLOPS:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gDusclopsBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gDusclopsBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
+                OBJ_TILE_ADDR(TILE_INDEX(1, 12, (i * 2) + 12)), 0x40);
         }
         scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gDusclopsBonusClear_Gfx[scoreMultTileIx * 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gDusclopsBonusClear_Gfx[scoreMultTileIx * 0x40], OBJ_TILE_ADDR(TILE_INDEX(1, 12, 28)), 0x40);
         break;
     case FIELD_KECLEON:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gKecleonBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gKecleonBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
+                OBJ_TILE_ADDR(TILE_INDEX(1, 12, (i * 2) + 12)), 0x40);
         }
         scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gKecleonBonusClear_Gfx[scoreMultTileIx * 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gKecleonBonusClear_Gfx[scoreMultTileIx * 0x40], OBJ_TILE_ADDR(TILE_INDEX(1, 12, 28)), 0x40);
         break;
     case FIELD_KYOGRE:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gKyogreBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gKyogreBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
+                OBJ_TILE_ADDR(TILE_INDEX(1, 12, (i * 2) + 12)), 0x40);
         }
         scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gKyogreBonusClear_Gfx[scoreMultTileIx * 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gKyogreBonusClear_Gfx[scoreMultTileIx * 0x40], OBJ_TILE_ADDR(TILE_INDEX(1, 12, 28)), 0x40);
         break;
     case FIELD_GROUDON:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gGroudonBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gGroudonBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
+                OBJ_TILE_ADDR(TILE_INDEX(1, 12, (i * 2) + 12)), 0x40);
         }
         scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gGroudonBonusClear_Gfx[scoreMultTileIx* 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gGroudonBonusClear_Gfx[scoreMultTileIx* 0x40], OBJ_TILE_ADDR(TILE_INDEX(1, 12, 28)), 0x40);
         break;
     case FIELD_RAYQUAZA:
         for (i = 0; i < 8; i++)
         {
-            DmaCopy16(3, &gRayquazaBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40], (void *)0x06017000 + ((i * 2) + 12) * 0x20, 0x40);
+            DmaCopy16(3, &gRayquazaBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
+                OBJ_TILE_ADDR(TILE_INDEX(1, 12, (i * 2) + 12)), 0x40);
         }
         scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gRayquazaBonusClear_Gfx[scoreMultTileIx * 0x40], (void *)0x06017380, 0x40);
+        DmaCopy16(3, &gRayquazaBonusClear_Gfx[scoreMultTileIx * 0x40], OBJ_TILE_ADDR(TILE_INDEX(1, 12, 28)), 0x40);
         break;
     }
 }

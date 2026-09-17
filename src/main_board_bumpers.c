@@ -227,7 +227,7 @@ void DrawSapphireShopGuards(void)
     group->baseX = 68 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 144 - gCurrentPinballGame->cameraYOffset;
     index = gShopGuardianAnimFramesetData[gCurrentPinballGame->shopGuardianAnimFrames[MINUN_TARGET_BUTTON_IX]][0];
-    DmaCopy16(3, &gSapphireMinun_Gfx[index], (void *)0x06012DA0, 0x280);
+    DmaCopy16(3, &gSapphireMinun_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 11, 13)), 0x280);
     for (i = 0; i < 2; i++)
     {
         oamSimple = &group->oam[i];
@@ -241,7 +241,7 @@ void DrawSapphireShopGuards(void)
     {
         group->baseY = 144 - gCurrentPinballGame->cameraYOffset;
         index = gCurrentPinballGame->shopGuardianTargetHitFxTimer[MINUN_TARGET_BUTTON_IX] / 2;
-        DmaCopy16(3, &gSapphireMinunHeadElectricity_Gfx[index], (void *)0x06014720, 0x180);
+        DmaCopy16(3, &gSapphireMinunHeadElectricity_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 1, 25)), 0x180);
     }
     else
     {
@@ -256,7 +256,7 @@ void DrawSapphireShopGuards(void)
     group->baseX = 36 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 163 - gCurrentPinballGame->cameraYOffset;
     index = gShopGuardianAnimFramesetData[gCurrentPinballGame->shopGuardianAnimFrames[PLUSLE_TARGET_BUTTON_IX]][0];
-    DmaCopy16(3, &gSapphirePlusle_Gfx[index], (void *)0x060130A0, 0x280);
+    DmaCopy16(3, &gSapphirePlusle_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 5)), 0x280);
     for (i = 0; i < 2; i++)
     {
         oamSimple = &group->oam[i];
@@ -270,7 +270,7 @@ void DrawSapphireShopGuards(void)
     {
         group->baseY = 163 - gCurrentPinballGame->cameraYOffset;
         index = gCurrentPinballGame->shopGuardianTargetHitFxTimer[PLUSLE_TARGET_BUTTON_IX] / 2;
-        DmaCopy16(3, &gSapphirePlusleHeadElectricity_Gfx[index], (void *)0x06014920, 0x180);
+        DmaCopy16(3, &gSapphirePlusleHeadElectricity_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 2, 9)), 0x180);
     }
     else
     {
@@ -309,7 +309,7 @@ void DrawSapphireShopGuards(void)
     else
         index = 9;
 
-    DmaCopy16(3, &gSapphireBoardShopShockWall_Gfx[index], (void *)0x060146A0, 0x80);
+    DmaCopy16(3, &gSapphireBoardShopShockWall_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 1, 21)), 0x80);
     oamSimple = &group->oam[0];
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -369,7 +369,7 @@ void HandleRubyBumperHit(void)
                             gCurrentPinballGame->bannerSlidePosition = -2500;
                             gCurrentPinballGame->bannerSlideTimer = 50;
                             gCurrentPinballGame->bannerSlideVelocity = 0;
-                            DmaCopy16(3, gModeBannerTilemaps[7], (void *)0x06015800, 0x2400);
+                            DmaCopy16(3, gModeBannerTilemaps[7], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                             DmaCopy16(3, gModeBanner_Pals[7], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
                             gMain.blendControl = 0xCE;
                         }
@@ -403,7 +403,7 @@ void HandleRubyBumperHit(void)
                 index = ((gCurrentPinballGame->globalAnimFrameCounter + (i * 10)) % 30) / 15;
             }
 
-            DmaCopy16(3, &gPondBumper_Gfx[index], (void *)0x060133A0 + i * 0x200, 0x200);
+            DmaCopy16(3, &gPondBumper_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 29 + i * 16)), 0x200);
 
             group->baseX = gCurrentPinballGame->rubyBumperLogicPosition[i].x / 10 - gCurrentPinballGame->cameraXOffset - 8;
             group->baseY = gCurrentPinballGame->rubyBumperLogicPosition[i].y / 10 - gCurrentPinballGame->cameraYOffset - 10;

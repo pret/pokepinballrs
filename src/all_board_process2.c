@@ -580,8 +580,8 @@ void ResetBoardStateOnDeath(void)
 
     gCurrentPinballGame->ballUpgradeTimerPaused = FALSE;
     DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
-    gCurrentPinballGame->bonusMultiplier = gCurrentPinballGame->progressLevel;
-    gCurrentPinballGame->progressLevel = 1;
+    gCurrentPinballGame->endOfBallBonusMultiplier = gCurrentPinballGame->bonusMultTracker;
+    gCurrentPinballGame->bonusMultTracker = 1;
     if (gCurrentPinballGame->whiscashFrameIx == WHISCASH_FRAME_GONE_AFTER_HIT)
     {
         gCurrentPinballGame->shouldProcessWhiscash = FALSE;

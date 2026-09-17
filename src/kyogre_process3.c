@@ -157,7 +157,7 @@ void UpdateFrameProcess3_BoardLogic_KyogreBoard(void)
             gCurrentPinballGame->stageTimer = 0;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-            DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x06015800, 0x2000);
+            DmaCopy16(3, gKyogreBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
             gCurrentPinballGame->bannerSlideYOffset = 136;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
             gCurrentPinballGame->cameraLocked = TRUE;
@@ -199,7 +199,7 @@ void UpdateFrameProcess3_BoardLogic_KyogreBoard(void)
         gCurrentPinballGame->stageTimer = 140;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-        DmaCopy16(3, gKyogreBonusClear_Gfx, (void *)0x06015800, 0x2000);
+        DmaCopy16(3, gKyogreBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
         gCurrentPinballGame->bannerSlideYOffset = 136;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         break;
@@ -692,12 +692,12 @@ void RenderKyogreSprites(void)
         var2 = gKyogreAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][0];
         if (index < 15)
         {
-            DmaCopy16(3, gKyogreBodySprites_First15[index], (void *)0x06010FA0, 0x580);
+            DmaCopy16(3, gKyogreBodySprites_First15[index], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 29)), 0x580);
         }
         else
         {
             index -= 15;
-            DmaCopy16(3, gKyogreBodySprites_After15[index], (void *)0x06010FA0, 0x4C0);
+            DmaCopy16(3, gKyogreBodySprites_After15[index], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 29)), 0x4C0);
         }
 
         group->baseX = gCurrentPinballGame->bossPositionX / 10 + 72u - gCurrentPinballGame->cameraXOffset;
@@ -769,7 +769,7 @@ void RenderKyogreSprites(void)
             group->baseY = 200;
 
         index = gKyogreSplashAnimIndices[(gCurrentPinballGame->shockwaveAnimTimer % 84) / 6];
-        DmaCopy16(3, gKyogreSplashSpriteFrames[index], (void *)0x06012420, 0xC0);
+        DmaCopy16(3, gKyogreSplashSpriteFrames[index], OBJ_TILE_ADDR(TILE_INDEX(0, 9, 1)), 0xC0);
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -1015,7 +1015,7 @@ void UpdateKyogreFieldEntities(void)
             group->baseY = 200;
 
         index = gKyogrefreezeTrapAnimFrameset[gCurrentPinballGame->freezeTrapAnimFrame][2];
-        DmaCopy16(3, gKyogreFreeze_Gfx[index], (void *)0x060124E0, 0x3C0);
+        DmaCopy16(3, gKyogreFreeze_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 9, 7)), 0x3C0);
         var0 = gKyogrefreezeTrapAnimFrameset[gCurrentPinballGame->freezeTrapAnimFrame][0];
         for (i = 0; i < 4; i++)
         {
@@ -1210,7 +1210,7 @@ void UpdateKyogreFieldEntities(void)
             }
         }
 
-        DmaCopy16(3, gKyogreWhirlpoolTrap_Gfx[index], (void *)(0x06011520 + i * 0x200), 0x200);
+        DmaCopy16(3, gKyogreWhirlpoolTrap_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 5, 9 + i * 16)), 0x200);
         if (group->active)
         {
             if (gCurrentPinballGame->vortexEntityState[i] > KYOGRE_WHIRLPOOL_PHASE_INIT)
@@ -1366,7 +1366,7 @@ void AnimateKyogreBackground(void)
     for (i = 0; i < 0x400; i++)
         gBG0TilemapBuffer[0x800 + i] = gKyogreWaterBackgroundTilemap[i] + index * 4;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_SCREEN_ADDR(0), BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
     index = gKyogreWaterPaletteSegmentCycle[(gMain.systemFrameCount % 96) / 24];
     DmaCopy16(3, gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][index], BG_PLTT_SLOT(PAL_IX_3), PLTT_SLOT_SIZE);
 

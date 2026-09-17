@@ -8,6 +8,8 @@ The tools listed above were built with the assistance of ChatGPT
 Claude is listed in the commit history, helping with the final data dump process, and orchestrating the tool usage for adding the palettes to many pre-existing graphics.
 - Claude's comments and naming have been replaced based on human understanding of the content. The only remains from that work are the raw graphics and json files we would have created anyway.
 
+The latest piece before the first known use of commit with AI in this project is commit 018ce17fa, from Feb 8 2026, just before the piece that added the Oam slicer functionality, allowing for graphics to have a human readable form rather than being the raw tiles.
+
 -------
 
 If there is a desire to keep all the work done by a human, while expunging the remaining AI touched code, (Maybe from a 'code watermark' concern) that's reasonably possible. - Only one segment of that removal would impact the make process: the oam slicer tooling.

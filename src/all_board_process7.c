@@ -78,7 +78,7 @@ void UpdateFrameProcess7_DrawBall_MainBoards(void)
             oamData->priority = currentBallState->oamPriority;
 
         r8 = r8; // this fools the compiler into thinking r8 holds something that could need sign extending/truncation
-        DmaCopy16(3, gBallRotationTileGraphics[r8 + gCurrentPinballGame->ballUpgradeType * 17], (void *)OBJ_VRAM0 + 0x400, 0x80);
+        DmaCopy16(3, gBallRotationTileGraphics[r8 + gCurrentPinballGame->ballUpgradeType * 17], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 0)), 0x80);
 
         if (spriteGroup->baseY > 200)
             spriteGroup->baseY = 200;
@@ -119,7 +119,7 @@ void UpdateFrameProcess7_DrawBall_MainBoards(void)
         else
             oamData->priority = currentBallState->oamPriority;
 
-        DmaCopy16(3, gBallRotationTileGraphics[r8 + gCurrentPinballGame->ballUpgradeType * 17], (void *)OBJ_VRAM0 + 0x400, 0x80);
+        DmaCopy16(3, gBallRotationTileGraphics[r8 + gCurrentPinballGame->ballUpgradeType * 17], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 0)), 0x80);
 
         if (spriteGroup->baseY > 200)
             spriteGroup->baseY = 200;
@@ -215,7 +215,7 @@ void UpdateFrameProcess7_DrawBall_MainBoards(void)
         }
 
         newIx = gCurrentPinballGame->ballUpgradeFxTileIndex;
-        DmaCopy16(3, gBallUpgradeFx_Gfx[newIx], (void *)0x6011EE0, 0x200);
+        DmaCopy16(3, gBallUpgradeFx_Gfx[newIx], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 23)), 0x200);
 
         oam = &spriteGroup->oam[0];
 
@@ -268,7 +268,7 @@ void UpdateFrameProcess7_DrawBall_BonusBoards()
     }
 
     r5 = gCurrentPinballGame->ball->spinAngle >> 12;
-    DmaCopy16(3, &gBallRotationTileGraphics[r5 + gCurrentPinballGame->ballUpgradeType * 17], (void *)OBJ_VRAM0 + 0x400, 0x80);
+    DmaCopy16(3, &gBallRotationTileGraphics[r5 + gCurrentPinballGame->ballUpgradeType * 17], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 0)), 0x80);
 
     primaryBall->positionQ0.x = primaryBall->positionQ1.x / 2;
     primaryBall->positionQ0.y = primaryBall->positionQ1.y / 2;
@@ -335,7 +335,7 @@ void UpdateFrameProcess7_DrawBall_BonusBoards()
             if (gCurrentPinballGame->ballRespawnTimer > 149)
             {
                 r5 = ((gCurrentPinballGame->ballRespawnTimer - 150) % 66) / 6;
-                DmaCopy16(3, &gBallSpawnGlowTiles_Type1[r5], (void *)OBJ_VRAM0 + 0x720, 0x200);
+                DmaCopy16(3, &gBallSpawnGlowTiles_Type1[r5], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 25)), 0x200);
                 primaryBall->spinSpeed -= 40;
             }
 
@@ -378,7 +378,7 @@ void UpdateFrameProcess7_DrawBall_BonusBoards()
             if (gCurrentPinballGame->ballRespawnTimer > 4)
             {
                 r5 = ((gCurrentPinballGame->ballRespawnTimer - 5) % 63 / 7);
-                DmaCopy16(3, &gBallSpawnGlowTiles_Type2[r5], (void *)OBJ_VRAM0 + 0x720, 0x200);
+                DmaCopy16(3, &gBallSpawnGlowTiles_Type2[r5], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 25)), 0x200);
                 primaryBall->spinSpeed -= 20;
             }
 

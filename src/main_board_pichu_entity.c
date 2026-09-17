@@ -107,7 +107,7 @@ void UpdateKickbackLogic(void)
             else
                 gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] = 2;
 
-            DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] * 0x180), 0x06010480 + ((outlaneChuteIx) * 0x180), 0x180);
+            DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] * 0x180), OBJ_TILE_ADDR(TILE_INDEX(0, 1, 4 + 12 * outlaneChuteIx)), 0x180);
         }
 
         if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES)
@@ -211,11 +211,11 @@ void UpdateKickbackLogic(void)
                 if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES
                     && gCurrentPinballGame->outLaneSide == OUTLANE_RIGHT)
                 {
-                    DmaCopy16(3, gPikaSaverFullCoverageGfx, 0x06015800, 0x2400);
+                    DmaCopy16(3, gPikaSaverFullCoverageGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                 }
                 else
                 {
-                    DmaCopy16(3, gPikaSaverPartialCoverageGfx, 0x06015800, 0x2400);
+                    DmaCopy16(3, gPikaSaverPartialCoverageGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
                 }
             }
         }
@@ -247,7 +247,7 @@ void UpdateKickbackLogic(void)
                     else
                         gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] = 0;
 
-                    DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] * 0x180), 0x06010480 + (outlaneChuteIx * 0x180), 0x180);
+                    DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] * 0x180), OBJ_TILE_ADDR(TILE_INDEX(0, 1, 4 + 12 * outlaneChuteIx)), 0x180);
                 }
             }
 
@@ -300,7 +300,7 @@ void UpdateKickbackLogic(void)
             {
                 if ((gMain.fieldFrameCount % 5) == 0)
                 {
-                    DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] * 0x180), 0x06010480 + (outlaneChuteIx * 0x180), 0x180);
+                    DmaCopy16(3, gPikaSaverTilesGfx + (gCurrentPinballGame->pikaSaverTileIndex[outlaneChuteIx] * 0x180), OBJ_TILE_ADDR(TILE_INDEX(0, 1, 4 + 12 * outlaneChuteIx)), 0x180);
                 }
 
                 tempY = 380 - gCurrentPinballGame->cameraYOffset;
@@ -360,7 +360,7 @@ void PichuArrivalSequence(void)
         {
             if (gCurrentPinballGame->pichuWalkMode != 1)
             {
-                DmaCopy16(3, gPikaSaverTilesGfx, (void *)0x06010600, 0x180);
+                DmaCopy16(3, gPikaSaverTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 1, 16)), 0x180);
             }
         }
         tempVec.x = gPikaSaverWaypoints[gCurrentPinballGame->creatureWaypointIndex].x - 120 - gCurrentPinballGame->walkMonXPos;
@@ -383,7 +383,7 @@ void PichuArrivalSequence(void)
             else if (group->baseY < -30)
                 group->baseY = -30;
 
-            DmaCopy16(3, gMonHatchSpriteGroup5_Gfx + (index + 30) * 0x120 , (void *)0x060112A0, 0x120);
+            DmaCopy16(3, gMonHatchSpriteGroup5_Gfx + (index + 30) * 0x120 , OBJ_TILE_ADDR(TILE_INDEX(0, 4, 21)), 0x120);
             for (i = 0; i < 4; i++)
             {
                 oamSimple = &group->oam[i];
@@ -400,7 +400,7 @@ void PichuArrivalSequence(void)
             {
                 if (gCurrentPinballGame->creatureWaypointIndex == 4)
                 {
-                    DmaCopy16(3, gPikachuSaverTilesGfx, (void *)0x06010600, 0x180);
+                    DmaCopy16(3, gPikachuSaverTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 1, 16)), 0x180);
                     gCurrentPinballGame->outLanePikaPosition = PIKA_BOTH_SIDES;
                     gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
                     gCurrentPinballGame->pichuEntranceTimer = 1;

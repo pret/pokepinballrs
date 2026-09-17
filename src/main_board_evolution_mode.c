@@ -26,10 +26,10 @@ void CleanupEvolutionModeState(void)
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
     for (i = 0; i < 3; i++)
     {
-        if (i < gCurrentPinballGame->evoItemCount)
-            gCurrentPinballGame->catchLights[i] = 1;
+        if (i < gCurrentPinballGame->monProgressTowardsBonusCount)
+            gCurrentPinballGame->modeProgressLights[i] = MODE_PROGRESS_LAMP_BALL_LIT;
         else
-            gCurrentPinballGame->catchLights[i] = 0;
+            gCurrentPinballGame->modeProgressLights[i] = MODE_PROGRESS_LAMP_BALL_UNLIT;
     }
 
     gMain.fieldSpriteGroups[FIELD_SG_CENTER_HOLE_GRAVITY_FX]->active = FALSE;
@@ -259,7 +259,7 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) * 0x20) + i] = 0xC100;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
                 }
 
                 if (gCurrentPinballGame->stageTimer >= 240 && gCurrentPinballGame->stageTimer < 270)
@@ -271,7 +271,7 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) << 5) + i] = 0x1FF;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, BG_CHAR_SCREEN_ADDR(0,4), BG_SCREEN_SIZE);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
                     if (gCurrentPinballGame->stageTimer == 269)
                     {
                         gMain.scoreOverlayActive = FALSE;
@@ -290,19 +290,19 @@ void UpdateEvolutionMode(void)
         }
         else if (gCurrentPinballGame->modeAnimTimer == 24)
         {
-            if (gCurrentPinballGame->evoItemCount < 3)
+            if (gCurrentPinballGame->monProgressTowardsBonusCount < 3)
             {
-                gCurrentPinballGame->evoCatchLightSlot1 = gCurrentPinballGame->evoItemCount;
-                gCurrentPinballGame->evoCatchLightSlot2 = gCurrentPinballGame->evoItemCount;
-                gCurrentPinballGame->catchLights[gCurrentPinballGame->evoCatchLightSlot1] = 1;
-                gCurrentPinballGame->evoBlinkTimer = 120;
-                gCurrentPinballGame->evoItemCount++;
-                if (gCurrentPinballGame->evoItemCount < 3)
+                gCurrentPinballGame->evoCatchLightSlot1 = gCurrentPinballGame->monProgressTowardsBonusCount;
+                gCurrentPinballGame->evoCatchLightSlot2 = gCurrentPinballGame->monProgressTowardsBonusCount;
+                gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoCatchLightSlot1] = MODE_PROGRESS_LAMP_BALL_LIT;
+                gCurrentPinballGame->modeProgressBlinkTimer = 120;
+                gCurrentPinballGame->monProgressTowardsBonusCount++;
+                if (gCurrentPinballGame->monProgressTowardsBonusCount < 3)
                 {
-                    gCurrentPinballGame->evoCatchLightSlot2 = gCurrentPinballGame->evoItemCount;
-                    gCurrentPinballGame->catchLights[gCurrentPinballGame->evoCatchLightSlot2] = 1;
-                    gCurrentPinballGame->evoBlinkTimer = 120;
-                    gCurrentPinballGame->evoItemCount++;
+                    gCurrentPinballGame->evoCatchLightSlot2 = gCurrentPinballGame->monProgressTowardsBonusCount;
+                    gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoCatchLightSlot2] = MODE_PROGRESS_LAMP_BALL_LIT;
+                    gCurrentPinballGame->modeProgressBlinkTimer = 120;
+                    gCurrentPinballGame->monProgressTowardsBonusCount++;
                 }
             }
 
@@ -357,7 +357,7 @@ void UpdateEvolutionMode(void)
         }
         else
         {
-            if (gCurrentPinballGame->catchLights[2] == 1)
+            if (gCurrentPinballGame->modeProgressLights[MODE_LAMP_RIGHT] == MODE_PROGRESS_LAMP_BALL_LIT)
                 RequestBoardStateTransition(MAIN_BOARD_STATE_BOSS_HOLE_ACTIVE);
             else
                 RequestBoardStateTransition(MAIN_BOARD_STATE_DEFAULT);
@@ -388,7 +388,7 @@ void UpdateEvolutionItemAnimation(void)
         if (gCurrentPinballGame->evoItemAppearTimer == 80)
         {
             gCurrentPinballGame->activeFxType = FX_EVO_ITEM_SPAWN;
-            DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], (void *)0x06015800, 0x1C00);
+            DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
             DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(PAL_IX_EVO_ITEM), PLTT_SLOT_SIZE);
             gCurrentPinballGame->evoItemAnimFrame = 0;
             gCurrentPinballGame->evoItemAnimFrameTimer = 0;
@@ -451,7 +451,7 @@ void UpdateEvolutionItemAnimation(void)
             gCurrentPinballGame->scoreAddedInFrame = SCORE_EVO_ITEM_COLLECTED;
             MPlayStart(&gMPlayInfo_SE1, &se_evo_item_collected);
             gCurrentPinballGame->boardSubState = EVOLUTION_SUBSTATE_PREP_SPAWN_EVO_ITEM;
-            gCurrentPinballGame->catchLights[gCurrentPinballGame->evoItemsCaught] = 5;
+            gCurrentPinballGame->modeProgressLights[gCurrentPinballGame->evoItemsCaught] = MODE_PROGRESS_LAMP_EVO_LIT;
             gCurrentPinballGame->evoItemsCaught++;
             gMain.fieldSpriteGroups[FIELD_SG_EVO_ITEM]->active = FALSE;
             if (gCurrentPinballGame->evoItemsCaught == 3)
@@ -471,7 +471,7 @@ void UpdateEvolutionItemAnimation(void)
         if (index > 14)
             index = 14;
 
-        DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] + index * 0x200, (void *)0x060116C0, 0x200);
+        DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] + index * 0x200, OBJ_TILE_ADDR(TILE_INDEX(0, 5, 22)), 0x200);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;

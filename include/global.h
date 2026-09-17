@@ -779,7 +779,7 @@ struct PinballGame
     /*0x62C*/ u8 travelModeCompletionCount;
     /*0x62D*/ u8 slotsPlayedCount;
     /*0x62E*/ u8 bonusPikaSaverCount;
-    /*0x62F*/ u8 bonusMultiplier;
+    /*0x62F*/ u8 endOfBallBonusMultiplier;
     /*0x630*/ u32 bonusSubtotal;
     /*0x634*/ u32 bonusCategoryScore;
     /*0x638*/ s8 bonusSummaryPhase;
@@ -828,7 +828,7 @@ struct PinballGame
     /*0x706*/ u8 filler706[0x2];
     /*0x708*/ u32 portraitCycleFrame;
     /*0x70C*/ u16 hudAnimFrameCounter;
-    /*0x70E*/ s8 progressLevel; // Becomes bonusMultiplier at end-of-ball; displayed on the blue bonus sign
+    /*0x70E*/ s8 bonusMultTracker;
     /*0x70F*/ s8 unk70F;
     /*0x710*/ s8 holeIndicators[4]; // 'HOLE' light indicators in Ruby/Sapphire field
     /*0x714*/ s8 allHolesLit;
@@ -838,11 +838,11 @@ struct PinballGame
     /*0x718*/ s8 ballPowerUpLight[3];
     /*0x71B*/ s8 ballPowerUpAnimActive;
     /*0x71C*/ u8 gBallUpgradeFxTimer;
-    /*0x71D*/ s8 catchLights[3];
-    /*0x720*/ u8 evoBlinkTimer;
+    /*0x71D*/ s8 modeProgressLights[3]; // 3 Pokeballs, "Catch!", and "Evo" light under portrait
+    /*0x720*/ u8 modeProgressBlinkTimer; // 3 Pokeballs, "Catch!", and "Evo" light under portrait
     /*0x721*/ s8 evoCatchLightSlot1;
     /*0x722*/ s8 evoCatchLightSlot2;
-    /*0x723*/ s8 evoItemCount;
+    /*0x723*/ s8 monProgressTowardsBonusCount;
     /*0x724*/ u16 saverTimeRemaining;
     /*0x726*/ s8 saverLit;
     /*0x727*/ u8 filler727[0x1];
