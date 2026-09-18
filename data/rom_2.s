@@ -149,20 +149,20 @@ gBonusFieldMenuSelectionToField:: @ 0x086A4CF0
 
 	.align 2, 0
 gEReaderTextGlyphTable:: @ 0x086A4CF8
-@ 14 pages of 3 rows x 24 columns of u16, one entry per character cell.
+@ 24 pages of 3 rows x 24 columns of u16, one entry per character cell.
 @ Entry = (byte offset of the glyph within gEReaderText_Gfx) | (advance width in px).
 @ A glyph is 1 tile wide and 2 tall; 0x0000 is a blank cell.
 @ DrawEReaderTextPage masks the width off with & 0xFFF0 and nothing ever reads it:
 @ Glyph spacing mostly matches the char spacing in the dex, but there's a few characters
 @ that are increased to 6 px for the char. n has some using 5px, some using 6???
 
-	.ereaderText "Transmit data with the"
-	.ereaderText "e-Reader!"
+	.ereaderText "Choose an e-Reader"
+	.ereaderText "bonus card."
     .ereaderText ""
 
-	.ereaderText "Press the A Button"
-	.ereaderText "when you#re ready."
-	.ereaderText ""
+	.ereaderText "Use Left and Right"
+	.ereaderText "to choose a card."
+	.ereaderText "Press A to toggle."
 
 	.ereaderText "Transmission successful."
 	.ereaderText ""
@@ -212,6 +212,46 @@ gEReaderTextGlyphTable:: @ 0x086A4CF8
 	.ereaderText "Check the connection"
 	.ereaderText "and try once again."
 
+	.ereaderText "Special Guests"
+	.ereaderText "Enabled"
+	.ereaderText "L R Choose A Toggle"
+
+	.ereaderText "Special Guests"
+	.ereaderText "Disabled"
+	.ereaderText "L R Choose A Toggle"
+
+	.ereaderText "Encounter Rate Up"
+	.ereaderText "Enabled"
+	.ereaderText "L R Choose A Toggle"
+
+	.ereaderText "Encounter Rate Up"
+	.ereaderText "Disabled"
+	.ereaderText "L R Choose A Toggle"
+
+	.ereaderText "DX Mode"
+	.ereaderText "Enabled"
+	.ereaderText "L R Choose A Toggle"
+
+	.ereaderText "DX Mode"
+	.ereaderText "Disabled"
+	.ereaderText "L R Choose A Toggle"
+
+	.ereaderText "Ruin Area"
+	.ereaderText "Enabled"
+	.ereaderText "L R Choose A Toggle"
+
+	.ereaderText "Ruin Area"
+	.ereaderText "Disabled"
+	.ereaderText "L R Choose A Toggle"
+
+	.ereaderText "Bonus Stage"
+	.ereaderText "Enabled"
+	.ereaderText "L R Choose A Toggle"
+
+	.ereaderText "Bonus Stage"
+	.ereaderText "Disabled"
+	.ereaderText "L R Choose A Toggle"
+
 gEReaderSpriteSets:: @ 0x086A54D8
 	.4byte gPokedexStartTransmissionPopupSpriteSet
     .4byte gPokedexTransmittingPopupSpriteSet
@@ -232,12 +272,14 @@ gEReaderTransitionStepDurations:: @ 0x086A550C
 	.2byte 0x0004, 0x003C;
 
 gEReaderTextLengths:: @ 0x086A551A
-	.byte 0x21, 0x2A, 0x41, 0x3D, 0x18, 0x47, 0x18, 0x2F, 0x2D, 0x18;
-	.byte 0x46, 0x18, 0x24, 0x43;
+	.byte 0x1F, 0x41, 0x41, 0x3D, 0x18, 0x47, 0x18, 0x2F, 0x2D, 0x18;
+	.byte 0x46, 0x18, 0x24, 0x43, 0x42, 0x42, 0x42, 0x42, 0x42, 0x42;
+	.byte 0x42, 0x42, 0x42, 0x42;
 
 gEReaderTextHasNextPage:: @ 0x086A5528
 	.byte 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x01, 0x00, 0x01;
-	.byte 0x00, 0x01, 0x00, 0x00;
+	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00;
+	.byte 0x00, 0x00, 0x00, 0x00;
 
 gEReaderCardStartPages:: @ 0x086A5536
     .byte 0x02, 0x04, 0x06, 0x09, 0x0B, 0x00
@@ -17039,4 +17081,3 @@ gUnusedRomTail:: @ 0x086BBD28
 .align 2
 
 @ rom end 0x6BBFD0
-

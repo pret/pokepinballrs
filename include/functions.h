@@ -111,6 +111,7 @@ extern void EReaderMain(void);
 extern void LoadEReaderGraphics(void);
 extern void InitEReaderTextState(void);
 extern void Ereader_ShowInstructions(void);
+extern void Ereader_SelectBonus(void);
 extern void Ereader_AnimateLinkCable(void);
 extern void Ereader_Communicating(void);
 extern void Ereader_ShowLinkTimeout(void);

@@ -8,7 +8,7 @@
 #include "titlescreen.h"
 #include "variables.h"
 
-extern StateFunc gEReaderStateFuncs[11];
+extern StateFunc gEReaderStateFuncs[9];
 extern s8 gEReaderTextCharIndex;
 extern s8 gEReaderTextAnimDelay;
 extern s8 gEReaderTextBlinkToggle;
@@ -33,8 +33,8 @@ extern u8 gLinkNegotiationFlags;
 extern s16 gEReaderCardIndex;
 extern s16 gLinkTimeoutCounter;
 
-extern s8 gEReaderTextLengths[10];
-extern s8 gEReaderTextHasNextPage[10];
+extern s8 gEReaderTextLengths[24];
+extern s8 gEReaderTextHasNextPage[24];
 extern u8 gEReaderCardStartPages[NUM_EREADER_CARDS + 1];
 extern u8 gPokedexSprites_Gfx[];
 extern const Palette gEReaderBackground_Pals[];
@@ -48,7 +48,7 @@ extern s16 gEReaderTransitionStepDurations[];
 enum EReaderState{
     EREADER_STATE_LOAD_GRAPHICS = 0,
     EREADER_STATE_SHOW_INSTRUCTIONS = 1,
-    EREADER_STATE_ANIMATE_LINK_CABLE = 2,
+    EREADER_STATE_SELECT_BONUS = 2,
     EREADER_STATE_COMMUNICATION = 3,
     EREADER_STATE_LINK_TIMEOUT = 4,
     EREADER_STATE_LINK_SUCCESS_CLOSING = 5,
@@ -57,6 +57,10 @@ enum EReaderState{
     EREADER_STATE_RETURN_TO_MENU = 8,
 };
 
+#define EREADER_BONUS_MENU_PAGE(card, enabled) (14 + (card) * 2 + !(enabled))
+
+static s8 sEReaderBonusMenuSelection;
+
 void EReaderMain(void)
 {
     gEReaderStateFuncs[gMain.subState]();
@@ -64,6 +68,8 @@ void EReaderMain(void)
 
 void LoadEReaderGraphics(void)
 {
+    s32 index;
+
     ResetDisplayState();
     REG_DISPCNT = DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP | DISPCNT_FORCED_BLANK;
     REG_BG0CNT = BGCNT_CHARBASE(1);
@@ -88,6 +94,15 @@ void LoadEReaderGraphics(void)
     gEReaderTextAnimDelay = 0;
     gEReaderTextBlinkToggle = 0;
     gEReaderTextPageIndex = 0;
+    sEReaderBonusMenuSelection = 0;
+    for (index = 0; index < NUM_EREADER_CARDS; index++)
+    {
+        if (gMain.eReaderBonuses[index])
+        {
+            sEReaderBonusMenuSelection = index;
+            break;
+        }
+    }
     ClearEReaderTextRows();
 
     DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 6*BG_SCREEN_SIZE);
@@ -141,7 +156,8 @@ void Ereader_ShowInstructions(void)
             gEReaderTextCharIndex = gEReaderTextLengths[gEReaderTextPageIndex] + 1;
         }
         else if (gEReaderTextHasNextPage[gEReaderTextPageIndex] == 0) {
-            gMain.subState = EREADER_STATE_ANIMATE_LINK_CABLE;
+            gMain.subState = EREADER_STATE_SELECT_BONUS;
+            ClearEReaderTextRows();
         }
         else {
             ClearEReaderTextRows();
@@ -156,6 +172,58 @@ void Ereader_ShowInstructions(void)
         gEReaderExitTargetState = STATE_TITLE;
         gMain.subState = EREADER_STATE_RETURN_TO_MENU;
     }
+    UpdateEReaderSprites();
+    DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 6*BG_SCREEN_SIZE);
+}
+
+void Ereader_SelectBonus(void)
+{
+    s32 index;
+
+    if (JOY_NEW(DPAD_LEFT))
+    {
+        m4aSongNumStart(SE_MENU_MOVE);
+        if (sEReaderBonusMenuSelection == 0)
+            sEReaderBonusMenuSelection = NUM_EREADER_CARDS - 1;
+        else
+            sEReaderBonusMenuSelection--;
+        ClearEReaderTextRows();
+    }
+    else if (JOY_NEW(DPAD_RIGHT))
+    {
+        m4aSongNumStart(SE_MENU_MOVE);
+        sEReaderBonusMenuSelection++;
+        if (sEReaderBonusMenuSelection == NUM_EREADER_CARDS)
+            sEReaderBonusMenuSelection = 0;
+        ClearEReaderTextRows();
+    }
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        if (gMain.eReaderBonuses[sEReaderBonusMenuSelection])
+        {
+            gMain.eReaderBonuses[sEReaderBonusMenuSelection] = FALSE;
+            m4aSongNumStart(SE_MENU_CANCEL);
+        }
+        else
+        {
+            for (index = 0; index < NUM_EREADER_CARDS; index++)
+                gMain.eReaderBonuses[index] = FALSE;
+            gMain.eReaderBonuses[sEReaderBonusMenuSelection] = TRUE;
+            m4aSongNumStart(SE_MENU_SELECT);
+        }
+        ClearEReaderTextRows();
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        m4aSongNumStart(SE_MENU_CANCEL);
+        gEReaderExitTargetState = STATE_TITLE;
+        gMain.subState = EREADER_STATE_RETURN_TO_MENU;
+    }
+
+    gEReaderTextPageIndex = EREADER_BONUS_MENU_PAGE(
+        sEReaderBonusMenuSelection, gMain.eReaderBonuses[sEReaderBonusMenuSelection]);
+    DrawEReaderTextPage(gEReaderTextPageIndex);
     UpdateEReaderSprites();
     DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 6*BG_SCREEN_SIZE);
 }
@@ -699,4 +767,3 @@ s16 ProcessEReaderLinkReceive(void)
     }
     return 0;
 }
-

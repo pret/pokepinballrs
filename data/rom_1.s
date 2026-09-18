@@ -52,7 +52,7 @@ gBonusFieldSelectStateFuncs:: @ 0x0805C750
 gEReaderStateFuncs:: @ 0x0805C75C
 	.4byte LoadEReaderGraphics
 	.4byte Ereader_ShowInstructions
-	.4byte Ereader_AnimateLinkCable
+	.4byte Ereader_SelectBonus
 	.4byte Ereader_Communicating
 	.4byte Ereader_ShowLinkTimeout
 	.4byte Ereader_CloseSuccessfulTransmission
