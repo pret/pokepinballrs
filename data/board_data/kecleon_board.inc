@@ -13,7 +13,7 @@ gKecleonBoardCollisionAngleDataAllLayers:: @ 0x0830F5D4
 gKecleonBoardCollisionTypeDataAllLayers:: @ 0x0831F854
 	.incbin "data/board_data/collision/kecleon/board_typedata.bin"
 
-gKecleonBerryOverlayTilemap:: @ 0x08327994
+gKecleonScopeOverlayTilemap:: @ 0x08327994
 	.incbin "graphics/stage/kecleon/kecleon_overlay_0_tilemap.bin"
 
 gKecleonOverlayTilemap1:: @ 0x08328194

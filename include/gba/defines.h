@@ -38,7 +38,7 @@
 
 // text-mode BG
 #define OBJ_VRAM0      (VRAM + 0x10000)
-#define OBJ_VRAM0_SIZE 0x8000
+#define OBJ_VRAM_FULL_SIZE 0x8000 //Both char blocks
 
 // bitmap-mode BG
 #define OBJ_VRAM1      (VRAM + 0x14000)

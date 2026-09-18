@@ -895,13 +895,13 @@ struct PinballGame
     /*0x1106*/volatile u16 pauseBlendControl;
     /*0x1108*/volatile u16 pauseBlendAlpha;
     /*0x110A*/volatile u16 pauseBlendBrightness;
-    /*0x110C*/u16 pauseScoreOverlayActive;
+    /*0x110C*/u16 pausecutsceneBackdropBarActive;
     /*0x110E*/u16 pauseVCount;
     // Values preserved from before pause (restored when unpausing)
     /*0x1110*/volatile u16 savedBlendControl;
     /*0x1112*/volatile u16 savedBlendAlpha;
     /*0x1114*/volatile u16 savedBlendBrightness;
-    /*0x1116*/u16 savedScoreOverlayActive;
+    /*0x1116*/u16 savedcutsceneBackdropBarActive;
     /*0x1118*/u16 savedVCount;
     /*0x111A*/Palette pauseObjPalette[PALETTES_PER_BANK];
     /*0x131A*/u8 filler131A[0x2];

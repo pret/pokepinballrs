@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/spheal_states.h"
 #include "constants/board/sapphire_states.h"
+#include "constants/mem_layout/spheal.h"
 
 #define SPHEAL_MODE_TIME TICKS_FOR_TIME(2,0)
 
@@ -129,7 +130,7 @@ void InitFrameProcess3_BoardLogic_SphealBoard(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[0x400 + i] = 0x200;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_VRAM_ADDR_SPHEAL_LAYER_1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
 
     gMain.blendControl = 0x1C42;
     gMain.blendAlpha = 0xC04;
@@ -141,7 +142,7 @@ void InitFrameProcess3_BoardLogic_SphealBoard(void)
     }
 
     gMain.bgOffsets[1].yOffset = 126;
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0, 4, 10)), 0x280);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_SPHEAL_TBD_TILEMAP, SIZE_OF_VRAM_SPHEAL_TBD_TILEMAP);
     DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
     m4aSongNumStart(MUS_BONUS_FIELD_SPHEAL);
     DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
@@ -1473,7 +1474,7 @@ void AnimateSphealBackground(void)
     for (i = 0x100; i < 0x400; i++)
         gBG0TilemapBuffer[0x800 + i] = gSphealWaterBackgroundTilemap[i] + var0 * 4;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_SPHEAL_LAYER_3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 }
 
 

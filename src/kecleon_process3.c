@@ -3,6 +3,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 #include "constants/board/kecleon_states.h"
+#include "constants/mem_layout/kecleon.h"
 
 #define KECLEON_MODE_TIME TICKS_FOR_TIME(2,0)
 
@@ -28,7 +29,7 @@ struct KecleonSpriteSortEntry
 };
 
 extern const u8 gKecleonBonusClear_Gfx[];
-extern const u16 gKecleonBerryOverlayTilemap[];
+extern const u16 gKecleonScopeOverlayTilemap[];
 extern const u8 gKecleonStageKecleon_Gfx[][0x280];
 extern const u8 gKecleonStageKecleonFx_Gfx[][0x100];
 extern struct SongHeader se_kecleon_side_look;
@@ -1056,7 +1057,7 @@ void UpdateKecleonScopeVision(void)
         {
             for (j = 0; j < 4; j++)
             {
-                gBG0TilemapBuffer[0x408 + ((i + 6) * 0x20) + j] = gKecleonBerryOverlayTilemap[((i + 21) * 0x20) + (j + var3 * 4)];
+                gBG0TilemapBuffer[0x408 + ((i + 6) * 0x20) + j] = gKecleonScopeOverlayTilemap[((i + 21) * 0x20) + (j + var3 * 4)];
             }
         }
 
@@ -1066,7 +1067,7 @@ void UpdateKecleonScopeVision(void)
 
         for (j = 0; j < var2; j++)
         {
-            gBG0TilemapBuffer[0x4C3 + j] = gKecleonBerryOverlayTilemap[0x2EC + j];
+            gBG0TilemapBuffer[0x4C3 + j] = gKecleonScopeOverlayTilemap[0x2EC + j];
         }
     }
 
@@ -1076,7 +1077,7 @@ void UpdateKecleonScopeVision(void)
         {
             for (j = 0; j < 6; j++)
             {
-                gBG0TilemapBuffer[0x411 + ((i + 14) * 0x20) + j] = gKecleonBerryOverlayTilemap[((i + 21) * 0x20) + (j + 0xC + var3 * 6)];
+                gBG0TilemapBuffer[0x411 + ((i + 14) * 0x20) + j] = gKecleonScopeOverlayTilemap[((i + 21) * 0x20) + (j + 0xC + var3 * 6)];
             }
         }
 
@@ -1086,11 +1087,11 @@ void UpdateKecleonScopeVision(void)
 
         for (j = 0; j < var2; j++)
         {
-            gBG0TilemapBuffer[0x5F7 + j] = gKecleonBerryOverlayTilemap[0x2EC + j];
+            gBG0TilemapBuffer[0x5F7 + j] = gKecleonScopeOverlayTilemap[0x2EC + j];
         }
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_TILE_ADDR(TILE_INDEX(0,4,0)), 0x500);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_VRAM_ADDR_KECLEON_SCOPE_OVERLAY_TILEMAP, SIZE_OF_VRAM_KECLEON_SCOPE_OVERLAY_TILEMAP);
 }
 
 void RenderKecleonBoardElements(void)

@@ -345,7 +345,7 @@ void RunEvolutionCutscene(void)
                         gBG0TilemapBuffer[(i + 15) * 0x20 + j] = 0xC100;
                 }
 
-                DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+                DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
                 if (var0 == 30)
                     m4aSongNumStart(MUS_EVOLUTION);
 
@@ -360,7 +360,7 @@ void RunEvolutionCutscene(void)
                         gBG0TilemapBuffer[(i + 15) * 32 + j] = 0xC100;
                 }
 
-                DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+                DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
             }
         }
 
@@ -613,7 +613,7 @@ void RunEvolutionCutscene(void)
             for (i = 0x1E0; i < 0x340; i++)
                 gBG0TilemapBuffer[i] = 0x1FF;
 
-            DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+            DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
             if (gMain.selectedField == FIELD_SAPPHIRE)
                 gCurrentPinballGame->sapphireBumperTimer = 0;
         }

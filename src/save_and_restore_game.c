@@ -7,6 +7,7 @@
 #include "constants/board/rayquaza_states.h"
 #include "constants/board/ruby_states.h"
 #include "constants/board/sapphire_states.h"
+#include "constants/mem_layout/spheal.h"
 
 extern u8 gBoardGfxBuffer[];
 extern u8 gBoardBGTileBufferAlt[];
@@ -118,7 +119,7 @@ void SaveGameStateSnapshot(s16 arg0)
     gCurrentPinballGame->savedBlendControl = gCurrentPinballGame->pauseBlendControl;
     gCurrentPinballGame->savedBlendAlpha = gCurrentPinballGame->pauseBlendAlpha;
     gCurrentPinballGame->savedBlendBrightness = gCurrentPinballGame->pauseBlendBrightness;
-    gCurrentPinballGame->savedScoreOverlayActive = gCurrentPinballGame->pauseScoreOverlayActive;
+    gCurrentPinballGame->savedcutsceneBackdropBarActive = gCurrentPinballGame->pausecutsceneBackdropBarActive;
     gCurrentPinballGame->savedVCount = gCurrentPinballGame->pauseVCount;
     gCurrentPinballGame->ballSpeed = gMain_saveData.ballSpeed;
 
@@ -182,7 +183,7 @@ void RestoreGameState(u16 arg0)
         gMain.blendControl = gCurrentPinballGame->savedBlendControl;
         gMain.blendAlpha = gCurrentPinballGame->savedBlendAlpha;
         gMain.blendBrightness = gCurrentPinballGame->savedBlendBrightness;
-        gMain.scoreOverlayActive = gCurrentPinballGame->savedScoreOverlayActive;
+        gMain.cutsceneBackdropBarActive = gCurrentPinballGame->savedcutsceneBackdropBarActive;
         gMain.vCount = gCurrentPinballGame->savedVCount;
         gMain.bgOffsets[0] = gCurrentPinballGame->bgOffsets0;
         gMain.bgOffsets[1] = gCurrentPinballGame->bgOffsets1;
@@ -232,8 +233,8 @@ void RestoreGameState(u16 arg0)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 2*BG_SCREEN_SIZE);
-    if (gMain.scoreOverlayActive)
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_LAYER_0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
+    if (gMain.cutsceneBackdropBarActive)
     {
         if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_EVO_MODE)
         {
@@ -252,7 +253,7 @@ void RestoreGameState(u16 arg0)
             }
         }
 
-        DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+        DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
     }
 
     DmaCopy16(3, gCurrentPinballGame->savedObjPalette[gMain.isBonusField], OBJ_PLTT, OBJ_PLTT_SIZE);
@@ -748,7 +749,7 @@ void RestoreSphealBonusGraphics(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[0x400 + i] = 0x200;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_VRAM_ADDR_SPHEAL_LAYER_1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
     gMain.blendControl = 0x1C42;
     gMain.blendAlpha = 0xC04;
     for (i = 0; i < 0x140; i++)
@@ -765,7 +766,7 @@ void RestoreSphealBonusGraphics(void)
 
     gMain.bgOffsets[1].xOffset = 8;
     gMain.bgOffsets[1].yOffset = 126;
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0, 4, 10)), 0x280);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_SPHEAL_TBD_TILEMAP, SIZE_OF_VRAM_SPHEAL_TBD_TILEMAP);
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 

@@ -250,7 +250,7 @@ void UpdateEvolutionMode(void)
 
                 if (gCurrentPinballGame->stageTimer < 30)
                 {
-                    gMain.scoreOverlayActive = TRUE;
+                    gMain.cutsceneBackdropBarActive = TRUE;
                     var0 = gCurrentPinballGame->stageTimer;
                     gCurrentPinballGame->cutsceneTilemapColumn = gCurrentPinballGame->stageTimer;
                     for (i = 0; i <= var0; i++)
@@ -259,7 +259,7 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) * 0x20) + i] = 0xC100;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
                 }
 
                 if (gCurrentPinballGame->stageTimer >= 240 && gCurrentPinballGame->stageTimer < 270)
@@ -271,10 +271,10 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) << 5) + i] = 0x1FF;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
                     if (gCurrentPinballGame->stageTimer == 269)
                     {
-                        gMain.scoreOverlayActive = FALSE;
+                        gMain.cutsceneBackdropBarActive = FALSE;
                         gMain.blendControl = 0;
                         gMain.blendBrightness = 0;
                         gMain.blendAlpha = 0;

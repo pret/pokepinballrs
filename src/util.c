@@ -112,7 +112,7 @@ void ResetDisplayState(void)
     gMain.blendControl = 0;
     gMain.blendAlpha = 0;
     gMain.blendBrightness = 0;
-    gMain.scoreOverlayActive = FALSE;
+    gMain.cutsceneBackdropBarActive = FALSE;
 }
 
 void ClearGraphicsMemory(void)
