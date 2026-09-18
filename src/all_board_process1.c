@@ -3,6 +3,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
+#include "constants/mem_layout/shared.h"
 
 
 void InitFrameProcess1_PauseLogic_AllBoards(void)
@@ -17,7 +18,7 @@ void ClearBG0Tilemap(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 2* BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_LAYER_0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
 }
 
 

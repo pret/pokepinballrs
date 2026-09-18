@@ -1,8 +1,8 @@
 gKecleonBoardPalette:: @ 0x0830CBD4
 	.incbin "graphics/stage/kecleon/kecleon_board.gbapal"
 
-gKecleonBoardBG1Tilemap:: @ 0x0830CDD4
-	.incbin "graphics/stage/kecleon/kecleon_board_bg1_tilemap.bin"
+gKecleonBoardBG2Tilemap:: @ 0x0830CDD4
+	.incbin "graphics/stage/kecleon/kecleon_board_bg2_tilemap.bin"
 
 gKecleonBoardCollisionTileDataAllLayers:: @ 0x0830D5D4
 	.incbin "data/board_data/collision/kecleon/board_tiledata.bin"
@@ -25,8 +25,8 @@ gKecleonOverlayTilemap2:: @ 0x08328994
 gKecleonOverlayTilemap3:: @ 0x08329194
     .incbin "graphics/stage/kecleon/kecleon_overlay_3_tilemap.bin"
 
-gKecleonBoardBG0Tilemap:: @ 0x08329994
-	.incbin "graphics/stage/kecleon/kecleon_board_bg0_tilemap.bin"
+gKecleonBoardBG3Tilemap:: @ 0x08329994
+	.incbin "graphics/stage/kecleon/kecleon_board_bg3_tilemap.bin"
 
 gKecleonBoardCompressedBGTiles:: @ 0x0832A194
 	.incbin "graphics/stage/kecleon/kecleon_board_bg_tiles.4bpp.lz"

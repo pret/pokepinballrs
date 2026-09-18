@@ -52,23 +52,14 @@
 #define DISPLAY_WIDTH  240
 #define DISPLAY_HEIGHT 160
 
-#define TILE_SIZE_4BPP 0x20
-
-#define TILE_OFFSET_4BPP(n) ((n) * TILE_SIZE_4BPP)
 
 #define TOTAL_OBJ_TILE_COUNT 1024
-
 #define WIN_RANGE(a, b) (((a) << 8) | (b))
 
 
 
-#define PLTT_SLOT_SIZE 0x20
-#define PALETTES_PER_BANK 16 // One bank for BG palettes, one for Obj palettes
-#define COLORS_PER_PALETTE 16
-
-#define BG_PLTT_SLOT(n)  (BG_PLTT  + (n) * PLTT_SLOT_SIZE)
-#define OBJ_PLTT_SLOT(n) (OBJ_PLTT + (n) * PLTT_SLOT_SIZE)
-
+#define TILE_SIZE_4BPP 0x20
+#define TILE_OFFSET_4BPP(n) ((n) * TILE_SIZE_4BPP)
 #define TILES_SIZE_4BPP(n) ((n) * TILE_SIZE_4BPP)
 
 #define BG_TILE_ADDR(n)  (BG_VRAM  + TILE_OFFSET_4BPP(n))

@@ -11,6 +11,8 @@
 #include "constants/ereader.h"
 #include "constants/pinball_inputs.h"
 #include "constants/numbers.h"
+#include "constants/palette_mappings.h"
+#include "constants/mem_layout/shared.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");

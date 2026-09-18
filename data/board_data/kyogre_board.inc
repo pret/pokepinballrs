@@ -6,7 +6,7 @@ gKyogreBoardPalette:: @ 0x08332E04
 	.incbin "graphics/stage/kyogre/kyogre_board.gbapal"
 
 gKyogreWaterBackgroundTilemap:: @ 0x08333004
-	.incbin "graphics/stage/kyogre/kyogre_board_bg0_tilemap.bin"
+	.incbin "graphics/stage/kyogre/kyogre_board_bg3_tilemap.bin"
 
 gKyrGrouBoardCollisionTileDataAllLayers:: @ 0x08333804
 	.incbin "data/board_data/collision/kyogre/board_tiledata.bin"
@@ -17,8 +17,8 @@ gKyrGrouBoardCollisionAngleDataAllLayers:: @ 0x08335804
 gKyrGrouBoardCollisionTypeDataAllLayers:: @ 0x0833AD84
 	.incbin "data/board_data/collision/kyogre/board_typedata.bin"
 
-gKyogreBoardBG1Tilemap:: @ 0x0833D844
-	.incbin "graphics/stage/kyogre/kyogre_board_bg1_tilemap.bin"
+gKyogreBoardBG2Tilemap:: @ 0x0833D844
+	.incbin "graphics/stage/kyogre/kyogre_board_bg2_tilemap.bin"
 
 gKyogreBoardCompressedBGTiles:: @ 0x0833E044
 	.incbin "graphics/stage/kyogre/kyogre_board_bg_tiles.4bpp.lz"

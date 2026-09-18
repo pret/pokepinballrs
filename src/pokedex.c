@@ -403,7 +403,7 @@ void Pokedex_InfoWindowSlideIn(void)
         if (gPokedexSelectedMon < BONUS_SPECIES_START)
             gPokedexShowPageIndicator = 1;
 
-        DmaCopy16(3, gPokedexInfoWindowTilemap, BG_TILE_ADDR(TILE_INDEX(0, 0, 20)), 2*0xE0);
+        DmaCopy16(3, gPokedexInfoWindowTilemap, BG_TILE_ADDR(TILE_INDEX(0, 0, 20)), 0x1C0);
         PrintDexDescription(gPokedexSelectedMon, gPokedexDescriptionPage);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
         PlayCry_NormalNoDucking(gSpeciesInfo[gPokedexSelectedMon].speciesIdRS, 0, 127, 10);

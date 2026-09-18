@@ -3,8 +3,8 @@
 gSapphireBoardPalette:: @ 0x0826EC10
 	.incbin "graphics/stage/sapphire/sapphire_board.gbapal"
 
-gSapphireBoardBG0Tilemap:: @ 0x0826EE10
-	.incbin "graphics/stage/sapphire/sapphire_board_bg0_tilemap.bin"
+gSapphireBoardBG3Tilemap:: @ 0x0826EE10
+	.incbin "graphics/stage/sapphire/sapphire_board_bg3_tilemap.bin"
 
 gSapphireBoardCollisionTileDataLayer0:: @ 0x0826FE10
 .incbin "data/board_data/collision/sapphire/boardtop_tiledata.bin"
@@ -24,7 +24,7 @@ gSapphireBoardCollisionAngleDataLayer1:: @ 0x08293010
 gSapphireBoardCollisionTypeDataLayer1:: @ 0x082A5490
 .incbin "data/board_data/collision/sapphire/boardbottom_typedata.bin"
 
-gSapphireBoardBG1Tilemap:: @ 0x082AE6D0
+gSapphireBoardBG2Tilemap:: @ 0x082AE6D0
 	.incbin "graphics/stage/sapphire/sapphire_board_bgramp_tilemap.bin"
 
 gSapphireBoardCollisionTileDataLayer2:: @ 0x082AF6D0
@@ -1115,9 +1115,9 @@ gWailmerWaterFrame2Row3:: @ 0x082E4BC0
     .incbin "graphics/stage/sapphire/wailmer_water/water_frame2_row3.4bpp"
 	.space 0x2C0
 
-gSapphireBoardBGTiles:: @ 0x082E4EE0
+gSapphireBoardBG1Tiles:: @ 0x082E4EE0
 	@ loaded to charblock 2; tiles 0-703 are overwritten by the scroll ring
-	.incbin "graphics/stage/sapphire/sapphire_board_bg_tiles.4bpp"
+	.incbin "graphics/stage/sapphire/sapphire_board_bg1_tiles.4bpp"
 
-gSapphireBoardBGTilemap:: @ 0x082ECEE0
-	.incbin "graphics/stage/sapphire/sapphire_board_bg_tilemap.bin"
+gSapphireBoardBG1Tilemap:: @ 0x082ECEE0
+	.incbin "graphics/stage/sapphire/sapphire_board_bg1_tilemap.bin"

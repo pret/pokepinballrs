@@ -1,8 +1,8 @@
 @ Note: file has a shared 'bumper collision map' at 0x08252B10
 @ All other entries in this file are ruby board specific
 
-gRubyBoardBG0Tilemap:: @ 0x081C08E4
-	.incbin "graphics/stage/ruby/ruby_board_bg0_tilemap.bin"
+gRubyBoardBG3Tilemap:: @ 0x081C08E4
+	.incbin "graphics/stage/ruby/ruby_board_bg3_tilemap.bin"
 
 gRubyBoardCollisionTileDataLayer0:: @ 0x081C18E4
     .incbin "data/board_data/collision/ruby/boardtop_launch_tiledata.bin"
@@ -31,7 +31,7 @@ gRubyBoardCollisionAngleDataLayer1:: @ 0x08210964
 gRubyBoardCollisionTypeDataLayer1:: @ 0x082245E4
     .incbin "data/board_data/collision/ruby/boardbottom_typedata.bin"
 
-gRubyBoardBG1Tilemap:: @ 0x0822E424
+gRubyBoardBG2Tilemap:: @ 0x0822E424
 	.incbin "graphics/stage/ruby/ruby_board_ramp_tilemap.bin"
 
 gRubyBoardCollisionTileDataLayer2:: @ 0x0822F424
@@ -872,10 +872,10 @@ gRuby_RSlingshot_On_R4:: @ 0x08265910
 
 
 
-gRubyBoardBGTiles:: @ 0x08265C10
+gRubyBoardBG1Tiles:: @ 0x08265C10
 	@ loaded to charblock 2; tiles 0-703 are blank because all_board_setup.c
 	@ later overwrites that region with the decompressed bgtop tiles
-	.incbin "graphics/stage/ruby/ruby_board_bg_tiles.4bpp"
+	.incbin "graphics/stage/ruby/ruby_board_bg1_tiles.4bpp"
 
-gRubyBoardBGTilemap:: @ 0x0826DC10
-	.incbin "graphics/stage/ruby/ruby_board_bg_tilemap.bin"
+gRubyBoardBG1Tilemap:: @ 0x0826DC10
+	.incbin "graphics/stage/ruby/ruby_board_bg1_tilemap.bin"
