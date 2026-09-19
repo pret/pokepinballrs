@@ -3,6 +3,7 @@
 #include "main.h"
 #include "titlescreen.h"
 #include "constants/bg_music.h"
+#include "constants/mem_layout/options.h"
 
 #define BGM_COUNT   34
 #define SE_COUNT    184
@@ -96,10 +97,10 @@ void Options_LoadGraphics(void)
     gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gOptionsBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gOptionsText_Gfx,        BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0x1800);
-    DmaCopy16(3, gOptionsBackground_Gfx,  BG_TILE_ADDR(TILE_INDEX(2,0,0)), 0xC00);
-    DmaCopy16(3, gOptionsText_Tilemap,    gBG0TilemapBuffer, BG_SCREEN_SIZE);
-    DmaCopy16(3, gBG0TilemapBuffer,       BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gOptionsText_Gfx,        BG_VRAM_ADDR_OPTIONS_TEXT_TILES, SIZE_OF_VRAM_OPTIONS_TEXT_TILES);
+    DmaCopy16(3, gOptionsBackground_Gfx,  BG_VRAM_ADDR_OPTIONS_FRAME_TILES, SIZE_OF_VRAM_OPTIONS_FRAME_TILES);
+    DmaCopy16(3, gOptionsText_Tilemap,    gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gBG0TilemapBuffer,       BG_VRAM_ADDR_OPTIONS_BG0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 
     if (gGameBoyPlayerEnabled != TRUE)
     {
@@ -107,10 +108,10 @@ void Options_LoadGraphics(void)
         SetStringPalette(18, 5, 3, 2, 2);
     }
 
-    DmaCopy16(3, gBG0TilemapBuffer,          BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
-    DmaCopy16(3, gOptionsBackground_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer,          BG_VRAM_ADDR_OPTIONS_BG0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gOptionsBackground_Tilemap, BG_VRAM_ADDR_OPTIONS_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     DmaCopy16(3, gGBAButtonIcons_Pals,       OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
-    DmaCopy16(3, gOptionsSprites_Gfx,        OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x2020);
+    DmaCopy16(3, gOptionsSprites_Gfx,        OBJ_VRAM_ADDR_OPTIONS_SPRITE_TILES, SIZE_OF_VRAM_OPTIONS_SPRITE_TILES);
     Options_InitStates();
     UpdateOptionsSpritePositions();
     m4aMPlayAllStop();
