@@ -392,7 +392,7 @@ void IntroScene1Torchic_05_SpeedLineFadeIn(void)
         }
         else
         {
-            CopyBgTilesRect(&gIntroTileBuffer, (void *)BG_TILE_ADDR(TILE_INDEX(0, 13, 23)), 8, 8);
+            CopyBgTilesRect(&gIntroTileBuffer, (void *)BG_VRAM_ADDR_INTRO1_TORCHIC_SMALL_BALL_RECT, 8, 8);
             gIntroSceneIndex++;
         }
 
@@ -427,7 +427,7 @@ void IntroScene1Torchic_06_BrightenPokeballFlyTowardsScreen(void)
     gMain.bgOffsets[0].yOffset = gIntroBGParams[0].posY;
     if (++gIntroBGParams[0].frameTimer > gIntroScene1Torchic_BGAnimTiming[gIntroBGParams[0].animFrame].y)
     {
-        CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *)BG_TILE_ADDR(TILE_INDEX(0, 13, 23)), 8, 8);
+        CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *)BG_VRAM_ADDR_INTRO1_TORCHIC_SMALL_BALL_RECT, 8, 8);
         if (++gIntroBGParams[0].animFrame > 3)
         {
             gIntroSpriteEntities[3].visible = TRUE;
@@ -464,9 +464,9 @@ void IntroScene1Torchic_07_TorchicRiseAndBGSplit(void)
     if (++gIntroBGParams[0].frameTimer > gIntroScene1Torchic_BGAnimTiming[gIntroBGParams[0].animFrame].y)
     {
         if (gIntroBGParams[0].animFrame < 7)
-            CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *) BG_TILE_ADDR(TILE_INDEX(0, 13, 23)), 8, 8);
+            CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *) BG_VRAM_ADDR_INTRO1_TORCHIC_SMALL_BALL_RECT, 8, 8);
         else
-            CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *) BG_TILE_ADDR(TILE_INDEX(0, 12, 22)), 10, 10);
+            CopyBgTilesRect(&gIntroTileBuffer[gIntroScene1Torchic_TileOffsets[gIntroBGParams[0].animFrame]], (void *) BG_VRAM_ADDR_INTRO1_TORCHIC_BIG_BALL_RECT, 10, 10);
 
         gIntroBGParams[0].animFrame++;
     }
@@ -1157,7 +1157,7 @@ void IntroScene5Mudkip_InitVars(void)
     gIntroBGParams[0].frameTimer = 0;
     gIntroBGParams[0].velX = 0;
 
-    CopyBgTilesRect(&gTextTilemapBuffer, (void*)BG_TILE_ADDR(TILE_INDEX(0, 11, 23)), 8, 8);
+    CopyBgTilesRect(&gTextTilemapBuffer, (void*)BG_VRAM_ADDR_INTRO5_MUDKIP_BALL_RECT, 8, 8);
 
     gIntroBGParams[1].posX = 0xA5;
     gIntroBGParams[1].posY = 0;
@@ -1192,7 +1192,7 @@ void IntroScene5Mudkip_33_MoveMudkipBallSplit(void)
     if (gIntroBGParams[0].frameTimer > gIntroScene5Mudkip_BGAnimTiming[gIntroBGParams[0].animFrame].y)
     {
         gIntroBGParams[0].animFrame++;
-        CopyBgTilesRect(&gTempGfxBuffer[gIntroScene5Mudkip_TileOffsets[gIntroBGParams[0].animFrame]], (void *) BG_TILE_ADDR(TILE_INDEX(0, 11, 23)), 8, 8);
+        CopyBgTilesRect(&gTempGfxBuffer[gIntroScene5Mudkip_TileOffsets[gIntroBGParams[0].animFrame]], (void *) BG_VRAM_ADDR_INTRO5_MUDKIP_BALL_RECT, 8, 8);
     }
 
     IntroScene5Mudkip_RenderAllSprites();
@@ -1217,7 +1217,7 @@ void IntroScene5Mudkip_34_MoveMudkipBallTextScroll(void)
         if (gIntroBGParams[0].animFrame < 7)
         {
             gIntroBGParams[0].animFrame++;
-            CopyBgTilesRect(&gTempGfxBuffer[gIntroScene5Mudkip_TileOffsets[gIntroBGParams[0].animFrame]], (void *) BG_TILE_ADDR(TILE_INDEX(0, 11, 23)), 8, 8);
+            CopyBgTilesRect(&gTempGfxBuffer[gIntroScene5Mudkip_TileOffsets[gIntroBGParams[0].animFrame]], (void *) BG_VRAM_ADDR_INTRO5_MUDKIP_BALL_RECT, 8, 8);
         }
     }
 
