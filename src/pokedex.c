@@ -8,6 +8,7 @@
 #include "constants/bg_music.h"
 #include "constants/characters.h"
 #include "constants/global.h"
+#include "constants/mem_layout/pokedex.h"
 
 #define DEX_NUM_DIGITS      3
 #define SCROLL_WAIT_FRAMES  9
@@ -128,14 +129,14 @@ void LoadPokedexGraphics(void)
 
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gPokedexBgText_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0x4400);
-    DmaCopy16(3, gPokedexBg_Gfx, BG_TILE_ADDR(TILE_INDEX(3,0,0)), 0x1400);
+    DmaCopy16(3, gPokedexBgText_Gfx, BG_VRAM_ADDR_POKEDEX_TEXT_TILES, SIZE_OF_VRAM_POKEDEX_TEXT_TILES);
+    DmaCopy16(3, gPokedexBg_Gfx, BG_VRAM_ADDR_POKEDEX_FRAME_TILES, SIZE_OF_VRAM_POKEDEX_FRAME_TILES);
     DmaCopy16(3, gPokedexBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gPokedexBg1_Tilemap, gBG0TilemapBuffer, BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexBg2_Tilemap, gPokedexVramBuffer, BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexBg3_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,4,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexBg1_Tilemap, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gPokedexBg2_Tilemap, gPokedexVramBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gPokedexBg3_Tilemap, BG_VRAM_ADDR_POKEDEX_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
-    DmaCopy16(3, gPokedexSprites_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x6C20);
+    DmaCopy16(3, gPokedexSprites_Gfx, OBJ_VRAM_ADDR_POKEDEX_SPRITE_TILES, SIZE_OF_VRAM_POKEDEX_SPRITE_TILES);
 
     InitPokedexState();
     PrintSeenOwnedTotals(gPokedexNumSeen, gPokedexNumOwned);
@@ -148,8 +149,8 @@ void LoadPokedexGraphics(void)
 
     gPokedexVramBuffer[0x134] = 0x59;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexVramBuffer,BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_POKEDEX_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gPokedexVramBuffer,BG_VRAM_ADDR_POKEDEX_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 
     RenderPokedexSprites();
     EnableVBlankInterrupts();
@@ -271,10 +272,11 @@ void Pokedex_HandleListInput(void)
         {
             gPokedexDetailFrameCount = 0;
 
-            if (gPokedexFlags[gPokedexSelectedMon] >= 2)
+            if (gPokedexFlags[gPokedexSelectedMon] > SPECIES_DEX_SEEN)
             {
+                //Store the tilemap data for the space behind the expanded drawer that shows the dex text.
                 gPokedexShowButtonPrompt = FALSE;
-                DmaCopy16(3, BG_TILE_ADDR(TILE_INDEX(0, 0, 20)), gPokedexInfoWindowBackupTiles, 0x200);
+                DmaCopy16(3, BG_VRAM_ADDR_POKEDEX_DEX_TEXT_TILEMAP, gPokedexInfoWindowBackupTiles, SIZE_OF_VRAM_POKEDEX_DEX_TEXT_PLUS_HANDLE_TILEMAP);
                 gMain.subState = POKEDEX_STATE_3;
             }
             else
@@ -330,7 +332,7 @@ void Pokedex_HandleListInput(void)
             if (gPokedexFlags[gPokedexSelectedMon] >= SPECIES_DEX_SHARED)
             {
                 gPokedexShowButtonPrompt = FALSE;
-                DmaCopy16(3, BG_TILE_ADDR(TILE_INDEX(0, 0, 20)), gPokedexInfoWindowBackupTiles, 0x200);
+                DmaCopy16(3, BG_VRAM_ADDR_POKEDEX_DEX_TEXT_TILEMAP, gPokedexInfoWindowBackupTiles, SIZE_OF_VRAM_POKEDEX_DEX_TEXT_PLUS_HANDLE_TILEMAP);
                 gMain.subState = POKEDEX_STATE_3;
             }
             else
@@ -360,7 +362,7 @@ void Pokedex_HandleListInput(void)
         gPokedexScrollWaitFrames--;
 
     RenderPokedexSprites();
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_POKEDEX_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 }
 
 void Pokedex_PostScrollRefresh(void)
@@ -372,7 +374,7 @@ void Pokedex_PostScrollRefresh(void)
         gPokedexScrollWaitFrames--;
 
     RenderPokedexSprites();
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_POKEDEX_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
 }
 
@@ -389,8 +391,8 @@ void Pokedex_InfoWindowSlideIn(void)
 
     gPokedexInfoWindowSlideStep++;
     gPokedexVramBuffer[0x134] = 0x59;
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
-    DmaCopy16(3, gPokedexVramBuffer, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_POKEDEX_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gPokedexVramBuffer, BG_VRAM_ADDR_POKEDEX_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 
     if (gPokedexInfoWindowSlideStep > 7)
     {
@@ -403,7 +405,7 @@ void Pokedex_InfoWindowSlideIn(void)
         if (gPokedexSelectedMon < BONUS_SPECIES_START)
             gPokedexShowPageIndicator = 1;
 
-        DmaCopy16(3, gPokedexInfoWindowTilemap, BG_TILE_ADDR(TILE_INDEX(0, 0, 20)), 0x1C0);
+        DmaCopy16(3, gPokedexInfoWindowTilemap, BG_VRAM_ADDR_POKEDEX_DEX_TEXT_TILEMAP, SIZE_OF_VRAM_POKEDEX_DEX_TEXT_TILEMAP);
         PrintDexDescription(gPokedexSelectedMon, gPokedexDescriptionPage);
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 0x40);
         PlayCry_NormalNoDucking(gSpeciesInfo[gPokedexSelectedMon].speciesIdRS, 0, 127, 10);
@@ -562,8 +564,8 @@ void Pokedex_InfoWindowSlideOut(void)
     gPokedexInfoWindowSlideStep++;
 
     gPokedexVramBuffer[0x134] = 0x59;
-    DmaCopy16(3, gPokedexVramBuffer, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gPokedexVramBuffer, BG_VRAM_ADDR_POKEDEX_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_POKEDEX_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 
     if (gPokedexInfoWindowSlideStep > 8)
     {
@@ -571,8 +573,8 @@ void Pokedex_InfoWindowSlideOut(void)
         gPokedexShowAnimSprite = FALSE;
         gPokedexShowButtonPrompt = TRUE;
 
-        DmaFill16(3, 0, gTempGfxBuffer, 0x1800);
-        DmaFill16(3, 0, BG_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x1800);
+        DmaFill16(3, 0, gTempGfxBuffer, SIZE_OF_VRAM_POKEDEX_ENTRY_TEXT);
+        DmaFill16(3, 0, BG_VRAM_ADDR_POKEDEX_ENTRY_TEXT, SIZE_OF_VRAM_POKEDEX_ENTRY_TEXT);
         gMain.subState = POKEDEX_STATE_HANDLE_LIST_INPUT;
     }
 }
@@ -1540,7 +1542,7 @@ int MasterReceivePokedexFlags(void)
 {
     int i, j;
     u16 var0;
-    u16 arr0[28];
+    u16 receivedDexFlags[28];
 
     if (gPokedexLinkTransferPhase == 0)
     {
@@ -1573,41 +1575,41 @@ int MasterReceivePokedexFlags(void)
             return 0;
 
         gPokedexLinkChunkIndex = gLinkRecvBuffer[0][1];
-        arr0[0]  =  gLinkRecvBuffer[0][3]  & 0xF;
-        arr0[1]  = (gLinkRecvBuffer[0][3]  & 0xF0)   >> 4;
-        arr0[2]  = (gLinkRecvBuffer[0][3]  & 0xF00)  >> 8;
-        arr0[3]  = (gLinkRecvBuffer[0][3]  & 0xF000) >> 12;
-        arr0[4]  =  gLinkRecvBuffer[0][5]  & 0xF;
-        arr0[5]  = (gLinkRecvBuffer[0][5]  & 0xF0)   >> 4;
-        arr0[6]  = (gLinkRecvBuffer[0][5]  & 0xF00)  >> 8;
-        arr0[7]  = (gLinkRecvBuffer[0][5]  & 0xF000) >> 12;
-        arr0[8]  =  gLinkRecvBuffer[0][7]  & 0xF;
-        arr0[9]  = (gLinkRecvBuffer[0][7]  & 0xF0)   >> 4;
-        arr0[10] = (gLinkRecvBuffer[0][7]  & 0xF00)  >> 8;
-        arr0[11] = (gLinkRecvBuffer[0][7]  & 0xF000) >> 12;
-        arr0[12] =  gLinkRecvBuffer[0][9]  & 0xF;
-        arr0[13] = (gLinkRecvBuffer[0][9]  & 0xF0)   >> 4;
-        arr0[14] = (gLinkRecvBuffer[0][9]  & 0xF00)  >> 8;
-        arr0[15] = (gLinkRecvBuffer[0][9]  & 0xF000) >> 12;
-        arr0[16] =  gLinkRecvBuffer[0][11] & 0xF;
-        arr0[17] = (gLinkRecvBuffer[0][11] & 0xF0)   >> 4;
-        arr0[18] = (gLinkRecvBuffer[0][11] & 0xF00)  >> 8;
-        arr0[19] = (gLinkRecvBuffer[0][11] & 0xF000) >> 12;
-        arr0[20] =  gLinkRecvBuffer[0][13] & 0xF;
-        arr0[21] = (gLinkRecvBuffer[0][13] & 0xF0)   >> 4;
-        arr0[22] = (gLinkRecvBuffer[0][13] & 0xF00)  >> 8;
-        arr0[23] = (gLinkRecvBuffer[0][13] & 0xF000) >> 12;
-        arr0[24] =  gLinkRecvBuffer[0][15] & 0xF;
-        arr0[25] = (gLinkRecvBuffer[0][15] & 0xF0)   >> 4;
-        arr0[26] = (gLinkRecvBuffer[0][15] & 0xF00)  >> 8;
-        arr0[27] = (gLinkRecvBuffer[0][15] & 0xF000) >> 12;
+        receivedDexFlags[0]  =  gLinkRecvBuffer[0][3]  & 0xF;
+        receivedDexFlags[1]  = (gLinkRecvBuffer[0][3]  & 0xF0)   >> 4;
+        receivedDexFlags[2]  = (gLinkRecvBuffer[0][3]  & 0xF00)  >> 8;
+        receivedDexFlags[3]  = (gLinkRecvBuffer[0][3]  & 0xF000) >> 12;
+        receivedDexFlags[4]  =  gLinkRecvBuffer[0][5]  & 0xF;
+        receivedDexFlags[5]  = (gLinkRecvBuffer[0][5]  & 0xF0)   >> 4;
+        receivedDexFlags[6]  = (gLinkRecvBuffer[0][5]  & 0xF00)  >> 8;
+        receivedDexFlags[7]  = (gLinkRecvBuffer[0][5]  & 0xF000) >> 12;
+        receivedDexFlags[8]  =  gLinkRecvBuffer[0][7]  & 0xF;
+        receivedDexFlags[9]  = (gLinkRecvBuffer[0][7]  & 0xF0)   >> 4;
+        receivedDexFlags[10] = (gLinkRecvBuffer[0][7]  & 0xF00)  >> 8;
+        receivedDexFlags[11] = (gLinkRecvBuffer[0][7]  & 0xF000) >> 12;
+        receivedDexFlags[12] =  gLinkRecvBuffer[0][9]  & 0xF;
+        receivedDexFlags[13] = (gLinkRecvBuffer[0][9]  & 0xF0)   >> 4;
+        receivedDexFlags[14] = (gLinkRecvBuffer[0][9]  & 0xF00)  >> 8;
+        receivedDexFlags[15] = (gLinkRecvBuffer[0][9]  & 0xF000) >> 12;
+        receivedDexFlags[16] =  gLinkRecvBuffer[0][11] & 0xF;
+        receivedDexFlags[17] = (gLinkRecvBuffer[0][11] & 0xF0)   >> 4;
+        receivedDexFlags[18] = (gLinkRecvBuffer[0][11] & 0xF00)  >> 8;
+        receivedDexFlags[19] = (gLinkRecvBuffer[0][11] & 0xF000) >> 12;
+        receivedDexFlags[20] =  gLinkRecvBuffer[0][13] & 0xF;
+        receivedDexFlags[21] = (gLinkRecvBuffer[0][13] & 0xF0)   >> 4;
+        receivedDexFlags[22] = (gLinkRecvBuffer[0][13] & 0xF00)  >> 8;
+        receivedDexFlags[23] = (gLinkRecvBuffer[0][13] & 0xF000) >> 12;
+        receivedDexFlags[24] =  gLinkRecvBuffer[0][15] & 0xF;
+        receivedDexFlags[25] = (gLinkRecvBuffer[0][15] & 0xF0)   >> 4;
+        receivedDexFlags[26] = (gLinkRecvBuffer[0][15] & 0xF00)  >> 8;
+        receivedDexFlags[27] = (gLinkRecvBuffer[0][15] & 0xF000) >> 12;
 
         for (i = 0; i < 28; i++)
         {
             var0 = (gPokedexLinkChunkIndex - 8) * 28 + i;
-            if (gPokedexFlags[var0] == SPECIES_DEX_UNSEEN && arr0[i] == 4)
+            if (gPokedexFlags[var0] == SPECIES_DEX_UNSEEN && receivedDexFlags[i] == SPECIES_DEX_CAUGHT)
                 gPokedexFlagExchangeBuffer[var0] = SPECIES_DEX_SHARED;
-            else if (gPokedexFlags[var0] == SPECIES_DEX_SEEN && arr0[i] == 4)
+            else if (gPokedexFlags[var0] == SPECIES_DEX_SEEN && receivedDexFlags[i] == SPECIES_DEX_CAUGHT)
                 gPokedexFlagExchangeBuffer[var0] = SPECIES_DEX_SHARED_AND_SEEN;
         }
 
@@ -1629,7 +1631,7 @@ static int ClientReceivePokedexFlags(void)
 {
     int i, j;
     u16 var0;
-    u16 arr0[28];
+    u16 receivedDexFlags[28];
 
     if (gPokedexLinkTransferPhase == 0)
     {
@@ -1662,41 +1664,41 @@ static int ClientReceivePokedexFlags(void)
             return 0;
 
         gPokedexLinkChunkIndex = gLinkRecvBuffer[0][0];
-        arr0[0]  =  gLinkRecvBuffer[0][2]  & 0xF;
-        arr0[1]  = (gLinkRecvBuffer[0][2]  & 0xF0)   >> 4;
-        arr0[2]  = (gLinkRecvBuffer[0][2]  & 0xF00)  >> 8;
-        arr0[3]  = (gLinkRecvBuffer[0][2]  & 0xF000) >> 12;
-        arr0[4]  =  gLinkRecvBuffer[0][4]  & 0xF;
-        arr0[5]  = (gLinkRecvBuffer[0][4]  & 0xF0)   >> 4;
-        arr0[6]  = (gLinkRecvBuffer[0][4]  & 0xF00)  >> 8;
-        arr0[7]  = (gLinkRecvBuffer[0][4]  & 0xF000) >> 12;
-        arr0[8]  =  gLinkRecvBuffer[0][6]  & 0xF;
-        arr0[9]  = (gLinkRecvBuffer[0][6]  & 0xF0)   >> 4;
-        arr0[10] = (gLinkRecvBuffer[0][6]  & 0xF00)  >> 8;
-        arr0[11] = (gLinkRecvBuffer[0][6]  & 0xF000) >> 12;
-        arr0[12] =  gLinkRecvBuffer[0][8]  & 0xF;
-        arr0[13] = (gLinkRecvBuffer[0][8]  & 0xF0)   >> 4;
-        arr0[14] = (gLinkRecvBuffer[0][8]  & 0xF00)  >> 8;
-        arr0[15] = (gLinkRecvBuffer[0][8]  & 0xF000) >> 12;
-        arr0[16] =  gLinkRecvBuffer[0][10] & 0xF;
-        arr0[17] = (gLinkRecvBuffer[0][10] & 0xF0)   >> 4;
-        arr0[18] = (gLinkRecvBuffer[0][10] & 0xF00)  >> 8;
-        arr0[19] = (gLinkRecvBuffer[0][10] & 0xF000) >> 12;
-        arr0[20] =  gLinkRecvBuffer[0][12] & 0xF;
-        arr0[21] = (gLinkRecvBuffer[0][12] & 0xF0)   >> 4;
-        arr0[22] = (gLinkRecvBuffer[0][12] & 0xF00)  >> 8;
-        arr0[23] = (gLinkRecvBuffer[0][12] & 0xF000) >> 12;
-        arr0[24] =  gLinkRecvBuffer[0][14] & 0xF;
-        arr0[25] = (gLinkRecvBuffer[0][14] & 0xF0)   >> 4;
-        arr0[26] = (gLinkRecvBuffer[0][14] & 0xF00)  >> 8;
-        arr0[27] = (gLinkRecvBuffer[0][14] & 0xF000) >> 12;
+        receivedDexFlags[0]  =  gLinkRecvBuffer[0][2]  & 0xF;
+        receivedDexFlags[1]  = (gLinkRecvBuffer[0][2]  & 0xF0)   >> 4;
+        receivedDexFlags[2]  = (gLinkRecvBuffer[0][2]  & 0xF00)  >> 8;
+        receivedDexFlags[3]  = (gLinkRecvBuffer[0][2]  & 0xF000) >> 12;
+        receivedDexFlags[4]  =  gLinkRecvBuffer[0][4]  & 0xF;
+        receivedDexFlags[5]  = (gLinkRecvBuffer[0][4]  & 0xF0)   >> 4;
+        receivedDexFlags[6]  = (gLinkRecvBuffer[0][4]  & 0xF00)  >> 8;
+        receivedDexFlags[7]  = (gLinkRecvBuffer[0][4]  & 0xF000) >> 12;
+        receivedDexFlags[8]  =  gLinkRecvBuffer[0][6]  & 0xF;
+        receivedDexFlags[9]  = (gLinkRecvBuffer[0][6]  & 0xF0)   >> 4;
+        receivedDexFlags[10] = (gLinkRecvBuffer[0][6]  & 0xF00)  >> 8;
+        receivedDexFlags[11] = (gLinkRecvBuffer[0][6]  & 0xF000) >> 12;
+        receivedDexFlags[12] =  gLinkRecvBuffer[0][8]  & 0xF;
+        receivedDexFlags[13] = (gLinkRecvBuffer[0][8]  & 0xF0)   >> 4;
+        receivedDexFlags[14] = (gLinkRecvBuffer[0][8]  & 0xF00)  >> 8;
+        receivedDexFlags[15] = (gLinkRecvBuffer[0][8]  & 0xF000) >> 12;
+        receivedDexFlags[16] =  gLinkRecvBuffer[0][10] & 0xF;
+        receivedDexFlags[17] = (gLinkRecvBuffer[0][10] & 0xF0)   >> 4;
+        receivedDexFlags[18] = (gLinkRecvBuffer[0][10] & 0xF00)  >> 8;
+        receivedDexFlags[19] = (gLinkRecvBuffer[0][10] & 0xF000) >> 12;
+        receivedDexFlags[20] =  gLinkRecvBuffer[0][12] & 0xF;
+        receivedDexFlags[21] = (gLinkRecvBuffer[0][12] & 0xF0)   >> 4;
+        receivedDexFlags[22] = (gLinkRecvBuffer[0][12] & 0xF00)  >> 8;
+        receivedDexFlags[23] = (gLinkRecvBuffer[0][12] & 0xF000) >> 12;
+        receivedDexFlags[24] =  gLinkRecvBuffer[0][14] & 0xF;
+        receivedDexFlags[25] = (gLinkRecvBuffer[0][14] & 0xF0)   >> 4;
+        receivedDexFlags[26] = (gLinkRecvBuffer[0][14] & 0xF00)  >> 8;
+        receivedDexFlags[27] = (gLinkRecvBuffer[0][14] & 0xF000) >> 12;
 
         for (i = 0; i < 28; i++)
         {
             var0 = (gPokedexLinkChunkIndex - 8) * 28 + i;
-            if (gPokedexFlags[var0] == SPECIES_DEX_UNSEEN && arr0[i] == 4)
+            if (gPokedexFlags[var0] == SPECIES_DEX_UNSEEN && receivedDexFlags[i] == SPECIES_DEX_CAUGHT)
                 gPokedexFlagExchangeBuffer[var0] = SPECIES_DEX_SHARED;
-            else if (gPokedexFlags[var0] == SPECIES_DEX_SEEN && arr0[i] == 4)
+            else if (gPokedexFlags[var0] == SPECIES_DEX_SEEN && receivedDexFlags[i] == SPECIES_DEX_CAUGHT)
                 gPokedexFlagExchangeBuffer[var0] = SPECIES_DEX_SHARED_AND_SEEN;
         }
 
@@ -1759,14 +1761,14 @@ static void PrintSelectedMonDexNum(s16 species)
             var0 += var2;
         }
 
-        CopyBgTilesRect(gTempGfxBuffer, (void *)BG_TILE_ADDR(TILE_INDEX(1, 3, 0)), 8, 2);
+        CopyBgTilesRect(gTempGfxBuffer, (void *)BG_VRAM_ADDR_POKEDEX_NAME_RECT, 8, 2);
         DmaFill16(3, 0, gTempGfxBuffer, 0x800);
         var0 = 0;
     }
     else
     {
         for (i = 0; i < 10; i++)
-            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)BG_TILE_ADDR(TILE_INDEX(1, 3, i)), 1, 2);
+            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)BG_VRAM_ADDR_POKEDEX_NAME_RECT + i * TILE_SIZE_4BPP, 1, 2);
     }
 
     if (gPokedexFlags[species] == SPECIES_DEX_SEEN || gPokedexFlags[species] > SPECIES_DEX_SHARED)
@@ -1784,13 +1786,13 @@ static void PrintSelectedMonDexNum(s16 species)
             var0 += var2;
         }
 
-        CopyBgTilesRect(gTempGfxBuffer, (void *)BG_TILE_ADDR(TILE_INDEX(1, 3, 8)), 9, 2);
+        CopyBgTilesRect(gTempGfxBuffer, (void *)BG_VRAM_ADDR_POKEDEX_CATEGORY_RECT, 9, 2);
         DmaFill16(3, 0, gTempGfxBuffer, 0x800);
     }
     else
     {
         for (i = 0; i < 9; i++)
-            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)BG_TILE_ADDR(TILE_INDEX(1, 3, 8 + i)), 1, 2);
+            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)BG_VRAM_ADDR_POKEDEX_CATEGORY_RECT + i * TILE_SIZE_4BPP, 1, 2);
     }
 
     if (gPokedexFlags[species] == SPECIES_DEX_CAUGHT)
@@ -1927,20 +1929,20 @@ void LoadMonPortrait(s16 species)
     switch (state)
     {
         case SPECIES_DEX_UNSEEN:
-            CopyBgTilesRect(gPokedexSprites_Gfx + 0x5C00, (void*)OBJ_TILE_ADDR(TILE_INDEX(0, 13, 0)), 24, 1);
+            CopyBgTilesRect(gPokedexSprites_Gfx + 0x5C00, (void*)OBJ_VRAM_ADDR_POKEDEX_MON_SPRITE_RECT, 24, 1);
             DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             break;
         case SPECIES_DEX_SEEN:
-            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void*)OBJ_TILE_ADDR(TILE_INDEX(0, 13, 0)), 24, 1);
+            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void*)OBJ_VRAM_ADDR_POKEDEX_MON_SPRITE_RECT, 24, 1);
             DmaCopy16(3, gMonPortraitGroupPals[0][15], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             break;
         case SPECIES_DEX_SHARED:
         case SPECIES_DEX_SHARED_AND_SEEN:
-            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void*)OBJ_TILE_ADDR(TILE_INDEX(0, 13, 0)), 24, 1);
+            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void*)OBJ_VRAM_ADDR_POKEDEX_MON_SPRITE_RECT, 24, 1);
             DarkenPalette(&gMonPortraitGroupPals[var1][var2], (void*)OBJ_PLTT_SLOT(PAL_IX_BALL), 0x20, 0xE);
             break;
         case SPECIES_DEX_CAUGHT:
-            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void*)OBJ_TILE_ADDR(TILE_INDEX(0, 13, 0)), 24, 1);
+            CopyBgTilesRect(gMonPortraitGroupGfx[var1] + var2 * 0x300, (void*)OBJ_VRAM_ADDR_POKEDEX_MON_SPRITE_RECT, 24, 1);
             DmaCopy16(3, gMonPortraitGroupPals[var1][var2], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             break;
     }
@@ -1975,7 +1977,7 @@ void PrintDexDescription(s16 species, u32 page)
         var0 = 0;
     }
 
-    DmaCopy16(3, gTempGfxBuffer, BG_TILE_ADDR(TILE_INDEX(1,7,0)), 3*BG_SCREEN_SIZE);
+    DmaCopy16(3, gTempGfxBuffer, BG_VRAM_ADDR_POKEDEX_ENTRY_TEXT, SIZE_OF_VRAM_POKEDEX_ENTRY_TEXT);
 }
 
 void BlitGlyphToTileBuffer(s32 arg0, s32 arg1, s32 arg2) {
@@ -2371,7 +2373,7 @@ void LoadPokedexFlagsFromSave(void)
 
 	// It's unclear what these trailing 20 entries are...
     for (i = NUM_SPECIES; i < NUM_SPECIES + 20; i++)
-        gPokedexFlags[i] = 0;
+        gPokedexFlags[i] = SPECIES_DEX_UNSEEN;
 
     gPokedexNumOwned = 0;
     gPokedexNumSeen = 0;
@@ -2400,25 +2402,28 @@ void LoadMonAnimationSprite(s16 species)
     s16 var1;
 
     var0 = gDexAnimationIx[species];
+    //No board graphic
     if (var0 == -1)
         return;
 
     if (var0 < 100)
     {
+        //Catch Mon anim section
         gPokedexSpriteCategory = 0;
         quotient = var0 / 5;
         remainder = var0 % 5;
 
-        CopyBgTilesRect(gCatchSpriteGfxPtrs[quotient] + remainder * 0xD80, (void*) OBJ_TILE_ADDR(TILE_INDEX(0, 14, 0)), 108, 1);
+        CopyBgTilesRect(gCatchSpriteGfxPtrs[quotient] + remainder * 0xD80, (void*) OBJ_VRAM_ADDR_POKEDEX_MON_BOARD_ANIM_RECT, 108, 1);
         DmaCopy16(3, gCatchMonPaletteGroups[quotient][remainder], OBJ_PLTT_SLOT(PAL_IX_2), PLTT_SLOT_SIZE);
     }
     else
     {
+        //Hatch Mon anim section
         gPokedexSpriteCategory = 1;
         quotient = (var0 - 100) / 6;
         remainder = (var0 - 100) % 6;
 
-        CopyBgTilesRect(gMonHatchSpriteGroupGfx[quotient][remainder], (void *) OBJ_TILE_ADDR(TILE_INDEX(1, 2, 0)), 135, 1);
+        CopyBgTilesRect(gMonHatchSpriteGroupGfx[quotient][remainder], (void *) OBJ_VRAM_ADDR_POKEDEX_MON_HATCH_ANIM_RECT, 135, 1);
         DmaCopy16(3, gMonHatchSpriteGroupPals[quotient][remainder], OBJ_PLTT_SLOT(PAL_IX_3), PLTT_SLOT_SIZE);
     }
 }
