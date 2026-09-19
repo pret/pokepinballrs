@@ -373,17 +373,17 @@ extern const struct SpriteSet *const gIntroScene3Treecko_SpriteSets[];
 extern const struct SpriteSet *const gIntroScene5Mudkip_SpriteSets[];
 extern const Palette gIntroScene4PlusleMinun_Pal[];
 extern u8 gIntroScene4PlusleMinun_BG3Tilemap[];
-extern u8 gIntroScene4PlusleMinunSprites_Gfx[];
-extern u8 gIntroScene4PlusleMinun_BG0Tiles[];
-extern u8 gIntroScene4PlusleMinun_BG1Tiles[];
+extern u8 gIntroScene4PlusleMinunBgTiles_Gfx[];
+extern u8 gIntroScene4PlusleMinun_BG0Tilemap[];
+extern u8 gIntroScene4PlusleMinun_BG1Tilemap[];
 
 extern u16 gTextTilemapBuffer[];
 
 extern const Palette gIntroScene5Mudkip_Pal[];
 extern u8 gIntroScene5Mudkip_BG2Tilemap[];
-extern u8 gIntroScene5Mudkip_BG1Tiles[];
+extern u8 gIntroScene5Mudkip_BG1Tilemap[];
 extern u8 gIntroScene5Mudkip_BG3Tilemap[];
-extern u8 gIntroScene5MudkipText_Gfx[];
+extern u8 gIntroScene5MudkipBgTiles_Gfx[];
 extern u8 gIntroScene5Mudkip_BG0Tilemap[];
 extern u8 gIntroScene5MudkipSprites_Gfx[];
 extern s16 gIntroScene5Mudkip_TileOffsets[];
@@ -393,10 +393,10 @@ extern s8 gIntroScene6ChinchouEntitySpawnIndex;
 
 extern const Palette gIntroScene6Chinchou_Pal[];
 extern u8 gIntroScene6Chinchou_BG3Tilemap[];
-extern u8 gIntroScene6ChinchouSprites_Gfx[];
+extern u8 gIntroScene6ChinchouBgTiles_Gfx[];
 extern u8 gIntroScene6Chinchou_BG2Tilemap[];
 extern u8 gIntroScene6Chinchou_BG0Tilemap[];
-extern u8 gIntroScene6Chinchou_BG1Tiles[];
+extern u8 gIntroScene6Chinchou_BG1Tilemap[];
 extern u8 gIntroScene6ChinchouStars_Gfx[];
 
 extern u8 gIntroScene6Chinchou_BounceFlags[];
@@ -408,17 +408,17 @@ extern const struct SpriteSet *const gIntroScene7Parade_SpriteSets[];
 extern const struct SpriteSetTableEntry gFieldSpriteSets[];
 extern const Palette gIntroScene7Parade_Pal[];
 extern u8 gIntroScene7Parade_BG3Tilemap[];
-extern u8 gIntroScene7ParadeSprites_Gfx[];
-extern u8 gIntroScene7Parade_BG2Tiles[];
-extern u8 gIntroScene7Parade_BG0Tiles[];
-extern u8 gIntroScene7Parade_BG1Tiles[];
+extern u8 gIntroScene7ParadeBgTiles_Gfx[];
+extern u8 gIntroScene7Parade_BG2Tilemap[];
+extern u8 gIntroScene7Parade_BG0Tilemap[];
+extern u8 gIntroScene7Parade_BG1Tilemap[];
 extern u8 gIntroScene7ParadeWailmer_Gfx[];
 
 extern s8 gLinkExchangeSendPhase;
 
 extern const Palette gIntroScene8WailmerLaunch_Pal[];
 extern u8 gIntroScene8WailmerLaunch_BG2Tilemap[];
-extern u8 gIntroScene8WailmerLaunchExplosion_Gfx[];
+extern u8 gIntroScene8WailmerLaunchBgTiles_Gfx[];
 extern u8 gIntroScene8WailmerLaunch_Gfx[];
 
 extern s8 gIntroScene9BallFlight_BallXFrameAdjustTable[];

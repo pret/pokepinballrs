@@ -7,12 +7,15 @@
 // From a tile index perspective, 2 "tiles" of data = mapping for 1 board row.
 #define MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW 0x40
 
+//0x400
 #define MEM_SIZE_OF_TILE_ROW                32 * TILE_SIZE_4BPP
 
-// From tile_Index perspective, 4 'rows' of data, mapping a 256*512 output
-#define MEM_SIZE_OF_TILEMAP_256_BY_512   MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW * 64
 // From tile_Index perspective, 2 'rows' of data, mapping a 256*256 output
 #define MEM_SIZE_OF_TILEMAP_256_BY_256   MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW * 32
+// From tile_Index perspective, 4 'rows' of data, mapping a 256*512 output
+#define MEM_SIZE_OF_TILEMAP_256_BY_512   MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW * 64
+// From tile_Index perspective, 8 'rows' of data, mapping a 512*512 output
+#define MEM_SIZE_OF_TILEMAP_512_BY_512   MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW * 128
 
 
 //Hud: all boards
