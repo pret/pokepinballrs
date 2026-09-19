@@ -14,7 +14,7 @@ gSphealBoardCollisionAngleDataAllLayers:: @ 0x0837CCE8
 gSphealBoardCollisionTypeDataAllLayers:: @ 0x08388468
 	.incbin "data/board_data/collision/spheal/board_typedata.bin"
 
-gSphealBoardBG1Tilemap:: @ 0x0838E028
+gSphealBoardBG2Tilemap:: @ 0x0838E028
 	.incbin "graphics/stage/spheal/spheal_board_bg_tilemap.bin"
 
 gSphealBoardCompressedBGTiles:: @ 0x0838E828

@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 #include "inline_load_lighting_pal.h"
+#include "constants/mem_layout/ruby.h"
 
 /// @brief 
 /// @param arg0 0 = shop, 1= evolution selection
@@ -76,7 +77,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
 
             DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(PAL_IX_SHOP_UI), PLTT_SLOT_SIZE);
-            DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
+            DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
 
             gMain.bgOffsets[0].yOffset = 80;
             gMain.shopPanelSlideOffset = 0;
@@ -176,7 +177,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             else
                 gCurrentPinballGame->shopBgAnimFrame = 0;
 
-            DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2], BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
+            DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
             gMain.bgOffsets[0].yOffset = 80 - (4 * gMain.shopPanelSlideOffset);
 
             if (gCurrentPinballGame->catchModeEventTimer != 0)
@@ -399,7 +400,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->shopAnimSlideTimer = 15;
                 gMain.shopPanelActive = TRUE;
 
-                DmaCopy16(3, &gEvoModeBG0_0_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
+                DmaCopy16(3, &gEvoModeBG0_0_Tilemap, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
             }
 
             if (gCurrentPinballGame->shopEntryTimer <= 144)
@@ -632,7 +633,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                         gCurrentPinballGame->shopBgAnimFrame = 0;
                 }
 
-                DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
+                DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
                 gMain.bgOffsets[0].yOffset = 80 - (gMain.shopPanelSlideOffset * 4);
 
                 if (gCurrentPinballGame->catchModeEventTimer != 0)

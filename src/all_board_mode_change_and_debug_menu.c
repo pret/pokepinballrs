@@ -3,6 +3,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
+#include "constants/mem_layout/shared.h"
 
 #define BALL_NORMAL_LAUNCH_SAVER_TIME TICKS_FOR_TIME(0,30)
 #define BONUS_SCORE_TALLY_STEP (200 * SCORE_K)
@@ -117,7 +118,7 @@ void DebugMenu_RenderAndHandleInput(void)
     for (i = 0x340; i < 0x380; i++)
         gBG0TilemapBuffer[i] += 0xC100;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_DEBUG_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     if (JOY_HELD(A_BUTTON))
         ClearDebugTextDisplay();
 }
@@ -503,7 +504,7 @@ void ClearDebugTextDisplay(void)
     for (i = 0x340; i < 0x380; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_DEBUG_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 }
 
 void DebugMoveBallPosition(void)

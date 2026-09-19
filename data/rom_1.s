@@ -465,10 +465,10 @@ gIntroScene2PikasSprites_Gfx:: @ 0x080CC6E0
 	.incbin "graphics/intro/scene2pikas/tiles.4bpp"
 	.space 0x20
 
-gIntroScene2Pikas_BG0Tiles:: @ 0x080D0700
+gIntroScene2Pikas_BG0Tilemap:: @ 0x080D0700
 	.incbin "graphics/intro/scene2pikas/bg0_pichu_tilemap.bin"
 
-gIntroScene2Pikas_BG1Tiles:: @ 0x080D2700
+gIntroScene2Pikas_BG1Tilemap:: @ 0x080D2700
 	.incbin "graphics/intro/scene2pikas/bg1_pikachu_tilemap.bin"
 
 gIntroScene3Treecko_Pal:: @ 0x080D4700
@@ -480,7 +480,7 @@ gIntroScene3Treecko_BG2Tilemap:: @ 0x080D4900
 gIntroScene3Treecko_BG3Tilemap:: @ 0x080D5900
 	.incbin "graphics/intro/scene3treecko/bg3_text_tilemap.bin"
 
-gIntroScene3TreeckoSprites_Gfx:: @ 0x080D6100
+gIntroScene3TreeckoBgTiles_Gfx:: @ 0x080D6100
 	@ intro pane with treeko, pinball, flipper
 	.incbin "graphics/intro/scene3treecko/tiles.4bpp"
 	.space 0x20
@@ -507,13 +507,13 @@ gIntroScene4PlusleMinun_Pal:: @ 0x080E1540
 gIntroScene4PlusleMinun_BG3Tilemap:: @ 0x080E1740
 	.incbin "graphics/intro/scene4plusleminun/bg3_text_tilemap.bin"
 
-gIntroScene4PlusleMinunSprites_Gfx:: @ 0x080E1F40
+gIntroScene4PlusleMinunBgTiles_Gfx:: @ 0x080E1F40
 	.incbin "graphics/intro/scene4plusleminun/tiles.4bpp"
 
-gIntroScene4PlusleMinun_BG0Tiles:: @ 0x080E5F60
+gIntroScene4PlusleMinun_BG0Tilemap:: @ 0x080E5F60
 	.incbin "graphics/intro/scene4plusleminun/bg0_minun_tilemap.bin"
 
-gIntroScene4PlusleMinun_BG1Tiles:: @ 0x080E7F60
+gIntroScene4PlusleMinun_BG1Tilemap:: @ 0x080E7F60
 	.incbin "graphics/intro/scene4plusleminun/bg1_plusle_tilemap.bin"
 
 gIntroScene5Mudkip_Pal:: @ 0x080E9F60
@@ -522,13 +522,13 @@ gIntroScene5Mudkip_Pal:: @ 0x080E9F60
 gIntroScene5Mudkip_BG2Tilemap:: @ 0x080EA160
 	.incbin "graphics/intro/scene5mudkip/bg2_2sections_tilemap.bin"
 
-gIntroScene5Mudkip_BG1Tiles:: @ 0x080EB160
+gIntroScene5Mudkip_BG1Tilemap:: @ 0x080EB160
 	.incbin "graphics/intro/scene5mudkip/bg1_1sections_tilemap.bin"
 
 gIntroScene5Mudkip_BG3Tilemap:: @ 0x080EC160
 	.incbin "graphics/intro/scene5mudkip/bg3_text_tilemap.bin"
 
-gIntroScene5MudkipText_Gfx:: @ 0x080EC960
+gIntroScene5MudkipBgTiles_Gfx:: @ 0x080EC960
 	.incbin "graphics/intro/scene5mudkip/text_tiles.4bpp"
 	.space 0x20
 
@@ -547,7 +547,7 @@ gIntroScene6Chinchou_Pal:: @ 0x080F61A0
 gIntroScene6Chinchou_BG3Tilemap:: @ 0x080F63A0
 	.incbin "graphics/intro/scene6chinchou/bg3_burst_tilemap.bin"
 
-gIntroScene6ChinchouSprites_Gfx:: @ 0x080F6BA0
+gIntroScene6ChinchouBgTiles_Gfx:: @ 0x080F6BA0
 	.incbin "graphics/intro/scene6chinchou/tiles.4bpp"
 	.space 0x20
 
@@ -557,7 +557,7 @@ gIntroScene6Chinchou_BG2Tilemap:: @ 0x080FCFC0
 gIntroScene6Chinchou_BG0Tilemap:: @ 0x080FD7C0
 	.incbin "graphics/intro/scene6chinchou/bg0_chinchou_tilemap.bin"
 
-gIntroScene6Chinchou_BG1Tiles:: @ 0x080FDFC0
+gIntroScene6Chinchou_BG1Tilemap:: @ 0x080FDFC0
 	.incbin "graphics/intro/scene6chinchou/bg1_ball_tilemap.bin"
 
 gIntroScene6ChinchouStars_Gfx:: @ 0x080FFFC0
@@ -570,7 +570,7 @@ gIntroScene7Parade_Pal:: @ 0x08100FE0
 gIntroScene7Parade_BG3Tilemap:: @ 0x081011E0
 	.incbin "graphics/intro/scene7parade/bg3_text_tilemap.bin"
 
-gIntroScene7ParadeSprites_Gfx:: @ 0x081019E0
+gIntroScene7ParadeBgTiles_Gfx:: @ 0x081019E0
 	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
 	@ with mostly blank secondary rows (reusing tiles)
 	@ (shown in pink with yellow text)
@@ -579,13 +579,13 @@ gIntroScene7ParadeSprites_Gfx:: @ 0x081019E0
 	.incbin "graphics/intro/scene7parade/tiles.4bpp"
 	.space 0x20
 
-gIntroScene7Parade_BG2Tiles:: @ 0x08106A00
+gIntroScene7Parade_BG2Tilemap:: @ 0x08106A00
 	.incbin "graphics/intro/scene7parade/bg2_makuhita_tilemap.bin"
 
-gIntroScene7Parade_BG0Tiles:: @ 0x08108A00
+gIntroScene7Parade_BG0Tilemap:: @ 0x08108A00
 	.incbin "graphics/intro/scene7parade/bg0_pelipper_tilemap.bin"
 
-gIntroScene7Parade_BG1Tiles:: @ 0x0810AA00
+gIntroScene7Parade_BG1Tilemap:: @ 0x0810AA00
 	.incbin "graphics/intro/scene7parade/bg1_spoink_tilemap.bin"
 
 gIntroScene7ParadeWailmer_Gfx:: @ 0x0810CA00
@@ -598,7 +598,7 @@ gIntroScene8WailmerLaunch_Pal:: @ 0x0810EA20
 gIntroScene8WailmerLaunch_BG2Tilemap:: @ 0x0810EC20
 	.incbin "graphics/intro/scene8wailmerlaunch/bg2_explosion_tilemap.bin"
 
-gIntroScene8WailmerLaunchExplosion_Gfx:: @ 0x0810F420
+gIntroScene8WailmerLaunchBgTiles_Gfx:: @ 0x0810F420
 	.incbin "graphics/intro/scene8wailmerlaunch/explosion_tiles.4bpp"
 	.space 0x20
 

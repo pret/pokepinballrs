@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/kyogre_states.h"
 #include "constants/board/center_screen_states.h"
+#include "constants/mem_layout/kyogre.h"
 
 #define KYOGRE_MODE_TIME TICKS_FOR_TIME(3,0)
 
@@ -1366,7 +1367,7 @@ void AnimateKyogreBackground(void)
     for (i = 0; i < 0x400; i++)
         gBG0TilemapBuffer[0x800 + i] = gKyogreWaterBackgroundTilemap[i] + index * 4;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_KYOGRE_LAYER_3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     index = gKyogreWaterPaletteSegmentCycle[(gMain.systemFrameCount % 96) / 24];
     DmaCopy16(3, gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][index], BG_PLTT_SLOT(PAL_IX_3), PLTT_SLOT_SIZE);
 

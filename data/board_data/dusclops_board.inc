@@ -34,8 +34,8 @@ gDusclopsAnimPalettes:: @ 0x082EE0E0
 	.incbin "graphics/stage/dusclops/anim_frame_29.gbapal"
 	.incbin "graphics/stage/dusclops/anim_frame_30.gbapal"
 
-gDusclopsBoardBG0Tilemap:: @ 0x082EE4C0
-	.incbin "graphics/stage/dusclops/dusclops_board_bg0_tilemap.bin"
+gDusclopsBoardBG3Tilemap:: @ 0x082EE4C0
+	.incbin "graphics/stage/dusclops/dusclops_board_bg3_tilemap.bin"
 
 gDusclopsBoardCollisionTileDataAllLayers:: @ 0x082EECC0
 	.incbin "data/board_data/collision/dusclops/board_tiledata.bin"
@@ -46,11 +46,11 @@ gDusclopsBoardCollisionAngleDataAllLayers:: @ 0x082F0CC0
 gDusclopsBoardCollisionTypeDataAllLayers:: @ 0x082FBE40
 	.incbin "data/board_data/collision/dusclops/board_typedata.bin"
 
-gDusclopsBoardBG1Tilemap:: @ 0x08301700
-	.incbin "graphics/stage/dusclops/dusclops_board_bg1_tilemap.bin"
-
-gDusclopsBoardBG2Tilemap:: @ 0x08301F00
+gDusclopsBoardBG2Tilemap:: @ 0x08301700
 	.incbin "graphics/stage/dusclops/dusclops_board_bg2_tilemap.bin"
+
+gDusclopsBoardBG1Tilemap:: @ 0x08301F00
+	.incbin "graphics/stage/dusclops/dusclops_board_bg1_tilemap.bin"
 
 gBonusFieldCompressedBaseTiles:: @ 0x08302700
 	.incbin "graphics/stage/dusclops/bonus_field_base_tiles.4bpp.lz"

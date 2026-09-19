@@ -7441,7 +7441,7 @@ gKecleonScopeFallTargets:: @ 0x086AEA3C
 	.2byte 1590, 300
 
 gKecleonOverlayTilemapPointers:: @ 0x086AEA50
-    .4byte gKecleonBerryOverlayTilemap
+    .4byte gKecleonScopeOverlayTilemap
     .4byte gKecleonOverlayTilemap1
     .4byte gKecleonOverlayTilemap2
     .4byte gKecleonOverlayTilemap3

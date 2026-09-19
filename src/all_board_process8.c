@@ -160,7 +160,7 @@ void UpdateFrameProcess8_HudUpdate_AllBoards(void)
         gBG0TilemapBuffer[0x7FD] = 0xC19F;
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x7C0], BG_TILE_ADDR(TILE_INDEX(0, 11, 28)), 0x80);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x7C0], BG_VRAM_ADDR_HUD_TILEMAP_DATA, SIZE_OF_VRAM_HUD_TILEMAP_DATA);
 }
 
 void ProcessEventTimer(void)
@@ -193,7 +193,7 @@ void ProcessEventTimer(void)
             gBG0TilemapBuffer[0x199 + i] = 0x1FF;
         }
 
-        DmaCopy16(3, &gBG0TilemapBuffer[0x160], BG_TILE_ADDR(TILE_INDEX(0, 8, 22)), 0x80);
+        DmaCopy16(3, &gBG0TilemapBuffer[0x160], BG_VRAM_ADDR_TIMER_TILEMAP_DATA, SIZE_OF_VRAM_TIMER_TILEMAP_DATA);
         gCurrentPinballGame->eventTimerType = EVENT_TIMER_MODE_NONE;
         gCurrentPinballGame->eventTimer = 0;
     }
@@ -211,7 +211,7 @@ void ProcessEventTimer(void)
                 gBG0TilemapBuffer[i + 0x199] = timerDisplayChar[i] * 2 - 0x3EC0 + 1;
             }
         }
-        DmaCopy16(3, &gBG0TilemapBuffer[0x160],BG_TILE_ADDR(TILE_INDEX(0, 8, 22)), 0x80);
+        DmaCopy16(3, &gBG0TilemapBuffer[0x160],BG_VRAM_ADDR_TIMER_TILEMAP_DATA, SIZE_OF_VRAM_TIMER_TILEMAP_DATA);
     }
 
     if (gCurrentPinballGame->eventTimer <= TIMER_TEXT_RED_UNDER_TIME)
@@ -253,5 +253,5 @@ void ResetEventState(void)
         gBG0TilemapBuffer[0x199 + i] = 0x1FF;
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x160], BG_TILE_ADDR(TILE_INDEX(0, 8, 22)), 0x80);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x160], BG_VRAM_ADDR_TIMER_TILEMAP_DATA, SIZE_OF_VRAM_TIMER_TILEMAP_DATA);
 }

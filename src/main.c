@@ -76,7 +76,7 @@ void VCountIntr(void)
                 REG_DISPSTAT |= (gMain.vCount << 8) + DISPSTAT_VCOUNT_INTR;
             }
         }
-        else if (gMain.scoreOverlayActive)
+        else if (gMain.cutsceneBackdropBarActive)
         {
             if (gMain.vCount == 40)
             {
@@ -155,7 +155,7 @@ static void InitMainState(void)
     gMain.systemFrameCount = 0;
     gMain.idleDemoVariant = 0;
     gMain.vCount = 144;
-    gMain.scoreOverlayActive = FALSE;
+    gMain.cutsceneBackdropBarActive = FALSE;
     ClearHighScoreNameEntry();
     ResetDisplayState();
 }
