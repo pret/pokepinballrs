@@ -2,8 +2,8 @@
 gRayquazaBoardPalette:: @ 0x08363EC8
 	.incbin "graphics/stage/rayquaza/rayquaza_board.gbapal"
 
-gRayquazaBoardBG0Tilemap:: @ 0x083640C8
-	.incbin "graphics/stage/rayquaza/rayquaza_board_bg0_tilemap.bin"
+gRayquazaBoardBG3Tilemap:: @ 0x083640C8
+	.incbin "graphics/stage/rayquaza/rayquaza_board_bg3_tilemap.bin"
 
 gRayquazaBoardCollisionTileDataAllLayers:: @ 0x083650C8
 	.incbin "data/board_data/collision/rayquaza/board_tiledata.bin"
@@ -17,8 +17,8 @@ gRayquazaBoardCollisionTypeDataAllLayers:: @ 0x0836C048
 gRayquazaBoardBGScrollTilemap:: @ 0x0836E808
 	.incbin "graphics/stage/rayquaza/rayquaza_board_scroll_tilemap.bin"
 
-gRayquazaBoardBG1Tilemap:: @ 0x0836F808
-	.incbin "graphics/stage/rayquaza/rayquaza_board_bg1_tilemap.bin"
+gRayquazaBoardBG2Tilemap:: @ 0x0836F808
+	.incbin "graphics/stage/rayquaza/rayquaza_board_bg2_tilemap.bin"
 
 gRayquazaBoardCompressedBGTiles:: @ 0x08370808
 	.incbin "graphics/stage/rayquaza/rayquaza_board_bg_tiles.4bpp.lz"

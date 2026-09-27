@@ -74,7 +74,7 @@ struct Main
     /*0x26*/ s16 vCount;
     /*0x28*/ s16 shopPanelActive;
     /*0x2A*/ s16 shopPanelSlideOffset;
-    /*0x2C*/ s16 scoreOverlayActive;
+    /*0x2C*/ s16 cutsceneBackdropBarActive;
     /*0x2E*/ s16 kecleonOverlayHeight;
     /*0x30*/ u16 idleDemoVariant;
     /*0x32*/ u8 filler32[0x4];

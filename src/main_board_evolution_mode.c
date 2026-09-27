@@ -250,7 +250,7 @@ void UpdateEvolutionMode(void)
 
                 if (gCurrentPinballGame->stageTimer < 30)
                 {
-                    gMain.scoreOverlayActive = TRUE;
+                    gMain.cutsceneBackdropBarActive = TRUE;
                     var0 = gCurrentPinballGame->stageTimer;
                     gCurrentPinballGame->cutsceneTilemapColumn = gCurrentPinballGame->stageTimer;
                     for (i = 0; i <= var0; i++)
@@ -259,7 +259,7 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) * 0x20) + i] = 0xC100;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
                 }
 
                 if (gCurrentPinballGame->stageTimer >= 240 && gCurrentPinballGame->stageTimer < 270)
@@ -271,10 +271,10 @@ void UpdateEvolutionMode(void)
                             gBG0TilemapBuffer[((j + 15) << 5) + i] = 0x1FF;
                     }
 
-                    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+                    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
                     if (gCurrentPinballGame->stageTimer == 269)
                     {
-                        gMain.scoreOverlayActive = FALSE;
+                        gMain.cutsceneBackdropBarActive = FALSE;
                         gMain.blendControl = 0;
                         gMain.blendBrightness = 0;
                         gMain.blendAlpha = 0;
@@ -388,7 +388,7 @@ void UpdateEvolutionItemAnimation(void)
         if (gCurrentPinballGame->evoItemAppearTimer == 80)
         {
             gCurrentPinballGame->activeFxType = FX_EVO_ITEM_SPAWN;
-            DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
+            DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_ITEM_SPAWN_TILES);
             DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(PAL_IX_EVO_ITEM), PLTT_SLOT_SIZE);
             gCurrentPinballGame->evoItemAnimFrame = 0;
             gCurrentPinballGame->evoItemAnimFrameTimer = 0;
@@ -471,7 +471,7 @@ void UpdateEvolutionItemAnimation(void)
         if (index > 14)
             index = 14;
 
-        DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] + index * 0x200, OBJ_TILE_ADDR(TILE_INDEX(0, 5, 22)), 0x200);
+        DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] + index * SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE, OBJ_VRAM_ADDR_EVO_ITEM_STABLE_TILE, SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;

@@ -639,7 +639,7 @@ u16 PixelWalkCollisionDetection(struct Vector16* ballPosition, struct Vector16 m
     gCurrentPinballGame->collisionResolutionState = COLLISION_RESOLUTION_STATE_NONE;
     gCurrentPinballGame->collisionBounceBehaviorType = COLLISION_BOUNCE_BEHAVIOR_TYPE_NORMAL;
 
-    boardCollisionFunc = BoardCollisionFuncts_086ACE0C[gMain.selectedField];
+    boardCollisionFunc = BoardCollisionFuncts[gMain.selectedField];
 
     do
     {

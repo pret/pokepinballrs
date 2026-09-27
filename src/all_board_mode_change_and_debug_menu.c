@@ -3,6 +3,8 @@
 #include "main.h"
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
+#include "constants/mem_layout/shared.h"
+#include "constants/mem_layout/ruby.h"
 
 #define BALL_NORMAL_LAUNCH_SAVER_TIME TICKS_FOR_TIME(0,30)
 #define BONUS_SCORE_TALLY_STEP (200 * SCORE_K)
@@ -18,7 +20,7 @@ extern const u8 gMainBoardBallSave_Gfx[];
 extern const u8 gMainBoardBallSaveLatios_Gfx[];
 extern const u8 gMainBoardBallSaveLatiosArm_Gfx[];
 extern const u8 gMainBoardEndOfBall_Gfx[];
-extern const u8 gBonusSummaryCharTiles[][0x20];
+extern const u8 gEobBonusSummaryCharTiles[][0x20];
 extern const u8 gMainBoardGameOverText_Gfx[];
 extern const Palette gBallSaver_Ruby_Pal;
 extern const Palette gBallSaver_Sapphire_Pal;
@@ -117,7 +119,7 @@ void DebugMenu_RenderAndHandleInput(void)
     for (i = 0x340; i < 0x380; i++)
         gBG0TilemapBuffer[i] += 0xC100;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_DEBUG_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     if (JOY_HELD(A_BUTTON))
         ClearDebugTextDisplay();
 }
@@ -156,7 +158,7 @@ void GameOverAnimation(void)
 
     if (gMain.animationTimer == 3600)
     {
-        DmaCopy16(3, gMainBoardGameOverText_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x400);
+        DmaCopy16(3, gMainBoardGameOverText_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_GAME_OVER_TEXT_TILES);
         gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT]->active = TRUE;
         for (i = 0; i < 8; i++)
         {
@@ -206,7 +208,7 @@ void EndOfBallSequence(void)
             gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_0].active = TRUE;
             gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_1].active = TRUE;
             gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_2].active = TRUE;
-            DmaCopy16(3, gMainBoardEndOfBall_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
+            DmaCopy16(3, gMainBoardEndOfBall_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES);
             if (gMain.selectedField == FIELD_RUBY)
             {
                 DmaCopy16(3, gEndOfBallBonus_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
@@ -455,14 +457,14 @@ void BallSaverAnimation(void)
             gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM].active = TRUE;
             if (gMain.selectedField == FIELD_RUBY)
             {
-                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
-                DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 10, 0)), 0x800);
-                DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 12, 0)), 0xC0);
+                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES);
+                DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, OBJ_VRAM_ADDR_LATIOS_BALL_SAVER_TILES, SIZE_OF_VRAM_LATIOS_BALL_SAVER_TILES);
+                DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, OBJ_VRAM_ADDR_LATIOS_ARM_TILES, SIZE_OF_VRAM_LATIOS_ARM_TILES);
                 DmaCopy16(3, gBallSaver_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
             }
             else
             {
-                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
+                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES);
                 DmaCopy16(3, gBallSaver_Sapphire_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
             }
 
@@ -503,7 +505,7 @@ void ClearDebugTextDisplay(void)
     for (i = 0x340; i < 0x380; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_DEBUG_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 }
 
 void DebugMoveBallPosition(void)
@@ -599,13 +601,11 @@ void EndOfBallBonusSummary(void)
 
             if (gCurrentPinballGame->bonusTextRevealMask[i][j])
             {
-                //OBJ_TILE_ADDR(TILE_INDEX(1, 13, 22 * i + j))
-                DmaCopy16(3, gBonusSummaryCharTiles[var1], OBJ_TILE_ADDR(TILE_INDEX(1, 8, 0)) + (j + i * 22 + 160) * 0x20, 0x20);
+                DmaCopy16(3, gEobBonusSummaryCharTiles[var1], OBJ_VRAM_ADDR_END_OF_BALL_BONUS_SUMMARY_TEXT(i,j), SIZE_OF_VRAM_END_OF_BALL_BONUS_SUMMARY_TEXT_CHAR_TILES);
             }
             else
             {
-                //OBJ_TILE_ADDR(TILE_INDEX(1, 13, 22 * i + j))
-                DmaCopy16(3, gBonusSummaryCharTiles[48], OBJ_TILE_ADDR(TILE_INDEX(1, 8, 0)) + (j + i * 22 + 160) * 0x20, 0x20);
+                DmaCopy16(3, gEobBonusSummaryCharTiles[48], OBJ_VRAM_ADDR_END_OF_BALL_BONUS_SUMMARY_TEXT(i,j), SIZE_OF_VRAM_END_OF_BALL_BONUS_SUMMARY_TEXT_CHAR_TILES);
             }
         }
     }

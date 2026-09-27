@@ -11,6 +11,8 @@
 #include "constants/ereader.h"
 #include "constants/pinball_inputs.h"
 #include "constants/numbers.h"
+#include "constants/palette_mappings.h"
+#include "constants/mem_layout/shared.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -215,7 +217,7 @@ struct PinballGame
     /*0x05C*/ s16 flipperLaunchPending;
     /*0x05E*/ u8 filler5E[0x2];
     /*0x060*/ struct Vector16 flipperLaunchVelocity;
-    /*0x064*/ s16 ballLaunchSpeed;
+    /*0x064*/ s16 prevScrollYTileIx;
     /*0x066*/ u16 activeBallIndex;
     /*0x068*/ s16 cameraYViewport;
     /*0x06A*/ s16 hudSpriteBaseY;
@@ -241,7 +243,7 @@ struct PinballGame
     /*0x0C6*/ u16 jirachiCenterY;
     /*0x0C8*/ u8 fillerC8[0x2];
     /*0x0CA*/ s16 scrollEffectX;
-    /*0x0CC*/ s16 scrollEffectY;
+    /*0x0CC*/ s16 scrollEffectYpx;
     /*0x0CE*/ u16 unkCE;
     /*0x0D0*/ struct Vector16 ballTrailPosition[5];
     /*0x0E4*/ u8 activeFxType;
@@ -320,7 +322,7 @@ struct PinballGame
     /*0x1A9*/ u8 shopBgAnimFrame;
     /*0x1AA*/ s8 shopPikaSaverMaxed;
     /*0x1AB*/ s8 shopDoorOpenLevel;
-    /*0x1AC*/ s8 shopSignFrame;
+    /*0x1AC*/ s8 sapphireShopSignFrame;
     /*0x1AD*/ s8 shopSignPaletteIndex;
     /*0x1AE*/ u8 shopOutcomeRepeatCount;
     /*0x1AF*/ u8 shopExtraBallPreviouslyPurchased;
@@ -467,7 +469,7 @@ struct PinballGame
     /*0x2F1*/ u8 shopDoorCurrentFrame;
     /*0x2F2*/ u16 shopDoorAnimDelay;
     /*0x2F4*/ s8 catchHoleAnimFrame; //Sharpedo/Wailmer Oam Ix
-    /*0x2F5*/ s8 catchHoleTileVariant; //Sharpedo tile variant Ix
+    /*0x2F5*/ s8 sharpedoNextTileIx; //Sharpedo tile variant Ix
     /*0x2F6*/ u16 catchHolePauseTimer;
     /*0x2F8*/ s8 ballPowerUpOverride;
     /*0x2F9*/ s8 nuzleafPositionIndex;
@@ -570,7 +572,7 @@ struct PinballGame
     /*0x3DC*/ s8 bossEntityState;
     /*0x3DD*/ s8 bossNextAttackState;
     /*0x3DE*/ s8 kecleonFramesetBase;
-    /*0x3DF*/ s8 bossVulnerable;
+    /*0x3DF*/ s8 bossNextFrameId;
     /*0x3E0*/ s8 dusclopsWalkFootIndex;
     /*0x3E1*/ s8 bossMovementPhase;
     /*0x3E2*/ s16 bossFramesetIndex;
@@ -893,13 +895,13 @@ struct PinballGame
     /*0x1106*/volatile u16 pauseBlendControl;
     /*0x1108*/volatile u16 pauseBlendAlpha;
     /*0x110A*/volatile u16 pauseBlendBrightness;
-    /*0x110C*/u16 pauseScoreOverlayActive;
+    /*0x110C*/u16 pauseCutsceneBackdropBarActive;
     /*0x110E*/u16 pauseVCount;
     // Values preserved from before pause (restored when unpausing)
     /*0x1110*/volatile u16 savedBlendControl;
     /*0x1112*/volatile u16 savedBlendAlpha;
     /*0x1114*/volatile u16 savedBlendBrightness;
-    /*0x1116*/u16 savedScoreOverlayActive;
+    /*0x1116*/u16 savedcutsceneBackdropBarActive;
     /*0x1118*/u16 savedVCount;
     /*0x111A*/Palette pauseObjPalette[PALETTES_PER_BANK];
     /*0x131A*/u8 filler131A[0x2];
@@ -1024,7 +1026,7 @@ extern struct SongHeader se_dusclops_appear;
 extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
 extern const s16 gBounceBackForceMagnitudes[9];
 typedef s16 (*BoardCollisionFunc)(struct Vector16*, u16*);
-extern BoardCollisionFunc BoardCollisionFuncts_086ACE0C[8];
+extern BoardCollisionFunc BoardCollisionFuncts[8];
 extern struct Vector16 gWallEscapeOffsets[4];
 extern struct FlipperLineSegment gFlipperLineGeometry[13];
 extern u16 gFlipperBaseXPositions[2];
@@ -1032,7 +1034,7 @@ extern const u8 *const gModeBannerTilemaps[];
 extern const Palette *const gModeBanner_Pals[];
 extern s16 DuclopsFramesetData[][2];
 extern u16 gModeBannerOamAttributes[14][45];
-extern const u8 gPokemonNameDisplayGfx[];
+extern const u8 gMartEvoForegroundMenuUx_Gfx[];
 extern const Palette gShopNameDisplay_Pals[];
 extern const u16 gShopCursorToItemMap[];
 extern u8 gShopModeBG0_0_Tilemap[];
@@ -1050,15 +1052,15 @@ extern u8 *gMonPortraitGroupGfx[];
 extern const Palette *gMonPortraitGroupPals[];
 extern u8 gCatchSpriteGfxBuffer[];
 extern u8 gCatchSpriteFlashGfx[];
-extern const u8 gPikaSaverFullCoverageGfx[];
-extern const u8 gPikaSaverPartialCoverageGfx[];
+extern const u8 gPichuKickbackFx_Gfx[];
+extern const u8 gPikachuKickbackFx_Gfx[];
 extern const u8 gPortraitAnimFrameGraphics[][0x300];
 extern const u8 gBallRotationTileGraphics[][0x80];
 extern const u8 gBallUpgradeFx_Gfx[][0x200];
 extern const u8 gMainStageBonusTrap_Gfx[][0x300];
 extern const u8 gLocationPortraitGfx[][0x300];
 extern const u8 gChargeFillIndicator_Gfx[][0x80];
-extern const u8 gPikaSaverTilesGfx[];
+extern const u8 gPikachuSaverTilesGfx[];
 extern const u8 gMainBoardPikaSpinner_Gfx[][0x120];
 extern const u8 gEggFrameTilesGfx[][0x200];
 extern const u8 *gEvoItemTilesGfxPtrs[];

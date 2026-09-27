@@ -3,6 +3,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 #include "constants/board/kecleon_states.h"
+#include "constants/mem_layout/kecleon.h"
 
 #define KECLEON_MODE_TIME TICKS_FOR_TIME(2,0)
 
@@ -28,7 +29,7 @@ struct KecleonSpriteSortEntry
 };
 
 extern const u8 gKecleonBonusClear_Gfx[];
-extern const u16 gKecleonBerryOverlayTilemap[];
+extern const u16 gKecleonScopeOverlayTilemap[];
 extern const u8 gKecleonStageKecleon_Gfx[][0x280];
 extern const u8 gKecleonStageKecleonFx_Gfx[][0x100];
 extern struct SongHeader se_kecleon_side_look;
@@ -71,7 +72,7 @@ void InitFrameProcess3_BoardLogic_KecleonBoard(void)
     gCurrentPinballGame->bossEntityState = KECLEON_ENTITY_STATE_SPAWN;
     gCurrentPinballGame->bossPositionX = 750;
     gCurrentPinballGame->bossPositionY = 360;
-    gCurrentPinballGame->bossVulnerable = 3;
+    gCurrentPinballGame->bossNextFrameId = 3;
     gCurrentPinballGame->bonusModeHitCount = 0;
     gCurrentPinballGame->boardEntityCollisionMode = KECLEON_COLLISION_MODE_NONE;
     gCurrentPinballGame->bannerSlideYOffset = 0;
@@ -169,7 +170,7 @@ void UpdateFrameProcess3_BoardLogic_KecleonBoard(void)
             gCurrentPinballGame->stageTimer = 0;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-            DmaCopy16(3, gKecleonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+            DmaCopy16(3, gKecleonBonusClear_Gfx, OBJ_VRAM_ADDR_KECLEON_BANNER_TILES, SIZE_OF_VRAM_KECLEON_BANNER_TILES);
             gCurrentPinballGame->bannerSlideYOffset = 0x88;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         }
@@ -775,7 +776,7 @@ void RenderKecleonSprites(void)
 {
     s16 i;
     struct SpriteGroup *spriteGroup;
-    s16 sp0;
+    s16 frameId;
     s16 sp4;
     struct OamDataSimple *oamSimple;
     u16 *dst;
@@ -789,9 +790,9 @@ void RenderKecleonSprites(void)
     if (!spriteGroup->active)
         return;
 
-    sp0 = gCurrentPinballGame->bossVulnerable;
-    gCurrentPinballGame->bossVulnerable = gKecleonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][2];
-    DmaCopy16(3, gKecleonStageKecleon_Gfx[sp0], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 9)), 0x280);
+    frameId = gCurrentPinballGame->bossNextFrameId;
+    gCurrentPinballGame->bossNextFrameId = gKecleonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][2];
+    DmaCopy16(3, gKecleonStageKecleon_Gfx[frameId], OBJ_VRAM_ADDR_KECLEON_TILES, SIZE_OF_VRAM_KECLEON_TILES);
     sp4 = gKecleonAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][0];
     spriteGroup->baseX = gCurrentPinballGame->bossPositionX / 10 + baseX - gCurrentPinballGame->cameraXOffset;
     spriteGroup->baseY = gCurrentPinballGame->bossPositionY / 10 + baseY - gCurrentPinballGame->cameraYOffset;
@@ -839,7 +840,7 @@ void RenderKecleonSprites(void)
         {
             gOamBuffer[oamSimple->oamId].x += spriteGroup->baseX;
             gOamBuffer[oamSimple->oamId].y += spriteGroup->baseY;
-            if (gCurrentPinballGame->bossVulnerable == 20) {
+            if (gCurrentPinballGame->bossNextFrameId == 20) {
                 if(gCurrentPinballGame->bossFrameTimer < 10)
                     gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_10;
                 else
@@ -876,7 +877,7 @@ void RenderKecleonSprites(void)
         {
             gOamBuffer[oamSimple->oamId].x += spriteGroup->baseX;
             gOamBuffer[oamSimple->oamId].y += spriteGroup->baseY;
-            if (sp0 == 20)
+            if (frameId == 20)
             {
                 if (gCurrentPinballGame->bossFrameTimer < 10)
                     gOamBuffer[oamSimple->oamId].paletteNum = PAL_IX_11;
@@ -901,7 +902,7 @@ void RenderKecleonSprites(void)
     var0 = gCurrentPinballGame->kecleonCollisionEnabled * 3;
     var1 = gCurrentPinballGame->kecleonDustGfxFrame / 8 - 2;
 
-    DmaCopy16(3, gKecleonStageKecleonFx_Gfx[var0 - var1], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 29)), 0x100);
+    DmaCopy16(3, gKecleonStageKecleonFx_Gfx[var0 - var1], OBJ_VRAM_ADDR_KECLEON_TRIP_FX_TILES, SIZE_OF_VRAM_KECLEON_TRIP_FX_TILES);
     if (gCurrentPinballGame->kecleonDustGfxFrame > 0)
     {
         gCurrentPinballGame->kecleonDustGfxFrame--;
@@ -1056,7 +1057,7 @@ void UpdateKecleonScopeVision(void)
         {
             for (j = 0; j < 4; j++)
             {
-                gBG0TilemapBuffer[0x408 + ((i + 6) * 0x20) + j] = gKecleonBerryOverlayTilemap[((i + 21) * 0x20) + (j + var3 * 4)];
+                gBG0TilemapBuffer[0x408 + ((i + 6) * 0x20) + j] = gKecleonScopeOverlayTilemap[((i + 21) * 0x20) + (j + var3 * 4)];
             }
         }
 
@@ -1066,7 +1067,7 @@ void UpdateKecleonScopeVision(void)
 
         for (j = 0; j < var2; j++)
         {
-            gBG0TilemapBuffer[0x4C3 + j] = gKecleonBerryOverlayTilemap[0x2EC + j];
+            gBG0TilemapBuffer[0x4C3 + j] = gKecleonScopeOverlayTilemap[0x2EC + j];
         }
     }
 
@@ -1076,7 +1077,7 @@ void UpdateKecleonScopeVision(void)
         {
             for (j = 0; j < 6; j++)
             {
-                gBG0TilemapBuffer[0x411 + ((i + 14) * 0x20) + j] = gKecleonBerryOverlayTilemap[((i + 21) * 0x20) + (j + 0xC + var3 * 6)];
+                gBG0TilemapBuffer[0x411 + ((i + 14) * 0x20) + j] = gKecleonScopeOverlayTilemap[((i + 21) * 0x20) + (j + 0xC + var3 * 6)];
             }
         }
 
@@ -1086,11 +1087,11 @@ void UpdateKecleonScopeVision(void)
 
         for (j = 0; j < var2; j++)
         {
-            gBG0TilemapBuffer[0x5F7 + j] = gKecleonBerryOverlayTilemap[0x2EC + j];
+            gBG0TilemapBuffer[0x5F7 + j] = gKecleonScopeOverlayTilemap[0x2EC + j];
         }
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_TILE_ADDR(TILE_INDEX(0,4,0)), 0x500);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_VRAM_ADDR_KECLEON_SCOPE_OVERLAY_TILEMAP, SIZE_OF_VRAM_KECLEON_SCOPE_OVERLAY_TILEMAP);
 }
 
 void RenderKecleonBoardElements(void)

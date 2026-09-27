@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/groudon_states.h"
 #include "constants/board/center_screen_states.h"
+#include "constants/mem_layout/groudon.h"
 
 #define GROUDON_MODE_TIME TICKS_FOR_TIME(3,0)
 
@@ -64,7 +65,7 @@ void InitFrameProcess3_BoardLogic_GroudonBoard(void)
     gCurrentPinballGame->bossEntityState = GROUDON_ENTITY_STATE_SPAWN;
     gCurrentPinballGame->bossNextAttackState = 0;
     gCurrentPinballGame->kecleonFramesetBase = 0;
-    gCurrentPinballGame->bossVulnerable = 0;
+    gCurrentPinballGame->bossNextFrameId = 0;
     gCurrentPinballGame->dusclopsWalkFootIndex = 0;
     gCurrentPinballGame->bossFramesetIndex = 0;
     gCurrentPinballGame->bossMovementPhase = 0;
@@ -129,7 +130,7 @@ void InitFrameProcess3_BoardLogic_GroudonBoard(void)
     UpdateGroudonFieldEntities();
     UpdateGroudonEntityLogic();
     RenderGroudonSprites();
-    DmaCopy16(3, gGroudonAttackFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+    DmaCopy16(3, gGroudonAttackFx_Gfx, OBJ_VRAM_ADDR_GROUDON_ATTACK_FX_TILES, SIZE_OF_VRAM_GROUDON_ATTACK_FX_TILES);
     AnimateGroudonBackground();
     m4aSongNumStart(MUS_BONUS_FIELD_GROUDON);
     DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
@@ -174,7 +175,7 @@ void UpdateFrameProcess3_BoardLogic_GroudonBoard(void)
             gCurrentPinballGame->stageTimer = 0;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-            DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+            DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_VRAM_ADDR_GROUDON_BANNER_TILES, SIZE_OF_VRAM_GROUDON_BANNER_TILES);
             gCurrentPinballGame->bannerSlideYOffset = 136;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
             gCurrentPinballGame->cameraLocked = TRUE;
@@ -216,7 +217,7 @@ void UpdateFrameProcess3_BoardLogic_GroudonBoard(void)
         gCurrentPinballGame->stageTimer = 140;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-        DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+        DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_VRAM_ADDR_GROUDON_BANNER_TILES, SIZE_OF_VRAM_GROUDON_BANNER_TILES);
         gCurrentPinballGame->bannerSlideYOffset = 136;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         break;
@@ -1344,7 +1345,7 @@ void UpdateGroudonFieldEntities(void)
             }
 
             frameIx = gCurrentPinballGame->boulderSpriteFrame[i];
-            DmaCopy16(3, gGroudonBoardBoulders_Gfx[frameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 29 + i * 24)) , 0x300);
+            DmaCopy16(3, gGroudonBoardBoulders_Gfx[frameIx], OBJ_VRAM_ADDR_GROUDON_BOULDER_TILES + i * SIZE_OF_VRAM_GROUDON_BOULDER_TILES, SIZE_OF_VRAM_GROUDON_BOULDER_TILES);
 
             group->baseX = (gCurrentPinballGame->boulderGroundPosition[i].x / 10) + i - gCurrentPinballGame->cameraXOffset;
             group->baseY = (gCurrentPinballGame->boulderFallHeight[i] / 10) + (gCurrentPinballGame->boulderGroundPosition[i].y / 10) - gCurrentPinballGame->cameraYOffset;

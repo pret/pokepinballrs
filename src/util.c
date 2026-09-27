@@ -49,7 +49,7 @@ void FadeOutScreen(void)
 
     gMain.dispcntBackup |= DISPCNT_FORCED_BLANK;
     REG_DISPCNT |= DISPCNT_FORCED_BLANK;
-    DmaFill16(3, 0, (void *)BG_TILE_ADDR(TILE_INDEX(0,0,0)), 0x18000);
+    DmaFill16(3, 0, (void *)VRAM, VRAM_SIZE);
     REG_BG0HOFS = 0;
     REG_BG0VOFS = 0;
     REG_BG1HOFS = 0;
@@ -112,7 +112,7 @@ void ResetDisplayState(void)
     gMain.blendControl = 0;
     gMain.blendAlpha = 0;
     gMain.blendBrightness = 0;
-    gMain.scoreOverlayActive = FALSE;
+    gMain.cutsceneBackdropBarActive = FALSE;
 }
 
 void ClearGraphicsMemory(void)

@@ -74,7 +74,7 @@ void UpdateFrameProcess4_FlipperLogic_MainBoards(void)
             spriteGroup->baseX = gFlipperBaseXPositions[i] - gCurrentPinballGame->cameraXOffset;
             spriteGroup->baseY = gBoardConfig.fieldLayout.flipperBaseY - gCurrentPinballGame->cameraYOffset;
 
-            DmaCopy16(3, gFlipper_Gfx[flipperTileIndex], OBJ_TILE_ADDR(TILE_INDEX(0, 0, i * 16)), 16 * 0x20);
+            DmaCopy16(3, gFlipper_Gfx[flipperTileIndex], OBJ_VRAM_ADDR_FLIPPER_LEFT_TILES + i * SIZE_OF_VRAM_FLIPPER_TILES, SIZE_OF_VRAM_FLIPPER_TILES);
 
             oamData = &spriteGroup->oam[0];
             gOamBuffer[oamData->oamId].x = oamData->xOffset + spriteGroup->baseX;
@@ -188,7 +188,7 @@ void UpdateFrameProcess4_FlipperLogic_BonusBoards(void)
             spriteGroup->baseX = gFlipperBaseXPositions[i] - gCurrentPinballGame->cameraXOffset;
             spriteGroup->baseY = gBoardConfig.fieldLayout.flipperBaseY - gCurrentPinballGame->cameraYOffset;
 
-            DmaCopy16(3, gFlipper_Gfx[flipperTileIndex], OBJ_TILE_ADDR(TILE_INDEX(0, 0, i * 16)), 16 * 0x20);
+            DmaCopy16(3, gFlipper_Gfx[flipperTileIndex], OBJ_VRAM_ADDR_FLIPPER_LEFT_TILES + i * SIZE_OF_VRAM_FLIPPER_TILES, SIZE_OF_VRAM_FLIPPER_TILES);
 
             if (spriteGroup->baseY > 180)
                 spriteGroup->baseY = 180;

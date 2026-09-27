@@ -4,6 +4,7 @@
 #include "titlescreen.h"
 #include "main.h"
 #include "constants/bg_music.h"
+#include "constants/mem_layout/titlescreen.h"
 
 static void TitleScreen_CheckDeleteKeyComboPressed(void);
 static void CheckEReaderAccessCombo(void);
@@ -52,24 +53,24 @@ void LoadTitlescreenGraphics(void)
     REG_DISPCNT |= DISPCNT_BG1_ON;
     gMain.dispcntBackup = REG_DISPCNT;
 
-    DmaCopy16(3, gTitlescreenBg_Gfx, BG_TILE_ADDR(TILE_INDEX(1,0,0)), 0xA000);
+    DmaCopy16(3, gTitlescreenBg_Gfx, BG_VRAM_ADDR_TITLESCREEN_TILES, 0xA000);
     DmaCopy16(3, gTitlescreenBg_Pals, BG_PLTT, BG_PLTT_SIZE);
-    DmaCopy16(3, gTitlescreenBgTilemap, BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gTitlescreenBgTilemap, BG_VRAM_ADDR_TITLESCREEN_LAYER_1_TILEMAP, BG_SCREEN_SIZE);
 
     SaveFile_ReadSavedGamePresent();
     if (gMain.hasSavedGame == TRUE)
     {
         DmaCopy16(3, gTitlescreenSprites_Pals, OBJ_PLTT_SLOT(PAL_IX_0), 5*PLTT_SLOT_SIZE);
-        DmaCopy16(3, gTitlescreenSpritesSavedGame_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x7000);
+        DmaCopy16(3, gTitlescreenSpritesSavedGame_Gfx, OBJ_VRAM_ADDR_TITLESCREEN_MENU_TILES, SIZE_OF_VRAM_TITLESCREEN_MENU_TILES);
         DmaCopy16(3, gGBAButtonIcons_Pals, OBJ_PLTT_SLOT(PAL_IX_5), 2*PLTT_SLOT_SIZE);
-        DmaCopy16(3, gOptionsSprites_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 12, 0)), 0x400);
+        DmaCopy16(3, gOptionsSprites_Gfx, OBJ_VRAM_ADDR_TITLESCREEN_EXTRA_TILES, SIZE_OF_VRAM_TITLESCREEN_EXTRA_TILES);
     }
     else
     {
         DmaCopy16(3, gTitlescreenSprites_Pals, OBJ_PLTT_SLOT(PAL_IX_0), 5*PLTT_SLOT_SIZE);
-        DmaCopy16(3, gTitlescreenSpritesNoSavedGame_Gfx, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x7000);
+        DmaCopy16(3, gTitlescreenSpritesNoSavedGame_Gfx, OBJ_VRAM_ADDR_TITLESCREEN_MENU_TILES, SIZE_OF_VRAM_TITLESCREEN_MENU_TILES);
         DmaCopy16(3, gGBAButtonIcons_Pals, OBJ_PLTT_SLOT(PAL_IX_5), 2*PLTT_SLOT_SIZE);
-        DmaCopy16(3, gOptionsSprites_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 12, 0)), 0x400);
+        DmaCopy16(3, gOptionsSprites_Gfx, OBJ_VRAM_ADDR_TITLESCREEN_EXTRA_TILES, SIZE_OF_VRAM_TITLESCREEN_EXTRA_TILES);
     }
 
     InitTitlescreenStates();
@@ -394,13 +395,13 @@ void TitleScreen7_ProcessMenuItemSelected_NoSavedGame(void)
             if (!gTitlescreen.animPhase)
             {
                 gTitlescreen.animPhase = 1;
-                CopyBgTilesRect((void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), gTempGfxBuffer, 8, 2);
-                CopyBgTilesRect((void *)OBJ_TILE_ADDR(TILE_INDEX(1, 8, 15)), (void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
+                CopyBgTilesRect((void *)OBJ_VRAM_ADDR_MENU_BUTTON_TEXT_TILE_BASE + gTitlescreen.menuCursorIndex * VRAM_MENU_BUTTON_TEXT_TILE_OFFSET, gTempGfxBuffer, 8, 2);
+                CopyBgTilesRect((void *)OBJ_VRAM_ADDR_BLANK_MENU_BUTTON_TILE_BASE, (void *)OBJ_VRAM_ADDR_MENU_BUTTON_TEXT_TILE_BASE + gTitlescreen.menuCursorIndex * VRAM_MENU_BUTTON_TEXT_TILE_OFFSET, 8, 2);
             }
             else
             {
                 gTitlescreen.animPhase = 0;
-                CopyBgTilesRect(gTempGfxBuffer, (void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
+                CopyBgTilesRect(gTempGfxBuffer, (void *)(OBJ_VRAM_ADDR_MENU_BUTTON_TEXT_TILE_BASE + gTitlescreen.menuCursorIndex * VRAM_MENU_BUTTON_TEXT_TILE_OFFSET), 8, 2);
             }
         }
 
@@ -495,13 +496,13 @@ void TitleScreen8_ProcessMenuItemSelected_SavedGame(void)
             if (!gTitlescreen.animPhase)
             {
                 gTitlescreen.animPhase = 1;
-                CopyBgTilesRect((void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), gTempGfxBuffer, 8, 2);
-                CopyBgTilesRect((void *)OBJ_TILE_ADDR(TILE_INDEX(1, 8, 15)), (void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
+                CopyBgTilesRect((void *)OBJ_VRAM_ADDR_MENU_BUTTON_TEXT_TILE_BASE + gTitlescreen.menuCursorIndex * VRAM_MENU_BUTTON_TEXT_TILE_OFFSET, gTempGfxBuffer, 8, 2);
+                CopyBgTilesRect((void *)OBJ_VRAM_ADDR_BLANK_MENU_BUTTON_TILE_BASE, (void *)OBJ_VRAM_ADDR_MENU_BUTTON_TEXT_TILE_BASE + gTitlescreen.menuCursorIndex * VRAM_MENU_BUTTON_TEXT_TILE_OFFSET, 8, 2);
             }
             else
             {
                 gTitlescreen.animPhase = 0;
-                CopyBgTilesRect(gTempGfxBuffer, (void *)(OBJ_TILE_ADDR(TILE_INDEX(0, 0, 15)) + gTitlescreen.menuCursorIndex * 0x800), 8, 2);
+                CopyBgTilesRect(gTempGfxBuffer, (void *)OBJ_VRAM_ADDR_MENU_BUTTON_TEXT_TILE_BASE + gTitlescreen.menuCursorIndex * VRAM_MENU_BUTTON_TEXT_TILE_OFFSET, 8, 2);
             }
         }
 

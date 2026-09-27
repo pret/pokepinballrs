@@ -133,7 +133,7 @@
 #define SE_PICHU_KICKBACK           0xB3 // SE183 Pi~ Chu!
 #define SE_UNUSED_0xB4              0xB4 // ?? Duplicate of SE49; Unused
 #define SE_EMPTY_0xB5               0xB5 // No Sound
-#define SE_RUBY_BUMPER_HIT          0xB6 // SE66 *Puddle slap* (Hit lotad/chinchou/whiscash)
+#define SE_BUMPER_HIT          0xB6 // SE66 *Puddle slap* (Hit lotad/chinchou/whiscash)
 #define SE_CYNDAQUIL_EGG_GUARD_HIT  0xB7 // SE67 *Spring Gate Bounce*
 #define SE_AERODACTYL_EGG_FLIGHT    0xB8 // SE68 *Slap*
 #define SE_CYNDAQUIL_BALL_EJECT_AFTER_EGG_ARRIVAL 0xB9 // SE69 *Fall into water*

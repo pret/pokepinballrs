@@ -4,6 +4,7 @@
 #include "main.h"
 #include "m4a.h"
 #include "titlescreen.h"
+#include "constants/mem_layout/field_select.h"
 
 static void RenderFieldSelectSprites(void);
 static void InitFieldSelectData(void);
@@ -57,13 +58,13 @@ void LoadFieldSelectGraphics(void)
     gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gFieldSelectBGPals,             BG_PLTT,           BG_PLTT_SIZE);
-    DmaCopy16(3, gFieldSelectWindow_Gfx,         BG_TILE_ADDR(TILE_INDEX(1,0,0)),   0x1400);
-    DmaCopy16(3, gFieldSelectMiniFields_Gfx,     BG_TILE_ADDR(TILE_INDEX(2,0,0)),   7*BG_SCREEN_SIZE);
-    DmaCopy16(3, gFieldSelectBG0Tilemap,         BG_TILE_ADDR(TILE_INDEX(0,0,0)),           BG_SCREEN_SIZE);
-    DmaCopy16(3, gFieldSelectFrameShadowTilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
-    DmaCopy16(3, gFieldSelectWindowTilemap,      BG_TILE_ADDR(TILE_INDEX(0,4,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, gFieldSelectWindow_Gfx,         BG_VRAM_ADDR_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_FIELD_SELECT_LAYOUT_TILES);
+    DmaCopy16(3, gFieldSelectMiniFields_Gfx,     BG_VRAM_ADDR_FIELD_SELECT_BOARD_TILES, SIZE_OF_VRAM_FIELD_SELECT_BOARD_TILES);
+    DmaCopy16(3, gFieldSelectBG0Tilemap,         BG_VRAM_ADDR_FIELD_SELECT_BG0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gFieldSelectFrameShadowTilemap, BG_VRAM_ADDR_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gFieldSelectWindowTilemap,      BG_VRAM_ADDR_FIELD_SELECT_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     DmaCopy16(3, gFieldSelectSpritePals,         OBJ_PLTT,          OBJ_PLTT_SIZE);
-    DmaCopy16(3, gFieldSelectSpriteGfx,          OBJ_TILE_ADDR(TILE_INDEX(0,0,0)),         0x4020);
+    DmaCopy16(3, gFieldSelectSpriteGfx,          OBJ_VRAM_ADDR_FIELD_SELECT_SPRITE_TILES,         SIZE_OF_VRAM_FIELD_SELECT_SPRITE_TILES);
 
     EnableVBlankInterrupts();
     InitFieldSelectData();

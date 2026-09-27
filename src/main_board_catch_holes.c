@@ -4,12 +4,13 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 #include "inline_load_lighting_pal.h"
+#include "constants/mem_layout/ruby.h"
 
 /// @brief 
 /// @param arg0 0 = shop, 1= evolution selection
 void UpdateShopEntryAnimation(s16 arg0)
 {
-    int showSelectionUI = FALSE;
+    int showSelectionPrice = FALSE;
 
     if (gMain.modeChangeFlags == MODE_CHANGE_NONE && gCurrentPinballGame->shopEntryTimer != 0)
         gCurrentPinballGame->shopEntryTimer--;
@@ -31,7 +32,7 @@ void UpdateShopEntryAnimation(s16 arg0)
         {
             gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
-            DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x940);
+            DmaCopy16(3, &gMartEvoForegroundMenuUx_Gfx, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
             DmaCopy16(3, gShopNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
         }
 
@@ -68,7 +69,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gCurrentPinballGame->shopSelectedItemId = gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor];
 
             LoadPortraitGraphics(PORTRAIT_STATE_SHOP_SELECTOR, PORTRAIT_MAIN_SLOT);
-            RenderEvolutionUI(1);
+            RenderMartUI(TRUE);
 
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_COINS]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = TRUE;
@@ -76,7 +77,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
 
             DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(PAL_IX_SHOP_UI), PLTT_SLOT_SIZE);
-            DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
+            DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
 
             gMain.bgOffsets[0].yOffset = 80;
             gMain.shopPanelSlideOffset = 0;
@@ -96,7 +97,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             gCurrentPinballGame->rouletteSubOffset = 0;
             gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_SHOP;
             gCurrentPinballGame->creatureOamPriority = 0;
-            showSelectionUI = FALSE;
+            showSelectionPrice = FALSE;
 
             if (gCurrentPinballGame->shopAnimSlideTimer > 0)
             {
@@ -124,7 +125,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                             gCurrentPinballGame->shopSelectedItemId = gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor];
 
                         LoadPortraitGraphics(PORTRAIT_STATE_SHOP_SELECTOR, PORTRAIT_MAIN_SLOT);
-                        showSelectionUI = TRUE;
+                        showSelectionPrice = TRUE;
                     }
                 }
                 else
@@ -162,7 +163,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 }
             }
 
-            RenderEvolutionUI(showSelectionUI);
+            RenderMartUI(showSelectionPrice);
 
             if (gCurrentPinballGame->shopSlideDirection != 0)
             {
@@ -176,7 +177,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             else
                 gCurrentPinballGame->shopBgAnimFrame = 0;
 
-            DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2], BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
+            DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
             gMain.bgOffsets[0].yOffset = 80 - (4 * gMain.shopPanelSlideOffset);
 
             if (gCurrentPinballGame->catchModeEventTimer != 0)
@@ -341,7 +342,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->bannerSlideTimer = 50;
                 gCurrentPinballGame->bannerSlideVelocity = 0;
 
-                DmaCopy16(3, gModeBannerTilemaps[3], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
+                DmaCopy16(3, gModeBannerTilemaps[3], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_LOAD_TILES);
                 DmaCopy16(3, gModeBanner_Pals[3], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
 
                 gMain.blendControl = 206;
@@ -357,7 +358,7 @@ void UpdateShopEntryAnimation(s16 arg0)
             {
                 gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
-                DmaCopy16(3, &gPokemonNameDisplayGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x940);
+                DmaCopy16(3, &gMartEvoForegroundMenuUx_Gfx, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
                 DmaCopy16(3, gEvoNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
             }
 
@@ -386,7 +387,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 else
                     m4aSongNumStart(MUS_EVO_MODE2);
 
-                RenderEvolutionUI(showSelectionUI);
+                RenderMartUI(showSelectionPrice);
 
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_CONFIRMATION_PANEL]->active = TRUE;
                 gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
@@ -399,7 +400,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->shopAnimSlideTimer = 15;
                 gMain.shopPanelActive = TRUE;
 
-                DmaCopy16(3, &gEvoModeBG0_0_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
+                DmaCopy16(3, &gEvoModeBG0_0_Tilemap, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
             }
 
             if (gCurrentPinballGame->shopEntryTimer <= 144)
@@ -632,7 +633,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                         gCurrentPinballGame->shopBgAnimFrame = 0;
                 }
 
-                DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_TILE_ADDR(TILE_INDEX(0,8,0)), 0xC40);
+                DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
                 gMain.bgOffsets[0].yOffset = 80 - (gMain.shopPanelSlideOffset * 4);
 
                 if (gCurrentPinballGame->catchModeEventTimer != 0)
@@ -646,7 +647,7 @@ void UpdateShopEntryAnimation(s16 arg0)
                 else if (gMain.shopPanelSlideOffset <= 19)
                     gMain.shopPanelSlideOffset++;
 
-                RenderEvolutionUI(0);
+                RenderMartUI(FALSE);
             }
 
             if (gCurrentPinballGame->shopAnimSlideTimer <= 0 && gMain.shopPanelSlideOffset > 19 && JOY_NEW(A_BUTTON) == A_BUTTON)

@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/rayquaza_states.h"
 #include "constants/board/center_screen_states.h"
+#include "constants/mem_layout/rayquaza.h"
 
 #define RAYQUAZA_MODE_TIME TICKS_FOR_TIME(3,0)
 
@@ -71,7 +72,7 @@ void InitFrameProcess3_BoardLogic_RayquazaBoard(void)
     gCurrentPinballGame->bossEntityState = RAYQUAZA_ENTITY_STATE_SPAWN;
     gCurrentPinballGame->bossNextAttackState = 0;
     gCurrentPinballGame->kecleonFramesetBase = 0;
-    gCurrentPinballGame->bossVulnerable = 0;
+    gCurrentPinballGame->bossNextFrameId = 0;
     gCurrentPinballGame->dusclopsWalkFootIndex = 0;
     gCurrentPinballGame->bossFramesetIndex = 0;
     gCurrentPinballGame->bossMovementPhase = 0;
@@ -128,8 +129,8 @@ void InitFrameProcess3_BoardLogic_RayquazaBoard(void)
     gCurrentPinballGame->windCloudPosition.y = 0;
     gCurrentPinballGame->flippersDisabled = TRUE;
     UpdateRayquazaIntroSequence();
-    DmaCopy16(3, gRayquazaSkyBackgroundGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
-    DmaCopy16(3, gRayquazaSpriteSheet, OBJ_TILE_ADDR(TILE_INDEX(0, 5, 17)), 0x860);
+    DmaCopy16(3, gRayquazaSkyBackgroundGfx, OBJ_VRAM_ADDR_RAYQUAZA_INTRO_CLOUDS_TILES, SIZE_OF_VRAM_RAYQUAZA_INTRO_CLOUDS_TILES);
+    DmaCopy16(3, gRayquazaSpriteSheet, OBJ_VRAM_ADDR_RAYQUAZA_TILES, SIZE_OF_VRAM_RAYQUAZA_TILES);
     UpdateRayquazaEntityLogic();
     RenderRayquazaSprites();
     DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
@@ -155,7 +156,7 @@ void UpdateFrameProcess3_BoardLogic_RayquazaBoard(void)
         gCurrentPinballGame->stageTimer = 0;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_BANNER_TILES, SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES);
         gCurrentPinballGame->bannerSlideYOffset = 136;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         gCurrentPinballGame->cameraLocked = TRUE;
@@ -196,7 +197,7 @@ void UpdateFrameProcess3_BoardLogic_RayquazaBoard(void)
         gCurrentPinballGame->stageTimer = 140;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_BANNER_TILES, SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES);
         gCurrentPinballGame->bannerSlideYOffset = 136;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         break;
@@ -495,7 +496,7 @@ void UpdateRayquazaEntityLogic(void)
         else
         {
             gCurrentPinballGame->bossEntityState = RAYQUAZA_ENTITY_STATE_FLYBY;
-            DmaCopy16(3, gRayquazaFlyby_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
+            DmaCopy16(3, gRayquazaFlyby_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_FLYBY_TILES, SIZE_OF_VRAM_RAYQUAZA_FLYBY_TILES);
             if (gCurrentPinballGame->windAttackCount & 1)
             {
                 gMain.spriteGroups[SG_RAYQUAZA_ENTITY_FLYBY_RIGHT].active = TRUE;
@@ -644,7 +645,7 @@ void UpdateRayquazaEntityLogic(void)
 
         break;
     case RAYQUAZA_ENTITY_STATE_BOARD_CLEANUP:
-        DmaCopy16(3, gRayquazaSpriteSheet, OBJ_TILE_ADDR(TILE_INDEX(0, 5, 17)), 0x860);
+        DmaCopy16(3, gRayquazaSpriteSheet, OBJ_VRAM_ADDR_RAYQUAZA_TILES, SIZE_OF_VRAM_RAYQUAZA_TILES);
         gCurrentPinballGame->bossEntityState = RAYQUAZA_ENTITY_STATE_FLYDOWN;
         gCurrentPinballGame->bossPositionX = 1140;
         gCurrentPinballGame->bossPositionY = -1200;
@@ -706,7 +707,7 @@ void RenderRayquazaSprites(void)
 {
     s16 i;
     s16 palFlashIx;
-    s16 varSL;
+    s16 frameId;
     s32 temp;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
@@ -716,7 +717,7 @@ void RenderRayquazaSprites(void)
     s16 var1;
     s8 y;
 
-    varSL = 0;
+    frameId = 0;
     palFlashIx = PAL_IX_0;
     group = &gMain.spriteGroups[SG_RAYQUAZA_ENTITY_BACKGROUND_FLY_DOWN];
     if (group->active)
@@ -806,25 +807,25 @@ void RenderRayquazaSprites(void)
             {
                 if (gCurrentPinballGame->legendaryFlashState == 1)
                 {
-                    varSL = 2;
+                    frameId = 2;
                     palFlashIx = PAL_IX_14;
                 }
                 else if (gCurrentPinballGame->legendaryFlashState == 3)
                 {
-                    varSL = 2;
+                    frameId = 2;
                     palFlashIx = PAL_IX_11;
                 }
                 else
                 {
-                    varSL = gCurrentPinballGame->bossVulnerable;
+                    frameId = gCurrentPinballGame->bossNextFrameId;
                     palFlashIx = PAL_IX_15;
                 }
 
                 if (gCurrentPinballGame->captureSequenceTimer == 21)
-                    varSL = 8;
+                    frameId = 8;
 
                 if (gCurrentPinballGame->captureSequenceTimer == 22)
-                    varSL = 9;
+                    frameId = 9;
 
                 oamSimple = &group->oam[0];
                 dst = (u16*)&gOamBuffer[oamSimple->oamId];
@@ -843,24 +844,24 @@ void RenderRayquazaSprites(void)
                     palFlashIx = gOamBuffer[oamSimple->oamId].paletteNum;
             }
 
-            gCurrentPinballGame->bossVulnerable = gRayquazaAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][2];
-            DmaCopy16(3, gRayquazaBodyVariantTiles[varSL], OBJ_TILE_ADDR(TILE_INDEX(0, 5, 17)), 0x800);
+            gCurrentPinballGame->bossNextFrameId = gRayquazaAnimFramesetTable[gCurrentPinballGame->bossFramesetIndex][2];
+            DmaCopy16(3, gRayquazaBodyVariantTiles[frameId], OBJ_VRAM_ADDR_RAYQUAZA_TILES, SIZE_OF_VRAM_RAYQUAZA_YELL_TILES);
         }
 
         group = &gMain.spriteGroups[SG_RAYQUAZA_ENTITY_ROAR_HEAD_EXTENSION];
         if (group->active)
         {
-            if (varSL >= 8)
+            if (frameId >= 8)
             {
                 group->baseX = 0;
                 group->baseY = 0;
-                varSL = 0;
+                frameId = 0;
             }
-            else if (varSL >= 6)
+            else if (frameId >= 6)
             {
                 group->baseX = gCurrentPinballGame->bossPositionX / 10 - (gCurrentPinballGame->cameraXOffset - 88);
                 group->baseY = gCurrentPinballGame->bossPositionY / 10 - gCurrentPinballGame->cameraYOffset + 96;
-                varSL -= 6;
+                frameId -= 6;
             }
             else
             {
@@ -873,7 +874,7 @@ void RenderRayquazaSprites(void)
                 oamSimple = &group->oam[i];
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
-                gOamBuffer[oamSimple->oamId].tileNum = varSL * 12 + i * 8 + 0x109;
+                gOamBuffer[oamSimple->oamId].tileNum = frameId * 12 + i * 8 + 0x109;
                 gOamBuffer[oamSimple->oamId].paletteNum = palFlashIx;
             }
         }
@@ -1401,7 +1402,7 @@ void UpdateRayquazaMinionsAndEffects(void)
 
         if (group->active)
         {
-            DmaCopy16(3, gRayquazaTornadoGfx[sp0], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 21)), 0x280);
+            DmaCopy16(3, gRayquazaTornadoGfx[sp0], OBJ_VRAM_ADDR_RAYQUAZA_TORNADO_TILES, SIZE_OF_VRAM_RAYQUAZA_TORNADO_TILES);
             group->baseX = gCurrentPinballGame->vortexScreenPosition[i].x / 10 - gCurrentPinballGame->cameraXOffset;
             group->baseY = gCurrentPinballGame->vortexScreenPosition[i].y / 10 - gCurrentPinballGame->cameraYOffset;
             for (j = 0; j < 2; j++)

@@ -219,6 +219,18 @@
       "width": 2,
       "palette": "kyogre_board_palset_0.gbapal",
       "palbank": 15
+    },
+    {
+      "gfx_filename": "kyogre_top",
+      "oamshape": "kyogre_top_shape.json",
+      "palette": "kyogre.gbapal",
+      "oam": true
+    },
+    {
+      "gfx_filename": "kyogre_breach",
+      "oamshape": "kyogre_breach_shape.json",
+      "palette": "kyogre.gbapal",
+      "oam": true
     }
   ]
 }

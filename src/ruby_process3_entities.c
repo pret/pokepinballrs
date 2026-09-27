@@ -70,7 +70,7 @@ void UpdateRubyBoardEntityRendering(void)
     ProcessChargeIndicator();
     UpdateRubyBoardAnimations();
     UpdatePortraitSpritePositions();
-    UpdateRubyEvolutionShopSprite();
+    UpdateRubyEvolutionShopSignSprite();
     DrawBoardEdgeBanner();
 
     if (gCurrentPinballGame->coinRewardAmount != 0)

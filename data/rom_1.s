@@ -465,10 +465,10 @@ gIntroScene2PikasSprites_Gfx:: @ 0x080CC6E0
 	.incbin "graphics/intro/scene2pikas/tiles.4bpp"
 	.space 0x20
 
-gIntroScene2Pikas_BG0Tiles:: @ 0x080D0700
+gIntroScene2Pikas_BG0Tilemap:: @ 0x080D0700
 	.incbin "graphics/intro/scene2pikas/bg0_pichu_tilemap.bin"
 
-gIntroScene2Pikas_BG1Tiles:: @ 0x080D2700
+gIntroScene2Pikas_BG1Tilemap:: @ 0x080D2700
 	.incbin "graphics/intro/scene2pikas/bg1_pikachu_tilemap.bin"
 
 gIntroScene3Treecko_Pal:: @ 0x080D4700
@@ -480,7 +480,7 @@ gIntroScene3Treecko_BG2Tilemap:: @ 0x080D4900
 gIntroScene3Treecko_BG3Tilemap:: @ 0x080D5900
 	.incbin "graphics/intro/scene3treecko/bg3_text_tilemap.bin"
 
-gIntroScene3TreeckoSprites_Gfx:: @ 0x080D6100
+gIntroScene3TreeckoBgTiles_Gfx:: @ 0x080D6100
 	@ intro pane with treeko, pinball, flipper
 	.incbin "graphics/intro/scene3treecko/tiles.4bpp"
 	.space 0x20
@@ -507,13 +507,13 @@ gIntroScene4PlusleMinun_Pal:: @ 0x080E1540
 gIntroScene4PlusleMinun_BG3Tilemap:: @ 0x080E1740
 	.incbin "graphics/intro/scene4plusleminun/bg3_text_tilemap.bin"
 
-gIntroScene4PlusleMinunSprites_Gfx:: @ 0x080E1F40
+gIntroScene4PlusleMinunBgTiles_Gfx:: @ 0x080E1F40
 	.incbin "graphics/intro/scene4plusleminun/tiles.4bpp"
 
-gIntroScene4PlusleMinun_BG0Tiles:: @ 0x080E5F60
+gIntroScene4PlusleMinun_BG0Tilemap:: @ 0x080E5F60
 	.incbin "graphics/intro/scene4plusleminun/bg0_minun_tilemap.bin"
 
-gIntroScene4PlusleMinun_BG1Tiles:: @ 0x080E7F60
+gIntroScene4PlusleMinun_BG1Tilemap:: @ 0x080E7F60
 	.incbin "graphics/intro/scene4plusleminun/bg1_plusle_tilemap.bin"
 
 gIntroScene5Mudkip_Pal:: @ 0x080E9F60
@@ -522,13 +522,13 @@ gIntroScene5Mudkip_Pal:: @ 0x080E9F60
 gIntroScene5Mudkip_BG2Tilemap:: @ 0x080EA160
 	.incbin "graphics/intro/scene5mudkip/bg2_2sections_tilemap.bin"
 
-gIntroScene5Mudkip_BG1Tiles:: @ 0x080EB160
+gIntroScene5Mudkip_BG1Tilemap:: @ 0x080EB160
 	.incbin "graphics/intro/scene5mudkip/bg1_1sections_tilemap.bin"
 
 gIntroScene5Mudkip_BG3Tilemap:: @ 0x080EC160
 	.incbin "graphics/intro/scene5mudkip/bg3_text_tilemap.bin"
 
-gIntroScene5MudkipText_Gfx:: @ 0x080EC960
+gIntroScene5MudkipBgTiles_Gfx:: @ 0x080EC960
 	.incbin "graphics/intro/scene5mudkip/text_tiles.4bpp"
 	.space 0x20
 
@@ -547,7 +547,7 @@ gIntroScene6Chinchou_Pal:: @ 0x080F61A0
 gIntroScene6Chinchou_BG3Tilemap:: @ 0x080F63A0
 	.incbin "graphics/intro/scene6chinchou/bg3_burst_tilemap.bin"
 
-gIntroScene6ChinchouSprites_Gfx:: @ 0x080F6BA0
+gIntroScene6ChinchouBgTiles_Gfx:: @ 0x080F6BA0
 	.incbin "graphics/intro/scene6chinchou/tiles.4bpp"
 	.space 0x20
 
@@ -557,7 +557,7 @@ gIntroScene6Chinchou_BG2Tilemap:: @ 0x080FCFC0
 gIntroScene6Chinchou_BG0Tilemap:: @ 0x080FD7C0
 	.incbin "graphics/intro/scene6chinchou/bg0_chinchou_tilemap.bin"
 
-gIntroScene6Chinchou_BG1Tiles:: @ 0x080FDFC0
+gIntroScene6Chinchou_BG1Tilemap:: @ 0x080FDFC0
 	.incbin "graphics/intro/scene6chinchou/bg1_ball_tilemap.bin"
 
 gIntroScene6ChinchouStars_Gfx:: @ 0x080FFFC0
@@ -570,7 +570,7 @@ gIntroScene7Parade_Pal:: @ 0x08100FE0
 gIntroScene7Parade_BG3Tilemap:: @ 0x081011E0
 	.incbin "graphics/intro/scene7parade/bg3_text_tilemap.bin"
 
-gIntroScene7ParadeSprites_Gfx:: @ 0x081019E0
+gIntroScene7ParadeBgTiles_Gfx:: @ 0x081019E0
 	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
 	@ with mostly blank secondary rows (reusing tiles)
 	@ (shown in pink with yellow text)
@@ -579,13 +579,13 @@ gIntroScene7ParadeSprites_Gfx:: @ 0x081019E0
 	.incbin "graphics/intro/scene7parade/tiles.4bpp"
 	.space 0x20
 
-gIntroScene7Parade_BG2Tiles:: @ 0x08106A00
+gIntroScene7Parade_BG2Tilemap:: @ 0x08106A00
 	.incbin "graphics/intro/scene7parade/bg2_makuhita_tilemap.bin"
 
-gIntroScene7Parade_BG0Tiles:: @ 0x08108A00
+gIntroScene7Parade_BG0Tilemap:: @ 0x08108A00
 	.incbin "graphics/intro/scene7parade/bg0_pelipper_tilemap.bin"
 
-gIntroScene7Parade_BG1Tiles:: @ 0x0810AA00
+gIntroScene7Parade_BG1Tilemap:: @ 0x0810AA00
 	.incbin "graphics/intro/scene7parade/bg1_spoink_tilemap.bin"
 
 gIntroScene7ParadeWailmer_Gfx:: @ 0x0810CA00
@@ -598,7 +598,7 @@ gIntroScene8WailmerLaunch_Pal:: @ 0x0810EA20
 gIntroScene8WailmerLaunch_BG2Tilemap:: @ 0x0810EC20
 	.incbin "graphics/intro/scene8wailmerlaunch/bg2_explosion_tilemap.bin"
 
-gIntroScene8WailmerLaunchExplosion_Gfx:: @ 0x0810F420
+gIntroScene8WailmerLaunchBgTiles_Gfx:: @ 0x0810F420
 	.incbin "graphics/intro/scene8wailmerlaunch/explosion_tiles.4bpp"
 	.space 0x20
 
@@ -1403,12 +1403,12 @@ gPortraitAnim_Pals:: @ 0x081C02E4
 
 .include "data/board_data/spheal_board.inc"
 
-gPikaSaverFullCoverageGfx:: @ 0x08395A4C
-	.incbin "graphics/stage/main/pika_saver_full_coverage.4bpp"
+gPichuKickbackFx_Gfx:: @ 0x08395A4C
+	.incbin "graphics/stage/main/pichu_saver_kickback.4bpp"
 	.space 0x20
 
-gPikaSaverPartialCoverageGfx:: @ 0x08397E6C
-	.incbin "graphics/stage/main/pika_saver_partial_coverage.4bpp"
+gPikachuKickbackFx_Gfx:: @ 0x08397E6C
+	.incbin "graphics/stage/main/pikachu_saver_kickback.4bpp"
 	.space 0x20
 
 gCatchTargetCollisionBitmap:: @ 0x0839A28C
@@ -1603,7 +1603,7 @@ gBallSpawnGlowTiles_Type1:: @ 0x083BF16C
 gSpoinkEntity_Gfx:: @ 0x083C076C
 	.incbin "graphics/stage/main/spoink_launcher.4bpp"
 
-gKyogreSplashSpriteFrames:: @ 0x083C13AC
+gKyogreSurfacingFx_Gfx:: @ 0x083C13AC
 	.incbin "graphics/stage/kyogre/surfacing_fx_frames.4bpp"
 
 gKyogreFreeze_Gfx:: @ 0x083C1A6C
@@ -1656,7 +1656,7 @@ gAlphabetTilesGfx:: @ 0x083FF04C
 	.incbin "graphics/stage/main/alphabet.4bpp"
 
 gSpaceTileGfx:: @ 0x083FFD4C
-	.space 0x40
+	.space 0x40  @ Note: this 0x40 space is required, and is used as a tile pair.
 
 gSapphireBoardWailmer_Gfx:: @ 0x083FFD8C
 	.incbin "graphics/stage/sapphire/wailmer.4bpp";
@@ -1676,7 +1676,7 @@ gRubyStageCyndaquil_Gfx:: @ 0x08449D8C
 	.incbin "graphics/stage/ruby/cyndaquil.4bpp"
 
 gJirachiFx_Gfx:: @ 0x0844AA0C
-	.incbin "graphics/stage/main/gunk_0844AA0C.4bpp"
+	.incbin "graphics/stage/main/jirachi_fx.4bpp"
 
 gSapphireStageBasket_Gfx:: @ 0x0844F20C
 	.incbin "graphics/stage/sapphire/seedot_basket.4bpp"
@@ -1687,14 +1687,14 @@ gKecleonStageKecleon_Gfx:: @ 0x0844F98C
 gKecleonStageKecleonFx_Gfx:: @ 0x0845588C
 	.incbin "graphics/stage/kecleon/kecleon_fx.4bpp"
 
-gOneUpBannerSprite_Gfx:: @ 0x08455E8C
-	.incbin "graphics/stage/misc/gunk_08455E8C.4bpp"
+gOneUpTreeckoSprite_Gfx:: @ 0x08455E8C
+	.incbin "graphics/stage/misc/treecko_1_up_deliverer.4bpp"
 
 gLifeCountDigit_Gfx:: @ 0x0845648C
-	.incbin "graphics/stage/misc/gunk_0845648C.4bpp"
+	.incbin "graphics/stage/misc/life_count_digit.4bpp"
 
-gPondBumper_Gfx:: @ 0x0845690C
-	.incbin "graphics/stage/misc/gunk_0845690C.4bpp"
+gShroomishBumperHit_Gfx:: @ 0x0845690C
+	.incbin "graphics/stage/sapphire/shroomish_bumper_hit.4bpp"
 
 gRubyStageNuzleaf_Gfx:: @ 0x0845710C
 	.incbin "graphics/stage/ruby/nuzleaf.4bpp"
@@ -1779,11 +1779,11 @@ gHatchMachineElevator_Gfx:: @ 0x08490A4C
 gDusclopsBoardDusclopsAppearFx_Gfx:: @ 0x08494E4C
 	.incbin "graphics/stage/dusclops/dusclops_appear_fx.4bpp";
 
-gKyogreBodySprites_First15:: @ 0x0849664C
-	.incbin "graphics/stage/kyogre/body_first15.4bpp"
+gKyogreTopPosition_Gfx:: @ 0x0849664C
+	.incbin "graphics/stage/kyogre/kyogre_top.4bpp"
 
-gKyogreBodySprites_After15:: @ 0x0849B8CC
-	.incbin "graphics/stage/kyogre/body_after15.4bpp"
+gKyogreBreach_Gfx:: @ 0x0849B8CC
+	.incbin "graphics/stage/kyogre/kyogre_breach.4bpp"
 
 gGroudonAttackFx_Gfx:: @ 0x0849F1CC
 	.incbin "graphics/stage/groudon/board_fx.4bpp"
@@ -1830,14 +1830,14 @@ gPelipper_Gfx:: @ 0x084BB16C
 gChargeFillIndicator_Gfx:: @ 0x084C00EC
 	.incbin "graphics/stage/main/charge_fill_indicator.4bpp"
 
-gPikaSaverTilesGfx:: @ 0x084C07EC
-	.incbin "graphics/stage/main/pika_saver_tiles.4bpp"
+gPikachuSaverTilesGfx:: @ 0x084C07EC
+	.incbin "graphics/stage/main/pikachu_saver_tiles.4bpp"
 
 gDxModePikachuObjTiles:: @ 0x084C0C6C
 	.incbin "graphics/stage/main/dx_mode_pikachu_obj_tiles.4bpp"
 
-gPikachuSaverTilesGfx:: @ 0x084C156C
-	.incbin "graphics/stage/main/pikachu_saver_tiles.4bpp"
+gPichuSaverTilesGfx:: @ 0x084C156C
+	.incbin "graphics/stage/main/pichu_saver_tiles.4bpp"
 
 gSapphirePlusle_Gfx:: @ 0x084C1E6C
 	.incbin "graphics/stage/sapphire/bumper_plusle.4bpp"
@@ -1854,7 +1854,7 @@ gRubyBoardShopDoor_Gfx:: @ 0x084ED0CC
 	.incbin "graphics/stage/ruby/shop_door.4bpp";
 
 gZigzagoonShockWallIndicator_Gfx:: @ 0x084ED6CC
-	.incbin "graphics/stage/gunk_084ED6CC.4bpp";
+	.incbin "graphics/stage/sapphire/zigzagoon_press_button_indicator.4bpp";
 
 gDusclopsBoardDusclops_Gfx:: @ 0x084EDACC
 	.incbin "graphics/stage/dusclops/dusclops.4bpp";
@@ -1862,8 +1862,8 @@ gDusclopsBoardDusclops_Gfx:: @ 0x084EDACC
 gRubyBoardSharpedo_Gfx:: @ 0x084F5ACC
 	.incbin "graphics/stage/ruby/sharpedo.4bpp";
 
-gPokemonNameDisplayGfx:: @ 0x084F61EC
-	.incbin "graphics/stage/main/gunk_084F61EC.4bpp";
+gMartEvoForegroundMenuUx_Gfx:: @ 0x084F61EC
+	.incbin "graphics/stage/main/mart_evo_menu_foreground.4bpp";
 
 gRubyBoardShop_Gfx:: @ 0x084F6B0C
 	.incbin "graphics/stage/ruby/shop.4bpp";
@@ -1907,8 +1907,8 @@ gMainBoardBallSaveLatiosArm_Gfx:: @ 0x085038CC
 gMainBoardEndOfBall_Gfx:: @ 0x0850398C
 	.incbin "graphics/stage/main/end_of_ball.4bpp";
 
-gBonusSummaryCharTiles:: @ 0x0850558C
-	.incbin "graphics/stage/misc/gunk_0850558C.4bpp";
+gEobBonusSummaryCharTiles:: @ 0x0850558C
+	.incbin "graphics/stage/misc/end_of_ball_summary_text_chars.4bpp";
 
 .space 0x40
 
@@ -2013,7 +2013,7 @@ gOptionsSEList:: @ 0x08527D66
     .2byte SE_BALL_SUMMARY_PAGE_SWIPE, SE_PAUSE_CURSOR_MOVE, SE_BONUS_PANEL_SLIDE, SE_PAUSING, SE_UNPAUSING
     .2byte SE_CATCH_MON_ENTITY_APPEARS, SE_PIKA_CHARGE_DO, SE_PIKA_CHARGE_RE, SE_PIKA_CHARGE_MI, SE_PIKA_CHARGE_FA
     .2byte SE_PIKA_CHARGE_SO, SE_PIKA_CHARGE_LA, SE_PIKA_CHARGE_TI, SE_PIKA_CHARGE_HIGH_DO, SE_EVO_CUTSCENE_MON_PORTRAIT_CHANGE
-    .2byte SE_RUBY_BUMPER_HIT, SE_CYNDAQUIL_EGG_GUARD_HIT, SE_AERODACTYL_EGG_FLIGHT, SE_CYNDAQUIL_BALL_EJECT_AFTER_EGG_ARRIVAL, SE_RUBY_MART_GATE_OPEN
+    .2byte SE_BUMPER_HIT, SE_CYNDAQUIL_EGG_GUARD_HIT, SE_AERODACTYL_EGG_FLIGHT, SE_CYNDAQUIL_BALL_EJECT_AFTER_EGG_ARRIVAL, SE_RUBY_MART_GATE_OPEN
     .2byte SE_SHARPEDO_BALL_EJECT, SE_SHOP_EJECT, SE_MAKUHITA_PUNCH, SE_CHIKORITA_LEAF_BLADE, SE_ZIGZAGOON_EMERGE
     .2byte SE_RUBY_BUMPER_EMERGES, SE_RUBY_BUMPER_LEAVES, SE_RUBY_MART_SIGN_CHANGED, SE_SPOINK_LAUNCHER_CHARGED, SE_SPOINK_LAUNCHER_FIRED
     .2byte SE_SHARPEDO_BITE, SE_NUZLEAF_HIT, SE_NUZLEAF_TEETERING, SE_NUZLEAF_FORMS_BRIDGE, SE_GULPIN_LANDS_OR_LEAVES

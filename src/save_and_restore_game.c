@@ -7,8 +7,16 @@
 #include "constants/board/rayquaza_states.h"
 #include "constants/board/ruby_states.h"
 #include "constants/board/sapphire_states.h"
+#include "constants/mem_layout/dusclops.h"
+#include "constants/mem_layout/kecleon.h"
+#include "constants/mem_layout/kyogre.h"
+#include "constants/mem_layout/groudon.h"
+#include "constants/mem_layout/rayquaza.h"
+#include "constants/mem_layout/spheal.h"
+#include "constants/mem_layout/ruby.h"
+#include "constants/mem_layout/sapphire.h"
 
-extern u8 gBoardGfxBuffer[];
+extern u8 gBoardBGTileBuffer[];
 extern u8 gBoardBGTileBufferAlt[];
 extern const u8 gMainBoardBallSave_Gfx[];
 extern const u8 gMainBoardEndOfBall_Gfx[];
@@ -48,7 +56,7 @@ extern const u8 gSapphireBoardZigzagoonFx_Gfx[];
 extern const u8 gAlphabetTilesGfx[][0x40];
 extern const u8 gSpaceTileGfx[0x40];
 extern const u8 gDecimalDigitTilesGfx[][0x40];
-extern const u8 gPokemonNameDisplayGfx[];
+extern const u8 gMartEvoForegroundMenuUx_Gfx[];
 extern const s16 gCaughtTextChars[];
 
 extern const u8 gHatchMachineElevator_Gfx[][0x440];
@@ -118,7 +126,7 @@ void SaveGameStateSnapshot(s16 arg0)
     gCurrentPinballGame->savedBlendControl = gCurrentPinballGame->pauseBlendControl;
     gCurrentPinballGame->savedBlendAlpha = gCurrentPinballGame->pauseBlendAlpha;
     gCurrentPinballGame->savedBlendBrightness = gCurrentPinballGame->pauseBlendBrightness;
-    gCurrentPinballGame->savedScoreOverlayActive = gCurrentPinballGame->pauseScoreOverlayActive;
+    gCurrentPinballGame->savedcutsceneBackdropBarActive = gCurrentPinballGame->pauseCutsceneBackdropBarActive;
     gCurrentPinballGame->savedVCount = gCurrentPinballGame->pauseVCount;
     gCurrentPinballGame->ballSpeed = gMain_saveData.ballSpeed;
 
@@ -137,7 +145,7 @@ void SaveGameToSram(void)
 void RestoreGameState(u16 arg0)
 {
     s16 i, j;
-    s16 var0, var1;
+    s16 var0, scrollYTileIx;
 
     if (arg0 == 1)
     {
@@ -182,7 +190,7 @@ void RestoreGameState(u16 arg0)
         gMain.blendControl = gCurrentPinballGame->savedBlendControl;
         gMain.blendAlpha = gCurrentPinballGame->savedBlendAlpha;
         gMain.blendBrightness = gCurrentPinballGame->savedBlendBrightness;
-        gMain.scoreOverlayActive = gCurrentPinballGame->savedScoreOverlayActive;
+        gMain.cutsceneBackdropBarActive = gCurrentPinballGame->savedcutsceneBackdropBarActive;
         gMain.vCount = gCurrentPinballGame->savedVCount;
         gMain.bgOffsets[0] = gCurrentPinballGame->bgOffsets0;
         gMain.bgOffsets[1] = gCurrentPinballGame->bgOffsets1;
@@ -215,16 +223,16 @@ void RestoreGameState(u16 arg0)
     {
         for (i = 0; i < 22; i++)
         {
-            var0 = i + gCurrentPinballGame->ballLaunchSpeed;
-            var1 = (i + 10 + gCurrentPinballGame->ballLaunchSpeed) % 22;
+            var0 = i + gCurrentPinballGame->prevScrollYTileIx;
+            scrollYTileIx = (i + 10 + gCurrentPinballGame->prevScrollYTileIx) % 22;
             if (var0 < 32)
             {
-                DmaCopy16(3, &gBoardGfxBuffer[var0 * 0x400], (void *)BG_TILE_ADDR(TILE_INDEX(2,var1,0)), 0x400);
+                DmaCopy16(3, &gBoardBGTileBuffer[var0 * 0x400], (void *) BG_VRAM_ADDR_MAIN_SCROLL_SEGMENT_TILES + scrollYTileIx * MEM_SIZE_OF_TILE_ROW, MEM_SIZE_OF_TILE_ROW);
             }
             else
             {
                 var0 -= 32;
-                DmaCopy16(3, &gBoardBGTileBufferAlt[var0 * 0x400], (void *)BG_TILE_ADDR(TILE_INDEX(2,var1,0)), 0x400);
+                DmaCopy16(3, &gBoardBGTileBufferAlt[var0 * 0x400], (void *)BG_VRAM_ADDR_MAIN_SCROLL_SEGMENT_TILES + scrollYTileIx * MEM_SIZE_OF_TILE_ROW, MEM_SIZE_OF_TILE_ROW);
             }
         }
     }
@@ -232,8 +240,8 @@ void RestoreGameState(u16 arg0)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), 2*BG_SCREEN_SIZE);
-    if (gMain.scoreOverlayActive)
+    DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_LAYER_0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
+    if (gMain.cutsceneBackdropBarActive)
     {
         if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_EVO_MODE)
         {
@@ -252,7 +260,7 @@ void RestoreGameState(u16 arg0)
             }
         }
 
-        DmaCopy16(3, gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+        DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
     }
 
     DmaCopy16(3, gCurrentPinballGame->savedObjPalette[gMain.isBonusField], OBJ_PLTT, OBJ_PLTT_SIZE);
@@ -347,72 +355,72 @@ void RestoreFieldSpecificGraphics(void)
         if (gCurrentPinballGame->outLanePikaPosition == PIKA_BOTH_SIDES
             && gCurrentPinballGame->outLaneSide == OUTLANE_RIGHT)
         {
-            DmaCopy16(3, gPikaSaverFullCoverageGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
+            DmaCopy16(3, gPichuKickbackFx_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_PIKA_SAVER_KICKBACK_TILES);
         }
         else
         {
-            DmaCopy16(3, gPikaSaverPartialCoverageGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
+            DmaCopy16(3, gPikachuKickbackFx_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_PIKA_SAVER_KICKBACK_TILES);
         }
         break;
     case FX_AERODACTYL_EGG_DELIVERY:
-        DmaCopy16(3, gAerodactlyFlight_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1000);
+        DmaCopy16(3, gAerodactlyFlight_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_AERODACTYL_EGG_DELIVERY_TILES);
         break;
     case FX_TOTODILE_EGG_DELIVERY:
-        DmaCopy16(3, gTotodileEggDelivery_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0xCA0);
+        DmaCopy16(3, gTotodileEggDelivery_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_TOTODILE_EGG_DELIVERY_TILES);
         break;
     case FX_MODE_START_BANNER:
-        DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x25E0);
+        DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_TRAVEL_BANNER_TILES);
         break;
     case FX_CATCH_TILE_BURST_1:
-        DmaCopy16(3, gCatchTile_BurstStart_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+        DmaCopy16(3, gCatchTile_BurstStart_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_CATCH_BURST_LIGHTNING_TILES);
         break;
     case FX_CATCH_TILE_BURST_2:
-        DmaCopy16(3, gCatchTile_BurstStage2_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x800);
+        DmaCopy16(3, gCatchTile_BurstStage2_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_CATCH_BURST_TILE_OUTLINE);
         break;
     case FX_CATCH_TILE_BURST_3:
-        DmaCopy16(3, gCatchTile_BurstStage3_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+        DmaCopy16(3, gCatchTile_BurstStage3_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_CATCH_BURST_TILE_FLIGHT);
         break;
     case FX_CATCH_TILE_BURST_4:
-        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
+        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_CATCH_BURST_TILE_ELECTRIC);
         break;
     case FX_CAPTURE_MON_ABSORB:
-        DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
+        DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_MON_CATCH_CUTSCENE_TILES);
         break;
     case FX_CATCH_MON_REVEAL_PUFF:
-        DmaCopy16(3, gCatchMonAppearFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1400);
+        DmaCopy16(3, gCatchMonAppearFx_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_MON_APPEAR_CLOUD_BURST_TILES);
         break;
     case FX_SEQUENTIAL_CATCH_TILE:
-        DmaCopy16(3, gCatchTile_RevealTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
+        DmaCopy16(3, gCatchTile_RevealTilesGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_CATCH_REAVEAL_SEQUENTIAL_TILES);
         break;
     case FX_FIRST_AREA_SELECTION:
-        DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x280);
+        DmaCopy16(3, gAreaRouletteSelectedFx_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_AREA_ROULETTE_SELECTED_TILES);
         break;
     case FX_MON_SELECTION_NAME:
         for (i = 0; i < 10; i++)
         {
             if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
             {
-                DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
+                DmaCopy16(3, gSpaceTileGfx, OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
             }
             else
             {
                 int letterTileIx = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
+                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
             }
         }
-        DmaCopy16(3, gPokemonNameDisplayGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x940);
+        DmaCopy16(3, gMartEvoForegroundMenuUx_Gfx, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
         break;
     case FX_MON_WAS_CAUGHT_CUTSCENE:
         for (i = 0; i < 10; i++)
         {
             if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
             {
-                DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
+                DmaCopy16(3, gSpaceTileGfx, OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
             }
             else
             {
                 int letterTileIx = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + i * 0x40, 0x40);
+                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
             }
         }
 
@@ -420,56 +428,55 @@ void RestoreFieldSpecificGraphics(void)
         {
             if (gCaughtTextChars[i] == ' ')
             {
-                // TILE_INDEX(1, 6, 20 + 2 * i)
-                DmaCopy16(3, gSpaceTileGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + (i + 10) * 0x40, 0x40);
+                DmaCopy16(3, gSpaceTileGfx, OBJ_VRAM_ADDR_WAS_CAUGHT_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
             }
             else
             {
                 int letterTileIx = gCaughtTextChars[i] - 'A';
-                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + (i + 10) * 0x40, 0x40);
+                DmaCopy16(3, gAlphabetTilesGfx[letterTileIx], OBJ_VRAM_ADDR_WAS_CAUGHT_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
             }
         }
         break;
     case FX_EVO_ITEM_SPAWN:
-        DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
+        DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_ITEM_SPAWN_TILES);
         break;
     case FX_EVOLUTION_CUTSCENE:
-        DmaCopy16(3, gEvolutionCutsceneTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
+        DmaCopy16(3, gEvolutionCutsceneTilesGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_CUTSCENE_TILES);
         break;
     case FX_END_OF_EVO_LIGHTNING:
-        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
+        DmaCopy16(3, gCatchTile_BurstStage4_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_CATCH_BURST_TILE_ELECTRIC);
         break;
     case FX_SHOP_EVO_SELECTION:
-        DmaCopy16(3, gPokemonNameDisplayGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 7, 0)), 0x940);
+        DmaCopy16(3, gMartEvoForegroundMenuUx_Gfx, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
         if (!gCurrentPinballGame->evolutionShopActive)
         {
             var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
             var2 = LEAD_DIGIT_10S(var1[3]);
-            DmaCopy16(3, gDecimalDigitTilesGfx[var2], OBJ_TILE_ADDR(TILE_INDEX(1, 7, 13)), 0x40);
+            DmaCopy16(3, gDecimalDigitTilesGfx[var2], OBJ_VRAM_ADDR_MART_PRICE_TENS_DIGIT_TILES, SIZE_OF_VRAM_LETTER_TILE);
             var3 = DIGIT_1S(var1[3]);
-            DmaCopy16(3, gDecimalDigitTilesGfx[var3], OBJ_TILE_ADDR(TILE_INDEX(1, 7, 19)), 0x40);
+            DmaCopy16(3, gDecimalDigitTilesGfx[var3], OBJ_VRAM_ADDR_MART_PRICE_ONES_DIGIT_TILES, SIZE_OF_VRAM_LETTER_TILE);
         }
         break;
     case FX_BALL_SAVED_CUTSCENE:
-        DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
+        DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES);
         break;
     case FX_END_OF_BALL_SUMMARY:
-        DmaCopy16(3, gMainBoardEndOfBall_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
+        DmaCopy16(3, gMainBoardEndOfBall_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES);
         break;
     case FX_TRAVEL_PAINTER_CUTSCENE:
         if (gMain.selectedField == FIELD_RUBY)
         {
-            DmaCopy16(3, gRubyTravelPaint_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
+            DmaCopy16(3, gRubyTravelPaint_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_TRAVEL_CUTSCENE);
             DmaCopy16(3, gRubyPainter_Pals, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
         }
         else
         {
-            DmaCopy16(3, gSapphireTravelPaint_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1800);
+            DmaCopy16(3, gSapphireTravelPaint_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_TRAVEL_CUTSCENE);
             DmaCopy16(3, gSapphirePainter_Pals, OBJ_PLTT_SLOT(PAL_IX_TRAVEL_PAINTER), PLTT_SLOT_SIZE);
         }
         break;
     case FX_ZIGZAGOON_ROULETTE_STOP:
-        DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0xC00);
+        DmaCopy16(3, gSapphireBoardZigzagoonFx_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_ZIGZAGZOON_ROULETTE_STOP_TILES);
         break;
     }
 }
@@ -486,28 +493,28 @@ void RestoreMainFieldDynamicGraphics(void)
     for (i = 0; i < SIDE_COUNT; i++)
     {
         var0 = gCurrentPinballGame->flipper[i].position / 2;
-        DmaCopy16(3, gFlipper_Gfx[var0], ((i * 0x200) + OBJ_TILE_ADDR(TILE_INDEX(0, 0, 0))), 0x200);
+        DmaCopy16(3, gFlipper_Gfx[var0], OBJ_VRAM_ADDR_FLIPPER_LEFT_TILES + i * SIZE_OF_VRAM_FLIPPER_TILES, SIZE_OF_VRAM_FLIPPER_TILES);
     }
 
     var0 = gCurrentPinballGame->ball->spinAngle / 0x1000;
-    DmaCopy16(3, gBallRotationTileGraphics[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 0)), 0x80);
+    DmaCopy16(3, gBallRotationTileGraphics[var0], OBJ_VRAM_ADDR_BALL_TILES, SIZE_OF_VRAM_BALL_TILES);
 
     for (i = 0; i <= 1; i++)
     {
-        DmaCopy16(3, gPikaSaverTilesGfx + ((var0 =gCurrentPinballGame->pikaSaverTileIndex[i]) * 0x180), OBJ_TILE_ADDR(TILE_INDEX(0, 1, 4 + 12 * i)), 0x180);
+        DmaCopy16(3, gPikachuSaverTilesGfx + ((var0 =gCurrentPinballGame->pikaSaverTileIndex[i]) * SIZE_OF_VRAM_PIKA_MON_TILES), OBJ_VRAM_ADDR_PIKA_MON_AT_LEFT_SIDE_TILES + i * SIZE_OF_VRAM_PIKA_MON_TILES, SIZE_OF_VRAM_PIKA_MON_TILES);
     }
 
     var0 = gCurrentPinballGame->pikachuSpinFrame;
-    DmaCopy16(3, gMainBoardPikaSpinner_Gfx[var0 = gCurrentPinballGame->pikachuSpinFrame], OBJ_TILE_ADDR(TILE_INDEX(0, 1, 28)), 0x120);
+    DmaCopy16(3, gMainBoardPikaSpinner_Gfx[var0 = gCurrentPinballGame->pikachuSpinFrame], OBJ_VRAM_ADDR_PIKA_CHARGE_SPINNER_TILES, SIZE_OF_VRAM_PIKA_CHARGE_SPINNER_TILES);
     var0 = gCurrentPinballGame->chargeFillValue;
-    DmaCopy16(3, gChargeFillIndicator_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 23)), 0x80);
+    DmaCopy16(3, gChargeFillIndicator_Gfx[var0], OBJ_VRAM_ADDR_CHARGE_INDICATOR_CIRCLE_TILES, SIZE_OF_VRAM_CHARGE_INDICATOR_CIRCLE_TILES);
 
     for (i = 0; i <= 1; i++)
     {
         switch (gCurrentPinballGame->portraitRenderMode[i])
         {
         case PORTRAIT_STATE_CURRENT_LOCATION:
-            DmaCopy16(3, gLocationPortraitGfx[gCurrentPinballGame->portraitGfxIndex[i]], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5 + 24 * i)), 0x300);
+            DmaCopy16(3, gLocationPortraitGfx[gCurrentPinballGame->portraitGfxIndex[i]], OBJ_VRAM_ADDR_PORTRAIT0_TILES + i * SIZE_OF_VRAM_PORTRAIT_TILES, SIZE_OF_VRAM_PORTRAIT_TILES);
             gCurrentPinballGame->ball += 0; //TODO: Dumb match is still a match...
             break;
         case PORTRAIT_STATE_EVO_PREVIEW:
@@ -536,7 +543,7 @@ void RestoreMainFieldDynamicGraphics(void)
             }
         case PORTRAIT_STATE_POKEMON_DISPLAY:
             // Bug: missing the * 0x20; but not a problem since only portrait 0 gets displayed
-            DmaCopy16(3, gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[i] / 15] + (gCurrentPinballGame->portraitGfxIndex[i] % 15) * 0x300, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)) + (i * 0x18), 0x300);
+            DmaCopy16(3, gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[i] / 15] + (gCurrentPinballGame->portraitGfxIndex[i] % 15) * 0x300, OBJ_VRAM_ADDR_PORTRAIT0_TILES + (i * 0x18), SIZE_OF_VRAM_PORTRAIT_TILES);
             break;
         case PORTRAIT_STATE_SLOT_START_CARD:
         case PORTRAIT_STATE_ROULETTE_WHEEL:
@@ -544,7 +551,7 @@ void RestoreMainFieldDynamicGraphics(void)
         case PORTRAIT_STATE_SHOP_SELECTOR:
         case PORTRAIT_STATE_CONFIRMATION_PROMPT:
         case PORTRAIT_STATE_ROULETTE_OUTCOME:
-            DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[i]], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5 + 24 * i)), 0x300);
+            DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[i]], OBJ_VRAM_ADDR_PORTRAIT0_TILES + i * SIZE_OF_VRAM_PORTRAIT_TILES, SIZE_OF_VRAM_PORTRAIT_TILES);
             break;
         }
     }
@@ -557,11 +564,11 @@ void RestoreMainFieldDynamicGraphics(void)
         case CATCH_EM_SUBSTATE_SETUP_CATCH_HIT_COUNT:
             if ((u32) gCurrentPinballGame->captureFlashTimer > 4)
             {
-                DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
+                DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
             }
             else
             {
-                DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
+                DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
             }
             break;
         case CATCH_EM_SUBSTATE_CATCH_HIT_PHASE:
@@ -569,11 +576,11 @@ void RestoreMainFieldDynamicGraphics(void)
             {
                 if (gCurrentPinballGame->captureFlashTimer > 4)
                 {
-                    DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
+                    DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
                 }
                 else
                 {
-                    DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
+                    DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
                 }
             }
             break;
@@ -587,11 +594,11 @@ void RestoreMainFieldDynamicGraphics(void)
         case JIRACHI_CATCH_SUBSTATE_SETUP_CATCH_HIT_COUNT:
             if (gCurrentPinballGame->captureFlashTimer > 4U)
             {
-                DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
+                DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
             }
             else
             {
-                DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
+                DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
             }
             break;
         case JIRACHI_CATCH_SUBSTATE_CATCH_HIT_PHASE:
@@ -599,21 +606,21 @@ void RestoreMainFieldDynamicGraphics(void)
             {
                 if (gCurrentPinballGame->captureFlashTimer > 4U)
                 {
-                    DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
+                    DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
                 }
                 else
                 {
-                    DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x480);
+                    DmaCopy16(3, gCatchSpriteGfxBuffer, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
                 }
             }
             break;
         }
     }
 
-    DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->bonusTrapAnimFrame], OBJ_TILE_ADDR(TILE_INDEX(0, 4, 30)), 0x300);
-    DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] +  var0 * 0x200, OBJ_TILE_ADDR(TILE_INDEX(0, 5, 22)), 0x200);
-    DmaCopy16(3, gEggFrameTilesGfx[(s16)gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3]], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 7)), 0x200);
-    DmaCopy16(3, gBallUpgradeFx_Gfx[gCurrentPinballGame->ballUpgradeFxTileIndex], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 23)), 0x200);
+    DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->bonusTrapAnimFrame], OBJ_VRAM_ADDR_FX_CENTER_HOLE_GRAVITY_TILES, SIZE_OF_VRAM_FX_CENTER_HOLE_GRAVITY_TILES);
+    DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] +  var0 * SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE, OBJ_VRAM_ADDR_EVO_ITEM_STABLE_TILE, SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE);
+    DmaCopy16(3, gEggFrameTilesGfx[(s16)gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3]], OBJ_VRAM_ADDR_HATCH_EGG_TILES, SIZE_OF_VRAM_HATCH_EGG_TILES);
+    DmaCopy16(3, gBallUpgradeFx_Gfx[gCurrentPinballGame->ballUpgradeFxTileIndex], OBJ_VRAM_ADDR_FX_BALL_UPGRADE_TILES_MAIN_BOARD, SIZE_OF_VRAM_FX_BALL_UPGRADE_TILES);
     return;
 }
 
@@ -623,23 +630,23 @@ void RestoreRubyBoardTileGraphics(void)
     s16 var0;
 
     var0 = gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][2];
-    DmaCopy16(3, gRubyBoardHatchCave_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 8, 21)), 0x480);
+    DmaCopy16(3, gRubyBoardHatchCave_Gfx[var0], OBJ_VRAM_ADDR_HATCH_CAVE_TILES, SIZE_OF_VRAM_HATCH_CAVE_TILES);
     var0 = (gMain.systemFrameCount % 50) / 25;
-    DmaCopy16(3, gRubyChikoritaEntity[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 9, 25)), 0x300);
-    DmaCopy16(3, gRubyBoardSharpedo_Gfx[gCurrentPinballGame->catchHoleTileVariant], OBJ_TILE_ADDR(TILE_INDEX(0, 11, 1)), 0x260);
+    DmaCopy16(3, gRubyChikoritaEntity[var0], OBJ_VRAM_ADDR_CHIKORITA_TILES, SIZE_OF_VRAM_CHIKORITA_TILES);
+    DmaCopy16(3, gRubyBoardSharpedo_Gfx[gCurrentPinballGame->sharpedoNextTileIx], OBJ_VRAM_ADDR_SHARPEDO_TILES, SIZE_OF_VRAM_SHARPEDO_TILES);
     for (i = 0; i < 2; i++)
-        DmaCopy16(3, gChinchouBumper_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 11, 20 + 8 * i)), 0x100);
+        DmaCopy16(3, gChinchouBumper_Gfx[var0], OBJ_VRAM_ADDR_RUBY_BUMPER(i), SIZE_OF_VRAM_RUBY_BUMPER_TILES);
 
     var0 = gCurrentPinballGame->shopDoorCurrentFrame & 0xF;
-    DmaCopy16(3, gRubyBoardShopDoor_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 12)), 0x180);
+    DmaCopy16(3, gRubyBoardShopDoor_Gfx[var0], OBJ_VRAM_ADDR_RUBY_MART_DOOR_TILES, SIZE_OF_VRAM_RUBY_MART_DOOR_TILES);
     if (gCurrentPinballGame->cyndaquilPosition < CYNDAQUIL_POSITION_CAVE_ENTRANCE)
         gCurrentPinballGame->cyndaquilFrame = 0;
     else
         gCurrentPinballGame->cyndaquilFrame = 1;
 
-    DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 24)), 0x280);
+    DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], OBJ_VRAM_ADDR_CYNDAQUIL_TILES, SIZE_OF_VRAM_CYNDAQUIL_TILES);
     var0 = gEvoShopAnimFrames[gCurrentPinballGame->evolutionShopActive][(gCurrentPinballGame->shopAnimTimer % 42) / 6];
-    DmaCopy16(3, gRubyBoardShop_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 15, 8)), 0x500);
+    DmaCopy16(3, gRubyBoardShop_Gfx[var0], OBJ_VRAM_ADDR_RUBY_MART_SIGN_TILES, SIZE_OF_VRAM_RUBY_MART_SIGN_TILES);
 }
 
 void RestoreSapphireBoardTileGraphics(void)
@@ -652,16 +659,16 @@ void RestoreSapphireBoardTileGraphics(void)
     case HATCH_MACHINE_STATE_ACTIVATED_LIGHT_CROSS:
     case HATCH_MACHINE_STATE_MON_HATCHED:
         index = gCurrentPinballGame->sapphireHatchMachineFrameIx;
-        DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
+        DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_VRAM_ADDR_HATCH_MACHINE_ALL_TILES, SIZE_OF_VRAM_HATCH_MACHINE_ALL_TILES);
         break;
     case HATCH_MACHINE_STATE_ELEVATOR_DECENDS:
     case HATCH_MACHINE_STATE_EMPTY:
         index = 15;
-        DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
+        DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_VRAM_ADDR_HATCH_MACHINE_ALL_TILES, SIZE_OF_VRAM_HATCH_MACHINE_ALL_TILES);
         break;
     case HATCH_MACHINE_STATE_EGG_RISING:
         index = gHoleAnimKeyframeData[gCurrentPinballGame->sapphireHatchMachineFrameIx][0];
-        DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_TILE_ADDR(TILE_INDEX(3, 6, 8)), 0x440);
+        DmaCopy16(3, gHatchMachineElevator_Gfx[index], BG_VRAM_ADDR_HATCH_MACHINE_ALL_TILES, SIZE_OF_VRAM_HATCH_MACHINE_ALL_TILES);
         break;
     case HATCH_MACHINE_STATE_RESET:
         break;
@@ -670,22 +677,22 @@ void RestoreSapphireBoardTileGraphics(void)
 
 void RestoreDusclopsBonusGraphics(void)
 {
-    DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+    DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_VRAM_ADDR_DUSCLOPS_BANNER_TILES, SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES);
 }
 
 void RestoreKecleonBonusGraphics(void)
 {
-    DmaCopy16(3, gKecleonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+    DmaCopy16(3, gKecleonBonusClear_Gfx, OBJ_VRAM_ADDR_KECLEON_BANNER_TILES, SIZE_OF_VRAM_KECLEON_BANNER_TILES);
 }
 
 void RestoreKyogreBonusGraphics(void)
 {
-    DmaCopy16(3, gKyogreBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+    DmaCopy16(3, gKyogreBonusClear_Gfx, OBJ_VRAM_ADDR_KYOGRE_BANNER_TILES, SIZE_OF_VRAM_KYOGRE_BANNER_TILES);
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[0] / 15] + (gCurrentPinballGame->portraitGfxIndex[0] % 15) * 0x300,
-        OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)),
-        0x300
+        gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[0] / 15] + (gCurrentPinballGame->portraitGfxIndex[0] % 15) * SIZE_OF_VRAM_PORTRAIT_TILES,
+        OBJ_VRAM_ADDR_PORTRAIT0_TILES,
+        SIZE_OF_VRAM_PORTRAIT_TILES
     );
 }
 
@@ -693,18 +700,18 @@ void RestoreGroudonBonusGraphics(void)
 {
     if (gCurrentPinballGame->boardState <= LEGENDARY_BOARD_STATE_BATTLE_PHASE)
     {
-        DmaCopy16(3, gGroudonAttackFx_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+        DmaCopy16(3, gGroudonAttackFx_Gfx, OBJ_VRAM_ADDR_GROUDON_ATTACK_FX_TILES, SIZE_OF_VRAM_GROUDON_ATTACK_FX_TILES);
     }
     else
     {
-        DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+        DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_VRAM_ADDR_GROUDON_BANNER_TILES, SIZE_OF_VRAM_GROUDON_BANNER_TILES);
     }
 
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[0] / 15] + (gCurrentPinballGame->portraitGfxIndex[0] % 15) * 0x300,
-        OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)),
-        0x300
+        gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[0] / 15] + (gCurrentPinballGame->portraitGfxIndex[0] % 15) * SIZE_OF_VRAM_PORTRAIT_TILES,
+        OBJ_VRAM_ADDR_PORTRAIT0_TILES,
+        SIZE_OF_VRAM_PORTRAIT_TILES
     );
 }
 
@@ -714,28 +721,28 @@ void RestoreRayquazaBonusGraphics(void)
 
     if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_INTRO)
     {
-        DmaCopy16(3, gRayquazaSkyBackgroundGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2800);
+        DmaCopy16(3, gRayquazaSkyBackgroundGfx, OBJ_VRAM_ADDR_RAYQUAZA_INTRO_CLOUDS_TILES, SIZE_OF_VRAM_RAYQUAZA_INTRO_CLOUDS_TILES);
     }
     else if (gCurrentPinballGame->boardState == LEGENDARY_BOARD_STATE_BATTLE_PHASE)
     {
-        DmaCopy16(3, gRayquazaFlyby_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
+        DmaCopy16(3, gRayquazaFlyby_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_FLYBY_TILES, SIZE_OF_VRAM_RAYQUAZA_FLYBY_TILES);
     }
     else
     {
-        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_BANNER_TILES, SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES);
     }
 
     var0 = gCurrentPinballGame->bossEntityState - 2;
     if (var0 > 9) // bossEntityState > RAYQUAZA_ENTITY_STATE_DEPARTS
     {
-        DmaCopy16(3, gRayquazaSpriteSheet, OBJ_TILE_ADDR(TILE_INDEX(0, 5, 17)), 0x860);
+        DmaCopy16(3, gRayquazaSpriteSheet, OBJ_VRAM_ADDR_RAYQUAZA_TILES, SIZE_OF_VRAM_RAYQUAZA_TILES);
     }
 
     DmaCopy16(
         3,
-        gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[0] / 15] + (gCurrentPinballGame->portraitGfxIndex[0] % 15) * 0x300,
-        OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)),
-        0x300
+        gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[0] / 15] + (gCurrentPinballGame->portraitGfxIndex[0] % 15) * SIZE_OF_VRAM_PORTRAIT_TILES,
+        OBJ_VRAM_ADDR_PORTRAIT0_TILES,
+        SIZE_OF_VRAM_PORTRAIT_TILES
     );
 }
 
@@ -748,7 +755,7 @@ void RestoreSphealBonusGraphics(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[0x400 + i] = 0x200;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_VRAM_ADDR_SPHEAL_LAYER_1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
     gMain.blendControl = 0x1C42;
     gMain.blendAlpha = 0xC04;
     for (i = 0; i < 0x140; i++)
@@ -765,11 +772,11 @@ void RestoreSphealBonusGraphics(void)
 
     gMain.bgOffsets[1].xOffset = 8;
     gMain.bgOffsets[1].yOffset = 126;
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0, 4, 10)), 0x280);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_SPHEAL_TBD_TILEMAP, SIZE_OF_VRAM_SPHEAL_TBD_TILEMAP);
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gSphealResultsScreenGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x800);
+    DmaCopy16(3, gSphealResultsScreenGfx, OBJ_VRAM_ADDR_SPHEAL_SUMMARY_TILES, SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES);
 }
 
 void nullsub_18(void)

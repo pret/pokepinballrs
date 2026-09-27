@@ -183,7 +183,7 @@ void UpdateTravelMode(void)
             gCurrentPinballGame->modeAnimTimer++;
             if (gCurrentPinballGame->stageTimer < 490)
             {
-                RunTravelEventCutscene();
+                RunTravelPaintEventCutscene();
                 if (gCurrentPinballGame->scoreCounterAnimationEnabled && gCurrentPinballGame->stageTimer >= 428)
                     gCurrentPinballGame->stageTimer = 428;
 

@@ -13,7 +13,7 @@ extern struct SongHeader se_mon_catch_ball_woosh;
 extern struct SongHeader se_ball_upgrade;
 
 extern u16 gRouletteWheelContents[][7];
-extern const u8 gPikachuSaverTilesGfx[];
+extern const u8 gPichuSaverTilesGfx[];
 
 extern const s16 gCaptureSequenceTimings[34];
 extern const u8 gCaptureScreenTilesGfx[];
@@ -274,7 +274,7 @@ void GivePrize(void)
                 gCurrentPinballGame->fullChargeSlideAnimTimer = 0;
                 gCurrentPinballGame->chargeIndicatorYOffset = 120;
                 gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
-                DmaCopy16(3, gPikachuSaverTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(0, 1, 16)), 0x180);
+                DmaCopy16(3, gPichuSaverTilesGfx, OBJ_VRAM_ADDR_PIKA_MON_AT_RIGHT_SIDE_TILES, SIZE_OF_VRAM_PIKA_MON_TILES);
                 gCurrentPinballGame->outLanePikaPosition = PIKA_BOTH_SIDES;
                 gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
                 gCurrentPinballGame->pichuEntranceTimer = 1;
@@ -555,9 +555,9 @@ void RunMonCaptureSequence(void)
         gCurrentPinballGame->ball->positionQ8.y += gCurrentPinballGame->ball->velocity.y;
 
         gCurrentPinballGame->activeFxType = FX_CAPTURE_MON_ABSORB;
-        DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x1C00);
-        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], OBJ_TILE_ADDR(TILE_INDEX(1, 9, 6)), 0x80);
-        DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], OBJ_TILE_ADDR(TILE_INDEX(1, 9, 27)), 0x80);
+        DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_MON_CATCH_CUTSCENE_TILES);
+        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], OBJ_VRAM_ADDR_FX_MON_CATCH_OPEN_BALL_TILES1, SIZE_OF_VRAM_FX_MON_CATCH_OPEN_BALL_TILES1);
+        DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], OBJ_VRAM_ADDR_FX_MON_CATCH_OPEN_BALL_TILES2, SIZE_OF_VRAM_FX_MON_CATCH_OPEN_BALL_TILES2);
 
         gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 
@@ -1143,7 +1143,7 @@ void RunMonCaptureSequence(void)
 
         if (gCurrentPinballGame->captureSequenceFrame <= 29)
         {
-            gMain.scoreOverlayActive = TRUE;
+            gMain.cutsceneBackdropBarActive = TRUE;
             temp_r0 = gCurrentPinballGame->captureSequenceFrame;
             gCurrentPinballGame->cutsceneTilemapColumn = temp_r0;
 
@@ -1155,7 +1155,7 @@ void RunMonCaptureSequence(void)
                 }
             }
 
-            DmaCopy16(3, &gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+            DmaCopy16(3, &gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
         }
 
         if (gCurrentPinballGame->captureSequenceFrame >= 240 && gCurrentPinballGame->captureSequenceFrame <= 269)
@@ -1170,11 +1170,11 @@ void RunMonCaptureSequence(void)
                 }
             }
 
-            DmaCopy16(3, &gBG0TilemapBuffer, BG_TILE_ADDR(TILE_INDEX(0,8,0)), BG_SCREEN_SIZE);
+            DmaCopy16(3, &gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
 
             if (gCurrentPinballGame->captureSequenceFrame == 269)
             {
-                gMain.scoreOverlayActive = FALSE;
+                gMain.cutsceneBackdropBarActive = FALSE;
 
                 if (gMain.selectedField < MAIN_FIELD_COUNT)
                 {

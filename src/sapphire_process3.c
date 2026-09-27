@@ -19,7 +19,7 @@ void InitFrameProcess3_BoardLogic_SapphireBoard(void)
     ProcessChargeIndicator();
     DrawPikachuSpinner();
     CalculateRubyBumperBounce();
-    HandleRubyBumperHit();
+    HandleSapphireBumperHit();
 
     gCurrentPinballGame->chargeIndicatorScaleX = 0x100;
     gCurrentPinballGame->chargeIndicatorScaleY = 0x100;
@@ -88,7 +88,7 @@ void UpdateSapphireBoardEntityRendering(void)
     }
     if (gCurrentPinballGame->cameraYViewport < 0xC4)
     {
-        HandleRubyBumperHit();
+        HandleSapphireBumperHit();
         AnimateWailmerEntity();
     }
     if (gCurrentPinballGame->cameraYViewport < 0xCA)

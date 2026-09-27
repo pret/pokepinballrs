@@ -3,6 +3,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
+#include "constants/mem_layout/ruby.h"
 
 extern const u8 gRubyMakuhitaGfx[][0x300];
 extern const u8 gRubyBoardRampPrize_Gfx[][0x80];
@@ -139,7 +140,7 @@ void UpdateMakuhitaEntity(void)
     {
         group->baseX = 184 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 277 - gCurrentPinballGame->cameraYOffset;
-        DmaCopy16(3, gRubyMakuhitaGfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 13, 12)), 0x300);
+        DmaCopy16(3, gRubyMakuhitaGfx[index], OBJ_VRAM_ADDR_MAKUHITA_TILES, SIZE_OF_VRAM_MAKUHITA_TILES);
         for (i = 0; i < 3;i++)
         {
             oamSimple = &group->oam[i];
@@ -169,7 +170,7 @@ void DrawRubyRampPrize(void)
         else
             index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 8;
 
-        DmaCopy16(3, gRubyBoardRampPrize_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 2, 24)), 0x80);
+        DmaCopy16(3, gRubyBoardRampPrize_Gfx[index], OBJ_VRAM_ADDR_RAMP_PRIZE_TILES, SIZE_OF_VRAM_RAMP_PRIZE_TILES);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x =  oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y =  oamSimple->yOffset + group->baseY;

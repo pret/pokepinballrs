@@ -86,14 +86,14 @@
       "palbank": 0
     },
     {
-      "gfx_filename": "gunk_084F61EC",
+      "gfx_filename": "mart_evo_menu_foreground",
       "mwidth": 8,
       "align": 1,
       "palette": "bonus_stage_obj.gbapal",
       "palbank": 5
     },
     {
-      "gfx_filename": "gunk_0844AA0C",
+      "gfx_filename": "jirachi_fx",
       "mwidth": 6,
       "mheight": 6,
       "oam": true,
@@ -292,7 +292,7 @@
       "width": 6
     },
     {
-      "gfx_filename": "pika_saver_tiles",
+      "gfx_filename": "pikachu_saver_tiles.png",
       "oam": true,
       "mheight": 3,
       "mwidth": 4,
@@ -306,18 +306,18 @@
       "width": 4
     },
     {
-      "gfx_filename": "pikachu_saver_tiles",
+      "gfx_filename": "pichu_saver_tiles",
       "oam": true,
       "mheight": 3,
       "mwidth": 4,
       "width": 4
     },
     {
-      "gfx_filename": "pika_saver_full_coverage",
+      "gfx_filename": "pichu_saver_kickback",
       "oamshape": "pika_saver_coverage_shape.json"
     },
     {
-      "gfx_filename": "pika_saver_partial_coverage",
+      "gfx_filename": "pikachu_saver_kickback",
       "oamshape": "pika_saver_coverage_shape.json"
     },
     {

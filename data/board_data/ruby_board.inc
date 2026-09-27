@@ -1,8 +1,8 @@
 @ Note: file has a shared 'bumper collision map' at 0x08252B10
 @ All other entries in this file are ruby board specific
 
-gRubyBoardBG0Tilemap:: @ 0x081C08E4
-	.incbin "graphics/stage/ruby/ruby_board_bg0_tilemap.bin"
+gRubyBoardBG3Tilemap:: @ 0x081C08E4
+	.incbin "graphics/stage/ruby/ruby_board_bg3_tilemap.bin"
 
 gRubyBoardCollisionTileDataLayer0:: @ 0x081C18E4
     .incbin "data/board_data/collision/ruby/boardtop_launch_tiledata.bin"
@@ -31,7 +31,7 @@ gRubyBoardCollisionAngleDataLayer1:: @ 0x08210964
 gRubyBoardCollisionTypeDataLayer1:: @ 0x082245E4
     .incbin "data/board_data/collision/ruby/boardbottom_typedata.bin"
 
-gRubyBoardBG1Tilemap:: @ 0x0822E424
+gRubyBoardBG2Tilemap:: @ 0x0822E424
 	.incbin "graphics/stage/ruby/ruby_board_ramp_tilemap.bin"
 
 gRubyBoardCollisionTileDataLayer2:: @ 0x0822F424
@@ -68,301 +68,301 @@ gWhiscashCollisionMap:: @ 0x08259C10
 @ Evo Arrows. Named this way for comprehension in folder.
 @ E/V/O arrows. Second digit is '0 Top/1 Mid/2 Bottom',
 @ First digit is 'variant'.
-gRubyEvo_EArrow_Top0:: @ 0x0825D310
+gRubyEvoArrow_E_0Lit_Top:: @ 0x0825D310
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_0.4bpp"
 
-gRubyEvo_EArrow_Top1:: @ 0x0825D370
+gRubyEvoArrow_E_1Lit_Top:: @ 0x0825D370
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_0.4bpp"
 
-gRubyEvo_EArrow_Top2:: @ 0x0825D3D0
+gRubyEvoArrow_E_2PlusLit_Top:: @ 0x0825D3D0
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_0.4bpp"
 
-gRubyEvo_VArrow_Top0:: @ 0x0825D430
+gRubyEvoArrow_V_0Lit_Top:: @ 0x0825D430
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_0.4bpp"
 
-gRubyEvo_VArrow_Top1:: @ 0x0825D490
+gRubyEvoArrow_V_1Lit_Top:: @ 0x0825D490
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_0.4bpp"
 
-gRubyEvo_VArrow_Top2:: @ 0x0825D4F0
+gRubyEvoArrow_V_2Lit_Top:: @ 0x0825D4F0
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_0.4bpp"
 
-gRubyEvo_VArrow_Top3:: @ 0x0825D550
+gRubyEvoArrow_V_3Lit_Top:: @ 0x0825D550
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_0.4bpp"
 
-gRubyEvo_OArrow_Top0:: @ 0x0825D5B0
+gRubyEvoArrow_O_Under2Lit_Top:: @ 0x0825D5B0
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_0.4bpp"
 
-gRubyEvo_OArrow_Top1:: @ 0x0825D610
+gRubyEvoArrow_O_2Lit_Top:: @ 0x0825D610
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_0.4bpp"
 
-gRubyEvo_OArrow_Top2:: @ 0x0825D670
+gRubyEvoArrow_O_3Lit_Top:: @ 0x0825D670
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_0.4bpp"
 	.space 0x40
 
-gRubyEvo_EArrow_Mid0:: @ 0x0825D710
+gRubyEvoArrow_E_0Lit_Mid:: @ 0x0825D710
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_1.4bpp"
 
-gRubyEvo_EArrow_Mid1:: @ 0x0825D770
+gRubyEvoArrow_E_1Lit_Mid:: @ 0x0825D770
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_1.4bpp"
 
-gRubyEvo_EArrow_Mid2:: @ 0x0825D7D0
+gRubyEvoArrow_E_2PlusLit_Mid:: @ 0x0825D7D0
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_1.4bpp"
 
-gRubyEvo_VArrow_Mid0:: @ 0x0825D830
+gRubyEvoArrow_V_0Lit_Mid:: @ 0x0825D830
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_1.4bpp"
 
-gRubyEvo_VArrow_Mid1:: @ 0x0825D890
+gRubyEvoArrow_V_1Lit_Mid:: @ 0x0825D890
 	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_1.4bpp"
 
-gRubyEvo_VArrow_Mid2:: @ 0x0825D8F0
+gRubyEvoArrow_V_2Lit_Mid:: @ 0x0825D8F0
 	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_1.4bpp"
 
-gRubyEvo_VArrow_Mid3:: @ 0x0825D950
+gRubyEvoArrow_V_3Lit_Mid:: @ 0x0825D950
 	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_1.4bpp"
 
-gRubyEvo_OArrow_Mid0:: @ 0x0825D9B0
+gRubyEvoArrow_O_Under2Lit_Mid:: @ 0x0825D9B0
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_1.4bpp"
 
-gRubyEvo_OArrow_Mid1:: @ 0x0825DA10
+gRubyEvoArrow_O_2Lit_Mid:: @ 0x0825DA10
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_1.4bpp"
 
-gRubyEvo_OArrow_Mid2:: @ 0x0825DA70
+gRubyEvoArrow_O_3Lit_Mid:: @ 0x0825DA70
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_1.4bpp"
 	.space 0x40
 
-gRubyEvo_EArrow_Bot0:: @ 0x0825DB10
+gRubyEvoArrow_E_0Lit_Bot:: @ 0x0825DB10
 	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_2.4bpp"
 
-gRubyEvo_EArrow_Bot1:: @ 0x0825DB70
+gRubyEvoArrow_E_1Lit_Bot:: @ 0x0825DB70
 	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_2.4bpp"
 
-gRubyEvo_EArrow_Bot2:: @ 0x0825DBD0
+gRubyEvoArrow_E_2PlusLit_Bot:: @ 0x0825DBD0
 	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_2.4bpp"
 
-gRubyEvo_VArrow_Bot0:: @ 0x0825DC30
+gRubyEvoArrow_V_0Lit_Bot:: @ 0x0825DC30
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_2.4bpp"
 
-gRubyEvo_VArrow_Bot1:: @ 0x0825DC90
+gRubyEvoArrow_V_1Lit_Bot:: @ 0x0825DC90
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_2.4bpp"
 
-gRubyEvo_VArrow_Bot2:: @ 0x0825DCF0
+gRubyEvoArrow_V_2Lit_Bot:: @ 0x0825DCF0
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_2.4bpp"
 
-gRubyEvo_VArrow_Bot3:: @ 0x0825DD50
+gRubyEvoArrow_V_3Lit_Bot:: @ 0x0825DD50
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_2.4bpp"
 
-gRubyEvo_OArrow_Bot0:: @ 0x0825DDB0
+gRubyEvoArrow_O_Under2Lit_Bot:: @ 0x0825DDB0
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_2.4bpp"
 
-gRubyEvo_OArrow_Bot1:: @ 0x0825DE10
+gRubyEvoArrow_O_2Lit_Bot:: @ 0x0825DE10
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_2.4bpp"
 
-gRubyEvo_OArrow_Bot2:: @ 0x0825DE70
+gRubyEvoArrow_O_3Lit_Bot:: @ 0x0825DE70
     .incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_2.4bpp"
 	.space 0x40
 
 
 @ Coin Arrows
 
-gRubyCoinArrow_0825DF10:: @ 0x0825DF10
+gRubyCoinArrow_1_0Lit_Top:: @ 0x0825DF10
 	@.incbin "graphics/stage/ruby/ruby_coin_arrows.4bpp"
 
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p0.4bpp"
 
-gRubyCoinArrow_0825DF70:: @ 0x0825DF70
+gRubyCoinArrow_1_1Lit_Top:: @ 0x0825DF70
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
 
-gRubyCoinArrow_0825DFD0:: @ 0x0825DFD0
+gRubyCoinArrow_1_2PlusLit_Top:: @ 0x0825DFD0
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p0.4bpp"
 
-gRubyCoinArrow_0825E030:: @ 0x0825E030
+gRubyCoinArrow_5_0Lit_Top:: @ 0x0825E030
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
 
-gRubyCoinArrow_0825E090:: @ 0x0825E090
+gRubyCoinArrow_5_1Lit_Top:: @ 0x0825E090
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
 
-gRubyCoinArrow_0825E0F0:: @ 0x0825E0F0
+gRubyCoinArrow_5_2Lit_Top:: @ 0x0825E0F0
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
 
-gRubyCoinArrow_0825E150:: @ 0x0825E150
+gRubyCoinArrow_5_3Lit_Top:: @ 0x0825E150
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p0.4bpp"
 
-gRubyCoinArrow_0825E1B0:: @ 0x0825E1B0
+gRubyCoinArrow_10_Under2Lit_Top:: @ 0x0825E1B0
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
 
-gRubyCoinArrow_0825E210:: @ 0x0825E210
+gRubyCoinArrow_10_2Lit_Top:: @ 0x0825E210
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
 
-gRubyCoinArrow_0825E270:: @ 0x0825E270
+gRubyCoinArrow_10_3Lit_Top:: @ 0x0825E270
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p0.4bpp"
     .space 0x40
 
-gRubyCoinArrow_0825E310:: @ 0x0825E310
+gRubyCoinArrow_1_0Lit_Mid:: @ 0x0825E310
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
 
-gRubyCoinArrow_0825E370:: @ 0x0825E370
+gRubyCoinArrow_1_1Lit_Mid:: @ 0x0825E370
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
 
-gRubyCoinArrow_0825E3D0:: @ 0x0825E3D0
+gRubyCoinArrow_1_2PlusLit_Mid:: @ 0x0825E3D0
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p1.4bpp"
 
-gRubyCoinArrow_0825E430:: @ 0x0825E430
+gRubyCoinArrow_5_0Lit_Mid:: @ 0x0825E430
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
 
-gRubyCoinArrow_0825E490:: @ 0x0825E490
+gRubyCoinArrow_5_1Lit_Mid:: @ 0x0825E490
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
 
-gRubyCoinArrow_0825E4F0:: @ 0x0825E4F0
+gRubyCoinArrow_5_2Lit_Mid:: @ 0x0825E4F0
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
 
-gRubyCoinArrow_0825E550:: @ 0x0825E550
+gRubyCoinArrow_5_3Lit_Mid:: @ 0x0825E550
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p1.4bpp"
 
-gRubyCoinArrow_0825E5B0:: @ 0x0825E5B0
+gRubyCoinArrow_10_Under2Lit_Mid:: @ 0x0825E5B0
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
 
-gRubyCoinArrow_0825E610:: @ 0x0825E610
+gRubyCoinArrow_10_2Lit_Mid:: @ 0x0825E610
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
 
-gRubyCoinArrow_0825E670:: @ 0x0825E670
+gRubyCoinArrow_10_3Lit_Mid:: @ 0x0825E670
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p1.4bpp"
     .space 0x40
 
-gRubyCoinArrow_0825E710:: @ 0x0825E710
+gRubyCoinArrow_1_0Lit_Bot:: @ 0x0825E710
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
 
-gRubyCoinArrow_0825E770:: @ 0x0825E770
+gRubyCoinArrow_1_1Lit_Bot:: @ 0x0825E770
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p2.4bpp"
 
-gRubyCoinArrow_0825E7D0:: @ 0x0825E7D0
+gRubyCoinArrow_1_2PlusLit_Bot:: @ 0x0825E7D0
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p2.4bpp"
 
-gRubyCoinArrow_0825E830:: @ 0x0825E830
+gRubyCoinArrow_5_0Lit_Bot:: @ 0x0825E830
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p2.4bpp"
 
-gRubyCoinArrow_0825E890:: @ 0x0825E890
+gRubyCoinArrow_5_1Lit_Bot:: @ 0x0825E890
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p2.4bpp"
 
-gRubyCoinArrow_0825E8F0:: @ 0x0825E8F0
+gRubyCoinArrow_5_2Lit_Bot:: @ 0x0825E8F0
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p2.4bpp"
 
-gRubyCoinArrow_0825E950:: @ 0x0825E950
+gRubyCoinArrow_5_3Lit_Bot:: @ 0x0825E950
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p2.4bpp"
 
-gRubyCoinArrow_0825E9B0:: @ 0x0825E9B0
+gRubyCoinArrow_10_Under2Lit_Bot:: @ 0x0825E9B0
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
 
-gRubyCoinArrow_0825EA10:: @ 0x0825EA10
+gRubyCoinArrow_10_2Lit_Bot:: @ 0x0825EA10
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
 
-gRubyCoinArrow_0825EA70:: @ 0x0825EA70
+gRubyCoinArrow_10_3Lit_Bot:: @ 0x0825EA70
     .incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p2.4bpp"
     .space 0x40
 
 
 @ Get Arrows
 
-gRubyGetArrow_0825EB10:: @ 0x0825EB10
+gRubyGetArrow_G_0Lit_Top:: @ 0x0825EB10
     .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_0.4bpp"
 
-gRubyGetArrow_0825EB70:: @ 0x0825EB70
+gRubyGetArrow_G_1Lit_Top:: @ 0x0825EB70
     .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_2_0.4bpp"
 
-gRubyGetArrow_0825EBD0:: @ 0x0825EBD0
+gRubyGetArrow_G_2PlusLit_Top:: @ 0x0825EBD0
     .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_3_0.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825EC50:: @ 0x0825EC50
+gRubyGetArrow_E_0Lit_Top:: @ 0x0825EC50
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_0_0.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825ECB0:: @ 0x0825ECB0
+gRubyGetArrow_E_1Lit_Top:: @ 0x0825ECB0
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_1_0.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825ED10:: @ 0x0825ED10
+gRubyGetArrow_E_2Lit_Top:: @ 0x0825ED10
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_2_0.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825ED70:: @ 0x0825ED70
+gRubyGetArrow_E_3Lit_Top:: @ 0x0825ED70
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_3_0.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825EDD0:: @ 0x0825EDD0
+gRubyGetArrow_T_Under2Lit_Top:: @ 0x0825EDD0
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_0_0.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825EE30:: @ 0x0825EE30
+gRubyGetArrow_T_2Lit_Top:: @ 0x0825EE30
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_0.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825EE90:: @ 0x0825EE90
+gRubyGetArrow_T_3Lit_Top:: @ 0x0825EE90
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_0.4bpp"
     .space 0x40
 
-gRubyGetArrow_0825EF10:: @ 0x0825EF10
+gRubyGetArrow_G_0Lit_Mid:: @ 0x0825EF10
     .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_1.4bpp"
 
-gRubyGetArrow_0825EF70:: @ 0x0825EF70
+gRubyGetArrow_G_1Lit_Mid:: @ 0x0825EF70
     .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_2_1.4bpp"
 
-gRubyGetArrow_0825EFD0:: @ 0x0825EFD0
+gRubyGetArrow_G_2PlusLit_Mid:: @ 0x0825EFD0
     .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_3_1.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825F050:: @ 0x0825F050
+gRubyGetArrow_E_0Lit_Mid:: @ 0x0825F050
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_0_1.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825F0B0:: @ 0x0825F0B0
+gRubyGetArrow_E_1Lit_Mid:: @ 0x0825F0B0
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_1_1.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825F110:: @ 0x0825F110
+gRubyGetArrow_E_2Lit_Mid:: @ 0x0825F110
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_2_1.4bpp"
     .space 0x20
 
-gRubyGetArrow_0825F170:: @ 0x0825F170
+gRubyGetArrow_E_3Lit_Mid:: @ 0x0825F170
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_3_1.4bpp"
 
-gRubyGetArrow_0825F1B0:: @ 0x0825F1B0
+gRubyGetArrow_T_Under2Lit_Mid:: @ 0x0825F1B0
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_0_1.4bpp"
 
-gRubyGetArrow_0825F210:: @ 0x0825F210
+gRubyGetArrow_T_2Lit_Mid:: @ 0x0825F210
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_1.4bpp"
 
-gRubyGetArrow_0825F270:: @ 0x0825F270
+gRubyGetArrow_T_3Lit_Mid:: @ 0x0825F270
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_1.4bpp"
     .space 0x40
 
-gRubyGetArrow_0825F310:: @ 0x0825F310
+gRubyGetArrow_G_0Lit_Bot:: @ 0x0825F310
     .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_2.4bpp"
 
-gRubyGetArrow_0825F370:: @ 0x0825F370
+gRubyGetArrow_G_1Lit_Bot:: @ 0x0825F370
     .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_2_2.4bpp"
 
-gRubyGetArrow_0825F3D0:: @ 0x0825F3D0
+gRubyGetArrow_G_2PlusLit_Bot:: @ 0x0825F3D0
     .incbin "graphics/stage/ruby/get_arrow/get_g_arrow_3_2.4bpp"
 
-gRubyGetArrow_0825F430:: @ 0x0825F430
+gRubyGetArrow_E_0Lit_Bot:: @ 0x0825F430
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_0_2.4bpp"
 
-gRubyGetArrow_0825F490:: @ 0x0825F490
+gRubyGetArrow_E_1Lit_Bot:: @ 0x0825F490
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_1_2.4bpp"
 
-gRubyGetArrow_0825F4F0:: @ 0x0825F4F0
+gRubyGetArrow_E_2Lit_Bot:: @ 0x0825F4F0
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_2_2.4bpp"
 
-gRubyGetArrow_0825F550:: @ 0x0825F550
+gRubyGetArrow_E_3Lit_Bot:: @ 0x0825F550
     .incbin "graphics/stage/ruby/get_arrow/get_e_arrow_3_2.4bpp"
 
-gRubyGetArrow_0825F5B0:: @ 0x0825F5B0
+gRubyGetArrow_T_Under2Lit_Bot:: @ 0x0825F5B0
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_0_2.4bpp"
 
-gRubyGetArrow_0825F610:: @ 0x0825F610
+gRubyGetArrow_T_2Lit_Bot:: @ 0x0825F610
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_2.4bpp"
 
-gRubyGetArrow_0825F670:: @ 0x0825F670
+gRubyGetArrow_T_3Lit_Bot:: @ 0x0825F670
     .incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_2.4bpp"
 	.space 0x40
 	.fill 0x20, 1, 0x22
@@ -872,10 +872,10 @@ gRuby_RSlingshot_On_R4:: @ 0x08265910
 
 
 
-gRubyBoardBGTiles:: @ 0x08265C10
+gRubyBoardBG1Tiles:: @ 0x08265C10
 	@ loaded to charblock 2; tiles 0-703 are blank because all_board_setup.c
 	@ later overwrites that region with the decompressed bgtop tiles
-	.incbin "graphics/stage/ruby/ruby_board_bg_tiles.4bpp"
+	.incbin "graphics/stage/ruby/ruby_board_bg1_tiles.4bpp"
 
-gRubyBoardBGTilemap:: @ 0x0826DC10
-	.incbin "graphics/stage/ruby/ruby_board_bg_tilemap.bin"
+gRubyBoardBG1Tilemap:: @ 0x0826DC10
+	.incbin "graphics/stage/ruby/ruby_board_bg1_tilemap.bin"

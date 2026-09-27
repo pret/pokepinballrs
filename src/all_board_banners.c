@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 #include "inline_load_lighting_pal.h"
+#include "constants/mem_layout/shared.h"
 
 extern void RenderBannerSlideAnimation(void);
 
@@ -120,6 +121,8 @@ void RenderBannerSlideAnimation(void)
 
     bannerTypeIx = gCurrentPinballGame->bannerGfxIndex - 1;
     spriteGroup = gMain.fieldSpriteGroups[FIELD_SG_MAIN_MODE_START_BANNER];
+
+    //Alternates between 2 banner graphics every 4 frames
     frameCount = ((gMain.systemFrameCount & 7) / 4);
 
     if (spriteGroup->active)
@@ -136,7 +139,7 @@ void RenderBannerSlideAnimation(void)
             else
             {
                 gCurrentPinballGame->activeFxType = FX_MODE_START_BANNER;
-                DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x25E0);
+                DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_TRAVEL_BANNER_TILES);
                 AnimateBannerSlide();
                 if (gCurrentPinballGame->bannerDisplayDuration > 0)
                 {
@@ -163,8 +166,8 @@ void RenderBannerSlideAnimation(void)
         else
         {
             gCurrentPinballGame->activeFxType = FX_MODE_START_BANNER;
-            // i = framecount ???
-            DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x21C0);
+            // TODO: won't play nice: "i = " shouldn't be here, and the 0x21C0 should be SIZE_OF_VRAM_MODE_BANNER_USED_TILES
+            DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_USED_TILES);
             if (gCurrentPinballGame->bannerDisplayDuration > 0)
             {
                 gCurrentPinballGame->bannerDisplayDuration--;

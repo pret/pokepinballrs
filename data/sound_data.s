@@ -3846,7 +3846,7 @@ gDirectSound_Cry388_Chimecho:: @ 0x086885EC
 .include "sound/songs/se_pichu_kickback_enabled.s"
 .include "sound/songs/se_pichu_kickback.s"
 .include "sound/songs/se_unused_0xb4.s"
-.include "sound/songs/se_ruby_bumper_hit.s"
+.include "sound/songs/se_bumper_hit.s"
 .include "sound/songs/se_cyndaquil_egg_guard_hit.s"
 .include "sound/songs/se_aerodactyl_egg_flight.s"
 .include "sound/songs/se_cyndaquil_ball_eject_after_egg_arrival.s"

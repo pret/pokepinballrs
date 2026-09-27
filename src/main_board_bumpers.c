@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 #include "constants/board/sapphire_states.h"
+#include "constants/mem_layout/sapphire.h"
 
 extern const u8 gSapphireBoardShopShockWall_Gfx[][0x80];
 
@@ -13,7 +14,7 @@ extern const u8 gSapphireMinun_Gfx[][0x300];
 extern const u8 gSapphireMinunHeadElectricity_Gfx[][0x200];
 extern const u8 gSapphirePlusle_Gfx[][0x300];
 extern const u8 gSapphirePlusleHeadElectricity_Gfx[][0x200];
-extern const u8 gPondBumper_Gfx[][0x200];
+extern const u8 gShroomishBumperHit_Gfx[][0x200];
 
 void UpdateSapphireShopGateLogic(void)
 {
@@ -227,7 +228,7 @@ void DrawSapphireShopGuards(void)
     group->baseX = 68 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 144 - gCurrentPinballGame->cameraYOffset;
     index = gShopGuardianAnimFramesetData[gCurrentPinballGame->shopGuardianAnimFrames[MINUN_TARGET_BUTTON_IX]][0];
-    DmaCopy16(3, &gSapphireMinun_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 11, 13)), 0x280);
+    DmaCopy16(3, &gSapphireMinun_Gfx[index], OBJ_VRAM_ADDR_MINUN_ENTITY_TILES, SIZE_OF_MINUN_ENTTIY_TILES);
     for (i = 0; i < 2; i++)
     {
         oamSimple = &group->oam[i];
@@ -241,7 +242,7 @@ void DrawSapphireShopGuards(void)
     {
         group->baseY = 144 - gCurrentPinballGame->cameraYOffset;
         index = gCurrentPinballGame->shopGuardianTargetHitFxTimer[MINUN_TARGET_BUTTON_IX] / 2;
-        DmaCopy16(3, &gSapphireMinunHeadElectricity_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 1, 25)), 0x180);
+        DmaCopy16(3, &gSapphireMinunHeadElectricity_Gfx[index], OBJ_VRAM_ADDR_MINUN_ELECTRICTY_FX_TILES, SIZE_OF_MINUN_ELECTRICTY_FX_TILES);
     }
     else
     {
@@ -256,7 +257,7 @@ void DrawSapphireShopGuards(void)
     group->baseX = 36 - gCurrentPinballGame->cameraXOffset;
     group->baseY = 163 - gCurrentPinballGame->cameraYOffset;
     index = gShopGuardianAnimFramesetData[gCurrentPinballGame->shopGuardianAnimFrames[PLUSLE_TARGET_BUTTON_IX]][0];
-    DmaCopy16(3, &gSapphirePlusle_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 5)), 0x280);
+    DmaCopy16(3, &gSapphirePlusle_Gfx[index], OBJ_VRAM_ADDR_PLUSLE_ENTITY_TILES, SIZE_OF_PLUSLE_ENTTIY_TILES);
     for (i = 0; i < 2; i++)
     {
         oamSimple = &group->oam[i];
@@ -270,7 +271,7 @@ void DrawSapphireShopGuards(void)
     {
         group->baseY = 163 - gCurrentPinballGame->cameraYOffset;
         index = gCurrentPinballGame->shopGuardianTargetHitFxTimer[PLUSLE_TARGET_BUTTON_IX] / 2;
-        DmaCopy16(3, &gSapphirePlusleHeadElectricity_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 2, 9)), 0x180);
+        DmaCopy16(3, &gSapphirePlusleHeadElectricity_Gfx[index], OBJ_VRAM_ADDR_PLUSLE_ELECTRICTY_FX_TILES, SIZE_OF_PLUSLE_ELECTRICTY_FX_TILES);
     }
     else
     {
@@ -309,7 +310,7 @@ void DrawSapphireShopGuards(void)
     else
         index = 9;
 
-    DmaCopy16(3, &gSapphireBoardShopShockWall_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(1, 1, 21)), 0x80);
+    DmaCopy16(3, &gSapphireBoardShopShockWall_Gfx[index], OBJ_VRAM_ADDR_SAPPHIRE_MART_ELECTRIC_GATE_TILES, SIZE_OF_SAPPHIRE_MART_ELECTRIC_GATE_TILES);
     oamSimple = &group->oam[0];
     gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
     gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -325,20 +326,20 @@ void CalculateRubyBumperBounce(void)
     gCurrentPinballGame->rubyBumperLogicPosition[2].y = (161 - ((gCurrentPinballGame->globalAnimFrameCounter + 20) % 60) / 30) * 10;
 }
 
-void HandleRubyBumperHit(void)
+void HandleSapphireBumperHit(void)
 {
     s16 i;
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
     s16 index;
 
-    group = &gMain.spriteGroups[SG_RUBY_WHISCASH];
+    group = &gMain.spriteGroups[SG_SAPPHIRE_SHROOMISH_BUMPERS];
     if (gCurrentPinballGame->bumperHitCountdown > 0)
     {
         if (gCurrentPinballGame->bumperHitCountdown == 2)
         {
             gCurrentPinballGame->scoreAddedInFrame = SCORE_BUMPER_HIT;
-            m4aSongNumStart(SE_RUBY_BUMPER_HIT);
+            m4aSongNumStart(SE_BUMPER_HIT);
             PlayRumble(7);
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_CATCH_EM_MODE
                 && gCurrentPinballGame->boardSubState == CATCH_EM_SUBSTATE_AWAITING_BUMPER_HITS)
@@ -369,7 +370,7 @@ void HandleRubyBumperHit(void)
                             gCurrentPinballGame->bannerSlidePosition = -2500;
                             gCurrentPinballGame->bannerSlideTimer = 50;
                             gCurrentPinballGame->bannerSlideVelocity = 0;
-                            DmaCopy16(3, gModeBannerTilemaps[7], OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2400);
+                            DmaCopy16(3, gModeBannerTilemaps[7], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_LOAD_TILES);
                             DmaCopy16(3, gModeBanner_Pals[7], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
                             gMain.blendControl = 0xCE;
                         }
@@ -403,7 +404,7 @@ void HandleRubyBumperHit(void)
                 index = ((gCurrentPinballGame->globalAnimFrameCounter + (i * 10)) % 30) / 15;
             }
 
-            DmaCopy16(3, &gPondBumper_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 12, 29 + i * 16)), 0x200);
+            DmaCopy16(3, &gShroomishBumperHit_Gfx[index], OBJ_VRAM_ADDR_SHROOMISH_BUMPER_TILES + i * SIZE_OF_SHROOMISH_BUMPER_TILES, SIZE_OF_SHROOMISH_BUMPER_TILES);
 
             group->baseX = gCurrentPinballGame->rubyBumperLogicPosition[i].x / 10 - gCurrentPinballGame->cameraXOffset - 8;
             group->baseY = gCurrentPinballGame->rubyBumperLogicPosition[i].y / 10 - gCurrentPinballGame->cameraYOffset - 10;

@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/spheal_states.h"
 #include "constants/board/sapphire_states.h"
+#include "constants/mem_layout/spheal.h"
 
 #define SPHEAL_MODE_TIME TICKS_FOR_TIME(2,0)
 
@@ -129,7 +130,7 @@ void InitFrameProcess3_BoardLogic_SphealBoard(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[0x400 + i] = 0x200;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_TILE_ADDR(TILE_INDEX(0,4,0)), 2*BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_VRAM_ADDR_SPHEAL_LAYER_1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
 
     gMain.blendControl = 0x1C42;
     gMain.blendAlpha = 0xC04;
@@ -141,7 +142,7 @@ void InitFrameProcess3_BoardLogic_SphealBoard(void)
     }
 
     gMain.bgOffsets[1].yOffset = 126;
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0, 4, 10)), 0x280);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_SPHEAL_TBD_TILEMAP, SIZE_OF_VRAM_SPHEAL_TBD_TILEMAP);
     DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
     m4aSongNumStart(MUS_BONUS_FIELD_SPHEAL);
     DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
@@ -213,7 +214,7 @@ void UpdateFrameProcess3_BoardLogic_SphealBoard(void)
             gMain.spriteGroups[SG_SPHEAL_END_SCORE_SPHEALS_SUNK].active = TRUE;
             gMain.spriteGroups[SG_SPHEAL_END_SCORE_BALLS_SUNK].active = TRUE;
             gMain.spriteGroups[SG_SPHEAL_END_SCORE_TOTAL].active = TRUE;
-            DmaCopy16(3, gSphealResultsScreenGfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x800);
+            DmaCopy16(3, gSphealResultsScreenGfx, OBJ_VRAM_ADDR_SPHEAL_SUMMARY_TILES, SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES);
             gCurrentPinballGame->bannerSlideYOffset = -126;
             gCurrentPinballGame->cameraLocked = TRUE;
         }
@@ -387,7 +388,7 @@ void UpdateSealeoEntityLogic(void)
         else
             var0 = gSealeoFramesetData[gCurrentPinballGame->minionFramesetIx[0]][0];
 
-        DmaCopy16(3, gSphealMinionBodySprites[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 5, 5)), 0x600);
+        DmaCopy16(3, gSphealMinionBodySprites[var0], OBJ_VRAM_ADDR_RIGHT_SEALEO_TILES, SIZE_OF_VRAM_SEALEO_TILES);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -403,7 +404,7 @@ void UpdateSealeoEntityLogic(void)
         else
             var0 = gSealeoFramesetData[gCurrentPinballGame->minionFramesetIx[1]][0];
 
-        DmaCopy16(3, gSphealMinionBodySprites[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 3, 5)), 0x600);
+        DmaCopy16(3, gSphealMinionBodySprites[var0], OBJ_VRAM_ADDR_LEFT_SEALEO_TILES, SIZE_OF_VRAM_SEALEO_TILES);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -870,7 +871,7 @@ void UpdateSphealEntityLogic(void)
             group->baseX = (gCurrentPinballGame->sphealPositionQ8[i].x / 256) - (gCurrentPinballGame->cameraXOffset + 12);
             group->baseY = (gCurrentPinballGame->sphealPositionQ8[i].y / 256) - (gCurrentPinballGame->cameraYOffset + 14);
 
-            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 5 + 9 * i)), 0x120);
+            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_VRAM_ADDR_SPHEAL_TILES + i * SIZE_OF_VRAM_SPHEAL_TILES, SIZE_OF_VRAM_SPHEAL_TILES);
             for (j = 0; j < SPHEAL_SPRITE_SEGMENTS; j++)
             {
                 oamSimple = &group->oam[j];
@@ -913,6 +914,7 @@ void UpdateSphealEntityLogic(void)
 
             gCurrentPinballGame->sphealHitYPosition[i] = gCurrentPinballGame->sphealPositionQ8[i].y / 256 + gCurrentPinballGame->sphealOamYOffset[i];
 
+            //Splash left behind when the spheal leaves the water
             group = &gMain.spriteGroups[SG_SPHEAL_ENTITY_REFLECTION_BASE + i];
 
             //Note: left/right are separated by 30
@@ -931,7 +933,7 @@ void UpdateSphealEntityLogic(void)
             group->baseX = (gCurrentPinballGame->sphealPositionQ8[i].x / 256) - (gCurrentPinballGame->cameraXOffset + 12);
             group->baseY = (gCurrentPinballGame->sphealPositionQ8[i].y / 256) - (gCurrentPinballGame->cameraYOffset + 14);
 
-            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_TILE_ADDR(TILE_INDEX(0, 7, 23 + 9 * i)), 0x120);
+            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_VRAM_ADDR_SPHEAL_CLIMB_SPLASH_TILES + i * SIZE_OF_VRAM_SPHEAL_CLIMB_SPLASH_TILES, SIZE_OF_VRAM_SPHEAL_CLIMB_SPLASH_TILES);
             for (j = 0; j < SPHEAL_SPRITE_SEGMENTS; j++)
             {
                 oamSimple = &group->oam[j];
@@ -958,7 +960,7 @@ void UpdateSphealScoreAndDelivery(void)
         if (gCurrentPinballGame->scoreCountdownTimer < 22)
             var0 = gSphealScoreDigitSpriteIndices[gCurrentPinballGame->scoreCountdownTimer];
 
-        DmaCopy16(3, gSphealNetGfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 9)), 0x200);
+        DmaCopy16(3, gSphealNetGfx[var0], OBJ_VRAM_ADDR_SPHEAL_NET_TILES, SIZE_OF_VRAM_SPHEAL_NET_TILES);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -969,7 +971,7 @@ void UpdateSphealScoreAndDelivery(void)
     {
         group->baseX = 104 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 94 - gCurrentPinballGame->cameraYOffset;
-        DmaCopy16(3, gSphealNetFrontGfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 2, 25)), 0x180);
+        DmaCopy16(3, gSphealNetFrontGfx[var0], OBJ_VRAM_ADDR_SPHEAL_NET_FRONT_TILES, SIZE_OF_VRAM_SPHEAL_NET_FRONT_TILES);
         for (i = 0; i < NET_FRONT_SPRITE_SEGMENTS; i++)
         {
             oamSimple = &group->oam[i];
@@ -1015,7 +1017,7 @@ void SphealBoard_WhiscashDeliversBall(void)
         group->baseX = 134 + offsets[2] - gCurrentPinballGame->cameraXOffset;
         group->baseY = 154 + offsets[3] - gCurrentPinballGame->cameraYOffset;
         var0 = offsets[0];
-        DmaCopy16(3, gWhiscash_Gfx[var0], OBJ_TILE_ADDR(TILE_INDEX(0, 8, 9)), 0x460);
+        DmaCopy16(3, gWhiscash_Gfx[var0], OBJ_VRAM_ADDR_SPHEAL_WHISCASH_TILES, SIZE_OF_VRAM_SPHEAL_WHISCASH_TILES);
         for (i = 0; i < WHISCASH_SPRITE_SEGMENTS; i++)
         {
             oamSimple = &group->oam[i];
@@ -1088,7 +1090,7 @@ void SphealBoard_PelipperDeliversBall(void)
         group->baseX = (gCurrentPinballGame->pelipperPosX / 10) - (gCurrentPinballGame->cameraXOffset - 146);
         group->baseY = (gCurrentPinballGame->pelipperPosY / 10) - (gCurrentPinballGame->cameraYOffset - 110) + (gCurrentPinballGame->pelipperYBobOffset / 10);
         index = gCurrentPinballGame->deliveryAnimFrameIndex;
-        DmaCopy16(3, gPelipper_Gfx[index], OBJ_TILE_ADDR(TILE_INDEX(0, 9, 13)), 0x480);
+        DmaCopy16(3, gPelipper_Gfx[index], OBJ_VRAM_ADDR_SPHEAL_PELIPPER_TILES, SIZE_OF_VRAM_SPHEAL_PELIPPER_TILES);
         for (i = 0; i < PELIPPER_SPRITE_SEGMENTS; i++)
         {
             oamSimple = &group->oam[i];
@@ -1473,7 +1475,7 @@ void AnimateSphealBackground(void)
     for (i = 0x100; i < 0x400; i++)
         gBG0TilemapBuffer[0x800 + i] = gSphealWaterBackgroundTilemap[i] + var0 * 4;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_SPHEAL_LAYER_3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 }
 
 

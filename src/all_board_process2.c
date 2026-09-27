@@ -84,8 +84,8 @@ void InitFrameProcess2_CameraShakeDrain_AllBoards(void)
     }
 
     gMain.bgOffsets[0].yOffset = 80;
-    gCurrentPinballGame->scrollEffectY = gMain.bgOffsets[3].yOffset;
-    gCurrentPinballGame->scrollEffectX = gCurrentPinballGame->scrollEffectY;
+    gCurrentPinballGame->scrollEffectYpx = gMain.bgOffsets[3].yOffset;
+    gCurrentPinballGame->scrollEffectX = gCurrentPinballGame->scrollEffectYpx;
     gCurrentPinballGame->cameraLookAhead = 0x1000;
 }
 
@@ -158,8 +158,8 @@ void UpdateFrameProcess2_CameraShakeDrain_MainBoards(void)
 
     ProcessTiltInput();
     gMain.bgOffsets[3].xOffset = gCurrentPinballGame->cameraBaseX + gCurrentPinballGame->tiltXOffset + gCurrentPinballGame->screenShakeX;
-    gCurrentPinballGame->scrollEffectY = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->tiltYOffset + gCurrentPinballGame->cameraScrollOffset + gCurrentPinballGame->cameraYAdjust;
-    var3 = gMain.bgOffsets[3].yOffset - gCurrentPinballGame->scrollEffectY;
+    gCurrentPinballGame->scrollEffectYpx = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->tiltYOffset + gCurrentPinballGame->cameraScrollOffset + gCurrentPinballGame->cameraYAdjust;
+    var3 = gMain.bgOffsets[3].yOffset - gCurrentPinballGame->scrollEffectYpx;
     if (var3 > 8)
         var3 = 8;
     else if (var3 < -8)
@@ -238,8 +238,8 @@ void UpdateFrameProcess2_CameraShakeDrain_BonusBoards(void)
 
     ProcessTiltInput();
     gMain.bgOffsets[2].xOffset = gCurrentPinballGame->cameraBaseX + gCurrentPinballGame->tiltXOffset + 8 + gCurrentPinballGame->screenShakeX;
-    gCurrentPinballGame->scrollEffectY = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->tiltYOffset + gCurrentPinballGame->cameraScrollOffset + gCurrentPinballGame->cameraYAdjust + gCurrentPinballGame->screenShakeY;
-    var3 = gCurrentPinballGame->scrollEffectX - gCurrentPinballGame->scrollEffectY;
+    gCurrentPinballGame->scrollEffectYpx = gCurrentPinballGame->cameraBaseY + gCurrentPinballGame->tiltYOffset + gCurrentPinballGame->cameraScrollOffset + gCurrentPinballGame->cameraYAdjust + gCurrentPinballGame->screenShakeY;
+    var3 = gCurrentPinballGame->scrollEffectX - gCurrentPinballGame->scrollEffectYpx;
     if (var3 > 8)
         var3 = 8;
     else if (var3 < -8)

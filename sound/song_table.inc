@@ -189,7 +189,7 @@ gSongTable:: @ 0x08534E04
 	song se_pichu_kickback, MUSIC_PLAYER_SE2, 2
 	song se_unused_0xb4, MUSIC_PLAYER_SE2, 2
 	song mus_dummy, MUSIC_PLAYER_BGM, 0
-	song se_ruby_bumper_hit, MUSIC_PLAYER_SE2, 2
+	song se_bumper_hit, MUSIC_PLAYER_SE2, 2
 	song se_cyndaquil_egg_guard_hit, MUSIC_PLAYER_SE2, 2
 	song se_aerodactyl_egg_flight, MUSIC_PLAYER_SE2, 2
 	song se_cyndaquil_ball_eject_after_egg_arrival, MUSIC_PLAYER_SE2, 2

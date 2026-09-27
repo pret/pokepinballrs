@@ -5,6 +5,7 @@
 #include "constants/fields.h"
 #include "constants/board/ruby_states.h"
 #include "constants/board/sapphire_states.h"
+#include "constants/mem_layout/intro.h"
 
 extern struct PinballGame gPinballGameState;
 
@@ -318,7 +319,7 @@ void InitPinballGameState(void)
             gCurrentPinballGame->chargeIndicatorXOffset = 0;
             gCurrentPinballGame->chargeIndicatorYOffset = 120;
             gCurrentPinballGame->fullChargeIndicatorBlinkTimer = 60;
-            DmaCopy16(3, gDxModePikachuObjTiles, OBJ_TILE_ADDR(TILE_INDEX(0, 1, 16)), 0x180);
+            DmaCopy16(3, gDxModePikachuObjTiles, OBJ_VRAM_ADDR_PIKA_MON_AT_RIGHT_SIDE_TILES, SIZE_OF_VRAM_PIKA_MON_TILES);
             gCurrentPinballGame->outLanePikaPosition = PIKA_BOTH_SIDES;
             gMain.fieldSpriteGroups[FIELD_SG_HATCH_MON_ENTITY]->active = FALSE;
             gCurrentPinballGame->pichuEntranceTimer = 1;
@@ -422,8 +423,8 @@ void SetBallPositionForBonusReturn(void)
     gMain.bgOffsets[1].yOffset = gCurrentPinballGame->cameraBaseY;
     gMain.bgOffsets[0].yOffset = 80;
 
-    gCurrentPinballGame->scrollEffectY = gMain.bgOffsets[3].yOffset;
-    gCurrentPinballGame->ballLaunchSpeed = gMain.bgOffsets[3].yOffset / 8;
+    gCurrentPinballGame->scrollEffectYpx = gMain.bgOffsets[3].yOffset;
+    gCurrentPinballGame->prevScrollYTileIx = gMain.bgOffsets[3].yOffset / 8;
 }
 
 void ConfigureBoardProcessesForField(void)
@@ -679,6 +680,8 @@ void IdleGameFrameUpdate(void)
     }
 
     UpdateScrollingBackgroundTiles();
+
+    //Tilemap update for the blinking 'Press Start' data
     if ((gMain.systemFrameCount % 32) / 16 > 0)
     {
         for (i = 0; i < 10; i++)
@@ -690,7 +693,7 @@ void IdleGameFrameUpdate(void)
             gBG0TilemapBuffer[0x34A + i] = 0x1FF;
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x340], BG_TILE_ADDR(TILE_INDEX(0, 9, 20)), 0x40);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x340], BG_VRAM_ADDR_IDLE_PRESS_START_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW);
 }
 
 void BonusFieldFrameUpdate(void)
@@ -834,7 +837,7 @@ void IdleBonusFieldFrameUpdate(void)
             gBG0TilemapBuffer[0x32B + i] = 0x1FF;
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x320], BG_TILE_ADDR(TILE_INDEX(0, 9, 18)), 0x40);
+    DmaCopy16(3, &gBG0TilemapBuffer[0x320], BG_VRAM_ADDR_IDLE_TBD_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW);
 }
 
 void PinballGame_State3_4B20C(void)

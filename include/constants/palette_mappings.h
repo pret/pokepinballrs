@@ -1,5 +1,13 @@
 #ifndef GUARD_CONSTANTS_PALETTE_MAPPINGS_H
 #define GUARD_CONSTANTS_PALETTE_MAPPINGS_H
+#include "gba/defines.h"
+
+#define PLTT_SLOT_SIZE 0x20
+#define PALETTES_PER_BANK 16 // One bank for BG palettes, one for Obj palettes
+#define COLORS_PER_PALETTE 16
+
+#define BG_PLTT_SLOT(n)  (BG_PLTT  + (n) * PLTT_SLOT_SIZE)
+#define OBJ_PLTT_SLOT(n) (OBJ_PLTT + (n) * PLTT_SLOT_SIZE)
 
 #define PAL_IX_0 0
 #define PAL_IX_1 1

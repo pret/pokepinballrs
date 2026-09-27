@@ -4,11 +4,11 @@
 gGroudonLavaPaletteCycleData:: @ 0x08352BD8
 	.incbin "graphics/stage/groudon/groudon_lava.gbapal"
 
-gGroudonBoardBG0Tilemap:: @ 0x08352DD8
-	.incbin "graphics/stage/groudon/groudon_board_bg0_tilemap.bin"
+gGroudonBoardBG3Tilemap:: @ 0x08352DD8
+	.incbin "graphics/stage/groudon/groudon_board_bg3_tilemap.bin"
 
-gGroudonBoardBG1Tilemap:: @ 0x083535D8
-	.incbin "graphics/stage/groudon/groudon_board_bg1_tilemap.bin"
+gGroudonBoardBG2Tilemap:: @ 0x083535D8
+	.incbin "graphics/stage/groudon/groudon_board_bg2_tilemap.bin"
 
 gGroudonBoardCompressedBGTiles:: @ 0x08353DD8
     .incbin "graphics/stage/groudon/groudon_board_bg_tiles.4bpp.lz"

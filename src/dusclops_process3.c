@@ -4,6 +4,7 @@
 #include "main.h"
 #include "constants/bg_music.h"
 #include "constants/board/dusclops_states.h"
+#include "constants/mem_layout/dusclops.h"
 
 #define DUSKULL_MODE_TIME TICKS_FOR_TIME(2,0)
 
@@ -58,7 +59,7 @@ void InitFrameProcess3_BoardLogic_DusclopsBoard(void)
 
     gCurrentPinballGame->bossEntityState = DUSCLOPS_ENTITY_STATE_INIT;
     gCurrentPinballGame->kecleonFramesetBase = 0;
-    gCurrentPinballGame->bossVulnerable = 0;
+    gCurrentPinballGame->bossNextFrameId = 0;
     gCurrentPinballGame->dusclopsWalkFootIndex = 0;
     gCurrentPinballGame->bossFramesetIndex = 0;
     gCurrentPinballGame->bossFrameTimer = 0;
@@ -143,7 +144,7 @@ void UpdateFrameProcess3_BoardLogic_DusclopsBoard(void)
                 gCurrentPinballGame->stageTimer = 0;
                 gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
                 gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-                DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)), 0x2000);
+                DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_VRAM_ADDR_DUSCLOPS_BANNER_TILES, SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES);
                 gCurrentPinballGame->bannerSlideYOffset = 136;
             }
             break;
@@ -566,7 +567,7 @@ void DuskullPhase_ProcessGraphics() {
     for (i = 0; i < DUSKULL_CONCURRENT_MAX; i++)
     {
         s16 spriteVariant = gCurrentPinballGame->minionSpriteVariant[i];
-        DmaCopy16(3, gDusclopsBoardDuskull_Gfx + spriteVariant * 0x280, OBJ_TILE_ADDR(TILE_INDEX(0, 2, 9 + 20 * i)), 0x280);
+        DmaCopy16(3, gDusclopsBoardDuskull_Gfx + spriteVariant * SIZE_OF_VRAM_DUSKULL_TILES, OBJ_VRAM_ADDR_DUSKULL_TILES + i * SIZE_OF_VRAM_DUSKULL_TILES, SIZE_OF_VRAM_DUSKULL_TILES);
         oamIx = gCurrentPinballGame->minionOamIx[i];
         spriteGroup = &gMain.spriteGroups[SG_DUSKULL_ENTITY_BASE + i];
 
@@ -1008,7 +1009,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
         break;
     } //End switch
 
-    DmaCopy16(3 , gDusclopsBoardDusclops_Gfx + tileOffset * 1024, OBJ_TILE_ADDR(TILE_INDEX(0, 4, 5)), BG_SCREEN_SIZE);
+    DmaCopy16(3 , gDusclopsBoardDusclops_Gfx + tileOffset * 1024, OBJ_VRAM_ADDR_DUSCLOPS_TILES, SIZE_OF_VRAM_DUSCLOPS_TILES);
 
     gCurrentPinballGame->bossCollisionX = ((gCurrentPinballGame->bossPositionX / 10) * 2) + 16;
     gCurrentPinballGame->bossCollisionY = ((gCurrentPinballGame->bossPositionY / 10) * 2) + 16;
@@ -1058,7 +1059,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
             s16 i;
             u8 r1;
             r1 = gMain.systemFrameCount % 4;
-            DmaCopy16(3 , gDusclopsBoardDusclopsAppearFx_Gfx + r1 / 2 * 0x600, OBJ_TILE_ADDR(TILE_INDEX(0, 6, 21)), 0xc00);
+            DmaCopy16(3 , gDusclopsBoardDusclopsAppearFx_Gfx + r1 / 2 * 0x600, OBJ_VRAM_ADDR_DUSCLOPS_PHASING_FX_TILES, SIZE_OF_VRAM_DUSCLOPS_PHASING_FX_TILES);
 
             for (i = 0; i < 2; i++)
             {
@@ -1090,7 +1091,7 @@ void DusclopsPhase_ProcessEntityLogicAndGraphics(void)
             else
                 tileOffset = 2;
 
-            DmaCopy16(3 , gDusclopsBoardDusclopsBallGrabSwirl_Gfx + tileOffset * 0x200,OBJ_TILE_ADDR(TILE_INDEX(0, 6, 5)), 0x200);
+            DmaCopy16(3 , gDusclopsBoardDusclopsBallGrabSwirl_Gfx + tileOffset * SIZE_OF_VRAM_DUSCLOPS_GRAB_FX_TILES,OBJ_VRAM_ADDR_DUSCLOPS_GRAB_FX_TILES, SIZE_OF_VRAM_DUSCLOPS_GRAB_FX_TILES);
         }
         else
         {

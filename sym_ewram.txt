@@ -243,7 +243,7 @@ gMainCallback: @ 0x200FB9C
 	.space 0x4
 gVCountIntrFuncShadow: @ 0x200FBA0
 	.space 0x10
-gBoardGfxBuffer: @ 0x0200FBB0
+gBoardBGTileBuffer: @ 0x0200FBB0
 	.space 0x8020
 gVBlankIntrFuncShadow: @ 0x2017BD0
 	.space 0x4
@@ -532,21 +532,13 @@ gLinkSendBuffer: @ 0x0202C5F0
 gEReaderTextCharIndex: @ 0x0202C604
 	.space 0xC
 gWorkingHighScores: @ 0x0202C610
-	.space 0x14
-gUnknown_0202C624: @ 0x0202C624
-	.space 0xAC
-gUnknown_0202C6D0: @ 0x0202C6D0
-	.space 0x14
-gUnknown_0202C6E4: @ 0x0202C6E4
-	.space 0xAC
+	.space 0x180
 gIntroSceneIndex: @ 0x0202C790
 	.space 0x4
 gPokedexDescriptionPage: @ 0x0202C794
 	.space 0xC
-gCatchSpriteFrameBuffer: @ 0x0202C7A0
-	.space 0xFC0
-gCatchAnimTileBuffer: @ 0x0202D760
-	.space 0x120
+gHatchedWalkerAnimTileBuffer: @ 0x0202C7A0
+	.space 0x10E0
 gKecleonSpriteSets: @ 0x0202D880
 	.space 0x2E40
 gGameOverLetterXOffsets: @ 0x020306C0
