@@ -1026,7 +1026,7 @@ extern struct SongHeader se_dusclops_appear;
 extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
 extern const s16 gBounceBackForceMagnitudes[9];
 typedef s16 (*BoardCollisionFunc)(struct Vector16*, u16*);
-extern BoardCollisionFunc BoardCollisionFuncts_086ACE0C[8];
+extern BoardCollisionFunc BoardCollisionFuncts[8];
 extern struct Vector16 gWallEscapeOffsets[4];
 extern struct FlipperLineSegment gFlipperLineGeometry[13];
 extern u16 gFlipperBaseXPositions[2];

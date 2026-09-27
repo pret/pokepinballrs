@@ -581,6 +581,9 @@ void DrawRubyCatchArrowProgress(void)
     const u8 **src;
     const u8 **dest;
 
+    // Note: since these overlap, and the lower tiles are drawn later, this shortcuts some of the
+    // needed on/off pairs. EG: with one catch arrow, this uses the 'both on' for the G, and uses
+    // the blinking variant of the E, overwriting the lit bit when the E blinks off.
     if (BoardNotInActivityMode)
     {
         if (gCurrentPinballGame->catchArrowProgress == 0)
