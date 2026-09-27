@@ -5,88 +5,81 @@
 
 @ Note, this appears identical to rs_drumset in pokeemerald
 voice_group gUnknown_0852DBAC, 36
-	voice_directsound_no_resample 60, 64, gDirectSound_08535870, 255, 0, 255, 242
+	voice_directsound_no_resample 60, 64, sc88pro_rnd_kick, 255, 0, 255, 242
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound_no_resample 60, 64, gDirectSound_08535D10, 255, 0, 255, 242
 	voice_directsound_no_resample 60, 64, gDirectSound_08536404, 255, 255, 255, 127
-	voice_directsound_no_resample 60, 64, gDirectSound_08536C94, 255, 0, 255, 242
-	voice_directsound 48, 44, gDirectSound_0853750C, 255, 210, 77, 204
-	voice_directsound_no_resample 60, 79, gDirectSound_0853854C, 255, 127, 0, 188
-	voice_directsound 51, 49, gDirectSound_0853750C, 255, 216, 77, 204
-	voice_directsound_no_resample 60, 79, gDirectSound_0853854C, 255, 127, 0, 188
-	voice_directsound 54, 59, gDirectSound_0853750C, 255, 216, 77, 204
-	voice_directsound_no_resample 60, 79, gDirectSound_08538960, 255, 242, 141, 0
-	voice_directsound 57, 69, gDirectSound_0853750C, 255, 210, 77, 204
-	voice_directsound 60, 79, gDirectSound_0853750C, 255, 204, 77, 204
-	voice_directsound_no_resample 30, 54, gDirectSound_08539790, 255, 246, 0, 216
-	voice_directsound 62, 84, gDirectSound_0853750C, 255, 204, 77, 204
-	voice_directsound_no_resample 70, 49, gDirectSound_0853A6BC, 255, 165, 103, 231
+	voice_directsound_no_resample 60, 64, sc88pro_orchestra_snare, 255, 0, 255, 242
+	voice_directsound 48, 44, sc55_tom, 255, 210, 77, 204
+	voice_directsound_no_resample 60, 79, unknown_close_hihat, 255, 127, 0, 188
+	voice_directsound 51, 49, sc55_tom, 255, 216, 77, 204
+	voice_directsound_no_resample 60, 79, unknown_close_hihat, 255, 127, 0, 188
+	voice_directsound 54, 59, sc55_tom, 255, 216, 77, 204
+	voice_directsound_no_resample 60, 79, unknown_open_hihat, 255, 242, 141, 0
+	voice_directsound 57, 69, sc55_tom, 255, 210, 77, 204
+	voice_directsound 60, 79, sc55_tom, 255, 204, 77, 204
+	voice_directsound_no_resample 30, 54, sc88pro_orchestra_cymbal_crash, 255, 246, 0, 216
+	voice_directsound 62, 84, sc55_tom, 255, 204, 77, 204
+	voice_directsound_no_resample 70, 49, unknown_bell, 255, 165, 103, 231
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 70, 49, gDirectSound_0853A6BC, 255, 165, 103, 231
-	voice_directsound_no_resample 32, 34, gDirectSound_0853B650, 255, 127, 77, 204
-	voice_directsound_no_resample 60, 14, gDirectSound_0853BF04, 255, 235, 0, 165
+	voice_directsound_no_resample 70, 49, unknown_bell, 255, 165, 103, 231
+	voice_directsound_no_resample 32, 34, sc88pro_tambourine, 255, 127, 77, 204
+	voice_directsound_no_resample 60, 14, trinity_cymbal_crash, 255, 235, 0, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 30, 54, gDirectSound_08539790, 255, 246, 0, 216
+	voice_directsound_no_resample 30, 54, sc88pro_orchestra_cymbal_crash, 255, 246, 0, 216
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 30, 54, gDirectSound_08539790, 255, 246, 0, 216
-	voice_directsound_no_resample 30, 54, gDirectSound_08539790, 8, 0, 255, 216
+	voice_directsound_no_resample 30, 54, sc88pro_orchestra_cymbal_crash, 255, 246, 0, 216
+	voice_directsound_no_resample 30, 54, sc88pro_orchestra_cymbal_crash, 8, 0, 255, 216
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 72, 104, gDirectSound_0853C7E8, 255, 0, 255, 0
+	voice_directsound_no_resample 72, 104, sc88pro_mute_high_conga, 255, 0, 255, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 72, 94, gDirectSound_0853CD00, 255, 0, 255, 0
+	voice_directsound_no_resample 72, 94, sc88pro_open_low_conga, 255, 0, 255, 0
 
 gUnknown_0852DD08:: @ 0x0852DD08
-	voice_directsound 60, 0, gDirectSound_0853D2C8, 255, 252, 0, 239
-	voice_directsound 60, 0, gDirectSound_0853E228, 255, 250, 0, 221
-	voice_directsound 60, 0, gDirectSound_0853F888, 255, 250, 0, 221
-	voice_directsound 60, 0, gDirectSound_08540DE4, 255, 247, 0, 221
+	voice_directsound 60, 0, sc88pro_piano1_48, 255, 252, 0, 239
+	voice_directsound 60, 0, sc88pro_piano1_60, 255, 250, 0, 221
+	voice_directsound 60, 0, sc88pro_piano1_72, 255, 250, 0, 221
+	voice_directsound 60, 0, sc88pro_piano1_84, 255, 247, 0, 221
 
 gUnknown_0852DD38:: @ 0x0852DD38
-	voice_directsound 60, 0, gDirectSound_08541970, 255, 0, 255, 196
-	voice_directsound 60, 0, gDirectSound_08544F14, 255, 0, 255, 196
-	voice_directsound 60, 0, gDirectSound_08547230, 255, 0, 255, 196
+	voice_directsound 60, 0, sc88pro_string_ensemble_60, 255, 0, 255, 196
+	voice_directsound 60, 0, sc88pro_string_ensemble_72, 255, 0, 255, 196
+	voice_directsound 60, 0, sc88pro_string_ensemble_84, 255, 0, 255, 196
 
 gUnknown_0852DD5C:: @ 0x0852DD5C
-	voice_directsound 60, 0, gDirectSound_0854A8FC, 255, 0, 193, 127
-	voice_directsound 60, 0, gDirectSound_0854BC4C, 255, 0, 193, 127
-	voice_directsound 60, 0, gDirectSound_0854D15C, 255, 0, 193, 127
+	voice_directsound 60, 0, sc88pro_trumpet_60, 255, 0, 193, 127
+	voice_directsound 60, 0, sc88pro_trumpet_72, 255, 0, 193, 127
+	voice_directsound 60, 0, sc88pro_trumpet_84, 255, 0, 193, 127
 
 gUnknown_0852DD80:: @ 0x0852DD80
-	voice_directsound 60, 0, gDirectSound_0854E57C, 255, 0, 255, 165
-	voice_directsound 60, 0, gDirectSound_0854F618, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_tuba_39, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_tuba_51, 255, 0, 255, 165
 
 gUnknown_0852DD98:: @ 0x0852DD98
-	voice_directsound 60, 0, gDirectSound_08550674, 255, 0, 224, 165
-	voice_directsound 60, 0, gDirectSound_08557608, 255, 0, 218, 165
+	voice_directsound 60, 0, sc88pro_french_horn_60, 255, 0, 224, 165
+	voice_directsound 60, 0, sc88pro_french_horn_72, 255, 0, 218, 165
 
 gUnknown_0852DDB0:: @ 0x0852DDB0
-	voice_directsound 60, 0, gDirectSound_0853D2C8, 255, 252, 0, 252
-	voice_directsound 60, 0, gDirectSound_0853E228, 255, 250, 0, 250
-	voice_directsound 60, 0, gDirectSound_0853F888, 255, 250, 0, 250
-	voice_directsound 60, 0, gDirectSound_08540DE4, 255, 247, 0, 247
+	voice_directsound 60, 0, sc88pro_piano1_48, 255, 252, 0, 252
+	voice_directsound 60, 0, sc88pro_piano1_60, 255, 250, 0, 250
+	voice_directsound 60, 0, sc88pro_piano1_72, 255, 250, 0, 250
+	voice_directsound 60, 0, sc88pro_piano1_84, 255, 247, 0, 247
 
 gVoiceGroup_Inst_0852DDE0:: @ 0x0852DDE0
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
 	voice_keysplit gUnknown_0852DD08, keysplit_gUnknown_08534BC0
-	voice_directsound 60, 0, gDirectSound_085715B0, 255, 178, 180, 165
+	voice_directsound 60, 0, trinity_30303_mega_bass, 255, 178, 180, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0856467C, 255, 165, 51, 235
+	voice_directsound 60, 0, sc88pro_glockenspiel, 255, 165, 51, 235
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857EDD8, 255, 235, 0, 204
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_xylophone, 255, 235, 0, 204
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -104,7 +97,6 @@ gVoiceGroup_Inst_0852DDE0:: @ 0x0852DDE0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 252, 0, 115
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -112,8 +104,16 @@ gVoiceGroup_Inst_0852DDE0:: @ 0x0852DDE0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857E3A8, 255, 242, 0, 204
-	voice_directsound 60, 0, gDirectSound_0856184C, 255, 246, 0, 226
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 252, 0, 115
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_harp, 255, 242, 0, 204
+	voice_directsound 60, 0, sc88pro_timpani, 255, 246, 0, 226
 	voice_keysplit gUnknown_0852DD38, keysplit_gUnknown_08534C08
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -139,7 +139,7 @@ gVoiceGroup_Inst_0852DDE0:: @ 0x0852DDE0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 127, 231, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 127, 231, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -168,11 +168,11 @@ gVoiceGroup_Inst_0852DDE0:: @ 0x0852DDE0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1_alt 60, 0, 29, 2, 0, 2, 0, 0
 	voice_square_1_alt 60, 0, 22, 2, 0, 2, 0, 0
-	voice_directsound_no_resample 60, 64, gDirectSound_08535870, 255, 0, 255, 242
+	voice_directsound_no_resample 60, 64, sc88pro_rnd_kick, 255, 0, 255, 242
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound_no_resample 60, 64, gDirectSound_08535D10, 255, 0, 255, 242
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 60, 64, gDirectSound_08536C94, 255, 0, 255, 242
+	voice_directsound_no_resample 60, 64, sc88pro_orchestra_snare, 255, 0, 255, 242
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -186,7 +186,7 @@ gVoiceGroup_Inst_0852DDE0:: @ 0x0852DDE0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 32, 74, gDirectSound_0853B650, 255, 127, 77, 204
+	voice_directsound_no_resample 32, 74, sc88pro_tambourine, 255, 127, 77, 204
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -194,9 +194,9 @@ gVoiceGroup_Inst_0852DDE0:: @ 0x0852DDE0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 72, 66, gDirectSound_0853C7E8, 255, 0, 255, 0
+	voice_directsound_no_resample 72, 66, sc88pro_mute_high_conga, 255, 0, 255, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 72, 62, gDirectSound_0853CD00, 255, 0, 255, 0
+	voice_directsound_no_resample 72, 62, sc88pro_open_low_conga, 255, 0, 255, 0
 
 gVoiceGroup_Evolution_0852E404:: @ 0x0852E404
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
@@ -246,7 +246,7 @@ gVoiceGroup_Evolution_0852E404:: @ 0x0852E404
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0856184C, 255, 246, 0, 226
+	voice_directsound 60, 0, sc88pro_timpani, 255, 246, 0, 226
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -288,7 +288,7 @@ gVoiceGroup_Evolution_0852E404:: @ 0x0852E404
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 60, 64, gDirectSound_08536C94, 255, 0, 255, 242
+	voice_directsound_no_resample 60, 64, sc88pro_orchestra_snare, 255, 0, 255, 242
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -302,17 +302,17 @@ gVoiceGroup_Evolution_0852E404:: @ 0x0852E404
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 32, 49, gDirectSound_0853B650, 255, 127, 77, 204
+	voice_directsound_no_resample 32, 49, sc88pro_tambourine, 255, 127, 77, 204
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 30, 54, gDirectSound_08539790, 8, 0, 255, 216
+	voice_directsound_no_resample 30, 54, sc88pro_orchestra_cymbal_crash, 8, 0, 255, 216
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 30, 54, gDirectSound_08539790, 255, 246, 0, 216
+	voice_directsound_no_resample 30, 54, sc88pro_orchestra_cymbal_crash, 255, 246, 0, 216
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 72, 79, gDirectSound_0853C7E8, 255, 0, 255, 0
+	voice_directsound_no_resample 72, 79, sc88pro_mute_high_conga, 255, 0, 255, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 72, 74, gDirectSound_0853CD00, 255, 0, 255, 0
+	voice_directsound_no_resample 72, 74, sc88pro_open_low_conga, 255, 0, 255, 0
 
 gVoiceGroup_HurryUp_0852E95C:: @ 0x0852E95C
 	voice_keysplit_all voicegroup_gUnknown_0852DBAC
@@ -353,7 +353,7 @@ gVoiceGroup_HurryUp_0852E95C:: @ 0x0852E95C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 252, 0, 115
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 252, 0, 115
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -388,7 +388,7 @@ gVoiceGroup_HurryUp_0852E95C:: @ 0x0852E95C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_flute, 255, 0, 255, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -459,20 +459,17 @@ gVoiceGroup_Pokedex_0852EF5C:: @ 0x0852EF5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_085777A8, 255, 165, 90, 216
+	voice_directsound 60, 0, sc88pro_tubular_bell, 255, 165, 90, 216
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855C2F0, 255, 0, 255, 210
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_organ2, 255, 0, 255, 210
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855CAE8, 255, 249, 25, 76
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_nylon_str_guitar, 255, 249, 25, 76
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -480,10 +477,13 @@ gVoiceGroup_Pokedex_0852EF5C:: @ 0x0852EF5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857358C, 255, 253, 0, 188
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 252, 0, 115
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_fretless_bass, 255, 253, 0, 188
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 252, 0, 115
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -518,7 +518,7 @@ gVoiceGroup_Pokedex_0852EF5C:: @ 0x0852EF5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -599,7 +599,7 @@ gVoiceGroup_Title_0852F55C:: @ 0x0852F55C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855CAE8, 255, 249, 25, 76
+	voice_directsound 60, 0, sc88pro_nylon_str_guitar, 255, 249, 25, 76
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -610,7 +610,7 @@ gVoiceGroup_Title_0852F55C:: @ 0x0852F55C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857358C, 255, 253, 0, 188
+	voice_directsound 60, 0, sc88pro_fretless_bass, 255, 253, 0, 188
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -621,8 +621,8 @@ gVoiceGroup_Title_0852F55C:: @ 0x0852F55C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857E3A8, 255, 242, 51, 242
-	voice_directsound 60, 0, gDirectSound_0856184C, 255, 0, 180, 246
+	voice_directsound 60, 0, sc88pro_harp, 255, 242, 51, 242
+	voice_directsound 60, 0, sc88pro_timpani, 255, 0, 180, 246
 	voice_keysplit gUnknown_0852DD38, keysplit_gUnknown_08534C08
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -718,7 +718,7 @@ gVoiceGroup_Jirachi_0852FB5C:: @ 0x0852FB5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857EDD8, 255, 235, 0, 204
+	voice_directsound 60, 0, sc88pro_xylophone, 255, 235, 0, 204
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -729,7 +729,7 @@ gVoiceGroup_Jirachi_0852FB5C:: @ 0x0852FB5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855CAE8, 128, 249, 25, 76
+	voice_directsound 60, 0, sc88pro_nylon_str_guitar, 128, 249, 25, 76
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -741,17 +741,17 @@ gVoiceGroup_Jirachi_0852FB5C:: @ 0x0852FB5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857F80C, 255, 235, 128, 99
+	voice_directsound 60, 0, sc88pro_slap_bass, 255, 235, 128, 99
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 252, 0, 115
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 252, 0, 115
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857E3A8, 255, 242, 0, 242
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_harp, 255, 242, 0, 242
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_keysplit gUnknown_0852DD38, keysplit_gUnknown_08534C08
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -778,7 +778,7 @@ gVoiceGroup_Jirachi_0852FB5C:: @ 0x0852FB5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_flute, 255, 0, 255, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -844,26 +844,22 @@ gVoiceGroup_EggModeStart_0853015C:: @ 0x0853015C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0856467C, 255, 165, 72, 249
+	voice_directsound 60, 0, sc88pro_glockenspiel, 255, 165, 72, 249
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857EDD8, 255, 235, 0, 204
-	voice_directsound 60, 0, gDirectSound_085777A8, 255, 165, 90, 216
+	voice_directsound 60, 0, sc88pro_xylophone, 255, 235, 0, 204
+	voice_directsound 60, 0, sc88pro_tubular_bell, 255, 165, 90, 216
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855C2F0, 255, 0, 255, 210
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_08582B4C, 255, 0, 255, 165
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855CAE8, 128, 249, 25, 76
+	voice_directsound 60, 0, sc88pro_organ2, 255, 0, 255, 210
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_accordion, 255, 0, 255, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_nylon_str_guitar, 128, 249, 25, 76
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -882,7 +878,11 @@ gVoiceGroup_EggModeStart_0853015C:: @ 0x0853015C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0856184C, 255, 0, 180, 246
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_timpani, 255, 0, 180, 246
 	voice_keysplit gUnknown_0852DD38, keysplit_gUnknown_08534C08
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -908,7 +908,7 @@ gVoiceGroup_EggModeStart_0853015C:: @ 0x0853015C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_flute, 255, 0, 255, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -982,28 +982,14 @@ gVoiceGroup_EggMode_0853075C:: @ 0x0853075C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855C2F0, 255, 0, 255, 210
+	voice_directsound 60, 0, sc88pro_organ2, 255, 0, 255, 210
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855CAE8, 255, 249, 25, 76
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 252, 0, 115
+	voice_directsound 60, 0, sc88pro_nylon_str_guitar, 255, 249, 25, 76
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1011,6 +997,13 @@ gVoiceGroup_EggMode_0853075C:: @ 0x0853075C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 252, 0, 115
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1038,7 +1031,14 @@ gVoiceGroup_EggMode_0853075C:: @ 0x0853075C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 0, 255, 127
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_flute, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1108,18 +1108,18 @@ gVoiceGroup_EvoMode_08530D5C:: @ 0x08530D5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857EDD8, 255, 235, 0, 204
+	voice_directsound 60, 0, sc88pro_xylophone, 255, 235, 0, 204
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855C2F0, 255, 0, 255, 210
+	voice_directsound 60, 0, sc88pro_organ2, 255, 0, 255, 210
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855CAE8, 255, 249, 25, 76
+	voice_directsound 60, 0, sc88pro_nylon_str_guitar, 255, 249, 25, 76
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1131,18 +1131,18 @@ gVoiceGroup_EvoMode_08530D5C:: @ 0x08530D5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857F80C, 255, 235, 128, 99
+	voice_directsound 60, 0, sc88pro_slap_bass, 255, 235, 128, 99
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 252, 0, 115
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 252, 0, 115
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0856184C, 255, 0, 180, 246
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, sc88pro_timpani, 255, 0, 180, 246
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1168,7 +1168,7 @@ gVoiceGroup_EvoMode_08530D5C:: @ 0x08530D5C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1263,7 +1263,7 @@ gVoiceGroup_UnkMus_0853135C:: @ 0x0853135C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 252, 0, 115
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 252, 0, 115
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1272,7 +1272,7 @@ gVoiceGroup_UnkMus_0853135C:: @ 0x0853135C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0856184C, 255, 246, 0, 226
+	voice_directsound 60, 0, sc88pro_timpani, 255, 246, 0, 226
 	voice_keysplit gUnknown_0852DD38, keysplit_gUnknown_08534C08
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1311,7 +1311,7 @@ gVoiceGroup_UnkMus_0853135C:: @ 0x0853135C
 	voice_square_1 60, 0, 0, 3, 0, 0, 7, 1
 
 gVoiceGroup_SFX_0853174C:: @ 0x0853174C
-	voice_directsound 60, 0, gDirectSound_0855F22C, 255, 249, 103, 165
+	voice_directsound 60, 0, unknown_synth_snare, 255, 249, 103, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1324,8 +1324,8 @@ gVoiceGroup_SFX_0853174C:: @ 0x0853174C
 	voice_square_1_alt 60, 0, 0, 2, 2, 0, 15, 0
 	voice_square_1_alt 60, 0, 0, 1, 2, 0, 15, 0
 	voice_square_1_alt 60, 0, 23, 1, 0, 1, 9, 0
-	voice_directsound 60, 0, gDirectSound_0855FC38, 255, 0, 255, 165
-	voice_directsound 60, 0, gDirectSound_0855FC38, 255, 226, 0, 165
+	voice_directsound 60, 0, sc88pro_square_wave, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_square_wave, 255, 226, 0, 165
 	voice_square_1_alt 60, 0, 0, 2, 0, 6, 0, 1
 	voice_square_1_alt 60, 0, 36, 0, 0, 2, 0, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1358,7 +1358,7 @@ gVoiceGroup_SFX_0853174C:: @ 0x0853174C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0856184C, 255, 246, 0, 226
+	voice_directsound 60, 0, sc88pro_timpani, 255, 246, 0, 226
 	voice_keysplit gUnknown_0852DD38, keysplit_gUnknown_08534C08
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1441,80 +1441,80 @@ gVoiceGroup_SFX_0853174C:: @ 0x0853174C
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 1
 
 gVoiceGroup_SFX_08531D4C:: @ 0x08531D4C
-	voice_directsound_no_resample 60, 0, gDirectSound_08562D1C, 255, 249, 0, 165
-	voice_directsound_alt 60, 0, gDirectSound_08562D1C, 255, 0, 255, 165
-	voice_directsound 60, 0, gDirectSound_0855F22C, 255, 0, 255, 165
-	voice_directsound 60, 0, gDirectSound_0856467C, 255, 242, 0, 127
+	voice_directsound_no_resample 60, 0, bicycle_bell, 255, 249, 0, 165
+	voice_directsound_alt 60, 0, bicycle_bell, 255, 0, 255, 165
+	voice_directsound 60, 0, unknown_synth_snare, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_glockenspiel, 255, 242, 0, 127
 	voice_noise_alt 60, 0, 0, 0, 1, 0, 1
 	voice_noise_alt 60, 0, 1, 0, 1, 0, 1
-	voice_directsound 60, 0, gDirectSound_0856184C, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_timpani, 255, 0, 255, 165
 	voice_square_1_alt 60, 0, 0, 2, 0, 2, 0, 1
 	voice_directsound 60, 0, gDirectSound_08564D20, 255, 0, 255, 165
-	voice_directsound 60, 0, gDirectSound_085661E4, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_pizzicato_strings, 255, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_08566920, 255, 0, 255, 127
 	voice_noise_alt 60, 0, 1, 0, 2, 0, 0
 	voice_square_1 60, 0, 103, 3, 2, 7, 0, 0
 	voice_square_2 60, 0, 3, 2, 7, 0, 0
-	voice_directsound 60, 0, gDirectSound_0855FC38, 255, 226, 0, 127
+	voice_directsound 60, 0, sc88pro_square_wave, 255, 226, 0, 127
 	voice_directsound 60, 0, gDirectSound_08568510, 255, 0, 255, 0
-	voice_directsound 60, 0, gDirectSound_0855FC38, 255, 204, 0, 127
+	voice_directsound 60, 0, sc88pro_square_wave, 255, 204, 0, 127
 	voice_square_1_alt 60, 0, 0, 2, 0, 2, 0, 1
 	voice_directsound 60, 0, gDirectSound_085698C4, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_0855FC38, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_square_wave, 255, 0, 255, 127
 	voice_square_1 60, 0, 103, 0, 0, 7, 0, 0
-	voice_directsound 60, 0, gDirectSound_08536C94, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_0856BF48, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_0856D18C, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_orchestra_snare, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_wind, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_bubbles, 255, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_08535D10, 255, 0, 255, 127
 	voice_noise_alt 60, 0, 0, 0, 7, 15, 1
 	voice_directsound 60, 0, gDirectSound_0856E19C, 255, 0, 255, 127
 	voice_noise_alt 60, 0, 1, 0, 7, 15, 1
-	voice_directsound 60, 0, gDirectSound_0856467C, 255, 246, 0, 127
+	voice_directsound 60, 0, sc88pro_glockenspiel, 255, 246, 0, 127
 	voice_directsound 60, 0, gDirectSound_0856F4A4, 255, 0, 255, 127
 	voice_square_1_alt 60, 0, 19, 2, 0, 2, 0, 0
-	voice_directsound 60, 0, gDirectSound_085715B0, 255, 0, 255, 127
+	voice_directsound 60, 0, trinity_30303_mega_bass, 255, 0, 255, 127
 	voice_square_1 60, 0, 103, 0, 0, 0, 15, 0
 	voice_directsound_alt 60, 0, gDirectSound_0856F4A4, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_0857358C, 255, 255, 255, 127
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_fretless_bass, 255, 255, 255, 127
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_08574DCC, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_085715B0, 255, 242, 0, 0
+	voice_directsound 60, 0, trinity_30303_mega_bass, 255, 242, 0, 0
 	voice_directsound 60, 0, gDirectSound_08576FDC, 255, 0, 255, 0
-	voice_directsound 60, 0, gDirectSound_085777A8, 255, 165, 90, 216
-	voice_directsound 60, 0, gDirectSound_0853854C, 255, 127, 0, 188
+	voice_directsound 60, 0, sc88pro_tubular_bell, 255, 165, 90, 216
+	voice_directsound 60, 0, unknown_close_hihat, 255, 127, 0, 188
 	voice_directsound 60, 0, gDirectSound_08579118, 255, 249, 0, 165
 	voice_square_1 60, 0, 0, 0, 4, 6, 0, 0
-	voice_directsound 60, 0, gDirectSound_0856467C, 13, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_085777A8, 13, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_0857B0C8, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_0857E3A8, 255, 252, 0, 204
+	voice_directsound 60, 0, sc88pro_glockenspiel, 13, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_tubular_bell, 13, 0, 255, 127
+	voice_directsound 60, 0, trinity_big_boned, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_harp, 255, 252, 0, 204
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857EDD8, 255, 235, 0, 204
+	voice_directsound 60, 0, sc88pro_xylophone, 255, 235, 0, 204
 	voice_square_1 60, 0, 0, 0, 4, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_0857EDD8, 255, 188, 0, 0
-	voice_directsound 60, 0, gDirectSound_085777A8, 255, 226, 0, 127
-	voice_directsound 60, 0, gDirectSound_08539790, 26, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_xylophone, 255, 188, 0, 0
+	voice_directsound 60, 0, sc88pro_tubular_bell, 255, 226, 0, 127
+	voice_directsound 60, 0, sc88pro_orchestra_cymbal_crash, 26, 0, 255, 127
 	voice_square_1_alt 60, 0, 0, 2, 0, 1, 0, 0
-	voice_directsound 60, 0, gDirectSound_0856467C, 255, 252, 0, 127
+	voice_directsound 60, 0, sc88pro_glockenspiel, 255, 252, 0, 127
 	voice_square_1_alt 60, 0, 0, 1, 0, 2, 0, 0
-	voice_directsound 60, 0, gDirectSound_085661E4, 255, 127, 0, 127
+	voice_directsound 60, 0, sc88pro_pizzicato_strings, 255, 127, 0, 127
 	voice_noise_alt 60, 0, 0, 1, 6, 0, 0
-	voice_directsound 60, 0, gDirectSound_0857F80C, 255, 255, 255, 127
+	voice_directsound 60, 0, sc88pro_slap_bass, 255, 255, 255, 127
 	voice_directsound 60, 0, gDirectSound_08536404, 255, 255, 255, 127
 	voice_directsound 60, 0, gDirectSound_08580744, 255, 255, 255, 127
-	voice_directsound 60, 0, gDirectSound_08557608, 11, 242, 0, 127
+	voice_directsound 60, 0, sc88pro_french_horn_72, 11, 242, 0, 127
 	voice_square_1_alt 60, 0, 0, 2, 4, 6, 0, 0
 	voice_directsound 60, 0, gDirectSound_08582284, 255, 255, 255, 127
-	voice_directsound 60, 0, gDirectSound_08582B4C, 255, 0, 255, 165
-	voice_directsound 60, 0, gDirectSound_0853750C, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_accordion, 255, 0, 255, 165
+	voice_directsound 60, 0, sc55_tom, 255, 0, 255, 165
 	voice_noise_alt 60, 0, 0, 5, 7, 15, 1
-	voice_directsound 60, 0, gDirectSound_0855FC38, 128, 242, 0, 165
-	voice_directsound 60, 0, gDirectSound_08544F14, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_square_wave, 128, 242, 0, 165
+	voice_directsound 60, 0, sc88pro_string_ensemble_72, 255, 0, 255, 165
 	voice_square_1 60, 0, 0, 0, 1, 5, 0, 0
 	voice_noise_alt 60, 0, 0, 6, 6, 0, 1
 	voice_noise_alt 60, 0, 0, 3, 6, 0, 1
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound 60, 0, gDirectSound_085715B0, 15, 127, 231, 127
+	voice_directsound 60, 0, trinity_30303_mega_bass, 15, 127, 231, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1599,7 +1599,7 @@ gVoiceGroup_SFX_08532310:: @ 0x08532310
 	voice_directsound 60, 0, gDirectSound_08584B2C, 255, 0, 255, 0 @ 30
 	voice_directsound 60, 0, gDirectSound_08588238, 255, 0, 255, 0
 	voice_directsound 60, 0, gDirectSound_08588C10, 255, 0, 255, 0
-	voice_directsound 60, 0, gDirectSound_0856BF48, 64, 0, 255, 0
+	voice_directsound 60, 0, sc88pro_wind, 64, 0, 255, 0
 	voice_directsound 60, 0, gDirectSound_0858AA14, 255, 0, 255, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1683,45 +1683,45 @@ gVoiceGroup_Inst_08532808:: @ 0x08532808
 	voice_directsound 60, 0, gDirectSound_085A3DF4, 255, 241, 0, 127
 	voice_directsound 60, 0, gDirectSound_085A45E0, 255, 241, 0, 127
 	voice_directsound 60, 0, gDirectSound_0855EA58, 255, 241, 0, 210
-	voice_directsound 60, 0, gDirectSound_0856467C, 255, 165, 51, 235
-	voice_directsound 60, 0, gDirectSound_0856467C, 255, 165, 51, 235
+	voice_directsound 60, 0, sc88pro_glockenspiel, 255, 165, 51, 235
+	voice_directsound 60, 0, sc88pro_glockenspiel, 255, 165, 51, 235
 	voice_directsound 60, 0, gDirectSound_0855EA58, 255, 241, 0, 232
 	voice_directsound 60, 0, gDirectSound_085A4FE4, 255, 241, 0, 210
-	voice_directsound 60, 0, gDirectSound_0857EDD8, 255, 235, 0, 204
-	voice_directsound 60, 0, gDirectSound_085777A8, 255, 216, 90, 242
+	voice_directsound 60, 0, sc88pro_xylophone, 255, 235, 0, 204
+	voice_directsound 60, 0, sc88pro_tubular_bell, 255, 216, 90, 242
 	voice_directsound 60, 0, gDirectSound_0855EA58, 255, 241, 0, 232
 	voice_directsound 60, 0, gDirectSound_085A5934, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_0855C2F0, 255, 0, 255, 127
+	voice_directsound 60, 0, sc88pro_organ2, 255, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_085A5934, 255, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_085A5934, 255, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_085A5934, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_08582B4C, 255, 0, 255, 165
-	voice_directsound 60, 0, gDirectSound_08582B4C, 255, 0, 255, 165
-	voice_directsound 60, 0, gDirectSound_08582B4C, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_accordion, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_accordion, 255, 0, 255, 165
+	voice_directsound 60, 0, sc88pro_accordion, 255, 0, 255, 165
 	voice_directsound 60, 0, gDirectSound_085A5A74, 255, 241, 0, 127
-	voice_directsound 60, 0, gDirectSound_0855CAE8, 255, 249, 25, 149
+	voice_directsound 60, 0, sc88pro_nylon_str_guitar, 255, 249, 25, 149
 	voice_directsound 60, 0, gDirectSound_085A5A74, 255, 241, 0, 127
 	voice_directsound 60, 0, gDirectSound_085A3DF4, 255, 248, 0, 127
 	voice_directsound 60, 0, gDirectSound_085A3DF4, 255, 210, 0, 127
 	voice_directsound 60, 0, gDirectSound_085A45E0, 255, 252, 0, 127
 	voice_directsound 60, 0, gDirectSound_085A45E0, 255, 252, 0, 127
 	voice_directsound 60, 0, gDirectSound_085A45E0, 255, 252, 0, 127
-	voice_directsound 60, 0, gDirectSound_0857358C, 255, 253, 0, 149
-	voice_directsound 60, 0, gDirectSound_085A611C, 255, 253, 0, 149
+	voice_directsound 60, 0, sc88pro_fretless_bass, 255, 253, 0, 149
+	voice_directsound 60, 0, sc88pro_fingered_bass, 255, 253, 0, 149
 	voice_directsound 60, 0, gDirectSound_085A7D6C, 255, 253, 0, 127
 	voice_directsound 60, 0, gDirectSound_085A7D6C, 255, 253, 0, 127
-	voice_directsound 60, 0, gDirectSound_0857F80C, 255, 235, 128, 115
-	voice_directsound 60, 0, gDirectSound_085715B0, 255, 178, 180, 165
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 252, 0, 115
-	voice_directsound 60, 0, gDirectSound_08574158, 255, 252, 0, 115
+	voice_directsound 60, 0, sc88pro_slap_bass, 255, 235, 128, 115
+	voice_directsound 60, 0, trinity_30303_mega_bass, 255, 178, 180, 165
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 252, 0, 115
+	voice_directsound 60, 0, sc88pro_synth_bass, 255, 252, 0, 115
 	voice_directsound 60, 0, gDirectSound_085A7EDC, 255, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_085A7EDC, 255, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_085A8470, 255, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_085A8470, 255, 0, 255, 127
 	voice_keysplit gUnknown_0852DD38, keysplit_gUnknown_08534C08
-	voice_directsound 60, 0, gDirectSound_085661E4, 255, 216, 0, 165
-	voice_directsound 60, 0, gDirectSound_0857E3A8, 255, 242, 0, 204
-	voice_directsound 60, 0, gDirectSound_0856184C, 255, 246, 0, 226
+	voice_directsound 60, 0, sc88pro_pizzicato_strings, 255, 216, 0, 165
+	voice_directsound 60, 0, sc88pro_harp, 255, 242, 0, 204
+	voice_directsound 60, 0, sc88pro_timpani, 255, 246, 0, 226
 	voice_keysplit gUnknown_0852DD38, keysplit_gUnknown_08534C08
 	voice_keysplit gUnknown_0852DD38, keysplit_gUnknown_08534C08
 	voice_directsound 60, 0, gDirectSound_085A8788, 255, 0, 255, 127
@@ -1746,14 +1746,14 @@ gVoiceGroup_Inst_08532808:: @ 0x08532808
 	voice_keysplit gUnknown_0852DD98, keysplit_gUnknown_08534CEC
 	voice_keysplit gUnknown_0852DD98, keysplit_gUnknown_08534CEC
 	voice_directsound 60, 0, gDirectSound_085A9C78, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 127, 231, 127
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 127, 231, 127
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 127, 231, 127
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 127, 231, 127
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 127, 231, 127
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 127, 231, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 127, 231, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 127, 231, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 127, 231, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 127, 231, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 127, 231, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 127, 231, 127
 	voice_directsound 60, 0, gDirectSound_085ABE38, 255, 0, 255, 127
-	voice_directsound 60, 0, gDirectSound_0855BB8C, 255, 127, 231, 127
+	voice_directsound 60, 0, sc88pro_flute, 255, 127, 231, 127
 	voice_directsound 60, 0, gDirectSound_085AA274, 128, 0, 255, 127
 	voice_directsound 60, 0, gDirectSound_085A8788, 255, 0, 255, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1772,7 +1772,7 @@ gVoiceGroup_Inst_08532808:: @ 0x08532808
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 60, 0, gDirectSound_08539790, 255, 249, 0, 249
+	voice_directsound_no_resample 60, 0, sc88pro_orchestra_cymbal_crash, 255, 249, 0, 249
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -1788,7 +1788,7 @@ gVoiceGroup_Inst_08532808:: @ 0x08532808
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_directsound_no_resample 60, 0, gDirectSound_0853854C, 255, 89, 0, 89
+	voice_directsound_no_resample 60, 0, unknown_close_hihat, 255, 89, 0, 89
 
 gPokemonCryToneBank0:: @ 0x08532D6C
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -2530,8 +2530,8 @@ gMPlayTable:: @ 0x08534DD4
 .include "sound/songs/mus_dummy.s"
 
 	.align 2
-gDirectSound_08535870:: @ 0x08535870
-	.incbin "sound/direct_sound_samples/gDirectSound_08535870.bin"
+sc88pro_rnd_kick:: @ 0x08535870
+	.incbin "sound/direct_sound_samples/sc88pro_rnd_kick.bin"
 
 	.align 2
 gDirectSound_08535D10:: @ 0x08535D10
@@ -2542,144 +2542,144 @@ gDirectSound_08536404:: @ 0x08536404
 	.incbin "sound/direct_sound_samples/gDirectSound_08536404.bin"
 
 	.align 2
-gDirectSound_08536C94:: @ 0x08536C94
-	.incbin "sound/direct_sound_samples/gDirectSound_08536C94.bin"
+sc88pro_orchestra_snare:: @ 0x08536C94
+	.incbin "sound/direct_sound_samples/sc88pro_orchestra_snare.bin"
 
 	.align 2
-gDirectSound_0853750C:: @ 0x0853750C
-	.incbin "sound/direct_sound_samples/gDirectSound_0853750C.bin"
+sc55_tom:: @ 0x0853750C
+	.incbin "sound/direct_sound_samples/sc55_tom.bin"
 
 	.align 2
-gDirectSound_0853854C:: @ 0x0853854C
-	.incbin "sound/direct_sound_samples/gDirectSound_0853854C.bin"
+unknown_close_hihat:: @ 0x0853854C
+	.incbin "sound/direct_sound_samples/unknown_close_hihat.bin"
 
 	.align 2
-gDirectSound_08538960:: @ 0x08538960
-	.incbin "sound/direct_sound_samples/gDirectSound_08538960.bin"
+unknown_open_hihat:: @ 0x08538960
+	.incbin "sound/direct_sound_samples/unknown_open_hihat.bin"
 
 	.align 2
-gDirectSound_08539790:: @ 0x08539790
-	.incbin "sound/direct_sound_samples/gDirectSound_08539790.bin"
+sc88pro_orchestra_cymbal_crash:: @ 0x08539790
+	.incbin "sound/direct_sound_samples/sc88pro_orchestra_cymbal_crash.bin"
 
 	.align 2
-gDirectSound_0853A6BC:: @ 0x0853A6BC
-	.incbin "sound/direct_sound_samples/gDirectSound_0853A6BC.bin"
+unknown_bell:: @ 0x0853A6BC
+	.incbin "sound/direct_sound_samples/unknown_bell.bin"
 
 	.align 2
-gDirectSound_0853B650:: @ 0x0853B650
-	.incbin "sound/direct_sound_samples/gDirectSound_0853B650.bin"
+sc88pro_tambourine:: @ 0x0853B650
+	.incbin "sound/direct_sound_samples/sc88pro_tambourine.bin"
 
 	.align 2
-gDirectSound_0853BF04:: @ 0x0853BF04
-	.incbin "sound/direct_sound_samples/gDirectSound_0853BF04.bin"
+trinity_cymbal_crash:: @ 0x0853BF04
+	.incbin "sound/direct_sound_samples/trinity_cymbal_crash.bin"
 
 	.align 2
-gDirectSound_0853C7E8:: @ 0x0853C7E8
-	.incbin "sound/direct_sound_samples/gDirectSound_0853C7E8.bin"
+sc88pro_mute_high_conga:: @ 0x0853C7E8
+	.incbin "sound/direct_sound_samples/sc88pro_mute_high_conga.bin"
 
 	.align 2
-gDirectSound_0853CD00:: @ 0x0853CD00
-	.incbin "sound/direct_sound_samples/gDirectSound_0853CD00.bin"
+sc88pro_open_low_conga:: @ 0x0853CD00
+	.incbin "sound/direct_sound_samples/sc88pro_open_low_conga.bin"
 
 	.align 2
-gDirectSound_0853D2C8:: @ 0x0853D2C8
-	.incbin "sound/direct_sound_samples/gDirectSound_0853D2C8.bin"
+sc88pro_piano1_48:: @ 0x0853D2C8
+	.incbin "sound/direct_sound_samples/sc88pro_piano1_48.bin"
 
 	.align 2
-gDirectSound_0853E228:: @ 0x0853E228
-	.incbin "sound/direct_sound_samples/gDirectSound_0853E228.bin"
+sc88pro_piano1_60:: @ 0x0853E228
+	.incbin "sound/direct_sound_samples/sc88pro_piano1_60.bin"
 
 	.align 2
-gDirectSound_0853F888:: @ 0x0853F888
-	.incbin "sound/direct_sound_samples/gDirectSound_0853F888.bin"
+sc88pro_piano1_72:: @ 0x0853F888
+	.incbin "sound/direct_sound_samples/sc88pro_piano1_72.bin"
 
 	.align 2
-gDirectSound_08540DE4:: @ 0x08540DE4
-	.incbin "sound/direct_sound_samples/gDirectSound_08540DE4.bin"
+sc88pro_piano1_84:: @ 0x08540DE4
+	.incbin "sound/direct_sound_samples/sc88pro_piano1_84.bin"
 
 	.align 2
-gDirectSound_08541970:: @ 0x08541970
-	.incbin "sound/direct_sound_samples/gDirectSound_08541970.bin"
+sc88pro_string_ensemble_60:: @ 0x08541970
+	.incbin "sound/direct_sound_samples/sc88pro_string_ensemble_60.bin"
 
 	.align 2
-gDirectSound_08544F14:: @ 0x08544F14
-	.incbin "sound/direct_sound_samples/gDirectSound_08544F14.bin"
+sc88pro_string_ensemble_72:: @ 0x08544F14
+	.incbin "sound/direct_sound_samples/sc88pro_string_ensemble_72.bin"
 
 	.align 2
-gDirectSound_08547230:: @ 0x08547230
-	.incbin "sound/direct_sound_samples/gDirectSound_08547230.bin"
+sc88pro_string_ensemble_84:: @ 0x08547230
+	.incbin "sound/direct_sound_samples/sc88pro_string_ensemble_84.bin"
 
 	.align 2
-gDirectSound_0854A8FC:: @ 0x0854A8FC
-	.incbin "sound/direct_sound_samples/gDirectSound_0854A8FC.bin"
+sc88pro_trumpet_60:: @ 0x0854A8FC
+	.incbin "sound/direct_sound_samples/sc88pro_trumpet_60.bin"
 
 	.align 2
-gDirectSound_0854BC4C:: @ 0x0854BC4C
-	.incbin "sound/direct_sound_samples/gDirectSound_0854BC4C.bin"
+sc88pro_trumpet_72:: @ 0x0854BC4C
+	.incbin "sound/direct_sound_samples/sc88pro_trumpet_72.bin"
 
 	.align 2
-gDirectSound_0854D15C:: @ 0x0854D15C
-	.incbin "sound/direct_sound_samples/gDirectSound_0854D15C.bin"
+sc88pro_trumpet_84:: @ 0x0854D15C
+	.incbin "sound/direct_sound_samples/sc88pro_trumpet_84.bin"
 
 	.align 2
-gDirectSound_0854E57C:: @ 0x0854E57C
-	.incbin "sound/direct_sound_samples/gDirectSound_0854E57C.bin"
+sc88pro_tuba_39:: @ 0x0854E57C
+	.incbin "sound/direct_sound_samples/sc88pro_tuba_39.bin"
 
 	.align 2
-gDirectSound_0854F618:: @ 0x0854F618
-	.incbin "sound/direct_sound_samples/gDirectSound_0854F618.bin"
+sc88pro_tuba_51:: @ 0x0854F618
+	.incbin "sound/direct_sound_samples/sc88pro_tuba_51.bin"
 
 	.align 2
-gDirectSound_08550674:: @ 0x08550674
-	.incbin "sound/direct_sound_samples/gDirectSound_08550674.bin"
+sc88pro_french_horn_60:: @ 0x08550674
+	.incbin "sound/direct_sound_samples/sc88pro_french_horn_60.bin"
 
 	.align 2
-gDirectSound_08557608:: @ 0x08557608
-	.incbin "sound/direct_sound_samples/gDirectSound_08557608.bin"
+sc88pro_french_horn_72:: @ 0x08557608
+	.incbin "sound/direct_sound_samples/sc88pro_french_horn_72.bin"
 
 	.align 2
-gDirectSound_0855BB8C:: @ 0x0855BB8C
-	.incbin "sound/direct_sound_samples/gDirectSound_0855BB8C.bin"
+sc88pro_flute:: @ 0x0855BB8C
+	.incbin "sound/direct_sound_samples/sc88pro_flute.bin"
 
 	.align 2
-gDirectSound_0855C2F0:: @ 0x0855C2F0
-	.incbin "sound/direct_sound_samples/gDirectSound_0855C2F0.bin"
+sc88pro_organ2:: @ 0x0855C2F0
+	.incbin "sound/direct_sound_samples/sc88pro_organ2.bin"
 
 	.align 2
-gDirectSound_0855CAE8:: @ 0x0855CAE8
-	.incbin "sound/direct_sound_samples/gDirectSound_0855CAE8.bin"
+sc88pro_nylon_str_guitar:: @ 0x0855CAE8
+	.incbin "sound/direct_sound_samples/sc88pro_nylon_str_guitar.bin"
 
 	.align 2
 gDirectSound_0855EA58:: @ 0x0855EA58
 	.incbin "sound/direct_sound_samples/gDirectSound_0855EA58.bin"
 
 	.align 2
-gDirectSound_0855F22C:: @ 0x0855F22C
-	.incbin "sound/direct_sound_samples/gDirectSound_0855F22C.bin"
+unknown_synth_snare:: @ 0x0855F22C
+	.incbin "sound/direct_sound_samples/unknown_synth_snare.bin"
 
 	.align 2
-gDirectSound_0855FC38:: @ 0x0855FC38
-	.incbin "sound/direct_sound_samples/gDirectSound_0855FC38.bin"
+sc88pro_square_wave:: @ 0x0855FC38
+	.incbin "sound/direct_sound_samples/sc88pro_square_wave.bin"
 
 	.align 2
-gDirectSound_0856184C:: @ 0x0856184C
-	.incbin "sound/direct_sound_samples/gDirectSound_0856184C.bin"
+sc88pro_timpani:: @ 0x0856184C
+	.incbin "sound/direct_sound_samples/sc88pro_timpani.bin"
 
 	.align 2
-gDirectSound_08562D1C:: @ 0x08562D1C
-	.incbin "sound/direct_sound_samples/gDirectSound_08562D1C.bin"
+bicycle_bell:: @ 0x08562D1C
+	.incbin "sound/direct_sound_samples/bicycle_bell.bin"
 
 	.align 2
-gDirectSound_0856467C:: @ 0x0856467C
-	.incbin "sound/direct_sound_samples/gDirectSound_0856467C.bin"
+sc88pro_glockenspiel:: @ 0x0856467C
+	.incbin "sound/direct_sound_samples/sc88pro_glockenspiel.bin"
 
 	.align 2
 gDirectSound_08564D20:: @ 0x08564D20
 	.incbin "sound/direct_sound_samples/gDirectSound_08564D20.bin"
 
 	.align 2
-gDirectSound_085661E4:: @ 0x085661E4
-	.incbin "sound/direct_sound_samples/gDirectSound_085661E4.bin"
+sc88pro_pizzicato_strings:: @ 0x085661E4
+	.incbin "sound/direct_sound_samples/sc88pro_pizzicato_strings.bin"
 
 	.align 2
 gDirectSound_08566920:: @ 0x08566920
@@ -2694,12 +2694,12 @@ gDirectSound_085698C4:: @ 0x085698C4
 	.incbin "sound/direct_sound_samples/gDirectSound_085698C4.bin"
 
 	.align 2
-gDirectSound_0856BF48:: @ 0x0856BF48
-	.incbin "sound/direct_sound_samples/gDirectSound_0856BF48.bin"
+sc88pro_wind:: @ 0x0856BF48
+	.incbin "sound/direct_sound_samples/sc88pro_wind.bin"
 
 	.align 2
-gDirectSound_0856D18C:: @ 0x0856D18C
-	.incbin "sound/direct_sound_samples/gDirectSound_0856D18C.bin"
+sc88pro_bubbles:: @ 0x0856D18C
+	.incbin "sound/direct_sound_samples/sc88pro_bubbles.bin"
 
 	.align 2
 gDirectSound_0856E19C:: @ 0x0856E19C
@@ -2710,16 +2710,16 @@ gDirectSound_0856F4A4:: @ 0x0856F4A4
 	.incbin "sound/direct_sound_samples/gDirectSound_0856F4A4.bin"
 
 	.align 2
-gDirectSound_085715B0:: @ 0x085715B0
-	.incbin "sound/direct_sound_samples/gDirectSound_085715B0.bin"
+trinity_30303_mega_bass:: @ 0x085715B0
+	.incbin "sound/direct_sound_samples/trinity_30303_mega_bass.bin"
 
 	.align 2
-gDirectSound_0857358C:: @ 0x0857358C
-	.incbin "sound/direct_sound_samples/gDirectSound_0857358C.bin"
+sc88pro_fretless_bass:: @ 0x0857358C
+	.incbin "sound/direct_sound_samples/sc88pro_fretless_bass.bin"
 
 	.align 2
-gDirectSound_08574158:: @ 0x08574158
-	.incbin "sound/direct_sound_samples/gDirectSound_08574158.bin"
+sc88pro_synth_bass:: @ 0x08574158
+	.incbin "sound/direct_sound_samples/sc88pro_synth_bass.bin"
 
 	.align 2
 gDirectSound_08574DCC:: @ 0x08574DCC
@@ -2730,28 +2730,28 @@ gDirectSound_08576FDC:: @ 0x08576FDC
 	.incbin "sound/direct_sound_samples/gDirectSound_08576FDC.bin"
 
 	.align 2
-gDirectSound_085777A8:: @ 0x085777A8
-	.incbin "sound/direct_sound_samples/gDirectSound_085777A8.bin"
+sc88pro_tubular_bell:: @ 0x085777A8
+	.incbin "sound/direct_sound_samples/sc88pro_tubular_bell.bin"
 
 	.align 2
 gDirectSound_08579118:: @ 0x08579118
 	.incbin "sound/direct_sound_samples/gDirectSound_08579118.bin"
 
 	.align 2
-gDirectSound_0857B0C8:: @ 0x0857B0C8
-	.incbin "sound/direct_sound_samples/gDirectSound_0857B0C8.bin"
+trinity_big_boned:: @ 0x0857B0C8
+	.incbin "sound/direct_sound_samples/trinity_big_boned.bin"
 
 	.align 2
-gDirectSound_0857E3A8:: @ 0x0857E3A8
-	.incbin "sound/direct_sound_samples/gDirectSound_0857E3A8.bin"
+sc88pro_harp:: @ 0x0857E3A8
+	.incbin "sound/direct_sound_samples/sc88pro_harp.bin"
 
 	.align 2
-gDirectSound_0857EDD8:: @ 0x0857EDD8
-	.incbin "sound/direct_sound_samples/gDirectSound_0857EDD8.bin"
+sc88pro_xylophone:: @ 0x0857EDD8
+	.incbin "sound/direct_sound_samples/sc88pro_xylophone.bin"
 
 	.align 2
-gDirectSound_0857F80C:: @ 0x0857F80C
-	.incbin "sound/direct_sound_samples/gDirectSound_0857F80C.bin"
+sc88pro_slap_bass:: @ 0x0857F80C
+	.incbin "sound/direct_sound_samples/sc88pro_slap_bass.bin"
 
 	.align 2
 gDirectSound_08580744:: @ 0x08580744
@@ -2762,8 +2762,8 @@ gDirectSound_08582284:: @ 0x08582284
 	.incbin "sound/direct_sound_samples/gDirectSound_08582284.bin"
 
 	.align 2
-gDirectSound_08582B4C:: @ 0x08582B4C
-	.incbin "sound/direct_sound_samples/gDirectSound_08582B4C.bin"
+sc88pro_accordion:: @ 0x08582B4C
+	.incbin "sound/direct_sound_samples/sc88pro_accordion.bin"
 
 	.align 2
 gDirectSound_08583F1C:: @ 0x08583F1C
@@ -2826,8 +2826,8 @@ gDirectSound_085A5A74:: @ 0x085A5A74
 	.incbin "sound/direct_sound_samples/gDirectSound_085A5A74.bin"
 
 	.align 2
-gDirectSound_085A611C:: @ 0x085A611C
-	.incbin "sound/direct_sound_samples/gDirectSound_085A611C.bin"
+sc88pro_fingered_bass:: @ 0x085A611C
+	.incbin "sound/direct_sound_samples/sc88pro_fingered_bass.bin"
 
 	.align 2
 gDirectSound_085A7D6C:: @ 0x085A7D6C
