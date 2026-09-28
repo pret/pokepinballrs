@@ -685,15 +685,15 @@ void IdleGameFrameUpdate(void)
     if ((gMain.systemFrameCount % 32) / 16 > 0)
     {
         for (i = 0; i < 10; i++)
-            gBG0TilemapBuffer[0x34A + i] = 0xC156 + i;
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(26,(10+i))] = 0xC156 + i;
     }
     else
     {
         for (i = 0; i < 10; i++)
-            gBG0TilemapBuffer[0x34A + i] = 0x1FF;
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(26,(10+i))] = 0x1FF;
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x340], BG_VRAM_ADDR_IDLE_PRESS_START_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW);
+    DmaCopy16(3, &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(26,0)], BG_VRAM_ADDR_IDLE_PRESS_START_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW);
 }
 
 void BonusFieldFrameUpdate(void)
@@ -829,15 +829,15 @@ void IdleBonusFieldFrameUpdate(void)
     if ((gMain.systemFrameCount % 32) / 16 > 0)
     {
         for (i = 0; i < 9; i++)
-            gBG0TilemapBuffer[0x32B + i] = 0xC156 + i;
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(25,(11 + i))] = 0xC156 + i;
     }
     else
     {
         for (i = 0; i < 9; i++)
-            gBG0TilemapBuffer[0x32B + i] = 0x1FF;
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(25,(11 + i))] = 0x1FF;
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x320], BG_VRAM_ADDR_IDLE_TBD_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW);
+    DmaCopy16(3, &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(25,0)], BG_VRAM_ADDR_IDLE_TBD_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW);
 }
 
 void PinballGame_State3_4B20C(void)

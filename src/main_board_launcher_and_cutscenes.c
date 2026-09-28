@@ -342,7 +342,7 @@ void RunEvolutionCutscene(void)
                 for (j = 0; j <= var0; j++)
                 {
                     for (i = 1; i < 11; i++)
-                        gBG0TilemapBuffer[(i + 15) * 0x20 + j] = 0xC100;
+                        gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((i + 15),j)] = 0xC100;
                 }
 
                 DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
@@ -357,7 +357,7 @@ void RunEvolutionCutscene(void)
                 for (j = 0; j <= 30; j++)
                 {
                     for (i = 1; i < 11; i++)
-                        gBG0TilemapBuffer[(i + 15) * 32 + j] = 0xC100;
+                        gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((i + 15),j)] = 0xC100;
                 }
 
                 DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
@@ -610,7 +610,7 @@ void RunEvolutionCutscene(void)
 
         if (gCurrentPinballGame->stageTimer == 350)
         {
-            for (i = 0x1E0; i < 0x340; i++)
+            for (i = TILEMAP_U16_OUTPUT_ADDR_IX(15,0); i < TILEMAP_U16_OUTPUT_ADDR_IX(26,0); i++)
                 gBG0TilemapBuffer[i] = 0x1FF;
 
             DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);

@@ -127,22 +127,22 @@ void InitFrameProcess3_BoardLogic_SphealBoard(void)
     UpdateSphealScoreAndDelivery();
     AnimateSphealBackground();
 
-    for (i = 0; i < 0x800; i++)
-        gBG0TilemapBuffer[0x400 + i] = 0x200;
+    for (i = 0; i < TILEMAP_U16_OUTPUT_ADDR_IX(64,0); i++)
+        gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(32,i)] = 0x200;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_VRAM_ADDR_SPHEAL_LAYER_1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
+    DmaCopy16(3, &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(32,0)], BG_VRAM_ADDR_SPHEAL_LAYER_1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
 
     gMain.blendControl = 0x1C42;
     gMain.blendAlpha = 0xC04;
-    for (i = 0; i < 0x140; i++)
+    for (i = 0; i < TILEMAP_U16_OUTPUT_ADDR_IX(10,0); i++)
     {
-        u16 var0 = i % 32 - 2;
-        if (var0 < 28)
-           gBG0TilemapBuffer[0x800 + i] = 0x9000;
+        u16 tilemapXPos = i % 32 - 2;
+        if (tilemapXPos < 28)
+           gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(64,i)] = 0x9000;
     }
 
     gMain.bgOffsets[1].yOffset = 126;
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_SPHEAL_TBD_TILEMAP, SIZE_OF_VRAM_SPHEAL_TBD_TILEMAP);
+    DmaCopy16(3, &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(64,0)], BG_VRAM_ADDR_SPHEAL_TBD_TILEMAP, SIZE_OF_VRAM_SPHEAL_TBD_TILEMAP);
     DmaCopy16(3, gBall_Pals[gCurrentPinballGame->ballUpgradeType], OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
     m4aSongNumStart(MUS_BONUS_FIELD_SPHEAL);
     DmaCopy16(3, gBonusStageObjPal, OBJ_PLTT_SLOT(PAL_IX_9), PLTT_SLOT_SIZE);
@@ -1472,10 +1472,10 @@ void AnimateSphealBackground(void)
     s16 var0;
 
     var0 = gWaterTilePaletteCycle[(gMain.systemFrameCount % 96) / 24];
-    for (i = 0x100; i < 0x400; i++)
-        gBG0TilemapBuffer[0x800 + i] = gSphealWaterBackgroundTilemap[i] + var0 * 4;
+    for (i = TILEMAP_U16_OUTPUT_ADDR_IX(8,0); i < TILEMAP_U16_OUTPUT_ADDR_IX(32,0); i++)
+        gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(64,i)] = gSphealWaterBackgroundTilemap[i] + var0 * 4;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_SPHEAL_LAYER_3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(64,0)], BG_VRAM_ADDR_SPHEAL_LAYER_3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 }
 
 

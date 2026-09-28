@@ -77,7 +77,7 @@ void DebugMenu_RenderAndHandleInput(void)
     memcpy(str0, gDebugTextStrings, 42);
     memcpy(str1, gDebugMenuValueTemplate, 24);
 
-    for (i = 0x340; i < 0x380; i++)
+    for (i = TILEMAP_U16_OUTPUT_ADDR_IX(26,0); i < TILEMAP_U16_OUTPUT_ADDR_IX(28,0); i++)
         gBG0TilemapBuffer[i] = 0;
 
     FormatIntToString(gCurrentPinballGame->ball->positionQ0.x, &str1[1], 3, 1);
@@ -116,7 +116,7 @@ void DebugMenu_RenderAndHandleInput(void)
         DrawTextToTilemap(gDebugMenuCursorText, gMain.debugMenuCursorIndex + 26, 0);
     }
 
-    for (i = 0x340; i < 0x380; i++)
+    for (i = TILEMAP_U16_OUTPUT_ADDR_IX(26,0); i < TILEMAP_U16_OUTPUT_ADDR_IX(28,0); i++)
         gBG0TilemapBuffer[i] += 0xC100;
 
     DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_DEBUG_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
@@ -502,7 +502,7 @@ void BallSaverAnimation(void)
 void ClearDebugTextDisplay(void)
 {
     int i;
-    for (i = 0x340; i < 0x380; i++)
+    for (i = TILEMAP_U16_OUTPUT_ADDR_IX(26,0); i < TILEMAP_U16_OUTPUT_ADDR_IX(28,0); i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
     DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_DEBUG_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);

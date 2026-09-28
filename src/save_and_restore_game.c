@@ -237,7 +237,7 @@ void RestoreGameState(u16 arg0)
         }
     }
 
-    for (i = 0; i < 0x800; i++)
+    for (i = 0; i < TILEMAP_U16_OUTPUT_ADDR_IX(64,0); i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
     DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_ALL_BOARDS_LAYER_0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
@@ -248,7 +248,7 @@ void RestoreGameState(u16 arg0)
             for (j = 0; j <= gCurrentPinballGame->cutsceneTilemapColumn; j++)
             {
                 for (i = 2; i < 12; i++)
-                    gBG0TilemapBuffer[(i + 15) * 0x20 + j] = 0xC100;
+                    gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((i + 15), j)] = 0xC100;
             }
         }
         else
@@ -256,7 +256,7 @@ void RestoreGameState(u16 arg0)
             for (j = 0; j <= gCurrentPinballGame->cutsceneTilemapColumn; j++)
             {
                 for (i = 1; i < 11; i++)
-                    gBG0TilemapBuffer[(i + 15) * 0x20 + j] = 0xC100;
+                    gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((i + 15), j)] = 0xC100;
             }
         }
 
@@ -752,10 +752,10 @@ void RestoreSphealBonusGraphics(void)
     int var0;
     u16 var1;
 
-    for (i = 0; i < 0x800; i++)
-        gBG0TilemapBuffer[0x400 + i] = 0x200;
+    for (i = 0; i < TILEMAP_U16_OUTPUT_ADDR_IX(64,0); i++)
+        gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(32,i)] = 0x200;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_VRAM_ADDR_SPHEAL_LAYER_1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
+    DmaCopy16(3, &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(32,0)], BG_VRAM_ADDR_SPHEAL_LAYER_1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
     gMain.blendControl = 0x1C42;
     gMain.blendAlpha = 0xC04;
     for (i = 0; i < 0x140; i++)
@@ -767,13 +767,13 @@ void RestoreSphealBonusGraphics(void)
         var0 = (var0 >> 5) << 5;
         var1 = i - var0 - 2;
         if (var1 < 28)
-            gBG0TilemapBuffer[0x800 + i] = 0x9000;
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(64,i)] = 0x9000;
     }
 
     gMain.bgOffsets[1].xOffset = 8;
     gMain.bgOffsets[1].yOffset = 126;
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_SPHEAL_TBD_TILEMAP, SIZE_OF_VRAM_SPHEAL_TBD_TILEMAP);
-    for (i = 0; i < 0x800; i++)
+    DmaCopy16(3, &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(64,0)], BG_VRAM_ADDR_SPHEAL_TBD_TILEMAP, SIZE_OF_VRAM_SPHEAL_TBD_TILEMAP);
+    for (i = 0; i < TILEMAP_U16_OUTPUT_ADDR_IX(64,0); i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
     DmaCopy16(3, gSphealResultsScreenGfx, OBJ_VRAM_ADDR_SPHEAL_SUMMARY_TILES, SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES);

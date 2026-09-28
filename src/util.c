@@ -183,11 +183,11 @@ void ClearSprites(void)
     }
 }
 
-void DrawTextToTilemap(u8 *arg0, s16 arg1, s16 arg2)
+void DrawTextToTilemap(u8 *arg0, s16 rowIx, s16 colIx)
 {
     // Rumble Pak related?
     s16 var0 = strlen(arg0) - 1;
-    u16 *dest = &gBG0TilemapBuffer[arg1 * 32 + arg2];
+    u16 *dest = &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(rowIx,colIx)];
     do
     {
         *dest = (*arg0) - 32;

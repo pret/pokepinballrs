@@ -1364,10 +1364,10 @@ void AnimateKyogreBackground(void)
     }
 
     index = gWaterTilePaletteCycle[(gCurrentPinballGame->globalAnimFrameCounter % 96) / 24];
-    for (i = 0; i < 0x400; i++)
-        gBG0TilemapBuffer[0x800 + i] = gKyogreWaterBackgroundTilemap[i] + index * 4;
+    for (i = 0; i < TILEMAP_U16_OUTPUT_ADDR_IX(32,0); i++)
+        gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(64, i)] = gKyogreWaterBackgroundTilemap[i] + index * 4;
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x800], BG_VRAM_ADDR_KYOGRE_LAYER_3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(64, 0)], BG_VRAM_ADDR_KYOGRE_LAYER_3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     index = gKyogreWaterPaletteSegmentCycle[(gMain.systemFrameCount % 96) / 24];
     DmaCopy16(3, gKyogreFadeInPaletteProgression[gCurrentPinballGame->bossLightFadeInCounter][index], BG_PLTT_SLOT(PAL_IX_3), PLTT_SLOT_SIZE);
 

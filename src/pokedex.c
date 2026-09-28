@@ -384,7 +384,7 @@ void Pokedex_InfoWindowSlideIn(void)
 
     for (i = 0; i < 0x20; i++)
     {
-        gBG0TilemapBuffer[0x20*(gPokedexInfoWindowSlideStep + 10) + i] = gDexInfoWindowEmptyTextRowTiles[i];
+        gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((gPokedexInfoWindowSlideStep + 10),i)] = gDexInfoWindowEmptyTextRowTiles[i];
         gPokedexVramBuffer[0x20*(gPokedexInfoWindowSlideStep + 9) + i] = gDexInfoWindowMiddleRowTiles[i];
         gPokedexVramBuffer[0x20*(gPokedexInfoWindowSlideStep + 10) + i] = gDexInfoWindowBottomRowTiles[i];
     }
@@ -556,9 +556,9 @@ void Pokedex_InfoWindowSlideOut(void)
 
     if (gPokedexInfoWindowSlideStep < 8)
     {
-        for (i = 0; i < 0x20; i++)
+        for (i = 0; i < 32; i++)
         {
-            gBG0TilemapBuffer[0x20 * (0x11 - gPokedexInfoWindowSlideStep) + i] = gPokedexInfoWindowBackupTiles[0x20 * (0x7 - gPokedexInfoWindowSlideStep) + i];
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((17 - gPokedexInfoWindowSlideStep),i)] = gPokedexInfoWindowBackupTiles[0x20 * (0x7 - gPokedexInfoWindowSlideStep) + i];
         }
     }
     gPokedexInfoWindowSlideStep++;

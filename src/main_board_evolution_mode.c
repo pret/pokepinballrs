@@ -256,7 +256,7 @@ void UpdateEvolutionMode(void)
                     for (i = 0; i <= var0; i++)
                     {
                         for (j = 2; j < 12; j++)
-                            gBG0TilemapBuffer[((j + 15) * 0x20) + i] = 0xC100;
+                            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((j + 15),i)] = 0xC100;
                     }
 
                     DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
@@ -268,7 +268,7 @@ void UpdateEvolutionMode(void)
                     for (i = 0; i <= var0; i ++)
                     {
                         for (j = 2; j < 12; j++)
-                            gBG0TilemapBuffer[((j + 15) << 5) + i] = 0x1FF;
+                            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((j + 15),i)] = 0x1FF;
                     }
 
                     DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_WAS_CAUGHT_BACKDROP_TILEMAP, SIZE_OF_VRAM_WAS_CAUGHT_BACKDROP_TILEMAP);
