@@ -175,10 +175,8 @@ gPinballGameStateFuncs:: @ 0x08137E04
 	.4byte PinballGame_State3_4B20C @ called once after game over?
 
 .include"data/ball/ball_palettes.inc"
+.include"data/ball/catch_cutscene_open_ball.inc"
 
-gCaptureBallTilesGfx:: @ 0x08138014
-	.incbin "graphics/stage/main/ball_open_to_catch.4bpp"
-	.space 0x20
 
 gDusclopsBonusClear_Gfx:: @ 0x08138834
 	.incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
