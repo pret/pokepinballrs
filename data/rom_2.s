@@ -6437,7 +6437,7 @@ gShopItemData:: @ 0x086AD000
     .2byte 0x5d, 0x5c, 0x2e, 0  @ Confirm bonus game start
     .2byte 0x5f, 0x5e, 0x2f, 0  @ Confirm travel move
 
-.include "data/roulette_wheel_contents.inc"
+.include "data/slots/roulette_wheel_contents.inc"
 
 gShopCursorToItemMap:: @ 0x086AD2DE
 	.2byte 0x0000, 0x0001, 0x0002, 0x000A, 0x0014;

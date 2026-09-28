@@ -1,3 +1,6 @@
+gFieldSelectBG0Tilemap:: @ 0x080A2400
+	.incbin "graphics/field_select/field_select_bg_tilemap.bin"
+
 gFieldSelectWindow_Gfx:: @ 0x080A2C00
 	.incbin "graphics/field_select/window_tiles.4bpp"
 
