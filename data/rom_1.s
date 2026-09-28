@@ -165,64 +165,16 @@ gSphealScoreDigitSpriteIndices:: @ 0x08137D60
 	.byte 2,2,2,2,2,1,1,1,1,1
 	.byte 1,1,0,0
 
-gPauseMenuSpriteOffsets:: @ 0x08137D78
-	@ Vector16
-	.2byte -16, 0
-	.2byte 0, 0
-	.2byte 8, 0
-	.2byte 16, 0
-	.2byte 24, 0
-	.2byte 0, 12
-	.2byte 8, 12
-	.2byte 16, 12
-	.2byte 24, 12
-	.2byte 32, 12
-	.2byte 40, 12
+.include "data/pause_and_debug/pause_menu.inc"
+.include "data/pause_and_debug/debug_menu.inc"
 
-gPauseMenuTextAnimFrames:: @ 0x08137DA4
-	.2byte 0,0,0,0,0,1,2,3,3,3,3,4,5
-
-gDebugTextStrings:: @ 0x08137DBE
-	.ascii " BALL-MV:"
-	.byte 0,0,0,0,0
-	.ascii " BALL-SPD:"
-	.byte 0,0,0,0
-	.ascii "  DEBUG1:"
-	.byte 0,0,0,0,0
-
-gDebugMenuValueTemplate:: @ 0x08137DE8
-	.ascii "(000 000)"
-	.byte 0,0,0
-	.ascii "(000)    "
-	.byte 0,0,0
-
-gDebugMenuCursorText:: @ 0x08137E00
-	.ascii "*"
-	.byte 0
-
-	.align 2, 0
 gPinballGameStateFuncs:: @ 0x08137E04
 	.4byte PinballGame_State0_49ED4 @ called once upon loading the field
 	.4byte PinballGame_State1_4AAD8 @ called once every frame while playing
 	.4byte PinballGame_State2_4ABC8 @ called once on game over (losing all balls)
 	.4byte PinballGame_State3_4B20C @ called once after game over?
 
-gBall_Pals:: @ 0x08137E14
-	.incbin "graphics/stage/main/pokeball_regular.gbapal"
-	.incbin "graphics/stage/main/pokeball_great.gbapal"
-	.incbin "graphics/stage/main/pokeball_ultra.gbapal"
-	.incbin "graphics/stage/main/pokeball_master.gbapal"
-	.incbin "graphics/stage/main/pokeball_regular_flash.gbapal"
-	.incbin "graphics/stage/main/pokeball_great_flash.gbapal"
-	.incbin "graphics/stage/main/pokeball_ultra_flash.gbapal"
-	.incbin "graphics/stage/main/pokeball_master_flash.gbapal"
-	.incbin "graphics/stage/main/ball_full_white.gbapal"
-	@ The following are actually unused; apparently, these were considered
-	@ for the freeze trap at some point, but were switched to pure white instead.
-	.incbin "graphics/stage/main/pokeball_regular_frozen.gbapal"
-	.incbin "graphics/stage/main/pokeball_great_frozen.gbapal"
-	.incbin "graphics/stage/main/pokeball_ultra_frozen.gbapal"
-	.incbin "graphics/stage/main/pokeball_master_frozen.gbapal"
+.include"data/ball/ball_palettes.inc"
 
 gCaptureBallTilesGfx:: @ 0x08138014
 	.incbin "graphics/stage/main/ball_open_to_catch.4bpp"
@@ -344,20 +296,9 @@ gBoardHudTiles_A:: @ 0x083A8ACC
 
 .include "data/slots/slot_graphics.inc"
 
-gBallRotationTileGraphics:: @ 0x083BB16C
-	.incbin "graphics/stage/main/pokeball_regular.4bpp"
-	.incbin "graphics/stage/main/pokeball_great.4bpp"
-	.incbin "graphics/stage/main/pokeball_ultra.4bpp"
-	.incbin "graphics/stage/main/pokeball_master.4bpp"
+.include "data/ball/ball_rotation_graphics.inc"
+.include "data/ball/ball_fx_graphics.inc"
 
-gBallUpgradeFx_Gfx:: @ 0x083BD36C
-	.incbin "graphics/stage/main/ball_upgrade_fx_frames.4bpp"
-
-gBallSpawnGlowTiles_Type2:: @ 0x083BDF6C
-	.incbin "graphics/stage/main/ball_spawn_glow_type2.4bpp"
-
-gBallSpawnGlowTiles_Type1:: @ 0x083BF16C
-	.incbin "graphics/stage/main/ball_spawn_glow_type1.4bpp"
 
 gSpoinkEntity_Gfx:: @ 0x083C076C
 	.incbin "graphics/stage/main/spoink_launcher.4bpp"
