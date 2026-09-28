@@ -1151,7 +1151,7 @@ void RunMonCaptureSequence(void)
             {
                 for (i = 1; i <= 10; i++)
                 {
-                    gBG0TilemapBuffer[(i + 15) * 32 + j] = 0xC100;
+                    gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((i + 15), j)] = 0xC100;
                 }
             }
 
@@ -1166,7 +1166,7 @@ void RunMonCaptureSequence(void)
             {
                 for (i = 1; i <= 10; i++)
                 {
-                    gBG0TilemapBuffer[(i + 15) * 32 + j] = 511;
+                    gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX((i + 15), j)] = 511;
                 }
             }
 

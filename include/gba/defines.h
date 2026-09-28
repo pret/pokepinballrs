@@ -94,4 +94,8 @@ Board wrapping starts with the top of the board offset a few rows, as part of th
 
 #define BG_ADDR_FOR_BOARD_WRAP(y, x)  BG_TILE_ADDR(TILE_INDEX(2, WRAP_ROW(y), (x)))
 
+// Index for the tilemapBuffer, which uses a 32 wide tile board, and a 2 byte per address storage
+// Coordinates are given as if looking into the output of the BG0's layer
+#define TILEMAP_U16_OUTPUT_ADDR_IX(y,x)  y * 0x20 + x
+
 #endif // GUARD_GBA_DEFINES

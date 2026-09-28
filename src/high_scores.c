@@ -1692,176 +1692,178 @@ void GenerateRandomHighScores(void)
     }
 }
 
-void AnimateScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
+void AnimateScoreTilemapPalette(u32 boardIx, u32 scoreRowIx, s16 palAnimPhase)
 {
     int i;
-    u32 r3;
-    if(arg0 == 0)
+    u32 tilemapIxBase;
+    if(boardIx == 0)
     {
-        if(arg1 == 0)
+        if(scoreRowIx == 0)
         {
-            r3 = (0 * 2 + 2) * 32 + 12;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX(2,12);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x90EA && gBG0TilemapBuffer[r3 + i] != 0x912A)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x90EA && gBG0TilemapBuffer[tilemapIxBase + i] != 0x912A)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteAnimOffsets[palAnimPhase];
                 }
             }
-            r3 = (0 * 2 + 3) * 32 + 12;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX(3,12);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x910A && gBG0TilemapBuffer[r3 + i] != 0x914A)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x910A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x914A)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteAnimOffsets[palAnimPhase];
                 }
             }
         }
         else
         {
-            r3 = (arg1 * 2 + 3) * 32 + 12;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX((scoreRowIx*2 + 3), 12);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x916A && gBG0TilemapBuffer[r3 + i] != 0x91AA)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x916A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x91AA)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteAnimOffsets[palAnimPhase];
                 }
             }
-            r3 = (arg1 * 2 + 4) * 32 + 12;
+
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX((scoreRowIx*2 + 4), 12);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x918A && gBG0TilemapBuffer[r3 + i] != 0x91CA)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x918A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x91CA)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteAnimOffsets[palAnimPhase];
                 }
             }
         }
     }
     else
     {
-        if(arg1 == 0)
+        if(scoreRowIx == 0)
         {
-            r3 = (0 * 2 + 2) * 32 + 32 * 32 + 10;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX(34,10);;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x90EA && gBG0TilemapBuffer[r3 + i] != 0x912A)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x90EA && gBG0TilemapBuffer[tilemapIxBase + i] != 0x912A)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteAnimOffsets[palAnimPhase];
                 }
             }
-            r3 = (0 * 2 + 3) * 32 + 32 * 32 + 10;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX(35,10);;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x910A && gBG0TilemapBuffer[r3 + i] != 0x914A)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x910A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x914A)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteAnimOffsets[palAnimPhase];
                 }
             }
         }
         else
         {
-            r3 = (arg1 * 2 + 3) * 32 + 32 * 32 + 10;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX((scoreRowIx*2 + 3), 10) + 32 * 0x20;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x916A && gBG0TilemapBuffer[r3 + i] != 0x91AA)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x916A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x91AA)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteAnimOffsets[palAnimPhase];
                 }
             }
-            r3 = (arg1 * 2 + 4) * 32 + 32 * 32 + 10;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX((scoreRowIx*2 + 4), 10) + 32 * 0x20;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x918A && gBG0TilemapBuffer[r3 + i] != 0x91CA)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x918A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x91CA)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteAnimOffsets[palAnimPhase];
                 }
             }
         }
     }
 }
 
-void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
+void ResetScoreTilemapPalette(u32 boardIx, u32 scoreRowIx, s16 palAnimPhase)
 {
     int i;
-    u32 r3;
-    if(arg0 == 0)
+    u32 tilemapIxBase;
+    if(boardIx == 0)
     {
-        if(arg1 == 0)
+        if(scoreRowIx == 0)
         {
-            r3 = (0 * 2 + 2) * 32 + 12;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX(2,12);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x90EA && gBG0TilemapBuffer[r3 + i] != 0x912A)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x90EA && gBG0TilemapBuffer[tilemapIxBase + i] != 0x912A)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteResetOffsets[palAnimPhase];
                 }
             }
-            r3 = (0 * 2 + 3) * 32 + 12;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX(3,12);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x910A && gBG0TilemapBuffer[r3 + i] != 0x914A)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x910A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x914A)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteResetOffsets[palAnimPhase];
                 }
             }
         }
         else
         {
-            r3 = (arg1 * 2 + 3) * 32 + 12;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX((scoreRowIx*2 + 3), 12);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x916A && gBG0TilemapBuffer[r3 + i] != 0x91AA)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x916A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x91AA)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteResetOffsets[palAnimPhase];
                 }
             }
-            r3 = (arg1 * 2 + 4) * 32 + 12;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX((scoreRowIx*2 + 4), 12);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x918A && gBG0TilemapBuffer[r3 + i] != 0x91CA)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x918A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x91CA)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteResetOffsets[palAnimPhase];
                 }
             }
         }
     }
     else
     {
-        if(arg1 == 0)
+        if(scoreRowIx == 0)
         {
-            r3 = (0 * 2 + 2) * 32 + 32 * 32 + 10;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX(34,10);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x90EA && gBG0TilemapBuffer[r3 + i] != 0x912A)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x90EA && gBG0TilemapBuffer[tilemapIxBase + i] != 0x912A)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteResetOffsets[palAnimPhase];
                 }
             }
-            r3 = (0 * 2 + 3) * 32 + 32 * 32 + 10;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX(35,10);
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x910A && gBG0TilemapBuffer[r3 + i] != 0x914A)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x910A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x914A)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteResetOffsets[palAnimPhase];
                 }
             }
         }
         else
         {
-            r3 = (arg1 * 2 + 3) * 32 + 32 * 32 + 10;
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX((scoreRowIx*2 + 3), 10) + 32 * 0x20;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x916A && gBG0TilemapBuffer[r3 + i] != 0x91AA)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x916A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x91AA)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteResetOffsets[palAnimPhase];
                 }
             }
-            r3 = (arg1 * 2 + 4) * 32 + 32 * 32 + 10;
+
+            tilemapIxBase = TILEMAP_U16_OUTPUT_ADDR_IX((scoreRowIx*2 + 4), 10) + 32 * 0x20;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x918A && gBG0TilemapBuffer[r3 + i] != 0x91CA)
+                if(gBG0TilemapBuffer[tilemapIxBase + i] != 0x918A && gBG0TilemapBuffer[tilemapIxBase + i] != 0x91CA)
                 {
-                    gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
+                    gBG0TilemapBuffer[tilemapIxBase + i] += gScorePaletteResetOffsets[palAnimPhase];
                 }
             }
         }

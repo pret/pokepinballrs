@@ -304,9 +304,10 @@ void PrintString(u16 glyph, u16 palette, int x, int y, int width, int height)
 {
     u16 i, j;
 
+    // bgTilemapIx is addressed this way to give the base x/y as stable, and j/i as an offset
     for (j = 0; j < height; j++)
         for (i = 0; i < width; i++)
-            gBG0TilemapBuffer[y * 0x20 + x + j * 0x20 + i] = (glyph + j * 0x20 + i) | (palette << 12);
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(y,x) + TILEMAP_U16_OUTPUT_ADDR_IX(j,i)] = (glyph + j * 0x20 + i) | (palette << 12);
 }
 
 void CopyString(int srcX, int srcY, int destX, int destY, int width, int height)
@@ -315,7 +316,7 @@ void CopyString(int srcX, int srcY, int destX, int destY, int width, int height)
 
     for (j = 0; j < height; j++)
         for (i = 0; i < width; i++)
-            gBG0TilemapBuffer[destY * 0x20 + destX + j * 0x20 + i] = gBG0TilemapBuffer[srcY * 0x20 + srcX + j * 0x20 + i];
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(destY, destX) + TILEMAP_U16_OUTPUT_ADDR_IX(j,i)] = gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(srcY, srcX) + TILEMAP_U16_OUTPUT_ADDR_IX(j,i)];
 }
 
 void SetStringPalette(int x, int y, int width, int height, u16 palette)
@@ -327,7 +328,7 @@ void SetStringPalette(int x, int y, int width, int height, u16 palette)
     {
         for (i = 0; i < width; i++)
         {
-            index = y * 0x20 + x + j * 0x20 + i;
+            index = TILEMAP_U16_OUTPUT_ADDR_IX(y,x) + TILEMAP_U16_OUTPUT_ADDR_IX(j,i);
             gBG0TilemapBuffer[index] = (gBG0TilemapBuffer[index] & 0xFFF) | (palette << 12);
         }
     }

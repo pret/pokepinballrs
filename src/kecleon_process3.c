@@ -1039,6 +1039,7 @@ void UpdateKecleonScopeVision(void)
             gCurrentPinballGame->kecleonTargetFrameIndex = 0;
     }
 
+    // This section the overlay as it slides in.
     gMain.kecleonOverlayHeight = gCurrentPinballGame->kecleonFrameTimer * 16;
     var0 = gCurrentPinballGame->kecleonFrameTimer * 64;
     var1 = (20 - gCurrentPinballGame->kecleonFrameTimer * 2) * 32;
@@ -1046,9 +1047,9 @@ void UpdateKecleonScopeVision(void)
     var3 = gKecleonOverlayTileAnimIndices[index];
     ptr = gKecleonOverlayTilemapPointers[index];
     for (j = 0; j < var0; j++)
-        gBG0TilemapBuffer[0x400 + j] = ptr[var1 + j];
+        gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(32, j)] = ptr[var1 + j];
     for (j = var0; j < 0x280; j++)
-        gBG0TilemapBuffer[0x400 + j] = 0x3FF;
+        gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(32, j)] = 0x3FF;
 
     index = gCurrentPinballGame->kecleonAnimTimer % 150;
     if (index >= 10 && index < 80)
@@ -1057,6 +1058,7 @@ void UpdateKecleonScopeVision(void)
         {
             for (j = 0; j < 4; j++)
             {
+                // TILEMAP_U16_OUTPUT_ADDR_IX(38 + i, 8 + j)
                 gBG0TilemapBuffer[0x408 + ((i + 6) * 0x20) + j] = gKecleonScopeOverlayTilemap[((i + 21) * 0x20) + (j + var3 * 4)];
             }
         }
@@ -1067,7 +1069,7 @@ void UpdateKecleonScopeVision(void)
 
         for (j = 0; j < var2; j++)
         {
-            gBG0TilemapBuffer[0x4C3 + j] = gKecleonScopeOverlayTilemap[0x2EC + j];
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(38, 3 + j)] = gKecleonScopeOverlayTilemap[0x2EC + j];
         }
     }
 
@@ -1077,6 +1079,7 @@ void UpdateKecleonScopeVision(void)
         {
             for (j = 0; j < 6; j++)
             {
+                //TILEMAP_U16_OUTPUT_ADDR_IX(46 + i, 17+j)
                 gBG0TilemapBuffer[0x411 + ((i + 14) * 0x20) + j] = gKecleonScopeOverlayTilemap[((i + 21) * 0x20) + (j + 0xC + var3 * 6)];
             }
         }
@@ -1087,11 +1090,11 @@ void UpdateKecleonScopeVision(void)
 
         for (j = 0; j < var2; j++)
         {
-            gBG0TilemapBuffer[0x5F7 + j] = gKecleonScopeOverlayTilemap[0x2EC + j];
+            gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(47, 23+j)] = gKecleonScopeOverlayTilemap[0x2EC + j];
         }
     }
 
-    DmaCopy16(3, &gBG0TilemapBuffer[0x400], BG_VRAM_ADDR_KECLEON_SCOPE_OVERLAY_TILEMAP, SIZE_OF_VRAM_KECLEON_SCOPE_OVERLAY_TILEMAP);
+    DmaCopy16(3, &gBG0TilemapBuffer[TILEMAP_U16_OUTPUT_ADDR_IX(32,0)], BG_VRAM_ADDR_KECLEON_SCOPE_OVERLAY_TILEMAP, SIZE_OF_VRAM_KECLEON_SCOPE_OVERLAY_TILEMAP);
 }
 
 void RenderKecleonBoardElements(void)
