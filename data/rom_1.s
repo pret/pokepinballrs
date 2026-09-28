@@ -8,23 +8,9 @@
 #include "gba/io_reg.h"
 	.include "asm/macros.inc"
 
-gAreaRouletteTable:: @ 0x08055A68
-	.2byte AREA_FOREST_RUBY
-	.2byte AREA_VOLCANO
-	.2byte AREA_PLAINS_RUBY
-	.2byte AREA_OCEAN_RUBY
-	.2byte AREA_SAFARI_ZONE
-	.2byte AREA_CAVE_RUBY
-	.2byte AREA_RUIN_RUBY
-	.2byte AREA_FOREST_SAPPHIRE
-	.2byte AREA_LAKE
-	.2byte AREA_PLAINS_SAPPHIRE
-	.2byte AREA_WILDERNESS
-	.2byte AREA_OCEAN_SAPPHIRE
-	.2byte AREA_CAVE_SAPPHIRE
-	.2byte AREA_RUIN_SAPPHIRE
+.include "data/areas/area_array.inc"
 
-.include "data/mon_locations.inc"
+.include "data/pokemon/mon_locations.inc"
 
 .include "data/sine_table.inc"
 
@@ -44,586 +30,46 @@ gGbPlayerTilemap:: @ 0x0805C248
 Sio32ConnectionData:: @ 0x0805C748
 	.ascii "NINTENDO"
 
-gBonusFieldSelectStateFuncs:: @ 0x0805C750
-	.4byte LoadBonusFieldSelectGraphics
-	.4byte BonusFieldSelect_Menu
-	.4byte BonusFieldSelect_FadeToSelection
+.include "data/field_select/bonus_field_select_functions.inc"
 
-gEReaderStateFuncs:: @ 0x0805C75C
-	.4byte LoadEReaderGraphics
-	.4byte Ereader_ShowInstructions
-	.4byte Ereader_AnimateLinkCable
-	.4byte Ereader_Communicating
-	.4byte Ereader_ShowLinkTimeout
-	.4byte Ereader_CloseSuccessfulTransmission
-	.4byte Ereader_ShowSuccessPopup
-	.4byte Ereader_ShowPrizeText
-	.4byte Ereader_FadeScreenToMenu
+.include "data/ereader/ereader_functions.inc"
 
-gDexInfoWindowMiddleRowTiles:: @ 0x0805C780
-	.2byte 0x00, 0x9A, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
-	.2byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
-	.2byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
-	.2byte 0x03, 0x03, 0x03, 0x03, 0x9B, 0x00, 0x00, 0x00
+.include "data/pokedex/dex_info_offsets.inc"
+.include "data/pokedex/dex_state_functions.inc"
 
-gDexInfoWindowBottomRowTiles:: @ 0x0805C7C0
-	.2byte 0x00, 0x5A, 0x5B, 0x03, 0x03, 0x03, 0x03, 0x03
-	.2byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
-	.2byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03
-	.2byte 0x03, 0x03, 0x03, 0x5C, 0x9C, 0x00, 0x00, 0x00
+.include "data/pokemon/dex_entries.inc"
 
-gDexInfoWindowEmptyRowTiles:: @ 0x0805C8
-	.2byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.2byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.2byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.2byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+.include "data/field_select/field_select_functions.inc"
 
-gDexInfoWindowEmptyTextRowTiles:: @ 0x0805C840
-	.2byte 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
-	.2byte 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
-	.2byte 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
-	.2byte 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F
+.include "data/intro/functions.inc"
+.include "data/high_scores/functions.inc"
+.include "data/high_scores/default_scores.inc"
+.include "data/high_scores/screen_element_positions.inc"
 
-gPokedexStateFuncs:: @ 0x0805C880
-	.4byte LoadPokedexGraphics          @ POKEDEX_STATE_LOAD_GRAPHICS
-	.4byte Pokedex_HandleListInput      @ POKEDEX_STATE_HANDLE_LIST_INPUT
-	.4byte Pokedex_PostScrollRefresh          @ POKEDEX_STATE_2
-	.4byte Pokedex_InfoWindowSlideIn          @ POKEDEX_STATE_3
-	.4byte Pokedex_InfoWindowSlideOut          @ POKEDEX_STATE_4
-	.4byte Pokedex_DetailViewInput          @ POKEDEX_STATE_5
-	.4byte Pokedex_LinkSetup            @ POKEDEX_STATE_LINK_SETUP
-	.4byte Pokedex_LinkTransferLoop          @ POKEDEX_STATE_7
-	.4byte Pokedex_LinkErrorTimeout          @ POKEDEX_STATE_8
-	.4byte Pokedex_LinkSuccessSequence          @ POKEDEX_STATE_9
-	.4byte Pokedex_LinkRetryDelay         @ POKEDEX_STATE_10
-	.4byte Pokedex_DeleteConfirmation         @ POKEDEX_STATE_DELETE_CONFIRMATION
-	.4byte Pokedex_ReturnToTitle        @ POKEDEX_STATE_RETURN_TO_TITLE
+.include "data/titlescreen/menu_functions.inc"
+.include "data/intro/copyright.inc"
 
-gPokedexEntries:: @ 0x0805C8B4
-	.include "data/pokedex_entries/dex.inc"
+.include "data/field_select/bonus_field_select_layout_graphics.inc"
+.include "data/ereader/ereader_graphics.inc"
+.include "data/pokedex/pokedex_graphics.inc"
 
-	.align 2, 0
-gFieldSelectStateFuncs:: @ 0x080792C0
-	.4byte LoadFieldSelectGraphics
-	.4byte FieldSelect_State1_8C7C
-	.4byte FieldSelect_State2_8F64
+.include "data/high_scores/high_score_tiles.inc"
 
-gIntroStateFuncs:: @ 0x080792CC
-	.4byte Intro_State0_929C
-	.4byte Intro_State1_9348
-	.4byte Intro_State2_9370
-	.4byte Intro_State3_938C
-	.4byte Intro_State4_93D0
+.include "data/field_select/field_select_layout_graphics.inc"
 
-gIntroSceneFuncs:: @ 0x080792E0
-	.4byte IntroScene1_00_LoadTitleLettersAndTorchicScene
-	.4byte IntroScene1TitleText_01_TitleLetterBounceReveal
-	.4byte IntroScene1TitleText_02_TitleRecedeToBackground
-	.4byte IntroScene1TitleText_03_1PxText
-	.4byte IntroScene1Torchic_04_LargeSparkle
-	.4byte IntroScene1Torchic_05_SpeedLineFadeIn
-	.4byte IntroScene1Torchic_06_BrightenPokeballFlyTowardsScreen
-	.4byte IntroScene1Torchic_07_TorchicRiseAndBGSplit
-	.4byte nullsub_4
-	.4byte IntroScene1Torchic_09_OrangeTextScrolls
-	.4byte nullsub_5 @ 10
-	.4byte nullsub_17
-	.4byte IntroScene1Torchic_12_FlashWhite
-	.4byte IntroScene1Torchic_13_ResetTilemap
+.include "data/fonts/ereader_text_tiles.inc"
 
-	.4byte IntroScene2Pikas_14_LoadPinkYellowBackground
-	.4byte nullsub_6
-	.4byte IntroScene2Pikas_16_PikaPairRising
-	.4byte nullsub_7
-	.4byte IntroScene2Pikas_18_FlashWhite
-	.4byte IntroScene2Pikas_19_ResetTilemap
+.include "data/intro/scene1_torchic.inc"
+.include "data/intro/scene2_pikas.inc"
+.include "data/intro/scene3_treecko.inc"
+.include "data/intro/scene4_plusle_minun.inc"
+.include "data/intro/scene5_mudkip.inc"
+.include "data/intro/scene6_chinchou.inc"
+.include "data/intro/scene7_parade.inc"
+.include "data/intro/scene8_wailmer.inc"
+.include "data/intro/scene9_ball_flight.inc"
 
-	.4byte IntroScene3Treecko_20_LoadTreeckoFlipperBall @ 20
-	.4byte IntroScene3Treecko_21_MoveTreeckoFlipperBallAndSplit
-	.4byte IntroScene3Treecko_22_FlipperHitTextScroll
-	.4byte nullsub_8
-	.4byte IntroScene3Treecko_24_FlashWhite
-	.4byte IntroScene3Treecko_25_ResetTilemap
-
-	.4byte IntroScene4PlusleMinun_26_LoadTealWhiteBackground
-	.4byte nullsub_9
-	.4byte IntroScene4PlusleMinun_28_PlusleMinunTextScroll
-	.4byte nullsub_10
-	.4byte IntroScene4PlusleMinun_30_FlashWhite @ 30
-	.4byte IntroScene4PlusleMinun_31_ResetTilemap
-
-	.4byte IntroScene5Mudkip_32_LoadMudkipBallScene
-	.4byte IntroScene5Mudkip_33_MoveMudkipBallSplit
-	.4byte IntroScene5Mudkip_34_MoveMudkipBallTextScroll
-	.4byte nullsub_11
-	.4byte IntroScene5Mudkip_36_FlashWhite
-	.4byte IntroScene5Mudkip_37_ResetTilemap
-
-	.4byte IntroScene6Chinchou_38_LoadChinchou
-	.4byte IntroScene6Chinchou_39_MoveChinchouBallAndStars
-	.4byte IntroScene6Chinchou_40_MoveChinchouAndStars @ 40
-	.4byte IntroScene6Chinchou_41_FlashWhiteClearSprites
-	.4byte IntroScene6Chinchou_42_FrameAdvance
-
-	.4byte IntroScene7Parade_43_LoadPinkYellowBackground
-	.4byte IntroScene7Parade_44_MoveMakuhita
-	.4byte IntroScene7Parade_45_MoveMakuhitaAndSpoink
-	.4byte IntroScene7Parade_46_MoveMakuhitaPelipperAndSpoink
-	.4byte IntroScene7Parade_47_MoveMakuhitaPelipperWailmerAndSpoink
-	.4byte IntroScene7Parade_48_MoveWailmerShake
-	.4byte IntroScene7Parade_49_FlashWhite
-	.4byte IntroScene7Parade_50_ResetTilemap @ 50
-
-	.4byte IntroScene8WailmerLaunch_51_LoadWailmerBlastBackground
-	.4byte IntroScene8WailmerLaunch_52_BallAppearTimer
-	.4byte IntroScene8WailmerLaunch_53_MoveBallStarsAndWailmer
-	.4byte IntroScene8WailmerLaunch_54_MoveStarsAndWailmer
-	.4byte nullsub_12
-	.4byte nullsub_13
-	.4byte IntroScene8WailmerLaunch_57_FlashWhiteClearSprites
-	.4byte IntroScene8WailmerLaunch_58_ResetTilemap
-
-	.4byte IntroScene9BallFlight_59_LoadSkySpeedOrbs
-	.4byte IntroScene9BallFlight_60_MoveBallAndSky @ 60
-	.4byte IntroScene9BallFlight_61_MoveSky
-	.4byte IntroScene9BallFlight_62_MoveBallSkyFadeWhite
-	.4byte nullsub_14
-	.4byte IntroSceneX_64_HoldWhitescreen
-	.4byte IntroSceneX_64_EndIntro
-
-gHighScoresStateFuncs:: @ 0x080793E8
-	.4byte LoadHighScoreGraphics
-	.4byte HighScore_ShowCompletionBanner
-	.4byte HighScore_FlashNewEntry
-	.4byte HighScore_BrowseScores
-	.4byte HighScore_NameEntry
-	.4byte HighScore_InitLinkExchange
-	.4byte HighScore_LinkExchangeLoop
-	.4byte HighScore_LinkError
-	.4byte HighScore_LinkSuccess
-	.4byte HighScore_LinkRetryWait
-	.4byte HighScore_ResetConfirmation
-	.4byte HighScore_ExitToTitle
-	.4byte HighScore_ReloadAfterLink
-	.4byte HighScore_ShowMergedScores
-	.4byte HighScore_ReturnToMain
-
-gIdleHighScoresStateFuncs:: @ 0x08079424
-	.4byte IdleHighScore_LoadGraphics
-	.4byte IdleHighScore_AutoScroll
-	.4byte IdleHighScore_Exit
-
-gDefaultHighScores:: @ 0x08079430
-	@ 4 'name' blocks followed by 2 score high/low
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x1, 0x0       @ 100M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x2faf080 @  50M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x1312d00 @  20M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x989680  @  10M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x7a1200  @   8M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x4c4b40  @   5M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x2dc6c0  @   3M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0xf4240   @   1M
-
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x1, 0x0       @ 100M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x2faf080 @  50M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x1312d00 @  20M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x989680  @  10M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x7a1200  @   8M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x4c4b40  @   5M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0x2dc6c0  @   3M
-	.4byte 0x28, 0x28, 0x28, 0x28, 0x0, 0xf4240   @   1M
-
-gDefaultHighScoresDebug:: @ 0x080795B0
-
-	.4byte 0x19, 0x26, 0x26, 0x26, 0x0, 0x138990 @ 1280400
-	.4byte 0x18, 0x26, 0x26, 0x26, 0x0, 0x9c500  @  640256
-	.4byte 0x17, 0x26, 0x26, 0x26, 0x0, 0x4e657  @  321111
-	.4byte 0x16, 0x26, 0x26, 0x26, 0x0, 0x271c8  @  160200
-	.4byte 0x15, 0x26, 0x26, 0x26, 0x0, 0x14439  @   83001
-	.4byte 0x14, 0x26, 0x26, 0x26, 0x0, 0x9d12   @   40210
-	.4byte 0x13, 0x26, 0x26, 0x26, 0x0, 0x4f6a   @   20330
-	.4byte 0x12, 0x26, 0x26, 0x26, 0x0, 0x3e8    @    1000
-
-	.4byte 0x11, 0x26, 0x26, 0x26, 0x4e4, 0x34ad53b @ 125255235899
-	.4byte 0x10, 0x26, 0x26, 0x26, 0x336, 0x26a109c @  82240505500
-	.4byte 0xf,  0x26, 0x26, 0x26, 0x271, 0x9BF33E  @  62510220350
-	.4byte 0xe,  0x26, 0x26, 0x26, 0x208, 0x22cf284 @  52036500100
-	.4byte 0xd,  0x26, 0x26, 0x26, 0x191, 0x9959d0  @  40110050000
-	.4byte 0xc,  0x26, 0x26, 0x26, 0x145, 0x131d4f8 @  32520043000
-	.4byte 0xb,  0x26, 0x26, 0x26, 0xc8,  0x7d0     @  20000002000
-	.4byte 0xa,  0x26, 0x26, 0x26, 0x0,   0xd0020   @       852000
-
-gHighScoreNamePositions:: @ 0x08079730
-	.4byte 0x06, 0x03, 0x00
-	.4byte 0x06, 0x05, 0x01
-	.4byte 0x06, 0x07, 0x01
-	.4byte 0x06, 0x09, 0x01
-	.4byte 0x06, 0x0B, 0x01
-	.4byte 0x06, 0x0D, 0x01
-	.4byte 0x06, 0x0F, 0x01
-	.4byte 0x06, 0x11, 0x01
-	.4byte 0x04, 0x23, 0x00
-	.4byte 0x04, 0x25, 0x01
-	.4byte 0x04, 0x27, 0x01
-	.4byte 0x04, 0x29, 0x01
-	.4byte 0x04, 0x2B, 0x01
-	.4byte 0x04, 0x2D, 0x01
-	.4byte 0x04, 0x2F, 0x01
-	.4byte 0x04, 0x31, 0x01
-
-gHighScoreNamePixelPositions:: @ 0x080797F0
-	.4byte 0x30, 0x18
-	.4byte 0x30, 0x2C
-	.4byte 0x30, 0x3C
-	.4byte 0x30, 0x4C
-	.4byte 0x30, 0x5C
-	.4byte 0x30, 0x6C
-	.4byte 0x30, 0x7C
-	.4byte 0x30, 0x8C
-	.4byte 0x30, 0x18
-	.4byte 0x30, 0x2C
-	.4byte 0x30, 0x3C
-	.4byte 0x30, 0x4C
-	.4byte 0x30, 0x5C
-	.4byte 0x30, 0x6C
-	.4byte 0x30, 0x7C
-	.4byte 0x30, 0x8C
-
-gHighScoreNameRowTilemapOffsets:: @ 0x08079870
-	.4byte 0x02, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x11
-
-gTitlescreenStateFuncs:: @ 0x08079890
-	.4byte LoadTitlescreenGraphics                @ SUBSTATE_LOAD_GRAPHICS
-	.4byte TitleScreen1_WaitForStartButton        @ SUBSTATE_WAIT_FOR_START_BUTTON
-	.4byte TitleScreen2_AnimatePressStartSelected @ SUBSTATE_ANIM_PRESS_START_SELECTED
-	.4byte TitleScreen3_AnimateMenuSlideIn        @ SUBSTATE_ANIM_MENU_SLIDE_IN
-	.4byte TitleScreen4_MenuInputNoSavedGame      @ SUBSTATE_MENU_INPUT_NO_SAVED_GAME
-	.4byte TitleScreen5_MenuInputSavedGame        @ SUBSTATE_MENU_INPUT_SAVED_GAME
-	.4byte TitleScreen6_AnimCloseMenu             @ SUBSTATE_ANIM_CLOSE_MENU
-	.4byte TitleScreen7_ProcessMenuItemSelected_NoSavedGame @ SUBSTATE_MENU_ITEM_SELECTED_NO_SAVED_GAME
-	.4byte TitleScreen8_ProcessMenuItemSelected_SavedGame   @ SUBSTATE_MENU_ITEM_SELECTED_SAVED_GAME
-	.4byte TitleScreen9_DeleteSaveConfirmation              @ SUBSTATE_DELETE_SAVE_GAME_CONFIRMATION
-	.4byte TitleScreen10_ExecMenuSelection        @ SUBSTATE_EXEC_MENU_SELECTION
-	.4byte TitleScreen11_FadeToAction             @ SUBSTATE_FADE_TO_MENU_ACTION
-
-gIntroCopyright_Tilemap:: @ 0x080798C0
-	.incbin "graphics/intro/copyright_tilemap.bin"
-
-gIntroCopyright_Gfx:: @ 0x0807A0C0
-    .incbin "graphics/intro/copyright.4bpp"
-	.space 0x20
-
-gIntroCopyright_Pal:: @ 0x0807A8E0
-    .incbin "graphics/intro/copyright.gbapal"
-
-gBonusFieldSelectBg0_Tilemap:: @ 0x0807AAE0
-	.incbin "graphics/field_select/bonus_field_select_bg0_tilemap.bin"
-
-gBonusFieldSelectBg1_Tilemap:: @ 0x0807B2E0
-	.incbin "graphics/field_select/bonus_field_select_bg1_tilemap.bin"
-
-gBonusFieldSelectBg2_Tilemap:: @ 0x0807BAE0
-	.incbin "graphics/field_select/bonus_field_select_bg2_tilemap.bin"
-
-gBonusFieldSelectStages_Pals:: @ 0x0807C2E0
-	.incbin "graphics/field_select/bonus_field_select_stages.gbapal"
-
-gBonusFieldSelectStages_Gfx:: @ 0x0807C4E0
-	.incbin "graphics/field_select/bonus_field_select_stages.4bpp"
-	.space 0x20
-
-gEReaderText_Tilemap:: @ 0x0807DD00
-	.incbin "graphics/ereader/ereader_text_tilemap.bin"
-
-gEReaderOverlay_Tilemap:: @ 0x0807FD00
-	.incbin "graphics/ereader/ereader_overlay_tilemap.bin"
-
-gEReaderBackground_Gfx:: @ 0x08080500
-	.incbin "graphics/ereader/background.4bpp"
-	.space 0x20
-
-gEReaderBackground_Pals:: @ 0x08081D20
-	.incbin "graphics/ereader/background.gbapal"
-
-gPokedexBg1_Tilemap:: @ 0x08081F20
-	.incbin "graphics/pokedex/bg1_tilemap.bin"
-
-gPokedexBgText_Gfx:: @ 0x08082720
-	.incbin "graphics/pokedex/bg_text.4bpp"
-	.space 0x20
-
-@ 32x32 u16 tilemap (0x800 bytes) for the pokedex info window that slides
-@ in over the dex entry view. Copied to BG1's screenblock 0 tilemap at
-@ row 10 (VRAM 0x6000280) by Pokedex_InfoWindowSlideIn (src/pokedex.c).
-@ Only the first 7 rows (2*0xE0 bytes) are DMA'd; rows 0-5 hold the
-@ window content and the rest is 0x001F filler (tile 31, blank).
-@ The window is a 26x6 chunk of tile indices 224..409, i.e. sheet rows
-@ 7..12, cols 0..25 of the 32 wide gPokedexBgText_Gfx tileset
-@ (graphics/pokedex/bg_text.png), with palette bank 1 (0x1000 attr bit).
-@
-@ Note: this area of the raw bg_text.png starts blank. The text from the dex
-@ entry is drawn to it, in memory, (PrintDexDescription function) before
-@ this tilemap definition draws that text to screen from the background tiles.
-gPokedexInfoWindowTilemap:: @ 0x08086B40
-	.incbin "graphics/pokedex/info_window_tilemap.bin"
-
-gPokedexBg2_Tilemap:: @ 0x08087340
-	.incbin "graphics/pokedex/bg2_tilemap.bin"
-
-gPokedexBg_Gfx:: @ 0x08087B40
-	.incbin "graphics/pokedex/bg.4bpp"
-	.space 0x20
-
-gPokedexBg3_Tilemap:: @ 0x08088F60
-	.incbin "graphics/pokedex/bg3_tilemap.bin"
-
-gPokedexBackground_Pals:: @ 0x08089760
-	.incbin "graphics/pokedex/bg.gbapal"
-
-gPokedexSprites_Pals:: @ 0x08089960
-	.incbin "graphics/pokedex/sprites.gbapal"
-
-gPokedexSprites_Gfx:: @ 0x08089B60
-	.incbin "graphics/pokedex/sprites.4bpp"
-	.space 0x20
-
-gPokedexTextGlyphs_Gfx:: @ 0x08090780
-	.incbin "graphics/pokedex/text_glyphs.4bpp"
-
-gHighScoreScoreTable_Tilemap:: @ 0x080947A0
-	.incbin "graphics/high_score/high_score_table_text_tilemap.bin"
-
-gHighScoreText_Gfx:: @ 0x080957A0
-	.incbin "graphics/high_score/text.4bpp"
-	.space 0x20
-
-gHighScoreBallWatermark_Tilemap:: @ 0x08099FC0
-	.incbin "graphics/high_score/high_score_ball_watermark_tilemap.bin"
-
-gHighScoreBallWatermark_Gfx:: @ 0x0809AFC0
-	.incbin "graphics/high_score/ball_watermark_tiles.4bpp"
-	.space 0x20
-
-gHighScoreBG_Pals:: @ 0x0809DBE0
-	.incbin "graphics/high_score/bg.gbapal"
-
-gHighScoreSprite_Pals:: @ 0x0809DDE0
-	.incbin "graphics/high_score/sprites.gbapal"
-
-gHighScoreDialogs_Gfx:: @ 0x0809DFE0
-	@ sheet includes transmission windows, and the
-	@ pokedex completion certificate, with latios/latias
-	.incbin "graphics/high_score/dialogs.4bpp"
-	.space 0x20
-
-gFieldSelectBG0Tilemap:: @ 0x080A2400
-	.incbin "graphics/field_select/field_select_bg_tilemap.bin"
-
-.include "data/graphics/field_select.inc"
-
-gEReaderText_Gfx:: @ 0x080ACC60
-	.incbin "graphics/ereader/text.4bpp"
-	.space 0x240
-
-gIntroScene1TorchicSprites_Pals:: @ 0x080B3AA0
-	.incbin "graphics/intro/scene1torchic/sprites.gbapal"
-
-gIntroScene1Torchic_BG3Tilemap:: @ 0x080B3CA0
-	.incbin "graphics/intro/scene1torchic/bg3_text_tilemap.bin"
-
-gIntroScene1TorchicText_Gfx:: @ 0x080B44A0
-	.incbin "graphics/intro/scene1torchic/tiles.4bpp"
-	.space 0x20
-
-gIntroScene1Torchic_BG0Tilemap:: @ 0x080B9CC0
-	.incbin "graphics/intro/scene1torchic/bg0_tilemap.bin"
-
-gIntroScene1Torchic_BG2Tilemap:: @ 0x080BB4C0
-	.incbin "graphics/intro/scene1torchic/bg2_dividers_tilemap.bin"
-
-gIntroScene1Torchic_BG1Tilemap:: @ 0x080BC4C0
-	.incbin "graphics/intro/scene1torchic/bg1_dividers_tilemap.bin"
-
-gIntroScene1TorchicBall_Gfx:: @ 0x080BD4C0
-	.incbin "graphics/intro/scene1torchic/ball.4bpp"
-	.space 0x20
-
-gIntroScene1TorchicSprites_Gfx:: @ 0x080C3CE0
-	.incbin "graphics/intro/scene1torchic/sprites.4bpp"
-
-gIntroScene2Pikas_Pal:: @ 0x080CBCE0
-	.incbin "graphics/intro/scene2pikas/scene.gbapal"
-
-gIntroScene2Pikas_BG3Tilemap:: @ 0x080CBEE0
-	.incbin "graphics/intro/scene2pikas/bg3_text_tilemap.bin"
-
-gIntroScene2PikasSprites_Gfx:: @ 0x080CC6E0
-	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
-	@ with mostly blank secondary rows (reusing tiles)
-	@ (shown in pink with yellow text)
-	@ sheet also includes pichu/pikachu
-	.incbin "graphics/intro/scene2pikas/tiles.4bpp"
-	.space 0x20
-
-gIntroScene2Pikas_BG0Tilemap:: @ 0x080D0700
-	.incbin "graphics/intro/scene2pikas/bg0_pichu_tilemap.bin"
-
-gIntroScene2Pikas_BG1Tilemap:: @ 0x080D2700
-	.incbin "graphics/intro/scene2pikas/bg1_pikachu_tilemap.bin"
-
-gIntroScene3Treecko_Pal:: @ 0x080D4700
-	.incbin "graphics/intro/scene3treecko/scene.gbapal"
-
-gIntroScene3Treecko_BG2Tilemap:: @ 0x080D4900
-	.incbin "graphics/intro/scene3treecko/bg2_tilemap.bin"
-
-gIntroScene3Treecko_BG3Tilemap:: @ 0x080D5900
-	.incbin "graphics/intro/scene3treecko/bg3_text_tilemap.bin"
-
-gIntroScene3TreeckoBgTiles_Gfx:: @ 0x080D6100
-	@ intro pane with treeko, pinball, flipper
-	.incbin "graphics/intro/scene3treecko/tiles.4bpp"
-	.space 0x20
-
-gIntroScene3Treecko_BG1Tilemap:: @ 0x080DCD20
-	.incbin "graphics/intro/scene3treecko/bg1_ball_tilemap.bin"
-
-gIntroScene3Treecko_BG1TilemapA:: @ 0x080DD520
-	.incbin "graphics/intro/scene3treecko/bg1_ballandflipper_tilemap.bin"
-
-gIntroScene3Treecko_BG1TilemapB:: @ 0x080DDD20
-	.incbin "graphics/intro/scene3treecko/bg1_ballflipperhit_tilemap.bin"
-
-gIntroScene3Treecko_BG0Tilemap:: @ 0x080DE520
-	.incbin "graphics/intro/scene3treecko/bg0_treecko_tilemap.bin"
-
-gIntroScene3TreeckoTreecko_Gfx:: @ 0x080DF520
-	.incbin "graphics/intro/scene3treecko/treecko.4bpp"
-	.space 0x20
-
-gIntroScene4PlusleMinun_Pal:: @ 0x080E1540
-	.incbin "graphics/intro/scene4plusleminun/scene.gbapal"
-
-gIntroScene4PlusleMinun_BG3Tilemap:: @ 0x080E1740
-	.incbin "graphics/intro/scene4plusleminun/bg3_text_tilemap.bin"
-
-gIntroScene4PlusleMinunBgTiles_Gfx:: @ 0x080E1F40
-	.incbin "graphics/intro/scene4plusleminun/tiles.4bpp"
-
-gIntroScene4PlusleMinun_BG0Tilemap:: @ 0x080E5F60
-	.incbin "graphics/intro/scene4plusleminun/bg0_minun_tilemap.bin"
-
-gIntroScene4PlusleMinun_BG1Tilemap:: @ 0x080E7F60
-	.incbin "graphics/intro/scene4plusleminun/bg1_plusle_tilemap.bin"
-
-gIntroScene5Mudkip_Pal:: @ 0x080E9F60
-	.incbin "graphics/intro/scene5mudkip/scene.gbapal"
-
-gIntroScene5Mudkip_BG2Tilemap:: @ 0x080EA160
-	.incbin "graphics/intro/scene5mudkip/bg2_2sections_tilemap.bin"
-
-gIntroScene5Mudkip_BG1Tilemap:: @ 0x080EB160
-	.incbin "graphics/intro/scene5mudkip/bg1_1sections_tilemap.bin"
-
-gIntroScene5Mudkip_BG3Tilemap:: @ 0x080EC160
-	.incbin "graphics/intro/scene5mudkip/bg3_text_tilemap.bin"
-
-gIntroScene5MudkipBgTiles_Gfx:: @ 0x080EC960
-	.incbin "graphics/intro/scene5mudkip/text_tiles.4bpp"
-	.space 0x20
-
-gIntroScene5Mudkip_BG0Tilemap:: @ 0x080F1980
-	.incbin "graphics/intro/scene5mudkip/bg0_tilemap.bin"
-
-gIntroScene5MudkipSprites_Gfx:: @ 0x080F2180
-	.incbin "graphics/intro/scene5mudkip/sprites.4bpp"
-	.space 0x20
-
-	.incbin "graphics/intro/scene5mudkip/unused_bg_tilemap.bin"
-
-gIntroScene6Chinchou_Pal:: @ 0x080F61A0
-	.incbin "graphics/intro/scene6chinchou/scene.gbapal"
-
-gIntroScene6Chinchou_BG3Tilemap:: @ 0x080F63A0
-	.incbin "graphics/intro/scene6chinchou/bg3_burst_tilemap.bin"
-
-gIntroScene6ChinchouBgTiles_Gfx:: @ 0x080F6BA0
-	.incbin "graphics/intro/scene6chinchou/tiles.4bpp"
-	.space 0x20
-
-gIntroScene6Chinchou_BG2Tilemap:: @ 0x080FCFC0
-	.incbin "graphics/intro/scene6chinchou/bg2_chinchou_tilemap.bin"
-
-gIntroScene6Chinchou_BG0Tilemap:: @ 0x080FD7C0
-	.incbin "graphics/intro/scene6chinchou/bg0_chinchou_tilemap.bin"
-
-gIntroScene6Chinchou_BG1Tilemap:: @ 0x080FDFC0
-	.incbin "graphics/intro/scene6chinchou/bg1_ball_tilemap.bin"
-
-gIntroScene6ChinchouStars_Gfx:: @ 0x080FFFC0
-	.incbin "graphics/intro/scene6chinchou/stars.4bpp"
-	.space 0x20
-
-gIntroScene7Parade_Pal:: @ 0x08100FE0
-	.incbin "graphics/intro/scene7parade/scene.gbapal"
-
-gIntroScene7Parade_BG3Tilemap:: @ 0x081011E0
-	.incbin "graphics/intro/scene7parade/bg3_text_tilemap.bin"
-
-gIntroScene7ParadeBgTiles_Gfx:: @ 0x081019E0
-	@ this has diagonal stripes with "Pokemon Pinball" in 2 colors
-	@ with mostly blank secondary rows (reusing tiles)
-	@ (shown in pink with yellow text)
-	@ sheet also includes pelipper, makuhita, spoink
-
-	.incbin "graphics/intro/scene7parade/tiles.4bpp"
-	.space 0x20
-
-gIntroScene7Parade_BG2Tilemap:: @ 0x08106A00
-	.incbin "graphics/intro/scene7parade/bg2_makuhita_tilemap.bin"
-
-gIntroScene7Parade_BG0Tilemap:: @ 0x08108A00
-	.incbin "graphics/intro/scene7parade/bg0_pelipper_tilemap.bin"
-
-gIntroScene7Parade_BG1Tilemap:: @ 0x0810AA00
-	.incbin "graphics/intro/scene7parade/bg1_spoink_tilemap.bin"
-
-gIntroScene7ParadeWailmer_Gfx:: @ 0x0810CA00
-	.incbin "graphics/intro/scene7parade/wailmer.4bpp"
-	.space 0x20
-
-gIntroScene8WailmerLaunch_Pal:: @ 0x0810EA20
-	.incbin "graphics/intro/scene8wailmerlaunch/scene.gbapal"
-
-gIntroScene8WailmerLaunch_BG2Tilemap:: @ 0x0810EC20
-	.incbin "graphics/intro/scene8wailmerlaunch/bg2_explosion_tilemap.bin"
-
-gIntroScene8WailmerLaunchBgTiles_Gfx:: @ 0x0810F420
-	.incbin "graphics/intro/scene8wailmerlaunch/explosion_tiles.4bpp"
-	.space 0x20
-
-gIntroScene8WailmerLaunch_Gfx:: @ 0x08112840
-	.incbin "graphics/intro/scene8wailmerlaunch/sprites.4bpp"
-	.space 0x20
-
-gIntroScene9BallFlight_Pal:: @ 0x08115860
-	.incbin "graphics/intro/scene9ballflight/scene.gbapal"
-
-gIntroScene9BallFlight_BG3Tilemap:: @ 0x08115A60
-	.incbin "graphics/intro/scene9ballflight/bg3_clouds_tilemap.bin"
-
-gIntroScene9BallFlightClouds_Gfx:: @ 0x08116260
-	.incbin "graphics/intro/scene9ballflight/cloud_tiles.4bpp"
-	.space 0x20
-
-gIntroScene9BallFlightall_Gfx:: @ 0x08118680
-	.incbin "graphics/intro/scene9ballflight/ball.4bpp"
-
-	.incbin "graphics/intro/wailmer_swallow.4bpp"
-
-	.incbin "graphics/intro/scene9ballflight/ball_tail.4bpp"
-
-.include "data/graphics/titlescreen.inc"
+.include "data/titlescreen/menu_graphics.inc"
 
 gGravityDeltas_Strong:: @ 0x08137900
 	.2byte 1, 1, 1, 0
@@ -634,11 +80,7 @@ gGravityDeltas_Medium:: @ 0x08137908
 gGravityDeltas_Light:: @ 0x08137910
 	.2byte 1, 0, 0, 0
 
-gIdlePinballGameStateFuncs:: @ 0x08137918
-	.4byte PinballGameIdle0_19048
-	.4byte PinballGameIdle1_19190
-	.4byte PinballGame_State2_4ABC8 @shared with main game mode
-	.4byte PinballGameIdle3_19288
+.include "data/idle_board/idle_state_functions.inc"
 
 gAreaPortraitIndexes:: @ 0x08137928
 	.2byte 0, 1, 2, 3, 4
@@ -723,68 +165,18 @@ gSphealScoreDigitSpriteIndices:: @ 0x08137D60
 	.byte 2,2,2,2,2,1,1,1,1,1
 	.byte 1,1,0,0
 
-gPauseMenuSpriteOffsets:: @ 0x08137D78
-	@ Vector16
-	.2byte -16, 0
-	.2byte 0, 0
-	.2byte 8, 0
-	.2byte 16, 0
-	.2byte 24, 0
-	.2byte 0, 12
-	.2byte 8, 12
-	.2byte 16, 12
-	.2byte 24, 12
-	.2byte 32, 12
-	.2byte 40, 12
+.include "data/pause_and_debug/pause_menu.inc"
+.include "data/pause_and_debug/debug_menu.inc"
 
-gPauseMenuTextAnimFrames:: @ 0x08137DA4
-	.2byte 0,0,0,0,0,1,2,3,3,3,3,4,5
-
-gDebugTextStrings:: @ 0x08137DBE
-	.ascii " BALL-MV:"
-	.byte 0,0,0,0,0
-	.ascii " BALL-SPD:"
-	.byte 0,0,0,0
-	.ascii "  DEBUG1:"
-	.byte 0,0,0,0,0
-
-gDebugMenuValueTemplate:: @ 0x08137DE8
-	.ascii "(000 000)"
-	.byte 0,0,0
-	.ascii "(000)    "
-	.byte 0,0,0
-
-gDebugMenuCursorText:: @ 0x08137E00
-	.ascii "*"
-	.byte 0
-
-	.align 2, 0
 gPinballGameStateFuncs:: @ 0x08137E04
 	.4byte PinballGame_State0_49ED4 @ called once upon loading the field
 	.4byte PinballGame_State1_4AAD8 @ called once every frame while playing
 	.4byte PinballGame_State2_4ABC8 @ called once on game over (losing all balls)
 	.4byte PinballGame_State3_4B20C @ called once after game over?
 
-gBall_Pals:: @ 0x08137E14
-	.incbin "graphics/stage/main/pokeball_regular.gbapal"
-	.incbin "graphics/stage/main/pokeball_great.gbapal"
-	.incbin "graphics/stage/main/pokeball_ultra.gbapal"
-	.incbin "graphics/stage/main/pokeball_master.gbapal"
-	.incbin "graphics/stage/main/pokeball_regular_flash.gbapal"
-	.incbin "graphics/stage/main/pokeball_great_flash.gbapal"
-	.incbin "graphics/stage/main/pokeball_ultra_flash.gbapal"
-	.incbin "graphics/stage/main/pokeball_master_flash.gbapal"
-	.incbin "graphics/stage/main/ball_full_white.gbapal"
-	@ The following are actually unused; apparently, these were considered
-	@ for the freeze trap at some point, but were switched to pure white instead.
-	.incbin "graphics/stage/main/pokeball_regular_frozen.gbapal"
-	.incbin "graphics/stage/main/pokeball_great_frozen.gbapal"
-	.incbin "graphics/stage/main/pokeball_ultra_frozen.gbapal"
-	.incbin "graphics/stage/main/pokeball_master_frozen.gbapal"
+.include"data/ball/ball_palettes.inc"
+.include"data/ball/catch_cutscene_open_ball.inc"
 
-gCaptureBallTilesGfx:: @ 0x08138014
-	.incbin "graphics/stage/main/ball_open_to_catch.4bpp"
-	.space 0x20
 
 gDusclopsBonusClear_Gfx:: @ 0x08138834
 	.incbin "graphics/stage/dusclops/dusclops_bonus_clear.4bpp"
@@ -809,34 +201,9 @@ gRayquazaBonusClear_Gfx:: @ 0x081408B4
 gCaptureScreenTilesGfx:: @ 0x081428D4
 	.incbin "graphics/stage/main/capture_screen.4bpp"
 
-.include "data/graphics/mon_hatch_sprites_pals.inc"
+.include "data/pokemon/mon_hatch_sprites_pals.inc"
 
-@ Attract-mode demos. Each IdleBoardConfig entry has 4800 ReplayInputFrame entries
-@ (3 bytes of button bits per game frame).
-@ Eeach GameState is one PinballGame snapshot the demo starts from.
-gIdleBoardConfig0:: @ 0x081450F4
-	.incbin "data/idle_board/replay_input_0.bin"
-
-gIdleBoardConfig2:: @ 0x08148934
-	.incbin "data/idle_board/replay_input_2.bin"
-
-gIdleBoardConfig3:: @ 0x0814C174
-	.incbin "data/idle_board/replay_input_3.bin"
-
-gIdleBoardConfig1:: @ 0x0814F9B4
-	.incbin "data/idle_board/replay_input_1.bin"
-
-gIdleBoardGameState0:: @ 0x081531F4
-	.incbin "data/idle_board/game_state_0.bin"
-
-gIdleBoardGameState2:: @ 0x08154618
-	.incbin "data/idle_board/game_state_2.bin"
-
-gIdleBoardGameState3:: @ 0x08155A3C
-	.incbin "data/idle_board/game_state_3.bin"
-
-gIdleBoardGameState1:: @ 0x08156E60
-	.incbin "data/idle_board/game_state_1.bin"
+.include "data/idle_board/attract_demo_sequences.inc"
 
 gEvolutionCutsceneTilesGfx:: @ 0x08158284
 	.incbin "graphics/stage/main/board_action.4bpp"
@@ -845,49 +212,8 @@ gEvolutionCutsceneTilesGfx:: @ 0x08158284
 gBoardActionObj_Pals:: @ 0x0815A6A4
 	.incbin "graphics/stage/main/board_action_obj.gbapal"
 
-gEvoExAppear_Gfx:: @ 0x0815A8A4
-	.incbin "graphics/board_pickups/evo_item_ex.4bpp";
+.include "data/graphics/board_pickups.inc"
 
-gEvoItem_Pals:: @ 0x0815C4C4
-	.incbin "graphics/board_pickups/icon1_xp.gbapal";
-	.incbin "graphics/board_pickups/icon2_leaf.gbapal";
-	.incbin "graphics/board_pickups/icon3_fire.gbapal";
-	.incbin "graphics/board_pickups/icon4_link.gbapal";
-	.incbin "graphics/board_pickups/icon5_moon.gbapal";
-	.incbin "graphics/board_pickups/icon6_water.gbapal";
-	.incbin "graphics/board_pickups/icon7_bolt.gbapal";
-	.incbin "graphics/board_pickups/icon8_sun.gbapal";
-	.incbin "graphics/board_pickups/icon9_heart.gbapal";
-	.incbin "graphics/board_pickups/icon10_pokeblock.gbapal";
-	@ Six blank palettes, filling out the block. Solely containing a near-flat grey.
-	.incbin "graphics/board_pickups/evo_item_unused.gbapal.bin"
-
-gEvoLeafAppear_Gfx:: @ 0x0815C6C4
-	.incbin "graphics/board_pickups/evo_item_leaf.4bpp";
-
-gEvoFireAppear_Gfx:: @ 0x0815E2E4
-	.incbin "graphics/board_pickups/evo_item_fire.4bpp";
-
-gEvoHeartAppear_Gfx:: @ 0x0815FF04
-	.incbin "graphics/board_pickups/evo_item_heart.4bpp";
-
-gEvoLinkAppear_Gfx:: @ 0x08161B24
-	.incbin "graphics/board_pickups/evo_item_link.4bpp";
-
-gEvoMoonAppear_Gfx:: @ 0x08163744
-	.incbin "graphics/board_pickups/evo_item_moon.4bpp";
-
-gEvoWaterAppear_Gfx:: @ 0x08165364
-	.incbin "graphics/board_pickups/evo_item_water.4bpp";
-
-gEvoBoxAppear_Gfx:: @ 0x08166F84
-	.incbin "graphics/board_pickups/evo_item_box.4bpp";
-
-gEvoSunAppear_Gfx:: @ 0x08168BA4
-	.incbin "graphics/board_pickups/evo_item_sun.4bpp";
-
-gEvoBoltAppear_Gfx:: @ 0x0816A7C4
-	.incbin "graphics/board_pickups/evo_item_bolt.4bpp";
 
 gFlipperCollisionData:: @ 0x0816C3E4
 @ Flipper data has 13 sets of 96*96 u16 data (2 unused at the end)
@@ -898,509 +224,32 @@ gDebugAsciiFont:: @ 0x081A6BE4
 	.incbin "graphics/debug_ascii_font.4bpp"
 	.space 0x7800   @ 960 unused tiles, all zero
 
-	.include "data/graphics/mon_catch_sprites_pals.inc"
+	.include "data/pokemon/mon_catch_sprites_pals.inc"
 
 gKyogreWaterAnimFrame_Pals:: @ 0x081B0DE4
 	.incbin "graphics/stage/kyogre/water_anim_frames.gbapal"
 
-gPokeballCaptureOamFrames:: @ 0x081B0FE4
-	@ frame 0
-	.2byte 0x0000, 0x4000, 0x12C0
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x0000, 0x4000, 0x12C0
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	@ frame 1
-	.2byte 0x0000, 0x4000, 0x12C0
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x0000, 0x4000, 0x12C0
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	@ frame 2
-	.2byte 0x0000, 0x4000, 0x12C0
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x40F0, 0x81F0, 0x12CC
-	.2byte 0x4000, 0x41F0, 0x12D4
-	@ frame 3
-	.2byte 0x00F0, 0x4010, 0x12D8
-	.2byte 0x4000, 0x0010, 0x12DC
-	.2byte 0x400F, 0xB1FF, 0x12CC
-	.2byte 0x4007, 0x71FF, 0x12D4
-	.2byte 0x000F, 0x71EF, 0x12D8
-	.2byte 0x4007, 0x31EF, 0x12DC
-	@ frame 4
-	.2byte 0x40F0, 0x81F0, 0x12CC
-	.2byte 0x4000, 0x41F0, 0x12D4
-	.2byte 0x00F0, 0x4010, 0x12D8
-	.2byte 0x4000, 0x0010, 0x12DC
-	.2byte 0x400F, 0xB1FF, 0x12CC
-	.2byte 0x4007, 0x71FF, 0x12D4
-	@ frame 5
-	.2byte 0x000F, 0x71EF, 0x12D8
-	.2byte 0x4007, 0x31EF, 0x12DC
-	.2byte 0x40F0, 0x81F0, 0x12DE
-	.2byte 0x00F0, 0x4010, 0x12E6
-	.2byte 0x4000, 0x41F0, 0x12EA
-	.2byte 0x4000, 0x0010, 0x12EE
-	@ frame 6
-	.2byte 0x400F, 0xB1FF, 0x12DE
-	.2byte 0x000F, 0x71EF, 0x12E6
-	.2byte 0x4007, 0x71FF, 0x12EA
-	.2byte 0x4007, 0x31EF, 0x12EE
-	.2byte 0x40F0, 0x81F0, 0x12DE
-	.2byte 0x00F0, 0x4010, 0x12E6
-	@ frame 7
-	.2byte 0x4000, 0x41F0, 0x12EA
-	.2byte 0x4000, 0x0010, 0x12EE
-	.2byte 0x400F, 0xB1FF, 0x12DE
-	.2byte 0x000F, 0x71EF, 0x12E6
-	.2byte 0x4007, 0x71FF, 0x12EA
-	.2byte 0x4007, 0x31EF, 0x12EE
-	@ frame 8
-	.2byte 0x40F0, 0x81F0, 0x12F0
-	.2byte 0x00F0, 0x4010, 0x12F8
-	.2byte 0x4000, 0x41F0, 0x12FC
-	.2byte 0x4000, 0x0010, 0x1300
-	.2byte 0x400F, 0xB1FF, 0x12F0
-	.2byte 0x000F, 0x71EF, 0x12F8
-	@ frame 9
-	.2byte 0x4007, 0x71FF, 0x12FC
-	.2byte 0x4007, 0x31EF, 0x1300
-	.2byte 0x40F0, 0x81F0, 0x12F0
-	.2byte 0x00F0, 0x4010, 0x12F8
-	.2byte 0x4000, 0x41F0, 0x12FC
-	.2byte 0x4000, 0x0010, 0x1300
-	@ frame 10
-	.2byte 0x400F, 0xB1FF, 0x12F0
-	.2byte 0x000F, 0x71EF, 0x12F8
-	.2byte 0x4007, 0x71FF, 0x12FC
-	.2byte 0x4007, 0x31EF, 0x1300
-	.2byte 0x40F0, 0x81F5, 0x1302
-	.2byte 0x4000, 0x41F5, 0x130A
-	@ frame 11
-	.2byte 0x80F8, 0x0015, 0x130E
-	.2byte 0x400F, 0xB1FA, 0x1302
-	.2byte 0x4007, 0x71FA, 0x130A
-	.2byte 0x8007, 0x31F2, 0x130E
-	.2byte 0x40F0, 0x81F5, 0x1302
-	.2byte 0x4000, 0x41F5, 0x130A
-	@ frame 12
-	.2byte 0x80F8, 0x0015, 0x130E
-	.2byte 0x400F, 0xB1FA, 0x1302
-	.2byte 0x4007, 0x71FA, 0x130A
-	.2byte 0x8007, 0x31F2, 0x130E
-	.2byte 0x8007, 0x31F2, 0x130E
-	.2byte 0x8007, 0x31F2, 0x130E
-	@ frame 13
-	.2byte 0x8007, 0x31F2, 0x130E
-	.2byte 0x8007, 0x31F2, 0x130E
-	.2byte 0x40F8, 0x81F6, 0x1310
-	.2byte 0x80F8, 0x0016, 0x1318
-	.2byte 0x4007, 0xB1F9, 0x1310
-	.2byte 0x8007, 0x31F1, 0x1318
-	@ frame 14
-	.2byte 0x40F8, 0x81F6, 0x1310
-	.2byte 0x80F8, 0x0016, 0x1318
-	.2byte 0x4007, 0xB1F9, 0x1310
-	.2byte 0x8007, 0x31F1, 0x1318
-	.2byte 0x40F8, 0x81F6, 0x1310
-	.2byte 0x80F8, 0x0016, 0x1318
-	@ frame 15
-	.2byte 0x4007, 0xB1F9, 0x1310
-	.2byte 0x8007, 0x31F1, 0x1318
-	.2byte 0x40F8, 0x81F6, 0x1310
-	.2byte 0x80F8, 0x0016, 0x1318
-	.2byte 0x4007, 0xB1F9, 0x1310
-	.2byte 0x8007, 0x31F1, 0x1318
-	@ frame 16
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	@ frame 17
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	@ frame 18
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x40F8, 0x81F8, 0x12C4
-	.2byte 0x4007, 0xB1F7, 0x12C4
-	.2byte 0x00FE, 0x4000, 0x1726
-	.2byte 0x80FE, 0x0010, 0x172A
-	@ frame 19
-	.2byte 0x400E, 0x0000, 0x172C
-	.2byte 0x8009, 0x81EE, 0x172E
-	.2byte 0x8009, 0x01FE, 0x1736
-	.2byte 0x8021, 0x01FD, 0x1738
-	.2byte 0x0029, 0x01F5, 0x173A
-	.2byte 0x00FE, 0x4000, 0x1726
-	@ frame 20
-	.2byte 0x80FE, 0x0010, 0x172A
-	.2byte 0x400E, 0x0000, 0x172C
-	.2byte 0x8009, 0x81EE, 0x172E
-	.2byte 0x8009, 0x01FE, 0x1736
-	.2byte 0x8021, 0x01FD, 0x1738
-	.2byte 0x0029, 0x01F5, 0x173A
-	@ frame 21
-	.2byte 0x0029, 0x01F5, 0x173A
-	.2byte 0x0029, 0x01F5, 0x173A
-	.2byte 0x00FC, 0x41FF, 0x173B
-	.2byte 0x80FC, 0x000F, 0x173F
-	.2byte 0x400C, 0x0007, 0x1741
-	.2byte 0x801A, 0x81F3, 0x1743
-	@ frame 22
-	.2byte 0x800A, 0x01FB, 0x174B
-	.2byte 0x001E, 0x8003, 0x174D
-	.2byte 0x403E, 0x000F, 0x175D
-	.2byte 0x8006, 0x0003, 0x175F
-	.2byte 0x0016, 0x0003, 0x1761
-	.2byte 0x00FC, 0x41FF, 0x173B
-	@ frame 23
-	.2byte 0x80FC, 0x000F, 0x173F
-	.2byte 0x400C, 0x0007, 0x1741
-	.2byte 0x801A, 0x81F3, 0x1743
-	.2byte 0x800A, 0x01FB, 0x174B
-	.2byte 0x001E, 0x8003, 0x174D
-	.2byte 0x403E, 0x000F, 0x175D
-	@ frame 24
-	.2byte 0x00FC, 0x41FF, 0x173B
-	.2byte 0x80FC, 0x000F, 0x173F
-	.2byte 0x400C, 0x0007, 0x1741
-	.2byte 0x0027, 0x81EF, 0x1762
-	.2byte 0x4017, 0x81F7, 0x1772
-	.2byte 0x000F, 0x0007, 0x177A
-	@ frame 25
-	.2byte 0x0007, 0x41F8, 0x177B
-	.2byte 0x0037, 0x001F, 0x177F
-	.2byte 0x8027, 0x800F, 0x1780
-	.2byte 0x8017, 0x0017, 0x1788
-	.2byte 0x4047, 0x41F7, 0x178A
-	.2byte 0x0047, 0x0017, 0x178E
-	@ frame 26
-	.2byte 0x0047, 0x0017, 0x178E
-	.2byte 0x0047, 0x0017, 0x178E
-	.2byte 0x0047, 0x0017, 0x178E
-	.2byte 0x0047, 0x0017, 0x178E
-	.2byte 0x0026, 0x9006, 0x1762
-	.2byte 0x4016, 0x91FE, 0x1772
-	@ frame 27
-	.2byte 0x0036, 0x11EE, 0x177F
-	.2byte 0x8026, 0x91F6, 0x1780
-	.2byte 0x8016, 0x11F6, 0x1788
-	.2byte 0x4046, 0x51FE, 0x178A
-	.2byte 0x0046, 0x11F6, 0x178E
-	.2byte 0x4006, 0x01FE, 0x178F
-	@ frame 28
-	.2byte 0x400E, 0x41F6, 0x1791
-	.2byte 0x00FC, 0x41FF, 0x173B
-	.2byte 0x400C, 0x0007, 0x1741
-	.2byte 0x80FC, 0x000F, 0x173F
-	.2byte 0x80FC, 0x000F, 0x173F
-	.2byte 0x80FC, 0x000F, 0x173F
-	@ frame 29
-	.2byte 0x80FC, 0x000F, 0x173F
-	.2byte 0x80FC, 0x000F, 0x173F
-	.2byte 0x8018, 0x800A, 0x1796
-	.2byte 0x0038, 0x000A, 0x179E
-	.2byte 0x8020, 0xB1FB, 0x1796
-	.2byte 0x0018, 0x3003, 0x179E
-	@ frame 30
-	.2byte 0x0026, 0x9006, 0x1762
-	.2byte 0x4016, 0x91FE, 0x1772
-	.2byte 0x0036, 0x11EE, 0x177F
-	.2byte 0x8026, 0x91F6, 0x1780
-	.2byte 0x8016, 0x11F6, 0x1788
-	.2byte 0x4046, 0x51FE, 0x178A
-	@ frame 31
-	.2byte 0x0046, 0x11F6, 0x178E
-	.2byte 0x4006, 0x01FE, 0x178F
-	.2byte 0x400E, 0x41F6, 0x1791
-	.2byte 0x00FC, 0x41FF, 0x173B
-	.2byte 0x400C, 0x0007, 0x1741
-	.2byte 0x80FC, 0x000F, 0x173F
-	@ frame 32
-	.2byte 0x00FC, 0x41FF, 0x173B
-	.2byte 0x80FC, 0x000F, 0x173F
-	.2byte 0x400C, 0x0007, 0x1741
-	.2byte 0x8021, 0xA003, 0x1796
-	.2byte 0x0019, 0x2003, 0x179E
-	.2byte 0x0027, 0x81EF, 0x1762
-	@ frame 33
-	.2byte 0x4017, 0x81F7, 0x1772
-	.2byte 0x000F, 0x0007, 0x177A
-	.2byte 0x0007, 0x41F8, 0x177B
-	.2byte 0x0037, 0x001F, 0x177F
-	.2byte 0x8027, 0x800F, 0x1780
-	.2byte 0x8017, 0x0017, 0x1788
-	@ frame 34
-	.2byte 0x4047, 0x41F7, 0x178A
-	.2byte 0x0047, 0x0017, 0x178E
-	.2byte 0x0047, 0x0017, 0x178E
-	.2byte 0x0047, 0x0017, 0x178E
-	.2byte 0x4006, 0x01FE, 0x178F
-	.2byte 0x400E, 0x41F6, 0x1791
-	@ frame 35
-	.2byte 0x00FC, 0x41FF, 0x173B
-	.2byte 0x400C, 0x0007, 0x1741
-	.2byte 0x80FC, 0x000F, 0x173F
-	.2byte 0x4026, 0x0005, 0x175D
-	.2byte 0x4016, 0x0001, 0x1756
-	.2byte 0x0016, 0x0011, 0x1758
-	@ frame 36
-	.2byte 0x401E, 0x0001, 0x175A
-	.2byte 0x001E, 0x0011, 0x175C
-	.2byte 0x001E, 0x0011, 0x175C
-	.2byte 0x001E, 0x0011, 0x175C
-	.2byte 0x001E, 0x0011, 0x175C
-	.2byte 0x001E, 0x0011, 0x175C
-	@ frame 37
-	.2byte 0x001E, 0x0011, 0x175C
-	.2byte 0x001E, 0x0011, 0x175C
-	.2byte 0x00FB, 0x4002, 0x1726
-	.2byte 0x80FB, 0x0012, 0x172A
-	.2byte 0x400B, 0x0002, 0x172C
-	.2byte 0x00FB, 0x4002, 0x1726
-	@ frame 38
-	.2byte 0x80FB, 0x0012, 0x172A
-	.2byte 0x400B, 0x0002, 0x172C
-	.2byte 0x00FB, 0x4002, 0x1726
-	.2byte 0x80FB, 0x0012, 0x172A
-	.2byte 0x400B, 0x0002, 0x172C
-	.2byte 0x00FB, 0x4002, 0x1726
-	@ frame 39
-	.2byte 0x80FB, 0x0012, 0x172A
-	.2byte 0x400B, 0x0002, 0x172C
-	.2byte 0x00FB, 0x4002, 0x1726
-	.2byte 0x80FB, 0x0012, 0x172A
-	.2byte 0x400B, 0x0002, 0x172C
-	.2byte 0x400B, 0x0002, 0x172C
+.include "data/graphics/framesets/pokeball_capture_frames.inc"
 
-gRubyBoardPaletteSet1:: @ 0x081B1584
-    .incbin "graphics/stage/ruby/ruby_board_palset_1.gbapal"
+.include "data/graphics/board_palettes.inc"
 
-gSapphireBoardPaletteSet1:: @ 0x081B1784
-    .incbin "graphics/stage/sapphire/sapphire_board_palset_1.gbapal"
+.include "data/graphics/evo_mart_background.inc"
 
-gDusclopsBoardPaletteSet1:: @ 0x081B1984
-    .incbin "graphics/stage/dusclops/dusclops_board_palset_1.gbapal"
-
-gKecleonBoardPaletteSet1:: @ 0x081B1B84
-    .incbin "graphics/stage/kecleon/kecleon_board_palset_1.gbapal"
-
-gKyogreBoardPaletteSet1:: @ 0x081B1D84
-    .incbin "graphics/stage/kyogre/kyogre_board_palset_1.gbapal"
-
-gGroudonBoardPaletteSet1:: @ 0x081B1F84
-    .incbin "graphics/stage/groudon/groudon_board_palset_1.gbapal"
-
-gRayquazaBoardPaletteSet1:: @ 0x081B2184
-    .incbin "graphics/stage/rayquaza/rayquaza_board_palset_1.gbapal"
-
-gSphealBoardPaletteSet1:: @ 0x081B2384
-    .incbin "graphics/stage/spheal/spheal_board_palset_1.gbapal"
-
-gRubyBoardPaletteSet2:: @ 0x081B2584
-    .incbin "graphics/stage/ruby/ruby_board_palset_2.gbapal"
-
-gSapphireBoardPaletteSet2:: @ 0x081B2784
-    .incbin "graphics/stage/sapphire/sapphire_board_palset_2.gbapal"
-
-gDusclopsBoardPaletteSet2:: @ 0x081B2984
-    .incbin "graphics/stage/dusclops/dusclops_board_palset_2.gbapal"
-
-gKecleonBoardPaletteSet2:: @ 0x081B2B84
-    .incbin "graphics/stage/kecleon/kecleon_board_palset_2.gbapal"
-
-gKyogreBoardPaletteSet2:: @ 0x081B2D84
-    .incbin "graphics/stage/kyogre/kyogre_board_palset_2.gbapal"
-
-gGroudonBoardPaletteSet2:: @ 0x081B2F84
-    .incbin "graphics/stage/groudon/groudon_board_palset_2.gbapal"
-
-gRayquazaBoardPaletteSet2:: @ 0x081B3184
-    .incbin "graphics/stage/rayquaza/rayquaza_board_palset_2.gbapal"
-
-gSphealBoardPaletteSet2:: @ 0x081B3384
-    .incbin "graphics/stage/spheal/spheal_board_palset_2.gbapal"
-
-gRubyBoardPaletteSet0:: @ 0x081B3584
-    .incbin "graphics/stage/ruby/ruby_board_palset_0.gbapal"
-
-gBonusStageObjPal:: @ 0x081B36A4
-	.incbin "graphics/stage/main/bonus_stage_obj.gbapal"
-
-gSapphireBoardPaletteSet0:: @ 0x081B3784
-    .incbin "graphics/stage/sapphire/sapphire_board_palset_0.gbapal"
-
-gDusclopsBoardPaletteSet0:: @ 0x081B3984
-	.incbin "graphics/stage/dusclops/dusclops_board_palset_0.gbapal"
-
-gKecleonBoardPaletteSet0:: @ 0x081B3B84
-    .incbin "graphics/stage/kecleon/kecleon_board_palset_0.gbapal"
-
-gKyogreBoardPaletteSet0:: @ 0x081B3D84
-    .incbin "graphics/stage/kyogre/kyogre_board_palset_0.gbapal"
-
-gGroudonBoardPaletteSet0:: @ 0x081B3F84
-    .incbin "graphics/stage/groudon/groudon_board_palset_0.gbapal"
-
-gRayquazaBoardPaletteSet0:: @ 0x081B4184
-    .incbin "graphics/stage/rayquaza/rayquaza_board_palset_0.gbapal"
-
-gSphealBoardPaletteSet0:: @ 0x081B4384
-    .incbin "graphics/stage/spheal/spheal_board_palset_0.gbapal"
-
-gEvoNameDisplay_Pals:: @ 0x081B4584
-	.incbin "graphics/stage/main/evo_name_display.gbapal"
-
-gShopNameDisplay_Pals:: @ 0x081B45A4
-	.incbin "graphics/stage/main/shop_name_display.gbapal"
-	.space 0x1C0
-
-@ Evolution selection background loop
-gEvoModeBG0_0_Tilemap:: @ 0x081B4784
-	.incbin "graphics/stage/main/evo_mode_bg0_frame0_tilemap.bin"
-
-gEvoModeBG0_1_Tilemap:: @ 0x081B5784
-	.incbin "graphics/stage/main/evo_mode_bg0_frame1_tilemap.bin"
-
-gEvoModeBG0_2_Tilemap:: @ 0x081B6784
-	.incbin "graphics/stage/main/evo_mode_bg0_frame2_tilemap.bin"
-
-gEvoModeBG0_3_Tilemap:: @ 0x081B7784
-	.incbin "graphics/stage/main/evo_mode_bg0_frame3_tilemap.bin"
-
-gShopEvoUI_Pals:: @ 0x081B8784
-	.incbin "graphics/stage/main/shop_evo_ui.gbapal"
-
-@ Shop mode background loop
-gShopModeBG0_0_Tilemap:: @ 0x081B8984
-	.incbin "graphics/stage/main/shop_mode_bg0_frame0_tilemap.bin"
-
-gShopModeBG0_1_Tilemap:: @ 0x081B9984
-	.incbin "graphics/stage/main/shop_mode_bg0_frame1_tilemap.bin"
-
-gShopModeBG0_2_Tilemap:: @ 0x081BA984
-	.incbin "graphics/stage/main/shop_mode_bg0_frame2_tilemap.bin"
-
-gShopModeBG0_3_Tilemap:: @ 0x081BB984
-	.incbin "graphics/stage/main/shop_mode_bg0_frame3_tilemap.bin"
-
-gSapphireShopSign_Pals:: @ 0x081BC984
-	.incbin "graphics/stage/sapphire/shop_sign.gbapal"
-
-gRubyTravelPaint_Gfx:: @ 0x081BCAA4
-	.incbin "graphics/stage/ruby/travel_paint.4bpp"
-	.space 0x120
-
-gRubyPainter_Pals:: @ 0x081BE2C4
-	.incbin "graphics/stage/ruby/painter.gbapal"
-
-gSapphireTravelPaint_Gfx:: @ 0x081BE4C4
-	.incbin "graphics/stage/sapphire/travel_paint.4bpp"
-	.space 0x120
-
-gSapphirePainter_Pals:: @ 0x081BFCE4
-	.incbin "graphics/stage/sapphire/painter.gbapal"
-
-gRubyBoard_Pals:: @ 0x081BFEE4
-	.incbin "graphics/stage/ruby/ruby_board.gbapal"
+.include "data/graphics/travel_painter.inc"
 
 gTimer_Default_Pal:: @ 0x081C0064
 	.incbin "graphics/stage/main/default_timer.gbapal"
 
-gLocation_Pals:: @ 0x081C00E4
-	.incbin "graphics/area_portraits/loc00_ruby_forest.gbapal"
-	.incbin "graphics/area_portraits/loc01_sapphire_forest.gbapal"
-	.incbin "graphics/area_portraits/loc02_ruby_plains.gbapal"
-	.incbin "graphics/area_portraits/loc03_sapphire_plains.gbapal"
-	.incbin "graphics/area_portraits/loc04_ruby_harbor.gbapal"
-	.incbin "graphics/area_portraits/loc05_sapphire_beach.gbapal"
-	.incbin "graphics/area_portraits/loc06_ruby_cave.gbapal"
-	.incbin "graphics/area_portraits/loc07_sapphire_cave.gbapal"
-	.incbin "graphics/area_portraits/loc08_ruby_safari_zone.gbapal"
-	.incbin "graphics/area_portraits/loc09_ruby_volcano.gbapal"
-	.incbin "graphics/area_portraits/loc10_sapphire_lake.gbapal"
-	.incbin "graphics/area_portraits/loc11_sapphire_desert.gbapal"
-	.incbin "graphics/area_portraits/loc12_ruins.gbapal"
+.include "data/areas/area_palettes.inc"
 
-	@ 3 unused palettes: one with color data, two blank
-	.incbin "graphics/area_portraits/loc_unused.gbapal.bin"
-
-gPortraitAnim_Pals:: @ 0x081C02E4
-	.incbin "graphics/slot_options/slot_options_1.gbapal"
-	.incbin "graphics/slot_options/slot_options_3.gbapal"
-	.incbin "graphics/slot_options/slot_options_5.gbapal"
-	.incbin "graphics/slot_options/slot_options_7.gbapal"
-	.incbin "graphics/slot_options/slot_options_9.gbapal"
-	.incbin "graphics/slot_options/slot_options_11.gbapal"
-	.incbin "graphics/slot_options/slot_options_13.gbapal"
-	.incbin "graphics/slot_options/slot_options_15.gbapal"
-	.incbin "graphics/slot_options/slot_options_17.gbapal"
-	.incbin "graphics/slot_options/slot_options_19.gbapal"
-	.incbin "graphics/slot_options/slot_options_21.gbapal"
-	.incbin "graphics/slot_options/slot_options_23.gbapal"
-	.incbin "graphics/slot_options/slot_options_25.gbapal"
-	.incbin "graphics/slot_options/slot_options_27.gbapal"
-	.incbin "graphics/slot_options/slot_options_29.gbapal"
-	.incbin "graphics/slot_options/slot_options_31.gbapal"
-	.incbin "graphics/slot_options/slot_options_33.gbapal"
-	.incbin "graphics/slot_options/slot_options_35.gbapal"
-	.incbin "graphics/slot_options/slot_options_37.gbapal"
-	.incbin "graphics/slot_options/slot_options_39.gbapal"
-	.incbin "graphics/slot_options/slot_options_41.gbapal"
-	.incbin "graphics/slot_options/slot_options_43.gbapal"
-	.incbin "graphics/slot_options/slot_options_45.gbapal"
-	.incbin "graphics/slot_options/slot_options_47.gbapal"
-	.incbin "graphics/slot_options/slot_options_49.gbapal"
-	.incbin "graphics/slot_options/slot_options_51.gbapal"
-	.incbin "graphics/slot_options/slot_options_53.gbapal"
-	.incbin "graphics/slot_options/slot_options_55.gbapal"
-	.incbin "graphics/slot_options/slot_options_57.gbapal"
-	.incbin "graphics/slot_options/slot_options_59.gbapal"
-	.incbin "graphics/slot_options/slot_options_61.gbapal"
-	.incbin "graphics/slot_options/slot_options_63.gbapal"
-	.incbin "graphics/slot_options/slot_options_65.gbapal"
-	.incbin "graphics/slot_options/slot_options_67.gbapal"
-	.incbin "graphics/slot_options/slot_options_69.gbapal"
-	.incbin "graphics/slot_options/slot_options_71.gbapal"
-	.incbin "graphics/slot_options/slot_options_73.gbapal"
-	.incbin "graphics/slot_options/slot_options_75.gbapal"
-	.incbin "graphics/slot_options/slot_options_77.gbapal"
-	.incbin "graphics/slot_options/slot_options_79.gbapal"
-	.incbin "graphics/slot_options/slot_options_81.gbapal"
-	.incbin "graphics/slot_options/slot_options_83.gbapal"
-	.incbin "graphics/slot_options/slot_options_85.gbapal"
-	.incbin "graphics/slot_options/slot_options_87.gbapal"
-	.incbin "graphics/slot_options/slot_options_89.gbapal"
-	.incbin "graphics/slot_options/slot_options_91.gbapal"
-	.incbin "graphics/slot_options/slot_options_93.gbapal"
-	.incbin "graphics/slot_options/slot_options_95.gbapal"
-
+.include "data/slots/slot_palettes.inc"
 .include "data/board_data/ruby_board.inc"
-
 .include "data/board_data/sapphire_board.inc"
-
 .include "data/board_data/dusclops_board.inc"
-
 .include "data/board_data/kecleon_board.inc"
-
 .include "data/board_data/kyogre_board.inc"
-
 .include "data/board_data/groudon_board.inc"
-
 .include "data/board_data/rayquaza_board.inc"
-
 .include "data/board_data/spheal_board.inc"
 
 gPichuKickbackFx_Gfx:: @ 0x08395A4C
@@ -1414,52 +263,9 @@ gPikachuKickbackFx_Gfx:: @ 0x08397E6C
 gCatchTargetCollisionBitmap:: @ 0x0839A28C
 	.incbin "data/board_data/collision/catch_target_collision_48x48_typeless.bin"
 
-.include "data/graphics/mon_portraits_pals.inc"
+.include "data/pokemon/mon_portraits_pals.inc"
 
-@ The puff that reveals the catch mon.
-gCatchMonAppearFx_Gfx:: @ 0x0839C78C
-	.incbin "graphics/stage/main/catch_mon_appear_fx.4bpp"
-	.space 0x20
-
-gCatchMonAppearFx_Pal:: @ 0x0839DBAC
-	.incbin "graphics/stage/main/catch_mon_appear_fx.gbapal"
-
-gCatchTile_RevealTilesGfx:: @ 0x0839DDAC
-	.incbin "graphics/stage/main/catch_tile_reveal.4bpp"
-	.space 0xA00
-
-gCatchTile_Reveal_Pal:: @ 0x083A05CC
-	.incbin "graphics/stage/main/catch_tile_reveal.gbapal"
-
-@ Lightning strike
-gCatchTile_BurstStart_Gfx:: @ 0x083A07CC
-	.incbin "graphics/stage/main/catch_tile_burst_start.4bpp"
-	.space 0x20
-
-gCatchTile_BurstStart_Pal:: @ 0x083A27EC
-	.incbin "graphics/stage/main/catch_tile_burst_start.gbapal"
-
-@ Tile Grid
-gCatchTile_BurstStage2_Gfx:: @ 0x083A29EC
-	.incbin "graphics/stage/main/catch_tile_burst_stage2.4bpp"
-	.space 0x20
-
-gCatchTile_BurstStage2_Pal:: @ 0x083A320C
-	.incbin "graphics/stage/main/catch_tile_burst_stage2.gbapal"
-
-gCatchTile_BurstStage3_Gfx:: @ 0x083A340C
-	.incbin "graphics/stage/main/catch_tile_burst_stage3.4bpp"
-	.space 0x20
-
-gCatchTile_BurstStage3_Pal:: @ 0x083A542C
-	.incbin "graphics/stage/main/catch_tile_burst_stage3.gbapal"
-
-gCatchTile_BurstStage4_Gfx:: @ 0x083A562C
-	.incbin "graphics/stage/main/catch_tile_burst_stage4.4bpp"
-	.space 0x20
-
-gCatchTile_BurstStage4_Pal:: @ 0x083A6E4C
-	.incbin "graphics/stage/main/catch_tile_burst_stage4.gbapal"
+.include "data/graphics/catch_mode_fx.inc"
 
 gAerodactlyFlight_Gfx:: @ 0x083A704C
 	.incbin "graphics/stage/ruby/aerodactyl_flight.4bpp"
@@ -1486,119 +292,11 @@ gBoardHudTiles_A:: @ 0x083A8ACC
 	.incbin "graphics/stage/main/board_hud_tiles_a.4bpp"
 	.space 0x20
 
-gPortraitAnimFrameGraphics:: @ 0x083A8EEC
-	.incbin "graphics/slot_options/slot_options_1.4bpp"
-	.incbin "graphics/slot_options/slot_options_2.4bpp"
-	.incbin "graphics/slot_options/slot_options_3.4bpp"
-	.incbin "graphics/slot_options/slot_options_4.4bpp"
-	.incbin "graphics/slot_options/slot_options_5.4bpp"
-	.incbin "graphics/slot_options/slot_options_6.4bpp"
-	.incbin "graphics/slot_options/slot_options_7.4bpp"
-	.incbin "graphics/slot_options/slot_options_8.4bpp"
-	.incbin "graphics/slot_options/slot_options_9.4bpp"
-	.incbin "graphics/slot_options/slot_options_10.4bpp"
-	.incbin "graphics/slot_options/slot_options_11.4bpp"
-	.incbin "graphics/slot_options/slot_options_12.4bpp"
-	.incbin "graphics/slot_options/slot_options_13.4bpp"
-	.incbin "graphics/slot_options/slot_options_14.4bpp"
-	.incbin "graphics/slot_options/slot_options_15.4bpp"
-	.incbin "graphics/slot_options/slot_options_16.4bpp"
-	.incbin "graphics/slot_options/slot_options_17.4bpp"
-	.incbin "graphics/slot_options/slot_options_18.4bpp"
-	.incbin "graphics/slot_options/slot_options_19.4bpp"
-	.incbin "graphics/slot_options/slot_options_20.4bpp"
-	.incbin "graphics/slot_options/slot_options_21.4bpp"
-	.incbin "graphics/slot_options/slot_options_22.4bpp"
-	.incbin "graphics/slot_options/slot_options_23.4bpp"
-	.incbin "graphics/slot_options/slot_options_24.4bpp"
-	.incbin "graphics/slot_options/slot_options_25.4bpp"
-	.incbin "graphics/slot_options/slot_options_26.4bpp"
-	.incbin "graphics/slot_options/slot_options_27.4bpp"
-	.incbin "graphics/slot_options/slot_options_28.4bpp"
-	.incbin "graphics/slot_options/slot_options_29.4bpp"
-	.incbin "graphics/slot_options/slot_options_30.4bpp"
-	.incbin "graphics/slot_options/slot_options_31.4bpp"
-	.incbin "graphics/slot_options/slot_options_32.4bpp"
-	.incbin "graphics/slot_options/slot_options_33.4bpp"
-	.incbin "graphics/slot_options/slot_options_34.4bpp"
-	.incbin "graphics/slot_options/slot_options_35.4bpp"
-	.incbin "graphics/slot_options/slot_options_36.4bpp"
-	.incbin "graphics/slot_options/slot_options_37.4bpp"
-	.incbin "graphics/slot_options/slot_options_38.4bpp"
-	.incbin "graphics/slot_options/slot_options_39.4bpp"
-	.incbin "graphics/slot_options/slot_options_40.4bpp"
-	.incbin "graphics/slot_options/slot_options_41.4bpp"
-	.incbin "graphics/slot_options/slot_options_42.4bpp"
-	.incbin "graphics/slot_options/slot_options_43.4bpp"
-	.incbin "graphics/slot_options/slot_options_44.4bpp"
-	.incbin "graphics/slot_options/slot_options_45.4bpp"
-	.incbin "graphics/slot_options/slot_options_46.4bpp"
-	.incbin "graphics/slot_options/slot_options_47.4bpp"
-	.incbin "graphics/slot_options/slot_options_48.4bpp"
-	.incbin "graphics/slot_options/slot_options_49.4bpp"
-	.incbin "graphics/slot_options/slot_options_50.4bpp"
-	.incbin "graphics/slot_options/slot_options_51.4bpp"
-	.incbin "graphics/slot_options/slot_options_52.4bpp"
-	.incbin "graphics/slot_options/slot_options_53.4bpp"
-	.incbin "graphics/slot_options/slot_options_54.4bpp"
-	.incbin "graphics/slot_options/slot_options_55.4bpp"
-	.incbin "graphics/slot_options/slot_options_56.4bpp"
-	.incbin "graphics/slot_options/slot_options_57.4bpp"
-	.incbin "graphics/slot_options/slot_options_58.4bpp"
-	.incbin "graphics/slot_options/slot_options_59.4bpp"
-	.incbin "graphics/slot_options/slot_options_60.4bpp"
-	.incbin "graphics/slot_options/slot_options_61.4bpp"
-	.incbin "graphics/slot_options/slot_options_62.4bpp"
-	.incbin "graphics/slot_options/slot_options_63.4bpp"
-	.incbin "graphics/slot_options/slot_options_64.4bpp"
-	.incbin "graphics/slot_options/slot_options_65.4bpp"
-	.incbin "graphics/slot_options/slot_options_66.4bpp"
-	.incbin "graphics/slot_options/slot_options_67.4bpp"
-	.incbin "graphics/slot_options/slot_options_68.4bpp"
-	.incbin "graphics/slot_options/slot_options_69.4bpp"
-	.incbin "graphics/slot_options/slot_options_70.4bpp"
-	.incbin "graphics/slot_options/slot_options_71.4bpp"
-	.incbin "graphics/slot_options/slot_options_72.4bpp"
-	.incbin "graphics/slot_options/slot_options_73.4bpp"
-	.incbin "graphics/slot_options/slot_options_74.4bpp"
-	.incbin "graphics/slot_options/slot_options_75.4bpp"
-	.incbin "graphics/slot_options/slot_options_76.4bpp"
-	.incbin "graphics/slot_options/slot_options_77.4bpp"
-	.incbin "graphics/slot_options/slot_options_78.4bpp"
-	.incbin "graphics/slot_options/slot_options_79.4bpp"
-	.incbin "graphics/slot_options/slot_options_80.4bpp"
-	.incbin "graphics/slot_options/slot_options_81.4bpp"
-	.incbin "graphics/slot_options/slot_options_82.4bpp"
-	.incbin "graphics/slot_options/slot_options_83.4bpp"
-	.incbin "graphics/slot_options/slot_options_84.4bpp"
-	.incbin "graphics/slot_options/slot_options_85.4bpp"
-	.incbin "graphics/slot_options/slot_options_86.4bpp"
-	.incbin "graphics/slot_options/slot_options_87.4bpp"
-	.incbin "graphics/slot_options/slot_options_88.4bpp"
-	.incbin "graphics/slot_options/slot_options_89.4bpp"
-	.incbin "graphics/slot_options/slot_options_90.4bpp"
-	.incbin "graphics/slot_options/slot_options_91.4bpp"
-	.incbin "graphics/slot_options/slot_options_92.4bpp"
-	.incbin "graphics/slot_options/slot_options_93.4bpp"
-	.incbin "graphics/slot_options/slot_options_94.4bpp"
-	.incbin "graphics/slot_options/slot_options_95.4bpp"
-	.incbin "graphics/slot_options/slot_options_96.4bpp"
-	.incbin "graphics/slot_options/slot_options_97.4bpp"
+.include "data/slots/slot_graphics.inc"
 
-gBallRotationTileGraphics:: @ 0x083BB16C
-	.incbin "graphics/stage/main/pokeball_regular.4bpp"
-	.incbin "graphics/stage/main/pokeball_great.4bpp"
-	.incbin "graphics/stage/main/pokeball_ultra.4bpp"
-	.incbin "graphics/stage/main/pokeball_master.4bpp"
+.include "data/ball/ball_rotation_graphics.inc"
+.include "data/ball/ball_fx_graphics.inc"
 
-gBallUpgradeFx_Gfx:: @ 0x083BD36C
-	.incbin "graphics/stage/main/ball_upgrade_fx_frames.4bpp"
-
-gBallSpawnGlowTiles_Type2:: @ 0x083BDF6C
-	.incbin "graphics/stage/main/ball_spawn_glow_type2.4bpp"
-
-gBallSpawnGlowTiles_Type1:: @ 0x083BF16C
-	.incbin "graphics/stage/main/ball_spawn_glow_type1.4bpp"
 
 gSpoinkEntity_Gfx:: @ 0x083C076C
 	.incbin "graphics/stage/main/spoink_launcher.4bpp"
@@ -1626,42 +324,19 @@ gRayquazaSkyBackgroundGfx:: @ 0x083C5A2C
 gChinchouBumper_Gfx:: @ 0x083C806C
 	.incbin "graphics/stage/main/chinchou_bumper.4bpp"
 
-.include "data/graphics/mon_hatch_sprites.inc"
+.include "data/pokemon/mon_hatch_sprites.inc"
 
-gPickupIcon1_Gfx:: @ 0x083EB84C
-	.incbin "graphics/board_pickups/icon1_xp.4bpp"
-gPickupIcon2_Gfx:: @ 0x083ED64C
-	.incbin "graphics/board_pickups/icon2_leaf.4bpp"
-gPickupIcon3_Gfx:: @ 0x083EF44C
-	.incbin "graphics/board_pickups/icon3_fire.4bpp"
-gPickupIcon9_Gfx:: @ 0x083F124C
-	.incbin "graphics/board_pickups/icon9_heart.4bpp"
-gPickupIcon4_Gfx:: @ 0x083F304C
-	.incbin "graphics/board_pickups/icon4_link.4bpp"
-gPickupIcon5_Gfx:: @ 0x083F4E4C
-	.incbin "graphics/board_pickups/icon5_moon.4bpp"
-gPickupIcon6_Gfx:: @ 0x083F6C4C
-	.incbin "graphics/board_pickups/icon6_water.4bpp"
-gPickupIcon10_Gfx:: @ 0x083F8A4C
-	.incbin "graphics/board_pickups/icon10_pokeblock.4bpp"
-gPickupIcon8_Gfx:: @ 0x083FA84C
-	.incbin "graphics/board_pickups/icon8_sun.4bpp"
-gPickupIcon7_Gfx:: @ 0x083FC64C
-	.incbin "graphics/board_pickups/icon7_bolt.4bpp"
+.include "data/graphics/evo_item_rotation.inc"
 
 gFlipper_Gfx:: @ 0x083FE44C
 	.incbin "graphics/stage/main/flipper_frames.4bpp"
 
-gAlphabetTilesGfx:: @ 0x083FF04C
-	.incbin "graphics/stage/main/alphabet.4bpp"
-
-gSpaceTileGfx:: @ 0x083FFD4C
-	.space 0x40  @ Note: this 0x40 space is required, and is used as a tile pair.
+.include "data/fonts/mon_name_text_tiles.inc"
 
 gSapphireBoardWailmer_Gfx:: @ 0x083FFD8C
 	.incbin "graphics/stage/sapphire/wailmer.4bpp";
 
-	.include "data/graphics/mon_catch_sprites.inc"
+	.include "data/pokemon/mon_catch_sprites.inc"
 
 gRubyStageGulpin_Gfx:: @ 0x08447A8C
 	.incbin "graphics/stage/ruby/gulpin.4bpp"
@@ -1690,8 +365,7 @@ gKecleonStageKecleonFx_Gfx:: @ 0x0845588C
 gOneUpTreeckoSprite_Gfx:: @ 0x08455E8C
 	.incbin "graphics/stage/misc/treecko_1_up_deliverer.4bpp"
 
-gLifeCountDigit_Gfx:: @ 0x0845648C
-	.incbin "graphics/stage/misc/life_count_digit.4bpp"
+.include "data/fonts/life_count_digit_tiles.inc"
 
 gShroomishBumperHit_Gfx:: @ 0x0845690C
 	.incbin "graphics/stage/sapphire/shroomish_bumper_hit.4bpp"
@@ -1742,8 +416,7 @@ gLinooneBumperGfx:: @ 0x0847FD0C
 gShopPortraitOverlayGfx:: @ 0x0847FF0C
 	.incbin "graphics/stage/main/shop_portrait_overlay.4bpp"
 
-gDecimalDigitTilesGfx:: @ 0x08480E0C
-	.incbin "graphics/stage/main/decimal_digits.4bpp"
+.include "data/fonts/mart_price_digit_tiles.inc"
 
 gSapphireShopSignTileGfx:: @ 0x0848108C
 	.incbin "graphics/stage/sapphire/shop_sign_tiles.4bpp"
@@ -1754,20 +427,7 @@ gRubyTravelVolbeat_Gfx:: @ 0x08483D8C
 gSapphireTravelIllumise_Gfx:: @ 0x08488A0C
 	.incbin "graphics/stage/sapphire/travel_illumise.4bpp"
 
-gLocationPortraitGfx:: @ 0x0848D68C
-	.incbin "graphics/area_portraits/loc00_ruby_forest.4bpp"
-	.incbin "graphics/area_portraits/loc01_sapphire_forest.4bpp"
-	.incbin "graphics/area_portraits/loc02_ruby_plains.4bpp"
-	.incbin "graphics/area_portraits/loc03_sapphire_plains.4bpp"
-	.incbin "graphics/area_portraits/loc04_ruby_harbor.4bpp"
-	.incbin "graphics/area_portraits/loc05_sapphire_beach.4bpp"
-	.incbin "graphics/area_portraits/loc06_ruby_cave.4bpp"
-	.incbin "graphics/area_portraits/loc07_sapphire_cave.4bpp"
-	.incbin "graphics/area_portraits/loc08_ruby_safari_zone.4bpp"
-	.incbin "graphics/area_portraits/loc09_ruby_volcano.4bpp"
-	.incbin "graphics/area_portraits/loc10_sapphire_lake.4bpp"
-	.incbin "graphics/area_portraits/loc11_sapphire_desert.4bpp"
-	.incbin "graphics/area_portraits/loc12_ruins.4bpp"
+.include "data/areas/area_portraits.inc"
 
 @ Includes the rope tiles, totodile, and egg
 gTotodileEggDelivery_Gfx:: @ 0x0848FD8C
@@ -1845,7 +505,7 @@ gSapphirePlusle_Gfx:: @ 0x084C1E6C
 gSapphirePlusleHeadElectricity_Gfx:: @ 0x084C4B6C
 	.incbin "graphics/stage/sapphire/bumper_plusle_fx.4bpp"
 
-.include "data/graphics/mon_portraits.inc"
+.include "data/pokemon/mon_portraits.inc"
 
 gCompressedNumbers_Gfx:: @ 0x084ECF6C
 	.incbin "graphics/stage/sapphire/compressed_numbers.4bpp"
@@ -1907,10 +567,7 @@ gMainBoardBallSaveLatiosArm_Gfx:: @ 0x085038CC
 gMainBoardEndOfBall_Gfx:: @ 0x0850398C
 	.incbin "graphics/stage/main/end_of_ball.4bpp";
 
-gEobBonusSummaryCharTiles:: @ 0x0850558C
-	.incbin "graphics/stage/misc/end_of_ball_summary_text_chars.4bpp";
-
-.space 0x40
+.include "data/fonts/end_of_ball_bonus_summary_text_tiles.inc"
 
 gMainBoardEvoBanner_Gfx:: @ 0x08505BCC
 	.incbin "graphics/stage/main/evo_banner.4bpp";
@@ -1989,97 +646,4 @@ gSapphireBoardZigzagoonFx_Gfx:: @ 0x08526DCC
 gUnknown_085279CC:: @ 0x085279CC
 	.incbin "graphics/stage/unknown_085279CC.bin"
 
-gOptionsBGMList:: @ 0x08527D22
-	.2byte MUS_TITLE, MUS_TABLE_SELECT, MUS_EREADER, MUS_OPENING, MUS_HIGH_SCORE
-	.2byte MUS_POKEDEX, MUS_SHOP, MUS_SLOTS_PRIZE, MUS_END_OF_BALL, MUS_BONUS_CHANCE, MUS_BONUS_CHANCE_LEGENDARY
-	.2byte MUS_TRAVEL_MODE_START, MUS_SUCCESS, MUS_PRIZE_AWARDED, MUS_EGG_MODE, MUS_EGG_MODE_START
-	.2byte MUS_TRAVEL_MODE, MUS_HURRY_UP, MUS_EVOLUTION, MUS_FIELD_RUBY, MUS_CATCH_EM_MODE
-	.2byte MUS_EVO_MODE, MUS_FIELD_RUBY2, MUS_FIELD_SAPPHIRE, MUS_CATCH_EM_MODE2, MUS_FIELD_SAPPHIRE2
-	.2byte MUS_BONUS_FIELD_KECLEON, MUS_BONUS_FIELD_DUSKULL, MUS_BONUS_FIELD_DUSCLOPS, MUS_BONUS_FIELD_SPHEAL, MUS_BONUS_FIELD_GROUDON
-	.2byte MUS_BONUS_FIELD_KYOGRE, MUS_BONUS_FIELD_RAYQUAZA, MUS_JIRACHI
-
-gOptionsSEList:: @ 0x08527D66
-    .2byte SE_MENU_SELECT, SE_MENU_CANCEL, SE_MENU_MOVE, SE_MENU_POPUP_OPEN, SE_MENU_POPUP_CLOSE
-    .2byte SE_SCORE_ENTRY_A_B_MOVE, SE_SCORE_ENTRY_LETTER_CHANGE, SE_DEX_INFO_FIELD_SELECT_MOVE, SE_FLIPPER_PRESSED, SE_SLINGSHOT_HIT
-    .2byte SE_POKEMON_CATCH_HIT, SE_PICHU_IN_POSITION_CHIRP, SE_TRIGGER_BUTTON_HIT, SE_WALL_HIT, SE_TILT_TRIGGERED
-    .2byte SE_PIKA_SPINNER_CLACK, SE_PIKA_FULL_CHARGE_1_UP, SE_UNKNOWN_0x7B, SE_KICKBACK_THUNDERWAVE, SE_COIN_COLLECTED
-    .2byte SE_CENTER_HOLE_EJECT, SE_ROULETTE_TICK, SE_EVO_SELECTION_MOVE, SE_EVO_SELECTION_CONFIRM, SE_EVO_ITEM_APPEAR
-    .2byte SE_EVO_ITEM_FINISH_APPEAR, SE_EVO_ITEM_COLLECTED, SE_BALL_UPGRADE, SE_FAILURE, SE_CATCH_EVO_BANNER
-    .2byte SE_CATCH_TILE_REVEAL, SE_CATCH_ALL_REVEAL_LIGHTNING, SE_CATCH_ALL_REVEAL_SHATTER, SE_SHOP_LIST_REVEAL, SE_BONUS_SCORE_TALLIED
-    .2byte SE_HATCH_FLOURISH, SE_AREA_ROULETTE_SELECTED, SE_BALL_SAVED, SE_LATI_DELIVERY, SE_SAVER_PLUNGER_DROP
-    .2byte SE_TRAVEL_PAINTER_FLIGHT, SE_TRAVEL_PAINTER_PAINTS, SE_EVO_GET_ARROW_EARNED, SE_MON_CATCH_BALL_WOOSH, SE_MON_CATCH_ENERGY_BEAM
-    .2byte SE_MON_CATCH_BALL_CLOSE, SE_MON_CATCH_BALL_HIT_GROUND, SE_MON_CATCH_BALL_SHAKE, SE_WARP, SE_BALL_SUMMARY_TEXT_PROGRESS
-
-    .2byte SE_BALL_SUMMARY_PAGE_SWIPE, SE_PAUSE_CURSOR_MOVE, SE_BONUS_PANEL_SLIDE, SE_PAUSING, SE_UNPAUSING
-    .2byte SE_CATCH_MON_ENTITY_APPEARS, SE_PIKA_CHARGE_DO, SE_PIKA_CHARGE_RE, SE_PIKA_CHARGE_MI, SE_PIKA_CHARGE_FA
-    .2byte SE_PIKA_CHARGE_SO, SE_PIKA_CHARGE_LA, SE_PIKA_CHARGE_TI, SE_PIKA_CHARGE_HIGH_DO, SE_EVO_CUTSCENE_MON_PORTRAIT_CHANGE
-    .2byte SE_BUMPER_HIT, SE_CYNDAQUIL_EGG_GUARD_HIT, SE_AERODACTYL_EGG_FLIGHT, SE_CYNDAQUIL_BALL_EJECT_AFTER_EGG_ARRIVAL, SE_RUBY_MART_GATE_OPEN
-    .2byte SE_SHARPEDO_BALL_EJECT, SE_SHOP_EJECT, SE_MAKUHITA_PUNCH, SE_CHIKORITA_LEAF_BLADE, SE_ZIGZAGOON_EMERGE
-    .2byte SE_RUBY_BUMPER_EMERGES, SE_RUBY_BUMPER_LEAVES, SE_RUBY_MART_SIGN_CHANGED, SE_SPOINK_LAUNCHER_CHARGED, SE_SPOINK_LAUNCHER_FIRED
-    .2byte SE_SHARPEDO_BITE, SE_NUZLEAF_HIT, SE_NUZLEAF_TEETERING, SE_NUZLEAF_FORMS_BRIDGE, SE_GULPIN_LANDS_OR_LEAVES
-    .2byte SE_WHISCASH_EMERGE_SPLASH, SE_WHISCASH_LEAVE_BURBLE, SE_WHISCASH_CATCH_BALL, SE_WHISCASH_SPIT_BALL, SE_WHISCASH_SPLASHDOWN
-    .2byte SE_RAMP_PRIZE_COLLECTED, SE_HATCH_MACHINE_SPINNER_TRIGGER, SE_MON_LANDS_ON_HATCH_MACHINE_TOP, SE_HATCH_MACHINE_STAGE_ADVANCE, SE_HATCH_MACHINE_EGG_HATCH
-    .2byte SE_HATCH_MACHINE_ELEVATOR, SE_HATCH_MACHINE_ELEVATOR_TOP, SE_PELIPPER_BALL_GRAB, SE_PELIPPER_WING_FLAP, SE_PELIPPER_SWOOSH
-
-    .2byte SE_PELIPPER_BALL_DROP_LANDS, SE_SAPPHIRE_MART_GATE_TRIGGER, SE_SAPPHIRE_MART_GATE_REPLACED, SE_SAPPHIRE_MART_GATE_HIT, SE_SEEDOT_FALLING
-    .2byte SE_SEEDOT_LANDS, SE_SEEDOT_LEAVES, SE_ZIGZAGOON_ROULETTE_STOP, SE_DUSKULL_APPEAR, SE_DUSKULL_DEATH_CRY
-    .2byte SE_DUSCLOPS_DEPART_INCOMPLETE, SE_DUSCLOPS_MOVE, SE_DUSCLOPS_APPEAR, SE_DUSCLOPS_HIT, SE_DUSCLOPS_BALL_ABSORB
-    .2byte SE_DUSCLOPS_BALL_LAUNCH, SE_BONUS_BOARD_BALL_SPAWN, SE_KECLEON_SIDE_LOOK, SE_KECLEON_VANISH, SE_KECLEON_STARTLED
-    .2byte SE_KECLEON_RUNNING, SE_KECLEON_KNOCKED_OVER, SE_KECLEON_HIT_DAMAGED, SE_KECLEON_HITS_GROUND_DEFEATED, SE_KECLEON_SEEING_STARS
-    .2byte SE_KECLEON_TREE_HIT, SE_KECLEON_SCOPE_FALL, SE_KECLEON_SCOPE_ACTIVATED, SE_KYOGRE_HIT, SE_KYOGRE_BREACH_SURFACE
-    .2byte SE_KYOGRE_DIVE, SE_KYOGRE_SPAWN_WHIRLPOOL, SE_KYOGRE_FREEZE_RING, SE_KYOGRE_DEPARTS, SE_KYOGRE_FREEZE_HITS_BALL
-    .2byte SE_KYOGRE_FREEZE_CRACK, SE_KYOGRE_FREEZE_ESCAPED, SE_KYOGRE_WHIRLPOOL_GRABS_BALL, SE_GROUDON_HIT, SE_GROUDON_STEP
-    .2byte SE_GROUDON_INTRO_LEAP, SE_GROUDON_LANDS, SE_GROUDON_SPITS_FIRE, SE_GROUDON_FIRE_RING, SE_GROUDON_FIRE_GRAB_RESIST
-    .2byte SE_GROUDON_FIRE_GRAB, SE_GROUDON_FIREBALL_CONNECTS, SE_GROUDON_BOULDER_LAND, SE_GROUDON_DUSTORM_LIFT, SE_GROUDON_BALL_HIT_FIRE
-
-	.2byte SE_RAYQUAZA_HIT, SE_RAYQUAZA_WIND, SE_RAYQUAZA_LIGHTNING_CHARGE, SE_RAYQUAZA_FLYBY, SE_RAYQUAZA_LIGHTNING_TRAP
-    .2byte SE_RAYQUAZA_WHIRLWIND_BALL_LAUNCH, SE_RAYQUAZA_WHIRLWIND_BALL_LAND, SE_RAYQUAZA_SONIC_BOOM, SE_RAYQUAZA_STAGE_WIND, SE_SPHEAL_SURFACING
-    .2byte SE_SPHEAL_SUBMERGING, SE_SPHEAL_SUBMERGE_AFTER_SCORING, SE_SPHEAL_HIT, SE_SPHEAL_NET_SWOOSH, SE_SPHEAL_CROWD_CHEER
-    .2byte SE_SPHEAL_END_WHISTLE, SE_SEALEO_HIT_THUD, SE_SEALEO_NOSE_BOUNCE, SE_SPHEAL_LAND_UNDER_NET, SE_SPHEAL_SURFACE_AT_RAMP
-    .2byte SE_JIRACHI_MOVE, SE_JIRACHI_HIT, SE_TOTODILE_LOWERS_ROPE, SE_TOTODILE_SLIDES_DOWN, SE_TOTODILE_PLACES_EGG
-    .2byte SE_TOTODILE_CLIMBS_ROPE, SE_WHISCASH_EARTHQUAKE, SE_HIGHEST_SCORE_EARNED, SE_HIGH_SCORE_EARNED, SE_UNKNOWN_0x71
-    .2byte SE_PIKACHU_KICKBACK, SE_PICHU_KICKBACK_ENABLED, SE_PICHU_KICKBACK, SE_PIKA_NO_KICKBACK
-
-
-gDefaultButtonConfigs:: @ 0x08527ED6
-	@4 sets of 10
-	.byte 0x05, 0x0A, 0x00, 0x0A, 0x09, 0x0A, 0x08, 0x0A, 0x09, 0x08;
-	.byte 0x05, 0x0A, 0x00, 0x0A, 0x09, 0x0A, 0x08, 0x0A, 0x01, 0x0A;
-	.byte 0x09, 0x0A, 0x08, 0x0A, 0x05, 0x0A, 0x00, 0x0A, 0x05, 0x00;
-	.byte 0x09, 0x0A, 0x08, 0x0A, 0x05, 0x0A, 0x04, 0x0A, 0x06, 0x0A;
-
-gDefaultCustomButtonConfigTileIds:: @ 0x08527EFE
-	.byte 1, 10, 0, 10, 5, 10, 4, 10, 6, 10
-
-gOptionsStateFuncs:: @ 0x08527F08
-	.4byte Options_LoadGraphics
-	.4byte Options_HandleInput
-	.4byte Options_State2_51C3C
-	.4byte Options_State3_51C60
-
-.include "data/pokedex_entries/species_rs_to_cry_id.inc"
-
-gOptionsText_Tilemap:: @ 0x08528028
-	.incbin "graphics/options/text.bin"
-
-gOptionsText_Gfx:: @ 0x08528828
-	.incbin "graphics/options/text.4bpp"
-	.space 0x20
-
-gOptionsBackground_Tilemap:: @ 0x0852A048
-	.incbin "graphics/options/background.bin"
-
-gOptionsBackground_Gfx:: @ 0x0852A848
-	.incbin "graphics/options/background.4bpp"
-	.space 0x20
-
-gOptionsBackground_Pals:: @ 0x0852B468
-	.incbin "graphics/options/background.gbapal"
-
-gGBAButtonIcons_Pals:: @ 0x0852B668
-	.incbin "graphics/gba_buttons.gbapal"
-
-gOptionsSprites_Gfx:: @ 0x0852B868
-	.incbin "graphics/options/sprites.4bpp"
-
-.align 2
+.include "data/options_screen/options_screen_layout.inc"

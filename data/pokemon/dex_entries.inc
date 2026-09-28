@@ -1,4 +1,4 @@
-
+gPokedexEntries:: @ 0x0805C8B4
     .align 2, 0
 dexEntry1::
     .2byte 0, 0, 1, 0xA, 1, 0, 8, 0xA, 0xA, 1, 1, 0
@@ -2458,3 +2458,5 @@ dexEntry205::
     .dexText ""
     .dexText ""
     .dexText ""
+
+	.align 2, 0
