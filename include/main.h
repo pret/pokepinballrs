@@ -151,7 +151,6 @@ enum bonusStageLoop{
 #define RayquazaCatchChanceTrip gCurrentPinballGame->numCompletedBonusStages % (2*BONUS_STAGE_LOOP_COUNT) == BONUS_STAGE_LOOP_COUNT + BONUS_STAGE_LOOP_SECOND_BOSS_CLEARED
 
 extern struct Main gMain;
-extern u32 IntrMain_Buffer[0x200];
 extern u32 IntrMain[];
 extern IntrFunc *gVBlankIntrFuncPtr;
 extern IntrFunc *gVCountIntrFuncPtr;
@@ -175,7 +174,17 @@ extern void (*gVCountIntrFuncShadow)(void);
 extern void (*gVBlankIntrFuncShadow)(void);
 extern void (*gMainCallbackShadow)(void);
 extern StateFunc gMainFuncs[];
+
+// sym_bss
+
+extern u16 gTempGfxBuffer[];
+extern u8 gEReaderTextTileBuffer[3][0x800];
+extern u16 gTextTilemapBuffer[];
 extern struct OamData gOamBuffer[128];
+extern u32 IntrMain_Buffer[0x200];
+extern u16 gBG0TilemapBuffer[];
+
+// ----
 
 void FadeInScreen(void);
 void FadeOutScreen(void);

@@ -8,11 +8,10 @@
 #include "titlescreen.h"
 #include "variables.h"
 
-// ewram
-
-extern u8 gEReaderTextTileBuffer[3][0x800];
-
-// -----
+EWRAM_DATA s16 gEReaderReceivedCardId;
+EWRAM_DATA s8 gEReaderLinkHandshakeStarted;
+EWRAM_DATA s8 gEReaderLinkDataReceived;
+EWRAM_DATA s8 gEReaderLinkAckSent;
 
 extern StateFunc gEReaderStateFuncs[11];
 extern s8 gEReaderTextCharIndex;
@@ -30,13 +29,6 @@ extern u8 gEReaderUnused1;
 extern u8 gEReaderUnused2;
 extern s8 gEReaderExitTargetState;
 extern const u16 gEReaderTextGlyphTable[][3*0x18];
-extern u8 gLinkExchangeStep;
-extern u32 gLinkStatusResult;
-extern s16 gLinkSendBuffer[];
-extern u16 gLinkRecvBuffer[][2];
-extern u32 gLinkConnectionState;
-extern u8 gLinkPlayerCount;
-extern u8 gLinkNegotiationFlags;
 extern s16 gEReaderCardIndex;
 extern s16 gLinkTimeoutCounter;
 

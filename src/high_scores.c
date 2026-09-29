@@ -11,7 +11,13 @@
 #include "constants/mem_layout/high_score.h"
 
 //Ewram
-extern u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
+EWRAM_DATA u32 gMergedSapphireScoreIndex;
+EWRAM_DATA u32 gMergedRubyScoreIndex;
+EWRAM_DATA u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
+EWRAM_DATA s8 gLinkExchangeSendPhase;
+EWRAM_DATA s8 gLinkExchangeResult;
+EWRAM_DATA s16 gScoreDigitBuffer[0x10];
+
 
 //Rom
 extern StateFunc gHighScoresStateFuncs[15];

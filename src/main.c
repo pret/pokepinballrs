@@ -4,6 +4,8 @@
 #include "link.h"
 #include "m4a.h"
 
+EWRAM_DATA struct PinballGame gPinballGameState;
+
 extern const s16 gSineTable[];
 extern const IntrFunc gIntrTableTemplate[14];
 

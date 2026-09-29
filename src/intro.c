@@ -19,7 +19,6 @@
   9: Flying ball
 */
 
-
 void IntroScene3Treecko_InitVars(void);
 void IntroScene3Treecko_RenderPokeball(void);
 void IntroScene4PlusleMinun_InitVars(void);
@@ -33,6 +32,25 @@ void IntroScene8WailmerLaunch_InitVars(void);
 void IntroScene8WailmerLaunch_RenderAllSprites(void);
 void IntroScene9BallFlight_InitVars(void);
 void IntroScene9BallFlight_RenderBallAndCloud(void);
+
+EWRAM_DATA s32 gIntroScaleX;
+EWRAM_DATA s32 gIntroScaleY;
+struct UnkStruct_0202ADA0{
+    s16 posX;
+    s16 posY;
+    s16 velX;
+    s16 velY;
+    s16 animFrame;
+    s16 frameTimer;
+};
+EWRAM_DATA struct UnkStruct_0202ADA0 gIntroBGParams[4];
+EWRAM_DATA s32 gIntroPalFadeLevel;
+EWRAM_DATA s8 gIntroScene6ChinchouVelocityIndex;
+EWRAM_DATA s8 gIntroScene6ChinchouEntitySpawnIndex;
+EWRAM_DATA s16 gIntroWailmerScaleX;
+EWRAM_DATA s16 gIntroWailmerScaleY;
+EWRAM_DATA s8 gIntroObjWhiteFlash;
+EWRAM_DATA s8 gIntroBGWhiteFlash;
 
 extern StateFunc gIntroStateFuncs[15];
 extern u8 gIntroCopyright_Tilemap[];
@@ -52,16 +70,12 @@ extern s16 gIntroScene1Torchic_TileOffsets[0x8];
 
 extern u16 gIntroTileBuffer[];
 
-extern struct UnkStruct_0202ADA0 gIntroBGParams[4];
 
 extern s16 gIntroFrameCounter;
 extern u8 gIntroBlendSrc;
 extern u8 gIntroBlendDst;
 extern s16 gIntroOverlayFadeStep;
-extern s32 gIntroScaleX;
-extern s32 gIntroScaleY;
 extern s16 gIntroAnimStep;
-extern s32 gIntroPalFadeLevel;
 extern s8 gIntroJingleVariant;
 extern s8 gIntroSceneIndex;
 extern u8 gIntroPalSwapBuffer[];

@@ -17,103 +17,26 @@
 
 // sym_ewram
 
-extern struct PinballGame gPinballGameState;
-extern u16 gTempGfxBuffer[];
-extern u16 gBG0TilemapBuffer[];
+extern EWRAM_DATA struct PinballGame gPinballGameState;
+extern EWRAM_DATA s8 gAutoDisplayTitlescreenMenu;
 
 
-extern s8 gAutoDisplayTitlescreenMenu;
-extern s16 gEReaderReceivedCardId;
-extern u16 gPokedexVramBuffer[];
-extern s16 gPokedexNumOwned;
-extern s16 gPokedexSelectedMon;
-extern s8 gLinkExchangeResult;
-extern s16 gPokedexNumSeen;
-extern s16 gPokedexListPosition;
-extern s16 gPokedexAnimatedIconFrame;
-extern s16 gPokedexAnimatedIconTimer;
-extern s16 gPokedexCursorOffset;
-extern s16 gPokedexCursorBlinkOffset;
-extern s16 gPokedexBlinkTimer;
-extern s16 gPokedexScrollWaitFrames;
-extern s8 gPokedexScrollActive;
-extern s16 gPokedexSpriteAnimFrame;
-extern s16 gPokedexSpriteAnimTimer;
-extern s16 gPokedexPageIndicatorTimer;
-extern s16 gPokedexShowAnimSprite;
-extern s16 gPokedexShowPortrait;
-extern s16 gPokedexShowCatchHatch[2];
-extern s16 gPokedexDetailFrameCount;
-extern s16 gPokedexInfoWindowSlideStep;
-extern s8 gPokedexButtonPromptFrame;
-extern s8 gPokedexShowButtonPrompt;
-extern s16 gPokedexSpriteCategory;
-extern s8 gPokedexShowCompletionBadge;
-extern s16 gPokedexLinkStateTimer;
-extern s8 gPokedexShowPopupWindow;
-
-/****
- *  Yellow confirmation/info window mode
- *  0= Transmession connection prompt, 
- *  1= Transferring in progress?
- *  2= transmission error message
- *  3= transfer complete?
- *  4= delete save data confirmation
- * ****/
-extern s8 gPokedexPopupTypeIndex;
-extern s8 gPokedex_EraseSaveDataAccessCounter;
-extern s8 gPokedex_EraseSaveDataAccessStep;
-extern s8 gPokedexDescriptionPage;
-extern s8 gPokedexShowPageIndicator;
-extern s8 gPokedexPageIndicatorBlink;
-extern s8 gPokedexSpriteIndexBase;
-extern s16 gPokedexFlags[];
-extern s16 gPokedexFlagExchangeBuffer[];
-extern s16 gPokedexListEntryCount;
-
-extern u32 gMergedSapphireScoreIndex;
-extern u32 gMergedRubyScoreIndex;
-extern u16 gPokedexInfoWindowBackupTiles[];
-
-extern u8 gLinkExchangeStep;
+extern EWRAM_DATA u8 gLinkExchangeStep;
 
 
-extern u32 gLinkStatusResult;
-extern s16 gLinkSendBuffer[];
-extern u16 gLinkRecvBuffer[][2];
-extern u32 gLinkConnectionState;
-extern u8 gLinkPlayerCount;
-extern u8 gLinkNegotiationFlags;
-extern u16 gLinkExchangeFrameCounter;
-extern s16 gLinkTimeoutCounter;
-extern s8 gPokedexLinkTransferPhase;
-extern s8 gEReaderLinkHandshakeStarted;
-extern s8 gEReaderLinkDataReceived;
-extern s8 gEReaderLinkAckSent;
-extern s8 gLinkExchangeSendPhase;
-extern s16 gScoreDigitBuffer[];
+extern EWRAM_DATA u32 gLinkStatusResult;
+extern EWRAM_DATA s16 gLinkSendBuffer[0xA];
+extern EWRAM_DATA u16 gLinkRecvBuffer[0x8][2];
+extern EWRAM_DATA u32 gLinkConnectionState;
+extern EWRAM_DATA u8 gLinkPlayerCount;
+extern EWRAM_DATA u8 gLinkNegotiationFlags;
+extern EWRAM_DATA u16 gLinkExchangeFrameCounter;
+extern EWRAM_DATA s16 gLinkTimeoutCounter;
 
-struct UnkStruct_0202ADA0{
-    s16 posX;
-    s16 posY;
-    s16 velX;
-    s16 velY;
-    s16 animFrame;
-    s16 frameTimer;
-};
-extern struct UnkStruct_0202ADA0 gIntroBGParams[4];
-extern s32 gIntroPalFadeLevel;
-extern s32 gIntroScaleY;
-extern s8 gIntroScene6ChinchouVelocityIndex;
-extern s8 gIntroScene6ChinchouEntitySpawnIndex;
-extern s16 gIntroWailmerScaleX;
-extern s16 gIntroWailmerScaleY;
-extern s8 gIntroObjWhiteFlash;
-extern s8 gIntroBGWhiteFlash;
-extern u16 gMain_saveData_pokedexFlags_90[10];
 
-// sym_bss
-extern u16 gTextTilemapBuffer[];
+
+
+extern EWRAM_DATA u16 gMain_saveData_pokedexFlags_90[10];
 
 
 // Rom_2
@@ -141,4 +64,5 @@ extern u16 gCommonAndEggWeights[];
     Note: gMain lives at gUnknown_0200B0C0 in running memory.
     anything from there to gUnknown_0200FAE0 is part of that object.
 */
+
 #endif  // GUARD_VARIABLES_H

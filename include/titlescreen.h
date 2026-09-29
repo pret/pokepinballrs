@@ -23,7 +23,7 @@ struct TitlescreenStruct
 };
 
 extern struct TitlescreenStruct gTitlescreen;
-extern s8 gAutoDisplayTitlescreenMenu;
+EWRAM_DATA s8 gAutoDisplayTitlescreenMenu;
 extern u8 gTitleReturnedFromMenu;
 extern u16 gHighScoreEntrySource;
 extern s8 gEraseSaveDataAccessStep;

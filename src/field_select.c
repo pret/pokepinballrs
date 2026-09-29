@@ -6,8 +6,8 @@
 #include "titlescreen.h"
 #include "constants/mem_layout/field_select.h"
 
-//Ewrm
-extern s8 gFieldSelectSoftReset;
+//Ewram
+EWRAM_DATA s8 gFieldSelectSoftReset;
 
 
 static void RenderFieldSelectSprites(void);
