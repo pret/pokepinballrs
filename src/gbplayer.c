@@ -5,6 +5,8 @@
 //sym_ewram
 EWRAM_DATA u16 sGbPlayerCurKeys;
 EWRAM_DATA u16 sGbPlayerPrevKeys;
+EWRAM_DATA u8 gGbPlayerTilemapBuffer[0X800];
+
 struct RfuSIO32Id {
     u8 MS_mode; //either 0 or 1
     u16 count;

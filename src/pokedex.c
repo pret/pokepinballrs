@@ -64,6 +64,12 @@ void PrintDexNumbersFromListPosition(s16);
 static void PrintCaughtBallFromListPosition(s16);
 void LoadMonPortrait(s16);
 
+EWRAM_DATA s8 gPokedex_EraseSaveDataAccessCounter;
+EWRAM_DATA s8 gPokedex_EraseSaveDataAccessStep;
+
+EWRAM_DATA u16 gLinkRecvBuffer[0x8][2];
+EWRAM_DATA s16 gPokedexCursorBlinkOffset;
+
 
 EWRAM_DATA u16 gPokedexVramBuffer[0x400];
 EWRAM_DATA s16 gPokedexNumOwned;
@@ -73,7 +79,6 @@ EWRAM_DATA s16 gPokedexListPosition;
 EWRAM_DATA s16 gPokedexAnimatedIconFrame;
 EWRAM_DATA s16 gPokedexAnimatedIconTimer;
 EWRAM_DATA s16 gPokedexCursorOffset;
-EWRAM_DATA s16 gPokedexCursorBlinkOffset;
 EWRAM_DATA s16 gPokedexBlinkTimer;
 EWRAM_DATA s16 gPokedexScrollWaitFrames;
 EWRAM_DATA s8 gPokedexScrollActive;
@@ -101,8 +106,6 @@ EWRAM_DATA s8 gPokedexShowPopupWindow;
  *  4= delete save data confirmation
  * ****/
 EWRAM_DATA s8 gPokedexPopupTypeIndex;
-EWRAM_DATA s8 gPokedex_EraseSaveDataAccessCounter;
-EWRAM_DATA s8 gPokedex_EraseSaveDataAccessStep;
 EWRAM_DATA s8 gPokedexDescriptionPage;
 EWRAM_DATA s8 gPokedexShowPageIndicator;
 EWRAM_DATA s8 gPokedexPageIndicatorBlink;
@@ -114,7 +117,6 @@ EWRAM_DATA u16 gPokedexInfoWindowBackupTiles[0x400];
 EWRAM_DATA u8 gLinkExchangeStep;
 EWRAM_DATA u32 gLinkStatusResult;
 EWRAM_DATA s16 gLinkSendBuffer[0xA];
-EWRAM_DATA u16 gLinkRecvBuffer[0x8][2];
 EWRAM_DATA u32 gLinkConnectionState;
 EWRAM_DATA u8 gLinkPlayerCount;
 EWRAM_DATA u8 gLinkNegotiationFlags;

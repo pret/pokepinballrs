@@ -43,9 +43,7 @@ gFieldSelectData: @ 0x02002838
 gFieldSelectSoftReset: @ 0x02002850
 	.space 0x8
 gHighScoreScreenState: @ 0x02002858
-	.space 0x25
-gHighScoreDisplayMode: @ 0x0200287D
-	.space 0x3
+	.space 0x28
 gScrollDirection: @ 0x02002880
 	.space 0x2
 gScrollXOffset: @ 0x02002882

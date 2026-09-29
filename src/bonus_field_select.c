@@ -23,10 +23,12 @@ enum BonusFieldSelection
     FIELD_SELECT_RAYQUAZA,
 };
 
-EWRAM_DATA s8 gBallSpeedSubmenuVisible = FALSE;
 EWRAM_DATA u8 gSelectedBallSpeed = 0;
 EWRAM_DATA s16 gBallSpeedDisplayToggle = 0;
 EWRAM_DATA s8 gSelectedBonusField = 0;
+
+
+EWRAM_DATA s8 gBallSpeedSubmenuVisible = FALSE;
 EWRAM_DATA s16 gBonusFieldSelectTimer = 0;
 EWRAM_DATA s16 gBonusFieldLoadingCounter = 0;
 EWRAM_DATA s8 gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;

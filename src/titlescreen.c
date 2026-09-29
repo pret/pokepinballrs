@@ -7,6 +7,16 @@
 #include "constants/mem_layout/titlescreen.h"
 
 //Ewram
+EWRAM_DATA struct TitlescreenStruct gTitlescreen;
+EWRAM_DATA s8 gEraseSaveDataAccessStep;
+EWRAM_DATA s8 gEraseSaveDataAccessCounter;
+EWRAM_DATA s8 gEReaderAccessStep;
+EWRAM_DATA s8 gEReaderAccessCounter;
+EWRAM_DATA s8 gTitleTransitionActive;
+EWRAM_DATA s8 gTitleRestartDebounce;
+EWRAM_DATA s8 gAutoDisplayTitlescreenMenu;
+
+
 extern u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
 
 // ------------------------

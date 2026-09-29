@@ -10,11 +10,41 @@
 #include "constants/score.h"
 #include "constants/mem_layout/high_score.h"
 
-//Ewram
+struct HighScoreScreenState
+{
+    u32 newScoreHi;
+    u32 newScoreLo;
+    s16 displayTimer;
+    u8 nextSubState;
+    u8 mainField;
+    s32 highScoreIndex;
+    s16 currentNameCharIndex;
+    s16 nameFlashVariant; // Toggles between variant 0 and 1
+    s16 flashFrameCounter;
+    s16 currentNameChar; //0-25="A"-"Z", 26-35="0"-"9" 41=" "
+    s16 flashDuration;
+    s16 flashElapsedFrames; // also used for page arrow blink toggle
+    s16 paletteAnimPhase;
+    s16 paletteAnimTimer;
+    s16 inputRepeatDelay;
+    s16 linkWaitTimer;
+    s8 nextIdleState;
+    s8 pressStartBlinkToggle; // press start blink toggle
+    s8 displayModeVisible;
+};
+EWRAM_DATA struct HighScoreScreenState gHighScoreScreenState;
+EWRAM_DATA s16 gScrollDirection;
+EWRAM_DATA s16 gScrollXOffset;
+EWRAM_DATA s8 gResetComboTimer;
+EWRAM_DATA s8 gResetComboCount;
+
+EWRAM_DATA u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
+
+
+EWRAM_DATA s16 gCompletionBannerY;
+EWRAM_DATA s8 gLinkExchangeSendPhase;
 EWRAM_DATA u32 gMergedSapphireScoreIndex;
 EWRAM_DATA u32 gMergedRubyScoreIndex;
-EWRAM_DATA u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
-EWRAM_DATA s8 gLinkExchangeSendPhase;
 EWRAM_DATA s8 gLinkExchangeResult;
 EWRAM_DATA s16 gScoreDigitBuffer[0x10];
 
@@ -30,7 +60,6 @@ extern u8 gHighScoreText_Gfx[];
 extern s16 gHighScoreEntrySource;
 extern s8 gCompletionBannerDone;
 extern s8 gCompletionBannerVisible;
-extern s16 gCompletionBannerY;
 extern s8 gCompletionBannerPhase;
 extern s8 gCompletionBannerSpriteGroup;
 extern s8 gHighScoreShowPopupFlag;
@@ -41,10 +70,6 @@ extern s8 gLinkExchangeSendPhase;
 extern s8 gLinkExchangeRecvPhase;
 extern s8 gLinkExchangeTimeout;
 
-extern s16 gScrollDirection;
-extern s16 gScrollXOffset;
-extern s8 gResetComboTimer;
-extern s8 gResetComboCount;
 
 extern struct HighScoreEntry gWorkingHighScores[MAIN_FIELD_COUNT][NUM_HIGH_SCORES];
 extern struct HighScoreEntry gRemoteTopScores[2];
@@ -70,29 +95,6 @@ struct HighScoreNamePosition
 };
 extern const struct HighScoreNamePosition gHighScoreNamePositions[][8];
 
-struct HighScoreScreenState
-{
-    u32 newScoreHi;
-    u32 newScoreLo;
-    s16 displayTimer;
-    u8 nextSubState;
-    u8 mainField;
-    s32 highScoreIndex;
-    s16 currentNameCharIndex;
-    s16 nameFlashVariant; // Toggles between variant 0 and 1
-    s16 flashFrameCounter;
-    s16 currentNameChar; //0-25="A"-"Z", 26-35="0"-"9" 41=" "
-    s16 flashDuration;
-    s16 flashElapsedFrames; // also used for page arrow blink toggle
-    s16 paletteAnimPhase;
-    s16 paletteAnimTimer;
-    s16 inputRepeatDelay;
-    s16 linkWaitTimer;
-    s8 nextIdleState;
-    s8 pressStartBlinkToggle; // press start blink toggle
-    s8 displayModeVisible;
-};
-struct HighScoreScreenState gHighScoreScreenState;
 
 enum HighScoreStates{
     HIGH_SCORE_STATE_INIT = 0,

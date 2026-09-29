@@ -8,6 +8,8 @@
 #include "titlescreen.h"
 #include "variables.h"
 
+EWRAM_DATA u8 gEReaderUnused1;
+EWRAM_DATA u8 gEReaderUnused2;
 EWRAM_DATA s16 gEReaderReceivedCardId;
 EWRAM_DATA s8 gEReaderLinkHandshakeStarted;
 EWRAM_DATA s8 gEReaderLinkDataReceived;
@@ -25,8 +27,6 @@ extern s8 gEReaderHeaderAnimSpriteGroup;
 extern s8 gEReaderTransitionStep;
 extern s16 gEReaderTransitionTimer;
 extern s16 gEReaderGeneralTimer;
-extern u8 gEReaderUnused1;
-extern u8 gEReaderUnused2;
 extern s8 gEReaderExitTargetState;
 extern const u16 gEReaderTextGlyphTable[][3*0x18];
 extern s16 gEReaderCardIndex;

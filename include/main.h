@@ -166,7 +166,6 @@ extern int gRumblePaused;
 extern int gRumbleSpeedMode;
 extern int gGameBoyPlayerEnabled;
 extern u8 gSio32CommState;
-extern u8 gGbPlayerTilemapBuffer[];
 #define INTR_COUNT 14
 extern IntrFunc gIntrTable[14];
 extern void (*gMainCallback)(void);
