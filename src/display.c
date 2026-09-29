@@ -1,6 +1,8 @@
 #include "global.h"
 #include "main.h"
 
+extern u16 gPaletteFadeBuffers[3][BG_PLTT_SIZE];
+
 void FadeInFromWhite(void (*func)(void))
 {
     u16 i;

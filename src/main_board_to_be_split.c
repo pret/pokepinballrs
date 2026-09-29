@@ -46,6 +46,12 @@ extern const Palette gRubyShopSign_Pal;
 extern const u16 gAngleToDirectionTable[];
 
 extern u8 gCatchSpritePaletteBuffer[];
+extern const u16 gShopCursorToItemMap[];
+extern const u16 gShopItemData[][4];
+extern const u8 gMainStageBonusTrap_Gfx[][0x300];
+extern const u8 gChargeFillIndicator_Gfx[][0x80];
+extern const u8 gEggFrameTilesGfx[][0x200];
+extern const u16 gEggAnimationFrameData[][4];
 
 // This is the 'Gravity Well' in the center of the board.
 // Used with travel confirmation, bonus board entry, roulette, etc

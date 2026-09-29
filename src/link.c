@@ -119,6 +119,7 @@ extern u16 sRecvNonzeroCheck;
 extern u8 gLastSendQueueCount;
 extern u8 sRecvQueueSnapshot; // ???
 extern s8 sLinkMasterHandshakeState;
+extern const struct OamData gEmptyOamData[128];
 
 // static const definitions
 

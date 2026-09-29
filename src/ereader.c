@@ -8,6 +8,12 @@
 #include "titlescreen.h"
 #include "variables.h"
 
+// ewram
+
+extern u8 gEReaderTextTileBuffer[3][0x800];
+
+// -----
+
 extern StateFunc gEReaderStateFuncs[11];
 extern s8 gEReaderTextCharIndex;
 extern s8 gEReaderTextAnimDelay;
@@ -23,6 +29,7 @@ extern s16 gEReaderGeneralTimer;
 extern u8 gEReaderUnused1;
 extern u8 gEReaderUnused2;
 extern s8 gEReaderExitTargetState;
+extern const u16 gEReaderTextGlyphTable[][3*0x18];
 extern u8 gLinkExchangeStep;
 extern u32 gLinkStatusResult;
 extern s16 gLinkSendBuffer[];
@@ -44,6 +51,10 @@ extern u16 gTempGfxBuffer[];
 extern u8 gEReaderBackground_Gfx[];
 extern u8 gEReaderOverlay_Tilemap[];
 extern s16 gEReaderTransitionStepDurations[];
+extern u8 gEReaderText_Gfx[];
+extern const Palette gPokedexBackground_Pals[];
+extern const Palette gPokedexSprites_Pals[];
+extern const struct SpriteSet * const gEReaderSpriteSets[13];
 
 enum EReaderState{
     EREADER_STATE_LOAD_GRAPHICS = 0,

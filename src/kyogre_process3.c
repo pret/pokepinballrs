@@ -38,6 +38,7 @@ extern const u16 gKyogreBgSpriteBaseTileNums[];
 extern const s16 gKyogreIntroPaletteCycleIndices[];
 extern const u16 gKyogrefreezeTrapOamData[28][4][3];
 extern const u16 gKyogreMainBodyOamData[66][10][3];
+extern const Palette gBonusStageObjPal[];
 
 
 void InitFrameProcess3_BoardLogic_KyogreBoard(void)

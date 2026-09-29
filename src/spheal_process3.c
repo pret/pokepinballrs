@@ -37,6 +37,8 @@ extern const u16 gSealeoFramesetData[][2];
 extern const u16 gSphealFramesetData[][3];
 extern const u16 gSphealFlyingEnemyOamData[126][4][3];
 
+extern const Palette gBonusStageObjPal[];
+
 
 void InitFrameProcess3_BoardLogic_SphealBoard(void)
 {

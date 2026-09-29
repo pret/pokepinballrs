@@ -7,7 +7,9 @@
 #include "constants/board/sapphire_states.h"
 #include "constants/mem_layout/intro.h"
 
-extern struct PinballGame gPinballGameState;
+
+extern u32 gReplayFrameCounter;
+extern const Palette gBall_Pals[];
 
 typedef void (*VoidFunc)(void);
 

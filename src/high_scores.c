@@ -10,6 +10,10 @@
 #include "constants/score.h"
 #include "constants/mem_layout/high_score.h"
 
+//Ewram
+extern u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
+
+//Rom
 extern StateFunc gHighScoresStateFuncs[15];
 extern StateFunc gIdleHighScoresStateFuncs[3];
 extern const Palette gHighScoreBG_Pals[];
@@ -42,6 +46,21 @@ extern const Palette gHighScoreSprite_Pals[];
 extern u8 gHighScoreDialogs_Gfx[];
 extern u32 gHighScoreNameRowTilemapOffsets[8];
 extern const struct HighScoreEntry gDefaultHighScores[2][8];
+extern const s8 gScorePaletteAnimOffsets[3]; //Sized based on call using gHighScoreScreenState.paletteAnimPhase + data
+extern const s8 gScorePaletteResetOffsets[3]; //Same as above
+extern const struct SpriteSet *const gNameEntryCursorSpriteSets[];
+extern const struct SpriteSet *const gHighScoreScreenSpriteSets[];
+extern const struct SpriteSet *const gCompletionBannerSpriteSets[];
+extern const struct VectorU32 gHighScoreNamePixelPositions[2][8];
+
+
+struct HighScoreNamePosition
+{
+    u32 yBaseOffset;
+    u32 yPixelPosition;
+    u32 fieldWidth;
+};
+extern const struct HighScoreNamePosition gHighScoreNamePositions[][8];
 
 struct HighScoreScreenState
 {

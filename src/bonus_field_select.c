@@ -45,6 +45,9 @@ extern const u8 gBonusFieldSelectBg1_Tilemap[];
 extern const u8 gBonusFieldSelectBg2_Tilemap[];
 extern const Palette gBonusFieldSelectStages_Pals[];
 extern const u8 gBonusFieldSelectStages_Gfx[];
+extern u8 gFieldSelectWindow_Gfx[];
+extern u16 gFieldSelectSpritePals[];
+extern u8 gFieldSelectSpriteGfx[];
 
 void InitBonusFieldSelectState(void);
 void RenderBonusFieldSelectSprites(void);

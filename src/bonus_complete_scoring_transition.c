@@ -14,6 +14,7 @@ extern const u8 gKecleonBonusClear_Gfx[];
 extern const u8 gKyogreBonusClear_Gfx[];
 extern const u8 gGroudonBonusClear_Gfx[];
 extern const u8 gRayquazaBonusClear_Gfx[];
+extern const u8 gDusclopsBonusClear_Gfx[];
 
 void FadeToMainBoard(void)
 {

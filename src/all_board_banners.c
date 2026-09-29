@@ -7,6 +7,10 @@
 #include "constants/mem_layout/shared.h"
 
 extern void RenderBannerSlideAnimation(void);
+extern const u8 *const gModeBannerTilemaps[];
+extern struct SongHeader se_catch_evo_banner;
+extern u16 gModeBannerOamAttributes[14][45];
+extern u16 gModeBannerOamAttributes[14][45];
 
 void ProcessBannerCameraTransition(void)
 {

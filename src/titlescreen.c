@@ -6,6 +6,11 @@
 #include "constants/bg_music.h"
 #include "constants/mem_layout/titlescreen.h"
 
+//Ewram
+extern u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
+
+// ------------------------
+
 static void TitleScreen_CheckDeleteKeyComboPressed(void);
 static void CheckEReaderAccessCombo(void);
 static void RenderTitlePressStartSprites(void);
@@ -29,6 +34,34 @@ enum
     SUBSTATE_EXEC_MENU_SELECTION,
     SUBSTATE_FADE_TO_MENU_ACTION,
 };
+
+
+extern StateFunc gTitlescreenStateFuncs[];
+extern const Palette gGBAButtonIcons_Pals[];
+extern const u8 gOptionsSprites_Gfx[];
+extern const s16 gTitleMenuStateTable[11];
+extern const s8 gTitlePressStartAnimDurations[4];
+extern const s8 gTitleMenuSlideInAnimData[6][2];
+extern const s8 gTitleMenuSlideOutAnimSpriteGroupData[9][2];
+extern const u16 gTitleNoSaveMenuActions[4];
+extern const u16 gTitleSavedMenuActions[];
+extern const struct SpriteSet *const gTitlePressStartSpriteSets[];
+extern const u8 *const gTitleNoSaveDefaultSprites[7];
+extern const u8 *const gTitleNoSaveAnimSprites[];
+extern const s8 gTitleMenuRetractDurations[];
+extern const u8 *const gTitleSavedDefaultSprites[7];
+extern const u8 *const gTitleSavedAnimSprites[];
+extern const s16 gEReaderAccessButtonSequence[];
+extern const u8 gTitlescreenBgTilemap[];
+extern const u16 gTitlescreenBg_Pals[];
+extern const u8 gTitlescreenBg_Gfx[];
+extern const u8 gTitlescreenSpritesNoSavedGame_Gfx[];
+extern const u8 gTitlescreenSpritesSavedGame_Gfx[];
+extern const u16 gTitlescreenSprites_Pals[];
+extern struct VectorU16 gTitleNoSaveArrowPositions[4];
+extern struct VectorU16 gTitleNoSaveSelectorPositions[4];
+extern struct VectorU16 gTitleSavedArrowPositions[5];
+extern struct VectorU16 gTitleSavedSelectorPositions[5];
 
 void ClearHighScoreNameEntry(void)
 {

@@ -15,6 +15,12 @@ extern s16 gPikaKickbackFiringAnimOamFramesets[28][12];
 extern const struct Vector32 gPikaSaverWaypoints[];
 extern const u16 gAngleToDirectionTable[];
 extern const u8 gPichuSaverTilesGfx[];
+extern const u8 gPichuKickbackFx_Gfx[];
+extern const u8 gPikachuKickbackFx_Gfx[];
+extern const u8 gPikachuSaverTilesGfx[];
+
+// Should potentially be replacable with gMonHatchSpriteGroupGfx[5];
+extern const u8 gMonHatchSpriteGroup5_Gfx[];
 
 void UpdateKickbackLogic(void)
 {

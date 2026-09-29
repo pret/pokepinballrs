@@ -3,6 +3,9 @@
 #include "constants/board/dusclops_states.h"
 #include "constants/collision.h"
 
+extern const u16 gSharedBumperCollisionMap[];
+extern const u16 gDusclopsBodyCollisionMap[];
+
 s16 CollisionCheck_Dusclops(struct Vector16* ballPosition, u16* collisionAngle) {
     struct Vector16 vec1;
     struct Vector16 vec2;

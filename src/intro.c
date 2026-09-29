@@ -83,6 +83,47 @@ extern u8 gIntroScene3TreeckoBgTiles_Gfx[];
 extern u8 gIntroScene3Treecko_BG1TilemapA[];
 extern u8 gIntroScene3Treecko_BG1TilemapB[];
 extern u8 gIntroScene3TreeckoTreecko_Gfx[];
+
+extern const Palette gIntroScene4PlusleMinun_Pal[];
+extern u8 gIntroScene4PlusleMinun_BG3Tilemap[];
+extern u8 gIntroScene4PlusleMinunBgTiles_Gfx[];
+extern u8 gIntroScene4PlusleMinun_BG0Tilemap[];
+extern u8 gIntroScene4PlusleMinun_BG1Tilemap[];
+
+extern const Palette gIntroScene5Mudkip_Pal[];
+extern u8 gIntroScene5Mudkip_BG2Tilemap[];
+extern u8 gIntroScene5Mudkip_BG1Tilemap[];
+extern u8 gIntroScene5Mudkip_BG3Tilemap[];
+extern u8 gIntroScene5MudkipBgTiles_Gfx[];
+extern u8 gIntroScene5Mudkip_BG0Tilemap[];
+extern u8 gIntroScene5MudkipSprites_Gfx[];
+
+extern const Palette gIntroScene6Chinchou_Pal[];
+extern u8 gIntroScene6Chinchou_BG3Tilemap[];
+extern u8 gIntroScene6ChinchouBgTiles_Gfx[];
+extern u8 gIntroScene6Chinchou_BG2Tilemap[];
+extern u8 gIntroScene6Chinchou_BG0Tilemap[];
+extern u8 gIntroScene6Chinchou_BG1Tilemap[];
+extern u8 gIntroScene6ChinchouStars_Gfx[];
+
+extern const Palette gIntroScene7Parade_Pal[];
+extern u8 gIntroScene7Parade_BG3Tilemap[];
+extern u8 gIntroScene7ParadeBgTiles_Gfx[];
+extern u8 gIntroScene7Parade_BG2Tilemap[];
+extern u8 gIntroScene7Parade_BG0Tilemap[];
+extern u8 gIntroScene7Parade_BG1Tilemap[];
+extern u8 gIntroScene7ParadeWailmer_Gfx[];
+
+extern const Palette gIntroScene8WailmerLaunch_Pal[];
+extern u8 gIntroScene8WailmerLaunch_BG2Tilemap[];
+extern u8 gIntroScene8WailmerLaunchBgTiles_Gfx[];
+extern u8 gIntroScene8WailmerLaunch_Gfx[];
+
+extern const Palette gIntroScene9BallFlight_Pal[];
+extern u8 gIntroScene9BallFlight_BG3Tilemap[];
+extern u8 gIntroScene9BallFlightClouds_Gfx[];
+extern u8 gIntroScene9BallFlightall_Gfx[];
+
 extern const struct SpriteSet *const gIntroScene9BallFlight_SpriteSets[];
 
 typedef void (*IntroFunc)(void);
@@ -127,6 +168,8 @@ struct IntroDebrisMovement
     u8 oamPriority;
 }; // 0x8 size in memory
 extern const struct IntroDebrisMovement gIntroScene8WailmerLaunch_DebrisMovement[];
+
+extern s16 gTitleRevealJingle[][10][2];
 
 void IntroMain(void)
 {

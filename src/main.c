@@ -4,6 +4,9 @@
 #include "link.h"
 #include "m4a.h"
 
+extern const s16 gSineTable[];
+extern const IntrFunc gIntrTableTemplate[14];
+
 static void InitGame(void);
 static void InitMainState(void);
 static void InitIntrHandlers(void);

@@ -10,6 +10,20 @@ extern u8 gCatchTargetCollisionBitmap[];
 extern u16 gFlipperCollisionAngles[][2];
 extern u16 gFlipperLaunchVelocityParams[][2];
 extern s8 gFlipperCollisionFrameMapping[][5];
+extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
+extern struct Vector16 gWallEscapeOffsets[4];
+
+typedef s16 (*BoardCollisionFunc)(struct Vector16*, u16*);
+extern BoardCollisionFunc BoardCollisionFuncts[8];
+
+struct CollisionCorrectionEntry
+{
+    s8 correctionX;
+    s8 correctionY;
+    u16 angleThreshold;
+};
+extern struct CollisionCorrectionEntry gWallCollisionPositionCorrection[8];
+extern struct CollisionCorrectionEntry gFlipperCollisionAngleCorrection[3];
 
 
 u16 DetectBallCollision(struct Vector16*);

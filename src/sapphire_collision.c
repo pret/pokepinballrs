@@ -6,6 +6,7 @@
 #include "constants/collision.h"
 
 extern u16 gSapphireTargetBumperIndexMap[];
+extern const u16 gSharedBumperCollisionMap[];
 
 s16 CollisionCheck_Sapphire(struct Vector16 *ballPosition, u16* collisionAngle) {
     struct Vector16 vec1;

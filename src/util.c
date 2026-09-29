@@ -1,6 +1,9 @@
 #include "global.h"
 #include "main.h"
 
+
+extern const struct OamData gEmptyOamData[128];
+
 static u8 *WriteDigitsRecursive(u32, u8*, u32);
 static int IntPow(int, int);
 

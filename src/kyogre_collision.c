@@ -3,6 +3,10 @@
 #include "constants/board/kyogre_states.h"
 #include "constants/collision.h"
 
+extern u16 gKyogreForm1CollisionMap[];
+extern u16 gKyogreForm2CollisionMap[];
+extern u16 gKyogreForm3CollisionMap[];
+
 s16 CollisionCheck_Kyogre(struct Vector16 *ballPosition, u16 *collisionAngle)
 {
     struct Vector16 vec1;

@@ -83,6 +83,26 @@ extern const s16 gPokedexCatchAnimIndices[];
 extern const u16 gPokedexHatchAnimTileOffsets[][51];
 extern const s16 gPokedexAnimFrameDurations[][51];
 extern s16 gPokedexListNameVramOffsets[];
+extern u8 *gMonPortraitGroupGfx[];
+extern const Palette *gMonPortraitGroupPals[];
+extern u16 gPokedexBg1_Tilemap[];
+extern u16 gPokedexBgText_Gfx[];
+extern u16 gPokedexBg2_Tilemap[];
+extern u16 gPokedexBg_Gfx[];
+extern u16 gPokedexBg3_Tilemap[];
+extern const Palette gPokedexBackground_Pals[];
+extern const Palette gPokedexSprites_Pals[];
+extern u8 gPokedexSprites_Gfx[];
+extern u16 gDexInfoWindowEmptyTextRowTiles[];
+extern u16 gDexInfoWindowMiddleRowTiles[];
+extern u16 gDexInfoWindowBottomRowTiles[];
+extern u16 gDexInfoWindowEmptyRowTiles[];
+extern u16 gPokedexInfoWindowTilemap[];
+
+extern StateFunc gPokedexStateFuncs[];
+
+
+extern s16 gDexAnimationIx[];
 
 enum PokedexPopupType {
     POKEDEX_POPUP_TRANSMISSION_CONNECT_PROMPT = 0,

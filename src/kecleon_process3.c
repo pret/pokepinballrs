@@ -15,6 +15,9 @@ extern void RenderKecleonBoardElements(void);
 extern void SortKecleonSpritesByY(void);
 
 extern const struct SpriteSet *gKecleonSpriteSets[];
+extern u8 gKecleonSpriteGroupOrderMap[];
+
+extern const Palette gBonusStageObjPal[];
 
 struct KecleonMoveNode
 {

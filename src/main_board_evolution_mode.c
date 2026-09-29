@@ -17,6 +17,7 @@ extern const Palette gEvoItem_Pals[];
 extern const s16 gEvoItemAppearFrameThresholds[];
 extern const u16 gEvoItemAnimOamFramesets[58][15];
 extern const struct Vector16 gEvoItemPositions[][8];
+extern const u8 *gEvoItemTilesGfxPtrs[];
 
 void CleanupEvolutionModeState(void)
 {

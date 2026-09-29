@@ -26,6 +26,8 @@ extern const u16 gRayquazaLightningStrikeOamData[12][7][3];
 extern const u16 gRayquazaLightningChargeRingOamData[10][3][3];
 extern const u16 gRayquazaMainBodyOamData[212][3];
 
+extern const Palette gBonusStageObjPal[];
+
 void InitFrameProcess3_BoardLogic_RayquazaBoard(void)
 {
     s16 i;

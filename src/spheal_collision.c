@@ -3,6 +3,9 @@
 #include "constants/board/spheal_states.h"
 #include "constants/collision.h"
 
+extern const u16 gSphealRampCollisionMap[0x1000];
+extern const u16 gSphealFrozenIceCollisionMap[0x1000];
+
 s16 CollisionCheck_Spheal(struct Vector16 *ballPosition, u16 *collisionAngle)
 {
     u16 boardCollisionAngle;
