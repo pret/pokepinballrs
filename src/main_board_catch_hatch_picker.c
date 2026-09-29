@@ -9,6 +9,7 @@
 
 extern const u16 gWildMonLocations[AREA_COUNT][2][WILD_MON_LOCATION_COUNT];
 extern const u16 gEggLocations[MAIN_FIELD_COUNT][26];
+extern u16 gCommonAndEggWeights[];
 
 /**
  *   0 if captured via ball

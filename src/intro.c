@@ -185,6 +185,25 @@ extern const struct IntroDebrisMovement gIntroScene8WailmerLaunch_DebrisMovement
 
 extern s16 gTitleRevealJingle[][10][2];
 
+// Rom_2
+extern struct Vector16 gIntroScene1Torchic_BGAnimTiming[0x8];
+extern s16 gIntroScene1Torchic_TileOffsets[0x8];
+extern const struct SpriteSet *const gIntroScene1Torchic_SpriteSets[];
+extern struct Vector16 gIntroScene1Torchic_ScaleOffsets[0x4];
+extern const struct SpriteSet *const gIntroScene3Treecko_SpriteSets[];
+extern const struct SpriteSet *const gIntroScene5Mudkip_SpriteSets[];
+extern s16 gIntroScene5Mudkip_TileOffsets[];
+
+extern u8 gIntroScene6Chinchou_BounceFlags[];
+extern const struct SpriteSet *const gIntroScene6Chinchou_SpriteSets[];
+
+extern const struct SpriteSet *const gIntroScene7Parade_SpriteSets[];
+extern s8 gIntroScene9BallFlight_BallXFrameAdjustTable[];
+
+// --------
+
+
+
 void IntroMain(void)
 {
      gIntroStateFuncs[gMain.subState]();

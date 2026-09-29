@@ -18,6 +18,8 @@ EWRAM_DATA s8 gLinkExchangeSendPhase;
 EWRAM_DATA s8 gLinkExchangeResult;
 EWRAM_DATA s16 gScoreDigitBuffer[0x10];
 
+//Rom 2
+extern const u16 gHighScoreCharToTileMap[];
 
 //Rom
 extern StateFunc gHighScoresStateFuncs[15];
