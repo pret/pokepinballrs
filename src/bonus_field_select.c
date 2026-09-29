@@ -23,10 +23,12 @@ enum BonusFieldSelection
     FIELD_SELECT_RAYQUAZA,
 };
 
-EWRAM_DATA s8 gBallSpeedSubmenuVisible = FALSE;
 EWRAM_DATA u8 gSelectedBallSpeed = 0;
 EWRAM_DATA s16 gBallSpeedDisplayToggle = 0;
 EWRAM_DATA s8 gSelectedBonusField = 0;
+
+
+EWRAM_DATA s8 gBallSpeedSubmenuVisible = FALSE;
 EWRAM_DATA s16 gBonusFieldSelectTimer = 0;
 EWRAM_DATA s16 gBonusFieldLoadingCounter = 0;
 EWRAM_DATA s8 gBonusFieldSelectState = BONUS_FIELD_SELECT_STATE_CHOOSE_FIELD;
@@ -45,6 +47,9 @@ extern const u8 gBonusFieldSelectBg1_Tilemap[];
 extern const u8 gBonusFieldSelectBg2_Tilemap[];
 extern const Palette gBonusFieldSelectStages_Pals[];
 extern const u8 gBonusFieldSelectStages_Gfx[];
+extern u8 gFieldSelectWindow_Gfx[];
+extern u16 gFieldSelectSpritePals[];
+extern u8 gFieldSelectSpriteGfx[];
 
 void InitBonusFieldSelectState(void);
 void RenderBonusFieldSelectSprites(void);

@@ -16,8 +16,9 @@
 #include "constants/mem_layout/ruby.h"
 #include "constants/mem_layout/sapphire.h"
 
+extern EWRAM_DATA u8 gBoardBGTileBufferAlt[32 * 0x400];
+
 extern u8 gBoardBGTileBuffer[];
-extern u8 gBoardBGTileBufferAlt[];
 extern const u8 gMainBoardBallSave_Gfx[];
 extern const u8 gMainBoardEndOfBall_Gfx[];
 extern const u8 gEvolutionCutsceneTilesGfx[];
@@ -52,6 +53,8 @@ extern const u8 gSapphireTravelPaint_Gfx[];
 extern const Palette gSapphirePainter_Pals;
 extern const u8 gCatchMonAppearFx_Gfx[];
 extern const u8 gSapphireBoardZigzagoonFx_Gfx[];
+extern u8 gCatchSpriteGfxBuffer[];
+extern u8 gCatchSpriteFlashGfx[];
 
 extern const u8 gAlphabetTilesGfx[][0x40];
 extern const u8 gSpaceTileGfx[0x40];
@@ -62,6 +65,7 @@ extern const s16 gCaughtTextChars[];
 extern const u8 gHatchMachineElevator_Gfx[][0x440];
 extern const s16 gHoleAnimKeyframeData[][2];
 
+extern const u8 gDusclopsBonusClear_Gfx[];
 extern const u8 gKecleonBonusClear_Gfx[0x2000];
 extern const u8 gKyogreBonusClear_Gfx[0x2000];
 extern const u8 gGroudonAttackFx_Gfx[0x2000];
@@ -71,7 +75,27 @@ extern const u8 gRayquazaFlyby_Gfx[0x1C00];
 extern const u8 gRayquazaBonusClear_Gfx[0x2000];
 extern const u8 gRayquazaSpriteSheet[0x860];
 extern const u8 gSphealResultsScreenGfx[0x800];
+extern u8 gFlipper_Gfx[][0x200];
+extern const u16 gShopItemData[][4];
 
+extern u8 *gMonPortraitGroupGfx[];
+extern const Palette *gMonPortraitGroupPals[];
+
+extern const u8 gPichuKickbackFx_Gfx[];
+extern const u8 gPikachuKickbackFx_Gfx[];
+
+extern const u8 gPortraitAnimFrameGraphics[][0x300];
+extern const u8 gBallRotationTileGraphics[][0x80];
+extern const u8 gBallUpgradeFx_Gfx[][0x200];
+extern const u8 gMainStageBonusTrap_Gfx[][0x300];
+
+extern const u8 gLocationPortraitGfx[][0x300];
+extern const u8 gChargeFillIndicator_Gfx[][0x80];
+extern const u8 gPikachuSaverTilesGfx[];
+extern const u8 gMainBoardPikaSpinner_Gfx[][0x120];
+extern const u8 gEggFrameTilesGfx[][0x200];
+extern const u8 *gEvoItemTilesGfxPtrs[];
+extern const u16 gEggAnimationFrameData[][4];
 
 void SaveGameStateSnapshot(s16);
 

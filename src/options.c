@@ -63,7 +63,44 @@ struct OptionsData
     s8 soundTestActive;
 };
 
-extern struct OptionsData gOptionsData;
+EWRAM_DATA struct OptionsData gOptionsData;
+
+
+
+
+struct ButtonInfoView
+{
+    u16 buttonName;
+    u16 tileNum;
+    u8 shape;
+    u8 size;
+    u8 x;
+    u8 y;
+};
+
+/*** 
+* index button associations:
+*   0 : A button 
+*   1 : B button
+*   2 : Select button
+*   3 : Start button
+*   4 : Right arrow
+*   5 : Left arrow
+*   6 : Up arrow
+*   7 : Down arrow
+*   8 : R button
+*   9 : L button
+*   10 : Combiner sprite
+***/
+extern struct ButtonInfoView gButtonInfoTable[11];
+
+
+extern u8 gCustomButtonConfigs[][10];
+extern u8 gDefaultButtonConfigs[4][10];
+extern struct {u8 tileId; s16 frameDuration;} gButtonAnimData[];
+extern const Palette gGBAButtonIcons_Pals[];
+
+
 extern s16 gMain_saveData_customButtonConfig[][2];
 extern u8 gCustomButtonConfigTileIds[];
 
@@ -72,12 +109,18 @@ extern const u8 gOptionsText_Gfx[];
 extern const u8 gOptionsBackground_Gfx[];
 extern const u8 gOptionsText_Tilemap[];
 extern const u8 gOptionsBackground_Tilemap[];
+extern u16 gOptionsBGMList[];
+extern u16 gOptionsSEList[];
 
 
-extern u8 gOptionsButtonConfigEditFlags[];
 extern const struct Vector16 gOptionsCursorPositionTable[];
 extern const u16 gOptionsBGMSelectorYPositions[];
 extern const struct SpriteSet *const gOptionsSpriteSets[];
+extern const u8 gOptionsSprites_Gfx[];
+
+extern void (*const gOptionsStateFuncs[])(void);
+
+
 
 void Options_Main(void)
 {
@@ -561,7 +604,7 @@ void UpdateOptionsSpritePositions(void)
 
         do
         {
-            if ((gOptionsButtonConfigEditFlags[i] == TRUE)
+            if ((gOptionsData.buttonEditFlags[i] == TRUE)
                 && (gOptionsData.buttonFlashVisible == TRUE))
             {
                 buttonConfig[i][0] = &gMain.spriteGroups[28];

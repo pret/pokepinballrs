@@ -43,9 +43,7 @@ gFieldSelectData: @ 0x02002838
 gFieldSelectSoftReset: @ 0x02002850
 	.space 0x8
 gHighScoreScreenState: @ 0x02002858
-	.space 0x25
-gHighScoreDisplayMode: @ 0x0200287D
-	.space 0x3
+	.space 0x28
 gScrollDirection: @ 0x02002880
 	.space 0x2
 gScrollXOffset: @ 0x02002882
@@ -73,13 +71,7 @@ gPaletteFadeRGBCache: @ 0x020028A8
 CurrentBoardProcPairs: @ 0x020028D8
 	.space 0x48
 gOptionsData: @ 0x02002920
-	.space 0x12
-gOptionsBGMDigitTileIds: @ 0x02002932
-	.space 0x3
-gOptionsSEDigitTileIds: @ 0x02002935
-	.space 0x5
-gOptionsButtonConfigEditFlags: @ 0x0200293A
-	.space 0x1E
+	.space 0x38
 gDpcmSampleBuffer: @ 0x2002958
 	.space 0x40
 gMPlayTrack_BGM: @ 0x2002998

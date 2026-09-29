@@ -6,6 +6,7 @@
 #include "constants/bg_music.h"
 
 extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
+extern const Palette gFieldVariant_Pals[][6];
 
 void DrawBoardEdgeBanner(void)
 {

@@ -5,6 +5,10 @@
 #include "constants/species_rs.h"
 
 extern const u16 gSpeciesRSToCryId[];
+extern struct ToneData gPokemonCryToneBank0[];
+extern struct ToneData gPokemonCryToneBank1[];
+extern struct ToneData gPokemonCryToneBank2[];
+extern struct ToneData gPokemonCryToneBank3[];
 
 static void PlayCryInternal(u16, s8, s8, u8, int);
 

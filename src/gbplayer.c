@@ -2,6 +2,33 @@
 #include "gbplayer.h"
 #include "main.h"
 
+//sym_ewram
+EWRAM_DATA u16 sGbPlayerCurKeys;
+EWRAM_DATA u16 sGbPlayerPrevKeys;
+EWRAM_DATA u8 gGbPlayerTilemapBuffer[0X800];
+
+struct RfuSIO32Id {
+    u8 MS_mode; //either 0 or 1
+    u16 count;
+    u16 send_id;
+    u16 recv_id;
+    u8 filler[0xA-0x8];
+    u16 lastId;
+    // size 0xC
+};
+EWRAM_DATA struct RfuSIO32Id gSio32Id;
+EWRAM_DATA u32 gSio32SendData;
+EWRAM_DATA u32 gSio32ReceivedData;
+EWRAM_DATA u32 gSio32RemoteDeviceId;
+
+// -----
+
+extern const Palette gGbPlayerPalettes[];
+extern const u8 gGbPlayerGfx[];
+extern const u8 gGbPlayerTilemap[];
+extern const int *gRumblePatterns[];
+extern u16 Sio32ConnectionData[4];
+
 /*static*/ void ReadGbPlayerKeys(void)
 {
     u16 keyInput = REG_KEYINPUT ^ KEYS_MASK;

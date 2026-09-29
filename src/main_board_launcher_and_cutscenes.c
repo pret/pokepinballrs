@@ -4,6 +4,8 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
+EWRAM_DATA u8 gPaletteFadeRGBCache[16][3];
+
 extern const u8 gRubyTravelVolbeat_Gfx[][0x480];
 extern const u8 gSapphireTravelIllumise_Gfx[][0x480];
 extern const u8 gRubyTravelPaint_Gfx[];
@@ -26,11 +28,12 @@ extern const u8 gSpoinkEntity_Gfx[][0x1C0];
 extern const u8 gOneUpTreeckoSprite_Gfx[][0x200];
 extern const u8 gLifeCountDigit_Gfx[][0x40];
 extern const Palette gOneUpSprite_Pal;
+extern const Palette gFieldVariant_Pals[][6];
 
 extern struct SongHeader se_kecleon_side_look;
 extern struct SongHeader se_pika_full_charge_1_up;
 
-extern u8 gPaletteFadeRGBCache[][3];
+
 
 void AnimateOneUpSprite(void)
 {

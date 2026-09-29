@@ -3,6 +3,9 @@
 #include "constants/board/groudon_states.h"
 #include "constants/collision.h"
 
+extern u16 gGroudonBodyCollisionMap[0x3800];
+extern u16 gGroudonProjectileCollisionMap[0x2A80];
+
 s16 CollisionCheck_Groudon(struct Vector16 *ballPosition, u16 *collisionAngle)
 {
     struct Vector16 vec1;

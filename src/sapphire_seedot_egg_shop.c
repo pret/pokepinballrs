@@ -23,6 +23,8 @@ extern struct Vector16 gSplashEffectPositions[];
 extern const s16 gSplashEffectTileIndices[][2];
 extern const Palette gSapphireShopSign_Pals[];
 extern const u8 gSapphireShopSignTileGfx[][0x480];
+extern const u8 gEggFrameTilesGfx[][0x200];
+extern const u16 gEggAnimationFrameData[][4];
 
 
 void InitSapphireEggHatchAnimation(void)

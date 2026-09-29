@@ -5,6 +5,16 @@
 #include "m4a.h"
 #include "constants/bg_music.h"
 
+extern const StateFunc gIdlePinballGameStateFuncs[];
+extern struct ReplayInputFrame gIdleBoardConfig0;
+extern struct ReplayInputFrame gIdleBoardConfig2;
+extern struct ReplayInputFrame gIdleBoardConfig3;
+extern struct ReplayInputFrame gIdleBoardConfig1;
+extern struct PinballGame gIdleBoardGameState0;
+extern struct PinballGame gIdleBoardGameState2;
+extern struct PinballGame gIdleBoardGameState3;
+extern struct PinballGame gIdleBoardGameState1;
+
 void IdlePinballGameMain(void)
 {
     gIdlePinballGameStateFuncs[gMain.subState]();

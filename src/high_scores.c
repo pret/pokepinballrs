@@ -10,39 +10,6 @@
 #include "constants/score.h"
 #include "constants/mem_layout/high_score.h"
 
-extern StateFunc gHighScoresStateFuncs[15];
-extern StateFunc gIdleHighScoresStateFuncs[3];
-extern const Palette gHighScoreBG_Pals[];
-extern u8 gHighScoreBallWatermark_Tilemap[];
-extern u8 gHighScoreText_Gfx[];
-extern s16 gHighScoreEntrySource;
-extern s8 gCompletionBannerDone;
-extern s8 gCompletionBannerVisible;
-extern s16 gCompletionBannerY;
-extern s8 gCompletionBannerPhase;
-extern s8 gCompletionBannerSpriteGroup;
-extern s8 gHighScoreShowPopupFlag;
-extern s8 gHighScorePopupType;
-extern u16 gLinkExchangeCommand;
-extern u16 gLinkPacketCounter;
-extern s8 gLinkExchangeSendPhase;
-extern s8 gLinkExchangeRecvPhase;
-extern s8 gLinkExchangeTimeout;
-
-extern s16 gScrollDirection;
-extern s16 gScrollXOffset;
-extern s8 gResetComboTimer;
-extern s8 gResetComboCount;
-
-extern struct HighScoreEntry gWorkingHighScores[MAIN_FIELD_COUNT][NUM_HIGH_SCORES];
-extern struct HighScoreEntry gRemoteTopScores[2];
-extern u8 gHighScoreBallWatermark_Gfx[];
-extern u8 gHighScoreScoreTable_Tilemap[];
-extern const Palette gHighScoreSprite_Pals[];
-extern u8 gHighScoreDialogs_Gfx[];
-extern u32 gHighScoreNameRowTilemapOffsets[8];
-extern const struct HighScoreEntry gDefaultHighScores[2][8];
-
 struct HighScoreScreenState
 {
     u32 newScoreHi;
@@ -65,7 +32,69 @@ struct HighScoreScreenState
     s8 pressStartBlinkToggle; // press start blink toggle
     s8 displayModeVisible;
 };
-struct HighScoreScreenState gHighScoreScreenState;
+EWRAM_DATA struct HighScoreScreenState gHighScoreScreenState;
+EWRAM_DATA s16 gScrollDirection;
+EWRAM_DATA s16 gScrollXOffset;
+EWRAM_DATA s8 gResetComboTimer;
+EWRAM_DATA s8 gResetComboCount;
+
+EWRAM_DATA u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
+
+
+EWRAM_DATA s16 gCompletionBannerY;
+EWRAM_DATA s8 gLinkExchangeSendPhase;
+EWRAM_DATA u32 gMergedSapphireScoreIndex;
+EWRAM_DATA u32 gMergedRubyScoreIndex;
+EWRAM_DATA s8 gLinkExchangeResult;
+EWRAM_DATA s16 gScoreDigitBuffer[0x10];
+
+//Rom 2
+extern const u16 gHighScoreCharToTileMap[];
+
+//Rom
+extern StateFunc gHighScoresStateFuncs[15];
+extern StateFunc gIdleHighScoresStateFuncs[3];
+extern const Palette gHighScoreBG_Pals[];
+extern u8 gHighScoreBallWatermark_Tilemap[];
+extern u8 gHighScoreText_Gfx[];
+extern s16 gHighScoreEntrySource;
+extern s8 gCompletionBannerDone;
+extern s8 gCompletionBannerVisible;
+extern s8 gCompletionBannerPhase;
+extern s8 gCompletionBannerSpriteGroup;
+extern s8 gHighScoreShowPopupFlag;
+extern s8 gHighScorePopupType;
+extern u16 gLinkExchangeCommand;
+extern u16 gLinkPacketCounter;
+extern s8 gLinkExchangeSendPhase;
+extern s8 gLinkExchangeRecvPhase;
+extern s8 gLinkExchangeTimeout;
+
+
+extern struct HighScoreEntry gWorkingHighScores[MAIN_FIELD_COUNT][NUM_HIGH_SCORES];
+extern struct HighScoreEntry gRemoteTopScores[2];
+extern u8 gHighScoreBallWatermark_Gfx[];
+extern u8 gHighScoreScoreTable_Tilemap[];
+extern const Palette gHighScoreSprite_Pals[];
+extern u8 gHighScoreDialogs_Gfx[];
+extern u32 gHighScoreNameRowTilemapOffsets[8];
+extern const struct HighScoreEntry gDefaultHighScores[2][8];
+extern const s8 gScorePaletteAnimOffsets[3]; //Sized based on call using gHighScoreScreenState.paletteAnimPhase + data
+extern const s8 gScorePaletteResetOffsets[3]; //Same as above
+extern const struct SpriteSet *const gNameEntryCursorSpriteSets[];
+extern const struct SpriteSet *const gHighScoreScreenSpriteSets[];
+extern const struct SpriteSet *const gCompletionBannerSpriteSets[];
+extern const struct VectorU32 gHighScoreNamePixelPositions[2][8];
+
+
+struct HighScoreNamePosition
+{
+    u32 yBaseOffset;
+    u32 yPixelPosition;
+    u32 fieldWidth;
+};
+extern const struct HighScoreNamePosition gHighScoreNamePositions[][8];
+
 
 enum HighScoreStates{
     HIGH_SCORE_STATE_INIT = 0,

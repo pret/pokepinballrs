@@ -22,16 +22,9 @@ struct TitlescreenStruct
     /*0x14*/ s16 idleFramesCounter;
 };
 
-extern struct TitlescreenStruct gTitlescreen;
-extern s8 gAutoDisplayTitlescreenMenu;
+
 extern u8 gTitleReturnedFromMenu;
 extern u16 gHighScoreEntrySource;
-extern s8 gEraseSaveDataAccessStep;
-extern s8 gEraseSaveDataAccessCounter;
-extern s8 gEReaderAccessStep;
-extern s8 gEReaderAccessCounter;
-extern s8 gTitleTransitionActive;
-extern s8 gTitleRestartDebounce;
 extern const u8 *gTitleNoSaveMenuSpriteSets[];
 extern const u8 *gTitleSavedMenuSpriteSets[];
 

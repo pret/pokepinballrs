@@ -64,6 +64,67 @@ void PrintDexNumbersFromListPosition(s16);
 static void PrintCaughtBallFromListPosition(s16);
 void LoadMonPortrait(s16);
 
+EWRAM_DATA s8 gPokedex_EraseSaveDataAccessCounter;
+EWRAM_DATA s8 gPokedex_EraseSaveDataAccessStep;
+
+EWRAM_DATA u16 gLinkRecvBuffer[0x8][2];
+EWRAM_DATA s16 gPokedexCursorBlinkOffset;
+
+
+EWRAM_DATA u16 gPokedexVramBuffer[0x400];
+EWRAM_DATA s16 gPokedexNumOwned;
+EWRAM_DATA s16 gPokedexSelectedMon;
+EWRAM_DATA s16 gPokedexNumSeen;
+EWRAM_DATA s16 gPokedexListPosition;
+EWRAM_DATA s16 gPokedexAnimatedIconFrame;
+EWRAM_DATA s16 gPokedexAnimatedIconTimer;
+EWRAM_DATA s16 gPokedexCursorOffset;
+EWRAM_DATA s16 gPokedexBlinkTimer;
+EWRAM_DATA s16 gPokedexScrollWaitFrames;
+EWRAM_DATA s8 gPokedexScrollActive;
+EWRAM_DATA s16 gPokedexSpriteAnimFrame;
+EWRAM_DATA s16 gPokedexSpriteAnimTimer;
+EWRAM_DATA s16 gPokedexPageIndicatorTimer;
+EWRAM_DATA s16 gPokedexShowAnimSprite;
+EWRAM_DATA s16 gPokedexShowPortrait;
+EWRAM_DATA s16 gPokedexShowCatchHatch[2];
+EWRAM_DATA s16 gPokedexDetailFrameCount;
+EWRAM_DATA s16 gPokedexInfoWindowSlideStep;
+EWRAM_DATA s8 gPokedexButtonPromptFrame;
+EWRAM_DATA s8 gPokedexShowButtonPrompt;
+EWRAM_DATA s16 gPokedexSpriteCategory;
+EWRAM_DATA s8 gPokedexShowCompletionBadge;
+EWRAM_DATA s16 gPokedexLinkStateTimer;
+EWRAM_DATA s8 gPokedexShowPopupWindow;
+
+/****
+ *  Yellow confirmation/info window mode
+ *  0= Transmession connection prompt,
+ *  1= Transferring in progress?
+ *  2= transmission error message
+ *  3= transfer complete?
+ *  4= delete save data confirmation
+ * ****/
+EWRAM_DATA s8 gPokedexPopupTypeIndex;
+EWRAM_DATA s8 gPokedexDescriptionPage;
+EWRAM_DATA s8 gPokedexShowPageIndicator;
+EWRAM_DATA s8 gPokedexPageIndicatorBlink;
+EWRAM_DATA s8 gPokedexSpriteIndexBase;
+EWRAM_DATA s16 gPokedexFlags[0xE8];
+EWRAM_DATA s16 gPokedexFlagExchangeBuffer[0xE2];
+EWRAM_DATA s16 gPokedexListEntryCount;
+EWRAM_DATA u16 gPokedexInfoWindowBackupTiles[0x400];
+EWRAM_DATA u8 gLinkExchangeStep;
+EWRAM_DATA u32 gLinkStatusResult;
+EWRAM_DATA s16 gLinkSendBuffer[0xA];
+EWRAM_DATA u32 gLinkConnectionState;
+EWRAM_DATA u8 gLinkPlayerCount;
+EWRAM_DATA u8 gLinkNegotiationFlags;
+EWRAM_DATA u16 gLinkExchangeFrameCounter;
+EWRAM_DATA s16 gLinkTimeoutCounter;
+
+EWRAM_DATA s8 gPokedexLinkTransferPhase;
+
 extern Palette *gCatchMonPaletteGroups[];
 extern u8 *gCatchSpriteGfxPtrs[];
 
@@ -83,6 +144,26 @@ extern const s16 gPokedexCatchAnimIndices[];
 extern const u16 gPokedexHatchAnimTileOffsets[][51];
 extern const s16 gPokedexAnimFrameDurations[][51];
 extern s16 gPokedexListNameVramOffsets[];
+extern u8 *gMonPortraitGroupGfx[];
+extern const Palette *gMonPortraitGroupPals[];
+extern u16 gPokedexBg1_Tilemap[];
+extern u16 gPokedexBgText_Gfx[];
+extern u16 gPokedexBg2_Tilemap[];
+extern u16 gPokedexBg_Gfx[];
+extern u16 gPokedexBg3_Tilemap[];
+extern const Palette gPokedexBackground_Pals[];
+extern const Palette gPokedexSprites_Pals[];
+extern u8 gPokedexSprites_Gfx[];
+extern u16 gDexInfoWindowEmptyTextRowTiles[];
+extern u16 gDexInfoWindowMiddleRowTiles[];
+extern u16 gDexInfoWindowBottomRowTiles[];
+extern u16 gDexInfoWindowEmptyRowTiles[];
+extern u16 gPokedexInfoWindowTilemap[];
+
+extern StateFunc gPokedexStateFuncs[];
+
+
+extern s16 gDexAnimationIx[];
 
 enum PokedexPopupType {
     POKEDEX_POPUP_TRANSMISSION_CONNECT_PROMPT = 0,

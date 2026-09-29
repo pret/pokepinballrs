@@ -15,8 +15,16 @@
 #define DUSCLOPS_HITS_NEEDED_TO_SUCCEED 5
 
 extern struct SongHeader se_duskull_appear;
+extern struct SongHeader se_dusclops_appear;
 extern s16 DuskullFramesetData[][3];
-
+extern u16 gDusclopsBossGuardReadyTileOffsets[];
+extern const Palette gBonusStageObjPal[];
+extern const Palette gDusclopsAnimPalettes[];
+extern const u8 gDusclopsBonusClear_Gfx[];
+extern u16 gDusclopsBoardDusclopsAppearFx_Gfx[];
+extern u16 gDusclopsBoardDusclops_Gfx[];
+extern u8 gDusclopsBoardDusclopsBallGrabSwirl_Gfx[];
+extern s16 DuclopsFramesetData[][2];
 
 
 void InitFrameProcess3_BoardLogic_DusclopsBoard(void)

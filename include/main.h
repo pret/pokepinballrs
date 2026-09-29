@@ -150,10 +150,15 @@ enum bonusStageLoop{
 #define StartOfEvenBonusLoop (gCurrentPinballGame->numCompletedBonusStages / BONUS_STAGE_LOOP_COUNT) % 2 == 0
 #define RayquazaCatchChanceTrip gCurrentPinballGame->numCompletedBonusStages % (2*BONUS_STAGE_LOOP_COUNT) == BONUS_STAGE_LOOP_COUNT + BONUS_STAGE_LOOP_SECOND_BOSS_CLEARED
 
-extern struct Main gMain;
-extern u32 IntrMain_Buffer[0x200];
+#define INTR_COUNT 14
+extern EWRAM_DATA IntrFunc gIntrTable[14];
+extern EWRAM_DATA struct Main gMain;
+extern EWRAM_DATA IntrFunc *gVBlankIntrFuncPtr;
+extern EWRAM_DATA void (*gMainCallback)(void);
+extern EWRAM_DATA void (*gVCountIntrFuncShadow)(void);
+
+
 extern u32 IntrMain[];
-extern IntrFunc *gVBlankIntrFuncPtr;
 extern IntrFunc *gVCountIntrFuncPtr;
 extern int gRumbleLoopCounter;
 extern int gRumbleFrameCounter;
@@ -167,15 +172,20 @@ extern int gRumblePaused;
 extern int gRumbleSpeedMode;
 extern int gGameBoyPlayerEnabled;
 extern u8 gSio32CommState;
-extern u8 gGbPlayerTilemapBuffer[];
-#define INTR_COUNT 14
-extern IntrFunc gIntrTable[14];
-extern void (*gMainCallback)(void);
-extern void (*gVCountIntrFuncShadow)(void);
 extern void (*gVBlankIntrFuncShadow)(void);
 extern void (*gMainCallbackShadow)(void);
 extern StateFunc gMainFuncs[];
+
+// sym_bss
+
+extern u16 gTempGfxBuffer[];
+extern u8 gEReaderTextTileBuffer[3][0x800];
+extern u16 gTextTilemapBuffer[];
 extern struct OamData gOamBuffer[128];
+extern u32 IntrMain_Buffer[0x200];
+extern u16 gBG0TilemapBuffer[];
+
+// ----
 
 void FadeInScreen(void);
 void FadeOutScreen(void);

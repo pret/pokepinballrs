@@ -34,6 +34,9 @@ extern const u16 gGroudonProjectileAttackOamData[12][6][3];
 extern const u16 gGroudonMainBodyOamData[166][19][3];
 extern const u16 gGroudonFirePillarOamData[58][10][3];
 
+extern const Palette gBonusStageObjPal[];
+extern const u8 gGroudonLavaPaletteCycleData[];
+
 void InitFrameProcess3_BoardLogic_GroudonBoard(void)
 {
     s16 i;

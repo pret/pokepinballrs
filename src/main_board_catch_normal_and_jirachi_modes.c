@@ -29,6 +29,8 @@ extern const Palette *gCatchMonPaletteGroups[];
 extern const u16 gJirachiFloatOamFramesets[68][3][3];
 extern const u16 gCatchMonRevealOamFramesets[14][18];
 extern const u8 (*gCatchSpriteGfxPtrs[])[0x480];
+extern u8 gCatchSpriteGfxBuffer[];
+extern u8 gCatchSpriteFlashGfx[];
 
 extern struct SongHeader se_evo_item_appear;
 

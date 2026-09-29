@@ -6,6 +6,10 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
+extern u8 gFlipper_Gfx[][0x200];
+extern struct FlipperLineSegment gFlipperLineGeometry[13];
+extern u16 gFlipperBaseXPositions[2];
+
 void InitFrameProcess4_FlipperLogic_AllBoards(void)
 {
     if (gMain.selectedField >= FIELD_BONUS_START)

@@ -107,18 +107,20 @@ static void ResetRecvBuffer(void);
 // static IWRAM variable declarations
 
 // static EWRAM variable declarations
+EWRAM_DATA u8 sChecksumAvailable;
+EWRAM_DATA u16 gLinkSavedIme;
+EWRAM_DATA u8 sNumVBlanksWithoutSerialIntr;
+EWRAM_DATA u8 sSendBufferEmpty;
+EWRAM_DATA u8 sLinkFlowControlDelay;
+EWRAM_DATA u8 sHandshakePlayerCount;
+EWRAM_DATA u16 sSendNonzeroCheck;
+EWRAM_DATA u16 sRecvNonzeroCheck;
+
 // TODO fix bss discard nonsense
-extern u8 sChecksumAvailable;
-extern u16 gLinkSavedIme;
-extern u8 sNumVBlanksWithoutSerialIntr;
-extern u8 sSendBufferEmpty;
-extern u8 sLinkFlowControlDelay;
-extern u8 sHandshakePlayerCount; // sHandshakePlayerCount ?
-extern u16 sSendNonzeroCheck;
-extern u16 sRecvNonzeroCheck;
 extern u8 gLastSendQueueCount;
 extern u8 sRecvQueueSnapshot; // ???
 extern s8 sLinkMasterHandshakeState;
+extern const struct OamData gEmptyOamData[128];
 
 // static const definitions
 
