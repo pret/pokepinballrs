@@ -9,11 +9,14 @@
 #include "constants/mem_layout/sapphire.h"
 #include "constants/mem_layout/spheal.h"
 
+EWRAM_DATA u8 gBoardBGTileBufferAlt[32 * 0x400];
+
+
+
 extern const s16 gScrollTileUpdateTable[][4];
 
 extern const struct BoardCollisionDataSet gBoardCollisionDataSets[][2];
 
-extern u8 gBoardBGTileBufferAlt[];
 extern u8 gBoardBGTileBuffer[];
 extern const u8 gGroudonLavaPaletteCycleData[];
 

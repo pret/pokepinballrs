@@ -113,7 +113,6 @@ extern u16 gOptionsBGMList[];
 extern u16 gOptionsSEList[];
 
 
-extern u8 gOptionsButtonConfigEditFlags[];
 extern const struct Vector16 gOptionsCursorPositionTable[];
 extern const u16 gOptionsBGMSelectorYPositions[];
 extern const struct SpriteSet *const gOptionsSpriteSets[];
@@ -605,7 +604,7 @@ void UpdateOptionsSpritePositions(void)
 
         do
         {
-            if ((gOptionsButtonConfigEditFlags[i] == TRUE)
+            if ((gOptionsData.buttonEditFlags[i] == TRUE)
                 && (gOptionsData.buttonFlashVisible == TRUE))
             {
                 buttonConfig[i][0] = &gMain.spriteGroups[28];

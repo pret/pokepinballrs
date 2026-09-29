@@ -16,8 +16,9 @@
 #include "constants/mem_layout/ruby.h"
 #include "constants/mem_layout/sapphire.h"
 
+extern EWRAM_DATA u8 gBoardBGTileBufferAlt[32 * 0x400];
+
 extern u8 gBoardBGTileBuffer[];
-extern u8 gBoardBGTileBufferAlt[];
 extern const u8 gMainBoardBallSave_Gfx[];
 extern const u8 gMainBoardEndOfBall_Gfx[];
 extern const u8 gEvolutionCutsceneTilesGfx[];

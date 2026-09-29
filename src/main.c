@@ -5,6 +5,11 @@
 #include "m4a.h"
 
 EWRAM_DATA struct PinballGame gPinballGameState;
+EWRAM_DATA IntrFunc gIntrTable[14];
+EWRAM_DATA struct Main gMain;
+EWRAM_DATA IntrFunc *gVBlankIntrFuncPtr;
+EWRAM_DATA void (*gMainCallback)(void);
+EWRAM_DATA void (*gVCountIntrFuncShadow)(void);
 
 extern const s16 gSineTable[];
 extern const IntrFunc gIntrTableTemplate[14];

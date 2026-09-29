@@ -71,13 +71,7 @@ gPaletteFadeRGBCache: @ 0x020028A8
 CurrentBoardProcPairs: @ 0x020028D8
 	.space 0x48
 gOptionsData: @ 0x02002920
-	.space 0x12
-gOptionsBGMDigitTileIds: @ 0x02002932
-	.space 0x3
-gOptionsSEDigitTileIds: @ 0x02002935
-	.space 0x5
-gOptionsButtonConfigEditFlags: @ 0x0200293A
-	.space 0x1E
+	.space 0x38
 gDpcmSampleBuffer: @ 0x2002958
 	.space 0x40
 gMPlayTrack_BGM: @ 0x2002998
