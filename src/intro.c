@@ -17,93 +17,127 @@
   7: Parade (Makuhita Wailmer Pelipper and Spoink)
   8: Wailmer ball eject
   9: Flying ball
-*/
+  */
 
+ void IntroScene3Treecko_InitVars(void);
+ void IntroScene3Treecko_RenderPokeball(void);
+ void IntroScene4PlusleMinun_InitVars(void);
+ void IntroScene5Mudkip_InitVars(void);
+ extern void IntroScene5Mudkip_RenderAllSprites(void);
+ void IntroScene6Chinchou_InitVars(void);
+ void IntroScene6Chinchou_RenderStarSprites(void);
+ void IntroScene7Parade_InitVars(void);
+ void IntroScene7Parade_RenderWailmer(void);
+ void IntroScene8WailmerLaunch_InitVars(void);
+ void IntroScene8WailmerLaunch_RenderAllSprites(void);
+ void IntroScene9BallFlight_InitVars(void);
+ void IntroScene9BallFlight_RenderBallAndCloud(void);
 
-void IntroScene3Treecko_InitVars(void);
-void IntroScene3Treecko_RenderPokeball(void);
-void IntroScene4PlusleMinun_InitVars(void);
-void IntroScene5Mudkip_InitVars(void);
-extern void IntroScene5Mudkip_RenderAllSprites(void);
-void IntroScene6Chinchou_InitVars(void);
-void IntroScene6Chinchou_RenderStarSprites(void);
-void IntroScene7Parade_InitVars(void);
-void IntroScene7Parade_RenderWailmer(void);
-void IntroScene8WailmerLaunch_InitVars(void);
-void IntroScene8WailmerLaunch_RenderAllSprites(void);
-void IntroScene9BallFlight_InitVars(void);
-void IntroScene9BallFlight_RenderBallAndCloud(void);
+ struct UnkStruct_0201A450
+ {
+     u16 posX;
+     s16 posY;
+     u16 velX;
+     s16 velY;
+     s16 animFrame;
+     s16 frameTimer;
+     s8 visible;
+}; // 0x10 size in memory
 
-extern StateFunc gIntroStateFuncs[15];
-extern u8 gIntroCopyright_Tilemap[];
-
-extern u8 gIntroCopyright_Gfx[];
-extern const Palette gIntroCopyright_Pal[];
-extern u8 gIntroScene1TorchicSprites_Gfx[];
-extern const Palette gIntroScene1TorchicSprites_Pals[];
-
-extern u8 gIntroScene1Torchic_BG0Tilemap[];
-extern u8 gIntroScene1Torchic_BG1Tilemap[];
-extern u8 gIntroScene1Torchic_BG2Tilemap[];
-extern u8 gIntroScene1Torchic_BG3Tilemap[];
-extern u8 gIntroScene1TorchicText_Gfx[];
-extern u8 gIntroScene1TorchicBall_Gfx[]; // Also used for scene 5
-extern s16 gIntroScene1Torchic_TileOffsets[0x8];
-
-extern u16 gIntroTileBuffer[];
-
-extern struct UnkStruct_0202ADA0 gIntroBGParams[4];
-
-extern s16 gIntroFrameCounter;
-extern u8 gIntroBlendSrc;
-extern u8 gIntroBlendDst;
-extern s16 gIntroOverlayFadeStep;
-extern s32 gIntroScaleX;
-extern s32 gIntroScaleY;
-extern s16 gIntroAnimStep;
-extern s32 gIntroPalFadeLevel;
-extern s8 gIntroJingleVariant;
-extern s8 gIntroSceneIndex;
-extern u8 gIntroPalSwapBuffer[];
-
-extern u8 gIntroScene2Pikas_BG3Tilemap[];
-extern u8 gIntroScene2PikasSprites_Gfx[];
-extern const Palette gIntroScene2Pikas_Pal[];
-extern u8 gIntroScene2Pikas_BG0Tilemap[];
-extern u8 gIntroScene2Pikas_BG1Tilemap[];
-
-extern u8 gIntroScene3Treecko_AltBG1TilemapBuffer[];
-
-extern const Palette gIntroScene3Treecko_Pal[];
-extern u8 gIntroScene3Treecko_BG0Tilemap[];
-extern u8 gIntroScene3Treecko_BG1Tilemap[];
-extern u8 gIntroScene3Treecko_BG2Tilemap[];
-extern u8 gIntroScene3Treecko_BG3Tilemap[];
-extern u8 gIntroScene3TreeckoBgTiles_Gfx[];
-extern u8 gIntroScene3Treecko_BG1TilemapA[];
-extern u8 gIntroScene3Treecko_BG1TilemapB[];
-extern u8 gIntroScene3TreeckoTreecko_Gfx[];
-extern const struct SpriteSet *const gIntroScene9BallFlight_SpriteSets[];
-
-typedef void (*IntroFunc)(void);
-extern const IntroFunc gIntroSceneFuncs[];
-
-struct UnkStruct_0201A450
-{
-    u16 posX;
+struct UnkStruct_0202ADA0{
+    s16 posX;
     s16 posY;
-    u16 velX;
+    s16 velX;
     s16 velY;
     s16 animFrame;
     s16 frameTimer;
-    s8 visible;
-}; // 0x10 size in memory
-extern struct UnkStruct_0201A450 gIntroSpriteEntities[6];
+};
 
-extern struct Vector16 gIntroScene1Torchic_BGAnimTiming[0x8];
-extern struct Vector16 gIntroScene1Torchic_ScaleOffsets[0x4];
-extern struct Vector16 gIntroScene5Mudkip_BGAnimTiming[];
-extern struct Vector16 gIntroScene7Parade_WailmerQuadOffsets[0x4];
+EWRAM_DATA s32 gIntroScaleX;
+EWRAM_DATA struct UnkStruct_0201A450 gIntroSpriteEntities[6];
+EWRAM_DATA u8 gIntroScene3Treecko_AltBG1TilemapBuffer[32 * 0x40]; //Perhaps twice this, from ewram gap
+EWRAM_DATA s32 gIntroScaleY;
+EWRAM_DATA u8 gIntroBlendSrc;
+EWRAM_DATA u16 gIntroTileBuffer[26 * 0x400];
+EWRAM_DATA s8 gIntroBGWhiteFlash;
+EWRAM_DATA s16 gIntroAnimStep;
+EWRAM_DATA struct UnkStruct_0202ADA0 gIntroBGParams[4];
+EWRAM_DATA u8 gIntroBlendDst;
+EWRAM_DATA s16 gIntroWailmerScaleY;
+EWRAM_DATA u8 gIntroPalSwapBuffer[0x20];
+EWRAM_DATA s8 gIntroScene6ChinchouEntitySpawnIndex;
+EWRAM_DATA s8 gIntroObjWhiteFlash;
+EWRAM_DATA s32 gIntroPalFadeLevel;
+EWRAM_DATA s16 gIntroFrameCounter;
+EWRAM_DATA s8 gIntroScene6ChinchouVelocityIndex;
+EWRAM_DATA s16 gIntroOverlayFadeStep;
+EWRAM_DATA s8 gIntroJingleVariant;
+EWRAM_DATA s16 gIntroWailmerScaleX;
+EWRAM_DATA s8 gIntroSceneIndex;
+
+typedef void (*IntroFunc)(void);
+// Rom_1 data
+extern const StateFunc gIntroStateFuncs[15];
+extern const IntroFunc gIntroSceneFuncs[];
+extern const u8 gIntroCopyright_Tilemap[];
+extern const u8 gIntroCopyright_Gfx[];
+extern const Palette gIntroCopyright_Pal[];
+extern const Palette gIntroScene1TorchicSprites_Pals[];
+extern const u8 gIntroScene1Torchic_BG3Tilemap[];
+extern const u8 gIntroScene1TorchicText_Gfx[];
+extern const u8 gIntroScene1Torchic_BG0Tilemap[];
+extern const u8 gIntroScene1Torchic_BG2Tilemap[];
+extern const u8 gIntroScene1Torchic_BG1Tilemap[];
+extern const u8 gIntroScene1TorchicBall_Gfx[]; // Also used for scene 5
+extern const u8 gIntroScene1TorchicSprites_Gfx[];
+extern const Palette gIntroScene2Pikas_Pal[];
+extern const u8 gIntroScene2Pikas_BG3Tilemap[];
+extern const u8 gIntroScene2PikasSprites_Gfx[];
+extern const u8 gIntroScene2Pikas_BG0Tilemap[];
+extern const u8 gIntroScene2Pikas_BG1Tilemap[];
+extern const Palette gIntroScene3Treecko_Pal[];
+extern const u8 gIntroScene3Treecko_BG2Tilemap[];
+extern const u8 gIntroScene3Treecko_BG3Tilemap[];
+extern const u8 gIntroScene3TreeckoBgTiles_Gfx[];
+extern const u8 gIntroScene3Treecko_BG1Tilemap[];
+extern const u8 gIntroScene3Treecko_BG1TilemapA[];
+extern const u8 gIntroScene3Treecko_BG1TilemapB[];
+extern const u8 gIntroScene3Treecko_BG0Tilemap[];
+extern const u8 gIntroScene3TreeckoTreecko_Gfx[];
+extern const Palette gIntroScene4PlusleMinun_Pal[];
+extern const u8 gIntroScene4PlusleMinun_BG3Tilemap[];
+extern const u8 gIntroScene4PlusleMinunBgTiles_Gfx[];
+extern const u8 gIntroScene4PlusleMinun_BG0Tilemap[];
+extern const u8 gIntroScene4PlusleMinun_BG1Tilemap[];
+extern const Palette gIntroScene5Mudkip_Pal[];
+extern const u8 gIntroScene5Mudkip_BG2Tilemap[];
+extern const u8 gIntroScene5Mudkip_BG1Tilemap[];
+extern const u8 gIntroScene5Mudkip_BG3Tilemap[];
+extern const u8 gIntroScene5MudkipBgTiles_Gfx[];
+extern const u8 gIntroScene5Mudkip_BG0Tilemap[];
+extern const u8 gIntroScene5MudkipSprites_Gfx[];
+extern const Palette gIntroScene6Chinchou_Pal[];
+extern const u8 gIntroScene6Chinchou_BG3Tilemap[];
+extern const u8 gIntroScene6ChinchouBgTiles_Gfx[];
+extern const u8 gIntroScene6Chinchou_BG2Tilemap[];
+extern const u8 gIntroScene6Chinchou_BG0Tilemap[];
+extern const u8 gIntroScene6Chinchou_BG1Tilemap[];
+extern const u8 gIntroScene6ChinchouStars_Gfx[];
+extern const Palette gIntroScene7Parade_Pal[];
+extern const u8 gIntroScene7Parade_BG3Tilemap[];
+extern const u8 gIntroScene7ParadeBgTiles_Gfx[];
+extern const u8 gIntroScene7Parade_BG2Tilemap[];
+extern const u8 gIntroScene7Parade_BG0Tilemap[];
+extern const u8 gIntroScene7Parade_BG1Tilemap[];
+extern const u8 gIntroScene7ParadeWailmer_Gfx[];
+extern const Palette gIntroScene8WailmerLaunch_Pal[];
+extern const u8 gIntroScene8WailmerLaunch_BG2Tilemap[];
+extern const u8 gIntroScene8WailmerLaunchBgTiles_Gfx[];
+extern const u8 gIntroScene8WailmerLaunch_Gfx[];
+extern const Palette gIntroScene9BallFlight_Pal[];
+extern const u8 gIntroScene9BallFlight_BG3Tilemap[];
+extern const u8 gIntroScene9BallFlightClouds_Gfx[];
+extern const u8 gIntroScene9BallFlightall_Gfx[];
 
 struct IntroAnimVelocity {
     s8 velocityX;
@@ -111,11 +145,6 @@ struct IntroAnimVelocity {
     s8 frameDuration;
     s8 spawnFrame;
 };
-
-extern struct IntroAnimVelocity gIntroScene6Chinchou_ScrollVelocity[];
-extern struct IntroAnimVelocity gIntroScene6Chinchou_EntityMovement[];
-
-extern const struct SpriteSet *const gIntroScene8WailmerLaunch_SpriteSets[];
 
 struct IntroDebrisMovement
 {
@@ -126,7 +155,31 @@ struct IntroDebrisMovement
     u8 filler4;
     u8 oamPriority;
 }; // 0x8 size in memory
+
+// Rom_2 data
+extern const struct SpriteSet *const gIntroScene1Torchic_SpriteSets[];
+extern const struct Vector16 gIntroScene1Torchic_BGAnimTiming[0x8];
+extern const s16 gIntroScene1Torchic_TileOffsets[0x8];
+extern const struct Vector16 gIntroScene1Torchic_ScaleOffsets[0x4];
+extern const s16 gTitleRevealJingle[][10][2];
+extern const struct SpriteSet *const gIntroScene3Treecko_SpriteSets[];
+extern const struct SpriteSet *const gIntroScene5Mudkip_SpriteSets[];
+extern const struct Vector16 gIntroScene5Mudkip_BGAnimTiming[];
+extern const s16 gIntroScene5Mudkip_TileOffsets[];
+extern const struct SpriteSet *const gIntroScene6Chinchou_SpriteSets[];
+extern const struct IntroAnimVelocity gIntroScene6Chinchou_ScrollVelocity[];
+extern const u8 gIntroScene6Chinchou_BounceFlags[];
+extern const struct IntroAnimVelocity gIntroScene6Chinchou_EntityMovement[];
+extern const struct SpriteSet *const gIntroScene7Parade_SpriteSets[];
+extern const struct Vector16 gIntroScene7Parade_WailmerQuadOffsets[0x4];
+extern const struct SpriteSet *const gIntroScene8WailmerLaunch_SpriteSets[];
 extern const struct IntroDebrisMovement gIntroScene8WailmerLaunch_DebrisMovement[];
+extern const struct SpriteSet *const gIntroScene9BallFlight_SpriteSets[];
+extern s8 gIntroScene9BallFlight_BallXFrameAdjustTable[];
+
+// --------
+
+
 
 void IntroMain(void)
 {

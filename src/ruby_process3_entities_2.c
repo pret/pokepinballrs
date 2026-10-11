@@ -5,30 +5,30 @@
 #include "constants/board/ruby_states.h"
 #include "constants/mem_layout/ruby.h"
 
-extern struct SongHeader se_whiscash_splashdown;
-
-extern const u8 gRubyBoardSharpedo_Gfx[][0x260];
-extern const s16 gSharpedoAnimFrameData[][2];
-extern const u16 gSharpedoSpritesheetOam[42][3][3];
-extern const u8 gChinchouBumper_Gfx[][0x100];
-extern const Palette gChinchouBumper_Pals[];
-extern const struct Vector16 gChinchouWaypointPositions[];
-
+// Rom_1 data
 extern const s16 gPondBumperTransitionFrames[];
-extern const u8 gLotadBumper_Gfx[][0x100];
-extern const Palette gLotadBumper_Pals[];
 extern const s16 gLotadBobOffsets[];
-extern const s16 gWhiscashFramesetData[][4];
-extern const s16 gWhiscashShakeOffsets[];
+extern const Palette gChinchouBumper_Pals[];
+extern const Palette gLotadBumper_Pals[];
 extern const Palette gWhiscash_Pals[];
-extern const u8 gWhiscash_Gfx[][0x480];
+extern const u8 gChinchouBumper_Gfx[][SIZE_OF_VRAM_RUBY_BUMPER_TILES];
+extern const u8 gLotadBumper_Gfx[][SIZE_OF_VRAM_RUBY_BUMPER_TILES];
+extern const u8 gRubyStageNuzleaf_Gfx[][SIZE_OF_VRAM_NUZLEAF_RAW_TILES];
+extern const u8 gWhiscash_Gfx[][SIZE_OF_VRAM_WHISCASH_RAW_TILES];
+extern const u8 gRubyBoardShopDoor_Gfx[][SIZE_OF_VRAM_RUBY_MART_DOOR_TILES];
+extern const u8 gRubyBoardSharpedo_Gfx[][SIZE_OF_VRAM_SHARPEDO_TILES];
 
-extern const u8 gRubyBoardShopDoor_Gfx[][0x180];
+extern const struct SongHeader se_whiscash_splashdown;
 
+// Rom_2 data
 extern const s16 gNuzleafAnimFrameData[50][3];
-extern const s16 gNuzleafPositions[][2]; // Would be a Vector16, if it didn't impact compilation.
-extern const u8 gRubyStageNuzleaf_Gfx[][0x280];
+extern const s16 gNuzleafPositions[][2]; // TODO: Would be a Vector16, if it didn't impact compilation.
+extern const s16 gWhiscashFramesetData[][4];
+extern const struct Vector16 gChinchouWaypointPositions[];
+extern const s16 gWhiscashShakeOffsets[];
+extern const s16 gSharpedoAnimFrameData[][2];
 extern const u16 gNuzleafOamData[58][6];
+extern const u16 gSharpedoSpritesheetOam[42][3][3];
 
 #define MIN_POND_SWITCHES_BEFORE_WHISCASH_AVAILABLE 3
 

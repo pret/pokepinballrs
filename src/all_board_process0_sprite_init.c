@@ -1,6 +1,8 @@
 #include "global.h"
 #include "main.h"
 
+// Rom_2 data
+extern const struct SpriteSetTableEntry gFieldSpriteSets[];
 
 void InitFrameProcess0_DefaultSpriteState_RubyBoard(void)
 {

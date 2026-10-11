@@ -1,6 +1,9 @@
 #include "global.h"
 #include "main.h"
 
+
+extern const struct OamData gEmptyOamData[128];
+
 static u8 *WriteDigitsRecursive(u32, u8*, u32);
 static int IntPow(int, int);
 
@@ -183,7 +186,7 @@ void ClearSprites(void)
     }
 }
 
-void DrawTextToTilemap(u8 *arg0, s16 arg1, s16 arg2)
+void DrawTextToTilemap(u8 const *arg0, s16 arg1, s16 arg2)
 {
     // Rumble Pak related?
     s16 var0 = strlen(arg0) - 1;

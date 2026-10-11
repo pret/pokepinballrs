@@ -6,6 +6,13 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
+// Rom_1 data
+extern const u8 gFlipper_Gfx[][SIZE_OF_VRAM_FLIPPER_TILES];
+
+// Rom_2 data
+extern const struct FlipperLineSegment gFlipperLineGeometry[13];
+extern const u16 gFlipperBaseXPositions[2];
+
 void InitFrameProcess4_FlipperLogic_AllBoards(void)
 {
     if (gMain.selectedField >= FIELD_BONUS_START)
@@ -15,7 +22,7 @@ void InitFrameProcess4_FlipperLogic_AllBoards(void)
 void DetermineFlipperBallSide(struct Vector16 ballPos)
 {
     s16 checkBallRelativeYPos;
-    struct FlipperLineSegment *line;
+    const struct FlipperLineSegment *line;
     struct Vector16 point1, point2;
 
     line = &gFlipperLineGeometry[gCurrentPinballGame->flipper[SIDE_IX_LEFT].position];

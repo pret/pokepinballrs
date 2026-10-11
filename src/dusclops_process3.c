@@ -14,10 +14,23 @@
 #define DUSKULL_ALLOWED_TO_SPAWN DUSKULL_NEEDED_TO_PHASE_TRANSFER - DUSKULL_CONCURRENT_MAX + 1
 #define DUSCLOPS_HITS_NEEDED_TO_SUCCEED 5
 
-extern struct SongHeader se_duskull_appear;
-extern s16 DuskullFramesetData[][3];
+// Rom_1 data
+extern const u16 gDusclopsBossGuardReadyTileOffsets[];
+extern const u8 gDusclopsBonusClear_Gfx[SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES];
+extern const Palette gBonusStageObjPal;
+extern const Palette gDusclopsAnimPalettes[];
+extern const u16 gDusclopsBoardDusclopsAppearFx_Gfx[];
+extern const u16 gDusclopsBoardDusclops_Gfx[];
+extern const u8 gDusclopsBoardDusclopsBallGrabSwirl_Gfx[];
+extern const u8 gDusclopsBoardDuskull_Gfx[];
 
+extern const struct SongHeader se_duskull_appear;
+extern const struct SongHeader se_dusclops_appear;
 
+// Rom_2 data
+extern const s16 DuskullFramesetData[][3];
+extern const s16 DuclopsFramesetData[][2];
+extern const u16 gDuskullSpritesheetOam[][2][3];
 
 void InitFrameProcess3_BoardLogic_DusclopsBoard(void)
 {
@@ -554,8 +567,6 @@ void DuskullPhase_ProcessEntityLogic(void) {
     }
 }
 
-extern const u8 gDusclopsBoardDuskull_Gfx[];
-extern const u16 gDuskullSpritesheetOam[][2][3];
 void DuskullPhase_ProcessGraphics() {
     s16 i, animPiece;
     s16 oamIx;

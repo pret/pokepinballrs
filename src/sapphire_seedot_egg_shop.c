@@ -5,25 +5,27 @@
 #include "constants/board/sapphire_states.h"
 #include "constants/mem_layout/sapphire.h"
 
-extern const u16 gEggOamFramestates[40][2][3];
-extern const u16 gSeedotBasketBounceFrames[];
-extern const u8 gSapphireStageBasket_Gfx[][0x280];
-extern const u8 gSapphireBoardSeedot_Gfx[][0x180];
-extern const u16 gSeedotBaseXPositions[];
-extern const u16 gSapphireBoardSeedotSpritesheetOam[6][6][2][3];
-extern const u16 gShopSignTransitionFrames[][14];
-extern const u16 gShopSignIntroFrames[][4];
+// Rom_1 data
 extern const u16 gShopSignLoopFrames[][5];
-
-extern const s16 gHoleAnimKeyframeData[][2];
-extern const u8 gHatchMachineElevator_Gfx[][0x440];
-
-extern const u8 gHatchMachineSparkleFx_Gfx[][0x100];
-extern struct Vector16 gSplashEffectPositions[];
-extern const s16 gSplashEffectTileIndices[][2];
+extern const u16 gShopSignIntroFrames[][4];
+extern const u16 gShopSignTransitionFrames[][14];
 extern const Palette gSapphireShopSign_Pals[];
-extern const u8 gSapphireShopSignTileGfx[][0x480];
+extern const u8 gSapphireStageBasket_Gfx[][SIZE_OF_SEEDOT_BASKET_TILES];
+extern const u8 gHatchMachineSparkleFx_Gfx[][SIZE_OF_HATCH_MACHINE_SPARKLE_FX_TILES];
+extern const u8 gSapphireShopSignTileGfx[][SIZE_OF_SAPPHIRE_MART_SIGN_TILES];
+extern const u8 gHatchMachineElevator_Gfx[][SIZE_OF_VRAM_HATCH_MACHINE_ALL_TILES];
+extern const u8 gEggFrameTilesGfx[][SIZE_OF_VRAM_HATCH_EGG_TILES];
+extern const u8 gSapphireBoardSeedot_Gfx[][SIZE_OF_SEEDOT_ENTITY_RAW_TILES];
 
+// Rom_2 data
+extern const u16 gEggAnimationFrameData[][4];
+extern const u16 gSeedotBaseXPositions[];
+extern const u16 gSeedotBasketBounceFrames[];
+extern const struct Vector16 gSplashEffectPositions[];
+extern const s16 gSplashEffectTileIndices[][2];
+extern const s16 gHoleAnimKeyframeData[][2];
+extern const u16 gSapphireBoardSeedotSpritesheetOam[6][6][2][3];
+extern const u16 gEggOamFramestates[40][2][3];
 
 void InitSapphireEggHatchAnimation(void)
 {

@@ -4,25 +4,26 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
-extern const s16 gCatchTile_SequentialFramesetData[][2];
-extern const u16 gCatchTile_SequentialBreakSpritesheetOam[28][18];
-extern const s16 gCatchTile_RevealSparkleTimings[];
-extern const u16 gCatchTile_RevealOamFramesets[16][18];
-extern const u8 gCatchTile_RevealTilesGfx[];
+// Rom_1 data
+extern const u8 gCatchTile_RevealTilesGfx[SIZE_OF_VRAM_FX_CATCH_REAVEAL_SEQUENTIAL_TILES];
 extern const Palette gCatchTile_Reveal_Pal;
-extern const u16 gCatchTile_BurstRevealOamFramesets0[18][18];
-extern const u16 gCatchTile_BurstRevealOamFramesets1[22][12];
-extern const s16 gCatchTile_RevealFinalTimings[];
-
-extern const u8 gCatchTile_BurstStart_Gfx[];
+extern const u8 gCatchTile_BurstStart_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_LIGHTNING_TILES];
 extern const Palette gCatchTile_BurstStart_Pal;
-extern const u8 gCatchTile_BurstStage2_Gfx[];
+extern const u8 gCatchTile_BurstStage2_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_OUTLINE];
 extern const Palette gCatchTile_BurstStage2_Pal;
-extern const u8 gCatchTile_BurstStage3_Gfx[];
+extern const u8 gCatchTile_BurstStage3_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_FLIGHT];
 extern const Palette gCatchTile_BurstStage3_Pal;
-extern const u8 gCatchTile_BurstStage4_Gfx[];
+extern const u8 gCatchTile_BurstStage4_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_ELECTRIC];
 extern const Palette gCatchTile_BurstStage4_Pal;
 
+// Rom_2 data
+extern const s16 gCatchTile_SequentialFramesetData[][2];
+extern const s16 gCatchTile_RevealSparkleTimings[];
+extern const s16 gCatchTile_RevealFinalTimings[];
+extern const u16 gCatchTile_BurstRevealOamFramesets1[22][12];
+extern const u16 gCatchTile_BurstRevealOamFramesets0[18][18];
+extern const u16 gCatchTile_RevealOamFramesets[16][18];
+extern const u16 gCatchTile_SequentialBreakSpritesheetOam[28][18];
 
 void DisableCatchTileDisplay(void)
 {

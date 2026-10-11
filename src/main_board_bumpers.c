@@ -6,15 +6,17 @@
 #include "constants/board/sapphire_states.h"
 #include "constants/mem_layout/sapphire.h"
 
-extern const u8 gSapphireBoardShopShockWall_Gfx[][0x80];
-
-extern const s16 gShopGuardianAnimFramesetData[][2];
+// Rom_1 data
 extern const s16 gBumperMosaicValues[];
-extern const u8 gSapphireMinun_Gfx[][0x300];
-extern const u8 gSapphireMinunHeadElectricity_Gfx[][0x200];
-extern const u8 gSapphirePlusle_Gfx[][0x300];
-extern const u8 gSapphirePlusleHeadElectricity_Gfx[][0x200];
-extern const u8 gShroomishBumperHit_Gfx[][0x200];
+extern const u8 gShroomishBumperHit_Gfx[][SIZE_OF_SHROOMISH_BUMPER_TILES];
+extern const u8 gSapphireMinun_Gfx[][SIZE_OF_PLUSLE_MINUN_ENTITY_RAW_TILES];
+extern const u8 gSapphireMinunHeadElectricity_Gfx[][SIZE_OF_PLUSLE_MINUN_ELECTRICITY_RAW_TILES];
+extern const u8 gSapphirePlusle_Gfx[][SIZE_OF_PLUSLE_MINUN_ENTITY_RAW_TILES];
+extern const u8 gSapphirePlusleHeadElectricity_Gfx[][SIZE_OF_PLUSLE_MINUN_ELECTRICITY_RAW_TILES];
+extern const u8 gSapphireBoardShopShockWall_Gfx[][SIZE_OF_SAPPHIRE_MART_ELECTRIC_GATE_TILES];
+
+// Rom_2 data
+extern const s16 gShopGuardianAnimFramesetData[][2];
 
 void UpdateSapphireShopGateLogic(void)
 {

@@ -8,6 +8,7 @@
 #define TRAVEL_MODE_TIME TICKS_FOR_TIME(1,0)
 #define TRAVEL_MODE_SAVER_TIME TICKS_FOR_TIME(0,30)
 
+// Rom_1 data
 extern const Palette gTimer_Default_Pal[];
 
 void CleanupTravelModeState(void)

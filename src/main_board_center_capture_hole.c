@@ -8,20 +8,22 @@
 #include "inline_load_lighting_pal.h"
 #include "constants/board/sapphire_states.h"
 
-extern struct SongHeader se_roulette_tick;
-extern struct SongHeader se_mon_catch_ball_woosh;
-extern struct SongHeader se_ball_upgrade;
+EWRAM_DATA Palette gCatchSpritePalettes[4];
 
-extern u16 gRouletteWheelContents[][7];
-extern const u8 gPichuSaverTilesGfx[];
+// Rom_1 data
+extern const u8 gCaptureBallTilesGfx[]; //TODO: apply size (math grouping chunks don't match with needed size)
+extern const u8 gCaptureScreenTilesGfx[SIZE_OF_VRAM_FX_MON_CATCH_CUTSCENE_TILES];
+extern const u16 gPokeballCaptureOamFrames[][16 * 0x3];
+extern const u8 gPichuSaverTilesGfx[SIZE_OF_VRAM_PIKA_MON_TILES];
 
+extern const struct SongHeader se_roulette_tick;
+extern const struct SongHeader se_ball_upgrade;
+extern const struct SongHeader se_mon_catch_ball_woosh;
+
+// Rom_2 data
 extern const s16 gCaptureSequenceTimings[34];
-extern const u8 gCaptureScreenTilesGfx[];
 extern const s8 gCaptureShakeOffsets[];
-extern const u16 gPokeballCaptureOamFrames[][0x30];
-extern const u8 gCaptureBallTilesGfx[];
-
-extern Palette gCatchSpritePalettes[];
+extern u16 gRouletteWheelContents[][7]; //TODO: should be const
 
 void InitRouletteWheel(void)
 {
@@ -555,9 +557,10 @@ void RunMonCaptureSequence(void)
         gCurrentPinballGame->ball->positionQ8.y += gCurrentPinballGame->ball->velocity.y;
 
         gCurrentPinballGame->activeFxType = FX_CAPTURE_MON_ABSORB;
+        // Note: only replaces the lid. The bits to the right/bottom that are part of the bottom of the ball are shared
         DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_MON_CATCH_CUTSCENE_TILES);
-        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType << 9], OBJ_VRAM_ADDR_FX_MON_CATCH_OPEN_BALL_TILES1, SIZE_OF_VRAM_FX_MON_CATCH_OPEN_BALL_TILES1);
-        DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) << 6)], OBJ_VRAM_ADDR_FX_MON_CATCH_OPEN_BALL_TILES2, SIZE_OF_VRAM_FX_MON_CATCH_OPEN_BALL_TILES2);
+        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType * 4 * 0x80], OBJ_VRAM_ADDR_FX_MON_CATCH_OPEN_BALL_TILES1, SIZE_OF_VRAM_FX_MON_CATCH_OPEN_BALL_TILES1);
+        DmaCopy16(3, &gCaptureBallTilesGfx[((gCurrentPinballGame->ballUpgradeType * 8 + 4) * 0x40)], OBJ_VRAM_ADDR_FX_MON_CATCH_OPEN_BALL_TILES2, SIZE_OF_VRAM_FX_MON_CATCH_OPEN_BALL_TILES2);
 
         gCurrentPinballGame->ballUpgradeTimerPaused = TRUE;
 
@@ -656,7 +659,7 @@ void RunMonCaptureSequence(void)
 
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_EGG_HATCH_MODE)
             {
-                for (i = 0; i <= 15; i++)
+                for (i = 0; i < 16; i++)
                 {
                     oamSimple = &spriteGroup->oam[i];
                     dst = (u16*)&gOamBuffer[oamSimple->oamId];
@@ -671,7 +674,7 @@ void RunMonCaptureSequence(void)
             }
             else
             {
-                for (i = 0; i <= 15; i++)
+                for (i = 0; i < 16; i++)
                 {
                     oamSimple = &spriteGroup->oam[i];
                     dst = (u16*)&gOamBuffer[oamSimple->oamId];
@@ -789,7 +792,7 @@ void RunMonCaptureSequence(void)
 
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_EGG_HATCH_MODE)
             {
-                for (i = 0; i <= 15; i++)
+                for (i = 0; i < 16; i++)
                 {
                     oamSimple = &spriteGroup->oam[i];
                     dst = (u16*)&gOamBuffer[oamSimple->oamId];
@@ -804,7 +807,7 @@ void RunMonCaptureSequence(void)
             }
             else
             {
-                for (i = 0; i <= 15; i++)
+                for (i = 0; i < 16; i++)
                 {
                     oamSimple = &spriteGroup->oam[i];
                     dst = (u16*)&gOamBuffer[oamSimple->oamId];
@@ -893,7 +896,7 @@ void RunMonCaptureSequence(void)
 
             if (gCurrentPinballGame->boardState == MAIN_BOARD_STATE_EGG_HATCH_MODE)
             {
-                for (i = 0; i <= 15; i++)
+                for (i = 0; i < 16; i++)
                 {
                     oamSimple = &spriteGroup->oam[i];
                     dst = (u16*)&gOamBuffer[oamSimple->oamId];
@@ -908,7 +911,7 @@ void RunMonCaptureSequence(void)
             }
             else
             {
-                for (i = 0; i <= 15; i++)
+                for (i = 0; i < 16; i++)
                 {
                     oamSimple = &spriteGroup->oam[i];
                     dst = (u16*)&gOamBuffer[oamSimple->oamId];

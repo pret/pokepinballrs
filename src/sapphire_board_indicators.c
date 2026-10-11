@@ -4,25 +4,25 @@
 #include "constants/bg_music.h"
 #include "constants/board/sapphire_states.h"
 
+// Rom_2 data
+extern const u16 gSapphireSlingshotHitFrameIndices[];
 extern const u8 *gSapphirePSquareIndicator[][2];
-extern const u8 *gHatchMachineDrawSegment[][3][2];
-extern const u8 *gSapphireBallPowerUpLightTilePtrs[][3];
-extern const u8 *gSapphireShopArrowTilePtrs[][4];
-extern const u8 *gSapphireCatchArrowTilePtrs[][4];
-extern const u8 *gSapphireGetArrowTilePtrs[][5][3];
-extern const u8 *gSapphireEvoArrowTilePtrs[][5][3];
-extern const u8 *gSapphireBumperArrowTilePtrs[][4];
-extern const u8 *gSapphireHatchArrowTilePtrs[][4];
-extern const u8 *gSapphireCoinRewardTilePtrs[][5][3];
-extern const u8 *gSapphireSaverDisplayTilePtrs[][4];
-extern const u8 *gSapphireHoleIndicatorTilePtrs[][4];
-extern const u8 *gSapphireCatchLightTilePtrs[][7][2];
-extern const u8 *gRotatingBackgroundTilePtrs[][4];
-extern const u8 *gSapphireTrapIndicatorTilePtrs[][2];
-extern const u16 gSlingshotHitFrameIndices[];
-extern const u8 *gSapphireSlingshotTilePtrs[][3][5];
 extern const u8 *gSapphireProgressDigitTilePtrs[][4];
-
+extern const u8 *gWailmerWaterTilePtrs[][4];
+extern const u8 *gHatchMachineDrawSegment[][3][2];
+extern const u8 *gSapphireSlingshotTilePtrs[][3][5];
+extern const u8 *gSapphireTrapIndicatorTilePtrs[][2];
+extern const u8 *gSapphireCatchLightTilePtrs[][7][2];
+extern const u8 *gSapphireSaverDisplayTilePtrs[][4];
+extern const u8 *gSapphireHatchArrowTilePtrs[][4];
+extern const u8 *gSapphireBumperArrowTilePtrs[][4];
+extern const u8 *gSapphireShopArrowTilePtrs[][4];
+extern const u8 *gSapphireBallPowerUpLightTilePtrs[][3];
+extern const u8 *gSapphireCatchArrowTilePtrs[][4];
+extern const u8 *gSapphireHoleIndicatorTilePtrs[][4];
+extern const u8 *gSapphireEvoArrowTilePtrs[][5][3];
+extern const u8 *gSapphireCoinRewardTilePtrs[][5][3];
+extern const u8 *gSapphireGetArrowTilePtrs[][5][3];
 
 void UpdateSapphireBoardAnimations(void)
 {
@@ -110,7 +110,7 @@ void AnimateSapphireSlingshotHit(void)
     const u8 **src;
     const u8 **dest;
 
-    var0 = gSlingshotHitFrameIndices[gCurrentPinballGame->slingshotHitAnimTimer];
+    var0 = gSapphireSlingshotHitFrameIndices[gCurrentPinballGame->slingshotHitAnimTimer];
     if (gCurrentPinballGame->slingshotHitAnimTimer)
     {
         gCurrentPinballGame->slingshotHitAnimTimer--;
@@ -148,8 +148,8 @@ void AnimateRotatingBackground(void)
     const u8 **src;
     const u8 **dest;
 
-    src = gRotatingBackgroundTilePtrs[(gMain.systemFrameCount % 64) / 16];
-    dest = gRotatingBackgroundTilePtrs[4];
+    src = gWailmerWaterTilePtrs[(gMain.systemFrameCount % 64) / 16];
+    dest = gWailmerWaterTilePtrs[4];
     if (gCurrentPinballGame->hudSpriteBaseY < 192)
     {
         DmaCopy16(3, src[0], dest[0], 0x40);

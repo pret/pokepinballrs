@@ -9,23 +9,26 @@
 #define BALL_NORMAL_LAUNCH_SAVER_TIME TICKS_FOR_TIME(0,30)
 #define BONUS_SCORE_TALLY_STEP (200 * SCORE_K)
 
-extern s16 gGameOverLetterXOffsets[];
-extern s16 gGameOverLetterAmplitudes[];
-extern s16 gGameOverLetterYOffsets[];
+EWRAM_DATA s16 gGameOverLetterXOffsets[8];
+EWRAM_DATA s16 gGameOverLetterAmplitudes[8];
+EWRAM_DATA s16 gGameOverLetterYOffsets[8];
 
+// Rom_1 data
 extern const u8 gDebugTextStrings[];
 extern const u8 gDebugMenuValueTemplate[];
-extern u8 gDebugMenuCursorText[];
-extern const u8 gMainBoardBallSave_Gfx[];
-extern const u8 gMainBoardBallSaveLatios_Gfx[];
-extern const u8 gMainBoardBallSaveLatiosArm_Gfx[];
-extern const u8 gMainBoardEndOfBall_Gfx[];
-extern const u8 gEobBonusSummaryCharTiles[][0x20];
-extern const u8 gMainBoardGameOverText_Gfx[];
+extern const u8 gDebugMenuCursorText[];
+extern const u8 gMainBoardBallSave_Gfx[SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES];
+extern const u8 gMainBoardBallSaveLatios_Gfx[SIZE_OF_VRAM_LATIOS_BALL_SAVER_TILES];
+extern const u8 gMainBoardBallSaveLatiosArm_Gfx[SIZE_OF_VRAM_LATIOS_ARM_TILES];
+extern const u8 gMainBoardEndOfBall_Gfx[SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES];
+extern const u8 gEobBonusSummaryCharTiles[][SIZE_OF_VRAM_END_OF_BALL_BONUS_SUMMARY_TEXT_CHAR_TILES];
+extern const u8 gMainBoardGameOverText_Gfx[SIZE_OF_VRAM_GAME_OVER_TEXT_TILES];
 extern const Palette gBallSaver_Ruby_Pal;
 extern const Palette gBallSaver_Sapphire_Pal;
 extern const Palette gEndOfBallBonus_Ruby_Pal;
 extern const Palette gEndOfBallBonus_Sapphire_Pal;
+
+// Rom_2 data
 extern const s8 gBonusSummaryTextTemplates[][EOB_SUMMARY_LINES][EOB_SUMMARY_CHARS_PER_LINE];
 
 // Handle debug system flags

@@ -9,16 +9,13 @@
 #include "constants/mem_layout/sapphire.h"
 #include "constants/mem_layout/spheal.h"
 
-extern const s16 gScrollTileUpdateTable[][4];
+EWRAM_DATA u8 gBoardBGTileBufferAlt[32 * 0x400];
+EWRAM_DATA u8 gBoardBGTileBuffer[32 * 0x400];
 
-extern const struct BoardCollisionDataSet gBoardCollisionDataSets[][2];
-
-extern u8 gBoardBGTileBufferAlt[];
-extern u8 gBoardBGTileBuffer[];
-
+// Rom_1 data
 extern const u16 gFlipperCollisionData[11][0x2400]; // 96 x 96 pixel area
-extern const u8 gRubyBoardBG3Tilemap[];
 extern const Palette gRubyBoard_Pals[];
+extern const u8 gRubyBoardBG3Tilemap[];
 extern const u8 gRubyBoardBG2Tilemap[];
 extern const u8 gRubyBoardCompressedTiles1[];
 extern const u8 gRubyBoardCompressedTiles2[];
@@ -29,27 +26,26 @@ extern const Palette gSapphireBoardPalette[];
 extern const u8 gSapphireBoardBG3Tilemap[];
 extern const u8 gSapphireBoardBG2Tilemap[];
 extern const u8 gSapphireBoardCompressedTiles1[];
-extern const u8 gSapphireBoardBG1Tiles[];
 extern const u8 gSapphireBoardCompressedTiles2[];
 extern const u8 gSapphireBoardCompressedBGTileBuffer[];
+extern const u8 gSapphireBoardBG1Tiles[];
 extern const u8 gSapphireBoardBG1Tilemap[];
 extern const Palette gDusclopsBoardPalette[];
 extern const u8 gDusclopsBoardBG3Tilemap[];
-
-
 extern const u8 gDusclopsBoardBG2Tilemap[];
 extern const u8 gDusclopsBoardBG1Tilemap[];
 extern const u8 gBonusFieldCompressedBaseTiles[];
 extern const u8 gDusclopsBoardCompressedBGTiles[];
 extern const Palette gKecleonBoardPalette[];
 extern const u8 gKecleonBoardBG2Tilemap[];
-extern const u16 gKecleonScopeOverlayTilemap[];
+extern const u16 gKecleonScopeOverlayTilemap[MEM_SIZE_OF_TILEMAP_256_BY_256];
 extern const u8 gKecleonBoardBG3Tilemap[];
 extern const u8 gKecleonBoardCompressedBGTiles[];
 extern const Palette gKyogreBoardPalette[];
 extern const u16 gKyogreWaterBackgroundTilemap[];
 extern const u8 gKyogreBoardBG2Tilemap[];
 extern const u8 gKyogreBoardCompressedBGTiles[];
+extern const u16 gGroudonLavaPaletteCycleData[]; //Should be of type Palette
 extern const u8 gGroudonBoardBG3Tilemap[];
 extern const u8 gGroudonBoardBG2Tilemap[];
 extern const u8 gGroudonBoardCompressedBGTiles[];
@@ -59,12 +55,11 @@ extern const u8 gRayquazaBoardBGScrollTilemap[];
 extern const u8 gRayquazaBoardBG2Tilemap[];
 extern const u8 gRayquazaBoardCompressedBGTiles[];
 extern const Palette gSphealBoardPalette[];
-extern const u16 gSphealWaterBackgroundTilemap[];
+extern const u16 gSphealWaterBackgroundTilemap[MEM_SIZE_OF_TILEMAP_256_BY_256];
 extern const u8 gSphealBoardBG2Tilemap[];
 extern const u8 gSphealBoardCompressedBGTiles[];
 extern const u8 gBoardHudTiles_B[];
 extern const u8 gBoardHudTiles_A[];
-
 extern const u8 gRubyIntroSprites_Gfx[];
 extern const u8 gSapphireIntroSprites_Gfx[];
 extern const u8 gDusclopsIntroSprite_Gfx[];
@@ -74,7 +69,10 @@ extern const u8 gGroudonIntroSprite_Gfx[];
 extern const u8 gRayquazaIntroSprite_Gfx[];
 extern const u8 gSphealIntroSprites_Gfx[];
 
+// Rom_2 data
+extern const struct BoardCollisionDataSet gBoardCollisionDataSets[][2];
 extern const struct FieldBoardLayout gFieldBoardConfigs[];
+extern const s16 gScrollTileUpdateTable[][4];
 
 void loadFieldBoardGraphics(void)
 {

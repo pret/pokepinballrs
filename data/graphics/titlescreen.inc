@@ -9,15 +9,11 @@ gTitlescreenBg_Gfx:: @ 0x081216C0
 
 gTitlescreenSpritesNoSavedGame_Gfx:: @ 0x081296c0
 	.incbin "graphics/titlescreen/sprites_no_saved_game.4bpp"
-
-gUnknown_081306C0:: @ 0x08081306C0
-	.incbin "graphics/titlescreen/unknown_081306C0.bin"
+	.space 0x20
 
 gTitlescreenSpritesSavedGame_Gfx:: @ 0x081306E0
 	.incbin "graphics/titlescreen/sprites_saved_game.4bpp"
-
-gUnknown_081376E0:: @ 0x08081376E0
-	.incbin "graphics/titlescreen/unknown_081376E0.bin"
+	.space 0x20
 
 gTitlescreenSprites_Pals:: @ 0x08137700
 	.incbin "graphics/titlescreen/sprites.gbapal"

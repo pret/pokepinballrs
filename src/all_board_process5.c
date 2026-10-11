@@ -9,6 +9,13 @@ extern void UpdateFrameProcess7_DrawBall_MainBoards(void);
 extern void UpdateFrameProcess7_DrawBall_BonusBoards(void);
 extern void RunMonCaptureSequence(void);
 
+EWRAM_DATA struct PinballGame *gCurrentPinballGame;
+EWRAM_DATA struct BoardConfig gBoardConfig;
+
+// Rom_1 data
+extern const u16 gGravityDeltas_Strong[4];
+extern const u16 gGravityDeltas_Medium[4];
+extern const u16 gGravityDeltas_Light[4];
 
 void InitFrameProcess5_BallMovement_AllBoards(void)
 {
@@ -50,11 +57,6 @@ void InitBallState(s16 arg0)
     ball->spinSpeed = 0;
     gCurrentPinballGame->ballInLowerHalf = TRUE;
 }
-
-extern const u16 gGravityDeltas_Strong[4];
-extern const u16 gGravityDeltas_Medium[4];
-extern const u16 gGravityDeltas_Light[4];
-
 
 // Before updating the ball's position, cap the ball's velocity
 // vector to a maximum speed.

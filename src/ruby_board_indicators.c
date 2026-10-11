@@ -4,27 +4,27 @@
 #include "constants/bg_music.h"
 #include "constants/board/ruby_states.h"
 
-extern const u8 *gRubyBallPowerUpLightTilePointers[][3];
-extern const u16 gBallUpgradeFx_TileIndicies[];
-extern const u8 *gRubyCatchArrowTilePointer[][4];
-extern const u8 *gRubyShopRampArrowTilePointsers[][4];
-extern const u8 *gRubyBumperArrowTilePointer[][4];
-extern const u8 *gRubyHatchArrowTilePointer[][4];
-extern const u8 *gRubySaverTilePointers[][4];
-extern const u8 *gRubyHoleIndicatorTilePointers[][4];
-extern const u8 *gRubyCatchLightTilePointers[][7][2];
-extern const u8 *gRubyTrapIndicatorTilePointers[][2];
-extern const u8 *gRubyProgressDigitTilePointers[][2];
-extern const u8 *gRubyShopSignTilePointers[][3];
+extern const struct SongHeader se_ball_upgrade;
+
+// Rom_2 data
+extern const s16 gCoinRewardLevelTimerThresholds[];
 extern const s16 gRubySlingshotAnimIndices[];
 extern const u8 *gRubySlingshotTilePointers[2][3][5];
-extern const u8 *gRubyCoinRewardTilePtrs[][5][3];
-extern const s16 gCoinRewardLevelTimerThresholds[];
+extern const u8 *gRubyShopSignTilePointers[][3];
+extern const u8 *gRubyProgressDigitTilePointers[][2];
+extern const u8 *gRubyTrapIndicatorTilePointers[][2];
+extern const u8 *gRubyCatchLightTilePointers[][7][2];
+extern const u8 *gRubySaverTilePointers[][4];
+extern const u8 *gRubyHatchArrowTilePointer[][4];
+extern const u8 *gRubyBumperArrowTilePointer[][4];
+extern const u8 *gRubyShopRampArrowTilePointsers[][4];
+extern const u8 *gRubyBallPowerUpLightTilePointers[][3];
+extern const u8 *gRubyCatchArrowTilePointer[][4];
+extern const u8 *gRubyHoleIndicatorTilePointers[][4];
 extern const u8 *gRubyEvoArrowTilePtrs[][5][3];
+extern const u8 *gRubyCoinRewardTilePtrs[][5][3];
 extern const u8 *gRubyGetArrowTilePtrs[][5][3];
-
-extern struct SongHeader se_ball_upgrade;
-
+extern const u16 gBallUpgradeFx_TileIndicies[];
 
 void UpdateRubyBoardAnimations(void)
 {

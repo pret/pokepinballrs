@@ -4,8 +4,8 @@
 const char AgbLibSramVersion[] = "SRAM_F_V102";
 
 // this should be in .bss
-extern /*static*/ u16 verifySramFast_Work[80]; // buffer to hold code of VerifySramFast_Core
-extern /*static*/ u16 readSramFast_Work[64];  // buffer to hold code of ReadSramFast_Core
+EWRAM_DATA /*static*/ u16 verifySramFast_Work[80]; // buffer to hold code of VerifySramFast_Core
+EWRAM_DATA /*static*/ u16 readSramFast_Work[64];  // buffer to hold code of ReadSramFast_Core
 
 u32 (*VerifySramFast)(const u8 *src, u8 *dest, u32 size);  // pointer to verifySramFast_Work
 void (*ReadSramFast)(const u8 *src, u8 *dest, u32 size);  // pointer to readSramFast_Work

@@ -8,6 +8,11 @@
 
 extern void RenderBannerSlideAnimation(void);
 
+extern const struct SongHeader se_catch_evo_banner;
+
+// Rom_2 data
+extern const u16 gModeBannerOamAttributes[14][45];
+
 void ProcessBannerCameraTransition(void)
 {
     if ((gMain.modeChangeFlags & MODE_CHANGE_BANNER) != 0)

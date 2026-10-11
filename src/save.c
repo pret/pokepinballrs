@@ -4,6 +4,9 @@
 #include "main.h"
 #include "constants/species_rs.h"
 
+// Rom_2 data
+extern const u8 gSaveFileSignature[];
+
 static bool16 LoadSaveDataFromSram(void);
 
 void SaveFile_LoadGameData(void)
@@ -26,7 +29,6 @@ void SaveFile_LoadGameData(void)
     }
 }
 
-extern u8 gSaveFileSignature[];
 
 static bool16 LoadSaveDataFromSram(void)
 {

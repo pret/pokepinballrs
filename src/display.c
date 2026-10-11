@@ -1,6 +1,8 @@
 #include "global.h"
 #include "main.h"
 
+EWRAM_DATA u16 gPaletteFadeBuffers[3][BG_PLTT_SIZE];
+
 void FadeInFromWhite(void (*func)(void))
 {
     u16 i;
@@ -334,7 +336,7 @@ void SetStringPalette(int x, int y, int width, int height, u16 palette)
 }
 
 // This requires volatile parameters to match. There is no reason, *ever*, to do this.
-void CopyBgTilesRect(void *volatile src, void *volatile dest, s16 width, s16 height)
+void CopyBgTilesRect(const void *volatile src, void *volatile dest, s16 width, s16 height)
 {
     int j;
 
@@ -346,7 +348,7 @@ void CopyBgTilesRect(void *volatile src, void *volatile dest, s16 width, s16 hei
 
 // This function is unused. It appears to operates on a pixel canvas where each "tile" is represented by
 // 2 bytes.
-void CopyPixelCanvasRect(void *volatile src, void *volatile dest, s16 width, s16 height)
+void CopyPixelCanvasRect(const void *volatile src, void *volatile dest, s16 width, s16 height)
 {
     int j;
 

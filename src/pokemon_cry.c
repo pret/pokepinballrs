@@ -4,7 +4,14 @@
 #include "main.h"
 #include "constants/species_rs.h"
 
+// Rom_1 data
 extern const u16 gSpeciesRSToCryId[];
+
+//Sound_data data
+extern const struct ToneData gPokemonCryToneBank0[];
+extern const struct ToneData gPokemonCryToneBank1[];
+extern const struct ToneData gPokemonCryToneBank2[];
+extern const struct ToneData gPokemonCryToneBank3[];
 
 static void PlayCryInternal(u16, s8, s8, u8, int);
 

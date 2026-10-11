@@ -4,6 +4,7 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
+// Rom_2 data
 extern const void (*gBoardStateInitFuncs[])(void);
 extern const void (*gBoardStateUpdateFuncs[])(void);
 

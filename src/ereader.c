@@ -8,42 +8,44 @@
 #include "titlescreen.h"
 #include "variables.h"
 
-extern StateFunc gEReaderStateFuncs[11];
-extern s8 gEReaderTextCharIndex;
-extern s8 gEReaderTextAnimDelay;
-extern s8 gEReaderTextBlinkToggle;
-extern s8 gEReaderTextPageIndex;
+EWRAM_DATA u8 gEReaderUnused1;
+EWRAM_DATA u8 gEReaderUnused2;
+EWRAM_DATA s8 gEReaderLinkDataReceived;
+extern EWRAM_DATA s16 gLinkTimeoutCounter;
+EWRAM_DATA s16 gEReaderGeneralTimer;
+EWRAM_DATA s8 gEReaderTransitionStep;
+EWRAM_DATA s16 gEReaderCardIndex;
+EWRAM_DATA s8 gEReaderLinkHandshakeStarted;
+EWRAM_DATA s8 gEReaderTextAnimDelay;
+EWRAM_DATA s8 gEReaderStatusAnimSpriteGroup;
+EWRAM_DATA s8 gEReaderTextPageIndex;
+EWRAM_DATA s8 gEReaderLinkAckSent;
+EWRAM_DATA s8 gEReaderHeaderAnimSpriteGroup;
+EWRAM_DATA s16 gEReaderReceivedCardId;
+EWRAM_DATA s8 gEReaderExitTargetState;
+EWRAM_DATA s8 gEReaderStatusSpriteVisible;
+EWRAM_DATA s16 gEReaderTransitionTimer;
+EWRAM_DATA s8 gEReaderTextBlinkToggle;
+EWRAM_DATA s8 gEReaderTextCharIndex;
 
-extern s8 gEReaderStatusAnimSpriteGroup;
-extern s8 gEReaderStatusSpriteVisible;
-extern s8 gEReaderHeaderAnimSpriteGroup;
-extern s8 gEReaderTransitionStep;
-extern s16 gEReaderTransitionTimer;
-extern s16 gEReaderGeneralTimer;
-extern u8 gEReaderUnused1;
-extern u8 gEReaderUnused2;
-extern s8 gEReaderExitTargetState;
-extern u8 gLinkExchangeStep;
-extern u32 gLinkStatusResult;
-extern s16 gLinkSendBuffer[];
-extern u16 gLinkRecvBuffer[][2];
-extern u32 gLinkConnectionState;
-extern u8 gLinkPlayerCount;
-extern u8 gLinkNegotiationFlags;
-extern s16 gEReaderCardIndex;
-extern s16 gLinkTimeoutCounter;
-
-extern s8 gEReaderTextLengths[10];
-extern s8 gEReaderTextHasNextPage[10];
-extern u8 gEReaderCardStartPages[NUM_EREADER_CARDS + 1];
-extern u8 gPokedexSprites_Gfx[];
+// Rom_1 data
+extern const StateFunc gEReaderStateFuncs[11];
+extern const u8 gEReaderText_Tilemap[];
+extern const u8 gEReaderOverlay_Tilemap[];
+extern const u8 gEReaderBackground_Gfx[];
 extern const Palette gEReaderBackground_Pals[];
-extern u8 gEReaderText_Tilemap[];
-// extern u8 gUnknown_0807D000[]; // dead declaration, never referenced
-extern u16 gTempGfxBuffer[];
-extern u8 gEReaderBackground_Gfx[];
-extern u8 gEReaderOverlay_Tilemap[];
-extern s16 gEReaderTransitionStepDurations[];
+extern const Palette gPokedexBackground_Pals[];
+extern const Palette gPokedexSprites_Pals[];
+extern const u8 gPokedexSprites_Gfx[];
+extern const u8 gEReaderText_Gfx[];
+
+// Rom_2 data
+extern const u16 gEReaderTextGlyphTable[][3*0x18];
+extern const struct SpriteSet * const gEReaderSpriteSets[13];
+extern const s16 gEReaderTransitionStepDurations[];
+extern const s8 gEReaderTextLengths[10];
+extern const s8 gEReaderTextHasNextPage[10];
+extern const u8 gEReaderCardStartPages[NUM_EREADER_CARDS + 1];
 
 enum EReaderState{
     EREADER_STATE_LOAD_GRAPHICS = 0,

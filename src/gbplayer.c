@@ -2,6 +2,48 @@
 #include "gbplayer.h"
 #include "main.h"
 
+//sym_ewram
+EWRAM_DATA u16 sGbPlayerCurKeys;
+EWRAM_DATA u16 sGbPlayerPrevKeys;
+EWRAM_DATA u8 gGbPlayerTilemapBuffer[BG_SCREEN_SIZE];
+EWRAM_DATA int gRumbleLoopCounter;
+EWRAM_DATA int gRumbleFrameCounter;
+EWRAM_DATA int gRumbleMotorMode;
+EWRAM_DATA u32 gSio32ReconnectTimer;
+EWRAM_DATA int gSio32SerialEnabled;
+EWRAM_DATA int gRumblePatternIndex;
+EWRAM_DATA int gRumblePatternPosition;
+EWRAM_DATA int gRumbleCommand;
+EWRAM_DATA int gRumblePaused;
+EWRAM_DATA int gRumbleSpeedMode;
+EWRAM_DATA int gGameBoyPlayerEnabled;
+EWRAM_DATA u8 gSio32CommState;
+
+struct RfuSIO32Id {
+    u8 MS_mode; //either 0 or 1
+    u16 count;
+    u16 send_id;
+    u16 recv_id;
+    u8 filler[0xA-0x8];
+    u16 lastId;
+    // size 0xC
+};
+EWRAM_DATA struct RfuSIO32Id gSio32Id;
+EWRAM_DATA u32 gSio32SendData;
+EWRAM_DATA u32 gSio32ReceivedData;
+EWRAM_DATA u32 gSio32RemoteDeviceId;
+
+// -----
+
+// Rom_1 data
+extern const Palette gGbPlayerPalettes[];
+extern const u8 gGbPlayerGfx[];
+extern const u8 gGbPlayerTilemap[];
+extern const u16 Sio32ConnectionData[4];
+
+// Rom_2 data
+extern const int *gRumblePatterns[];
+
 /*static*/ void ReadGbPlayerKeys(void)
 {
     u16 keyInput = REG_KEYINPUT ^ KEYS_MASK;

@@ -1,11 +1,12 @@
 #include "global.h"
 #include "main.h"
 
+// Rom_2 data
+extern const s16 gHatchPieceAnimIndices[][12];
 extern const s16 gCatchTile_RevealPieceIndices[][16];
 extern const s16 gHatchPieceVelocities[][2];
 extern const s16 gHatchPieceAffineModes[];
 extern const s16 gHatchPieceMatrixNums[6];
-extern const s16 gHatchPieceAnimIndices[][12];
 extern const u16 gCatchTileParticleOamAttributes[][3];
 extern const u16 gHatchAnimOamAttributes[][3];
 

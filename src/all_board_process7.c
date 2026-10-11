@@ -5,8 +5,14 @@
 #include "m4a.h"
 #include "constants/mem_layout/shared.h"
 
-extern const u32 gBallSpawnGlowTiles_Type1[][0x80];
-extern const u32 gBallSpawnGlowTiles_Type2[][0x80];
+EWRAM_DATA u8 gKecleonSpriteGroupOrderMap[24];
+
+// Rom_1 data
+extern const u8 gBallRotationTileGraphics[][SIZE_OF_VRAM_BALL_TILES];
+extern const u8 gBallUpgradeFx_Gfx[][SIZE_OF_VRAM_FX_BALL_UPGRADE_TILES];
+extern const u8 gBallSpawnGlowTiles_Type2[][SIZE_OF_VRAM_FX_BALL_SPAWN_TILES];
+extern const u8 gBallSpawnGlowTiles_Type1[][SIZE_OF_VRAM_FX_BALL_SPAWN_TILES];
+
 
 //Called once per frame; 7th process, Draws the ball & related graphics
 void UpdateFrameProcess7_DrawBall_MainBoards(void)

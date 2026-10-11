@@ -87,10 +87,12 @@
 #define SIZE_OF_VRAM_CHIKORITA_BLADE_HIT_FX_TILES   8 * TILE_SIZE_4BPP
 
 #define OBJ_VRAM_ADDR_NUZLEAF_TILES                 OBJ_TILE_ADDR(TILE_INDEX(1, 0, 28))
-#define SIZE_OF_VRAM_NUZLEAF_TILES                  19 * TILE_SIZE_4BPP
+#define SIZE_OF_VRAM_NUZLEAF_TILES                  19 * TILE_SIZE_4BPP        // ignores last tile; always blank
+#define SIZE_OF_VRAM_NUZLEAF_RAW_TILES              20 * TILE_SIZE_4BPP
 
 #define OBJ_VRAM_ADDR_WHISCASH_TILES                OBJ_TILE_ADDR(TILE_INDEX(1, 1, 20))
-#define SIZE_OF_VRAM_WHISCASH_TILES                 35 * TILE_SIZE_4BPP
+#define SIZE_OF_VRAM_WHISCASH_TILES                 35 * TILE_SIZE_4BPP        // ignores last tile; always blank
+#define SIZE_OF_VRAM_WHISCASH_RAW_TILES             36 * TILE_SIZE_4BPP
 
 #define OBJ_VRAM_ADDR_RAMP_PRIZE_TILES              OBJ_TILE_ADDR(TILE_INDEX(1, 2, 24))
 #define SIZE_OF_VRAM_RAMP_PRIZE_TILES               4 * TILE_SIZE_4BPP

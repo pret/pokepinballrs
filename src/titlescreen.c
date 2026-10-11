@@ -6,6 +6,23 @@
 #include "constants/bg_music.h"
 #include "constants/mem_layout/titlescreen.h"
 
+//Ewram
+EWRAM_DATA struct TitlescreenStruct gTitlescreen;
+EWRAM_DATA s8 gEraseSaveDataAccessStep;
+EWRAM_DATA s8 gEraseSaveDataAccessCounter;
+EWRAM_DATA s8 gEReaderAccessStep;
+EWRAM_DATA s8 gEReaderAccessCounter;
+EWRAM_DATA s8 gTitleTransitionActive;
+EWRAM_DATA s8 gTitleRestartDebounce;
+EWRAM_DATA s8 gAutoDisplayTitlescreenMenu;
+extern EWRAM_DATA u32 gHighScoreNameEntry[HIGH_SCORE_NAME_LENGTH];
+EWRAM_DATA const u8 *gTitleNoSaveMenuSpriteSets[7];
+EWRAM_DATA const u8 *gTitleSavedMenuSpriteSets[7];
+EWRAM_DATA u8 gTitleReturnedFromMenu;
+extern EWRAM_DATA u16 gHighScoreEntrySource;
+
+// ------------------------
+
 static void TitleScreen_CheckDeleteKeyComboPressed(void);
 static void CheckEReaderAccessCombo(void);
 static void RenderTitlePressStartSprites(void);
@@ -29,6 +46,36 @@ enum
     SUBSTATE_EXEC_MENU_SELECTION,
     SUBSTATE_FADE_TO_MENU_ACTION,
 };
+
+// Rom_1 data
+extern const StateFunc gTitlescreenStateFuncs[];
+extern const u8 gTitlescreenBgTilemap[];
+extern const Palette gTitlescreenBg_Pals[];
+extern const u8 gTitlescreenBg_Gfx[];
+extern const u8 gTitlescreenSpritesNoSavedGame_Gfx[];
+extern const u8 gTitlescreenSpritesSavedGame_Gfx[];
+extern const Palette gTitlescreenSprites_Pals[];
+extern const Palette gGBAButtonIcons_Pals[];
+extern const u8 gOptionsSprites_Gfx[];
+
+// Rom_2 data
+extern const s16 gTitleMenuStateTable[11];
+extern const s8 gTitlePressStartAnimDurations[4];
+extern const s8 gTitleMenuSlideInAnimData[6][2];
+extern const s8 gTitleMenuSlideOutAnimSpriteGroupData[9][2];
+extern const struct VectorU16 gTitleNoSaveArrowPositions[4];
+extern const struct VectorU16 gTitleNoSaveSelectorPositions[4];
+extern const u16 gTitleNoSaveMenuActions[4];
+extern const struct VectorU16 gTitleSavedArrowPositions[5];
+extern const struct VectorU16 gTitleSavedSelectorPositions[5];
+extern const u16 gTitleSavedMenuActions[];
+extern const struct SpriteSet *const gTitlePressStartSpriteSets[];
+extern const u8 *const gTitleNoSaveDefaultSprites[7];
+extern const u8 *const gTitleNoSaveAnimSprites[];
+extern const s8 gTitleMenuRetractDurations[];
+extern const u8 *const gTitleSavedDefaultSprites[7];
+extern const u8 *const gTitleSavedAnimSprites[];
+extern const s16 gEReaderAccessButtonSequence[];
 
 void ClearHighScoreNameEntry(void)
 {

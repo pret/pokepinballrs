@@ -874,7 +874,7 @@ struct PinballGame
     /*0x74B*/ u8 filler74B[0x1];
     /*0x74C*/ volatile u8 savedObjPalette[2][OBJ_PLTT_SIZE];
     /*0xB4C*/ volatile u8 savedBgPalette[2][BG_PLTT_SIZE];
-    /*0xF4C*/ struct SongHeader *savedBgmSongHeader;
+    /*0xF4C*/ const struct SongHeader *savedBgmSongHeader;
     /*0xF50*/ u8 fillerF50[0x8];
     /*0xF58*/ struct BgOffsets bgOffsets0;
     /*0xF5C*/ struct BgOffsets bgOffsets1;
@@ -974,8 +974,8 @@ struct BoardConfig
     /*0x06*/ s16 idleDemoDuration;
     /*0x08*/ s16 caughtSpeciesCount;
     /*0x0A*/ u8 fillerA[0x2];
-    /*0x0C*/ struct PinballGame *pinballGame;
-    /*0x10*/ struct ReplayInputFrame *replayInputData;
+    /*0x0C*/ const struct PinballGame *pinballGame;
+    /*0x10*/ const struct ReplayInputFrame *replayInputData;
     /*0x14*/ struct FieldBoardLayout fieldLayout;
     /*0x68*/ const u16 (*flipperCollisionData)[96*96]; //pointer to an Array of 96x96 px data
 };
@@ -988,82 +988,19 @@ struct FlipperLineSegment
     u16 y2;
 };
 
-extern struct PinballGame *gCurrentPinballGame;
-extern const StateFunc gIdlePinballGameStateFuncs[];
-extern u32 gReplayFrameCounter;
-extern struct BoardConfig gBoardConfig;
-extern u8 gKecleonSpriteGroupOrderMap[];
-extern const Palette gFieldVariant_Pals[][6];
-extern u16 gDusclopsBossGuardReadyTileOffsets[]; 
+
+extern EWRAM_DATA struct PinballGame *gCurrentPinballGame;
+extern EWRAM_DATA struct BoardConfig gBoardConfig;
+
+// Rom_1 data
 extern const Palette gBall_Pals[];
-extern const u8 gDusclopsBonusClear_Gfx[];
-extern struct ReplayInputFrame gIdleBoardConfig0;
-extern struct ReplayInputFrame gIdleBoardConfig2;
-extern struct ReplayInputFrame gIdleBoardConfig3;
-extern struct ReplayInputFrame gIdleBoardConfig1;
-extern struct PinballGame gIdleBoardGameState0;
-extern struct PinballGame gIdleBoardGameState2;
-extern struct PinballGame gIdleBoardGameState3;
-extern struct PinballGame gIdleBoardGameState1;
-extern const Palette gBonusStageObjPal[];
-extern const Palette gDusclopsAnimPalettes[];
-extern const u8 gGroudonLavaPaletteCycleData[];
-extern u16 gKecleonUprightCollisionMap[0x1600];
-extern u16 gKecleonKnockedDownCollisionMap[0x1600];
-extern u16 gKyogreForm1CollisionMap[];
-extern u16 gKyogreForm2CollisionMap[];
-extern u16 gKyogreForm3CollisionMap[];
-extern u16 gGroudonBodyCollisionMap[0x3800];
-extern u16 gGroudonProjectileCollisionMap[0x2A80];
-extern const u16 gSphealRampCollisionMap[0x1000];
-extern const u16 gSphealFrozenIceCollisionMap[0x1000];
-extern u8 gFlipper_Gfx[][0x200];
-extern u16 gDusclopsBoardDusclopsAppearFx_Gfx[];
-extern u16 gDusclopsBoardDusclops_Gfx[];
-extern u8 gDusclopsBoardDusclopsBallGrabSwirl_Gfx[];
-extern struct SongHeader se_catch_evo_banner;
-extern struct SongHeader se_dusclops_appear;
-extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
-extern const s16 gBounceBackForceMagnitudes[9];
-typedef s16 (*BoardCollisionFunc)(struct Vector16*, u16*);
-extern BoardCollisionFunc BoardCollisionFuncts[8];
-extern struct Vector16 gWallEscapeOffsets[4];
-extern struct FlipperLineSegment gFlipperLineGeometry[13];
-extern u16 gFlipperBaseXPositions[2];
+
+// Rom_2 data
 extern const u8 *const gModeBannerTilemaps[];
 extern const Palette *const gModeBanner_Pals[];
-extern s16 DuclopsFramesetData[][2];
-extern u16 gModeBannerOamAttributes[14][45];
-extern const u8 gMartEvoForegroundMenuUx_Gfx[];
-extern const Palette gShopNameDisplay_Pals[];
-extern const u16 gShopCursorToItemMap[];
-extern u8 gShopModeBG0_0_Tilemap[];
-extern const Palette gShopEvoUI_Pals[];
-extern const Palette gEvoNameDisplay_Pals[];
-extern u8 gEvoModeBG0_0_Tilemap[];
-extern const u16 gShopItemData[][4];
-extern u32 gShopEvoBGAnimFrames[];
-
-extern const u16 gSharedBumperCollisionMap[];
-extern const u16 gDusclopsBodyCollisionMap[];
 
 
-extern u8 *gMonPortraitGroupGfx[];
-extern const Palette *gMonPortraitGroupPals[];
-extern u8 gCatchSpriteGfxBuffer[];
-extern u8 gCatchSpriteFlashGfx[];
-extern const u8 gPichuKickbackFx_Gfx[];
-extern const u8 gPikachuKickbackFx_Gfx[];
-extern const u8 gPortraitAnimFrameGraphics[][0x300];
-extern const u8 gBallRotationTileGraphics[][0x80];
-extern const u8 gBallUpgradeFx_Gfx[][0x200];
-extern const u8 gMainStageBonusTrap_Gfx[][0x300];
-extern const u8 gLocationPortraitGfx[][0x300];
-extern const u8 gChargeFillIndicator_Gfx[][0x80];
-extern const u8 gPikachuSaverTilesGfx[];
-extern const u8 gMainBoardPikaSpinner_Gfx[][0x120];
-extern const u8 gEggFrameTilesGfx[][0x200];
-extern const u8 *gEvoItemTilesGfxPtrs[];
-extern const u16 gEggAnimationFrameData[][4];
+
+extern const struct PokemonSpecies gSpeciesInfo[];
 
 #endif // GUARD_GLOBAL_H

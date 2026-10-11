@@ -9,43 +9,51 @@
 
 #define HATCH_MODE_SAVER_TIME TICKS_FOR_TIME(0,30)
 
-extern const s16 gEggHatchAnimData[28][3];
-extern const u8 gHatchedWalkerAnimTileBuffer[][SIZE_OF_VRAM_HATCH_MON_ENTITY_TILES];
-extern const struct Vector32 gSapphireEggWaypoints[];
-extern const struct Vector32 gEggWalkPathWaypoints[][29];
-extern const Palette gCaptureHit_Pal;
-extern const u8 gCaptureScreenTilesGfx[];
-extern const u8 gCaptureBallTilesGfx[];
-extern const u16 gCatchCreatureOamFramesets[48][4][3];
-extern const u16 gCyndaquilFrameIndices[];
-extern const struct Vector16 gCyndaquilCavePositions[];
-extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
-extern const u8 gRubyBoardHatchCave_Gfx[][0x480];
-extern const u16 gEggOamFramestates[40][2][3];
-extern const u8 gSpaceTileGfx[0x40];
-extern const u8 gAlphabetTilesGfx[][0x40];
-extern const s16 gCaughtTextChars[];
-extern const struct Vector16 gFlyingCreatureCameraOffsets[];
-extern const u16 gAerodactylEggDeliveryCutsceneFramesets[14][15];
-extern const u8 gAerodactlyFlight_Gfx[];
+EWRAM_DATA const u8 gHatchedWalkerAnimTileBuffer[15][SIZE_OF_VRAM_HATCH_MON_ENTITY_TILES];
+EWRAM_DATA Palette gCatchSpritePaletteBuffer;
+
+// Rom_1 data
+extern const u8 gCaptureBallTilesGfx[]; //TODO: apply size (math grouping chunks don't match with needed size)
+extern const u8 gCaptureScreenTilesGfx[SIZE_OF_VRAM_FX_MON_CATCH_CUTSCENE_TILES];
+extern const u8 gAerodactlyFlight_Gfx[SIZE_OF_VRAM_AERODACTYL_EGG_DELIVERY_TILES];
 extern const Palette gAerodactlyFlight_Pal;
-extern const u16 gPikaSaverFrameData[][2];
-extern const u16 gTotodileEggDeliveryCutsceneFramesets[82][6][3];
 extern const Palette gTotodile_Pal;
-extern const u8 gTotodileEggDelivery_Gfx[];
-extern const u16 gCoinRewardAnimOamFramesets[18][3];
-extern const u16 gShopNumberOamFramesets[4][15];
+extern const Palette gRubyShopSign_Pal;
+extern const u8 gAlphabetTilesGfx[][SIZE_OF_VRAM_LETTER_TILE];
+extern const u8 gSpaceTileGfx[SIZE_OF_VRAM_LETTER_TILE];
+extern const u8 gMainStageBonusTrap_Gfx[][SIZE_OF_VRAM_FX_CENTER_HOLE_GRAVITY_TILES];
+extern const u8 gRubyStageCyndaquil_Gfx[][SIZE_OF_VRAM_CYNDAQUIL_TILES];
+extern const u8 gShopPortraitOverlayGfx[][SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES];
+extern const u8 gDecimalDigitTilesGfx[][SIZE_OF_VRAM_MART_PRICE_DIGIT];
+extern const u8 gTotodileEggDelivery_Gfx[SIZE_OF_VRAM_TOTODILE_EGG_DELIVERY_TILES];
+extern const u8 gChargeFillIndicator_Gfx[][SIZE_OF_VRAM_CHARGE_INDICATOR_CIRCLE_TILES];
+extern const u8 gRubyBoardShop_Gfx[][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES];
+extern const u8 gRubyBoardHatchCave_Gfx[][SIZE_OF_VRAM_HATCH_CAVE_TILES];
+extern const u8 gEggFrameTilesGfx[][SIZE_OF_VRAM_HATCH_EGG_TILES];
+
+// Rom_2 data
+extern const Palette gCaptureHit_Pal;
+extern const s16 gCaughtTextChars[];
+extern const u16 gShopItemData[][4];
+extern const u16 gShopCursorToItemMap[];
+extern const u16 gEggAnimationFrameData[][4];
+extern const s16 gEvoShopAnimFrames[][7];
+extern const s16 gEggHatchAnimData[14][3];
+extern const struct Vector32 gEggWalkPathWaypoints[][29];
+extern const struct Vector32 gSapphireEggWaypoints[];
+extern const u16 gAngleToDirectionTable[];
 extern const s16 gArrowBounceOffsets[];
 extern const s16 gTimerIndicatorFrames[];
-extern const u8 gShopPortraitOverlayGfx[][0x300];
-extern const u8 gDecimalDigitTilesGfx[][0x40];
-extern const s16 gEvoShopAnimFrames[][7];
-extern const u8 gRubyBoardShop_Gfx[][0x500];
-extern const Palette gRubyShopSign_Pal;
-
-extern const u16 gAngleToDirectionTable[];
-
-extern u8 gCatchSpritePaletteBuffer[];
+extern const u16 gPikaSaverFrameData[][2];
+extern const struct Vector16 gFlyingCreatureCameraOffsets[];
+extern const struct Vector16 gCyndaquilCavePositions[];
+extern const u16 gCyndaquilFrameIndices[];
+extern const u16 gTotodileEggDeliveryCutsceneFramesets[82][6][3];
+extern const u16 gShopNumberOamFramesets[4][15];
+extern const u16 gCoinRewardAnimOamFramesets[18][3];
+extern const u16 gAerodactylEggDeliveryCutsceneFramesets[14][15];
+extern const u16 gCatchCreatureOamFramesets[48][4][3];
+extern const u16 gEggOamFramestates[40][2][3];
 
 // This is the 'Gravity Well' in the center of the board.
 // Used with travel confirmation, bonus board entry, roulette, etc
@@ -1938,7 +1946,9 @@ void UpdateEggMode(void)
         gCurrentPinballGame->activeFxType = FX_CAPTURE_MON_ABSORB;
         DmaCopy16(3, gCaptureHit_Pal, OBJ_PLTT_SLOT(PAL_IX_MON_SHADOW_PORTRAIT), PLTT_SLOT_SIZE);
         DmaCopy16(3, gCaptureScreenTilesGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_FX_MON_CATCH_CUTSCENE_TILES);
-        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType * 0x200], OBJ_VRAM_ADDR_FX_MON_CATCH_OPEN_BALL_TILES1, SIZE_OF_VRAM_FX_MON_CATCH_OPEN_BALL_TILES1);
+
+        // Note: only replaces the lid. The bits to the right/bottom that are part of the bottom of the ball are shared
+        DmaCopy16(3, &gCaptureBallTilesGfx[gCurrentPinballGame->ballUpgradeType * 4 * 0x80], OBJ_VRAM_ADDR_FX_MON_CATCH_OPEN_BALL_TILES1, SIZE_OF_VRAM_FX_MON_CATCH_OPEN_BALL_TILES1);
         DmaCopy16(3, &gCaptureBallTilesGfx[(gCurrentPinballGame->ballUpgradeType * 8 + 4) * 0x40], OBJ_VRAM_ADDR_FX_MON_CATCH_OPEN_BALL_TILES2, SIZE_OF_VRAM_FX_MON_CATCH_OPEN_BALL_TILES2);
         gCurrentPinballGame->captureSequenceFrame = 0;
         gCurrentPinballGame->captureState = MON_CAPTURE_SPECIAL_STATE_CAPTURE_CUTSCENE;

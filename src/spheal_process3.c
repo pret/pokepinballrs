@@ -13,30 +13,33 @@ struct SphealFlightPath
     struct Vector16 *pathWaypoints;
     s16 pathLength;
 };
-extern const struct SphealFlightPath gSphealFlightPathData[];
 
-extern const s16 gSphealWhiscashAnimFrameset[][4];
-extern struct SongHeader se_spheal_hit;
-extern struct SongHeader se_spheal_net_swoosh;
-extern struct SongHeader se_spheal_crowd_cheer;
-extern struct SongHeader se_spheal_end_whistle;
-extern struct SongHeader se_sealeo_hit_thud;
-extern struct SongHeader se_sealeo_nose_bounce;
-
+// Rom_1 data
 extern const s8 gSphealScoreDigitSpriteIndices[];
-extern const u16 gSphealWaterBackgroundTilemap[];
-extern const u8 gSphealNetGfx[][0x200];
-extern const u8 gSphealNetFrontGfx[][0x180];
-extern const u8 gSphealFlyingEnemyVariantSprites[][0x120];
-extern const u8 gSphealMinionBodySprites[][0x800];
-extern const u8 gSphealResultsScreenGfx[];
-extern const u8 gWhiscash_Gfx[][0x480];
-extern const u8 gPelipper_Gfx[][0x480];
+extern const Palette gBonusStageObjPal;
+extern const u16 gSphealWaterBackgroundTilemap[MEM_SIZE_OF_TILEMAP_256_BY_256];
+extern const u8 gSphealNetGfx[][SIZE_OF_VRAM_SPHEAL_NET_TILES];
+extern const u8 gSphealNetFrontGfx[][SIZE_OF_VRAM_SPHEAL_NET_FRONT_TILES];
+extern const u8 gSphealEntitySprites[][SIZE_OF_VRAM_SPHEAL_TILES];
+extern const u8 gSealeoEntitySprites[][SIZE_OF_VRAM_SEALEO_RAW_TILES];
+extern const u8 gSphealResultsScreenGfx[SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES];
+extern const u8 gWhiscash_Gfx[][SIZE_OF_VRAM_SPHEAL_WHISCASH_RAW_TILES];
+extern const u8 gPelipper_Gfx[][SIZE_OF_VRAM_SPHEAL_PELIPPER_TILES];
+
+extern const struct SongHeader se_spheal_hit;
+extern const struct SongHeader se_spheal_net_swoosh;
+extern const struct SongHeader se_spheal_crowd_cheer;
+extern const struct SongHeader se_spheal_end_whistle;
+extern const struct SongHeader se_sealeo_hit_thud;
+extern const struct SongHeader se_sealeo_nose_bounce;
+
+// Rom_2 data
 extern const s16 gWaterTilePaletteCycle[];
+extern const struct SphealFlightPath gSphealFlightPathData[];
 extern const u16 gSealeoFramesetData[][2];
 extern const u16 gSphealFramesetData[][3];
+extern const s16 gSphealWhiscashAnimFrameset[][4];
 extern const u16 gSphealFlyingEnemyOamData[126][4][3];
-
 
 void InitFrameProcess3_BoardLogic_SphealBoard(void)
 {
@@ -388,7 +391,7 @@ void UpdateSealeoEntityLogic(void)
         else
             var0 = gSealeoFramesetData[gCurrentPinballGame->minionFramesetIx[0]][0];
 
-        DmaCopy16(3, gSphealMinionBodySprites[var0], OBJ_VRAM_ADDR_RIGHT_SEALEO_TILES, SIZE_OF_VRAM_SEALEO_TILES);
+        DmaCopy16(3, gSealeoEntitySprites[var0], OBJ_VRAM_ADDR_RIGHT_SEALEO_TILES, SIZE_OF_VRAM_SEALEO_TILES);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -404,7 +407,7 @@ void UpdateSealeoEntityLogic(void)
         else
             var0 = gSealeoFramesetData[gCurrentPinballGame->minionFramesetIx[1]][0];
 
-        DmaCopy16(3, gSphealMinionBodySprites[var0], OBJ_VRAM_ADDR_LEFT_SEALEO_TILES, SIZE_OF_VRAM_SEALEO_TILES);
+        DmaCopy16(3, gSealeoEntitySprites[var0], OBJ_VRAM_ADDR_LEFT_SEALEO_TILES, SIZE_OF_VRAM_SEALEO_TILES);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -871,7 +874,7 @@ void UpdateSphealEntityLogic(void)
             group->baseX = (gCurrentPinballGame->sphealPositionQ8[i].x / 256) - (gCurrentPinballGame->cameraXOffset + 12);
             group->baseY = (gCurrentPinballGame->sphealPositionQ8[i].y / 256) - (gCurrentPinballGame->cameraYOffset + 14);
 
-            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_VRAM_ADDR_SPHEAL_TILES + i * SIZE_OF_VRAM_SPHEAL_TILES, SIZE_OF_VRAM_SPHEAL_TILES);
+            DmaCopy16(3, gSphealEntitySprites[sphealFrameIx], OBJ_VRAM_ADDR_SPHEAL_TILES + i * SIZE_OF_VRAM_SPHEAL_TILES, SIZE_OF_VRAM_SPHEAL_TILES);
             for (j = 0; j < SPHEAL_SPRITE_SEGMENTS; j++)
             {
                 oamSimple = &group->oam[j];
@@ -933,7 +936,7 @@ void UpdateSphealEntityLogic(void)
             group->baseX = (gCurrentPinballGame->sphealPositionQ8[i].x / 256) - (gCurrentPinballGame->cameraXOffset + 12);
             group->baseY = (gCurrentPinballGame->sphealPositionQ8[i].y / 256) - (gCurrentPinballGame->cameraYOffset + 14);
 
-            DmaCopy16(3, gSphealFlyingEnemyVariantSprites[sphealFrameIx], OBJ_VRAM_ADDR_SPHEAL_CLIMB_SPLASH_TILES + i * SIZE_OF_VRAM_SPHEAL_CLIMB_SPLASH_TILES, SIZE_OF_VRAM_SPHEAL_CLIMB_SPLASH_TILES);
+            DmaCopy16(3, gSphealEntitySprites[sphealFrameIx], OBJ_VRAM_ADDR_SPHEAL_CLIMB_SPLASH_TILES + i * SIZE_OF_VRAM_SPHEAL_CLIMB_SPLASH_TILES, SIZE_OF_VRAM_SPHEAL_CLIMB_SPLASH_TILES);
             for (j = 0; j < SPHEAL_SPRITE_SEGMENTS; j++)
             {
                 oamSimple = &group->oam[j];

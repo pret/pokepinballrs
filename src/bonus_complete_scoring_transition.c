@@ -9,11 +9,19 @@
 #include "constants/board/kyogre_states.h"
 #include "constants/board/rayquaza_states.h"
 #include "constants/mem_layout/shared.h"
+#include "constants/mem_layout/dusclops.h"
+#include "constants/mem_layout/kecleon.h"
+#include "constants/mem_layout/kyogre.h"
+#include "constants/mem_layout/groudon.h"
+#include "constants/mem_layout/rayquaza.h"
 
-extern const u8 gKecleonBonusClear_Gfx[];
-extern const u8 gKyogreBonusClear_Gfx[];
-extern const u8 gGroudonBonusClear_Gfx[];
-extern const u8 gRayquazaBonusClear_Gfx[];
+// Rom_1 data
+extern const u8 gDusclopsBonusClear_Gfx[SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES];
+extern const u8 gKecleonBonusClear_Gfx[SIZE_OF_VRAM_KECLEON_BANNER_TILES];
+extern const u8 gKyogreBonusClear_Gfx[SIZE_OF_VRAM_KYOGRE_BANNER_TILES];
+extern const u8 gGroudonBonusClear_Gfx[SIZE_OF_VRAM_GROUDON_BANNER_TILES];
+extern const u8 gRayquazaBonusClear_Gfx[SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES];
+
 
 void FadeToMainBoard(void)
 {

@@ -6,10 +6,26 @@
 #include "constants/board/main_board.h"
 #include "constants/collision.h"
 
-extern u8 gCatchTargetCollisionBitmap[];
-extern u16 gFlipperCollisionAngles[][2];
-extern u16 gFlipperLaunchVelocityParams[][2];
-extern s8 gFlipperCollisionFrameMapping[][5];
+// Rom_1 data
+extern const u8 gCatchTargetCollisionBitmap[];
+
+struct CollisionCorrectionEntry
+{
+    s8 correctionX;
+    s8 correctionY;
+    u16 angleThreshold;
+};
+
+typedef s16 (*BoardCollisionFunc)(struct Vector16*, u16*);
+// Rom_2 data
+extern const struct CollisionCorrectionEntry gWallCollisionPositionCorrection[9];
+extern const struct CollisionCorrectionEntry gFlipperCollisionAngleCorrection[4];
+extern const u16 gFlipperCollisionAngles[][2]; //TODO: should probably be a vector
+extern const s8 gFlipperCollisionFrameMapping[][5];
+extern const s16 gBounceBackForceMagnitudes[9]; //Possibly only 4, with a gap?
+extern const BoardCollisionFunc BoardCollisionFuncts[8];
+extern const u16 gFlipperLaunchVelocityParams[][2];
+extern const struct Vector16 gWallEscapeOffsets[4];
 
 
 u16 DetectBallCollision(struct Vector16*);

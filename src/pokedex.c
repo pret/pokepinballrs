@@ -64,38 +64,70 @@ void PrintDexNumbersFromListPosition(s16);
 static void PrintCaughtBallFromListPosition(s16);
 void LoadMonPortrait(s16);
 
-extern Palette *gCatchMonPaletteGroups[];
-extern u8 *gCatchSpriteGfxPtrs[];
-
-extern u16 gPokedexLinkSendCounter;
-extern u16 gPokedexLinkChunkIndex;
-extern s8 gPokedexMasterHandshakeState;
-extern s8 gPokedexClientHandshakeState;
-extern s8 gPokedexHandshakeRetryCount;
-extern u16 gGlyphUpperRowBuffer[];
-extern u16 gGlyphLowerRowBuffer[];
-
-extern const struct SpriteSet *const gPokedexSpriteSets[];
-extern u16 gPokedexScrollbarY;
-extern const u16 gPokedexAnimBaseTileNums[][4];
-extern const u16 gPokedexCatchAnimTileOffsets[][20];
-extern const s16 gPokedexCatchAnimIndices[];
-extern const u16 gPokedexHatchAnimTileOffsets[][51];
-extern const s16 gPokedexAnimFrameDurations[][51];
-extern s16 gPokedexListNameVramOffsets[];
-
-enum PokedexPopupType {
-    POKEDEX_POPUP_TRANSMISSION_CONNECT_PROMPT = 0,
-    POKEDEX_POPUP_TRANSMITTING_ACTIVE = 1,
-    POKEDEX_POPUP_TRANSMISSION_ERROR = 2,
-    POKEDEX_POPUP_TRANSMISSION_COMPLETE = 3,
-    POKEDEX_POPUP_DELETE_CONFIRMATION_PROMPT = 4
-};
-
-// The japanese and english text glyphs are sourced from the same blob of tile graphics, and
-// each glyph is two tiles high.
-#define ENGLISH_GLYPHS_START 0x2820
-extern const u8 gPokedexTextGlyphs_Gfx[];
+EWRAM_DATA s8 gPokedex_EraseSaveDataAccessCounter;
+EWRAM_DATA s8 gPokedex_EraseSaveDataAccessStep;
+EWRAM_DATA s8 gPokedexScrollActive;
+EWRAM_DATA s8 gPokedexSpriteIndexBase;
+EWRAM_DATA u16 gPokedexVramBuffer[0x400];
+EWRAM_DATA s16 gPokedexSpriteAnimTimer;
+EWRAM_DATA s16 gLinkTimeoutCounter;
+EWRAM_DATA s16 gPokedexAnimatedIconFrame;
+EWRAM_DATA u16 gLinkRecvBuffer[0x8][2];
+EWRAM_DATA s16 gPokedexCursorBlinkOffset;
+EWRAM_DATA u16 gLinkExchangeFrameCounter;
+EWRAM_DATA s16 gPokedexNumOwned;
+EWRAM_DATA s16 gPokedexLinkStateTimer;
+EWRAM_DATA u8 gLinkExchangeStep;
+EWRAM_DATA s8 gPokedexLinkTransferPhase;
+EWRAM_DATA u16 gGlyphLowerRowBuffer[0x20];
+EWRAM_DATA u16 gPokedexLinkSendCounter;
+EWRAM_DATA u8 gLinkPlayerCount;
+EWRAM_DATA s8 gPokedexShowPageIndicator;
+EWRAM_DATA s8 gPokedexMasterHandshakeState;
+EWRAM_DATA s16 gPokedexFlags[232];
+EWRAM_DATA s16 gPokedexFlagExchangeBuffer[226];
+EWRAM_DATA s16 gPokedexInfoWindowSlideStep;
+EWRAM_DATA s16 gPokedexShowPortrait;
+EWRAM_DATA s16 gPokedexShowCatchHatch[2];
+EWRAM_DATA s16 gPokedexListEntryCount;
+EWRAM_DATA s16 gPokedexCursorOffset;
+EWRAM_DATA s16 gPokedexShowAnimSprite;
+EWRAM_DATA u16 gPokedexInfoWindowBackupTiles[0x400];
+EWRAM_DATA u32 gLinkStatusResult;
+EWRAM_DATA u8 gLinkNegotiationFlags;
+EWRAM_DATA s16 gPokedexSelectedMon;
+EWRAM_DATA u32 gLinkConnectionState;
+EWRAM_DATA s16 gPokedexBlinkTimer;
+EWRAM_DATA u16 gGlyphUpperRowBuffer[0x20];
+EWRAM_DATA s16 gPokedexNumSeen;
+EWRAM_DATA s8 gPokedexShowPopupWindow;
+EWRAM_DATA u8 gLinkAdvanceState;
+EWRAM_DATA s8 gPokedexHandshakeRetryCount;
+EWRAM_DATA s8 gPokedexButtonPromptFrame;
+EWRAM_DATA s16 gPokedexPageIndicatorTimer;
+/****
+ *  Yellow confirmation/info window mode
+ *  0= Transmession connection prompt,
+ *  1= Transferring in progress?
+ *  2= transmission error message
+ *  3= transfer complete?
+ *  4= delete save data confirmation
+ * ****/
+EWRAM_DATA s8 gPokedexPopupTypeIndex;
+EWRAM_DATA s16 gPokedexAnimatedIconTimer;
+EWRAM_DATA s8 gPokedexShowButtonPrompt;
+EWRAM_DATA u16 gPokedexScrollbarY;
+EWRAM_DATA s16 gPokedexSpriteAnimFrame;
+EWRAM_DATA s16 gPokedexSpriteCategory;
+EWRAM_DATA s8 gPokedexClientHandshakeState;
+EWRAM_DATA s16 gPokedexScrollWaitFrames;
+EWRAM_DATA s8 gPokedexShowCompletionBadge;
+EWRAM_DATA s8 gPokedexPageIndicatorBlink;
+EWRAM_DATA s16 gPokedexListPosition;
+EWRAM_DATA u16 gPokedexLinkChunkIndex;
+EWRAM_DATA s16 gPokedexDetailFrameCount;
+EWRAM_DATA s16 gLinkSendBuffer[0xA];
+EWRAM_DATA s8 gPokedexDescriptionPage;
 
 struct PokedexEntry
 {
@@ -108,7 +140,51 @@ struct PokedexEntry
     /*0x42*/ s16 description[2 * 3 * POKEMON_DEX_LINE_LENGTH];
 }; /* size=0x23C */
 
+// Rom_1 data
+extern const u16 gDexInfoWindowMiddleRowTiles[];
+extern const u16 gDexInfoWindowBottomRowTiles[];
+extern const u16 gDexInfoWindowEmptyRowTiles[];
+extern const u16 gDexInfoWindowEmptyTextRowTiles[];
+extern const StateFunc gPokedexStateFuncs[];
 extern const struct PokedexEntry gPokedexEntries[];
+extern const u16 gPokedexBg1_Tilemap[];
+extern const u16 gPokedexBgText_Gfx[];
+extern const u16 gPokedexInfoWindowTilemap[];
+extern const u16 gPokedexBg2_Tilemap[];
+extern const u16 gPokedexBg_Gfx[];
+extern const u16 gPokedexBg3_Tilemap[];
+extern const Palette gPokedexBackground_Pals[];
+extern const Palette gPokedexSprites_Pals[];
+extern const u8 gPokedexSprites_Gfx[];
+extern const u8 gPokedexTextGlyphs_Gfx[];
+
+// Rom_2 data
+extern const u16 gPokedexAnimBaseTileNums[][4];
+extern const u16 gPokedexCatchAnimTileOffsets[][20];
+extern const u16 gPokedexHatchAnimTileOffsets[][51];
+extern const s16 gPokedexAnimFrameDurations[][51];
+extern const struct SpriteSet *const gPokedexSpriteSets[];
+extern const s16 gDexAnimationIx[];
+extern const s16 gPokedexCatchAnimIndices[];
+extern s16 gPokedexListNameVramOffsets[]; //TODO: should be const
+extern const Palette *gCatchMonPaletteGroups[];
+extern const Palette *gMonPortraitGroupPals[];
+extern const u8 *gCatchSpriteGfxPtrs[SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES];
+extern const u8 *gMonPortraitGroupGfx[];
+
+enum PokedexPopupType {
+    POKEDEX_POPUP_TRANSMISSION_CONNECT_PROMPT = 0,
+    POKEDEX_POPUP_TRANSMITTING_ACTIVE = 1,
+    POKEDEX_POPUP_TRANSMISSION_ERROR = 2,
+    POKEDEX_POPUP_TRANSMISSION_COMPLETE = 3,
+    POKEDEX_POPUP_DELETE_CONFIRMATION_PROMPT = 4
+};
+
+// The japanese and english text glyphs are sourced from the same blob of tile graphics, and
+// each glyph is two tiles high.
+#define ENGLISH_GLYPHS_START 0x2820
+
+
 
 void PokedexMain(void)
 {
@@ -1929,7 +2005,7 @@ void LoadMonPortrait(s16 species)
     switch (state)
     {
         case SPECIES_DEX_UNSEEN:
-            CopyBgTilesRect(gPokedexSprites_Gfx + 0x5C00, (void*)OBJ_VRAM_ADDR_POKEDEX_MON_SPRITE_RECT, 24, 1);
+            CopyBgTilesRect(&gPokedexSprites_Gfx[0x5C00], (void*)OBJ_VRAM_ADDR_POKEDEX_MON_SPRITE_RECT, 24, 1);
             DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT_SLOT(PAL_IX_BALL), PLTT_SLOT_SIZE);
             break;
         case SPECIES_DEX_SEEN:

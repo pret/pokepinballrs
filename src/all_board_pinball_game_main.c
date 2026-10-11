@@ -7,7 +7,8 @@
 #include "constants/board/sapphire_states.h"
 #include "constants/mem_layout/intro.h"
 
-extern struct PinballGame gPinballGameState;
+
+EWRAM_DATA u32 gReplayFrameCounter;
 
 typedef void (*VoidFunc)(void);
 
@@ -31,15 +32,17 @@ struct BoardProcessPair
  Initial load (first frame on board) goes in order.
  After that, step 0 (sprite loading) moves after step 1 for Bonus Board, and after step 2 for main boards
  */
-extern struct BoardProcessPair CurrentBoardProcPairs[PER_FRAME_PROCESS_PHASE_COUNT];
+EWRAM_DATA struct BoardProcessPair CurrentBoardProcPairs[PER_FRAME_PROCESS_PHASE_COUNT];
 
-extern const struct BoardProcessPair gBoardProcPairs[];
-extern const VoidFunc gFieldInitFuncs[];
-extern struct SpriteGroup *gMainFieldSpriteGroups[][60];
-extern struct SpriteGroup *gBonusFieldSpriteGroups[][30];
-
+// Rom_1 data
 extern const StateFunc gPinballGameStateFuncs[];
 extern const u8 gDxModePikachuObjTiles[];
+
+// Rom_2 data
+extern struct SpriteGroup *const gMainFieldSpriteGroups[][60];
+extern struct SpriteGroup *const gBonusFieldSpriteGroups[][30];
+extern const struct BoardProcessPair gBoardProcPairs[];
+extern const VoidFunc gFieldInitFuncs[];
 
 extern void SaveGameToSram(void);
 extern void RestoreGameState(u16);

@@ -97,7 +97,7 @@ struct Main
      * Boss bonus boards use those 2, plus an additional 5 for the 'capture' cutscene.
      * Main boards have several, for shared features on the 2 main boards.
      ***/
-    /*0x44*/ struct SpriteGroup **fieldSpriteGroups;
+    /*0x44*/ struct SpriteGroup *const *fieldSpriteGroups;
     /*0x48*/ int rngValue;
     /*0x4C*/ u32 systemFrameCount;
     /*0x50*/ u32 fieldFrameCount;
@@ -150,32 +150,32 @@ enum bonusStageLoop{
 #define StartOfEvenBonusLoop (gCurrentPinballGame->numCompletedBonusStages / BONUS_STAGE_LOOP_COUNT) % 2 == 0
 #define RayquazaCatchChanceTrip gCurrentPinballGame->numCompletedBonusStages % (2*BONUS_STAGE_LOOP_COUNT) == BONUS_STAGE_LOOP_COUNT + BONUS_STAGE_LOOP_SECOND_BOSS_CLEARED
 
-extern struct Main gMain;
-extern u32 IntrMain_Buffer[0x200];
-extern u32 IntrMain[];
-extern IntrFunc *gVBlankIntrFuncPtr;
-extern IntrFunc *gVCountIntrFuncPtr;
-extern int gRumbleLoopCounter;
-extern int gRumbleFrameCounter;
-extern int gRumbleMotorMode;
-extern u32 gSio32ReconnectTimer;
-extern int gSio32SerialEnabled;
-extern int gRumblePatternIndex;
-extern int gRumblePatternPosition;
-extern int gRumbleCommand;
-extern int gRumblePaused;
-extern int gRumbleSpeedMode;
-extern int gGameBoyPlayerEnabled;
-extern u8 gSio32CommState;
-extern u8 gGbPlayerTilemapBuffer[];
 #define INTR_COUNT 14
-extern IntrFunc gIntrTable[14];
-extern void (*gMainCallback)(void);
-extern void (*gVCountIntrFuncShadow)(void);
-extern void (*gVBlankIntrFuncShadow)(void);
-extern void (*gMainCallbackShadow)(void);
+extern EWRAM_DATA IntrFunc gIntrTable[14];
+extern EWRAM_DATA struct Main gMain;
+extern EWRAM_DATA IntrFunc *gVBlankIntrFuncPtr;
+extern EWRAM_DATA void (*gMainCallback)(void);
+extern EWRAM_DATA void (*gVCountIntrFuncShadow)(void);
+extern EWRAM_DATA void (*gVBlankIntrFuncShadow)(void);
+extern EWRAM_DATA void (*gMainCallbackShadow)(void);
+extern EWRAM_DATA IntrFunc *gVCountIntrFuncPtr;
+
+
+extern u32 IntrMain[];
+
+// Rom_2 data
 extern StateFunc gMainFuncs[];
-extern struct OamData gOamBuffer[128];
+
+// sym_bss
+
+extern IWRAM_DATA u16 gTempGfxBuffer[];
+extern IWRAM_DATA u8 gEReaderTextTileBuffer[3][0x800];
+extern IWRAM_DATA u16 gTextTilemapBuffer[];
+extern IWRAM_DATA struct OamData gOamBuffer[128];
+extern IWRAM_DATA u32 IntrMain_Buffer[0x200];
+extern IWRAM_DATA u16 gBG0TilemapBuffer[32 * 0x40];
+
+// ----
 
 void FadeInScreen(void);
 void FadeOutScreen(void);

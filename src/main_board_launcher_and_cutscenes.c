@@ -4,33 +4,37 @@
 #include "constants/bg_music.h"
 #include "constants/board/main_board.h"
 
-extern const u8 gRubyTravelVolbeat_Gfx[][0x480];
-extern const u8 gSapphireTravelIllumise_Gfx[][0x480];
-extern const u8 gRubyTravelPaint_Gfx[];
-extern const Palette gRubyPainter_Pals;
-extern const u8 gSapphireTravelPaint_Gfx[];
-extern const Palette gSapphirePainter_Pals;
-extern const s16 gTravelEventAnimData[][3];
-extern const s16 gAreaPortraitIndexes[];
+EWRAM_DATA u8 gPaletteFadeRGBCache[16][3];
+
+// Rom_1 data
 extern const s16 gAreaRouletteTable[][AREA_TABLE_SLOT_COUNT];
-extern u16 gTravelEventSpritesheetOam[][18];
-extern const s16 gCatchTile_RevealFinalTimings[];
-extern const u16 gCatchTile_BurstRevealOamFramesets1[22][12];
-extern const u8 gEvolutionCutsceneTilesGfx[];
+extern const s16 gAreaPortraitIndexes[];
+extern const Palette gFieldVariant_Pals[][6];
+extern const u8 gEvolutionCutsceneTilesGfx[SIZE_OF_VRAM_EVO_CUTSCENE_TILES];
 extern const Palette gBoardActionObj_Pals[];
-extern const u16 gEvolutionSparkleSpritesheetOam[20][12];
-extern const u8 gCatchTile_BurstStage4_Gfx[];
+extern const u8 gRubyTravelPaint_Gfx[SIZE_OF_VRAM_FX_TRAVEL_CUTSCENE];
+extern const Palette gRubyPainter_Pals;
+extern const u8 gSapphireTravelPaint_Gfx[SIZE_OF_VRAM_FX_TRAVEL_CUTSCENE];
+extern const Palette gSapphirePainter_Pals;
+extern const u8 gCatchTile_BurstStage4_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_ELECTRIC];
 extern const Palette gCatchTile_BurstStage4_Pal;
-extern const s16 gSpoinkAnimFrameset[][2];
-extern const u8 gSpoinkEntity_Gfx[][0x1C0];
-extern const u8 gOneUpTreeckoSprite_Gfx[][0x200];
-extern const u8 gLifeCountDigit_Gfx[][0x40];
+extern const u8 gSpoinkEntity_Gfx[][SIZE_OF_VRAM_SPOINK_LAUNCHER_TILES];
+extern const u8 gOneUpTreeckoSprite_Gfx[][SIZE_OF_VRAM_FX_ONE_UP_TREECKO_DELIVERY_TILES];
+extern const u8 gLifeCountDigit_Gfx[][SIZE_OF_VRAM_FX_ONE_UP_LIFE_DITIT_TILES];
+extern const u8 gRubyTravelVolbeat_Gfx[][SIZE_OF_VRAM_FX_TRAVEL_PAINTER];
+extern const u8 gSapphireTravelIllumise_Gfx[][SIZE_OF_VRAM_FX_TRAVEL_PAINTER];
+
+extern const struct SongHeader se_pika_full_charge_1_up;
+extern const struct SongHeader se_kecleon_side_look;
+
+// Rom_2 data
+extern const s16 gCatchTile_RevealFinalTimings[];
 extern const Palette gOneUpSprite_Pal;
-
-extern struct SongHeader se_kecleon_side_look;
-extern struct SongHeader se_pika_full_charge_1_up;
-
-extern u8 gPaletteFadeRGBCache[][3];
+extern const s16 gSpoinkAnimFrameset[][2];
+extern const s16 gTravelEventAnimData[][3];
+extern const u16 gTravelEventSpritesheetOam[][18];
+extern const u16 gEvolutionSparkleSpritesheetOam[20][12];
+extern const u16 gCatchTile_BurstRevealOamFramesets1[22][12];
 
 void AnimateOneUpSprite(void)
 {

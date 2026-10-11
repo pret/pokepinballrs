@@ -8,22 +8,27 @@
 
 #define KYOGRE_MODE_TIME TICKS_FOR_TIME(3,0)
 
-extern const u8 gKyogreBonusClear_Gfx[];
+// Rom_1 data
+extern const u8 gKyogreBonusClear_Gfx[SIZE_OF_VRAM_KYOGRE_BANNER_TILES];
 extern const Palette gKyogreWaterAnimFrame_Pals[];
+extern const Palette gBonusStageObjPal;
 extern const u16 gKyogreWaterBackgroundTilemap[];
 extern const Palette gKyogreIntroShorePalette[];
 extern const Palette gKyogreIntroIcePalette[];
-extern const u8 gKyogreSurfacingFx_Gfx[][0xC0];
-extern const u8 gKyogreFreeze_Gfx[][0x3C0];
-extern const u8 gKyogreTopPosition_Gfx[][0x580];
-extern const u8 gKyogreBreach_Gfx[][0x4C0];
-extern const u8 gKyogreWhirlpoolTrap_Gfx[][0x200];
-extern struct SongHeader se_kyogre_hit;
-extern struct SongHeader se_kyogre_breach_surface;
-extern struct SongHeader se_kyogre_dive;
-extern struct SongHeader se_kyogre_spawn_whirlpool;
-extern struct SongHeader se_kyogre_freeze_ring;
-extern struct SongHeader se_kyogre_departs;
+extern const u8 gKyogreSurfacingFx_Gfx[][SIZE_OF_VRAM_KYOGRE_SURFACE_FX_TILES];
+extern const u8 gKyogreFreeze_Gfx[][SIZE_OF_VRAM_KYOGRE_FREEZE_TILES];
+extern const u8 gKyogreTopPosition_Gfx[][SIZE_OF_VRAM_KYOGRE_TOP_TILES];
+extern const u8 gKyogreBreach_Gfx[][SIZE_OF_VRAM_KYOGRE_BREACH_TILES];
+extern const u8 gKyogreWhirlpoolTrap_Gfx[][SIZE_OF_VRAM_KYOGRE_WHIRLPOOL];
+
+extern const struct SongHeader se_kyogre_hit;
+extern const struct SongHeader se_kyogre_breach_surface;
+extern const struct SongHeader se_kyogre_dive;
+extern const struct SongHeader se_kyogre_spawn_whirlpool;
+extern const struct SongHeader se_kyogre_freeze_ring;
+extern const struct SongHeader se_kyogre_departs;
+
+// Rom_2 data
 extern const Palette *gKyogreFadeInPaletteProgression[];
 extern const u16 gKyogreAnimFramesetTable[][3];
 extern const s16 gKyogreRisingPaletteCycleIndices[];
@@ -38,7 +43,6 @@ extern const u16 gKyogreBgSpriteBaseTileNums[];
 extern const s16 gKyogreIntroPaletteCycleIndices[];
 extern const u16 gKyogrefreezeTrapOamData[28][4][3];
 extern const u16 gKyogreMainBodyOamData[66][10][3];
-
 
 void InitFrameProcess3_BoardLogic_KyogreBoard(void)
 {

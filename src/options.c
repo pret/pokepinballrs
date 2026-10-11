@@ -63,21 +63,61 @@ struct OptionsData
     s8 soundTestActive;
 };
 
-extern struct OptionsData gOptionsData;
-extern s16 gMain_saveData_customButtonConfig[][2];
-extern u8 gCustomButtonConfigTileIds[];
+EWRAM_DATA struct OptionsData gOptionsData;
+extern EWRAM_DATA int gGameBoyPlayerEnabled;
+EWRAM_DATA u8 gCustomButtonConfigs[5][10];
+EWRAM_DATA u8 gCustomButtonConfigTileIds[10];
 
-extern const Palette gOptionsBackground_Pals[];
-extern const u8 gOptionsText_Gfx[];
-extern const u8 gOptionsBackground_Gfx[];
+// Rom_1 data
+extern const u16 gOptionsBGMList[];
+extern const u16 gOptionsSEList[];
+extern const u8 gDefaultButtonConfigs[4][10];
+extern const u8 gDefaultCustomButtonConfigTileIds[];
+extern const void (*const gOptionsStateFuncs[])(void);
 extern const u8 gOptionsText_Tilemap[];
+extern const u8 gOptionsText_Gfx[];
 extern const u8 gOptionsBackground_Tilemap[];
+extern const u8 gOptionsBackground_Gfx[];
+extern const Palette gOptionsBackground_Pals[];
+extern const Palette gGBAButtonIcons_Pals[];
+extern const u8 gOptionsSprites_Gfx[];
 
 
-extern u8 gOptionsButtonConfigEditFlags[];
+struct ButtonInfoView
+{
+    u16 buttonName;
+    u16 tileNum;
+    u8 shape;
+    u8 size;
+    u8 x;
+    u8 y;
+};
+
+
+// Rom_2 data
+
+/***
+* index button associations:
+*   0 : A button
+*   1 : B button
+*   2 : Select button
+*   3 : Start button
+*   4 : Right arrow
+*   5 : Left arrow
+*   6 : Up arrow
+*   7 : Down arrow
+*   8 : R button
+*   9 : L button
+*   10 : Combiner sprite
+***/
+extern const struct ButtonInfoView gButtonInfoTable[11];
 extern const struct Vector16 gOptionsCursorPositionTable[];
 extern const u16 gOptionsBGMSelectorYPositions[];
+extern const struct {u8 tileId; s16 frameDuration;} gButtonAnimData[];
 extern const struct SpriteSet *const gOptionsSpriteSets[];
+
+//TODO: should be able to be referenced from gMain
+extern EWRAM_DATA s16 gMain_saveData_customButtonConfig[][2];
 
 void Options_Main(void)
 {
@@ -561,7 +601,7 @@ void UpdateOptionsSpritePositions(void)
 
         do
         {
-            if ((gOptionsButtonConfigEditFlags[i] == TRUE)
+            if ((gOptionsData.buttonEditFlags[i] == TRUE)
                 && (gOptionsData.buttonFlashVisible == TRUE))
             {
                 buttonConfig[i][0] = &gMain.spriteGroups[28];
@@ -815,8 +855,6 @@ void InitCustomButtonConfigDisplay(void)
         }
     }
 }
-
-extern const u8 gDefaultCustomButtonConfigTileIds[];
 
 void SetButtonConfigInputs(s8 buttonConfigType)
 {

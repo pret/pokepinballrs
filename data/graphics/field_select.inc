@@ -1,17 +1,13 @@
 gFieldSelectWindow_Gfx:: @ 0x080A2C00
 	.incbin "graphics/field_select/window_tiles.4bpp"
-
-gUnknown_080A4000:: @ 0x080A4000
-	.incbin "graphics/field_select/unknown_080A4000.bin"
+	.space 0x20
 
 gFieldSelectFrameShadowTilemap:: @ 0x080A4020
 	.incbin "graphics/field_select/frame_shadow_tilemap.bin"
 
 gFieldSelectMiniFields_Gfx:: @ 0x080A4820
 	.incbin "graphics/field_select/mini_fields.4bpp"
-
-gUnknown_080A8020:: @ 0x080A8020
-	.incbin "graphics/field_select/unknown_080A8020.bin"
+	.space 0x20
 
 gFieldSelectWindowTilemap:: @ 0x080A8040
 	.incbin "graphics/field_select/window_tilemap.bin"

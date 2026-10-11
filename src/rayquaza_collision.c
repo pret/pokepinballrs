@@ -3,7 +3,10 @@
 #include "constants/board/rayquaza_states.h"
 #include "constants/collision.h"
 
-//One known callsite is 080145D2 during the rayquaza bonus stage
+// Rom_1 data
+extern u16 gRayquazaBodyCollisionMap[0x4000];
+
+
 s16 CollisionCheck_Rayquaza(struct Vector16 *ballPosition, u16 *collisionAngle)
 {
     struct Vector16 vec1;

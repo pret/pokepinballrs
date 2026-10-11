@@ -584,7 +584,7 @@ void MPlayOpen(struct MusicPlayerInfo *mplayInfo, struct MusicPlayerTrack *track
     mplayInfo->ident = ID_NUMBER;
 }
 
-void MPlayStart(struct MusicPlayerInfo *mplayInfo, struct SongHeader *songHeader)
+void MPlayStart(struct MusicPlayerInfo *mplayInfo, const struct SongHeader *songHeader)
 {
     s32 i;
     u8 unk_B;
@@ -1633,7 +1633,7 @@ void DummyFunc(void)
 {
 }
 
-struct MusicPlayerInfo *SetPokemonCryTone(struct ToneData *tone)
+struct MusicPlayerInfo *SetPokemonCryTone(const struct ToneData *tone)
 {
     u32 maxClock = 0;
     s32 maxClockIndex = 0;

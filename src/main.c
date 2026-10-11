@@ -4,6 +4,22 @@
 #include "link.h"
 #include "m4a.h"
 
+EWRAM_DATA struct PinballGame gPinballGameState;
+EWRAM_DATA IntrFunc gIntrTable[14];
+EWRAM_DATA struct Main gMain;
+EWRAM_DATA IntrFunc *gVBlankIntrFuncPtr;
+EWRAM_DATA void (*gMainCallback)(void);
+EWRAM_DATA void (*gVCountIntrFuncShadow)(void);
+EWRAM_DATA void (*gVBlankIntrFuncShadow)(void);
+EWRAM_DATA void (*gMainCallbackShadow)(void);
+EWRAM_DATA IntrFunc *gVCountIntrFuncPtr;
+
+// Rom_1 data
+extern const s16 gSineTable[];
+
+// Rom_2 data
+extern const IntrFunc gIntrTableTemplate[14];
+
 static void InitGame(void);
 static void InitMainState(void);
 static void InitIntrHandlers(void);

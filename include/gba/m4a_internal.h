@@ -294,7 +294,7 @@ struct MusicPlayerTrack
 
 struct MusicPlayerInfo
 {
-    struct SongHeader *songHeader;
+    const struct SongHeader *songHeader;
     s32 status;
     u8 trackCount;
     u8 priority;
@@ -385,7 +385,7 @@ void MPlayMain(void);
 void RealClearChain(void *x);
 
 void MPlayContinue(struct MusicPlayerInfo *mplayInfo);
-void MPlayStart(struct MusicPlayerInfo *mplayInfo, struct SongHeader *songHeader);
+void MPlayStart(struct MusicPlayerInfo *mplayInfo, const struct SongHeader *songHeader);
 void m4aMPlayStop(struct MusicPlayerInfo *mplayInfo);
 void FadeOutBody(struct MusicPlayerInfo *mplayInfo);
 void TrkVolPitSet(struct MusicPlayerInfo *mplayInfo, struct MusicPlayerTrack *track);
@@ -413,7 +413,7 @@ void ClearModM(struct MusicPlayerTrack *track);
 void m4aMPlayModDepthSet(struct MusicPlayerInfo *mplayInfo, u16 trackBits, u8 modDepth);
 void m4aMPlayLFOSpeedSet(struct MusicPlayerInfo *mplayInfo, u16 trackBits, u8 lfoSpeed);
 
-struct MusicPlayerInfo *SetPokemonCryTone(struct ToneData *tone);
+struct MusicPlayerInfo *SetPokemonCryTone(const struct ToneData *tone);
 void SetPokemonCryVolume(u8 val);
 void SetPokemonCryPanpot(s8 val);
 void SetPokemonCryPitch(s16 val);

@@ -33,7 +33,24 @@ struct FieldSelectData
     u16 nextMainState;
 };
 
-extern struct FieldSelectData gFieldSelectData;
+EWRAM_DATA struct FieldSelectData gFieldSelectData;
+EWRAM_DATA s8 gFieldSelectSoftReset;
+
+// Rom_1 data
+extern const void (*gFieldSelectStateFuncs[])(void);
+extern const u8 gFieldSelectBG0Tilemap[];
+extern const u8 gFieldSelectWindow_Gfx[];
+extern const u8 gFieldSelectFrameShadowTilemap[];
+extern const u8 gFieldSelectMiniFields_Gfx[];
+extern const u8 gFieldSelectWindowTilemap[];
+extern const Palette gFieldSelectBGPals[];
+extern const Palette gFieldSelectSpritePals[];
+extern const u8 gFieldSelectSpriteGfx[];
+
+// Rom_2 data
+extern const struct SpriteSet *const gFieldSelectSpriteSets[];
+extern const struct {u16 rubyTransitionFrames[5]; u16 sapphireTransitionFrames[5];} gFieldTransitionAnimData;
+extern const struct VectorU16 gFieldSelectBallSpeedPositions[];
 
 void FieldSelectMain(void)
 {

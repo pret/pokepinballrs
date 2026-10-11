@@ -14,7 +14,9 @@ extern void UpdateKecleonScopeVision(void);
 extern void RenderKecleonBoardElements(void);
 extern void SortKecleonSpritesByY(void);
 
-extern const struct SpriteSet *gKecleonSpriteSets[];
+EWRAM_DATA const struct SpriteSet *gKecleonSpriteSets[33];
+extern EWRAM_DATA  u8 gKecleonSpriteGroupOrderMap[24];
+
 
 struct KecleonMoveNode
 {
@@ -27,26 +29,30 @@ struct KecleonSpriteSortEntry
     u8 ySortKey;
     u8 spriteIndex;
 };
+// Rom_1 data
+extern const u8 gKecleonBonusClear_Gfx[SIZE_OF_VRAM_KECLEON_BANNER_TILES];
+extern const Palette gBonusStageObjPal;
+extern const u16 gKecleonScopeOverlayTilemap[MEM_SIZE_OF_TILEMAP_256_BY_256];
+extern const u8 gKecleonStageKecleon_Gfx[][SIZE_OF_VRAM_KECLEON_TILES];
+extern const u8 gKecleonStageKecleonFx_Gfx[][SIZE_OF_VRAM_KECLEON_TRIP_FX_TILES];
 
-extern const u8 gKecleonBonusClear_Gfx[];
-extern const u16 gKecleonScopeOverlayTilemap[];
-extern const u8 gKecleonStageKecleon_Gfx[][0x280];
-extern const u8 gKecleonStageKecleonFx_Gfx[][0x100];
-extern struct SongHeader se_kecleon_side_look;
-extern struct SongHeader se_kecleon_vanish;
-extern struct SongHeader se_kecleon_startled;
-extern struct SongHeader se_kecleon_running;
-extern struct SongHeader se_kecleon_knocked_over;
-extern struct SongHeader se_kecleon_hit_damaged;
-extern struct SongHeader se_kecleon_hits_ground_defeated;
-extern struct SongHeader se_kecleon_seeing_stars;
+extern const struct SongHeader se_kecleon_side_look;
+extern const struct SongHeader se_kecleon_vanish;
+extern const struct SongHeader se_kecleon_startled;
+extern const struct SongHeader se_kecleon_running;
+extern const struct SongHeader se_kecleon_knocked_over;
+extern const struct SongHeader se_kecleon_hit_damaged;
+extern const struct SongHeader se_kecleon_hits_ground_defeated;
+extern const struct SongHeader se_kecleon_seeing_stars;
+
+// Rom_2 data
 extern const u16 gKecleonAnimFramesetTable[][3];
-extern const s16 gKecleonOverlayTileAnimIndices[];
 extern const u16 gKecleonVisibleWalkDirectionMap[];
 extern const u16 gKecleonInvisibleDashDirectionMap[];
 extern const struct KecleonMoveNode gKecleonMovementTargetGraph[];
 extern const struct Vector16 gKecleonScopeFallTargets[];
 extern const u16 *gKecleonOverlayTilemapPointers[];
+extern const s16 gKecleonOverlayTileAnimIndices[];
 extern const s16 gKecleonPlantAnimIndices[];
 extern const struct KecleonSpriteSortEntry gKecleonSpriteYSortData[];
 extern const u16 gKecleonLowerBodyOamData[126][2][3];

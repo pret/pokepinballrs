@@ -16,62 +16,75 @@
 #include "constants/mem_layout/ruby.h"
 #include "constants/mem_layout/sapphire.h"
 
-extern u8 gBoardBGTileBuffer[];
-extern u8 gBoardBGTileBufferAlt[];
-extern const u8 gMainBoardBallSave_Gfx[];
-extern const u8 gMainBoardEndOfBall_Gfx[];
-extern const u8 gEvolutionCutsceneTilesGfx[];
+extern EWRAM_DATA u8 gBoardBGTileBufferAlt[32 * 0x400];
+extern EWRAM_DATA u8 gBoardBGTileBuffer[];
+extern EWRAM_DATA u8 gCatchSpriteGfxBuffer[3][SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES];
 
-extern const u8 gAerodactlyFlight_Gfx[];
-extern const u8 gAreaRouletteSelectedFx_Gfx[];
-
-extern const u8 gTotodileEggDelivery_Gfx[];
-extern const u8 gCaptureScreenTilesGfx[];
-
-extern const u8 gCatchTile_RevealTilesGfx[];
-extern const u8 gCatchTile_BurstStart_Gfx[];
-extern const u8 gCatchTile_BurstStage2_Gfx[];
-extern const u8 gCatchTile_BurstStage3_Gfx[];
-extern const u8 gCatchTile_BurstStage4_Gfx[];
-
-extern const u8 *gEvoItemAppear_GfxList[];
-extern const s16 gEvoShopAnimFrames[][7];
-extern const u16 gShopCursorToItemMap[];
-
-extern const u8 gRubyTravelPaint_Gfx[];
+// Rom_1 data
+extern const u8 gDusclopsBonusClear_Gfx[SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES];
+extern const u8 gKecleonBonusClear_Gfx[SIZE_OF_VRAM_KECLEON_BANNER_TILES];
+extern const u8 gKyogreBonusClear_Gfx[SIZE_OF_VRAM_KYOGRE_BANNER_TILES];
+extern const u8 gGroudonBonusClear_Gfx[SIZE_OF_VRAM_GROUDON_BANNER_TILES];
+extern const u8 gRayquazaBonusClear_Gfx[SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES];
+extern const u8 gCaptureScreenTilesGfx[SIZE_OF_VRAM_FX_MON_CATCH_CUTSCENE_TILES];
+extern const u8 gEvolutionCutsceneTilesGfx[SIZE_OF_VRAM_EVO_CUTSCENE_TILES];
+extern const u8 gRubyTravelPaint_Gfx[SIZE_OF_VRAM_FX_TRAVEL_CUTSCENE];
 extern const Palette gRubyPainter_Pals;
-extern const u8 gRubyBoardHatchCave_Gfx[][0x480];
-extern const u8 gRubyChikoritaEntity[][0x300];
-extern const u8 gRubyBoardSharpedo_Gfx[][0x260];
-extern const u8 gChinchouBumper_Gfx[][0x100];
-extern const u8 gRubyBoardShopDoor_Gfx[][0x180];
-extern const u8 gRubyStageCyndaquil_Gfx[][0x280];
-extern const u8 gRubyBoardShop_Gfx[][0x500];
-
-extern const u8 gSapphireTravelPaint_Gfx[];
+extern const u8 gSapphireTravelPaint_Gfx[SIZE_OF_VRAM_FX_TRAVEL_CUTSCENE];
 extern const Palette gSapphirePainter_Pals;
-extern const u8 gCatchMonAppearFx_Gfx[];
-extern const u8 gSapphireBoardZigzagoonFx_Gfx[];
+extern const u8 gPichuKickbackFx_Gfx[SIZE_OF_VRAM_PIKA_SAVER_KICKBACK_TILES];
+extern const u8 gPikachuKickbackFx_Gfx[SIZE_OF_VRAM_PIKA_SAVER_KICKBACK_TILES];
+extern const u8 gCatchMonAppearFx_Gfx[SIZE_OF_VRAM_FX_CATCH_REAVEAL_SEQUENTIAL_TILES];
+extern const u8 gCatchTile_RevealTilesGfx[SIZE_OF_VRAM_FX_CATCH_REAVEAL_SEQUENTIAL_TILES];
+extern const u8 gCatchTile_BurstStart_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_LIGHTNING_TILES];
+extern const u8 gCatchTile_BurstStage2_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_OUTLINE];
+extern const u8 gCatchTile_BurstStage3_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_FLIGHT];
+extern const u8 gCatchTile_BurstStage4_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_ELECTRIC];
+extern const u8 gAerodactlyFlight_Gfx[SIZE_OF_VRAM_AERODACTYL_EGG_DELIVERY_TILES];
+extern const u8 gPortraitAnimFrameGraphics[][SIZE_OF_VRAM_PORTRAIT_TILES];
+extern const u8 gBallRotationTileGraphics[][SIZE_OF_VRAM_BALL_TILES];
+extern const u8 gBallUpgradeFx_Gfx[][SIZE_OF_VRAM_FX_BALL_UPGRADE_TILES];
+extern const u8 gRubyChikoritaEntity[][SIZE_OF_VRAM_CHIKORITA_TILES];
+extern const u8 gRayquazaSkyBackgroundGfx[SIZE_OF_VRAM_RAYQUAZA_INTRO_CLOUDS_TILES];
+extern const u8 gChinchouBumper_Gfx[][SIZE_OF_VRAM_RUBY_BUMPER_TILES];
+extern const u8 gFlipper_Gfx[][SIZE_OF_VRAM_FLIPPER_TILES];
+extern const u8 gAlphabetTilesGfx[][SIZE_OF_VRAM_LETTER_TILE];
+extern const u8 gSpaceTileGfx[SIZE_OF_VRAM_LETTER_TILE];
+extern const u8 gMainStageBonusTrap_Gfx[][SIZE_OF_VRAM_FX_CENTER_HOLE_GRAVITY_TILES];
+extern const u8 gRubyStageCyndaquil_Gfx[][SIZE_OF_VRAM_CYNDAQUIL_TILES];
+extern const u8 gDecimalDigitTilesGfx[][SIZE_OF_VRAM_MART_PRICE_DIGIT];
+extern const u8 gLocationPortraitGfx[][SIZE_OF_VRAM_PORTRAIT_TILES];
+extern const u8 gTotodileEggDelivery_Gfx[SIZE_OF_VRAM_TOTODILE_EGG_DELIVERY_TILES];
+extern const u8 gHatchMachineElevator_Gfx[][SIZE_OF_VRAM_HATCH_MACHINE_ALL_TILES];
+extern const u8 gGroudonAttackFx_Gfx[SIZE_OF_VRAM_GROUDON_ATTACK_FX_TILES];
+extern const u8 gRayquazaFlyby_Gfx[SIZE_OF_VRAM_RAYQUAZA_FLYBY_TILES];
+extern const u8 gRayquazaSpriteSheet[SIZE_OF_VRAM_RAYQUAZA_TILES];
+extern const u8 gSphealResultsScreenGfx[SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES];
+extern const u8 gChargeFillIndicator_Gfx[][SIZE_OF_VRAM_CHARGE_INDICATOR_CIRCLE_TILES];
+extern const u8 gPikachuSaverTilesGfx[][SIZE_OF_VRAM_PIKA_MON_TILES];
+extern const u8 gRubyBoardShopDoor_Gfx[][SIZE_OF_VRAM_RUBY_MART_DOOR_TILES];
+extern const u8 gRubyBoardSharpedo_Gfx[][SIZE_OF_VRAM_SHARPEDO_TILES];
+extern const u8 gMartEvoForegroundMenuUx_Gfx[SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES];
+extern const u8 gRubyBoardShop_Gfx[][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES];
+extern const u8 gAreaRouletteSelectedFx_Gfx[SIZE_OF_VRAM_FX_AREA_ROULETTE_SELECTED_TILES];
+extern const u8 gMainBoardPikaSpinner_Gfx[][SIZE_OF_VRAM_PIKA_CHARGE_SPINNER_TILES];
+extern const u8 gRubyBoardHatchCave_Gfx[][SIZE_OF_VRAM_HATCH_CAVE_TILES];
+extern const u8 gEggFrameTilesGfx[][SIZE_OF_VRAM_HATCH_EGG_TILES];
+extern const u8 gMainBoardBallSave_Gfx[SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES];
+extern const u8 gMainBoardEndOfBall_Gfx[SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES];
+extern const u8 gSapphireBoardZigzagoonFx_Gfx[SIZE_OF_VRAM_FX_ZIGZAGZOON_ROULETTE_STOP_TILES];
 
-extern const u8 gAlphabetTilesGfx[][0x40];
-extern const u8 gSpaceTileGfx[0x40];
-extern const u8 gDecimalDigitTilesGfx[][0x40];
-extern const u8 gMartEvoForegroundMenuUx_Gfx[];
+// Rom_2 data
 extern const s16 gCaughtTextChars[];
-
-extern const u8 gHatchMachineElevator_Gfx[][0x440];
+extern const u16 gShopItemData[][4];
+extern const u16 gShopCursorToItemMap[];
+extern const u16 gEggAnimationFrameData[][4];
+extern const s16 gEvoShopAnimFrames[][7];
+extern const u8 *gEvoItemAppear_GfxList[];
+extern const u8 *gEvoItemTilesGfxPtrs[];
 extern const s16 gHoleAnimKeyframeData[][2];
-
-extern const u8 gKecleonBonusClear_Gfx[0x2000];
-extern const u8 gKyogreBonusClear_Gfx[0x2000];
-extern const u8 gGroudonAttackFx_Gfx[0x2000];
-extern const u8 gGroudonBonusClear_Gfx[0x2000];
-extern const u8 gRayquazaSkyBackgroundGfx[0x2800];
-extern const u8 gRayquazaFlyby_Gfx[0x1C00];
-extern const u8 gRayquazaBonusClear_Gfx[0x2000];
-extern const u8 gRayquazaSpriteSheet[0x860];
-extern const u8 gSphealResultsScreenGfx[0x800];
-
+extern const Palette *gMonPortraitGroupPals[];
+extern const u8 *gMonPortraitGroupGfx[];
 
 void SaveGameStateSnapshot(s16);
 
@@ -452,9 +465,9 @@ void RestoreFieldSpecificGraphics(void)
         {
             var1 = gShopItemData[gShopCursorToItemMap[gCurrentPinballGame->shopItemCursor]];
             var2 = LEAD_DIGIT_10S(var1[3]);
-            DmaCopy16(3, gDecimalDigitTilesGfx[var2], OBJ_VRAM_ADDR_MART_PRICE_TENS_DIGIT_TILES, SIZE_OF_VRAM_LETTER_TILE);
+            DmaCopy16(3, gDecimalDigitTilesGfx[var2], OBJ_VRAM_ADDR_MART_PRICE_TENS_DIGIT_TILES, SIZE_OF_VRAM_MART_PRICE_DIGIT);
             var3 = DIGIT_1S(var1[3]);
-            DmaCopy16(3, gDecimalDigitTilesGfx[var3], OBJ_VRAM_ADDR_MART_PRICE_ONES_DIGIT_TILES, SIZE_OF_VRAM_LETTER_TILE);
+            DmaCopy16(3, gDecimalDigitTilesGfx[var3], OBJ_VRAM_ADDR_MART_PRICE_ONES_DIGIT_TILES, SIZE_OF_VRAM_MART_PRICE_DIGIT);
         }
         break;
     case FX_BALL_SAVED_CUTSCENE:
@@ -501,7 +514,7 @@ void RestoreMainFieldDynamicGraphics(void)
 
     for (i = 0; i <= 1; i++)
     {
-        DmaCopy16(3, gPikachuSaverTilesGfx + ((var0 =gCurrentPinballGame->pikaSaverTileIndex[i]) * SIZE_OF_VRAM_PIKA_MON_TILES), OBJ_VRAM_ADDR_PIKA_MON_AT_LEFT_SIDE_TILES + i * SIZE_OF_VRAM_PIKA_MON_TILES, SIZE_OF_VRAM_PIKA_MON_TILES);
+        DmaCopy16(3, gPikachuSaverTilesGfx[var0 =gCurrentPinballGame->pikaSaverTileIndex[i]], OBJ_VRAM_ADDR_PIKA_MON_AT_LEFT_SIDE_TILES + i * SIZE_OF_VRAM_PIKA_MON_TILES, SIZE_OF_VRAM_PIKA_MON_TILES);
     }
 
     var0 = gCurrentPinballGame->pikachuSpinFrame;
@@ -564,7 +577,7 @@ void RestoreMainFieldDynamicGraphics(void)
         case CATCH_EM_SUBSTATE_SETUP_CATCH_HIT_COUNT:
             if ((u32) gCurrentPinballGame->captureFlashTimer > 4)
             {
-                DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
+                DmaCopy16(3, gCatchSpriteGfxBuffer[2], OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
             }
             else
             {
@@ -576,7 +589,7 @@ void RestoreMainFieldDynamicGraphics(void)
             {
                 if (gCurrentPinballGame->captureFlashTimer > 4)
                 {
-                    DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
+                    DmaCopy16(3, gCatchSpriteGfxBuffer[2], OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
                 }
                 else
                 {
@@ -594,7 +607,7 @@ void RestoreMainFieldDynamicGraphics(void)
         case JIRACHI_CATCH_SUBSTATE_SETUP_CATCH_HIT_COUNT:
             if (gCurrentPinballGame->captureFlashTimer > 4U)
             {
-                DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
+                DmaCopy16(3, gCatchSpriteGfxBuffer[2], OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
             }
             else
             {
@@ -606,7 +619,7 @@ void RestoreMainFieldDynamicGraphics(void)
             {
                 if (gCurrentPinballGame->captureFlashTimer > 4U)
                 {
-                    DmaCopy16(3, gCatchSpriteFlashGfx, OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
+                    DmaCopy16(3, gCatchSpriteGfxBuffer[2], OBJ_VRAM_ADDR_CATCH_MON_ENTITY_TILES, SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES);
                 }
                 else
                 {

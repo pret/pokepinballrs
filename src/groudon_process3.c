@@ -8,16 +8,22 @@
 
 #define GROUDON_MODE_TIME TICKS_FOR_TIME(3,0)
 
-extern const u8 gGroudonBonusClear_Gfx[];
-extern const u8 gGroudonAttackFx_Gfx[];
-extern const s8 gGroudonBoardBoulders_Gfx[][0x300];
-extern struct SongHeader se_groudon_hit;
-extern struct SongHeader se_groudon_lands;
-extern struct SongHeader se_groudon_spits_fire;
-extern struct SongHeader se_groudon_fire_ring;
-extern struct SongHeader se_groudon_fire_grab;
+// Rom_1 data
+extern const u8 gGroudonBonusClear_Gfx[SIZE_OF_VRAM_GROUDON_BANNER_TILES];
+extern const Palette gBonusStageObjPal;
+extern const u16 gGroudonLavaPaletteCycleData[]; //Should be of type Palette
+extern const u8 gGroudonAttackFx_Gfx[SIZE_OF_VRAM_GROUDON_ATTACK_FX_TILES];
+extern const s8 gGroudonBoardBoulders_Gfx[][SIZE_OF_VRAM_GROUDON_BOULDER_TILES];
+
+extern const struct SongHeader se_groudon_hit;
+extern const struct SongHeader se_groudon_lands;
+extern const struct SongHeader se_groudon_spits_fire;
+extern const struct SongHeader se_groudon_fire_ring;
+extern const struct SongHeader se_groudon_fire_grab;
+
+// Rom_2 data
 extern const s16 gShockwaveSplashDistanceThresholds[];
-extern const s16 gScreenShakeOscillationValues[];
+extern const s16 gScreenShakeOscillationValues[12];
 extern const s16 gGroudonFootstepShakePatterns[][31];
 extern const s16 gGroudonCryShakePattern[];
 extern const u16 gGroudonAnimFramesetTable[][2];
@@ -33,6 +39,7 @@ extern const u16 gGroudonProjectileOamData[24][4][3];
 extern const u16 gGroudonProjectileAttackOamData[12][6][3];
 extern const u16 gGroudonMainBodyOamData[166][19][3];
 extern const u16 gGroudonFirePillarOamData[58][10][3];
+
 
 void InitFrameProcess3_BoardLogic_GroudonBoard(void)
 {
@@ -1695,8 +1702,10 @@ void AnimateGroudonBackground(void)
     struct OamDataSimple *oamSimple;
 
     var0 = gGroudonLavaPaletteAnimIndices[(gMain.systemFrameCount % 144) / 24];
-    DmaCopy16(3, &gGroudonLavaPaletteCycleData[var0 * PLTT_SLOT_SIZE], BG_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
-    DmaCopy16(3, &gGroudonLavaPaletteCycleData[(var0 + 4) * PLTT_SLOT_SIZE], BG_PLTT_SLOT(PAL_IX_4), PLTT_SLOT_SIZE);
+
+    //Steps at half palette stride?
+    DmaCopy16(3, &gGroudonLavaPaletteCycleData[var0 * 0x10], BG_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
+    DmaCopy16(3, &gGroudonLavaPaletteCycleData[(var0 + 4) * 0x10], BG_PLTT_SLOT(PAL_IX_4), PLTT_SLOT_SIZE);
 
     var0 = gGroudonBgTileAnimIndices[(gMain.systemFrameCount % 96) / 24];
     for (i = 0; i < 4; i++)

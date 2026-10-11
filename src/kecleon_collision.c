@@ -2,6 +2,10 @@
 #include "constants/board/kecleon_states.h"
 #include "constants/collision.h"
 
+// Rom_1 data
+extern u16 gKecleonUprightCollisionMap[0x1600];
+extern u16 gKecleonKnockedDownCollisionMap[0x1600];
+
 s16 CollisionCheck_Kecleon(struct Vector16 *ballPosition, u16 *collisionAngle)
 {
     struct Vector16 vec1;

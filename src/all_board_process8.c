@@ -7,8 +7,11 @@
 #define TIMER_TEXT_YELLOW_UNDER_TIME TICKS_FOR_TIME(0,30)
 #define TIMER_TEXT_RED_UNDER_TIME TICKS_FOR_TIME(0,15)
 
-extern const Palette gTimer_Warning_Pal;
+// Rom_1 data
 extern const Palette gTimer_Default_Pal;
+
+// Rom_2 data
+extern const Palette gTimer_Warning_Pal;
 extern const Palette gTimer_Slow_Pal;
 
 void InitFrameProcess8_HudUpdate_AllBoards(void)
