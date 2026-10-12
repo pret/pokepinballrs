@@ -142,9 +142,21 @@ void Options_LoadGraphics(void)
     DmaCopy16(3, gOptionsText_Tilemap,    gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
     DmaCopy16(3, gBG0TilemapBuffer,       BG_VRAM_ADDR_OPTIONS_BG0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
 
+#ifdef FEATURE_OMEGA_DE_RUMBLE
     // GBP+OmegaDE patch site 9: do not gray the rumble UI for non-GBP.
     DmaCopy16(3, gOptionsBackground_Tilemap, BG_VRAM_ADDR_OPTIONS_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     DmaCopy16(3, gGBAButtonIcons_Pals,       OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
+#else
+    if (gGameBoyPlayerEnabled != TRUE)
+    {
+        SetStringPalette(18, 4, 2, 1, 2);
+        SetStringPalette(18, 5, 3, 2, 2);
+    }
+
+    DmaCopy16(3, gBG0TilemapBuffer,          BG_VRAM_ADDR_OPTIONS_BG0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gOptionsBackground_Tilemap, BG_VRAM_ADDR_OPTIONS_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gGBAButtonIcons_Pals,       OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
+#endif
     DmaCopy16(3, gOptionsSprites_Gfx,        OBJ_VRAM_ADDR_OPTIONS_SPRITE_TILES, SIZE_OF_VRAM_OPTIONS_SPRITE_TILES);
     Options_InitStates();
     UpdateOptionsSpritePositions();
@@ -190,9 +202,22 @@ void Options_InitStates(void)
             gCustomButtonConfigs[i][j] = gDefaultButtonConfigs[i][j];
     }
     InitCustomButtonConfigDisplay();
+#ifdef FEATURE_OMEGA_DE_RUMBLE
     // GBP+OmegaDE patch site 10: expose and load the saved rumble state regardless of GBP.
     gOptionsData.rumbleEnabled = gMain_saveData.rumbleEnabled;
     gMain_saveData.rumbleEnabled = TRUE;
+#else
+    if (gGameBoyPlayerEnabled == TRUE)
+    {
+        gOptionsData.rumbleEnabled = gMain_saveData.rumbleEnabled;
+        gMain_saveData.rumbleEnabled = TRUE;
+    }
+    else
+    {
+        gOptionsData.rumbleEnabled = FALSE;
+        gMain_saveData.rumbleEnabled = FALSE;
+    }
+#endif
     gOptionsData.torchicHeadShakeAnimActive = FALSE;
     gOptionsData.torchicAnimTimer = 0;
     gOptionsData.torchicAnimFrame = 0;
@@ -243,13 +268,22 @@ void Options_HandleInput(void)
                 gOptionsData.cursorPosition = CURSOR_POS_BUTTON_CONFIG_TYPE_A;
             }
         }
-        // GBP+OmegaDE patch sites 11, 12: allow rumble cursor movement on non-GBP.
-        if ((JOY_NEW(DPAD_RIGHT)) && (u16)gOptionsData.cursorPosition < CURSOR_POS_BUTTON_CONFIG_TYPE_A)
+        if ((JOY_NEW(DPAD_RIGHT)) &&
+#ifdef FEATURE_OMEGA_DE_RUMBLE
+            (u16)gOptionsData.cursorPosition < CURSOR_POS_BUTTON_CONFIG_TYPE_A)
+#else
+            gGameBoyPlayerEnabled == TRUE && (u16)gOptionsData.cursorPosition < CURSOR_POS_BUTTON_CONFIG_TYPE_A)
+#endif
         {
             m4aSongNumStart(SE_MENU_MOVE);
             gOptionsData.cursorPosition += CURSOR_POS_RUMBLE_ON;
         }
-        if ((JOY_NEW(DPAD_LEFT)) && (u16)(gOptionsData.cursorPosition - CURSOR_POS_RUMBLE_ON) < 2)
+        if ((JOY_NEW(DPAD_LEFT)) &&
+#ifdef FEATURE_OMEGA_DE_RUMBLE
+            (u16)(gOptionsData.cursorPosition - CURSOR_POS_RUMBLE_ON) < 2)
+#else
+            gGameBoyPlayerEnabled == TRUE && (u16)(gOptionsData.cursorPosition - CURSOR_POS_RUMBLE_ON) < 2)
+#endif
         {
             m4aSongNumStart(SE_MENU_MOVE);
             gOptionsData.cursorPosition -= CURSOR_POS_RUMBLE_ON;
@@ -299,8 +333,8 @@ void Options_HandleInput(void)
                 gOptionsData.cursorPosition = CURSOR_POS_LEFT_FLIPPER;
                 gOptionsData.stateMain = OPTIONS_STATE_BUTTON_CONFIG_SELECT;
                 break;
-            // GBP+OmegaDE patch sites 13, 14: allow rumble selection on non-GBP.
             case CURSOR_POS_RUMBLE_OFF:
+#ifdef FEATURE_OMEGA_DE_RUMBLE
                 m4aSongNumStart(SE_MENU_SELECT);
                 gOptionsData.torchicAnimTileId = 0;
                 if (gOptionsData.torchicHeadShakeAnimActive == TRUE)
@@ -308,8 +342,21 @@ void Options_HandleInput(void)
                 gOptionsData.torchicAnimTimer = 0;
                 gOptionsData.torchicAnimFrame = 0;
                 gOptionsData.rumbleEnabled = FALSE;
+#else
+                if (gGameBoyPlayerEnabled == TRUE)
+                {
+                    m4aSongNumStart(SE_MENU_SELECT);
+                    gOptionsData.torchicAnimTileId = 0;
+                    if (gOptionsData.torchicHeadShakeAnimActive == TRUE)
+                        gOptionsData.torchicHeadShakeAnimActive = FALSE;
+                    gOptionsData.torchicAnimTimer = 0;
+                    gOptionsData.torchicAnimFrame = 0;
+                    gOptionsData.rumbleEnabled = FALSE;
+                }
+#endif
                 break;
             case CURSOR_POS_RUMBLE_ON:
+#ifdef FEATURE_OMEGA_DE_RUMBLE
                 m4aSongNumStart(SE_MENU_SELECT);
                 PlayRumble(11);
                 if (!gOptionsData.torchicHeadShakeAnimActive)
@@ -318,6 +365,19 @@ void Options_HandleInput(void)
                 gOptionsData.torchicAnimTimer = 0;
                 gOptionsData.torchicAnimFrame = 0;
                 gOptionsData.rumbleEnabled = TRUE;
+#else
+                if (gGameBoyPlayerEnabled == TRUE)
+                {
+                    m4aSongNumStart(SE_MENU_SELECT);
+                    PlayRumble(11);
+                    if (!gOptionsData.torchicHeadShakeAnimActive)
+                        gOptionsData.torchicHeadShakeAnimActive = TRUE;
+
+                    gOptionsData.torchicAnimTimer = 0;
+                    gOptionsData.torchicAnimFrame = 0;
+                    gOptionsData.rumbleEnabled = TRUE;
+                }
+#endif
                 break;
             }
         }

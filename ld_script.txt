@@ -33,7 +33,6 @@ SECTIONS
         src/util.o(.text);
         src/main.o(.text);
         src/gbplayer.o(.text);
-        src/omegade_rumble.o(.text);
         src/link.o(.text);
         src/bonus_field_select.o(.text);
         src/ereader.o(.text);

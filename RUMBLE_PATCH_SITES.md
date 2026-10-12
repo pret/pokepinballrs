@@ -6,6 +6,21 @@ cartridge-rumble support on non-Game Boy Player hardware.
 Real GBP behavior is preserved when `gGameBoyPlayerEnabled == TRUE`; all Omega DE
 register accesses happen only on the non-GBP path.
 
+## Build
+
+The Omega DE rumble code is gated by the Makefile variable `OMEGA_DE_RUMBLE`.
+
+- Default (vanilla): `make rom` produces `pokepinballrs.gba`.
+- Feature build: `make OMEGA_DE_RUMBLE=1 rom` produces
+  `pokepinballrs_omega_de_rumble.gba` in the repository root and keeps its
+  intermediate objects under `build/pokepinballrs_omega_de_rumble/`.
+
+When disabled (the default), the source compiles back to the original upstream
+behavior, `src/omegade_rumble.s` is excluded from the object list, and the
+generated linker script matches the original object order. When enabled, all
+15 patch sites below are active and the Omega DE helper text is linked
+immediately after `src/gbplayer.o(.text)`.
+
 ## Reference and acknowledgement
 
 The cartridge-rumble behavior and patch-site mapping in this implementation were

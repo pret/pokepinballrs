@@ -37,8 +37,15 @@ HOST_VARS := CC=$(HOSTCC) CXX=$(HOSTCXX) CFLAGS='$(HOSTCFLAGS)' CXXFLAGS='$(HOST
 
 SHELL := /bin/bash -o pipefail
 
+OMEGA_DE_RUMBLE ?= 0
+
+ifeq ($(OMEGA_DE_RUMBLE),1)
+ROM := pokepinballrs_omega_de_rumble.gba
+OBJ_DIR := build/pokepinballrs_omega_de_rumble
+else
 ROM := pokepinballrs.gba
 OBJ_DIR := build/pokepinballrs
+endif
 
 ELF = $(ROM:.gba=.elf)
 MAP = $(ROM:.gba=.map)
@@ -57,6 +64,10 @@ CC1             := tools/agbcc/bin/agbcc$(EXE)
 override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -fprologue-bugfix -g
 
 CPPFLAGS := -I tools/agbcc/include -I tools/agbcc -iquote include -nostdinc -undef
+
+ifeq ($(OMEGA_DE_RUMBLE),1)
+CPPFLAGS += -DFEATURE_OMEGA_DE_RUMBLE
+endif
 
 LDFLAGS = -Map ../../$(MAP)
 
@@ -101,7 +112,10 @@ $(shell mkdir -p $(C_BUILDDIR) $(ASM_BUILDDIR) $(DATA_ASM_BUILDDIR))
 C_SRCS := $(wildcard $(C_SUBDIR)/*.c)
 C_OBJS := $(patsubst $(C_SUBDIR)/%.c,$(C_BUILDDIR)/%.o,$(C_SRCS))
 
-C_ASM_SRCS += $(wildcard $(C_SUBDIR)/*.s)
+C_ASM_SRCS := $(filter-out $(C_SUBDIR)/omegade_rumble.s,$(wildcard $(C_SUBDIR)/*.s))
+ifeq ($(OMEGA_DE_RUMBLE),1)
+C_ASM_SRCS += $(C_SUBDIR)/omegade_rumble.s
+endif
 C_ASM_OBJS := $(patsubst $(C_SUBDIR)/%.s,$(C_BUILDDIR)/%.o,$(C_ASM_SRCS))
 
 ASM_SRCS := $(wildcard $(ASM_SUBDIR)/*.s)
@@ -117,7 +131,9 @@ MAKEFLAGS += --no-print-directory
 
 rom: $(ROM)
 ifeq ($(COMPARE),1)
+ifeq ($(OMEGA_DE_RUMBLE),0)
 	@$(SHA1) pokepinballrs.sha1
+endif
 endif
 
 # For contributors to make sure a change didn't affect the contents of the ROM.
@@ -211,6 +227,9 @@ $(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
 
 $(OBJ_DIR)/ld_script.ld: ld_script.txt $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
 	cd $(OBJ_DIR) && sed -f ../../ld_script.sed ../../$< | sed "s#tools/#../../tools/#g" > ld_script.ld
+ifeq ($(OMEGA_DE_RUMBLE),1)
+	sed -i '/src\/gbplayer.o(.text);/a\        src/omegade_rumble.o(.text);' $(OBJ_DIR)/ld_script.ld
+endif
 
 $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
 	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL) $(LIB)

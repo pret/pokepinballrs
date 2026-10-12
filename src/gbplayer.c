@@ -35,8 +35,11 @@ EWRAM_DATA u32 gSio32RemoteDeviceId;
 
 // -----
 
+#ifdef FEATURE_OMEGA_DE_RUMBLE
 void EmitOmegaDEPulse(void);
+#endif
 
+#ifdef FEATURE_OMEGA_DE_RUMBLE
 static void StopCartridgeRumble(void)
 {
     *(vu8 *)0x080000C4 = 0;
@@ -50,6 +53,7 @@ static void SetRumbleCommand(int command)
     // Stop is handled only by the explicit stop hooks (DisableGbPlayerRumble and
     // the ProcessRumbleFrame inactive-pattern branch), matching the reference payload.
 }
+#endif
 
 // Rom_1 data
 extern const Palette gGbPlayerPalettes[];
@@ -162,10 +166,20 @@ void InitGameBoyPlayer(void)
 
 void EnableGbPlayerRumble(void)
 {
+#ifdef FEATURE_OMEGA_DE_RUMBLE
     gIntrTable[0] = Sio32IDIntr;
     gIntrTable[1] = Sio32TimeoutIntr;
     gSio32SerialEnabled = TRUE;
     InitSio32Hardware();
+#else
+    if (gGameBoyPlayerEnabled == 1)
+    {
+        gIntrTable[0] = Sio32IDIntr;
+        gIntrTable[1] = Sio32TimeoutIntr;
+        gSio32SerialEnabled = TRUE;
+        InitSio32Hardware();
+    }
+#endif
 
     // GBP+OmegaDE patch site 0
     gRumblePatternPosition = -1;
@@ -177,6 +191,7 @@ void EnableGbPlayerRumble(void)
 void DisableGbPlayerRumble(void)
 {
     // TODO This probably wasn't the original code, but it matches.
+#ifdef FEATURE_OMEGA_DE_RUMBLE
     // GBP+OmegaDE patch sites 1, 2
     int *var0 = &gSio32SerialEnabled;
     int val = 0;
@@ -186,6 +201,14 @@ void DisableGbPlayerRumble(void)
     gRumbleMotorMode = 0;
     gSio32SerialEnabled = FALSE;
     *var0 = val;
+#else
+    int *var0 = &gSio32SerialEnabled;
+    int val = 0;
+    gRumbleCommand = 0;
+    gRumbleMotorMode = 0;
+    gSio32SerialEnabled = FALSE;
+    *var0 = val;
+#endif
     gSio32ReconnectTimer = 0;
     gRumblePatternPosition = -1;
     gRumbleLoopCounter = 0;
@@ -238,6 +261,7 @@ void ProcessRumbleFrame(void)
     int var0;
     int var1;
 
+#ifdef FEATURE_OMEGA_DE_RUMBLE
     // GBP+OmegaDE patch sites 3, 4, 5
     switch (gSio32CommState)
     {
@@ -312,6 +336,82 @@ void ProcessRumbleFrame(void)
         }
         break;
     }
+#else
+    if (gGameBoyPlayerEnabled == 1)
+    {
+        switch (gSio32CommState)
+        {
+        case 0:
+        case 1:
+        case 2:
+            break;
+        case 3:
+        case 4:
+            if (gRumblePatternPosition >= 0 && gRumbleSpeedMode && !gRumblePaused)
+            {
+                if (!(gRumbleFrameCounter & 1))
+                {
+                    while (1)
+                    {
+                        var0 = gRumblePatterns[gRumblePatternIndex][gRumblePatternPosition++];
+                        var1 = gRumblePatterns[gRumblePatternIndex][gRumblePatternPosition];
+                        if (var0 == -1)
+                        {
+                            gRumblePatternPosition = var0;
+                            gRumbleCommand = 0;
+                            break;
+                        }
+
+                        if (var0 < -1)
+                        {
+                            if (gRumbleLoopCounter)
+                            {
+                                if (--gRumbleLoopCounter == 0)
+                                {
+                                    gRumblePatternPosition++;
+                                }
+                                else
+                                {
+                                    gRumblePatternPosition--;
+                                    gRumblePatternPosition -= var1;
+                                }
+                            }
+                            else
+                            {
+                                gRumbleLoopCounter = ~var0;
+                                gRumblePatternPosition--;
+                                gRumblePatternPosition -= var1;
+                            }
+                        }
+                        else
+                        {
+                            gRumbleCommand = var0;
+                            break;
+                        }
+                    }
+                }
+                else if (gRumbleFrameCounter % 2 == 1 && gRumbleSpeedMode == 1)
+                {
+                    gRumbleCommand = 0;
+                }
+            }
+            else
+            {
+                gRumbleCommand = 0;
+            }
+            break;
+        case 5:
+            if (++gSio32ReconnectTimer > 60)
+            {
+                if (gSio32SerialEnabled)
+                    InitSio32Hardware();
+
+                gSio32ReconnectTimer = 0;
+            }
+            break;
+        }
+    }
+#endif
 
     gRumbleFrameCounter++;
 }
@@ -329,11 +429,15 @@ void InitSio32Hardware(void)
     REG_IE |= INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL;
     REG_IME = INTR_FLAG_VBLANK;
     REG_SIOCNT_L &= -2;
+#ifdef FEATURE_OMEGA_DE_RUMBLE
     // GBP+OmegaDE patch site 6
     if (gGameBoyPlayerEnabled == TRUE)
         gSio32CommState = 0;
     else
         gSio32CommState = 4;
+#else
+    gSio32CommState = 0;
+#endif
     CpuFill32(0, &gSio32Id, 0xC);
     REG_IME = 0;
     REG_SIOCNT |= SIO_MULTI_BUSY;
@@ -650,9 +754,13 @@ void Sio32TimeoutIntr(void)
     REG_TM3CNT_H = 0;
     REG_TM3CNT_L = 0x8000;
 
+#ifdef FEATURE_OMEGA_DE_RUMBLE
     // GBP+OmegaDE patch site 7
     if (gGameBoyPlayerEnabled == TRUE)
         gSio32CommState = 5;
     else
         gSio32CommState = 4;
+#else
+    gSio32CommState = 5;
+#endif
 }
