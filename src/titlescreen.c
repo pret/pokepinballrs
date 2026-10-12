@@ -3,6 +3,7 @@
 #include "m4a.h"
 #include "titlescreen.h"
 #include "main.h"
+#include "gbplayer.h"
 #include "constants/bg_music.h"
 #include "constants/mem_layout/titlescreen.h"
 
@@ -153,6 +154,11 @@ void InitTitlescreenStates(void)
     gTitlescreen.deleteSaveSpriteGroupId = SG_DELETE_SAVE_CONFIRMATION_PANE;
     gTitlescreen.pressStartAndFlippersVisible = TRUE;
     gTitlescreen.deleteSaveWindowVisible = FALSE;
+
+    // GBP+OmegaDE patch site 8: initialize cartridge rumble after the
+    // title-screen fields above, matching the known-working IPS hook order.
+    InitCartridgeRumble();
+
     gTitlescreen.menuSpriteGroupId = SG_MENU_PANEL;
     gTitlescreen.titleScreenLeftFlipperSpriteGroup = SG_TITLE_SCREEN_LEFT_FLIPPER_BASE;
     gTitlescreen.titleScreenRightFlipperSpriteGroup = SG_TITLE_SCREEN_RIGHT_FLIPPER_BASE;
