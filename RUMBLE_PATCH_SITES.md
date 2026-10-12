@@ -6,6 +6,12 @@ cartridge-rumble support on non-Game Boy Player hardware.
 Real GBP behavior is preserved when `gGameBoyPlayerEnabled == TRUE`; all Omega DE
 register accesses happen only on the non-GBP path.
 
+## Reference and acknowledgement
+
+The cartridge-rumble behavior and patch-site mapping in this implementation were
+developed with reference to the Pokémon Pinball: Ruby & Sapphire rumble patch
+published as [Romhacking.net Hack #6256](https://www.romhacking.net/hacks/6256/).
+
 | Site | Semantic target | Source location | Implementation |
 |------|-----------------|-----------------|----------------|
 | 0 | `EnableGbPlayerRumble` always runs setup | `src/gbplayer.c` `EnableGbPlayerRumble` | Removed the `gGameBoyPlayerEnabled == 1` guard around interrupt/SIO setup and `InitSio32Hardware()` |
@@ -13,7 +19,7 @@ register accesses happen only on the non-GBP path.
 | 2 | `DisableGbPlayerRumble` prologue/return support | same as site 1 | Handled by the same stop hook at the top of the function |
 | 3 | `ProcessRumbleFrame` runs without the GBP gate | `src/gbplayer.c` `ProcessRumbleFrame` | Removed the outer `if (gGameBoyPlayerEnabled == 1)` wrapper |
 | 4 | Replace `gRumbleCommand = var0` with output helper | `src/gbplayer.c` `ProcessRumbleFrame` | `SetRumbleCommand(var0)` stores the command and emits the Omega DE pulse when `!GBP && command == 2` |
-| 5 | Pattern end (`var0 == -1`) stores command 0 and stops | `src/gbplayer.c` `ProcessRumbleFrame` | `SetRumbleCommand(0)` followed by `StopCartridgeRumble()` in the `var0 == -1` branch when `!GBP` |
+| 5 | Inactive pattern stores command 0 and stops cartridge rumble | `src/gbplayer.c` `ProcessRumbleFrame` | The inactive-pattern branch stores command 0 and calls `StopCartridgeRumble()` when `!GBP` |
 | 6 | `InitSio32Hardware` initial state | `src/gbplayer.c` `InitSio32Hardware` | `gSio32CommState = 0` for GBP, `4` for non-GBP |
 | 7 | Timeout/reconnect state assignment | `src/gbplayer.c` `Sio32TimeoutIntr` | `gSio32CommState = 5` for GBP, `4` for non-GBP |
 | 8 | Initialize Omega DE/cart control for non-GBP | `src/titlescreen.c` `InitTitlescreenStates` | `InitCartridgeRumble()` called immediately after setting `pressStartAndFlippersVisible` and `deleteSaveWindowVisible`, matching the IPS hook order |
@@ -37,8 +43,7 @@ register accesses happen only on the non-GBP path.
   `gGameBoyPlayerEnabled == TRUE` so the real GBP path is unaffected.
 - `SetRumbleCommand(command)` (`src/gbplayer.c`) - stores `command` into
   `gRumbleCommand` and emits the Omega DE pulse only when `!GBP && command == 2`.
-  It never stops the cartridge rumble; stop is handled only by the explicit stop
-  hooks below.
+  It never stops the cartridge rumble; stop is handled by the explicit stop hooks.
 
 ## Important invariants
 
@@ -46,6 +51,7 @@ register accesses happen only on the non-GBP path.
   `CheckGameBoyPlayer()`.
 - All `0x08xxxxxx` and `0x09xxxxxx` accesses in the helpers are `volatile` and
   use the exact width (`vu8` / `vu16`) specified by the reference patch.
-- `StopCartridgeRumble()` (the only write to `0x080000C4`) is reached only from
-  `DisableGbPlayerRumble` and the `ProcessRumbleFrame` `var0 == -1` pattern-end
-  branch. Ordinary `gRumbleCommand = 0` transitions have no physical output.
+- `StopCartridgeRumble()` (the only write to `0x080000C4`) is reached from
+  `DisableGbPlayerRumble` and the inactive-pattern branch of
+  `ProcessRumbleFrame`. The odd-frame speed-mode command-zero transition does
+  not produce a physical stop write.
