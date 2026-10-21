@@ -18,6 +18,15 @@ OUT = REPO + '/data/eu'
 BIN = OUT + '/bin'
 os.makedirs(BIN, exist_ok=True)
 
+# Hand-written sources for EU-only data: data/eu/src/*.inc with a line "@ eu_range START END".
+# The generator includes them instead of emitting the bytes of that range.
+MANUAL = []
+for fn_ in sorted(os.listdir(OUT + '/src')) if os.path.isdir(OUT + '/src') else []:
+    if fn_.endswith('.inc'):
+        m_ = re.search(r'^@ eu_range (0x[0-9A-Fa-f]+) (0x[0-9A-Fa-f]+)', open(f'{OUT}/src/{fn_}', encoding='utf-8').read(), re.M)
+        if m_:
+            MANUAL.append((int(m_.group(1), 16), int(m_.group(2), 16), [f'.include "data/eu/src/{fn_}"']))
+
 FILES = [  # (us source, us object, eu name)
     ('data/rom_1.s', 'data/rom_1.o', 'rom_1'),
     ('data/sound_data.s', 'data/sound_data.o', 'sound_data'),
@@ -259,12 +268,26 @@ def gen_file(src, obj, name):
         nonlocal cursor
         assert a == cursor, (hex(a), hex(cursor))
         if b < a: raise Exception('negative gap %x %x in %s' % (a, b, name))
-        pts = sorted(set([a, b] + [x for x in by_addr if a <= x < b]))
+        manual = [(s, e, p) for s, e, p in MANUAL if a <= s < b]
+        pts = sorted(set([a, b] + [x for x in by_addr if a <= x < b] + [s for s, e, p in manual] + [e for s, e, p in manual]))
+        skip_to = None
         for x, y in zip(pts, pts[1:] + [None]):
+            if skip_to is not None and x < skip_to:
+                if by_addr.get(x):
+                    raise Exception('label %s inside %s' % (by_addr[x], skip_to_path))
+                continue
             for n in sorted(by_addr.get(x, [])):
                 if n not in used_labels and x < b:
                     out.append(('gen', f'{n}:: @ 0x{x:08X}')); used_labels.add(n); ALL_LABELS[n] = x
             if y is None or y <= x: continue
+            m = [(s, e, p) for s, e, p in manual if s == x]
+            if m:
+                s, e, p = m[0]
+                if e > b: raise Exception('%s extends past the gap at 0x%X' % (p[0], b))
+                for l_ in p:
+                    out.append(('gen', '\t' + l_))
+                skip_to, skip_to_path = e, p[0]
+                continue
             data = EU[x - 0x08000000:y - 0x08000000]
             if obj in PTR_OBJS:
                 buf = []

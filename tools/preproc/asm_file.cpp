@@ -21,6 +21,9 @@
 #include <cstdio>
 #include <cstdarg>
 #include <stdexcept>
+#include <map>
+#include <string>
+#include <vector>
 #include "preproc.h"
 #include "asm_file.h"
 #include "char_util.h"
@@ -173,10 +176,14 @@ Directive AsmFile::GetDirective()
         return Directive::Braille;
     else if (CheckForDirective(".dexName"))
         return Directive::DexName;
+    else if (CheckForDirective(".dexCategoryLeftAligned"))
+        return Directive::DexCategoryLeftAligned;
     else if (CheckForDirective(".dexCategory"))
         return Directive::DexCategory;
     else if (CheckForDirective(".dexText"))
         return Directive::DexText;
+    else if (CheckForDirective(".dexLang"))
+        return Directive::DexLanguage;
     else if (CheckForDirective(".ereaderText"))
         return Directive::EreaderText;
     else
@@ -377,6 +384,71 @@ int AsmFile::ReadBraille(unsigned char* s)
     return length;
 }
 
+// Language of the Pokedex strings that follow, set with ".dexLang EN|FR|DE|IT|ES".
+// Empty (the default) selects the original American encoding.
+static std::string s_dexLanguage;
+
+// The European release (BPPP) adds accented glyphs to the Pokedex font and changes the width
+// of a few characters. The width of some of them also depends on the language of the text.
+static void ApplyEuropeanDexEncoding(std::map<std::string, unsigned short>& enc, const std::string& lang)
+{
+    static const std::map<std::string, unsigned short> common =
+    {
+        { "k", 0x3265 }, { "z", 0x3845 }, { "1", 0x28A4 }, { "`", 0x3AC4 },
+        { "!", 0x3946 }, { ":", 0x3986 }, { ";", 0x39A6 }, { "(", 0x3A24 }, { ")", 0x3A44 },
+        { "/", 0x4AC6 }, { "é", 0x43E6 }, { "“", 0x4946 }, { "„", 0x4926 },
+        { "«", 0x4A46 }, { "»", 0x4A66 }, { "œ", 0x4B23 }, // œ is followed by 0x4B45
+
+        { "Ä", 0x3B46 }, { "Á", 0x3B86 }, { "À", 0x3BA6 },
+        { "Í", 0x4004 }, { "Ü", 0x4046 }, { "Ú", 0x4086 }, { "É", 0x4106 }, { "È", 0x4126 },
+        { "Ö", 0x4146 }, { "Ó", 0x4186 }, { "Ñ", 0x41C6 },
+        { "ä", 0x4226 }, { "â", 0x4246 }, { "á", 0x4266 }, { "à", 0x4286 },
+        { "î", 0x42C4 }, { "í", 0x42E4 }, { "ì", 0x4304 },
+        { "ü", 0x4326 }, { "û", 0x4346 }, { "ú", 0x4366 }, { "ù", 0x4386 },
+        { "ê", 0x43C6 }, { "è", 0x4806 },
+        { "ö", 0x4826 }, { "ô", 0x4846 }, { "ó", 0x4866 }, { "ò", 0x4886 },
+        { "ñ", 0x48A5 }, { "ç", 0x48C6 }, { "ß", 0x4906 },
+    };
+    // English keeps the American glyphs of these characters, French only the "z".
+    static const std::map<std::string, unsigned short> english =
+    {
+        { "z", 0x3846 }, { "1", 0x28A3 }, { "`", 0x3AC3 }, { "é", 0x3AA6 }, { "“", 0x3926 },
+    };
+    static const std::map<std::string, unsigned short> french =
+    {
+        { "z", 0x3846 },
+    };
+
+    for (const auto& kv : common)
+        enc[kv.first] = kv.second;
+    if (lang == "EN")
+        for (const auto& kv : english)
+            enc[kv.first] = kv.second;
+    else if (lang == "FR")
+        for (const auto& kv : french)
+            enc[kv.first] = kv.second;
+}
+
+// Reads the argument of .dexLang.
+void AsmFile::ReadDexLanguage()
+{
+    SkipWhitespace();
+
+    std::string lang;
+
+    while (IsAsciiAlphanum(m_buffer[m_pos]))
+        lang += m_buffer[m_pos++];
+
+    if (lang == "US")
+        lang.clear();
+    else if (lang != "EN" && lang != "FR" && lang != "DE" && lang != "IT" && lang != "ES")
+        RaiseError("unknown dex language \"%s\" (expected US, EN, FR, DE, IT or ES)", lang.c_str());
+
+    s_dexLanguage = lang;
+
+    ExpectEmptyRestOfLine();
+}
+
 int AsmFile::ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft = false, bool fixedWidthEncoding = false)
 {
     // Sample dexEncoding map
@@ -453,6 +525,9 @@ int AsmFile::ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft
         };
     }
 
+    if (!fixedWidthEncoding && !s_dexLanguage.empty())
+        ApplyEuropeanDexEncoding(dexEncoding, s_dexLanguage);
+
     SkipWhitespace();
 
     if (m_buffer[m_pos] != '"')
@@ -464,11 +539,24 @@ int AsmFile::ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft
 
     while (m_buffer[m_pos] != '"')
     {
-        if (temp.size() == targetLength)
+        if (temp.size() >= targetLength)
             RaiseError("mapped string longer than %d entries", targetLength);
 
         std::string c;
         unsigned char first = static_cast<unsigned char>(m_buffer[m_pos]);
+
+        // {XXXX}: raw glyph code (hexadecimal)
+        if (first == '{')
+        {
+            long start = ++m_pos;
+            while (m_buffer[m_pos] != '}' && m_buffer[m_pos] != '"' && m_buffer[m_pos] != '\n')
+                m_pos++;
+            if (m_buffer[m_pos] != '}' || m_pos == start)
+                RaiseError("expected {XXXX} glyph code in dex string");
+            temp.push_back(static_cast<unsigned short>(std::stoul(std::string(&m_buffer[start], m_pos - start), nullptr, 16)));
+            m_pos++;
+            continue;
+        }
 
         if (first < 0x80) {
             // ASCII
@@ -512,7 +600,14 @@ int AsmFile::ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft
         }
 
         temp.push_back(dexEncoding[c]);
+
+        // The European "œ" is drawn with two glyphs (a narrow c and an e).
+        if (c == "œ" && !s_dexLanguage.empty())
+            temp.push_back(0x4B45);
     }
+
+    if (temp.size() > targetLength)
+        RaiseError("mapped string longer than %d entries", targetLength);
 
     m_pos++; // Past closing quote
     ExpectEmptyRestOfLine();

@@ -33,7 +33,9 @@ enum class Directive
     Braille,
     DexName,
     DexCategory,
+    DexCategoryLeftAligned,
     DexText,
+    DexLanguage,
     EreaderText,
     Unknown
 };
@@ -51,6 +53,7 @@ public:
     int ReadString(unsigned char* s);
     int ReadBraille(unsigned char* s);
     int ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft, bool fixedWidthEncoding);
+    void ReadDexLanguage();
     bool IsAtEnd();
     void OutputLine();
     void OutputLocation();
