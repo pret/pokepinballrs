@@ -17,12 +17,17 @@ EWRAM_DATA s16 gGameOverLetterYOffsets[8];
 extern const u8 gDebugTextStrings[];
 extern const u8 gDebugMenuValueTemplate[];
 extern const u8 gDebugMenuCursorText[];
-extern const u8 gMainBoardBallSave_Gfx[SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES];
+EXTERN_LANG5(const u8, gMainBoardBallSave_Gfx, [SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES]);
 extern const u8 gMainBoardBallSaveLatios_Gfx[SIZE_OF_VRAM_LATIOS_BALL_SAVER_TILES];
 extern const u8 gMainBoardBallSaveLatiosArm_Gfx[SIZE_OF_VRAM_LATIOS_ARM_TILES];
-extern const u8 gMainBoardEndOfBall_Gfx[SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES];
+EXTERN_LANG5(const u8, gMainBoardEndOfBall_Gfx, [SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES]);
 extern const u8 gEobBonusSummaryCharTiles[][SIZE_OF_VRAM_END_OF_BALL_BONUS_SUMMARY_TEXT_CHAR_TILES];
+#ifdef EUROPE
+extern const u8 gMainBoardGameOverText_Gfx_EnFrDeIt[SIZE_OF_VRAM_GAME_OVER_TEXT_TILES];
+extern const u8 gMainBoardGameOverText_Gfx_Es[SIZE_OF_VRAM_GAME_OVER_TEXT_TILES];
+#else
 extern const u8 gMainBoardGameOverText_Gfx[SIZE_OF_VRAM_GAME_OVER_TEXT_TILES];
+#endif
 extern const Palette gBallSaver_Ruby_Pal;
 extern const Palette gBallSaver_Sapphire_Pal;
 extern const Palette gEndOfBallBonus_Ruby_Pal;
@@ -137,6 +142,41 @@ void GameOverAnimation(void)
     group = gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT];
     if (group->active)
     {
+#ifdef EUROPE
+        // The letters are placed 16 pixels apart; the Spanish text has no gap between the two words.
+        switch (gMain_saveData.language)
+        {
+        case LANGUAGE_ENGLISH:
+        case LANGUAGE_FRENCH:
+        case LANGUAGE_GERMAN:
+        case LANGUAGE_ITALIAN:
+            group->baseX = 59;
+            group->baseY = 52;
+            for (i = 0; i < 4; i++)
+            {
+                oamSimple = &group->oam[i];
+                gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX + i * 16 - 4;
+                gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+            }
+            for (i = 4; i < 8; i++)
+            {
+                oamSimple = &group->oam[i];
+                gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX + i * 16 + 4;
+                gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+            }
+            break;
+        case LANGUAGE_SPANISH:
+            group->baseX = 55;
+            group->baseY = 52;
+            for (i = 0; i < 8; i++)
+            {
+                oamSimple = &group->oam[i];
+                gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX + i * 16;
+                gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+            }
+            break;
+        }
+#else
         group->baseX = 63;
         group->baseY = 52;
         for (i = 0; i < 8; i++)
@@ -145,6 +185,7 @@ void GameOverAnimation(void)
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
             gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
         }
+#endif
     }
 
     var0 = gMain.systemFrameCount * 0x1000;
@@ -161,7 +202,22 @@ void GameOverAnimation(void)
 
     if (gMain.animationTimer == 3600)
     {
+#ifdef EUROPE
+        switch (gMain_saveData.language)
+        {
+        case LANGUAGE_ENGLISH:
+        case LANGUAGE_FRENCH:
+        case LANGUAGE_GERMAN:
+        case LANGUAGE_ITALIAN:
+            DmaCopy16(3, gMainBoardGameOverText_Gfx_EnFrDeIt, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_GAME_OVER_TEXT_TILES);
+            break;
+        case LANGUAGE_SPANISH:
+            DmaCopy16(3, gMainBoardGameOverText_Gfx_Es, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_GAME_OVER_TEXT_TILES);
+            break;
+        }
+#else
         DmaCopy16(3, gMainBoardGameOverText_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_GAME_OVER_TEXT_TILES);
+#endif
         gMain.fieldSpriteGroups[FIELD_SG_GAME_OVER_TEXT]->active = TRUE;
         for (i = 0; i < 8; i++)
         {
@@ -211,7 +267,7 @@ void EndOfBallSequence(void)
             gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_0].active = TRUE;
             gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_1].active = TRUE;
             gMain.spriteGroups[SG_END_OF_BALL_BONUS_TEXT_LINE_2].active = TRUE;
-            DmaCopy16(3, gMainBoardEndOfBall_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES);
+            DMA_LANG5(gMainBoardEndOfBall_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES);
             if (gMain.selectedField == FIELD_RUBY)
             {
                 DmaCopy16(3, gEndOfBallBonus_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
@@ -282,6 +338,21 @@ void EndOfBallSequence(void)
         }
     }
 }
+
+// Only the Ruby board loads the separate Latios sprites.
+#define LOAD_BALL_SAVER_GFX(bannerGfx)                                                                                  \
+    if (gMain.selectedField == FIELD_RUBY)                                                                              \
+    {                                                                                                                   \
+        DmaCopy16(3, bannerGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES);                    \
+        DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, OBJ_VRAM_ADDR_LATIOS_BALL_SAVER_TILES, SIZE_OF_VRAM_LATIOS_BALL_SAVER_TILES); \
+        DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, OBJ_VRAM_ADDR_LATIOS_ARM_TILES, SIZE_OF_VRAM_LATIOS_ARM_TILES);   \
+        DmaCopy16(3, gBallSaver_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);                       \
+    }                                                                                                                   \
+    else                                                                                                                \
+    {                                                                                                                   \
+        DmaCopy16(3, bannerGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES);                    \
+        DmaCopy16(3, gBallSaver_Sapphire_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);                   \
+    }
 
 void BallSaverAnimation(void)
 {
@@ -458,18 +529,28 @@ void BallSaverAnimation(void)
             gMain.spriteGroups[SG_BALL_SAVE_BANNER].active = TRUE;
             gMain.spriteGroups[SG_BALL_SAVE_LATI].active = TRUE;
             gMain.spriteGroups[SG_BALL_SAVE_LATI_ARM].active = TRUE;
-            if (gMain.selectedField == FIELD_RUBY)
+#ifdef EUROPE
+            switch (gMain_saveData.language)
             {
-                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES);
-                DmaCopy16(3, gMainBoardBallSaveLatios_Gfx, OBJ_VRAM_ADDR_LATIOS_BALL_SAVER_TILES, SIZE_OF_VRAM_LATIOS_BALL_SAVER_TILES);
-                DmaCopy16(3, gMainBoardBallSaveLatiosArm_Gfx, OBJ_VRAM_ADDR_LATIOS_ARM_TILES, SIZE_OF_VRAM_LATIOS_ARM_TILES);
-                DmaCopy16(3, gBallSaver_Ruby_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
+            case LANGUAGE_ENGLISH:
+                LOAD_BALL_SAVER_GFX(gMainBoardBallSave_Gfx_En);
+                break;
+            case LANGUAGE_FRENCH:
+                LOAD_BALL_SAVER_GFX(gMainBoardBallSave_Gfx_Fr);
+                break;
+            case LANGUAGE_GERMAN:
+                LOAD_BALL_SAVER_GFX(gMainBoardBallSave_Gfx_De);
+                break;
+            case LANGUAGE_ITALIAN:
+                LOAD_BALL_SAVER_GFX(gMainBoardBallSave_Gfx_It);
+                break;
+            case LANGUAGE_SPANISH:
+                LOAD_BALL_SAVER_GFX(gMainBoardBallSave_Gfx_Es);
+                break;
             }
-            else
-            {
-                DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES);
-                DmaCopy16(3, gBallSaver_Sapphire_Pal, OBJ_PLTT_SLOT(PAL_IX_LATI_BALL_SAVER), PLTT_SLOT_SIZE);
-            }
+#else
+            LOAD_BALL_SAVER_GFX(gMainBoardBallSave_Gfx);
+#endif
 
             gCurrentPinballGame->ballPhysicsState = BALL_PHYSICS_FROZEN;
             gCurrentPinballGame->cameraLocked = TRUE;

@@ -70,7 +70,7 @@ extern const u8 gMainBoardPikaSpinner_Gfx[][SIZE_OF_VRAM_PIKA_CHARGE_SPINNER_TIL
 extern const u8 gRubyBoardHatchCave_Gfx[][SIZE_OF_VRAM_HATCH_CAVE_TILES];
 extern const u8 gEggFrameTilesGfx[][SIZE_OF_VRAM_HATCH_EGG_TILES];
 extern const u8 gMainBoardBallSave_Gfx[SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES];
-extern const u8 gMainBoardEndOfBall_Gfx[SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES];
+EXTERN_LANG5(const u8, gMainBoardEndOfBall_Gfx, [SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES]);
 extern const u8 gSapphireBoardZigzagoonFx_Gfx[SIZE_OF_VRAM_FX_ZIGZAGZOON_ROULETTE_STOP_TILES];
 
 // Rom_2 data
@@ -471,7 +471,7 @@ void RestoreFieldSpecificGraphics(void)
         DmaCopy16(3, gMainBoardBallSave_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_BALL_SAVER_BANNER_AND_MON_TILES);
         break;
     case FX_END_OF_BALL_SUMMARY:
-        DmaCopy16(3, gMainBoardEndOfBall_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES);
+        DMA_LANG5(gMainBoardEndOfBall_Gfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_END_OF_BALL_BONUS_WINDOW_TILES);
         break;
     case FX_TRAVEL_PAINTER_CUTSCENE:
         if (gMain.selectedField == FIELD_RUBY)
