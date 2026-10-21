@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
 """Turn EU-only graphics blobs (data/eu/bin) into per-language copies of the US graphics files.
 
-For each blob whose US counterpart (same label without the language suffix) is made only of
-.incbin of files under graphics/ and .space, with the same total size, write
-<US file stem>_<language>.png/.pal/.bin next to the US file, check that gbagfx converts it back
-to the same bytes, and record:
-  - the directives that replace the blob in tools/eu_port/data/eu_graphics.json (read by
-    gen_eu_data.py, so run regen.sh afterwards);
-  - the conversion rules of files that need gbagfx options in graphics_rules_eu.mk.
-Blobs that cannot be reproduced exactly are left as they are. Blobs converted by a previous
-run (listed in eu_graphics.json) are converted again from the EU ROM, so the tool can be rerun.
+A blob is matched with the US item of the same label without the language suffix, and with
+the US items that follow it when the EU data has no labels between them. Those items must be
+made of .incbin of files under graphics/ (.4bpp/.8bpp/.gbapal/.bin, also LZ-compressed),
+.space, .fill and .align. Each file becomes <US file stem>_<language>.png/.pal/.bin next to
+the US one, converted with gbagfx like the US file (palette, width, -mwidth/-mheight/-oam,
+segments of the gfx-config JSON), and is kept only if gbagfx converts it back to the same
+bytes. Images may have a different number of tiles (-num_tiles is added when needed) and
+padding that holds data in the EU version is taken into the image before it.
+
+Output:
+  - tools/eu_port/data/eu_graphics.json: the directives that replace each blob, read by
+    gen_eu_data.py (so run regen.sh afterwards);
+  - graphics_rules_eu.mk: the rules of the files that need gbagfx options or segments.
+Blobs that cannot be matched or reproduced exactly are left as they are. All the blobs are
+read from the EU ROM, listed by gen_eu_data.py in data/eu_blobs.json (run regen.sh first),
+so the tool can be rerun.
 
 Run from the repository root in the build environment (uses tools/gbagfx/gbagfx).
 usage: gfx_eu.py [-v]"""
@@ -42,6 +49,7 @@ def us_items():
     """US data items in file order: list of (label, directive lines)."""
     items = []
     for f in ['data/rom_1.s', 'data/rom_2.s']:
+        items.append(('', []))  # lines before the first label of the file
         for ln in flat(f):
             m = re.match(r'^(\w+)::', ln)
             if m:
@@ -54,27 +62,16 @@ def us_items():
 
 
 def eu_blobs():
-    """(EU address, bytes, labels) of the blobs still in data/eu/bin and of those already
-    converted (eu_graphics.json, bytes read from the EU ROM)."""
+    """(EU address, bytes, labels) of the EU-only data ranges of rom_1 that gen_eu_data.py writes
+    as binary files or replaces with converted sources (data/eu_blobs.json, made by regen.sh);
+    the bytes come from the EU ROM."""
+    if not os.path.exists(_W + '/eu_blobs.json'):
+        raise SystemExit('missing %s/eu_blobs.json: run regen.sh first' % _W)
     rom = open(_BASEROM, 'rb').read()
     out = []
-    if os.path.exists(_W + '/eu_graphics.json'):
-        for a, g in json.load(open(_W + '/eu_graphics.json')).items():
-            a = int(a, 16)
-            out.append((a, rom[a - 0x08000000:a - 0x08000000 + g['size']], [g['label']]))
-    for f in ['rom_1', 'rom_2']:
-        labs = []
-        for ln in open(f'{_R}/data/eu/{f}.s', encoding='utf-8'):
-            m = re.match(r'^(\w+)::', ln)
-            if m:
-                labs.append(m.group(1))
-                continue
-            m = re.search(r'\.incbin "data/eu/bin/\w+_([0-9A-F]{8})\.bin"', ln)
-            if m:
-                path = re.search(r'"([^"]+)"', ln).group(1)
-                out.append((int(m.group(1), 16), open(_R + '/' + path, 'rb').read(), list(labs)))
-            if ln.strip() and not ln.strip().startswith('@'):
-                labs = []
+    for b in json.load(open(_W + '/eu_blobs.json')):
+        a = int(b['addr'], 16)
+        out.append((a, rom[a - 0x08000000:a - 0x08000000 + b['size']], b['labels']))
     return out
 
 
@@ -240,6 +237,8 @@ def convert(g, data, stem, new_rules, written):
         flags = image(f'{base}.png', f'{stem}.png', raw, flags, ext, us_size)
         if flags:
             new_rules[out_t] = (f'{stem}.png', ['$(GFX) $< $@ ' + ' '.join(flags)])
+        else:
+            new_rules.pop(out_t, None)  # converted again with more data: no options needed now
     if lz:
         gfx(tmp('chk.raw', raw), tmp('chk.lz'))
         if open(tmp('chk.lz'), 'rb').read() != data:
@@ -312,19 +311,25 @@ def piece_size(piece, data, pos, addr):
 
 def layout(items, k, data, addr):
     """Split data into consecutive US items starting at items[k].
-    Returns [(label, [(piece, size)])], trying first exact sizes, then a resized image."""
+    Returns [(item index, label, [(piece, size)])]. Tries exact sizes (also a prefix of the
+    first item's pieces), then a resized image."""
     plan, pos = [], 0
-    for lab, lines in items[k:]:
+    for i in range(k, len(items)):
+        lab, lines = items[i]
+        if not lab:
+            break
         pieces = parse_item(lines)
         sized = []
-        for pc in pieces:
+        for j, pc in enumerate(pieces):
             n = piece_size(pc, data, pos, addr)
             sized.append((pc, n))
             pos += n
-        plan.append((lab, sized))
+            if not plan and pos == len(data) and j < len(pieces) - 1 and pc[0] == 'inc':
+                return [(i, lab, sized)]  # the EU data stops before the end of the US item
+        plan.append((i, lab, sized))
         if pos == len(data):
             return plan
-        if pos > len(data) or not plan[-1][1] or len(plan) > 64:
+        if pos > len(data) or not sized or len(plan) > 64:
             break
     # a single item whose first piece (an image) has a different size; the trailing
     # .space/.fill/.align are kept when the data still has room for them
@@ -338,8 +343,52 @@ def layout(items, k, data, addr):
         n = len(data) - sum(p[1] for p in tail)
         if n <= 0:
             continue
-        return [(items[k][0], [(pieces[0], n)] + [(p, p[1]) for p in tail])]
+        return [(k, items[k][0], [(pieces[0], n)] + [(p, p[1]) for p in tail])]
     raise Unsupported('size')
+
+
+def build(plan, data, suffix, known, rules_here, written, made):
+    """Convert the pieces of a layout; return the directive lines."""
+    out_lines = []
+    made_here = set()
+    last_img = None  # (line index, US path, stem, start, end) of the last image of the item
+    pos = 0
+    for n_item, (i, ilab, sized) in enumerate(plan):
+        if n_item:
+            name = ilab + ('_' + suffix if suffix else '')
+            out_lines.append(f'{name}::' if name not in known else f'@ {name}')
+            last_img = None
+        for pc, size in sized:
+            chunk = data[pos:pos + size]
+            pos += size
+            if pc[0] in ('space', 'fill', 'align'):
+                ok = not any(chunk) if pc[0] != 'fill' else chunk == bytes([pc[2]]) * size
+                if not ok:
+                    # real data where the US file has padding: part of the previous image
+                    if last_img is None or pc[0] == 'align':
+                        raise Unsupported('nonzero space')
+                    li, g, stem, start, end = last_img
+                    out_lines[li] = '.incbin "%s"' % convert(g, data[start:pos], stem, rules_here, written)
+                    last_img = (li, g, stem, start, pos)
+                    continue
+                if pc[0] == 'space':
+                    out_lines.append('.space 0x%X' % size)
+                elif pc[0] == 'align':
+                    out_lines.append('.align %d' % pc[1])
+                else:
+                    out_lines.append('.fill 0x%X, 1, 0x%X' % (size, pc[2]))
+                continue
+            g = pc[1]
+            t = g[:-3] if g.endswith('.lz') else g
+            ext = t.rsplit('.', 1)[1]
+            stem = t.rsplit('.', 1)[0] + '_' + (suffix.lower() if suffix else 'eu')
+            key = stem + '.' + ext
+            if key in made or key in made_here:
+                raise Unsupported('duplicate ' + key)
+            out_lines.append('.incbin "%s"' % convert(g, chunk, stem, rules_here, written))
+            made_here.add(key)
+            last_img = (len(out_lines) - 1, g, stem, pos - size, pos) if ext in ('4bpp', '8bpp') and not g.endswith('.lz') else None
+    return out_lines, made_here
 
 
 def main():
@@ -348,7 +397,8 @@ def main():
     items = us_items()
     index = {}
     for i, (lab, lines) in enumerate(items):
-        index.setdefault(lab, i)
+        if lab:
+            index.setdefault(lab, i)
     known = set()
     for f in ['eu_data_labels.json', 'code_syms.json', 'hard_syms.json']:
         if os.path.exists(_W + '/' + f):
@@ -359,53 +409,28 @@ def main():
     why = collections.Counter()
     blobs = {}
     for addr, data, labs in eu_blobs():
-        blobs.setdefault(addr, (data, labs))  # converted ones first, then data/eu/bin
+        blobs.setdefault(addr, (data, labs))
     for addr, (data, labs) in sorted(blobs.items()):
         lab = labs[0] if labs else None
         m = SUF.match(lab or '')
         base, suffix = (m.group(1), m.group(2)) if m else (lab, None)
-        if base not in index:
+        # Only blobs whose label names a US item: matching others by size alone (for example
+        # continuing the US items of the previous blob) can pick the wrong files.
+        if base in index:
+            start = index[base]
+        else:
             why['no US counterpart'] += 1
             if VERBOSE:
                 print('skip 0x%08X %s no US counterpart' % (addr, lab))
             continue
         written = []
+        rules_here = {}
         try:
-            plan = layout(items, index[base], data, addr)
-            out_lines = []
-            rules_here = {}
-            made_here = set()
-            pos = 0
-            for n_item, (ilab, sized) in enumerate(plan):
-                if n_item:
-                    name = ilab + ('_' + suffix if suffix else '')
-                    out_lines.append(f'{name}::' if name not in known else f'@ {name}')
-                for pc, size in sized:
-                    chunk = data[pos:pos + size]
-                    pos += size
-                    if pc[0] in ('space', 'align'):
-                        if any(chunk):
-                            raise Unsupported('nonzero space')
-                        out_lines.append('.space 0x%X' % size if pc[0] == 'space' else '.align %d' % pc[1])
-                        continue
-                    if pc[0] == 'fill':
-                        if chunk != bytes([pc[2]]) * size:
-                            raise Unsupported('fill value')
-                        out_lines.append('.fill 0x%X, 1, 0x%X' % (size, pc[2]))
-                        continue
-                    g = pc[1]
-                    t = g[:-3] if g.endswith('.lz') else g
-                    ext = t.rsplit('.', 1)[1]
-                    stem = t.rsplit('.', 1)[0] + '_' + (suffix.lower() if suffix else 'eu')
-                    key = stem + '.' + ext
-                    if key in made or key in made_here:
-                        raise Unsupported('duplicate ' + key)
-                    try:
-                        # files created are removed again if the blob fails
-                        out_lines.append('.incbin "%s"' % convert(g, chunk, stem, rules_here, written))
-                    except RuntimeError as e:
-                        raise Unsupported('gbagfx: ' + str(e))
-                    made_here.add(key)
+            plan = layout(items, start, data, addr)
+            try:
+                out_lines, made_here = build(plan, data, suffix, known, rules_here, written, made)
+            except RuntimeError as e:
+                raise Unsupported('gbagfx: ' + str(e))
             made |= made_here
             new_rules.update(rules_here)
             result['0x%08X' % addr] = dict(size=len(data), label=lab, lines=out_lines)

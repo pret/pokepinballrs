@@ -64,9 +64,6 @@ graphics/board_pickups/evo_item_ex_it.4bpp: graphics/board_pickups/evo_item_appe
 	cat graphics/board_pickups/evo_item_ex_it_evo_item_appear_1.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_2.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_3.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_4.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_5.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_6.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_1.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_7.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_2.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_sparkle_1.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_3.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_sparkle_2.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_4.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_sparkle_3.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_8.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_5.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_collected_fade.4bpp > $@; \
 	dd if=/dev/zero bs=32 count=1 >> $@ 2>/dev/null
 
-graphics/ereader/background_eu.4bpp: graphics/ereader/background_eu.png
-	$(GFX) $< $@ -num_tiles 191
-
 graphics/field_select/sprites_de.4bpp: graphics/field_select/sprites_de.png
 	$(GFX) $< $@ -num_tiles 513
 
@@ -124,6 +121,18 @@ graphics/mon_portraits/rayquaza_portrait_eu.4bpp: graphics/mon_portraits/rayquaz
 graphics/mon_portraits/totodile_portrait_eu.4bpp: graphics/mon_portraits/totodile_portrait_eu.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
+graphics/options/sprites_de.4bpp: graphics/options/sprites_de.png
+	$(GFX) $< $@ -num_tiles 257
+
+graphics/options/sprites_es.4bpp: graphics/options/sprites_es.png
+	$(GFX) $< $@ -num_tiles 257
+
+graphics/options/sprites_fr.4bpp: graphics/options/sprites_fr.png
+	$(GFX) $< $@ -num_tiles 257
+
+graphics/options/sprites_it.4bpp: graphics/options/sprites_it.png
+	$(GFX) $< $@ -num_tiles 257
+
 graphics/pokedex/sprites_it.4bpp: graphics/pokedex/sprites_hand_it.png graphics/pokedex/sprites_select_full_it.png graphics/pokedex/sprites_select_left_it.png graphics/pokedex/sprites_select_mid_it.png graphics/pokedex/sprites_select_right_it.png graphics/pokedex/sprites_transmission_start_it.png graphics/pokedex/sprites_transmitting_it.png graphics/pokedex/sprites_transmission_error_it.png graphics/pokedex/sprites_transmission_completed_it.png graphics/pokedex/sprites_delete_confirmation_it.png graphics/pokedex/sprites_spaceA_it.png graphics/pokedex/sprites_torchic_it.png graphics/pokedex/sprites_spaceB_it.png graphics/pokedex/sprites_boxes_it.png graphics/pokedex/sprites_medal_top_it.png graphics/pokedex/sprites_medal_mid_it.png graphics/pokedex/sprites_medal_gem_it.png graphics/pokedex/sprites_spaceC_it.png graphics/pokedex/sprites_azuril_it.png graphics/pokedex/sprites_spaceD_it.png graphics/pokedex/sprites_not_seen_pic_it.png graphics/pokedex/sprites_spaceE_it.png graphics/pokedex/sprites_link_gbasp_it.png graphics/pokedex/sprites_link_wire_it.png graphics/pokedex/sprites_link_cartridge_it.png graphics/pokedex/sprites_link_gba_it.png graphics/pokedex/sprites_link_activity_it.png graphics/pokedex/sprites_link_disconnected_it.png graphics/pokedex/sprites_press_start_trans_it.png graphics/pokedex/sprites_dex_entry_continue_it.png graphics/pokedex/pokedex_gfx.json
 	$(GFX) graphics/pokedex/sprites_hand_it.png graphics/pokedex/sprites_it_sprites_hand.4bpp -mwidth 2 -mheight 2; \
 	$(GFX) graphics/pokedex/sprites_select_full_it.png graphics/pokedex/sprites_it_sprites_select_full.4bpp -mwidth 7 -mheight 2 -oam; \
@@ -160,6 +169,1446 @@ graphics/pokedex/sprites_it.4bpp: graphics/pokedex/sprites_hand_it.png graphics/
 
 graphics/pokedex/text_glyphs_eu.4bpp: graphics/pokedex/text_glyphs_eu.png
 	$(GFX) $< $@ -num_tiles 513
+
+graphics/slot_options/slot_options_10_de.4bpp: graphics/slot_options/slot_options_10_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_10_en.4bpp: graphics/slot_options/slot_options_10_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_10_es.4bpp: graphics/slot_options/slot_options_10_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_10_fr.4bpp: graphics/slot_options/slot_options_10_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_10_it.4bpp: graphics/slot_options/slot_options_10_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_11_de.4bpp: graphics/slot_options/slot_options_11_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_11_en.4bpp: graphics/slot_options/slot_options_11_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_11_es.4bpp: graphics/slot_options/slot_options_11_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_11_fr.4bpp: graphics/slot_options/slot_options_11_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_11_it.4bpp: graphics/slot_options/slot_options_11_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_12_de.4bpp: graphics/slot_options/slot_options_12_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_12_en.4bpp: graphics/slot_options/slot_options_12_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_12_es.4bpp: graphics/slot_options/slot_options_12_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_12_fr.4bpp: graphics/slot_options/slot_options_12_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_12_it.4bpp: graphics/slot_options/slot_options_12_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_13_de.4bpp: graphics/slot_options/slot_options_13_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_13_en.4bpp: graphics/slot_options/slot_options_13_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_13_es.4bpp: graphics/slot_options/slot_options_13_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_13_fr.4bpp: graphics/slot_options/slot_options_13_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_13_it.4bpp: graphics/slot_options/slot_options_13_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_14_de.4bpp: graphics/slot_options/slot_options_14_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_14_en.4bpp: graphics/slot_options/slot_options_14_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_14_es.4bpp: graphics/slot_options/slot_options_14_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_14_fr.4bpp: graphics/slot_options/slot_options_14_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_14_it.4bpp: graphics/slot_options/slot_options_14_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_15_de.4bpp: graphics/slot_options/slot_options_15_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_15_en.4bpp: graphics/slot_options/slot_options_15_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_15_es.4bpp: graphics/slot_options/slot_options_15_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_15_fr.4bpp: graphics/slot_options/slot_options_15_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_15_it.4bpp: graphics/slot_options/slot_options_15_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_16_de.4bpp: graphics/slot_options/slot_options_16_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_16_en.4bpp: graphics/slot_options/slot_options_16_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_16_es.4bpp: graphics/slot_options/slot_options_16_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_16_fr.4bpp: graphics/slot_options/slot_options_16_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_16_it.4bpp: graphics/slot_options/slot_options_16_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_17_de.4bpp: graphics/slot_options/slot_options_17_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_17_en.4bpp: graphics/slot_options/slot_options_17_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_17_es.4bpp: graphics/slot_options/slot_options_17_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_17_fr.4bpp: graphics/slot_options/slot_options_17_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_17_it.4bpp: graphics/slot_options/slot_options_17_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_18_de.4bpp: graphics/slot_options/slot_options_18_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_18_en.4bpp: graphics/slot_options/slot_options_18_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_18_es.4bpp: graphics/slot_options/slot_options_18_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_18_fr.4bpp: graphics/slot_options/slot_options_18_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_18_it.4bpp: graphics/slot_options/slot_options_18_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_19_de.4bpp: graphics/slot_options/slot_options_19_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_19_en.4bpp: graphics/slot_options/slot_options_19_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_19_es.4bpp: graphics/slot_options/slot_options_19_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_19_fr.4bpp: graphics/slot_options/slot_options_19_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_19_it.4bpp: graphics/slot_options/slot_options_19_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_1_de.4bpp: graphics/slot_options/slot_options_1_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_1_en.4bpp: graphics/slot_options/slot_options_1_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_1_es.4bpp: graphics/slot_options/slot_options_1_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_1_fr.4bpp: graphics/slot_options/slot_options_1_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_1_it.4bpp: graphics/slot_options/slot_options_1_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_20_de.4bpp: graphics/slot_options/slot_options_20_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_20_en.4bpp: graphics/slot_options/slot_options_20_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_20_es.4bpp: graphics/slot_options/slot_options_20_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_20_fr.4bpp: graphics/slot_options/slot_options_20_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_20_it.4bpp: graphics/slot_options/slot_options_20_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_21_de.4bpp: graphics/slot_options/slot_options_21_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_21_en.4bpp: graphics/slot_options/slot_options_21_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_21_es.4bpp: graphics/slot_options/slot_options_21_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_21_fr.4bpp: graphics/slot_options/slot_options_21_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_21_it.4bpp: graphics/slot_options/slot_options_21_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_22_de.4bpp: graphics/slot_options/slot_options_22_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_22_en.4bpp: graphics/slot_options/slot_options_22_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_22_es.4bpp: graphics/slot_options/slot_options_22_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_22_fr.4bpp: graphics/slot_options/slot_options_22_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_22_it.4bpp: graphics/slot_options/slot_options_22_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_23_de.4bpp: graphics/slot_options/slot_options_23_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_23_en.4bpp: graphics/slot_options/slot_options_23_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_23_es.4bpp: graphics/slot_options/slot_options_23_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_23_fr.4bpp: graphics/slot_options/slot_options_23_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_23_it.4bpp: graphics/slot_options/slot_options_23_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_24_de.4bpp: graphics/slot_options/slot_options_24_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_24_en.4bpp: graphics/slot_options/slot_options_24_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_24_es.4bpp: graphics/slot_options/slot_options_24_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_24_fr.4bpp: graphics/slot_options/slot_options_24_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_24_it.4bpp: graphics/slot_options/slot_options_24_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_25_de.4bpp: graphics/slot_options/slot_options_25_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_25_en.4bpp: graphics/slot_options/slot_options_25_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_25_es.4bpp: graphics/slot_options/slot_options_25_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_25_fr.4bpp: graphics/slot_options/slot_options_25_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_25_it.4bpp: graphics/slot_options/slot_options_25_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_26_de.4bpp: graphics/slot_options/slot_options_26_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_26_en.4bpp: graphics/slot_options/slot_options_26_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_26_es.4bpp: graphics/slot_options/slot_options_26_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_26_fr.4bpp: graphics/slot_options/slot_options_26_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_26_it.4bpp: graphics/slot_options/slot_options_26_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_27_de.4bpp: graphics/slot_options/slot_options_27_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_27_en.4bpp: graphics/slot_options/slot_options_27_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_27_es.4bpp: graphics/slot_options/slot_options_27_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_27_fr.4bpp: graphics/slot_options/slot_options_27_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_27_it.4bpp: graphics/slot_options/slot_options_27_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_28_de.4bpp: graphics/slot_options/slot_options_28_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_28_en.4bpp: graphics/slot_options/slot_options_28_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_28_es.4bpp: graphics/slot_options/slot_options_28_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_28_fr.4bpp: graphics/slot_options/slot_options_28_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_28_it.4bpp: graphics/slot_options/slot_options_28_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_29_de.4bpp: graphics/slot_options/slot_options_29_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_29_en.4bpp: graphics/slot_options/slot_options_29_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_29_es.4bpp: graphics/slot_options/slot_options_29_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_29_fr.4bpp: graphics/slot_options/slot_options_29_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_29_it.4bpp: graphics/slot_options/slot_options_29_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_2_de.4bpp: graphics/slot_options/slot_options_2_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_2_en.4bpp: graphics/slot_options/slot_options_2_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_2_es.4bpp: graphics/slot_options/slot_options_2_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_2_fr.4bpp: graphics/slot_options/slot_options_2_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_2_it.4bpp: graphics/slot_options/slot_options_2_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_30_de.4bpp: graphics/slot_options/slot_options_30_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_30_en.4bpp: graphics/slot_options/slot_options_30_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_30_es.4bpp: graphics/slot_options/slot_options_30_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_30_fr.4bpp: graphics/slot_options/slot_options_30_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_30_it.4bpp: graphics/slot_options/slot_options_30_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_31_de.4bpp: graphics/slot_options/slot_options_31_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_31_en.4bpp: graphics/slot_options/slot_options_31_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_31_es.4bpp: graphics/slot_options/slot_options_31_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_31_fr.4bpp: graphics/slot_options/slot_options_31_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_31_it.4bpp: graphics/slot_options/slot_options_31_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_32_de.4bpp: graphics/slot_options/slot_options_32_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_32_en.4bpp: graphics/slot_options/slot_options_32_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_32_es.4bpp: graphics/slot_options/slot_options_32_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_32_fr.4bpp: graphics/slot_options/slot_options_32_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_32_it.4bpp: graphics/slot_options/slot_options_32_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_33_de.4bpp: graphics/slot_options/slot_options_33_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_33_en.4bpp: graphics/slot_options/slot_options_33_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_33_es.4bpp: graphics/slot_options/slot_options_33_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_33_fr.4bpp: graphics/slot_options/slot_options_33_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_33_it.4bpp: graphics/slot_options/slot_options_33_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_34_de.4bpp: graphics/slot_options/slot_options_34_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_34_en.4bpp: graphics/slot_options/slot_options_34_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_34_es.4bpp: graphics/slot_options/slot_options_34_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_34_fr.4bpp: graphics/slot_options/slot_options_34_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_34_it.4bpp: graphics/slot_options/slot_options_34_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_35_de.4bpp: graphics/slot_options/slot_options_35_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_35_en.4bpp: graphics/slot_options/slot_options_35_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_35_es.4bpp: graphics/slot_options/slot_options_35_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_35_fr.4bpp: graphics/slot_options/slot_options_35_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_35_it.4bpp: graphics/slot_options/slot_options_35_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_36_de.4bpp: graphics/slot_options/slot_options_36_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_36_en.4bpp: graphics/slot_options/slot_options_36_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_36_es.4bpp: graphics/slot_options/slot_options_36_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_36_fr.4bpp: graphics/slot_options/slot_options_36_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_36_it.4bpp: graphics/slot_options/slot_options_36_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_37_de.4bpp: graphics/slot_options/slot_options_37_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_37_en.4bpp: graphics/slot_options/slot_options_37_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_37_es.4bpp: graphics/slot_options/slot_options_37_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_37_fr.4bpp: graphics/slot_options/slot_options_37_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_37_it.4bpp: graphics/slot_options/slot_options_37_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_38_de.4bpp: graphics/slot_options/slot_options_38_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_38_en.4bpp: graphics/slot_options/slot_options_38_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_38_es.4bpp: graphics/slot_options/slot_options_38_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_38_fr.4bpp: graphics/slot_options/slot_options_38_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_38_it.4bpp: graphics/slot_options/slot_options_38_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_39_de.4bpp: graphics/slot_options/slot_options_39_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_39_en.4bpp: graphics/slot_options/slot_options_39_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_39_es.4bpp: graphics/slot_options/slot_options_39_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_39_fr.4bpp: graphics/slot_options/slot_options_39_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_39_it.4bpp: graphics/slot_options/slot_options_39_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_3_de.4bpp: graphics/slot_options/slot_options_3_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_3_en.4bpp: graphics/slot_options/slot_options_3_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_3_es.4bpp: graphics/slot_options/slot_options_3_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_3_fr.4bpp: graphics/slot_options/slot_options_3_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_3_it.4bpp: graphics/slot_options/slot_options_3_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_40_de.4bpp: graphics/slot_options/slot_options_40_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_40_en.4bpp: graphics/slot_options/slot_options_40_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_40_es.4bpp: graphics/slot_options/slot_options_40_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_40_fr.4bpp: graphics/slot_options/slot_options_40_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_40_it.4bpp: graphics/slot_options/slot_options_40_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_41_de.4bpp: graphics/slot_options/slot_options_41_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_41_en.4bpp: graphics/slot_options/slot_options_41_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_41_es.4bpp: graphics/slot_options/slot_options_41_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_41_fr.4bpp: graphics/slot_options/slot_options_41_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_41_it.4bpp: graphics/slot_options/slot_options_41_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_42_de.4bpp: graphics/slot_options/slot_options_42_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_42_en.4bpp: graphics/slot_options/slot_options_42_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_42_es.4bpp: graphics/slot_options/slot_options_42_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_42_fr.4bpp: graphics/slot_options/slot_options_42_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_42_it.4bpp: graphics/slot_options/slot_options_42_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_43_de.4bpp: graphics/slot_options/slot_options_43_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_43_en.4bpp: graphics/slot_options/slot_options_43_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_43_es.4bpp: graphics/slot_options/slot_options_43_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_43_fr.4bpp: graphics/slot_options/slot_options_43_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_43_it.4bpp: graphics/slot_options/slot_options_43_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_44_de.4bpp: graphics/slot_options/slot_options_44_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_44_en.4bpp: graphics/slot_options/slot_options_44_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_44_es.4bpp: graphics/slot_options/slot_options_44_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_44_fr.4bpp: graphics/slot_options/slot_options_44_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_44_it.4bpp: graphics/slot_options/slot_options_44_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_45_de.4bpp: graphics/slot_options/slot_options_45_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_45_en.4bpp: graphics/slot_options/slot_options_45_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_45_es.4bpp: graphics/slot_options/slot_options_45_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_45_fr.4bpp: graphics/slot_options/slot_options_45_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_45_it.4bpp: graphics/slot_options/slot_options_45_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_46_de.4bpp: graphics/slot_options/slot_options_46_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_46_en.4bpp: graphics/slot_options/slot_options_46_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_46_es.4bpp: graphics/slot_options/slot_options_46_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_46_fr.4bpp: graphics/slot_options/slot_options_46_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_46_it.4bpp: graphics/slot_options/slot_options_46_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_47_de.4bpp: graphics/slot_options/slot_options_47_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_47_en.4bpp: graphics/slot_options/slot_options_47_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_47_es.4bpp: graphics/slot_options/slot_options_47_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_47_fr.4bpp: graphics/slot_options/slot_options_47_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_47_it.4bpp: graphics/slot_options/slot_options_47_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_48_de.4bpp: graphics/slot_options/slot_options_48_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_48_en.4bpp: graphics/slot_options/slot_options_48_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_48_es.4bpp: graphics/slot_options/slot_options_48_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_48_fr.4bpp: graphics/slot_options/slot_options_48_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_48_it.4bpp: graphics/slot_options/slot_options_48_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_49_de.4bpp: graphics/slot_options/slot_options_49_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_49_en.4bpp: graphics/slot_options/slot_options_49_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_49_es.4bpp: graphics/slot_options/slot_options_49_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_49_fr.4bpp: graphics/slot_options/slot_options_49_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_49_it.4bpp: graphics/slot_options/slot_options_49_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_4_de.4bpp: graphics/slot_options/slot_options_4_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_4_en.4bpp: graphics/slot_options/slot_options_4_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_4_es.4bpp: graphics/slot_options/slot_options_4_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_4_fr.4bpp: graphics/slot_options/slot_options_4_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_4_it.4bpp: graphics/slot_options/slot_options_4_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_50_de.4bpp: graphics/slot_options/slot_options_50_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_50_en.4bpp: graphics/slot_options/slot_options_50_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_50_es.4bpp: graphics/slot_options/slot_options_50_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_50_fr.4bpp: graphics/slot_options/slot_options_50_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_50_it.4bpp: graphics/slot_options/slot_options_50_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_51_de.4bpp: graphics/slot_options/slot_options_51_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_51_en.4bpp: graphics/slot_options/slot_options_51_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_51_es.4bpp: graphics/slot_options/slot_options_51_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_51_fr.4bpp: graphics/slot_options/slot_options_51_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_51_it.4bpp: graphics/slot_options/slot_options_51_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_52_de.4bpp: graphics/slot_options/slot_options_52_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_52_en.4bpp: graphics/slot_options/slot_options_52_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_52_es.4bpp: graphics/slot_options/slot_options_52_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_52_fr.4bpp: graphics/slot_options/slot_options_52_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_52_it.4bpp: graphics/slot_options/slot_options_52_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_53_de.4bpp: graphics/slot_options/slot_options_53_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_53_en.4bpp: graphics/slot_options/slot_options_53_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_53_es.4bpp: graphics/slot_options/slot_options_53_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_53_fr.4bpp: graphics/slot_options/slot_options_53_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_53_it.4bpp: graphics/slot_options/slot_options_53_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_54_de.4bpp: graphics/slot_options/slot_options_54_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_54_en.4bpp: graphics/slot_options/slot_options_54_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_54_es.4bpp: graphics/slot_options/slot_options_54_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_54_fr.4bpp: graphics/slot_options/slot_options_54_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_54_it.4bpp: graphics/slot_options/slot_options_54_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_55_de.4bpp: graphics/slot_options/slot_options_55_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_55_en.4bpp: graphics/slot_options/slot_options_55_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_55_es.4bpp: graphics/slot_options/slot_options_55_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_55_fr.4bpp: graphics/slot_options/slot_options_55_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_55_it.4bpp: graphics/slot_options/slot_options_55_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_56_de.4bpp: graphics/slot_options/slot_options_56_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_56_en.4bpp: graphics/slot_options/slot_options_56_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_56_es.4bpp: graphics/slot_options/slot_options_56_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_56_fr.4bpp: graphics/slot_options/slot_options_56_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_56_it.4bpp: graphics/slot_options/slot_options_56_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_57_de.4bpp: graphics/slot_options/slot_options_57_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_57_en.4bpp: graphics/slot_options/slot_options_57_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_57_es.4bpp: graphics/slot_options/slot_options_57_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_57_fr.4bpp: graphics/slot_options/slot_options_57_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_57_it.4bpp: graphics/slot_options/slot_options_57_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_58_de.4bpp: graphics/slot_options/slot_options_58_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_58_en.4bpp: graphics/slot_options/slot_options_58_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_58_es.4bpp: graphics/slot_options/slot_options_58_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_58_fr.4bpp: graphics/slot_options/slot_options_58_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_58_it.4bpp: graphics/slot_options/slot_options_58_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_59_de.4bpp: graphics/slot_options/slot_options_59_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_59_en.4bpp: graphics/slot_options/slot_options_59_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_59_es.4bpp: graphics/slot_options/slot_options_59_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_59_fr.4bpp: graphics/slot_options/slot_options_59_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_59_it.4bpp: graphics/slot_options/slot_options_59_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_5_de.4bpp: graphics/slot_options/slot_options_5_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_5_en.4bpp: graphics/slot_options/slot_options_5_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_5_es.4bpp: graphics/slot_options/slot_options_5_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_5_fr.4bpp: graphics/slot_options/slot_options_5_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_5_it.4bpp: graphics/slot_options/slot_options_5_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_60_de.4bpp: graphics/slot_options/slot_options_60_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_60_en.4bpp: graphics/slot_options/slot_options_60_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_60_es.4bpp: graphics/slot_options/slot_options_60_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_60_fr.4bpp: graphics/slot_options/slot_options_60_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_60_it.4bpp: graphics/slot_options/slot_options_60_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_61_de.4bpp: graphics/slot_options/slot_options_61_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_61_en.4bpp: graphics/slot_options/slot_options_61_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_61_es.4bpp: graphics/slot_options/slot_options_61_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_61_fr.4bpp: graphics/slot_options/slot_options_61_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_61_it.4bpp: graphics/slot_options/slot_options_61_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_62_de.4bpp: graphics/slot_options/slot_options_62_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_62_en.4bpp: graphics/slot_options/slot_options_62_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_62_es.4bpp: graphics/slot_options/slot_options_62_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_62_fr.4bpp: graphics/slot_options/slot_options_62_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_62_it.4bpp: graphics/slot_options/slot_options_62_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_63_de.4bpp: graphics/slot_options/slot_options_63_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_63_en.4bpp: graphics/slot_options/slot_options_63_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_63_es.4bpp: graphics/slot_options/slot_options_63_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_63_fr.4bpp: graphics/slot_options/slot_options_63_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_63_it.4bpp: graphics/slot_options/slot_options_63_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_64_de.4bpp: graphics/slot_options/slot_options_64_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_64_en.4bpp: graphics/slot_options/slot_options_64_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_64_es.4bpp: graphics/slot_options/slot_options_64_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_64_fr.4bpp: graphics/slot_options/slot_options_64_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_64_it.4bpp: graphics/slot_options/slot_options_64_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_65_de.4bpp: graphics/slot_options/slot_options_65_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_65_en.4bpp: graphics/slot_options/slot_options_65_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_65_es.4bpp: graphics/slot_options/slot_options_65_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_65_fr.4bpp: graphics/slot_options/slot_options_65_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_65_it.4bpp: graphics/slot_options/slot_options_65_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_66_de.4bpp: graphics/slot_options/slot_options_66_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_66_en.4bpp: graphics/slot_options/slot_options_66_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_66_es.4bpp: graphics/slot_options/slot_options_66_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_66_fr.4bpp: graphics/slot_options/slot_options_66_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_66_it.4bpp: graphics/slot_options/slot_options_66_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_67_de.4bpp: graphics/slot_options/slot_options_67_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_67_en.4bpp: graphics/slot_options/slot_options_67_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_67_es.4bpp: graphics/slot_options/slot_options_67_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_67_fr.4bpp: graphics/slot_options/slot_options_67_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_67_it.4bpp: graphics/slot_options/slot_options_67_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_68_de.4bpp: graphics/slot_options/slot_options_68_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_68_en.4bpp: graphics/slot_options/slot_options_68_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_68_es.4bpp: graphics/slot_options/slot_options_68_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_68_fr.4bpp: graphics/slot_options/slot_options_68_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_68_it.4bpp: graphics/slot_options/slot_options_68_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_69_de.4bpp: graphics/slot_options/slot_options_69_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_69_en.4bpp: graphics/slot_options/slot_options_69_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_69_es.4bpp: graphics/slot_options/slot_options_69_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_69_fr.4bpp: graphics/slot_options/slot_options_69_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_69_it.4bpp: graphics/slot_options/slot_options_69_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_6_de.4bpp: graphics/slot_options/slot_options_6_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_6_en.4bpp: graphics/slot_options/slot_options_6_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_6_es.4bpp: graphics/slot_options/slot_options_6_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_6_fr.4bpp: graphics/slot_options/slot_options_6_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_6_it.4bpp: graphics/slot_options/slot_options_6_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_70_de.4bpp: graphics/slot_options/slot_options_70_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_70_en.4bpp: graphics/slot_options/slot_options_70_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_70_es.4bpp: graphics/slot_options/slot_options_70_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_70_fr.4bpp: graphics/slot_options/slot_options_70_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_70_it.4bpp: graphics/slot_options/slot_options_70_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_71_de.4bpp: graphics/slot_options/slot_options_71_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_71_en.4bpp: graphics/slot_options/slot_options_71_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_71_es.4bpp: graphics/slot_options/slot_options_71_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_71_fr.4bpp: graphics/slot_options/slot_options_71_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_71_it.4bpp: graphics/slot_options/slot_options_71_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_72_de.4bpp: graphics/slot_options/slot_options_72_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_72_en.4bpp: graphics/slot_options/slot_options_72_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_72_es.4bpp: graphics/slot_options/slot_options_72_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_72_fr.4bpp: graphics/slot_options/slot_options_72_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_72_it.4bpp: graphics/slot_options/slot_options_72_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_73_de.4bpp: graphics/slot_options/slot_options_73_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_73_en.4bpp: graphics/slot_options/slot_options_73_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_73_es.4bpp: graphics/slot_options/slot_options_73_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_73_fr.4bpp: graphics/slot_options/slot_options_73_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_73_it.4bpp: graphics/slot_options/slot_options_73_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_74_de.4bpp: graphics/slot_options/slot_options_74_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_74_en.4bpp: graphics/slot_options/slot_options_74_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_74_es.4bpp: graphics/slot_options/slot_options_74_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_74_fr.4bpp: graphics/slot_options/slot_options_74_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_74_it.4bpp: graphics/slot_options/slot_options_74_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_75_de.4bpp: graphics/slot_options/slot_options_75_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_75_en.4bpp: graphics/slot_options/slot_options_75_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_75_es.4bpp: graphics/slot_options/slot_options_75_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_75_fr.4bpp: graphics/slot_options/slot_options_75_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_75_it.4bpp: graphics/slot_options/slot_options_75_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_76_de.4bpp: graphics/slot_options/slot_options_76_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_76_en.4bpp: graphics/slot_options/slot_options_76_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_76_es.4bpp: graphics/slot_options/slot_options_76_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_76_fr.4bpp: graphics/slot_options/slot_options_76_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_76_it.4bpp: graphics/slot_options/slot_options_76_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_77_de.4bpp: graphics/slot_options/slot_options_77_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_77_en.4bpp: graphics/slot_options/slot_options_77_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_77_es.4bpp: graphics/slot_options/slot_options_77_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_77_fr.4bpp: graphics/slot_options/slot_options_77_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_77_it.4bpp: graphics/slot_options/slot_options_77_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_78_de.4bpp: graphics/slot_options/slot_options_78_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_78_en.4bpp: graphics/slot_options/slot_options_78_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_78_es.4bpp: graphics/slot_options/slot_options_78_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_78_fr.4bpp: graphics/slot_options/slot_options_78_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_78_it.4bpp: graphics/slot_options/slot_options_78_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_79_de.4bpp: graphics/slot_options/slot_options_79_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_79_en.4bpp: graphics/slot_options/slot_options_79_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_79_es.4bpp: graphics/slot_options/slot_options_79_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_79_fr.4bpp: graphics/slot_options/slot_options_79_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_79_it.4bpp: graphics/slot_options/slot_options_79_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_7_de.4bpp: graphics/slot_options/slot_options_7_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_7_en.4bpp: graphics/slot_options/slot_options_7_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_7_es.4bpp: graphics/slot_options/slot_options_7_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_7_fr.4bpp: graphics/slot_options/slot_options_7_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_7_it.4bpp: graphics/slot_options/slot_options_7_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_80_de.4bpp: graphics/slot_options/slot_options_80_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_80_en.4bpp: graphics/slot_options/slot_options_80_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_80_es.4bpp: graphics/slot_options/slot_options_80_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_80_fr.4bpp: graphics/slot_options/slot_options_80_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_80_it.4bpp: graphics/slot_options/slot_options_80_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_81_de.4bpp: graphics/slot_options/slot_options_81_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_81_en.4bpp: graphics/slot_options/slot_options_81_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_81_es.4bpp: graphics/slot_options/slot_options_81_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_81_fr.4bpp: graphics/slot_options/slot_options_81_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_81_it.4bpp: graphics/slot_options/slot_options_81_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_82_de.4bpp: graphics/slot_options/slot_options_82_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_82_en.4bpp: graphics/slot_options/slot_options_82_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_82_es.4bpp: graphics/slot_options/slot_options_82_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_82_fr.4bpp: graphics/slot_options/slot_options_82_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_82_it.4bpp: graphics/slot_options/slot_options_82_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_83_de.4bpp: graphics/slot_options/slot_options_83_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_83_en.4bpp: graphics/slot_options/slot_options_83_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_83_es.4bpp: graphics/slot_options/slot_options_83_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_83_fr.4bpp: graphics/slot_options/slot_options_83_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_83_it.4bpp: graphics/slot_options/slot_options_83_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_84_de.4bpp: graphics/slot_options/slot_options_84_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_84_en.4bpp: graphics/slot_options/slot_options_84_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_84_es.4bpp: graphics/slot_options/slot_options_84_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_84_fr.4bpp: graphics/slot_options/slot_options_84_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_84_it.4bpp: graphics/slot_options/slot_options_84_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_85_de.4bpp: graphics/slot_options/slot_options_85_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_85_en.4bpp: graphics/slot_options/slot_options_85_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_85_es.4bpp: graphics/slot_options/slot_options_85_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_85_fr.4bpp: graphics/slot_options/slot_options_85_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_85_it.4bpp: graphics/slot_options/slot_options_85_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_86_de.4bpp: graphics/slot_options/slot_options_86_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_86_en.4bpp: graphics/slot_options/slot_options_86_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_86_es.4bpp: graphics/slot_options/slot_options_86_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_86_fr.4bpp: graphics/slot_options/slot_options_86_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_86_it.4bpp: graphics/slot_options/slot_options_86_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_87_de.4bpp: graphics/slot_options/slot_options_87_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_87_en.4bpp: graphics/slot_options/slot_options_87_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_87_es.4bpp: graphics/slot_options/slot_options_87_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_87_fr.4bpp: graphics/slot_options/slot_options_87_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_87_it.4bpp: graphics/slot_options/slot_options_87_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_88_de.4bpp: graphics/slot_options/slot_options_88_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_88_en.4bpp: graphics/slot_options/slot_options_88_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_88_es.4bpp: graphics/slot_options/slot_options_88_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_88_fr.4bpp: graphics/slot_options/slot_options_88_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_88_it.4bpp: graphics/slot_options/slot_options_88_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_89_de.4bpp: graphics/slot_options/slot_options_89_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_89_en.4bpp: graphics/slot_options/slot_options_89_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_89_es.4bpp: graphics/slot_options/slot_options_89_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_89_fr.4bpp: graphics/slot_options/slot_options_89_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_89_it.4bpp: graphics/slot_options/slot_options_89_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_8_de.4bpp: graphics/slot_options/slot_options_8_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_8_en.4bpp: graphics/slot_options/slot_options_8_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_8_es.4bpp: graphics/slot_options/slot_options_8_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_8_fr.4bpp: graphics/slot_options/slot_options_8_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_8_it.4bpp: graphics/slot_options/slot_options_8_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_90_de.4bpp: graphics/slot_options/slot_options_90_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_90_en.4bpp: graphics/slot_options/slot_options_90_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_90_es.4bpp: graphics/slot_options/slot_options_90_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_90_fr.4bpp: graphics/slot_options/slot_options_90_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_90_it.4bpp: graphics/slot_options/slot_options_90_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_91_de.4bpp: graphics/slot_options/slot_options_91_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_91_en.4bpp: graphics/slot_options/slot_options_91_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_91_es.4bpp: graphics/slot_options/slot_options_91_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_91_fr.4bpp: graphics/slot_options/slot_options_91_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_91_it.4bpp: graphics/slot_options/slot_options_91_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_92_de.4bpp: graphics/slot_options/slot_options_92_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_92_en.4bpp: graphics/slot_options/slot_options_92_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_92_es.4bpp: graphics/slot_options/slot_options_92_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_92_fr.4bpp: graphics/slot_options/slot_options_92_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_92_it.4bpp: graphics/slot_options/slot_options_92_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_93_de.4bpp: graphics/slot_options/slot_options_93_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_93_en.4bpp: graphics/slot_options/slot_options_93_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_93_es.4bpp: graphics/slot_options/slot_options_93_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_93_fr.4bpp: graphics/slot_options/slot_options_93_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_93_it.4bpp: graphics/slot_options/slot_options_93_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_94_de.4bpp: graphics/slot_options/slot_options_94_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_94_en.4bpp: graphics/slot_options/slot_options_94_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_94_es.4bpp: graphics/slot_options/slot_options_94_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_94_fr.4bpp: graphics/slot_options/slot_options_94_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_94_it.4bpp: graphics/slot_options/slot_options_94_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_95_de.4bpp: graphics/slot_options/slot_options_95_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_95_en.4bpp: graphics/slot_options/slot_options_95_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_95_es.4bpp: graphics/slot_options/slot_options_95_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_95_fr.4bpp: graphics/slot_options/slot_options_95_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_95_it.4bpp: graphics/slot_options/slot_options_95_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_96_de.4bpp: graphics/slot_options/slot_options_96_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_96_en.4bpp: graphics/slot_options/slot_options_96_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_96_es.4bpp: graphics/slot_options/slot_options_96_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_96_fr.4bpp: graphics/slot_options/slot_options_96_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_96_it.4bpp: graphics/slot_options/slot_options_96_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_9_de.4bpp: graphics/slot_options/slot_options_9_de.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_9_en.4bpp: graphics/slot_options/slot_options_9_en.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_9_es.4bpp: graphics/slot_options/slot_options_9_es.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_9_fr.4bpp: graphics/slot_options/slot_options_9_fr.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
+
+graphics/slot_options/slot_options_9_it.4bpp: graphics/slot_options/slot_options_9_it.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2 -oam
 
 graphics/stage/dusclops/dusclops_bonus_clear_de.4bpp: graphics/stage/dusclops/dusclops_bonus_clear_top_de.png graphics/stage/dusclops/dusclops_bonus_clear_score_region_de.png graphics/stage/dusclops/dusclops_bonus_clear_score_right_cap_de.png graphics/stage/dusclops/dusclops_bonus_clear_score_digits_de.png graphics/stage/dusclops/dusclops_stage_gfx.json
 	$(GFX) graphics/stage/dusclops/dusclops_bonus_clear_top_de.png graphics/stage/dusclops/dusclops_bonus_clear_de_dusclops_bonus_clear_top.4bpp -mwidth 20 -mheight 8 -oam; \
@@ -460,6 +1909,9 @@ graphics/stage/main/travel_it.4bpp: graphics/stage/main/travel_banner_it.png gra
 	$(GFX) graphics/stage/main/travel_pole_base_it.png graphics/stage/main/travel_it_travel_pole_base.4bpp; \
 	cat graphics/stage/main/travel_it_travel_banner.4bpp graphics/stage/main/travel_it_travel_bottom_border.4bpp graphics/stage/main/travel_it_travel_pole.4bpp graphics/stage/main/travel_it_travel_arrows.4bpp graphics/stage/main/travel_it_travel_pole_base.4bpp > $@
 
+graphics/stage/misc/end_of_ball_summary_text_chars_eu.4bpp: graphics/stage/misc/end_of_ball_summary_text_chars_eu.png
+	$(GFX) $< $@ -num_tiles 57
+
 graphics/stage/rayquaza/rayquaza_bonus_clear_de.4bpp: graphics/stage/rayquaza/rayquaza_bonus_clear_top_de.png graphics/stage/rayquaza/rayquaza_bonus_clear_score_region_de.png graphics/stage/rayquaza/rayquaza_bonus_clear_score_right_cap_de.png graphics/stage/rayquaza/rayquaza_bonus_clear_score_digits_de.png graphics/stage/rayquaza/rayquaza_stage_gfx.json
 	$(GFX) graphics/stage/rayquaza/rayquaza_bonus_clear_top_de.png graphics/stage/rayquaza/rayquaza_bonus_clear_de_rayquaza_bonus_clear_top.4bpp -mwidth 20 -mheight 8 -oam; \
 	$(GFX) graphics/stage/rayquaza/rayquaza_bonus_clear_score_region_de.png graphics/stage/rayquaza/rayquaza_bonus_clear_de_rayquaza_bonus_clear_score_region.4bpp -mwidth 14 -mheight 3 -oam; \
@@ -504,6 +1956,12 @@ graphics/stage/ruby/saver/saver_on_row2_fr.4bpp: graphics/stage/ruby/saver/saver
 graphics/stage/ruby/saver/saver_on_row2_it.4bpp: graphics/stage/ruby/saver/saver_on_row2_it.png
 	$(GFX) $< $@ -num_tiles 6
 
+graphics/stage/ruby/saver/saver_on_row3_fr.4bpp: graphics/stage/ruby/saver/saver_on_row3_fr.png
+	$(GFX) $< $@ -num_tiles 21
+
+graphics/stage/ruby/saver/saver_on_row3_it.4bpp: graphics/stage/ruby/saver/saver_on_row3_it.png
+	$(GFX) $< $@ -num_tiles 21
+
 graphics/stage/ruby/shop_de.4bpp: graphics/stage/ruby/shop_de.png
 	$(GFX) $< $@ -mwidth 8
 
@@ -537,17 +1995,32 @@ graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_fr.4bpp: graphics/stag
 graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_it.4bpp: graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_it.png
 	$(GFX) $< $@ -num_tiles 6
 
+graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_de.4bpp: graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_de.png
+	$(GFX) $< $@ -num_tiles 4
+
 graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_de.4bpp: graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_de.png
 	$(GFX) $< $@ -num_tiles 145
 
 graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_it.4bpp: graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_it.png
 	$(GFX) $< $@ -num_tiles 145
 
+graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_de.4bpp: graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_de.png
+	$(GFX) $< $@ -num_tiles 3
+
 graphics/stage/sapphire/saver/saver_on_row2_fr.4bpp: graphics/stage/sapphire/saver/saver_on_row2_fr.png
 	$(GFX) $< $@ -num_tiles 7
 
 graphics/stage/sapphire/saver/saver_on_row2_it.4bpp: graphics/stage/sapphire/saver/saver_on_row2_it.png
 	$(GFX) $< $@ -num_tiles 7
+
+graphics/stage/sapphire/saver/saver_on_row3_eu.4bpp: graphics/stage/sapphire/saver/saver_on_row3_eu.png
+	$(GFX) $< $@ -num_tiles 21
+
+graphics/stage/sapphire/saver/saver_on_row3_fr.4bpp: graphics/stage/sapphire/saver/saver_on_row3_fr.png
+	$(GFX) $< $@ -num_tiles 21
+
+graphics/stage/sapphire/saver/saver_on_row3_it.4bpp: graphics/stage/sapphire/saver/saver_on_row3_it.png
+	$(GFX) $< $@ -num_tiles 21
 
 graphics/stage/sapphire/shop_sign_tiles_de.4bpp: graphics/stage/sapphire/shop_sign_tiles_de.png
 	$(GFX) $< $@ -oamshape graphics/stage/sapphire/shop_sign_shape.json

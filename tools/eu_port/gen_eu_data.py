@@ -224,6 +224,8 @@ def labels_of(ln):
     return []
 
 ALL_LABELS = {}
+# EU-only data ranges written as binary or replaced by MANUAL sources (read by gfx_eu.py)
+BLOBS = []
 def gen_file(src, obj, name):
     flat = []; incs = []
     flatten(src, [], flat, incs)
@@ -291,6 +293,8 @@ def gen_file(src, obj, name):
                 for l_ in p:
                     out.append(('gen', l_ if l_.endswith('::') else '\t' + l_))
                 skip_to, skip_to_path = e, p[0]
+                if obj not in PTR_OBJS:
+                    BLOBS.append(dict(addr='0x%08X' % s, size=e - s, labels=sorted(by_addr.get(s, []))))
                 continue
             data = EU[x - 0x08000000:y - 0x08000000]
             if obj in PTR_OBJS:
@@ -308,6 +312,7 @@ def gen_file(src, obj, name):
                 flush()
                 continue
             if len(data) >= 32:
+                BLOBS.append(dict(addr='0x%08X' % x, size=y - x, labels=sorted(by_addr.get(x, []))))
                 fn = f'data/eu/bin/{name}_{x:08X}.bin'
                 open(REPO + '/' + fn, 'wb').write(data)
                 out.append(('gen', f'\t.incbin "{fn}"'))
@@ -376,3 +381,4 @@ def gen_file(src, obj, name):
 for src, obj, name in FILES:
     gen_file(src, obj, name)
 json.dump(ALL_LABELS, open(_W + '/eu_data_labels.json', 'w'), indent=0, sort_keys=True)
+json.dump(BLOBS, open(_W + '/eu_blobs.json', 'w'), indent=0)
