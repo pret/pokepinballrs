@@ -74,13 +74,31 @@ extern const u16 gOptionsSEList[];
 extern const u8 gDefaultButtonConfigs[4][10];
 extern const u8 gDefaultCustomButtonConfigTileIds[];
 extern const void (*const gOptionsStateFuncs[])(void);
+#ifdef EUROPE
+EXTERN_LANG5(const u8, gOptionsText_Tilemap, []);
+EXTERN_LANG5(const u8, gOptionsText_Gfx, []);
+EXTERN_LANG4_ENDE(const u8, gOptionsBackground_Tilemap, []);
+EXTERN_LANG4_ENFR(const u8, gOptionsBackground_Gfx, []);
+EXTERN_LANG5(const u8, gOptionsSprites_Gfx, []);
+
+// text: per language; frame graphics: shared by English and French; frame tilemap: shared by English and German
+#define LOAD_OPTIONS_GFX(text, frameGfx, frameTilemap)                                                                 \
+    DmaCopy16(3, gOptionsText_Gfx##text,               BG_VRAM_ADDR_OPTIONS_TEXT_TILES, SIZE_OF_VRAM_OPTIONS_TEXT_TILES);   \
+    DmaCopy16(3, gOptionsBackground_Gfx##frameGfx,     BG_VRAM_ADDR_OPTIONS_FRAME_TILES, SIZE_OF_VRAM_OPTIONS_FRAME_TILES); \
+    DmaCopy16(3, gOptionsText_Tilemap##text,           gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);                  \
+    DmaCopy16(3, gOptionsBackground_Tilemap##frameTilemap, BG_VRAM_ADDR_OPTIONS_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256); \
+    DmaCopy16(3, gOptionsSprites_Gfx##text,            OBJ_VRAM_ADDR_OPTIONS_SPRITE_TILES, SIZE_OF_VRAM_OPTIONS_SPRITE_TILES)
+#else
 extern const u8 gOptionsText_Tilemap[];
 extern const u8 gOptionsText_Gfx[];
 extern const u8 gOptionsBackground_Tilemap[];
 extern const u8 gOptionsBackground_Gfx[];
+#endif
 extern const Palette gOptionsBackground_Pals[];
 extern const Palette gGBAButtonIcons_Pals[];
+#ifndef EUROPE
 extern const u8 gOptionsSprites_Gfx[];
+#endif
 
 
 struct ButtonInfoView
@@ -111,10 +129,24 @@ struct ButtonInfoView
 *   10 : Combiner sprite
 ***/
 extern const struct ButtonInfoView gButtonInfoTable[11];
+#ifdef EUROPE
+// The European release copies these tables to RAM so that they can be adjusted for the selected language.
+EWRAM_DATA struct Vector16 gOptionsCursorPositionTable[16];
+extern const struct Vector16 gOptionsCursorPositionTable_Default[16];
+#else
 extern const struct Vector16 gOptionsCursorPositionTable[];
+#endif
 extern const u16 gOptionsBGMSelectorYPositions[];
 extern const struct {u8 tileId; s16 frameDuration;} gButtonAnimData[];
+#ifdef EUROPE
+EWRAM_DATA const struct SpriteSet *gOptionsSpriteSets[32];
+extern const struct SpriteSet *const gOptionsSpriteSets_Default[32];
+extern const struct SpriteSet gOptionsSpriteSet28_Fr;
+extern const struct SpriteSet gOptionsSpriteSet28_It;
+extern const struct SpriteSet gOptionsSpriteSet28_Es;
+#else
 extern const struct SpriteSet *const gOptionsSpriteSets[];
+#endif
 
 //TODO: should be able to be referenced from gMain
 extern EWRAM_DATA s16 gMain_saveData_customButtonConfig[][2];
@@ -137,6 +169,36 @@ void Options_LoadGraphics(void)
     gMain.dispcntBackup = REG_DISPCNT;
 
     DmaCopy16(3, gOptionsBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
+#ifdef EUROPE
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+        LOAD_OPTIONS_GFX(_En, _EnFr, _EnDe);
+        break;
+    case LANGUAGE_FRENCH:
+        LOAD_OPTIONS_GFX(_Fr, _EnFr, _Fr);
+        break;
+    case LANGUAGE_GERMAN:
+        LOAD_OPTIONS_GFX(_De, _De, _EnDe);
+        break;
+    case LANGUAGE_ITALIAN:
+        LOAD_OPTIONS_GFX(_It, _It, _It);
+        break;
+    case LANGUAGE_SPANISH:
+        LOAD_OPTIONS_GFX(_Es, _Es, _Es);
+        break;
+    }
+
+    // The highlighted text is on a different row in the translated screen.
+    if (gGameBoyPlayerEnabled != TRUE)
+    {
+        SetStringPalette(18, 4, 4, 1, 2);
+        SetStringPalette(18, 5, 4, 2, 2);
+    }
+
+    DmaCopy16(3, gBG0TilemapBuffer,          BG_VRAM_ADDR_OPTIONS_BG0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gGBAButtonIcons_Pals,       OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
+#else
     DmaCopy16(3, gOptionsText_Gfx,        BG_VRAM_ADDR_OPTIONS_TEXT_TILES, SIZE_OF_VRAM_OPTIONS_TEXT_TILES);
     DmaCopy16(3, gOptionsBackground_Gfx,  BG_VRAM_ADDR_OPTIONS_FRAME_TILES, SIZE_OF_VRAM_OPTIONS_FRAME_TILES);
     DmaCopy16(3, gOptionsText_Tilemap,    gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
@@ -152,6 +214,7 @@ void Options_LoadGraphics(void)
     DmaCopy16(3, gOptionsBackground_Tilemap, BG_VRAM_ADDR_OPTIONS_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     DmaCopy16(3, gGBAButtonIcons_Pals,       OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
     DmaCopy16(3, gOptionsSprites_Gfx,        OBJ_VRAM_ADDR_OPTIONS_SPRITE_TILES, SIZE_OF_VRAM_OPTIONS_SPRITE_TILES);
+#endif
     Options_InitStates();
     UpdateOptionsSpritePositions();
     m4aMPlayAllStop();
@@ -212,6 +275,42 @@ void Options_InitStates(void)
     gOptionsData.torchicAnimTileId = 0;
     gOptionsData.noteSizeBlinkState = 0;
     gOptionsData.soundTestActive = FALSE;
+#ifdef EUROPE
+    for (i = 0; i < 32; i++)
+        gOptionsSpriteSets[i] = gOptionsSpriteSets_Default[i];
+
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+    case LANGUAGE_GERMAN:
+        break;
+    case LANGUAGE_FRENCH:
+        gOptionsSpriteSets[28] = &gOptionsSpriteSet28_Fr;
+        break;
+    case LANGUAGE_ITALIAN:
+        gOptionsSpriteSets[28] = &gOptionsSpriteSet28_It;
+        break;
+    case LANGUAGE_SPANISH:
+        gOptionsSpriteSets[28] = &gOptionsSpriteSet28_Es;
+        break;
+    }
+
+    for (i = 0; i < 16; i++)
+        gOptionsCursorPositionTable[i] = gOptionsCursorPositionTable_Default[i];
+
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_GERMAN:
+        gOptionsCursorPositionTable[6].x = 20;
+        break;
+    case LANGUAGE_ITALIAN:
+        gOptionsCursorPositionTable[6].x = 16;
+        break;
+    case LANGUAGE_SPANISH:
+        gOptionsCursorPositionTable[6].x = 20;
+        break;
+    }
+#endif
 }
 
 void Options_HandleInput(void)
@@ -584,6 +683,9 @@ void UpdateOptionsSpritePositions(void)
     struct OamDataSimple *oam;
     int i = 0;
     int j = 0;
+#ifdef EUROPE
+    const struct SpriteSet *highlightSet;
+#endif
 
     soundSelectArrow =
         &gMain.spriteGroups[(20 * gOptionsData.soundTestBlinkToggle) + 7];
@@ -697,7 +799,13 @@ void UpdateOptionsSpritePositions(void)
             buttonConfig[i][0]->baseX = 156;
             buttonConfig[i][0]->baseY = 84 + (12 * i);
 
+#ifdef EUROPE
+            // The size of the highlight depends on the language's sprite set.
+            highlightSet = gOptionsSpriteSets[28];
+            for (j = 0; j < gOptionsData.buttonFlashVisible * (highlightSet->count - 1) + 1; j++)
+#else
             for (j = 0; j < (gOptionsData.buttonFlashVisible + 1); j++)
+#endif
             {
                 oam = &buttonConfig[i][0]->oam[j];
                 gOamBuffer[oam->oamId].x = oam->xOffset + buttonConfig[i][0]->baseX;
@@ -746,7 +854,14 @@ void UpdateOptionsSpritePositions(void)
         }
     }
 
+#ifdef EUROPE
+    if (gMain_saveData.language == LANGUAGE_ITALIAN)
+        rumbleArrow->baseX = 162;
+    else
+        rumbleArrow->baseX = 170;
+#else
     rumbleArrow->baseX = 170;
+#endif
     rumbleArrow->baseY = 44 - (gOptionsData.rumbleEnabled * 12);
     oam = &rumbleArrow->oam[0];
     gOamBuffer[oam->oamId].x = oam->xOffset + rumbleArrow->baseX;
