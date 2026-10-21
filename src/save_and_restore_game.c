@@ -58,7 +58,7 @@ extern const u8 gHatchMachineElevator_Gfx[][SIZE_OF_VRAM_HATCH_MACHINE_ALL_TILES
 extern const u8 gGroudonAttackFx_Gfx[SIZE_OF_VRAM_GROUDON_ATTACK_FX_TILES];
 extern const u8 gRayquazaFlyby_Gfx[SIZE_OF_VRAM_RAYQUAZA_FLYBY_TILES];
 extern const u8 gRayquazaSpriteSheet[SIZE_OF_VRAM_RAYQUAZA_TILES];
-extern const u8 gSphealResultsScreenGfx[SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES];
+EXTERN_LANG4_ENFR(const u8, gSphealResultsScreenGfx, [SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES]);
 extern const u8 gChargeFillIndicator_Gfx[][SIZE_OF_VRAM_CHARGE_INDICATOR_CIRCLE_TILES];
 extern const u8 gPikachuSaverTilesGfx[][SIZE_OF_VRAM_PIKA_MON_TILES];
 extern const u8 gRubyBoardShopDoor_Gfx[][SIZE_OF_VRAM_RUBY_MART_DOOR_TILES];
@@ -786,7 +786,7 @@ void RestoreSphealBonusGraphics(void)
     for (i = 0; i < 0x800; i++)
         gBG0TilemapBuffer[i] = 0x1FF;
 
-    DmaCopy16(3, gSphealResultsScreenGfx, OBJ_VRAM_ADDR_SPHEAL_SUMMARY_TILES, SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES);
+    DMA_LANG4_ENFR(gSphealResultsScreenGfx, OBJ_VRAM_ADDR_SPHEAL_SUMMARY_TILES, SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES);
 }
 
 void nullsub_18(void)

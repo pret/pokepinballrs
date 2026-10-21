@@ -1079,6 +1079,29 @@ extern const u8 *const gModeBannerTilemaps[];
         DmaCopy16(3, &sym##_Es[index], dest, size);        \
         break;                                             \
     }
+// Same, for graphics where English and French share one version (sym_EnFr).
+#define DMA_LANG4_ENFR(sym, dest, size)                    \
+    switch (gMain_saveData.language)                       \
+    {                                                      \
+    case LANGUAGE_ENGLISH:                                 \
+    case LANGUAGE_FRENCH:                                  \
+        DmaCopy16(3, sym##_EnFr, dest, size);              \
+        break;                                             \
+    case LANGUAGE_GERMAN:                                  \
+        DmaCopy16(3, sym##_De, dest, size);                \
+        break;                                             \
+    case LANGUAGE_ITALIAN:                                 \
+        DmaCopy16(3, sym##_It, dest, size);                \
+        break;                                             \
+    case LANGUAGE_SPANISH:                                 \
+        DmaCopy16(3, sym##_Es, dest, size);                \
+        break;                                             \
+    }
+#define EXTERN_LANG4_ENFR(type, sym, dims) \
+    extern type sym##_EnFr dims;           \
+    extern type sym##_De dims;             \
+    extern type sym##_It dims;             \
+    extern type sym##_Es dims
 // Declares sym_En ... sym_Es with the given type and array suffix.
 #define EXTERN_LANG5(type, sym, dims) \
     extern type sym##_En dims;        \
@@ -1090,6 +1113,8 @@ extern const u8 *const gModeBannerTilemaps[];
 #define DMA_LANG5(sym, dest, size) DmaCopy16(3, sym, dest, size)
 #define DMA_LANG5_AT(sym, index, dest, size) DmaCopy16(3, &sym[index], dest, size)
 #define EXTERN_LANG5(type, sym, dims) extern type sym dims
+#define DMA_LANG4_ENFR(sym, dest, size) DmaCopy16(3, sym, dest, size)
+#define EXTERN_LANG4_ENFR(type, sym, dims) extern type sym dims
 #endif
 
 // Evolution item spawn animation (contains the item's name).

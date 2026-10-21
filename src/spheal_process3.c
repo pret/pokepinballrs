@@ -22,7 +22,7 @@ extern const u8 gSphealNetGfx[][SIZE_OF_VRAM_SPHEAL_NET_TILES];
 extern const u8 gSphealNetFrontGfx[][SIZE_OF_VRAM_SPHEAL_NET_FRONT_TILES];
 extern const u8 gSphealEntitySprites[][SIZE_OF_VRAM_SPHEAL_TILES];
 extern const u8 gSealeoEntitySprites[][SIZE_OF_VRAM_SEALEO_RAW_TILES];
-extern const u8 gSphealResultsScreenGfx[SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES];
+EXTERN_LANG4_ENFR(const u8, gSphealResultsScreenGfx, [SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES]);
 extern const u8 gWhiscash_Gfx[][SIZE_OF_VRAM_SPHEAL_WHISCASH_RAW_TILES];
 extern const u8 gPelipper_Gfx[][SIZE_OF_VRAM_SPHEAL_PELIPPER_TILES];
 
@@ -217,7 +217,7 @@ void UpdateFrameProcess3_BoardLogic_SphealBoard(void)
             gMain.spriteGroups[SG_SPHEAL_END_SCORE_SPHEALS_SUNK].active = TRUE;
             gMain.spriteGroups[SG_SPHEAL_END_SCORE_BALLS_SUNK].active = TRUE;
             gMain.spriteGroups[SG_SPHEAL_END_SCORE_TOTAL].active = TRUE;
-            DmaCopy16(3, gSphealResultsScreenGfx, OBJ_VRAM_ADDR_SPHEAL_SUMMARY_TILES, SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES);
+            DMA_LANG4_ENFR(gSphealResultsScreenGfx, OBJ_VRAM_ADDR_SPHEAL_SUMMARY_TILES, SIZE_OF_VRAM_SPHEAL_SUMMARY_TILES);
             gCurrentPinballGame->bannerSlideYOffset = -126;
             gCurrentPinballGame->cameraLocked = TRUE;
         }
