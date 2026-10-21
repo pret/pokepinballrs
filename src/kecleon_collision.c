@@ -1,4 +1,5 @@
 #include "global.h"
+#include "main.h"
 #include "constants/board/kecleon_states.h"
 #include "constants/collision.h"
 
@@ -48,7 +49,43 @@ s16 CollisionCheck_Kecleon(struct Vector16 *ballPosition, u16 *collisionAngle)
             gCurrentPinballGame->collisionResolutionState = COLLISION_RESOLUTION_STATE_PIXEL_WALK_CONTINUING;
             *collisionAngle = boardCollisionAngle;
 
+#ifdef EUROPE
+            // The European version adds the 'up range/bounce' handling seen in the other collision files.
+            if (*collisionAngle >= ANGLE_UP_RANGE_MIN && *collisionAngle <= ANGLE_UP_RANGE_MAX)
+            {
+                if (gCurrentPinballGame->ball->positionQ0.x < gBoardConfig.fieldLayout.ballSpawnX - 8 ||
+                    gCurrentPinballGame->ball->positionQ0.y < gBoardConfig.fieldLayout.ballSpawnY - 8)
+                {
+
+                    if (gCurrentPinballGame->ball->spinSpeed > 0)
+                    {
+                        *collisionAngle = ANGLE_UP_RIGHT_BOUNCE;
+                    }
+                    else if (gCurrentPinballGame->ball->spinSpeed != 0)
+                    {
+                        *collisionAngle = ANGLE_UP_LEFT_BOUNCE;
+                    }
+                    else
+                    {
+                        if (gMain.systemFrameCount & 1)
+                        {
+                            gCurrentPinballGame->ball->spinAcceleration = ANGLE_UP_RIGHT_SPIN_BOOST;
+                            gCurrentPinballGame->ball->spinSpeed = 1;
+                            *collisionAngle = ANGLE_UP_RIGHT_BOUNCE;
+                        }
+                        else
+                        {
+                            gCurrentPinballGame->ball->spinAcceleration = ANGLE_UP_LEFT_SPIN_BOOST;
+                            gCurrentPinballGame->ball->spinSpeed = -1;
+                            *collisionAngle = ANGLE_UP_LEFT_BOUNCE;
+                        }
+                    }
+
+                }
+            }
+#else
             // Note: missing the 'up range/bounce' seen in other collision files. Possible minor bug?
+#endif
 
             hasCollisionImpact = TRUE;
             break;
