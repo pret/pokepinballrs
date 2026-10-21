@@ -64,6 +64,16 @@ void PrintDexNumbersFromListPosition(s16);
 static void PrintCaughtBallFromListPosition(s16);
 void LoadMonPortrait(s16);
 
+#ifdef EUROPE
+// Per-language Pokedex layout settings, set up by InitPokedexState()
+EWRAM_DATA u8 gPokedexIsLocalized;      // FALSE for English
+EWRAM_DATA u8 gPokedexNameLanguage;     // which of the 3 species name sets to use (English/French/German)
+EWRAM_DATA u8 gPokedexLanguage;
+EWRAM_DATA u8 gPokedexDescLanguage;
+EWRAM_DATA s8 gPokedexAnimatedIconLastFrame;
+EWRAM_DATA s16 gPokedexAnimatedIconX;
+EWRAM_DATA s8 gPokedexNumSpriteSets;
+#endif
 EWRAM_DATA s8 gPokedex_EraseSaveDataAccessCounter;
 EWRAM_DATA s8 gPokedex_EraseSaveDataAccessStep;
 EWRAM_DATA s8 gPokedexScrollActive;
@@ -157,13 +167,56 @@ extern const Palette gPokedexBackground_Pals[];
 extern const Palette gPokedexSprites_Pals[];
 extern const u8 gPokedexSprites_Gfx[];
 extern const u8 gPokedexTextGlyphs_Gfx[];
+#ifdef EUROPE
+extern const u16 gPokedexBgText_Gfx_En[];
+extern const u16 gPokedexBgText_Gfx_Fr[];
+extern const u16 gPokedexBgText_Gfx_De[];
+extern const u16 gPokedexBgText_Gfx_It[];
+extern const u16 gPokedexBgText_Gfx_Es[];
+extern const u16 gPokedexBg_Gfx_En[];
+extern const u16 gPokedexBg_Gfx_FrDeItEs[];
+extern const u16 gPokedexBg1_Tilemap_En[];
+extern const u16 gPokedexBg1_Tilemap_Fr[];
+extern const u16 gPokedexBg1_Tilemap_De[];
+extern const u16 gPokedexBg1_Tilemap_It[];
+extern const u16 gPokedexBg1_Tilemap_Es[];
+extern const u16 gPokedexBg3_Tilemap_En[];
+extern const u16 gPokedexBg3_Tilemap_FrDeItEs[];
+extern const u8 gPokedexSprites_Gfx_En[];
+extern const u8 gPokedexSprites_Gfx_Fr[];
+extern const u8 gPokedexSprites_Gfx_De[];
+extern const u8 gPokedexSprites_Gfx_It[];
+extern const u8 gPokedexSprites_Gfx_Es[];
+#endif
 
 // Rom_2 data
 extern const u16 gPokedexAnimBaseTileNums[][4];
 extern const u16 gPokedexCatchAnimTileOffsets[][20];
 extern const u16 gPokedexHatchAnimTileOffsets[][51];
 extern const s16 gPokedexAnimFrameDurations[][51];
+#ifdef EUROPE
+#define POKEDEX_MAX_SPRITE_SETS 34
+#define POKEDEX_NUM_SPRITE_SETS gPokedexNumSpriteSets
+#define POKEDEX_ANIMATED_ICON_X gPokedexAnimatedIconX
+#define POKEDEX_ANIMATED_ICON_LAST_FRAME gPokedexAnimatedIconLastFrame
+EWRAM_DATA const struct SpriteSet *gPokedexSpriteSets[POKEDEX_MAX_SPRITE_SETS];
+extern const struct SpriteSet *const gPokedexSpriteSets_En[];
+extern const struct SpriteSet *const gPokedexSpriteSets_Fr[];
+extern const struct SpriteSet *const gPokedexSpriteSets_De[];
+extern const struct SpriteSet *const gPokedexSpriteSets_It[];
+extern const struct SpriteSet *const gPokedexSpriteSets_Es[];
+#else
 extern const struct SpriteSet *const gPokedexSpriteSets[];
+#define POKEDEX_NUM_SPRITE_SETS 29
+#define POKEDEX_ANIMATED_ICON_X 36
+#define POKEDEX_ANIMATED_ICON_LAST_FRAME 11
+#endif
+
+#ifdef EUROPE
+#define POKEDEX_CURSOR_BASE_Y 87
+#else
+#define POKEDEX_CURSOR_BASE_Y 84
+#endif
 extern const s16 gDexAnimationIx[];
 extern const s16 gPokedexCatchAnimIndices[];
 extern s16 gPokedexListNameVramOffsets[]; //TODO: should be const
@@ -205,6 +258,49 @@ void LoadPokedexGraphics(void)
 
     gMain.dispcntBackup = REG_DISPCNT;
 
+#ifdef EUROPE
+    DmaCopy16(3, gPokedexBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, gPokedexBg2_Tilemap, gPokedexVramBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+        DmaCopy16(3, gPokedexBgText_Gfx_En, BG_VRAM_ADDR_POKEDEX_TEXT_TILES, SIZE_OF_VRAM_POKEDEX_TEXT_TILES);
+        DmaCopy16(3, gPokedexBg_Gfx_En, BG_VRAM_ADDR_POKEDEX_FRAME_TILES, SIZE_OF_VRAM_POKEDEX_FRAME_TILES);
+        DmaCopy16(3, gPokedexBg1_Tilemap_En, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexBg3_Tilemap_En, BG_VRAM_ADDR_POKEDEX_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexSprites_Gfx_En, OBJ_VRAM_ADDR_POKEDEX_SPRITE_TILES, SIZE_OF_VRAM_POKEDEX_SPRITE_TILES);
+        break;
+    case LANGUAGE_FRENCH:
+        DmaCopy16(3, gPokedexBgText_Gfx_Fr, BG_VRAM_ADDR_POKEDEX_TEXT_TILES, SIZE_OF_VRAM_POKEDEX_TEXT_TILES);
+        DmaCopy16(3, gPokedexBg_Gfx_FrDeItEs, BG_VRAM_ADDR_POKEDEX_FRAME_TILES, SIZE_OF_VRAM_POKEDEX_FRAME_TILES);
+        DmaCopy16(3, gPokedexBg1_Tilemap_Fr, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexBg3_Tilemap_FrDeItEs, BG_VRAM_ADDR_POKEDEX_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexSprites_Gfx_Fr, OBJ_VRAM_ADDR_POKEDEX_SPRITE_TILES, SIZE_OF_VRAM_POKEDEX_SPRITE_TILES_FR);
+        break;
+    case LANGUAGE_GERMAN:
+        DmaCopy16(3, gPokedexBgText_Gfx_De, BG_VRAM_ADDR_POKEDEX_TEXT_TILES, SIZE_OF_VRAM_POKEDEX_TEXT_TILES);
+        DmaCopy16(3, gPokedexBg_Gfx_FrDeItEs, BG_VRAM_ADDR_POKEDEX_FRAME_TILES, SIZE_OF_VRAM_POKEDEX_FRAME_TILES);
+        DmaCopy16(3, gPokedexBg1_Tilemap_De, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexBg3_Tilemap_FrDeItEs, BG_VRAM_ADDR_POKEDEX_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexSprites_Gfx_De, OBJ_VRAM_ADDR_POKEDEX_SPRITE_TILES, SIZE_OF_VRAM_POKEDEX_SPRITE_TILES_DE);
+        break;
+    case LANGUAGE_ITALIAN:
+        DmaCopy16(3, gPokedexBgText_Gfx_It, BG_VRAM_ADDR_POKEDEX_TEXT_TILES, SIZE_OF_VRAM_POKEDEX_TEXT_TILES);
+        DmaCopy16(3, gPokedexBg_Gfx_FrDeItEs, BG_VRAM_ADDR_POKEDEX_FRAME_TILES, SIZE_OF_VRAM_POKEDEX_FRAME_TILES);
+        DmaCopy16(3, gPokedexBg1_Tilemap_It, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexBg3_Tilemap_FrDeItEs, BG_VRAM_ADDR_POKEDEX_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexSprites_Gfx_It, OBJ_VRAM_ADDR_POKEDEX_SPRITE_TILES, SIZE_OF_VRAM_POKEDEX_SPRITE_TILES_IT);
+        break;
+    case LANGUAGE_SPANISH:
+        DmaCopy16(3, gPokedexBgText_Gfx_Es, BG_VRAM_ADDR_POKEDEX_TEXT_TILES, SIZE_OF_VRAM_POKEDEX_TEXT_TILES);
+        DmaCopy16(3, gPokedexBg_Gfx_FrDeItEs, BG_VRAM_ADDR_POKEDEX_FRAME_TILES, SIZE_OF_VRAM_POKEDEX_FRAME_TILES);
+        DmaCopy16(3, gPokedexBg1_Tilemap_Es, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexBg3_Tilemap_FrDeItEs, BG_VRAM_ADDR_POKEDEX_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gPokedexSprites_Gfx_Es, OBJ_VRAM_ADDR_POKEDEX_SPRITE_TILES, SIZE_OF_VRAM_POKEDEX_SPRITE_TILES_ES);
+        break;
+    }
+    DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
+#else
     DmaCopy16(3, gPokedexBgText_Gfx, BG_VRAM_ADDR_POKEDEX_TEXT_TILES, SIZE_OF_VRAM_POKEDEX_TEXT_TILES);
     DmaCopy16(3, gPokedexBg_Gfx, BG_VRAM_ADDR_POKEDEX_FRAME_TILES, SIZE_OF_VRAM_POKEDEX_FRAME_TILES);
     DmaCopy16(3, gPokedexBackground_Pals, BG_PLTT, BG_PLTT_SIZE);
@@ -213,6 +309,7 @@ void LoadPokedexGraphics(void)
     DmaCopy16(3, gPokedexBg3_Tilemap, BG_VRAM_ADDR_POKEDEX_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     DmaCopy16(3, gPokedexSprites_Pals, OBJ_PLTT, OBJ_PLTT_SIZE);
     DmaCopy16(3, gPokedexSprites_Gfx, OBJ_VRAM_ADDR_POKEDEX_SPRITE_TILES, SIZE_OF_VRAM_POKEDEX_SPRITE_TILES);
+#endif
 
     InitPokedexState();
     PrintSeenOwnedTotals(gPokedexNumSeen, gPokedexNumOwned);
@@ -302,6 +399,66 @@ void InitPokedexState(void)
         gPokedexListEntryCount = SPECIES_JIRACHI + 1;
     else
         gPokedexListEntryCount = SPECIES_RAYQUAZA + 1;
+#ifdef EUROPE
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+        gPokedexIsLocalized = 0;
+        gPokedexNameLanguage = 0;
+        gPokedexLanguage = 0;
+        gPokedexDescLanguage = 0;
+        gPokedexAnimatedIconLastFrame = 11;
+        gPokedexAnimatedIconX = 0x24;
+        gPokedexNumSpriteSets = 29;
+        for (i = 0; i < gPokedexNumSpriteSets; i++)
+            gPokedexSpriteSets[i] = gPokedexSpriteSets_En[i];
+        break;
+    case LANGUAGE_FRENCH:
+        gPokedexIsLocalized = 1;
+        gPokedexNameLanguage = 1;
+        gPokedexLanguage = 1;
+        gPokedexDescLanguage = 1;
+        gPokedexAnimatedIconLastFrame = 16;
+        gPokedexAnimatedIconX = 0x20;
+        gPokedexNumSpriteSets = 34;
+        for (i = 0; i < gPokedexNumSpriteSets; i++)
+            gPokedexSpriteSets[i] = gPokedexSpriteSets_Fr[i];
+        break;
+    case LANGUAGE_GERMAN:
+        gPokedexIsLocalized = 1;
+        gPokedexNameLanguage = 2;
+        gPokedexLanguage = 2;
+        gPokedexDescLanguage = 2;
+        gPokedexAnimatedIconLastFrame = 12;
+        gPokedexAnimatedIconX = 0x22;
+        gPokedexNumSpriteSets = 30;
+        for (i = 0; i < gPokedexNumSpriteSets; i++)
+            gPokedexSpriteSets[i] = gPokedexSpriteSets_De[i];
+        break;
+    case LANGUAGE_ITALIAN:
+        gPokedexIsLocalized = 1;
+        gPokedexNameLanguage = 0;
+        gPokedexLanguage = 3;
+        gPokedexDescLanguage = 3;
+        gPokedexAnimatedIconLastFrame = 11;
+        gPokedexAnimatedIconX = 0x24;
+        gPokedexNumSpriteSets = 29;
+        for (i = 0; i < gPokedexNumSpriteSets; i++)
+            gPokedexSpriteSets[i] = gPokedexSpriteSets_It[i];
+        break;
+    case LANGUAGE_SPANISH:
+        gPokedexIsLocalized = 1;
+        gPokedexNameLanguage = 0;
+        gPokedexLanguage = 4;
+        gPokedexDescLanguage = 4;
+        gPokedexAnimatedIconLastFrame = 11;
+        gPokedexAnimatedIconX = 0x24;
+        gPokedexNumSpriteSets = 29;
+        for (i = 0; i < gPokedexNumSpriteSets; i++)
+            gPokedexSpriteSets[i] = gPokedexSpriteSets_Es[i];
+        break;
+    }
+#endif
 }
 
 void Pokedex_HandleListInput(void)
@@ -1109,10 +1266,10 @@ void RenderPokedexSprites(void)
     group7->active = gPokedexShowButtonPrompt;
     group8->active = gPokedexShowCompletionBadge;
     group9->active = gPokedexShowPageIndicator;
-    LoadSpriteSets(gPokedexSpriteSets, 29, group0);
+    LoadSpriteSets(gPokedexSpriteSets, POKEDEX_NUM_SPRITE_SETS, group0);
 
     group0->baseX = 20 + gPokedexCursorBlinkOffset;
-    group0->baseY = 84 + gPokedexCursorOffset * 16;
+    group0->baseY = POKEDEX_CURSOR_BASE_Y + gPokedexCursorOffset * 16;
     groupOam = &group0->oam[0];
     gOamBuffer[groupOam->oamId].priority = 3;
     gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group0->baseX;
@@ -1199,9 +1356,9 @@ void RenderPokedexSprites(void)
 
     if (group5->active == TRUE)
     {
-        group5->baseX = 36;
+        group5->baseX = POKEDEX_ANIMATED_ICON_X;
         group5->baseY = 64;
-        spriteSet = gPokedexSpriteSets[5 + gPokedexAnimatedIconFrame];
+        spriteSet = gPokedexSpriteSets[SG_POKEDEX_PRESS_SELECT_TEXT_BASE + gPokedexAnimatedIconFrame];
         for (i = 0; i < spriteSet->count; i++)
         {
             groupOam = &group5->oam[i];
@@ -1213,7 +1370,7 @@ void RenderPokedexSprites(void)
         if (++gPokedexAnimatedIconTimer > 8)
         {
             gPokedexAnimatedIconTimer = 0;
-            if (++gPokedexAnimatedIconFrame > 11)
+            if (++gPokedexAnimatedIconFrame > POKEDEX_ANIMATED_ICON_LAST_FRAME)
                 gPokedexAnimatedIconFrame = 0;
         }
     }
@@ -1232,7 +1389,7 @@ void RenderPokedexSprites(void)
             group6->baseY = 80;
         }
 
-        spriteSet = gPokedexSpriteSets[17 + gPokedexPopupTypeIndex];
+        spriteSet = gPokedexSpriteSets[SG_POKEDEX_POPUP_LIST_BASE + gPokedexPopupTypeIndex];
         for (i = 0; i < spriteSet->count; i++)
         {
             groupOam = &group6->oam[i];
@@ -1246,7 +1403,7 @@ void RenderPokedexSprites(void)
     {
         group7->baseX = 158;
         group7->baseY = 148;
-        spriteSet = gPokedexSpriteSets[22 + gPokedexButtonPromptFrame];
+        spriteSet = gPokedexSpriteSets[SG_POKEDEX_PRESS_START_0 + gPokedexButtonPromptFrame];
         for (i = 0; i < spriteSet->count; i++)
         {
             groupOam = &group7->oam[i];
@@ -1259,7 +1416,12 @@ void RenderPokedexSprites(void)
     {
         group8->baseX = 168;
         group8->baseY = 84;
+#ifdef EUROPE
+        spriteSet = gPokedexSpriteSets[SG_POKEDEX_COMPLETION_BADGE];
+        for (i = 0; i < spriteSet->count; i++)
+#else
         for (i = 0; i < 3; i++)
+#endif
         {
             groupOam = &group8->oam[i];
             gOamBuffer[groupOam->oamId].priority = 3;
@@ -1321,10 +1483,10 @@ static void RenderLinkGraphics(void)
     group6->active = FALSE;
     group7->active = gPokedexShowPopupWindow;
     group5->active = gPokedexShowCompletionBadge;
-    LoadSpriteSetsWithCpuCopy(gPokedexSpriteSets, 29, group0);
+    LoadSpriteSetsWithCpuCopy(gPokedexSpriteSets, POKEDEX_NUM_SPRITE_SETS, group0);
 
     group0->baseX = 20 + gPokedexCursorBlinkOffset;
-    group0->baseY = 84 + gPokedexCursorOffset * 16;
+    group0->baseY = POKEDEX_CURSOR_BASE_Y + gPokedexCursorOffset * 16;
     groupOam = &group0->oam[0];
     gOamBuffer[groupOam->oamId].priority = 2;
     gOamBuffer[groupOam->oamId].x = groupOam->xOffset + group0->baseX;
@@ -1380,9 +1542,9 @@ static void RenderLinkGraphics(void)
 
     if (group6->active == TRUE)
     {
-        group6->baseX = 36;
+        group6->baseX = POKEDEX_ANIMATED_ICON_X;
         group6->baseY = 64;
-        spriteSet = gPokedexSpriteSets[5 + gPokedexAnimatedIconFrame];
+        spriteSet = gPokedexSpriteSets[SG_POKEDEX_PRESS_SELECT_TEXT_BASE + gPokedexAnimatedIconFrame];
         for (i = 0; i < spriteSet->count; i++)
         {
             groupOam = &group6->oam[i];
@@ -1405,7 +1567,7 @@ static void RenderLinkGraphics(void)
             group7->baseY = 80;
         }
 
-        spriteSet = gPokedexSpriteSets[17 + gPokedexPopupTypeIndex];
+        spriteSet = gPokedexSpriteSets[SG_POKEDEX_POPUP_LIST_BASE + gPokedexPopupTypeIndex];
         for (i = 0; i < spriteSet->count; i++)
         {
             groupOam = &group7->oam[i];
@@ -1418,7 +1580,12 @@ static void RenderLinkGraphics(void)
     {
         group5->baseX = 168;
         group5->baseY = 84;
+#ifdef EUROPE
+        spriteSet = gPokedexSpriteSets[SG_POKEDEX_COMPLETION_BADGE];
+        for (i = 0; i < spriteSet->count; i++)
+#else
         for (i = 0; i < 3; i++)
+#endif
         {
             groupOam = &group5->oam[i];
             gOamBuffer[groupOam->oamId].priority = 3;
