@@ -6,23 +6,44 @@
 
 // Rom_2 data
 extern const u16 gSapphireSlingshotHitFrameIndices[];
+#ifdef EUROPE
+extern const u8 *gSapphirePSquareIndicator_EnDeItEs[][2];
+extern const u8 *gSapphirePSquareIndicator_Fr[][2];
+#else
 extern const u8 *gSapphirePSquareIndicator[][2];
+#endif
 extern const u8 *gSapphireProgressDigitTilePtrs[][4];
 extern const u8 *gWailmerWaterTilePtrs[][4];
 extern const u8 *gHatchMachineDrawSegment[][3][2];
 extern const u8 *gSapphireSlingshotTilePtrs[][3][5];
 extern const u8 *gSapphireTrapIndicatorTilePtrs[][2];
-extern const u8 *gSapphireCatchLightTilePtrs[][7][2];
-extern const u8 *gSapphireSaverDisplayTilePtrs[][4];
-extern const u8 *gSapphireHatchArrowTilePtrs[][4];
-extern const u8 *gSapphireBumperArrowTilePtrs[][4];
-extern const u8 *gSapphireShopArrowTilePtrs[][4];
+EXTERN_LANG5(const u8 *, gSapphireCatchLightTilePtrs, [][7][2]);
+EXTERN_LANG4_ENDE(const u8 *, gSapphireSaverDisplayTilePtrs, [][4]);
+EXTERN_LANG5(const u8 *, gSapphireHatchArrowTilePtrs, [][4]);
+EXTERN_LANG5(const u8 *, gSapphireBumperArrowTilePtrs, [][4]);
+EXTERN_LANG5(const u8 *, gSapphireShopArrowTilePtrs, [][4]);
 extern const u8 *gSapphireBallPowerUpLightTilePtrs[][3];
-extern const u8 *gSapphireCatchArrowTilePtrs[][4];
-extern const u8 *gSapphireHoleIndicatorTilePtrs[][4];
+EXTERN_LANG5(const u8 *, gSapphireCatchArrowTilePtrs, [][4]);
+EXTERN_LANG5(const u8 *, gSapphireHoleIndicatorTilePtrs, [][4]);
+#ifdef EUROPE
+extern const u8 *gSapphireEvoArrowTilePtrs_EnFrItEs[][5][3];
+extern const u8 *gSapphireEvoArrowTilePtrs_De[][5][3];
+#else
 extern const u8 *gSapphireEvoArrowTilePtrs[][5][3];
+#endif
 extern const u8 *gSapphireCoinRewardTilePtrs[][5][3];
-extern const u8 *gSapphireGetArrowTilePtrs[][5][3];
+EXTERN_LANG5(const u8 *, gSapphireGetArrowTilePtrs, [][5][3]);
+
+// The European release initializes the pointers, since a language switch picks the table.
+#ifdef EUROPE
+#define TILE_PTRS_SRC_DEST_DECL \
+    const u8 *const *src = NULL; \
+    const u8 *const *dest = NULL
+#else
+#define TILE_PTRS_SRC_DEST_DECL \
+    const u8 **src;             \
+    const u8 **dest
+#endif
 
 void UpdateSapphireBoardAnimations(void)
 {
@@ -181,13 +202,15 @@ void AnimateSapphireCatchLightBlink(void)
         gCurrentPinballGame->modeProgressBlinkTimer--;
     }
 
-    for (i = 0; i < 3; i++)
-    {
-        src = gSapphireCatchLightTilePtrs[i][gCurrentPinballGame->modeProgressLights[i]];
-        dest = gSapphireCatchLightTilePtrs[i][6];
-        DmaCopy16(3, src[0], dest[0], 0x40);
-        DmaCopy16(3, src[1], dest[1], 0x40);
+#define CATCH_LIGHT_TILES(lang)                                                                     \
+    for (i = 0; i < 3; i++)                                                                         \
+    {                                                                                               \
+        src = gSapphireCatchLightTilePtrs##lang[i][gCurrentPinballGame->modeProgressLights[i]];     \
+        dest = gSapphireCatchLightTilePtrs##lang[i][6];                                             \
+        DmaCopy16(3, src[0], dest[0], 0x40);                                                        \
+        DmaCopy16(3, src[1], dest[1], 0x40);                                                        \
     }
+    LANG5_SWITCH(CATCH_LIGHT_TILES)
 }
 
 void AnimateSapphireHoleIndicators(void)
@@ -215,12 +238,14 @@ void AnimateSapphireHoleIndicators(void)
         }
     }
 
-    for (i = 0; i < 4; i++)
-    {
-        src = &gSapphireHoleIndicatorTilePtrs[i][gCurrentPinballGame->holeIndicators[i]];
-        dest = &gSapphireHoleIndicatorTilePtrs[i][2];
-        DmaCopy16(3, *src, *dest, 0x40);
+#define HOLE_INDICATOR_TILES(lang)                                                                  \
+    for (i = 0; i < 4; i++)                                                                         \
+    {                                                                                               \
+        src = &gSapphireHoleIndicatorTilePtrs##lang[i][gCurrentPinballGame->holeIndicators[i]];     \
+        dest = &gSapphireHoleIndicatorTilePtrs##lang[i][2];                                         \
+        DmaCopy16(3, *src, *dest, 0x40);                                                            \
     }
+    LANG5_SWITCH(HOLE_INDICATOR_TILES)
 }
 
 void DrawSapphireModeTimerDisplay(void)
@@ -244,15 +269,17 @@ void DrawSapphireModeTimerDisplay(void)
         gCurrentPinballGame->saverLit = FALSE;
     }
 
-    src = gSapphireSaverDisplayTilePtrs[gCurrentPinballGame->saverLit];
-    dest = gSapphireSaverDisplayTilePtrs[2];
-    DmaCopy16(3, src[0], dest[0], 0xE0);
-    DmaCopy16(3, src[1], dest[1], 0xE0);
-    if (gCurrentPinballGame->hudSpriteBaseY > 215)
-    {
-        DmaCopy16(3, src[2], dest[2], 0xC0);
-        DmaCopy16(3, src[3], dest[3], 0x40);
+#define SAVER_TILES(lang)                                                   \
+    src = gSapphireSaverDisplayTilePtrs##lang[gCurrentPinballGame->saverLit]; \
+    dest = gSapphireSaverDisplayTilePtrs##lang[2];                          \
+    DmaCopy16(3, src[0], dest[0], 0xE0);                                    \
+    DmaCopy16(3, src[1], dest[1], 0xE0);                                    \
+    if (gCurrentPinballGame->hudSpriteBaseY > 215)                          \
+    {                                                                       \
+        DmaCopy16(3, src[2], dest[2], 0xC0);                                \
+        DmaCopy16(3, src[3], dest[3], 0x40);                                \
     }
+    LANG4_SWITCH_ENDE(SAVER_TILES)
 }
 
 void DrawSapphireCoinRewardMeter(void)
@@ -332,15 +359,13 @@ void DrawSapphireCoinRewardMeter(void)
 void AnimateSapphireHatchArrow(void)
 {
     s16 index;
-    const u8 **src;
-    const u8 **dest;
+    TILE_PTRS_SRC_DEST_DECL;
 
     index = 0;
     if (gCurrentPinballGame->catchArrowPaletteActive > 0)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
 
-    src = gSapphireHatchArrowTilePtrs[index];
-    dest = gSapphireHatchArrowTilePtrs[2];
+    LANG5_SET_SRC_DEST(gSapphireHatchArrowTilePtrs, index, 2);
     if (gCurrentPinballGame->hudSpriteBaseY < 256)
     {
         DmaCopy16(3, src[0], dest[0], 0x40);
@@ -361,15 +386,13 @@ void AnimateSapphireHatchArrow(void)
 void AnimateSapphireBumperArrowPalette(void)
 {
     s16 index;
-    const u8 **src;
-    const u8 **dest;
+    TILE_PTRS_SRC_DEST_DECL;
 
     index = 0;
     if (gCurrentPinballGame->evoArrowPaletteActive > 0)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
 
-    src = gSapphireBumperArrowTilePtrs[index];
-    dest = gSapphireBumperArrowTilePtrs[2];
+    LANG5_SET_SRC_DEST(gSapphireBumperArrowTilePtrs, index, 2);
     if (gCurrentPinballGame->hudSpriteBaseY < 195)
     {
         DmaCopy16(3, src[1], dest[1], 0x80);
@@ -385,6 +408,33 @@ void AnimateSapphireBumperArrowPalette(void)
         DmaCopy16(3, src[3], dest[3], 0x80);
     }
 }
+
+#define EVO_ARROW_TILES(lang) \
+    src = gSapphireEvoArrowTilePtrs##lang[0][sp0[0]]; \
+    dest = gSapphireEvoArrowTilePtrs##lang[0][4]; \
+    if (gCurrentPinballGame->hudSpriteBaseY < 264) \
+    { \
+        DmaCopy16(3, src[0], dest[0], 0x60); \
+    } \
+    DmaCopy16(3, src[1], dest[1], 0x60); \
+    DmaCopy16(3, src[2], dest[2], 0x60); \
+ \
+    if (gCurrentPinballGame->hudSpriteBaseY > 120) \
+    { \
+        src = gSapphireEvoArrowTilePtrs##lang[1][sp0[1]]; \
+        dest = gSapphireEvoArrowTilePtrs##lang[1][4]; \
+        DmaCopy16(3, src[0], dest[0], 0x60); \
+        DmaCopy16(3, src[1], dest[1], 0x60); \
+        DmaCopy16(3, src[2], dest[2], 0x60); \
+    } \
+ \
+    if (gCurrentPinballGame->hudSpriteBaseY > 136) { \
+        src = gSapphireEvoArrowTilePtrs##lang[2][sp0[2]]; \
+        dest = gSapphireEvoArrowTilePtrs##lang[2][4]; \
+        DmaCopy16(3, src[0], dest[0], 0x60); \
+        DmaCopy16(3, src[1], dest[1], 0x60); \
+        DmaCopy16(3, src[2], dest[2], 0x40); \
+    }
 
 void DrawSapphireEvoArrowProgress(void)
 {
@@ -427,32 +477,52 @@ void DrawSapphireEvoArrowProgress(void)
     }
 
 
-    src = gSapphireEvoArrowTilePtrs[0][sp0[0]];
-    dest = gSapphireEvoArrowTilePtrs[0][4];
-    if (gCurrentPinballGame->hudSpriteBaseY < 264)
+#ifdef EUROPE
+    switch (gMain_saveData.language)
     {
-        DmaCopy16(3, src[0], dest[0], 0x60);
+    case LANGUAGE_ENGLISH:
+    case LANGUAGE_FRENCH:
+    case LANGUAGE_ITALIAN:
+    case LANGUAGE_SPANISH:
+        EVO_ARROW_TILES(_EnFrItEs)
+        break;
+    case LANGUAGE_GERMAN:
+        EVO_ARROW_TILES(_De)
+        break;
     }
-    DmaCopy16(3, src[1], dest[1], 0x60);
-    DmaCopy16(3, src[2], dest[2], 0x60);
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 120)
-    {
-        src = gSapphireEvoArrowTilePtrs[1][sp0[1]];
-        dest = gSapphireEvoArrowTilePtrs[1][4];
-        DmaCopy16(3, src[0], dest[0], 0x60);
-        DmaCopy16(3, src[1], dest[1], 0x60);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 136) {
-        src = gSapphireEvoArrowTilePtrs[2][sp0[2]];
-        dest = gSapphireEvoArrowTilePtrs[2][4];
-        DmaCopy16(3, src[0], dest[0], 0x60);
-        DmaCopy16(3, src[1], dest[1], 0x60);
-        DmaCopy16(3, src[2], dest[2], 0x40);
-    }
+#else
+    EVO_ARROW_TILES()
+#endif
 }
+
+#define GET_ARROW_TILES(lang) \
+    src = gSapphireGetArrowTilePtrs##lang[0][sp0[0]]; \
+    dest = gSapphireGetArrowTilePtrs##lang[0][4]; \
+    if (gCurrentPinballGame->hudSpriteBaseY < 264) \
+    { \
+        DmaCopy16(3, src[0], dest[0], 0x60); \
+    } \
+ \
+    DmaCopy16(3, src[1], dest[1], 0x60); \
+    DmaCopy16(3, src[2], dest[2], 0x60); \
+ \
+    if (gCurrentPinballGame->hudSpriteBaseY > 120) \
+    { \
+        src = gSapphireGetArrowTilePtrs##lang[1][sp0[1]]; \
+        dest = gSapphireGetArrowTilePtrs##lang[1][4]; \
+        DmaCopy16(3, src[0], dest[0], 0x40); \
+        DmaCopy16(3, src[1], dest[1], 0x40); \
+        DmaCopy16(3, src[2], dest[2], 0x60); \
+    } \
+ \
+    if (gCurrentPinballGame->hudSpriteBaseY > 136) \
+    { \
+        src = gSapphireGetArrowTilePtrs##lang[2][sp0[2]]; \
+        dest = gSapphireGetArrowTilePtrs##lang[2][4]; \
+        DmaCopy16(3, src[0], dest[0], 0x40); \
+        DmaCopy16(3, src[1], dest[1], 0x60); \
+        DmaCopy16(3, src[2], dest[2], 0x40); \
+    }
 
 void DrawSapphireCatchArrowProgress(void)
 {
@@ -494,40 +564,13 @@ void DrawSapphireCatchArrowProgress(void)
         sp0[2] = gCurrentPinballGame->travelArrowTiles[2];
     }
 
-    src = gSapphireGetArrowTilePtrs[0][sp0[0]];
-    dest = gSapphireGetArrowTilePtrs[0][4];
-    if (gCurrentPinballGame->hudSpriteBaseY < 264)
-    {
-        DmaCopy16(3, src[0], dest[0], 0x60);
-    }
-
-    DmaCopy16(3, src[1], dest[1], 0x60);
-    DmaCopy16(3, src[2], dest[2], 0x60);
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 120)
-    {
-        src = gSapphireGetArrowTilePtrs[1][sp0[1]];
-        dest = gSapphireGetArrowTilePtrs[1][4];
-        DmaCopy16(3, src[0], dest[0], 0x40);
-        DmaCopy16(3, src[1], dest[1], 0x40);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 136)
-    {
-        src = gSapphireGetArrowTilePtrs[2][sp0[2]];
-        dest = gSapphireGetArrowTilePtrs[2][4];
-        DmaCopy16(3, src[0], dest[0], 0x40);
-        DmaCopy16(3, src[1], dest[1], 0x60);
-        DmaCopy16(3, src[2], dest[2], 0x40);
-    }
+    LANG5_SWITCH(GET_ARROW_TILES)
 }
 
 void AnimateSapphireHatchArrowFlash(void)
 {
     s16 index;
-    const u8 **src;
-    const u8 **dest;
+    TILE_PTRS_SRC_DEST_DECL;
 
     index = 0;
     gCurrentPinballGame->catchProgressFlashing = FALSE;
@@ -539,8 +582,7 @@ void AnimateSapphireHatchArrowFlash(void)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
 
 
-    src = gSapphireCatchArrowTilePtrs[index];
-    dest = gSapphireCatchArrowTilePtrs[2];
+    LANG5_SET_SRC_DEST(gSapphireCatchArrowTilePtrs, index, 2);
     if (gCurrentPinballGame->hudSpriteBaseY < 232)
     {
         DmaCopy16(3, src[0], dest[0], 0x60);
@@ -565,8 +607,7 @@ void AnimateSapphireHatchArrowFlash(void)
 void AnimateSapphireShopArrow(void)
 {
     s16 index;
-    const u8 **src;
-    const u8 **dest;
+    TILE_PTRS_SRC_DEST_DECL;
 
     index = 0;
     if (gCurrentPinballGame->shopShockWallAnimState == SHOCK_WALL_ANIM_STATE_NONE)
@@ -580,8 +621,7 @@ void AnimateSapphireShopArrow(void)
         index = gCurrentPinballGame->evolutionShopActive * 2;
 
 
-    src = gSapphireShopArrowTilePtrs[index];
-    dest = gSapphireShopArrowTilePtrs[4];
+    LANG5_SET_SRC_DEST(gSapphireShopArrowTilePtrs, index, 4);
     if (gCurrentPinballGame->hudSpriteBaseY < 224)
     {
         DmaCopy16(3, src[0], dest[0], 0x80);
@@ -650,15 +690,39 @@ void AnimateHatchMachineSpinner(void)
 void AnimatePelipperBumper(void)
 {
     s16 index;
-    const u8 **src;
-    const u8 **dest;
+    TILE_PTRS_SRC_DEST_DECL;
 
+#ifdef EUROPE
+    if (gCurrentPinballGame->bumperHitsSinceReset >= 100)
+        index = (gCurrentPinballGame->hudAnimFrameCounter % 20) / 4;
+    else
+        index = 0;
+#else
     index = 0;
     if (gCurrentPinballGame->bumperHitsSinceReset >= 100)
         index = (gCurrentPinballGame->hudAnimFrameCounter % 20) / 4;
+#endif
 
+#ifdef EUROPE
+    // Only the French board has a different "P" square.
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+    case LANGUAGE_GERMAN:
+    case LANGUAGE_ITALIAN:
+    case LANGUAGE_SPANISH:
+        src = gSapphirePSquareIndicator_EnDeItEs[index];
+        dest = gSapphirePSquareIndicator_EnDeItEs[5];
+        break;
+    case LANGUAGE_FRENCH:
+        src = gSapphirePSquareIndicator_Fr[index];
+        dest = gSapphirePSquareIndicator_Fr[5];
+        break;
+    }
+#else
     src = gSapphirePSquareIndicator[index];
     dest = gSapphirePSquareIndicator[5];
+#endif
     if (gCurrentPinballGame->hudSpriteBaseY < 176)
     {
         DmaCopy16(3, src[0], dest[0], 0x40);
