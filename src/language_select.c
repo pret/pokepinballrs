@@ -10,8 +10,6 @@
 
 #ifdef EUROPE
 
-#define LANGUAGE_UNSET 99
-
 #define BG_CHAR_ADDR(n)   (BG_VRAM + BG_CHAR_SIZE * (n))
 #define BG_SCREEN_ADDR(n) (BG_VRAM + BG_SCREEN_SIZE * (n))
 

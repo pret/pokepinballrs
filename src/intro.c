@@ -71,7 +71,9 @@ EWRAM_DATA s32 gIntroPalFadeLevel;
 EWRAM_DATA s16 gIntroFrameCounter;
 EWRAM_DATA s8 gIntroScene6ChinchouVelocityIndex;
 EWRAM_DATA s16 gIntroOverlayFadeStep;
+#ifndef EUROPE
 EWRAM_DATA s8 gIntroJingleVariant;
+#endif
 EWRAM_DATA s16 gIntroWailmerScaleX;
 EWRAM_DATA s8 gIntroSceneIndex;
 
@@ -161,7 +163,13 @@ extern const struct SpriteSet *const gIntroScene1Torchic_SpriteSets[];
 extern const struct Vector16 gIntroScene1Torchic_BGAnimTiming[0x8];
 extern const s16 gIntroScene1Torchic_TileOffsets[0x8];
 extern const struct Vector16 gIntroScene1Torchic_ScaleOffsets[0x4];
+#ifdef EUROPE
+extern const s16 gTitleRevealJingle[10][2];
+#define TITLE_REVEAL_JINGLE(step) gTitleRevealJingle[step]
+#else
 extern const s16 gTitleRevealJingle[][10][2];
+#define TITLE_REVEAL_JINGLE(step) gTitleRevealJingle[gIntroJingleVariant][step]
+#endif
 extern const struct SpriteSet *const gIntroScene3Treecko_SpriteSets[];
 extern const struct SpriteSet *const gIntroScene5Mudkip_SpriteSets[];
 extern const struct Vector16 gIntroScene5Mudkip_BGAnimTiming[];
@@ -219,9 +227,26 @@ void Intro_State1_9348(void)
 
 void Intro_State2_9370(void)
 {
+#ifdef EUROPE
+    if (gMain_saveData.language == LANGUAGE_UNSET)
+    {
+        // First boot: let the player choose a language first
+        FadeOutScreen();
+        m4aMPlayAllStop();
+        DisableVBlankInterrupts();
+        SetMainGameState(STATE_LANGUAGE_SELECT);
+    }
+    else
+    {
+        FadeOutToBlack(NULL);
+        DisableVBlankInterrupts();
+        gMain.subState++;
+    }
+#else
     FadeOutToBlack(NULL);
     DisableVBlankInterrupts();
     gMain.subState++;
+#endif
 }
 
 void Intro_State3_938C(void)
@@ -346,7 +371,9 @@ void IntroScene1Torchic_InitVars(void)
     gIntroFrameCounter = 0;
     gIntroAnimStep = 0;
     gIntroPalFadeLevel = 0x20;
+#ifndef EUROPE
     gIntroJingleVariant = 8;
+#endif
 }
 
 void IntroScene1TitleText_01_TitleLetterBounceReveal(void)
@@ -369,9 +396,9 @@ void IntroScene1TitleText_01_TitleLetterBounceReveal(void)
             gIntroSpriteEntities[0].animFrame++;
         }
 
-        if (gIntroFrameCounter >= gTitleRevealJingle[gIntroJingleVariant][gIntroAnimStep][1])
+        if (gIntroFrameCounter >= TITLE_REVEAL_JINGLE(gIntroAnimStep)[1])
         {
-            m4aSongNumStart(gTitleRevealJingle[gIntroJingleVariant][gIntroAnimStep][0]);
+            m4aSongNumStart(TITLE_REVEAL_JINGLE(gIntroAnimStep)[0]);
             gIntroAnimStep++;
         }
     }

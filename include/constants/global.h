@@ -13,6 +13,9 @@
 #define STATE_SCORES_IDLE           9
 #define STATE_FIELD_SELECT          10
 #define STATE_BONUS_FIELD_SELECT    11
+#ifdef EUROPE
+#define STATE_LANGUAGE_SELECT       12
+#endif
 
 #define MENU_ACTION_TYPE_CONTINUE_GAME 0
 #define MENU_ACTION_TYPE_FIELD_SELECT  1
@@ -33,6 +36,7 @@
 #define LANGUAGE_ITALIAN 3
 #define LANGUAGE_SPANISH 4
 #define NUM_LANGUAGES    5
+#define LANGUAGE_UNSET   99 // no language chosen yet (first boot)
 
 #define POKEMON_NAME_LENGTH 10
 #define POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH 9
