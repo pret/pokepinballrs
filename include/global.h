@@ -1037,6 +1037,61 @@ extern const u8 *const gModeBannerTilemaps[];
     DmaCopy16(3, gModeBannerTilemaps[ix], dest, size)
 #endif
 
+// Generic helpers for graphics that exist once per language in the European release.
+// DMA_LANG5(sym, ...) copies sym_En / sym_Fr / sym_De / sym_It / sym_Es depending on the
+// selected language; DMA_LANG5_AT does the same with &sym_XX[index].
+#ifdef EUROPE
+#define DMA_LANG5(sym, dest, size)                         \
+    switch (gMain_saveData.language)                       \
+    {                                                      \
+    case LANGUAGE_ENGLISH:                                 \
+        DmaCopy16(3, sym##_En, dest, size);                \
+        break;                                             \
+    case LANGUAGE_FRENCH:                                  \
+        DmaCopy16(3, sym##_Fr, dest, size);                \
+        break;                                             \
+    case LANGUAGE_GERMAN:                                  \
+        DmaCopy16(3, sym##_De, dest, size);                \
+        break;                                             \
+    case LANGUAGE_ITALIAN:                                 \
+        DmaCopy16(3, sym##_It, dest, size);                \
+        break;                                             \
+    case LANGUAGE_SPANISH:                                 \
+        DmaCopy16(3, sym##_Es, dest, size);                \
+        break;                                             \
+    }
+#define DMA_LANG5_AT(sym, index, dest, size)               \
+    switch (gMain_saveData.language)                       \
+    {                                                      \
+    case LANGUAGE_ENGLISH:                                 \
+        DmaCopy16(3, &sym##_En[index], dest, size);        \
+        break;                                             \
+    case LANGUAGE_FRENCH:                                  \
+        DmaCopy16(3, &sym##_Fr[index], dest, size);        \
+        break;                                             \
+    case LANGUAGE_GERMAN:                                  \
+        DmaCopy16(3, &sym##_De[index], dest, size);        \
+        break;                                             \
+    case LANGUAGE_ITALIAN:                                 \
+        DmaCopy16(3, &sym##_It[index], dest, size);        \
+        break;                                             \
+    case LANGUAGE_SPANISH:                                 \
+        DmaCopy16(3, &sym##_Es[index], dest, size);        \
+        break;                                             \
+    }
+// Declares sym_En ... sym_Es with the given type and array suffix.
+#define EXTERN_LANG5(type, sym, dims) \
+    extern type sym##_En dims;        \
+    extern type sym##_Fr dims;        \
+    extern type sym##_De dims;        \
+    extern type sym##_It dims;        \
+    extern type sym##_Es dims
+#else
+#define DMA_LANG5(sym, dest, size) DmaCopy16(3, sym, dest, size)
+#define DMA_LANG5_AT(sym, index, dest, size) DmaCopy16(3, &sym[index], dest, size)
+#define EXTERN_LANG5(type, sym, dims) extern type sym dims
+#endif
+
 // Evolution item spawn animation (contains the item's name).
 // English and French share one set.
 #ifdef EUROPE
