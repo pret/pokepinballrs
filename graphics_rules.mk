@@ -15,3 +15,5 @@ graphics/options/sprites.4bpp: graphics/options/sprites.png
 
 graphics/pokedex/text_glyphs.4bpp: graphics/pokedex/text_glyphs.png
 	$(GFX) $< $@ -num_tiles 513
+
+include graphics_rules_eu.mk

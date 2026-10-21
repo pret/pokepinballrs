@@ -18,14 +18,18 @@ OUT = REPO + '/data/eu'
 BIN = OUT + '/bin'
 os.makedirs(BIN, exist_ok=True)
 
-# Hand-written sources for EU-only data: data/eu/src/*.inc with a line "@ eu_range START END".
-# The generator includes them instead of emitting the bytes of that range.
+# Sources for EU-only data, emitted instead of the bytes of their range:
+# - hand-written data/eu/src/*.inc with a line "@ eu_range START END";
+# - per-language graphics files made by gfx_eu.py (tools/eu_port/data/eu_graphics.json).
 MANUAL = []
 for fn_ in sorted(os.listdir(OUT + '/src')) if os.path.isdir(OUT + '/src') else []:
     if fn_.endswith('.inc'):
         m_ = re.search(r'^@ eu_range (0x[0-9A-Fa-f]+) (0x[0-9A-Fa-f]+)', open(f'{OUT}/src/{fn_}', encoding='utf-8').read(), re.M)
         if m_:
             MANUAL.append((int(m_.group(1), 16), int(m_.group(2), 16), [f'.include "data/eu/src/{fn_}"']))
+if os.path.exists(_W + '/eu_graphics.json'):
+    for a_, g_ in json.load(open(_W + '/eu_graphics.json')).items():
+        MANUAL.append((int(a_, 16), int(a_, 16) + g_['size'], g_['lines']))
 
 FILES = [  # (us source, us object, eu name)
     ('data/rom_1.s', 'data/rom_1.o', 'rom_1'),
