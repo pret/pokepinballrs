@@ -21,11 +21,11 @@ extern EWRAM_DATA u8 gBoardBGTileBuffer[];
 extern EWRAM_DATA u8 gCatchSpriteGfxBuffer[3][SIZE_OF_VRAM_CATCH_MON_ENTITY_TILES];
 
 // Rom_1 data
-extern const u8 gDusclopsBonusClear_Gfx[SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES];
-extern const u8 gKecleonBonusClear_Gfx[SIZE_OF_VRAM_KECLEON_BANNER_TILES];
-extern const u8 gKyogreBonusClear_Gfx[SIZE_OF_VRAM_KYOGRE_BANNER_TILES];
-extern const u8 gGroudonBonusClear_Gfx[SIZE_OF_VRAM_GROUDON_BANNER_TILES];
-extern const u8 gRayquazaBonusClear_Gfx[SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES];
+EXTERN_LANG5(const u8, gDusclopsBonusClear_Gfx, [SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES]);
+EXTERN_LANG5(const u8, gKecleonBonusClear_Gfx, [SIZE_OF_VRAM_KECLEON_BANNER_TILES]);
+EXTERN_LANG5(const u8, gKyogreBonusClear_Gfx, [SIZE_OF_VRAM_KYOGRE_BANNER_TILES]);
+EXTERN_LANG5(const u8, gGroudonBonusClear_Gfx, [SIZE_OF_VRAM_GROUDON_BANNER_TILES]);
+EXTERN_LANG5(const u8, gRayquazaBonusClear_Gfx, [SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES]);
 extern const u8 gCaptureScreenTilesGfx[SIZE_OF_VRAM_FX_MON_CATCH_CUTSCENE_TILES];
 extern const u8 gRubyTravelPaint_Gfx[SIZE_OF_VRAM_FX_TRAVEL_CUTSCENE];
 extern const Palette gRubyPainter_Pals;
@@ -72,7 +72,7 @@ extern const u8 gMartEvoForegroundMenuUx_Gfx[SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX
 #ifdef EUROPE
 extern const u8 gMartEvoForegroundMenuUx_Gfx_De[SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES];
 #endif
-extern const u8 gRubyBoardShop_Gfx[][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES];
+EXTERN_LANG5(const u8, gRubyBoardShop_Gfx, [][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES]);
 extern const u8 gAreaRouletteSelectedFx_Gfx[SIZE_OF_VRAM_FX_AREA_ROULETTE_SELECTED_TILES];
 extern const u8 gMainBoardPikaSpinner_Gfx[][SIZE_OF_VRAM_PIKA_CHARGE_SPINNER_TILES];
 extern const u8 gRubyBoardHatchCave_Gfx[][SIZE_OF_VRAM_HATCH_CAVE_TILES];
@@ -798,7 +798,7 @@ void RestoreRubyBoardTileGraphics(void)
 
     DmaCopy16(3, gRubyStageCyndaquil_Gfx[gCurrentPinballGame->cyndaquilFrame], OBJ_VRAM_ADDR_CYNDAQUIL_TILES, SIZE_OF_VRAM_CYNDAQUIL_TILES);
     var0 = gEvoShopAnimFrames[gCurrentPinballGame->evolutionShopActive][(gCurrentPinballGame->shopAnimTimer % 42) / 6];
-    DmaCopy16(3, gRubyBoardShop_Gfx[var0], OBJ_VRAM_ADDR_RUBY_MART_SIGN_TILES, SIZE_OF_VRAM_RUBY_MART_SIGN_TILES);
+    DMA_LANG5_AT(gRubyBoardShop_Gfx, var0, OBJ_VRAM_ADDR_RUBY_MART_SIGN_TILES, SIZE_OF_VRAM_RUBY_MART_SIGN_TILES);
 }
 
 void RestoreSapphireBoardTileGraphics(void)
@@ -829,17 +829,17 @@ void RestoreSapphireBoardTileGraphics(void)
 
 void RestoreDusclopsBonusGraphics(void)
 {
-    DmaCopy16(3, gDusclopsBonusClear_Gfx, OBJ_VRAM_ADDR_DUSCLOPS_BANNER_TILES, SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES);
+    DMA_LANG5(gDusclopsBonusClear_Gfx, OBJ_VRAM_ADDR_DUSCLOPS_BANNER_TILES, SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES);
 }
 
 void RestoreKecleonBonusGraphics(void)
 {
-    DmaCopy16(3, gKecleonBonusClear_Gfx, OBJ_VRAM_ADDR_KECLEON_BANNER_TILES, SIZE_OF_VRAM_KECLEON_BANNER_TILES);
+    DMA_LANG5(gKecleonBonusClear_Gfx, OBJ_VRAM_ADDR_KECLEON_BANNER_TILES, SIZE_OF_VRAM_KECLEON_BANNER_TILES);
 }
 
 void RestoreKyogreBonusGraphics(void)
 {
-    DmaCopy16(3, gKyogreBonusClear_Gfx, OBJ_VRAM_ADDR_KYOGRE_BANNER_TILES, SIZE_OF_VRAM_KYOGRE_BANNER_TILES);
+    DMA_LANG5(gKyogreBonusClear_Gfx, OBJ_VRAM_ADDR_KYOGRE_BANNER_TILES, SIZE_OF_VRAM_KYOGRE_BANNER_TILES);
     DmaCopy16(
         3,
         gMonPortraitGroupGfx[gCurrentPinballGame->portraitGfxIndex[0] / 15] + (gCurrentPinballGame->portraitGfxIndex[0] % 15) * SIZE_OF_VRAM_PORTRAIT_TILES,
@@ -856,7 +856,7 @@ void RestoreGroudonBonusGraphics(void)
     }
     else
     {
-        DmaCopy16(3, gGroudonBonusClear_Gfx, OBJ_VRAM_ADDR_GROUDON_BANNER_TILES, SIZE_OF_VRAM_GROUDON_BANNER_TILES);
+        DMA_LANG5(gGroudonBonusClear_Gfx, OBJ_VRAM_ADDR_GROUDON_BANNER_TILES, SIZE_OF_VRAM_GROUDON_BANNER_TILES);
     }
 
     DmaCopy16(
@@ -881,7 +881,7 @@ void RestoreRayquazaBonusGraphics(void)
     }
     else
     {
-        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_BANNER_TILES, SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES);
+        DMA_LANG5(gRayquazaBonusClear_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_BANNER_TILES, SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES);
     }
 
     var0 = gCurrentPinballGame->bossEntityState - 2;
