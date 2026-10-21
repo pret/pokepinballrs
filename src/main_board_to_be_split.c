@@ -20,20 +20,49 @@ extern const Palette gAerodactlyFlight_Pal;
 extern const Palette gTotodile_Pal;
 extern const Palette gRubyShopSign_Pal;
 extern const u8 gAlphabetTilesGfx[][SIZE_OF_VRAM_LETTER_TILE];
+#ifdef EUROPE
+// The space tile follows the letter tiles.
+#define gSpaceTileGfx gAlphabetTilesGfx[53]
+#else
 extern const u8 gSpaceTileGfx[SIZE_OF_VRAM_LETTER_TILE];
+#endif
 extern const u8 gMainStageBonusTrap_Gfx[][SIZE_OF_VRAM_FX_CENTER_HOLE_GRAVITY_TILES];
 extern const u8 gRubyStageCyndaquil_Gfx[][SIZE_OF_VRAM_CYNDAQUIL_TILES];
+#ifdef EUROPE
+extern const u8 gShopPortraitOverlayGfx_En[][SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES];
+extern const u8 gShopPortraitOverlayGfx_Fr[][SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES];
+extern const u8 gShopPortraitOverlayGfx_De[][SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES];
+extern const u8 gShopPortraitOverlayGfx_It[][SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES];
+extern const u8 gShopPortraitOverlayGfx_Es[][SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES];
+#else
 extern const u8 gShopPortraitOverlayGfx[][SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES];
+#endif
 extern const u8 gDecimalDigitTilesGfx[][SIZE_OF_VRAM_MART_PRICE_DIGIT];
 extern const u8 gTotodileEggDelivery_Gfx[SIZE_OF_VRAM_TOTODILE_EGG_DELIVERY_TILES];
 extern const u8 gChargeFillIndicator_Gfx[][SIZE_OF_VRAM_CHARGE_INDICATOR_CIRCLE_TILES];
+#ifdef EUROPE
+extern const u8 gRubyBoardShop_Gfx_En[][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES];
+extern const u8 gRubyBoardShop_Gfx_Fr[][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES];
+extern const u8 gRubyBoardShop_Gfx_De[][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES];
+extern const u8 gRubyBoardShop_Gfx_It[][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES];
+extern const u8 gRubyBoardShop_Gfx_Es[][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES];
+#else
 extern const u8 gRubyBoardShop_Gfx[][SIZE_OF_VRAM_RUBY_MART_SIGN_TILES];
+#endif
 extern const u8 gRubyBoardHatchCave_Gfx[][SIZE_OF_VRAM_HATCH_CAVE_TILES];
 extern const u8 gEggFrameTilesGfx[][SIZE_OF_VRAM_HATCH_EGG_TILES];
 
 // Rom_2 data
 extern const Palette gCaptureHit_Pal;
+#ifdef EUROPE
+extern const s16 gCaughtTextChars_En[];
+extern const s16 gCaughtTextChars_Fr[];
+extern const s16 gCaughtTextChars_It[];
+extern const s16 gCaughtTextChars_De[];
+extern const s16 gCaughtTextChars_Es[];
+#else
 extern const s16 gCaughtTextChars[];
+#endif
 extern const u16 gShopItemData[][4];
 extern const u16 gShopCursorToItemMap[];
 extern const u16 gEggAnimationFrameData[][4];
@@ -547,13 +576,38 @@ void UpdateRubyEvolutionShopSignSprite(void)
 
         if (gCurrentPinballGame->shopAnimTimer % 6 == 0)
         {
+#ifdef EUROPE
+            switch (gMain_saveData.language)
+            {
+            case LANGUAGE_ENGLISH:
+                DmaCopy16(3, gRubyBoardShop_Gfx_En[index], OBJ_VRAM_ADDR_RUBY_MART_SIGN_TILES, SIZE_OF_VRAM_RUBY_MART_SIGN_TILES);
+                break;
+            case LANGUAGE_FRENCH:
+                DmaCopy16(3, gRubyBoardShop_Gfx_Fr[index], OBJ_VRAM_ADDR_RUBY_MART_SIGN_TILES, SIZE_OF_VRAM_RUBY_MART_SIGN_TILES);
+                break;
+            case LANGUAGE_GERMAN:
+                DmaCopy16(3, gRubyBoardShop_Gfx_De[index], OBJ_VRAM_ADDR_RUBY_MART_SIGN_TILES, SIZE_OF_VRAM_RUBY_MART_SIGN_TILES);
+                break;
+            case LANGUAGE_ITALIAN:
+                DmaCopy16(3, gRubyBoardShop_Gfx_It[index], OBJ_VRAM_ADDR_RUBY_MART_SIGN_TILES, SIZE_OF_VRAM_RUBY_MART_SIGN_TILES);
+                break;
+            case LANGUAGE_SPANISH:
+                DmaCopy16(3, gRubyBoardShop_Gfx_Es[index], OBJ_VRAM_ADDR_RUBY_MART_SIGN_TILES, SIZE_OF_VRAM_RUBY_MART_SIGN_TILES);
+                break;
+            }
+#else
             DmaCopy16(3, gRubyBoardShop_Gfx[index], OBJ_VRAM_ADDR_RUBY_MART_SIGN_TILES, SIZE_OF_VRAM_RUBY_MART_SIGN_TILES);
+#endif
         }
 
         group->baseX = 181 - gCurrentPinballGame->cameraXOffset;
         group->baseY = 48 - gCurrentPinballGame->cameraYOffset;
         if (group->baseY < -50)
+#ifdef EUROPE
+            group->baseY = (u16)-50;
+#else
             group->baseY = -50;
+#endif
 
         for (i = 0; i < 3; i++)
         {
@@ -733,7 +787,28 @@ void RenderMartUI(s16 showPrice)
         }
 
         // Used for change selection sheen, sold out banner/greying
+#ifdef EUROPE
+        switch (gMain_saveData.language)
+        {
+        case LANGUAGE_ENGLISH:
+            DmaCopy16(3, gShopPortraitOverlayGfx_En[index], OBJ_VRAM_ADDR_MART_EVO_SELECTION_CHANGE_TILES, SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES);
+            break;
+        case LANGUAGE_FRENCH:
+            DmaCopy16(3, gShopPortraitOverlayGfx_Fr[index], OBJ_VRAM_ADDR_MART_EVO_SELECTION_CHANGE_TILES, SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES);
+            break;
+        case LANGUAGE_GERMAN:
+            DmaCopy16(3, gShopPortraitOverlayGfx_De[index], OBJ_VRAM_ADDR_MART_EVO_SELECTION_CHANGE_TILES, SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES);
+            break;
+        case LANGUAGE_ITALIAN:
+            DmaCopy16(3, gShopPortraitOverlayGfx_It[index], OBJ_VRAM_ADDR_MART_EVO_SELECTION_CHANGE_TILES, SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES);
+            break;
+        case LANGUAGE_SPANISH:
+            DmaCopy16(3, gShopPortraitOverlayGfx_Es[index], OBJ_VRAM_ADDR_MART_EVO_SELECTION_CHANGE_TILES, SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES);
+            break;
+        }
+#else
         DmaCopy16(3, gShopPortraitOverlayGfx[index], OBJ_VRAM_ADDR_MART_EVO_SELECTION_CHANGE_TILES, SIZE_OF_VRAM_MART_EVO_SELECTION_CHANGE_TILES);
+#endif
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
@@ -1014,6 +1089,28 @@ void AnimateAerodactylEggDelivery(void)
     }
 }
 
+#ifdef EUROPE
+#define SPECIES_NAME(lang) gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[lang]
+#else
+#define SPECIES_NAME() gSpeciesInfo[gCurrentPinballGame->currentSpecies].name
+#endif
+
+// Copies the letter tiles of the current species' name to the name text sprite.
+#define LOAD_SPECIES_NAME_TILES(...)                                                                     \
+    for (i = 0; i < 10; i++)                                                                              \
+    {                                                                                                     \
+        if (SPECIES_NAME(__VA_ARGS__)[i] == ' ')                                                          \
+        {                                                                                                 \
+            DmaCopy16(3, gSpaceTileGfx, OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);   \
+            gCurrentPinballGame->nameSpacingOffset += 4;                                                  \
+        }                                                                                                 \
+        else                                                                                              \
+        {                                                                                                 \
+            index = SPECIES_NAME(__VA_ARGS__)[i] - 'A';                                                   \
+            DmaCopy16(3, gAlphabetTilesGfx[index], OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE); \
+        }                                                                                                 \
+    }
+
 void LoadPokemonNameGraphics(void)
 {
     s16 i;
@@ -1023,19 +1120,24 @@ void LoadPokemonNameGraphics(void)
     LoadPortraitGraphics(PORTRAIT_STATE_EVO_PREVIEW, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->activeFxType = FX_MON_SELECTION_NAME;
     gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
-    for (i = 0; i < 10; i++)
+#ifdef EUROPE
+    switch (gMain_saveData.language)
     {
-        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
-        {
-            DmaCopy16(3, gSpaceTileGfx, OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
-            gCurrentPinballGame->nameSpacingOffset += 4;
-        }
-        else
-        {
-            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-            DmaCopy16(3, gAlphabetTilesGfx[index], OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
-        }
+    case LANGUAGE_ENGLISH:
+    case LANGUAGE_ITALIAN:
+    case LANGUAGE_SPANISH:
+        LOAD_SPECIES_NAME_TILES(SPECIES_NAME_INTERNATIONAL);
+        break;
+    case LANGUAGE_FRENCH:
+        LOAD_SPECIES_NAME_TILES(SPECIES_NAME_FRENCH);
+        break;
+    case LANGUAGE_GERMAN:
+        LOAD_SPECIES_NAME_TILES(SPECIES_NAME_GERMAN);
+        break;
     }
+#else
+    LOAD_SPECIES_NAME_TILES();
+#endif
 }
 
 void UpdatePokemonNamePosition(void)
@@ -1061,6 +1163,35 @@ void HidePokemonNameDisplay(void)
     gCurrentPinballGame->activeFxType = FX_NONE;
 }
 
+// "WAS CAUGHT" text, padded with spaces to CAUGHT_TEXT_LENGTH characters.
+#define LOAD_CAUGHT_TEXT_TILES(text)                                                                      \
+    for (i = 0; i < CAUGHT_TEXT_LENGTH; i++)                                                              \
+    {                                                                                                     \
+        if (text[i] == ' ')                                                                               \
+        {                                                                                                 \
+            DmaCopy16(3, gSpaceTileGfx, OBJ_VRAM_ADDR_WAS_CAUGHT_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE); \
+        }                                                                                                 \
+        else                                                                                              \
+        {                                                                                                 \
+            index = text[i] - 'A';                                                                        \
+            DmaCopy16(3, gAlphabetTilesGfx[index], OBJ_VRAM_ADDR_WAS_CAUGHT_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE); \
+        }                                                                                                 \
+    }
+
+#define INIT_NAME_REVEAL_ROW1()                                    \
+    for (i = 0; i < 10; i++)                                       \
+    {                                                              \
+        gCurrentPinballGame->nameRevealDelays[i] = i * 2;          \
+        gCurrentPinballGame->nameSlideRow1[i].x = 0;               \
+    }
+
+#define INIT_NAME_REVEAL_ROW2()                                    \
+    for (i = 0; i < CAUGHT_TEXT_LENGTH; i++)                       \
+    {                                                              \
+        gCurrentPinballGame->nameRevealDelaysRow2[i] = (i + 10) * 2; \
+        gCurrentPinballGame->nameSlideRow2[i].x = 0;               \
+    }
+
 void InitWasCaughtBanner(void)
 {
     s16 i;
@@ -1074,46 +1205,80 @@ void InitWasCaughtBanner(void)
     LoadPortraitGraphics(PORTRAIT_STATE_POKEMON_DISPLAY, PORTRAIT_MAIN_SLOT);
     gCurrentPinballGame->activeFxType = FX_MON_WAS_CAUGHT_CUTSCENE;
     gMain.fieldSpriteGroups[FIELD_SG_POKEMON_NAME_TEXT]->active = TRUE;
-    for (i = 0; i < 10; i++)
+#ifdef EUROPE
+    switch (gMain_saveData.language)
     {
-        if (gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] == ' ')
-        {
-            DmaCopy16(3, gSpaceTileGfx, OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
-            gCurrentPinballGame->nameSpacingOffset += 4;
-        }
-        else
-        {
-            index = gSpeciesInfo[gCurrentPinballGame->currentSpecies].name[i] - 'A';
-            DmaCopy16(3, gAlphabetTilesGfx[index], OBJ_VRAM_ADDR_MON_NAME_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
-        }
+    case LANGUAGE_ENGLISH:
+    case LANGUAGE_ITALIAN:
+    case LANGUAGE_SPANISH:
+        LOAD_SPECIES_NAME_TILES(SPECIES_NAME_INTERNATIONAL);
+        break;
+    case LANGUAGE_FRENCH:
+        LOAD_SPECIES_NAME_TILES(SPECIES_NAME_FRENCH);
+        break;
+    case LANGUAGE_GERMAN:
+        LOAD_SPECIES_NAME_TILES(SPECIES_NAME_GERMAN);
+        break;
     }
+#else
+    LOAD_SPECIES_NAME_TILES();
+#endif
 
     gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT]->active = TRUE;
-    for (i = 0; i < 10; i++)
+#ifdef EUROPE
+    switch (gMain_saveData.language)
     {
-        if (gCaughtTextChars[i] == ' ')
+    case LANGUAGE_ENGLISH:
+        LOAD_CAUGHT_TEXT_TILES(gCaughtTextChars_En);
+        INIT_NAME_REVEAL_ROW1();
+        INIT_NAME_REVEAL_ROW2();
+        break;
+    case LANGUAGE_FRENCH:
+        LOAD_CAUGHT_TEXT_TILES(gCaughtTextChars_Fr);
+        INIT_NAME_REVEAL_ROW1();
+        INIT_NAME_REVEAL_ROW2();
+        break;
+    case LANGUAGE_GERMAN:
+        LOAD_CAUGHT_TEXT_TILES(gCaughtTextChars_De);
+        INIT_NAME_REVEAL_ROW1();
+        INIT_NAME_REVEAL_ROW2();
+        break;
+    case LANGUAGE_ITALIAN:
+        // In Italian the caught text comes first, so it is revealed before the name.
+        LOAD_CAUGHT_TEXT_TILES(gCaughtTextChars_It);
+        for (i = 0; i < CAUGHT_TEXT_LENGTH; i++)
         {
-            DmaCopy16(3, gSpaceTileGfx, OBJ_VRAM_ADDR_WAS_CAUGHT_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
+            gCurrentPinballGame->nameRevealDelaysRow2[i] = i * 2;
+            gCurrentPinballGame->nameSlideRow2[i].x = 0;
         }
-        else
+        for (i = 0; i < 10; i++)
         {
-            index = gCaughtTextChars[i] - 'A';
-            DmaCopy16(3, gAlphabetTilesGfx[index], OBJ_VRAM_ADDR_WAS_CAUGHT_TEXT_CHAR(i), SIZE_OF_VRAM_LETTER_TILE);
+            gCurrentPinballGame->nameRevealDelays[i] = (i + CAUGHT_TEXT_LENGTH) * 2;
+            gCurrentPinballGame->nameSlideRow1[i].x = 0;
         }
+        break;
+    case LANGUAGE_SPANISH:
+        LOAD_CAUGHT_TEXT_TILES(gCaughtTextChars_Es);
+        INIT_NAME_REVEAL_ROW1();
+        INIT_NAME_REVEAL_ROW2();
+        break;
     }
-
-    for (i = 0; i < 10; i++)
-    {
-        gCurrentPinballGame->nameRevealDelays[i] = i * 2;
-        gCurrentPinballGame->nameSlideRow1[i].x = 0;
-    }
-
-    for (i = 0; i < 10; i++)
-    {
-        gCurrentPinballGame->nameRevealDelaysRow2[i] = (i + 10) * 2;
-        gCurrentPinballGame->nameSlideRow2[i].x = 0;
-    }
+#else
+    LOAD_CAUGHT_TEXT_TILES(gCaughtTextChars);
+    INIT_NAME_REVEAL_ROW1();
+    INIT_NAME_REVEAL_ROW2();
+#endif
 }
+
+#ifdef EUROPE
+#define NAME_ROW_Y()      (gCurrentPinballGame->rouletteBasePos.y + 36 + nameRowY)
+#define CAUGHT_ROW_Y()    (gCurrentPinballGame->rouletteBasePos.y + 36 + caughtRowY)
+#define CAUGHT_ROW_X(x)   ((s16)(x) + caughtRowX)
+#else
+#define NAME_ROW_Y()      (gCurrentPinballGame->rouletteBasePos.y + 36)
+#define CAUGHT_ROW_Y()    (gCurrentPinballGame->rouletteBasePos.y + 52)
+#define CAUGHT_ROW_X(x)   (x)
+#endif
 
 void AnimateWasCaughtBanner(void)
 {
@@ -1121,8 +1286,31 @@ void AnimateWasCaughtBanner(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
     u32 var0;
+#ifdef EUROPE
+    // Text row placement; Italian puts the caught text above the name.
+    s16 nameRowY = 0;
+    s16 caughtRowY = 16;
+    s16 caughtRowX = 0;
+#endif
 
     gCurrentPinballGame->portraitDisplayState = PORTRAIT_DISPLAY_MODE_BOARD_CENTER;
+#ifdef EUROPE
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+    case LANGUAGE_FRENCH:
+        break;
+    case LANGUAGE_ITALIAN:
+        nameRowY = 16;
+        caughtRowY = 0;
+        caughtRowX = -4;
+        break;
+    case LANGUAGE_GERMAN:
+    case LANGUAGE_SPANISH:
+        caughtRowX = -3;
+        break;
+    }
+#endif
     if (gCurrentPinballGame->nameRevealAnimFrame == 0)
     {
         gCurrentPinballGame->nameRevealAnimFrame++;
@@ -1139,7 +1327,7 @@ void AnimateWasCaughtBanner(void)
         group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
         group->baseX = 0;
         group->baseY = 180;
-        for (i = 0; i < 10; i++)
+        for (i = 0; i < CAUGHT_TEXT_LENGTH; i++)
         {
             oamSimple = &group->oam[i];
             gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
@@ -1168,14 +1356,14 @@ void AnimateWasCaughtBanner(void)
 
                 var0 = 160;
                 group->baseX = i * 8 + 80 - gCurrentPinballGame->cameraXOffset - (gCurrentPinballGame->nameSlideRow1[i].x / 10 - var0) + gCurrentPinballGame->nameSpacingOffset;;
-                group->baseY = gCurrentPinballGame->rouletteBasePos.y + 36;
+                group->baseY = NAME_ROW_Y();
                 oamSimple = &group->oam[i];
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
 
             group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
-            for (i = 0; i < 10; i++)
+            for (i = 0; i < CAUGHT_TEXT_LENGTH; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelaysRow2[i])
                 {
@@ -1189,8 +1377,8 @@ void AnimateWasCaughtBanner(void)
                 }
 
                 var0 = 160;
-                group->baseX = i * 8 + 80 - gCurrentPinballGame->cameraXOffset - (gCurrentPinballGame->nameSlideRow2[i].x / 10 - var0);
-                group->baseY = gCurrentPinballGame->rouletteBasePos.y + 52;
+                group->baseX = CAUGHT_ROW_X(i * 8 + 80 - gCurrentPinballGame->cameraXOffset - (gCurrentPinballGame->nameSlideRow2[i].x / 10 - var0));
+                group->baseY = CAUGHT_ROW_Y();
                 oamSimple = &group->oam[i];
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -1204,7 +1392,7 @@ void AnimateWasCaughtBanner(void)
                     gCurrentPinballGame->nameSlideRow1[j].x = 0;
                 }
 
-                for (k = 0; k < 10; k++)
+                for (k = 0; k < CAUGHT_TEXT_LENGTH; k++)
                 {
                     gCurrentPinballGame->nameRevealDelaysRow2[k] = (k + 10) * 2;
                     gCurrentPinballGame->nameSlideRow2[k].x = 0;
@@ -1223,14 +1411,14 @@ void AnimateWasCaughtBanner(void)
 
                 var0 = i * 8 + 80;
                 group->baseX = var0 - gCurrentPinballGame->cameraXOffset - gCurrentPinballGame->nameSlideRow1[i].x / 10 + gCurrentPinballGame->nameSpacingOffset;
-                group->baseY = gCurrentPinballGame->rouletteBasePos.y + 36;
+                group->baseY = NAME_ROW_Y();
                 oamSimple = &group->oam[i];
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
             }
 
             group = gMain.fieldSpriteGroups[FIELD_SG_WAS_CAUGHT_TEXT];
-            for (i = 0; i < 10; i++)
+            for (i = 0; i < CAUGHT_TEXT_LENGTH; i++)
             {
                 if (gCurrentPinballGame->nameRevealDelaysRow2[i])
                     gCurrentPinballGame->nameRevealDelaysRow2[i]--;
@@ -1238,8 +1426,8 @@ void AnimateWasCaughtBanner(void)
                     gCurrentPinballGame->nameSlideRow2[i].x += ((2000 - gCurrentPinballGame->nameSlideRow2[i].x) * 12) / 100;
 
                 var0 = 0;
-                group->baseX = i * 8 + 80 - gCurrentPinballGame->cameraXOffset - (gCurrentPinballGame->nameSlideRow2[i].x / 10 - var0);
-                group->baseY = gCurrentPinballGame->rouletteBasePos.y + 52;
+                group->baseX = CAUGHT_ROW_X(i * 8 + 80 - gCurrentPinballGame->cameraXOffset - (gCurrentPinballGame->nameSlideRow2[i].x / 10 - var0));
+                group->baseY = CAUGHT_ROW_Y();
                 oamSimple = &group->oam[i];
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
                 gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
@@ -1266,7 +1454,7 @@ void AnimateWasCaughtBanner(void)
         {
             group->baseX = 0;
             group->baseY = 180;
-            for (i = 0; i < 10; i++)
+            for (i = 0; i < CAUGHT_TEXT_LENGTH; i++)
             {
                 oamSimple = &group->oam[i];
                 gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;

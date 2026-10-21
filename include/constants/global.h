@@ -38,7 +38,17 @@
 #define NUM_LANGUAGES    5
 #define LANGUAGE_UNSET   99 // no language chosen yet (first boot)
 
+// Species name sets of the European release (struct PokemonSpecies name[])
+#define SPECIES_NAME_INTERNATIONAL 0 // English, Italian and Spanish
+#define SPECIES_NAME_FRENCH        1
+#define SPECIES_NAME_GERMAN        2
+
 #define POKEMON_NAME_LENGTH 10
+#ifdef EUROPE
+#define CAUGHT_TEXT_LENGTH 11
+#else
+#define CAUGHT_TEXT_LENGTH 10
+#endif
 #define POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH 9
 #define POKEMON_CATEGORY_NAME_LENGTH 11
 #define POKEMON_DEX_LINE_LENGTH 42

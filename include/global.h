@@ -916,9 +916,15 @@ struct PinballGame
     /*0x1330*/struct BallState *cameraBall;
     /*0x1334*/struct BallState ballStates[2];
     /*0x13BC*/struct FlipperState flipper[SIDE_COUNT];
-    /*0x13D4*/u16 nameRevealDelaysRow2[10];
-    /*0x13E8*/struct Vector16 nameSlideRow2[10];
+#ifdef EUROPE
+    /*0x13D4*/u16 nameRevealDelaysRow2[CAUGHT_TEXT_LENGTH];
+    /*0x13EC*/struct Vector16 nameSlideRow2[CAUGHT_TEXT_LENGTH];
+} /* size=0x1418 */;
+#else
+    /*0x13D4*/u16 nameRevealDelaysRow2[CAUGHT_TEXT_LENGTH];
+    /*0x13E8*/struct Vector16 nameSlideRow2[CAUGHT_TEXT_LENGTH];
 } /* size=0x1410 */;
+#endif
 
 struct ReplayInputFrame
 {
