@@ -36,13 +36,28 @@ EWRAM_DATA u8 gBonusFieldHighlightPalette = PAL_IX_0;
 // Rom_1 data
 extern void (*const gBonusFieldSelectStateFuncs[])(void);
 extern const u8 gBonusFieldSelectBg0_Tilemap[];
-extern const u8 gBonusFieldSelectBg1_Tilemap[];
 extern const u8 gBonusFieldSelectBg2_Tilemap[];
 extern const Palette gBonusFieldSelectStages_Pals[];
 extern const u8 gBonusFieldSelectStages_Gfx[];
-extern const u8 gFieldSelectWindow_Gfx[];
 extern const Palette gFieldSelectSpritePals[];
+#ifdef EUROPE
+extern const u8 gBonusFieldSelectBg1_Tilemap_En[];
+extern const u8 gBonusFieldSelectBg1_Tilemap_FrDeItEs[];
+extern const u8 gFieldSelectWindow_Gfx_En[];
+extern const u8 gFieldSelectWindow_Gfx_Fr[];
+extern const u8 gFieldSelectWindow_Gfx_De[];
+extern const u8 gFieldSelectWindow_Gfx_It[];
+extern const u8 gFieldSelectWindow_Gfx_Es[];
+extern const u8 gFieldSelectSpriteGfx_En[];
+extern const u8 gFieldSelectSpriteGfx_Fr[];
+extern const u8 gFieldSelectSpriteGfx_De[];
+extern const u8 gFieldSelectSpriteGfx_It[];
+extern const u8 gFieldSelectSpriteGfx_Es[];
+#else
+extern const u8 gBonusFieldSelectBg1_Tilemap[];
+extern const u8 gFieldSelectWindow_Gfx[];
 extern const u8 gFieldSelectSpriteGfx[];
+#endif
 
 // Rom_2 data
 extern const struct SpriteSet *const gBonusFieldSelectSpriteSets[16];
@@ -73,6 +88,41 @@ void LoadBonusFieldSelectGraphics(void)
 
     gMain.dispcntBackup = REG_DISPCNT;
 
+#ifdef EUROPE
+    DmaCopy16(3, gBonusFieldSelectStages_Pals, BG_PLTT, BG_PLTT_SIZE);
+    DmaCopy16(3, gBonusFieldSelectStages_Gfx, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BOARD_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_BOARD_TILES);
+    DmaCopy16(3, gBonusFieldSelectBg0_Tilemap, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_En, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gBonusFieldSelectBg1_Tilemap_En, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_En, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
+        break;
+    case LANGUAGE_FRENCH:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_Fr, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gBonusFieldSelectBg1_Tilemap_FrDeItEs, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_Fr, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
+        break;
+    case LANGUAGE_GERMAN:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_De, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gBonusFieldSelectBg1_Tilemap_FrDeItEs, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_De, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
+        break;
+    case LANGUAGE_ITALIAN:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_It, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gBonusFieldSelectBg1_Tilemap_FrDeItEs, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_It, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
+        break;
+    case LANGUAGE_SPANISH:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_Es, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gBonusFieldSelectBg1_Tilemap_FrDeItEs, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_Es, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
+        break;
+    }
+    DmaCopy16(3, gFieldSelectSpritePals, OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
+#else
     DmaCopy16(3, gBonusFieldSelectStages_Pals, BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gFieldSelectWindow_Gfx, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
     DmaCopy16(3, gBonusFieldSelectStages_Gfx, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BOARD_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_BOARD_TILES);
@@ -81,6 +131,7 @@ void LoadBonusFieldSelectGraphics(void)
     DmaCopy16(3, gBonusFieldSelectBg2_Tilemap, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     DmaCopy16(3, gFieldSelectSpritePals, OBJ_PLTT_SLOT(PAL_IX_0), 3*PLTT_SLOT_SIZE);
     DmaCopy16(3, gFieldSelectSpriteGfx, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
+#endif
 
     EnableVBlankInterrupts();
     InitBonusFieldSelectState();
@@ -221,7 +272,11 @@ void RenderBonusFieldSelectSprites(void)
     s32 i;
     s32 j;
 
+#ifdef EUROPE
+    gMain.blendControl = BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2;
+#else
     gMain.blendControl = BLDCNT_TGT1_BG2 | BLDCNT_TGT1_OBJ | BLDCNT_EFFECT_NONE | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BG3;
+#endif
     gMain.blendAlpha = BLDALPHA_BLEND(8, 8);
     REG_BLDCNT = gMain.blendControl;
     REG_BLDALPHA = gMain.blendAlpha;

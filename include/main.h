@@ -26,6 +26,9 @@ struct HighScoreEntry
 struct SaveData
 {
     /*0x74*/ u8 pokedexFlags[NUM_SPECIES];
+#ifdef EUROPE
+    /*0x141*/ u8 language;
+#endif
     /*0x141*/ bool8 rumbleEnabled;
     /*0x142*/ u8 ballSpeed;
     /*0x143*/ u8 buttonConfigType;

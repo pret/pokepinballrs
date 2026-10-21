@@ -11,6 +11,10 @@ ifeq (compare,$(MAKECMDGOALS))
   COMPARE := 1
 endif
 
+# Region selection: US (BPPE, default) or EU (BPPP, multilanguage En/Fr/De/Es/It).
+# `make eu` / `make compare_eu` are shortcuts for `make REGION=EU [compare]`.
+REGION ?= US
+
 PREFIX := arm-none-eabi-
 OBJCOPY := $(PREFIX)objcopy
 AS := $(PREFIX)as
@@ -25,9 +29,22 @@ EXE :=
 endif
 
 TITLE       := POKEPIN R/S
-GAME_CODE   := BPPE
 MAKER_CODE  := 01
 REVISION    := 0
+
+ifeq ($(REGION),EU)
+GAME_CODE   := BPPP
+ROM_NAME    := pokepinballrs_eu
+REGION_DEFS := -DEUROPE
+REGION_SUFFIX := _eu
+DATA_ASM_SUBDIR = data/eu
+else
+GAME_CODE   := BPPE
+ROM_NAME    := pokepinballrs
+REGION_DEFS :=
+REGION_SUFFIX :=
+DATA_ASM_SUBDIR = data
+endif
 
 HOSTCC = $(CC)
 HOSTCXX = $(CXX)
@@ -37,26 +54,33 @@ HOST_VARS := CC=$(HOSTCC) CXX=$(HOSTCXX) CFLAGS='$(HOSTCFLAGS)' CXXFLAGS='$(HOST
 
 SHELL := /bin/bash -o pipefail
 
-ROM := pokepinballrs.gba
-OBJ_DIR := build/pokepinballrs
+ROM := $(ROM_NAME).gba
+OBJ_DIR := build/$(ROM_NAME)
+SHA1_FILE := $(ROM_NAME).sha1
+LD_SCRIPT_SRC := ld_script$(REGION_SUFFIX).txt
+SYM_BSS_SRC := sym_bss$(REGION_SUFFIX).txt
+SYM_COMMON_SRC := sym_common$(REGION_SUFFIX).txt
+SYM_EWRAM_SRC := sym_ewram$(REGION_SUFFIX).txt
 
 ELF = $(ROM:.gba=.elf)
 MAP = $(ROM:.gba=.map)
 
 C_SUBDIR = src
 ASM_SUBDIR = asm
-DATA_ASM_SUBDIR = data
 
 C_BUILDDIR = $(OBJ_DIR)/$(C_SUBDIR)
 ASM_BUILDDIR = $(OBJ_DIR)/$(ASM_SUBDIR)
 DATA_ASM_BUILDDIR = $(OBJ_DIR)/$(DATA_ASM_SUBDIR)
 
 ASFLAGS := -mcpu=arm7tdmi
+ifeq ($(REGION),EU)
+ASFLAGS += --defsym EUROPE=1
+endif
 
 CC1             := tools/agbcc/bin/agbcc$(EXE)
 override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -fprologue-bugfix -g
 
-CPPFLAGS := -I tools/agbcc/include -I tools/agbcc -iquote include -nostdinc -undef
+CPPFLAGS := -I tools/agbcc/include -I tools/agbcc -iquote include -nostdinc -undef $(REGION_DEFS)
 
 LDFLAGS = -Map ../../$(MAP)
 
@@ -78,7 +102,7 @@ infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst 
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools
-ifeq (,$(filter-out all compare,$(MAKECMDGOALS)))
+ifeq (,$(filter-out all compare eu compare_eu,$(MAKECMDGOALS)))
 $(call infoshell, $(HOST_VARS) $(MAKE) tools)
 else
 NODEP := 1
@@ -94,7 +118,7 @@ endif
 # Secondary expansion is required for dependency variables in object rules.
 .SECONDEXPANSION:
 
-.PHONY: rom clean compare tidy tools clean-tools $(TOOLDIRS)
+.PHONY: rom clean compare eu compare_eu tidy tools clean-tools $(TOOLDIRS)
 
 $(shell mkdir -p $(C_BUILDDIR) $(ASM_BUILDDIR) $(DATA_ASM_BUILDDIR))
 
@@ -117,11 +141,17 @@ MAKEFLAGS += --no-print-directory
 
 rom: $(ROM)
 ifeq ($(COMPARE),1)
-	@$(SHA1) pokepinballrs.sha1
+	@$(SHA1) $(SHA1_FILE)
 endif
 
 # For contributors to make sure a change didn't affect the contents of the ROM.
 compare: rom
+
+# European version (BPPP)
+eu:
+	@$(MAKE) REGION=EU rom
+compare_eu:
+	@$(MAKE) REGION=EU COMPARE=1 rom
 
 clean: tidy clean-tools
 	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
@@ -129,8 +159,9 @@ clean: tidy clean-tools
 	find sound -iname '*.bin' -exec rm {} +
 
 tidy:
-	rm -f $(ROM) $(ELF) $(MAP)
-	rm -r build/*
+	rm -f pokepinballrs.gba pokepinballrs.elf pokepinballrs.map
+	rm -f pokepinballrs_eu.gba pokepinballrs_eu.elf pokepinballrs_eu.map
+	rm -rf build/*
 
 tools: $(TOOLDIRS)
 
@@ -188,7 +219,7 @@ endif
 $(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s $$(asm_dep)
 	$(CPP) $(CPPFLAGS) $< -I include | $(AS) $(ASFLAGS) -o $@
 
-build/pokepinballrs/asm/start.o: asm/start.s
+$(OBJ_DIR)/asm/start.o: asm/start.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
 ifeq ($(NODEP),)
@@ -200,16 +231,16 @@ endif
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s $$(data_dep)
 	$(PREPROC) $< charmap.txt | $(CPP) -I include | $(AS) $(ASFLAGS) -o $@
 
-$(OBJ_DIR)/sym_bss.ld: sym_bss.txt
+$(OBJ_DIR)/sym_bss.ld: $(SYM_BSS_SRC)
 	$(RAMSCRGEN) .bss $< ENGLISH > $@
 
-$(OBJ_DIR)/sym_common.ld: sym_common.txt $(C_OBJS) $(wildcard common_syms/*.txt)
+$(OBJ_DIR)/sym_common.ld: $(SYM_COMMON_SRC) $(C_OBJS) $(wildcard common_syms/*.txt)
 	$(RAMSCRGEN) COMMON $< ENGLISH -c $(C_BUILDDIR),common_syms > $@
 
-$(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
+$(OBJ_DIR)/sym_ewram.ld: $(SYM_EWRAM_SRC)
 	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
 
-$(OBJ_DIR)/ld_script.ld: ld_script.txt $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
+$(OBJ_DIR)/ld_script.ld: $(LD_SCRIPT_SRC) $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
 	cd $(OBJ_DIR) && sed -f ../../ld_script.sed ../../$< | sed "s#tools/#../../tools/#g" > ld_script.ld
 
 $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)

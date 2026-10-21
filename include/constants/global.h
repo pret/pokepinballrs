@@ -26,6 +26,14 @@
 #define MENU_ACTION_TYPE_INTRO         9
 #define MENU_ACTION_TYPE_BONUS_SELECT  10
 
+// Languages of the European release (gMain_saveData.language)
+#define LANGUAGE_ENGLISH 0
+#define LANGUAGE_FRENCH  1
+#define LANGUAGE_GERMAN  2
+#define LANGUAGE_ITALIAN 3
+#define LANGUAGE_SPANISH 4
+#define NUM_LANGUAGES    5
+
 #define POKEMON_NAME_LENGTH 10
 #define POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH 9
 #define POKEMON_CATEGORY_NAME_LENGTH 11
