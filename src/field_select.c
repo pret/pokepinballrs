@@ -46,6 +46,20 @@ extern const u8 gFieldSelectWindowTilemap[];
 extern const Palette gFieldSelectBGPals[];
 extern const Palette gFieldSelectSpritePals[];
 extern const u8 gFieldSelectSpriteGfx[];
+#ifdef EUROPE
+extern const u8 gFieldSelectWindow_Gfx_En[];
+extern const u8 gFieldSelectWindow_Gfx_Fr[];
+extern const u8 gFieldSelectWindow_Gfx_De[];
+extern const u8 gFieldSelectWindow_Gfx_It[];
+extern const u8 gFieldSelectWindow_Gfx_Es[];
+extern const u8 gFieldSelectFrameShadowTilemap_En[];
+extern const u8 gFieldSelectFrameShadowTilemap_FrDeItEs[];
+extern const u8 gFieldSelectSpriteGfx_En[];
+extern const u8 gFieldSelectSpriteGfx_Fr[];
+extern const u8 gFieldSelectSpriteGfx_De[];
+extern const u8 gFieldSelectSpriteGfx_It[];
+extern const u8 gFieldSelectSpriteGfx_Es[];
+#endif
 
 // Rom_2 data
 extern const struct SpriteSet *const gFieldSelectSpriteSets[];
@@ -74,6 +88,41 @@ void LoadFieldSelectGraphics(void)
 
     gMain.dispcntBackup = REG_DISPCNT;
 
+#ifdef EUROPE
+    DmaCopy16(3, gFieldSelectBGPals,             BG_PLTT,           BG_PLTT_SIZE);
+    DmaCopy16(3, gFieldSelectMiniFields_Gfx,     BG_VRAM_ADDR_FIELD_SELECT_BOARD_TILES, SIZE_OF_VRAM_FIELD_SELECT_BOARD_TILES);
+    DmaCopy16(3, gFieldSelectBG0Tilemap,         BG_VRAM_ADDR_FIELD_SELECT_BG0_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gFieldSelectWindowTilemap,      BG_VRAM_ADDR_FIELD_SELECT_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+    DmaCopy16(3, gFieldSelectSpritePals,         OBJ_PLTT,          OBJ_PLTT_SIZE);
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_En,         BG_VRAM_ADDR_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gFieldSelectFrameShadowTilemap_En, BG_VRAM_ADDR_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_En,          OBJ_VRAM_ADDR_FIELD_SELECT_SPRITE_TILES,         SIZE_OF_VRAM_FIELD_SELECT_SPRITE_TILES);
+        break;
+    case LANGUAGE_FRENCH:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_Fr,         BG_VRAM_ADDR_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gFieldSelectFrameShadowTilemap_FrDeItEs, BG_VRAM_ADDR_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_Fr,          OBJ_VRAM_ADDR_FIELD_SELECT_SPRITE_TILES,         SIZE_OF_VRAM_FIELD_SELECT_SPRITE_TILES);
+        break;
+    case LANGUAGE_GERMAN:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_De,         BG_VRAM_ADDR_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gFieldSelectFrameShadowTilemap_FrDeItEs, BG_VRAM_ADDR_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_De,          OBJ_VRAM_ADDR_FIELD_SELECT_SPRITE_TILES,         SIZE_OF_VRAM_FIELD_SELECT_SPRITE_TILES);
+        break;
+    case LANGUAGE_ITALIAN:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_It,         BG_VRAM_ADDR_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gFieldSelectFrameShadowTilemap_FrDeItEs, BG_VRAM_ADDR_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_It,          OBJ_VRAM_ADDR_FIELD_SELECT_SPRITE_TILES,         SIZE_OF_VRAM_FIELD_SELECT_SPRITE_TILES);
+        break;
+    case LANGUAGE_SPANISH:
+        DmaCopy16(3, gFieldSelectWindow_Gfx_Es,         BG_VRAM_ADDR_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gFieldSelectFrameShadowTilemap_FrDeItEs, BG_VRAM_ADDR_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
+        DmaCopy16(3, gFieldSelectSpriteGfx_Es,          OBJ_VRAM_ADDR_FIELD_SELECT_SPRITE_TILES,         SIZE_OF_VRAM_FIELD_SELECT_SPRITE_TILES);
+        break;
+    }
+#else
     DmaCopy16(3, gFieldSelectBGPals,             BG_PLTT,           BG_PLTT_SIZE);
     DmaCopy16(3, gFieldSelectWindow_Gfx,         BG_VRAM_ADDR_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_FIELD_SELECT_LAYOUT_TILES);
     DmaCopy16(3, gFieldSelectMiniFields_Gfx,     BG_VRAM_ADDR_FIELD_SELECT_BOARD_TILES, SIZE_OF_VRAM_FIELD_SELECT_BOARD_TILES);
@@ -82,6 +131,7 @@ void LoadFieldSelectGraphics(void)
     DmaCopy16(3, gFieldSelectWindowTilemap,      BG_VRAM_ADDR_FIELD_SELECT_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
     DmaCopy16(3, gFieldSelectSpritePals,         OBJ_PLTT,          OBJ_PLTT_SIZE);
     DmaCopy16(3, gFieldSelectSpriteGfx,          OBJ_VRAM_ADDR_FIELD_SELECT_SPRITE_TILES,         SIZE_OF_VRAM_FIELD_SELECT_SPRITE_TILES);
+#endif
 
     EnableVBlankInterrupts();
     InitFieldSelectData();

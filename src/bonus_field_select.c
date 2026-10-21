@@ -44,10 +44,10 @@ extern const Palette gFieldSelectSpritePals[];
 extern const u8 gBonusFieldSelectBg1_Tilemap_En[];
 extern const u8 gBonusFieldSelectBg1_Tilemap_FrDeItEs[];
 extern const u8 gFieldSelectWindow_Gfx_En[];
-extern const u8 gFieldSelectWindow_Gfx_Fr[];
+extern const u8 gBonusFieldSelectWindow_Gfx_Fr[];
 extern const u8 gFieldSelectWindow_Gfx_De[];
-extern const u8 gFieldSelectWindow_Gfx_It[];
-extern const u8 gFieldSelectWindow_Gfx_Es[];
+extern const u8 gBonusFieldSelectWindow_Gfx_It[];
+extern const u8 gBonusFieldSelectWindow_Gfx_Es[];
 extern const u8 gFieldSelectSpriteGfx_En[];
 extern const u8 gFieldSelectSpriteGfx_Fr[];
 extern const u8 gFieldSelectSpriteGfx_De[];
@@ -101,7 +101,7 @@ void LoadBonusFieldSelectGraphics(void)
         DmaCopy16(3, gFieldSelectSpriteGfx_En, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
         break;
     case LANGUAGE_FRENCH:
-        DmaCopy16(3, gFieldSelectWindow_Gfx_Fr, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gBonusFieldSelectWindow_Gfx_Fr, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
         DmaCopy16(3, gBonusFieldSelectBg1_Tilemap_FrDeItEs, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
         DmaCopy16(3, gFieldSelectSpriteGfx_Fr, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
         break;
@@ -111,12 +111,12 @@ void LoadBonusFieldSelectGraphics(void)
         DmaCopy16(3, gFieldSelectSpriteGfx_De, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
         break;
     case LANGUAGE_ITALIAN:
-        DmaCopy16(3, gFieldSelectWindow_Gfx_It, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gBonusFieldSelectWindow_Gfx_It, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
         DmaCopy16(3, gBonusFieldSelectBg1_Tilemap_FrDeItEs, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
         DmaCopy16(3, gFieldSelectSpriteGfx_It, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
         break;
     case LANGUAGE_SPANISH:
-        DmaCopy16(3, gFieldSelectWindow_Gfx_Es, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
+        DmaCopy16(3, gBonusFieldSelectWindow_Gfx_Es, BG_VRAM_ADDR_BONUS_FIELD_SELECT_LAYOUT_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_LAYOUT_TILES);
         DmaCopy16(3, gBonusFieldSelectBg1_Tilemap_FrDeItEs, BG_VRAM_ADDR_BONUS_FIELD_SELECT_BG1_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_256);
         DmaCopy16(3, gFieldSelectSpriteGfx_Es, OBJ_VRAM_ADDR_BONUS_FIELD_SELECT_SPRITE_TILES, SIZE_OF_VRAM_BONUS_FIELD_SELECT_SPRITE_TILES);
         break;
