@@ -38,13 +38,46 @@ extern const Palette gPokedexBackground_Pals[];
 extern const Palette gPokedexSprites_Pals[];
 extern const u8 gPokedexSprites_Gfx[];
 extern const u8 gEReaderText_Gfx[];
+#ifdef EUROPE
+extern const u8 gPokedexSprites_Gfx_En[];
+extern const u8 gPokedexSprites_Gfx_Fr[];
+extern const u8 gPokedexSprites_Gfx_De[];
+extern const u8 gPokedexSprites_Gfx_It[];
+extern const u8 gPokedexSprites_Gfx_Es[];
+extern const u8 gEReaderBackgroundText_Gfx_Fr[];
+extern const u8 gEReaderBackgroundText_Gfx_De[];
+extern const u8 gEReaderBackgroundText_Gfx_It[];
+extern const u8 gEReaderBackgroundText_Gfx_Es[];
+#endif
 
 // Rom_2 data
-extern const u16 gEReaderTextGlyphTable[][3*0x18];
+#ifdef EUROPE
+extern const u16 gEReaderTextGlyphTable[NUM_LANGUAGES][15][3*EREADER_LINE_LENGTH];
+#define EREADER_TEXT_GLYPH(page, idx) gEReaderTextGlyphTable[gMain_saveData.language][page][idx]
+#else
+extern const u16 gEReaderTextGlyphTable[][3*EREADER_LINE_LENGTH];
+#define EREADER_TEXT_GLYPH(page, idx) gEReaderTextGlyphTable[page][idx]
+#endif
+#ifdef EUROPE
+EWRAM_DATA const struct SpriteSet *gEReaderSpriteSets[13];
+extern const struct SpriteSet *const gEReaderSpriteSets_Es[13];
+extern const struct SpriteSet *const gEReaderSpriteSets_Default[13];
+#else
 extern const struct SpriteSet * const gEReaderSpriteSets[13];
+#endif
 extern const s16 gEReaderTransitionStepDurations[];
+#ifdef EUROPE
+#define EREADER_NUM_TEXT_PAGES 15
+extern const s8 gEReaderTextLengths[NUM_LANGUAGES][EREADER_NUM_TEXT_PAGES];
+extern const s8 gEReaderTextHasNextPage[NUM_LANGUAGES][EREADER_NUM_TEXT_PAGES];
+#define EREADER_TEXT_LENGTH(page) gEReaderTextLengths[gMain_saveData.language][page]
+#define EREADER_TEXT_HAS_NEXT_PAGE(page) gEReaderTextHasNextPage[gMain_saveData.language][page]
+#else
 extern const s8 gEReaderTextLengths[10];
 extern const s8 gEReaderTextHasNextPage[10];
+#define EREADER_TEXT_LENGTH(page) gEReaderTextLengths[page]
+#define EREADER_TEXT_HAS_NEXT_PAGE(page) gEReaderTextHasNextPage[page]
+#endif
 extern const u8 gEReaderCardStartPages[NUM_EREADER_CARDS + 1];
 
 enum EReaderState{
@@ -64,6 +97,39 @@ void EReaderMain(void)
     gEReaderStateFuncs[gMain.subState]();
 }
 
+#ifdef EUROPE
+// Loads the e-Reader screen graphics for the current language
+#define EREADER_LOAD_SCREEN_GFX() \
+    DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(PAL_IX_0), 2*PLTT_SLOT_SIZE); \
+    DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(PAL_IX_2), PLTT_SLOT_SIZE); \
+    DmaCopy16(3, gEReaderText_Tilemap,    BG_TILE_ADDR(TILE_INDEX(0,0,0)), BG_SCREEN_SIZE); \
+    DmaCopy16(3, gEReaderOverlay_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE); \
+    DmaCopy16(3, gEReaderBackground_Gfx,   gTempGfxBuffer,         7*BG_SCREEN_SIZE); \
+    switch (gMain_saveData.language) \
+    { \
+    case LANGUAGE_ENGLISH: \
+        DmaCopy16(3, gPokedexSprites_Gfx_En, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x6C20); \
+        break; \
+    case LANGUAGE_FRENCH: \
+        DmaCopy16(3, gPokedexSprites_Gfx_Fr, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x7420); \
+        CopyBgTilesRect(gEReaderBackgroundText_Gfx_Fr, &gTempGfxBuffer[0xA0], 22, 2); \
+        break; \
+    case LANGUAGE_GERMAN: \
+        DmaCopy16(3, gPokedexSprites_Gfx_De, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x7020); \
+        CopyBgTilesRect(gEReaderBackgroundText_Gfx_De, &gTempGfxBuffer[0xA0], 22, 2); \
+        break; \
+    case LANGUAGE_ITALIAN: \
+        DmaCopy16(3, gPokedexSprites_Gfx_It, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x6C20); \
+        CopyBgTilesRect(gEReaderBackgroundText_Gfx_It, &gTempGfxBuffer[0xA0], 22, 2); \
+        break; \
+    case LANGUAGE_SPANISH: \
+        DmaCopy16(3, gPokedexSprites_Gfx_Es, OBJ_TILE_ADDR(TILE_INDEX(0,0,0)), 0x7020); \
+        CopyBgTilesRect(gEReaderBackgroundText_Gfx_Es, &gTempGfxBuffer[0xA0], 22, 2); \
+        break; \
+    } \
+    DmaCopy16(3, gPokedexSprites_Pals,  OBJ_PLTT_SLOT(PAL_IX_0), 6*PLTT_SLOT_SIZE);
+#endif
+
 void LoadEReaderGraphics(void)
 {
     ResetDisplayState();
@@ -77,6 +143,9 @@ void LoadEReaderGraphics(void)
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
     gMain.dispcntBackup = REG_DISPCNT;
 
+#ifdef EUROPE
+    EREADER_LOAD_SCREEN_GFX();
+#else
     DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(PAL_IX_0), 2*PLTT_SLOT_SIZE);
     DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(PAL_IX_2), PLTT_SLOT_SIZE);
     DmaCopy16(3, gEReaderBackground_Gfx,   gTempGfxBuffer,         6*BG_SCREEN_SIZE);
@@ -84,6 +153,7 @@ void LoadEReaderGraphics(void)
     DmaCopy16(3, gEReaderOverlay_Tilemap, BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,  OBJ_PLTT_SLOT(PAL_IX_0), 6*PLTT_SLOT_SIZE);
     DmaCopy16(3, gPokedexSprites_Gfx,   OBJ_TILE_ADDR(TILE_INDEX(0,0,0)),         0x6C20);
+#endif
 
     InitEReaderTextState();
     gEReaderTextCharIndex = 0;
@@ -103,6 +173,12 @@ void LoadEReaderGraphics(void)
 
 void InitEReaderTextState(void)
 {
+#ifdef EUROPE
+    s32 i;
+    const struct SpriteSet *const *src;
+    const struct SpriteSet **dst;
+#endif
+
     gEReaderStatusAnimSpriteGroup = SG_EREADER_START_TRANSMISSION_POPUP;
     gEReaderStatusSpriteVisible = FALSE;
     gEReaderHeaderAnimSpriteGroup = SG_EREADER_GBA_LINK_BASE;
@@ -112,11 +188,27 @@ void InitEReaderTextState(void)
     gEReaderExitTargetState = STATE_INTRO;
     gEReaderUnused1 = 0;
     gEReaderUnused2 = 0;
+#ifdef EUROPE
+    if (gMain_saveData.language == LANGUAGE_SPANISH)
+    {
+        src = gEReaderSpriteSets_Es;
+        dst = gEReaderSpriteSets;
+        for (i = 12; i >= 0; i--)
+            *dst++ = *src++;
+    }
+    else
+    {
+        src = gEReaderSpriteSets_Default;
+        dst = gEReaderSpriteSets;
+        for (i = 12; i >= 0; i--)
+            *dst++ = *src++;
+    }
+#endif
 }
 
 void Ereader_ShowInstructions(void)
 {
-    if (gEReaderTextCharIndex <= gEReaderTextLengths[gEReaderTextPageIndex]) {
+    if (gEReaderTextCharIndex <= EREADER_TEXT_LENGTH(gEReaderTextPageIndex)) {
         gEReaderTextAnimDelay++;
         if (2 < gEReaderTextAnimDelay) {
             gEReaderTextAnimDelay = 0;
@@ -129,20 +221,20 @@ void Ereader_ShowInstructions(void)
         if (6 < gEReaderTextAnimDelay) {
             gEReaderTextAnimDelay = 0;
             if (gEReaderTextBlinkToggle == 0) {
-                BlinkEReaderTextCursor(gEReaderTextLengths[gEReaderTextPageIndex],0x3a80);
+                BlinkEReaderTextCursor(EREADER_TEXT_LENGTH(gEReaderTextPageIndex),0x3a80);
             }
             else {
-                BlinkEReaderTextCursor(gEReaderTextLengths[gEReaderTextPageIndex],0);
+                BlinkEReaderTextCursor(EREADER_TEXT_LENGTH(gEReaderTextPageIndex),0);
             }
             gEReaderTextBlinkToggle = 1 - gEReaderTextBlinkToggle;
         }
     }
     if (JOY_NEW(A_BUTTON)) {
-        if (gEReaderTextCharIndex <= gEReaderTextLengths[gEReaderTextPageIndex]) {
+        if (gEReaderTextCharIndex <= EREADER_TEXT_LENGTH(gEReaderTextPageIndex)) {
             DrawEReaderTextPage(gEReaderTextPageIndex);
-            gEReaderTextCharIndex = gEReaderTextLengths[gEReaderTextPageIndex] + 1;
+            gEReaderTextCharIndex = EREADER_TEXT_LENGTH(gEReaderTextPageIndex) + 1;
         }
-        else if (gEReaderTextHasNextPage[gEReaderTextPageIndex] == 0) {
+        else if (EREADER_TEXT_HAS_NEXT_PAGE(gEReaderTextPageIndex) == 0) {
             gMain.subState = EREADER_STATE_ANIMATE_LINK_CABLE;
         }
         else {
@@ -252,7 +344,7 @@ void Ereader_ShowLinkTimeout(void)
         gEReaderGeneralTimer = 0;
         gEReaderHeaderAnimSpriteGroup = SG_22 - gEReaderHeaderAnimSpriteGroup;
     }
-    if (gEReaderTextCharIndex <= gEReaderTextLengths[gEReaderTextPageIndex]) {
+    if (gEReaderTextCharIndex <= EREADER_TEXT_LENGTH(gEReaderTextPageIndex)) {
         gEReaderTextAnimDelay++;
         if (2 < gEReaderTextAnimDelay) {
             gEReaderTextAnimDelay = 0;
@@ -265,20 +357,20 @@ void Ereader_ShowLinkTimeout(void)
         if (6 < gEReaderTextAnimDelay) {
             gEReaderTextAnimDelay = 0;
             if (gEReaderTextBlinkToggle == 0) {
-                BlinkEReaderTextCursor(gEReaderTextLengths[gEReaderTextPageIndex],0x3a80);
+                BlinkEReaderTextCursor(EREADER_TEXT_LENGTH(gEReaderTextPageIndex),0x3a80);
             }
             else {
-                BlinkEReaderTextCursor(gEReaderTextLengths[gEReaderTextPageIndex],0);
+                BlinkEReaderTextCursor(EREADER_TEXT_LENGTH(gEReaderTextPageIndex),0);
             }
             gEReaderTextBlinkToggle = 1 - gEReaderTextBlinkToggle;
         }
     }
     if (JOY_NEW(A_BUTTON)) {
-        if (gEReaderTextCharIndex <= gEReaderTextLengths[gEReaderTextPageIndex]) {
+        if (gEReaderTextCharIndex <= EREADER_TEXT_LENGTH(gEReaderTextPageIndex)) {
             DrawEReaderTextPage(gEReaderTextPageIndex);
-            gEReaderTextCharIndex = gEReaderTextLengths[gEReaderTextPageIndex] + 1;
+            gEReaderTextCharIndex = EREADER_TEXT_LENGTH(gEReaderTextPageIndex) + 1;
         }
-        else if (gEReaderTextHasNextPage[gEReaderTextPageIndex] == 0) {
+        else if (EREADER_TEXT_HAS_NEXT_PAGE(gEReaderTextPageIndex) == 0) {
             ResetSerialAndInterrupts();
             DisableSerial();
             FadeOutScreen();
@@ -341,6 +433,9 @@ void Ereader_ShowSuccessPopup(void)
     gMain.bgOffsets[0].yOffset = (0xffe8 - 0x48);
     gMain.dispcntBackup = REG_DISPCNT;
 
+#ifdef EUROPE
+    EREADER_LOAD_SCREEN_GFX();
+#else
     DmaCopy16(3, gEReaderBackground_Pals,    BG_PLTT_SLOT(PAL_IX_0),   2*PLTT_SLOT_SIZE);
     DmaCopy16(3, gPokedexBackground_Pals[4], BG_PLTT_SLOT(PAL_IX_2),   PLTT_SLOT_SIZE);
     DmaCopy16(3, gEReaderBackground_Gfx,     gTempGfxBuffer,    6*BG_SCREEN_SIZE);
@@ -348,6 +443,7 @@ void Ereader_ShowSuccessPopup(void)
     DmaCopy16(3, gEReaderOverlay_Tilemap,    BG_TILE_ADDR(TILE_INDEX(0,2,0)), BG_SCREEN_SIZE);
     DmaCopy16(3, gPokedexSprites_Pals,       OBJ_PLTT_SLOT(PAL_IX_0),  6*PLTT_SLOT_SIZE);
     DmaCopy16(3, gPokedexSprites_Gfx,        OBJ_TILE_ADDR(TILE_INDEX(0,0,0)),         0x6C20);
+#endif
 
     InitEReaderTextState();
     gEReaderTextCharIndex = 0;
@@ -367,7 +463,7 @@ void Ereader_ShowSuccessPopup(void)
 
 void Ereader_ShowPrizeText(void)
 {
-    if (gEReaderTextCharIndex <= gEReaderTextLengths[gEReaderTextPageIndex]) {
+    if (gEReaderTextCharIndex <= EREADER_TEXT_LENGTH(gEReaderTextPageIndex)) {
         gEReaderTextAnimDelay++;
         if (2 < gEReaderTextAnimDelay) {
             gEReaderTextAnimDelay = 0;
@@ -380,20 +476,20 @@ void Ereader_ShowPrizeText(void)
         if (6 < gEReaderTextAnimDelay) {
             gEReaderTextAnimDelay = 0;
             if (gEReaderTextBlinkToggle == 0) {
-                BlinkEReaderTextCursor(gEReaderTextLengths[gEReaderTextPageIndex], 0x3a80);
+                BlinkEReaderTextCursor(EREADER_TEXT_LENGTH(gEReaderTextPageIndex), 0x3a80);
             }
             else {
-                BlinkEReaderTextCursor(gEReaderTextLengths[gEReaderTextPageIndex], 0);
+                BlinkEReaderTextCursor(EREADER_TEXT_LENGTH(gEReaderTextPageIndex), 0);
             }
             gEReaderTextBlinkToggle = 1 - gEReaderTextBlinkToggle;
         }
     }
     if (JOY_NEW(A_BUTTON)) {
-        if (gEReaderTextCharIndex <= gEReaderTextLengths[gEReaderTextPageIndex]) {
+        if (gEReaderTextCharIndex <= EREADER_TEXT_LENGTH(gEReaderTextPageIndex)) {
             DrawEReaderTextPage(gEReaderTextPageIndex);
-            gEReaderTextCharIndex = gEReaderTextLengths[gEReaderTextPageIndex] + 1;
+            gEReaderTextCharIndex = EREADER_TEXT_LENGTH(gEReaderTextPageIndex) + 1;
         }
-        else if (gEReaderTextHasNextPage[gEReaderTextPageIndex] == 0) {
+        else if (EREADER_TEXT_HAS_NEXT_PAGE(gEReaderTextPageIndex) == 0) {
             if (gEReaderCardIndex == EREADER_BONUS_STAGE_CARD) {
                 gEReaderExitTargetState = STATE_BONUS_FIELD_SELECT;
             }
@@ -430,7 +526,7 @@ void ClearEReaderTextRows(void)
 
     for(iVar2 = 0; iVar2 < 3; iVar2++)
     {
-        for(iVar4 = 0; iVar4 < 0x18; iVar4++)
+        for(iVar4 = 0; iVar4 < EREADER_LINE_LENGTH; iVar4++)
         {
             CopyBgTilesRect(gEReaderText_Gfx, &gEReaderTextTileBuffer[iVar2][iVar4*0x20], 1, 2);
         }
@@ -444,25 +540,25 @@ void DrawEReaderTextPage(s8 arg0)
 
     for (iVar4 = 0; iVar4 < 3; iVar4++)
     {
-        for (iVar3 = 0; iVar3 < 0x18; iVar3++)
+        for (iVar3 = 0; iVar3 < EREADER_LINE_LENGTH; iVar3++)
         {
-            CopyBgTilesRect(gEReaderText_Gfx + (gEReaderTextGlyphTable[arg0][iVar4*0x18 + iVar3] & 0xFFF0), &gEReaderTextTileBuffer[iVar4][iVar3*0x20], 1, 2);
+            CopyBgTilesRect(gEReaderText_Gfx + (EREADER_TEXT_GLYPH(arg0, iVar4*EREADER_LINE_LENGTH + iVar3) & 0xFFF0), &gEReaderTextTileBuffer[iVar4][iVar3*0x20], 1, 2);
         }
     }
 }
 
 void DrawEReaderTextCharacter(s8 arg0, s8 arg1)
 {
-    s32 quotient = arg1 / 0x18;
-    s32 remainder = arg1 % 0x18;
+    s32 quotient = arg1 / EREADER_LINE_LENGTH;
+    s32 remainder = arg1 % EREADER_LINE_LENGTH;
 
-    CopyBgTilesRect(gEReaderText_Gfx + (gEReaderTextGlyphTable[arg0][quotient*0x18 + remainder] & 0xFFF0), &gEReaderTextTileBuffer[quotient][remainder*0x20], 1, 2);
+    CopyBgTilesRect(gEReaderText_Gfx + (EREADER_TEXT_GLYPH(arg0, quotient*EREADER_LINE_LENGTH + remainder) & 0xFFF0), &gEReaderTextTileBuffer[quotient][remainder*0x20], 1, 2);
 }
 
 void BlinkEReaderTextCursor(s8 arg0, u16 arg1)
 {
-    s32 quotient = arg0 / 0x18;
-    s32 remainder = arg0 % 0x18;
+    s32 quotient = arg0 / EREADER_LINE_LENGTH;
+    s32 remainder = arg0 % EREADER_LINE_LENGTH;
 
     CopyBgTilesRect(gEReaderText_Gfx + arg1, &gEReaderTextTileBuffer[quotient][remainder*0x20], 1, 2);
 }
