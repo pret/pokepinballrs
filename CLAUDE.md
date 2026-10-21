@@ -8,29 +8,41 @@ europea multilingua (inglese, francese, tedesco, italiano, spagnolo).
 - `make compare_eu` ricostruisce la ROM EU **identica byte per byte**
   (SHA1 `b8b7881eaa9856b5ada99078ad1053d31cb79827`).
 - `make compare` (USA) resta identica: ogni modifica EU è dentro `#ifdef EUROPE`.
-- Codice: 848/848 funzioni corrispondenti. 842 in C, 6 usano l'assembly originale nella
+- Codice: 848/848 funzioni corrispondenti. 846 in C, 2 usano l'assembly originale nella
   build EU (C conservato sotto `NONMATCHING`):
-  - `LoadTitlescreenGraphics` (titlescreen.c): scambio di registri
-  - `UpdateSapphireHatchMachine` (sapphire_seedot_egg_shop.c): un reload di r5 in più
-  - `EndOfBallBonusSummary` (all_board_mode_change_and_debug_menu.c): riscritta in EU,
-    il C attuale è ancora la logica USA (set di caratteri per lingua, tabelle 0x894BFFC)
-  - `RestoreMainFieldDynamicGraphics` (save_and_restore_game.c): cross-jump diverso
-  - `DrawRubyModeTimerDisplay` / `DrawSapphireModeTimerDisplay`: caso EnDe non fuso
+  - `LoadTitlescreenGraphics` (titlescreen.c): scambio r0/r1 nello store di
+    `gMain.bgOffsets[1].xOffset` (allocazione locale dei registri).
+  - `RestoreMainFieldDynamicGraphics` (save_and_restore_game.c): nel caso EVO_PREVIEW il reload
+    di `gMonPortraitGroupPals` usa r5 invece di r0, quindi il cross-jump unisce 3 istruzioni in
+    meno. Il registro di reload è scelto a rotazione (`last_spill_reg` in reload1.c), quindi la
+    causa può essere ovunque prima nella funzione.
+  Risolte: `EndOfBallBonusSummary` (logica EU riscritta: indice lingua, glifi, tabelle),
+  `Draw{Ruby,Sapphire}ModeTimerDisplay` (dimensione per lingua del 3° blocco di tile "saver"),
+  `UpdateSapphireHatchMachine` (in EU il setup del banner è in un `do { } while (0)`, che chiude
+  il blocco CSE: macro `BANNER_SETUP_BEGIN/END`).
 - Dati: `data/eu/*.s` sono **generati** dai sorgenti dati USA allineati alla ROM EU.
-  I dati presenti solo in EU (varianti per lingua) sono ancora blob in `data/eu/bin/`
-  (~3 MB: grafica per lingua, testi Pokédex in 5 lingue = `gPokedexEntries`, 560 KB).
+  I dati solo-EU sono in forma sorgente dove possibile:
+  - `data/eu/src/pokedex_entries.inc`: Pokédex EU (205 voci, 5 lingue) con `.dexLang`;
+  - `data/eu/src/bonus_summary_templates.inc`: testi del riepilogo bonus FR/IT/DE/ES;
+  - grafica per lingua: 1022 blob convertiti in `graphics/**/<file USA>_<lingua>.png/.pal/.bin`
+    (suffisso minuscolo del gruppo di lingue, `_eu` se il simbolo non ha suffisso).
+  Restano ~1,3 MB in `data/eu/bin/` (244 file): grafica con dimensioni diverse da USA
+  (`gPortraitAnimFrameGraphics_*`, `gPokedexSprites_Gfx_*`, …), tile compressi delle board,
+  grafica costruita a segmenti (`travel`, `ball_save`, `end_of_ball`, …), tabelle, audio.
   Nelle tabelle solo-EU di rom_2 i puntatori sono simbolici; le etichette nuove sono
   `gUnknown_<indirizzo EU>` o, dove ricavabile, `<nome USA>_<Lingua>`.
 
 ## Build
 
-Toolchain come da INSTALL.md (agbcc in `tools/agbcc`, binutils arm-none-eabi).
+Toolchain come da INSTALL.md (agbcc in `tools/agbcc`, binutils arm-none-eabi, `jq`).
 
     make compare_eu -j8     # ROM europea
     make compare -j8        # ROM americana (regressione)
 
 La build non richiede la ROM originale. Gli strumenti di porting sì: copiare la ROM EU
 in `baserom_eu.gba` nella radice del repo (ignorata da git) o impostare `BASEROM_EU`.
+Su Windows (MSYS2) usare il `jq` di msys, non quello mingw (scrive CRLF e rompe
+`graphics_rules_generated.mk`), e Python in modalità UTF-8 (`python -X utf8`).
 
 ## Convenzioni EU nel codice
 
@@ -39,31 +51,50 @@ in `baserom_eu.gba` nella radice del repo (ignorata da git) o impostare `BASEROM
   `DMA_LANG4_ENFR`, `LANG4_SWITCH_ENDE`, ecc. Simboli per lingua con suffissi
   `_En/_Fr/_De/_It/_Es` o gruppi (`_EnFr`, `_EnDe`, `_EnDeItEs`, …).
 - I raggruppamenti di lingue cambiano da asset ad asset: copiare quello della ROM.
+- Alcune tabelle sono indicizzate in un altro ordine (es. testi del riepilogo bonus: En, Fr, It, De, Es).
 - `struct SaveData` ha `language` in più (customButtonConfig +2, highScores +4, il resto di gMain +4).
 - `struct PokemonSpecies.name` è `[3][10]` (EN, FR, DE), vedi `src/data/species.h` (`SPECIES_NAME`).
 - RAM EU: `sym_ewram_eu.txt` (generato da `gen_ram.py`), `sym_bss_eu.txt`, `sym_common_eu.txt`.
+
+## Testi del Pokédex (tools/preproc)
+
+- `.dexLang EN|FR|DE|IT|ES` sceglie la codifica europea dei glifi (US = quella americana, default);
+  le tabelle sono in `ApplyEuropeanDexEncoding` (asm_file.cpp): glifi accentati, ß, „ « », `œ`
+  (2 glifi), larghezze diverse di k, z, 1, `, é, “ a seconda della lingua.
+- `{XXXX}` nelle stringhe dex scrive un codice glifo grezzo (8 casi in tutto il Pokédex EU).
+- `.dexCategoryLeftAligned`: categoria allineata a sinistra (FR/DE/IT/ES; in EN è a destra come in USA).
 
 ## Strumenti (`tools/eu_port/`, Python 3 + pyelftools + capstone)
 
 - `check.sh [oggetto]`: compila gli oggetti EU, confronta con la ROM EU per funzione, poi `make compare` USA.
 - `fdiff.py src/X.o Funzione 0xEUADDR [SIZE]`: diff istruzione per istruzione di una funzione.
+- `nonmatching.sh FILE.c`: compila per EU con `-DNONMATCHING` in `build/nm/src/FILE.o`
+  (poi `fdiff.py ../nm/src/FILE.o Funzione 0xEUADDR SIZE`).
+- `lcm_sim.py`: simula la PRE/LCM di agbcc su un dump `-dG` per capire perché un'espressione
+  (es. l'indirizzo di un globale) viene ricaricata o riusata.
 - `eudis.py ADDR SIZE`, `langsw.py ADDR SIZE`, `xref.py ADDR`: disassembly EU, tabelle switch per lingua, riferimenti.
 - `try_variants.py`: prova varianti di sorgente (attenzione: tocca codice condiviso, ricontrollare USA).
 - `fn2asm.py` + `wrap_asm.py FILE.c Funzione START END`: sostituisce in EU una funzione con l'asm originale.
 - `regen.sh`: rigenera i dati EU: simboli dal codice (`codesyms.py`) → allineamento dati USA/EU
   (`align_data.py`) → layout RAM (`gen_ram.py`) → `data/eu/*.s` (`gen_eu_data.py`).
   Va rieseguito dopo modifiche al C che cambiano riferimenti ai dati; poi `make compare_eu`.
+  `gen_eu_data.py` include al posto dei byte: i file `data/eu/src/*.inc` con una riga
+  `@ eu_range INIZIO FINE`, e la grafica elencata in `tools/eu_port/data/eu_graphics.json`.
+- `gfx_eu.py`: converte i blob di grafica per lingua in copie dei file grafici USA
+  (verifica il giro PNG→4bpp con gbagfx), scrive `tools/eu_port/data/eu_graphics.json` e `graphics_rules_eu.mk`
+  (regole con opzioni gbagfx). Poi `regen.sh`.
+- `dump_dex_eu.py`: rigenera `data/eu/src/pokedex_entries.inc` dalla ROM EU.
 - `romdiff.py`, `worddiff.py`: dove differisce la ROM costruita e di quanto sono spostati i puntatori.
-- `data/`: dati di riferimento (inizi oggetti EU, nomi, nomi extra); i JSON generati sono ignorati da git.
+- `data/`: dati di riferimento (inizi oggetti EU, nomi, nomi extra, `eu_graphics.json`);
+  i JSON generati dall'allineamento sono ignorati da git.
 
 Attenzione: `data/eu/*.s` sono generati; modificarli a mano va bene solo se poi non si rilancia
-`regen.sh` (oppure portare la modifica nel generatore).
+`regen.sh` (oppure portare la modifica nel generatore o in `data/eu/src/`).
 
 ## Prossimi passi possibili
 
-1. Testi Pokédex EU (`gPokedexEntries`, struct `PokedexEntry` EU 0xAAC byte in pokedex.c) in forma
-   leggibile: estendere la tabella `.dexText` di tools/preproc con i glifi accentati EU.
-2. Grafica per lingua da `data/eu/bin` a PNG (stesse dimensioni/palette delle controparti USA)
-   con regole in graphics_rules.mk.
-3. Riprovare in C le 6 funzioni in asm.
-4. Sprite set solo-EU di rom_2 da `.byte` alle macro `packed_sprite_oaml` come in USA.
+1. Blob rimasti: grafica con dimensioni diverse dalla controparte USA (portrait anim frames,
+   sprite del Pokédex), tile compressi delle board, grafica a segmenti (servono voci nei JSON
+   gfx-config), glifi Pokédex EU (`gPokedexTextGlyphs_Gfx`), tabelle `.4byte`.
+2. Le 2 funzioni ancora in asm (vedi sopra).
+3. Sprite set solo-EU di rom_2 da `.byte` alle macro `packed_sprite_oaml` come in USA.
