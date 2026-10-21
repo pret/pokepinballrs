@@ -339,7 +339,7 @@ void InitPinballGameState(void)
             gCurrentPinballGame->coins = 10;
         }
 #ifdef EUROPE
-        gCurrentPinballGame->unk141C = 0;
+        gCurrentPinballGame->savedLanguage = 0;
 #endif
     }
 

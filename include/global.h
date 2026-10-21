@@ -920,7 +920,7 @@ struct PinballGame
     /*0x13D4*/u16 nameRevealDelaysRow2[CAUGHT_TEXT_LENGTH];
     /*0x13EC*/struct Vector16 nameSlideRow2[CAUGHT_TEXT_LENGTH];
     /*0x1418*/u8 filler1418[4];
-    /*0x141C*/u8 unk141C; // cleared on a new game, kept in the save state
+    /*0x141C*/u8 savedLanguage; // language of the saved game state
 } /* size=0x1420 */;
 #else
     /*0x13D4*/u16 nameRevealDelaysRow2[CAUGHT_TEXT_LENGTH];
