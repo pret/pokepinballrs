@@ -42,6 +42,9 @@ void InitFrameProcess3_BoardLogic_RubyBoard(void)
     gCurrentPinballGame->linooneSideBumperExtensionOffset[SIDE_IX_LEFT] = 3;
     gCurrentPinballGame->linooneSideBumperExtensionOffset[SIDE_IX_RIGHT] = 3;
     DrawBoardEdgeBanner();
+#ifdef EUROPE
+    UpdateRubyBoardAnimations();
+#endif
 }
 
 void UpdateFrameProcess3_BoardLogic_RubyBoard(void)
