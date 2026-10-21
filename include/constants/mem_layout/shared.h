@@ -179,7 +179,12 @@
 
 
 //Note: this is logically OBJ_TILE_ADDR(TILE_INDEX(1, 13, 22 * rowIx + charIx)), but that changes compilation
+#ifdef EUROPE
+//Same address, but the European build computes it from the FX base (TILE_INDEX(1, 6, 0))
+#define OBJ_VRAM_ADDR_END_OF_BALL_BONUS_SUMMARY_TEXT(rowIx,charIx)  OBJ_TILE_ADDR(TILE_INDEX(1, 6, 0)) + (charIx + rowIx * 22 + 224) * TILE_SIZE_4BPP
+#else
 #define OBJ_VRAM_ADDR_END_OF_BALL_BONUS_SUMMARY_TEXT(rowIx,charIx)  OBJ_TILE_ADDR(TILE_INDEX(1, 8, 0)) + (charIx + rowIx * 22 + 160) * TILE_SIZE_4BPP
+#endif
 #define SIZE_OF_VRAM_END_OF_BALL_BONUS_SUMMARY_TEXT_CHAR_TILES      TILE_SIZE_4BPP
 
 #endif
