@@ -12,7 +12,15 @@ extern const u16 gShopSignTransitionFrames[][14];
 extern const Palette gSapphireShopSign_Pals[];
 extern const u8 gSapphireStageBasket_Gfx[][SIZE_OF_SEEDOT_BASKET_TILES];
 extern const u8 gHatchMachineSparkleFx_Gfx[][SIZE_OF_HATCH_MACHINE_SPARKLE_FX_TILES];
+#ifdef EUROPE
+extern const u8 gSapphireShopSignTileGfx_En[][SIZE_OF_SAPPHIRE_MART_SIGN_TILES];
+extern const u8 gSapphireShopSignTileGfx_Fr[][SIZE_OF_SAPPHIRE_MART_SIGN_TILES];
+extern const u8 gSapphireShopSignTileGfx_De[][SIZE_OF_SAPPHIRE_MART_SIGN_TILES];
+extern const u8 gSapphireShopSignTileGfx_It[][SIZE_OF_SAPPHIRE_MART_SIGN_TILES];
+extern const u8 gSapphireShopSignTileGfx_Es[][SIZE_OF_SAPPHIRE_MART_SIGN_TILES];
+#else
 extern const u8 gSapphireShopSignTileGfx[][SIZE_OF_SAPPHIRE_MART_SIGN_TILES];
+#endif
 extern const u8 gHatchMachineElevator_Gfx[][SIZE_OF_VRAM_HATCH_MACHINE_ALL_TILES];
 extern const u8 gEggFrameTilesGfx[][SIZE_OF_VRAM_HATCH_EGG_TILES];
 extern const u8 gSapphireBoardSeedot_Gfx[][SIZE_OF_SEEDOT_ENTITY_RAW_TILES];
@@ -557,7 +565,29 @@ void DrawSapphireShopSignSprite(void)
         group->baseY = 115 - gCurrentPinballGame->cameraYOffset;
         index = gCurrentPinballGame->shopSignPaletteIndex + gCurrentPinballGame->paletteDimmingIx * 3;
         DmaCopy16(3, gSapphireShopSign_Pals[index], OBJ_PLTT_SLOT(PAL_IX_SAPPHIRE_MART_SIGN), PLTT_SLOT_SIZE);
+#ifdef EUROPE
+        index = gCurrentPinballGame->sapphireShopSignFrame;
+        switch (gMain_saveData.language)
+        {
+        case LANGUAGE_ENGLISH:
+            DmaCopy16(3, gSapphireShopSignTileGfx_En[index], OBJ_VRAM_ADDR_SAPPHIRE_MART_SIGN_TILES, SIZE_OF_SAPPHIRE_MART_SIGN_TILES);
+            break;
+        case LANGUAGE_FRENCH:
+            DmaCopy16(3, gSapphireShopSignTileGfx_Fr[index], OBJ_VRAM_ADDR_SAPPHIRE_MART_SIGN_TILES, SIZE_OF_SAPPHIRE_MART_SIGN_TILES);
+            break;
+        case LANGUAGE_GERMAN:
+            DmaCopy16(3, gSapphireShopSignTileGfx_De[index], OBJ_VRAM_ADDR_SAPPHIRE_MART_SIGN_TILES, SIZE_OF_SAPPHIRE_MART_SIGN_TILES);
+            break;
+        case LANGUAGE_ITALIAN:
+            DmaCopy16(3, gSapphireShopSignTileGfx_It[index], OBJ_VRAM_ADDR_SAPPHIRE_MART_SIGN_TILES, SIZE_OF_SAPPHIRE_MART_SIGN_TILES);
+            break;
+        case LANGUAGE_SPANISH:
+            DmaCopy16(3, gSapphireShopSignTileGfx_Es[index], OBJ_VRAM_ADDR_SAPPHIRE_MART_SIGN_TILES, SIZE_OF_SAPPHIRE_MART_SIGN_TILES);
+            break;
+        }
+#else
         DmaCopy16(3, gSapphireShopSignTileGfx[gCurrentPinballGame->sapphireShopSignFrame], OBJ_VRAM_ADDR_SAPPHIRE_MART_SIGN_TILES, SIZE_OF_SAPPHIRE_MART_SIGN_TILES);
+#endif
         for (i = 0; i < 2; i++)
         {
             oamSimple = &group->oam[i];
