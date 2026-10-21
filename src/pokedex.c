@@ -66,10 +66,10 @@ void LoadMonPortrait(s16);
 
 #ifdef EUROPE
 // Per-language Pokedex layout settings, set up by InitPokedexState()
-EWRAM_DATA u8 gPokedexIsLocalized;      // FALSE for English
-EWRAM_DATA u8 gPokedexNameLanguage;     // which of the 3 species name sets to use (English/French/German)
-EWRAM_DATA u8 gPokedexLanguage;
-EWRAM_DATA u8 gPokedexDescLanguage;
+EWRAM_DATA s8 gPokedexIsLocalized;      // FALSE for English; selects metric units
+EWRAM_DATA s8 gPokedexNameLanguage;     // which of the 3 species name sets to use (English/French/German)
+EWRAM_DATA s8 gPokedexLanguage;
+EWRAM_DATA s8 gPokedexDescLanguage;
 EWRAM_DATA s8 gPokedexAnimatedIconLastFrame;
 EWRAM_DATA s16 gPokedexAnimatedIconX;
 EWRAM_DATA s8 gPokedexNumSpriteSets;
@@ -139,6 +139,21 @@ EWRAM_DATA s16 gPokedexDetailFrameCount;
 EWRAM_DATA s16 gLinkSendBuffer[0xA];
 EWRAM_DATA s8 gPokedexDescriptionPage;
 
+#ifdef EUROPE
+struct PokedexEntry
+{
+    /*0x00*/ u16 dexNum[DEX_NUM_DIGITS];
+    // [0] = imperial units (English), [1] = metric units (other languages)
+    /*0x06*/ u16 height[2][4];
+    /*0x16*/ u16 weight[2][5];
+    // English (also used for Italian and Spanish), French, German
+    /*0x2A*/ s16 name[3][POKEMON_NAME_LENGTH];
+    /*0x66*/ s16 category[NUM_LANGUAGES][POKEMON_CATEGORY_NAME_LENGTH];
+    // The dex description has 2 pages with 3 lines each. Each line
+    // is 42 characters long.
+    /*0xD4*/ s16 description[NUM_LANGUAGES][2 * 3 * POKEMON_DEX_LINE_LENGTH];
+}; /* size=0xAAC */
+#else
 struct PokedexEntry
 {
     /*0x00*/ u16 dexNum[DEX_NUM_DIGITS];
@@ -149,6 +164,7 @@ struct PokedexEntry
     // is 42 characters long.
     /*0x42*/ s16 description[2 * 3 * POKEMON_DEX_LINE_LENGTH];
 }; /* size=0x23C */
+#endif
 
 // Rom_1 data
 extern const u16 gDexInfoWindowMiddleRowTiles[];
@@ -236,6 +252,16 @@ enum PokedexPopupType {
 // The japanese and english text glyphs are sourced from the same blob of tile graphics, and
 // each glyph is two tiles high.
 #define ENGLISH_GLYPHS_START 0x2820
+
+#ifdef EUROPE
+#define POKEDEX_ENTRY_NAME(species) gPokedexEntries[species].name[gPokedexNameLanguage]
+#define POKEDEX_ENTRY_CATEGORY(species) gPokedexEntries[species].category[gPokedexLanguage]
+#define POKEDEX_ENTRY_DESCRIPTION(species) gPokedexEntries[species].description[gPokedexDescLanguage]
+#else
+#define POKEDEX_ENTRY_NAME(species) gPokedexEntries[species].name
+#define POKEDEX_ENTRY_CATEGORY(species) gPokedexEntries[species].category
+#define POKEDEX_ENTRY_DESCRIPTION(species) gPokedexEntries[species].description
+#endif
 
 
 
@@ -1993,8 +2019,8 @@ static void PrintSelectedMonDexNum(s16 species)
     {
         for (i = 0; i < POKEMON_NAME_LENGTH; i++)
         {
-            var1 = gPokedexEntries[species].name[i] & ~0xF;
-            var2 = gPokedexEntries[species].name[i] & 0xF;
+            var1 = POKEDEX_ENTRY_NAME(species)[i] & ~0xF;
+            var2 = POKEDEX_ENTRY_NAME(species)[i] & 0xF;
             if (var2 == 0)
                 var2 = 4;
 
@@ -2018,8 +2044,8 @@ static void PrintSelectedMonDexNum(s16 species)
     {
         for (i = 0; i < POKEMON_CATEGORY_NAME_LENGTH; i++)
         {
-            var1 = gPokedexEntries[species].category[i] & ~0xF;
-            var2 = gPokedexEntries[species].category[i] & 0xF;
+            var1 = POKEDEX_ENTRY_CATEGORY(species)[i] & ~0xF;
+            var2 = POKEDEX_ENTRY_CATEGORY(species)[i] & 0xF;
             if (var2 == 0)
                 var2 = 6;
 
@@ -2034,27 +2060,75 @@ static void PrintSelectedMonDexNum(s16 species)
     }
     else
     {
+#ifdef EUROPE
+        for (i = 0; i < 8; i++)
+            CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)BG_VRAM_ADDR_POKEDEX_CATEGORY_RECT + i * TILE_SIZE_4BPP, 1, 2);
+        CopyBgTilesRect((void *)gPokedexTextGlyphs_Gfx, (void *)BG_VRAM_ADDR_POKEDEX_CATEGORY_RECT + 8 * TILE_SIZE_4BPP, 1, 2);
+#else
         for (i = 0; i < 9; i++)
             CopyBgTilesRect((void *)&gPokedexTextGlyphs_Gfx[ENGLISH_GLYPHS_START], (void *)BG_VRAM_ADDR_POKEDEX_CATEGORY_RECT + i * TILE_SIZE_4BPP, 1, 2);
+#endif
     }
 
     if (gPokedexFlags[species] == SPECIES_DEX_CAUGHT)
     {
+#ifdef EUROPE
+        if (gMain_saveData.language == LANGUAGE_ENGLISH)
+        {
+            PrintString(gPokedexEntries[species].height[gPokedexIsLocalized][0] + 32, 1, 16, 6, 1, 2);
+            PrintString(gPokedexEntries[species].height[gPokedexIsLocalized][1] + 32, 1, 17, 6, 1, 2);
+            PrintString(gPokedexEntries[species].height[gPokedexIsLocalized][2] + 32, 1, 19, 6, 1, 2);
+            PrintString(gPokedexEntries[species].height[gPokedexIsLocalized][3] + 32, 1, 20, 6, 1, 2);
+            for (i = 0; i < 5; i++)
+                PrintString(gPokedexEntries[species].weight[gPokedexIsLocalized][i], 1, i + 16, 8, 1, 1);
+        }
+        else
+        {
+            PrintString(gPokedexEntries[species].height[gPokedexIsLocalized][0] + 32, 1, 17, 6, 1, 2);
+            PrintString(gPokedexEntries[species].height[gPokedexIsLocalized][1] + 32, 1, 18, 6, 1, 2);
+            PrintString(gPokedexEntries[species].height[gPokedexIsLocalized][2] + 32, 1, 19, 6, 1, 2);
+            PrintString(gPokedexEntries[species].height[gPokedexIsLocalized][3] + 32, 1, 20, 6, 1, 2);
+            for (i = 0; i < 4; i++)
+                PrintString(gPokedexEntries[species].weight[gPokedexIsLocalized][i + 1], 1, i + 17, 8, 1, 1);
+        }
+#else
         PrintString(gPokedexEntries[species].heightWeight[0] + 32, 1, 16, 6, 1, 2);
         PrintString(gPokedexEntries[species].heightWeight[1] + 32, 1, 17, 6, 1, 2);
         PrintString(gPokedexEntries[species].heightWeight[2] + 32, 1, 19, 6, 1, 2);
         PrintString(gPokedexEntries[species].heightWeight[3] + 32, 1, 20, 6, 1, 2);
         for (i = 0; i < POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH - 4; i++)
             PrintString(gPokedexEntries[species].heightWeight[4 + i], 1, i + 16, 8, 1, 1);
+#endif
     }
     else
     {
+#ifdef EUROPE
+        if (gMain_saveData.language == LANGUAGE_ENGLISH)
+        {
+            PrintString(CHAR_DASH_FONT_1, 1, 16, 6, 1, 2);
+            PrintString(CHAR_DASH_FONT_1, 1, 17, 6, 1, 2);
+            PrintString(CHAR_DASH_FONT_1, 1, 19, 6, 1, 2);
+            PrintString(CHAR_DASH_FONT_1, 1, 20, 6, 1, 2);
+            for (i = 0; i < 5; i++)
+                PrintString(CHAR_DASH_FONT_0, 1, i + 16, 8, 1, 1);
+        }
+        else
+        {
+            PrintString(CHAR_DASH_FONT_1, 1, 17, 6, 1, 2);
+            PrintString(CHAR_DASH_FONT_1, 1, 18, 6, 1, 2);
+            PrintString(CHAR_DASH_FONT_1, 1, 19, 6, 1, 2);
+            PrintString(CHAR_DASH_FONT_1, 1, 20, 6, 1, 2);
+            for (i = 0; i < 4; i++)
+                PrintString(CHAR_DASH_FONT_0, 1, i + 17, 8, 1, 1);
+        }
+#else
         PrintString(CHAR_DASH_FONT_1, 1, 16, 6, 1, 2);
         PrintString(CHAR_DASH_FONT_1, 1, 17, 6, 1, 2);
         PrintString(CHAR_DASH_FONT_1, 1, 19, 6, 1, 2);
         PrintString(CHAR_DASH_FONT_1, 1, 20, 6, 1, 2);
         for (i = 0; i < POKEMON_HEIGHT_WEIGHT_TEXT_LENGTH - 4; i++)
             PrintString(CHAR_DASH_FONT_0, 1, i + 16, 8, 1, 1);
+#endif
     }
 }
 
@@ -2127,8 +2201,8 @@ void PrintDexNumbersFromListPosition(s16 listPosition)
             for (j = 0; j < POKEMON_NAME_LENGTH; j++)
             {
                 // These don't use listPosition for some reason, despite being the only value passed
-                var1 = gPokedexEntries[gPokedexListPosition + i].name[j] & ~0xF;
-                var2 = gPokedexEntries[gPokedexListPosition + i].name[j] & 0xF;
+                var1 = POKEDEX_ENTRY_NAME(gPokedexListPosition + i)[j] & ~0xF;
+                var2 = POKEDEX_ENTRY_NAME(gPokedexListPosition + i)[j] & 0xF;
                 if (var2 == 0)
                     var2 = 4;
 
@@ -2206,8 +2280,8 @@ void PrintDexDescription(s16 species, u32 page)
     {
         for (j = 0; j < POKEMON_DEX_LINE_LENGTH; j++)
         {
-            var1 = gPokedexEntries[species].description[page * DEX_TEXT_CHARS_PER_PAGE + i * POKEMON_DEX_LINE_LENGTH + j] & ~0xF;
-            var2 = gPokedexEntries[species].description[page * DEX_TEXT_CHARS_PER_PAGE + i * POKEMON_DEX_LINE_LENGTH + j] & 0xF;
+            var1 = POKEDEX_ENTRY_DESCRIPTION(species)[page * DEX_TEXT_CHARS_PER_PAGE + i * POKEMON_DEX_LINE_LENGTH + j] & ~0xF;
+            var2 = POKEDEX_ENTRY_DESCRIPTION(species)[page * DEX_TEXT_CHARS_PER_PAGE + i * POKEMON_DEX_LINE_LENGTH + j] & 0xF;
             if (var2 == 0)
                 var2 = 4;
 
