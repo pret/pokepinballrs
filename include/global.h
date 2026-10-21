@@ -1006,6 +1006,31 @@ extern const u8 *const gModeBannerTilemaps_Es[];
 extern const u8 *const gModeBannerTilemaps[];
 #endif
 
+#ifdef EUROPE
+#define DMA_MODE_BANNER_TILEMAP(ix, dest, size)                                   \
+    switch (gMain_saveData.language)                                              \
+    {                                                                             \
+    case LANGUAGE_ENGLISH:                                                        \
+        DmaCopy16(3, gModeBannerTilemaps_En[ix], dest, size);                     \
+        break;                                                                    \
+    case LANGUAGE_FRENCH:                                                         \
+        DmaCopy16(3, gModeBannerTilemaps_Fr[ix], dest, size);                     \
+        break;                                                                    \
+    case LANGUAGE_GERMAN:                                                         \
+        DmaCopy16(3, gModeBannerTilemaps_De[ix], dest, size);                     \
+        break;                                                                    \
+    case LANGUAGE_ITALIAN:                                                        \
+        DmaCopy16(3, gModeBannerTilemaps_It[ix], dest, size);                     \
+        break;                                                                    \
+    case LANGUAGE_SPANISH:                                                        \
+        DmaCopy16(3, gModeBannerTilemaps_Es[ix], dest, size);                     \
+        break;                                                                    \
+    }
+#else
+#define DMA_MODE_BANNER_TILEMAP(ix, dest, size) \
+    DmaCopy16(3, gModeBannerTilemaps[ix], dest, size)
+#endif
+
 // Center screen portrait animation frames (shop items, slot cards...). They contain text,
 // so the European release has one set per language.
 #ifdef EUROPE
