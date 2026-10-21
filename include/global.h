@@ -1005,6 +1005,41 @@ extern const u8 *const gModeBannerTilemaps_Es[];
 #else
 extern const u8 *const gModeBannerTilemaps[];
 #endif
+
+// Center screen portrait animation frames (shop items, slot cards...). They contain text,
+// so the European release has one set per language.
+#ifdef EUROPE
+extern const u8 gPortraitAnimFrameGraphics_En[][0x300];
+extern const u8 gPortraitAnimFrameGraphics_Fr[][0x300];
+extern const u8 gPortraitAnimFrameGraphics_De[][0x300];
+extern const u8 gPortraitAnimFrameGraphics_It[][0x300];
+extern const u8 gPortraitAnimFrameGraphics_Es[][0x300];
+
+#define DMA_PORTRAIT_ANIM_FRAME(frame, dest)                                          \
+    switch (gMain_saveData.language)                                                  \
+    {                                                                                 \
+    case LANGUAGE_ENGLISH:                                                            \
+        DmaCopy16(3, gPortraitAnimFrameGraphics_En[frame], dest, 0x300);              \
+        break;                                                                        \
+    case LANGUAGE_FRENCH:                                                             \
+        DmaCopy16(3, gPortraitAnimFrameGraphics_Fr[frame], dest, 0x300);              \
+        break;                                                                        \
+    case LANGUAGE_GERMAN:                                                             \
+        DmaCopy16(3, gPortraitAnimFrameGraphics_De[frame], dest, 0x300);              \
+        break;                                                                        \
+    case LANGUAGE_ITALIAN:                                                            \
+        DmaCopy16(3, gPortraitAnimFrameGraphics_It[frame], dest, 0x300);              \
+        break;                                                                        \
+    case LANGUAGE_SPANISH:                                                            \
+        DmaCopy16(3, gPortraitAnimFrameGraphics_Es[frame], dest, 0x300);              \
+        break;                                                                        \
+    }
+#else
+extern const u8 gPortraitAnimFrameGraphics[][0x300];
+
+#define DMA_PORTRAIT_ANIM_FRAME(frame, dest) \
+    DmaCopy16(3, gPortraitAnimFrameGraphics[frame], dest, 0x300)
+#endif
 extern const Palette *const gModeBanner_Pals[];
 
 

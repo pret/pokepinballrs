@@ -7,7 +7,6 @@
 //Should be of type Palette; causes match errors with the fakematch
 extern const u16 gLocation_Pals[];
 extern const u16 gPortraitAnim_Pals[];
-extern const u8 gPortraitAnimFrameGraphics[][SIZE_OF_VRAM_PORTRAIT_TILES];
 extern const u8 gLocationPortraitGfx[][SIZE_OF_VRAM_PORTRAIT_TILES];
 
 // Rom_2 data
@@ -50,16 +49,16 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         ptr = gShopItemData[START_SLOT_CARD];
         gCurrentPinballGame->portraitGfxIndex[picIx] = ptr[(gCurrentPinballGame->portraitCycleFrame % 48) / 24];
         index = ptr[2] * 0x10;
-        DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]],
-            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES, SIZE_OF_VRAM_PORTRAIT_TILES);
+        DMA_PORTRAIT_ANIM_FRAME(gCurrentPinballGame->portraitGfxIndex[picIx],
+            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES);
         DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     case PORTRAIT_STATE_ROULETTE_WHEEL:
         ptr = gShopItemData[gCurrentPinballGame->modeOutcomeValues[picIx]];
         gCurrentPinballGame->portraitGfxIndex[picIx] = ptr[0];
         index = ptr[2] * 0x10;
-        DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]],
-            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES, SIZE_OF_VRAM_PORTRAIT_TILES);
+        DMA_PORTRAIT_ANIM_FRAME(gCurrentPinballGame->portraitGfxIndex[picIx],
+            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES);
         DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     case PORTRAIT_STATE_POKEMON_DISPLAY:
@@ -81,7 +80,23 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         {
             if (gMain_saveData.pokedexFlags[gCurrentPinballGame->evoTargetSpecies] == SPECIES_DEX_UNSEEN)
             {
+#ifdef EUROPE
+                // The Spanish release has its own "unknown Pokémon" portrait.
+                switch (gMain_saveData.language)
+                {
+                case LANGUAGE_ENGLISH:
+                case LANGUAGE_FRENCH:
+                case LANGUAGE_GERMAN:
+                case LANGUAGE_ITALIAN:
+                    gCurrentPinballGame->portraitGfxIndex[picIx] = SPECIES_NONE;
+                    break;
+                case LANGUAGE_SPANISH:
+                    gCurrentPinballGame->portraitGfxIndex[picIx] = SPECIES_NONE + 1;
+                    break;
+                }
+#else
                 gCurrentPinballGame->portraitGfxIndex[picIx] = SPECIES_NONE;
+#endif
                 DmaCopy16(
                     3,
                     gMonPortraitGroupPals[gCurrentPinballGame->portraitGfxIndex[picIx] / 15][gCurrentPinballGame->portraitGfxIndex[picIx] % 15],
@@ -124,8 +139,8 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         {
             // This code state likely doesn't matter - Board is in this board substate for exactly 1 frame.
             gCurrentPinballGame->portraitGfxIndex[picIx] = gShopItemData[GOTO_NEXT_CARD][(gCurrentPinballGame->portraitCycleFrame % 48) / 24];
-            DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]],
-            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES, SIZE_OF_VRAM_PORTRAIT_TILES);
+            DMA_PORTRAIT_ANIM_FRAME(gCurrentPinballGame->portraitGfxIndex[picIx],
+            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES);
 
             // !!!!! BUG: this should be multiplied by 16 !!
             index = gShopItemData[GOTO_NEXT_CARD][2];
@@ -133,8 +148,8 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         else
         {
             gCurrentPinballGame->portraitGfxIndex[picIx] = gShopItemData[TRAVEL_RAMP_INDICATOR_CARD][(gCurrentPinballGame->portraitCycleFrame % 48) / 24];
-            DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]],
-            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES, SIZE_OF_VRAM_PORTRAIT_TILES);
+            DMA_PORTRAIT_ANIM_FRAME(gCurrentPinballGame->portraitGfxIndex[picIx],
+            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES);
             index = gShopItemData[TRAVEL_RAMP_INDICATOR_CARD][2] * 16;
         }
         DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
@@ -143,8 +158,8 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         ptr = gShopItemData[gCurrentPinballGame->shopSelectedItemId];
         gCurrentPinballGame->portraitGfxIndex[picIx] = ptr[0];
         index = ptr[2] * 16;
-        DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]],
-            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES, SIZE_OF_VRAM_PORTRAIT_TILES);
+        DMA_PORTRAIT_ANIM_FRAME(gCurrentPinballGame->portraitGfxIndex[picIx],
+            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES);
 
         if (gCurrentPinballGame->coins < ptr[3] ||
             (
@@ -177,8 +192,8 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         ptr2 = ptr = gShopItemData[gCurrentPinballGame->modeOutcomeValues[picIx]];
         gCurrentPinballGame->portraitGfxIndex[picIx] = *(ptr2 += (gCurrentPinballGame->portraitCycleFrame % 48) / 24);
         index = ptr[2] * 16;
-        DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]],
-            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES, SIZE_OF_VRAM_PORTRAIT_TILES);
+        DMA_PORTRAIT_ANIM_FRAME(gCurrentPinballGame->portraitGfxIndex[picIx],
+            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES);
         DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     case PORTRAIT_STATE_ROULETTE_OUTCOME:
@@ -186,8 +201,8 @@ void LoadPortraitGraphics(s16 displayMode, s16 picIx)
         ptr2 = ptr = gShopItemData[gCurrentPinballGame->prizeId];
         gCurrentPinballGame->portraitGfxIndex[picIx] = *(ptr2 += gRouletteOutcomeFrameOffsets[gCurrentPinballGame->outcomeFrameCounter / 12]);
         index = ptr[2] * 16;
-        DmaCopy16(3, gPortraitAnimFrameGraphics[gCurrentPinballGame->portraitGfxIndex[picIx]],
-            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES, SIZE_OF_VRAM_PORTRAIT_TILES);
+        DMA_PORTRAIT_ANIM_FRAME(gCurrentPinballGame->portraitGfxIndex[picIx],
+            OBJ_VRAM_ADDR_PORTRAIT0_TILES + picIx * SIZE_OF_VRAM_PORTRAIT_TILES);
         DmaCopy16(3, &gPortraitAnim_Pals[index], OBJ_PLTT_SLOT(gPortraitPaletteSlots[picIx]), PLTT_SLOT_SIZE);
         break;
     }

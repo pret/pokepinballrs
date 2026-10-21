@@ -41,7 +41,7 @@ extern const u8 gCatchTile_BurstStage2_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_OUTL
 extern const u8 gCatchTile_BurstStage3_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_FLIGHT];
 extern const u8 gCatchTile_BurstStage4_Gfx[SIZE_OF_VRAM_FX_CATCH_BURST_TILE_ELECTRIC];
 extern const u8 gAerodactlyFlight_Gfx[SIZE_OF_VRAM_AERODACTYL_EGG_DELIVERY_TILES];
-extern const u8 gPortraitAnimFrameGraphics[][SIZE_OF_VRAM_PORTRAIT_TILES];
+
 extern const u8 gBallRotationTileGraphics[][SIZE_OF_VRAM_BALL_TILES];
 extern const u8 gBallUpgradeFx_Gfx[][SIZE_OF_VRAM_FX_BALL_UPGRADE_TILES];
 extern const u8 gRubyChikoritaEntity[][SIZE_OF_VRAM_CHIKORITA_TILES];
