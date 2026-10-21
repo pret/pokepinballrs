@@ -3,6 +3,22 @@
 
 // Title screen
   // before pressing start
+#ifdef EUROPE
+  // The flippers are separate sprites, so that they can be placed
+  // around the "press start" text of each language.
+#define SG_TITLE_SCREEN_FLIPPER_AND_START_BASE 0 // Of 4
+#define SG_TITLE_SCREEN_FLIPPER_AND_START_ANIM_MAX 3
+#define SG_TITLE_SCREEN_LEFT_FLIPPER_BASE 0 // Of 3
+#define SG_TITLE_SCREEN_RIGHT_FLIPPER_BASE 3 // Of 3
+#define SG_TITLE_SCREEN_PRESS_START_BASE 6 // Of 4
+#define SG_DELETE_SAVE_CONFIRMATION_PANE 10
+
+  // after pressing start
+#define SG_MENU_FLIPPER_LEFT 0
+#define SG_MENU_FLIPPER_RIGHT 1
+#define SG_MENU_FRAME 2
+#define SG_MENU_PANEL 3
+#else
 #define SG_TITLE_SCREEN_FLIPPER_AND_START_BASE 0 // Of 4
 #define SG_TITLE_SCREEN_FLIPPER_AND_START_ANIM_MAX 3
 #define SG_DELETE_SAVE_CONFIRMATION_PANE 4
@@ -11,6 +27,7 @@
 #define SG_TITLE_SCREEN_LEFT_FLIPPER_BASE 0 // Of 3
 #define SG_TITLE_SCREEN_RIGHT_FLIPPER_BASE 3 // Of 3
 #define SG_MENU_PANEL 6
+#endif
 
 // Field Select screen
 #define SG_FIELD_SELECT_RUBY_BOARD_NAME_HIGHLIGHT 0

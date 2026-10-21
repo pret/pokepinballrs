@@ -9,7 +9,9 @@ struct TitlescreenStruct
     /*0x06*/ s8 menuAction;
     /*0x07*/ u8 hasSavedGame;
     /*0x08*/ s8 pressStartAnimSpriteGroupId;
+#ifndef EUROPE
     /*0x09*/ s8 pressStartAndFlippersVisible;
+#endif
     /*0x0A*/ s8 menuSpriteGroupId;
     /*0x0B*/ s8 menuVisible;
     /*0x0C*/ s8 titleScreenLeftFlipperSpriteGroup;
@@ -20,6 +22,9 @@ struct TitlescreenStruct
     /*0x11*/ s8 deleteSaveWindowVisible;
     /*0x12*/ s16 idleFadeoutCounter;
     /*0x14*/ s16 idleFramesCounter;
+#ifdef EUROPE
+    /*0x16*/ s8 menuAnimLastPhase;
+#endif
 };
 
 #endif // GUARD_TITLESCREEN_H
