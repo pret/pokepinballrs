@@ -17,8 +17,6 @@ extern const struct SongHeader se_evo_item_collected;
 
 // Rom_2 data
 extern const struct Vector16 gEvoItemPositions[][8];
-extern const u8 *gEvoItemAppear_GfxList[];
-extern const u8 *gEvoItemTilesGfxPtrs[];
 extern const s16 gEvoItemAppearFrameThresholds[];
 extern const u16 gEvoItemAnimOamFramesets[58][15];
 
@@ -392,7 +390,7 @@ void UpdateEvolutionItemAnimation(void)
         if (gCurrentPinballGame->evoItemAppearTimer == 80)
         {
             gCurrentPinballGame->activeFxType = FX_EVO_ITEM_SPAWN;
-            DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_ITEM_SPAWN_TILES);
+            DMA_EVO_ITEM_APPEAR_GFX(gCurrentPinballGame->evoItemGfxIndex, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_ITEM_SPAWN_TILES);
             DmaCopy16(3, gEvoItem_Pals[gCurrentPinballGame->evoItemGfxIndex], OBJ_PLTT_SLOT(PAL_IX_EVO_ITEM), PLTT_SLOT_SIZE);
             gCurrentPinballGame->evoItemAnimFrame = 0;
             gCurrentPinballGame->evoItemAnimFrameTimer = 0;
@@ -475,7 +473,7 @@ void UpdateEvolutionItemAnimation(void)
         if (index > 14)
             index = 14;
 
-        DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] + index * SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE, OBJ_VRAM_ADDR_EVO_ITEM_STABLE_TILE, SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE);
+        DMA_EVO_ITEM_TILES(gCurrentPinballGame->evoItemGfxIndex, index * SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE, OBJ_VRAM_ADDR_EVO_ITEM_STABLE_TILE, SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE);
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;

@@ -1037,6 +1037,66 @@ extern const u8 *const gModeBannerTilemaps[];
     DmaCopy16(3, gModeBannerTilemaps[ix], dest, size)
 #endif
 
+// Evolution item spawn animation (contains the item's name).
+// English and French share one set.
+#ifdef EUROPE
+extern const u8 *gEvoItemAppear_GfxList_EnFr[];
+extern const u8 *gEvoItemAppear_GfxList_It[];
+extern const u8 *gEvoItemAppear_GfxList_De[];
+extern const u8 *gEvoItemAppear_GfxList_Es[];
+
+#define DMA_EVO_ITEM_APPEAR_GFX(ix, dest, size)                         \
+    switch (gMain_saveData.language)                                    \
+    {                                                                   \
+    case LANGUAGE_ENGLISH:                                              \
+    case LANGUAGE_FRENCH:                                               \
+        DmaCopy16(3, gEvoItemAppear_GfxList_EnFr[ix], dest, size);      \
+        break;                                                          \
+    case LANGUAGE_GERMAN:                                               \
+        DmaCopy16(3, gEvoItemAppear_GfxList_De[ix], dest, size);        \
+        break;                                                          \
+    case LANGUAGE_ITALIAN:                                              \
+        DmaCopy16(3, gEvoItemAppear_GfxList_It[ix], dest, size);        \
+        break;                                                          \
+    case LANGUAGE_SPANISH:                                              \
+        DmaCopy16(3, gEvoItemAppear_GfxList_Es[ix], dest, size);        \
+        break;                                                          \
+    }
+
+extern const u8 *gEvoItemTilesGfxPtrs_EnFr[];
+extern const u8 *gEvoItemTilesGfxPtrs_It[];
+extern const u8 *gEvoItemTilesGfxPtrs_De[];
+extern const u8 *gEvoItemTilesGfxPtrs_Es[];
+
+#define DMA_EVO_ITEM_TILES(ix, frameOffset, dest, size)                                 \
+    switch (gMain_saveData.language)                                                    \
+    {                                                                                   \
+    case LANGUAGE_ENGLISH:                                                              \
+    case LANGUAGE_FRENCH:                                                               \
+        DmaCopy16(3, gEvoItemTilesGfxPtrs_EnFr[ix] + (frameOffset), dest, size);        \
+        break;                                                                          \
+    case LANGUAGE_GERMAN:                                                               \
+        DmaCopy16(3, gEvoItemTilesGfxPtrs_De[ix] + (frameOffset), dest, size);          \
+        break;                                                                          \
+    case LANGUAGE_ITALIAN:                                                              \
+        DmaCopy16(3, gEvoItemTilesGfxPtrs_It[ix] + (frameOffset), dest, size);          \
+        break;                                                                          \
+    case LANGUAGE_SPANISH:                                                              \
+        DmaCopy16(3, gEvoItemTilesGfxPtrs_Es[ix] + (frameOffset), dest, size);          \
+        break;                                                                          \
+    }
+#else
+extern const u8 *gEvoItemAppear_GfxList[];
+
+#define DMA_EVO_ITEM_APPEAR_GFX(ix, dest, size) \
+    DmaCopy16(3, gEvoItemAppear_GfxList[ix], dest, size)
+
+extern const u8 *gEvoItemTilesGfxPtrs[];
+
+#define DMA_EVO_ITEM_TILES(ix, frameOffset, dest, size) \
+    DmaCopy16(3, gEvoItemTilesGfxPtrs[ix] + (frameOffset), dest, size)
+#endif
+
 // Center screen portrait animation frames (shop items, slot cards...). They contain text,
 // so the European release has one set per language.
 #ifdef EUROPE

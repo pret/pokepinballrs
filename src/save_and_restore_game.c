@@ -80,8 +80,6 @@ extern const u16 gShopItemData[][4];
 extern const u16 gShopCursorToItemMap[];
 extern const u16 gEggAnimationFrameData[][4];
 extern const s16 gEvoShopAnimFrames[][7];
-extern const u8 *gEvoItemAppear_GfxList[];
-extern const u8 *gEvoItemTilesGfxPtrs[];
 extern const s16 gHoleAnimKeyframeData[][2];
 extern const Palette *gMonPortraitGroupPals[];
 extern const u8 *gMonPortraitGroupGfx[];
@@ -451,7 +449,7 @@ void RestoreFieldSpecificGraphics(void)
         }
         break;
     case FX_EVO_ITEM_SPAWN:
-        DmaCopy16(3, gEvoItemAppear_GfxList[gCurrentPinballGame->evoItemGfxIndex], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_ITEM_SPAWN_TILES);
+        DMA_EVO_ITEM_APPEAR_GFX(gCurrentPinballGame->evoItemGfxIndex, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_ITEM_SPAWN_TILES);
         break;
     case FX_EVOLUTION_CUTSCENE:
         DmaCopy16(3, gEvolutionCutsceneTilesGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_CUTSCENE_TILES);
@@ -631,7 +629,7 @@ void RestoreMainFieldDynamicGraphics(void)
     }
 
     DmaCopy16(3, gMainStageBonusTrap_Gfx[gCurrentPinballGame->bonusTrapAnimFrame], OBJ_VRAM_ADDR_FX_CENTER_HOLE_GRAVITY_TILES, SIZE_OF_VRAM_FX_CENTER_HOLE_GRAVITY_TILES);
-    DmaCopy16(3, gEvoItemTilesGfxPtrs[gCurrentPinballGame->evoItemGfxIndex] +  var0 * SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE, OBJ_VRAM_ADDR_EVO_ITEM_STABLE_TILE, SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE);
+    DMA_EVO_ITEM_TILES(gCurrentPinballGame->evoItemGfxIndex, var0 * SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE, OBJ_VRAM_ADDR_EVO_ITEM_STABLE_TILE, SIZE_OF_VRAM_EVO_ITEM_STABLE_TILE);
     DmaCopy16(3, gEggFrameTilesGfx[(s16)gEggAnimationFrameData[gCurrentPinballGame->eggAnimFrameIndex][3]], OBJ_VRAM_ADDR_HATCH_EGG_TILES, SIZE_OF_VRAM_HATCH_EGG_TILES);
     DmaCopy16(3, gBallUpgradeFx_Gfx[gCurrentPinballGame->ballUpgradeFxTileIndex], OBJ_VRAM_ADDR_FX_BALL_UPGRADE_TILES_MAIN_BOARD, SIZE_OF_VRAM_FX_BALL_UPGRADE_TILES);
     return;
