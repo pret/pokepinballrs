@@ -35,6 +35,13 @@ struct HighScoreScreenState
 EWRAM_DATA struct HighScoreScreenState gHighScoreScreenState;
 EWRAM_DATA s16 gScrollDirection;
 EWRAM_DATA s16 gScrollXOffset;
+#ifdef EUROPE
+// The European version adds accented letters to the name entry
+#define HIGH_SCORE_NAME_LAST_CHAR 62
+#else
+#define HIGH_SCORE_NAME_LAST_CHAR 41
+#endif
+
 EWRAM_DATA s8 gResetComboTimer;
 EWRAM_DATA s8 gResetComboCount;
 EWRAM_DATA s16 gCompletionBannerY;
@@ -79,10 +86,39 @@ extern const u8 gHighScoreBallWatermark_Gfx[];
 extern const Palette gHighScoreBG_Pals[];
 extern const Palette gHighScoreSprite_Pals[];
 extern const u8 gHighScoreDialogs_Gfx[];
+#ifdef EUROPE
+extern const u8 gHighScoreScoreTable_Tilemap_En[];
+extern const u8 gHighScoreScoreTable_Tilemap_Fr[];
+extern const u8 gHighScoreScoreTable_Tilemap_De[];
+extern const u8 gHighScoreScoreTable_Tilemap_It[];
+extern const u8 gHighScoreScoreTable_Tilemap_Es[];
+extern const u8 gHighScoreDialogs_Gfx_En[];
+extern const u8 gHighScoreDialogs_Gfx_Fr[];
+extern const u8 gHighScoreDialogs_Gfx_De[];
+extern const u8 gHighScoreDialogs_Gfx_It[];
+extern const u8 gHighScoreDialogs_Gfx_Es[];
+extern const u8 gHighScoreTitle_Gfx_Fr[];
+extern const u8 gHighScoreTitle_Gfx_De[];
+extern const u8 gHighScoreTitle_Gfx_It[];
+extern const u8 gHighScoreTitle_Gfx_Es[];
+#endif
 
 // Rom_2 data
 extern const struct SpriteSet *const gNameEntryCursorSpriteSets[];
+#ifdef EUROPE
+EWRAM_DATA const struct SpriteSet *gHighScoreScreenSpriteSets[9];
+extern const struct SpriteSet *const gHighScoreScreenSpriteSets_En[9];
+extern const struct SpriteSet gHighScorePressStart0SpriteSet_Fr;
+extern const struct SpriteSet gHighScorePressStart1SpriteSet_Fr;
+extern const struct SpriteSet gHighScorePressStart0SpriteSet_De;
+extern const struct SpriteSet gHighScorePressStart1SpriteSet_De;
+extern const struct SpriteSet gHighScorePressStart0SpriteSet_It;
+extern const struct SpriteSet gHighScorePressStart1SpriteSet_It;
+extern const struct SpriteSet gHighScorePressStart0SpriteSet_Es;
+extern const struct SpriteSet gHighScorePressStart1SpriteSet_Es;
+#else
 extern const struct SpriteSet *const gHighScoreScreenSpriteSets[];
+#endif
 extern const struct SpriteSet *const gCompletionBannerSpriteSets[];
 extern const s8 gScorePaletteAnimOffsets[3]; //Sized based on call using gHighScoreScreenState.paletteAnimPhase + data
 extern const s8 gScorePaletteResetOffsets[3]; //Same as above
@@ -133,6 +169,45 @@ void IdleHighScoresMain(void)
     gIdleHighScoresStateFuncs[gMain.subState]();
 }
 
+#ifdef EUROPE
+// Loads the high score screen graphics for the current language
+#define HIGH_SCORE_LOAD_SCREEN_GFX() \
+  DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE); \
+  DmaCopy16(3, gHighScoreText_Gfx, BG_VRAM_ADDR_HIGH_SCORE_TEXT_TILES, SIZE_OF_VRAM_HIGH_SCORE_TEXT_TILES); \
+  DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_VRAM_ADDR_HIGH_SCORE_FRAME_TILES, SIZE_OF_VRAM_HIGH_SCORE_FRAME_TILES); \
+  DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_VRAM_ADDR_HIGH_SCORE_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512); \
+  switch (gMain_saveData.language) \
+  { \
+    case LANGUAGE_ENGLISH: \
+        DmaCopy16(3, gHighScoreScoreTable_Tilemap_En, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_512); \
+        DmaCopy16(3, gHighScoreDialogs_Gfx_En, OBJ_VRAM_ADDR_HIGH_SCORE_SPRITE_TILES, SIZE_OF_VRAM_HIGH_SCORE_SPRITE_TILES); \
+        CopyBgTilesRect(&gHighScoreText_Gfx[0x3800], (void *)BG_TILE_ADDR(TILE_INDEX(2, 3, 0)), 32, 1); \
+        CopyBgTilesRect(&gHighScoreText_Gfx[0x3C00], (void *)BG_TILE_ADDR(TILE_INDEX(2, 7, 0)), 32, 1); \
+        break; \
+    case LANGUAGE_FRENCH: \
+        DmaCopy16(3, gHighScoreScoreTable_Tilemap_Fr, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_512); \
+        DmaCopy16(3, gHighScoreDialogs_Gfx_Fr, OBJ_VRAM_ADDR_HIGH_SCORE_SPRITE_TILES, SIZE_OF_VRAM_HIGH_SCORE_SPRITE_TILES); \
+        CopyBgTilesRect(gHighScoreTitle_Gfx_Fr, (void *)BG_TILE_ADDR(TILE_INDEX(1, 0, 1)), 11, 4); \
+        break; \
+    case LANGUAGE_GERMAN: \
+        DmaCopy16(3, gHighScoreScoreTable_Tilemap_De, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_512); \
+        DmaCopy16(3, gHighScoreDialogs_Gfx_De, OBJ_VRAM_ADDR_HIGH_SCORE_SPRITE_TILES, SIZE_OF_VRAM_HIGH_SCORE_SPRITE_TILES); \
+        CopyBgTilesRect(gHighScoreTitle_Gfx_De, (void *)BG_TILE_ADDR(TILE_INDEX(1, 0, 1)), 11, 4); \
+        break; \
+    case LANGUAGE_ITALIAN: \
+        DmaCopy16(3, gHighScoreScoreTable_Tilemap_It, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_512); \
+        DmaCopy16(3, gHighScoreDialogs_Gfx_It, OBJ_VRAM_ADDR_HIGH_SCORE_SPRITE_TILES, SIZE_OF_VRAM_HIGH_SCORE_SPRITE_TILES); \
+        CopyBgTilesRect(gHighScoreTitle_Gfx_It, (void *)BG_TILE_ADDR(TILE_INDEX(1, 0, 1)), 11, 4); \
+        break; \
+    case LANGUAGE_SPANISH: \
+        DmaCopy16(3, gHighScoreScoreTable_Tilemap_Es, gBG0TilemapBuffer, MEM_SIZE_OF_TILEMAP_256_BY_512); \
+        DmaCopy16(3, gHighScoreDialogs_Gfx_Es, OBJ_VRAM_ADDR_HIGH_SCORE_SPRITE_TILES, SIZE_OF_VRAM_HIGH_SCORE_SPRITE_TILES); \
+        CopyBgTilesRect(gHighScoreTitle_Gfx_Es, (void *)BG_TILE_ADDR(TILE_INDEX(1, 0, 1)), 11, 4); \
+        break; \
+  } \
+  DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), 8*PLTT_SLOT_SIZE);
+#endif
+
 void LoadHighScoreGraphics(void)
 {
   ResetDisplayState();
@@ -143,6 +218,9 @@ void LoadHighScoreGraphics(void)
   REG_DISPCNT |= DISPCNT_BG3_ON;
   gMain.dispcntBackup = REG_DISPCNT;
 
+#ifdef EUROPE
+  HIGH_SCORE_LOAD_SCREEN_GFX();
+#else
   DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE);
   DmaCopy16(3, gHighScoreText_Gfx, BG_VRAM_ADDR_HIGH_SCORE_TEXT_TILES, SIZE_OF_VRAM_HIGH_SCORE_TEXT_TILES);
   DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_VRAM_ADDR_HIGH_SCORE_FRAME_TILES, SIZE_OF_VRAM_HIGH_SCORE_FRAME_TILES);
@@ -150,6 +228,7 @@ void LoadHighScoreGraphics(void)
   DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_VRAM_ADDR_HIGH_SCORE_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
   DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), 8*PLTT_SLOT_SIZE);
   DmaCopy16(3, gHighScoreDialogs_Gfx, OBJ_VRAM_ADDR_HIGH_SCORE_SPRITE_TILES, SIZE_OF_VRAM_HIGH_SCORE_SPRITE_TILES);
+#endif
   InitHighScoreData();
   DrawAllHighScoreText();
   DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_HIGH_SCORE_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
@@ -196,6 +275,39 @@ void InitHighScoreData(void)
     gCompletionBannerVisible = FALSE;
     gResetComboTimer = 0;
     gResetComboCount = 0;
+#ifdef EUROPE
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+        for (i = 0; i < 9; i++)
+            gHighScoreScreenSpriteSets[i] = gHighScoreScreenSpriteSets_En[i];
+        break;
+    case LANGUAGE_FRENCH:
+        for (i = 0; i < 7; i++)
+            gHighScoreScreenSpriteSets[i] = gHighScoreScreenSpriteSets_En[i];
+        gHighScoreScreenSpriteSets[7] = &gHighScorePressStart0SpriteSet_Fr;
+        gHighScoreScreenSpriteSets[8] = &gHighScorePressStart1SpriteSet_Fr;
+        break;
+    case LANGUAGE_GERMAN:
+        for (i = 0; i < 7; i++)
+            gHighScoreScreenSpriteSets[i] = gHighScoreScreenSpriteSets_En[i];
+        gHighScoreScreenSpriteSets[7] = &gHighScorePressStart0SpriteSet_De;
+        gHighScoreScreenSpriteSets[8] = &gHighScorePressStart1SpriteSet_De;
+        break;
+    case LANGUAGE_ITALIAN:
+        for (i = 0; i < 7; i++)
+            gHighScoreScreenSpriteSets[i] = gHighScoreScreenSpriteSets_En[i];
+        gHighScoreScreenSpriteSets[7] = &gHighScorePressStart0SpriteSet_It;
+        gHighScoreScreenSpriteSets[8] = &gHighScorePressStart1SpriteSet_It;
+        break;
+    case LANGUAGE_SPANISH:
+        for (i = 0; i < 7; i++)
+            gHighScoreScreenSpriteSets[i] = gHighScoreScreenSpriteSets_En[i];
+        gHighScoreScreenSpriteSets[7] = &gHighScorePressStart0SpriteSet_Es;
+        gHighScoreScreenSpriteSets[8] = &gHighScorePressStart1SpriteSet_Es;
+        break;
+    }
+#endif
     if(gHighScoreEntrySource == 1)
     {
         gHighScoreScreenState.newScoreHi = gMain.finalScoreHi;
@@ -491,7 +603,7 @@ void HighScore_NameEntry(void)
         {
             m4aSongNumStart(SE_SCORE_ENTRY_LETTER_CHANGE);
             if (--gHighScoreScreenState.currentNameChar < 0)
-                gHighScoreScreenState.currentNameChar = 41;
+                gHighScoreScreenState.currentNameChar = HIGH_SCORE_NAME_LAST_CHAR;
 
             PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
             gHighScoreScreenState.inputRepeatDelay = 9;
@@ -502,7 +614,7 @@ void HighScore_NameEntry(void)
         if (gHighScoreScreenState.inputRepeatDelay == 0)
         {
             m4aSongNumStart(SE_SCORE_ENTRY_LETTER_CHANGE);
-            if (++gHighScoreScreenState.currentNameChar > 41)
+            if (++gHighScoreScreenState.currentNameChar > HIGH_SCORE_NAME_LAST_CHAR)
                 gHighScoreScreenState.currentNameChar = 0;
 
             PrintHighScoreNameChar(gHighScoreScreenState.currentNameChar, gHighScoreScreenState.highScoreIndex, gHighScoreScreenState.currentNameCharIndex, gHighScoreScreenState.mainField);
@@ -768,6 +880,9 @@ void IdleHighScore_LoadGraphics(void)
     REG_BG3CNT = BGCNT_TXT512x256 | BGCNT_SCREENBASE(2) | BGCNT_PRIORITY(3) | BGCNT_CHARBASE(3);
     REG_DISPCNT |= DISPCNT_BG3_ON;
     gMain.dispcntBackup = REG_DISPCNT;
+#ifdef EUROPE
+    HIGH_SCORE_LOAD_SCREEN_GFX();
+#else
     DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gHighScoreText_Gfx, BG_VRAM_ADDR_HIGH_SCORE_TEXT_TILES, SIZE_OF_VRAM_HIGH_SCORE_TEXT_TILES);
     DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_VRAM_ADDR_HIGH_SCORE_FRAME_TILES, SIZE_OF_VRAM_HIGH_SCORE_FRAME_TILES);
@@ -775,6 +890,7 @@ void IdleHighScore_LoadGraphics(void)
     DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_VRAM_ADDR_HIGH_SCORE_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
     DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
     DmaCopy16(3, gHighScoreDialogs_Gfx, OBJ_VRAM_ADDR_HIGH_SCORE_SPRITE_TILES, SIZE_OF_VRAM_HIGH_SCORE_SPRITE_TILES);
+#endif
     InitIdleHighScoreData();
     DrawAllHighScoreText();
     DmaCopy16(3, gBG0TilemapBuffer,BG_VRAM_ADDR_HIGH_SCORE_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
@@ -886,6 +1002,9 @@ void HighScore_ReloadAfterLink(void)
     REG_BG3CNT = BGCNT_TXT512x256 | BGCNT_SCREENBASE(2) | BGCNT_PRIORITY(3) | BGCNT_CHARBASE(3);
     REG_DISPCNT |= DISPCNT_BG3_ON;
     gMain.dispcntBackup = REG_DISPCNT;
+#ifdef EUROPE
+    HIGH_SCORE_LOAD_SCREEN_GFX();
+#else
     DmaCopy16(3, gHighScoreBG_Pals, BG_PLTT, BG_PLTT_SIZE);
     DmaCopy16(3, gHighScoreText_Gfx, BG_VRAM_ADDR_HIGH_SCORE_TEXT_TILES, SIZE_OF_VRAM_HIGH_SCORE_TEXT_TILES);
     DmaCopy16(3, gHighScoreBallWatermark_Gfx, BG_VRAM_ADDR_HIGH_SCORE_FRAME_TILES, SIZE_OF_VRAM_HIGH_SCORE_FRAME_TILES);
@@ -893,6 +1012,7 @@ void HighScore_ReloadAfterLink(void)
     DmaCopy16(3, gHighScoreBallWatermark_Tilemap, BG_VRAM_ADDR_HIGH_SCORE_BG3_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
     DmaCopy16(3, gHighScoreSprite_Pals, OBJ_PLTT_SLOT(PAL_IX_0), PLTT_SLOT_SIZE);
     DmaCopy16(3, gHighScoreDialogs_Gfx, OBJ_VRAM_ADDR_HIGH_SCORE_SPRITE_TILES, SIZE_OF_VRAM_HIGH_SCORE_SPRITE_TILES);
+#endif
     InitIdleHighScoreData();
     DrawAllHighScoreText();
     DmaCopy16(3, gBG0TilemapBuffer, BG_VRAM_ADDR_HIGH_SCORE_BG2_TILEMAP, MEM_SIZE_OF_TILEMAP_256_BY_512);
@@ -1405,6 +1525,30 @@ s16 SlaveReceiveHighScores(void)
     return 0;
 }
 
+#ifdef EUROPE
+#define HS_TOP_NAME_GLYPHS             0x80
+#define HS_TOP_NAME_HEIGHT             2
+#define HS_RUBY_TOP_NAME_Y             2
+#define HS_SAPPHIRE_TOP_NAME_Y         34
+#define HS_NAME_GLYPHS                 0x140
+#define HS_TOP_SCORE_GLYPHS            0x200
+#define HS_TOP_SCORE_SEPARATOR_GLYPHS  0x240
+#define HS_SCORE_GLYPHS                0x280
+#define HS_SCORE_SEPARATOR_GLYPHS      0x2C0
+#else
+#define HS_TOP_NAME_GLYPHS             0x80
+#define HS_TOP_NAME_HEIGHT             1
+#define HS_RUBY_TOP_NAME_Y             3
+#define HS_SAPPHIRE_TOP_NAME_Y         35
+#define HS_NAME_GLYPHS                 0xA0
+#define HS_TOP_SCORE_GLYPHS            0xE0
+#define HS_TOP_SCORE_SEPARATOR_GLYPHS  0x120
+#define HS_SCORE_GLYPHS                0x160
+#define HS_SCORE_SEPARATOR_GLYPHS      0x1A0
+#endif
+// Tilemap entry (palette 9) of a score glyph
+#define HS_TILE(glyph) (0x9000 | (glyph))
+
 void DrawAllHighScoreText(void)
 {
     int i, j;
@@ -1412,7 +1556,7 @@ void DrawAllHighScoreText(void)
     // Ruby Field Top name
     for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        PrintString(gHighScoreCharToTileMap[gWorkingHighScores[FIELD_RUBY][0].data.parts.name[j]] + 0x80, 8, j + 6, 3, 1, 1);
+        PrintString(gHighScoreCharToTileMap[gWorkingHighScores[FIELD_RUBY][0].data.parts.name[j]] + HS_TOP_NAME_GLYPHS, 8, j + 6, HS_RUBY_TOP_NAME_Y, 1, HS_TOP_NAME_HEIGHT);
     }
 
     // Ruby Field 2nd-8th names
@@ -1420,7 +1564,7 @@ void DrawAllHighScoreText(void)
     {
         for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            PrintString(gHighScoreCharToTileMap[gWorkingHighScores[FIELD_RUBY][i].data.parts.name[j]] + 0xA0, 8, j + 6, i * 2 + 3, 1, 2);
+            PrintString(gHighScoreCharToTileMap[gWorkingHighScores[FIELD_RUBY][i].data.parts.name[j]] + HS_NAME_GLYPHS, 8, j + 6, i * 2 + 3, 1, 2);
         }
     }
 
@@ -1429,11 +1573,11 @@ void DrawAllHighScoreText(void)
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            PrintString(gScoreDigitBuffer[j] + 0x120, 9, j + 12, 2, 1, 2); // Thousands separator?
+            PrintString(gScoreDigitBuffer[j] + HS_TOP_SCORE_SEPARATOR_GLYPHS, 9, j + 12, 2, 1, 2); // Thousands separator?
         else
-            PrintString(gScoreDigitBuffer[j] + 0xE0, 9, j + 12, 2, 1, 2);
+            PrintString(gScoreDigitBuffer[j] + HS_TOP_SCORE_GLYPHS, 9, j + 12, 2, 1, 2);
     }
-    PrintString(gScoreDigitBuffer[14] + 0xE0, 9, 26, 2, 1, 2);
+    PrintString(gScoreDigitBuffer[14] + HS_TOP_SCORE_GLYPHS, 9, 26, 2, 1, 2);
     // Ruby Field 2nd-8th scores
     for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
@@ -1441,18 +1585,18 @@ void DrawAllHighScoreText(void)
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                PrintString(gScoreDigitBuffer[j] + 0x1A0, 9, j + 12, i * 2 + 3, 1, 2); // Thousands separator?
+                PrintString(gScoreDigitBuffer[j] + HS_SCORE_SEPARATOR_GLYPHS, 9, j + 12, i * 2 + 3, 1, 2); // Thousands separator?
             else
-                PrintString(gScoreDigitBuffer[j] + 0x160, 9, j + 12, i * 2 + 3, 1, 2);
+                PrintString(gScoreDigitBuffer[j] + HS_SCORE_GLYPHS, 9, j + 12, i * 2 + 3, 1, 2);
         }
 
-        PrintString(gScoreDigitBuffer[14] + 0x160, 9, 26, 3 + i * 2, 1, 2);
+        PrintString(gScoreDigitBuffer[14] + HS_SCORE_GLYPHS, 9, 26, 3 + i * 2, 1, 2);
     }
 
     // Sapphire Field Top name
     for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
     {
-        PrintString(gHighScoreCharToTileMap[gWorkingHighScores[FIELD_SAPPHIRE][0].data.parts.name[j]] + 0x80, 8, j + 4, 35, 1, 1);
+        PrintString(gHighScoreCharToTileMap[gWorkingHighScores[FIELD_SAPPHIRE][0].data.parts.name[j]] + HS_TOP_NAME_GLYPHS, 8, j + 4, HS_SAPPHIRE_TOP_NAME_Y, 1, HS_TOP_NAME_HEIGHT);
     }
 
     // Sapphire Field 2nd-8th names
@@ -1460,7 +1604,7 @@ void DrawAllHighScoreText(void)
     {
         for (j = 0; j < HIGH_SCORE_NAME_LENGTH; j++)
         {
-            PrintString(gHighScoreCharToTileMap[gWorkingHighScores[FIELD_SAPPHIRE][i].data.parts.name[j]] + 0xA0, 8, j + 4, i * 2 + 35, 1, 2);
+            PrintString(gHighScoreCharToTileMap[gWorkingHighScores[FIELD_SAPPHIRE][i].data.parts.name[j]] + HS_NAME_GLYPHS, 8, j + 4, i * 2 + 35, 1, 2);
         }
     }
     FormatScoreDigits(gWorkingHighScores[FIELD_SAPPHIRE][0].data.parts.scoreHi, gWorkingHighScores[FIELD_SAPPHIRE][0].data.parts.scoreLo);
@@ -1468,12 +1612,12 @@ void DrawAllHighScoreText(void)
     for (j = 0; j < 14; j++)
     {
         if ((j + 1) % 3 == 0)
-            PrintString(gScoreDigitBuffer[j] + 0x120, 9, j + 10, 34, 1, 2); // Thousands separator?
+            PrintString(gScoreDigitBuffer[j] + HS_TOP_SCORE_SEPARATOR_GLYPHS, 9, j + 10, 34, 1, 2); // Thousands separator?
         else
-            PrintString(gScoreDigitBuffer[j] + 0xE0, 9, j + 10, 34, 1, 2);
+            PrintString(gScoreDigitBuffer[j] + HS_TOP_SCORE_GLYPHS, 9, j + 10, 34, 1, 2);
     }
 
-    PrintString(gScoreDigitBuffer[j] + 0xE0, 9, 24, 34, 1, 2);
+    PrintString(gScoreDigitBuffer[j] + HS_TOP_SCORE_GLYPHS, 9, 24, 34, 1, 2);
     // Sapphire Field 2nd-8th scores
     for (i = 1; i < NUM_HIGH_SCORES; i++)
     {
@@ -1481,12 +1625,12 @@ void DrawAllHighScoreText(void)
         for (j = 0; j < 14; j++)
         {
             if ((j + 1) % 3 == 0)
-                PrintString(gScoreDigitBuffer[j] + 0x1A0, 9, j + 10, i * 2 + 35, 1, 2); // Thousands separator?s
+                PrintString(gScoreDigitBuffer[j] + HS_SCORE_SEPARATOR_GLYPHS, 9, j + 10, i * 2 + 35, 1, 2); // Thousands separator?s
             else
-                PrintString(gScoreDigitBuffer[j] + 0x160, 9, j + 10, i * 2 + 35, 1, 2);
+                PrintString(gScoreDigitBuffer[j] + HS_SCORE_GLYPHS, 9, j + 10, i * 2 + 35, 1, 2);
         }
 
-        PrintString(gScoreDigitBuffer[j] + 0x160, 9, 24, i * 2 + 35, 1, 2);
+        PrintString(gScoreDigitBuffer[j] + HS_SCORE_GLYPHS, 9, 24, i * 2 + 35, 1, 2);
     }
 }
 
@@ -1647,6 +1791,16 @@ u32 MergeReceivedTopScore(u32 field)
 void PrintHighScoreNameChar(u32 currNameChar, u32 hsIndex, s16 currNameCharIndex, u32 mainField)
 {
     currNameChar = gHighScoreCharToTileMap[currNameChar];
+#ifdef EUROPE
+    PrintString(
+        gHighScoreNamePositions[mainField][hsIndex].fieldWidth * 0xC0 + 0x80 + currNameChar,
+        8,
+        gHighScoreNamePositions[mainField][hsIndex].yBaseOffset + currNameCharIndex,
+        gHighScoreNamePositions[mainField][hsIndex].yPixelPosition,
+        1,
+        2
+    );
+#else
     PrintString(
         gHighScoreNamePositions[mainField][hsIndex].fieldWidth * 32 + 0x80 + currNameChar,
         8,
@@ -1655,6 +1809,7 @@ void PrintHighScoreNameChar(u32 currNameChar, u32 hsIndex, s16 currNameCharIndex
         1,
         gHighScoreNamePositions[mainField][hsIndex].fieldWidth + 1
     );
+#endif
 }
 
 void SetDefaultHighScores(void)
@@ -1725,7 +1880,7 @@ void AnimateScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (0 * 2 + 2) * 32 + 12;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x90EA && gBG0TilemapBuffer[r3 + i] != 0x912A)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_GLYPHS + 0xA) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_SEPARATOR_GLYPHS + 0xA))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
                 }
@@ -1733,7 +1888,7 @@ void AnimateScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (0 * 2 + 3) * 32 + 12;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x910A && gBG0TilemapBuffer[r3 + i] != 0x914A)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_GLYPHS + 0x2A) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_SEPARATOR_GLYPHS + 0x2A))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
                 }
@@ -1744,7 +1899,7 @@ void AnimateScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (arg1 * 2 + 3) * 32 + 12;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x916A && gBG0TilemapBuffer[r3 + i] != 0x91AA)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_GLYPHS + 0xA) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_SEPARATOR_GLYPHS + 0xA))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
                 }
@@ -1752,7 +1907,7 @@ void AnimateScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (arg1 * 2 + 4) * 32 + 12;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x918A && gBG0TilemapBuffer[r3 + i] != 0x91CA)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_GLYPHS + 0x2A) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_SEPARATOR_GLYPHS + 0x2A))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
                 }
@@ -1766,7 +1921,7 @@ void AnimateScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (0 * 2 + 2) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x90EA && gBG0TilemapBuffer[r3 + i] != 0x912A)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_GLYPHS + 0xA) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_SEPARATOR_GLYPHS + 0xA))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
                 }
@@ -1774,7 +1929,7 @@ void AnimateScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (0 * 2 + 3) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x910A && gBG0TilemapBuffer[r3 + i] != 0x914A)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_GLYPHS + 0x2A) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_SEPARATOR_GLYPHS + 0x2A))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
                 }
@@ -1785,7 +1940,7 @@ void AnimateScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (arg1 * 2 + 3) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x916A && gBG0TilemapBuffer[r3 + i] != 0x91AA)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_GLYPHS + 0xA) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_SEPARATOR_GLYPHS + 0xA))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
                 }
@@ -1793,7 +1948,7 @@ void AnimateScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (arg1 * 2 + 4) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x918A && gBG0TilemapBuffer[r3 + i] != 0x91CA)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_GLYPHS + 0x2A) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_SEPARATOR_GLYPHS + 0x2A))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteAnimOffsets[arg2];
                 }
@@ -1813,7 +1968,7 @@ void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (0 * 2 + 2) * 32 + 12;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x90EA && gBG0TilemapBuffer[r3 + i] != 0x912A)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_GLYPHS + 0xA) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_SEPARATOR_GLYPHS + 0xA))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
                 }
@@ -1821,7 +1976,7 @@ void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (0 * 2 + 3) * 32 + 12;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x910A && gBG0TilemapBuffer[r3 + i] != 0x914A)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_GLYPHS + 0x2A) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_SEPARATOR_GLYPHS + 0x2A))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
                 }
@@ -1832,7 +1987,7 @@ void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (arg1 * 2 + 3) * 32 + 12;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x916A && gBG0TilemapBuffer[r3 + i] != 0x91AA)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_GLYPHS + 0xA) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_SEPARATOR_GLYPHS + 0xA))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
                 }
@@ -1840,7 +1995,7 @@ void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (arg1 * 2 + 4) * 32 + 12;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x918A && gBG0TilemapBuffer[r3 + i] != 0x91CA)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_GLYPHS + 0x2A) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_SEPARATOR_GLYPHS + 0x2A))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
                 }
@@ -1854,7 +2009,7 @@ void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (0 * 2 + 2) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x90EA && gBG0TilemapBuffer[r3 + i] != 0x912A)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_GLYPHS + 0xA) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_SEPARATOR_GLYPHS + 0xA))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
                 }
@@ -1862,7 +2017,7 @@ void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (0 * 2 + 3) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x910A && gBG0TilemapBuffer[r3 + i] != 0x914A)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_GLYPHS + 0x2A) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_TOP_SCORE_SEPARATOR_GLYPHS + 0x2A))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
                 }
@@ -1873,7 +2028,7 @@ void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (arg1 * 2 + 3) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x916A && gBG0TilemapBuffer[r3 + i] != 0x91AA)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_GLYPHS + 0xA) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_SEPARATOR_GLYPHS + 0xA))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
                 }
@@ -1881,7 +2036,7 @@ void ResetScoreTilemapPalette(u32 arg0, u32 arg1, s16 arg2)
             r3 = (arg1 * 2 + 4) * 32 + 32 * 32 + 10;
             for(i = 0; i < 15; i++)
             {
-                if(gBG0TilemapBuffer[r3 + i] != 0x918A && gBG0TilemapBuffer[r3 + i] != 0x91CA)
+                if(gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_GLYPHS + 0x2A) && gBG0TilemapBuffer[r3 + i] != HS_TILE(HS_SCORE_SEPARATOR_GLYPHS + 0x2A))
                 {
                     gBG0TilemapBuffer[r3 + i] += gScorePaletteResetOffsets[arg2];
                 }
