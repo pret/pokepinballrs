@@ -140,6 +140,9 @@ void ResetSaveFile(void)
     gMain_saveData.saveChangeCounter = 0;
     gMain_saveData.rumbleEnabled = FALSE;
     gMain_saveData.ballSpeed = 0;
+#ifdef EUROPE
+    gMain_saveData.language = LANGUAGE_UNSET;
+#endif
     SetButtonConfigInputs(BUTTON_CONFIG_RESET);
     SetDefaultHighScores();
     ResetPokedex();
