@@ -10,7 +10,7 @@
 
 // Rom_1 data
 extern const s16 gLightningGrabAnimFrameIndices[12];
-extern const u8 gRayquazaBonusClear_Gfx[SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES];
+EXTERN_LANG5(const u8, gRayquazaBonusClear_Gfx, [SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES]);
 extern const Palette gBonusStageObjPal;
 extern const u8 gRayquazaSkyBackgroundGfx[SIZE_OF_VRAM_RAYQUAZA_INTRO_CLOUDS_TILES];
 extern const u8 gRayquazaTornadoGfx[][SIZE_OF_VRAM_RAYQUAZA_TORNADO_TILES];
@@ -160,7 +160,7 @@ void UpdateFrameProcess3_BoardLogic_RayquazaBoard(void)
         gCurrentPinballGame->stageTimer = 0;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_BANNER_TILES, SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES);
+        DMA_LANG5(gRayquazaBonusClear_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_BANNER_TILES, SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES);
         gCurrentPinballGame->bannerSlideYOffset = 136;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         gCurrentPinballGame->cameraLocked = TRUE;
@@ -201,7 +201,7 @@ void UpdateFrameProcess3_BoardLogic_RayquazaBoard(void)
         gCurrentPinballGame->stageTimer = 140;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
         gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-        DmaCopy16(3, gRayquazaBonusClear_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_BANNER_TILES, SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES);
+        DMA_LANG5(gRayquazaBonusClear_Gfx, OBJ_VRAM_ADDR_RAYQUAZA_BANNER_TILES, SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES);
         gCurrentPinballGame->bannerSlideYOffset = 136;
         gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         break;

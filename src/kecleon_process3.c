@@ -30,7 +30,7 @@ struct KecleonSpriteSortEntry
     u8 spriteIndex;
 };
 // Rom_1 data
-extern const u8 gKecleonBonusClear_Gfx[SIZE_OF_VRAM_KECLEON_BANNER_TILES];
+EXTERN_LANG5(const u8, gKecleonBonusClear_Gfx, [SIZE_OF_VRAM_KECLEON_BANNER_TILES]);
 extern const Palette gBonusStageObjPal;
 extern const u16 gKecleonScopeOverlayTilemap[MEM_SIZE_OF_TILEMAP_256_BY_256];
 extern const u8 gKecleonStageKecleon_Gfx[][SIZE_OF_VRAM_KECLEON_TILES];
@@ -176,7 +176,7 @@ void UpdateFrameProcess3_BoardLogic_KecleonBoard(void)
             gCurrentPinballGame->stageTimer = 0;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER].active = TRUE;
             gMain.spriteGroups[SG_BONUS_COMPLETE_BANNER_SCORE].active = TRUE;
-            DmaCopy16(3, gKecleonBonusClear_Gfx, OBJ_VRAM_ADDR_KECLEON_BANNER_TILES, SIZE_OF_VRAM_KECLEON_BANNER_TILES);
+            DMA_LANG5(gKecleonBonusClear_Gfx, OBJ_VRAM_ADDR_KECLEON_BANNER_TILES, SIZE_OF_VRAM_KECLEON_BANNER_TILES);
             gCurrentPinballGame->bannerSlideYOffset = 0x88;
             gMain.modeChangeFlags = MODE_CHANGE_BONUS_BANNER;
         }
