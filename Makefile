@@ -38,6 +38,7 @@ ROM_NAME    := pokepinballrs_eu
 REGION_DEFS := -DEUROPE
 REGION_SUFFIX := _eu
 DATA_ASM_SUBDIR = data/eu
+OBJCOPY_FLAGS := --gap-fill 0xFF
 else
 GAME_CODE   := BPPE
 ROM_NAME    := pokepinballrs
@@ -247,5 +248,5 @@ $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
 	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL) $(LIB)
 
 $(ROM): $(ELF)
-	$(OBJCOPY) -O binary $< $@
+	$(OBJCOPY) -O binary $(OBJCOPY_FLAGS) $< $@
 	$(FIX) $@ -p -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent

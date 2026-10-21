@@ -1,0 +1,13 @@
+gTempGfxBuffer: @ 0x03000000
+	.space 0x1800    @ TODO: Max size in use suggests 0x3000
+gEReaderTextTileBuffer: @ 0x03001800
+	.space 0xB00
+gTextTilemapBuffer: @ 0x03002300
+	.space 0x2D00
+gOamBuffer: @ 0x3005000
+	.space 0x400
+IntrMain_Buffer: @ 0x3005400
+	.space 0x800
+gBG0TilemapBuffer: @ 0x03005C00
+	.space 0x1000
+gUnknown_03006C00: @ 0x03006C00

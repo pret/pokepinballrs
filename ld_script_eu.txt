@@ -121,13 +121,19 @@ SECTIONS
 
     .rodata :
     {
-        . = ALIGN(4); data/rom_1.o(.rodata)
+        . = ALIGN(4); data/eu/rom_1.o(.rodata)
         . = ALIGN(4); src/m4a_tables.o(.rodata);
-        . = ALIGN(4); data/sound_data.o(.rodata)
+        . = ALIGN(4); data/eu/sound_data.o(.rodata)
         . = ALIGN(4); src/agb_sram.o(.rodata);
-        . = ALIGN(4); data/sound_data_2.o(.rodata)
+        . = ALIGN(4); data/eu/sound_data_2.o(.rodata)
         . = ALIGN(4); src/data.o(.rodata)
-        . = ALIGN(4); data/rom_2.o(.rodata)
+        . = ALIGN(4); data/eu/rom_2.o(.rodata)
+    }=0xFF
+
+    /* Unreferenced leftover block near the end of the 16 MiB European ROM */
+    .rom_tail 0x08FE0000 :
+    {
+        data/eu/rom_tail.o(.rodata)
     }=0xFF
 
     /* Debug sections - address 0 so they don't affect ROM layout */

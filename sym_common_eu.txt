@@ -1,0 +1,9 @@
+    .include "m4a.o"
+
+gMPlayInfo_SE3: @ 0x02032FB0
+	.space 0x40
+ReadSramFast: @ 0x02032FF0
+	.space 0x4
+VerifySramFast: @ 0x02032FF4
+	.space 0xF7C08C
+gUnknown_02FAF080: @ 0x02FAF080
