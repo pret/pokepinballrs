@@ -289,7 +289,7 @@ def gen_file(src, obj, name):
                 s, e, p = m[0]
                 if e > b: raise Exception('%s extends past the gap at 0x%X' % (p[0], b))
                 for l_ in p:
-                    out.append(('gen', '\t' + l_))
+                    out.append(('gen', l_ if l_.endswith('::') else '\t' + l_))
                 skip_to, skip_to_path = e, p[0]
                 continue
             data = EU[x - 0x08000000:y - 0x08000000]

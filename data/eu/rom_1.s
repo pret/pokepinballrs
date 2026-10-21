@@ -1411,7 +1411,8 @@ gEReaderOverlay_Tilemap:: @ 0x080F359C
 
 
 gEReaderBackground_Gfx:: @ 0x080F3D9C
-	.incbin "data/eu/bin/rom_1_080F3D9C.bin"
+	.incbin "graphics/ereader/background_eu.4bpp"
+	.space 0x20
 gEReaderBackgroundText_Gfx_Fr:: @ 0x080F559C
 	.incbin "data/eu/bin/rom_1_080F559C.bin"
 gEReaderBackgroundText_Gfx_It:: @ 0x080F5D9C
@@ -1502,15 +1503,19 @@ gPokedexSprites_Gfx_De:: @ 0x0811ACBC
 gPokedexSprites_Gfx_Fr:: @ 0x08121CDC
 	.incbin "data/eu/bin/rom_1_08121CDC.bin"
 gPokedexSprites_Gfx_It:: @ 0x081290FC
-	.incbin "data/eu/bin/rom_1_081290FC.bin"
+	.incbin "graphics/pokedex/sprites_it.4bpp"
+	.space 0x20
 gPokedexSprites_Gfx_Es:: @ 0x0812FD1C
 	.incbin "data/eu/bin/rom_1_0812FD1C.bin"
 gPokedexTextGlyphs_Gfx:: @ 0x08136D3C
-	.incbin "data/eu/bin/rom_1_08136D3C.bin"
+	.incbin "graphics/pokedex/text_glyphs_eu.4bpp"
+gHighScoreScoreTable_Tilemap::
+	.incbin "graphics/high_score/high_score_table_text_tilemap_eu.bin"
 gHighScoreScoreTable_Tilemap_En:: @ 0x0813BD5C
 	.incbin "graphics/high_score/high_score_table_text_tilemap_en.bin"
 gHighScoreText_Gfx:: @ 0x0813CD5C
-	.incbin "data/eu/bin/rom_1_0813CD5C.bin"
+	.incbin "graphics/high_score/text_eu.4bpp"
+	.space 0x20
 gHighScoreScoreTable_Tilemap_De:: @ 0x0814457C
 	.incbin "graphics/high_score/high_score_table_text_tilemap_de.bin"
 gHighScoreScoreTable_Tilemap_Fr:: @ 0x0814557C
@@ -1616,7 +1621,8 @@ gFieldSelectSpriteGfx_It:: @ 0x0817F7DC
 gFieldSelectSpriteGfx_Es:: @ 0x081837FC
 	.incbin "graphics/field_select/sprites_es.4bpp"
 gEReaderText_Gfx:: @ 0x0818781C
-	.incbin "data/eu/bin/rom_1_0818781C.bin"
+	.incbin "graphics/ereader/text_eu.4bpp"
+	.space 0x240
 gIntroScene1TorchicSprites_Pals:: @ 0x0818F65C
 	.incbin "graphics/intro/scene1torchic/sprites.gbapal"
 
@@ -2043,65 +2049,85 @@ gDusclopsBonusClear_Gfx:: @ 0x0825496C
 	.space 0x20
 
 gDusclopsBonusClear_Gfx_Fr:: @ 0x0825698C
-	.incbin "data/eu/bin/rom_1_0825698C.bin"
+	.incbin "graphics/stage/dusclops/dusclops_bonus_clear_fr.4bpp"
+	.space 0x20
 gDusclopsBonusClear_Gfx_De:: @ 0x082589AC
-	.incbin "data/eu/bin/rom_1_082589AC.bin"
+	.incbin "graphics/stage/dusclops/dusclops_bonus_clear_de.4bpp"
+	.space 0x20
 gDusclopsBonusClear_Gfx_It:: @ 0x0825A9CC
-	.incbin "data/eu/bin/rom_1_0825A9CC.bin"
+	.incbin "graphics/stage/dusclops/dusclops_bonus_clear_it.4bpp"
+	.space 0x20
 gDusclopsBonusClear_Gfx_Es:: @ 0x0825C9EC
-	.incbin "data/eu/bin/rom_1_0825C9EC.bin"
+	.incbin "graphics/stage/dusclops/dusclops_bonus_clear_es.4bpp"
+	.space 0x20
 gKecleonBonusClear_Gfx_En:: @ 0x0825EA0C
 gKecleonBonusClear_Gfx:: @ 0x0825EA0C
 	.incbin "graphics/stage/kecleon/kecleon_bonus_clear.4bpp"
 	.space 0x20
 
 gKecleonBonusClear_Gfx_Fr:: @ 0x08260A2C
-	.incbin "data/eu/bin/rom_1_08260A2C.bin"
+	.incbin "graphics/stage/kecleon/kecleon_bonus_clear_fr.4bpp"
+	.space 0x20
 gKecleonBonusClear_Gfx_De:: @ 0x08262A4C
-	.incbin "data/eu/bin/rom_1_08262A4C.bin"
+	.incbin "graphics/stage/kecleon/kecleon_bonus_clear_de.4bpp"
+	.space 0x20
 gKecleonBonusClear_Gfx_It:: @ 0x08264A6C
-	.incbin "data/eu/bin/rom_1_08264A6C.bin"
+	.incbin "graphics/stage/kecleon/kecleon_bonus_clear_it.4bpp"
+	.space 0x20
 gKecleonBonusClear_Gfx_Es:: @ 0x08266A8C
-	.incbin "data/eu/bin/rom_1_08266A8C.bin"
+	.incbin "graphics/stage/kecleon/kecleon_bonus_clear_es.4bpp"
+	.space 0x20
 gKyogreBonusClear_Gfx_En:: @ 0x08268AAC
 gKyogreBonusClear_Gfx:: @ 0x08268AAC
 	.incbin "graphics/stage/kyogre/kyogre_bonus_clear.4bpp"
 	.space 0x20
 
 gKyogreBonusClear_Gfx_Fr:: @ 0x0826AACC
-	.incbin "data/eu/bin/rom_1_0826AACC.bin"
+	.incbin "graphics/stage/kyogre/kyogre_bonus_clear_fr.4bpp"
+	.space 0x20
 gKyogreBonusClear_Gfx_De:: @ 0x0826CAEC
-	.incbin "data/eu/bin/rom_1_0826CAEC.bin"
+	.incbin "graphics/stage/kyogre/kyogre_bonus_clear_de.4bpp"
+	.space 0x20
 gKyogreBonusClear_Gfx_It:: @ 0x0826EB0C
-	.incbin "data/eu/bin/rom_1_0826EB0C.bin"
+	.incbin "graphics/stage/kyogre/kyogre_bonus_clear_it.4bpp"
+	.space 0x20
 gKyogreBonusClear_Gfx_Es:: @ 0x08270B2C
-	.incbin "data/eu/bin/rom_1_08270B2C.bin"
+	.incbin "graphics/stage/kyogre/kyogre_bonus_clear_es.4bpp"
+	.space 0x20
 gGroudonBonusClear_Gfx_En:: @ 0x08272B4C
 gGroudonBonusClear_Gfx:: @ 0x08272B4C
 	.incbin "graphics/stage/groudon/groudon_bonus_clear.4bpp"
 	.space 0x20
 
 gGroudonBonusClear_Gfx_Fr:: @ 0x08274B6C
-	.incbin "data/eu/bin/rom_1_08274B6C.bin"
+	.incbin "graphics/stage/groudon/groudon_bonus_clear_fr.4bpp"
+	.space 0x20
 gGroudonBonusClear_Gfx_De:: @ 0x08276B8C
-	.incbin "data/eu/bin/rom_1_08276B8C.bin"
+	.incbin "graphics/stage/groudon/groudon_bonus_clear_de.4bpp"
+	.space 0x20
 gGroudonBonusClear_Gfx_It:: @ 0x08278BAC
-	.incbin "data/eu/bin/rom_1_08278BAC.bin"
+	.incbin "graphics/stage/groudon/groudon_bonus_clear_it.4bpp"
+	.space 0x20
 gGroudonBonusClear_Gfx_Es:: @ 0x0827ABCC
-	.incbin "data/eu/bin/rom_1_0827ABCC.bin"
+	.incbin "graphics/stage/groudon/groudon_bonus_clear_es.4bpp"
+	.space 0x20
 gRayquazaBonusClear_Gfx_En:: @ 0x0827CBEC
 gRayquazaBonusClear_Gfx:: @ 0x0827CBEC
 	.incbin "graphics/stage/rayquaza/rayquaza_bonus_clear.4bpp"
 	.space 0x20
 
 gRayquazaBonusClear_Gfx_Fr:: @ 0x0827EC0C
-	.incbin "data/eu/bin/rom_1_0827EC0C.bin"
+	.incbin "graphics/stage/rayquaza/rayquaza_bonus_clear_fr.4bpp"
+	.space 0x20
 gRayquazaBonusClear_Gfx_De:: @ 0x08280C2C
-	.incbin "data/eu/bin/rom_1_08280C2C.bin"
+	.incbin "graphics/stage/rayquaza/rayquaza_bonus_clear_de.4bpp"
+	.space 0x20
 gRayquazaBonusClear_Gfx_It:: @ 0x08282C4C
-	.incbin "data/eu/bin/rom_1_08282C4C.bin"
+	.incbin "graphics/stage/rayquaza/rayquaza_bonus_clear_it.4bpp"
+	.space 0x20
 gRayquazaBonusClear_Gfx_Es:: @ 0x08284C6C
-	.incbin "data/eu/bin/rom_1_08284C6C.bin"
+	.incbin "graphics/stage/rayquaza/rayquaza_bonus_clear_es.4bpp"
+	.space 0x20
 gCaptureScreenTilesGfx:: @ 0x08286C8C
 	.incbin "graphics/stage/main/capture_screen.4bpp"
 
@@ -2192,11 +2218,14 @@ gEvolutionCutsceneTilesGfx:: @ 0x0829C63C
 	.space 0x3E0
 
 gEvolutionCutsceneTilesGfx_De:: @ 0x0829EA5C
-	.incbin "data/eu/bin/rom_1_0829EA5C.bin"
+	.incbin "graphics/stage/main/board_action_de.4bpp"
+	.space 0x3E0
 gEvolutionCutsceneTilesGfx_It:: @ 0x082A0E7C
-	.incbin "data/eu/bin/rom_1_082A0E7C.bin"
+	.incbin "graphics/stage/main/board_action_it.4bpp"
+	.space 0x3E0
 gEvolutionCutsceneTilesGfx_Es:: @ 0x082A329C
-	.incbin "data/eu/bin/rom_1_082A329C.bin"
+	.incbin "graphics/stage/main/board_action_es.4bpp"
+	.space 0x3E0
 gBoardActionObj_Pals:: @ 0x082A56BC
 	.incbin "graphics/stage/main/board_action_obj.gbapal"
 
@@ -2204,11 +2233,11 @@ gEvoExAppear_Gfx:: @ 0x082A58BC
 	.incbin "graphics/board_pickups/evo_item_ex.4bpp";
 
 gEvoExAppear_Gfx_De:: @ 0x082A74DC
-	.incbin "data/eu/bin/rom_1_082A74DC.bin"
+	.incbin "graphics/board_pickups/evo_item_ex_de.4bpp"
 gEvoExAppear_Gfx_It:: @ 0x082A90FC
-	.incbin "data/eu/bin/rom_1_082A90FC.bin"
+	.incbin "graphics/board_pickups/evo_item_ex_it.4bpp"
 gEvoExAppear_Gfx_Es:: @ 0x082AAD1C
-	.incbin "data/eu/bin/rom_1_082AAD1C.bin"
+	.incbin "graphics/board_pickups/evo_item_ex_es.4bpp"
 gEvoItem_Pals:: @ 0x082AC93C
 	.incbin "graphics/board_pickups/icon1_xp.gbapal";
 	.incbin "graphics/board_pickups/icon2_leaf.gbapal";
@@ -3161,33 +3190,33 @@ gRubyBoardCompressedTiles2:: @ 0x083B61D8
 	.incbin "graphics/stage/ruby/ruby_board_bgtop_tiles.4bpp.lz"
 
 gRubyBoardCompressedTiles2_Fr:: @ 0x083B8DAC
-	.incbin "data/eu/bin/rom_1_083B8DAC.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgtop_tiles_fr.4bpp.lz"
 gRubyBoardCompressedTiles2_De:: @ 0x083BB964
-	.incbin "data/eu/bin/rom_1_083BB964.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgtop_tiles_de.4bpp.lz"
 gRubyBoardCompressedTiles2_It:: @ 0x083BE4DC
-	.incbin "data/eu/bin/rom_1_083BE4DC.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgtop_tiles_it.4bpp.lz"
 gRubyBoardCompressedTiles2_Es:: @ 0x083C108C
-	.incbin "data/eu/bin/rom_1_083C108C.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgtop_tiles_es.4bpp.lz"
 gRubyBoardCompressedBGTileBuffer_En:: @ 0x083C3C44
 gRubyBoardCompressedBGTileBuffer:: @ 0x083C3C44
 	.incbin "graphics/stage/ruby/ruby_board_bgbottom_tiles.4bpp.lz"
 
 gRubyBoardCompressedBGTileBuffer_Fr:: @ 0x083C5E20
-	.incbin "data/eu/bin/rom_1_083C5E20.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgbottom_tiles_fr.4bpp.lz"
 gRubyBoardCompressedBGTileBuffer_De:: @ 0x083C7FF8
-	.incbin "data/eu/bin/rom_1_083C7FF8.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgbottom_tiles_de.4bpp.lz"
 gRubyBoardCompressedBGTileBuffer_It:: @ 0x083CA1E0
-	.incbin "data/eu/bin/rom_1_083CA1E0.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgbottom_tiles_it.4bpp.lz"
 gRubyBoardCompressedBGTileBuffer_Es:: @ 0x083CC39C
-	.incbin "data/eu/bin/rom_1_083CC39C.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgbottom_tiles_es.4bpp.lz"
 gRubyBoardCompressedTiles1_Fr:: @ 0x083CE564
-	.incbin "data/eu/bin/rom_1_083CE564.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgramp_tiles_fr.4bpp.lz"
 gRubyBoardCompressedTiles1_De:: @ 0x083D00B8
-	.incbin "data/eu/bin/rom_1_083D00B8.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgramp_tiles_de.4bpp.lz"
 gRubyBoardCompressedTiles1_It:: @ 0x083D1BF4
-	.incbin "data/eu/bin/rom_1_083D1BF4.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgramp_tiles_it.4bpp.lz"
 gRubyBoardCompressedTiles1_Es:: @ 0x083D374C
-	.incbin "data/eu/bin/rom_1_083D374C.bin"
+	.incbin "graphics/stage/ruby/ruby_board_bgramp_tiles_es.4bpp.lz"
 gSharedBumperCollisionMap:: @ 0x083D52A4
 	.incbin "data/board_data/collision/ruby/shared_bumper_entity_collision_64x64.bin"
 
@@ -3579,7 +3608,9 @@ gRubyGetArrow_T_Under2Lit_Bot_Fr:: @ 0x083E4164
 gRubyGetArrow_T_2Lit_Bot_Fr:: @ 0x083E41C4
 	.incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_2_fr.4bpp"
 gRubyGetArrow_T_3Lit_Bot_Fr:: @ 0x083E4224
-	.incbin "data/eu/bin/rom_1_083E4224.bin"
+	.incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_2_fr.4bpp"
+	.space 0x40
+	.fill 0x20, 1, 0x22
 gRubyEvoArrow_E_0Lit_Top_De:: @ 0x083E42E4
 	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_0_de.4bpp"
 gRubyEvoArrow_E_1Lit_Top_De:: @ 0x083E4344
@@ -3641,7 +3672,71 @@ gRubyEvoArrow_O_Under2Lit_Bot_De:: @ 0x083E4D84
 gRubyEvoArrow_O_2Lit_Bot_De:: @ 0x083E4DE4
 	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_2_de.4bpp"
 gRubyEvoArrow_O_3Lit_Bot_De:: @ 0x083E4E44
-	.incbin "data/eu/bin/rom_1_083E4E44.bin"
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_2_de.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p0_de.4bpp"
+gRubyCoinArrow_1_1Lit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p0_de.4bpp"
+gRubyCoinArrow_1_2PlusLit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p0_de.4bpp"
+gRubyCoinArrow_5_0Lit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p0_de.4bpp"
+gRubyCoinArrow_5_1Lit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p0_de.4bpp"
+gRubyCoinArrow_5_2Lit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p0_de.4bpp"
+gRubyCoinArrow_5_3Lit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p0_de.4bpp"
+gRubyCoinArrow_10_Under2Lit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p0_de.4bpp"
+gRubyCoinArrow_10_2Lit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p0_de.4bpp"
+gRubyCoinArrow_10_3Lit_Top_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p0_de.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p1_de.4bpp"
+gRubyCoinArrow_1_1Lit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p1_de.4bpp"
+gRubyCoinArrow_1_2PlusLit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p1_de.4bpp"
+gRubyCoinArrow_5_0Lit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p1_de.4bpp"
+gRubyCoinArrow_5_1Lit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p1_de.4bpp"
+gRubyCoinArrow_5_2Lit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p1_de.4bpp"
+gRubyCoinArrow_5_3Lit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p1_de.4bpp"
+gRubyCoinArrow_10_Under2Lit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p1_de.4bpp"
+gRubyCoinArrow_10_2Lit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p1_de.4bpp"
+gRubyCoinArrow_10_3Lit_Mid_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p1_de.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p2_de.4bpp"
+gRubyCoinArrow_1_1Lit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p2_de.4bpp"
+gRubyCoinArrow_1_2PlusLit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p2_de.4bpp"
+gRubyCoinArrow_5_0Lit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p2_de.4bpp"
+gRubyCoinArrow_5_1Lit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p2_de.4bpp"
+gRubyCoinArrow_5_2Lit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p2_de.4bpp"
+gRubyCoinArrow_5_3Lit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p2_de.4bpp"
+gRubyCoinArrow_10_Under2Lit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p2_de.4bpp"
+gRubyCoinArrow_10_2Lit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p2_de.4bpp"
+gRubyCoinArrow_10_3Lit_Bot_De::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p2_de.4bpp"
+	.space 0x40
 gRubyGetArrow_G_0Lit_Top_De:: @ 0x083E5AE4
 	.incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_0_de.4bpp"
 gRubyGetArrow_G_1Lit_Top_De:: @ 0x083E5B44
@@ -3860,7 +3955,9 @@ gRubyGetArrow_T_Under2Lit_Bot_Es:: @ 0x083EADC4
 gRubyGetArrow_T_2Lit_Bot_Es:: @ 0x083EAE24
 	.incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_2_es.4bpp"
 gRubyGetArrow_T_3Lit_Bot_Es:: @ 0x083EAE84
-	.incbin "data/eu/bin/rom_1_083EAE84.bin"
+	.incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_2_es.4bpp"
+	.space 0x40
+	.fill 0x20, 1, 0x22
 gRubyBallPowerUpLight0off:: @ 0x083EAF44
 	.incbin "graphics/stage/ruby/ball_power_up_lights/ruby_ball_power_up_light_0_off.4bpp"
 
@@ -4041,7 +4138,13 @@ gRubyCatchLightState1Top_Fr:: @ 0x083EC324
 gRubyCatchLightState0Bot_Fr:: @ 0x083EC6E4
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_state0_bot_fr.4bpp"
 gRubyCatchLightState1Bot_Fr:: @ 0x083EC724
-	.incbin "data/eu/bin/rom_1_083EC724.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_state1_bot_fr.4bpp"
+gRubyTrapIndicatorState0Top_Fr::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state0_top_fr.4bpp"
+gRubyTrapIndicatorState1Top_Fr::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state1_top_fr.4bpp"
+gRubyTrapIndicatorState2Top_Fr::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state2_top_fr.4bpp"
 gRubyCatchLightSlot0State2Top_Fr:: @ 0x083EC824
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_top_fr.4bpp"
 gRubyCatchLightSlot0State3Top_Fr:: @ 0x083EC864
@@ -4065,7 +4168,14 @@ gRubyCatchLightSlot1State5Top_Fr:: @ 0x083ECA64
 gRubyCatchLightSlot2State4Top_Fr:: @ 0x083ECAA4
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top_fr.4bpp"
 gRubyCatchLightSlot2State5Top_Fr:: @ 0x083ECAE4
-	.incbin "data/eu/bin/rom_1_083ECAE4.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top_fr.4bpp"
+	.space 0x40
+gRubyTrapIndicatorState0Bot_Fr::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state0_bot_fr.4bpp"
+gRubyTrapIndicatorState1Bot_Fr::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state1_bot_fr.4bpp"
+gRubyTrapIndicatorState2Bot_Fr::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state2_bot_fr.4bpp"
 gRubyCatchLightSlot0State2Bot_Fr:: @ 0x083ECC24
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_bot_fr.4bpp"
 gRubyCatchLightSlot0State3Bot_Fr:: @ 0x083ECC64
@@ -4114,7 +4224,13 @@ gRubyCatchLightState1Top_De:: @ 0x083ED344
 gRubyCatchLightState0Bot_De:: @ 0x083ED704
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_state0_bot_de.4bpp"
 gRubyCatchLightState1Bot_De:: @ 0x083ED744
-	.incbin "data/eu/bin/rom_1_083ED744.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_state1_bot_de.4bpp"
+gRubyTrapIndicatorState0Top_De::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state0_top_de.4bpp"
+gRubyTrapIndicatorState1Top_De::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state1_top_de.4bpp"
+gRubyTrapIndicatorState2Top_De::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state2_top_de.4bpp"
 gRubyCatchLightSlot0State2Top_De:: @ 0x083ED844
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_top_de.4bpp"
 gRubyCatchLightSlot0State3Top_De:: @ 0x083ED884
@@ -4138,7 +4254,14 @@ gRubyCatchLightSlot1State5Top_De:: @ 0x083EDA84
 gRubyCatchLightSlot2State4Top_De:: @ 0x083EDAC4
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top_de.4bpp"
 gRubyCatchLightSlot2State5Top_De:: @ 0x083EDB04
-	.incbin "data/eu/bin/rom_1_083EDB04.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top_de.4bpp"
+	.space 0x40
+gRubyTrapIndicatorState0Bot_De::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state0_bot_de.4bpp"
+gRubyTrapIndicatorState1Bot_De::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state1_bot_de.4bpp"
+gRubyTrapIndicatorState2Bot_De::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state2_bot_de.4bpp"
 gRubyCatchLightSlot0State2Bot_De:: @ 0x083EDC44
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_bot_de.4bpp"
 gRubyCatchLightSlot0State3Bot_De:: @ 0x083EDC84
@@ -4187,7 +4310,13 @@ gRubyCatchLightState1Top_It:: @ 0x083EE364
 gRubyCatchLightState0Bot_It:: @ 0x083EE724
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_state0_bot_it.4bpp"
 gRubyCatchLightState1Bot_It:: @ 0x083EE764
-	.incbin "data/eu/bin/rom_1_083EE764.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_state1_bot_it.4bpp"
+gRubyTrapIndicatorState0Top_It::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state0_top_it.4bpp"
+gRubyTrapIndicatorState1Top_It::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state1_top_it.4bpp"
+gRubyTrapIndicatorState2Top_It::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state2_top_it.4bpp"
 gRubyCatchLightSlot0State2Top_It:: @ 0x083EE864
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_top_it.4bpp"
 gRubyCatchLightSlot0State3Top_It:: @ 0x083EE8A4
@@ -4211,7 +4340,14 @@ gRubyCatchLightSlot1State5Top_It:: @ 0x083EEAA4
 gRubyCatchLightSlot2State4Top_It:: @ 0x083EEAE4
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top_it.4bpp"
 gRubyCatchLightSlot2State5Top_It:: @ 0x083EEB24
-	.incbin "data/eu/bin/rom_1_083EEB24.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top_it.4bpp"
+	.space 0x40
+gRubyTrapIndicatorState0Bot_It::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state0_bot_it.4bpp"
+gRubyTrapIndicatorState1Bot_It::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state1_bot_it.4bpp"
+gRubyTrapIndicatorState2Bot_It::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state2_bot_it.4bpp"
 gRubyCatchLightSlot0State2Bot_It:: @ 0x083EEC64
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_bot_it.4bpp"
 gRubyCatchLightSlot0State3Bot_It:: @ 0x083EECA4
@@ -4260,7 +4396,13 @@ gRubyCatchLightState1Top_Es:: @ 0x083EF384
 gRubyCatchLightState0Bot_Es:: @ 0x083EF744
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_state0_bot_es.4bpp"
 gRubyCatchLightState1Bot_Es:: @ 0x083EF784
-	.incbin "data/eu/bin/rom_1_083EF784.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_state1_bot_es.4bpp"
+gRubyTrapIndicatorState0Top_Es::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state0_top_es.4bpp"
+gRubyTrapIndicatorState1Top_Es::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state1_top_es.4bpp"
+gRubyTrapIndicatorState2Top_Es::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state2_top_es.4bpp"
 gRubyCatchLightSlot0State2Top_Es:: @ 0x083EF884
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_top_es.4bpp"
 gRubyCatchLightSlot0State3Top_Es:: @ 0x083EF8C4
@@ -4284,7 +4426,14 @@ gRubyCatchLightSlot1State5Top_Es:: @ 0x083EFAC4
 gRubyCatchLightSlot2State4Top_Es:: @ 0x083EFB04
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top_es.4bpp"
 gRubyCatchLightSlot2State5Top_Es:: @ 0x083EFB44
-	.incbin "data/eu/bin/rom_1_083EFB44.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top_es.4bpp"
+	.space 0x40
+gRubyTrapIndicatorState0Bot_Es::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state0_bot_es.4bpp"
+gRubyTrapIndicatorState1Bot_Es::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state1_bot_es.4bpp"
+gRubyTrapIndicatorState2Bot_Es::
+	.incbin "graphics/stage/ruby/trap_indicator/trap_state2_bot_es.4bpp"
 gRubyCatchLightSlot0State2Bot_Es:: @ 0x083EFC84
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot0_state2_bot_es.4bpp"
 gRubyCatchLightSlot0State3Bot_Es:: @ 0x083EFCC4
@@ -4361,9 +4510,13 @@ gRubySaverRow2Tile_Off_Fr:: @ 0x083F1824
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_fr.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_filler_fr.4bpp"
 gRubySaverRow2Tile_On_Fr:: @ 0x083F1924
-	.incbin "data/eu/bin/rom_1_083F1924.bin"
+	.incbin "graphics/stage/ruby/saver/saver_on_row2_fr.4bpp"
+	.fill 0x20, 1, 0x11
+	.space 0x200
+	.fill 0xA0, 1, 0x11
 gRubySaverRow3Tile_Off_Fr:: @ 0x083F1CA4
-	.incbin "data/eu/bin/rom_1_083F1CA4.bin"
+	.incbin "graphics/stage/ruby/saver/saver_off_row3_fr.4bpp"
+	.fill 0xC0, 1, 0x11
 gRubySaverRow3Tile_On_Fr:: @ 0x083F1DA4
 	.incbin "data/eu/bin/rom_1_083F1DA4.bin"
 gRubySaverRow0Tile_Off_It:: @ 0x083F2044
@@ -4381,9 +4534,13 @@ gRubySaverRow2Tile_Off_It:: @ 0x083F2844
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_it.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_filler_it.4bpp"
 gRubySaverRow2Tile_On_It:: @ 0x083F2944
-	.incbin "data/eu/bin/rom_1_083F2944.bin"
+	.incbin "graphics/stage/ruby/saver/saver_on_row2_it.4bpp"
+	.fill 0x20, 1, 0x11
+	.space 0x200
+	.fill 0xA0, 1, 0x11
 gRubySaverRow3Tile_Off_It:: @ 0x083F2CC4
-	.incbin "data/eu/bin/rom_1_083F2CC4.bin"
+	.incbin "graphics/stage/ruby/saver/saver_off_row3_it.4bpp"
+	.fill 0xC0, 1, 0x11
 gRubySaverRow3Tile_On_It:: @ 0x083F2DC4
 	.incbin "data/eu/bin/rom_1_083F2DC4.bin"
 gRubySaverRow0Tile_Off_Es:: @ 0x083F3064
@@ -4401,11 +4558,17 @@ gRubySaverRow2Tile_Off_Es:: @ 0x083F3864
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_es.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_filler_es.4bpp"
 gRubySaverRow2Tile_On_Es:: @ 0x083F3964
-	.incbin "data/eu/bin/rom_1_083F3964.bin"
+	.incbin "graphics/stage/ruby/saver/saver_on_row2_es.4bpp"
+	.fill 0x20, 1, 0x11
+	.space 0x200
+	.fill 0xA0, 1, 0x11
 gRubySaverRow3Tile_Off_Es:: @ 0x083F3CE4
-	.incbin "data/eu/bin/rom_1_083F3CE4.bin"
+	.incbin "graphics/stage/ruby/saver/saver_off_row3_es.4bpp"
+	.fill 0xC0, 1, 0x11
 gRubySaverRow3Tile_On_Es:: @ 0x083F3DE4
-	.incbin "data/eu/bin/rom_1_083F3DE4.bin"
+	.incbin "graphics/stage/ruby/saver/saver_on_row3_es.4bpp"
+	.fill 0x20, 1, 0x11
+	.space 0x220
 gRubyHatchArrowRow0Tile_Off:: @ 0x083F4064
     .incbin "graphics/stage/ruby/hatch_arrow/hatch_arrow_off_row0.4bpp"
 
@@ -4815,7 +4978,7 @@ gUnknown_083F9D44:: @ 0x083F9D44
 gRubyShopSignMartPiece0_Fr:: @ 0x083F9E04
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_fr.4bpp"
 gRubyShopSignMartPiece1_Fr:: @ 0x083F9EC4
-	.incbin "data/eu/bin/rom_1_083F9EC4.bin"
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_fr.4bpp"
 gUnknown_083F9FC4:: @ 0x083F9FC4
 	.incbin "data/eu/bin/rom_1_083F9FC4.bin"
 gUnknown_083FA144:: @ 0x083FA144
@@ -4831,7 +4994,7 @@ gUnknown_083FA564:: @ 0x083FA564
 gRubyShopSignMartPiece0_De:: @ 0x083FA624
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_de.4bpp"
 gRubyShopSignMartPiece1_De:: @ 0x083FA6E4
-	.incbin "data/eu/bin/rom_1_083FA6E4.bin"
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_de.4bpp"
 gUnknown_083FA7E4:: @ 0x083FA7E4
 	.incbin "data/eu/bin/rom_1_083FA7E4.bin"
 gUnknown_083FA964:: @ 0x083FA964
@@ -4847,7 +5010,7 @@ gUnknown_083FAD84:: @ 0x083FAD84
 gRubyShopSignMartPiece0_It:: @ 0x083FAE44
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_it.4bpp"
 gRubyShopSignMartPiece1_It:: @ 0x083FAF04
-	.incbin "data/eu/bin/rom_1_083FAF04.bin"
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_it.4bpp"
 gUnknown_083FB004:: @ 0x083FB004
 	.incbin "data/eu/bin/rom_1_083FB004.bin"
 gUnknown_083FB184:: @ 0x083FB184
@@ -4863,7 +5026,7 @@ gUnknown_083FB5A4:: @ 0x083FB5A4
 gRubyShopSignMartPiece0_Es:: @ 0x083FB664
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_es.4bpp"
 gRubyShopSignMartPiece1_Es:: @ 0x083FB724
-	.incbin "data/eu/bin/rom_1_083FB724.bin"
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_es.4bpp"
 gUnknown_083FB824:: @ 0x083FB824
 	.incbin "data/eu/bin/rom_1_083FB824.bin"
 gUnknown_083FB9A4:: @ 0x083FB9A4
@@ -5233,13 +5396,13 @@ gSapphireBoardCompressedTiles2:: @ 0x084718B0
 	.incbin "graphics/stage/sapphire/sapphire_board_bgtop_tiles.4bpp.lz"
 
 gSapphireBoardCompressedTiles2_Fr:: @ 0x0847500C
-	.incbin "data/eu/bin/rom_1_0847500C.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgtop_tiles_fr.4bpp.lz"
 gSapphireBoardCompressedTiles2_De:: @ 0x0847875C
 	.incbin "graphics/stage/sapphire/sapphire_board_bgtop_tiles_de.4bpp.lz"
 gSapphireBoardCompressedTiles2_It:: @ 0x0847BEB8
-	.incbin "data/eu/bin/rom_1_0847BEB8.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgtop_tiles_it.4bpp.lz"
 gSapphireBoardCompressedTiles2_Es:: @ 0x0847F608
-	.incbin "data/eu/bin/rom_1_0847F608.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgtop_tiles_es.4bpp.lz"
 gSapphireBoardCompressedBGTileBuffer_En:: @ 0x08482D44
 gSapphireBoardCompressedBGTileBuffer:: @ 0x08482D44
 	.incbin "graphics/stage/sapphire/sapphire_board_bgbottom_tiles.4bpp.lz"
@@ -5250,21 +5413,21 @@ gSapphireBoardCompressedBGTileBuffer:: @ 0x08482D44
 @ E/V/O arrows. Second digit is '0 Top/1 Mid/2 Bottom',
 @ First digit is 'variant'.
 gSapphireBoardCompressedBGTileBuffer_Fr:: @ 0x08484D8C
-	.incbin "data/eu/bin/rom_1_08484D8C.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgbottom_tiles_fr.4bpp.lz"
 gSapphireBoardCompressedBGTileBuffer_De:: @ 0x08486DB4
-	.incbin "data/eu/bin/rom_1_08486DB4.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgbottom_tiles_de.4bpp.lz"
 gSapphireBoardCompressedBGTileBuffer_It:: @ 0x08488DC4
-	.incbin "data/eu/bin/rom_1_08488DC4.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgbottom_tiles_it.4bpp.lz"
 gSapphireBoardCompressedBGTileBuffer_Es:: @ 0x0848ADE0
-	.incbin "data/eu/bin/rom_1_0848ADE0.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgbottom_tiles_es.4bpp.lz"
 gSapphireBoardCompressedTiles1_Fr:: @ 0x0848CE20
-	.incbin "data/eu/bin/rom_1_0848CE20.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgramp_tiles_fr.4bpp.lz"
 gSapphireBoardCompressedTiles1_De:: @ 0x0848EB64
-	.incbin "data/eu/bin/rom_1_0848EB64.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgramp_tiles_de.4bpp.lz"
 gSapphireBoardCompressedTiles1_It:: @ 0x08490890
-	.incbin "data/eu/bin/rom_1_08490890.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgramp_tiles_it.4bpp.lz"
 gSapphireBoardCompressedTiles1_Es:: @ 0x084925D8
-	.incbin "data/eu/bin/rom_1_084925D8.bin"
+	.incbin "graphics/stage/sapphire/sapphire_board_bgramp_tiles_es.4bpp.lz"
 gSapphireEvoArrow_E_0Lit_Top:: @ 0x08494320
     .incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_0.4bpp"
 
@@ -5719,11 +5882,14 @@ gSapphireGetArrow_E_2Lit_Top_Fr:: @ 0x08498960
 	.incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_2_0_fr.4bpp"
 	.space 0x20
 gSapphireGetArrow_E_3Lit_Top_Fr:: @ 0x084989C0
-	.incbin "data/eu/bin/rom_1_084989C0.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_3_0_fr.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_Under2Lit_Top_Fr:: @ 0x08498A20
-	.incbin "data/eu/bin/rom_1_08498A20.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_0_0_fr.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_2Lit_Top_Fr:: @ 0x08498A80
-	.incbin "data/eu/bin/rom_1_08498A80.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_0_fr.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_3Lit_Top_Fr:: @ 0x08498AE0
 	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_0_fr.4bpp"
 	.space 0x40
@@ -5839,7 +6005,80 @@ gSapphireEvoArrow_O_2Lit_Bot_De:: @ 0x08499EA0
 	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_2_de.4bpp"
 	.space 0x20
 gSapphireEvoArrow_O_3Lit_Bot_De:: @ 0x08499F00
-	.incbin "data/eu/bin/rom_1_08499F00.bin"
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_2_de.4bpp"
+	.space 0x40
+gSapphireCoinArrow_1_0Lit_Top_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p0_de.4bpp"
+	.space 0x20
+gSapphireCoinArrow_1_1Lit_Top_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p0_de.4bpp"
+	.space 0x20
+gSapphireCoinArrow_1_2PlusLit_Top_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0_filler_de.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Top_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0_filler_de.4bpp"
+gSapphireCoinArrow_5_2Lit_Top_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0_filler_de.4bpp"
+gSapphireCoinArrow_5_3Lit_Top_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p0_de.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Top_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p0_de.4bpp"
+	.fill 0x20, 1, 0xDD
+gSapphireCoinArrow_10_2Lit_Top_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p0_de.4bpp"
+	.fill 0x20, 1, 0xDD
+gSapphireCoinArrow_10_3Lit_Top_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p0_de.4bpp"
+	.fill 0x20, 1, 0xDD
+	.space 0xA0
+gSapphireCoinArrow_1_0Lit_Mid_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p1_de.4bpp"
+gSapphireCoinArrow_1_1Lit_Mid_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p1_de.4bpp"
+gSapphireCoinArrow_1_2PlusLit_Mid_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1_filler_de.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Mid_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1_filler_de.4bpp"
+gSapphireCoinArrow_5_2Lit_Mid_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1_filler_de.4bpp"
+gSapphireCoinArrow_5_3Lit_Mid_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p1_de.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Mid_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1_filler_de.4bpp"
+gSapphireCoinArrow_10_2Lit_Mid_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1_filler_de.4bpp"
+gSapphireCoinArrow_10_3Lit_Mid_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1_filler_de.4bpp"
+gSapphireCoinArrow_1_0Lit_Bot_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p2_de.4bpp"
+gSapphireCoinArrow_1_1Lit_Bot_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p2_de.4bpp"
+gSapphireCoinArrow_1_2PlusLit_Bot_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p2_de.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Bot_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p2_de.4bpp"
+gSapphireCoinArrow_5_2Lit_Bot_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p2_de.4bpp"
+gSapphireCoinArrow_5_3Lit_Bot_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p2_de.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Bot_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2_filler_de.4bpp"
+gSapphireCoinArrow_10_2Lit_Bot_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2_filler_de.4bpp"
+gSapphireCoinArrow_10_3Lit_Bot_De::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2_de.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2_filler_de.4bpp"
 gSapphireGetArrow_G_0Lit_Top_De:: @ 0x0849AB80
 	.incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_0_0_de.4bpp"
 gSapphireGetArrow_G_1Lit_Top_De:: @ 0x0849ABE0
@@ -5857,11 +6096,14 @@ gSapphireGetArrow_E_2Lit_Top_De:: @ 0x0849AD80
 	.incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_2_0_de.4bpp"
 	.space 0x20
 gSapphireGetArrow_E_3Lit_Top_De:: @ 0x0849ADE0
-	.incbin "data/eu/bin/rom_1_0849ADE0.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_3_0_de.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_Under2Lit_Top_De:: @ 0x0849AE40
-	.incbin "data/eu/bin/rom_1_0849AE40.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_0_0_de.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_2Lit_Top_De:: @ 0x0849AEA0
-	.incbin "data/eu/bin/rom_1_0849AEA0.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_0_de.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_3Lit_Top_De:: @ 0x0849AF00
 	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_0_de.4bpp"
 	.space 0x40
@@ -5911,7 +6153,8 @@ gSapphireGetArrow_T_2Lit_Bot_De:: @ 0x0849B680
 	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_2_de.4bpp"
 	.space 0x20
 gSapphireGetArrow_T_3Lit_Bot_De:: @ 0x0849B6E0
-	.incbin "data/eu/bin/rom_1_0849B6E0.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_2_de.4bpp"
+	.space 0x80
 gSapphireGetArrow_G_0Lit_Top_It:: @ 0x0849CFA0
 	.incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_0_0_it.4bpp"
 gSapphireGetArrow_G_1Lit_Top_It:: @ 0x0849D000
@@ -5929,11 +6172,14 @@ gSapphireGetArrow_E_2Lit_Top_It:: @ 0x0849D1A0
 	.incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_2_0_it.4bpp"
 	.space 0x20
 gSapphireGetArrow_E_3Lit_Top_It:: @ 0x0849D200
-	.incbin "data/eu/bin/rom_1_0849D200.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_3_0_it.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_Under2Lit_Top_It:: @ 0x0849D260
-	.incbin "data/eu/bin/rom_1_0849D260.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_0_0_it.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_2Lit_Top_It:: @ 0x0849D2C0
-	.incbin "data/eu/bin/rom_1_0849D2C0.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_0_it.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_3Lit_Top_It:: @ 0x0849D320
 	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_0_it.4bpp"
 	.space 0x40
@@ -5983,7 +6229,8 @@ gSapphireGetArrow_T_2Lit_Bot_It:: @ 0x0849DAA0
 	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_2_it.4bpp"
 	.space 0x20
 gSapphireGetArrow_T_3Lit_Bot_It:: @ 0x0849DB00
-	.incbin "data/eu/bin/rom_1_0849DB00.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_2_it.4bpp"
+	.space 0x80
 gSapphireGetArrow_G_0Lit_Top_Es:: @ 0x0849F3C0
 	.incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_0_0_es.4bpp"
 gSapphireGetArrow_G_1Lit_Top_Es:: @ 0x0849F420
@@ -6001,11 +6248,14 @@ gSapphireGetArrow_E_2Lit_Top_Es:: @ 0x0849F5C0
 	.incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_2_0_es.4bpp"
 	.space 0x20
 gSapphireGetArrow_E_3Lit_Top_Es:: @ 0x0849F620
-	.incbin "data/eu/bin/rom_1_0849F620.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_e_arrow_3_0_es.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_Under2Lit_Top_Es:: @ 0x0849F680
-	.incbin "data/eu/bin/rom_1_0849F680.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_0_0_es.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_2Lit_Top_Es:: @ 0x0849F6E0
-	.incbin "data/eu/bin/rom_1_0849F6E0.bin"
+	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_2_0_es.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireGetArrow_T_3Lit_Top_Es:: @ 0x0849F740
 	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_0_es.4bpp"
 	.space 0x40
@@ -6396,7 +6646,13 @@ gSapphireCatchLightState1Top_Fr:: @ 0x084A23C0
 gSapphireCatchLightState0Bot_Fr:: @ 0x084A2780
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_state0_bot_fr.4bpp"
 gSapphireCatchLightState1Bot_Fr:: @ 0x084A27C0
-	.incbin "data/eu/bin/rom_1_084A27C0.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_state1_bot_fr.4bpp"
+gSapphireTrapIndicatorState0Top_Fr::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state0_top_fr.4bpp"
+gSapphireTrapIndicatorState1Top_Fr::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state1_top_fr.4bpp"
+gSapphireTrapIndicatorState2Top_Fr::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state2_top_fr.4bpp"
 gSapphireCatchLightSlot0State2Top_Fr:: @ 0x084A28C0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_top_fr.4bpp"
 gSapphireCatchLightSlot0State3Top_Fr:: @ 0x084A2900
@@ -6420,7 +6676,15 @@ gSapphireCatchLightSlot1State5Top_Fr:: @ 0x084A2B00
 gSapphireCatchLightSlot2State4Top_Fr:: @ 0x084A2B40
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_top_fr.4bpp"
 gSapphireCatchLightSlot2State5Top_Fr:: @ 0x084A2B80
-	.incbin "data/eu/bin/rom_1_084A2B80.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_top_fr.4bpp"
+gHatchMachineSeg0IdleA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a_fr.4bpp"
+gSapphireTrapIndicatorState0Bot_Fr::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state0_bot_fr.4bpp"
+gSapphireTrapIndicatorState1Bot_Fr::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state1_bot_fr.4bpp"
+gSapphireTrapIndicatorState2Bot_Fr::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state2_bot_fr.4bpp"
 gSapphireCatchLightSlot0State2Bot_Fr:: @ 0x084A2CC0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_bot_fr.4bpp"
 gSapphireCatchLightSlot0State3Bot_Fr:: @ 0x084A2D00
@@ -6444,7 +6708,76 @@ gSapphireCatchLightSlot1State5Bot_Fr:: @ 0x084A2F00
 gSapphireCatchLightSlot2State4Bot_Fr:: @ 0x084A2F40
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_bot_fr.4bpp"
 gSapphireCatchLightSlot2State5Bot_Fr:: @ 0x084A2F80
-	.incbin "data/eu/bin/rom_1_084A2F80.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_fr.4bpp"
+gHatchMachineSeg0IdleB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_b_fr.4bpp"
+gHatchMachineSeg0HitA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_a_fr.4bpp"
+gHatchMachineSeg1IdleA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_a_fr.4bpp"
+gHatchMachineSeg1HitA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_a_fr.4bpp"
+gHatchMachineSeg2IdleA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_a_fr.4bpp"
+gHatchMachineSeg2HitA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_a_fr.4bpp"
+	.space 0x80
+gHatchMachineSeg4IdleA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_a_fr.4bpp"
+gHatchMachineSeg4HitA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_a_fr.4bpp"
+gHatchMachineSeg5IdleA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_a_fr.4bpp"
+gHatchMachineSeg5HitA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_a_fr.4bpp"
+gHatchMachineSeg6IdleA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_a_fr.4bpp"
+gHatchMachineSeg6HitA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_a_fr.4bpp"
+gHatchMachineSeg7IdleA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_a_fr.4bpp"
+gHatchMachineSeg7HitA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_a_fr.4bpp"
+gHatchMachineSeg8IdleA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_a_fr.4bpp"
+gHatchMachineSeg0HitB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_b_fr.4bpp"
+gHatchMachineSeg1IdleB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_b_fr.4bpp"
+gHatchMachineSeg1HitB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_b_fr.4bpp"
+gHatchMachineSeg2IdleB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_b_fr.4bpp"
+gHatchMachineSeg2HitB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_b_fr.4bpp"
+gHatchMachineSeg3Idle_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_idle_fr.4bpp"
+gHatchMachineSeg3Hit_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_hit_fr.4bpp"
+gHatchMachineSeg4IdleB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_b_fr.4bpp"
+gHatchMachineSeg4HitB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_b_fr.4bpp"
+gHatchMachineSeg5IdleB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_b_fr.4bpp"
+gHatchMachineSeg5HitB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_b_fr.4bpp"
+gHatchMachineSeg6IdleB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_b_fr.4bpp"
+gHatchMachineSeg6HitB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_b_fr.4bpp"
+gHatchMachineSeg7IdleB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_b_fr.4bpp"
+gHatchMachineSeg7HitB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_b_fr.4bpp"
+gHatchMachineSeg8IdleB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_b_fr.4bpp"
+gHatchMachineSeg8HitA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_a_fr.4bpp"
+gHatchMachineSeg9IdleA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_a_fr.4bpp"
+gHatchMachineSeg9HitA_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_a_fr.4bpp"
 gSapphirePSquareFrame0Top_Fr:: @ 0x084A38C0
 	.incbin "graphics/stage/sapphire/p_square/p_square_frame0_top_fr.4bpp"
 gSapphirePSquareFrame1Top_Fr:: @ 0x084A3900
@@ -6454,7 +6787,14 @@ gSapphirePSquareFrame2Top_Fr:: @ 0x084A3940
 gSapphirePSquareFrame3Top_Fr:: @ 0x084A3980
 	.incbin "graphics/stage/sapphire/p_square/p_square_frame3_top_fr.4bpp"
 gSapphirePSquareFrame4Top_Fr:: @ 0x084A39C0
-	.incbin "data/eu/bin/rom_1_084A39C0.bin"
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_top_fr.4bpp"
+	.space 0x200
+gHatchMachineSeg8HitB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_b_fr.4bpp"
+gHatchMachineSeg9IdleB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_b_fr.4bpp"
+gHatchMachineSeg9HitB_Fr::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_b_fr.4bpp"
 gSapphirePSquareFrame0Bot_Fr:: @ 0x084A3CC0
 	.incbin "graphics/stage/sapphire/p_square/p_square_frame0_bot_fr.4bpp"
 gSapphirePSquareFrame1Bot_Fr:: @ 0x084A3D00
@@ -6489,7 +6829,13 @@ gSapphireCatchLightState1Top_De:: @ 0x084A43E0
 gSapphireCatchLightState0Bot_De:: @ 0x084A47A0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_state0_bot_de.4bpp"
 gSapphireCatchLightState1Bot_De:: @ 0x084A47E0
-	.incbin "data/eu/bin/rom_1_084A47E0.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_state1_bot_de.4bpp"
+gSapphireTrapIndicatorState0Top_De::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state0_top_de.4bpp"
+gSapphireTrapIndicatorState1Top_De::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state1_top_de.4bpp"
+gSapphireTrapIndicatorState2Top_De::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state2_top_de.4bpp"
 gSapphireCatchLightSlot0State2Top_De:: @ 0x084A48E0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_top_de.4bpp"
 gSapphireCatchLightSlot0State3Top_De:: @ 0x084A4920
@@ -6513,7 +6859,15 @@ gSapphireCatchLightSlot1State5Top_De:: @ 0x084A4B20
 gSapphireCatchLightSlot2State4Top_De:: @ 0x084A4B60
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_top_de.4bpp"
 gSapphireCatchLightSlot2State5Top_De:: @ 0x084A4BA0
-	.incbin "data/eu/bin/rom_1_084A4BA0.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_top_de.4bpp"
+gHatchMachineSeg0IdleA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a_de.4bpp"
+gSapphireTrapIndicatorState0Bot_De::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state0_bot_de.4bpp"
+gSapphireTrapIndicatorState1Bot_De::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state1_bot_de.4bpp"
+gSapphireTrapIndicatorState2Bot_De::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state2_bot_de.4bpp"
 gSapphireCatchLightSlot0State2Bot_De:: @ 0x084A4CE0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_bot_de.4bpp"
 gSapphireCatchLightSlot0State3Bot_De:: @ 0x084A4D20
@@ -6537,7 +6891,7 @@ gSapphireCatchLightSlot1State5Bot_De:: @ 0x084A4F20
 gSapphireCatchLightSlot2State4Bot_De:: @ 0x084A4F60
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_bot_de.4bpp"
 gSapphireCatchLightSlot2State5Bot_De:: @ 0x084A4FA0
-	.incbin "data/eu/bin/rom_1_084A4FA0.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_de.4bpp"
 gSapphireHoleLightH_Off_It:: @ 0x084A61C0
 	.incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_h_off_it.4bpp"
 gSapphireHoleLightH_On_It:: @ 0x084A6200
@@ -6562,7 +6916,13 @@ gSapphireCatchLightState1Top_It:: @ 0x084A6400
 gSapphireCatchLightState0Bot_It:: @ 0x084A67C0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_state0_bot_it.4bpp"
 gSapphireCatchLightState1Bot_It:: @ 0x084A6800
-	.incbin "data/eu/bin/rom_1_084A6800.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_state1_bot_it.4bpp"
+gSapphireTrapIndicatorState0Top_It::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state0_top_it.4bpp"
+gSapphireTrapIndicatorState1Top_It::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state1_top_it.4bpp"
+gSapphireTrapIndicatorState2Top_It::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state2_top_it.4bpp"
 gSapphireCatchLightSlot0State2Top_It:: @ 0x084A6900
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_top_it.4bpp"
 gSapphireCatchLightSlot0State3Top_It:: @ 0x084A6940
@@ -6586,7 +6946,15 @@ gSapphireCatchLightSlot1State5Top_It:: @ 0x084A6B40
 gSapphireCatchLightSlot2State4Top_It:: @ 0x084A6B80
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_top_it.4bpp"
 gSapphireCatchLightSlot2State5Top_It:: @ 0x084A6BC0
-	.incbin "data/eu/bin/rom_1_084A6BC0.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_top_it.4bpp"
+gHatchMachineSeg0IdleA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a_it.4bpp"
+gSapphireTrapIndicatorState0Bot_It::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state0_bot_it.4bpp"
+gSapphireTrapIndicatorState1Bot_It::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state1_bot_it.4bpp"
+gSapphireTrapIndicatorState2Bot_It::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state2_bot_it.4bpp"
 gSapphireCatchLightSlot0State2Bot_It:: @ 0x084A6D00
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_bot_it.4bpp"
 gSapphireCatchLightSlot0State3Bot_It:: @ 0x084A6D40
@@ -6610,7 +6978,7 @@ gSapphireCatchLightSlot1State5Bot_It:: @ 0x084A6F40
 gSapphireCatchLightSlot2State4Bot_It:: @ 0x084A6F80
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_bot_it.4bpp"
 gSapphireCatchLightSlot2State5Bot_It:: @ 0x084A6FC0
-	.incbin "data/eu/bin/rom_1_084A6FC0.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_it.4bpp"
 gSapphireHoleLightH_Off_Es:: @ 0x084A81E0
 	.incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_h_off_es.4bpp"
 gSapphireHoleLightH_On_Es:: @ 0x084A8220
@@ -6635,7 +7003,13 @@ gSapphireCatchLightState1Top_Es:: @ 0x084A8420
 gSapphireCatchLightState0Bot_Es:: @ 0x084A87E0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_state0_bot_es.4bpp"
 gSapphireCatchLightState1Bot_Es:: @ 0x084A8820
-	.incbin "data/eu/bin/rom_1_084A8820.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_state1_bot_es.4bpp"
+gSapphireTrapIndicatorState0Top_Es::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state0_top_es.4bpp"
+gSapphireTrapIndicatorState1Top_Es::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state1_top_es.4bpp"
+gSapphireTrapIndicatorState2Top_Es::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state2_top_es.4bpp"
 gSapphireCatchLightSlot0State2Top_Es:: @ 0x084A8920
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_top_es.4bpp"
 gSapphireCatchLightSlot0State3Top_Es:: @ 0x084A8960
@@ -6659,7 +7033,15 @@ gSapphireCatchLightSlot1State5Top_Es:: @ 0x084A8B60
 gSapphireCatchLightSlot2State4Top_Es:: @ 0x084A8BA0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_top_es.4bpp"
 gSapphireCatchLightSlot2State5Top_Es:: @ 0x084A8BE0
-	.incbin "data/eu/bin/rom_1_084A8BE0.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_top_es.4bpp"
+gHatchMachineSeg0IdleA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a_es.4bpp"
+gSapphireTrapIndicatorState0Bot_Es::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state0_bot_es.4bpp"
+gSapphireTrapIndicatorState1Bot_Es::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state1_bot_es.4bpp"
+gSapphireTrapIndicatorState2Bot_Es::
+	.incbin "graphics/stage/sapphire/trap_indicator/trap_state2_bot_es.4bpp"
 gSapphireCatchLightSlot0State2Bot_Es:: @ 0x084A8D20
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot0_state2_bot_es.4bpp"
 gSapphireCatchLightSlot0State3Bot_Es:: @ 0x084A8D60
@@ -6683,7 +7065,105 @@ gSapphireCatchLightSlot1State5Bot_Es:: @ 0x084A8F60
 gSapphireCatchLightSlot2State4Bot_Es:: @ 0x084A8FA0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_bot_es.4bpp"
 gSapphireCatchLightSlot2State5Bot_Es:: @ 0x084A8FE0
-	.incbin "data/eu/bin/rom_1_084A8FE0.bin"
+	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_es.4bpp"
+gHatchMachineSeg0IdleB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_b_es.4bpp"
+gHatchMachineSeg0HitA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_a_es.4bpp"
+gHatchMachineSeg1IdleA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_a_es.4bpp"
+gHatchMachineSeg1HitA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_a_es.4bpp"
+gHatchMachineSeg2IdleA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_a_es.4bpp"
+gHatchMachineSeg2HitA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_a_es.4bpp"
+	.space 0x80
+gHatchMachineSeg4IdleA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_a_es.4bpp"
+gHatchMachineSeg4HitA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_a_es.4bpp"
+gHatchMachineSeg5IdleA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_a_es.4bpp"
+gHatchMachineSeg5HitA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_a_es.4bpp"
+gHatchMachineSeg6IdleA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_a_es.4bpp"
+gHatchMachineSeg6HitA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_a_es.4bpp"
+gHatchMachineSeg7IdleA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_a_es.4bpp"
+gHatchMachineSeg7HitA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_a_es.4bpp"
+gHatchMachineSeg8IdleA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_a_es.4bpp"
+gHatchMachineSeg0HitB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_b_es.4bpp"
+gHatchMachineSeg1IdleB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_b_es.4bpp"
+gHatchMachineSeg1HitB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_b_es.4bpp"
+gHatchMachineSeg2IdleB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_b_es.4bpp"
+gHatchMachineSeg2HitB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_b_es.4bpp"
+gHatchMachineSeg3Idle_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_idle_es.4bpp"
+gHatchMachineSeg3Hit_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_hit_es.4bpp"
+gHatchMachineSeg4IdleB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_b_es.4bpp"
+gHatchMachineSeg4HitB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_b_es.4bpp"
+gHatchMachineSeg5IdleB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_b_es.4bpp"
+gHatchMachineSeg5HitB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_b_es.4bpp"
+gHatchMachineSeg6IdleB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_b_es.4bpp"
+gHatchMachineSeg6HitB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_b_es.4bpp"
+gHatchMachineSeg7IdleB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_b_es.4bpp"
+gHatchMachineSeg7HitB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_b_es.4bpp"
+gHatchMachineSeg8IdleB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_b_es.4bpp"
+gHatchMachineSeg8HitA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_a_es.4bpp"
+gHatchMachineSeg9IdleA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_a_es.4bpp"
+gHatchMachineSeg9HitA_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_a_es.4bpp"
+gSapphirePSquareFrame0Top_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame0_top_es.4bpp"
+gSapphirePSquareFrame1Top_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame1_top_es.4bpp"
+gSapphirePSquareFrame2Top_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame2_top_es.4bpp"
+gSapphirePSquareFrame3Top_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame3_top_es.4bpp"
+gSapphirePSquareFrame4Top_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_top_es.4bpp"
+	.space 0x200
+gHatchMachineSeg8HitB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_b_es.4bpp"
+gHatchMachineSeg9IdleB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_b_es.4bpp"
+gHatchMachineSeg9HitB_Es::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_b_es.4bpp"
+gSapphirePSquareFrame0Bot_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame0_bot_es.4bpp"
+gSapphirePSquareFrame1Bot_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame1_bot_es.4bpp"
+gSapphirePSquareFrame2Bot_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame2_bot_es.4bpp"
+gSapphirePSquareFrame3Bot_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame3_bot_es.4bpp"
+gSapphirePSquareFrame4Bot_Es::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_es.4bpp"
+	.space 0x220
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_filler_es.4bpp"
 gSapphireSaverRow0Tile_Off:: @ 0x084AA0A0
     .incbin "graphics/stage/sapphire/saver/saver_off_row0.4bpp"
     .incbin "graphics/stage/sapphire/saver/saver_off_row0_filler.4bpp"
@@ -6735,9 +7215,12 @@ gSapphireSaverRow2Tile_Off_Fr:: @ 0x084AB8C0
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_fr.4bpp"
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_filler_fr.4bpp"
 gSapphireSaverRow2Tile_On_Fr:: @ 0x084AB9C0
-	.incbin "data/eu/bin/rom_1_084AB9C0.bin"
+	.incbin "graphics/stage/sapphire/saver/saver_on_row2_fr.4bpp"
+	.space 0x200
+	.fill 0xA0, 1, 0xCC
 gSapphireSaverRow3Tile_Off_Fr:: @ 0x084ABD40
-	.incbin "data/eu/bin/rom_1_084ABD40.bin"
+	.incbin "graphics/stage/sapphire/saver/saver_off_row3_fr.4bpp"
+	.fill 0xC0, 1, 0xCC
 gSapphireSaverRow3Tile_On_Fr:: @ 0x084ABE40
 	.incbin "data/eu/bin/rom_1_084ABE40.bin"
 gSapphireSaverRow0Tile_Off_It:: @ 0x084AC0E0
@@ -6755,9 +7238,12 @@ gSapphireSaverRow2Tile_Off_It:: @ 0x084AC8E0
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_it.4bpp"
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_filler_it.4bpp"
 gSapphireSaverRow2Tile_On_It:: @ 0x084AC9E0
-	.incbin "data/eu/bin/rom_1_084AC9E0.bin"
+	.incbin "graphics/stage/sapphire/saver/saver_on_row2_it.4bpp"
+	.space 0x200
+	.fill 0xA0, 1, 0xCC
 gSapphireSaverRow3Tile_Off_It:: @ 0x084ACD60
-	.incbin "data/eu/bin/rom_1_084ACD60.bin"
+	.incbin "graphics/stage/sapphire/saver/saver_off_row3_it.4bpp"
+	.fill 0xC0, 1, 0xCC
 gSapphireSaverRow3Tile_On_It:: @ 0x084ACE60
 	.incbin "data/eu/bin/rom_1_084ACE60.bin"
 gSapphireSaverRow0Tile_Off_Es:: @ 0x084AD100
@@ -6776,11 +7262,16 @@ gSapphireSaverRow2Tile_Off_Es:: @ 0x084AD920
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_es.4bpp"
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_filler_es.4bpp"
 gSapphireSaverRow2Tile_On_Es:: @ 0x084ADA20
-	.incbin "data/eu/bin/rom_1_084ADA20.bin"
+	.incbin "graphics/stage/sapphire/saver/saver_on_row2_es.4bpp"
+	.space 0x200
+	.fill 0xA0, 1, 0xCC
 gSapphireSaverRow3Tile_Off_Es:: @ 0x084ADD80
-	.incbin "data/eu/bin/rom_1_084ADD80.bin"
+	.incbin "graphics/stage/sapphire/saver/saver_off_row3_es.4bpp"
+	.fill 0xC0, 1, 0xCC
 gSapphireSaverRow3Tile_On_Es:: @ 0x084ADE80
-	.incbin "data/eu/bin/rom_1_084ADE80.bin"
+	.incbin "graphics/stage/sapphire/saver/saver_on_row3_es.4bpp"
+	.fill 0x20, 1, 0xCC
+	.space 0x260
 gSapphireHatchArrow_R0_Off:: @ 0x084AE140
     .incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_off_row0.4bpp"
     .space 0x40
@@ -6872,9 +7363,11 @@ gSapphireHatchArrow_R0_Off_Fr:: @ 0x084AF160
 	.incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_off_row0_fr.4bpp"
 	.space 0x40
 gSapphireHatchArrow_R0_On_Fr:: @ 0x084AF1E0
-	.incbin "data/eu/bin/rom_1_084AF1E0.bin"
+	.incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_fr.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireCatchArrow_R0_Off_Fr:: @ 0x084AF240
-	.incbin "data/eu/bin/rom_1_084AF240.bin"
+	.incbin "graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_fr.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireCatchArrow_R0_On_Fr:: @ 0x084AF2C0
 	.incbin "graphics/stage/sapphire/catch_arrow/catch_arrow_on_row0_fr.4bpp"
 gSapphireBumperArrow_R0_Off_Fr:: @ 0x084AF320
@@ -6921,7 +7414,8 @@ gSapphireCatchArrow_R3_On_Fr:: @ 0x084AFEA0
 gSapphireBumperArrow_R3_Off_Fr:: @ 0x084AFF20
 	.incbin "graphics/stage/sapphire/bumper_arrow/bumper_arrow_off_row3_fr.4bpp"
 gSapphireBumperArrow_R3_On_Fr:: @ 0x084AFFA0
-	.incbin "data/eu/bin/rom_1_084AFFA0.bin"
+	.incbin "graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_fr.4bpp"
+	.space 0x120
 gSapphireHatchArrow_R0_Off_De:: @ 0x084B0180
 	.incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_off_row0_de.4bpp"
 	.space 0x40
@@ -6975,14 +7469,17 @@ gSapphireCatchArrow_R3_On_De:: @ 0x084B0EC0
 gSapphireBumperArrow_R3_Off_De:: @ 0x084B0F40
 	.incbin "graphics/stage/sapphire/bumper_arrow/bumper_arrow_off_row3_de.4bpp"
 gSapphireBumperArrow_R3_On_De:: @ 0x084B0FC0
-	.incbin "data/eu/bin/rom_1_084B0FC0.bin"
+	.incbin "graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_de.4bpp"
+	.space 0x120
 gSapphireHatchArrow_R0_Off_It:: @ 0x084B11A0
 	.incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_off_row0_it.4bpp"
 	.space 0x40
 gSapphireHatchArrow_R0_On_It:: @ 0x084B1220
-	.incbin "data/eu/bin/rom_1_084B1220.bin"
+	.incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_it.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireCatchArrow_R0_Off_It:: @ 0x084B1280
-	.incbin "data/eu/bin/rom_1_084B1280.bin"
+	.incbin "graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_it.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireCatchArrow_R0_On_It:: @ 0x084B1300
 	.incbin "graphics/stage/sapphire/catch_arrow/catch_arrow_on_row0_it.4bpp"
 gSapphireBumperArrow_R0_Off_It:: @ 0x084B1360
@@ -7029,14 +7526,17 @@ gSapphireCatchArrow_R3_On_It:: @ 0x084B1EE0
 gSapphireBumperArrow_R3_Off_It:: @ 0x084B1F60
 	.incbin "graphics/stage/sapphire/bumper_arrow/bumper_arrow_off_row3_it.4bpp"
 gSapphireBumperArrow_R3_On_It:: @ 0x084B1FE0
-	.incbin "data/eu/bin/rom_1_084B1FE0.bin"
+	.incbin "graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_it.4bpp"
+	.space 0x120
 gSapphireHatchArrow_R0_Off_Es:: @ 0x084B21C0
 	.incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_off_row0_es.4bpp"
 	.space 0x40
 gSapphireHatchArrow_R0_On_Es:: @ 0x084B2240
-	.incbin "data/eu/bin/rom_1_084B2240.bin"
+	.incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_es.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireCatchArrow_R0_Off_Es:: @ 0x084B22A0
-	.incbin "data/eu/bin/rom_1_084B22A0.bin"
+	.incbin "graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_es.4bpp"
+	.fill 0x20, 1, 0xDD
 gSapphireCatchArrow_R0_On_Es:: @ 0x084B2320
 	.incbin "graphics/stage/sapphire/catch_arrow/catch_arrow_on_row0_es.4bpp"
 gSapphireBumperArrow_R0_Off_Es:: @ 0x084B2380
@@ -7952,28 +8452,28 @@ gCatchTile_BurstStart_Gfx:: @ 0x0857736C
 
 @ Tile Grid
 gCatchTile_BurstStart_Pal:: @ 0x0857938C
-	.incbin "data/eu/bin/rom_1_0857938C.bin"
+	.incbin "graphics/stage/main/catch_tile_burst_start_eu.gbapal"
 gCatchTile_BurstStage2_Gfx:: @ 0x085793AC
 	.incbin "graphics/stage/main/catch_tile_burst_stage2.4bpp"
 	.space 0x20
 
 
 gCatchTile_BurstStage2_Pal:: @ 0x08579BCC
-	.incbin "data/eu/bin/rom_1_08579BCC.bin"
+	.incbin "graphics/stage/main/catch_tile_burst_stage2_eu.gbapal"
 gCatchTile_BurstStage3_Gfx:: @ 0x08579BEC
 	.incbin "graphics/stage/main/catch_tile_burst_stage3.4bpp"
 	.space 0x20
 
 
 gCatchTile_BurstStage3_Pal:: @ 0x0857BC0C
-	.incbin "data/eu/bin/rom_1_0857BC0C.bin"
+	.incbin "graphics/stage/main/catch_tile_burst_stage3_eu.gbapal"
 gCatchTile_BurstStage4_Gfx:: @ 0x0857BC2C
 	.incbin "graphics/stage/main/catch_tile_burst_stage4.4bpp"
 	.space 0x20
 
 
 gCatchTile_BurstStage4_Pal:: @ 0x0857D44C
-	.incbin "data/eu/bin/rom_1_0857D44C.bin"
+	.incbin "graphics/stage/main/catch_tile_burst_stage4_eu.gbapal"
 gAerodactlyFlight_Gfx:: @ 0x0857D46C
 	.incbin "graphics/stage/ruby/aerodactyl_flight.4bpp"
 	.space 0x500
@@ -8002,13 +8502,17 @@ gBoardHudTiles_A:: @ 0x0857EEEC
 
 
 gBoardHudTiles_A_Fr:: @ 0x0857F30C
-	.incbin "data/eu/bin/rom_1_0857F30C.bin"
+	.incbin "graphics/stage/main/board_hud_tiles_a_fr.4bpp"
+	.space 0x20
 gBoardHudTiles_A_De:: @ 0x0857F72C
-	.incbin "data/eu/bin/rom_1_0857F72C.bin"
+	.incbin "graphics/stage/main/board_hud_tiles_a_de.4bpp"
+	.space 0x20
 gBoardHudTiles_A_It:: @ 0x0857FB4C
-	.incbin "data/eu/bin/rom_1_0857FB4C.bin"
+	.incbin "graphics/stage/main/board_hud_tiles_a_it.4bpp"
+	.space 0x20
 gBoardHudTiles_A_Es:: @ 0x0857FF6C
-	.incbin "data/eu/bin/rom_1_0857FF6C.bin"
+	.incbin "graphics/stage/main/board_hud_tiles_a_es.4bpp"
+	.space 0x20
 gPortraitAnimFrameGraphics_En:: @ 0x0858038C
 	.incbin "data/eu/bin/rom_1_0858038C.bin"
 gPortraitAnimFrameGraphics_Fr:: @ 0x0859238C
@@ -8612,11 +9116,11 @@ gSphealResultsScreenGfx:: @ 0x086EB44C
 	.incbin "graphics/stage/spheal/spheal_results.4bpp"
 
 gSphealResultsScreenGfx_De:: @ 0x086EBC4C
-	.incbin "data/eu/bin/rom_1_086EBC4C.bin"
+	.incbin "graphics/stage/spheal/spheal_results_de.4bpp"
 gSphealResultsScreenGfx_It:: @ 0x086EC44C
-	.incbin "data/eu/bin/rom_1_086EC44C.bin"
+	.incbin "graphics/stage/spheal/spheal_results_it.4bpp"
 gSphealResultsScreenGfx_Es:: @ 0x086ECC4C
-	.incbin "data/eu/bin/rom_1_086ECC4C.bin"
+	.incbin "graphics/stage/spheal/spheal_results_es.4bpp"
 gWhiscash_Gfx:: @ 0x086ED44C
 	.incbin "graphics/stage/ruby/whiscash.4bpp"
 
@@ -8886,7 +9390,7 @@ gRubyBoardShopDoor_Gfx:: @ 0x087223CC
 
 
 gZigzagoonShockWallIndicator_Gfx:: @ 0x087229CC
-	.incbin "data/eu/bin/rom_1_087229CC.bin"
+	.incbin "graphics/stage/sapphire/zigzagoon_press_button_indicator_eu.4bpp"
 gDusclopsBoardDusclops_Gfx:: @ 0x087239CC
 	.incbin "graphics/stage/dusclops/dusclops.4bpp";
 
@@ -8945,11 +9449,11 @@ gMainBoardBallSave_Gfx:: @ 0x0874582C
 	.incbin "graphics/stage/main/ball_save.4bpp";
 
 gMainBoardBallSave_Gfx_Fr:: @ 0x087470EC
-	.incbin "data/eu/bin/rom_1_087470EC.bin"
+	.incbin "graphics/stage/main/ball_save_fr.4bpp"
 gMainBoardBallSave_Gfx_De:: @ 0x087489AC
-	.incbin "data/eu/bin/rom_1_087489AC.bin"
+	.incbin "graphics/stage/main/ball_save_de.4bpp"
 gMainBoardBallSave_Gfx_It:: @ 0x0874A26C
-	.incbin "data/eu/bin/rom_1_0874A26C.bin"
+	.incbin "graphics/stage/main/ball_save_it.4bpp"
 gMainBoardBallSaveLatios_Gfx:: @ 0x0874BB2C
 	.incbin "graphics/stage/main/latios.4bpp";
 
@@ -8957,7 +9461,7 @@ gMainBoardBallSaveLatiosArm_Gfx:: @ 0x0874CB2C
 	.incbin "graphics/stage/main/latios_arm.4bpp";
 
 gMainBoardBallSave_Gfx_Es:: @ 0x0874CBEC
-	.incbin "data/eu/bin/rom_1_0874CBEC.bin"
+	.incbin "graphics/stage/main/ball_save_es.4bpp"
 gMainBoardEndOfBall_Gfx_En:: @ 0x0874E4AC
 gMainBoardEndOfBall_Gfx:: @ 0x0874E4AC
 	.incbin "graphics/stage/main/end_of_ball.4bpp";
@@ -8967,13 +9471,13 @@ gMainBoardEndOfBall_Gfx:: @ 0x0874E4AC
 gEobBonusSummaryCharTiles:: @ 0x087500AC
 	.incbin "data/eu/bin/rom_1_087500AC.bin"
 gMainBoardEndOfBall_Gfx_Fr:: @ 0x087507CC
-	.incbin "data/eu/bin/rom_1_087507CC.bin"
+	.incbin "graphics/stage/main/end_of_ball_fr.4bpp"
 gMainBoardEndOfBall_Gfx_De:: @ 0x087523CC
-	.incbin "data/eu/bin/rom_1_087523CC.bin"
+	.incbin "graphics/stage/main/end_of_ball_de.4bpp"
 gMainBoardEndOfBall_Gfx_It:: @ 0x08753FCC
-	.incbin "data/eu/bin/rom_1_08753FCC.bin"
+	.incbin "graphics/stage/main/end_of_ball_it.4bpp"
 gMainBoardEndOfBall_Gfx_Es:: @ 0x08755BCC
-	.incbin "data/eu/bin/rom_1_08755BCC.bin"
+	.incbin "graphics/stage/main/end_of_ball_es.4bpp"
 gMainBoardEvoBanner_Gfx:: @ 0x087577CC
 	.incbin "graphics/stage/main/evo_banner.4bpp";
 
@@ -8998,13 +9502,13 @@ gMainBoardTravel_Gfx:: @ 0x087714CC
 	.incbin "graphics/stage/main/travel.4bpp";
 
 gMainBoardTravel_Gfx_Fr:: @ 0x08773AAC
-	.incbin "data/eu/bin/rom_1_08773AAC.bin"
+	.incbin "graphics/stage/main/travel_fr.4bpp"
 gMainBoardTravel_Gfx_De:: @ 0x0877608C
-	.incbin "data/eu/bin/rom_1_0877608C.bin"
+	.incbin "graphics/stage/main/travel_de.4bpp"
 gMainBoardTravel_Gfx_It:: @ 0x0877866C
-	.incbin "data/eu/bin/rom_1_0877866C.bin"
+	.incbin "graphics/stage/main/travel_it.4bpp"
 gMainBoardTravel_Gfx_Es:: @ 0x0877AC4C
-	.incbin "data/eu/bin/rom_1_0877AC4C.bin"
+	.incbin "graphics/stage/main/travel_es.4bpp"
 gPauseMenuText_Gfx:: @ 0x0877D22C
 	.incbin "graphics/stage/main/pause_menu_text.4bpp";
 

@@ -20,6 +20,14 @@
   ],
   "size": 8192
  },
+ "0x080F3D9C": {
+  "label": "gEReaderBackground_Gfx",
+  "lines": [
+   ".incbin \"graphics/ereader/background_eu.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 6144
+ },
  "0x080FC3DC": {
   "label": "gPokedexBg1_Tilemap_De",
   "lines": [
@@ -110,12 +118,37 @@
   ],
   "size": 2048
  },
+ "0x081290FC": {
+  "label": "gPokedexSprites_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/pokedex/sprites_it.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 27680
+ },
+ "0x08136D3C": {
+  "label": "gPokedexTextGlyphs_Gfx",
+  "lines": [
+   ".incbin \"graphics/pokedex/text_glyphs_eu.4bpp\"",
+   "gHighScoreScoreTable_Tilemap::",
+   ".incbin \"graphics/high_score/high_score_table_text_tilemap_eu.bin\""
+  ],
+  "size": 20512
+ },
  "0x0813BD5C": {
   "label": "gHighScoreScoreTable_Tilemap_En",
   "lines": [
    ".incbin \"graphics/high_score/high_score_table_text_tilemap_en.bin\""
   ],
   "size": 4096
+ },
+ "0x0813CD5C": {
+  "label": "gHighScoreText_Gfx",
+  "lines": [
+   ".incbin \"graphics/high_score/text_eu.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 30752
  },
  "0x0814457C": {
   "label": "gHighScoreScoreTable_Tilemap_De",
@@ -266,6 +299,14 @@
   ],
   "size": 16416
  },
+ "0x0818781C": {
+  "label": "gEReaderText_Gfx",
+  "lines": [
+   ".incbin \"graphics/ereader/text_eu.4bpp\"",
+   ".space 0x240"
+  ],
+  "size": 32320
+ },
  "0x08202CBC": {
   "label": "gTitlescreenBgTilemap_En",
   "lines": [
@@ -394,6 +435,211 @@
    ".space 0x20"
   ],
   "size": 28704
+ },
+ "0x0825698C": {
+  "label": "gDusclopsBonusClear_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/dusclops/dusclops_bonus_clear_fr.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x082589AC": {
+  "label": "gDusclopsBonusClear_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/dusclops/dusclops_bonus_clear_de.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x0825A9CC": {
+  "label": "gDusclopsBonusClear_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/dusclops/dusclops_bonus_clear_it.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x0825C9EC": {
+  "label": "gDusclopsBonusClear_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/dusclops/dusclops_bonus_clear_es.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08260A2C": {
+  "label": "gKecleonBonusClear_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/kecleon/kecleon_bonus_clear_fr.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08262A4C": {
+  "label": "gKecleonBonusClear_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/kecleon/kecleon_bonus_clear_de.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08264A6C": {
+  "label": "gKecleonBonusClear_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/kecleon/kecleon_bonus_clear_it.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08266A8C": {
+  "label": "gKecleonBonusClear_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/kecleon/kecleon_bonus_clear_es.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x0826AACC": {
+  "label": "gKyogreBonusClear_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/kyogre/kyogre_bonus_clear_fr.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x0826CAEC": {
+  "label": "gKyogreBonusClear_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/kyogre/kyogre_bonus_clear_de.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x0826EB0C": {
+  "label": "gKyogreBonusClear_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/kyogre/kyogre_bonus_clear_it.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08270B2C": {
+  "label": "gKyogreBonusClear_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/kyogre/kyogre_bonus_clear_es.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08274B6C": {
+  "label": "gGroudonBonusClear_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/groudon/groudon_bonus_clear_fr.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08276B8C": {
+  "label": "gGroudonBonusClear_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/groudon/groudon_bonus_clear_de.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08278BAC": {
+  "label": "gGroudonBonusClear_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/groudon/groudon_bonus_clear_it.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x0827ABCC": {
+  "label": "gGroudonBonusClear_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/groudon/groudon_bonus_clear_es.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x0827EC0C": {
+  "label": "gRayquazaBonusClear_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/rayquaza/rayquaza_bonus_clear_fr.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08280C2C": {
+  "label": "gRayquazaBonusClear_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/rayquaza/rayquaza_bonus_clear_de.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08282C4C": {
+  "label": "gRayquazaBonusClear_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/rayquaza/rayquaza_bonus_clear_it.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x08284C6C": {
+  "label": "gRayquazaBonusClear_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/rayquaza/rayquaza_bonus_clear_es.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 8224
+ },
+ "0x0829EA5C": {
+  "label": "gEvolutionCutsceneTilesGfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/main/board_action_de.4bpp\"",
+   ".space 0x3E0"
+  ],
+  "size": 9248
+ },
+ "0x082A0E7C": {
+  "label": "gEvolutionCutsceneTilesGfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/main/board_action_it.4bpp\"",
+   ".space 0x3E0"
+  ],
+  "size": 9248
+ },
+ "0x082A329C": {
+  "label": "gEvolutionCutsceneTilesGfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/main/board_action_es.4bpp\"",
+   ".space 0x3E0"
+  ],
+  "size": 9248
+ },
+ "0x082A74DC": {
+  "label": "gEvoExAppear_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/board_pickups/evo_item_ex_de.4bpp\""
+  ],
+  "size": 7200
+ },
+ "0x082A90FC": {
+  "label": "gEvoExAppear_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/board_pickups/evo_item_ex_it.4bpp\""
+  ],
+  "size": 7200
+ },
+ "0x082AAD1C": {
+  "label": "gEvoExAppear_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/board_pickups/evo_item_ex_es.4bpp\""
+  ],
+  "size": 7200
  },
  "0x082FDBFC": {
   "label": "gEvoModeBG0_0_Tilemap_Fr",
@@ -619,6 +865,90 @@
   ],
   "size": 4096
  },
+ "0x083B8DAC": {
+  "label": "gRubyBoardCompressedTiles2_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgtop_tiles_fr.4bpp.lz\""
+  ],
+  "size": 11192
+ },
+ "0x083BB964": {
+  "label": "gRubyBoardCompressedTiles2_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgtop_tiles_de.4bpp.lz\""
+  ],
+  "size": 11128
+ },
+ "0x083BE4DC": {
+  "label": "gRubyBoardCompressedTiles2_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgtop_tiles_it.4bpp.lz\""
+  ],
+  "size": 11184
+ },
+ "0x083C108C": {
+  "label": "gRubyBoardCompressedTiles2_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgtop_tiles_es.4bpp.lz\""
+  ],
+  "size": 11192
+ },
+ "0x083C5E20": {
+  "label": "gRubyBoardCompressedBGTileBuffer_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgbottom_tiles_fr.4bpp.lz\""
+  ],
+  "size": 8664
+ },
+ "0x083C7FF8": {
+  "label": "gRubyBoardCompressedBGTileBuffer_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgbottom_tiles_de.4bpp.lz\""
+  ],
+  "size": 8680
+ },
+ "0x083CA1E0": {
+  "label": "gRubyBoardCompressedBGTileBuffer_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgbottom_tiles_it.4bpp.lz\""
+  ],
+  "size": 8636
+ },
+ "0x083CC39C": {
+  "label": "gRubyBoardCompressedBGTileBuffer_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgbottom_tiles_es.4bpp.lz\""
+  ],
+  "size": 8648
+ },
+ "0x083CE564": {
+  "label": "gRubyBoardCompressedTiles1_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgramp_tiles_fr.4bpp.lz\""
+  ],
+  "size": 6996
+ },
+ "0x083D00B8": {
+  "label": "gRubyBoardCompressedTiles1_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgramp_tiles_de.4bpp.lz\""
+  ],
+  "size": 6972
+ },
+ "0x083D1BF4": {
+  "label": "gRubyBoardCompressedTiles1_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgramp_tiles_it.4bpp.lz\""
+  ],
+  "size": 7000
+ },
+ "0x083D374C": {
+  "label": "gRubyBoardCompressedTiles1_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/ruby_board_bgramp_tiles_es.4bpp.lz\""
+  ],
+  "size": 7000
+ },
  "0x083E36C4": {
   "label": "gRubyGetArrow_G_0Lit_Top_Fr",
   "lines": [
@@ -835,6 +1165,15 @@
   ],
   "size": 96
  },
+ "0x083E4224": {
+  "label": "gRubyGetArrow_T_3Lit_Bot_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/get_arrow/get_t_arrow_3_2_fr.4bpp\"",
+   ".space 0x40",
+   ".fill 0x20, 1, 0x22"
+  ],
+  "size": 192
+ },
  "0x083E42E4": {
   "label": "gRubyEvoArrow_E_0Lit_Top_De",
   "lines": [
@@ -1039,6 +1378,77 @@
    ".incbin \"graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_2_de.4bpp\""
   ],
   "size": 96
+ },
+ "0x083E4E44": {
+  "label": "gRubyEvoArrow_O_3Lit_Bot_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_2_de.4bpp\"",
+   ".space 0x40",
+   "gRubyCoinArrow_1_0Lit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p0_de.4bpp\"",
+   "gRubyCoinArrow_1_1Lit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p0_de.4bpp\"",
+   "gRubyCoinArrow_1_2PlusLit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p0_de.4bpp\"",
+   "gRubyCoinArrow_5_0Lit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p0_de.4bpp\"",
+   "gRubyCoinArrow_5_1Lit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p0_de.4bpp\"",
+   "gRubyCoinArrow_5_2Lit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p0_de.4bpp\"",
+   "gRubyCoinArrow_5_3Lit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p0_de.4bpp\"",
+   "gRubyCoinArrow_10_Under2Lit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p0_de.4bpp\"",
+   "gRubyCoinArrow_10_2Lit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p0_de.4bpp\"",
+   "gRubyCoinArrow_10_3Lit_Top_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p0_de.4bpp\"",
+   ".space 0x40",
+   "gRubyCoinArrow_1_0Lit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p1_de.4bpp\"",
+   "gRubyCoinArrow_1_1Lit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p1_de.4bpp\"",
+   "gRubyCoinArrow_1_2PlusLit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p1_de.4bpp\"",
+   "gRubyCoinArrow_5_0Lit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p1_de.4bpp\"",
+   "gRubyCoinArrow_5_1Lit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p1_de.4bpp\"",
+   "gRubyCoinArrow_5_2Lit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p1_de.4bpp\"",
+   "gRubyCoinArrow_5_3Lit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p1_de.4bpp\"",
+   "gRubyCoinArrow_10_Under2Lit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p1_de.4bpp\"",
+   "gRubyCoinArrow_10_2Lit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p1_de.4bpp\"",
+   "gRubyCoinArrow_10_3Lit_Mid_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p1_de.4bpp\"",
+   ".space 0x40",
+   "gRubyCoinArrow_1_0Lit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p2_de.4bpp\"",
+   "gRubyCoinArrow_1_1Lit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p2_de.4bpp\"",
+   "gRubyCoinArrow_1_2PlusLit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p2_de.4bpp\"",
+   "gRubyCoinArrow_5_0Lit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p2_de.4bpp\"",
+   "gRubyCoinArrow_5_1Lit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p2_de.4bpp\"",
+   "gRubyCoinArrow_5_2Lit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p2_de.4bpp\"",
+   "gRubyCoinArrow_5_3Lit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p2_de.4bpp\"",
+   "gRubyCoinArrow_10_Under2Lit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p2_de.4bpp\"",
+   "gRubyCoinArrow_10_2Lit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p2_de.4bpp\"",
+   "gRubyCoinArrow_10_3Lit_Bot_De::",
+   ".incbin \"graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p2_de.4bpp\"",
+   ".space 0x40"
+  ],
+  "size": 3232
  },
  "0x083E5AE4": {
   "label": "gRubyGetArrow_G_0Lit_Top_De",
@@ -1688,6 +2098,15 @@
   ],
   "size": 96
  },
+ "0x083EAE84": {
+  "label": "gRubyGetArrow_T_3Lit_Bot_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/get_arrow/get_t_arrow_3_2_es.4bpp\"",
+   ".space 0x40",
+   ".fill 0x20, 1, 0x22"
+  ],
+  "size": 192
+ },
  "0x083EB804": {
   "label": "gRubyCatchLightSlot0State2Top",
   "lines": [
@@ -1794,6 +2213,19 @@
   ],
   "size": 64
  },
+ "0x083EC724": {
+  "label": "gRubyCatchLightState1Bot_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_state1_bot_fr.4bpp\"",
+   "gRubyTrapIndicatorState0Top_Fr::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state0_top_fr.4bpp\"",
+   "gRubyTrapIndicatorState1Top_Fr::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state1_top_fr.4bpp\"",
+   "gRubyTrapIndicatorState2Top_Fr::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state2_top_fr.4bpp\""
+  ],
+  "size": 256
+ },
  "0x083EC824": {
   "label": "gRubyCatchLightSlot0State2Top_Fr",
   "lines": [
@@ -1870,6 +2302,20 @@
    ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top_fr.4bpp\""
   ],
   "size": 64
+ },
+ "0x083ECAE4": {
+  "label": "gRubyCatchLightSlot2State5Top_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top_fr.4bpp\"",
+   ".space 0x40",
+   "gRubyTrapIndicatorState0Bot_Fr::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state0_bot_fr.4bpp\"",
+   "gRubyTrapIndicatorState1Bot_Fr::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state1_bot_fr.4bpp\"",
+   "gRubyTrapIndicatorState2Bot_Fr::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state2_bot_fr.4bpp\""
+  ],
+  "size": 320
  },
  "0x083ECC24": {
   "label": "gRubyCatchLightSlot0State2Bot_Fr",
@@ -2026,6 +2472,19 @@
   ],
   "size": 64
  },
+ "0x083ED744": {
+  "label": "gRubyCatchLightState1Bot_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_state1_bot_de.4bpp\"",
+   "gRubyTrapIndicatorState0Top_De::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state0_top_de.4bpp\"",
+   "gRubyTrapIndicatorState1Top_De::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state1_top_de.4bpp\"",
+   "gRubyTrapIndicatorState2Top_De::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state2_top_de.4bpp\""
+  ],
+  "size": 256
+ },
  "0x083ED844": {
   "label": "gRubyCatchLightSlot0State2Top_De",
   "lines": [
@@ -2102,6 +2561,20 @@
    ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top_de.4bpp\""
   ],
   "size": 64
+ },
+ "0x083EDB04": {
+  "label": "gRubyCatchLightSlot2State5Top_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top_de.4bpp\"",
+   ".space 0x40",
+   "gRubyTrapIndicatorState0Bot_De::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state0_bot_de.4bpp\"",
+   "gRubyTrapIndicatorState1Bot_De::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state1_bot_de.4bpp\"",
+   "gRubyTrapIndicatorState2Bot_De::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state2_bot_de.4bpp\""
+  ],
+  "size": 320
  },
  "0x083EDC44": {
   "label": "gRubyCatchLightSlot0State2Bot_De",
@@ -2258,6 +2731,19 @@
   ],
   "size": 64
  },
+ "0x083EE764": {
+  "label": "gRubyCatchLightState1Bot_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_state1_bot_it.4bpp\"",
+   "gRubyTrapIndicatorState0Top_It::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state0_top_it.4bpp\"",
+   "gRubyTrapIndicatorState1Top_It::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state1_top_it.4bpp\"",
+   "gRubyTrapIndicatorState2Top_It::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state2_top_it.4bpp\""
+  ],
+  "size": 256
+ },
  "0x083EE864": {
   "label": "gRubyCatchLightSlot0State2Top_It",
   "lines": [
@@ -2334,6 +2820,20 @@
    ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top_it.4bpp\""
   ],
   "size": 64
+ },
+ "0x083EEB24": {
+  "label": "gRubyCatchLightSlot2State5Top_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top_it.4bpp\"",
+   ".space 0x40",
+   "gRubyTrapIndicatorState0Bot_It::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state0_bot_it.4bpp\"",
+   "gRubyTrapIndicatorState1Bot_It::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state1_bot_it.4bpp\"",
+   "gRubyTrapIndicatorState2Bot_It::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state2_bot_it.4bpp\""
+  ],
+  "size": 320
  },
  "0x083EEC64": {
   "label": "gRubyCatchLightSlot0State2Bot_It",
@@ -2490,6 +2990,19 @@
   ],
   "size": 64
  },
+ "0x083EF784": {
+  "label": "gRubyCatchLightState1Bot_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_state1_bot_es.4bpp\"",
+   "gRubyTrapIndicatorState0Top_Es::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state0_top_es.4bpp\"",
+   "gRubyTrapIndicatorState1Top_Es::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state1_top_es.4bpp\"",
+   "gRubyTrapIndicatorState2Top_Es::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state2_top_es.4bpp\""
+  ],
+  "size": 256
+ },
  "0x083EF884": {
   "label": "gRubyCatchLightSlot0State2Top_Es",
   "lines": [
@@ -2566,6 +3079,20 @@
    ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state4_top_es.4bpp\""
   ],
   "size": 64
+ },
+ "0x083EFB44": {
+  "label": "gRubyCatchLightSlot2State5Top_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_top_es.4bpp\"",
+   ".space 0x40",
+   "gRubyTrapIndicatorState0Bot_Es::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state0_bot_es.4bpp\"",
+   "gRubyTrapIndicatorState1Bot_Es::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state1_bot_es.4bpp\"",
+   "gRubyTrapIndicatorState2Bot_Es::",
+   ".incbin \"graphics/stage/ruby/trap_indicator/trap_state2_bot_es.4bpp\""
+  ],
+  "size": 320
  },
  "0x083EFC84": {
   "label": "gRubyCatchLightSlot0State2Bot_Es",
@@ -2684,6 +3211,24 @@
   ],
   "size": 256
  },
+ "0x083F1924": {
+  "label": "gRubySaverRow2Tile_On_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row2_fr.4bpp\"",
+   ".fill 0x20, 1, 0x11",
+   ".space 0x200",
+   ".fill 0xA0, 1, 0x11"
+  ],
+  "size": 896
+ },
+ "0x083F1CA4": {
+  "label": "gRubySaverRow3Tile_Off_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_off_row3_fr.4bpp\"",
+   ".fill 0xC0, 1, 0x11"
+  ],
+  "size": 256
+ },
  "0x083F2044": {
   "label": "gRubySaverRow0Tile_Off_It",
   "lines": [
@@ -2713,6 +3258,24 @@
   "lines": [
    ".incbin \"graphics/stage/ruby/saver/saver_off_row2_it.4bpp\"",
    ".incbin \"graphics/stage/ruby/saver/saver_off_row2_filler_it.4bpp\""
+  ],
+  "size": 256
+ },
+ "0x083F2944": {
+  "label": "gRubySaverRow2Tile_On_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row2_it.4bpp\"",
+   ".fill 0x20, 1, 0x11",
+   ".space 0x200",
+   ".fill 0xA0, 1, 0x11"
+  ],
+  "size": 896
+ },
+ "0x083F2CC4": {
+  "label": "gRubySaverRow3Tile_Off_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_off_row3_it.4bpp\"",
+   ".fill 0xC0, 1, 0x11"
   ],
   "size": 256
  },
@@ -2747,6 +3310,33 @@
    ".incbin \"graphics/stage/ruby/saver/saver_off_row2_filler_es.4bpp\""
   ],
   "size": 256
+ },
+ "0x083F3964": {
+  "label": "gRubySaverRow2Tile_On_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row2_es.4bpp\"",
+   ".fill 0x20, 1, 0x11",
+   ".space 0x200",
+   ".fill 0xA0, 1, 0x11"
+  ],
+  "size": 896
+ },
+ "0x083F3CE4": {
+  "label": "gRubySaverRow3Tile_Off_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_off_row3_es.4bpp\"",
+   ".fill 0xC0, 1, 0x11"
+  ],
+  "size": 256
+ },
+ "0x083F3DE4": {
+  "label": "gRubySaverRow3Tile_On_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row3_es.4bpp\"",
+   ".fill 0x20, 1, 0x11",
+   ".space 0x220"
+  ],
+  "size": 640
  },
  "0x083F5084": {
   "label": "gRubyHatchArrowRow0Tile_Off_Fr",
@@ -3463,12 +4053,26 @@
   ],
   "size": 192
  },
+ "0x083F9EC4": {
+  "label": "gRubyShopSignMartPiece1_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_fr.4bpp\""
+  ],
+  "size": 256
+ },
  "0x083FA624": {
   "label": "gRubyShopSignMartPiece0_De",
   "lines": [
    ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_de.4bpp\""
   ],
   "size": 192
+ },
+ "0x083FA6E4": {
+  "label": "gRubyShopSignMartPiece1_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_de.4bpp\""
+  ],
+  "size": 256
  },
  "0x083FAE44": {
   "label": "gRubyShopSignMartPiece0_It",
@@ -3477,12 +4081,26 @@
   ],
   "size": 192
  },
+ "0x083FAF04": {
+  "label": "gRubyShopSignMartPiece1_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_it.4bpp\""
+  ],
+  "size": 256
+ },
  "0x083FB664": {
   "label": "gRubyShopSignMartPiece0_Es",
   "lines": [
    ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_es.4bpp\""
   ],
   "size": 192
+ },
+ "0x083FB724": {
+  "label": "gRubyShopSignMartPiece1_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_es.4bpp\""
+  ],
+  "size": 256
  },
  "0x083FCDE4": {
   "label": "gRubyEvoArrow_R0_Off_Fr",
@@ -3964,12 +4582,89 @@
   ],
   "size": 576
  },
+ "0x0847500C": {
+  "label": "gSapphireBoardCompressedTiles2_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgtop_tiles_fr.4bpp.lz\""
+  ],
+  "size": 14160
+ },
  "0x0847875C": {
   "label": "gSapphireBoardCompressedTiles2_De",
   "lines": [
    ".incbin \"graphics/stage/sapphire/sapphire_board_bgtop_tiles_de.4bpp.lz\""
   ],
   "size": 14172
+ },
+ "0x0847BEB8": {
+  "label": "gSapphireBoardCompressedTiles2_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgtop_tiles_it.4bpp.lz\""
+  ],
+  "size": 14160
+ },
+ "0x0847F608": {
+  "label": "gSapphireBoardCompressedTiles2_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgtop_tiles_es.4bpp.lz\""
+  ],
+  "size": 14140
+ },
+ "0x08484D8C": {
+  "label": "gSapphireBoardCompressedBGTileBuffer_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgbottom_tiles_fr.4bpp.lz\""
+  ],
+  "size": 8232
+ },
+ "0x08486DB4": {
+  "label": "gSapphireBoardCompressedBGTileBuffer_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgbottom_tiles_de.4bpp.lz\""
+  ],
+  "size": 8208
+ },
+ "0x08488DC4": {
+  "label": "gSapphireBoardCompressedBGTileBuffer_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgbottom_tiles_it.4bpp.lz\""
+  ],
+  "size": 8220
+ },
+ "0x0848ADE0": {
+  "label": "gSapphireBoardCompressedBGTileBuffer_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgbottom_tiles_es.4bpp.lz\""
+  ],
+  "size": 8256
+ },
+ "0x0848CE20": {
+  "label": "gSapphireBoardCompressedTiles1_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgramp_tiles_fr.4bpp.lz\""
+  ],
+  "size": 7492
+ },
+ "0x0848EB64": {
+  "label": "gSapphireBoardCompressedTiles1_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgramp_tiles_de.4bpp.lz\""
+  ],
+  "size": 7468
+ },
+ "0x08490890": {
+  "label": "gSapphireBoardCompressedTiles1_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgramp_tiles_it.4bpp.lz\""
+  ],
+  "size": 7496
+ },
+ "0x084925D8": {
+  "label": "gSapphireBoardCompressedTiles1_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/sapphire_board_bgramp_tiles_es.4bpp.lz\""
+  ],
+  "size": 7496
  },
  "0x08498760": {
   "label": "gSapphireGetArrow_G_0Lit_Top_Fr",
@@ -4014,6 +4709,30 @@
   "lines": [
    ".incbin \"graphics/stage/sapphire/get_arrow/get_e_arrow_2_0_fr.4bpp\"",
    ".space 0x20"
+  ],
+  "size": 96
+ },
+ "0x084989C0": {
+  "label": "gSapphireGetArrow_E_3Lit_Top_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_e_arrow_3_0_fr.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x08498A20": {
+  "label": "gSapphireGetArrow_T_Under2Lit_Top_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_0_0_fr.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x08498A80": {
+  "label": "gSapphireGetArrow_T_2Lit_Top_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_2_0_fr.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
   ],
   "size": 96
  },
@@ -4381,6 +5100,86 @@
   ],
   "size": 96
  },
+ "0x08499F00": {
+  "label": "gSapphireEvoArrow_O_3Lit_Bot_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_2_de.4bpp\"",
+   ".space 0x40",
+   "gSapphireCoinArrow_1_0Lit_Top_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p0_de.4bpp\"",
+   ".space 0x20",
+   "gSapphireCoinArrow_1_1Lit_Top_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p0_de.4bpp\"",
+   ".space 0x20",
+   "gSapphireCoinArrow_1_2PlusLit_Top_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0_filler_de.4bpp\"",
+   "gSapphireCoinArrow_5_Under2Lit_Top_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0_filler_de.4bpp\"",
+   "gSapphireCoinArrow_5_2Lit_Top_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0_filler_de.4bpp\"",
+   "gSapphireCoinArrow_5_3Lit_Top_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p0_de.4bpp\"",
+   "gSapphireCoinArrow_10_Under2Lit_Top_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p0_de.4bpp\"",
+   ".fill 0x20, 1, 0xDD",
+   "gSapphireCoinArrow_10_2Lit_Top_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p0_de.4bpp\"",
+   ".fill 0x20, 1, 0xDD",
+   "gSapphireCoinArrow_10_3Lit_Top_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p0_de.4bpp\"",
+   ".fill 0x20, 1, 0xDD",
+   ".space 0xA0",
+   "gSapphireCoinArrow_1_0Lit_Mid_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p1_de.4bpp\"",
+   "gSapphireCoinArrow_1_1Lit_Mid_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p1_de.4bpp\"",
+   "gSapphireCoinArrow_1_2PlusLit_Mid_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1_filler_de.4bpp\"",
+   "gSapphireCoinArrow_5_Under2Lit_Mid_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1_filler_de.4bpp\"",
+   "gSapphireCoinArrow_5_2Lit_Mid_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1_filler_de.4bpp\"",
+   "gSapphireCoinArrow_5_3Lit_Mid_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p1_de.4bpp\"",
+   "gSapphireCoinArrow_10_Under2Lit_Mid_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1_filler_de.4bpp\"",
+   "gSapphireCoinArrow_10_2Lit_Mid_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1_filler_de.4bpp\"",
+   "gSapphireCoinArrow_10_3Lit_Mid_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1_filler_de.4bpp\"",
+   "gSapphireCoinArrow_1_0Lit_Bot_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p2_de.4bpp\"",
+   "gSapphireCoinArrow_1_1Lit_Bot_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p2_de.4bpp\"",
+   "gSapphireCoinArrow_1_2PlusLit_Bot_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p2_de.4bpp\"",
+   "gSapphireCoinArrow_5_Under2Lit_Bot_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p2_de.4bpp\"",
+   "gSapphireCoinArrow_5_2Lit_Bot_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p2_de.4bpp\"",
+   "gSapphireCoinArrow_5_3Lit_Bot_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p2_de.4bpp\"",
+   "gSapphireCoinArrow_10_Under2Lit_Bot_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2_filler_de.4bpp\"",
+   "gSapphireCoinArrow_10_2Lit_Bot_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2_filler_de.4bpp\"",
+   "gSapphireCoinArrow_10_3Lit_Bot_De::",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2_de.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2_filler_de.4bpp\""
+  ],
+  "size": 3200
+ },
  "0x0849AB80": {
   "label": "gSapphireGetArrow_G_0Lit_Top_De",
   "lines": [
@@ -4424,6 +5223,30 @@
   "lines": [
    ".incbin \"graphics/stage/sapphire/get_arrow/get_e_arrow_2_0_de.4bpp\"",
    ".space 0x20"
+  ],
+  "size": 96
+ },
+ "0x0849ADE0": {
+  "label": "gSapphireGetArrow_E_3Lit_Top_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_e_arrow_3_0_de.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x0849AE40": {
+  "label": "gSapphireGetArrow_T_Under2Lit_Top_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_0_0_de.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x0849AEA0": {
+  "label": "gSapphireGetArrow_T_2Lit_Top_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_2_0_de.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
   ],
   "size": 96
  },
@@ -4575,6 +5398,14 @@
   ],
   "size": 96
  },
+ "0x0849B6E0": {
+  "label": "gSapphireGetArrow_T_3Lit_Bot_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_3_2_de.4bpp\"",
+   ".space 0x80"
+  ],
+  "size": 6336
+ },
  "0x0849CFA0": {
   "label": "gSapphireGetArrow_G_0Lit_Top_It",
   "lines": [
@@ -4618,6 +5449,30 @@
   "lines": [
    ".incbin \"graphics/stage/sapphire/get_arrow/get_e_arrow_2_0_it.4bpp\"",
    ".space 0x20"
+  ],
+  "size": 96
+ },
+ "0x0849D200": {
+  "label": "gSapphireGetArrow_E_3Lit_Top_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_e_arrow_3_0_it.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x0849D260": {
+  "label": "gSapphireGetArrow_T_Under2Lit_Top_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_0_0_it.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x0849D2C0": {
+  "label": "gSapphireGetArrow_T_2Lit_Top_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_2_0_it.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
   ],
   "size": 96
  },
@@ -4769,6 +5624,14 @@
   ],
   "size": 96
  },
+ "0x0849DB00": {
+  "label": "gSapphireGetArrow_T_3Lit_Bot_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_3_2_it.4bpp\"",
+   ".space 0x80"
+  ],
+  "size": 6336
+ },
  "0x0849F3C0": {
   "label": "gSapphireGetArrow_G_0Lit_Top_Es",
   "lines": [
@@ -4812,6 +5675,30 @@
   "lines": [
    ".incbin \"graphics/stage/sapphire/get_arrow/get_e_arrow_2_0_es.4bpp\"",
    ".space 0x20"
+  ],
+  "size": 96
+ },
+ "0x0849F620": {
+  "label": "gSapphireGetArrow_E_3Lit_Top_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_e_arrow_3_0_es.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x0849F680": {
+  "label": "gSapphireGetArrow_T_Under2Lit_Top_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_0_0_es.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x0849F6E0": {
+  "label": "gSapphireGetArrow_T_2Lit_Top_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/get_arrow/get_t_arrow_2_0_es.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
   ],
   "size": 96
  },
@@ -5049,6 +5936,19 @@
   ],
   "size": 64
  },
+ "0x084A27C0": {
+  "label": "gSapphireCatchLightState1Bot_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_state1_bot_fr.4bpp\"",
+   "gSapphireTrapIndicatorState0Top_Fr::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state0_top_fr.4bpp\"",
+   "gSapphireTrapIndicatorState1Top_Fr::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state1_top_fr.4bpp\"",
+   "gSapphireTrapIndicatorState2Top_Fr::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state2_top_fr.4bpp\""
+  ],
+  "size": 256
+ },
  "0x084A28C0": {
   "label": "gSapphireCatchLightSlot0State2Top_Fr",
   "lines": [
@@ -5125,6 +6025,21 @@
    ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_top_fr.4bpp\""
   ],
   "size": 64
+ },
+ "0x084A2B80": {
+  "label": "gSapphireCatchLightSlot2State5Top_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_top_fr.4bpp\"",
+   "gHatchMachineSeg0IdleA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a_fr.4bpp\"",
+   "gSapphireTrapIndicatorState0Bot_Fr::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state0_bot_fr.4bpp\"",
+   "gSapphireTrapIndicatorState1Bot_Fr::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state1_bot_fr.4bpp\"",
+   "gSapphireTrapIndicatorState2Bot_Fr::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state2_bot_fr.4bpp\""
+  ],
+  "size": 320
  },
  "0x084A2CC0": {
   "label": "gSapphireCatchLightSlot0State2Bot_Fr",
@@ -5203,6 +6118,82 @@
   ],
   "size": 64
  },
+ "0x084A2F80": {
+  "label": "gSapphireCatchLightSlot2State5Bot_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_fr.4bpp\"",
+   "gHatchMachineSeg0IdleB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_b_fr.4bpp\"",
+   "gHatchMachineSeg0HitA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_a_fr.4bpp\"",
+   "gHatchMachineSeg1IdleA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_a_fr.4bpp\"",
+   "gHatchMachineSeg1HitA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_a_fr.4bpp\"",
+   "gHatchMachineSeg2IdleA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_a_fr.4bpp\"",
+   "gHatchMachineSeg2HitA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_a_fr.4bpp\"",
+   ".space 0x80",
+   "gHatchMachineSeg4IdleA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_a_fr.4bpp\"",
+   "gHatchMachineSeg4HitA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_a_fr.4bpp\"",
+   "gHatchMachineSeg5IdleA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_a_fr.4bpp\"",
+   "gHatchMachineSeg5HitA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_a_fr.4bpp\"",
+   "gHatchMachineSeg6IdleA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_a_fr.4bpp\"",
+   "gHatchMachineSeg6HitA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_a_fr.4bpp\"",
+   "gHatchMachineSeg7IdleA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_a_fr.4bpp\"",
+   "gHatchMachineSeg7HitA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_a_fr.4bpp\"",
+   "gHatchMachineSeg8IdleA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_a_fr.4bpp\"",
+   "gHatchMachineSeg0HitB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_b_fr.4bpp\"",
+   "gHatchMachineSeg1IdleB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_b_fr.4bpp\"",
+   "gHatchMachineSeg1HitB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_b_fr.4bpp\"",
+   "gHatchMachineSeg2IdleB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_b_fr.4bpp\"",
+   "gHatchMachineSeg2HitB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_b_fr.4bpp\"",
+   "gHatchMachineSeg3Idle_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_idle_fr.4bpp\"",
+   "gHatchMachineSeg3Hit_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_hit_fr.4bpp\"",
+   "gHatchMachineSeg4IdleB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_b_fr.4bpp\"",
+   "gHatchMachineSeg4HitB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_b_fr.4bpp\"",
+   "gHatchMachineSeg5IdleB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_b_fr.4bpp\"",
+   "gHatchMachineSeg5HitB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_b_fr.4bpp\"",
+   "gHatchMachineSeg6IdleB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_b_fr.4bpp\"",
+   "gHatchMachineSeg6HitB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_b_fr.4bpp\"",
+   "gHatchMachineSeg7IdleB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_b_fr.4bpp\"",
+   "gHatchMachineSeg7HitB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_b_fr.4bpp\"",
+   "gHatchMachineSeg8IdleB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_b_fr.4bpp\"",
+   "gHatchMachineSeg8HitA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_a_fr.4bpp\"",
+   "gHatchMachineSeg9IdleA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_a_fr.4bpp\"",
+   "gHatchMachineSeg9HitA_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_a_fr.4bpp\""
+  ],
+  "size": 2368
+ },
  "0x084A38C0": {
   "label": "gSapphirePSquareFrame0Top_Fr",
   "lines": [
@@ -5230,6 +6221,20 @@
    ".incbin \"graphics/stage/sapphire/p_square/p_square_frame3_top_fr.4bpp\""
   ],
   "size": 64
+ },
+ "0x084A39C0": {
+  "label": "gSapphirePSquareFrame4Top_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame4_top_fr.4bpp\"",
+   ".space 0x200",
+   "gHatchMachineSeg8HitB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_b_fr.4bpp\"",
+   "gHatchMachineSeg9IdleB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_b_fr.4bpp\"",
+   "gHatchMachineSeg9HitB_Fr::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_b_fr.4bpp\""
+  ],
+  "size": 768
  },
  "0x084A3CC0": {
   "label": "gSapphirePSquareFrame0Bot_Fr",
@@ -5337,6 +6342,19 @@
   ],
   "size": 64
  },
+ "0x084A47E0": {
+  "label": "gSapphireCatchLightState1Bot_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_state1_bot_de.4bpp\"",
+   "gSapphireTrapIndicatorState0Top_De::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state0_top_de.4bpp\"",
+   "gSapphireTrapIndicatorState1Top_De::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state1_top_de.4bpp\"",
+   "gSapphireTrapIndicatorState2Top_De::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state2_top_de.4bpp\""
+  ],
+  "size": 256
+ },
  "0x084A48E0": {
   "label": "gSapphireCatchLightSlot0State2Top_De",
   "lines": [
@@ -5414,6 +6432,21 @@
   ],
   "size": 64
  },
+ "0x084A4BA0": {
+  "label": "gSapphireCatchLightSlot2State5Top_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_top_de.4bpp\"",
+   "gHatchMachineSeg0IdleA_De::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a_de.4bpp\"",
+   "gSapphireTrapIndicatorState0Bot_De::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state0_bot_de.4bpp\"",
+   "gSapphireTrapIndicatorState1Bot_De::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state1_bot_de.4bpp\"",
+   "gSapphireTrapIndicatorState2Bot_De::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state2_bot_de.4bpp\""
+  ],
+  "size": 320
+ },
  "0x084A4CE0": {
   "label": "gSapphireCatchLightSlot0State2Bot_De",
   "lines": [
@@ -5490,6 +6523,13 @@
    ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_bot_de.4bpp\""
   ],
   "size": 64
+ },
+ "0x084A4FA0": {
+  "label": "gSapphireCatchLightSlot2State5Bot_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_de.4bpp\""
+  ],
+  "size": 4640
  },
  "0x084A61C0": {
   "label": "gSapphireHoleLightH_Off_It",
@@ -5569,6 +6609,19 @@
   ],
   "size": 64
  },
+ "0x084A6800": {
+  "label": "gSapphireCatchLightState1Bot_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_state1_bot_it.4bpp\"",
+   "gSapphireTrapIndicatorState0Top_It::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state0_top_it.4bpp\"",
+   "gSapphireTrapIndicatorState1Top_It::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state1_top_it.4bpp\"",
+   "gSapphireTrapIndicatorState2Top_It::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state2_top_it.4bpp\""
+  ],
+  "size": 256
+ },
  "0x084A6900": {
   "label": "gSapphireCatchLightSlot0State2Top_It",
   "lines": [
@@ -5646,6 +6699,21 @@
   ],
   "size": 64
  },
+ "0x084A6BC0": {
+  "label": "gSapphireCatchLightSlot2State5Top_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_top_it.4bpp\"",
+   "gHatchMachineSeg0IdleA_It::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a_it.4bpp\"",
+   "gSapphireTrapIndicatorState0Bot_It::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state0_bot_it.4bpp\"",
+   "gSapphireTrapIndicatorState1Bot_It::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state1_bot_it.4bpp\"",
+   "gSapphireTrapIndicatorState2Bot_It::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state2_bot_it.4bpp\""
+  ],
+  "size": 320
+ },
  "0x084A6D00": {
   "label": "gSapphireCatchLightSlot0State2Bot_It",
   "lines": [
@@ -5722,6 +6790,13 @@
    ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_bot_it.4bpp\""
   ],
   "size": 64
+ },
+ "0x084A6FC0": {
+  "label": "gSapphireCatchLightSlot2State5Bot_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_it.4bpp\""
+  ],
+  "size": 4640
  },
  "0x084A81E0": {
   "label": "gSapphireHoleLightH_Off_Es",
@@ -5801,6 +6876,19 @@
   ],
   "size": 64
  },
+ "0x084A8820": {
+  "label": "gSapphireCatchLightState1Bot_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_state1_bot_es.4bpp\"",
+   "gSapphireTrapIndicatorState0Top_Es::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state0_top_es.4bpp\"",
+   "gSapphireTrapIndicatorState1Top_Es::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state1_top_es.4bpp\"",
+   "gSapphireTrapIndicatorState2Top_Es::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state2_top_es.4bpp\""
+  ],
+  "size": 256
+ },
  "0x084A8920": {
   "label": "gSapphireCatchLightSlot0State2Top_Es",
   "lines": [
@@ -5877,6 +6965,21 @@
    ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_top_es.4bpp\""
   ],
   "size": 64
+ },
+ "0x084A8BE0": {
+  "label": "gSapphireCatchLightSlot2State5Top_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_top_es.4bpp\"",
+   "gHatchMachineSeg0IdleA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_a_es.4bpp\"",
+   "gSapphireTrapIndicatorState0Bot_Es::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state0_bot_es.4bpp\"",
+   "gSapphireTrapIndicatorState1Bot_Es::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state1_bot_es.4bpp\"",
+   "gSapphireTrapIndicatorState2Bot_Es::",
+   ".incbin \"graphics/stage/sapphire/trap_indicator/trap_state2_bot_es.4bpp\""
+  ],
+  "size": 320
  },
  "0x084A8D20": {
   "label": "gSapphireCatchLightSlot0State2Bot_Es",
@@ -5955,6 +7058,111 @@
   ],
   "size": 64
  },
+ "0x084A8FE0": {
+  "label": "gSapphireCatchLightSlot2State5Bot_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_es.4bpp\"",
+   "gHatchMachineSeg0IdleB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_b_es.4bpp\"",
+   "gHatchMachineSeg0HitA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_a_es.4bpp\"",
+   "gHatchMachineSeg1IdleA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_a_es.4bpp\"",
+   "gHatchMachineSeg1HitA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_a_es.4bpp\"",
+   "gHatchMachineSeg2IdleA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_a_es.4bpp\"",
+   "gHatchMachineSeg2HitA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_a_es.4bpp\"",
+   ".space 0x80",
+   "gHatchMachineSeg4IdleA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_a_es.4bpp\"",
+   "gHatchMachineSeg4HitA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_a_es.4bpp\"",
+   "gHatchMachineSeg5IdleA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_a_es.4bpp\"",
+   "gHatchMachineSeg5HitA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_a_es.4bpp\"",
+   "gHatchMachineSeg6IdleA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_a_es.4bpp\"",
+   "gHatchMachineSeg6HitA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_a_es.4bpp\"",
+   "gHatchMachineSeg7IdleA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_a_es.4bpp\"",
+   "gHatchMachineSeg7HitA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_a_es.4bpp\"",
+   "gHatchMachineSeg8IdleA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_a_es.4bpp\"",
+   "gHatchMachineSeg0HitB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_b_es.4bpp\"",
+   "gHatchMachineSeg1IdleB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_b_es.4bpp\"",
+   "gHatchMachineSeg1HitB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_b_es.4bpp\"",
+   "gHatchMachineSeg2IdleB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_b_es.4bpp\"",
+   "gHatchMachineSeg2HitB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_b_es.4bpp\"",
+   "gHatchMachineSeg3Idle_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_idle_es.4bpp\"",
+   "gHatchMachineSeg3Hit_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_hit_es.4bpp\"",
+   "gHatchMachineSeg4IdleB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_b_es.4bpp\"",
+   "gHatchMachineSeg4HitB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_b_es.4bpp\"",
+   "gHatchMachineSeg5IdleB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_b_es.4bpp\"",
+   "gHatchMachineSeg5HitB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_b_es.4bpp\"",
+   "gHatchMachineSeg6IdleB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_b_es.4bpp\"",
+   "gHatchMachineSeg6HitB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_b_es.4bpp\"",
+   "gHatchMachineSeg7IdleB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_b_es.4bpp\"",
+   "gHatchMachineSeg7HitB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_b_es.4bpp\"",
+   "gHatchMachineSeg8IdleB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_b_es.4bpp\"",
+   "gHatchMachineSeg8HitA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_a_es.4bpp\"",
+   "gHatchMachineSeg9IdleA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_a_es.4bpp\"",
+   "gHatchMachineSeg9HitA_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_a_es.4bpp\"",
+   "gSapphirePSquareFrame0Top_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame0_top_es.4bpp\"",
+   "gSapphirePSquareFrame1Top_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame1_top_es.4bpp\"",
+   "gSapphirePSquareFrame2Top_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame2_top_es.4bpp\"",
+   "gSapphirePSquareFrame3Top_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame3_top_es.4bpp\"",
+   "gSapphirePSquareFrame4Top_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame4_top_es.4bpp\"",
+   ".space 0x200",
+   "gHatchMachineSeg8HitB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_b_es.4bpp\"",
+   "gHatchMachineSeg9IdleB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_b_es.4bpp\"",
+   "gHatchMachineSeg9HitB_Es::",
+   ".incbin \"graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_b_es.4bpp\"",
+   "gSapphirePSquareFrame0Bot_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame0_bot_es.4bpp\"",
+   "gSapphirePSquareFrame1Bot_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame1_bot_es.4bpp\"",
+   "gSapphirePSquareFrame2Bot_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame2_bot_es.4bpp\"",
+   "gSapphirePSquareFrame3Bot_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame3_bot_es.4bpp\"",
+   "gSapphirePSquareFrame4Bot_Es::",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame4_bot_es.4bpp\"",
+   ".space 0x220",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame4_bot_filler_es.4bpp\""
+  ],
+  "size": 4288
+ },
  "0x084AB0C0": {
   "label": "gSapphireSaverRow0Tile_Off_Fr",
   "lines": [
@@ -5987,6 +7195,23 @@
   ],
   "size": 256
  },
+ "0x084AB9C0": {
+  "label": "gSapphireSaverRow2Tile_On_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/saver/saver_on_row2_fr.4bpp\"",
+   ".space 0x200",
+   ".fill 0xA0, 1, 0xCC"
+  ],
+  "size": 896
+ },
+ "0x084ABD40": {
+  "label": "gSapphireSaverRow3Tile_Off_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/saver/saver_off_row3_fr.4bpp\"",
+   ".fill 0xC0, 1, 0xCC"
+  ],
+  "size": 256
+ },
  "0x084AC0E0": {
   "label": "gSapphireSaverRow0Tile_Off_It",
   "lines": [
@@ -6016,6 +7241,23 @@
   "lines": [
    ".incbin \"graphics/stage/sapphire/saver/saver_off_row2_it.4bpp\"",
    ".incbin \"graphics/stage/sapphire/saver/saver_off_row2_filler_it.4bpp\""
+  ],
+  "size": 256
+ },
+ "0x084AC9E0": {
+  "label": "gSapphireSaverRow2Tile_On_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/saver/saver_on_row2_it.4bpp\"",
+   ".space 0x200",
+   ".fill 0xA0, 1, 0xCC"
+  ],
+  "size": 896
+ },
+ "0x084ACD60": {
+  "label": "gSapphireSaverRow3Tile_Off_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/saver/saver_off_row3_it.4bpp\"",
+   ".fill 0xC0, 1, 0xCC"
   ],
   "size": 256
  },
@@ -6059,11 +7301,53 @@
   ],
   "size": 256
  },
+ "0x084ADA20": {
+  "label": "gSapphireSaverRow2Tile_On_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/saver/saver_on_row2_es.4bpp\"",
+   ".space 0x200",
+   ".fill 0xA0, 1, 0xCC"
+  ],
+  "size": 864
+ },
+ "0x084ADD80": {
+  "label": "gSapphireSaverRow3Tile_Off_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/saver/saver_off_row3_es.4bpp\"",
+   ".fill 0xC0, 1, 0xCC"
+  ],
+  "size": 256
+ },
+ "0x084ADE80": {
+  "label": "gSapphireSaverRow3Tile_On_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/saver/saver_on_row3_es.4bpp\"",
+   ".fill 0x20, 1, 0xCC",
+   ".space 0x260"
+  ],
+  "size": 704
+ },
  "0x084AF160": {
   "label": "gSapphireHatchArrow_R0_Off_Fr",
   "lines": [
    ".incbin \"graphics/stage/sapphire/hatch_arrow/hatch_arrow_off_row0_fr.4bpp\"",
    ".space 0x40"
+  ],
+  "size": 128
+ },
+ "0x084AF1E0": {
+  "label": "gSapphireHatchArrow_R0_On_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_fr.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x084AF240": {
+  "label": "gSapphireCatchArrow_R0_Off_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_fr.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
   ],
   "size": 128
  },
@@ -6211,6 +7495,14 @@
    ".incbin \"graphics/stage/sapphire/bumper_arrow/bumper_arrow_off_row3_fr.4bpp\""
   ],
   "size": 128
+ },
+ "0x084AFFA0": {
+  "label": "gSapphireBumperArrow_R3_On_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_fr.4bpp\"",
+   ".space 0x120"
+  ],
+  "size": 480
  },
  "0x084B0180": {
   "label": "gSapphireHatchArrow_R0_Off_De",
@@ -6365,11 +7657,35 @@
   ],
   "size": 128
  },
+ "0x084B0FC0": {
+  "label": "gSapphireBumperArrow_R3_On_De",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_de.4bpp\"",
+   ".space 0x120"
+  ],
+  "size": 480
+ },
  "0x084B11A0": {
   "label": "gSapphireHatchArrow_R0_Off_It",
   "lines": [
    ".incbin \"graphics/stage/sapphire/hatch_arrow/hatch_arrow_off_row0_it.4bpp\"",
    ".space 0x40"
+  ],
+  "size": 128
+ },
+ "0x084B1220": {
+  "label": "gSapphireHatchArrow_R0_On_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_it.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x084B1280": {
+  "label": "gSapphireCatchArrow_R0_Off_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_it.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
   ],
   "size": 128
  },
@@ -6518,11 +7834,35 @@
   ],
   "size": 128
  },
+ "0x084B1FE0": {
+  "label": "gSapphireBumperArrow_R3_On_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_it.4bpp\"",
+   ".space 0x120"
+  ],
+  "size": 480
+ },
  "0x084B21C0": {
   "label": "gSapphireHatchArrow_R0_Off_Es",
   "lines": [
    ".incbin \"graphics/stage/sapphire/hatch_arrow/hatch_arrow_off_row0_es.4bpp\"",
    ".space 0x40"
+  ],
+  "size": 128
+ },
+ "0x084B2240": {
+  "label": "gSapphireHatchArrow_R0_On_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_es.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
+  ],
+  "size": 96
+ },
+ "0x084B22A0": {
+  "label": "gSapphireCatchArrow_R0_Off_Es",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_es.4bpp\"",
+   ".fill 0x20, 1, 0xDD"
   ],
   "size": 128
  },
@@ -7181,6 +8521,66 @@
   ],
   "size": 512
  },
+ "0x0857938C": {
+  "label": "gCatchTile_BurstStart_Pal",
+  "lines": [
+   ".incbin \"graphics/stage/main/catch_tile_burst_start_eu.gbapal\""
+  ],
+  "size": 32
+ },
+ "0x08579BCC": {
+  "label": "gCatchTile_BurstStage2_Pal",
+  "lines": [
+   ".incbin \"graphics/stage/main/catch_tile_burst_stage2_eu.gbapal\""
+  ],
+  "size": 32
+ },
+ "0x0857BC0C": {
+  "label": "gCatchTile_BurstStage3_Pal",
+  "lines": [
+   ".incbin \"graphics/stage/main/catch_tile_burst_stage3_eu.gbapal\""
+  ],
+  "size": 32
+ },
+ "0x0857D44C": {
+  "label": "gCatchTile_BurstStage4_Pal",
+  "lines": [
+   ".incbin \"graphics/stage/main/catch_tile_burst_stage4_eu.gbapal\""
+  ],
+  "size": 32
+ },
+ "0x0857F30C": {
+  "label": "gBoardHudTiles_A_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/main/board_hud_tiles_a_fr.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 1056
+ },
+ "0x0857F72C": {
+  "label": "gBoardHudTiles_A_De",
+  "lines": [
+   ".incbin \"graphics/stage/main/board_hud_tiles_a_de.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 1056
+ },
+ "0x0857FB4C": {
+  "label": "gBoardHudTiles_A_It",
+  "lines": [
+   ".incbin \"graphics/stage/main/board_hud_tiles_a_it.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 1056
+ },
+ "0x0857FF6C": {
+  "label": "gBoardHudTiles_A_Es",
+  "lines": [
+   ".incbin \"graphics/stage/main/board_hud_tiles_a_es.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 1056
+ },
  "0x0860C86C": {
   "label": "gPickupIcon1_Gfx_De",
   "lines": [
@@ -7258,6 +8658,27 @@
   ],
   "size": 11520
  },
+ "0x086EBC4C": {
+  "label": "gSphealResultsScreenGfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/spheal/spheal_results_de.4bpp\""
+  ],
+  "size": 2048
+ },
+ "0x086EC44C": {
+  "label": "gSphealResultsScreenGfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/spheal/spheal_results_it.4bpp\""
+  ],
+  "size": 2048
+ },
+ "0x086ECC4C": {
+  "label": "gSphealResultsScreenGfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/spheal/spheal_results_es.4bpp\""
+  ],
+  "size": 2048
+ },
  "0x0871F6CC": {
   "label": "gMonPortraitsGroup13_Gfx",
   "lines": [
@@ -7278,6 +8699,13 @@
    ".incbin \"graphics/mon_portraits/210_portrait_eu.4bpp\""
   ],
   "size": 11520
+ },
+ "0x087229CC": {
+  "label": "gZigzagoonShockWallIndicator_Gfx",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/zigzagoon_press_button_indicator_eu.4bpp\""
+  ],
+  "size": 4096
  },
  "0x08730A2C": {
   "label": "gRubyBoardShop_Gfx_Fr",
@@ -7314,6 +8742,62 @@
   ],
   "size": 1024
  },
+ "0x087470EC": {
+  "label": "gMainBoardBallSave_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/main/ball_save_fr.4bpp\""
+  ],
+  "size": 6336
+ },
+ "0x087489AC": {
+  "label": "gMainBoardBallSave_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/main/ball_save_de.4bpp\""
+  ],
+  "size": 6336
+ },
+ "0x0874A26C": {
+  "label": "gMainBoardBallSave_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/main/ball_save_it.4bpp\""
+  ],
+  "size": 6336
+ },
+ "0x0874CBEC": {
+  "label": "gMainBoardBallSave_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/main/ball_save_es.4bpp\""
+  ],
+  "size": 6336
+ },
+ "0x087507CC": {
+  "label": "gMainBoardEndOfBall_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/main/end_of_ball_fr.4bpp\""
+  ],
+  "size": 7168
+ },
+ "0x087523CC": {
+  "label": "gMainBoardEndOfBall_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/main/end_of_ball_de.4bpp\""
+  ],
+  "size": 7168
+ },
+ "0x08753FCC": {
+  "label": "gMainBoardEndOfBall_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/main/end_of_ball_it.4bpp\""
+  ],
+  "size": 7168
+ },
+ "0x08755BCC": {
+  "label": "gMainBoardEndOfBall_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/main/end_of_ball_es.4bpp\""
+  ],
+  "size": 7168
+ },
  "0x0875BB4C": {
   "label": "gMainBoardEvoBanner_Gfx_Fr",
   "lines": [
@@ -7348,6 +8832,34 @@
    ".incbin \"graphics/stage/main/game_over_text_es.4bpp\""
   ],
   "size": 1024
+ },
+ "0x08773AAC": {
+  "label": "gMainBoardTravel_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/main/travel_fr.4bpp\""
+  ],
+  "size": 9696
+ },
+ "0x0877608C": {
+  "label": "gMainBoardTravel_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/main/travel_de.4bpp\""
+  ],
+  "size": 9696
+ },
+ "0x0877866C": {
+  "label": "gMainBoardTravel_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/main/travel_it.4bpp\""
+  ],
+  "size": 9696
+ },
+ "0x0877AC4C": {
+  "label": "gMainBoardTravel_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/main/travel_es.4bpp\""
+  ],
+  "size": 9696
  },
  "0x0879338C": {
   "label": "gMainCatchModeBanner_Gfx_Fr",
