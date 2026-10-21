@@ -7,7 +7,12 @@
 
 // Rom_1 data
 extern const u8 gRubyMakuhitaGfx[][SIZE_OF_VRAM_MAKUHITA_TILES];
+#ifdef EUROPE
+extern const u8 gRubyBoardRampPrize_Gfx_EnFr[][SIZE_OF_VRAM_RAMP_PRIZE_TILES];
+extern const u8 gRubyBoardRampPrize_Gfx_DeItEs[][SIZE_OF_VRAM_RAMP_PRIZE_TILES];
+#else
 extern const u8 gRubyBoardRampPrize_Gfx[][SIZE_OF_VRAM_RAMP_PRIZE_TILES];
+#endif
 
 void UpdateMakuhitaEntity(void)
 {
@@ -170,7 +175,22 @@ void DrawRubyRampPrize(void)
         else
             index = (gCurrentPinballGame->globalAnimFrameCounter % 32) / 8;
 
+#ifdef EUROPE
+        switch (gMain_saveData.language)
+        {
+        case LANGUAGE_ENGLISH:
+        case LANGUAGE_FRENCH:
+            DmaCopy16(3, gRubyBoardRampPrize_Gfx_EnFr[index], OBJ_VRAM_ADDR_RAMP_PRIZE_TILES, SIZE_OF_VRAM_RAMP_PRIZE_TILES);
+            break;
+        case LANGUAGE_GERMAN:
+        case LANGUAGE_ITALIAN:
+        case LANGUAGE_SPANISH:
+            DmaCopy16(3, gRubyBoardRampPrize_Gfx_DeItEs[index], OBJ_VRAM_ADDR_RAMP_PRIZE_TILES, SIZE_OF_VRAM_RAMP_PRIZE_TILES);
+            break;
+        }
+#else
         DmaCopy16(3, gRubyBoardRampPrize_Gfx[index], OBJ_VRAM_ADDR_RAMP_PRIZE_TILES, SIZE_OF_VRAM_RAMP_PRIZE_TILES);
+#endif
         oamSimple = &group->oam[0];
         gOamBuffer[oamSimple->oamId].x =  oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y =  oamSimple->yOffset + group->baseY;
