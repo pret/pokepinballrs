@@ -37,5 +37,5 @@ new = (f'#if defined(EUROPE) && !defined(NONMATCHING)\n'
        f'// The European build differs in register allocation / cross-jumping; use the original code.\n'
        f'NAKED\n{sig}\n{{\n    asm_unified(\n{body}    );\n}}\n#else\n{orig}#endif\n')
 src = src[:start] + new + src[end:]
-open(path, 'w').write(src)
+open(path, 'w', newline='').write(src)
 print('wrapped', fn, 'lines', body.count('\n'))

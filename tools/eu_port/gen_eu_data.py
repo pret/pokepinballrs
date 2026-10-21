@@ -338,7 +338,7 @@ def gen_file(src, obj, name):
             pos = toks[tj][2][1]; tj += 1
         if pos == b:
             toks[ti:tj] = [('inc', ln, (a, b))]
-    with open(f'{OUT}/{name}.s', 'w') as f:
+    with open(f'{OUT}/{name}.s', 'w', newline='\n') as f:
         f.write(f'@ Generated for the European version (BPPP) from {src}\n')
         for t, v, cov in toks:
             if t == 'src': f.write(flat[v] + '\n')

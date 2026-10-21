@@ -29,11 +29,11 @@ def build_and_check():
             return int(m.group(3)), ''
     return None, 'func not found'
 for i, v in enumerate(variants):
-    open(path, 'w').write(text.replace(orig, v))
+    open(path, 'w', newline='').write(text.replace(orig, v))
     d, err = build_and_check()
     print(f'variant {i}: diff={d} {err}')
     if d == 0:
         print('MATCH'); sys.exit(0)
-open(path, 'w').write(text)
+open(path, 'w', newline='').write(text)
 subprocess.run(['make', 'REGION=EU', 'NODEP=', obj], cwd=_R, capture_output=True)
 print('no match; restored original')

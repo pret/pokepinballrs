@@ -59,5 +59,5 @@ for k, (n, a) in enumerate(srt):
     lines.append(f'{n}: @ 0x{a:08X}')
     if nxt > a: lines.append(f'\t.space 0x{nxt - a:X}')
     elif nxt < a: raise SystemExit('overlap')
-open(REPO + '/sym_ewram_eu.txt', 'w').write('\n'.join(lines) + '\n')
+open(REPO + '/sym_ewram_eu.txt', 'w', newline='\n').write('\n'.join(lines) + '\n')
 print(len(srt), 'labels')
