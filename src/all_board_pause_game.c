@@ -3,6 +3,13 @@
 #include "main.h"
 #include "constants/bg_music.h"
 
+// Number of sprites used by the first label of the pause panel (5 in the European release).
+#ifdef EUROPE
+#define PAUSE_SAVE_LABEL_CHARS 5
+#else
+#define PAUSE_SAVE_LABEL_CHARS 4
+#endif
+
 // Rom_1 data
 extern const struct Vector16 gPauseMenuSpriteOffsets[];
 extern const u16 gPauseMenuTextAnimFrames[];
@@ -151,11 +158,19 @@ void AnimatePauseMenuOverlay(void)
     struct SpriteGroup *group;
     struct OamDataSimple *oamSimple;
     const struct Vector16 *offsets;
+#ifdef EUROPE
+    s16 xOffset;
+    s16 cancelLabelYOffset;
+    s16 yScale = 8;
+    s16 yOffset;
+    s16 saveLabelYOffset;
+#else
     s16 xOffset;
     s16 yOffset;
     s16 saveLabelYOffset;
     s16 cancelLabelYOffset;
     s16 yScale = 8;
+#endif
 
     if (gCurrentPinballGame->pauseAnimTimer == 0)
     {
@@ -255,7 +270,7 @@ void AnimatePauseMenuOverlay(void)
         offsets = gPauseMenuSpriteOffsets;
         group->baseX = 100;
         group->baseY = 80 + saveLabelYOffset;
-        for (i = 1; i < 5; i++)
+        for (i = 1; i < 1 + PAUSE_SAVE_LABEL_CHARS; i++)
         {
             // Characters in the word 'SAVE'
             oamSimple = &group->oam[i];
@@ -267,7 +282,7 @@ void AnimatePauseMenuOverlay(void)
 
         group->baseX = 100;
         group->baseY = 88 + cancelLabelYOffset;
-        for (i = 5; i < 11; i++)
+        for (i = 1 + PAUSE_SAVE_LABEL_CHARS; i < 11; i++)
         {
             // Characters in the word 'CANCEL'
             oamSimple = &group->oam[i];
@@ -290,6 +305,37 @@ void AnimatePauseMenuOverlay(void)
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
 
+#ifdef EUROPE
+    // The Italian pause panel is narrower.
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+    case LANGUAGE_FRENCH:
+    case LANGUAGE_GERMAN:
+    case LANGUAGE_SPANISH:
+        group = &gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER];
+        group->baseX = 68 + xOffset;
+        group->baseY = 108 - yOffset;
+        for (i = 0; i < 3; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+        break;
+    case LANGUAGE_ITALIAN:
+        group = &gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER];
+        group->baseX = 84 + xOffset;
+        group->baseY = 108 - yOffset;
+        for (i = 0; i < 2; i++)
+        {
+            oamSimple = &group->oam[i];
+            gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
+            gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
+        }
+        break;
+    }
+#else
     group = &gMain.spriteGroups[SG_PAUSE_BOTTOM_BORDER];
     group->baseX = 68 + xOffset;
     group->baseY = 108 - yOffset;
@@ -299,6 +345,7 @@ void AnimatePauseMenuOverlay(void)
         gOamBuffer[oamSimple->oamId].x = oamSimple->xOffset + group->baseX;
         gOamBuffer[oamSimple->oamId].y = oamSimple->yOffset + group->baseY;
     }
+#endif
 
     gCurrentPinballGame->pauseAnimTimer++;
 }
