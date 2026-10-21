@@ -13,11 +13,32 @@ extern const u8 gEvoModeBG0_0_Tilemap[];
 extern const Palette gShopEvoUI_Pals[];
 extern const u8 gShopModeBG0_0_Tilemap[];
 extern const u8 gMartEvoForegroundMenuUx_Gfx[SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES];
+#ifdef EUROPE
+extern const u8 gMartEvoForegroundMenuUx_Gfx_De[SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES];
+extern const u8 gShopModeBG0_0_Tilemap_En[];
+extern const u8 gShopModeBG0_0_Tilemap_Fr[];
+extern const u8 gShopModeBG0_0_Tilemap_De[];
+extern const u8 gShopModeBG0_0_Tilemap_It[];
+extern const u8 gShopModeBG0_0_Tilemap_Es[];
+extern const u8 gEvoModeBG0_0_Tilemap_En[];
+extern const u8 gEvoModeBG0_0_Tilemap_Fr[];
+extern const u8 gEvoModeBG0_0_Tilemap_De[];
+extern const u8 gEvoModeBG0_0_Tilemap_It[];
+extern const u8 gEvoModeBG0_0_Tilemap_Es[];
+#endif
 
 // Rom_2 data
 extern const u16 gShopItemData[][4];
 extern const u16 gShopCursorToItemMap[];
+#ifdef EUROPE
+extern const u32 gShopEvoBGAnimFrames_En[];
+extern const u32 gShopEvoBGAnimFrames_Fr[];
+extern const u32 gShopEvoBGAnimFrames_De[];
+extern const u32 gShopEvoBGAnimFrames_It[];
+extern const u32 gShopEvoBGAnimFrames_Es[];
+#else
 extern const u32 gShopEvoBGAnimFrames[];
+#endif
 
 /// @brief 
 /// @param arg0 0 = shop, 1= evolution selection
@@ -45,8 +66,24 @@ void UpdateShopEntryAnimation(s16 arg0)
         {
             gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
+#ifdef EUROPE
+            switch (gMain_saveData.language)
+            {
+            case LANGUAGE_ENGLISH:
+            case LANGUAGE_FRENCH:
+            case LANGUAGE_ITALIAN:
+            case LANGUAGE_SPANISH:
+                DmaCopy16(3, &gMartEvoForegroundMenuUx_Gfx, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
+                break;
+            case LANGUAGE_GERMAN:
+                DmaCopy16(3, &gMartEvoForegroundMenuUx_Gfx_De, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
+                break;
+            }
+            DmaCopy16(3, gShopNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
+#else
             DmaCopy16(3, &gMartEvoForegroundMenuUx_Gfx, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
             DmaCopy16(3, gShopNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
+#endif
         }
 
         if (gCurrentPinballGame->shopEntryTimer >= 145 && gCurrentPinballGame->shopEntryTimer < 150)
@@ -90,7 +127,28 @@ void UpdateShopEntryAnimation(s16 arg0)
             gMain.fieldSpriteGroups[FIELD_SG_MAIN_SHOP_PORTRAIT_OVERLAY]->active = TRUE;
 
             DmaCopy16(3, gShopEvoUI_Pals, OBJ_PLTT_SLOT(PAL_IX_SHOP_UI), PLTT_SLOT_SIZE);
+#ifdef EUROPE
+            switch (gMain_saveData.language)
+            {
+            case LANGUAGE_ENGLISH:
+                DmaCopy16(3, gShopModeBG0_0_Tilemap_En, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            case LANGUAGE_FRENCH:
+                DmaCopy16(3, gShopModeBG0_0_Tilemap_Fr, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            case LANGUAGE_GERMAN:
+                DmaCopy16(3, gShopModeBG0_0_Tilemap_De, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            case LANGUAGE_ITALIAN:
+                DmaCopy16(3, gShopModeBG0_0_Tilemap_It, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            case LANGUAGE_SPANISH:
+                DmaCopy16(3, gShopModeBG0_0_Tilemap_Es, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            }
+#else
             DmaCopy16(3, gShopModeBG0_0_Tilemap, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+#endif
 
             gMain.bgOffsets[0].yOffset = 80;
             gMain.shopPanelSlideOffset = 0;
@@ -190,7 +248,28 @@ void UpdateShopEntryAnimation(s16 arg0)
             else
                 gCurrentPinballGame->shopBgAnimFrame = 0;
 
+#ifdef EUROPE
+            switch (gMain_saveData.language)
+            {
+            case LANGUAGE_ENGLISH:
+                DmaCopy16(3, gShopEvoBGAnimFrames_En[gCurrentPinballGame->shopBgAnimFrame / 2], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            case LANGUAGE_FRENCH:
+                DmaCopy16(3, gShopEvoBGAnimFrames_Fr[gCurrentPinballGame->shopBgAnimFrame / 2], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            case LANGUAGE_GERMAN:
+                DmaCopy16(3, gShopEvoBGAnimFrames_De[gCurrentPinballGame->shopBgAnimFrame / 2], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            case LANGUAGE_ITALIAN:
+                DmaCopy16(3, gShopEvoBGAnimFrames_It[gCurrentPinballGame->shopBgAnimFrame / 2], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            case LANGUAGE_SPANISH:
+                DmaCopy16(3, gShopEvoBGAnimFrames_Es[gCurrentPinballGame->shopBgAnimFrame / 2], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                break;
+            }
+#else
             DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+#endif
             gMain.bgOffsets[0].yOffset = 80 - (4 * gMain.shopPanelSlideOffset);
 
             if (gCurrentPinballGame->catchModeEventTimer != 0)
@@ -355,7 +434,28 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->bannerSlideTimer = 50;
                 gCurrentPinballGame->bannerSlideVelocity = 0;
 
+#ifdef EUROPE
+                switch (gMain_saveData.language)
+                {
+                case LANGUAGE_ENGLISH:
+                    DmaCopy16(3, gModeBannerTilemaps_En[3], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_LOAD_TILES);
+                    break;
+                case LANGUAGE_FRENCH:
+                    DmaCopy16(3, gModeBannerTilemaps_Fr[3], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_LOAD_TILES);
+                    break;
+                case LANGUAGE_GERMAN:
+                    DmaCopy16(3, gModeBannerTilemaps_De[3], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_LOAD_TILES);
+                    break;
+                case LANGUAGE_ITALIAN:
+                    DmaCopy16(3, gModeBannerTilemaps_It[3], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_LOAD_TILES);
+                    break;
+                case LANGUAGE_SPANISH:
+                    DmaCopy16(3, gModeBannerTilemaps_Es[3], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_LOAD_TILES);
+                    break;
+                }
+#else
                 DmaCopy16(3, gModeBannerTilemaps[3], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_LOAD_TILES);
+#endif
                 DmaCopy16(3, gModeBanner_Pals[3], OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
 
                 gMain.blendControl = 206;
@@ -371,8 +471,24 @@ void UpdateShopEntryAnimation(s16 arg0)
             {
                 gCurrentPinballGame->activeFxType = FX_SHOP_EVO_SELECTION;
 
+#ifdef EUROPE
+                switch (gMain_saveData.language)
+                {
+                case LANGUAGE_ENGLISH:
+                case LANGUAGE_FRENCH:
+                case LANGUAGE_ITALIAN:
+                case LANGUAGE_SPANISH:
+                    DmaCopy16(3, &gMartEvoForegroundMenuUx_Gfx, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
+                    break;
+                case LANGUAGE_GERMAN:
+                    DmaCopy16(3, &gMartEvoForegroundMenuUx_Gfx_De, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
+                    break;
+                }
+                DmaCopy16(3, gEvoNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
+#else
                 DmaCopy16(3, &gMartEvoForegroundMenuUx_Gfx, OBJ_VRAM_ADDR_MART_EVO_FOREGROUND_UX_TILES, SIZE_OF_VRAM_MART_EVO_FOREGROUND_UX_TILES);
                 DmaCopy16(3, gEvoNameDisplay_Pals, BG_PLTT_SLOT(PAL_IX_SHOP_BG), PLTT_SLOT_SIZE);
+#endif
             }
 
             if (gCurrentPinballGame->shopEntryTimer == 145)
@@ -413,7 +529,28 @@ void UpdateShopEntryAnimation(s16 arg0)
                 gCurrentPinballGame->shopAnimSlideTimer = 15;
                 gMain.shopPanelActive = TRUE;
 
+#ifdef EUROPE
+                switch (gMain_saveData.language)
+                {
+                case LANGUAGE_ENGLISH:
+                    DmaCopy16(3, &gEvoModeBG0_0_Tilemap_En, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                case LANGUAGE_FRENCH:
+                    DmaCopy16(3, &gEvoModeBG0_0_Tilemap_Fr, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                case LANGUAGE_GERMAN:
+                    DmaCopy16(3, &gEvoModeBG0_0_Tilemap_De, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                case LANGUAGE_ITALIAN:
+                    DmaCopy16(3, &gEvoModeBG0_0_Tilemap_It, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                case LANGUAGE_SPANISH:
+                    DmaCopy16(3, &gEvoModeBG0_0_Tilemap_Es, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                }
+#else
                 DmaCopy16(3, &gEvoModeBG0_0_Tilemap, BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+#endif
             }
 
             if (gCurrentPinballGame->shopEntryTimer <= 144)
@@ -646,7 +783,28 @@ void UpdateShopEntryAnimation(s16 arg0)
                         gCurrentPinballGame->shopBgAnimFrame = 0;
                 }
 
+#ifdef EUROPE
+                switch (gMain_saveData.language)
+                {
+                case LANGUAGE_ENGLISH:
+                    DmaCopy16(3, gShopEvoBGAnimFrames_En[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                case LANGUAGE_FRENCH:
+                    DmaCopy16(3, gShopEvoBGAnimFrames_Fr[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                case LANGUAGE_GERMAN:
+                    DmaCopy16(3, gShopEvoBGAnimFrames_De[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                case LANGUAGE_ITALIAN:
+                    DmaCopy16(3, gShopEvoBGAnimFrames_It[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                case LANGUAGE_SPANISH:
+                    DmaCopy16(3, gShopEvoBGAnimFrames_Es[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+                    break;
+                }
+#else
                 DmaCopy16(3, gShopEvoBGAnimFrames[gCurrentPinballGame->shopBgAnimFrame / 2 + 4], BG_VRAM_ADDR_MAIN_BOARD_SHOP_BG_TILEMAP, SIZE_OF_VRAM_MAIN_BOARD_SHOP_BG_TILEMAP);
+#endif
                 gMain.bgOffsets[0].yOffset = 80 - (gMain.shopPanelSlideOffset * 4);
 
                 if (gCurrentPinballGame->catchModeEventTimer != 0)
