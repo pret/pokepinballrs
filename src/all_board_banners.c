@@ -143,8 +143,31 @@ void RenderBannerSlideAnimation(void)
             }
             else
             {
+#ifdef EUROPE
+                frameCount = 0;
+                gCurrentPinballGame->activeFxType = FX_MODE_START_BANNER;
+                switch (gMain_saveData.language)
+                {
+                case LANGUAGE_ENGLISH:
+                    DmaCopy16(3, gModeBannerTilemaps_En[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_TRAVEL_BANNER_TILES);
+                    break;
+                case LANGUAGE_FRENCH:
+                    DmaCopy16(3, gModeBannerTilemaps_Fr[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_TRAVEL_BANNER_TILES);
+                    break;
+                case LANGUAGE_GERMAN:
+                    DmaCopy16(3, gModeBannerTilemaps_De[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_TRAVEL_BANNER_TILES);
+                    break;
+                case LANGUAGE_ITALIAN:
+                    DmaCopy16(3, gModeBannerTilemaps_It[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_TRAVEL_BANNER_TILES);
+                    break;
+                case LANGUAGE_SPANISH:
+                    DmaCopy16(3, gModeBannerTilemaps_Es[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_TRAVEL_BANNER_TILES);
+                    break;
+                }
+#else
                 gCurrentPinballGame->activeFxType = FX_MODE_START_BANNER;
                 DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex], OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_TRAVEL_BANNER_TILES);
+#endif
                 AnimateBannerSlide();
                 if (gCurrentPinballGame->bannerDisplayDuration > 0)
                 {
@@ -172,7 +195,28 @@ void RenderBannerSlideAnimation(void)
         {
             gCurrentPinballGame->activeFxType = FX_MODE_START_BANNER;
             // TODO: won't play nice: "i = " shouldn't be here, and the 0x21C0 should be SIZE_OF_VRAM_MODE_BANNER_USED_TILES
+#ifdef EUROPE
+            switch (gMain_saveData.language)
+            {
+            case LANGUAGE_ENGLISH:
+                DmaCopy16(3, gModeBannerTilemaps_En[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_USED_TILES);
+                break;
+            case LANGUAGE_FRENCH:
+                DmaCopy16(3, gModeBannerTilemaps_Fr[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_USED_TILES);
+                break;
+            case LANGUAGE_GERMAN:
+                DmaCopy16(3, gModeBannerTilemaps_De[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_USED_TILES);
+                break;
+            case LANGUAGE_ITALIAN:
+                DmaCopy16(3, gModeBannerTilemaps_It[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_USED_TILES);
+                break;
+            case LANGUAGE_SPANISH:
+                DmaCopy16(3, gModeBannerTilemaps_Es[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_USED_TILES);
+                break;
+            }
+#else
             DmaCopy16(3, gModeBannerTilemaps[gCurrentPinballGame->bannerGfxIndex] + ((i = frameCount) * 0x21C0), OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_MODE_BANNER_USED_TILES);
+#endif
             if (gCurrentPinballGame->bannerDisplayDuration > 0)
             {
                 gCurrentPinballGame->bannerDisplayDuration--;

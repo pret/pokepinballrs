@@ -996,7 +996,15 @@ extern EWRAM_DATA struct BoardConfig gBoardConfig;
 extern const Palette gBall_Pals[];
 
 // Rom_2 data
+#ifdef EUROPE
+extern const u8 *const gModeBannerTilemaps_En[];
+extern const u8 *const gModeBannerTilemaps_Fr[];
+extern const u8 *const gModeBannerTilemaps_De[];
+extern const u8 *const gModeBannerTilemaps_It[];
+extern const u8 *const gModeBannerTilemaps_Es[];
+#else
 extern const u8 *const gModeBannerTilemaps[];
+#endif
 extern const Palette *const gModeBanner_Pals[];
 
 
