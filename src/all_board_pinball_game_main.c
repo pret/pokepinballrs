@@ -338,6 +338,9 @@ void InitPinballGameState(void)
             gCurrentPinballGame->numLives = 2;
             gCurrentPinballGame->coins = 10;
         }
+#ifdef EUROPE
+        gCurrentPinballGame->unk141C = 0;
+#endif
     }
 
     if (gMain.mainState != STATE_GAME_IDLE)
@@ -629,6 +632,37 @@ void MainGameFrameUpdate(void)
     UpdateScrollingBackgroundTiles();
 }
 
+#define IDLE_PRESS_START_SEQUENTIAL(start, count)                    \
+    if ((gMain.systemFrameCount % 32) / 16 > 0)                      \
+    {                                                                \
+        for (i = 0; i < count; i++)                                  \
+            gBG0TilemapBuffer[start + i] = 0xC156 + i;               \
+    }                                                                \
+    else                                                             \
+    {                                                                \
+        for (i = 0; i < count; i++)                                  \
+            gBG0TilemapBuffer[start + i] = 0x1FF;                    \
+    }                                                                \
+    DmaCopy16(3, &gBG0TilemapBuffer[0x340], BG_VRAM_ADDR_IDLE_PRESS_START_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW)
+
+#define IDLE_PRESS_START_FROM_LIST(start, tiles, count)              \
+    if ((gMain.systemFrameCount % 32) / 16 > 0)                      \
+    {                                                                \
+        for (i = 0; i < count; i++)                                  \
+            gBG0TilemapBuffer[start + i] = 0xC140 + tiles[i];        \
+    }                                                                \
+    else                                                             \
+    {                                                                \
+        for (i = 0; i < count; i++)                                  \
+            gBG0TilemapBuffer[start + i] = 0x1FF;                    \
+    }                                                                \
+    DmaCopy16(3, &gBG0TilemapBuffer[0x340], BG_VRAM_ADDR_IDLE_PRESS_START_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW)
+
+#ifdef EUROPE
+extern const s16 gIdlePressStartTiles_Fr[];
+extern const s16 gIdlePressStartTiles_De[];
+#endif
+
 void IdleGameFrameUpdate(void)
 {
     s16 i;
@@ -685,18 +719,29 @@ void IdleGameFrameUpdate(void)
     UpdateScrollingBackgroundTiles();
 
     //Tilemap update for the blinking 'Press Start' data
-    if ((gMain.systemFrameCount % 32) / 16 > 0)
+#ifdef EUROPE
+    // French and German need a longer text, built from a list of tiles.
+    switch (gMain_saveData.language)
     {
-        for (i = 0; i < 10; i++)
-            gBG0TilemapBuffer[0x34A + i] = 0xC156 + i;
+    case LANGUAGE_ENGLISH:
+        IDLE_PRESS_START_SEQUENTIAL(0x34A, 10);
+        break;
+    case LANGUAGE_FRENCH:
+        IDLE_PRESS_START_FROM_LIST(0x347, gIdlePressStartTiles_Fr, 17);
+        break;
+    case LANGUAGE_GERMAN:
+        IDLE_PRESS_START_FROM_LIST(0x349, gIdlePressStartTiles_De, 12);
+        break;
+    case LANGUAGE_ITALIAN:
+        IDLE_PRESS_START_SEQUENTIAL(0x34A, 10);
+        break;
+    case LANGUAGE_SPANISH:
+        IDLE_PRESS_START_SEQUENTIAL(0x34A, 10);
+        break;
     }
-    else
-    {
-        for (i = 0; i < 10; i++)
-            gBG0TilemapBuffer[0x34A + i] = 0x1FF;
-    }
-
-    DmaCopy16(3, &gBG0TilemapBuffer[0x340], BG_VRAM_ADDR_IDLE_PRESS_START_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW);
+#else
+    IDLE_PRESS_START_SEQUENTIAL(0x34A, 10);
+#endif
 }
 
 void BonusFieldFrameUpdate(void)
@@ -765,6 +810,8 @@ void BonusFieldFrameUpdate(void)
     CurrentBoardProcPairs[PER_FRAME_PROCESS_HUD_UPDATE].updateFunc();
 }
 
+// The European release dropped the bonus field variant of the attract mode update.
+#ifndef EUROPE
 void IdleBonusFieldFrameUpdate(void)
 {
     s16 i;
@@ -842,6 +889,7 @@ void IdleBonusFieldFrameUpdate(void)
 
     DmaCopy16(3, &gBG0TilemapBuffer[0x320], BG_VRAM_ADDR_IDLE_TBD_TILEMAP, MEM_SIZE_OF_TILEMAP_FOR_32_TILE_ROW);
 }
+#endif
 
 void PinballGame_State3_4B20C(void)
 {
