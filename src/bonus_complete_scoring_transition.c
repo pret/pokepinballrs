@@ -16,11 +16,11 @@
 #include "constants/mem_layout/rayquaza.h"
 
 // Rom_1 data
-extern const u8 gDusclopsBonusClear_Gfx[SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES];
-extern const u8 gKecleonBonusClear_Gfx[SIZE_OF_VRAM_KECLEON_BANNER_TILES];
-extern const u8 gKyogreBonusClear_Gfx[SIZE_OF_VRAM_KYOGRE_BANNER_TILES];
-extern const u8 gGroudonBonusClear_Gfx[SIZE_OF_VRAM_GROUDON_BANNER_TILES];
-extern const u8 gRayquazaBonusClear_Gfx[SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES];
+EXTERN_LANG5(const u8, gDusclopsBonusClear_Gfx, [SIZE_OF_VRAM_DUSCLOPS_BANNER_TILES]);
+EXTERN_LANG5(const u8, gKecleonBonusClear_Gfx, [SIZE_OF_VRAM_KECLEON_BANNER_TILES]);
+EXTERN_LANG5(const u8, gKyogreBonusClear_Gfx, [SIZE_OF_VRAM_KYOGRE_BANNER_TILES]);
+EXTERN_LANG5(const u8, gGroudonBonusClear_Gfx, [SIZE_OF_VRAM_GROUDON_BANNER_TILES]);
+EXTERN_LANG5(const u8, gRayquazaBonusClear_Gfx, [SIZE_OF_VRAM_RAYQUAZA_BANNER_TILES]);
 
 
 void FadeToMainBoard(void)
@@ -66,6 +66,36 @@ void FadeToMainBoard(void)
         break;
     }
 }
+
+// Copies the bonus score digits and the ball multiplier from the board's "bonus clear" graphics.
+#define LOAD_BONUS_CLEAR_SCORE_DIGITS(gfx)                                                           \
+    for (i = 0; i < 8; i++)                                                                          \
+    {                                                                                                \
+        DmaCopy16(3, &gfx[(scoreCharacter[i] + 0x70) * 0x40],                                        \
+            OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_TEXT(i), SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);           \
+    }                                                                                                \
+    scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;                                   \
+    DmaCopy16(3, &gfx[scoreMultTileIx * 0x40], OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_MULT_TEXT, SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
+
+#define LOAD_BONUS_CLEAR_SCORE_TILES(lang)                          \
+    switch (gMain.selectedField)                                    \
+    {                                                               \
+    case FIELD_DUSCLOPS:                                            \
+        LOAD_BONUS_CLEAR_SCORE_DIGITS(gDusclopsBonusClear_Gfx##lang)  \
+        break;                                                      \
+    case FIELD_KECLEON:                                             \
+        LOAD_BONUS_CLEAR_SCORE_DIGITS(gKecleonBonusClear_Gfx##lang)   \
+        break;                                                      \
+    case FIELD_KYOGRE:                                              \
+        LOAD_BONUS_CLEAR_SCORE_DIGITS(gKyogreBonusClear_Gfx##lang)    \
+        break;                                                      \
+    case FIELD_GROUDON:                                             \
+        LOAD_BONUS_CLEAR_SCORE_DIGITS(gGroudonBonusClear_Gfx##lang)   \
+        break;                                                      \
+    case FIELD_RAYQUAZA:                                            \
+        LOAD_BONUS_CLEAR_SCORE_DIGITS(gRayquazaBonusClear_Gfx##lang)  \
+        break;                                                      \
+    }
 
 void ProcessBonusBannerAndScoring(void)
 {
@@ -154,54 +184,28 @@ void ProcessBonusBannerAndScoring(void)
     scoreCharacter[6] = DIGIT_10S(bonusScore);
     scoreCharacter[7] = DIGIT_1S(bonusScore);;
 
-    switch (gMain.selectedField)
+#ifdef EUROPE
+    switch (gMain_saveData.language)
     {
-    case FIELD_DUSCLOPS:
-        for (i = 0; i < 8; i++)
-        {
-            DmaCopy16(3, &gDusclopsBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
-                OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_TEXT(i), SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
-        }
-        scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gDusclopsBonusClear_Gfx[scoreMultTileIx * 0x40], OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_MULT_TEXT, SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
+    case LANGUAGE_ENGLISH:
+        LOAD_BONUS_CLEAR_SCORE_TILES(_En);
         break;
-    case FIELD_KECLEON:
-        for (i = 0; i < 8; i++)
-        {
-            DmaCopy16(3, &gKecleonBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
-                OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_TEXT(i), SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
-        }
-        scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gKecleonBonusClear_Gfx[scoreMultTileIx * 0x40], OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_MULT_TEXT, SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
+    case LANGUAGE_FRENCH:
+        LOAD_BONUS_CLEAR_SCORE_TILES(_Fr);
         break;
-    case FIELD_KYOGRE:
-        for (i = 0; i < 8; i++)
-        {
-            DmaCopy16(3, &gKyogreBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
-                OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_TEXT(i), SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
-        }
-        scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gKyogreBonusClear_Gfx[scoreMultTileIx * 0x40], OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_MULT_TEXT, SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
+    case LANGUAGE_GERMAN:
+        LOAD_BONUS_CLEAR_SCORE_TILES(_De);
         break;
-    case FIELD_GROUDON:
-        for (i = 0; i < 8; i++)
-        {
-            DmaCopy16(3, &gGroudonBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
-                OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_TEXT(i), SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
-        }
-        scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gGroudonBonusClear_Gfx[scoreMultTileIx* 0x40], OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_MULT_TEXT, SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
+    case LANGUAGE_ITALIAN:
+        LOAD_BONUS_CLEAR_SCORE_TILES(_It);
         break;
-    case FIELD_RAYQUAZA:
-        for (i = 0; i < 8; i++)
-        {
-            DmaCopy16(3, &gRayquazaBonusClear_Gfx[(scoreCharacter[i] + 0x70) * 0x40],
-                OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_TEXT(i), SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
-        }
-        scoreMultTileIx = gCurrentPinballGame->ballUpgradeType + 0x71;
-        DmaCopy16(3, &gRayquazaBonusClear_Gfx[scoreMultTileIx * 0x40], OBJ_VRAM_ADDR_BONUS_CLEAR_SCORE_MULT_TEXT, SIZE_OF_VRAM_SCORE_TEXT_LETTER_TILE);
+    case LANGUAGE_SPANISH:
+        LOAD_BONUS_CLEAR_SCORE_TILES(_Es);
         break;
     }
+#else
+    LOAD_BONUS_CLEAR_SCORE_TILES();
+#endif
 }
 
 void HideDusclopsSprites(void)
