@@ -97,13 +97,13 @@ FIX       := tools/gbafix/gbafix$(EXE)
 SHA1 := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
 
 TOOLS_DIR = tools
-TOOLDIRS = $(filter-out $(TOOLS_DIR)/agbcc $(TOOLS_DIR)/m2ctx.py $(TOOLS_DIR)/scripts $(TOOLS_DIR)/collision_viewer,$(wildcard $(TOOLS_DIR)/*))
+TOOLDIRS = $(filter-out $(TOOLS_DIR)/agbcc $(TOOLS_DIR)/eu_port $(TOOLS_DIR)/m2ctx.py $(TOOLS_DIR)/scripts $(TOOLS_DIR)/collision_viewer,$(wildcard $(TOOLS_DIR)/*))
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
 
 # Build tools when building the rom
 # Disable dependency scanning for clean/tidy/tools
-ifeq (,$(filter-out all compare eu compare_eu,$(MAKECMDGOALS)))
+ifeq (,$(filter-out all compare eu compare_eu rom,$(MAKECMDGOALS)))
 $(call infoshell, $(HOST_VARS) $(MAKE) tools)
 else
 NODEP := 1
