@@ -6,24 +6,45 @@
 
 extern const struct SongHeader se_ball_upgrade;
 
+// The European release initializes the pointers, since a language switch picks the table.
+#ifdef EUROPE
+#define TILE_PTRS_SRC_DEST_DECL \
+    const u8 *const *src = NULL; \
+    const u8 *const *dest = NULL
+#else
+#define TILE_PTRS_SRC_DEST_DECL \
+    const u8 **src;             \
+    const u8 **dest
+#endif
+
 // Rom_2 data
 extern const s16 gCoinRewardLevelTimerThresholds[];
 extern const s16 gRubySlingshotAnimIndices[];
 extern const u8 *gRubySlingshotTilePointers[2][3][5];
+#ifdef EUROPE
+// Each row starts with an extra label used by the translated signs.
+EXTERN_LANG5(const u8 *, gRubyShopSignTilePointers, [][4]);
+#else
 extern const u8 *gRubyShopSignTilePointers[][3];
+#endif
 extern const u8 *gRubyProgressDigitTilePointers[][2];
 extern const u8 *gRubyTrapIndicatorTilePointers[][2];
-extern const u8 *gRubyCatchLightTilePointers[][7][2];
-extern const u8 *gRubySaverTilePointers[][4];
-extern const u8 *gRubyHatchArrowTilePointer[][4];
-extern const u8 *gRubyBumperArrowTilePointer[][4];
-extern const u8 *gRubyShopRampArrowTilePointsers[][4];
+EXTERN_LANG5(const u8 *, gRubyCatchLightTilePointers, [][7][2]);
+EXTERN_LANG4_ENDE(const u8 *, gRubySaverTilePointers, [][4]);
+EXTERN_LANG5(const u8 *, gRubyHatchArrowTilePointer, [][4]);
+EXTERN_LANG5(const u8 *, gRubyBumperArrowTilePointer, [][4]);
+EXTERN_LANG5(const u8 *, gRubyShopRampArrowTilePointsers, [][4]);
 extern const u8 *gRubyBallPowerUpLightTilePointers[][3];
-extern const u8 *gRubyCatchArrowTilePointer[][4];
-extern const u8 *gRubyHoleIndicatorTilePointers[][4];
+EXTERN_LANG5(const u8 *, gRubyCatchArrowTilePointer, [][4]);
+EXTERN_LANG5(const u8 *, gRubyHoleIndicatorTilePointers, [][4]);
+#ifdef EUROPE
+extern const u8 *gRubyEvoArrowTilePtrs_EnFrItEs[][5][3];
+extern const u8 *gRubyEvoArrowTilePtrs_De[][5][3];
+#else
 extern const u8 *gRubyEvoArrowTilePtrs[][5][3];
+#endif
 extern const u8 *gRubyCoinRewardTilePtrs[][5][3];
-extern const u8 *gRubyGetArrowTilePtrs[][5][3];
+EXTERN_LANG5(const u8 *, gRubyGetArrowTilePtrs, [][5][3]);
 extern const u16 gBallUpgradeFx_TileIndicies[];
 
 void UpdateRubyBoardAnimations(void)
@@ -31,6 +52,10 @@ void UpdateRubyBoardAnimations(void)
     gCurrentPinballGame->hudBlinkPhase = (gCurrentPinballGame->hudAnimFrameCounter % 40) / 20;
     gCurrentPinballGame->hudAnimFrameCounter++;
     DrawRubyProgressDigits();
+#ifdef EUROPE
+    if (gCurrentPinballGame->hudSpriteBaseY <= 60)
+        UpdateRubyShopSignLabel();
+#endif
     if (gCurrentPinballGame->hudSpriteBaseY < 232)
     {
         AnimateRubyCatchArrowPalette();
@@ -102,6 +127,72 @@ void AnimateRubySlingshotHit(void)
     DmaCopy16(3, src[4], dest[4], 0x40);
 }
 
+#ifdef EUROPE
+#define RUBY_SHOP_SIGN_LABEL(lang)                                                  \
+    if (!gCurrentPinballGame->shopTransitionActive)                                 \
+    {                                                                               \
+        src = gRubyShopSignTilePointers##lang[gCurrentPinballGame->evolutionShopActive]; \
+        dest = gRubyShopSignTilePointers##lang[2];                                  \
+        DmaCopy16(3, src[0], dest[0], 0xA0);                                        \
+    }
+
+// The translated shop signs have a label showing which shop (Mart or Evo) is open.
+void UpdateRubyShopSignLabel(void)
+{
+    const u8 *const *src;
+    const u8 *const *dest;
+
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+        break;
+    case LANGUAGE_FRENCH:
+        RUBY_SHOP_SIGN_LABEL(_Fr);
+        break;
+    case LANGUAGE_GERMAN:
+        RUBY_SHOP_SIGN_LABEL(_De);
+        break;
+    case LANGUAGE_ITALIAN:
+        RUBY_SHOP_SIGN_LABEL(_It);
+        break;
+    case LANGUAGE_SPANISH:
+        RUBY_SHOP_SIGN_LABEL(_Es);
+        break;
+    }
+}
+
+#define LOAD_SHOP_ITEM_GRAPHICS(table)       \
+    src = table[arg0];                       \
+    dest = table[2];                         \
+    DmaCopy16(3, src[1], dest[1], 0xC0);     \
+    DmaCopy16(3, src[2], dest[2], 0xC0);     \
+    DmaCopy16(3, src[3], dest[3], 0x20);
+
+void LoadShopItemGraphics(s16 arg0)
+{
+    const u8 *const *src;
+    const u8 *const *dest;
+
+    switch (gMain_saveData.language)
+    {
+    case LANGUAGE_ENGLISH:
+        LOAD_SHOP_ITEM_GRAPHICS(gRubyShopSignTilePointers_En)
+        break;
+    case LANGUAGE_FRENCH:
+        LOAD_SHOP_ITEM_GRAPHICS(gRubyShopSignTilePointers_Fr)
+        break;
+    case LANGUAGE_GERMAN:
+        LOAD_SHOP_ITEM_GRAPHICS(gRubyShopSignTilePointers_De)
+        break;
+    case LANGUAGE_ITALIAN:
+        LOAD_SHOP_ITEM_GRAPHICS(gRubyShopSignTilePointers_It)
+        break;
+    case LANGUAGE_SPANISH:
+        LOAD_SHOP_ITEM_GRAPHICS(gRubyShopSignTilePointers_Es)
+        break;
+    }
+}
+#else
 void LoadShopItemGraphics(s16 arg0)
 {
     const u8 **src;
@@ -113,6 +204,7 @@ void LoadShopItemGraphics(s16 arg0)
     DmaCopy16(3, src[1], dest[1], 0xC0);
     DmaCopy16(3, src[2], dest[2], 0x20);
 }
+#endif
 
 void DrawRubyProgressDigits(void)
 {
@@ -156,13 +248,15 @@ void AnimateRubyCatchLightBlink(void)
         gCurrentPinballGame->modeProgressBlinkTimer--;
     }
 
-    for (i = 0; i < 3; i++)
-    {
-        src = gRubyCatchLightTilePointers[i][gCurrentPinballGame->modeProgressLights[i]];
-        dest = gRubyCatchLightTilePointers[i][6];
-        DmaCopy16(3, src[0], dest[0], 0x40);
-        DmaCopy16(3, src[1], dest[1], 0x40);
+#define CATCH_LIGHT_TILES(lang)                                                                     \
+    for (i = 0; i < 3; i++)                                                                         \
+    {                                                                                               \
+        src = gRubyCatchLightTilePointers##lang[i][gCurrentPinballGame->modeProgressLights[i]];     \
+        dest = gRubyCatchLightTilePointers##lang[i][6];                                             \
+        DmaCopy16(3, src[0], dest[0], 0x40);                                                        \
+        DmaCopy16(3, src[1], dest[1], 0x40);                                                        \
     }
+    LANG5_SWITCH(CATCH_LIGHT_TILES)
 }
 
 void AnimateRubyHoleIndicators(void)
@@ -190,12 +284,14 @@ void AnimateRubyHoleIndicators(void)
         }
     }
 
-    for (i = 0; i < 4; i++)
-    {
-        src = &gRubyHoleIndicatorTilePointers[i][gCurrentPinballGame->holeIndicators[i]];
-        dest = &gRubyHoleIndicatorTilePointers[i][2];
-        DmaCopy16(3, *src, *dest, 0x40);
+#define HOLE_INDICATOR_TILES(lang)                                                                  \
+    for (i = 0; i < 4; i++)                                                                         \
+    {                                                                                               \
+        src = &gRubyHoleIndicatorTilePointers##lang[i][gCurrentPinballGame->holeIndicators[i]];     \
+        dest = &gRubyHoleIndicatorTilePointers##lang[i][2];                                         \
+        DmaCopy16(3, *src, *dest, 0x40);                                                            \
     }
+    LANG5_SWITCH(HOLE_INDICATOR_TILES)
 }
 
 void DrawRubyModeTimerDisplay(void)
@@ -222,29 +318,29 @@ void DrawRubyModeTimerDisplay(void)
         }
     }
 
-    src = gRubySaverTilePointers[gCurrentPinballGame->saverLit];
-    dest = gRubySaverTilePointers[2];
-    DmaCopy16(3, src[0], dest[0], 0xC0);
-    DmaCopy16(3, src[1], dest[1], 0xC0);
-    if (gCurrentPinballGame->hudSpriteBaseY >= 216)
-    {
-        DmaCopy16(3, src[2], dest[2], 0xA0);
-        DmaCopy16(3, src[3], dest[3], 0x40);
+#define SAVER_TILES(lang)                                           \
+    src = gRubySaverTilePointers##lang[gCurrentPinballGame->saverLit]; \
+    dest = gRubySaverTilePointers##lang[2];                         \
+    DmaCopy16(3, src[0], dest[0], 0xC0);                            \
+    DmaCopy16(3, src[1], dest[1], 0xC0);                            \
+    if (gCurrentPinballGame->hudSpriteBaseY >= 216)                 \
+    {                                                               \
+        DmaCopy16(3, src[2], dest[2], 0xA0);                        \
+        DmaCopy16(3, src[3], dest[3], 0x40);                        \
     }
+    LANG4_SWITCH_ENDE(SAVER_TILES)
 }
 
 void AnimateRubyCatchArrowPalette(void)
 {
     s16 index;
-    const u8 **src;
-    const u8 **dest;
+    TILE_PTRS_SRC_DEST_DECL;
 
     index = 0;
     if (gCurrentPinballGame->catchArrowPaletteActive > 0)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
 
-    src = gRubyHatchArrowTilePointer[index];
-    dest = gRubyHatchArrowTilePointer[2];
+    LANG5_SET_SRC_DEST(gRubyHatchArrowTilePointer, index, 2);
     if (gCurrentPinballGame->hudSpriteBaseY > 48)
     {
         if (gCurrentPinballGame->hudSpriteBaseY < 216)
@@ -267,15 +363,13 @@ void AnimateRubyCatchArrowPalette(void)
 void AnimateRubyEvoArrowPalette(void)
 {
     s16 index;
-    const u8 **src;
-    const u8 **dest;
+    TILE_PTRS_SRC_DEST_DECL;
 
     index = 0;
     if (gCurrentPinballGame->evoArrowPaletteActive > 0)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
 
-    src = gRubyBumperArrowTilePointer[index];
-    dest = gRubyBumperArrowTilePointer[2];
+    LANG5_SET_SRC_DEST(gRubyBumperArrowTilePointer, index, 2);
     if (gCurrentPinballGame->hudSpriteBaseY > 40)
     {
         if (gCurrentPinballGame->hudSpriteBaseY < 208)
@@ -303,8 +397,7 @@ void AnimateRubyEvoArrowPalette(void)
 void AnimateRubyShopRampArrow(void)
 {
     s16 index;
-    const u8 **src;
-    const u8 **dest;
+    TILE_PTRS_SRC_DEST_DECL;
 
     index = 0;
     if (gCurrentPinballGame->shopDoorTargetFrame > 2)
@@ -317,8 +410,7 @@ void AnimateRubyShopRampArrow(void)
     else
         index = gCurrentPinballGame->evolutionShopActive * 2;
 
-    src = gRubyShopRampArrowTilePointsers[index];
-    dest = gRubyShopRampArrowTilePointsers[4];
+    LANG5_SET_SRC_DEST(gRubyShopRampArrowTilePointsers, index, 4);
     if (gCurrentPinballGame->hudSpriteBaseY < 240)
     {
         DmaCopy16(3, src[0], dest[0], 0xA0);
@@ -335,8 +427,7 @@ void AnimateRubyShopRampArrow(void)
 void AnimateRubyCatchProgressArrow(void)
 {
     s16 index;
-    const u8 **src;
-    const u8 **dest;
+    TILE_PTRS_SRC_DEST_DECL;
 
     index = 0;
     gCurrentPinballGame->catchProgressFlashing = FALSE;
@@ -347,8 +438,7 @@ void AnimateRubyCatchProgressArrow(void)
     if (gCurrentPinballGame->catchProgressFlashing > 0)
         index = 1 - gCurrentPinballGame->hudBlinkPhase;
 
-    src = gRubyCatchArrowTilePointer[index];
-    dest = gRubyCatchArrowTilePointer[2];
+    LANG5_SET_SRC_DEST(gRubyCatchArrowTilePointer, index, 2);
     if (gCurrentPinballGame->hudSpriteBaseY < 264)
     {
         DmaCopy16(3, src[0], dest[0], 0x40);
@@ -506,6 +596,35 @@ void DrawRubyCoinRewardMeter(void)
     }
 }
 
+#define EVO_ARROW_TILES(lang) \
+    src = gRubyEvoArrowTilePtrs##lang[0][sp0[0]]; \
+    dest = gRubyEvoArrowTilePtrs##lang[0][4]; \
+    if (gCurrentPinballGame->hudSpriteBaseY < 264) \
+    { \
+        DmaCopy16(3, src[0], dest[0], 0x60); \
+    } \
+ \
+    DmaCopy16(3, src[1], dest[1], 0x60); \
+    DmaCopy16(3, src[2], dest[2], 0x60); \
+ \
+    if (gCurrentPinballGame->hudSpriteBaseY > 120) \
+    { \
+        src = gRubyEvoArrowTilePtrs##lang[1][sp0[1]]; \
+        dest = gRubyEvoArrowTilePtrs##lang[1][4]; \
+        DmaCopy16(3, src[0], dest[0], 0x60); \
+        DmaCopy16(3, src[1], dest[1], 0x60); \
+        DmaCopy16(3, src[2], dest[2], 0x60); \
+    } \
+ \
+    if (gCurrentPinballGame->hudSpriteBaseY > 136) \
+    { \
+        src = gRubyEvoArrowTilePtrs##lang[2][sp0[2]]; \
+        dest = gRubyEvoArrowTilePtrs##lang[2][4]; \
+        DmaCopy16(3, src[0], dest[0], 0x60); \
+        DmaCopy16(3, src[1], dest[1], 0x60); \
+        DmaCopy16(3, src[2], dest[2], 0x60); \
+    }
+
 void DrawRubyEvoArrowProgress(void)
 {
     s16 sp0[3];
@@ -546,34 +665,52 @@ void DrawRubyEvoArrowProgress(void)
         sp0[2] = gCurrentPinballGame->prevTravelArrowTiles[2];
     }
 
-    src = gRubyEvoArrowTilePtrs[0][sp0[0]];
-    dest = gRubyEvoArrowTilePtrs[0][4];
-    if (gCurrentPinballGame->hudSpriteBaseY < 264)
+#ifdef EUROPE
+    switch (gMain_saveData.language)
     {
-        DmaCopy16(3, src[0], dest[0], 0x60);
+    case LANGUAGE_ENGLISH:
+    case LANGUAGE_FRENCH:
+    case LANGUAGE_ITALIAN:
+    case LANGUAGE_SPANISH:
+        EVO_ARROW_TILES(_EnFrItEs)
+        break;
+    case LANGUAGE_GERMAN:
+        EVO_ARROW_TILES(_De)
+        break;
     }
-
-    DmaCopy16(3, src[1], dest[1], 0x60);
-    DmaCopy16(3, src[2], dest[2], 0x60);
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 120)
-    {
-        src = gRubyEvoArrowTilePtrs[1][sp0[1]];
-        dest = gRubyEvoArrowTilePtrs[1][4];
-        DmaCopy16(3, src[0], dest[0], 0x60);
-        DmaCopy16(3, src[1], dest[1], 0x60);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 136)
-    {
-        src = gRubyEvoArrowTilePtrs[2][sp0[2]];
-        dest = gRubyEvoArrowTilePtrs[2][4];
-        DmaCopy16(3, src[0], dest[0], 0x60);
-        DmaCopy16(3, src[1], dest[1], 0x60);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
+#else
+    EVO_ARROW_TILES()
+#endif
 }
+
+#define GET_ARROW_TILES(lang) \
+    src = gRubyGetArrowTilePtrs##lang[0][sp0[0]]; \
+    dest = gRubyGetArrowTilePtrs##lang[0][4]; \
+    if (gCurrentPinballGame->hudSpriteBaseY < 264) \
+    { \
+        DmaCopy16(3, src[0], dest[0], 0x60); \
+    } \
+ \
+    DmaCopy16(3, src[1], dest[1], 0x60); \
+    DmaCopy16(3, src[2], dest[2], 0x60); \
+ \
+    if (gCurrentPinballGame->hudSpriteBaseY > 120) \
+    { \
+        src = gRubyGetArrowTilePtrs##lang[1][sp0[1]]; \
+        dest = gRubyGetArrowTilePtrs##lang[1][4]; \
+        DmaCopy16(3, src[0], dest[0], 0x40); \
+        DmaCopy16(3, src[1], dest[1], 0x40); \
+        DmaCopy16(3, src[2], dest[2], 0x60); \
+    } \
+ \
+    if (gCurrentPinballGame->hudSpriteBaseY > 136) \
+    { \
+        src = gRubyGetArrowTilePtrs##lang[2][sp0[2]]; \
+        dest = gRubyGetArrowTilePtrs##lang[2][4]; \
+        DmaCopy16(3, src[0], dest[0], 0x40); \
+        DmaCopy16(3, src[1], dest[1], 0x60); \
+        DmaCopy16(3, src[2], dest[2], 0x60); \
+    }
 
 void DrawRubyCatchArrowProgress(void)
 {
@@ -618,31 +755,5 @@ void DrawRubyCatchArrowProgress(void)
         sp0[2] = gCurrentPinballGame->travelArrowTiles[2];
     }
 
-    src = gRubyGetArrowTilePtrs[0][sp0[0]];
-    dest = gRubyGetArrowTilePtrs[0][4];
-    if (gCurrentPinballGame->hudSpriteBaseY < 264)
-    {
-        DmaCopy16(3, src[0], dest[0], 0x60);
-    }
-
-    DmaCopy16(3, src[1], dest[1], 0x60);
-    DmaCopy16(3, src[2], dest[2], 0x60);
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 120)
-    {
-        src = gRubyGetArrowTilePtrs[1][sp0[1]];
-        dest = gRubyGetArrowTilePtrs[1][4];
-        DmaCopy16(3, src[0], dest[0], 0x40);
-        DmaCopy16(3, src[1], dest[1], 0x40);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
-
-    if (gCurrentPinballGame->hudSpriteBaseY > 136)
-    {
-        src = gRubyGetArrowTilePtrs[2][sp0[2]];
-        dest = gRubyGetArrowTilePtrs[2][4];
-        DmaCopy16(3, src[0], dest[0], 0x40);
-        DmaCopy16(3, src[1], dest[1], 0x60);
-        DmaCopy16(3, src[2], dest[2], 0x60);
-    }
+    LANG5_SWITCH(GET_ARROW_TILES)
 }

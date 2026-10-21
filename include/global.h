@@ -1099,11 +1099,80 @@ extern const u8 *const gModeBannerTilemaps[];
         DmaCopy16(3, sym##_Es, dest, size);                \
         break;                                             \
     }
+#define EXTERN_LANG4_ENDE(type, sym, dims) \
+    extern type sym##_EnDe dims;           \
+    extern type sym##_Fr dims;             \
+    extern type sym##_It dims;             \
+    extern type sym##_Es dims
 #define EXTERN_LANG4_ENFR(type, sym, dims) \
     extern type sym##_EnFr dims;           \
     extern type sym##_De dims;             \
     extern type sym##_It dims;             \
     extern type sym##_Es dims
+// LANG5_SWITCH(m) expands m(_En), m(_Fr), ... in a switch on the selected language;
+// m(lang) uses sym##lang to name the per-language data. Outside the European build it is just m().
+#define LANG5_SWITCH(m)                  \
+    switch (gMain_saveData.language)     \
+    {                                    \
+    case LANGUAGE_ENGLISH:               \
+        m(_En)                           \
+        break;                           \
+    case LANGUAGE_FRENCH:                \
+        m(_Fr)                           \
+        break;                           \
+    case LANGUAGE_GERMAN:                \
+        m(_De)                           \
+        break;                           \
+    case LANGUAGE_ITALIAN:               \
+        m(_It)                           \
+        break;                           \
+    case LANGUAGE_SPANISH:               \
+        m(_Es)                           \
+        break;                           \
+    }
+// Picks the per-language row of a tile pointer table into the local variables src and dest.
+#define LANG5_SET_SRC_DEST(table, srcIx, destIx)         \
+    switch (gMain_saveData.language)                     \
+    {                                                    \
+    case LANGUAGE_ENGLISH:                               \
+        src = table##_En[srcIx];                         \
+        dest = table##_En[destIx];                       \
+        break;                                           \
+    case LANGUAGE_FRENCH:                                \
+        src = table##_Fr[srcIx];                         \
+        dest = table##_Fr[destIx];                       \
+        break;                                           \
+    case LANGUAGE_GERMAN:                                \
+        src = table##_De[srcIx];                         \
+        dest = table##_De[destIx];                       \
+        break;                                           \
+    case LANGUAGE_ITALIAN:                               \
+        src = table##_It[srcIx];                         \
+        dest = table##_It[destIx];                       \
+        break;                                           \
+    case LANGUAGE_SPANISH:                               \
+        src = table##_Es[srcIx];                         \
+        dest = table##_Es[destIx];                       \
+        break;                                           \
+    }
+// Same, for data where two languages share one version.
+#define LANG4_SWITCH_ENDE(m)             \
+    switch (gMain_saveData.language)     \
+    {                                    \
+    case LANGUAGE_ENGLISH:               \
+    case LANGUAGE_GERMAN:                \
+        m(_EnDe)                         \
+        break;                           \
+    case LANGUAGE_FRENCH:                \
+        m(_Fr)                           \
+        break;                           \
+    case LANGUAGE_ITALIAN:               \
+        m(_It)                           \
+        break;                           \
+    case LANGUAGE_SPANISH:               \
+        m(_Es)                           \
+        break;                           \
+    }
 // Declares sym_En ... sym_Es with the given type and array suffix.
 #define EXTERN_LANG5(type, sym, dims) \
     extern type sym##_En dims;        \
@@ -1115,8 +1184,14 @@ extern const u8 *const gModeBannerTilemaps[];
 #define DMA_LANG5(sym, dest, size) DmaCopy16(3, sym, dest, size)
 #define DMA_LANG5_AT(sym, index, dest, size) DmaCopy16(3, &sym[index], dest, size)
 #define EXTERN_LANG5(type, sym, dims) extern type sym dims
+#define LANG5_SWITCH(m) m()
+#define LANG5_SET_SRC_DEST(table, srcIx, destIx) \
+    src = table[srcIx];                          \
+    dest = table[destIx]
+#define LANG4_SWITCH_ENDE(m) m()
 #define DMA_LANG4_ENFR(sym, dest, size) DmaCopy16(3, sym, dest, size)
 #define EXTERN_LANG4_ENFR(type, sym, dims) extern type sym dims
+#define EXTERN_LANG4_ENDE(type, sym, dims) extern type sym dims
 #endif
 
 // Evolution item spawn animation (contains the item's name).

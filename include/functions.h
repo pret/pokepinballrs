@@ -674,6 +674,9 @@ extern void ResetBoardStateOnDeath(void);
 extern void UpdateRubyBoardAnimations(void);
 extern void AnimateRubySlingshotHit(void);
 extern void LoadShopItemGraphics(s16);
+#ifdef EUROPE
+extern void UpdateRubyShopSignLabel(void);
+#endif
 extern void DrawRubyProgressDigits(void);
 extern void AnimateRubyTrapIndicator(void);
 extern void AnimateRubyCatchLightBlink(void);
