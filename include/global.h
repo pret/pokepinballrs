@@ -1097,6 +1097,37 @@ extern const u8 *gEvoItemTilesGfxPtrs[];
     DmaCopy16(3, gEvoItemTilesGfxPtrs[ix] + (frameOffset), dest, size)
 #endif
 
+// "Evolution" cutscene text tiles. English and French share one set.
+#ifdef EUROPE
+extern const u8 gEvolutionCutsceneTilesGfx_EnFr[];
+extern const u8 gEvolutionCutsceneTilesGfx_De[];
+extern const u8 gEvolutionCutsceneTilesGfx_It[];
+extern const u8 gEvolutionCutsceneTilesGfx_Es[];
+
+#define DMA_EVOLUTION_CUTSCENE_TILES(dest, size)                       \
+    switch (gMain_saveData.language)                                   \
+    {                                                                  \
+    case LANGUAGE_ENGLISH:                                             \
+    case LANGUAGE_FRENCH:                                              \
+        DmaCopy16(3, gEvolutionCutsceneTilesGfx_EnFr, dest, size);     \
+        break;                                                         \
+    case LANGUAGE_GERMAN:                                              \
+        DmaCopy16(3, gEvolutionCutsceneTilesGfx_De, dest, size);       \
+        break;                                                         \
+    case LANGUAGE_ITALIAN:                                             \
+        DmaCopy16(3, gEvolutionCutsceneTilesGfx_It, dest, size);       \
+        break;                                                         \
+    case LANGUAGE_SPANISH:                                             \
+        DmaCopy16(3, gEvolutionCutsceneTilesGfx_Es, dest, size);       \
+        break;                                                         \
+    }
+#else
+extern const u8 gEvolutionCutsceneTilesGfx[];
+
+#define DMA_EVOLUTION_CUTSCENE_TILES(dest, size) \
+    DmaCopy16(3, gEvolutionCutsceneTilesGfx, dest, size)
+#endif
+
 // Center screen portrait animation frames (shop items, slot cards...). They contain text,
 // so the European release has one set per language.
 #ifdef EUROPE

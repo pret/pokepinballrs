@@ -10,7 +10,6 @@ EWRAM_DATA u8 gPaletteFadeRGBCache[16][3];
 extern const s16 gAreaRouletteTable[][AREA_TABLE_SLOT_COUNT];
 extern const s16 gAreaPortraitIndexes[];
 extern const Palette gFieldVariant_Pals[][6];
-extern const u8 gEvolutionCutsceneTilesGfx[SIZE_OF_VRAM_EVO_CUTSCENE_TILES];
 extern const Palette gBoardActionObj_Pals[];
 extern const u8 gRubyTravelPaint_Gfx[SIZE_OF_VRAM_FX_TRAVEL_CUTSCENE];
 extern const Palette gRubyPainter_Pals;
@@ -325,7 +324,7 @@ void RunEvolutionCutscene(void)
         if (gCurrentPinballGame->stageTimer == 10)
         {
             gCurrentPinballGame->activeFxType = FX_EVOLUTION_CUTSCENE;
-            DmaCopy16(3, gEvolutionCutsceneTilesGfx, OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_CUTSCENE_TILES);
+            DMA_EVOLUTION_CUTSCENE_TILES(OBJ_VRAM_ADDR_FX_BASE, SIZE_OF_VRAM_EVO_CUTSCENE_TILES);
             DmaCopy16(3, gBoardActionObj_Pals, OBJ_PLTT_SLOT(PAL_IX_BANNER), PLTT_SLOT_SIZE);
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_LARGE_BOTTOM]->active = TRUE;
             gMain.fieldSpriteGroups[FIELD_SG_EVOLUTION_TEXT_LARGE_TOP]->active = TRUE;
