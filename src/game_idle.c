@@ -98,7 +98,7 @@ void PinballGameIdle0_19048(void)
 
 void PinballGameIdle1_19190(void)
 {
-    u8 fadeSubState;
+    s32 fadeSubState;
 
     fadeSubState = gCurrentPinballGame->fadeSubState;
     switch (fadeSubState)
@@ -108,10 +108,14 @@ void PinballGameIdle1_19190(void)
         gMain.gameExitState = fadeSubState;
         break;
     case 1:
+#ifdef EUROPE
+        IdleGameFrameUpdate();
+#else
         if (gMain.selectedField < MAIN_FIELD_COUNT)
             IdleGameFrameUpdate();
         else
             IdleBonusFieldFrameUpdate();
+#endif
 
         if (gMain.idleFrameCounter++ > gBoardConfig.idleDemoDuration)
             gMain.gameExitState = 1;
