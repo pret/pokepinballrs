@@ -48,4 +48,4 @@ broken_se_6A36D4:  @ 0x08935090
 	.byte	W24
 	.byte	FINE
 @ 0x086A3700
-	.incbin "data/eu/bin/sound_data_2_089350BC.bin"
+	.include "data/eu/src/orphaned_se_tracks.inc"

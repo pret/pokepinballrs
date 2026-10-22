@@ -10129,7 +10129,8 @@ gFlipper_Gfx:: @ 0x0862306C
 gAlphabetTilesGfx:: @ 0x08623C6C
 	.incbin "graphics/stage/main/alphabet.4bpp"
 
-	.incbin "data/eu/bin/rom_1_0862496C.bin"
+gAlphabetExclamationMark_Gfx:: @ 0x0862496C
+	.incbin "graphics/stage/main/alphabet_exclamation_mark.4bpp"
 gSpaceTileGfx:: @ 0x086249AC
 	.space 0x40  @ Note: this 0x40 space is required, and is used as a tile pair.
 

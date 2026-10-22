@@ -71,6 +71,9 @@ EXTRA = {
                                    pal='graphics/high_score/bg_eu.pal', size=0x2020,
                                    sets={'gHighScoreTitle_Gfx_It': 0x160, 'gHighScoreTitle_Gfx_De': 0x1000,
                                          'gHighScoreTitle_Gfx_Es': 0x1160}),
+    # 53rd letter of gAlphabetTilesGfx, before the space tile (gAlphabetTilesGfx[53] in the EU code)
+    'gAlphabetExclamationMark_Gfx': dict(file='graphics/stage/main/alphabet_exclamation_mark.png', width=1,
+                                         pal='graphics/stage/main/alphabet.png'),
 }
 for _l in LANG_NAMES:
     # label of the Ruby shop sign showing which shop is open (gRubyShopSignTilePointers_<Lang>[0/1][0])

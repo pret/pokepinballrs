@@ -10645,6 +10645,13 @@
   ],
   "size": 7680
  },
+ "0x0862496C": {
+  "label": "gAlphabetExclamationMark_Gfx",
+  "lines": [
+   ".incbin \"graphics/stage/main/alphabet_exclamation_mark.4bpp\""
+  ],
+  "size": 64
+ },
  "0x086A5A6C": {
   "label": "gShopPortraitOverlayGfx_Fr",
   "lines": [
