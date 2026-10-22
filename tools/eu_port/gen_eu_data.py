@@ -194,6 +194,168 @@ for old_, new_ in rename.items():
     AUTO[new_] = AUTO.pop(old_); LABEL_AT[AUTO[new_]] = new_
 print('renamed auto labels:', len(rename))
 
+
+# ---------------------------------------------------------------- sprite sets in rom_2
+# EU-only sprite sets (".2byte count" then count OAM entries of 8 bytes, see packed_sprite_oaml
+# in asm/macros/sprite_oam.inc) are written with the macros, like the US ones.
+SPRITE_SIZES = {(0, 0): 'SPRITE_SIZE_8x8', (0, 1): 'SPRITE_SIZE_16x16', (0, 2): 'SPRITE_SIZE_32x32',
+                (0, 3): 'SPRITE_SIZE_64x64', (1, 0): 'SPRITE_SIZE_16x8', (1, 1): 'SPRITE_SIZE_32x8',
+                (1, 2): 'SPRITE_SIZE_32x16', (1, 3): 'SPRITE_SIZE_64x32', (2, 0): 'SPRITE_SIZE_8x16',
+                (2, 1): 'SPRITE_SIZE_8x32', (2, 2): 'SPRITE_SIZE_16x32', (2, 3): 'SPRITE_SIZE_32x64'}
+OAM_CONSTANTS = {'affineMode': {0: 'ST_OAM_AFFINE_OFF', 1: 'ST_OAM_AFFINE_NORMAL', 2: 'ST_OAM_AFFINE_ERASE',
+                                3: 'ST_OAM_AFFINE_DOUBLE'},
+                 'objMode': {0: 'ST_OAM_OBJ_NORMAL', 1: 'ST_OAM_OBJ_BLEND', 2: 'ST_OAM_OBJ_WINDOW'}}
+PAL_VALUES = {}
+for m_ in re.finditer(r'^#define (PAL_IX_\w+)\s+(\d+)\b', open(REPO + '/include/constants/palette_mappings.h').read(), re.M):
+    PAL_VALUES[m_.group(1)] = int(m_.group(2))
+
+
+def us_sprite_sets():
+    """US labels of sprite sets -> (entry size: 8 for packed_sprite_oaml, 6 for packed_sprite_oam,
+    {palette number: palette name used in that set})."""
+    sets = {}
+    lab = None
+    lines_ = []
+    def flat_(path):
+        for ln in open(REPO + '/' + path, encoding='utf-8'):
+            m = re.match(r'^\s*\.include\s+"(data/[^"]+)"', ln)
+            if m and os.path.exists(REPO + '/' + m.group(1)):
+                yield from flat_(m.group(1))
+            else:
+                yield ln
+    def close():
+        if lab and lines_ and lines_[0].startswith('.2byte') and len(lines_) > 1 and lines_[1].startswith('packed_sprite_oam'):
+            pals = {}
+            for l in lines_:
+                m = re.search(r'paletteNum=(PAL_IX_\w+)', l)
+                if m and m.group(1) in PAL_VALUES:
+                    pals.setdefault(PAL_VALUES[m.group(1)], m.group(1))
+            sets[lab] = (8 if lines_[1].startswith('packed_sprite_oaml') else 6, pals)
+    for ln in flat_('data/rom_2.s'):
+        m = re.match(r'^(\w+)::', ln)
+        if m:
+            close()
+            lab, lines_ = m.group(1), []
+            continue
+        s_ = ln.split('@')[0].strip()
+        if s_:
+            lines_.append(s_)
+    close()
+    return sets
+
+
+US_SPRITE_SETS = us_sprite_sets()
+SPRITE_SUF = re.compile(r'^(.*?)_((?:En|Fr|De|It|Es)+)$')
+
+
+def us_sprite_set(n):
+    m = SPRITE_SUF.match(n)
+    return US_SPRITE_SETS.get(m.group(1) if m else n)
+
+
+def parses_as_sprite_set(a, b):
+    """Entry size (8 or 6) if EU[a:b] is exactly one sprite set (count, then count valid OAM
+    entries, with or without the 2-byte flag), else 0."""
+    if b - a < 8:
+        return 0
+    count = struct.unpack_from('<H', EU, a - 0x08000000)[0]
+    if count == 0 or count > 128:
+        return 0
+    for size in (8, 6):
+        if 2 + size * count != b - a:
+            continue
+        for k in range(count):
+            p = a + 2 + size * k - 0x08000000
+            word = struct.unpack_from('<I', EU, p)[0]
+            if (word >> 14) & 3 == 3 or (size == 8 and struct.unpack_from('<H', EU, p + 6)[0] > 1):
+                return 0
+        return size if not any(a <= p < b for p in PTRS) else 0
+    return 0
+
+
+# gUnknown_ blocks of rom_2 that are sprite sets: in a run of at least two consecutive pointers
+# (a table in the EU-only data) to sprite sets, known ones or blocks that parse as one.
+NAME_AT = {n: a for a, n in LABEL_AT.items()}
+SPRITE_TARGETS = {}
+def _sprite_runs():
+    words = sorted(PTRS)
+    run = []
+    def flush():
+        good = []
+        for w in run + [None]:
+            n = PTRS.get(w) if w is not None else None
+            a = NAME_AT.get(n) if n else None
+            size = 0
+            if a is not None:
+                if us_sprite_set(n):
+                    size = us_sprite_set(n)[0]
+                elif n.startswith('gUnknown_'):
+                    size = parses_as_sprite_set(a, extent(a))
+            if size:
+                good.append((n, size))
+                continue
+            if len(good) >= 2:
+                SPRITE_TARGETS.update((g, s) for g, s in good if g.startswith('gUnknown_'))
+            good = []
+    for w in words:
+        if run and w != run[-1] + 4:
+            flush()
+            run = []
+        run.append(w)
+    flush()
+_sprite_runs()
+print('EU-only sprite sets found from pointer tables:', len(SPRITE_TARGETS))
+
+
+def sprite_set_lines(x, y, labels):
+    """Lines of the sprite set(s) in EU[x:y] if one of the labels names a US sprite set or an
+    EU-only one found in a pointer table."""
+    spec = None
+    for n in labels:
+        if us_sprite_set(n):
+            spec = us_sprite_set(n)
+        elif n in SPRITE_TARGETS:
+            spec = (SPRITE_TARGETS[n], {})
+    if spec is None or any(x <= p < y for p in PTRS):
+        return None
+    size, pals = spec
+    macro = 'packed_sprite_oaml' if size == 8 else 'packed_sprite_oam'
+    out_, pos = [], x
+    while pos < y:
+        if pos + 2 > y:
+            return None
+        count = struct.unpack_from('<H', EU, pos - 0x08000000)[0]
+        pos += 2
+        if count == 0 or pos + size * count > y:
+            return None
+        out_.append('.2byte %d' % count)
+        for _ in range(count):
+            word, half = struct.unpack_from('<IH', EU, pos - 0x08000000)
+            flag = struct.unpack_from('<H', EU, pos + 6 - 0x08000000)[0] if size == 8 else 0
+            pos += size
+            e = dict(y=word & 0xFF, affineMode=(word >> 8) & 3, objMode=(word >> 10) & 3, mosaic=(word >> 12) & 1,
+                     bpp=(word >> 13) & 1, shape=(word >> 14) & 3, x=(word >> 16) & 0x1FF, matrixNum=(word >> 25) & 7,
+                     hFlip=(word >> 28) & 1, vFlip=(word >> 29) & 1, size=(word >> 30) & 3,
+                     tileNum=half & 0x3FF, priority=(half >> 10) & 3, paletteNum=half >> 12)
+            sx = e['x'] - 0x200 if e['x'] & 0x100 else e['x']
+            sy = e['y'] - 0x100 if e['y'] & 0x80 else e['y']
+            hx = lambda v: '-0x%X' % -v if v < 0 else '0x%X' % v
+            parts = ['x=' + hx(sx), 'y=' + hx(sy)]
+            for f_ in ('affineMode', 'objMode', 'mosaic', 'bpp', 'matrixNum', 'hFlip', 'vFlip', 'priority'):
+                if e[f_]:
+                    parts.append('%s=%s' % (f_, OAM_CONSTANTS.get(f_, {}).get(e[f_], '0x%X' % e[f_])))
+            if (e['shape'], e['size']) not in SPRITE_SIZES:
+                return None
+            parts.append('spriteSize=' + SPRITE_SIZES[(e['shape'], e['size'])])
+            parts.append('tileNum=0x%X' % e['tileNum'])
+            parts.append('paletteNum=' + pals.get(e['paletteNum'], 'PAL_IX_%d' % e['paletteNum']))
+            if flag:
+                parts.append('unkFlag=0x%X' % flag)
+            out_.append('    %s %s' % (macro, ', '.join(parts)))
+        out_.append('')
+    return out_
+
+
 NEUTRAL = re.compile(r'^\s*($|@|//|#|\.equ\b|\.equiv\b|\.set\b|\.global\b|\.globl\b|\.section\b|\.syntax\b|\.include\s+"(asm/|sound/MPlayDef)|\.ifndef|\.ifdef|\.endif|\.else)', re.I)
 LABEL = re.compile(r'^\s*([A-Za-z_][\w]*)::?(?=\s|$|@)')
 INCL = re.compile(r'^\s*\.include\s+"([^"]+)"')
@@ -305,6 +467,10 @@ def gen_file(src, obj, name):
                 continue
             data = EU[x - 0x08000000:y - 0x08000000]
             if obj in PTR_OBJS:
+                spr = sprite_set_lines(x, y, by_addr.get(x, []))
+                if spr is not None:
+                    out.extend(('gen', l_) for l_ in spr)
+                    continue
                 buf = []
                 def flush():
                     for i in range(0, len(buf), 16):
