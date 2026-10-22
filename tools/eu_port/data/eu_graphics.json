@@ -145,6 +145,22 @@
   ],
   "size": 2048
  },
+ "0x0811ACBC": {
+  "label": "gPokedexSprites_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/pokedex/sprites_de.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 28704
+ },
+ "0x08121CDC": {
+  "label": "gPokedexSprites_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/pokedex/sprites_fr.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 29728
+ },
  "0x081290FC": {
   "label": "gPokedexSprites_Gfx_It",
   "lines": [
@@ -152,6 +168,14 @@
    ".space 0x20"
   ],
   "size": 27680
+ },
+ "0x0812FD1C": {
+  "label": "gPokedexSprites_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/pokedex/sprites_es.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 28704
  },
  "0x08136D3C": {
   "label": "gPokedexTextGlyphs_Gfx",

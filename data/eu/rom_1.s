@@ -1494,14 +1494,17 @@ gPokedexSprites_Gfx:: @ 0x0811409C
 
 
 gPokedexSprites_Gfx_De:: @ 0x0811ACBC
-	.incbin "data/eu/bin/rom_1_0811ACBC.bin"
+	.incbin "graphics/pokedex/sprites_de.4bpp"
+	.space 0x20
 gPokedexSprites_Gfx_Fr:: @ 0x08121CDC
-	.incbin "data/eu/bin/rom_1_08121CDC.bin"
+	.incbin "graphics/pokedex/sprites_fr.4bpp"
+	.space 0x20
 gPokedexSprites_Gfx_It:: @ 0x081290FC
 	.incbin "graphics/pokedex/sprites_it.4bpp"
 	.space 0x20
 gPokedexSprites_Gfx_Es:: @ 0x0812FD1C
-	.incbin "data/eu/bin/rom_1_0812FD1C.bin"
+	.incbin "graphics/pokedex/sprites_es.4bpp"
+	.space 0x20
 gPokedexTextGlyphs_Gfx:: @ 0x08136D3C
 	.incbin "graphics/pokedex/text_glyphs_eu.4bpp"
 gHighScoreScoreTable_Tilemap::

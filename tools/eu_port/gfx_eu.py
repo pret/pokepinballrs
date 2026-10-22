@@ -9,6 +9,11 @@ the US one, converted with gbagfx like the US file (palette, width, -mwidth/-mhe
 segments of the gfx-config JSON), and is kept only if gbagfx converts it back to the same
 bytes. Images may have a different number of tiles (-num_tiles is added when needed) and
 padding that holds data in the EU version is taken into the image before it.
+An EU file whose segments differ from the US ones (other sizes, more segments) is described
+by its own entry in a gfx-config JSON, e.g. graphics/pokedex/pokedex_gfx_eu.json, so make has
+its rule: the segments that are not US files are written from the blob (their size comes from
+"width"/"mwidth" and "height", in tiles, and their palette from "palette"/"palbank"), the
+others must hold the same bytes.
 
 Output:
   - tools/eu_port/data/eu_graphics.json: the directives that replace each blob, read by
@@ -130,6 +135,26 @@ def make_rules():
     return rules
 
 
+def gfx_configs():
+    """Files built from segments of a gfx-config JSON: target path -> (directory, file entry)."""
+    out = {}
+    for root, _, files in os.walk(_R + '/graphics'):
+        d = os.path.relpath(root, _R).replace('\\', '/')
+        for f in files:
+            if not f.endswith('.json'):
+                continue
+            try:
+                cfg = json.load(open(os.path.join(root, f), encoding='utf-8'))
+            except ValueError:
+                continue  # skipped by generate_graphics_rules.sh too (jq fails)
+            if not isinstance(cfg, dict) or cfg.get('kind') != 'gfx-config':
+                continue
+            for e in cfg.get('files', []):
+                if e.get('segments'):
+                    out['%s/%s.4bpp' % (d, e['gfx_filename'])] = (d, e)
+    return out
+
+
 def gfx(*args):
     r = subprocess.run([GFX] + [str(a) for a in args], capture_output=True, text=True)
     if r.returncode != 0:
@@ -235,6 +260,39 @@ def segmented(t, raw, stem, suffix_low, new_rules):
     return pngs
 
 
+def sheet(t, raw, written):
+    """EU file t with its own segments (SHEETS, rule made from the JSON): write the segment PNGs
+    that do not exist yet, check that the existing ones hold the same bytes."""
+    d, entry = SHEETS[t]
+    pos = 0
+    for seg in entry['segments']:
+        png = '%s/%s.png' % (d, seg['segfile'])
+        flags = []
+        for k in ('mwidth', 'mheight'):
+            if seg.get(k):
+                flags += ['-' + k, str(seg[k])]
+        if seg.get('oam'):
+            flags.append('-oam')
+        if os.path.exists(_R + '/' + png):
+            w, h = png_info(_R + '/' + png)[:2]
+            size = w * h // 2
+        else:
+            width = seg.get('width', seg.get('mwidth', 1))
+            size = 32 * width * seg['height']
+            gfx(_R + '/' + d + '/' + seg['palette'].rsplit('.', 1)[0] + '.pal', tmp('pal.gbapal'))
+            bank = seg.get('palbank', 0)
+            pal = open(tmp('pal.gbapal'), 'rb').read()[32 * bank:32 * bank + 32]
+            written.append(_R + '/' + png)
+            gfx(tmp('in.4bpp', raw[pos:pos + size]), _R + '/' + png, '-width', width,
+                '-palette', tmp('pal.gbapal', pal), *flags)
+        gfx(_R + '/' + png, tmp('chk.4bpp'), *flags)
+        if open(tmp('chk.4bpp'), 'rb').read() != raw[pos:pos + size]:
+            raise Unsupported('segment ' + png)
+        pos += size
+    if len(raw) - pos != 32 * entry.get('align', 0) or any(raw[pos:]):
+        raise Unsupported('segment sizes ' + t)
+
+
 def convert(g, data, stem, new_rules, written):
     """Write the EU copy of graphics file g (US path) holding data; return its .incbin path.
     Source files created are added to written."""
@@ -250,7 +308,9 @@ def convert(g, data, stem, new_rules, written):
     def mark(path):
         if not os.path.exists(_R + '/' + path):
             written.append(_R + '/' + path)
-    if ext == 'bin':
+    if out_t in SHEETS:
+        sheet(out_t, raw, written)
+    elif ext == 'bin':
         mark(out_t)
         open(_R + '/' + out_t, 'wb').write(raw)
     elif ext == 'gbapal':
@@ -498,8 +558,9 @@ def extra(lab, spec, data, rom, label_addr, new_rules, written):
 
 
 def main():
-    global RULES
+    global RULES, SHEETS
     RULES = make_rules()
+    SHEETS = gfx_configs()
     items = us_items()
     index = {}
     for i, (lab, lines) in enumerate(items):
