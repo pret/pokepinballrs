@@ -261,6 +261,17 @@ def convert(g, data, stem, new_rules, written):
         gfx(_R + f'/{stem}.pal', tmp('chk.gbapal'))
         if open(tmp('chk.gbapal'), 'rb').read() != raw:
             raise Unsupported('palette round trip ' + t)
+    elif t in RULES and len(RULES[t][1]) == 2 and RULES[t][1][0].startswith('$(GFX) $< $@') \
+            and DD_CMD.match(RULES[t][1][1]):
+        # one image followed by zero padding (an "align" in the gfx-config JSON)
+        pad = 32 * int(DD_CMD.match(RULES[t][1][1]).group(1))
+        if len(raw) <= pad or any(raw[-pad:]):
+            raise Unsupported('padding ' + t)
+        flags = parse_flags(RULES[t][1][0].split()[3:], t)
+        mark(f'{stem}.png')
+        us_size = os.path.getsize(_R + '/' + t) - pad if os.path.exists(_R + '/' + t) else None
+        flags = image(f'{base}.png', f'{stem}.png', raw[:-pad], flags, ext, us_size)
+        new_rules[out_t] = (f'{stem}.png', ['$(GFX) $< $@' + ''.join(' ' + f for f in flags), RULES[t][1][1]])
     elif t in RULES and len(RULES[t][1]) > 1:
         for png in [s for s in RULES[t][0] if s.endswith('.png')]:
             mark(png[:-4] + '_' + suffix_low + '.png')
@@ -377,6 +388,15 @@ def layout(items, k, data, addr):
     # a single item whose first piece (an image) has a different size; the trailing
     # .space/.fill/.align are kept when the data still has room for them
     pieces = parse_item(items[k][1])
+    if pieces and all(p[0] in ('inc', 'space', 'fill') and not (p[0] == 'inc' and p[1].endswith('.lz')) for p in pieces) \
+            and sum(p[0] == 'inc' for p in pieces) > 1:
+        # several images: one of them (the last that fits) has a different size
+        us = [os.path.getsize(_R + '/' + p[1]) if p[0] == 'inc' else p[1] for p in pieces]
+        for j in reversed([j for j, p in enumerate(pieces) if p[0] == 'inc']):
+            n = len(data) - (sum(us) - us[j])
+            if n > 0 and n % 32 == 0:
+                return [(k, items[k][0], [(p, n if i == j else us[i]) for i, p in enumerate(pieces)])]
+        raise Unsupported('size')
     if not pieces or pieces[0][0] != 'inc' or pieces[0][1].endswith('.lz') or any(p[0] == 'inc' for p in pieces[1:]):
         raise Unsupported('size')
     for keep in range(len(pieces), 0, -1):

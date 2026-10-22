@@ -4108,7 +4108,8 @@ gRubyCatchLightSlot2State4Bot:: @ 0x083EBE84
 @ Ruby Saver indicator
 
 gRubyCatchLightSlot2State5Bot:: @ 0x083EBEC4
-	.incbin "data/eu/bin/rom_1_083EBEC4.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_eu.4bpp"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_eu.4bpp"
 gRubyHoleLightH_Off_Fr:: @ 0x083EC0E4
 	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_h_off_fr.4bpp"
 gRubyHoleLightH_On_Fr:: @ 0x083EC124
@@ -4194,7 +4195,8 @@ gRubyCatchLightSlot1State5Bot_Fr:: @ 0x083ECE64
 gRubyCatchLightSlot2State4Bot_Fr:: @ 0x083ECEA4
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_bot_fr.4bpp"
 gRubyCatchLightSlot2State5Bot_Fr:: @ 0x083ECEE4
-	.incbin "data/eu/bin/rom_1_083ECEE4.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_fr.4bpp"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_fr.4bpp"
 gRubyHoleLightH_Off_De:: @ 0x083ED104
 	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_h_off_de.4bpp"
 gRubyHoleLightH_On_De:: @ 0x083ED144
@@ -4280,7 +4282,8 @@ gRubyCatchLightSlot1State5Bot_De:: @ 0x083EDE84
 gRubyCatchLightSlot2State4Bot_De:: @ 0x083EDEC4
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_bot_de.4bpp"
 gRubyCatchLightSlot2State5Bot_De:: @ 0x083EDF04
-	.incbin "data/eu/bin/rom_1_083EDF04.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_de.4bpp"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_de.4bpp"
 gRubyHoleLightH_Off_It:: @ 0x083EE124
 	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_h_off_it.4bpp"
 gRubyHoleLightH_On_It:: @ 0x083EE164
@@ -4366,7 +4369,8 @@ gRubyCatchLightSlot1State5Bot_It:: @ 0x083EEEA4
 gRubyCatchLightSlot2State4Bot_It:: @ 0x083EEEE4
 	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state4_bot_it.4bpp"
 gRubyCatchLightSlot2State5Bot_It:: @ 0x083EEF24
-	.incbin "data/eu/bin/rom_1_083EEF24.bin"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_it.4bpp"
+	.incbin "graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_it.4bpp"
 gRubyHoleLightH_Off_Es:: @ 0x083EF144
 	.incbin "graphics/stage/ruby/hole_lights/ruby_hole_light_h_off_es.4bpp"
 gRubyHoleLightH_On_Es:: @ 0x083EF184
@@ -4500,7 +4504,8 @@ gRubySaverRow1Tile_Off_Fr:: @ 0x083F1424
 	.incbin "graphics/stage/ruby/saver/saver_off_row1_fr.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row1_filler_fr.4bpp"
 gRubySaverRow1Tile_On_Fr:: @ 0x083F1524
-	.incbin "data/eu/bin/rom_1_083F1524.bin"
+	.incbin "graphics/stage/ruby/saver/saver_on_row1_fr.4bpp"
+	.incbin "graphics/stage/ruby/saver/saver_on_row1_filler_fr.4bpp"
 gRubySaverRow2Tile_Off_Fr:: @ 0x083F1824
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_fr.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_filler_fr.4bpp"
@@ -4524,7 +4529,8 @@ gRubySaverRow1Tile_Off_It:: @ 0x083F2444
 	.incbin "graphics/stage/ruby/saver/saver_off_row1_it.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row1_filler_it.4bpp"
 gRubySaverRow1Tile_On_It:: @ 0x083F2544
-	.incbin "data/eu/bin/rom_1_083F2544.bin"
+	.incbin "graphics/stage/ruby/saver/saver_on_row1_it.4bpp"
+	.incbin "graphics/stage/ruby/saver/saver_on_row1_filler_it.4bpp"
 gRubySaverRow2Tile_Off_It:: @ 0x083F2844
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_it.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_filler_it.4bpp"
@@ -4548,7 +4554,8 @@ gRubySaverRow1Tile_Off_Es:: @ 0x083F3464
 	.incbin "graphics/stage/ruby/saver/saver_off_row1_es.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row1_filler_es.4bpp"
 gRubySaverRow1Tile_On_Es:: @ 0x083F3564
-	.incbin "data/eu/bin/rom_1_083F3564.bin"
+	.incbin "graphics/stage/ruby/saver/saver_on_row1_es.4bpp"
+	.incbin "graphics/stage/ruby/saver/saver_on_row1_filler_es.4bpp"
 gRubySaverRow2Tile_Off_Es:: @ 0x083F3864
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_es.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row2_filler_es.4bpp"
@@ -6621,7 +6628,9 @@ gSapphirePSquareFrame3Bot:: @ 0x084A1D60
 @ Leaving as is, without carving out the 'space' and separate carved zones for the junk data.
 
 gSapphirePSquareFrame4Bot:: @ 0x084A1DA0
-	.incbin "data/eu/bin/rom_1_084A1DA0.bin"
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_eu.4bpp"
+	.space 0x220
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_filler_eu.4bpp"
 gSapphireHoleLightH_Off_Fr:: @ 0x084A2180
 	.incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_h_off_fr.4bpp"
 gSapphireHoleLightH_On_Fr:: @ 0x084A21C0
@@ -6804,7 +6813,9 @@ gSapphirePSquareFrame2Bot_Fr:: @ 0x084A3D40
 gSapphirePSquareFrame3Bot_Fr:: @ 0x084A3D80
 	.incbin "graphics/stage/sapphire/p_square/p_square_frame3_bot_fr.4bpp"
 gSapphirePSquareFrame4Bot_Fr:: @ 0x084A3DC0
-	.incbin "data/eu/bin/rom_1_084A3DC0.bin"
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_fr.4bpp"
+	.space 0x220
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_filler_fr.4bpp"
 gSapphireHoleLightH_Off_De:: @ 0x084A41A0
 	.incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_h_off_de.4bpp"
 gSapphireHoleLightH_On_De:: @ 0x084A41E0
@@ -7210,7 +7221,8 @@ gSapphireSaverRow1Tile_Off_Fr:: @ 0x084AB4C0
 	.incbin "graphics/stage/sapphire/saver/saver_off_row1_fr.4bpp"
 	.incbin "graphics/stage/sapphire/saver/saver_off_row1_filler_fr.4bpp"
 gSapphireSaverRow1Tile_On_Fr:: @ 0x084AB5C0
-	.incbin "data/eu/bin/rom_1_084AB5C0.bin"
+	.incbin "graphics/stage/sapphire/saver/saver_on_row1_fr.4bpp"
+	.incbin "graphics/stage/sapphire/saver/saver_on_row1_filler_fr.4bpp"
 gSapphireSaverRow2Tile_Off_Fr:: @ 0x084AB8C0
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_fr.4bpp"
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_filler_fr.4bpp"
@@ -7233,7 +7245,8 @@ gSapphireSaverRow1Tile_Off_It:: @ 0x084AC4E0
 	.incbin "graphics/stage/sapphire/saver/saver_off_row1_it.4bpp"
 	.incbin "graphics/stage/sapphire/saver/saver_off_row1_filler_it.4bpp"
 gSapphireSaverRow1Tile_On_It:: @ 0x084AC5E0
-	.incbin "data/eu/bin/rom_1_084AC5E0.bin"
+	.incbin "graphics/stage/sapphire/saver/saver_on_row1_it.4bpp"
+	.incbin "graphics/stage/sapphire/saver/saver_on_row1_filler_it.4bpp"
 gSapphireSaverRow2Tile_Off_It:: @ 0x084AC8E0
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_it.4bpp"
 	.incbin "graphics/stage/sapphire/saver/saver_off_row2_filler_it.4bpp"
@@ -9876,7 +9889,7 @@ gMartEvoForegroundMenuUx_Gfx:: @ 0x0872C0EC
 	.incbin "graphics/stage/main/mart_evo_menu_foreground.4bpp";
 
 gMartEvoForegroundMenuUx_Gfx_De:: @ 0x0872CA0C
-	.incbin "data/eu/bin/rom_1_0872CA0C.bin"
+	.incbin "graphics/stage/main/mart_evo_menu_foreground_de.4bpp"
 gRubyBoardShop_Gfx_En:: @ 0x0872D32C
 gRubyBoardShop_Gfx:: @ 0x0872D32C
 	.incbin "graphics/stage/ruby/shop.4bpp";

@@ -1877,6 +1877,10 @@ graphics/stage/main/evo_banner_it.4bpp: graphics/stage/main/evo_banner_it.png
 graphics/stage/main/game_over_text_es.4bpp: graphics/stage/main/game_over_text_es.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
+graphics/stage/main/mart_evo_menu_foreground_de.4bpp: graphics/stage/main/mart_evo_menu_foreground_de.png
+	$(GFX) $< $@ -mwidth 8
+	dd if=/dev/zero bs=32 count=1 >> $@ 2>/dev/null
+
 graphics/stage/main/shop_portrait_overlay_de.4bpp: graphics/stage/main/shop_portrait_overlay_de.png
 	$(GFX) $< $@ -mwidth 6 -mheight 4 -oam
 
@@ -1956,6 +1960,18 @@ graphics/stage/rayquaza/rayquaza_bonus_clear_it.4bpp: graphics/stage/rayquaza/ra
 	cat graphics/stage/rayquaza/rayquaza_bonus_clear_it_rayquaza_bonus_clear_top.4bpp graphics/stage/rayquaza/rayquaza_bonus_clear_it_rayquaza_bonus_clear_score_region.4bpp graphics/stage/rayquaza/rayquaza_bonus_clear_it_rayquaza_bonus_clear_score_right_cap.4bpp graphics/stage/rayquaza/rayquaza_bonus_clear_it_rayquaza_bonus_clear_score_digits.4bpp > $@; \
 	dd if=/dev/zero bs=32 count=12 >> $@ 2>/dev/null
 
+graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_de.4bpp: graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_de.png
+	$(GFX) $< $@ -num_tiles 15
+
+graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_eu.4bpp: graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_eu.png
+	$(GFX) $< $@ -num_tiles 15
+
+graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_fr.4bpp: graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_fr.png
+	$(GFX) $< $@ -num_tiles 15
+
+graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_it.4bpp: graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_it.png
+	$(GFX) $< $@ -num_tiles 15
+
 graphics/stage/ruby/ramp_prize_deites.4bpp: graphics/stage/ruby/ramp_prize_deites.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
@@ -2033,6 +2049,12 @@ graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_it.4bpp: graph
 
 graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_de.4bpp: graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_de.png
 	$(GFX) $< $@ -num_tiles 3
+
+graphics/stage/sapphire/saver/saver_on_row1_filler_fr.4bpp: graphics/stage/sapphire/saver/saver_on_row1_filler_fr.png
+	$(GFX) $< $@ -num_tiles 17
+
+graphics/stage/sapphire/saver/saver_on_row1_filler_it.4bpp: graphics/stage/sapphire/saver/saver_on_row1_filler_it.png
+	$(GFX) $< $@ -num_tiles 17
 
 graphics/stage/sapphire/saver/saver_on_row2_fr.4bpp: graphics/stage/sapphire/saver/saver_on_row2_fr.png
 	$(GFX) $< $@ -num_tiles 7

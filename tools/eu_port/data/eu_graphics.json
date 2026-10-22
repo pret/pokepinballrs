@@ -2262,6 +2262,14 @@
   ],
   "size": 64
  },
+ "0x083EBEC4": {
+  "label": "gRubyCatchLightSlot2State5Bot",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_eu.4bpp\"",
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_eu.4bpp\""
+  ],
+  "size": 544
+ },
  "0x083EC0E4": {
   "label": "gRubyHoleLightH_Off_Fr",
   "lines": [
@@ -2520,6 +2528,14 @@
    ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state4_bot_fr.4bpp\""
   ],
   "size": 64
+ },
+ "0x083ECEE4": {
+  "label": "gRubyCatchLightSlot2State5Bot_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_fr.4bpp\"",
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_fr.4bpp\""
+  ],
+  "size": 544
  },
  "0x083ED104": {
   "label": "gRubyHoleLightH_Off_De",
@@ -2780,6 +2796,14 @@
   ],
   "size": 64
  },
+ "0x083EDF04": {
+  "label": "gRubyCatchLightSlot2State5Bot_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_de.4bpp\"",
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_de.4bpp\""
+  ],
+  "size": 544
+ },
  "0x083EE124": {
   "label": "gRubyHoleLightH_Off_It",
   "lines": [
@@ -3038,6 +3062,14 @@
    ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state4_bot_it.4bpp\""
   ],
   "size": 64
+ },
+ "0x083EEF24": {
+  "label": "gRubyCatchLightSlot2State5Bot_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_it.4bpp\"",
+   ".incbin \"graphics/stage/ruby/catch_lights/catch_light_slot2_state5_bot_filler_it.4bpp\""
+  ],
+  "size": 544
  },
  "0x083EF144": {
   "label": "gRubyHoleLightH_Off_Es",
@@ -3330,6 +3362,14 @@
   ],
   "size": 256
  },
+ "0x083F1524": {
+  "label": "gRubySaverRow1Tile_On_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row1_fr.4bpp\"",
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row1_filler_fr.4bpp\""
+  ],
+  "size": 768
+ },
  "0x083F1824": {
   "label": "gRubySaverRow2Tile_Off_Fr",
   "lines": [
@@ -3387,6 +3427,14 @@
   ],
   "size": 256
  },
+ "0x083F2544": {
+  "label": "gRubySaverRow1Tile_On_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row1_it.4bpp\"",
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row1_filler_it.4bpp\""
+  ],
+  "size": 768
+ },
  "0x083F2844": {
   "label": "gRubySaverRow2Tile_Off_It",
   "lines": [
@@ -3443,6 +3491,14 @@
    ".incbin \"graphics/stage/ruby/saver/saver_off_row1_filler_es.4bpp\""
   ],
   "size": 256
+ },
+ "0x083F3564": {
+  "label": "gRubySaverRow1Tile_On_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row1_es.4bpp\"",
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row1_filler_es.4bpp\""
+  ],
+  "size": 768
  },
  "0x083F3864": {
   "label": "gRubySaverRow2Tile_Off_Es",
@@ -6214,6 +6270,15 @@
   ],
   "size": 192
  },
+ "0x084A1DA0": {
+  "label": "gSapphirePSquareFrame4Bot",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame4_bot_eu.4bpp\"",
+   ".space 0x220",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame4_bot_filler_eu.4bpp\""
+  ],
+  "size": 992
+ },
  "0x084A2180": {
   "label": "gSapphireHoleLightH_Off_Fr",
   "lines": [
@@ -6619,6 +6684,15 @@
    ".incbin \"graphics/stage/sapphire/p_square/p_square_frame3_bot_fr.4bpp\""
   ],
   "size": 64
+ },
+ "0x084A3DC0": {
+  "label": "gSapphirePSquareFrame4Bot_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame4_bot_fr.4bpp\"",
+   ".space 0x220",
+   ".incbin \"graphics/stage/sapphire/p_square/p_square_frame4_bot_filler_fr.4bpp\""
+  ],
+  "size": 992
  },
  "0x084A41A0": {
   "label": "gSapphireHoleLightH_Off_De",
@@ -7550,6 +7624,14 @@
   ],
   "size": 256
  },
+ "0x084AB5C0": {
+  "label": "gSapphireSaverRow1Tile_On_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/saver/saver_on_row1_fr.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/saver/saver_on_row1_filler_fr.4bpp\""
+  ],
+  "size": 768
+ },
  "0x084AB8C0": {
   "label": "gSapphireSaverRow2Tile_Off_Fr",
   "lines": [
@@ -7605,6 +7687,14 @@
    ".incbin \"graphics/stage/sapphire/saver/saver_off_row1_filler_it.4bpp\""
   ],
   "size": 256
+ },
+ "0x084AC5E0": {
+  "label": "gSapphireSaverRow1Tile_On_It",
+  "lines": [
+   ".incbin \"graphics/stage/sapphire/saver/saver_on_row1_it.4bpp\"",
+   ".incbin \"graphics/stage/sapphire/saver/saver_on_row1_filler_it.4bpp\""
+  ],
+  "size": 768
  },
  "0x084AC8E0": {
   "label": "gSapphireSaverRow2Tile_Off_It",
@@ -9607,6 +9697,13 @@
    ".incbin \"graphics/stage/sapphire/zigzagoon_press_button_indicator_eu.4bpp\""
   ],
   "size": 4096
+ },
+ "0x0872CA0C": {
+  "label": "gMartEvoForegroundMenuUx_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/main/mart_evo_menu_foreground_de.4bpp\""
+  ],
+  "size": 2336
  },
  "0x08730A2C": {
   "label": "gRubyBoardShop_Gfx_Fr",
