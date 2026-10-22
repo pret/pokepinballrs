@@ -255,30 +255,46 @@ def us_sprite_set(n):
 
 def parses_as_sprite_set(a, b):
     """Entry size (8 or 6) if EU[a:b] is exactly one sprite set (count, then count valid OAM
-    entries, with or without the 2-byte flag), else 0."""
-    if b - a < 8:
+    entries, with or without the 2-byte flag) or a run of sprite sets with entries of the same
+    size (like the data after the gPackedOamDup_ sprite sets of the US version), else 0."""
+    if b - a < 8 or any(a <= p < b for p in PTRS):
         return 0
-    count = struct.unpack_from('<H', EU, a - 0x08000000)[0]
-    if count == 0 or count > 128:
-        return 0
-    for size in (8, 6):
-        if 2 + size * count != b - a:
-            continue
-        for k in range(count):
-            p = a + 2 + size * k - 0x08000000
-            word = struct.unpack_from('<I', EU, p)[0]
-            if (word >> 14) & 3 == 3 or (size == 8 and struct.unpack_from('<H', EU, p + 6)[0] > 1):
+    def sets(size):
+        n, pos = 0, a
+        while pos < b:
+            count = struct.unpack_from('<H', EU, pos - 0x08000000)[0] if pos + 2 <= b else 0
+            if count == 0 or count > 128 or pos + 2 + size * count > b:
                 return 0
-        return size if not any(a <= p < b for p in PTRS) else 0
-    return 0
+            for k in range(count):
+                p = pos + 2 + size * k - 0x08000000
+                word = struct.unpack_from('<I', EU, p)[0]
+                if (word >> 14) & 3 == 3 or (size == 8 and struct.unpack_from('<H', EU, p + 6)[0] > 1):
+                    return 0
+            n, pos = n + 1, pos + 2 + size * count
+        return n
+    found = {size: sets(size) for size in (8, 6)}
+    for size in (8, 6):
+        if found[size] == 1:
+            return size
+    # a run: entries of 6 bytes when both sizes parse, as in the US data
+    return 6 if found[6] else 8 if found[8] else 0
 
 
 # gUnknown_ blocks of rom_2 that are sprite sets: in a run of at least two consecutive pointers
 # (a table in the EU-only data) to sprite sets, known ones or blocks that parse as one.
 NAME_AT = {n: a for a, n in LABEL_AT.items()}
 SPRITE_TARGETS = {}
+PTR_AT = sorted(PTRS)
+
+
+def data_end(a, b):
+    """End of the data at a before b: the first pointer of the range, or b."""
+    i_ = bisect.bisect_left(PTR_AT, a)
+    return min(b, PTR_AT[i_]) if i_ < len(PTR_AT) else b
+
+
 def _sprite_runs():
-    words = sorted(PTRS)
+    words = PTR_AT
     run = []
     def flush():
         good = []
@@ -290,7 +306,7 @@ def _sprite_runs():
                 if us_sprite_set(n):
                     size = us_sprite_set(n)[0]
                 elif n.startswith('gUnknown_'):
-                    size = parses_as_sprite_set(a, extent(a))
+                    size = parses_as_sprite_set(a, data_end(a, extent(a)))
             if size:
                 good.append((n, size))
                 continue
@@ -308,15 +324,16 @@ print('EU-only sprite sets found from pointer tables:', len(SPRITE_TARGETS))
 
 
 def sprite_set_lines(x, y, labels):
-    """Lines of the sprite set(s) in EU[x:y] if one of the labels names a US sprite set or an
-    EU-only one found in a pointer table."""
+    """Lines of the sprite set(s) at x if one of the labels names a US sprite set or an EU-only
+    one found in a pointer table, and where they end (before y and the first pointer)."""
     spec = None
     for n in labels:
         if us_sprite_set(n):
             spec = us_sprite_set(n)
         elif n in SPRITE_TARGETS:
             spec = (SPRITE_TARGETS[n], {})
-    if spec is None or any(x <= p < y for p in PTRS):
+    y = data_end(x, y)
+    if spec is None or y == x:
         return None
     size, pals = spec
     macro = 'packed_sprite_oaml' if size == 8 else 'packed_sprite_oam'
@@ -353,6 +370,51 @@ def sprite_set_lines(x, y, labels):
                 parts.append('unkFlag=0x%X' % flag)
             out_.append('    %s %s' % (macro, ', '.join(parts)))
         out_.append('')
+    return out_, y
+
+
+# Element types of the data declared in the C code (extern const <type> name[...] or
+# EXTERN_LANG*(<type>, name, dims) for the per-language copies): the EU-only tables of rom_2
+# with a scalar element type are written with the directive of that size.
+C_TYPES = {}
+for root_, _, files_ in list(os.walk(REPO + '/src')) + list(os.walk(REPO + '/include')):
+    for f_ in files_:
+        if f_.endswith(('.c', '.h')):
+            txt_ = open(os.path.join(root_, f_), encoding='utf-8', errors='replace').read()
+            for m_ in re.finditer(r'\bextern\s+const\s+(?:struct\s+)?(\w+)\s+(\w+)\s*\[', txt_):
+                C_TYPES.setdefault(m_.group(2), m_.group(1))
+            for m_ in re.finditer(r'\bEXTERN_LANG\w*\(\s*(?:const\s+)?(?:struct\s+)?(\w+)\s*,\s*(\w+)\s*,', txt_):
+                C_TYPES.setdefault(m_.group(2), m_.group(1))
+ELEMENTS = {'u8': ('.byte', 'B'), 's8': ('.byte', 'b'), 'u16': ('.2byte', 'H'), 's16': ('.2byte', 'h'),
+            'u32': ('.4byte', 'I'), 's32': ('.4byte', 'i'), 'Vector16': ('.2byte', 'h'), 'Vector32': ('.4byte', 'i')}
+# tables written with character literals in the US source, like gCaughtTextChars
+CHAR_TABLES = set(re.findall(r"^(\w+)::.*\n\s*\.2?byte\s+'", open(REPO + '/data/rom_2.s', encoding='utf-8').read(), re.M))
+
+
+def typed_lines(x, y, labels):
+    """Lines of the data at x..y if one of the labels has a scalar element type in the C code."""
+    for n in labels:
+        m_ = SPRITE_SUF.match(n)
+        base = m_.group(1) if m_ else n
+        t_ = C_TYPES.get(n) or C_TYPES.get(base)
+        if t_ in ELEMENTS:
+            break
+    else:
+        return None
+    directive, fmt = ELEMENTS[t_]
+    size = struct.calcsize('<' + fmt)
+    n = (y - x) // size
+    if not n or any(x <= p < y for p in PTRS):
+        return None
+    vals = struct.unpack_from('<%d%s' % (n, fmt), EU, x - 0x08000000)
+    per = 16 // size
+    show = str
+    if base in CHAR_TABLES and all(0x20 <= v < 0x7F and chr(v) not in "'\\" for v in vals):
+        show = lambda v: "'%s'" % chr(v)
+    out_ = ['\t%s %s' % (directive, ', '.join(show(v) for v in vals[i:i + per])) for i in range(0, n, per)]
+    rest = EU[x + n * size - 0x08000000:y - 0x08000000]
+    if rest:
+        out_.append('\t.byte ' + ', '.join('0x%02X' % c for c in rest))
     return out_
 
 
@@ -475,16 +537,21 @@ def gen_file(src, obj, name):
                 continue
             data = EU[x - 0x08000000:y - 0x08000000]
             if obj in PTR_OBJS:
+                q = x
                 spr = sprite_set_lines(x, y, by_addr.get(x, []))
                 if spr is not None:
-                    out.extend(('gen', l_) for l_ in spr)
-                    continue
+                    out.extend(('gen', l_) for l_ in spr[0])
+                    q = spr[1]
+                else:
+                    typed = typed_lines(x, y, by_addr.get(x, []))
+                    if typed is not None:
+                        out.extend(('gen', l_) for l_ in typed)
+                        continue
                 buf = []
                 def flush():
                     for i in range(0, len(buf), 16):
                         out.append(('gen', '\t.byte ' + ', '.join('0x%02X' % c for c in buf[i:i + 16])))
                     buf.clear()
-                q = x
                 while q < y:
                     if q in PTRS and q + 4 <= y:
                         flush(); out.append(('gen', f'\t.4byte {PTRS[q]}')); q += 4
