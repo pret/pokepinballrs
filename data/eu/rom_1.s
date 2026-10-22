@@ -1413,13 +1413,13 @@ gEReaderOverlay_Tilemap:: @ 0x080F359C
 gEReaderBackground_Gfx:: @ 0x080F3D9C
 	.incbin "graphics/ereader/background_eu.4bpp"
 gEReaderBackgroundText_Gfx_Fr:: @ 0x080F559C
-	.incbin "data/eu/bin/rom_1_080F559C.bin"
+	.incbin "graphics/ereader/background_text_fr.4bpp"
 gEReaderBackgroundText_Gfx_It:: @ 0x080F5D9C
-	.incbin "data/eu/bin/rom_1_080F5D9C.bin"
+	.incbin "graphics/ereader/background_text_it.4bpp"
 gEReaderBackgroundText_Gfx_De:: @ 0x080F659C
-	.incbin "data/eu/bin/rom_1_080F659C.bin"
+	.incbin "graphics/ereader/background_text_de.4bpp"
 gEReaderBackgroundText_Gfx_Es:: @ 0x080F6D9C
-	.incbin "data/eu/bin/rom_1_080F6D9C.bin"
+	.incbin "graphics/ereader/background_text_es.4bpp"
 gEReaderBackground_Pals:: @ 0x080F75BC
 	.incbin "graphics/ereader/background.gbapal"
 
@@ -1556,13 +1556,13 @@ gHighScoreDialogs_Gfx_Es:: @ 0x0815D61C
 	.incbin "graphics/high_score/dialogs_es.4bpp"
 	.space 0x20
 gHighScoreTitle_Gfx_Fr:: @ 0x08161A3C
-	.incbin "data/eu/bin/rom_1_08161A3C.bin"
-gHighScoreTitle_Gfx_It:: @ 0x08161B9C
-	.incbin "data/eu/bin/rom_1_08161B9C.bin"
-gHighScoreTitle_Gfx_De:: @ 0x08162A3C
-	.incbin "data/eu/bin/rom_1_08162A3C.bin"
-gHighScoreTitle_Gfx_Es:: @ 0x08162B9C
-	.incbin "data/eu/bin/rom_1_08162B9C.bin"
+	.incbin "graphics/high_score/rank_numbers_frdeites.4bpp"
+	.global gHighScoreTitle_Gfx_It
+	.set gHighScoreTitle_Gfx_It, gHighScoreTitle_Gfx_Fr + 0x160
+	.global gHighScoreTitle_Gfx_De
+	.set gHighScoreTitle_Gfx_De, gHighScoreTitle_Gfx_Fr + 0x1000
+	.global gHighScoreTitle_Gfx_Es
+	.set gHighScoreTitle_Gfx_Es, gHighScoreTitle_Gfx_Fr + 0x1160
 gFieldSelectBG0Tilemap:: @ 0x08163A5C
 	.incbin "graphics/field_select/field_select_bg_tilemap.bin"
 
@@ -1578,17 +1578,20 @@ gFieldSelectWindow_Gfx_Fr:: @ 0x08166A9C
 	.incbin "graphics/field_select/window_tiles_fr.4bpp"
 	.space 0x20
 gBonusFieldSelectWindow_Gfx_Fr:: @ 0x08167EBC
-	.incbin "data/eu/bin/rom_1_08167EBC.bin"
+	.incbin "graphics/field_select/window_tiles_bonus_fr.4bpp"
+	.space 0x20
 gFieldSelectWindow_Gfx_It:: @ 0x081692DC
 	.incbin "graphics/field_select/window_tiles_it.4bpp"
 	.space 0x20
 gBonusFieldSelectWindow_Gfx_It:: @ 0x0816A6FC
-	.incbin "data/eu/bin/rom_1_0816A6FC.bin"
+	.incbin "graphics/field_select/window_tiles_bonus_it.4bpp"
+	.space 0x20
 gFieldSelectWindow_Gfx_Es:: @ 0x0816BB1C
 	.incbin "graphics/field_select/window_tiles_es.4bpp"
 	.space 0x20
 gBonusFieldSelectWindow_Gfx_Es:: @ 0x0816CF3C
-	.incbin "data/eu/bin/rom_1_0816CF3C.bin"
+	.incbin "graphics/field_select/window_tiles_bonus_es.4bpp"
+	.space 0x20
 gFieldSelectFrameShadowTilemap_En:: @ 0x0816E35C
 	.incbin "graphics/field_select/frame_shadow_tilemap_en.bin"
 gFieldSelectMiniFields_Gfx:: @ 0x0816EB5C
@@ -1826,19 +1829,19 @@ gIntroScene9BallFlightall_Gfx:: @ 0x081F423C
 
 
 gLanguageSelectBg0_Tilemap:: @ 0x081FC87C
-	.incbin "data/eu/bin/rom_1_081FC87C.bin"
+	.incbin "graphics/language_select/bg0_tilemap.bin"
 gLanguageSelectBg1_Tilemap:: @ 0x081FD07C
-	.incbin "data/eu/bin/rom_1_081FD07C.bin"
+	.incbin "graphics/language_select/bg1_tilemap.bin"
 gLanguageSelectSprite_Gfx:: @ 0x081FD87C
-	.incbin "data/eu/bin/rom_1_081FD87C.bin"
+	.incbin "graphics/language_select/sprites.4bpp"
 gLanguageSelectSprite_Pals:: @ 0x081FE89C
-	.incbin "data/eu/bin/rom_1_081FE89C.bin"
+	.incbin "graphics/language_select/sprites.gbapal"
 gLanguageSelect_Gfx:: @ 0x081FEA9C
-	.incbin "data/eu/bin/rom_1_081FEA9C.bin"
+	.incbin "graphics/language_select/bg.4bpp"
 gLanguageSelectTitle_Gfx:: @ 0x08200A9C
-	.incbin "data/eu/bin/rom_1_08200A9C.bin"
+	.incbin "graphics/language_select/titles.4bpp"
 gLanguageSelectBg_Pals:: @ 0x08202ABC
-	.incbin "data/eu/bin/rom_1_08202ABC.bin"
+	.incbin "graphics/language_select/bg.gbapal"
 gTitlescreenBgTilemap_En:: @ 0x08202CBC
 	.incbin "graphics/titlescreen/titlescreen_bg_tilemap_en.bin"
 gTitlescreenBg_Pals:: @ 0x082034BC
@@ -9987,15 +9990,15 @@ gPauseMenuText_Gfx:: @ 0x0877D22C
 	.incbin "graphics/stage/main/pause_menu_text.4bpp";
 
 gFieldIntroText_Gfx_En:: @ 0x0877D3CC
-	.incbin "data/eu/bin/rom_1_0877D3CC.bin"
+	.incbin "graphics/stage/misc/field_intro_text_en.4bpp"
 gFieldIntroText_Gfx_Fr:: @ 0x0877D50C
-	.incbin "data/eu/bin/rom_1_0877D50C.bin"
+	.incbin "graphics/stage/misc/field_intro_text_fr.4bpp"
 gFieldIntroText_Gfx_De:: @ 0x0877D64C
-	.incbin "data/eu/bin/rom_1_0877D64C.bin"
+	.incbin "graphics/stage/misc/field_intro_text_de.4bpp"
 gFieldIntroText_Gfx_It:: @ 0x0877D78C
-	.incbin "data/eu/bin/rom_1_0877D78C.bin"
+	.incbin "graphics/stage/misc/field_intro_text_it.4bpp"
 gFieldIntroText_Gfx_Es:: @ 0x0877D8CC
-	.incbin "data/eu/bin/rom_1_0877D8CC.bin"
+	.incbin "graphics/stage/misc/field_intro_text_es.4bpp"
 gDusclopsBoardDuskull_Gfx:: @ 0x0877DA0C
 	.incbin "graphics/stage/dusclops/duskull.4bpp";
 

@@ -33,6 +33,44 @@ SUF = re.compile(r'^(.*?)_((?:En|Fr|De|It|Es)+)$')
 INC = re.compile(r'^\.incbin\s+"(graphics/[^"]+\.(4bpp|8bpp|gbapal|bin)(\.lz)?)"$')
 SPACE = re.compile(r'^\.space\s+(0x[0-9A-Fa-f]+|\d+)$')
 ALLOWED_FLAGS = {'-mwidth': 1, '-mheight': 1, '-oam': 0, '-oamshape': 1, '-num_tiles': 1}
+
+# EU-only symbols with the layout of a US item: base name -> (US label, infix of the files)
+ALIASES = {
+    # the window of the bonus field select, in the languages that do not use gFieldSelectWindow_Gfx
+    'gBonusFieldSelectWindow_Gfx': ('gFieldSelectWindow_Gfx', 'bonus'),
+}
+
+# EU-only graphics with no US counterpart: label -> output file (.png for 4bpp tiles, .pal for
+# a palette, .bin as is), width of the image in tiles, palette of the image (a palette label
+# and slot in the EU ROM, or a US PNG), and for data that several labels point into, its size
+# and the other labels (defined with .set at their offset).
+LANG_NAMES = ['En', 'Fr', 'De', 'It', 'Es']
+EXTRA = {
+    'gLanguageSelectBg0_Tilemap': dict(file='graphics/language_select/bg0_tilemap.bin'),
+    'gLanguageSelectBg1_Tilemap': dict(file='graphics/language_select/bg1_tilemap.bin'),
+    'gLanguageSelectSprite_Gfx': dict(file='graphics/language_select/sprites.png', width=16,
+                                      pal=('gLanguageSelectSprite_Pals', 0)),
+    'gLanguageSelectSprite_Pals': dict(file='graphics/language_select/sprites.pal'),
+    'gLanguageSelect_Gfx': dict(file='graphics/language_select/bg.png', width=32, pal=('gLanguageSelectBg_Pals', 0)),
+    # titles of the screen in French, German, Italian and Spanish
+    'gLanguageSelectTitle_Gfx': dict(file='graphics/language_select/titles.png', width=32,
+                                     pal=('gLanguageSelectBg_Pals', 0)),
+    'gLanguageSelectBg_Pals': dict(file='graphics/language_select/bg.pal'),
+    # one sheet with the ranks (1er, 1°, 1. ...) of four languages (11x4 tiles each), copied with
+    # CopyBgTilesRect
+    'gHighScoreTitle_Gfx_Fr': dict(file='graphics/high_score/rank_numbers_frdeites.png', width=32,
+                                   pal='graphics/high_score/bg_eu.pal', size=0x2020,
+                                   sets={'gHighScoreTitle_Gfx_It': 0x160, 'gHighScoreTitle_Gfx_De': 0x1000,
+                                         'gHighScoreTitle_Gfx_Es': 0x1160}),
+}
+for _l in LANG_NAMES:
+    # "text" of the board intro sprites (in the US version it is part of the intro sprites)
+    EXTRA['gFieldIntroText_Gfx_' + _l] = dict(file='graphics/stage/misc/field_intro_text_%s.png' % _l.lower(),
+                                             width=10, pal='graphics/stage/ruby/intro_sprite_location.png')
+    if _l != 'En':
+        # text drawn over the e-Reader background (the English one is part of the background)
+        EXTRA['gEReaderBackgroundText_Gfx_' + _l] = dict(file='graphics/ereader/background_text_%s.png' % _l.lower(),
+                                                        width=32, pal='graphics/ereader/background.png')
 TMP = tempfile.mkdtemp(prefix='gfx_eu_')
 
 
@@ -347,7 +385,7 @@ def layout(items, k, data, addr):
     raise Unsupported('size')
 
 
-def build(plan, data, suffix, known, rules_here, written, made):
+def build(plan, data, suffix, known, rules_here, written, made, stem_suffix=None):
     """Convert the pieces of a layout; return the directive lines."""
     out_lines = []
     made_here = set()
@@ -381,7 +419,7 @@ def build(plan, data, suffix, known, rules_here, written, made):
             g = pc[1]
             t = g[:-3] if g.endswith('.lz') else g
             ext = t.rsplit('.', 1)[1]
-            stem = t.rsplit('.', 1)[0] + '_' + (suffix.lower() if suffix else 'eu')
+            stem = t.rsplit('.', 1)[0] + '_' + (stem_suffix or (suffix.lower() if suffix else 'eu'))
             key = stem + '.' + ext
             if key in made or key in made_here:
                 raise Unsupported('duplicate ' + key)
@@ -389,6 +427,49 @@ def build(plan, data, suffix, known, rules_here, written, made):
             made_here.add(key)
             last_img = (len(out_lines) - 1, g, stem, pos - size, pos) if ext in ('4bpp', '8bpp') and not g.endswith('.lz') else None
     return out_lines, made_here
+
+
+def extra(lab, spec, data, rom, label_addr, new_rules, written):
+    """Write an EU-only graphic described in EXTRA; return its directive lines."""
+    f = spec['file']
+    stem, ext = f.rsplit('.', 1)
+    os.makedirs(os.path.dirname(_R + '/' + f), exist_ok=True)
+    if not os.path.exists(_R + '/' + f):
+        written.append(_R + '/' + f)
+    if ext == 'bin':
+        open(_R + '/' + f, 'wb').write(data)
+        lines = ['.incbin "%s"' % f]
+    elif ext == 'pal':
+        gfx(tmp('in.gbapal', data), _R + '/' + f)
+        gfx(_R + '/' + f, tmp('chk.gbapal'))
+        if open(tmp('chk.gbapal'), 'rb').read() != data:
+            raise Unsupported('palette round trip ' + f)
+        lines = ['.incbin "%s.gbapal"' % stem]
+    else:
+        w = spec['width']
+        if len(data) % 32:
+            raise Unsupported('size ' + f)
+        ntiles = len(data) // 32
+        rows = -(-ntiles // w)
+        flags = ['-num_tiles', str(ntiles)] if rows * w != ntiles else []
+        inraw = data + bytes(rows * w * 32 - len(data))
+        pal = spec['pal']
+        if isinstance(pal, tuple):
+            a = label_addr[pal[0]] - 0x08000000 + 32 * pal[1]
+            pal_data = rom[a:a + 32]
+        else:
+            gfx(_R + '/' + pal, tmp('pal.gbapal'))
+            pal_data = open(tmp('pal.gbapal'), 'rb').read()[:32]
+        gfx(tmp('in.4bpp', inraw), _R + '/' + f, '-width', w, '-palette', tmp('pal.gbapal', pal_data))
+        gfx(_R + '/' + f, tmp('chk.4bpp'), *flags)
+        if open(tmp('chk.4bpp'), 'rb').read() != data:
+            raise Unsupported('round trip ' + f)
+        if flags:
+            new_rules[stem + '.4bpp'] = (f, ['$(GFX) $< $@ ' + ' '.join(flags)])
+        lines = ['.incbin "%s.4bpp"' % stem]
+    for name, off in sorted(spec.get('sets', {}).items(), key=lambda x: x[1]):
+        lines += ['.global %s' % name, '.set %s, %s + 0x%X' % (name, lab, off)]
+    return lines
 
 
 def main():
@@ -410,25 +491,47 @@ def main():
     blobs = {}
     for addr, data, labs in eu_blobs():
         blobs.setdefault(addr, (data, labs))
+    rom = open(_BASEROM, 'rb').read()
+    label_addr = json.load(open(_W + '/eu_data_labels.json')) if os.path.exists(_W + '/eu_data_labels.json') else {}
+    covered = 0  # end of the data converted with an EXTRA entry that spans several blobs
     for addr, (data, labs) in sorted(blobs.items()):
+        if addr < covered:
+            continue
         lab = labs[0] if labs else None
         m = SUF.match(lab or '')
         base, suffix = (m.group(1), m.group(2)) if m else (lab, None)
-        # Only blobs whose label names a US item: matching others by size alone (for example
-        # continuing the US items of the previous blob) can pick the wrong files.
-        if base in index:
-            start = index[base]
-        else:
-            why['no US counterpart'] += 1
-            if VERBOSE:
-                print('skip 0x%08X %s no US counterpart' % (addr, lab))
-            continue
         written = []
         rules_here = {}
         try:
+            if lab in EXTRA:
+                spec = EXTRA[lab]
+                if 'size' in spec:
+                    data = rom[addr - 0x08000000:addr - 0x08000000 + spec['size']]
+                    covered = addr + spec['size']
+                try:
+                    out_lines = extra(lab, spec, data, rom, label_addr, rules_here, written)
+                except RuntimeError as e:
+                    raise Unsupported('gbagfx: ' + str(e))
+                new_rules.update(rules_here)
+                result['0x%08X' % addr] = dict(size=len(data), label=lab, lines=out_lines)
+                why['converted'] += 1
+                continue
+            # Only blobs whose label names a US item: matching others by size alone (for example
+            # continuing the US items of the previous blob) can pick the wrong files.
+            stem_suffix = None
+            if base in index:
+                start = index[base]
+            elif base in ALIASES and ALIASES[base][0] in index:
+                start = index[ALIASES[base][0]]
+                stem_suffix = ALIASES[base][1] + ('_' + suffix.lower() if suffix else '')
+            else:
+                why['no US counterpart'] += 1
+                if VERBOSE:
+                    print('skip 0x%08X %s no US counterpart' % (addr, lab))
+                continue
             plan = layout(items, start, data, addr)
             try:
-                out_lines, made_here = build(plan, data, suffix, known, rules_here, written, made)
+                out_lines, made_here = build(plan, data, suffix, known, rules_here, written, made, stem_suffix)
             except RuntimeError as e:
                 raise Unsupported('gbagfx: ' + str(e))
             made |= made_here

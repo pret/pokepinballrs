@@ -64,6 +64,9 @@ graphics/board_pickups/evo_item_ex_it.4bpp: graphics/board_pickups/evo_item_appe
 	cat graphics/board_pickups/evo_item_ex_it_evo_item_appear_1.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_2.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_3.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_4.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_5.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_6.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_1.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_7.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_2.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_sparkle_1.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_3.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_sparkle_2.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_4.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_sparkle_3.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_appear_8.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_turn_5.4bpp graphics/board_pickups/evo_item_ex_it_evo_item_ex_collected_fade.4bpp > $@; \
 	dd if=/dev/zero bs=32 count=1 >> $@ 2>/dev/null
 
+graphics/ereader/background_text_es.4bpp: graphics/ereader/background_text_es.png
+	$(GFX) $< $@ -num_tiles 65
+
 graphics/field_select/sprites_de.4bpp: graphics/field_select/sprites_de.png
 	$(GFX) $< $@ -num_tiles 513
 
@@ -75,6 +78,15 @@ graphics/field_select/sprites_fr.4bpp: graphics/field_select/sprites_fr.png
 
 graphics/field_select/sprites_it.4bpp: graphics/field_select/sprites_it.png
 	$(GFX) $< $@ -num_tiles 513
+
+graphics/high_score/rank_numbers_frdeites.4bpp: graphics/high_score/rank_numbers_frdeites.png
+	$(GFX) $< $@ -num_tiles 257
+
+graphics/language_select/sprites.4bpp: graphics/language_select/sprites.png
+	$(GFX) $< $@ -num_tiles 129
+
+graphics/language_select/titles.4bpp: graphics/language_select/titles.png
+	$(GFX) $< $@ -num_tiles 257
 
 graphics/mon_portraits/207_portrait_eu.4bpp: graphics/mon_portraits/207_portrait_eu.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2

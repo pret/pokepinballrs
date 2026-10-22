@@ -279,8 +279,11 @@ def gen_file(src, obj, name):
         skip_to = None
         for x, y in zip(pts, pts[1:] + [None]):
             if skip_to is not None and x < skip_to:
-                if by_addr.get(x):
-                    raise Exception('label %s inside %s' % (by_addr[x], skip_to_path))
+                for n in by_addr.get(x, []):
+                    # labels inside must be defined by the source that replaces the range
+                    if n not in skip_defined:
+                        raise Exception('label %s inside %s' % (n, skip_to_path))
+                    ALL_LABELS[n] = x
                 continue
             for n in sorted(by_addr.get(x, [])):
                 if n not in used_labels and x < b:
@@ -293,6 +296,10 @@ def gen_file(src, obj, name):
                 for l_ in p:
                     out.append(('gen', l_ if l_.endswith('::') else '\t' + l_))
                 skip_to, skip_to_path = e, p[0]
+                text_ = '\n'.join(p)
+                for inc_ in re.findall(r'\.include "([^"]+)"', text_):
+                    text_ += '\n' + open(REPO + '/' + inc_, encoding='utf-8').read()
+                skip_defined = set(re.findall(r'^\s*(\w+)::', text_, re.M) + re.findall(r'\.set\s+(\w+)', text_))
                 if obj not in PTR_OBJS:
                     BLOBS.append(dict(addr='0x%08X' % s, size=e - s, labels=sorted(by_addr.get(s, []))))
                 continue

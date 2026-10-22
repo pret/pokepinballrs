@@ -27,6 +27,34 @@
   ],
   "size": 6144
  },
+ "0x080F559C": {
+  "label": "gEReaderBackgroundText_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/ereader/background_text_fr.4bpp\""
+  ],
+  "size": 2048
+ },
+ "0x080F5D9C": {
+  "label": "gEReaderBackgroundText_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/ereader/background_text_it.4bpp\""
+  ],
+  "size": 2048
+ },
+ "0x080F659C": {
+  "label": "gEReaderBackgroundText_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/ereader/background_text_de.4bpp\""
+  ],
+  "size": 2048
+ },
+ "0x080F6D9C": {
+  "label": "gEReaderBackgroundText_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/ereader/background_text_es.4bpp\""
+  ],
+  "size": 2080
+ },
  "0x080FC3DC": {
   "label": "gPokedexBg1_Tilemap_De",
   "lines": [
@@ -216,6 +244,19 @@
   ],
   "size": 17440
  },
+ "0x08161A3C": {
+  "label": "gHighScoreTitle_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/high_score/rank_numbers_frdeites.4bpp\"",
+   ".global gHighScoreTitle_Gfx_It",
+   ".set gHighScoreTitle_Gfx_It, gHighScoreTitle_Gfx_Fr + 0x160",
+   ".global gHighScoreTitle_Gfx_De",
+   ".set gHighScoreTitle_Gfx_De, gHighScoreTitle_Gfx_Fr + 0x1000",
+   ".global gHighScoreTitle_Gfx_Es",
+   ".set gHighScoreTitle_Gfx_Es, gHighScoreTitle_Gfx_Fr + 0x1160"
+  ],
+  "size": 8224
+ },
  "0x0816425C": {
   "label": "gFieldSelectWindow_Gfx_En",
   "lines": [
@@ -240,6 +281,14 @@
   ],
   "size": 5152
  },
+ "0x08167EBC": {
+  "label": "gBonusFieldSelectWindow_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/field_select/window_tiles_bonus_fr.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 5152
+ },
  "0x081692DC": {
   "label": "gFieldSelectWindow_Gfx_It",
   "lines": [
@@ -248,10 +297,26 @@
   ],
   "size": 5152
  },
+ "0x0816A6FC": {
+  "label": "gBonusFieldSelectWindow_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/field_select/window_tiles_bonus_it.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 5152
+ },
  "0x0816BB1C": {
   "label": "gFieldSelectWindow_Gfx_Es",
   "lines": [
    ".incbin \"graphics/field_select/window_tiles_es.4bpp\"",
+   ".space 0x20"
+  ],
+  "size": 5152
+ },
+ "0x0816CF3C": {
+  "label": "gBonusFieldSelectWindow_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/field_select/window_tiles_bonus_es.4bpp\"",
    ".space 0x20"
   ],
   "size": 5152
@@ -305,6 +370,55 @@
    ".space 0x240"
   ],
   "size": 32320
+ },
+ "0x081FC87C": {
+  "label": "gLanguageSelectBg0_Tilemap",
+  "lines": [
+   ".incbin \"graphics/language_select/bg0_tilemap.bin\""
+  ],
+  "size": 2048
+ },
+ "0x081FD07C": {
+  "label": "gLanguageSelectBg1_Tilemap",
+  "lines": [
+   ".incbin \"graphics/language_select/bg1_tilemap.bin\""
+  ],
+  "size": 2048
+ },
+ "0x081FD87C": {
+  "label": "gLanguageSelectSprite_Gfx",
+  "lines": [
+   ".incbin \"graphics/language_select/sprites.4bpp\""
+  ],
+  "size": 4128
+ },
+ "0x081FE89C": {
+  "label": "gLanguageSelectSprite_Pals",
+  "lines": [
+   ".incbin \"graphics/language_select/sprites.gbapal\""
+  ],
+  "size": 512
+ },
+ "0x081FEA9C": {
+  "label": "gLanguageSelect_Gfx",
+  "lines": [
+   ".incbin \"graphics/language_select/bg.4bpp\""
+  ],
+  "size": 8192
+ },
+ "0x08200A9C": {
+  "label": "gLanguageSelectTitle_Gfx",
+  "lines": [
+   ".incbin \"graphics/language_select/titles.4bpp\""
+  ],
+  "size": 8224
+ },
+ "0x08202ABC": {
+  "label": "gLanguageSelectBg_Pals",
+  "lines": [
+   ".incbin \"graphics/language_select/bg.gbapal\""
+  ],
+  "size": 512
  },
  "0x08202CBC": {
   "label": "gTitlescreenBgTilemap_En",
@@ -9439,6 +9553,41 @@
    ".incbin \"graphics/stage/main/travel_es.4bpp\""
   ],
   "size": 9696
+ },
+ "0x0877D3CC": {
+  "label": "gFieldIntroText_Gfx_En",
+  "lines": [
+   ".incbin \"graphics/stage/misc/field_intro_text_en.4bpp\""
+  ],
+  "size": 320
+ },
+ "0x0877D50C": {
+  "label": "gFieldIntroText_Gfx_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/misc/field_intro_text_fr.4bpp\""
+  ],
+  "size": 320
+ },
+ "0x0877D64C": {
+  "label": "gFieldIntroText_Gfx_De",
+  "lines": [
+   ".incbin \"graphics/stage/misc/field_intro_text_de.4bpp\""
+  ],
+  "size": 320
+ },
+ "0x0877D78C": {
+  "label": "gFieldIntroText_Gfx_It",
+  "lines": [
+   ".incbin \"graphics/stage/misc/field_intro_text_it.4bpp\""
+  ],
+  "size": 320
+ },
+ "0x0877D8CC": {
+  "label": "gFieldIntroText_Gfx_Es",
+  "lines": [
+   ".incbin \"graphics/stage/misc/field_intro_text_es.4bpp\""
+  ],
+  "size": 320
  },
  "0x0879338C": {
   "label": "gMainCatchModeBanner_Gfx_Fr",
