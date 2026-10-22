@@ -37,6 +37,7 @@ enum class Directive
     DexText,
     DexLanguage,
     EreaderText,
+    EreaderDexText,
     Unknown
 };
 
@@ -54,6 +55,7 @@ public:
     int ReadBraille(unsigned char* s);
     int ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft, bool fixedWidthEncoding);
     void ReadDexLanguage();
+    bool IsEuropeanDexLanguage();
     bool IsAtEnd();
     void OutputLine();
     void OutputLocation();

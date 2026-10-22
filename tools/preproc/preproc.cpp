@@ -26,6 +26,9 @@
 #include "charmap.h"
 #include "../../include/constants/global.h"
 
+// EREADER_LINE_LENGTH of the European version (global.h is included here without EUROPE)
+#define EREADER_LINE_LENGTH_EU 25
+
 Charmap* g_charmap;
 
 void PrintAsmBytes(unsigned char *s, int length)
@@ -127,9 +130,13 @@ void PreprocAsmFile(std::string filename)
             PrintAsmHalfwords(s, length);
             break;
         }
-        case Directive::EreaderText:{
-            unsigned short s[EREADER_LINE_LENGTH];
-            int length = stack.top().ReadDexString(s, EREADER_LINE_LENGTH, false, true);
+        case Directive::EreaderText:
+        case Directive::EreaderDexText:{
+            // .ereaderText: fixed glyph widths; .ereaderDexText: the widths of the Pokedex text.
+            // Lines of the European version (a .dexLang language is set) have one more cell.
+            unsigned short s[EREADER_LINE_LENGTH_EU];
+            int lineLength = stack.top().IsEuropeanDexLanguage() ? EREADER_LINE_LENGTH_EU : EREADER_LINE_LENGTH;
+            int length = stack.top().ReadDexString(s, lineLength, false, directive == Directive::EreaderText);
             PrintAsmHalfwords(s, length);
             break;
         }

@@ -186,6 +186,8 @@ Directive AsmFile::GetDirective()
         return Directive::DexLanguage;
     else if (CheckForDirective(".ereaderText"))
         return Directive::EreaderText;
+    else if (CheckForDirective(".ereaderDexText"))
+        return Directive::EreaderDexText;
     else
         return Directive::Unknown;
 }
@@ -390,7 +392,9 @@ static std::string s_dexLanguage;
 
 // The European release (BPPP) adds accented glyphs to the Pokedex font and changes the width
 // of a few characters. The width of some of them also depends on the language of the text.
-static void ApplyEuropeanDexEncoding(std::map<std::string, unsigned short>& enc, const std::string& lang)
+// With newGlyphsOnly (e-Reader text with fixed widths) only the non-ASCII characters change.
+static void ApplyEuropeanDexEncoding(std::map<std::string, unsigned short>& enc, const std::string& lang,
+                                     bool newGlyphsOnly)
 {
     static const std::map<std::string, unsigned short> common =
     {
@@ -420,7 +424,10 @@ static void ApplyEuropeanDexEncoding(std::map<std::string, unsigned short>& enc,
     };
 
     for (const auto& kv : common)
-        enc[kv.first] = kv.second;
+        if (!newGlyphsOnly || static_cast<unsigned char>(kv.first[0]) >= 0x80)
+            enc[kv.first] = kv.second;
+    if (newGlyphsOnly)
+        return;
     if (lang == "EN")
         for (const auto& kv : english)
             enc[kv.first] = kv.second;
@@ -447,6 +454,12 @@ void AsmFile::ReadDexLanguage()
     s_dexLanguage = lang;
 
     ExpectEmptyRestOfLine();
+}
+
+// Whether .dexLang selected a language of the European version.
+bool AsmFile::IsEuropeanDexLanguage()
+{
+    return !s_dexLanguage.empty();
 }
 
 int AsmFile::ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft = false, bool fixedWidthEncoding = false)
@@ -525,8 +538,8 @@ int AsmFile::ReadDexString(unsigned short* s, uint8_t targetLength, bool padLeft
         };
     }
 
-    if (!fixedWidthEncoding && !s_dexLanguage.empty())
-        ApplyEuropeanDexEncoding(dexEncoding, s_dexLanguage);
+    if (!s_dexLanguage.empty())
+        ApplyEuropeanDexEncoding(dexEncoding, s_dexLanguage, fixedWidthEncoding);
 
     SkipWhitespace();
 
