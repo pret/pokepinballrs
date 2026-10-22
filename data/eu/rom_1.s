@@ -1353,11 +1353,7 @@ gIdleHighScoresStateFuncs:: @ 0x080EC640
 
 
 gDefaultHighScores:: @ 0x080EC64C
-	.incbin "data/eu/bin/rom_1_080EC64C.bin"
-gHighScoreNamePositions:: @ 0x080EC7CC
-	.incbin "data/eu/bin/rom_1_080EC7CC.bin"
-gHighScoreNamePixelPositions:: @ 0x080EC88C
-	.incbin "data/eu/bin/rom_1_080EC88C.bin"
+	.include "data/eu/src/high_score_tables.inc"
 gHighScoreNameRowTilemapOffsets:: @ 0x080EC90C
 	.4byte 0x02, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x11
 
@@ -1990,7 +1986,7 @@ gSphealScoreDigitSpriteIndices:: @ 0x08253E5C
 	@ Vector16
 
 gPauseMenuSpriteOffsets:: @ 0x08253E74
-	.incbin "data/eu/bin/rom_1_08253E74.bin"
+	.include "data/eu/src/pause_menu_sprite_offsets.inc"
 gPauseMenuTextAnimFrames:: @ 0x08253EA0
 	.2byte 0,0,0,0,0,1,2,3,3,3,3,4,5
 
@@ -2020,10 +2016,7 @@ gPinballGameStateFuncs:: @ 0x08253F00
 	.4byte PinballGame_State3_4B20C @ called once after game over?
 
 gIdlePressStartTiles_Fr:: @ 0x08253F10
-	.incbin "data/eu/bin/rom_1_08253F10.bin"
-gIdlePressStartTiles_De:: @ 0x08253F32
-	.byte 0x16, 0x00, 0x17, 0x00, 0x18, 0x00, 0x19, 0x00, 0x1A, 0x00, 0x1B, 0x00, 0x1F, 0x00, 0x1C, 0x00
-	.byte 0x1D, 0x00, 0x1E, 0x00, 0x17, 0x00, 0x1D, 0x00, 0x00, 0x00
+	.include "data/eu/src/idle_press_start_tiles.inc"
 gBall_Pals:: @ 0x08253F4C
 	.incbin "graphics/stage/main/pokeball_regular.gbapal"
 	.incbin "graphics/stage/main/pokeball_great.gbapal"
