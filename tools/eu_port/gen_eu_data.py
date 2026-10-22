@@ -436,7 +436,15 @@ def gen_file(src, obj, name):
         nonlocal cursor
         assert a == cursor, (hex(a), hex(cursor))
         if b < a: raise Exception('negative gap %x %x in %s' % (a, b, name))
-        manual = [(s, e, p) for s, e, p in MANUAL if a <= s < b]
+        def stale(s, e, p):
+            # a graphic of eu_graphics.json with a label inside that its lines do not define (a
+            # name added since): written as data again, for gfx_eu.py to convert anew
+            if p[0].startswith('.include "data/eu/src/'):
+                return False
+            text_ = '\n'.join(p)
+            defined_ = set(re.findall(r'^\s*(\w+)::', text_, re.M) + re.findall(r'\.set\s+(\w+)', text_))
+            return any(s < x < e and n not in defined_ for x in by_addr for n in by_addr[x])
+        manual = [(s, e, p) for s, e, p in MANUAL if a <= s < b and not stale(s, e, p)]
         pts = sorted(set([a, b] + [x for x in by_addr if a <= x < b] + [s for s, e, p in manual] + [e for s, e, p in manual]))
         skip_to = None
         for x, y in zip(pts, pts[1:] + [None]):
@@ -484,7 +492,9 @@ def gen_file(src, obj, name):
                         buf.append(EU[q - 0x08000000]); q += 1
                 flush()
                 continue
-            if len(data) >= 32:
+            if not any(data) and not by_addr.get(x):
+                out.append(('gen', '\t.space 0x%X' % len(data)))
+            elif len(data) >= 32:
                 BLOBS.append(dict(addr='0x%08X' % x, size=y - x, labels=sorted(by_addr.get(x, []))))
                 fn = f'data/eu/bin/{name}_{x:08X}.bin'
                 open(REPO + '/' + fn, 'wb').write(data)

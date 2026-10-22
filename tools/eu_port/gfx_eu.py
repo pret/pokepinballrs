@@ -45,6 +45,10 @@ ALIASES = {
     'gBonusFieldSelectWindow_Gfx': ('gFieldSelectWindow_Gfx', 'bonus'),
 }
 
+# Copies of the English data that the code does not use (it reads the English ones for these
+# languages): the labels come from data/extra_names.json, the data is written with the US files.
+UNUSED_COPIES = {'g%sEvoArrow_E_0Lit_Top_%s' % (_b, _l) for _b in ('Ruby', 'Sapphire') for _l in ('Fr', 'It', 'Es')}
+
 # EU-only graphics with no US counterpart: label -> output file (.png for 4bpp tiles, .pal for
 # a palette, .bin as is), width of the image in tiles, palette of the image (a palette label
 # and slot in the EU ROM, or a US PNG), and for data that several labels point into, its size
@@ -445,6 +449,24 @@ def layout(items, k, data, addr):
             return plan
         if pos > len(data) or not sized or len(plan) > 64:
             break
+    # several items, the last of which ends with an image after its first piece that has more
+    # tiles in the EU version (the filler after the last P-square frame, for example); the
+    # English items must follow each other in the EU ROM like in the US one (some are moved)
+    sizes = [sum(s for _, s in sz) for _, _, sz in plan]
+    adjacent = [a[1] in LABEL_ADDR and b[1] in LABEL_ADDR and LABEL_ADDR[b[1]] - LABEL_ADDR[a[1]] == n
+                for a, b, n in zip(plan, plan[1:], sizes)]
+    for e in range(len(plan) - 1, 0, -1):
+        if sum(sizes[:e + 1]) >= len(data) or not all(adjacent[:e]):
+            continue
+        i, lab, sized = plan[e]
+        incs = [j for j, (pc, n) in enumerate(sized) if pc[0] == 'inc']
+        if incs and incs[-1] > 0 and not sized[incs[-1]][0][1].endswith('.lz') \
+                and all(pc[0] in ('space', 'fill') for pc, n in sized[incs[-1] + 1:]):
+            j = incs[-1]
+            n = len(data) - (sum(sizes[:e + 1]) - sized[j][1])
+            if n % 32 == 0:
+                return plan[:e] + [(i, lab, [(pc, n if q == j else s) for q, (pc, s) in enumerate(sized)])]
+        break
     # a single item whose first piece (an image) has a different size; the trailing
     # .space/.fill/.align are kept when the data still has room for them
     pieces = parse_item(items[k][1])
@@ -470,9 +492,10 @@ def layout(items, k, data, addr):
     raise Unsupported('size')
 
 
-def build(plan, data, suffix, known, rules_here, written, made, stem_suffix=None):
-    """Convert the pieces of a layout; return the directive lines."""
-    out_lines = []
+def build(plan, data, suffix, known, rules_here, written, made, stem_suffix=None, us_copy=False):
+    """Convert the pieces of a layout; return the directive lines. With us_copy the images must
+    hold the bytes of the US files, which are used as they are."""
+    out_lines = ['@ copy of the English data, not used by the code'] if us_copy else []
     made_here = set()
     last_img = None  # (line index, US path, stem, start, end) of the last image of the item
     pos = 0
@@ -502,6 +525,12 @@ def build(plan, data, suffix, known, rules_here, written, made, stem_suffix=None
                     out_lines.append('.fill 0x%X, 1, 0x%X' % (size, pc[2]))
                 continue
             g = pc[1]
+            if us_copy:
+                if g.endswith('.lz') or open(_R + '/' + g, 'rb').read() != chunk:
+                    raise Unsupported('not a copy of ' + g)
+                out_lines.append('.incbin "%s"' % g)
+                last_img = None
+                continue
             t = g[:-3] if g.endswith('.lz') else g
             ext = t.rsplit('.', 1)[1]
             stem = t.rsplit('.', 1)[0] + '_' + (stem_suffix or (suffix.lower() if suffix else 'eu'))
@@ -578,7 +607,8 @@ def main():
     for addr, data, labs in eu_blobs():
         blobs.setdefault(addr, (data, labs))
     rom = open(_BASEROM, 'rb').read()
-    label_addr = json.load(open(_W + '/eu_data_labels.json')) if os.path.exists(_W + '/eu_data_labels.json') else {}
+    global LABEL_ADDR
+    label_addr = LABEL_ADDR = json.load(open(_W + '/eu_data_labels.json')) if os.path.exists(_W + '/eu_data_labels.json') else {}
     covered = 0  # end of the data converted with an EXTRA entry that spans several blobs
     for addr, (data, labs) in sorted(blobs.items()):
         if addr < covered:
@@ -617,7 +647,8 @@ def main():
                 continue
             plan = layout(items, start, data, addr)
             try:
-                out_lines, made_here = build(plan, data, suffix, known, rules_here, written, made, stem_suffix)
+                out_lines, made_here = build(plan, data, suffix, known, rules_here, written, made, stem_suffix,
+                                             us_copy=lab in UNUSED_COPIES)
             except RuntimeError as e:
                 raise Unsupported('gbagfx: ' + str(e))
             made |= made_here

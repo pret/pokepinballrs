@@ -3533,7 +3533,133 @@ gRubyGetArrow_T_3Lit_Bot:: @ 0x083E1E04
 
 @ Ball power up lights
 
-	.incbin "data/eu/bin/rom_1_083E1EC4.bin"
+gRubyEvoArrow_E_0Lit_Top_Fr:: @ 0x083E1EC4
+	@ copy of the English data, not used by the code
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_0.4bpp"
+gRubyEvoArrow_E_1Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_0.4bpp"
+gRubyEvoArrow_E_2PlusLit_Top_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_0.4bpp"
+gRubyEvoArrow_V_0Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_0.4bpp"
+gRubyEvoArrow_V_1Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_0.4bpp"
+gRubyEvoArrow_V_2Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_0.4bpp"
+gRubyEvoArrow_V_3Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_0.4bpp"
+gRubyEvoArrow_O_Under2Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_0.4bpp"
+gRubyEvoArrow_O_2Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_0.4bpp"
+gRubyEvoArrow_O_3Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_0.4bpp"
+	.space 0x40
+gRubyEvoArrow_E_0Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_1.4bpp"
+gRubyEvoArrow_E_1Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_1.4bpp"
+gRubyEvoArrow_E_2PlusLit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_1.4bpp"
+gRubyEvoArrow_V_0Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_1.4bpp"
+gRubyEvoArrow_V_1Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_1.4bpp"
+gRubyEvoArrow_V_2Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_1.4bpp"
+gRubyEvoArrow_V_3Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_1.4bpp"
+gRubyEvoArrow_O_Under2Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_1.4bpp"
+gRubyEvoArrow_O_2Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_1.4bpp"
+gRubyEvoArrow_O_3Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_1.4bpp"
+	.space 0x40
+gRubyEvoArrow_E_0Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_2.4bpp"
+gRubyEvoArrow_E_1Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_2.4bpp"
+gRubyEvoArrow_E_2PlusLit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_2.4bpp"
+gRubyEvoArrow_V_0Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_2.4bpp"
+gRubyEvoArrow_V_1Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_2.4bpp"
+gRubyEvoArrow_V_2Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_2.4bpp"
+gRubyEvoArrow_V_3Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_2.4bpp"
+gRubyEvoArrow_O_Under2Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_2.4bpp"
+gRubyEvoArrow_O_2Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_2.4bpp"
+gRubyEvoArrow_O_3Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_2.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p0.4bpp"
+gRubyCoinArrow_1_1Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
+gRubyCoinArrow_1_2PlusLit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p0.4bpp"
+gRubyCoinArrow_5_0Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
+gRubyCoinArrow_5_1Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
+gRubyCoinArrow_5_2Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
+gRubyCoinArrow_5_3Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p0.4bpp"
+gRubyCoinArrow_10_Under2Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
+gRubyCoinArrow_10_2Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
+gRubyCoinArrow_10_3Lit_Top_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p0.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
+gRubyCoinArrow_1_1Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
+gRubyCoinArrow_1_2PlusLit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p1.4bpp"
+gRubyCoinArrow_5_0Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
+gRubyCoinArrow_5_1Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
+gRubyCoinArrow_5_2Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
+gRubyCoinArrow_5_3Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p1.4bpp"
+gRubyCoinArrow_10_Under2Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
+gRubyCoinArrow_10_2Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
+gRubyCoinArrow_10_3Lit_Mid_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p1.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
+gRubyCoinArrow_1_1Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p2.4bpp"
+gRubyCoinArrow_1_2PlusLit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p2.4bpp"
+gRubyCoinArrow_5_0Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p2.4bpp"
+gRubyCoinArrow_5_1Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p2.4bpp"
+gRubyCoinArrow_5_2Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p2.4bpp"
+gRubyCoinArrow_5_3Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p2.4bpp"
+gRubyCoinArrow_10_Under2Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
+gRubyCoinArrow_10_2Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
+gRubyCoinArrow_10_3Lit_Bot_Fr::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p2.4bpp"
+	.space 0x40
 gRubyGetArrow_G_0Lit_Top_Fr:: @ 0x083E36C4
 	.incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_0_fr.4bpp"
 gRubyGetArrow_G_1Lit_Top_Fr:: @ 0x083E3724
@@ -3808,6 +3934,135 @@ gRubyGetArrow_T_2Lit_Bot_De:: @ 0x083E65E4
 	.incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_2_de.4bpp"
 gRubyGetArrow_T_3Lit_Bot_De:: @ 0x083E6644
 	.incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_2_de.4bpp"
+	.space 0x40
+	.fill 0x20, 1, 0x22
+gRubyEvoArrow_E_0Lit_Top_It:: @ 0x083E6704
+	@ copy of the English data, not used by the code
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_0.4bpp"
+gRubyEvoArrow_E_1Lit_Top_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_0.4bpp"
+gRubyEvoArrow_E_2PlusLit_Top_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_0.4bpp"
+gRubyEvoArrow_V_0Lit_Top_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_0.4bpp"
+gRubyEvoArrow_V_1Lit_Top_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_0.4bpp"
+gRubyEvoArrow_V_2Lit_Top_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_0.4bpp"
+gRubyEvoArrow_V_3Lit_Top_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_0.4bpp"
+gRubyEvoArrow_O_Under2Lit_Top_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_0.4bpp"
+gRubyEvoArrow_O_2Lit_Top_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_0.4bpp"
+gRubyEvoArrow_O_3Lit_Top_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_0.4bpp"
+	.space 0x40
+gRubyEvoArrow_E_0Lit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_1.4bpp"
+gRubyEvoArrow_E_1Lit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_1.4bpp"
+gRubyEvoArrow_E_2PlusLit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_1.4bpp"
+gRubyEvoArrow_V_0Lit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_1.4bpp"
+gRubyEvoArrow_V_1Lit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_1.4bpp"
+gRubyEvoArrow_V_2Lit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_1.4bpp"
+gRubyEvoArrow_V_3Lit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_1.4bpp"
+gRubyEvoArrow_O_Under2Lit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_1.4bpp"
+gRubyEvoArrow_O_2Lit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_1.4bpp"
+gRubyEvoArrow_O_3Lit_Mid_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_1.4bpp"
+	.space 0x40
+gRubyEvoArrow_E_0Lit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_2.4bpp"
+gRubyEvoArrow_E_1Lit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_2.4bpp"
+gRubyEvoArrow_E_2PlusLit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_2.4bpp"
+gRubyEvoArrow_V_0Lit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_2.4bpp"
+gRubyEvoArrow_V_1Lit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_2.4bpp"
+gRubyEvoArrow_V_2Lit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_2.4bpp"
+gRubyEvoArrow_V_3Lit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_2.4bpp"
+gRubyEvoArrow_O_Under2Lit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_2.4bpp"
+gRubyEvoArrow_O_2Lit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_2.4bpp"
+gRubyEvoArrow_O_3Lit_Bot_It::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_2.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p0.4bpp"
+gRubyCoinArrow_1_1Lit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
+gRubyCoinArrow_1_2PlusLit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p0.4bpp"
+gRubyCoinArrow_5_0Lit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
+gRubyCoinArrow_5_1Lit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
+gRubyCoinArrow_5_2Lit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
+gRubyCoinArrow_5_3Lit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p0.4bpp"
+gRubyCoinArrow_10_Under2Lit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
+gRubyCoinArrow_10_2Lit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
+gRubyCoinArrow_10_3Lit_Top_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p0.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
+gRubyCoinArrow_1_1Lit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
+gRubyCoinArrow_1_2PlusLit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p1.4bpp"
+gRubyCoinArrow_5_0Lit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
+gRubyCoinArrow_5_1Lit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
+gRubyCoinArrow_5_2Lit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
+gRubyCoinArrow_5_3Lit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p1.4bpp"
+gRubyCoinArrow_10_Under2Lit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
+gRubyCoinArrow_10_2Lit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
+gRubyCoinArrow_10_3Lit_Mid_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p1.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
+gRubyCoinArrow_1_1Lit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p2.4bpp"
+gRubyCoinArrow_1_2PlusLit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p2.4bpp"
+gRubyCoinArrow_5_0Lit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p2.4bpp"
+gRubyCoinArrow_5_1Lit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p2.4bpp"
+gRubyCoinArrow_5_2Lit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p2.4bpp"
+gRubyCoinArrow_5_3Lit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p2.4bpp"
+gRubyCoinArrow_10_Under2Lit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
+gRubyCoinArrow_10_2Lit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
+gRubyCoinArrow_10_3Lit_Bot_It::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p2.4bpp"
+	.space 0x40
 gRubyGetArrow_G_0Lit_Top_It:: @ 0x083E7F04
 	.incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_0_it.4bpp"
 gRubyGetArrow_G_1Lit_Top_It:: @ 0x083E7F64
@@ -3881,6 +4136,135 @@ gRubyGetArrow_T_2Lit_Bot_It:: @ 0x083E8A04
 	.incbin "graphics/stage/ruby/get_arrow/get_t_arrow_2_2_it.4bpp"
 gRubyGetArrow_T_3Lit_Bot_It:: @ 0x083E8A64
 	.incbin "graphics/stage/ruby/get_arrow/get_t_arrow_3_2_it.4bpp"
+	.space 0x40
+	.fill 0x20, 1, 0x22
+gRubyEvoArrow_E_0Lit_Top_Es:: @ 0x083E8B24
+	@ copy of the English data, not used by the code
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_0.4bpp"
+gRubyEvoArrow_E_1Lit_Top_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_0.4bpp"
+gRubyEvoArrow_E_2PlusLit_Top_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_0.4bpp"
+gRubyEvoArrow_V_0Lit_Top_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_0.4bpp"
+gRubyEvoArrow_V_1Lit_Top_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_0.4bpp"
+gRubyEvoArrow_V_2Lit_Top_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_0.4bpp"
+gRubyEvoArrow_V_3Lit_Top_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_0.4bpp"
+gRubyEvoArrow_O_Under2Lit_Top_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_0.4bpp"
+gRubyEvoArrow_O_2Lit_Top_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_0.4bpp"
+gRubyEvoArrow_O_3Lit_Top_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_0.4bpp"
+	.space 0x40
+gRubyEvoArrow_E_0Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_1.4bpp"
+gRubyEvoArrow_E_1Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_1.4bpp"
+gRubyEvoArrow_E_2PlusLit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_1.4bpp"
+gRubyEvoArrow_V_0Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_1.4bpp"
+gRubyEvoArrow_V_1Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_1.4bpp"
+gRubyEvoArrow_V_2Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_1.4bpp"
+gRubyEvoArrow_V_3Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_1.4bpp"
+gRubyEvoArrow_O_Under2Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_1.4bpp"
+gRubyEvoArrow_O_2Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_1.4bpp"
+gRubyEvoArrow_O_3Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_1.4bpp"
+	.space 0x40
+gRubyEvoArrow_E_0Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_0_2.4bpp"
+gRubyEvoArrow_E_1Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_1_2.4bpp"
+gRubyEvoArrow_E_2PlusLit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_e_arrow_2_2.4bpp"
+gRubyEvoArrow_V_0Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_0_2.4bpp"
+gRubyEvoArrow_V_1Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_1_2.4bpp"
+gRubyEvoArrow_V_2Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_2_2.4bpp"
+gRubyEvoArrow_V_3Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_v_arrow_3_2.4bpp"
+gRubyEvoArrow_O_Under2Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_0_2.4bpp"
+gRubyEvoArrow_O_2Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_1_2.4bpp"
+gRubyEvoArrow_O_3Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/evo_arrow/ruby_evo_o_arrow_2_2.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p0.4bpp"
+gRubyCoinArrow_1_1Lit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
+gRubyCoinArrow_1_2PlusLit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p0.4bpp"
+gRubyCoinArrow_5_0Lit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
+gRubyCoinArrow_5_1Lit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
+gRubyCoinArrow_5_2Lit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
+gRubyCoinArrow_5_3Lit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p0.4bpp"
+gRubyCoinArrow_10_Under2Lit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
+gRubyCoinArrow_10_2Lit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
+gRubyCoinArrow_10_3Lit_Top_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p0.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
+gRubyCoinArrow_1_1Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
+gRubyCoinArrow_1_2PlusLit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p1.4bpp"
+gRubyCoinArrow_5_0Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
+gRubyCoinArrow_5_1Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
+gRubyCoinArrow_5_2Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
+gRubyCoinArrow_5_3Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p1.4bpp"
+gRubyCoinArrow_10_Under2Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
+gRubyCoinArrow_10_2Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
+gRubyCoinArrow_10_3Lit_Mid_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p1.4bpp"
+	.space 0x40
+gRubyCoinArrow_1_0Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
+gRubyCoinArrow_1_1Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v2_p2.4bpp"
+gRubyCoinArrow_1_2PlusLit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g0_v3_p2.4bpp"
+gRubyCoinArrow_5_0Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v0_p2.4bpp"
+gRubyCoinArrow_5_1Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v1_p2.4bpp"
+gRubyCoinArrow_5_2Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v2_p2.4bpp"
+gRubyCoinArrow_5_3Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g1_v3_p2.4bpp"
+gRubyCoinArrow_10_Under2Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
+gRubyCoinArrow_10_2Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
+gRubyCoinArrow_10_3Lit_Bot_Es::
+	.incbin "graphics/stage/ruby/coin_arrow/coin_arrow_g2_v3_p2.4bpp"
+	.space 0x40
 gRubyGetArrow_G_0Lit_Top_Es:: @ 0x083EA324
 	.incbin "graphics/stage/ruby/get_arrow/get_g_arrow_0_0_es.4bpp"
 gRubyGetArrow_G_1Lit_Top_Es:: @ 0x083EA384
@@ -5874,7 +6258,145 @@ gSapphireProgressDigit9_OnesBot:: @ 0x08496DA0
 
 @ Ball power up lights
 
-	.incbin "data/eu/bin/rom_1_08496F60.bin"
+gSapphireEvoArrow_E_0Lit_Top_Fr:: @ 0x08496F60
+	@ copy of the English data, not used by the code
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_0.4bpp"
+gSapphireEvoArrow_E_1Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_0.4bpp"
+gSapphireEvoArrow_E_2Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_0.4bpp"
+gSapphireEvoArrow_V_0Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_0.4bpp"
+gSapphireEvoArrow_V_1Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_0.4bpp"
+gSapphireEvoArrow_V_2Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_0.4bpp"
+gSapphireEvoArrow_V_3Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_0.4bpp"
+gSapphireEvoArrow_O_Under2Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_0.4bpp"
+gSapphireEvoArrow_O_2Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_0.4bpp"
+gSapphireEvoArrow_O_3Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_0.4bpp"
+	.space 0x40
+gSapphireEvoArrow_E_0Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_1.4bpp"
+gSapphireEvoArrow_E_1Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_1.4bpp"
+gSapphireEvoArrow_E_2Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_1.4bpp"
+gSapphireEvoArrow_V_0Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_1.4bpp"
+gSapphireEvoArrow_V_1Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_1.4bpp"
+gSapphireEvoArrow_V_2Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_1.4bpp"
+gSapphireEvoArrow_V_3Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_1.4bpp"
+gSapphireEvoArrow_O_Under2Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_1.4bpp"
+gSapphireEvoArrow_O_2Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_1.4bpp"
+gSapphireEvoArrow_O_3Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_1.4bpp"
+	.space 0x40
+gSapphireEvoArrow_E_0Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_2.4bpp"
+gSapphireEvoArrow_E_1Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_2.4bpp"
+gSapphireEvoArrow_E_2Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_2.4bpp"
+gSapphireEvoArrow_V_0Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_2.4bpp"
+gSapphireEvoArrow_V_1Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_2.4bpp"
+gSapphireEvoArrow_V_2Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_2.4bpp"
+gSapphireEvoArrow_V_3Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_2.4bpp"
+	.space 0x20
+gSapphireEvoArrow_O_Under2Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_2.4bpp"
+	.space 0x20
+gSapphireEvoArrow_O_2Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_2.4bpp"
+	.space 0x20
+gSapphireEvoArrow_O_3Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_2.4bpp"
+	.space 0x40
+gSapphireCoinArrow_1_0Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p0.4bpp"
+	.space 0x20
+gSapphireCoinArrow_1_1Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p0.4bpp"
+	.space 0x20
+gSapphireCoinArrow_1_2PlusLit_Top_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0_filler.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0_filler.4bpp"
+gSapphireCoinArrow_5_2Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0_filler.4bpp"
+gSapphireCoinArrow_5_3Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
+	.fill 0x20, 1, 0xDD
+gSapphireCoinArrow_10_2Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p0.4bpp"
+	.fill 0x20, 1, 0xDD
+gSapphireCoinArrow_10_3Lit_Top_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
+	.fill 0x20, 1, 0xDD
+	.space 0xA0
+gSapphireCoinArrow_1_0Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
+gSapphireCoinArrow_1_1Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p1.4bpp"
+gSapphireCoinArrow_1_2PlusLit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1_filler.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1_filler.4bpp"
+gSapphireCoinArrow_5_2Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1_filler.4bpp"
+gSapphireCoinArrow_5_3Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1_filler.4bpp"
+gSapphireCoinArrow_10_2Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1_filler.4bpp"
+gSapphireCoinArrow_10_3Lit_Mid_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1_filler.4bpp"
+gSapphireCoinArrow_1_0Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
+gSapphireCoinArrow_1_1Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p2.4bpp"
+gSapphireCoinArrow_1_2PlusLit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p2.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p2.4bpp"
+gSapphireCoinArrow_5_2Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p2.4bpp"
+gSapphireCoinArrow_5_3Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p2.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2_filler.4bpp"
+gSapphireCoinArrow_10_2Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2_filler.4bpp"
+gSapphireCoinArrow_10_3Lit_Bot_Fr::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2_filler.4bpp"
 gSapphireGetArrow_G_0Lit_Top_Fr:: @ 0x08498760
 	.incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_0_0_fr.4bpp"
 gSapphireGetArrow_G_1Lit_Top_Fr:: @ 0x084987C0
@@ -6165,6 +6687,145 @@ gSapphireGetArrow_T_2Lit_Bot_De:: @ 0x0849B680
 gSapphireGetArrow_T_3Lit_Bot_De:: @ 0x0849B6E0
 	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_2_de.4bpp"
 	.space 0x80
+gSapphireEvoArrow_E_0Lit_Top_It:: @ 0x0849B7A0
+	@ copy of the English data, not used by the code
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_0.4bpp"
+gSapphireEvoArrow_E_1Lit_Top_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_0.4bpp"
+gSapphireEvoArrow_E_2Lit_Top_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_0.4bpp"
+gSapphireEvoArrow_V_0Lit_Top_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_0.4bpp"
+gSapphireEvoArrow_V_1Lit_Top_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_0.4bpp"
+gSapphireEvoArrow_V_2Lit_Top_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_0.4bpp"
+gSapphireEvoArrow_V_3Lit_Top_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_0.4bpp"
+gSapphireEvoArrow_O_Under2Lit_Top_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_0.4bpp"
+gSapphireEvoArrow_O_2Lit_Top_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_0.4bpp"
+gSapphireEvoArrow_O_3Lit_Top_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_0.4bpp"
+	.space 0x40
+gSapphireEvoArrow_E_0Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_1.4bpp"
+gSapphireEvoArrow_E_1Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_1.4bpp"
+gSapphireEvoArrow_E_2Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_1.4bpp"
+gSapphireEvoArrow_V_0Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_1.4bpp"
+gSapphireEvoArrow_V_1Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_1.4bpp"
+gSapphireEvoArrow_V_2Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_1.4bpp"
+gSapphireEvoArrow_V_3Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_1.4bpp"
+gSapphireEvoArrow_O_Under2Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_1.4bpp"
+gSapphireEvoArrow_O_2Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_1.4bpp"
+gSapphireEvoArrow_O_3Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_1.4bpp"
+	.space 0x40
+gSapphireEvoArrow_E_0Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_2.4bpp"
+gSapphireEvoArrow_E_1Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_2.4bpp"
+gSapphireEvoArrow_E_2Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_2.4bpp"
+gSapphireEvoArrow_V_0Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_2.4bpp"
+gSapphireEvoArrow_V_1Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_2.4bpp"
+gSapphireEvoArrow_V_2Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_2.4bpp"
+gSapphireEvoArrow_V_3Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_2.4bpp"
+	.space 0x20
+gSapphireEvoArrow_O_Under2Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_2.4bpp"
+	.space 0x20
+gSapphireEvoArrow_O_2Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_2.4bpp"
+	.space 0x20
+gSapphireEvoArrow_O_3Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_2.4bpp"
+	.space 0x40
+gSapphireCoinArrow_1_0Lit_Top_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p0.4bpp"
+	.space 0x20
+gSapphireCoinArrow_1_1Lit_Top_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p0.4bpp"
+	.space 0x20
+gSapphireCoinArrow_1_2PlusLit_Top_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0_filler.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Top_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0_filler.4bpp"
+gSapphireCoinArrow_5_2Lit_Top_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0_filler.4bpp"
+gSapphireCoinArrow_5_3Lit_Top_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Top_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
+	.fill 0x20, 1, 0xDD
+gSapphireCoinArrow_10_2Lit_Top_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p0.4bpp"
+	.fill 0x20, 1, 0xDD
+gSapphireCoinArrow_10_3Lit_Top_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
+	.fill 0x20, 1, 0xDD
+	.space 0xA0
+gSapphireCoinArrow_1_0Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
+gSapphireCoinArrow_1_1Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p1.4bpp"
+gSapphireCoinArrow_1_2PlusLit_Mid_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1_filler.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1_filler.4bpp"
+gSapphireCoinArrow_5_2Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1_filler.4bpp"
+gSapphireCoinArrow_5_3Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1_filler.4bpp"
+gSapphireCoinArrow_10_2Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1_filler.4bpp"
+gSapphireCoinArrow_10_3Lit_Mid_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1_filler.4bpp"
+gSapphireCoinArrow_1_0Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
+gSapphireCoinArrow_1_1Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p2.4bpp"
+gSapphireCoinArrow_1_2PlusLit_Bot_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p2.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p2.4bpp"
+gSapphireCoinArrow_5_2Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p2.4bpp"
+gSapphireCoinArrow_5_3Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p2.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2_filler.4bpp"
+gSapphireCoinArrow_10_2Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2_filler.4bpp"
+gSapphireCoinArrow_10_3Lit_Bot_It::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2_filler.4bpp"
 gSapphireGetArrow_G_0Lit_Top_It:: @ 0x0849CFA0
 	.incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_0_0_it.4bpp"
 gSapphireGetArrow_G_1Lit_Top_It:: @ 0x0849D000
@@ -6241,6 +6902,145 @@ gSapphireGetArrow_T_2Lit_Bot_It:: @ 0x0849DAA0
 gSapphireGetArrow_T_3Lit_Bot_It:: @ 0x0849DB00
 	.incbin "graphics/stage/sapphire/get_arrow/get_t_arrow_3_2_it.4bpp"
 	.space 0x80
+gSapphireEvoArrow_E_0Lit_Top_Es:: @ 0x0849DBC0
+	@ copy of the English data, not used by the code
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_0.4bpp"
+gSapphireEvoArrow_E_1Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_0.4bpp"
+gSapphireEvoArrow_E_2Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_0.4bpp"
+gSapphireEvoArrow_V_0Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_0.4bpp"
+gSapphireEvoArrow_V_1Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_0.4bpp"
+gSapphireEvoArrow_V_2Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_0.4bpp"
+gSapphireEvoArrow_V_3Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_0.4bpp"
+gSapphireEvoArrow_O_Under2Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_0.4bpp"
+gSapphireEvoArrow_O_2Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_0.4bpp"
+gSapphireEvoArrow_O_3Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_0.4bpp"
+	.space 0x40
+gSapphireEvoArrow_E_0Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_1.4bpp"
+gSapphireEvoArrow_E_1Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_1.4bpp"
+gSapphireEvoArrow_E_2Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_1.4bpp"
+gSapphireEvoArrow_V_0Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_1.4bpp"
+gSapphireEvoArrow_V_1Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_1.4bpp"
+gSapphireEvoArrow_V_2Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_1.4bpp"
+gSapphireEvoArrow_V_3Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_1.4bpp"
+gSapphireEvoArrow_O_Under2Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_1.4bpp"
+gSapphireEvoArrow_O_2Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_1.4bpp"
+gSapphireEvoArrow_O_3Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_1.4bpp"
+	.space 0x40
+gSapphireEvoArrow_E_0Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_0_2.4bpp"
+gSapphireEvoArrow_E_1Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_1_2.4bpp"
+gSapphireEvoArrow_E_2Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_e_arrow_2_2.4bpp"
+gSapphireEvoArrow_V_0Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_0_2.4bpp"
+gSapphireEvoArrow_V_1Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_1_2.4bpp"
+gSapphireEvoArrow_V_2Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_2_2.4bpp"
+gSapphireEvoArrow_V_3Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_v_arrow_3_2.4bpp"
+	.space 0x20
+gSapphireEvoArrow_O_Under2Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_0_2.4bpp"
+	.space 0x20
+gSapphireEvoArrow_O_2Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_1_2.4bpp"
+	.space 0x20
+gSapphireEvoArrow_O_3Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/evo_arrows/evo_o_arrow_2_2.4bpp"
+	.space 0x40
+gSapphireCoinArrow_1_0Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p0.4bpp"
+	.space 0x20
+gSapphireCoinArrow_1_1Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p0.4bpp"
+	.space 0x20
+gSapphireCoinArrow_1_2PlusLit_Top_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p0_filler.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p0_filler.4bpp"
+gSapphireCoinArrow_5_2Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p0_filler.4bpp"
+gSapphireCoinArrow_5_3Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p0.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p0.4bpp"
+	.fill 0x20, 1, 0xDD
+gSapphireCoinArrow_10_2Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p0.4bpp"
+	.fill 0x20, 1, 0xDD
+gSapphireCoinArrow_10_3Lit_Top_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p0.4bpp"
+	.fill 0x20, 1, 0xDD
+	.space 0xA0
+gSapphireCoinArrow_1_0Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p1.4bpp"
+gSapphireCoinArrow_1_1Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p1.4bpp"
+gSapphireCoinArrow_1_2PlusLit_Mid_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p1_filler.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p1_filler.4bpp"
+gSapphireCoinArrow_5_2Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p1_filler.4bpp"
+gSapphireCoinArrow_5_3Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p1.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p1_filler.4bpp"
+gSapphireCoinArrow_10_2Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p1_filler.4bpp"
+gSapphireCoinArrow_10_3Lit_Mid_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p1_filler.4bpp"
+gSapphireCoinArrow_1_0Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v0_p2.4bpp"
+gSapphireCoinArrow_1_1Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v1_p2.4bpp"
+gSapphireCoinArrow_1_2PlusLit_Bot_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g0_v2_p2.4bpp"
+gSapphireCoinArrow_5_Under2Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v0_p2.4bpp"
+gSapphireCoinArrow_5_2Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v1_p2.4bpp"
+gSapphireCoinArrow_5_3Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g1_v2_p2.4bpp"
+gSapphireCoinArrow_10_Under2Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v0_p2_filler.4bpp"
+gSapphireCoinArrow_10_2Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v1_p2_filler.4bpp"
+gSapphireCoinArrow_10_3Lit_Bot_Es::
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2.4bpp"
+	.incbin "graphics/stage/sapphire/coin_arrow/coin_arrow_g2_v2_p2_filler.4bpp"
 gSapphireGetArrow_G_0Lit_Top_Es:: @ 0x0849F3C0
 	.incbin "graphics/stage/sapphire/get_arrow/get_g_arrow_0_0_es.4bpp"
 gSapphireGetArrow_G_1Lit_Top_Es:: @ 0x0849F420
@@ -6906,6 +7706,104 @@ gSapphireCatchLightSlot2State4Bot_De:: @ 0x084A4F60
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_bot_de.4bpp"
 gSapphireCatchLightSlot2State5Bot_De:: @ 0x084A4FA0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_de.4bpp"
+gHatchMachineSeg0IdleB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_b_de.4bpp"
+gHatchMachineSeg0HitA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_a_de.4bpp"
+gHatchMachineSeg1IdleA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_a_de.4bpp"
+gHatchMachineSeg1HitA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_a_de.4bpp"
+gHatchMachineSeg2IdleA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_a_de.4bpp"
+gHatchMachineSeg2HitA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_a_de.4bpp"
+	.space 0x80
+gHatchMachineSeg4IdleA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_a_de.4bpp"
+gHatchMachineSeg4HitA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_a_de.4bpp"
+gHatchMachineSeg5IdleA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_a_de.4bpp"
+gHatchMachineSeg5HitA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_a_de.4bpp"
+gHatchMachineSeg6IdleA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_a_de.4bpp"
+gHatchMachineSeg6HitA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_a_de.4bpp"
+gHatchMachineSeg7IdleA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_a_de.4bpp"
+gHatchMachineSeg7HitA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_a_de.4bpp"
+gHatchMachineSeg8IdleA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_a_de.4bpp"
+gHatchMachineSeg0HitB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_b_de.4bpp"
+gHatchMachineSeg1IdleB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_b_de.4bpp"
+gHatchMachineSeg1HitB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_b_de.4bpp"
+gHatchMachineSeg2IdleB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_b_de.4bpp"
+gHatchMachineSeg2HitB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_b_de.4bpp"
+gHatchMachineSeg3Idle_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_idle_de.4bpp"
+gHatchMachineSeg3Hit_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_hit_de.4bpp"
+gHatchMachineSeg4IdleB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_b_de.4bpp"
+gHatchMachineSeg4HitB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_b_de.4bpp"
+gHatchMachineSeg5IdleB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_b_de.4bpp"
+gHatchMachineSeg5HitB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_b_de.4bpp"
+gHatchMachineSeg6IdleB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_b_de.4bpp"
+gHatchMachineSeg6HitB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_b_de.4bpp"
+gHatchMachineSeg7IdleB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_b_de.4bpp"
+gHatchMachineSeg7HitB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_b_de.4bpp"
+gHatchMachineSeg8IdleB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_b_de.4bpp"
+gHatchMachineSeg8HitA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_a_de.4bpp"
+gHatchMachineSeg9IdleA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_a_de.4bpp"
+gHatchMachineSeg9HitA_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_a_de.4bpp"
+gSapphirePSquareFrame0Top_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame0_top_de.4bpp"
+gSapphirePSquareFrame1Top_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame1_top_de.4bpp"
+gSapphirePSquareFrame2Top_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame2_top_de.4bpp"
+gSapphirePSquareFrame3Top_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame3_top_de.4bpp"
+gSapphirePSquareFrame4Top_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_top_de.4bpp"
+	.space 0x200
+gHatchMachineSeg8HitB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_b_de.4bpp"
+gHatchMachineSeg9IdleB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_b_de.4bpp"
+gHatchMachineSeg9HitB_De::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_b_de.4bpp"
+gSapphirePSquareFrame0Bot_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame0_bot_de.4bpp"
+gSapphirePSquareFrame1Bot_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame1_bot_de.4bpp"
+gSapphirePSquareFrame2Bot_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame2_bot_de.4bpp"
+gSapphirePSquareFrame3Bot_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame3_bot_de.4bpp"
+gSapphirePSquareFrame4Bot_De::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_de.4bpp"
+	.space 0x220
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_filler_de.4bpp"
 gSapphireHoleLightH_Off_It:: @ 0x084A61C0
 	.incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_h_off_it.4bpp"
 gSapphireHoleLightH_On_It:: @ 0x084A6200
@@ -6993,6 +7891,104 @@ gSapphireCatchLightSlot2State4Bot_It:: @ 0x084A6F80
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state4_bot_it.4bpp"
 gSapphireCatchLightSlot2State5Bot_It:: @ 0x084A6FC0
 	.incbin "graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_it.4bpp"
+gHatchMachineSeg0IdleB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_idle_b_it.4bpp"
+gHatchMachineSeg0HitA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_a_it.4bpp"
+gHatchMachineSeg1IdleA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_a_it.4bpp"
+gHatchMachineSeg1HitA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_a_it.4bpp"
+gHatchMachineSeg2IdleA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_a_it.4bpp"
+gHatchMachineSeg2HitA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_a_it.4bpp"
+	.space 0x80
+gHatchMachineSeg4IdleA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_a_it.4bpp"
+gHatchMachineSeg4HitA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_a_it.4bpp"
+gHatchMachineSeg5IdleA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_a_it.4bpp"
+gHatchMachineSeg5HitA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_a_it.4bpp"
+gHatchMachineSeg6IdleA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_a_it.4bpp"
+gHatchMachineSeg6HitA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_a_it.4bpp"
+gHatchMachineSeg7IdleA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_a_it.4bpp"
+gHatchMachineSeg7HitA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_a_it.4bpp"
+gHatchMachineSeg8IdleA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_a_it.4bpp"
+gHatchMachineSeg0HitB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg0_hit_b_it.4bpp"
+gHatchMachineSeg1IdleB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_idle_b_it.4bpp"
+gHatchMachineSeg1HitB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg1_hit_b_it.4bpp"
+gHatchMachineSeg2IdleB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_idle_b_it.4bpp"
+gHatchMachineSeg2HitB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg2_hit_b_it.4bpp"
+gHatchMachineSeg3Idle_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_idle_it.4bpp"
+gHatchMachineSeg3Hit_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg3_hit_it.4bpp"
+gHatchMachineSeg4IdleB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_idle_b_it.4bpp"
+gHatchMachineSeg4HitB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg4_hit_b_it.4bpp"
+gHatchMachineSeg5IdleB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_idle_b_it.4bpp"
+gHatchMachineSeg5HitB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg5_hit_b_it.4bpp"
+gHatchMachineSeg6IdleB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_idle_b_it.4bpp"
+gHatchMachineSeg6HitB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg6_hit_b_it.4bpp"
+gHatchMachineSeg7IdleB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_idle_b_it.4bpp"
+gHatchMachineSeg7HitB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg7_hit_b_it.4bpp"
+gHatchMachineSeg8IdleB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_idle_b_it.4bpp"
+gHatchMachineSeg8HitA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_a_it.4bpp"
+gHatchMachineSeg9IdleA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_a_it.4bpp"
+gHatchMachineSeg9HitA_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_a_it.4bpp"
+gSapphirePSquareFrame0Top_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame0_top_it.4bpp"
+gSapphirePSquareFrame1Top_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame1_top_it.4bpp"
+gSapphirePSquareFrame2Top_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame2_top_it.4bpp"
+gSapphirePSquareFrame3Top_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame3_top_it.4bpp"
+gSapphirePSquareFrame4Top_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_top_it.4bpp"
+	.space 0x200
+gHatchMachineSeg8HitB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg8_hit_b_it.4bpp"
+gHatchMachineSeg9IdleB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_idle_b_it.4bpp"
+gHatchMachineSeg9HitB_It::
+	.incbin "graphics/stage/sapphire/hatch_machine/hatch_machine_seg9_hit_b_it.4bpp"
+gSapphirePSquareFrame0Bot_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame0_bot_it.4bpp"
+gSapphirePSquareFrame1Bot_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame1_bot_it.4bpp"
+gSapphirePSquareFrame2Bot_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame2_bot_it.4bpp"
+gSapphirePSquareFrame3Bot_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame3_bot_it.4bpp"
+gSapphirePSquareFrame4Bot_It::
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_it.4bpp"
+	.space 0x220
+	.incbin "graphics/stage/sapphire/p_square/p_square_frame4_bot_filler_it.4bpp"
 gSapphireHoleLightH_Off_Es:: @ 0x084A81E0
 	.incbin "graphics/stage/sapphire/hole_lights/sapphire_hole_light_h_off_es.4bpp"
 gSapphireHoleLightH_On_Es:: @ 0x084A8220
@@ -7374,7 +8370,7 @@ gSapphireBumperArrow_R3_On:: @ 0x084AEF80
 
 @ arrow for ramp leading to shop: mart/evo
 
-	.incbin "data/eu/bin/rom_1_084AF120.bin"
+	.space 0x40
 gSapphireHatchArrow_R0_Off_Fr:: @ 0x084AF160
 	.incbin "graphics/stage/sapphire/hatch_arrow/hatch_arrow_off_row0_fr.4bpp"
 	.space 0x40

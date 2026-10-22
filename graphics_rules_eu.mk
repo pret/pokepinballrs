@@ -2041,12 +2041,6 @@ graphics/stage/sapphire/bumper_arrow/bumper_arrow_on_row3_it.4bpp: graphics/stag
 graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_de.4bpp: graphics/stage/sapphire/catch_arrow/catch_arrow_off_row0_de.png
 	$(GFX) $< $@ -num_tiles 4
 
-graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_de.4bpp: graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_de.png
-	$(GFX) $< $@ -num_tiles 145
-
-graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_it.4bpp: graphics/stage/sapphire/catch_lights/catch_light_slot2_state5_bot_it.png
-	$(GFX) $< $@ -num_tiles 145
-
 graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_de.4bpp: graphics/stage/sapphire/hatch_arrow/hatch_arrow_on_row0_de.png
 	$(GFX) $< $@ -num_tiles 3
 
