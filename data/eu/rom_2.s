@@ -11617,14 +11617,14 @@ gRubySlingshotTilePointers:: @ 0x0894CE38
     @ Third set is the destination address.
 
 gRubyShopSignTilePointers_En:: @ 0x0894CEB0
-	.4byte gUnknown_083F9524
+	.4byte gRubyShopSignMartLabel_En
 	.4byte gRubyShopSignMartPiece0
 	.4byte gRubyShopSignMartPiece1
-	.4byte gUnknown_083F97A4
-	.4byte gUnknown_083F9924
-	.4byte gUnknown_083F99E4
-	.4byte gUnknown_083F9AA4
-	.4byte gUnknown_083F9BA4
+	.4byte gRubyShopSignMartPiece2_En
+	.4byte gRubyShopSignEvoLabel_En
+	.4byte gRubyShopSignCenterPiece0_En
+	.4byte gRubyShopSignCenterPiece1_En
+	.4byte gRubyShopSignCenterPiece2_En
 	.byte 0x60, 0xD8, 0x00, 0x06, 0x60, 0xD8, 0x00, 0x06, 0x20, 0xD9, 0x00, 0x06, 0xE0, 0xD9, 0x00, 0x06
 gRubyProgressDigitTilePointers:: @ 0x0894CEE0
     @ 11 sets of 2.
@@ -11954,14 +11954,14 @@ gRubyShopRampArrowTilePointsers_Fr:: @ 0x0894D5EC
 	.4byte gRubyEvoArrow_R3_On_Fr
 	.byte 0x20, 0xC6, 0x00, 0x06, 0x20, 0xCA, 0x00, 0x06, 0x20, 0xCE, 0x00, 0x06, 0x20, 0xD2, 0x00, 0x06
 gRubyShopSignTilePointers_Fr:: @ 0x0894D63C
-	.4byte gUnknown_083F9D44
+	.4byte gRubyShopSignMartLabel_Fr
 	.4byte gRubyShopSignMartPiece0_Fr
 	.4byte gRubyShopSignMartPiece1_Fr
-	.4byte gUnknown_083F9FC4
-	.4byte gUnknown_083FA144
-	.4byte gUnknown_083FA204
-	.4byte gUnknown_083FA2C4
-	.4byte gUnknown_083FA3C4
+	.4byte gRubyShopSignMartPiece2_Fr
+	.4byte gRubyShopSignEvoLabel_Fr
+	.4byte gRubyShopSignCenterPiece0_Fr
+	.4byte gRubyShopSignCenterPiece1_Fr
+	.4byte gRubyShopSignCenterPiece2_Fr
 	.byte 0x00, 0xC7, 0x00, 0x06, 0x60, 0xD8, 0x00, 0x06, 0x20, 0xD9, 0x00, 0x06, 0xE0, 0xD9, 0x00, 0x06
 gRubyGetArrowTilePtrs_It:: @ 0x0894D66C
 	.4byte gRubyGetArrow_G_0Lit_Top_It
@@ -12115,14 +12115,14 @@ gRubyShopRampArrowTilePointsers_It:: @ 0x0894D8C8
 	.4byte gRubyEvoArrow_R3_On_It
 	.byte 0x20, 0xC6, 0x00, 0x06, 0x20, 0xCA, 0x00, 0x06, 0x20, 0xCE, 0x00, 0x06, 0x20, 0xD2, 0x00, 0x06
 gRubyShopSignTilePointers_It:: @ 0x0894D918
-	.4byte gUnknown_083FAD84
+	.4byte gRubyShopSignMartLabel_It
 	.4byte gRubyShopSignMartPiece0_It
 	.4byte gRubyShopSignMartPiece1_It
-	.4byte gUnknown_083FB004
-	.4byte gUnknown_083FB184
-	.4byte gUnknown_083FB244
-	.4byte gUnknown_083FB304
-	.4byte gUnknown_083FB404
+	.4byte gRubyShopSignMartPiece2_It
+	.4byte gRubyShopSignEvoLabel_It
+	.4byte gRubyShopSignCenterPiece0_It
+	.4byte gRubyShopSignCenterPiece1_It
+	.4byte gRubyShopSignCenterPiece2_It
 	.byte 0x00, 0xC7, 0x00, 0x06, 0x60, 0xD8, 0x00, 0x06, 0x20, 0xD9, 0x00, 0x06, 0xE0, 0xD9, 0x00, 0x06
 gRubyGetArrowTilePtrs_De:: @ 0x0894D948
 	.4byte gRubyGetArrow_G_0Lit_Top_De
@@ -12306,14 +12306,14 @@ gRubyShopRampArrowTilePointsers_De:: @ 0x0894DC28
 	.4byte gRubyEvoArrow_R3_On_De
 	.byte 0x20, 0xC6, 0x00, 0x06, 0x20, 0xCA, 0x00, 0x06, 0x20, 0xCE, 0x00, 0x06, 0x20, 0xD2, 0x00, 0x06
 gRubyShopSignTilePointers_De:: @ 0x0894DC78
-	.4byte gUnknown_083FA564
+	.4byte gRubyShopSignMartLabel_De
 	.4byte gRubyShopSignMartPiece0_De
 	.4byte gRubyShopSignMartPiece1_De
-	.4byte gUnknown_083FA7E4
-	.4byte gUnknown_083FA964
-	.4byte gUnknown_083FAA24
-	.4byte gUnknown_083FAAE4
-	.4byte gUnknown_083FABE4
+	.4byte gRubyShopSignMartPiece2_De
+	.4byte gRubyShopSignEvoLabel_De
+	.4byte gRubyShopSignCenterPiece0_De
+	.4byte gRubyShopSignCenterPiece1_De
+	.4byte gRubyShopSignCenterPiece2_De
 	.byte 0x00, 0xC7, 0x00, 0x06, 0x60, 0xD8, 0x00, 0x06, 0x20, 0xD9, 0x00, 0x06, 0xE0, 0xD9, 0x00, 0x06
 gRubyGetArrowTilePtrs_Es:: @ 0x0894DCA8
 	.4byte gRubyGetArrow_G_0Lit_Top_Es
@@ -12467,14 +12467,14 @@ gRubyShopRampArrowTilePointsers_Es:: @ 0x0894DF04
 	.4byte gRubyEvoArrow_R3_On_Es
 	.byte 0x20, 0xC6, 0x00, 0x06, 0x20, 0xCA, 0x00, 0x06, 0x20, 0xCE, 0x00, 0x06, 0x20, 0xD2, 0x00, 0x06
 gRubyShopSignTilePointers_Es:: @ 0x0894DF54
-	.4byte gUnknown_083FB5A4
+	.4byte gRubyShopSignMartLabel_Es
 	.4byte gRubyShopSignMartPiece0_Es
 	.4byte gRubyShopSignMartPiece1_Es
-	.4byte gUnknown_083FB824
-	.4byte gUnknown_083FB9A4
-	.4byte gUnknown_083FBA64
-	.4byte gUnknown_083FBB24
-	.4byte gUnknown_083FBC24
+	.4byte gRubyShopSignMartPiece2_Es
+	.4byte gRubyShopSignEvoLabel_Es
+	.4byte gRubyShopSignCenterPiece0_Es
+	.4byte gRubyShopSignCenterPiece1_Es
+	.4byte gRubyShopSignCenterPiece2_Es
 	.byte 0x00, 0xC7, 0x00, 0x06, 0x60, 0xD8, 0x00, 0x06, 0x20, 0xD9, 0x00, 0x06, 0xE0, 0xD9, 0x00, 0x06
 gBallUpgradeFx_TileIndicies:: @ 0x0894DF84
     @ 31 values (ix 0 - 30) used, then padding

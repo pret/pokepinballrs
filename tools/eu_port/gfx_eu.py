@@ -64,6 +64,11 @@ EXTRA = {
                                          'gHighScoreTitle_Gfx_Es': 0x1160}),
 }
 for _l in LANG_NAMES:
+    # label of the Ruby shop sign showing which shop is open (gRubyShopSignTilePointers_<Lang>[0/1][0])
+    for _shop in ('Mart', 'Evo'):
+        EXTRA['gRubyShopSign%sLabel_%s' % (_shop, _l)] = dict(
+            file='graphics/stage/ruby/shop_sign/shop_sign_%s_label_%s.png' % (_shop.lower(), _l.lower()),
+            width=6, pal='graphics/stage/ruby/shop_sign/shop_sign_mart_piece0.png')
     # "text" of the board intro sprites (in the US version it is part of the intro sprites)
     EXTRA['gFieldIntroText_Gfx_' + _l] = dict(file='graphics/stage/misc/field_intro_text_%s.png' % _l.lower(),
                                              width=10, pal='graphics/stage/ruby/intro_sprite_location.png')

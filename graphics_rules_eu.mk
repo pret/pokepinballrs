@@ -1986,6 +1986,21 @@ graphics/stage/ruby/shop_fr.4bpp: graphics/stage/ruby/shop_fr.png
 graphics/stage/ruby/shop_it.4bpp: graphics/stage/ruby/shop_it.png
 	$(GFX) $< $@ -mwidth 8
 
+graphics/stage/ruby/shop_sign/shop_sign_center_piece1_de.4bpp: graphics/stage/ruby/shop_sign/shop_sign_center_piece1_de.png
+	$(GFX) $< $@ -num_tiles 8
+
+graphics/stage/ruby/shop_sign/shop_sign_center_piece1_en.4bpp: graphics/stage/ruby/shop_sign/shop_sign_center_piece1_en.png
+	$(GFX) $< $@ -num_tiles 8
+
+graphics/stage/ruby/shop_sign/shop_sign_center_piece1_es.4bpp: graphics/stage/ruby/shop_sign/shop_sign_center_piece1_es.png
+	$(GFX) $< $@ -num_tiles 8
+
+graphics/stage/ruby/shop_sign/shop_sign_center_piece1_fr.4bpp: graphics/stage/ruby/shop_sign/shop_sign_center_piece1_fr.png
+	$(GFX) $< $@ -num_tiles 8
+
+graphics/stage/ruby/shop_sign/shop_sign_center_piece1_it.4bpp: graphics/stage/ruby/shop_sign/shop_sign_center_piece1_it.png
+	$(GFX) $< $@ -num_tiles 8
+
 graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_de.4bpp: graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_de.png
 	$(GFX) $< $@ -num_tiles 8
 

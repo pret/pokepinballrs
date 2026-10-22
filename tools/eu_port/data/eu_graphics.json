@@ -4187,6 +4187,56 @@
   ],
   "size": 416
  },
+ "0x083F9524": {
+  "label": "gRubyShopSignMartLabel_En",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_label_en.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083F97A4": {
+  "label": "gRubyShopSignMartPiece2_En",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_en.4bpp\"",
+   ".space 0xA0"
+  ],
+  "size": 384
+ },
+ "0x083F9924": {
+  "label": "gRubyShopSignEvoLabel_En",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_evo_label_en.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083F99E4": {
+  "label": "gRubyShopSignCenterPiece0_En",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece0_en.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083F9AA4": {
+  "label": "gRubyShopSignCenterPiece1_En",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece1_en.4bpp\""
+  ],
+  "size": 256
+ },
+ "0x083F9BA4": {
+  "label": "gRubyShopSignCenterPiece2_En",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece2_en.4bpp\""
+  ],
+  "size": 416
+ },
+ "0x083F9D44": {
+  "label": "gRubyShopSignMartLabel_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_label_fr.4bpp\""
+  ],
+  "size": 192
+ },
  "0x083F9E04": {
   "label": "gRubyShopSignMartPiece0_Fr",
   "lines": [
@@ -4200,6 +4250,49 @@
    ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_fr.4bpp\""
   ],
   "size": 256
+ },
+ "0x083F9FC4": {
+  "label": "gRubyShopSignMartPiece2_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_fr.4bpp\"",
+   ".space 0xA0"
+  ],
+  "size": 384
+ },
+ "0x083FA144": {
+  "label": "gRubyShopSignEvoLabel_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_evo_label_fr.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083FA204": {
+  "label": "gRubyShopSignCenterPiece0_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece0_fr.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083FA2C4": {
+  "label": "gRubyShopSignCenterPiece1_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece1_fr.4bpp\""
+  ],
+  "size": 256
+ },
+ "0x083FA3C4": {
+  "label": "gRubyShopSignCenterPiece2_Fr",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece2_fr.4bpp\""
+  ],
+  "size": 416
+ },
+ "0x083FA564": {
+  "label": "gRubyShopSignMartLabel_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_label_de.4bpp\""
+  ],
+  "size": 192
  },
  "0x083FA624": {
   "label": "gRubyShopSignMartPiece0_De",
@@ -4215,6 +4308,49 @@
   ],
   "size": 256
  },
+ "0x083FA7E4": {
+  "label": "gRubyShopSignMartPiece2_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_de.4bpp\"",
+   ".space 0xA0"
+  ],
+  "size": 384
+ },
+ "0x083FA964": {
+  "label": "gRubyShopSignEvoLabel_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_evo_label_de.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083FAA24": {
+  "label": "gRubyShopSignCenterPiece0_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece0_de.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083FAAE4": {
+  "label": "gRubyShopSignCenterPiece1_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece1_de.4bpp\""
+  ],
+  "size": 256
+ },
+ "0x083FABE4": {
+  "label": "gRubyShopSignCenterPiece2_De",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece2_de.4bpp\""
+  ],
+  "size": 416
+ },
+ "0x083FAD84": {
+  "label": "gRubyShopSignMartLabel_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_label_it.4bpp\""
+  ],
+  "size": 192
+ },
  "0x083FAE44": {
   "label": "gRubyShopSignMartPiece0_It",
   "lines": [
@@ -4229,6 +4365,49 @@
   ],
   "size": 256
  },
+ "0x083FB004": {
+  "label": "gRubyShopSignMartPiece2_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_it.4bpp\"",
+   ".space 0xA0"
+  ],
+  "size": 384
+ },
+ "0x083FB184": {
+  "label": "gRubyShopSignEvoLabel_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_evo_label_it.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083FB244": {
+  "label": "gRubyShopSignCenterPiece0_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece0_it.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083FB304": {
+  "label": "gRubyShopSignCenterPiece1_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece1_it.4bpp\""
+  ],
+  "size": 256
+ },
+ "0x083FB404": {
+  "label": "gRubyShopSignCenterPiece2_It",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece2_it.4bpp\""
+  ],
+  "size": 416
+ },
+ "0x083FB5A4": {
+  "label": "gRubyShopSignMartLabel_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_label_es.4bpp\""
+  ],
+  "size": 192
+ },
  "0x083FB664": {
   "label": "gRubyShopSignMartPiece0_Es",
   "lines": [
@@ -4242,6 +4421,42 @@
    ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_es.4bpp\""
   ],
   "size": 256
+ },
+ "0x083FB824": {
+  "label": "gRubyShopSignMartPiece2_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_es.4bpp\"",
+   ".space 0xA0"
+  ],
+  "size": 384
+ },
+ "0x083FB9A4": {
+  "label": "gRubyShopSignEvoLabel_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_evo_label_es.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083FBA64": {
+  "label": "gRubyShopSignCenterPiece0_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece0_es.4bpp\""
+  ],
+  "size": 192
+ },
+ "0x083FBB24": {
+  "label": "gRubyShopSignCenterPiece1_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece1_es.4bpp\""
+  ],
+  "size": 256
+ },
+ "0x083FBC24": {
+  "label": "gRubyShopSignCenterPiece2_Es",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_center_piece2_es.4bpp\""
+  ],
+  "size": 416
  },
  "0x083FCDE4": {
   "label": "gRubyEvoArrow_R0_Off_Fr",

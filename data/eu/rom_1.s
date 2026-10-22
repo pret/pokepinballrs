@@ -4941,8 +4941,8 @@ gRubyProgressDigit9_Ones:: @ 0x083F9364
 
 @ Text for sign over Ruby shop entrance
 
-gUnknown_083F9524:: @ 0x083F9524
-	.incbin "data/eu/bin/rom_1_083F9524.bin"
+gRubyShopSignMartLabel_En:: @ 0x083F9524
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_label_en.4bpp"
 gRubyShopSignMartPiece0:: @ 0x083F95E4
     .incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0.4bpp"
 
@@ -4958,80 +4958,85 @@ gRubyShopSignMartPiece1:: @ 0x083F96A4
 @ arrow for ramp leading to shop: mart/evo
 
 	.incbin "data/eu/bin/rom_1_083F9764.bin"
-gUnknown_083F97A4:: @ 0x083F97A4
-	.incbin "data/eu/bin/rom_1_083F97A4.bin"
-gUnknown_083F9924:: @ 0x083F9924
-	.incbin "data/eu/bin/rom_1_083F9924.bin"
-gUnknown_083F99E4:: @ 0x083F99E4
-	.incbin "data/eu/bin/rom_1_083F99E4.bin"
-gUnknown_083F9AA4:: @ 0x083F9AA4
-	.incbin "data/eu/bin/rom_1_083F9AA4.bin"
-gUnknown_083F9BA4:: @ 0x083F9BA4
-	.incbin "data/eu/bin/rom_1_083F9BA4.bin"
-gUnknown_083F9D44:: @ 0x083F9D44
-	.incbin "data/eu/bin/rom_1_083F9D44.bin"
+gRubyShopSignMartPiece2_En:: @ 0x083F97A4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_en.4bpp"
+	.space 0xA0
+gRubyShopSignEvoLabel_En:: @ 0x083F9924
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_evo_label_en.4bpp"
+gRubyShopSignCenterPiece0_En:: @ 0x083F99E4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece0_en.4bpp"
+gRubyShopSignCenterPiece1_En:: @ 0x083F9AA4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece1_en.4bpp"
+gRubyShopSignCenterPiece2_En:: @ 0x083F9BA4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece2_en.4bpp"
+gRubyShopSignMartLabel_Fr:: @ 0x083F9D44
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_label_fr.4bpp"
 gRubyShopSignMartPiece0_Fr:: @ 0x083F9E04
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_fr.4bpp"
 gRubyShopSignMartPiece1_Fr:: @ 0x083F9EC4
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_fr.4bpp"
-gUnknown_083F9FC4:: @ 0x083F9FC4
-	.incbin "data/eu/bin/rom_1_083F9FC4.bin"
-gUnknown_083FA144:: @ 0x083FA144
-	.incbin "data/eu/bin/rom_1_083FA144.bin"
-gUnknown_083FA204:: @ 0x083FA204
-	.incbin "data/eu/bin/rom_1_083FA204.bin"
-gUnknown_083FA2C4:: @ 0x083FA2C4
-	.incbin "data/eu/bin/rom_1_083FA2C4.bin"
-gUnknown_083FA3C4:: @ 0x083FA3C4
-	.incbin "data/eu/bin/rom_1_083FA3C4.bin"
-gUnknown_083FA564:: @ 0x083FA564
-	.incbin "data/eu/bin/rom_1_083FA564.bin"
+gRubyShopSignMartPiece2_Fr:: @ 0x083F9FC4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_fr.4bpp"
+	.space 0xA0
+gRubyShopSignEvoLabel_Fr:: @ 0x083FA144
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_evo_label_fr.4bpp"
+gRubyShopSignCenterPiece0_Fr:: @ 0x083FA204
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece0_fr.4bpp"
+gRubyShopSignCenterPiece1_Fr:: @ 0x083FA2C4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece1_fr.4bpp"
+gRubyShopSignCenterPiece2_Fr:: @ 0x083FA3C4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece2_fr.4bpp"
+gRubyShopSignMartLabel_De:: @ 0x083FA564
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_label_de.4bpp"
 gRubyShopSignMartPiece0_De:: @ 0x083FA624
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_de.4bpp"
 gRubyShopSignMartPiece1_De:: @ 0x083FA6E4
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_de.4bpp"
-gUnknown_083FA7E4:: @ 0x083FA7E4
-	.incbin "data/eu/bin/rom_1_083FA7E4.bin"
-gUnknown_083FA964:: @ 0x083FA964
-	.incbin "data/eu/bin/rom_1_083FA964.bin"
-gUnknown_083FAA24:: @ 0x083FAA24
-	.incbin "data/eu/bin/rom_1_083FAA24.bin"
-gUnknown_083FAAE4:: @ 0x083FAAE4
-	.incbin "data/eu/bin/rom_1_083FAAE4.bin"
-gUnknown_083FABE4:: @ 0x083FABE4
-	.incbin "data/eu/bin/rom_1_083FABE4.bin"
-gUnknown_083FAD84:: @ 0x083FAD84
-	.incbin "data/eu/bin/rom_1_083FAD84.bin"
+gRubyShopSignMartPiece2_De:: @ 0x083FA7E4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_de.4bpp"
+	.space 0xA0
+gRubyShopSignEvoLabel_De:: @ 0x083FA964
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_evo_label_de.4bpp"
+gRubyShopSignCenterPiece0_De:: @ 0x083FAA24
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece0_de.4bpp"
+gRubyShopSignCenterPiece1_De:: @ 0x083FAAE4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece1_de.4bpp"
+gRubyShopSignCenterPiece2_De:: @ 0x083FABE4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece2_de.4bpp"
+gRubyShopSignMartLabel_It:: @ 0x083FAD84
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_label_it.4bpp"
 gRubyShopSignMartPiece0_It:: @ 0x083FAE44
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_it.4bpp"
 gRubyShopSignMartPiece1_It:: @ 0x083FAF04
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_it.4bpp"
-gUnknown_083FB004:: @ 0x083FB004
-	.incbin "data/eu/bin/rom_1_083FB004.bin"
-gUnknown_083FB184:: @ 0x083FB184
-	.incbin "data/eu/bin/rom_1_083FB184.bin"
-gUnknown_083FB244:: @ 0x083FB244
-	.incbin "data/eu/bin/rom_1_083FB244.bin"
-gUnknown_083FB304:: @ 0x083FB304
-	.incbin "data/eu/bin/rom_1_083FB304.bin"
-gUnknown_083FB404:: @ 0x083FB404
-	.incbin "data/eu/bin/rom_1_083FB404.bin"
-gUnknown_083FB5A4:: @ 0x083FB5A4
-	.incbin "data/eu/bin/rom_1_083FB5A4.bin"
+gRubyShopSignMartPiece2_It:: @ 0x083FB004
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_it.4bpp"
+	.space 0xA0
+gRubyShopSignEvoLabel_It:: @ 0x083FB184
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_evo_label_it.4bpp"
+gRubyShopSignCenterPiece0_It:: @ 0x083FB244
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece0_it.4bpp"
+gRubyShopSignCenterPiece1_It:: @ 0x083FB304
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece1_it.4bpp"
+gRubyShopSignCenterPiece2_It:: @ 0x083FB404
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece2_it.4bpp"
+gRubyShopSignMartLabel_Es:: @ 0x083FB5A4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_label_es.4bpp"
 gRubyShopSignMartPiece0_Es:: @ 0x083FB664
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0_es.4bpp"
 gRubyShopSignMartPiece1_Es:: @ 0x083FB724
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_es.4bpp"
-gUnknown_083FB824:: @ 0x083FB824
-	.incbin "data/eu/bin/rom_1_083FB824.bin"
-gUnknown_083FB9A4:: @ 0x083FB9A4
-	.incbin "data/eu/bin/rom_1_083FB9A4.bin"
-gUnknown_083FBA64:: @ 0x083FBA64
-	.incbin "data/eu/bin/rom_1_083FBA64.bin"
-gUnknown_083FBB24:: @ 0x083FBB24
-	.incbin "data/eu/bin/rom_1_083FBB24.bin"
-gUnknown_083FBC24:: @ 0x083FBC24
-	.incbin "data/eu/bin/rom_1_083FBC24.bin"
+gRubyShopSignMartPiece2_Es:: @ 0x083FB824
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_es.4bpp"
+	.space 0xA0
+gRubyShopSignEvoLabel_Es:: @ 0x083FB9A4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_evo_label_es.4bpp"
+gRubyShopSignCenterPiece0_Es:: @ 0x083FBA64
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece0_es.4bpp"
+gRubyShopSignCenterPiece1_Es:: @ 0x083FBB24
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece1_es.4bpp"
+gRubyShopSignCenterPiece2_Es:: @ 0x083FBC24
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_center_piece2_es.4bpp"
 gRubyEvoArrow_R0_Off:: @ 0x083FBDC4
     .incbin "graphics/stage/ruby/mart_arrow/mart_arrow_evo_off_row0.4bpp"
 
