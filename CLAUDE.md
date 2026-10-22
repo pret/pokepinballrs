@@ -24,13 +24,20 @@ europea multilingua (inglese, francese, tedesco, italiano, spagnolo).
   I dati solo-EU sono in forma sorgente dove possibile:
   - `data/eu/src/pokedex_entries.inc`: Pokédex EU (205 voci, 5 lingue) con `.dexLang`;
   - `data/eu/src/bonus_summary_templates.inc`: testi del riepilogo bonus FR/IT/DE/ES;
-  - grafica per lingua: 1022 blob convertiti in `graphics/**/<file USA>_<lingua>.png/.pal/.bin`
-    (suffisso minuscolo del gruppo di lingue, `_eu` se il simbolo non ha suffisso).
-  Restano ~1,3 MB in `data/eu/bin/` (244 file): grafica con dimensioni diverse da USA
-  (`gPortraitAnimFrameGraphics_*`, `gPokedexSprites_Gfx_*`, …), tile compressi delle board,
-  grafica costruita a segmenti (`travel`, `ball_save`, `end_of_ball`, …), tabelle, audio.
+  - `data/eu/src/{high_score_tables,pause_menu_sprite_offsets,idle_press_start_tiles}.inc`:
+    tabelle (scritte da `dump_tables_eu.py`);
+  - grafica per lingua: 1247 blob convertiti in `graphics/**/<file USA>_<lingua>.png/.pal/.bin`
+    (suffisso minuscolo del gruppo di lingue, `_eu` se il simbolo non ha suffisso), più la
+    grafica solo-EU (`graphics/language_select/`, testi intro, ordinali dei record, testi e-Reader,
+    etichette del cartello del negozio Ruby);
+  - sprite set solo-EU di rom_2 scritti con `packed_sprite_oam(l)` come in USA.
+  Restano ~116 KB in `data/eu/bin/` (11 file): `gPokedexSprites_Gfx_{De,Fr,Es}` (segmenti di
+  dimensioni diverse da USA, confini non noti), blocchi non referenziati senza etichetta
+  (2×6144 byte tra i set di frecce GET inglesi e francesi, piccoli blocchi), coda della ROM e
+  68 byte di sound_data_2. In rom_2 restano ~1250 righe `.byte` (dati non riconosciuti).
   Nelle tabelle solo-EU di rom_2 i puntatori sono simbolici; le etichette nuove sono
-  `gUnknown_<indirizzo EU>` o, dove ricavabile, `<nome USA>_<Lingua>`.
+  `gUnknown_<indirizzo EU>` o, dove ricavabile, `<nome USA>_<Lingua>`; nomi aggiunti a mano
+  in `tools/eu_port/data/extra_names.json` (es. pezzi del cartello del negozio Ruby).
 
 ## Build
 
@@ -79,11 +86,20 @@ Su Windows (MSYS2) usare il `jq` di msys, non quello mingw (scrive CRLF e rompe
   (`align_data.py`) → layout RAM (`gen_ram.py`) → `data/eu/*.s` (`gen_eu_data.py`).
   Va rieseguito dopo modifiche al C che cambiano riferimenti ai dati; poi `make compare_eu`.
   `gen_eu_data.py` include al posto dei byte: i file `data/eu/src/*.inc` con una riga
-  `@ eu_range INIZIO FINE`, e la grafica elencata in `tools/eu_port/data/eu_graphics.json`.
-- `gfx_eu.py`: converte i blob di grafica per lingua in copie dei file grafici USA
-  (verifica il giro PNG→4bpp con gbagfx), scrive `tools/eu_port/data/eu_graphics.json` e `graphics_rules_eu.mk`
-  (regole con opzioni gbagfx). Poi `regen.sh`.
-- `dump_dex_eu.py`: rigenera `data/eu/src/pokedex_entries.inc` dalla ROM EU.
+  `@ eu_range INIZIO FINE` (possono definire etichette interne con `::` o `.set`), e la grafica
+  elencata in `tools/eu_port/data/eu_graphics.json`. Scrive anche gli sprite set di rom_2 con le
+  macro e l'elenco dei blob in `data/eu_blobs.json` (generato, ignorato da git).
+- `gfx_eu.py` (dopo `regen.sh`, perché legge `eu_blobs.json`; poi di nuovo `regen.sh`): converte
+  i blob di grafica in copie per lingua dei file USA con gbagfx e verifica il giro inverso. Abbina
+  un blob all'elemento USA con lo stesso nome senza suffisso di lingua (e agli elementi USA
+  successivi se in EU mancano le etichette intermedie); gestisce LZ, `.fill/.align`, segmenti
+  dei JSON gfx-config, immagini con più o meno tile (`-num_tiles`), padding con dati. Gli alias
+  (`ALIASES`) e la grafica solo-EU (`EXTRA`: file, larghezza, palette) sono descritti nello
+  script. Non abbina mai per sola dimensione: sceglierebbe file sbagliati. Scrive
+  `tools/eu_port/data/eu_graphics.json` e `graphics_rules_eu.mk`.
+  Dopo una modifica alle regole cancellare i `.4bpp` generati: make non li ricostruisce se
+  cambiano solo le opzioni.
+- `dump_dex_eu.py`, `dump_tables_eu.py`: riscrivono dalla ROM EU il Pokédex e le tabelle in `data/eu/src/`.
 - `romdiff.py`, `worddiff.py`: dove differisce la ROM costruita e di quanto sono spostati i puntatori.
 - `data/`: dati di riferimento (inizi oggetti EU, nomi, nomi extra, `eu_graphics.json`);
   i JSON generati dall'allineamento sono ignorati da git.
@@ -93,8 +109,8 @@ Attenzione: `data/eu/*.s` sono generati; modificarli a mano va bene solo se poi 
 
 ## Prossimi passi possibili
 
-1. Blob rimasti: grafica con dimensioni diverse dalla controparte USA (portrait anim frames,
-   sprite del Pokédex), tile compressi delle board, grafica a segmenti (servono voci nei JSON
-   gfx-config), glifi Pokédex EU (`gPokedexTextGlyphs_Gfx`), tabelle `.4byte`.
-2. Le 2 funzioni ancora in asm (vedi sopra).
-3. Sprite set solo-EU di rom_2 da `.byte` alle macro `packed_sprite_oaml` come in USA.
+1. Le 2 funzioni ancora in asm (vedi sopra): le varianti di sorgente plausibili non bastano;
+   servirebbe una ricerca automatica (decomp-permuter).
+2. `gPokedexSprites_Gfx_{De,Fr,Es}`: trovare i confini dei segmenti EU (dagli sprite set del
+   Pokédex EU) e aggiungere le voci ai JSON gfx-config.
+3. Le ~1250 righe `.byte` rimaste in `data/eu/rom_2.s` (tabelle e strutture solo-EU non riconosciute).
