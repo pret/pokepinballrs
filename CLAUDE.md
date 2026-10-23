@@ -8,22 +8,18 @@ europea multilingua (inglese, francese, tedesco, italiano, spagnolo).
 - `make compare_eu` ricostruisce la ROM EU **identica byte per byte**
   (SHA1 `b8b7881eaa9856b5ada99078ad1053d31cb79827`).
 - `make compare` (USA) resta identica: ogni modifica EU è dentro `#ifdef EUROPE`.
-- Codice: 848/848 funzioni corrispondenti. 847 in C, 1 usa l'assembly originale nella
-  build EU (C conservato sotto `NONMATCHING`):
-  - `RestoreMainFieldDynamicGraphics` (save_and_restore_game.c): nel caso EVO_PREVIEW il reload
-    di `gMonPortraitGroupPals` usa r5 invece di r0, quindi il cross-jump unisce 3 istruzioni in
-    meno. Il registro di reload è scelto a rotazione (`last_spill_reg` in reload1.c), e conta
-    anche il codice che il cross-jump fonde dopo il reload: la causa può essere ovunque prima.
-    Con decomp-permuter si arriva a 2 istruzioni diverse su 1171: indice dell'uovo in `var0`
-    prima della DMA (come nel resto della funzione) e un `gCurrentPinballGame->... += 0` in
-    fondo al caso ROULETTE_WHEEL (come il `ball += 0` della versione USA); resta il registro di
-    reload di r9 all'inizio del caso EVO_PREVIEW (r0 invece di r5).
-  Risolte: `EndOfBallBonusSummary` (logica EU riscritta: indice lingua, glifi, tabelle),
+- Codice: 848/848 funzioni corrispondenti, tutte in C (nessuna usa più l'assembly originale).
+  Le ultime risolte, oltre al port in C del codice EU:
+  `EndOfBallBonusSummary` (logica EU riscritta: indice lingua, glifi, tabelle),
   `Draw{Ruby,Sapphire}ModeTimerDisplay` (dimensione per lingua del 3° blocco di tile "saver"),
   `UpdateSapphireHatchMachine` (in EU il setup del banner è in un `do { } while (0)`, che chiude
   il blocco CSE: macro `BANNER_SETUP_BEGIN/END`), `LoadTitlescreenGraphics` (le copie DMA comuni
   sono ripetute in entrambi i rami del test sul salvataggio, come in USA, e il compilatore le
-  fonde: la ripetizione cambia l'allocazione dei registri).
+  fonde: la ripetizione cambia l'allocazione dei registri), `RestoreMainFieldDynamicGraphics`
+  (indice dell'uovo in `var0` prima della DMA; in fondo al caso ROULETTE_WHEEL un fake match
+  `game->evoChainPosition += 0`, come il `ball += 0` USA: reload lo elimina dopo aver fatto
+  avanzare la rotazione dei registri di reload, `last_spill_reg` in reload1.c, del caso dopo).
+  Le ultime due trovate con decomp-permuter (vedi sotto).
 - Dati: `data/eu/*.s` sono **generati** dai sorgenti dati USA allineati alla ROM EU.
   I dati solo-EU sono in forma sorgente dove possibile:
   - `data/eu/src/pokedex_entries.inc`: Pokédex EU (205 voci, 5 lingue) con `.dexLang`;
@@ -141,11 +137,12 @@ Attenzione: `data/eu/*.s` sono generati; modificarli a mano va bene solo se poi 
 
 ## Prossimi passi possibili
 
-1. `RestoreMainFieldDynamicGraphics` (vedi sopra). decomp-permuter (github.com/simonlindholm/
-   decomp-permuter) si usa con una cartella per funzione: `base.c` preprocessato con
-   `-DEUROPE -DNONMATCHING`, `target.o` assemblato dal blocco `asm_unified` della funzione
-   (etichette locali `.L`, padding come `.align 2, 0`), `compile.sh` con i flag di agbcc della
-   build. Conviene randomizzare solo la zona interessata (`PERM_RANDOMIZE`); i suoi match vanno
-   poi riletti per trovare il costrutto naturale equivalente.
+1. Sostituire il fake match di `RestoreMainFieldDynamicGraphics` con il costrutto originale,
+   se si trova. decomp-permuter (github.com/simonlindholm/decomp-permuter) si usa con una
+   cartella per funzione: `base.c` preprocessato con `-DEUROPE -DNONMATCHING` (prima di togliere
+   il C da `NONMATCHING`, o direttamente), `target.o` assemblato dal codice originale della
+   funzione (etichette locali `.L`, padding come `.align 2, 0`), `compile.sh` con i flag di
+   agbcc della build. Conviene randomizzare solo la zona interessata (`PERM_RANDOMIZE`); i suoi
+   match vanno poi riletti per trovare il costrutto naturale equivalente.
 2. Riscrivere anche nel sorgente USA le regioni `Dup` come sprite set + animazioni (byte
    identici; oggi sono scritte come sprite set fittizi).
