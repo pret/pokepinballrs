@@ -17,9 +17,9 @@ tree builds both games:
   original assembly. One of them relies on a fake match (see *Matching notes*), like one that
   already exists in the US code.
 - **Data: the European data is in source form.** Graphics are PNG/palette files, texts and
-  tables are assembler source, and pointers are symbolic. Of about 9.4 MB of read-only data, only
-  686 bytes are still anonymous `.byte` lines (small tables in `rom_2`). The ROM also has a
-  16 KB block at `0x08FE0000` that the game never references, kept as bytes (see *Remaining work*).
+  tables are assembler source, and pointers are symbolic. No binary blob and no anonymous
+  `.byte` line is left. The 16 KB block at `0x08FE0000` that the game never references, a
+  development tool, is disassembled to ARM/Thumb assembly (see *The block at the end of the ROM*).
 
 ## Building
 
@@ -92,6 +92,29 @@ These are the differences found while porting:
   Spanish Pokédex sprite sheets have their own segments in `graphics/pokedex/pokedex_gfx_eu.json`).
 - Copies of English data that the European code never uses (EVO/coin arrows for French, Italian
   and Spanish) are built from the US files, and labelled as unused.
+- Small tables without a C declaration, the ends of unused data copies and the European entries
+  added at the end of US tables are written like the US data around them: with their constants,
+  function names, sprite macros, or as sprite sets followed by animations.
+
+### The block at the end of the ROM
+
+The European ROM is 16 MiB. After the game data, it has a 16 KB block at `0x08FE0000` that the
+game never references, then `0xFF` padding and 2 KB of zeros. The block is a development tool,
+probably a debug monitor: it saves the registers of every CPU mode and uses the interrupt, wait
+state and serial (`RCNT`) registers. It was linked to run near the end of a 32 MiB cartridge,
+not where it sits in this ROM:
+
+- a resident part (the first 4 KB) runs at `0x09FE2000`. ARM branches at its start jump to a
+  stub that calls the Thumb code;
+- three overlays (the following 4 KB pages) all run at `0x09FE3000`. Each starts with a table of
+  entry points, and its pointers into `0x09FE3xxx` refer to itself.
+
+`tools/eu_port/disasm_rom_tail.py` disassembles it to `data/eu/rom_tail.s` with capstone,
+following branches, code pointers, literal pools, gcc switch tables and function prologues.
+Labels are named after their run address, and the run-time addresses stored in the block are
+written as `label - RES` (or `OV1`, `OV2`, `OV3`). The script checks the file by assembling it the
+way the Makefile does: all 2,460 instructions assemble back to the original bytes, so none of
+them needs `.inst`.
 
 ### Text encoding (`tools/preproc`)
 
@@ -114,6 +137,7 @@ These are the differences found while porting:
 - `gfx_eu.py` converts the European graphics to source files, with `gbagfx`, and verifies them.
 - `dump_dex_eu.py`, `dump_ereader_eu.py` and `dump_tables_eu.py` write the files of
   `data/eu/src` from the European ROM.
+- `disasm_rom_tail.py` writes `data/eu/rom_tail.s` from the European ROM and checks it.
 - `check.sh`, `fdiff.py`, `nonmatching.sh`, `eudis.py`, `xref.py`, `langsw.py`, `romdiff.py` and
   `worddiff.py` compare functions and data with the European ROM.
 - `lcm_sim.py` simulates agbcc's partial redundancy elimination, to understand why a value is
@@ -147,11 +171,8 @@ agbcc projects:
 ## Remaining work
 
 - Find the original construct behind the fake match in `RestoreMainFieldDynamicGraphics`.
-- Name and type the last 686 bytes of `.byte` data in `data/eu/rom_2.s`: small tables without a
-  C declaration, and the broken end of an unused data copy.
-- The 16 KB block at `0x08FE0000` looks like a development tool linked to run at `0x09FE0000`:
-  an ARM entry stub that calls Thumb code, and accesses to IWRAM and `WAITCNT`. Without symbols,
-  it is kept as bytes in `data/eu/rom_tail.s`.
+- Give meaningful names to the functions and data of the development tool at the end of the ROM
+  (they are named after their addresses).
 - The US source writes the unused copies of the sprite data (`gSpriteSetRawDup_*`,
   `gPackedOamDup_*`, `gUnusedSpriteSets_*`) as sprite sets. They are actually sprite sets
   followed by animations (a frame count, then frame/duration pairs), as they are now written in
@@ -168,7 +189,8 @@ agbcc projects:
 2. **Source conversion.** The remaining functions were decompiled to C, and the European data
    was turned into source: per-language graphics, the Pokédex and e-Reader texts, tables,
    sprite sets and symbolic pointers. The two last functions were matched with the help of
-   [decomp-permuter](https://github.com/simonlindholm/decomp-permuter).
+   [decomp-permuter](https://github.com/simonlindholm/decomp-permuter). The last anonymous
+   bytes were typed, and the unreferenced block at the end of the ROM was disassembled.
 
 This work builds on the [pret/pokepinballrs](https://github.com/pret/pokepinballrs) disassembly
 of the US version.
