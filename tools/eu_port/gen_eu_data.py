@@ -10,6 +10,12 @@ REPO = _R
 EU = open(_BASEROM, 'rb').read()
 L = json.load(open(_W + '/layout.json'))
 items = L['items']
+# US items whose English data is longer in the EU version, like the other languages (the bytes
+# after the US size are part of it): not aligned, so that gfx_eu.py converts the whole data.
+UNALIGNED = {'gRubyShopSignMartPiece1', 'gRubySaverRow3Tile_On'}
+for it_ in items:
+    if UNALIGNED & set(it_['names']):
+        it_['eu'] = None
 eu_syms = {k: v for k, v in L['eu_syms'].items()}
 code_syms = {k: int(v, 16) for k, v in json.load(open(_W + '/hard_syms.json')).items()}
 code_syms.update({k: int(v, 16) for k, v in json.load(open(_W + '/code_syms.json')).items()})

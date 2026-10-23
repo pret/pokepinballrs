@@ -4875,12 +4875,9 @@ gRubySaverRow3Tile_Off:: @ 0x083F0C84
     .incbin "graphics/stage/ruby/saver/saver_off_row3.4bpp"
 	.fill 0xC0, 1, 0x11
 
-gRubySaverRow3Tile_On:: @ 0x083F0D84
-    .incbin "graphics/stage/ruby/saver/saver_on_row3.4bpp"
-	.fill 0x20, 1, 0x11
-	.space 0x220
 
-	.incbin "data/eu/bin/rom_1_083F1004.bin"
+gRubySaverRow3Tile_On:: @ 0x083F0D84
+	.incbin "graphics/stage/ruby/saver/saver_on_row3_eu.4bpp"
 gRubySaverRow0Tile_Off_Fr:: @ 0x083F1024
 	.incbin "graphics/stage/ruby/saver/saver_off_row0_fr.4bpp"
 	.incbin "graphics/stage/ruby/saver/saver_off_row0_filler_fr.4bpp"
@@ -5341,8 +5338,6 @@ gRubyShopSignMartPiece0:: @ 0x083F95E4
     .incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece0.4bpp"
 
 
-gRubyShopSignMartPiece1:: @ 0x083F96A4
-    .incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1.4bpp"
 
 
 
@@ -5351,7 +5346,8 @@ gRubyShopSignMartPiece1:: @ 0x083F96A4
 
 @ arrow for ramp leading to shop: mart/evo
 
-	.incbin "data/eu/bin/rom_1_083F9764.bin"
+gRubyShopSignMartPiece1:: @ 0x083F96A4
+	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_eu.4bpp"
 gRubyShopSignMartPiece2_En:: @ 0x083F97A4
 	.incbin "graphics/stage/ruby/shop_sign/shop_sign_mart_piece2_en.4bpp"
 	.space 0xA0

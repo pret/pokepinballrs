@@ -1984,6 +1984,9 @@ graphics/stage/ruby/saver/saver_on_row2_fr.4bpp: graphics/stage/ruby/saver/saver
 graphics/stage/ruby/saver/saver_on_row2_it.4bpp: graphics/stage/ruby/saver/saver_on_row2_it.png
 	$(GFX) $< $@ -num_tiles 6
 
+graphics/stage/ruby/saver/saver_on_row3_eu.4bpp: graphics/stage/ruby/saver/saver_on_row3_eu.png
+	$(GFX) $< $@ -num_tiles 21
+
 graphics/stage/ruby/saver/saver_on_row3_fr.4bpp: graphics/stage/ruby/saver/saver_on_row3_fr.png
 	$(GFX) $< $@ -num_tiles 21
 
@@ -2021,6 +2024,9 @@ graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_de.4bpp: graphics/stage/ruby
 	$(GFX) $< $@ -num_tiles 8
 
 graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_es.4bpp: graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_es.png
+	$(GFX) $< $@ -num_tiles 8
+
+graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_eu.4bpp: graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_eu.png
 	$(GFX) $< $@ -num_tiles 8
 
 graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_fr.4bpp: graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_fr.png

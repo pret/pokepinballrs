@@ -3762,6 +3762,13 @@
   ],
   "size": 192
  },
+ "0x083F0D84": {
+  "label": "gRubySaverRow3Tile_On",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/saver/saver_on_row3_eu.4bpp\""
+  ],
+  "size": 672
+ },
  "0x083F1024": {
   "label": "gRubySaverRow0Tile_Off_Fr",
   "lines": [
@@ -4673,6 +4680,13 @@
    ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_label_en.4bpp\""
   ],
   "size": 192
+ },
+ "0x083F96A4": {
+  "label": "gRubyShopSignMartPiece1",
+  "lines": [
+   ".incbin \"graphics/stage/ruby/shop_sign/shop_sign_mart_piece1_eu.4bpp\""
+  ],
+  "size": 256
  },
  "0x083F97A4": {
   "label": "gRubyShopSignMartPiece2_En",
