@@ -253,31 +253,59 @@ def us_sprite_set(n):
     return US_SPRITE_SETS.get(m.group(1) if m else n)
 
 
+def sprite_sets_end(a, b, size, max_sets=None):
+    """End of the run of valid sprite sets with entries of size bytes at a (at most max_sets
+    sets, before b), and how many there are."""
+    n, pos = 0, a
+    while pos < b and (max_sets is None or n < max_sets):
+        count = struct.unpack_from('<H', EU, pos - 0x08000000)[0] if pos + 2 <= b else 0
+        if count == 0 or count > 128 or pos + 2 + size * count > b:
+            break
+        for k in range(count):
+            p = pos + 2 + size * k - 0x08000000
+            word = struct.unpack_from('<I', EU, p)[0]
+            if (word >> 14) & 3 == 3 or (size == 8 and struct.unpack_from('<H', EU, p + 6)[0] > 1):
+                return pos, n
+        n, pos = n + 1, pos + 2 + size * count
+    return pos, n
+
+
+def anims_fill(a, b):
+    """Whether EU[a:b] holds animations: runs of a frame count and (frame, duration) pairs,
+    then at most the zero padding to 4 bytes."""
+    p = a
+    while p + 2 <= b:
+        k = struct.unpack_from('<H', EU, p - 0x08000000)[0]
+        if k == 0:
+            break
+        if k > 64 or p + 2 + 4 * k > b:
+            return False
+        p += 2 + 4 * k
+    return p > a and b - p < 4 and not any(EU[p - 0x08000000:b - 0x08000000])
+
+
 def parses_as_sprite_set(a, b):
     """Entry size (8 or 6) if EU[a:b] is exactly one sprite set (count, then count valid OAM
-    entries, with or without the 2-byte flag) or a run of sprite sets with entries of the same
-    size (like the data after the gPackedOamDup_ sprite sets of the US version), else 0."""
+    entries, with or without the 2-byte flag), a run of sprite sets with entries of the same
+    size, or a sprite set followed by animations (in the unused copies of the sprite data, like
+    the gSpriteSetRawDup_ regions of the US version), else 0."""
     if b - a < 8 or any(a <= p < b for p in PTRS):
         return 0
-    def sets(size):
-        n, pos = 0, a
-        while pos < b:
-            count = struct.unpack_from('<H', EU, pos - 0x08000000)[0] if pos + 2 <= b else 0
-            if count == 0 or count > 128 or pos + 2 + size * count > b:
-                return 0
-            for k in range(count):
-                p = pos + 2 + size * k - 0x08000000
-                word = struct.unpack_from('<I', EU, p)[0]
-                if (word >> 14) & 3 == 3 or (size == 8 and struct.unpack_from('<H', EU, p + 6)[0] > 1):
-                    return 0
-            n, pos = n + 1, pos + 2 + size * count
-        return n
-    found = {size: sets(size) for size in (8, 6)}
+    found = {}
+    for size in (8, 6):
+        end, n = sprite_sets_end(a, b, size)
+        found[size] = n if end == b else 0
     for size in (8, 6):
         if found[size] == 1:
             return size
     # a run: entries of 6 bytes when both sizes parse, as in the US data
-    return 6 if found[6] else 8 if found[8] else 0
+    if found[6] or found[8]:
+        return 6 if found[6] else 8
+    for size in (6, 8):
+        end, n = sprite_sets_end(a, b, size, 1)
+        if n and anims_fill(end, b):
+            return size
+    return 0
 
 
 # gUnknown_ blocks of rom_2 that are sprite sets: in a run of at least two consecutive pointers
@@ -336,6 +364,26 @@ def sprite_set_lines(x, y, labels):
     if spec is None or y == x:
         return None
     size, pals = spec
+    lines_ = oam_lines(x, y, size, pals)
+    if lines_ is None:
+        # one sprite set, then animations (unused copies of the sprite data)
+        end, n = sprite_sets_end(x, y, size, 1)
+        if not n or not anims_fill(end, y):
+            return None
+        lines_ = oam_lines(x, end, size, pals) + ['\t@ animations: frame count, then (frame, duration) pairs']
+        p = end
+        while p + 2 <= y and struct.unpack_from('<H', EU, p - 0x08000000)[0]:
+            k = struct.unpack_from('<H', EU, p - 0x08000000)[0]
+            pairs = struct.unpack_from('<%dH' % (2 * k), EU, p + 2 - 0x08000000)
+            lines_ += ['\t.2byte %d' % k] + ['\t.2byte ' + ', '.join(str(v) for v in pairs[i:i + 16])
+                                             for i in range(0, 2 * k, 16)]
+            p += 2 + 4 * k
+        lines_ += ['\t.2byte 0'] * ((y - p) // 2)
+    return lines_, y
+
+
+def oam_lines(x, y, size, pals):
+    """Lines of the sprite sets that fill EU[x:y] exactly, else None."""
     macro = 'packed_sprite_oaml' if size == 8 else 'packed_sprite_oam'
     out_, pos = [], x
     while pos < y:
@@ -370,7 +418,7 @@ def sprite_set_lines(x, y, labels):
                 parts.append('unkFlag=0x%X' % flag)
             out_.append('    %s %s' % (macro, ', '.join(parts)))
         out_.append('')
-    return out_, y
+    return out_
 
 
 # Element types of the data declared in the C code (extern const <type> name[...] or
@@ -387,6 +435,84 @@ for root_, _, files_ in list(os.walk(REPO + '/src')) + list(os.walk(REPO + '/inc
                 C_TYPES.setdefault(m_.group(2), m_.group(1))
 ELEMENTS = {'u8': ('.byte', 'B'), 's8': ('.byte', 'b'), 'u16': ('.2byte', 'H'), 's16': ('.2byte', 'h'),
             'u32': ('.4byte', 'I'), 's32': ('.4byte', 'i'), 'Vector16': ('.2byte', 'h'), 'Vector32': ('.4byte', 'i')}
+# VRAM addresses in the EU-only tables of rom_2 (destinations of tile copies) are written with the
+# BG_/OBJ_VRAM_ADDR_ constant of include/constants/mem_layout that has that value, if only one.
+def _vram_names():
+    import tempfile
+    names, headers = set(), sorted(os.listdir(REPO + '/include/constants/mem_layout'))
+    for h in headers:
+        names.update(re.findall(r'^#define\s+((?:BG|OBJ)_VRAM_ADDR_\w+)\b(?!\()',
+                                open(REPO + '/include/constants/mem_layout/' + h, encoding='utf-8').read(), re.M))
+    names = sorted(names)
+    d = tempfile.mkdtemp()
+    src = ['#include "global.h"'] + ['#include "constants/mem_layout/%s"' % h for h in headers if h.endswith('.h')]
+    open(d + '/v.S', 'w', newline='\n').write('\n'.join(src + ['.4byte %s' % n for n in names]) + '\n')
+    pre = subprocess.run(['arm-none-eabi-cpp', '-I', 'tools/agbcc/include', '-iquote', 'include', '-nostdinc',
+                          '-undef', '-DEUROPE', '-P', d + '/v.S'], cwd=REPO, capture_output=True, text=True).stdout
+    open(d + '/v.s', 'w', newline='\n').write('\n'.join(l for l in pre.split('\n') if l.startswith('.4byte')) + '\n')
+    subprocess.check_call(['arm-none-eabi-as', '-o', d + '/v.o', d + '/v.s'])
+    subprocess.check_call(['arm-none-eabi-objcopy', '-O', 'binary', '-j', '.text', d + '/v.o', d + '/v.bin'])
+    data = open(d + '/v.bin', 'rb').read()
+    by = collections.defaultdict(list)
+    for n, v in zip(names, struct.unpack('<%dI' % (len(data) // 4), data)):
+        by[v].append(n)
+    return {v: n[0] for v, n in by.items() if len(n) == 1}
+VRAM_NAMES = _vram_names()
+
+
+def _us_word_exprs():
+    """Values of the non-symbol .4byte expressions of data/rom_2.s (e.g. BG_ADDR_FOR_BOARD_WRAP(31, 23)),
+    evaluated for EU: {label: {value: expression}} and {value: expression} when only one."""
+    import tempfile
+    text = open(REPO + '/data/rom_2.s', encoding='utf-8').read()
+    headers = re.findall(r'^#include .*$', text, re.M)
+    exprs, label = [], None
+    for ln in text.split('\n'):
+        m = re.match(r'^(\w+)::', ln)
+        if m:
+            label = m.group(1)
+            continue
+        m = re.match(r'^\s*\.4byte\s+(.*?)\s*(?:@.*)?$', ln)
+        if not m or label is None:
+            continue
+        args, depth, cur = [], 0, ''
+        for c in m.group(1):
+            if c == ',' and depth == 0:
+                args.append(cur.strip()); cur = ''
+                continue
+            depth += (c == '(') - (c == ')')
+            cur += c
+        args.append(cur.strip())
+        exprs += [(label, a) for a in args if a and not re.match(r'^[a-z_]\w*$|^g\w*$|^0x[0-9A-Fa-f]+$|^\d+$', a)]
+    uniq = sorted(set(e for _, e in exprs))
+    d = tempfile.mkdtemp()
+    open(d + '/e.S', 'w', newline='\n').write('\n'.join(headers + ['.4byte %s' % e for e in uniq]) + '\n')
+    pre = subprocess.run(['arm-none-eabi-cpp', '-I', 'tools/agbcc/include', '-iquote', 'include', '-nostdinc',
+                          '-undef', '-DEUROPE', '-P', d + '/e.S'], cwd=REPO, capture_output=True, text=True).stdout
+    words_ = [l for l in pre.split('\n') if l.startswith('.4byte')]
+    if len(words_) != len(uniq):
+        return {}, {}
+    open(d + '/e.s', 'w', newline='\n').write('\n'.join(words_) + '\n')
+    if subprocess.run(['arm-none-eabi-as', '-o', d + '/e.o', d + '/e.s']).returncode:
+        return {}, {}
+    subprocess.check_call(['arm-none-eabi-objcopy', '-O', 'binary', '-j', '.text', d + '/e.o', d + '/e.bin'])
+    data = open(d + '/e.bin', 'rb').read()
+    value = dict(zip(uniq, struct.unpack('<%dI' % (len(data) // 4), data)))
+    by_table, by_value = collections.defaultdict(dict), collections.defaultdict(set)
+    for lab, e in exprs:
+        by_table[lab].setdefault(value[e], e)
+        by_value[value[e]].add(e)
+    return by_table, {v: next(iter(es)) for v, es in by_value.items() if len(es) == 1}
+US_WORD_EXPRS, US_WORD_EXPR = _us_word_exprs()
+
+
+def word_text(v, label):
+    """How to write the word v of the EU-only table label: the expression of the US table of the
+    same base name, an expression used once in the US data, a VRAM constant, or hex."""
+    m_ = SPRITE_SUF.match(label or '')
+    base = m_.group(1) if m_ else label
+    return (US_WORD_EXPRS.get(base, {}).get(v) or US_WORD_EXPR.get(v) or VRAM_NAMES.get(v)
+            or '0x%08X' % v)
 # tables written with character literals in the US source, like gCaughtTextChars
 CHAR_TABLES = set(re.findall(r"^(\w+)::.*\n\s*\.2?byte\s+'", open(REPO + '/data/rom_2.s', encoding='utf-8').read(), re.M))
 
@@ -555,6 +681,10 @@ def gen_file(src, obj, name):
                 while q < y:
                     if q in PTRS and q + 4 <= y:
                         flush(); out.append(('gen', f'\t.4byte {PTRS[q]}')); q += 4
+                    elif q % 4 == 0 and q + 4 <= y and 0x06000000 <= struct.unpack_from('<I', EU, q - 0x08000000)[0] < 0x06018000:
+                        v = struct.unpack_from('<I', EU, q - 0x08000000)[0]
+                        label = next(reversed(ALL_LABELS)) if ALL_LABELS else None
+                        flush(); out.append(('gen', '\t.4byte ' + word_text(v, label))); q += 4
                     else:
                         buf.append(EU[q - 0x08000000]); q += 1
                 flush()
